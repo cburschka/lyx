@@ -124,6 +124,9 @@ public:
 	/// Add this array to a math row. Return true if contents got added
 	bool addToMathRow(MathRow &, MetricsInfo & mi) const;
 
+	// return true if caret is in this cell in this buffer view
+	bool hasCaret(BufferView * bv) const;
+
 	/// rebuild cached metrics information
 	/** When \c tight is true, the height of the cell will be at least
 	 *  that of 'x'. Otherwise, it will be the max height of the font.
