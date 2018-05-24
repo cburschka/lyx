@@ -386,13 +386,25 @@ bool checkModule(string const & name, bool command)
 				add = true;
 		}
 		if (add) {
-			FileName layout_file = libFileSearch("layouts", module, "module");
-			if (textclass.read(layout_file, TextClass::MODULE)) {
-				used_modules.push_back(module);
-				// speed up further searches:
-				// the module does not need to be checked anymore.
-				modules.erase(it);
-				return true;
+			vector<string> v;
+			LayoutModuleList mods;
+			// addModule is necessary in order to catch required modules
+			// as well (see #11156)
+			if (!addModule(module, baseClass, mods, v))
+				return false;
+			for (auto const & mod : mods) {
+				if (!used_modules.moduleCanBeAdded(mod, &baseClass))
+					return false;
+				FileName layout_file = libFileSearch("layouts", mod, "module");
+				if (textclass.read(layout_file, TextClass::MODULE)) {
+					used_modules.push_back(mod);
+					// speed up further searches:
+					// the module does not need to be checked anymore.
+					ModuleMap::iterator const it = modules.find(mod);
+					if (it != modules.end())
+						modules.erase(it);
+					return true;
+				}
 			}
 		}
 	}
