@@ -12,7 +12,7 @@ sub check_precondition();
 sub system1(@);
 
 my $builddir = "@CMAKE_BINARY_DIR@";
-my $userdir = "$builddir/Testing/.lyx";
+my $userdir = "$builddir/Testing/.lyxbatch";
 my $workdir = "$builddir/autotests/out-home";
 
 my $vsuffix = "@PROGRAM_SUFFIX@";
@@ -24,7 +24,8 @@ my $data = "$lyxsource/development/batchtests";
 
 my %Tests = (
   beamer_test => {
-    create => "beamer_test.tex",
+    orig_ext => "lyx",
+    create => ["beamer_test.tex"],
     commands => ["file-open beamer_test.lyx",
 		 "buffer-begin",
 		 "repeat 150 outline-down",
@@ -38,24 +39,48 @@ my %Tests = (
       command => [$git_exe, "ls-files", "--error-unmatch", "vcs_info_export.lyx"],
       workdir => "$data",
     },
-    create => "vcs_info_export.tex",
+    orig_ext => "lyx",
+    create => ["vcs_info_export.tex"],
     command_line => ["-E", "pdflatex", "vcs_info_export.tex", "$data/vcs_info_export.lyx"],
-  }
-    );
+  },
+  "ams-import" => {
+    docompare => 0,
+    orig_ext => "tex",
+    create => ["ams-import.pdf", "ams-import.lyx"],
+    commands => ["buffer-new",
+    		 "buffer-import latex ams-import.tex",
+		 "buffer-write",
+		 "buffer-export pdf2",
+		 "lyx-quit"],
+  },
+  );
 
 die("Expected argument missing") if (! defined($ARGV[0]));
 my $test = $ARGV[0];
 die("Invalid argument") if (! defined($Tests{$test}));
 
-my $orig_lyx = "$data/$test.lyx";
-my $work_lyx = "$workdir/$test.lyx";
+if (! -e $userdir) {
+    mkdir($userdir);
+}
+my $orig_file = "$data/$test.$Tests{$test}->{orig_ext}";
+my $work_file = "$workdir/$test.$Tests{$test}->{orig_ext}";
 my $expected = "$data/$test.tex.orig";
-my $created = "$workdir/$Tests{$test}->{create}";
-
-die("File \"$expected\" does not exist") if (! -e $expected);
+my @created = ();
+if (defined($Tests{$test}->{create})) {
+  for my $created (@{$Tests{$test}->{create}}) {
+    push(@created, "$workdir/$created");
+  }
+}
+my $created = $created[0];
+my $docompare = 1;
+if (defined($Tests{$test}->{docompare})) {
+  $docompare = $Tests{$test}->{docompare};
+}
+die("File \"$expected\" does not exist") if ($docompare && ! -e $expected);
 # Create lyx-file to work with
-copy($orig_lyx, $work_lyx) or die("Copy failed: $!");
-unlink($created);
+copy($orig_file, $work_file) or die("Copy failed: $!");
+print "Unlinking " . join(' ', @created) . "\n";
+unlink(@created);
 $ENV{LANG} = "en";
 $ENV{LC_ALL} = "C";
 $ENV{LANGUAGE} = "en_US";
@@ -71,7 +96,7 @@ if (defined($Tests{$test}->{commands})) {
 }
 
 system1(@command);
-die("Expected ($expected) and created ($created) files differ") if (compare($expected, $created) != 0);
+die("Expected ($expected) and created ($created) files differ") if ($docompare && compare($expected, $created) != 0);
 
 exit(0);
 
