@@ -220,11 +220,19 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	int const h = tm.height() + 2 * TEXT_TO_INSET_OFFSET;
 	int const xframe = x + TEXT_TO_INSET_OFFSET / 2;
 	bool change_drawn = false;
-	if (drawFrame_ || pi.full_repaint) {
-		if (pi.full_repaint)
+	if (pi.full_repaint)
 			pi.pain.fillRectangle(xframe, yframe, w, h,
 				pi.backgroundColor(this));
 
+	{
+		Changer dummy = make_change(pi.background_color,
+		                            pi.backgroundColor(this, false));
+		// The change tracking cue must not be inherited
+		Changer dummy2 = make_change(pi.change_, Change());
+		tm.draw(pi, x + TEXT_TO_INSET_OFFSET, y);
+	}
+
+	if (drawFrame_) {
 		// Change color of the frame in tracked changes, like for tabulars.
 		// Only do so if the color is not custom. But do so even if RowPainter
 		// handles the strike-through already.
@@ -242,16 +250,9 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 			change_drawn = true;
 		} else
 			c = frameColor();
-		if (drawFrame_)
-			pi.pain.rectangle(xframe, yframe, w, h, c);
+		pi.pain.rectangle(xframe, yframe, w, h, c);
 	}
-	{
-		Changer dummy = make_change(pi.background_color,
-		                            pi.backgroundColor(this, false));
-		// The change tracking cue must not be inherited
-		Changer dummy2 = make_change(pi.change_, Change());
-		tm.draw(pi, x + TEXT_TO_INSET_OFFSET, y);
-	}
+
 	if (canPaintChange(*pi.base.bv) && (!change_drawn || pi.change_.deleted()))
 		// Do not draw the change tracking cue if already done by RowPainter and
 		// do not draw the cue for INSERTED if the information is already in the
