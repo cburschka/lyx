@@ -10,6 +10,7 @@ use File::Compare;
 
 sub check_precondition();
 sub system1(@);
+sub add_files($$);
 
 my $builddir = "@CMAKE_BINARY_DIR@";
 my $userdir = "$builddir/Testing/.lyxbatch";
@@ -22,65 +23,66 @@ my $git_exe = "@LYX_GITVERSION@";
 my $lyxsource = "@LYX_ABS_TOP_SRCDIR@";
 my $data = "$lyxsource/development/batchtests";
 
+# src_files := Files to be copied from lyx-source to build-dir
+# create := Files which are expected to be created in the build-dir
+# original := Files in the lyx-source, corresponding to the created ones,
+#             which we provide for comparison
+# commands := List of commands (lyx-functions) to be executed by lyx in a batch
+# precondition: system commands to be executed prior to the test
+# command_line: List of parameters to be used on the lyx-command-line
 my %Tests = (
   beamer_test => {
-    orig_ext => "lyx",
+    src_files => ["beamer_test.lyx"],
     create => ["beamer_test.tex"],
+    original => ["beamer_test.tex.orig"],
     commands => ["file-open beamer_test.lyx",
-		 "buffer-begin",
-		 "repeat 150 outline-down",
-		 "repeat 150 outline-up",
-		 "buffer-export pdflatex",
-		 "buffer-reload dump",
-		 "lyx-quit"]
+                 "buffer-begin",
+                 "repeat 150 outline-down",
+                 "repeat 150 outline-up",
+                 "buffer-export pdflatex",
+                 "buffer-reload dump",
+                 "lyx-quit"],
   },
   vcs_info_export => {
     precondition => {
       command => [$git_exe, "ls-files", "--error-unmatch", "vcs_info_export.lyx"],
       workdir => "$data",
     },
-    orig_ext => "lyx",
+    src_files => ["vcs_info_export.lyx"],
     create => ["vcs_info_export.tex"],
+    original => ["vcs_info_export.tex.orig"],
     command_line => ["-E", "pdflatex", "vcs_info_export.tex", "$data/vcs_info_export.lyx"],
   },
   "ams-import" => {
-    docompare => 0,
-    orig_ext => "tex",
+    src_files => ["ams-import.tex"],
     create => ["ams-import.pdf", "ams-import.lyx"],
+    original => [undef, undef],
     commands => ["buffer-new",
-    		 "buffer-import latex ams-import.tex",
-		 "buffer-write",
-		 "buffer-export pdf2",
-		 "lyx-quit"],
+                 "buffer-import latex ams-import.tex",
+                 "buffer-write",
+                 "buffer-export pdf2",
+                 "lyx-quit"],
   },
-  );
+);
 
 die("Expected argument missing") if (! defined($ARGV[0]));
 my $test = $ARGV[0];
 die("Invalid argument") if (! defined($Tests{$test}));
 
 if (! -e $userdir) {
-    mkdir($userdir);
+  mkdir($userdir);
 }
-my $orig_file = "$data/$test.$Tests{$test}->{orig_ext}";
-my $work_file = "$workdir/$test.$Tests{$test}->{orig_ext}";
-my $expected = "$data/$test.tex.orig";
-my @created = ();
-if (defined($Tests{$test}->{create})) {
-  for my $created (@{$Tests{$test}->{create}}) {
-    push(@created, "$workdir/$created");
-  }
+my @expected = &add_files($data, $Tests{$test}->{original});
+
+my @created = &add_files($workdir, $Tests{$test}->{create});
+
+# Copy src-files to work with
+for my $f (@{$Tests{$test}->{src_files}}) {
+  copy("$data/$f", "$workdir/$f") or die("Copy failed: $!");
 }
-my $created = $created[0];
-my $docompare = 1;
-if (defined($Tests{$test}->{docompare})) {
-  $docompare = $Tests{$test}->{docompare};
-}
-die("File \"$expected\" does not exist") if ($docompare && ! -e $expected);
-# Create lyx-file to work with
-copy($orig_file, $work_file) or die("Copy failed: $!");
 print "Unlinking " . join(' ', @created) . "\n";
 unlink(@created);
+
 $ENV{LANG} = "en";
 $ENV{LC_ALL} = "C";
 $ENV{LANGUAGE} = "en_US";
@@ -89,18 +91,21 @@ check_precondition();
 chdir($workdir);
 my @command = ($lyx_exe, "-userdir", $userdir);
 if (defined($Tests{$test}->{command_line})) {
-    push(@command, @{$Tests{$test}->{command_line}});
+  push(@command, @{$Tests{$test}->{command_line}});
 }
 if (defined($Tests{$test}->{commands})) {
-    push(@command, "-x", "command-sequence " . join(';', @{$Tests{$test}->{commands}}));
+  push(@command, "-x", "command-sequence " . join(';', @{$Tests{$test}->{commands}}));
 }
 
 system1(@command);
 for my $f (@created) {
   die("File \"$f\" not created") if (! -e "$f");
 }
-die("Expected ($expected) and created ($created) files differ") if ($docompare && compare($expected, $created) != 0);
-
+for (my $i = 0; defined($created[$i]); $i++) {
+  if (defined($expected[$i])) {
+    die("Expected ($expected[$i]) and created ($created[$i]) files differ") if (compare($expected[$i], $created[$i]) != 0);
+  }
+}
 exit(0);
 
 sub check_precondition()
@@ -121,4 +126,22 @@ sub system1(@)
   my ($exe, @params) = @_;
   print "Executing:\n\t$exe '" . join("' '", @params) . "'\n";
   system($exe, @params);
+}
+
+# Create a list of file paths
+# dir: result-dir
+# rBases: List of base-names
+sub add_files($$)
+{
+  my ($dir, $rBases) = @_;
+  my @result = ();
+  for my $f (@{$rBases}) {
+    if (defined($f)) {
+      push(@result, "$dir/$f");
+    }
+    else {
+      push(@result, undef);
+    }
+  }
+  return(@result);
 }
