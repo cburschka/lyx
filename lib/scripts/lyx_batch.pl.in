@@ -96,6 +96,9 @@ if (defined($Tests{$test}->{commands})) {
 }
 
 system1(@command);
+for my $f (@created) {
+  die("File \"$f\" not created") if (! -e "$f");
+}
 die("Expected ($expected) and created ($created) files differ") if ($docompare && compare($expected, $created) != 0);
 
 exit(0);
