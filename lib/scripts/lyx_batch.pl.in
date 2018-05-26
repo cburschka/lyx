@@ -19,6 +19,7 @@ my $workdir = "$builddir/autotests/out-home";
 my $vsuffix = "@PROGRAM_SUFFIX@";
 my $lyx_exe = "$builddir/bin/lyx$vsuffix";
 my $git_exe = "@LYX_GITVERSION@";
+my $qt_version = "@LYX_USE_QT@";
 
 my $lyxsource = "@LYX_ABS_TOP_SRCDIR@";
 my $data = "$lyxsource/development/batchtests";
@@ -94,6 +95,9 @@ if (defined($Tests{$test}->{command_line})) {
   push(@command, @{$Tests{$test}->{command_line}});
 }
 if (defined($Tests{$test}->{commands})) {
+  if ($qt_version eq "QT5") {
+    push(@command, "-platform", "offscreen");
+  }
   push(@command, "-x", "command-sequence " . join(';', @{$Tests{$test}->{commands}}));
 }
 
