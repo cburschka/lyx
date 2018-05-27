@@ -382,7 +382,7 @@ private:
 	///
 	bool readFloat(Lexer &);
 	///
-	std::vector<CitationStyle> const & citeStyles(CiteEngineType const &) const;
+	std::vector<CitationStyle> const & getCiteStyles(CiteEngineType const &) const;
 	///
 	bool readCiteEngine(Lexer &, ReadType, bool const add = false);
 	///

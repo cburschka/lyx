@@ -1036,7 +1036,7 @@ void TextClass::readClassOptions(Lexer & lexrc)
 }
 
 
-vector<CitationStyle> const & TextClass::citeStyles(
+vector<CitationStyle> const & TextClass::getCiteStyles(
 	CiteEngineType const & type) const
 {
 	static vector<CitationStyle> empty;
@@ -1056,7 +1056,7 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 	else if (type & ENGINE_TYPE_NUMERICAL)
 		cetype = ENGINE_TYPE_NUMERICAL;
 
-	if (rt == CITE_ENGINE && !citeStyles(cetype).empty())
+	if (rt == CITE_ENGINE && !getCiteStyles(cetype).empty())
 		// The cite engines are not supposed to overwrite
 		// CiteStyle defined by the class or a module.
 		return true;
@@ -1163,7 +1163,7 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 	}
 	// Stop here if we do AddToCiteEngine,
 	// except if we have already a style to add something to
-	if (add && citeStyles(cetype).empty())
+	if (add && getCiteStyles(cetype).empty())
 		return getout;
 
 	// Add the styles from AddToCiteEngine to the class' styles
@@ -1175,7 +1175,7 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 		for (auto const ciss : cis.second) {
 			bool defined = false;
 			// Check if the style "name" is already def'ed
-			for (auto const av : citeStyles(cis.first))
+			for (auto const av : getCiteStyles(cis.first))
 				if (av.name == ciss.name)
 					defined = true;
 			if (!defined)
