@@ -1898,8 +1898,7 @@ Buffer::ExportStatus Buffer::writeLaTeXSource(otexstream & os,
 					    "file path name."),
 					  inputpath, uncodable_glyphs));
 			} else {
-				string docdir =
-					latex_path(original_path);
+				string docdir = os::latex_path(original_path);
 				if (contains(docdir, '#')) {
 					docdir = subst(docdir, "#", "\\#");
 					os << "\\catcode`\\#=11"
@@ -1910,9 +1909,20 @@ Buffer::ExportStatus Buffer::writeLaTeXSource(otexstream & os,
 					os << "\\catcode`\\%=11"
 					      "\\def\\%{%}\\catcode`\\%=14\n";
 				}
+				bool const detokenize = !isAscii(from_utf8(docdir));
+				bool const quote = contains(docdir, ' ');
 				os << "\\makeatletter\n"
-				   << "\\def\\input@path{{"
-				   << docdir << "}}\n"
+				   << "\\def\\input@path{{";
+				if (detokenize)
+					os << "\\detokenize{";
+				if (quote)
+					os << "\"";
+				os << docdir;
+				if (quote)
+					os << "\"";
+				if (detokenize)
+					os << "}";
+				os << "}}\n"
 				   << "\\makeatother\n";
 			}
 		}
