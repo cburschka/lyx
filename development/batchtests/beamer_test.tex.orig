@@ -180,9 +180,9 @@ insert new frame paragraphs.
 \begin{frame}{Separating frames}
 
 \noindent Consecutive frames have to be separated from each other.
-This is done by means of the \structure{\noindent Separator} inset,
-which can be produced by hitting return in an empty Standard paragraph
-right below the frame (see UserGuide, sec.~3.4.6).
+This is done by means of the \structure{Separator} inset, which can
+be produced by hitting return in an empty Standard paragraph right
+below the frame (see UserGuide, sec.~3.4.6).
 \begin{block}{Tip}
 
 There is a simple and much more convenient way to start a new frame:
@@ -710,7 +710,7 @@ the handout
 As said, many elements are mode-aware. 
 \begin{itemize}
 \item You can show particular text \only<presentation>{only in the presentation}\only<article>{only in the article}
-via \alert{\noindent Edit\lyxarrow Text Style\lyxarrow Only}
+via \alert{Edit\lyxarrow Text Style\lyxarrow Only}
 \end{itemize}
 \mode<article>{\begin{itemize}
 \item Or put all sorts of complex contents via \alert{Insert\lyxarrow Custom Insets\lyxarrow ArticleMode}
@@ -736,8 +736,8 @@ and ``References'' frame titles in this presentation)
 
 Setting up a beamer article with \LyX{} is easy.
 \begin{itemize}
-\item Just create a new document with the class \structure{\noindent Beamer Article (Standard Class)}
-or \structure{\noindent Beamer Article (KOMA-Script)}
+\item Just create a new document with the class \structure{Beamer Article (Standard Class)}
+or \structure{Beamer Article (KOMA-Script)}
 \item Then add the presentation to this document as a child (via \alert{Insert\lyxarrow File\lyxarrow Child Document\ldots})
 \item And that's it. Now you can produce the handout and the presentation
 by compiling one of these two documents, while you only need to edit
