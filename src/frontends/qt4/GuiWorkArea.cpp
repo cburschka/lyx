@@ -660,10 +660,10 @@ void GuiWorkArea::Private::updateScrollbar()
 	// the signal valueChanged. (#10311)
 	QObject::disconnect(p->verticalScrollBar(), SIGNAL(valueChanged(int)),
 	                    p, SLOT(scrollTo(int)));
-	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
-	p->verticalScrollBar()->setRange(scroll_.min, scroll_.max);
-	p->verticalScrollBar()->setPageStep(scroll_.page_step);
-	p->verticalScrollBar()->setSingleStep(scroll_.single_step);
+	ScrollbarParameters const & scroll = buffer_view_->scrollbarParameters();
+	p->verticalScrollBar()->setRange(scroll.min, scroll.max);
+	p->verticalScrollBar()->setPageStep(scroll.page_step);
+	p->verticalScrollBar()->setSingleStep(scroll.single_step);
 	p->verticalScrollBar()->setSliderPosition(0);
 	// Connect to the vertical scroll bar
 	QObject::connect(p->verticalScrollBar(), SIGNAL(valueChanged(int)),
