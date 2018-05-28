@@ -1095,8 +1095,6 @@ void TextMetrics::setRowHeight(Row & row) const
 	int maxdes = int(fm.maxDescent() * spacing_val);
 
 	// Find the ascent/descent of the row contents
-	Row::const_iterator cit = row.begin();
-	Row::const_iterator cend = row.end();
 	for (Row::Element const & e : row) {
 		if (e.inset) {
 			maxasc = max(maxasc, e.dim.ascent());
