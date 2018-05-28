@@ -26,9 +26,9 @@ namespace lyx {
 
 namespace {
 
-typedef InsetList::InsetTable Table;
+typedef InsetList::Element Table;
 
-struct InsetTablePosLess
+struct ElementPosLess
 {
 	bool operator()(Table const & t1, Table const & t2) const
 	{
@@ -92,17 +92,17 @@ void InsetList::resetBuffer()
 
 InsetList::iterator InsetList::insetIterator(pos_type pos)
 {
-	InsetTable search_elem(pos, 0);
+	Element search_elem(pos, 0);
 	return lower_bound(list_.begin(), list_.end(), search_elem,
-			   InsetTablePosLess());
+			   ElementPosLess());
 }
 
 
 InsetList::const_iterator InsetList::insetIterator(pos_type pos) const
 {
-	InsetTable search_elem(pos, 0);
+	Element search_elem(pos, 0);
 	return lower_bound(list_.begin(), list_.end(), search_elem,
-			   InsetTablePosLess());
+			   ElementPosLess());
 }
 
 
@@ -114,7 +114,7 @@ void InsetList::insert(Inset * inset, pos_type pos)
 		LYXERR0("ERROR (InsetList::insert): "
 		       << "There is an inset in position: " << pos);
 	} else {
-		list_.insert(it, InsetTable(pos, inset));
+		list_.insert(it, Element(pos, inset));
 	}
 }
 

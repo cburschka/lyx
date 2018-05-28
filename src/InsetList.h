@@ -40,17 +40,17 @@ public:
 	void resetBuffer();
 
 	///
-	class InsetTable {
+	class Element {
 	public:
 		///
-		InsetTable(pos_type p, Inset * i) : pos(p), inset(i) {}
+		Element(pos_type p, Inset * i) : pos(p), inset(i) {}
 		///
 		pos_type pos;
 		///
 		Inset * inset;
 	};
 	///
-	typedef std::vector<InsetTable> List;
+	typedef std::vector<Element> List;
 	///
 	typedef List::iterator iterator;
 	///

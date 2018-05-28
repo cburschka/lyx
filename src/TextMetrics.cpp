@@ -414,19 +414,17 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	par.setBeginOfBody();
 	Font const bufferfont = buffer.params().getFont();
 	CoordCache::Insets & insetCache = bv_->coordCache().insets();
-	InsetList::const_iterator ii = par.insetList().begin();
-	InsetList::const_iterator iend = par.insetList().end();
-	for (; ii != iend; ++ii) {
+	for (auto const & e : par.insetList()) {
 		// FIXME Doesn't this HAVE to be non-empty?
 		// position already initialized?
 		if (!parPos.empty()) {
-			parPos.pos() = ii->pos;
+			parPos.pos() = e.pos;
 
 			// A macro template would normally not be visible
 			// by itself. But the tex macro semantics allow
 			// recursion, so we artifically take the context
 			// after the macro template to simulate this.
-			if (ii->inset->lyxCode() == MATHMACRO_CODE)
+			if (e.inset->lyxCode() == MATHMACRO_CODE)
 				parPos.pos()++;
 		}
 
@@ -434,7 +432,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		// substracted to the available width. The logic here is
 		// almost the same as in breakRow, remember keep them in sync.
 		int eop = 0;
-		if (lyxrc.paragraph_markers && ii->pos + 1 == par.size()
+		if (lyxrc.paragraph_markers && e.pos + 1 == par.size()
 		    && size_type(pit + 1) < text_->paragraphs().size()) {
 			Font f(text_->layoutFont(pit));
 			// ¶ U+00B6 PILCROW SIGN
@@ -443,15 +441,15 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 
 		// do the metric calculation
 		Dimension dim;
-		int const w = max_width_ - leftMargin(pit, ii->pos)
+		int const w = max_width_ - leftMargin(pit, e.pos)
 			- right_margin - eop;
-		Font const & font = ii->inset->inheritFont() ?
-			displayFont(pit, ii->pos) : bufferfont;
+		Font const & font = e.inset->inheritFont() ?
+			displayFont(pit, e.pos) : bufferfont;
 		MacroContext mc(&buffer, parPos);
 		MetricsInfo mi(bv_, font.fontInfo(), w, mc);
-		ii->inset->metrics(mi, dim);
-		if (!insetCache.has(ii->inset) || insetCache.dim(ii->inset) != dim) {
-			insetCache.add(ii->inset, dim);
+		e.inset->metrics(mi, dim);
+		if (!insetCache.has(e.inset) || insetCache.dim(e.inset) != dim) {
+			insetCache.add(e.inset, dim);
 			changed = true;
 		}
 	}
@@ -690,22 +688,20 @@ void TextMetrics::computeRowMetrics(Row & row, int width) const
 		body_pos = 0;
 
 	CoordCache::Insets & insetCache = bv_->coordCache().insets();
-	Row::iterator cit = row.begin();
-	Row::iterator const cend = row.end();
-	for ( ; cit != cend; ++cit) {
-		if (row.label_hfill && cit->endpos == body_pos
-		    && cit->type == Row::SPACE)
-			cit->dim.wid -= int(row.label_hfill * (nlh - 1));
-		if (cit->inset && pm.hfillExpansion(row, cit->pos)) {
-			if (cit->pos >= body_pos) {
-				cit->dim.wid += hfill;
+	for (Row::Element & e : row) {
+		if (row.label_hfill && e.endpos == body_pos
+		    && e.type == Row::SPACE)
+			e.dim.wid -= int(row.label_hfill * (nlh - 1));
+		if (e.inset && pm.hfillExpansion(row, e.pos)) {
+			if (e.pos >= body_pos) {
+				e.dim.wid += hfill;
 				--nh;
 				if (nh == 0)
-					cit->dim.wid += hfill_rem;
+					e.dim.wid += hfill_rem;
 			} else
-				cit->dim.wid += int(row.label_hfill);
+				e.dim.wid += int(row.label_hfill);
 			// Cache the inset dimension.
-			insetCache.add(cit->inset, cit->dim);
+			insetCache.add(e.inset, e.dim);
 		}
 	}
 }
@@ -717,13 +713,12 @@ int TextMetrics::labelFill(Row const & row) const
 	LBUFERR(par.beginOfBody() > 0 || par.isEnvSeparator(0));
 
 	int w = 0;
-	Row::const_iterator cit = row.begin();
-	Row::const_iterator const end = row.end();
 	// iterate over elements before main body (except the last one,
 	// which is extra space).
-	while (cit!= end && cit->endpos < par.beginOfBody()) {
-		w += cit->dim.wid;
-		++cit;
+	for (Row::Element const & e : row) {
+		if (e.endpos >= par.beginOfBody())
+			break;
+		w += e.dim.wid;
 	}
 
 	docstring const & label = par.params().labelWidthString();
@@ -1102,12 +1097,12 @@ void TextMetrics::setRowHeight(Row & row) const
 	// Find the ascent/descent of the row contents
 	Row::const_iterator cit = row.begin();
 	Row::const_iterator cend = row.end();
-	for ( ; cit != cend; ++cit) {
-		if (cit->inset) {
-			maxasc = max(maxasc, cit->dim.ascent());
-			maxdes = max(maxdes, cit->dim.descent());
+	for (Row::Element const & e : row) {
+		if (e.inset) {
+			maxasc = max(maxasc, e.dim.ascent());
+			maxdes = max(maxdes, e.dim.descent());
 		} else {
-			FontMetrics const & fm2 = theFontMetrics(cit->font);
+			FontMetrics const & fm2 = theFontMetrics(e.font);
 			maxasc = max(maxasc, int(fm2.maxAscent() * spacing_val));
 			maxdes = max(maxdes, int(fm2.maxDescent() * spacing_val));
 		}
@@ -1368,9 +1363,9 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 	cur.pit() = pit;
 
 	// Do we cover an inset?
-	InsetList::InsetTable * it = checkInsetHit(pit, x, y);
+	InsetList::Element * e = checkInsetHit(pit, x, y);
 
-	if (!it) {
+	if (!e) {
 		// No inset, set position in the text
 		bool bound = false; // is modified by getPosNearX
 		cur.pos() = getPosNearX(row, x, bound);
@@ -1380,11 +1375,11 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 		return 0;
 	}
 
-	Inset * inset = it->inset;
+	Inset * inset = e->inset;
 	//lyxerr << "inset " << inset << " hit at x: " << x << " y: " << y << endl;
 
 	// Set position in front of inset
-	cur.pos() = it->pos;
+	cur.pos() = e->pos;
 	cur.boundary(false);
 	cur.setTargetX(x);
 
@@ -1392,7 +1387,7 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 	Inset * edited = inset->editXY(cur, x, y);
 	// FIXME: it is not clear that the test on position is needed
 	// Remove it if/when semantics of editXY is clarified
-	if (cur.text() == text_ && cur.pos() == it->pos) {
+	if (cur.text() == text_ && cur.pos() == e->pos) {
 		// non-editable inset, set cursor after the inset if x is
 		// nearer to that position (bug 9628)
 		bool bound = false; // is modified by getPosNearX
@@ -1446,19 +1441,19 @@ void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const 
 
 
 //takes screen x,y coordinates
-InsetList::InsetTable * TextMetrics::checkInsetHit(pit_type pit, int x, int y)
+InsetList::Element * TextMetrics::checkInsetHit(pit_type pit, int x, int y)
 {
 	Paragraph const & par = text_->paragraphs()[pit];
 	CoordCache::Insets const & insetCache = bv_->coordCache().getInsets();
 
 	LYXERR(Debug::DEBUG, "x: " << x << " y: " << y << "  pit: " << pit);
 
-	for (auto const & it : par.insetList()) {
-		LYXERR(Debug::DEBUG, "examining inset " << it.inset);
+	for (InsetList::Element const & e : par.insetList()) {
+		LYXERR(Debug::DEBUG, "examining inset " << e.inset);
 
-		if (insetCache.covers(it.inset, x, y)) {
-			LYXERR(Debug::DEBUG, "Hit inset: " << it.inset);
-			return const_cast<InsetList::InsetTable *>(&it);
+		if (insetCache.covers(e.inset, x, y)) {
+			LYXERR(Debug::DEBUG, "Hit inset: " << e.inset);
+			return const_cast<InsetList::Element *>(&e);
 		}
 	}
 
@@ -1472,12 +1467,12 @@ Inset * TextMetrics::checkInsetHit(int x, int y)
 {
 	pit_type const pit = getPitNearY(y);
 	LASSERT(pit != -1, return 0);
-	InsetList::InsetTable * it = checkInsetHit(pit, x, y);
+	InsetList::Element * e = checkInsetHit(pit, x, y);
 
-	if (!it)
+	if (!e)
 		return 0;
 
-	return it->inset;
+	return e->inset;
 }
 
 
@@ -1729,12 +1724,10 @@ int TextMetrics::leftMargin(pit_type const pit, pos_type const pos) const
 		// same time this function is used in redoParagraph to construct
 		// the rows.
 		ParagraphMetrics const & pm = par_metrics_[pit];
-		RowList::const_iterator rit = pm.rows().begin();
-		RowList::const_iterator end = pm.rows().end();
 		int minfill = max_width_;
-		for ( ; rit != end; ++rit)
-			if (rit->fill() < minfill)
-				minfill = rit->fill();
+		for (row : pm.rows())
+			if (row.fill() < minfill)
+				minfill = row.fill();
 		l_margin += bfm.signedWidth(layout.leftmargin);
 		l_margin += minfill;
 #endif
@@ -1791,17 +1784,15 @@ void TextMetrics::draw(PainterInfo & pi, int x, int y) const
 	origin_.x_ = x;
 	origin_.y_ = y;
 
-	ParMetricsCache::iterator it = par_metrics_.begin();
-	ParMetricsCache::iterator const pm_end = par_metrics_.end();
-	y -= it->second.ascent();
-	for (; it != pm_end; ++it) {
-		ParagraphMetrics const & pmi = it->second;
-		y += pmi.ascent();
-		pit_type const pit = it->first;
+	y -= par_metrics_.begin()->second.ascent();
+	for (auto & pm_pair : par_metrics_) {
+		pit_type const pit = pm_pair.first;
+		ParagraphMetrics & pm = pm_pair.second;
+		y += pm.ascent();
 		// Save the paragraph position in the cache.
-		it->second.setPosition(y);
+		pm.setPosition(y);
 		drawParagraph(pi, pit, x, y);
-		y += pmi.descent();
+		y += pm.descent();
 	}
 }
 
