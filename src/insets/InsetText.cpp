@@ -232,12 +232,6 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 		tm.draw(pi, x + TEXT_TO_INSET_OFFSET, y);
 	}
 
-	if (canPaintChange(*pi.base.bv) && (!change_drawn || pi.change_.deleted()))
-		// Do not draw the change tracking cue if already done by RowPainter and
-		// do not draw the cue for INSERTED if the information is already in the
-		// color of the frame
-		pi.change_.paintCue(pi, xframe, yframe, xframe + w, yframe + h);
-
 	if (drawFrame_) {
 		// Change color of the frame in tracked changes, like for tabulars.
 		// Only do so if the color is not custom. But do so even if RowPainter
@@ -258,6 +252,12 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 			c = frameColor();
 		pi.pain.rectangle(xframe, yframe, w, h, c);
 	}
+
+	if (canPaintChange(*pi.base.bv) && (!change_drawn || pi.change_.deleted()))
+		// Do not draw the change tracking cue if already done by RowPainter and
+		// do not draw the cue for INSERTED if the information is already in the
+		// color of the frame
+		pi.change_.paintCue(pi, xframe, yframe, xframe + w, yframe + h);
 }
 
 
