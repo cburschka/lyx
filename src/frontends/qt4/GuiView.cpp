@@ -220,7 +220,7 @@ public:
 		}
 		// The longest line in the reference font (for English)
 		// is 180. Calculate scale factor from that.
-		double const wscale = (180.0 / wline);
+		double const wscale = wline > 0 ? (180.0 / wline) : 1;
 		// Now do the same for the height (necessary for condensed fonts)
 		double const hscale = (34.0 / hline);
 		// take the lower of the two scale factors.
