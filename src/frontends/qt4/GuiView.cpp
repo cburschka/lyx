@@ -779,7 +779,7 @@ void GuiView::processingThreadFinished()
 	bool const error = (status != Buffer::ExportSuccess &&
 			    status != Buffer::PreviewSuccess &&
 			    status != Buffer::ExportCancel);
-	if (error) {
+	if (error && bv) {
 		ErrorList & el = bv->buffer().errorList(d.last_export_format);
 		// at this point, we do not know if buffer-view or
 		// master-buffer-view was called. If there was an export error,
