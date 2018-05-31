@@ -1248,10 +1248,12 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 void GuiWorkArea::paintEvent(QPaintEvent * ev)
 {
 	// Do not trigger the painting machinery if we are not ready (see
-	// bug #10989). However, since macOS has turned the screen black at
-	// this point, our backing store has to be copied to screen.
-	if (view().busy()) {
-		// this is a no-op except on macOS.
+	// bug #10989). The second test triggers when in the middle of a
+	// dispatch operation.
+	if (view().busy() || d->buffer_view_->buffer().undo().activeUndoGroup()) {
+		// Since macOS has turned the screen black at this point, our
+		// backing store has to be copied to screen (this is a no-op
+		// except on macOS).
 		d->updateScreen(ev->rect());
 		ev->accept();
 		return;

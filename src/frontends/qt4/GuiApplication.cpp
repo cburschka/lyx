@@ -1401,15 +1401,17 @@ DispatchResult const & GuiApplication::dispatch(FuncRequest const & cmd)
 		current_view_->currentBufferView()->cursor().saveBeforeDispatchPosXY();
 		buffer = &current_view_->currentBufferView()->buffer();
 	}
-	// This handles undo groups automagically
-	UndoGroupHelper ugh(buffer);
+
+	dr.screenUpdate(Update::FitCursor);
+	{
+		// This handles undo groups automagically
+		UndoGroupHelper ugh(buffer);
+		dispatch(cmd, dr);
+	}
 
 	// redraw the screen at the end (first of the two drawing steps).
 	// This is done unless explicitly requested otherwise
-	dr.screenUpdate(Update::FitCursor);
-	dispatch(cmd, dr);
 	updateCurrentView(cmd, dr);
-
 	d->dispatch_result_ = dr;
 	return d->dispatch_result_;
 }
