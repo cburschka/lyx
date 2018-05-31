@@ -96,6 +96,8 @@ public:
 	void endUndoGroup();
 	/// end the current undo group and set UndoElement::cur_after if necessary.
 	void endUndoGroup(CursorData const & cur_after);
+	/// return true if an undo group is open and contains at least one element
+	bool activeUndoGroup() const;
 
 	/// The general case: record undo information for an arbitrary range.
 	/**

@@ -604,6 +604,14 @@ void Undo::endUndoGroup(CursorData const & cur_after)
 }
 
 
+bool Undo::activeUndoGroup() const
+{
+	return d->group_level_ > 0
+		&& !d->undostack_.empty()
+		&& d->undostack_.top().group_id == d->group_id_;
+}
+
+
 void Undo::recordUndo(CursorData const & cur, UndoKind kind)
 {
 	d->recordUndo(kind, cur, cur.pit(), cur.pit(), cur);
