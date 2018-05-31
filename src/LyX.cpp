@@ -493,8 +493,12 @@ int LyX::init(int & argc, char * argv[])
 		for (int argi = 1; argi < argc; ++argi)
 			pimpl_->files_to_load_.push_back(os::utf8_argv(argi));
 
-		// doesn't make sense to load the splash file in batch mode
-		if (use_gui && first_start) {
+		if (!use_gui && pimpl_->files_to_load_.empty()) {
+			lyxerr << to_utf8(_("Missing filename for this operation.")) << endl;
+			return EXIT_FAILURE;
+		}
+
+		if (first_start) {
 			pimpl_->files_to_load_.push_back(
 				i18nLibFileSearch("examples", "splash.lyx").absFileName());
 		}
