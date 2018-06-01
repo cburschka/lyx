@@ -1041,6 +1041,10 @@ bool Buffer::readDocument(Lexer & lex)
 						<< absFileName()
 						<< ") does not include "
 						"this document. Ignoring the master assignment.");
+				// If the master has just been created, un-hide it (#11162)
+				if (!master->fileName().exists())
+					lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
+								  master->absFileName()));
 			}
 		}
 	}
