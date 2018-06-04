@@ -1067,10 +1067,7 @@ Server::~Server()
 	string message;
 	for (int i = 0; i != numclients_; ++i) {
 		message = "LYXSRV:" + clients_[i] + ":bye\n";
-		// ignore exceptions, we are quitting anyway
-		try {
-			pipes_.send(message);
-		} catch (...) {}
+		pipes_.send(message);
 	}
 }
 

@@ -686,19 +686,27 @@ string const replaceEnvironmentPath(string const & path)
 	// $[A-Za-z_][A-Za-z_0-9]*
 	static string const envvar = "[$]([A-Za-z_][A-Za-z_0-9]*)";
 
-	static regex const envvar_br_re("(.*)" + envvar_br + "(.*)");
-	static regex const envvar_re("(.*)" + envvar + "(.*)");
-	string result = path;
-	while (1) {
-		smatch what;
-		if (!regex_match(result, what, envvar_br_re)) {
-			if (!regex_match(result, what, envvar_re))
-				break;
+	// Coverity thinks that the regex constructor can return an
+	// exception. We know that it is not true since our regex are
+	// hardcoded, but we have to protect against that nevertheless.
+	try {
+		static regex const envvar_br_re("(.*)" + envvar_br + "(.*)");
+		static regex const envvar_re("(.*)" + envvar + "(.*)");
+		string result = path;
+		while (1) {
+			smatch what;
+			if (!regex_match(result, what, envvar_br_re)) {
+				if (!regex_match(result, what, envvar_re))
+					break;
+			}
+			string env_var = getEnv(what.str(2));
+			result = what.str(1) + env_var + what.str(3);
 		}
-		string env_var = getEnv(what.str(2));
-		result = what.str(1) + env_var + what.str(3);
+		return result;
+	} catch (exception const & e) {
+		LYXERR0("Something is very wrong: " << e.what());
+		return path;
 	}
-	return result;
 }
 
 
