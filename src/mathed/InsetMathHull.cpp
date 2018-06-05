@@ -1722,13 +1722,11 @@ void InsetMathHull::check() const
 
 void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 {
-	docstring dlang;
-	docstring extra;
-	idocstringstream iss(func.argument());
-	iss >> dlang >> extra;
+	//FIXME: sort out whether we want std::string or docstring for those
+	string const lang = func.getArg(0);
+	docstring extra = from_utf8(func.getArg(1));
 	if (extra.empty())
 		extra = from_ascii("noextra");
-	string const lang = to_ascii(dlang);
 
 	// replace selection with result of computation
 	if (reduceSelectionToOneCell(cur)) {
