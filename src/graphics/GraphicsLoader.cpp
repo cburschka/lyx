@@ -299,7 +299,8 @@ void Loader::reset(Params const & params) const
 
 void Loader::startLoading() const
 {
-	if (pimpl_->status_ != WaitingToLoad || !pimpl_->cached_item_)
+	if (pimpl_->status_ != WaitingToLoad || !pimpl_->cached_item_
+	    || pimpl_->cached_item_->status() == Converting)
 		return;
 	pimpl_->startLoading();
 }
