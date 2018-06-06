@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-05-11 19:06+0200\n"
-"PO-Revision-Date: 2018-05-11 17:43+0000\n"
+"POT-Creation-Date: 2018-06-06 11:15+0200\n"
+"PO-Revision-Date: 2018-06-06 09:44+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3782,6 +3782,12 @@ msgstr "&Skratka:"
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:149
 msgid "Ed&itor:"
 msgstr "Ed&itor:"
+
+#: src/frontends/qt4/ui/LocalLayoutUi.ui:59
+#: src/frontends/qt4/ui/PreambleUi.ui:45 src/frontends/qt4/GuiDocument.cpp:562
+#: src/frontends/qt4/GuiDocument.cpp:732
+msgid "Edit"
+msgstr "Upraviť"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:169
 msgid "&Viewer:"
@@ -11395,6 +11401,14 @@ msgstr "Päta Jazyka:"
 #: lib/layouts/europasscv.layout:421 lib/layouts/europecv.layout:290
 msgid "End"
 msgstr "Koniec"
+
+#: src/frontends/qt4/GuiDocument.cpp:578 src/frontends/qt4/GuiDocument.cpp:748
+msgid "End Edit"
+msgstr "Úprava Skončila"
+
+#: lib/ui/stdcontext.inc:669
+msgid "End Editing Externally...|e"
+msgstr "Externú Úpravu Dokončiť…|E"
 
 #: lib/layouts/europasscv.layout:432 lib/layouts/europecv.layout:301
 msgid "End of CV"
@@ -22863,6 +22877,10 @@ msgstr "varpropto"
 #: lib/ui/stdtoolbars.inc:1062
 msgid "between"
 msgstr "between"
+
+#: lib/layouts/tufte-book.layout:28
+msgid "bibl. entry"
+msgstr "bibl. zápis"
 
 #: lib/ui/stdtoolbars.inc:1063
 msgid "pitchfork"
@@ -35588,9 +35606,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "List of %1$s"
 #~ msgstr "Zoznam od %1$s"
-
-#~ msgid "Edit"
-#~ msgstr "Upraviť"
 
 #~ msgid "Layout|L"
 #~ msgstr "Schéma"
