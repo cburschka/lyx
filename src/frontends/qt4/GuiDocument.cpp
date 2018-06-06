@@ -567,7 +567,7 @@ void PreambleModule::editExternal() {
 	string const format =
 		current_id_->params().documentClass().outputFormat();
 	string const ext = theFormats().extension(format);
-	tempfile_.reset(new TempFile("preamble_editXXXXXX" + ext));
+	tempfile_.reset(new TempFile("preamble_editXXXXXX." + ext));
 	FileName const tempfilename = tempfile_->name();
 	string const name = tempfilename.toFilesystemEncoding();
 	ofdocstream os(name.c_str());
@@ -737,7 +737,7 @@ void LocalLayout::editExternal() {
 	string const format =
 		current_id_->params().documentClass().outputFormat();
 	string const ext = theFormats().extension(format);
-	tempfile_.reset(new TempFile("preamble_editXXXXXX" + ext));
+	tempfile_.reset(new TempFile("preamble_editXXXXXX." + ext));
 	FileName const tempfilename = tempfile_->name();
 	string const name = tempfilename.toFilesystemEncoding();
 	ofdocstream os(name.c_str());
