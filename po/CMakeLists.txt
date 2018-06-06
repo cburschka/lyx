@@ -86,6 +86,15 @@ endmacro(add_gettext_python)
 SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot" GENERATED)
 SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" GENERATED)
 SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot" GENERATED)
+if (UNIX)
+  # create symbolic links for external lokalizations programs
+  # to be able to find the referenced sources if used on
+  # built po-files
+  foreach (_dir lib src)
+    execute_process(
+      COMMAND ${CMAKE_COMMAND} -E create_symlink "${TOP_SRC_DIR}/${_dir}" "${CMAKE_CURRENT_BINARY_DIR}/${_dir}")
+  endforeach()
+endif()
 
 add_gettext_python(qt4 src/frontends/qt4/ui *.ui)
 add_gettext_python(layouts lib layouts/*.layout layouts/*.inc layouts/*.module citeengines/*.citeengine)
