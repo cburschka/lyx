@@ -538,7 +538,9 @@ void GuiCompleter::showPopup(Cursor const & cur)
 void GuiCompleter::asyncHidePopup()
 {
 	popup()->hide();
-	if (!inlineVisible())
+	// do not clear model if it has been set by an event before the
+	// timeout got triggered.
+	if (!modelActive_ && !inlineVisible())
 		model_->setList(0);
 }
 
@@ -573,7 +575,9 @@ void GuiCompleter::hideInline(Cursor const & cur)
 
 void GuiCompleter::asyncHideInline()
 {
-	if (!popupVisible())
+	// do not clear model if it has been set by an event before the
+	// timeout got triggered.
+	if (!modelActive_ && !popupVisible())
 		model_->setList(0);
 }
 
