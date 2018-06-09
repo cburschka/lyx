@@ -657,8 +657,19 @@ if(LYX_USE_QT MATCHES "QT5")
 			# Subject: cmake compilation error
 			#message(FATAL_ERROR "Wrong Qt-Version")
 		endif()
-		macro (qt_use_modules)
-			qt5_use_modules(${ARGN})
+		macro (qt_use_modules lyxtarget)
+			if (Qt5_POSITION_INDEPENDENT_CODE
+				AND (CMAKE_VERSION VERSION_LESS 2.8.12
+				AND (NOT CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
+				    OR CMAKE_CXX_COMPILER_VERSION VERSION_LESS 5.0)))
+				set_property(TARGET ${lyxtarget} PROPERTY POSITION_INDEPENDENT_CODE ${Qt5_POSITION_INDEPENDENT_CODE})
+			endif()
+			foreach (_tg ${ARGN})
+				find_package(Qt5${_tg} REQUIRED)
+				include_directories(${Qt5${_tg}_INCLUDE_DIRS})
+				set_property(TARGET ${lyxtarget} APPEND PROPERTY COMPILE_DEFINITIONS ${Qt5${_tg}_COMPILE_DEFINITIONS})
+				target_link_libraries(${lyxtarget} ${Qt5${_tg}_LIBRARIES})
+			endforeach()
 		endmacro()
 		macro (qt_add_resources)
 			qt5_add_resources(${ARGN})
