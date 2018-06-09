@@ -353,6 +353,10 @@ int findToken(char const * const str[], std::string const & search_token);
 /// like "1000000.000000", and precision control would not be that easy either.
 std::string formatFPNumber(double);
 
+/// Returns an URI/URL-style percent-encoded copy of the string \p in.
+/// \p ex defines a string of characters that are excluded from the transformation
+docstring to_percent_encoding(docstring const & in, docstring const & ex = docstring());
+
 
 docstring bformat(docstring const & fmt, int arg1);
 docstring bformat(docstring const & fmt, long arg1);

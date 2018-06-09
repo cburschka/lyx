@@ -1431,6 +1431,14 @@ std::string formatFPNumber(double x)
 }
 
 
+docstring to_percent_encoding(docstring const & in, docstring const & ex)
+{
+	QByteArray input = toqstr(in).toUtf8();
+	QByteArray excludes = toqstr(ex).toUtf8();
+	return qstring_to_ucs4(QString(input.toPercentEncoding(excludes)));
+}
+
+
 docstring bformat(docstring const & fmt, int arg1)
 {
 	LATTEST(contains(fmt, from_ascii("%1$d")));
