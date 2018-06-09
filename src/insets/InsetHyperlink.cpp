@@ -77,6 +77,7 @@ docstring InsetHyperlink::screenLabel() const
 	return temp + url;
 }
 
+
 void InsetHyperlink::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action()) {
@@ -125,15 +126,16 @@ void InsetHyperlink::latex(otexstream & os,
 
 	// For the case there is no name given, the target is set as name.
 	// Do this before !url.empty() and !name.empty() to handle characters
-	// like the "%" correctly.
+	// such as % correctly.
 	if (name.empty())
 		name = url;
 
 	if (!url.empty()) {
-		// Replace the "\" character by its ASCII code according to the
-		// URL specifications because "\" is not allowed in URLs and by
-		// \href. Only do this when the following character is not also
-		// a "\", because "\\" is valid code
+		// Use URI/URL-style percent-encoded string (hexadecimal).
+		// We exclude some characters that must not be transformed
+		// in hrefs (% # / :) or that we need to treat manually (\).
+		url = to_percent_encoding(url, from_ascii("%#\\/:"));
+		// We handle \ manually since \\ is valid
 		for (size_t i = 0, pos;
 			(pos = url.find('\\', i)) != string::npos;
 			i = pos + 2) {
@@ -145,6 +147,7 @@ void InsetHyperlink::latex(otexstream & os,
 		// field because otherwise LaTeX will fail when the hyperlink is
 		// within an argument of another command, e.g. in a \footnote. It
 		// is important that they are escaped as "\#" and not as "\#{}".
+		// FIXME this is not necessary in outside of commands.
 		for (int k = 0; k < 2; k++)
 			for (size_t i = 0, pos;
 				(pos = url.find(chars_url[k], i)) != string::npos;
