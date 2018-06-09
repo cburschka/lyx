@@ -8,9 +8,10 @@ use warnings;
 use File::Copy;
 use File::Compare;
 
-sub check_precondition();
+sub checkPrecondition();
 sub system1(@);
-sub add_files($$);
+sub addFiles($$$);
+sub mycompare($$$);
 
 my $builddir = "@CMAKE_BINARY_DIR@";
 my $userdir = "$builddir/Testing/.lyxbatch";
@@ -23,19 +24,20 @@ my $qt_version = "@LYX_USE_QT@";
 
 my $lyxsource = "@LYX_ABS_TOP_SRCDIR@";
 my $data = "$lyxsource/development/batchtests";
+my $comparepdf = "@COMPAREPDF_EXECUTABLE@";
 
 # src_files := Files to be copied from lyx-source to build-dir
-# create := Files which are expected to be created in the build-dir
-# original := Files in the lyx-source, corresponding to the created ones,
-#             which we provide for comparison
-# commands := List of commands (lyx-functions) to be executed by lyx in a batch
+# check     := List of tripples
+#                  created file (in build-dir)
+#                  expected file (in source dir, to be compared with the created one)
+#                  eventually system command to compare files
+# commands  := List of commands (lyx-functions) to be executed by lyx in a batch
 # precondition: system commands to be executed prior to the test
 # command_line: List of parameters to be used on the lyx-command-line
 my %Tests = (
   beamer_test => {
     src_files => ["beamer_test.lyx"],
-    create => ["beamer_test.tex"],
-    original => ["beamer_test.tex.orig"],
+    check => [["beamer_test.tex", "beamer_test.tex.orig"]],
     commands => ["file-open beamer_test.lyx",
                  "buffer-begin",
                  "repeat 150 outline-down",
@@ -50,14 +52,13 @@ my %Tests = (
       workdir => "$data",
     },
     src_files => ["vcs_info_export.lyx"],
-    create => ["vcs_info_export.tex"],
-    original => ["vcs_info_export.tex.orig"],
+    check => [["vcs_info_export.tex", "vcs_info_export.tex.orig"]],
     command_line => ["-E", "pdflatex", "vcs_info_export.tex", "$data/vcs_info_export.lyx"],
   },
   "ams-import" => {
     src_files => ["ams-import.tex"],
-    create => ["ams-import.pdf", "ams-import.lyx"],
-    original => [undef, undef],
+    check => [["ams-import.pdf", "ams-import.pdf", $comparepdf],
+	      ["ams-import.lyx"]],
     commands => ["buffer-new",
                  "buffer-import latex ams-import.tex",
                  "buffer-write",
@@ -73,9 +74,11 @@ die("Invalid argument") if (! defined($Tests{$test}));
 if (! -e $userdir) {
   mkdir($userdir);
 }
-my @expected = &add_files($data, $Tests{$test}->{original});
+my @expected = &addFiles($data, $Tests{$test}->{check},1);
 
-my @created = &add_files($workdir, $Tests{$test}->{create});
+my @created = &addFiles($workdir, $Tests{$test}->{check}, 0);
+
+my @comparecommand = &addFiles(undef, $Tests{$test}->{check}, 2);
 
 # Copy src-files to work with
 for my $f (@{$Tests{$test}->{src_files}}) {
@@ -88,31 +91,35 @@ $ENV{LANG} = "en";
 $ENV{LC_ALL} = "C";
 $ENV{LANGUAGE} = "en_US";
 
-check_precondition();
+&checkPrecondition();
 chdir($workdir);
 my @command = ($lyx_exe, "-userdir", $userdir);
 if (defined($Tests{$test}->{command_line})) {
   push(@command, @{$Tests{$test}->{command_line}});
 }
-if (defined($Tests{$test}->{commands})) {
+if (defined($Tests{$test}->{commands}->[0])) {
   if ($qt_version eq "QT5") {
     push(@command, "-platform", "offscreen");
   }
-  push(@command, "-x", "command-sequence " . join(';', @{$Tests{$test}->{commands}}));
+  if (defined($Tests{$test}->{commands}->[1])) { # more than one command
+    push(@command, "-x", "command-sequence " . join(';', @{$Tests{$test}->{commands}}));
+  }
+  else {
+    push(@command, "-x", $Tests{$test}->{commands}->[0]);
+  }
 }
 
-system1(@command);
-for my $f (@created) {
-  die("File \"$f\" not created") if (! -e "$f");
-}
+&system1(@command);
+
 for (my $i = 0; defined($created[$i]); $i++) {
-  if (defined($expected[$i])) {
-    die("Expected ($expected[$i]) and created ($created[$i]) files differ") if (compare($expected[$i], $created[$i]) != 0);
+  die("File \"$created[$i]\" not created") if (! -e "$created[$i]");
+if (defined($expected[$i])) {
+  die("Expected ($expected[$i]) and created ($created[$i]) files differ") if (&mycompare($comparecommand[$i], $expected[$i], $created[$i]) != 0);
   }
 }
 exit(0);
 
-sub check_precondition()
+sub checkPrecondition()
 {
   return if (! defined($Tests{$test}->{precondition}));
   my $rPrecond = $Tests{$test}->{precondition};
@@ -120,7 +127,7 @@ sub check_precondition()
   if (defined($rPrecond->{workdir})) {
     chdir($rPrecond->{workdir});
   }
-  my $result = system1(@command);
+  my $result = &system1(@command);
   print "Pre-condition result = $result\n";
   die("Pre-condition error") if ($result != 0);
 }
@@ -129,23 +136,69 @@ sub system1(@)
 {
   my ($exe, @params) = @_;
   print "Executing:\n\t$exe '" . join("' '", @params) . "'\n";
-  system($exe, @params);
+  return(system($exe, @params));
 }
 
 # Create a list of file paths
 # dir: result-dir
 # rBases: List of base-names
-sub add_files($$)
+sub addFiles($$$)
 {
-  my ($dir, $rBases) = @_;
+  my ($tdir, $rrBases, $idx) = @_;
+  my $dir;
+  if (defined($tdir)) {
+    $dir = "$tdir/";
+  }
+  else {
+    $dir = "";
+  }
   my @result = ();
-  for my $f (@{$rBases}) {
-    if (defined($f)) {
-      push(@result, "$dir/$f");
+  for my $rf (@{$rrBases}) {
+    my $path = undef;
+    if (defined($rf) && defined($rf->[$idx])) {
+      $path = "$dir$rf->[$idx]";
     }
-    else {
-      push(@result, undef);
-    }
+    push(@result, $path);
   }
   return(@result);
+}
+
+sub mycompare($$$)
+{
+  my ($cmd, $expected, $created) = @_;
+  my $result;
+  if (defined($cmd)) {		# system command desired
+    my @params = ();
+    if ($cmd =~ /NOTFOUND/) {
+      # no check is done due to missing executable
+    }
+    else {
+      if ($cmd =~ /comparepdf/) {
+	push(@params, "-ca", "-v=1", $expected, $created);
+      }
+      else {
+	die("unknown system command $cmd");
+      }
+      my $error = "";
+      if (&system1($cmd, @params) != 0) {
+	if ($? == -1) {
+	  $error = sprintf("failed to execute: $cmd");
+	}
+	elsif ($? & 127) {
+	  $error = sprintf("$cmd with signal %d, %s coredump",
+			   ($? & 127),  ($? & 128) ? 'with' : 'without');
+	}
+	else {
+	  $error = sprintf("child $cmd exited with value %d", $? >> 8);
+	}
+      }
+      die($error) if ($error ne "");
+    }
+    $result = 0;
+  }
+  else {
+    # defaut text comparision
+    $result = compare($created, $expected);
+  }
+  return($result);
 }
