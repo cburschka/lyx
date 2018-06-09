@@ -1,0 +1,131 @@
+#! /usr/bin/env perl
+# -*- mode: perl; -*-
+
+# checkKeys.pl testname
+#   testname can be anything satisfying the pattern
+#            '^(keytest\/|.*autotests\/out-home\/)?([^\/]+)(|\-in\.txt|\.log[a-z]\.txt)$/
+#   interesting is only group(2)
+#
+# Tool to display keystrokes which made it to lyx while tested with
+# the lyx-session with '-dbg key'
+# Helpful to check where a 'keytest'-testcase failed because
+# of some missing/ignored key.
+
+use strict;
+
+my $bindir = "@CMAKE_BINARY_DIR@";
+my $resdir = "@LYX_ABS_TOP_SRCDIR@/development/autotests/keyresults";
+my $logdir = "$bindir/autotests/out-home";
+my $saveflag = 0;
+sub checkKeys($);
+sub displayKeys($);
+
+for my $arg (@ARGV) {
+  if ($arg =~ /^([^=]+)=([^=]+)$/) {
+    my ($par, $val) = ($1, $2);
+    $saveflag = $val;
+  }
+  else {
+    &checkKeys($arg);
+  }
+}
+
+exit(0);
+
+sub checkKeys($)
+{
+  my ($pattern) = @_;
+  my @logs = ();
+
+  $pattern =~ s/^(keytest\/|.*autotests\/out-home\/)//;
+  $pattern =~ s/(\-in\.txt|\.log[a-z]\.txt)$//;
+  return if ($pattern =~ /\//);
+  if (opendir(DI, $logdir)) {
+    while (my $f = readdir(DI)) {
+      if ($f =~ /$pattern.*\.log([a-z])\.txt$/) {
+	push(@logs, $f);
+      }
+    }
+    closedir(DI);
+  }
+  @logs = sort(@logs);
+  for my $f (@logs) {
+    &displayKeys($f);
+  }
+}
+
+my $line;
+my @exp;
+
+sub checkPrint($) {
+  my ($str) = @_;
+  my $saved;
+  if (defined($exp[$line])) {
+    $saved = $exp[$line];
+  }
+  else {
+    $saved = "";
+  }
+  $exp[$line] = $str;
+  $line++;
+  if ($saved ne $str) {
+    return 1;
+  }
+  return 0;
+}
+
+sub displayKeys($)
+{
+  my ($e) = @_;
+  my $log = "$logdir/$e";
+  my $expected = "$resdir/$e.expected";
+
+  @exp = ();
+  if (open(FE, $expected)) {
+    while (my $l = <FE>) {
+      chomp($l);
+      push(@exp, $l);
+    }
+    close(FE);
+  }
+  else {
+    print "Not found file $expected\n";
+  }
+
+  my $errors = 0;
+  if (open(FI, $log)) {
+    $line = 0;
+    while (my $l = <FI>) {
+      if ($l =~ /:\s+(KeySym\s+is\s+.*)$/) {
+	my $out = $1;
+	$errors += &checkPrint($out);
+      }
+      elsif ($l =~ /:\s+(Key\s+\(queried\)\s+\[action=.*)$/) {
+	my $out = $1;
+	$errors += &checkPrint($out);
+      }
+    }
+    $errors += 1 if (defined($exp[$line]));
+    close(FI);
+  }
+  if ($errors > 0) {
+    print "Diff -u $e:\n";
+    open(FX, "| diff -u $expected -");
+    for (my $i=0; $i < $line; $i++) {
+      print FX "$exp[$i]\n";
+    }
+    close(FX);
+    if ($saveflag) {
+      print "Overwriting file $expected\n";
+      if (open(FO, '>', $expected)) {
+	for (my $i=0; $i < $line; $i++) {
+	  print FO "$exp[$i]\n";
+	}
+	close(FO);
+      }
+    }
+  }
+  else {
+    print "$e OK\n";
+  }
+}
