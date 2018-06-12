@@ -260,7 +260,7 @@ if(NOT CXX11COMPILER_FOUND)
 endif()
 set(LYX_GCC11_MODE)
 if(UNIX OR MINGW)
-	if (CMAKE_CXX_COMPILER_ID MATCHES "^[cC]lang$")
+	if (CMAKE_CXX_COMPILER_ID MATCHES "^([cC]lang|AppleClang)$")
 	  # ignore the GCC_VERSION for clang
 	  # and use the resulting CXX11_STD_REGEX found in FindCXX11Compiler.cmake
 	  message(STATUS "Using clang")

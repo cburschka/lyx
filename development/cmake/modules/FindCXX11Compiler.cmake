@@ -34,7 +34,7 @@
 INCLUDE(CheckCXXSourceCompiles)
 INCLUDE(FindPackageHandleStandardArgs)
 
-if (CMAKE_CXX_COMPILER_ID MATCHES "^[cC]lang$")
+if (CMAKE_CXX_COMPILER_ID MATCHES "^([cC]lang|AppleClang)$")
   set(CXX11_FLAG_CANDIDATES "--std=c++11 -Wno-deprecated-register")
 else()
   if (CYGWIN)
