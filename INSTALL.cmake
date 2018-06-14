@@ -2,7 +2,7 @@
 Building LyX with CMake
 =========================
 
-    Install CMake from www.cmake.org or your distribution (version >= 2.6.4).
+    Install CMake from www.cmake.org or your distribution (version >= 3.1.0).
 
 
 
