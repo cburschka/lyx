@@ -447,6 +447,10 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 
 	// Force \end{<floatname>} to appear in a new line.
 	os << breakln << "\\end{" << from_ascii(tmptype) << "}\n";
+
+	// A new paragraph is always started after a float. Hence, simulate a
+	// blank line so that os.afterParbreak() returns true (see bug 11174).
+	os.lastChar('\n');
 }
 
 
