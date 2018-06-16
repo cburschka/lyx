@@ -159,6 +159,8 @@ What's new
 - Fixed the last python scripts to support both python 2 and 3 (bug 11101). All 
   scripts should now be able to run in a python 3 only environment.
 
+- Correctly strike-out deleted math immediately following a float (bug 11174).
+
 
 * LYX2LYX
 
