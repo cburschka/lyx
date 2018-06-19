@@ -97,6 +97,13 @@ if [ ! -d $BASE/lyx-patch/lyx-$LAST ]; then
     echo "Will try to download from LyX site....";
     pushd $BASE/lyx-patch/;
     wget ftp://ftp.lyx.org/pub/lyx/stable/${FIRST}x/lyx-$LAST.tar.gz;
+    wget ftp://ftp.lyx.org/pub/lyx/stable/${FIRST}x/lyx-$LAST.tar.gz.sig
+    gpg -q --verify lyx-$LAST.tar.gz.sig
+    if ! [ $? == 0 ]; then
+      echo "Signature wrong!"
+      exit 1;
+    fi
+    rm lyx-$LAST.tar.gz.sig
     tar -zxvf lyx-$LAST.tar.gz;
     if [ ! -f lyx-$LAST.tar.gz ]; then
       echo "Still unable to find directory for last version $LAST.";
