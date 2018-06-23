@@ -6,15 +6,15 @@ TestBegin test.lyx -dbg key,find > findadv-07.loga.txt 2>&1
 CN: Part 1
 KK: foo bar\[Return]
 #select itemized
-KK: \Apb
+KK: \Aob
 KK: foo bar\[Return]
-KK: \Aps
+KK: \Ao9
 KK: foo bar\C\[Home]
 KK: \Axbuffer-write\[Return]
 KK: \Axdialog-show findreplaceadv\[Return]
 # Uncheck ignore format
 KK: \At\Ai\Ah
-KK: \Apb
+KK: \Aob
 KK: foo\[Return]
 CP: Putting selection at .*idx: 0 par: 1 pos: 0\n with len: 3
 #
@@ -25,7 +25,7 @@ KK: \CF
 KK: \[Delete]
 # Uncheck ignore format
 #KK: \At\Ai\Ah
-KK: \Apb
+KK: \Aob
 KK: bar\[Return]
 CP: Putting selection at .*idx: 0 par: 1 pos: 4\n with len: 3
 TestEnd

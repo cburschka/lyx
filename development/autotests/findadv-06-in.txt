@@ -5,16 +5,16 @@ CO: findadv-06.ctrl
 TestBegin test.lyx -dbg key,find > findadv-06.loga.txt 2>&1
 CN: Part 1
 KK: foo\[Return]
-KK: \Ap2
+KK: \Ao2
 KK: foo\[Return]
-KK: \Aps
+KK: \Ao9
 KK: foo\C\[Home]
 KK: \Axbuffer-write\[Return]
 KK: \Axdialog-show findreplaceadv\[Return]
 # Uncheck ignore format
 KK: \At\Ai\Ah
 KK: \Aj
-KK: \Ap2
+KK: \Ao2
 KK: foo\[Return]
 CP: Putting selection at .*idx: 0 par: 1 pos: 0\n with len: 3
 #
@@ -25,7 +25,7 @@ KK: \Axdialog-show findreplaceadv\[Return]
 KK: \[Delete]
 # Uncheck ignore format
 #KK: \At\Ai\Ah
-KK: \Aps
+KK: \Ao9
 KK: foo\[Return]\[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 0\n with len: 3
 CP: Putting selection at .*idx: 0 par: 2 pos: 0\n with len: 3

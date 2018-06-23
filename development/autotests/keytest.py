@@ -554,7 +554,7 @@ lyx_window_name = os.environ.get('LYX_WINDOW_NAME')
 lyx_other_window_name = None
 screenshot_out = os.environ.get('SCREENSHOT_OUT')
 lyx_userdir = os.environ.get('LYX_USERDIR')
-lyx_userdir_ver = os.environ.get('LYX_USERDIR_23x')
+lyx_userdir_ver = os.environ.get('LYX_USERDIR_24x')
 if lyx_userdir is None:
     lyx_userdir = lyx_userdir_ver
 

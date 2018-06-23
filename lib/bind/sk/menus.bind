@@ -54,13 +54,13 @@ Format 4
 # Paragraph menu
 #
 
-\bind "M-o l"                   "paragraph-params \align left"
-\bind "M-o r"                   "paragraph-params \align right"
-\bind "M-o c"                   "paragraph-params \align center"
+#\bind "M-o l"                   "paragraph-params \align left"
+#\bind "M-o r"                   "paragraph-params \align right"
+#\bind "M-o c"                   "paragraph-params \align center"
 # It's called Justified in the UI
 \bind "M-o j"                   "paragraph-params \align block"
-\bind "M-o e"                   "paragraph-params \align default"
-\bind "M-o i"                   "paragraph-params \indent-toggle"
+#\bind "M-o e"                   "paragraph-params \align default"
+#\bind "M-o i"                   "paragraph-params \indent-toggle"
 \bind "M-o s"                   "paragraph-params \paragraph_spacing single"
 
 #
@@ -89,9 +89,46 @@ Format 4
 \bind "M-o ~S-4"                "layout Subsubsection"
 \bind "M-o ~S-5"                "layout Paragraph"
 \bind "M-o ~S-6"                "layout Subparagraph"
+\bind "M-o ~S-9"                "layout Standard"
 \bind "M-o ~S-asterisk ~S-0"    "layout Part*"
 \bind "M-o ~S-asterisk ~S-1"    "layout Chapter*"
 \bind "M-o ~S-asterisk ~S-2"    "layout Section*"
+\bind "M-o ~S-asterisk ~S-3"    "layout Subsection*"
+\bind "M-o ~S-asterisk ~S-4"    "layout Subsubsection*"
+\bind "M-o ~S-asterisk ~S-5"    "layout Paragraph*"
+\bind "M-o ~S-asterisk ~S-6"    "layout Subparagraph*"
+\bind "M-o a"                   "layout Abstract"
+\bind "M-o S-A"                 "layout Author"
+\bind "M-o M-a"                 "layout Address"
+\bind "M-o C-a"                 "layout Right_Address"
+\bind "M-o b"                   "layout Itemize"        # bulleted list
+\bind "M-o S-B"                 "layout Bibliography"
+\bind "M-o c"                   "layout LyX-Code"
+\bind "M-o S-C"                 "layout Comment"
+\bind "M-o d"                   "layout Description"
+\bind "M-o S-D"                 "layout Date"
+\bind "M-o e"                   "layout Enumerate"      # numbered list
+\bind "M-o f"                   "layout ShortFoilhead"  # Foils!!
+\bind "M-o S-F"                 "layout Foilhead"       # Foils!!
+\bind "M-o i"                   "layout Itemize"        # bulleted list
+\bind "M-o l"                   "layout List"
+\bind "M-o S-L"                 "layout LaTeX"
+\bind "M-o n"                   "layout Enumerate"      # numbered list
+\bind "M-o q"                   "layout Quote"
+\bind "M-o S-Q"                 "layout Quotation"
+\bind "M-o r"                   "layout ShortRotatefoilhead"    # Foils!!
+\bind "M-o S-R"                 "layout Rotatefoilhead" # Foils!!
+\bind "M-o t"                   "layout Title"
+\bind "M-o space"               "drop-layouts-choice"
+\bind "M-o v"                   "layout Verse"
+
+\bind "M-o Left"                "outline-out"
+\bind "M-o Right"               "outline-in"
+\bind "M-o Up"                  "outline-up"
+\bind "M-o Down"                "outline-down"
+
+\bind "M-o Return"              "command-alternatives environment-split ; environment-split previous"
+\bind "M-o S-Return"            "environment-split outer"
 
 #
 # Clashes
