@@ -306,3 +306,7 @@ What's new
 - Fix build of lyxconvert (used on Mac) with Qt4 (bug 11094).
 
 - Fix some compiler warnings.
+
+- Support building with Qt 5.11 with CMake.
+
+- When building with CMake, require at least CMake version 3.1.0.
