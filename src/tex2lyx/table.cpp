@@ -37,7 +37,7 @@ namespace {
 
 class ColInfo {
 public:
-	ColInfo() : align('n'), valign('n'), rightlines(0), leftlines(0) {}
+	ColInfo() : align('n'), valign('n'), rightlines(0), leftlines(0), varwidth(false) {}
 	/// column alignment
 	char align;
 	/// vertical alignment
@@ -50,6 +50,8 @@ public:
 	int rightlines;
 	/// number of lines on the left
 	int leftlines;
+	/// varwidth column
+	bool varwidth;
 };
 
 
@@ -257,18 +259,23 @@ void ci2special(ColInfo & ci)
 		return;
 
 	if (!ci.width.empty()) {
+		string arraybackslash;
+		if (ci.varwidth)
+			arraybackslash = "\\arraybackslash";
 		switch (ci.align) {
 		case 'l':
-			ci.special += ">{\\raggedright}";
+			ci.special += ">{\\raggedright" + arraybackslash + "}";
 			break;
 		case 'r':
-			ci.special += ">{\\raggedleft}";
+			ci.special += ">{\\raggedleft" + arraybackslash + "}";
 			break;
 		case 'c':
-			ci.special += ">{\\centering}";
+			ci.special += ">{\\centering" + arraybackslash + "}";
 			break;
 		}
-		if (ci.valign == 'n')
+		if (ci.varwidth)
+			ci.special += 'X';
+		else if (ci.valign == 'n')
 			ci.special += 'p';
 		else
 			ci.special += ci.valign;
@@ -335,6 +342,14 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 				colinfo.push_back(next);
 				next = ColInfo();
 				break;
+			case 'X':
+				// varwidth column
+				next.varwidth = true;
+				if (!next.special.empty())
+					ci2special(next);
+				colinfo.push_back(next);
+				next = ColInfo();
+				break;
 			case 'p':
 			case 'b':
 			case 'm':
@@ -368,11 +383,11 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 					// Maybe this can be converted to a
 					// horizontal alignment setting for
 					// fixed width columns
-					if (s == "\\raggedleft")
+					if (s == "\\raggedleft" || s == "\\raggedleft\\arraybackslash")
 						next.align = 'r';
-					else if (s == "\\raggedright")
+					else if (s == "\\raggedright" || s == "\\raggedright\\arraybackslash")
 						next.align = 'l';
-					else if (s == "\\centering")
+					else if (s == "\\centering" || s == "\\centering\\arraybackslash")
 						next.align = 'c';
 					else
 						next.special = ">{" + s + '}';
@@ -837,18 +852,15 @@ void handle_hline_below(RowInfo & ri, vector<CellInfo> & ci)
 
 
 void handle_tabular(Parser & p, ostream & os, string const & name,
-                    string const & tabularwidth, Context & context)
+		    string const & tabularwidth, string const & halign,
+		    Context & context)
 {
-	bool const is_long_tabular(name == "longtable");
+	bool const is_long_tabular(name == "longtable" || name == "xltabular");
 	bool booktabs = false;
 	string tabularvalignment("middle");
 	string posopts = p.getOpt();
 	if (!posopts.empty()) {
-		// FIXME: Convert this to ERT
-		if (is_long_tabular)
-			cerr << "horizontal longtable positioning '"
-			     << posopts << "' ignored\n";
-		else if (posopts == "[t]")
+		if (posopts == "[t]")
 			tabularvalignment = "top";
 		else if (posopts == "[b]")
 			tabularvalignment = "bottom";
@@ -1314,8 +1326,12 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 
 	if (booktabs)
 		preamble.registerAutomaticallyLoadedPackage("booktabs");
-	if (is_long_tabular)
+	if (name == "longtable")
 		preamble.registerAutomaticallyLoadedPackage("longtable");
+	else if (name == "xltabular")
+		preamble.registerAutomaticallyLoadedPackage("xltabular");
+	else if (name == "tabularx")
+		preamble.registerAutomaticallyLoadedPackage("tabularx");
 
 	//cerr << "// output what we have\n";
 	// output what we have
@@ -1337,6 +1353,8 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 		   << write_attribute("lastFootTopDL", endlastfoot.topDL)
 		   << write_attribute("lastFootBottomDL", endlastfoot.bottomDL)
 		   << write_attribute("lastFootEmpty", endlastfoot.empty);
+		if (!halign.empty())
+			os << write_attribute("longtabularalignment", halign);
 	} else
 		os << write_attribute("tabularvalignment", tabularvalignment)
 		   << write_attribute("tabularwidth", tabularwidth);
@@ -1350,6 +1368,7 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 		   << verbose_valign(colinfo[col].valign) << "\""
 		   << write_attribute("width", translate_len(colinfo[col].width))
 		   << write_attribute("special", colinfo[col].special)
+		   << write_attribute("varwidth", colinfo[col].varwidth)
 		   << ">\n";
 	}
 	//cerr << "// after cols\n";

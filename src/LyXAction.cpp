@@ -3744,7 +3744,8 @@ void LyXAction::init()
                        set-special-column|set-special-multicolumn|set-special-multirow|\n
                        toggle-booktabs|set-booktabs|unset-booktabs|set-top-space|set-bottom-space|\n
                        set-interline-space|set-border-lines|tabular-valign-top|\n
-                       tabular-valign-middle|tabular-valign-bottom|set-tabular-width\n
+                       tabular-valign-middle|tabular-valign-bottom|set-tabular-width|\n
+                       toggle-varwidth-column
                Various math-environment features are handled as well, e.g. add-vline-left/right for\n
                the Grid/Array environment.\n
                <ARG>: additional argument for some commands, use debug mode to explore its values.

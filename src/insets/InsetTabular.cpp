@@ -161,6 +161,7 @@ TabularFeature tabularFeature[] =
 	{ Tabular::UNSET_LONGTABULAR, "unset-longtabular", false },
 	{ Tabular::SET_PWIDTH, "set-pwidth", true },
 	{ Tabular::SET_MPWIDTH, "set-mpwidth", true },
+	{ Tabular::TOGGLE_VARWIDTH_COLUMN, "toggle-varwidth-column", true },
 	{ Tabular::SET_ROTATE_TABULAR, "set-rotate-tabular", true },
 	{ Tabular::UNSET_ROTATE_TABULAR, "unset-rotate-tabular", true },
 	{ Tabular::TOGGLE_ROTATE_TABULAR, "toggle-rotate-tabular", true },
@@ -653,7 +654,8 @@ Tabular::RowData::RowData()
 Tabular::ColumnData::ColumnData()
 	: alignment(LYX_ALIGN_CENTER),
 	  valignment(LYX_VALIGN_TOP),
-	  width(0)
+	  width(0),
+	  varwidth(false)
 {
 }
 
@@ -1206,6 +1208,13 @@ bool Tabular::setMColumnPWidth(Cursor & cur, idx_type cell,
 }
 
 
+bool Tabular::toggleVarwidth(idx_type cell, bool const varwidth)
+{
+	column_info[cellColumn(cell)].varwidth = varwidth;
+	return true;
+}
+
+
 bool Tabular::setMROffset(Cursor &, idx_type cell, Length const & mroffset)
 {
 	cellInfo(cell).mroffset = mroffset;
@@ -1496,6 +1505,7 @@ void Tabular::write(ostream & os) const
 		   os << write_attribute("decimal_point", column_info[c].decimal_point);
 		os << write_attribute("valignment", column_info[c].valignment)
 		   << write_attribute("width", column_info[c].p_width.asString())
+		   << write_attribute("varwidth", column_info[c].varwidth)
 		   << write_attribute("special", column_info[c].align_special)
 		   << ">\n";
 	}
@@ -1608,6 +1618,7 @@ void Tabular::read(Lexer & lex)
 		getTokenValue(line, "valignment", column_info[c].valignment);
 		getTokenValue(line, "width", column_info[c].p_width);
 		getTokenValue(line, "special", column_info[c].align_special);
+		getTokenValue(line, "varwidth", column_info[c].varwidth);
 	}
 
 	for (row_type i = 0; i < nrows(); ++i) {
@@ -1691,6 +1702,17 @@ bool Tabular::hasMultiColumn(col_type c) const
 	}
 	return false;
 }
+
+
+bool Tabular::hasVarwidthColumn() const
+{
+	for (col_type c = 0; c < ncols(); ++c) {
+		if (column_info[c].varwidth)
+			return true;
+	}
+	return false;
+}
+
 
 
 Tabular::CellData const & Tabular::cellInfo(idx_type cell) const
@@ -2752,7 +2774,7 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 
 void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 {
-	bool const is_tabular_star = !tabular_width.zero();
+	bool const is_tabular_star = !tabular_width.zero() && !hasVarwidthColumn();
 	TexRow::RowEntry pos = TexRow::textEntry(runparams.lastid, runparams.lastpos);
 
 	//+---------------------------------------------------------------------
@@ -2771,7 +2793,10 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 	}
 
 	if (is_long_tabular) {
-		os << "\\begin{longtable}";
+		if (hasVarwidthColumn())
+			os << "\\begin{xltabular}";
+		else
+			os << "\\begin{longtable}";
 		switch (longtabular_alignment) {
 		case LYX_LONGTABULAR_ALIGN_LEFT:
 			os << "[l]";
@@ -2783,10 +2808,22 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 			os << "[r]";
 			break;
 		}
+		if (hasVarwidthColumn()) {
+			if (tabular_width.zero())
+				os << "{" << from_ascii("\\columnwidth") << "}";
+			else
+				os << "{" << from_ascii(tabular_width.asLatexString()) << "}";
+		}
 	} else {
 		if (is_tabular_star)
 			os << "\\begin{tabular*}{" << from_ascii(tabular_width.asLatexString()) << "}";
-		else
+		else if (hasVarwidthColumn()) {
+			os << "\\begin{tabularx}{";
+			if (tabular_width.zero())
+				os << from_ascii("\\columnwidth") << "}";
+			else
+				os << from_ascii(tabular_width.asLatexString()) << "}";
+		} else
 			os << "\\begin{tabular}";
 		switch (tabular_valignment) {
 		case LYX_VALIGN_TOP:
@@ -2887,6 +2924,25 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 					os << '{'
 					   << from_ascii(column_info[c].p_width.asLatexString())
 					   << '}';
+			} else if (column_info[c].varwidth) {
+				switch (column_info[c].alignment) {
+				case LYX_ALIGN_LEFT:
+					os << ">{\\raggedright\\arraybackslash}";
+					break;
+				case LYX_ALIGN_RIGHT:
+					os << ">{\\raggedleft\\arraybackslash}";
+					break;
+				case LYX_ALIGN_CENTER:
+					os << ">{\\centering\\arraybackslash}";
+					break;
+				case LYX_ALIGN_NONE:
+				case LYX_ALIGN_BLOCK:
+				case LYX_ALIGN_LAYOUT:
+				case LYX_ALIGN_SPECIAL:
+				case LYX_ALIGN_DECIMAL:
+					break;
+				}
+				os << 'X';
 			} else {
 				switch (column_info[c].alignment) {
 				case LYX_ALIGN_LEFT:
@@ -2927,11 +2983,16 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 	//+                      the closing of the tabular                    +
 	//+---------------------------------------------------------------------
 
-	if (is_long_tabular)
-		os << "\\end{longtable}";
-	else {
+	if (is_long_tabular) {
+		if (hasVarwidthColumn())
+			os << "\\end{xltabular}";
+		else
+			os << "\\end{longtable}";
+	} else {
 		if (is_tabular_star)
 			os << "\\end{tabular*}";
+		else if (hasVarwidthColumn())
+			os << "\\end{tabularx}";
 		else
 			os << "\\end{tabular}";
 	}
@@ -3484,12 +3545,18 @@ void Tabular::validate(LaTeXFeatures & features) const
 	features.require("NeedTabularnewline");
 	if (use_booktabs)
 		features.require("booktabs");
-	if (is_long_tabular)
+	if (is_long_tabular && !hasVarwidthColumn())
 		features.require("longtable");
 	if (rotate && is_long_tabular)
 		features.require("lscape");
 	if (needRotating())
 		features.require("rotating");
+	if (hasVarwidthColumn()) {
+		if (is_long_tabular)
+			features.require("xltabular");
+		else
+			features.require("tabularx");
+	}
 	for (idx_type cell = 0; cell < numberofcells; ++cell) {
 		if (isMultiRow(cell))
 			features.require("multirow");
@@ -4619,6 +4686,7 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 		switch (action) {
 		case Tabular::SET_PWIDTH:
 		case Tabular::SET_MPWIDTH:
+		case Tabular::TOGGLE_VARWIDTH_COLUMN:
 		case Tabular::SET_SPECIAL_COLUMN:
 		case Tabular::SET_SPECIAL_MULTICOLUMN:
 		case Tabular::APPEND_ROW:
@@ -4634,7 +4702,7 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 			return true;
 
 		case Tabular::SET_TABULAR_WIDTH:
-			status.setEnabled(!tabular.rotate &&  !tabular.is_long_tabular
+			status.setEnabled(!tabular.rotate
 				&& tabular.tabular_valignment == Tabular::LYX_VALIGN_MIDDLE);
 			break;
 
@@ -5596,6 +5664,12 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::SET_MPWIDTH:
 		tabular.setMColumnPWidth(cur, cur.idx(), Length(value));
 		break;
+
+	case Tabular::TOGGLE_VARWIDTH_COLUMN: {
+		bool const varwidth = value == "on";
+		tabular.toggleVarwidth(cur.idx(), varwidth);
+		break;
+	}
 
 	case Tabular::SET_MROFFSET:
 		tabular.setMROffset(cur, cur.idx(), Length(value));

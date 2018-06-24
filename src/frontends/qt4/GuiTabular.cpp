@@ -131,6 +131,8 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(checkEnabled()));
 	connect(specialAlignmentED, SIGNAL(textEdited(const QString &)),
 		this, SLOT(checkEnabled()));
+	connect(columnTypeCO, SIGNAL(activated(int)),
+		this, SLOT(checkEnabled()));
 	connect(columnWidthED, SIGNAL(textEdited(const QString &)),
 		this, SLOT(checkEnabled()));
 	connect(columnWidthUnitLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
@@ -205,15 +207,17 @@ void GuiTabular::enableWidgets() const
 {
 	// if there is a LaTeX argument, the width and alignment will be overwritten
 	// therefore disable them in this case
-	columnWidthED->setEnabled(specialAlignmentED->text().isEmpty());
-	columnWidthUnitLC->setEnabled(specialAlignmentED->text().isEmpty());
+	bool const fixed = specialAlignmentED->text().isEmpty()
+			&& columnTypeCO->currentIndex() == 2;
+	columnWidthED->setEnabled(fixed);
+	columnWidthUnitLC->setEnabled(fixed);
 	// if the column has a width, multirows are always left-aligned
 	// therefore disable hAlignCB in this case
 	hAlignCO->setEnabled(!(multirowCB->isChecked()
 		&& !widgetsToLength(columnWidthED, columnWidthUnitLC).empty())
 		&& specialAlignmentED->text().isEmpty());
 	// decimal alignment is only possible for non-multicol and non-multirow cells
-	if ((multicolumnCB->isChecked() || multirowCB->isChecked())
+	if ((multicolumnCB->isChecked() || multirowCB->isChecked() || columnTypeCO->currentIndex() == 1)
 		&& hAlignCO->findData(toqstr("decimal")))
 		hAlignCO->removeItem(hAlignCO->findData(toqstr("decimal")));
 	else if (!multicolumnCB->isChecked() && !multirowCB->isChecked()
@@ -224,8 +228,7 @@ void GuiTabular::enableWidgets() const
 	decimalPointED->setEnabled(dalign);
 	decimalLA->setEnabled(dalign);
 
-	bool const setwidth = TableAlignCO->currentText() == qt_("Middle")
-		&& !longTabularCB->isChecked();
+	bool const setwidth = TableAlignCO->currentText() == qt_("Middle");
 	tabularWidthLA->setEnabled(setwidth);
 	tabularWidthED->setEnabled(setwidth);
 	tabularWidthUnitLC->setEnabled(setwidth);
@@ -465,12 +468,19 @@ docstring GuiTabular::dialogToParams() const
 	// this must be done before applying the column alignment
 	// because its value influences the alignment of multirow cells
 	string width = widgetsToLength(columnWidthED, columnWidthUnitLC);
-	if (width.empty())
+	if (width.empty() || columnTypeCO->currentIndex() != 2)
 		width = "0pt";
 	if (multicolumnCB->isChecked())
 		setParam(param_str, Tabular::SET_MPWIDTH, width);
 	else
 		setParam(param_str, Tabular::SET_PWIDTH, width);
+
+	bool const varwidth = specialAlignmentED->text().isEmpty()
+			&& columnTypeCO->currentIndex() == 1;
+	if (varwidth)
+		setParam(param_str, Tabular::TOGGLE_VARWIDTH_COLUMN, "on");
+	else
+		setParam(param_str, Tabular::TOGGLE_VARWIDTH_COLUMN, "off");
 
 	// apply the column alignment
 	// multirows inherit the alignment from the column; if a column width
@@ -604,7 +614,7 @@ docstring GuiTabular::dialogToParams() const
 	//
 	if (newpageCB->isChecked())
 		setParam(param_str, Tabular::SET_LTNEWPAGE);
-    else
+	else
 		setParam(param_str, Tabular::UNSET_LTNEWPAGE);
 	//
 	if (captionStatusCB->isChecked())
@@ -782,14 +792,20 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 			Tabular::SET_SPECIAL_COLUMN);
 		pwidth = getColumnPWidth(tabular, cell);
 	}
+	bool const varwidth = tabular.column_info[tabular.cellColumn(cell)].varwidth;
+	if (varwidth)
+		columnTypeCO->setCurrentIndex(1);
 	string colwidth;
 	if (pwidth.zero()
-	    && !(columnWidthED->hasFocus() && columnWidthED->text() == "0"))
+	    && !(columnWidthED->hasFocus() && columnWidthED->text() == "0")) {
 		columnWidthED->clear();
-	else {
+		if (!varwidth)
+			columnTypeCO->setCurrentIndex(0);
+	} else {
 		colwidth = pwidth.asString();
 		lengthToWidgets(columnWidthED, columnWidthUnitLC,
 			colwidth, default_unit);
+		columnTypeCO->setCurrentIndex(2);
 	}
 	Length mroffset;
 	if (multirow)
@@ -1054,6 +1070,7 @@ bool GuiTabular::checkWidgets(bool readonly) const
 		borders->setEnabled(false);
 		tabularWidthUnitLC->setEnabled(false);
 		columnWidthUnitLC->setEnabled(false);
+		columnTypeCO->setEnabled(false);
 		multirowOffsetUnitLC->setEnabled(false);
 		setBordersGB->setEnabled(false);
 		allBordersGB->setEnabled(false);

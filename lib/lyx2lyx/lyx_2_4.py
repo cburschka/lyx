@@ -327,6 +327,24 @@ def revert_tuftecite(document):
         i = j + 1
 
 
+def revert_stretchcolumn(document):
+    " We remove the column varwidth flags or everything else will become a mess. "
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Tabular", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of tabular.")
+            continue
+        for k in range(i, j):
+            if re.search('^<column.*varwidth="[^"]+".*>$', document.body[k]):
+                document.warning("Converting 'tabularx'/'xltabular' table to normal table.")
+                document.body[k] = document.body[k].replace(' varwidth="true"', '')
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -341,10 +359,12 @@ convert = [
            [550, [convert_fontenc]],
            [551, []],
            [552, []],
-           [553, []]
+           [553, []],
+           [554, []]
           ]
 
 revert =  [
+           [553, [revert_stretchcolumn]],
            [552, [revert_tuftecite]],
            [551, [revert_floatpclass, revert_floatalignment]],
            [550, [revert_nospellcheck]],

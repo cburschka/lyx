@@ -206,8 +206,8 @@ const char * const known_lyx_packages[] = {"amsbsy", "amsmath", "amssymb",
 "amstext", "amsthm", "array", "babel", "booktabs", "calc", "CJK", "color",
 "float", "fontspec", "framed", "graphicx", "hhline", "ifthen", "longtable",
 "makeidx", "minted", "nomencl", "pdfpages", "prettyref", "refstyle",
-"rotating", "rotfloat", "splitidx", "setspace", "subscript", "textcomp", "tipa",
-"tipx", "tone", "ulem", "url", "varioref", "verbatim", "wrapfig", "xcolor",
+"rotating", "rotfloat", "splitidx", "setspace", "subscript", "tabularx","textcomp", "tipa",
+"tipx", "tone", "ulem", "url", "varioref", "verbatim", "wrapfig", "xcolor", "xltabular",
 "xunicode", 0};
 
 // codes used to remove packages that are loaded automatically by LyX.

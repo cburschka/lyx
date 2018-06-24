@@ -7,6 +7,11 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2018-06-23  Jürgen Spitzmüller <spitz@lyx.org>
+	* format incremented to 554: Support tabularx and xltabular:
+	  - add column flag "varwidth=true", which will output column type 'X'
+	    with either tabularx or xltabular (for multi-page tables) environment.
+
 2018-05-21  Jürgen Spitzmüller <spitz@lyx.org>
 	* format incremented to 553: Support \cite command in tufte classes.
 	  This builds on an extension of the natbib CiteEngine by tufte.

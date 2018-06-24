@@ -5309,7 +5309,7 @@ Notes: The package
 longtable
 \family default
  is needed by \SpecialChar LyX
- to be able to output correctly multipage tables.
+ to output multi-page tables.
 \end_layout
 
 \begin_layout Subsection
@@ -5339,6 +5339,35 @@ tablefootnote
 \family default
  is needed by \SpecialChar LyX
  to be able to output footnotes in floating tables.
+\end_layout
+
+\begin_layout Subsection
+tabularx
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "tabularx"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/required/tools/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+tabularx
+\family default
+ is needed by \SpecialChar LyX
+ to output variable width columns for single-page tables.
 \end_layout
 
 \begin_layout Subsection
@@ -5400,6 +5429,35 @@ varioref
 \family default
  introduces some commands to generate references with an information about
  the page of the referred label.
+\end_layout
+
+\begin_layout Subsection
+xltabular
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "xltabular"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/xltabular/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+xltabular
+\family default
+ is needed by \SpecialChar LyX
+ to output variable width columns for multi-page tables.
 \end_layout
 
 \begin_layout Section

@@ -228,6 +228,8 @@ public:
 		///
 		SET_MPWIDTH,
 		///
+		TOGGLE_VARWIDTH_COLUMN,
+		///
 		SET_ROTATE_TABULAR,
 		///
 		UNSET_ROTATE_TABULAR,
@@ -460,6 +462,8 @@ public:
 	///
 	bool setMColumnPWidth(Cursor &, idx_type, Length const &);
 	///
+	bool toggleVarwidth(idx_type, bool const);
+	///
 	bool setMROffset(Cursor &, idx_type, Length const &);
 	///
 	void setAlignSpecial(idx_type cell, docstring const & special,
@@ -525,6 +529,8 @@ public:
 	bool isMultiColumn(idx_type cell) const;
 	///
 	bool hasMultiColumn(col_type cell) const;
+	///
+	bool hasVarwidthColumn() const;
 	///
 	idx_type setMultiColumn(idx_type cell, idx_type number,
 			     bool const right_border);
@@ -741,6 +747,8 @@ public:
 		docstring align_special;
 		///
 		docstring decimal_point;
+		///
+		bool varwidth;
 	};
 	///
 	typedef std::vector<ColumnData> column_vector;
