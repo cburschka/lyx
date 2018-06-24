@@ -101,14 +101,18 @@ public:
 
 
 /// the numeric values are part of the file format!
-enum Multicolumn {
+enum Multi {
 	/// A normal cell
 	CELL_NORMAL = 0,
 	/// A multicolumn cell. The number of columns is <tt>1 + number
 	/// of CELL_PART_OF_MULTICOLUMN cells</tt> that follow directly
-	CELL_BEGIN_OF_MULTICOLUMN = 1,
+	CELL_BEGIN_OF_MULTICOLUMN,
 	/// This is a dummy cell (part of a multicolumn cell)
-	CELL_PART_OF_MULTICOLUMN = 2
+	CELL_PART_OF_MULTICOLUMN,
+	///
+	CELL_BEGIN_OF_MULTIROW,
+	///
+	CELL_PART_OF_MULTIROW
 };
 
 
@@ -116,11 +120,11 @@ class CellInfo {
 public:
 	CellInfo() : multi(CELL_NORMAL), align('n'), valign('n'),
 		     leftlines(0), rightlines(0), topline(false),
-		     bottomline(false), rotate(0) {}
+		     bottomline(false), rotate(0), mrxnum(0) {}
 	/// cell content
 	string content;
 	/// multicolumn flag
-	Multicolumn multi;
+	Multi multi;
 	/// cell alignment
 	char align;
 	/// vertical cell alignment
@@ -139,6 +143,10 @@ public:
 	string width;
 	/// special formatting for multicolumn cells
 	string special;
+	/// multirow offset
+	string mroffset;
+	/// number of further multirows
+	int mrxnum;
 };
 
 
@@ -395,6 +403,8 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 				break;
 			}
 			case '*': {
+				if (p.next_token().character() != '{')
+					continue;
 				// *{n}{arg} means 'n' columns of type 'arg'
 				string const num = p.verbatim_item();
 				string const arg = p.verbatim_item();
@@ -1123,7 +1133,57 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 			Parser p(cells[cell]);
 			p.skip_spaces();
 			//cells[cell] << "'\n";
-			if (p.next_token().cs() == "multicolumn") {
+			if (p.next_token().cs() == "multirow") {
+				// We do not support the vpos arg yet.
+				if (p.hasOpt()) {
+					string const vpos = p.getArg('[', ']');
+					p.skip_spaces(true);
+					cerr << "Ignoring multirow's vpos arg '"
+					     << vpos << "'!" << endl;
+				}
+				// how many cells?
+				p.get_token();
+				size_t const ncells =
+					convert<unsigned int>(p.verbatim_item());
+				// We do not support the bigstrut arg yet.
+				if (p.hasOpt()) {
+					string const bs = p.getArg('[', ']');
+					p.skip_spaces(true);
+					cerr << "Ignoring multirow's bigstrut arg '"
+					     << bs << "'!" << endl;
+				}
+				// the width argument
+				string const width = p.getArg('{', '}');
+				// the vmove arg
+				string vmove;
+				if (p.hasOpt()) {
+					vmove = p.getArg('[', ']');
+					p.skip_spaces(true);
+				}
+
+				if (width != "*")
+					colinfo[col].width = width;
+				if (!vmove.empty())
+					cellinfo[row][col].mroffset = vmove;
+				cellinfo[row][col].multi = CELL_BEGIN_OF_MULTIROW;
+				cellinfo[row][col].leftlines  = colinfo[col].leftlines;
+				cellinfo[row][col].rightlines = colinfo[col].rightlines;
+				cellinfo[row][col].mrxnum = ncells - 1;
+
+				ostringstream os2;
+				parse_text_in_inset(p, os2, FLAG_ITEM, false, context);
+				if (!cellinfo[row][col].content.empty()) {
+					// This may or may not work in LaTeX,
+					// but it does not work in LyX.
+					// FIXME: Handle it correctly!
+					cerr << "Moving cell content '"
+					     << cells[cell]
+					     << "' into a multirow cell. "
+						"This will probably not work."
+					     << endl;
+				}
+				cellinfo[row][col].content += os2.str();
+			} else if (p.next_token().cs() == "multicolumn") {
 				// how many cells?
 				p.get_token();
 				size_t const ncells =
@@ -1272,13 +1332,23 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 	// and cellinfo.
 	// Unfortunately LyX has some limitations that we need to work around.
 
-	// Convert cells with special content to multicolumn cells
-	// (LyX ignores the special field for non-multicolumn cells).
+	// Some post work
 	for (size_t row = 0; row < rowinfo.size(); ++row) {
 		for (size_t col = 0; col < cellinfo[row].size(); ++col) {
+			// Convert cells with special content to multicolumn cells
+			// (LyX ignores the special field for non-multicolumn cells).
 			if (cellinfo[row][col].multi == CELL_NORMAL &&
 			    !cellinfo[row][col].special.empty())
 				cellinfo[row][col].multi = CELL_BEGIN_OF_MULTICOLUMN;
+			// Add multirow dummy cells
+			if (row > 1 && (cellinfo[row - 1][col].multi == CELL_PART_OF_MULTIROW
+					|| cellinfo[row - 1][col].multi == CELL_BEGIN_OF_MULTIROW)
+				    && cellinfo[row - 1][col].mrxnum > 0) {
+				// add dummy cells for multirow
+				cellinfo[row][col].multi = CELL_PART_OF_MULTIROW;
+				cellinfo[row][col].align = 'c';
+				cellinfo[row][col].mrxnum = cellinfo[row - 1][col].mrxnum - 1;
+			}
 		}
 	}
 
@@ -1308,6 +1378,16 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 					cellinfo[row][col].rightlines = colinfo[col].rightlines;
 				if (col > 0 && cellinfo[row][col-1].multi == CELL_NORMAL)
 					cellinfo[row][col].leftlines = colinfo[col].leftlines;
+			} else if (cellinfo[row][col].multi == CELL_BEGIN_OF_MULTIROW) {
+				size_t s = row + 1;
+				while (s < rowinfo.size() &&
+				       cellinfo[s][col].multi == CELL_PART_OF_MULTIROW)
+					s++;
+				if (s < cellinfo[row].size() &&
+				    cellinfo[s][col].multi != CELL_BEGIN_OF_MULTIROW)
+					cellinfo[row][col].bottomline = rowinfo[row].bottomline;
+				if (row > 0 && cellinfo[row - 1][col].multi == CELL_NORMAL)
+					cellinfo[row][col].topline = rowinfo[row].topline;
 			}
 		}
 	}
@@ -1373,8 +1453,12 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 		for (size_t col = 0; col < colinfo.size(); ++col) {
 			CellInfo const & cell = cellinfo[row][col];
 			os << "<cell";
-			if (cell.multi != CELL_NORMAL)
+			if (cell.multi == CELL_BEGIN_OF_MULTICOLUMN
+			    || cell.multi == CELL_PART_OF_MULTICOLUMN)
 				os << " multicolumn=\"" << cell.multi << "\"";
+			if (cell.multi == CELL_BEGIN_OF_MULTIROW
+			    || cell.multi == CELL_PART_OF_MULTIROW)
+				os << " multirow=\"" << cell.multi << "\"";
 			os << " alignment=\"" << verbose_align(cell.align)
 			   << "\""
 			   << " valignment=\"" << verbose_valign(cell.valign)
@@ -1383,7 +1467,8 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 			   << write_attribute("bottomline", cell.bottomline)
 			   << write_attribute("leftline", cell.leftlines > 0)
 			   << write_attribute("rightline", cell.rightlines > 0)
-			   << write_attribute("rotate", cell.rotate);
+			   << write_attribute("rotate", cell.rotate)
+			   << write_attribute("mroffset", cell.mroffset);
 			//cerr << "\nrow: " << row << " col: " << col;
 			//if (cell.topline)
 			//	cerr << " topline=\"true\"";
