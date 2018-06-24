@@ -39,14 +39,12 @@ Format LaTeX feature                        LyX feature
 363    horizontal longtable alignment       InsetTabular
 364    branch file name suffix              \filename_suffix
 371    automatic mhchem loading             \use_mhchem
-377    multirow.sty                         InsetTabular
 378    revision info                        InsetInfo
 380    ?                                    InsetPreview
 386    LyX version                          InsetInfo
 390    forward/reverse search               \forward_search, \forward_macro
 391    decimal alignment in tables          InsetTabular
 399    automatic mathdots loading           \use_mathdots
-407    vertical offset for multirows        InsetTabular
 411    support for polyglossia              \language_package	(the cases of no package, of babel and of custom package is supported)
 415    automatic undertilde loading         \use_package undertilde
 443    unicode-math.sty                     InsetMath*
