@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-06-06 11:15+0200\n"
-"PO-Revision-Date: 2018-06-06 09:44+0000\n"
+"POT-Creation-Date: 2018-06-24 10:11+0200\n"
+"PO-Revision-Date: 2018-06-24 08:41+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2000,6 +2000,14 @@ msgstr "&Hodnota:"
 msgid "Custom value. Needs spacing type \"Custom\"."
 msgstr "Vlastná hodnota. Potrebuje typ rozstupu \"Vlastný\"."
 
+#: src/frontends/qt4/ui/TabularUi.ui:425
+msgid "Custom width of the column"
+msgstr "Vlastná šírka stĺpca"
+
+#: src/frontends/qt4/ui/TabularUi.ui:315
+msgid "Custom[[Width]]"
+msgstr "Vlastná"
+
 #: src/frontends/qt4/ui/HSpaceUi.ui:110
 msgid "&Fill Pattern:"
 msgstr "&Vzor Výplne:"
@@ -2162,6 +2170,10 @@ msgstr "Nes&kontrolovať platnosť"
 #: src/frontends/qt4/ui/IncludeUi.ui:285
 msgid "&More parameters"
 msgstr "Ď&alšie parametre"
+
+#: src/frontends/qt4/ui/TabularUi.ui:1274
+msgid "&Multi-Page Table"
+msgstr "V&iac-Stranná Tabuľka"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:295
 msgid ""
@@ -4931,10 +4943,6 @@ msgstr "&Otočiť"
 msgid "Column settings"
 msgstr "Nastavenia stĺpca"
 
-#: src/frontends/qt4/ui/TabularUi.ui:372
-msgid "&Horizontal alignment:"
-msgstr "&Horizontálne zarovnanie:"
-
 #: src/frontends/qt4/ui/TabularUi.ui:382
 msgid "Horizontal alignment in column"
 msgstr "Horizontálne zarovnanie v stĺpci"
@@ -4952,10 +4960,6 @@ msgstr "Na Decimálnom Oddeľovači"
 #: src/frontends/qt4/ui/TabularUi.ui:432
 msgid "&Decimal separator:"
 msgstr "&Decimálny oddeľovač:"
-
-#: src/frontends/qt4/ui/TabularUi.ui:490
-msgid "Fixed width of the column"
-msgstr "Fixná šírka stĺpca"
 
 #: src/frontends/qt4/ui/TabularUi.ui:518
 msgid "&Vertical alignment in row:"
@@ -5049,10 +5053,6 @@ msgstr "S&podok riadku:"
 #: src/frontends/qt4/ui/TabularUi.ui:1255
 msgid "Bet&ween rows:"
 msgstr "&Medzi riadkami:"
-
-#: src/frontends/qt4/ui/TabularUi.ui:1304
-msgid "&Multi-page table"
-msgstr "V&iac-stranná tabuľka"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1310
 msgid "Select for tables that span multiple pages"
@@ -9868,6 +9868,10 @@ msgstr "Hlavný Jazyk: Text"
 msgid "Text in the main(document) language"
 msgstr "Text v hlavnom jazyku dokumentu"
 
+#: src/frontends/qt4/ui/TabularUi.ui:305
+msgid "Text length"
+msgstr "Dĺžka textu"
+
 #: lib/layouts/bicaption.module:53
 msgid "Second Language Short Title"
 msgstr "Druhý Jazyk Krátky Titul"
@@ -11174,6 +11178,10 @@ msgstr "Domáca stránka"
 #: lib/layouts/europasscv.layout:131 lib/layouts/moderncv.layout:186
 msgid "Homepage:"
 msgstr "Domáca stránka:"
+
+#: src/frontends/qt4/ui/TabularUi.ui:378
+msgid "Hori&zontal alignment:"
+msgstr "&Horizontálne zarovnanie:"
 
 #: lib/layouts/europasscv.layout:134
 msgid "InstantMessaging"
@@ -16841,6 +16849,10 @@ msgstr "Letáky"
 msgid "Variable-width Minipages"
 msgstr "Variabilná Šírka pre Minipage"
 
+#: src/frontends/qt4/ui/TabularUi.ui:310
+msgid "Variable[[Width]]"
+msgstr "Variabilná"
+
 #: lib/layouts/varwidth.module:11
 msgid ""
 "Adds a 'Minipage (Var. Width)' inset using the varwidth LaTeX package. The "
@@ -20677,6 +20689,10 @@ msgstr "vdots"
 #: lib/ui/stdtoolbars.inc:425
 msgid "ddots"
 msgstr "ddots"
+
+#: src/frontends/qt4/ui/TabularUi.ui:134
+msgid "de&grees"
+msgstr "st&upňov"
 
 #: lib/ui/stdtoolbars.inc:426
 msgid "iddots"
@@ -31745,6 +31761,16 @@ msgstr "Kartu zavrieť"
 msgid "<b>The file %1 changed on disk.</b>"
 msgstr "<b>Súbor %1 na disku je zmenený.</b>"
 
+#: src/frontends/qt4/ui/TabularUi.ui:301
+msgid ""
+"<html><head/><body><p>Column width type:</p><p>* Text Length: Stretch to "
+"text width</p><p>* Variable: Adjust to match table width</p><p>* Custom: "
+"Fixed custom width</p></body></html>"
+msgstr ""
+"<html><head/><body><p>Typ šírky stĺpca:</p><p>* Dĺžka Textu: Natiahnuť na "
+"šírku textu</p><p>* Variabilná: Prispôsobiť na šírku tabuľky</p><p>* "
+"Vlastná: Vlastná pevná šírka</p></body></html>"
+
 #: src/frontends/qt4/GuiWrap.cpp:32
 msgid "Wrap Float Settings"
 msgstr "Nastavenie plávajúceho objektu (obtekanie)"
@@ -38404,3 +38430,12 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "&Rotate sideways"
 #~ msgstr "Otočiť &bokom"
+
+#~ msgid "&Horizontal alignment:"
+#~ msgstr "&Horizontálne zarovnanie:"
+
+#~ msgid "Fixed width of the column"
+#~ msgstr "Fixná šírka stĺpca"
+
+#~ msgid "&Multi-page table"
+#~ msgstr "V&iac-stranná tabuľka"
