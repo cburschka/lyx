@@ -3652,7 +3652,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "makeindex"
-			 || (t.cs() == context.textclass.titlename()
+			 || ((t.cs() == "maketitle" || t.cs() == context.textclass.titlename())
 			     && context.textclass.titletype() == TITLE_COMMAND_AFTER)) {
 			if (preamble.titleLayoutFound()) {
 				// swallow this
