@@ -113,6 +113,8 @@ private:
 	Inset * clone() const;
 	/// Get the status message, depends on the image loading status.
 	std::string statusMessage() const;
+	/// Get the output bounding box accounting for raster formats.
+	void outBoundingBox(graphics::BoundingBox &) const;
 	/// Create the options for the latex command.
 	std::string createLatexOptions(bool const ps) const;
 	/// Create length values for docbook export.

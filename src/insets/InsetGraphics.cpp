@@ -74,6 +74,10 @@ TODO
 #include "frontends/alert.h"
 #include "frontends/Application.h"
 
+#include "graphics/GraphicsCache.h"
+#include "graphics/GraphicsCacheItem.h"
+#include "graphics/GraphicsImage.h"
+
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -83,7 +87,10 @@ TODO
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
 #include "support/os.h"
+#include "support/qstring_helpers.h"
 #include "support/Systemcall.h"
+
+#include <QProcess>
 
 #include <algorithm>
 #include <sstream>
@@ -304,6 +311,66 @@ void InsetGraphics::read(Lexer & lex)
 }
 
 
+void InsetGraphics::outBoundingBox(graphics::BoundingBox & bbox) const
+{
+	if (bbox.empty())
+		return;
+
+	FileName const file(params().filename.absFileName());
+
+	// No correction is necessary for a postscript image
+	bool const zipped = theFormats().isZippedFile(file);
+	FileName const unzipped_file = zipped ? unzipFile(file) : file;
+	string const format = theFormats().getFormatFromFile(unzipped_file);
+	if (zipped)
+		unzipped_file.removeFile();
+	if (Formats::isPostScriptFileFormat(format))
+		return;
+
+	// Get the actual image dimensions in pixels
+	int width = 0;
+	int height = 0;
+	graphics::Cache & gc = graphics::Cache::get();
+	if (gc.inCache(file)) {
+		graphics::Image const * image = gc.item(file)->image();
+		if (image) {
+			width  = image->width();
+			height = image->height();
+		}
+	}
+	if (width == 0 || height == 0)
+		return;
+
+	// Use extractbb to find the dimensions in the typeset output
+	QProcess extractbb;
+	extractbb.start("extractbb", QStringList() << "-O" << toqstr(file.absFileName()));
+	if (!extractbb.waitForStarted() || !extractbb.waitForFinished()) {
+		LYXERR0("Cannot read output bounding box of " << file);
+		return;
+	}
+
+	string const result = extractbb.readAll().constData();
+	size_t i = result.find("%%BoundingBox:");
+	if (i == string::npos) {
+		LYXERR0("Cannot find output bounding box of " << file);
+		return;
+	}
+
+	string const bb = result.substr(i);
+	int out_width = convert<int>(token(bb, ' ', 3));
+	int out_height = convert<int>(token(bb, ' ', 4));
+
+	// Compute the scaling ratio and correct the bounding box
+	double scalex = out_width / double(width);
+	double scaley = out_height / double(height);
+
+	bbox.xl.value(scalex * bbox.xl.value());
+	bbox.xr.value(scalex * bbox.xr.value());
+	bbox.yb.value(scaley * bbox.yb.value());
+	bbox.yt.value(scaley * bbox.yt.value());
+}
+
+
 string InsetGraphics::createLatexOptions(bool const ps) const
 {
 	// Calculate the options part of the command, we must do it to a string
@@ -311,11 +378,13 @@ string InsetGraphics::createLatexOptions(bool const ps) const
 	// before writing it to the output stream.
 	ostringstream options;
 	if (!params().bbox.empty()) {
+		graphics::BoundingBox out_bbox = params().bbox;
+		outBoundingBox(out_bbox);
 		string const key = ps ? "bb=" : "viewport=";
-		options << key << params().bbox.xl.asLatexString() << ' '
-		        << params().bbox.yb.asLatexString() << ' '
-		        << params().bbox.xr.asLatexString() << ' '
-		        << params().bbox.yt.asLatexString() << ',';
+		options << key << out_bbox.xl.asLatexString() << ' '
+		        << out_bbox.yb.asLatexString() << ' '
+		        << out_bbox.xr.asLatexString() << ' '
+		        << out_bbox.yt.asLatexString() << ',';
 	}
 	if (params().draft)
 	    options << "draft,";
