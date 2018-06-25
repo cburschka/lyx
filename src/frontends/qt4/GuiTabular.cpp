@@ -260,7 +260,7 @@ void GuiTabular::enableWidgets() const
 
 	// setting as longtable is not allowed when table is inside a float
 	bool const is_tabular_star = !tabularWidthED->text().isEmpty();
-	longTabularCB->setEnabled(!is_tabular_star && funcEnabled(Tabular::SET_LONGTABULAR));
+	longTabularCB->setEnabled(funcEnabled(Tabular::SET_LONGTABULAR));
 	bool const longtabular = longTabularCB->isChecked();
 	longtableGB->setEnabled(true);
 	newpageCB->setEnabled(longtabular);

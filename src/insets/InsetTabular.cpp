@@ -1491,10 +1491,9 @@ void Tabular::write(ostream & os) const
 	   << write_attribute("lastFootBottomDL", endlastfoot.bottomDL)
 	   << write_attribute("lastFootEmpty", endlastfoot.empty);
 	// longtables cannot be aligned vertically
-	if (!is_long_tabular) {
+	if (!is_long_tabular)
 		os << write_attribute("tabularvalignment", tabular_valignment);
-		os << write_attribute("tabularwidth", tabular_width);
-	}
+	os << write_attribute("tabularwidth", tabular_width);
 	if (is_long_tabular)
 		os << write_attribute("longtabularalignment", longtabular_alignment);
 	os << ">\n";
@@ -2775,6 +2774,8 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 {
 	bool const is_tabular_star = !tabular_width.zero() && !hasVarwidthColumn();
+	bool const is_xltabular = is_long_tabular
+		&& (hasVarwidthColumn() || !tabular_width.zero());
 	TexRow::RowEntry pos = TexRow::textEntry(runparams.lastid, runparams.lastpos);
 
 	//+---------------------------------------------------------------------
@@ -2793,7 +2794,7 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 	}
 
 	if (is_long_tabular) {
-		if (hasVarwidthColumn())
+		if (is_xltabular)
 			os << "\\begin{xltabular}";
 		else
 			os << "\\begin{longtable}";
@@ -2808,7 +2809,7 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 			os << "[r]";
 			break;
 		}
-		if (hasVarwidthColumn()) {
+		if (is_xltabular) {
 			if (tabular_width.zero())
 				os << "{" << from_ascii("\\columnwidth") << "}";
 			else
@@ -2984,7 +2985,7 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 	//+---------------------------------------------------------------------
 
 	if (is_long_tabular) {
-		if (hasVarwidthColumn())
+		if (is_xltabular)
 			os << "\\end{xltabular}";
 		else
 			os << "\\end{longtable}";
@@ -3545,8 +3546,12 @@ void Tabular::validate(LaTeXFeatures & features) const
 	features.require("NeedTabularnewline");
 	if (use_booktabs)
 		features.require("booktabs");
-	if (is_long_tabular && !hasVarwidthColumn())
-		features.require("longtable");
+	if (is_long_tabular && !hasVarwidthColumn()) {
+		if (tabular_width.zero())
+			features.require("longtable");
+		else
+			features.require("xltabular");
+	}
 	if (rotate && is_long_tabular)
 		features.require("lscape");
 	if (needRotating())
