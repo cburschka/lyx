@@ -1436,9 +1436,9 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 		if (!halign.empty())
 			os << write_attribute("longtabularalignment", halign);
 	} else
-		os << write_attribute("tabularvalignment", tabularvalignment)
-		   << write_attribute("tabularwidth", tabularwidth);
-	os << ">\n";
+		os << write_attribute("tabularvalignment", tabularvalignment);
+		   
+	os << write_attribute("tabularwidth", tabularwidth) << ">\n";
 
 	//cerr << "// after header\n";
 	for (size_t col = 0; col < colinfo.size(); ++col) {
