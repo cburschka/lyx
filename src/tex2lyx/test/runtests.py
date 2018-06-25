@@ -78,6 +78,7 @@ def main(argv):
                  'box-color-size-space-align.tex', \
                  'CJK.tex', \
                  'CJKutf8.tex', \
+		 'tabular-x-test.tex', \
                  'test-insets.tex', \
                  'test-insets-basic.tex', \
                  'test-memoir.tex', \

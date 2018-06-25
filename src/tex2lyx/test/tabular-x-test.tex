@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\PassOptionsToPackage{natbib=true}{biblatex}
+\usepackage{tabularx}
+\usepackage{xltabular}
+
+\makeatletter
+
+\makeatother
+
+\usepackage[english]{babel}
+\usepackage[style=authoryear]{biblatex}
+\begin{document}
+The first table is configured as longtable first, the selected variable
+length in second column and set the table width 14cm.
+
+\begin{xltabular}[c]{14cm}{|c|>{\centering\arraybackslash}X|c|>{\centering\arraybackslash}X|}
+\hline
+\hline 
+\multicolumn{4}{|c|}{xltabular}\tabularnewline
+\hline 
+\hline
+\endhead
+\hline 
+ & stretching this column. expecting a line break &  & \tabularnewline
+\hline 
+Left  &  & Right1 & \tabularnewline
+\hline 
+ &  &  & and this\tabularnewline
+\hline 
+ &  &  & \tabularnewline
+\hline 
+ &  &  & \tabularnewline
+\hline 
+ &  &  & \tabularnewline
+\hline 
+\end{xltabular}
+
+The next table is a normal table, variable length of forth column
+and width 14cm table with, enclosing paragraph is not indented.
+
+\noindent %
+\begin{tabularx}{14cm}{|c|c|c|>{\raggedright\arraybackslash}X|c|}
+\hline 
+\multicolumn{5}{|c|}{tabularx}\tabularnewline
+\hline 
+\hline 
+ &  &  & stretching this column only, expecting a line break, which comes later.
+The table width seems to be wrong & \tabularnewline
+\hline 
+Left1 & Left2 &  &  & Right1\tabularnewline
+\hline 
+ &  & Left3long &  & \tabularnewline
+\hline 
+\end{tabularx}
+\end{document}
