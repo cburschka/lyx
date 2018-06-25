@@ -2773,7 +2773,8 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 
 void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 {
-	bool const is_tabular_star = !tabular_width.zero() && !hasVarwidthColumn();
+	bool const is_tabular_star = !is_long_tabular && !tabular_width.zero()
+		&& !hasVarwidthColumn();
 	bool const is_xltabular = is_long_tabular
 		&& (hasVarwidthColumn() || !tabular_width.zero());
 	TexRow::RowEntry pos = TexRow::textEntry(runparams.lastid, runparams.lastpos);
