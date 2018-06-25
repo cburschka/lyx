@@ -36,6 +36,7 @@ private Q_SLOTS:
 	void on_topspaceCO_activated(int index);
 	void on_bottomspaceCO_activated(int index);
 	void on_interlinespaceCO_activated(int index);
+	void on_columnTypeCO_activated(int index);
 
 private:
 	/// \name InsetParamsWidget inherited methods

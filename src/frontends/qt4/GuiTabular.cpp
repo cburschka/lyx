@@ -131,8 +131,6 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(checkEnabled()));
 	connect(specialAlignmentED, SIGNAL(textEdited(const QString &)),
 		this, SLOT(checkEnabled()));
-	connect(columnTypeCO, SIGNAL(activated(int)),
-		this, SLOT(checkEnabled()));
 	connect(columnWidthED, SIGNAL(textEdited(const QString &)),
 		this, SLOT(checkEnabled()));
 	connect(columnWidthUnitLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
@@ -200,6 +198,14 @@ void GuiTabular::on_interlinespaceCO_activated(int index)
 	bool const enable = (index == 2);
 	interlinespaceED->setEnabled(enable);
 	interlinespaceUnitLC->setEnabled(enable);
+}
+
+
+void GuiTabular::on_columnTypeCO_activated(int index)
+{
+	checkEnabled();
+	if (index == 2)
+		columnWidthED->setFocus();
 }
 
 
