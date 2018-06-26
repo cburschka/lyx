@@ -258,6 +258,9 @@ What's new
 - Honor the syntax highlighting package choice when adding listing params
   without actually inserting a listing (bug 11151).
 
+- Handle correctly zero table special arguments (bug 10247).
+
+
 * INTERNALS
 
 - Fix bug that TeX files were not detected when reconfiguring LyX 
