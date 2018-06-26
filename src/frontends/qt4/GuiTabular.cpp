@@ -33,6 +33,7 @@
 
 #include "support/convert.h"
 #include "support/debug.h"
+#include "support/lstrings.h"
 
 #include <QCheckBox>
 #include <QPushButton>
@@ -576,7 +577,7 @@ docstring GuiTabular::dialogToParams() const
 
 	// apply the special alignment
 	string special = fromqstr(specialAlignmentED->text());
-	if (special.empty())
+	if (support::trim(special).empty())
 		special = "none";
 	if (multicolumnCB->isChecked())
 		setParam(param_str, Tabular::SET_SPECIAL_MULTICOLUMN, special);
