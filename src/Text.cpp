@@ -925,8 +925,8 @@ bool canInsertChar(Cursor const & cur, char_type c)
 					"beginning of a paragraph. Please read the Tutorial."));
 			return false;
 		}
-		// LASSERT: Is it safe to continue here?
-		LASSERT(cur.pos() > 0, /**/);
+		// If something is wrong, ignore this character.
+		LASSERT(cur.pos() > 0, return false);
 		if ((par.isLineSeparator(cur.pos() - 1) || par.isNewline(cur.pos() - 1))
 				&& !par.isDeleted(cur.pos() - 1)) {
 			cur.message(_(
