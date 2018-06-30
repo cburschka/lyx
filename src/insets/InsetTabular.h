@@ -341,7 +341,9 @@ public:
 		///
 		BOX_PARBOX = 1,
 		///
-		BOX_MINIPAGE = 2
+		BOX_MINIPAGE = 2,
+		///
+		BOX_VARWIDTH = 3
 	};
 
 	enum CaptionType {
