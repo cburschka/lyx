@@ -263,6 +263,8 @@ string const tostr(Tabular::BoxType const & num)
 		return "parbox";
 	case Tabular::BOX_MINIPAGE:
 		return "minipage";
+	case Tabular::BOX_VARWIDTH:
+		return "varwidth";
 	}
 	return string();
 }
@@ -325,6 +327,8 @@ bool string2type(string const & str, Tabular::BoxType & num)
 		num = Tabular::BOX_PARBOX;
 	else if (str == "minipage")
 		num = Tabular::BOX_MINIPAGE;
+	else if (str == "varwidth")
+		num = Tabular::BOX_VARWIDTH;
 	else
 		return false;
 	return true;
@@ -1916,12 +1920,11 @@ void Tabular::setUsebox(idx_type cell, BoxType type)
 }
 
 
-// FIXME: Remove this routine because we cannot insert \parboxes when the user
-// adds line breaks, see bug 4886.
 Tabular::BoxType Tabular::getUsebox(idx_type cell) const
 {
-	if ((!column_info[cellColumn(cell)].p_width.zero() && !isMultiColumn(cell)) ||
-		(isMultiColumn(cell) && !cellInfo(cell).p_width.zero()))
+	if (getRotateCell(cell) == 0
+	    && ((!column_info[cellColumn(cell)].p_width.zero() && !isMultiColumn(cell)) ||
+		(isMultiColumn(cell) && !cellInfo(cell).p_width.zero())))
 		return BOX_NONE;
 	if (cellInfo(cell).usebox > 1)
 		return cellInfo(cell).usebox;
@@ -2454,7 +2457,21 @@ void Tabular::TeXCellPreamble(otexstream & os, idx_type cell,
 		}
 		os << "]{" << from_ascii(getPWidth(cell).asLatexString())
 		   << "}\n";
+	} else if (getUsebox(cell) == BOX_VARWIDTH) {
+		os << "\\begin{varwidth}[";
+		switch (valign) {
+		case LYX_VALIGN_TOP:
+			os << 't';
+			break;
+		case LYX_VALIGN_MIDDLE:
+			os << 'm';
+			break;
+		case LYX_VALIGN_BOTTOM:
+			os << 'b';
+			break;
 	}
+	os << "]{\\linewidth}\n";
+}
 }
 
 
@@ -2470,6 +2487,8 @@ void Tabular::TeXCellPostamble(otexstream & os, idx_type cell,
 		os << '}';
 	else if (getUsebox(cell) == BOX_MINIPAGE)
 		os << breakln << "\\end{minipage}";
+	else if (getUsebox(cell) == BOX_VARWIDTH)
+		os << breakln << "\\end{varwidth}";
 	if (getRotateCell(cell) != 0)
 		os << breakln << "\\end{turn}";
 	if (ismultirow)
@@ -3444,6 +3463,8 @@ void Tabular::validate(LaTeXFeatures & features) const
 	for (idx_type cell = 0; cell < numberofcells; ++cell) {
 		if (isMultiRow(cell))
 			features.require("multirow");
+		if (getUsebox(cell) == BOX_VARWIDTH)
+			features.require("varwidth");
 		if (getVAlignment(cell) != LYX_VALIGN_TOP
 		    || !getPWidth(cell).zero())
 			features.require("array");
@@ -3466,11 +3487,12 @@ Tabular::BoxType Tabular::useParbox(idx_type cell) const
 	ParagraphList const & parlist = cellInset(cell)->paragraphs();
 	ParagraphList::const_iterator cit = parlist.begin();
 	ParagraphList::const_iterator end = parlist.end();
+	bool const turned = getRotateCell(cell) != 0;
 
 	for (; cit != end; ++cit)
 		for (int i = 0; i < cit->size(); ++i)
 			if (cit->isNewline(i))
-				return BOX_PARBOX;
+				return turned ? BOX_VARWIDTH : BOX_PARBOX;
 
 	return BOX_NONE;
 }
