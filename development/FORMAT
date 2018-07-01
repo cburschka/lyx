@@ -7,6 +7,11 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2018-07-01  Jürgen Spitzmüller <spitz@lyx.org>
+	* format incremented to 555: Support varwidth's V tabular column type.
+          This effectively enables linebreaks, multipars and layout changes in
+          non-fixed width (i.e., standard) table columns.
+
 2018-06-23  Jürgen Spitzmüller <spitz@lyx.org>
 	* format incremented to 554: Support tabularx and xltabular:
 	  - add column flag "varwidth=true", which will output column type 'X'

@@ -24,14 +24,14 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import (find_end_of_inset, find_end_of_layout, find_token,
-get_bool_value, get_value, get_quoted_value) 
+from parser_tools import (count_pars_in_inset, find_end_of_inset, find_end_of_layout,
+find_token, get_bool_value, get_option_value, get_value, get_quoted_value) 
 #    del_token, del_value, del_complete_lines,
 #    find_complete_lines, find_end_of, 
 #    find_re, find_substring, find_token_backwards,
 #    get_containing_inset, get_containing_layout,
 #    is_in_inset, set_bool_value
-#    find_tokens, find_token_exact, check_token, get_option_value
+#    find_tokens, find_token_exact, check_token
 
 from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble)
 #  revert_font_attrs, insert_to_preamble, latex_length
@@ -118,15 +118,15 @@ def revert_paratype(document):
                 document.header[i1] = document.header[i1].replace("PTSerif-TLF", "default")
             if j!= -1: 
                 if sfoption != "":
-                	add_to_preamble(document, ["\\usepackage[" + sfoption + "]{PTSans}"])
+                    add_to_preamble(document, ["\\usepackage[" + sfoption + "]{PTSans}"])
                 else:
-                	add_to_preamble(document, ["\\usepackage{PTSans}"])
+                    add_to_preamble(document, ["\\usepackage{PTSans}"])
                 document.header[j] = document.header[j].replace("PTSans-TLF", "default")
             if k!= -1: 
                 if ttoption != "":
-                	add_to_preamble(document, ["\\usepackage[" + ttoption + "]{PTMono}"])
+                    add_to_preamble(document, ["\\usepackage[" + ttoption + "]{PTMono}"])
                 else:
-                	add_to_preamble(document, ["\\usepackage{PTMono}"])    
+                    add_to_preamble(document, ["\\usepackage{PTMono}"])    
                 document.header[k] = document.header[k].replace("PTMono-TLF", "default")
 
 
@@ -345,6 +345,100 @@ def revert_stretchcolumn(document):
         i = i + 1
 
 
+def revert_vcolumns(document):
+    " Revert standard columns with line breaks etc. "
+    i = 0
+    needvarwidth = False
+    needarray = False
+    try:
+        while True:
+            i = find_token(document.body, "\\begin_inset Tabular", i)
+            if i == -1:
+                return
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Could not find end of tabular.")
+                i += 1
+                continue
+
+            # Collect necessary column information
+            m = i + 1
+            nrows = int(document.body[i+1].split('"')[3])
+            ncols = int(document.body[i+1].split('"')[5])
+            col_info = []
+            for k in range(ncols):
+                m = find_token(document.body, "<column", m)
+                width = get_option_value(document.body[m], 'width')
+                varwidth = get_option_value(document.body[m], 'varwidth')
+                alignment = get_option_value(document.body[m], 'alignment')
+                special = get_option_value(document.body[m], 'special')
+                col_info.append([width, varwidth, alignment, special, m])
+
+            # Now parse cells
+            m = i + 1
+            lines = []
+            for row in range(nrows):
+                for col in range(ncols):
+                    m = find_token(document.body, "<cell", m)
+                    multicolumn = get_option_value(document.body[m], 'multicolumn')
+                    multirow = get_option_value(document.body[m], 'multirow')
+                    width = get_option_value(document.body[m], 'width')
+                    rotate = get_option_value(document.body[m], 'rotate')
+                    # Check for: linebreaks, multipars, non-standard environments
+                    begcell = m
+                    endcell = find_token(document.body, "</cell>", begcell)
+                    vcand = False
+                    if find_token(document.body, "\\begin_inset Newline", begcell, endcell) != -1:
+                        vcand = True
+                    elif count_pars_in_inset(document.body, begcell + 2) > 1:
+                        vcand = True
+                    elif get_value(document.body, "\\begin_layout", begcell) != "Plain Layout":
+                        vcand = True
+                    if vcand and rotate == "" and ((multicolumn == "" and multirow == "") or width == ""):
+                        if col_info[col][0] == "" and col_info[col][1] == "" and col_info[col][3] == "":
+                            needvarwidth = True
+                            alignment = col_info[col][2]
+                            col_line = col_info[col][4]
+                            vval = ""
+                            if alignment == "center":
+                                vval = ">{\\centering}"
+                            elif  alignment == "left":
+                                vval = ">{\\raggedright}"
+                            elif alignment == "right":
+                                vval = ">{\\raggedleft}"
+                            if vval != "":
+                                needarray = True
+                            vval += "V{\\linewidth}"
+                
+                            document.body[col_line] = document.body[col_line][:-1] + " special=\"" + vval + "\">"
+                            # ERT newlines and linebreaks (since LyX < 2.4 automatically inserts parboxes
+                            # with newlines, and we do not want that)
+                            while True:
+                                endcell = find_token(document.body, "</cell>", begcell)
+                                linebreak = False
+                                nl = find_token(document.body, "\\begin_inset Newline newline", begcell, endcell)
+                                if nl == -1:
+                                    nl = find_token(document.body, "\\begin_inset Newline linebreak", begcell, endcell)
+                                    if nl == -1:
+                                         break
+                                    linebreak = True
+                                nle = find_end_of_inset(document.body, nl)
+                                del(document.body[nle:nle+1])
+                                if linebreak:
+                                    document.body[nl:nl+1] = put_cmd_in_ert("\\linebreak{}")
+                                else:
+                                    document.body[nl:nl+1] = put_cmd_in_ert("\\\\")
+                    m += 1
+
+            i = j + 1
+
+    finally:
+        if needarray == True:
+            add_to_preamble(document, ["\\usepackage{array}"])
+        if needvarwidth == True:
+            add_to_preamble(document, ["\\usepackage{varwidth}"])
+
+
 ##
 # Conversion hub
 #
@@ -360,10 +454,12 @@ convert = [
            [551, []],
            [552, []],
            [553, []],
-           [554, []]
+           [554, []],
+           [555, []]
           ]
 
 revert =  [
+           [554, [revert_vcolumns]],
            [553, [revert_stretchcolumn]],
            [552, [revert_tuftecite]],
            [551, [revert_floatpclass, revert_floatalignment]],

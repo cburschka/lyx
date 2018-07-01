@@ -5431,6 +5431,35 @@ varioref
  the page of the referred label.
 \end_layout
 
+\begin_layout Subsubsection
+varwidth
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "varwidth"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/varwidth/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+varwidth
+\family default
+\color none
+ is needed to allow for line and paragraph breaks in standard tabular columns.
+\end_layout
+
 \begin_layout Subsection
 xltabular
 \end_layout
@@ -6750,7 +6779,7 @@ Notes: The package
 varwidth
 \family default
 \color none
- is used to produce minipages variable (i.
+ is used to produce minipages of variable (i.
 \begin_inset space \thinspace{}
 \end_inset
 

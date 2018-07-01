@@ -917,8 +917,11 @@ void Tabular::updateIndexes()
 	// reset column and row of cells and update their width and alignment
 	for (row_type row = 0; row < nrows(); ++row)
 		for (col_type column = 0; column < ncols(); ++column) {
-			if (isPartOfMultiColumn(row, column))
+			if (isPartOfMultiColumn(row, column)) {
+				cell_info[row][column].inset->toggleMultiCol(true);
 				continue;
+			}
+			cell_info[row][column].inset->toggleMultiCol(false);
 			// columnofcell needs to be called before setting width and aligment
 			// multirow cells inherit the width from the column width
 			if (!isPartOfMultiRow(row, column)) {
@@ -926,8 +929,11 @@ void Tabular::updateIndexes()
 				rowofcell[i] = row;
 			}
 			setFixedWidth(row, column);
-			if (isPartOfMultiRow(row, column))
+			if (isPartOfMultiRow(row, column)) {
+				cell_info[row][column].inset->toggleMultiRow(true);
 				continue;
+			}
+			cell_info[row][column].inset->toggleMultiRow(false);
 			cell_info[row][column].inset->setContentAlignment(
 				getAlignment(cellIndex(row, column)));
 			++i;
@@ -1130,20 +1136,35 @@ void Tabular::setVAlignment(idx_type cell, VAlignment align,
 namespace {
 
 /**
- * Allow line and paragraph breaks for fixed width cells or disallow them,
- * merge cell paragraphs and reset layout to standard for variable width
- * cells.
+ * Allow line and paragraph breaks for fixed width multicol/multirow cells
+ * or disallow them, merge cell paragraphs and reset layout to standard
+ * for variable width multicol cells.
  */
-void toggleFixedWidth(Cursor & cur, InsetTableCell * inset, bool fixedWidth)
+void toggleFixedWidth(Cursor & cur, InsetTableCell * inset,
+		      bool const fixedWidth, bool const multicol,
+		      bool const multirow)
 {
 	inset->toggleFixedWidth(fixedWidth);
-	if (fixedWidth)
+	if (!multirow && (fixedWidth || !multicol))
 		return;
 
 	// merge all paragraphs to one
 	BufferParams const & bp = cur.bv().buffer().params();
 	while (inset->paragraphs().size() > 1)
 		mergeParagraph(bp, inset->paragraphs(), 0);
+
+	// This is relevant for multirows
+	if (fixedWidth)
+		return;
+
+	// remove newlines
+	ParagraphList::iterator pit = inset->paragraphs().begin();
+	for (; pit != inset->paragraphs().end(); ++pit) {
+		for (pos_type j = 0; j != pit->size(); ++j) {
+			if (pit->isNewline(j))
+				pit->eraseChar(j, bp.track_changes);
+		}
+	}
 
 	// reset layout
 	cur.push(*inset);
@@ -1171,16 +1192,13 @@ void Tabular::setColumnPWidth(Cursor & cur, idx_type cell,
 		idx_type const cidx = cellIndex(r, c);
 		// because of multicolumns
 		toggleFixedWidth(cur, cellInset(cidx).get(),
-				 !getPWidth(cidx).zero());
+				 !getPWidth(cidx).zero(), isMultiColumn(cidx),
+				 isMultiRow(cidx));
 		if (isMultiRow(cidx))
 			setAlignment(cidx, LYX_ALIGN_LEFT, false);
 	}
-	// cur paragraph can become invalid after paragraphs were merged
-	if (cur.pit() > cur.lastpit())
-		cur.pit() = cur.lastpit();
-	// cur position can become invalid after newlines were removed
-	if (cur.pos() > cur.lastpos())
-		cur.pos() = cur.lastpos();
+	// cur can become invalid after paragraphs were merged
+	cur.fixIfBroken();
 }
 
 
@@ -1201,13 +1219,10 @@ bool Tabular::setMColumnPWidth(Cursor & cur, idx_type cell,
 		return false;
 
 	cellInfo(cell).p_width = width;
-	toggleFixedWidth(cur, cellInset(cell).get(), !width.zero());
-	// cur paragraph can become invalid after paragraphs were merged
-	if (cur.pit() > cur.lastpit())
-		cur.pit() = cur.lastpit();
-	// cur position can become invalid after newlines were removed
-	if (cur.pos() > cur.lastpos())
-		cur.pos() = cur.lastpos();
+	toggleFixedWidth(cur, cellInset(cell).get(), !width.zero(),
+			 isMultiColumn(cell), isMultiRow(cell));
+	// cur can become invalid after paragraphs were merged
+	cur.fixIfBroken();
 	return true;
 }
 
@@ -1717,6 +1732,16 @@ bool Tabular::hasVarwidthColumn() const
 }
 
 
+bool Tabular::isVTypeColumn(col_type c) const
+{
+	for (row_type r = 0; r < nrows(); ++r) {
+		idx_type idx = cellIndex(r, c);
+		if (getRotateCell(idx) == 0 && useBox(idx) == BOX_VARWIDTH)
+			return true;
+	}
+	return false;
+}
+
 
 Tabular::CellData const & Tabular::cellInfo(idx_type cell) const
 {
@@ -1730,7 +1755,7 @@ Tabular::CellData & Tabular::cellInfo(idx_type cell)
 }
 
 
-Tabular::idx_type Tabular::setMultiColumn(idx_type cell, idx_type number,
+Tabular::idx_type Tabular::setMultiColumn(Cursor & cur, idx_type cell, idx_type number,
 					  bool const right_border)
 {
 	idx_type const col = cellColumn(cell);
@@ -1745,6 +1770,14 @@ Tabular::idx_type Tabular::setMultiColumn(idx_type cell, idx_type number,
 	if (column_info[col].alignment != LYX_ALIGN_DECIMAL)
 		cs.alignment = column_info[col].alignment;
 	setRightLine(cell, right_border);
+	// non-fixed width multicolumns cannot have multiple paragraphs
+	if (getPWidth(cell).zero()) {
+		toggleFixedWidth(cur, cellInset(cell).get(),
+				 !getPWidth(cell).zero(), isMultiColumn(cell),
+				 isMultiRow(cell));
+		// cur can become invalid after paragraphs were merged
+		cur.fixIfBroken();
+	}
 
 	idx_type lastcell = cellIndex(row, col + number - 1);
 	for (idx_type i = 1; i < lastcell - cell + 1; ++i) {
@@ -1773,7 +1806,7 @@ bool Tabular::hasMultiRow(row_type r) const
 	return false;
 }
 
-Tabular::idx_type Tabular::setMultiRow(idx_type cell, idx_type number,
+Tabular::idx_type Tabular::setMultiRow(Cursor & cur, idx_type cell, idx_type number,
 				       bool const bottom_border,
 				       LyXAlignment const halign)
 {
@@ -1795,6 +1828,15 @@ Tabular::idx_type Tabular::setMultiRow(idx_type cell, idx_type number,
 		cs.alignment = halign;
 	else
 		cs.alignment = LYX_ALIGN_LEFT;
+
+	// Multirows cannot have multiple paragraphs
+	if (getPWidth(cell).zero()) {
+		toggleFixedWidth(cur, cellInset(cell).get(),
+				 !getPWidth(cell).zero(),
+				 isMultiColumn(cell), isMultiRow(cell));
+		// cur can become invalid after paragraphs were merged
+		cur.fixIfBroken();
+	}
 
 	// set the bottom line of the last selected cell
 	setBottomLine(cell, bottom_border);
@@ -1949,7 +1991,7 @@ Tabular::BoxType Tabular::getUsebox(idx_type cell) const
 		return BOX_NONE;
 	if (cellInfo(cell).usebox > 1)
 		return cellInfo(cell).usebox;
-	return useParbox(cell);
+	return useBox(cell);
 }
 
 
@@ -2078,11 +2120,11 @@ bool Tabular::haveLTLastFoot(bool withcaptions) const
 }
 
 
-Tabular::idx_type Tabular::setLTCaption(row_type row, bool what)
+Tabular::idx_type Tabular::setLTCaption(Cursor & cur, row_type row, bool what)
 {
 	idx_type i = getFirstCellInRow(row);
 	if (what) {
-		setMultiColumn(i, numberOfCellsInRow(row), false);
+		setMultiColumn(cur, i, numberOfCellsInRow(row), false);
 		setTopLine(i, false);
 		setBottomLine(i, false);
 		setLeftLine(i, false);
@@ -2490,7 +2532,7 @@ void Tabular::TeXCellPreamble(otexstream & os, idx_type cell,
 		}
 		os << "]{" << from_ascii(getPWidth(cell).asLatexString())
 		   << "}\n";
-	} else if (getUsebox(cell) == BOX_VARWIDTH) {
+	} else if (getRotateCell(cell) != 0 && getUsebox(cell) == BOX_VARWIDTH) {
 		os << "\\begin{varwidth}[";
 		switch (valign) {
 		case LYX_VALIGN_TOP:
@@ -2520,7 +2562,7 @@ void Tabular::TeXCellPostamble(otexstream & os, idx_type cell,
 		os << '}';
 	else if (getUsebox(cell) == BOX_MINIPAGE)
 		os << breakln << "\\end{minipage}";
-	else if (getUsebox(cell) == BOX_VARWIDTH)
+	else if (getRotateCell(cell) != 0 && getUsebox(cell) == BOX_VARWIDTH)
 		os << breakln << "\\end{varwidth}";
 	if (getRotateCell(cell) != 0)
 		os << breakln << "\\end{turn}";
@@ -2964,6 +3006,25 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 					break;
 				}
 				os << 'X';
+			} else if (isVTypeColumn(c)) {
+				switch (column_info[c].alignment) {
+				case LYX_ALIGN_LEFT:
+					os << ">{\\raggedright}";
+					break;
+				case LYX_ALIGN_RIGHT:
+					os << ">{\\raggedleft}";
+					break;
+				case LYX_ALIGN_CENTER:
+					os << ">{\\centering}";
+					break;
+				case LYX_ALIGN_NONE:
+				case LYX_ALIGN_BLOCK:
+				case LYX_ALIGN_LAYOUT:
+				case LYX_ALIGN_SPECIAL:
+				case LYX_ALIGN_DECIMAL:
+					break;
+				}
+				os << "V{\\linewidth}";
 			} else {
 				switch (column_info[c].alignment) {
 				case LYX_ALIGN_LEFT:
@@ -3588,7 +3649,8 @@ void Tabular::validate(LaTeXFeatures & features) const
 		if (getUsebox(cell) == BOX_VARWIDTH)
 			features.require("varwidth");
 		if (getVAlignment(cell) != LYX_VALIGN_TOP
-		    || !getPWidth(cell).zero())
+		    || !getPWidth(cell).zero()
+		    || isVTypeColumn(cellColumn(cell)))
 			features.require("array");
 		// Tell footnote that we need a savenote
 		// environment in non-long tables or
@@ -3604,17 +3666,19 @@ void Tabular::validate(LaTeXFeatures & features) const
 }
 
 
-Tabular::BoxType Tabular::useParbox(idx_type cell) const
+Tabular::BoxType Tabular::useBox(idx_type cell) const
 {
 	ParagraphList const & parlist = cellInset(cell)->paragraphs();
+	if (parlist.size() > 1)
+		return BOX_VARWIDTH;
+
 	ParagraphList::const_iterator cit = parlist.begin();
 	ParagraphList::const_iterator end = parlist.end();
-	bool const turned = getRotateCell(cell) != 0;
 
 	for (; cit != end; ++cit)
 		for (int i = 0; i < cit->size(); ++i)
-			if (cit->isNewline(i))
-				return turned ? BOX_VARWIDTH : BOX_PARBOX;
+			if (cit->isNewline(i) || cit->layout().isEnvironment())
+				return BOX_VARWIDTH;
 
 	return BOX_NONE;
 }
@@ -3628,13 +3692,13 @@ Tabular::BoxType Tabular::useParbox(idx_type cell) const
 
 InsetTableCell::InsetTableCell(Buffer * buf)
 	: InsetText(buf, InsetText::PlainLayout), isFixedWidth(false),
-	  contentAlign(LYX_ALIGN_CENTER)
+	  isMultiColumn(false), isMultiRow(false), contentAlign(LYX_ALIGN_CENTER)
 {}
 
 
 bool InsetTableCell::forcePlainLayout(idx_type) const
 {
-	return !isFixedWidth;
+	return isMultiRow || (isMultiColumn && !isFixedWidth);
 }
 
 
@@ -3698,6 +3762,34 @@ docstring InsetTableCell::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 	if (!isFixedWidth)
 		return InsetText::insetAsXHTML(xs, rp, InsetText::JustText);
 	return InsetText::xhtml(xs, rp);
+}
+
+
+void InsetTableCell::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	TextMetrics & tm = mi.base.bv->textMetrics(&text());
+
+	// Hand font through to contained lyxtext:
+	tm.font_.fontInfo() = mi.base.font;
+	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
+
+	// This can happen when a layout has a left and right margin,
+	// and the view is made very narrow. We can't do better than
+	// to draw it partly out of view (bug 5890).
+	if (mi.base.textwidth < 1)
+		mi.base.textwidth = 1;
+
+	// We tell metrics here not to expand on multiple pars
+	// This is the difference to InsetText::Metrics
+	// FIXME: pars with newlines are still too wide!
+	if (hasFixedWidth())
+		tm.metrics(mi, dim, mi.base.textwidth, false);
+	else
+		tm.metrics(mi, dim, 0, false);
+	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
+	dim.asc += TEXT_TO_INSET_OFFSET;
+	dim.des += TEXT_TO_INSET_OFFSET;
+	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
 }
 
 
@@ -3921,8 +4013,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-bool InsetTabular::isCellSelected(Cursor & cur, row_type row, col_type col)
-	const
+bool InsetTabular::isCellSelected(Cursor & cur, row_type row, col_type col) const
 {
 	if (&cur.inset() == this && cur.selection()) {
 		if (cur.selIsMultiCell()) {
@@ -5190,13 +5281,13 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			return true;
 		}
 		// fall through
-	case LFUN_NEWLINE_INSERT: {
-		if (tabular.getPWidth(cur.idx()).zero()) {
+	case LFUN_NEWLINE_INSERT:
+		if ((tabular.isMultiColumn(cur.idx()) || tabular.isMultiRow(cur.idx()))
+		    && tabular.getPWidth(cur.idx()).zero()) {
 			status.setEnabled(false);
 			return true;
-		} else
-			return cell(cur.idx())->getStatus(cur, cmd, status);
-	}
+		}
+		return cell(cur.idx())->getStatus(cur, cmd, status);
 
 	case LFUN_NEWPAGE_INSERT:
 		status.setEnabled(false);
@@ -5863,7 +5954,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			// just multicol for one single cell
 			// check whether we are completely in a multicol
 			if (!tabular.isMultiColumn(cur.idx()))
-				tabular.setMultiColumn(cur.idx(), 1,
+				tabular.setMultiColumn(cur, cur.idx(), 1,
 					tabular.rightLine(cur.idx()));
 			break;
 		}
@@ -5872,7 +5963,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		idx_type const s_start = cur.selBegin().idx();
 		row_type const col_start = tabular.cellColumn(s_start);
 		row_type const col_end = tabular.cellColumn(cur.selEnd().idx());
-		cur.idx() = tabular.setMultiColumn(s_start, col_end - col_start + 1,
+		cur.idx() = tabular.setMultiColumn(cur, s_start, col_end - col_start + 1,
 						   tabular.rightLine(cur.selEnd().idx()));
 		cur.pit() = 0;
 		cur.pos() = 0;
@@ -5918,7 +6009,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			// just multirow for one single cell
 			// check whether we are completely in a multirow
 			if (!tabular.isMultiRow(cur.idx()))
-				tabular.setMultiRow(cur.idx(), 1,
+				tabular.setMultiRow(cur, cur.idx(), 1,
 						    tabular.bottomLine(cur.idx()),
 						    tabular.getAlignment(cur.idx()));
 			break;
@@ -5928,7 +6019,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		idx_type const s_start = cur.selBegin().idx();
 		row_type const row_start = tabular.cellRow(s_start);
 		row_type const row_end = tabular.cellRow(cur.selEnd().idx());
-		cur.idx() = tabular.setMultiRow(s_start, row_end - row_start + 1,
+		cur.idx() = tabular.setMultiRow(cur, s_start, row_end - row_start + 1,
 						tabular.bottomLine(cur.selEnd().idx()),
 						tabular.getAlignment(cur.selEnd().idx()));
 		cur.pit() = 0;
@@ -6141,7 +6232,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::SET_LTCAPTION: {
 		if (tabular.ltCaption(row))
 			break;
-		cur.idx() = tabular.setLTCaption(row, true);
+		cur.idx() = tabular.setLTCaption(cur, row, true);
 		cur.pit() = 0;
 		cur.pos() = 0;
 		cur.selection(false);
@@ -6157,7 +6248,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::UNSET_LTCAPTION: {
 		if (!tabular.ltCaption(row))
 			break;
-		cur.idx() = tabular.setLTCaption(row, false);
+		cur.idx() = tabular.setLTCaption(cur, row, false);
 		cur.pit() = 0;
 		cur.pos() = 0;
 		cur.selection(false);
@@ -6457,7 +6548,7 @@ bool InsetTabular::allowParagraphCustomization(idx_type cell) const
 
 bool InsetTabular::forcePlainLayout(idx_type cell) const
 {
-	return !tabular.getPWidth(cell).zero();
+	return tabular.isMultiColumn(cell) && !tabular.getPWidth(cell).zero();
 }
 
 

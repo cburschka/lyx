@@ -160,7 +160,8 @@ ParagraphMetrics & TextMetrics::parMetrics(pit_type pit, bool redo)
 }
 
 
-bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim, int min_width)
+bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim, int min_width,
+			  bool const expand_on_multipars)
 {
 	LBUFERR(mi.base.textwidth > 0);
 	max_width_ = mi.base.textwidth;
@@ -170,7 +171,7 @@ bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim, int min_width)
 	dim_ = Dimension();
 	dim_.wid = min_width;
 	pit_type const npar = text_->paragraphs().size();
-	if (npar > 1)
+	if (npar > 1 && expand_on_multipars)
 		// If there is more than one row, expand the text to
 		// the full allowable width.
 		dim_.wid = max_width_;

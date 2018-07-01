@@ -63,6 +63,10 @@ public:
 	///
 	void toggleFixedWidth(bool fw) { isFixedWidth = fw; }
 	///
+	void toggleMultiCol(bool m) { isMultiColumn = m; }
+	///
+	void toggleMultiRow(bool m) { isMultiRow = m; }
+	///
 	void setContentAlignment(LyXAlignment al) {contentAlign = al; }
 	/// writes the contents of the cell as a string, optionally
 	/// descending into insets
@@ -72,14 +76,17 @@ public:
 	///
 	void addToToc(DocIterator const & di, bool output_active,
 				  UpdateType utype, TocBackend & backend) const;
+	///
+	void metrics(MetricsInfo &, Dimension &) const;
 private:
 	/// unimplemented
 	InsetTableCell();
 	/// unimplemented
 	void operator=(InsetTableCell const &);
 	// FIXME
-	// This boolean is supposed to track whether the cell has had its
-	// width explicitly set. We need to know this to determine whether
+	// These booleans are supposed to track whether the cell has had its
+	// width explicitly set and whether it is part of a multicolumn, respectively.
+	// We need to know this to determine whether
 	// layout changes and paragraph customization are allowed---that is,
 	// we need it in forcePlainLayout() and allowParagraphCustomization().
 	// Unfortunately, that information is not readily available in
@@ -102,6 +109,10 @@ private:
 	// --rgh
 	///
 	bool isFixedWidth;
+	///
+	bool isMultiColumn;
+	///
+	bool isMultiRow;
 	// FIXME: Here the thoughts from the comment above also apply.
 	///
 	LyXAlignment contentAlign;
@@ -120,11 +131,7 @@ private:
 	/// Is the width forced to some value?
 	bool hasFixedWidth() const { return isFixedWidth; }
 	/// Can the cell contain several paragraphs?
-	/** FIXME this is wrong for multirows, that are limited to one
-	 * paragraph. However, we cannot test for this (see the big
-	 * comment above).
-	 */
-	bool allowMultiPar() const { return isFixedWidth; }
+	bool allowMultiPar() const { return !isMultiRow && (!isMultiColumn || isFixedWidth); }
 };
 
 
@@ -534,7 +541,9 @@ public:
 	///
 	bool hasVarwidthColumn() const;
 	///
-	idx_type setMultiColumn(idx_type cell, idx_type number,
+	bool isVTypeColumn(col_type cell) const;
+	///
+	idx_type setMultiColumn(Cursor & cur, idx_type cell, idx_type number,
 			     bool const right_border);
 	///
 	void unsetMultiColumn(idx_type cell);
@@ -547,7 +556,7 @@ public:
 	///
 	bool hasMultiRow(row_type r) const;
 	///
-	idx_type setMultiRow(idx_type cell, idx_type number,
+	idx_type setMultiRow(Cursor & cur, idx_type cell, idx_type number,
 			     bool const bottom_border,
 			     LyXAlignment const halign);
 	///
@@ -595,7 +604,7 @@ public:
 	///
 	bool getLTNewPage(row_type row) const;
 	///
-	idx_type setLTCaption(row_type row, bool what);
+	idx_type setLTCaption(Cursor & cur, row_type row, bool what);
 	///
 	bool ltCaption(row_type row) const;
 	///
@@ -804,7 +813,7 @@ public:
 	///
 	idx_type rowSpan(idx_type cell) const;
 	///
-	BoxType useParbox(idx_type cell) const;
+	BoxType useBox(idx_type cell) const;
 	///
 	// helper function for Latex
 	///
