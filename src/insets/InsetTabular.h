@@ -807,7 +807,7 @@ public:
 	///
 	bool setFixedWidth(row_type r, col_type c);
 	/// return true of update is needed
-	bool updateColumnWidths();
+	bool updateColumnWidths(MetricsInfo & mi);
 	///
 	idx_type columnSpan(idx_type cell) const;
 	///

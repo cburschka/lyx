@@ -1029,15 +1029,54 @@ int Tabular::cellHeight(idx_type cell) const
 }
 
 
-bool Tabular::updateColumnWidths()
+bool Tabular::updateColumnWidths(MetricsInfo & mi)
 {
 	vector<int> max_dwidth(ncols(), 0);
+	// collect max. fixed width of column
+	map<col_type, int> max_pwidth;
+	// collect max. variable width of column
+	map<col_type, int> max_width;
+	
 	for(col_type c = 0; c < ncols(); ++c)
 		for(row_type r = 0; r < nrows(); ++r) {
 			idx_type const i = cellIndex(r, c);
 			if (getAlignment(i) == LYX_ALIGN_DECIMAL)
 				max_dwidth[c] = max(max_dwidth[c], cell_info[r][c].decimal_width);
+			if (!getPWidth(i).zero())
+				max_pwidth[c] = max(max_pwidth[c], cell_info[r][c].width);
+			else
+				max_width[c] = max(max_width[c], cell_info[r][c].width);
 		}
+
+	// If we have a fixed tabular width, we take this into account
+	int restwidth = -1;
+	if (!tabular_width.zero()) {
+		restwidth = mi.base.inPixels(tabular_width);
+		// Substract the fixed widths from the table width
+		for (auto const w : max_pwidth)
+			restwidth -= w.second;
+	}
+
+	// If we have a fixed width, distribute the available table width
+	// (minus the fixed widths) to the variable-width columns
+	int vcolwidth = -1;
+	int restcols = ncols() - max_pwidth.size();
+	if (restwidth > 0)
+		vcolwidth = restwidth / restcols;
+
+	// Now consider that some variable width columns exceed the vcolwidth
+	if (vcolwidth > 0) {
+		bool changed = false;
+		for (auto const w : max_width) {
+			if (w.second > vcolwidth) {
+				--restcols;
+				restwidth -= w.second;
+				changed = true;
+			}
+		}
+		if (changed && restwidth > 0)
+			vcolwidth = restwidth / restcols;
+	}
 
 	bool update = false;
 	// for each col get max of single col cells
@@ -1050,6 +1089,8 @@ bool Tabular::updateColumnWidths()
 					&& cell_info[r][c].decimal_width != 0)
 					new_width = max(new_width, cellInfo(i).width
 				                + max_dwidth[c] - cellInfo(i).decimal_width);
+				else if (getPWidth(i).zero() && vcolwidth > 0)
+					new_width = max(vcolwidth, max(new_width, cellInfo(i).width));
 				else
 					new_width = max(new_width, cellInfo(i).width);
 			}
@@ -4006,7 +4047,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 		tabular.setRowDescent(r, maxdes + ADD_TO_HEIGHT + bottom_space);
 	}
 
-	tabular.updateColumnWidths();
+	tabular.updateColumnWidths(mi);
 	dim.asc = tabular.rowAscent(0) - tabular.offsetVAlignment();
 	dim.des = tabular.height() - dim.asc;
 	dim.wid = tabular.width() + 2 * ADD_TO_TABULAR_WIDTH;
