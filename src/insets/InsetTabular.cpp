@@ -1036,7 +1036,9 @@ bool Tabular::updateColumnWidths(MetricsInfo & mi)
 	map<col_type, int> max_pwidth;
 	// collect max. variable width of column
 	map<col_type, int> max_width;
-	
+	// collect max. variable width of xcolumn
+	map<col_type, int> max_xwidth;
+
 	for(col_type c = 0; c < ncols(); ++c)
 		for(row_type r = 0; r < nrows(); ++r) {
 			idx_type const i = cellIndex(r, c);
@@ -1044,14 +1046,22 @@ bool Tabular::updateColumnWidths(MetricsInfo & mi)
 				max_dwidth[c] = max(max_dwidth[c], cell_info[r][c].decimal_width);
 			if (!getPWidth(i).zero())
 				max_pwidth[c] = max(max_pwidth[c], cell_info[r][c].width);
+			else if (column_info[c].varwidth)
+				max_xwidth[c] = max(max_xwidth[c], cell_info[r][c].width);
 			else
 				max_width[c] = max(max_width[c], cell_info[r][c].width);
 		}
 
 	// If we have a fixed tabular width, we take this into account
+	Length tab_width = tabular_width;
+	bool const tabularx = hasVarwidthColumn();
+	if (tabularx && tab_width.zero())
+		// If no tabular width is specified with X columns,
+		// we use 100% colwidth
+		tab_width = Length(100, Length::PCW);
 	int restwidth = -1;
-	if (!tabular_width.zero()) {
-		restwidth = mi.base.inPixels(tabular_width);
+	if (!tab_width.zero()) {
+		restwidth = mi.base.inPixels(tab_width);
 		// Substract the fixed widths from the table width
 		for (auto const w : max_pwidth)
 			restwidth -= w.second;
@@ -1065,9 +1075,19 @@ bool Tabular::updateColumnWidths(MetricsInfo & mi)
 		vcolwidth = restwidth / restcols;
 
 	// Now consider that some variable width columns exceed the vcolwidth
+	// FIXME As opposed to tabular*, tabularx with X column do not exceed
+	//       the overall table width. This is not yet represented, as it
+	//       needs to include row breaking.
 	if (vcolwidth > 0) {
 		bool changed = false;
 		for (auto const w : max_width) {
+			if (tabularx || w.second > vcolwidth) {
+				--restcols;
+				restwidth -= w.second;
+				changed = true;
+			}
+		}
+		for (auto const w : max_xwidth) {
 			if (w.second > vcolwidth) {
 				--restcols;
 				restwidth -= w.second;
@@ -1089,9 +1109,12 @@ bool Tabular::updateColumnWidths(MetricsInfo & mi)
 					&& cell_info[r][c].decimal_width != 0)
 					new_width = max(new_width, cellInfo(i).width
 				                + max_dwidth[c] - cellInfo(i).decimal_width);
-				else if (getPWidth(i).zero() && vcolwidth > 0)
-					new_width = max(vcolwidth, max(new_width, cellInfo(i).width));
-				else
+				else if (getPWidth(i).zero() && vcolwidth > 0) {
+					if (tabularx && !column_info[c].varwidth)
+						new_width = max(new_width, cellInfo(i).width);
+					else
+						new_width = max(vcolwidth, max(new_width, cellInfo(i).width));
+				} else
 					new_width = max(new_width, cellInfo(i).width);
 			}
 		}
