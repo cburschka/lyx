@@ -1178,7 +1178,7 @@ void Server::callback(string const & msg)
 			// connect to the lyxfunc in the single GuiView we
 			// support currently. (Lgb)
 
-			FuncRequest fr(lyxaction.lookupFunc(cmd), from_ascii(arg));
+			FuncRequest fr(lyxaction.lookupFunc(cmd), from_utf8(arg));
 			fr.setOrigin(FuncRequest::LYXSERVER);
 			DispatchResult dr;
 			theApp()->dispatch(fr, dr);

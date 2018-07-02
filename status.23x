@@ -99,8 +99,6 @@ What's new
 
 - Added C-M-i as a shortcut for LFUN_INSET_SETTINGS (bug 7662).
 
-- Disable completion in text wwhen there is a selection.
-
 
 * DOCUMENTATION AND LOCALIZATION
 
@@ -176,6 +174,8 @@ What's new
 
 - Disable CheckTeX while buffer is processed (bug 7434).
 
+- Disable completion in text when there is a selection.
+
 - Do not use English, but the context language, when pasting from LaTeX
   (bug 9199).
 
@@ -198,6 +198,9 @@ What's new
 - Do not show errors from master when compiling child (bug 11106).
 
 - Fix crash with server-get-xy and tall inset (bug 8120).
+
+- Fix crash when opening file with non-acii file name in single
+  instance mode (bug 11167).
 
 - Improve Undo for operations that act on several buffers (bug 10823).
 
