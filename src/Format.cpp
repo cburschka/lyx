@@ -19,11 +19,12 @@
 #include "frontends/alert.h" //to be removed?
 
 #include "support/debug.h"
+#include "support/docstream.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/Magic.h"
 #include "support/mutex.h"
-#include "support/docstream.h"
 #include "support/os.h"
 #include "support/PathChanger.h"
 #include "support/Systemcall.h"
@@ -37,10 +38,6 @@
 // FIXME: Q_OS_MAC is not available, it's in Qt
 #ifdef USE_MACOSX_PACKAGING
 #include "support/linkback/LinkBackProxy.h"
-#endif
-
-#ifdef HAVE_MAGIC_H
-#include <magic.h>
 #endif
 
 using namespace std;
@@ -407,52 +404,37 @@ string Formats::getFormatFromFile(FileName const & filename) const
 
 	string psformat;
 	string format;
-#ifdef HAVE_MAGIC_H
 	if (filename.exists()) {
-		magic_t magic_cookie = magic_open(MAGIC_MIME);
-		if (magic_cookie) {
-			if (magic_load(magic_cookie, NULL) != 0) {
-				LYXERR(Debug::GRAPHICS, "Formats::getFormatFromFile\n"
-					<< "\tCouldn't load magic database - "
-					<< magic_error(magic_cookie));
-			} else {
-				char const * result = magic_file(magic_cookie,
-					filename.toFilesystemEncoding().c_str());
-				string mime;
-				if (result)
-					mime = token(result, ';', 0);
-				else {
-					LYXERR(Debug::GRAPHICS, "Formats::getFormatFromFile\n"
-						<< "\tCouldn't query magic database - "
-						<< magic_error(magic_cookie));
-				}
-				// our own detection is better for binary files (can be anything)
-				// and different plain text formats
-				if (!mime.empty() && mime != "application/octet-stream" &&
-				    mime != "text/plain") {
-					Formats::const_iterator cit =
-						find_if(formatlist_.begin(), formatlist_.end(),
-							FormatMimeEqual(mime));
-					if (cit != formatlist_.end()) {
-						LYXERR(Debug::GRAPHICS, "\tgot format from MIME type: "
-							<< mime << " -> " << cit->name());
-						// See special eps/ps handling below
-						if (mime == "application/postscript")
-							psformat = cit->name();
-						else
-							format = cit->name();
-					}
-				}
+		// one instance of Magic that will be reused for next calls
+		// This avoids to read the magic file everytime
+		// If libmagic is not available, Magic::file returns an empty string.
+		static Magic magic;
+		string const result = magic.file(filename.toFilesystemEncoding());
+		string const mime = token(result, ';', 0);
+		// our own detection is better for binary files (can be anything)
+		// and different plain text formats
+		if (!mime.empty() && mime != "application/octet-stream" &&
+			mime != "text/plain") {
+			Formats::const_iterator cit =
+				find_if(formatlist_.begin(), formatlist_.end(),
+						FormatMimeEqual(mime));
+			if (cit != formatlist_.end()) {
+				LYXERR(Debug::GRAPHICS, "\tgot format from MIME type: "
+					   << mime << " -> " << cit->name());
+				// See special eps/ps handling below
+				if (mime == "application/postscript")
+					psformat = cit->name();
+				else
+					format = cit->name();
 			}
-			magic_close(magic_cookie);
-			// libmagic recognizes as latex also some formats of ours
-			// such as pstex and pdftex. Therefore we have to perform
-			// additional checks in this case (bug 9244).
-			if (!format.empty() && format != "latex")
-				return format;
 		}
+
+		// libmagic recognizes as latex also some formats of ours
+		// such as pstex and pdftex. Therefore we have to perform
+		// additional checks in this case (bug 9244).
+		if (!format.empty() && format != "latex")
+			return format;
 	}
-#endif
 
 	string const ext = getExtension(filename.absFileName());
 	if (format.empty()) {

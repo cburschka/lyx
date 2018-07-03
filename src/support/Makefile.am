@@ -76,6 +76,7 @@ liblyxsupport_a_SOURCES = \
 	lyxlib.h \
 	lyxtime.cpp \
 	lyxtime.h \
+	Magic.h \
 	mutex.h \
 	mutex.cpp \
 	Messages.cpp \
