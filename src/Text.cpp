@@ -2188,7 +2188,8 @@ docstring Text::previousWord(CursorSlice const & sl) const
 bool Text::completionSupported(Cursor const & cur) const
 {
 	Paragraph const & par = cur.paragraph();
-	return cur.pos() > 0
+	return !cur.selection()
+		&& cur.pos() > 0
 		&& (cur.pos() >= par.size() || par.isWordSeparator(cur.pos()))
 		&& !par.isWordSeparator(cur.pos() - 1);
 }
