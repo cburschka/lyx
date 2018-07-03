@@ -67,7 +67,7 @@ public:
 		LYXERR(Debug::GRAPHICS, "Magic: libmagic support not configured");
 	}
 
-	std::string file(std::string const & name) const { return empty_string; }
+	std::string file(std::string const & ) const { return empty_string(); }
 };
 
 #endif // HAVE_MAGIC_T
