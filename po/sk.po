@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-05-07 08:54+0200\n"
-"PO-Revision-Date: 2018-05-08 10:28+0000\n"
+"POT-Creation-Date: 2018-07-04 13:48+0200\n"
+"PO-Revision-Date: 2018-07-04 17:31+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1656,7 +1656,7 @@ msgstr "Voľby Rozšírené Umiestňovanie"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:55
 msgid "&Top of page"
-msgstr "&Vrch strany"
+msgstr "Vr&ch strany"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:62
 msgid "&Ignore LaTeX rules"
@@ -33228,9 +33228,9 @@ msgstr ""
 "Nedá sa otvoriť špecifikovaný dokument\n"
 "%1$s."
 
-#: src/output_latex.cpp:1368
+#: src/output_latex.cpp:1426
 msgid "Error in latexParagraphs"
-msgstr "Chyba v latexových odstavcoch"
+msgstr "Chyba v latexParagraphs"
 
 #: src/output_latex.cpp:1369
 #, c-format
