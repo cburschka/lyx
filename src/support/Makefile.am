@@ -74,9 +74,9 @@ liblyxsupport_a_SOURCES = \
 	lstrings.h \
 	lyxalgo.h \
 	lyxlib.h \
+	lyxmagic.h \
 	lyxtime.cpp \
 	lyxtime.h \
-	Magic.h \
 	mutex.h \
 	mutex.cpp \
 	Messages.cpp \

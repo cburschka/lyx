@@ -23,7 +23,7 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
-#include "support/Magic.h"
+#include "support/lyxmagic.h"
 #include "support/mutex.h"
 #include "support/os.h"
 #include "support/PathChanger.h"
