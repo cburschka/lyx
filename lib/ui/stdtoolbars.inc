@@ -114,10 +114,10 @@ ToolbarSet
 
 	Toolbar "extra" "Extra"
 		Item "Default" "layout"
-		Item "Numbered list" "layout Enumerate"
-		Item "Itemized list" "layout Itemize"
-		Item "List" "layout List"
-		Item "Description" "layout Description"
+		Item "Numbered list" "layout-toggle Enumerate"
+		Item "Itemized list" "layout-toggle Itemize"
+		Item "List" "layout-toggle List"
+		Item "Description" "layout-toggle Description"
 		Item "Increase depth" "depth-increment"
 		Item "Decrease depth" "depth-decrement"
 		Separator

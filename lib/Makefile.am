@@ -500,6 +500,13 @@ dist_images_DATA1X = \
 	images/layout_LyX-Code.svgz \
 	images/layout_Chunk.svgz \
 	images/layout_Section.svgz \
+	images/layout-toggle_Description.svgz \
+	images/layout-toggle_Enumerate.svgz  \
+	images/layout-toggle_Itemize.svgz \
+	images/layout-toggle_List.svgz \
+	images/layout-toggle_LyX-Code.svgz \
+	images/layout-toggle_Chunk.svgz \
+	images/layout-toggle_Section.svgz \
 	images/lyx-quit.svgz \
 	images/marginalnote-insert.svgz \
 	images/master-buffer-update.svgz \
@@ -1777,6 +1784,13 @@ dist_imagesoxygen_DATA1X = \
 	images/oxygen/layout_List.svgz \
 	images/oxygen/layout_LyX-Code.svgz \
 	images/oxygen/layout_Section.svgz \
+	images/oxygen/layout-toggle_Chunk.svgz \
+	images/oxygen/layout-toggle_Description.svgz \
+	images/oxygen/layout-toggle_Enumerate.svgz \
+	images/oxygen/layout-toggle_Itemize.svgz \
+	images/oxygen/layout-toggle_List.svgz \
+	images/oxygen/layout-toggle_LyX-Code.svgz \
+	images/oxygen/layout-toggle_Section.svgz \
 	images/oxygen/lyx-quit.svgz \
 	images/oxygen/marginalnote-insert.svgz \
 	images/oxygen/master-buffer-update.svgz \
@@ -1975,6 +1989,13 @@ dist_imagesclassic_DATA = \
 	images/classic/layout_LyX-Code.png  \
 	images/classic/layout_Chunk.png  \
 	images/classic/layout_Section.png  \
+	images/classic/layout-toggle_Description.png  \
+	images/classic/layout-toggle_Enumerate.png  \
+	images/classic/layout-toggle_Itemize.png  \
+	images/classic/layout-toggle_List.png  \
+	images/classic/layout-toggle_LyX-Code.png  \
+	images/classic/layout-toggle_Chunk.png  \
+	images/classic/layout-toggle_Section.png  \
 	images/classic/marginalnote-insert.png  \
 	images/classic/master-buffer-update.png  \
 	images/classic/master-buffer-view.png  \
