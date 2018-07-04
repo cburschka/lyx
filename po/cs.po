@@ -6349,7 +6349,7 @@ msgstr "Řešení"
 #: lib/layouts/theorems-bytype.inc:247
 #: lib/layouts/theorems-without-preamble.inc:277
 msgid "Solution \\thesolution."
-msgstr "Solution \\thesolution."
+msgstr "Řešení \\thesolution."
 
 #: lib/layouts/AEA.layout:292 lib/layouts/elsart.layout:421
 #: lib/layouts/europasscv.layout:224 lib/layouts/europasscv.layout:260
@@ -15362,7 +15362,7 @@ msgstr "Poznámka pod čarou ##"
 
 #: lib/layouts/stdcounters.inc:77
 msgid "\\fnsymbol{thanks}"
-msgstr ""
+msgstr "\\fnsymbol{thanks}"
 
 #: lib/layouts/stdfloatnames.inc:7
 msgid "Algorithms"
@@ -16002,7 +16002,7 @@ msgstr "Cvičení \\thechapter.\\theexercise."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:320
 msgid "Solution \\thechapter.\\thesolution."
-msgstr "Solution \\thechapter.\\thesolution."
+msgstr "Řešení \\thechapter.\\thesolution."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:343
 msgid "Remark \\thechapter.\\theremark."
@@ -16382,9 +16382,8 @@ msgid "Exercise \\thetheorem."
 msgstr "Cvičení \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:244 lib/layouts/theorems.inc:244
-#, fuzzy
 msgid "Solution \\thetheorem."
-msgstr "Závěr \\thetheorem."
+msgstr "Řešení \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:262 lib/layouts/theorems.inc:262
 msgid "Remark \\thetheorem."
@@ -20737,24 +20736,20 @@ msgid "cancelto"
 msgstr "cancelto"
 
 #: lib/ui/stdtoolbars.inc:468
-#, fuzzy
 msgid "Insert left/right side scripts (sideset)"
-msgstr "Vložit levý/pravý boční text"
+msgstr "Vložit levý/pravý boční text (sideset)"
 
 #: lib/ui/stdtoolbars.inc:469
-#, fuzzy
 msgid "Insert right side scripts (sidesetr)"
-msgstr "Vložit pravý boční text"
+msgstr "Vložit pravý boční text (sidesetr)"
 
 #: lib/ui/stdtoolbars.inc:470
-#, fuzzy
 msgid "Insert left side scripts (sidesetl)"
-msgstr "Vložit levý boční text"
+msgstr "Vložit levý boční text (sidesetl)"
 
 #: lib/ui/stdtoolbars.inc:471
-#, fuzzy
 msgid "Insert side scripts (sidesetn)"
-msgstr "Vložit boční text"
+msgstr "Vložit boční text (sidesetn)"
 
 #: lib/ui/stdtoolbars.inc:472
 msgid "overset"
@@ -31608,7 +31603,7 @@ msgstr "Náhled kódu"
 
 #: src/frontends/qt4/GuiViewSource.cpp:457
 msgid "%1[[preview format name]] Preview"
-msgstr ""
+msgstr "%1 Ukázka"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1600
 msgid "Close File"
@@ -31964,12 +31959,12 @@ msgstr ""
 "bude změněn na %2$s."
 
 #: src/insets/InsetBibtex.cpp:156
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The %1$s[[BibTeX/Biblatex]] inset includes %2$s databases.\n"
 "If you proceed, all of them will be opened."
 msgstr ""
-"Vložka BibTeX-u zahrnuje  %1$s databází.\n"
+"Vložka %1$s -u zahrnuje %2$s databáze.\n"
 "Budete-li pokračovat, všechny budou otevřeny."
 
 #: src/insets/InsetBibtex.cpp:159
@@ -32646,7 +32641,7 @@ msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:689
 msgid "default: _minted-<jobname>"
-msgstr ""
+msgstr "standardně: _minted-<jobname>"
 
 #: src/insets/InsetListingsParams.cpp:768
 msgid "Sets encoding expected by Pygments"
@@ -32800,12 +32795,12 @@ msgstr "vphantom"
 #: src/insets/InsetQuotes.cpp:567
 #, c-format
 msgid "%1$souter%2$s and %3$sinner%4$s[[quotation marks]]"
-msgstr ""
+msgstr "%1$svnější%2$s a %3$svnitřní%4$s"
 
 #: src/insets/InsetQuotes.cpp:577
 #, c-format
 msgid "%1$s[[quot. mark description]] (language default)"
-msgstr ""
+msgstr "%1$s (jazykový standard)"
 
 #: src/insets/InsetQuotes.cpp:590
 #, c-format
@@ -33313,9 +33308,8 @@ msgstr ""
 "%1$s."
 
 #: src/output_latex.cpp:1368
-#, fuzzy
 msgid "Error in latexParagraphs"
-msgstr "Současný odstavec"
+msgstr "Chyba v latexParagraphs"
 
 #: src/output_latex.cpp:1369
 #, c-format
