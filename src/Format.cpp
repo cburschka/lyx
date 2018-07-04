@@ -337,6 +337,9 @@ string guessFormatFromContents(FileName const & fn)
 			// autodetect pdf format for graphics inclusion
 			format = "pdf6";
 
+		else if (contains(str, " EMF"))
+			format = "emf";
+
 		else if (contains(str, "PNG"))
 			format = "png";
 
