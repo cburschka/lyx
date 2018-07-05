@@ -854,40 +854,41 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_SELF_INSERT:
-		if (cmd.argument().size() != 1) {
-			cur.recordUndoSelection();
-			docstring const arg = cmd.argument();
-			if (!interpretString(cur, arg))
-				cur.insert(arg);
+		// special case first for big delimiters
+		if (cmd.argument().size() != 1 && interpretString(cur, cmd.argument()))
 			break;
-		}
-		// Don't record undo steps if we are in macro mode and thus
-		// cmd.argument is the next character of the macro name.
-		// Otherwise we'll get an invalid cursor if we undo after
-		// the macro was finished and the macro is a known command,
-		// e.g. sqrt. Cursor::macroModeClose replaces in this case
-		// the InsetMathUnknown with name "frac" by an empty
-		// InsetMathFrac -> a pos value > 0 is invalid.
-		// A side effect is that an undo before the macro is finished
-		// undoes the complete macro, not only the last character.
-		// At the time we hit '\' we are not in macro mode, still.
-		if (!cur.inMacroMode())
-			cur.recordUndoSelection();
 
-		// spacial handling of space. If we insert an inset
-		// via macro mode, we want to put the cursor inside it
-		// if relevant. Think typing "\frac<space>".
-		if (cmd.argument()[0] == ' '
-		    && cur.inMacroMode() && cur.macroName() != "\\"
-		    && cur.macroModeClose() && cur.pos() > 0) {
-			MathAtom const atom = cur.prevAtom();
-			if (atom->asNestInset() && atom->isActive()) {
-				cur.posBackward();
-				cur.pushBackward(*cur.nextInset());
+		for (char_type c : cmd.argument()) {
+			// Don't record undo steps if we are in macro mode and thus
+			// cmd.argument is the next character of the macro name.
+			// Otherwise we'll get an invalid cursor if we undo after
+			// the macro was finished and the macro is a known command,
+			// e.g. sqrt. Cursor::macroModeClose replaces in this case
+			// the InsetMathUnknown with name "frac" by an empty
+			// InsetMathFrac -> a pos value > 0 is invalid.
+			// A side effect is that an undo before the macro is finished
+			// undoes the complete macro, not only the last character.
+			// At the time we hit '\' we are not in macro mode, still.
+			if (!cur.inMacroMode())
+				cur.recordUndoSelection();
+
+			// special handling of space. If we insert an inset
+			// via macro mode, we want to put the cursor inside it
+			// if relevant. Think typing "\frac<space>".
+			if (c == ' '
+				&& cur.inMacroMode() && cur.macroName() != "\\"
+				&& cur.macroModeClose() && cur.pos() > 0) {
+				MathAtom const atom = cur.prevAtom();
+				if (atom->asNestInset() && atom->isActive()) {
+					cur.posBackward();
+					cur.pushBackward(*cur.nextInset());
+				}
+			} else if (!interpretChar(cur, c)) {
+				cmd = FuncRequest(LFUN_FINISHED_FORWARD);
+				cur.undispatched();
+				// FIXME: can we avoid skipping the end of the string?
+				break;
 			}
-		} else if (!interpretChar(cur, cmd.argument()[0])) {
-			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
-			cur.undispatched();
 		}
 		break;
 
@@ -1890,6 +1891,7 @@ bool InsetMathNest::interpretString(Cursor & cur, docstring const & str)
 				prev = prev.substr(1);
 				latexkeys const * l = in_word_set(prev);
 				if (l && l->inset == "big") {
+					cur.recordUndoSelection();
 					cur.cell()[cur.pos() - 1] =
 						MathAtom(new InsetMathBig(prev, str));
 					return true;

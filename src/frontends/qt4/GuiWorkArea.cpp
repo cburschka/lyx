@@ -1290,12 +1290,13 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 
 	// insert the processed text in the document (handles undo)
 	if (!e->commitString().isEmpty()) {
-		d->buffer_view_->cursor().beginUndoGroup();
-		d->buffer_view_->cursor().insert(qstring_to_ucs4(e->commitString()));
+		FuncRequest cmd(LFUN_SELF_INSERT,
+		                qstring_to_ucs4(e->commitString()),
+		                FuncRequest::KEYBOARD);
+		dispatch(cmd);
+		// FIXME: this is supposed to remove traces from preedit
+		// string. Can we avoid calling it explicitely?
 		d->buffer_view_->updateMetrics();
-		d->buffer_view_->cursor().endUndoGroup();
-		d->updateCaretGeometry();
-		viewport()->update();
 	}
 
 	// Hide the caret during the test transformation.
