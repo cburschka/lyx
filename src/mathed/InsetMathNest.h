@@ -171,7 +171,7 @@ protected:
 public:
 	/// interpret \p str and insert the result at the current position of
 	/// \p cur if it is something known. Return whether \p cur was
-	/// inserted.
+	/// inserted. Handles undo.
 	virtual bool interpretString(Cursor & cur, docstring const & str);
 
 private:

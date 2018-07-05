@@ -1920,13 +1920,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 		if (lyxrc.auto_region_delete && cur.selection())
 			cutSelection(cur, false, false);
-
 		cur.clearSelection();
 
-		docstring::const_iterator cit = cmd.argument().begin();
-		docstring::const_iterator const end = cmd.argument().end();
-		for (; cit != end; ++cit)
-			bv->translateAndInsert(*cit, this, cur);
+		for (char_type c : cmd.argument())
+			bv->translateAndInsert(c, this, cur);
 
 		cur.resetAnchor();
 		moveCursor(cur, false);
