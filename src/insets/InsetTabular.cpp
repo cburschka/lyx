@@ -3845,7 +3845,6 @@ void InsetTableCell::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	// We tell metrics here not to expand on multiple pars
 	// This is the difference to InsetText::Metrics
-	// FIXME: pars with newlines are still too wide!
 	if (hasFixedWidth())
 		tm.metrics(mi, dim, mi.base.textwidth, false);
 	else
