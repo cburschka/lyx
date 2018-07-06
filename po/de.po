@@ -95,10 +95,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-06-24 10:27+0200\n"
-"PO-Revision-Date: 2018-06-25 10:27+0100\n"
+"POT-Creation-Date: 2018-07-06 10:13+0200\n"
+"PO-Revision-Date: 2018-07-06 10:16+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
-"Language-Team: German <kde-i18n-de@kde.org>\n"
+"Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -608,7 +608,7 @@ msgstr "Oben"
 #: src/frontends/qt4/ui/BoxUi.ui:209 src/frontends/qt4/ui/BoxUi.ui:239
 #: src/frontends/qt4/ui/TabularUi.ui:209 src/frontends/qt4/ui/TabularUi.ui:397
 #: lib/ui/stdcontext.inc:444 src/frontends/qt4/GuiMathMatrix.cpp:53
-#: src/frontends/qt4/GuiTabular.cpp:231
+#: src/frontends/qt4/GuiTabular.cpp:238
 msgid "Middle"
 msgstr "Mitte"
 
@@ -642,20 +642,20 @@ msgstr "Dehnen"
 #: src/frontends/qt4/ui/BoxUi.ui:265 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:332 src/frontends/qt4/ui/TabularUi.ui:1519
 #: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiDocument.cpp:1418
-#: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:869
+#: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:876
 msgid "Left"
 msgstr "Links"
 
 #: src/frontends/qt4/ui/BoxUi.ui:270 src/frontends/qt4/ui/TabularUi.ui:337
 #: src/frontends/qt4/GuiExternal.cpp:79 src/frontends/qt4/GuiGraphics.cpp:73
-#: src/frontends/qt4/GuiParagraph.cpp:113 src/frontends/qt4/GuiTabular.cpp:870
+#: src/frontends/qt4/GuiParagraph.cpp:113 src/frontends/qt4/GuiTabular.cpp:877
 msgid "Center"
 msgstr "Zentriert"
 
 #: src/frontends/qt4/ui/BoxUi.ui:275 src/frontends/qt4/ui/ListingsUi.ui:108
 #: src/frontends/qt4/ui/TabularUi.ui:342 src/frontends/qt4/ui/TabularUi.ui:1536
 #: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiDocument.cpp:1420
-#: src/frontends/qt4/GuiParagraph.cpp:112 src/frontends/qt4/GuiTabular.cpp:871
+#: src/frontends/qt4/GuiParagraph.cpp:112 src/frontends/qt4/GuiTabular.cpp:878
 msgid "Right"
 msgstr "Rechts"
 
@@ -2643,7 +2643,7 @@ msgstr "&Paket zur Code-Hervorhebung:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:333
 #: lib/layouts/stdinsets.inc:339 lib/layouts/stdinsets.inc:386
-#: lib/layouts/stdinsets.inc:392 src/insets/InsetCaption.cpp:388
+#: lib/layouts/stdinsets.inc:392 src/insets/InsetCaption.cpp:387
 #: src/insets/InsetListings.cpp:470 src/insets/InsetListings.cpp:472
 msgid "Listing"
 msgstr "Listing"
@@ -3420,9 +3420,10 @@ msgstr "Doppelt"
 #: src/frontends/qt4/ui/TabularUi.ui:1179
 #: src/frontends/qt4/ui/TabularUi.ui:1198
 #: src/frontends/qt4/ui/TabularUi.ui:1246 src/frontends/qt4/ui/VSpaceUi.ui:107
-#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:839
-#: src/frontends/qt4/GuiDocument.cpp:843 src/frontends/qt4/GuiDocument.cpp:851
-#: src/frontends/qt4/GuiDocument.cpp:961 src/frontends/qt4/GuiDocument.cpp:1031
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/FloatPlacement.cpp:185
+#: src/frontends/qt4/GuiDocument.cpp:839 src/frontends/qt4/GuiDocument.cpp:843
+#: src/frontends/qt4/GuiDocument.cpp:851 src/frontends/qt4/GuiDocument.cpp:961
+#: src/frontends/qt4/GuiDocument.cpp:1031
 #: src/frontends/qt4/GuiDocument.cpp:1082
 #: src/frontends/qt4/GuiDocument.cpp:1413 src/frontends/qt4/GuiHSpace.cpp:56
 #: src/frontends/qt4/GuiHSpace.cpp:67 src/frontends/qt4/GuiPrefs.cpp:898
@@ -5127,9 +5128,8 @@ msgid ""
 "Fixed custom width</p></body></html>"
 msgstr ""
 "<html><head/><body><p>Spaltenbreitentypen:</p><p>* Textlänge: An Breite des "
-"enthaltenen Textes anpassen</p><p>* Variabel: An Tabellenbreite anpassen</p"
-"><p>* Benutzerdefiniert: "
-"Feste benutzerdefinierte Breite</p></body></html>"
+"enthaltenen Textes anpassen</p><p>* Variabel: An Tabellenbreite anpassen</"
+"p><p>* Benutzerdefiniert: Feste benutzerdefinierte Breite</p></body></html>"
 
 #: src/frontends/qt4/ui/TabularUi.ui:305
 msgid "Text length"
@@ -5148,12 +5148,12 @@ msgid "Horizontal alignment in column"
 msgstr "Horizontale Ausrichtung in der Spalte"
 
 #: src/frontends/qt4/ui/TabularUi.ui:327 src/frontends/qt4/GuiParagraph.cpp:110
-#: src/frontends/qt4/GuiTabular.cpp:873
+#: src/frontends/qt4/GuiTabular.cpp:880
 msgid "Justified"
 msgstr "Blocksatz"
 
-#: src/frontends/qt4/ui/TabularUi.ui:347 src/frontends/qt4/GuiTabular.cpp:225
-#: src/frontends/qt4/GuiTabular.cpp:875
+#: src/frontends/qt4/ui/TabularUi.ui:347 src/frontends/qt4/GuiTabular.cpp:232
+#: src/frontends/qt4/GuiTabular.cpp:882
 msgid "At Decimal Separator"
 msgstr "Am Dezimaltrenner"
 
@@ -5919,25 +5919,24 @@ msgstr "American Economic Association (AEA)"
 #: lib/layouts/apa.layout:4 lib/layouts/apa6.layout:4
 #: lib/layouts/arab-article.layout:4 lib/layouts/article-beamer.layout:4
 #: lib/layouts/article.layout:4 lib/layouts/bxjsarticle.layout:4
-#: lib/layouts/chess.layout:4 lib/layouts/cl2emult.layout:4
-#: lib/layouts/ctex-article.layout:4 lib/layouts/doublecol-new.layout:4
-#: lib/layouts/dtk.layout:4 lib/layouts/ectaart.layout:4
-#: lib/layouts/egs.layout:4 lib/layouts/elsarticle.layout:4
-#: lib/layouts/entcs.layout:4 lib/layouts/extarticle.layout:4
-#: lib/layouts/heb-article.layout:4 lib/layouts/ijmpc.layout:4
-#: lib/layouts/ijmpd.layout:4 lib/layouts/iopart.layout:4
-#: lib/layouts/isprs.layout:4 lib/layouts/iucr.layout:4
-#: lib/layouts/jarticle.layout:4 lib/layouts/jasatex.layout:4
-#: lib/layouts/jgrga.layout:4 lib/layouts/jsarticle.layout:4
-#: lib/layouts/jss.layout:4 lib/layouts/kluwer.layout:4
-#: lib/layouts/llncs.layout:4 lib/layouts/ltugboat.layout:4
-#: lib/layouts/mwart.layout:4 lib/layouts/paper.layout:4
-#: lib/layouts/revtex4-1.layout:4 lib/layouts/revtex4.layout:4
-#: lib/layouts/scrartcl.layout:4 lib/layouts/scrarticle-beamer.layout:4
-#: lib/layouts/siamltex.layout:4 lib/layouts/singlecol-new.layout:4
-#: lib/layouts/spie.layout:4 lib/layouts/svglobal3.layout:4
-#: lib/layouts/svjog.layout:4 lib/layouts/svprobth.layout:4
-#: lib/layouts/tarticle.layout:4
+#: lib/layouts/chess.layout:4 lib/layouts/ctex-article.layout:4
+#: lib/layouts/doublecol-new.layout:4 lib/layouts/dtk.layout:4
+#: lib/layouts/ectaart.layout:4 lib/layouts/egs.layout:4
+#: lib/layouts/elsarticle.layout:4 lib/layouts/entcs.layout:4
+#: lib/layouts/extarticle.layout:4 lib/layouts/heb-article.layout:4
+#: lib/layouts/ijmpc.layout:4 lib/layouts/ijmpd.layout:4
+#: lib/layouts/iopart.layout:4 lib/layouts/isprs.layout:4
+#: lib/layouts/iucr.layout:4 lib/layouts/jarticle.layout:4
+#: lib/layouts/jasatex.layout:4 lib/layouts/jgrga.layout:4
+#: lib/layouts/jsarticle.layout:4 lib/layouts/jss.layout:4
+#: lib/layouts/kluwer.layout:4 lib/layouts/llncs.layout:4
+#: lib/layouts/ltugboat.layout:4 lib/layouts/mwart.layout:4
+#: lib/layouts/paper.layout:4 lib/layouts/revtex4-1.layout:4
+#: lib/layouts/revtex4.layout:4 lib/layouts/scrartcl.layout:4
+#: lib/layouts/scrarticle-beamer.layout:4 lib/layouts/siamltex.layout:4
+#: lib/layouts/singlecol-new.layout:4 lib/layouts/spie.layout:4
+#: lib/layouts/svglobal3.layout:4 lib/layouts/svjog.layout:4
+#: lib/layouts/svprobth.layout:4 lib/layouts/tarticle.layout:4
 msgid "Articles"
 msgstr "Artikel/Aufsätze"
 
@@ -9077,13 +9076,13 @@ msgid "American Mathematical Society (AMS) Book"
 msgstr "American Mathematical Society (AMS): Buch"
 
 #: lib/layouts/amsbook.layout:4 lib/layouts/book.layout:4
-#: lib/layouts/bxjsbook.layout:4 lib/layouts/ctex-book.layout:4
-#: lib/layouts/extbook.layout:4 lib/layouts/jbook.layout:4
-#: lib/layouts/jsbook.layout:4 lib/layouts/memoir.layout:4
-#: lib/layouts/mwbk.layout:4 lib/layouts/recipebook.layout:4
-#: lib/layouts/scrbook.layout:4 lib/layouts/svmono.layout:4
-#: lib/layouts/svmult.layout:4 lib/layouts/tbook.layout:4
-#: lib/layouts/tufte-book.layout:4
+#: lib/layouts/bxjsbook.layout:4 lib/layouts/cl2emult.layout:4
+#: lib/layouts/ctex-book.layout:4 lib/layouts/extbook.layout:4
+#: lib/layouts/jbook.layout:4 lib/layouts/jsbook.layout:4
+#: lib/layouts/memoir.layout:4 lib/layouts/mwbk.layout:4
+#: lib/layouts/recipebook.layout:4 lib/layouts/scrbook.layout:4
+#: lib/layouts/svmono.layout:4 lib/layouts/svmult.layout:4
+#: lib/layouts/tbook.layout:4 lib/layouts/tufte-book.layout:4
 msgid "Books"
 msgstr "Bücher"
 
@@ -9222,7 +9221,7 @@ msgid "Centered"
 msgstr "Zentriert"
 
 #: lib/layouts/apa.layout:251 lib/layouts/apa6.layout:351
-#: lib/layouts/stdinsets.inc:644 src/insets/InsetCaption.cpp:410
+#: lib/layouts/stdinsets.inc:644 src/insets/InsetCaption.cpp:409
 msgid "standard"
 msgstr "Standard"
 
@@ -10370,8 +10369,8 @@ msgid "KnightMove:"
 msgstr "Springerzug:"
 
 #: lib/layouts/cl2emult.layout:3
-msgid "Springer cl2emult"
-msgstr "Springer cl2emult"
+msgid "Springer Contributed Books (cl2emult, Obsolete!)"
+msgstr "Springer Sammelbände (cl2emult, veraltet!)"
 
 #: lib/layouts/ctex-article.layout:3
 msgid "Chinese Article (CTeX)"
@@ -15889,8 +15888,8 @@ msgid "Proof(smartQED)"
 msgstr "Beweis (smartQED)"
 
 #: lib/layouts/svglobal.layout:3
-msgid "Springer SV Global (Obsolete Version)"
-msgstr "Springer SV Global (veraltete Version)"
+msgid "Springer's Global Journal Template (Obsolete Version)"
+msgstr "Springers globale Vorlage für Zeitschriften (veraltete Version!)"
 
 #: lib/layouts/svglobal.layout:67 lib/layouts/svjog.layout:71
 #: lib/layouts/svprobth.layout:101
@@ -15934,8 +15933,8 @@ msgid "Offprints:"
 msgstr "Adresse für Sonderdrucke:"
 
 #: lib/layouts/svglobal3.layout:3
-msgid "Springer SV Global (V. 3)"
-msgstr "Springer SV Global (V. 3)"
+msgid "Springer's Global Journal Template (V. 3)"
+msgstr "Springers globale Vorlage für Zeitschriften (V. 3)"
 
 #: lib/layouts/svglobal3.layout:73
 msgid "Subclass"
@@ -15958,16 +15957,16 @@ msgid "Solution \\thesolution"
 msgstr "Lösung \\thesolution"
 
 #: lib/layouts/svjog.layout:3
-msgid "Springer SV Jour/Jog"
-msgstr "Springer SV Jour/Jog"
+msgid "Journal of Geodesy (Springer)"
+msgstr "Journal of Geodesy (Springer)"
 
 #: lib/layouts/svmono.layout:3
-msgid "Springer SV Mono"
-msgstr "Springer SV Mono"
+msgid "Springer Monographs (svmono)"
+msgstr "Springer Monografien (svmono)"
 
 #: lib/layouts/svmult.layout:3
-msgid "Springer SV Mult"
-msgstr "Springer SV Mult"
+msgid "Springer Contributed Books (svmult)"
+msgstr "Springer Sammelbände (svmult)"
 
 #: lib/layouts/svmult.layout:34
 msgid "Title*"
@@ -16000,8 +15999,8 @@ msgid "For editors"
 msgstr "Für Herausgeber"
 
 #: lib/layouts/svprobth.layout:3
-msgid "Springer SV Jour/PTRF"
-msgstr "Springer SV Jour/PTRF"
+msgid "Probability Theory and Related Fields (Springer svprobth)"
+msgstr "Probability Theory and Related Fields (Springer svprobth)"
 
 #: lib/layouts/sweave.module:2 lib/configure.py:655
 msgid "Sweave"
@@ -25691,12 +25690,12 @@ msgstr "Fehler bei der Ansicht der Ausgabedatei."
 
 #: src/Buffer.cpp:3262 src/frontends/qt4/GuiView.cpp:2380
 #: src/frontends/qt4/Validator.cpp:222 src/insets/ExternalSupport.cpp:395
-#: src/insets/InsetGraphics.cpp:615 src/insets/InsetInclude.cpp:552
+#: src/insets/InsetGraphics.cpp:684 src/insets/InsetInclude.cpp:552
 msgid "Invalid filename"
 msgstr "Ungültiger Dateiname"
 
 #: src/Buffer.cpp:3263 src/insets/ExternalSupport.cpp:396
-#: src/insets/InsetGraphics.cpp:616 src/insets/InsetInclude.cpp:553
+#: src/insets/InsetGraphics.cpp:685 src/insets/InsetInclude.cpp:553
 msgid ""
 "The following filename will cause troubles when running the exported file "
 "through LaTeX: "
@@ -25705,12 +25704,12 @@ msgstr ""
 "exportierten Datei ausgeführt wird: "
 
 #: src/Buffer.cpp:3268 src/insets/ExternalSupport.cpp:401
-#: src/insets/InsetGraphics.cpp:623 src/insets/InsetInclude.cpp:557
+#: src/insets/InsetGraphics.cpp:692 src/insets/InsetInclude.cpp:557
 msgid "Problematic filename for DVI"
 msgstr "Problematischer Dateiname für DVI"
 
 #: src/Buffer.cpp:3269 src/insets/ExternalSupport.cpp:402
-#: src/insets/InsetGraphics.cpp:624 src/insets/InsetInclude.cpp:558
+#: src/insets/InsetGraphics.cpp:693 src/insets/InsetInclude.cpp:558
 msgid ""
 "The following filename can cause troubles when running the exported file "
 "through LaTeX and opening the resulting DVI: "
@@ -25913,7 +25912,7 @@ msgstr ""
 "%1$s ist schreibgeschützt.\n"
 "Bitte speichern Sie die Datei unter einem neuen Namen."
 
-#: src/Buffer.cpp:5048 src/insets/InsetCaption.cpp:382
+#: src/Buffer.cpp:5048 src/insets/InsetCaption.cpp:381
 msgid "Senseless!!! "
 msgstr "Sinnlos!!! "
 
@@ -26069,7 +26068,7 @@ msgstr ""
 "Wählen Sie eine passende Kodierung (bspw. utf8)\n"
 "oder ändern Sie den LaTeX-Code im Vorspann."
 
-#: src/BufferParams.cpp:2437
+#: src/BufferParams.cpp:2441
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -26084,11 +26083,11 @@ msgstr ""
 "Formaten wird benutzt werden. LyX wird nicht in der Lage sein eine korrekte\n"
 "Ausgabe zu erzeugen."
 
-#: src/BufferParams.cpp:2443
+#: src/BufferParams.cpp:2447
 msgid "Document class not found"
 msgstr "Dokumentklasse nicht gefunden"
 
-#: src/BufferParams.cpp:2450
+#: src/BufferParams.cpp:2454
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -26103,15 +26102,15 @@ msgstr ""
 "korrekte\n"
 "Ausgabe erzeugen können."
 
-#: src/BufferParams.cpp:2456 src/BufferView.cpp:1345 src/BufferView.cpp:1377
+#: src/BufferParams.cpp:2460 src/BufferView.cpp:1345 src/BufferView.cpp:1377
 msgid "Could not load class"
 msgstr "Konnte Klasse nicht laden"
 
-#: src/BufferParams.cpp:2503
+#: src/BufferParams.cpp:2507
 msgid "Error reading internal layout information"
 msgstr "Fehler beim Einlesen interner Format-Informationen"
 
-#: src/BufferParams.cpp:2504 src/TextClass.cpp:1815 src/TextClass.cpp:1847
+#: src/BufferParams.cpp:2508 src/TextClass.cpp:1815 src/TextClass.cpp:1847
 msgid "Read Error"
 msgstr "Lesefehler"
 
@@ -26870,7 +26869,7 @@ msgstr ""
 "\n"
 "Ersetzen Sie dabei ,Treiber` durch den Namen des Treibers."
 
-#: src/Converter.cpp:666 src/Format.cpp:722 src/Format.cpp:793
+#: src/Converter.cpp:666 src/Format.cpp:707 src/Format.cpp:778
 msgid "Executing command: "
 msgstr "Befehl wird ausgeführt: "
 
@@ -27201,39 +27200,39 @@ msgstr "Sprache: %1$s, "
 msgid "Number %1$s"
 msgstr "Nummer %1$s"
 
-#: src/Format.cpp:668 src/Format.cpp:681 src/Format.cpp:691
+#: src/Format.cpp:653 src/Format.cpp:666 src/Format.cpp:676
 msgid "Cannot view file"
 msgstr "Datei kann nicht betrachtet werden"
 
-#: src/Format.cpp:669 src/Format.cpp:739 src/frontends/qt4/GuiView.cpp:3562
+#: src/Format.cpp:654 src/Format.cpp:724 src/frontends/qt4/GuiView.cpp:3562
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Die Datei existiert nicht: %1$s"
 
-#: src/Format.cpp:682
+#: src/Format.cpp:667
 #, c-format
 msgid "No information for viewing %1$s"
 msgstr "Keine Informationen vorhanden, um %1$s zu betrachten"
 
-#: src/Format.cpp:692
+#: src/Format.cpp:677
 #, c-format
 msgid "Auto-view file %1$s failed"
 msgstr "Die automatische Ansicht der Datei %1$s ist fehlgeschlagen"
 
-#: src/Format.cpp:738 src/Format.cpp:750 src/Format.cpp:763 src/Format.cpp:774
+#: src/Format.cpp:723 src/Format.cpp:735 src/Format.cpp:748 src/Format.cpp:759
 msgid "Cannot edit file"
 msgstr "Die Datei kann nicht bearbeitet werden"
 
-#: src/Format.cpp:751
+#: src/Format.cpp:736
 msgid "LinkBack files can only be edited on Apple Mac OSX."
 msgstr "LinkBack-Dateien können nur mit Apples Mac OSX bearbeitet werden."
 
-#: src/Format.cpp:764
+#: src/Format.cpp:749
 #, c-format
 msgid "No information for editing %1$s"
 msgstr "Keine Informationen vorhanden, um %1$s zu bearbeiten"
 
-#: src/Format.cpp:775
+#: src/Format.cpp:760
 #, c-format
 msgid "Auto-edit file %1$s failed"
 msgstr "Das automatische Bearbeiten der Datei %1$s ist fehlgeschlagen"
@@ -28403,7 +28402,7 @@ msgstr "Mathe-Editor-Modus"
 msgid "No valid math formula"
 msgstr "Keine gültige Matheformel"
 
-#: src/Text3.cpp:205 src/mathed/InsetMathNest.cpp:1035
+#: src/Text3.cpp:205 src/mathed/InsetMathNest.cpp:1036
 msgid "Already in regular expression mode"
 msgstr "Bereits im Regexp-Modus"
 
@@ -28419,19 +28418,19 @@ msgstr "Format "
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text3.cpp:2221 src/frontends/qt4/GuiApplication.cpp:1710
+#: src/Text3.cpp:2218 src/frontends/qt4/GuiApplication.cpp:1710
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/Text3.cpp:2373 src/Text3.cpp:2385
+#: src/Text3.cpp:2370 src/Text3.cpp:2382
 msgid "Character set"
 msgstr "Zeichensatz"
 
-#: src/Text3.cpp:2538
+#: src/Text3.cpp:2535
 msgid "Path to thesaurus directory not set!"
 msgstr "Pfad zum Thesaurus-Wörterbuch nicht festlegt!"
 
-#: src/Text3.cpp:2539
+#: src/Text3.cpp:2536
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -28443,7 +28442,7 @@ msgstr ""
 "Im Benutzerhandbuch, Abschnitt 6.15.11, finden Sie Hinweise,\n"
 "um den Thesaurus einzurichten."
 
-#: src/Text3.cpp:2606 src/Text3.cpp:2617
+#: src/Text3.cpp:2603 src/Text3.cpp:2614
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
@@ -29031,6 +29030,17 @@ msgstr "Keine Dokumente geöffnet, in denen gesucht werden kann"
 #: src/frontends/qt4/FindAndReplace.cpp:585
 msgid "Advanced Find and Replace"
 msgstr "Erweitertes Suchen und Ersetzen"
+
+#: src/frontends/qt4/FloatPlacement.cpp:182
+#: src/frontends/qt4/GuiDocument.cpp:1030
+#: src/frontends/qt4/GuiDocument.cpp:2330
+#: src/frontends/qt4/GuiDocument.cpp:2357
+msgid "Class Default"
+msgstr "Klassenvoreinstellungen"
+
+#: src/frontends/qt4/FloatPlacement.cpp:184
+msgid "Document Default"
+msgstr "Dokumentvoreinstellung"
 
 #: src/frontends/qt4/FloatPlacement.h:38 src/frontends/qt4/GuiDocument.cpp:1625
 msgid "Float Settings"
@@ -29858,12 +29868,6 @@ msgstr "11"
 #: src/frontends/qt4/GuiDocument.cpp:1027
 msgid "12"
 msgstr "12"
-
-#: src/frontends/qt4/GuiDocument.cpp:1030
-#: src/frontends/qt4/GuiDocument.cpp:2330
-#: src/frontends/qt4/GuiDocument.cpp:2357
-msgid "Class Default"
-msgstr "Klassenvoreinstellungen"
 
 #: src/frontends/qt4/GuiDocument.cpp:1039
 msgid ""
@@ -31551,7 +31555,7 @@ msgstr "<p>LaTeX-Code: %1</p>"
 msgid "Symbols"
 msgstr "Symbole"
 
-#: src/frontends/qt4/GuiTabular.h:45
+#: src/frontends/qt4/GuiTabular.h:46
 msgid "Tabular Settings"
 msgstr "Tabellen-Einstellungen"
 
@@ -32146,27 +32150,27 @@ msgstr "Quelltext-Vorschau"
 msgid "%1[[preview format name]] Preview"
 msgstr "%1-Vorschau"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1534
+#: src/frontends/qt4/GuiWorkArea.cpp:1535
 msgid "Close File"
 msgstr "Datei schließen"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2050
+#: src/frontends/qt4/GuiWorkArea.cpp:2051
 msgid "%1 (read only)"
 msgstr "%1 (schreibgeschützt)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2054
+#: src/frontends/qt4/GuiWorkArea.cpp:2055
 msgid "%1 (modified externally)"
 msgstr "%1 (extern bearbeitet)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2074
+#: src/frontends/qt4/GuiWorkArea.cpp:2075
 msgid "Hide tab"
 msgstr "Unterfenster verstecken"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2076
+#: src/frontends/qt4/GuiWorkArea.cpp:2077
 msgid "Close tab"
 msgstr "Unterfenster schließen"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2193
+#: src/frontends/qt4/GuiWorkArea.cpp:2194
 msgid "<b>The file %1 changed on disk.</b>"
 msgstr "<b>Die Datei %1 wurde auf der Festplatte verändert.</b>"
 
@@ -32662,7 +32666,7 @@ msgstr ""
 "Der Status des Zweigs '%1$s' wurde im Hauptdokument geändert. Bitte denken "
 "Sie daran, das Hauptdokument zu speichern."
 
-#: src/insets/InsetCaption.cpp:397
+#: src/insets/InsetCaption.cpp:396
 #, c-format
 msgid "Sub-%1$s"
 msgstr "Unter-%1$s"
@@ -32759,7 +32763,7 @@ msgstr "LyX kann keine Liste mit %1$s erzeugen"
 msgid "footnote"
 msgstr "Fußnote"
 
-#: src/insets/InsetGraphics.cpp:494 src/insets/InsetInclude.cpp:859
+#: src/insets/InsetGraphics.cpp:563 src/insets/InsetInclude.cpp:859
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -32770,12 +32774,12 @@ msgstr ""
 "%1$s\n"
 "konnte nicht in das temporäre Verzeichnis kopiert werden."
 
-#: src/insets/InsetGraphics.cpp:701 src/insets/InsetGraphics.cpp:935
+#: src/insets/InsetGraphics.cpp:770 src/insets/InsetGraphics.cpp:1004
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Es ist keine Konvertierung von %1$s notwendig"
 
-#: src/insets/InsetGraphics.cpp:813
+#: src/insets/InsetGraphics.cpp:882
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafikdatei: %1$s"
@@ -33507,22 +33511,22 @@ msgstr "Geschützter horizontaler Abstand (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Unbekannter Inhaltsverzeichnis-Typ"
 
-#: src/insets/InsetTabular.cpp:4714
+#: src/insets/InsetTabular.cpp:4897
 msgid "Selections not supported."
 msgstr ""
 "Gleichzeitiges Verschieben mehrerer Zeilen/Spalten ist leider nicht möglich."
 
-#: src/insets/InsetTabular.cpp:4736
+#: src/insets/InsetTabular.cpp:4919
 msgid "Multi-column in current or destination column."
 msgstr ""
 "Diese oder die Zielspalte ist eine Mehrfachspalte. Verschieben nicht möglich."
 
-#: src/insets/InsetTabular.cpp:4748
+#: src/insets/InsetTabular.cpp:4931
 msgid "Multi-row in current or destination row."
 msgstr ""
 "Diese oder die Zielzeile ist eine Mehrfachzeile. Verschieben nicht möglich."
 
-#: src/insets/InsetTabular.cpp:5188
+#: src/insets/InsetTabular.cpp:5371
 msgid "Selection size should match clipboard content."
 msgstr ""
 "Die Anzahl der ausgewählten Zellen stimmt nicht mit dem Inhalt der "
@@ -33822,24 +33826,24 @@ msgstr "Mathe-Makro: \\%1$s"
 msgid "Invalid macro! \\%1$s"
 msgstr "Ungültiges Makro! \\%1$s"
 
-#: src/mathed/InsetMathNest.cpp:715 src/mathed/InsetMathNest.cpp:1729
-#: src/mathed/InsetMathNest.cpp:1872
+#: src/mathed/InsetMathNest.cpp:715 src/mathed/InsetMathNest.cpp:1730
+#: src/mathed/InsetMathNest.cpp:1873
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Autokorrektur Aus ('!' zum Ausführen)"
 
-#: src/mathed/InsetMathNest.cpp:1021
+#: src/mathed/InsetMathNest.cpp:1022
 msgid "create new math text environment ($...$)"
 msgstr "Neue Mathe-Textumgebung erzeugen ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1024
+#: src/mathed/InsetMathNest.cpp:1025
 msgid "entered math text mode (textrm)"
 msgstr "Mathe-Textmodus betreten (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1046
+#: src/mathed/InsetMathNest.cpp:1047
 msgid "Regular expression editor mode"
 msgstr "Bearbeitungsmodus für reguläre Ausdrücke"
 
-#: src/mathed/InsetMathNest.cpp:1734 src/mathed/InsetMathNest.cpp:1874
+#: src/mathed/InsetMathNest.cpp:1735 src/mathed/InsetMathNest.cpp:1875
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Autokorrektur An (<Leertaste> zum Beenden)"
 
@@ -34207,8 +34211,20 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
 
-#~ msgid "Document Default"
-#~ msgstr "Dokumentvoreinstellung"
+#~ msgid "Springer cl2emult"
+#~ msgstr "Springer cl2emult"
+
+#~ msgid "Springer SV Jour/Jog"
+#~ msgstr "Springer SV Jour/Jog"
+
+#~ msgid "Springer SV Mono"
+#~ msgstr "Springer SV Mono"
+
+#~ msgid "Springer SV Mult"
+#~ msgstr "Springer SV Mult"
+
+#~ msgid "Springer SV Jour/PTRF"
+#~ msgstr "Springer SV Jour/PTRF"
 
 #, fuzzy
 #~ msgid "Class Defaults"
