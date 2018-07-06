@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-06-24 10:11+0200\n"
-"PO-Revision-Date: 2018-06-24 08:41+0000\n"
+"POT-Creation-Date: 2018-07-06 10:24+0200\n"
+"PO-Revision-Date: 2018-07-06 09:00+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -6915,7 +6915,7 @@ msgstr "V Titule"
 
 #: lib/layouts/RJournal.layout:3
 msgid "R Journal"
-msgstr "R Žurnál"
+msgstr "R Časopis"
 
 #: lib/layouts/RJournal.layout:4 lib/layouts/bxjsreport.layout:4
 #: lib/layouts/ctex-report.layout:4 lib/layouts/extreport.layout:4
@@ -7659,7 +7659,7 @@ msgstr "Vďaka: "
 
 #: lib/layouts/acmart.layout:106
 msgid "ACM Journal"
-msgstr "ACM Žurnál"
+msgstr "ACM Časopis"
 
 #: lib/layouts/acmart.layout:109 lib/layouts/apa6.layout:308
 #: lib/layouts/apa6.layout:316 lib/layouts/apa6.layout:325
@@ -7669,7 +7669,7 @@ msgstr "Preambula"
 
 #: lib/layouts/acmart.layout:111
 msgid "Journal's Short Name: "
-msgstr "Skratka Žurnála: "
+msgstr "Skratka Časopisu: "
 
 #: lib/layouts/acmart.layout:122
 msgid "ACM Conference"
@@ -8429,11 +8429,11 @@ msgstr "Špeciálna-sekcia:"
 
 #: lib/layouts/agu_stdtitle.inc:47
 msgid "AGU-journal"
-msgstr "AGU-žurnál"
+msgstr "AGU-časopis"
 
 #: lib/layouts/agu_stdtitle.inc:51
 msgid "AGU-journal:"
-msgstr "AGU-žurnál:"
+msgstr "AGU-časopis:"
 
 #: lib/layouts/agu_stdtitle.inc:59
 msgid "Citation-number:"
@@ -9117,7 +9117,11 @@ msgstr "Poznámka Autor:"
 
 #: lib/layouts/apa6.layout:307 lib/layouts/egs.layout:355
 msgid "Journal"
-msgstr "Žurnál"
+msgstr "Časopis"
+
+#: lib/layouts/svjog.layout:3
+msgid "Journal of Geodesy (Springer)"
+msgstr "Časopis pre Geodéziu (Springer)"
 
 #: lib/layouts/apa6.layout:324
 msgid "CopNum"
@@ -10150,10 +10154,6 @@ msgstr "ŤahKráľa"
 msgid "KnightMove:"
 msgstr "ŤahKráľa:"
 
-#: lib/layouts/cl2emult.layout:3
-msgid "Springer cl2emult"
-msgstr "Springer cl2emult"
-
 #: lib/layouts/ctex-article.layout:3
 msgid "Chinese Article (CTeX)"
 msgstr "Čínsky Článok (CTeX)"
@@ -10687,7 +10687,7 @@ msgstr "DocBook Článok (SGML)"
 
 #: lib/layouts/doublecol-new.layout:3
 msgid "Inderscience A4 Journals"
-msgstr "Inderscience A4 časopisy"
+msgstr "Inderscience A4 Časopisy"
 
 #: lib/layouts/dtk.layout:3
 msgid "Die TeXnische Komoedie"
@@ -10820,7 +10820,7 @@ msgstr "Príslušenstvo"
 
 #: lib/layouts/egs.layout:368
 msgid "Journal:"
-msgstr "Žurnál:"
+msgstr "Časopis:"
 
 #: lib/layouts/egs.layout:377
 msgid "msnumber"
@@ -12832,7 +12832,7 @@ msgstr "Japonský Článok (Štandardná Trieda)"
 
 #: lib/layouts/jasatex.layout:3
 msgid "Journal of the Acoustical Society of America (JASA)"
-msgstr "Journal of the Acoustical Society of America (JASA)"
+msgstr "Časopis Akustickej Spoločnosti v Amerike (JASA)"
 
 #: lib/layouts/jasatex.layout:122
 msgid "Alternative Affiliation"
@@ -12884,7 +12884,7 @@ msgstr "Japonská Kniha (Trieda JS)"
 
 #: lib/layouts/jss.layout:3
 msgid "Journal of Statistical Software (JSS) version 2"
-msgstr "Journal of Statistical Software (JSS) verzia 2"
+msgstr "Časopis pre Štatistický Softvér (JSS) verzia 2"
 
 #: lib/layouts/jss.layout:107
 msgid "Plain Keywords"
@@ -15315,7 +15315,7 @@ msgstr "Inderscience 9.5 x 6.5 Časopisy"
 
 #: lib/layouts/singlecol.layout:3
 msgid "Inderscience Journals (Obsolete)"
-msgstr "Inderscience Žurnály (Zastaralé)"
+msgstr "Inderscience Časopisy (Zastaralé)"
 
 #: lib/layouts/slides.layout:107
 msgid "New Slide:"
@@ -15678,10 +15678,6 @@ msgstr "Dôkaz(QED)"
 msgid "Proof(smartQED)"
 msgstr "Dôkaz(smartQED)"
 
-#: lib/layouts/svglobal.layout:3
-msgid "Springer SV Global (Obsolete Version)"
-msgstr "Springer SV Global (zastaralá verzia)"
-
 #: lib/layouts/svglobal.layout:67 lib/layouts/svjog.layout:71
 #: lib/layouts/svprobth.layout:101
 msgid "Headnote"
@@ -15723,10 +15719,6 @@ msgstr "Odtlačky"
 msgid "Offprints:"
 msgstr "Odtlačky:"
 
-#: lib/layouts/svglobal3.layout:3
-msgid "Springer SV Global (V. 3)"
-msgstr "Springer SV Global (V. 3)"
-
 #: lib/layouts/svglobal3.layout:73
 msgid "Subclass"
 msgstr "Podtrieda"
@@ -15746,18 +15738,6 @@ msgstr "Klasifikácia Oblasti CR"
 #: lib/layouts/svglobal3.layout:87
 msgid "Solution \\thesolution"
 msgstr "Riešenie \\thesolution"
-
-#: lib/layouts/svjog.layout:3
-msgid "Springer SV Jour/Jog"
-msgstr "Springer SV Jour/Jog"
-
-#: lib/layouts/svmono.layout:3
-msgid "Springer SV Mono"
-msgstr "Springer SV Mono"
-
-#: lib/layouts/svmult.layout:3
-msgid "Springer SV Mult"
-msgstr "Springer SV Mult"
 
 #: lib/layouts/svmult.layout:34
 msgid "Title*"
@@ -15788,10 +15768,6 @@ msgstr "Zoznam prispievateľov"
 #: lib/layouts/svmult.layout:152 lib/layouts/svmult.layout:156
 msgid "For editors"
 msgstr "Pre vydavateľov"
-
-#: lib/layouts/svprobth.layout:3
-msgid "Springer SV Jour/PTRF"
-msgstr "Springer SV Jour/PTRF"
 
 #: lib/layouts/sweave.module:2 lib/configure.py:655
 msgid "Sweave"
@@ -16672,6 +16648,10 @@ msgstr "Téza \\theprop."
 #: lib/layouts/theorems-without-preamble.inc:243
 msgid "Prob"
 msgstr "Problém"
+
+#: lib/layouts/svprobth.layout:3
+msgid "Probability Theory and Related Fields (Springer svprobth)"
+msgstr "Springer, Teória Pravdepodobnosti a Príbuzné Polia (svprobth)"
 
 #: lib/layouts/theorems-without-preamble.inc:250
 msgid "\\theprob."
@@ -24423,6 +24403,26 @@ msgstr "GnumericTabuľkovýProcesor"
 #: lib/xtemplates/gnumeric.xtemplate:14 lib/xtemplates/gnumeric.xtemplate:21
 msgid "Spreadsheet"
 msgstr "Tabuľkový procesor"
+
+#: lib/layouts/cl2emult.layout:3
+msgid "Springer Contributed Books (cl2emult, Obsolete!)"
+msgstr "Springer, Prispievacie Knihy (cl2emult, Zastaralé!)"
+
+#: lib/layouts/svmult.layout:3
+msgid "Springer Contributed Books (svmult)"
+msgstr "Springer, Prispievacie Knihy (svmult)"
+
+#: lib/layouts/svmono.layout:3
+msgid "Springer Monographs (svmono)"
+msgstr "Springer, Monografie (svmono)"
+
+#: lib/layouts/svglobal.layout:3
+msgid "Springer's Global Journal Template (Obsolete Version)"
+msgstr "Springer, Globálna Šablóna pre Časopisy (Zastaralá Verzia)"
+
+#: lib/layouts/svglobal3.layout:3
+msgid "Springer's Global Journal Template (V. 3)"
+msgstr "Springer, Globálna Šablóna pre Časopisy (V. 3)"
 
 #: lib/xtemplates/gnumeric.xtemplate:16
 msgid ""
@@ -33466,9 +33466,9 @@ msgstr ""
 "Nedá sa otvoriť špecifikovaný dokument\n"
 "%1$s."
 
-#: src/output_latex.cpp:1422
+#: src/output_latex.cpp:1429
 msgid "Error in latexParagraphs"
-msgstr "Chyba v latexových odstavcoch"
+msgstr "Chyba v latexParagraphs"
 
 #: src/output_latex.cpp:1423
 #, c-format
@@ -38439,3 +38439,9 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "&Multi-page table"
 #~ msgstr "V&iac-stranná tabuľka"
+
+#~ msgid "Springer SV Global (Obsolete Version)"
+#~ msgstr "Springer SV Global (zastaralá verzia)"
+
+#~ msgid "Springer SV Global (V. 3)"
+#~ msgstr "Springer SV Global (V. 3)"
