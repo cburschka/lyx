@@ -46,6 +46,9 @@ Format 4
 \bind "C-m"                    "mark-toggle"
 \bind "C-n"                    "down"
 \bind "C-o"                    "inset-toggle"
+
+# facemenu-menu in emacs
+\bind "M-o"                    "inset-settings"
 \bind "C-p"                    "up"
 
 # this is "quoted-insert" a total different meaning from "quote-insert"
