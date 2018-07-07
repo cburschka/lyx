@@ -4,24 +4,24 @@
 Lang sk_SK.utf8
 CO: findadv-21.ctrl
 TestBegin test.lyx -dbg key,find > findadv-21.loga.txt 2>&1
-KK: \Apb
+KK: \Aob
 KK: one\[Return]
 KK: two\[Return]
 KK: three\[Return]
-KK: \Ape
+KK: \Aoe
 KK: four\[Return]
 KK: five\[Return]
-KK: \Apl
+KK: \Aol
 KK: l1 six\[Return]
 KK: l2 seven\[Return]
-KK: \Apd
+KK: \Aod
 KK: op1 eight\[Return]
 KK: op2 nine\C\[Home]
 KK: \Cs
 KK: \CF
 # Uncheck ignore format
 KK: \At\Ai\Ah
-KK: \Ape
+KK: \Aoe
 KK: \Axregexp-mode\[Return][a-z]* \[Return]\[Return]\[Return]\[Return]\[Return]
 Cr: ^.*Putting
 Cr: ^.*action=buffer-begin
@@ -34,7 +34,7 @@ CP: Key (queried) [action=buffer-begin][Ctrl+Home]
 KK: \CF\[Delete]
 # Uncheck ignore format
 #KK: \At\Ai\Ah
-KK: \Apl
+KK: \Aol
 KK: \Axregexp-mode\[Return][a-z]2  \Axregexp-mode\[Return][a-z]*
 KK: \[Return]\[Return]\[Return]\[Return]\[Return]\[Return]
 Cr: ^.*Putting
