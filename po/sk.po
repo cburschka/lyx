@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-07-06 10:24+0200\n"
-"PO-Revision-Date: 2018-07-06 09:00+0000\n"
+"POT-Creation-Date: 2018-07-07 10:03+0200\n"
+"PO-Revision-Date: 2018-07-07 09:05+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1831,7 +1831,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:186 src/frontends/qt4/GuiGraphics.cpp:480
 msgid "Set &width:"
-msgstr "Nastaviť šír&ku:"
+msgstr "&Nastaviť šírku:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:196
 msgid "Scale image to maximum size not exceeding width and height"
@@ -1866,7 +1866,7 @@ msgstr "Názov súbora s obrázkom"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:313
 msgid "&Coordinates and Clipping"
-msgstr "Koordin&áty a Orezanie"
+msgstr "&Koordináty a Orezanie"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:347
 msgid ""
@@ -1905,7 +1905,7 @@ msgstr "Dodatočné LaTeX voľby"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:530
 msgid "LaTeX &options:"
-msgstr "LaTeX voľby:"
+msgstr "L&aTeX voľby:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:556
 msgid ""
@@ -30146,7 +30146,7 @@ msgstr "Vyberte súbor s grafikou"
 
 #: src/frontends/qt4/GuiGraphics.cpp:792
 msgid "&Clipart"
-msgstr "&Klipart"
+msgstr "&Grafika"
 
 #: src/frontends/qt4/GuiHSpace.cpp:45 src/frontends/qt4/GuiHSpace.cpp:58
 #: src/insets/InsetSpace.cpp:69
@@ -33616,7 +33616,7 @@ msgstr "Vlastná definícia klávesnice"
 
 #: lib/ui/stdtoolbars.inc:89
 msgid "Custom text styles"
-msgstr "Vlastné štýly textu|V"
+msgstr "Vlastné štýly textu"
 
 #: src/support/debug.cpp:49
 msgid "LaTeX generation/execution"
@@ -38439,9 +38439,3 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "&Multi-page table"
 #~ msgstr "V&iac-stranná tabuľka"
-
-#~ msgid "Springer SV Global (Obsolete Version)"
-#~ msgstr "Springer SV Global (zastaralá verzia)"
-
-#~ msgid "Springer SV Global (V. 3)"
-#~ msgstr "Springer SV Global (V. 3)"
