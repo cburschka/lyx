@@ -499,6 +499,10 @@ public:
 	std::string biblatex_bibstyle;
 	/// The biblatex citation style
 	std::string biblatex_citestyle;
+	/// Set the bib file encoding (for biblatex)
+	void setBibEncoding(std::string const & s) { bib_encoding = s; }
+	/// Get the bib file encoding (for biblatex)
+	std::string const & bibEncoding() const { return bib_encoding; }
 
 	/// options for pdf output
 	PDFOptions & pdfoptions();
@@ -572,6 +576,11 @@ private:
 	CiteEngineType cite_engine_type_;
 	/// the default BibTeX style file for the document
 	std::string biblio_style;
+	/// The encoding of the bib files, for Biblatex
+	/// (only one supported currently)
+	// FIXME: biblatex 3.12 introduces per-file
+	// encoding options. Update once that's spread.
+	std::string bib_encoding;
 	/// Split bibliography?
 	bool use_bibtopic;
 	///

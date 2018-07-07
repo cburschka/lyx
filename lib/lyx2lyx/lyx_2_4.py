@@ -439,6 +439,104 @@ def revert_vcolumns(document):
             add_to_preamble(document, ["\\usepackage{varwidth}"])
 
 
+def revert_bibencoding(document):
+    " Revert bibliography encoding "
+
+    # Get cite engine
+    engine = "basic"
+    i = find_token(document.header, "\\cite_engine", 0)
+    if i == -1:
+        document.warning("Malformed document! Missing \\cite_engine")
+    else:
+        engine = get_value(document.header, "\\cite_engine", i)
+
+    # Check if biblatex
+    biblatex = False
+    if engine in ["biblatex", "biblatex-natbib"]:
+        biblatex = True
+
+    # Map lyx to latex encoding names 
+    encodings = {
+        "utf8" : "utf8",
+        "utf8x" : "utf8x",
+        "armscii8" : "armscii8",
+        "iso8859-1" : "latin1",
+        "iso8859-2" : "latin2",
+        "iso8859-3" : "latin3",
+        "iso8859-4" : "latin4",
+        "iso8859-5" : "iso88595",
+        "iso8859-6" : "8859-6",
+        "iso8859-7" : "iso-8859-7",
+        "iso8859-8" : "8859-8",
+        "iso8859-9" : "latin5",
+        "iso8859-13" : "latin7",
+        "iso8859-15" : "latin9",
+        "iso8859-16" : "latin10",
+        "applemac" : "applemac",
+        "cp437" : "cp437",
+        "cp437de" : "cp437de",
+        "cp850" : "cp850",
+        "cp852" : "cp852",
+        "cp855" : "cp855",
+        "cp858" : "cp858",
+        "cp862" : "cp862",
+        "cp865" : "cp865",
+        "cp866" : "cp866",
+        "cp1250" : "cp1250",
+        "cp1251" : "cp1251",
+        "cp1252" : "cp1252",
+        "cp1255" : "cp1255",
+        "cp1256" : "cp1256",
+        "cp1257" : "cp1257",
+        "koi8-r" : "koi8-r",
+        "koi8-u" : "koi8-u",
+        "pt154" : "pt154",
+        "utf8-platex" : "utf8",
+        "ascii" : "ascii"
+    }
+
+    i = 0
+    bibresources = []
+    while (True):
+        i = find_token(document.body, "\\begin_inset CommandInset bibtex", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of bibtex inset at line %d!!" %(i))
+            i += 1
+            continue
+        encoding = get_quoted_value(document.body, "encoding", i, j)
+        if not encoding:
+            i += 1
+            continue
+        # remove encoding line
+        k = find_token(document.body, "encoding", i, j)
+        if k != -1:
+            del document.body[k]
+        # Re-find inset end line
+        j = find_end_of_inset(document.body, i)
+        if biblatex:
+            biblio_options = ""
+            h = find_token(document.header, "\\biblio_options", 0)
+            if h != -1:
+                biblio_options = get_value(document.header, "\\biblio_options", h)
+                if not "bibencoding" in biblio_options:
+                     document.header[h] += ",bibencoding=%s" % encodings[encoding]
+            else:
+                bs = find_token(document.header, "\\biblatex_bibstyle", 0)
+                if bs == -1:
+                    # this should not happen
+                    document.warning("Malformed LyX document! No \\biblatex_bibstyle header found!")
+                else:
+                    document.header[bs-1 : bs-1] = ["\\biblio_options bibencoding=" + encodings[encoding]]
+        else:
+            document.body[j+1:j+1] = put_cmd_in_ert("\\egroup")
+            document.body[i:i] = put_cmd_in_ert("\\bgroup\\inputencoding{" + encodings[encoding] + "}")
+
+        i = j + 1
+
+
 ##
 # Conversion hub
 #
@@ -455,10 +553,12 @@ convert = [
            [552, []],
            [553, []],
            [554, []],
-           [555, []]
+           [555, []],
+           [556, []]
           ]
 
 revert =  [
+           [555, [revert_bibencoding]],
            [554, [revert_vcolumns]],
            [553, [revert_stretchcolumn]],
            [552, [revert_tuftecite]],

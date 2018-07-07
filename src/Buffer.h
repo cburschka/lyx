@@ -505,7 +505,7 @@ public:
 	/// whether the cache is valid. If so, we do nothing. If not, then we
 	/// reload all the BibTeX info.
 	/// Note that this operates on the master document.
-	void reloadBibInfoCache() const;
+	void reloadBibInfoCache(bool const force = false) const;
 	/// \return the bibliography information for this buffer's master,
 	/// or just for it, if it isn't a child.
 	BiblioInfo const & masterBibInfo() const;

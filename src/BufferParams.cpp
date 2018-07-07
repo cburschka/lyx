@@ -2352,6 +2352,11 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			opts += delim + "backend=bibtex";
 			delim = ",";
 		}
+		if (!bib_encoding.empty() && encodings.fromLyXName(bib_encoding)) {
+			opts += delim + "bibencoding="
+				+ encodings.fromLyXName(bib_encoding)->latexName();
+			delim = ",";
+		}
 		if (!biblio_opts.empty())
 			opts += delim + biblio_opts;
 		if (!opts.empty())

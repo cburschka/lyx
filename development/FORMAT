@@ -7,6 +7,13 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2018-07-07  Jürgen Spitzmüller <spitz@lyx.org>
+	* format incremented to 556: Support for bib file encoding.
+          - New param "encoding" for CommandInset bibtex
+          This will be used for biblatex output as bibencoding package option,
+          for BibTeX, \bibliography will be wrapped into 
+          \bgroup\inputencoding{<enc>}...\egroup
+
 2018-07-01  Jürgen Spitzmüller <spitz@lyx.org>
 	* format incremented to 555: Support varwidth's V tabular column type.
           This effectively enables linebreaks, multipars and layout changes in

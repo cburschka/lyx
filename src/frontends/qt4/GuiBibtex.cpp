@@ -18,6 +18,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "CiteEnginesList.h"
+#include "Encoding.h"
 #include "FuncRequest.h"
 #include "LyXRC.h"
 #include "qt_helpers.h"
@@ -85,6 +86,8 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 		this, SLOT(rescanClicked()));
 	connect(biblatexOptsLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
+	connect(bibEncodingCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
 
 	add_ = new GuiBibtexAddDialog(this);
 	add_bc_.setPolicy(ButtonPolicy::OkCancelPolicy);
@@ -123,8 +126,22 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 	bc().addReadOnly(styleCB);
 	bc().addReadOnly(bibtocCB);
 	bc().addReadOnly(addBibPB);
+	bc().addReadOnly(bibEncodingCO);
 	// Delete/Up/Down are handled with more conditions in
 	// databaseChanged().
+
+	// Always put the default encoding in the first position.
+	bibEncodingCO->addItem(qt_("Document Encoding"), "default");
+	QMap<QString, QString> encodinglist;
+	for (auto const & encvar : encodings) {
+		if (!encvar.unsafe() && !encvar.guiName().empty())
+			encodinglist.insert(qt_(encvar.guiName()), toqstr(encvar.name()));
+	}
+	QMap<QString, QString>::const_iterator it = encodinglist.constBegin();
+	while (it != encodinglist.constEnd()) {
+		bibEncodingCO->addItem(it.key(), it.value());
+		++it;
+	}
 
 	// Make sure the delete/up/down buttons are disabled if necessary.
 	databaseChanged();
@@ -350,6 +367,12 @@ void GuiBibtex::updateContents()
 		btprint = from_ascii("btPrintCited");
 	btPrintCO->setCurrentIndex(btPrintCO->findData(toqstr(btprint)));
 
+	docstring encoding = params_["encoding"];
+	if (encoding.empty())
+		// default
+		encoding = from_ascii("default");
+	bibEncodingCO->setCurrentIndex(bibEncodingCO->findData(toqstr(encoding)));
+
 	// Only useful for biblatex
 	biblatexOptsLA->setVisible(biblatex);
 	biblatexOptsLE->setVisible(biblatex);
@@ -421,6 +444,8 @@ void GuiBibtex::applyView()
 	params_["biblatexopts"] = qstring_to_ucs4(biblatexOptsLE->text());
 
 	params_["btprint"] = qstring_to_ucs4(btPrintCO->itemData(btPrintCO->currentIndex()).toString());
+
+	params_["encoding"] = qstring_to_ucs4(bibEncodingCO->itemData(bibEncodingCO->currentIndex()).toString());
 }
 
 

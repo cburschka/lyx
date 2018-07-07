@@ -26,6 +26,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
+#include "output_latex.h"
 #include "output_xhtml.h"
 #include "OutputParams.h"
 #include "PDFOptions.h"
@@ -69,6 +70,7 @@ ParamInfo const & InsetBibtex::findInfo(string const & /* cmdName */)
 		param_info_.add("btprint", ParamInfo::LATEX_OPTIONAL);
 		param_info_.add("bibfiles", ParamInfo::LATEX_REQUIRED);
 		param_info_.add("options", ParamInfo::LYX_INTERNAL);
+		param_info_.add("encoding", ParamInfo::LYX_INTERNAL);
 		param_info_.add("biblatexopts", ParamInfo::LATEX_OPTIONAL);
 	}
 	return param_info_;
@@ -326,6 +328,19 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 				       _("There are spaces in the path to your BibTeX style file.\n"
 						      "BibTeX will be unable to find it."));
 		}
+		// Encoding
+		bool encoding_switched = false;
+		Encoding const * const save_enc = runparams.encoding;
+		docstring const encoding = getParam("encoding");
+		if (!encoding.empty() && encoding != from_ascii("default")) {
+			Encoding const * const enc = encodings.fromLyXName(to_ascii(encoding));
+			if (enc != runparams.encoding) {
+				os << "\\bgroup";
+				switchEncoding(os.os(), buffer().params(), runparams, *enc, true);
+				runparams.encoding = enc;
+				encoding_switched = true;
+			}
+		}
 		// Handle the bibtopic case
 		if (!db_out.empty() && buffer().masterParams().useBibtopic()) {
 			os << "\\begin{btSect}";
@@ -356,6 +371,13 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 				os << "\\nocite{*}\n";
 			}
 			os << "\\bibliography{" << getStringFromVector(db_out) << "}\n";
+		}
+		if (encoding_switched){
+			// Switch back
+			switchEncoding(os.os(), buffer().params(),
+				       runparams, *save_enc, true, true);
+			os << "\\egroup" << breakln;
+			runparams.encoding = save_enc;
 		}
 	}
 }
@@ -645,9 +667,9 @@ void InsetBibtex::parseBibTeXFiles(FileNameList & checkedFiles) const
 	//   bibtex does.
 	//
 	// Officially bibtex does only support ASCII, but in practice
-	// you can use the encoding of the main document as long as
-	// some elements like keys and names are pure ASCII. Therefore
-	// we convert the file from the buffer encoding.
+	// you can use any encoding as long as some elements like keys
+	// and names are pure ASCII. We support specifying an encoding,
+	// and we convert the file from that (default is buffer encoding).
 	// We don't restrict keys to ASCII in LyX, since our own
 	// InsetBibitem can generate non-ASCII keys, and nonstandard
 	// 8bit clean bibtex forks exist.
@@ -665,8 +687,12 @@ void InsetBibtex::parseBibTeXFiles(FileNameList & checkedFiles) const
 		else
 			// record that we check this.
 			checkedFiles.push_back(bibfile);
+		string encoding = buffer().masterParams().encoding().iconvName();
+		string const ienc = to_ascii(params()["encoding"]);
+		if (!ienc.empty() && ienc != "default" && encodings.fromLyXName(ienc))
+			encoding = encodings.fromLyXName(ienc)->iconvName();
 		ifdocstream ifs(bibfile.toFilesystemEncoding().c_str(),
-			ios_base::in, buffer().masterParams().encoding().iconvName());
+			ios_base::in, encoding);
 
 		char_type ch;
 		VarMap strings;
@@ -892,8 +918,16 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetBibtex::updateBuffer(ParIterator const &, UpdateType) {
+void InsetBibtex::updateBuffer(ParIterator const &, UpdateType)
+{
 	buffer().registerBibfiles(getBibFiles());
+	// record encoding of bib files for biblatex
+	string const enc = (params()["encoding"] == from_ascii("default")) ?
+				string() : to_ascii(params()["encoding"]);
+	if (buffer().params().bibEncoding() != enc) {
+		buffer().params().setBibEncoding(enc);
+		buffer().reloadBibInfoCache(true);
+	}
 }
 
 

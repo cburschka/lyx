@@ -2420,7 +2420,8 @@ BiblioInfo const & Buffer::bibInfo() const
 }
 
 
-void Buffer::registerBibfiles(FileNamePairList const & bf) const {
+void Buffer::registerBibfiles(FileNamePairList const & bf) const
+{
 	// We register the bib files in the master buffer,
 	// if there is one, but also in every single buffer,
 	// in case a child is compiled alone.
@@ -2468,17 +2469,17 @@ void Buffer::checkIfBibInfoCacheIsValid() const
 }
 
 
-void Buffer::reloadBibInfoCache() const
+void Buffer::reloadBibInfoCache(bool const force) const
 {
 	// use the master's cache
 	Buffer const * const tmp = masterBuffer();
 	if (tmp != this) {
-		tmp->reloadBibInfoCache();
+		tmp->reloadBibInfoCache(force);
 		return;
 	}
 
 	checkIfBibInfoCacheIsValid();
-	if (d->bibinfo_cache_valid_)
+	if (d->bibinfo_cache_valid_ && !force)
 		return;
 
 	d->bibinfo_.clear();
