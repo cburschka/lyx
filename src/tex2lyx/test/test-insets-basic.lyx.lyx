@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.4
-\lyxformat 554
+\lyxformat 556
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -1421,7 +1421,7 @@ clearpage}
 
 \begin_inset Tabular 
 <lyxtabular version="3" rows="66" columns="2">
-<features rotate="0" islongtable="true">
+<features rotate="0" islongtable="true" tabularwidth="0pt">
 <column alignment="none" valignment="top" special="@{*}r">
 <column alignment="none" valignment="top" special="|p{1in}@{*}">
 <row endfirsthead="true">
@@ -3478,7 +3478,7 @@ like this.
 From bug 7412 another example with more captions (can currently not produced in LyX): 
 \begin_inset Tabular 
 <lyxtabular version="3" rows="45" columns="2">
-<features rotate="0" islongtable="true" lastFootEmpty="true">
+<features rotate="0" islongtable="true" lastFootEmpty="true" tabularwidth="0pt">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <row endfirsthead="true" caption="true">
