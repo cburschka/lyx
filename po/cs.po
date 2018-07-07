@@ -6783,9 +6783,8 @@ msgid "Proof."
 msgstr "Důkaz."
 
 #: lib/layouts/InStar.module:2
-#, fuzzy
-msgid "Title and Preamble Hacks"
-msgstr "Title (Plain Frame)"
+msgid "Title a Preamble Hacks"
+msgstr "Triky pro titulek a preambuli"
 
 #: lib/layouts/InStar.module:12
 msgid ""
@@ -6797,16 +6796,16 @@ msgid ""
 "in title-related material. (If you put these in a Standard layout, this "
 "signals to LyX to output \\maketitle, which may then come too early.)"
 msgstr ""
+"Přidává dva nové styly: 1. Styl 'V preambuli', který vkládá svůj obsah do preambule, tj. umožňuje vkládat preambuli přímo do těla dokumentu. "
+"2. Styl 'V titulku', který vkládá svůj obsah do těla LaTeX-ového výstupu před příkaz \\maketitle. Lze použít pro změny v titulku, které se týkají poznámek a větví. (Ve standardním stylu mají podobné změny za následek predčasný výstup \\maketitle.)"
 
 #: lib/layouts/InStar.module:16
-#, fuzzy
 msgid "In Preamble"
-msgstr "Preamble"
+msgstr "V preambuli"
 
 #: lib/layouts/InStar.module:23
-#, fuzzy
 msgid "In Title"
-msgstr "Titulek"
+msgstr "V titulku"
 
 #: lib/layouts/RJournal.layout:3
 msgid "R Journal"
@@ -6877,7 +6876,7 @@ msgstr "Postery"
 #: lib/layouts/sciposter.layout:130 lib/layouts/sciposter.layout:133
 #: lib/layouts/sciposter.layout:160
 msgid "Giant"
-msgstr ""
+msgstr "Giant"
 
 #: lib/layouts/a0poster.layout:57 lib/layouts/a0poster.layout:60
 #: lib/layouts/a0poster.layout:86 lib/layouts/beamerposter.layout:69
@@ -6885,7 +6884,7 @@ msgstr ""
 #: lib/layouts/sciposter.layout:146 lib/layouts/sciposter.layout:149
 #: lib/layouts/sciposter.layout:175
 msgid "More Giant"
-msgstr ""
+msgstr "More Giant"
 
 #: lib/layouts/a0poster.layout:63 lib/layouts/a0poster.layout:66
 #: lib/layouts/a0poster.layout:92 lib/layouts/beamerposter.layout:75
@@ -6893,22 +6892,22 @@ msgstr ""
 #: lib/layouts/sciposter.layout:152 lib/layouts/sciposter.layout:155
 #: lib/layouts/sciposter.layout:181
 msgid "Most Giant"
-msgstr ""
+msgstr "Most Giant"
 
 #: lib/layouts/a0poster.layout:69 lib/layouts/beamerposter.layout:81
 #: lib/layouts/sciposter.layout:158
 msgid "Giant Snippet"
-msgstr ""
+msgstr "Giant Snippet"
 
 #: lib/layouts/a0poster.layout:84 lib/layouts/beamerposter.layout:96
 #: lib/layouts/sciposter.layout:173
 msgid "More Giant Snippet"
-msgstr ""
+msgstr "More Giant Snippet"
 
 #: lib/layouts/a0poster.layout:90 lib/layouts/beamerposter.layout:102
 #: lib/layouts/sciposter.layout:179
 msgid "Most Giant Snippet"
-msgstr ""
+msgstr "Most Giant Snippet"
 
 #: lib/layouts/aa.layout:3
 msgid "Astronomy & Astrophysics"
@@ -7127,7 +7126,7 @@ msgstr "Astronomy & Astrophysics (V. 4, Obsolete)"
 #: lib/layouts/sigplanconf.layout:4 lib/layouts/singlecol.layout:4
 #: lib/layouts/svglobal.layout:4
 msgid "Obsolete"
-msgstr ""
+msgstr "Zastaralé"
 
 #: lib/layouts/aapaper.layout:50 lib/layouts/agu_stdlists.inc:13
 #: lib/layouts/apa.layout:357 lib/layouts/apa6.layout:457
@@ -23988,296 +23987,272 @@ msgid "Simultaneous voiceless postalveolar and velar fricative"
 msgstr "Simultaneous voiceless postalveolar and velar fricative"
 
 #: lib/ui/stdtoolbars.inc:1387 src/insets/InsetIPAMacro.cpp:55
-#, fuzzy
 msgid "Top tie bar"
-msgstr "V středu nahoře"
+msgstr "Top tie bar"
 
 #: lib/ui/stdtoolbars.inc:1388 src/insets/InsetIPAMacro.cpp:56
-#, fuzzy
 msgid "Bottom tie bar"
-msgstr "V středu dole"
+msgstr "Bottom tie bar"
 
 #: lib/ui/stdtoolbars.inc:1392
 msgid "Long"
-msgstr ""
+msgstr "Long"
 
 #: lib/ui/stdtoolbars.inc:1393
 msgid "Half-long"
-msgstr ""
+msgstr "Half-long"
 
 #: lib/ui/stdtoolbars.inc:1394
-#, fuzzy
 msgid "Extra short"
-msgstr "Editovat zkratku"
+msgstr "Extra short"
 
 #: lib/ui/stdtoolbars.inc:1395
 msgid "Primary stress"
-msgstr ""
+msgstr "Primary stress"
 
 #: lib/ui/stdtoolbars.inc:1396
-#, fuzzy
 msgid "Secondary stress"
-msgstr "Sender Address:"
+msgstr "Secondary stress"
 
 #: lib/ui/stdtoolbars.inc:1397
 msgid "Minor (foot) group"
-msgstr ""
+msgstr "Minor (foot) group"
 
 #: lib/ui/stdtoolbars.inc:1398
 msgid "Major (intonation) group"
-msgstr ""
+msgstr "Major (intonation) group"
 
 #: lib/ui/stdtoolbars.inc:1399
-#, fuzzy
 msgid "Syllable break"
-msgstr "zalomení řádku"
+msgstr "Syllable break"
 
 #: lib/ui/stdtoolbars.inc:1400
 msgid "Linking (absence of a break)"
-msgstr ""
+msgstr "Linking (absence of a break)"
 
 #: lib/ui/stdtoolbars.inc:1404
 msgid "Voiceless"
-msgstr ""
+msgstr "Voiceless"
 
 #: lib/ui/stdtoolbars.inc:1405
 msgid "Voiceless (above)"
-msgstr ""
+msgstr "Voiceless (above)"
 
 #: lib/ui/stdtoolbars.inc:1406
-#, fuzzy
 msgid "Voiced"
-msgstr "Invoice"
+msgstr "Voiced"
 
 #: lib/ui/stdtoolbars.inc:1407
 msgid "Breathy voiced"
-msgstr ""
+msgstr "Breathy voiced"
 
 #: lib/ui/stdtoolbars.inc:1408
 msgid "Creaky voiced"
-msgstr ""
+msgstr "Creaky voiced"
 
 #: lib/ui/stdtoolbars.inc:1409
 msgid "Linguolabial"
-msgstr ""
+msgstr "Linguolabial"
 
 #: lib/ui/stdtoolbars.inc:1410
-#, fuzzy
 msgid "Dental"
-msgstr "fialová"
+msgstr "Dental"
 
 #: lib/ui/stdtoolbars.inc:1411
-#, fuzzy
 msgid "Apical"
-msgstr "Topical"
+msgstr "Apical"
 
 #: lib/ui/stdtoolbars.inc:1412
-#, fuzzy
 msgid "Laminal"
-msgstr "Okraj"
+msgstr "Laminal"
 
 #: lib/ui/stdtoolbars.inc:1413
-#, fuzzy
 msgid "Aspirated"
-msgstr "Aktivována"
+msgstr "Aspirated"
 
 #: lib/ui/stdtoolbars.inc:1414
 msgid "More rounded"
-msgstr ""
+msgstr "More rounded"
 
 #: lib/ui/stdtoolbars.inc:1415
 msgid "Less rounded"
-msgstr ""
+msgstr "Less rounded"
 
 #: lib/ui/stdtoolbars.inc:1416
-#, fuzzy
 msgid "Advanced"
-msgstr "Rozšířené vol&by"
+msgstr "Advanced"
 
 #: lib/ui/stdtoolbars.inc:1417
 msgid "Retracted"
-msgstr ""
+msgstr "Retracted"
 
 #: lib/ui/stdtoolbars.inc:1418
-#, fuzzy
 msgid "Centralized"
-msgstr "První velké|k"
+msgstr "Centralized"
 
 #: lib/ui/stdtoolbars.inc:1419
 msgid "Mid-centralized"
-msgstr ""
+msgstr "Mid-centralized"
 
 #: lib/ui/stdtoolbars.inc:1420
 msgid "Syllabic"
-msgstr ""
+msgstr "Syllabic"
 
 #: lib/ui/stdtoolbars.inc:1421
 msgid "Non-syllabic"
-msgstr ""
+msgstr "Non-syllabic"
 
 #: lib/ui/stdtoolbars.inc:1422
 msgid "Rhoticity"
-msgstr ""
+msgstr "Rhoticity"
 
 #: lib/ui/stdtoolbars.inc:1423
-#, fuzzy
 msgid "Labialized"
-msgstr "První velké|k"
+msgstr "Labialized"
 
 #: lib/ui/stdtoolbars.inc:1424
-#, fuzzy
 msgid "Palatized"
-msgstr "Palatino"
+msgstr "Palatized"
 
 #: lib/ui/stdtoolbars.inc:1425
 msgid "Velarized"
-msgstr ""
+msgstr "Velarized"
 
 #: lib/ui/stdtoolbars.inc:1426
 msgid "Pharyngialized"
-msgstr ""
+msgstr "Pharyngialized"
 
 #: lib/ui/stdtoolbars.inc:1427
 msgid "Velarized or pharyngialized"
-msgstr ""
+msgstr "Velarized or pharyngialized"
 
 #: lib/ui/stdtoolbars.inc:1428
-#, fuzzy
 msgid "Raised"
-msgstr "Revised"
+msgstr "Raised"
 
 #: lib/ui/stdtoolbars.inc:1429
-#, fuzzy
 msgid "Lowered"
-msgstr "Lowercase"
+msgstr "Lowered"
 
 #: lib/ui/stdtoolbars.inc:1430
 msgid "Advanced tongue root"
-msgstr ""
+msgstr "Advanced tongue root"
 
 #: lib/ui/stdtoolbars.inc:1431
 msgid "Retracted tongue root"
-msgstr ""
+msgstr "Retracted tongue root"
 
 #: lib/ui/stdtoolbars.inc:1432
 msgid "Nasalized"
-msgstr ""
+msgstr "Nasalized"
 
 #: lib/ui/stdtoolbars.inc:1433
 msgid "Nasal release"
-msgstr ""
+msgstr "Nasal release"
 
 #: lib/ui/stdtoolbars.inc:1434
 msgid "Lateral release"
-msgstr ""
+msgstr "Lateral release"
 
 #: lib/ui/stdtoolbars.inc:1435
-#, fuzzy
 msgid "No audible release"
-msgstr "dvojitý rám"
+msgstr "No audible release"
 
 #: lib/ui/stdtoolbars.inc:1439
 msgid "Extra high (accent)"
-msgstr ""
+msgstr "Extra high (accent)"
 
 #: lib/ui/stdtoolbars.inc:1440
 msgid "Extra high (tone letter)"
-msgstr ""
+msgstr "Extra high (tone letter)"
 
 #: lib/ui/stdtoolbars.inc:1441
 msgid "High (accent)"
-msgstr ""
+msgstr "High (accent)"
 
 #: lib/ui/stdtoolbars.inc:1442
 msgid "High (tone letter)"
-msgstr ""
+msgstr "High (tone letter)"
 
 #: lib/ui/stdtoolbars.inc:1443
 msgid "Mid (accent)"
-msgstr ""
+msgstr "Mid (accent)"
 
 #: lib/ui/stdtoolbars.inc:1444
-#, fuzzy
 msgid "Mid (tone letter)"
-msgstr "End of letter"
+msgstr "Mid (tone letter)"
 
 #: lib/ui/stdtoolbars.inc:1445
 msgid "Low (accent)"
-msgstr ""
+msgstr "Low (accent)"
 
 #: lib/ui/stdtoolbars.inc:1446
-#, fuzzy
 msgid "Low (tone letter)"
-msgstr "End of letter"
+msgstr "Low (tone letter)"
 
 #: lib/ui/stdtoolbars.inc:1447
 msgid "Extra low (accent)"
-msgstr ""
+msgstr "Extra low (accent)"
 
 #: lib/ui/stdtoolbars.inc:1448
 msgid "Extra low (tone letter)"
-msgstr ""
+msgstr "Extra low (tone letter)"
 
 #: lib/ui/stdtoolbars.inc:1449
-#, fuzzy
 msgid "Downstep"
-msgstr "&Dolů"
+msgstr "Downstep"
 
 #: lib/ui/stdtoolbars.inc:1450
 msgid "Upstep"
-msgstr ""
+msgstr "Upstep"
 
 #: lib/ui/stdtoolbars.inc:1451
-#, fuzzy
 msgid "Rising (accent)"
-msgstr "Chybí argument"
+msgstr "Rising (accent)"
 
 #: lib/ui/stdtoolbars.inc:1452
-#, fuzzy
 msgid "Rising (tone letter)"
-msgstr "End of letter"
+msgstr "Rising (tone letter)"
 
 #: lib/ui/stdtoolbars.inc:1453
 msgid "Falling (accent)"
-msgstr ""
+msgstr "Falling (accent)"
 
 #: lib/ui/stdtoolbars.inc:1454
 msgid "Falling (tone letter)"
-msgstr ""
+msgstr "Falling (tone letter)"
 
 #: lib/ui/stdtoolbars.inc:1455
 msgid "High rising (accent)"
-msgstr ""
+msgstr "High rising (accent)"
 
 #: lib/ui/stdtoolbars.inc:1456
 msgid "High rising (tone letter)"
-msgstr ""
+msgstr "High rising (tone letter)"
 
 #: lib/ui/stdtoolbars.inc:1457
 msgid "Low rising (accent)"
-msgstr ""
+msgstr "Low rising (accent)"
 
 #: lib/ui/stdtoolbars.inc:1458
 msgid "Low rising (tone letter)"
-msgstr ""
+msgstr "Low rising (tone letter)"
 
 #: lib/ui/stdtoolbars.inc:1459
 msgid "Rising-falling (accent)"
-msgstr ""
+msgstr "Rising-falling (accent)"
 
 #: lib/ui/stdtoolbars.inc:1460
 msgid "Rising-falling (tone letter)"
-msgstr ""
+msgstr "Rising-falling (tone letter)"
 
 #: lib/ui/stdtoolbars.inc:1461
-#, fuzzy
 msgid "Global rise"
-msgstr "&Globálně"
+msgstr "Global rise"
 
 #: lib/ui/stdtoolbars.inc:1462
-#, fuzzy
 msgid "Global fall"
-msgstr "&Globálně"
+msgstr "Global fall"
 
 #: lib/xtemplates/chess.xtemplate:14
 msgid "ChessDiagram"
