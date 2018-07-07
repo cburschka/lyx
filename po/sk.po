@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-07-07 10:03+0200\n"
-"PO-Revision-Date: 2018-07-07 09:05+0000\n"
+"POT-Creation-Date: 2018-07-07 15:30+0200\n"
+"PO-Revision-Date: 2018-07-07 13:46+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3478,6 +3478,10 @@ msgstr "Vyrovnávacia pamäť pre konvertor súborov"
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:254
 msgid "&Enabled"
 msgstr "Z&apnutá"
+
+#: src/frontends/qt4/ui/BibtexUi.ui:300
+msgid "&Encoding:"
+msgstr "&Kódovanie:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:274
 msgid "Maximum a&ge (in days):"
@@ -29695,6 +29699,10 @@ msgstr "Trieda dokumentu"
 msgid "Document Default"
 msgstr "Štandardné Nastavenia Dokumentu"
 
+#: src/frontends/qt4/GuiBibtex.cpp:134
+msgid "Document Encoding"
+msgstr "Kódovanie Dokumentov"
+
 #: src/frontends/qt4/GuiDocument.cpp:1495
 msgid "Modules"
 msgstr "Moduly"
@@ -30089,6 +30097,14 @@ msgstr ""
 "skupina bude zrušená,\n"
 "lebo tento obrázok bol jej posledným členom.\n"
 "Ako chcete pokračovať?"
+
+#: src/frontends/qt4/ui/BibtexUi.ui:310
+msgid ""
+"If your bibliography databases use a different encoding than the LyX "
+"document, specify it here"
+msgstr ""
+"Keď máte bibliografické databázy s iným kódovaním ako váš LyX-dokument, "
+"zadajte to tu"
 
 #: src/frontends/qt4/GuiGraphics.cpp:288
 #, c-format
