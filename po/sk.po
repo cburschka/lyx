@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-07-04 13:48+0200\n"
-"PO-Revision-Date: 2018-07-04 17:31+0000\n"
+"POT-Creation-Date: 2018-07-07 11:35+0200\n"
+"PO-Revision-Date: 2018-07-07 09:35+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1858,9 +1858,9 @@ msgid "Sets width of graphic. Leave unchecked to set automatically."
 msgstr ""
 "Nastaví šírku obrázku. Nechajte nezaškrtnuté na automatické nastavenie."
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:164 src/frontends/qt4/GuiGraphics.cpp:480
+#: src/frontends/qt4/ui/GraphicsUi.ui:186 src/frontends/qt4/GuiGraphics.cpp:480
 msgid "Set &width:"
-msgstr "Nastaviť šír&ku:"
+msgstr "&Nastaviť šírku:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:174
 msgid "Scale image to maximum size not exceeding width and height"
@@ -1895,7 +1895,7 @@ msgstr "Názov súbora s obrázkom"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:313
 msgid "&Coordinates and Clipping"
-msgstr "Koordin&áty a Orezanie"
+msgstr "&Koordináty a Orezanie"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:347
 msgid ""
@@ -1932,9 +1932,9 @@ msgstr ""
 msgid "Additional LaTeX options"
 msgstr "Dodatočné LaTeX voľby"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:491
+#: src/frontends/qt4/ui/GraphicsUi.ui:530
 msgid "LaTeX &options:"
-msgstr "LaTeX voľby:"
+msgstr "L&aTeX voľby:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:517
 msgid ""
@@ -6852,7 +6852,7 @@ msgstr "V Titule"
 
 #: lib/layouts/RJournal.layout:3
 msgid "R Journal"
-msgstr "R Žurnál"
+msgstr "R Časopis"
 
 #: lib/layouts/RJournal.layout:4 lib/layouts/bxjsreport.layout:4
 #: lib/layouts/ctex-report.layout:4 lib/layouts/extreport.layout:4
@@ -7591,7 +7591,7 @@ msgstr "Vďaka: "
 
 #: lib/layouts/acmart.layout:106
 msgid "ACM Journal"
-msgstr "ACM Žurnál"
+msgstr "ACM Časopis"
 
 #: lib/layouts/acmart.layout:109 lib/layouts/apa6.layout:308
 #: lib/layouts/apa6.layout:316 lib/layouts/apa6.layout:325
@@ -7601,7 +7601,7 @@ msgstr "Preambula"
 
 #: lib/layouts/acmart.layout:111
 msgid "Journal's Short Name: "
-msgstr "Skratka Žurnála: "
+msgstr "Skratka Časopisu: "
 
 #: lib/layouts/acmart.layout:122
 msgid "ACM Conference"
@@ -8356,11 +8356,11 @@ msgstr "Špeciálna-sekcia:"
 
 #: lib/layouts/agu_stdtitle.inc:47
 msgid "AGU-journal"
-msgstr "AGU-žurnál"
+msgstr "AGU-časopis"
 
 #: lib/layouts/agu_stdtitle.inc:51
 msgid "AGU-journal:"
-msgstr "AGU-žurnál:"
+msgstr "AGU-časopis:"
 
 #: lib/layouts/agu_stdtitle.inc:59
 msgid "Citation-number:"
@@ -9039,7 +9039,7 @@ msgstr "Poznámka Autor:"
 
 #: lib/layouts/apa6.layout:307 lib/layouts/egs.layout:355
 msgid "Journal"
-msgstr "Žurnál"
+msgstr "Časopis"
 
 #: lib/layouts/apa6.layout:324
 msgid "CopNum"
@@ -10601,7 +10601,7 @@ msgstr "DocBook Článok (SGML)"
 
 #: lib/layouts/doublecol-new.layout:3
 msgid "Inderscience A4 Journals"
-msgstr "Inderscience A4 časopisy"
+msgstr "Inderscience A4 Časopisy"
 
 #: lib/layouts/dtk.layout:3
 msgid "Die TeXnische Komoedie"
@@ -10734,7 +10734,7 @@ msgstr "Príslušenstvo"
 
 #: lib/layouts/egs.layout:368
 msgid "Journal:"
-msgstr "Žurnál:"
+msgstr "Časopis:"
 
 #: lib/layouts/egs.layout:377
 msgid "msnumber"
@@ -12729,7 +12729,7 @@ msgstr "Japonský Článok (Štandardná Trieda)"
 
 #: lib/layouts/jasatex.layout:3
 msgid "Journal of the Acoustical Society of America (JASA)"
-msgstr "Journal of the Acoustical Society of America (JASA)"
+msgstr "Časopis Akustickej Spoločnosti v Amerike (JASA)"
 
 #: lib/layouts/jasatex.layout:122
 msgid "Alternative Affiliation"
@@ -12781,7 +12781,7 @@ msgstr "Japonská Kniha (Trieda JS)"
 
 #: lib/layouts/jss.layout:3
 msgid "Journal of Statistical Software (JSS) version 2"
-msgstr "Journal of Statistical Software (JSS) verzia 2"
+msgstr "Časopis pre Štatistický Softvér (JSS) verzia 2"
 
 #: lib/layouts/jss.layout:107
 msgid "Plain Keywords"
@@ -15188,7 +15188,7 @@ msgstr "Inderscience 9.5 x 6.5 Časopisy"
 
 #: lib/layouts/singlecol.layout:3
 msgid "Inderscience Journals (Obsolete)"
-msgstr "Inderscience Žurnály (Zastaralé)"
+msgstr "Inderscience Časopisy (Zastaralé)"
 
 #: lib/layouts/slides.layout:107
 msgid "New Slide:"
