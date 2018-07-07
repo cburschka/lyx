@@ -1036,8 +1036,6 @@ bool Tabular::updateColumnWidths(MetricsInfo & mi)
 	map<col_type, int> max_pwidth;
 	// collect max. variable width of column
 	map<col_type, int> max_width;
-	// collect max. variable width of xcolumn
-	map<col_type, int> max_xwidth;
 
 	for(col_type c = 0; c < ncols(); ++c)
 		for(row_type r = 0; r < nrows(); ++r) {
@@ -1046,9 +1044,7 @@ bool Tabular::updateColumnWidths(MetricsInfo & mi)
 				max_dwidth[c] = max(max_dwidth[c], cell_info[r][c].decimal_width);
 			if (!getPWidth(i).zero())
 				max_pwidth[c] = max(max_pwidth[c], cell_info[r][c].width);
-			else if (column_info[c].varwidth)
-				max_xwidth[c] = max(max_xwidth[c], cell_info[r][c].width);
-			else
+			else if (!column_info[c].varwidth)
 				max_width[c] = max(max_width[c], cell_info[r][c].width);
 		}
 
@@ -1075,20 +1071,10 @@ bool Tabular::updateColumnWidths(MetricsInfo & mi)
 		vcolwidth = restwidth / restcols;
 
 	// Now consider that some variable width columns exceed the vcolwidth
-	// FIXME As opposed to tabular*, tabularx with X column do not exceed
-	//       the overall table width. This is not yet represented, as it
-	//       needs to include row breaking.
 	if (vcolwidth > 0) {
 		bool changed = false;
 		for (auto const w : max_width) {
 			if (tabularx || w.second > vcolwidth) {
-				--restcols;
-				restwidth -= w.second;
-				changed = true;
-			}
-		}
-		for (auto const w : max_xwidth) {
-			if (w.second > vcolwidth) {
 				--restcols;
 				restwidth -= w.second;
 				changed = true;
@@ -1112,6 +1098,8 @@ bool Tabular::updateColumnWidths(MetricsInfo & mi)
 				else if (getPWidth(i).zero() && vcolwidth > 0) {
 					if (tabularx && !column_info[c].varwidth)
 						new_width = max(new_width, cellInfo(i).width);
+					else if (tabularx)
+						new_width = vcolwidth;
 					else
 						new_width = max(vcolwidth, max(new_width, cellInfo(i).width));
 				} else
@@ -1121,7 +1109,9 @@ bool Tabular::updateColumnWidths(MetricsInfo & mi)
 
 		if (column_info[c].width != new_width) {
 			column_info[c].width = new_width;
-			update = true;
+			// Do not trigger update when no space is left for variable
+			// columns, as this will loop
+			update = tab_width.zero() || restwidth > 0;
 		}
 	}
 	// update col widths to fit merged cells
@@ -1138,7 +1128,9 @@ bool Tabular::updateColumnWidths(MetricsInfo & mi)
 
 			if (cellInfo(i).width > old_width) {
 				column_info[c + span - 1].width += cellInfo(i).width - old_width;
-				update = true;
+				// Do not trigger update when no space is left for variable
+				// columns, as this will loop
+				update = tab_width.zero() || restwidth > 0;
 			}
 		}
 
@@ -4001,8 +3993,10 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			Length const p_width = tabular.getPWidth(cell);
 			if (!p_width.zero())
 				m.base.textwidth = mi.base.inPixels(p_width);
+			else if (tabular.column_info[c].varwidth)
+				m.base.textwidth = tabular.column_info[c].width;
 			tabular.cellInset(cell)->metrics(m, dim0);
-			if (!p_width.zero())
+			if (!p_width.zero() || tabular.column_info[c].varwidth)
 				dim0.wid = m.base.textwidth;
 			tabular.cellInfo(cell).width = dim0.wid + 2 * WIDTH_OF_LINE
 				+ tabular.interColumnSpace(cell);
@@ -4069,7 +4063,10 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 		tabular.setRowDescent(r, maxdes + ADD_TO_HEIGHT + bottom_space);
 	}
 
-	tabular.updateColumnWidths(mi);
+	// We need to recalculate the metrics after column width calculation
+	// with xtabular (possibly multiple times, so the call is recursive).
+	if (tabular.updateColumnWidths(mi) && tabular.hasVarwidthColumn())
+		metrics(mi, dim);
 	dim.asc = tabular.rowAscent(0) - tabular.offsetVAlignment();
 	dim.des = tabular.height() - dim.asc;
 	dim.wid = tabular.width() + 2 * ADD_TO_TABULAR_WIDTH;
