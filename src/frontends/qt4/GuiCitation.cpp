@@ -136,9 +136,9 @@ GuiCitation::GuiCitation(GuiView & lv)
 	connect(textAfterED, SIGNAL(textChanged(QString)),
 		this, SLOT(updateStyles()));
 	connect(textBeforeED, SIGNAL(returnPressed()),
-		this, SLOT(on_okPB_clicked()));
+		this, SLOT(on_buttonBox_accepted()));
 	connect(textAfterED, SIGNAL(returnPressed()),
-		this, SLOT(on_okPB_clicked()));
+		this, SLOT(on_buttonBox_accepted()));
 
 	selectionManager = new GuiSelectionManager(this, availableLV, selectedLV,
 			addPB, deletePB, upPB, downPB, &available_model_, &selected_model_, 1);
@@ -147,7 +147,7 @@ GuiCitation::GuiCitation(GuiView & lv)
 	connect(selectionManager, SIGNAL(updateHook()),
 		this, SLOT(updateControls()));
 	connect(selectionManager, SIGNAL(okHook()),
-		this, SLOT(on_okPB_clicked()));
+		this, SLOT(on_buttonBox_accepted()));
 
 	connect(filter_, SIGNAL(rightButtonClicked()),
 		this, SLOT(resetFilter()));
@@ -208,7 +208,7 @@ void GuiCitation::showEvent(QShowEvent * e)
 }
 
 
-void GuiCitation::on_okPB_clicked()
+void GuiCitation::on_buttonBox_accepted()
 {
 	applyView();
 	clearSelection();
@@ -216,24 +216,27 @@ void GuiCitation::on_okPB_clicked()
 }
 
 
-void GuiCitation::on_cancelPB_clicked()
+void GuiCitation::on_buttonBox_rejected()
 {
 	clearSelection();
 	hide();
 }
 
 
-void GuiCitation::on_applyPB_clicked()
+void GuiCitation::on_buttonBox_clicked(QAbstractButton * button)
 {
-	applyView();
-}
-
-
-void GuiCitation::on_restorePB_clicked()
-{
-	init();
-	updateFilterHint();
-	filterPressed();
+	switch (buttonBox->standardButton(button)) {
+	case QDialogButtonBox::Apply:
+		applyView();
+		break;
+	case QDialogButtonBox::Reset:
+		init();
+		updateFilterHint();
+		filterPressed();
+		break;
+	default:
+		break;
+	}
 }
 
 
@@ -452,8 +455,8 @@ bool GuiCitation::isSelected(QModelIndex const & idx)
 void GuiCitation::setButtons()
 {
 	int const srows = selectedLV->model()->rowCount();
-	applyPB->setEnabled(srows > 0);
-	okPB->setEnabled(srows > 0);
+	buttonBox->button(QDialogButtonBox::Apply)->setEnabled(srows > 0);
+	buttonBox->button(QDialogButtonBox::Ok)->setEnabled(srows > 0);
 }
 
 
@@ -802,8 +805,8 @@ void GuiCitation::init()
 	} else
 		availableLV->setFocus();
 
-	applyPB->setEnabled(false);
-	okPB->setEnabled(false);
+	buttonBox->button(QDialogButtonBox::Apply)->setEnabled(false);
+	buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
 }
 
 

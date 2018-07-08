@@ -39,6 +39,7 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
+#include <QDialogButtonBox>
 #include <QPushButton>
 #include <QListWidget>
 #include <QCheckBox>
@@ -60,12 +61,8 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 	QDialog::setModal(true);
 	setWindowModality(Qt::WindowModal);
 
-	connect(okPB, SIGNAL(clicked()),
-		this, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()),
-		this, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()),
-		this, SLOT(slotClose()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(slotButtonBox(QAbstractButton *)));
 	connect(stylePB, SIGNAL(clicked()),
 		this, SLOT(browsePressed()));
 	connect(deletePB, SIGNAL(clicked()),
@@ -93,16 +90,14 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 
 	add_ = new GuiBibtexAddDialog(this);
 	add_bc_.setPolicy(ButtonPolicy::OkCancelPolicy);
-	add_bc_.setOK(add_->addPB);
-	add_bc_.setCancel(add_->closePB);
+	add_bc_.setOK(add_->buttonBox->button(QDialogButtonBox::Ok));
+	add_bc_.setCancel(add_->buttonBox->button(QDialogButtonBox::Cancel));
 	add_bc_.addCheckedLineEdit(add_->bibED, 0);
 
 	connect(add_->bibED, SIGNAL(textChanged(QString)),
 		this, SLOT(bibEDChanged()));
-	connect(add_->addPB, SIGNAL(clicked()),
-		this, SLOT(addDatabase()));
-	connect(add_->addPB, SIGNAL(clicked()),
-		add_, SLOT(accept()));
+	connect(add_->buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(addBBClicked(QAbstractButton *)));
 	connect(add_->rescanPB, SIGNAL(clicked()),
 		this, SLOT(rescanClicked()));
 	connect(add_->bibLW, SIGNAL(itemActivated(QListWidgetItem *)),
@@ -113,17 +108,15 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 		this, SLOT(availableChanged()));
 	connect(add_->browsePB, SIGNAL(clicked()),
 		this, SLOT(browseBibPressed()));
-	connect(add_->closePB, SIGNAL(clicked()),
-		add_, SLOT(reject()));
 
 	add_->bibLW->setToolTip(formatToolTip(qt_("This list consists of all databases that are indexed by LaTeX and thus are found without a file path. "
 				    "This is usually everything in the bib/ subdirectory of LaTeX's texmf tree. "
 				    "If you want to reuse your own database, this is the place you should store it.")));
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
-	bc().setOK(okPB);
-	bc().setApply(applyPB);
-	bc().setCancel(closePB);
+	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
+	bc().setApply(buttonBox->button(QDialogButtonBox::Apply));
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
 	bc().addReadOnly(databaseLW);
 	bc().addReadOnly(stylePB);
 	bc().addReadOnly(styleCB);
@@ -148,6 +141,22 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 
 	// Make sure the delete/up/down buttons are disabled if necessary.
 	databaseChanged();
+}
+
+
+void GuiBibtex::addBBClicked(QAbstractButton * button)
+{
+	switch (add_->buttonBox->standardButton(button)) {
+	case QDialogButtonBox::Ok:
+		addDatabase();
+		add_->accept();
+		break;
+	case QDialogButtonBox::Cancel:
+		add_->reject();
+		break;
+	default:
+		break;
+	}
 }
 
 

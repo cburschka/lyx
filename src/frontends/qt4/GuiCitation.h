@@ -47,10 +47,9 @@ public:
 	GuiCitation(GuiView & lv);
 
 private Q_SLOTS:
-	void on_okPB_clicked();
-	void on_cancelPB_clicked();
-	void on_restorePB_clicked();
-	void on_applyPB_clicked();
+	void on_buttonBox_accepted();
+	void on_buttonBox_rejected();
+	void on_buttonBox_clicked(QAbstractButton *);
 	void on_literalCB_clicked();
 	void filterPressed();
 	void filterChanged(const QString & text);

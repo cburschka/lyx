@@ -29,6 +29,7 @@
 #include "support/FileName.h"
 #include "support/gettext.h"
 
+#include <QDialogButtonBox>
 #include <QThread>
 
 
@@ -46,8 +47,8 @@ GuiCompare::GuiCompare(GuiView & lv)
 	setupUi(this);
 	setModal(Qt::WindowModal);
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotCancel()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(slotButtonBox(QAbstractButton *)));
 
 	connect(newFilePB, SIGNAL(clicked()), this, SLOT(selectNewFile()));
 	connect(oldFilePB, SIGNAL(clicked()), this, SLOT(selectOldFile()));
@@ -64,10 +65,10 @@ GuiCompare::GuiCompare(GuiView & lv)
 	newSettingsRB->setChecked(true);
 	trackingCB->setChecked(true);
 
-	closePB->setCursor(Qt::ArrowCursor);
+	buttonBox->button(QDialogButtonBox::Ok)->setCursor(Qt::ArrowCursor);
 
 	bc().setPolicy(ButtonPolicy::OkApplyCancelPolicy);
-	bc().setOK(okPB);
+	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
 }
 
 GuiCompare::~GuiCompare()
@@ -182,14 +183,14 @@ void GuiCompare::enableControls(bool enable)
 	oldFileLA->setEnabled(enable);
 	oldFilePB->setEnabled(enable);
 	oldFileCB->setEnabled(enable);
-	okPB->setEnabled(enable);
+	buttonBox->button(QDialogButtonBox::Ok)->setEnabled(enable);
 	groupBox->setEnabled(enable);
 	progressBar->setEnabled(!enable);
 
 	if (enable)
-		closePB->setText(qt_("Close"));
+		buttonBox->button(QDialogButtonBox::Cancel)->setText(qt_("Close"));
 	else
-		closePB->setText(qt_("Cancel"));
+		buttonBox->button(QDialogButtonBox::Cancel)->setText(qt_("Cancel"));
 }
 
 
@@ -266,6 +267,21 @@ void GuiCompare::slotCancel()
 		GuiDialog::slotClose();
 		progressBar->setValue(0);
 		statusBar->clearMessage();
+	}
+}
+
+
+void GuiCompare::slotButtonBox(QAbstractButton * button)
+{
+	switch (buttonBox->standardButton(button)) {
+	case QDialogButtonBox::Ok:
+		slotOK();
+		break;
+	case QDialogButtonBox::Cancel:
+		slotCancel();
+		break;
+	default:
+		break;
 	}
 }
 

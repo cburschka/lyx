@@ -273,7 +273,7 @@ GuiAbout::GuiAbout(GuiView & lv)
 }
 
 
-void GuiAbout::on_closePB_clicked()
+void GuiAbout::on_buttonBox_rejected()
 {
 	close();
 }

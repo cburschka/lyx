@@ -26,7 +26,7 @@ public:
 	GuiAbout(GuiView & lv);
 
 private Q_SLOTS:
-	void on_closePB_clicked();
+	void on_buttonBox_rejected();
 
 private:
 	/// Controller stuff

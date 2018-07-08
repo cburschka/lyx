@@ -23,7 +23,8 @@
 #include "support/convert.h"
 #include "support/lstrings.h"
 
-
+#include <QDialogButtonBox>
+#include <QPushButton>
 
 using namespace std;
 using namespace lyx::support;
@@ -39,8 +40,8 @@ GuiCompareHistory::GuiCompareHistory(GuiView & lv)
 	setupUi(this);
 	setModal(Qt::WindowModal);
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(cancelPB, SIGNAL(clicked()), this, SLOT(slotCancel()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(slotButtonBox(QAbstractButton *)));
 
 	connect(revbackRB, SIGNAL(clicked()), this, SLOT(selectRevback()));
 	connect(betweenrevRB, SIGNAL(clicked()), this, SLOT(selectBetweenrev()));
@@ -49,7 +50,7 @@ GuiCompareHistory::GuiCompareHistory(GuiView & lv)
 bool GuiCompareHistory::initialiseParams(std::string const &)
 {
 	string revstring = lyxview().currentBufferView()->buffer().lyxvc().revisionInfo(LyXVC::File);
-	int rev=0;
+	int rev = 0;
 
 	string tmp;
 	bool enableBetween = true;
@@ -69,7 +70,7 @@ bool GuiCompareHistory::initialiseParams(std::string const &)
 	// later we can provide comparison between two hashes
 	betweenrevRB->setEnabled(enableBetween);
 
-	okPB->setEnabled(rev);
+	buttonBox->button(QDialogButtonBox::Ok)->setEnabled(rev);
 	rev1SB->setMaximum(rev);
 	rev2SB->setMaximum(rev);
 	revbackSB->setMaximum(rev-1);

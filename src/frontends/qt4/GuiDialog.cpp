@@ -18,6 +18,7 @@
 #include "support/debug.h"
 
 #include <QCloseEvent>
+#include <QDialogButtonBox>
 
 using namespace std;
 
@@ -87,6 +88,29 @@ void GuiDialog::slotRestore()
 	// info by calling GuiDialog::updateView().
 	updateDialog();
 	bc().restore();
+}
+
+
+void GuiDialog::slotButtonBox(QAbstractButton * button)
+{
+	QDialogButtonBox * bbox = qobject_cast<QDialogButtonBox*>(sender());
+	switch (bbox->standardButton(button)) {
+	case QDialogButtonBox::Ok:
+		slotOK();
+		break;
+	case QDialogButtonBox::Apply:
+		slotApply();
+		break;
+	case QDialogButtonBox::Cancel:
+		slotClose();
+		break;
+	case QDialogButtonBox::Reset:
+	case QDialogButtonBox::RestoreDefaults:
+		slotRestore();
+		break;
+	default:
+		break;
+	}
 }
 
 

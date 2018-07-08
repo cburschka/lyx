@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>328</width>
-    <height>377</height>
+    <height>385</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -28,7 +28,7 @@
      <item row="0" column="0" colspan="2">
       <widget class="QLabel" name="bibLA">
        <property name="text">
-        <string>&amp;Databases found by LaTeX:</string>
+        <string>Databases fou&amp;nd by LaTeX:</string>
        </property>
        <property name="buddy">
         <cstring>bibLW</cstring>
@@ -81,7 +81,7 @@
         <string>Here you can enter a local BibTeX database name or browse your directory.</string>
        </property>
        <property name="text">
-        <string>&amp;Local databases:</string>
+        <string>Lo&amp;cal databases:</string>
        </property>
        <property name="buddy">
         <cstring>bibED</cstring>
@@ -141,41 +141,9 @@
       <number>0</number>
      </property>
      <item>
-      <spacer>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="addPB">
-       <property name="text">
-        <string>&amp;Add</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-       <property name="default">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB">
-       <property name="text">
-        <string>Cancel</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
+      <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
        </property>
       </widget>
      </item>
@@ -187,8 +155,6 @@
   <tabstop>bibLW</tabstop>
   <tabstop>bibED</tabstop>
   <tabstop>browsePB</tabstop>
-  <tabstop>addPB</tabstop>
-  <tabstop>closePB</tabstop>
  </tabstops>
  <includes>
   <include location="local">qt_i18n.h</include>

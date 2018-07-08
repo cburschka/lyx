@@ -44,6 +44,7 @@ public:
 	explicit GuiBibtex(GuiView & lv);
 
 private Q_SLOTS:
+	void addBBClicked(QAbstractButton * button);
 	void change_adaptor();
 	void browsePressed();
 	void browseBibPressed();

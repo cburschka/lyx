@@ -40,6 +40,8 @@ private Q_SLOTS:
 	///
 	void slotCancel();
 	///
+	void slotButtonBox(QAbstractButton *);
+	///
 	void changeAdaptor();
 	///
 	void selectNewFile();

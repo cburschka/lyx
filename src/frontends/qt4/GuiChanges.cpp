@@ -40,14 +40,15 @@ GuiChanges::GuiChanges(GuiView & lv)
 {
 	setupUi(this);
 
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(slotButtonBox(QAbstractButton *)));
 	connect(nextPB, SIGNAL(clicked()), this, SLOT(nextChange()));
 	connect(previousPB, SIGNAL(clicked()), this, SLOT(previousChange()));
 	connect(rejectPB, SIGNAL(clicked()), this, SLOT(rejectChange()));
 	connect(acceptPB, SIGNAL(clicked()), this, SLOT(acceptChange()));
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
-	bc().setCancel(closePB);
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
 	bc().addReadOnly(acceptPB);
 	bc().addReadOnly(rejectPB);
 }

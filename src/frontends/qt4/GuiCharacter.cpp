@@ -211,9 +211,8 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 {
 	setupUi(this);
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(slotButtonBox(QAbstractButton *)));
 	connect(autoapplyCB, SIGNAL(stateChanged(int)), this,
 		SLOT(slotAutoApply()));
 
@@ -249,9 +248,9 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	fillCombo(langCO, language);
 
 	bc().setPolicy(ButtonPolicy::OkApplyCancelAutoReadOnlyPolicy);
-	bc().setOK(okPB);
-	bc().setApply(applyPB);
-	bc().setCancel(closePB);
+	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
+	bc().setApply(buttonBox->button(QDialogButtonBox::Apply));
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
 	bc().setAutoApply(autoapplyCB);
 	bc().addReadOnly(familyCO);
 	bc().addReadOnly(seriesCO);

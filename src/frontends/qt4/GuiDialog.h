@@ -15,6 +15,7 @@
 #include "Dialog.h"
 #include "ButtonController.h"
 
+#include <QAbstractButton>
 #include <QDialog>
 
 
@@ -56,6 +57,8 @@ public Q_SLOTS:
 	void slotAutoApply();
 	// Close button clicked or closed from WindowManager
 	void slotClose();
+	// A collectiong slot for QDialogButtonBox
+	void slotButtonBox(QAbstractButton *);
 	///
 	void closeEvent(QCloseEvent * e);
 
