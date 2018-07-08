@@ -138,6 +138,21 @@ void GuiCompareHistory::slotCancel()
 }
 
 
+void GuiCompareHistory::slotButtonBox(QAbstractButton * button)
+{
+	switch (buttonBox->standardButton(button)) {
+	case QDialogButtonBox::Ok:
+		slotOK();
+		break;
+	case QDialogButtonBox::Cancel:
+		slotCancel();
+		break;
+	default:
+		break;
+	}
+}
+
+
 Dialog * createGuiCompareHistory(GuiView & lv) { return new GuiCompareHistory(lv); }
 
 

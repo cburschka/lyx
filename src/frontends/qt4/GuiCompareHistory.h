@@ -34,6 +34,8 @@ private Q_SLOTS:
 	///
 	void slotCancel();
 	///
+	void slotButtonBox(QAbstractButton *);
+	///
 	void selectRevback();
 	///
 	void selectBetweenrev();
