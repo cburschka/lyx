@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>368</width>
-    <height>441</height>
+    <width>397</width>
+    <height>536</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,225 +16,246 @@
   <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
+  <layout class="QGridLayout" name="gridLayout_4">
    <item row="0" column="0">
-    <widget class="QLabel" name="databaseLA">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
+    <widget class="QGroupBox" name="bibGB">
      <property name="toolTip">
-      <string>BibTeX database to use</string>
+      <string>BibTeX database(s) to use</string>
      </property>
-     <property name="text">
-      <string>Da&amp;tabases</string>
+     <property name="title">
+      <string>&amp;Databases</string>
      </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-     </property>
-     <property name="buddy">
-      <cstring>databaseLW</cstring>
-     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QListWidget" name="databaseLW"/>
+      </item>
+      <item row="0" column="1">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QPushButton" name="addBibPB">
+          <property name="toolTip">
+           <string>Add a BibTeX database file</string>
+          </property>
+          <property name="text">
+           <string>&amp;Add...</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="deletePB">
+          <property name="toolTip">
+           <string>Remove the selected database</string>
+          </property>
+          <property name="text">
+           <string>&amp;Delete</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="upPB">
+          <property name="toolTip">
+           <string>Move the selected database upwards in the list</string>
+          </property>
+          <property name="text">
+           <string>&amp;Up</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="downPB">
+          <property name="toolTip">
+           <string>Move the selected database downwards in the list</string>
+          </property>
+          <property name="text">
+           <string>Do&amp;wn</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="bibEncodingLA">
+          <property name="text">
+           <string>E&amp;ncoding:</string>
+          </property>
+          <property name="buddy">
+           <cstring>bibEncodingCO</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="bibEncodingCO">
+          <property name="toolTip">
+           <string>If your bibliography databases use a different encoding than the LyX document, specify it here</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </widget>
    </item>
-   <item row="1" column="0" rowspan="5" colspan="2">
-    <widget class="QListWidget" name="databaseLW"/>
-   </item>
-   <item row="1" column="2">
-    <widget class="QPushButton" name="addBibPB">
-     <property name="toolTip">
-      <string>Add a BibTeX database file</string>
-     </property>
-     <property name="text">
-      <string>&amp;Add...</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2">
-    <widget class="QPushButton" name="deletePB">
-     <property name="toolTip">
-      <string>Remove the selected database</string>
-     </property>
-     <property name="text">
-      <string>&amp;Delete</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="2">
-    <widget class="QPushButton" name="upPB">
-     <property name="toolTip">
-      <string>Move the selected database upwards in the list</string>
-     </property>
-     <property name="text">
-      <string>&amp;Up</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="2">
-    <widget class="QPushButton" name="downPB">
-     <property name="toolTip">
-      <string>Move the selected database downwards in the list</string>
-     </property>
-     <property name="text">
-      <string>Do&amp;wn</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="2" rowspan="2">
-    <spacer>
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>77</width>
-       <height>16</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="7" column="2" rowspan="2">
-    <widget class="QPushButton" name="rescanPB">
-     <property name="toolTip">
-      <string>Scan for new databases and styles</string>
-     </property>
-     <property name="text">
-      <string>&amp;Rescan</string>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="0">
-    <widget class="QLabel" name="styleLA">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="bstGB">
      <property name="toolTip">
       <string>The BibTeX style</string>
      </property>
-     <property name="text">
+     <property name="title">
       <string>St&amp;yle</string>
      </property>
-     <property name="buddy">
-      <cstring>styleCB</cstring>
-     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QComboBox" name="styleCB">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Choose a style file</string>
+        </property>
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+        <property name="autoCompletion">
+         <bool>true</bool>
+        </property>
+        <property name="duplicatesEnabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QPushButton" name="stylePB">
+        <property name="toolTip">
+         <string>Choose a style file</string>
+        </property>
+        <property name="text">
+         <string>&amp;Browse...</string>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
-   <item row="9" column="0" colspan="2">
-    <widget class="QComboBox" name="styleCB">
-     <property name="toolTip">
-      <string>Choose a style file</string>
+   <item row="2" column="0">
+    <widget class="QGroupBox" name="optionsGB">
+     <property name="title">
+      <string>Options</string>
      </property>
-     <property name="editable">
-      <bool>true</bool>
-     </property>
-     <property name="autoCompletion">
-      <bool>true</bool>
-     </property>
-     <property name="duplicatesEnabled">
-      <bool>false</bool>
-     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLabel" name="btPrintLA">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip">
+           <string>This bibliography section contains...</string>
+          </property>
+          <property name="text">
+           <string>&amp;Content:</string>
+          </property>
+          <property name="buddy">
+           <cstring>btPrintCO</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="btPrintCO">
+          <property name="toolTip">
+           <string>This bibliography section contains...</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>all cited references</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>all uncited references</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>all references</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="bibtocCB">
+        <property name="toolTip">
+         <string>Add bibliography to the table of contents</string>
+        </property>
+        <property name="text">
+         <string>Add bibliography to &amp;TOC</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="biblatexOptsLA">
+          <property name="text">
+           <string>Custo&amp;m:</string>
+          </property>
+          <property name="buddy">
+           <cstring>biblatexOptsLE</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="biblatexOptsLE">
+          <property name="toolTip">
+           <string>Options to the biblatex bibliography command. See the biblatex manual for details.</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </widget>
    </item>
-   <item row="9" column="2">
-    <widget class="QPushButton" name="stylePB">
-     <property name="toolTip">
-      <string>Choose a style file</string>
-     </property>
-     <property name="text">
-      <string>&amp;Browse...</string>
-     </property>
-     <property name="autoDefault">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="0">
-    <widget class="QLabel" name="btPrintLA">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="toolTip">
-      <string>This bibliography section contains...</string>
-     </property>
-     <property name="text">
-      <string>&amp;Content:</string>
-     </property>
-     <property name="buddy">
-      <cstring>btPrintCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="1">
-    <widget class="QComboBox" name="btPrintCO">
-     <property name="toolTip">
-      <string>This bibliography section contains...</string>
-     </property>
-     <item>
-      <property name="text">
-       <string>all cited references</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>all uncited references</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>all references</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="10" column="2">
-    <spacer>
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="12" column="0" colspan="3">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="biblatexOptsLA">
-       <property name="text">
-        <string>O&amp;ptions:</string>
-       </property>
-       <property name="buddy">
-        <cstring>biblatexOptsLE</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="biblatexOptsLE">
-       <property name="toolTip">
-        <string>Options to the biblatex bibliography command. See the biblatex manual for details.</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="13" column="0" colspan="3">
+   <item row="3" column="0">
     <layout class="QHBoxLayout">
      <property name="spacing">
       <number>6</number>
@@ -251,6 +272,16 @@
      <property name="bottomMargin">
       <number>0</number>
      </property>
+     <item>
+      <widget class="QPushButton" name="rescanPB">
+       <property name="toolTip">
+        <string>Scan for new databases and styles</string>
+       </property>
+       <property name="text">
+        <string>&amp;Rescan</string>
+       </property>
+      </widget>
+     </item>
      <item>
       <spacer>
        <property name="orientation">
@@ -281,6 +312,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="applyPB">
+       <property name="text">
+        <string>App&amp;ly</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="closePB">
        <property name="text">
         <string>Cancel</string>
@@ -291,50 +329,6 @@
       </widget>
      </item>
     </layout>
-   </item>
-   <item row="6" column="0" rowspan="2" colspan="2">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QLabel" name="bibEncodingLA">
-       <property name="text">
-        <string>&amp;Encoding:</string>
-       </property>
-       <property name="buddy">
-        <cstring>bibEncodingCO</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="bibEncodingCO">
-       <property name="toolTip">
-        <string>If your bibliography databases use a different encoding than the LyX document, specify it here</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </item>
-   <item row="11" column="0" colspan="2">
-    <widget class="QCheckBox" name="bibtocCB">
-     <property name="toolTip">
-      <string>Add bibliography to the table of contents</string>
-     </property>
-     <property name="text">
-      <string>Add bibliography to &amp;TOC</string>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>

@@ -62,6 +62,8 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 
 	connect(okPB, SIGNAL(clicked()),
 		this, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()),
+		this, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()),
 		this, SLOT(slotClose()));
 	connect(stylePB, SIGNAL(clicked()),
@@ -120,6 +122,7 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	bc().setOK(okPB);
+	bc().setApply(applyPB);
 	bc().setCancel(closePB);
 	bc().addReadOnly(databaseLW);
 	bc().addReadOnly(stylePB);
@@ -378,9 +381,7 @@ void GuiBibtex::updateContents()
 	biblatexOptsLE->setVisible(biblatex);
 
 	// only useful for BibTeX
-	styleCB->setVisible(!biblatex);
-	styleLA->setVisible(!biblatex);
-	stylePB->setVisible(!biblatex);
+	bstGB->setVisible(!biblatex);
 
 	if (!biblatex) {
 		styleCB->clear();
