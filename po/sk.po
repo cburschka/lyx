@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-07-07 15:30+0200\n"
-"PO-Revision-Date: 2018-07-07 13:46+0000\n"
+"POT-Creation-Date: 2018-07-08 13:30+0200\n"
+"PO-Revision-Date: 2018-07-08 11:40+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -297,14 +297,6 @@ msgstr "Pr&idať"
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:29
-msgid "BibTeX database to use"
-msgstr "BibTeX databáza na použitie"
-
-#: src/frontends/qt4/ui/BibtexUi.ui:32
-msgid "Da&tabases"
-msgstr "Databáz&y"
-
 #: src/frontends/qt4/ui/BibtexUi.ui:48
 msgid "Add a BibTeX database file"
 msgstr "Pridať súbor s BibTeX databázou"
@@ -391,10 +383,6 @@ msgstr "Pridať literatúru do obsahu"
 #: src/frontends/qt4/ui/BibtexUi.ui:222
 msgid "Add bibliography to &TOC"
 msgstr "Pridať lit&eratúru do obsahu"
-
-#: src/frontends/qt4/ui/BibtexUi.ui:231
-msgid "O&ptions:"
-msgstr "&Možnosti:"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:241
 msgid ""
@@ -2074,6 +2062,10 @@ msgstr "Odkaz na e-mailovú adresu"
 msgid "E&mail"
 msgstr "E-ma&il"
 
+#: src/frontends/qt4/ui/BibtexUi.ui:81
+msgid "E&ncoding:"
+msgstr "&Kódovanie:"
+
 #: src/frontends/qt4/ui/CharacterUi.ui:362
 msgid "E&xclude from Spellchecking"
 msgstr "&Bez Kontroly Písma"
@@ -2329,6 +2321,10 @@ msgstr ""
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:84
 msgid "Cus&tom:"
+msgstr "&Vlastné:"
+
+#: src/frontends/qt4/ui/BibtexUi.ui:239
+msgid "Custo&m:"
 msgstr "&Vlastné:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:100
@@ -3479,10 +3475,6 @@ msgstr "Vyrovnávacia pamäť pre konvertor súborov"
 msgid "&Enabled"
 msgstr "Z&apnutá"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:300
-msgid "&Encoding:"
-msgstr "&Kódovanie:"
-
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:274
 msgid "Maximum a&ge (in days):"
 msgstr "Ži&votnosť (v dňoch):"
@@ -4070,6 +4062,10 @@ msgstr "&Vizuálny"
 msgid "&DVI viewer paper size options:"
 msgstr "Voľby rozmerov papiera pre &DVI prehliadač:"
 
+#: src/frontends/qt4/ui/BibtexUi.ui:26
+msgid "&Databases"
+msgstr "&Databázy"
+
 #: src/frontends/qt4/ui/PrefLatexUi.ui:61
 msgid "Optional paper size flag (-paper) for some DVI viewers"
 msgstr ""
@@ -4082,6 +4078,10 @@ msgstr "Pro&cesor:"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:130
 msgid "BibTeX command and options"
 msgstr "Príkaz a voľby pre BibTeX"
+
+#: src/frontends/qt4/ui/BibtexUi.ui:23
+msgid "BibTeX database(s) to use"
+msgstr "BibTeX databázy na použitie"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:137
 #: src/frontends/qt4/ui/PrefLatexUi.ui:239
@@ -33819,6 +33819,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Da&tabases"
+#~ msgstr "Databáz&y"
+
+#~ msgid "O&ptions:"
+#~ msgstr "&Možnosti:"
 
 #, fuzzy
 #~ msgid "Class Defaults"
