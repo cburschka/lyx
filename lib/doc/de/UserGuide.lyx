@@ -29056,6 +29056,12 @@ Inhalt
 \family default
  können Sie festlegen, ob alle Einträge der Datenbank oder nur die im Dokument
  zitierten, gedruckt werden sollen.
+ Unter 
+\family sans
+Kodierung
+\family default
+ können Sie die Dateikodierung der Datenbank(en) festlegen, falls diese
+ von der Kodierung des Dokuments abweicht.
 \end_layout
 
 \begin_layout Standard
@@ -29108,7 +29114,7 @@ alphadin.bst
 \end_layout
 
 \begin_layout Standard
-Ein Querverweis auf einen Datenbankeintrag erfolgt wie oben beschrieben.
+Literaturverweise fügen Sie wie im letzten Abschnitt beschrieben ein.
 \end_layout
 
 \begin_layout Subsubsection
@@ -29137,7 +29143,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Der Zugang zu einer Databank mittels 
+Der Zugang zu einer Datenbank mittels 
 \series bold
 biblatex
 \series default
@@ -29158,9 +29164,11 @@ Bib(la)TeX-Literaturverzeichnis
 \family default
 .
  Im Gegensatz zu Bib\SpecialChar TeX
- können Sie keine Stildatei auswählen.
+ können Sie an dieser Stelle keine Stildatei auswählen.
  Die anderen Dialogoptionen sind dieselben wie bei Bib\SpecialChar TeX
 .
+ Hinsichtlich Stildateien gibt es folgende Unterschiede zu Bib\SpecialChar TeX
+ zu beachten:
 \end_layout
 
 \begin_layout Standard
@@ -29214,7 +29222,7 @@ Bib(la)TeX
 
 Bibliography
 \family default
- festgelgt, sondern in den Dokumenteinstellungen.
+ festgelegt, sondern in den Dokumenteinstellungen.
 \begin_inset Index idx
 status collapsed
 
