@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-07-07 15:32+0200\n"
-"PO-Revision-Date: 2018-07-07 15:35+0100\n"
+"POT-Creation-Date: 2018-07-08 12:14+0200\n"
+"PO-Revision-Date: 2018-07-08 12:18+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -288,7 +288,7 @@ msgstr "Stildateien neu einlesen"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:331
 msgid "Re&scan"
-msgstr "&Neu lesen"
+msgstr "&Auffrischen"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:342
 msgid "&Multiple bibliographies:"
@@ -340,10 +340,10 @@ msgstr "Von &LaTeX gefundene Datenbanken:"
 msgid "Rescan LaTeX's index for new databases and styles"
 msgstr "Lese LaTeX' Index neu ein"
 
-#: src/frontends/qt4/ui/BibtexAddUi.ui:70 src/frontends/qt4/ui/BibtexUi.ui:107
+#: src/frontends/qt4/ui/BibtexAddUi.ui:70 src/frontends/qt4/ui/BibtexUi.ui:281
 #: src/frontends/qt4/ui/TexinfoUi.ui:122
 msgid "&Rescan"
-msgstr "&Neu lesen"
+msgstr "&Auffrischen"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:81
 msgid ""
@@ -364,7 +364,7 @@ msgstr "Hier können Sie einen lokalen BibTeX-Datenbanknamen eingeben"
 msgid "Browse your local directory"
 msgstr "Lokales Verzeichnis durchsuchen"
 
-#: src/frontends/qt4/ui/BibtexAddUi.ui:112 src/frontends/qt4/ui/BibtexUi.ui:152
+#: src/frontends/qt4/ui/BibtexAddUi.ui:112 src/frontends/qt4/ui/BibtexUi.ui:150
 #: src/frontends/qt4/ui/CompareUi.ui:50 src/frontends/qt4/ui/ExternalUi.ui:70
 #: src/frontends/qt4/ui/GraphicsUi.ui:75 src/frontends/qt4/ui/IncludeUi.ui:46
 #: src/frontends/qt4/ui/LaTeXUi.ui:161 src/frontends/qt4/ui/PrefInputUi.ui:111
@@ -378,7 +378,7 @@ msgstr "&Durchsuchen..."
 msgid "&Add"
 msgstr "&Hinzufügen"
 
-#: src/frontends/qt4/ui/BibtexAddUi.ui:175 src/frontends/qt4/ui/BibtexUi.ui:286
+#: src/frontends/qt4/ui/BibtexAddUi.ui:175 src/frontends/qt4/ui/BibtexUi.ui:324
 #: src/frontends/qt4/ui/ChangesUi.ui:91 src/frontends/qt4/ui/SendtoUi.ui:92
 #: src/frontends/qt4/ui/ShortcutUi.ui:65 src/buffer_funcs.cpp:129
 #: src/frontends/qt4/ButtonController.cpp:238
@@ -387,92 +387,120 @@ msgstr "&Hinzufügen"
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:29
-msgid "BibTeX database to use"
-msgstr "Zu verwendende BibTeX-Datenbank"
+#: src/frontends/qt4/ui/BibtexUi.ui:23
+msgid "BibTeX database(s) to use"
+msgstr "Zu verwendende BibTeX-Datenbank(en)"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:32
-msgid "Da&tabases"
+#: src/frontends/qt4/ui/BibtexUi.ui:26
+msgid "&Databases"
 msgstr "&Datenbanken"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:48
+#: src/frontends/qt4/ui/BibtexUi.ui:37
 msgid "Add a BibTeX database file"
 msgstr "Füge eine BibTeX-Datenbank-Datei hinzu"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:51
+#: src/frontends/qt4/ui/BibtexUi.ui:40
 msgid "&Add..."
 msgstr "&Hinzufügen..."
 
-#: src/frontends/qt4/ui/BibtexUi.ui:58
+#: src/frontends/qt4/ui/BibtexUi.ui:47
 msgid "Remove the selected database"
 msgstr "Die ausgewählte Datenbank entfernen"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:61 src/frontends/qt4/ui/CitationUi.ui:156
+#: src/frontends/qt4/ui/BibtexUi.ui:50 src/frontends/qt4/ui/CitationUi.ui:156
 msgid "&Delete"
 msgstr "&Löschen"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:68
+#: src/frontends/qt4/ui/BibtexUi.ui:57
 msgid "Move the selected database upwards in the list"
 msgstr "Rückt die ausgewählte Datenbank in der Liste nach oben"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:71 src/frontends/qt4/ui/CitationUi.ui:188
+#: src/frontends/qt4/ui/BibtexUi.ui:60 src/frontends/qt4/ui/CitationUi.ui:188
 #: src/frontends/qt4/ui/ModulesUi.ui:117
 msgid "&Up"
 msgstr "Rau&f"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:78
+#: src/frontends/qt4/ui/BibtexUi.ui:67
 msgid "Move the selected database downwards in the list"
 msgstr "Rückt die ausgewählte Datenbank in der Liste nach unten"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:81 src/frontends/qt4/ui/CitationUi.ui:211
+#: src/frontends/qt4/ui/BibtexUi.ui:70 src/frontends/qt4/ui/CitationUi.ui:211
 #: src/frontends/qt4/ui/ModulesUi.ui:124
 msgid "Do&wn"
 msgstr "Run&ter"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:104
-msgid "Scan for new databases and styles"
-msgstr "Überprüfe auf neue Datenbanken und Stildateien"
+#: src/frontends/qt4/ui/BibtexUi.ui:81
+msgid "E&ncoding:"
+msgstr "&Kodierung:"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:120
+#: src/frontends/qt4/ui/BibtexUi.ui:91
+msgid ""
+"If your bibliography databases use a different encoding than the LyX "
+"document, specify it here"
+msgstr ""
+"Falls Ihre Literatur-Datenbanken eine andere Kodierung verwenden als das LyX-"
+"Dokument, geben Sie diese hier an."
+
+#: src/frontends/qt4/ui/BibtexUi.ui:116
 msgid "The BibTeX style"
 msgstr "Der BibTeX-Stil"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:123
+#: src/frontends/qt4/ui/BibtexUi.ui:119
 msgid "St&yle"
 msgstr "&Stil"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:133 src/frontends/qt4/ui/BibtexUi.ui:149
+#: src/frontends/qt4/ui/BibtexUi.ui:131 src/frontends/qt4/ui/BibtexUi.ui:147
 msgid "Choose a style file"
 msgstr "Wählen Sie eine Stildatei"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:168 src/frontends/qt4/ui/BibtexUi.ui:181
+#: src/frontends/qt4/ui/BibtexUi.ui:163 lib/layouts/beamer.layout:474
+#: lib/layouts/beamer.layout:503 lib/layouts/beamer.layout:514
+#: lib/layouts/beamer.layout:542 lib/layouts/beamer.layout:645
+#: lib/layouts/fixme.module:67 lib/layouts/fixme.module:102
+#: lib/layouts/fixme.module:145 lib/layouts/fixme.module:187
+#: lib/layouts/initials.module:34 lib/layouts/lilypond.module:36
+#: lib/layouts/litinsets.inc:45 lib/layouts/litinsets.inc:46
+#: lib/layouts/todonotes.module:78 lib/layouts/todonotes.module:90
+#: lib/layouts/todonotes.module:107
+msgid "Options"
+msgstr "Optionen"
+
+#: src/frontends/qt4/ui/BibtexUi.ui:177 src/frontends/qt4/ui/BibtexUi.ui:190
 msgid "This bibliography section contains..."
 msgstr "Dieser Abschnitt des Literaturverzeichnisses enthält..."
 
-#: src/frontends/qt4/ui/BibtexUi.ui:171
+#: src/frontends/qt4/ui/BibtexUi.ui:180
 msgid "&Content:"
 msgstr "&Inhalt:"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:185 src/frontends/qt4/GuiBibtex.cpp:357
+#: src/frontends/qt4/ui/BibtexUi.ui:194 src/frontends/qt4/GuiBibtex.cpp:360
 #: src/insets/InsetBibtex.cpp:208 src/insets/InsetBibtex.cpp:226
 msgid "all cited references"
 msgstr "alle zitierten Literatureinträge"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:190 src/frontends/qt4/GuiBibtex.cpp:359
+#: src/frontends/qt4/ui/BibtexUi.ui:199 src/frontends/qt4/GuiBibtex.cpp:362
 #: src/insets/InsetBibtex.cpp:206
 msgid "all uncited references"
 msgstr "alle nicht zitierten Literatureinträge"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:195 src/frontends/qt4/GuiBibtex.cpp:360
+#: src/frontends/qt4/ui/BibtexUi.ui:204 src/frontends/qt4/GuiBibtex.cpp:363
 #: src/insets/InsetBibtex.cpp:204 src/insets/InsetBibtex.cpp:224
 msgid "all references"
 msgstr "alle Literatureinträge"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:221
-msgid "O&ptions:"
-msgstr "O&ptionen:"
+#: src/frontends/qt4/ui/BibtexUi.ui:227
+msgid "Add bibliography to the table of contents"
+msgstr "Literaturverzeichnis im Inhaltsverzeichnis aufführen"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:231
+#: src/frontends/qt4/ui/BibtexUi.ui:230
+msgid "Add bibliography to &TOC"
+msgstr "Literatur&verzeichnis ins Inhaltsverzeichnis"
+
+#: src/frontends/qt4/ui/BibtexUi.ui:239
+msgid "Custo&m:"
+msgstr "Benut&zerdefiniert:"
+
+#: src/frontends/qt4/ui/BibtexUi.ui:249
 msgid ""
 "Options to the biblatex bibliography command. See the biblatex manual for "
 "details."
@@ -480,7 +508,11 @@ msgstr ""
 "Optionen des Biblatex-Bibliographiebefehls. Konsultieren Sie das Biblatex-"
 "Handbuch für Einzelheiten."
 
-#: src/frontends/qt4/ui/BibtexUi.ui:273 src/frontends/qt4/ui/CharacterUi.ui:66
+#: src/frontends/qt4/ui/BibtexUi.ui:278
+msgid "Scan for new databases and styles"
+msgstr "Überprüfe auf neue Datenbanken und Stildateien"
+
+#: src/frontends/qt4/ui/BibtexUi.ui:304 src/frontends/qt4/ui/CharacterUi.ui:66
 #: src/frontends/qt4/ui/CitationUi.ui:453
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:183
 #: src/frontends/qt4/ui/CompareUi.ui:153 src/frontends/qt4/ui/DocumentUi.ui:67
@@ -499,26 +531,9 @@ msgstr ""
 msgid "&OK"
 msgstr "&OK"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:300
-msgid "&Encoding:"
-msgstr "&Kodierung:"
-
-#: src/frontends/qt4/ui/BibtexUi.ui:310
-msgid ""
-"If your bibliography databases use a different encoding than the LyX "
-"document, specify it here"
-msgstr ""
-"Falls Ihre Literatur-Datenbanken eine andere Kodierung verwenden als das"
-" LyX-Dokument, "
-"geben Sie diese hier an."
-
-#: src/frontends/qt4/ui/BibtexUi.ui:332
-msgid "Add bibliography to the table of contents"
-msgstr "Literaturverzeichnis im Inhaltsverzeichnis aufführen"
-
-#: src/frontends/qt4/ui/BibtexUi.ui:335
-msgid "Add bibliography to &TOC"
-msgstr "Literatur&verzeichnis ins Inhaltsverzeichnis"
+#: src/frontends/qt4/ui/BibtexUi.ui:317 src/frontends/qt4/ui/CitationUi.ui:466
+msgid "App&ly"
+msgstr "&Übernehmen"
 
 #: src/frontends/qt4/ui/BoxUi.ui:23
 msgid "Type and Size"
@@ -1262,10 +1277,6 @@ msgstr "Alle A&utoren"
 #: src/frontends/qt4/ui/WrapUi.ui:121
 msgid "&Restore"
 msgstr "&Zurücksetzen"
-
-#: src/frontends/qt4/ui/CitationUi.ui:466
-msgid "App&ly"
-msgstr "&Übernehmen"
 
 #: src/frontends/qt4/ui/ColorUi.ui:27
 msgid "Font Colors"
@@ -9562,17 +9573,6 @@ msgstr "Standard-Overlay-Spezifikation für diesen Rahmen"
 #: lib/layouts/beamer.layout:513 lib/layouts/beamer.layout:541
 msgid "Frame Options"
 msgstr "Rahmen-Optionen"
-
-#: lib/layouts/beamer.layout:474 lib/layouts/beamer.layout:503
-#: lib/layouts/beamer.layout:514 lib/layouts/beamer.layout:542
-#: lib/layouts/beamer.layout:645 lib/layouts/fixme.module:67
-#: lib/layouts/fixme.module:102 lib/layouts/fixme.module:145
-#: lib/layouts/fixme.module:187 lib/layouts/initials.module:34
-#: lib/layouts/lilypond.module:36 lib/layouts/litinsets.inc:45
-#: lib/layouts/litinsets.inc:46 lib/layouts/todonotes.module:78
-#: lib/layouts/todonotes.module:90 lib/layouts/todonotes.module:107
-msgid "Options"
-msgstr "Optionen"
 
 #: lib/layouts/beamer.layout:475 lib/layouts/beamer.layout:504
 #: lib/layouts/beamer.layout:515 lib/layouts/beamer.layout:543
@@ -29382,11 +29382,11 @@ msgstr ""
 msgid "Bibliography Item Settings"
 msgstr "Literatureintrag-Einstellungen"
 
-#: src/frontends/qt4/GuiBibtex.cpp:55 src/frontends/qt4/GuiBibtex.cpp:328
+#: src/frontends/qt4/GuiBibtex.cpp:55 src/frontends/qt4/GuiBibtex.cpp:331
 msgid "BibTeX Bibliography"
 msgstr "BibTeX-Literaturverzeichnis"
 
-#: src/frontends/qt4/GuiBibtex.cpp:117
+#: src/frontends/qt4/GuiBibtex.cpp:119
 msgid ""
 "This list consists of all databases that are indexed by LaTeX and thus are "
 "found without a file path. This is usually everything in the bib/ "
@@ -29399,19 +29399,19 @@ msgstr ""
 "Sie Ihre eigenen Datenbanken in verschiedenen Dokumenten verwenden wollen, "
 "ist dies der Ort, an dem Sie sie ablegen sollten."
 
-#: src/frontends/qt4/GuiBibtex.cpp:134
+#: src/frontends/qt4/GuiBibtex.cpp:137
 msgid "Document Encoding"
 msgstr "Dokumentkodierung"
 
-#: src/frontends/qt4/GuiBibtex.cpp:326
+#: src/frontends/qt4/GuiBibtex.cpp:329
 msgid "Biblatex Bibliography"
 msgstr "Biblatex-Literaturverzeichnis"
 
-#: src/frontends/qt4/GuiBibtex.cpp:362 src/insets/InsetBibtex.cpp:222
+#: src/frontends/qt4/GuiBibtex.cpp:365 src/insets/InsetBibtex.cpp:222
 msgid "all reference units"
 msgstr "alle Literaturverzeichnisse"
 
-#: src/frontends/qt4/GuiBibtex.cpp:460 src/frontends/qt4/GuiBibtex.cpp:470
+#: src/frontends/qt4/GuiBibtex.cpp:461 src/frontends/qt4/GuiBibtex.cpp:471
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
 #: src/frontends/qt4/GuiDocument.cpp:2503 src/frontends/qt4/GuiExternal.cpp:678
 #: src/frontends/qt4/GuiGraphics.cpp:793 src/frontends/qt4/GuiInclude.cpp:334
@@ -29421,19 +29421,19 @@ msgstr "alle Literaturverzeichnisse"
 msgid "D&ocuments"
 msgstr "Do&kumente"
 
-#: src/frontends/qt4/GuiBibtex.cpp:462
+#: src/frontends/qt4/GuiBibtex.cpp:463
 msgid "BibTeX Databases (*.bib)"
 msgstr "BibTeX-Datenbanken (*.bib)"
 
-#: src/frontends/qt4/GuiBibtex.cpp:464
+#: src/frontends/qt4/GuiBibtex.cpp:465
 msgid "Select a BibTeX database to add"
 msgstr "Wählen Sie eine hinzuzufügende BibTeX-Datenbank"
 
-#: src/frontends/qt4/GuiBibtex.cpp:472
+#: src/frontends/qt4/GuiBibtex.cpp:473
 msgid "BibTeX Styles (*.bst)"
 msgstr "BibTeX-Stile (*.bst)"
 
-#: src/frontends/qt4/GuiBibtex.cpp:474
+#: src/frontends/qt4/GuiBibtex.cpp:475
 msgid "Select a BibTeX style"
 msgstr "Wählen Sie einen BibTeX-Stil"
 
@@ -34228,6 +34228,12 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
 
+#~ msgid "Da&tabases"
+#~ msgstr "&Datenbanken"
+
+#~ msgid "O&ptions:"
+#~ msgstr "O&ptionen:"
+
 #~ msgid "Springer cl2emult"
 #~ msgstr "Springer cl2emult"
 
@@ -36474,9 +36480,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "&Ok"
 #~ msgstr "&Ok"
-
-#~ msgid "Cust&om:"
-#~ msgstr "Benut&zerdefiniert:"
 
 #~ msgid ""
 #~ "%1$s is from a newer version of LyX and cannot be converted by the "
