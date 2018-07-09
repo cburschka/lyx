@@ -185,7 +185,7 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 {
 	setupUi(this);
 
-	connect(closePB, SIGNAL(clicked()), this, SLOT(accept()));
+	connect(buttonBox, SIGNAL(rejected()), this, SLOT(accept()));
 
 	setFocusProxy(leftLW);
 
@@ -333,7 +333,25 @@ void GuiDelimiter::updateTeXCode(int size)
 }
 
 
-void GuiDelimiter::on_insertPB_clicked()
+void  GuiDelimiter::on_buttonBox_clicked(QAbstractButton * button)
+{
+	switch (buttonBox->standardButton(button)) {
+	case QDialogButtonBox::Apply:
+		insert();
+		break;
+	case QDialogButtonBox::Ok:
+		insert();
+	// fall through
+	case QDialogButtonBox::Cancel:
+		accept();
+		break;
+	default:
+		break;
+	}
+}
+
+
+void GuiDelimiter::insert()
 {
 	if (sizeCO->currentIndex() == 0)
 		dispatch(FuncRequest(LFUN_MATH_DELIM, tex_code_));
@@ -342,6 +360,7 @@ void GuiDelimiter::on_insertPB_clicked()
 		command = support::subst(command, from_ascii(" "), from_ascii("\" \""));
 		dispatch(FuncRequest(LFUN_MATH_BIGDELIM, command));
 	}
+	buttonBox->button(QDialogButtonBox::Cancel)->setText(qt_("Close"));
 }
 
 
@@ -356,7 +375,7 @@ void GuiDelimiter::on_leftLW_itemActivated(QListWidgetItem *)
 	// do not auto-apply if !matchCB->isChecked()
 	if (!matchCB->isChecked())
 		return;
-	on_insertPB_clicked();
+	insert();
 	accept();
 }
 
@@ -366,7 +385,7 @@ void GuiDelimiter::on_rightLW_itemActivated(QListWidgetItem *)
 	// do not auto-apply if !matchCB->isChecked()
 	if (!matchCB->isChecked())
 		return;
-	on_insertPB_clicked();
+	insert();
 	accept();
 }
 

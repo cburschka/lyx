@@ -34,12 +34,13 @@ public:
 	bool isBufferDependent() const { return true; }
 
 public Q_SLOTS:
+	void on_buttonBox_clicked(QAbstractButton * button);
 	void on_leftLW_itemActivated(QListWidgetItem *);
 	void on_rightLW_itemActivated(QListWidgetItem *);
 	void on_leftLW_currentRowChanged(int);
 	void on_rightLW_currentRowChanged(int);
 	void on_matchCB_stateChanged(int);
-	void on_insertPB_clicked();
+	void insert();
 	void on_swapPB_clicked();
 	void on_sizeCO_activated(int);
 

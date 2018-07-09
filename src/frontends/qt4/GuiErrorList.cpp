@@ -62,8 +62,8 @@ GuiErrorList::GuiErrorList(GuiView & lv)
 {
 	setupUi(this);
 
-	connect(closePB, SIGNAL(clicked()),
-		this, SLOT(slotClose()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+			this, SLOT(slotButtonBox(QAbstractButton *)));
 	connect(viewLogPB, SIGNAL(clicked()),
 		this, SLOT(viewLog()));
 	connect(showAnywayPB, SIGNAL(clicked()),
@@ -72,7 +72,7 @@ GuiErrorList::GuiErrorList(GuiView & lv)
 		this, SLOT(select()));
 
 	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
-	bc().setCancel(closePB);
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
 }
 
 

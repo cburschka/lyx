@@ -35,13 +35,13 @@ GuiIndex::GuiIndex(GuiView & lv)
 {
 	setupUi(this);
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(cancelPB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(slotButtonBox(QAbstractButton *)));
 	connect(indicesCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
-	bc().setOK(okPB);
-	bc().setCancel(cancelPB);
+	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
 }
 
 

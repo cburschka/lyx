@@ -51,8 +51,8 @@ GuiInclude::GuiInclude(GuiView & lv)
 {
 	setupUi(this);
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(slotButtonBox(QAbstractButton *)));
 
 	connect(visiblespaceCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(filenameED, SIGNAL(textChanged(const QString &)),
@@ -73,8 +73,8 @@ GuiInclude::GuiInclude(GuiView & lv)
 	setFocusProxy(filenameED);
 
 	bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
-	bc().setOK(okPB);
-	bc().setCancel(closePB);
+	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
 	bc().addReadOnly(filenameED);
 	bc().addReadOnly(browsePB);
 	bc().addReadOnly(visiblespaceCB);
@@ -157,7 +157,7 @@ void GuiInclude::typeChanged(int v)
 	//see this thread
 	//  http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg118471.html
 	//for the reason this is here.
-	okPB->setDefault(true);
+	buttonBox->button(QDialogButtonBox::Ok)->setDefault(true);
 }
 
 

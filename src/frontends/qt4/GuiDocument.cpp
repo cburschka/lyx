@@ -765,20 +765,18 @@ GuiDocument::GuiDocument(GuiView & lv)
 {
 	setupUi(this);
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
-	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(slotButtonBox(QAbstractButton *)));
 
 	connect(savePB, SIGNAL(clicked()), this, SLOT(saveDefaultClicked()));
 	connect(defaultPB, SIGNAL(clicked()), this, SLOT(useDefaultsClicked()));
 
 	// Manage the restore, ok, apply, restore and cancel/close buttons
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
-	bc().setOK(okPB);
-	bc().setApply(applyPB);
-	bc().setCancel(closePB);
-	bc().setRestore(restorePB);
+	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
+	bc().setApply(buttonBox->button(QDialogButtonBox::Apply));
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
+	bc().setRestore(buttonBox->button(QDialogButtonBox::Reset));
 
 
 	// text layout
@@ -1692,6 +1690,28 @@ void GuiDocument::slotOK()
 }
 
 
+void GuiDocument::slotButtonBox(QAbstractButton * button)
+{
+	switch (buttonBox->standardButton(button)) {
+	case QDialogButtonBox::Ok:
+		slotOK();
+		break;
+	case QDialogButtonBox::Apply:
+		slotApply();
+		break;
+	case QDialogButtonBox::Cancel:
+		slotClose();
+		break;
+	case QDialogButtonBox::Reset:
+	case QDialogButtonBox::RestoreDefaults:
+		slotRestore();
+		break;
+	default:
+		break;
+	}
+}
+
+
 void GuiDocument::includeonlyClicked(QTreeWidgetItem * item, int)
 {
 	if (item == 0)
@@ -2521,7 +2541,7 @@ void GuiDocument::classChanged()
 		return;
 	string const classname = fromqstr(latexModule->classCO->getData(idx));
 
-	if (applyPB->isEnabled()) {
+	if (buttonBox->button(QDialogButtonBox::Apply)->isEnabled()) {
 		int const ret = Alert::prompt(_("Unapplied changes"),
 				_("Some changes in the dialog were not yet applied.\n"
 				"If you do not apply now, they will be lost after this action."),
@@ -2823,7 +2843,8 @@ void GuiDocument::modulesChanged()
 {
 	modulesToParams(bp_);
 
-	if (applyPB->isEnabled() && (nonModuleChanged_ || shellescapeChanged_)) {
+	if (buttonBox->button(QDialogButtonBox::Apply)->isEnabled()
+	    && (nonModuleChanged_ || shellescapeChanged_)) {
 		int const ret = Alert::prompt(_("Unapplied changes"),
 				_("Some changes in the dialog were not yet applied.\n"
 				"If you do not apply now, they will be lost after this action."),
@@ -4294,7 +4315,7 @@ void GuiDocument::updateContents()
 
 void GuiDocument::useClassDefaults()
 {
-	if (applyPB->isEnabled()) {
+	if (buttonBox->button(QDialogButtonBox::Apply)->isEnabled()) {
 		int const ret = Alert::prompt(_("Unapplied changes"),
 				_("Some changes in the dialog were not yet applied.\n"
 				  "If you do not apply now, they will be lost after this action."),

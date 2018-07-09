@@ -88,9 +88,8 @@ GuiExternal::GuiExternal(GuiView & lv)
 {
 	setupUi(this);
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+			this, SLOT(slotButtonBox(QAbstractButton *)));
 
 	/*
 	connect(displayGB, SIGNAL(toggled(bool)),
@@ -159,9 +158,9 @@ GuiExternal::GuiExternal(GuiView & lv)
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 
-	bc().setOK(okPB);
-	bc().setApply(applyPB);
-	bc().setCancel(closePB);
+	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
+	bc().setApply(buttonBox->button(QDialogButtonBox::Apply));
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
 
 	bc().addReadOnly(fileED);
 	bc().addReadOnly(browsePB);

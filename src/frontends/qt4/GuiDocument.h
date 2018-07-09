@@ -94,6 +94,7 @@ public Q_SLOTS:
 	void slotOK();
 	// Apply button clicked
 	void slotApply();
+	void slotButtonBox(QAbstractButton *);
 
 private Q_SLOTS:
 	void updateNumbering();

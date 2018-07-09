@@ -1,75 +1,93 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>ErrorListUi</class>
- <widget class="QDialog" name="ErrorListUi" >
-  <property name="geometry" >
+ <widget class="QDialog" name="ErrorListUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>274</width>
+    <width>447</width>
     <height>422</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <property name="sizeGripEnabled" >
+  <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
+  <layout class="QGridLayout">
+   <property name="leftMargin">
     <number>9</number>
    </property>
-   <property name="spacing" >
+   <property name="topMargin">
+    <number>9</number>
+   </property>
+   <property name="rightMargin">
+    <number>9</number>
+   </property>
+   <property name="bottomMargin">
+    <number>9</number>
+   </property>
+   <property name="spacing">
     <number>6</number>
    </property>
-   <item row="3" column="0" colspan="4" >
-    <widget class="QTextBrowser" name="descriptionTB" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>3</hsizetype>
-       <vsizetype>0</vsizetype>
+   <item row="1" column="0" colspan="5">
+    <widget class="QListWidget" name="errorsLW">
+     <property name="toolTip">
+      <string>Selecting an error will show the error message in the panel below and the cursor will jump to the location in the document where the error occurred.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="5">
+    <widget class="QTextBrowser" name="descriptionTB">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="toolTip" >
+     <property name="toolTip">
       <string>For more information, refer to the complete log.</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="2" >
-    <widget class="QLabel" name="errorsLabel" >
-     <property name="text" >
-      <string>&amp;Errors:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>errorsLW</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="2" >
-    <widget class="QLabel" name="descriptionLabel" >
-     <property name="text" >
+   <item row="2" column="0" colspan="2">
+    <widget class="QLabel" name="descriptionLabel">
+     <property name="text">
       <string>Description:</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="3" >
-    <widget class="QPushButton" name="closePB" >
-     <property name="text" >
-      <string>&amp;Close</string>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="errorsLabel">
+     <property name="text">
+      <string>&amp;Errors:</string>
+     </property>
+     <property name="buddy">
+      <cstring>errorsLW</cstring>
      </property>
     </widget>
    </item>
-   <item row="4" column="2" >
+   <item row="4" column="0">
+    <widget class="QPushButton" name="viewLogPB">
+     <property name="toolTip">
+      <string>Open the LaTeX Log File dialog</string>
+     </property>
+     <property name="text">
+      <string>View Complete &amp;Log...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="sizeType" >
+     <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>121</width>
        <height>30</height>
@@ -77,30 +95,20 @@
      </property>
     </spacer>
    </item>
-   <item row="4" column="0" >
-    <widget class="QPushButton" name="viewLogPB" >
-     <property name="toolTip" >
-      <string>Open the LaTeX Log File dialog</string>
+   <item row="4" column="1">
+    <widget class="QPushButton" name="showAnywayPB">
+     <property name="toolTip">
+      <string>Attempt to show the output even if there were compilation errors</string>
      </property>
-     <property name="text" >
-      <string>View Complete &amp;Log...</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1" >
-    <widget class="QPushButton" name="showAnywayPB" >
-     <property name="toolTip" >
-       <string>Attempt to show the output even if there were compilation errors</string>
-     </property>
-     <property name="text" >
+     <property name="text">
       <string>Show Output &amp;Anyway</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="4" >
-    <widget class="QListWidget" name="errorsLW" >
-     <property name="toolTip" >
-      <string>Selecting an error will show the error message in the panel below and the cursor will jump to the location in the document where the error occurred.</string>
+   <item row="4" column="3">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel</set>
      </property>
     </widget>
    </item>
@@ -109,10 +117,9 @@
  <tabstops>
   <tabstop>errorsLW</tabstop>
   <tabstop>descriptionTB</tabstop>
-  <tabstop>closePB</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>

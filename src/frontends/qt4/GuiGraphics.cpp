@@ -115,10 +115,8 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	setupUi(this);
 
 	//main buttons
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
-	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+			this, SLOT(slotButtonBox(QAbstractButton *)));
 
 	//graphics pane
 	connect(filename, SIGNAL(textChanged(const QString &)),
@@ -212,10 +210,10 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	displayscale->setValidator(new QIntValidator(displayscale));
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
-	bc().setOK(okPB);
-	bc().setApply(applyPB);
-	bc().setRestore(restorePB);
-	bc().setCancel(closePB);
+	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
+	bc().setApply(buttonBox->button(QDialogButtonBox::Apply));
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
+	bc().setRestore(buttonBox->button(QDialogButtonBox::Reset));
 
 	bc().addReadOnly(latexoptions);
 	bc().addReadOnly(filenameL);
