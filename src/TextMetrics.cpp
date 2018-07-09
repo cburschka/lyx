@@ -1609,10 +1609,10 @@ int TextMetrics::leftMargin(pit_type const pit, pos_type const pos) const
 
 	int l_margin = 0;
 
-	if (text_->isMainText())
+	if (text_->isMainText()) {
 		l_margin += bv_->leftMargin();
-
-	l_margin += bfm.signedWidth(tclass.leftmargin());
+		l_margin += bfm.signedWidth(tclass.leftmargin());
+	}
 
 	int depth = par.getDepth();
 	if (depth != 0) {
