@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>ToggleWarningUi</class>
- <widget class="QDialog" name="ToggleWarningUi" >
-  <property name="geometry" >
+ <widget class="QDialog" name="ToggleWarningUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,28 +10,22 @@
     <height>140</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>LyX: Enter text</string>
   </property>
-  <property name="sizeGripEnabled" >
+  <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item row="2" column="0" colspan="3" >
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="2">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeType" >
+     <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>247</width>
        <height>16</height>
@@ -38,32 +33,22 @@
      </property>
     </spacer>
    </item>
-   <item row="3" column="0" colspan="3" >
-    <widget class="QCheckBox" name="dontShowAgainCB" >
-     <property name="toolTip" >
-      <string>If you check this, LyX will not warn you again in the given case.</string>
-     </property>
-     <property name="text" >
-      <string>&amp;Do not show this warning again!</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="3" >
-    <widget class="QLabel" name="messageLA" >
-     <property name="text" >
+   <item row="1" column="0">
+    <widget class="QLabel" name="messageLA">
+     <property name="text">
       <string/>
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="3" >
+   <item row="2" column="0" colspan="2">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeType" >
+     <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>247</width>
        <height>16</height>
@@ -71,62 +56,46 @@
      </property>
     </spacer>
    </item>
-   <item row="4" column="0" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
+   <item row="3" column="0" colspan="2">
+    <widget class="QCheckBox" name="dontShowAgainCB">
+     <property name="toolTip">
+      <string>If you check this, LyX will not warn you again in the given case.</string>
      </property>
-     <property name="sizeHint" >
-      <size>
-       <width>81</width>
-       <height>20</height>
-      </size>
+     <property name="text">
+      <string>&amp;Do not show this warning again!</string>
      </property>
-    </spacer>
+    </widget>
    </item>
-   <item row="4" column="1" >
-    <widget class="QPushButton" name="okPB" >
-     <property name="text" >
-      <string>&amp;OK</string>
+   <item row="4" column="0" colspan="2">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Ok</set>
      </property>
-     <property name="default" >
+     <property name="centerButtons">
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="4" column="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>81</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
   </layout>
  </widget>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections>
   <connection>
-   <sender>okPB</sender>
-   <signal>clicked()</signal>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
    <receiver>ToggleWarningUi</receiver>
    <slot>accept()</slot>
    <hints>
-    <hint type="sourcelabel" >
-     <x>134</x>
-     <y>116</y>
+    <hint type="sourcelabel">
+     <x>98</x>
+     <y>114</y>
     </hint>
-    <hint type="destinationlabel" >
-     <x>134</x>
-     <y>69</y>
+    <hint type="destinationlabel">
+     <x>80</x>
+     <y>805</y>
     </hint>
    </hints>
   </connection>

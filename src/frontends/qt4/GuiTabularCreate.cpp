@@ -43,17 +43,19 @@ GuiTabularCreate::GuiTabularCreate(GuiView & lv)
 	connect(columnsSB, SIGNAL(valueChanged(int)),
 		table, SLOT(setNumberColumns(int)));
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(slotButtonBox(QAbstractButton *)));
 
 	connect(rowsSB, SIGNAL(valueChanged(int)),
 		this, SLOT(rowsChanged(int)));
 	connect(columnsSB, SIGNAL(valueChanged(int)),
 		this, SLOT(columnsChanged(int)));
 
-	bc().setPolicy(ButtonPolicy::IgnorantPolicy);
-	bc().setOK(okPB);
-	bc().setCancel(closePB);
+	bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
+	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
+	bc().setApply(buttonBox->button(QDialogButtonBox::Apply));
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
+	bc().setValid(isValid());
 }
 
 

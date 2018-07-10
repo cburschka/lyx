@@ -47,7 +47,8 @@ GuiSearch::GuiSearch(GuiView & lv)
 {
 	setupUi(this);
 
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(slotButtonBox(QAbstractButton *)));
 	connect(findPB, SIGNAL(clicked()), this, SLOT(findClicked()));
 	connect(replacePB, SIGNAL(clicked()), this, SLOT(replaceClicked()));
 	connect(replaceallPB, SIGNAL(clicked()), this, SLOT(replaceallClicked()));
@@ -57,7 +58,7 @@ GuiSearch::GuiSearch(GuiView & lv)
 	setFocusProxy(findCO);
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
-	bc().setCancel(closePB);
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Close));
 	bc().addReadOnly(replaceCO);
 	bc().addReadOnly(replacePB);
 	bc().addReadOnly(replaceallPB);

@@ -27,6 +27,8 @@
 #include "support/gettext.h"
 
 #include <QChar>
+#include <QDialogButtonBox>
+#include <QPushButton>
 #include <QString>
 
 #include <cstdio>
@@ -288,7 +290,7 @@ GuiSymbols::GuiSymbols(GuiView & lv)
 {
 	setupUi(this);
 
-	//Translate names
+	// Translate names
 	for (int i = 0 ; i < no_blocks; ++i)
 		unicode_blocks[i].qname = qt_(unicode_blocks[i].name);
 
@@ -338,47 +340,58 @@ void GuiSymbols::updateView()
 void GuiSymbols::enableView(bool enable)
 {
 	chosenLE->setEnabled(enable);
-	okPB->setEnabled(enable);
-	applyPB->setEnabled(enable);
+	buttonBox->button(QDialogButtonBox::Ok)->setEnabled(enable);
+	buttonBox->button(QDialogButtonBox::Apply)->setEnabled(enable);
+	if (enable)
+		buttonBox->button(QDialogButtonBox::Close)->setText(qt_("Cancel"));
+	else
+		buttonBox->button(QDialogButtonBox::Close)->setText(qt_("Close"));
 }
 
 
-void GuiSymbols::on_applyPB_clicked()
+void GuiSymbols::on_buttonBox_clicked(QAbstractButton * button)
+{
+	QDialogButtonBox * bbox = qobject_cast<QDialogButtonBox*>(sender());
+	switch (bbox->standardButton(button)) {
+	case QDialogButtonBox::Ok:
+		slotOK();
+		break;
+	case QDialogButtonBox::Apply:
+		dispatchParams();
+		break;
+	case QDialogButtonBox::Close:
+		hide();
+		break;
+	default:
+		break;
+	}
+}
+
+
+void GuiSymbols::slotOK()
 {
 	dispatchParams();
-}
-
-
-void GuiSymbols::on_okPB_clicked()
-{
-	dispatchParams();
-	hide();
-}
-
-
-void GuiSymbols::on_closePB_clicked()
-{
 	hide();
 }
 
 
 void GuiSymbols::on_symbolsLW_activated(QModelIndex const &)
 {
-	on_okPB_clicked();
+	slotOK();
 }
 
 
 void GuiSymbols::on_chosenLE_textChanged(QString const & text)
 {
 	bool const empty_sel = text.isEmpty();
-	okPB->setEnabled(!empty_sel);
-	applyPB->setEnabled(!empty_sel);
+	buttonBox->button(QDialogButtonBox::Ok)->setEnabled(!empty_sel);
+	buttonBox->button(QDialogButtonBox::Apply)->setEnabled(!empty_sel);
 }
 
 
 void GuiSymbols::on_chosenLE_returnPressed()
 {
-	on_okPB_clicked();
+	slotOK();
 }
 
 

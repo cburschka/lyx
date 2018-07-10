@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>294</width>
+    <width>373</width>
     <height>290</height>
    </rect>
   </property>
@@ -16,128 +16,7 @@
   <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout">
-   <property name="leftMargin">
-    <number>9</number>
-   </property>
-   <property name="topMargin">
-    <number>9</number>
-   </property>
-   <property name="rightMargin">
-    <number>9</number>
-   </property>
-   <property name="bottomMargin">
-    <number>9</number>
-   </property>
-   <property name="spacing">
-    <number>6</number>
-   </property>
-   <item row="1" column="0">
-    <widget class="QListWidget" name="fileListLW"/>
-   </item>
-   <item row="3" column="0">
-    <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>6</number>
-     </property>
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
-      <number>0</number>
-     </property>
-     <item>
-      <spacer>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB">
-       <property name="toolTip">
-        <string>Close this dialog</string>
-       </property>
-       <property name="text">
-        <string>&amp;Close</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="2" column="0">
-    <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>6</number>
-     </property>
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
-      <number>0</number>
-     </property>
-     <item>
-      <spacer>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="rescanPB">
-       <property name="toolTip">
-        <string>Rebuild the file lists</string>
-       </property>
-       <property name="text">
-        <string>&amp;Rescan</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="viewPB">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="toolTip">
-        <string>Show contents of marked file. Only possible when files are shown with path</string>
-       </property>
-       <property name="text">
-        <string>&amp;View</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
+  <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <layout class="QHBoxLayout">
      <property name="spacing">
@@ -220,6 +99,74 @@
      </item>
     </layout>
    </item>
+   <item row="1" column="0">
+    <widget class="QListWidget" name="fileListLW"/>
+   </item>
+   <item row="2" column="0">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
+      <number>6</number>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="rescanPB">
+       <property name="toolTip">
+        <string>Rebuild the file lists</string>
+       </property>
+       <property name="text">
+        <string>&amp;Rescan</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="viewPB">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="toolTip">
+        <string>Show contents of marked file. Only possible when files are shown with path</string>
+       </property>
+       <property name="text">
+        <string>&amp;View</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="0">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Close</set>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <tabstops>
@@ -228,7 +175,6 @@
   <tabstop>fileListLW</tabstop>
   <tabstop>rescanPB</tabstop>
   <tabstop>viewPB</tabstop>
-  <tabstop>closePB</tabstop>
  </tabstops>
  <includes>
   <include location="local">qt_i18n.h</include>

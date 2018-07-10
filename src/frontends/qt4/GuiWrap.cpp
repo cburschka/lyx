@@ -33,10 +33,8 @@ GuiWrap::GuiWrap(GuiView & lv)
 {
 	setupUi(this);
 
-	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(slotButtonBox(QAbstractButton *)));
 
 	connect(valignCO, SIGNAL(highlighted(QString)),
 		this, SLOT(change_adaptor()));
@@ -63,10 +61,10 @@ GuiWrap::GuiWrap(GuiView & lv)
 	overhangED->setValidator(unsignedLengthValidator(overhangED));
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
-	bc().setRestore(restorePB);
-	bc().setOK(okPB);
-	bc().setApply(applyPB);
-	bc().setCancel(closePB);
+	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
+	bc().setApply(buttonBox->button(QDialogButtonBox::Apply));
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
+	bc().setRestore(buttonBox->button(QDialogButtonBox::Reset));
 
 	bc().addReadOnly(valignCO);
 	bc().addReadOnly(floatCB);

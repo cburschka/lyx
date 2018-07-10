@@ -31,10 +31,11 @@ GuiShowFile::GuiShowFile(GuiView & lv)
 {
 	setupUi(this);
 
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(slotButtonBox(QAbstractButton *)));
 
 	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
-	bc().setCancel(closePB);
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
 }
 
 

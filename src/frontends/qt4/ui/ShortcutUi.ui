@@ -1,136 +1,89 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>shortcutUi</class>
- <widget class="QDialog" name="shortcutUi" >
-  <property name="geometry" >
+ <widget class="QDialog" name="shortcutUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>421</width>
-    <height>111</height>
+    <height>137</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Edit shortcut</string>
   </property>
-  <property name="sizeGripEnabled" >
+  <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item row="2" column="0" colspan="4" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="lfunLBL">
+     <property name="text">
+      <string>Fu&amp;nction:</string>
      </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="okPB" >
-       <property name="text" >
-        <string>&amp;OK</string>
-       </property>
-       <property name="autoDefault" >
-        <bool>false</bool>
-       </property>
-       <property name="default" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="cancelPB" >
-       <property name="text" >
-        <string>Cancel</string>
-       </property>
-       <property name="autoDefault" >
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="0" column="1" colspan="3" >
-    <widget class="QLineEdit" name="lfunLE" >
-     <property name="toolTip" >
-      <string>Enter LyX function or command sequence</string>
-     </property>
-     <property name="text" >
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="2" >
-    <widget class="QPushButton" name="removePB" >
-     <property name="toolTip" >
-      <string>Remove last key from the shortcut sequence</string>
-     </property>
-     <property name="text" >
-      <string>&amp;Delete Key</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="3" >
-    <widget class="QPushButton" name="clearPB" >
-     <property name="toolTip" >
-      <string>Clear current shortcut</string>
-     </property>
-     <property name="text" >
-      <string>C&amp;lear</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="shortcutLBL" >
-     <property name="text" >
-      <string>&amp;Shortcut:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>shortcutWG</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="lfunLBL" >
-     <property name="text" >
-      <string>&amp;Function:</string>
-     </property>
-     <property name="buddy" >
+     <property name="buddy">
       <cstring>lfunLE</cstring>
      </property>
     </widget>
    </item>
-   <item row="1" column="1" >
-    <widget class="lyx::frontend::ShortcutWidget" name="shortcutWG" >
-     <property name="enabled" >
+   <item row="0" column="1" colspan="3">
+    <widget class="QLineEdit" name="lfunLE">
+     <property name="toolTip">
+      <string>Enter LyX function or command sequence</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="shortcutLBL">
+     <property name="text">
+      <string>Short&amp;cut:</string>
+     </property>
+     <property name="buddy">
+      <cstring>shortcutWG</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="lyx::frontend::ShortcutWidget" name="shortcutWG">
+     <property name="enabled">
       <bool>true</bool>
      </property>
-     <property name="toolTip" >
+     <property name="toolTip">
       <string>Type shortcut after clicking on this field. You can reset the content with the 'Clear' button</string>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QPushButton" name="removePB">
+     <property name="toolTip">
+      <string>Remove last key from the shortcut sequence</string>
+     </property>
+     <property name="text">
+      <string>&amp;Delete Key</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QPushButton" name="clearPB">
+     <property name="toolTip">
+      <string>Clear current shortcut</string>
+     </property>
+     <property name="text">
+      <string>C&amp;lear</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2" colspan="2">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
     </widget>
    </item>
@@ -145,11 +98,9 @@
  </customwidgets>
  <tabstops>
   <tabstop>lfunLE</tabstop>
-  <tabstop>okPB</tabstop>
-  <tabstop>cancelPB</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>

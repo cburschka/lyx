@@ -2818,20 +2818,20 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form)
 
 	shortcut_ = new GuiShortcutDialog(this);
 	shortcut_bc_.setPolicy(ButtonPolicy::OkCancelPolicy);
-	shortcut_bc_.setOK(shortcut_->okPB);
-	shortcut_bc_.setCancel(shortcut_->cancelPB);
+	shortcut_bc_.setOK(shortcut_->buttonBox->button(QDialogButtonBox::Ok));
+	shortcut_bc_.setCancel(shortcut_->buttonBox->button(QDialogButtonBox::Cancel));
 
-	connect(shortcut_->okPB, SIGNAL(clicked()),
+	connect(shortcut_->buttonBox, SIGNAL(accepted()),
 		this, SIGNAL(changed()));
-	connect(shortcut_->cancelPB, SIGNAL(clicked()),
+	connect(shortcut_->buttonBox, SIGNAL(rejected()),
 		shortcut_, SLOT(reject()));
 	connect(shortcut_->clearPB, SIGNAL(clicked()),
 		this, SLOT(shortcutClearPressed()));
 	connect(shortcut_->removePB, SIGNAL(clicked()),
 		this, SLOT(shortcutRemovePressed()));
-	connect(shortcut_->okPB, SIGNAL(clicked()),
+	connect(shortcut_->buttonBox, SIGNAL(accepted()),
 		this, SLOT(shortcutOkPressed()));
-	connect(shortcut_->cancelPB, SIGNAL(clicked()),
+	connect(shortcut_->buttonBox, SIGNAL(rejected()),
 		this, SLOT(shortcutCancelPressed()));
 }
 

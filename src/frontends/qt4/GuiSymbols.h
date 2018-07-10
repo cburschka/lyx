@@ -39,9 +39,8 @@ public:
 	//@}
 
 public Q_SLOTS:
-	void on_applyPB_clicked();
-	void on_okPB_clicked();
-	void on_closePB_clicked();
+	void slotOK();
+	void on_buttonBox_clicked(QAbstractButton *);
 	void on_symbolsLW_activated(QModelIndex const & index);
 	void on_symbolsLW_clicked(QModelIndex const & index);
 	void on_categoryCO_activated(QString const & text);

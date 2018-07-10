@@ -30,6 +30,7 @@
 
 #include <QAbstractItemModel>
 #include <QCompleter>
+#include <QDialogButtonBox>
 #include <QHeaderView>
 #include <QLineEdit>
 #include <QPushButton>
@@ -51,8 +52,8 @@ GuiThesaurus::GuiThesaurus(GuiView & lv)
 	meaningsTV->setColumnCount(1);
 	meaningsTV->header()->hide();
 
-	connect(closePB, SIGNAL(clicked()),
-		this, SLOT(slotClose()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(slotButtonBox(QAbstractButton *)));
 	connect(replaceED, SIGNAL(returnPressed()),
 		this, SLOT(replaceClicked()));
 	connect(replaceED, SIGNAL(textChanged(QString)),
@@ -85,7 +86,7 @@ GuiThesaurus::GuiThesaurus(GuiView & lv)
 	if (entryCO->completer())
 		entryCO->completer()->setCompletionMode(QCompleter::PopupCompletion);
 
-	bc().setCancel(closePB);
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Close));
 	bc().setApply(replacePB);
 	bc().addReadOnly(replaceED);
 	bc().addReadOnly(replacePB);

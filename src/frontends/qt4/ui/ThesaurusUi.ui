@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>ThesaurusUi</class>
  <widget class="QDialog" name="ThesaurusUi">
@@ -26,7 +27,7 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1" colspan="2">
+   <item row="0" column="1" colspan="3">
     <widget class="QComboBox" name="languageCO">
      <property name="toolTip">
       <string>Language of the thesaurus</string>
@@ -46,17 +47,7 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QComboBox" name="entryCO">
-     <property name="toolTip">
-      <string>Word to look up</string>
-     </property>
-     <property name="editable">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="2">
+   <item row="1" column="3">
     <widget class="QPushButton" name="lookupPB">
      <property name="toolTip">
       <string/>
@@ -72,21 +63,21 @@
       <string>The selected entry</string>
      </property>
      <property name="text">
-      <string>&amp;Selection:</string>
+      <string>Sele&amp;ction:</string>
      </property>
      <property name="buddy">
       <cstring>replaceED</cstring>
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
+   <item row="2" column="1" colspan="2">
     <widget class="QLineEdit" name="replaceED">
      <property name="toolTip">
       <string>The selected entry</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="2">
+   <item row="2" column="3">
     <widget class="QPushButton" name="replacePB">
      <property name="toolTip">
       <string>Replace the entry with the selection</string>
@@ -96,7 +87,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="3">
+   <item row="3" column="0" colspan="4">
     <widget class="QTreeWidget" name="meaningsTV">
      <property name="toolTip">
       <string>Click to select a proposal, double click to look it up.</string>
@@ -108,38 +99,22 @@
      </column>
     </widget>
    </item>
-   <item row="4" column="0" colspan="2">
-    <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>6</number>
+   <item row="4" column="2" colspan="2">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Close</set>
      </property>
-     <property name="margin">
-      <number>0</number>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="2">
+    <widget class="QComboBox" name="entryCO">
+     <property name="toolTip">
+      <string>Word to look up</string>
      </property>
-     <item>
-      <spacer>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB">
-       <property name="text">
-        <string>&amp;Close</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
@@ -150,7 +125,6 @@
   <tabstop>replaceED</tabstop>
   <tabstop>replacePB</tabstop>
   <tabstop>meaningsTV</tabstop>
-  <tabstop>closePB</tabstop>
  </tabstops>
  <includes>
   <include location="local">qt_i18n.h</include>

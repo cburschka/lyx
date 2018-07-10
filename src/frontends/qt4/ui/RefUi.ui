@@ -312,70 +312,9 @@
       <number>0</number>
      </property>
      <item>
-      <widget class="QPushButton" name="updatePB">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="toolTip">
-        <string>Update the label list</string>
-       </property>
-       <property name="text">
-        <string>&amp;Update</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>31</width>
-         <height>30</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="okPB">
-       <property name="text">
-        <string>&amp;OK</string>
-       </property>
-       <property name="autoDefault">
-        <bool>true</bool>
-       </property>
-       <property name="default">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="applyPB">
-       <property name="text">
-        <string>&amp;Apply</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-       <property name="default">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB">
-       <property name="text">
-        <string>&amp;Close</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
+      <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::Reset</set>
        </property>
       </widget>
      </item>
@@ -385,8 +324,8 @@
     <layout class="QHBoxLayout" name="horizontalLayout9">
      <item>
       <widget class="QCheckBox" name="pluralCB">
-        <property name="toolTip">
-          <string>Use plural form of formatted reference. (Works only for formatted references, and only if you are using refstyle.)</string>
+       <property name="toolTip">
+        <string>Use plural form of formatted reference. (Works only for formatted references, and only if you are using refstyle.)</string>
        </property>
        <property name="text">
         <string>Plural</string>
@@ -413,6 +352,19 @@
        </property>
       </widget>
      </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
     </layout>
    </item>
   </layout>
@@ -424,10 +376,6 @@
   <tabstop>referenceED</tabstop>
   <tabstop>typeCO</tabstop>
   <tabstop>nameED</tabstop>
-  <tabstop>updatePB</tabstop>
-  <tabstop>okPB</tabstop>
-  <tabstop>applyPB</tabstop>
-  <tabstop>closePB</tabstop>
  </tabstops>
  <includes>
   <include location="local">qt_i18n.h</include>

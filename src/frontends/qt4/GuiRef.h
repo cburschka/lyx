@@ -47,6 +47,7 @@ private Q_SLOTS:
 	void refSelected(QTreeWidgetItem *);
 	void sortToggled();
 	void groupToggled();
+	void on_buttonBox_clicked(QAbstractButton *);
 	void updateClicked();
 	void resetDialog();
 	void dialogRejected();

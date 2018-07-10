@@ -42,9 +42,8 @@ GuiSendTo::GuiSendTo(GuiView & lv)
 {
 	setupUi(this);
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(slotButtonBox(QAbstractButton *)));
 
 	connect(formatLW, SIGNAL(itemClicked(QListWidgetItem *)),
 		this, SLOT(slotFormatHighlighted(QListWidgetItem *)));
@@ -58,9 +57,9 @@ GuiSendTo::GuiSendTo(GuiView & lv)
 		this, SLOT(changed_adaptor()));
 
 	bc().setPolicy(ButtonPolicy::OkApplyCancelPolicy);
-	bc().setOK(okPB);
-	bc().setApply(applyPB);
-	bc().setCancel(closePB);
+	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
+	bc().setApply(buttonBox->button(QDialogButtonBox::Apply));
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
 }
 
 
@@ -113,7 +112,7 @@ bool GuiSendTo::isValid()
 {
 	int const line = formatLW->currentRow();
 
-	if (line < 0 || line > int(formatLW->count()))
+	if (line < 0 || (line > int(formatLW->count())))
 		return false;
 
 	return (formatLW->selectedItems().size() > 0

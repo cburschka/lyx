@@ -54,7 +54,8 @@ GuiTexInfo::GuiTexInfo(GuiView & lv)
 	warningPosted_ = false;
 	activeStyle_ = ClsType;
 
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(slotButtonBox(QAbstractButton *)));
 
 	connect(viewPB, SIGNAL(clicked()), this, SLOT(viewClicked()));
 	connect(whatStyleCO, SIGNAL(activated(QString)),
@@ -69,7 +70,7 @@ GuiTexInfo::GuiTexInfo(GuiView & lv)
 		this, SLOT(enableViewPB()));
 
 	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
-	bc().setCancel(closePB);
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
 }
 
 

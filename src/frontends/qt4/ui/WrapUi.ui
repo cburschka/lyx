@@ -1,57 +1,194 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>WrapUi</class>
- <widget class="QDialog" name="WrapUi" >
-  <property name="geometry" >
+ <widget class="QDialog" name="WrapUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>359</width>
-    <height>167</height>
+    <width>405</width>
+    <height>219</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <property name="sizeGripEnabled" >
+  <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item row="1" column="3" >
-    <widget class="lyx::frontend::LengthCombo" name="widthUnitLC" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>0</hsizetype>
-       <vsizetype>0</vsizetype>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="valignLA">
+     <property name="text">
+      <string>Pla&amp;cement:</string>
+     </property>
+     <property name="buddy">
+      <cstring>valignCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="2">
+    <widget class="QComboBox" name="valignCO">
+     <property name="toolTip">
+      <string>Vertical alignment</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Outer (default)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Inner</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Left</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Right</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QCheckBox" name="floatCB">
+     <property name="toolTip">
+      <string>Check this to allow flexible placement</string>
+     </property>
+     <property name="text">
+      <string>Allow &amp;floating</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="widthLA">
+     <property name="text">
+      <string>Wid&amp;th:</string>
+     </property>
+     <property name="buddy">
+      <cstring>widthED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="2">
+    <widget class="QLineEdit" name="widthED">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="minimumSize" >
+     <property name="toolTip">
+      <string>Width value</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="lyx::frontend::LengthCombo" name="widthUnitLC">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
       <size>
        <width>40</width>
        <height>22</height>
       </size>
      </property>
-     <property name="focusPolicy" >
+     <property name="focusPolicy">
       <enum>Qt::StrongFocus</enum>
      </property>
-     <property name="toolTip" >
+     <property name="toolTip">
       <string>Unit of width value</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="2" >
+   <item row="2" column="0">
+    <widget class="QCheckBox" name="overhangCB">
+     <property name="toolTip">
+      <string>use overhang</string>
+     </property>
+     <property name="text">
+      <string>Over&amp;hang:</string>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="2">
+    <widget class="QLineEdit" name="overhangED">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip">
+      <string>Overhang value</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3">
+    <widget class="lyx::frontend::LengthCombo" name="overhangUnitLC">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::StrongFocus</enum>
+     </property>
+     <property name="toolTip">
+      <string>Unit of overhang value</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QCheckBox" name="linesCB">
+     <property name="toolTip">
+      <string>use number of lines</string>
+     </property>
+     <property name="text">
+      <string>&amp;Line span:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QSpinBox" name="linesSB">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="toolTip">
+      <string>number of needed lines</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>40</width>
        <height>20</height>
@@ -59,228 +196,10 @@
      </property>
     </spacer>
    </item>
-   <item row="3" column="1" >
-    <widget class="QSpinBox" name="linesSB" >
-     <property name="enabled" >
-      <bool>false</bool>
-     </property>
-     <property name="toolTip" >
-      <string>number of needed lines</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0" >
-    <widget class="QCheckBox" name="linesCB" >
-     <property name="toolTip" >
-      <string>use number of lines</string>
-     </property>
-     <property name="text" >
-      <string>&amp;Line span:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="widthLA" >
-     <property name="text" >
-      <string>&amp;Width:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>widthED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1" colspan="2" >
-    <widget class="QLineEdit" name="widthED" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>0</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="toolTip" >
-      <string>Width value</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="4" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QPushButton" name="restorePB" >
-       <property name="toolTip" >
-        <string/>
-       </property>
-       <property name="text" >
-        <string>&amp;Restore</string>
-       </property>
-       <property name="default" >
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="okPB" >
-       <property name="toolTip" >
-        <string/>
-       </property>
-       <property name="text" >
-        <string>&amp;OK</string>
-       </property>
-       <property name="default" >
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="applyPB" >
-       <property name="toolTip" >
-        <string/>
-       </property>
-       <property name="text" >
-        <string>&amp;Apply</string>
-       </property>
-       <property name="default" >
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB" >
-       <property name="text" >
-        <string>&amp;Close</string>
-       </property>
-       <property name="default" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="valignLA" >
-     <property name="text" >
-      <string>&amp;Placement:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>valignCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1" colspan="2" >
-    <widget class="QComboBox" name="valignCO" >
-     <property name="toolTip" >
-      <string>Vertical alignment</string>
-     </property>
-     <item>
-      <property name="text" >
-       <string>Outer (default)</string>
-      </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>Inner</string>
-      </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>Left</string>
-      </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>Right</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="2" column="0" >
-    <widget class="QCheckBox" name="overhangCB" >
-     <property name="toolTip" >
-      <string>use overhang</string>
-     </property>
-     <property name="text" >
-      <string>Over&amp;hang:</string>
-     </property>
-     <property name="checked" >
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1" colspan="2" >
-    <widget class="QLineEdit" name="overhangED" >
-     <property name="enabled" >
-      <bool>false</bool>
-     </property>
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>0</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="toolTip" >
-      <string>Overhang value</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="3" >
-    <widget class="lyx::frontend::LengthCombo" name="overhangUnitLC" >
-     <property name="enabled" >
-      <bool>false</bool>
-     </property>
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>0</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize" >
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="focusPolicy" >
-      <enum>Qt::StrongFocus</enum>
-     </property>
-     <property name="toolTip" >
-      <string>Unit of overhang value</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="3" >
-    <widget class="QCheckBox" name="floatCB" >
-     <property name="toolTip" >
-      <string>Check this to allow flexible placement</string>
-     </property>
-     <property name="text" >
-      <string>Allow &amp;floating</string>
+   <item row="4" column="0" colspan="4">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::Reset</set>
      </property>
     </widget>
    </item>
@@ -303,13 +222,9 @@
   <tabstop>overhangUnitLC</tabstop>
   <tabstop>linesCB</tabstop>
   <tabstop>linesSB</tabstop>
-  <tabstop>okPB</tabstop>
-  <tabstop>applyPB</tabstop>
-  <tabstop>closePB</tabstop>
-  <tabstop>restorePB</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections>
@@ -319,11 +234,11 @@
    <receiver>overhangED</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>52</x>
      <y>71</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>124</x>
      <y>70</y>
     </hint>
@@ -335,11 +250,11 @@
    <receiver>overhangUnitLC</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>54</x>
      <y>80</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>259</x>
      <y>80</y>
     </hint>
@@ -351,11 +266,11 @@
    <receiver>linesSB</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>13</x>
      <y>93</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>132</x>
      <y>108</y>
     </hint>

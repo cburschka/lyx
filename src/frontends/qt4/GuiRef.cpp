@@ -76,13 +76,12 @@ GuiRef::GuiRef(GuiView & lv)
 	sortingCO->addItem(qt_("Alphabetically (Case-Insensitive)"), "nocase");
 	sortingCO->addItem(qt_("Alphabetically (Case-Sensitive)"), "case");
 
+	buttonBox->button(QDialogButtonBox::Reset)->setText(qt_("&Update"));
+	buttonBox->button(QDialogButtonBox::Reset)->setToolTip(qt_("Update the label list"));
+
 	refsTW->setColumnCount(1);
 	refsTW->header()->setVisible(false);
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(resetDialog()));
 	connect(this, SIGNAL(rejected()), this, SLOT(dialogRejected()));
 
 	connect(typeCO, SIGNAL(activated(int)),
@@ -111,8 +110,6 @@ GuiRef::GuiRef(GuiView & lv)
 		this, SLOT(groupToggled()));
 	connect(gotoPB, SIGNAL(clicked()),
 		this, SLOT(gotoClicked()));
-	connect(updatePB, SIGNAL(clicked()),
-		this, SLOT(updateClicked()));
 	connect(bufferCO, SIGNAL(activated(int)),
 		this, SLOT(updateClicked()));
 	connect(pluralCB, SIGNAL(clicked()),
@@ -125,9 +122,9 @@ GuiRef::GuiRef(GuiView & lv)
 	enableBoxes();
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
-	bc().setOK(okPB);
-	bc().setApply(applyPB);
-	bc().setCancel(closePB);
+	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
+	bc().setApply(buttonBox->button(QDialogButtonBox::Apply));
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
 	bc().addReadOnly(typeCO);
 
 	restored_buffer_ = -1;
@@ -260,6 +257,28 @@ void GuiRef::sortToggled()
 void GuiRef::groupToggled()
 {
 	redoRefs();
+}
+
+
+void GuiRef::on_buttonBox_clicked(QAbstractButton * button)
+{
+	switch (buttonBox->standardButton(button)) {
+	case QDialogButtonBox::Ok:
+		slotOK();
+		break;
+	case QDialogButtonBox::Apply:
+		slotApply();
+		break;
+	case QDialogButtonBox::Cancel:
+		slotClose();
+		resetDialog();
+		break;
+	case QDialogButtonBox::Reset:
+		updateClicked();
+		break;
+	default:
+		break;
+	}
 }
 
 
