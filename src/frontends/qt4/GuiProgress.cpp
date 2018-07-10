@@ -32,9 +32,10 @@ namespace lyx {
 namespace frontend {
 
 
-// FIXME: This dialog has issues with line breaking and size, in particular with
-// html. But it could easily be reimplemented as a QMessageBox using
-// QMessageBox::setCheckBox() available starting from Qt 5.2
+// This dialog is only a fallback for Qt < 5.2, which does not feature
+// QMessageBox::setCheckBox() yet. Note that it has issues with line
+// breaking and size, in particular with html.
+#if QT_VERSION < 0x050200
 class GuiToggleWarningDialog : public QDialog, public Ui::ToggleWarningUi
 {
 public:
@@ -44,6 +45,7 @@ public:
 		QDialog::setModal(true);
 	}
 };
+#endif
 
 
 GuiProgress::GuiProgress()
@@ -172,6 +174,9 @@ void GuiProgress::doToggleWarning(QString const & title, QString const & msg, QS
 	if (settings.value("hidden_warnings/" + msg, false).toBool())
 			return;
 
+// Qt < 5.2 does not feature QMessageBox::setCheckBox() yet,
+// so we roll our own dialog.
+#if QT_VERSION < 0x050200
 	GuiToggleWarningDialog * dlg =
 		new GuiToggleWarningDialog(qApp->focusWidget());
 
@@ -183,6 +188,18 @@ void GuiProgress::doToggleWarning(QString const & title, QString const & msg, QS
 		if (dlg->dontShowAgainCB->isChecked())
 			settings.setValue("hidden_warnings/"
 				+ msg, true);
+#else
+	QCheckBox * dontShowAgainCB = new QCheckBox();
+	dontShowAgainCB->setText(qt_("&Do not show this warning again!"));
+	dontShowAgainCB->setToolTip(qt_("If you check this, LyX will not warn you again in the given case."));
+	QMessageBox box(QMessageBox::Warning, title, formatted,
+			QMessageBox::Ok, qApp->focusWidget());
+	box.setCheckBox(dontShowAgainCB);
+	if (box.exec() == QMessageBox::Ok)
+		if (dontShowAgainCB->isChecked())
+			settings.setValue("hidden_warnings/"
+				+ msg, true);
+#endif
 }
 
 
