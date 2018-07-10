@@ -188,6 +188,9 @@ bool InsetERT::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_END_EDIT:
 		status.setEnabled(tempfile_ != 0);
 		return true;
+	case LFUN_INSET_INSERT:
+		status.setEnabled(false);
+		return true;
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "ert") {
 			status.setEnabled(true);
