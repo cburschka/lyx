@@ -1,90 +1,81 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>NoteUi</class>
- <widget class="QDialog" name="NoteUi" >
-  <property name="geometry" >
+ <widget class="QDialog" name="NoteUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>202</width>
-    <height>184</height>
+    <height>196</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <property name="sizeGripEnabled" >
+  <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item row="1" column="1" >
-    <widget class="QPushButton" name="closePB" >
-     <property name="text" >
-      <string>Close</string>
-     </property>
-     <property name="default" >
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" >
-    <widget class="QPushButton" name="okPB" >
-     <property name="text" >
-      <string>&amp;OK</string>
-     </property>
-     <property name="default" >
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="2" >
-    <widget class="QGroupBox" name="NoteBG" >
-     <property name="title" >
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="NoteBG">
+     <property name="title">
       <string>Type</string>
      </property>
-     <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>11</number>
-      </property>
-      <property name="spacing" >
+     <layout class="QVBoxLayout">
+      <property name="spacing">
        <number>6</number>
       </property>
+      <property name="leftMargin">
+       <number>11</number>
+      </property>
+      <property name="topMargin">
+       <number>11</number>
+      </property>
+      <property name="rightMargin">
+       <number>11</number>
+      </property>
+      <property name="bottomMargin">
+       <number>11</number>
+      </property>
       <item>
-       <widget class="QRadioButton" name="noteRB" >
-        <property name="toolTip" >
+       <widget class="QRadioButton" name="noteRB">
+        <property name="toolTip">
          <string>LyX internal only</string>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>LyX &amp;Note</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="commentRB" >
-        <property name="toolTip" >
+       <widget class="QRadioButton" name="commentRB">
+        <property name="toolTip">
          <string>Export to LaTeX/Docbook but don't print</string>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>&amp;Comment</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="greyedoutRB" >
-        <property name="toolTip" >
+       <widget class="QRadioButton" name="greyedoutRB">
+        <property name="toolTip">
          <string>Print as grey text</string>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>&amp;Greyed out</string>
         </property>
        </widget>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
     </widget>
    </item>
   </layout>
@@ -93,11 +84,9 @@
   <tabstop>noteRB</tabstop>
   <tabstop>commentRB</tabstop>
   <tabstop>greyedoutRB</tabstop>
-  <tabstop>okPB</tabstop>
-  <tabstop>closePB</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>

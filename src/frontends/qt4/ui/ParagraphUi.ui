@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>438</width>
-    <height>292</height>
+    <height>303</height>
    </rect>
   </property>
   <property name="focusPolicy">
@@ -16,77 +16,7 @@
   <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout">
-   <property name="margin">
-    <number>9</number>
-   </property>
-   <property name="spacing">
-    <number>6</number>
-   </property>
-   <item row="4" column="0" colspan="2">
-    <spacer>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>281</width>
-       <height>31</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="4" column="2">
-    <widget class="QCheckBox" name="synchronizedViewCB">
-     <property name="layoutDirection">
-      <enum>Qt::LeftToRight</enum>
-     </property>
-     <property name="text">
-      <string>I&amp;mmediate Apply</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QGroupBox" name="labelwidthGB">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="title">
-      <string>Label Width</string>
-     </property>
-     <property name="flat">
-      <bool>true</bool>
-     </property>
-     <layout class="QGridLayout">
-      <property name="margin">
-       <number>9</number>
-      </property>
-      <property name="spacing">
-       <number>6</number>
-      </property>
-      <item row="0" column="0">
-       <widget class="QLabel" name="TextLabel2">
-        <property name="toolTip">
-         <string>This text defines the width of the paragraph label</string>
-        </property>
-        <property name="text">
-         <string>Lo&amp;ngest label</string>
-        </property>
-        <property name="buddy">
-         <cstring>labelWidth</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="labelWidth">
-        <property name="toolTip">
-         <string>This text defines the width of the paragraph label</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
+  <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
@@ -96,7 +26,16 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout">
-      <property name="margin">
+      <property name="leftMargin">
+       <number>9</number>
+      </property>
+      <property name="topMargin">
+       <number>9</number>
+      </property>
+      <property name="rightMargin">
+       <number>9</number>
+      </property>
+      <property name="bottomMargin">
        <number>9</number>
       </property>
       <property name="spacing">
@@ -141,13 +80,6 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="0">
-    <widget class="QCheckBox" name="indentCB">
-     <property name="text">
-      <string>&amp;Indent Paragraph</string>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="1" rowspan="3" colspan="2">
     <widget class="QGroupBox" name="aligmentGB">
      <property name="title">
@@ -157,7 +89,16 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout">
-      <property name="margin">
+      <property name="leftMargin">
+       <number>9</number>
+      </property>
+      <property name="topMargin">
+       <number>9</number>
+      </property>
+      <property name="rightMargin">
+       <number>9</number>
+      </property>
+      <property name="bottomMargin">
        <number>9</number>
       </property>
       <property name="spacing">
@@ -180,7 +121,7 @@
       <item row="3" column="0">
        <widget class="QRadioButton" name="alignCenterRB">
         <property name="text">
-         <string>C&amp;enter</string>
+         <string>&amp;Center</string>
         </property>
        </widget>
       </item>
@@ -204,68 +145,62 @@
      </layout>
     </widget>
    </item>
-   <item row="5" column="0" colspan="3">
-    <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>6</number>
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="labelwidthGB">
+     <property name="enabled">
+      <bool>false</bool>
      </property>
-     <property name="margin">
-      <number>0</number>
+     <property name="title">
+      <string>Label Width</string>
      </property>
-     <item>
-      <widget class="QPushButton" name="restorePB">
-       <property name="text">
-        <string>&amp;Restore</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>31</width>
-         <height>27</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="okPB">
-       <property name="text">
-        <string>&amp;OK</string>
-       </property>
-       <property name="default">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="applyPB">
-       <property name="text">
-        <string>&amp;Apply</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB">
-       <property name="text">
-        <string>&amp;Close</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout">
+      <property name="leftMargin">
+       <number>9</number>
+      </property>
+      <property name="topMargin">
+       <number>9</number>
+      </property>
+      <property name="rightMargin">
+       <number>9</number>
+      </property>
+      <property name="bottomMargin">
+       <number>9</number>
+      </property>
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="TextLabel2">
+        <property name="toolTip">
+         <string>This text defines the width of the paragraph label</string>
+        </property>
+        <property name="text">
+         <string>Lo&amp;ngest label</string>
+        </property>
+        <property name="buddy">
+         <cstring>labelWidth</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="labelWidth">
+        <property name="toolTip">
+         <string>This text defines the width of the paragraph label</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QCheckBox" name="indentCB">
+     <property name="text">
+      <string>&amp;Indent Paragraph</string>
+     </property>
+    </widget>
    </item>
    <item row="3" column="0" colspan="3">
     <spacer>
@@ -280,6 +215,36 @@
      </property>
     </spacer>
    </item>
+   <item row="4" column="0" rowspan="2" colspan="2">
+    <spacer>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>281</width>
+       <height>31</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="5" column="2">
+    <widget class="QCheckBox" name="synchronizedViewCB">
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="text">
+      <string>I&amp;mmediate Apply</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="3">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::Reset</set>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <tabstops>
@@ -293,10 +258,6 @@
   <tabstop>alignCenterRB</tabstop>
   <tabstop>alignRightRB</tabstop>
   <tabstop>synchronizedViewCB</tabstop>
-  <tabstop>restorePB</tabstop>
-  <tabstop>okPB</tabstop>
-  <tabstop>applyPB</tabstop>
-  <tabstop>closePB</tabstop>
  </tabstops>
  <includes>
   <include location="local">qt_i18n.h</include>

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>398</width>
+    <width>431</width>
     <height>372</height>
    </rect>
   </property>
@@ -22,7 +22,16 @@
      <property name="spacing">
       <number>6</number>
      </property>
-     <property name="margin">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
       <number>0</number>
      </property>
      <item>
@@ -146,13 +155,22 @@
      </property>
     </spacer>
    </item>
-   <item row="3" column="0">
+   <item row="3" column="0" colspan="2">
     <widget class="QGroupBox" name="alignmentGB">
      <property name="title">
       <string>Alignment</string>
      </property>
      <layout class="QGridLayout" name="grid_1">
-      <property name="margin">
+      <property name="leftMargin">
+       <number>11</number>
+      </property>
+      <property name="topMargin">
+       <number>11</number>
+      </property>
+      <property name="rightMargin">
+       <number>11</number>
+      </property>
+      <property name="bottomMargin">
        <number>11</number>
       </property>
       <property name="spacing">
@@ -194,7 +212,7 @@
       <item row="0" column="1">
        <widget class="QLabel" name="widthLA_2">
         <property name="text">
-         <string>&amp;Horizontal:</string>
+         <string>Hori&amp;zontal:</string>
         </property>
         <property name="buddy">
          <cstring>halignED</cstring>
@@ -204,7 +222,7 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="1" colspan="2">
+   <item row="3" column="2">
     <widget class="QGroupBox" name="decorationtGB">
      <property name="title">
       <string>Decoration</string>
@@ -233,45 +251,12 @@
      </layout>
     </widget>
    </item>
-   <item row="4" column="0">
-    <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>6</number>
+   <item row="4" column="1" colspan="2">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
-     <item>
-      <spacer>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="okPB">
-       <property name="text">
-        <string>&amp;OK</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB">
-       <property name="text">
-        <string>Close</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    </widget>
    </item>
   </layout>
  </widget>
@@ -288,8 +273,6 @@
   <tabstop>valignCO</tabstop>
   <tabstop>halignED</tabstop>
   <tabstop>decorationCO</tabstop>
-  <tabstop>okPB</tabstop>
-  <tabstop>closePB</tabstop>
  </tabstops>
  <includes>
   <include location="local">qt_i18n.h</include>

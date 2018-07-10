@@ -167,9 +167,8 @@ GuiListings::GuiListings(GuiView & lv)
 {
 	setupUi(this);
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(slotButtonBox(QAbstractButton *)));
 
 	connect(languageCO, SIGNAL(currentIndexChanged(int)),
 		this, SLOT(change_adaptor()));
@@ -234,9 +233,9 @@ GuiListings::GuiListings(GuiView & lv)
 	placementLE->setValidator(new QRegExpValidator(QRegExp("[\\*tbph]*"), this));
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
-	bc().setOK(okPB);
-	bc().setApply(applyPB);
-	bc().setCancel(closePB);
+	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
+	bc().setApply(buttonBox->button(QDialogButtonBox::Apply));
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
 	listingsTB->setPlainText(
 		qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
 

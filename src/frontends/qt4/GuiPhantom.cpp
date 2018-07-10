@@ -26,16 +26,16 @@ GuiPhantom::GuiPhantom(GuiView & lv)
 {
 	setupUi(this);
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(slotButtonBox(QAbstractButton *)));
 
 	connect(phantomRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(hphantomRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(vphantomRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
-	bc().setOK(okPB);
-	bc().setCancel(closePB);
+	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
 }
 
 

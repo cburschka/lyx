@@ -74,9 +74,6 @@ GuiMathMatrix::GuiMathMatrix(GuiView & lv)
 	valignCO->setCurrentIndex(1);
 	decorationCO->setCurrentIndex(0);
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
-
 	connect(table, SIGNAL(rowsChanged(int)),
 		rowsSB, SLOT(setValue(int)));
 	connect(table, SIGNAL(colsChanged(int)),
@@ -121,6 +118,21 @@ void GuiMathMatrix::decorationChanged(int deco)
 void GuiMathMatrix::change_adaptor()
 {
 	// FIXME: We need a filter for the halign input
+}
+
+
+void GuiMathMatrix::on_buttonBox_clicked(QAbstractButton * button)
+{
+	switch (buttonBox->standardButton(button)) {
+	case QDialogButtonBox::Ok:
+		slotOK();
+		break;
+	case QDialogButtonBox::Cancel:
+		slotClose();
+		break;
+	default:
+		break;
+	}
 }
 
 

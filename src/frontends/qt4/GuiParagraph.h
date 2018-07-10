@@ -69,15 +69,9 @@ private Q_SLOTS:
 	///
 	void on_synchronizedViewCB_toggled();
 	///
-	void on_restorePB_clicked();
-	///
 	void on_linespacing_activated(int);
 	/// Apply changes
-	void on_applyPB_clicked();
-	/// Apply changes and close
-	void on_okPB_clicked();
-	/// Close/Cancel dialog
-	void on_closePB_clicked();
+	void on_buttonBox_clicked(QAbstractButton * button);
 
 private:
 	///

@@ -120,7 +120,8 @@ GuiLog::GuiLog(GuiView & lv)
 {
 	setupUi(this);
 
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(slotButtonBox(QAbstractButton *)));
 	connect(updatePB, SIGNAL(clicked()), this, SLOT(updateContents()));
 	connect(findPB, SIGNAL(clicked()), this, SLOT(find()));
 	// FIXME: find via returnPressed() does not work!

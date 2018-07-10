@@ -42,6 +42,8 @@
 #include "support/debug.h"
 #include "support/lstrings.h"
 
+#include <QDialogButtonBox>
+
 using namespace std;
 using namespace lyx::support;
 
@@ -82,6 +84,8 @@ InsetParamsDialog::InsetParamsDialog(GuiView & lv, InsetParamsWidget * widget)
 	synchronizedCB->setChecked(true);
 	on_immediateApplyCB_stateChanged(false);
 	setFocusProxy(widget);
+	newPB = buttonBox->addButton(qt_("Ne&w Inset"),
+			     QDialogButtonBox::ActionRole);
 }
 
 InsetParamsDialog::~InsetParamsDialog()
@@ -93,7 +97,7 @@ InsetParamsDialog::~InsetParamsDialog()
 bool InsetParamsDialog::initialiseParams(std::string const & sdata)
 {
 	if (!d->widget_->initialiseParams(sdata))
-		on_restorePB_clicked();
+		resetDialog();
 	return true;
 }
 
@@ -107,23 +111,43 @@ void InsetParamsDialog::setInsetParamsWidget(InsetParamsWidget * widget)
 }
 
 
-void InsetParamsDialog::on_restorePB_clicked()
+void InsetParamsDialog::on_buttonBox_clicked(QAbstractButton * button)
 {
-	updateView(true);
-	restorePB->setEnabled(false);
-	d->changed_ = false;
-	d->inset_ = inset(d->widget_->insetCode());
+	switch (buttonBox->buttonRole(button)) {
+	case QDialogButtonBox::AcceptRole: {// OK
+		Inset const * i = inset(d->widget_->insetCode());
+		if (i)
+			applyView();
+		else
+			newInset();
+		hide();
+		break;
+	}
+	case QDialogButtonBox::ApplyRole:
+		applyView();
+		break;
+	case QDialogButtonBox::RejectRole:// Cancel or Close
+		hide();
+		break;
+	case QDialogButtonBox::ResetRole: {
+		resetDialog();
+		break;
+	}
+	case QDialogButtonBox::ActionRole:// New Inset
+		newInset();
+		break;
+	default:
+		break;
+	}
 }
 
 
-void InsetParamsDialog::on_okPB_clicked()
+void InsetParamsDialog::resetDialog()
 {
-	Inset const * i = inset(d->widget_->insetCode());
-	if (i)
-		applyView();
-	else
-		newInset();
-	hide();
+	updateView(true);
+	buttonBox->button(QDialogButtonBox::Reset)->setEnabled(false);
+	d->changed_ = false;
+	d->inset_ = inset(d->widget_->insetCode());
 }
 
 
@@ -134,21 +158,12 @@ void InsetParamsDialog::newInset()
 }
 
 
-void InsetParamsDialog::on_newPB_clicked()
+bool InsetParamsDialog::newInsetAllowed() const
 {
-	newInset();
-}
-
-
-void InsetParamsDialog::on_applyPB_clicked()
-{
-	applyView();
-}
-
-
-void InsetParamsDialog::on_closePB_clicked()
-{
-	hide();
+	docstring const argument = d->widget_->dialogToParams();
+	FuncRequest const fr = FuncRequest(d->widget_->creationCode(), argument);
+	FuncStatus const fs(getStatus(fr));
+	return fs.enabled();
 }
 
 
@@ -177,12 +192,22 @@ docstring InsetParamsDialog::checkWidgets(bool immediate)
 		? d->widget_->creationCode() : LFUN_INSET_MODIFY;
 	bool const lfun_ok = lyx::getStatus(FuncRequest(code, argument)).enabled();
 
-	okPB->setEnabled(!immediate && widget_ok && !read_only && valid_argument);
+	buttonBox->button(QDialogButtonBox::Ok)->setEnabled(!immediate && widget_ok
+							    && !read_only && valid_argument);
 	bool const can_be_restored = !immediate && !read_only
 			&& ins && (ins != d->inset_ || d->changed_);
-	restorePB->setEnabled(can_be_restored);
-	applyPB->setEnabled(ins && !immediate && lfun_ok && widget_ok && !read_only && valid_argument);
-	newPB->setEnabled(widget_ok && !read_only && valid_argument);
+	buttonBox->button(QDialogButtonBox::Reset)->setEnabled(can_be_restored);
+	buttonBox->button(QDialogButtonBox::Apply)->setEnabled(ins && !immediate
+							       && lfun_ok && widget_ok
+							       && !read_only && valid_argument);
+	// This seems to be the only way to access custom buttons
+	QList<QAbstractButton*> buttons = buttonBox->buttons();
+	for (int i = 0; i < buttons.size(); ++i) {
+		if (buttonBox->buttonRole(buttons.at(i)) == QDialogButtonBox::ActionRole)
+			buttons.at(i)->setEnabled(widget_ok && !read_only
+						  && valid_argument
+						  && newInsetAllowed());
+	}
 	synchronizedCB->setEnabled(!immediate);
 	return argument;
 }

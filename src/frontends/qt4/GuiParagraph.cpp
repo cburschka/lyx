@@ -32,6 +32,7 @@
 #include "support/gettext.h"
 
 #include <QCheckBox>
+#include <QDialogButtonBox>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QSettings>
@@ -154,13 +155,13 @@ LyXAlignment GuiParagraph::getAlignmentFromDialog() const
 void GuiParagraph::on_synchronizedViewCB_toggled()
 {
 	bool in_sync = synchronizedViewCB->isChecked();
-	restorePB->setEnabled(!in_sync);
-	applyPB->setEnabled(!in_sync);
-	okPB->setEnabled(!in_sync);
+	buttonBox->button(QDialogButtonBox::Reset)->setEnabled(!in_sync);
+	buttonBox->button(QDialogButtonBox::Apply)->setEnabled(!in_sync);
+	buttonBox->button(QDialogButtonBox::Ok)->setEnabled(!in_sync);
 	if (!in_sync)
-		closePB->setText(qt_("&Cancel"));
+		buttonBox->button(QDialogButtonBox::Cancel)->setText(qt_("&Cancel"));
 	else
-		closePB->setText(qt_("&Close"));
+		buttonBox->button(QDialogButtonBox::Cancel)->setText(qt_("&Close"));
 }
 
 
@@ -174,32 +175,29 @@ void GuiParagraph::changed()
 	    && (linespacing->currentIndex() != 4
 		|| (!linespacingValue->text().endsWith(loc.decimalPoint())
 		    && linespacingValue->hasAcceptableInput())))
-		on_applyPB_clicked();
+		applyView();
 }
 
 
-void GuiParagraph::on_applyPB_clicked()
+void GuiParagraph::on_buttonBox_clicked(QAbstractButton * button)
 {
-	applyView();
-}
-
-
-void GuiParagraph::on_okPB_clicked()
-{
-	applyView();
-	hide();
-}
-
-
-void GuiParagraph::on_closePB_clicked()
-{
-	hide();
-}
-
-
-void GuiParagraph::on_restorePB_clicked()
-{
-	updateView();
+	switch (buttonBox->standardButton(button)) {
+	case QDialogButtonBox::Ok:
+		applyView();
+		hide();
+		break;
+	case QDialogButtonBox::Apply:
+		applyView();
+		break;
+	case QDialogButtonBox::Cancel:
+		hide();
+		break;
+	case QDialogButtonBox::Reset:
+		updateView();
+		break;
+	default:
+		break;
+	}
 }
 
 
@@ -316,8 +314,8 @@ void GuiParagraph::enableView(bool enable)
 	linespacing->setEnabled(enable);
 	labelWidth->setEnabled(enable);
 	synchronizedViewCB->setEnabled(enable);
-	applyPB->setEnabled(enable);
-	restorePB->setEnabled(enable);
+	buttonBox->button(QDialogButtonBox::Apply)->setEnabled(enable);
+	buttonBox->button(QDialogButtonBox::Reset)->setEnabled(enable);
 	if (!enable)
 		synchronizedViewCB->setChecked(true);
 	RadioMap::const_iterator it = radioMap_.begin();

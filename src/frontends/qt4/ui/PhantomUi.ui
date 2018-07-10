@@ -1,90 +1,81 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>PhantomUi</class>
- <widget class="QDialog" name="PhantomUi" >
-  <property name="geometry" >
+ <widget class="QDialog" name="PhantomUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>202</width>
-    <height>184</height>
+    <width>221</width>
+    <height>196</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <property name="sizeGripEnabled" >
+  <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item row="1" column="1" >
-    <widget class="QPushButton" name="closePB" >
-     <property name="text" >
-      <string>Close</string>
-     </property>
-     <property name="default" >
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" >
-    <widget class="QPushButton" name="okPB" >
-     <property name="text" >
-      <string>&amp;OK</string>
-     </property>
-     <property name="default" >
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="2" >
-    <widget class="QGroupBox" name="PhantomBG" >
-     <property name="title" >
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="PhantomBG">
+     <property name="title">
       <string>Type</string>
      </property>
-     <layout class="QVBoxLayout" >
-      <property name="spacing" >
+     <layout class="QVBoxLayout">
+      <property name="spacing">
        <number>6</number>
       </property>
-      <property name="margin" >
+      <property name="leftMargin">
+       <number>11</number>
+      </property>
+      <property name="topMargin">
+       <number>11</number>
+      </property>
+      <property name="rightMargin">
+       <number>11</number>
+      </property>
+      <property name="bottomMargin">
        <number>11</number>
       </property>
       <item>
-       <widget class="QRadioButton" name="phantomRB" >
-        <property name="toolTip" >
+       <widget class="QRadioButton" name="phantomRB">
+        <property name="toolTip">
          <string>Horizontal and vertical space of the phantom content</string>
         </property>
-        <property name="text" >
-         <string>&amp;Phantom</string>
+        <property name="text">
+         <string>Phanto&amp;m</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="hphantomRB" >
-        <property name="toolTip" >
+       <widget class="QRadioButton" name="hphantomRB">
+        <property name="toolTip">
          <string>Horizontal space of the phantom content</string>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>&amp;Horizontal Phantom</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="vphantomRB" >
-        <property name="toolTip" >
+       <widget class="QRadioButton" name="vphantomRB">
+        <property name="toolTip">
          <string>Vertical space of the phantom content</string>
         </property>
-        <property name="text" >
-         <string>&amp;Vertical Phantom</string>
+        <property name="text">
+         <string>Verti&amp;cal Phantom</string>
         </property>
        </widget>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
     </widget>
    </item>
   </layout>
@@ -93,11 +84,9 @@
   <tabstop>phantomRB</tabstop>
   <tabstop>hphantomRB</tabstop>
   <tabstop>vphantomRB</tabstop>
-  <tabstop>okPB</tabstop>
-  <tabstop>closePB</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>

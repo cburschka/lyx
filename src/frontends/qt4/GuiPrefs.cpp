@@ -3417,10 +3417,8 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 
 	QDialog::setModal(false);
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
-	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
+	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
+		this, SLOT(slotButtonBox(QAbstractButton *)));
 
 	addModule(new PrefUserInterface(this));
 	addModule(new PrefDocHandling(this));
@@ -3462,10 +3460,10 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 #endif
 
 	bc().setPolicy(ButtonPolicy::PreferencesPolicy);
-	bc().setOK(okPB);
-	bc().setApply(applyPB);
-	bc().setCancel(closePB);
-	bc().setRestore(restorePB);
+	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
+	bc().setApply(buttonBox->button(QDialogButtonBox::Apply));
+	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
+	bc().setRestore(buttonBox->button(QDialogButtonBox::Reset));
 
 	// initialize the strftime validator
 	bc().addCheckedLineEdit(output->DateED);

@@ -34,6 +34,7 @@ public:
 	bool isBufferDependent() const { return true; }
 
 public Q_SLOTS:
+	void on_buttonBox_clicked(QAbstractButton *);
 	void slotOK();
 	void slotClose();
 	void columnsChanged(int);

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>650</width>
-    <height>352</height>
+    <height>266</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -22,109 +22,39 @@
   <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout">
-   <property name="leftMargin">
-    <number>11</number>
-   </property>
-   <property name="topMargin">
-    <number>11</number>
-   </property>
-   <property name="rightMargin">
-    <number>11</number>
-   </property>
-   <property name="bottomMargin">
-    <number>11</number>
-   </property>
-   <property name="spacing">
-    <number>6</number>
-   </property>
-   <item row="1" column="0">
-    <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>6</number>
-     </property>
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QPushButton" name="restorePB">
-       <property name="text">
-        <string>&amp;Restore</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="tempSaveCB">
-       <property name="toolTip">
-        <string>If this is checked, pressing OK or Apply will save the changes only for the current LyX session, not permanently.</string>
-       </property>
-       <property name="text">
-        <string>A&amp;pply to current session only</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="okPB">
-       <property name="text">
-        <string>&amp;OK</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="applyPB">
-       <property name="text">
-        <string>&amp;Apply</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB">
-       <property name="text">
-        <string>&amp;Close</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="0" column="0">
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="2">
     <widget class="lyx::frontend::PanelStack" name="prefsPS" native="true"/>
+   </item>
+   <item row="1" column="0">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>405</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="1">
+    <widget class="QCheckBox" name="tempSaveCB">
+     <property name="toolTip">
+      <string>If this is checked, pressing OK or Apply will save the changes only for the current LyX session, not permanently.</string>
+     </property>
+     <property name="text">
+      <string>A&amp;pply to current session only</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::Reset</set>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
@@ -138,10 +68,6 @@
  </customwidgets>
  <tabstops>
   <tabstop>prefsPS</tabstop>
-  <tabstop>restorePB</tabstop>
-  <tabstop>okPB</tabstop>
-  <tabstop>applyPB</tabstop>
-  <tabstop>closePB</tabstop>
  </tabstops>
  <includes>
   <include location="local">qt_i18n.h</include>

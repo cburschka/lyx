@@ -15,6 +15,8 @@
 #include "DialogView.h"
 #include "ui_InsetParamsUi.h"
 
+#include <QPushButton>
+
 namespace lyx {
 
 class Inset;
@@ -36,11 +38,8 @@ public:
 protected Q_SLOTS:
 	void onWidget_changed();
 	void applyView();
-	void on_restorePB_clicked();
-	void on_newPB_clicked();
-	void on_okPB_clicked();
-	void on_applyPB_clicked();
-	void on_closePB_clicked();
+	void resetDialog();
+	void on_buttonBox_clicked(QAbstractButton *);
 	void on_immediateApplyCB_stateChanged(int state);
 	void on_synchronizedCB_stateChanged(int state);
 
@@ -56,9 +55,13 @@ private:
 	///
 	void newInset();
 	///
+	bool newInsetAllowed() const;
+	///
 	void updateView(bool update_widget);
 	///
 	docstring checkWidgets(bool immediate);
+	///
+	QPushButton * newPB;
 	/// pimpl
 	struct Private;
 	Private * d;
