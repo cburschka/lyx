@@ -36,7 +36,7 @@ private:
 	/// \name InsetParamsWidget inherited methods
 	//@{
 	InsetCode insetCode() const { return NOMENCL_PRINT_CODE; }
-	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
+	FuncCode creationCode() const { return LFUN_NOMENCL_PRINT; }
 	QString dialogTitle() const { return qt_("Nomenclature List Settings"); }
 	void paramsToDialog(Inset const *);
 	void paramsToDialog(InsetCommandParams const &);
