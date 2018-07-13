@@ -56,21 +56,24 @@ else:
     if version != None:
         gm = True
 
+# IM >= 5.5.8 separates options for source and target files
+# See http://www.imagemagick.org/Usage/basics/#why
 if im or gm:
-    opts = "-depth 8"
+    sopts = "-depth 8"
+    topts = ""
 elif sys.platform == 'darwin':
     command = 'lyxconvert'
 
 # If supported, add the -define option for pdf source formats
 if sys.argv[1] == 'pdf' and (version >= 0x060206 or gm):
-    opts = '-define pdf:use-cropbox=true ' + opts
+    sopts = '-define pdf:use-cropbox=true ' + sopts
 
 # If supported, add the -flatten option for ppm target formats (see bug 4749)
 if sys.argv[3] == 'ppm' and (im and version >= 0x060305 or gm):
-    opts = opts + ' -flatten'
+    topts = '-flatten'
 
 # print (command, sys.argv[2], sys.argv[4], file= sys.stdout)
-if (im or gm) and os.system(r'%s %s "%s" "%s"' % (command, opts, sys.argv[2], sys.argv[3] + ':' + sys.argv[4])) != 0:
+if (im or gm) and os.system(r'%s %s "%s" %s "%s"' % (command, sopts, sys.argv[2], topts, sys.argv[3] + ':' + sys.argv[4])) != 0:
     print (sys.argv[0], 'ERROR', file= sys.stderr)
     print ('Execution of "%s" failed.' % command, file= sys.stderr)
     sys.exit(1)
