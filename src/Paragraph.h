@@ -358,7 +358,8 @@ public:
 	///
 	char_type getChar(pos_type pos) const;
 	/// Get the char, but mirror all bracket characters if it is right-to-left
-	char_type getUChar(BufferParams const &, pos_type pos) const;
+	char_type getUChar(BufferParams const &, OutputParams const &,
+			   pos_type pos) const;
 	/// pos <= size() (there is a dummy font change at the end of each par)
 	void setFont(pos_type pos, Font const & font);
 	///
