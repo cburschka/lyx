@@ -74,11 +74,12 @@ public:
 	};
 	/// Returns the unicode character of a given quote
 	char_type getQuoteChar(QuoteStyle const &, QuoteLevel const &,
-			       QuoteSide const &) const;
+			       QuoteSide const &, bool const rtl = false) const;
 	/// Returns a map of quotation marks
 	std::map<std::string, docstring> getTypes() const;
 	///
-	docstring getLaTeXQuote(char_type c, std::string const &) const;
+	docstring getLaTeXQuote(char_type c, std::string const &,
+				bool const rtl = false) const;
 	///
 	docstring getHTMLQuote(char_type c) const;
 	/// Returns a descriptive label of a style suitable for dialog and menu
@@ -201,6 +202,8 @@ private:
 	bool fontspec_;
 	/// Do we have an internal font encoding?
 	bool internal_fontenc_;
+	/// Are we writing RTL?
+	bool rtl_;
 	///
 	friend class InsetQuotesParams;
 
