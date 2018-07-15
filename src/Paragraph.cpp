@@ -1234,10 +1234,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 					  pos_type end_pos,
 					  unsigned int & column)
 {
-	// With polyglossia, brackets and stuff need not be reversed
-	// in RTL scripts (see bug #8251)
-	char_type const c = (runparams.use_polyglossia) ?
-		owner_->getUChar(bparams, i) : text_[i];
+	char_type const c = owner_->getUChar(bparams, runparams, i);
 
 	if (style.pass_thru || runparams.pass_thru
 	    || contains(style.pass_thru_chars, c)
@@ -1997,32 +1994,60 @@ Font const Paragraph::getLayoutFont
 }
 
 
-char_type Paragraph::getUChar(BufferParams const & bparams, pos_type pos) const
+char_type Paragraph::getUChar(BufferParams const & bparams,
+			      OutputParams const & rp,
+			      pos_type pos) const
 {
 	char_type c = d->text_[pos];
+
+	// Return unchanged character in LTR languages.
 	if (!getFontSettings(bparams, pos).isRightToLeft())
 		return c;
 
-	// FIXME: The arabic special casing is due to the difference of arabic
-	// round brackets input introduced in r18599. Check if this should be
-	// unified with Hebrew or at least if all bracket types should be
-	// handled the same (file format change in either case).
+	// FIXME This is a complete mess due to all the language-specific
+	// special cases. We need to unify this eventually, but this
+	// requires a file format change and some thought.
+	// We also need to unify the input of parentheses in different RTL
+	// languages. Currently, some have their own methods (Arabic:
+	// 18599/lyxsvn, Hebrew: e5f42f67d/lyxgit), some don't (Urdu, Syriac).
+	// Also note that the representation in the LyX file is probably wrong
+	// (see FIXME in TextMetrics::breakRow).
+	// Most likely, we should simply rely on Qt's unicode handling here.
 	string const & lang = getFontSettings(bparams, pos).language()->lang();
-	bool const arabic = lang == "arabic_arabtex" || lang == "arabic_arabi"
-		|| lang == "farsi";
+
+	// With polyglossia, brackets and stuff need not be reversed in RTL scripts
+	// FIXME: The special casing for Hebrew parens is due to the special
+	// handling on input (for Hebrew in e5f42f67d/lyxgit); see #8251.
 	char_type uc = c;
+	if (rp.use_polyglossia) {
+		switch (c) {
+		case '(':
+			if (lang == "hebrew")
+				uc = ')';
+			break;
+		case ')':
+			if (lang == "hebrew")
+				uc = '(';
+			break;
+		}
+		return uc;
+	}
+
+	// In the following languages, brackets don't need to be reversed.
+	// Furthermore, in arabic_arabi, they are transformed to Arabic
+	// Ornate Parentheses (dunno if this is really wanted)
+	bool const reversebrackets = lang != "arabic_arabtex"
+			&& lang != "arabic_arabi"
+			&& lang != "farsi"; 
+
 	switch (c) {
-	case '(':
-		uc = arabic ? c : ')';
-		break;
-	case ')':
-		uc = arabic ? c : '(';
-		break;
 	case '[':
-		uc = ']';
+		if (reversebrackets)
+			uc = ']';
 		break;
 	case ']':
-		uc = '[';
+		if (reversebrackets)
+			uc = '[';
 		break;
 	case '{':
 		uc = '}';
@@ -3387,7 +3412,8 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 				retval += inset->xhtml(xs, np);
 			}
 		} else {
-			char_type c = getUChar(buf.masterBuffer()->params(), i);
+			char_type c = getUChar(buf.masterBuffer()->params(),
+					       runparams, i);
 			xs << c;
 		}
 		font_old = font.fontInfo();

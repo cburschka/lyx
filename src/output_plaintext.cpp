@@ -188,7 +188,7 @@ void writePlaintextParagraph(Buffer const & buf,
 		if (os.str().size() > max_length)
 			break;
 
-		char_type c = par.getUChar(buf.params(), i);
+		char_type c = par.getUChar(buf.params(), runparams, i);
 
 		if (par.isInset(i) || c == ' ') {
 			if (runparams.linelen > 0 &&
