@@ -182,6 +182,8 @@ private:
 	///
 	void useLayout(docstring const &, int);
 	///
+	bool hasRTLLanguage() const;
+	///
 	std::list<docstring> usedLayouts_;
 	///
 	std::list<docstring> usedInsetLayouts_;

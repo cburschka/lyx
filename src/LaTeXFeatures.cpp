@@ -65,6 +65,10 @@ namespace lyx {
 static docstring const lyx_def = from_ascii(
 	"\\providecommand{\\LyX}{L\\kern-.1667em\\lower.25em\\hbox{Y}\\kern-.125emX\\@}");
 
+static docstring const lyx_rtl_def = from_ascii(
+	"\\let\\@@LyX\\LyX\n"
+	"\\def\\LyX{\\@ensure@LTR{\\@@LyX}}");
+
 static docstring const lyx_hyperref_def = from_ascii(
 	"\\providecommand{\\LyX}{\\texorpdfstring%\n"
 	"  {L\\kern-.1667em\\lower.25em\\hbox{Y}\\kern-.125emX\\@}\n"
@@ -908,6 +912,17 @@ void LaTeXFeatures::getFontEncodings(vector<string> & encodings) const
 		}
 }
 
+
+bool LaTeXFeatures::hasRTLLanguage() const
+{
+	if (params_.language->rightToLeft())
+		return true;
+	for (auto const & lang : UsedLanguages_)
+		if (lang->rightToLeft())
+			return true;
+	return false;
+}
+
 namespace {
 
 char const * simplefeatures[] = {
@@ -1359,6 +1374,8 @@ TexString LaTeXFeatures::getMacros() const
 			macros << lyx_hyperref_def << '\n';
 		else
 			macros << lyx_def << '\n';
+		if (runparams_.use_polyglossia && hasRTLLanguage())
+			macros << lyx_rtl_def << '\n';
 	}
 
 	if (mustProvide("noun"))

@@ -16,6 +16,7 @@
 
 #include "Dimension.h"
 #include "Font.h"
+#include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
@@ -416,6 +417,17 @@ void InsetSpecialChar::read(Lexer & lex)
 void InsetSpecialChar::latex(otexstream & os,
 			     OutputParams const & rp) const
 {
+	bool const rtl = rp.local_font->isRightToLeft();
+	string lswitch = "";
+	string lswitche = "";
+	if (rtl && !rp.use_polyglossia) {
+		lswitch = "\\L{";
+		lswitche = "}";
+		if (rp.local_font->language()->lang() == "arabic_arabi"
+		    || rp.local_font->language()->lang() == "farsi")
+			lswitch = "\\textLR{";
+	}
+	
 	switch (kind_) {
 	case HYPHENATION:
 		os << "\\-";
@@ -433,7 +445,7 @@ void InsetSpecialChar::latex(otexstream & os,
 		os << "\\ldots" << termcmd;
 		break;
 	case MENU_SEPARATOR:
-		if (rp.local_font->isRightToLeft())
+		if (rtl)
 			os << "\\lyxarrow*";
 		else
 			os << "\\lyxarrow";
@@ -450,22 +462,22 @@ void InsetSpecialChar::latex(otexstream & os,
 	case PHRASE_LYX:
 		if (rp.moving_arg)
 			os << "\\protect";
-		os << "\\LyX" << termcmd;
+		os << lswitch << "\\LyX" << termcmd << lswitche;
 		break;
 	case PHRASE_TEX:
 		if (rp.moving_arg)
 			os << "\\protect";
-		os << "\\TeX" << termcmd;
+		os << lswitch << "\\TeX" << termcmd << lswitche;
 		break;
 	case PHRASE_LATEX2E:
 		if (rp.moving_arg)
 			os << "\\protect";
-		os << "\\LaTeXe" << termcmd;
+		os << lswitch << "\\LaTeXe" << termcmd << lswitche;
 		break;
 	case PHRASE_LATEX:
 		if (rp.moving_arg)
 			os << "\\protect";
-		os << "\\LaTeX" << termcmd;
+		os << lswitch << "\\LaTeX" << termcmd << lswitche;
 		break;
 	}
 }
