@@ -2289,13 +2289,13 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_DECIMAL:
 		break;
 	case LYX_ALIGN_LEFT: {
-		if (owner_->getParLanguage(bparams)->babel() != "hebrew")
+		if (!owner_->getParLanguage(bparams)->rightToLeft())
 			corrected_env(os, begin_tag, "flushleft", code, lastpar, column);
 		else
 			corrected_env(os, begin_tag, "flushright", code, lastpar, column);
 		break;
 	} case LYX_ALIGN_RIGHT: {
-		if (owner_->getParLanguage(bparams)->babel() != "hebrew")
+		if (!owner_->getParLanguage(bparams)->rightToLeft())
 			corrected_env(os, begin_tag, "flushright", code, lastpar, column);
 		else
 			corrected_env(os, begin_tag, "flushleft", code, lastpar, column);
@@ -2347,13 +2347,13 @@ bool Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_DECIMAL:
 		break;
 	case LYX_ALIGN_LEFT: {
-		if (owner_->getParLanguage(bparams)->babel() != "hebrew")
+		if (!owner_->getParLanguage(bparams)->rightToLeft())
 			output = corrected_env(os, end_tag, "flushleft", code, lastpar, col);
 		else
 			output = corrected_env(os, end_tag, "flushright", code, lastpar, col);
 		break;
 	} case LYX_ALIGN_RIGHT: {
-		if (owner_->getParLanguage(bparams)->babel() != "hebrew")
+		if (!owner_->getParLanguage(bparams)->rightToLeft())
 			output = corrected_env(os, end_tag, "flushright", code, lastpar, col);
 		else
 			output = corrected_env(os, end_tag, "flushleft", code, lastpar, col);
