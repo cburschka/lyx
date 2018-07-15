@@ -199,7 +199,7 @@ InsetQuotesParams::QuoteLevel InsetQuotesParams::getQuoteLevel(string const & s,
 
 
 char_type InsetQuotesParams::getQuoteChar(QuoteStyle const & style, QuoteLevel const & level,
-				    QuoteSide const & side) const
+				    QuoteSide const & side, bool const rtl) const
 {
 	// main opening quotation mark
 	char_type left_primary;
@@ -321,8 +321,12 @@ char_type InsetQuotesParams::getQuoteChar(QuoteStyle const & style, QuoteLevel c
 
 	switch (level) {
 	case SecondaryQuotes:
+		if (rtl)
+			return (side == ClosingQuote) ? left_secondary : right_secondary;
 		return (side == OpeningQuote) ? left_secondary : right_secondary;
 	case PrimaryQuotes:
+		if (rtl)
+			return (side == ClosingQuote) ? left_primary : right_primary;
 		return (side == OpeningQuote) ? left_primary : right_primary;
 	default:
 		break;
@@ -333,7 +337,8 @@ char_type InsetQuotesParams::getQuoteChar(QuoteStyle const & style, QuoteLevel c
 }
 
 
-docstring InsetQuotesParams::getLaTeXQuote(char_type c, string const & op) const
+docstring InsetQuotesParams::getLaTeXQuote(char_type c, string const & op,
+					   bool const rtl) const
 {
 	string res;
 
@@ -347,14 +352,16 @@ docstring InsetQuotesParams::getLaTeXQuote(char_type c, string const & op) const
 	}
 	case 0x2019: {// '
 		if (op == "int")
-			res = "\\textquoteleft";
+			// This macro is redefined in rtl mode
+			res = rtl ? "\\textquoteright" : "\\textquoteleft";
 		else
 			res = "'";
 		break;
 	}
 	case 0x2018: {// `
 		if (op == "int")
-			res = "\\textquoteright";
+			// This macro is redefined in rtl mode
+			res = rtl ? "\\textquoteleft" : "\\textquoteright";
 		else
 			res = "`";
 		break;
@@ -388,14 +395,16 @@ docstring InsetQuotesParams::getLaTeXQuote(char_type c, string const & op) const
 	}
 	case 0x201d: {// ''
 		if (op == "int")
-			res = "\\textquotedblleft";
+			// This macro is redefined in rtl mode
+			res = rtl ? "\\textquotedblright" : "\\textquotedblleft";
 		else
 			res = "''";
 		break;
 	}
 	case 0x201c: {// ``
 		if (op == "int")
-			res = "\\textquotedblright";
+			// This macro is redefined in rtl mode
+			res = rtl ? "\\textquotedblleft" : "\\textquotedblright";
 		else
 			res = "``";
 		break;
@@ -603,7 +612,7 @@ docstring const InsetQuotesParams::getShortGuiLabel(docstring const string)
 InsetQuotes::InsetQuotes(Buffer * buf, string const & str)
 	: Inset(buf),
 	  style_(InsetQuotesParams::EnglishQuotes), side_(InsetQuotesParams::OpeningQuote),
-	  pass_thru_(false), internal_fontenc_(false)
+	  pass_thru_(false), internal_fontenc_(false), rtl_(false)
 {
 	if (buf) {
 		global_style_ = buf->masterBuffer()->params().quotes_style;
@@ -620,7 +629,8 @@ InsetQuotes::InsetQuotes(Buffer * buf, string const & str)
 
 InsetQuotes::InsetQuotes(Buffer * buf, char_type c, InsetQuotesParams::QuoteLevel level,
 			 string const & side, string const & style)
-	: Inset(buf), level_(level), pass_thru_(false), fontspec_(false), internal_fontenc_(false)
+	: Inset(buf), level_(level), pass_thru_(false), fontspec_(false),
+	  internal_fontenc_(false), rtl_(false)
 {
 	bool dynamic = false;
 	if (buf) {
@@ -720,7 +730,7 @@ docstring InsetQuotes::displayString() const
 	InsetQuotesParams::QuoteStyle style =
 			(style_ == InsetQuotesParams::DynamicQuotes) ? global_style_ : style_;
 
-	docstring retdisp = docstring(1, quoteparams.getQuoteChar(style, level_, side_));
+	docstring retdisp = docstring(1, quoteparams.getQuoteChar(style, level_, side_, rtl_));
 
 	// in French, thin spaces are added inside double guillemets
 	if (prefixIs(context_lang_, "fr")
@@ -836,7 +846,7 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 {
 	InsetQuotesParams::QuoteStyle style =
 			(style_ == InsetQuotesParams::DynamicQuotes) ? global_style_ : style_;
-	char_type quotechar = quoteparams.getQuoteChar(style, level_, side_);
+	char_type quotechar = quoteparams.getQuoteChar(style, level_, side_, rtl_);
 	docstring qstr;
 
 	// In pass-thru context, we output plain quotes
@@ -878,7 +888,7 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 	} else if (runparams.local_font->language()->internalFontEncoding()) {
 		// Quotation marks for internal font encodings
 		// (ligatures not featured)
-		qstr = quoteparams.getLaTeXQuote(quotechar, "int");
+		qstr = quoteparams.getLaTeXQuote(quotechar, "int", rtl_);
 #ifdef DO_USE_DEFAULT_LANGUAGE
 	} else if ((doclang == "default"
 #else
@@ -985,12 +995,14 @@ void InsetQuotes::forOutliner(docstring & os, size_t const, bool const) const
 void InsetQuotes::updateBuffer(ParIterator const & it, UpdateType /* utype*/)
 {
 	BufferParams const & bp = buffer().masterBuffer()->params();
+	Font const & font = it.paragraph().getFontSettings(bp, it.pos());
 	pass_thru_ = it.paragraph().isPassThru();
-	context_lang_ = it.paragraph().getFontSettings(bp, it.pos()).language()->code();
-	internal_fontenc_ = it.paragraph().getFontSettings(bp, it.pos()).language()->internalFontEncoding();
+	context_lang_ = font.language()->code();
+	internal_fontenc_ = font.language()->internalFontEncoding();
 	fontenc_ = bp.main_font_encoding();
 	global_style_ = bp.quotes_style;
 	fontspec_ = bp.useNonTeXFonts;
+	rtl_ = font.isRightToLeft();
 }
 
 
