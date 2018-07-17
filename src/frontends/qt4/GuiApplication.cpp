@@ -664,16 +664,10 @@ public:
 };
 
 
-////////////////////////////////////////////////////////////////////////
-//
-// Mac specific stuff goes here...
-//
-////////////////////////////////////////////////////////////////////////
-
-class MenuTranslator : public QTranslator
+class GuiTranslator : public QTranslator
 {
 public:
-	MenuTranslator(QObject * parent)
+	GuiTranslator(QObject * parent = nullptr)
 		: QTranslator(parent)
 	{}
 
@@ -687,14 +681,29 @@ public:
 	  const char * /*comment*/ = 0) const
 #endif
 	{
-		string const s = sourceText;
-		if (s == N_("About %1")	|| s == N_("Preferences")
-				|| s == N_("Reconfigure") || s == N_("Quit %1"))
-			return qt_(s);
-		else
-			return QString();
+#if 0
+		// Here we declare the strings that need to be translated from Qt own GUI
+		// This is needed to include these strings to po files
+		_("About %1");
+		_("Preferences");
+		_("Reconfigure");
+		_("Quit %1"));
+#endif
+		docstring s = getGuiMessages().getIfFound(sourceText);
+		// This test should eventually be removed when translations are updated
+		if (s.empty())
+			LYXERR(Debug::LOCALE, "Missing translation for `"
+			       << string(sourceText) << "'");
+		return toqstr(s);
 	}
 };
+
+
+////////////////////////////////////////////////////////////////////////
+//
+// Mac specific stuff goes here...
+//
+////////////////////////////////////////////////////////////////////////
 
 #ifdef Q_OS_MAC
 // QMacPasteboardMimeGraphics can only be compiled on Mac.
@@ -944,8 +953,10 @@ struct GuiApplication::Private
 	FontLoader font_loader_;
 	///
 	ColorCache color_cache_;
-	///
+	/// the built-in Qt translation mechanism
 	QTranslator qt_trans_;
+	/// LyX gettext-based translation for Qt elements
+	GuiTranslator gui_trans_;
 	///
 	QHash<int, SocketNotifier *> socket_notifiers_;
 	///
@@ -1025,7 +1036,9 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 
 	qsrand(QDateTime::currentDateTime().toTime_t());
 
-	// Install translator for GUI elements.
+	// Install LyX translator for missing Qt translations
+	installTranslator(&d->gui_trans_);
+	// Install Qt native translator for GUI elements.
 	installTranslator(&d->qt_trans_);
 
 #ifdef QPA_XCB
@@ -1044,10 +1057,6 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	// FIXME: Do we need a lyxrc setting for this on Mac? This behaviour
 	// seems to be the default case for applications like LyX.
 	setQuitOnLastWindowClosed(false);
-	// This allows to translate the strings that appear in the LyX menu.
-	/// A translator suitable for the entries in the LyX menu.
-	/// Only needed with Qt/Mac.
-	installTranslator(new MenuTranslator(this));
 	///
 	setupApplescript();
 #endif

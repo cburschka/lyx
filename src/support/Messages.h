@@ -25,8 +25,11 @@ public:
 	Messages() {}
 	/// messages in the language \p l.
 	Messages(std::string const & l);
-	///
+	/// Return the tranlation of message \c msg, or the original
+	/// string if no context was found. Context is always removed.
 	docstring const get(std::string const & msg) const;
+	///
+	docstring const getIfFound(std::string const & msg) const;
 	/// What is the language associated with this translation?
 	std::string language() const;
 	/// Is an (at least partial) translation of language with code \p c available?

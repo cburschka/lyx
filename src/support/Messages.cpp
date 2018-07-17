@@ -347,6 +347,19 @@ docstring const Messages::get(string const & m) const
 	}
 }
 
+
+docstring const Messages::getIfFound(string const & m) const
+{
+	if (m.empty())
+		return docstring();
+
+	TranslationMap::const_iterator it = trans_map_.find(m);
+	if (it != trans_map_.end())
+		return it->second;
+	else
+		return docstring();
+}
+
 } // namespace lyx
 
 #else // ENABLE_NLS
