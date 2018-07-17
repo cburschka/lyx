@@ -3659,23 +3659,22 @@ def convert_captionlayouts(document):
         "Bicaption" : "Bicaption",
         }
 
-    i = 0
-    while True:
-        i = find_token(document.body, "\\begin_layout", i)
-        if i == -1:
-            return
-        val = get_value(document.body, "\\begin_layout", i)
-        if val in list(caption_dict.keys()):
+    for captype in caption_dict.keys():
+        i = 0
+        while True:
+            i = find_token(document.body, "\\begin_layout " + captype, i)
+            if i == -1:
+                break
             j = find_end_of_layout(document.body, i)
             if j == -1:
                 document.warning("Malformed LyX document: Missing `\\end_layout'.")
-                return
+                break
 
             document.body[j:j] = ["\\end_layout", "", "\\end_inset", "", ""]
             document.body[i:i+1] = ["\\begin_layout %s" % document.default_layout,
                                     "\\begin_inset Caption %s" % caption_dict[val], "",
                                     "\\begin_layout %s" % document.default_layout]
-        i += 1
+            i = j + 1
 
 
 def revert_captionlayouts(document):
