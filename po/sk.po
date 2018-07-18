@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-07-10 13:08+0200\n"
-"PO-Revision-Date: 2018-07-10 11:27+0000\n"
+"POT-Creation-Date: 2018-07-18 18:58+0200\n"
+"PO-Revision-Date: 2018-07-18 16:58+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -141,7 +141,11 @@ msgstr "Návrat na predvolený štandard"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:183
 msgid "Rese&t"
-msgstr "Vyn&ulovať"
+msgstr "Ob&noviť"
+
+#: src/frontends/qt4/GuiApplication.cpp:695
+msgid "Reset"
+msgstr "Obnoviť"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:201
 msgid "Bibliography Style"
@@ -160,7 +164,7 @@ msgstr "Stýl ktorý určí schému generovanej biblatex-bibliografie"
 #: src/frontends/qt4/ui/ColorUi.ui:134 src/frontends/qt4/ui/ColorUi.ui:211
 #: src/frontends/qt4/ui/ColorUi.ui:272
 msgid "R&eset"
-msgstr "Vy&nulovať"
+msgstr "Obnovi&ť"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:251
 msgid "Match biblatex bibliography with citation style"
@@ -168,7 +172,7 @@ msgstr "Prispôsob biblatex-bibliografiu ku štýlu citácie"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:254
 msgid "&Match"
-msgstr "Pr&ispôsobiť"
+msgstr "P&rispôsobiť"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:265
 msgid "Default BibTeX st&yle:"
@@ -183,7 +187,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:294
 msgid "&Reset"
-msgstr "V&ynulovať"
+msgstr "Obnov&iť"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:305
 msgid "Select this if you want to split your bibliography into sections"
@@ -191,7 +195,7 @@ msgstr "Vyberte túto možnosť keď chcete rozdeliť bibliografiu na sekcie"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:308
 msgid "Subdivided bibli&ography"
-msgstr "Rozčlenená bibli&ografia"
+msgstr "Rozčl&enená bibliografia"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:328
 msgid "Rescan style files"
@@ -649,9 +653,9 @@ msgid "Remove the selected branch"
 msgstr "Zmazať vybranú vetvu"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136 src/frontends/qt4/ui/IndicesUi.ui:165
-#: src/Buffer.cpp:4503 src/Buffer.cpp:4516
+#: src/Buffer.cpp:4635 src/Buffer.cpp:4648
 msgid "&Remove"
-msgstr "&Odstrániť"
+msgstr "Ods&trániť"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:143
 msgid "Change the name of the selected branch"
@@ -1573,9 +1577,9 @@ msgstr "Pokiaľ &možno tu"
 msgid "&Page of floats"
 msgstr "Strana p&lávajúcich objektov"
 
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:90
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:200
 msgid "&Bottom of page"
-msgstr "&Spodok strany"
+msgstr "Spodo&k strany"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:100
 msgid "&Span columns"
@@ -1709,7 +1713,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:293
 msgid "Enable micr&o-typographic extensions"
-msgstr "Povoliť mikr&o-typografické rozšírenia"
+msgstr "Povoliť mikro-typo&grafické rozšírenia"
 
 #: src/frontends/qt4/ui/FontUi.ui:300
 msgid ""
@@ -2047,9 +2051,9 @@ msgstr "Upraviť súbor"
 msgid "&Edit"
 msgstr "&Upraviť"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:294
+#: src/frontends/qt4/ui/CharacterUi.ui:355
 msgid "&Emphasized"
-msgstr "&Zvýraznenie"
+msgstr "Zvýr&aznenie"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:136
 msgid "Underline spaces in generated output"
@@ -2080,8 +2084,10 @@ msgid "&Caption:"
 msgstr "&Popis:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:117
+#: src/frontends/qt4/ui/ParagraphUi.ui:124
+#: src/frontends/qt4/ui/TabularUi.ui:1526
 msgid "&Center"
-msgstr "&Na stred"
+msgstr "Na &stred"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:275
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:79
@@ -2257,7 +2263,7 @@ msgstr "&Vlastné:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:100
 msgid "&Graphics driver:"
-msgstr "&Ovládač grafik:"
+msgstr "Ovládač &grafik:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:130
 msgid "Select if the current document is included to a master file"
@@ -2637,7 +2643,7 @@ msgstr "&Vnútorný:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:128
 msgid "O&uter:"
-msgstr "V&onkajší:"
+msgstr "Vo&nkajší:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:141
 msgid "Head &sep:"
@@ -2850,6 +2856,10 @@ msgstr "Uviesť v O&bsahu"
 msgid "&Numbering"
 msgstr "Čís&lovanie"
 
+#: src/frontends/qt4/GuiApplication.cpp:692
+msgid "&OK"
+msgstr "&OK"
+
 #: src/frontends/qt4/ui/OutputUi.ui:20
 msgid "Output Format"
 msgstr "Výstupný formát"
@@ -2952,7 +2962,7 @@ msgstr "LaTeX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:240
 msgid "Math &image scaling:"
-msgstr "Mat. mierka &obrázku:"
+msgstr "Mat. mier&ka obrázku:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:256
 msgid "Scaling factor for images used for math output."
@@ -3019,7 +3029,7 @@ msgstr "Povoliť rozdeliť odkazy na viac riadkov."
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:225
 msgid "B&reak links over lines"
-msgstr "R&ozdeliť odkazy aj na viac riadkov"
+msgstr "&Rozdeliť odkazy aj na viac riadkov"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:232
 msgid "No &frames around links"
@@ -3081,7 +3091,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:126
 msgid "&Orientation:"
-msgstr "&Orientácia:"
+msgstr "Or&ientácia:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:136
 msgid "&Portrait"
@@ -3121,9 +3131,9 @@ msgstr "Šírka návestie"
 msgid "This text defines the width of the paragraph label"
 msgstr "Tento text definuje šírku návestia odstavca"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:73
+#: src/frontends/qt4/ui/ParagraphUi.ui:181
 msgid "Lo&ngest label"
-msgstr "&Najdlhšie návestie"
+msgstr "Na&jdlhšie návestie"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:93
 msgid "Line &spacing"
@@ -3245,7 +3255,7 @@ msgstr "Zobraz vyťahovacie menu po zdržaní."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:54
 msgid "Automatic p&opup"
-msgstr "Automatická p&onuka"
+msgstr "&Automatická ponuka"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:61
 msgid "Autoco&rrection"
@@ -3283,7 +3293,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:109
 msgid "Cursor i&ndicator"
-msgstr "Indikátor k&urzoru"
+msgstr "&Indikátor kurzoru"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:119
 #: lib/layouts/hollywood.layout:281 src/frontends/qt4/GuiPrefs.cpp:388
@@ -3362,7 +3372,7 @@ msgstr "&Z formátu:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:153
 msgid "&To format:"
-msgstr "&Do formátu:"
+msgstr "Do &formátu:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:194
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:54
@@ -3371,9 +3381,9 @@ msgstr "&Modifikovať"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:3064 src/frontends/qt4/GuiPrefs.cpp:3151
+#: src/frontends/qt4/GuiPrefs.cpp:3041 src/frontends/qt4/GuiPrefs.cpp:3128
 msgid "Remo&ve"
-msgstr "&Odstrániť"
+msgstr "O&dstrániť"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:234
 msgid "Converter File Cache"
@@ -3403,7 +3413,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:322
 msgid "Use need&auth option"
-msgstr "Použi needa&uth voľbu"
+msgstr "Použi needau&th voľbu"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:325
 msgid ""
@@ -3419,7 +3429,7 @@ msgstr "Zobraziť &grafiku"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:51
 msgid "Instant &preview:"
-msgstr "&Okamžitý náhľad:"
+msgstr "Okamžitý &náhľad:"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:62 src/Font.cpp:77
 #: src/frontends/qt4/GuiDocument.cpp:135
@@ -3511,7 +3521,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
 msgid "&Save new documents compressed by default"
-msgstr "Štandardne &ukladať nové dokumenty komprimované"
+msgstr "Š&tandardne ukladať nové dokumenty komprimované"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
 msgid ""
@@ -3532,7 +3542,7 @@ msgstr "Okná && Pracovná Plocha"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:177
 msgid "Open documents in &tabs"
-msgstr "&Otvoriť dokumenty v kartách"
+msgstr "Otvo&riť dokumenty v kartách"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
 msgid ""
@@ -3652,7 +3662,7 @@ msgstr "Skryť stavový p&ruh"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:209
 msgid "&Limit text width"
-msgstr "&Obmedz šírku textu"
+msgstr "O&bmedz šírku textu"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:221
 msgid "Screen used (&pixels):"
@@ -3668,7 +3678,7 @@ msgstr "O&dstrániť"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:73
 msgid "&Document format"
-msgstr "Formát d&okumentu"
+msgstr "Form&át dokumentu"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:80
 msgid "Check this to show the current format in the File > Export menu"
@@ -3896,7 +3906,7 @@ msgstr "LaTeX-ov príkaz na začatie zmeny jazyka"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:118
 msgid "Command e&nd:"
-msgstr "&Ukončovací príkaz:"
+msgstr "Uko&nčovací príkaz:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:128
 msgid "The LaTeX command that ends a switch to a foreign language"
@@ -3904,7 +3914,7 @@ msgstr "LaTeX-ov príkaz na zakončenie zmeny jazyka"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:135
 msgid "Default decimal &separator:"
-msgstr "Štandardný decimálny &oddeľovač:"
+msgstr "Št&andardný decimálny oddeľovač:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:161
 msgid "Default length &unit:"
@@ -4050,9 +4060,9 @@ msgstr "Používať &Windows-štýl na zápis ciest v súboroch LaTeX-u"
 msgid "Set class options to default on class change"
 msgstr "Zvoliť štandardné voľby pri zmene triedy"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:340
+#: src/frontends/qt4/ui/PrefLatexUi.ui:323
 msgid "R&eset class options when document class changes"
-msgstr "&Obnoviť triedne voľby pri zmene triedy dokumentu"
+msgstr "O&bnoviť triedne voľby pri zmene triedy dokumentu"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:20
 msgid "Forward Search"
@@ -4080,7 +4090,7 @@ msgstr "&Veľkosť papiera:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:149
 msgid "Lan&dscape:"
-msgstr "Na šírk&u:"
+msgstr "Na šír&ku:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:162
 msgid "Other Options"
@@ -4102,7 +4112,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:200
 msgid "&Date format:"
-msgstr "F&ormát dátumu:"
+msgstr "Fo&rmát dátumu:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:216
 msgid "Date format for strftime output"
@@ -4186,7 +4196,7 @@ msgstr "Slovníky &tezauru:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:105
 msgid "&Temporary directory:"
-msgstr "P&omocný adresár:"
+msgstr "Po&mocný adresár:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:128
 msgid "Ly&XServer pipe:"
@@ -4246,7 +4256,7 @@ msgstr "N&ajväčšie:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:327
 msgid "&Huge:"
-msgstr "&Obrovské:"
+msgstr "Obrovs&ké:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:337
 msgid "&Hugest:"
@@ -4348,7 +4358,7 @@ msgstr "Všeobecný Vzhľad a Pocit"
 
 #: src/frontends/qt4/ui/PrefUi.ui:37
 msgid "&User interface file:"
-msgstr "Súbor s &užívateľským rozhraním:"
+msgstr "&Súbor s užívateľským rozhraním:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:74
 msgid "&Icon set:"
@@ -5140,7 +5150,7 @@ msgstr "Odsadenie postupných odstavcov"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:38
 msgid "&Indentation:"
-msgstr "&Odsadzovanie:"
+msgstr "Od&sadzovanie:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:122
 msgid "&Vertical space:"
@@ -18205,9 +18215,9 @@ msgstr "Dopredu Hľadať|a"
 msgid "Move Paragraph Up|o"
 msgstr "Presunúť Odstavec Nahor|d"
 
-#: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:119
+#: lib/ui/stdcontext.inc:348 lib/ui/stdmenus.inc:119
 msgid "Move Paragraph Down|v"
-msgstr "Presunúť Odstavec Nadol|ť"
+msgstr "Presunúť Odstavec Nadol|ú"
 
 #: lib/ui/stdcontext.inc:348
 msgid "Promote Section|r"
@@ -25947,6 +25957,10 @@ msgstr "`inset-forall' prerušené lebo počet akcií je väčší ako %1$d"
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Aplikované \"%1$s\" na %2$d vložkách"
+
+#: src/frontends/qt4/GuiApplication.cpp:693
+msgid "Apply"
+msgstr "Použiť"
 
 #: lib/ui/stdmenus.inc:184
 msgid "Apply Last Settings|A"
@@ -36227,9 +36241,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "All indices"
 #~ msgstr "Všetky indexy"
-
-#~ msgid "&Ok"
-#~ msgstr "OK"
 
 #~ msgid "Cust&om:"
 #~ msgstr "Vlastné:"
