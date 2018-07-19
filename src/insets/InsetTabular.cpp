@@ -4211,35 +4211,43 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 }
 
 
+namespace {
+
+void tabline(PainterInfo const & pi, int x1, int y1, int x2, int y2,
+             bool drawline, bool heavy = false)
+{
+	ColorCode const col = drawline ? Color_tabularline : Color_tabularonoffline;
+	pi.pain.line(x1, y1, x2, y2, pi.textColor(col),
+				 drawline ? Painter::line_solid : Painter::line_onoffdash,
+				 (heavy ? 2 : 1) * Painter::thin_line);
+}
+
+}
+
+
 void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 				 row_type row, idx_type cell) const
 {
 	y -= tabular.rowAscent(row);
 	int const w = tabular.cellWidth(cell);
 	int const h = tabular.cellHeight(cell);
-	Color const linecolor = pi.textColor(Color_tabularline);
-	Color const gridcolor = pi.textColor(Color_tabularonoffline);
 
 	// Top
 	bool drawline = tabular.topLine(cell)
 		|| (row > 0 && tabular.bottomLine(tabular.cellAbove(cell)));
-	pi.pain.line(x, y, x + w, y,
-		drawline ? linecolor : gridcolor,
-		drawline ? Painter::line_solid : Painter::line_onoffdash);
+	bool heavy = tabular.use_booktabs && row == 0 && tabular.topLine(cell);
+	tabline(pi, x, y, x + w, y, drawline, heavy);
 
 	// Bottom
 	drawline = tabular.bottomLine(cell);
-	pi.pain.line(x, y + h, x + w, y + h,
-		drawline ? linecolor : gridcolor,
-		drawline ? Painter::line_solid : Painter::line_onoffdash);
+	heavy = tabular.use_booktabs && row == tabular.nrows() - 1 && drawline;
+	tabline(pi, x, y + h, x + w, y + h, drawline, heavy);
 
 	// Left
 	col_type const col = tabular.cellColumn(cell);
 	drawline = tabular.leftLine(cell)
 		|| (col > 0 && tabular.rightLine(tabular.cellIndex(row, col - 1)));
-	pi.pain.line(x, y, x, y + h,
-		drawline ? linecolor : gridcolor,
-		drawline ? Painter::line_solid : Painter::line_onoffdash);
+	tabline(pi, x, y, x, y + h, drawline);
 
 	// Right
 	x -= tabular.interColumnSpace(cell);
@@ -4250,9 +4258,7 @@ void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 	drawline = tabular.rightLine(cell)
 		   || (next_cell_col < tabular.ncols()
 		       && tabular.leftLine(tabular.cellIndex(row, next_cell_col)));
-	pi.pain.line(x + w, y, x + w, y + h,
-		drawline ? linecolor : gridcolor,
-		drawline ? Painter::line_solid : Painter::line_onoffdash);
+	tabline(pi, x + w, y, x + w, y + h, drawline);
 }
 
 
