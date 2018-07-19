@@ -271,7 +271,7 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim, bool tight) const
 	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
 	BufferView * bv = mi.base.bv;
 	int const Iascent = fm.dimension('I').ascent();
-	int xascent = fm.dimension('x').ascent();
+	int xascent = fm.xHeight();
 	if (xascent >= Iascent)
 		xascent = (2 * Iascent) / 3;
 	minasc_ = xascent;
@@ -288,7 +288,7 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim, bool tight) const
 	if (tight)
 		// FIXME: this is the minimal ascent seen empirically, check
 		// what the TeXbook says.
-		dim.asc = max(dim.asc, fm.ascent('x'));
+		dim.asc = max(dim.asc, fm.xHeight());
 	else {
 		dim.asc = max(dim.asc, fm.maxAscent());
 		dim.des = max(dim.des, fm.maxDescent());

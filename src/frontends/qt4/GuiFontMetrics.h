@@ -38,6 +38,7 @@ public:
 	virtual int maxDescent() const;
 	virtual Dimension const defaultDimension() const;
 	virtual int em() const;
+	virtual int xHeight() const;
 	virtual int lineWidth() const;
 	virtual int underlinePos() const;
 	virtual int strikeoutPos() const;

@@ -65,6 +65,8 @@ public:
 	virtual Dimension const defaultDimension() const = 0;
 	/// return the em size
 	virtual int em() const = 0;
+	/// return the x height
+	virtual int xHeight() const = 0;
 	/// return the width of a line for underlining
 	virtual int lineWidth() const = 0;
 	/// return the distance from the base line to where an underline

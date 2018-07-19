@@ -520,7 +520,7 @@ int mathed_font_em(FontInfo const & font)
 
 int mathed_font_x_height(FontInfo const & font)
 {
-	return theFontMetrics(font).ascent('x');
+	return theFontMetrics(font).xHeight();
 }
 
 /* The math units. Quoting TeX by Topic, p.205:

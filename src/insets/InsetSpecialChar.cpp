@@ -202,7 +202,7 @@ void drawLogo(PainterInfo & pi, int & x, int const y, InsetSpecialChar::Kind kin
 		/** Reference macro:
 		 *  \def\TeX{T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\@}
 		 */
-		int const ex = theFontMetrics(font).ascent('x');
+		int const ex = theFontMetrics(font).xHeight();
 		drawChar(pi, x, y, 'T');
 		x -= em / 6;
 		drawChar(pi, x, y + ex / 2, 'E');
@@ -265,7 +265,7 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 	case ALLOWBREAK:
 	{
 		// A small vertical line
-		int const asc = theFontMetrics(pi.base.font).ascent('x');
+		int const asc = theFontMetrics(pi.base.font).xHeight();
 		int const desc = theFontMetrics(pi.base.font).descent('g');
 		int const x0 = x; // x + 1; // FIXME: incline,
 		int const x1 = x; // x - 1; // similar to LibreOffice?

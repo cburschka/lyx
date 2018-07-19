@@ -117,6 +117,13 @@ int GuiFontMetrics::em() const
 }
 
 
+int GuiFontMetrics::xHeight() const
+{
+//	LATTEST(metrics_.xHeight() == ascent('x'));
+	return metrics_.xHeight();
+}
+
+
 int GuiFontMetrics::lineWidth() const
 {
 	return metrics_.lineWidth();

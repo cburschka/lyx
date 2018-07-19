@@ -352,7 +352,7 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 	}
 
 	int const w = dim.wid;
-	int const h = theFontMetrics(pi.base.font).ascent('x');
+	int const h = theFontMetrics(pi.base.font).xHeight();
 	int xp[4], yp[4];
 
 	xp[0] = x;

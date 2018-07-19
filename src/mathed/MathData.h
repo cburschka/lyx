@@ -129,7 +129,8 @@ public:
 
 	/// rebuild cached metrics information
 	/** When \c tight is true, the height of the cell will be at least
-	 *  that of 'x'. Otherwise, it will be the max height of the font.
+	 *  the x height of the font. Otherwise, it will be the max height
+	 *  of the font.
 	 */
 	void metrics(MetricsInfo & mi, Dimension & dim, bool tight = true) const;
 	///
