@@ -122,7 +122,7 @@ public:
 	MetricsBase base;
 	///
 	frontend::Painter & pain;
-	/// Whether the text at this point is right-to-left (for InsetNewline)
+	/// Whether the text at this point is right-to-left (for insets)
 	bool ltr_pos;
 	/// The change the parent is part of (change tracking)
 	Change change_;
