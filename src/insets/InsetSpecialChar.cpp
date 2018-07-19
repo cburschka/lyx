@@ -127,12 +127,14 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 	frontend::FontMetrics const & fm =
 		theFontMetrics(mi.base.font);
 	dim.asc = fm.maxAscent();
-	dim.des = fm.maxDescent();
+	dim.des = 0;
 	dim.wid = 0;
 
 	docstring s;
 	switch (kind_) {
 		case ALLOWBREAK:
+			dim.asc = fm.xHeight();
+			dim.des = fm.descent('g');
 			dim.wid = fm.em() / 8;
 			break;
 		case LIGATURE_BREAK:
@@ -145,7 +147,9 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 			s = from_ascii(". . .");
 			break;
 		case MENU_SEPARATOR:
-			s = from_ascii(" x ");
+			// ▹  U+25B9 WHITE RIGHT-POINTING SMALL TRIANGLE
+			// There is a \thinspace on each side of the triangle
+			dim.wid = 2 * fm.em() / 6 + fm.width(char_type(0x25B9));
 			break;
 		case HYPHENATION:
 			dim.wid = fm.width(from_ascii("-"));
@@ -154,6 +158,7 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 			break;
 		case SLASH:
 			s = from_ascii("/");
+			dim.des = fm.descent(s[0]);
 			break;
 		case NOBREAKDASH:
 			s = from_ascii("-");
@@ -162,6 +167,8 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 		case PHRASE_TEX:
 		case PHRASE_LATEX2E:
 		case PHRASE_LATEX:
+			dim.asc = fm.maxAscent();
+			dim.des = fm.maxDescent();
 			dim.wid = logoWidth(mi.base.font, kind_);
 			break;
 	}
@@ -299,18 +306,13 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 		frontend::FontMetrics const & fm =
 			theFontMetrics(font);
 
-		// A triangle the width and height of an 'x'
-		int w = fm.width(char_type('x'));
-		int ox = fm.width(char_type(' ')) + x;
-		int h = fm.ascent(char_type('x'));
-		int xp[4], yp[4];
-
-		xp[0] = ox;     yp[0] = y;
-		xp[1] = ox;     yp[1] = y - h;
-		xp[2] = ox + w; yp[2] = y - h/2;
-		xp[3] = ox;     yp[3] = y;
-
-		pi.pain.lines(xp, yp, 4, Color_special);
+		// There is a \thinspace on each side of the triangle
+		x += fm.em() / 6;
+		// ▹ U+25B9 WHITE RIGHT-POINTING SMALL TRIANGLE
+		// ◃ U+25C3 WHITE LEFT-POINTING SMALL TRIANGLE
+		char_type const c = pi.ltr_pos ? 0x25B9 : 0x25C3;
+		font.setColor(Color_special);
+		pi.pain.text(x, y, c, font);
 		break;
 	}
 	case SLASH:
@@ -427,7 +429,7 @@ void InsetSpecialChar::latex(otexstream & os,
 		    || rp.local_font->language()->lang() == "farsi")
 			lswitch = "\\textLR{";
 	}
-	
+
 	switch (kind_) {
 	case HYPHENATION:
 		os << "\\-";
