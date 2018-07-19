@@ -671,28 +671,25 @@ public:
 		: QTranslator(parent)
 	{}
 
-#if QT_VERSION >= 0x050000
 	virtual QString translate(const char * /* context */,
 		const char *sourceText,
+#if QT_VERSION >= 0x050000
 		const char * /* disambiguation */ = 0, int /* n */ = -1) const
 #else
-	QString translate(const char * /*context*/,
-	  const char * sourceText,
-	  const char * /*comment*/ = 0) const
+		const char * /*comment*/ = 0) const
 #endif
 	{
-#if 0
 		// Here we declare the strings that need to be translated from Qt own GUI
 		// This is needed to include these strings to po files
 		_("About %1");
 		_("Preferences");
 		_("Reconfigure");
-		_("Quit %1"));
-#endif
+		_("Quit %1");
 		_("&OK");
 		// Already in po: "Cancel", "&Cancel"
 		_("Apply"); // Already in po: "&Apply"
 		_("Reset"); // Already in po: "&Reset" "R&eset" "Rese&t"
+
 		docstring s = getGuiMessages().getIfFound(sourceText);
 		// This test should eventually be removed when translations are updated
 		if (s.empty())
