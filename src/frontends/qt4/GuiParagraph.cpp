@@ -67,7 +67,6 @@ GuiParagraph::GuiParagraph(GuiView & lv)
 	// foreground and are hidden when the main window is not focused.
 	setWindowFlags(Qt::Tool);
 	synchronizedViewCB->setChecked(true);
-	closePB->setText(qt_("&Cancel"));
 #else
 	synchronizedViewCB->setChecked(false);
 #endif
