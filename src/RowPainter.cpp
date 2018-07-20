@@ -157,8 +157,8 @@ void RowPainter::paintForeignMark(Row::Element const & e) const
 		return;
 
 	int const desc = e.inset ? e.dim.descent() : 0;
-	int const y = yo_ + pi_.base.solidLineOffset()
-		+ desc + pi_.base.solidLineThickness() / 2;
+	int const y = yo_ + min(3 * pi_.base.solidLineOffset() / 2 + desc,
+	                        row_.descent() - 1);
 	pi_.pain.line(int(x_), y, int(x_ + e.full_width()), y, Color_language,
 	              Painter::line_solid, pi_.base.solidLineThickness());
 }
