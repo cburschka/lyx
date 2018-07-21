@@ -1060,7 +1060,7 @@ docstring InsetText::toolTipText(docstring prefix, size_t const len) const
 			oss << "<div dir=\"rtl\">";
 		writePlaintextParagraph(buffer(), *it, oss, rp, ref_printed, len);
 		if ((*it).isRTL(buffer().params()))
-			oss << "<div/>";
+			oss << "</div>";
 		if (oss.tellp() >= 0 && size_t(oss.tellp()) > len)
 			break;
 	}
