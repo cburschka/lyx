@@ -814,13 +814,13 @@ void InsetText::updateBuffer(ParIterator const & it, UpdateType utype)
 		// Note that we do not need to call:
 		//	tclass.counters().clearLastLayout()
 		// since we are saving and restoring the existing counters, etc.
-		Counters const savecnt = tclass.counters();
+		Counters savecnt = tclass.counters();
 		tclass.counters().reset();
 		// we need float information even in note insets (#9760)
 		tclass.counters().current_float(savecnt.current_float());
 		tclass.counters().isSubfloat(savecnt.isSubfloat());
 		buffer().updateBuffer(it2, utype);
-		tclass.counters() = savecnt;
+		swap(tclass.counters(), savecnt);
 	}
 }
 
