@@ -4235,12 +4235,13 @@ void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 	// Top
 	bool drawline = tabular.topLine(cell)
 		|| (row > 0 && tabular.bottomLine(tabular.cellAbove(cell)));
-	bool heavy = tabular.use_booktabs && row == 0 && tabular.topLine(cell);
+	bool heavy = tabular.use_booktabs && row == 0 && tabular.rowTopLine(row);
 	tabline(pi, x, y, x + w, y, drawline, heavy);
 
 	// Bottom
 	drawline = tabular.bottomLine(cell);
-	heavy = tabular.use_booktabs && row == tabular.nrows() - 1 && drawline;
+	heavy = tabular.use_booktabs && row == tabular.nrows() - 1
+		&& tabular.rowBottomLine(row);
 	tabline(pi, x, y + h, x + w, y + h, drawline, heavy);
 
 	// Left
