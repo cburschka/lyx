@@ -347,21 +347,6 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 		}
 	}
 
-	// If the current language is Hebrew, Arabic, or Farsi
-	// the numbers are written Left-to-Right. ArabTeX package
-	// and bidi (polyglossia) reorder the number automatically
-	// but the packages used for Hebrew and Farsi (Arabi) do not.
-	if (!runparams.use_polyglossia
-	    && !runparams.pass_thru
-	    && bits_.number() == FONT_ON
-	    && prev.fontInfo().number() != FONT_ON
-	    && (language()->lang() == "hebrew"
-		|| language()->lang() == "farsi"
-		|| language()->lang() == "arabic_arabi")) {
-		os << "{\\beginL ";
-		count += 9;
-	}
-
 	FontInfo f = bits_;
 	f.reduce(base.bits_);
 	FontInfo p = bits_;
@@ -411,6 +396,20 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 		env = true; //We have opened a new environment
 	}
 	*/
+	// If the current language is Hebrew, Arabic, or Farsi
+	// the numbers are written Left-to-Right. ArabTeX package
+	// and bidi (polyglossia) reorder the number automatically
+	// but the packages used for Hebrew and Farsi (Arabi) do not.
+	if (!runparams.use_polyglossia
+	    && !runparams.pass_thru
+	    && bits_.number() == FONT_ON
+	    && prev.fontInfo().number() != FONT_ON
+	    && (language()->lang() == "hebrew"
+		|| language()->lang() == "farsi"
+		|| language()->lang() == "arabic_arabi")) {
+		os << "{\\beginL ";
+		count += 9;
+	}
 	if (f.emph() == FONT_ON) {
 		os << "\\emph{";
 		count += 6;
