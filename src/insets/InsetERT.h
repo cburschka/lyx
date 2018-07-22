@@ -80,7 +80,7 @@ private:
 	///
 	bool allowSpellCheck() const { return false; }
 	///
-	bool insetAllowed(InsetCode /* code */) const { return false; }
+	bool insetAllowed(InsetCode code) const { return code == QUOTE_CODE; }
 	///
 	unique_ptr<support::TempFile> tempfile_;
 };
