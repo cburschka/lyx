@@ -164,6 +164,26 @@ bool isNumber(char_type c)
 }
 
 
+bool isEuropeanNumberSeparator(char_type c)
+{
+	if (!is_utf16(c))
+		// assume that no non-utf16 character is a numeral
+		// c outside the UCS4 range is catched as well
+		return false;
+	return ucs4_to_qchar(c).direction() == QChar::DirES;
+}
+
+
+bool isEuropeanNumberTerminator(char_type c)
+{
+	if (!is_utf16(c))
+		// assume that no non-utf16 character is a numeral
+		// c outside the UCS4 range is catched as well
+		return false;
+	return ucs4_to_qchar(c).direction() == QChar::DirET;
+}
+
+
 bool isDigitASCII(char_type c)
 {
 	return '0' <= c && c <= '9';

@@ -971,13 +971,18 @@ void Text::insertChar(Cursor & cur, char_type c)
 	if (lyxrc.auto_number) {
 		static docstring const number_operators = from_ascii("+-/*");
 		static docstring const number_unary_operators = from_ascii("+-");
-		static docstring const number_separators = from_ascii(".,:");
 
+		// European Number Separators: comma, dot etc.
+		// European Number Terminators: percent, permille, degree, euro etc.
 		if (cur.current_font.fontInfo().number() == FONT_ON) {
 			if (!isDigitASCII(c) && !contains(number_operators, c) &&
-			    !(contains(number_separators, c) &&
+			    !(isEuropeanNumberSeparator(c) &&
 			      cur.pos() != 0 &&
 			      cur.pos() != cur.lastpos() &&
+			      tm.displayFont(pit, cur.pos()).fontInfo().number() == FONT_ON &&
+			      tm.displayFont(pit, cur.pos() - 1).fontInfo().number() == FONT_ON) &&
+			    !(isEuropeanNumberTerminator(c) &&
+			      cur.pos() != 0 &&
 			      tm.displayFont(pit, cur.pos()).fontInfo().number() == FONT_ON &&
 			      tm.displayFont(pit, cur.pos() - 1).fontInfo().number() == FONT_ON)
 			   )
@@ -996,7 +1001,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 				  ) {
 					setCharFont(pit, cur.pos() - 1, cur.current_font,
 						tm.font_);
-				} else if (contains(number_separators, ch)
+				} else if (isEuropeanNumberSeparator(ch)
 				     && cur.pos() >= 2
 				     && tm.displayFont(pit, cur.pos() - 2).fontInfo().number() == FONT_ON) {
 					setCharFont(pit, cur.pos() - 1, cur.current_font,
