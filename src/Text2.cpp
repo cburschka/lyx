@@ -780,9 +780,11 @@ bool Text::cursorDownParagraph(Cursor & cur)
 }
 
 
-// fix the cursor `cur' after a characters has been deleted at `where'
+namespace {
+// fix the cursor `cur' after characters has been deleted at `where'
 // position. Called by deleteEmptyParagraphMechanism
-void Text::fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where)
+void fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where,
+						  pos_type from, pos_type to)
 {
 	// Do nothing if cursor is not in the paragraph where the
 	// deletion occurred,
@@ -790,13 +792,15 @@ void Text::fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where)
 		return;
 
 	// If cursor position is after the deletion place update it
-	if (cur.pos() > where.pos())
-		--cur.pos();
+	if (cur.pos() > from)
+		cur.pos() = max(from, cur.pos() - (to - from));
 
 	// Check also if we don't want to set the cursor on a spot behind the
 	// pagragraph because we erased the last character.
 	if (cur.pos() > cur.lastpos())
 		cur.pos() = cur.lastpos();
+}
+
 }
 
 
@@ -840,23 +844,35 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 	bool const same_par_pos = depth == cur.depth() - 1 && same_par
 		&& old.pos() == cur[depth].pos();
 
-	// If the chars around the old cursor were spaces, delete one of them.
+	// If the chars around the old cursor were spaces, delete some of
+	// them , but only if the cursor has really moved.
 	if (!same_par_pos) {
-		// Only if the cursor has really moved.
-		if (old.pos() > 0
-		    && old.pos() < oldpar.size()
-		    && oldpar.isLineSeparator(old.pos())
-		    && oldpar.isLineSeparator(old.pos() - 1)
-		    && !oldpar.isDeleted(old.pos() - 1)
-		    && !oldpar.isDeleted(old.pos())) {
-			oldpar.eraseChar(old.pos() - 1, cur.buffer()->params().track_changes);
+		// find range of spaces around cursors
+		int from = old.pos();
+		while (from > 0
+		       && oldpar.isLineSeparator(from - 1)
+		       && !oldpar.isDeleted(from - 1))
+			--from;
+		int to = old.pos();
+		while (to < oldpar.size() - 1
+		       && oldpar.isLineSeparator(to)
+		       && !oldpar.isDeleted(to))
+			++to;
+
+		// If we are not at the extremity of the paragraph, keep one space
+		if (from != to && from > 0 && to < oldpar.size())
+			++from;
+
+		// Remove spaces and adapt cursor.
+		if (from < to) {
+			oldpar.eraseChars(from, to, cur.buffer()->params().track_changes);
 // FIXME: This will not work anymore when we have multiple views of the same buffer
 // In this case, we will have to correct also the cursors held by
 // other bufferviews. It will probably be easier to do that in a more
 // automated way in CursorSlice code. (JMarc 26/09/2001)
 			// correct all cursor parts
 			if (same_par) {
-				fixCursorAfterDelete(cur[depth], old.top());
+				fixCursorAfterDelete(cur[depth], old.top(), from, to);
 				need_anchor_change = true;
 			}
 			return true;
@@ -925,13 +941,28 @@ void Text::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool tra
 		if (par.isFreeSpacing())
 			continue;
 
-		for (pos_type pos = 1; pos < par.size(); ++pos) {
-			if (par.isLineSeparator(pos) && par.isLineSeparator(pos - 1)
-			    && !par.isDeleted(pos - 1)) {
-				if (par.eraseChar(pos - 1, trackChanges)) {
-					--pos;
-				}
-			}
+		pos_type from = 0;
+		while (from < par.size()) {
+			// skip non-spaces
+			while (from < par.size()
+			       && (!par.isLineSeparator(from) || par.isDeleted(from)))
+				++from;
+			LYXERR0("from=" << from);
+			// find string of spaces
+			pos_type to = from;
+			while (to < par.size()
+			       && par.isLineSeparator(to) && !par.isDeleted(to))
+				++to;
+			LYXERR0("to=" << to);
+			// empty? We are done
+			if (from == to)
+				break;
+			// if inside the line, keep one space
+			if (from > 0 && to < par.size())
+				++from;
+			// remove the extra spaces
+			if (from < to)
+				par.eraseChars(from, to, trackChanges);
 		}
 
 		// don't delete anything if this is the only remaining paragraph
