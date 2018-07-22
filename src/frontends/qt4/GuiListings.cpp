@@ -320,9 +320,18 @@ string GuiListings::construct_params()
 	InsetListingsParams par;
 	par.setMinted(use_minted);
 	if (use_minted) {
-		if (language == "no language" && !contains(extra, "language="))
-			par.addParam("language", "TeX");
-		else
+		if (language == "no language" && !contains(extra, "language=")) {
+			string const & blp = buffer().params().listings_params;
+			size_t start = blp.find("language=");
+			if (start != string::npos) {
+				start += strlen("language=");
+				size_t len = blp.find(",", start);
+				if (len != string::npos)
+					len -= start;
+				par.addParam("language", blp.substr(start, len));
+			} else
+				par.addParam("language", "TeX");
+		} else
 			par.addParam("language", language);
 	} else if (language != "no language" && !contains(extra, "language=")) {
 		if (dialect.empty())

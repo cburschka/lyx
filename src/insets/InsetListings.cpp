@@ -169,8 +169,20 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 		param_string = getStringFromVector(opts, ",");
 	}
 	// Minted needs a language specification
-	if (minted_language.empty())
-		minted_language = "TeX";
+	if (minted_language.empty()) {
+		// If a language has been set globally, use that,
+		// otherwise use TeX by default
+		string const & blp = buffer().params().listings_params;
+		size_t start = blp.find("language=");
+		if (start != string::npos) {
+			start += strlen("language=");
+			size_t len = blp.find(",", start);
+			if (len != string::npos)
+				len -= start;
+			minted_language = blp.substr(start, len);
+		} else
+			minted_language = "TeX";
+	}
 
 	// get the paragraphs. We can not output them directly to given odocstream
 	// because we can not yet determine the delimiter character of \lstinline

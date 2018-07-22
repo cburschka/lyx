@@ -2269,7 +2269,18 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		else
 			os << "\\usepackage{listings}\n";
 	}
-	if (!listings_params.empty()) {
+	string lst_params = listings_params;
+	// If minted, do not output the language option (bug 11203)
+	if (use_minted && contains(lst_params, "language=")) {
+		vector<string> opts =
+			getVectorFromString(lst_params, ",", false);
+		for (size_t i = 0; i < opts.size(); ++i) {
+			if (prefixIs(opts[i], "language="))
+				opts.erase(opts.begin() + i--);
+		}
+		lst_params = getStringFromVector(opts, ",");
+	}
+	if (!lst_params.empty()) {
 		if (use_minted)
 			os << "\\setminted{";
 		else
@@ -2277,7 +2288,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		// do not test validity because listings_params is
 		// supposed to be valid
 		string par =
-			InsetListingsParams(listings_params).separatedParams(true);
+			InsetListingsParams(lst_params).separatedParams(true);
 		os << from_utf8(par);
 		os << "}\n";
 	}
