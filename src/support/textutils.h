@@ -44,6 +44,14 @@ bool isSpace(char_type c);
 /// return true if a unicode char is a numeral.
 bool isNumber(char_type c);
 
+/// return true if a unicode char has the direction attribute
+/// European Number Separator [ES]
+bool isEuropeanNumberSeparator(char_type c);
+
+/// return true if a unicode char has the direction attribute
+/// European Number Terminator [ET]
+bool isEuropeanNumberTerminator(char_type c);
+
 /// return whether \p c is a digit in the ASCII range
 bool isDigitASCII(char_type c);
 
