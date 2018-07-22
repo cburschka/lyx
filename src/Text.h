@@ -347,10 +347,6 @@ private:
 	/// The InsetText owner shall have access to everything.
 	friend class InsetText;
 
-	// fix the cursor `cur' after a characters has been deleted at `where'
-	// position. Called by deleteEmptyParagraphMechanism
-	static void fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where);
-
 	// At cursor position 0, try to merge the paragraph with the one before it.
 	// Ignore change tracking, i.e., physically remove the end-of-par character
 	bool backspacePos0(Cursor & cur);
