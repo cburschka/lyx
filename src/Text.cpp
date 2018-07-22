@@ -1484,7 +1484,7 @@ void Text::deleteWordForward(Cursor & cur, bool const force)
 		cursorForwardOneWord(cur);
 		cur.setSelection();
 		if (force || !cur.confirmDeletion()) {
-			cutSelection(cur, true, false);
+			cutSelection(cur, false);
 			cur.checkBufferStructure();
 		}
 	}
@@ -1502,7 +1502,7 @@ void Text::deleteWordBackward(Cursor & cur, bool const force)
 		cursorBackwardOneWord(cur);
 		cur.setSelection();
 		if (force || !cur.confirmDeletion()) {
-			cutSelection(cur, true, false);
+			cutSelection(cur, false);
 			cur.checkBufferStructure();
 		}
 	}

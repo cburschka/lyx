@@ -905,7 +905,7 @@ size_type numberOfSelections()
 
 namespace {
 
-void cutSelectionHelper(Cursor & cur, CutStack & cuts, bool doclear, bool realcut, bool putclip)
+void cutSelectionHelper(Cursor & cur, CutStack & cuts, bool realcut, bool putclip)
 {
 	// This doesn't make sense, if there is no selection
 	if (!cur.selection())
@@ -954,11 +954,6 @@ void cutSelectionHelper(Cursor & cur, CutStack & cuts, bool doclear, bool realcu
 		cur.pos() = endpos;
 		cur.pit() = endpit;
 
-		// sometimes necessary
-		if (doclear
-			&& text->paragraphs()[begpit].stripLeadingSpaces(bp.track_changes))
-			cur.fixIfBroken();
-
 		// need a valid cursor. (Lgb)
 		cur.clearSelection();
 
@@ -990,15 +985,15 @@ void cutSelectionHelper(Cursor & cur, CutStack & cuts, bool doclear, bool realcu
 
 } // namespace
 
-void cutSelection(Cursor & cur, bool doclear, bool realcut)
+void cutSelection(Cursor & cur, bool realcut)
 {
-	cutSelectionHelper(cur, theCuts, doclear, realcut, true);
+	cutSelectionHelper(cur, theCuts, realcut, true);
 }
 
 
-void cutSelectionToTemp(Cursor & cur, bool doclear, bool realcut)
+void cutSelectionToTemp(Cursor & cur, bool realcut)
 {
-	cutSelectionHelper(cur, tempCut, doclear, realcut, false);
+	cutSelectionHelper(cur, tempCut, realcut, false);
 }
 
 
@@ -1308,7 +1303,7 @@ void pasteSimpleText(Cursor & cur, bool asParagraphs)
 		return;
 
 	cur.recordUndo();
-	cutSelection(cur, true, false);
+	cutSelection(cur, false);
 	if (asParagraphs)
 		cur.text()->insertStringAsParagraphs(cur, text, cur.current_font);
 	else
@@ -1364,14 +1359,14 @@ void replaceSelectionWithString(Cursor & cur, docstring const & str)
 		par.insertChar(pos, *cit, font, cur.buffer()->params().track_changes);
 
 	// Cut the selection
-	cutSelection(cur, true, false);
+	cutSelection(cur, false);
 }
 
 
 void replaceSelection(Cursor & cur)
 {
 	if (cur.selection())
-		cutSelection(cur, true, false);
+		cutSelection(cur, false);
 }
 
 
