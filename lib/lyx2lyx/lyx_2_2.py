@@ -738,24 +738,24 @@ def convert_phrases(document):
     if document.backend != "latex":
         return
 
-    for phrase in phrases:
-        i = 0
-        while i < len(document.body):
-            if document.body[i] and document.body[i][0] == "\\":
-                words = document.body[i].split()
-                if len(words) > 1 and words[0] == "\\begin_inset" and \
-                words[1] in ["CommandInset", "External", "Formula", "Graphics", "listings"]:
-                    # must not replace anything in insets that store LaTeX contents in .lyx files
-                    # (math and command insets without overridden read() and write() methods)
-                    j = find_end_of_inset(document.body, i)
-                    if j == -1:
-                        document.warning("Malformed LyX document: Can't find end of inset at line " + str(i))
-                        i += 1
-                    else:
-                        i = j
-                else:
+    i = 0
+    while i < len(document.body):
+        if document.body[i] and document.body[i][0] == "\\":
+            words = document.body[i].split()
+            if len(words) > 1 and words[0] == "\\begin_inset" and \
+            words[1] in ["CommandInset", "External", "Formula", "Graphics", "listings"]:
+                # must not replace anything in insets that store LaTeX contents in .lyx files
+                # (math and command insets without overridden read() and write() methods)
+                j = find_end_of_inset(document.body, i)
+                if j == -1:
+                    document.warning("Malformed LyX document: Can't find end of inset at line %d" % (i))
                     i += 1
-                continue
+                else:
+                    i = j
+            else:
+                i += 1
+            continue
+        for phrase in phrases:
             j = document.body[i].find(phrase)
             if j == -1:
                 i += 1
@@ -767,7 +767,7 @@ def convert_phrases(document):
                     document.body.insert(i+1, back)
                 # We cannot use SpecialChar since we do not know whether we are outside passThru
                 document.body[i] = front + "\\SpecialCharNoPassThru \\" + phrase
-            i += 1
+        i += 1
 
 
 def revert_phrases(document):
