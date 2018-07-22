@@ -1463,7 +1463,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 				changeFirstCase(repl_buffer, text_uppercase, text_uppercase);
 		}
 	}
-	cap::cutSelection(cur, false, false);
+	cap::cutSelection(cur, false);
 	if (cur.inTexted()) {
 		repl_buffer.changeLanguage(
 			repl_buffer.language(),

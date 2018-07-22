@@ -59,9 +59,9 @@ void replaceSelection(Cursor & cur);
  *                system clipboard. Set this to false to only delete the
  *                selection.
  */
-void cutSelection(Cursor & cur, bool doclear = true, bool realcut = true);
+void cutSelection(Cursor & cur, bool realcut = true);
 /// Like cutSelection, but only put to temporary cut buffer
-void cutSelectionToTemp(Cursor & cur, bool doclear = true, bool realcut = true);
+void cutSelectionToTemp(Cursor & cur, bool realcut = true);
 
 /// Push the current selection to the cut buffer and the system clipboard.
 void copySelection(Cursor const & cur);

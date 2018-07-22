@@ -560,7 +560,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_CUT:
 		cur.recordUndo();
-		cutSelection(cur, true, true);
+		cutSelection(cur, true);
 		cur.message(_("Cut"));
 		// Prevent stale position >= size crash
 		// Probably not necessary anymore, see eraseSelection (gb 2005-10-09)

@@ -292,7 +292,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 		if (cmd.action() == LFUN_INDEX_INSERT)
 				copySelectionToTemp(cur);
 			else
-				cutSelectionToTemp(cur, false, pastesel);
+				cutSelectionToTemp(cur, pastesel);
 			cur.clearSelection();
 			gotsel = true;
 	} else if (cmd.action() == LFUN_INDEX_INSERT) {
@@ -669,7 +669,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_WORD_DELETE_FORWARD:
 		if (cur.selection())
-			cutSelection(cur, true, false);
+			cutSelection(cur, false);
 		else
 			deleteWordForward(cur, cmd.getArg(0) == "force");
 		finishChange(cur, false);
@@ -677,7 +677,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_WORD_DELETE_BACKWARD:
 		if (cur.selection())
-			cutSelection(cur, true, false);
+			cutSelection(cur, false);
 		else
 			deleteWordBackward(cur, cmd.getArg(0) == "force");
 		finishChange(cur, false);
@@ -685,7 +685,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_LINE_DELETE_FORWARD:
 		if (cur.selection())
-			cutSelection(cur, true, false);
+			cutSelection(cur, false);
 		else
 			tm->deleteLineForward(cur);
 		finishChange(cur, false);
@@ -1163,7 +1163,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			needsUpdate |= erase(cur);
 			cur.resetAnchor();
 		} else {
-			cutSelection(cur, true, false);
+			cutSelection(cur, false);
 			singleParUpdate = false;
 		}
 		moveCursor(cur, false);
@@ -1193,7 +1193,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				}
 			}
 		} else {
-			cutSelection(cur, true, false);
+			cutSelection(cur, false);
 			singleParUpdate = false;
 		}
 		break;
@@ -1280,7 +1280,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 			*/
 			if (cur.selection())
-				cutSelection(cur, true, false);
+				cutSelection(cur, false);
 			cur.insert(inset);
 			cur.forceBufferUpdate();
 			if (inset->editable() && inset->asInsetText())
@@ -1472,7 +1472,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_CUT:
-		cutSelection(cur, true, true);
+		cutSelection(cur, true);
 		cur.message(_("Cut"));
 		break;
 
@@ -1911,7 +1911,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// true (on).
 
 		if (lyxrc.auto_region_delete && cur.selection())
-			cutSelection(cur, false, false);
+			cutSelection(cur, false);
 		cur.clearSelection();
 
 		for (char_type c : cmd.argument())
@@ -1992,7 +1992,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (cmd.argument().empty() && cur.selection()) {
 			// if command argument is empty use current selection as parameter.
 			docstring ds = cur.selectionAsString(false);
-			cutSelection(cur, true, false);
+			cutSelection(cur, false);
 			FuncRequest cmd0(cmd, ds);
 			inset = createInset(cur.buffer(), cmd0);
 		} else {
@@ -2459,7 +2459,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (tclass.floats().typeExist(to_utf8(cmd.argument()))) {
 			cur.recordUndo();
 			if (cur.selection())
-				cutSelection(cur, true, false);
+				cutSelection(cur, false);
 			breakParagraph(cur);
 
 			if (cur.lastpos() != 0) {
