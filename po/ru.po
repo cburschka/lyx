@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-03-17 15:55-0400\n"
-"PO-Revision-Date: 2018-03-18 09:52+0200\n"
+"PO-Revision-Date: 2018-07-20 20:24+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -788,17 +788,17 @@ msgstr "Крохотный"
 #: src/frontends/qt4/ui/BulletsUi.ui:76 src/Font.cpp:72
 #: src/frontends/qt4/GuiCharacter.cpp:64 src/frontends/qt4/GuiListings.cpp:154
 msgid "Smallest"
-msgstr "Миниатюрный"
+msgstr "Наименьший"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:81 src/Font.cpp:72
 #: src/frontends/qt4/GuiCharacter.cpp:65 src/frontends/qt4/GuiListings.cpp:154
 msgid "Smaller"
-msgstr "Мелкий"
+msgstr "Меньший"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:86 src/Font.cpp:72
 #: src/frontends/qt4/GuiCharacter.cpp:66 src/frontends/qt4/GuiListings.cpp:154
 msgid "Small"
-msgstr "Маленький"
+msgstr "Малый"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:91 src/Font.cpp:72
 #: src/frontends/qt4/GuiCharacter.cpp:67 src/frontends/qt4/GuiListings.cpp:154
@@ -813,22 +813,22 @@ msgstr "Большой"
 #: src/frontends/qt4/ui/BulletsUi.ui:101 src/Font.cpp:73
 #: src/frontends/qt4/GuiCharacter.cpp:69 src/frontends/qt4/GuiListings.cpp:155
 msgid "Larger"
-msgstr "Великий"
+msgstr "Больший"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:106 src/Font.cpp:73
 #: src/frontends/qt4/GuiCharacter.cpp:70
 msgid "Largest"
-msgstr "Огромный"
+msgstr "Наибольший"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:111 src/Font.cpp:73
 #: src/frontends/qt4/GuiCharacter.cpp:71
 msgid "Huge"
-msgstr "Громадный"
+msgstr "Огромный"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:116 src/Font.cpp:73
 #: src/frontends/qt4/GuiCharacter.cpp:72
 msgid "Huger"
-msgstr "Гигантский"
+msgstr "Огромнейший"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:144
 msgid "&Custom bullet:"
@@ -1220,7 +1220,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/CompareUi.ui:181
 msgid "Enable &change tracking features in the output"
-msgstr "Разрешить отслеживание изменений в выводе"
+msgstr "Отслеживать изменения в выходном файле"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:67 src/frontends/qt4/ui/SymbolsUi.ui:56
 msgid "Insert the delimiters"
@@ -2042,7 +2042,7 @@ msgstr "Название, связанное с URL"
 #: src/frontends/qt4/ui/HyperlinkUi.ui:40
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:37
 msgid "&Name:"
-msgstr "&Название:"
+msgstr "&Имя:"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:77
 msgid ""
@@ -3233,7 +3233,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:200
 msgid "Paragraph's &Default"
-msgstr "По &умолчанию для абзаца"
+msgstr "По &умолчанию"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:60
 msgid "Horizontal and vertical space of the phantom content"
@@ -3347,7 +3347,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:155
 msgid "s inline completion dela&y"
-msgstr "с задержка дополнен&ия"
+msgstr "Задержка дополнен&ия (сек.)"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:188
 msgid ""
@@ -3359,7 +3359,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:201
 msgid "s popup d&elay"
-msgstr "с задержка всплывающего &окна"
+msgstr "Задержка всплывающего &окна (сек.)"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:234
 msgid ""
@@ -3668,7 +3668,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:156
 msgid "Fullscreen"
-msgstr "Во весь экран"
+msgstr "Полный экран"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:174
 msgid "&Hide toolbars"
@@ -4256,7 +4256,7 @@ msgstr "С &засечками:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:209
 msgid "Default &zoom %:"
-msgstr "Масштаб по умолчанию %:"
+msgstr "Масштаб по умолчанию (%):"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:246
 msgid "Font Sizes"
@@ -4268,31 +4268,31 @@ msgstr "&Большой:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:304
 msgid "&Larger:"
-msgstr "&Очень большой:"
+msgstr "&Больший:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:314
 msgid "&Largest:"
-msgstr "&Огромный:"
+msgstr "&Наибольший:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:327
 msgid "&Huge:"
-msgstr "&Громадный:"
+msgstr "&Огромный:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:337
 msgid "&Hugest:"
-msgstr "&Очень Громадный:"
+msgstr "&Огромнейший:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:347
 msgid "S&mallest:"
-msgstr "&Миниатюрный:"
+msgstr "&Наименьший:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:357
 msgid "S&maller:"
-msgstr "&Мелкий:"
+msgstr "&Меньший:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:367
 msgid "S&mall:"
-msgstr "&Маленький:"
+msgstr "&Малый:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:377
 msgid "&Normal:"
@@ -5009,11 +5009,11 @@ msgstr "Выберите для таблиц, которые занимают н
 
 #: src/frontends/qt4/ui/TabularUi.ui:1313
 msgid "&Use multi-page table"
-msgstr "&Использовать длинную таблицу"
+msgstr "&Длинная таблица"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1323
 msgid "Row settings"
-msgstr "Настройки строки"
+msgstr "Настройка строк"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1329
 msgid "Status"
@@ -6617,11 +6617,11 @@ msgstr "Пометка автора"
 
 #: lib/layouts/IEEEtran.layout:198
 msgid "Special Paper Notice"
-msgstr "Особое замечание к статье"
+msgstr "Замечание об особой статье"
 
 #: lib/layouts/IEEEtran.layout:209
 msgid "After Title Text"
-msgstr "После титульного текста"
+msgstr "Текст после заглавия"
 
 #: lib/layouts/IEEEtran.layout:219
 msgid "Page headings"
@@ -6650,7 +6650,7 @@ msgstr "Аннотация---"
 
 #: lib/layouts/IEEEtran.layout:283
 msgid "Index Terms---"
-msgstr "Список терминов---"
+msgstr "Ключевые слова---"
 
 #: lib/layouts/IEEEtran.layout:287 lib/layouts/IEEEtran.layout:291
 msgid "Paragraph Start"
@@ -9310,7 +9310,7 @@ msgstr "Введите здесь название кадра"
 
 #: lib/layouts/beamer.layout:498
 msgid "PlainFrame"
-msgstr "ПростойКадр"
+msgstr "Простой кадр"
 
 #: lib/layouts/beamer.layout:500
 msgid "Frame (plain)"
@@ -9318,7 +9318,7 @@ msgstr "Кадр (простой)"
 
 #: lib/layouts/beamer.layout:509
 msgid "FragileFrame"
-msgstr "ХрупкийКадр"
+msgstr "Хрупкий кадр"
 
 #: lib/layouts/beamer.layout:511
 msgid "Frame (fragile)"
@@ -9326,7 +9326,7 @@ msgstr "Кадр (хрупкий)"
 
 #: lib/layouts/beamer.layout:520
 msgid "AgainFrame"
-msgstr "ПовторныйКадр"
+msgstr "Повторный кадр"
 
 #: lib/layouts/beamer.layout:526 lib/layouts/powerdot.layout:126
 #: lib/layouts/seminar.layout:111 lib/layouts/slides.layout:91
@@ -9336,7 +9336,7 @@ msgstr "Слайд"
 
 #: lib/layouts/beamer.layout:555
 msgid "Repeat frame with label"
-msgstr "Снова кадр с меткой"
+msgstr "Повтор кадра с меткой"
 
 #: lib/layouts/beamer.layout:567
 msgid "FrameTitle"
@@ -9438,11 +9438,11 @@ msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
 #: lib/layouts/beamer.layout:736 lib/layouts/beamer.layout:765
 msgid "Overprint"
-msgstr "Печатать поверх"
+msgstr "Наложить"
 
 #: lib/layouts/beamer.layout:743
 msgid "Overprint Area Width"
-msgstr "Ширина печати поверх"
+msgstr "Ширина области наложения"
 
 #: lib/layouts/beamer.layout:744 lib/layouts/europasscv.layout:176
 #: lib/layouts/graphicboxes.module:48 lib/layouts/moderncv.layout:310
@@ -9452,11 +9452,11 @@ msgstr "Ширина"
 
 #: lib/layouts/beamer.layout:745
 msgid "The width of the overprint area (default: text width)"
-msgstr "Ширина области надпечатки (по умолчанию: ширина текста)"
+msgstr "Ширина области наложения (по умолчанию: ширина текста)"
 
 #: lib/layouts/beamer.layout:772
 msgid "OverlayArea"
-msgstr "ОбластьНаложения"
+msgstr "Область наложения"
 
 #: lib/layouts/beamer.layout:782
 msgid "Overlayarea"
@@ -9490,7 +9490,7 @@ msgstr "Раскрыть"
 
 #: lib/layouts/beamer.layout:814
 msgid "Uncovered on slides"
-msgstr "Показывается на слайдах"
+msgstr "Раскрывается на слайдах"
 
 #: lib/layouts/beamer.layout:833 lib/layouts/beamer.layout:1460
 #: lib/layouts/beamer.layout:1462 lib/layouts/powerdot.layout:612
@@ -9503,7 +9503,7 @@ msgstr "Только на слайдах"
 
 #: lib/layouts/beamer.layout:867
 msgid "Block"
-msgstr "Оба края"
+msgstr "Блок"
 
 #: lib/layouts/beamer.layout:868
 msgid "Blocks"
@@ -9527,7 +9527,7 @@ msgstr "Введите заголовок блока"
 
 #: lib/layouts/beamer.layout:911
 msgid "ExampleBlock"
-msgstr "БлокПримера"
+msgstr "Блок примера"
 
 #: lib/layouts/beamer.layout:914
 msgid "Example Block:"
@@ -9535,7 +9535,7 @@ msgstr "Блок примера:"
 
 #: lib/layouts/beamer.layout:920
 msgid "AlertBlock"
-msgstr "БлокПредупреждения"
+msgstr "Блок предупреждения"
 
 #: lib/layouts/beamer.layout:923
 msgid "Alert Block:"
@@ -9589,7 +9589,7 @@ msgstr "Краткая дата, который появляется в боко
 
 #: lib/layouts/beamer.layout:1082 lib/layouts/beamerposter.layout:46
 msgid "TitleGraphic"
-msgstr "НазваниеИзображения"
+msgstr "Подпись изображения"
 
 #: lib/layouts/beamer.layout:1136 lib/layouts/db_stdlayouts.inc:19
 #: lib/layouts/egs.layout:102 lib/layouts/powerdot.layout:380
@@ -9845,7 +9845,7 @@ msgstr ""
 
 #: lib/layouts/braille.module:22
 msgid "Braille (default)"
-msgstr "Брайлевская печать (по умолчанию)"
+msgstr "Брайль (по умолчанию)"
 
 #: lib/layouts/braille.module:36 lib/layouts/braille.module:59
 msgid "Braille:"
@@ -9905,7 +9905,7 @@ msgstr "Сценарии"
 
 #: lib/layouts/broadway.layout:34 lib/layouts/hollywood.layout:41
 msgid "Dialogue"
-msgstr "Диалог"
+msgstr "Реплика"
 
 #: lib/layouts/broadway.layout:45 lib/layouts/hollywood.layout:209
 msgid "Narrative"
@@ -9937,11 +9937,11 @@ msgstr "НА ПОДЪЁМЕ:"
 
 #: lib/layouts/broadway.layout:124 lib/layouts/hollywood.layout:145
 msgid "Speaker"
-msgstr "Диктор"
+msgstr "Персонаж"
 
 #: lib/layouts/broadway.layout:137 lib/layouts/hollywood.layout:160
 msgid "Parenthetical"
-msgstr "Вводное слово:"
+msgstr "Ремарка"
 
 #: lib/layouts/broadway.layout:148 lib/layouts/hollywood.layout:171
 msgid "("
@@ -9996,15 +9996,15 @@ msgstr "Шахматы"
 
 #: lib/layouts/chess.layout:36
 msgid "Mainline"
-msgstr "Mainline"
+msgstr "Основная линия"
 
 #: lib/layouts/chess.layout:43
 msgid "Mainline:"
-msgstr "Mainline:"
+msgstr "Основная линия:"
 
 #: lib/layouts/chess.layout:62
 msgid "Variation"
-msgstr "Вариация"
+msgstr "Вариант"
 
 #: lib/layouts/chess.layout:66
 msgid "Variation:"
@@ -12323,11 +12323,11 @@ msgstr "Hollywood"
 
 #: lib/layouts/hollywood.layout:56
 msgid "More"
-msgstr "Больше"
+msgstr "Дальше"
 
 #: lib/layouts/hollywood.layout:67
 msgid "(MORE)"
-msgstr "(ЕЩЁ)"
+msgstr "(ДАЛЬШЕ)"
 
 #: lib/layouts/hollywood.layout:80 lib/layouts/hollywood.layout:91
 msgid "FADE IN:"
@@ -12335,19 +12335,19 @@ msgstr "FADE IN:"
 
 #: lib/layouts/hollywood.layout:100 lib/layouts/hollywood.layout:110
 msgid "INT."
-msgstr "INT."
+msgstr "ИНТ."
 
 #: lib/layouts/hollywood.layout:114 lib/layouts/hollywood.layout:124
 msgid "EXT."
-msgstr "EXT."
+msgstr "НАТ."
 
 #: lib/layouts/hollywood.layout:186
 msgid "Continuing"
-msgstr "Продолжение"
+msgstr "Продолжая"
 
 #: lib/layouts/hollywood.layout:197
 msgid "(continuing)"
-msgstr "(продолжение)"
+msgstr "(продолжая)"
 
 #: lib/layouts/hollywood.layout:223
 msgid "Transition"
@@ -12355,7 +12355,7 @@ msgstr "Переход"
 
 #: lib/layouts/hollywood.layout:235 lib/layouts/hollywood.layout:246
 msgid "TITLE OVER:"
-msgstr "TITLE OVER:"
+msgstr "ТИТР:"
 
 #: lib/layouts/hollywood.layout:250
 msgid "INTERCUT"
@@ -12363,7 +12363,7 @@ msgstr "INTERCUT"
 
 #: lib/layouts/hollywood.layout:261
 msgid "INTERCUT WITH:"
-msgstr "ПЕРЕСЕЧЕНИЕ С:"
+msgstr "INTERCUT WITH:"
 
 #: lib/layouts/hollywood.layout:265 lib/layouts/hollywood.layout:276
 msgid "FADE OUT"
@@ -13380,7 +13380,7 @@ msgstr "Подабзац, как он отображается в колонти
 
 #: lib/layouts/memoir.layout:168
 msgid "Chapterprecis"
-msgstr "Chapterprecis"
+msgstr "Краткое содержание"
 
 #: lib/layouts/memoir.layout:187
 msgid "Epigraph"
@@ -13392,7 +13392,7 @@ msgstr "Источник эпиграфа|э"
 
 #: lib/layouts/memoir.layout:198
 msgid "Source"
-msgstr "Исходный текст"
+msgstr "Источник"
 
 #: lib/layouts/memoir.layout:199
 msgid "The source/author of this epigraph"
@@ -13400,7 +13400,7 @@ msgstr "Автор эпиграфа"
 
 #: lib/layouts/memoir.layout:212
 msgid "Poemtitle"
-msgstr "НазваниеПоэмы"
+msgstr "Название стиха"
 
 #: lib/layouts/memoir.layout:225 lib/layouts/memoir.layout:246
 msgid "The poem title as it appears in the table of contents"
@@ -13412,7 +13412,7 @@ msgstr "Название стиха, как оно отображается в �
 
 #: lib/layouts/memoir.layout:240
 msgid "Poemtitle*"
-msgstr "НазваниеПоэмы*"
+msgstr "Название стиха*"
 
 #: lib/layouts/memoir.layout:279
 msgid "Legend"
@@ -16722,7 +16722,7 @@ msgstr "заметка на полях"
 
 #: lib/layouts/tufte-book.layout:157
 msgid "Marginnote"
-msgstr "Примечание на полях|я"
+msgstr "Примечание на полях"
 
 #: lib/layouts/tufte-book.layout:161
 msgid "marginnote"
@@ -16738,11 +16738,11 @@ msgstr "новая мысль"
 
 #: lib/layouts/tufte-book.layout:185
 msgid "AllCaps"
-msgstr "Прописной"
+msgstr "Прописные"
 
 #: lib/layouts/tufte-book.layout:188
 msgid "allcaps"
-msgstr "прописной"
+msgstr "прописные"
 
 #: lib/layouts/tufte-book.layout:198
 msgid "SmallCaps"
@@ -18560,7 +18560,7 @@ msgstr "Помощь|щ"
 
 #: lib/ui/stdmenus.inc:45
 msgid "New|N"
-msgstr "Создать|з"
+msgstr "Создать|С"
 
 #: lib/ui/stdmenus.inc:46
 msgid "New from Template...|m"
@@ -19097,7 +19097,7 @@ msgstr "Закрыть текущий вид|к"
 
 #: lib/ui/stdmenus.inc:347
 msgid "Fullscreen|l"
-msgstr "Во весь экран|е"
+msgstr "Полный экран|э"
 
 #: lib/ui/stdmenus.inc:370
 msgid "Math|h"
@@ -19397,7 +19397,7 @@ msgstr "Принять изменение"
 
 #: lib/ui/stdmenus.inc:558
 msgid "Accept All Changes|c"
-msgstr "Применить все изменения"
+msgstr "Принять все изменения"
 
 #: lib/ui/stdmenus.inc:559
 msgid "Reject All Changes|e"
