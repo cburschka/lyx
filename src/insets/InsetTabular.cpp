@@ -5840,10 +5840,12 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::SET_PWIDTH: {
 		Length const len(value);
-		tabular.setColumnPWidth(cur, cur.idx(), len);
-		if (len.zero()
-		    && tabular.getAlignment(cur.idx(), true) == LYX_ALIGN_BLOCK)
-			tabularFeatures(cur, Tabular::ALIGN_CENTER, string());
+		for (col_type c = sel_col_start; c <= sel_col_end; ++c) {
+			tabular.setColumnPWidth(cur, tabular.cellIndex(row, c), len);
+			if (len.zero()
+			    && tabular.getAlignment(tabular.cellIndex(row, c), true) == LYX_ALIGN_BLOCK)
+				tabularFeatures(cur, Tabular::ALIGN_CENTER, string());
+		}
 		break;
 	}
 
@@ -5853,7 +5855,8 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::TOGGLE_VARWIDTH_COLUMN: {
 		bool const varwidth = value == "on";
-		tabular.toggleVarwidth(cur.idx(), varwidth);
+		for (col_type c = sel_col_start; c <= sel_col_end; ++c)
+			tabular.toggleVarwidth(tabular.cellIndex(row, c), varwidth);
 		break;
 	}
 
@@ -6212,8 +6215,6 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::LONGTABULAR_ALIGN_RIGHT:
 		tabular.longtabular_alignment = Tabular::LYX_LONGTABULAR_ALIGN_RIGHT;
 		break;
-
-
 
 	case Tabular::SET_ROTATE_CELL:
 		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
