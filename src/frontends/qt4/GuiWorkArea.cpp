@@ -150,9 +150,9 @@ public:
 		painter.setPen(color_);
 		if (l_shape_) {
 			if (rtl_)
-				painter.drawLine(x_, bot, x_ - l, bot);
+				painter.drawLine(x_, bot, x_ - l + 1, bot);
 			else
-				painter.drawLine(x_, bot, x_ + caret_width_ + r, bot);
+				painter.drawLine(x_, bot, x_ + caret_width_ + r - 1, bot);
 		}
 
 		// draw completion triangle
