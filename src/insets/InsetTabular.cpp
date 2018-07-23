@@ -4214,12 +4214,12 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 namespace {
 
 void tabline(PainterInfo const & pi, int x1, int y1, int x2, int y2,
-             bool drawline, bool heavy = false)
+             bool drawline, int thickness = 1)
 {
 	ColorCode const col = drawline ? Color_tabularline : Color_tabularonoffline;
 	pi.pain.line(x1, y1, x2, y2, pi.textColor(col),
 				 drawline ? Painter::line_solid : Painter::line_onoffdash,
-				 (heavy ? 2 : 1) * Painter::thin_line);
+				 thickness * Painter::thin_line);
 }
 
 }
@@ -4235,14 +4235,17 @@ void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 	// Top
 	bool drawline = tabular.topLine(cell)
 		|| (row > 0 && tabular.bottomLine(tabular.cellAbove(cell)));
-	bool heavy = tabular.use_booktabs && row == 0 && tabular.rowTopLine(row);
-	tabline(pi, x, y, x + w, y, drawline, heavy);
+	int thickness = 1;
+	if (drawline && tabular.use_booktabs && tabular.rowTopLine(row))
+		thickness = (row == 0) ? 3 : 2;
+	tabline(pi, x, y, x + w, y, drawline, thickness);
 
 	// Bottom
 	drawline = tabular.bottomLine(cell);
-	heavy = tabular.use_booktabs && row == tabular.nrows() - 1
-		&& tabular.rowBottomLine(row);
-	tabline(pi, x, y + h, x + w, y + h, drawline, heavy);
+	thickness = 1;
+	if (drawline && tabular.use_booktabs && tabular.rowBottomLine(row))
+		thickness = (row == tabular.nrows() - 1) ? 3 : 2;
+	tabline(pi, x, y + h, x + w, y + h, drawline, thickness);
 
 	// Left
 	col_type const col = tabular.cellColumn(cell);
