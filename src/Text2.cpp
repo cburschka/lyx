@@ -947,13 +947,11 @@ void Text::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool tra
 			while (from < par.size()
 			       && (!par.isLineSeparator(from) || par.isDeleted(from)))
 				++from;
-			LYXERR0("from=" << from);
 			// find string of spaces
 			pos_type to = from;
 			while (to < par.size()
 			       && par.isLineSeparator(to) && !par.isDeleted(to))
 				++to;
-			LYXERR0("to=" << to);
 			// empty? We are done
 			if (from == to)
 				break;
