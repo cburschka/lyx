@@ -5954,41 +5954,45 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::SET_LINE_TOP:
 	case Tabular::TOGGLE_LINE_TOP: {
-		bool lineSet = (feature == Tabular::SET_LINE_TOP)
-			       ? (value == "true") : !tabular.topLine(cur.idx());
 		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
-			for (col_type c = sel_col_start; c <= sel_col_end; ++c)
+			for (col_type c = sel_col_start; c <= sel_col_end; ++c) {
+				bool const lineSet = (feature == Tabular::SET_LINE_TOP)
+					   ? (value == "true") : !tabular.topLine(tabular.cellIndex(r, c));
 				tabular.setTopLine(tabular.cellIndex(r, c), lineSet);
+			}
 		break;
 	}
 
 	case Tabular::SET_LINE_BOTTOM:
 	case Tabular::TOGGLE_LINE_BOTTOM: {
-		bool lineSet = (feature == Tabular::SET_LINE_BOTTOM)
-			       ? (value == "true") : !tabular.bottomLine(cur.idx());
 		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
-			for (col_type c = sel_col_start; c <= sel_col_end; ++c)
+			for (col_type c = sel_col_start; c <= sel_col_end; ++c) {
+				bool const lineSet = (feature == Tabular::SET_LINE_BOTTOM)
+					   ? (value == "true") : !tabular.bottomLine(tabular.cellIndex(r, c));
 				tabular.setBottomLine(tabular.cellIndex(r, c), lineSet);
+			}
 		break;
 	}
 
 	case Tabular::SET_LINE_LEFT:
 	case Tabular::TOGGLE_LINE_LEFT: {
-		bool lineSet = (feature == Tabular::SET_LINE_LEFT)
-			       ? (value == "true") : !tabular.leftLine(cur.idx());
 		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
-			for (col_type c = sel_col_start; c <= sel_col_end; ++c)
+			for (col_type c = sel_col_start; c <= sel_col_end; ++c) {
+				bool const lineSet = (feature == Tabular::SET_LINE_LEFT)
+					? (value == "true") : !tabular.leftLine(tabular.cellIndex(r, c));
 				tabular.setLeftLine(tabular.cellIndex(r, c), lineSet);
+			}
 		break;
 	}
 
 	case Tabular::SET_LINE_RIGHT:
 	case Tabular::TOGGLE_LINE_RIGHT: {
-		bool lineSet = (feature == Tabular::SET_LINE_RIGHT)
-			       ? (value == "true") : !tabular.rightLine(cur.idx());
 		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
-			for (col_type c = sel_col_start; c <= sel_col_end; ++c)
+			for (col_type c = sel_col_start; c <= sel_col_end; ++c) {
+				bool const lineSet = (feature == Tabular::SET_LINE_RIGHT)
+					   ? (value == "true") : !tabular.rightLine(tabular.cellIndex(r, c));
 				tabular.setRightLine(tabular.cellIndex(r, c), lineSet);
+			}
 		break;
 	}
 
