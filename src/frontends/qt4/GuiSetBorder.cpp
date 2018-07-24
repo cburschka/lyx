@@ -72,29 +72,29 @@ void GuiSetBorder::mousePressEvent(QMouseEvent * e)
 	if (e->y() > e->x()) {
 		if (e->y() < height() - e->x()) {
 			if (left_.enabled) {
-				setLeft(!left_.set);
+				setLeft(left_.set == LINE_SET ? LINE_UNSET : LINE_SET);
 				// emit signal
-				leftSet(left_.set);
+				leftSet();
 			}
 		} else {
 			if (bottom_.enabled) {
-				setBottom(!bottom_.set);
+				setBottom(bottom_.set == LINE_SET ? LINE_UNSET : LINE_SET);
 				// emit signal
-				bottomSet(bottom_.set);
+				bottomSet();
 			}
 		}
 	} else {
 		if (e->y() < height() - e->x()) {
 			if (top_.enabled) {
-				setTop(!top_.set);
+				setTop(top_.set == LINE_SET ? LINE_UNSET : LINE_SET);
 				// emit signal
-				topSet(top_.set);
+				topSet();
 			}
 		} else {
 			if (right_.enabled) {
-				setRight(!right_.set);
+				setRight(right_.set == LINE_SET ? LINE_UNSET : LINE_SET);
 				// emit signal
-				rightSet(right_.set);
+				rightSet();
 			}
 		}
 	}
@@ -115,36 +115,84 @@ void GuiSetBorder::drawLine(QColor const & col, int x, int y, int x2, int y2)
 }
 
 
-void GuiSetBorder::drawLeft(bool draw)
+void GuiSetBorder::drawLeft(BorderState draw)
 {
-	QColor col(draw ? Qt::black : Qt::white);
+	QColor col;
+	switch (draw) {
+	case LINE_SET:
+		col = Qt::black;
+		break;
+	case LINE_UNSET:
+		col = Qt::white;
+		break;
+	case LINE_UNDECIDED:
+	case LINE_UNDEF:
+		col = Qt::lightGray;
+		break;
+	}
 	if (!left_.enabled)
 		col = QColor(Qt::lightGray);
 	drawLine(col, m + l, m + l + 2, m + l, h - m - l - 1);
 }
 
 
-void GuiSetBorder::drawRight(bool draw)
+void GuiSetBorder::drawRight(BorderState draw)
 {
-	QColor col(draw ? Qt::black : Qt::white);
+	QColor col;
+	switch (draw) {
+	case LINE_SET:
+		col = Qt::black;
+		break;
+	case LINE_UNSET:
+		col = Qt::white;
+		break;
+	case LINE_UNDECIDED:
+	case LINE_UNDEF:
+		col = Qt::lightGray;
+		break;
+	}
 	if (!right_.enabled)
 		col = QColor(Qt::lightGray);
 	drawLine(col, h - m - l + 1, m + l + 2, h - m - l + 1, h - m - l - 1);
 }
 
 
-void GuiSetBorder::drawTop(bool draw)
+void GuiSetBorder::drawTop(BorderState draw)
 {
-	QColor col(draw ? Qt::black : Qt::white);
+	QColor col;
+	switch (draw) {
+	case LINE_SET:
+		col = Qt::black;
+		break;
+	case LINE_UNSET:
+		col = Qt::white;
+		break;
+	case LINE_UNDECIDED:
+	case LINE_UNDEF:
+		col = Qt::lightGray;
+		break;
+	}
 	if (!top_.enabled)
 		col = QColor(Qt::lightGray);
 	drawLine(col, m + l + 2, m + l, w - m - l - 1, m + l);
 }
 
 
-void GuiSetBorder::drawBottom(bool draw)
+void GuiSetBorder::drawBottom(BorderState draw)
 {
-	QColor col(draw ? Qt::black : Qt::white);
+	QColor col;
+	switch (draw) {
+	case LINE_SET:
+		col = Qt::black;
+		break;
+	case LINE_UNSET:
+		col = Qt::white;
+		break;
+	case LINE_UNDECIDED:
+	case LINE_UNDEF:
+		col = Qt::lightGray;
+		break;
+	}
 	if (!bottom_.enabled)
 		col = QColor(Qt::lightGray);
 	drawLine(col, m + l + 2, w - m - l + 1, w - m - l - 1, w - m - l + 1);
@@ -179,35 +227,35 @@ void GuiSetBorder::setBottomEnabled(bool enabled)
 }
 
 
-void GuiSetBorder::setLeft(bool border)
+void GuiSetBorder::setLeft(BorderState border)
 {
 	left_.set = border;
 	drawLeft(border);
 }
 
 
-void GuiSetBorder::setRight(bool border)
+void GuiSetBorder::setRight(BorderState border)
 {
 	right_.set = border;
 	drawRight(border);
 }
 
 
-void GuiSetBorder::setTop(bool border)
+void GuiSetBorder::setTop(BorderState border)
 {
 	top_.set = border;
 	drawTop(border);
 }
 
 
-void GuiSetBorder::setBottom(bool border)
+void GuiSetBorder::setBottom(BorderState border)
 {
 	bottom_.set = border;
 	drawBottom(border);
 }
 
 
-void GuiSetBorder::setAll(bool border)
+void GuiSetBorder::setAll(BorderState border)
 {
 	setLeft(border);
 	setRight(border);
@@ -216,25 +264,25 @@ void GuiSetBorder::setAll(bool border)
 }
 
 
-bool GuiSetBorder::getLeft()
+GuiSetBorder::BorderState GuiSetBorder::getLeft()
 {
 	return left_.set;
 }
 
 
-bool GuiSetBorder::getRight()
+GuiSetBorder::BorderState GuiSetBorder::getRight()
 {
 	return right_.set;
 }
 
 
-bool GuiSetBorder::getTop()
+GuiSetBorder::BorderState GuiSetBorder::getTop()
 {
 	return top_.set;
 }
 
 
-bool GuiSetBorder::getBottom()
+GuiSetBorder::BorderState GuiSetBorder::getBottom()
 {
 	return bottom_.set;
 }

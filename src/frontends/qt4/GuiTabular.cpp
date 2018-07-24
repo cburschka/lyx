@@ -136,13 +136,13 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(checkEnabled()));
 	connect(columnWidthUnitLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
-	connect(borders, SIGNAL(topSet(bool)),
+	connect(borders, SIGNAL(topSet()),
 		this, SLOT(checkEnabled()));
-	connect(borders, SIGNAL(bottomSet(bool)),
+	connect(borders, SIGNAL(bottomSet()),
 		this, SLOT(checkEnabled()));
-	connect(borders, SIGNAL(rightSet(bool)),
+	connect(borders, SIGNAL(rightSet()),
 		this, SLOT(checkEnabled()));
-	connect(borders, SIGNAL(leftSet(bool)),
+	connect(borders, SIGNAL(leftSet()),
 		this, SLOT(checkEnabled()));
 	connect(rotateTabularCB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
@@ -343,10 +343,10 @@ void GuiTabular::checkEnabled()
 
 void GuiTabular::borderSet_clicked()
 {
-	borders->setTop(true);
-	borders->setBottom(true);
-	borders->setLeft(true);
-	borders->setRight(true);
+	borders->setTop(GuiSetBorder::LINE_SET);
+	borders->setBottom(GuiSetBorder::LINE_SET);
+	borders->setLeft(GuiSetBorder::LINE_SET);
+	borders->setRight(GuiSetBorder::LINE_SET);
 	// repaint the setborder widget
 	borders->update();
 	checkEnabled();
@@ -355,10 +355,10 @@ void GuiTabular::borderSet_clicked()
 
 void GuiTabular::borderUnset_clicked()
 {
-	borders->setTop(false);
-	borders->setBottom(false);
-	borders->setLeft(false);
-	borders->setRight(false);
+	borders->setTop(GuiSetBorder::LINE_UNSET);
+	borders->setBottom(GuiSetBorder::LINE_UNSET);
+	borders->setLeft(GuiSetBorder::LINE_UNSET);
+	borders->setRight(GuiSetBorder::LINE_UNSET);
 	// repaint the setborder widget
 	borders->update();
 	checkEnabled();
@@ -542,21 +542,25 @@ docstring GuiTabular::dialogToParams() const
 	}
 
 	//
-	if (borders->getTop() && borders->getBottom() && borders->getLeft()
-		&& borders->getRight())
+	if (borders->topLineSet() && borders->bottomLineSet() && borders->leftLineSet()
+		&& borders->rightLineSet())
 		setParam(param_str, Tabular::SET_ALL_LINES);
-	else if (!borders->getTop() && !borders->getBottom() && !borders->getLeft()
-		&& !borders->getRight())
+	else if (borders->topLineUnset() && borders->bottomLineUnset() && borders->leftLineUnset()
+		&& borders->rightLineUnset())
 		setParam(param_str, Tabular::UNSET_ALL_LINES);
 	else {
-		setParam(param_str, Tabular::SET_LINE_LEFT,
-			 borders->getLeft() ? "true" : "false");
-		setParam(param_str, Tabular::SET_LINE_RIGHT,
-			 borders->getRight() ? "true" : "false");
-		setParam(param_str, Tabular::SET_LINE_TOP,
-			 borders->getTop() ? "true" : "false");
-		setParam(param_str, Tabular::SET_LINE_BOTTOM,
-			 borders->getBottom() ? "true" : "false");
+		if (borders->getLeft() != GuiSetBorder::LINE_UNDECIDED)
+			setParam(param_str, Tabular::SET_LINE_LEFT,
+				 borders->leftLineSet() ? "true" : "false");
+		if (borders->getRight() != GuiSetBorder::LINE_UNDECIDED)
+			setParam(param_str, Tabular::SET_LINE_RIGHT,
+				 borders->rightLineSet() ? "true" : "false");
+		if (borders->getTop() != GuiSetBorder::LINE_UNDECIDED)
+			setParam(param_str, Tabular::SET_LINE_TOP,
+				 borders->topLineSet() ? "true" : "false");
+		if (borders->getBottom() != GuiSetBorder::LINE_UNDECIDED)
+			setParam(param_str, Tabular::SET_LINE_BOTTOM,
+				 borders->bottomLineSet() ? "true" : "false");
 	}
 
 	// apply the special alignment
@@ -713,6 +717,18 @@ static docstring getAlignSpecial(Tabular const & t, size_t cell, int what)
 }
 
 
+GuiSetBorder::BorderState GuiTabular::borderState(GuiSetBorder::BorderState bs,
+						  bool const line)
+{
+	if (bs == GuiSetBorder::LINE_UNDEF)
+		bs = line ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
+	else if ((bs == GuiSetBorder::LINE_SET && !line)
+		 || (bs == GuiSetBorder::LINE_UNSET && line))
+		bs = GuiSetBorder::LINE_UNDECIDED;
+	return bs;
+}
+
+
 void GuiTabular::paramsToDialog(Inset const * inset)
 {
 	InsetTabular const * itab = static_cast<InsetTabular const *>(inset);
@@ -752,10 +768,42 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 			rotateTabularAngleSB->setValue(tabular.rotate != 0 ? tabular.rotate : 90);
 	}
 
-	borders->setTop(tabular.topLine(cell));
-	borders->setBottom(tabular.bottomLine(cell));
-	borders->setLeft(tabular.leftLine(cell));
-	borders->setRight(tabular.rightLine(cell));
+	// In what follows, we check the borders of all selected cells,
+	// and if there are diverging settings, we use the LINE_UNDECIDED
+	// border status.
+	GuiSetBorder::BorderState lt = GuiSetBorder::LINE_UNDEF;
+	GuiSetBorder::BorderState lb = GuiSetBorder::LINE_UNDEF;
+	GuiSetBorder::BorderState ll = GuiSetBorder::LINE_UNDEF;
+	GuiSetBorder::BorderState lr = GuiSetBorder::LINE_UNDEF;
+	CursorSlice const & beg = bv->cursor().selBegin();
+	CursorSlice const & end = bv->cursor().selEnd();
+	if (beg != end) {
+		Tabular::col_type cs = tabular.cellColumn(beg.idx());
+		Tabular::col_type ce = tabular.cellColumn(end.idx());
+		if (cs > ce)
+			swap(cs, ce);
+		Tabular::row_type rs = tabular.cellRow(beg.idx());
+		Tabular::row_type re = tabular.cellRow(end.idx());
+		if (rs > re)
+			swap(rs, re);
+		for (Tabular::row_type r = rs; r <= re; ++r)
+			for (Tabular::col_type c = cs; c <= ce; ++c) {
+				idx_type const cc = tabular.cellIndex(r, c);
+				lt = borderState(lt, tabular.topLine(cc));
+				lb = borderState(lb, tabular.bottomLine(cc));
+				ll = borderState(ll, tabular.leftLine(cc));
+				lr = borderState(lr, tabular.rightLine(cc));
+			}
+	} else {
+		lt = tabular.topLine(cell) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
+		lb = tabular.bottomLine(cell) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
+		ll = tabular.leftLine(cell) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
+		lr = tabular.rightLine(cell) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
+	}
+	borders->setTop(lt);
+	borders->setBottom(lb);
+	borders->setLeft(ll);
+	borders->setRight(lr);
 	// repaint the setborder widget
 	borders->update();
 
