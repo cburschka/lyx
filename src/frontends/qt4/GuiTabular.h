@@ -62,6 +62,9 @@ private:
 	///
 	bool funcEnabled(Tabular::Feature f) const;
 	///
+	GuiSetBorder::BorderState borderState(GuiSetBorder::BorderState bs,
+					      bool const line);
+	///
 	bool firstheader_suppressable_;
 	///
 	bool lastfooter_suppressable_;

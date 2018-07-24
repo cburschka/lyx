@@ -28,16 +28,34 @@ class GuiSetBorder : public QWidget
 public:
 	GuiSetBorder(QWidget * parent = 0, Qt::WindowFlags fl = 0);
 
-	bool getLeft();
-	bool getRight();
-	bool getTop();
-	bool getBottom();
+	// We need tristate for multi-cell selection
+	enum BorderState {
+		LINE_UNSET,
+		LINE_SET,
+		LINE_UNDECIDED,
+		LINE_UNDEF
+	};
+
+	BorderState getLeft();
+	BorderState getRight();
+	BorderState getTop();
+	BorderState getBottom();
+
+	bool leftLineSet() { return getLeft() ==  LINE_SET; }
+	bool rightLineSet() { return getRight() ==  LINE_SET; }
+	bool topLineSet() { return getTop() ==  LINE_SET; }
+	bool bottomLineSet() { return getBottom() ==  LINE_SET; }
+
+	bool leftLineUnset() { return getLeft() ==  LINE_UNSET; }
+	bool rightLineUnset() { return getRight() ==  LINE_UNSET; }
+	bool topLineUnset() { return getTop() ==  LINE_UNSET; }
+	bool bottomLineUnset() { return getBottom() ==  LINE_UNSET; }
 
 Q_SIGNALS:
-	void rightSet(bool);
-	void leftSet(bool);
-	void topSet(bool);
-	void bottomSet(bool);
+	void rightSet();
+	void leftSet();
+	void topSet();
+	void bottomSet();
 	void clicked();
 
 public Q_SLOTS:
@@ -45,11 +63,11 @@ public Q_SLOTS:
 	void setRightEnabled(bool);
 	void setTopEnabled(bool);
 	void setBottomEnabled(bool);
-	void setLeft(bool);
-	void setRight(bool);
-	void setTop(bool);
-	void setBottom(bool);
-	void setAll(bool);
+	void setLeft(BorderState);
+	void setRight(BorderState);
+	void setTop(BorderState);
+	void setBottom(BorderState);
+	void setAll(BorderState);
 
 protected:
 	void mousePressEvent(QMouseEvent * e);
@@ -60,15 +78,15 @@ private:
 
 	void drawLine(QColor const & col, int x, int y, int x2, int y2);
 
-	void drawLeft(bool);
-	void drawRight(bool);
-	void drawTop(bool);
-	void drawBottom(bool);
+	void drawLeft(BorderState);
+	void drawRight(BorderState);
+	void drawTop(BorderState);
+	void drawBottom(BorderState);
 
 	class Border {
 	public:
-		Border() : set(true), enabled(true) {}
-		bool set;
+		Border() : set(LINE_SET), enabled(true) {}
+		BorderState set;
 		bool enabled;
 	};
 
