@@ -21,6 +21,7 @@
 #include "InsetSpecialChar.h"
 #include "KeyMap.h"
 #include "LaTeXFeatures.h"
+#include "Language.h"
 #include "LayoutFile.h"
 #include "Length.h"
 #include "LyXAction.h"
@@ -293,6 +294,12 @@ void InsetInfo::error(string const & err)
 void InsetInfo::setText(docstring const & str)
 {
 	setText(str, Font(inherit_font, buffer().params().language), false);
+}
+
+
+bool InsetInfo::forceLTR() const
+{
+	return !buffer().params().language->rightToLeft();
 }
 
 

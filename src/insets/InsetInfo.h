@@ -125,6 +125,8 @@ public:
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	/// Force inset into LTR environment if surroundings are RTL
+	bool forceLTR() const;
 	///
 	void setInfo(std::string const & info);
 	///
