@@ -52,6 +52,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix footnotes in table with hyperref (bug 11212).
+
 - When cloning a buffer, do not start from a parent if it is not the
   current master (e.g., when compiling a child alone).
 
