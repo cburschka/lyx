@@ -996,7 +996,6 @@ char const * simplefeatures[] = {
 	"todonotes",
 	"forest",
 	"varwidth",
-	"footnote",
 	"tablefootnote",
 	"afterpage",
 	"tabularx",
@@ -1122,6 +1121,13 @@ string const LaTeXFeatures::getPackages() const
 
 	// The rest of these packages are somewhat more complicated
 	// than those above.
+
+	if (mustProvide("footnote")) {
+		if (isRequired("hyperref"))
+			packages << "\\usepackage{footnotehyper}\n";
+		else
+			packages << "\\usepackage{footnote}\n";
+	}
 
 	// [pdf]lscape is used to rotate longtables
 	if (mustProvide("lscape")) {
