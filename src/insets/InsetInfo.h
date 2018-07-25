@@ -155,6 +155,8 @@ private:
 	info_type type_;
 	///
 	std::string name_;
+	///
+	bool force_ltr_;
 };
 
 
