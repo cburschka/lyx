@@ -245,6 +245,7 @@ End
 
 # In polyglossia, this is supported since release 1.33.4 (May 2014)
 # We introduce it with LyX 2.2 to give the support time to settle.
+# Due to the variety, we use no country code.
 Language austrian
 	GuiName          "German (Austria, old spelling)"
 	BabelName        austrian
@@ -253,7 +254,8 @@ Language austrian
 	QuoteStyle       german
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
-	LangCode         de_AT
+	LangCode         de
+	LangVariety      alt
 End
 
 # In polyglossia, this is supported since release 1.33.4 (May 2014)
