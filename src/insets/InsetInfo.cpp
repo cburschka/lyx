@@ -93,7 +93,8 @@ NameTranslator const & nameTranslator()
 
 
 InsetInfo::InsetInfo(Buffer * buf, string const & name)
-	: InsetCollapsible(buf), type_(UNKNOWN_INFO), name_()
+	: InsetCollapsible(buf), type_(UNKNOWN_INFO), name_(),
+	force_ltr_(false)
 {
 	setInfo(name);
 	status_ = Collapsed;
@@ -298,7 +299,7 @@ void InsetInfo::setText(docstring const & str)
 
 bool InsetInfo::forceLTR() const
 {
-	return !buffer().params().language->rightToLeft();
+	return !buffer().params().language->rightToLeft() || force_ltr_;
 }
 
 
@@ -306,6 +307,7 @@ void InsetInfo::updateInfo()
 {
 	BufferParams const & bp = buffer().params();
 
+	force_ltr_ = false;
 	switch (type_) {
 	case UNKNOWN_INFO:
 		error("Unknown Info: %1$s");
@@ -327,6 +329,7 @@ void InsetInfo::updateInfo()
 			setText(bindings.begin()->print(KeySequence::Portable));
 		else
 			setText(theTopLevelKeymap().printBindings(func, KeySequence::Portable));
+		force_ltr_ = true;
 		break;
 	}
 	case LYXRC_INFO: {
