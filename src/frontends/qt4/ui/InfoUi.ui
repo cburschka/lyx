@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>InfoUi</class>
  <widget class="QWidget" name="InfoUi">
@@ -6,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>320</width>
-    <height>75</height>
+    <height>90</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,17 +20,21 @@
    <item>
     <layout class="QGridLayout">
      <item row="0" column="0">
-      <widget class="QLabel" name="typeLBL">
+      <widget class="QLabel" name="typeLA">
        <property name="text">
         <string>Information Type:</string>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QComboBox" name="typeCO"/>
+      <widget class="QComboBox" name="typeCO">
+       <property name="toolTip">
+        <string>Select the type of information to be output. Then specify the requested information below.</string>
+       </property>
+      </widget>
      </item>
      <item row="1" column="0">
-      <widget class="QLabel" name="nameLBL">
+      <widget class="QLabel" name="nameLA">
        <property name="text">
         <string>Information Name:</string>
        </property>
