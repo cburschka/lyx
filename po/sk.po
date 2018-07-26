@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-07-20 15:47+0200\n"
-"PO-Revision-Date: 2018-07-21 09:59+0000\n"
+"POT-Creation-Date: 2018-07-26 18:00+0200\n"
+"PO-Revision-Date: 2018-07-26 17:10+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -789,6 +789,10 @@ msgstr "Väčšie"
 msgid "Largest"
 msgstr "Najväčšie"
 
+#: src/frontends/qt4/GuiInfo.cpp:46
+msgid "Last Assigned Keyboard Shortcut"
+msgstr "Naposledy Pridelená Klávesová Skratka"
+
 #: src/frontends/qt4/ui/BulletsUi.ui:111 src/Font.cpp:73
 #: src/frontends/qt4/GuiCharacter.cpp:71
 msgid "Huge"
@@ -1287,6 +1291,10 @@ msgstr "LaTe&X- a LyX- voľby"
 msgid "LaTeX Options"
 msgstr "Voľby LaTeX"
 
+#: src/frontends/qt4/GuiInfo.cpp:47
+msgid "LaTeX Package Availability"
+msgstr "Dostupnosť LaTeX-ového Balíka"
+
 #: src/frontends/qt4/ui/ExternalUi.ui:162
 msgid "O&ption:"
 msgstr "Mož&nosť:"
@@ -1634,6 +1642,13 @@ msgstr "&Serifové:"
 #: src/frontends/qt4/ui/FontUi.ui:115
 msgid "Select the roman (serif) typeface"
 msgstr "Vyberte serifové (roman serif) písmo"
+
+#: src/frontends/qt4/ui/InfoUi.ui:32
+msgid ""
+"Select the type of information to be output. Then specify the requested "
+"information below."
+msgstr ""
+"Vyberte typ informácie pre výstup. Potom určite dolu žiadanú informáciu."
 
 #: src/frontends/qt4/ui/FontUi.ui:122
 msgid "&Sans Serif:"
@@ -2195,6 +2210,10 @@ msgstr "Typ informácie:"
 #: src/frontends/qt4/ui/InfoUi.ui:34
 msgid "Information Name:"
 msgstr "Meno informácie:"
+
+#: src/frontends/qt4/GuiInfo.cpp:52
+msgid "Information Type"
+msgstr "Typ informácie"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:16
 msgid "Inset Parameter Configuration"
@@ -2875,6 +2894,10 @@ msgstr "Š&tandardný výstup:"
 #: src/frontends/qt4/ui/OutputUi.ui:86
 msgid "LyX Format"
 msgstr "LyX-Formát"
+
+#: src/frontends/qt4/GuiInfo.cpp:51 src/frontends/qt4/GuiInfo.cpp:52
+msgid "LyX Function"
+msgstr "LyX Funkcia"
 
 #: src/frontends/qt4/ui/OutputUi.ui:98
 msgid ""
@@ -4672,6 +4695,31 @@ msgstr "Editovať skratku"
 msgid "Enter LyX function or command sequence"
 msgstr "Vložte funkciu LyX-u alebo sekvenciu príkazov"
 
+#: src/frontends/qt4/GuiInfo.cpp:64
+msgid ""
+"Enter a LaTeX class name such as 'article' (extension is optional). The "
+"output will be 'Yes' (class available) or 'No' (class unavailable)."
+msgstr ""
+"Vložte meno LaTeX-ovej triedy ako napr. 'article' (dať rozšírenie je "
+"nepovinné). Výstup je 'Áno' (trieda je dostupná) alebo 'Nie' (trieda "
+"nedostupná)."
+
+#: src/frontends/qt4/GuiInfo.cpp:62
+msgid ""
+"Enter a LaTeX package name such as 'hyperref' (extension is optional). The "
+"output will be 'Yes' (package available) or 'No' (package unavailable)."
+msgstr ""
+"Vložte meno LaTeX-ového balíka ako napr. 'hyperref' (dať rozšírenie nie je "
+"povinné). Výstup je 'Áno' (balík je dostupný) alebo 'Nie' (balík nedostupný)."
+
+#: src/frontends/qt4/GuiInfo.cpp:60
+msgid ""
+"Enter a LyX preferences key such as 'bind_file'. Please refer to src/LyXRC.h "
+"for available entries. The output is the current setting of this preference."
+msgstr ""
+"Vložte kľúč LyX-preferencie ako napr. 'bind_file'. Viď src/LyXRC.h na možné "
+"záznamy. Výstup je aktuálna hodnota tejto preferencie."
+
 #: src/frontends/qt4/ui/ShortcutUi.ui:87
 msgid "Remove last key from the shortcut sequence"
 msgstr "Zmazať posledný záznam z sekvencie skratky"
@@ -4715,6 +4763,14 @@ msgstr "Neznáme slovo:"
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:69
 msgid "Current word"
 msgstr "Aktuálne slovo"
+
+#: src/frontends/qt4/GuiInfo.cpp:71
+msgid ""
+"Currently supported information type: 'version' (outputs the current LyX "
+"version)."
+msgstr ""
+"Aktuálne podporované typy informácie: 'version' (vytlačí aktuálnu verziu LyX-"
+"u)."
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:85
 msgid "&Find Next"
@@ -16676,6 +16732,46 @@ msgstr "Zoznam TODO-Hlavičiek|k"
 msgid "Enter a custom header for the List of TODOs here"
 msgstr "Vložte sem vlastný nadpis pre Zoznam TODOs"
 
+#: src/frontends/qt4/GuiInfo.cpp:56
+msgid ""
+"Enter a function name such as 'math-insert \\alpha'. Please refer to Help > "
+"LyX Functions for a comprehensive list of functions. The output is the most "
+"recently assigned keyboard shortcut for this function"
+msgstr ""
+"Vložte meno funkcie ako napr. 'math-insert \\alpha'. Pozrite si cez odkaz "
+"Pomocník>LyX Funkcie na obsiahly súpis funkcií. Výstup je tá naposledy "
+"pridelená klávesová skratka pre túto funkciu"
+
+#: src/frontends/qt4/GuiInfo.cpp:66
+msgid ""
+"Enter a function name such as 'math-insert \\alpha'. Please refer to Help > "
+"LyX Functions for a comprehensive list of functions. The output is the path "
+"to the function in the menu (using the current localization)."
+msgstr ""
+"Vložte meno funkcie ako napr. 'math-insert \\alpha'. Pozrite si cez odkaz "
+"Pomocník>LyX Funkcie na obsiahly súpis funkcií. Výstup je cesta pre túto "
+"funkciu v ponuke (používajúc aktuálnu lokalizáciu)."
+
+#: src/frontends/qt4/GuiInfo.cpp:68
+msgid ""
+"Enter a function name such as 'math-insert \\alpha'. Please refer to Help > "
+"LyX Functions for a comprehensive list of functions. The output is the "
+"toolbar icon for this function (using the active icon theme)."
+msgstr ""
+"Vložte meno funkcie ako napr. 'math-insert \\alpha'. Pozrite si cez odkaz "
+"Pomocník>LyX Funkcie na obsiahly súpis funkcií. Výstup ikona v paneli s "
+"nástrojmi pre túto funkciu v ponuke (používajúc aktívnu  tému pre ikony)."
+
+#: src/frontends/qt4/GuiInfo.cpp:58
+msgid ""
+"Enter a function name such as 'math-insert \\alpha'. Please refer to Help > "
+"LyX Functions for a comprehensive list of functions. The output lists all "
+"possible keyboard shortcuts for this function"
+msgstr ""
+"Vložte meno funkcie ako napr. 'math-insert \\alpha'. Pozrite si cez odkaz "
+"Pomocník>LyX Funkcie na obsiahly súpis funkcií. Výstup je súpis všetkých "
+"možných klávesových skratiek pre túto funkciu"
+
 #: lib/layouts/todonotes.module:58
 msgid "TODO Note (Margin)"
 msgstr "TODO Poznámka (Okraj)"
@@ -17127,6 +17223,10 @@ msgstr "Nórsky (Bolmål)"
 #: lib/languages:896
 msgid "Norwegian (Nynorsk)"
 msgstr "Nórsky (Nynorsk)"
+
+#: src/frontends/qt4/GuiInfo.cpp:51
+msgid "Not Applicable"
+msgstr "Nepoužiteľné"
 
 #: lib/languages:907
 msgid "Occitan"
@@ -17982,6 +18082,10 @@ msgstr "Dvojitý Rám|D"
 msgid "LyX Note|N"
 msgstr "Zápis LyXu|y"
 
+#: src/frontends/qt4/GuiInfo.cpp:47
+msgid "LyX Preferences Entry"
+msgstr "Záznam v LyX-Preferenciach"
+
 #: lib/ui/stdcontext.inc:205
 msgid "Comment|m"
 msgstr "Komentár|m"
@@ -18503,6 +18607,10 @@ msgstr "Vložiť Referenciu na Pozícii Kurzoru|V"
 #: lib/ui/stdcontext.inc:610
 msgid "All Indexes|A"
 msgstr "Všetky Registre|V"
+
+#: src/frontends/qt4/GuiInfo.cpp:46
+msgid "All Keyboard Shortcuts"
+msgstr "Všetky Klávesové Skratky"
 
 #: lib/ui/stdcontext.inc:613
 msgid "Subindex|b"
@@ -19274,6 +19382,10 @@ msgstr "Logá|g"
 #: lib/ui/stdmenus.inc:421
 msgid "LyX Logo|L"
 msgstr "LyX Logo|L"
+
+#: src/frontends/qt4/GuiInfo.cpp:48
+msgid "LyX Menu Location"
+msgstr "Umiestnenie LyX-Ponuky"
 
 #: lib/ui/stdmenus.inc:422
 msgid "TeX Logo|T"
@@ -24693,6 +24805,10 @@ msgstr "LaTeX (prostý)"
 msgid "LaTeX (plain)|L"
 msgstr "LaTeX (prostý)|L"
 
+#: src/frontends/qt4/GuiInfo.cpp:47
+msgid "LaTeX Class Availability"
+msgstr "Dostupnosť LaTeX-ovej Triedy"
+
 #: lib/configure.py:663
 msgid "LaTeX (LuaTeX)"
 msgstr "LaTeX (LuaTeX)"
@@ -24955,6 +25071,10 @@ msgstr "LyX 2.2.x"
 msgid "LyX 2.3.x"
 msgstr "LyX 2.3.x"
 
+#: src/frontends/qt4/GuiInfo.cpp:48
+msgid "LyX Application Information"
+msgstr "Informácia o LyX- Aplikácii"
+
 #: lib/configure.py:759
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
@@ -24970,6 +25090,10 @@ msgstr "CJK LyX 1.4.x (euc-kr)"
 #: lib/configure.py:762
 msgid "LyX Preview"
 msgstr "Náhľad LyX"
+
+#: src/frontends/qt4/GuiInfo.cpp:48
+msgid "LyX Toolbar Icon"
+msgstr "Ikona LyX-u v paneli nástrojov"
 
 #: lib/configure.py:763
 msgid "pdf_tex"
@@ -28711,6 +28835,10 @@ msgstr ""
 "Prosím vykonajte správnu inštaláciu keď chcete zistiť čo sa zmenilo\n"
 "pre túto verziu LyXu."
 
+#: src/frontends/qt4/GuiInfo.cpp:55
+msgid "Please select a valid type above"
+msgstr "Prosím vyberte najprv platný typ"
+
 #: src/frontends/qt4/GuiAbout.cpp:96
 msgid "ERROR: LyX wasn't able to read the RELEASE-NOTES file\n"
 msgstr "CHYBA: LyXu sa nepodarilo načítať súbor RELEASE-NOTES\n"
@@ -28808,6 +28936,10 @@ msgstr "O %1"
 #: src/frontends/qt4/GuiApplication.cpp:691 src/frontends/qt4/GuiPrefs.cpp:3436
 msgid "Preferences"
 msgstr "Preferencie"
+
+#: src/frontends/qt4/GuiInfo.cpp:51
+msgid "Preferences Key"
+msgstr "Kľúč Preferencie"
 
 #: src/frontends/qt4/GuiApplication.cpp:692
 msgid "Reconfigure"
@@ -29615,6 +29747,10 @@ msgstr "Zobrazí sa v obsahu"
 msgid "Package"
 msgstr "Balík"
 
+#: src/frontends/qt4/GuiInfo.cpp:51
+msgid "Package Name"
+msgstr "Meno Balíka"
+
 #: src/frontends/qt4/GuiDocument.cpp:1212
 msgid "Load automatically"
 msgstr "Použiť automaticky"
@@ -29666,17 +29802,17 @@ msgid "Input listings parameters below. Enter ? for a list of parameters."
 msgstr ""
 "Poniže vkladajte parametre pre výpis. Na prehľad parametrov vložte znak '?'."
 
-#: src/frontends/qt4/GuiDocument.cpp:1493
+#: src/frontends/qt4/GuiDocument.cpp:1608
 msgid "Document Class"
-msgstr "Trieda dokumentu"
+msgstr "Trieda Dokumentu"
 
 #: src/frontends/qt4/FloatPlacement.cpp:184
 msgid "Document Default"
 msgstr "Štandardné Nastavenia Dokumentu"
 
-#: src/frontends/qt4/GuiBibtex.cpp:134
+#: src/frontends/qt4/GuiBibtex.cpp:130
 msgid "Document Encoding"
-msgstr "Kódovanie Dokumentov"
+msgstr "Kódovanie Dokumentu"
 
 #: src/frontends/qt4/GuiDocument.cpp:1495
 msgid "Modules"
@@ -29750,6 +29886,10 @@ msgstr " (nedostupný)"
 #: src/frontends/qt4/GuiDocument.cpp:2170
 msgid "Class Default (TeX Fonts)"
 msgstr "Triedny Štandard (TeX fonty)"
+
+#: src/frontends/qt4/GuiInfo.cpp:52
+msgid "Class Name"
+msgstr "Meno Triedy"
 
 #: src/frontends/qt4/GuiDocument.cpp:2264
 #: src/frontends/qt4/GuiDocument.cpp:2291
@@ -30251,46 +30391,6 @@ msgstr "Vložte názov nového registra"
 msgid "The index could not be renamed. Check if the new name already exists."
 msgstr "Register sa nedal premenovať. Overte si, či nové meno už existuje."
 
-#: src/frontends/qt4/GuiInfo.cpp:46
-msgid "unknown"
-msgstr "neznáme"
-
-#: src/frontends/qt4/GuiInfo.cpp:46
-msgid "shortcut"
-msgstr "skratka"
-
-#: src/frontends/qt4/GuiInfo.cpp:46
-msgid "shortcuts"
-msgstr "skratky"
-
-#: src/frontends/qt4/GuiInfo.cpp:46
-msgid "lyxrc"
-msgstr "lyxrc"
-
-#: src/frontends/qt4/GuiInfo.cpp:46
-msgid "package"
-msgstr "balík"
-
-#: src/frontends/qt4/GuiInfo.cpp:46
-msgid "textclass"
-msgstr "trieda textu"
-
-#: src/frontends/qt4/GuiInfo.cpp:47
-msgid "menu"
-msgstr "menu"
-
-#: src/frontends/qt4/GuiInfo.cpp:47
-msgid "icon"
-msgstr "ikona"
-
-#: src/frontends/qt4/GuiInfo.cpp:47
-msgid "buffer"
-msgstr "zásobník"
-
-#: src/frontends/qt4/GuiInfo.cpp:47
-msgid "lyxinfo"
-msgstr "lyxinfo"
-
 #: src/frontends/qt4/GuiInfo.h:36
 msgid "Info Inset Settings"
 msgstr "Nastavenia Vložky Info"
@@ -30608,9 +30708,13 @@ msgstr "Klasické"
 msgid "Oxygen"
 msgstr "Oxygen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2625
+#: src/frontends/qt4/GuiPrefs.cpp:2602
 msgid "Document Handling"
-msgstr "Ovládanie Dokumentov"
+msgstr "Ovládanie Dokumentu"
+
+#: src/frontends/qt4/GuiInfo.cpp:48
+msgid "Document Information"
+msgstr "Informácie Dokumentu"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2732
 msgid "Control"
@@ -31782,6 +31886,14 @@ msgstr "Hľadať"
 #: src/frontends/qt4/LayoutBox.cpp:403 src/frontends/qt4/LayoutBox.cpp:458
 msgid "Enter characters to filter the layout list."
 msgstr "Zadajte znaky na výber z listiny schém."
+
+#: src/frontends/qt4/GuiInfo.cpp:70
+msgid ""
+"Enter either 'name' (outputs the filename of the current document), "
+"'path' (outputs the file path), or 'class' (outputs the text class)."
+msgstr ""
+"Vložte buď 'name' (výsup je meno súboru aktuálneho dokumentu), 'path' (cesta "
+"súboru), alebo 'class' (výstup je trieda textu)."
 
 #: src/frontends/qt4/LayoutBox.cpp:582
 #, c-format
