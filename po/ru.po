@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-03-17 15:55-0400\n"
-"PO-Revision-Date: 2018-07-20 20:24+0300\n"
+"PO-Revision-Date: 2018-07-27 13:07+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -841,7 +841,7 @@ msgstr "&Уровень:"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:31
 msgid "Change:"
-msgstr "Изменить:"
+msgstr "Изменение:"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:49
 msgid "Go to previous change"
@@ -1768,7 +1768,7 @@ msgstr "Масштабировать шрифт печатной машинки 
 
 #: src/frontends/qt4/ui/FontUi.ui:236
 msgid "&Math:"
-msgstr "Формула:"
+msgstr "&Математика:"
 
 #: src/frontends/qt4/ui/FontUi.ui:246
 msgid "Select the math typeface"
@@ -1844,7 +1844,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:144 src/frontends/qt4/GuiGraphics.cpp:481
 msgid "Set &height:"
-msgstr "Установить &высоту:"
+msgstr "&Высота:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:151
 msgid "&Scale graphics (%):"
@@ -1858,13 +1858,13 @@ msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:164 src/frontends/qt4/GuiGraphics.cpp:480
 msgid "Set &width:"
-msgstr "Установить &ширину:"
+msgstr "&Ширина:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:174
 msgid "Scale image to maximum size not exceeding width and height"
 msgstr ""
-"Масштабировать изображение до максимального размера не превышающего ширину и "
-"высоту"
+"Масштабировать изображение до максимального размера, не превышающего ширину "
+"и высоту"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:187
 msgid "Rotate Graphics"
@@ -4535,7 +4535,7 @@ msgstr "Сообщения в строке состояния"
 
 #: src/frontends/qt4/ui/RefUi.ui:73
 msgid "&In[[buffer]]:"
-msgstr "&В:"
+msgstr "&Документ:"
 
 #: src/frontends/qt4/ui/RefUi.ui:92
 msgid "Filter case-sensitively"
@@ -11072,15 +11072,15 @@ msgstr "Нумерация-Продолжение"
 
 #: lib/layouts/eqs-within-sections.module:2
 msgid "Number Equations by Section"
-msgstr "Нумерация уравнений по разделам"
+msgstr "Нумерация формул по разделам"
 
 #: lib/layouts/eqs-within-sections.module:6
 msgid ""
 "Resets the equation number at section start and prepends the section number "
 "to the equation number, as in '(2.1)'."
 msgstr ""
-"Сбрасывает номер уравнения в начале раздела и добавляет номер раздела к "
-"номеру уравнения, например '(2.1)'."
+"Сбрасывает номер формулы в начале раздела и добавляет номер раздела к номеру "
+"формулы, например '(2.1)'."
 
 #: lib/layouts/eqs-within-sections.module:17
 msgid "\\thesection.\\arabic{equation}"
@@ -15326,7 +15326,7 @@ msgstr "\\Alph{enumiv}."
 
 #: lib/layouts/stdcounters.inc:68
 msgid "Equation ##"
-msgstr "Уравнение ##"
+msgstr "Формула ##"
 
 #: lib/layouts/stdcounters.inc:72 lib/layouts/stdcounters.inc:76
 msgid "Footnote ##"
@@ -15366,7 +15366,7 @@ msgstr "Ветки"
 
 #: lib/layouts/stdinsets.inc:15
 msgid "Index Entries"
-msgstr "Пункты в указателе"
+msgstr "Рубрики в предметном указателе"
 
 #: lib/layouts/stdinsets.inc:16
 msgid "Listings"
@@ -15404,7 +15404,7 @@ msgstr "Листинги"
 
 #: lib/layouts/stdinsets.inc:407
 msgid "Idx"
-msgstr "Idx"
+msgstr "Рубрика"
 
 #: lib/layouts/stdinsets.inc:568
 msgid "Argument"
@@ -15449,14 +15449,14 @@ msgstr "Приложение \\thechapter"
 #: lib/layouts/subequations.module:2 lib/layouts/subequations.module:10
 #: lib/layouts/subequations.module:13
 msgid "Subequations"
-msgstr "Подуравнения"
+msgstr "Подформулы"
 
 #: lib/layouts/subequations.module:5
 msgid ""
 "Provide a straightforward way to segregate subequations in LyX. See the "
 "subequations.lyx example file."
 msgstr ""
-"Предоставляет прямой способ разделения подуравнений в LyX. См. файл примера "
+"Предоставляет прямой способ разделения подформул в LyX. См. файл примера "
 "subequations.lyx."
 
 #: lib/layouts/svcommon.inc:68
@@ -17807,11 +17807,11 @@ msgstr "Удалить строку справа"
 
 #: lib/ui/stdcontext.inc:75
 msgid "Show Math Toolbar"
-msgstr "Показать математическую панель"
+msgstr "Показать панель формул"
 
 #: lib/ui/stdcontext.inc:76
 msgid "Show Math-Panels Toolbar"
-msgstr "Показать матем. панели инструментов"
+msgstr "Показать матем. панели"
 
 #: lib/ui/stdcontext.inc:77
 msgid "Show Table Toolbar"
@@ -18169,7 +18169,7 @@ msgstr "Вставить недавнее|е"
 
 #: lib/ui/stdcontext.inc:340
 msgid "Jump Back to Saved Bookmark|B"
-msgstr "Перейти назад к сохранённой закладке|н"
+msgstr "Вернуться назад к сохранённой закладке|н"
 
 #: lib/ui/stdcontext.inc:341 lib/ui/stdmenus.inc:572
 msgid "Forward Search|F"
@@ -18211,7 +18211,7 @@ msgstr "Принять изменение"
 
 #: lib/ui/stdcontext.inc:356
 msgid "Reject Change|j"
-msgstr "Отменить изменение"
+msgstr "Отклонить изменение"
 
 #: lib/ui/stdcontext.inc:358
 msgid "Apply Last Text Style|A"
@@ -18223,7 +18223,7 @@ msgstr "Стиль текста"
 
 #: lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:123
 msgid "Paragraph Settings...|P"
-msgstr "Настройки абзаца...|а"
+msgstr "Свойства абзаца...|а"
 
 #: lib/ui/stdcontext.inc:363
 msgid "Fullscreen Mode"
@@ -18482,7 +18482,7 @@ msgstr "Подиндекс|b"
 
 #: lib/ui/stdcontext.inc:640 lib/ui/stdmenus.inc:557
 msgid "Reject Change|R"
-msgstr "Отменить изменение"
+msgstr "Отклонить изменение"
 
 # ?
 #: lib/ui/stdcontext.inc:648
@@ -18644,7 +18644,7 @@ msgstr "Копировать|К"
 
 #: lib/ui/stdmenus.inc:77
 msgid "Rename|R"
-msgstr "Пе&реименовать"
+msgstr "Переименовать|р"
 
 #: lib/ui/stdmenus.inc:78
 msgid "Update Local Directory From Repository|d"
@@ -18749,7 +18749,7 @@ msgstr "Настройки переноса по словам...|W"
 
 #: lib/ui/stdmenus.inc:142
 msgid "Note Settings...|N"
-msgstr "Настройки заметок...|З"
+msgstr "Настройки заметки...|З"
 
 #: lib/ui/stdmenus.inc:143
 msgid "Phantom Settings...|h"
@@ -18765,11 +18765,11 @@ msgstr "Настройки блока...|б"
 
 #: lib/ui/stdmenus.inc:146
 msgid "Index Entry Settings...|y"
-msgstr "Настройки элемента индекса...|W"
+msgstr "Настройки рубрики указателя...|W"
 
 #: lib/ui/stdmenus.inc:147
 msgid "Index Settings...|x"
-msgstr "Настройки индекса..."
+msgstr "Настройки предметного указателя..."
 
 #: lib/ui/stdmenus.inc:148
 msgid "Info Settings...|n"
@@ -18785,11 +18785,11 @@ msgstr "Настройки таблицы...|т"
 
 #: lib/ui/stdmenus.inc:157
 msgid "Paste from HTML|H"
-msgstr "Вставить из HTML"
+msgstr "Вставить из HTML|H"
 
 #: lib/ui/stdmenus.inc:158
 msgid "Paste from LaTeX|L"
-msgstr "Вставить из LaTeX"
+msgstr "Вставить из LaTeX|L"
 
 #: lib/ui/stdmenus.inc:159
 msgid "Paste as LinkBack PDF"
@@ -19153,7 +19153,7 @@ msgstr "Метка...|М"
 
 #: lib/ui/stdmenus.inc:387
 msgid "Nomenclature Entry...|y"
-msgstr "Запись в списке обозначений..."
+msgstr "Обозначение...|з"
 
 #: lib/ui/stdmenus.inc:389
 msgid "Table...|T"
@@ -19297,15 +19297,15 @@ msgstr "Отображаемая формула|ж"
 
 #: lib/ui/stdmenus.inc:455
 msgid "Numbered Formula|N"
-msgstr "Пронумерованная формула|ф"
+msgstr "Нумерованная формула|ф"
 
 #: lib/ui/stdmenus.inc:479
 msgid "Figure Wrap Float|F"
-msgstr "Плавающий рисунок с обтеканием|р"
+msgstr "Обтекаемый рисунок|р"
 
 #: lib/ui/stdmenus.inc:480
 msgid "Table Wrap Float|T"
-msgstr "Плавающая таблица с обтеканием|П"
+msgstr "Обтекаемая таблица|т"
 
 #: lib/ui/stdmenus.inc:484
 msgid "Table of Contents|C"
@@ -19401,7 +19401,7 @@ msgstr "Принять все изменения"
 
 #: lib/ui/stdmenus.inc:559
 msgid "Reject All Changes|e"
-msgstr "Отменить все изменения"
+msgstr "Отклонить все изменения"
 
 #: lib/ui/stdmenus.inc:560
 msgid "Show Changes in Output|S"
@@ -19625,7 +19625,7 @@ msgstr "Расширенный поиск и замена"
 
 #: lib/ui/stdtoolbars.inc:85
 msgid "Navigate back"
-msgstr "Перейти назад"
+msgstr "Вернуться назад"
 
 #: lib/ui/stdtoolbars.inc:87
 msgid "Toggle emphasis"
@@ -19653,19 +19653,19 @@ msgstr "Вставить таблицу"
 
 #: lib/ui/stdtoolbars.inc:95
 msgid "Toggle outline"
-msgstr "Вкл/Выкл структуру"
+msgstr "Переключить панель структуры"
 
 #: lib/ui/stdtoolbars.inc:96
 msgid "Toggle math toolbar"
-msgstr "Вкл/выкл матем. панель"
+msgstr "Переключить панель формул"
 
 #: lib/ui/stdtoolbars.inc:97
 msgid "Toggle table toolbar"
-msgstr "Вкл/выкл панель таблиц"
+msgstr "Переключить панель таблиц"
 
 #: lib/ui/stdtoolbars.inc:98
 msgid "Toggle review toolbar"
-msgstr "Вкл/выкл панель рецензирования"
+msgstr "Переключить панель рецензирования"
 
 #: lib/ui/stdtoolbars.inc:101
 msgid "View/Update"
@@ -19741,11 +19741,11 @@ msgstr "Вставить библиографическую ссылку"
 
 #: lib/ui/stdtoolbars.inc:126
 msgid "Insert index entry"
-msgstr "Вставить вхождение слова в предметный указатель"
+msgstr "Вставить рубрику указателя"
 
 #: lib/ui/stdtoolbars.inc:127
 msgid "Insert nomenclature entry"
-msgstr "Вставить элемент списка обозначений"
+msgstr "Вставить обозначение"
 
 #: lib/ui/stdtoolbars.inc:129
 msgid "Insert footnote"
@@ -19953,7 +19953,7 @@ msgstr "Вставить окружение cases"
 
 #: lib/ui/stdtoolbars.inc:200
 msgid "Toggle math panels"
-msgstr "Вкл/выкл матем. панели"
+msgstr "Переключить матем. панели"
 
 #: lib/ui/stdtoolbars.inc:203 src/TocBackend.cpp:289
 msgid "Math Macros"
@@ -20038,7 +20038,7 @@ msgstr "Рецензирование"
 
 #: lib/ui/stdtoolbars.inc:233
 msgid "Track changes"
-msgstr "Отслеживать изменения"
+msgstr "Следить за изменениями"
 
 #: lib/ui/stdtoolbars.inc:234
 msgid "Show changes in output"
@@ -20058,7 +20058,7 @@ msgstr "Отклонить изменение внутри выделения"
 
 #: lib/ui/stdtoolbars.inc:240
 msgid "Merge changes"
-msgstr "Объединить изменения"
+msgstr "Объединить изменения..."
 
 #: lib/ui/stdtoolbars.inc:241
 msgid "Accept all changes"
@@ -20150,11 +20150,11 @@ msgstr "Вставить информацию о версии"
 
 #: lib/ui/stdtoolbars.inc:292
 msgid "Use SVN file locking property"
-msgstr "Использовать свойство SVN блокировки файла"
+msgstr "Использовать свойство блокировки файла SVN"
 
 #: lib/ui/stdtoolbars.inc:294
 msgid "Update local directory from repository"
-msgstr "Обновить локальный каталог с репозитория"
+msgstr "Обновить локальный каталог из репозитория"
 
 #: lib/ui/stdtoolbars.inc:297
 msgid "Math Panels"
@@ -25570,80 +25570,79 @@ msgid ""
 "The LaTeX package amsmath is only used if AMS formula types or symbols from "
 "the AMS math toolbars are inserted into formulas"
 msgstr ""
-"Пакет AMS LaTeX используется только в том случае, если символы из "
-"математической AMS палитры вставлены в формулы"
+"Пакет amsmath используется только когда в формулах присутствуют окружения "
+"AMS или символы из математических панелей AMS"
 
 #: src/BufferParams.cpp:510
 msgid ""
 "The LaTeX package amssymb is only used if symbols from the AMS math toolbars "
 "are inserted into formulas"
 msgstr ""
-"Пакет amssymb используется только когда символы из математической AMS "
-"палитры присутствуют в формулах"
+"Пакет amssymb используется только когда в формулах присутствуют символы из "
+"математических панелей AMS"
 
 #: src/BufferParams.cpp:512
 msgid ""
 "The LaTeX package cancel is only used if \\cancel commands are used in "
 "formulas"
 msgstr ""
-"Пакет cancel используется только когда команда \\cancel присутствует в "
-"формулах"
+"Пакет cancel используется только когда в формулах присутствует команда "
+"\\cancel"
 
 #: src/BufferParams.cpp:514
 msgid ""
 "The LaTeX package esint is only used if special integral symbols are "
 "inserted into formulas"
 msgstr ""
-"Пакет esint используется только когда специальные символы интеграла "
-"присутствуют в формулах"
+"Пакет esint используется только когда в формулах присутствуют специальные "
+"символы интеграла"
 
 #: src/BufferParams.cpp:516
 msgid ""
 "The LaTeX package mathdots is only used if the command \\iddots is inserted "
 "into formulas"
 msgstr ""
-"LaTeX пакет mathdots используется только если команда \\iddots присутствует "
-"в формулах"
+"Пакет mathdots используется только когда в формулах присутствует команда "
+"\\iddots"
 
 #: src/BufferParams.cpp:518
 msgid ""
 "The LaTeX package mathtools is only used if some mathematical relations are "
 "inserted into formulas"
 msgstr ""
-"LaTeX пакет mathtools используется только если некоторые математические "
-"отношения присутствует в формулах"
+"Пакет mathtools используется только когда в формулах присутствуют некоторые "
+"математические отношения"
 
 #: src/BufferParams.cpp:520
 msgid ""
 "The LaTeX package mhchem is only used if either the command \\ce or \\cf is "
 "inserted into formulas"
 msgstr ""
-"LaTeX пакет mhchem используется только если любая из команд \\ce, \\cf "
-"присутствует в формулах"
+"Пакет mhchem используется только когда в формулах присутствует команда \\ce "
+"или \\cf"
 
 #: src/BufferParams.cpp:522
 msgid ""
 "The LaTeX package stackrel is only used if the command \\stackrel with "
 "subscript is inserted into formulas"
 msgstr ""
-"LaTeX пакет stackrel используется только если команда \\stackrel с нижним "
-"индексом присутствует в формулах"
+"Пакет stackrel используется только когда в формулах присутствует команда "
+"\\stackrel с нижним индексом"
 
 #: src/BufferParams.cpp:524
 msgid ""
 "The LaTeX package stmaryrd is only used if symbols from the St Mary's Road "
 "symbol font for theoretical computer science are inserted into formulas"
 msgstr ""
-"LaTeX пакет stmaryrd используется только в том случае если символы из шрифта "
-"St Mary's Road для теоретической информатики присутствуют в формулах"
+"Пакет stmaryrd используется только когда в формулах присутствуют символы из "
+"шрифта St Mary's Road для теоретической информатики"
 
 #: src/BufferParams.cpp:526
 msgid ""
 "The LaTeX package undertilde is only used if you use the math frame "
 "decoration 'utilde'"
 msgstr ""
-"LaTeX пакет undertilde используется только если вы используете декорацию "
-"'utilde'"
+"Пакет undertilde используется только когда используется декорация 'utilde'"
 
 #: src/BufferParams.cpp:731
 #, c-format
@@ -28099,7 +28098,7 @@ msgstr "неизвестный тип!"
 #: src/TocBackend.cpp:263
 #, c-format
 msgid "Index Entries (%1$s)"
-msgstr "Пункты в указателе (%1$s)"
+msgstr "Рубрики в указателе (%1$s)"
 
 #: src/TocBackend.cpp:279 src/insets/InsetTOC.cpp:75
 msgid "Table of Contents"
@@ -28131,7 +28130,7 @@ msgstr "Изображение"
 
 #: src/TocBackend.cpp:287
 msgid "Equations"
-msgstr "Уравнения"
+msgstr "Нумерованные формулы"
 
 #: src/TocBackend.cpp:288 src/frontends/qt4/GuiExternal.cpp:87
 msgid "External Material"
@@ -29040,7 +29039,7 @@ msgid ""
 "Changed by %1\n"
 "\n"
 msgstr ""
-"Изменён %1\n"
+"Изменено автором %1\n"
 "\n"
 
 #: src/frontends/qt4/GuiChanges.cpp:78
@@ -30133,7 +30132,7 @@ msgstr "Документы LaTeX/LyX (*.tex *.lyx)"
 
 #: src/frontends/qt4/GuiIndex.cpp:34
 msgid "Index Entry Settings"
-msgstr "Настройки пункта в указателе"
+msgstr "Настройки рубрики указателя"
 
 #: src/frontends/qt4/GuiIndices.cpp:53
 msgid "Label Color"
@@ -30331,7 +30330,7 @@ msgstr "Настройки заметки"
 
 #: src/frontends/qt4/GuiParagraph.cpp:48
 msgid "Paragraph Settings"
-msgstr "Настройки абзаца"
+msgstr "Свойства абзаца"
 
 #: src/frontends/qt4/GuiParagraph.cpp:80
 msgid ""
@@ -31647,7 +31646,7 @@ msgstr "<b>Файл %1 изменён на диске.</b>"
 
 #: src/frontends/qt4/GuiWrap.cpp:32
 msgid "Wrap Float Settings"
-msgstr "Настройки объектов с обтеканием"
+msgstr "Настройки обтекаемых объектов"
 
 #: src/frontends/qt4/IconPalette.cpp:39
 msgid "Click to detach"
@@ -31751,7 +31750,7 @@ msgstr "(Пустое содержание)"
 
 #: src/frontends/qt4/Menus.cpp:1377
 msgid "Open Outliner..."
-msgstr "Открыть обзор..."
+msgstr "Показать на панели структуры..."
 
 #: src/frontends/qt4/Menus.cpp:1414
 msgid "Other Toolbars"
@@ -31767,18 +31766,18 @@ msgstr "Предметный указатель|у"
 
 #: src/frontends/qt4/Menus.cpp:1490
 msgid "Index Entry|d"
-msgstr "Запись в предметном указателе"
+msgstr "Рубрика указателя"
 
 # c-format
 #: src/frontends/qt4/Menus.cpp:1505
 #, c-format
 msgid "Index: %1$s"
-msgstr "Индекс: %1$s"
+msgstr "Указатель: %1$s"
 
 #: src/frontends/qt4/Menus.cpp:1510 src/frontends/qt4/Menus.cpp:1539
 #, c-format
 msgid "Index Entry (%1$s)"
-msgstr "Элемент индекса (%1$s)"
+msgstr "Рубрика указателя (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:1556
 msgid "No Citation in Scope!"
