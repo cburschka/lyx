@@ -15,6 +15,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "CutAndPaste.h"
+#include "Font.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetGraphics.h"
@@ -28,6 +29,8 @@
 #include "LyXRC.h"
 #include "LyXVC.h"
 #include "Lexer.h"
+#include "Paragraph.h"
+#include "ParIterator.h"
 #include "ParagraphParameters.h"
 #include "version.h"
 
@@ -41,6 +44,7 @@
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
+#include "support/Messages.h"
 #include "support/lstrings.h"
 #include "support/qstring_helpers.h"
 #include "support/Translator.h"
@@ -284,22 +288,29 @@ void InsetInfo::setInfo(string const & name)
 }
 
 
-void InsetInfo::error(string const & err)
+void InsetInfo::error(docstring const & err, Language const * lang)
 {
-	setText(bformat(_(err), from_utf8(name_)),
-		Font(inherit_font, buffer().params().language), false);
+	setText(bformat(translateIfPossible(err, lang->code()), from_utf8(name_)),
+		Font(inherit_font, lang), false);
 }
 
 
-void InsetInfo::setText(docstring const & str)
+void InsetInfo::info(docstring const & err, Language const * lang)
 {
-	setText(str, Font(inherit_font, buffer().params().language), false);
+	setText(translateIfPossible(err, lang->code()),
+			Font(inherit_font, lang), false);
+}
+
+
+void InsetInfo::setText(docstring const & str, Language const * lang)
+{
+	setText(str, Font(inherit_font, lang), false);
 }
 
 
 bool InsetInfo::forceLTR() const
 {
-	return !buffer().params().language->rightToLeft() || force_ltr_;
+	return force_ltr_;
 }
 
 
@@ -313,11 +324,18 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		return;
 
 	BufferParams const & bp = buffer().params();
+	Language const * lang = it.paragraph().getFontSettings(bp, it.pos()).language();
+	Language const * tryguilang = languages.getFromCode(Messages::guiLanguage());
+	// Some info insets use the language of the GUI (if available)
+	Language const * guilang = tryguilang ? tryguilang : lang;
 
-	force_ltr_ = false;
+	force_ltr_ = !lang->rightToLeft();
+	// This is just to get the string into the po files
+	docstring gui;
 	switch (type_) {
 	case UNKNOWN_INFO:
-		error("Unknown Info: %1$s");
+		gui = _("Unknown Info!");
+		info(from_ascii("Unknown Info!"), lang);
 		initialized_ = false;
 		break;
 	case SHORTCUT_INFO:
@@ -325,20 +343,21 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		// shortcuts can change, so we need to re-do this each time
 		FuncRequest const func = lyxaction.lookupFunc(name_);
 		if (func.action() == LFUN_UNKNOWN_ACTION) {
-			error("Unknown action %1$s");
+			gui = _("Unknown action %1$s");
+			error(from_ascii("Unknown action %1$s"), lang);
 			break;
 		}
 		KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(func);
 		if (bindings.empty()) {
-			// It is impropriate to use error() for undefined shortcut
-			setText(_("undefined"));
+			gui = _("undefined");
+			info(from_ascii("undefined"), lang);
 			break;
 		}
 		if (type_ == SHORTCUT_INFO)
-			setText(bindings.begin()->print(KeySequence::Portable));
+			setText(bindings.begin()->print(KeySequence::Portable), guilang);
 		else
-			setText(theTopLevelKeymap().printBindings(func, KeySequence::Portable));
-		force_ltr_ = true;
+			setText(theTopLevelKeymap().printBindings(func, KeySequence::Portable), guilang);
+		force_ltr_ = !guilang->rightToLeft() && !lang->rightToLeft();
 		break;
 	}
 	case LYXRC_INFO: {
@@ -346,7 +365,8 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		// so we will recalculate each time through.
 		ostringstream oss;
 		if (name_.empty()) {
-			setText(_("undefined"));
+			gui = _("undefined");
+			info(from_ascii("undefined"), lang);
 			break;
 		}
 		// FIXME this uses the serialization mechanism to get the info
@@ -354,14 +374,16 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		lyxrc.write(oss, true, name_);
 		string result = oss.str();
 		if (result.size() < 2) {
-			setText(_("undefined"));
+			gui = _("undefined");
+			info(from_ascii("undefined"), lang);
 			break;
 		}
 		string::size_type loc = result.rfind("\n", result.size() - 2);
 		loc = loc == string::npos ? 0 : loc + 1;
 		if (result.size() < loc + name_.size() + 1
 			  || result.substr(loc + 1, name_.size()) != name_) {
-			setText(_("undefined"));
+			gui = _("undefined");
+			info(from_ascii("undefined"), lang);
 			break;
 		}
 		// remove leading comments and \\name and space
@@ -370,7 +392,7 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		// remove \n and ""
 		result = rtrim(result, "\n");
 		result = trim(result, "\"");
-		setText(from_utf8(result));
+		setText(from_utf8(result), lang);
 		break;
 	}
 	case PACKAGE_INFO:
@@ -378,7 +400,13 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		if (initialized_)
 			break;
 		// check in packages.lst
-		setText(LaTeXFeatures::isAvailable(name_) ? _("yes") : _("no"));
+		if (LaTeXFeatures::isAvailable(name_)) {
+			gui = _("yes");
+			info(from_ascii("yes"), lang);
+		} else {
+			gui = _("no");
+			info(from_ascii("no"), lang);
+		}
 		initialized_ = true;
 		break;
 
@@ -389,7 +417,13 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		// name_ is the class name
 		if (list.haveClass(name_))
 			available = list[name_].isTeXClassAvailable();
-		setText(available ? _("yes") : _("no"));
+		if (available) {
+			gui = _("yes");
+			info(from_ascii("yes"), lang);
+		} else {
+			gui = _("no");
+			info(from_ascii("no"), lang);
+		}
 		break;
 	}
 	case MENU_INFO: {
@@ -401,22 +435,26 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		docstring_list names;
 		FuncRequest const func = lyxaction.lookupFunc(name_);
 		if (func.action() == LFUN_UNKNOWN_ACTION) {
-			error("Unknown action %1$s");
+			gui = _("Unknown action %1$s");
+			error(from_ascii("Unknown action %1$s"), lang);
 			break;
 		}
 		// iterate through the menubackend to find it
 		if (!theApp()) {
-			error("Can't determine menu entry for action %1$s in batch mode");
+			gui = _("Can't determine menu entry for action %1$s in batch mode");
+			error(from_ascii("Can't determine menu entry for action %1$s in batch mode"), lang);
 			break;
 		}
 		if (!theApp()->searchMenu(func, names)) {
-			error("No menu entry for action %1$s");
+			gui = _("No menu entry for action %1$s");
+			error(from_ascii("No menu entry for action %1$s"), lang);
 			break;
 		}
 		// if found, return its path.
 		clear();
 		Paragraph & par = paragraphs().front();
-		Font const f(inherit_font, buffer().params().language);
+		Font const f(inherit_font, guilang);
+		force_ltr_ = !guilang->rightToLeft();
 		//Font fu = f;
 		//fu.fontInfo().setUnderbar(FONT_ON);
 		for (docstring const & name : names) {
@@ -479,7 +517,7 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		igp.width = Length(1, Length::EM);
 		inset->setParams(igp);
 		clear();
-		Font const f(inherit_font, buffer().params().language);
+		Font const f(inherit_font, lang);
 		paragraphs().front().insertInset(0, inset, f,
 						 Change(Change::UNCHANGED));
 		break;
@@ -487,15 +525,15 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 	case BUFFER_INFO: {
 		// this could all change, so we will recalculate each time
 		if (name_ == "name") {
-			setText(from_utf8(buffer().fileName().onlyFileName()));
+			setText(from_utf8(buffer().fileName().onlyFileName()), lang);
 			break;
 		}
 		if (name_ == "path") {
-			setText(from_utf8(os::latex_path(buffer().filePath())));
+			setText(from_utf8(os::latex_path(buffer().filePath())), lang);
 			break;
 		}
 		if (name_ == "class") {
-			setText(from_utf8(bp.documentClass().name()));
+			setText(from_utf8(bp.documentClass().name()), lang);
 			break;
 		}
 
@@ -506,7 +544,8 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		// this information could change, in principle, so we will 
 		// recalculate each time through
 		if (!buffer().lyxvc().inUse()) {
-			setText(_("No version control"));
+			gui = _("No version control");
+			info(from_ascii("No version control"), lang);
 			break;
 		}
 		LyXVC::RevisionInfo itype = LyXVC::Unknown;
@@ -521,10 +560,11 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		else if (name_ == "vcs-date")
 			itype = LyXVC::Date;
 		string binfo = buffer().lyxvc().revisionInfo(itype);
-		if (binfo.empty())
-			setText(from_ascii(name_) + " unknown");
-		else
-			setText(from_utf8(binfo));
+		if (binfo.empty()) {
+			gui = _("%1$s[[vcs data]] unknown");
+			error(from_ascii("%1$s[[vcs data]] unknown"), lang);
+		} else
+			setText(from_utf8(binfo), lang);
 		break;
 	}
 	case LYX_INFO:
@@ -532,10 +572,12 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		if (initialized_)
 			break;
 		if (name_ == "version")
-			setText(from_ascii(lyx_version));
+			setText(from_ascii(lyx_version), lang);
 		initialized_ = true;
 		break;
 	}
+	// Just to do something with that string
+	LYXERR(Debug::INFO, "info inset text: " << gui);
 	InsetCollapsible::updateBuffer(it, utype);
 }
 

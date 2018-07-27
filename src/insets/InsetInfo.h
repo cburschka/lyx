@@ -144,9 +144,11 @@ private:
 	///
 	virtual Inset * clone() const { return new InsetInfo(*this); }
 	///
-	void error(std::string const & err);
+	void error(docstring const & err, Language const *);
 	///
-	void setText(docstring const & str);
+	void info(docstring const & err, Language const *);
+	///
+	void setText(docstring const & str, Language const *);
 	// make sure that the other version of setText is still available.
 	using InsetCollapsible::setText;
 	///

@@ -375,6 +375,26 @@ Match match(string const & code, Language const & lang)
 } // namespace
 
 
+
+Language const * Languages::getFromCode(string const & code) const
+{
+	LanguageList::const_iterator const lbeg = languagelist.begin();
+	LanguageList::const_iterator const lend = languagelist.end();
+	// Try for exact match first
+	for (LanguageList::const_iterator lit = lbeg; lit != lend; ++lit) {
+		if (match(code, lit->second) == ExactMatch)
+			return &lit->second;
+	}
+	// If not found, look for lang prefix (without country) instead
+	for (LanguageList::const_iterator lit = lbeg; lit != lend; ++lit) {
+		if (match(code, lit->second) == ApproximateMatch)
+			return &lit->second;
+	}
+	LYXERR0("Unknown language `" + code + "'");
+	return 0;
+}
+
+
 void Languages::readLayoutTranslations(support::FileName const & filename)
 {
 	Lexer lex;
@@ -395,13 +415,7 @@ void Languages::readLayoutTranslations(support::FileName const & filename)
 		if (!lex.next(true))
 			break;
 		string const code = lex.getString();
-		bool found = false;
-		for (LanguageList::iterator lit = lbeg; lit != lend; ++lit) {
-			if (match(code, lit->second) != NoMatch) {
-				found = true;
-				break;
-			}
-		}
+		bool found = getFromCode(code);
 		if (!found) {
 			lex.printError("Unknown language `" + code + "'");
 			break;

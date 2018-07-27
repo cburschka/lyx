@@ -2362,6 +2362,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		selectWordWhenUnderCursor(cur, WHOLE_WORD_STRICT);
 		Font font(ignore_font, lang);
 		toggleAndShow(cur, this, font, toggle);
+		// We need a buffer update if we change the language
+		// of an info inset
+		if (cur.insetInSelection(INFO_CODE))
+			cur.forceBufferUpdate();
 		break;
 	}
 
@@ -2379,6 +2383,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			freefont = font;
 			toggleall = toggle;
 			toggleAndShow(cur, this, freefont, toggleall);
+			// We need a buffer update if we change the language
+			// of an info inset
+			if (cur.insetInSelection(INFO_CODE))
+				cur.forceBufferUpdate();
 			cur.message(_("Character set"));
 		} else {
 			lyxerr << "Argument not ok";

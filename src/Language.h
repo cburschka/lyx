@@ -162,6 +162,8 @@ public:
 	///
 	void read(support::FileName const & filename);
 	///
+	Language const * getFromCode(std::string const & code) const;
+	///
 	void readLayoutTranslations(support::FileName const & filename);
 	///
 	Language const * getLanguage(std::string const & language) const;
