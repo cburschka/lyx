@@ -3207,17 +3207,20 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			if (!cur.buffer()->areChangesPresent())
 				break;
 
-			for (DocIterator it = cur.selectionBegin(); it < cur.selectionEnd(); it.forwardPar()) {
+			for (DocIterator it = cur.selectionBegin(); ; it.forwardPar()) {
 				pos_type const beg = it.pos();
 				pos_type end;
-				if (it.paragraph().id() == cur.selectionEnd().paragraph().id())
+				bool const in_last_par = (it.pit() == cur.selectionEnd().pit());
+				if (in_last_par)
 					end = cur.selectionEnd().pos();
 				else
-					end = it.paragraph().size();
+					end = it.lastpos();
 				if (beg != end && it.paragraph().isChanged(beg, end)) {
 					enable = true;
 					break;
 				}
+				if (in_last_par)
+					break;
 			}
 		}
 		break;
