@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-07-26 18:00+0200\n"
-"PO-Revision-Date: 2018-07-26 17:10+0000\n"
+"POT-Creation-Date: 2018-07-27 13:49+0200\n"
+"PO-Revision-Date: 2018-07-27 12:09+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3463,6 +3463,11 @@ msgstr "Vypnuté"
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:67
 msgid "No math"
 msgstr "Bez matematiky"
+
+#: src/insets/InsetInfo.cpp:449
+#, c-format
+msgid "No menu entry for action %1$s"
+msgstr "Menu nemá záznam pre akciu %1$s"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:72 src/Font.cpp:77
 msgid "On"
@@ -28957,6 +28962,11 @@ msgstr "Nie je čo robiť"
 msgid "Unknown action"
 msgstr "Neznáma akcia"
 
+#: src/insets/InsetInfo.cpp:346 src/insets/InsetInfo.cpp:438
+#, c-format
+msgid "Unknown action %1$s"
+msgstr "Neznáma akcia %1$s"
+
 #: src/frontends/qt4/GuiApplication.cpp:1193
 msgid "Command not handled"
 msgstr "Príkaz bez spracovávania"
@@ -32190,6 +32200,10 @@ msgstr "Horizontálna Mat. Medzera"
 msgid "Unknown Argument"
 msgstr "Neznámy argument"
 
+#: src/insets/InsetInfo.cpp:337
+msgid "Unknown Info!"
+msgstr "Neznáme Info!"
+
 #: src/insets/InsetArgument.cpp:144
 msgid "Argument not known in this Layout. Will be suppressed in the output."
 msgstr "Argument nie je známy v tejto schéme. Vo výstupe bude potlačený."
@@ -33065,6 +33079,11 @@ msgstr "%1$svonkajšie%2$s a %3$svnútorné%4$s"
 msgid "%1$s[[quot. mark description]] (language default)"
 msgstr "%1$s (jazykový štandard)"
 
+#: src/insets/InsetInfo.cpp:564
+#, c-format
+msgid "%1$s[[vcs data]] unknown"
+msgstr "%1$s neznámy"
+
 #: src/insets/InsetQuotes.cpp:590
 #, c-format
 msgid "%1$stext"
@@ -33488,6 +33507,11 @@ msgstr "Bez čísla"
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Nedá sa zmeniť počet riadkov v '%1$s'"
+
+#: src/insets/InsetInfo.cpp:444
+#, c-format
+msgid "Can't determine menu entry for action %1$s in batch mode"
+msgstr "Neviem ako dostať záznam v menu pre akciu %1$s v dávkovom móde"
 
 #: src/mathed/InsetMathHull.cpp:2162
 #, c-format
@@ -37140,12 +37164,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Unknown Info: "
 #~ msgstr "Neznáme slovo:"
-
-#~ msgid "Unknown action %1$s"
-#~ msgstr "Neznáma akcia"
-
-#~ msgid "No menu entry for action %1$s"
-#~ msgstr "Žiadne informácie pre prezeranie %1$s"
 
 #~ msgid "<- C&lear"
 #~ msgstr "&Zmazať"
