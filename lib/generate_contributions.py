@@ -935,6 +935,14 @@ contributors = [
                  "6 October 2013",
                  u"Dialog usability fix"),
 
+     contributor(u"Winfred Huang",
+                 "tone90999 () hotmail ! com",
+                 "GPL",
+                 "Simplified Chinese Localization",
+                 "m=153274007430136",
+                 "28 July 2018",
+                 u"License for Chinese translation"),
+
      contributor(u"John Hudson",
                  "j.r.hudson () virginmedia ! com",
                  "GPL",
