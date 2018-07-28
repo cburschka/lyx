@@ -6572,12 +6572,12 @@ void InsetTabular::getSelection(Cursor & cur,
 	cs = tabular.cellColumn(beg.idx());
 	ce = tabular.cellColumn(end.idx());
 	if (cs > ce)
-		swap(cs, ce);
+		std::swap(cs, ce);
 
 	rs = tabular.cellRow(beg.idx());
 	re = tabular.cellRow(end.idx());
 	if (rs > re)
-		swap(rs, re);
+		std::swap(rs, re);
 }
 
 
