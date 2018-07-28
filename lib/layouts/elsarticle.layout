@@ -53,31 +53,21 @@ NoStyle				Chapter
 NoCounter			chapter
 NoStyle				Chapter*
 
-
-Style BeginFrontmatter
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		begin{frontmatter}
-	Category		FrontMatter
-	KeepEmpty		1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
-	LabelString		"Begin frontmatter"
+InsetLayout "Flex:Frontmatter"
+	LyXType			custom
+	LabelString		"Frontmatter"
+	LatexType		Environment
+	LatexName		frontmatter
+	Display			true
+	Decoration		Classic
+	KeepEmpty		true
+	MultiPar		true
+	ResetsFont		true
 	LabelFont
 	  Series		Bold
 	  Color			Green
 	EndFont
 End
-
-
-Style EndFrontmatter
-	CopyStyle		BeginFrontmatter
-	LatexName		end{frontmatter}
-	LabelString		"End frontmatter"
-End
-
 
 Style Title
 	Margin			Static
@@ -98,7 +88,6 @@ Style Title
 	EndFont
 	HTMLTitle		true
 End
-
 
 InsetLayout "Flex:Titlenotemark"
 	LyxType			custom

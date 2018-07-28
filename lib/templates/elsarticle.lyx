@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 556
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -20,7 +20,7 @@ theorems-std
 \language english
 \language_package default
 \inputencoding auto
-\fontencoding global
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -38,6 +38,8 @@ theorems-std
 \output_sync 0
 \bibtex_command bibtex
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -140,18 +142,9 @@ http://www.ctan.org/get/macros/latex/contrib/elsarticle/elsdoc.pdf
 
 \end_layout
 
-\begin_layout BeginFrontmatter
-\begin_inset Note Note
+\begin_layout Standard
+\begin_inset Flex Frontmatter
 status open
-
-\begin_layout Plain Layout
-Keep this empty!
-\end_layout
-
-\end_inset
-
-
-\end_layout
 
 \begin_layout Title
 This is a specimen title
@@ -687,14 +680,6 @@ MSC
 \end_inset
 
 
-\end_layout
-
-\begin_layout EndFrontmatter
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Keep this empty!
 \end_layout
 
 \end_inset
