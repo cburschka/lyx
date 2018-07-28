@@ -25,6 +25,13 @@ console.setFormatter(formatter)
 logger = logging.getLogger('LyX')
 logger.addHandler(console)
 
+def quoteIfSpace(name):
+    " utility function: quote name if it contains spaces "
+    if ' ' in name:
+        return '"' + name + '"'
+    else:
+        return name
+
 def writeToFile(filename, lines, append = False):
     " utility function: write or append lines to filename "
     if append:
@@ -262,10 +269,11 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
     if "PATHEXT" in os.environ:
         extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
     global java, perl
+    unquoted_space = re.compile(r'''((?:[^ "']|"[^"]*"|'[^']*')+)''')
     for idx in range(len(progs)):
         # ac_prog may have options, ac_word is the command name
-        ac_prog = progs[idx]
-        ac_word = ac_prog.split(' ')[0]
+        ac_prog = progs[idx].replace('"', '\\"')
+        ac_word = unquoted_space.split(progs[idx])[1::2][0].strip('"')
         if (ac_word.endswith('.class') or ac_word.endswith('.jar')) and java == '':
             continue
         if ac_word.endswith('.pl') and perl == '':
@@ -789,7 +797,7 @@ def checkConverterEntries():
     in_binary_dir = os.path.join(lyx_binary_dir, 'tex2lyx')
     in_binary_dir = os.path.abspath(in_binary_dir).replace('\\', '/')
 
-    path, t2l = checkProg('a LaTeX/Noweb -> LyX converter', [in_binary_subdir, in_binary_subdir + version_suffix, in_binary_dir, in_binary_dir + version_suffix, 'tex2lyx' + version_suffix, 'tex2lyx'],
+    path, t2l = checkProg('a LaTeX/Noweb -> LyX converter', [quoteIfSpace(in_binary_subdir), quoteIfSpace(in_binary_subdir + version_suffix), quoteIfSpace(in_binary_dir), quoteIfSpace(in_binary_dir + version_suffix), 'tex2lyx' + version_suffix, 'tex2lyx'],
         rc_entry = [r'''\converter latex      lyx        "%% -f $$i $$o"	""
 \converter latexclipboard lyx        "%% -fixedenc utf8 -f $$i $$o"	""
 \converter literate   lyx        "%% -n -m noweb -f $$i $$o"	""
