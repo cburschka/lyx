@@ -126,8 +126,63 @@ docstring InsetInfo::layoutName() const
 
 docstring InsetInfo::toolTip(BufferView const &, int, int) const
 {
-	return bformat(_("Information regarding %1$s '%2$s'"),
-			_(infoType()), from_utf8(name_));
+	docstring result;
+	switch (nameTranslator().find(infoType())) {
+	case UNKNOWN_INFO:
+		result = _("Invalid information inset");
+		break;
+	case SHORTCUT_INFO:
+		result = bformat(_("The keybard shortcut for the function '%1$s'"),
+				from_utf8(name_));
+		break;
+	case SHORTCUTS_INFO:
+		result = bformat(_("The keybard shortcuts for the function '%1$s'"),
+				from_utf8(name_));
+		break;
+	case MENU_INFO: 
+		result = bformat(_("The menu location for the function '%1$s'"),
+				from_utf8(name_));
+		break;
+	case ICON_INFO:
+		result = bformat(_("The toolbar icon for the function '%1$s'"),
+				from_utf8(name_));
+		break;
+	case LYXRC_INFO:
+		result = bformat(_("The preference setting for the preference key '%1$s'"),
+				from_utf8(name_));
+		break;
+	case PACKAGE_INFO:
+		result = bformat(_("Availability of the LaTeX package '%1$s'"),
+				from_utf8(name_));
+		break;
+	case TEXTCLASS_INFO:
+		result = bformat(_("Availability of the LaTeX class '%1$s'"),
+				from_utf8(name_));
+		break;
+	case BUFFER_INFO:
+		if (name_ == "name")
+			result = _("The name of this file");
+		else if (name_ == "path")
+			result = _("The path were this file is saved");
+		else if (name_ == "class")
+			result = _("The class this document uses");
+		else if (name_ == "vcs-revision")
+			result = _("Version control revision");
+		else if (name_ == "vcs-tree-revision")
+			result = _("Version control tree revision");
+		else if (name_ == "vcs-author")
+			 result = _("Version control author");
+		 else if (name_ == "vcs-date")
+			result = _("Version control date");
+		else if (name_ == "vcs-time")
+			result = _("Version control time");
+		break;
+	case LYX_INFO:
+		result = _("The current LyX version");
+		break;
+	}
+
+	return result;
 }
 
 
