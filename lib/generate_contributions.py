@@ -743,6 +743,14 @@ contributors = [
                  "16 June 2005",
                  u"Italian translations, many bug fixes and features"),
 
+     contributor(u"Gilbert J. M. Forkel",
+                 "gilbert () erlangen ! ccc ! de>",
+                 "GPL",
+                 "GPL",
+                 "m=153286983821872",
+                 "29 July 2018",
+                 u"Bug fixes"),
+
      contributor(u"Eitan Frachtenberg",
                  "sky8an () gmail ! com",
                  "GPL",
