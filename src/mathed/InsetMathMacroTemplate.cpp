@@ -1217,7 +1217,7 @@ int InsetMathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) 
 			//   \global\def\long\foo#1#2{#1,#2}
 			// We use the \long prefix as this is the equivalent to \newcommand.
 			// We cannot use \newcommand directly because \global does not work with it.
-			os << "\\global\\long\\def\\" << name();
+			os << "\n\\global\\long\\def\\" << name();
 			docstring param = from_ascii("#0");
 			for (int i = 1; i <= numargs_; ++i) {
 				param[1] = '0' + i;
@@ -1249,7 +1249,7 @@ int InsetMathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) 
 
 	if (os.latex()) {
 		// writing .tex. done.
-		os << "\n";
+		os << "%\n";
 		++num_lines;
 	} else {
 		// writing .lyx, write special .tex export only if necessary
