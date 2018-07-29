@@ -537,6 +537,72 @@ def revert_bibencoding(document):
         i = j + 1
 
 
+
+def convert_vcsinfo(document):
+    " Separate vcs Info inset from buffer Info inset. "
+
+    types = {
+        "vcs-revision" : "revision",
+        "vcs-tree-revision" : "tree-revision",
+        "vcs-author" : "author",
+        "vcs-time" : "time",
+        "vcs-date" : "date"
+    }
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Info", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of Info inset.")
+            i = i + 1
+            continue
+        tp = find_token(document.body, 'type', i, j)
+        tpv = get_quoted_value(document.body, "type", tp)
+        if tpv != "buffer":
+            i = i + 1
+            continue
+        arg = find_token(document.body, 'arg', i, j)
+        argv = get_quoted_value(document.body, "arg", arg)
+        if argv not in list(types.keys()):
+            i = i + 1
+            continue
+        document.body[tp] = "type \"vcs\""
+        document.body[arg] = "arg \"" + types[argv] + "\""
+        i = i + 1
+
+
+def revert_vcsinfo(document):
+    " Merge vcs Info inset to buffer Info inset. "
+
+    args = ["revision", "tree-revision", "author", "time", "date" ]
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Info", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of Info inset.")
+            i = i + 1
+            continue
+        tp = find_token(document.body, 'type', i, j)
+        tpv = get_quoted_value(document.body, "type", tp)
+        if tpv != "vcs":
+            i = i + 1
+            continue
+        arg = find_token(document.body, 'arg', i, j)
+        argv = get_quoted_value(document.body, "arg", arg)
+        if argv not in args:
+            document.warning("Malformed Info inset. Invalid vcs arg.")
+            i = i + 1
+            continue
+        document.body[tp] = "type \"buffer\""
+        document.body[arg] = "arg \"vcs-" + argv + "\""
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -554,10 +620,12 @@ convert = [
            [553, []],
            [554, []],
            [555, []],
-           [556, []]
+           [556, []],
+           [557, [convert_vcsinfo]]
           ]
 
 revert =  [
+           [556, [revert_vcsinfo]],
            [555, [revert_bibencoding]],
            [554, [revert_vcolumns]],
            [553, [revert_stretchcolumn]],

@@ -40,16 +40,18 @@ namespace frontend {
 /////////////////////////////////////////////////////////////////
 
 char const * info_types[] =
-{ "unknown", "shortcut", "shortcuts", "lyxrc", "package", "textclass", "menu", "icon", "buffer", "lyxinfo", "" };
+{ "unknown", "shortcut", "shortcuts", "lyxrc", "package", "textclass", "menu", "icon", "buffer", "vcs", "lyxinfo", "" };
 
 char const * info_types_gui[] =
 { N_("Unknown"), N_("Last Assigned Keyboard Shortcut"), N_("All Keyboard Shortcuts"),
   N_("LyX Preferences Entry"),  N_("LaTeX Package Availability"), N_("LaTeX Class Availability"),
-  N_("LyX Menu Location"), N_("LyX Toolbar Icon"), N_("Document Information"), N_("LyX Application Information"), ""};
+  N_("LyX Menu Location"), N_("LyX Toolbar Icon"), N_("Document Information"),
+  N_("Version Control Information"), N_("LyX Application Information"), ""};
 
 char const * info_name_gui[] =
 { N_("Not Applicable"), N_("LyX Function"), N_("LyX Function"), N_("Preferences Key"),  N_("Package Name"),
-  N_("Class Name"), N_("LyX Function"), N_("LyX Function"), N_("Information Type"), N_("Information Type"), ""};
+  N_("Class Name"), N_("LyX Function"), N_("LyX Function"), N_("Information"),
+  N_("Information"), N_("Information"), ""};
 
 char const * info_tooltip[] =
 { N_("Please select a valid type above"),
@@ -68,6 +70,7 @@ char const * info_tooltip[] =
   N_("Enter a function name such as 'math-insert \\alpha'. Please refer to Help > LyX Functions for a comprehensive list of functions. "
      "The output is the toolbar icon for this function (using the active icon theme)."),
   N_("Enter either 'name' (outputs the filename of the current document), 'path' (outputs the file path), or 'class' (outputs the text class)."),
+  N_("Enter either 'revision', 'tree-revision', 'author', 'time' or 'date'. If available, the respective version control information is output."),
   N_("Currently supported information type: 'version' (outputs the current LyX version)."),
   ""};
 

@@ -75,6 +75,7 @@ NameTranslator const initTranslator()
 	translator.addPair(InsetInfo::ICON_INFO, "icon");
 	translator.addPair(InsetInfo::BUFFER_INFO, "buffer");
 	translator.addPair(InsetInfo::LYX_INFO, "lyxinfo");
+	translator.addPair(InsetInfo::VCS_INFO, "vcs");
 
 	return translator;
 }
@@ -166,15 +167,17 @@ docstring InsetInfo::toolTip(BufferView const &, int, int) const
 			result = _("The path were this file is saved");
 		else if (name_ == "class")
 			result = _("The class this document uses");
-		else if (name_ == "vcs-revision")
+		break;
+	case VCS_INFO:
+		if (name_ == "revision")
 			result = _("Version control revision");
-		else if (name_ == "vcs-tree-revision")
+		else if (name_ == "tree-revision")
 			result = _("Version control tree revision");
-		else if (name_ == "vcs-author")
+		else if (name_ == "author")
 			 result = _("Version control author");
-		 else if (name_ == "vcs-date")
+		else if (name_ == "date")
 			result = _("Version control date");
-		else if (name_ == "vcs-time")
+		else if (name_ == "time")
 			result = _("Version control time");
 		break;
 	case LYX_INFO:
@@ -254,10 +257,11 @@ bool InsetInfo::validateModifyArgument(docstring const & arg) const
 		return true;
 
 	case BUFFER_INFO:
-		if (name == "name" || name == "path" || name == "class")
-			return true;
-		if (name == "vcs-revision" || name == "vcs-tree-revision" ||
-		       name == "vcs-author" || name == "vcs-date" || name == "vcs-time")
+		return (name == "name" || name == "path" || name == "class");
+
+	case VCS_INFO:
+		if (name == "revision" || name == "tree-revision"
+		    || name == "author" || name == "date" || name == "time")
 			return buffer().lyxvc().inUse();
 		return false;
 
@@ -579,23 +583,15 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 	}
 	case BUFFER_INFO: {
 		// this could all change, so we will recalculate each time
-		if (name_ == "name") {
+		if (name_ == "name")
 			setText(from_utf8(buffer().fileName().onlyFileName()), lang);
-			break;
-		}
-		if (name_ == "path") {
+		else if (name_ == "path")
 			setText(from_utf8(os::latex_path(buffer().filePath())), lang);
-			break;
-		}
-		if (name_ == "class") {
+		else if (name_ == "class")
 			setText(from_utf8(bp.documentClass().name()), lang);
-			break;
-		}
-
-		////////////////////////////////////////////////////////////////
-		// everything that follows is for version control.
-		// nothing that isn't version control should go below this line.
-		
+		break;
+	}
+	case VCS_INFO: {
 		// this information could change, in principle, so we will 
 		// recalculate each time through
 		if (!buffer().lyxvc().inUse()) {
@@ -604,15 +600,15 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 			break;
 		}
 		LyXVC::RevisionInfo itype = LyXVC::Unknown;
-		if (name_ == "vcs-revision")
+		if (name_ == "revision")
 			itype = LyXVC::File;
-		else if (name_ == "vcs-tree-revision")
+		else if (name_ == "tree-revision")
 			itype = LyXVC::Tree;
-		else if (name_ == "vcs-author")
+		else if (name_ == "author")
 			itype = LyXVC::Author;
-		else if (name_ == "vcs-time")
+		else if (name_ == "time")
 			itype = LyXVC::Time;
-		else if (name_ == "vcs-date")
+		else if (name_ == "date")
 			itype = LyXVC::Date;
 		string binfo = buffer().lyxvc().revisionInfo(itype);
 		if (binfo.empty()) {
