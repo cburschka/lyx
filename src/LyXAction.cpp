@@ -1940,8 +1940,8 @@ void LyXAction::init()
                       textclass: name of textclass (e.g. article) \n
                       menu: name of lfun used in menu  \n
                       icon: icon of lfun used in toolbar or direct icon name\n
-                      buffer: "name"|"path"|"class"|"vcs-tree-revision"|
-                              "vcs-revision"|"vcs-author"|"vcs-date"|"vcs-time"
+                      buffer: "name"|"path"|"class"
+                      vcs: "tree-revision"|"revision"|"author"|"date"|"time"
  * \li Sample: command-sequence info-insert buffer path; info-insert buffer name
  * \li Origin: bpeng, 7 Oct 2007
  * \endvar
