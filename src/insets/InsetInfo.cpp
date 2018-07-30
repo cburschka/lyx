@@ -164,7 +164,7 @@ docstring InsetInfo::toolTip(BufferView const &, int, int) const
 		if (name_ == "name")
 			result = _("The name of this file");
 		else if (name_ == "path")
-			result = _("The path were this file is saved");
+			result = _("The path where this file is saved");
 		else if (name_ == "class")
 			result = _("The class this document uses");
 		break;
