@@ -49,7 +49,68 @@ from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble)
 ###
 ###############################################################################
 
-  
+def removeFrontMatterStyles(document):
+    " Remove styles Begin/EndFromatter"
+
+    layouts = ['BeginFrontmatter', 'EndFrontmatter']
+    for layout in layouts:
+        i = 0
+        while True:
+            i = find_token(document.body, '\\begin_layout ' + layout, i)
+            if i == -1:
+                break
+            j = find_end_of_layout(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of layout at line %d" % i)
+                i += 1
+                continue
+            if document.body[j] == '':
+                j = j + 1
+            del document.body[i:j+1]
+
+def addFrontMatterStyles(document):
+    " Use styles Begin/EndFrontmatter for elsarticle"
+
+    def insertFrontmatter(prefix, line):
+        document.body[line:line] = ['\\begin_layout ' + prefix + 'Frontmatter',
+                                    '\\begin_inset Note Note',
+                                    'status open', '',
+                                    '\\begin_layout Plain Layout',
+                                    'Keep this empty!',
+                                    '\\end_layout', '',
+                                    '\\end_inset', '', '',
+                                    '\\end_layout']
+
+    if document.textclass == "elsarticle":
+        layouts = ['Title', 'Title footnote', 'Author', 'Author footnote',
+                   'Corresponding author', 'Address', 'Email', 'Abstract', 'Keywords']
+        first = -1
+        last = -1
+        for layout in layouts:
+            i = 0
+            while True:
+                i = find_token(document.body, '\\begin_layout ' + layout, i)
+                if i == -1:
+                    break
+                k = find_end_of_layout(document.body, i)
+                if k == -1:
+                    document.warning("Malformed LyX document: Can't find end of layout at line %d" % i)
+                    i += 1;
+                    continue
+                if first == -1 or i < first:
+                    first = i
+                if last == -1 or last <= k:
+                    last = k+1
+                i = k
+        if first == -1:
+            return
+        if first > 0 and document.body[first-1] == '':
+            first -= 1
+        if document.body[last] == '':
+            last = last + 1
+        insertFrontmatter('End', last)
+        insertFrontmatter('Begin', first)
+
 def convert_lst_literalparam(document):
     " Add param literal to include inset "
 
@@ -621,10 +682,12 @@ convert = [
            [554, []],
            [555, []],
            [556, []],
-           [557, [convert_vcsinfo]]
+           [557, [convert_vcsinfo]],
+           [558, [removeFrontMatterStyles]]
           ]
 
 revert =  [
+	   [557, [addFrontMatterStyles]],
            [556, [revert_vcsinfo]],
            [555, [revert_bibencoding]],
            [554, [revert_vcolumns]],

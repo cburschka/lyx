@@ -18,6 +18,8 @@ ClassOptions
 	FontSize		10|11|12
 end
 
+TitleLatexType Environment
+TitleLatexName frontmatter
 
 # This is just to show how to declare the default font.
 # The defaults are exactly those shown here.
@@ -53,28 +55,12 @@ NoStyle				Chapter
 NoCounter			chapter
 NoStyle				Chapter*
 
-InsetLayout "Flex:Frontmatter"
-	LyXType			custom
-	LabelString		"Frontmatter"
-	LatexType		Environment
-	LatexName		frontmatter
-	Display			true
-	Decoration		Classic
-	KeepEmpty		true
-	MultiPar		true
-	ResetsFont		true
-	LabelFont
-	  Series		Bold
-	  Color			Green
-	EndFont
-End
-
 Style Title
 	Margin			Static
 	LatexType		Command
 	LatexName		title
 	Category		FrontMatter
-	InTitle			0
+	InTitle			1
 	ResetArgs		1
 	ParSkip			0.4
 	ItemSep			0
@@ -117,9 +103,9 @@ Style "Title footnote"
 	LatexType		Command
 	LatexName		tnotetext
 	Category		FrontMatter
-	InTitle			0
+	InTitle			1
 	Argument 1
-	  LabelString	"Footnote Label"
+	  LabelString		"Footnote Label"
 	  Tooltip		"Label you refer to in the title"
 	EndArgument
 	ParSkip			0.4
@@ -139,7 +125,7 @@ Style Author
 	Margin			Static
 	LatexType		Command
 	Category		FrontMatter
-	InTitle			0
+	InTitle			1
 	Argument 1
 	  LabelString	"Author Label"
 	  Tooltip		"Label you will reference in the address"
@@ -184,6 +170,7 @@ End
 Style "Author footnote"
 	CopyStyle		"Title footnote"
 	LatexName		fntext
+	InTitle			1
 	LabelString		"Author footnote:"
 	Argument 1
 	  LabelString	"Author Footnote Label"
@@ -205,6 +192,7 @@ End
 Style "Corresponding author"
 	CopyStyle		"Author footnote"
 	LatexName		cortext
+	InTitle			1
 	LabelString		"Corresponding author text:"
 End
 
@@ -214,7 +202,7 @@ Style Address
 	LatexType		Command
 	Category		FrontMatter
 	LatexName		address
-	InTitle			0
+	InTitle			1
 	Argument 1
 	  LabelString	"Address Label"
 	  Tooltip		"Label of the author you refer to"
@@ -232,6 +220,7 @@ End
 Style Email
 	CopyStyle		Address
 	LatexName		ead
+	InTitle			1
 	AlignPossible	Block
 	Argument 1
 	  LabelString	"Internet"
@@ -248,7 +237,7 @@ Style Abstract
 	LatexType		Environment
 	LatexName		abstract
 	Category		FrontMatter
-	InTitle			0
+	InTitle			1
 	NextNoIndent	1
 	LeftMargin		MMM
 	RightMargin		MMM
@@ -277,7 +266,7 @@ Style Keywords
 	LatexType		Environment
 	LatexName		keyword
 	Category		FrontMatter
-	InTitle			0
+	InTitle			1
 	NextNoIndent	1
 	BottomSep		0.5
 	ParSkip			0.4
