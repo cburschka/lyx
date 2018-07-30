@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-07-27 13:49+0200\n"
-"PO-Revision-Date: 2018-07-27 12:09+0000\n"
+"POT-Creation-Date: 2018-07-29 20:21+0200\n"
+"PO-Revision-Date: 2018-07-29 21:09+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1352,9 +1352,9 @@ msgstr "S&tredobod:"
 msgid "A&ngle:"
 msgstr "&Uhol:"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:90
+#: src/frontends/qt4/ui/PrefsUi.ui:48
 msgid "A&pply to current session only"
-msgstr "Po&užiť len súčasné sedenie"
+msgstr "Po&užiť len pre súčasné sedenie"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:376 lib/layouts/shapepar.module:122
 msgid "Scale"
@@ -2210,10 +2210,6 @@ msgstr "Typ informácie:"
 #: src/frontends/qt4/ui/InfoUi.ui:34
 msgid "Information Name:"
 msgstr "Meno informácie:"
-
-#: src/frontends/qt4/GuiInfo.cpp:52
-msgid "Information Type"
-msgstr "Typ informácie"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:16
 msgid "Inset Parameter Configuration"
@@ -4138,6 +4134,11 @@ msgstr ""
 "Maximálna dĺžka riadkov exportovaných text/LaTeX/SGML súborov.\n"
 "Keď nastavené 0, odstavce sú na výstupe v jednom riadku;\n"
 "keď je dĺžka > 0, odstavce sú oddelené prázdnym riadkom."
+
+#: src/insets/InsetInfo.cpp:144
+#, c-format
+msgid "The menu location for the function '%1$s'"
+msgstr "Umiestnenie v menu pre funkciu '%1$s'"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:200
 msgid "&Date format:"
@@ -7741,11 +7742,11 @@ msgstr "Poštové Smerovacie Číslo"
 
 #: lib/layouts/acmart.layout:286
 msgid "TitleNote"
-msgstr "TitleNote"
+msgstr "TitulnáPoznámka"
 
 #: lib/layouts/acmart.layout:296
 msgid "Title Note: "
-msgstr "Poznámka Titul: "
+msgstr "Titulná Poznámka: "
 
 #: lib/layouts/acmart.layout:302
 msgid "SubtitleNote"
@@ -9591,7 +9592,7 @@ msgstr "Krátky titul ktorý sa zjaví na boku/hlavičke"
 
 #: lib/layouts/beamer.layout:959
 msgid "Title (Plain Frame)"
-msgstr "Titul (prostý rám)"
+msgstr "Titul (Prostý Rám)"
 
 #: lib/layouts/beamer.layout:981
 msgid "Short Subtitle|S"
@@ -10952,33 +10953,17 @@ msgstr "Prípad \\arabic{case}"
 msgid "Elsevier"
 msgstr "Elsevier"
 
-#: lib/layouts/elsarticle.layout:57
-msgid "BeginFrontmatter"
-msgstr "ZačiatokVstupnejČasti"
-
-#: lib/layouts/elsarticle.layout:67
-msgid "Begin frontmatter"
-msgstr "Začiatok vstupnej časti"
-
-#: lib/layouts/elsarticle.layout:75
-msgid "EndFrontmatter"
-msgstr "KoniecVstupnejČasti"
-
-#: lib/layouts/elsarticle.layout:78
-msgid "End frontmatter"
-msgstr "Koniec vstupnej časti"
-
 #: lib/layouts/elsarticle.layout:103
 msgid "Titlenotemark"
 msgstr "Titulznačkapoznámky"
 
-#: lib/layouts/elsarticle.layout:108
+#: lib/layouts/elsarticle.layout:97
 msgid "Titlenote mark"
-msgstr "Značka titul poznámky"
+msgstr "Značka titulnej poznámky"
 
-#: lib/layouts/elsarticle.layout:126
+#: lib/layouts/elsarticle.layout:115
 msgid "Title footnote"
-msgstr "Titul poznámky pod čiarou"
+msgstr "Titulná poznámka pod čiarou"
 
 #: lib/layouts/elsarticle.layout:133
 msgid "Footnote Label"
@@ -10988,9 +10973,9 @@ msgstr "Poznámka pod čiarou: Návestie"
 msgid "Label you refer to in the title"
 msgstr "Návestie na ktoré sa v titule vzťahujete"
 
-#: lib/layouts/elsarticle.layout:141 lib/layouts/revtex4-1.layout:196
+#: lib/layouts/elsarticle.layout:130 lib/layouts/revtex4-1.layout:196
 msgid "Title footnote:"
-msgstr "Titul poznámky pod čiarou:"
+msgstr "Titulná poznámka pod čiarou:"
 
 #: lib/layouts/elsarticle.layout:155
 msgid "Author Label"
@@ -13485,6 +13470,11 @@ msgstr "TitulBásne"
 msgid "The poem title as it appears in the table of contents"
 msgstr "Titul básne ako sa zobrazí v zozname"
 
+#: src/insets/InsetInfo.cpp:152
+#, c-format
+msgid "The preference setting for the preference key '%1$s'"
+msgstr "Hodnota kľúča '%1$s' v preferenciách"
+
 #: lib/layouts/memoir.layout:230
 msgid "The poem title as it appears in the running headers"
 msgstr "Titul básne ako sa zobrazí v priebežných hlavičkách"
@@ -14327,6 +14317,10 @@ msgstr "PDFAkcia"
 #: lib/layouts/pdfform.module:126
 msgid "The name of the PDF action"
 msgstr "Názov tejto PDF akcie"
+
+#: src/insets/InsetInfo.cpp:165
+msgid "The name of this file"
+msgstr "Názov tohto súboru"
 
 #: lib/layouts/pdfform.module:134
 msgid "Text Field Style"
@@ -15257,6 +15251,11 @@ msgstr "AMS"
 msgid "The title as it appears in the running headers"
 msgstr "Titul ako sa zobrazí v priebežných hlavičkách"
 
+#: src/insets/InsetInfo.cpp:148
+#, c-format
+msgid "The toolbar icon for the function '%1$s'"
+msgstr "Ikona v paneli pre funkciu '%1$s'"
+
 #: lib/layouts/siamltex.layout:322
 msgid "AMS subject classifications:"
 msgstr "Klasifikácie oblasti AMS:"
@@ -15295,7 +15294,7 @@ msgstr "ÚvodnýNadpis"
 
 #: lib/layouts/sigplanconf.layout:115
 msgid "Title banner:"
-msgstr "Titul záhlavia:"
+msgstr "Titulné záhlavie:"
 
 #: lib/layouts/sigplanconf.layout:119
 msgid "PreprintFooter"
@@ -18909,6 +18908,10 @@ msgstr "Nastavenia Registrových Hesiel…|c"
 msgid "Info Settings...|n"
 msgstr "Nastavenia pre Info…|I"
 
+#: src/frontends/qt4/GuiInfo.cpp:53 src/frontends/qt4/GuiInfo.cpp:54
+msgid "Information"
+msgstr "Informácia"
+
 #: lib/ui/stdmenus.inc:149
 msgid "Listings Settings...|g"
 msgstr "Nastavenia Výpisu…|a"
@@ -20267,6 +20270,10 @@ msgstr "Aktualizovať Iné Formáty"
 #: lib/ui/stdtoolbars.inc:283 src/frontends/qt4/GuiLog.cpp:266
 msgid "Version Control"
 msgstr "Správa Verzií"
+
+#: src/frontends/qt4/GuiInfo.cpp:49
+msgid "Version Control Information"
+msgstr "Informácia Správy Verzií"
 
 #: lib/ui/stdtoolbars.inc:284
 msgid "Register"
@@ -25574,6 +25581,10 @@ msgstr "Chyba pri ukážke výstupného súboru."
 msgid "Invalid filename"
 msgstr "Neplatné meno súboru"
 
+#: src/insets/InsetInfo.cpp:133
+msgid "Invalid information inset"
+msgstr "Neplatná informačná vložka"
+
 #: src/Buffer.cpp:3152 src/insets/ExternalSupport.cpp:387
 #: src/insets/InsetGraphics.cpp:616 src/insets/InsetInclude.cpp:546
 msgid ""
@@ -25647,6 +25658,16 @@ msgstr "Automatické ukladanie zlyhalo!"
 #: src/Buffer.cpp:4101
 msgid "Autosaving current document..."
 msgstr "Automatické ukladanie súčasného dokumentu…"
+
+#: src/insets/InsetInfo.cpp:160
+#, c-format
+msgid "Availability of the LaTeX class '%1$s'"
+msgstr "Dostupnosť LaTeX triedy '%1$s'"
+
+#: src/insets/InsetInfo.cpp:156
+#, c-format
+msgid "Availability of the LaTeX package '%1$s'"
+msgstr "Dostupnosť LaTeX balíka '%1$s'"
 
 #: src/Buffer.cpp:4223
 msgid "Couldn't export file"
@@ -26759,6 +26780,10 @@ msgstr ""
 "Čas konverznej úlohy:\n"
 "%1$s\n"
 "vypršal pred dokončením."
+
+#: src/insets/InsetInfo.cpp:184
+msgid "The current LyX version"
+msgstr "Aktuálna verzia LyX-u"
 
 #: src/Converter.cpp:717
 msgid "Build errors"
@@ -28239,6 +28264,10 @@ msgstr ""
 "Pozri sekciu 6.15.1 Užívateľskej Príručky pre inštrukcie\n"
 "nastavenia."
 
+#: src/insets/InsetInfo.cpp:167
+msgid "The path were this file is saved"
+msgstr "Cesta, kam sa tento súbor uloží"
+
 #: src/Text3.cpp:2617 src/Text3.cpp:2628
 msgid "Paragraph layout set"
 msgstr "Formát odstavca je nastavený"
@@ -28339,6 +28368,10 @@ msgstr ""
 "Chýbajúce predpoklady:\n"
 "\t%2$s\n"
 "Pozri sekciu 3.1.2.3 (Moduly) Užívateľskej Príručky pre viac informácií."
+
+#: src/insets/InsetInfo.cpp:169
+msgid "The class this document uses"
+msgstr "Trieda, ktorá sa v dokumente používa"
 
 #: src/TextClass.cpp:1739
 #, c-format
@@ -31442,9 +31475,21 @@ msgstr "Otváram dokument %1$s…"
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s je otvorený."
 
-#: src/frontends/qt4/GuiView.cpp:2345
+#: src/frontends/qt4/GuiView.cpp:2406
 msgid "Version control detected."
-msgstr "Kontrola verzií zistená."
+msgstr "Správa verzií zistená."
+
+#: src/insets/InsetInfo.cpp:173
+msgid "Version control revision"
+msgstr "Revízia správy verzií"
+
+#: src/insets/InsetInfo.cpp:181
+msgid "Version control time"
+msgstr "Čas správy verzií"
+
+#: src/insets/InsetInfo.cpp:175
+msgid "Version control tree revision"
+msgstr "Revízia stromu správy verzií"
 
 #: src/frontends/qt4/GuiView.cpp:2347
 #, c-format
@@ -31905,6 +31950,14 @@ msgstr ""
 "Vložte buď 'name' (výsup je meno súboru aktuálneho dokumentu), 'path' (cesta "
 "súboru), alebo 'class' (výstup je trieda textu)."
 
+#: src/frontends/qt4/GuiInfo.cpp:73
+msgid ""
+"Enter either 'revision', 'tree-revision', 'author', 'time' or 'date'. If "
+"available, the respective version control information is output."
+msgstr ""
+"Buď vložte 'revision', 'tree-revision', 'author', 'time' alebo 'date'. Keď "
+"dostupné, ukáže sa patričná informácia správy verzií."
+
 #: src/frontends/qt4/LayoutBox.cpp:582
 #, c-format
 msgid "%1$s (unknown)"
@@ -32220,6 +32273,16 @@ msgid ""
 msgstr ""
 "Kľúč %1$s už existuje,\n"
 "bude zmenený na %2$s."
+
+#: src/insets/InsetInfo.cpp:136
+#, c-format
+msgid "The keybard shortcut for the function '%1$s'"
+msgstr "Klávesová skratka pre funkciu '%1$s'"
+
+#: src/insets/InsetInfo.cpp:140
+#, c-format
+msgid "The keybard shortcuts for the function '%1$s'"
+msgstr "Klávesové skratky pre funkciu '%1$s'"
 
 #: src/insets/InsetBibtex.cpp:139
 #, c-format
@@ -32671,11 +32734,6 @@ msgstr "Všetky registre"
 #: src/insets/InsetIndex.cpp:465
 msgid "subindex"
 msgstr "Pod-register"
-
-#: src/insets/InsetInfo.cpp:124
-#, c-format
-msgid "Information regarding %1$s '%2$s'"
-msgstr "Informácia ohľadne %1$s '%2$s'"
 
 #: src/insets/InsetInfo.cpp:148
 msgid "Missing \\end_inset at this point."
@@ -33765,6 +33823,14 @@ msgstr "Čítanie súborov s textovými triedami"
 msgid "Version control"
 msgstr "Správa verzií"
 
+#: src/insets/InsetInfo.cpp:177
+msgid "Version control author"
+msgstr "Autor správy verzií"
+
+#: src/insets/InsetInfo.cpp:179
+msgid "Version control date"
+msgstr "Dátum správy verzií"
+
 #: src/support/debug.cpp:54
 msgid "External control interface"
 msgstr "Rozhranie externej kontroly"
@@ -33930,6 +33996,28 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Information Type"
+#~ msgstr "Typ informácie"
+
+#~ msgid "BeginFrontmatter"
+#~ msgstr "ZačiatokVstupnejČasti"
+
+#~ msgid "EndFrontmatter"
+#~ msgstr "KoniecVstupnejČasti"
+
+#~ msgid "Information regarding %1$s '%2$s'"
+#~ msgstr "Informácia ohľadne %1$s '%2$s'"
+
+#, fuzzy
+#~ msgid "Frontmatter"
+#~ msgstr "VstupnáČasť"
+
+#~ msgid "Begin frontmatter"
+#~ msgstr "Začiatok vstupnej časti"
+
+#~ msgid "End frontmatter"
+#~ msgstr "Koniec vstupnej časti"
 
 #~ msgid "&Restore"
 #~ msgstr "O&bnoviť"
