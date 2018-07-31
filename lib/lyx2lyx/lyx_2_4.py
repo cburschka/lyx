@@ -25,9 +25,9 @@ import sys, os
 # Uncomment only what you need to import, please.
 
 from parser_tools import (count_pars_in_inset, find_end_of_inset, find_end_of_layout,
-find_token, get_bool_value, get_option_value, get_value, get_quoted_value) 
+find_token, get_bool_value, get_option_value, get_value, get_quoted_value)
 #    del_token, del_value, del_complete_lines,
-#    find_complete_lines, find_end_of, 
+#    find_complete_lines, find_end_of,
 #    find_re, find_substring, find_token_backwards,
 #    get_containing_inset, get_containing_layout,
 #    is_in_inset, set_bool_value
@@ -64,22 +64,30 @@ def removeFrontMatterStyles(document):
                 document.warning("Malformed LyX document: Can't find end of layout at line %d" % i)
                 i += 1
                 continue
-            if document.body[j] == '':
+            while i > 0 and document.body[i-1].strip() == '':
+                i -= 1
+            while document.body[j+1].strip() == '':
                 j = j + 1
-            del document.body[i:j+1]
+            document.body[i:j+1] = ['']
 
 def addFrontMatterStyles(document):
     " Use styles Begin/EndFrontmatter for elsarticle"
 
     def insertFrontmatter(prefix, line):
-        document.body[line:line] = ['\\begin_layout ' + prefix + 'Frontmatter',
+        above = line
+        while above > 0 and document.body[above-1].strip() == '':
+            above -= 1
+        below = line
+        while document.body[below].strip() == '':
+            below += 1
+        document.body[above:below] = ['', '\\begin_layout ' + prefix + 'Frontmatter',
                                     '\\begin_inset Note Note',
                                     'status open', '',
                                     '\\begin_layout Plain Layout',
                                     'Keep this empty!',
                                     '\\end_layout', '',
                                     '\\end_inset', '', '',
-                                    '\\end_layout']
+                                    '\\end_layout', '']
 
     if document.textclass == "elsarticle":
         layouts = ['Title', 'Title footnote', 'Author', 'Author footnote',
@@ -101,13 +109,9 @@ def addFrontMatterStyles(document):
                     first = i
                 if last == -1 or last <= k:
                     last = k+1
-                i = k
+                i = k+1
         if first == -1:
             return
-        if first > 0 and document.body[first-1] == '':
-            first -= 1
-        if document.body[last] == '':
-            last = last + 1
         insertFrontmatter('End', last)
         insertFrontmatter('Begin', first)
 
@@ -174,20 +178,20 @@ def revert_paratype(document):
         if i1 != -1 and i2 != -1 and i3!= -1:
             add_to_preamble(document, ["\\usepackage{paratype}"])
         else:
-            if i1!= -1: 
+            if i1!= -1:
                 add_to_preamble(document, ["\\usepackage{PTSerif}"])
                 document.header[i1] = document.header[i1].replace("PTSerif-TLF", "default")
-            if j!= -1: 
+            if j!= -1:
                 if sfoption != "":
                     add_to_preamble(document, ["\\usepackage[" + sfoption + "]{PTSans}"])
                 else:
                     add_to_preamble(document, ["\\usepackage{PTSans}"])
                 document.header[j] = document.header[j].replace("PTSans-TLF", "default")
-            if k!= -1: 
+            if k!= -1:
                 if ttoption != "":
                     add_to_preamble(document, ["\\usepackage[" + ttoption + "]{PTMono}"])
                 else:
-                    add_to_preamble(document, ["\\usepackage{PTMono}"])    
+                    add_to_preamble(document, ["\\usepackage{PTMono}"])
                 document.header[k] = document.header[k].replace("PTMono-TLF", "default")
 
 
