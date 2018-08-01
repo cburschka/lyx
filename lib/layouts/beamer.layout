@@ -1374,6 +1374,9 @@ Style NoteItem
     RightDelim     >
     PassThru       1
   EndArgument
+  IsAutoNestedBy
+    Itemize,Enumerate
+  EndIsAutoNestedBy
 End
  
 
