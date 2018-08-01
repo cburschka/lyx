@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-07-29 20:21+0200\n"
-"PO-Revision-Date: 2018-07-29 21:09+0000\n"
+"POT-Creation-Date: 2018-08-01 11:44+0200\n"
+"PO-Revision-Date: 2018-08-01 10:07+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -806,6 +806,10 @@ msgstr "Ozrutné"
 #: src/frontends/qt4/ui/BulletsUi.ui:144
 msgid "&Custom bullet:"
 msgstr "V&lastná odrážka:"
+
+#: src/frontends/qt4/ui/InfoUi.ui:49
+msgid "&Custom:"
+msgstr "V&lastné:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:174
 #: src/frontends/qt4/ui/PDFSupportUi.ui:336
@@ -1710,6 +1714,10 @@ msgstr "Použiť reálne kapitálky v prípade, že sú fontom poskytované"
 msgid "Use true s&mall caps"
 msgstr "Použiť pravé malé &kapitálky"
 
+#: src/insets/InsetInfo.cpp:348
+msgid "Used text class"
+msgstr "Použitá trieda textu"
+
 #: src/frontends/qt4/ui/FontUi.ui:280
 msgid "Use old style instead of lining figures"
 msgstr "Použiť číslice minuskové, nie verzálové"
@@ -2202,14 +2210,6 @@ msgstr "P&remenuj…"
 #: src/frontends/qt4/ui/IndicesUi.ui:182
 msgid "Define or change button color"
 msgstr "Určiť alebo zmeniť farbu tlačidla"
-
-#: src/frontends/qt4/ui/InfoUi.ui:24
-msgid "Information Type:"
-msgstr "Typ informácie:"
-
-#: src/frontends/qt4/ui/InfoUi.ui:34
-msgid "Information Name:"
-msgstr "Meno informácie:"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:16
 msgid "Inset Parameter Configuration"
@@ -4718,13 +4718,13 @@ msgstr ""
 "Vložte meno LaTeX-ového balíka ako napr. 'hyperref' (dať rozšírenie nie je "
 "povinné). Výstup je 'Áno' (balík je dostupný) alebo 'Nie' (balík nedostupný)."
 
-#: src/frontends/qt4/GuiInfo.cpp:60
+#: src/frontends/qt4/GuiInfo.cpp:63
 msgid ""
-"Enter a LyX preferences key such as 'bind_file'. Please refer to src/LyXRC.h "
-"for available entries. The output is the current setting of this preference."
+"Enter a LyX preferences key such as 'bind_file'. See the proposed list for "
+"available entries. The output is the current setting of this preference."
 msgstr ""
-"Vložte kľúč LyX-preferencie ako napr. 'bind_file'. Viď src/LyXRC.h na možné "
-"záznamy. Výstup je aktuálna hodnota tejto preferencie."
+"Vložte kľúč LyX-preferencie ako napr. 'bind_file'. Viď navrhnutý súpis na "
+"možné záznamy. Výstup je aktuálna hodnota tejto preferencie."
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:87
 msgid "Remove last key from the shortcut sequence"
@@ -4769,14 +4769,6 @@ msgstr "Neznáme slovo:"
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:69
 msgid "Current word"
 msgstr "Aktuálne slovo"
-
-#: src/frontends/qt4/GuiInfo.cpp:71
-msgid ""
-"Currently supported information type: 'version' (outputs the current LyX "
-"version)."
-msgstr ""
-"Aktuálne podporované typy informácie: 'version' (vytlačí aktuálnu verziu LyX-"
-"u)."
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:85
 msgid "&Find Next"
@@ -10276,6 +10268,10 @@ msgstr "Revízia"
 #: lib/layouts/db_stdtitle.inc:78
 msgid "RevisionRemark"
 msgstr "RevíznaPripomienka"
+
+#: src/insets/InsetInfo.cpp:356
+msgid "Revision[[Version Control]]"
+msgstr "Revízia"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:31
 msgid "Revisions ba&ck"
@@ -16776,6 +16772,10 @@ msgstr ""
 "Pomocník>LyX Funkcie na obsiahly súpis funkcií. Výstup je súpis všetkých "
 "možných klávesových skratiek pre túto funkciu"
 
+#: src/frontends/qt4/GuiInfo.cpp:154
+msgid "Enter a valid value below"
+msgstr "Vložte poniže prijateľnú hodnotu"
+
 #: lib/layouts/todonotes.module:58
 msgid "TODO Note (Margin)"
 msgstr "TODO Poznámka (Okraj)"
@@ -18556,6 +18556,10 @@ msgstr "Revízia Súboru|R"
 msgid "Tree Revision|T"
 msgstr "Revízia Stromu|i"
 
+#: src/insets/InsetInfo.cpp:357
+msgid "Tree revision"
+msgstr "Revízia stromu"
+
 #: lib/ui/stdcontext.inc:483
 msgid "Revision Author|A"
 msgstr "Autor Revízie|u"
@@ -18908,9 +18912,9 @@ msgstr "Nastavenia Registrových Hesiel…|c"
 msgid "Info Settings...|n"
 msgstr "Nastavenia pre Info…|I"
 
-#: src/frontends/qt4/GuiInfo.cpp:53 src/frontends/qt4/GuiInfo.cpp:54
-msgid "Information"
-msgstr "Informácia"
+#: src/frontends/qt4/ui/InfoUi.ui:28
+msgid "Infor&mation Type:"
+msgstr "Typ infor&mácie:"
 
 #: lib/ui/stdmenus.inc:149
 msgid "Listings Settings...|g"
@@ -25321,6 +25325,10 @@ msgstr "%1$s je z novšej verzie LyX-u, a skript lyx2lyx zlyhal pri konverzii."
 msgid "File is read-only"
 msgstr "Dokument je iba na čítanie"
 
+#: src/insets/InsetInfo.cpp:346
+msgid "File name"
+msgstr "Názov súboru"
+
 #: src/Buffer.cpp:1375
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
@@ -27626,6 +27634,10 @@ msgstr ""
 "LyX normálne neaktualizuje pozíciu kurzora, ak ste pohli posuvníkom. "
 "Nastavte túto voľbu, ak preferujete mať pozíciu kurzora na obrazovke."
 
+#: src/insets/InsetInfo.cpp:365
+msgid "LyX version"
+msgstr "Verzia LyXu"
+
 #: src/LyXRC.cpp:3129
 msgid ""
 "LyX normally doesn't allow the user to scroll further than the bottom of the "
@@ -28265,7 +28277,7 @@ msgstr ""
 "nastavenia."
 
 #: src/insets/InsetInfo.cpp:167
-msgid "The path were this file is saved"
+msgid "The path where this file is saved"
 msgstr "Cesta, kam sa tento súbor uloží"
 
 #: src/Text3.cpp:2617 src/Text3.cpp:2628
@@ -28705,6 +28717,10 @@ msgstr "Súbor %1$s existuje, ale nie je prístupný pre aktuálneho používate
 msgid "File not readable!"
 msgstr "Súbor sa nedá čítať!"
 
+#: src/insets/InsetInfo.cpp:347
+msgid "File path"
+msgstr "Cesta Súboru"
+
 #: src/buffer_funcs.cpp:125
 #, c-format
 msgid ""
@@ -28876,6 +28892,10 @@ msgstr ""
 #: src/frontends/qt4/GuiInfo.cpp:55
 msgid "Please select a valid type above"
 msgstr "Prosím vyberte najprv platný typ"
+
+#: src/insets/InsetInfo.cpp:308
+msgid "Please select a valid type!"
+msgstr "Prosím vyberte platný typ!"
 
 #: src/frontends/qt4/GuiAbout.cpp:96
 msgid "ERROR: LyX wasn't able to read the RELEASE-NOTES file\n"
@@ -30511,9 +30531,13 @@ msgstr ""
 msgid "No lyx2lyx error log file found."
 msgstr "Žiadny protokolový súbor chýb lyx2lyx sa nenašiel."
 
-#: src/frontends/qt4/GuiLog.cpp:331
+#: src/frontends/qt4/GuiLog.cpp:332
 msgid "No version control log file found."
-msgstr "Protokolový súbor kontroly verzií nenájdený."
+msgstr "Protokolový súbor správy verzií nenájdený."
+
+#: src/insets/InsetInfo.cpp:353 src/insets/InsetInfo.cpp:695
+msgid "No version control!"
+msgstr "Bez správy verzií!"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:34
 msgid "[x]"
@@ -31942,22 +31966,6 @@ msgstr "Hľadať"
 msgid "Enter characters to filter the layout list."
 msgstr "Zadajte znaky na výber z listiny schém."
 
-#: src/frontends/qt4/GuiInfo.cpp:70
-msgid ""
-"Enter either 'name' (outputs the filename of the current document), "
-"'path' (outputs the file path), or 'class' (outputs the text class)."
-msgstr ""
-"Vložte buď 'name' (výsup je meno súboru aktuálneho dokumentu), 'path' (cesta "
-"súboru), alebo 'class' (výstup je trieda textu)."
-
-#: src/frontends/qt4/GuiInfo.cpp:73
-msgid ""
-"Enter either 'revision', 'tree-revision', 'author', 'time' or 'date'. If "
-"available, the respective version control information is output."
-msgstr ""
-"Buď vložte 'revision', 'tree-revision', 'author', 'time' alebo 'date'. Keď "
-"dostupné, ukáže sa patričná informácia správy verzií."
-
 #: src/frontends/qt4/LayoutBox.cpp:582
 #, c-format
 msgid "%1$s (unknown)"
@@ -32751,10 +32759,6 @@ msgstr "áno"
 #: src/insets/InsetInfo.cpp:372 src/insets/InsetInfo.cpp:383
 msgid "no"
 msgstr "nie"
-
-#: src/insets/InsetInfo.cpp:500
-msgid "No version control"
-msgstr "Bez kontroly verzií"
 
 #: src/insets/InsetLabel.cpp:76
 msgid "Label names must be unique!"
@@ -33996,6 +34000,33 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Information Name:"
+#~ msgstr "Meno informácie:"
+
+#~ msgid ""
+#~ "Currently supported information type: 'version' (outputs the current LyX "
+#~ "version)."
+#~ msgstr ""
+#~ "Aktuálne podporované typy informácie: 'version' (vytlačí aktuálnu verziu "
+#~ "LyX-u)."
+
+#~ msgid "Information"
+#~ msgstr "Informácia"
+
+#~ msgid ""
+#~ "Enter either 'name' (outputs the filename of the current document), "
+#~ "'path' (outputs the file path), or 'class' (outputs the text class)."
+#~ msgstr ""
+#~ "Vložte buď 'name' (výsup je meno súboru aktuálneho dokumentu), "
+#~ "'path' (cesta súboru), alebo 'class' (výstup je trieda textu)."
+
+#~ msgid ""
+#~ "Enter either 'revision', 'tree-revision', 'author', 'time' or 'date'. If "
+#~ "available, the respective version control information is output."
+#~ msgstr ""
+#~ "Buď vložte 'revision', 'tree-revision', 'author', 'time' alebo 'date'. "
+#~ "Keď dostupné, ukáže sa patričná informácia správy verzií."
 
 #~ msgid "Information Type"
 #~ msgstr "Typ informácie"
@@ -38711,3 +38742,16 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "&Selection:"
 #~ msgstr "&Výber:"
+
+#~ msgid "Information Type:"
+#~ msgstr "Typ informácie:"
+
+#~ msgid ""
+#~ "Enter a LyX preferences key such as 'bind_file'. Please refer to src/LyXRC.h "
+#~ "for available entries. The output is the current setting of this preference."
+#~ msgstr ""
+#~ "Vložte kľúč LyX-preferencie ako napr. 'bind_file'. Viď src/LyXRC.h na možné "
+#~ "záznamy. Výstup je aktuálna hodnota tejto preferencie."
+
+#~ msgid "No version control"
+#~ msgstr "Bez kontroly verzií"
