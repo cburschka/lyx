@@ -83,17 +83,17 @@ the command buffer (view->Toolbar->Command Buffer).
 class InsetInfo : public InsetCollapsible {
 public:
 	enum info_type {
-		UNKNOWN_INFO,   // Invalid type
+		BUFFER_INFO,    // Buffer related information
+		VCS_INFO,        // Version control information
+		PACKAGE_INFO,   // Availability of package
+		TEXTCLASS_INFO, // Availability of textclass
 		SHORTCUTS_INFO, // Keyboard shortcuts
 		SHORTCUT_INFO,  // Keyboard shortcut
 		LYXRC_INFO,     // RC entry
-		PACKAGE_INFO,   // Availability of package
-		TEXTCLASS_INFO, // Availability of textclass
 		MENU_INFO,      // Which menu item is used for certain function
 		ICON_INFO,      // which toolbar icon is used for certain function
-		BUFFER_INFO,    // Buffer related information
 		LYX_INFO,        // LyX version information
-		VCS_INFO,        // Version control information
+		UNKNOWN_INFO,   // Invalid type
 	};
 
 	///

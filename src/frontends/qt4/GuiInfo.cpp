@@ -41,38 +41,72 @@ namespace frontend {
 /////////////////////////////////////////////////////////////////
 
 char const * info_types[] =
-{ "unknown", "shortcut", "shortcuts", "lyxrc", "package", "textclass", "menu", "icon", "buffer", "vcs", "lyxinfo", "" };
+{ "buffer",
+  "vcs",
+  "package",
+  "textclass",
+  "shortcut",
+  "shortcuts",
+  "menu",
+  "icon",
+  "lyxrc",
+  "lyxinfo",
+  "unknown",
+  ""
+};
 
+// GUI names (in combo)
 char const * info_types_gui[] =
-{ N_("Unknown"), N_("Last Assigned Keyboard Shortcut"), N_("All Keyboard Shortcuts"),
-  N_("LyX Preferences Entry"),  N_("LaTeX Package Availability"), N_("LaTeX Class Availability"),
-  N_("LyX Menu Location"), N_("LyX Toolbar Icon"), N_("Document Information"),
-  N_("Version Control Information"), N_("LyX Application Information"), ""};
+{ N_("Document Information"),// buffer
+  N_("Version Control Information"),// vcs
+  N_("LaTeX Package Availability"),// package
+  N_("LaTeX Class Availability"),// textclass
+  N_("Last Assigned Keyboard Shortcut"),// shortcut
+  N_("All Keyboard Shortcuts"),// shortcuts
+  N_("LyX Menu Location"),// menu
+  N_("LyX Toolbar Icon"),// icon
+  N_("LyX Preferences Entry"),// lyxrc
+  N_("LyX Application Information"),// lyxinfo
+  N_("Unknown"),// unknown
+  ""
+};
 
+// Line edit label
 char const * info_name_gui[] =
-{ N_("Not Applicable"), N_("LyX Function"), N_("LyX Function"), N_("Preferences Key"),  N_("Package Name"),
-  N_("Class Name"), N_("LyX Function"), N_("LyX Function"), N_("Not Applicable"), N_("Not Applicable"),
-  N_("Not Applicable"), ""};
+{ N_("Not Applicable"),// buffer
+  N_("Not Applicable"),// vcs
+  N_("Package Name"),// package
+  N_("Class Name"),// textclass
+  N_("LyX Function"),// shortcut
+  N_("LyX Function"),// shortcuts
+  N_("LyX Function"),// menu
+  N_("LyX Function"),// icon
+  N_("Preferences Key"),// lyxrc
+  N_("Not Applicable"),// lyxinfo
+  N_("Not Applicable"),// unknown
+  ""
+};
 
+// Line edit tooltip
 char const * info_tooltip[] =
-{ N_("Please select a valid type above"),
-  N_("Enter a function name such as 'math-insert \\alpha'. Please refer to Help > LyX Functions for a comprehensive list of functions. "
-     "The output is the most recently assigned keyboard shortcut for this function"),
-  N_("Enter a function name such as 'math-insert \\alpha'. Please refer to Help > LyX Functions for a comprehensive list of functions. "
-     "The output lists all possible keyboard shortcuts for this function"),
-  N_("Enter a LyX preferences key such as 'bind_file'. See the proposed list for available entries. "
-     "The output is the current setting of this preference."),
+{ N_("Please select a valid type above"),// buffer
+  N_("Please select a valid type above"),// vcs
   N_("Enter a LaTeX package name such as 'hyperref' (extension is optional). "
-     "The output will be 'Yes' (package available) or 'No' (package unavailable)."),
+     "The output will be 'Yes' (package available) or 'No' (package unavailable)."),// package
   N_("Enter a LaTeX class name such as 'article' (extension is optional). "
-     "The output will be 'Yes' (class available) or 'No' (class unavailable)."),
+     "The output will be 'Yes' (class available) or 'No' (class unavailable)."),// textclass
   N_("Enter a function name such as 'math-insert \\alpha'. Please refer to Help > LyX Functions for a comprehensive list of functions. "
-     "The output is the path to the function in the menu (using the current localization)."),
+     "The output is the most recently assigned keyboard shortcut for this function"),// shortcut
   N_("Enter a function name such as 'math-insert \\alpha'. Please refer to Help > LyX Functions for a comprehensive list of functions. "
-     "The output is the toolbar icon for this function (using the active icon theme)."),
-  N_("Please select a valid type above"),
-  N_("Please select a valid type above"),
-  N_("Please select a valid type above"),
+     "The output lists all possible keyboard shortcuts for this function"),// shortcuts
+  N_("Enter a function name such as 'math-insert \\alpha'. Please refer to Help > LyX Functions for a comprehensive list of functions. "
+     "The output is the path to the function in the menu (using the current localization)."),// menu
+  N_("Enter a function name such as 'math-insert \\alpha'. Please refer to Help > LyX Functions for a comprehensive list of functions. "
+     "The output is the toolbar icon for this function (using the active icon theme)."),// icon
+  N_("Enter a LyX preferences key such as 'bind_file'. See the proposed list for available entries. "
+     "The output is the current setting of this preference."),// lyxrc
+  N_("Please select a valid type above"),// lyxinfo
+  N_("Please select a valid type above"),// unknown
   ""};
 
 
