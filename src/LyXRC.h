@@ -217,6 +217,8 @@ public:
 		   std::string const & tag = std::string()) const;
 	///
 	void print() const;
+	///
+	std::set<std::string> getRCs();
 	// FIXME unused (was used for xforms. Do we still need this?)
 	//static docstring const getDescription(LyXRCTags);
 	///

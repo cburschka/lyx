@@ -25,6 +25,9 @@ class GuiInfo : public InsetParamsWidget, public Ui::InfoUi
 {
 	Q_OBJECT
 
+protected Q_SLOTS:
+	void updateArguments(int i);
+
 public:
 	GuiInfo(QWidget * parent = 0);
 
@@ -38,6 +41,7 @@ private:
 	docstring dialogToParams() const;
 	bool checkWidgets(bool readonly) const;
 	//@}
+	Inset * inset_;
 };
 
 } // namespace frontend

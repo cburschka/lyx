@@ -3049,6 +3049,15 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 }
 
 
+set<string> LyXRC::getRCs()
+{
+	set<string> res;
+	for (int i = 0; i != lyxrcCount; ++i)
+		res.insert(ltrim(lyxrcTags[i].tag, "\\"));
+	return res;
+}
+
+
 #if 0
 string const LyXRC::getDescription(LyXRCTags tag)
 {

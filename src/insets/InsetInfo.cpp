@@ -247,9 +247,8 @@ bool InsetInfo::validateModifyArgument(docstring const & arg) const
 	}
 
 	case LYXRC_INFO: {
-		ostringstream oss;
-		lyxrc.write(oss, true, name);
-		return !oss.str().empty();
+		set<string> rcs = lyxrc.getRCs();
+		return rcs.find(name) != rcs.end();
 	}
 
 	case PACKAGE_INFO:
@@ -270,6 +269,104 @@ bool InsetInfo::validateModifyArgument(docstring const & arg) const
 	}
 
 	return false;
+}
+
+
+namespace{
+set<string> getTexFileList(string const & filename)
+{
+	set<string> list;
+	FileName const file = libFileSearch(string(), filename);
+	if (file.empty())
+		return list;
+
+	// FIXME Unicode.
+	vector<docstring> doclist =
+		getVectorFromString(file.fileContents("UTF-8"), from_ascii("\n"));
+
+	// Normalise paths like /foo//bar ==> /foo/bar
+	for (auto doc : doclist) {
+		subst(doc, from_ascii("\r"), docstring());
+		while (contains(doc, from_ascii("//")))
+			subst(doc, from_ascii("//"), from_ascii("/"));
+		if (!doc.empty())
+			list.insert(removeExtension(onlyFileName(to_utf8(doc))));
+	}
+
+	// remove duplicates
+	return list;
+}
+} // namespace anon
+
+
+vector<pair<string,docstring>> InsetInfo::getArguments(string const & type) const
+{
+	vector<pair<string,docstring>> result;
+
+	switch (nameTranslator().find(type)) {
+	case UNKNOWN_INFO:
+		result.push_back(make_pair("invalid", _("Please select a valid type!")));
+		break;
+
+	case SHORTCUT_INFO:
+	case SHORTCUTS_INFO:
+	case MENU_INFO:
+	case ICON_INFO: {
+		result.push_back(make_pair("custom", _("Custom")));
+		LyXAction::const_iterator fit = lyxaction.func_begin();
+		LyXAction::const_iterator const fen = lyxaction.func_end();
+		for (; fit != fen; ++fit) {
+			string const lfun = fit->first;
+			if (!lfun.empty())
+				result.push_back(make_pair(lfun, from_ascii(lfun)));
+		}
+		break;
+	}
+
+	case LYXRC_INFO: {
+		result.push_back(make_pair("custom", _("Custom")));
+		set<string> rcs = lyxrc.getRCs();
+		for (auto const & rc : rcs)
+			result.push_back(make_pair(rc, from_ascii(rc)));
+		break;
+	}
+
+	case PACKAGE_INFO:
+	case TEXTCLASS_INFO: {
+		result.push_back(make_pair("custom", _("Custom")));
+		string const filename = (type == "package") ? "styFiles.lst"
+							    : "clsFiles.lst";
+		set<string> flist = getTexFileList(filename);
+		for (auto const & f : flist)
+			result.push_back(make_pair(f, from_utf8(f)));
+		break;
+	}
+
+	case BUFFER_INFO:
+		result.push_back(make_pair("name", _("File name")));
+		result.push_back(make_pair("path", _("File path")));
+		result.push_back(make_pair("class", _("Used text class")));
+		break;
+
+	case VCS_INFO: {
+		if (!buffer().lyxvc().inUse()) {
+			result.push_back(make_pair("invalid", _("No version control!")));
+			break;
+		}
+		result.push_back(make_pair("revision", _("Revision[[Version Control]]")));
+		result.push_back(make_pair("tree-revision", _("Tree revision")));
+		result.push_back(make_pair("author", _("Author")));
+		result.push_back(make_pair("date", _("Date")));
+		result.push_back(make_pair("time", _("Time")));
+		break;
+	}
+
+	case LYX_INFO:
+		result.push_back(make_pair("version", _("LyX version")));
+		break;
+	}
+
+	return result;
 }
 
 
@@ -595,8 +692,8 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		// this information could change, in principle, so we will 
 		// recalculate each time through
 		if (!buffer().lyxvc().inUse()) {
-			gui = _("No version control");
-			info(from_ascii("No version control"), lang);
+			gui = _("No version control!");
+			info(from_ascii("No version control!"), lang);
 			break;
 		}
 		LyXVC::RevisionInfo itype = LyXVC::Unknown;

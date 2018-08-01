@@ -124,6 +124,8 @@ public:
 	///
 	bool validateModifyArgument(docstring const & argument) const;
 	///
+	std::vector<std::pair<std::string,docstring>> getArguments(std::string const &) const;
+	///
 	bool showInsetDialog(BufferView * bv) const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
