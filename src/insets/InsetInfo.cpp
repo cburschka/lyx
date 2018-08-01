@@ -510,9 +510,9 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 			break;
 		}
 		if (type_ == SHORTCUT_INFO)
-			setText(bindings.begin()->print(KeySequence::Portable), guilang);
+			setText(bindings.begin()->print(KeySequence::ForGui), guilang);
 		else
-			setText(theTopLevelKeymap().printBindings(func, KeySequence::Portable), guilang);
+			setText(theTopLevelKeymap().printBindings(func, KeySequence::ForGui), guilang);
 		force_ltr_ = !guilang->rightToLeft() && !lang->rightToLeft();
 		break;
 	}
