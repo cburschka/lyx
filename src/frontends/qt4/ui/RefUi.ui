@@ -101,13 +101,19 @@
        <item>
         <widget class="QComboBox" name="bufferCO">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
          <property name="toolTip">
           <string>The (sub-)document from which the available labels are displayed</string>
+         </property>
+         <property name="sizeAdjustPolicy">
+          <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
+         </property>
+         <property name="minimumContentsLength">
+          <number>0</number>
          </property>
         </widget>
        </item>
