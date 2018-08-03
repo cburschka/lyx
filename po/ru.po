@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-03-17 15:55-0400\n"
-"PO-Revision-Date: 2018-07-27 13:07+0300\n"
+"PO-Revision-Date: 2018-08-03 13:46+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -1756,7 +1756,7 @@ msgstr "&Машинописный:"
 
 #: src/frontends/qt4/ui/FontUi.ui:191
 msgid "Select the typewriter (monospaced) typeface"
-msgstr "Выбрать шрифт печатной машинки (моноширинный)"
+msgstr "Выбрать машинописный (моноширинный) шрифт"
 
 #: src/frontends/qt4/ui/FontUi.ui:211
 msgid "Sc&ale (%):"
@@ -1764,7 +1764,7 @@ msgstr "Масштаб (%):"
 
 #: src/frontends/qt4/ui/FontUi.ui:221
 msgid "Scale the Typewriter font to match the base font's dimensions"
-msgstr "Масштабировать шрифт печатной машинки до размеров основного шрифта"
+msgstr "Масштабировать машинописный шрифт до размеров основного шрифта"
 
 #: src/frontends/qt4/ui/FontUi.ui:236
 msgid "&Math:"
@@ -1772,7 +1772,7 @@ msgstr "&Математика:"
 
 #: src/frontends/qt4/ui/FontUi.ui:246
 msgid "Select the math typeface"
-msgstr "Выбрать гарнитуру для формул"
+msgstr "Выбрать шрифт для формул"
 
 #: src/frontends/qt4/ui/FontUi.ui:253
 msgid "C&JK:"
@@ -3502,7 +3502,7 @@ msgstr "&Отмечать конец абзаца"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:26
 msgid "Session Handling"
-msgstr "Обработка сессий"
+msgstr "Сессии"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:38
 msgid "Restore window layouts and &geometries"
@@ -4177,7 +4177,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:35
 msgid "&PATH prefix:"
-msgstr "Префикс &пути:"
+msgstr "Префикс &PATH:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:45
 msgid ""
@@ -11756,7 +11756,7 @@ msgstr "><"
 
 #: lib/layouts/foils.layout:165
 msgid "My Logo"
-msgstr "Лого"
+msgstr "Мой логотип"
 
 #: lib/layouts/foils.layout:174
 msgid "My Logo:"
@@ -14884,7 +14884,7 @@ msgstr "URL отправителя:"
 
 #: lib/layouts/scrlttr2.layout:228
 msgid "Logo"
-msgstr "Лого"
+msgstr "Логотип"
 
 #: lib/layouts/scrlttr2.layout:232
 msgid "Logo:"
@@ -18121,15 +18121,15 @@ msgstr "Новая страница|ц"
 
 #: lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:446
 msgid "Page Break|a"
-msgstr "Разрыв страницы|ы"
+msgstr "Разрыв страницы с выравниванием|ы"
 
 #: lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:447
 msgid "Clear Page|C"
-msgstr "Чистый лист|Ч"
+msgstr "Очистить страницу|ч"
 
 #: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:448
 msgid "Clear Double Page|D"
-msgstr "Двойной чистый лист|Д"
+msgstr "Очистить двойную страницу|д"
 
 #: lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:442
 msgid "Ragged Line Break|R"
@@ -18833,7 +18833,7 @@ msgstr "Разложить стиль текста"
 
 #: lib/ui/stdmenus.inc:186
 msgid "Customized...|C"
-msgstr "Заданный пользователем...|З"
+msgstr "Настроить...|Н"
 
 #: lib/ui/stdmenus.inc:188
 msgid "Capitalize|a"
@@ -19233,23 +19233,23 @@ msgstr "Фонетические символы|Ф"
 
 #: lib/ui/stdmenus.inc:417
 msgid "Logos|L"
-msgstr "Лого"
+msgstr "Логотип|Л"
 
 #: lib/ui/stdmenus.inc:421
 msgid "LyX Logo|L"
-msgstr "Лого LyX"
+msgstr "LyX|L"
 
 #: lib/ui/stdmenus.inc:422
 msgid "TeX Logo|T"
-msgstr "Лого TeX"
+msgstr "TeX|T"
 
 #: lib/ui/stdmenus.inc:423
 msgid "LaTeX Logo|a"
-msgstr "Лого LaTeX"
+msgstr "LaTeX|a"
 
 #: lib/ui/stdmenus.inc:424
 msgid "LaTeX2e Logo|e"
-msgstr "Лого LaTeX2e"
+msgstr "LaTeX2e|e"
 
 #: lib/ui/stdmenus.inc:428
 msgid "Superscript|S"
@@ -20090,19 +20090,19 @@ msgstr "Разделитель пунктов меню"
 
 #: lib/ui/stdtoolbars.inc:252
 msgid "LyX Logo"
-msgstr "Лого LyX"
+msgstr "Логотип LyX"
 
 #: lib/ui/stdtoolbars.inc:253
 msgid "TeX Logo"
-msgstr "Лого TeX"
+msgstr "Логотип TeX"
 
 #: lib/ui/stdtoolbars.inc:254
 msgid "LaTeX Logo"
-msgstr "Лого LaTeX"
+msgstr "Логотип LaTeX"
 
 #: lib/ui/stdtoolbars.inc:255
 msgid "LaTeX2e Logo"
-msgstr "Лого LaTeX2e"
+msgstr "Логотип LaTeX2e"
 
 #: lib/ui/stdtoolbars.inc:258
 msgid "View Other Formats"
@@ -26018,7 +26018,7 @@ msgstr "розовый"
 
 #: src/Color.cpp:218
 msgid "purple"
-msgstr "пурпурный"
+msgstr "фиолетовый"
 
 #: src/Color.cpp:219
 msgid "red"
@@ -26030,7 +26030,7 @@ msgstr "сине-зелёный"
 
 #: src/Color.cpp:221
 msgid "violet"
-msgstr "фиолетовый"
+msgstr "лиловый"
 
 #: src/Color.cpp:222
 msgid "yellow"
@@ -29893,7 +29893,7 @@ msgstr "Список ошибок"
 #: src/frontends/qt4/GuiErrorList.cpp:155
 #, c-format
 msgid "%1$s Errors (%2$s)"
-msgstr "%1$s ошибки (%2$s)"
+msgstr "Ошибки %1$s (%2$s)"
 
 #: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:72
 msgid "Top left"
@@ -30429,7 +30429,7 @@ msgstr "Укажите название файла для канала LyX-се�
 #: src/frontends/qt4/GuiPrefs.cpp:1566
 #: src/frontends/qt4/GuiSpellchecker.cpp:594
 msgid "Spellchecker"
-msgstr "Проверка правописания"
+msgstr "Правописание"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1572
 msgid "Native"
@@ -30503,7 +30503,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:2557
 msgid "User Interface"
-msgstr "Интерфейс пользователя"
+msgstr "Интерфейс"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2576
 msgid "Classic"
@@ -30515,11 +30515,11 @@ msgstr "Oxygen"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2625
 msgid "Document Handling"
-msgstr "Обработка документа"
+msgstr "Документ"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2732
 msgid "Control"
-msgstr "Контроль"
+msgstr "Общие"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2824
 msgid "Shortcuts"
@@ -32760,15 +32760,15 @@ msgstr "Новая страница"
 
 #: src/insets/InsetNewpage.cpp:182
 msgid "Page Break"
-msgstr "Разрыв страницы"
+msgstr "Разрыв страницы с выравниванием"
 
 #: src/insets/InsetNewpage.cpp:185
 msgid "Clear Page"
-msgstr "Чистый лист"
+msgstr "Очистить страницу"
 
 #: src/insets/InsetNewpage.cpp:188
 msgid "Clear Double Page"
-msgstr "Двойной чистый лист"
+msgstr "Очистить двойную страницу"
 
 #: src/insets/InsetNomencl.cpp:82
 msgid "Nom: "
