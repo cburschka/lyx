@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-08-04 07:13+0200\n"
-"PO-Revision-Date: 2018-08-03 22:18+0200\n"
+"PO-Revision-Date: 2018-08-04 08:27+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 2.0\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:33
 msgid "Version"
@@ -1902,18 +1902,19 @@ msgstr "Назва файла з зображенням"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:313
 msgid "&Coordinates and Clipping"
-msgstr ""
+msgstr "&Координати і обрізання"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:347
 msgid ""
 "Clip to the coordinates specified below (bounding box for DVI/PS output, "
 "viewport for PDF output)"
 msgstr ""
+"Обрізати до координат, вказаних нижче (рамка-обгортка для виведення DVI/PS,"
+" область перегляду для — PDF)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:350
-#, fuzzy
 msgid "Clip to c&oordinates"
-msgstr "Обрізати за рамкою (bounding box)"
+msgstr "Обрізати за к&оординатами"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:438
 #: src/frontends/qt4/ui/GraphicsUi.ui:445
@@ -1930,6 +1931,8 @@ msgid ""
 "Read coordinates from the file (bounding box value in case of PostScript "
 "files, graphic dimensions in case of other file types)"
 msgstr ""
+"Прочитати координати з файла (значення рамки-обгортки у випадку файлів"
+" PostScript, розмірності зображення — для інших типів файлів)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:520
 #: src/frontends/qt4/ui/GraphicsUi.ui:527
@@ -1965,7 +1968,6 @@ msgid "Graphics Group"
 msgstr "Група зображень"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:680
-#, fuzzy
 msgid "Assigned &to group:"
 msgstr "Прив’&язано до групи:"
 
@@ -3283,9 +3285,8 @@ msgid "&Vertical Phantom"
 msgstr "&Вертикальний фантом"
 
 #: src/frontends/qt4/ui/PreambleUi.ui:38
-#, fuzzy
 msgid "Find"
-msgstr "&Знайти:"
+msgstr "Знайти"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:46
 msgid "A&lter..."
@@ -18240,9 +18241,8 @@ msgid "Paragraph Settings...|P"
 msgstr "Налаштування абзацу…|а"
 
 #: lib/ui/stdcontext.inc:361
-#, fuzzy
 msgid "Unify Graphics Groups|U"
-msgstr "Група зображень"
+msgstr "Уніфікувати графічні групи|У"
 
 #: lib/ui/stdcontext.inc:364
 msgid "Fullscreen Mode"
@@ -25459,6 +25459,10 @@ msgid ""
 "contains spaces, but your TeX installation does not allow them. You should "
 "save the file to a directory whose name does not contain spaces."
 msgstr ""
+"Шлях до каталогу документа\n"
+"%1$s\n"
+"містить пробіли, але встановлена версія TeX не може використовувати такі"
+" шляхи. Вам слід зберегти файл до каталогу, назва якого не містить пробілів."
 
 #: src/Buffer.cpp:4462 src/Buffer.cpp:4476 src/frontends/qt4/GuiView.cpp:692
 msgid "Document export cancelled."
