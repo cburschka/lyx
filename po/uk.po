@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-03-17 15:55-0400\n"
-"PO-Revision-Date: 2018-02-19 20:11+0200\n"
+"PO-Revision-Date: 2018-08-03 22:18+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 2.0\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:33
 msgid "Version"
@@ -20711,24 +20711,20 @@ msgid "cancelto"
 msgstr "cancelto"
 
 #: lib/ui/stdtoolbars.inc:468
-#, fuzzy
 msgid "Insert left/right side scripts (sideset)"
-msgstr "Вставити написи на лівій або правій боковині"
+msgstr "Вставити написи на лівій або правій боковині (sideset)"
 
 #: lib/ui/stdtoolbars.inc:469
-#, fuzzy
 msgid "Insert right side scripts (sidesetr)"
-msgstr "Вставити написи на правій боковині"
+msgstr "Вставити написи на правій боковині (sidesetr)"
 
 #: lib/ui/stdtoolbars.inc:470
-#, fuzzy
 msgid "Insert left side scripts (sidesetl)"
-msgstr "Вставити написи на лівій боковині"
+msgstr "Вставити написи на лівій боковині (sidesetl)"
 
 #: lib/ui/stdtoolbars.inc:471
-#, fuzzy
 msgid "Insert side scripts (sidesetn)"
-msgstr "Вставити написи на боковині"
+msgstr "Вставити написи на боковині (sidesetn)"
 
 #: lib/ui/stdtoolbars.inc:472
 msgid "overset"
