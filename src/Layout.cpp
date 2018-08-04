@@ -1434,14 +1434,14 @@ void Layout::write(ostream & os) const
 		os << "\n\tEndAutoNests\n";
 	}
 	if (!autonested_by_.empty()) {
-		os << "\tIsAutoNestedBy\n\t";
+		os << "\tIsAutoNestedBy\n\t\t";
 		for (set<docstring>::const_iterator it = autonested_by_.begin();
 		     it != autonested_by_.end(); ++it) {
 			if (it != autonested_by_.begin())
 				os << ',';
 			os << to_utf8(*it);
 		}
-		os << "\n\tIsAutoNestedBy\n";
+		os << "\n\tEndIsAutoNestedBy\n";
 	}
 	if (refprefix.empty())
 		os << "\tRefPrefix OFF\n";
