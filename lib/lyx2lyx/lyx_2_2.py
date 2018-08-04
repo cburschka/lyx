@@ -756,6 +756,7 @@ def convert_phrases(document):
                 continue
             j = document.body[i].find(phrase)
             if j == -1:
+                i += 1
                 continue
             if not is_part_of_converted_phrase(document.body[i], j, phrase):
                 front = document.body[i][:j]
