@@ -110,9 +110,16 @@ struct FileName::Private
 	static
 	string const handleTildeName(string const & name)
 	{
-		return name == "~" ? Package::get_home_dir().absFileName() :
-			prefixIs(name, "~/") ? Package::get_home_dir().absFileName() + name.substr(1) :
-			name;
+		string resname;
+		if ( name == "~" )
+			resname = Package::get_home_dir().absFileName();
+		else if ( prefixIs(name, "~/"))
+			resname = Package::get_home_dir().absFileName() + name.substr(1);
+		else if ( prefixIs(name, "~:s/"))
+			resname = package().system_support().absFileName() + name.substr(3);
+		else
+			resname = name;
+		return resname;
 	}
 
 	/// The absolute file name in UTF-8 encoding.
