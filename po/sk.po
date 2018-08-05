@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-08-01 11:44+0200\n"
-"PO-Revision-Date: 2018-08-01 10:07+0000\n"
+"POT-Creation-Date: 2018-08-05 10:23+0200\n"
+"PO-Revision-Date: 2018-08-05 09:20+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -218,6 +218,10 @@ msgid ""
 "Here you can define an alternative program to or specific options of BibTeX."
 msgstr ""
 "Tu môžte definovať alternatívny program alebo špecifické možnosti pre BibTeX."
+
+#: src/frontends/qt4/ui/InfoUi.ui:59
+msgid "Here you can enter a fix date (in ISO format: YYYY-MM-DD)"
+msgstr "Tu môžte vložiť pevný dátum (napr. vo formáte ISO: YYYY-MM-DD)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:379 src/frontends/qt4/ui/PrefLatexUi.ui:96
 msgid "Bibliography Generation"
@@ -1955,6 +1959,10 @@ msgstr "Vlastná hodnota. Potrebuje typ rozstupu \"Vlastný\"."
 msgid "Custom width of the column"
 msgstr "Vlastná šírka stĺpca"
 
+#: src/frontends/qt4/Menus.cpp:1694
+msgid "Custom..."
+msgstr "Vlastné…"
+
 #: src/frontends/qt4/ui/TabularUi.ui:315
 msgid "Custom[[Width]]"
 msgstr "Vlastná"
@@ -2777,10 +2785,6 @@ msgstr "&Nepoužívať"
 msgid "Indent displayed formulas instead of centering"
 msgstr "Odsadiť exponované vzorce namiesto vystreďovania"
 
-#: src/frontends/qt4/ui/MathsUi.ui:51
-msgid "Indent &Formulas"
-msgstr "Odsadiť &Vzorce"
-
 #: src/frontends/qt4/ui/MathsUi.ui:67 src/frontends/qt4/ui/TextLayoutUi.ui:48
 msgid "Size of the indentation"
 msgstr "Veľkosť odsadzovania"
@@ -2986,10 +2990,6 @@ msgstr "Mat. mier&ka obrázku:"
 #: src/frontends/qt4/ui/OutputUi.ui:256
 msgid "Scaling factor for images used for math output."
 msgstr "Faktor pre mierky obrázkov používaných pre matematický výstup."
-
-#: src/frontends/qt4/ui/OutputUi.ui:275
-msgid "Write CSS to File"
-msgstr "Píš CSS do súboru"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:28
 msgid "&Use hyperref support"
@@ -5315,6 +5315,10 @@ msgstr "Zmenšiť hĺbku zanorenia označeného člena"
 msgid "Increase nesting depth of selected item"
 msgstr "Zväčšiť hĺbku zanorenia označeného člena"
 
+#: src/frontends/qt4/ui/MathsUi.ui:79
+msgid "Indent &formulas"
+msgstr "Odsadenie &vzorcov"
+
 #: src/frontends/qt4/ui/TocUi.ui:160
 msgid "Move selected item down by one"
 msgstr "Presunúť označený prvok nadol"
@@ -7101,6 +7105,30 @@ msgstr "Podpodsekcia"
 #: lib/layouts/tufte-book.layout:45 lib/ui/stdmenus.inc:396
 msgid "Date"
 msgstr "Dátum"
+
+#: lib/ui/stdmenus.inc:425
+msgid "Date (Current)|D"
+msgstr "Dátum (Aktuálny)|A"
+
+#: lib/ui/stdmenus.inc:427
+msgid "Date (Fix)|F"
+msgstr "Dátum (Pevný)|P"
+
+#: lib/ui/stdmenus.inc:426
+msgid "Date (Last Modification)|L"
+msgstr "Dátum (Poslednej Modifikácie)|M"
+
+#: src/frontends/qt4/GuiInfo.cpp:63
+msgid "Date (current)"
+msgstr "Dátum (aktuálny)"
+
+#: src/frontends/qt4/GuiInfo.cpp:65
+msgid "Date (fix)"
+msgstr "Dátum (pevný)"
+
+#: src/frontends/qt4/GuiInfo.cpp:64
+msgid "Date (last modified)"
+msgstr "Dátum (poslednej modifikácie)"
 
 #: lib/layouts/aa.layout:239
 msgid "institutemark"
@@ -9044,6 +9072,10 @@ msgstr "American Psychological Association (APA), v. 6"
 #: lib/layouts/apa6.layout:113
 msgid "FiveAuthors"
 msgstr "PäťAutorov"
+
+#: src/frontends/qt4/ui/InfoUi.ui:49
+msgid "Fix Date:"
+msgstr "Nemenný Dátum:"
 
 #: lib/layouts/apa6.layout:120
 msgid "SixAuthors"
@@ -11540,6 +11572,14 @@ msgstr ""
 #: lib/layouts/fixme.module:2
 msgid "FiXme"
 msgstr "FiXme"
+
+#: src/frontends/qt4/GuiInfo.h:39
+msgid "Field Settings"
+msgstr "Nastavenia Pola"
+
+#: lib/ui/stdmenus.inc:377
+msgid "Field|d"
+msgstr "Pole|P"
 
 #: lib/layouts/fixme.module:11
 msgid ""
@@ -15957,6 +15997,11 @@ msgstr "Vlastný Farebný Rámik 4"
 msgid "Custom Color Box 5"
 msgstr "Vlastný Farebný Rámik 5"
 
+#: src/frontends/qt4/GuiInfo.cpp:82 src/frontends/qt4/GuiInfo.cpp:83
+#: src/frontends/qt4/GuiInfo.cpp:84
+msgid "Custom Format"
+msgstr "Vlastný Formát"
+
 #: lib/layouts/theorems-ams-bytype.inc:178 lib/layouts/theorems-bytype.inc:147
 #: lib/layouts/theorems-without-preamble.inc:170
 msgid "Fact \\thefact."
@@ -18540,45 +18585,9 @@ msgstr "Stĺpce/Riadky|p"
 msgid "File|F"
 msgstr "Súbor|S"
 
-#: lib/ui/stdcontext.inc:478
-msgid "Path|P"
-msgstr "Cesty|C"
-
-#: lib/ui/stdcontext.inc:479
-msgid "Class|C"
-msgstr "Trieda|T"
-
-#: lib/ui/stdcontext.inc:481
-msgid "File Revision|R"
-msgstr "Revízia Súboru|R"
-
-#: lib/ui/stdcontext.inc:482
-msgid "Tree Revision|T"
-msgstr "Revízia Stromu|i"
-
 #: src/insets/InsetInfo.cpp:357
 msgid "Tree revision"
 msgstr "Revízia stromu"
-
-#: lib/ui/stdcontext.inc:483
-msgid "Revision Author|A"
-msgstr "Autor Revízie|u"
-
-#: lib/ui/stdcontext.inc:484
-msgid "Revision Date|D"
-msgstr "Dátum Revízie|D"
-
-#: lib/ui/stdcontext.inc:485
-msgid "Revision Time|i"
-msgstr "Čas Revízie|a"
-
-#: lib/ui/stdcontext.inc:487
-msgid "LyX Version|X"
-msgstr "Verzia LyXu|X"
-
-#: lib/ui/stdcontext.inc:491
-msgid "Document Info|D"
-msgstr "Info Dokumentu|f"
 
 #: lib/ui/stdcontext.inc:493
 msgid "Copy Text|o"
@@ -19275,9 +19284,9 @@ msgstr "Listiny / Obsah|L"
 msgid "Float|a"
 msgstr "Plávajúci objekt|j"
 
-#: lib/ui/stdmenus.inc:375
+#: lib/ui/stdmenus.inc:380
 msgid "Note|N"
-msgstr "Poznámka|P"
+msgstr "Poznámka|á"
 
 #: lib/ui/stdmenus.inc:376
 msgid "Branch|B"
@@ -20608,6 +20617,10 @@ msgstr "Druhá odmocnina\t\\sqrt"
 #: lib/ui/stdtoolbars.inc:376
 msgid "Other root\t\\root"
 msgstr "Iná odmocnina\t\\root"
+
+#: lib/ui/stdmenus.inc:429
+msgid "Other...|O"
+msgstr "Druhé…|D"
 
 #: lib/ui/stdtoolbars.inc:379
 msgid "Styles & Classes"
@@ -24537,6 +24550,10 @@ msgstr ""
 "Pre konverziu gnumeric alebo excel súborov\n"
 "je potrebný program gnumeric.\n"
 
+#: src/insets/InsetInfo.cpp:230
+msgid "A static date"
+msgstr "Nemenný dátum"
+
 #: lib/xtemplates/inkscape.xtemplate:38
 msgid "Inkscape"
 msgstr "Inkscape"
@@ -26793,6 +26810,10 @@ msgstr ""
 msgid "The current LyX version"
 msgstr "Aktuálna verzia LyX-u"
 
+#: src/insets/InsetInfo.cpp:224
+msgid "The current date"
+msgstr "Aktuálny dátum"
+
 #: src/Converter.cpp:717
 msgid "Build errors"
 msgstr "Chyby pri vytváraní"
@@ -28845,6 +28866,10 @@ msgstr "Pokročilé hľadanie zrušené užívateľom"
 msgid "Wrap search?"
 msgstr "Od začiatku hľadať?"
 
+#: src/frontends/qt4/ui/OutputUi.ui:275
+msgid "Write CSS to file"
+msgstr "Píš CSS do súboru"
+
 #: src/frontends/qt4/FindAndReplace.cpp:431
 msgid "Nothing to search"
 msgstr "Nie je čo hľadať"
@@ -30454,10 +30479,6 @@ msgstr "Vložte názov nového registra"
 msgid "The index could not be renamed. Check if the new name already exists."
 msgstr "Register sa nedal premenovať. Overte si, či nové meno už existuje."
 
-#: src/frontends/qt4/GuiInfo.h:36
-msgid "Info Inset Settings"
-msgstr "Nastavenia Vložky Info"
-
 #: src/frontends/qt4/GuiKeySymbol.cpp:712
 msgid "Shift-"
 msgstr "Shift-"
@@ -31839,6 +31860,10 @@ msgstr ""
 "Bude to strata aktuálnej verzie. Naozaj sa chcete vrátiť ku uloženej verzii "
 "dokumentu %1$s?"
 
+#: src/insets/InsetInfo.cpp:227
+msgid "The date of last save"
+msgstr "Dátum posledného uloženia"
+
 #: src/frontends/qt4/GuiView.cpp:3903
 #, c-format
 msgid ""
@@ -31965,6 +31990,32 @@ msgstr "Hľadať"
 #: src/frontends/qt4/LayoutBox.cpp:403 src/frontends/qt4/LayoutBox.cpp:458
 msgid "Enter characters to filter the layout list."
 msgstr "Zadajte znaky na výber z listiny schém."
+
+#: src/frontends/qt4/GuiInfo.cpp:101 src/frontends/qt4/GuiInfo.cpp:112
+#: src/frontends/qt4/GuiInfo.cpp:123
+msgid ""
+"Enter date format specification, using the following placeholders:\n"
+"* d: day as number without a leading zero\n"
+"* dd: day as number with a leading zero\n"
+"* ddd: abbreviated localized day name\n"
+"* dddd: long localized day name\n"
+"* M: month as number without a leading zero\n"
+"* MM: month as number with a leading zero\n"
+"* MMM: abbreviated localized month name\n"
+"* MMMM: long localized month name\n"
+"* yy: year as two digit number\n"
+"* yyyy: year as four digit number"
+msgstr ""
+"Špecifikujte formát dátumu použijúc nasledujúce zástupné symboly:\n"
+"* d: deň ako číslo bez vedúcej nuly\n"
+"* dd: deň ako číslo s vedúcou nulou\n"
+"* ddd: stručné lokalizované meno dňa\n"
+"* M: mesiac ako číslo bez vedúcej nuly\n"
+"* MM:  mesiac ako číslo s vedúcou nulou\n"
+"* MMM: stručné lokalizované meno mesiaca\n"
+"* MMMM: dlhé lokalizované meno mesiaca\n"
+"* yy: rok, dve čísla\n"
+"* yyyy: rok, štyri čísla"
 
 #: src/frontends/qt4/LayoutBox.cpp:582
 #, c-format
@@ -32108,6 +32159,10 @@ msgstr "Popis (%1$s)"
 #: src/frontends/qt4/Menus.cpp:1746
 msgid "No Quote in Scope!"
 msgstr "Žiadne Úvodzovky v Oblasti!"
+
+#: src/frontends/qt4/Menus.cpp:1676
+msgid "No Text Field in Scope!"
+msgstr "Žiadne Textové Pole v Oblasti!"
 
 #: src/frontends/qt4/Menus.cpp:1782 src/frontends/qt4/Menus.cpp:1786
 #: src/frontends/qt4/Menus.cpp:1790 src/frontends/qt4/Menus.cpp:1794
@@ -34000,6 +34055,36 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Class|C"
+#~ msgstr "Trieda|T"
+
+#~ msgid "Document Info|D"
+#~ msgstr "Info Dokumentu|f"
+
+#~ msgid "File Revision|R"
+#~ msgstr "Revízia Súboru|R"
+
+#~ msgid "Info Inset Settings"
+#~ msgstr "Nastavenia Vložky Info"
+
+#~ msgid "LyX Version|X"
+#~ msgstr "Verzia LyXu|X"
+
+#~ msgid "Path|P"
+#~ msgstr "Cesty|C"
+
+#~ msgid "Revision Author|A"
+#~ msgstr "Autor Revízie|u"
+
+#~ msgid "Revision Date|D"
+#~ msgstr "Dátum Revízie|D"
+
+#~ msgid "Revision Time|i"
+#~ msgstr "Čas Revízie|a"
+
+#~ msgid "Tree Revision|T"
+#~ msgstr "Revízia Stromu|i"
 
 #~ msgid "Information Name:"
 #~ msgstr "Meno informácie:"
@@ -35932,9 +36017,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Revert|R"
 #~ msgstr "Vrátiť|r"
-
-#~ msgid "Custom...|C"
-#~ msgstr "Vlastné..."
 
 #~ msgid "Redo|d"
 #~ msgstr "Opakovať|O"
