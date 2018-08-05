@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-08-04 07:13+0200\n"
-"PO-Revision-Date: 2018-08-03 13:46+0300\n"
+"PO-Revision-Date: 2018-08-04 13:49+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -1899,10 +1899,12 @@ msgid ""
 "Clip to the coordinates specified below (bounding box for DVI/PS output, "
 "viewport for PDF output)"
 msgstr ""
+"Обрезать по координатам, указанным ниже (bounding box для вывода DVI/PS, "
+"viewport - для вывода PDF)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:350
 msgid "Clip to c&oordinates"
-msgstr "Обрезать по рамке"
+msgstr "Обрезать по &координатам"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:438
 #: src/frontends/qt4/ui/GraphicsUi.ui:445
@@ -1919,6 +1921,8 @@ msgid ""
 "Read coordinates from the file (bounding box value in case of PostScript "
 "files, graphic dimensions in case of other file types)"
 msgstr ""
+"Читать координаты из файла (значение bounding box для файлов PostScript, "
+"размер изображения - для других типов файлов)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:520
 #: src/frontends/qt4/ui/GraphicsUi.ui:527
@@ -1954,9 +1958,8 @@ msgid "Graphics Group"
 msgstr "Группа изображений"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:680
-#, fuzzy
 msgid "Assigned &to group:"
-msgstr "П&рисоединено к группе:"
+msgstr "Относится к &группе:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:690
 msgid "Click to define a new graphics group."
@@ -3274,9 +3277,8 @@ msgid "&Vertical Phantom"
 msgstr "Вертикальный фантом"
 
 #: src/frontends/qt4/ui/PreambleUi.ui:38
-#, fuzzy
 msgid "Find"
-msgstr "&Найти:"
+msgstr "Найти"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:46
 msgid "A&lter..."
@@ -18245,9 +18247,8 @@ msgid "Paragraph Settings...|P"
 msgstr "Свойства абзаца...|а"
 
 #: lib/ui/stdcontext.inc:361
-#, fuzzy
 msgid "Unify Graphics Groups|U"
-msgstr "Группа изображений"
+msgstr "Объединить группы изображений|е"
 
 #: lib/ui/stdcontext.inc:364
 msgid "Fullscreen Mode"
@@ -25464,6 +25465,10 @@ msgid ""
 "contains spaces, but your TeX installation does not allow them. You should "
 "save the file to a directory whose name does not contain spaces."
 msgstr ""
+"Путь к документу\n"
+"%1$s\n"
+"содержит пробелы, но ваш установленный TeX не разрешает их. Сохраните файл в "
+"каталог с именем без пробелов."
 
 #: src/Buffer.cpp:4462 src/Buffer.cpp:4476 src/frontends/qt4/GuiView.cpp:692
 msgid "Document export cancelled."
