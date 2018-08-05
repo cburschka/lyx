@@ -40400,6 +40400,62 @@ reference "subsec:Clear-Page-Breaks"
 \end_layout
 
 \begin_layout Subsection
+
+\change_inserted -712698321 1533459357
+Field
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1533459959
+Here you can insert fields holding specific information.
+ The submenu allows you to insert
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1533460018
+Date
+\begin_inset space ~
+\end_inset
+
+(Current) inserts the current date (which will automatically update itself)
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1533460347
+Date
+\begin_inset space ~
+\end_inset
+
+(Last
+\begin_inset space ~
+\end_inset
+
+Modification) inserts the date of the last file modification (time of last
+ save)
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1533460390
+Date
+\begin_inset space ~
+\end_inset
+
+(Fix) inserts a static date that will not change.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1533460561
+Other\SpecialChar ldots
+ opens a dialog that lets you insert alternative formats of the three
+ date types listed above and insert a range of other information.
+\end_layout
+
+\begin_layout Subsection
 List/TOC
 \end_layout
 
@@ -41040,14 +41096,20 @@ Objects
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted -712698321 1533459320
 Date
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1533459320
 Inserts the actual date.
  The format depends on the date format of the language that is used for
  \SpecialChar LyX
 's menus.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
