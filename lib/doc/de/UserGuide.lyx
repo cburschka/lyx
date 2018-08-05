@@ -8601,10 +8601,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8617,6 +8619,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8640,6 +8643,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -38788,6 +38792,51 @@ reference "subsec:Leerender-Seitenumbruch"
 \end_layout
 
 \begin_layout Subsection
+Textfeld
+\end_layout
+
+\begin_layout Standard
+Hier können Sie Textfelder einfügen, die spezifische Informationen enthalten.
+ Sie können zwischen folgenden Optionen wählen:
+\end_layout
+
+\begin_layout Description
+Datum
+\begin_inset space ~
+\end_inset
+
+(aktuell) fügt das aktuelle Datum ein (das sich automatisch aktualisiert)
+\end_layout
+
+\begin_layout Description
+Datum
+\begin_inset space ~
+\end_inset
+
+(letzte
+\begin_inset space ~
+\end_inset
+
+Änderung) fügt das Datum der letzten Bearbeitung der Datei ein (letzte Speicheru
+ng)
+\end_layout
+
+\begin_layout Description
+Datum
+\begin_inset space ~
+\end_inset
+
+(fix) fügt ein festes Datum ein, welches sich nicht ändert
+\end_layout
+
+\begin_layout Description
+Anderes\SpecialChar ldots
+ öffnet ein Dialogfenster, in dem Sie alternative Formate für die
+ angeführten Datumstypen wählen und eine Reihe anderer Informationen einfügen
+ können.
+\end_layout
+
+\begin_layout Subsection
 Liste / Inhaltsverzeichnis
 \end_layout
 
@@ -39368,17 +39417,6 @@ Eingebettete
 Objekte
 \emph default
  Handbuchs erklärt.
-\end_layout
-
-\begin_layout Subsection
-Datum
-\end_layout
-
-\begin_layout Standard
-Fügt das aktuelle Datum ein.
- Das Format hängt vom Datumsformat der Sprache ab, die aktuell für die Benutzero
-berfläche von \SpecialChar LyX
- verwendet wird.
 \end_layout
 
 \begin_layout Subsection
