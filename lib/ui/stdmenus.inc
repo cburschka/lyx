@@ -374,7 +374,7 @@ Menuset
 		Submenu "Math|h" "insert_math"
 		Submenu "Special Character|p" "insert_special"
 		Submenu "Formatting|o" "insert_formatting"
-		Submenu "Fields|d" "insert_fields"
+		Submenu "Field|d" "insert_fields"
 		Submenu "List / TOC|i" "insert_toc"
 		Submenu "Float|a" "insert_float"
 		Submenu "Note|N" "insert_note"
