@@ -22,6 +22,8 @@ import re, string
 import unicodedata
 import sys, os
 
+from datetime import date
+
 # Uncomment only what you need to import, please.
 
 from parser_tools import (count_pars_in_inset, find_end_of_inset, find_end_of_layout,
@@ -668,6 +670,283 @@ def revert_vcsinfo(document):
         i = i + 1
 
 
+def revert_dateinfo(document):
+    " Revert date info insets to static text. "
+
+# FIXME This currently only considers the main language and uses the system locale
+# Ideally, it should honor context languages and switch the locale accordingly.
+
+    # The date formats for each language using strftime syntax:
+    # long, short, loclong, locmedium, locshort
+    dateformats = {
+        "afrikaans" : ["%A, %d %B %Y", "%Y-%m-%d", "%d %B %Y", "%d %b %Y", "%Y/%m/%d"],
+        "albanian" : ["%A, %d %B %Y", "%d.%m.%y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "american" : ["%A, %B %d, %Y", "%m/%d/%y", "%B %d, %Y", "%b %d, %Y", "%m/%d/%Y"],
+        "amharic" : ["%A ፣%d %B %Y", "%d/%m/%Y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "ancientgreek" : ["%A, %d %B %Y", "%d %b %Y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "arabic_arabi" : ["%A، %d %B، %Y", "%d‏/%m‏/%Y", "%d %B، %Y", "%d/%m/%Y", "%d/%m/%Y"],
+        "arabic_arabtex" : ["%A، %d %B، %Y", "%d‏/%m‏/%Y", "%d %B، %Y", "%d/%m/%Y", "%d/%m/%Y"],
+        "armenian" : ["%Y թ. %B %d, %A", "%d.%m.%y", "%d %B، %Y", "%d %b، %Y", "%d/%m/%Y"],
+        "asturian" : ["%A, %d %B de %Y", "%d/%m/%y", "%d de %B de %Y", "%d %b %Y", "%d/%m/%Y"],
+        "australian" : ["%A, %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "austrian" : ["%A, %d. %B %Y", "%d.%m.%y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "bahasa" : ["%A, %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "bahasam" : ["%A, %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "basque" : ["%Y(e)ko %B %d, %A", "%y/%m/%d", "%Y %B %d", "%Y %b %d", "%Y/%m/%d"],
+        "belarusian" : ["%A, %d %B %Y г.", "%d.%m.%y", "%d %B %Y", "%d %b %Y", "%d.%m.%Y"],
+        "bosnian" : ["%A, %d. %B %Y.", "%d.%m.%y.", "%d. %B %Y", "%d. %b %Y", "%Y-%m-%d"],
+        "brazilian" : ["%A, %d de %B de %Y", "%d/%m/%Y", "%d de %B de %Y", "%d de %b de %Y", "%d/%m/%Y"],
+        "breton" : ["%Y %B %d, %A", "%Y-%m-%d", "%d %B %Y", "%d %b %Y", "%Y-%m-%d"],
+        "british" : ["%A, %d %B %Y", "%d/%m/%Y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "bulgarian" : ["%A, %d %B %Y г.", "%d.%m.%y г.", "%d %B %Y", "%d %b %Y", "%Y-%m-%d"],
+        "canadian" : ["%A, %B %d, %Y", "%Y-%m-%d", "%B %d, %Y", "%d %b %Y", "%Y-%m-%d"],
+        "canadien" : ["%A %d %B %Y", "%y-%m-%d", "%d %B %Y", "%d %b %Y", "%Y-%m-%d"],
+        "catalan" : ["%A, %d %B de %Y", "%d/%m/%y", "%d / %B / %Y", "%d / %b / %Y", "%d/%m/%Y"],
+        "chinese-simplified" : ["%Y年%m月%d日%A", "%Y/%m/%d", "%Y年%m月%d日", "%Y-%m-%d", "%y-%m-%d"],
+        "chinese-traditional" : ["%Y年%m月%d日 %A", "%Y/%m/%d", "%Y年%m月%d日", "%Y年%m月%d日", "%y年%m月%d日"],
+        "coptic" : ["%A, %d %B %Y", "%d %b %Y", "%B %d, %Y", "%b %d, %Y", "%m/%d/%Y"],
+        "croatian" : ["%A, %d. %B %Y.", "%d. %m. %Y.", "%d. %B %Y.", "%d. %b. %Y.", "%d.%m.%Y."],
+        "czech" : ["%A %d. %B %Y", "%d.%m.%y", "%d. %B %Y", "%d. %b. %Y", "%d.%m.%Y"],
+        "danish" : ["%A den %d. %B %Y", "%d/%m/%Y", "%d. %B %Y", "%d. %b %Y", "%d/%m/%Y"],
+        "divehi" : ["%Y %B %d, %A", "%Y-%m-%d", "%Y %B %d", "%Y %b %d", "%d/%m/%Y"],
+        "dutch" : ["%A %d %B %Y", "%d-%m-%y", "%d %B %Y", "%d %b %Y", "%d-%m-%Y"],
+        "english" : ["%A, %B %d, %Y", "%m/%d/%y", "%B %d, %Y", "%b %d, %Y", "%m/%d/%Y"],
+        "esperanto" : ["%A, %d %B %Y", "%d %b %Y", "la %d de %B %Y", "la %d de %b %Y", "%m/%d/%Y"],
+        "estonian" : ["%A, %d. %B %Y", "%d.%m.%y", "%d %B %Y", "%d %b %Y", "%d.%m.%Y"],
+        "farsi" : ["%A %d %B %Y", "%Y/%m/%d", "%d %B %Y", "%d %b %Y", "%Y/%m/%d"],
+        "finnish" : ["%A %d. %B %Y", "%d.%m.%Y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "french" : ["%A %d %B %Y", "%d/%m/%Y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "friulan" : ["%A %d di %B dal %Y", "%d/%m/%y", "%d di %B dal %Y", "%d di %b dal %Y", "%d/%m/%Y"],
+        "galician" : ["%A, %d de %B de %Y", "%d/%m/%y", "%d de %B de %Y", "%d de %b de %Y", "%d/%m/%Y"],
+        "georgian" : ["%A, %d %B, %Y", "%d.%m.%y", "%B %d, %Y", "%b %d, %Y", "%m/%d/%Y"],
+        "german" : ["%A, %d. %B %Y", "%d.%m.%y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "german-ch" : ["%A, %d. %B %Y", "%d.%m.%y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "german-ch-old" : ["%A, %d. %B %Y", "%d.%m.%y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "greek" : ["%A, %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "hebrew" : ["%A, %d ב%B %Y", "%d.%m.%Y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "hindi" : ["%A, %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d-%m-%Y"],
+        "icelandic" : ["%A, %d. %B %Y", "%d.%m.%Y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "interlingua" : ["%Y %B %d, %A", "%Y-%m-%d", "le %d de %B %Y", "le %d de %b %Y", "%Y-%m-%d"],
+        "irish" : ["%A %d %B %Y", "%d/%m/%Y", "%d. %B %Y", "%d. %b %Y", "%d/%m/%Y"],
+        "italian" : ["%A %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d/%b/%Y", "%d/%m/%Y"],
+        "japanese" : ["%Y年%m月%d日%A", "%Y/%m/%d", "%Y年%m月%d日", "%Y/%m/%d", "%y/%m/%d"],
+        "japanese-cjk" : ["%Y年%m月%d日%A", "%Y/%m/%d", "%Y年%m月%d日", "%Y/%m/%d", "%y/%m/%d"],
+        "kannada" : ["%A, %B %d, %Y", "%d/%m/%y", "%d %B %Y", "%d %B %Y", "%d-%m-%Y"],
+        "kazakh" : ["%Y ж. %d %B, %A", "%d.%m.%y", "%d %B %Y", "%d %B %Y", "%Y-%d-%m"],
+        "khmer" : ["%A %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %B %Y", "%d/%m/%Y"],
+        "korean" : ["%Y년 %m월 %d일 %A", "%y. %m. %d.", "%Y년 %m월 %d일", "%Y. %m. %d.", "%y. %m. %d."],
+        "kurmanji" : ["%A, %d %B %Y", "%d %b %Y", "%d. %B %Y", "%d. %m. %Y", "%Y-%m-%d"],
+        "lao" : ["%A ທີ %d %B %Y", "%d/%m/%Y", "%d %B %Y", "%d %B %Y", "%d/%m/%Y"],
+        "latin" : ["%A, %d %B %Y", "%d %b %Y", "%B %d, %Y", "%b %d, %Y", "%m/%d/%Y"],
+        "latvian" : ["%A, %Y. gada %d. %B", "%d.%m.%y", "%Y. gada %d. %B", "%Y. gada %d. %b", "%d.%m.%Y"],
+        "lithuanian" : ["%Y m. %B %d d., %A", "%Y-%m-%d", "%Y m. %B %d d.", "%Y m. %B %d d.", "%Y-%m-%d"],
+        "lowersorbian" : ["%A, %d. %B %Y", "%d.%m.%y", "%d %B %Y", "%d %b %Y", "%d.%m.%Y"],
+        "macedonian" : ["%A, %d %B %Y", "%d.%m.%y", "%d %B %Y", "%d %b %Y", "%d.%m.%Y"],
+        "magyar" : ["%Y. %B %d., %A", "%Y. %m. %d.", "%Y. %B %d.", "%Y. %b %d.", "%Y.%m.%d."],
+        "marathi" : ["%A, %d %B, %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d-%m-%Y"],
+        "mongolian" : ["%A, %Y оны %m сарын %d", "%Y-%m-%d", "%Y оны %m сарын %d", "%d-%m-%Y", "%d-%m-%Y"],
+        "naustrian" : ["%A, %d. %B %Y", "%d.%m.%y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "newzealand" : ["%A, %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "ngerman" : ["%A, %d. %B %Y", "%d.%m.%y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "norsk" : ["%A %d. %B %Y", "%d.%m.%Y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "nynorsk" : ["%A %d. %B %Y", "%d.%m.%Y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "occitan" : ["%Y %B %d, %A", "%Y-%m-%d", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "piedmontese" : ["%A, %d %B %Y", "%d %b %Y", "%B %d, %Y", "%b %d, %Y", "%m/%d/%Y"],
+        "polish" : ["%A, %d %B %Y", "%d.%m.%Y", "%d %B %Y", "%d %b %Y", "%Y-%m-%d"],
+        "polutonikogreek" : ["%A, %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "portuguese" : ["%A, %d de %B de %Y", "%d/%m/%y", "%d de %B de %Y", "%d de %b de %Y", "%Y/%m/%d"],
+        "romanian" : ["%A, %d %B %Y", "%d.%m.%Y", "%d %B %Y", "%d %b %Y", "%d.%m.%Y"],
+        "romansh" : ["%A, ils %d da %B %Y", "%d-%m-%y", "%d %B %Y", "%d %b %Y", "%d.%m.%Y"],
+        "russian" : ["%A, %d %B %Y г.", "%d.%m.%Y", "%d %B %Y г.", "%d %b %Y г.", "%d.%m.%Y"],
+        "samin" : ["%Y %B %d, %A", "%Y-%m-%d", "%B %d. b. %Y", "%b %d. b. %Y", "%d.%m.%Y"],
+        "sanskrit" : ["%Y %B %d, %A", "%Y-%m-%d", "%d %B %Y", "%d %b %Y", "%d-%m-%Y"],
+        "scottish" : ["%A, %dmh %B %Y", "%d/%m/%Y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "serbian" : ["%A, %d. %B %Y.", "%d.%m.%y.", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "serbian-latin" : ["%A, %d. %B %Y.", "%d.%m.%y.", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "slovak" : ["%A, %d. %B %Y", "%d. %m. %Y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "slovene" : ["%A, %d. %B %Y", "%d. %m. %y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "spanish" : ["%A, %d de %B de %Y", "%d/%m/%y", "%d de %B %de %Y", "%d %b %Y", "%d/%m/%Y"],
+        "spanish-mexico" : ["%A, %d de %B %de %Y", "%d/%m/%y", "%d de %B de %Y", "%d %b %Y", "%d/%m/%Y"],
+        "swedish" : ["%A %d %B %Y", "%Y-%m-%d", "%d %B %Y", "%d %b %Y", "%Y-%m-%d"],
+        "syriac" : ["%Y %B %d, %A", "%Y-%m-%d", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "tamil" : ["%A, %d %B, %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d-%m-%Y"],
+        "telugu" : ["%d, %B %Y, %A", "%d-%m-%y", "%d %B %Y", "%d %b %Y", "%d-%m-%Y"],
+        "thai" : ["%Aที่ %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "tibetan" : ["%Y %Bའི་ཚེས་%d, %A", "%Y-%m-%d", "%B %d, %Y", "%b %d, %Y", "%m/%d/%Y"],
+        "turkish" : ["%d %B %Y %A", "%d.%m.%Y", "%d %B %Y", "%d.%b.%Y", "%d.%m.%Y"],
+        "turkmen" : ["%d %B %Y %A", "%d.%m.%Y", "%Y ý. %B %d", "%d.%m.%Y ý.", "%d.%m.%y ý."],
+        "ukrainian" : ["%A, %d %B %Y р.", "%d.%m.%y", "%d %B %Y", "%d %m %Y", "%d.%m.%Y"],
+        "uppersorbian" : ["%A, %d. %B %Y", "%d.%m.%y", "%d %B %Y", "%d %b %Y", "%d.%m.%Y"],
+        "urdu" : ["%A، %d %B، %Y", "%d/%m/%y", "%d %B, %Y", "%d %b %Y", "%d/%m/%Y"],
+        "vietnamese" : ["%A, %d %B, %Y", "%d/%m/%Y", "%d tháng %B %Y", "%d-%m-%Y", "%d/%m/%Y"],
+        "welsh" : ["%A, %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "afrikaans" : ["%A, %d %B %Y", "%Y-%m-%d", "%d %B %Y", "%d %b %Y", "%Y/%m/%d"],
+        "albanian" : ["%A, %d %B %Y", "%d.%m.%y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "american" : ["%A, %B %d, %Y", "%m/%d/%y", "%B %d, %Y", "%b %d, %Y", "%m/%d/%Y"],
+        "amharic" : ["%A ፣%d %B %Y", "%d/%m/%Y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "ancientgreek" : ["%A, %d %B %Y", "%d %b %Y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "arabic_arabi" : ["%A، %d %B، %Y", "%d‏/%m‏/%Y", "%d %B، %Y", "%d/%m/%Y", "%d/%m/%Y"],
+        "arabic_arabtex" : ["%A، %d %B، %Y", "%d‏/%m‏/%Y", "%d %B، %Y", "%d/%m/%Y", "%d/%m/%Y"],
+        "armenian" : ["%Y թ. %B %d, %A", "%d.%m.%y", "%d %B، %Y", "%d %b، %Y", "%d/%m/%Y"],
+        "asturian" : ["%A, %d %B de %Y", "%d/%m/%y", "%d de %B de %Y", "%d %b %Y", "%d/%m/%Y"],
+        "australian" : ["%A, %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "austrian" : ["%A, %d. %B %Y", "%d.%m.%y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "bahasa" : ["%A, %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "bahasam" : ["%A, %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "basque" : ["%Y(e)ko %B %d, %A", "%y/%m/%d", "%Y %B %d", "%Y %b %d", "%Y/%m/%d"],
+        "belarusian" : ["%A, %d %B %Y г.", "%d.%m.%y", "%d %B %Y", "%d %b %Y", "%d.%m.%Y"],
+        "bosnian" : ["%A, %d. %B %Y.", "%d.%m.%y.", "%d. %B %Y", "%d. %b %Y", "%Y-%m-%d"],
+        "brazilian" : ["%A, %d de %B de %Y", "%d/%m/%Y", "%d de %B de %Y", "%d de %b de %Y", "%d/%m/%Y"],
+        "breton" : ["%Y %B %d, %A", "%Y-%m-%d", "%d %B %Y", "%d %b %Y", "%Y-%m-%d"],
+        "british" : ["%A, %d %B %Y", "%d/%m/%Y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "bulgarian" : ["%A, %d %B %Y г.", "%d.%m.%y г.", "%d %B %Y", "%d %b %Y", "%Y-%m-%d"],
+        "canadian" : ["%A, %B %d, %Y", "%Y-%m-%d", "%B %d, %Y", "%d %b %Y", "%Y-%m-%d"],
+        "canadien" : ["%A %d %B %Y", "%y-%m-%d", "%d %B %Y", "%d %b %Y", "%Y-%m-%d"],
+        "catalan" : ["%A, %d %B de %Y", "%d/%m/%y", "%d / %B / %Y", "%d / %b / %Y", "%d/%m/%Y"],
+        "chinese-simplified" : ["%Y年%m月%d日%A", "%Y/%m/%d", "%Y年%m月%d日", "%Y-%m-%d", "%y-%m-%d"],
+        "chinese-traditional" : ["%Y年%m月%d日 %A", "%Y/%m/%d", "%Y年%m月%d日", "%Y年%m月%d日", "%y年%m月%d日"],
+        "coptic" : ["%A, %d %B %Y", "%d %b %Y", "%B %d, %Y", "%b %d, %Y", "%m/%d/%Y"],
+        "croatian" : ["%A, %d. %B %Y.", "%d. %m. %Y.", "%d. %B %Y.", "%d. %b. %Y.", "%d.%m.%Y."],
+        "czech" : ["%A %d. %B %Y", "%d.%m.%y", "%d. %B %Y", "%d. %b. %Y", "%d.%m.%Y"],
+        "danish" : ["%A den %d. %B %Y", "%d/%m/%Y", "%d. %B %Y", "%d. %b %Y", "%d/%m/%Y"],
+        "divehi" : ["%Y %B %d, %A", "%Y-%m-%d", "%Y %B %d", "%Y %b %d", "%d/%m/%Y"],
+        "dutch" : ["%A %d %B %Y", "%d-%m-%y", "%d %B %Y", "%d %b %Y", "%d-%m-%Y"],
+        "english" : ["%A, %B %d, %Y", "%m/%d/%y", "%B %d, %Y", "%b %d, %Y", "%m/%d/%Y"],
+        "esperanto" : ["%A, %d %B %Y", "%d %b %Y", "la %d de %B %Y", "la %d de %b %Y", "%m/%d/%Y"],
+        "estonian" : ["%A, %d. %B %Y", "%d.%m.%y", "%d %B %Y", "%d %b %Y", "%d.%m.%Y"],
+        "farsi" : ["%A %d %B %Y", "%Y/%m/%d", "%d %B %Y", "%d %b %Y", "%Y/%m/%d"],
+        "finnish" : ["%A %d. %B %Y", "%d.%m.%Y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "french" : ["%A %d %B %Y", "%d/%m/%Y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "friulan" : ["%A %d di %B dal %Y", "%d/%m/%y", "%d di %B %dal %Y", "%d di %b dal %Y", "%d/%m/%Y"],
+        "galician" : ["%A, %d de %B de %Y", "%d/%m/%y", "%d de %B de %Y", "%d de %b de %Y", "%d/%m/%Y"],
+        "georgian" : ["%A, %d %B, %Y", "%d.%m.%y", "%B %d, %Y", "%b %d, %Y", "%m/%d/%Y"],
+        "german" : ["%A, %d. %B %Y", "%d.%m.%y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "german-ch" : ["%A, %d. %B %Y", "%d.%m.%y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "german-ch-old" : ["%A, %d. %B %Y", "%d.%m.%y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "greek" : ["%A, %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "hebrew" : ["%A, %d ב%B %Y", "%d.%m.%Y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "hindi" : ["%A, %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d-%m-%Y"],
+        "icelandic" : ["%A, %d. %B %Y", "%d.%m.%Y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "interlingua" : ["%Y %B %d, %A", "%Y-%m-%d", "le %d de %B %Y", "le %d de %b %Y", "%Y-%m-%d"],
+        "irish" : ["%A %d %B %Y", "%d/%m/%Y", "%d. %B %Y", "%d. %b %Y", "%d/%m/%Y"],
+        "italian" : ["%A %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d/%b/%Y", "%d/%m/%Y"],
+        "japanese" : ["%Y年%m月%d日%A", "%Y/%m/%d", "%Y年%m月%d日", "%Y/%m/%d", "%y/%m/%d"],
+        "japanese-cjk" : ["%Y年%m月%d日%A", "%Y/%m/%d", "%Y年%m月%d日", "%Y/%m/%d", "%y/%m/%d"],
+        "kannada" : ["%A, %B %d, %Y", "%d/%m/%y", "%d %B %Y", "%d %B %Y", "%d-%m-%Y"],
+        "kazakh" : ["%Y ж. %d %B, %A", "%d.%m.%y", "%d %B %Y", "%d %B %Y", "%Y-%d-%m"],
+        "khmer" : ["%A %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %B %Y", "%d/%m/%Y"],
+        "korean" : ["%Y년 %m월 %d일 %A", "%y. %m. %d.", "%Y년 %m월 %d일", "%Y. %m. %d.", "%y. %m. %d."],
+        "kurmanji" : ["%A, %d %B %Y", "%d %b %Y", "%d. %B %Y", "%d. %m. %Y", "%Y-%m-%d"],
+        "lao" : ["%A ທີ %d %B %Y", "%d/%m/%Y", "%d %B %Y", "%d %B %Y", "%d/%m/%Y"],
+        "latin" : ["%A, %d %B %Y", "%d %b %Y", "%B %d, %Y", "%b %d, %Y", "%m/%d/%Y"],
+        "latvian" : ["%A, %Y. gada %d. %B", "%d.%m.%y", "%Y. gada %d. %B", "%Y. gada %d. %b", "%d.%m.%Y"],
+        "lithuanian" : ["%Y m. %B %d d., %A", "%Y-%m-%d", "%Y m. %B %d d.", "%Y m. %B %d d.", "%Y-%m-%d"],
+        "lowersorbian" : ["%A, %d. %B %Y", "%d.%m.%y", "%d %B %Y", "%d %b %Y", "%d.%m.%Y"],
+        "macedonian" : ["%A, %d %B %Y", "%d.%m.%y", "%d %B %Y", "%d %b %Y", "%d.%m.%Y"],
+        "magyar" : ["%Y. %B %d., %A", "%Y. %m. %d.", "%Y. %B %d.", "%Y. %b %d.", "%Y.%m.%d."],
+        "marathi" : ["%A, %d %B, %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d-%m-%Y"],
+        "mongolian" : ["%A, %Y оны %m сарын %d", "%Y-%m-%d", "%Y оны %m сарын %d", "%d-%m-%Y", "%d-%m-%Y"],
+        "naustrian" : ["%A, %d. %B %Y", "%d.%m.%y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "newzealand" : ["%A, %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "ngerman" : ["%A, %d. %B %Y", "%d.%m.%y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "norsk" : ["%A %d. %B %Y", "%d.%m.%Y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "nynorsk" : ["%A %d. %B %Y", "%d.%m.%Y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "occitan" : ["%Y %B %d, %A", "%Y-%m-%d", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "piedmontese" : ["%A, %d %B %Y", "%d %b %Y", "%B %d, %Y", "%b %d, %Y", "%m/%d/%Y"],
+        "polish" : ["%A, %d %B %Y", "%d.%m.%Y", "%d %B %Y", "%d %b %Y", "%Y-%m-%d"],
+        "polutonikogreek" : ["%A, %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "portuguese" : ["%A, %d de %B de %Y", "%d/%m/%y", "%d de %B de %Y", "%d de %b de %Y", "%Y/%m/%d"],
+        "romanian" : ["%A, %d %B %Y", "%d.%m.%Y", "%d %B %Y", "%d %b %Y", "%d.%m.%Y"],
+        "romansh" : ["%A, ils %d da %B %Y", "%d-%m-%y", "%d %B %Y", "%d %b %Y", "%d.%m.%Y"],
+        "russian" : ["%A, %d %B %Y г.", "%d.%m.%Y", "%d %B %Y г.", "%d %b %Y г.", "%d.%m.%Y"],
+        "samin" : ["%Y %B %d, %A", "%Y-%m-%d", "%B %d. b. %Y", "%b %d. b. %Y", "%d.%m.%Y"],
+        "sanskrit" : ["%Y %B %d, %A", "%Y-%m-%d", "%d %B %Y", "%d %b %Y", "%d-%m-%Y"],
+        "scottish" : ["%A, %dmh %B %Y", "%d/%m/%Y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "serbian" : ["%A, %d. %B %Y.", "%d.%m.%y.", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "serbian-latin" : ["%A, %d. %B %Y.", "%d.%m.%y.", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "slovak" : ["%A, %d. %B %Y", "%d. %m. %Y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "slovene" : ["%A, %d. %B %Y", "%d. %m. %y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
+        "spanish" : ["%A, %d de %B de %Y", "%d/%m/%y", "%d de %B de %Y", "%d %b %Y", "%d/%m/%Y"],
+        "spanish-mexico" : ["%A, %d de %B de %Y", "%d/%m/%y", "%d de %B de %Y", "%d %b %Y", "%d/%m/%Y"],
+        "swedish" : ["%A %d %B %Y", "%Y-%m-%d", "%d %B %Y", "%d %b %Y", "%Y-%m-%d"],
+        "syriac" : ["%Y %B %d, %A", "%Y-%m-%d", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "tamil" : ["%A, %d %B, %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d-%m-%Y"],
+        "telugu" : ["%d, %B %Y, %A", "%d-%m-%y", "%d %B %Y", "%d %b %Y", "%d-%m-%Y"],
+        "thai" : ["%Aที่ %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"],
+        "tibetan" : ["%Y %Bའི་ཚེས་%d, %A", "%Y-%m-%d", "%B %d, %Y", "%b %d, %Y", "%m/%d/%Y"],
+        "turkish" : ["%d %B %Y %A", "%d.%m.%Y", "%d %B %Y", "%d.%b.%Y", "%d.%m.%Y"],
+        "turkmen" : ["%d %B %Y %A", "%d.%m.%Y", "%Y ý. %B %d", "%d.%m.%Y ý.", "%d.%m.%y ý."],
+        "ukrainian" : ["%A, %d %B %Y р.", "%d.%m.%y", "%d %B %Y", "%d %m %Y", "%d.%m.%Y"],
+        "uppersorbian" : ["%A, %d. %B %Y", "%d.%m.%y", "%d %B %Y", "%d %b %Y", "%d.%m.%Y"],
+        "urdu" : ["%A، %d %B، %Y", "%d/%m/%y", "%d %B, %Y", "%d %b %Y", "%d/%m/%Y"],
+        "vietnamese" : ["%A, %d %B, %Y", "%d/%m/%Y", "%d tháng %B %Y", "%d-%m-%Y", "%d/%m/%Y"],
+        "welsh" : ["%A, %d %B %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d/%m/%Y"]
+    }
+
+    types = ["date", "fixdate", "moddate" ]
+    i = 0
+    i = find_token(document.header, "\\language", 0)
+    if i == -1:
+        # this should not happen
+        document.warning("Malformed LyX document! No \\language header found!")
+        return
+    lang = get_value(document.header, "\\language", i)
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Info", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of Info inset.")
+            i = i + 1
+            continue
+        tp = find_token(document.body, 'type', i, j)
+        tpv = get_quoted_value(document.body, "type", tp)
+        if tpv not in types:
+            i = i + 1
+            continue
+        arg = find_token(document.body, 'arg', i, j)
+        argv = get_quoted_value(document.body, "arg", arg)
+        isodate = ""
+        dte = date.today()
+        if tpv == "fixdate":
+            datecomps = argv.split('@')
+            if len(datecomps) > 1:
+                argv = datecomps[0]
+                isodate = datecomps[1]
+                m = re.search('(\d\d\d\d)-(\d\d)-(\d\d)', isodate)
+                if m:
+                    dte = date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+# FIXME if we had the path to the original document (not the one in the tmp dir),
+#        we could use the mtime.
+#        elif tpv == "moddate":
+#            dte = date.fromtimestamp(os.path.getmtime(document.dir))
+        result = ""
+        if argv == "ISO":
+            result = dte.isodate()
+        elif argv == "long":
+            result = dte.strftime(dateformats[lang][0])
+        elif argv == "short":
+            result = dte.strftime(dateformats[lang][1])
+        elif argv == "loclong":
+            result = dte.strftime(dateformats[lang][2])
+        elif argv == "locmedium":
+            result = dte.strftime(dateformats[lang][3])
+        elif argv == "locshort":
+            result = dte.strftime(dateformats[lang][4])
+        else:
+            fmt = argv.replace("MMMM", "%b").replace("MMM", "%b").replace("MM", "%m").replace("M", "%m")
+            fmt = fmt.replace("yyyy", "%Y").replace("yy", "%y")
+            fmt = fmt.replace("dddd", "%A").replace("ddd", "%a").replace("dd", "%d")
+            fmt = re.sub('[^\'%]d', '%d', fmt)
+            fmt = fmt.replace("'", "")
+            result = dte.strftime(fmt)
+        document.body[i : j+1] = result
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -687,11 +966,13 @@ convert = [
            [555, []],
            [556, []],
            [557, [convert_vcsinfo]],
-           [558, [removeFrontMatterStyles]]
+           [558, [removeFrontMatterStyles]],
+           [559, []]
           ]
 
 revert =  [
-	   [557, [addFrontMatterStyles]],
+           [558, [revert_dateinfo]],
+           [557, [addFrontMatterStyles]],
            [556, [revert_vcsinfo]],
            [555, [revert_bibencoding]],
            [554, [revert_vcolumns]],

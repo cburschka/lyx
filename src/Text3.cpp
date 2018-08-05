@@ -1997,21 +1997,17 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INFO_INSERT: {
 		Inset * inset;
-		if (cmd.argument().empty() && cur.selection()) {
-			// if command argument is empty use current selection as parameter.
-			docstring ds = cur.selectionAsString(false);
-			cutSelection(cur, false);
-			FuncRequest cmd0(cmd, ds);
-			inset = createInset(cur.buffer(), cmd0);
+		if (cmd.argument().empty()) {
+			bv->showDialog("info");
 		} else {
 			inset = createInset(cur.buffer(), cmd);
+			if (!inset)
+				break;
+			cur.recordUndo();
+			insertInset(cur, inset);
+			cur.forceBufferUpdate();
+			cur.posForward();
 		}
-		if (!inset)
-			break;
-		cur.recordUndo();
-		insertInset(cur, inset);
-		cur.forceBufferUpdate();
-		cur.posForward();
 		break;
 	}
 	case LFUN_CAPTION_INSERT:

@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Bo Peng
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -52,6 +53,8 @@
 #include <sstream>
 
 #include <QtGui/QImage>
+#include <QDate>
+#include <QLocale>
 
 using namespace std;
 using namespace lyx::support;
@@ -76,6 +79,9 @@ NameTranslator const initTranslator()
 	translator.addPair(InsetInfo::BUFFER_INFO, "buffer");
 	translator.addPair(InsetInfo::LYX_INFO, "lyxinfo");
 	translator.addPair(InsetInfo::VCS_INFO, "vcs");
+	translator.addPair(InsetInfo::DATE_INFO, "date");
+	translator.addPair(InsetInfo::MODDATE_INFO, "moddate");
+	translator.addPair(InsetInfo::FIXDATE_INFO, "fixdate");
 
 	return translator;
 }
@@ -84,6 +90,37 @@ NameTranslator const initTranslator()
 NameTranslator const & nameTranslator()
 {
 	static NameTranslator const translator = initTranslator();
+	return translator;
+}
+
+
+typedef Translator<InsetInfo::info_type, string> DefaultValueTranslator;
+
+DefaultValueTranslator const initDVTranslator()
+{
+	DefaultValueTranslator translator(InsetInfo::UNKNOWN_INFO, "");
+
+	translator.addPair(InsetInfo::SHORTCUTS_INFO, "info-insert");
+	translator.addPair(InsetInfo::SHORTCUT_INFO, "info-insert");
+	translator.addPair(InsetInfo::LYXRC_INFO, "user_name");
+	translator.addPair(InsetInfo::PACKAGE_INFO, "graphics");
+	translator.addPair(InsetInfo::TEXTCLASS_INFO, "article");
+	translator.addPair(InsetInfo::MENU_INFO, "info-insert");
+	translator.addPair(InsetInfo::ICON_INFO, "info-insert");
+	translator.addPair(InsetInfo::BUFFER_INFO, "name");
+	translator.addPair(InsetInfo::LYX_INFO, "version");
+	translator.addPair(InsetInfo::VCS_INFO, "revision");
+	translator.addPair(InsetInfo::DATE_INFO, "loclong");
+	translator.addPair(InsetInfo::MODDATE_INFO, "loclong");
+	translator.addPair(InsetInfo::FIXDATE_INFO, "loclong");
+
+	return translator;
+}
+
+/// The translator between the information type enum and some sensible default value.
+DefaultValueTranslator const & defaultValueTranslator()
+{
+	static DefaultValueTranslator const translator = initDVTranslator();
 	return translator;
 }
 
@@ -183,6 +220,15 @@ docstring InsetInfo::toolTip(BufferView const &, int, int) const
 	case LYX_INFO:
 		result = _("The current LyX version");
 		break;
+	case DATE_INFO:
+		result = _("The current date");
+		break;
+	case MODDATE_INFO:
+		result = _("The date of last save");
+		break;
+	case FIXDATE_INFO:
+		result = _("A static date");
+		break;
 	}
 
 	return result;
@@ -224,7 +270,7 @@ void InsetInfo::write(ostream & os) const
 bool InsetInfo::validateModifyArgument(docstring const & arg) const
 {
 	string type;
-	string const name = trim(split(to_utf8(arg), type, ' '));
+	string name = trim(split(to_utf8(arg), type, ' '));
 
 	switch (nameTranslator().find(type)) {
 	case UNKNOWN_INFO:
@@ -266,6 +312,26 @@ bool InsetInfo::validateModifyArgument(docstring const & arg) const
 
 	case LYX_INFO:
 		return name == "version";
+
+	case FIXDATE_INFO: {
+		string date;
+		string piece;
+		date = split(name, piece, '@');
+		if (!date.empty() && !QDate::fromString(toqstr(date), Qt::ISODate).isValid())
+			return false;
+		if (!piece.empty())
+			name = piece;
+	}
+	// fall through
+	case DATE_INFO:
+	case MODDATE_INFO: {
+		if (name == "long" || name == "short" || name == "ISO")
+			return true;
+		else {
+			QDate date = QDate::currentDate();
+			return !date.toString(toqstr(name)).isEmpty();
+		}
+	}
 	}
 
 	return false;
@@ -297,6 +363,28 @@ set<string> getTexFileList(string const & filename)
 	return list;
 }
 } // namespace anon
+
+
+docstring InsetInfo::getDate(string const name, QDate const date) const
+{
+	QLocale loc;
+	if (lang_)
+		loc = QLocale(toqstr(lang_->code()));
+	if (name == "long")
+		return qstring_to_ucs4(loc.toString(date, QLocale::LongFormat));
+	else if (name == "short")
+		return qstring_to_ucs4(loc.toString(date, QLocale::ShortFormat));
+	else if (name == "ISO")
+		return qstring_to_ucs4(date.toString(Qt::ISODate));
+	else if (name == "loclong")
+		return qstring_to_ucs4(loc.toString(date, toqstr(lang_->dateFormat(0))));
+	else if (name == "locmedium")
+		return qstring_to_ucs4(loc.toString(date, toqstr(lang_->dateFormat(1))));
+	else if (name == "locshort")
+		return qstring_to_ucs4(loc.toString(date, toqstr(lang_->dateFormat(2))));
+	else
+		return qstring_to_ucs4(loc.toString(date, toqstr(name)));
+}
 
 
 vector<pair<string,docstring>> InsetInfo::getArguments(string const & type) const
@@ -364,6 +452,31 @@ vector<pair<string,docstring>> InsetInfo::getArguments(string const & type) cons
 	case LYX_INFO:
 		result.push_back(make_pair("version", _("LyX version")));
 		break;
+
+	case FIXDATE_INFO:
+	case DATE_INFO:
+	case MODDATE_INFO:
+		string const dt = split(name_, '@');
+		QDate date;
+		if (type == "moddate")
+			date = QDateTime::fromTime_t(buffer().fileName().lastModified()).date();
+		else if (type == "fixdate" && !dt.empty())
+			date = QDate::fromString(toqstr(dt), Qt::ISODate);
+		else
+			date = QDate::currentDate();
+		result.push_back(make_pair("long",getDate("long", date)));
+		result.push_back(make_pair("short", getDate("short", date)));
+		result.push_back(make_pair("loclong", getDate("loclong", date)));
+		result.push_back(make_pair("locmedium", getDate("locmedium", date)));
+		result.push_back(make_pair("locshort", getDate("locshort", date)));
+		result.push_back(make_pair("ISO", getDate("ISO", date)));
+		result.push_back(make_pair("yyyy", getDate("yyyy", date)));
+		result.push_back(make_pair("MMMM", getDate("MMMM", date)));
+		result.push_back(make_pair("MMM", getDate("MMM", date)));
+		result.push_back(make_pair("dddd", getDate("dddd", date)));
+		result.push_back(make_pair("ddd", getDate("ddd", date)));
+		result.push_back(make_pair("custom", _("Custom")));
+		break;
 	}
 
 	return result;
@@ -392,6 +505,13 @@ bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_MODIFY:
 		if (validateModifyArgument(cmd.argument())) {
 			flag.setEnabled(true);
+			string typestr;
+			string name = trim(split(to_utf8(cmd.argument()), typestr, ' '));
+			info_type type = nameTranslator().find(typestr);
+			string origname = name_;
+			if (type == FIXDATE_INFO)
+				split(name_, origname, '@');
+			flag.setOnOff(type == type_ && name == origname);
 			return true;
 		}
 		//fall through
@@ -437,10 +557,29 @@ void InsetInfo::setInfo(string const & name)
 {
 	if (name.empty())
 		return;
+
+	string saved_date_specifier;
+	// Store old date specifier for potential re-use
+	if (!name_.empty())
+		saved_date_specifier = split(name_, '@');
 	// info_type name
 	string type;
 	name_ = trim(split(name, type, ' '));
 	type_ = nameTranslator().find(type);
+	if (name_.empty())
+		name_ = defaultValueTranslator().find(type_);
+	if (type_ == FIXDATE_INFO) {
+		string const date_specifier = split(name_, '@');
+		// If an explicit new fix date is specified, use that
+		// Otherwise, use the old one or, if there is none,
+		// the current date
+		if (date_specifier.empty()) {
+			if (saved_date_specifier.empty())
+				name_ += "@" + fromqstr(QDate::currentDate().toString(Qt::ISODate));
+			else
+				name_ += "@" + saved_date_specifier;
+		}
+	}
 }
 
 
@@ -480,18 +619,18 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		return;
 
 	BufferParams const & bp = buffer().params();
-	Language const * lang = it.paragraph().getFontSettings(bp, it.pos()).language();
+	lang_ = it.paragraph().getFontSettings(bp, it.pos()).language();
 	Language const * tryguilang = languages.getFromCode(Messages::guiLanguage());
 	// Some info insets use the language of the GUI (if available)
-	Language const * guilang = tryguilang ? tryguilang : lang;
+	Language const * guilang = tryguilang ? tryguilang : lang_;
 
-	force_ltr_ = !lang->rightToLeft();
+	force_ltr_ = !lang_->rightToLeft();
 	// This is just to get the string into the po files
 	docstring gui;
 	switch (type_) {
 	case UNKNOWN_INFO:
 		gui = _("Unknown Info!");
-		info(from_ascii("Unknown Info!"), lang);
+		info(from_ascii("Unknown Info!"), lang_);
 		initialized_ = false;
 		break;
 	case SHORTCUT_INFO:
@@ -500,20 +639,20 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		FuncRequest const func = lyxaction.lookupFunc(name_);
 		if (func.action() == LFUN_UNKNOWN_ACTION) {
 			gui = _("Unknown action %1$s");
-			error(from_ascii("Unknown action %1$s"), lang);
+			error(from_ascii("Unknown action %1$s"), lang_);
 			break;
 		}
 		KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(func);
 		if (bindings.empty()) {
 			gui = _("undefined");
-			info(from_ascii("undefined"), lang);
+			info(from_ascii("undefined"), lang_);
 			break;
 		}
 		if (type_ == SHORTCUT_INFO)
 			setText(bindings.begin()->print(KeySequence::ForGui), guilang);
 		else
 			setText(theTopLevelKeymap().printBindings(func, KeySequence::ForGui), guilang);
-		force_ltr_ = !guilang->rightToLeft() && !lang->rightToLeft();
+		force_ltr_ = !guilang->rightToLeft() && !lang_->rightToLeft();
 		break;
 	}
 	case LYXRC_INFO: {
@@ -522,7 +661,7 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		ostringstream oss;
 		if (name_.empty()) {
 			gui = _("undefined");
-			info(from_ascii("undefined"), lang);
+			info(from_ascii("undefined"), lang_);
 			break;
 		}
 		// FIXME this uses the serialization mechanism to get the info
@@ -531,7 +670,7 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		string result = oss.str();
 		if (result.size() < 2) {
 			gui = _("undefined");
-			info(from_ascii("undefined"), lang);
+			info(from_ascii("undefined"), lang_);
 			break;
 		}
 		string::size_type loc = result.rfind("\n", result.size() - 2);
@@ -539,7 +678,7 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		if (result.size() < loc + name_.size() + 1
 			  || result.substr(loc + 1, name_.size()) != name_) {
 			gui = _("undefined");
-			info(from_ascii("undefined"), lang);
+			info(from_ascii("undefined"), lang_);
 			break;
 		}
 		// remove leading comments and \\name and space
@@ -548,7 +687,7 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		// remove \n and ""
 		result = rtrim(result, "\n");
 		result = trim(result, "\"");
-		setText(from_utf8(result), lang);
+		setText(from_utf8(result), lang_);
 		break;
 	}
 	case PACKAGE_INFO:
@@ -558,10 +697,10 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		// check in packages.lst
 		if (LaTeXFeatures::isAvailable(name_)) {
 			gui = _("yes");
-			info(from_ascii("yes"), lang);
+			info(from_ascii("yes"), lang_);
 		} else {
 			gui = _("no");
-			info(from_ascii("no"), lang);
+			info(from_ascii("no"), lang_);
 		}
 		initialized_ = true;
 		break;
@@ -575,10 +714,10 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 			available = list[name_].isTeXClassAvailable();
 		if (available) {
 			gui = _("yes");
-			info(from_ascii("yes"), lang);
+			info(from_ascii("yes"), lang_);
 		} else {
 			gui = _("no");
-			info(from_ascii("no"), lang);
+			info(from_ascii("no"), lang_);
 		}
 		break;
 	}
@@ -592,18 +731,18 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		FuncRequest const func = lyxaction.lookupFunc(name_);
 		if (func.action() == LFUN_UNKNOWN_ACTION) {
 			gui = _("Unknown action %1$s");
-			error(from_ascii("Unknown action %1$s"), lang);
+			error(from_ascii("Unknown action %1$s"), lang_);
 			break;
 		}
 		// iterate through the menubackend to find it
 		if (!theApp()) {
 			gui = _("Can't determine menu entry for action %1$s in batch mode");
-			error(from_ascii("Can't determine menu entry for action %1$s in batch mode"), lang);
+			error(from_ascii("Can't determine menu entry for action %1$s in batch mode"), lang_);
 			break;
 		}
 		if (!theApp()->searchMenu(func, names)) {
 			gui = _("No menu entry for action %1$s");
-			error(from_ascii("No menu entry for action %1$s"), lang);
+			error(from_ascii("No menu entry for action %1$s"), lang_);
 			break;
 		}
 		// if found, return its path.
@@ -673,7 +812,7 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		igp.width = Length(1, Length::EM);
 		inset->setParams(igp);
 		clear();
-		Font const f(inherit_font, lang);
+		Font const f(inherit_font, lang_);
 		paragraphs().front().insertInset(0, inset, f,
 						 Change(Change::UNCHANGED));
 		break;
@@ -681,11 +820,11 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 	case BUFFER_INFO: {
 		// this could all change, so we will recalculate each time
 		if (name_ == "name")
-			setText(from_utf8(buffer().fileName().onlyFileName()), lang);
+			setText(from_utf8(buffer().fileName().onlyFileName()), lang_);
 		else if (name_ == "path")
-			setText(from_utf8(os::latex_path(buffer().filePath())), lang);
+			setText(from_utf8(os::latex_path(buffer().filePath())), lang_);
 		else if (name_ == "class")
-			setText(from_utf8(bp.documentClass().name()), lang);
+			setText(from_utf8(bp.documentClass().name()), lang_);
 		break;
 	}
 	case VCS_INFO: {
@@ -693,7 +832,7 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		// recalculate each time through
 		if (!buffer().lyxvc().inUse()) {
 			gui = _("No version control!");
-			info(from_ascii("No version control!"), lang);
+			info(from_ascii("No version control!"), lang_);
 			break;
 		}
 		LyXVC::RevisionInfo itype = LyXVC::Unknown;
@@ -710,9 +849,9 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		string binfo = buffer().lyxvc().revisionInfo(itype);
 		if (binfo.empty()) {
 			gui = _("%1$s[[vcs data]] unknown");
-			error(from_ascii("%1$s[[vcs data]] unknown"), lang);
+			error(from_ascii("%1$s[[vcs data]] unknown"), lang_);
 		} else
-			setText(from_utf8(binfo), lang);
+			setText(from_utf8(binfo), lang_);
 		break;
 	}
 	case LYX_INFO:
@@ -720,9 +859,24 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		if (initialized_)
 			break;
 		if (name_ == "version")
-			setText(from_ascii(lyx_version), lang);
+			setText(from_ascii(lyx_version), lang_);
 		initialized_ = true;
 		break;
+	case DATE_INFO:
+	case MODDATE_INFO:
+	case FIXDATE_INFO: {
+		string date_format = name_;
+		string const date_specifier = (type_ == FIXDATE_INFO && contains(name_, '@'))
+				? split(name_, date_format, '@') : string();
+		QDate date;
+		if (type_ == MODDATE_INFO)
+			date = QDateTime::fromTime_t(buffer().fileName().lastModified()).date();
+		else if (type_ == FIXDATE_INFO && !date_specifier.empty())
+			date = QDate::fromString(toqstr(date_specifier), Qt::ISODate);
+		else
+			date = QDate::currentDate();
+		setText(getDate(date_format, date), lang_);
+	}
 	}
 	// Just to do something with that string
 	LYXERR(Debug::INFO, "info inset text: " << gui);

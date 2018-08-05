@@ -13,6 +13,7 @@
 #define INSET_INFO_H
 
 #include "InsetCollapsible.h"
+#include <QDate>
 
 namespace lyx {
 
@@ -32,10 +33,26 @@ screen and latex output is the content of the information. An InsetInfo can
 have type "shortcuts", "shortcut", "lyxrc", "package", "textclass", "menu",
 "buffer" or "vcs". Arguments and outputs vary by type.
 
-shortcuts: argument of this type of InsetInfo is the name of the LFUN such as
-    "math-insert \alpha". The syntax is the same as what is used in the bind
-    and ui files. The output of this inset is all shortcuts for this LFUN
-    separated by comma.
+date: argument of this type of InsetInfo is either a fixed date type of
+    "long" (long localized date, with weekday, as provided by QLocale),
+    "short" (short localized date, with two-digit year, as provided by QLocale),
+    "loclong" (long localized date, without weekday, defined in languages),
+    "locmedium" (medium localized date, defined in languages),
+    "locshort" (short localized date, with four-digit year, defined in languages),
+    "ISO" (ISO-conforming date)
+    or a custom date using the QDate syntax.
+    The output is a localized formatted (current) date.
+
+moddate: Same as date.
+    The output is a localized formatted date of last file modification (saving).
+
+fixdate: Same as date. A fixed date (in ISO format) is prepended to the argument,
+    delimited by '@'.
+    The output is a localized formatted fix date.
+
+shortcuts: argument is the name of the LFUN such as "math-insert \alpha".
+    The syntax is the same as what is used in the bind and ui files.
+    The output of this inset is all shortcuts for this LFUN separated by comma.
 
 shortcut: the same as shortcuts, but only output the last shortcut.
 
@@ -83,17 +100,20 @@ the command buffer (view->Toolbar->Command Buffer).
 class InsetInfo : public InsetCollapsible {
 public:
 	enum info_type {
-		BUFFER_INFO,    // Buffer related information
+		DATE_INFO,       // Current Date
+		MODDATE_INFO,    // Date of last modification
+		FIXDATE_INFO,    // Fix date
+		BUFFER_INFO,     // Buffer related information
 		VCS_INFO,        // Version control information
-		PACKAGE_INFO,   // Availability of package
-		TEXTCLASS_INFO, // Availability of textclass
-		SHORTCUTS_INFO, // Keyboard shortcuts
-		SHORTCUT_INFO,  // Keyboard shortcut
-		LYXRC_INFO,     // RC entry
-		MENU_INFO,      // Which menu item is used for certain function
-		ICON_INFO,      // which toolbar icon is used for certain function
+		PACKAGE_INFO,    // Availability of package
+		TEXTCLASS_INFO,  // Availability of textclass
+		SHORTCUTS_INFO,  // Keyboard shortcuts
+		SHORTCUT_INFO,   // Keyboard shortcut
+		LYXRC_INFO,      // RC entry
+		MENU_INFO,       // Which menu item is used for certain function
+		ICON_INFO,       // which toolbar icon is used for certain function
 		LYX_INFO,        // LyX version information
-		UNKNOWN_INFO,   // Invalid type
+		UNKNOWN_INFO,    // Invalid type
 	};
 
 	///
@@ -155,6 +175,8 @@ private:
 	void info(docstring const & err, Language const *);
 	///
 	void setText(docstring const & str, Language const *);
+	///
+	docstring getDate(std::string const, QDate const date = QDate::currentDate()) const;
 	// make sure that the other version of setText is still available.
 	using InsetCollapsible::setText;
 	///
@@ -165,6 +187,8 @@ private:
 	std::string name_;
 	///
 	bool force_ltr_;
+	///
+	Language const * lang_;
 };
 
 

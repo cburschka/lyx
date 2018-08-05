@@ -60,6 +60,7 @@
 #include "insets/Inset.h"
 #include "insets/InsetCitation.h"
 #include "insets/InsetGraphics.h"
+#include "insets/InsetInfo.h"
 #include "insets/InsetQuotes.h"
 
 #include "support/lassert.h"
@@ -173,6 +174,8 @@ public:
 		IndicesListsContext,
 		/** Available citation styles for a given citation */
 		CiteStyles,
+		/** Available arguments for a given info inset */
+		InfoArguments,
 		/** Available graphics groups */
 		GraphicsGroups,
 		/// Words suggested by the spellchecker.
@@ -365,6 +368,7 @@ public:
 	void expandIndices(Buffer const * buf, bool listof = false);
 	void expandIndicesContext(Buffer const * buf, bool listof = false);
 	void expandCiteStyles(BufferView const *);
+	void expandInfoArguments(BufferView const *);
 	void expandGraphicsGroups(BufferView const *);
 	void expandSpellingSuggestions(BufferView const *);
 	void expandLanguageSelector(Buffer const * buf);
@@ -466,6 +470,7 @@ void MenuDefinition::read(Lexer & lex)
 		md_indicescontext,
 		md_indiceslists,
 		md_indiceslistscontext,
+		md_infoarguments,
 		md_lastfiles,
 		md_optitem,
 		md_optsubmenu,
@@ -513,6 +518,7 @@ void MenuDefinition::read(Lexer & lex)
 		{ "indicescontext", md_indicescontext },
 		{ "indiceslists", md_indiceslists },
 		{ "indiceslistscontext", md_indiceslistscontext },
+		{ "infoarguments", md_infoarguments },
 		{ "item", md_item },
 		{ "languageselector", md_languageselector },
 		{ "lastfiles", md_lastfiles },
@@ -627,6 +633,11 @@ void MenuDefinition::read(Lexer & lex)
 		case md_citestyles:
 			add(MenuItem(MenuItem::CiteStyles));
 			break;
+
+		case md_infoarguments:
+			add(MenuItem(MenuItem::InfoArguments));
+			break;
+			
 
 		case md_graphicsgroups:
 			add(MenuItem(MenuItem::GraphicsGroups));
@@ -1654,6 +1665,44 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 }
 
 
+void MenuDefinition::expandInfoArguments(BufferView const * bv)
+{
+	if (!bv)
+		return;
+
+	Inset const * inset = bv->cursor().nextInset();
+	if (!inset || inset->lyxCode() != INFO_CODE) {
+		add(MenuItem(MenuItem::Command,
+				    qt_("No Text Field in Scope!"),
+				    FuncRequest(LFUN_NOACTION)));
+		return;
+	}
+	InsetInfo const * iinset = static_cast<InsetInfo const *>(inset);
+
+	string const type = iinset->infoType();
+	vector<pair<string,docstring>> const args = iinset->getArguments(type);
+
+	// Don't generate a menu for big lists (such as lfuns and rcs)
+	if (args.size() > 15)
+		return;
+
+	for (auto const & p : args) {
+		if (p.first == "invalid")
+			// non-selectable
+			continue;
+		if (p.first == "custom") {
+			add(MenuItem(MenuItem::Command, qt_("Custom..."),
+				     FuncRequest(LFUN_INSET_SETTINGS, "info")));
+			continue;
+		}
+		docstring label = p.second;
+		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
+				    FuncRequest(LFUN_INSET_MODIFY, type + " " + p.first)));
+	}
+}
+
+
+
 void MenuDefinition::expandArguments(BufferView const * bv, bool switcharg)
 {
 	if (!bv)
@@ -2305,6 +2354,11 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 		case MenuItem::CiteStyles:
 			tomenu.expandCiteStyles(bv);
 			break;
+
+		case MenuItem::InfoArguments:
+			tomenu.expandInfoArguments(bv);
+			break;
+			
 
 		case MenuItem::Toc:
 			tomenu.expandToc(buf);

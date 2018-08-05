@@ -17,9 +17,6 @@
    <bool>true</bool>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
-    <widget class="QListWidget" name="infoLW"/>
-   </item>
    <item row="0" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
@@ -41,7 +38,31 @@
      </item>
     </layout>
    </item>
+   <item row="1" column="0">
+    <widget class="QListWidget" name="infoLW"/>
+   </item>
    <item row="2" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="fixDateLA">
+       <property name="text">
+        <string>Fix Date:</string>
+       </property>
+       <property name="buddy">
+        <cstring>fixDateLE</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="fixDateLE">
+       <property name="toolTip">
+        <string>Here you can enter a fix date (in ISO format: YYYY-MM-DD)</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="nameLA">

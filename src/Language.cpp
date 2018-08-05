@@ -103,11 +103,20 @@ string Language::fontenc(BufferParams const & params) const
 }
 
 
+string Language::dateFormat(size_t i) const
+{
+	if (i > dateformats_.size())
+		return string();
+	return dateformats_.at(i);
+}
+
+
 bool Language::readLanguage(Lexer & lex)
 {
 	enum LanguageTags {
 		LA_AS_BABELOPTS = 1,
 		LA_BABELNAME,
+		LA_DATEFORMATS,
 		LA_ENCODING,
 		LA_END,
 		LA_FONTENC,
@@ -130,6 +139,7 @@ bool Language::readLanguage(Lexer & lex)
 	LexerKeyword languageTags[] = {
 		{ "asbabeloptions",       LA_AS_BABELOPTS },
 		{ "babelname",            LA_BABELNAME },
+		{ "dateformats",          LA_DATEFORMATS },
 		{ "encoding",             LA_ENCODING },
 		{ "end",                  LA_END },
 		{ "fontencoding",         LA_FONTENC },
@@ -194,6 +204,13 @@ bool Language::readLanguage(Lexer & lex)
 			vector<string> const fe =
 				getVectorFromString(lex.getString(true), "|");
 			fontenc_.insert(fontenc_.end(), fe.begin(), fe.end());
+			break;
+		}
+		case LA_DATEFORMATS: {
+			lex.eatLine();
+			vector<string> const df =
+				getVectorFromString(trim(lex.getString(true), "\""), "|");
+			dateformats_.insert(dateformats_.end(), df.begin(), df.end());
 			break;
 		}
 		case LA_GUINAME:
@@ -261,6 +278,11 @@ bool Language::read(Lexer & lex)
 	}
 	if (fontenc_.empty())
 		fontenc_.push_back("ASCII");
+	if (dateformats_.empty()) {
+		dateformats_.push_back("MMMM dd, yyyy");
+		dateformats_.push_back("MMM dd, yyyy");
+		dateformats_.push_back("M/d/yyyy");
+	}
 	return true;
 }
 

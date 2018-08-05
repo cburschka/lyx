@@ -86,6 +86,8 @@ public:
 	bool internalFontEncoding() const { return internal_enc_; }
 	/// The most suitable font encoding(s) for the selected document font
 	std::string fontenc(BufferParams const &) const;
+	/// Return the localized date formats (long, medium, short format)
+	std::string dateFormat(size_t i) const;
 	/// This language needs to be passed to babel itself (not the class)
 	bool asBabelOptions() const { return as_babel_options_; }
 	/// This language corresponds to a translation of the GUI
@@ -133,6 +135,8 @@ private:
 	trivdocstring babel_presettings_;
 	///
 	std::vector<std::string> fontenc_;
+	///
+	std::vector<std::string> dateformats_;
 	///
 	bool internal_enc_;
 	///

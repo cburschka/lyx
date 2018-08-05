@@ -12,8 +12,9 @@
 #	PolyglossiaOpts    "<language-specific options>"
 #	QuoteStyle         <british|danish|english|french|frenchin|
 #                           german|polish|russian|swedish|swedishg|swiss|plain>
+#     	DateFormats        "<long>|<medium>|<short>"
 #	Encoding           <encoding>
-#	FontEncoding       <font encoding|font encoding|...]>
+#	FontEncoding       <font encoding|font encoding|...>
 #	InternalEncoding   <true|false>
 #	RTL                <true|false>
 #	AsBabelOptions     <true|false>
@@ -63,6 +64,21 @@
 #   Note that the option names have been selected (rather arbitrarily)
 #   because the respective styles are common in the respective countries.
 #   Of course this does not imply any fixed relation to those countries.
+# * DateFormats lists the localized conventions for three date forms:
+#   - Long: December 1, 2018
+#   - Medium: Dec 1, 2018
+#   - Short: 1/12/2018
+#   These are separated by | and use the QDate syntax:
+#   * d	the day as number without a leading zero (1 to 31)
+#   * dd	the day as number with a leading zero (01 to 31)
+#   * ddd	the abbreviated localized day name (e.g. 'Mon' to 'Sun')
+#   * dddd	the long localized day name (e.g. 'Monday' to 'Sunday')
+#   * M	the month as number without a leading zero (1 to 12)
+#   * MM	the month as number with a leading zero (01 to 12)
+#   * MMM	the abbreviated localized month name (e.g. 'Jan' to 'Dec')
+#   * MMMM	the long localized month name (e.g. 'January' to 'December')
+#   * yy	the year as two digit number (00 to 99)
+#   * yyyy	the year as four digit number
 # * Encoding is the default encoding used with TeX fonts.
 #   It is only used if Document > Settings > Language > Encoding
 #   is set to "Language Default" and "use non-TeX fonts" is FALSE.
@@ -137,6 +153,7 @@ Language afrikaans
 	QuoteStyle       polish
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "dd MMMM yyyy|dd MMM yyyy|yyyy/MM/dd"
 	LangCode         af_ZA
 End
 
@@ -148,6 +165,7 @@ Language albanian
 	QuoteStyle       swiss
 	Encoding         iso8859-2
 	FontEncoding     T1|OT1
+	DateFormats      "dd MMMM yyyy|dd MMM yyyy|dd/MM/yyyy"
 	LangCode         sq_AL
 End
 
@@ -159,6 +177,7 @@ Language american
 	QuoteStyle       english
 	Encoding         iso8859-15
 	FontEncoding	 ASCII
+	DateFormats      "MMMM dd, yyyy|MMM dd, yyyy|M/d/yyyy"
 	LangCode         en_US
 End
 
@@ -167,6 +186,7 @@ Language amharic
 	GuiName          "Amharic"
 	PolyglossiaName  amharic
 	Encoding         utf8
+	DateFormats      "dd MMMM yyyy|dd MMM yyyy|dd/MM/yyyy"
 	LangCode         am_ET
 End
 
@@ -184,6 +204,7 @@ Language ancientgreek
 	Encoding          iso8859-7
 	InternalEncoding  true
 	FontEncoding      LGR
+	DateFormats      "dd MMMM yyyy|dd MMM yyyy|dd/MM/yyyy"
 	LangCode          grc_GR
 	Provides          textgreek
 End
@@ -196,6 +217,7 @@ Language arabic_arabtex
 	BabelName        arabtex
 	QuoteStyle       french
 	Encoding         cp1256
+	DateFormats      "d MMMM، yyyy|dd/MM/yyyy|d/M/yyyy"
 	RTL              true
 	LangCode         ar_SA
 End
@@ -208,6 +230,7 @@ Language arabic_arabi
 	QuoteStyle       french
 	Encoding         cp1256
 	FontEncoding     LAE
+	DateFormats      "d MMMM، yyyy|dd/MM/yyyy|d/M/yyyy"
 	RTL              true
 	AsBabelOptions   true
 	LangCode         ar_SA
@@ -219,6 +242,7 @@ Language armenian
 	PolyglossiaName  armenian
 	QuoteStyle       swiss
 	Encoding         utf8
+	DateFormats      "d MMMM، yyyy|d MMM، yyyy|d/M/yyyy"
 	LangCode         hy_AM
 End
 
@@ -228,6 +252,7 @@ Language asturian
 	PolyglossiaName  asturian
 	QuoteStyle       french
 	Encoding         iso8859-15
+	DateFormats      "d 'de' MMMM 'de' yyyy|d MMM yyyy|dd/MM/yyyy"
 	LangCode         ast_ES
 End
 
@@ -239,6 +264,7 @@ Language australian
 	PolyglossiaOpts  "variant=australian"
 	Encoding         iso8859-15
 	FontEncoding	 ASCII
+	DateFormats      "d MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
 	QuoteStyle       english
 	LangCode         en_AU
 End
@@ -254,6 +280,7 @@ Language austrian
 	QuoteStyle       german
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "dd. MMMM yyyy|dd. MMM yyyy|dd.MM.yyyy"
 	LangCode         de
 	LangVariety      alt
 End
@@ -268,6 +295,7 @@ Language naustrian
 	QuoteStyle       german
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "dd. MMMM yyyy|dd. MMM yyyy|dd.MM.yyyy"
 	LangCode         de_AT
 End
 
@@ -279,6 +307,7 @@ Language bahasa
 	QuoteStyle       english
 	Encoding         iso8859-15
 	FontEncoding	 ASCII
+	DateFormats      "d MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
 	LangCode         id_ID
 End
 
@@ -288,6 +317,7 @@ Language bahasam
 	PolyglossiaName  bahasam
 	QuoteStyle       english
 	Encoding         iso8859-15
+	DateFormats      "dd MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
 	LangCode         ms_MY
 End
 
@@ -299,6 +329,7 @@ Language basque
 	QuoteStyle       swiss
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "yyyy MMMM dd|yyyy MMM dd|yyyy/MM/dd"
 	LangCode         eu_ES
 	PostBabelPreamble
 	\addto\extrasbasque{\bbl@deactivate{~}}
@@ -312,6 +343,7 @@ Language belarusian
 	QuoteStyle       french
 	Encoding         cp1251
 	FontEncoding	 T2A
+	DateFormats      "dd MMMM yyyy|d MMM yyyy|d.M.yyyy"
 	LangCode         be_BY
 	AsBabelOptions   true
 End
@@ -323,6 +355,7 @@ Language bosnian
 	QuoteStyle       polish
 	Encoding         iso8859-2
 	FontEncoding	 T1|OT1
+	DateFormats      "d. MMMM yyyy|d. MMM yyyy|yyyy-MM-dd"
 	LangCode         bs_BA
 End
 
@@ -334,6 +367,7 @@ Language brazilian
 	QuoteStyle       english
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "d 'de' MMMM 'de' yyyy|d 'de' MMM 'de' yyyy|dd/MM/yyyy"
 	LangCode         pt_BR
 End
 
@@ -345,6 +379,7 @@ Language breton
 	QuoteStyle       french
 	Encoding         iso8859-15
 	#FontEncoding    T1
+	DateFormats      "dd MMMM yyyy|d MMM yyyy|yyyy-MM-dd"
 	LangCode         br_FR
 End
 
@@ -356,6 +391,7 @@ Language british
 	QuoteStyle       british
 	Encoding         iso8859-15
 	FontEncoding	 ASCII
+	DateFormats      "d MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
 	LangCode         en_GB
 End
 
@@ -366,6 +402,7 @@ Language bulgarian
 	QuoteStyle       german
 	Encoding         cp1251
 	FontEncoding     T2A
+	DateFormats      "dd MMMM yyyy|d MMM yyyy|yyyy-M-d"
 	LangCode         bg_BG
 	Provides         textcyrillic
 End
@@ -379,6 +416,7 @@ Language canadian
 	QuoteStyle       english
 	Encoding         iso8859-15
 	FontEncoding	 ASCII
+	DateFormats      "MMMM d, yyyy|d MMM yyyy|yyyy-MM-dd"
 	LangCode         en_CA
 End
 
@@ -393,6 +431,7 @@ Language canadien
 	QuoteStyle       french
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "d MMMM yyyy|d MMM yyyy|yyyy-MM-dd"
 	LangCode         fr_CA
 End
 
@@ -405,6 +444,7 @@ Language catalan
 	QuoteStyle       french
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "d / MMMM / yyyy|d / MMM / yyyy|dd/MM/yyyy"
 	LangCode         ca_ES
 End
 
@@ -415,6 +455,7 @@ Language chinese-simplified
 	Encoding         euc-cn
 	QuoteStyle       english
 	LangCode         zh_CN
+	DateFormats      "yyyy年M月d日|yyyy-M-d|yy-M-d"
 	Requires         CJK
 End
 
@@ -425,10 +466,12 @@ Language chinese-traditional
 	QuoteStyle       cjk
 	Encoding         utf8-cjk
 	LangCode         zh_TW
+	DateFormats      "yyyy年M月d日|yyyy年M月d日|yy年M月d日"
 	Requires         CJK
 End
 
 # not supported by babel
+# FIXME DateFormats
 Language coptic
 	GuiName          "Coptic"
 	PolyglossiaName  coptic
@@ -443,6 +486,7 @@ Language croatian
 	QuoteStyle       polish
 	Encoding         iso8859-2
 	FontEncoding	 T1|OT1
+	DateFormats      "d. MMMM yyyy.|d. MMM. yyyy.|dd.MM.yyyy."
 	LangCode         hr_HR
 End
 
@@ -454,6 +498,7 @@ Language czech
 	QuoteStyle       german
 	Encoding         iso8859-2
 	FontEncoding	 T1|OT1
+	DateFormats      "d. MMMM yyyy|d. MMM. yyyy|d.M.yyyy"
 	LangCode         cs_CZ
 End
 
@@ -465,6 +510,7 @@ Language danish
 	QuoteStyle       danish
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "d. MMMM yyyy|d. MMM yyyy|dd/MM/yyyy"
 	LangCode         da_DK
 End
 
@@ -473,6 +519,7 @@ Language divehi
 	GuiName          "Divehi (Maldivian)"
 	PolyglossiaName  divehi
 	Encoding         utf8
+	DateFormats      "yyyy MMMM dd|yyyy MMM dd|dd/MM/yyyy"
 	LangCode         dv_MV
 End
 
@@ -485,6 +532,7 @@ Language dutch
 	QuoteStyle       polish
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "d MMMM yyyy|d MMM yyyy|d-M-yyyy"
 	LangCode         nl_NL
 End
 
@@ -495,13 +543,14 @@ Language english
 	PolyglossiaName  english
 	PolyglossiaOpts  "variant=american"
 	QuoteStyle       english
+	DateFormats      "MMMM dd, yyyy|MMM dd, yyyy|M/d/yyyy"
 	Encoding         iso8859-15
 	FontEncoding	 ASCII
 	LangCode         en_US
 End
 
 # Esperanto has no country code because it is an auxiliary language.
-# We therefore the name of its hunspell dictionary.
+# We therefore use the name of its hunspell dictionary.
 Language esperanto
 	GuiName          "Esperanto"
 	BabelName        esperanto
@@ -509,6 +558,7 @@ Language esperanto
 	QuoteStyle       english
 	Encoding         iso8859-3
 	FontEncoding	 IL3|T1|OT1
+	DateFormats      "'la' d 'de' MMMM yyyy|'la' d 'de' MMM yyyy|MM/dd/yyyy"
 	LangCode         eo_EO
 End
 
@@ -519,6 +569,7 @@ Language estonian
 	QuoteStyle       german
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "d MMMM yyyy|d MMM yyyy|dd.MM.yyyy"
 	LangCode         et_EE
 	PostBabelPreamble
 	\addto\extrasestonian{\bbl@deactivate{~}}
@@ -533,6 +584,7 @@ Language farsi
 	PolyglossiaName  farsi
 	Encoding         utf8
 	FontEncoding     LAE,LFE
+	DateFormats      "d MMMM yyyy|d MMM yyyy|yyyy/M/d"
 	RTL              true
 	LangCode         fa_IR
 	QuoteStyle       english
@@ -550,6 +602,7 @@ Language finnish
 	QuoteStyle       swedish
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "d. MMMM yyyy|d. MMM yyyy|d.M.yyyy"
 	LangCode         fi_FI
 End
 
@@ -562,6 +615,7 @@ Language french
 	QuoteStyle       french
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "d MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
 	LangCode         fr_FR
 	PostBabelPreamble
 	\addto\extrasfrench{%
@@ -579,6 +633,7 @@ Language friulan
 	QuoteStyle       french
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "d 'di' MMMM 'dal' yyyy|d 'di' MMM 'dal' yyyy|dd/MM/yyyy"
 	LangCode         fur_IT
 End
 
@@ -590,12 +645,14 @@ Language galician
 	QuoteStyle       french
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "d 'de' MMMM 'de' yyyy|d 'de' MMM 'de' yyyy|dd/MM/yyyy"
 	LangCode         gl_ES
 	PostBabelPreamble
 	\addto\shorthandsgalician{\galiciandeactivate{~}}
 	EndPostBabelPreamble
 End
 
+# FIXME DateFormats
 Language georgian
 	GuiName          "Georgian"
 	BabelName        georgian
@@ -614,6 +671,7 @@ Language german
 	QuoteStyle       german
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "dd. MMMM yyyy|dd. MMM yyyy|dd.MM.yyyy"
 	LangCode         de
 	LangVariety      alt
 End
@@ -627,6 +685,7 @@ Language ngerman
 	QuoteStyle       german
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "dd. MMMM yyyy|dd. MMM yyyy|dd.MM.yyyy"
 	LangCode         de_DE
 End
 
@@ -642,6 +701,7 @@ Language german-ch
 	QuoteStyle       swiss
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "dd. MMMM yyyy|dd. MMM yyyy|dd.MM.yyyy"
 	LangCode         de_CH
 End
 
@@ -656,6 +716,7 @@ Language german-ch-old
  	QuoteStyle       swiss
  	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "dd. MMMM yyyy|dd. MMM yyyy|dd.MM.yyyy"
  	LangCode         de_CH
 End
 
@@ -669,6 +730,7 @@ Language greek
 	Encoding          iso8859-7
 	InternalEncoding  true
 	FontEncoding      LGR
+	DateFormats      "dd MMMM yyyy|dd MMM yyyy|dd/MM/yyyy"
 	LangCode          el_GR
 	Provides          textgreek
 End
@@ -682,6 +744,7 @@ Language polutonikogreek
 	Encoding          iso8859-7
 	InternalEncoding  true
 	FontEncoding      LGR
+	DateFormats      "dd MMMM yyyy|dd MMM yyyy|dd/MM/yyyy"
 	LangCode          el_GR
 	Provides          textgreek
 End
@@ -697,6 +760,7 @@ Language hebrew
 # Hebrew babel loads the font encodings
 # itself in the appropriate order
 #	FontEncoding      LHE
+	DateFormats      "d MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
 	RTL               true
 	LangCode          he_IL
 End
@@ -706,6 +770,7 @@ Language hindi
 	GuiName          "Hindi"
 	PolyglossiaName  hindi
 	Encoding         utf8
+	DateFormats      "dd MMMM yyyy|dd MMM yyyy|dd-MM-yyyy"
 	LangCode         hi_IN
 End
 
@@ -729,6 +794,7 @@ Language icelandic
 	QuoteStyle       german
 	Encoding         iso8859-15
 	FontEncoding	 T1
+	DateFormats      "d. MMMM yyyy|d. MMM yyyy|dd.MM.yyyy"
 	LangCode         is_IS
 End
 
@@ -742,6 +808,7 @@ Language interlingua
 	Encoding         iso8859-15
 	FontEncoding	 ASCII
 	LangCode         ia_IA
+	DateFormats      "'le' d 'de' MMMM yyyy|'le' d 'de' MMM yyyy|yyyy-mm-dd"
 	QuoteStyle       english
 End
 
@@ -752,6 +819,7 @@ Language irish
 	QuoteStyle       english
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "d. MMMM yyyy|d. MMM yyyy|dd/MM/yyyy"
 	LangCode         ga_IE
 End
 
@@ -763,6 +831,7 @@ Language italian
 	QuoteStyle       french
 	Encoding         iso8859-15
 	FontEncoding	 ASCII
+	DateFormats      "dd MMMM yyyy|dd/MMM/yyyy|dd/MM/yyyy"
 	LangCode         it_IT
 End
 
@@ -781,6 +850,7 @@ Language japanese
 	Requires         japanese
 	InternalEncoding true
 	FontEncoding     None
+	DateFormats      "yyyy年M月d日|yyyy/MM/dd|yy/MM/dd"
 	QuoteStyle       cjk
 End
 
@@ -788,6 +858,7 @@ End
 Language japanese-cjk
 	GuiName         "Japanese (CJK)"
 	Encoding        euc-jp
+	DateFormats      "yyyy年M月d日|yyyy/MM/dd|yy/MM/dd"
 	LangCode        ja_JP
 	Requires        CJK
 	QuoteStyle      cjk
@@ -798,6 +869,7 @@ Language kannada
 	GuiName          "Kannada"
 	PolyglossiaName  kannada
 	Encoding         utf8
+	DateFormats      "dd MMMM yyyy|dd MMMM yyyy|dd-MM-yyyy"
 	LangCode         kn_IN
 End
 
@@ -807,6 +879,7 @@ Language kazakh
 	GuiName          "Kazakh"
 	Encoding         ascii
 	FontEncoding     T2A
+	DateFormats      "dd MMMM yyyy|dd MMMM yyyy|yyyy-dd-MM"
 	LangCode         kk_KZ
 	PostBabelPreamble
 	\input{t2aenc.def}
@@ -819,6 +892,7 @@ Language khmer
 	GuiName          "Khmer"
 	PolyglossiaName  khmer
 	Encoding         utf8
+	DateFormats      "d MMMM yyyy|d MMMM yyyy|dd/MM/yyyy"
 	LangCode         km_KH
 End
 
@@ -826,6 +900,7 @@ Language korean
 	GuiName         "Korean"
 	Encoding        euc-kr
 	QuoteStyle      cjkangle
+	DateFormats     "yyyy년 M월 d일|yyyy. M. d.|yy. M. d."
 	LangCode        ko_KR
 	Requires        CJK
 End
@@ -836,6 +911,7 @@ Language kurmanji
 	BabelName        kurmanji
 	Encoding         utf8
 	FontEncoding	 T1|OT1
+	DateFormats      "d. MMMM yyyy|d. M. yyyy|yyyy-MM-dd"
 	LangCode         kmr
 	AsBabelOptions   true
 End
@@ -845,11 +921,13 @@ Language lao
 	GuiName          "Lao"
 	PolyglossiaName  lao
 	Encoding         utf8
+	DateFormats      "dd MMMM yyyy|dd MMMM yyyy|dd/MM/yyyy"
 	LangCode         lo_LA
 End
 
 # There is no country code for Latin because it is a dead language.
 # We therefore the name of its hunspell dictionary.
+# FIXME DateFormats
 Language latin
 	GuiName          "Latin"
 	BabelName        latin
@@ -869,6 +947,7 @@ Language latvian
 	QuoteStyle       german
 	Encoding         iso8859-4
 	FontEncoding     L7x|T1|OT1
+	DateFormats      "yyyy. 'gada' d. MMMM|yyyy. 'gada' d. MMM|dd.MM.yyyy"
 	LangCode         lv_LV
 	AsBabelOptions   true
 End
@@ -883,6 +962,7 @@ Language lithuanian
 	QuoteStyle       german
 	Encoding         iso8859-13
 	FontEncoding     L7x
+	DateFormats      "yyyy 'm.' MMMM d 'd.'|yyyy 'm.' MMMM d 'd.'|yyyy-MM-dd"
 	LangCode         lt_LT
 	AsBabelOptions   true
 End
@@ -894,6 +974,7 @@ Language lowersorbian
 	QuoteStyle       german
 	Encoding         iso8859-2
 	FontEncoding	 T1|OT1
+	DateFormats      "d MMMM yyyy|d MMM yyyy|dd.MM.yyyy"
 	LangCode         dsb_DE
 End
 
@@ -905,6 +986,7 @@ Language magyar
 	QuoteStyle       polish
 	Encoding         iso8859-2
 	FontEncoding	 T1|OT1
+	DateFormats      "yyyy. MMMM d.|yyyy. MMM d.|yyyy.MM.dd."
 	LangCode         hu_HU
 End
 
@@ -915,6 +997,7 @@ Language macedonian
 	QuoteStyle       german
 	Encoding         cp1251
 	FontEncoding     T2A
+	DateFormats      "dd MMMM yyyy|d MMM yyyy|d.M.yyyy"
 	LangCode         mk_MK
 	Provides         textcyrillic
 End
@@ -924,6 +1007,7 @@ Language marathi
 	GuiName          "Marathi"
 	PolyglossiaName  marathi
 	Encoding         utf8
+	DateFormats      "dd MMMM yyyy|d MMM yyyy|dd-MM-yyyy"
 	LangCode         mr_IN
 End
 
@@ -935,6 +1019,7 @@ Language mongolian
 	BabelName        mongolian
 	Encoding         utf8
 	FontEncoding     T2A
+	DateFormats      "yyyy оны M сарын d|d-M-yyyy|dd-MM-yyyy"
 	LangCode         mn_MN
 	AsBabelOptions   true
 	Provides         textcyrillic
@@ -948,6 +1033,7 @@ Language newzealand
 	QuoteStyle       english
 	Encoding         iso8859-15
 	FontEncoding	 ASCII
+	DateFormats      "d MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
 	LangCode         en_NZ
 End
 
@@ -959,6 +1045,7 @@ Language norsk
 	QuoteStyle       swiss
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "d. MMMM yyyy|d. MMM yyyy|dd.MM.yyyy"
 	LangCode         nb_NO
 End
 
@@ -970,6 +1057,7 @@ Language nynorsk
 	QuoteStyle       swiss
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "d. MMMM yyyy|d. MMM yyyy|dd.MM.yyyy"
 	LangCode         nn_NO
 End
 
@@ -979,6 +1067,7 @@ Language occitan
 	PolyglossiaName  occitan
 	QuoteStyle       french
 	Encoding         utf8
+	DateFormats      "d MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
 	LangCode         oc_FR
 End
 
@@ -995,6 +1084,7 @@ End
 #       QuoteStyle       russian
 # End
 
+# FIXME DateFormats
 Language piedmontese
 	GuiName          "Piedmontese"
 	HasGuiSupport    true
@@ -1015,6 +1105,7 @@ Language polish
 	QuoteStyle       polish
 	Encoding         iso8859-2
 	FontEncoding     QX|T1|OT1
+	DateFormats      "d MMMM yyyy|d MMM yyyy|yyyy-MM-dd"
 	LangCode         pl_PL
 End
 
@@ -1026,6 +1117,7 @@ Language portuguese
 	QuoteStyle       french
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "d 'de' MMMM 'de' yyyy|d 'de' MMM 'de' yyyy|yyyy/MM/dd"
 	LangCode         pt_PT
 End
 
@@ -1037,6 +1129,7 @@ Language romanian
 	QuoteStyle       polish
 	Encoding         iso8859-16
 	FontEncoding	 T1|OT1
+	DateFormats      "d MMMM yyyy|d MMM yyyy|dd.MM.yyyy"
 	LangCode         ro_RO
 End
 
@@ -1048,6 +1141,7 @@ Language romansh
 	QuoteStyle       german
 	Encoding         iso8859-15
 	FontEncoding	 ASCII
+	DateFormats      "d MMMM yyyy|d MMM yyyy|dd.MM.yyyy"
 	LangCode         rm_CH
 End
 
@@ -1059,6 +1153,7 @@ Language russian
 	QuoteStyle       russian
 	Encoding         koi8-r
 	FontEncoding     T2A
+	DateFormats      "d MMMM yyyy 'г'.|d MMM yyyy 'г'.|dd.MM.yyyy"
 	LangCode         ru_RU
 	Provides         textcyrillic
 End
@@ -1070,6 +1165,7 @@ Language samin
 	PolyglossiaName  samin
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "MMMM d. 'b'. yyyy|MMM d. 'b'. yyyy|d.M.yyyy"
 	LangCode         se_NO
 End
 
@@ -1078,6 +1174,7 @@ Language sanskrit
 	GuiName          "Sanskrit"
 	PolyglossiaName  sanskrit
 	Encoding         utf8
+	DateFormats      "dd MMMM yyyy|d MMM yyyy|dd-MM-yyyy"
 	LangCode         sa_IN
 End
 
@@ -1090,6 +1187,7 @@ Language scottish
 	QuoteStyle       english
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "dd MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
 	LangCode         gd_GB
 End
 
@@ -1104,6 +1202,7 @@ Language serbian
 	QuoteStyle       polish
 	Encoding         utf8
 	FontEncoding     T2A
+	DateFormats      "d. MMMM yyyy|d. MMM yyyy|dd.MM.yyyy"
 	LangCode         sr_RS
 	AsBabelOptions   true
 End
@@ -1118,6 +1217,7 @@ Language serbian-latin
 	QuoteStyle       polish
 	Encoding         iso8859-2
 	FontEncoding	 T1|OT1
+	DateFormats      "d. MMMM yyyy|d. MMM yyyy|dd.MM.yyyy"
 	LangCode         sr_RS-Latin
 End
 
@@ -1129,6 +1229,7 @@ Language slovak
 	QuoteStyle       german
 	Encoding         iso8859-2
 	FontEncoding	 T1|OT1
+	DateFormats      "d. MMMM yyyy|d. MMM yyyy|d.M.yyyy"
 	LangCode         sk_SK
 End
 
@@ -1139,6 +1240,7 @@ Language slovene
 	QuoteStyle       german
 	Encoding         iso8859-2
 	FontEncoding	 T1|OT1
+	DateFormats      "dd. MMMM yyyy|d. MMM yyyy|d.M.yyyy"
 	LangCode         sl_SI
 End
 
@@ -1150,6 +1252,7 @@ Language spanish
 	QuoteStyle       french
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "d 'de' MMMM 'de' yyyy|d MMM yyyy|dd/MM/yyyy"
 	LangCode         es_ES
 	PostBabelPreamble
 	\addto\shorthandsspanish{\spanishdeactivate{~<>}}
@@ -1164,6 +1267,7 @@ Language spanish-mexico
 	QuoteStyle       french
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "d 'de' MMMM 'de' yyyy|d MMM yyyy|dd/MM/yyyy"
 	LangCode         es_MX
 	PostBabelPreamble
 	\addto\shorthandsspanish{\spanishdeactivate{~<>.}}
@@ -1178,6 +1282,7 @@ Language swedish
 	QuoteStyle       swedish
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
+	DateFormats      "d MMMM yyyy|d MMM yyyy|yyyy-MM-dd"
 	LangCode         sv_SE
 End
 
@@ -1187,6 +1292,7 @@ Language syriac
 	PolyglossiaName  syriac
 	Encoding         utf8
 	RTL              true
+	DateFormats      "d MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
 	LangCode         syr_SY
 End
 
@@ -1195,6 +1301,7 @@ Language tamil
 	GuiName          "Tamil"
 	PolyglossiaName  tamil
 	Encoding         utf8
+	DateFormats      "dd MMMM yyyy|d MMM yyyy|dd-MM-yyyy"
 	LangCode         ta_IN
 End
 
@@ -1203,6 +1310,7 @@ Language telugu
 	GuiName          "Telugu"
 	PolyglossiaName  telugu
 	Encoding         utf8
+	DateFormats      "dd MMMM yyyy|d MMM yyyy|dd-MM-yyyy"
 	LangCode         te_IN
 End
 
@@ -1213,6 +1321,7 @@ Language thai
 	QuoteStyle       english
 	Encoding         tis620-0
 	FontEncoding     LTH
+	DateFormats      "dd MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
 	LangCode         th_TH
 	PostBabelPreamble
 	\usepackage{thswitch}
@@ -1220,6 +1329,7 @@ Language thai
 End
 
 # not supported by babel
+#FIXME DateFormats
 Language tibetan
 	GuiName          "Tibetan"
 	PolyglossiaName  tibetan
@@ -1236,6 +1346,7 @@ Language turkish
 	Encoding         iso8859-9
 	FontEncoding	 T1|OT1
 	LangCode         tr_TR
+	DateFormats      "d MMMM yyyy|dd.MMM.yyyy|dd.MM.yyyy"
 	PostBabelPreamble
 	\usepackage{xkeyval}
 	EndPostBabelPreamble
@@ -1250,6 +1361,7 @@ Language turkmen
 	QuoteStyle       swiss
 	Encoding         utf8
 	FontEncoding	 T1|OT1
+	DateFormats      "yyyy ý. MMMM d|dd.MM.yyyy ý.|dd.MM.yy ý."
 	LangCode         tk_TM
 	AsBabelOptions   true
 End
@@ -1262,6 +1374,7 @@ Language ukrainian
 	QuoteStyle       russian
 	Encoding         koi8-u
 	FontEncoding     T2A
+	DateFormats      "dd MMMM yyyy|d MM yyyy|dd.MM.yyyy"
 	LangCode         uk_UA
 	Provides         textcyrillic
 End
@@ -1273,6 +1386,7 @@ Language uppersorbian
 	QuoteStyle       german
 	Encoding         iso8859-2
 	FontEncoding	 T1|OT1
+	DateFormats      "d MMMM yyyy|d MMM yyyy|dd.MM.yyyy"
 	LangCode         hsb_DE
 End
 
@@ -1281,6 +1395,7 @@ Language urdu
 	GuiName          "Urdu"
 	PolyglossiaName  urdu
 	Encoding         utf8
+	DateFormats      "d MMMM, yyyy|d MMM yyyy|dd/MM/yyyy"
 	RTL              true
 	LangCode         ur_PK
 End
@@ -1291,6 +1406,7 @@ Language vietnamese
 	PolyglossiaName  vietnamese
 	QuoteStyle       english
 	Encoding         utf8
+	DateFormats      "dd 'tháng' MMMM yyyy|dd-MM-yyyy|dd/MM/yyyy"
 	FontEncoding	 T5
 	LangCode         vi_VN
 End
@@ -1301,6 +1417,7 @@ Language welsh
 	PolyglossiaName  welsh
 	QuoteStyle       british
 	Encoding         iso8859-15
+	DateFormats      "d MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
 	FontEncoding	 T1|OT1
 	LangCode         cy_GB
 End

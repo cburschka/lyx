@@ -41,7 +41,10 @@ namespace frontend {
 /////////////////////////////////////////////////////////////////
 
 char const * info_types[] =
-{ "buffer",
+{ "date",
+  "moddate",
+  "fixdate",
+  "buffer",
   "vcs",
   "package",
   "textclass",
@@ -57,7 +60,10 @@ char const * info_types[] =
 
 // GUI names (in combo)
 char const * info_types_gui[] =
-{ N_("Document Information"),// buffer
+{ N_("Date (current)"),// date
+  N_("Date (last modified)"),// moddate
+  N_("Date (fix)"),// fixdate
+  N_("Document Information"),// buffer
   N_("Version Control Information"),// vcs
   N_("LaTeX Package Availability"),// package
   N_("LaTeX Class Availability"),// textclass
@@ -73,7 +79,10 @@ char const * info_types_gui[] =
 
 // Line edit label
 char const * info_name_gui[] =
-{ N_("Not Applicable"),// buffer
+{ N_("Custom Format"),// date
+  N_("Custom Format"),// moddate
+  N_("Custom Format"),// fixdate
+  N_("Not Applicable"),// buffer
   N_("Not Applicable"),// vcs
   N_("Package Name"),// package
   N_("Class Name"),// textclass
@@ -89,7 +98,40 @@ char const * info_name_gui[] =
 
 // Line edit tooltip
 char const * info_tooltip[] =
-{ N_("Please select a valid type above"),// buffer
+{ N_("Enter date format specification, using the following placeholders:\n"
+     "* d: day as number without a leading zero\n"
+     "* dd: day as number with a leading zero\n"
+     "* ddd: abbreviated localized day name\n"
+     "* dddd: long localized day name\n"
+     "* M: month as number without a leading zero\n"
+     "* MM: month as number with a leading zero\n"
+     "* MMM: abbreviated localized month name\n"
+     "* MMMM: long localized month name\n"
+     "* yy: year as two digit number\n"
+     "* yyyy: year as four digit number"),// date
+  N_("Enter date format specification, using the following placeholders:\n"
+       "* d: day as number without a leading zero\n"
+       "* dd: day as number with a leading zero\n"
+       "* ddd: abbreviated localized day name\n"
+       "* dddd: long localized day name\n"
+       "* M: month as number without a leading zero\n"
+       "* MM: month as number with a leading zero\n"
+       "* MMM: abbreviated localized month name\n"
+       "* MMMM: long localized month name\n"
+       "* yy: year as two digit number\n"
+       "* yyyy: year as four digit number"),// moddate
+  N_("Enter date format specification, using the following placeholders:\n"
+       "* d: day as number without a leading zero\n"
+       "* dd: day as number with a leading zero\n"
+       "* ddd: abbreviated localized day name\n"
+       "* dddd: long localized day name\n"
+       "* M: month as number without a leading zero\n"
+       "* MM: month as number with a leading zero\n"
+       "* MMM: abbreviated localized month name\n"
+       "* MMMM: long localized month name\n"
+       "* yy: year as two digit number\n"
+       "* yyyy: year as four digit number"),// fixdate
+  N_("Please select a valid type above"),// buffer
   N_("Please select a valid type above"),// vcs
   N_("Enter a LaTeX package name such as 'hyperref' (extension is optional). "
      "The output will be 'Yes' (package available) or 'No' (package unavailable)."),// package
@@ -130,7 +172,16 @@ void GuiInfo::paramsToDialog(Inset const * inset)
 	InsetInfo const * ii = static_cast<InsetInfo const *>(inset);
 	inset_ = const_cast<Inset*>(inset);
 	QString const type = toqstr(ii->infoType());
-	QString const name = toqstr(ii->infoName());
+	QString name = toqstr(ii->infoName());
+	QString fixdate;
+	if (type == "fixdate") {
+		fixdate = name.section('@', 1, 1);
+		name = name.section('@', 0, 0);
+		if (!fixdate.isEmpty())
+			fixDateLE->setText(fixdate);
+		else
+			fixDateLE->setText(QDate::currentDate().toString(Qt::ISODate));
+	}
 	typeCO->blockSignals(true);
 	nameLE->blockSignals(true);
 	nameLE->clear();
@@ -168,6 +219,12 @@ docstring GuiInfo::dialogToParams() const
 			      : QString();
 	if (name == "custom")
 		name = nameLE->text();
+	if (type == "fixdate") {
+		QString fd = fixDateLE->text();
+		if (fd.isEmpty())
+			fd = QDate::currentDate().toString(Qt::ISODate);
+		name += "@" + fd;
+	}
 	return qstring_to_ucs4(type + ' ' + name);
 }
 
@@ -176,7 +233,7 @@ void GuiInfo::updateArguments(int i)
 {
 	infoLW->clear();
 	if (inset_) {
-		InsetInfo const * ii = static_cast<InsetInfo const *>(inset_);
+		InsetInfo * ii = static_cast<InsetInfo *>(inset_);
 		vector<pair<string,docstring>> args = ii->getArguments(info_types[i]);
 		for (auto const & p : args) {
 			QListWidgetItem * li = new QListWidgetItem(toqstr(p.second));
@@ -209,6 +266,11 @@ bool GuiInfo::checkWidgets(bool readonly) const
 	nameLA->setEnabled(type_enabled);
 	nameLE->setEnabled(type_enabled);
 	nameLE->setToolTip(qt_(info_tooltip[typeCO->currentIndex()]));
+
+	bool const fixdate_enabled =
+		(info_types[typeCO->currentIndex()] == from_ascii("fixdate"));
+	fixDateLE->setVisible(fixdate_enabled);
+	fixDateLA->setVisible(fixdate_enabled);
 
 	if (!InsetParamsWidget::checkWidgets())
 		return false;

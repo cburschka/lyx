@@ -1933,6 +1933,9 @@ void LyXAction::init()
  * \li Params: <TYPE>: shortcut[s]|lyxrc|lyxinfo|package|textclass|menu|icon|buffer \n
                <ARG>: argument for a given type. Look into InsetInfo.h for detailed
                       description. \n
+                      date: current date (formatted and localized)\n
+                      moddate: date of last modification (saving) (formatted and localized)\n
+                      fixdate: a static date (formatted and localized)\n
                       shortcut[s]: name of lfun (e.g math-insert \alpha) \n
                       lyxrc: name of rc_entry (e.g. bind_file) \n
                       lyxinfo: "version" - used version of LyX \n

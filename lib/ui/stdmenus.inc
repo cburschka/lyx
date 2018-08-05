@@ -374,6 +374,7 @@ Menuset
 		Submenu "Math|h" "insert_math"
 		Submenu "Special Character|p" "insert_special"
 		Submenu "Formatting|o" "insert_formatting"
+		Submenu "Fields|d" "insert_fields"
 		Submenu "List / TOC|i" "insert_toc"
 		Submenu "Float|a" "insert_float"
 		Submenu "Note|N" "insert_note"
@@ -397,7 +398,6 @@ Menuset
 		Item "Footnote|F" "footnote-insert"
 		Item "Marginal Note|M" "marginalnote-insert"
 		Item "Program Listing[[Menu]]" "listing-insert"
-		Item "Date" "date-insert"
 		Separator
 		EnvironmentSeparators
 		Separator
@@ -419,6 +419,14 @@ Menuset
 		Item "Menu Separator|M" "specialchar-insert menu-separator"
 		Item "Phonetic Symbols|P" "ipa-insert"
 		Submenu "Logos|L" "insert_logos"
+	End
+
+	Menu "insert_fields"
+		Item "Date (Current)|D" "info-insert date"
+		Item "Date (Last Modification)|L" "info-insert moddate"
+		Item "Date (Fix)|F" "info-insert fixdate"
+                Separator
+		Item "Other...|O" "info-insert"
 	End
 
 	Menu "insert_logos"
