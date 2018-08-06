@@ -425,8 +425,8 @@ Menuset
 		Item "Date (Current)|D" "info-insert date"
 		Item "Date (Last Modification)|L" "info-insert moddate"
 		Item "Date (Fix)|F" "info-insert fixdate"
-                Separator
-		Item "Other...|O" "info-insert"
+#                Separator
+#		Item "Other...|O" "info-insert"
 	End
 
 	Menu "insert_logos"
