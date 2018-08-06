@@ -63,25 +63,25 @@ namespace lyx {
 
 namespace {
 
-typedef Translator<InsetInfo::info_type, string> NameTranslator;
+typedef Translator<InsetInfoParams::info_type, string> NameTranslator;
 
 NameTranslator const initTranslator()
 {
-	NameTranslator translator(InsetInfo::UNKNOWN_INFO, "unknown");
+	NameTranslator translator(InsetInfoParams::UNKNOWN_INFO, "unknown");
 
-	translator.addPair(InsetInfo::SHORTCUTS_INFO, "shortcuts");
-	translator.addPair(InsetInfo::SHORTCUT_INFO, "shortcut");
-	translator.addPair(InsetInfo::LYXRC_INFO, "lyxrc");
-	translator.addPair(InsetInfo::PACKAGE_INFO, "package");
-	translator.addPair(InsetInfo::TEXTCLASS_INFO, "textclass");
-	translator.addPair(InsetInfo::MENU_INFO, "menu");
-	translator.addPair(InsetInfo::ICON_INFO, "icon");
-	translator.addPair(InsetInfo::BUFFER_INFO, "buffer");
-	translator.addPair(InsetInfo::LYX_INFO, "lyxinfo");
-	translator.addPair(InsetInfo::VCS_INFO, "vcs");
-	translator.addPair(InsetInfo::DATE_INFO, "date");
-	translator.addPair(InsetInfo::MODDATE_INFO, "moddate");
-	translator.addPair(InsetInfo::FIXDATE_INFO, "fixdate");
+	translator.addPair(InsetInfoParams::SHORTCUTS_INFO, "shortcuts");
+	translator.addPair(InsetInfoParams::SHORTCUT_INFO, "shortcut");
+	translator.addPair(InsetInfoParams::LYXRC_INFO, "lyxrc");
+	translator.addPair(InsetInfoParams::PACKAGE_INFO, "package");
+	translator.addPair(InsetInfoParams::TEXTCLASS_INFO, "textclass");
+	translator.addPair(InsetInfoParams::MENU_INFO, "menu");
+	translator.addPair(InsetInfoParams::ICON_INFO, "icon");
+	translator.addPair(InsetInfoParams::BUFFER_INFO, "buffer");
+	translator.addPair(InsetInfoParams::LYX_INFO, "lyxinfo");
+	translator.addPair(InsetInfoParams::VCS_INFO, "vcs");
+	translator.addPair(InsetInfoParams::DATE_INFO, "date");
+	translator.addPair(InsetInfoParams::MODDATE_INFO, "moddate");
+	translator.addPair(InsetInfoParams::FIXDATE_INFO, "fixdate");
 
 	return translator;
 }
@@ -94,25 +94,25 @@ NameTranslator const & nameTranslator()
 }
 
 
-typedef Translator<InsetInfo::info_type, string> DefaultValueTranslator;
+typedef Translator<InsetInfoParams::info_type, string> DefaultValueTranslator;
 
 DefaultValueTranslator const initDVTranslator()
 {
-	DefaultValueTranslator translator(InsetInfo::UNKNOWN_INFO, "");
+	DefaultValueTranslator translator(InsetInfoParams::UNKNOWN_INFO, "");
 
-	translator.addPair(InsetInfo::SHORTCUTS_INFO, "info-insert");
-	translator.addPair(InsetInfo::SHORTCUT_INFO, "info-insert");
-	translator.addPair(InsetInfo::LYXRC_INFO, "user_name");
-	translator.addPair(InsetInfo::PACKAGE_INFO, "graphics");
-	translator.addPair(InsetInfo::TEXTCLASS_INFO, "article");
-	translator.addPair(InsetInfo::MENU_INFO, "info-insert");
-	translator.addPair(InsetInfo::ICON_INFO, "info-insert");
-	translator.addPair(InsetInfo::BUFFER_INFO, "name");
-	translator.addPair(InsetInfo::LYX_INFO, "version");
-	translator.addPair(InsetInfo::VCS_INFO, "revision");
-	translator.addPair(InsetInfo::DATE_INFO, "loclong");
-	translator.addPair(InsetInfo::MODDATE_INFO, "loclong");
-	translator.addPair(InsetInfo::FIXDATE_INFO, "loclong");
+	translator.addPair(InsetInfoParams::SHORTCUTS_INFO, "info-insert");
+	translator.addPair(InsetInfoParams::SHORTCUT_INFO, "info-insert");
+	translator.addPair(InsetInfoParams::LYXRC_INFO, "user_name");
+	translator.addPair(InsetInfoParams::PACKAGE_INFO, "graphics");
+	translator.addPair(InsetInfoParams::TEXTCLASS_INFO, "article");
+	translator.addPair(InsetInfoParams::MENU_INFO, "info-insert");
+	translator.addPair(InsetInfoParams::ICON_INFO, "info-insert");
+	translator.addPair(InsetInfoParams::BUFFER_INFO, "name");
+	translator.addPair(InsetInfoParams::LYX_INFO, "version");
+	translator.addPair(InsetInfoParams::VCS_INFO, "revision");
+	translator.addPair(InsetInfoParams::DATE_INFO, "loclong");
+	translator.addPair(InsetInfoParams::MODDATE_INFO, "loclong");
+	translator.addPair(InsetInfoParams::FIXDATE_INFO, "loclong");
 
 	return translator;
 }
@@ -126,217 +126,14 @@ DefaultValueTranslator const & defaultValueTranslator()
 
 } // namespace
 
-/////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////
 //
-// InsetInfo
+// InsetInfoParams
 //
-/////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
 
-
-
-InsetInfo::InsetInfo(Buffer * buf, string const & name)
-	: InsetCollapsible(buf), initialized_(false), 
-	  type_(UNKNOWN_INFO), name_(), force_ltr_(false)
-{
-	setInfo(name);
-	status_ = Collapsed;
-}
-
-
-Inset * InsetInfo::editXY(Cursor & cur, int x, int y)
-{
-	// do not allow the cursor to be set in this Inset
-	return Inset::editXY(cur, x, y);
-}
-
-
-string InsetInfo::infoType() const
-{
-	return nameTranslator().find(type_);
-}
-
-
-docstring InsetInfo::layoutName() const
-{
-	return from_ascii("Info:" + infoType());
-}
-
-
-docstring InsetInfo::toolTip(BufferView const &, int, int) const
-{
-	docstring result;
-	switch (nameTranslator().find(infoType())) {
-	case UNKNOWN_INFO:
-		result = _("Invalid information inset");
-		break;
-	case SHORTCUT_INFO:
-		result = bformat(_("The keybard shortcut for the function '%1$s'"),
-				from_utf8(name_));
-		break;
-	case SHORTCUTS_INFO:
-		result = bformat(_("The keybard shortcuts for the function '%1$s'"),
-				from_utf8(name_));
-		break;
-	case MENU_INFO: 
-		result = bformat(_("The menu location for the function '%1$s'"),
-				from_utf8(name_));
-		break;
-	case ICON_INFO:
-		result = bformat(_("The toolbar icon for the function '%1$s'"),
-				from_utf8(name_));
-		break;
-	case LYXRC_INFO:
-		result = bformat(_("The preference setting for the preference key '%1$s'"),
-				from_utf8(name_));
-		break;
-	case PACKAGE_INFO:
-		result = bformat(_("Availability of the LaTeX package '%1$s'"),
-				from_utf8(name_));
-		break;
-	case TEXTCLASS_INFO:
-		result = bformat(_("Availability of the LaTeX class '%1$s'"),
-				from_utf8(name_));
-		break;
-	case BUFFER_INFO:
-		if (name_ == "name")
-			result = _("The name of this file");
-		else if (name_ == "path")
-			result = _("The path where this file is saved");
-		else if (name_ == "class")
-			result = _("The class this document uses");
-		break;
-	case VCS_INFO:
-		if (name_ == "revision")
-			result = _("Version control revision");
-		else if (name_ == "tree-revision")
-			result = _("Version control tree revision");
-		else if (name_ == "author")
-			 result = _("Version control author");
-		else if (name_ == "date")
-			result = _("Version control date");
-		else if (name_ == "time")
-			result = _("Version control time");
-		break;
-	case LYX_INFO:
-		result = _("The current LyX version");
-		break;
-	case DATE_INFO:
-		result = _("The current date");
-		break;
-	case MODDATE_INFO:
-		result = _("The date of last save");
-		break;
-	case FIXDATE_INFO:
-		result = _("A static date");
-		break;
-	}
-
-	return result;
-}
-
-
-void InsetInfo::read(Lexer & lex)
-{
-	string token;
-	while (lex.isOK()) {
-		lex.next();
-		token = lex.getString();
-		if (token == "type") {
-			lex.next();
-			token = lex.getString();
-			type_ = nameTranslator().find(token);
-		} else if (token == "arg") {
-			lex.next(true);
-			name_ = lex.getString();
-		} else if (token == "\\end_inset")
-			break;
-	}
-	if (token != "\\end_inset") {
-		lex.printError("Missing \\end_inset at this point");
-		throw ExceptionMessage(WarningException,
-			_("Missing \\end_inset at this point."),
-			from_utf8(token));
-	}
-}
-
-
-void InsetInfo::write(ostream & os) const
-{
-	os << "Info\ntype  \"" << infoType()
-	   << "\"\narg   " << Lexer::quoteString(name_);
-}
-
-
-bool InsetInfo::validateModifyArgument(docstring const & arg) const
-{
-	string type;
-	string name = trim(split(to_utf8(arg), type, ' '));
-
-	switch (nameTranslator().find(type)) {
-	case UNKNOWN_INFO:
-		return false;
-
-	case SHORTCUT_INFO:
-	case SHORTCUTS_INFO:
-	case MENU_INFO: {
-		FuncRequest func = lyxaction.lookupFunc(name);
-		return func.action() != LFUN_UNKNOWN_ACTION;
-	}
-
-	case ICON_INFO: {
-		FuncCode const action = lyxaction.lookupFunc(name).action();
-		if (action == LFUN_UNKNOWN_ACTION) {
-			string dir = "images";
-			return !imageLibFileSearch(dir, name, "svgz,png").empty();
-		}
-		return true;
-	}
-
-	case LYXRC_INFO: {
-		set<string> rcs = lyxrc.getRCs();
-		return rcs.find(name) != rcs.end();
-	}
-
-	case PACKAGE_INFO:
-	case TEXTCLASS_INFO:
-		return true;
-
-	case BUFFER_INFO:
-		return (name == "name" || name == "path" || name == "class");
-
-	case VCS_INFO:
-		if (name == "revision" || name == "tree-revision"
-		    || name == "author" || name == "date" || name == "time")
-			return buffer().lyxvc().inUse();
-		return false;
-
-	case LYX_INFO:
-		return name == "version";
-
-	case FIXDATE_INFO: {
-		string date;
-		string piece;
-		date = split(name, piece, '@');
-		if (!date.empty() && !QDate::fromString(toqstr(date), Qt::ISODate).isValid())
-			return false;
-		if (!piece.empty())
-			name = piece;
-	}
-	// fall through
-	case DATE_INFO:
-	case MODDATE_INFO: {
-		if (name == "long" || name == "short" || name == "ISO")
-			return true;
-		else {
-			QDate date = QDate::currentDate();
-			return !date.toString(toqstr(name)).isEmpty();
-		}
-	}
-	}
-
-	return false;
-}
-
+InsetInfoParams infoparams;
 
 namespace{
 set<string> getTexFileList(string const & filename)
@@ -364,34 +161,34 @@ set<string> getTexFileList(string const & filename)
 }
 } // namespace anon
 
-
-docstring InsetInfo::getDate(string const name, QDate const date) const
+docstring InsetInfoParams::getDate(string const iname, QDate const date) const
 {
 	QLocale loc;
-	if (lang_)
-		loc = QLocale(toqstr(lang_->code()));
-	if (name == "long")
+	if (lang)
+		loc = QLocale(toqstr(lang->code()));
+	if (iname == "long")
 		return qstring_to_ucs4(loc.toString(date, QLocale::LongFormat));
-	else if (name == "short")
+	else if (iname == "short")
 		return qstring_to_ucs4(loc.toString(date, QLocale::ShortFormat));
-	else if (name == "ISO")
+	else if (iname == "ISO")
 		return qstring_to_ucs4(date.toString(Qt::ISODate));
-	else if (name == "loclong")
-		return qstring_to_ucs4(loc.toString(date, toqstr(lang_->dateFormat(0))));
-	else if (name == "locmedium")
-		return qstring_to_ucs4(loc.toString(date, toqstr(lang_->dateFormat(1))));
-	else if (name == "locshort")
-		return qstring_to_ucs4(loc.toString(date, toqstr(lang_->dateFormat(2))));
+	else if (iname == "loclong")
+		return qstring_to_ucs4(loc.toString(date, toqstr(lang->dateFormat(0))));
+	else if (iname == "locmedium")
+		return qstring_to_ucs4(loc.toString(date, toqstr(lang->dateFormat(1))));
+	else if (iname == "locshort")
+		return qstring_to_ucs4(loc.toString(date, toqstr(lang->dateFormat(2))));
 	else
-		return qstring_to_ucs4(loc.toString(date, toqstr(name)));
+		return qstring_to_ucs4(loc.toString(date, toqstr(iname)));
 }
 
 
-vector<pair<string,docstring>> InsetInfo::getArguments(string const & type) const
+vector<pair<string,docstring>> InsetInfoParams::getArguments(Buffer const * buf,
+							     string const & itype) const
 {
 	vector<pair<string,docstring>> result;
 
-	switch (nameTranslator().find(type)) {
+	switch (nameTranslator().find(itype)) {
 	case UNKNOWN_INFO:
 		result.push_back(make_pair("invalid", _("Please select a valid type!")));
 		break;
@@ -422,7 +219,7 @@ vector<pair<string,docstring>> InsetInfo::getArguments(string const & type) cons
 	case PACKAGE_INFO:
 	case TEXTCLASS_INFO: {
 		result.push_back(make_pair("custom", _("Custom")));
-		string const filename = (type == "package") ? "styFiles.lst"
+		string const filename = (itype == "package") ? "styFiles.lst"
 							    : "clsFiles.lst";
 		set<string> flist = getTexFileList(filename);
 		for (auto const & f : flist)
@@ -437,7 +234,7 @@ vector<pair<string,docstring>> InsetInfo::getArguments(string const & type) cons
 		break;
 
 	case VCS_INFO: {
-		if (!buffer().lyxvc().inUse()) {
+		if (!buf->lyxvc().inUse()) {
 			result.push_back(make_pair("invalid", _("No version control!")));
 			break;
 		}
@@ -456,11 +253,11 @@ vector<pair<string,docstring>> InsetInfo::getArguments(string const & type) cons
 	case FIXDATE_INFO:
 	case DATE_INFO:
 	case MODDATE_INFO:
-		string const dt = split(name_, '@');
+		string const dt = split(name, '@');
 		QDate date;
-		if (type == "moddate")
-			date = QDateTime::fromTime_t(buffer().fileName().lastModified()).date();
-		else if (type == "fixdate" && !dt.empty())
+		if (itype == "moddate")
+			date = QDateTime::fromTime_t(buf->fileName().lastModified()).date();
+		else if (itype == "fixdate" && !dt.empty())
 			date = QDate::fromString(toqstr(dt), Qt::ISODate);
 		else
 			date = QDate::currentDate();
@@ -480,6 +277,220 @@ vector<pair<string,docstring>> InsetInfo::getArguments(string const & type) cons
 	}
 
 	return result;
+}
+
+
+string InsetInfoParams::infoType() const
+{
+	return nameTranslator().find(type);
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////
+//
+// InsetInfo
+//
+/////////////////////////////////////////////////////////////////////////
+
+
+
+InsetInfo::InsetInfo(Buffer * buf, string const & name)
+	: InsetCollapsible(buf), initialized_(false)
+{
+	params_.type = InsetInfoParams::UNKNOWN_INFO;
+	params_.force_ltr = false;
+	setInfo(name);
+	status_ = Collapsed;
+}
+
+
+Inset * InsetInfo::editXY(Cursor & cur, int x, int y)
+{
+	// do not allow the cursor to be set in this Inset
+	return Inset::editXY(cur, x, y);
+}
+
+
+docstring InsetInfo::layoutName() const
+{
+	return from_ascii("Info:" + params_.infoType());
+}
+
+
+docstring InsetInfo::toolTip(BufferView const &, int, int) const
+{
+	docstring result;
+	switch (nameTranslator().find(params_.infoType())) {
+	case InsetInfoParams::UNKNOWN_INFO:
+		result = _("Invalid information inset");
+		break;
+	case InsetInfoParams::SHORTCUT_INFO:
+		result = bformat(_("The keybard shortcut for the function '%1$s'"),
+				from_utf8(params_.name));
+		break;
+	case InsetInfoParams::SHORTCUTS_INFO:
+		result = bformat(_("The keybard shortcuts for the function '%1$s'"),
+				from_utf8(params_.name));
+		break;
+	case InsetInfoParams::MENU_INFO: 
+		result = bformat(_("The menu location for the function '%1$s'"),
+				from_utf8(params_.name));
+		break;
+	case InsetInfoParams::ICON_INFO:
+		result = bformat(_("The toolbar icon for the function '%1$s'"),
+				from_utf8(params_.name));
+		break;
+	case InsetInfoParams::LYXRC_INFO:
+		result = bformat(_("The preference setting for the preference key '%1$s'"),
+				from_utf8(params_.name));
+		break;
+	case InsetInfoParams::PACKAGE_INFO:
+		result = bformat(_("Availability of the LaTeX package '%1$s'"),
+				from_utf8(params_.name));
+		break;
+	case InsetInfoParams::TEXTCLASS_INFO:
+		result = bformat(_("Availability of the LaTeX class '%1$s'"),
+				from_utf8(params_.name));
+		break;
+	case InsetInfoParams::BUFFER_INFO:
+		if (params_.name == "name")
+			result = _("The name of this file");
+		else if (params_.name == "path")
+			result = _("The path where this file is saved");
+		else if (params_.name == "class")
+			result = _("The class this document uses");
+		break;
+	case InsetInfoParams::VCS_INFO:
+		if (params_.name == "revision")
+			result = _("Version control revision");
+		else if (params_.name == "tree-revision")
+			result = _("Version control tree revision");
+		else if (params_.name == "author")
+			 result = _("Version control author");
+		else if (params_.name == "date")
+			result = _("Version control date");
+		else if (params_.name == "time")
+			result = _("Version control time");
+		break;
+	case InsetInfoParams::LYX_INFO:
+		result = _("The current LyX version");
+		break;
+	case InsetInfoParams::DATE_INFO:
+		result = _("The current date");
+		break;
+	case InsetInfoParams::MODDATE_INFO:
+		result = _("The date of last save");
+		break;
+	case InsetInfoParams::FIXDATE_INFO:
+		result = _("A static date");
+		break;
+	}
+
+	return result;
+}
+
+
+void InsetInfo::read(Lexer & lex)
+{
+	string token;
+	while (lex.isOK()) {
+		lex.next();
+		token = lex.getString();
+		if (token == "type") {
+			lex.next();
+			token = lex.getString();
+			params_.type = nameTranslator().find(token);
+		} else if (token == "arg") {
+			lex.next(true);
+			params_.name = lex.getString();
+		} else if (token == "\\end_inset")
+			break;
+	}
+	if (token != "\\end_inset") {
+		lex.printError("Missing \\end_inset at this point");
+		throw ExceptionMessage(WarningException,
+			_("Missing \\end_inset at this point."),
+			from_utf8(token));
+	}
+}
+
+
+void InsetInfo::write(ostream & os) const
+{
+	os << "Info\ntype  \"" << params_.infoType()
+	   << "\"\narg   " << Lexer::quoteString(params_.name);
+}
+
+
+bool InsetInfo::validateModifyArgument(docstring const & arg) const
+{
+	string type;
+	string name = trim(split(to_utf8(arg), type, ' '));
+
+	switch (nameTranslator().find(type)) {
+	case InsetInfoParams::UNKNOWN_INFO:
+		return false;
+
+	case InsetInfoParams::SHORTCUT_INFO:
+	case InsetInfoParams::SHORTCUTS_INFO:
+	case InsetInfoParams::MENU_INFO: {
+		FuncRequest func = lyxaction.lookupFunc(name);
+		return func.action() != LFUN_UNKNOWN_ACTION;
+	}
+
+	case InsetInfoParams::ICON_INFO: {
+		FuncCode const action = lyxaction.lookupFunc(name).action();
+		if (action == LFUN_UNKNOWN_ACTION) {
+			string dir = "images";
+			return !imageLibFileSearch(dir, name, "svgz,png").empty();
+		}
+		return true;
+	}
+
+	case InsetInfoParams::LYXRC_INFO: {
+		set<string> rcs = lyxrc.getRCs();
+		return rcs.find(name) != rcs.end();
+	}
+
+	case InsetInfoParams::PACKAGE_INFO:
+	case InsetInfoParams::TEXTCLASS_INFO:
+		return true;
+
+	case InsetInfoParams::BUFFER_INFO:
+		return (name == "name" || name == "path" || name == "class");
+
+	case InsetInfoParams::VCS_INFO:
+		if (name == "revision" || name == "tree-revision"
+		    || name == "author" || name == "date" || name == "time")
+			return buffer().lyxvc().inUse();
+		return false;
+
+	case InsetInfoParams::LYX_INFO:
+		return name == "version";
+
+	case InsetInfoParams::FIXDATE_INFO: {
+		string date;
+		string piece;
+		date = split(name, piece, '@');
+		if (!date.empty() && !QDate::fromString(toqstr(date), Qt::ISODate).isValid())
+			return false;
+		if (!piece.empty())
+			name = piece;
+	}
+	// fall through
+	case InsetInfoParams::DATE_INFO:
+	case InsetInfoParams::MODDATE_INFO: {
+		if (name == "long" || name == "short" || name == "ISO")
+			return true;
+		else {
+			QDate date = QDate::currentDate();
+			return !date.toString(toqstr(name)).isEmpty();
+		}
+	}
+	}
+
+	return false;
 }
 
 
@@ -507,11 +518,11 @@ bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
 			flag.setEnabled(true);
 			string typestr;
 			string name = trim(split(to_utf8(cmd.argument()), typestr, ' '));
-			info_type type = nameTranslator().find(typestr);
-			string origname = name_;
-			if (type == FIXDATE_INFO)
-				split(name_, origname, '@');
-			flag.setOnOff(type == type_ && name == origname);
+			InsetInfoParams::info_type type = nameTranslator().find(typestr);
+			string origname = params_.name;
+			if (type == InsetInfoParams::FIXDATE_INFO)
+				split(params_.name, origname, '@');
+			flag.setOnOff(type == params_.type && name == origname);
 			return true;
 		}
 		//fall through
@@ -560,24 +571,24 @@ void InsetInfo::setInfo(string const & name)
 
 	string saved_date_specifier;
 	// Store old date specifier for potential re-use
-	if (!name_.empty())
-		saved_date_specifier = split(name_, '@');
+	if (!params_.name.empty())
+		saved_date_specifier = split(params_.name, '@');
 	// info_type name
 	string type;
-	name_ = trim(split(name, type, ' '));
-	type_ = nameTranslator().find(type);
-	if (name_.empty())
-		name_ = defaultValueTranslator().find(type_);
-	if (type_ == FIXDATE_INFO) {
-		string const date_specifier = split(name_, '@');
+	params_.name = trim(split(name, type, ' '));
+	params_.type = nameTranslator().find(type);
+	if (params_.name.empty())
+		params_.name = defaultValueTranslator().find(params_.type);
+	if (params_.type == InsetInfoParams::FIXDATE_INFO) {
+		string const date_specifier = split(params_.name, '@');
 		// If an explicit new fix date is specified, use that
 		// Otherwise, use the old one or, if there is none,
 		// the current date
 		if (date_specifier.empty()) {
 			if (saved_date_specifier.empty())
-				name_ += "@" + fromqstr(QDate::currentDate().toString(Qt::ISODate));
+				params_.name += "@" + fromqstr(QDate::currentDate().toString(Qt::ISODate));
 			else
-				name_ += "@" + saved_date_specifier;
+				params_.name += "@" + saved_date_specifier;
 		}
 	}
 }
@@ -585,7 +596,7 @@ void InsetInfo::setInfo(string const & name)
 
 void InsetInfo::error(docstring const & err, Language const * lang)
 {
-	setText(bformat(translateIfPossible(err, lang->code()), from_utf8(name_)),
+	setText(bformat(translateIfPossible(err, lang->code()), from_utf8(params_.name)),
 		Font(inherit_font, lang), false);
 }
 
@@ -605,7 +616,7 @@ void InsetInfo::setText(docstring const & str, Language const * lang)
 
 bool InsetInfo::forceLTR() const
 {
-	return force_ltr_;
+	return params_.force_ltr;
 }
 
 
@@ -619,137 +630,137 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		return;
 
 	BufferParams const & bp = buffer().params();
-	lang_ = it.paragraph().getFontSettings(bp, it.pos()).language();
+	params_.lang = it.paragraph().getFontSettings(bp, it.pos()).language();
 	Language const * tryguilang = languages.getFromCode(Messages::guiLanguage());
 	// Some info insets use the language of the GUI (if available)
-	Language const * guilang = tryguilang ? tryguilang : lang_;
+	Language const * guilang = tryguilang ? tryguilang : params_.lang;
 
-	force_ltr_ = !lang_->rightToLeft();
+	params_.force_ltr = !params_.lang->rightToLeft();
 	// This is just to get the string into the po files
 	docstring gui;
-	switch (type_) {
-	case UNKNOWN_INFO:
+	switch (params_.type) {
+	case InsetInfoParams::UNKNOWN_INFO:
 		gui = _("Unknown Info!");
-		info(from_ascii("Unknown Info!"), lang_);
+		info(from_ascii("Unknown Info!"), params_.lang);
 		initialized_ = false;
 		break;
-	case SHORTCUT_INFO:
-	case SHORTCUTS_INFO: {
+	case InsetInfoParams::SHORTCUT_INFO:
+	case InsetInfoParams::SHORTCUTS_INFO: {
 		// shortcuts can change, so we need to re-do this each time
-		FuncRequest const func = lyxaction.lookupFunc(name_);
+		FuncRequest const func = lyxaction.lookupFunc(params_.name);
 		if (func.action() == LFUN_UNKNOWN_ACTION) {
 			gui = _("Unknown action %1$s");
-			error(from_ascii("Unknown action %1$s"), lang_);
+			error(from_ascii("Unknown action %1$s"), params_.lang);
 			break;
 		}
 		KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(func);
 		if (bindings.empty()) {
 			gui = _("undefined");
-			info(from_ascii("undefined"), lang_);
+			info(from_ascii("undefined"), params_.lang);
 			break;
 		}
-		if (type_ == SHORTCUT_INFO)
+		if (params_.type == InsetInfoParams::SHORTCUT_INFO)
 			setText(bindings.begin()->print(KeySequence::ForGui), guilang);
 		else
 			setText(theTopLevelKeymap().printBindings(func, KeySequence::ForGui), guilang);
-		force_ltr_ = !guilang->rightToLeft() && !lang_->rightToLeft();
+		params_.force_ltr = !guilang->rightToLeft() && !params_.lang->rightToLeft();
 		break;
 	}
-	case LYXRC_INFO: {
+	case InsetInfoParams::LYXRC_INFO: {
 		// this information could change, if the preferences are changed,
 		// so we will recalculate each time through.
 		ostringstream oss;
-		if (name_.empty()) {
+		if (params_.name.empty()) {
 			gui = _("undefined");
-			info(from_ascii("undefined"), lang_);
+			info(from_ascii("undefined"), params_.lang);
 			break;
 		}
 		// FIXME this uses the serialization mechanism to get the info
 		// we want, which i guess works but is a bit strange.
-		lyxrc.write(oss, true, name_);
+		lyxrc.write(oss, true, params_.name);
 		string result = oss.str();
 		if (result.size() < 2) {
 			gui = _("undefined");
-			info(from_ascii("undefined"), lang_);
+			info(from_ascii("undefined"), params_.lang);
 			break;
 		}
 		string::size_type loc = result.rfind("\n", result.size() - 2);
 		loc = loc == string::npos ? 0 : loc + 1;
-		if (result.size() < loc + name_.size() + 1
-			  || result.substr(loc + 1, name_.size()) != name_) {
+		if (result.size() < loc + params_.name.size() + 1
+			  || result.substr(loc + 1, params_.name.size()) != params_.name) {
 			gui = _("undefined");
-			info(from_ascii("undefined"), lang_);
+			info(from_ascii("undefined"), params_.lang);
 			break;
 		}
 		// remove leading comments and \\name and space
-		result = result.substr(loc + name_.size() + 2);
+		result = result.substr(loc + params_.name.size() + 2);
 
 		// remove \n and ""
 		result = rtrim(result, "\n");
 		result = trim(result, "\"");
-		setText(from_utf8(result), lang_);
+		setText(from_utf8(result), params_.lang);
 		break;
 	}
-	case PACKAGE_INFO:
+	case InsetInfoParams::PACKAGE_INFO:
 		// only need to do this once.
 		if (initialized_)
 			break;
 		// check in packages.lst
-		if (LaTeXFeatures::isAvailable(name_)) {
+		if (LaTeXFeatures::isAvailable(params_.name)) {
 			gui = _("yes");
-			info(from_ascii("yes"), lang_);
+			info(from_ascii("yes"), params_.lang);
 		} else {
 			gui = _("no");
-			info(from_ascii("no"), lang_);
+			info(from_ascii("no"), params_.lang);
 		}
 		initialized_ = true;
 		break;
 
-	case TEXTCLASS_INFO: {
+	case InsetInfoParams::TEXTCLASS_INFO: {
 		// the TextClass can change
 		LayoutFileList const & list = LayoutFileList::get();
 		bool available = false;
-		// name_ is the class name
-		if (list.haveClass(name_))
-			available = list[name_].isTeXClassAvailable();
+		// params_.name is the class name
+		if (list.haveClass(params_.name))
+			available = list[params_.name].isTeXClassAvailable();
 		if (available) {
 			gui = _("yes");
-			info(from_ascii("yes"), lang_);
+			info(from_ascii("yes"), params_.lang);
 		} else {
 			gui = _("no");
-			info(from_ascii("no"), lang_);
+			info(from_ascii("no"), params_.lang);
 		}
 		break;
 	}
-	case MENU_INFO: {
+	case InsetInfoParams::MENU_INFO: {
 		// only need to do this once.
 		if (initialized_)
 			break;
 		// and we will not keep trying if we fail
 		initialized_ = true;
 		docstring_list names;
-		FuncRequest const func = lyxaction.lookupFunc(name_);
+		FuncRequest const func = lyxaction.lookupFunc(params_.name);
 		if (func.action() == LFUN_UNKNOWN_ACTION) {
 			gui = _("Unknown action %1$s");
-			error(from_ascii("Unknown action %1$s"), lang_);
+			error(from_ascii("Unknown action %1$s"), params_.lang);
 			break;
 		}
 		// iterate through the menubackend to find it
 		if (!theApp()) {
 			gui = _("Can't determine menu entry for action %1$s in batch mode");
-			error(from_ascii("Can't determine menu entry for action %1$s in batch mode"), lang_);
+			error(from_ascii("Can't determine menu entry for action %1$s in batch mode"), params_.lang);
 			break;
 		}
 		if (!theApp()->searchMenu(func, names)) {
 			gui = _("No menu entry for action %1$s");
-			error(from_ascii("No menu entry for action %1$s"), lang_);
+			error(from_ascii("No menu entry for action %1$s"), params_.lang);
 			break;
 		}
 		// if found, return its path.
 		clear();
 		Paragraph & par = paragraphs().front();
 		Font const f(inherit_font, guilang);
-		force_ltr_ = !guilang->rightToLeft();
+		params_.force_ltr = !guilang->rightToLeft();
 		//Font fu = f;
 		//fu.fontInfo().setUnderbar(FONT_ON);
 		for (docstring const & name : names) {
@@ -767,13 +778,13 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		}
 		break;
 	}
-	case ICON_INFO: {
+	case InsetInfoParams::ICON_INFO: {
 		// only need to do this once.
 		if (initialized_)
 			break;
 		// and we will not keep trying if we fail
 		initialized_ = true;
-		FuncRequest func = lyxaction.lookupFunc(name_);
+		FuncRequest func = lyxaction.lookupFunc(params_.name);
 		docstring icon_name = frontend::Application::iconName(func, true);
 		// FIXME: We should use the icon directly instead of
 		// going through FileName. The code below won't work
@@ -786,7 +797,7 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		FileName file(to_utf8(icon_name));
 		if (file.onlyFileNameWithoutExt() == "unknown") {
 			string dir = "images";
-			FileName file2(imageLibFileSearch(dir, name_, "svgz,png"));
+			FileName file2(imageLibFileSearch(dir, params_.name, "svgz,png"));
 			if (!file2.empty())
 				file = file2;
 		}
@@ -812,70 +823,71 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		igp.width = Length(1, Length::EM);
 		inset->setParams(igp);
 		clear();
-		Font const f(inherit_font, lang_);
+		Font const f(inherit_font, params_.lang);
 		paragraphs().front().insertInset(0, inset, f,
 						 Change(Change::UNCHANGED));
 		break;
 	}
-	case BUFFER_INFO: {
+	case InsetInfoParams::BUFFER_INFO: {
 		// this could all change, so we will recalculate each time
-		if (name_ == "name")
-			setText(from_utf8(buffer().fileName().onlyFileName()), lang_);
-		else if (name_ == "path")
-			setText(from_utf8(os::latex_path(buffer().filePath())), lang_);
-		else if (name_ == "class")
-			setText(from_utf8(bp.documentClass().name()), lang_);
+		if (params_.name == "name")
+			setText(from_utf8(buffer().fileName().onlyFileName()), params_.lang);
+		else if (params_.name == "path")
+			setText(from_utf8(os::latex_path(buffer().filePath())), params_.lang);
+		else if (params_.name == "class")
+			setText(from_utf8(bp.documentClass().name()), params_.lang);
 		break;
 	}
-	case VCS_INFO: {
+	case InsetInfoParams::VCS_INFO: {
 		// this information could change, in principle, so we will 
 		// recalculate each time through
 		if (!buffer().lyxvc().inUse()) {
 			gui = _("No version control!");
-			info(from_ascii("No version control!"), lang_);
+			info(from_ascii("No version control!"), params_.lang);
 			break;
 		}
 		LyXVC::RevisionInfo itype = LyXVC::Unknown;
-		if (name_ == "revision")
+		if (params_.name == "revision")
 			itype = LyXVC::File;
-		else if (name_ == "tree-revision")
+		else if (params_.name == "tree-revision")
 			itype = LyXVC::Tree;
-		else if (name_ == "author")
+		else if (params_.name == "author")
 			itype = LyXVC::Author;
-		else if (name_ == "time")
+		else if (params_.name == "time")
 			itype = LyXVC::Time;
-		else if (name_ == "date")
+		else if (params_.name == "date")
 			itype = LyXVC::Date;
 		string binfo = buffer().lyxvc().revisionInfo(itype);
 		if (binfo.empty()) {
 			gui = _("%1$s[[vcs data]] unknown");
-			error(from_ascii("%1$s[[vcs data]] unknown"), lang_);
+			error(from_ascii("%1$s[[vcs data]] unknown"), params_.lang);
 		} else
-			setText(from_utf8(binfo), lang_);
+			setText(from_utf8(binfo), params_.lang);
 		break;
 	}
-	case LYX_INFO:
+	case InsetInfoParams::LYX_INFO:
 		// only need to do this once.
 		if (initialized_)
 			break;
-		if (name_ == "version")
-			setText(from_ascii(lyx_version), lang_);
+		if (params_.name == "version")
+			setText(from_ascii(lyx_version), params_.lang);
 		initialized_ = true;
 		break;
-	case DATE_INFO:
-	case MODDATE_INFO:
-	case FIXDATE_INFO: {
-		string date_format = name_;
-		string const date_specifier = (type_ == FIXDATE_INFO && contains(name_, '@'))
-				? split(name_, date_format, '@') : string();
+	case InsetInfoParams::DATE_INFO:
+	case InsetInfoParams::MODDATE_INFO:
+	case InsetInfoParams::FIXDATE_INFO: {
+		string date_format = params_.name;
+		string const date_specifier = (params_.type == InsetInfoParams::FIXDATE_INFO
+					       && contains(params_.name, '@'))
+				? split(params_.name, date_format, '@') : string();
 		QDate date;
-		if (type_ == MODDATE_INFO)
+		if (params_.type == InsetInfoParams::MODDATE_INFO)
 			date = QDateTime::fromTime_t(buffer().fileName().lastModified()).date();
-		else if (type_ == FIXDATE_INFO && !date_specifier.empty())
+		else if (params_.type == InsetInfoParams::FIXDATE_INFO && !date_specifier.empty())
 			date = QDate::fromString(toqstr(date_specifier), Qt::ISODate);
 		else
 			date = QDate::currentDate();
-		setText(getDate(date_format, date), lang_);
+		setText(params_.getDate(date_format, date), params_.lang);
 	}
 	}
 	// Just to do something with that string

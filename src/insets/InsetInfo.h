@@ -97,7 +97,7 @@ the command buffer (view->Toolbar->Command Buffer).
 
 */
 
-class InsetInfo : public InsetCollapsible {
+class InsetInfoParams {
 public:
 	enum info_type {
 		DATE_INFO,       // Current Date
@@ -115,7 +115,28 @@ public:
 		LYX_INFO,        // LyX version information
 		UNKNOWN_INFO,    // Invalid type
 	};
+	///
+	docstring getDate(std::string const, QDate const date = QDate::currentDate()) const;
+	///
+	std::vector<std::pair<std::string,docstring>> getArguments(Buffer const * buf,
+								   std::string const &) const;
+	///
+	info_type type;
+	///
+	std::string infoType() const;
+	///
+	std::string name;
+	///
+	Language const * lang;
+	///
+	bool force_ltr;
+};
 
+///
+extern InsetInfoParams infoparams;
+
+class InsetInfo : public InsetCollapsible {
+public:
 	///
 	InsetInfo(Buffer * buf, std::string const & info = std::string());
 	///
@@ -138,13 +159,7 @@ public:
 	///
 	void write(std::ostream & os) const;
 	///
-	std::string infoType() const;
-	///
-	std::string infoName() const { return name_; }
-	///
 	bool validateModifyArgument(docstring const & argument) const;
-	///
-	std::vector<std::pair<std::string,docstring>> getArguments(std::string const &) const;
 	///
 	bool showInsetDialog(BufferView * bv) const;
 	///
@@ -165,6 +180,8 @@ public:
 	std::string contextMenuName() const;
 	/// should paragraph indendation be omitted in any case?
 	bool neverIndent() const { return true; }
+	///
+	InsetInfoParams params() const { return params_; }
 
 private:
 	///
@@ -175,20 +192,14 @@ private:
 	void info(docstring const & err, Language const *);
 	///
 	void setText(docstring const & str, Language const *);
-	///
-	docstring getDate(std::string const, QDate const date = QDate::currentDate()) const;
 	// make sure that the other version of setText is still available.
 	using InsetCollapsible::setText;
 	///
 	bool initialized_;
 	///
-	info_type type_;
+	InsetInfoParams params_;
 	///
-	std::string name_;
-	///
-	bool force_ltr_;
-	///
-	Language const * lang_;
+	friend class InsetInfoParams;
 };
 
 

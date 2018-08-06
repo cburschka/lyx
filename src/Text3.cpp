@@ -1996,10 +1996,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INFO_INSERT: {
-		Inset * inset;
 		if (cmd.argument().empty()) {
-			bv->showDialog("info");
+			bv->showDialog("info", cur.current_font.language()->lang());
 		} else {
+			Inset * inset;
 			inset = createInset(cur.buffer(), cmd);
 			if (!inset)
 				break;

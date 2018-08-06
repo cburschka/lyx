@@ -1679,8 +1679,9 @@ void MenuDefinition::expandInfoArguments(BufferView const * bv)
 	}
 	InsetInfo const * iinset = static_cast<InsetInfo const *>(inset);
 
-	string const type = iinset->infoType();
-	vector<pair<string,docstring>> const args = iinset->getArguments(type);
+	string const type = iinset->params().infoType();
+	vector<pair<string,docstring>> const args =
+			iinset->params().getArguments(&bv->buffer(), type);
 
 	// Don't generate a menu for big lists (such as lfuns and rcs)
 	if (args.size() > 15)

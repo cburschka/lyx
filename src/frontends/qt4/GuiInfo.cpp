@@ -20,6 +20,10 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Cursor.h"
+#include "Language.h"
+
+#include "GuiApplication.h"
+#include "GuiView.h"
 
 #include "insets/InsetInfo.h"
 
@@ -170,9 +174,9 @@ GuiInfo::GuiInfo(QWidget * parent) : InsetParamsWidget(parent)
 void GuiInfo::paramsToDialog(Inset const * inset)
 {
 	InsetInfo const * ii = static_cast<InsetInfo const *>(inset);
-	inset_ = const_cast<Inset*>(inset);
-	QString const type = toqstr(ii->infoType());
-	QString name = toqstr(ii->infoName());
+	params_ = ii->params();
+	QString const type = toqstr(params_.infoType());
+	QString name = toqstr(params_.name);
 	QString fixdate;
 	if (type == "fixdate") {
 		fixdate = name.section('@', 1, 1);
@@ -229,22 +233,32 @@ docstring GuiInfo::dialogToParams() const
 }
 
 
+bool GuiInfo::initialiseParams(std::string const & sdata)
+{
+	Language const * lang = languages.getLanguage(sdata);
+	if (!lang)
+		return false;
+	params_.lang = lang;
+	updateArguments();
+	return true;
+}
+
+
 void GuiInfo::updateArguments(int i)
 {
 	infoLW->clear();
-	if (inset_) {
-		InsetInfo * ii = static_cast<InsetInfo *>(inset_);
-		vector<pair<string,docstring>> args = ii->getArguments(info_types[i]);
-		for (auto const & p : args) {
-			QListWidgetItem * li = new QListWidgetItem(toqstr(p.second));
-			li->setData(Qt::UserRole, toqstr(p.first));
-			if (p.first == "invalid")
-				// non-selectable, disabled item!
-				li->setFlags(Qt::NoItemFlags);
-			if (p.first == "custom")
-				li->setData(Qt::ToolTipRole, qt_("Enter a valid value below"));
-			infoLW->addItem(li);
-		}
+	BufferView const * bv = guiApp->currentView()->currentBufferView();
+	vector<pair<string,docstring>> args = params_.getArguments(const_cast<Buffer *>(&bv->buffer()),
+								   info_types[i]);
+	for (auto const & p : args) {
+		QListWidgetItem * li = new QListWidgetItem(toqstr(p.second));
+		li->setData(Qt::UserRole, toqstr(p.first));
+		if (p.first == "invalid")
+			// non-selectable, disabled item!
+			li->setFlags(Qt::NoItemFlags);
+		if (p.first == "custom")
+			li->setData(Qt::ToolTipRole, qt_("Enter a valid value below"));
+		infoLW->addItem(li);
 	}
 	if (infoLW->count() > 0)
 		infoLW->setCurrentRow(0);
