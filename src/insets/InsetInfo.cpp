@@ -266,7 +266,7 @@ vector<pair<string,docstring>> InsetInfoParams::getArguments(Buffer const * buf,
 		result.push_back(make_pair("tree-revision", _("Tree revision")));
 		result.push_back(make_pair("author", _("Author")));
 		result.push_back(make_pair("date", _("Date")));
-		result.push_back(make_pair("time", _("Time")));
+		result.push_back(make_pair("time", _("Time[[of day]]")));
 		break;
 	}
 
