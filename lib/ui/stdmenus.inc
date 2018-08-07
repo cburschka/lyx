@@ -431,6 +431,8 @@ Menuset
 		Item "Time (Fix)|x" "info-insert fixtime"
 		Separator
 		Item "File Name (Excl. Extension)|N" "info-insert buffer name-noext"
+		Item "User Name|U" "info-insert lyxrc user_name"
+		Item "User Email|E" "info-insert lyxrc user_email"
 		Separator
 		Item "Other...|O" "info-insert"
 	End

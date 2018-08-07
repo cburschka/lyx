@@ -786,6 +786,9 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		// remove \n and ""
 		result = rtrim(result, "\n");
 		result = trim(result, "\"");
+		gui = _("not set");
+		if (result.empty())
+			result = "not set";
 		setText(from_utf8(result), params_.lang);
 		break;
 	}
