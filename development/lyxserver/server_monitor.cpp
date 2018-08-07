@@ -41,6 +41,9 @@
 #include <QApplication>
 #include <QtGui>
 #include <QtDebug>
+#if QT_VERSION >= 0x050000
+#include <QtWidgets>
+#endif
 
 #include "server_monitor.h"
 

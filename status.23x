@@ -15,8 +15,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Updated Arabic, Chinese (Simplified), German, Russian, Slovakian and Ukrainian
-  user interface localization.
+- Updated Arabic, Chinese (Simplified), German, Italian, Russian, Slovakian
+  and Ukrainian user interface localization.
 
 - It possible to anonymize document's content for bug submissions
   via buffer-anonymize lfun (bug 7259).
@@ -31,6 +31,11 @@ What's new
 - Center longtable explicitly for compatibility with some packages (bug 10690).
 
 - Fix problems with default conversion script for graphics (part of bug 11186).
+
+
+* MISCELLANEOUS
+
+- Updated to Qt5 the LyX server example client in development/lyxserver/
 
 
 * TEX2LYX IMPROVEMENTS
