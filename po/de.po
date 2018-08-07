@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-08-07 14:59+0200\n"
-"PO-Revision-Date: 2018-08-07 15:02+0100\n"
+"POT-Creation-Date: 2018-08-07 15:20+0200\n"
+"PO-Revision-Date: 2018-08-07 15:22+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -13778,9 +13778,8 @@ msgid "Entry"
 msgstr "Eintrag"
 
 #: lib/layouts/moderncv.layout:334 lib/layouts/moderncv.layout:335
-#: src/insets/InsetInfo.cpp:269
-msgid "Time"
-msgstr "Zeit"
+msgid "Time[[period]]"
+msgstr "Zeitraum"
 
 #: lib/layouts/moderncv.layout:339 lib/layouts/moderncv.layout:340
 msgid "What?"
@@ -19442,15 +19441,15 @@ msgstr "Datum (fix)|f"
 
 #: lib/ui/stdmenus.inc:429
 msgid "Time (Current)|T"
-msgstr "Zeit (aktuell)|Z"
+msgstr "Uhrzeit (aktuell)|z"
 
 #: lib/ui/stdmenus.inc:430
 msgid "Time (Last Modification)|M"
-msgstr "Zeit (letzte Änderung)|g"
+msgstr "Uhrzeit (letzte Änderung)|g"
 
 #: lib/ui/stdmenus.inc:431
 msgid "Time (Fix)|x"
-msgstr "Zeit (fix)|x"
+msgstr "Uhrzeit (fix)|x"
 
 #: lib/ui/stdmenus.inc:433
 msgid "File Name (Excl. Extension)|N"
@@ -30625,15 +30624,15 @@ msgstr "Datum (fix)"
 
 #: src/frontends/qt4/GuiInfo.cpp:73
 msgid "Time (current)"
-msgstr "Zeit (aktuell)"
+msgstr "Uhrzeit (aktuell)"
 
 #: src/frontends/qt4/GuiInfo.cpp:74
 msgid "Time (last modified)"
-msgstr "Zeit (letzte Änderung)"
+msgstr "Uhrzeit (letzte Änderung)"
 
 #: src/frontends/qt4/GuiInfo.cpp:75
 msgid "Time (fix)"
-msgstr "Zeit (fix)"
+msgstr "Uhrzeit (fix)"
 
 #: src/frontends/qt4/GuiInfo.cpp:76
 msgid "Document Information"
@@ -30847,11 +30846,11 @@ msgstr "Geben Sie unten einen gültigen Wert ein."
 
 #: src/frontends/qt4/GuiInfo.cpp:354
 msgid "Here you can enter a fix time (in ISO format: hh:mm:ss)"
-msgstr "Hier können Sie eine fixe Zeit eingeben (im ISO-Format:  hh:mm:ss)"
+msgstr "Hier können Sie eine fixe Uhrzeit eingeben (im ISO-Format:  hh:mm:ss)"
 
 #: src/frontends/qt4/GuiInfo.cpp:355
 msgid "&Fix Time:"
-msgstr "&Fixe Zeit:"
+msgstr "&Fixe Uhrzeit:"
 
 #: src/frontends/qt4/GuiInfo.h:40
 msgid "Field Settings"
@@ -33156,6 +33155,10 @@ msgstr "Revision"
 msgid "Tree revision"
 msgstr "Baumrevision"
 
+#: src/insets/InsetInfo.cpp:269
+msgid "Time[[of day]]"
+msgstr "Uhrzeit"
+
 #: src/insets/InsetInfo.cpp:274
 msgid "LyX version"
 msgstr "LyX-Version"
@@ -33233,7 +33236,7 @@ msgstr "Versionskontrolle: Datum"
 
 #: src/insets/InsetInfo.cpp:420
 msgid "Version control time"
-msgstr "Versionskontrolle: Zeit"
+msgstr "Versionskontrolle: Uhrzeit"
 
 #: src/insets/InsetInfo.cpp:423
 msgid "The current LyX version"
@@ -33253,11 +33256,11 @@ msgstr "Ein festes Datum"
 
 #: src/insets/InsetInfo.cpp:435
 msgid "The current time"
-msgstr "Die aktuelle Zeit"
+msgstr "Die aktuelle Uhrzeit"
 
 #: src/insets/InsetInfo.cpp:438
 msgid "The time of last save"
-msgstr "Die Zeit der letzten gespeicherten Änderung"
+msgstr "Die Uhrzeit der letzten gespeicherten Änderung"
 
 #: src/insets/InsetInfo.cpp:441
 msgid "A static time"
@@ -34540,6 +34543,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Time"
+#~ msgstr "Zeit"
 
 #~ msgid "File name"
 #~ msgstr "Dateiname"
