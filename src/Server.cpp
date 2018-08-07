@@ -356,7 +356,7 @@ bool LyXComm::pipeServer()
 
 			error = GetLastError();
 
-			if (success && error == ERROR_IO_PENDING) {
+			if (success && (error == ERROR_IO_PENDING || error == NO_ERROR)) {
 				// The write operation is still pending.
 				// We get here when a reader is started
 				// well before a reply is ready, so delay
