@@ -145,8 +145,8 @@ char const * info_tooltip[] =
      "* yy: year as two digit number\n"
      "* yyyy: year as four digit number"),// fixdate
   N_("Enter time format specification, using the following placeholders:\n"
-     "* h: the hour without a leading zero (01-12 in AM/PM)\n"
-     "* hh: the hour with a leading zero (1-12 in AM/PM)\n"
+     "* h: the hour without a leading zero (1-12 in AM/PM)\n"
+     "* hh: the hour with a leading zero (01-12 in AM/PM)\n"
      "* H: the hour without a leading zero (0-23 in AM/PM)\n"
      "* HH: the hour with a leading zero (00-23 in AM/PM)\n"
      "* m: the minute without a leading zero\n"
@@ -159,8 +159,8 @@ char const * info_tooltip[] =
      "* ap or a: use am/pm display ('am'/'pm')\n"
      "* t: the timezone (e.g. CEST)"),// time
   N_("Enter time format specification, using the following placeholders:\n"
-     "* h: the hour without a leading zero (01-12 in AM/PM)\n"
-     "* hh: the hour with a leading zero (1-12 in AM/PM)\n"
+     "* h: the hour without a leading zero (1-12 in AM/PM)\n"
+     "* hh: the hour with a leading zero (01-12 in AM/PM)\n"
      "* H: the hour without a leading zero (0-23 in AM/PM)\n"
      "* HH: the hour with a leading zero (00-23 in AM/PM)\n"
      "* m: the minute without a leading zero\n"
@@ -173,8 +173,8 @@ char const * info_tooltip[] =
      "* ap or a: use am/pm display ('am'/'pm')\n"
      "* t: the timezone (e.g. CEST)"),// modtime
   N_("Enter time format specification, using the following placeholders:\n"
-     "* h: the hour without a leading zero (01-12 in AM/PM)\n"
-     "* hh: the hour with a leading zero (1-12 in AM/PM)\n"
+     "* h: the hour without a leading zero (1-12 in AM/PM)\n"
+     "* hh: the hour with a leading zero (01-12 in AM/PM)\n"
      "* H: the hour without a leading zero (0-23 in AM/PM)\n"
      "* HH: the hour with a leading zero (00-23 in AM/PM)\n"
      "* m: the minute without a leading zero\n"
