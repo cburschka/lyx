@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-08-05 10:23+0200\n"
-"PO-Revision-Date: 2018-08-05 09:20+0000\n"
+"POT-Creation-Date: 2018-08-07 13:08+0200\n"
+"PO-Revision-Date: 2018-08-07 11:48+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -222,6 +222,10 @@ msgstr ""
 #: src/frontends/qt4/ui/InfoUi.ui:59
 msgid "Here you can enter a fix date (in ISO format: YYYY-MM-DD)"
 msgstr "Tu môžte vložiť pevný dátum (napr. vo formáte ISO: YYYY-MM-DD)"
+
+#: src/frontends/qt4/GuiInfo.cpp:351
+msgid "Here you can enter a fix time (in ISO format: hh:mm:ss)"
+msgstr "Tu môžte vložiť pevný čas (napr. vo formáte ISO: hh:mm:ss)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:379 src/frontends/qt4/ui/PrefLatexUi.ui:96
 msgid "Bibliography Generation"
@@ -1433,6 +1437,14 @@ msgstr "&Hľadanie"
 #: src/frontends/qt4/ui/SearchUi.ui:28
 msgid "&Find:"
 msgstr "Ná&jsť:"
+
+#: src/frontends/qt4/ui/InfoUi.ui:49 src/frontends/qt4/GuiInfo.cpp:348
+msgid "&Fix Date:"
+msgstr "&Pevný Dátum:"
+
+#: src/frontends/qt4/GuiInfo.cpp:352
+msgid "&Fix Time:"
+msgstr "P&evný Čas:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:53
 #: src/frontends/qt4/ui/SearchUi.ui:66
@@ -5944,7 +5956,7 @@ msgstr "Poznámky k Obrázku"
 #: lib/layouts/broadway.layout:177 lib/layouts/cl2emult.layout:134
 #: lib/layouts/db_stdclass.inc:23 lib/layouts/dtk.layout:33
 #: lib/layouts/egs.layout:20 lib/layouts/elsart.layout:49
-#: lib/layouts/elsarticle.layout:34 lib/layouts/europasscv.layout:60
+#: lib/layouts/elsarticle.layout:36 lib/layouts/europasscv.layout:60
 #: lib/layouts/europasscv.layout:216 lib/layouts/europecv.layout:18
 #: lib/layouts/europecv.layout:160 lib/layouts/europecv.layout:220
 #: lib/layouts/foils.layout:32 lib/layouts/g-brief2.layout:32
@@ -5968,9 +5980,9 @@ msgstr "Poznámky k Obrázku"
 #: lib/layouts/stdlayouts.inc:35 lib/layouts/stdlayouts.inc:57
 #: lib/layouts/stdlayouts.inc:77 lib/layouts/stdletter.inc:13
 #: lib/layouts/svcommon.inc:27 lib/layouts/svcommon.inc:612
-#: lib/layouts/svcommon.inc:623 lib/layouts/tufte-book.layout:211
+#: lib/layouts/svcommon.inc:623 lib/layouts/tufte-book.layout:225
 msgid "MainText"
-msgstr "HlavnýText"
+msgstr "Hlavný Text"
 
 #: lib/layouts/AEA.layout:119
 msgid "Figure Note"
@@ -6703,7 +6715,7 @@ msgstr "Prílohy"
 #: lib/layouts/agutex.layout:212 lib/layouts/amsdefs.inc:204
 #: lib/layouts/apa.layout:213 lib/layouts/beamer.layout:1108
 #: lib/layouts/egs.layout:527 lib/layouts/egs.layout:578
-#: lib/layouts/elsarticle.layout:310 lib/layouts/europasscv.layout:425
+#: lib/layouts/elsarticle.layout:288 lib/layouts/europasscv.layout:425
 #: lib/layouts/europecv.layout:294 lib/layouts/ijmpc.layout:428
 #: lib/layouts/ijmpc.layout:452 lib/layouts/ijmpd.layout:441
 #: lib/layouts/ijmpd.layout:465 lib/layouts/iopart.layout:250
@@ -6718,7 +6730,7 @@ msgstr "Prílohy"
 #: lib/layouts/stdstruct.inc:58 lib/layouts/svcommon.inc:545
 #: lib/layouts/svcommon.inc:579
 msgid "BackMatter"
-msgstr "ZáverečnáČasť"
+msgstr "Záverečná Časť"
 
 #: lib/layouts/IEEEtran.layout:323
 msgid "Peer Review Title"
@@ -9073,10 +9085,6 @@ msgstr "American Psychological Association (APA), v. 6"
 msgid "FiveAuthors"
 msgstr "PäťAutorov"
 
-#: src/frontends/qt4/ui/InfoUi.ui:49
-msgid "Fix Date:"
-msgstr "Nemenný Dátum:"
-
 #: lib/layouts/apa6.layout:120
 msgid "SixAuthors"
 msgstr "ŠesťAutorov"
@@ -9210,7 +9218,7 @@ msgstr "Špecifikácie prekrytia tohto objektu"
 
 #: lib/layouts/beamer.layout:129
 msgid "Mini Template"
-msgstr "Mini šablóna"
+msgstr "Mini-Šablóna"
 
 #: lib/layouts/beamer.layout:130
 msgid "Mini template for this list (see beamer manual for details)"
@@ -9345,7 +9353,7 @@ msgstr "Štandardné špecifikácie prekrytia tohto rámca"
 #: lib/layouts/beamer.layout:473 lib/layouts/beamer.layout:502
 #: lib/layouts/beamer.layout:513 lib/layouts/beamer.layout:541
 msgid "Frame Options"
-msgstr "Rám: Voľby"
+msgstr "Voľby Rámu"
 
 #: lib/layouts/beamer.layout:474 lib/layouts/beamer.layout:503
 #: lib/layouts/beamer.layout:514 lib/layouts/beamer.layout:542
@@ -9361,11 +9369,11 @@ msgstr "Možnosti"
 #: lib/layouts/beamer.layout:475 lib/layouts/beamer.layout:504
 #: lib/layouts/beamer.layout:515 lib/layouts/beamer.layout:543
 msgid "Frame options (see beamer manual)"
-msgstr "Rám voľby (viď beamer manuál)"
+msgstr "Voľby rámu (viď beamer manuál)"
 
 #: lib/layouts/beamer.layout:478
 msgid "Frame Title"
-msgstr "Rám: Titul"
+msgstr "Titul Rámu"
 
 #: lib/layouts/beamer.layout:479
 msgid "Enter the frame title here"
@@ -9373,7 +9381,7 @@ msgstr "Vložte sem titul rámu"
 
 #: lib/layouts/beamer.layout:498
 msgid "PlainFrame"
-msgstr "ProstýRám"
+msgstr "Prostý Rám"
 
 #: lib/layouts/beamer.layout:500
 msgid "Frame (plain)"
@@ -9389,7 +9397,7 @@ msgstr "Rám (krehký)"
 
 #: lib/layouts/beamer.layout:520
 msgid "AgainFrame"
-msgstr "ZaseRám"
+msgstr "Zase Rám"
 
 #: lib/layouts/beamer.layout:526 lib/layouts/powerdot.layout:126
 #: lib/layouts/seminar.layout:111 lib/layouts/slides.layout:91
@@ -9403,7 +9411,7 @@ msgstr "Opakovať rám s návestím"
 
 #: lib/layouts/beamer.layout:567
 msgid "FrameTitle"
-msgstr "RámTitul"
+msgstr "Titul Rámu"
 
 #: lib/layouts/beamer.layout:586 lib/layouts/beamer.layout:616
 #: lib/layouts/beamer.layout:826 lib/layouts/beamer.layout:855
@@ -9428,7 +9436,7 @@ msgstr "Krátka verzia titulu rámu použitá v niektorých témach"
 
 #: lib/layouts/beamer.layout:598
 msgid "FrameSubtitle"
-msgstr "RámPodTitul"
+msgstr "Podtitul Rámu"
 
 #: lib/layouts/beamer.layout:628 lib/layouts/moderncv.layout:305
 #: lib/layouts/moderncv.layout:320
@@ -9463,7 +9471,7 @@ msgstr "Voľby umiestňovanie stĺpcov (t, T, c, b)"
 
 #: lib/layouts/beamer.layout:687
 msgid "ColumnsCenterAligned"
-msgstr "StĺpceDoStreduZarovnané"
+msgstr "Stĺpce Zarovnané do Stredu"
 
 #: lib/layouts/beamer.layout:690
 msgid "Columns (center aligned)"
@@ -9471,7 +9479,7 @@ msgstr "Stĺpce (do stredu zarovnané)"
 
 #: lib/layouts/beamer.layout:695
 msgid "ColumnsTopAligned"
-msgstr "StĺpceHoreZarovnané"
+msgstr "Stĺpce Zarovnané Hore"
 
 #: lib/layouts/beamer.layout:698
 msgid "Columns (top aligned)"
@@ -9511,7 +9519,7 @@ msgstr "Šírka plochy pretlačenia"
 #: lib/layouts/graphicboxes.module:48 lib/layouts/moderncv.layout:310
 #: lib/layouts/sectionbox.module:21 src/frontends/qt4/GuiBox.cpp:75
 msgid "Width"
-msgstr "Šírka (obsahu rámiku)"
+msgstr "Šírka"
 
 #: lib/layouts/beamer.layout:745
 msgid "The width of the overprint area (default: text width)"
@@ -9519,11 +9527,11 @@ msgstr "Šírka plochy pretlačenia (štandard: šírka textu)"
 
 #: lib/layouts/beamer.layout:772
 msgid "OverlayArea"
-msgstr "Prekrytie"
+msgstr "Plocha Prekrytia"
 
 #: lib/layouts/beamer.layout:782
 msgid "Overlayarea"
-msgstr "Prekrytie"
+msgstr "Plocha Prekrytia"
 
 #: lib/layouts/beamer.layout:792
 msgid "Overlay Area Width"
@@ -9652,7 +9660,7 @@ msgstr "Skratka dátumu ktorá sa zjaví na boku/hlavičke"
 
 #: lib/layouts/beamer.layout:1082 lib/layouts/beamerposter.layout:46
 msgid "TitleGraphic"
-msgstr "TitulGrafiky"
+msgstr "Titulná Grafika"
 
 #: lib/layouts/beamer.layout:1137 lib/layouts/db_stdlayouts.inc:19
 #: lib/layouts/egs.layout:102 lib/layouts/powerdot.layout:381
@@ -9750,7 +9758,7 @@ msgstr "LyX-Kód"
 
 #: lib/layouts/beamer.layout:1350
 msgid "NoteItem"
-msgstr "PoznámkovýObjekt"
+msgstr "Bod Poznámky"
 
 #: lib/layouts/beamer.layout:1385 lib/layouts/beamer.layout:1387
 #: src/Font.cpp:65 src/frontends/qt4/GuiCharacter.cpp:127
@@ -9775,10 +9783,10 @@ msgstr "Výstrah"
 msgid "Structure"
 msgstr "Štruktúra"
 
-#: lib/layouts/beamer.layout:1501 lib/layouts/beamer.layout:1503
+#: lib/layouts/beamer.layout:1510 lib/layouts/beamer.layout:1512
 #: lib/layouts/powerdot.layout:591
 msgid "Visible"
-msgstr "Viditeľný text"
+msgstr "Viditeľný"
 
 #: lib/layouts/beamer.layout:1521 lib/layouts/beamer.layout:1523
 msgid "Invisible"
@@ -9808,17 +9816,17 @@ msgstr "Voľby Poznámky"
 msgid "Specifiy note options (see beamer manual)"
 msgstr "Špecifikovať voľby poznámky (viď beamer manuál)"
 
-#: lib/layouts/beamer.layout:1589
+#: lib/layouts/beamer.layout:1601
 msgid "ArticleMode"
-msgstr "MódPreČlánok"
+msgstr "Mód Článku"
 
 #: lib/layouts/beamer.layout:1595
 msgid "Article"
 msgstr "Článok"
 
-#: lib/layouts/beamer.layout:1600
+#: lib/layouts/beamer.layout:1612
 msgid "PresentationMode"
-msgstr "PrezentačnýMód"
+msgstr "Mód Prezentácie"
 
 #: lib/layouts/beamer.layout:1606
 msgid "Presentation"
@@ -10136,7 +10144,7 @@ msgstr "[šachovnica]"
 
 #: lib/layouts/chess.layout:141
 msgid "BoardCentered"
-msgstr "ŠachovnicaStredená"
+msgstr "Šachovnica Stredená"
 
 #: lib/layouts/chess.layout:146
 msgid "[centered board]"
@@ -10400,18 +10408,18 @@ msgstr "Zaobchádzanie:"
 #: lib/layouts/g-brief2.layout:50 lib/layouts/g-brief2.layout:819
 #: lib/layouts/lettre.layout:64 lib/layouts/lettre.layout:456
 msgid "YourRef"
-msgstr "Vaše číslo"
+msgstr "Vaše číslo listu"
 
 #: lib/layouts/dinbrief.layout:104 lib/layouts/scrlettr.layout:211
 #: lib/layouts/scrlttr2.layout:297
 msgid "Your ref.:"
-msgstr "Vaše číslo:"
+msgstr "Vaše číslo listu:"
 
 #: lib/layouts/dinbrief.layout:108 lib/layouts/g-brief.layout:102
 #: lib/layouts/g-brief2.layout:48 lib/layouts/g-brief2.layout:798
 #: lib/layouts/lettre.layout:66 lib/layouts/lettre.layout:472
 msgid "MyRef"
-msgstr "Moje číslo"
+msgstr "Moje číslo listu"
 
 #: lib/layouts/dinbrief.layout:110 lib/layouts/scrlettr.layout:232
 #: lib/layouts/scrlttr2.layout:321
@@ -10599,7 +10607,7 @@ msgstr "Prídavok"
 
 #: lib/layouts/dinbrief.layout:284
 msgid "IhrZeichen"
-msgstr "Vaše číslo"
+msgstr "Vaše číslo listu"
 
 #: lib/layouts/dinbrief.layout:289 lib/layouts/g-brief.layout:116
 #: lib/layouts/g-brief2.layout:52 lib/layouts/g-brief2.layout:841
@@ -10612,7 +10620,7 @@ msgstr "Váš list"
 
 #: lib/layouts/dinbrief.layout:299
 msgid "MeinZeichen"
-msgstr "Moje číslo"
+msgstr "Moje číslo listu"
 
 #: lib/layouts/dinbrief.layout:304
 msgid "Unterschrift"
@@ -10648,7 +10656,7 @@ msgstr "Dátum"
 #: lib/layouts/g-brief2.layout:46 lib/layouts/g-brief2.layout:882
 #: lib/layouts/iucr.layout:256
 msgid "Reference"
-msgstr "Predmet"
+msgstr "Referencia"
 
 #: lib/layouts/dinbrief.layout:349
 msgid "Betreff"
@@ -10981,9 +10989,9 @@ msgstr "Prípad \\arabic{case}"
 msgid "Elsevier"
 msgstr "Elsevier"
 
-#: lib/layouts/elsarticle.layout:103
+#: lib/layouts/elsarticle.layout:78
 msgid "Titlenotemark"
-msgstr "Titulznačkapoznámky"
+msgstr "Značka titulnej poznámky"
 
 #: lib/layouts/elsarticle.layout:97
 msgid "Titlenote mark"
@@ -11261,7 +11269,7 @@ msgstr "Fotku pretiahnuť na túto šírku"
 
 #: lib/layouts/europasscv.layout:181 lib/layouts/europecv.layout:117
 msgid "AfterPicture"
-msgstr "ZaObrázkom"
+msgstr "Text za Obrázkom"
 
 #: lib/layouts/europasscv.layout:184 lib/layouts/europecv.layout:120
 msgid "Space after picture:"
@@ -11971,12 +11979,12 @@ msgstr "Návratná adresa:"
 #: lib/layouts/g-brief.layout:105 lib/layouts/g-brief2.layout:809
 #: lib/layouts/lettre.layout:478
 msgid "MyRef:"
-msgstr "Moje číslo:"
+msgstr "Moje číslo listu:"
 
 #: lib/layouts/g-brief.layout:112 lib/layouts/g-brief2.layout:830
 #: lib/layouts/lettre.layout:462
 msgid "YourRef:"
-msgstr "Vaše číslo:"
+msgstr "Vaše číslo listu:"
 
 #: lib/layouts/g-brief.layout:119 lib/layouts/g-brief2.layout:851
 msgid "YourMail:"
@@ -13684,6 +13692,30 @@ msgstr "Záznam"
 msgid "Time"
 msgstr "Čas"
 
+#: lib/ui/stdmenus.inc:429
+msgid "Time (Current)|T"
+msgstr "Čas (Aktuálny)|s"
+
+#: lib/ui/stdmenus.inc:431
+msgid "Time (Fix)|x"
+msgstr "Čas (Pevný)|v"
+
+#: lib/ui/stdmenus.inc:430
+msgid "Time (Last Modification)|M"
+msgstr "Čas (Poslednej Modifikácie)|o"
+
+#: src/frontends/qt4/GuiInfo.cpp:73
+msgid "Time (current)"
+msgstr "Čas (aktuálny)"
+
+#: src/frontends/qt4/GuiInfo.cpp:75
+msgid "Time (fix)"
+msgstr "Čas (pevný)"
+
+#: src/frontends/qt4/GuiInfo.cpp:74
+msgid "Time (last modified)"
+msgstr "Čas (poslednej modifikácie)"
+
 #: lib/layouts/moderncv.layout:339 lib/layouts/moderncv.layout:340
 msgid "What?"
 msgstr "Čo?"
@@ -14354,9 +14386,13 @@ msgstr "PDFAkcia"
 msgid "The name of the PDF action"
 msgstr "Názov tejto PDF akcie"
 
-#: src/insets/InsetInfo.cpp:165
-msgid "The name of this file"
-msgstr "Názov tohto súboru"
+#: src/insets/InsetInfo.cpp:402
+msgid "The name of this file (incl. extension)"
+msgstr "Názov tohto súboru (s príponou)"
+
+#: src/insets/InsetInfo.cpp:404
+msgid "The name of this file (without extension)"
+msgstr "Názov tohto súboru (bez prípony)"
 
 #: lib/layouts/pdfform.module:134
 msgid "Text Field Style"
@@ -14463,7 +14499,7 @@ msgstr "~=~"
 
 #: lib/layouts/powerdot.layout:180
 msgid "WideSlide"
-msgstr "ŠirokáFólia"
+msgstr "Široká Fólia"
 
 #: lib/layouts/powerdot.layout:191
 msgid "EmptySlide"
@@ -14520,6 +14556,39 @@ msgstr "ľavý Stĺpec"
 #: lib/layouts/powerdot.layout:464
 msgid "Enter the text of the left column here (right column in main paragraph)"
 msgstr "Vložte sem text pre ľavý stĺpec (pravý stĺpec v hlavnom odstavci)"
+
+#: src/frontends/qt4/GuiInfo.cpp:147 src/frontends/qt4/GuiInfo.cpp:161
+#: src/frontends/qt4/GuiInfo.cpp:175
+msgid ""
+"Enter time format specification, using the following placeholders:\n"
+"* h: the hour without a leading zero (1-12 in AM/PM)\n"
+"* hh: the hour with a leading zero (01-12 in AM/PM)\n"
+"* H: the hour without a leading zero (0-23 in AM/PM)\n"
+"* HH: the hour with a leading zero (00-23 in AM/PM)\n"
+"* m: the minute without a leading zero\n"
+"* mm: the minute with a leading zero\n"
+"* s: the second without a leading zero\n"
+"* ss: the second with a leading zero\n"
+"* z: the milliseconds without leading zeroes\n"
+"* zzz: the milliseconds with leading zeroes\n"
+"* AP or A: use AM/PM display ('AM'/'PM')\n"
+"* ap or a: use am/pm display ('am'/'pm')\n"
+"* t: the timezone (e.g. CEST)"
+msgstr ""
+"Špecifikujte formát času použijúc nasledujúce zástupné symboly:\n"
+"* h: hodina ako číslo bez vedúcej nuly(1-12 vo formáte AM/PM)\n"
+"* hh: hodina ako číslo s vedúcou nulou(01-12 vo formáte AM/PM)\n"
+"* H: hodina ako číslo bez vedúcej nuly(0-23)\n"
+"* HH:  mesiac ako číslo s vedúcou nulou(00-23)\n"
+"* m: minúta ako číslo bez vedúcej nuly\n"
+"* mm: minúta ako číslo s vedúcou nulou\n"
+"* s: sekunda ako číslo bez vedúcej nuly\n"
+"* ss: sekunda ako číslo s vedúcou nulou\n"
+"* z: milisekunda ako číslo bez vedúcej nuly\n"
+"* zzz: milisekunda ako číslo s vedúcimi nulami\n"
+"* AP alebo A: použiť AM/PM displej\n"
+"* ap alebo a: použiť am/pm displej\n"
+"* t: časový pás (napr. CEST)"
 
 #: lib/layouts/powerdot.layout:589
 msgid "Onslide"
@@ -14937,7 +15006,7 @@ msgstr "Titul:"
 
 #: lib/layouts/scrlettr.layout:208 lib/layouts/scrlttr2.layout:293
 msgid "Yourref"
-msgstr "Vaše číslo"
+msgstr "Vaše číslo listu"
 
 #: lib/layouts/scrlettr.layout:222 lib/layouts/scrlttr2.layout:309
 msgid "Yourmail"
@@ -14949,7 +15018,7 @@ msgstr "Váš dopis od:"
 
 #: lib/layouts/scrlettr.layout:229 lib/layouts/scrlttr2.layout:317
 msgid "Myref"
-msgstr "Moje číslo"
+msgstr "Moje číslo listu"
 
 #: lib/layouts/scrlettr.layout:236 lib/layouts/scrlttr2.layout:325
 msgid "Customer"
@@ -15031,7 +15100,7 @@ msgstr ""
 
 #: lib/layouts/sectionbox.module:11
 msgid "SectionBox"
-msgstr "SekciaRámik"
+msgstr "Rámik Sekcie"
 
 #: lib/layouts/sectionbox.module:13
 msgid "Section Box"
@@ -18699,7 +18768,7 @@ msgstr "Navigovať|g"
 
 #: src/frontends/qt4/InsetParamsDialog.cpp:87
 msgid "Ne&w Inset"
-msgstr "Nová &vložka"
+msgstr "Nová &Vložka"
 
 #: lib/ui/stdmenus.inc:35
 msgid "Document|D"
@@ -20786,9 +20855,9 @@ msgstr "st&upňov"
 msgid "iddots"
 msgstr "iddots"
 
-#: lib/ui/stdtoolbars.inc:436
+#: lib/ui/stdtoolbars.inc:438
 msgid "Frame Decorations"
-msgstr "Dekorácia rámov"
+msgstr "Dekorácie Rámu"
 
 #: lib/ui/stdtoolbars.inc:437
 msgid "hat"
@@ -24554,6 +24623,10 @@ msgstr ""
 msgid "A static date"
 msgstr "Nemenný dátum"
 
+#: src/insets/InsetInfo.cpp:441
+msgid "A static time"
+msgstr "Pevný čas"
+
 #: lib/xtemplates/inkscape.xtemplate:38
 msgid "Inkscape"
 msgstr "Inkscape"
@@ -25342,9 +25415,13 @@ msgstr "%1$s je z novšej verzie LyX-u, a skript lyx2lyx zlyhal pri konverzii."
 msgid "File is read-only"
 msgstr "Dokument je iba na čítanie"
 
-#: src/insets/InsetInfo.cpp:346
-msgid "File name"
-msgstr "Názov súboru"
+#: src/insets/InsetInfo.cpp:254
+msgid "File name (with extension)"
+msgstr "Meno súboru (s príponou)"
+
+#: src/insets/InsetInfo.cpp:255
+msgid "File name (without extension)"
+msgstr "Meno súboru (bez prípony)"
 
 #: src/Buffer.cpp:1375
 #, c-format
@@ -27591,6 +27668,10 @@ msgstr ""
 "Časový interval pri automatickom ukladaní (v sekundách). 0 znamená bez "
 "automatického ukladania."
 
+#: src/insets/InsetInfo.cpp:438
+msgid "The time of last save"
+msgstr "Čas posledného uloženia"
+
 #: src/LyXRC.cpp:3083
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
@@ -29151,6 +29232,10 @@ msgstr "Neznáma funkcia."
 msgid "The current document was closed."
 msgstr "Aktuálny dokument sa zavrel."
 
+#: src/insets/InsetInfo.cpp:435
+msgid "The current time"
+msgstr "Aktuálny čas"
+
 #: src/frontends/qt4/GuiApplication.cpp:2739
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
@@ -30654,6 +30739,10 @@ msgstr "Jazykové Nastavenia"
 msgid "File Handling"
 msgstr "Obsluha súborov"
 
+#: lib/ui/stdmenus.inc:433
+msgid "File Name (Excl. Extension)|N"
+msgstr "Meno Súboru (Bez Prípony)|e"
+
 #: src/frontends/qt4/GuiPrefs.cpp:500
 msgid "Keyboard/Mouse"
 msgstr "Klávesnica/Myš"
@@ -30913,7 +31002,7 @@ msgstr "LyX klávesové mapy (*.kmap)"
 
 #: src/frontends/qt4/GuiPrintNomencl.cpp:49
 msgid "Longest label width"
-msgstr "Veľkosť najdlhšej značky"
+msgstr "Šírka najdlhšej značky"
 
 #: src/frontends/qt4/GuiPrintNomencl.h:40
 msgid "Nomenclature List Settings"
@@ -34055,6 +34144,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "File name"
+#~ msgstr "Názov súboru"
 
 #~ msgid "Class|C"
 #~ msgstr "Trieda|T"
@@ -38837,3 +38929,9 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "No version control"
 #~ msgstr "Bez kontroly verzií"
+
+#~ msgid "Fix Date:"
+#~ msgstr "Nemenný Dátum:"
+
+#~ msgid "The name of this file"
+#~ msgstr "Názov tohto súboru"
