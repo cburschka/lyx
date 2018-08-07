@@ -38830,6 +38830,67 @@ Datum
 \end_layout
 
 \begin_layout Description
+Uhrzeit
+\begin_inset space ~
+\end_inset
+
+(aktuell) fügt die aktuelle Uhrzeit ein (die sich automatisch aktualisiert)
+\end_layout
+
+\begin_layout Description
+Uhrzeit
+\begin_inset space ~
+\end_inset
+
+(letzte
+\begin_inset space ~
+\end_inset
+
+Änderung) fügt die Uhrzeit der letzten Bearbeitung der Datei ein (letzte
+ Speicherung)
+\end_layout
+
+\begin_layout Description
+Uhrzeit
+\begin_inset space ~
+\end_inset
+
+(fix) fügt eine feste Uhrzeit ein, welche sich nicht ändert
+\end_layout
+
+\begin_layout Description
+Dateiname
+\begin_inset space ~
+\end_inset
+
+(ohne
+\begin_inset space ~
+\end_inset
+
+Erweiterung) fürgt den Namen der aktuellen Datei ein (ohne die Endung .lyx)
+\end_layout
+
+\begin_layout Description
+Benutzername fügt den Benutzernamen ein, der in 
+\family sans
+Werkzeuge\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Identität
+\family default
+ angegeben wurde.
+\end_layout
+
+\begin_layout Description
+Benutzer-E-Mail fügt die E-Mail-Adresse des Benutzers ein, die 
+\family sans
+Werkzeuge\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Identität
+\family default
+ angegeben wurde.
+\end_layout
+
+\begin_layout Description
 Anderes\SpecialChar ldots
  öffnet ein Dialogfenster, in dem Sie alternative Formate für die
  angeführten Datumstypen wählen und eine Reihe anderer Informationen einfügen

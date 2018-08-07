@@ -8343,12 +8343,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8361,6 +8363,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8384,6 +8387,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -40439,12 +40443,97 @@ Modification) inserts the date of the last file modification (time of last
 
 \begin_layout Description
 
-\change_inserted -712698321 1533460390
+\change_inserted -712698321 1533647074
 Date
 \begin_inset space ~
 \end_inset
 
 (Fix) inserts a static date that will not change.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1533647089
+Time
+\begin_inset space ~
+\end_inset
+
+(Current) inserts the current time (which will automatically update itself)
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1533647093
+Time
+\begin_inset space ~
+\end_inset
+
+(Last
+\begin_inset space ~
+\end_inset
+
+Modification) inserts the time of the last file modification (time of last
+ save)
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1533647133
+Time
+\begin_inset space ~
+\end_inset
+
+(Fix) inserts a static time that will not change.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1533647170
+File
+\begin_inset space ~
+\end_inset
+
+Name
+\begin_inset space ~
+\end_inset
+
+(Excl.
+\begin_inset space ~
+\end_inset
+
+Extension) inserts the name of the current file (without the extension .lyx)
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1533647240
+User
+\begin_inset space ~
+\end_inset
+
+Name inserts the user name as specified in 
+\family sans
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
+Identity
+\family default
+.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1533647259
+User
+\begin_inset space ~
+\end_inset
+
+Email inserts the user email address as specified in 
+\family sans
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
+Identity
+\family default
+.
 \end_layout
 
 \begin_layout Description
