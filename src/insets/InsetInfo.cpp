@@ -281,9 +281,10 @@ vector<pair<string,docstring>> InsetInfoParams::getArguments(Buffer const * buf,
 		QDate date;
 		if (itype == "moddate")
 			date = QDateTime::fromTime_t(buf->fileName().lastModified()).date();
-		else if (itype == "fixdate" && !dt.empty())
-			date = QDate::fromString(toqstr(dt), Qt::ISODate);
-		else
+		else if (itype == "fixdate" && !dt.empty()) {
+			QDate const gdate = QDate::fromString(toqstr(dt), Qt::ISODate);
+			date = (gdate.isValid()) ? gdate : QDate::currentDate();
+		} else
 			date = QDate::currentDate();
 		result.push_back(make_pair("long",getDate("long", date)));
 		result.push_back(make_pair("short", getDate("short", date)));
@@ -306,9 +307,10 @@ vector<pair<string,docstring>> InsetInfoParams::getArguments(Buffer const * buf,
 		QTime time;
 		if (itype == "modtime")
 			time = QDateTime::fromTime_t(buf->fileName().lastModified()).time();
-		else if (itype == "fixtime" && !tt.empty())
-			time = QTime::fromString(toqstr(tt), Qt::ISODate);
-		else
+		else if (itype == "fixtime" && !tt.empty()) {
+			QTime const gtime = QTime::fromString(toqstr(tt), Qt::ISODate);
+			time = (gtime.isValid()) ? gtime : QTime::currentTime();
+		} else
 			time = QTime::currentTime();
 		result.push_back(make_pair("long",getTime("long", time)));
 		result.push_back(make_pair("short", getTime("short", time)));

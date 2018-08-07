@@ -218,6 +218,7 @@ GuiInfo::GuiInfo(QWidget * parent) : InsetParamsWidget(parent)
 
 	connect(typeCO, SIGNAL(currentIndexChanged(int)), this, SLOT(updateArguments(int)));
 	connect(nameLE, SIGNAL(textChanged(QString)), this, SIGNAL(changed()));
+	connect(fixDateLE, SIGNAL(textChanged(QString)), this, SIGNAL(changed()));
 	connect(infoLW, SIGNAL(currentTextChanged(QString)), this, SIGNAL(changed()));
 }
 
