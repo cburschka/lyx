@@ -22,7 +22,7 @@ import re, string
 import unicodedata
 import sys, os
 
-from datetime import date
+from datetime import (datetime, date, time)
 
 # Uncomment only what you need to import, please.
 
@@ -846,6 +846,210 @@ def revert_dateinfo(document):
         i = i + 1
 
 
+def revert_timeinfo(document):
+    " Revert time info insets to static text. "
+
+# FIXME This currently only considers the main language and uses the system locale
+# Ideally, it should honor context languages and switch the locale accordingly.
+# Also, the time object is "naive", i.e., it does not know of timezones (%Z will
+# be empty).
+
+    # The time formats for each language using strftime syntax:
+    # long, short
+    timeformats = {
+        "afrikaans" : ["%H:%M:%S %Z", "%H:%M"],
+        "albanian" : ["%I:%M:%S %p, %Z", "%I:%M %p"],
+        "american" : ["%I:%M:%S %p %Z", "%I:%M %p"],
+        "amharic" : ["%I:%M:%S %p %Z", "%I:%M %p"],
+        "ancientgreek" : ["%H:%M:%S %Z", "%H:%M:%S"],
+        "arabic_arabi" : ["%I:%M:%S %p %Z", "%I:%M %p"],
+        "arabic_arabtex" : ["%I:%M:%S %p %Z", "%I:%M %p"],
+        "armenian" : ["%H:%M:%S %Z", "%H:%M"],
+        "asturian" : ["%H:%M:%S %Z", "%H:%M"],
+        "australian" : ["%I:%M:%S %p %Z", "%I:%M %p"],
+        "austrian" : ["%H:%M:%S %Z", "%H:%M"],
+        "bahasa" : ["%H.%M.%S %Z", "%H.%M"],
+        "bahasam" : ["%I:%M:%S %p %Z", "%I:%M %p"],
+        "basque" : ["%H:%M:%S (%Z)", "%H:%M"],
+        "belarusian" : ["%H:%M:%S, %Z", "%H:%M"],
+        "bosnian" : ["%H:%M:%S %Z", "%H:%M"],
+        "brazilian" : ["%H:%M:%S %Z", "%H:%M"],
+        "breton" : ["%H:%M:%S %Z", "%H:%M"],
+        "british" : ["%H:%M:%S %Z", "%H:%M"],
+        "bulgarian" : ["%H:%M:%S %Z", "%H:%M"],
+        "canadian" : ["%I:%M:%S %p %Z", "%I:%M %p"],
+        "canadien" : ["%H:%M:%S %Z", "%H h %M"],
+        "catalan" : ["%H:%M:%S %Z", "%H:%M"],
+        "chinese-simplified" : ["%Z %p%I:%M:%S", "%p%I:%M"],
+        "chinese-traditional" : ["%p%I:%M:%S [%Z]", "%p%I:%M"],
+        "coptic" : ["%H:%M:%S %Z", "%H:%M:%S"],
+        "croatian" : ["%H:%M:%S (%Z)", "%H:%M"],
+        "czech" : ["%H:%M:%S %Z", "%H:%M"],
+        "danish" : ["%H.%M.%S %Z", "%H.%M"],
+        "divehi" : ["%H:%M:%S %Z", "%H:%M"],
+        "dutch" : ["%H:%M:%S %Z", "%H:%M"],
+        "english" : ["%I:%M:%S %p %Z", "%I:%M %p"],
+        "esperanto" : ["%H:%M:%S %Z", "%H:%M:%S"],
+        "estonian" : ["%H:%M:%S %Z", "%H:%M"],
+        "farsi" : ["%H:%M:%S (%Z)", "%H:%M"],
+        "finnish" : ["%H.%M.%S %Z", "%H.%M"],
+        "french" : ["%H:%M:%S %Z", "%H:%M"],
+        "friulan" : ["%H:%M:%S %Z", "%H:%M"],
+        "galician" : ["%H:%M:%S %Z", "%H:%M"],
+        "georgian" : ["%H:%M:%S %Z", "%H:%M"],
+        "german" : ["%H:%M:%S %Z", "%H:%M"],
+        "german-ch" : ["%H:%M:%S %Z", "%H:%M"],
+        "german-ch-old" : ["%H:%M:%S %Z", "%H:%M"],
+        "greek" : ["%I:%M:%S %p %Z", "%I:%M %p"],
+        "hebrew" : ["%H:%M:%S %Z", "%H:%M"],
+        "hindi" : ["%I:%M:%S %p %Z", "%I:%M %p"],
+        "icelandic" : ["%H:%M:%S %Z", "%H:%M"],
+        "interlingua" : ["%H:%M:%S %Z", "%H:%M"],
+        "irish" : ["%H:%M:%S %Z", "%H:%M"],
+        "italian" : ["%H:%M:%S %Z", "%H:%M"],
+        "japanese" : ["%H時%M分%S秒 %Z", "%H:%M"],
+        "japanese-cjk" : ["%H時%M分%S秒 %Z", "%H:%M"],
+        "kannada" : ["%I:%M:%S %p %Z", "%I:%M %p"],
+        "kazakh" : ["%H:%M:%S %Z", "%H:%M"],
+        "khmer" : ["%I:%M:%S %p %Z", "%I:%M %p"],
+        "korean" : ["%p %I시%M분 %S초 %Z", "%p %I:%M"],
+        "kurmanji" : ["%H:%M:%S %Z", "%H:%M:%S"],
+        "lao" : ["%H ໂມງ%M ນາທີ  %S ວິນາທີ %Z", "%H:%M"],
+        "latin" : ["%H:%M:%S %Z", "%H:%M:%S"],
+        "latvian" : ["%H:%M:%S %Z", "%H:%M"],
+        "lithuanian" : ["%H:%M:%S %Z", "%H:%M"],
+        "lowersorbian" : ["%H:%M:%S %Z", "%H:%M"],
+        "macedonian" : ["%H:%M:%S %Z", "%H:%M"],
+        "magyar" : ["%H:%M:%S %Z", "%H:%M"],
+        "marathi" : ["%I:%M:%S %p %Z", "%I:%M %p"],
+        "mongolian" : ["%H:%M:%S %Z", "%H:%M"],
+        "naustrian" : ["%H:%M:%S %Z", "%H:%M"],
+        "newzealand" : ["%I:%M:%S %p %Z", "%I:%M %p"],
+        "ngerman" : ["%H:%M:%S %Z", "%H:%M"],
+        "norsk" : ["%H:%M:%S %Z", "%H:%M"],
+        "nynorsk" : ["kl. %H:%M:%S %Z", "%H:%M"],
+        "occitan" : ["%H:%M:%S %Z", "%H:%M"],
+        "piedmontese" : ["%H:%M:%S %Z", "%H:%M:%S"],
+        "polish" : ["%H:%M:%S %Z", "%H:%M"],
+        "polutonikogreek" : ["%I:%M:%S %p %Z", "%I:%M %p"],
+        "portuguese" : ["%H:%M:%S %Z", "%H:%M"],
+        "romanian" : ["%H:%M:%S %Z", "%H:%M"],
+        "romansh" : ["%H:%M:%S %Z", "%H:%M"],
+        "russian" : ["%H:%M:%S %Z", "%H:%M"],
+        "samin" : ["%H:%M:%S %Z", "%H:%M"],
+        "sanskrit" : ["%H:%M:%S %Z", "%H:%M"],
+        "scottish" : ["%H:%M:%S %Z", "%H:%M"],
+        "serbian" : ["%H:%M:%S %Z", "%H:%M"],
+        "serbian-latin" : ["%H:%M:%S %Z", "%H:%M"],
+        "slovak" : ["%H:%M:%S %Z", "%H:%M"],
+        "slovene" : ["%H:%M:%S %Z", "%H:%M"],
+        "spanish" : ["%H:%M:%S (%Z)", "%H:%M"],
+        "spanish-mexico" : ["%H:%M:%S %Z", "%H:%M"],
+        "swedish" : ["kl. %H:%M:%S %Z", "%H:%M"],
+        "syriac" : ["%H:%M:%S %Z", "%H:%M"],
+        "tamil" : ["%p %I:%M:%S %Z", "%p %I:%M"],
+        "telugu" : ["%I:%M:%S %p %Z", "%I:%M %p"],
+        "thai" : ["%H นาฬิกา %M นาที  %S วินาที %Z", "%H:%M"],
+        "tibetan" : ["%I:%M:%S %p %Z", "%I:%M %p"],
+        "turkish" : ["%H:%M:%S %Z", "%H:%M"],
+        "turkmen" : ["%H:%M:%S %Z", "%H:%M"],
+        "ukrainian" : ["%H:%M:%S %Z", "%H:%M"],
+        "uppersorbian" : ["%H:%M:%S %Z", "%H:%M hodź."],
+        "urdu" : ["%I:%M:%S %p %Z", "%I:%M %p"],
+        "vietnamese" : ["%H:%M:%S %Z", "%H:%M"],
+        "welsh" : ["%H:%M:%S %Z", "%H:%M"]
+    }
+
+    types = ["time", "fixtime", "modtime" ]
+    i = 0
+    i = find_token(document.header, "\\language", 0)
+    if i == -1:
+        # this should not happen
+        document.warning("Malformed LyX document! No \\language header found!")
+        return
+    lang = get_value(document.header, "\\language", i)
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Info", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of Info inset.")
+            i = i + 1
+            continue
+        tp = find_token(document.body, 'type', i, j)
+        tpv = get_quoted_value(document.body, "type", tp)
+        if tpv not in types:
+            i = i + 1
+            continue
+        arg = find_token(document.body, 'arg', i, j)
+        argv = get_quoted_value(document.body, "arg", arg)
+        isotime = ""
+        dtme = datetime.now()
+        tme = dtme.time()
+        if tpv == "fixtime":
+            timecomps = argv.split('@')
+            if len(timecomps) > 1:
+                argv = timecomps[0]
+                isotime = timecomps[1]
+                m = re.search('(\d\d):(\d\d):(\d\d)', isotime)
+                if m:
+                    tme = time(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+                else:
+                    m = re.search('(\d\d):(\d\d)', isotime)
+                    if m:
+                        tme = time(int(m.group(1)), int(m.group(2)))
+# FIXME if we had the path to the original document (not the one in the tmp dir),
+#        we could use the mtime.
+#        elif tpv == "moddate":
+#            dte = date.fromtimestamp(os.path.getmtime(document.dir))
+        result = ""
+        if argv == "ISO":
+            result = tme.isoformat()
+        elif argv == "long":
+            result = tme.strftime(timeformats[lang][0])
+        elif argv == "short":
+            result = tme.strftime(timeformats[lang][1])
+        else:
+            fmt = argv.replace("HH", "%H").replace("H", "%H").replace("hh", "%I").replace("h", "%I")
+            fmt = fmt.replace("mm", "%M").replace("m", "%M").replace("ss", "%S").replace("s", "%S")
+            fmt = fmt.replace("zzz", "%f").replace("z", "%f").replace("t", "%Z")
+            fmt = fmt.replace("AP", "%p").replace("ap", "%p").replace("A", "%p").replace("a", "%p")
+            fmt = fmt.replace("'", "")
+            result = dte.strftime(fmt)
+        document.body[i : j+1] = result
+        i = i + 1
+
+
+def revert_namenoextinfo(document):
+    " Merge buffer Info inset type name-noext to name. "
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Info", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of Info inset.")
+            i = i + 1
+            continue
+        tp = find_token(document.body, 'type', i, j)
+        tpv = get_quoted_value(document.body, "type", tp)
+        if tpv != "buffer":
+            i = i + 1
+            continue
+        arg = find_token(document.body, 'arg', i, j)
+        argv = get_quoted_value(document.body, "arg", arg)
+        if argv != "name-noext":
+            i = i + 1
+            continue
+        document.body[arg] = "arg \"name\""
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -866,10 +1070,12 @@ convert = [
            [556, []],
            [557, [convert_vcsinfo]],
            [558, [removeFrontMatterStyles]],
-           [559, []]
+           [559, []],
+           [560, []]
           ]
 
 revert =  [
+           [558, [revert_timeinfo, revert_namenoextinfo]],
            [558, [revert_dateinfo]],
            [557, [addFrontMatterStyles]],
            [556, [revert_vcsinfo]],

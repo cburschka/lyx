@@ -1936,6 +1936,9 @@ void LyXAction::init()
                       date: current date (formatted and localized)\n
                       moddate: date of last modification (saving) (formatted and localized)\n
                       fixdate: a static date (formatted and localized)\n
+                      time: current time (formatted and localized)\n
+                      modtime: time of last modification (saving) (formatted and localized)\n
+                      fixtime: a static time (formatted and localized)\n
                       shortcut[s]: name of lfun (e.g math-insert \alpha) \n
                       lyxrc: name of rc_entry (e.g. bind_file) \n
                       lyxinfo: "version" - used version of LyX \n
@@ -1943,7 +1946,7 @@ void LyXAction::init()
                       textclass: name of textclass (e.g. article) \n
                       menu: name of lfun used in menu  \n
                       icon: icon of lfun used in toolbar or direct icon name\n
-                      buffer: "name"|"path"|"class"
+                      buffer: "name"|"name-noext"|"path"|"class"
                       vcs: "tree-revision"|"revision"|"author"|"date"|"time"
  * \li Sample: command-sequence info-insert buffer path; info-insert buffer name
  * \li Origin: bpeng, 7 Oct 2007

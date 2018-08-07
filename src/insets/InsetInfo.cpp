@@ -82,6 +82,9 @@ NameTranslator const initTranslator()
 	translator.addPair(InsetInfoParams::DATE_INFO, "date");
 	translator.addPair(InsetInfoParams::MODDATE_INFO, "moddate");
 	translator.addPair(InsetInfoParams::FIXDATE_INFO, "fixdate");
+	translator.addPair(InsetInfoParams::TIME_INFO, "time");
+	translator.addPair(InsetInfoParams::MODTIME_INFO, "modtime");
+	translator.addPair(InsetInfoParams::FIXTIME_INFO, "fixtime");
 
 	return translator;
 }
@@ -107,12 +110,15 @@ DefaultValueTranslator const initDVTranslator()
 	translator.addPair(InsetInfoParams::TEXTCLASS_INFO, "article");
 	translator.addPair(InsetInfoParams::MENU_INFO, "info-insert");
 	translator.addPair(InsetInfoParams::ICON_INFO, "info-insert");
-	translator.addPair(InsetInfoParams::BUFFER_INFO, "name");
+	translator.addPair(InsetInfoParams::BUFFER_INFO, "name-noext");
 	translator.addPair(InsetInfoParams::LYX_INFO, "version");
 	translator.addPair(InsetInfoParams::VCS_INFO, "revision");
 	translator.addPair(InsetInfoParams::DATE_INFO, "loclong");
 	translator.addPair(InsetInfoParams::MODDATE_INFO, "loclong");
 	translator.addPair(InsetInfoParams::FIXDATE_INFO, "loclong");
+	translator.addPair(InsetInfoParams::TIME_INFO, "long");
+	translator.addPair(InsetInfoParams::MODTIME_INFO, "long");
+	translator.addPair(InsetInfoParams::FIXTIME_INFO, "long");
 
 	return translator;
 }
@@ -161,6 +167,7 @@ set<string> getTexFileList(string const & filename)
 }
 } // namespace anon
 
+
 docstring InsetInfoParams::getDate(string const iname, QDate const date) const
 {
 	QLocale loc;
@@ -180,6 +187,22 @@ docstring InsetInfoParams::getDate(string const iname, QDate const date) const
 		return qstring_to_ucs4(loc.toString(date, toqstr(lang->dateFormat(2))));
 	else
 		return qstring_to_ucs4(loc.toString(date, toqstr(iname)));
+}
+
+
+docstring InsetInfoParams::getTime(string const iname, QTime const time) const
+{
+	QLocale loc;
+	if (lang)
+		loc = QLocale(toqstr(lang->code()));
+	if (iname == "long")
+		return qstring_to_ucs4(loc.toString(time, QLocale::LongFormat));
+	else if (iname == "short")
+		return qstring_to_ucs4(loc.toString(time, QLocale::ShortFormat));
+	else if (iname == "ISO")
+		return qstring_to_ucs4(time.toString(Qt::ISODate));
+	else
+		return qstring_to_ucs4(loc.toString(time, toqstr(iname)));
 }
 
 
@@ -228,7 +251,8 @@ vector<pair<string,docstring>> InsetInfoParams::getArguments(Buffer const * buf,
 	}
 
 	case BUFFER_INFO:
-		result.push_back(make_pair("name", _("File name")));
+		result.push_back(make_pair("name", _("File name (with extension)")));
+		result.push_back(make_pair("name-noext", _("File name (without extension)")));
 		result.push_back(make_pair("path", _("File path")));
 		result.push_back(make_pair("class", _("Used text class")));
 		break;
@@ -252,7 +276,7 @@ vector<pair<string,docstring>> InsetInfoParams::getArguments(Buffer const * buf,
 
 	case FIXDATE_INFO:
 	case DATE_INFO:
-	case MODDATE_INFO:
+	case MODDATE_INFO: {
 		string const dt = split(name, '@');
 		QDate date;
 		if (itype == "moddate")
@@ -274,6 +298,24 @@ vector<pair<string,docstring>> InsetInfoParams::getArguments(Buffer const * buf,
 		result.push_back(make_pair("ddd", getDate("ddd", date)));
 		result.push_back(make_pair("custom", _("Custom")));
 		break;
+	}
+	case FIXTIME_INFO:
+	case TIME_INFO:
+	case MODTIME_INFO: {
+		string const tt = split(name, '@');
+		QTime time;
+		if (itype == "modtime")
+			time = QDateTime::fromTime_t(buf->fileName().lastModified()).time();
+		else if (itype == "fixtime" && !tt.empty())
+			time = QTime::fromString(toqstr(tt), Qt::ISODate);
+		else
+			time = QTime::currentTime();
+		result.push_back(make_pair("long",getTime("long", time)));
+		result.push_back(make_pair("short", getTime("short", time)));
+		result.push_back(make_pair("ISO", getTime("ISO", time)));
+		result.push_back(make_pair("custom", _("Custom")));
+		break;
+	}
 	}
 
 	return result;
@@ -355,7 +397,9 @@ docstring InsetInfo::toolTip(BufferView const &, int, int) const
 		break;
 	case InsetInfoParams::BUFFER_INFO:
 		if (params_.name == "name")
-			result = _("The name of this file");
+			result = _("The name of this file (incl. extension)");
+		else if (params_.name == "name-noext")
+			result = _("The name of this file (without extension)");
 		else if (params_.name == "path")
 			result = _("The path where this file is saved");
 		else if (params_.name == "class")
@@ -384,6 +428,15 @@ docstring InsetInfo::toolTip(BufferView const &, int, int) const
 		break;
 	case InsetInfoParams::FIXDATE_INFO:
 		result = _("A static date");
+		break;
+	case InsetInfoParams::TIME_INFO:
+		result = _("The current time");
+		break;
+	case InsetInfoParams::MODTIME_INFO:
+		result = _("The time of last save");
+		break;
+	case InsetInfoParams::FIXTIME_INFO:
+		result = _("A static time");
 		break;
 	}
 
@@ -458,7 +511,8 @@ bool InsetInfo::validateModifyArgument(docstring const & arg) const
 		return true;
 
 	case InsetInfoParams::BUFFER_INFO:
-		return (name == "name" || name == "path" || name == "class");
+		return (name == "name" || name == "name-noext"
+			|| name == "path" || name == "class");
 
 	case InsetInfoParams::VCS_INFO:
 		if (name == "revision" || name == "tree-revision"
@@ -486,6 +540,25 @@ bool InsetInfo::validateModifyArgument(docstring const & arg) const
 		else {
 			QDate date = QDate::currentDate();
 			return !date.toString(toqstr(name)).isEmpty();
+		}
+	}
+	case InsetInfoParams::FIXTIME_INFO: {
+		string time;
+		string piece;
+		time = split(name, piece, '@');
+		if (!time.empty() && !QTime::fromString(toqstr(time), Qt::ISODate).isValid())
+			return false;
+		if (!piece.empty())
+			name = piece;
+	}
+	// fall through
+	case InsetInfoParams::TIME_INFO:
+	case InsetInfoParams::MODTIME_INFO: {
+		if (name == "long" || name == "short" || name == "ISO")
+			return true;
+		else {
+			QTime time = QTime::currentTime();
+			return !time.toString(toqstr(name)).isEmpty();
 		}
 	}
 	}
@@ -520,7 +593,8 @@ bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
 			string name = trim(split(to_utf8(cmd.argument()), typestr, ' '));
 			InsetInfoParams::info_type type = nameTranslator().find(typestr);
 			string origname = params_.name;
-			if (type == InsetInfoParams::FIXDATE_INFO)
+			if (type == InsetInfoParams::FIXDATE_INFO
+			    || type == InsetInfoParams::FIXTIME_INFO)
 				split(params_.name, origname, '@');
 			flag.setOnOff(type == params_.type && name == origname);
 			return true;
@@ -587,6 +661,18 @@ void InsetInfo::setInfo(string const & name)
 		if (date_specifier.empty()) {
 			if (saved_date_specifier.empty())
 				params_.name += "@" + fromqstr(QDate::currentDate().toString(Qt::ISODate));
+			else
+				params_.name += "@" + saved_date_specifier;
+		}
+	}
+	else if (params_.type == InsetInfoParams::FIXTIME_INFO) {
+		string const time_specifier = split(params_.name, '@');
+		// If an explicit new fix time is specified, use that
+		// Otherwise, use the old one or, if there is none,
+		// the current time
+		if (time_specifier.empty()) {
+			if (saved_date_specifier.empty())
+				params_.name += "@" + fromqstr(QTime::currentTime().toString(Qt::ISODate));
 			else
 				params_.name += "@" + saved_date_specifier;
 		}
@@ -832,6 +918,8 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		// this could all change, so we will recalculate each time
 		if (params_.name == "name")
 			setText(from_utf8(buffer().fileName().onlyFileName()), params_.lang);
+		else if (params_.name == "name-noext")
+			setText(from_utf8(buffer().fileName().onlyFileNameWithoutExt()), params_.lang);
 		else if (params_.name == "path")
 			setText(from_utf8(os::latex_path(buffer().filePath())), params_.lang);
 		else if (params_.name == "class")
@@ -888,8 +976,27 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		else
 			date = QDate::currentDate();
 		setText(params_.getDate(date_format, date), params_.lang);
+		break;
+	}
+	case InsetInfoParams::TIME_INFO:
+	case InsetInfoParams::MODTIME_INFO:
+	case InsetInfoParams::FIXTIME_INFO: {
+		string time_format = params_.name;
+		string const time_specifier = (params_.type == InsetInfoParams::FIXTIME_INFO
+					       && contains(params_.name, '@'))
+				? split(params_.name, time_format, '@') : string();
+		QTime time;
+		if (params_.type == InsetInfoParams::MODTIME_INFO)
+			time = QDateTime::fromTime_t(buffer().fileName().lastModified()).time();
+		else if (params_.type == InsetInfoParams::FIXTIME_INFO && !time_specifier.empty())
+			time = QTime::fromString(toqstr(time_specifier), Qt::ISODate);
+		else
+			time = QTime::currentTime();
+		setText(params_.getTime(time_format, time), params_.lang);
+		break;
 	}
 	}
+
 	// Just to do something with that string
 	LYXERR(Debug::INFO, "info inset text: " << gui);
 	InsetCollapsible::updateBuffer(it, utype);

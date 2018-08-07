@@ -50,6 +50,20 @@ fixdate: Same as date. A fixed date (in ISO format) is prepended to the argument
     delimited by '@'.
     The output is a localized formatted fix date.
 
+time: argument of this type of InsetInfo is either a fixed time type of
+    "long" (long localized time, as provided by QLocale),
+    "short" (short localized time, as provided by QLocale),
+    "ISO" (ISO-conforming time)
+    or a custom date using the QTime syntax.
+    The output is a localized formatted (current) time.
+
+modtime: Same as time.
+    The output is a localized formatted time of last file modification (saving).
+
+fixtime: Same as time. A fixed time (in ISO format) is prepended to the argument,
+    delimited by '@'.
+    The output is a localized formatted fix time.
+
 shortcuts: argument is the name of the LFUN such as "math-insert \alpha".
     The syntax is the same as what is used in the bind and ui files.
     The output of this inset is all shortcuts for this LFUN separated by comma.
@@ -76,8 +90,8 @@ icon: argument is the name of the LFUN such as "paste". The syntax is the same
     the toolbar for this LFUN. Alternatively, argument can be the icon path
     without extension specified with respect to the images directory.
 
-buffer: argument can be one of "name", "path", "class". This inset output the
-    filename, path, and textclass of this buffer.
+buffer: argument can be one of "name", "name-noext", "path", "class". This inset output the
+    filename (with extension), filename (without extension), path, and textclass of this buffer.
 
 lyxinfo: argument must (presently) be "version". This inset outputs information
     about the version of LyX currently in use.
@@ -100,9 +114,12 @@ the command buffer (view->Toolbar->Command Buffer).
 class InsetInfoParams {
 public:
 	enum info_type {
-		DATE_INFO,       // Current Date
+		DATE_INFO,       // Current date
 		MODDATE_INFO,    // Date of last modification
 		FIXDATE_INFO,    // Fix date
+		TIME_INFO,       // Current time
+		MODTIME_INFO,    // Time of last modification
+		FIXTIME_INFO,    // Fix time
 		BUFFER_INFO,     // Buffer related information
 		VCS_INFO,        // Version control information
 		PACKAGE_INFO,    // Availability of package
@@ -117,6 +134,8 @@ public:
 	};
 	///
 	docstring getDate(std::string const, QDate const date = QDate::currentDate()) const;
+	///
+	docstring getTime(std::string const, QTime const time = QTime::currentTime()) const;
 	///
 	std::vector<std::pair<std::string,docstring>> getArguments(Buffer const * buf,
 								   std::string const &) const;

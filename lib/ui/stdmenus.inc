@@ -426,6 +426,12 @@ Menuset
 		Item "Date (Last Modification)|L" "info-insert moddate"
 		Item "Date (Fix)|F" "info-insert fixdate"
 		Separator
+		Item "Time (Current)|T" "info-insert time"
+		Item "Time (Last Modification)|M" "info-insert modtime"
+		Item "Time (Fix)|x" "info-insert fixtime"
+		Separator
+		Item "File Name (Excl. Extension)|N" "info-insert buffer name-noext"
+		Separator
 		Item "Other...|O" "info-insert"
 	End
 

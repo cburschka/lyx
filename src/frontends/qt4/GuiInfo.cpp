@@ -48,6 +48,9 @@ char const * info_types[] =
 { "date",
   "moddate",
   "fixdate",
+  "time",
+  "modtime",
+  "fixtime",
   "buffer",
   "vcs",
   "package",
@@ -67,6 +70,9 @@ char const * info_types_gui[] =
 { N_("Date (current)"),// date
   N_("Date (last modified)"),// moddate
   N_("Date (fix)"),// fixdate
+  N_("Time (current)"),// time
+  N_("Time (last modified)"),// modtime
+  N_("Time (fix)"),// fixtime
   N_("Document Information"),// buffer
   N_("Version Control Information"),// vcs
   N_("LaTeX Package Availability"),// package
@@ -86,6 +92,9 @@ char const * info_name_gui[] =
 { N_("Custom Format"),// date
   N_("Custom Format"),// moddate
   N_("Custom Format"),// fixdate
+  N_("Custom Format"),// time
+  N_("Custom Format"),// modtime
+  N_("Custom Format"),// fixtime
   N_("Not Applicable"),// buffer
   N_("Not Applicable"),// vcs
   N_("Package Name"),// package
@@ -114,27 +123,69 @@ char const * info_tooltip[] =
      "* yy: year as two digit number\n"
      "* yyyy: year as four digit number"),// date
   N_("Enter date format specification, using the following placeholders:\n"
-       "* d: day as number without a leading zero\n"
-       "* dd: day as number with a leading zero\n"
-       "* ddd: abbreviated localized day name\n"
-       "* dddd: long localized day name\n"
-       "* M: month as number without a leading zero\n"
-       "* MM: month as number with a leading zero\n"
-       "* MMM: abbreviated localized month name\n"
-       "* MMMM: long localized month name\n"
-       "* yy: year as two digit number\n"
-       "* yyyy: year as four digit number"),// moddate
+     "* d: day as number without a leading zero\n"
+     "* dd: day as number with a leading zero\n"
+     "* ddd: abbreviated localized day name\n"
+     "* dddd: long localized day name\n"
+     "* M: month as number without a leading zero\n"
+     "* MM: month as number with a leading zero\n"
+     "* MMM: abbreviated localized month name\n"
+     "* MMMM: long localized month name\n"
+     "* yy: year as two digit number\n"
+     "* yyyy: year as four digit number"),// moddate
   N_("Enter date format specification, using the following placeholders:\n"
-       "* d: day as number without a leading zero\n"
-       "* dd: day as number with a leading zero\n"
-       "* ddd: abbreviated localized day name\n"
-       "* dddd: long localized day name\n"
-       "* M: month as number without a leading zero\n"
-       "* MM: month as number with a leading zero\n"
-       "* MMM: abbreviated localized month name\n"
-       "* MMMM: long localized month name\n"
-       "* yy: year as two digit number\n"
-       "* yyyy: year as four digit number"),// fixdate
+     "* d: day as number without a leading zero\n"
+     "* dd: day as number with a leading zero\n"
+     "* ddd: abbreviated localized day name\n"
+     "* dddd: long localized day name\n"
+     "* M: month as number without a leading zero\n"
+     "* MM: month as number with a leading zero\n"
+     "* MMM: abbreviated localized month name\n"
+     "* MMMM: long localized month name\n"
+     "* yy: year as two digit number\n"
+     "* yyyy: year as four digit number"),// fixdate
+  N_("Enter time format specification, using the following placeholders:\n"
+     "* h: the hour without a leading zero (01-12 in AM/PM)\n"
+     "* hh: the hour with a leading zero (1-12 in AM/PM)\n"
+     "* H: the hour without a leading zero (0-23 in AM/PM)\n"
+     "* HH: the hour with a leading zero (00-23 in AM/PM)\n"
+     "* m: the minute without a leading zero\n"
+     "* mm: the minute with a leading zero\n"
+     "* s: the second without a leading zero\n"
+     "* ss: the second with a leading zero\n"
+     "* z: the milliseconds without leading zeroes\n"
+     "* zzz: the milliseconds with leading zeroes\n"
+     "* AP or A: use AM/PM display ('AM'/'PM')\n"
+     "* ap or a: use am/pm display ('am'/'pm')\n"
+     "* t: the timezone (e.g. CEST)"),// time
+  N_("Enter time format specification, using the following placeholders:\n"
+     "* h: the hour without a leading zero (01-12 in AM/PM)\n"
+     "* hh: the hour with a leading zero (1-12 in AM/PM)\n"
+     "* H: the hour without a leading zero (0-23 in AM/PM)\n"
+     "* HH: the hour with a leading zero (00-23 in AM/PM)\n"
+     "* m: the minute without a leading zero\n"
+     "* mm: the minute with a leading zero\n"
+     "* s: the second without a leading zero\n"
+     "* ss: the second with a leading zero\n"
+     "* z: the milliseconds without leading zeroes\n"
+     "* zzz: the milliseconds with leading zeroes\n"
+     "* AP or A: use AM/PM display ('AM'/'PM')\n"
+     "* ap or a: use am/pm display ('am'/'pm')\n"
+     "* t: the timezone (e.g. CEST)"),// modtime
+  N_("Enter time format specification, using the following placeholders:\n"
+     "* h: the hour without a leading zero (01-12 in AM/PM)\n"
+     "* hh: the hour with a leading zero (1-12 in AM/PM)\n"
+     "* H: the hour without a leading zero (0-23 in AM/PM)\n"
+     "* HH: the hour with a leading zero (00-23 in AM/PM)\n"
+     "* m: the minute without a leading zero\n"
+     "* mm: the minute with a leading zero\n"
+     "* s: the second without a leading zero\n"
+     "* ss: the second with a leading zero\n"
+     "* z: the milliseconds without leading zeroes\n"
+     "* zzz: the milliseconds with leading zeroes\n"
+     "* AP or A: use AM/PM display ('AM'/'PM')\n"
+     "* ap or a: use am/pm display ('am'/'pm')\n"
+     "* t: the timezone (e.g. CEST)"),// fixtime
   N_("Please select a valid type above"),// buffer
   N_("Please select a valid type above"),// vcs
   N_("Enter a LaTeX package name such as 'hyperref' (extension is optional). "
@@ -178,13 +229,17 @@ void GuiInfo::paramsToDialog(Inset const * inset)
 	QString const type = toqstr(params_.infoType());
 	QString name = toqstr(params_.name);
 	QString fixdate;
-	if (type == "fixdate") {
+	if (type == "fixdate" || type == "fixtime") {
 		fixdate = name.section('@', 1, 1);
 		name = name.section('@', 0, 0);
 		if (!fixdate.isEmpty())
 			fixDateLE->setText(fixdate);
-		else
-			fixDateLE->setText(QDate::currentDate().toString(Qt::ISODate));
+		else {
+			if (type == "fixdate")
+				fixDateLE->setText(QDate::currentDate().toString(Qt::ISODate));
+			else
+				fixDateLE->setText(QTime::currentTime().toString(Qt::ISODate));
+		}
 	}
 	typeCO->blockSignals(true);
 	nameLE->blockSignals(true);
@@ -223,10 +278,12 @@ docstring GuiInfo::dialogToParams() const
 			      : QString();
 	if (name == "custom")
 		name = nameLE->text();
-	if (type == "fixdate") {
+	if (type == "fixdate" || type == "fixtime") {
 		QString fd = fixDateLE->text();
 		if (fd.isEmpty())
-			fd = QDate::currentDate().toString(Qt::ISODate);
+			fd = (type == "fixdate") ?
+					QDate::currentDate().toString(Qt::ISODate)
+				      : QTime::currentTime().toString(Qt::ISODate);
 		name += "@" + fd;
 	}
 	return qstring_to_ucs4(type + ' ' + name);
@@ -281,10 +338,18 @@ bool GuiInfo::checkWidgets(bool readonly) const
 	nameLE->setEnabled(type_enabled);
 	nameLE->setToolTip(qt_(info_tooltip[typeCO->currentIndex()]));
 
-	bool const fixdate_enabled =
-		(info_types[typeCO->currentIndex()] == from_ascii("fixdate"));
+	string const typestr = info_types[typeCO->currentIndex()];
+	bool const fixdate_enabled = (typestr == "fixdate" || typestr == "fixtime");
 	fixDateLE->setVisible(fixdate_enabled);
 	fixDateLA->setVisible(fixdate_enabled);
+	if (typestr == "fixdate") {
+		fixDateLE->setToolTip(qt_("Here you can enter a fix date (in ISO format: YYYY-MM-DD)"));
+		fixDateLA->setText(qt_("&Fix Date:"));
+	}
+	else if (typestr == "fixtime") {
+		fixDateLE->setToolTip(qt_("Here you can enter a fix time (in ISO format: hh:mm:ss)"));
+		fixDateLA->setText(qt_("&Fix Time:"));
+	}
 
 	if (!InsetParamsWidget::checkWidgets())
 		return false;
