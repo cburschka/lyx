@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-08-07 13:08+0200\n"
-"PO-Revision-Date: 2018-08-07 11:48+0000\n"
+"POT-Creation-Date: 2018-08-07 16:38+0200\n"
+"PO-Revision-Date: 2018-08-07 14:46+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -13688,10 +13688,6 @@ msgstr "Obsah hlavičky"
 msgid "Entry"
 msgstr "Záznam"
 
-#: lib/layouts/moderncv.layout:334 lib/layouts/moderncv.layout:335
-msgid "Time"
-msgstr "Čas"
-
 #: lib/ui/stdmenus.inc:429
 msgid "Time (Current)|T"
 msgstr "Čas (Aktuálny)|s"
@@ -13715,6 +13711,14 @@ msgstr "Čas (pevný)"
 #: src/frontends/qt4/GuiInfo.cpp:74
 msgid "Time (last modified)"
 msgstr "Čas (poslednej modifikácie)"
+
+#: src/insets/InsetInfo.cpp:269
+msgid "Time[[of day]]"
+msgstr "Čas"
+
+#: lib/layouts/moderncv.layout:334 lib/layouts/moderncv.layout:335
+msgid "Time[[period]]"
+msgstr "Obdobie"
 
 #: lib/layouts/moderncv.layout:339 lib/layouts/moderncv.layout:340
 msgid "What?"
@@ -18504,6 +18508,10 @@ msgstr "Hocijaké Číslo|l"
 #: lib/ui/stdcontext.inc:377
 msgid "User Defined|U"
 msgstr "Užívateľom Definované|U"
+
+#: lib/ui/stdmenus.inc:435
+msgid "User Email|E"
+msgstr "E-mail užívateľa|l"
 
 #: lib/ui/stdcontext.inc:386 lib/ui/stdmenus.inc:261
 msgid "Append Argument"
@@ -29051,6 +29059,10 @@ msgstr ""
 msgid "not released yet"
 msgstr "ešte neuvoľnené"
 
+#: src/insets/InsetInfo.cpp:789
+msgid "not set"
+msgstr "nenastavené"
+
 #: src/frontends/qt4/GuiAbout.cpp:211
 #, c-format
 msgid ""
@@ -30876,6 +30888,10 @@ msgstr ""
 #: src/frontends/qt4/GuiPrefs.cpp:2557
 msgid "User Interface"
 msgstr "Užívateľské Rozhranie"
+
+#: lib/ui/stdmenus.inc:434
+msgid "User Name|U"
+msgstr "Meno užívateľa|u"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2576
 msgid "Classic"
@@ -34144,6 +34160,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Time"
+#~ msgstr "Čas"
 
 #~ msgid "File name"
 #~ msgstr "Názov súboru"
