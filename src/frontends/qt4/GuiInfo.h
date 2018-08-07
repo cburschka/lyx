@@ -27,7 +27,7 @@ class GuiInfo : public InsetParamsWidget, public Ui::InfoUi
 	Q_OBJECT
 
 protected Q_SLOTS:
-	void updateArguments(int i = 1);
+	void updateArguments(int i);
 
 public:
 	GuiInfo(QWidget * parent = 0);

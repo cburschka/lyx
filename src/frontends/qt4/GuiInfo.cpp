@@ -297,13 +297,16 @@ bool GuiInfo::initialiseParams(std::string const & sdata)
 	if (!lang)
 		return false;
 	params_.lang = lang;
-	updateArguments();
+	updateArguments(typeCO->currentIndex());
 	return true;
 }
 
 
 void GuiInfo::updateArguments(int i)
 {
+	if (i == -1)
+		i = 0;
+
 	infoLW->clear();
 	BufferView const * bv = guiApp->currentView()->currentBufferView();
 	vector<pair<string,docstring>> args = params_.getArguments(const_cast<Buffer *>(&bv->buffer()),
