@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-08-05 10:19+0200\n"
-"PO-Revision-Date: 2018-08-05 16:12+0100\n"
+"POT-Creation-Date: 2018-08-07 12:35+0200\n"
+"PO-Revision-Date: 2018-08-07 12:36+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -2394,11 +2394,11 @@ msgstr ""
 "Wählen Sie hier die Art der Information, die ausgegeben werden soll. Dann "
 "spezifizieren Sie die gewünschte Information unten."
 
-#: src/frontends/qt4/ui/InfoUi.ui:49
-msgid "Fix Date:"
-msgstr "Fixes Datum:"
+#: src/frontends/qt4/ui/InfoUi.ui:49 src/frontends/qt4/GuiInfo.cpp:347
+msgid "&Fix Date:"
+msgstr "&Fixes Datum:"
 
-#: src/frontends/qt4/ui/InfoUi.ui:59
+#: src/frontends/qt4/ui/InfoUi.ui:59 src/frontends/qt4/GuiInfo.cpp:346
 msgid "Here you can enter a fix date (in ISO format: YYYY-MM-DD)"
 msgstr "Hier können Sie ein fixes Datum eingeben (im ISO-Format: YYYY-MM-DD)"
 
@@ -3355,9 +3355,9 @@ msgstr "Doppelt"
 #: src/frontends/qt4/GuiHSpace.cpp:67 src/frontends/qt4/GuiPrefs.cpp:898
 #: src/frontends/qt4/GuiPrefs.cpp:926 src/frontends/qt4/GuiPrefs.cpp:953
 #: src/frontends/qt4/GuiPrefs.cpp:2293 src/frontends/qt4/GuiPrefs.cpp:2316
-#: src/frontends/qt4/GuiPrintNomencl.cpp:51 src/insets/InsetInfo.cpp:403
-#: src/insets/InsetInfo.cpp:415 src/insets/InsetInfo.cpp:424
-#: src/insets/InsetInfo.cpp:478
+#: src/frontends/qt4/GuiPrintNomencl.cpp:51 src/insets/InsetInfo.cpp:223
+#: src/insets/InsetInfo.cpp:235 src/insets/InsetInfo.cpp:244
+#: src/insets/InsetInfo.cpp:299 src/insets/InsetInfo.cpp:316
 msgid "Custom"
 msgstr "Benutzerdefiniert"
 
@@ -6643,8 +6643,8 @@ msgstr "Lösung \\thesolution."
 msgid "Summary"
 msgstr "Zusammenfassung"
 
-#: lib/layouts/AEA.layout:300 src/frontends/qt4/Menus.cpp:1762
-#: src/frontends/qt4/Menus.cpp:1777
+#: lib/layouts/AEA.layout:300 src/frontends/qt4/Menus.cpp:1763
+#: src/frontends/qt4/Menus.cpp:1778
 msgid "Caption"
 msgstr "Legende"
 
@@ -6796,7 +6796,7 @@ msgstr "Kleinschreibung"
 #: lib/layouts/sigplanconf.layout:147 lib/layouts/stdtitle.inc:35
 #: lib/layouts/svcommon.inc:344 lib/layouts/svmult.layout:79
 #: lib/layouts/svprobth.layout:93 lib/layouts/tufte-book.layout:54
-#: src/insets/InsetInfo.cpp:446
+#: src/insets/InsetInfo.cpp:267
 msgid "Author"
 msgstr "Autor"
 
@@ -7294,7 +7294,7 @@ msgstr "Unterunterabschnitt"
 #: lib/layouts/scrclass.inc:209 lib/layouts/scrlettr.layout:165
 #: lib/layouts/scrlttr2.layout:244 lib/layouts/siamltex.layout:237
 #: lib/layouts/stdtitle.inc:54 lib/layouts/svcommon.inc:370
-#: lib/layouts/tufte-book.layout:59 src/insets/InsetInfo.cpp:447
+#: lib/layouts/tufte-book.layout:59 src/insets/InsetInfo.cpp:268
 msgid "Date"
 msgstr "Datum"
 
@@ -13778,7 +13778,7 @@ msgid "Entry"
 msgstr "Eintrag"
 
 #: lib/layouts/moderncv.layout:334 lib/layouts/moderncv.layout:335
-#: src/insets/InsetInfo.cpp:448
+#: src/insets/InsetInfo.cpp:269
 msgid "Time"
 msgstr "Zeit"
 
@@ -17898,63 +17898,63 @@ msgstr "Unicode (XeTeX) (utf8)"
 msgid "ASCII"
 msgstr "ASCII"
 
-#: lib/ui/stdcontext.inc:30 lib/ui/stdmenus.inc:476
+#: lib/ui/stdcontext.inc:30 lib/ui/stdmenus.inc:482
 msgid "Array Environment|y"
 msgstr "Array-Umgebung|y"
 
-#: lib/ui/stdcontext.inc:31 lib/ui/stdmenus.inc:477
+#: lib/ui/stdcontext.inc:31 lib/ui/stdmenus.inc:483
 msgid "Cases Environment|C"
 msgstr "Cases-Umgebung|C"
 
-#: lib/ui/stdcontext.inc:32 lib/ui/stdmenus.inc:478
+#: lib/ui/stdcontext.inc:32 lib/ui/stdmenus.inc:484
 msgid "Aligned Environment|l"
 msgstr "Aligned-Umgebung|d"
 
-#: lib/ui/stdcontext.inc:33 lib/ui/stdmenus.inc:479
+#: lib/ui/stdcontext.inc:33 lib/ui/stdmenus.inc:485
 msgid "AlignedAt Environment|v"
 msgstr "AlignedAt-Umgebung|t"
 
-#: lib/ui/stdcontext.inc:34 lib/ui/stdmenus.inc:480
+#: lib/ui/stdcontext.inc:34 lib/ui/stdmenus.inc:486
 msgid "Gathered Environment|h"
 msgstr "Gathered-Umgebung|h"
 
-#: lib/ui/stdcontext.inc:35 lib/ui/stdmenus.inc:481
+#: lib/ui/stdcontext.inc:35 lib/ui/stdmenus.inc:487
 msgid "Split Environment|S"
 msgstr "Split-Umgebung|p"
 
-#: lib/ui/stdcontext.inc:37 lib/ui/stdmenus.inc:483
+#: lib/ui/stdcontext.inc:37 lib/ui/stdmenus.inc:489
 msgid "Delimiters...|r"
 msgstr "Trennzeichen...|z"
 
-#: lib/ui/stdcontext.inc:38 lib/ui/stdmenus.inc:484
+#: lib/ui/stdcontext.inc:38 lib/ui/stdmenus.inc:490
 msgid "Matrix...|x"
 msgstr "Matrix...|x"
 
-#: lib/ui/stdcontext.inc:39 lib/ui/stdmenus.inc:485
+#: lib/ui/stdcontext.inc:39 lib/ui/stdmenus.inc:491
 msgid "Macro|o"
 msgstr "Makro|o"
 
-#: lib/ui/stdcontext.inc:43 lib/ui/stdmenus.inc:325 lib/ui/stdmenus.inc:469
+#: lib/ui/stdcontext.inc:43 lib/ui/stdmenus.inc:325 lib/ui/stdmenus.inc:475
 msgid "AMS align Environment|a"
 msgstr "AMS-align-Umgebung|l"
 
-#: lib/ui/stdcontext.inc:44 lib/ui/stdmenus.inc:326 lib/ui/stdmenus.inc:470
+#: lib/ui/stdcontext.inc:44 lib/ui/stdmenus.inc:326 lib/ui/stdmenus.inc:476
 msgid "AMS alignat Environment|t"
 msgstr "AMS-alignat-Umgebung|i"
 
-#: lib/ui/stdcontext.inc:45 lib/ui/stdmenus.inc:327 lib/ui/stdmenus.inc:471
+#: lib/ui/stdcontext.inc:45 lib/ui/stdmenus.inc:327 lib/ui/stdmenus.inc:477
 msgid "AMS flalign Environment|f"
 msgstr "AMS-flalign-Umgebung|f"
 
-#: lib/ui/stdcontext.inc:46 lib/ui/stdmenus.inc:328 lib/ui/stdmenus.inc:472
+#: lib/ui/stdcontext.inc:46 lib/ui/stdmenus.inc:328 lib/ui/stdmenus.inc:478
 msgid "AMS gather Environment|g"
 msgstr "AMS-gather-Umgebung|g"
 
-#: lib/ui/stdcontext.inc:47 lib/ui/stdmenus.inc:329 lib/ui/stdmenus.inc:473
+#: lib/ui/stdcontext.inc:47 lib/ui/stdmenus.inc:329 lib/ui/stdmenus.inc:479
 msgid "AMS multline Environment|m"
 msgstr "AMS-multline-Umgebung|u"
 
-#: lib/ui/stdcontext.inc:51 lib/ui/stdmenus.inc:322 lib/ui/stdmenus.inc:465
+#: lib/ui/stdcontext.inc:51 lib/ui/stdmenus.inc:322 lib/ui/stdmenus.inc:471
 msgid "Inline Formula|I"
 msgstr "Eingebettete Formel|r"
 
@@ -17962,7 +17962,7 @@ msgstr "Eingebettete Formel|r"
 msgid "Displayed Formula|D"
 msgstr "Abgesetzte Formel|b"
 
-#: lib/ui/stdcontext.inc:53 lib/ui/stdmenus.inc:324 lib/ui/stdmenus.inc:468
+#: lib/ui/stdcontext.inc:53 lib/ui/stdmenus.inc:324 lib/ui/stdmenus.inc:474
 msgid "Eqnarray Environment|E"
 msgstr "Eqnarray-Umgebung|q"
 
@@ -18102,7 +18102,7 @@ msgstr "Große Anfangsbuchstaben|A"
 #: lib/ui/stdcontext.inc:545 lib/ui/stdcontext.inc:553
 #: lib/ui/stdcontext.inc:561 lib/ui/stdcontext.inc:574
 #: lib/ui/stdcontext.inc:584 lib/ui/stdcontext.inc:605
-#: lib/ui/stdcontext.inc:613 lib/ui/stdcontext.inc:662 lib/ui/stdmenus.inc:563
+#: lib/ui/stdcontext.inc:613 lib/ui/stdcontext.inc:662 lib/ui/stdmenus.inc:569
 msgid "Settings...|S"
 msgstr "Einstellungen...|E"
 
@@ -18135,11 +18135,11 @@ msgstr "Einfügung auflösen|ü"
 msgid "Show Label|L"
 msgstr "Name anzeigen|N"
 
-#: lib/ui/stdcontext.inc:184 lib/ui/stdmenus.inc:514
+#: lib/ui/stdcontext.inc:184 lib/ui/stdmenus.inc:520
 msgid "Frameless|l"
 msgstr "Rahmenlos|l"
 
-#: lib/ui/stdcontext.inc:185 lib/ui/stdmenus.inc:515
+#: lib/ui/stdcontext.inc:185 lib/ui/stdmenus.inc:521
 msgid "Simple Frame|F"
 msgstr "Einfacher Rahmen|f"
 
@@ -18147,27 +18147,27 @@ msgstr "Einfacher Rahmen|f"
 msgid "Simple Frame, Page Breaks|P"
 msgstr "Einfacher Rahmen, Seitenumbrüche|b"
 
-#: lib/ui/stdcontext.inc:187 lib/ui/stdmenus.inc:516
+#: lib/ui/stdcontext.inc:187 lib/ui/stdmenus.inc:522
 msgid "Oval, Thin|a"
 msgstr "Oval, dünn|O"
 
-#: lib/ui/stdcontext.inc:188 lib/ui/stdmenus.inc:517
+#: lib/ui/stdcontext.inc:188 lib/ui/stdmenus.inc:523
 msgid "Oval, Thick|v"
 msgstr "Oval, dick|v"
 
-#: lib/ui/stdcontext.inc:189 lib/ui/stdmenus.inc:518
+#: lib/ui/stdcontext.inc:189 lib/ui/stdmenus.inc:524
 msgid "Drop Shadow|w"
 msgstr "Schlagschatten|c"
 
-#: lib/ui/stdcontext.inc:190 lib/ui/stdmenus.inc:519
+#: lib/ui/stdcontext.inc:190 lib/ui/stdmenus.inc:525
 msgid "Shaded Background|B"
 msgstr "Schattierter Hintergrund|H"
 
-#: lib/ui/stdcontext.inc:191 lib/ui/stdmenus.inc:520
+#: lib/ui/stdcontext.inc:191 lib/ui/stdmenus.inc:526
 msgid "Double Frame|u"
 msgstr "Doppelter Rahmen|D"
 
-#: lib/ui/stdcontext.inc:208 lib/ui/stdmenus.inc:524
+#: lib/ui/stdcontext.inc:208 lib/ui/stdmenus.inc:530
 msgid "LyX Note|N"
 msgstr "LyX-Notiz|z"
 
@@ -18175,7 +18175,7 @@ msgstr "LyX-Notiz|z"
 msgid "Comment|m"
 msgstr "Kommentar|K"
 
-#: lib/ui/stdcontext.inc:210 lib/ui/stdmenus.inc:526
+#: lib/ui/stdcontext.inc:210 lib/ui/stdmenus.inc:532
 msgid "Greyed Out|G"
 msgstr "Grauschrift|G"
 
@@ -18187,19 +18187,19 @@ msgstr "Alle Notizen öffnen|f"
 msgid "Close All Notes|l"
 msgstr "Alle Notizen schließen|c"
 
-#: lib/ui/stdcontext.inc:221 lib/ui/stdmenus.inc:536
+#: lib/ui/stdcontext.inc:221 lib/ui/stdmenus.inc:542
 msgid "Phantom|P"
 msgstr "Phantom|P"
 
-#: lib/ui/stdcontext.inc:222 lib/ui/stdmenus.inc:537
+#: lib/ui/stdcontext.inc:222 lib/ui/stdmenus.inc:543
 msgid "Horizontal Phantom|H"
 msgstr "Horizontales Phantom|H"
 
-#: lib/ui/stdcontext.inc:223 lib/ui/stdmenus.inc:538
+#: lib/ui/stdcontext.inc:223 lib/ui/stdmenus.inc:544
 msgid "Vertical Phantom|V"
 msgstr "Vertikales Phantom|V"
 
-#: lib/ui/stdcontext.inc:238 lib/ui/stdmenus.inc:444
+#: lib/ui/stdcontext.inc:238 lib/ui/stdmenus.inc:450
 msgid "Interword Space|w"
 msgstr "Normales Leerzeichen|N"
 
@@ -18211,7 +18211,7 @@ msgstr "Geschütztes Leerzeichen|G"
 msgid "Visible Space|a"
 msgstr "Sichtbares Leerzeichen|e"
 
-#: lib/ui/stdcontext.inc:241 lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:445
+#: lib/ui/stdcontext.inc:241 lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:451
 msgid "Thin Space|T"
 msgstr "Halbes Leerzeichen|a"
 
@@ -18339,27 +18339,27 @@ msgstr "Programmlisting|l"
 msgid "Edit Included File...|E"
 msgstr "Eingebettete Datei bearbeiten...|b"
 
-#: lib/ui/stdcontext.inc:311 lib/ui/stdmenus.inc:457
+#: lib/ui/stdcontext.inc:311 lib/ui/stdmenus.inc:463
 msgid "New Page|N"
 msgstr "Neue Seite|i"
 
-#: lib/ui/stdcontext.inc:312 lib/ui/stdmenus.inc:458
+#: lib/ui/stdcontext.inc:312 lib/ui/stdmenus.inc:464
 msgid "Page Break|a"
 msgstr "Seitenumbruch|u"
 
-#: lib/ui/stdcontext.inc:313 lib/ui/stdmenus.inc:459
+#: lib/ui/stdcontext.inc:313 lib/ui/stdmenus.inc:465
 msgid "Clear Page|C"
 msgstr "Seite leeren|S"
 
-#: lib/ui/stdcontext.inc:314 lib/ui/stdmenus.inc:460
+#: lib/ui/stdcontext.inc:314 lib/ui/stdmenus.inc:466
 msgid "Clear Double Page|D"
 msgstr "Doppelseite leeren|D"
 
-#: lib/ui/stdcontext.inc:321 lib/ui/stdmenus.inc:454
+#: lib/ui/stdcontext.inc:321 lib/ui/stdmenus.inc:460
 msgid "Ragged Line Break|R"
 msgstr "Normaler Zeilenumbruch|Z"
 
-#: lib/ui/stdcontext.inc:322 lib/ui/stdmenus.inc:455
+#: lib/ui/stdcontext.inc:322 lib/ui/stdmenus.inc:461
 msgid "Justified Line Break|J"
 msgstr "Rechtsbündiger Zeilenumbruch|b"
 
@@ -18395,7 +18395,7 @@ msgstr "Einfügen (vorherige Auswahl)|h"
 msgid "Jump Back to Saved Bookmark|B"
 msgstr "Zum gespeicherten Lesezeichen springen|L"
 
-#: lib/ui/stdcontext.inc:345 lib/ui/stdmenus.inc:585
+#: lib/ui/stdcontext.inc:345 lib/ui/stdmenus.inc:591
 msgid "Forward Search|F"
 msgstr "Vorwärtssuche|V"
 
@@ -18664,7 +18664,7 @@ msgstr "Alle Indexe|A"
 msgid "Subindex|b"
 msgstr "Unterindex|t"
 
-#: lib/ui/stdcontext.inc:631 lib/ui/stdmenus.inc:570
+#: lib/ui/stdcontext.inc:631 lib/ui/stdmenus.inc:576
 msgid "Reject Change|R"
 msgstr "Änderung ablehnen|b"
 
@@ -18900,7 +18900,7 @@ msgstr "Suchen & Ersetzen (erweitert)..."
 msgid "Table|T"
 msgstr "Tabelle|b"
 
-#: lib/ui/stdmenus.inc:128 lib/ui/stdmenus.inc:630
+#: lib/ui/stdmenus.inc:128 lib/ui/stdmenus.inc:636
 msgid "Math|M"
 msgstr "Mathe|M"
 
@@ -19441,364 +19441,380 @@ msgid "Date (Fix)|F"
 msgstr "Datum (fix)|f"
 
 #: lib/ui/stdmenus.inc:429
+msgid "Time (Current)|T"
+msgstr "Zeit (aktuell)|Z"
+
+#: lib/ui/stdmenus.inc:430
+msgid "Time (Last Modification)|M"
+msgstr "Zeit (letzte Änderung)|g"
+
+#: lib/ui/stdmenus.inc:431
+msgid "Time (Fix)|x"
+msgstr "Zeit (fix)|x"
+
+#: lib/ui/stdmenus.inc:433
+msgid "File Name (Excl. Extension)|N"
+msgstr "Dateiname (ohne Endung)|n"
+
+#: lib/ui/stdmenus.inc:435
 msgid "Other...|O"
 msgstr "Anderes...|A"
 
-#: lib/ui/stdmenus.inc:433
+#: lib/ui/stdmenus.inc:439
 msgid "LyX Logo|L"
 msgstr "LyX-Logo|L"
 
-#: lib/ui/stdmenus.inc:434
+#: lib/ui/stdmenus.inc:440
 msgid "TeX Logo|T"
 msgstr "TeX-Logo|T"
 
-#: lib/ui/stdmenus.inc:435
+#: lib/ui/stdmenus.inc:441
 msgid "LaTeX Logo|a"
 msgstr "LaTeX-Logo|a"
 
-#: lib/ui/stdmenus.inc:436
+#: lib/ui/stdmenus.inc:442
 msgid "LaTeX2e Logo|e"
 msgstr "LaTeX2e-Logo|e"
 
-#: lib/ui/stdmenus.inc:440
+#: lib/ui/stdmenus.inc:446
 msgid "Superscript|S"
 msgstr "Hochgestellt|H"
 
-#: lib/ui/stdmenus.inc:441
+#: lib/ui/stdmenus.inc:447
 msgid "Subscript|u"
 msgstr "Tiefgestellt|T"
 
-#: lib/ui/stdmenus.inc:443
+#: lib/ui/stdmenus.inc:449
 msgid "Protected Space|P"
 msgstr "Geschütztes Leerzeichen|G"
 
-#: lib/ui/stdmenus.inc:446
+#: lib/ui/stdmenus.inc:452
 msgid "Horizontal Space...|o"
 msgstr "Horizontaler Abstand...|o"
 
-#: lib/ui/stdmenus.inc:447
+#: lib/ui/stdmenus.inc:453
 msgid "Horizontal Line...|L"
 msgstr "Horizontale Linie...|L"
 
-#: lib/ui/stdmenus.inc:448
+#: lib/ui/stdmenus.inc:454
 msgid "Vertical Space...|V"
 msgstr "Vertikaler Abstand...|V"
 
-#: lib/ui/stdmenus.inc:449
+#: lib/ui/stdmenus.inc:455
 msgid "Phantom|m"
 msgstr "Phantom|m"
 
-#: lib/ui/stdmenus.inc:451
+#: lib/ui/stdmenus.inc:457
 msgid "Hyphenation Point|H"
 msgstr "Trennmöglichkeit|ö"
 
-#: lib/ui/stdmenus.inc:452
+#: lib/ui/stdmenus.inc:458
 msgid "Ligature Break|k"
 msgstr "Ligaturtrenner|r"
 
-#: lib/ui/stdmenus.inc:453
+#: lib/ui/stdmenus.inc:459
 msgid "Optional Line Break|B"
 msgstr "Optionaler Zeilenumbruch|p"
 
-#: lib/ui/stdmenus.inc:466
+#: lib/ui/stdmenus.inc:472
 msgid "Display Formula|D"
 msgstr "Abgesetzte Formel|A"
 
-#: lib/ui/stdmenus.inc:467
+#: lib/ui/stdmenus.inc:473
 msgid "Numbered Formula|N"
 msgstr "Nummerierte Formel|N"
 
-#: lib/ui/stdmenus.inc:491
+#: lib/ui/stdmenus.inc:497
 msgid "Figure Wrap Float|F"
 msgstr "Umflossenes Bild-Gleitobjekt|B"
 
-#: lib/ui/stdmenus.inc:492
+#: lib/ui/stdmenus.inc:498
 msgid "Table Wrap Float|T"
 msgstr "Umflossenes Tabellen-Gleitobjekt|T"
 
-#: lib/ui/stdmenus.inc:496
+#: lib/ui/stdmenus.inc:502
 msgid "Table of Contents|C"
 msgstr "Inhaltsverzeichnis|I"
 
-#: lib/ui/stdmenus.inc:499
+#: lib/ui/stdmenus.inc:505
 msgid "List of Listings|L"
 msgstr "Listings-Verzeichnis|L"
 
-#: lib/ui/stdmenus.inc:500
+#: lib/ui/stdmenus.inc:506
 msgid "Nomenclature|N"
 msgstr "Nomenklatur|N"
 
-#: lib/ui/stdmenus.inc:501
+#: lib/ui/stdmenus.inc:507
 msgid "Bib(la)TeX Bibliography...|B"
 msgstr "Bib(la)TeX-Literaturverzeichnis...|B"
 
-#: lib/ui/stdmenus.inc:505
+#: lib/ui/stdmenus.inc:511
 msgid "LyX Document...|X"
 msgstr "LyX-Dokument...|L"
 
-#: lib/ui/stdmenus.inc:506
+#: lib/ui/stdmenus.inc:512
 msgid "Plain Text...|T"
 msgstr "Einfacher Text...|T"
 
-#: lib/ui/stdmenus.inc:507
+#: lib/ui/stdmenus.inc:513
 msgid "Plain Text, Join Lines...|J"
 msgstr "Einfacher Text, Zeilen verbinden...|Z"
 
-#: lib/ui/stdmenus.inc:509
+#: lib/ui/stdmenus.inc:515
 msgid "External Material...|M"
 msgstr "Externes Material...|E"
 
-#: lib/ui/stdmenus.inc:510
+#: lib/ui/stdmenus.inc:516
 msgid "Child Document...|d"
 msgstr "Unterdokument...|U"
 
-#: lib/ui/stdmenus.inc:525
+#: lib/ui/stdmenus.inc:531
 msgid "Comment|C"
 msgstr "Kommentar|K"
 
-#: lib/ui/stdmenus.inc:532
+#: lib/ui/stdmenus.inc:538
 msgid "Insert New Branch...|I"
 msgstr "Neuen Zweig einfügen...|w"
 
-#: lib/ui/stdmenus.inc:550
+#: lib/ui/stdmenus.inc:556
 msgid "Change Tracking|C"
 msgstr "Änderungsverfolgung|v"
 
-#: lib/ui/stdmenus.inc:551
+#: lib/ui/stdmenus.inc:557
 msgid "Build Program|B"
 msgstr "Programm erstellen|e"
 
-#: lib/ui/stdmenus.inc:552
+#: lib/ui/stdmenus.inc:558
 msgid "LaTeX Log|L"
 msgstr "LaTeX-Protokoll|P"
 
-#: lib/ui/stdmenus.inc:553
+#: lib/ui/stdmenus.inc:559
 msgid "Start Appendix Here|x"
 msgstr "Anhang hier beginnen|A"
 
-#: lib/ui/stdmenus.inc:557
+#: lib/ui/stdmenus.inc:563
 msgid "View Master Document|M"
 msgstr "Hauptdokument ansehen|H"
 
-#: lib/ui/stdmenus.inc:558
+#: lib/ui/stdmenus.inc:564
 msgid "Update Master Document|a"
 msgstr "Hauptdokument aktualisieren|m"
 
-#: lib/ui/stdmenus.inc:559
+#: lib/ui/stdmenus.inc:565
 msgid "Cancel Background Process|P"
 msgstr "Hintergrundprozess abbrechen|H"
 
-#: lib/ui/stdmenus.inc:561
+#: lib/ui/stdmenus.inc:567
 msgid "Compressed|o"
 msgstr "Komprimiert|K"
 
-#: lib/ui/stdmenus.inc:562
+#: lib/ui/stdmenus.inc:568
 msgid "Disable Editing|E"
 msgstr "Für Bearbeitung sperren|B"
 
 # , c-format
 # , c-format
-#: lib/ui/stdmenus.inc:567
+#: lib/ui/stdmenus.inc:573
 msgid "Track Changes|T"
 msgstr "Änderungen verfolgen|v"
 
-#: lib/ui/stdmenus.inc:568
+#: lib/ui/stdmenus.inc:574
 msgid "Merge Changes...|M"
 msgstr "Änderungen akzeptieren oder verwerfen...|z"
 
-#: lib/ui/stdmenus.inc:569
+#: lib/ui/stdmenus.inc:575
 msgid "Accept Change|A"
 msgstr "Änderung akzeptieren|a"
 
-#: lib/ui/stdmenus.inc:571
+#: lib/ui/stdmenus.inc:577
 msgid "Accept All Changes|c"
 msgstr "Alle Änderungen akzeptieren|k"
 
-#: lib/ui/stdmenus.inc:572
+#: lib/ui/stdmenus.inc:578
 msgid "Reject All Changes|e"
 msgstr "Alle Änderungen ablehnen|h"
 
-#: lib/ui/stdmenus.inc:573
+#: lib/ui/stdmenus.inc:579
 msgid "Show Changes in Output|S"
 msgstr "In der Ausgabe anzeigen|I"
 
-#: lib/ui/stdmenus.inc:580
+#: lib/ui/stdmenus.inc:586
 msgid "Bookmarks|B"
 msgstr "Lesezeichen|L"
 
-#: lib/ui/stdmenus.inc:581
+#: lib/ui/stdmenus.inc:587
 msgid "Next Note|N"
 msgstr "Nächste Notiz|N"
 
-#: lib/ui/stdmenus.inc:582
+#: lib/ui/stdmenus.inc:588
 msgid "Next Change|C"
 msgstr "Nächste Änderung|Ä"
 
-#: lib/ui/stdmenus.inc:583
+#: lib/ui/stdmenus.inc:589
 msgid "Next Cross-Reference|R"
 msgstr "Nächster Querverweis|Q"
 
-#: lib/ui/stdmenus.inc:584
+#: lib/ui/stdmenus.inc:590
 msgid "Go to Label|L"
 msgstr "Gehe zur Marke|M"
 
-#: lib/ui/stdmenus.inc:591
+#: lib/ui/stdmenus.inc:597
 msgid "Save Bookmark 1|S"
 msgstr "Lesezeichen 1 speichern|L"
 
-#: lib/ui/stdmenus.inc:592
+#: lib/ui/stdmenus.inc:598
 msgid "Save Bookmark 2"
 msgstr "Lesezeichen 2 speichern"
 
-#: lib/ui/stdmenus.inc:593
+#: lib/ui/stdmenus.inc:599
 msgid "Save Bookmark 3"
 msgstr "Lesezeichen 3 speichern"
 
-#: lib/ui/stdmenus.inc:594
+#: lib/ui/stdmenus.inc:600
 msgid "Save Bookmark 4"
 msgstr "Lesezeichen 4 speichern"
 
-#: lib/ui/stdmenus.inc:595
+#: lib/ui/stdmenus.inc:601
 msgid "Save Bookmark 5"
 msgstr "Lesezeichen 5 speichern"
 
-#: lib/ui/stdmenus.inc:596
+#: lib/ui/stdmenus.inc:602
 msgid "Clear Bookmarks|C"
 msgstr "Lesezeichen löschen|e"
 
-#: lib/ui/stdmenus.inc:598
+#: lib/ui/stdmenus.inc:604
 msgid "Navigate Back|B"
 msgstr "Gehe zurück|z"
 
-#: lib/ui/stdmenus.inc:607
+#: lib/ui/stdmenus.inc:613
 msgid "Spellchecker...|S"
 msgstr "Rechtschreibprüfung...|R"
 
-#: lib/ui/stdmenus.inc:608
+#: lib/ui/stdmenus.inc:614
 msgid "Thesaurus...|T"
 msgstr "Thesaurus...|T"
 
-#: lib/ui/stdmenus.inc:609
+#: lib/ui/stdmenus.inc:615
 msgid "Statistics...|a"
 msgstr "Statistik...|a"
 
-#: lib/ui/stdmenus.inc:610
+#: lib/ui/stdmenus.inc:616
 msgid "Check TeX|h"
 msgstr "TeX prüfen|p"
 
-#: lib/ui/stdmenus.inc:611
+#: lib/ui/stdmenus.inc:617
 msgid "TeX Information|I"
 msgstr "TeX-Informationen|X"
 
-#: lib/ui/stdmenus.inc:612
+#: lib/ui/stdmenus.inc:618
 msgid "Compare...|C"
 msgstr "Vergleichen...|V"
 
-#: lib/ui/stdmenus.inc:617
+#: lib/ui/stdmenus.inc:623
 msgid "Reconfigure|R"
 msgstr "Neu konfigurieren|k"
 
-#: lib/ui/stdmenus.inc:618
+#: lib/ui/stdmenus.inc:624
 msgid "Preferences...|P"
 msgstr "Einstellungen...|E"
 
-#: lib/ui/stdmenus.inc:625
+#: lib/ui/stdmenus.inc:631
 msgid "Introduction|I"
 msgstr "Einführung|E"
 
-#: lib/ui/stdmenus.inc:626
+#: lib/ui/stdmenus.inc:632
 msgid "Tutorial|T"
 msgstr "Tutorium|T"
 
-#: lib/ui/stdmenus.inc:627
+#: lib/ui/stdmenus.inc:633
 msgid "User's Guide|U"
 msgstr "Benutzerhandbuch|B"
 
-#: lib/ui/stdmenus.inc:628
+#: lib/ui/stdmenus.inc:634
 msgid "Additional Features|F"
 msgstr "Handbuchergänzungen|H"
 
-#: lib/ui/stdmenus.inc:629
+#: lib/ui/stdmenus.inc:635
 msgid "Embedded Objects|O"
 msgstr "Eingebettete Objekte|O"
 
-#: lib/ui/stdmenus.inc:631
+#: lib/ui/stdmenus.inc:637
 msgid "Customization|C"
 msgstr "Anpassung|A"
 
-#: lib/ui/stdmenus.inc:632
+#: lib/ui/stdmenus.inc:638
 msgid "Shortcuts|S"
 msgstr "Tastenkürzel|k"
 
-#: lib/ui/stdmenus.inc:633
+#: lib/ui/stdmenus.inc:639
 msgid "LyX Functions|y"
 msgstr "LyX-Funktionen|y"
 
-#: lib/ui/stdmenus.inc:634
+#: lib/ui/stdmenus.inc:640
 msgid "LaTeX Configuration|L"
 msgstr "LaTeX-Konfiguration|L"
 
-#: lib/ui/stdmenus.inc:635
+#: lib/ui/stdmenus.inc:641
 msgid "Specific Manuals|p"
 msgstr "Spezielle Handbücher|p"
 
-#: lib/ui/stdmenus.inc:637
+#: lib/ui/stdmenus.inc:643
 msgid "About LyX|X"
 msgstr "Über LyX|X"
 
-#: lib/ui/stdmenus.inc:641
+#: lib/ui/stdmenus.inc:647
 msgid "Beamer Presentations|B"
 msgstr "Beamer-Präsentationen|B"
 
-#: lib/ui/stdmenus.inc:642
+#: lib/ui/stdmenus.inc:648
 msgid "Braille|a"
 msgstr "Braille|a"
 
-#: lib/ui/stdmenus.inc:643
+#: lib/ui/stdmenus.inc:649
 msgid "Colored boxes|r"
 msgstr "Farbige Boxen|F"
 
-#: lib/ui/stdmenus.inc:644
+#: lib/ui/stdmenus.inc:650
 msgid "Feynman-diagram|F"
 msgstr "Feynman-Diagramm|y"
 
-#: lib/ui/stdmenus.inc:645
+#: lib/ui/stdmenus.inc:651
 msgid "Knitr|K"
 msgstr "Knitr|K"
 
-#: lib/ui/stdmenus.inc:646
+#: lib/ui/stdmenus.inc:652
 msgid "LilyPond|P"
 msgstr "LilyPond|P"
 
-#: lib/ui/stdmenus.inc:647
+#: lib/ui/stdmenus.inc:653
 msgid "Linguistics|L"
 msgstr "Linguistik|L"
 
-#: lib/ui/stdmenus.inc:648
+#: lib/ui/stdmenus.inc:654
 msgid "Multilingual Captions|C"
 msgstr "Mehrsprachige Legenden|g"
 
-#: lib/ui/stdmenus.inc:649
+#: lib/ui/stdmenus.inc:655
 msgid "Paralist|t"
 msgstr "Absatzlisten (Paralist)|t"
 
-#: lib/ui/stdmenus.inc:650
+#: lib/ui/stdmenus.inc:656
 msgid "PDF comments|D"
 msgstr "PDF-Kommentare|D"
 
-#: lib/ui/stdmenus.inc:651
+#: lib/ui/stdmenus.inc:657
 msgid "PDF forms|o"
 msgstr "PDF-Formulare|o"
 
-#: lib/ui/stdmenus.inc:652
+#: lib/ui/stdmenus.inc:658
 msgid "Hazard and Precautionary Statements|H"
 msgstr "H- und P-Sätze|H"
 
-#: lib/ui/stdmenus.inc:653 lib/configure.py:663
+#: lib/ui/stdmenus.inc:659 lib/configure.py:663
 msgid "Sweave|S"
 msgstr "Sweave|S"
 
-#: lib/ui/stdmenus.inc:654
+#: lib/ui/stdmenus.inc:660
 msgid "XY-pic|X"
 msgstr "XY-Pic|X"
 
@@ -30587,91 +30603,104 @@ msgstr ""
 "Der Index konnte nicht umbenannt werden. Prüfen Sie, ob der Name bereits "
 "vergeben ist."
 
-#: src/frontends/qt4/GuiInfo.cpp:63
+#: src/frontends/qt4/GuiInfo.cpp:70
 msgid "Date (current)"
 msgstr "Datum (aktuell)"
 
-#: src/frontends/qt4/GuiInfo.cpp:64
+#: src/frontends/qt4/GuiInfo.cpp:71
 msgid "Date (last modified)"
 msgstr "Datum (letzte Änderung)"
 
-#: src/frontends/qt4/GuiInfo.cpp:65
+#: src/frontends/qt4/GuiInfo.cpp:72
 msgid "Date (fix)"
 msgstr "Datum (fix)"
 
-#: src/frontends/qt4/GuiInfo.cpp:66
+#: src/frontends/qt4/GuiInfo.cpp:73
+msgid "Time (current)"
+msgstr "Zeit (aktuell)"
+
+#: src/frontends/qt4/GuiInfo.cpp:74
+msgid "Time (last modified)"
+msgstr "Zeit (letzte Änderung)"
+
+#: src/frontends/qt4/GuiInfo.cpp:75
+msgid "Time (fix)"
+msgstr "Zeit (fix)"
+
+#: src/frontends/qt4/GuiInfo.cpp:76
 msgid "Document Information"
 msgstr "Dokumentinformation"
 
-#: src/frontends/qt4/GuiInfo.cpp:67
+#: src/frontends/qt4/GuiInfo.cpp:77
 msgid "Version Control Information"
 msgstr "Versionskontrollinformationen"
 
-#: src/frontends/qt4/GuiInfo.cpp:68
+#: src/frontends/qt4/GuiInfo.cpp:78
 msgid "LaTeX Package Availability"
 msgstr "Verfügbarkeit eines LaTeX-Pakets"
 
-#: src/frontends/qt4/GuiInfo.cpp:69
+#: src/frontends/qt4/GuiInfo.cpp:79
 msgid "LaTeX Class Availability"
 msgstr "Verfügbarkeit einer LaTeX-Klasse"
 
-#: src/frontends/qt4/GuiInfo.cpp:70
+#: src/frontends/qt4/GuiInfo.cpp:80
 msgid "Last Assigned Keyboard Shortcut"
 msgstr "Zuletzt zugewiesenes Tastenkürzel"
 
-#: src/frontends/qt4/GuiInfo.cpp:71
+#: src/frontends/qt4/GuiInfo.cpp:81
 msgid "All Keyboard Shortcuts"
 msgstr "Alle Tastenkürzel"
 
-#: src/frontends/qt4/GuiInfo.cpp:72
+#: src/frontends/qt4/GuiInfo.cpp:82
 msgid "LyX Menu Location"
 msgstr "LyX-Menü-Eintrag"
 
-#: src/frontends/qt4/GuiInfo.cpp:73
+#: src/frontends/qt4/GuiInfo.cpp:83
 msgid "LyX Toolbar Icon"
 msgstr "LyX-Werkzeugleistensymbol"
 
-#: src/frontends/qt4/GuiInfo.cpp:74
+#: src/frontends/qt4/GuiInfo.cpp:84
 msgid "LyX Preferences Entry"
 msgstr "LyX-Einstellungseintrag"
 
-#: src/frontends/qt4/GuiInfo.cpp:75
+#: src/frontends/qt4/GuiInfo.cpp:85
 msgid "LyX Application Information"
 msgstr "LyX-Programminformation"
 
-#: src/frontends/qt4/GuiInfo.cpp:76 src/insets/InsetInclude.cpp:399
+#: src/frontends/qt4/GuiInfo.cpp:86 src/insets/InsetInclude.cpp:399
 msgid "Unknown"
 msgstr "Unbekannt"
 
-#: src/frontends/qt4/GuiInfo.cpp:82 src/frontends/qt4/GuiInfo.cpp:83
-#: src/frontends/qt4/GuiInfo.cpp:84
+#: src/frontends/qt4/GuiInfo.cpp:92 src/frontends/qt4/GuiInfo.cpp:93
+#: src/frontends/qt4/GuiInfo.cpp:94 src/frontends/qt4/GuiInfo.cpp:95
+#: src/frontends/qt4/GuiInfo.cpp:96 src/frontends/qt4/GuiInfo.cpp:97
 msgid "Custom Format"
 msgstr "Benutzerdefiniertes Format"
 
-#: src/frontends/qt4/GuiInfo.cpp:85 src/frontends/qt4/GuiInfo.cpp:86
-#: src/frontends/qt4/GuiInfo.cpp:94 src/frontends/qt4/GuiInfo.cpp:95
+#: src/frontends/qt4/GuiInfo.cpp:98 src/frontends/qt4/GuiInfo.cpp:99
+#: src/frontends/qt4/GuiInfo.cpp:107 src/frontends/qt4/GuiInfo.cpp:108
 msgid "Not Applicable"
 msgstr "Nicht verfügbar"
 
-#: src/frontends/qt4/GuiInfo.cpp:87
+#: src/frontends/qt4/GuiInfo.cpp:100
 msgid "Package Name"
 msgstr "Paketname"
 
-#: src/frontends/qt4/GuiInfo.cpp:88
+#: src/frontends/qt4/GuiInfo.cpp:101
 msgid "Class Name"
 msgstr "Klassenname"
 
-#: src/frontends/qt4/GuiInfo.cpp:89 src/frontends/qt4/GuiInfo.cpp:90
-#: src/frontends/qt4/GuiInfo.cpp:91 src/frontends/qt4/GuiInfo.cpp:92
+#: src/frontends/qt4/GuiInfo.cpp:102 src/frontends/qt4/GuiInfo.cpp:103
+#: src/frontends/qt4/GuiInfo.cpp:104 src/frontends/qt4/GuiInfo.cpp:105
 msgid "LyX Function"
 msgstr "LyX-Funktion"
 
-#: src/frontends/qt4/GuiInfo.cpp:93
+#: src/frontends/qt4/GuiInfo.cpp:106
 msgid "Preferences Key"
 msgstr "Einstellungsschlüssel"
 
-#: src/frontends/qt4/GuiInfo.cpp:101 src/frontends/qt4/GuiInfo.cpp:112
-#: src/frontends/qt4/GuiInfo.cpp:123
+#: src/frontends/qt4/GuiInfo.cpp:114 src/frontends/qt4/GuiInfo.cpp:125
+#: src/frontends/qt4/GuiInfo.cpp:136
 msgid ""
 "Enter date format specification, using the following placeholders:\n"
 "* d: day as number without a leading zero\n"
@@ -30697,12 +30726,45 @@ msgstr ""
 "* yy: zweistellige Jahreszahl\n"
 "* yyyy: vierstellige Jahreszahl"
 
-#: src/frontends/qt4/GuiInfo.cpp:134 src/frontends/qt4/GuiInfo.cpp:135
-#: src/frontends/qt4/GuiInfo.cpp:150 src/frontends/qt4/GuiInfo.cpp:151
+#: src/frontends/qt4/GuiInfo.cpp:147 src/frontends/qt4/GuiInfo.cpp:161
+#: src/frontends/qt4/GuiInfo.cpp:175
+msgid ""
+"Enter time format specification, using the following placeholders:\n"
+"* h: the hour without a leading zero (1-12 in AM/PM)\n"
+"* hh: the hour with a leading zero (01-12 in AM/PM)\n"
+"* H: the hour without a leading zero (0-23 in AM/PM)\n"
+"* HH: the hour with a leading zero (00-23 in AM/PM)\n"
+"* m: the minute without a leading zero\n"
+"* mm: the minute with a leading zero\n"
+"* s: the second without a leading zero\n"
+"* ss: the second with a leading zero\n"
+"* z: the milliseconds without leading zeroes\n"
+"* zzz: the milliseconds with leading zeroes\n"
+"* AP or A: use AM/PM display ('AM'/'PM')\n"
+"* ap or a: use am/pm display ('am'/'pm')\n"
+"* t: the timezone (e.g. CEST)"
+msgstr ""
+"Geben Sie eine Formatvorgabe an; verwenden Sie die folgenden Platzhalter:\n"
+"* h: Stunde ohne vorang. Null (1-12 in AM/PM-Format)\n"
+"* hh: Stunde mit vorang. Null (01-12 in AM/PM-Format)\n"
+"* H: Stunde ohne vorang. Null (0-23 in AM/PM-Format)\n"
+"* HH: Stunde mit vorang. Null (00-23 in AM/PM-Format)\n"
+"* m: Minute ohne vorangestellte Null\n"
+"* mm: Minute mit vorangestellter Null\n"
+"* s: Sekunde ohne vorangestellte Null\n"
+"* ss: Sekunde mit vorangestellter Null\n"
+"* z: Millisekunden ohne vorangestellte Nullen\n"
+"* zzz: Millisekunden mit vorangestellten Nullen\n"
+"* AP oder A: verwende AM/PM-Anzeige ('AM'/'PM')\n"
+"* ap oder a: verwende am/pm-Anzeige ('am'/'pm')\n"
+"* t: Zeitzone (bspw. CEST)"
+
+#: src/frontends/qt4/GuiInfo.cpp:189 src/frontends/qt4/GuiInfo.cpp:190
+#: src/frontends/qt4/GuiInfo.cpp:205 src/frontends/qt4/GuiInfo.cpp:206
 msgid "Please select a valid type above"
 msgstr "Bitte wählen Sie oben einen gültigen Typ"
 
-#: src/frontends/qt4/GuiInfo.cpp:136
+#: src/frontends/qt4/GuiInfo.cpp:191
 msgid ""
 "Enter a LaTeX package name such as 'hyperref' (extension is optional). The "
 "output will be 'Yes' (package available) or 'No' (package unavailable)."
@@ -30711,7 +30773,7 @@ msgstr ""
 "Dateiendung). Ausgegeben wird 'Ja' (Paket verfügbar) oder 'Nein' (Paket "
 "nicht verfügbar)."
 
-#: src/frontends/qt4/GuiInfo.cpp:138
+#: src/frontends/qt4/GuiInfo.cpp:193
 msgid ""
 "Enter a LaTeX class name such as 'article' (extension is optional). The "
 "output will be 'Yes' (class available) or 'No' (class unavailable)."
@@ -30720,7 +30782,7 @@ msgstr ""
 "Dateiendung). Ausgegeben wird 'Ja' (Klasse verfügbar) oder 'Nein' (Klasse "
 "nicht verfügbar)."
 
-#: src/frontends/qt4/GuiInfo.cpp:140
+#: src/frontends/qt4/GuiInfo.cpp:195
 msgid ""
 "Enter a function name such as 'math-insert \\alpha'. Please refer to Help > "
 "LyX Functions for a comprehensive list of functions. The output is the most "
@@ -30730,7 +30792,7 @@ msgstr ""
 "Hilfe > LyX-Funktionen finden Sie eine vollständige Liste der Funktionen. "
 "Ausgegeben wird das dieser Funktion zuletzt zugewiesene Tastenkürzel."
 
-#: src/frontends/qt4/GuiInfo.cpp:142
+#: src/frontends/qt4/GuiInfo.cpp:197
 msgid ""
 "Enter a function name such as 'math-insert \\alpha'. Please refer to Help > "
 "LyX Functions for a comprehensive list of functions. The output lists all "
@@ -30740,7 +30802,7 @@ msgstr ""
 "Hilfe > LyX-Funktionen finden Sie eine vollständige Liste der Funktionen. "
 "Ausgegeben werden alle dieser Funktion zugewiesenen Tastenkürzel."
 
-#: src/frontends/qt4/GuiInfo.cpp:144
+#: src/frontends/qt4/GuiInfo.cpp:199
 msgid ""
 "Enter a function name such as 'math-insert \\alpha'. Please refer to Help > "
 "LyX Functions for a comprehensive list of functions. The output is the path "
@@ -30751,7 +30813,7 @@ msgstr ""
 "Ausgegeben wird der genaue Ort dieser Funktion im Menü (in der aktuellen "
 "Lokalisierung)."
 
-#: src/frontends/qt4/GuiInfo.cpp:146
+#: src/frontends/qt4/GuiInfo.cpp:201
 msgid ""
 "Enter a function name such as 'math-insert \\alpha'. Please refer to Help > "
 "LyX Functions for a comprehensive list of functions. The output is the "
@@ -30762,7 +30824,7 @@ msgstr ""
 "Ausgegeben wird das dieser Funktion zugewiesene Werkzeugleisten-Symbol (im "
 "aktiven Symboldesign)."
 
-#: src/frontends/qt4/GuiInfo.cpp:148
+#: src/frontends/qt4/GuiInfo.cpp:203
 msgid ""
 "Enter a LyX preferences key such as 'bind_file'. See the proposed list for "
 "available entries. The output is the current setting of this preference."
@@ -30771,11 +30833,19 @@ msgstr ""
 "Die möglichen Schlüssel finden Sie in der Vorschlagsliste. Ausgegeben wird "
 "der aktuelle Wert dieses Schlüssels."
 
-#: src/frontends/qt4/GuiInfo.cpp:245
+#: src/frontends/qt4/GuiInfo.cpp:317
 msgid "Enter a valid value below"
 msgstr "Geben Sie unten einen gültigen Wert ein."
 
-#: src/frontends/qt4/GuiInfo.h:39
+#: src/frontends/qt4/GuiInfo.cpp:350
+msgid "Here you can enter a fix time (in ISO format: hh:mm:ss)"
+msgstr "Hier können Sie eine fixe Zeit eingeben (im ISO-Format:  hh:mm:ss)"
+
+#: src/frontends/qt4/GuiInfo.cpp:351
+msgid "&Fix Time:"
+msgstr "&Fixe Zeit:"
+
+#: src/frontends/qt4/GuiInfo.h:40
 msgid "Field Settings"
 msgstr "Textfeld-Einstellungen"
 
@@ -32419,95 +32489,95 @@ msgstr "Großschreibung erzwingen|G"
 msgid "No Text Field in Scope!"
 msgstr "Kein Textfeld in Reichweite!"
 
-#: src/frontends/qt4/Menus.cpp:1694
+#: src/frontends/qt4/Menus.cpp:1695
 msgid "Custom..."
 msgstr "Benutzerdefiniert..."
 
-#: src/frontends/qt4/Menus.cpp:1770
+#: src/frontends/qt4/Menus.cpp:1771
 #, c-format
 msgid "Caption (%1$s)"
 msgstr "Legende (%1$s)"
 
-#: src/frontends/qt4/Menus.cpp:1795
+#: src/frontends/qt4/Menus.cpp:1796
 msgid "No Quote in Scope!"
 msgstr "Kein Anführungszeichen in Reichweite!"
 
-#: src/frontends/qt4/Menus.cpp:1831 src/frontends/qt4/Menus.cpp:1835
-#: src/frontends/qt4/Menus.cpp:1839 src/frontends/qt4/Menus.cpp:1843
+#: src/frontends/qt4/Menus.cpp:1832 src/frontends/qt4/Menus.cpp:1836
+#: src/frontends/qt4/Menus.cpp:1840 src/frontends/qt4/Menus.cpp:1844
 #, c-format
 msgid "%1$s (dynamic)"
 msgstr "%1$s (dynamisch)"
 
-#: src/frontends/qt4/Menus.cpp:1875
+#: src/frontends/qt4/Menus.cpp:1876
 #, c-format
 msgid "Use dynamic quotes (%1$s)|d"
 msgstr "Dynamische Anführungszeichen (%1$s) verwenden|y"
 
-#: src/frontends/qt4/Menus.cpp:1881
+#: src/frontends/qt4/Menus.cpp:1882
 msgid "dynamic[[Quotes]]"
 msgstr "dynamisch"
 
-#: src/frontends/qt4/Menus.cpp:1881 src/frontends/qt4/Menus.cpp:1891
+#: src/frontends/qt4/Menus.cpp:1882 src/frontends/qt4/Menus.cpp:1892
 msgid "static[[Quotes]]"
 msgstr "statisch"
 
-#: src/frontends/qt4/Menus.cpp:1883
+#: src/frontends/qt4/Menus.cpp:1884
 #, c-format
 msgid "Reset to document default (%1$s, %2$s)|o"
 msgstr "Auf Dokumentvoreinstellungen zurücksetzen (%1$s, %2$s)|o"
 
-#: src/frontends/qt4/Menus.cpp:1890
+#: src/frontends/qt4/Menus.cpp:1891
 #, c-format
 msgid "Reset to language default (%1$s, %2$s)|l"
 msgstr "Auf Sprachvoreinstellung zurücksetzen (%1$s, %2$s)|S"
 
-#: src/frontends/qt4/Menus.cpp:1892
+#: src/frontends/qt4/Menus.cpp:1893
 #, c-format
 msgid "Reset to language default (%1$s)|l"
 msgstr "Auf Sprachvoreinstellung zurücksetzen (%1$s)|S"
 
-#: src/frontends/qt4/Menus.cpp:1900
+#: src/frontends/qt4/Menus.cpp:1901
 msgid "Change Style|y"
 msgstr "Stil ändern|t"
 
-#: src/frontends/qt4/Menus.cpp:1942
+#: src/frontends/qt4/Menus.cpp:1943
 #, c-format
 msgid "Insert Separated %1$s Above"
 msgstr "Separierte Umgebung (%1$s) oberhalb einfügen"
 
-#: src/frontends/qt4/Menus.cpp:1944
+#: src/frontends/qt4/Menus.cpp:1945
 #, c-format
 msgid "Separated %1$s Above"
 msgstr "Separierte Umgebung (%1$s) oberhalb"
 
-#: src/frontends/qt4/Menus.cpp:1950 src/frontends/qt4/Menus.cpp:1963
-#: src/frontends/qt4/Menus.cpp:1980
+#: src/frontends/qt4/Menus.cpp:1951 src/frontends/qt4/Menus.cpp:1964
+#: src/frontends/qt4/Menus.cpp:1981
 #, c-format
 msgid "Insert Separated %1$s Below"
 msgstr "Separierte Umgebung (%1$s) unterhalb einfügen"
 
-#: src/frontends/qt4/Menus.cpp:1952 src/frontends/qt4/Menus.cpp:1965
-#: src/frontends/qt4/Menus.cpp:1986
+#: src/frontends/qt4/Menus.cpp:1953 src/frontends/qt4/Menus.cpp:1966
+#: src/frontends/qt4/Menus.cpp:1987
 #, c-format
 msgid "Separated %1$s Below"
 msgstr "Separierte Umgebung (%1$s) unterhalb"
 
-#: src/frontends/qt4/Menus.cpp:1978
+#: src/frontends/qt4/Menus.cpp:1979
 #, c-format
 msgid "Insert Separated Outer %1$s Below"
 msgstr "Separierte äußere Umgebung (%1$s) unterhalb einfügen"
 
-#: src/frontends/qt4/Menus.cpp:1984
+#: src/frontends/qt4/Menus.cpp:1985
 #, c-format
 msgid "Separated Outer %1$s Below"
 msgstr "Separierte äußere Umgebung (%1$s) unterhalb"
 
-#: src/frontends/qt4/Menus.cpp:2299
+#: src/frontends/qt4/Menus.cpp:2300
 #, c-format
 msgid "Export [%1$s]|E"
 msgstr "Exportiere in das Standardformat [%1$s]|E"
 
-#: src/frontends/qt4/Menus.cpp:2653
+#: src/frontends/qt4/Menus.cpp:2654
 msgid "No Action Defined!"
 msgstr "Keine Aktion definiert!"
 
@@ -33046,163 +33116,183 @@ msgstr "Alle Indexe"
 msgid "subindex"
 msgstr "Unterindex"
 
-#: src/insets/InsetInfo.cpp:170
+#: src/insets/InsetInfo.cpp:216
+msgid "Please select a valid type!"
+msgstr "Bitte wählen Sie einen gültigen Typ!"
+
+#: src/insets/InsetInfo.cpp:254
+msgid "File name (with extension)"
+msgstr "Dateiname (mit Endung)"
+
+#: src/insets/InsetInfo.cpp:255
+msgid "File name (without extension)"
+msgstr "Dateiname (ohne Endung)"
+
+#: src/insets/InsetInfo.cpp:256
+msgid "File path"
+msgstr "Dateipfad"
+
+#: src/insets/InsetInfo.cpp:257
+msgid "Used text class"
+msgstr "Verwendete Textklasse"
+
+#: src/insets/InsetInfo.cpp:262 src/insets/InsetInfo.cpp:933
+msgid "No version control!"
+msgstr "Keine Versionskontrolle!"
+
+#: src/insets/InsetInfo.cpp:265
+msgid "Revision[[Version Control]]"
+msgstr "Revision"
+
+#: src/insets/InsetInfo.cpp:266
+msgid "Tree revision"
+msgstr "Baumrevision"
+
+#: src/insets/InsetInfo.cpp:274
+msgid "LyX version"
+msgstr "LyX-Version"
+
+#: src/insets/InsetInfo.cpp:368
 msgid "Invalid information inset"
 msgstr "Ungültige Informationseinfügung"
 
-#: src/insets/InsetInfo.cpp:173
+#: src/insets/InsetInfo.cpp:371
 #, c-format
 msgid "The keybard shortcut for the function '%1$s'"
 msgstr "Das Tastenkürzel für die LyX-Funktion '%1$s'"
 
-#: src/insets/InsetInfo.cpp:177
+#: src/insets/InsetInfo.cpp:375
 #, c-format
 msgid "The keybard shortcuts for the function '%1$s'"
 msgstr "Die Tastenkürzel für die LyX-Funktion '%1$s'"
 
-#: src/insets/InsetInfo.cpp:181
+#: src/insets/InsetInfo.cpp:379
 #, c-format
 msgid "The menu location for the function '%1$s'"
 msgstr "Der Menüeintrag für die LyX-Funktion '%1$s'"
 
-#: src/insets/InsetInfo.cpp:185
+#: src/insets/InsetInfo.cpp:383
 #, c-format
 msgid "The toolbar icon for the function '%1$s'"
 msgstr "Das Werkzeugleistensymbol für die LyX-Funktion '%1$s'"
 
-#: src/insets/InsetInfo.cpp:189
+#: src/insets/InsetInfo.cpp:387
 #, c-format
 msgid "The preference setting for the preference key '%1$s'"
 msgstr "Die LyX-Einstellung für den Einstellungsschlüssel '%1$s'"
 
-#: src/insets/InsetInfo.cpp:193
+#: src/insets/InsetInfo.cpp:391
 #, c-format
 msgid "Availability of the LaTeX package '%1$s'"
 msgstr "Verfügbarkeit des LaTeX-Pakets '%1$s'"
 
-#: src/insets/InsetInfo.cpp:197
+#: src/insets/InsetInfo.cpp:395
 #, c-format
 msgid "Availability of the LaTeX class '%1$s'"
 msgstr "Verfügbarkeit der LaTeX-Klasse '%1$s'"
 
-#: src/insets/InsetInfo.cpp:202
-msgid "The name of this file"
-msgstr "Der Name dieser Datei"
+#: src/insets/InsetInfo.cpp:400
+msgid "The name of this file (incl. extension)"
+msgstr "Der Name dieser Datei (inkl. Endung)"
 
-#: src/insets/InsetInfo.cpp:204
+#: src/insets/InsetInfo.cpp:402
+msgid "The name of this file (without extension)"
+msgstr "Der Name dieser Datei (ohne Endung)"
+
+#: src/insets/InsetInfo.cpp:404
 msgid "The path where this file is saved"
 msgstr "Der Pfad, an dem diese Datei gespeichert ist"
 
-#: src/insets/InsetInfo.cpp:206
+#: src/insets/InsetInfo.cpp:406
 msgid "The class this document uses"
 msgstr "Die Klasse, die dieses Dokument verwendet"
 
-#: src/insets/InsetInfo.cpp:210
+#: src/insets/InsetInfo.cpp:410
 msgid "Version control revision"
 msgstr "Versionskontrolle: Revision"
 
-#: src/insets/InsetInfo.cpp:212
+#: src/insets/InsetInfo.cpp:412
 msgid "Version control tree revision"
 msgstr "Versionskontrolle: Tree-Revision"
 
-#: src/insets/InsetInfo.cpp:214
+#: src/insets/InsetInfo.cpp:414
 msgid "Version control author"
 msgstr "Versionskontrolle: Autor"
 
-#: src/insets/InsetInfo.cpp:216
+#: src/insets/InsetInfo.cpp:416
 msgid "Version control date"
 msgstr "Versionskontrolle: Datum"
 
-#: src/insets/InsetInfo.cpp:218
+#: src/insets/InsetInfo.cpp:418
 msgid "Version control time"
 msgstr "Versionskontrolle: Zeit"
 
-#: src/insets/InsetInfo.cpp:221
+#: src/insets/InsetInfo.cpp:421
 msgid "The current LyX version"
 msgstr "Die aktuelle LyX-Version"
 
-#: src/insets/InsetInfo.cpp:224
+#: src/insets/InsetInfo.cpp:424
 msgid "The current date"
 msgstr "Das aktuelle Datum"
 
-#: src/insets/InsetInfo.cpp:227
+#: src/insets/InsetInfo.cpp:427
 msgid "The date of last save"
 msgstr "Das Datum der letzten gespeicherten Änderung"
 
-#: src/insets/InsetInfo.cpp:230
+#: src/insets/InsetInfo.cpp:430
 msgid "A static date"
 msgstr "Ein festes Datum"
 
-#: src/insets/InsetInfo.cpp:257
+#: src/insets/InsetInfo.cpp:433
+msgid "The current time"
+msgstr "Die aktuelle Zeit"
+
+#: src/insets/InsetInfo.cpp:436
+msgid "The time of last save"
+msgstr "Die Zeit der letzten gespeicherten Änderung"
+
+#: src/insets/InsetInfo.cpp:439
+msgid "A static time"
+msgstr "Eine feste Zeitangabe"
+
+#: src/insets/InsetInfo.cpp:466
 msgid "Missing \\end_inset at this point."
 msgstr "Fehlendes \\end_inset an dieser Stelle."
 
-#: src/insets/InsetInfo.cpp:396
-msgid "Please select a valid type!"
-msgstr "Bitte wählen Sie einen gültigen Typ!"
-
-#: src/insets/InsetInfo.cpp:434
-msgid "File name"
-msgstr "Dateiname"
-
-#: src/insets/InsetInfo.cpp:435
-msgid "File path"
-msgstr "Dateipfad"
-
-#: src/insets/InsetInfo.cpp:436
-msgid "Used text class"
-msgstr "Verwendete Textklasse"
-
-#: src/insets/InsetInfo.cpp:441 src/insets/InsetInfo.cpp:834
-msgid "No version control!"
-msgstr "Keine Versionskontrolle!"
-
-#: src/insets/InsetInfo.cpp:444
-msgid "Revision[[Version Control]]"
-msgstr "Revision"
-
-#: src/insets/InsetInfo.cpp:445
-msgid "Tree revision"
-msgstr "Baumrevision"
-
-#: src/insets/InsetInfo.cpp:453
-msgid "LyX version"
-msgstr "LyX-Version"
-
-#: src/insets/InsetInfo.cpp:632
+#: src/insets/InsetInfo.cpp:729
 msgid "Unknown Info!"
 msgstr "Unbekannte Info-Einfügung!"
 
-#: src/insets/InsetInfo.cpp:641 src/insets/InsetInfo.cpp:733
+#: src/insets/InsetInfo.cpp:738 src/insets/InsetInfo.cpp:830
 #, c-format
 msgid "Unknown action %1$s"
 msgstr "Aktion '%1$s' unbekannt"
 
-#: src/insets/InsetInfo.cpp:647 src/insets/InsetInfo.cpp:663
-#: src/insets/InsetInfo.cpp:672 src/insets/InsetInfo.cpp:680
+#: src/insets/InsetInfo.cpp:744 src/insets/InsetInfo.cpp:760
+#: src/insets/InsetInfo.cpp:769 src/insets/InsetInfo.cpp:777
 msgid "undefined"
 msgstr "undefiniert"
 
-#: src/insets/InsetInfo.cpp:699 src/insets/InsetInfo.cpp:716
+#: src/insets/InsetInfo.cpp:796 src/insets/InsetInfo.cpp:813
 msgid "yes"
 msgstr "ja"
 
-#: src/insets/InsetInfo.cpp:702 src/insets/InsetInfo.cpp:719
+#: src/insets/InsetInfo.cpp:799 src/insets/InsetInfo.cpp:816
 msgid "no"
 msgstr "nein"
 
-#: src/insets/InsetInfo.cpp:739
+#: src/insets/InsetInfo.cpp:836
 #, c-format
 msgid "Can't determine menu entry for action %1$s in batch mode"
 msgstr ""
 "Der Menüeintrag für den Befehl %1$s kann im Batch-Mode nicht bestimmt werden"
 
-#: src/insets/InsetInfo.cpp:744
+#: src/insets/InsetInfo.cpp:841
 #, c-format
 msgid "No menu entry for action %1$s"
 msgstr "Kein Menüeintrag für die Aktion %1$s"
 
-#: src/insets/InsetInfo.cpp:851
+#: src/insets/InsetInfo.cpp:950
 #, c-format
 msgid "%1$s[[vcs data]] unknown"
 msgstr "%1$s unbekannt"
@@ -34439,6 +34529,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
 
+#~ msgid "File name"
+#~ msgstr "Dateiname"
+
 #~ msgid "Path|P"
 #~ msgstr "Pfad|P"
 
@@ -35285,9 +35378,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "Extension to be used when printing to file."
 #~ msgstr "Zu verwendende Erweiterung beim Druck in eine Datei."
-
-#~ msgid "File ex&tension:"
-#~ msgstr "Datei&endung:"
 
 #~ msgid "Option used to print to a file."
 #~ msgstr "Option, um in eine Datei zu drucken."
