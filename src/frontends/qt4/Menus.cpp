@@ -1131,7 +1131,7 @@ void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf
 				docstring lbl = (kind == MenuItem::ViewFormats
 					? bformat(_("View [%1$s]|V"), label)
 					: bformat(_("Update [%1$s]|U"), label));
-				add(MenuItem(MenuItem::Command, toqstr(lbl), FuncRequest(action, f->name())));
+				add(MenuItem(MenuItem::Command, toqstr(lbl), FuncRequest(action)));
 				continue;
 			}
 			break;
