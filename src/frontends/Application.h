@@ -233,6 +233,8 @@ public:
 	virtual bool searchMenu(FuncRequest const & func,
 		docstring_list & names) const = 0;
 
+	virtual bool hasBufferView() const = 0;
+
 	/// \return the icon file name for the given action.
 	static docstring iconName(FuncRequest const & f, bool unknown);
 	/// \return the math icon name for the given command.

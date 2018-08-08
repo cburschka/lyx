@@ -76,6 +76,7 @@ public:
 	void registerSocketCallback(int fd, SocketCallback func);
 	void unregisterSocketCallback(int fd);
 	bool searchMenu(FuncRequest const & func, docstring_list & names) const;
+	bool hasBufferView() const;
 	void handleKeyFunc(FuncCode action);
 	bool unhide(Buffer * buf); //override
 	//@}

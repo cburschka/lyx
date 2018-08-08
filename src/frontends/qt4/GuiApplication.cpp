@@ -2935,7 +2935,16 @@ Buffer const * GuiApplication::updateInset(Inset const * inset) const
 bool GuiApplication::searchMenu(FuncRequest const & func,
 	docstring_list & names) const
 {
-	return d->menus_.searchMenu(func, names);
+	BufferView * bv = 0;
+	if (current_view_)
+		bv = current_view_->currentBufferView();
+	return d->menus_.searchMenu(func, names, bv);
+}
+
+
+bool GuiApplication::hasBufferView() const
+{
+	return (current_view_ && current_view_->currentBufferView());
 }
 
 

@@ -827,8 +827,6 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		// only need to do this once.
 		if (initialized_)
 			break;
-		// and we will not keep trying if we fail
-		initialized_ = true;
 		docstring_list names;
 		FuncRequest const func = lyxaction.lookupFunc(params_.name);
 		if (func.action() == LFUN_UNKNOWN_ACTION) {
@@ -840,8 +838,11 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		if (!theApp()) {
 			gui = _("Can't determine menu entry for action %1$s in batch mode");
 			error(from_ascii("Can't determine menu entry for action %1$s in batch mode"), params_.lang);
+			initialized_ = true;
 			break;
 		}
+		// and we will not keep trying if we fail
+		initialized_ = theApp()->hasBufferView();
 		if (!theApp()->searchMenu(func, names)) {
 			gui = _("No menu entry for action %1$s");
 			error(from_ascii("No menu entry for action %1$s"), params_.lang);

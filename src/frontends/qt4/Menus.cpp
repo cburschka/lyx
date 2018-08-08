@@ -1131,7 +1131,7 @@ void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf
 				docstring lbl = (kind == MenuItem::ViewFormats
 					? bformat(_("View [%1$s]|V"), label)
 					: bformat(_("Update [%1$s]|U"), label));
-				add(MenuItem(MenuItem::Command, toqstr(lbl), FuncRequest(action)));
+				add(MenuItem(MenuItem::Command, toqstr(lbl), FuncRequest(action, f->name())));
 				continue;
 			}
 			break;
@@ -2540,10 +2540,10 @@ void Menus::read(Lexer & lex)
 
 
 bool Menus::searchMenu(FuncRequest const & func,
-	docstring_list & names) const
+	docstring_list & names, BufferView const * bv) const
 {
 	MenuDefinition menu;
-	d->expand(d->menubar_, menu, 0);
+	d->expand(d->menubar_, menu, bv);
 	return menu.searchMenu(func, names);
 }
 

@@ -14,6 +14,7 @@
 #define MENUS_H
 
 #include <QMenu>
+#include "BufferView.h"
 
 class QString;
 class QMenuBar;
@@ -70,7 +71,7 @@ public:
 
 	///
 	bool searchMenu(FuncRequest const & func,
-		docstring_list & names) const;
+		docstring_list & names, BufferView const * bv = 0) const;
 	///
 	void fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial = false);
 
