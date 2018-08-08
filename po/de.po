@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-08-07 15:20+0200\n"
-"PO-Revision-Date: 2018-08-07 15:22+0100\n"
+"POT-Creation-Date: 2018-08-08 10:08+0200\n"
+"PO-Revision-Date: 2018-08-08 10:16+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -2394,11 +2394,11 @@ msgstr ""
 "Wählen Sie hier die Art der Information, die ausgegeben werden soll. Dann "
 "spezifizieren Sie die gewünschte Information unten."
 
-#: src/frontends/qt4/ui/InfoUi.ui:49 src/frontends/qt4/GuiInfo.cpp:351
+#: src/frontends/qt4/ui/InfoUi.ui:49 src/frontends/qt4/GuiInfo.cpp:357
 msgid "&Fix Date:"
 msgstr "&Fixes Datum:"
 
-#: src/frontends/qt4/ui/InfoUi.ui:59 src/frontends/qt4/GuiInfo.cpp:350
+#: src/frontends/qt4/ui/InfoUi.ui:59 src/frontends/qt4/GuiInfo.cpp:356
 msgid "Here you can enter a fix date (in ISO format: YYYY-MM-DD)"
 msgstr "Hier können Sie ein fixes Datum eingeben (im ISO-Format: YYYY-MM-DD)"
 
@@ -19300,12 +19300,12 @@ msgid "Formatting|o"
 msgstr "Formatierung|o"
 
 #: lib/ui/stdmenus.inc:377
-msgid "Field|d"
+msgid "Field|i"
 msgstr "Textfeld|e"
 
 #: lib/ui/stdmenus.inc:378
-msgid "List / TOC|i"
-msgstr "Liste / Inhaltsverzeichnis|I"
+msgid "List / TOC|s"
+msgstr "Liste/Inhaltsverzeichnis|I"
 
 #: lib/ui/stdmenus.inc:379
 msgid "Float|a"
@@ -28837,7 +28837,7 @@ msgid "&Create"
 msgstr "&Erstellen"
 
 #: src/buffer_funcs.cpp:129 src/frontends/qt4/ButtonController.cpp:238
-#: src/frontends/qt4/GuiApplication.cpp:1819
+#: src/frontends/qt4/GuiApplication.cpp:1820
 #: src/frontends/qt4/GuiCompare.cpp:193 src/frontends/qt4/GuiSymbols.cpp:346
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -29212,35 +29212,35 @@ msgstr ""
 "Set-color \"%1$s\" ist fehlgeschlagen -- die Farbe ist nicht definiert oder "
 "darf nicht umdefiniert werden."
 
-#: src/frontends/qt4/GuiApplication.cpp:1866
+#: src/frontends/qt4/GuiApplication.cpp:1867
 #, c-format
 msgid "Cannot iterate more than %1$d times"
 msgstr "Mehr als %1$d Wiederholungen sind nicht möglich."
 
-#: src/frontends/qt4/GuiApplication.cpp:1966
+#: src/frontends/qt4/GuiApplication.cpp:1967
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
 msgstr "Der Befehl \"%1$s\" wurde auf %2$d Dateien (Pufferspeicher) angewandt"
 
-#: src/frontends/qt4/GuiApplication.cpp:2041
+#: src/frontends/qt4/GuiApplication.cpp:2042
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokument-Standardeinstellungen gespeichert in %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:2045
+#: src/frontends/qt4/GuiApplication.cpp:2046
 msgid "Unable to save document defaults"
 msgstr "Die Dokument-Standardeinstellungen können nicht gespeichert werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:2249
-#: src/frontends/qt4/GuiApplication.cpp:2264
+#: src/frontends/qt4/GuiApplication.cpp:2250
+#: src/frontends/qt4/GuiApplication.cpp:2265
 msgid "Unknown function."
 msgstr "Unbekannte Funktion."
 
-#: src/frontends/qt4/GuiApplication.cpp:2746
+#: src/frontends/qt4/GuiApplication.cpp:2747
 msgid "The current document was closed."
 msgstr "Das aktuelle Dokument wurde geschlossen."
 
-#: src/frontends/qt4/GuiApplication.cpp:2756
+#: src/frontends/qt4/GuiApplication.cpp:2757
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -29252,12 +29252,12 @@ msgstr ""
 "\n"
 "Exception: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2760
-#: src/frontends/qt4/GuiApplication.cpp:2766
+#: src/frontends/qt4/GuiApplication.cpp:2761
+#: src/frontends/qt4/GuiApplication.cpp:2767
 msgid "Software exception Detected"
 msgstr "Softwareausnahme erkannt"
 
-#: src/frontends/qt4/GuiApplication.cpp:2764
+#: src/frontends/qt4/GuiApplication.cpp:2765
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -29265,12 +29265,12 @@ msgstr ""
 "LyX hat einen ziemlich seltsamen Fehler entdeckt. Das Programm wird jetzt "
 "versuchen, alle ungespeicherten Dateien zu speichern, und dann beendet."
 
-#: src/frontends/qt4/GuiApplication.cpp:3056
-#: src/frontends/qt4/GuiApplication.cpp:3068
+#: src/frontends/qt4/GuiApplication.cpp:3057
+#: src/frontends/qt4/GuiApplication.cpp:3069
 msgid "Could not find UI definition file"
 msgstr "Die Benutzeroberflächen-Definitionsdatei konnte nicht gefunden werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:3057
+#: src/frontends/qt4/GuiApplication.cpp:3058
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -29281,13 +29281,13 @@ msgstr ""
 "%1$s.\n"
 "Bitte überprüfen Sie Ihre Installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:3063
+#: src/frontends/qt4/GuiApplication.cpp:3064
 msgid "Could not find default UI file"
 msgstr ""
 "Die Standard-Benutzeroberflächen-Definitionsdatei konnte nicht gefunden "
 "werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:3064
+#: src/frontends/qt4/GuiApplication.cpp:3065
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -29296,7 +29296,7 @@ msgstr ""
 "für die Benutzeroberfläche!\n"
 "Bitte überprüfen Sie Ihre Installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:3069
+#: src/frontends/qt4/GuiApplication.cpp:3070
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -30610,104 +30610,100 @@ msgstr ""
 "Der Index konnte nicht umbenannt werden. Prüfen Sie, ob der Name bereits "
 "vergeben ist."
 
-#: src/frontends/qt4/GuiInfo.cpp:70
+#: src/frontends/qt4/GuiInfo.cpp:69
 msgid "Date (current)"
 msgstr "Datum (aktuell)"
 
-#: src/frontends/qt4/GuiInfo.cpp:71
+#: src/frontends/qt4/GuiInfo.cpp:70
 msgid "Date (last modified)"
 msgstr "Datum (letzte Änderung)"
 
-#: src/frontends/qt4/GuiInfo.cpp:72
+#: src/frontends/qt4/GuiInfo.cpp:71
 msgid "Date (fix)"
 msgstr "Datum (fix)"
 
-#: src/frontends/qt4/GuiInfo.cpp:73
+#: src/frontends/qt4/GuiInfo.cpp:72
 msgid "Time (current)"
 msgstr "Uhrzeit (aktuell)"
 
-#: src/frontends/qt4/GuiInfo.cpp:74
+#: src/frontends/qt4/GuiInfo.cpp:73
 msgid "Time (last modified)"
 msgstr "Uhrzeit (letzte Änderung)"
 
-#: src/frontends/qt4/GuiInfo.cpp:75
+#: src/frontends/qt4/GuiInfo.cpp:74
 msgid "Time (fix)"
 msgstr "Uhrzeit (fix)"
 
-#: src/frontends/qt4/GuiInfo.cpp:76
+#: src/frontends/qt4/GuiInfo.cpp:75
 msgid "Document Information"
 msgstr "Dokumentinformation"
 
-#: src/frontends/qt4/GuiInfo.cpp:77
+#: src/frontends/qt4/GuiInfo.cpp:76
 msgid "Version Control Information"
 msgstr "Versionskontrollinformationen"
 
-#: src/frontends/qt4/GuiInfo.cpp:78
+#: src/frontends/qt4/GuiInfo.cpp:77
 msgid "LaTeX Package Availability"
 msgstr "Verfügbarkeit eines LaTeX-Pakets"
 
-#: src/frontends/qt4/GuiInfo.cpp:79
+#: src/frontends/qt4/GuiInfo.cpp:78
 msgid "LaTeX Class Availability"
 msgstr "Verfügbarkeit einer LaTeX-Klasse"
 
-#: src/frontends/qt4/GuiInfo.cpp:80
+#: src/frontends/qt4/GuiInfo.cpp:79
 msgid "Last Assigned Keyboard Shortcut"
 msgstr "Zuletzt zugewiesenes Tastenkürzel"
 
-#: src/frontends/qt4/GuiInfo.cpp:81
+#: src/frontends/qt4/GuiInfo.cpp:80
 msgid "All Keyboard Shortcuts"
 msgstr "Alle Tastenkürzel"
 
-#: src/frontends/qt4/GuiInfo.cpp:82
+#: src/frontends/qt4/GuiInfo.cpp:81
 msgid "LyX Menu Location"
 msgstr "LyX-Menü-Eintrag"
 
-#: src/frontends/qt4/GuiInfo.cpp:83
+#: src/frontends/qt4/GuiInfo.cpp:82
 msgid "LyX Toolbar Icon"
 msgstr "LyX-Werkzeugleistensymbol"
 
-#: src/frontends/qt4/GuiInfo.cpp:84
+#: src/frontends/qt4/GuiInfo.cpp:83
 msgid "LyX Preferences Entry"
 msgstr "LyX-Einstellungseintrag"
 
-#: src/frontends/qt4/GuiInfo.cpp:85
+#: src/frontends/qt4/GuiInfo.cpp:84
 msgid "LyX Application Information"
 msgstr "LyX-Programminformation"
 
-#: src/frontends/qt4/GuiInfo.cpp:86 src/insets/InsetInclude.cpp:399
-msgid "Unknown"
-msgstr "Unbekannt"
-
+#: src/frontends/qt4/GuiInfo.cpp:90 src/frontends/qt4/GuiInfo.cpp:91
 #: src/frontends/qt4/GuiInfo.cpp:92 src/frontends/qt4/GuiInfo.cpp:93
 #: src/frontends/qt4/GuiInfo.cpp:94 src/frontends/qt4/GuiInfo.cpp:95
-#: src/frontends/qt4/GuiInfo.cpp:96 src/frontends/qt4/GuiInfo.cpp:97
 msgid "Custom Format"
 msgstr "Benutzerdefiniertes Format"
 
-#: src/frontends/qt4/GuiInfo.cpp:98 src/frontends/qt4/GuiInfo.cpp:99
-#: src/frontends/qt4/GuiInfo.cpp:107 src/frontends/qt4/GuiInfo.cpp:108
+#: src/frontends/qt4/GuiInfo.cpp:96 src/frontends/qt4/GuiInfo.cpp:97
+#: src/frontends/qt4/GuiInfo.cpp:105 src/frontends/qt4/GuiInfo.cpp:106
 msgid "Not Applicable"
 msgstr "Nicht verfügbar"
 
-#: src/frontends/qt4/GuiInfo.cpp:100
+#: src/frontends/qt4/GuiInfo.cpp:98
 msgid "Package Name"
 msgstr "Paketname"
 
-#: src/frontends/qt4/GuiInfo.cpp:101
+#: src/frontends/qt4/GuiInfo.cpp:99
 msgid "Class Name"
 msgstr "Klassenname"
 
+#: src/frontends/qt4/GuiInfo.cpp:100 src/frontends/qt4/GuiInfo.cpp:101
 #: src/frontends/qt4/GuiInfo.cpp:102 src/frontends/qt4/GuiInfo.cpp:103
-#: src/frontends/qt4/GuiInfo.cpp:104 src/frontends/qt4/GuiInfo.cpp:105
 msgid "LyX Function"
 msgstr "LyX-Funktion"
 
-#: src/frontends/qt4/GuiInfo.cpp:106
+#: src/frontends/qt4/GuiInfo.cpp:104
 msgid "Preferences Key"
 msgstr "Einstellungsschlüssel"
 
-#: src/frontends/qt4/GuiInfo.cpp:114 src/frontends/qt4/GuiInfo.cpp:125
-#: src/frontends/qt4/GuiInfo.cpp:136
+#: src/frontends/qt4/GuiInfo.cpp:112 src/frontends/qt4/GuiInfo.cpp:123
+#: src/frontends/qt4/GuiInfo.cpp:134
 msgid ""
 "Enter date format specification, using the following placeholders:\n"
 "* d: day as number without a leading zero\n"
@@ -30733,8 +30729,8 @@ msgstr ""
 "* yy: zweistellige Jahreszahl\n"
 "* yyyy: vierstellige Jahreszahl"
 
-#: src/frontends/qt4/GuiInfo.cpp:147 src/frontends/qt4/GuiInfo.cpp:161
-#: src/frontends/qt4/GuiInfo.cpp:175
+#: src/frontends/qt4/GuiInfo.cpp:145 src/frontends/qt4/GuiInfo.cpp:159
+#: src/frontends/qt4/GuiInfo.cpp:173
 msgid ""
 "Enter time format specification, using the following placeholders:\n"
 "* h: the hour without a leading zero (1-12 in AM/PM)\n"
@@ -30766,12 +30762,12 @@ msgstr ""
 "* ap oder a: verwende am/pm-Anzeige ('am'/'pm')\n"
 "* t: Zeitzone (bspw. CEST)"
 
-#: src/frontends/qt4/GuiInfo.cpp:189 src/frontends/qt4/GuiInfo.cpp:190
-#: src/frontends/qt4/GuiInfo.cpp:205 src/frontends/qt4/GuiInfo.cpp:206
+#: src/frontends/qt4/GuiInfo.cpp:187 src/frontends/qt4/GuiInfo.cpp:188
+#: src/frontends/qt4/GuiInfo.cpp:203 src/frontends/qt4/GuiInfo.cpp:204
 msgid "Please select a valid type above"
 msgstr "Bitte wählen Sie oben einen gültigen Typ"
 
-#: src/frontends/qt4/GuiInfo.cpp:191
+#: src/frontends/qt4/GuiInfo.cpp:189
 msgid ""
 "Enter a LaTeX package name such as 'hyperref' (extension is optional). The "
 "output will be 'Yes' (package available) or 'No' (package unavailable)."
@@ -30780,7 +30776,7 @@ msgstr ""
 "Dateiendung). Ausgegeben wird 'Ja' (Paket verfügbar) oder 'Nein' (Paket "
 "nicht verfügbar)."
 
-#: src/frontends/qt4/GuiInfo.cpp:193
+#: src/frontends/qt4/GuiInfo.cpp:191
 msgid ""
 "Enter a LaTeX class name such as 'article' (extension is optional). The "
 "output will be 'Yes' (class available) or 'No' (class unavailable)."
@@ -30789,7 +30785,7 @@ msgstr ""
 "Dateiendung). Ausgegeben wird 'Ja' (Klasse verfügbar) oder 'Nein' (Klasse "
 "nicht verfügbar)."
 
-#: src/frontends/qt4/GuiInfo.cpp:195
+#: src/frontends/qt4/GuiInfo.cpp:193
 msgid ""
 "Enter a function name such as 'math-insert \\alpha'. Please refer to Help > "
 "LyX Functions for a comprehensive list of functions. The output is the most "
@@ -30799,7 +30795,7 @@ msgstr ""
 "Hilfe > LyX-Funktionen finden Sie eine vollständige Liste der Funktionen. "
 "Ausgegeben wird das dieser Funktion zuletzt zugewiesene Tastenkürzel."
 
-#: src/frontends/qt4/GuiInfo.cpp:197
+#: src/frontends/qt4/GuiInfo.cpp:195
 msgid ""
 "Enter a function name such as 'math-insert \\alpha'. Please refer to Help > "
 "LyX Functions for a comprehensive list of functions. The output lists all "
@@ -30809,7 +30805,7 @@ msgstr ""
 "Hilfe > LyX-Funktionen finden Sie eine vollständige Liste der Funktionen. "
 "Ausgegeben werden alle dieser Funktion zugewiesenen Tastenkürzel."
 
-#: src/frontends/qt4/GuiInfo.cpp:199
+#: src/frontends/qt4/GuiInfo.cpp:197
 msgid ""
 "Enter a function name such as 'math-insert \\alpha'. Please refer to Help > "
 "LyX Functions for a comprehensive list of functions. The output is the path "
@@ -30820,7 +30816,7 @@ msgstr ""
 "Ausgegeben wird der genaue Ort dieser Funktion im Menü (in der aktuellen "
 "Lokalisierung)."
 
-#: src/frontends/qt4/GuiInfo.cpp:201
+#: src/frontends/qt4/GuiInfo.cpp:199
 msgid ""
 "Enter a function name such as 'math-insert \\alpha'. Please refer to Help > "
 "LyX Functions for a comprehensive list of functions. The output is the "
@@ -30831,7 +30827,7 @@ msgstr ""
 "Ausgegeben wird das dieser Funktion zugewiesene Werkzeugleisten-Symbol (im "
 "aktiven Symboldesign)."
 
-#: src/frontends/qt4/GuiInfo.cpp:203
+#: src/frontends/qt4/GuiInfo.cpp:201
 msgid ""
 "Enter a LyX preferences key such as 'bind_file'. See the proposed list for "
 "available entries. The output is the current setting of this preference."
@@ -30840,15 +30836,19 @@ msgstr ""
 "Die möglichen Schlüssel finden Sie in der Vorschlagsliste. Ausgegeben wird "
 "der aktuelle Wert dieses Schlüssels."
 
-#: src/frontends/qt4/GuiInfo.cpp:321
+#: src/frontends/qt4/GuiInfo.cpp:251 src/insets/InsetInclude.cpp:399
+msgid "Unknown"
+msgstr "Unbekannt"
+
+#: src/frontends/qt4/GuiInfo.cpp:327
 msgid "Enter a valid value below"
 msgstr "Geben Sie unten einen gültigen Wert ein."
 
-#: src/frontends/qt4/GuiInfo.cpp:354
+#: src/frontends/qt4/GuiInfo.cpp:360
 msgid "Here you can enter a fix time (in ISO format: hh:mm:ss)"
 msgstr "Hier können Sie eine fixe Uhrzeit eingeben (im ISO-Format:  hh:mm:ss)"
 
-#: src/frontends/qt4/GuiInfo.cpp:355
+#: src/frontends/qt4/GuiInfo.cpp:361
 msgid "&Fix Time:"
 msgstr "&Fixe Uhrzeit:"
 
