@@ -61,7 +61,6 @@ char const * info_types[] =
   "icon",
   "lyxrc",
   "lyxinfo",
-  "unknown",
   ""
 };
 
@@ -83,7 +82,6 @@ char const * info_types_gui[] =
   N_("LyX Toolbar Icon"),// icon
   N_("LyX Preferences Entry"),// lyxrc
   N_("LyX Application Information"),// lyxinfo
-  N_("Unknown"),// unknown
   ""
 };
 
@@ -245,7 +243,15 @@ void GuiInfo::paramsToDialog(Inset const * inset)
 	typeCO->blockSignals(true);
 	nameLE->blockSignals(true);
 	nameLE->clear();
-	int const i = typeCO->findData(type);
+	// The "unknown" item is only in the combo if we open
+	// the dialog from an unknown info. The user should not
+	// change a valid info to an unknown one.
+	int i = typeCO->findData("unknown");
+	if (i == -1 && type == "unknown")
+		typeCO->addItem(qt_("Unknown"), toqstr("unknown"));
+	if (i != -1 && type != "unknown")
+		typeCO->removeItem(i);
+	i = typeCO->findData(type);
 	typeCO->setCurrentIndex(i);
 	updateArguments(i);
 	int argindex = -1;
