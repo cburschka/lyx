@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-08-04 07:13+0200\n"
-"PO-Revision-Date: 2018-07-22 08:44+0000\n"
+"POT-Creation-Date: 2018-08-08 13:45+0200\n"
+"PO-Revision-Date: 2018-08-08 11:47+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -5932,7 +5932,7 @@ msgstr "Poznámky k Obrázku"
 #: lib/layouts/svcommon.inc:27 lib/layouts/svcommon.inc:612
 #: lib/layouts/svcommon.inc:623 lib/layouts/tufte-book.layout:211
 msgid "MainText"
-msgstr "HlavnýText"
+msgstr "Hlavný Text"
 
 #: lib/layouts/AEA.layout:119
 msgid "Figure Note"
@@ -6676,7 +6676,7 @@ msgstr "Prílohy"
 #: lib/layouts/stdstruct.inc:58 lib/layouts/svcommon.inc:545
 #: lib/layouts/svcommon.inc:579
 msgid "BackMatter"
-msgstr "ZáverečnáČasť"
+msgstr "Záverečná Časť"
 
 #: lib/layouts/IEEEtran.layout:323
 msgid "Peer Review Title"
@@ -9113,7 +9113,7 @@ msgstr "Špecifikácie prekrytia tohto objektu"
 
 #: lib/layouts/beamer.layout:129
 msgid "Mini Template"
-msgstr "Mini šablóna"
+msgstr "Mini-Šablóna"
 
 #: lib/layouts/beamer.layout:130
 msgid "Mini template for this list (see beamer manual for details)"
@@ -9248,7 +9248,7 @@ msgstr "Štandardné špecifikácie prekrytia tohto rámca"
 #: lib/layouts/beamer.layout:473 lib/layouts/beamer.layout:502
 #: lib/layouts/beamer.layout:513 lib/layouts/beamer.layout:541
 msgid "Frame Options"
-msgstr "Rám: Voľby"
+msgstr "Voľby Rámu"
 
 #: lib/layouts/beamer.layout:474 lib/layouts/beamer.layout:503
 #: lib/layouts/beamer.layout:514 lib/layouts/beamer.layout:542
@@ -9264,11 +9264,11 @@ msgstr "Možnosti"
 #: lib/layouts/beamer.layout:475 lib/layouts/beamer.layout:504
 #: lib/layouts/beamer.layout:515 lib/layouts/beamer.layout:543
 msgid "Frame options (see beamer manual)"
-msgstr "Rám voľby (viď beamer manuál)"
+msgstr "Voľby rámu (viď beamer manuál)"
 
 #: lib/layouts/beamer.layout:478
 msgid "Frame Title"
-msgstr "Rám: Titul"
+msgstr "Titul Rámu"
 
 #: lib/layouts/beamer.layout:479
 msgid "Enter the frame title here"
@@ -9276,7 +9276,7 @@ msgstr "Vložte sem titul rámu"
 
 #: lib/layouts/beamer.layout:498
 msgid "PlainFrame"
-msgstr "ProstýRám"
+msgstr "Prostý Rám"
 
 #: lib/layouts/beamer.layout:500
 msgid "Frame (plain)"
@@ -9292,7 +9292,7 @@ msgstr "Rám (krehký)"
 
 #: lib/layouts/beamer.layout:520
 msgid "AgainFrame"
-msgstr "ZaseRám"
+msgstr "Zase Rám"
 
 #: lib/layouts/beamer.layout:526 lib/layouts/powerdot.layout:126
 #: lib/layouts/seminar.layout:111 lib/layouts/slides.layout:91
@@ -9306,7 +9306,7 @@ msgstr "Opakovať rám s návestím"
 
 #: lib/layouts/beamer.layout:567
 msgid "FrameTitle"
-msgstr "RámTitul"
+msgstr "Titul Rámu"
 
 #: lib/layouts/beamer.layout:586 lib/layouts/beamer.layout:616
 #: lib/layouts/beamer.layout:826 lib/layouts/beamer.layout:855
@@ -9331,7 +9331,7 @@ msgstr "Krátka verzia titulu rámu použitá v niektorých témach"
 
 #: lib/layouts/beamer.layout:598
 msgid "FrameSubtitle"
-msgstr "RámPodTitul"
+msgstr "Podtitul Rámu"
 
 #: lib/layouts/beamer.layout:628 lib/layouts/moderncv.layout:305
 #: lib/layouts/moderncv.layout:320
@@ -9366,7 +9366,7 @@ msgstr "Voľby umiestňovanie stĺpcov (t, T, c, b)"
 
 #: lib/layouts/beamer.layout:687
 msgid "ColumnsCenterAligned"
-msgstr "StĺpceDoStreduZarovnané"
+msgstr "Stĺpce Zarovnané do Stredu"
 
 #: lib/layouts/beamer.layout:690
 msgid "Columns (center aligned)"
@@ -9374,7 +9374,7 @@ msgstr "Stĺpce (do stredu zarovnané)"
 
 #: lib/layouts/beamer.layout:695
 msgid "ColumnsTopAligned"
-msgstr "StĺpceHoreZarovnané"
+msgstr "Stĺpce Zarovnané Hore"
 
 #: lib/layouts/beamer.layout:698
 msgid "Columns (top aligned)"
@@ -9414,7 +9414,7 @@ msgstr "Šírka plochy pretlačenia"
 #: lib/layouts/graphicboxes.module:48 lib/layouts/moderncv.layout:310
 #: lib/layouts/sectionbox.module:21 src/frontends/qt4/GuiBox.cpp:75
 msgid "Width"
-msgstr "Šírka (obsahu rámiku)"
+msgstr "Šírka"
 
 #: lib/layouts/beamer.layout:745
 msgid "The width of the overprint area (default: text width)"
@@ -9422,11 +9422,11 @@ msgstr "Šírka plochy pretlačenia (štandard: šírka textu)"
 
 #: lib/layouts/beamer.layout:772
 msgid "OverlayArea"
-msgstr "Prekrytie"
+msgstr "Plocha Prekrytia"
 
 #: lib/layouts/beamer.layout:782
 msgid "Overlayarea"
-msgstr "Prekrytie"
+msgstr "Plocha Prekrytia"
 
 #: lib/layouts/beamer.layout:792
 msgid "Overlay Area Width"
@@ -9555,7 +9555,7 @@ msgstr "Skratka dátumu ktorá sa zjaví na boku/hlavičke"
 
 #: lib/layouts/beamer.layout:1082 lib/layouts/beamerposter.layout:46
 msgid "TitleGraphic"
-msgstr "TitulGrafiky"
+msgstr "Titulná Grafika"
 
 #: lib/layouts/beamer.layout:1137 lib/layouts/db_stdlayouts.inc:19
 #: lib/layouts/egs.layout:102 lib/layouts/powerdot.layout:381
@@ -9653,7 +9653,7 @@ msgstr "LyX-Kód"
 
 #: lib/layouts/beamer.layout:1350
 msgid "NoteItem"
-msgstr "PoznámkovýObjekt"
+msgstr "Bod Poznámky"
 
 #: lib/layouts/beamer.layout:1385 lib/layouts/beamer.layout:1387
 #: src/Font.cpp:65 src/frontends/qt4/GuiCharacter.cpp:127
@@ -9681,7 +9681,7 @@ msgstr "Štruktúra"
 #: lib/layouts/beamer.layout:1501 lib/layouts/beamer.layout:1503
 #: lib/layouts/powerdot.layout:591
 msgid "Visible"
-msgstr "Viditeľný text"
+msgstr "Viditeľný"
 
 #: lib/layouts/beamer.layout:1521 lib/layouts/beamer.layout:1523
 msgid "Invisible"
@@ -9713,7 +9713,7 @@ msgstr "Špecifikovať voľby poznámky (viď beamer manuál)"
 
 #: lib/layouts/beamer.layout:1589
 msgid "ArticleMode"
-msgstr "MódPreČlánok"
+msgstr "Mód Článku"
 
 #: lib/layouts/beamer.layout:1595
 msgid "Article"
@@ -9721,7 +9721,7 @@ msgstr "Článok"
 
 #: lib/layouts/beamer.layout:1600
 msgid "PresentationMode"
-msgstr "PrezentačnýMód"
+msgstr "Mód Prezentácie"
 
 #: lib/layouts/beamer.layout:1606
 msgid "Presentation"
@@ -10035,7 +10035,7 @@ msgstr "[šachovnica]"
 
 #: lib/layouts/chess.layout:141
 msgid "BoardCentered"
-msgstr "ŠachovnicaStredená"
+msgstr "Šachovnica Stredená"
 
 #: lib/layouts/chess.layout:146
 msgid "[centered board]"
@@ -10287,18 +10287,18 @@ msgstr "Zaobchádzanie:"
 #: lib/layouts/g-brief2.layout:50 lib/layouts/g-brief2.layout:819
 #: lib/layouts/lettre.layout:64 lib/layouts/lettre.layout:456
 msgid "YourRef"
-msgstr "Vaše číslo"
+msgstr "Vaše číslo listu"
 
 #: lib/layouts/dinbrief.layout:104 lib/layouts/scrlettr.layout:211
 #: lib/layouts/scrlttr2.layout:297
 msgid "Your ref.:"
-msgstr "Vaše číslo:"
+msgstr "Vaše číslo listu:"
 
 #: lib/layouts/dinbrief.layout:108 lib/layouts/g-brief.layout:102
 #: lib/layouts/g-brief2.layout:48 lib/layouts/g-brief2.layout:798
 #: lib/layouts/lettre.layout:66 lib/layouts/lettre.layout:472
 msgid "MyRef"
-msgstr "Moje číslo"
+msgstr "Moje číslo listu"
 
 #: lib/layouts/dinbrief.layout:110 lib/layouts/scrlettr.layout:232
 #: lib/layouts/scrlttr2.layout:321
@@ -10486,7 +10486,7 @@ msgstr "Prídavok"
 
 #: lib/layouts/dinbrief.layout:284
 msgid "IhrZeichen"
-msgstr "Vaše číslo"
+msgstr "Vaše číslo listu"
 
 #: lib/layouts/dinbrief.layout:289 lib/layouts/g-brief.layout:116
 #: lib/layouts/g-brief2.layout:52 lib/layouts/g-brief2.layout:841
@@ -10499,7 +10499,7 @@ msgstr "Váš list"
 
 #: lib/layouts/dinbrief.layout:299
 msgid "MeinZeichen"
-msgstr "Moje číslo"
+msgstr "Moje číslo listu"
 
 #: lib/layouts/dinbrief.layout:304
 msgid "Unterschrift"
@@ -10535,7 +10535,7 @@ msgstr "Dátum"
 #: lib/layouts/g-brief2.layout:46 lib/layouts/g-brief2.layout:882
 #: lib/layouts/iucr.layout:256
 msgid "Reference"
-msgstr "Predmet"
+msgstr "Referencia"
 
 #: lib/layouts/dinbrief.layout:349
 msgid "Betreff"
@@ -10882,7 +10882,7 @@ msgstr "Koniec vstupnej časti"
 
 #: lib/layouts/elsarticle.layout:103
 msgid "Titlenotemark"
-msgstr "Titulznačkapoznámky"
+msgstr "Značka titulnej poznámky"
 
 #: lib/layouts/elsarticle.layout:108
 msgid "Titlenote mark"
@@ -11147,7 +11147,7 @@ msgstr "Fotku pretiahnuť na túto šírku"
 
 #: lib/layouts/europasscv.layout:181 lib/layouts/europecv.layout:117
 msgid "AfterPicture"
-msgstr "ZaObrázkom"
+msgstr "Text za Obrázkom"
 
 #: lib/layouts/europasscv.layout:184 lib/layouts/europecv.layout:120
 msgid "Space after picture:"
@@ -11841,12 +11841,12 @@ msgstr "Návratná adresa:"
 #: lib/layouts/g-brief.layout:105 lib/layouts/g-brief2.layout:809
 #: lib/layouts/lettre.layout:478
 msgid "MyRef:"
-msgstr "Moje číslo:"
+msgstr "Moje číslo listu:"
 
 #: lib/layouts/g-brief.layout:112 lib/layouts/g-brief2.layout:830
 #: lib/layouts/lettre.layout:462
 msgid "YourRef:"
-msgstr "Vaše číslo:"
+msgstr "Vaše číslo listu:"
 
 #: lib/layouts/g-brief.layout:119 lib/layouts/g-brief2.layout:851
 msgid "YourMail:"
@@ -14295,7 +14295,7 @@ msgstr "~=~"
 
 #: lib/layouts/powerdot.layout:180
 msgid "WideSlide"
-msgstr "ŠirokáFólia"
+msgstr "Široká Fólia"
 
 #: lib/layouts/powerdot.layout:191
 msgid "EmptySlide"
@@ -14769,7 +14769,7 @@ msgstr "Titul:"
 
 #: lib/layouts/scrlettr.layout:208 lib/layouts/scrlttr2.layout:293
 msgid "Yourref"
-msgstr "Vaše číslo"
+msgstr "Vaše číslo listu"
 
 #: lib/layouts/scrlettr.layout:222 lib/layouts/scrlttr2.layout:309
 msgid "Yourmail"
@@ -14781,7 +14781,7 @@ msgstr "Váš dopis od:"
 
 #: lib/layouts/scrlettr.layout:229 lib/layouts/scrlttr2.layout:317
 msgid "Myref"
-msgstr "Moje číslo"
+msgstr "Moje číslo listu"
 
 #: lib/layouts/scrlettr.layout:236 lib/layouts/scrlttr2.layout:325
 msgid "Customer"
@@ -14863,7 +14863,7 @@ msgstr ""
 
 #: lib/layouts/sectionbox.module:11
 msgid "SectionBox"
-msgstr "SekciaRámik"
+msgstr "Rámik Sekcie"
 
 #: lib/layouts/sectionbox.module:13
 msgid "Section Box"
@@ -19055,7 +19055,7 @@ msgstr "Plávajúci objekt|j"
 
 #: lib/ui/stdmenus.inc:375
 msgid "Note|N"
-msgstr "Poznámka|P"
+msgstr "Poznámka|á"
 
 #: lib/ui/stdmenus.inc:376
 msgid "Branch|B"
@@ -20533,7 +20533,7 @@ msgstr "iddots"
 
 #: lib/ui/stdtoolbars.inc:435
 msgid "Frame Decorations"
-msgstr "Dekorácia rámov"
+msgstr "Dekorácie Rámu"
 
 #: lib/ui/stdtoolbars.inc:436
 msgid "hat"
@@ -30178,7 +30178,7 @@ msgstr "Žiadny protokolový súbor chýb lyx2lyx sa nenašiel."
 
 #: src/frontends/qt4/GuiLog.cpp:331
 msgid "No version control log file found."
-msgstr "Protokolový súbor kontroly verzií nenájdený."
+msgstr "Protokolový súbor správy verzií nenájdený."
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:34
 msgid "[x]"
@@ -30529,7 +30529,7 @@ msgstr "LyX klávesové mapy (*.kmap)"
 
 #: src/frontends/qt4/GuiPrintNomencl.cpp:49
 msgid "Longest label width"
-msgstr "Veľkosť najdlhšej značky"
+msgstr "Šírka najdlhšej značky"
 
 #: src/frontends/qt4/GuiPrintNomencl.h:40
 msgid "Nomenclature List Settings"
