@@ -1802,6 +1802,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		//   UI, then, nothing would happen. This seems fairly unlikely, but
 		//   it definitely is a bug.
 
+		dr.forceBufferUpdate();
 		break;
 	}
 
