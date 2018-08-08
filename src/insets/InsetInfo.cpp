@@ -828,12 +828,17 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		if (initialized_)
 			break;
 		docstring_list names;
-		FuncRequest const func = lyxaction.lookupFunc(params_.name);
+		FuncRequest func = lyxaction.lookupFunc(params_.name);
 		if (func.action() == LFUN_UNKNOWN_ACTION) {
 			gui = _("Unknown action %1$s");
 			error(from_ascii("Unknown action %1$s"), params_.lang);
 			break;
 		}
+		if (func.action() == LFUN_BUFFER_VIEW || func.action() == LFUN_BUFFER_UPDATE)
+			// The default output format is in the menu without argument,
+			// so strip it here.
+			if (func.argument() == from_ascii(buffer().params().getDefaultOutputFormat()))
+				func = FuncRequest(func.action());
 		// iterate through the menubackend to find it
 		if (!theApp()) {
 			gui = _("Can't determine menu entry for action %1$s in batch mode");
