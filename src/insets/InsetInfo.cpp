@@ -371,6 +371,10 @@ void InsetInfo::updateInfo()
 				gui = _("CapsLock");
 				ods << translateIfPossible(from_ascii("CapsLock"), lcode);
 				break;
+			case 0x2303://Control
+				gui = _("Control[[Key]]");
+				ods << translateIfPossible(from_ascii("Control[[Key]]"), lcode);
+				break;
 			case 0x2318://CMD
 				gui = _("Command[[Key]]");
 				ods << translateIfPossible(from_ascii("Command[[Key]]"), lcode);
