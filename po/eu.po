@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_2.0.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-08-04 07:13+0200\n"
+"POT-Creation-Date: 2018-08-09 13:09-0400\n"
 "PO-Revision-Date: 2018-02-17 18:34+0100\n"
 "Last-Translator: Inaki Larranaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
@@ -5357,12 +5357,14 @@ msgid "LyX: Enter text"
 msgstr "LyX: sartu testua"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:44
+#: src/frontends/qt4/GuiProgress.cpp:194
 msgid "If you check this, LyX will not warn you again in the given case."
 msgstr ""
 "Hau aktibatzen baduzu, LyX-ek ez du berriro abisurik bistaratuko emandako "
 "kasuan."
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:47
+#: src/frontends/qt4/GuiProgress.cpp:193
 msgid "&Do not show this warning again!"
 msgstr "&Ez erakutsi abisu hau berriro"
 

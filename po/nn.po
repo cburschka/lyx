@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-08-04 07:13+0200\n"
+"POT-Creation-Date: 2018-08-09 13:09-0400\n"
 "PO-Revision-Date: 2014-01-24 19:33+0100\n"
 "Last-Translator: Ingar Pareliussen <>\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
@@ -5360,10 +5360,12 @@ msgid "LyX: Enter text"
 msgstr "LyX: Skriv inn tekst"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:44
+#: src/frontends/qt4/GuiProgress.cpp:194
 msgid "If you check this, LyX will not warn you again in the given case."
 msgstr "Om du vel denne vil ikkje LyX åtvare deg igjen i desse høva"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:47
+#: src/frontends/qt4/GuiProgress.cpp:193
 msgid "&Do not show this warning again!"
 msgstr "&Ikkje vis denne åtvaringa igjen"
 

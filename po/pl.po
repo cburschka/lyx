@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-08-04 07:13+0200\n"
+"POT-Creation-Date: 2018-08-09 13:09-0400\n"
 "PO-Revision-Date: 2012-11-03 01:01+0200\n"
 "Last-Translator: Michał Fita <michal.fita@gmail.com>\n"
 "Language-Team: No team\n"
@@ -5428,11 +5428,13 @@ msgid "LyX: Enter text"
 msgstr "LyX: Wpisz tekst"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:44
+#: src/frontends/qt4/GuiProgress.cpp:194
 msgid "If you check this, LyX will not warn you again in the given case."
 msgstr ""
 "Jeśli wybierzesz tą opcję, LyX nie pokaże więcej ostrzeżenia w danym wypadku."
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:47
+#: src/frontends/qt4/GuiProgress.cpp:193
 msgid "&Do not show this warning again!"
 msgstr "Nie pokazuj więcej te&go ostrzeżenia!"
 
