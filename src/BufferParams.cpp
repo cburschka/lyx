@@ -2247,8 +2247,8 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		   << "\\makeatother\n\n";
 
 	// We try to load babel late, in case it interferes with other packages.
-	// Jurabib, hyperref, varioref, bicaption and listings (bug 8995) have to be
-	// called after babel, though.
+	// Jurabib, hyperref, varioref, bicaption, menukeys and listings (bug 8995)
+	// have to be called after babel, though.
 	if (use_babel && !features.isRequired("jurabib")
 	    && !features.isRequired("hyperref")
 	    && !features.isRequired("varioref")
@@ -2384,6 +2384,11 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			os << from_utf8(lang_package);
 		os << '\n';
 	}
+
+	// Since menukeys uses catoptions, which does some heavy changes on key-value options,
+	// it is recommended to load menukeys as the last package (even after hyperref)
+	if (features.isRequired("menukeys"))
+		os << "\\usepackage{menukeys}\n";
 
 	docstring const i18npreamble =
 		features.getTClassI18nPreamble(use_babel, use_polyglossia,
