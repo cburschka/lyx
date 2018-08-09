@@ -325,11 +325,82 @@ void InsetInfo::updateInfo()
 			setText(_("undefined"));
 			break;
 		}
+		docstring sequence;
 		if (type_ == SHORTCUT_INFO)
-			setText(bindings.begin()->print(KeySequence::Portable));
+			sequence = bindings.begin()->print(KeySequence::ForGui);
 		else
-			setText(theTopLevelKeymap().printBindings(func, KeySequence::Portable));
-		force_ltr_ = true;
+			sequence = theTopLevelKeymap().printBindings(func, KeySequence::ForGui);
+		// QKeySequence returns special characters for keys on the mac
+		// Since these are not included in many fonts, we
+		// re-translate them to textual names (see #10641)
+		odocstringstream ods;
+		docstring gui;
+		string const lcode = bp.language->code();
+		for (size_t n = 0; n < sequence.size(); ++n) {
+			char_type const c = sequence[n];
+			switch(c) {
+			case 0x21b5://Return
+				gui = _("Return[[Key]]");
+				ods << translateIfPossible(from_ascii("Return[[Key]]"), lcode);
+				break;
+			case 0x21b9://Tab both directions (Win)
+				gui = _("Tab[[Key]]");
+				ods << translateIfPossible(from_ascii("Tab[[Key]]"), lcode);
+				break;
+			case 0x21de://Qt::Key_PageUp
+				gui = _("PgUp");
+				ods << translateIfPossible(from_ascii("PgUp"), lcode);
+				break;
+			case 0x21df://Qt::Key_PageDown
+				gui = _("PgDown");
+				ods << translateIfPossible(from_ascii("PgDown"), lcode);
+				break;
+			case 0x21e4://Qt::Key_Backtab
+				gui = _("Backtab");
+				ods << translateIfPossible(from_ascii("Backtab"), lcode);
+				break;
+			case 0x21e5://Qt::Key_Tab
+				gui = _("Tab");
+				ods << translateIfPossible(from_ascii("Tab"), lcode);
+				break;
+			case 0x21e7://Shift
+				gui = _("Shift");
+				ods << translateIfPossible(from_ascii("Shift"), lcode);
+				break;
+			case 0x21ea://Qt::Key_CapsLock
+				gui = _("CapsLock");
+				ods << translateIfPossible(from_ascii("CapsLock"), lcode);
+				break;
+			case 0x2318://CMD
+				gui = _("Command[[Key]]");
+				ods << translateIfPossible(from_ascii("Command[[Key]]"), lcode);
+				break;
+			case 0x2324://Qt::Key_Enter
+				gui = _("Return[[Key]]");
+				ods << translateIfPossible(from_ascii("Return[[Key]]"), lcode);
+				break;
+			case 0x2325://Option key
+				gui = _("Option[[Key]]");
+				ods << translateIfPossible(from_ascii("Option[[Key]]"), lcode);
+				break;
+			case 0x2326://Qt::Key_Delete
+				gui = _("Delete[[Key]]");
+				ods << translateIfPossible(from_ascii("Delete[[Key]]"), lcode);
+				break;
+			case 0x232b://Qt::Key_Backspace
+				gui = _("Fn+Del");
+				ods << translateIfPossible(from_ascii("Fn+Delete"), lcode);
+				break;
+			case 0x238b://Qt::Key_Escape
+				gui = _("Esc");
+				ods << translateIfPossible(from_ascii("Esc"), lcode);
+				break;
+			default:
+				ods.put(c);
+			}
+		}
+		setText(ods.str());
+		force_ltr_ = !bp.language->rightToLeft();
 		break;
 	}
 	case LYXRC_INFO: {
