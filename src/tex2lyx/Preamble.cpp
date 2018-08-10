@@ -141,18 +141,18 @@ const char * const known_old_language_packages[] = {"french", "frenchle",
 char const * const known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
 const char * const known_roman_fonts[] = { "ae", "beraserif", "bookman",
-"ccfonts", "chancery", "charter", "cmr", "cochineal", "crimson", "fourier",
+"ccfonts", "chancery", "charter", "cmr", "cochineal", "crimson", "DejaVuSerif", "DejaVuSerifCondensed", "fourier",
 "garamondx", "libertine", "libertineRoman", "libertine-type1", "lmodern", "mathdesign", "mathpazo",
 "mathptmx", "MinionPro", "newcent", "NotoSerif-TLF", "PTSerif-TLF", "tgbonum", "tgchorus",
 "tgpagella", "tgschola", "tgtermes", "utopia", "xcharter", 0 };
 
 const char * const known_sans_fonts[] = { "avant", "berasans", "biolinum",
-"biolinum-type1", "cmbr", "cmss", "helvet", "iwona", "iwonac", "iwonal", "iwonalc",
+"biolinum-type1", "cmbr", "cmss", "DejaVuSans", "DejaVuSansCondensed", "helvet", "iwona", "iwonac", "iwonal", "iwonalc",
 "kurier", "kurierc", "kurierl", "kurierlc", "lmss", "NotoSans-TLF", "PTSans-TLF",
 "tgadventor", "tgheros", "uop", 0 };
 
 const char * const known_typewriter_fonts[] = { "beramono", "cmtl", "cmtt",
-"courier", "lmtt", "luximono", "fourier", "libertineMono", "libertineMono-type1", "lmodern",
+"courier", "DejaVuSansMono", "lmtt", "luximono", "fourier", "libertineMono", "libertineMono-type1", "lmodern",
 "mathpazo", "mathptmx", "newcent", "NotoMono-TLF", "PTMono-TLF", "tgcursor", "txtt", 0 };
 
 const char * const known_math_fonts[] = { "eulervm", "newtxmath", 0};

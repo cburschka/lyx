@@ -51,6 +51,33 @@ from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble)
 ###
 ###############################################################################
 
+def revert_dejavu(document):
+    " Revert native DejaVu font definition to LaTeX "
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        dejavu_fonts = ['DejaVuSerif', 'DejaVuSerifCondensed', 'DejaVuSans',
+                         'DejaVuSansMono', 'DejaVuSansCondensed']
+        font_types = ["\\font_roman", "\\font_sans,sf", "\\font_typewriter,tt"]
+        for ft1 in font_types:
+            fts = ft1.split(",")
+            ft = fts[0]
+            i = find_token(document.header, ft, 0)
+            if i != -1:
+                val = get_value(document.header, ft, i)
+                words = val.split()
+                val = words[0].replace('"', '')
+                if val in dejavu_fonts:
+                    xoption = ""
+                    document.header[i] = ft + ' "default" ' + words[1]
+                    if len(fts) > 1:
+                        xval =  get_value(document.header, "\\font_" + fts[1] + "_scale", 0)
+                        # cutoff " 100"
+                        xval = xval[:-4]
+                        if xval != "100":
+                            xoption = "[scaled=" + format(float(xval) / 100, '.2f') + "]"
+                    preamble = "\\usepackage" + xoption + "{%s}" % val
+                    add_to_preamble(document, [preamble])
+
 def removeFrontMatterStyles(document):
     " Remove styles Begin/EndFromatter"
 
@@ -1071,10 +1098,12 @@ convert = [
            [557, [convert_vcsinfo]],
            [558, [removeFrontMatterStyles]],
            [559, []],
-           [560, []]
+           [560, []],
+           [561, []]
           ]
 
 revert =  [
+           [560, [revert_dejavu]],
            [559, [revert_timeinfo, revert_namenoextinfo]],
            [558, [revert_dateinfo]],
            [557, [addFrontMatterStyles]],

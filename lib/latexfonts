@@ -148,6 +148,18 @@ Font cmr
 	OsfFont          eco
 EndFont
 
+Font DejaVuSerif
+	GuiName          "DejaVu Serif"
+	Family           rm
+	Package          DejaVuSerif
+EndFont
+
+Font DejaVuSerifCondensed
+	GuiName          "DejaVu Serif Condensed"
+	Family           rm
+	Package          DejaVuSerifCondensed
+EndFont
+
 AltFont eco
 	Family           rm
 	Package          eco
@@ -528,6 +540,20 @@ Font cmss
 	SwitchDefault    1
 EndFont
 
+Font DejaVuSans
+	GuiName          "DejaVu Sans"
+	Family           sf
+	Package          DejaVuSans
+	ScaleOption      scaled=$$val
+EndFont
+
+Font DejaVuSansCondensed
+	GuiName          "DejaVu Sans Condensed"
+	Family           sf
+	Package          DejaVuSansCondensed
+	ScaleOption      scaled=$$val
+EndFont
+
 Font helvet
 	GuiName          "Helvetica"
 	Family           sf
@@ -633,7 +659,6 @@ Font uop
 	Requires         urwclassico
 EndFont
 
-
 #
 # MONOSPACED FONTS
 #
@@ -665,6 +690,13 @@ Font courier
 	Family           tt
 	Package          courier
 	Requires         psnfss
+EndFont
+
+Font DejaVuSansMono
+	GuiName          "DejaVu Sans Mono"
+	Family           tt
+	Package          DejaVuSansMono
+	ScaleOption      scaled=$$val
 EndFont
 
 Font libertine-mono

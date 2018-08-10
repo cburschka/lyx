@@ -32,8 +32,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 560 // spitz: time info insets
-#define LYX_FORMAT_TEX2LYX 560
+#define LYX_FORMAT_LYX 561 // kornel: Added dejavu fonts
+#define LYX_FORMAT_TEX2LYX 561
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
 #ifndef _MSC_VER
