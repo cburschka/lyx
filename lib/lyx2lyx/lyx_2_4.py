@@ -1075,7 +1075,7 @@ convert = [
           ]
 
 revert =  [
-           [558, [revert_timeinfo, revert_namenoextinfo]],
+           [559, [revert_timeinfo, revert_namenoextinfo]],
            [558, [revert_dateinfo]],
            [557, [addFrontMatterStyles]],
            [556, [revert_vcsinfo]],
