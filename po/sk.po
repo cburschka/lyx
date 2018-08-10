@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-08-07 16:38+0200\n"
-"PO-Revision-Date: 2018-08-07 14:46+0000\n"
+"POT-Creation-Date: 2018-08-09 18:04+0200\n"
+"PO-Revision-Date: 2018-08-09 17:12+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1107,6 +1107,10 @@ msgstr "&Zmena…"
 msgid "Background Colors"
 msgstr "Farby Pozadia"
 
+#: src/insets/InsetInfo.cpp:780
+msgid "Backtab"
+msgstr "Backtab"
+
 #: src/frontends/qt4/ui/ColorUi.ui:176 lib/layouts/europecv.layout:126
 msgid "Page:"
 msgstr "Strana:"
@@ -1428,6 +1432,10 @@ msgstr "y"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:14
 msgid "TabWidget"
 msgstr "TabWidget"
+
+#: src/insets/InsetInfo.cpp:768
+msgid "Tab[[Key]]"
+msgstr "Tab"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:21
 msgid "Sear&ch"
@@ -2610,6 +2618,10 @@ msgstr "O&veriť"
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:68
 msgid "Errors reported in terminal."
 msgstr "Chyby vypísané na terminál."
+
+#: src/insets/InsetInfo.cpp:820
+msgid "Esc"
+msgstr "Esc"
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:58
 msgid "Convert"
@@ -4684,6 +4696,10 @@ msgstr "Prvé Veľké|V"
 #: lib/ui/stdmenus.inc:186
 msgid "Capitalize|p"
 msgstr "Prvé Veľké|P"
+
+#: src/insets/InsetInfo.cpp:792
+msgid "CapsLock"
+msgstr "CapsLock"
 
 #: src/frontends/qt4/ui/RefUi.ui:409
 msgid "Do not output part of label before \":\""
@@ -7291,6 +7307,10 @@ msgstr "Opis"
 #: lib/layouts/stdlyxlist.inc:7 lib/ui/stdtoolbars.inc:117
 msgid "List"
 msgstr "Listina"
+
+#: lib/ui/stdmenus.inc:378
+msgid "List / TOC|s"
+msgstr "Listiny / Obsah|L"
 
 #: lib/layouts/aastex.layout:3
 msgid "American Astronomical Society (AASTeX v. 5)"
@@ -11586,7 +11606,7 @@ msgid "Field Settings"
 msgstr "Nastavenia Pola"
 
 #: lib/ui/stdmenus.inc:377
-msgid "Field|d"
+msgid "Field|i"
 msgstr "Pole|P"
 
 #: lib/layouts/fixme.module:11
@@ -11975,6 +11995,10 @@ msgstr "Návratná adresa"
 #: lib/layouts/g-brief.layout:98 lib/layouts/g-brief2.layout:743
 msgid "ReturnAddress:"
 msgstr "Návratná adresa:"
+
+#: src/insets/InsetInfo.cpp:764 src/insets/InsetInfo.cpp:804
+msgid "Return[[Key]]"
+msgstr "Enter"
 
 #: lib/layouts/g-brief.layout:105 lib/layouts/g-brief2.layout:809
 #: lib/layouts/lettre.layout:478
@@ -15790,6 +15814,14 @@ msgstr "Najdlhšie návestie opisu"
 msgid "Petit"
 msgstr "Petit"
 
+#: src/insets/InsetInfo.cpp:776
+msgid "PgDown"
+msgstr "PgDown"
+
+#: src/insets/InsetInfo.cpp:772
+msgid "PgUp"
+msgstr "PgUp"
+
 #: src/frontends/qt4/ui/PhantomUi.ui:47
 msgid "Phanto&m"
 msgstr "&Fantóm"
@@ -17705,6 +17737,10 @@ msgstr "TeX Gyre Cursor"
 msgid "TX Typewriter"
 msgstr "TX Typewriter"
 
+#: src/insets/InsetInfo.cpp:784
+msgid "Tab"
+msgstr "Tab"
+
 # Times Roman (New TX)
 #: lib/latexfonts:728
 msgid "Crimson (New TX)"
@@ -19353,13 +19389,13 @@ msgstr "Špeciálny znak|i"
 msgid "Formatting|o"
 msgstr "Formátovanie|F"
 
-#: lib/ui/stdmenus.inc:373
-msgid "List / TOC|i"
-msgstr "Listiny / Obsah|L"
-
 #: lib/ui/stdmenus.inc:374
 msgid "Float|a"
 msgstr "Plávajúci objekt|j"
+
+#: src/insets/InsetInfo.cpp:816
+msgid "Fn+Del"
+msgstr "Fn+Delete"
 
 #: lib/ui/stdmenus.inc:380
 msgid "Note|N"
@@ -20040,6 +20076,10 @@ msgstr "Pridať stĺpec"
 #: lib/ui/stdtoolbars.inc:147 lib/ui/stdtoolbars.inc:198
 msgid "Delete row"
 msgstr "Zmazať riadok"
+
+#: src/insets/InsetInfo.cpp:812
+msgid "Delete[[Key]]"
+msgstr "Delete"
 
 #: lib/ui/stdtoolbars.inc:148 lib/ui/stdtoolbars.inc:199
 msgid "Delete column"
@@ -30584,13 +30624,25 @@ msgstr "Shift-"
 msgid "Control-"
 msgstr "Ctrl-"
 
+#: src/insets/InsetInfo.cpp:796
+msgid "Control[[Key]]"
+msgstr "Ctrl"
+
 #: src/frontends/qt4/GuiKeySymbol.cpp:714
 msgid "Option-"
 msgstr "Voľba-"
 
+#: src/insets/InsetInfo.cpp:808
+msgid "Option[[Key]]"
+msgstr "Option"
+
 #: src/frontends/qt4/GuiKeySymbol.cpp:715
 msgid "Command-"
 msgstr "Príkaz-"
+
+#: src/insets/InsetInfo.cpp:800
+msgid "Command[[Key]]"
+msgstr "Command"
 
 #: src/frontends/qt4/GuiLabel.h:35
 msgid "Label Settings"
