@@ -585,6 +585,7 @@ bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_INSET_DIALOG_UPDATE:
 	case LFUN_INSET_COPY_AS:
+	case LFUN_INSET_DISSOLVE:
 		flag.setEnabled(true);
 		return true;
 

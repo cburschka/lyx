@@ -480,6 +480,7 @@ Menuset
 	Menu "context-info"
 		InfoArguments
 		Separator
+		Item "Transform Field to Static Text|T" "inset-dissolve"
 		Item "Copy Text|o" "inset-copy-as"
 		Item "Settings...|S" "inset-settings info"
 	End
