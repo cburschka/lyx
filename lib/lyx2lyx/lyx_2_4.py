@@ -43,26 +43,25 @@ from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble)
 ####################################################################
 # Private helper functions
 
-def convert_fonts(document, font_list):
+def convert_fonts(document, font_list, font_type, scale_type):
     " Handle font definition to LaTeX "
 
-    font_types = ["\\font_roman", "\\font_sans,sf", "\\font_typewriter,tt"]
     rpkg = re.compile(r'^\\usepackage(\[scaled=([^\]]*)\])?\{([^\}]+)\}')
-    for ft1 in font_types:
-        fts = ft1.split(",")
-        ft = fts[0]
-        if len(fts) > 1:
-            fontscale = "\\font_" + fts[1] + "_scale"
-        else:
-            fontscale = None
-        i = 0
+    ft = font_type
+    if scale_type == None:
+        fontscale = None
+    else:
+        fontscale = "\\font_" + scale_type + "_scale"
+    i = 0
+    while i < len(document.preamble):
         i = find_re(document.preamble, rpkg, i)
         if i == -1:
-            continue
+            return
         mo = rpkg.search(document.preamble[i])
         option = mo.group(2)
         pkg = mo.group(3)
         if not pkg in font_list:
+            i += 1
             continue
         del document.preamble[i]
         if i > 0 and document.preamble[i-1] == "% Added by lyx2lyx":
@@ -116,9 +115,13 @@ def revert_fonts(document, font_list):
 def convert_dejavu(document):
     " Handle DejaVu font definition to LaTeX "
 
-    dejavu_fonts = ['DejaVuSerif', 'DejaVuSerifCondensed', 'DejaVuSans',
-                    'DejaVuSansMono', 'DejaVuSansCondensed']
-    convert_fonts(document, dejavu_fonts)
+    dejavu_fonts_roman = ['DejaVuSerif', 'DejaVuSerifCondensed']
+    dejavu_fonts_sans = ['DejaVuSans','DejaVuSansCondensed']
+    dejavu_fonts_typewriter = ['DejaVuSansMono']
+
+    convert_fonts(document, dejavu_fonts_roman, "\\font_roman", None)
+    convert_fonts(document, dejavu_fonts_sans, "\\font_sans", "sf")
+    convert_fonts(document, dejavu_fonts_typewriter, "\\font_typewriter", "tt")
 
 def revert_dejavu(document):
     " Revert native DejaVu font definition to LaTeX "
