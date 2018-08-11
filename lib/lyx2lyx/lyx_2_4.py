@@ -27,7 +27,7 @@ from datetime import (datetime, date, time)
 # Uncomment only what you need to import, please.
 
 from parser_tools import (count_pars_in_inset, find_end_of_inset, find_end_of_layout,
-find_token, get_bool_value, get_option_value, get_value, get_quoted_value)
+                          find_token, find_re, get_bool_value, get_option_value, get_value, get_quoted_value)
 #    del_token, del_value, del_complete_lines,
 #    find_complete_lines, find_end_of,
 #    find_re, find_substring, find_token_backwards,
@@ -43,20 +43,49 @@ from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble)
 ####################################################################
 # Private helper functions
 
+def convert_fonts(document, font_list):
+    " Handle font definition to LaTeX "
 
+    font_types = ["\\font_roman", "\\font_sans,sf", "\\font_typewriter,tt"]
+    rpkg = re.compile(r'^\\usepackage(\[scaled=([^\]]*)\])?\{([^\}]+)\}')
+    for ft1 in font_types:
+        fts = ft1.split(",")
+        ft = fts[0]
+        if len(fts) > 1:
+            fontscale = "\\font_" + fts[1] + "_scale"
+        else:
+            fontscale = None
+        i = 0
+        i = find_re(document.preamble, rpkg, i)
+        if i == -1:
+            continue
+        mo = rpkg.search(document.preamble[i])
+        option = mo.group(2)
+        pkg = mo.group(3)
+        if not pkg in font_list:
+            continue
+        del document.preamble[i]
+        if i > 0 and document.preamble[i-1] == "% Added by lyx2lyx":
+            del document.preamble[i-1]
+        if fontscale != None:
+            j = find_token(document.header, fontscale, 0)
+            if j != -1:
+                val = get_value(document.header, fontscale, j)
+                vals = val.split()
+                scale = "100"
+                if option != None:
+                    scale = "%03d" % int(float(option) * 100)
+                document.header[j] = fontscale + " " + scale + " " + vals[1]
+        j = find_token(document.header, ft, 0)
+        if j != -1:
+            val = get_value(document.header, ft, j)
+            vals = val.split()
+            document.header[j] = ft + ' "' + pkg + '" ' + vals[1]
 
-###############################################################################
-###
-### Conversion and reversion routines
-###
-###############################################################################
-
-def revert_dejavu(document):
-    " Revert native DejaVu font definition to LaTeX "
+def revert_fonts(document, font_list):
+    " Revert native font definition to LaTeX "
 
     if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
-        dejavu_fonts = ['DejaVuSerif', 'DejaVuSerifCondensed', 'DejaVuSans',
-                         'DejaVuSansMono', 'DejaVuSansCondensed']
         font_types = ["\\font_roman", "\\font_sans,sf", "\\font_typewriter,tt"]
         for ft1 in font_types:
             fts = ft1.split(",")
@@ -66,7 +95,7 @@ def revert_dejavu(document):
                 val = get_value(document.header, ft, i)
                 words = val.split()
                 val = words[0].replace('"', '')
-                if val in dejavu_fonts:
+                if val in font_list:
                     xoption = ""
                     document.header[i] = ft + ' "default" ' + words[1]
                     if len(fts) > 1:
@@ -78,8 +107,28 @@ def revert_dejavu(document):
                     preamble = "\\usepackage" + xoption + "{%s}" % val
                     add_to_preamble(document, [preamble])
 
+###############################################################################
+###
+### Conversion and reversion routines
+###
+###############################################################################
+
+def convert_dejavu(document):
+    " Handle DejaVu font definition to LaTeX "
+
+    dejavu_fonts = ['DejaVuSerif', 'DejaVuSerifCondensed', 'DejaVuSans',
+                    'DejaVuSansMono', 'DejaVuSansCondensed']
+    convert_fonts(document, dejavu_fonts)
+
+def revert_dejavu(document):
+    " Revert native DejaVu font definition to LaTeX "
+
+    dejavu_fonts = ['DejaVuSerif', 'DejaVuSerifCondensed', 'DejaVuSans',
+                    'DejaVuSansMono', 'DejaVuSansCondensed']
+    revert_fonts(document, dejavu_fonts)
+
 def removeFrontMatterStyles(document):
-    " Remove styles Begin/EndFromatter"
+    " Remove styles Begin/EndFrontmatter"
 
     layouts = ['BeginFrontmatter', 'EndFrontmatter']
     for layout in layouts:
@@ -1099,7 +1148,7 @@ convert = [
            [558, [removeFrontMatterStyles]],
            [559, []],
            [560, []],
-           [561, []]
+           [561, [convert_dejavu]]
           ]
 
 revert =  [
