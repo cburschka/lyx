@@ -729,7 +729,8 @@ InsetLayout const * findInsetLayout(TextClass const & textclass, string const & 
 }
 
 
-void eat_whitespace(Parser &, ostream &, Context &, bool);
+void eat_whitespace(Parser &, ostream &, Context &, bool eatParagraph,
+		    bool eatNewline = true);
 
 
 /*!
@@ -1998,7 +1999,21 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 
 	else if (name == "lstlisting" || name == "minted") {
 		bool use_minted = name == "minted";
-		eat_whitespace(p, os, parent_context, false);
+		// with listings, we do not eat newlines here since
+		// \begin{lstlistings}
+		// [foo]
+		// and
+		// // \begin{lstlistings}%
+		//
+		// [foo]
+		// reads [foo] as content, whereas
+		// // \begin{lstlistings}%
+		// [foo]
+		// or
+		// \begin{lstlistings}[foo,
+		// bar]
+		// reads [foo...] as argument.
+		eat_whitespace(p, os, parent_context, false, use_minted);
 		if (use_minted && minted_float.empty()) {
 			// look ahead for a bottom caption
 			p.pushPosition();
@@ -2235,7 +2250,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 
 
 /// parses a comment and outputs it to \p os.
-void parse_comment(Parser & p, ostream & os, Token const & t, Context & context)
+void parse_comment(Parser & p, ostream & os, Token const & t, Context & context,
+		   bool skipNewlines = false)
 {
 	LASSERT(t.cat() == catComment, return);
 	if (!t.cs().empty()) {
@@ -2253,7 +2269,7 @@ void parse_comment(Parser & p, ostream & os, Token const & t, Context & context)
 				output_ert_inset(os, "\n", context);
 			eat_whitespace(p, os, context, true);
 		}
-	} else {
+	} else if (!skipNewlines) {
 		// "%\n" combination
 		p.skip_spaces();
 	}
@@ -2264,17 +2280,18 @@ void parse_comment(Parser & p, ostream & os, Token const & t, Context & context)
  * Reads spaces and comments until the first non-space, non-comment token.
  * New paragraphs (double newlines or \\par) are handled like simple spaces
  * if \p eatParagraph is true.
+ * If \p eatNewline is false, newlines won't be treated as whitespace.
  * Spaces are skipped, but comments are written to \p os.
  */
 void eat_whitespace(Parser & p, ostream & os, Context & context,
-		    bool eatParagraph)
+		    bool eatParagraph, bool eatNewline)
 {
 	while (p.good()) {
 		Token const & t = p.get_token();
 		if (t.cat() == catComment)
-			parse_comment(p, os, t, context);
-		else if ((! eatParagraph && p.isParagraph()) ||
-			 (t.cat() != catSpace && t.cat() != catNewline)) {
+			parse_comment(p, os, t, context, !eatNewline);
+		else if ((!eatParagraph && p.isParagraph()) ||
+			 (t.cat() != catSpace && (t.cat() != catNewline || !eatNewline))) {
 			p.putback();
 			return;
 		}
