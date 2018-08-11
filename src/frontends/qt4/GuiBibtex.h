@@ -14,27 +14,19 @@
 #define GUIBIBTEX_H
 
 #include "GuiDialog.h"
+#include "GuiSelectionManager.h"
 #include "ButtonController.h"
+#include "FancyLineEdit.h"
 #include "ui_BibtexUi.h"
 #include "ui_BibtexAddUi.h"
 
 #include "insets/InsetCommandParams.h"
 
+#include <QStandardItemModel>
+#include <QStringListModel>
 
 namespace lyx {
 namespace frontend {
-
-class GuiBibtexAddDialog : public QDialog, public Ui::BibtexAddUi
-{
-public:
-	GuiBibtexAddDialog(QWidget * parent) : QDialog(parent)
-	{
-		Ui::BibtexAddUi::setupUi(this);
-		QDialog::setModal(true);
-		setWindowModality(Qt::WindowModal);
-	}
-};
-
 
 class GuiBibtex : public GuiDialog, public Ui::BibtexUi
 {
@@ -44,23 +36,18 @@ public:
 	explicit GuiBibtex(GuiView & lv);
 
 private Q_SLOTS:
-	void addBBClicked(QAbstractButton * button);
 	void change_adaptor();
-	void browsePressed();
+	void on_buttonBox_accepted();
+	void browseBstPressed();
 	void browseBibPressed();
-	void addPressed();
-	void addDatabase();
-	void deletePressed();
-	void upPressed();
-	void downPressed();
 	void databaseChanged();
-	void availableChanged();
-	void bibEDChanged();
 	void rescanClicked();
+	void selUpdated();
+	void filterPressed();
+	void filterChanged(const QString & text);
+	void resetFilter();
 
 private:
-	///
-	bool isValid();
 	/// Apply changes
 	void applyView();
 	/// update
@@ -73,7 +60,7 @@ private:
 	/// get the list of bst files
 	QStringList bibStyles() const;
 	/// get the list of bib files
-	QStringList bibFiles() const;
+	QStringList bibFiles(bool const extension = true) const;
 	/// build filelists of all availabe bib/bst/cls/sty-files. done through
 	/// kpsewhich and an external script, saved in *Files.lst
 	void rescanBibStyles() const;
@@ -85,6 +72,19 @@ private:
 	bool usingBiblatex() const;
 	/// which stylefile do we use?
 	QString styleFile() const;
+	/// Clear selected keys
+	void clearSelection();
+	/// Set selected keys
+	void setSelectedBibs(QStringList const);
+	/// prepares a call to GuiCitation::searchKeys when we
+	/// are ready to search the Bib entries
+	void findText(QString const & text);
+	///
+	void init();
+	/// Get selected keys
+	QStringList selectedBibs();
+	///
+	void setButtons();
 
 	///
 	bool initialiseParams(std::string const & data);
@@ -99,9 +99,17 @@ private:
 	///
 	InsetCommandParams params_;
 	///
-	GuiBibtexAddDialog * add_;
-	///
-	ButtonController add_bc_;
+	GuiSelectionManager * selectionManager;
+	/// available keys.
+	QStringListModel available_model_;
+	/// selected keys.
+	QStandardItemModel selected_model_;
+	/// All keys.
+	QStringList all_bibs_;
+	/// Cited keys.
+	QStringList selected_bibs_;
+	/// contains the search box
+	FancyLineEdit * filter_;
 };
 
 } // namespace frontend

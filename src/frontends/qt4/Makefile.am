@@ -268,7 +268,6 @@ UIFILES = \
 	AboutUi.ui \
 	BibitemUi.ui \
 	BiblioUi.ui \
-	BibtexAddUi.ui \
 	BibtexUi.ui \
 	BoxUi.ui \
 	BranchesUi.ui \

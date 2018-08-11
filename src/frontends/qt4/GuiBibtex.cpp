@@ -20,6 +20,7 @@
 #include "CiteEnginesList.h"
 #include "Encoding.h"
 #include "FuncRequest.h"
+#include "GuiApplication.h"
 #include "LyXRC.h"
 #include "qt_helpers.h"
 #include "Validator.h"
@@ -61,55 +62,60 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 	QDialog::setModal(true);
 	setWindowModality(Qt::WindowModal);
 
+	// The filter bar
+	filter_ = new FancyLineEdit(this);
+	filter_->setButtonPixmap(FancyLineEdit::Right, getPixmap("images/", "editclear", "svgz,png"));
+	filter_->setButtonVisible(FancyLineEdit::Right, true);
+	filter_->setButtonToolTip(FancyLineEdit::Right, qt_("Clear text"));
+	filter_->setAutoHideButton(FancyLineEdit::Right, true);
+	filter_->setPlaceholderText(qt_("All avail. databases"));
+
+	filterBarL->addWidget(filter_, 0);
+	findKeysLA->setBuddy(filter_);
+
 	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
 		this, SLOT(slotButtonBox(QAbstractButton *)));
 	connect(stylePB, SIGNAL(clicked()),
-		this, SLOT(browsePressed()));
-	connect(deletePB, SIGNAL(clicked()),
-		this, SLOT(deletePressed()));
-	connect(upPB, SIGNAL(clicked()),
-		this, SLOT(upPressed()));
-	connect(downPB, SIGNAL(clicked()),
-		this, SLOT(downPressed()));
+		this, SLOT(browseBstPressed()));
 	connect(styleCB, SIGNAL(editTextChanged(QString)),
 		this, SLOT(change_adaptor()));
-	connect(databaseLW, SIGNAL(currentItemChanged(QListWidgetItem *, QListWidgetItem *)),
-		this, SLOT(databaseChanged()));
 	connect(bibtocCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(btPrintCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
-	connect(addBibPB, SIGNAL(clicked()),
-		this, SLOT(addPressed()));
 	connect(rescanPB, SIGNAL(clicked()),
 		this, SLOT(rescanClicked()));
 	connect(biblatexOptsLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(bibEncodingCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
-
-	add_ = new GuiBibtexAddDialog(this);
-	add_bc_.setPolicy(ButtonPolicy::OkCancelPolicy);
-	add_bc_.setOK(add_->buttonBox->button(QDialogButtonBox::Ok));
-	add_bc_.setCancel(add_->buttonBox->button(QDialogButtonBox::Cancel));
-	add_bc_.addCheckedLineEdit(add_->bibED, 0);
-
-	connect(add_->bibED, SIGNAL(textChanged(QString)),
-		this, SLOT(bibEDChanged()));
-	connect(add_->buttonBox, SIGNAL(clicked(QAbstractButton *)),
-		this, SLOT(addBBClicked(QAbstractButton *)));
-	connect(add_->rescanPB, SIGNAL(clicked()),
-		this, SLOT(rescanClicked()));
-	connect(add_->bibLW, SIGNAL(itemActivated(QListWidgetItem *)),
-		this, SLOT(addDatabase()));
-	connect(add_->bibLW, SIGNAL(itemActivated(QListWidgetItem *)),
-		add_, SLOT(accept()));
-	connect(add_->bibLW, SIGNAL(currentItemChanged(QListWidgetItem *, QListWidgetItem *)),
-		this, SLOT(availableChanged()));
-	connect(add_->browsePB, SIGNAL(clicked()),
+	connect(browseBibPB, SIGNAL(clicked()),
 		this, SLOT(browseBibPressed()));
 
-	add_->bibLW->setToolTip(formatToolTip(qt_("This list consists of all databases that are indexed by LaTeX and thus are found without a file path. "
+	selectionManager = new GuiSelectionManager(this, availableLV, selectedLV,
+			addBibPB, deletePB, upPB, downPB, &available_model_, &selected_model_);
+	connect(selectionManager, SIGNAL(selectionChanged()),
+		this, SLOT(databaseChanged()));
+	connect(selectionManager, SIGNAL(updateHook()),
+		this, SLOT(selUpdated()));
+	connect(selectionManager, SIGNAL(okHook()),
+		this, SLOT(on_buttonBox_accepted()));
+
+	connect(filter_, SIGNAL(rightButtonClicked()),
+		this, SLOT(resetFilter()));
+	connect(filter_, SIGNAL(textEdited(QString)),
+		this, SLOT(filterChanged(QString)));
+	connect(filter_, SIGNAL(returnPressed()),
+		this, SLOT(filterPressed()));
+#if (QT_VERSION < 0x050000)
+	connect(filter_, SIGNAL(downPressed()),
+	        availableLV, SLOT(setFocus()));
+#else
+	connect(filter_, &FancyLineEdit::downPressed,
+	        availableLV, [=](){ focusAndHighlight(availableLV); });
+#endif
+
+	availableLV->setToolTip(formatToolTip(qt_("This list consists of all databases that are indexed by LaTeX and thus are found without a file path. "
 				    "This is usually everything in the bib/ subdirectory of LaTeX's texmf tree. "
 				    "If you want to reuse your own database, this is the place you should store it.")));
 
@@ -117,14 +123,10 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
 	bc().setApply(buttonBox->button(QDialogButtonBox::Apply));
 	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
-	bc().addReadOnly(databaseLW);
 	bc().addReadOnly(stylePB);
 	bc().addReadOnly(styleCB);
 	bc().addReadOnly(bibtocCB);
-	bc().addReadOnly(addBibPB);
 	bc().addReadOnly(bibEncodingCO);
-	// Delete/Up/Down are handled with more conditions in
-	// databaseChanged().
 
 	// Always put the default encoding in the first position.
 	bibEncodingCO->addItem(qt_("Document Encoding"), "default");
@@ -139,43 +141,59 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 		++it;
 	}
 
-	// Make sure the delete/up/down buttons are disabled if necessary.
-	databaseChanged();
+	setFocusProxy(filter_);
 }
 
 
-void GuiBibtex::addBBClicked(QAbstractButton * button)
+void GuiBibtex::init()
 {
-	switch (add_->buttonBox->standardButton(button)) {
-	case QDialogButtonBox::Ok:
-		addDatabase();
-		add_->accept();
-		break;
-	case QDialogButtonBox::Cancel:
-		add_->reject();
-		break;
-	default:
-		break;
-	}
-}
+	all_bibs_ = bibFiles(false);
+	available_model_.setStringList(all_bibs_);
 
+	QString bibs = toqstr(params_["bibfiles"]);
+	if (bibs.isEmpty())
+		selected_bibs_.clear();
+	else
+		selected_bibs_ = bibs.split(",");
+	setSelectedBibs(selected_bibs_);
 
-void GuiBibtex::bibEDChanged()
-{
-	// Indicate to the button controller that the contents have
-	// changed. The actual test of validity is carried out by
-	// the checkedLineEdit.
-	add_bc_.setValid(true);
+	buttonBox->button(QDialogButtonBox::Apply)->setEnabled(false);
+	buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
+	selectionManager->update();
 }
 
 
 void GuiBibtex::change_adaptor()
 {
+	setButtons();
 	changed();
 }
 
 
-void GuiBibtex::browsePressed()
+void GuiBibtex::setButtons()
+{
+	int const srows = selectedLV->model()->rowCount();
+	buttonBox->button(QDialogButtonBox::Apply)->setEnabled(srows > 0);
+	buttonBox->button(QDialogButtonBox::Ok)->setEnabled(srows > 0);
+}
+
+
+void GuiBibtex::selUpdated()
+{
+	selectionManager->update();
+	changed();
+}
+
+
+void GuiBibtex::on_buttonBox_accepted()
+{
+	applyView();
+	clearSelection();
+	hide();
+}
+
+
+void GuiBibtex::browseBstPressed()
 {
 	QString const file = browseBst(QString());
 
@@ -209,99 +227,12 @@ void GuiBibtex::browseBibPressed()
 		return;
 
 	QString const f = changeExtension(file, "");
-	bool present = false;
 
-	for (int i = 0; i < add_->bibLW->count(); ++i) {
-		if (add_->bibLW->item(i)->text() == f)
-			present = true;
-	}
-
-	if (!present) {
-		add_->bibLW->addItem(f);
+	if (!selected_bibs_.contains(f)) {
+		selected_bibs_.append(f);
+		setSelectedBibs(selected_bibs_);
 		changed();
 	}
-
-	add_->bibED->setText(f);
-}
-
-
-void GuiBibtex::addPressed()
-{
-	add_bc_.setValid(false);
-	add_->exec();
-}
-
-
-void GuiBibtex::addDatabase()
-{
-	int const sel = add_->bibLW->currentRow();
-	QString const file = add_->bibED->text().trimmed();
-
-	if (sel < 0 && file.isEmpty())
-		return;
-
-	// Add the selected browser_bib keys to browser_database
-	// multiple selections are possible
-	for (int i = 0; i != add_->bibLW->count(); ++i) {
-		QListWidgetItem * const item = add_->bibLW->item(i);
-		if (add_->bibLW->isItemSelected(item)) {
-			add_->bibLW->setItemSelected(item, false);
-			QList<QListWidgetItem *> matches =
-				databaseLW->findItems(item->text(), Qt::MatchExactly);
-			if (matches.empty()) {
-				QString label = item->text();
-				QListWidgetItem * db = new QListWidgetItem(label);
-				db->setFlags(db->flags() | Qt::ItemIsSelectable);
-				databaseLW->addItem(db);
-			}
-		}
-	}
-
-	if (!file.isEmpty()) {
-		add_->bibED->clear();
-		QString const f = changeExtension(file, "");
-		QList<QListWidgetItem *> matches =
-			databaseLW->findItems(f, Qt::MatchExactly);
-		if (matches.empty()) {
-			QListWidgetItem * db = new QListWidgetItem(f);
-			db->setFlags(db->flags() | Qt::ItemIsSelectable);
-			databaseLW->addItem(db);
-		}
-	}
-
-	databaseChanged();
-	changed();
-}
-
-
-void GuiBibtex::deletePressed()
-{
-	QListWidgetItem *cur = databaseLW->takeItem(databaseLW->currentRow());
-	if (cur) {
-		delete cur;
-		databaseChanged();
-		changed();
-	}
-}
-
-
-void GuiBibtex::upPressed()
-{
-	int row = databaseLW->currentRow();
-	QListWidgetItem *cur = databaseLW->takeItem(row);
-	databaseLW->insertItem(row - 1, cur);
-	databaseLW->setCurrentItem(cur);
-	changed();
-}
-
-
-void GuiBibtex::downPressed()
-{
-	int row = databaseLW->currentRow();
-	QListWidgetItem *cur = databaseLW->takeItem(row);
-	databaseLW->insertItem(row + 1, cur);
-	databaseLW->setCurrentItem(cur);
-	changed();
 }
 
 
@@ -312,20 +243,49 @@ void GuiBibtex::rescanClicked()
 }
 
 
-void GuiBibtex::databaseChanged()
+void GuiBibtex::clearSelection()
 {
-	bool readOnly = isBufferReadonly();
-	int count = databaseLW->count();
-	int row = databaseLW->currentRow();
-	deletePB->setEnabled(!readOnly && row != -1);
-	upPB->setEnabled(!readOnly && count > 1 && row > 0);
-	downPB->setEnabled(!readOnly && count > 1 && row < count - 1);
+	selected_bibs_.clear();
+	setSelectedBibs(selected_bibs_);
 }
 
 
-void GuiBibtex::availableChanged()
+void GuiBibtex::setSelectedBibs(QStringList const sl)
 {
-	add_bc_.setValid(true);
+	selected_model_.clear();
+	QStringList::const_iterator it  = sl.begin();
+	QStringList::const_iterator end = sl.end();
+	for (int i = 0; it != end; ++it, ++i) {
+		QStandardItem * si = new QStandardItem();
+		si->setData(*it);
+		si->setText(*it);
+		si->setToolTip(*it);
+		si->setEditable(false);
+		selected_model_.insertRow(i, si);
+	}
+}
+
+
+QStringList GuiBibtex::selectedBibs()
+{
+	QStringList res;
+	for (int i = 0; i != selected_model_.rowCount(); ++i) {
+		QStandardItem const * item = selected_model_.item(i);
+		if (item)
+			res.append(item->text());
+	}
+	return res;
+}
+
+
+void GuiBibtex::databaseChanged()
+{
+	QString const item = selectionManager->getSelectedIndex().data().toString();
+	if (!selected_bibs_.contains(item)) {
+		selected_bibs_.append(item);
+	} else
+		selected_bibs_ = selectedBibs();
+	setSelectedBibs(selected_bibs_);
 }
 
 
@@ -338,27 +298,6 @@ void GuiBibtex::updateContents()
 		setTitle(qt_("Biblatex Bibliography"));
 	else
 		setTitle(qt_("BibTeX Bibliography"));
-
-	databaseLW->clear();
-
-	docstring bibs = params_["bibfiles"];
-	docstring bib;
-
-	while (!bibs.empty()) {
-		bibs = split(bibs, bib, ',');
-		bib = trim(bib);
-		if (!bib.empty()) {
-			QListWidgetItem * db = new QListWidgetItem(toqstr(bib));
-			db->setFlags(db->flags() | Qt::ItemIsSelectable);
-			databaseLW->addItem(db);
-		}
-	}
-
-	add_->bibLW->clear();
-
-	QStringList bibfiles = bibFiles();
-	for (int i = 0; i != bibfiles.count(); ++i)
-		add_->bibLW->addItem(changeExtension(bibfiles[i], ""));
 
 	QString const bibstyle = styleFile();
 
@@ -424,11 +363,11 @@ void GuiBibtex::applyView()
 {
 	docstring dbs;
 
-	unsigned int maxCount = databaseLW->count();
+	unsigned int maxCount = selected_bibs_.count();
 	for (unsigned int i = 0; i < maxCount; i++) {
 		if (i != 0)
 			dbs += ',';
-		QString item = databaseLW->item(i)->text();
+		QString item = selected_bibs_.at(i);
 		docstring bibfile = qstring_to_ucs4(item);
 		dbs += bibfile;
 	}
@@ -456,12 +395,6 @@ void GuiBibtex::applyView()
 	params_["btprint"] = qstring_to_ucs4(btPrintCO->itemData(btPrintCO->currentIndex()).toString());
 
 	params_["encoding"] = qstring_to_ucs4(bibEncodingCO->itemData(bibEncodingCO->currentIndex()).toString());
-}
-
-
-bool GuiBibtex::isValid()
-{
-	return databaseLW->count() != 0;
 }
 
 
@@ -501,7 +434,7 @@ QStringList GuiBibtex::bibStyles() const
 }
 
 
-QStringList GuiBibtex::bibFiles() const
+QStringList GuiBibtex::bibFiles(bool const extension) const
 {
 	QStringList sdata = texFileList("bibFiles.lst");
 	// test whether we have a valid list, otherwise run rescan
@@ -510,7 +443,8 @@ QStringList GuiBibtex::bibFiles() const
 		sdata = texFileList("bibFiles.lst");
 	}
 	for (int i = 0; i != sdata.size(); ++i)
-		sdata[i] = onlyFileName(sdata[i]);
+		sdata[i] = extension ? onlyFileName(sdata[i])
+				     : changeExtension(onlyFileName(sdata[i]), "");
 	// sort on filename only (no path)
 	sdata.sort();
 	return sdata;
@@ -524,6 +458,38 @@ void GuiBibtex::rescanBibStyles() const
 	else
 		rescanTexStyles("bst bib");
 }
+
+
+void GuiBibtex::findText(QString const & text)
+{
+	QStringList const result = bibFiles(false).filter(text);
+	available_model_.setStringList(result);
+}
+
+
+void GuiBibtex::filterChanged(const QString & text)
+{
+	if (!text.isEmpty()) {
+		findText(filter_->text());
+		return;
+	}
+	findText(filter_->text());
+	filter_->setFocus();
+}
+
+
+void GuiBibtex::filterPressed()
+{
+	findText(filter_->text());
+}
+
+
+void GuiBibtex::resetFilter()
+{
+	filter_->setText(QString());
+	findText(filter_->text());
+}
+
 
 
 bool GuiBibtex::usingBibtopic() const
@@ -577,6 +543,7 @@ QString GuiBibtex::styleFile() const
 bool GuiBibtex::initialiseParams(std::string const & sdata)
 {
 	InsetCommand::string2params(sdata, params_);
+	init();
 	return true;
 }
 
@@ -586,7 +553,6 @@ void GuiBibtex::dispatchParams()
 	std::string const lfun = InsetCommand::params2string(params_);
 	dispatch(FuncRequest(getLfun(), lfun));
 }
-
 
 
 Dialog * createGuiBibtex(GuiView & lv) { return new GuiBibtex(lv); }
