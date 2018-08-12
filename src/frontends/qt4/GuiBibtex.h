@@ -18,7 +18,6 @@
 #include "ButtonController.h"
 #include "FancyLineEdit.h"
 #include "ui_BibtexUi.h"
-#include "ui_BibtexAddUi.h"
 
 #include "insets/InsetCommandParams.h"
 

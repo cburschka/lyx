@@ -25,8 +25,6 @@
 #include "qt_helpers.h"
 #include "Validator.h"
 
-#include "ui_BibtexAddUi.h"
-
 #include "ButtonPolicy.h"
 
 #include "frontends/alert.h"
