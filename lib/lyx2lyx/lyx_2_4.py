@@ -1129,6 +1129,32 @@ def revert_namenoextinfo(document):
         i = i + 1
 
 
+def revert_l7ninfo(document):
+    " Revert l7n Info inset to text. "
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Info", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of Info inset.")
+            i = i + 1
+            continue
+        tp = find_token(document.body, 'type', i, j)
+        tpv = get_quoted_value(document.body, "type", tp)
+        if tpv != "l7n":
+            i = i + 1
+            continue
+        arg = find_token(document.body, 'arg', i, j)
+        argv = get_quoted_value(document.body, "arg", arg)
+        # remove trailing colons, menu accelerator (|...) and qt accelerator (&), while keeping literal " & " 
+        argv = argv.rstrip(':').split('|')[0].replace(" & ", "</amp;>").replace("&", "").replace("</amp;>", " & ")
+        document.body[i : j+1] = argv
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -1151,10 +1177,12 @@ convert = [
            [558, [removeFrontMatterStyles]],
            [559, []],
            [560, []],
-           [561, [convert_dejavu]]
+           [561, [convert_dejavu]],
+           [562, []]
           ]
 
 revert =  [
+           [561, [revert_l7ninfo]],
            [560, [revert_dejavu]],
            [559, [revert_timeinfo, revert_namenoextinfo]],
            [558, [revert_dateinfo]],

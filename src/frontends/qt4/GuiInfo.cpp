@@ -58,6 +58,7 @@ char const * info_types[] =
   "shortcut",
   "shortcuts",
   "menu",
+  "l7n",
   "icon",
   "lyxrc",
   "lyxinfo",
@@ -79,6 +80,7 @@ char const * info_types_gui[] =
   N_("Last Assigned Keyboard Shortcut"),// shortcut
   N_("All Keyboard Shortcuts"),// shortcuts
   N_("LyX Menu Location"),// menu
+  N_("Localized GUI String"),// l7n
   N_("LyX Toolbar Icon"),// icon
   N_("LyX Preferences Entry"),// lyxrc
   N_("LyX Application Information"),// lyxinfo
@@ -100,6 +102,7 @@ char const * info_name_gui[] =
   N_("LyX Function"),// shortcut
   N_("LyX Function"),// shortcuts
   N_("LyX Function"),// menu
+  N_("English String"),// l7n
   N_("LyX Function"),// icon
   N_("Preferences Key"),// lyxrc
   N_("Not Applicable"),// lyxinfo
@@ -196,6 +199,8 @@ char const * info_tooltip[] =
      "The output lists all possible keyboard shortcuts for this function"),// shortcuts
   N_("Enter a function name such as 'math-insert \\alpha'. Please refer to Help > LyX Functions for a comprehensive list of functions. "
      "The output is the path to the function in the menu (using the current localization)."),// menu
+  N_("Enter a localizable English string from the LyX User Interface, including accelerator markup ('&' or '|') and trailing colons. "
+     "The output is the localized string (using the current localization); trailing colons and accelerator markup are stripped."),// l7n
   N_("Enter a function name such as 'math-insert \\alpha'. Please refer to Help > LyX Functions for a comprehensive list of functions. "
      "The output is the toolbar icon for this function (using the active icon theme)."),// icon
   N_("Enter a LyX preferences key such as 'bind_file'. See the proposed list for available entries. "

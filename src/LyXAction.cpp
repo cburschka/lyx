@@ -1930,7 +1930,8 @@ void LyXAction::init()
                the work area.\n
                2. select the text and run info-insert lfun.
  * \li Syntax: info-insert <TYPE> <ARG>
- * \li Params: <TYPE>: shortcut[s]|lyxrc|lyxinfo|package|textclass|menu|icon|buffer \n
+ * \li Params: <TYPE>: date|moddate|fixdate|time|modtime|fixtime|shortcut|shortcuts|lyxrc|
+ *                     lyxinfo|package|textclass|menu|l7n|icon|buffer|vcs \n
                <ARG>: argument for a given type. Look into InsetInfo.h for detailed
                       description. \n
                       date: current date (formatted and localized)\n
@@ -1945,6 +1946,7 @@ void LyXAction::init()
                       package: name of latex package (e.g. listings) \n
                       textclass: name of textclass (e.g. article) \n
                       menu: name of lfun used in menu  \n
+                      l7n: localizable string.\n
                       icon: icon of lfun used in toolbar or direct icon name\n
                       buffer: "name"|"name-noext"|"path"|"class"
                       vcs: "tree-revision"|"revision"|"author"|"date"|"time"

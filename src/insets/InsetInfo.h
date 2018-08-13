@@ -85,6 +85,11 @@ menu: argument is the name of the LFUN such as "paste". The syntax is the same
     triggers this LFUN. For example, "File > Paste", where '>' is actually
     \lyxarrow (an InsetSpecialChar).
 
+l7n: argument is an English string that is marked for localization. The output
+    is the localization of that string in the current GUI language (if available).
+    Trailing colons are stripped, accelerators removed.
+    This is used to refer to GUI items in the docs.
+
 icon: argument is the name of the LFUN such as "paste". The syntax is the same
     as what is used in the bind and ui files. The output is the icon use in
     the toolbar for this LFUN. Alternatively, argument can be the icon path
@@ -130,6 +135,7 @@ public:
 		MENU_INFO,       // Which menu item is used for certain function
 		ICON_INFO,       // which toolbar icon is used for certain function
 		LYX_INFO,        // LyX version information
+		L7N_INFO,        // Localized string
 		UNKNOWN_INFO,    // Invalid type
 	};
 	///

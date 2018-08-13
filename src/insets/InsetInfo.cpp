@@ -75,6 +75,7 @@ NameTranslator const initTranslator()
 	translator.addPair(InsetInfoParams::PACKAGE_INFO, "package");
 	translator.addPair(InsetInfoParams::TEXTCLASS_INFO, "textclass");
 	translator.addPair(InsetInfoParams::MENU_INFO, "menu");
+	translator.addPair(InsetInfoParams::L7N_INFO, "l7n");
 	translator.addPair(InsetInfoParams::ICON_INFO, "icon");
 	translator.addPair(InsetInfoParams::BUFFER_INFO, "buffer");
 	translator.addPair(InsetInfoParams::LYX_INFO, "lyxinfo");
@@ -109,6 +110,7 @@ DefaultValueTranslator const initDVTranslator()
 	translator.addPair(InsetInfoParams::PACKAGE_INFO, "graphics");
 	translator.addPair(InsetInfoParams::TEXTCLASS_INFO, "article");
 	translator.addPair(InsetInfoParams::MENU_INFO, "info-insert");
+	translator.addPair(InsetInfoParams::L7N_INFO, "");
 	translator.addPair(InsetInfoParams::ICON_INFO, "info-insert");
 	translator.addPair(InsetInfoParams::BUFFER_INFO, "name-noext");
 	translator.addPair(InsetInfoParams::LYX_INFO, "version");
@@ -230,6 +232,10 @@ vector<pair<string,docstring>> InsetInfoParams::getArguments(Buffer const * buf,
 		}
 		break;
 	}
+
+	case L7N_INFO:
+		result.push_back(make_pair("custom", _("Custom")));
+		break;
 
 	case LYXRC_INFO: {
 		result.push_back(make_pair("custom", _("Custom")));
@@ -381,6 +387,10 @@ docstring InsetInfo::toolTip(BufferView const &, int, int) const
 		result = bformat(_("The menu location for the function '%1$s'"),
 				from_utf8(params_.name));
 		break;
+	case InsetInfoParams::L7N_INFO: 
+		result = bformat(_("The localization for the string '%1$s'"),
+				from_utf8(params_.name));
+		break;
 	case InsetInfoParams::ICON_INFO:
 		result = bformat(_("The toolbar icon for the function '%1$s'"),
 				from_utf8(params_.name));
@@ -493,6 +503,9 @@ bool InsetInfo::validateModifyArgument(docstring const & arg) const
 		FuncRequest func = lyxaction.lookupFunc(name);
 		return func.action() != LFUN_UNKNOWN_ACTION;
 	}
+
+	case InsetInfoParams::L7N_INFO:
+		return !name.empty();
 
 	case InsetInfoParams::ICON_INFO: {
 		FuncCode const action = lyxaction.lookupFunc(name).action();
@@ -948,6 +961,24 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 			for (char_type c : name)
 				par.insertChar(par.size(), c, f, Change(Change::UNCHANGED));
 		}
+		break;
+	}
+	case InsetInfoParams::L7N_INFO: {
+		docstring locstring = _(params_.name);
+		// Remove trailing colons
+		locstring = rtrim(locstring, ":");
+		// Remove menu accelerators
+		if (contains(locstring, from_ascii("|"))) {
+			docstring nlocstring;
+			rsplit(locstring, nlocstring, '|');
+			locstring = nlocstring;
+		}
+		// Remove Qt accelerators, but keep literal ampersands
+		locstring = subst(locstring, from_ascii(" & "), from_ascii("</amp;>"));
+		locstring = subst(locstring, from_ascii("&"), docstring());
+		locstring = subst(locstring, from_ascii("</amp;>"), from_ascii(" & "));
+		setText(locstring, guilang);
+		params_.force_ltr = !guilang->rightToLeft() && !params_.lang->rightToLeft();
 		break;
 	}
 	case InsetInfoParams::ICON_INFO: {

@@ -7,6 +7,11 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2018-08-13  Jürgen Spitzmüller <spitz@lyx.org>
+	* format incremented to 562: New info-inset type l7n. This returns a localized version
+          of a string (in the GUI language) if available, removing trailing colons and
+          accelerator marks.
+
 2018-08-10  Kornel Benko <kornel@lyx.org>
 	* format incremented to 561: Added DejaVu fonts
 
