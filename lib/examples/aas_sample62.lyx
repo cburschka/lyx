@@ -300,15 +300,11 @@ literal "false"
 
  suggested a central peak in NGC 6397, and a limited photographic survey
  of ours 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-citep[Paper I]{djo84}
-\end_layout
+\begin_inset CommandInset citation
+LatexCommand citep
+after "Paper I"
+key "djo84"
+literal "false"
 
 \end_inset
 
@@ -683,14 +679,22 @@ reference "tbl-2"
 , but the assumption is that the alternate results should be less than 90°
  out of phase with previous values.
  We have no observations of 
+\begin_inset Preview
+
+\begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
 ion{Ca}{2}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -735,47 +739,19 @@ http://www.aas.org/publications/aastex
 \end_inset
 
  or the 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-anchor{
-\end_layout
-
-\end_inset
-
-ftp://www.aas.org/pubs/
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-AAS ftp site
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "AAS ftp site"
+target "ftp://www.aas.org/pubs/AAS ftp site"
+literal "false"
 
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Software
 IRAF, AIPS, Astropy, ...
- 
 \end_layout
 
 \begin_layout Appendix
@@ -912,14 +888,22 @@ literal "true"
 Djorgovski, S., and King, I.
  R.
  1984, 
+\begin_inset Preview
+
+\begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
 apjl
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1091,14 +1075,22 @@ literal "true"
 
 Lynden-Bell, D., and Wood, R.
  1968, 
+\begin_inset Preview
+
+\begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
 mnras
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
