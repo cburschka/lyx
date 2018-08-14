@@ -75,6 +75,8 @@ Style Author
 End
 
 Style Affil
+	# enters the affiliation that applies to all the previous
+	# authors since the last \affil entry.
 	CopyStyle       InFrontmatter
 	LatexName       affil
 	LabelString     "Affiliation:"
@@ -85,6 +87,8 @@ Style Affil
 End
 
 Style Running_Title
+	# enters the short title that appears at the
+	# top of all pages (except for the first page).
 	CopyStyle       InFrontmatter
 	LatexName       runningtitle
 	LabelString     "Running title:"
@@ -104,6 +108,8 @@ Style FirstPage
 End
 
 Style RunningAuthor
+	# enters the abbreviated list of authors that appears
+	# at the top of all pages (except for the first page)
 	CopyStyle       InFrontmatter
 	LatexName       runningauthor
 	LabelString     "Running author:"
@@ -139,30 +145,44 @@ Style Correspondence
 End
 
 Style Received
+	# enters the date that the manuscript was submitted
+	# (to be inserted by the Publication Production Office).
 	CopyStyle       Publications
 	LatexName       received
 	LabelString     "Received:"
 End
 
 Style Accepted
+	# enters the date that the paper was accepted for publication
+	# (to be inserted by the Publication Production Office)
 	CopyStyle       Publications
 	LatexName       accepted
 	LabelString     "Accepted:"
 End
 
 Style Pubdiscuss
+	# enters the date that the manuscript was published
+	# in the discussion stage
+	# (to be inserted by the Publication Produc- tion Office).
 	CopyStyle       Publications
 	LatexName       pubdiscuss
 	LabelString     "Pubdiscuss:"
 End
 
 Style Revised
+	# enters the date that the revised manuscript was received
+	# (to be inserted by the Publication Production Office and
+	omitted if there were no revisions).
 	CopyStyle       Publications
 	LatexName       revised
 	LabelString     "Revised:"
 End
 
 Style Published
+	# enters the date that the manuscript was published
+	# in its final form
+	# (to be inserted by the Publication Production
+	Office).
 	CopyStyle       Publications
 	LatexName       published
 	LabelString     "Published:"
