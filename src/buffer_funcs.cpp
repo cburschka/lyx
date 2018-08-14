@@ -126,7 +126,7 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 		"exist.\n\nDo you want to create a new document?"),
 		from_utf8(filename.absFileName()));
 	if (!Alert::prompt(_("Create new document?"),
-			text, 0, 1, _("&Create"), _("Cancel")))
+			text, 0, 1, _("&Yes, Create New Document"), _("&No, Do Not Create")))
 		return newFile(filename.absFileName(), string(), true);
 
 	return 0;
