@@ -52,6 +52,11 @@
 
 Format          68
 
+Preamble
+	\newcommand{\vdag}{(v)^\dagger}
+	\newcommand\aastex{AAS\TeX}
+EndPreamble
+
 Input           aastex.layout
 
 
