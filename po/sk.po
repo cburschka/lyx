@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-08-10 19:39+0200\n"
-"PO-Revision-Date: 2018-08-10 18:00+0000\n"
+"POT-Creation-Date: 2018-08-14 09:02+0200\n"
+"PO-Revision-Date: 2018-08-14 09:53+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -240,6 +240,10 @@ msgstr "&Procesor:"
 msgid "Select a processor"
 msgstr "Vyberte jeden procesor"
 
+#: src/frontends/qt4/ui/BibtexUi.ui:265
+msgid "Select a style file from your local directory"
+msgstr "Vyberte štýl z vášho lokálneho adresára"
+
 #: src/frontends/qt4/ui/BiblioUi.ui:424 src/frontends/qt4/ui/PrefLatexUi.ui:120
 #: src/frontends/qt4/ui/PrefLatexUi.ui:222 src/frontends/qt4/GuiPrefs.cpp:851
 #: src/frontends/qt4/GuiPrefs.cpp:986
@@ -251,32 +255,10 @@ msgid ""
 "Define options such as --min-crossrefs (see the documentation of BibTeX)"
 msgstr "Definujte možnosti ako napr. --min-crossrefs (viď dokumentáciu BibTeX)"
 
-#: src/frontends/qt4/ui/BibtexAddUi.ui:20
-msgid "LyX: Add BibTeX Database"
-msgstr "LyX: Pridať BibTeX databázu"
-
-#: src/frontends/qt4/ui/BibtexAddUi.ui:67
-msgid "Rescan LaTeX's index for new databases and styles"
-msgstr "Znovu prehľadať nové LaTeXové databázy a štýle"
-
 #: src/frontends/qt4/ui/BibtexAddUi.ui:70 src/frontends/qt4/ui/BibtexUi.ui:107
 #: src/frontends/qt4/ui/TexinfoUi.ui:122
 msgid "&Rescan"
 msgstr "Znovu p&rehľadať"
-
-#: src/frontends/qt4/ui/BibtexAddUi.ui:81
-msgid ""
-"Here you can enter a local BibTeX database name or browse your directory."
-msgstr ""
-"Tu môžte vložiť meno lokálnej BibTeX databázy alebo prehľadať váš adresár."
-
-#: src/frontends/qt4/ui/BibtexAddUi.ui:102
-msgid "Here you can enter a local BibTeX database name"
-msgstr "Tu môžte vložiť meno lokálnej BibTeX databázy"
-
-#: src/frontends/qt4/ui/BibtexAddUi.ui:109
-msgid "Browse your local directory"
-msgstr "Prehľadať váš lokálny adresár"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:112 src/frontends/qt4/ui/BibtexUi.ui:152
 #: src/frontends/qt4/ui/CompareUi.ui:50 src/frontends/qt4/ui/ExternalUi.ui:70
@@ -301,14 +283,6 @@ msgstr "Pr&idať"
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:48
-msgid "Add a BibTeX database file"
-msgstr "Pridať súbor s BibTeX databázou"
-
-#: src/frontends/qt4/ui/BibtexUi.ui:51
-msgid "&Add..."
-msgstr "Pr&idať…"
-
 #: src/frontends/qt4/ui/BibtexUi.ui:58
 msgid "Remove the selected database"
 msgstr "Odstrániť vybranú databázu"
@@ -317,18 +291,10 @@ msgstr "Odstrániť vybranú databázu"
 msgid "&Delete"
 msgstr "Zm&azať"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:68
-msgid "Move the selected database upwards in the list"
-msgstr "Presunúť označenú databázu v listine hore"
-
 #: src/frontends/qt4/ui/BibtexUi.ui:71 src/frontends/qt4/ui/CitationUi.ui:188
 #: src/frontends/qt4/ui/ModulesUi.ui:117
 msgid "&Up"
 msgstr "Na&hor"
-
-#: src/frontends/qt4/ui/BibtexUi.ui:78
-msgid "Move the selected database downwards in the list"
-msgstr "Presunúť označenú databázu v listine dole"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:81 src/frontends/qt4/ui/CitationUi.ui:211
 #: src/frontends/qt4/ui/ModulesUi.ui:124
@@ -679,6 +645,10 @@ msgstr "Pridať označené vetvy do zoznamu."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:28
 msgid "&Add Selected"
+msgstr "Pr&idať Označené"
+
+#: src/frontends/qt4/ui/BibtexUi.ui:65
+msgid "&Add Selected[[bib]]"
 msgstr "Pr&idať Označené"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:35
@@ -1774,6 +1744,14 @@ msgstr ""
 msgid "Disallow l&ine breaks after dashes"
 msgstr "Nepovoliť zalomenie &riadku za pomlčkami"
 
+#: lib/layouts/copernicus.layout:333
+msgid "Disclaimer"
+msgstr "Vyhlásenie"
+
+#: lib/layouts/copernicus.layout:336
+msgid "Disclaimer."
+msgstr "Vyhlásenie."
+
 #: src/frontends/qt4/ui/GraphicsUi.ui:51
 msgid "&Graphics"
 msgstr "&Grafika"
@@ -1954,6 +1932,26 @@ msgstr "----------->"
 #: src/frontends/qt4/ui/HSpaceUi.ui:57
 msgid "\\-----v-----/"
 msgstr "\\-----v-----/"
+
+#: lib/layouts/aastex62.layout:227
+msgid "\\Alph{appendix}."
+msgstr "\\Alph{appendix}."
+
+#: lib/layouts/copernicus.layout:242
+msgid "\\Alph{appendix}\\arabic{subappendix}"
+msgstr "\\Alph{appendix}\\arabic{subappendix}"
+
+#: lib/layouts/aastex62.layout:242
+msgid "\\Alph{appendix}\\arabic{subappendix}."
+msgstr "\\Alph{appendix}\\arabic{subappendix}."
+
+#: lib/layouts/copernicus.layout:253
+msgid "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}"
+msgstr "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}"
+
+#: lib/layouts/aastex62.layout:257
+msgid "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}."
+msgstr "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}."
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:62
 msgid "/-----^-----\\"
@@ -2594,6 +2592,10 @@ msgstr "Posledný riadok výpisu"
 #: src/frontends/qt4/ui/ListingsUi.ui:444
 msgid "Ad&vanced"
 msgstr "Rozšír&ené"
+
+#: src/frontends/qt4/ui/BibtexUi.ui:75
+msgid "Add &Local..."
+msgstr "&Pridať Lokálnu…"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:458
 msgid "More Parameters"
@@ -4600,6 +4602,10 @@ msgstr "Do&stupné Registre:"
 msgid "Sele&cted Label:"
 msgstr "V&ybrané Heslo:"
 
+#: src/frontends/qt4/ui/BibtexUi.ui:161
+msgid "Sele&cted:"
+msgstr "Vybran&é:"
+
 #: src/frontends/qt4/ui/ThesaurusUi.ui:66
 msgid "Sele&ction:"
 msgstr "&Výber:"
@@ -5826,6 +5832,14 @@ msgstr "Publikačný Rok"
 msgid "Publication Year:"
 msgstr "Publikačný Rok:"
 
+#: lib/layouts/copernicus.layout:112
+msgid "Publications"
+msgstr "Publikácie"
+
+#: lib/layouts/copernicus.layout:165
+msgid "Published"
+msgstr "Publikované"
+
 #: lib/layouts/AEA.layout:77
 msgid "Publication Volume"
 msgstr "Publikačný Diel"
@@ -6917,6 +6931,10 @@ msgstr "V Preambule"
 msgid "In Title"
 msgstr "V Titule"
 
+#: lib/layouts/copernicus.layout:41
+msgid "InFrontmatter"
+msgstr "InFrontmatter"
+
 #: lib/layouts/RJournal.layout:3
 msgid "R Journal"
 msgstr "R Časopis"
@@ -7052,6 +7070,10 @@ msgstr "Mail"
 msgid "Correspondence to:"
 msgstr "Korešpodencia na:"
 
+#: lib/layouts/copernicus.layout:138
+msgid "Correspondence:"
+msgstr "Korešpodencia:"
+
 #: lib/layouts/aa.layout:166 lib/layouts/egs.layout:541
 msgid "Acknowledgements."
 msgstr "Poďakovania."
@@ -7097,6 +7119,10 @@ msgstr "Sekcia"
 msgid "Subsection"
 msgstr "Podsekcia"
 
+#: lib/layouts/aastex62.layout:238 lib/layouts/copernicus.layout:238
+msgid "Subsection Appendix"
+msgstr "Podsekcia Prílohy"
+
 #: lib/layouts/aa.layout:196 lib/layouts/aapaper.layout:74
 #: lib/layouts/aapaper.layout:161 lib/layouts/aastex.layout:121
 #: lib/layouts/agu_stdsections.inc:50 lib/layouts/amsart.layout:128
@@ -7113,6 +7139,10 @@ msgstr "Podsekcia"
 #: lib/layouts/stdsections.inc:124 lib/layouts/svcommon.inc:214
 msgid "Subsubsection"
 msgstr "Podpodsekcia"
+
+#: lib/layouts/aastex62.layout:253 lib/layouts/copernicus.layout:249
+msgid "Subsubsection Appendix"
+msgstr "Podpodsekcia Prílohy"
 
 #: lib/layouts/aa.layout:227 lib/layouts/aapaper.layout:99
 #: lib/layouts/aapaper.layout:194 lib/layouts/aastex.layout:237
@@ -7490,6 +7520,10 @@ msgstr "Oddeliť identifikátor datasetu od textu"
 #: lib/layouts/aastex6.layout:3
 msgid "American Astronomical Society (AASTeX v. 6)"
 msgstr "American Astronomical Society (AASTeX v. 6)"
+
+#: lib/layouts/aastex62.layout:3
+msgid "American Astronomical Society (AASTeX v. 6.2)"
+msgstr "American Astronomical Society (AASTeX v. 6.2)"
 
 #: lib/layouts/aastex6.layout:59
 msgid "Software"
@@ -8316,9 +8350,13 @@ msgstr "TOG data URL"
 msgid "Data URL:"
 msgstr "URL dát:"
 
-#: src/frontends/qt4/ui/BibtexAddUi.ui:31
-msgid "Databases fou&nd by LaTeX:"
-msgstr "&Databázy nájdené LaTeXom:"
+#: lib/layouts/copernicus.layout:297
+msgid "Data availability."
+msgstr "Dostupnosť dát."
+
+#: lib/layouts/copernicus.layout:295
+msgid "DataAvailability"
+msgstr "Dostupnosť Dát"
 
 #: lib/layouts/acmsiggraph.layout:128
 msgid "TOG code URL"
@@ -8327,6 +8365,22 @@ msgstr "TOG code URL"
 #: lib/layouts/acmsiggraph.layout:131
 msgid "Code URL:"
 msgstr "URL kódu:"
+
+#: lib/layouts/copernicus.layout:303
+msgid "Code and data availability."
+msgstr "Dostupnosť kódu a dát."
+
+#: lib/layouts/copernicus.layout:291
+msgid "Code availability."
+msgstr "Dostupnosť kódu."
+
+#: lib/layouts/copernicus.layout:301
+msgid "CodeAndDataAvailability"
+msgstr "Dostupnosť Kódu a Dát"
+
+#: lib/layouts/copernicus.layout:289
+msgid "CodeAvailability"
+msgstr "Dostupnosť Kódu"
 
 #: lib/layouts/agu-dtd.layout:3
 msgid "American Geophysical Union (AGU, SGML Article)"
@@ -8601,6 +8655,10 @@ msgstr "HlavičkaStĺpca:"
 msgid "Published-online:"
 msgstr "Vydané-online:"
 
+#: lib/layouts/copernicus.layout:168
+msgid "Published:"
+msgstr "Publikované:"
+
 #: lib/layouts/agu_stdtitle.inc:264 src/frontends/qt4/GuiCitation.cpp:95
 msgid "Citation"
 msgstr "Citácia"
@@ -8779,6 +8837,10 @@ msgstr "Paper Id:"
 msgid "AuthorAddr"
 msgstr "AutorovaAdresa"
 
+#: lib/layouts/copernicus.layout:321
+msgid "AuthorContribution"
+msgstr "Príspevky Autora"
+
 #: lib/layouts/aguplus.inc:160
 msgid "Author Address:"
 msgstr "Autorova Adresa:"
@@ -8837,6 +8899,10 @@ msgstr "Postupné číslo pre autorove príslušenstvá"
 #: lib/layouts/agutex.layout:130
 msgid "Author affiliation:"
 msgstr "Príslušenstvo autora:"
+
+#: lib/layouts/copernicus.layout:323
+msgid "Author contributions."
+msgstr "Príspevky Autora."
 
 #: lib/layouts/agutex.layout:197
 msgid "Acknowledgments."
@@ -9166,6 +9232,10 @@ msgstr "Časopis pre Geodéziu (Springer)"
 #: lib/layouts/apa6.layout:324
 msgid "CopNum"
 msgstr "CopNum"
+
+#: lib/layouts/copernicus.layout:3
+msgid "Copernicus Publications Manuscript Preparation"
+msgstr "Copernicus Publications Manuscript Preparation"
 
 #: lib/layouts/apa6.layout:473
 msgid "*"
@@ -10361,6 +10431,10 @@ msgstr "&Revízie naspäť"
 msgid "FirstName"
 msgstr "KrstnéMeno"
 
+#: lib/layouts/copernicus.layout:93
+msgid "FirstPage"
+msgstr "Číslo Prvej Strany"
+
 #: lib/layouts/dinbrief.layout:3
 msgid "DIN-Brief"
 msgstr "Din-Brief"
@@ -11097,6 +11171,10 @@ msgstr "Korešpondujúci autor"
 msgid "Corresponding author text:"
 msgstr "Korešpondujúci autor text:"
 
+#: lib/layouts/aastex62.layout:125
+msgid "Corresponding author:"
+msgstr "Korešpondujúci autor:"
+
 #: lib/layouts/elsarticle.layout:230
 msgid "Address Label"
 msgstr "Návestie Adresy"
@@ -11717,6 +11795,10 @@ msgstr "Fixme Poznámka|F"
 #: lib/layouts/fixme.module:111
 msgid "Insert the FIXME note here"
 msgstr "Vložte sem FIXME poznámku"
+
+#: lib/layouts/copernicus.layout:64
+msgid "Insert the affiliation number"
+msgstr "Vložte sem číslo príslušenstva"
 
 #: lib/layouts/fixme.module:116
 msgid "Fixme Warning (Targeted)"
@@ -12543,6 +12625,14 @@ msgstr "H-P inštrukcia"
 msgid "Statement Text"
 msgstr "Inštrukčný Text"
 
+#: lib/layouts/copernicus.layout:190
+msgid "Statements"
+msgstr "Statements"
+
+#: lib/layouts/copernicus.layout:313
+msgid "Statements2"
+msgstr "Statements2"
+
 #: lib/layouts/hpstatement.module:41
 msgid "Text for statements that require some information"
 msgstr "Text pre inštrukcie ktoré vyžadujú nejaké informácie"
@@ -12673,6 +12763,10 @@ msgstr "Téza(prop)"
 
 #: lib/layouts/ijmpc.layout:436 lib/layouts/ijmpd.layout:449
 msgid "Appendix \\Alph{appendix}."
+msgstr "Príloha \\Alph{appendix}."
+
+#: lib/layouts/copernicus.layout:231
+msgid "Appendix \\Alph{appendix}:"
 msgstr "Príloha \\Alph{appendix}."
 
 #: lib/layouts/ijmpd.layout:3
@@ -12815,6 +12909,14 @@ msgstr "\\thesection."
 #: lib/layouts/iucr.layout:48
 msgid "\\thesection"
 msgstr "\\thesection"
+
+#: lib/layouts/copernicus.layout:218
+msgid "\\thesection Conclusions"
+msgstr "\\thesection Závery"
+
+#: lib/layouts/copernicus.layout:210
+msgid "\\thesection Introduction"
+msgstr "\\thesection Úvod"
 
 #: lib/layouts/iucr.layout:53 lib/layouts/jss.layout:30
 msgid "\\thesubsection."
@@ -13042,13 +13144,14 @@ msgstr "Adresa pre výtlačky:"
 msgid "RunningTitle"
 msgstr "StĺpecNadpis"
 
-#: lib/layouts/kluwer.layout:228 lib/layouts/svcommon.inc:405
+#: lib/layouts/copernicus.layout:90 lib/layouts/kluwer.layout:228
+#: lib/layouts/svcommon.inc:405
 msgid "Running title:"
-msgstr "titul v hlavičke:"
+msgstr "Titul v hlavičke:"
 
-#: lib/layouts/kluwer.layout:242
+#: lib/layouts/copernicus.layout:106 lib/layouts/kluwer.layout:242
 msgid "RunningAuthor"
-msgstr "StĺpecAutor"
+msgstr "Autori v Hlavičke"
 
 #: lib/layouts/kluwer.layout:249 lib/layouts/svcommon.inc:411
 msgid "Running author:"
@@ -14865,6 +14968,14 @@ msgstr "R-P zvrat"
 msgid "Safety phrase"
 msgstr "Poistný zvrat"
 
+#: lib/layouts/copernicus.layout:309
+msgid "Sample availability."
+msgstr "Dostupnosť príkladu."
+
+#: lib/layouts/copernicus.layout:307
+msgid "SampleAvailability"
+msgstr "Dostupnosť Príkladu"
+
 #: lib/layouts/rsphrase.module:46
 msgid "Phrase Text"
 msgstr "Zvrat: Text"
@@ -15437,6 +15548,10 @@ msgstr "Autorské práva rok:"
 msgid "Copyrightdata"
 msgstr "AutorskéPrávaDáta"
 
+#: lib/layouts/copernicus.layout:201
+msgid "Copyrightstatement"
+msgstr "Prehlásenie Autorských Práv"
+
 #: lib/layouts/sigplanconf.layout:108
 msgid "Copyright data:"
 msgstr "Autorské práva dáta:"
@@ -15553,6 +15668,10 @@ msgstr "Kapitola ##"
 #: lib/layouts/stdcounters.inc:29
 msgid "Section ##"
 msgstr "Sekcia ##"
+
+#: lib/layouts/aastex62.layout:223 lib/layouts/copernicus.layout:227
+msgid "Section Appendix"
+msgstr "Sekcia Prílohy"
 
 #: lib/layouts/stdcounters.inc:34 lib/layouts/stdcounters.inc:39
 msgid "Paragraph ##"
@@ -15781,9 +15900,9 @@ msgstr "Obsah titul:"
 msgid "TOC author:"
 msgstr "Obsah autor:"
 
-#: lib/layouts/svcommon.inc:401
+#: lib/layouts/copernicus.layout:87 lib/layouts/svcommon.inc:401
 msgid "Running Title"
-msgstr "Titul v Hlavičke"
+msgstr "Krátky Titul v Hlavičke"
 
 #: lib/layouts/svcommon.inc:408
 msgid "Running Author"
@@ -15888,6 +16007,10 @@ msgstr "Inštitút #"
 #: lib/layouts/svprobth.layout:169
 msgid "Corr Author:"
 msgstr "Zodpovedný Autor:"
+
+#: lib/layouts/copernicus.layout:135
+msgid "Correspondence"
+msgstr "Korešpodencia"
 
 #: lib/layouts/svglobal.layout:139 lib/layouts/svjog.layout:143
 #: lib/layouts/svprobth.layout:173
@@ -16402,6 +16525,10 @@ msgstr "Záver*"
 #: lib/layouts/theorems-ams-extended.module:330
 msgid "Conclusion."
 msgstr "Záver."
+
+#: lib/layouts/copernicus.layout:215
+msgid "Conclusions"
+msgstr "Závery"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:377
 #: lib/layouts/theorems-ams-extended-bytype.module:386
@@ -16942,6 +17069,18 @@ msgstr ""
 "Pomocník>LyX Funkcie na obsiahly súpis funkcií. Výstup je súpis všetkých "
 "možných klávesových skratiek pre túto funkciu"
 
+#: src/frontends/qt4/GuiInfo.cpp:202
+msgid ""
+"Enter a localizable English string from the LyX User Interface, including "
+"accelerator markup ('&' or '|') and trailing colons. The output is the "
+"localized string (using the current localization); trailing colons and "
+"accelerator markup are stripped."
+msgstr ""
+"Vložte lokalizovateľný anglický reťazec z užívateľského rozhrania LyX-u, "
+"vrátane značky akcelerátoru ('&' alebo '|') a koncových dvojbodiek. Výstup "
+"je lokalizovaný reťazec (používajúc aktuálnu lokalizáciu); koncové dvojbodky "
+"a akcelerátory sú vynechané."
+
 #: src/frontends/qt4/GuiInfo.cpp:154
 msgid "Enter a valid value below"
 msgstr "Vložte poniže prijateľnú hodnotu"
@@ -17120,6 +17259,10 @@ msgstr "Albánsky"
 #: lib/languages:138
 msgid "English (USA)"
 msgstr "Anglicky (USA)"
+
+#: src/frontends/qt4/GuiInfo.cpp:105
+msgid "English String"
+msgstr "Anglický Reťazec"
 
 #: lib/languages:149
 msgid "Amharic"
@@ -18296,6 +18439,10 @@ msgstr "Vertikálny Fantóm|á"
 msgid "Interword Space|w"
 msgstr "Medzi-slovná Medzera|e"
 
+#: lib/layouts/copernicus.layout:207
+msgid "Introduction"
+msgstr "Úvod"
+
 #: lib/ui/stdcontext.inc:235
 msgid "Protected Space|o"
 msgstr "Chránená Medzera|C"
@@ -18492,6 +18639,10 @@ msgstr "Skoč Späť na Uloženú Záložku|S"
 #: lib/ui/stdcontext.inc:341 lib/ui/stdmenus.inc:573
 msgid "Forward Search|F"
 msgstr "Dopredu Hľadať|a"
+
+#: src/frontends/qt4/ui/BibtexUi.ui:34
+msgid "Found b&y LaTeX:"
+msgstr "Databázy &nájdené LaTeXom:"
 
 #: lib/ui/stdcontext.inc:343 lib/ui/stdmenus.inc:118
 msgid "Move Paragraph Up|o"
@@ -18749,6 +18900,10 @@ msgstr "Invertovať Vložku|I"
 #: lib/ui/stdcontext.inc:507
 msgid "Add Unknown Branch|w"
 msgstr "Pridať Neznámu Vetvu|P"
+
+#: src/frontends/qt4/ui/BibtexUi.ui:72
+msgid "Add a BibTeX database from your local directory"
+msgstr "Pridať BibTeX databázu z vášho lokálneho adresára"
 
 #: lib/ui/stdcontext.inc:516
 msgid "Insert Reference at Cursor Position|I"
@@ -19188,6 +19343,10 @@ msgstr "Pridať Riadok|P"
 #: lib/ui/stdmenus.inc:227
 msgid "Add Column|u"
 msgstr "Pridať Stĺpec|e"
+
+#: src/frontends/qt4/ui/BibtexUi.ui:268
+msgid "Add L&ocal..."
+msgstr "Pridať Lokáln&y…"
 
 #: lib/ui/stdmenus.inc:229
 msgid "Copy Column|p"
@@ -19785,6 +19944,14 @@ msgstr "TeX Informácia|I"
 msgid "Compare...|C"
 msgstr "Porovnávať…|o"
 
+#: lib/layouts/copernicus.layout:330
+msgid "Competing Interests."
+msgstr "Konkurenčné Záujmy."
+
+#: lib/layouts/copernicus.layout:327
+msgid "CompetingInterests"
+msgstr "Konkurenčné Záujmy"
+
 #: lib/ui/stdmenus.inc:605
 msgid "Reconfigure|R"
 msgstr "Rekonfigurácia|R"
@@ -20089,6 +20256,10 @@ msgstr "Nastavenia odstavca"
 msgid "Add row"
 msgstr "Pridať riadok"
 
+#: src/frontends/qt4/ui/BibtexUi.ui:62
+msgid "Add the selected BibTeX database from the list on the left"
+msgstr "Presunúť označenú databázu z listiny doľava"
+
 #: lib/ui/stdtoolbars.inc:146 lib/ui/stdtoolbars.inc:197
 msgid "Add column"
 msgstr "Pridať stĺpec"
@@ -20344,6 +20515,10 @@ msgstr "Recenzovať"
 #: lib/ui/stdtoolbars.inc:234
 msgid "Track changes"
 msgstr "Sledovať zmeny"
+
+#: lib/ui/stdcontext.inc:483
+msgid "Transform Field to Static Text|T"
+msgstr "Zmeniť Pole na Statický Text|Z"
 
 #: lib/ui/stdtoolbars.inc:235
 msgid "Show changes in output"
@@ -20922,6 +21097,14 @@ msgstr "st&upňov"
 #: lib/ui/stdtoolbars.inc:426
 msgid "iddots"
 msgstr "iddots"
+
+#: lib/layouts/copernicus.layout:83
+msgid ""
+"identify the author with the corresponding affiliation. 1, 2, 3, etc. should "
+"be inserted."
+msgstr ""
+"Identifikuj autora s číslami jeho príslušenstiev. 1, 2, 3, atď. by sa malo "
+"vložiť."
 
 #: lib/ui/stdtoolbars.inc:438
 msgid "Frame Decorations"
@@ -21651,6 +21834,14 @@ msgstr "Phi"
 msgid "Psi"
 msgstr "Psi"
 
+#: lib/layouts/copernicus.layout:153
+msgid "Pubdiscuss"
+msgstr "Diskutované"
+
+#: lib/layouts/copernicus.layout:156
+msgid "Pubdiscuss:"
+msgstr "Diskutované:"
+
 #: lib/ui/stdtoolbars.inc:640
 msgid "Omega"
 msgstr "Omega"
@@ -22002,6 +22193,10 @@ msgstr "fint"
 #: lib/ui/stdtoolbars.inc:732
 msgid "fintop"
 msgstr "fintop"
+
+#: lib/layouts/copernicus.layout:96
+msgid "firstpage"
+msgstr "číslo prvej strany"
 
 #: lib/ui/stdtoolbars.inc:733
 msgid "landupint"
@@ -22630,10 +22825,6 @@ msgstr "dopravadoľavašípky"
 #: lib/ui/stdtoolbars.inc:914
 msgid "Lleftarrow"
 msgstr "Ldoľavašípka"
-
-#: src/frontends/qt4/ui/BibtexAddUi.ui:84
-msgid "Lo&cal databases:"
-msgstr "&Lokálne databázy:"
 
 #: lib/ui/stdtoolbars.inc:915
 msgid "Rrightarrow"
@@ -24947,6 +25138,10 @@ msgstr "NoWeb"
 msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
+#: lib/layouts/aastex62.layout:186
+msgid "Nocollaboration"
+msgstr "Bez Spolupráce"
+
 #: lib/configure.py:656
 msgid "Sweave (Japanese)"
 msgstr "Sweave (japonský)"
@@ -26138,6 +26333,11 @@ msgstr ""
 "sa nedá nájsť. Bude použitá štandardná\n"
 "trieda a schéma. LyX nebude schopný zrobiť\n"
 "správny výstup."
+
+#: src/insets/InsetInfo.cpp:391
+#, c-format
+msgid "The localization for the string '%1$s'"
+msgstr "Lokalizácia pre reťazec '%1$s'"
 
 #: src/BufferParams.cpp:2448
 msgid "Document class not found"
@@ -29576,6 +29776,10 @@ msgstr "Text vyprázdniť"
 msgid "All avail. citations"
 msgstr "Všetky dostupné citácie"
 
+#: src/frontends/qt4/GuiBibtex.cpp:71
+msgid "All avail. databases"
+msgstr "Všetky dostupné databázy"
+
 #: src/frontends/qt4/GuiCitation.cpp:112
 msgid "Regular e&xpression"
 msgstr "Re&gulárny výraz"
@@ -30884,6 +31088,10 @@ msgstr "Nastaviť cestu ku knižniciam pre Hunspell"
 msgid "Give a filename for the LyX server pipe"
 msgstr "Zadajte meno pre dátovod LyX serveru"
 
+#: lib/layouts/copernicus.layout:67
+msgid "Given name"
+msgstr "Krstné Meno"
+
 #: src/frontends/qt4/GuiPrefs.cpp:1566
 #: src/frontends/qt4/GuiSpellchecker.cpp:594
 msgid "Spellchecker"
@@ -31131,6 +31339,10 @@ msgstr "Všetky dostupné heslá"
 #: src/frontends/qt4/GuiRef.cpp:63
 msgid "Enter string to filter the list of available labels"
 msgstr "Zadajte reťazec na výber z listiny dostupných hesiel"
+
+#: lib/layouts/aastex62.layout:151
+msgid "Enter the 16 digit ORCID as xxxx-xxxx-xxxx-xxxx"
+msgstr "Vložte sem 16 číslic pre ORCID ako xxxx-xxxx-xxxx-xxxx"
 
 #: src/frontends/qt4/GuiRef.cpp:75
 msgid "By Occurrence"
@@ -32319,6 +32531,10 @@ msgstr "Žiadna Citácia v Oblasti!"
 #: src/insets/InsetCitation.cpp:371
 msgid "No citations selected!"
 msgstr "Žiadna citácia nie je vybraná!"
+
+#: lib/layouts/aastex62.layout:193
+msgid "No collaboration"
+msgstr "Bez spolupráce"
 
 #: src/frontends/qt4/Menus.cpp:1620
 msgid "All authors|h"
@@ -34135,6 +34351,10 @@ msgstr "RTL/Bidi"
 msgid "Locale/Internationalisation"
 msgstr "Lokalizácia/Nastavenie jazyka"
 
+#: src/frontends/qt4/GuiInfo.cpp:83
+msgid "Localized GUI String"
+msgstr "Lokalizovaný GUI Reťazec"
+
 #: src/support/debug.cpp:71
 msgid "Selection copy/paste mechanism"
 msgstr "Výber kopírovania/vlepenia z/do schránky"
@@ -34307,10 +34527,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Information regarding %1$s '%2$s'"
 #~ msgstr "Informácia ohľadne %1$s '%2$s'"
-
-#, fuzzy
-#~ msgid "Frontmatter"
-#~ msgstr "VstupnáČasť"
 
 #~ msgid "Begin frontmatter"
 #~ msgstr "Začiatok vstupnej časti"
