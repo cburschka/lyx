@@ -20,13 +20,14 @@ Provides        float	1
 Provides        subfig	1
 Provides        rotating	1
 Provides        natbib	1
+Provides	hyperref	1
 
 Input           stdclass.inc
 
 TocDepth        2
 
 ClassOptions
-	FontSize        10,11,12
+	FontSize        10|11|12
 	Other           "journal abbreviation, manuscript"
 End
 
@@ -133,7 +134,7 @@ Style Publications
 	EndFont
 	LabelFont
 		Series          Bold
-		Shape           Regular
+		Shape           Up
 		Color           Black
 	EndFont
 End
@@ -172,7 +173,7 @@ End
 Style Revised
 	# enters the date that the revised manuscript was received
 	# (to be inserted by the Publication Production Office and
-	omitted if there were no revisions).
+	# omitted if there were no revisions).
 	CopyStyle       Publications
 	LatexName       revised
 	LabelString     "Revised:"
@@ -181,8 +182,7 @@ End
 Style Published
 	# enters the date that the manuscript was published
 	# in its final form
-	# (to be inserted by the Publication Production
-	Office).
+	# (to be inserted by the Publication Production Office).
 	CopyStyle       Publications
 	LatexName       published
 	LabelString     "Published:"
@@ -275,23 +275,10 @@ End
 
 InsetLayout Flex:Appendix
 	LyXType         custom
-	ForcePlain      1
-	Margin          Dynamic
 	LatexType       Environment
 	LatexName       copappendix
 	Decoration      Classic
-	ParagraphGroup  1
 	MultiPar        true
-	NextNoIndent    1
-	AutoNests
-		"Section,SubSection,Standard"
-	EndAutoNests
-	Category        BackMatter
-	TopSep          1.2
-	ParSkip         0.4
-	BottomSep       0.8
-	Align           Left
-	LabelType       Top_Environment
 	LabelString     "[Appendix]"
 	KeepEmpty       1
 	Font
