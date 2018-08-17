@@ -85,7 +85,7 @@ Style Bibliography
 	ISTocCaption          0
 	Argument listpreamble:1
 	  LabelString    "Bib preamble"
-	  MenuString     "Bibiography Preamble"
+	  MenuString     "Bibliography Preamble"
 	  Tooltip        "LaTeX code to be inserted before the first bibliography item"
 	  PassThru       1
 	  Font
