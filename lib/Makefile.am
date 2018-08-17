@@ -488,7 +488,7 @@ dist_images_DATA1X = \
 	images/hidetab.svgz \
 	images/index-insert.svgz \
 	images/info-insert.svgz \
-	images/info-insert_buffer_vcs-revision.svgz \
+	images/info-insert_vcs_revision.svgz \
 	images/label-insert.svgz \
 	images/layout.svgz \
 	images/layout-document.svgz \
@@ -1772,7 +1772,7 @@ dist_imagesoxygen_DATA1X = \
 	images/oxygen/hidetab.svgz \
 	images/oxygen/href-insert.svgz \
 	images/oxygen/index-insert.svgz \
-	images/oxygen/info-insert_buffer_vcs-revision.svgz \
+	images/oxygen/info-insert_vcs_revision.svgz \
 	images/oxygen/label-insert.svgz \
 	images/oxygen/layout-document.svgz \
 	images/oxygen/layout-paragraph.svgz \
@@ -1977,7 +1977,7 @@ dist_imagesclassic_DATA = \
 	images/classic/href-insert.png  \
 	images/classic/iconsize.png  \
 	images/classic/index-insert.png  \
-	images/classic/info-insert_buffer_vcs-revision.png  \
+	images/classic/info-insert_vcs_revision.png  \
 	images/classic/label-insert.png  \
 	images/classic/layout-document.png  \
 	images/classic/layout-paragraph.png  \
