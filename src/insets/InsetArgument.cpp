@@ -314,7 +314,8 @@ void InsetArgument::latexArgument(otexstream & os,
 	runparams.pass_thru = isPassThru();
 	InsetText::latex(ots, runparams);
 	TexString ts = ots.release();
-	bool const add_braces = ldelim != "{" && support::contains(ts.str, rdelim);
+	bool const add_braces = !ldelim.empty() && ldelim != "{"
+			&& support::contains(ts.str, rdelim);
 	os << ldelim;
 	if (add_braces)
 		os << '{';

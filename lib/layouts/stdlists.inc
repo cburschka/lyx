@@ -6,7 +6,7 @@
 # This include files contains various standard environments for lists.
 
 
-Format 68
+Format 69
 
 Input stdlyxlist.inc
 
@@ -32,6 +32,16 @@ Style Itemize
 	Argument item:1
 		LabelString   "Custom Item|s"
 		Tooltip       "A customized item string"
+	EndArgument
+	Argument listpreamble:1
+		LabelString    "List preamble"
+		MenuString     "List Preamble"
+		Tooltip        "LaTeX code to be inserted before the first item"
+		PassThru       1
+		Font
+			Family typewriter
+			Color latex
+		EndFont
 	EndArgument
 End
 
@@ -62,6 +72,16 @@ Style Enumerate
 		LabelString   "Custom Item|s"
 		Tooltip       "A customized item string"
 	EndArgument
+	Argument listpreamble:1
+		LabelString    "List preamble"
+		MenuString     "List Preamble"
+		Tooltip        "LaTeX code to be inserted before the first item"
+		PassThru       1
+		Font
+			Family typewriter
+			Color latex
+		EndFont
+	EndArgument
 End
 
 Style Description
@@ -91,6 +111,16 @@ Style Description
 	HTMLStyle
 		dl.description dt { font-weight: bold; }
 	EndHTMLStyle
+	Argument listpreamble:1
+		LabelString    "List preamble"
+		MenuString     "List Preamble"
+		Tooltip        "LaTeX code to be inserted before the first item"
+		PassThru       1
+		Font
+			Family typewriter
+			Color latex
+		EndFont
+	EndArgument
 End
 
 

@@ -49,6 +49,7 @@ Format LaTeX feature                        LyX feature
 556   Bib files encoding
       \begin_inset CommandInset bibtex     Biblatex: bibencoding=<encoding> [latex name]
       encoding=<encoding> [lyx name]       BibTeX: \bgroup\inputencoding{<encoding>}...\egroup
+563   InsetArgument listpreamble:<nr>      All content between \begin{env} and first \item of a list 
 
 
 

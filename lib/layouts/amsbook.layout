@@ -12,7 +12,7 @@
 # Moved "number within sections" to modules Aug '09 (Paul Rubin <rubin@msu.edu>)
 
 
-Format 68
+Format 69
 
 Columns                 1
 Sides                   2
@@ -160,4 +160,14 @@ Style Chapter_Exercises
 	  \newenvironment{lyxxcb}{\begin{xcb}{Exercises}\begin{enumerate}}
 	                     {\end{enumerate}\end{xcb}}
 	EndPreamble
+	Argument listpreamble:1
+	  LabelString    "List preamble"
+	  MenuString     "List Preamble"
+	  Tooltip        "LaTeX code to be inserted before the first item"
+	  PassThru       1
+	  Font
+	    Family typewriter
+	    Color latex
+	  EndFont
+	EndArgument
 End

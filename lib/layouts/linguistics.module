@@ -7,7 +7,7 @@
 
 # Author: Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 68
+Format 69
 
 Counter example
 	Within               chapter
@@ -71,6 +71,16 @@ Style Numbered_Examples_(consecutive)
 	LabelType             Enumerate
 	LabelCounter          "example"
 	ResumeCounter         true
+	Argument listpreamble:1
+		LabelString    "List preamble"
+		MenuString     "List Preamble"
+		Tooltip        "LaTeX code to be inserted before the first item"
+		PassThru       1
+		Font
+			Family typewriter
+			Color latex
+		EndFont
+	EndArgument
 	Argument item:1
 		LabelString   "Custom Numbering|s"
 		Tooltip       "Customize the numeration"

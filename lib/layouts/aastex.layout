@@ -42,7 +42,7 @@
 # 	The new "aastex6.layout" depends on aastex6.cls but inputs this
 #       file for the definitions (cf. LyX ticket #10027)
 
-Format 68
+Format 69
 Columns			1
 Sides			1
 #SecNumDepth		3
@@ -430,6 +430,16 @@ Style References
 	  Size		Normal
 	  Series	Bold
 	EndFont
+	Argument listpreamble:1
+	  LabelString    "Bib preamble"
+	  MenuString     "Bibiography Preamble"
+	  Tooltip        "LaTeX code to be inserted before the first bibliography item"
+	  PassThru       1
+	  Font
+	    Family typewriter
+	    Color latex
+	  EndFont
+	EndArgument
 End
 
 

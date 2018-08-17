@@ -9,7 +9,7 @@
 # Converted article -> egs Martin Vermeer
 
 
-Format 68
+Format 69
 Columns                 2
 Sides                   1
 PageStyle               Plain
@@ -149,6 +149,16 @@ Style List
 	AlignPossible         Block, Left
 	LabelType             Manual
 	LabelString           "00.00.0000"
+	Argument listpreamble:1
+		LabelString    "List preamble"
+		MenuString     "List Preamble"
+		Tooltip        "LaTeX code to be inserted before the first item"
+		PassThru       1
+		Font
+			Family typewriter
+			Color latex
+		EndFont
+	EndArgument
 End
 
 
@@ -173,6 +183,16 @@ Style Enumerate
 		LabelString   "Custom Item|s"
 		Tooltip       "A customized item string"
 	EndArgument
+	Argument listpreamble:1
+		LabelString    "List preamble"
+		MenuString     "List Preamble"
+		Tooltip        "LaTeX code to be inserted before the first item"
+		PassThru       1
+		Font
+			Family typewriter
+			Color latex
+		EndFont
+	EndArgument
 End
 
 
@@ -196,6 +216,16 @@ Style Itemize
 		LabelString   "Custom Item|s"
 		Tooltip       "A customized item string"
 	EndArgument
+	Argument listpreamble:1
+		LabelString    "List preamble"
+		MenuString     "List Preamble"
+		Tooltip        "LaTeX code to be inserted before the first item"
+		PassThru       1
+		Font
+			Family typewriter
+			Color latex
+		EndFont
+	EndArgument
 End
 
 
@@ -218,6 +248,16 @@ Style Description
 	LabelFont
 	  Series              Bold
 	EndFont
+	Argument listpreamble:1
+		LabelString    "List preamble"
+		MenuString     "List Preamble"
+		Tooltip        "LaTeX code to be inserted before the first item"
+		PassThru       1
+		Font
+			Family typewriter
+			Color latex
+		EndFont
+	EndArgument
 End
 
 
@@ -597,6 +637,16 @@ Style Bibliography
 	EndFont
 	TocLevel              1
 	IsTocCaption          0
+	Argument listpreamble:1
+	  LabelString    "Bib preamble"
+	  MenuString     "Bibiography Preamble"
+	  Tooltip        "LaTeX code to be inserted before the first bibliography item"
+	  PassThru       1
+	  Font
+	    Family typewriter
+	    Color latex
+	  EndFont
+	EndArgument
 End
 
 

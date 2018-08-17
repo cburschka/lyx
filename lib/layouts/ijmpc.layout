@@ -12,7 +12,7 @@
 # Author: Uwe Stöhr (uwestoehr@web.de)
 
 
-Format 68
+Format 69
 
 Sides		1
 Columns		1
@@ -285,6 +285,16 @@ Style ItemList
   Margin	Static
   LatexType	Item_Environment
   LatexName	itemlist
+  Argument listpreamble:1
+    LabelString    "List preamble"
+    MenuString     "List Preamble"
+    Tooltip        "LaTeX code to be inserted before the first item"
+    PassThru       1
+    Font
+      Family typewriter
+      Color latex
+    EndFont
+  EndArgument
   NextNoIndent	1
   ToggleIndent	Never
   LeftMargin	MMN
@@ -310,6 +320,16 @@ Style RomanList
     LabelString	"Numbering Scheme"
     Tooltip	"Use the largest item number in your list, e.g. '(iv)' for 4 Roman numbered items"
     PassThru	1
+  EndArgument
+  Argument listpreamble:1
+    LabelString    "List preamble"
+    MenuString     "List Preamble"
+    Tooltip        "LaTeX code to be inserted before the first item"
+    PassThru       1
+    Font
+      Family typewriter
+      Color latex
+    EndFont
   EndArgument
   NextNoIndent	1
   LeftMargin	MMN
@@ -469,4 +489,14 @@ Style Bibliography
   EndFont
   TocLevel      1
   IsTocCaption  0
+  Argument listpreamble:1
+    LabelString    "Bib preamble"
+    MenuString     "Bibiography Preamble"
+    Tooltip        "LaTeX code to be inserted before the first bibliography item"
+    PassThru       1
+    Font
+      Family typewriter
+      Color latex
+    EndFont
+  EndArgument
 End

@@ -94,6 +94,7 @@ public:
 		docstring labelstring;
 		docstring menustring;
 		bool mandatory;
+		bool nodelims;
 		docstring ldelim;
 		docstring rdelim;
 		docstring defaultarg;
@@ -115,6 +116,8 @@ public:
 	LaTeXArgMap const & latexargs() const { return latexargs_; }
 	///
 	LaTeXArgMap const & postcommandargs() const { return postcommandargs_; }
+	///
+	LaTeXArgMap const & listpreamble() const { return listpreamble_; }
 	///
 	LaTeXArgMap const & itemargs() const { return itemargs_; }
 	/// Returns true is the layout has arguments. If false, then an
@@ -483,6 +486,8 @@ private:
 	LaTeXArgMap latexargs_;
 	///
 	LaTeXArgMap postcommandargs_;
+	///
+	LaTeXArgMap listpreamble_;
 	///
 	LaTeXArgMap itemargs_;
 	///

@@ -27,11 +27,12 @@ from datetime import (datetime, date, time)
 # Uncomment only what you need to import, please.
 
 from parser_tools import (count_pars_in_inset, find_end_of_inset, find_end_of_layout,
-                          find_token, find_re, get_bool_value, get_option_value, get_value, get_quoted_value)
+                          find_token, find_re, get_bool_value, get_containing_layout,
+                          get_option_value, get_value, get_quoted_value)
 #    del_token, del_value, del_complete_lines,
 #    find_complete_lines, find_end_of,
 #    find_re, find_substring, find_token_backwards,
-#    get_containing_inset, get_containing_layout,
+#    get_containing_inset,
 #    is_in_inset, set_bool_value
 #    find_tokens, find_token_exact, check_token
 
@@ -1155,6 +1156,31 @@ def revert_l7ninfo(document):
         i = i + 1
 
 
+def revert_listpargs(document):
+    " Reverts listpreamble arguments to TeX-code "
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Argument listpreamble:", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        # Find containing paragraph layout
+        parent = get_containing_layout(document.body, i)
+        if parent == False:
+            document.warning("Malformed LyX document: Can't find parent paragraph layout")
+            i += 1
+            continue
+        parbeg = parent[3]
+        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
+        endPlain = find_end_of_layout(document.body, beginPlain)
+        content = document.body[beginPlain + 1 : endPlain]
+        del document.body[i:j+1]
+        subst = ["\\begin_inset ERT", "status collapsed", "", "\\begin_layout Plain Layout",
+                 "{"] + content + ["}", "\\end_layout", "", "\\end_inset", ""]
+        document.body[parbeg : parbeg] = subst
+        i += 1
+
+
 ##
 # Conversion hub
 #
@@ -1178,10 +1204,12 @@ convert = [
            [559, []],
            [560, []],
            [561, [convert_dejavu]],
-           [562, []]
+           [562, []],
+           [563, []]
           ]
 
 revert =  [
+           [562, [revert_listpargs]],
            [561, [revert_l7ninfo]],
            [560, [revert_dejavu]],
            [559, [revert_timeinfo, revert_namenoextinfo]],

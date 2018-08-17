@@ -15,7 +15,7 @@
 # Modified for LyX 12 by Jean-Marc Lasgouttes and MV.
 
 
-Format 68
+Format 69
 Columns                 1
 Sides                   1
 PageStyle               Plain
@@ -289,6 +289,16 @@ Style Bibliography
 	EndFont
 	TocLevel              0
 	IsTocCaption          0
+	Argument listpreamble:1
+	  LabelString    "Bib preamble"
+	  MenuString     "Bibiography Preamble"
+	  Tooltip        "LaTeX code to be inserted before the first bibliography item"
+	  PassThru       1
+	  Font
+	    Family typewriter
+	    Color latex
+	  EndFont
+	EndArgument
 End
 
 

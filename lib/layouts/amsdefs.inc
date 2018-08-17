@@ -5,7 +5,7 @@
 # Modularized Jan '08 by Richard Heck <rgheck@brown.edu>
 
 # Including the maths stuff
-Format 68
+Format 69
 
 # By default AMS articles & books use leqno option (as SIAM journals).
 Provides leqno 1
@@ -227,4 +227,14 @@ Style Bibliography
 	EndFont
 	TocLevel             1
 	IsTocCaption         0
+	Argument listpreamble:1
+	  LabelString    "Bib preamble"
+	  MenuString     "Bibiography Preamble"
+	  Tooltip        "LaTeX code to be inserted before the first bibliography item"
+	  PassThru           1
+	  Font
+	    Family           typewriter
+	    Color            latex
+	  EndFont
+	EndArgument
 End

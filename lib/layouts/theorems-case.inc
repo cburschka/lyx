@@ -6,7 +6,7 @@
 # Define Case as an enumeration environment
 # with its own counters
 
-Format 68
+Format 69
 
 Counter casei
         LabelString "Case \arabic{casei}."
@@ -26,7 +26,6 @@ End
 
 Style Case
   Category              Reasoning
-
   Margin                Static
   LatexType             Item_Environment
   LatexName             casenv
@@ -49,6 +48,16 @@ Style Case
   HTMLItem              li
   HTMLLabel             NONE
   RefPrefix             enu
+  Argument listpreamble:1
+    LabelString    "List preamble"
+    MenuString     "List Preamble"
+    Tooltip        "LaTeX code to be inserted before the first item"
+    PassThru       1
+    Font
+      Family typewriter
+      Color latex
+    EndFont
+  EndArgument
   Argument item:1
     LabelString   "Custom Item|s"
     Tooltip       "A customized item string"

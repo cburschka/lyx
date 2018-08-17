@@ -19,7 +19,7 @@
 # see http://www.springer.com/authors for class files and further instructions
 
 
-Format 68
+Format 69
 PageStyle		Plain
 
 
@@ -595,6 +595,16 @@ Style Bibliography
 	EndFont
 	TocLevel        0
 	IsTocCaption    0
+	Argument listpreamble:1
+	  LabelString    "Bib preamble"
+	  MenuString     "Bibiography Preamble"
+	  Tooltip        "LaTeX code to be inserted before the first bibliography item"
+	  PassThru       1
+	  Font
+	    Family typewriter
+	    Color latex
+	  EndFont
+	EndArgument
 End
 
 Style Description

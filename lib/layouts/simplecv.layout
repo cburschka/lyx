@@ -5,7 +5,7 @@
 # Author : Jean-Marc Lasgouttes (Jean-Marc.Lasgouttes@inria.fr)
 
 
-Format 68
+Format 69
 Columns                 1
 Sides                   1
 SecNumDepth             -1
@@ -68,6 +68,16 @@ Style Topic
 	Margin                Manual
 	LatexType             Item_environment
 	LatexName             topic
+	Argument listpreamble:1
+		LabelString    "List preamble"
+		MenuString     "List Preamble"
+		Tooltip        "LaTeX code to be inserted before the first item"
+		PassThru       1
+		Font
+			Family typewriter
+			Color latex
+		EndFont
+	EndArgument
 	NextNoIndent          1
 	LabelSep              xxx
 	ParSkip               0.4
@@ -90,6 +100,16 @@ Style Itemize
 	Margin                Static
 	LatexType             Item_Environment
 	LatexName             itemize
+	Argument listpreamble:1
+		LabelString    "List preamble"
+		MenuString     "List Preamble"
+		Tooltip        "LaTeX code to be inserted before the first item"
+		PassThru       1
+		Font
+			Family typewriter
+			Color latex
+		EndFont
+	EndArgument
 	NextNoIndent          1
 	ToggleIndent          Never
 	LeftMargin            MMN
@@ -166,4 +186,14 @@ Style Bibliography
 	EndFont
 	TocLevel              1
 	IsTocCaption          0
+	Argument listpreamble:1
+	  LabelString    "Bib preamble"
+	  MenuString     "Bibiography Preamble"
+	  Tooltip        "LaTeX code to be inserted before the first bibliography item"
+	  PassThru       1
+	  Font
+	    Family typewriter
+	    Color latex
+	  EndFont
+	EndArgument
 End

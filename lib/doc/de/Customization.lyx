@@ -10683,6 +10683,71 @@ Argument item:1
 )
 \end_layout
 
+\begin_layout Standard
+Schließlich gibt es noch einen Argumenttyp mit dem Präfix 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+listpreamble:
+\end_layout
+
+\end_inset
+
+.
+ Strenggenommen ist das, was damit erfasst wird, kein Argument, aber der
+ Mechanismus der \SpecialChar LyX
+-Argumente wird verwendet (daher folgt dem Präfix auch
+ wie üblich eine Nummer, bspw.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Argument listpreamble:1
+\end_layout
+
+\end_inset
+
+).
+ Wie der Name andeutet, zielt dieser Argumenttyp auf Listen wie 
+\family sans
+Auflistung,
+\family default
+ 
+\family sans
+Aufzählung
+\family default
+, 
+\family sans
+Beschreibung
+\family default
+ oder 
+\family sans
+Literaturverzeichnis
+\family default
+.
+ Sein Inhalt wird am Start der Liste, vor dem ersten 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+, auf einer eigenen Zeile ausgegeben (eine Stelle, die sonst in \SpecialChar LyX
+ nicht zugänglic
+h ist).
+ Auf diese Weise können Benutzer in individuellen Listen Re-Definitionen
+ (bspw.
+ von Längen) vornehmen.
+ In der Voreinstellung haben diese Argumente keine Begrenzungszeichen.
+\end_layout
+
 \end_deeper
 \begin_layout Description
 \begin_inset Flex Code

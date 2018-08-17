@@ -7,6 +7,11 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+
+2018-08-16  Jürgen Spitzmüller <spitz@lyx.org>
+	* format incremented to 563: New inset argument type "listpreamble". The content will
+          be inserted between environment begin and first \item of a list.
+
 2018-08-13  Jürgen Spitzmüller <spitz@lyx.org>
 	* format incremented to 562: New info-inset type l7n. This returns a localized version
           of a string (in the GUI language) if available, removing trailing colons and

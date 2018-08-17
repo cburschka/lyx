@@ -290,6 +290,14 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 				  << "}\n";
 		} else
 			os << from_ascii(style.latexparam()) << '\n';
+		if (style.latextype == LATEX_BIB_ENVIRONMENT
+		    || style.latextype == LATEX_ITEM_ENVIRONMENT
+		    || style.latextype ==  LATEX_LIST_ENVIRONMENT) {
+			OutputParams rp = runparams;
+			rp.local_font = &pit->getFirstFontSettings(bparams);
+			latexArgInsets(paragraphs, pit, os, rp, style.listpreamble(),
+				       "listpreamble:");
+		}
 	}
 	data.style = &style;
 
@@ -459,15 +467,21 @@ void getArgInsets(otexstream & os, OutputParams const & runparams, Layout::LaTeX
 						latexargs.find(ins->name());
 				if (lait != latexargs.end()) {
 					Layout::latexarg arg = (*lait).second;
-					docstring ldelim = arg.mandatory ?
+					docstring ldelim;
+					docstring rdelim;
+					if (!arg.nodelims) {
+						ldelim = arg.mandatory ?
 							from_ascii("{") : from_ascii("[");
-					docstring rdelim = arg.mandatory ?
+						rdelim = arg.mandatory ?
 							from_ascii("}") : from_ascii("]");
+					}
 					if (!arg.ldelim.empty())
 						ldelim = arg.ldelim;
 					if (!arg.rdelim.empty())
 						rdelim = arg.rdelim;
 					ins->latexArgument(os, runparams, ldelim, rdelim, arg.presetarg);
+					if (prefix == "listpreamble:")
+						os << breakln;
 					inserted = true;
 				}
 			}

@@ -12393,6 +12393,87 @@ Argument item:1
 \end_inset
 
 ).
+\change_inserted -712698321 1534487781
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1534488561
+Finally, there is a special argument type with the prefix 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1534487844
+listpreamble:
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+ It is not really an argument, but uses the argument interface (thus, the
+ prefix is also followed by a number, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1534488412
+Argument listpreamble:1
+\end_layout
+
+\end_inset
+
+).
+ As the name implies, it is targeted at lists such as 
+\family sans
+Itemize
+\family default
+, 
+\family sans
+Enumerate
+\family default
+, 
+\family sans
+Description
+\family default
+, or 
+\family sans
+Bibliography
+\family default
+.
+ Its content will be output at the list start, before the first 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1534488058
+
+\backslash
+item
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, on an own line (a place that is otherwise not accessible in \SpecialChar LyX
+).
+ This way, users can insert redefinitions (of lengths etc.) to individual
+ lists.
+ By default, these arguments do not have a delimiter.
+\change_unchanged
+
 \end_layout
 
 \end_deeper

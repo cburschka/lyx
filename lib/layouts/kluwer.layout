@@ -15,7 +15,7 @@
 # 2003-03-03  Updated for lyx 1.3.0.
 
 
-Format 68
+Format 69
 Columns                 1
 Sides                   2
 SecNumDepth             4
@@ -368,4 +368,14 @@ Style References
 	EndFont
 	TocLevel              1
 	IsTocCaption          0
+	Argument listpreamble:1
+	  LabelString    "Bib preamble"
+	  MenuString     "Bibiography Preamble"
+	  Tooltip        "LaTeX code to be inserted before the first bibliography item"
+	  PassThru       1
+	  Font
+	    Family typewriter
+	    Color latex
+	  EndFont
+	EndArgument
 End

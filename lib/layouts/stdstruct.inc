@@ -8,7 +8,7 @@
 # a document, like abstract, bibliography and such.
 
 
-Format 68
+Format 69
 Style Abstract
 	Margin                Static
 	LatexType             Environment
@@ -83,4 +83,14 @@ Style Bibliography
 	EndHTMLStyle
 	TocLevel              1
 	ISTocCaption          0
+	Argument listpreamble:1
+	  LabelString    "Bib preamble"
+	  MenuString     "Bibiography Preamble"
+	  Tooltip        "LaTeX code to be inserted before the first bibliography item"
+	  PassThru       1
+	  Font
+	    Family typewriter
+	    Color latex
+	  EndFont
+	EndArgument
 End

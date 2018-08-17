@@ -1,7 +1,7 @@
 # The special "LyXList". Separated out for inclusion where the
 # whole of stdlist.inc is not needed.
 
-Format 68
+Format 69
 
 Style Labeling
 	Category              List
@@ -18,6 +18,16 @@ Style Labeling
 	AlignPossible         Block, Left
 	LabelType             Manual
 	LabelString           "00.00.0000"
+	Argument listpreamble:1
+		LabelString    "List preamble"
+		MenuString     "List Preamble"
+		Tooltip        "LaTeX code to be inserted before the first item"
+		PassThru       1
+		Font
+			Family typewriter
+			Color latex
+		EndFont
+	EndArgument
 	HTMLTag               ol
 	HTMLAttr              class='lyxlist'
 	HTMLItem              li

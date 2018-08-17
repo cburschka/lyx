@@ -5,13 +5,13 @@
 # Author: Uwe Stöhr (uwestoehr@web.de)
 # IUCr LaTeX files can be downloaded from ftp://ftp.iucr.org/templates/latex/
 
-Format 68
+Format 69
 
 Columns				1
 Sides				1
 SecNumDepth			3
 TocDepth			3
-DefaultStyle		Standard
+DefaultStyle			Standard
 
 ClassOptions
 	FontSize		10
@@ -25,7 +25,7 @@ Style Standard
 	ParIndent		MM
 	ParSkip			0.4
 	Align			Block
-	AlignPossible	Block, Left, Right, Center
+	AlignPossible		Block, Left, Right, Center
 	LabelType		No_Label
 End
 
@@ -44,23 +44,23 @@ NoStyle Author
 NoStyle Bibliography
 
 Style Section
-	LabelString			\thesection.
+	LabelString		\thesection.
 	LabelStringAppendix	\thesection
-	Align				Center
+	Align			Center
 End
 
 Style Subsection
-	LabelString			\thesubsection.
+	LabelString		\thesubsection.
 	Font
-	  Shape				Italic
-	  Size				Normal
+	  Shape			Italic
+	  Size			Normal
 	EndFont
 End
 
 Style Subsubsection
-	LabelString			\thesubsubsection.
+	LabelString		\thesubsubsection.
 	Font
-	  Shape				Italic
+	  Shape			Italic
 	EndFont
 End
 
@@ -112,24 +112,24 @@ Style "Main Author"
 	LatexName		cauthor
 	Category		FrontMatter
 	InTitle			1
-	NextNoIndent	1
+	NextNoIndent		1
 	Argument 1
-	  LabelString	"Affiliation Key"
+	  LabelString		"Affiliation Key"
 	  Tooltip		"Affiliation key of the author"
 	EndArgument
 	Argument 2
 	  Mandatory		1
-	  LabelString	"Forename"
+	  LabelString		"Forename"
 	  Tooltip		"Forename"
 	EndArgument
 	Argument 3
 	  Mandatory		1
-	  LabelString	"Surname"
+	  LabelString		"Surname"
 	  Tooltip		"Surname"
 	EndArgument
 	Argument 4
 	  Mandatory		1
-	  LabelString	"Email"
+	  LabelString		"Email"
 	  Tooltip		"Email"
 	  Font
 	    Shape		Italic
@@ -147,12 +147,12 @@ Style "Co Author"
 	LabelString		"Co-author"
 	ResetArgs		1
 	Argument 1
-	  LabelString	"Affiliation Key"
+	  LabelString		"Affiliation Key"
 	  Tooltip		"Affiliation key of the co-author"
 	EndArgument
 	Argument 2
 	  Mandatory		1
-	  LabelString	"Forename"
+	  LabelString		"Forename"
 	  Tooltip		"Forename"
 	EndArgument
 End
@@ -178,7 +178,7 @@ Style Affiliation
 	Category		FrontMatter
 	LabelString		"Affiliation:"
 	Argument 1
-	  LabelString	"Affiliation Key"
+	  LabelString		"Affiliation Key"
 	  Tooltip		"Affiliation key"
 	EndArgument
 	Font
@@ -208,7 +208,7 @@ Style "PDB reference"
 	LatexName		PDBreference
 	LabelString		"PDB reference:"
 	Argument 1
-	  LabelString	"Name"
+	  LabelString		"Name"
 	  Tooltip		"Optional name"
 	EndArgument
 End
@@ -222,16 +222,16 @@ End
 Style Synopsis
   CopyStyle			Abstract
   LatexName			synopsis
-  LabelString		"Synopsis"
+  LabelString			"Synopsis"
   Align				Left
-  AlignPossible		Left
+  AlignPossible			Left
 End
 
 Style Acknowledgements
   CopyStyle			"Short Author"
   LatexName			ack
   InTitle			0
-  LabelString		"Acknowledgements:"
+  LabelString			"Acknowledgements:"
   Category			BackMatter
   TopSep			0.7
 End
@@ -241,21 +241,31 @@ Style References
   Category			BackMatter
   LatexType			Item_Environment
   LatexName			references
-  ItemCommand		reference
+  ItemCommand			reference
   LabelType			Centered
-  LabelString		"References"
+  LabelString			"References"
   LabelFont
    Size larger
    Series bold
   EndFont
-  ParagraphGroup	1
-  NextNoIndent		1
+  ParagraphGroup		1
+  NextNoIndent			1
   TopSep			0.7
   BottomSep			0.7
+  Argument listpreamble:1
+    LabelString    		"List preamble"
+    MenuString			"List Preamble"
+    Tooltip			"LaTeX code to be inserted before the first item"
+    PassThru			1
+    Font
+      Family typewriter
+      Color latex
+    EndFont
+  EndArgument
   Argument item:1
-    LabelString		"Reference"
-    Mandatory		1
-    AutoInsert		1
+    LabelString			"Reference"
+    Mandatory			1
+    AutoInsert			1
   EndArgument
   Align				Left
 End

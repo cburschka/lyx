@@ -35,7 +35,7 @@
 
 
 # General textclass parameters
-Format 68
+Format 69
 
 Columns		 1
 Sides		 1
@@ -314,6 +314,16 @@ Style EcvItemize
 	Margin                Static
 	LatexType             Item_Environment
 	LatexName             ecvitemize
+	Argument listpreamble:1
+		LabelString    "List preamble"
+		MenuString     "List Preamble"
+		Tooltip        "LaTeX code to be inserted before the first item"
+		PassThru       1
+		Font
+			Family typewriter
+			Color latex
+		EndFont
+	EndArgument
 	NextNoIndent          1
 	LeftMargin            MMN
 	LabelSep              xx

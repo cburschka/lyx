@@ -6,7 +6,7 @@
 #   Richard Heck <rgheck@lyx.org>, Martin Vermeer <martin.vermeer@hut.fi> and probably others.
 
 
-Format 68
+Format 69
 
 #
 # GLOBAL SETTINGS
@@ -101,6 +101,16 @@ Style Itemize
     RightDelim     >
     PassThru       1
   EndArgument
+  Argument listpreamble:1
+    LabelString    "List preamble"
+    MenuString     "List Preamble"
+    Tooltip        "LaTeX code to be inserted before the first item"
+    PassThru       1
+    Font
+      Family typewriter
+      Color latex
+    EndFont
+  EndArgument
   NextNoIndent     1
   ToggleIndent     Never
   LeftMargin       MMN
@@ -141,6 +151,16 @@ Style Enumerate
     RightDelim     >
     PassThru       1
   EndArgument
+  Argument listpreamble:1
+    LabelString    "List preamble"
+    MenuString     "List Preamble"
+    Tooltip        "LaTeX code to be inserted before the first item"
+    PassThru       1
+    Font
+      Family typewriter
+      Color latex
+    EndFont
+  EndArgument
   NextNoIndent     1
   ToggleIndent     Never
   LeftMargin       MMN
@@ -170,6 +190,16 @@ Style Description
   Argument 2
     LabelString    "Longest label|s"
     Tooltip        "The longest label in this list (to determine the indendation width)"
+  EndArgument
+  Argument listpreamble:1
+    LabelString    "List preamble"
+    MenuString     "List Preamble"
+    Tooltip        "LaTeX code to be inserted before the first item"
+    PassThru       1
+    Font
+      Family typewriter
+      Color latex
+    EndFont
   EndArgument
   Argument item:1
     MenuString    "Item Overlay Specifications"
@@ -744,6 +774,16 @@ Style Overprint
     LabelString    "Width"
     Tooltip        "The width of the overprint area (default: text width)"
   EndArgument
+  Argument listpreamble:1
+    LabelString    "List preamble"
+    MenuString     "List Preamble"
+    Tooltip        "LaTeX code to be inserted before the first item"
+    PassThru       1
+    Font
+      Family typewriter
+      Color latex
+    EndFont
+  EndArgument
   Argument item:1
     MenuString    "Item Overlay Specifications"
     LabelString   "On Slide"
@@ -1127,6 +1167,16 @@ Style Bibliography
   EndFont
   TocLevel         1
   IsTocCaption     0
+  Argument listpreamble:1
+    LabelString    "Bib preamble"
+    MenuString     "Bibiography Preamble"
+    Tooltip        "LaTeX code to be inserted before the first bibliography item"
+    PassThru       1
+    Font
+      Family typewriter
+      Color latex
+    EndFont
+  EndArgument
 End
 
 

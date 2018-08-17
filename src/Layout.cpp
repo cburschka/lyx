@@ -377,6 +377,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 				latexargs_.clear();
 				itemargs_.clear();
 				postcommandargs_.clear();
+				listpreamble_.clear();
 			}
 			break;
 
@@ -1005,6 +1006,7 @@ void Layout::readArgument(Lexer & lex)
 	latexarg arg;
 	// writeArgument() makes use of these default values
 	arg.mandatory = false;
+	arg.nodelims = false;
 	arg.autoinsert = false;
 	arg.insertcotext = false;
 	bool error = false;
@@ -1017,6 +1019,7 @@ void Layout::readArgument(Lexer & lex)
 	lex >> id;
 	bool const itemarg = prefixIs(id, "item:");
 	bool const postcmd = prefixIs(id, "post:");
+	bool const listpreamble = prefixIs(id, "listpreamble:");
 
 	while (!finished && lex.isOK() && !error) {
 		lex.next();
@@ -1096,7 +1099,11 @@ void Layout::readArgument(Lexer & lex)
 		itemargs_[id] = arg;
 	else if (postcmd)
 		postcommandargs_[id] = arg;
-	else
+	else if (listpreamble) {
+		// list preamble has no delimiters by default
+		arg.nodelims = true;
+		listpreamble_[id] = arg;
+	} else
 		latexargs_[id] = arg;
 }
 
@@ -1217,6 +1224,9 @@ void Layout::write(ostream & os) const
 		writeArgument(os, it->first, it->second);
 	for (LaTeXArgMap::const_iterator it = postcommandargs_.begin();
 	     it != postcommandargs_.end(); ++it)
+		writeArgument(os, it->first, it->second);
+	for (LaTeXArgMap::const_iterator it = listpreamble_.begin();
+	     it != listpreamble_.end(); ++it)
 		writeArgument(os, it->first, it->second);
 	os << "\tNeedProtect " << needprotect << "\n"
 	      "\tNeedCProtect " << needcprotect << "\n"
@@ -1479,7 +1489,7 @@ void Layout::write(ostream & os) const
 bool Layout::hasArgs() const
 {
 	return !latexargs_.empty() || !postcommandargs_.empty() ||
-		!itemargs_.empty();
+		!itemargs_.empty() || !listpreamble_.empty();
 }
 
 
@@ -1488,6 +1498,8 @@ Layout::LaTeXArgMap Layout::args() const
 	LaTeXArgMap args = latexargs_;
 	if (!postcommandargs_.empty())
 		args.insert(postcommandargs_.begin(), postcommandargs_.end());
+	if (!listpreamble_.empty())
+		args.insert(listpreamble_.begin(), listpreamble_.end());
 	if (!itemargs_.empty())
 		args.insert(itemargs_.begin(), itemargs_.end());
 	return args;
