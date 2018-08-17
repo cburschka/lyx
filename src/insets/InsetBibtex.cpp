@@ -227,8 +227,7 @@ docstring InsetBibtex::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/) 
 			tip += _("included in TOC");
 		}
 		if (!getParam("biblatexopts").empty()) {
-			if (toc)
-				tip += "<br />";
+			tip += "<br />";
 			tip += _("Options: ") + getParam("biblatexopts");
 		}
 	}
