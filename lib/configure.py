@@ -64,10 +64,10 @@ def removeFiles(filenames):
             pass
 
 
-def cmdOutput(cmd, async = False):
+def cmdOutput(cmd, asynchronous = False):
     '''utility function: run a command and get its output as a string
         cmd: command to run
-        async: if False, return whole output as a string, otherwise
+        asynchronous: if False, return whole output as a string, otherwise
                return the stdout handle from which the output can be
                read (the caller is then responsible for closing it)
     '''
@@ -82,7 +82,7 @@ def cmdOutput(cmd, async = False):
     pipe = subprocess.Popen(cmd, shell=b, close_fds=b, stdin=subprocess.PIPE,
                             stdout=subprocess.PIPE, universal_newlines=True)
     pipe.stdin.close()
-    if async:
+    if asynchronous:
         return pipe.stdout
     output = pipe.stdout.read()
     pipe.stdout.close()
