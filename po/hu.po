@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.4svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-07-21 01:12+0200\n"
-"PO-Revision-Date: 2018-08-18 00:38+0200\n"
+"POT-Creation-Date: 2018-07-21 00:47+0200\n"
+"PO-Revision-Date: 2018-08-12 23:48+0200\n"
 "Last-Translator:  Szőke Sándor <mail@szokesandor.hu>\n"
 "Language-Team: LyX-hu <mail@szokesandor.hu>\n"
 "Language: hu\n"
@@ -33,12 +33,14 @@ msgid "Copyright"
 msgstr "Copyright"
 
 #: src/frontends/qt4/ui/AboutUi.ui:136
+#, fuzzy
 msgid "Build Info"
-msgstr "Fordítási info"
+msgstr "Fordítási hibák"
 
 #: src/frontends/qt4/ui/AboutUi.ui:161
+#, fuzzy
 msgid "Release Notes"
-msgstr "Kiadási megjegyzések"
+msgstr "Táblázat jegyzet"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:22 src/frontends/qt4/ui/BibitemUi.ui:65
 msgid "The bibliography key"
@@ -66,8 +68,9 @@ msgstr ""
 #: src/frontends/qt4/ui/BibitemUi.ui:88 src/frontends/qt4/ui/CitationUi.ui:368
 #: src/frontends/qt4/ui/HyperlinkUi.ui:80 src/frontends/qt4/ui/IncludeUi.ui:298
 #: src/frontends/qt4/ui/NomenclUi.ui:72 src/frontends/qt4/ui/PrintindexUi.ui:74
+#, fuzzy
 msgid "Li&teral"
-msgstr "Ér&ték szerint"
+msgstr "Betűszerinti"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:26
 msgid "Citation Style"
@@ -96,6 +99,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:118 src/frontends/qt4/GuiPrefs.cpp:815
 #: src/frontends/qt4/GuiPrefs.cpp:944
+#, fuzzy
 msgid "Opt&ions:"
 msgstr "&Kapcsolók:"
 
@@ -104,8 +108,9 @@ msgid "Here you can enter further options of the bibliography package"
 msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:154
+#, fuzzy
 msgid "Biblatex &citation style:"
-msgstr "Biblatex hivatkozás &stílusa:"
+msgstr "Hivatkozás &stílusa:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:164
 msgid "The style that determines the layout of the citations"
@@ -121,8 +126,9 @@ msgid "Rese&t"
 msgstr "Alapértékre állí&t"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:201
+#, fuzzy
 msgid "Bibliography Style"
-msgstr "Irodalomjegyzék stílusa"
+msgstr "Irodalomjegyzék elem beállítások"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:215
 #, fuzzy
@@ -145,12 +151,14 @@ msgid "Match biblatex bibliography with citation style"
 msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:254
+#, fuzzy
 msgid "&Match"
-msgstr "&Egyezés"
+msgstr "Képlet"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:265
+#, fuzzy
 msgid "Default BibTeX st&yle:"
-msgstr "Ala&p BibTeX stílus:"
+msgstr "Ala&p nyomtató:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:281
 msgid ""
@@ -216,7 +224,7 @@ msgstr "Válassza ki a fájlt"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:205 src/frontends/qt4/GuiPrefs.cpp:840
 #: src/frontends/qt4/GuiPrefs.cpp:971
 msgid "Op&tions:"
-msgstr "&Opciók:"
+msgstr "&Kapcsolók:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:440
 msgid ""
@@ -247,8 +255,9 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:84
+#, fuzzy
 msgid "Lo&cal databases:"
-msgstr "Helyi &adatbázisok:"
+msgstr "Adatbázisok:"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:102
 #, fuzzy
@@ -256,8 +265,9 @@ msgid "Here you can enter a local BibTeX database name"
 msgstr "BibTeX adatbázis nevének megadása"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:109
+#, fuzzy
 msgid "Browse your local directory"
-msgstr "Tallózza ki a helyi könyvtárát"
+msgstr "Nincs felhasználói könyvtár"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:112 src/frontends/qt4/ui/BibtexUi.ui:150
 #: src/frontends/qt4/ui/CompareUi.ui:69 src/frontends/qt4/ui/ExternalUi.ui:89
@@ -267,8 +277,9 @@ msgid "&Browse..."
 msgstr "&Tallózás..."
 
 #: src/frontends/qt4/ui/BibtexUi.ui:23
+#, fuzzy
 msgid "BibTeX database(s) to use"
-msgstr "Használandó BibTeX adatbázis(ok)"
+msgstr "A használandó BibTeX adatbázis"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:26
 msgid "&Databases"
@@ -390,8 +401,9 @@ msgid "Scan for new databases and styles"
 msgstr "Új adatbázisok és stílusok keresése"
 
 #: src/frontends/qt4/ui/BoxUi.ui:23
+#, fuzzy
 msgid "Type and Size"
-msgstr "Típus és méret"
+msgstr "Papírméret"
 
 #: src/frontends/qt4/ui/BoxUi.ui:32 src/frontends/qt4/ui/WrapUi.ui:86
 msgid "Width value"
@@ -558,8 +570,9 @@ msgid "Thickness value"
 msgstr "&Vastagság:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:325
+#, fuzzy
 msgid "&Line thickness:"
-msgstr "Vona&l vastagság:"
+msgstr "&Vastagság:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:338
 #, fuzzy
@@ -576,12 +589,14 @@ msgid "&Decoration:"
 msgstr "&Dekoráció:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:368
+#, fuzzy
 msgid "&Shadow size:"
-msgstr "Árnyé&k méret:"
+msgstr "Be&tűméret:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:402
+#, fuzzy
 msgid "Size value"
-msgstr "Méret értéke"
+msgstr "Szélesség értéke"
 
 #: src/frontends/qt4/ui/BoxUi.ui:412 src/frontends/qt4/GuiBranches.cpp:55
 msgid "Color"
@@ -605,8 +620,9 @@ msgid "Select your branch"
 msgstr "Változat kiválasztása"
 
 #: src/frontends/qt4/ui/BranchUi.ui:37
+#, fuzzy
 msgid "Inverted"
-msgstr "Invertált"
+msgstr "Átalakítók"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
@@ -813,6 +829,7 @@ msgid "Huger"
 msgstr "Legnagyobb"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:144
+#, fuzzy
 msgid "&Custom bullet:"
 msgstr "&Egyedi jel:"
 
@@ -916,7 +933,7 @@ msgstr "&Aláhúzás:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:247
 msgid "Underlining of text"
-msgstr "Szöveg aláhúzása"
+msgstr ""
 
 #: src/frontends/qt4/ui/CharacterUi.ui:254
 msgid "S&trikethrough:"
@@ -949,7 +966,7 @@ msgstr "Nyelv"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:333
 msgid "If this is selected, the marked text will not be spellchecked"
-msgstr "Ezt kiválasztva a jelölt szöveg helyesírás-ellenőrzése elmarad"
+msgstr ""
 
 #: src/frontends/qt4/ui/CharacterUi.ui:336
 msgid "E&xclude from Spellchecking"
@@ -969,19 +986,20 @@ msgstr "&Kiemelés"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:362
 msgid "Semantic markup of nouns (small caps by default, but can be adapted)"
-msgstr "Főnevek szemantikus jelzése  (Kis kapitális alapból, de módosítható)"
+msgstr "Szemantikus jelzése főneveknek (Kis kapitális alapból, de módosítható)"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:365
 msgid "&Noun"
 msgstr "&Főnév"
 
 #: src/frontends/qt4/ui/CitationUi.ui:27 src/frontends/qt4/ui/RefUi.ui:63
+#, fuzzy
 msgid "&Filter:"
-msgstr "&Szűrő:"
+msgstr "Szűrő:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:48
 msgid "Select the fields on which the filter applies"
-msgstr "Válassza ki a mezőket ami alapján szűr"
+msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:61 src/frontends/qt4/GuiCitation.cpp:425
 msgid "All fields"
@@ -989,7 +1007,7 @@ msgstr "Összes mező"
 
 #: src/frontends/qt4/ui/CitationUi.ui:75
 msgid "Select the entry types on which the filter applies"
-msgstr "Válassza ki a mező típust ami alapján szűr"
+msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:85 src/frontends/qt4/GuiCitation.cpp:440
 msgid "All entry types"
@@ -997,9 +1015,10 @@ msgstr "Minden bejegyzés típus"
 
 #: src/frontends/qt4/ui/CitationUi.ui:93
 msgid "Click for more filter options"
-msgstr "Kattintson ide a további szűrési opciókért"
+msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:96
+#, fuzzy
 msgid "O&ptions"
 msgstr "&Kapcsolók:"
 
@@ -1024,6 +1043,7 @@ msgid "Move the selected citation down (Ctrl-Down)"
 msgstr "Kiválasztott hivatkozás lefelé mozgatása (Ctrl-le)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:229
+#, fuzzy
 msgid "Selected &Citations:"
 msgstr "Kiválasztott &hivatkozások:"
 
@@ -1036,22 +1056,22 @@ msgid "Citation st&yle:"
 msgstr "Hivatkozás &stílusa:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:289 src/frontends/qt4/GuiCitation.cpp:303
+#, fuzzy
 msgid "Text befo&re:"
 msgstr "Szöve&g előtte:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:309
 msgid "Citation style to use, if different styles are provided"
-msgstr "Használandó stílus a hivatkozáshoz, amennyibe több is elérhető"
+msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:318 src/frontends/qt4/GuiCitation.cpp:307
 msgid ""
 "Text that precedes the reference (e.g., \"cf.\"), if the current citation "
 "style supports this."
 msgstr ""
-"A hivatkozást megelőző szöveg (pl. \"lásd\"), ha a hivatkozás stílusa "
-"támogatja ezt."
 
 #: src/frontends/qt4/ui/CitationUi.ui:325 src/frontends/qt4/GuiCitation.cpp:309
+#, fuzzy
 msgid "&Text after:"
 msgstr "Szöveg &utána:"
 
@@ -1060,26 +1080,21 @@ msgid ""
 "Text that follows the reference (e.g., pages), if the current citation style "
 "supports this."
 msgstr ""
-"A hivatkozást követő szöveg (pl. \"oldalakon\"), ha a hivatkozás stílusa "
-"támogatja ezt."
 
 #: src/frontends/qt4/ui/CitationUi.ui:365
 msgid ""
 "Pass content of `Text before' and `Text after' fields literally to LaTeX. "
 "Check this if you want to enter LaTeX code."
 msgstr ""
-"Adja át a 'Szöveg előtte' és 'Szöveg utána' mezőket érték szerint a LaTeX-"
-"nek. Használja ezt, ha LaTeX kódot szeretne megadni."
 
 #: src/frontends/qt4/ui/CitationUi.ui:388 src/frontends/qt4/GuiCitation.cpp:321
 msgid ""
 "Force upper case in names (\"Del Piero\", not \"del Piero\"), if the current "
 "citation style supports this."
 msgstr ""
-"Nagybetű kényszerítése neveknél (\"Del Piero\", nem pedig \"del Piero\"), ha "
-"az aktuális hivatkozás stílus támogatja ezt."
 
 #: src/frontends/qt4/ui/CitationUi.ui:391
+#, fuzzy
 msgid "Force upcas&ing"
 msgstr "&Nagybetű kényszerítése"
 
@@ -1088,12 +1103,11 @@ msgid ""
 "Always list all authors (rather than using \"et al.\"), if the current "
 "citation style supports this."
 msgstr ""
-"Mindig listázza az összes szerzőt (mintsem használja \"és még sokan mások\"-"
-"at), ha az aktuális hivatkozás stílus támogatja ezt."
 
 #: src/frontends/qt4/ui/CitationUi.ui:401 src/frontends/qt4/GuiCitation.cpp:352
+#, fuzzy
 msgid "All aut&hors"
-msgstr "&Összes szerző"
+msgstr "Szerzők"
 
 #: src/frontends/qt4/ui/ColorUi.ui:27
 msgid "Font Colors"
@@ -1115,7 +1129,7 @@ msgstr "Alapérték..."
 #: src/frontends/qt4/ui/ColorUi.ui:70 src/frontends/qt4/ui/ColorUi.ui:131
 #: src/frontends/qt4/ui/ColorUi.ui:208 src/frontends/qt4/ui/ColorUi.ui:269
 msgid "Revert the color to the default"
-msgstr "Visszaállítja a színt az alapértékre"
+msgstr ""
 
 #: src/frontends/qt4/ui/ColorUi.ui:99
 msgid "Greyed-out notes:"
@@ -1129,6 +1143,7 @@ msgid "&Change..."
 msgstr "Változás:"
 
 #: src/frontends/qt4/ui/ColorUi.ui:165
+#, fuzzy
 msgid "Background Colors"
 msgstr "Háttérszínek"
 
@@ -1167,6 +1182,7 @@ msgid "&New Document:"
 msgstr "&Új dokumentum:"
 
 #: src/frontends/qt4/ui/CompareUi.ui:79
+#, fuzzy
 msgid "Old Do&cument:"
 msgstr "&Régi dokumentum:"
 
@@ -1277,7 +1293,7 @@ msgstr "&Hibák"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:75
 msgid "Open the LaTeX Log File dialog"
-msgstr "Megnyitja a LaTeX naplófájl dialógusablakot"
+msgstr ""
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:78
 msgid "View Complete &Log..."
@@ -1289,7 +1305,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:104
 msgid "Show Output &Anyway"
-msgstr "Mut&assa mindenképpen a kimenetet"
+msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:45
 msgid "F&ile"
@@ -1432,6 +1448,7 @@ msgstr "Vágás be&foglaló keretbe"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:584
 #: src/frontends/qt4/ui/GraphicsUi.ui:390
+#, fuzzy
 msgid "Left botto&m:"
 msgstr "&Bal alsó sarok:"
 
@@ -1463,8 +1480,9 @@ msgid "TabWidget"
 msgstr "Szélesség"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:21
+#, fuzzy
 msgid "Sear&ch"
-msgstr "&Keresés"
+msgstr "Keresési hiba"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:29 src/frontends/qt4/ui/LogUi.ui:95
 msgid "&Find:"
@@ -1476,7 +1494,7 @@ msgstr "Mire &cseréli:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:77
 msgid "Perform a case-sensitive search"
-msgstr "Kis és nagybetűérzékeny keresés végrehajtása"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:80
 msgid "Case &sensitive"
@@ -1484,7 +1502,7 @@ msgstr "Kis- és nagyb&etű megkülönböztetése"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:96
 msgid "Find next occurrence [Enter]"
-msgstr "Következő előfordulás keresése [Enter]"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:99
 #: src/frontends/qt4/ui/SearchUi.ui:66
@@ -1492,8 +1510,9 @@ msgid "Find &Next"
 msgstr "&Következő..."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:112
+#, fuzzy
 msgid "Restrict search to whole words only"
-msgstr "Keresés korlátozása egész szavakra"
+msgstr "Csak egész &szavakat"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:115
 msgid "W&hole words"
@@ -1501,7 +1520,7 @@ msgstr "&Teljes szavak"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:131
 msgid "Replace and find next occurrence [Enter]"
-msgstr "Cserél és keresi a következőt [Enter]"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:134
 #: src/frontends/qt4/ui/SearchUi.ui:79
@@ -1512,7 +1531,7 @@ msgstr "Cse&rél"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:141
 msgid "Shift+Enter search backwards directly"
-msgstr "Shift+Enter azonnal keres visszafelé"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:144
 #: src/frontends/qt4/ui/SearchUi.ui:170
@@ -1521,7 +1540,7 @@ msgstr "&Visszafelé keres"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:160
 msgid "Replace all occurrences at once"
-msgstr "Minden előfordulás cseréje egyszerre"
+msgstr "Minden előfordulás kicserélése egyszerre"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:163
 #: src/frontends/qt4/ui/SearchUi.ui:89
@@ -1535,11 +1554,11 @@ msgstr "&Beállítások"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:188
 msgid "The scope to which the search horizon is restricted"
-msgstr "Keresés hatásköre"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:194
 msgid "Scope"
-msgstr "Hatáskőr"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:206
 msgid "C&urrent document"
@@ -1550,8 +1569,6 @@ msgid ""
 "Current document and all related documents belonging to the same master "
 "document"
 msgstr ""
-"Aktuális dokumentum és minden kapcsolódó dokumentum ami ugyanazon "
-"fődokumentumhoz tartozik"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:228
 msgid "&Master document"
@@ -1563,47 +1580,48 @@ msgstr "Minden nyitott dokumentum"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:241
 msgid "&Open documents"
-msgstr "&Megnyitott dokumentumok"
+msgstr "&Dokumentumok megnyitása"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:251
+#, fuzzy
 msgid "&All manuals"
-msgstr "&Minden Kézikönyv"
+msgstr "Kézikönyvek"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:269
 msgid ""
 "If unchecked, the search will be limited to occurrences of the selected text "
 "and paragraph style"
 msgstr ""
-"Ha nincs bejelölve, a keresés korlátozva lesz a kijelölt szöveg és bekezdés "
-"stílus előfordulásaira"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:272
+#, fuzzy
 msgid "I&gnore format"
-msgstr "Formátum fi&gyelmen kívül hagyása"
+msgstr "&Formátumra:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:282
 msgid ""
 "Keep the case of the replacement's first letter as in each matching text "
 "first letter"
 msgstr ""
-"Megtartja az első betű kis/nagy állapotát, minden csere esetén a talált "
-"szövegnek megfelelően"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:285
 msgid "&Preserve first case on replace"
-msgstr "Cserénél megtartja az első betű állapotát"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:295
+#, fuzzy
 msgid "&Expand macros"
-msgstr "Makrók kifejtése"
+msgstr "Képlet makrók"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:302
+#, fuzzy
 msgid "Restrict search to math environments only"
-msgstr "Keresés korlátozása matematikai környezetekre"
+msgstr "Csak egész &szavakat"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:305
+#, fuzzy
 msgid "Search on&ly in maths"
-msgstr "Keresés csak kép&letekben"
+msgstr "A keresendő szöveg üres"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:14
 #: src/frontends/qt4/ui/OutputUi.ui:14 src/frontends/qt4/ui/PDFSupportUi.ui:13
@@ -1611,28 +1629,31 @@ msgid "Form"
 msgstr "Form"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:22
+#, fuzzy
 msgid "Float T&ype:"
-msgstr "&Úsztatás típusa:"
+msgstr "Információ típus:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:70
+#, fuzzy
 msgid "Alignment of Contents"
-msgstr "Tartalom igazítása"
+msgstr "Tartalomjegyzék"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:94
+#, fuzzy
 msgid ""
 "Use the document's default alignment for floats, as specified in Document "
 "Settings."
-msgstr ""
-"Használja a dokumentumban megadott igazítás alapértéket az úsztatásokhoz, "
-"ahogy az meg van adva a Dokumentum beállításoknál."
+msgstr "Használja az igazítás alapértékét ehhez a bekezdéshez, bármi is az."
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:97
+#, fuzzy
 msgid "D&ocument Default"
-msgstr "Dokumentum alapérték"
+msgstr "Mentsd dokumentum alapértéknek"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:104
+#, fuzzy
 msgid "Left-align float contents"
-msgstr "Balra igazítsa az úsztatások tartalmát"
+msgstr "írjon be betűket a layout lista szűréséhez."
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:107
 #: src/frontends/qt4/ui/ParagraphUi.ui:117
@@ -1640,8 +1661,9 @@ msgid "&Left"
 msgstr "Bal&ra"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:114
+#, fuzzy
 msgid "Center float contents"
-msgstr "Középre igazítsa az úsztatások tartalmát"
+msgstr "írjon be betűket a layout lista szűréséhez."
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:117
 #: src/frontends/qt4/ui/ParagraphUi.ui:124
@@ -1651,41 +1673,45 @@ msgstr "&Középre"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:124
 msgid "Right-align float contents"
-msgstr "Jobbra igazítsa az úsztatások tartalmát"
+msgstr ""
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:127
 msgid "&Right"
 msgstr "&Jobbra"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:134
+#, fuzzy
 msgid "Use the class' default alignment for floats, whatever it is."
-msgstr ""
-"Használja az osztályhoz tatozó igazítás alapértéket az úsztatásokhoz, bármi "
-"is az."
+msgstr "Használja az igazítás alapértékét ehhez a bekezdéshez, bármi is az."
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:137
+#, fuzzy
 msgid "Class &Default"
-msgstr "Szövegosztály alapérték"
+msgstr "Használd a szövegosztály alapértékeit"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:147
+#, fuzzy
 msgid "Further Options"
-msgstr "További beállítások"
+msgstr "Képlet beállítások"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:153
 msgid "&Span columns"
 msgstr "Ha&sábok áthidalása"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:160
+#, fuzzy
 msgid "Rotate side&ways"
 msgstr "Elfor&gatás oldalra"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:170
+#, fuzzy
 msgid "Position on Page"
-msgstr "Pozíció a lapon"
+msgstr "Állítás"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:178
+#, fuzzy
 msgid "Place&ment Settings:"
-msgstr "&Elhelyezési beállítások:"
+msgstr "Dokumentumbeállítások"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:193
 msgid "&Top of page"
@@ -1745,7 +1771,7 @@ msgstr "LaTe&X betű kódolás:"
 
 #: src/frontends/qt4/ui/FontUi.ui:96
 msgid "Specify the font encoding (e.g., T1)."
-msgstr "Adja meg a betűk kódolását (pl: T1)."
+msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:105
 msgid "&Roman:"
@@ -1867,13 +1893,14 @@ msgid "Set &height:"
 msgstr "Magasság mega&dása:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:173
+#, fuzzy
 msgid "&Scale graphics (%):"
 msgstr "Kép &mérete(%):"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:183
 msgid "Sets width of graphic. Leave unchecked to set automatically."
 msgstr ""
-"Grafika szélességének beállítása. Hagyja üresen az automatikus beállításhoz."
+"Grafika magasságának szélessége. Hagyja üresen az automatikus beállításhoz."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:186 src/frontends/qt4/GuiGraphics.cpp:478
 msgid "Set &width:"
@@ -1901,6 +1928,7 @@ msgid "Or&igin:"
 msgstr "Kiindulópo&nt:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:279
+#, fuzzy
 msgid "A&ngle (degrees):"
 msgstr "S&zög (fokban):"
 
@@ -1911,19 +1939,18 @@ msgstr "A felhasználandó képfájl neve"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:313
 msgid "&Coordinates and Clipping"
-msgstr "&Koordináták és vágás"
+msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:347
 msgid ""
 "Clip to the coordinates specified below (bounding box for DVI/PS output, "
 "viewport for PDF output)"
 msgstr ""
-"Vágja a lenti koordinátákra (befoglaló keret DVI/PS kimenethez, nézet PDF "
-"kimenethez)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:350
+#, fuzzy
 msgid "Clip to c&oordinates"
-msgstr "Ad&ott méretre vágás"
+msgstr "A kép adott méretre vágása"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:438
 #: src/frontends/qt4/ui/GraphicsUi.ui:445
@@ -1940,8 +1967,6 @@ msgid ""
 "Read coordinates from the file (bounding box value in case of PostScript "
 "files, graphic dimensions in case of other file types)"
 msgstr ""
-"Betölti a koordinátákat a fájlból (befoglaló keret PostScript esetében, "
-"grafikus dimenziók a többi fájlnál)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:520
 #: src/frontends/qt4/ui/GraphicsUi.ui:527
@@ -1965,6 +1990,7 @@ msgid "Sho&w in LyX"
 msgstr "M&egjelenítés LyX-ben"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:605
+#, fuzzy
 msgid "Sca&le on screen (%):"
 msgstr "Méret a &képernyőn (%):"
 
@@ -1978,8 +2004,9 @@ msgid "Graphics Group"
 msgstr "Kép csoport"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:680
+#, fuzzy
 msgid "Assigned &to group:"
-msgstr " Csoporthoz &rendelés:"
+msgstr "&Hozzárendelve csoporthoz:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:690
 msgid "Click to define a new graphics group."
@@ -2084,8 +2111,6 @@ msgid ""
 "Pass content of the `Name' field literally to LaTeX. Check this if you want "
 "to enter LaTeX code."
 msgstr ""
-"Adja át a 'Név' mező érték szerint a LaTeX-nek. Használja ezt, ha LaTeX "
-"kódot szeretne megadni."
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:106
 msgid "Specify the link target"
@@ -2117,13 +2142,14 @@ msgstr "Hivatkozás egy fájlra"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:156
 msgid "Fi&le"
-msgstr "Fáj&l"
+msgstr ""
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
 msgid "File name to include"
 msgstr "A csatolandó fájl neve"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:53
+#, fuzzy
 msgid "I&nclude Type:"
 msgstr "&Csatolás módja:"
 
@@ -2173,8 +2199,9 @@ msgid "Listing Parameters"
 msgstr "Lista paraméterei"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:248
+#, fuzzy
 msgid "&Caption:"
-msgstr "&Felirat:"
+msgstr "Felirat:"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:275
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:79
@@ -2189,6 +2216,7 @@ msgid "&Bypass validation"
 msgstr "&Validáció átlépése"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:285
+#, fuzzy
 msgid "&More parameters"
 msgstr "További p&araméterek"
 
@@ -2290,11 +2318,11 @@ msgstr "Betét paraméter beállítás"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:47
 msgid "Update dialog when moving context"
-msgstr "Frissítse az ablakot kontextus váltás közben"
+msgstr ""
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:50
 msgid "S&ynchronize Dialog"
-msgstr "S&zinkronizáló ablak"
+msgstr ""
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:57
 msgid "Apply settings immediately"
@@ -2384,7 +2412,7 @@ msgstr "Nyelvi cs&omag:"
 #: src/frontends/qt4/ui/LanguageUi.ui:94
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:52
 msgid "Select which language package LyX should use"
-msgstr "Válassza ki milyen nyelvi csomagot használjon a LyX"
+msgstr ""
 
 #: src/frontends/qt4/ui/LanguageUi.ui:101
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:79
@@ -2404,6 +2432,7 @@ msgid "Lan&guage default"
 msgstr "&Nyelv alapérték"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:170
+#, fuzzy
 msgid "Othe&r:"
 msgstr "&Egyéb:"
 
@@ -2489,6 +2518,7 @@ msgid "&Float"
 msgstr "Ú&sztatás"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:56 src/frontends/qt4/ui/WrapUi.ui:23
+#, fuzzy
 msgid "Pla&cement:"
 msgstr "Elhelye&zés:"
 
@@ -2643,8 +2673,9 @@ msgstr "Átalakítók"
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:59
 #: src/frontends/qt4/ui/PreambleUi.ui:45 src/frontends/qt4/GuiDocument.cpp:562
 #: src/frontends/qt4/GuiDocument.cpp:732
+#, fuzzy
 msgid "Edit"
-msgstr "Szerkesztés"
+msgstr "Sz&erkesztés"
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:69
 #, fuzzy
@@ -2864,7 +2895,7 @@ msgstr "Használt formátumok"
 
 #: src/frontends/qt4/ui/MathsUi.ui:189
 msgid "Side where formulas are numbered"
-msgstr "Az oldal, ahol a képletek számozva vannak."
+msgstr ""
 
 #: src/frontends/qt4/ui/ModulesUi.ui:60
 msgid "A&vailable:"
@@ -2889,12 +2920,14 @@ msgid "Nomenclature"
 msgstr "Szakkifejezés"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:22
+#, fuzzy
 msgid "Sy&mbol:"
 msgstr "&Szimbólum:"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:39
+#, fuzzy
 msgid "Des&cription:"
-msgstr "Leírá&s:"
+msgstr "Leírás:"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:56
 msgid "Sort &as:"
@@ -2905,8 +2938,6 @@ msgid ""
 "Pass content of the `Symbol' and `Description' fields literally to LaTeX. "
 "Check this if you want to enter LaTeX code."
 msgstr ""
-"Adja át a 'Szimbólum' és 'Leírás' mezőket érték szerint a LaTeX-nek. "
-"Használja ezt, ha LaTeX kódot szeretne megadni."
 
 #: src/frontends/qt4/ui/NoteUi.ui:23 src/frontends/qt4/ui/PhantomUi.ui:23
 msgid "Type"
@@ -3014,7 +3045,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/OutputUi.ui:178
 msgid "&Strict XHTML 1.1"
-msgstr "&Szigorú XHTML 1.1"
+msgstr ""
 
 #: src/frontends/qt4/ui/OutputUi.ui:191
 #, fuzzy
@@ -3054,8 +3085,9 @@ msgid "Scaling factor for images used for math output."
 msgstr ""
 
 #: src/frontends/qt4/ui/OutputUi.ui:275
+#, fuzzy
 msgid "Write CSS to File"
-msgstr "CSS írása fájlba"
+msgstr "Fájlba nyomtatás"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:28
 msgid "&Use hyperref support"
@@ -3138,8 +3170,9 @@ msgid "&Bookmarks"
 msgstr "&Könyvjelzők"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:293
+#, fuzzy
 msgid "G&enerate bookmarks (toc)"
-msgstr "Könyvjel&zők létrehozása (toc)"
+msgstr "Könyvjel&zők létrehozása"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:314
 msgid "&Numbered bookmarks"
@@ -3155,8 +3188,9 @@ msgid "Number of levels"
 msgstr "Szintek száma"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:388
+#, fuzzy
 msgid "Additional O&ptions"
-msgstr "További o&pciók"
+msgstr "Tovább&i opciók"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:417
 msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
@@ -3193,8 +3227,9 @@ msgid "Page Layout"
 msgstr "Oldal formátum"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:171
+#, fuzzy
 msgid "Page &style:"
-msgstr "Oldal &stílus:"
+msgstr "&Cím stílus:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:187
 msgid "Style used for the page header and footer"
@@ -3489,7 +3524,7 @@ msgstr "Max. tár&olási idő (napokban):"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
 msgid "Security"
-msgstr "Biztonság"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:312
 msgid "&Forbid use of needauth converters"
@@ -3552,8 +3587,9 @@ msgid "&Mark end of paragraphs"
 msgstr "&Bekezdés végének jelölése"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:26
+#, fuzzy
 msgid "Session Handling"
-msgstr "Munkamenet-kezelés"
+msgstr "Betűkészlet-kezelés"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:38
 msgid "Restore window layouts and &geometries"
@@ -3572,6 +3608,7 @@ msgid "&Load opened files from last session"
 msgstr "Az előző munkamenet fájljainak &betöltése"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:62
+#, fuzzy
 msgid "&Clear all session information"
 msgstr "Munkamenet &információk törlése"
 
@@ -3580,16 +3617,18 @@ msgid "Backup && Saving"
 msgstr "Biztonsági másolatok és mentés"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:94
+#, fuzzy
 msgid "Backup &original documents when saving"
-msgstr "Biztonsági mentés készítése  eredeti dokumentumokról mentéskor"
+msgstr "Biztonsági mentés készítése az eredeti dokumentumokról mentéskor"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:103
 msgid "&Backup documents, every"
 msgstr "&Biztonsági mentés, minden"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:120
+#, fuzzy
 msgid "&minutes"
-msgstr "&percben"
+msgstr "percben"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
 msgid ""
@@ -3599,8 +3638,9 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
+#, fuzzy
 msgid "&Save new documents compressed by default"
-msgstr "Alapból tömörítve ment&se az új  dokumentumokat"
+msgstr "Mentsd dokumentum alapértéknek"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
 msgid ""
@@ -3610,16 +3650,18 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:158
+#, fuzzy
 msgid "Save the &document directory path"
-msgstr "Mentse a &dokumentum mappa útvonalát"
+msgstr "Adja meg a dokumentumkönyvtárat"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:168
 msgid "Windows && Work Area"
-msgstr "Ablak és munkaterület"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:177
+#, fuzzy
 msgid "Open documents in &tabs"
-msgstr "Dokumen&tumok megnyitása, füleken"
+msgstr "&Dokumentumok megnyitása, füleken"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
 msgid ""
@@ -3628,28 +3670,32 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:187
+#, fuzzy
 msgid "Use s&ingle instance"
-msgstr "&Egy példány használata"
+msgstr "Aposztrof|p"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:194
 msgid "Whether to place close button on each tab or only one in the top left."
 msgstr "Bezáró gomb elhelyezése minden fülre, vagy egy közös balra felül."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:197
+#, fuzzy
 msgid "Displa&y single close-tab button"
-msgstr "&Szimpla bezáró gomb megjelenítése"
+msgstr "&Szimpla bezáró gomb"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:206
 msgid "Closing last &view:"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:217
+#, fuzzy
 msgid "Closes document"
-msgstr "Bezárja adokumentumot"
+msgstr "Új dokumentum"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:222
+#, fuzzy
 msgid "Hides document"
-msgstr "Elrejti a dokumentumot"
+msgstr "Új dokumentum"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:227
 msgid "Ask the user"
@@ -3728,8 +3774,9 @@ msgid "Hide &menubar"
 msgstr "&Menü elrejtése"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:202
+#, fuzzy
 msgid "Hide sta&tusbar"
-msgstr "S&tátuszsor elrejtése"
+msgstr "&Fűlsáv elrejtése"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:209
 msgid "&Limit text width"
@@ -3757,23 +3804,25 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:83
 msgid "Sho&w in export menu"
-msgstr "M&utassa az export menüben"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:90
 msgid "Vector &graphics format"
 msgstr "Vektorgraf&ikus formátum"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:97
+#, fuzzy
 msgid "S&hort name:"
 msgstr "Rövid &név:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:110
+#, fuzzy
 msgid "E&xtensions:"
-msgstr "&Kiterjesztések:"
+msgstr "&Kiterjesztés:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:123
 msgid "&MIME:"
-msgstr "&MIME:"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:136
 msgid "Shortc&ut:"
@@ -3853,7 +3902,7 @@ msgstr "&Billentyűkiosztás használata"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:45
 msgid "&Primary:"
-msgstr "&Elsődleges:"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:65
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:83
@@ -3929,6 +3978,7 @@ msgid "Select the language of the user interface (menus, dialogs, etc.)"
 msgstr "A felhasználói felület (menük, ablakok, stb.) nyelvének kiválasztása"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:40
+#, fuzzy
 msgid "Language &package:"
 msgstr "Nyelvi cs&omag:"
 
@@ -3941,13 +3991,15 @@ msgstr "Automata"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:61
 #: src/frontends/qt4/GuiDocument.cpp:957
+#, fuzzy
 msgid "Always Babel"
-msgstr "Mindig Babel"
+msgstr "Mindig váltsa"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:71
 #: src/frontends/qt4/GuiDocument.cpp:961
+#, fuzzy
 msgid "None[[language package]]"
-msgstr "Nincs[[language package]]"
+msgstr "Nyelvi cs&omag:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:88
 msgid "Command s&tart:"
@@ -4059,8 +4111,9 @@ msgid "Processor for &Japanese:"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:133
+#, fuzzy
 msgid "Options:"
-msgstr "Kapcsolók:"
+msgstr "&Kapcsolók:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:143
 msgid "Specific BibTeX command and options for pLaTeX (Japanese)"
@@ -4358,7 +4411,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:44
 msgid "Spellcheck &notes and comments"
-msgstr "Jegyzetek és &megjegyzések ellenőrzése"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:51
 msgid "&Spellchecker engine:"
@@ -4374,11 +4427,11 @@ msgstr "Összetett szavak &elfogadása"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:74
 msgid "Mark misspelled words with a underline."
-msgstr "Aláhúzással jelölje az rosszul írt szavakat."
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:77
 msgid "S&pellcheck continuously"
-msgstr "Helyesírá&s ellenőrzés folyamatosan"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:100
 #, fuzzy
@@ -4398,6 +4451,7 @@ msgid "Al&ternative language:"
 msgstr "Alternatív &nyelv:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:26
+#, fuzzy
 msgid "General Look && Feel"
 msgstr "Program kinézete"
 
@@ -4438,8 +4492,9 @@ msgid "&Enable tool tips in main work area"
 msgstr "Súgószövege&k megjelenésének engedélyezése a főablakban"
 
 #: src/frontends/qt4/ui/PrefUi.ui:151
+#, fuzzy
 msgid "Menus"
-msgstr "Menük"
+msgstr "GuiMenü"
 
 #: src/frontends/qt4/ui/PrefUi.ui:162
 msgid "&Maximum last files:"
@@ -4452,12 +4507,14 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefsUi.ui:48
+#, fuzzy
 msgid "A&pply to current session only"
-msgstr "Csak az aktuális munkamenetre érvényes"
+msgstr "(verziókövetés)"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:13
+#, fuzzy
 msgid "Nomenclature settings"
-msgstr "Szakkifejezés beállítások"
+msgstr "Szakkifejezés"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:19
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:32
@@ -4511,15 +4568,16 @@ msgstr "Beállítások"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:145
 msgid "Select the debug messages that should be displayed"
-msgstr "Megjelenítendő nyomkövetési üzenetek kiválasztása"
+msgstr ""
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:173
 msgid "Automatic cleanup of the window before LaTeX compilation proceeds"
-msgstr "Ablak automatikus törlése a LaTeX fordítási művelet előtt"
+msgstr ""
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
+#, fuzzy
 msgid "&Clear automatically"
-msgstr "&Automatikus törlés"
+msgstr "Minden változást alkalmazz automatikusan"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
 msgid "Debug messages"
@@ -4536,11 +4594,11 @@ msgstr "&Nincs"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:213
 msgid "Display the debug messages selected to the right"
-msgstr "Kiválasztott nyomkövetési üzenetek megjelenítése"
+msgstr ""
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:216
 msgid "S&elected"
-msgstr "&Kiválasztottak"
+msgstr "&Kiválasztva"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:223
 #, fuzzy
@@ -4553,71 +4611,81 @@ msgstr "&Mind"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:236
 msgid "Display statusbar messages?"
-msgstr "Megjelenítsük a státuszsori üzeneteket?"
+msgstr ""
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:239
+#, fuzzy
 msgid "&Statusbar messages"
-msgstr "Státuszsor üzenetek"
+msgstr "Betétszöveg/táblázat üzenetek"
 
 #: src/frontends/qt4/ui/RefUi.ui:73
+#, fuzzy
 msgid "&In[[buffer]]:"
-msgstr "&Itt[[buffer]]:"
+msgstr "puffer"
 
 #: src/frontends/qt4/ui/RefUi.ui:92
+#, fuzzy
 msgid "Filter case-sensitively"
-msgstr "Kis- és nagybetű megkülönböztetése"
+msgstr "Kis- és nagyb&etű megkülönböztetése"
 
 #: src/frontends/qt4/ui/RefUi.ui:95
+#, fuzzy
 msgid "Case Sensiti&ve"
-msgstr "Kis/nagyb&etű érz."
+msgstr "Kis- és nagyb&etű megkülönböztetése"
 
 #: src/frontends/qt4/ui/RefUi.ui:110
 msgid "The (sub-)document from which the available labels are displayed"
-msgstr "Az (al)dokumentum, amiből az elérhető címkéket mutassa"
+msgstr ""
 
 #: src/frontends/qt4/ui/RefUi.ui:138
 msgid "So&rt:"
-msgstr "&Rendezés:"
+msgstr ""
 
 #: src/frontends/qt4/ui/RefUi.ui:148
 msgid "Sorting of the list of available labels"
-msgstr "Elérhető címkék listájának rendezése"
+msgstr ""
 
 #: src/frontends/qt4/ui/RefUi.ui:155
 msgid "Group the list of available labels by prefix (e.g. \"sec:\")"
 msgstr ""
 
 #: src/frontends/qt4/ui/RefUi.ui:158
+#, fuzzy
 msgid "Grou&p"
-msgstr "Cso&portosítás"
+msgstr "Nincs csoport"
 
 #: src/frontends/qt4/ui/RefUi.ui:180
+#, fuzzy
 msgid "Available &Labels:"
-msgstr "E&lérhető címkék:"
+msgstr "&Elérhető változatok:"
 
 #: src/frontends/qt4/ui/RefUi.ui:192
+#, fuzzy
 msgid "Sele&cted Label:"
-msgstr "Kiválasztott &címke:"
+msgstr "&Kiválasztott:"
 
 #: src/frontends/qt4/ui/RefUi.ui:205
 msgid "Select a label from the list above or enter a label manually"
-msgstr "Válasszon címkét a fenti listából, vagy írja be kézzel"
+msgstr ""
 
 #: src/frontends/qt4/ui/RefUi.ui:218 src/frontends/qt4/GuiRef.cpp:431
+#, fuzzy
 msgid "Jump to the selected label"
-msgstr "Kiválasztott címkére ugrás"
+msgstr "Címkére ugrás"
 
 #: src/frontends/qt4/ui/RefUi.ui:221 src/frontends/qt4/GuiRef.cpp:430
 msgid "&Go to Label"
 msgstr "Címkére &ugrás"
 
 #: src/frontends/qt4/ui/RefUi.ui:232
+#, fuzzy
 msgid "Reference For&mat:"
-msgstr "Hivatkozás for&mátum:"
+msgstr "Hivatkozás:"
 
 #: src/frontends/qt4/ui/RefUi.ui:251
+#, fuzzy
 msgid "Adjust the style of the cross-reference"
-msgstr "Kereszthivatkozás stílusának mósodítása"
+msgstr "Kereszthivatkozás beszúrása"
 
 #: src/frontends/qt4/ui/RefUi.ui:255 src/frontends/qt4/GuiRef.cpp:326
 msgid "<reference>"
@@ -4649,20 +4717,20 @@ msgid "Textual reference"
 msgstr "Szöveges hivatkozás"
 
 #: src/frontends/qt4/ui/RefUi.ui:290 src/frontends/qt4/GuiRef.cpp:334
+#, fuzzy
 msgid "Label only"
-msgstr "Csak címke"
+msgstr "Színes"
 
 #: src/frontends/qt4/ui/RefUi.ui:328
 msgid ""
 "Use plural form of formatted reference. (Works only for formatted "
 "references, and only if you are using refstyle.)"
 msgstr ""
-"Többesszám használata a formázott hivatkozásoknál. (Csak formázott "
-"hivatkozásoknál működik, és csak akkor ha 'refstyle'-t használ.)"
 
 #: src/frontends/qt4/ui/RefUi.ui:331
+#, fuzzy
 msgid "Plural"
-msgstr "Többeszám"
+msgstr "natural"
 
 #: src/frontends/qt4/ui/RefUi.ui:338
 msgid ""
@@ -4675,12 +4743,13 @@ msgid "Capitalized"
 msgstr "Nagybetűsített"
 
 #: src/frontends/qt4/ui/RefUi.ui:348
+#, fuzzy
 msgid "Do not output part of label before \":\""
-msgstr "Ne jelenjen meg a címke része a \":\" előtt"
+msgstr "Ne jelenjen meg az utolsó lábléc a kimenetben"
 
 #: src/frontends/qt4/ui/RefUi.ui:351 lib/ui/stdcontext.inc:101
 msgid "No Prefix"
-msgstr "Nincs prefix"
+msgstr ""
 
 #: src/frontends/qt4/ui/SearchUi.ui:23
 msgid "Fi&nd:"
@@ -4976,7 +5045,7 @@ msgstr "Állandó oszlopszélesség"
 
 #: src/frontends/qt4/ui/TabularUi.ui:445
 msgid "&Decimal separator:"
-msgstr "Tize&despont elválasztó:"
+msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:516
 msgid "Merge cells of different columns"
@@ -5446,36 +5515,40 @@ msgid "F&ormat:"
 msgstr "F&ormátum:"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:109
+#, fuzzy
 msgid "Select the output format"
-msgstr "Megjelenítési formátum kiválasztása"
+msgstr "Ala&p nyomtató:"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:127
 msgid "Show the source as the master document gets it"
-msgstr "Mutassa a forrást ahogy a fődokumentum megkapja azt"
+msgstr ""
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:130
 msgid "Master's perspective"
-msgstr "Fődokumentum perspektívája"
+msgstr ""
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:137
 msgid "Automatic update"
 msgstr "Automatikus frissítés"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:164
+#, fuzzy
 msgid "Current Paragraph"
-msgstr "Aktuális bekezdés"
+msgstr "B&ekezdés behúzása"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:169
+#, fuzzy
 msgid "Complete Source"
 msgstr "Teljes forrás"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:174
 msgid "Preamble Only"
-msgstr "Csak a preambulum"
+msgstr ""
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:179
+#, fuzzy
 msgid "Body Only"
-msgstr "Csak test"
+msgstr "Csak"
 
 #: src/frontends/qt4/ui/WorkAreaUi.ui:82 src/frontends/qt4/GuiView.cpp:3295
 #: src/frontends/qt4/GuiView.cpp:3993
@@ -5840,11 +5913,11 @@ msgstr "Főtéma"
 
 #: lib/layouts/AEA.layout:58
 msgid "Publication Month"
-msgstr "Publikáció hónapja"
+msgstr ""
 
 #: lib/layouts/AEA.layout:64
 msgid "Publication Month:"
-msgstr "Publikáció hónapja:"
+msgstr ""
 
 #: lib/layouts/AEA.layout:71
 #, fuzzy
@@ -5874,11 +5947,11 @@ msgstr ""
 
 #: lib/layouts/AEA.layout:89
 msgid "JEL"
-msgstr "JEL"
+msgstr ""
 
 #: lib/layouts/AEA.layout:92
 msgid "JEL:"
-msgstr "JEL:"
+msgstr ""
 
 #: lib/layouts/AEA.layout:95 lib/layouts/IEEEtran-CompSoc.layout:55
 #: lib/layouts/IEEEtran-TransMag.layout:33 lib/layouts/IEEEtran.layout:280
@@ -6037,7 +6110,7 @@ msgstr "Ábra"
 
 #: lib/layouts/AEA.layout:120
 msgid "Text of a note in a figure"
-msgstr "Kép jegyzetének szövege"
+msgstr ""
 
 #: lib/layouts/AEA.layout:127 lib/layouts/apa6.layout:219
 #: lib/layouts/beamer.layout:1363 lib/layouts/powerdot.layout:219
@@ -6678,7 +6751,7 @@ msgstr "Gyorsbillentyűk|G"
 
 #: lib/layouts/IEEEtran.layout:125
 msgid "A short version of the author name"
-msgstr "Szerző nevének rövid változata"
+msgstr ""
 
 #: lib/layouts/IEEEtran.layout:142
 msgid "Author Name"
@@ -7469,7 +7542,7 @@ msgstr "Ábra címe"
 
 #: lib/layouts/aastex.layout:537
 msgid "fig."
-msgstr "kép"
+msgstr ""
 
 #: lib/layouts/aastex.layout:543
 msgid "Filename to identify the corresponding figure file"
@@ -7525,7 +7598,7 @@ msgstr "Szoftver:"
 
 #: lib/layouts/aastex6.layout:99
 msgid "APPENDIX"
-msgstr "FÜGGELÉK"
+msgstr ""
 
 #: lib/layouts/aastex6.layout:103
 #, fuzzy
@@ -8281,8 +8354,9 @@ msgid "ISBN:"
 msgstr "ISBN:"
 
 #: lib/layouts/acmsiggraph-0-92.layout:144 lib/layouts/sigplanconf.layout:126
+#, fuzzy
 msgid "DOI"
-msgstr "DOI"
+msgstr "DIA"
 
 #: lib/layouts/acmsiggraph-0-92.layout:147
 #: lib/layouts/acmsiggraph-0-92.layout:154 lib/layouts/acmsiggraph.layout:102
@@ -8299,13 +8373,15 @@ msgid "PDF author"
 msgstr "PDF szerző"
 
 #: lib/layouts/acmsiggraph-0-92.layout:184 lib/layouts/acmsiggraph.layout:160
+#, fuzzy
 msgid "PDF author:"
-msgstr "PDF szerző:"
+msgstr "Tartalomjegyzék szerző:"
 
 #: lib/layouts/acmsiggraph-0-92.layout:195
 #: lib/layouts/acmsiggraph-0-92.layout:200
+#, fuzzy
 msgid "Keyword list"
-msgstr "Kulcsszólista"
+msgstr "Kulcsszavak"
 
 #: lib/layouts/acmsiggraph-0-92.layout:204
 #: lib/layouts/acmsiggraph-0-92.layout:207
@@ -8940,8 +9016,9 @@ msgid "Acknowledgments."
 msgstr "Köszönetnyilvánítás."
 
 #: lib/layouts/algorithm2e.module:2
+#, fuzzy
 msgid "Algorithm2e"
-msgstr "Algorithm2e"
+msgstr "Algoritmus"
 
 #: lib/layouts/algorithm2e.module:7
 msgid ""
@@ -9284,7 +9361,7 @@ msgstr "Rész*"
 
 #: lib/layouts/beamer.layout:3
 msgid "Beamer"
-msgstr "Beamer"
+msgstr ""
 
 #: lib/layouts/beamer.layout:4 lib/layouts/bxjsslide.layout:4
 #: lib/layouts/foils.layout:4 lib/layouts/powerdot.layout:4
@@ -15599,8 +15676,9 @@ msgid "Slide*"
 msgstr "Fólia*"
 
 #: lib/layouts/seminar.layout:125
+#, fuzzy
 msgid "List/TOC"
-msgstr "Listák és tartalomjegyzék"
+msgstr "Listák és tartalomjegyzék|L"
 
 #: lib/layouts/seminar.layout:135
 msgid "[List Of Slides]"
@@ -19483,7 +19561,7 @@ msgstr "Keresés és csere (gyors)...|c"
 
 #: lib/ui/stdmenus.inc:116
 msgid "Find & Replace (Advanced)..."
-msgstr "Keresés és csere (extra)..."
+msgstr "Keresés és csere (extra)...|c"
 
 #: lib/ui/stdmenus.inc:127
 msgid "Table|T"
@@ -20104,16 +20182,18 @@ msgid "Table of Contents|C"
 msgstr "Tartalomjegyzék|T"
 
 #: lib/ui/stdmenus.inc:491
+#, fuzzy
 msgid "List of Listings|L"
-msgstr "Listák listája |L"
+msgstr "Listák listája"
 
 #: lib/ui/stdmenus.inc:492
 msgid "Nomenclature|N"
 msgstr "Szakkifejezések|S"
 
 #: lib/ui/stdmenus.inc:493
+#, fuzzy
 msgid "Bib(la)TeX Bibliography...|B"
-msgstr "Bib(la)TeX irodalomjegyzék...|B"
+msgstr "BibTeX irodalomjegyzék...|B"
 
 #: lib/ui/stdmenus.inc:497
 msgid "LyX Document...|X"
@@ -20141,7 +20221,7 @@ msgstr "Megjegyzés|M"
 
 #: lib/ui/stdmenus.inc:524
 msgid "Insert New Branch...|I"
-msgstr "Új változat beszúrása...|v"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:542
 msgid "Change Tracking|C"
@@ -20350,12 +20430,14 @@ msgid "Knitr|K"
 msgstr "Nyelvészeti kézikönyv|l"
 
 #: lib/ui/stdmenus.inc:638
+#, fuzzy
 msgid "LilyPond|P"
-msgstr "LilyPond|P"
+msgstr "LilyPond"
 
 #: lib/ui/stdmenus.inc:639
+#, fuzzy
 msgid "Linguistics|L"
-msgstr "Nyelvészet|l"
+msgstr "Nyelvészet"
 
 #: lib/ui/stdmenus.inc:640
 msgid "Multilingual Captions|C"
@@ -20456,6 +20538,7 @@ msgid "Insert table"
 msgstr "Táblázat beszúrása"
 
 #: lib/ui/stdtoolbars.inc:95
+#, fuzzy
 msgid "Custom insets"
 msgstr "Saját betétek"
 
@@ -22111,7 +22194,7 @@ msgstr "varfí"
 
 #: lib/ui/stdtoolbars.inc:629
 msgid "chi"
-msgstr "chi"
+msgstr "Khí"
 
 #: lib/ui/stdtoolbars.inc:630
 msgid "psi"
@@ -26591,7 +26674,7 @@ msgstr ""
 
 #: src/Buffer.cpp:5049 src/insets/InsetCaption.cpp:381
 msgid "Senseless!!! "
-msgstr "Értelmetlen!!! "
+msgstr "Értelmetlen!"
 
 #: src/Buffer.cpp:5269
 #, c-format
@@ -26855,7 +26938,7 @@ msgstr "Statisztika a kijelölésre:"
 
 #: src/BufferView.cpp:1756
 msgid "Statistics for the document:"
-msgstr "Dokumentum statisztikája:"
+msgstr "A dokumentum statisztikája: "
 
 #: src/BufferView.cpp:1759
 #, c-format
@@ -26905,7 +26988,7 @@ msgstr "Változatnév"
 
 #: src/BufferView.cpp:2013 src/frontends/qt4/GuiBranches.cpp:218
 msgid "Branch already exists"
-msgstr "Változat már létezik"
+msgstr "A változat már létezik."
 
 #: src/BufferView.cpp:2872
 #, c-format
@@ -28126,6 +28209,7 @@ msgid "Setting debug level to %1$s"
 msgstr "Nyomkövetési szint beállítása: %1$s"
 
 #: src/LyX.cpp:1179
+#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -28180,53 +28264,30 @@ msgstr ""
 "Használat: lyx [ parancssori kapcsolók ] [ doksi.lyx ... ]\n"
 "Parancssori kapcsolók (kis- és nagybetű érzékenyek):\n"
 "\t-help              összefoglalja a LyX használatát\n"
-"\t-userdir mappa       felhasználói könyvtár beállítása mappára\n"
-"\t-sysdir mappa        rendszerkönyvtár beállítása mappára\n"
+"\t-userdir dir       felhasználói könyvtár beállítása dir-re\n"
+"\t-sysdir dir        rendszerkönyvtár beállítása dir-re\n"
 "\t-geometry WxH+X+Y  a főablak méretének beállítása\n"
 "\t-dbg jellemző[,jellemző]...\n"
-"                  kiválasztja a nyomkövetési mód jellemzőit.\n"
+"                  kiválassztja ki a nyomkövetési mód jellemzőit.\n"
 "                  Adja ki a `lyx -dbg' parancsot a jellemzők listájához\n"
 "\t-x [--execute] parancs\n"
 "                  ahol a parancs egy lyx parancs.\n"
 "\t-e [--export] fmt\n"
 "                  ahol az fmt az exportálási formátum.\n"
 "                  Lásd az Eszközök->Beállítások->File kezelés-"
-">Fájlformátumok->Rövid nevek\n"
-"                  részben milyen paramétert ( ami különbözik a formátum "
-"nevétől\n"
-"                  a Fájl->Exportálás-ban lévő formátumoktól) kell átadni.\n"
-"                  Exportálni a dokumentum alap kimeneti formátumába "
-"használja a\n"
-"                  'default'-ot. Figyelem, a -e és -x kapcsolók sorrendje "
-"számít.\n"
-"\t-E [--export-to] fmt fájlnév\n"
-"                  Ahol az fmt az exportálás formátuma (lásd --export),\n"
-"                  és a fájlnév a cél fájl neve.\n"
-"\t-i [--import] fmt fájl.xxx\n"
+">Fájlformátumok\n"
+"                  részben milyen paraméterek szükségesek.\n"
+"\t-i [--import] fmt file.xxx\n"
 "                  ahol fmt az importálási formátum\n"
-"                  és a fájl.xxx az importálandó fájl.\n"
+"                  és a file.xxx az importálandó fájl.\n"
 "\t-f [--force-overwrite] mit\n"
 "                  ahol `mit' lehet `all', `main' vagy `none',\n"
 "                  megadásával lehet szabályozni, hogy mi íródjon felül "
 "kötegelt exportálás során,\n"
 "                  `all'=minden fájl, `main'=fő dokumentum, `none'=semmi.\n"
 "                  Minden más egyenlő `all'-lal, de ez nem számít.\n"
-"\t--ignore-error-message which\n"
-"                  figyelmen kívül hagyhatunk bizonyos LaTeX hibaüzenetket.\n"
-"                  Ne használja végleges dokumentumokhoz! Jelenleg támogatott "
-"értékek:\n"
-"                  * missing_glyphs: Fontspec `missing glyphs' error.\n"
-"\t-n [--no-remote]\n"
-"                  dokumentumok megnyitása új példányban\n"
-"\t-r [--remote]\n"
-"                  dokumentumok megnyitása futó példányban\n"
-"                  (működő lyxpipe szükséges)\n"
-"\t-v [--verbose]\n"
-"                  gyerek folyamatok jelentése terminál ablakba.\n"
-"\t-batch    parancsok végrehajtása GUI nélkül és kilépés.\n"
-"\n"
 "\t-version        megadja a verziószámot és a fordítási információkat\n"
-"Olvassa el a LyX kézikönyvet a további részletekért."
+"Olvassa el a LyX kézikönyvet a további részletekért!"
 
 #: src/LyX.cpp:1232 src/frontends/qt4/GuiAbout.cpp:240
 msgid "  Git commit hash "
@@ -29132,8 +29193,9 @@ msgid "Table of Contents"
 msgstr "Tartalomjegyzék"
 
 #: src/TocBackend.cpp:280
+#, fuzzy
 msgid "Changes"
-msgstr "Változások"
+msgstr "Változás:"
 
 #: src/TocBackend.cpp:281
 msgid "Senseless"
@@ -29188,8 +29250,9 @@ msgstr ""
 "'%1$s'."
 
 #: src/VCBackend.cpp:636
+#, fuzzy
 msgid "Up-to-date"
-msgstr "Aktuális"
+msgstr "&Frissítés"
 
 #: src/VCBackend.cpp:638
 #, fuzzy
@@ -29210,8 +29273,9 @@ msgid "Needs Checkout"
 msgstr ""
 
 #: src/VCBackend.cpp:646
+#, fuzzy
 msgid "No CVS file"
-msgstr "Nincs CVS fájl"
+msgstr "Fájl&ba:"
 
 #: src/VCBackend.cpp:648
 msgid "Cannot retrieve CVS status"
@@ -29378,8 +29442,9 @@ msgid "&No"
 msgstr "&Nem"
 
 #: src/VCBackend.cpp:1591
+#, fuzzy
 msgid "SVN File Locking"
-msgstr "SVN fájl zárolás"
+msgstr "VCN fájl zárolás"
 
 #: src/VCBackend.cpp:1592 src/VCBackend.cpp:1597
 msgid "Locking property unset."
@@ -29432,12 +29497,14 @@ msgid "Reload saved document?"
 msgstr "Mentett dokumentum betöltése újra?"
 
 #: src/buffer_funcs.cpp:78
+#, fuzzy
 msgid "Yes, &Reload"
-msgstr "Igen, &Újratöltés"
+msgstr "&Újratölt"
 
 #: src/buffer_funcs.cpp:78
+#, fuzzy
 msgid "No, &Keep Changes"
-msgstr "Nem, Változáso&k megtartása"
+msgstr "&Változások megtartása"
 
 #: src/buffer_funcs.cpp:100
 #, c-format
@@ -29519,8 +29586,9 @@ msgid "Close"
 msgstr "Bezár"
 
 #: src/frontends/qt4/CategorizedCombo.cpp:187
+#, fuzzy
 msgid "Unavailable:"
-msgstr "Elérhetetlen:"
+msgstr "Elérhetetlen: %1$s"
 
 #: src/frontends/qt4/CategorizedCombo.cpp:497
 #, c-format
@@ -29530,8 +29598,9 @@ msgstr "Elérhetetlen: %1$s"
 #: src/frontends/qt4/CategorizedCombo.cpp:500
 #: src/frontends/qt4/CategorizedCombo.cpp:525
 #: src/frontends/qt4/CategorizedCombo.cpp:526
+#, fuzzy
 msgid "Uncategorized"
-msgstr ""
+msgstr "CR kategóriák"
 
 #: src/frontends/qt4/FileDialog.cpp:188
 msgid "Directories"
@@ -29542,6 +29611,7 @@ msgid "File"
 msgstr "Fájl"
 
 #: src/frontends/qt4/FindAndReplace.cpp:281
+#, fuzzy
 msgid "Master document"
 msgstr "Fődokumentum"
 
@@ -29581,63 +29651,71 @@ msgid "Wrap search?"
 msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:431
+#, fuzzy
 msgid "Nothing to search"
-msgstr "Nincs mit keresni"
+msgstr "Nincs mit tenni"
 
 #: src/frontends/qt4/FindAndReplace.cpp:479
+#, fuzzy
 msgid "No open document(s) in which to search"
-msgstr "Nincs nyitott dokumentumok amiben kereshetünk"
+msgstr "&Dokumentumok megnyitása, füleken"
 
 #: src/frontends/qt4/FindAndReplace.cpp:585
+#, fuzzy
 msgid "Advanced Find and Replace"
-msgstr "Fejlett keresés és csere"
+msgstr "Keres és cserél"
 
 #: src/frontends/qt4/FloatPlacement.cpp:182
 #: src/frontends/qt4/GuiDocument.cpp:1028
 #: src/frontends/qt4/GuiDocument.cpp:2350
 #: src/frontends/qt4/GuiDocument.cpp:2377
+#, fuzzy
 msgid "Class Default"
-msgstr "Osztály alapérték"
+msgstr "Használd a szövegosztály alapértékeit"
 
 #: src/frontends/qt4/FloatPlacement.cpp:184
+#, fuzzy
 msgid "Document Default"
-msgstr "Dokumentum alapérték"
+msgstr "Mentsd dokumentum alapértéknek"
 
 #: src/frontends/qt4/FloatPlacement.h:38 src/frontends/qt4/GuiDocument.cpp:1623
+#, fuzzy
 msgid "Float Settings"
-msgstr "Úsztatási beállítások"
+msgstr "Úsztatási beállítások...|i"
 
 #: src/frontends/qt4/GuiAbout.cpp:51
+#, fuzzy
 msgid "ERROR: LyX wasn't able to find the CREDITS file\n"
-msgstr "HIBA: A LyX nem tudta megtalálni a CREDITS fájlt\n"
+msgstr "HIBA: A LyX nem tudta olvasni a CREDITS fájlt\n"
 
 #: src/frontends/qt4/GuiAbout.cpp:52 src/frontends/qt4/GuiAbout.cpp:57
+#, fuzzy
 msgid ""
 "Please install correctly to estimate the great\n"
 "amount of work other people have done for the LyX project."
-msgstr ""
-"Kérem telepítse rendesen, hogy megállapíthassa\n"
-"azt a sok munkát, amit rengetegen végeztek a LyX projektben."
+msgstr "azt a sok munkát, amit rengetegen elvégeztek a LyX projektben."
 
 #: src/frontends/qt4/GuiAbout.cpp:56
+#, fuzzy
 msgid "ERROR: LyX wasn't able to read the CREDITS file\n"
 msgstr "HIBA: A LyX nem tudta olvasni a CREDITS fájlt\n"
 
 #: src/frontends/qt4/GuiAbout.cpp:91
+#, fuzzy
 msgid "ERROR: LyX wasn't able to find the RELEASE-NOTES file\n"
-msgstr "HIBA: A LyX nem tudta megtalálni a RELEASE-NOTES fájlt\n"
+msgstr "HIBA: A LyX nem tudta olvasni a CREDITS fájlt\n"
 
 #: src/frontends/qt4/GuiAbout.cpp:92 src/frontends/qt4/GuiAbout.cpp:97
+#, fuzzy
 msgid ""
 "Please install correctly to see what has changed\n"
 "for this version of LyX."
-msgstr ""
-"Kérem, telepítse megfelelően, hogy láthassa mi \n"
-"változott a LyX ezen verziójában."
+msgstr "Kérem, telepítse megfelelően, és becsülje meg\n"
 
 #: src/frontends/qt4/GuiAbout.cpp:96
+#, fuzzy
 msgid "ERROR: LyX wasn't able to read the RELEASE-NOTES file\n"
-msgstr "HIBA: A LyX nem tudta olvasni a RELEASE-NOTES fájlt\n"
+msgstr "HIBA: A LyX nem tudta olvasni a CREDITS fájlt\n"
 
 #: src/frontends/qt4/GuiAbout.cpp:179
 #, c-format
@@ -29744,8 +29822,9 @@ msgid "&OK"
 msgstr "&OK"
 
 #: src/frontends/qt4/GuiApplication.cpp:690
+#, fuzzy
 msgid "Apply"
-msgstr "Alkalmaz"
+msgstr "&Alkalmaz"
 
 #: src/frontends/qt4/GuiApplication.cpp:691
 msgid "Reset"
@@ -29957,8 +30036,9 @@ msgid "Document Encoding"
 msgstr "Dokumentum kódolása"
 
 #: src/frontends/qt4/GuiBibtex.cpp:338
+#, fuzzy
 msgid "Biblatex Bibliography"
-msgstr "Biblatex irodalomjegyzék"
+msgstr "BibTeX irodalomjegyzék"
 
 #: src/frontends/qt4/GuiBibtex.cpp:374 src/insets/InsetBibtex.cpp:222
 #, fuzzy
@@ -30173,8 +30253,9 @@ msgid "Clear text"
 msgstr "Üres oldal"
 
 #: src/frontends/qt4/GuiCitation.cpp:106
+#, fuzzy
 msgid "All avail. citations"
-msgstr "Elérhető hivatkozások"
+msgstr "Elérhető hivatko&zások:"
 
 #: src/frontends/qt4/GuiCitation.cpp:112
 msgid "Regular e&xpression"
@@ -30232,7 +30313,7 @@ msgstr "Kulcsok"
 
 #: src/frontends/qt4/GuiCitation.cpp:467
 msgid "Displays a sketchy preview if a citation is selected above"
-msgstr "Vázlatos előnézet megjelenítése, ha egy hivatkozás ki van választva"
+msgstr ""
 
 #: src/frontends/qt4/GuiCitation.cpp:471
 #, fuzzy
@@ -30240,14 +30321,15 @@ msgid "Sketchy preview of the selected citation"
 msgstr "Kiválasztott változat átnevezése"
 
 #: src/frontends/qt4/GuiCitation.cpp:582
+#, fuzzy
 msgid "Enter string to filter the list of available citations"
-msgstr "Elérhető hivatkozások szűkítése a megadott szöveggel"
+msgstr "írjon be betűket a layout lista szűréséhez."
 
 #: src/frontends/qt4/GuiCitation.cpp:583
+#, fuzzy
 msgid ""
 "Enter string to filter the list of available citations and press <Enter>"
-msgstr ""
-"Elérhető hivatkozások szűkítése a megadott szöveggel, <Enter> megnyomására"
+msgstr "írjon be betűket a layout lista szűréséhez."
 
 #: src/frontends/qt4/GuiCitation.cpp:647
 #, fuzzy
@@ -31038,8 +31120,9 @@ msgid "Select external file"
 msgstr "Külső fájl kiválasztása"
 
 #: src/frontends/qt4/GuiGraphics.cpp:78
+#, fuzzy
 msgid "automatically"
-msgstr "automatikusan"
+msgstr "Automatikus súgó"
 
 #: src/frontends/qt4/GuiGraphics.cpp:261 src/frontends/qt4/GuiGraphics.cpp:277
 msgid "Dissolve previous group?"
@@ -31214,8 +31297,9 @@ msgid "Horizontal Space Settings"
 msgstr "Vízszintes kitöltés beállításai"
 
 #: src/frontends/qt4/GuiHyperlink.h:35
+#, fuzzy
 msgid "Hyperlink Settings"
-msgstr "Hiperhivatkozás beállítások"
+msgstr "Hiperhivatkozás"
 
 #: src/frontends/qt4/GuiInclude.cpp:115 src/frontends/qt4/GuiInclude.cpp:177
 #: src/frontends/qt4/GuiListings.cpp:240 src/frontends/qt4/GuiListings.cpp:384
@@ -31558,16 +31642,19 @@ msgid "Native"
 msgstr "aktív"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1555
+#, fuzzy
 msgid "Aspell"
-msgstr "Aspell"
+msgstr "ispell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1558
+#, fuzzy
 msgid "Enchant"
-msgstr "Enchant"
+msgstr "enchant"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1561
+#, fuzzy
 msgid "Hunspell"
-msgstr "Hunspell"
+msgstr "ispell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1634
 msgid "Converters"
@@ -31586,6 +31673,7 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:1987
+#, fuzzy
 msgid "File Formats"
 msgstr "Fájlformátumok"
 
@@ -31620,6 +31708,7 @@ msgstr ""
 "életbe."
 
 #: src/frontends/qt4/GuiPrefs.cpp:2534
+#, fuzzy
 msgid "User Interface"
 msgstr "Felhasználói felület"
 
@@ -31767,7 +31856,7 @@ msgstr "Minden fájl "
 
 #: src/frontends/qt4/GuiProgressView.cpp:66
 msgid "Progress/Debug Messages"
-msgstr "Működési/nyomkövetési üzenetek"
+msgstr ""
 
 #: src/frontends/qt4/GuiProgressView.cpp:101
 msgid "Debug Level"
@@ -31783,12 +31872,14 @@ msgid "Cross-reference"
 msgstr "Kereszthivatkozás"
 
 #: src/frontends/qt4/GuiRef.cpp:62
+#, fuzzy
 msgid "All available labels"
-msgstr "Elérhető címkék"
+msgstr "Elérhető sablonok"
 
 #: src/frontends/qt4/GuiRef.cpp:63
+#, fuzzy
 msgid "Enter string to filter the list of available labels"
-msgstr "Elérhető címkék szűkítése szöveggel"
+msgstr "írjon be betűket a layout lista szűréséhez."
 
 #: src/frontends/qt4/GuiRef.cpp:75
 #, fuzzy
@@ -32187,8 +32278,9 @@ msgid "Symbols"
 msgstr "Szimbólumok"
 
 #: src/frontends/qt4/GuiTabular.h:46
+#, fuzzy
 msgid "Tabular Settings"
-msgstr "Táblázat beállításai"
+msgstr "Táblázat &beállításai"
 
 #: src/frontends/qt4/GuiTabularCreate.cpp:29
 msgid "Insert Table"
@@ -32426,8 +32518,9 @@ msgid "file not imported!"
 msgstr "fájl nincs importálva!"
 
 #: src/frontends/qt4/GuiView.cpp:2589
+#, fuzzy
 msgid "newfile"
-msgstr "newfile"
+msgstr "Fájl csatolása"
 
 #: src/frontends/qt4/GuiView.cpp:2622
 msgid "Select LyX document to insert"
@@ -32670,7 +32763,7 @@ msgstr "Exportálás ..."
 
 #: src/frontends/qt4/GuiView.cpp:3837
 msgid "Previewing ..."
-msgstr "Előnézet betöltése..."
+msgstr "Előnézet betöltése"
 
 #: src/frontends/qt4/GuiView.cpp:3875
 msgid "Document not loaded"
@@ -33012,24 +33105,24 @@ msgstr "Határok típusának váltása|l"
 #: src/frontends/qt4/Menus.cpp:1893
 #, c-format
 msgid "Insert Separated %1$s Above"
-msgstr "Különálló %1$s  beszúrása felülre"
+msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:1895
 #, c-format
 msgid "Separated %1$s Above"
-msgstr "Különálló %1$s felülre"
+msgstr "Szeparált %1$s felülre"
 
 #: src/frontends/qt4/Menus.cpp:1901 src/frontends/qt4/Menus.cpp:1914
 #: src/frontends/qt4/Menus.cpp:1931
 #, c-format
 msgid "Insert Separated %1$s Below"
-msgstr "Különálló %1$s  beszúrása alulra"
+msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:1903 src/frontends/qt4/Menus.cpp:1916
 #: src/frontends/qt4/Menus.cpp:1937
 #, c-format
 msgid "Separated %1$s Below"
-msgstr "Különálló %1$s alulra"
+msgstr "Szeparált %1$s alulra"
 
 #: src/frontends/qt4/Menus.cpp:1929
 #, c-format
@@ -33055,19 +33148,19 @@ msgid "Search"
 msgstr "Keresés"
 
 #: src/frontends/qt4/Toolbars.cpp:230
-#, c-format
+#, fuzzy, c-format
 msgid "Export %1$s"
-msgstr "%1$s exportálása"
+msgstr "Betűkészlet: %1$s"
 
 #: src/frontends/qt4/Toolbars.cpp:234
-#, c-format
+#, fuzzy, c-format
 msgid "Import %1$s"
-msgstr "%1$s importálása"
+msgstr "Importálás %1$s..."
 
 #: src/frontends/qt4/Toolbars.cpp:238
 #, c-format
 msgid "Update %1$s"
-msgstr "%1$s frissítése"
+msgstr "Frissítés %1$s"
 
 #: src/frontends/qt4/Toolbars.cpp:242
 #, c-format
@@ -33100,8 +33193,9 @@ msgid "All Files "
 msgstr "Minden fájl "
 
 #: src/insets/Inset.cpp:89
+#, fuzzy
 msgid "Bibliography Entry"
-msgstr "Irodalomjegyzék elem"
+msgstr "Irodalomjegyzék elem beállítások"
 
 #: src/insets/Inset.cpp:95
 msgid "Float"
@@ -33121,8 +33215,9 @@ msgid "Horizontal Math Space"
 msgstr "Vízszintes kitöltés...|e"
 
 #: src/insets/InsetArgument.cpp:143
+#, fuzzy
 msgid "Unknown Argument"
-msgstr "Ismeretlen paraméter"
+msgstr "Ismeretlen térköz paraméter: "
 
 #: src/insets/InsetArgument.cpp:144
 msgid "Argument not known in this Layout. Will be suppressed in the output."
@@ -33191,8 +33286,9 @@ msgid ""
 msgstr ""
 
 #: src/insets/InsetBibtex.cpp:234
+#, fuzzy
 msgid "Options: "
-msgstr "Kapcsolók: "
+msgstr "&Kapcsolók:"
 
 #: src/insets/InsetBibtex.cpp:328
 msgid ""
@@ -33428,8 +33524,9 @@ msgid "email"
 msgstr "email"
 
 #: src/insets/InsetHyperlink.cpp:256
+#, fuzzy
 msgid "file"
-msgstr "fájl"
+msgstr "Minden fájl "
 
 #: src/insets/InsetHyperlink.cpp:257
 #, fuzzy, c-format
@@ -33478,8 +33575,9 @@ msgstr ""
 
 #: src/insets/InsetInclude.cpp:726 src/insets/InsetInclude.cpp:817
 #: src/insets/InsetInclude.cpp:843
+#, fuzzy
 msgid "Error: "
-msgstr "Hiba:"
+msgstr "Hiba"
 
 #: src/insets/InsetInclude.cpp:735
 #, c-format
@@ -33604,8 +33702,9 @@ msgid "no"
 msgstr "nem"
 
 #: src/insets/InsetInfo.cpp:500
+#, fuzzy
 msgid "No version control"
-msgstr "Nincs verziókövetés"
+msgstr "(verziókövetés)"
 
 #: src/insets/InsetLabel.cpp:76
 msgid "Label names must be unique!"
@@ -34061,12 +34160,14 @@ msgid "NameRef: "
 msgstr "Nyomtató neve:"
 
 #: src/insets/InsetRef.cpp:481
+#, fuzzy
 msgid "Label Only"
-msgstr "Csak címke"
+msgstr "Színes"
 
 #: src/insets/InsetRef.cpp:481
+#, fuzzy
 msgid "Label: "
-msgstr "Címke: "
+msgstr "&Címke:"
 
 #: src/insets/InsetScript.cpp:341
 #, fuzzy
@@ -34220,7 +34321,7 @@ msgstr "Előnézet kész"
 
 #: src/insets/RenderPreview.cpp:112
 msgid "Preview failed"
-msgstr "Előnézet sikertelen"
+msgstr "Előnézet sikertelen!"
 
 #: src/lengthcommon.cpp:41
 msgid "cc[[unit of measure]]"
@@ -34303,12 +34404,14 @@ msgid ""
 msgstr ""
 
 #: src/lyxfind.cpp:397 src/lyxfind.cpp:415
+#, fuzzy
 msgid "String not found."
-msgstr "Nem találtam meg a szöveget."
+msgstr "Nem találtam meg a szöveget!"
 
 #: src/lyxfind.cpp:400
+#, fuzzy
 msgid "String found."
-msgstr "Szöveg megtalálva."
+msgstr "Nem találtam meg a szöveget!"
 
 #: src/lyxfind.cpp:402
 msgid "String has been replaced."
@@ -34356,9 +34459,9 @@ msgid "Changing number of columns not allowed in 'cases': feature %1$s"
 msgstr "Az oszlopok száma nem változtatható az 'esetek' környezetben itt: %1$s"
 
 #: src/mathed/InsetMathColor.cpp:117
-#, c-format
+#, fuzzy, c-format
 msgid "Color: %1$s"
-msgstr "Szín: %1$s"
+msgstr "Színek"
 
 #: src/mathed/InsetMathDecoration.cpp:158
 #, fuzzy, c-format
@@ -34429,7 +34532,7 @@ msgstr "Az oszlopok száma itt: '%1$s' nem változtatható"
 #: src/mathed/InsetMathMacro.cpp:1202 src/mathed/InsetMathMacro.cpp:1208
 #, c-format
 msgid "Macro: %1$s"
-msgstr "Makró: %1$s"
+msgstr " Makró: %1$s"
 
 #: src/mathed/InsetMathMacroTemplate.cpp:493
 msgid "optional"
@@ -34484,9 +34587,9 @@ msgid "FormatRef: "
 msgstr "FormatRef: "
 
 #: src/mathed/InsetMathSize.cpp:107
-#, c-format
+#, fuzzy, c-format
 msgid "Size: %1$s"
-msgstr "Méret: %1$s"
+msgstr "Betűkészlet: %1$s"
 
 #: src/mathed/InsetMathSubstack.cpp:79
 #, fuzzy, c-format
@@ -34556,8 +34659,9 @@ msgstr ""
 "ltx' fájl van."
 
 #: src/support/Package.cpp:717 src/support/Package.cpp:744
+#, fuzzy
 msgid "File not found"
-msgstr "Fájl nincs meg"
+msgstr "Modul nincs meg"
 
 #: src/support/Package.cpp:718
 #, c-format
@@ -34618,16 +34722,17 @@ msgid "Let it &run"
 msgstr ""
 
 #: src/support/debug.cpp:41
+#, fuzzy
 msgid "No debugging messages"
 msgstr "Nincs hibakeresési üzenet"
 
 #: src/support/debug.cpp:42
 msgid "General information"
-msgstr "Általános információk"
+msgstr "General information"
 
 #: src/support/debug.cpp:43
 msgid "Program initialisation"
-msgstr "Program inicializáció"
+msgstr "Program initialisation"
 
 #: src/support/debug.cpp:44
 msgid "Keyboard events handling"
@@ -34635,7 +34740,7 @@ msgstr "Billentyűzet eseménykezelés"
 
 #: src/support/debug.cpp:45
 msgid "GUI handling"
-msgstr "GUI kezelés"
+msgstr "GUI handling"
 
 #: src/support/debug.cpp:46
 msgid "Lyxlex grammar parser"
@@ -34703,8 +34808,9 @@ msgid "Workarea events"
 msgstr "Munkaterület eseményei"
 
 #: src/support/debug.cpp:62
+#, fuzzy
 msgid "Clipboard handling"
-msgstr "Vágólap kezelés"
+msgstr "Billentyűzet eseménykezelés"
 
 #: src/support/debug.cpp:63
 msgid "Graphics conversion and loading"
@@ -34723,8 +34829,9 @@ msgid "RowPainter profiling"
 msgstr "RowPainter profiling"
 
 #: src/support/debug.cpp:67
+#, fuzzy
 msgid "Scrolling debugging"
-msgstr "Görgetés követése"
+msgstr "scrolling debugging"
 
 #: src/support/debug.cpp:68
 msgid "Math macros"
@@ -34736,19 +34843,20 @@ msgstr "RTL/Bidi"
 
 #: src/support/debug.cpp:70
 msgid "Locale/Internationalisation"
-msgstr "Nyelvi beállítás/Honosítás"
+msgstr "Locale/Internationalisation"
 
 #: src/support/debug.cpp:71
 msgid "Selection copy/paste mechanism"
 msgstr "Kijelölés másol/beilleszt mechanizmus"
 
 #: src/support/debug.cpp:72
+#, fuzzy
 msgid "Find and replace mechanism"
-msgstr "Keres és cserél mechanizmus"
+msgstr "Keres és cserél"
 
 #: src/support/debug.cpp:73
 msgid "Developers' general debug messages"
-msgstr "Fejlesztői általános nyomkövetési üzenetek"
+msgstr "Developers' general debug messages"
 
 #: src/support/debug.cpp:74
 msgid "All debugging messages"
@@ -34773,8 +34881,9 @@ msgid ""
 msgstr ""
 
 #: src/support/lassert.cpp:73
+#, fuzzy
 msgid "Warning!"
-msgstr "Figyelem!"
+msgstr "Exportálási Figyelmeztetés!"
 
 #: src/support/lassert.cpp:80
 msgid ""
