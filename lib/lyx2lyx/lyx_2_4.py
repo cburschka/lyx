@@ -60,7 +60,7 @@ def convert_fonts(document, font_list, font_type, scale_type, pkg):
     " Handle font definition to LaTeX "
 
     def createkey(pkg, options):
-        sort(options)
+        options.sort()
         return pkg + ':' + "-".join(options)
 
     def getfontname(pkg, options, pkg2fontmap, font2pkgmap):
@@ -200,7 +200,12 @@ def revert_fonts(document, font_list, fontmap, package=None):
                     # cutoff " 100"
                     xval = xval[:-4]
                     if xval != "100":
-                        fontmap[val].extend(["scale=" + format(float(xval) / 100, '.2f')])
+                        # set correct scale option
+                        if re.match('Deja.*', val):
+                            scale_par = "scaled"
+                        else:
+                            scale_par = "scale"
+                        fontmap[val].extend([scale_par + "=" + format(float(xval) / 100, '.2f')])
             if len(optmap[font]) > 0:
                 fontmap[val].extend(optmap[font])
 
