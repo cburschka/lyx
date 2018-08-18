@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-08-17 12:31+0200\n"
-"PO-Revision-Date: 2018-08-17 09:59+0000\n"
+"POT-Creation-Date: 2018-08-18 15:50+0200\n"
+"PO-Revision-Date: 2018-08-18 14:09+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -17582,6 +17582,26 @@ msgstr "DejaVu serifové"
 msgid "DejaVu Serif Condensed"
 msgstr "DejaVu serifové zhustené"
 
+#: lib/latexfonts:169
+msgid "IBM Plex Serif"
+msgstr "IBM Plex serifové"
+
+#: lib/latexfonts:175
+msgid "IBM Plex Serif Thin"
+msgstr "IBM Plex serifové tenké"
+
+#: lib/latexfonts:182
+msgid "IBM Plex Serif Extra Light"
+msgstr "IBM Plex serifové extra svetlé"
+
+#: lib/latexfonts:189
+msgid "IBM Plex Serif Light"
+msgstr "IBM Plex serifové svetlé"
+
+#: lib/latexfonts:196
+msgid "IBM Plex Serif Semibold"
+msgstr "IBM Plex serifové polotučné"
+
 #: lib/latexfonts:169 lib/latexfonts:178
 msgid "URW Garamond"
 msgstr "URW Garamond"
@@ -17688,6 +17708,30 @@ msgstr "DejaVu bezserifové"
 msgid "DejaVu Sans Condensed"
 msgstr "DejaVu bezserifové zhustené"
 
+#: lib/latexfonts:592
+msgid "IBM Plex Sans"
+msgstr "IBM Plex bezserifové"
+
+#: lib/latexfonts:599
+msgid "IBM Plex Sans Condensed"
+msgstr "IBM Plex bezserifové zhustené"
+
+#: lib/latexfonts:607
+msgid "IBM Plex Sans Thin"
+msgstr "IBM Plex bezserifové tenké"
+
+#: lib/latexfonts:615
+msgid "IBM Plex Sans Extra Light"
+msgstr "IBM Plex bezserifové extra svetlé"
+
+#: lib/latexfonts:623
+msgid "IBM Plex Sans Light"
+msgstr "IBM Plex bezserifové svetlé"
+
+#: lib/latexfonts:631
+msgid "IBM Plex Sans Semibold"
+msgstr "IBM Plex bezserifové polotučné"
+
 #: lib/latexfonts:558
 msgid "Helvetica"
 msgstr "Helvetica"
@@ -17767,6 +17811,26 @@ msgstr "Courier"
 #: lib/latexfonts:696
 msgid "DejaVu Sans Mono"
 msgstr "DejaVu bezserifové strojopisné"
+
+#: lib/latexfonts:784
+msgid "IBM Plex Mono"
+msgstr "IBM Plex strojopisné"
+
+#: lib/latexfonts:791
+msgid "IBM Plex Mono Thin"
+msgstr "IBM Plex strojopisné tenké"
+
+#: lib/latexfonts:799
+msgid "IBM Plex Mono Extra Light"
+msgstr "IBM Plex strojopisné extra svetlé"
+
+#: lib/latexfonts:807
+msgid "IBM Plex Mono Light"
+msgstr "IBM Plex strojopisné svetlé"
+
+#: lib/latexfonts:815
+msgid "IBM Plex Mono Semibold"
+msgstr "IBM Plex strojopisné polotučné"
 
 #: lib/latexfonts:703 lib/latexfonts:711
 msgid "Libertine Mono"
@@ -19592,6 +19656,10 @@ msgstr "Čas (Pevný)|v"
 #: lib/ui/stdmenus.inc:433
 msgid "File Name (Excl. Extension)|N"
 msgstr "Meno súboru (Bez prípony)|e"
+
+#: lib/ui/stdmenus.inc:434
+msgid "Version Control Revision|V"
+msgstr "Správa verzií: Revízia|R"
 
 #: lib/ui/stdmenus.inc:434
 msgid "User Name|U"
