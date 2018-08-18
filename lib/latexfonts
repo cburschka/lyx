@@ -165,6 +165,40 @@ AltFont eco
 	Package          eco
 EndFont
 
+Font IBMPlexSerif
+	GuiName          "IBM Plex Serif"
+	Family           rm
+	Package          plex-serif
+EndFont
+
+Font IBMPlexSerifThin
+	GuiName          "IBM Plex Serif Thin"
+	Family           rm
+	Package          plex-serif
+	PackageOption    thin
+EndFont
+
+Font IBMPlexSerifExtraLight
+	GuiName          "IBM Plex Serif Extra Light"
+	Family           rm
+	Package          plex-serif
+	PackageOption    extralight
+EndFont
+
+Font IBMPlexSerifLight
+	GuiName          "IBM Plex Serif Light"
+	Family           rm
+	Package          plex-serif
+	PackageOption    light
+EndFont
+
+Font IBMPlexSerifSemibold
+	GuiName          "IBM Plex Serif Semibold"
+	Family           rm
+	Package          plex-serif
+	PackageOption    semibold
+EndFont
+
 Font garamondx
 	GuiName          "URW Garamond"
 	Family           rm
@@ -554,6 +588,53 @@ Font DejaVuSansCondensed
 	ScaleOption      scaled=$$val
 EndFont
 
+Font IBMPlexSans
+	GuiName          "IBM Plex Sans"
+	Family           sf
+	Package          plex-sans
+	ScaleOption      scale=$$val
+EndFont
+
+Font IBMPlexSansCondensed
+	GuiName          "IBM Plex Sans Condensed"
+	Family           sf
+	Package          plex-sans
+	PackageOption    condensed
+	ScaleOption      scale=$$val
+EndFont
+
+Font IBMPlexSansThin
+	GuiName          "IBM Plex Sans Thin"
+	Family           sf
+	Package          plex-sans
+	PackageOption    thin
+	ScaleOption      scale=$$val
+EndFont
+
+Font IBMPlexSansExtraLight
+	GuiName          "IBM Plex Sans Extra Light"
+	Family           sf
+	Package          plex-sans
+	PackageOption    extralight
+	ScaleOption      scale=$$val
+EndFont
+
+Font IBMPlexSansLight
+	GuiName          "IBM Plex Sans Light"
+	Family           sf
+	Package          plex-sans
+	PackageOption    light
+	ScaleOption      scale=$$val
+EndFont
+
+Font IBMPlexSansSemibold
+	GuiName          "IBM Plex Sans Semibold"
+	Family           sf
+	Package          plex-sans
+	PackageOption    semibold
+	ScaleOption      scale=$$val
+EndFont
+
 Font helvet
 	GuiName          "Helvetica"
 	Family           sf
@@ -697,6 +778,45 @@ Font DejaVuSansMono
 	Family           tt
 	Package          DejaVuSansMono
 	ScaleOption      scaled=$$val
+EndFont
+
+Font IBMPlexMono
+	GuiName          "IBM Plex Mono"
+	Family           tt
+	Package          plex-mono
+	ScaleOption      scale=$$val
+EndFont
+
+Font IBMPlexMonoThin
+	GuiName          "IBM Plex Mono Thin"
+	Family           tt
+	Package          plex-mono
+	ScaleOption      scale=$$val
+	PackageOption    thin
+EndFont
+
+Font IBMPlexMonoExtraLight
+	GuiName          "IBM Plex Mono Extra Light"
+	Family           tt
+	Package          plex-mono
+	ScaleOption      scale=$$val
+	PackageOption    extralight
+EndFont
+
+Font IBMPlexMonoLight
+	GuiName          "IBM Plex Mono Light"
+	Family           tt
+	Package          plex-mono
+	ScaleOption      scale=$$val
+	PackageOption    light
+EndFont
+
+Font IBMPlexMonoSemibold
+	GuiName          "IBM Plex Mono Semibold"
+	Family           tt
+	Package          plex-mono
+	ScaleOption      scale=$$val
+	PackageOption    semibold
 EndFont
 
 Font libertine-mono
