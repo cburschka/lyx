@@ -32,12 +32,14 @@
 
 !!!The following new LyX functions have been introduced in 2.4:
 
-LFUN_EXPORT_CANCEL: Used to cancel background export processes.
+* export-cancel: Used to cancel background export processes.
 
 
 !!!The following LyX functions have been changed in 2.4:
 
-- LFUN_SET_GRAPHICS_GROUP was renamed into LFUN_GRAPHICS_SET_GROUP.
+* set-graphics-group was renamed to graphics-set-group.
+
+* info-insert buffer vcs-*: renamed to info-insert vcs *
 
 
 

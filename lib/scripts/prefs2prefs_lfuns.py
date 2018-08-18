@@ -196,6 +196,27 @@ def label_copy_as_reference(line):
 def remove_print_support(line):
 	return simple_remove(line, "dialog-show print")
 
+
+def info_rename_vcsauthor(line):
+	return simple_renaming(line, "info-insert buffer vcs-author", "info-insert vcs author")
+
+
+def info_rename_vcsdate(line):
+	return simple_renaming(line, "info-insert buffer vcs-date", "info-insert vcs date")
+
+
+def info_rename_vcstime(line):
+	return simple_renaming(line, "info-insert buffer vcs-time", "info-insert vcs time")
+
+
+def info_rename_vcsrevision(line):
+	return simple_renaming(line, "info-insert buffer vcs-revision", "info-insert vcs revision")
+
+
+def info_rename_vcstreerevision(line):
+	return simple_renaming(line, "info-insert buffer vcs-tree-revision", "info-insert vcs tree-revision")
+
+
 #
 ###########################################################
 
@@ -226,5 +247,12 @@ conversions = [
 	]],
 	[ 4, [ # list of conversions to format 4, LyX 2.2
 		redo_tabular_feature
+	]],
+	[ 5, [ # list of conversions to format 5, LyX 2.4
+		info_rename_vcsauthor,
+		info_rename_vcsdate,
+		info_rename_vcstime,
+		info_rename_vcsrevision,
+		info_rename_vcstreerevision
 	]]
 ]

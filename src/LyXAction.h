@@ -22,7 +22,7 @@
 namespace lyx {
 
 // current LFUN format
-static unsigned int const LFUN_FORMAT = 4; // gm: tabular-feature
+static unsigned int const LFUN_FORMAT = 5; // spitz: 2.4.x changes
 
 class FuncRequest;
 class LyXErr;
