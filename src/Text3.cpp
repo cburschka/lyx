@@ -60,6 +60,7 @@
 #include "insets/InsetFloatList.h"
 #include "insets/InsetGraphics.h"
 #include "insets/InsetGraphicsParams.h"
+#include "insets/InsetInfo.h"
 #include "insets/InsetIPAMacro.h"
 #include "insets/InsetNewline.h"
 #include "insets/InsetQuotes.h"
@@ -2949,6 +2950,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_INFO_INSERT:
 		code = INFO_CODE;
+		enable = infoparams.validateArgument(cur.buffer(), cmd.argument(), true);
 		break;
 	case LFUN_ARGUMENT_INSERT: {
 		code = ARG_CODE;

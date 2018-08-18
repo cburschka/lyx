@@ -146,6 +146,9 @@ public:
 	std::vector<std::pair<std::string,docstring>> getArguments(Buffer const * buf,
 								   std::string const &) const;
 	///
+	bool validateArgument(Buffer const * buf, docstring const & argument,
+			      bool const usedefault = false) const;
+	///
 	info_type type;
 	///
 	std::string infoType() const;
@@ -184,7 +187,8 @@ public:
 	///
 	void write(std::ostream & os) const;
 	///
-	bool validateModifyArgument(docstring const & argument) const;
+	bool validateModifyArgument(docstring const & argument) const {
+		return params_.validateArgument(&buffer(), argument); }
 	///
 	bool showInsetDialog(BufferView * bv) const;
 	///

@@ -330,6 +330,105 @@ vector<pair<string,docstring>> InsetInfoParams::getArguments(Buffer const * buf,
 }
 
 
+bool InsetInfoParams::validateArgument(Buffer const * buf, docstring const & arg,
+				       bool const usedefaults) const
+{
+	string type;
+	string name = trim(split(to_utf8(arg), type, ' '));
+	if (name.empty() && usedefaults)
+		name = defaultValueTranslator().find(type);
+
+	switch (nameTranslator().find(type)) {
+	case UNKNOWN_INFO:
+		return false;
+
+	case SHORTCUT_INFO:
+	case SHORTCUTS_INFO:
+	case MENU_INFO: {
+		FuncRequest func = lyxaction.lookupFunc(name);
+		return func.action() != LFUN_UNKNOWN_ACTION;
+	}
+
+	case L7N_INFO:
+		return !name.empty();
+
+	case ICON_INFO: {
+		FuncCode const action = lyxaction.lookupFunc(name).action();
+		if (action == LFUN_UNKNOWN_ACTION) {
+			string dir = "images";
+			return !imageLibFileSearch(dir, name, "svgz,png").empty();
+		}
+		return true;
+	}
+
+	case LYXRC_INFO: {
+		set<string> rcs = lyxrc.getRCs();
+		return rcs.find(name) != rcs.end();
+	}
+
+	case PACKAGE_INFO:
+	case TEXTCLASS_INFO:
+		return true;
+
+	case BUFFER_INFO:
+		return (name == "name" || name == "name-noext"
+			|| name == "path" || name == "class");
+
+	case VCS_INFO:
+		if (name == "revision" || name == "tree-revision"
+		    || name == "author" || name == "date" || name == "time")
+			return buf->lyxvc().inUse();
+		return false;
+
+	case LYX_INFO:
+		return name == "version";
+
+	case FIXDATE_INFO: {
+		string date;
+		string piece;
+		date = split(name, piece, '@');
+		if (!date.empty() && !QDate::fromString(toqstr(date), Qt::ISODate).isValid())
+			return false;
+		if (!piece.empty())
+			name = piece;
+	}
+	// fall through
+	case DATE_INFO:
+	case MODDATE_INFO: {
+		if (name == "long" || name == "short" || name == "ISO")
+			return true;
+		else {
+			QDate date = QDate::currentDate();
+			return !date.toString(toqstr(name)).isEmpty();
+		}
+	}
+	case FIXTIME_INFO: {
+		string time;
+		string piece;
+		time = split(name, piece, '@');
+		if (!time.empty() && !QTime::fromString(toqstr(time), Qt::ISODate).isValid())
+			return false;
+		if (!piece.empty())
+			name = piece;
+	}
+	// fall through
+	case TIME_INFO:
+	case MODTIME_INFO: {
+		if (name == "long" || name == "short" || name == "ISO")
+			return true;
+		else {
+			QTime time = QTime::currentTime();
+			return !time.toString(toqstr(name)).isEmpty();
+		}
+	}
+	}
+
+	return false;
+}
+
+
+
+
 string InsetInfoParams::infoType() const
 {
 	return nameTranslator().find(type);
@@ -488,100 +587,6 @@ void InsetInfo::write(ostream & os) const
 }
 
 
-bool InsetInfo::validateModifyArgument(docstring const & arg) const
-{
-	string type;
-	string name = trim(split(to_utf8(arg), type, ' '));
-
-	switch (nameTranslator().find(type)) {
-	case InsetInfoParams::UNKNOWN_INFO:
-		return false;
-
-	case InsetInfoParams::SHORTCUT_INFO:
-	case InsetInfoParams::SHORTCUTS_INFO:
-	case InsetInfoParams::MENU_INFO: {
-		FuncRequest func = lyxaction.lookupFunc(name);
-		return func.action() != LFUN_UNKNOWN_ACTION;
-	}
-
-	case InsetInfoParams::L7N_INFO:
-		return !name.empty();
-
-	case InsetInfoParams::ICON_INFO: {
-		FuncCode const action = lyxaction.lookupFunc(name).action();
-		if (action == LFUN_UNKNOWN_ACTION) {
-			string dir = "images";
-			return !imageLibFileSearch(dir, name, "svgz,png").empty();
-		}
-		return true;
-	}
-
-	case InsetInfoParams::LYXRC_INFO: {
-		set<string> rcs = lyxrc.getRCs();
-		return rcs.find(name) != rcs.end();
-	}
-
-	case InsetInfoParams::PACKAGE_INFO:
-	case InsetInfoParams::TEXTCLASS_INFO:
-		return true;
-
-	case InsetInfoParams::BUFFER_INFO:
-		return (name == "name" || name == "name-noext"
-			|| name == "path" || name == "class");
-
-	case InsetInfoParams::VCS_INFO:
-		if (name == "revision" || name == "tree-revision"
-		    || name == "author" || name == "date" || name == "time")
-			return buffer().lyxvc().inUse();
-		return false;
-
-	case InsetInfoParams::LYX_INFO:
-		return name == "version";
-
-	case InsetInfoParams::FIXDATE_INFO: {
-		string date;
-		string piece;
-		date = split(name, piece, '@');
-		if (!date.empty() && !QDate::fromString(toqstr(date), Qt::ISODate).isValid())
-			return false;
-		if (!piece.empty())
-			name = piece;
-	}
-	// fall through
-	case InsetInfoParams::DATE_INFO:
-	case InsetInfoParams::MODDATE_INFO: {
-		if (name == "long" || name == "short" || name == "ISO")
-			return true;
-		else {
-			QDate date = QDate::currentDate();
-			return !date.toString(toqstr(name)).isEmpty();
-		}
-	}
-	case InsetInfoParams::FIXTIME_INFO: {
-		string time;
-		string piece;
-		time = split(name, piece, '@');
-		if (!time.empty() && !QTime::fromString(toqstr(time), Qt::ISODate).isValid())
-			return false;
-		if (!piece.empty())
-			name = piece;
-	}
-	// fall through
-	case InsetInfoParams::TIME_INFO:
-	case InsetInfoParams::MODTIME_INFO: {
-		if (name == "long" || name == "short" || name == "ISO")
-			return true;
-		else {
-			QTime time = QTime::currentTime();
-			return !time.toString(toqstr(name)).isEmpty();
-		}
-	}
-	}
-
-	return false;
-}
-
-
 bool InsetInfo::showInsetDialog(BufferView * bv) const
 {
 	bv->showDialog("info");
@@ -603,7 +608,7 @@ bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_INSET_MODIFY:
-		if (validateModifyArgument(cmd.argument())) {
+		if (params_.validateArgument(&buffer(), cmd.argument())) {
 			flag.setEnabled(true);
 			string typestr;
 			string name = trim(split(to_utf8(cmd.argument()), typestr, ' '));
