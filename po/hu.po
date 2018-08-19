@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: 2.4svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-07-21 01:12+0200\n"
-"PO-Revision-Date: 2018-08-18 00:38+0200\n"
+"PO-Revision-Date: 2018-08-19 15:32+0200\n"
 "Last-Translator:  Szőke Sándor <mail@szokesandor.hu>\n"
 "Language-Team: LyX-hu <mail@szokesandor.hu>\n"
 "Language: hu\n"
@@ -2142,7 +2142,7 @@ msgstr "Verbatim"
 #: src/frontends/qt4/ui/IncludeUi.ui:79 src/insets/InsetInclude.cpp:1320
 #: src/insets/InsetInclude.cpp:1326
 msgid "Program Listing"
-msgstr "Programlista"
+msgstr "Program forráskód"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:87
 msgid "Edit the file"
@@ -2170,7 +2170,7 @@ msgstr "Előnézet &megjelenítése"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:170
 msgid "Listing Parameters"
-msgstr "Lista paraméterei"
+msgstr "Forráskód paraméterei"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:248
 msgid "&Caption:"
@@ -2440,9 +2440,8 @@ msgid "Value of the line thickness."
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:47
-#, fuzzy
 msgid "Input here the listings parameters"
-msgstr "Rossz (üres) listázási paraméter név."
+msgstr "Itt adja meg a forráskódok paramétereit"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:63
 #: src/frontends/qt4/ui/ListingsUi.ui:470
@@ -2462,7 +2461,7 @@ msgstr ""
 #: lib/layouts/stdinsets.inc:392 src/insets/InsetCaption.cpp:387
 #: src/insets/InsetListings.cpp:470 src/insets/InsetListings.cpp:472
 msgid "Listing"
-msgstr "Lista"
+msgstr "Forráskód"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:24
 msgid "&Main Settings"
@@ -2474,15 +2473,15 @@ msgstr "Elhelyezés"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:36
 msgid "Check for inline listings"
-msgstr "Jelölje be beágyazott listákhoz"
+msgstr "Jelölje be a beágyazott forráskódokhoz"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:39
 msgid "&Inline listing"
-msgstr "Beszúrt l&ista"
+msgstr "&Beágyazott forráskód"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:46
 msgid "Check for floating listings"
-msgstr "Jelölje be úsztatott listához"
+msgstr "Jelölje be úsztatott forráskódokhoz"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:49
 msgid "&Float"
@@ -2494,7 +2493,7 @@ msgstr "Elhelye&zés:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:69
 msgid "Specify placement (htbp) for floating listings"
-msgstr "Adja meg az elhelyezést (htbp) az úsztatott listákhoz"
+msgstr "Adja meg az elhelyezést (htbp) az úsztatott forráskódokhoz"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:79
 msgid "Line numbering"
@@ -2628,7 +2627,7 @@ msgstr "További paraméterek"
 #: src/frontends/qt4/ui/ListingsUi.ui:490
 msgid "Input listing parameters here. Enter ? for a list of parameters."
 msgstr ""
-"Adja meg a listák paramétereit. Üsse le a '?'-et a paraméterek listájához."
+"Adja meg a forráskód paramétereit. Üsse le a '?'-et a paraméterek listájához."
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:23
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:46
@@ -15969,7 +15968,7 @@ msgstr "Tárgyszó"
 
 #: lib/layouts/stdinsets.inc:16
 msgid "Listings"
-msgstr "Listák"
+msgstr "Forráskódok"
 
 #: lib/layouts/stdinsets.inc:19 src/insets/InsetMarginal.cpp:36
 msgid "margin"
@@ -15990,16 +15989,16 @@ msgstr "ERT"
 
 #: lib/layouts/stdinsets.inc:289 lib/layouts/stdinsets.inc:295
 msgid "Listings[[List of Listings]]"
-msgstr "Listák[[List of Listings]]"
+msgstr "Forráskódok[[List of Listings]]"
 
 #: lib/layouts/stdinsets.inc:312 lib/layouts/stdinsets.inc:318
 #: src/insets/InsetTOC.cpp:77
 msgid "List of Listings"
-msgstr "Listák listája"
+msgstr "Forráskódok listája"
 
 #: lib/layouts/stdinsets.inc:346 src/frontends/qt4/GuiDocument.cpp:1624
 msgid "Listings[[inset]]"
-msgstr "Listák[[inset]]"
+msgstr "Forráskódok[[inset]]"
 
 #: lib/layouts/stdinsets.inc:411
 msgid "Idx"
@@ -16021,15 +16020,15 @@ msgstr "Előnézet"
 
 #: lib/layouts/stdinsets.inc:709 lib/layouts/stdinsets.inc:717
 msgid "see equation[[nomencl]]"
-msgstr ""
+msgstr "lásd képlet[[nomencl]]"
 
 #: lib/layouts/stdinsets.inc:710 lib/layouts/stdinsets.inc:718
 msgid "page[[nomencl]]"
-msgstr ""
+msgstr "oldal[[nomencl]]"
 
 #: lib/layouts/stdinsets.inc:711 lib/layouts/stdinsets.inc:719
 msgid "Nomenclature[[output]]"
-msgstr "Szakkifejezés"
+msgstr "Szakkifejezés[[output]]"
 
 #: lib/layouts/stdlayouts.inc:100
 #, fuzzy
@@ -16627,9 +16626,8 @@ msgid "Exercise \\thechapter.\\theexercise."
 msgstr "\\theexercise. gyakorlat"
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:320
-#, fuzzy
 msgid "Solution \\thechapter.\\thesolution."
-msgstr "\\thesolution. megoldás"
+msgstr "\\thechapter.\\thesolution. megoldás"
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:343
 #, fuzzy
@@ -17226,9 +17224,8 @@ msgid "Exercise."
 msgstr "Gyakorlat."
 
 #: lib/layouts/theorems-starred.inc:237
-#, fuzzy
 msgid "Solution."
-msgstr "Megoldás"
+msgstr "Megoldás."
 
 #: lib/layouts/theorems-starred.inc:254
 msgid "Remark."
@@ -18850,7 +18847,7 @@ msgstr "Verbatim (jelölt szünetek)|e"
 
 #: lib/ui/stdcontext.inc:300 lib/ui/stdcontext.inc:586
 msgid "Listing|L"
-msgstr "Lista|L"
+msgstr "Forráskód|L"
 
 #: lib/ui/stdcontext.inc:304 lib/ui/stdcontext.inc:590
 msgid "Edit Included File...|E"
@@ -19557,7 +19554,7 @@ msgstr "Doboz beállítások...|D"
 
 #: lib/ui/stdmenus.inc:150
 msgid "Listings Settings...|g"
-msgstr "Lista beállítások...|L"
+msgstr "Forráskódok beállítások...|b"
 
 #: lib/ui/stdmenus.inc:154
 msgid "Table Settings...|a"
@@ -19972,7 +19969,7 @@ msgstr "Széljegyzet|e"
 
 #: lib/ui/stdmenus.inc:399
 msgid "Program Listing[[Menu]]"
-msgstr "Programlista"
+msgstr "Programlista[[Menu]]"
 
 #: lib/ui/stdmenus.inc:406 src/insets/Inset.cpp:92
 msgid "TeX Code"
@@ -20105,7 +20102,7 @@ msgstr "Tartalomjegyzék|T"
 
 #: lib/ui/stdmenus.inc:491
 msgid "List of Listings|L"
-msgstr "Listák listája |L"
+msgstr "Forráskódok listája|L"
 
 #: lib/ui/stdmenus.inc:492
 msgid "Nomenclature|N"
@@ -27153,7 +27150,7 @@ msgstr "árnyékolt keret"
 
 #: src/Color.cpp:244
 msgid "listings background"
-msgstr "lista háttér"
+msgstr "forráskódok háttére"
 
 #: src/Color.cpp:245
 msgid "branch label"
@@ -30657,10 +30654,10 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1601
 #: src/frontends/qt4/GuiDocument.cpp:1759
-#, fuzzy
 msgid "Input listings parameters below. Enter ? for a list of parameters."
 msgstr ""
-"Adja meg a listák paramétereit. Üsse le a '?'-et a paraméterek listájához."
+"Adja meg a forráskódok paramétereit. Üsse le a '?'-et a paraméterek "
+"listájához."
 
 #: src/frontends/qt4/GuiDocument.cpp:1608
 msgid "Document Class"
@@ -31223,8 +31220,8 @@ msgstr "Hiperhivatkozás beállítások"
 msgid ""
 "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
-"Adja meg a lista paramétereit a jobb oldalon. Üsse le a '?'-et a paraméterek "
-"listájához."
+"Adja meg a forráskód paramétereit a jobb oldalon. Üsse le a '?'-et a "
+"paraméterek listájához."
 
 #: src/frontends/qt4/GuiInclude.cpp:316
 msgid "Select document to include"
@@ -31338,7 +31335,7 @@ msgstr "Nincs nyelv"
 
 #: src/frontends/qt4/GuiListings.cpp:166
 msgid "Program Listing Settings"
-msgstr "Program lista beállításai"
+msgstr "Program forráskód beállítások"
 
 #: src/frontends/qt4/GuiListings.cpp:423
 msgid "No dialect"
@@ -33648,11 +33645,11 @@ msgstr ""
 "határolónak. Az egyik listája, azonban használja az összes elérhető\n"
 "karaktert, így nem maradt határolónak.\n"
 "Ezért most kicseréltem a '!'-et egy figyelmeztetéssel, de önnek meg kell\n"
-"vizsgálania ezt!"
+"vizsgálnia ezt!"
 
 #: src/insets/InsetListings.cpp:353 src/insets/InsetListings.cpp:362
 msgid "Uncodable characters in listings inset"
-msgstr "Kódolhatatlan karakter lista betétben"
+msgstr "Kódolhatatlan karakter forráskód betétben"
 
 #: src/insets/InsetListings.cpp:354
 #, fuzzy, c-format
@@ -33809,7 +33806,7 @@ msgid ""
 msgstr ""
 "Ezt a paramétert nem itt kell megadni. Kérem használja a felirat szerkesztőt "
 "(a gyermekdokumentum dialógusablak használatakor) vagy a Beszúrás->Felirat "
-"parancsot (amikor egy lista betétet definál)"
+"parancsot (amikor egy forráskód betétet megad)"
 
 #: src/insets/InsetListingsParams.cpp:468
 #: src/insets/InsetListingsParams.cpp:678
@@ -33820,7 +33817,7 @@ msgid ""
 msgstr ""
 "Ezt a paramétert nem itt kell megadni. Kérem használja a címke szerkesztőt "
 "(a gyermekdokumentum dialógusablak használatakor) vagy a Beszúrás->Címke "
-"parancsot (amikor egy lista betétet definál)"
+"parancsot (amikor egy forráskód betétet megad)"
 
 #: src/insets/InsetListingsParams.cpp:689
 msgid "default: _minted-<jobname>"
@@ -33888,19 +33885,19 @@ msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:898
 msgid "Invalid (empty) listing parameter name."
-msgstr "Rossz (üres) listázási paraméter név."
+msgstr "Rossz (üres) forráskód paraméter név."
 
 #: src/insets/InsetListingsParams.cpp:914
 #, c-format
 msgid "Available listing parameters are %1$s"
-msgstr "Ismeretlen lista paraméterek: %1$s"
+msgstr "Ismeretlen forráskód paraméterek: %1$s"
 
 #: src/insets/InsetListingsParams.cpp:917
 #, c-format
 msgid "Available listings parameters containing string \"%1$s\" are %2$s"
 msgstr ""
-"Az elérhető lista paraméterek, amelyek a(z)  \"%1$s\" szöveget tartalmazzák: "
-"%2$s"
+"Az elérhető forráskód paraméterek, amelyek a(z)  \"%1$s\" szöveget "
+"tartalmazzák: %2$s"
 
 #: src/insets/InsetListingsParams.cpp:928
 #, c-format
@@ -33910,7 +33907,7 @@ msgstr "Paraméter %1$s: "
 #: src/insets/InsetListingsParams.cpp:941
 #, c-format
 msgid "Unknown listing parameter name: %1$s"
-msgstr "Ismeretlen lista paraméter név: %1$s"
+msgstr "Ismeretlen forráskód paraméter név: %1$s"
 
 #: src/insets/InsetListingsParams.cpp:944
 #, c-format
