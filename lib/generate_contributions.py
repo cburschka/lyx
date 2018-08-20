@@ -744,7 +744,7 @@ contributors = [
                  u"Italian translations, many bug fixes and features"),
 
      contributor(u"Gilbert J. M. Forkel",
-                 "gilbert () erlangen ! ccc ! de>",
+                 "gilbert () erlangen ! ccc ! de",
                  "GPL",
                  "GPL",
                  "m=153286983821872",
