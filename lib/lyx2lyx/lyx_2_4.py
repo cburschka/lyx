@@ -56,64 +56,109 @@ def add_preamble_fonts(document, fontmap):
         add_to_preamble(document, [preamble])
 
 
-def convert_fonts(document, font_list, font_type, scale_type, pkg):
-    " Handle font definition to LaTeX "
+def createkey(pkg, options):
+    options.sort()
+    return pkg + ':' + "-".join(options)
 
-    def createkey(pkg, options):
-        options.sort()
-        return pkg + ':' + "-".join(options)
+class fontinfo:
+    def __init__(self):
+        self.fontname = None    # key into font2pkgmap
+        self.fonttype = None    # roman,sans,typewriter,math
+        self.scaletype = None   # None,sf,tt
+        self.scaleopt = None    # None, 'scaled', 'scale'
+        self.scaleval = 1
+        self.package = None
+        self.options = []
+        self.pkgkey = None      # key into pkg2fontmap
 
-    def getfontname(pkg, options, pkg2fontmap, font2pkgmap):
-        ""
+    def addkey(self):
+        self.pkgkey = createkey(self.package, self.options)
+
+class fontmapping:
+    def __init__(self):
+        self.font2pkgmap = dict()
+        self.pkg2fontmap = dict()
+        self.pkginmap = dict()  # defines, if a map for package exists
+
+    def expandFontMapping(self, font_list, font_type, scale_type, pkg, scaleopt = None):
+        " Expand fontinfo mapping"
+        #
+        # fontlist:    list of fontnames, each element
+        #              may contain a ','-separated list of needed options
+        #              like e.g. 'IBMPlexSansCondensed,condensed'
+        # font_type:   one of 'roman', 'sans', 'typewriter', 'math'
+        # scale_type:  one of None, 'sf', 'tt'
+        # pkg:         package defining the font. Defaults to fontname if None
+        # scaleopt:    one of None, 'scale', 'scaled', or some other string
+        #              to be used in scale option (e.g. scaled=0.7)
+        for fl in font_list:
+            fe = fontinfo()
+            fe.fonttype = font_type
+            fe.scaletype = scale_type
+            flt = fl.split(",")
+            font_name = flt[0]
+            fe.fontname = font_name
+            fe.options = flt[1:]
+            fe.scaleopt = scaleopt
+            if pkg == None:
+                fe.package = font_name
+            else:
+                fe.package = pkg
+            fe.addkey()
+            self.font2pkgmap[font_name] = fe
+            if fe.pkgkey in self.pkg2fontmap:
+                # Repeated the same entry? Check content
+                if self.pkg2fontmap[fe.pkgkey] != font_name:
+                    document.error("Something is wrong in pkgname+options <-> fontname mapping")
+            self.pkg2fontmap[fe.pkgkey] = font_name
+            self.pkginmap[fe.package] = 1
+
+    def getfontname(self, pkg, options):
         options.sort()
         pkgkey = createkey(pkg, options)
-
-        if not pkgkey in pkg2fontmap:
+        if not pkgkey in self.pkg2fontmap:
             return None
-        fontname = pkg2fontmap[pkgkey]
-        if not fontname in font2pkgmap:
-            document.warning("Something is wrong in pkgname+options <-> fontname conversion")
+        fontname = self.pkg2fontmap[pkgkey]
+        if not fontname in self.font2pkgmap:
+            document.error("Something is wrong in pkgname+options <-> fontname mapping")
             return None
-
-        pkgkey2 = createkey(font2pkgmap[fontname].package, font2pkgmap[fontname].options)
-        if pkgkey == pkgkey2:
+        if pkgkey == self.font2pkgmap[fontname].pkgkey:
             return fontname
         return None
 
-    # We need a mapping pkg+options => font_name
-    # and font_name => pkg+options
-    class fontinfo:
-        package = None
-        options = []
+def createFontMapping():
+    # Create info for known fonts for the use in
+    #   convert_latexFonts() and
+    #   revert_latexFonts()
+    #
+    # * Would be more handy to parse latexFonts file,
+    #   but the path to this file is unknown
+    # * For now, add DejaVu and IBMPlex only.
+    # * Expand, if desired
+    fm = fontmapping()
+    fm.expandFontMapping(['DejaVuSerif', 'DejaVuSerifCondensed'], "roman", None, None)
+    fm.expandFontMapping(['DejaVuSans','DejaVuSansCondensed'], "sans", "sf", None, "scaled")
+    fm.expandFontMapping(['DejaVuSansMono'], "typewriter", "tt", None, "scaled")
+    fm.expandFontMapping(['IBMPlexSerif', 'IBMPlexSerifThin,thin',
+                          'IBMPlexSerifExtraLight,extralight', 'IBMPlexSerifLight,light',
+                          'IBMPlexSerifSemibold,semibold'],
+                         "roman", None, "plex-serif")
+    fm.expandFontMapping(['IBMPlexSans','IBMPlexSansCondensed,condensed',
+                          'IBMPlexSansThin,thin', 'IBMPlexSansExtraLight,extralight',
+                          'IBMPlexSansLight,light', 'IBMPlexSansSemibold,semibold'],
+                         "sans", "sf", "plex-sans", "scale")
+    fm.expandFontMapping(['IBMPlexMono', 'IBMPlexMonoThin,thin',
+                          'IBMPlexMonoExtraLight,extralight', 'IBMPlexMonoLight,light',
+                          'IBMPlexMonoSemibold,semibold'],
+                         "typewriter", "tt", "plex-mono", "scale")
+    return fm
 
-    font2pkgmap = dict()
-    pkg2fontmap = dict()
-    pkgmap = dict()
-    for fl in font_list:
-        fe = fontinfo()
-        flt = fl.split(",")
-        font_name = flt[0]
-        fe.options = flt[1:]
-        if pkg == None:
-            fe.package = font_name
-        else:
-            fe.package = pkg
-        font2pkgmap[font_name] = fe
-        pkgkey = createkey(fe.package, fe.options)
-        if pkgkey in pkg2fontmap:
-            # Repeated the same entry? Check content
-            if pkg2fontmap[pkgkey] != font_name:
-                print "ERROR:"
-        pkg2fontmap[pkgkey] = font_name
-        pkgmap[fe.package] = 1
+def convert_fonts(document, fm):
+    " Handle font definition to LaTeX "
 
     rpkg = re.compile(r'^\\usepackage(\[([^\]]*)\])?\{([^\}]+)\}')
     rscaleopt = re.compile(r'^scaled?=(.*)')
-    ft = font_type
-    if scale_type == None:
-        fontscale = None
-    else:
-        fontscale = "\\font_" + scale_type + "_scale"
+
     i = 0
     while i < len(document.preamble):
         i = find_re(document.preamble, rpkg, i)
@@ -136,15 +181,22 @@ def convert_fonts(document, font_list, font_type, scale_type, pkg):
             del options[o]
             break
 
-        if not pkg in pkgmap:
+        if not pkg in fm.pkginmap:
             i += 1
             continue
         # determine fontname
-        fn = getfontname(pkg, options, pkg2fontmap, font2pkgmap)
+        fn = fm.getfontname(pkg, options)
         if fn == None:
             i += 1
             continue
         del document.preamble[i]
+        fontinfo = fm.font2pkgmap[fn]
+        if fontinfo.scaletype == None:
+            fontscale = None
+        else:
+            fontscale = "\\font_" + fontinfo.scaletype + "_scale"
+            fontinfo.scaleval = oscale
+
         if i > 0 and document.preamble[i-1] == "% Added by lyx2lyx":
             del document.preamble[i-1]
         if fontscale != None:
@@ -156,58 +208,55 @@ def convert_fonts(document, font_list, font_type, scale_type, pkg):
                 if oscale != None:
                     scale = "%03d" % int(float(oscale) * 100)
                 document.header[j] = fontscale + " " + scale + " " + vals[1]
+        ft = "\\font_" + fontinfo.fonttype
         j = find_token(document.header, ft, 0)
         if j != -1:
             val = get_value(document.header, ft, j)
             vals = val.split()
             document.header[j] = ft + ' "' + fn + '" ' + vals[1]
 
-def revert_fonts(document, font_list, fontmap, package=None):
+def revert_fonts(document, fm, fontmap):
     " Revert native font definition to LaTeX "
     # fonlist := list of fonts created from the same package
     # Empty package means that the font-name is the same as the package-name
     # fontmap (key = package, val += found options) will be filled
     # and used later in add_preamble_fonts() to be added to user-preamble
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
-        font_types = ["\\font_roman", "\\font_sans,sf", "\\font_typewriter,tt", "\\font_math,math"]
-        optmap = dict()
-        for fontl1 in font_list:
-            fontl = fontl1.split(",")
-            font = fontl[0]
-            optmap[font] = fontl[1:]
-        for ft1 in font_types:
-            fts = ft1.split(",")
-            ft = fts[0]
-            i = find_token(document.header, ft, 0)
-            if i == -1:
-                continue
-            val = get_value(document.header, ft, i)
-            words = val.split()
-            font = words[0].replace('"', '')
-            if not font in optmap:
-                continue
-            if package == None:
-                val = font;
-            else:
-                val = package
-            if not val in fontmap:
-                fontmap[val] = []
-            document.header[i] = ft + ' "default" ' + words[1]
-            if len(fts) > 1:
-                xval =  get_value(document.header, "\\font_" + fts[1] + "_scale", 0)
-                if xval != '':
-                    # cutoff " 100"
-                    xval = xval[:-4]
-                    if xval != "100":
-                        # set correct scale option
-                        if re.match('Deja.*', val):
-                            scale_par = "scaled"
-                        else:
-                            scale_par = "scale"
-                        fontmap[val].extend([scale_par + "=" + format(float(xval) / 100, '.2f')])
-            if len(optmap[font]) > 0:
-                fontmap[val].extend(optmap[font])
+    rfontscale = re.compile(r'^\s*(\\font_(roman|sans|typewriter|math))\s+')
+    rscales = re.compile(r'^\s*(\d+)\s+(\d+)')
+    i = 0
+    while i < len(document.header):
+        i = find_re(document.header, rfontscale, i)
+        if (i == -1):
+            break
+        mo = rfontscale.search(document.header[i])
+        if mo == None:
+            i += 1
+            continue
+        ft = mo.group(1)    # 'roman', 'sans', 'typewriter', 'math'
+        val = get_value(document.header, ft, i)
+        words = val.split()
+        font = words[0].replace('"', '')
+        if not font in fm.font2pkgmap:
+            i += 1
+            continue
+        fontinfo = fm.font2pkgmap[font]
+        val = fontinfo.package
+        if not val in fontmap:
+            fontmap[val] = []
+        document.header[i] = ft + ' "default" ' + words[1]
+        if fontinfo.scaleopt != None:
+            xval =  get_value(document.header, "\\font_" + fontinfo.scaletype + "_scale", 0)
+            mo = rscales.search(xval)
+            if mo != None:
+                xval1 = mo.group(1)
+                xval2 = mo.group(2)
+                if xval1 != "100":
+                    # set correct scale option
+                    fontmap[val].extend([fontinfo.scaleopt + "=" + format(float(xval1) / 100, '.2f')])
+        if len(fontinfo.options) > 0:
+            fontmap[val].extend(fontinfo.options)
+        i += 1
 
 ###############################################################################
 ###
@@ -215,60 +264,21 @@ def revert_fonts(document, font_list, fontmap, package=None):
 ###
 ###############################################################################
 
-def convert_ibmplex(document):
-    " Handle IBM Plex font definition to LaTeX "
+def convert_latexFonts(document):
+    " Handle DejaVu and IBMPlex fonts definition to LaTeX "
 
-    ibmplex_fonts_roman = ['IBMPlexSerif', 'IBMPlexSerifThin,thin',
-                           'IBMPlexSerifExtraLight,extralight', 'IBMPlexSerifLight,light',
-                           'IBMPlexSerifSemibold,semibold']
-    ibmplex_fonts_sans = ['IBMPlexSans','IBMPlexSansCondensed,condensed',
-                          'IBMPlexSansThin,thin', 'IBMPlexSansExtraLight,extralight',
-                          'IBMPlexSansLight,light', 'IBMPlexSansSemibold,semibold']
-    ibmplex_fonts_typewriter = ['IBMPlexMono', 'IBMPlexMonoThin,thin',
-                                'IBMPlexMonoExtraLight,extralight', 'IBMPlexMonoLight,light',
-                                'IBMPlexMonoSemibold,semibold']
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        fm = createFontMapping()
+        convert_fonts(document, fm)
 
-    convert_fonts(document, ibmplex_fonts_roman, "\\font_roman", None, "plex-serif")
-    convert_fonts(document, ibmplex_fonts_sans, "\\font_sans", "sf", "plex-sans")
-    convert_fonts(document, ibmplex_fonts_typewriter, "\\font_typewriter", "tt", "plex-mono")
-
-def revert_ibmplex(document):
-    " Revert native IBM Plex font definition to LaTeX "
-
-    fontmap = dict()
-    revert_fonts(document, ['IBMPlexSerif', 'IBMPlexSerifThin,thin',
-                            'IBMPlexSerifExtraLight,extralight',
-                            'IBMPlexSerifLight,light', 'IBMPlexSerifSemibold,semibold'],
-                 fontmap, "plex-serif")
-    revert_fonts(document, ['IBMPlexSans','IBMPlexSansCondensed,condensed',
-                            'IBMPlexSansThin,thin', 'IBMPlexSansExtraLight,extralight',
-                            'IBMPlexSansLight,light', 'IBMPlexSansSemibold,semibold'],
-                 fontmap, "plex-sans")
-    revert_fonts(document, ['IBMPlexMono', 'IBMPlexMonoThin,thin',
-                            'IBMPlexMonoExtraLight,extralight', 'IBMPlexMonoLight,light',
-                            'IBMPlexMonoSemibold,semibold'],
-                 fontmap, "plex-mono")
-    add_preamble_fonts(document, fontmap)
-
-def convert_dejavu(document):
-    " Handle DejaVu font definition to LaTeX "
-
-    dejavu_fonts_roman = ['DejaVuSerif', 'DejaVuSerifCondensed']
-    dejavu_fonts_sans = ['DejaVuSans','DejaVuSansCondensed']
-    dejavu_fonts_typewriter = ['DejaVuSansMono']
-
-    convert_fonts(document, dejavu_fonts_roman, "\\font_roman", None, None)
-    convert_fonts(document, dejavu_fonts_sans, "\\font_sans", "sf", None)
-    convert_fonts(document, dejavu_fonts_typewriter, "\\font_typewriter", "tt", None)
-
-def revert_dejavu(document):
+def revert_latexFonts(document):
     " Revert native DejaVu font definition to LaTeX "
 
-    dejavu_fonts = ['DejaVuSerif', 'DejaVuSerifCondensed', 'DejaVuSans',
-                    'DejaVuSansMono', 'DejaVuSansCondensed']
-    fontmap = dict()
-    revert_fonts(document, dejavu_fonts, fontmap)
-    add_preamble_fonts(document, fontmap)
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        fontmap = dict()
+        fm = createFontMapping()
+        revert_fonts(document, fm, fontmap)
+        add_preamble_fonts(document, fontmap)
 
 def removeFrontMatterStyles(document):
     " Remove styles Begin/EndFrontmatter"
@@ -1342,7 +1352,7 @@ convert = [
            [558, [removeFrontMatterStyles]],
            [559, []],
            [560, []],
-           [561, [convert_dejavu, convert_ibmplex]],
+           [561, [convert_latexFonts]], # Handle dejavu, ibmplex fonts in GUI
            [562, []],
            [563, []]
           ]
@@ -1350,7 +1360,7 @@ convert = [
 revert =  [
            [562, [revert_listpargs]],
            [561, [revert_l7ninfo]],
-           [560, [revert_ibmplex, revert_dejavu]],
+           [560, [revert_latexFonts]], # Handle dejavu, ibmplex fonts in user preamble
            [559, [revert_timeinfo, revert_namenoextinfo]],
            [558, [revert_dateinfo]],
            [557, [addFrontMatterStyles]],
