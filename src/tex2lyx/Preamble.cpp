@@ -845,7 +845,20 @@ void Preamble::handle_package(Parser &p, string const & name,
 		if (opts == "osf")
 			h_font_osf = "true";
 	}
-	
+
+	if (name == "plex-serif") {
+		if (opts.empty())
+			h_font_roman[0] = "IBMPlexSerif";
+		else if (opts.find("thin") != string::npos)
+			h_font_roman[0] = "IBMPlexSerifThin";
+		else if (opts.find("extralight") != string::npos)
+			h_font_roman[0] = "IBMPlexSerifExtraLight";
+		else if (opts.find("light") != string::npos)
+			h_font_roman[0] = "IBMPlexSerifLight";
+		else if (opts.find("semibold") != string::npos)
+			h_font_roman[0] = "IBMPlexSerifSemibold";
+	}
+
 	// sansserif fonts
 	if (is_known(name, known_sans_fonts)) {
 		h_font_sans[0] = name;
@@ -871,6 +884,33 @@ void Preamble::handle_package(Parser &p, string const & name,
 		}
 	}
 
+	if (name == "plex-sans") {
+		if (opts.find("condensed") != string::npos)
+			h_font_sans[0] = "IBMPlexSansCondensed";
+		else if (opts.find("thin") != string::npos)
+			h_font_sans[0] = "IBMPlexSansThin";
+		else if (opts.find("extralight") != string::npos)
+			h_font_sans[0] = "IBMPlexSansExtraLight";
+		else if (opts.find("light") != string::npos)
+			h_font_sans[0] = "IBMPlexSansLight";
+		else if (opts.find("semibold") != string::npos)
+			h_font_sans[0] = "IBMPlexSansSemibold";
+		else
+			h_font_sans[0] = "IBMPlexSans";
+		// check if the option contains scaling, if yes, extract it
+		string::size_type pos = opts.find("scale");
+		if (pos != string::npos) {
+			string scale;
+			string::size_type i = opts.find(',', pos);
+			if (i == string::npos)
+				scale_as_percentage(opts.substr(pos + 1), scale);
+			else
+				scale_as_percentage(opts.substr(pos, i - pos), scale);
+			if (!scale.empty())
+				h_font_sf_scale[1] = scale;
+		}
+	}
+
 	// typewriter fonts
 	if (is_known(name, known_typewriter_fonts)) {
 		// fourier can be set as roman font _only_
@@ -892,6 +932,31 @@ void Preamble::handle_package(Parser &p, string const & name,
 		if (options.size() >= 1) {
 			if (scale_as_percentage(opts, h_font_tt_scale[0]))
 				options.clear();
+		}
+	}
+
+	if (name == "plex-mono") {
+		if (opts.find("thin") != string::npos)
+			h_font_typewriter[0] = "IBMPlexMonoThin";
+		else if (opts.find("extralight") != string::npos)
+			h_font_typewriter[0] = "IBMPlexMonoExtraLight";
+		else if (opts.find("light") != string::npos)
+			h_font_typewriter[0] = "IBMPlexMonoLight";
+		else if (opts.find("semibold") != string::npos)
+			h_font_typewriter[0] = "IBMPlexMonoSemibold";
+		else
+			h_font_typewriter[0] = "IBMPlexMono";
+		// check if the option contains scaling, if yes, extract it
+		string::size_type pos = opts.find("scale");
+		if (pos != string::npos) {
+			string scale;
+			string::size_type i = opts.find(',', pos);
+			if (i == string::npos)
+				scale_as_percentage(opts.substr(pos + 1), scale);
+			else
+				scale_as_percentage(opts.substr(pos, i - pos), scale);
+			if (!scale.empty())
+				h_font_tt_scale[1] = scale;
 		}
 	}
 
