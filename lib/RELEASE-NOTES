@@ -29,6 +29,10 @@
 * \use_qimage
   This is no longer necessary due to the rewrite of the painter.
 
+* \date_insert_format
+  The function date-insert has been removed and superseded by info-insert date.
+  The latter does not need a pref value anymore.
+
 
 !!!The following new LyX functions have been introduced in 2.4:
 
@@ -40,6 +44,11 @@
 * set-graphics-group was renamed to graphics-set-group.
 
 * info-insert buffer vcs-*: renamed to info-insert vcs *
+
+
+!!!The following LyX functions have been removed in 2.4:
+
+* date-insert: obsoleted by info-insert date.
 
 
 

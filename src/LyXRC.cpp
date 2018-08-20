@@ -59,7 +59,7 @@ namespace {
 
 // The format should also be updated in configure.py, and conversion code
 // should be added to prefs2prefs_prefs.py.
-static unsigned int const LYXRC_FILEFORMAT = 27; // spitz: add flavor value to needaux flag
+static unsigned int const LYXRC_FILEFORMAT = 28; // spitz: remove \\date_insert_format
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
 	{ "\\accept_compound", LyXRC::RC_ACCEPT_COMPOUND },
@@ -92,7 +92,6 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\copier", LyXRC::RC_COPIER },
 	{ "\\cursor_follows_scrollbar", LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR },
 	{ "\\cursor_width", LyXRC::RC_CURSOR_WIDTH },
-	{ "\\date_insert_format", LyXRC::RC_DATE_INSERT_FORMAT },
 	{ "\\def_file", LyXRC::RC_DEFFILE },
 	{ "\\default_decimal_point", LyXRC::RC_DEFAULT_DECIMAL_POINT },
 	{ "\\default_length_unit", LyXRC::RC_DEFAULT_LENGTH_UNIT },
@@ -311,7 +310,6 @@ void LyXRC::setDefaults()
 	show_banner = true;
 	windows_style_tex_paths = false;
 	tex_allows_spaces = false;
-	date_insert_format = "%x";
 	cursor_follows_scrollbar = false;
 	scroll_below_document = false;
 	scroll_wheel_zoom = SCROLL_WHEEL_ZOOM_CTRL;
@@ -916,9 +914,6 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 		case RC_DEFAULT_LENGTH_UNIT:
 			if (lexrc.next())
 				default_length_unit = (Length::UNIT) lexrc.getInteger();
-			break;
-		case RC_DATE_INSERT_FORMAT:
-			lexrc >> date_insert_format;
 			break;
 		case RC_LANGUAGE_CUSTOM_PACKAGE:
 			lexrc >> language_custom_package;
@@ -1588,15 +1583,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    lyxpipes != system_lyxrc.lyxpipes) {
 			string const path = os::external_path(lyxpipes);
 			os << "\\serverpipe \"" << path << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
-		// fall through
-	case RC_DATE_INSERT_FORMAT:
-		if (ignore_system_lyxrc ||
-		    date_insert_format != system_lyxrc.date_insert_format) {
-			os << "\\date_insert_format \"" << date_insert_format
-			   << "\"\n";
 		}
 		if (tag != RC_LAST)
 			break;
@@ -2913,7 +2899,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_COPIER:
 	case LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR:
 	case LyXRC::RC_SCROLL_BELOW_DOCUMENT:
-	case LyXRC::RC_DATE_INSERT_FORMAT:
 	case LyXRC::RC_GUI_LANGUAGE:
 	case LyXRC::RC_DEFAULT_OTF_VIEW_FORMAT:
 	case LyXRC::RC_DEFAULT_PLATEX_VIEW_FORMAT:
@@ -3151,11 +3136,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_SHOW_MACRO_LABEL:
 		str = _("Show a small box around a Math Macro with the macro name when the cursor is inside.");
-		break;
-
-	case RC_DATE_INSERT_FORMAT:
-		//xgettext:no-c-format
-		str = _("This accepts the normal strftime formats; see man strftime for full details. E.g.\"%A, %e. %B %Y\".");
 		break;
 
 	case RC_DEFFILE:

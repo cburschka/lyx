@@ -66,7 +66,6 @@ public:
 		RC_COPIER,
 		RC_CURSOR_FOLLOWS_SCROLLBAR,
 		RC_CURSOR_WIDTH,
-		RC_DATE_INSERT_FORMAT,
 		RC_DEFAULT_DECIMAL_POINT,
 		RC_DEFAULT_LENGTH_UNIT,
 		RC_DEFAULT_OTF_VIEW_FORMAT,
@@ -356,8 +355,6 @@ public:
 	std::string secondary_kbmap;
 	///
 	std::string lyxpipes;
-	///
-	std::string date_insert_format;
 	///
 	std::string language_custom_package;
 	///

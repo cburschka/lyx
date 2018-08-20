@@ -31,15 +31,6 @@ time_t current_time()
 }
 
 
-string const formatted_time(time_t t, string const & fmt)
-{
-	struct tm * loc_tm = localtime(&t);
-	char date[50];
-	strftime(date, sizeof(date), fmt.c_str(), loc_tm);
-	return string(date);
-}
-
-
 docstring formatted_datetime(time_t t, string const & fmt)
 {
 	QString qres;

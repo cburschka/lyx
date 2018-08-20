@@ -1366,19 +1366,6 @@ void LyXAction::init()
 		{ LFUN_CUT, "cut", Noop, Edit },
 
 /*!
- * \var lyx::FuncCode lyx::LFUN_DATE_INSERT
- * \li Action: Inserts the current date.
- * \li Syntax: date-insert [<ARG>]
- * \li Params: <ARG>: Format of date. The default value (%x) can be set
-                      in Preferences->Output->General->Date format. For
-                      possible formats see the manual page of the
-                      strftime function.
- * \li Origin: jdblair, 31 Jan 2000
- * \endvar
- */
-		{ LFUN_DATE_INSERT, "date-insert", Noop, Edit },
-
-/*!
  * \var lyx::FuncCode lyx::LFUN_DEBUG_LEVEL_SET
  * \li Action: Set debug output level.
  * \li Syntax: debug-level-set <LEVEL>

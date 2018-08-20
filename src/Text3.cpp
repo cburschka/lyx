@@ -1750,14 +1750,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_DATE_INSERT: {
-		string const format = cmd.argument().empty()
-			? lyxrc.date_insert_format : to_utf8(cmd.argument());
-		string const time = formatted_time(current_time(), format);
-		lyx::dispatch(FuncRequest(LFUN_SELF_INSERT, time));
-		break;
-	}
-
 	case LFUN_MOUSE_TRIPLE:
 		if (cmd.button() == mouse_button::button1) {
 			tm->cursorHome(cur);
@@ -3270,13 +3262,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		code = NEWPAGE_CODE;
 		enable = !inDescriptionItem(cur);
 		break;
-
-	case LFUN_DATE_INSERT: {
-		string const format = cmd.argument().empty()
-			? lyxrc.date_insert_format : to_utf8(cmd.argument());
-		enable = support::os::is_valid_strftime(format);
-		break;
-	}
 
 	case LFUN_LANGUAGE:
 		enable = !cur.paragraph().isPassThru();

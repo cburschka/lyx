@@ -111,6 +111,9 @@
 # Incremented to format 27, by spitz
 #   Add optional flavor value to needaux flag
 
+# Incremented to format 28, by spitz
+#   Remove date_insert_format
+
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py.
 
@@ -405,6 +408,11 @@ def remove_font_encoding(line):
 		return no_match
 	return (True, "")
 
+def remove_date_insert_format(line):
+	if not line.lower().startswith("\\date_insert_format "):
+		return no_match
+	return (True, "")
+
 # End conversions for LyX 2.3 to 2.4
 ####################################
 
@@ -446,5 +454,6 @@ conversions = [
 	[ 24, [rename_collapsible]],
 	[ 25, [remove_use_qimage]],
 	[ 26, [remove_font_encoding]],
-	[ 27, []]
+	[ 27, []],
+	[ 28, [remove_date_insert_format]]
 ]

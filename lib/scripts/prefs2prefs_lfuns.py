@@ -217,6 +217,10 @@ def info_rename_vcstreerevision(line):
 	return simple_renaming(line, "info-insert buffer vcs-tree-revision", "info-insert vcs tree-revision")
 
 
+def remove_date_insert(line):
+	return simple_remove(line, "date-insert")
+
+
 #
 ###########################################################
 
@@ -253,6 +257,7 @@ conversions = [
 		info_rename_vcsdate,
 		info_rename_vcstime,
 		info_rename_vcsrevision,
-		info_rename_vcstreerevision
+		info_rename_vcstreerevision,
+		remove_date_insert
 	]]
 ]

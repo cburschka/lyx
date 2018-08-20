@@ -8601,12 +8601,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8619,7 +8617,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8643,7 +8640,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 
@@ -47021,58 +47017,6 @@ Text
  verwendet wird.
  Wird die Zeilenlänge auf 0 gesetzt, wird der komplette Text in einer endlos
  langen Zeile ausgegeben.
-\end_layout
-
-\begin_layout Description
-Datumsformat
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Datumsformat
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Einstellungen ! Datumsformat
-\end_layout
-
-\end_inset
-
- Das Datumsformat kann eines oder eine Mischung der hier aufgelisteten Formate
- sein:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://man7.org/linux/man-pages/man1/date.1.html
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Zum Beispiel gibt das Format
-\begin_inset Newline newline
-\end_inset
-
-%d/%m/%y
-\begin_inset Newline newline
-\end_inset
-
-das Datum in der Form Tag/Monat/Jahr aus.
 \end_layout
 
 \begin_layout Description

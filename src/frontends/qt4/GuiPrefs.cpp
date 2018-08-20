@@ -351,35 +351,6 @@ static void setComboxFont(QComboBox * cb, string const & family,
 
 /////////////////////////////////////////////////////////////////////
 //
-// StrftimeValidator
-//
-/////////////////////////////////////////////////////////////////////
-
-class StrftimeValidator : public QValidator
-{
-public:
-	StrftimeValidator(QWidget *);
-	QValidator::State validate(QString & input, int & pos) const;
-};
-
-
-StrftimeValidator::StrftimeValidator(QWidget * parent)
-	: QValidator(parent)
-{
-}
-
-
-QValidator::State StrftimeValidator::validate(QString & input, int & /*pos*/) const
-{
-	if (is_valid_strftime(fromqstr(input)))
-		return QValidator::Acceptable;
-	else
-		return QValidator::Intermediate;
-}
-
-
-/////////////////////////////////////////////////////////////////////
-//
 // PrefOutput
 //
 /////////////////////////////////////////////////////////////////////
@@ -389,12 +360,9 @@ PrefOutput::PrefOutput(GuiPreferences * form)
 {
 	setupUi(this);
 
-	DateED->setValidator(new StrftimeValidator(DateED));
 	dviCB->setValidator(new NoNewLineValidator(dviCB));
 	pdfCB->setValidator(new NoNewLineValidator(pdfCB));
 
-	connect(DateED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
 	connect(plaintextLinelengthSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
 	connect(overwriteCO, SIGNAL(activated(int)),
@@ -430,19 +398,8 @@ PrefOutput::PrefOutput(GuiPreferences * form)
 }
 
 
-void PrefOutput::on_DateED_textChanged(const QString &)
-{
-	QString t = DateED->text();
-	int p = 0;
-	bool valid = DateED->validator()->validate(t, p)
-		     == QValidator::Acceptable;
-	setValid(DateLA, valid);
-}
-
-
 void PrefOutput::applyRC(LyXRC & rc) const
 {
-	rc.date_insert_format = fromqstr(DateED->text());
 	rc.plaintext_linelen = plaintextLinelengthSB->value();
 	rc.forward_search_dvi = fromqstr(dviCB->currentText());
 	rc.forward_search_pdf = fromqstr(pdfCB->currentText());
@@ -467,7 +424,6 @@ void PrefOutput::applyRC(LyXRC & rc) const
 
 void PrefOutput::updateRC(LyXRC const & rc)
 {
-	DateED->setText(toqstr(rc.date_insert_format));
 	plaintextLinelengthSB->setValue(rc.plaintext_linelen);
 	dviCB->setEditText(toqstr(rc.forward_search_dvi));
 	pdfCB->setEditText(toqstr(rc.forward_search_pdf));
@@ -3440,7 +3396,6 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	addModule(new PrefLanguage(this));
 	addModule(new PrefSpellchecker(this));
 
-	//for strftime validator
 	PrefOutput * output = new PrefOutput(this);
 	addModule(output);
 	addModule(new PrefLatex(this));
@@ -3464,9 +3419,6 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	bc().setApply(buttonBox->button(QDialogButtonBox::Apply));
 	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
 	bc().setRestore(buttonBox->button(QDialogButtonBox::Reset));
-
-	// initialize the strftime validator
-	bc().addCheckedLineEdit(output->DateED);
 }
 
 

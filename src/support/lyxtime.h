@@ -24,13 +24,6 @@ namespace support {
 
 time_t current_time();
 
-/** Returns a locale-dependent formatting of the date
- *  and time encoded in \c time. The \p fmt string
- *  holds the formatting arguments of \c strftime.
- *  Prefer the function formatted_datetime below.
- */
-std::string const formatted_time(time_t t, std::string const & fmt);
-
 /** Returns a locale-dependent formatting of the date and time encoded in \c t
  *  The \p fmt string holds the formatting arguments of QDateTime::toString().
  *  If fmt is empty then the formatting of the date and time is itself according

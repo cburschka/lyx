@@ -241,7 +241,7 @@ enum FuncCode
 	LFUN_PREFERENCES_SAVE,
 	LFUN_HELP_OPEN,                 // Jug 990627
 	// 175
-	LFUN_DATE_INSERT,               // jdblair 20000131
+	LFUN_LAYOUT_TOGGLE,             // lasgouttes 20180514
 	LFUN_LANGUAGE,                  // Dekel 20000203
 	LFUN_ERT_INSERT,                // Jug 20000218
 	LFUN_FOOTNOTE_INSERT,           // Jug 20000307
@@ -479,9 +479,8 @@ enum FuncCode
 	LFUN_BUFFER_ANONYMIZE,          // sanda, 20180201
 	LFUN_GRAPHICS_UNIFY,            // sanda, 20180207
 	LFUN_MASTER_BUFFER_EXPORT,      // rkh, 20180417
-	LFUN_LAYOUT_TOGGLE,             // lasgouttes 20180514
-	// 375
 	LFUN_INSET_END_EDIT,            // gb/rkh, 20180605
+	// 375
 	LFUN_LASTACTION                 // end of the table
 };
 
