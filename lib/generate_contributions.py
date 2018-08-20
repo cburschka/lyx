@@ -938,10 +938,10 @@ contributors = [
      contributor(u"Winfred Huang",
                  "tone90999 () hotmail ! com",
                  "GPL",
-                 "Simplified Chinese Localization",
+                 "License for Chinese translation",
                  "m=153274007430136",
                  "28 July 2018",
-                 u"License for Chinese translation"),
+                 u"Simplified Chinese Localization"),
 
      contributor(u"John Hudson",
                  "j.r.hudson () virginmedia ! com",
