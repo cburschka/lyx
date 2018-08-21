@@ -36,11 +36,6 @@ Format LaTeX feature                        LyX feature
 453    automatic stmaryrd loading           \use_package stmaryrd
 457    automatic stackrel loading           \use_package stackrel
 526    Plural and capitalized refstyles      InsetRef
-533    Multibib support
-       \begin{btUnit}...\end{btUnit}        \multibib {none|part|chapter|section|subsection}
-        (if a part, chapter, section etc.
-         follows the \begin...)
-
 
 
 
