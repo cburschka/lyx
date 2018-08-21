@@ -1944,20 +1944,13 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 
 	else if (name == "btUnit") {
 		string const nt = p.next_next_token().cs();
-		active_environments.push_back("btUnit");
-		if (nt == "part")
-			preamble.multibib("part");
-		else if (nt == "chapter")
-			preamble.multibib("chapter");
-		else if (nt == "section")
-			preamble.multibib("section");
-		else if (nt == "subsection")
-			preamble.multibib("subsection");
-		else {
+		if (nt == "part" || nt == "chapter"
+		   || nt == "section" || nt == "subsection") {
+			active_environments.push_back("btUnit");
+			preamble.multibib(nt);
+		} else
 			parse_unknown_environment(p, name, os, FLAG_END, outer,
 						  parent_context);
-			active_environments.pop_back();
-		}
 	}
 
 	else if (name == "framed" || name == "shaded") {
