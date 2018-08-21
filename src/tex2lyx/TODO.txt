@@ -45,9 +45,6 @@ Format LaTeX feature                        LyX feature
       \begin{landscape}...\end{landscape}  \begin_inset Flex Landscape
       with longtable content:              <features rotate ="90"...>
 555   V column type (varwidth package)     Automatically detected with newlines, paragraph breaks and environment content in cells of rows
-556   Bib files encoding
-      \begin_inset CommandInset bibtex     Biblatex: bibencoding=<encoding> [latex name]
-      encoding=<encoding> [lyx name]       BibTeX: \bgroup\inputencoding{<encoding>}...\egroup
 563   InsetArgument listpreamble:<nr>      All content between \begin{env} and first \item of a list 
 
 

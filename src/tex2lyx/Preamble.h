@@ -108,6 +108,10 @@ public:
 	static const char * const coded_polyglossia_languages[];
 	///
 	std::vector<std::string> biblatex_bibliographies;
+	///
+	std::string bibencoding;
+	///
+	std::string docencoding;
 
 private:
 	///

@@ -960,6 +960,8 @@ bool tex2lyx(FileName const & infilename, ostream & os, string encoding,
 			encoding = enc->iconvName();
 		else
 			encoding = "ISO-8859-1";
+		// store
+		preamble.docencoding = encoding;
 	}
 
 	ifdocstream is(setEncoding(encoding));

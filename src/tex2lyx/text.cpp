@@ -5091,6 +5091,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				bibliographystyle.clear();
 			}
 			os << "options " << '"' << BibOpts << '"' << "\n";
+			if (p.getEncoding() != preamble.docencoding) {
+				Encoding const * const enc = encodings.fromIconvName(
+					p.getEncoding(), Encoding::inputenc, true);
+				if (!enc) {
+					cerr << "Unknown bib encoding " << p.getEncoding()
+					     << ". Ignoring." << std::endl;
+				} else
+					os << "encoding " << '"' << enc->name() << '"' << "\n";
+			}
 			end_inset(os);
 			continue;
 		}
@@ -5131,6 +5140,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "options " << '"' << BibOpts << '"' << "\n";
 			if (!bbloptions.empty())
 				os << "biblatexopts " << '"' << bbloptions << '"' << "\n";
+			if (!preamble.bibencoding.empty()) {
+				Encoding const * const enc = encodings.fromLaTeXName(
+					preamble.bibencoding, Encoding::inputenc, true);
+				if (!enc) {
+					cerr << "Unknown bib encoding " << preamble.bibencoding
+					     << ". Ignoring." << std::endl;
+				} else
+					os << "encoding " << '"' << enc->name() << '"' << "\n";
+			}
 			end_inset(os);
 			need_commentbib = false;
 			continue;

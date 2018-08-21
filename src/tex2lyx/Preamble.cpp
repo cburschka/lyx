@@ -1211,6 +1211,9 @@ void Preamble::handle_package(Parser &p, string const & name,
 				cerr << "Ignoring unkown refesection value '"
 				     << opt << "'.";
 		}
+		opt = process_keyval_opt(options, "bibencoding");
+		if (!opt.empty())
+			bibencoding = opt;
 		if (!options.empty()) {
 			h_biblio_options = join(options, ",");
 			options.clear();
