@@ -1944,9 +1944,12 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 
 	else if (name == "btUnit") {
 		string const nt = p.next_next_token().cs();
-		if (nt == "part" || nt == "chapter"
-		   || nt == "section" || nt == "subsection") {
-			active_environments.push_back("btUnit");
+		// Do not attempt to overwrite a former diverging multibib.
+		// Those are output as ERT instead.
+		if ((nt == "part" || nt == "chapter"
+		     || nt == "section" || nt == "subsection")
+		   && (preamble.multibib().empty() || preamble.multibib() == nt)) {
+			parse_text(p, os, FLAG_END, outer, parent_context);
 			preamble.multibib(nt);
 		} else
 			parse_unknown_environment(p, name, os, FLAG_END, outer,
