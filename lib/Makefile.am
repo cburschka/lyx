@@ -306,6 +306,7 @@ dist_examples_DATA = \
 	examples/ItemizeBullets.lyx \
 	examples/Literate.lyx \
 	examples/aa_sample.lyx \
+	examples/aa_sample62.lyx \
 	examples/aas_sample.lyx \
 	examples/achemso.lyx \
 	examples/addressExample.adr \
@@ -2128,6 +2129,7 @@ dist_layouts_DATA =\
 	layouts/aapaper.layout \
 	layouts/aastex.layout \
 	layouts/aastex6.layout \
+	layouts/aastex62.layout \
 	layouts/achemso.layout \
 	layouts/acm-sigs.layout \
 	layouts/acm-sigs-alt.layout \
@@ -2167,6 +2169,7 @@ dist_layouts_DATA =\
 	layouts/changebars.module \
 	layouts/chess.layout \
 	layouts/cl2emult.layout \
+	layouts/copernicus.layout \
 	layouts/ctex-article.layout \
 	layouts/ctex-book.layout \
 	layouts/ctex-report.layout \
@@ -2402,11 +2405,13 @@ templatesdir = $(pkgdatadir)/templates
 dist_templates_DATA = \
 	templates/aa.lyx \
 	templates/aastex6.lyx \
+	templates/aastex62.lyx \
 	templates/acmart.lyx \
 	templates/AEA.lyx \
 	templates/APA.lyx \
 	templates/APA6.lyx \
 	templates/beamer-conference-ornate-20min.lyx \
+	templates/copernicus.lyx \
 	templates/ctex.lyx \
 	templates/de_beamer-conference-ornate-20min.lyx \
 	templates/dinbrief.lyx \
