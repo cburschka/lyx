@@ -82,6 +82,8 @@ public:
 	///
 	void citeEngine(std::string const & e) { h_cite_engine = e; }
 	///
+	std::string multibib() const { return h_multibib; }
+	///
 	void multibib(std::string const & s) { h_multibib = s; }
 	///
 	bool titleLayoutFound() const { return title_layout_found; }
