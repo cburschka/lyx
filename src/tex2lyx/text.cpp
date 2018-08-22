@@ -1583,680 +1583,708 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	string const unstarred_name = rtrim(name, "*");
 	active_environments.push_back(name);
 
-	if (is_math_env(name)) {
-		parent_context.check_layout(os);
-		begin_inset(os, "Formula ");
-		os << "\\begin{" << name << "}";
-		parse_math(p, os, FLAG_END, MATH_MODE);
-		os << "\\end{" << name << "}";
-		end_inset(os);
-		if (is_display_math_env(name)) {
-			// Prevent the conversion of a line break to a space
-			// (bug 7668). This does not change the output, but
-			// looks ugly in LyX.
-			eat_whitespace(p, os, parent_context, false);
+	// We use this loop and break out after a condition is met
+	// rather than a huge else-if-chain.
+	while (true) {
+		if (is_math_env(name)) {
+			parent_context.check_layout(os);
+			begin_inset(os, "Formula ");
+			os << "\\begin{" << name << "}";
+			parse_math(p, os, FLAG_END, MATH_MODE);
+			os << "\\end{" << name << "}";
+			end_inset(os);
+			if (is_display_math_env(name)) {
+				// Prevent the conversion of a line break to a space
+				// (bug 7668). This does not change the output, but
+				// looks ugly in LyX.
+				eat_whitespace(p, os, parent_context, false);
+			}
+			break;
 		}
-	}
 
-	else if (is_known(name, preamble.polyglossia_languages)) {
-		// We must begin a new paragraph if not already done
-		if (! parent_context.atParagraphStart()) {
-			parent_context.check_end_layout(os);
+		if (is_known(name, preamble.polyglossia_languages)) {
+			// We must begin a new paragraph if not already done
+			if (! parent_context.atParagraphStart()) {
+				parent_context.check_end_layout(os);
+				parent_context.new_paragraph(os);
+			}
+			// save the language in the context so that it is
+			// handled by parse_text
+			parent_context.font.language = preamble.polyglossia2lyx(name);
+			parse_text(p, os, FLAG_END, outer, parent_context);
+			// Just in case the environment is empty
+			parent_context.extra_stuff.erase();
+			// We must begin a new paragraph to reset the language
 			parent_context.new_paragraph(os);
+			p.skip_spaces();
+			break;
 		}
-		// save the language in the context so that it is
-		// handled by parse_text
-		parent_context.font.language = preamble.polyglossia2lyx(name);
-		parse_text(p, os, FLAG_END, outer, parent_context);
-		// Just in case the environment is empty
-		parent_context.extra_stuff.erase();
-		// We must begin a new paragraph to reset the language
-		parent_context.new_paragraph(os);
-		p.skip_spaces();
-	}
 
-	else if (unstarred_name == "tabular" || name == "longtable"
-		 || name == "tabularx" || name == "xltabular") {
-		eat_whitespace(p, os, parent_context, false);
-		string width = "0pt";
-		string halign;
-		if ((name == "longtable" || name == "xltabular") && p.hasOpt()) {
-			string const opt = p.getArg('[', ']');
-			if (opt == "c")
-				halign = "center";
-			else if (opt == "l")
-				halign = "left";
-			else if (opt == "r")
-				halign = "right";
-		}
-		if (name == "tabular*" || name == "tabularx" || name == "xltabular") {
-			width = lyx::translate_len(p.getArg('{', '}'));
+		if (unstarred_name == "tabular" || name == "longtable"
+			 || name == "tabularx" || name == "xltabular") {
 			eat_whitespace(p, os, parent_context, false);
+			string width = "0pt";
+			string halign;
+			if ((name == "longtable" || name == "xltabular") && p.hasOpt()) {
+				string const opt = p.getArg('[', ']');
+				if (opt == "c")
+					halign = "center";
+				else if (opt == "l")
+					halign = "left";
+				else if (opt == "r")
+					halign = "right";
+			}
+			if (name == "tabular*" || name == "tabularx" || name == "xltabular") {
+				width = lyx::translate_len(p.getArg('{', '}'));
+				eat_whitespace(p, os, parent_context, false);
+			}
+			parent_context.check_layout(os);
+			begin_inset(os, "Tabular ");
+			handle_tabular(p, os, name, width, halign, parent_context);
+			end_inset(os);
+			p.skip_spaces();
+			break;
 		}
-		parent_context.check_layout(os);
-		begin_inset(os, "Tabular ");
-		handle_tabular(p, os, name, width, halign, parent_context);
-		end_inset(os);
-		p.skip_spaces();
-	}
 
-	else if (parent_context.textclass.floats().typeExist(unstarred_name)) {
-		eat_whitespace(p, os, parent_context, false);
-		string const opt = p.hasOpt() ? p.getArg('[', ']') : string();
-		eat_whitespace(p, os, parent_context, false);
-		parent_context.check_layout(os);
-		begin_inset(os, "Float " + unstarred_name + "\n");
-		// store the float type for subfloats
-		// subfloats only work with figures and tables
-		if (unstarred_name == "figure")
-			float_type = unstarred_name;
-		else if (unstarred_name == "table")
-			float_type = unstarred_name;
-		else
-			float_type = "";
-		if (!opt.empty())
-			os << "placement " << opt << '\n';
-		if (contains(opt, "H"))
-			preamble.registerAutomaticallyLoadedPackage("float");
-		else {
-			Floating const & fl = parent_context.textclass.floats()
-			                      .getType(unstarred_name);
-			if (!fl.floattype().empty() && fl.usesFloatPkg())
+		if (parent_context.textclass.floats().typeExist(unstarred_name)) {
+			eat_whitespace(p, os, parent_context, false);
+			string const opt = p.hasOpt() ? p.getArg('[', ']') : string();
+			eat_whitespace(p, os, parent_context, false);
+			parent_context.check_layout(os);
+			begin_inset(os, "Float " + unstarred_name + "\n");
+			// store the float type for subfloats
+			// subfloats only work with figures and tables
+			if (unstarred_name == "figure")
+				float_type = unstarred_name;
+			else if (unstarred_name == "table")
+				float_type = unstarred_name;
+			else
+				float_type = "";
+			if (!opt.empty())
+				os << "placement " << opt << '\n';
+			if (contains(opt, "H"))
 				preamble.registerAutomaticallyLoadedPackage("float");
+			else {
+				Floating const & fl = parent_context.textclass.floats()
+						      .getType(unstarred_name);
+				if (!fl.floattype().empty() && fl.usesFloatPkg())
+					preamble.registerAutomaticallyLoadedPackage("float");
+			}
+
+			os << "wide " << convert<string>(is_starred)
+			   << "\nsideways false"
+			   << "\nstatus open\n\n";
+			parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
+			end_inset(os);
+			// We don't need really a new paragraph, but
+			// we must make sure that the next item gets a \begin_layout.
+			parent_context.new_paragraph(os);
+			p.skip_spaces();
+			// the float is parsed thus delete the type
+			float_type = "";
+			break;
 		}
 
-		os << "wide " << convert<string>(is_starred)
-		   << "\nsideways false"
-		   << "\nstatus open\n\n";
-		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
-		end_inset(os);
-		// We don't need really a new paragraph, but
-		// we must make sure that the next item gets a \begin_layout.
-		parent_context.new_paragraph(os);
-		p.skip_spaces();
-		// the float is parsed thus delete the type
-		float_type = "";
-	}
+		if (unstarred_name == "sidewaysfigure"
+		    || unstarred_name == "sidewaystable"
+		    || unstarred_name == "sidewaysalgorithm") {
+			string const opt = p.hasOpt() ? p.getArg('[', ']') : string();
+			eat_whitespace(p, os, parent_context, false);
+			parent_context.check_layout(os);
+			if (unstarred_name == "sidewaysfigure")
+				begin_inset(os, "Float figure\n");
+			else if (unstarred_name == "sidewaystable")
+				begin_inset(os, "Float table\n");
+			else if (unstarred_name == "sidewaysalgorithm")
+				begin_inset(os, "Float algorithm\n");
+			if (!opt.empty())
+				os << "placement " << opt << '\n';
+			if (contains(opt, "H"))
+				preamble.registerAutomaticallyLoadedPackage("float");
+			os << "wide " << convert<string>(is_starred)
+			   << "\nsideways true"
+			   << "\nstatus open\n\n";
+			parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
+			end_inset(os);
+			// We don't need really a new paragraph, but
+			// we must make sure that the next item gets a \begin_layout.
+			parent_context.new_paragraph(os);
+			p.skip_spaces();
+			preamble.registerAutomaticallyLoadedPackage("rotfloat");
+			break;
+		}
 
-	else if (unstarred_name == "sidewaysfigure"
-		|| unstarred_name == "sidewaystable"
-		|| unstarred_name == "sidewaysalgorithm") {
-		string const opt = p.hasOpt() ? p.getArg('[', ']') : string();
-		eat_whitespace(p, os, parent_context, false);
-		parent_context.check_layout(os);
-		if (unstarred_name == "sidewaysfigure")
-			begin_inset(os, "Float figure\n");
-		else if (unstarred_name == "sidewaystable")
-			begin_inset(os, "Float table\n");
-		else if (unstarred_name == "sidewaysalgorithm")
-			begin_inset(os, "Float algorithm\n");
-		if (!opt.empty())
-			os << "placement " << opt << '\n';
-		if (contains(opt, "H"))
-			preamble.registerAutomaticallyLoadedPackage("float");
-		os << "wide " << convert<string>(is_starred)
-		   << "\nsideways true"
-		   << "\nstatus open\n\n";
-		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
-		end_inset(os);
-		// We don't need really a new paragraph, but
-		// we must make sure that the next item gets a \begin_layout.
-		parent_context.new_paragraph(os);
-		p.skip_spaces();
-		preamble.registerAutomaticallyLoadedPackage("rotfloat");
-	}
+		if (name == "wrapfigure" || name == "wraptable") {
+			// syntax is \begin{wrapfigure}[lines]{placement}[overhang]{width}
+			eat_whitespace(p, os, parent_context, false);
+			parent_context.check_layout(os);
+			// default values
+			string lines = "0";
+			string overhang = "0col%";
+			// parse
+			if (p.hasOpt())
+				lines = p.getArg('[', ']');
+			string const placement = p.getArg('{', '}');
+			if (p.hasOpt())
+				overhang = p.getArg('[', ']');
+			string const width = p.getArg('{', '}');
+			// write
+			if (name == "wrapfigure")
+				begin_inset(os, "Wrap figure\n");
+			else
+				begin_inset(os, "Wrap table\n");
+			os << "lines " << lines
+			   << "\nplacement " << placement
+			   << "\noverhang " << lyx::translate_len(overhang)
+			   << "\nwidth " << lyx::translate_len(width)
+			   << "\nstatus open\n\n";
+			parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
+			end_inset(os);
+			// We don't need really a new paragraph, but
+			// we must make sure that the next item gets a \begin_layout.
+			parent_context.new_paragraph(os);
+			p.skip_spaces();
+			preamble.registerAutomaticallyLoadedPackage("wrapfig");
+			break;
+		}
 
-	else if (name == "wrapfigure" || name == "wraptable") {
-		// syntax is \begin{wrapfigure}[lines]{placement}[overhang]{width}
-		eat_whitespace(p, os, parent_context, false);
-		parent_context.check_layout(os);
-		// default values
-		string lines = "0";
-		string overhang = "0col%";
-		// parse
-		if (p.hasOpt())
-			lines = p.getArg('[', ']');
-		string const placement = p.getArg('{', '}');
-		if (p.hasOpt())
-			overhang = p.getArg('[', ']');
-		string const width = p.getArg('{', '}');
-		// write
-		if (name == "wrapfigure")
-			begin_inset(os, "Wrap figure\n");
-		else
-			begin_inset(os, "Wrap table\n");
-		os << "lines " << lines
-		   << "\nplacement " << placement
-		   << "\noverhang " << lyx::translate_len(overhang)
-		   << "\nwidth " << lyx::translate_len(width)
-		   << "\nstatus open\n\n";
-		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
-		end_inset(os);
-		// We don't need really a new paragraph, but
-		// we must make sure that the next item gets a \begin_layout.
-		parent_context.new_paragraph(os);
-		p.skip_spaces();
-		preamble.registerAutomaticallyLoadedPackage("wrapfig");
-	}
-
-	else if (name == "minipage") {
-		eat_whitespace(p, os, parent_context, false);
-		// Test whether this is an outer box of a shaded box
-		p.pushPosition();
-		// swallow arguments
-		while (p.hasOpt()) {
-			p.getArg('[', ']');
+		if (name == "minipage") {
+			eat_whitespace(p, os, parent_context, false);
+			// Test whether this is an outer box of a shaded box
+			p.pushPosition();
+			// swallow arguments
+			while (p.hasOpt()) {
+				p.getArg('[', ']');
+				p.skip_spaces(true);
+			}
+			p.getArg('{', '}');
 			p.skip_spaces(true);
+			Token t = p.get_token();
+			bool shaded = false;
+			if (t.asInput() == "\\begin") {
+				p.skip_spaces(true);
+				if (p.getArg('{', '}') == "shaded")
+					shaded = true;
+			}
+			p.popPosition();
+			if (shaded)
+				parse_outer_box(p, os, FLAG_END, outer,
+						parent_context, name, "shaded");
+			else
+				parse_box(p, os, 0, FLAG_END, outer, parent_context,
+					  "", "", name, "", "");
+			p.skip_spaces();
+			break;
 		}
-		p.getArg('{', '}');
-		p.skip_spaces(true);
-		Token t = p.get_token();
-		bool shaded = false;
-		if (t.asInput() == "\\begin") {
-			p.skip_spaces(true);
-			if (p.getArg('{', '}') == "shaded")
-				shaded = true;
+
+		if (name == "comment") {
+			eat_whitespace(p, os, parent_context, false);
+			parent_context.check_layout(os);
+			begin_inset(os, "Note Comment\n");
+			os << "status open\n";
+			parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
+			end_inset(os);
+			p.skip_spaces();
+			skip_braces(p); // eat {} that might by set by LyX behind comments
+			preamble.registerAutomaticallyLoadedPackage("verbatim");
+			break;
 		}
-		p.popPosition();
-		if (shaded)
-			parse_outer_box(p, os, FLAG_END, outer,
-			                parent_context, name, "shaded");
-		else
-			parse_box(p, os, 0, FLAG_END, outer, parent_context,
-			          "", "", name, "", "");
-		p.skip_spaces();
-	}
 
-	else if (name == "comment") {
-		eat_whitespace(p, os, parent_context, false);
-		parent_context.check_layout(os);
-		begin_inset(os, "Note Comment\n");
-		os << "status open\n";
-		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
-		end_inset(os);
-		p.skip_spaces();
-		skip_braces(p); // eat {} that might by set by LyX behind comments
-		preamble.registerAutomaticallyLoadedPackage("verbatim");
-	}
+		if (unstarred_name == "verbatim") {
+			// FIXME: this should go in the generic code that
+			// handles environments defined in layout file that
+			// have "PassThru 1". However, the code over there is
+			// already too complicated for my taste.
+			string const ascii_name =
+				(name == "verbatim*") ? "Verbatim*" : "Verbatim";
+			parent_context.new_paragraph(os);
+			Context context(true, parent_context.textclass,
+					&parent_context.textclass[from_ascii(ascii_name)]);
+			string s = p.verbatimEnvironment(name);
+			output_ert(os, s, context);
+			p.skip_spaces();
+			break;
+		}
 
-	else if (unstarred_name == "verbatim") {
-		// FIXME: this should go in the generic code that
-		// handles environments defined in layout file that
-		// have "PassThru 1". However, the code over there is
-		// already too complicated for my taste.
-		string const ascii_name =
-			(name == "verbatim*") ? "Verbatim*" : "Verbatim";
-		parent_context.new_paragraph(os);
-		Context context(true, parent_context.textclass,
-				&parent_context.textclass[from_ascii(ascii_name)]);
-		string s = p.verbatimEnvironment(name);
-		output_ert(os, s, context);
-		p.skip_spaces();
-	}
+		if (name == "IPA") {
+			eat_whitespace(p, os, parent_context, false);
+			parent_context.check_layout(os);
+			begin_inset(os, "IPA\n");
+			parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
+			end_inset(os);
+			p.skip_spaces();
+			preamble.registerAutomaticallyLoadedPackage("tipa");
+			preamble.registerAutomaticallyLoadedPackage("tipx");
+			break;
+		}
 
-	else if (name == "IPA") {
-		eat_whitespace(p, os, parent_context, false);
-		parent_context.check_layout(os);
-		begin_inset(os, "IPA\n");
-		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
-		end_inset(os);
-		p.skip_spaces();
-		preamble.registerAutomaticallyLoadedPackage("tipa");
-		preamble.registerAutomaticallyLoadedPackage("tipx");
-	}
-	
-	else if (name == parent_context.textclass.titlename()
-		 && parent_context.textclass.titletype() == TITLE_ENVIRONMENT) {
+		if (name == parent_context.textclass.titlename()
+		    && parent_context.textclass.titletype() == TITLE_ENVIRONMENT) {
 			parse_text(p, os, FLAG_END, outer, parent_context);
 			// Just in case the environment is empty
 			parent_context.extra_stuff.erase();
 			// We must begin a new paragraph
 			parent_context.new_paragraph(os);
 			p.skip_spaces();
-	}
-
-	else if (name == "CJK") {
-		// the scheme is \begin{CJK}{encoding}{mapping}text\end{CJK}
-		// It is impossible to decide if a CJK environment was in its own paragraph or within
-		// a line. We therefore always assume a paragraph since the latter is a rare case.
-		eat_whitespace(p, os, parent_context, false);
-		parent_context.check_end_layout(os);
-		// store the encoding to be able to reset it
-		string const encoding_old = p.getEncoding();
-		string const encoding = p.getArg('{', '}');
-		// FIXME: For some reason JIS does not work. Although the text
-		// in tests/CJK.tex is identical with the SJIS version if you
-		// convert both snippets using the recode command line utility,
-		// the resulting .lyx file contains some extra characters if
-		// you set buggy_encoding to false for JIS.
-		bool const buggy_encoding = encoding == "JIS";
-		if (!buggy_encoding)
-			p.setEncoding(encoding, Encoding::CJK);
-		else {
-			// FIXME: This will read garbage, since the data is not encoded in utf8.
-			p.setEncoding("UTF-8");
+			break;
 		}
-		// LyX only supports the same mapping for all CJK
-		// environments, so we might need to output everything as ERT
-		string const mapping = trim(p.getArg('{', '}'));
-		char const * const * const where =
-			is_known(encoding, supported_CJK_encodings);
-		if (!buggy_encoding && !preamble.fontCJKSet())
-			preamble.fontCJK(mapping);
-		bool knownMapping = mapping == preamble.fontCJK();
-		if (buggy_encoding || !knownMapping || !where) {
-			parent_context.check_layout(os);
-			output_ert_inset(os, "\\begin{" + name + "}{" + encoding + "}{" + mapping + "}",
-				       parent_context);
-			// we must parse the content as verbatim because e.g. JIS can contain
-			// normally invalid characters
-			// FIXME: This works only for the most simple cases.
-			//        Since TeX control characters are not parsed,
-			//        things like comments are completely wrong.
-			string const s = p.plainEnvironment("CJK");
-			for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
-				string snip;
-				snip += *it;
-				if (snip == "\\" || is_known(snip, known_escaped_chars))
-					output_ert_inset(os, snip, parent_context);
-				else if (*it == '\n' && it + 1 != et && s.begin() + 1 != it)
-					os << "\n ";
-				else
-					os << *it;
+
+		if (name == "CJK") {
+			// the scheme is \begin{CJK}{encoding}{mapping}text\end{CJK}
+			// It is impossible to decide if a CJK environment was in its own paragraph or within
+			// a line. We therefore always assume a paragraph since the latter is a rare case.
+			eat_whitespace(p, os, parent_context, false);
+			parent_context.check_end_layout(os);
+			// store the encoding to be able to reset it
+			string const encoding_old = p.getEncoding();
+			string const encoding = p.getArg('{', '}');
+			// FIXME: For some reason JIS does not work. Although the text
+			// in tests/CJK.tex is identical with the SJIS version if you
+			// convert both snippets using the recode command line utility,
+			// the resulting .lyx file contains some extra characters if
+			// you set buggy_encoding to false for JIS.
+			bool const buggy_encoding = encoding == "JIS";
+			if (!buggy_encoding)
+				p.setEncoding(encoding, Encoding::CJK);
+			else {
+				// FIXME: This will read garbage, since the data is not encoded in utf8.
+				p.setEncoding("UTF-8");
 			}
-			output_ert_inset(os, "\\end{" + name + "}",
-				       parent_context);
-		} else {
-			string const lang =
-				supported_CJK_languages[where - supported_CJK_encodings];
-			// store the language because we must reset it at the end
-			string const lang_old = parent_context.font.language;
-			parent_context.font.language = lang;
+			// LyX only supports the same mapping for all CJK
+			// environments, so we might need to output everything as ERT
+			string const mapping = trim(p.getArg('{', '}'));
+			char const * const * const where =
+				is_known(encoding, supported_CJK_encodings);
+			if (!buggy_encoding && !preamble.fontCJKSet())
+				preamble.fontCJK(mapping);
+			bool knownMapping = mapping == preamble.fontCJK();
+			if (buggy_encoding || !knownMapping || !where) {
+				parent_context.check_layout(os);
+				output_ert_inset(os, "\\begin{" + name + "}{" + encoding + "}{" + mapping + "}",
+					       parent_context);
+				// we must parse the content as verbatim because e.g. JIS can contain
+				// normally invalid characters
+				// FIXME: This works only for the most simple cases.
+				//        Since TeX control characters are not parsed,
+				//        things like comments are completely wrong.
+				string const s = p.plainEnvironment("CJK");
+				for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
+					string snip;
+					snip += *it;
+					if (snip == "\\" || is_known(snip, known_escaped_chars))
+						output_ert_inset(os, snip, parent_context);
+					else if (*it == '\n' && it + 1 != et && s.begin() + 1 != it)
+						os << "\n ";
+					else
+						os << *it;
+				}
+				output_ert_inset(os, "\\end{" + name + "}",
+					       parent_context);
+			} else {
+				string const lang =
+					supported_CJK_languages[where - supported_CJK_encodings];
+				// store the language because we must reset it at the end
+				string const lang_old = parent_context.font.language;
+				parent_context.font.language = lang;
+				parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
+				parent_context.font.language = lang_old;
+				parent_context.new_paragraph(os);
+			}
+			p.setEncoding(encoding_old);
+			p.skip_spaces();
+			break;
+		}
+
+		if (name == "lyxgreyedout") {
+			eat_whitespace(p, os, parent_context, false);
+			parent_context.check_layout(os);
+			begin_inset(os, "Note Greyedout\n");
+			os << "status open\n";
 			parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
-			parent_context.font.language = lang_old;
-			parent_context.new_paragraph(os);
+			end_inset(os);
+			p.skip_spaces();
+			if (!preamble.notefontcolor().empty())
+				preamble.registerAutomaticallyLoadedPackage("color");
+			break;
 		}
-		p.setEncoding(encoding_old);
-		p.skip_spaces();
-	}
 
-	else if (name == "lyxgreyedout") {
-		eat_whitespace(p, os, parent_context, false);
-		parent_context.check_layout(os);
-		begin_inset(os, "Note Greyedout\n");
-		os << "status open\n";
-		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
-		end_inset(os);
-		p.skip_spaces();
-		if (!preamble.notefontcolor().empty())
-			preamble.registerAutomaticallyLoadedPackage("color");
-	}
+		if (name == "btSect") {
+			eat_whitespace(p, os, parent_context, false);
+			parent_context.check_layout(os);
+			begin_command_inset(os, "bibtex", "bibtex");
+			string bibstyle = "plain";
+			if (p.hasOpt()) {
+				bibstyle = p.getArg('[', ']');
+				p.skip_spaces(true);
+			}
+			string const bibfile = p.getArg('{', '}');
+			eat_whitespace(p, os, parent_context, false);
+			Token t = p.get_token();
+			if (t.asInput() == "\\btPrintCited") {
+				p.skip_spaces(true);
+				os << "btprint " << '"' << "btPrintCited" << '"' << "\n";
+			}
+			if (t.asInput() == "\\btPrintNotCited") {
+				p.skip_spaces(true);
+				os << "btprint " << '"' << "btPrintNotCited" << '"' << "\n";
+			}
+			if (t.asInput() == "\\btPrintAll") {
+				p.skip_spaces(true);
+				os << "btprint " << '"' << "btPrintAll" << '"' << "\n";
+			}
+			os << "bibfiles " << '"' << bibfile << "\"\n"
+			   << "options " << '"' << bibstyle << "\"\n";
+			parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
+			end_inset(os);
+			p.skip_spaces();
+			break;
+		}
 
-	else if (name == "btSect") {
-		eat_whitespace(p, os, parent_context, false);
-		parent_context.check_layout(os);
-		begin_command_inset(os, "bibtex", "bibtex");
-		string bibstyle = "plain";
-		if (p.hasOpt()) {
-			bibstyle = p.getArg('[', ']');
-			p.skip_spaces(true);
+		if (name == "btUnit") {
+			string const nt = p.next_next_token().cs();
+			// Do not attempt to overwrite a former diverging multibib.
+			// Those are output as ERT instead.
+			if ((nt == "part" || nt == "chapter"
+			     || nt == "section" || nt == "subsection")
+			   && (preamble.multibib().empty() || preamble.multibib() == nt)) {
+				parse_text(p, os, FLAG_END, outer, parent_context);
+				preamble.multibib(nt);
+			} else
+				parse_unknown_environment(p, name, os, FLAG_END, outer,
+							  parent_context);
+			break;
 		}
-		string const bibfile = p.getArg('{', '}');
-		eat_whitespace(p, os, parent_context, false);
-		Token t = p.get_token();
-		if (t.asInput() == "\\btPrintCited") {
-			p.skip_spaces(true);
-			os << "btprint " << '"' << "btPrintCited" << '"' << "\n";
-		}
-		if (t.asInput() == "\\btPrintNotCited") {
-			p.skip_spaces(true);
-			os << "btprint " << '"' << "btPrintNotCited" << '"' << "\n";
-		}
-		if (t.asInput() == "\\btPrintAll") {
-			p.skip_spaces(true);
-			os << "btprint " << '"' << "btPrintAll" << '"' << "\n";
-		}
-		os << "bibfiles " << '"' << bibfile << "\"\n"
-		   << "options " << '"' << bibstyle << "\"\n";
-		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
-		end_inset(os);
-		p.skip_spaces();
-	}
 
-	else if (name == "btUnit") {
-		string const nt = p.next_next_token().cs();
-		// Do not attempt to overwrite a former diverging multibib.
-		// Those are output as ERT instead.
-		if ((nt == "part" || nt == "chapter"
-		     || nt == "section" || nt == "subsection")
-		   && (preamble.multibib().empty() || preamble.multibib() == nt)) {
-			parse_text(p, os, FLAG_END, outer, parent_context);
-			preamble.multibib(nt);
-		} else
-			parse_unknown_environment(p, name, os, FLAG_END, outer,
-						  parent_context);
-	}
-
-	else if (name == "framed" || name == "shaded") {
-		eat_whitespace(p, os, parent_context, false);
-		parse_outer_box(p, os, FLAG_END, outer, parent_context, name, "");
-		p.skip_spaces();
-		preamble.registerAutomaticallyLoadedPackage("framed");
-	}
-
-	else if (name == "listing") {
-		minted_float = "float";
-		eat_whitespace(p, os, parent_context, false);
-		string const opt = p.hasOpt() ? p.getArg('[', ']') : string();
-		if (!opt.empty())
-			minted_float += "=" + opt;
-		// If something precedes \begin{minted}, we output it at the end
-		// as a caption, in order to keep it inside the listings inset.
-		eat_whitespace(p, os, parent_context, true);
-		p.pushPosition();
-		Token const & t = p.get_token();
-		p.skip_spaces(true);
-		string const envname = p.next_token().cat() == catBegin
-						? p.getArg('{', '}') : string();
-		bool prologue = t.asInput() != "\\begin" || envname != "minted";
-		p.popPosition();
-		minted_float_has_caption = false;
-		string content = parse_text_snippet(p, FLAG_END, outer,
-		                                    parent_context);
-		size_t i = content.find("\\begin_inset listings");
-		bool minted_env = i != string::npos;
-		string caption;
-		if (prologue) {
-			caption = content.substr(0, i);
-			content.erase(0, i);
+		if (name == "framed" || name == "shaded") {
+			eat_whitespace(p, os, parent_context, false);
+			parse_outer_box(p, os, FLAG_END, outer, parent_context, name, "");
+			p.skip_spaces();
+			preamble.registerAutomaticallyLoadedPackage("framed");
+			break;
 		}
-		parent_context.check_layout(os);
-		if (minted_env && minted_float_has_caption) {
+
+		if (name == "listing") {
+			minted_float = "float";
+			eat_whitespace(p, os, parent_context, false);
+			string const opt = p.hasOpt() ? p.getArg('[', ']') : string();
+			if (!opt.empty())
+				minted_float += "=" + opt;
+			// If something precedes \begin{minted}, we output it at the end
+			// as a caption, in order to keep it inside the listings inset.
 			eat_whitespace(p, os, parent_context, true);
-			os << content << "\n";
-			if (!caption.empty())
+			p.pushPosition();
+			Token const & t = p.get_token();
+			p.skip_spaces(true);
+			string const envname = p.next_token().cat() == catBegin
+							? p.getArg('{', '}') : string();
+			bool prologue = t.asInput() != "\\begin" || envname != "minted";
+			p.popPosition();
+			minted_float_has_caption = false;
+			string content = parse_text_snippet(p, FLAG_END, outer,
+							    parent_context);
+			size_t i = content.find("\\begin_inset listings");
+			bool minted_env = i != string::npos;
+			string caption;
+			if (prologue) {
+				caption = content.substr(0, i);
+				content.erase(0, i);
+			}
+			parent_context.check_layout(os);
+			if (minted_env && minted_float_has_caption) {
+				eat_whitespace(p, os, parent_context, true);
+				os << content << "\n";
+				if (!caption.empty())
+					os << caption << "\n";
+				os << "\n\\end_layout\n"; // close inner layout
+				end_inset(os);            // close caption inset
+				os << "\n\\end_layout\n"; // close outer layout
+			} else if (!caption.empty()) {
+				if (!minted_env) {
+					begin_inset(os, "listings\n");
+					os << "lstparams " << '"' << minted_float << '"' << '\n';
+					os << "inline false\n";
+					os << "status collapsed\n";
+				}
+				os << "\n\\begin_layout Plain Layout\n";
+				begin_inset(os, "Caption Standard\n");
+				Context newcontext(true, parent_context.textclass,
+						   0, 0, parent_context.font);
+				newcontext.check_layout(os);
 				os << caption << "\n";
-			os << "\n\\end_layout\n"; // close inner layout
-			end_inset(os);            // close caption inset
-			os << "\n\\end_layout\n"; // close outer layout
-		} else if (!caption.empty()) {
-			if (!minted_env) {
+				newcontext.check_end_layout(os);
+				end_inset(os);
+				os << "\n\\end_layout\n";
+			} else if (content.empty()) {
 				begin_inset(os, "listings\n");
 				os << "lstparams " << '"' << minted_float << '"' << '\n';
 				os << "inline false\n";
 				os << "status collapsed\n";
+			} else {
+				os << content << "\n";
 			}
-			os << "\n\\begin_layout Plain Layout\n";
-			begin_inset(os, "Caption Standard\n");
-			Context newcontext(true, parent_context.textclass,
-			                   0, 0, parent_context.font);
-			newcontext.check_layout(os);
-			os << caption << "\n";
-			newcontext.check_end_layout(os);
-			end_inset(os);
-			os << "\n\\end_layout\n";
-		} else if (content.empty()) {
-			begin_inset(os, "listings\n");
-			os << "lstparams " << '"' << minted_float << '"' << '\n';
-			os << "inline false\n";
-			os << "status collapsed\n";
-		} else {
-			os << content << "\n";
-		}
-		end_inset(os); // close listings inset
-		parent_context.check_end_layout(os);
-		parent_context.new_paragraph(os);
-		p.skip_spaces();
-		minted_float.clear();
-		minted_float_has_caption = false;
-	}
-
-	else if (name == "lstlisting" || name == "minted") {
-		bool use_minted = name == "minted";
-		// with listings, we do not eat newlines here since
-		// \begin{lstlistings}
-		// [foo]
-		// and
-		// // \begin{lstlistings}%
-		//
-		// [foo]
-		// reads [foo] as content, whereas
-		// // \begin{lstlistings}%
-		// [foo]
-		// or
-		// \begin{lstlistings}[foo,
-		// bar]
-		// reads [foo...] as argument.
-		eat_whitespace(p, os, parent_context, false, use_minted);
-		if (use_minted && minted_float.empty()) {
-			// look ahead for a bottom caption
-			p.pushPosition();
-			bool found_end_minted = false;
-			while (!found_end_minted && p.good()) {
-				Token const & t = p.get_token();
-				p.skip_spaces();
-				string const envname =
-					p.next_token().cat() == catBegin
-						? p.getArg('{', '}') : string();
-				found_end_minted = t.asInput() == "\\end"
-							&& envname == "minted";
-			}
-			eat_whitespace(p, os, parent_context, true);
-			Token const & t = p.get_token();
-			p.skip_spaces(true);
-			if (t.asInput() == "\\lyxmintcaption") {
-				string const pos = p.getArg('[', ']');
-				if (pos == "b") {
-					string const caption =
-						parse_text_snippet(p, FLAG_ITEM,
-							false, parent_context);
-					minted_nonfloat_caption = "[b]" + caption;
-					eat_whitespace(p, os, parent_context, true);
-				}
-			}
-			p.popPosition();
-		}
-		parse_listings(p, os, parent_context, false, use_minted);
-		p.skip_spaces();
-	}
-
-	else if (!parent_context.new_layout_allowed)
-		parse_unknown_environment(p, name, os, FLAG_END, outer,
-					  parent_context);
-
-	// Alignment and spacing settings
-	// FIXME (bug xxxx): These settings can span multiple paragraphs and
-	//					 therefore are totally broken!
-	// Note that \centering, \raggedright, and \raggedleft cannot be handled, as
-	// they are commands not environments. They are furthermore switches that
-	// can be ended by another switches, but also by commands like \footnote or
-	// \parbox. So the only safe way is to leave them untouched.
-	// However, we support the pseudo-environments
-	// \begin{centering} ... \end{centering}
-	// \begin{raggedright} ... \end{raggedright}
-	// \begin{raggedleft} ... \end{raggedleft}
-	// since they are used by LyX in floats (for spacing reasons)
-	else if (name == "center" || name == "centering" ||
-		 name == "flushleft" || name == "raggedright" ||
-		 name == "flushright" || name == "raggedleft" ||
-		 name == "singlespace" || name == "onehalfspace" ||
-		 name == "doublespace" || name == "spacing") {
-		eat_whitespace(p, os, parent_context, false);
-		// We must begin a new paragraph if not already done
-		if (! parent_context.atParagraphStart()) {
+			end_inset(os); // close listings inset
 			parent_context.check_end_layout(os);
 			parent_context.new_paragraph(os);
+			p.skip_spaces();
+			minted_float.clear();
+			minted_float_has_caption = false;
+			break;
 		}
-		if (name == "flushleft" || name == "raggedright")
-			parent_context.add_extra_stuff("\\align left\n");
-		else if (name == "flushright" || name == "raggedleft")
-			parent_context.add_extra_stuff("\\align right\n");
-		else if (name == "center" || name == "centering")
-			parent_context.add_extra_stuff("\\align center\n");
-		else if (name == "singlespace")
-			parent_context.add_extra_stuff("\\paragraph_spacing single\n");
-		else if (name == "onehalfspace") {
-			parent_context.add_extra_stuff("\\paragraph_spacing onehalf\n");
-			preamble.registerAutomaticallyLoadedPackage("setspace");
-		} else if (name == "doublespace") {
-			parent_context.add_extra_stuff("\\paragraph_spacing double\n");
-			preamble.registerAutomaticallyLoadedPackage("setspace");
-		} else if (name == "spacing") {
-			parent_context.add_extra_stuff("\\paragraph_spacing other " + p.verbatim_item() + "\n");
-			preamble.registerAutomaticallyLoadedPackage("setspace");
-		}
-		parse_text(p, os, FLAG_END, outer, parent_context);
-		// Just in case the environment is empty
-		parent_context.extra_stuff.erase();
-		// We must begin a new paragraph to reset the alignment
-		parent_context.new_paragraph(os);
-		p.skip_spaces();
-	}
 
-	// The single '=' is meant here.
-	else if ((newlayout = findLayout(parent_context.textclass, name, false))) {
-		eat_whitespace(p, os, parent_context, false);
-		Context context(true, parent_context.textclass, newlayout,
-				parent_context.layout, parent_context.font);
-		if (parent_context.deeper_paragraph) {
-			// We are beginning a nested environment after a
-			// deeper paragraph inside the outer list environment.
-			// Therefore we don't need to output a "begin deeper".
-			context.need_end_deeper = true;
+		if (name == "lstlisting" || name == "minted") {
+			bool use_minted = name == "minted";
+			// with listings, we do not eat newlines here since
+			// \begin{lstlistings}
+			// [foo]
+			// and
+			// // \begin{lstlistings}%
+			//
+			// [foo]
+			// reads [foo] as content, whereas
+			// // \begin{lstlistings}%
+			// [foo]
+			// or
+			// \begin{lstlistings}[foo,
+			// bar]
+			// reads [foo...] as argument.
+			eat_whitespace(p, os, parent_context, false, use_minted);
+			if (use_minted && minted_float.empty()) {
+				// look ahead for a bottom caption
+				p.pushPosition();
+				bool found_end_minted = false;
+				while (!found_end_minted && p.good()) {
+					Token const & t = p.get_token();
+					p.skip_spaces();
+					string const envname =
+						p.next_token().cat() == catBegin
+							? p.getArg('{', '}') : string();
+					found_end_minted = t.asInput() == "\\end"
+								&& envname == "minted";
+				}
+				eat_whitespace(p, os, parent_context, true);
+				Token const & t = p.get_token();
+				p.skip_spaces(true);
+				if (t.asInput() == "\\lyxmintcaption") {
+					string const pos = p.getArg('[', ']');
+					if (pos == "b") {
+						string const caption =
+							parse_text_snippet(p, FLAG_ITEM,
+								false, parent_context);
+						minted_nonfloat_caption = "[b]" + caption;
+						eat_whitespace(p, os, parent_context, true);
+					}
+				}
+				p.popPosition();
+			}
+			parse_listings(p, os, parent_context, false, use_minted);
+			p.skip_spaces();
+			break;
 		}
-		parent_context.check_end_layout(os);
-		if (last_env == name) {
-			// we need to output a separator since LyX would export
-			// the two environments as one otherwise (bug 5716)
-			TeX2LyXDocClass const & textclass(parent_context.textclass);
-			Context newcontext(true, textclass,
-					&(textclass.defaultLayout()));
-			newcontext.check_layout(os);
-			begin_inset(os, "Separator plain\n");
+
+		if (!parent_context.new_layout_allowed) {
+			parse_unknown_environment(p, name, os, FLAG_END, outer,
+						  parent_context);
+			break;
+		}
+
+		// Alignment and spacing settings
+		// FIXME (bug xxxx): These settings can span multiple paragraphs and
+		//					 therefore are totally broken!
+		// Note that \centering, \raggedright, and \raggedleft cannot be handled, as
+		// they are commands not environments. They are furthermore switches that
+		// can be ended by another switches, but also by commands like \footnote or
+		// \parbox. So the only safe way is to leave them untouched.
+		// However, we support the pseudo-environments
+		// \begin{centering} ... \end{centering}
+		// \begin{raggedright} ... \end{raggedright}
+		// \begin{raggedleft} ... \end{raggedleft}
+		// since they are used by LyX in floats (for spacing reasons)
+		if (name == "center" || name == "centering"
+		    || name == "flushleft" || name == "raggedright"
+		    || name == "flushright" || name == "raggedleft"
+		    || name == "singlespace" || name == "onehalfspace"
+		    || name == "doublespace" || name == "spacing") {
+			eat_whitespace(p, os, parent_context, false);
+			// We must begin a new paragraph if not already done
+			if (! parent_context.atParagraphStart()) {
+				parent_context.check_end_layout(os);
+				parent_context.new_paragraph(os);
+			}
+			if (name == "flushleft" || name == "raggedright")
+				parent_context.add_extra_stuff("\\align left\n");
+			else if (name == "flushright" || name == "raggedleft")
+				parent_context.add_extra_stuff("\\align right\n");
+			else if (name == "center" || name == "centering")
+				parent_context.add_extra_stuff("\\align center\n");
+			else if (name == "singlespace")
+				parent_context.add_extra_stuff("\\paragraph_spacing single\n");
+			else if (name == "onehalfspace") {
+				parent_context.add_extra_stuff("\\paragraph_spacing onehalf\n");
+				preamble.registerAutomaticallyLoadedPackage("setspace");
+			} else if (name == "doublespace") {
+				parent_context.add_extra_stuff("\\paragraph_spacing double\n");
+				preamble.registerAutomaticallyLoadedPackage("setspace");
+			} else if (name == "spacing") {
+				parent_context.add_extra_stuff("\\paragraph_spacing other " + p.verbatim_item() + "\n");
+				preamble.registerAutomaticallyLoadedPackage("setspace");
+			}
+			parse_text(p, os, FLAG_END, outer, parent_context);
+			// Just in case the environment is empty
+			parent_context.extra_stuff.erase();
+			// We must begin a new paragraph to reset the alignment
+			parent_context.new_paragraph(os);
+			p.skip_spaces();
+			break;
+		}
+
+		// The single '=' is meant here.
+		if ((newlayout = findLayout(parent_context.textclass, name, false))) {
+			eat_whitespace(p, os, parent_context, false);
+			Context context(true, parent_context.textclass, newlayout,
+					parent_context.layout, parent_context.font);
+			if (parent_context.deeper_paragraph) {
+				// We are beginning a nested environment after a
+				// deeper paragraph inside the outer list environment.
+				// Therefore we don't need to output a "begin deeper".
+				context.need_end_deeper = true;
+			}
+			parent_context.check_end_layout(os);
+			if (last_env == name) {
+				// we need to output a separator since LyX would export
+				// the two environments as one otherwise (bug 5716)
+				TeX2LyXDocClass const & textclass(parent_context.textclass);
+				Context newcontext(true, textclass,
+						&(textclass.defaultLayout()));
+				newcontext.check_layout(os);
+				begin_inset(os, "Separator plain\n");
+				end_inset(os);
+				newcontext.check_end_layout(os);
+			}
+			switch (context.layout->latextype) {
+			case  LATEX_LIST_ENVIRONMENT:
+				context.add_par_extra_stuff("\\labelwidthstring "
+							    + p.verbatim_item() + '\n');
+				p.skip_spaces();
+				break;
+			case  LATEX_BIB_ENVIRONMENT:
+				p.verbatim_item(); // swallow next arg
+				p.skip_spaces();
+				break;
+			default:
+				break;
+			}
+			context.check_deeper(os);
+			if (newlayout->keepempty) {
+				// We need to start a new paragraph
+				// even if it is empty.
+				context.new_paragraph(os);
+				context.check_layout(os);
+			}
+			// handle known optional and required arguments
+			if (context.layout->latextype == LATEX_ENVIRONMENT)
+				output_arguments(os, p, outer, false, string(), context,
+						 context.layout->latexargs());
+			else if (context.layout->latextype == LATEX_ITEM_ENVIRONMENT) {
+				ostringstream oss;
+				output_arguments(oss, p, outer, false, string(), context,
+						 context.layout->latexargs());
+				context.list_extra_stuff = oss.str();
+			}
+			parse_text(p, os, FLAG_END, outer, context);
+			if (context.layout->latextype == LATEX_ENVIRONMENT)
+				output_arguments(os, p, outer, false, "post", context,
+						 context.layout->postcommandargs());
+			context.check_end_layout(os);
+			if (parent_context.deeper_paragraph) {
+				// We must suppress the "end deeper" because we
+				// suppressed the "begin deeper" above.
+				context.need_end_deeper = false;
+			}
+			context.check_end_deeper(os);
+			parent_context.new_paragraph(os);
+			p.skip_spaces();
+			if (!preamble.titleLayoutFound())
+				preamble.titleLayoutFound(newlayout->intitle);
+			set<string> const & req = newlayout->requires();
+			set<string>::const_iterator it = req.begin();
+			set<string>::const_iterator en = req.end();
+			for (; it != en; ++it)
+				preamble.registerAutomaticallyLoadedPackage(*it);
+			break;
+		}
+
+		// The single '=' is meant here.
+		if ((newinsetlayout = findInsetLayout(parent_context.textclass, name, false))) {
+			eat_whitespace(p, os, parent_context, false);
+			parent_context.check_layout(os);
+			begin_inset(os, "Flex ");
+			docstring flex_name = newinsetlayout->name();
+			// FIXME: what do we do if the prefix is not Flex: ?
+			if (prefixIs(flex_name, from_ascii("Flex:")))
+				flex_name.erase(0, 5);
+			os << to_utf8(flex_name) << '\n'
+			   << "status collapsed\n";
+			if (newinsetlayout->isPassThru()) {
+				string const arg = p.verbatimEnvironment(name);
+				Context context(true, parent_context.textclass,
+						&parent_context.textclass.plainLayout(),
+						parent_context.layout);
+				output_ert(os, arg, parent_context);
+			} else
+				parse_text_in_inset(p, os, FLAG_END, false, parent_context, newinsetlayout);
 			end_inset(os);
-			newcontext.check_end_layout(os);
-		}
-		switch (context.layout->latextype) {
-		case  LATEX_LIST_ENVIRONMENT:
-			context.add_par_extra_stuff("\\labelwidthstring "
-						    + p.verbatim_item() + '\n');
-			p.skip_spaces();
-			break;
-		case  LATEX_BIB_ENVIRONMENT:
-			p.verbatim_item(); // swallow next arg
-			p.skip_spaces();
-			break;
-		default:
 			break;
 		}
-		context.check_deeper(os);
-		if (newlayout->keepempty) {
-			// We need to start a new paragraph
-			// even if it is empty.
-			context.new_paragraph(os);
+
+		if (name == "appendix") {
+			// This is no good latex style, but it works and is used in some documents...
+			eat_whitespace(p, os, parent_context, false);
+			parent_context.check_end_layout(os);
+			Context context(true, parent_context.textclass, parent_context.layout,
+					parent_context.layout, parent_context.font);
 			context.check_layout(os);
+			os << "\\start_of_appendix\n";
+			parse_text(p, os, FLAG_END, outer, context);
+			context.check_end_layout(os);
+			p.skip_spaces();
+			break;
 		}
-		// handle known optional and required arguments
-		if (context.layout->latextype == LATEX_ENVIRONMENT)
-			output_arguments(os, p, outer, false, string(), context,
-			                 context.layout->latexargs());
-		else if (context.layout->latextype == LATEX_ITEM_ENVIRONMENT) {
-			ostringstream oss;
-			output_arguments(oss, p, outer, false, string(), context,
-			                 context.layout->latexargs());
-			context.list_extra_stuff = oss.str();
-		}
-		parse_text(p, os, FLAG_END, outer, context);
-		if (context.layout->latextype == LATEX_ENVIRONMENT)
-			output_arguments(os, p, outer, false, "post", context,
-			                 context.layout->postcommandargs());
-		context.check_end_layout(os);
-		if (parent_context.deeper_paragraph) {
-			// We must suppress the "end deeper" because we
-			// suppressed the "begin deeper" above.
-			context.need_end_deeper = false;
-		}
-		context.check_end_deeper(os);
-		parent_context.new_paragraph(os);
-		p.skip_spaces();
-		if (!preamble.titleLayoutFound())
-			preamble.titleLayoutFound(newlayout->intitle);
-		set<string> const & req = newlayout->requires();
-		set<string>::const_iterator it = req.begin();
-		set<string>::const_iterator en = req.end();
-		for (; it != en; ++it)
-			preamble.registerAutomaticallyLoadedPackage(*it);
-	}
 
-	// The single '=' is meant here.
-	else if ((newinsetlayout = findInsetLayout(parent_context.textclass, name, false))) {
-		eat_whitespace(p, os, parent_context, false);
-		parent_context.check_layout(os);
-		begin_inset(os, "Flex ");
-		docstring flex_name = newinsetlayout->name();
-		// FIXME: what do we do if the prefix is not Flex: ?
-		if (prefixIs(flex_name, from_ascii("Flex:")))
-			flex_name.erase(0, 5);
-		os << to_utf8(flex_name) << '\n'
-		   << "status collapsed\n";
-		if (newinsetlayout->isPassThru()) {
-			string const arg = p.verbatimEnvironment(name);
-			Context context(true, parent_context.textclass,
-					&parent_context.textclass.plainLayout(),
-					parent_context.layout);
-			output_ert(os, arg, parent_context);
-		} else
-			parse_text_in_inset(p, os, FLAG_END, false, parent_context, newinsetlayout);
-		end_inset(os);
-	}
-
-	else if (name == "appendix") {
-		// This is no good latex style, but it works and is used in some documents...
-		eat_whitespace(p, os, parent_context, false);
-		parent_context.check_end_layout(os);
-		Context context(true, parent_context.textclass, parent_context.layout,
-				parent_context.layout, parent_context.font);
-		context.check_layout(os);
-		os << "\\start_of_appendix\n";
-		parse_text(p, os, FLAG_END, outer, context);
-		context.check_end_layout(os);
-		p.skip_spaces();
-	}
-
-	else if (known_environments.find(name) != known_environments.end()) {
-		vector<ArgumentType> arguments = known_environments[name];
-		// The last "argument" denotes wether we may translate the
-		// environment contents to LyX
-		// The default required if no argument is given makes us
-		// compatible with the reLyXre environment.
-		ArgumentType contents = arguments.empty() ?
-			required :
-			arguments.back();
-		if (!arguments.empty())
-			arguments.pop_back();
-		// See comment in parse_unknown_environment()
-		bool const specialfont =
-			(parent_context.font != parent_context.normalfont);
-		bool const new_layout_allowed =
-			parent_context.new_layout_allowed;
-		if (specialfont)
-			parent_context.new_layout_allowed = false;
-		parse_arguments("\\begin{" + name + "}", arguments, p, os,
-				outer, parent_context);
-		if (contents == verbatim)
-			output_ert_inset(os, p.ertEnvironment(name),
-				   parent_context);
-		else
-			parse_text_snippet(p, os, FLAG_END, outer,
+		if (known_environments.find(name) != known_environments.end()) {
+			vector<ArgumentType> arguments = known_environments[name];
+			// The last "argument" denotes wether we may translate the
+			// environment contents to LyX
+			// The default required if no argument is given makes us
+			// compatible with the reLyXre environment.
+			ArgumentType contents = arguments.empty() ?
+				required :
+				arguments.back();
+			if (!arguments.empty())
+				arguments.pop_back();
+			// See comment in parse_unknown_environment()
+			bool const specialfont =
+				(parent_context.font != parent_context.normalfont);
+			bool const new_layout_allowed =
+				parent_context.new_layout_allowed;
+			if (specialfont)
+				parent_context.new_layout_allowed = false;
+			parse_arguments("\\begin{" + name + "}", arguments, p, os,
+					outer, parent_context);
+			if (contents == verbatim)
+				output_ert_inset(os, p.ertEnvironment(name),
 					   parent_context);
-		output_ert_inset(os, "\\end{" + name + "}", parent_context);
-		if (specialfont)
-			parent_context.new_layout_allowed = new_layout_allowed;
-	}
+			else
+				parse_text_snippet(p, os, FLAG_END, outer,
+						   parent_context);
+			output_ert_inset(os, "\\end{" + name + "}", parent_context);
+			if (specialfont)
+				parent_context.new_layout_allowed = new_layout_allowed;
+			break;
+		}
 
-	else
-		parse_unknown_environment(p, name, os, FLAG_END, outer,
-					  parent_context);
+		parse_unknown_environment(p, name, os, FLAG_END, outer, parent_context);
+		break;
+	}// end of loop
 
 	last_env = name;
 	active_environments.pop_back();
