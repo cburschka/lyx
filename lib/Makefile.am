@@ -306,8 +306,8 @@ dist_examples_DATA = \
 	examples/ItemizeBullets.lyx \
 	examples/Literate.lyx \
 	examples/aa_sample.lyx \
-	examples/aa_sample62.lyx \
 	examples/aas_sample.lyx \
+	examples/aas_sample62.lyx \
 	examples/achemso.lyx \
 	examples/addressExample.adr \
 	examples/amsart-test.lyx \
