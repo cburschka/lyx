@@ -329,6 +329,7 @@ dist_examples_DATA = \
 	examples/beamerposter.lyx \
 	examples/biblioExample.bib \
 	examples/chess-article.lyx \
+	examples/chessboard-article.lyx \
 	examples/chessgame.lyx \
 	examples/colored-boxes.lyx \
 	examples/docbook_article.lyx \
@@ -2168,6 +2169,7 @@ dist_layouts_DATA =\
 	layouts/bxjsslide.layout \
 	layouts/changebars.module \
 	layouts/chess.layout \
+	layouts/chessboard.layout \
 	layouts/cl2emult.layout \
 	layouts/copernicus.layout \
 	layouts/ctex-article.layout \
