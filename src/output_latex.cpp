@@ -831,9 +831,13 @@ void TeXOnePar(Buffer const & buf,
 		os << '{';
 	}
 
-	// In some insets (such as Arguments), we cannot use \selectlanguage
+	// In some insets (such as Arguments), we cannot use \selectlanguage.
+	// Also, if an RTL language is set via environment in polyglossia,
+	// only a nested \\text<lang> command will reset the direction for LTR
+	// languages (see # 10111).
 	bool const localswitch = text.inset().forceLocalFontSwitch()
-			|| (using_begin_end && text.inset().forcePlainLayout());
+			|| (using_begin_end && text.inset().forcePlainLayout())
+			|| (use_polyglossia && outer_language->rightToLeft() && !par_language->rightToLeft());
 	if (localswitch) {
 		lang_begin_command = use_polyglossia ?
 			    "\\text$$lang$$opts{" : lyxrc.language_command_local;
