@@ -16,6 +16,7 @@
 
 #include "tex2lyx.h"
 
+#include "Context.h"
 #include "Preamble.h"
 
 #include "support/lassert.h"
@@ -1415,7 +1416,9 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 
 	//cerr << "// output what we have\n";
 	// output what we have
-	string const rotate = "0";
+	string rotate = "0";
+	if (is_long_tabular && context.rotlongtable)
+		rotate = "90";
 	os << "\n<lyxtabular version=\"3\" rows=\"" << rowinfo.size()
 	   << "\" columns=\"" << colinfo.size() << "\">\n";
 	os << "<features"

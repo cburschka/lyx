@@ -1955,6 +1955,54 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			break;
 		}
 
+		// This is only attempted at landscape environments that consists only
+		// of a longtable (this is how longtables in LyX are rotated by 90 degs).
+		// Other landscape environment is handled via the landscape module, thus
+		// we will fall through in that case.
+		if (name == "landscape") {
+			// We check if the next thing is a longtable
+			p.pushPosition();
+			bool found_end = false;
+			bool only_longtable = false;
+			bool end_longtable = false;
+			p.get_token();
+			p.get_token();
+			string envname = p.getArg('{', '}');
+			if (envname == "longtable") {
+				// Now we check if the longtable is the only content
+				// of the landscape environment
+				while (!found_end && !end_longtable && p.good()) {
+					envname = p.next_token().cat() == catBegin
+							? p.getArg('{', '}') : string();
+					Token const & t = p.get_token();
+					p.skip_spaces();
+					end_longtable = t.asInput() != "\\end"
+							&& envname == "longtable";
+					found_end = t.asInput() == "\\end"
+							&& envname == "landscape";
+				}
+				if (end_longtable) {
+					p.get_token();
+					envname = p.getArg('{', '}');
+					only_longtable = p.next_next_token().asInput() == "\\end"
+							&& envname == "landscape";
+				}
+				if (only_longtable) {
+					p.popPosition();
+					p.skip_spaces();
+					bool const save_rotlongtable = parent_context.rotlongtable;
+					parent_context.rotlongtable = true;
+					parse_text(p, os, FLAG_END, outer, parent_context);
+					parent_context.rotlongtable = save_rotlongtable;
+					p.skip_spaces();
+					break;
+				}
+				// fall through
+			}
+			// fall through
+			p.popPosition();
+		}
+
 		if (name == "framed" || name == "shaded") {
 			eat_whitespace(p, os, parent_context, false);
 			parse_outer_box(p, os, FLAG_END, outer, parent_context, name, "");

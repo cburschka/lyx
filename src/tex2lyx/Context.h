@@ -165,6 +165,8 @@ public:
 	TeXFont font;
 	/// font attributes of normal text
 	static TeXFont normalfont;
+	/// A rotated longtable
+	bool rotlongtable;
 
 private:
 	void begin_layout(std::ostream & os, Layout const * const & l);

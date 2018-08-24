@@ -39,7 +39,6 @@ Format LaTeX feature                        LyX feature
 526    Plural and capitalized refstyles     InsetRef
 546    Landscape support
        \begin{landscape}...\end{landscape}  \begin_inset Flex Landscape (see #11259)
-       with longtable content:              <features rotate ="90"...>
 555    V column type (varwidth package)     Automatically detected with newlines, paragraph breaks and environment content in cells of rows
 563    InsetArgument listpreamble:<nr>      All content between \begin{env} and first \item of a list 
 
