@@ -1968,16 +1968,17 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			p.get_token();
 			p.get_token();
 			string envname = p.getArg('{', '}');
-			if (envname == "longtable") {
+			if (envname == "longtable" || envname == "xltabular") {
 				// Now we check if the longtable is the only content
 				// of the landscape environment
+				string const ltenv = envname;
 				while (!found_end && !end_longtable && p.good()) {
 					envname = p.next_token().cat() == catBegin
 							? p.getArg('{', '}') : string();
 					Token const & t = p.get_token();
 					p.skip_spaces();
 					end_longtable = t.asInput() != "\\end"
-							&& envname == "longtable";
+							&& envname == ltenv;
 					found_end = t.asInput() == "\\end"
 							&& envname == "landscape";
 				}
@@ -1990,10 +1991,10 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 				if (only_longtable) {
 					p.popPosition();
 					p.skip_spaces();
-					bool const save_rotlongtable = parent_context.rotlongtable;
-					parent_context.rotlongtable = true;
+					int const save_tablerotation = parent_context.tablerotation;
+					parent_context.tablerotation = 90;
 					parse_text(p, os, FLAG_END, outer, parent_context);
-					parent_context.rotlongtable = save_rotlongtable;
+					parent_context.tablerotation = save_tablerotation;
 					p.skip_spaces();
 					break;
 				}
