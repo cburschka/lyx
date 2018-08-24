@@ -1955,7 +1955,57 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			break;
 		}
 
-		// This is only attempted at landscape environments that consists only
+		// This is only attempted at turn environments that consist only
+		// of a tabular (this is how tables in LyX, modulo longtables, are rotated).
+		// Thus we will fall through in other cases.
+		if (name == "turn") {
+			// We check if the next thing is a tabular[*|x]
+			p.pushPosition();
+			p.getArg('{', '}');// eat turn argument
+			bool found_end = false;
+			bool only_table = false;
+			bool end_table = false;
+			p.get_token();
+			p.get_token();
+			string envname = p.getArg('{', '}');
+			if (rtrim(envname, "*") == "tabular" || envname == "tabularx") {
+				// Now we check if the table is the only content
+				// of the turn environment
+				string const tenv = envname;
+				while (!found_end && !end_table && p.good()) {
+					envname = p.next_token().cat() == catBegin
+							? p.getArg('{', '}') : string();
+					Token const & t = p.get_token();
+					p.skip_spaces();
+					end_table = t.asInput() != "\\end"
+							&& envname == tenv;
+					found_end = t.asInput() == "\\end"
+							&& envname == "turn";
+				}
+				if (end_table) {
+					p.get_token();
+					envname = p.getArg('{', '}');
+					only_table = p.next_next_token().asInput() == "\\end"
+							&& envname == "turn";
+				}
+				if (only_table) {
+					p.popPosition();
+					string const angle = p.getArg('{', '}');
+					p.skip_spaces();
+					int const save_tablerotation = parent_context.tablerotation;
+					parent_context.tablerotation = convert<int>(angle);
+					parse_text(p, os, FLAG_END, outer, parent_context);
+					parent_context.tablerotation = save_tablerotation;
+					p.skip_spaces();
+					break;
+				}
+				// fall through
+			}
+			// fall through
+			p.popPosition();
+		}
+
+		// This is only attempted at landscape environments that consist only
 		// of a longtable (this is how longtables in LyX are rotated by 90 degs).
 		// Other landscape environment is handled via the landscape module, thus
 		// we will fall through in that case.
