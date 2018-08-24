@@ -898,8 +898,8 @@ void TeXOnePar(Buffer const & buf,
 			// This behavior is not correct for ArabTeX, though.
 			if (!using_begin_end
 			    // not for ArabTeX
-				&& par_language->lang() != "arabic_arabtex"
-				&& outer_language->lang() != "arabic_arabtex"
+			    && par_language->lang() != "arabic_arabtex"
+			    && outer_language->lang() != "arabic_arabtex"
 			    // are we in an inset?
 			    && runparams.local_font != 0
 			    // is the inset within an \L or \R?
