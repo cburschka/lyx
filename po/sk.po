@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-08-18 15:50+0200\n"
-"PO-Revision-Date: 2018-08-18 14:09+0000\n"
+"POT-Creation-Date: 2018-08-23 11:49+0200\n"
+"PO-Revision-Date: 2018-08-23 10:31+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -4138,14 +4138,6 @@ msgstr ""
 "Maximálna dĺžka riadkov exportovaných text/LaTeX/SGML súborov.\n"
 "Keď nastavené 0, odstavce sú na výstupe v jednom riadku;\n"
 "keď je dĺžka > 0, odstavce sú oddelené prázdnym riadkom."
-
-#: src/frontends/qt4/ui/PrefOutputUi.ui:200
-msgid "&Date format:"
-msgstr "Fo&rmát dátumu:"
-
-#: src/frontends/qt4/ui/PrefOutputUi.ui:216
-msgid "Date format for strftime output"
-msgstr "Formát dátumu pre výstup cez strftime"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:227
 msgid "&Overwrite on export:"
@@ -10286,11 +10278,27 @@ msgstr "Šípka:"
 
 #: lib/layouts/chess.layout:187
 msgid "KnightMove"
-msgstr "Ťah kráľa"
+msgstr "Ťah jazdca"
 
 #: lib/layouts/chess.layout:192
 msgid "KnightMove:"
-msgstr "Ťah kráľa:"
+msgstr "Ťah jazdca:"
+
+#: lib/layouts/chessboard.layout:3
+msgid "Chessboard"
+msgstr "Šachovnica"
+
+#: lib/layouts/chessboard.layout:47
+msgid "id"
+msgstr "id"
+
+#: lib/layouts/chessboard.layout:48
+msgid "'invar' or 'outvar'"
+msgstr "'invar' alebo 'outvar'"
+
+#: lib/layouts/chessboard.layout:53
+msgid "Moves"
+msgstr "Ťahy"
 
 #: lib/layouts/cl2emult.layout:3
 msgid "Springer Contributed Books (cl2emult, Obsolete!)"
@@ -20647,6 +20655,60 @@ msgstr "Rôzne"
 msgid "Arrows"
 msgstr "Šípky"
 
+#: lib/layouts/chessboard.layout:85
+msgid "Comma separated list of the form from-to (like d2-d4)"
+msgstr "Čiarkou separovaný súpis vo forme od-kam (ako d2-d4)"
+
+#: lib/layouts/chessboard.layout:93
+msgid "Knigt"
+msgstr "Jazdec"
+
+#: lib/layouts/chessboard.layout:94
+msgid "List of knight moves (crooked arrows) g1-e2, g1-h3"
+msgstr "Súpis ťahow jazdca (ohnuté šípky) g1-e2, g1-h3"
+
+#: lib/layouts/chessboard.layout:100
+msgid "Mark"
+msgstr "Označiť"
+
+#: lib/layouts/chessboard.layout:101
+msgid ""
+"Comma separated list of fields to be marked with a circle (like d4,f4,c7)"
+msgstr ""
+"Čiarkou separovaný súpis políčiek ktoré budú označnené kruhom (ako d4,f4,c7)"
+
+#: lib/layouts/chessboard.layout:109
+msgid "ChessBoardStore"
+msgstr "Šachovnicu odložiť"
+
+#: lib/layouts/chessboard.layout:112
+msgid "StoreChessboard"
+msgstr "Šachovnicu odložiť"
+
+#: lib/layouts/chessboard.layout:114
+msgid "Store FEN"
+msgstr "Uložiť FEN"
+
+#: lib/layouts/chessboard.layout:115
+msgid "Store the 'FEN' under the given name"
+msgstr "Uložiť 'FEN' pod daným menom"
+
+#: lib/layouts/chessboard.layout:121
+msgid "ChessBoardRestore"
+msgstr "Šachovnicu rekonštruovať"
+
+#: lib/layouts/chessboard.layout:124
+msgid "RestoreChessboard"
+msgstr "Šachovnicu rekonštruovať"
+
+#: lib/layouts/chessboard.layout:126
+msgid "Restore FEN"
+msgstr "Obnoviť FEN"
+
+#: lib/layouts/chessboard.layout:127
+msgid "Restore the 'FEN' to the version saved under the given name"
+msgstr "Obnoviť 'FEN' na verziu odloženu pod daným menom"
+
 #: lib/ui/stdtoolbars.inc:311 lib/ui/stdtoolbars.inc:908
 msgid "Arrows (extended)"
 msgstr "Šípky (rozšírenie)"
@@ -27857,15 +27919,6 @@ msgstr ""
 "Zobraziť malý rámik okolo mat. makra spolu s menom makra keď je kurzor "
 "vnútri."
 
-#: src/LyXRC.cpp:3158
-#, no-c-format
-msgid ""
-"This accepts the normal strftime formats; see man strftime for full details. "
-"E.g.\"%A, %e. %B %Y\"."
-msgstr ""
-"Tu je akceptovaný bežný strftime formát; detaily sú v man strftime. Napr."
-"\"%A, %e. %B %Y\"."
-
 #: src/LyXRC.cpp:3162
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
@@ -34641,6 +34694,19 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "&Date format:"
+#~ msgstr "Fo&rmát dátumu:"
+
+#~ msgid "Date format for strftime output"
+#~ msgstr "Formát dátumu pre výstup cez strftime"
+
+#~ msgid ""
+#~ "This accepts the normal strftime formats; see man strftime for full "
+#~ "details. E.g.\"%A, %e. %B %Y\"."
+#~ msgstr ""
+#~ "Tu je akceptovaný bežný strftime formát; detaily sú v man strftime. Napr."
+#~ "\"%A, %e. %B %Y\"."
 
 #~ msgid "&Create"
 #~ msgstr "&Vytvoriť"
