@@ -98,7 +98,7 @@ The first table is configured as longtable first, the selected variable length i
 
 \begin_inset Tabular 
 <lyxtabular version="3" rows="7" columns="4">
-<features rotate="0" islongtable="true" longtabularalignment="center" tabularwidth="14cm">
+<features islongtable="true" longtabularalignment="center" tabularwidth="14cm">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top" varwidth="true">
 <column alignment="center" valignment="top">
@@ -293,7 +293,7 @@ The next table is a normal table, variable length of forth column and width 14cm
 
 \begin_inset Tabular 
 <lyxtabular version="3" rows="4" columns="5">
-<features rotate="0" tabularvalignment="middle" tabularwidth="14cm">
+<features tabularvalignment="middle" tabularwidth="14cm">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
