@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin unavailable
+\origin /systemlyxdir/examples/
 \textclass chessboard
 \begin_preamble
 \usepackage{multicol}
@@ -198,7 +198,7 @@ status open
 \begin_layout Plain Layout
 
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -368,7 +368,7 @@ status open
 \begin_layout Plain Layout
 
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -413,10 +413,6 @@ status open
 
 \end_layout
 
-\end_inset
-
-
-\begin_inset Newline newline
 \end_inset
 
 
@@ -629,7 +625,18 @@ status open
  exf6 Qxf6 16.
  Bxd6 Rfd8 17.
  Bc7 Rd7 18.
- Bf4 1-0
+ Bf4
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+
+1-0
 \end_layout
 
 \end_inset
