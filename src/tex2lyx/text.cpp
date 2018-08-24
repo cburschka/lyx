@@ -528,6 +528,17 @@ string guessQuoteStyle(string in, bool const opening)
 }
 
 
+string const fromPolyglossiaEnvironment(string const s)
+{
+	// Since \arabic is taken by the LaTeX kernel,
+	// the Arabic polyglossia environment is upcased
+	if (s == "Arabic")
+		return "arabic";
+	else
+		return s;
+}
+
+
 } // namespace
 
 
@@ -1597,7 +1608,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		}
 	}
 
-	else if (is_known(name, preamble.polyglossia_languages)) {
+	// We need to use fromPolyglossiaEnvironment die to Arabic > arabic
+	else if (is_known(fromPolyglossiaEnvironment(name), preamble.polyglossia_languages)) {
 		// We must begin a new paragraph if not already done
 		if (! parent_context.atParagraphStart()) {
 			parent_context.check_end_layout(os);
@@ -1605,7 +1617,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		}
 		// save the language in the context so that it is
 		// handled by parse_text
-		parent_context.font.language = preamble.polyglossia2lyx(name);
+		parent_context.font.language =
+			preamble.polyglossia2lyx(fromPolyglossiaEnvironment(name));
 		parse_text(p, os, FLAG_END, outer, parent_context);
 		// Just in case the environment is empty
 		parent_context.extra_stuff.erase();
@@ -3323,7 +3336,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				preamble.registerAutomaticallyLoadedPackage(*it);
 			continue;
 		}
-
 
 		// Starred section headings
 		// Must attempt to parse "Section*" before "Section".
