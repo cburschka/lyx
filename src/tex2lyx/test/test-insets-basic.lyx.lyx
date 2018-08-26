@@ -5020,16 +5020,13 @@ status open
 \begin_layout Standard
 
 \begin_inset Tabular 
-<lyxtabular version="3" rows="4" columns="8">
+<lyxtabular version="3" rows="4" columns="5">
 <features rotate="0" tabularvalignment="middle" tabularwidth="0pt">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
-<column alignment="right" valignment="top">
-<column alignment="none" valignment="top" special="@{\extracolsep{0pt}.}l">
-<column alignment="right" valignment="top">
-<column alignment="none" valignment="top" special="@{\extracolsep{0pt}.}l">
-<column alignment="right" valignment="top">
-<column alignment="none" valignment="top" special="@{\extracolsep{0pt}.}l">
+<column alignment="decimal" decimal_point="." valignment="top">
+<column alignment="decimal" decimal_point="." valignment="top">
+<column alignment="decimal" decimal_point="." valignment="top">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -5049,7 +5046,7 @@ Two
 
 \end_inset
 </cell>
-<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+<cell alignment="none" valignment="top" usebox="none" special="c">
 \begin_inset Text
 
 \begin_layout Standard
@@ -5058,12 +5055,7 @@ Three
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+<cell alignment="none" valignment="top" usebox="none" special="c">
 \begin_inset Text
 
 \begin_layout Standard
@@ -5072,22 +5064,12 @@ Four
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+<cell alignment="none" valignment="top" usebox="none" special="c">
 \begin_inset Text
 
 \begin_layout Standard
 Five
 \end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
 
 \end_inset
 </cell>
@@ -5111,7 +5093,7 @@ two
 
 \end_inset
 </cell>
-<cell multicolumn="1" alignment="none" valignment="top" topline="true" usebox="none" special="c">
+<cell alignment="none" valignment="top" topline="true" usebox="none" special="c">
 \begin_inset Text
 
 \begin_layout Standard
@@ -5120,12 +5102,7 @@ three
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="none" valignment="top" topline="true" usebox="none" special="c">
+<cell alignment="none" valignment="top" topline="true" usebox="none" special="c">
 \begin_inset Text
 
 \begin_layout Standard
@@ -5134,22 +5111,12 @@ four
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="none" valignment="top" topline="true" usebox="none" special="c">
+<cell alignment="none" valignment="top" topline="true" usebox="none" special="c">
 \begin_inset Text
 
 \begin_layout Standard
 five
 \end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
 
 \end_inset
 </cell>
@@ -5173,52 +5140,29 @@ He
 
 \end_inset
 </cell>
-<cell alignment="right" valignment="top" usebox="none">
+<cell alignment="decimal" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
-2
+2.77234 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="none" valignment="top" usebox="none">
+<cell alignment="decimal" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
-77234 
+45672.
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="right" valignment="top" usebox="none">
+<cell alignment="decimal" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
-45672
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell alignment="right" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-69 
+0.69 
 \end_layout
 
 \end_inset
@@ -5243,56 +5187,29 @@ C
 
 \end_inset
 </cell>
-<cell alignment="right" valignment="top" usebox="none">
+<cell alignment="decimal" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
-12537
+12537.64 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="none" valignment="top" usebox="none">
+<cell alignment="decimal" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
-64 
+37.66345 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="right" valignment="top" usebox="none">
+<cell alignment="decimal" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
-37
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-66345 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="right" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-86
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-37 
+86.37 
 \end_layout
 
 \end_inset
