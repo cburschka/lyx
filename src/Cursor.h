@@ -177,9 +177,9 @@ public:
 	void leaveInset(Inset const & inset);
 
 	///
-	bool textUndo();
+	bool undoAction();
 	///
-	bool textRedo();
+	bool redoAction();
 
 	/// makes sure the next operation will be stored
 	void finishUndo() const;

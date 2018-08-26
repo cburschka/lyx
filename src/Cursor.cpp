@@ -591,18 +591,18 @@ void CursorData::leaveInset(Inset const & inset)
 }
 
 
-bool CursorData::textUndo()
+bool CursorData::undoAction()
 {
-	if (!buffer()->undo().textUndo(*this))
+	if (!buffer()->undo().undoAction(*this))
 		return false;
 	sanitize();
 	return true;
 }
 
 
-bool CursorData::textRedo()
+bool CursorData::redoAction()
 {
-	if (!buffer()->undo().textRedo(*this))
+	if (!buffer()->undo().redoAction(*this))
 		return false;
 	sanitize();
 	return true;

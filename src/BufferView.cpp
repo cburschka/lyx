@@ -1397,7 +1397,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// So these should not be references...
 		string const engine = buffer().params().citeEngine();
 		CiteEngineType const enginetype = buffer().params().citeEngineType();
-		if (!cur.textUndo())
+		if (!cur.undoAction())
 			dr.setMessage(_("No further undo information"));
 		else {
 			dr.screenUpdate(Update::Force | Update::FitCursor);
@@ -1417,7 +1417,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// So these should not be references...
 		string const engine = buffer().params().citeEngine();
 		CiteEngineType const enginetype = buffer().params().citeEngineType();
-		if (!cur.textRedo())
+		if (!cur.redoAction())
 			dr.setMessage(_("No further redo information"));
 		else {
 			dr.screenUpdate(Update::Force | Update::FitCursor);

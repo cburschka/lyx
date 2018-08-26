@@ -203,10 +203,10 @@ struct Undo::Private
 				   group_id_(0), group_level_(0) {}
 
 	// Do one undo/redo step
-	void doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack,
+	void doUndoRedoAction(CursorData & cur, UndoElementStack & stack,
 			      UndoElementStack & otherStack);
 	// Apply one undo/redo group. Returns false if no undo possible.
-	bool textUndoOrRedo(CursorData & cur, bool isUndoOperation);
+	bool undoRedoAction(CursorData & cur, bool isUndoOperation);
 
 	///
 	void doRecordUndo(UndoKind kind,
@@ -430,7 +430,7 @@ void Undo::Private::recordUndoBufferParams(CursorData const & cur)
 }
 
 
-void Undo::Private::doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack, UndoElementStack & otherstack)
+void Undo::Private::doUndoRedoAction(CursorData & cur, UndoElementStack & stack, UndoElementStack & otherstack)
 {
 	// Adjust undo stack and get hold of current undo data.
 	UndoElement & undo = stack.top();
@@ -528,7 +528,7 @@ void Undo::Private::doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack,
 }
 
 
-bool Undo::Private::textUndoOrRedo(CursorData & cur, bool isUndoOperation)
+bool Undo::Private::undoRedoAction(CursorData & cur, bool isUndoOperation)
 {
 	undo_finished_ = true;
 
@@ -542,7 +542,7 @@ bool Undo::Private::textUndoOrRedo(CursorData & cur, bool isUndoOperation)
 
 	const size_t gid = stack.top().group_id;
 	while (!stack.empty() && stack.top().group_id == gid)
-		doTextUndoOrRedo(cur, stack, otherstack);
+		doUndoRedoAction(cur, stack, otherstack);
 	return true;
 }
 
@@ -554,15 +554,15 @@ void Undo::finishUndo()
 }
 
 
-bool Undo::textUndo(CursorData & cur)
+bool Undo::undoAction(CursorData & cur)
 {
-	return d->textUndoOrRedo(cur, true);
+	return d->undoRedoAction(cur, true);
 }
 
 
-bool Undo::textRedo(CursorData & cur)
+bool Undo::redoAction(CursorData & cur)
 {
-	return d->textUndoOrRedo(cur, false);
+	return d->undoRedoAction(cur, false);
 }
 
 

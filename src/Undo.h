@@ -60,10 +60,10 @@ public:
 	void clear();
 
 	/// this will undo the last action - returns false if no undo possible
-	bool textUndo(CursorData &);
+	bool undoAction(CursorData &);
 
 	/// this will redo the last undo - returns false if no redo possible
-	bool textRedo(CursorData &);
+	bool redoAction(CursorData &);
 
 	/// End a sequence of INSERT_UNDO or DELETE_UNDO type of undo
 	/// operations (grouping of consecutive characters insertion/deletion).
