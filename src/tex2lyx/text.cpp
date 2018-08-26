@@ -539,6 +539,24 @@ string const fromPolyglossiaEnvironment(string const s)
 }
 
 
+string uncapitalize(string const s)
+{
+	docstring in = from_ascii(s);
+	char_type t = lowercase(s[0]);
+	in[0] = t;
+	return to_ascii(in);
+}
+
+
+bool isCapitalized(string const s)
+{
+	docstring in = from_ascii(s);
+	char_type t = uppercase(s[0]);
+	in[0] = t;
+	return to_ascii(in) == s;
+}
+
+
 } // namespace
 
 
@@ -4041,21 +4059,37 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			continue;
 		}
 
-		// handle refstyle first to catch \eqref which can also occur
-		// without refstyle. Only recognize these commands if
+		// Handle refstyle first in order to to catch \eqref, because this
+		// can also occur without refstyle. Only recognize these commands if
 		// refstyle.sty was found in the preamble (otherwise \eqref
 		// and user defined ref commands could be misdetected).
-		if ((where = is_known(t.cs(), known_refstyle_commands))
+		// We uncapitalize the input in order to catch capitalized commands
+		// such as \Eqref.
+		if ((where = is_known(uncapitalize(t.cs()), known_refstyle_commands))
 		     && preamble.refstyle()) {
+			string const cap = isCapitalized(t.cs()) ? "true" : "false";
+			string plural = "false";
+			// Catch the plural option [s]
+			if (p.hasOpt()) {
+				string const opt = p.getOpt();
+				if (opt == "[s]")
+					plural = "true";
+				else {
+					// LyX does not yet support other optional arguments of ref commands
+					output_ert_inset(os, t.asInput() + opt + "{" +
+					       p.verbatim_item() + '}', context);
+					continue;
+				}
+			}
 			context.check_layout(os);
 			begin_command_inset(os, "ref", "formatted");
 			os << "reference \"";
 			os << known_refstyle_prefixes[where - known_refstyle_commands]
 			   << ":";
-			os << convert_literate_command_inset_arg(p.verbatim_item())
+			os << convert_literate_command_inset_arg(p.getArg('{', '}'))
 			   << "\"\n";
-			os << "plural \"false\"\n";
-			os << "caps \"false\"\n";
+			os << "plural \"" << plural << "\"\n";
+			os << "caps \"" << cap << "\"\n";
 			os << "noprefix \"false\"\n";
 			end_inset(os);
 			preamble.registerAutomaticallyLoadedPackage("refstyle");
@@ -4084,8 +4118,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					preamble.registerAutomaticallyLoadedPackage("prettyref");
 			} else {
 				// LyX does not yet support optional arguments of ref commands
-				output_ert_inset(os, t.asInput() + '[' + opt + "]{" +
-			               p.verbatim_item() + '}', context);
+				output_ert_inset(os, t.asInput() + opt + "{" +
+						 p.verbatim_item() + '}', context);
 			}
 			continue;
 		}
