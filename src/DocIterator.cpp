@@ -656,6 +656,26 @@ void DocIterator::sanitize()
 }
 
 
+bool DocIterator::isInside(Inset const * p) const
+{
+	for (CursorSlice const & sl : slices_)
+		if (&sl.inset() == p)
+			return true;
+	return false;
+}
+
+
+void DocIterator::leaveInset(Inset const & inset)
+{
+	for (size_t i = 0; i != slices_.size(); ++i) {
+		if (&slices_[i].inset() == &inset) {
+			resize(i);
+			return;
+		}
+	}
+}
+
+
 int DocIterator::find(MathData const & cell) const
 {
 	for (size_t l = 0; l != slices_.size(); ++l) {

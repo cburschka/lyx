@@ -249,6 +249,10 @@ public:
 	/// Repopulate the slices insets from bottom to top. Useful
 	/// for stable iterators or Undo data.
 	void sanitize();
+	///
+	bool isInside(Inset const *) const;
+	/// make sure we are outside of given inset
+	void leaveInset(Inset const & inset);
 
 	/// find index of CursorSlice with &cell() == &cell (or -1 if not found)
 	int find(MathData const & cell) const;

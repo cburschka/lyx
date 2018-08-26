@@ -571,26 +571,6 @@ void CursorData::sanitize()
 }
 
 
-bool CursorData::isInside(Inset const * p) const
-{
-	for (size_t i = 0; i != depth(); ++i)
-		if (&operator[](i).inset() == p)
-			return true;
-	return false;
-}
-
-
-void CursorData::leaveInset(Inset const & inset)
-{
-	for (size_t i = 0; i != depth(); ++i) {
-		if (&operator[](i).inset() == &inset) {
-			resize(i);
-			return;
-		}
-	}
-}
-
-
 bool CursorData::undoAction()
 {
 	if (!buffer()->undo().undoAction(*this))

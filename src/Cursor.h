@@ -171,10 +171,6 @@ public:
 	/// Repopulate the slices insets from bottom to top. Useful
 	/// for stable iterators or Undo data.
 	void sanitize();
-	///
-	bool isInside(Inset const *) const;
-	/// make sure we are outside of given inset
-	void leaveInset(Inset const & inset);
 
 	///
 	bool undoAction();
