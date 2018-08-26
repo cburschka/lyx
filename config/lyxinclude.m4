@@ -63,14 +63,18 @@ AC_MSG_RESULT([$withval])
 ])
 
 
-dnl Check whether to configure for Qt5. Default is Qt4.
+dnl Check whether to configure for Qt4 or Qt5. Default is Qt5.
 dnl
 AC_DEFUN([LYX_CHECK_QT5],[
-AC_MSG_CHECKING([whether Qt5 is requested])
+AC_MSG_CHECKING([whether Qt5 is disabled])
 AC_ARG_ENABLE([qt5],
-  [  --enable-qt5            use Qt5 for building],
-  USE_QT5=$enableval, USE_QT5=no)
-AC_MSG_RESULT([$USE_QT5])
+  [  --disable-qt5           don't use Qt5 for building],
+  USE_QT5=$enableval, USE_QT5=yes)
+if test x$USE_QT5 != xno ; then
+  AC_MSG_RESULT([no])
+else
+  AC_MSG_RESULT([yes])
+fi
 AC_SUBST([USE_QT5])
 ])
 
