@@ -70,6 +70,9 @@
 
 !!Changes with respect to external programs and libraries in 2.4:
 
+* The Qt5 libraries are now used by default. In order to link against
+  Qt4 the configure option --disable-qt5 has to be used.
+
 
 
 !!Known issues in version 2.4.0
