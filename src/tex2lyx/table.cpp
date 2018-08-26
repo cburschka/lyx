@@ -38,7 +38,8 @@ namespace {
 
 class ColInfo {
 public:
-	ColInfo() : align('n'), valign('n'), rightlines(0), leftlines(0), varwidth(false) {}
+	ColInfo() : align('n'), valign('n'), rightlines(0), leftlines(0),
+		varwidth(false), decimal_point('\0') {}
 	/// column alignment
 	char align;
 	/// vertical alignment
@@ -53,6 +54,8 @@ public:
 	int leftlines;
 	/// varwidth column
 	bool varwidth;
+	/// decimal separator
+	char decimal_point;
 };
 
 
@@ -180,6 +183,8 @@ inline char const * verbose_align(char c)
 		return "right";
 	case 'l':
 		return "left";
+	case 'd':
+		return "decimal";
 	default:
 		return "none";
 	}
@@ -267,6 +272,17 @@ void ci2special(ColInfo & ci)
 		// this case.
 		return;
 
+	if (ci.decimal_point != '\0') {
+		// we only support decimal point natively
+		// with 'l' alignment in or 'n' alignment
+		// with width in second row
+		if (ci.align != 'l' && ci.align != 'n') {
+			ci.decimal_point = '\0';
+			return;
+		} else
+			ci.special.clear();
+	}
+
 	if (!ci.width.empty()) {
 		string arraybackslash;
 		if (ci.varwidth)
@@ -346,8 +362,17 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 			case 'r':
 				// new column, horizontal aligned
 				next.align = t.character();
-				if (!next.special.empty())
+				if (!next.special.empty()) {
 					ci2special(next);
+					// handle decimal separator
+					if (next.decimal_point != '\0') {
+						if (!colinfo.empty() && colinfo.back().align == 'r') {
+							colinfo.back().align = 'd';
+							colinfo.back().decimal_point = next.decimal_point;
+						} else
+							next.decimal_point = '\0';
+					}
+				}
 				colinfo.push_back(next);
 				next = ColInfo();
 				break;
@@ -365,8 +390,17 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 				// new column, vertical aligned box
 				next.valign = t.character();
 				next.width = p.verbatim_item();
-				if (!next.special.empty())
+				if (!next.special.empty()) {
 					ci2special(next);
+					// handle decimal separator
+					if (next.decimal_point != '\0') {
+						if (!colinfo.empty() && colinfo.back().align == 'r') {
+							colinfo.back().align = 'd';
+							colinfo.back().decimal_point = next.decimal_point;
+						} else
+							next.decimal_point = '\0';
+					}
+				}
 				colinfo.push_back(next);
 				next = ColInfo();
 				break;
@@ -442,11 +476,16 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 			}
 			case '@':
 				// text instead of the column spacing
-			case '!':
-				// text in addition to the column spacing
-				next.special += t.character();
-				next.special += '{' + p.verbatim_item() + '}';
-				break;
+			case '!': {
+					// text in addition to the column spacing
+					string const arg =  p.verbatim_item();
+					next.special += t.character();
+					next.special += '{' + arg + '}';
+					string const sarg = arg.size() > 2 ? arg.substr(0, arg.size() - 1) : string();
+					if (t.character() == '@' && sarg == "\\extracolsep{0pt}")
+						next.decimal_point = arg.back();
+					break;
+			}
 			default: {
 				// try user defined column types
 				// unknown column types (nargs == -1) are
@@ -1143,7 +1182,12 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				     << cells[cell] << "'." << endl;
 				continue;
 			}
-			Parser parse(cells[cell]);
+			string cellcont = cells[cell];
+			// For decimal cells, ass the content of the second one to the first one
+			// of a pair.
+			if (colinfo[col].decimal_point != '\0' && colinfo[col].align == 'd' && cell < cells.size() - 1)
+				cellcont += colinfo[col].decimal_point + cells[cell + 1];
+			Parser parse(cellcont);
 			parse.skip_spaces();
 			//cells[cell] << "'\n";
 			if (parse.next_token().cs() == "multirow") {
@@ -1416,8 +1460,13 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 
 	//cerr << "// output what we have\n";
 	// output what we have
+	size_type cols = colinfo.size();
+	for (size_t col = 0; col < colinfo.size(); ++col) {
+		if (colinfo[col].decimal_point != '\0' && colinfo[col].align != 'd')
+			--cols;
+	}
 	os << "\n<lyxtabular version=\"3\" rows=\"" << rowinfo.size()
-	   << "\" columns=\"" << colinfo.size() << "\">\n";
+	   << "\" columns=\"" << cols << "\">\n";
 	os << "<features"
 	   << write_attribute("rotate", context.tablerotation)
 	   << write_attribute("booktabs", booktabs)
@@ -1442,9 +1491,13 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 
 	//cerr << "// after header\n";
 	for (size_t col = 0; col < colinfo.size(); ++col) {
+		if (colinfo[col].decimal_point != '\0' && colinfo[col].align != 'd')
+			continue;
 		os << "<column alignment=\""
-		   << verbose_align(colinfo[col].align) << "\""
-		   << " valignment=\""
+			   << verbose_align(colinfo[col].align) << "\"";
+		if (colinfo[col].decimal_point != '\0')
+			os << " decimal_point=\"" << colinfo[col].decimal_point << "\"";
+		os << " valignment=\""
 		   << verbose_valign(colinfo[col].valign) << "\""
 		   << write_attribute("width", translate_len(colinfo[col].width))
 		   << write_attribute("special", colinfo[col].special)
@@ -1471,9 +1524,13 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 		   << ">\n";
 		for (size_t col = 0; col < colinfo.size(); ++col) {
 			CellInfo const & cell = cellinfo[row][col];
+			if (colinfo[col].decimal_point != '\0' && colinfo[col].align != 'd')
+				// These are the second columns in a salign pair. Skip.
+				continue;
 			os << "<cell";
-			if (cell.multi == CELL_BEGIN_OF_MULTICOLUMN
-			    || cell.multi == CELL_PART_OF_MULTICOLUMN)
+			if ((cell.multi == CELL_BEGIN_OF_MULTICOLUMN
+				    || cell.multi == CELL_PART_OF_MULTICOLUMN)
+				   && colinfo[col].align != 'd')
 				os << " multicolumn=\"" << cell.multi << "\"";
 			if (cell.multi == CELL_BEGIN_OF_MULTIROW
 			    || cell.multi == CELL_PART_OF_MULTIROW)
