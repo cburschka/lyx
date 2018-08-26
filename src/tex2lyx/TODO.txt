@@ -16,7 +16,7 @@ Format LaTeX feature                        LyX feature
         - Dia and LilyPond are an \includegraphics and can therefore only be imported as image
         - Chess diagram, PDF pages and Spreadsheet are supported)
        (Xfig figure, Lilypond, Dia diagram can be supported by looking at the file extension)
-254    esint.sty                            \use_esint
+254    automatic esint loading              \use_esint
 267    XeTeX                                utf8 encoding
 326    PDFLaTeX for external insets         InsetExternal
 329    master documents                     \master
@@ -31,19 +31,19 @@ Format LaTeX feature                        LyX feature
 390    forward/reverse search               \forward_search, \forward_macro
 391    decimal alignment in tables          InsetTabular
 399    automatic mathdots loading           \use_mathdots
-411    support for polyglossia              \language_package	(the cases of no package, of babel and of custom package is supported)
+411    support for polyglossia              \language_package (the cases of no package, of babel and of custom package is supported)
 415    automatic undertilde loading         \use_package undertilde
 443    unicode-math.sty                     InsetMath*
 453    automatic stmaryrd loading           \use_package stmaryrd
 457    automatic stackrel loading           \use_package stackrel
-546    Landscape support
-       \begin{landscape}...\end{landscape}  \begin_inset Flex Landscape (see #11259)
 555    V column type (varwidth package)     Automatically detected with newlines, paragraph breaks and environment content in cells of rows
 563    InsetArgument listpreamble:<nr>      All content between \begin{env} and first \item of a list 
 
 
 
 General
+
+* Consider layouts in modules that do not have a preamble definition (see #11259).
 
 * Use the language information provided by Language.cpp and the languages file (for babel/lyx/polyglossia name, quote style etc.)
   instead of hardcoding this information in Preamble.cpp.
