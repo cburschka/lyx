@@ -432,7 +432,7 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 						next.special += '|';
 				} else if (colinfo.back().special.empty())
 					++colinfo.back().rightlines;
-				else if (next.special.empty())
+				else if (next.special.empty() && p.next_token().cat() != catEnd)
 					++next.leftlines;
 				else
 					colinfo.back().special += '|';
