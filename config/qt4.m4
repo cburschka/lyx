@@ -56,8 +56,12 @@ AC_DEFUN([QT_CHECK_COMPILE],
 	])
 
 	if test -z "$qt_cv_libname"; then
-		AC_MSG_RESULT([failed])
-		AC_MSG_ERROR([cannot compile a simple Qt executable. Check you have the right \$QTDIR.])
+		if test x$USE_QT5 = xyes ; then
+			AC_MSG_RESULT([failed, retrying with Qt4])
+		else
+			AC_MSG_RESULT([failed])
+			AC_MSG_ERROR([cannot compile a simple Qt executable. Check you have the right \$QTDIR.])
+		fi
 	else
 		AC_MSG_RESULT([$qt_cv_libname])
 	fi
@@ -170,7 +174,22 @@ AC_DEFUN([QT_DO_IT_ALL],
 	fi
 
 	if test -z "$QT_LIB"; then
-	  AC_MSG_ERROR([cannot find qt libraries.])
+	  dnl Try again with Qt4 if configuring for Qt5 fails
+	  if test x$USE_QT5 = xyes ; then
+		USE_QT5=no
+		AC_SUBST([USE_QT5])
+		if test -n "$PKG_CONFIG" ; then
+		  QT_DO_PKG_CONFIG
+		fi
+		if test "$pkg_failed" != "no" ; then
+		  QT_DO_MANUAL_CONFIG
+		fi
+		if test -z "$QT_LIB"; then
+		  AC_MSG_ERROR([cannot find qt libraries.])
+		fi
+	  else
+		AC_MSG_ERROR([cannot find qt libraries.])
+	  fi
 	fi
 
 	dnl Check qt version
