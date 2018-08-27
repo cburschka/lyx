@@ -496,14 +496,14 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 			case '@':
 				// text instead of the column spacing
 			case '!': {
-					// text in addition to the column spacing
-					string const arg =  p.verbatim_item();
-					next.special += t.character();
-					next.special += '{' + arg + '}';
-					string const sarg = arg.size() > 2 ? arg.substr(0, arg.size() - 1) : string();
-					if (t.character() == '@' && sarg == "\\extracolsep{0pt}")
-						next.decimal_point = arg.back();
-					break;
+				// text in addition to the column spacing
+				string const arg =  p.verbatim_item();
+				next.special += t.character();
+				next.special += '{' + arg + '}';
+				string const sarg = arg.size() > 2 ? arg.substr(0, arg.size() - 1) : string();
+				if (t.character() == '@' && sarg == "\\extracolsep{0pt}")
+					next.decimal_point = arg.back();
+				break;
 			}
 			default: {
 				// try user defined column types
