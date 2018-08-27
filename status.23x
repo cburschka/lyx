@@ -15,9 +15,6 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Updated Arabic, Chinese (Simplified), German, Hungarian, Italian, Russian,
-  Slovakian and Ukrainian user interface localization.
-
 - It possible to anonymize document's content for bug submissions
   via buffer-anonymize lfun (bug 7259).
 
@@ -110,6 +107,9 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
+- Updated Arabic, Chinese (Simplified), German, Hungarian, Italian, Russian,
+  Slovakian and Ukrainian user interface localization.
+
 
 * BUILD/INSTALLATION
 
@@ -170,9 +170,6 @@ What's new
 - Correctly strike-out deleted math immediately following a float (bug 11174).
 
 - Fix problem with unwanted spaces caused by math macro definitions (bug 11216).
-
-
-* LYX2LYX
 
 
 * USER INTERFACE
@@ -310,9 +307,6 @@ What's new
 
 - Fix old problem with lib/fonts/test/stmary10.lyx, and update that file
   to current format.
-
-
-* LYXHTML
 
 
 * TEX2LYX

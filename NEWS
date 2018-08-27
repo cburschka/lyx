@@ -1,3 +1,21 @@
+What's new in version 2.3.1?
+----------------------------
+
+LyX 2.3.1 is the first maintenance release in the 2.3.x series. 
+
+We have fixed a number of bugs and added some new features. Perhaps the most 
+important of these is that Jean-Marc Lasgouttes re-wrote the document painting
+mechanism. This makes LyX snappier, especially on repeated events.
+
+All python scripts distributed with LyX should now be compatible with both
+python 2.x and python 3.x.
+
+One oft-requested enhancement was to restore a keyboard shortcut for opening
+the 'settings' menu of graphics, reference, etc, insets. This is now Control-
+Alt-i, on Windows and Linux, and Control-Option-i on OSX (assuming you are
+using the default keybindings).
+
+
 What's new in version 2.3.0?
 ----------------------------
 
@@ -27,6 +45,17 @@ http://wiki.lyx.org/LyX/NewInLyX23
 * Forward/Reverse search and error reporting
 * Change tracking
 * Code preview & highlighting
+
+
+What's new in version 2.2.3?
+----------------------------
+
+LyX 2.2.3 is the third maintenance release in the 2.2.x series. 
+
+We have fixed a number of bugs and made a number of improvements. 
+Most of these are relatively minor, but the combined result of fixing 
+them all has led to significant improvements. We encourage all users of 
+2.2.2 to upgrade to this version.
 
 
 What's new in version 2.2.2?
