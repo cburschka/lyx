@@ -34,8 +34,7 @@ Format LaTeX feature                        LyX feature
 443    unicode-math.sty                     InsetMath*
 453    automatic stmaryrd loading           \use_package stmaryrd
 457    automatic stackrel loading           \use_package stackrel
-555    V column type (varwidth package)     Automatically detected with newlines, paragraph breaks and environment content in cells of rows
-563    InsetArgument listpreamble:<nr>      All content between \begin{env} and first \item of a list 
+563    InsetArgument listpreamble:1         All content between \begin{env} and first \item of a list 
 
 
 

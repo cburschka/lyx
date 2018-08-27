@@ -39,7 +39,7 @@ namespace {
 class ColInfo {
 public:
 	ColInfo() : align('n'), valign('n'), rightlines(0), leftlines(0),
-		varwidth(false), decimal_point('\0') {}
+		varwidth(false), decimal_point('\0'), vcolumn(false) {}
 	/// column alignment
 	char align;
 	/// vertical alignment
@@ -56,6 +56,8 @@ public:
 	bool varwidth;
 	/// decimal separator
 	char decimal_point;
+	/// V column type
+	bool vcolumn;
 };
 
 
@@ -298,7 +300,9 @@ void ci2special(ColInfo & ci)
 			ci.special += ">{\\centering" + arraybackslash + "}";
 			break;
 		}
-		if (ci.varwidth)
+		if (ci.vcolumn)
+			ci.special += 'V';
+		else if (ci.varwidth)
 			ci.special += 'X';
 		else if (ci.valign == 'n')
 			ci.special += 'p';
@@ -384,6 +388,21 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 				colinfo.push_back(next);
 				next = ColInfo();
 				break;
+			case 'V': {
+				// V column type (varwidth package)
+				string const s = trimSpaceAndEol(p.verbatim_item());
+				// V{\linewidth} is treated as a normal column
+				// (which allows for line breaks). The V type is
+				// automatically set by LyX in this case
+				if (s != "\\linewidth" || !next.special.empty()) {
+					next.vcolumn = true;
+					next.width = s;
+					ci2special(next);
+				}
+				colinfo.push_back(next);
+				next = ColInfo();
+				break;
+			}
 			case 'p':
 			case 'b':
 			case 'm':
