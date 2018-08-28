@@ -99,7 +99,9 @@ What's new
 - Consider required modules when checking for layout definitions in modules
   (bug 11156).
 
-- Fix import of Arabic polyglossia environment (part of  bug 10111).
+- Fix import of Arabic polyglossia environment (part of bug 10111).
+
+- Fix import of unknown commands'/environments' options (bug 8685).
 
 
 * ADVANCED FIND AND REPLACE

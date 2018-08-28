@@ -1576,6 +1576,14 @@ void parse_unknown_environment(Parser & p, string const & name, ostream & os,
 	if (specialfont)
 		parent_context.new_layout_allowed = false;
 	output_ert_inset(os, "\\begin{" + name + "}", parent_context);
+	// Try to handle options: Look if we have an optional arguments,
+	// and if so, put the brackets in ERT.
+	while (p.hasOpt()) {
+		p.get_token(); // eat '['
+		output_ert_inset(os, "[", parent_context);
+		os << parse_text_snippet(p, FLAG_BRACK_LAST, outer, parent_context);
+		output_ert_inset(os, "]", parent_context);
+	}
 	parse_text_snippet(p, os, flags, outer, parent_context);
 	output_ert_inset(os, "\\end{" + name + "}", parent_context);
 	if (specialfont)
@@ -5849,8 +5857,18 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				p.get_token();	// Eat '*'
 				name += '*';
 			}
-			if (!parse_command(name, p, os, outer, context))
+			if (!parse_command(name, p, os, outer, context)) {
 				output_ert_inset(os, name, context);
+				// Try to handle options of unknown commands:
+				// Look if we have an optional arguments,
+				// and if so, put the brackets in ERT.
+				while (p.hasOpt()) {
+					p.get_token(); // eat '['
+					output_ert_inset(os, "[", context);
+					os << parse_text_snippet(p, FLAG_BRACK_LAST, outer, context);
+					output_ert_inset(os, "]", context);
+				}
+			}
 		}
 	}
 }
