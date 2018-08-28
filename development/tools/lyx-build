@@ -42,7 +42,7 @@ mkdir $BASE/lyx-build/
 cd $BASE/lyx-build/
 
 echo "Building distribution...";
-$BASE/lyx-export/configure --enable-build-type=rel
+$BASE/lyx-export/configure --enable-build-type=rel --enable-qt5
 if ! make lyxdist; then
   echo "Couldn't make distribution!";
   exit 1;
@@ -72,7 +72,7 @@ if ! cd lyx-$VERSION; then
   exit 1;
 fi
 
-./configure --enable-build-type=rel
+./configure --enable-build-type=rel --enable-qt5
 
 if make $MAKEOPTS; then
   echo "Compilation complete.";
