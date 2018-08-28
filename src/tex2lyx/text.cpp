@@ -1595,7 +1595,7 @@ void parse_unknown_environment(Parser & p, string const & name, ostream & os,
 	if (specialfont)
 		parent_context.new_layout_allowed = false;
 	output_ert_inset(os, "\\begin{" + name + "}", parent_context);
-	// Try to handle options: Look if we have an optional arguments,
+	// Try to handle options: Look if we have optional arguments,
 	// and if so, put the brackets in ERT.
 	while (p.hasOpt()) {
 		p.get_token(); // eat '['
@@ -6103,7 +6103,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (!parse_command(name, p, os, outer, context)) {
 				output_ert_inset(os, name, context);
 				// Try to handle options of unknown commands:
-				// Look if we have an optional arguments,
+				// Look if we have optional arguments,
 				// and if so, put the brackets in ERT.
 				while (p.hasOpt()) {
 					p.get_token(); // eat '['
