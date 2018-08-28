@@ -24,6 +24,10 @@ the 'settings' menu of graphics, reference, etc, insets. This is now Control-
 Alt-i, on Windows and Linux, and Control-Option-i on OSX (assuming you are
 using the default keybindings).
 
+A change to how math macros are output can break some documents that use
+ERT to comment out macros. Please see bug #11216 if you experience this sort 
+of problem.
+  
 If you think you have found a bug in LyX 2.3.1, please open a bug report at
 http://www.lyx.org/trac/wiki/BugTrackerHome. If you're not sure whether it
 really is a bug, you can e-mail the LyX developers' mailing list (lyx-devel 

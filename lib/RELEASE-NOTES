@@ -1,3 +1,10 @@
+!Important Change in LyX 2.3.1
+
+* A change to how math macros are output can break some documents that use
+  ERT to comment out macros. Please see bug #11216 if you experience this
+  sort of problem.
+
+
 !Important Changes in LyX 2.3.0
 
 
