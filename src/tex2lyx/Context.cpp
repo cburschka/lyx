@@ -140,9 +140,9 @@ void Context::check_layout(ostream & os)
 				begin_layout(os, layout);
 				has_item = false;
 			} else {
-				// a standard paragraph in an
-				// enumeration. We have to recognize
-				// that this may require a begin_deeper.
+				// A standard paragraph in a list.
+				// We have to recognize that this
+				// may require a begin_deeper.
 				if (!deeper_paragraph)
 					begin_deeper(os);
 				begin_layout(os, &textclass.defaultLayout());
