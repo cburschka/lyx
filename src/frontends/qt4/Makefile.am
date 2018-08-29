@@ -360,26 +360,9 @@ UIFILES = \
 
 nodist_liblyxqt4_a_SOURCES = Resources.cpp
 
-liblyxqt4.cpp:
-	$(AM_V_GEN)for file in $(SOURCEFILES) ; do echo '#include "'$${file}'"' ; done >$@
-
-if MONOLITHIC_FRONTEND_QT
-
-nodist_liblyxqt4_a_SOURCES += liblyxqt4.cpp
-liblyxqt4_a_SOURCES = \
-	$(MOCHEADER) \
-	$(NOMOCHEADER)
-
-BUILT_SOURCES += liblyxqt4.cpp
-CLEANFILES += liblyxqt4.cpp
-
-else
-
 liblyxqt4_a_SOURCES = \
 	$(SOURCEFILES) \
 	$(MOCHEADER) \
 	$(NOMOCHEADER)
-
-endif
 
 EXTRA_DIST = CMakeLists.txt $(UIFILES:%=ui/%)

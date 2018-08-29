@@ -34,28 +34,6 @@ save_PACKAGE=$PACKAGE
 AM_INIT_AUTOMAKE([foreign dist-bzip2 no-define 1.8 tar-ustar subdir-objects])
 PACKAGE=$save_PACKAGE
 
-# Allow to build some parts of the code as one big chunk
-m4_define([ALLPARTS],[boost,client,insets,mathed,core,tex2lyx,frontend_qt])
-AC_ARG_ENABLE(monolithic-build,
-  AC_HELP_STRING([--enable-monolithic-build@<:@=LIST@:>@],
-		[Use monolithic build for modules in LIST (default: ALLPARTS)]),
-  [test "$enable_monolithic_build" = yes && enable_monolithic_build="ALLPARTS"
-   test "$enable_monolithic_build" = no && enable_monolithic_build=
-   IFS="${IFS=	}"; ac_save_ifs="$IFS"; IFS=" ,"
-   for i in $enable_monolithic_build ; do
-       eval "enable_monolithic_$i=yes"
-   done
-   IFS="$ac_save_ifs"],
-  [enable_monolithic_build=])
-
-AM_CONDITIONAL(MONOLITHIC_BOOST, test "x$enable_monolithic_boost" = "xyes")
-AM_CONDITIONAL(MONOLITHIC_CLIENT, test "x$enable_monolithic_client" = "xyes")
-AM_CONDITIONAL(MONOLITHIC_INSETS, test "x$enable_monolithic_insets" = "xyes")
-AM_CONDITIONAL(MONOLITHIC_MATHED, test "x$enable_monolithic_mathed" = "xyes")
-AM_CONDITIONAL(MONOLITHIC_CORE, test "x$enable_monolithic_core" = "xyes")
-AM_CONDITIONAL(MONOLITHIC_TEX2LYX, test "x$enable_monolithic_tex2lyx" = "xyes")
-AM_CONDITIONAL(MONOLITHIC_FRONTEND_QT, test "x$enable_monolithic_frontend_qt" = "xyes")
-
 ### Set the execute permissions of the various scripts correctly
 for file in config/install-sh ; do
   chmod 755 ${srcdir}/${file}

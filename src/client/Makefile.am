@@ -26,21 +26,5 @@ SOURCEFILES = \
 
 HEADERFILES =
 
-
-lyxclient.cpp:
-	$(AM_V_GEN)for file in $(SOURCEFILES) ; do echo '#include "'$${file}'"' ; done >$@
-
-if MONOLITHIC_CLIENT
-
-AM_CPPFLAGS += -I$(srcdir)/.. $(BOOST_INCLUDES) $(ZLIB_INCLUDES)
-BUILT_SOURCES = lyxclient.cpp
-CLEANFILES += lyxclient.cpp
-
-nodist_lyxclient_SOURCES = lyxclient.cpp
-lyxclient_SOURCES = $(HEADERFILES)
-
-else
-
 lyxclient_SOURCES = $(SOURCEFILES) $(HEADERFILES)
 
-endif

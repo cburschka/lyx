@@ -322,22 +322,8 @@ lyx_commit_hash.h: update_commit_hash
 BUILT_SOURCES = lyx_commit_hash.h
 CLEANFILES = lyx_commit_hash.h
 
-lyxcore.cpp:
-	$(AM_V_GEN)for file in $(SOURCEFILESCORE) ; do echo '#include "'$${file}'"' ; done >$@
-
-if MONOLITHIC_CORE
-
-BUILT_SOURCES += lyxcore.cpp $(STANDALONEFILES)
-CLEANFILES += lyxcore.cpp
-
-nodist_liblyxcore_a_SOURCES = lyxcore.cpp
-liblyxcore_a_SOURCES = $(STANDALONEFILES) $(HEADERFILESCORE)
-
-else
-
 liblyxcore_a_SOURCES = $(SOURCEFILESCORE) $(STANDALONEFILES) $(HEADERFILESCORE)
 
-endif
 
 #########################  Qt stuff  ##############################
 
@@ -541,22 +527,8 @@ HEADERFILESMATHED = \
 	mathed/MathSupport.h \
 	mathed/TextPainter.h
 
-lyxmathed.cpp:
-	$(AM_V_GEN)for file in $(SOURCEFILESMATHED) ; do echo '#include "'$${file}'"' ; done >$@
-
-if MONOLITHIC_MATHED
-
-BUILT_SOURCES += lyxmathed.cpp
-CLEANFILES += lyxmathed.cpp
-
-nodist_liblyxmathed_a_SOURCES = lyxmathed.cpp
-liblyxmathed_a_SOURCES = $(HEADERFILESMATHED)
-
-else
-
 liblyxmathed_a_SOURCES = $(SOURCEFILESMATHED) $(HEADERFILESMATHED)
 
-endif
 
 ############################### Insets  ##############################
 
@@ -680,22 +652,7 @@ HEADERFILESINSETS = \
 	insets/InsetVSpace.h \
 	insets/InsetWrap.h
 
-lyxinsets.cpp:
-	$(AM_V_GEN)for file in $(SOURCEFILESINSETS) ; do echo '#include "'$${file}'"' ; done >$@
-
-if MONOLITHIC_INSETS
-
-BUILT_SOURCES += lyxinsets.cpp
-CLEANFILES += lyxinsets.cpp
-
-nodist_liblyxinsets_a_SOURCES = lyxinsets.cpp
-liblyxinsets_a_SOURCES = $(HEADERFILESINSETS)
-
-else
-
 liblyxinsets_a_SOURCES = $(SOURCEFILESINSETS) $(HEADERFILESINSETS)
-
-endif
 
 
 ############################## Tests ##################################

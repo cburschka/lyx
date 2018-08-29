@@ -14,19 +14,6 @@ EXTRA_DIST = boost \
 AM_CPPFLAGS += -DBOOST_USER_CONFIG="<config.h>" 
 AM_CPPFLAGS +=  $(BOOST_INCLUDES)
 
-# This version is more than three times faster than the one below
-
-if MONOLITHIC_BOOST
-
-liblyxboost_a_SOURCES = \
-	lyxboost.cpp \
-	libs/regex/src/instances.cpp \
-	libs/regex/src/cpp_regex_traits.cpp \
-	libs/regex/src/c_regex_traits.cpp \
-	libs/regex/src/wc_regex_traits.cpp
-
-else
-
 liblyxboost_a_SOURCES = \
 	libs/regex/src/internals.hpp \
 	libs/regex/src/c_regex_traits.cpp \
@@ -45,5 +32,4 @@ liblyxboost_a_SOURCES = \
 	libs/regex/src/winstances.cpp \
 	libs/regex/src/static_mutex.cpp
 
-endif #MONOLITHIC_BOOST
 
