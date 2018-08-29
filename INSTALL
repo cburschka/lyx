@@ -117,8 +117,11 @@ flags:
 
     The `gprof' build type compiles and links with -pg option with gcc.
 
-  o --with-extra-lib=DIRECTORY that specifies the path where LyX will
-    find extra libraries (qt4) it needs. Defaults to NONE
+o --disable-qt5 that forces configuration with Qt 4.x when Qt 5.x is
+    also available. By default Qt5 is tried first, and then Qt4.
+
+o --with-extra-lib=DIRECTORY that specifies the path where LyX will
+    find extra libraries (like Qt) it needs. Defaults to NONE
     (i.e. search in standard places). You can specify several
     directories, separated by colons.
 
