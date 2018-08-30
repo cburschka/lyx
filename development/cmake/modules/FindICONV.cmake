@@ -32,10 +32,17 @@ if (ICONV_INCLUDE_DIR)
   set(ICONV_FIND_QUIETLY TRUE)
 endif()
 
-find_path(ICONV_INCLUDE_DIR iconv.h PATHS
- /usr/include
- /usr/local/include)
- 	
+# RKH
+if (WIN32 AND MINGW)
+  find_path(ICONV_INCLUDE_DIR iconv.h PATHS
+    /usr/i686-w64-mingw32/sys-root/mingw/include
+  )
+else()
+  find_path(ICONV_INCLUDE_DIR iconv.h PATHS
+    /usr/include
+    /usr/local/include)
+endif()
+
 find_file(ICONV_HEADER iconv.h
 	PATHS ${ICONV_INCLUDE_DIR} NO_DEFAULT_PATH)
 

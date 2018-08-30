@@ -25,6 +25,12 @@ set(TOP_SCRIPT_PATH "${TOP_CMAKE_PATH}/scripts")
 
 set(CMAKE_MODULE_PATH "${TOP_MODULE_PATH}")
 
+# RKH
+if(WIN32 AND MINGW)
+    set(Qt5Core_DIR "/usr/i686-w64-mingw32/sys-root/mingw/lib/cmake/Qt5Core/")
+    set(GNUWIN32_DIR "/cvs/lyx/lyx-dependencies/lyx-windows-deps-msvc2010/")
+endif()
+
 set(CMAKE_PROJECT_NAME ${LYX_PROJECT})
 
 message(STATUS)
@@ -304,7 +310,12 @@ include(LyXPaths)
 file(STRINGS "${TOP_SRC_DIR}/configure.ac" _config_lines)
 
 if(WIN32)
-	set(CMAKE_PREFIX_PATH Specify-path-to-Qt CACHE PATH "Used Qt version")
+    # RKH
+    if (MINGW)
+        set(CMAKE_PREFIX_PATH "/usr/i686-w64-mingw32/sys-root/mingw/lib/cmake/Qt5Core/" "/usr/i686-w64-mingw32/sys-root/mingw/lib/cmake/Qt5Widgets/")
+    else()
+        set(CMAKE_PREFIX_PATH Specify-path-to-Qt CACHE PATH "Used Qt version")
+    endif()
 	if(MSVC)
 		set(LYX_3RDPARTY_BUILD ON CACHE BOOL "Build 3rdparty libraries" FORCE)
 	endif()
@@ -793,17 +804,23 @@ if(LYX_NLS)
 	endif()
 endif()
 
-if(LYX_EXTERNAL_ICONV)
-  find_package(ICONV REQUIRED)
+# RKH
+if(WIN32 AND MINGW)
+    find_package(ICONV REQUIRED)
+    find_package(ZLIB REQUIRED)
 else()
-  add_subdirectory(3rdparty/libiconv)
-  set(HAVE_ICONV_CONST 1)
-endif()
+  if(LYX_EXTERNAL_ICONV)
+    find_package(ICONV REQUIRED)
+  else()
+    add_subdirectory(3rdparty/libiconv)
+    set(HAVE_ICONV_CONST 1)
+  endif()
 
-if(LYX_EXTERNAL_Z)
-  find_package(ZLIB REQUIRED)
-else()
-  add_subdirectory(3rdparty/zlib)
+  if(LYX_EXTERNAL_Z)
+    find_package(ZLIB REQUIRED)
+  else()
+    add_subdirectory(3rdparty/zlib)
+  endif()
 endif()
 
 if(LYX_USE_STD_REGEX)
@@ -998,7 +1015,7 @@ if (CMAKE_GENERATOR MATCHES Xcode)
 	ENDIF(XCODE_VERSION VERSION_LESS "5.0")
 ENDIF(CMAKE_GENERATOR MATCHES Xcode)
 
-if (WIN32 AND Qt5Core_FOUND)
+if (WIN32 AND NOT MINGW AND Qt5Core_FOUND)
 	set(Z_PREFIX 1)
 endif()
 

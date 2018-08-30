@@ -94,9 +94,14 @@ if (LYX_VLD)
 	lyx_add_info_files(VLD ${vld_files})
 endif()
 
-if(WIN32 AND NOT MINGW)
-	set(FILE_RC ${TOP_CMAKE_PATH}/lyx.rc)
-	message(STATUS "Using icon defined in resource file: ${FILE_RC}")
+if(WIN32)
+    if (MINGW)
+        set(FILE_RC_COMPILED ${TOP_CMAKE_PATH}/lyx.coff)
+        message(STATUS "Using icon defined in resource file: ${FILE_RC_COMPILED}")
+    else()
+        set(FILE_RC ${TOP_CMAKE_PATH}/lyx.rc)
+        message(STATUS "Using icon defined in resource file: ${FILE_RC}")
+    endif()
 endif()
 
 lyx_find_info_files(LyXInfoFiles ${TOP_SRC_DIR}/*)
@@ -133,6 +138,7 @@ target_link_libraries(${_lyx}
 	frontend_qt
 	graphics
 	support
+	${FILE_RC_COMPILED}
 	${MYTHESLIB_LIBRARY}
 	${ICONV_LIBRARY}
 	${LYX_QTMAIN_LIBRARY}

@@ -44,25 +44,48 @@ elseif(WIN32)
         set(runtime)
         if(LYX_XMINGW)
             execute_process(COMMAND ${CMAKE_CXX_COMPILER} -print-libgcc-file-name OUTPUT_VARIABLE GCC_LIBGCC OUTPUT_STRIP_TRAILING_WHITESPACE)
-            list(APPEND runtime /usr/${LYX_XMINGW}/lib/libwinpthread-1.dll)
         else()
             set(GCC_LIBGCC ${CMAKE_CXX_COMPILER})
         endif()
-        get_filename_component(MINGW_RUNTIME_PATH ${GCC_LIBGCC} PATH)        
+
+        # RKH
+        # get_filename_component(MINGW_RUNTIME_PATH ${GCC_LIBGCC} PATH)
+        set(MINGW_RUNTIME_PATH "/usr/i686-w64-mingw32/sys-root/mingw/bin")
         macro(add_runtime_dll _DLL)
             file(GLOB GCC_RUNTIME ${MINGW_RUNTIME_PATH}/${_DLL})
             list(APPEND runtime ${GCC_RUNTIME})
         endmacro()
+        add_runtime_dll(iconv.dll)
         add_runtime_dll(libgcc*.dll)
         add_runtime_dll(libstd*.dll)
         add_runtime_dll(libwin*.dll)
+        add_runtime_dll(libbz2-1.dll)
+        add_runtime_dll(libfreetype-6.dll)
+        add_runtime_dll(libglib-2.0-0.dll)
+        add_runtime_dll(libgraphite2.dll)
+        add_runtime_dll(libharfbuzz-0.dll)
+        add_runtime_dll(libicudt6*.dll)
+        add_runtime_dll(libicuin6*.dll)
+        add_runtime_dll(libicuuc6*.dll)
+        add_runtime_dll(libintl-8.dll)
+        add_runtime_dll(libjpeg-62.dll)
+        add_runtime_dll(libpcre-1.dll)
+        add_runtime_dll(libpcre2-16-0.dll)
+        add_runtime_dll(libpng16-16.dll)
+        add_runtime_dll(libtiff-5.dll)
+        add_runtime_dll(libwebp-7.dll)
+        add_runtime_dll(libwebpdemux-2.dll)
+        add_runtime_dll(zlib1.dll)
+
         if(NOT runtime)
             message(FATAL_ERROR "No mingw runtime found in ${MINGW_RUNTIME_PATH}")
         endif()
 
         if(LYX_USE_QT MATCHES "QT5")
             get_target_property(qmakebin Qt5::qmake IMPORTED_LOCATION)
-            get_filename_component(QT_BINARY_DIR ${qmakebin} PATH)
+            # RKH
+            # get_filename_component(QT_BINARY_DIR ${qmakebin} PATH)
+            set(QT_BINARY_DIR "/usr/i686-w64-mingw32/sys-root/mingw/bin")
             install(FILES
                 ${runtime}
                 ${QT_BINARY_DIR}/Qt5Core.dll
@@ -77,23 +100,32 @@ elseif(WIN32)
                 DESTINATION bin
                 CONFIGURATIONS Release)
             install(FILES
-                ${QT_BINARY_DIR}/../plugins/platforms/qminimal.dll
-                ${QT_BINARY_DIR}/../plugins/platforms/qwindows.dll
+                ${QT_BINARY_DIR}/../lib/qt5/plugins/platforms/qminimal.dll
+                ${QT_BINARY_DIR}/../lib/qt5/plugins/platforms/qwindows.dll
                 DESTINATION bin/platforms
                 CONFIGURATIONS Release)
             install(FILES
-                ${QT_BINARY_DIR}/../plugins/printsupport/windowsprintersupport.dll
+                ${QT_BINARY_DIR}/../lib/qt5/plugins/printsupport/windowsprintersupport.dll
                 DESTINATION bin/printsupport
                 CONFIGURATIONS Release)
             install(FILES
-                ${QT_BINARY_DIR}/../plugins/imageformats/qgif.dll
-                ${QT_BINARY_DIR}/../plugins/imageformats/qjpeg.dll
-                ${QT_BINARY_DIR}/../plugins/imageformats/qsvg.dll
-                ${QT_BINARY_DIR}/../plugins/imageformats/qico.dll
+                ${QT_BINARY_DIR}/../lib/qt5/plugins/imageformats/qgif.dll
+                ${QT_BINARY_DIR}/../lib/qt5/plugins/imageformats/qicns.dll
+                ${QT_BINARY_DIR}/../lib/qt5/plugins/imageformats/qico.dll
+                ${QT_BINARY_DIR}/../lib/qt5/plugins/imageformats/qjpeg.dll
+                ${QT_BINARY_DIR}/../lib/qt5/plugins/imageformats/qsvg.dll
+                ${QT_BINARY_DIR}/../lib/qt5/plugins/imageformats/qtga.dll
+                ${QT_BINARY_DIR}/../lib/qt5/plugins/imageformats/qtiff.dll
+                ${QT_BINARY_DIR}/../lib/qt5/plugins/imageformats/qwbmp.dll
+                ${QT_BINARY_DIR}/../lib/qt5/plugins/imageformats/qwebp.dll
                 DESTINATION bin/imageformats
                 CONFIGURATIONS Release)
             install(FILES
-                ${QT_BINARY_DIR}/../plugins/iconengines/qsvgicon.dll
+                ${QT_BINARY_DIR}/../lib/qt5/plugins/styles/qwindowsvistastyle.dll
+                DESTINATION bin/styles
+                CONFIGURATIONS Release)
+            install(FILES
+                ${QT_BINARY_DIR}/../lib/qt5/plugins/iconengines/qsvgicon.dll
                 DESTINATION bin/iconengines
                 CONFIGURATIONS Release)
         else()
