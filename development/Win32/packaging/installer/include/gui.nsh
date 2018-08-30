@@ -24,31 +24,6 @@ BrandingText " "
 !define MUI_WELCOMEFINISHPAGE_BITMAP "${SETUP_WIZARDIMAGE}"
 !define MUI_UNWELCOMEFINISHPAGE_BITMAP "${SETUP_WIZARDIMAGE}"
 
-Function CheckUpdateMiKTeX
-${if} $LatexInstalled != "MiKTeX"
-	#MessageBox MB_OK "No MiKTeX?"
-	Return
-${EndIf}
-${if} ${SETUPTYPE} == BUNDLE
-	Return
-${EndIf}
-
-!define MUI_PAGE_HEADER_TEXT "$(MikTeXUpdateHeader)"
-!define MUI_PAGE_HEADER_SUBTEXT "  "
-
-!include nsDialogs.nsh
-nsDialogs::Create 1018
-Pop $R0
-${If} $R0 == error
-    Abort
-${EndIf}
-
-${NSD_CreateLabel} 0 0 100% 60% "$(MiKTeXUpdateMsg)"
-Pop $R0
-nsDialogs::Show
-
-FunctionEnd
-
 #--------------------------------
 # Pages
 
@@ -60,7 +35,6 @@ FunctionEnd
 
 # Show the license.
 !insertmacro MUI_PAGE_LICENSE "${FILES_LICENSE}"
-Page custom CheckUpdateMiKTeX
 
 # Decision if it should be installed as admin or not
 !insertmacro MULTIUSER_PAGE_INSTALLMODE
