@@ -47,7 +47,7 @@ Section -ProgramFiles SecProgramFiles
   SetOutPath "$INSTDIR\bin"
   !insertmacro FileListLyXBin File "${FILES_LYX}\bin\"
   !insertmacro FileListQtBin File "${FILES_QT}\bin\"
-  !insertmacro FileListMSVC File "${FILES_MSVC}\"
+  !insertmacro FileListMinGW File "${FILES_LYX}\bin\"
   !insertmacro FileListNetpbmBin File "${FILES_NETPBM}\"
   !insertmacro FileListDTLBin File "${FILES_DTL}\"
   !insertmacro FileListRsvg File "${FILES_RSVG}\"
@@ -56,21 +56,24 @@ Section -ProgramFiles SecProgramFiles
   
   # Qt plugin DLLs
   SetOutPath "$INSTDIR\bin\imageformats"
-  !insertmacro FileListQtImageformats File "${FILES_QT}\plugins\imageformats\"
+  !insertmacro FileListQtImageformats File "${FILES_QT}\bin\imageformats\"
   SetOutPath "$INSTDIR\bin\iconengines"
-  !insertmacro FileListQtIconengines File "${FILES_QT}\plugins\iconengines\"
+  !insertmacro FileListQtIconengines File "${FILES_QT}\bin\iconengines\"
   SetOutPath "$INSTDIR\bin\platforms"
-  !insertmacro FileListQtPlatforms File "${FILES_QT}\plugins\platforms\"
+  !insertmacro FileListQtPlatforms File "${FILES_QT}\bin\platforms\"
+  SetOutPath "$INSTDIR\bin\styles"
+  !insertmacro FileListQtStyles File "${FILES_QT}\bin\styles\"
   
   # Resources
   SetOutPath "$INSTDIR"
   # recursively copy all files under Resources
   File /r "${FILES_LYX}\Resources"
+  File /r "${FILES_DEPS}\Resources"
   
   !if ${SETUPTYPE} == BUNDLE
    
-   # extract the MiKTeX installer
-   File /r "${FILES_LYX}\external"
+   # include the MiKTeX installer
+   File ${MiKTeXInstaller}
 
    # install MiKTeX if not already installed
    Call InstallMiKTeX # function from LaTeX.nsh
@@ -81,7 +84,8 @@ Section -ProgramFiles SecProgramFiles
   SetOutPath "$INSTDIR"
   # recursively copy all files under Python
   File /r "${FILES_PYTHON}"
-  # register .py files if necessary
+#FIXME We probably should not do this, as dicussed on the list.
+ # register .py files if necessary
   ReadRegStr $0 SHCTX "Software\Classes\Python.File\shell\open\command" ""
   ${if} $0 == "" # if nothing was found
    WriteRegStr SHCTX "Software\Classes\Python.File\shell\open\command" "" '"$INSTDIR\Python\python.exe" "%1" %*'
@@ -90,7 +94,7 @@ Section -ProgramFiles SecProgramFiles
    WriteRegStr SHCTX "Software\Classes\Python.File" "OnlyWithLyX" "Yes${APP_SERIES_KEY}" # special entry to test if they were registered by this LyX version
   ${endif}
   
-  # Compile all Pyton files to byte-code
+  # Compile all Python files to byte-code
   # The user using the scripts may not have write access
   FileOpen $PythonCompileFile "$INSTDIR\compilepy.py" w
   FileWrite $PythonCompileFile "import compileall$\r$\n"
@@ -129,10 +133,6 @@ Section -ProgramFiles SecProgramFiles
    StrCpy $GhostscriptPath "$INSTDIR\ghostscript\bin"
   ${endif}
   
-  # install eLyXer
-  SetOutPath "$INSTDIR\Python\Lib"
-  !insertmacro FileListeLyXer File "${FILES_ELYXER}\"
-   
   # install unoconv
   SetOutPath "$INSTDIR\Python\Lib"
   !insertmacro FileListUnoConv File "${FILES_UNOCONV}\"

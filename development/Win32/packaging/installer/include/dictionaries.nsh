@@ -73,25 +73,13 @@ Function DownloadHunspellDictionaries
   
   ${if} $DictCode == $R3
    StrCpy $String $String -2 # delete the linebreak characters at the end
-   # Download hunspell dictionaries,
-   # if first download repository is not available try the other ones listed in "DictionaryMirrors.txt"
-   FileOpen $R4 "$INSTDIR\Resources\DictionaryMirrors.txt" r
-   
-   ${For} $4 1 22 # there are 22 mirrors in the file
-    FileRead $R4 $Search # $Search is now the mirror
-    StrCpy $Search $Search -2 # delete the linebreak characters at the end
-    Push $R0
-    inetc::get /TIMEOUT=5000 "https://$Search.dl.sourceforge.net/project/lyxwininstaller/hunspell/$String" "$INSTDIR\Resources\dicts\$String" /END
-    Pop $R0
-    ${if} $R0 == "OK"
-     ${ExitFor}
-    ${endif}
-   ${Next}
-   
-   FileClose $R4
+   # Download hunspell dictionaries
+   Push $R0
+   inetc::get /RECEIVETIMEOUT=5000 "https://sourceforge.net/projects/lyxwininstaller/files/hunspell/$String" "$INSTDIR\Resources\dicts\$String" /END
+   Pop $R0
    # if download failed
    ${if} $R0 != "OK"
-    MessageBox MB_OK|MB_ICONEXCLAMATION "$(HunspellFailed)"
+    MessageBox MB_OK|MB_ICONEXCLAMATION "$(HunspellFailed): $R0"
     Goto abortinstall
    ${endif}
   ${endif} # end if $DictCode == $R3
@@ -99,8 +87,8 @@ Function DownloadHunspellDictionaries
  ${Next}
  FileClose $R5
 
-  abortinstall:
-  Delete "$INSTDIR\$String"
+ abortinstall:
+ Delete "$INSTDIR\$String"
 
 FunctionEnd
 
@@ -119,25 +107,13 @@ Function DownloadThesaurusDictionaries
   
   ${if} $ThesCode == $R3
    StrCpy $String $String -2 # delete the linebreak characters at the end
-   # Download thesaurus files,
-   # if first download repository is not available try the other ones listed in "DictionaryMirrors.txt"
-   FileOpen $R4 "$INSTDIR\Resources\DictionaryMirrors.txt" r
-   
-   ${For} $4 1 22 # there are 22 mirrors in the file
-    FileRead $R4 $Search # $Search is now the mirror
-    StrCpy $Search $Search -2 # delete the linebreak characters at the end
-    Push $R0
-    inetc::get /TIMEOUT=5000 "https://$Search.dl.sourceforge.net/project/lyxwininstaller/thesaurus/$String" "$INSTDIR\Resources\thes\$String" /END
-    Pop $R0
-    ${if} $R0 == "OK"
-     ${ExitFor}
-    ${endif}
-   ${Next}
-   
-   FileClose $R4
+   # Download thesaurus files
+   Push $R0
+   inetc::get /POPUP /RECEIVETIMEOUT=5000 "https://sourceforge.net/projects/lyxwininstaller/files/thesaurus/$String" "$INSTDIR\Resources\thes\$String" /END
+   Pop $R0
    # if download failed
    ${if} $R0 != "OK"
-    MessageBox MB_OK|MB_ICONEXCLAMATION "$(ThesaurusFailed)"
+    MessageBox MB_OK|MB_ICONEXCLAMATION "$(ThesaurusFailed): $R0"
     Goto abortinstall
    ${endif}
   ${endif} # end if $ThesCode == $R3
@@ -145,8 +121,8 @@ Function DownloadThesaurusDictionaries
  ${Next}
  FileClose $R5
 
-  abortinstall:
-  Delete "$INSTDIR\$String"
+ abortinstall:
+ Delete "$INSTDIR\$String"
 
 FunctionEnd
 

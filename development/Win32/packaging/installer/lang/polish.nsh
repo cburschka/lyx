@@ -108,3 +108,12 @@ ${LangFileString} SecUnPreferencesDescription 'Usuwa folder konfiguracji LyX$\'a
 						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
 						wszystkim użytkownikom.'
 ${LangFileString} SecUnProgramFilesDescription "Deinstalacja LyX i wszystkich jego komponentów."
+
+# MikTeX Update Stuff
+${LangFileString} MiKTeXUpdateMsg "W efekcie zmian w MiKTeX, instalacja wersji LyX starszej niż 2.2.3 może powodować częściową aktualizację, która uczyni MiKTeX niesprawnym.$\r$\n\
+$\r$\n\
+Jeżeli jeszcze tego nie uczyniłeś, zalecamy aktualizację MiKTeX do najnowszej wersji przed instalacją nowej wersji LyX.$\r$\n\
+$\r$\n\
+Teraz albo możesz kontynuować instalację lub przerwać, aby móc zaktualizować MiKTeX."
+
+${LangFileString} MiKTeXUpdateHeader "UWAGA: Zmiany w MiKTeX"

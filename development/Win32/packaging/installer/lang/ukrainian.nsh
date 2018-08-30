@@ -114,3 +114,12 @@ ${LangFileString} SecUnPreferencesDescription 'Вилучає теку з нал
 						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
 						для всіх користувачів.'
 ${LangFileString} SecUnProgramFilesDescription "Вилучити LyX і всі його компоненти."
+
+# MikTeX Update Stuff
+${LangFileString} MiKTeXUpdateMsg "Через зміни у MiKTeX встановлення версій LyX, випущених після версії 2.2.3, може спричинити часткове оновлення, яке зробить MiKTeX непридатним до користування.$\r$\n\
+$\r$\n\
+Якщо ви ще цього не зробили, рекомендуємо вам оновити MiKTeX до найсвіжішої версії до встановлення нової версії LyX.$\r$\n\
+$\r$\n\
+Тепер ви можете або продовжити встановлення LyX, або скасувати його для оновлення MiKTeX."
+
+${LangFileString} MiKTeXUpdateHeader "УВАГА: Зміни у MiKTeX"

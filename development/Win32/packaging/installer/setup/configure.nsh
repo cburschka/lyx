@@ -235,9 +235,6 @@ Section -ConfigureScript
 
   SetOutPath "$INSTDIR\Resources"
   
-  # ask to update MiKTeX
-  ${if} $LaTeXInstalled == "MiKTeX"
-   Call UpdateMiKTeX # function from latex.nsh
    # install all necessary packages at once because this is much faster then to install the packages one by one
    DetailPrint $(TEXT_CONFIGURE_LYX)
    ${if} $MultiUser.Privileges != "Admin"
@@ -255,7 +252,6 @@ Section -ConfigureScript
      nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--verbose" "--require=@$INSTDIR\Resources\Packages.txt"'
     ${endif}
    ${endif}
-  ${endif}
   
   DetailPrint $(TEXT_CONFIGURE_LYX)
   nsExec::ExecToLog '"$INSTDIR\Python\python.exe" "$INSTDIR\Resources\configure.py"'

@@ -9,13 +9,12 @@ Configuration of LyX installer
 #--------------------------------
 # File locations
 
-!define FILES_LICENSE "license.rtf"
-!define FILES_ICONS "icons"
+!define FILES_LICENSE "${FILES_GIT}\license.rtf"
+!define FILES_ICONS "${FILES_GIT}\icons"
 !define FILES_PDFVIEW "${FILES_DEPS}\bin"
 !define FILES_MSVC "${FILES_DEPS}\bin"
 !define FILES_PERL "${FILES_DEPS}\Perl"
 !define FILES_PYTHON "${FILES_DEPS}\Python"
-!define FILES_ELYXER "${FILES_DEPS}\bin"
 !define FILES_UNOCONV "${FILES_DEPS}\bin"
 !define FILES_IMAGEMAGICK "${FILES_DEPS}\imagemagick"
 !define FILES_GHOSTSCRIPT "${FILES_DEPS}\ghostscript"
@@ -64,8 +63,8 @@ Configuration of LyX installer
   !define APP_SETUPTYPE "Bundle"
 !endif
 
-!define APP_RUN "bin\lyx.exe"
-!define BIN_LYX "lyx.exe"
+!define BIN_LYX "LyX${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.exe"
+!define APP_RUN "bin\${BIN_LYX}"
 
 !define APP_REGKEY "Software\${APP_NAME}${APP_SERIES_KEY}" # like "LyX220"
 !define APP_REGKEY_SETUP "${APP_REGKEY}\Setup"

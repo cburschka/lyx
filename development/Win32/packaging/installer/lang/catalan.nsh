@@ -108,3 +108,14 @@ ${LangFileString} SecUnPreferencesDescription 'Suprimeix les carptes de configur
 						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
 						de tots els usuaris.'
 ${LangFileString} SecUnProgramFilesDescription "Desinstal·la el LyX i tots els seus components."
+
+# MikTeX Update Stuff
+${LangFileString} MiKTeXUpdateMsg "A causa dels canvis en MiKTeX, la instal·lació de versions de LyX més tard de 2.2.3 pot provocar una actualització parcial que no permet fer servir MiKTeX.$\r$\n\
+$\r$\n\
+Si encara no ho heu fet, us recomanem que actualitzeu MiKTeX a la versió més recent abans d'instal·lar una nova versió de LyX.$\r$\n\
+$\r$\n\
+Ara podeu continuar amb la instal·lació o cancel·lar-lo per poder actualitzar MiKTeX.$\r$\n\
+$\r$\n\
+(Ho sento per la traducció automatitzada.)"
+
+${LangFileString} MiKTeXUpdateHeader "ADVERTIMENT: canvis MiKTeX"

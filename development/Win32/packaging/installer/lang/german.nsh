@@ -114,3 +114,13 @@ ${LangFileString} SecUnPreferencesDescription 'Löscht LyXs Benutzereinstellunge
 						(Ordner $\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\")$\r$\n\
 						für Sie oder für alle Benutzer (wenn Sie Admin sind).'
 ${LangFileString} SecUnProgramFilesDescription "Deinstalliert LyX und all seine Komponenten."
+
+
+# MikTeX Update Stuff
+${LangFileString} MiKTeXUpdateMsg "Aufgrund von Änderungen in MikTeX kann es bei Installationen von LyX in Versionen neuer als 2.2.3 zu unvollständigen Aktualisierungen kommen, aufgrund derer MikTeX nicht mehr funktioniert.$\r$\n\
+$\r$\n\
+Falls Sie es noch nicht getan haben, empfehlen wir, dass Sie MikTeX aktualisieren, bevor Sie LyX installieren.$\r$\n\
+$\r$\n\
+Sie können nun entweder mit der Installation fortfahren oder hierabbrechen, um zunächst MikTeX zu aktualisieren."
+
+${LangFileString} MiKTeXUpdateHeader "ACHTUNG: MikTeX-Änderungen"

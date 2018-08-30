@@ -382,27 +382,3 @@ Function ConfigureTeXLive
  ExecWait '$PathLaTeX\tlmgr update --all'
  
 FunctionEnd
-
-# ------------------------------
-
-Function UpdateMiKTeX
- # asks to update MiKTeX
-
-  MessageBox MB_YESNO|MB_ICONINFORMATION "$(MiKTeXInfo)" /SD IDNO IDYES UpdateNow IDNO UpdateLater
-  UpdateNow:
-  # the update wizard is started by the miktex-update.exe
-  ${if} $MultiUser.Privileges != "Admin"
-  ${andif} $MultiUser.Privileges != "Power"
-   # call the non-admin version
-    ExecWait '"$PathLaTeX\internal\miktex-update.exe"'
-  ${else}
-   ${if} $MiKTeXUser != "HKCU" # call the admin version
-    ExecWait '"$PathLaTeX\internal\miktex-update_admin.exe"'
-   ${else}
-     ExecWait '"$PathLaTeX\internal\miktex-update.exe"'
-   ${endif}
-  ${endif}
-  UpdateLater:
-
-FunctionEnd
-
