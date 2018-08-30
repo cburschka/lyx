@@ -19,7 +19,7 @@
 #   (except when the preposition is part of a verb phrase, such as "Check In")
 # (http://library.gnome.org/devel/hig-book/stable/design-text-labels.html.en)
 
-Format 4
+Format 5
 
 Menuset
 
