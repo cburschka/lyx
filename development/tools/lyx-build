@@ -16,9 +16,24 @@ if [ -z "$EDITOR" ]; then EDITOR=vi; fi
 # Options to make, when we compile
 MAKEOPTS="-j4";
 
+PKGNUM="";
+while getopts ":m:p:" opt; do
+  case $opt in
+    m )   MAKEOPTS="$OPTARG";;
+    p )   PKGNUM="$OPTARG";;
+    \? )  echo "Unknown option $opt"; exit 1;;
+  esac
+done
+shift $(($OPTIND - 1));
+
 # Determine LyX version
 cd $SRCDIR/
 VERSION=$(head configure.ac | grep AC_INIT | perl -e 'while (<>) {m/AC_INIT\(LyX,([^,]+)/; print $1;}');
+VERSION_BASE="$VERSION";
+
+if [ -n "$PKGNUM" ]; then
+    VERSION="$VERSION-$PKGNUM";
+fi
 
 echo "This is version $VERSION.";
 echo -n "Ready to build source packages...";
@@ -41,6 +56,10 @@ if ! make lyxdist; then
 fi
 
 echo "Packages created:";
+if [ -n "$PKGNUM" ]; then
+    mv lyx-$VERSION_BASE.tar.gz lyx-$VERSION.tar.gz;
+    mv lyx-$VERSION_BASE.tar.xz lyx-$VERSION.tar.xz;
+fi
 cp -v lyx-$VERSION.tar.{gz,xz} $BASE;
 
 echo -n "Ready to build signatures...";
@@ -58,8 +77,8 @@ read
 rm -Rf $BASE/lyx-test/
 mkdir $BASE/lyx-test/
 cd $BASE/lyx-test/
-tar -zxvf $BASE/lyx-build/lyx-$VERSION.tar.gz >/dev/null
-if ! cd lyx-$VERSION; then
+tar -zxvf $BASE/lyx-build/lyx-$VERSION.tar.gz
+if ! cd lyx-$VERSION_BASE; then
   echo "Unable to enter build directory!";
   exit 1;
 fi
@@ -76,9 +95,9 @@ else
   exit 1;
 fi
 
-LASTNUM=$(echo $VERSION | sed -e 's/.*\.//');
-LAST=$(($LASTNUM - 1));
-FIRST=$(echo $VERSION | sed -e 's/[0-9]*$//');
+LASTNUM=$(echo $VERSION_BASE | sed -e 's/.*\.//');
+LAST=$((LASTNUM - 1));
+FIRST=$(echo $VERSION_BASE | sed -e 's/[0-9]*$//');
 ORIGINAL=${FIRST}0;
 LAST=$FIRST$LAST;
 
@@ -133,7 +152,7 @@ elif [ "$LASTNUM" = "2" ]; then
 fi
 NUM="$LASTNUM$NUMFIX";
 cat $BASE/lyx-export/development/tools/patch-preamble | \
-sed -e "s/VERSION/$VERSION/; s/ORIGINAL/$ORIGINAL/; s/LAST/$LAST/; s/NUM/$NUM/;" >patch-preamble;
+sed -e "s/VERSION/$VERSION_BASE/; s/ORIGINAL/$ORIGINAL/; s/LAST/$LAST/; s/NUM/$NUM/;" >patch-preamble;
 echo -n "Please verify the patch preamble...";
 read
 $EDITOR patch-preamble;
