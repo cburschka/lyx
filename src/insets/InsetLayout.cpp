@@ -590,6 +590,7 @@ void InsetLayout::readArgument(Lexer & lex)
 	arg.labelfont = inherit_font;
 	arg.is_toc_caption = false;
 	arg.passthru = PT_INHERITED;
+	arg.nodelims = false;
 	string nr;
 	lex >> nr;
 	bool const postcmd = prefixIs(nr, "post:");
