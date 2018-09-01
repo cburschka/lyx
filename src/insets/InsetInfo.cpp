@@ -182,11 +182,14 @@ docstring InsetInfoParams::getDate(string const iname, QDate const date) const
 	else if (iname == "ISO")
 		return qstring_to_ucs4(date.toString(Qt::ISODate));
 	else if (iname == "loclong")
-		return qstring_to_ucs4(loc.toString(date, toqstr(lang->dateFormat(0))));
+		return lang ? qstring_to_ucs4(loc.toString(date, toqstr(lang->dateFormat(0))))
+			    : _("No long date format (language unknown)!");
 	else if (iname == "locmedium")
-		return qstring_to_ucs4(loc.toString(date, toqstr(lang->dateFormat(1))));
+		return lang ? qstring_to_ucs4(loc.toString(date, toqstr(lang->dateFormat(1))))
+			    : _("No medium date format (language unknown)!");
 	else if (iname == "locshort")
-		return qstring_to_ucs4(loc.toString(date, toqstr(lang->dateFormat(2))));
+		return lang ? qstring_to_ucs4(loc.toString(date, toqstr(lang->dateFormat(2))))
+				: _("No short date format (language unknown)!");
 	else
 		return qstring_to_ucs4(loc.toString(date, toqstr(iname)));
 }
