@@ -279,7 +279,7 @@ public:
 
 	/// A cache for the bibfiles (including bibfiles of loaded child
 	/// documents), needed for appropriate update of natbib labels.
-	mutable FileNamePairList bibfiles_cache_;
+	mutable docstring_list bibfiles_cache_;
 
 	// FIXME The caching mechanism could be improved. At present, we have a
 	// cache for each Buffer, that caches all the bibliography info for that
@@ -2394,7 +2394,7 @@ void Buffer::invalidateBibinfoCache() const
 }
 
 
-FileNamePairList const & Buffer::getBibfiles(UpdateScope scope) const
+docstring_list const & Buffer::getBibfiles(UpdateScope scope) const
 {
 	// FIXME This is probably unnecessary, given where we call this.
 	// If this is a child document, use the master instead.
@@ -2420,7 +2420,7 @@ BiblioInfo const & Buffer::bibInfo() const
 }
 
 
-void Buffer::registerBibfiles(FileNamePairList const & bf) const
+void Buffer::registerBibfiles(const docstring_list & bf) const
 {
 	// We register the bib files in the master buffer,
 	// if there is one, but also in every single buffer,
@@ -2430,11 +2430,34 @@ void Buffer::registerBibfiles(FileNamePairList const & bf) const
 		tmp->registerBibfiles(bf);
 
 	for (auto const & p : bf) {
-		FileNamePairList::const_iterator temp =
+		docstring_list::const_iterator temp =
 			find(d->bibfiles_cache_.begin(), d->bibfiles_cache_.end(), p);
 		if (temp == d->bibfiles_cache_.end())
 			d->bibfiles_cache_.push_back(p);
 	}
+}
+
+
+static map<docstring, FileName> bibfileCache;
+
+FileName Buffer::getBibfilePath(docstring const & bibid) const
+{
+	map<docstring, FileName>::const_iterator it =
+		bibfileCache.find(bibid);
+	if (it != bibfileCache.end()) {
+		// i.e., bibfileCache[bibid]
+		return it->second;
+	}
+
+	string texfile = changeExtension(to_utf8(bibid), "bib");
+	// note that, if the filename can be found directly from the path,
+	// findtexfile will just return a FileName object for that path.
+	FileName file(findtexfile(texfile, "bib"));
+	if (file.empty())
+		file = FileName(makeAbsPath(texfile, filePath()));
+
+	bibfileCache[bibid] = file;
+	return bibfileCache[bibid];
 }
 
 
@@ -2453,11 +2476,9 @@ void Buffer::checkIfBibInfoCacheIsValid() const
 		return;
 
 	// compare the cached timestamps with the actual ones.
-	FileNamePairList const & bibfiles_cache = getBibfiles();
-	FileNamePairList::const_iterator ei = bibfiles_cache.begin();
-	FileNamePairList::const_iterator en = bibfiles_cache.end();
-	for (; ei != en; ++ ei) {
-		FileName const fn = ei->second;
+	docstring_list const & bibfiles_cache = getBibfiles();
+	for (auto const & bf : bibfiles_cache) {
+		FileName const fn = getBibfilePath(bf);
 		time_t lastw = fn.lastModified();
 		time_t prevw = d->bibfile_status_[fn];
 		if (lastw != prevw) {
@@ -2478,10 +2499,17 @@ void Buffer::reloadBibInfoCache(bool const force) const
 		return;
 	}
 
-	checkIfBibInfoCacheIsValid();
-	if (d->bibinfo_cache_valid_ && !force)
-		return;
+	if (!force) {
+		checkIfBibInfoCacheIsValid();
+		if (d->bibinfo_cache_valid_)
+			return;
+	}
 
+	// re-read file locations when this info changes
+	// FIXME Is this sufficient? Or should we also force that
+	// in some other cases? If so, then it is easy enough to
+	// add the following line in some other places.
+	bibfileCache.clear();
 	d->bibinfo_.clear();
 	FileNameList checkedFiles;
 	collectBibKeys(checkedFiles);
@@ -3197,7 +3225,7 @@ string const Buffer::prepareFileNameForLaTeX(string const & name,
 
 
 vector<docstring> const Buffer::prepareBibFilePaths(OutputParams const & runparams,
-						FileNamePairList const bibfilelist,
+						docstring_list const & bibfilelist,
 						bool const add_extension) const
 {
 	// If we are processing the LaTeX file in a temp directory then
@@ -3219,7 +3247,7 @@ vector<docstring> const Buffer::prepareBibFilePaths(OutputParams const & runpara
 	bool found_space = false;
 
 	for (auto const & bit : bibfilelist) {
-		string utf8input = to_utf8(bit.first);
+		string utf8input = to_utf8(bit);
 		string database =
 			prepareFileNameForLaTeX(utf8input, ".bib", runparams.nice);
 		FileName try_in_file =
@@ -3228,7 +3256,7 @@ vector<docstring> const Buffer::prepareBibFilePaths(OutputParams const & runpara
 		// If the file has not been found, try with the real file name
 		// (it might come from a child in a sub-directory)
 		if (!not_from_texmf) {
-			try_in_file = bit.second;
+			try_in_file = getBibfilePath(bit);
 			if (try_in_file.isReadableFile()) {
 				// Check if the file is in texmf
 				FileName kpsefile(findtexfile(changeExtension(utf8input, "bib"), "bib", true));
@@ -4770,7 +4798,7 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 	Buffer const * const master = masterBuffer();
 	DocumentClass const & textclass = master->params().documentClass();
 
-	FileNamePairList old_bibfiles;
+	docstring_list old_bibfiles;
 	// Do this only if we are the top-level Buffer. We also need to account
 	// for the case of a previewed child with ignored parent here.
 	if (master == this && !d->ignore_parent) {
@@ -4834,7 +4862,7 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 		return;
 
 	// if the bibfiles changed, the cache of bibinfo is invalid
-	FileNamePairList new_bibfiles = d->bibfiles_cache_;
+	docstring_list new_bibfiles = d->bibfiles_cache_;
 	// this is a trick to determine whether the two vectors have
 	// the same elements.
 	sort(new_bibfiles.begin(), new_bibfiles.end());

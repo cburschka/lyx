@@ -70,7 +70,6 @@ class WorkAreaManager;
 namespace support {
 class DocFileName;
 class FileName;
-class FileNamePairList;
 } // namespace support
 
 namespace graphics {
@@ -417,7 +416,7 @@ public:
 	 *  output in the respective BibTeX/Biblatex macro
 	 */
 	std::vector<docstring> const prepareBibFilePaths(OutputParams const &,
-				    support::FileNamePairList const bibfilelist,
+				    const docstring_list & bibfilelist,
 				    bool const extension = true) const;
 
 	/** Returns the path where a local layout file lives.
@@ -765,7 +764,9 @@ public:
 	bool areChangesPresent() const;
 	void updateChangesPresent() const;
 	///
-	void registerBibfiles(support::FileNamePairList const & bf) const;
+	void registerBibfiles(docstring_list const & bf) const;
+	///
+	support::FileName getBibfilePath(docstring const & bibid) const;
 
 private:
 	friend class MarkAsExporting;
@@ -784,7 +785,7 @@ private:
 	void checkIfBibInfoCacheIsValid() const;
 	/// Return the list with all bibfiles in use (including bibfiles
 	/// of loaded child documents).
-	support::FileNamePairList const &
+	docstring_list const &
 		getBibfiles(UpdateScope scope = UpdateMaster) const;
 	///
 	void collectChildren(ListOfBuffers & children, bool grand_children) const;
