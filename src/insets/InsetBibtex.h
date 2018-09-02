@@ -17,10 +17,10 @@
 namespace lyx {
 
 class BiblioInfo;
+class docstring_list;
 
 namespace support {
 	class FileName;
-	class FileNamePairList;
 } // namespace support
 
 /** Used to insert BibTeX's information
@@ -33,7 +33,7 @@ public:
 	~InsetBibtex();
 
 	///
-	support::FileNamePairList getBibFiles() const;
+	docstring_list getBibFiles() const;
 	///
 	bool addDatabase(docstring const &);
 	///
@@ -78,9 +78,6 @@ public:
 	//@}
 
 private:
-	/// look up the path to the file using TeX
-	static support::FileName
-		getBibTeXPath(docstring const & filename, Buffer const & buf);
 	///
 	void editDatabases() const;
 	///

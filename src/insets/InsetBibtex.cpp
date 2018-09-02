@@ -37,6 +37,7 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
+#include "support/docstring_list.h"
 #include "support/ExceptionMessage.h"
 #include "support/FileNameList.h"
 #include "support/filetools.h"
@@ -60,7 +61,6 @@ namespace os = support::os;
 InsetBibtex::InsetBibtex(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p)
 {
-	buffer().invalidateBibfileCache();
 	buffer().removeBiblioTempFiles();
 }
 
@@ -71,7 +71,6 @@ InsetBibtex::~InsetBibtex()
 		/* We do not use buffer() because Coverity believes that this
 		 * may throw an exception. Actually this code path is not
 		 * taken when buffer_ == 0 */
-		buffer_-> invalidateBibfileCache();
 		buffer_->removeBiblioTempFiles();
 	}
 }
@@ -116,7 +115,6 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 		cur.recordUndo();
 		setParams(p);
-		buffer().invalidateBibfileCache();
 		buffer().removeBiblioTempFiles();
 		cur.forceBufferUpdate();
 		break;
@@ -166,7 +164,7 @@ void InsetBibtex::editDatabases() const
 	vector<docstring>::const_iterator it = bibfilelist.begin();
 	vector<docstring>::const_iterator en = bibfilelist.end();
 	for (; it != en; ++it) {
-		FileName const bibfile = getBibTeXPath(*it, buffer());
+		FileName const bibfile = buffer().getBibfilePath(*it);
 		theFormats().edit(buffer(), bibfile,
 		     theFormats().getFormatFromFile(bibfile));
 	}
@@ -377,30 +375,9 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-support::FileNamePairList InsetBibtex::getBibFiles() const
+docstring_list InsetBibtex::getBibFiles() const
 {
-	FileName path(buffer().filePath());
-	support::PathChanger p(path);
-
-	// We need to store both the real FileName and the way it is entered
-	// (with full path, rel path or as a single file name).
-	// The latter is needed for biblatex's central bibfile macro.
-	support::FileNamePairList vec;
-
-	vector<docstring> bibfilelist = getVectorFromString(getParam("bibfiles"));
-	vector<docstring>::const_iterator it = bibfilelist.begin();
-	vector<docstring>::const_iterator en = bibfilelist.end();
-	for (; it != en; ++it) {
-		FileName const file = getBibTeXPath(*it, buffer());
-
-		if (!file.empty())
-			vec.push_back(make_pair(*it, file));
-		else
-			LYXERR0("Couldn't find " + to_utf8(*it) + " in InsetBibtex::getBibFiles()!");
-	}
-
-	return vec;
-
+	return getVectorFromString(getParam("bibfiles"));
 }
 
 namespace {
@@ -673,11 +650,13 @@ void InsetBibtex::parseBibTeXFiles(FileNameList & checkedFiles) const
 
 	BiblioInfo keylist;
 
-	support::FileNamePairList const files = getBibFiles();
-	support::FileNamePairList::const_iterator it = files.begin();
-	support::FileNamePairList::const_iterator en = files.end();
-	for (; it != en; ++ it) {
-		FileName const bibfile = it->second;
+	docstring_list const files = getBibFiles();
+	for (auto const & bf : files) {
+		FileName const bibfile = buffer().getBibfilePath(bf);
+		if (bibfile.empty()) {
+			LYXERR0("Unable to find path for " << bf << "!");
+			continue;
+		}
 		if (find(checkedFiles.begin(), checkedFiles.end(), bibfile) != checkedFiles.end())
 			// already checked this one. Skip.
 			continue;
@@ -691,7 +670,6 @@ void InsetBibtex::parseBibTeXFiles(FileNameList & checkedFiles) const
 		VarMap strings;
 
 		while (ifs) {
-
 			ifs.get(ch);
 			if (!ifs)
 				break;
@@ -847,18 +825,6 @@ void InsetBibtex::parseBibTeXFiles(FileNameList & checkedFiles) const
 	} //< for loop over files
 
 	buffer().addBiblioInfo(keylist);
-}
-
-
-FileName InsetBibtex::getBibTeXPath(docstring const & filename, Buffer const & buf)
-{
-	string texfile = changeExtension(to_utf8(filename), "bib");
-	// note that, if the filename can be found directly from the path,
-	// findtexfile will just return a FileName object for that path.
-	FileName file(findtexfile(texfile, "bib"));
-	if (file.empty())
-		file = FileName(makeAbsPath(texfile, buf.filePath()));
-	return file;
 }
 
 
