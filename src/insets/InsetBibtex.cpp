@@ -59,7 +59,22 @@ namespace os = support::os;
 
 InsetBibtex::InsetBibtex(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p)
-{}
+{
+	buffer().invalidateBibfileCache();
+	buffer().removeBiblioTempFiles();
+}
+
+
+InsetBibtex::~InsetBibtex()
+{
+	if (isBufferLoaded()) {
+		/* We do not use buffer() because Coverity believes that this
+		 * may throw an exception. Actually this code path is not
+		 * taken when buffer_ == 0 */
+		buffer_-> invalidateBibfileCache();
+		buffer_->removeBiblioTempFiles();
+	}
+}
 
 
 ParamInfo const & InsetBibtex::findInfo(string const & /* cmdName */)
@@ -101,6 +116,8 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 		cur.recordUndo();
 		setParams(p);
+		buffer().invalidateBibfileCache();
+		buffer().removeBiblioTempFiles();
 		cur.forceBufferUpdate();
 		break;
 	}
@@ -360,15 +377,15 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-FileNamePairList InsetBibtex::getBibFiles() const
+support::FileNamePairList InsetBibtex::getBibFiles() const
 {
 	FileName path(buffer().filePath());
-	PathChanger p(path);
+	support::PathChanger p(path);
 
 	// We need to store both the real FileName and the way it is entered
 	// (with full path, rel path or as a single file name).
 	// The latter is needed for biblatex's central bibfile macro.
-	FileNamePairList vec;
+	support::FileNamePairList vec;
 
 	vector<docstring> bibfilelist = getVectorFromString(getParam("bibfiles"));
 	vector<docstring>::const_iterator it = bibfilelist.begin();
@@ -383,6 +400,7 @@ FileNamePairList InsetBibtex::getBibFiles() const
 	}
 
 	return vec;
+
 }
 
 namespace {
@@ -655,9 +673,9 @@ void InsetBibtex::parseBibTeXFiles(FileNameList & checkedFiles) const
 
 	BiblioInfo keylist;
 
-	FileNamePairList const files = getBibFiles();
-	FileNamePairList::const_iterator it = files.begin();
-	FileNamePairList::const_iterator en = files.end();
+	support::FileNamePairList const files = getBibFiles();
+	support::FileNamePairList::const_iterator it = files.begin();
+	support::FileNamePairList::const_iterator en = files.end();
 	for (; it != en; ++ it) {
 		FileName const bibfile = it->second;
 		if (find(checkedFiles.begin(), checkedFiles.end(), bibfile) != checkedFiles.end())
@@ -890,11 +908,6 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 		features.addCSSSnippet("div.bibtexentry { margin-left: 2em; text-indent: -2em; }\n"
 			"span.bibtexlabel:before{ content: \"[\"; }\n"
 			"span.bibtexlabel:after{ content: \"] \"; }");
-}
-
-
-void InsetBibtex::updateBuffer(ParIterator const &, UpdateType) {
-	buffer().registerBibfiles(getBibFiles());
 }
 
 

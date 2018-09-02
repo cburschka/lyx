@@ -29,6 +29,8 @@ class InsetBibtex : public InsetCommand {
 public:
 	///
 	InsetBibtex(Buffer *, InsetCommandParams const &);
+	///
+	~InsetBibtex();
 
 	///
 	support::FileNamePairList getBibFiles() const;
@@ -54,8 +56,6 @@ public:
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
 	              size_t max_length = INT_MAX) const;
-	///
-	void updateBuffer(ParIterator const &, UpdateType);
 	///
 	void collectBibKeys(InsetIterator const &, support::FileNameList &) const;
 	///
