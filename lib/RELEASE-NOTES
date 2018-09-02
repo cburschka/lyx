@@ -82,6 +82,8 @@
 
 !!Caveats when upgrading from earlier versions to 2.4.x
 
+* Autotools monolithic build option for building LyX binaries was removed,
+  for compilation speedup use parallel building on multiple cores instead.
 
 !! If upgrading from a LyX version before 2.3.0
 
