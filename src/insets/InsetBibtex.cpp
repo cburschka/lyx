@@ -925,7 +925,7 @@ void InsetBibtex::updateBuffer(ParIterator const &, UpdateType)
 				string() : to_ascii(params()["encoding"]);
 	if (buffer().params().bibEncoding() != enc) {
 		buffer().params().setBibEncoding(enc);
-		buffer().reloadBibInfoCache(true);
+		buffer().invalidateBibinfoCache();
 	}
 }
 
