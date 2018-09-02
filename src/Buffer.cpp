@@ -4727,9 +4727,8 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 	DocumentClass const & textclass = master->params().documentClass();
 
 	FileNamePairList old_bibfiles;
-	// Do this only if we are the top-level Buffer. We also need to account
-	// for the case of a previewed child with ignored parent here.
-	if (master == this && !d->ignore_parent) {
+	// do this only if we are the top-level Buffer
+	if (master == this) {
 		textclass.counters().reset(from_ascii("bibitem"));
 		reloadBibInfoCache();
 		// we will re-read this cache as we go through, but we need
