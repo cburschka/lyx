@@ -2520,7 +2520,7 @@ void Buffer::addBibTeXInfo(docstring const & key, BibTeXInfo const & bin) const
 	bi[key] = bin;
 
 	if (parent() != 0) {
-		BiblioInfo & masterbi = parent()->d->bibinfo_;
+		BiblioInfo & masterbi = masterBuffer()->d->bibinfo_;
 		masterbi[key] = bin;
 	}
 }
