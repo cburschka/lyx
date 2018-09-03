@@ -38,6 +38,8 @@ public:
 	///
 	void infoize(odocstream & os) const;
 	///
+	MathClass mathClass() const;
+	///
 	bool isScriptable() const;
 	///
 	void validate(LaTeXFeatures & features) const;

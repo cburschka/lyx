@@ -381,6 +381,20 @@ void InsetMathScript::drawT(TextPainter & pain, int x, int y) const
 }
 
 
+// FIXME: See InsetMathSymbol::takesLimits, which seems to attempt the
+// same in a hardcoded way. takeLimits use is currently commented out in
+// InsetMathScript::metrics. It seems that the mathop test is general
+// enough, but only time will tell.
+bool InsetMathScript::allowsLimits() const
+{
+	if (nuc().empty())
+		return false;
+	// Only makes sense for insets of mathop class
+	if (nuc().back()->mathClass() != MC_OP)
+		return false;
+	return true;
+}
+
 
 bool InsetMathScript::hasLimits() const
 {
@@ -391,8 +405,9 @@ bool InsetMathScript::hasLimits() const
 		return false;
 
 	// we can only display limits if the nucleus wants some
-	if (nuc().empty())
+	if (!allowsLimits())
 		return false;
+	// FIXME: this is some hardcoding done in InsetMathSymbol::metrics.
 	if (!nuc().back()->isScriptable())
 		return false;
 
@@ -751,6 +766,9 @@ void InsetMathScript::doDispatch(Cursor & cur, FuncRequest & cmd)
 	//LYXERR("InsetMathScript: request: " << cmd);
 
 	if (cmd.action() == LFUN_MATH_LIMITS) {
+		// only when nucleus allows this
+		if (!allowsLimits())
+			return;
 		cur.recordUndoInset();
 		if (!cmd.argument().empty()) {
 			if (cmd.argument() == "limits")
@@ -774,15 +792,19 @@ bool InsetMathScript::getStatus(Cursor & cur, FuncRequest const & cmd,
 				FuncStatus & flag) const
 {
 	if (cmd.action() == LFUN_MATH_LIMITS) {
-		if (!cmd.argument().empty()) {
-			if (cmd.argument() == "limits")
-				flag.setOnOff(limits_ == 1);
-			else if (cmd.argument() == "nolimits")
-				flag.setOnOff(limits_ == -1);
-			else
-				flag.setOnOff(limits_ == 0);
-		}
-		flag.setEnabled(true);
+		// only when nucleus allows this
+		if (allowsLimits()) {
+			if (!cmd.argument().empty()) {
+				if (cmd.argument() == "limits")
+					flag.setOnOff(limits_ == 1);
+				else if (cmd.argument() == "nolimits")
+					flag.setOnOff(limits_ == -1);
+				else
+					flag.setOnOff(limits_ == 0);
+			}
+			flag.setEnabled(true);
+		} else
+			flag.setEnabled(false);
 		return true;
 	}
 

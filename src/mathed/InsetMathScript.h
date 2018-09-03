@@ -140,6 +140,8 @@ private:
 	/// shifts the superscript to the right, and a negative value shifts the
 	/// subscript to the left.
 	int nker(BufferView const * bv) const;
+	/// can one change how scripts are drawn?
+	bool allowsLimits() const;
 	/// where do we have to draw the scripts?
 	bool hasLimits() const;
 	/// clean up empty cells and return true if a cell has been deleted.

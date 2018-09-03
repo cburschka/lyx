@@ -55,11 +55,17 @@ bool InsetMathDecoration::upper() const
 }
 
 
+MathClass InsetMathDecoration::mathClass() const
+{
+	if (key_->name == "overbrace" || key_->name == "underbrace")
+		return MC_OP;
+	return MC_ORD;
+}
+
+
 bool InsetMathDecoration::isScriptable() const
 {
-	return
-			key_->name == "overbrace" ||
-			key_->name == "underbrace";
+	return mathClass() == MC_OP;
 }
 
 
