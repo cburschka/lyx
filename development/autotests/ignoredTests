@@ -127,3 +127,11 @@ check_load/export/latex/.*
 lyx2lyx/export/latex/.*
 # don't check export to other LyX versions or HTML
 export/export/latex.*(lyx..|xhtml)
+
+Sublabel: noluatex, noxetex
+#! Missing number, treated as zero.
+# in copernicus.cls:199
+# \ifnum\pdfoutput=\z@
+# Seems, like only latex and pdflatex compilations work
+export/templates/copernicus_(dvi3|pdf4|pdf5)_(texF|systemF)
+export/templates/copernicus_lyx(16|21|22)
