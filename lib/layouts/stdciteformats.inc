@@ -54,16 +54,17 @@ CiteFormat default
 	!quotetitle "%title%"
 	!emphtitle {!<i>!}%title%{!</i>!}
 	!emphjournal {!<i>!}{%journal%[[%journal%]][[{%journaltitle%[[%journaltitle%]]}]]}{!</i>!}
-	!location {%address%[[%address%: ]][[{%location%[[%location%: ]]}]]}
+	!locpub {%publisher%[[{%address%[[%address%: ]][[{%location%[[%location%: ]]}]]}%publisher%, ]][[{%address%[[%address%, ]][[{%location%[[%location%, ]]}]]}]]}
+	!locinst {%school%[[{%address%[[%address%: ]][[{%location%[[%location%: ]]}]]}%school%, ]][[{%institution%[[{%address%[[%address%: ]][[{%location%[[%location%: ]]}]]}%institution%, ]][[{%address%[[%address%, ]][[{%location%[[%location%, ]]}]]}]]}]]}
 
 	#
 	# Entry types. Note that final punctuation will be added later, if needed.
 	#
-	!insomething %fullnames:author%, %!quotetitle%, %B_in%{%fullbynames:editor%[[ %fullbynames:editor%, %!makeed%,]]} {!<i>!}%booktitle%{!</i>!}%!volnum%{%edition%[[ %edition%]]} (%!location%%publisher%, %year%)%!pages%{%note%[[. %note%]]}
+	!insomething %fullnames:author%, %!quotetitle%, %B_in%{%fullbynames:editor%[[ %fullbynames:editor%, %!makeed%,]]} {!<i>!}%booktitle%{!</i>!}%!volnum%{%edition%[[ %edition%]]} (%!locpub%%year%)%!pages%{%note%[[. %note%]]}
 
 	article %fullnames:author%, %!quotetitle%, %!emphjournal% {%volume%[[ %volume%{%number%[[, %number%]]}]]} (%year%)%!pages%{%note%[[. %note%]]}
 
-	!booklike %!authoredit%%!emphtitle%%!volnum%{%edition%[[ %edition%]]} (%!location%%publisher%, %year%){%note%[[. %note%]]}
+	!booklike %!authoredit%%!emphtitle%%!volnum%{%edition%[[ %edition%]]} (%!locpub%%year%){%note%[[. %note%]]}
 	book %!booklike%
 	collection %!booklike%
 	proceedings %!booklike%
@@ -71,7 +72,7 @@ CiteFormat default
 	incollection %!insomething%
 	inproceedings %!insomething%
 
-	!theses %fullnames:author%, %title% (%!location%{%school%[[%school%]][[%institution%]]}, %year%){%note%[[. %note%]]}
+	!theses %fullnames:author%, %title% (%!locinst%%year%){%note%[[. %note%]]}
 	thesis %!theses%
 	phdthesis %!theses%
 	mastersthesis %!theses%
