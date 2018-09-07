@@ -1724,8 +1724,8 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_SET_COLOR: {
-		string lyx_name;
-		string const x11_name = split(to_utf8(cmd.argument()), lyx_name, ' ');
+		string const lyx_name = cmd.getArg(0);
+		string const x11_name = cmd.getArg(1);
 		if (lyx_name.empty() || x11_name.empty()) {
 			if (current_view_)
 				current_view_->message(
