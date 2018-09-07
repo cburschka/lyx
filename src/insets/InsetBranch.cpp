@@ -402,7 +402,10 @@ void InsetBranchParams::write(ostream & os) const
 
 void InsetBranchParams::read(Lexer & lex)
 {
-	lex >> branch;
+	// There may be a space in branch name
+	// if we wanted to use lex>>, the branch name should be properly in quotes
+	lex.eatLine();
+	branch = lex.getDocString();
 	lex >> "inverted" >> inverted;
 }
 
