@@ -24,15 +24,13 @@ Section -ProgramFiles SecProgramFiles
    StrCpy $INSTDIR "$INSTDIR\${APP_DIR}"
   ${endif}
 
- !if ${SETUPTYPE} != BUNDLE
-  # abort the installation if no LaTeX was found but should be used
-  ${if} $PathLaTeX == ""
-  ${andif} $State == "0"
-   SetOutPath $TEMP # to be able to delete the $INSTDIR
-   RMDir /r $INSTDIR
-   Abort
-  ${endif}
- !endif # end if != BUNDLE
+ # abort the installation if no LaTeX was found but should be used
+ ${if} $PathLaTeX == ""
+ ${andif} $State == "0"
+  SetOutPath $TEMP # to be able to delete the $INSTDIR
+  RMDir /r $INSTDIR
+  Abort
+ ${endif}
 
   # Install and register the core LyX files
   
@@ -69,16 +67,6 @@ Section -ProgramFiles SecProgramFiles
   # recursively copy all files under Resources
   File /r "${FILES_LYX}\Resources"
   File /r "${FILES_DEPS}\Resources"
-  
-  !if ${SETUPTYPE} == BUNDLE
-   
-   # include the MiKTeX installer
-   File ${MiKTeXInstaller}
-
-   # install MiKTeX if not already installed
-   Call InstallMiKTeX # function from LaTeX.nsh
-   
-  !endif # end if BUNDLE
   
   # Python
   SetOutPath "$INSTDIR"

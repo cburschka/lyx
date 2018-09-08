@@ -52,10 +52,8 @@ BrandingText " "
 !define MUI_STARTMENUPAGE_DEFAULTFOLDER "${APP_NAME} ${APP_SERIES_NAME}"
 !insertmacro MUI_PAGE_STARTMENU ${APP_NAME} $StartmenuFolder
 
-!if ${SETUPTYPE} != BUNDLE
- # Select latex.exe manually
- Page custom LatexFolder LatexFolder_LeaveFunction
-!endif # end if != BUNDLE
+# Select latex.exe manually
+Page custom LatexFolder LatexFolder_LeaveFunction
 
 # Watch the components being installed.
 !insertmacro MUI_PAGE_INSTFILES

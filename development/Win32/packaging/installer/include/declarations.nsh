@@ -34,11 +34,6 @@ Configuration of LyX installer
 !define DOWNLOAD_LATEX "http://mirrors.ctan.org/systems/win32/miktex/setup/${SETUPFILE_LATEX}"
 
 #--------------------------------
-# Locations of setup files for components (for bundled setup)
-
-!define INSTALL_LATEX "${SETUPFILE_LATEX}"
-
-#--------------------------------
 # Names and version
 
 !define APP_NAME "LyX"
@@ -57,10 +52,9 @@ Configuration of LyX installer
 !define APP_WIKI "https://wiki.lyx.org"
 !define APP_WIKI_INFO "${APP_NAME} Wiki"
 !define APP_COPYRIGHT "${APP_NAME} is Copyright © 1995 by Matthias Ettrich, 1995-${COPYRIGHT_YEAR} by the ${APP_NAME} Team"
+
 !if ${SETUPTYPE} == STANDARD
   !define APP_SETUPTYPE "Standard"
-!else if ${SETUPTYPE} == BUNDLE
-  !define APP_SETUPTYPE "Bundle"
 !endif
 
 !define BIN_LYX "LyX${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.exe"
@@ -85,9 +79,6 @@ Configuration of LyX installer
 
 !if ${SETUPTYPE} == STANDARD
   !define SETUP_EXE ${ExeFile}
-!else if ${SETUPTYPE} == BUNDLE
-  !define SETUP_EXE ${BundleExeFile}
-  !define BUNDLESETUP_LATEX
 !endif
 
 !define SETUP_ICON "${FILES_ICONS}\lyx.ico"

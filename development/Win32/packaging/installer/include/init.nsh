@@ -44,16 +44,6 @@ FunctionEnd
 #--------------------------------
 # visible installer sections
 
-Section "!${APP_NAME}" SecCore
- SectionIn RO
- !if ${SETUPTYPE} == BUNDLE
-  # if no TeX was found MiKTeX will be installed which requires space
-  !if $PathLaTeX == ""
-   AddSize 1020000 # size in KB
-  !endif
- !endif
-SectionEnd
-
 Section "$(SecFileAssocTitle)" SecFileAssoc
  StrCpy $CreateFileAssociations "true" 
 SectionEnd
@@ -588,7 +578,6 @@ SectionGroupEnd
 
 # Section descriptions
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-!insertmacro MUI_DESCRIPTION_TEXT ${SecCore} "$(SecCoreDescription)"
 !insertmacro MUI_DESCRIPTION_TEXT ${SecFileAssoc} "$(SecFileAssocDescription)"
 !insertmacro MUI_DESCRIPTION_TEXT ${SecDesktop} "$(SecDesktopDescription)"
 !insertmacro MUI_DESCRIPTION_TEXT ${SecDictionaries} "$(SecDictionariesDescription)"
@@ -608,22 +597,6 @@ Function .onInit
     MessageBox MB_OK|MB_ICONSTOP "${APP_NAME} ${APP_VERSION} requires Windows 7 or newer." /SD IDOK
     Quit
   ${endif}
-  
-  # check that another LyX installer is not currently running
-  !if ${SETUPTYPE} == STANDARD
-   FindProcDLL::FindProc "${BundleExeFile}"
-   ${if} $R0 == "1"
-    MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)" /SD IDOK
-    Abort
-   ${endif}
-  !endif
-  !if ${SETUPTYPE} == BUNDLE
-   FindProcDLL::FindProc "${ExeFile}"
-   ${if} $R0 == "1"
-    MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)" /SD IDOK
-    Abort
-   ${endif}
-  !endif
   
   # Check that LyX is not currently running
   FindProcDLL::FindProc "${BIN_LYX}"
@@ -713,13 +686,6 @@ Function .onInit
   ${EndIf}
  
   Call SearchExternal
-  
-  #!if ${SETUPTYPE} == BUNDLE
-  # # don't let the installer sections appear when the programs are already installed
-  # ${if} $PathBibTeXEditor != ""
-  #  SectionSetText 3 "" # hides the corresponding uninstaller section, ${SecInstJabRef}
-  # ${endif}
-  #!endif
   
   # select sections of already installed spell-checker dictionaries, make them read-only
   # and set the necessary size to 0 bytes

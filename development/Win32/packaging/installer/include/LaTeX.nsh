@@ -8,10 +8,6 @@ Handling of LaTeX distributions
 #
 # - LaTeXActions (checks if MiKTeX or TeXLive is installed)
 #
-# - InstallMiKTeX (installs MiKTeX if not already installed),
-#   only for bunlde installer, uses:
-#    LaTeXCheck # function from LyXUtils.nsh
-#
 # - ConfigureMiKTeX
 #   (installs the LaTeX class files that are delivered with LyX,
 #    a Perl interpreter for splitindex and pdfcrop
@@ -19,8 +15,6 @@ Handling of LaTeX distributions
 #
 # - ConfigureTeXLive
 #   (installs the LaTeX class files that are delivered with LyX)
-#
-# - UpdateMiKTeX (asks to update MiKTeX)
 
 # ---------------------------------------
 
@@ -204,50 +198,6 @@ Function LaTeXActions
 
 FunctionEnd
 
-# -------------------------------------------
-
-!if ${SETUPTYPE} == BUNDLE
-
- Function InstallMiKTeX
-  # installs MiKTeX if not already installed
-  
-  ${if} $PathLaTeX == ""
-   # launch MiKTeX's installer
-   MessageBox MB_OK|MB_ICONINFORMATION "$(LatexInfo)" /SD IDOK
-   ${if} $MultiUser.Privileges != "Admin"
-   ${andif} $MultiUser.Privileges != "Power"
-    # call the non-admin version
-    ExecWait ${MiKTeXInstall}
-   ${else}
-    ExecWait "${MiKTeXInstall} --shared"
-   ${endif}
-   # test if MiKTeX is installed
-   Call LaTeXActions
-   ${if} ${RunningX64}
-    SetRegView 32 # we install the 32bit version of MiKTeX
-   ${endif}
-   ${if} $PathLaTeX != ""
-    # special entry that it was installed together with LyX
-    # so that we can later uninstall it together with LyX
-    ${if} $MiKTeXUser == "HKCU"
-     WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
-    ${else}
-     WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
-    ${endif}
-    StrCpy $LaTeXInstalled "MiKTeX"
-    StrCpy $MiKTeXVersion ${MiKTeXDeliveredVersion}
-   ${else}
-    MessageBox MB_OK|MB_ICONSTOP "$(LatexError1)" /SD IDOK
-    SetOutPath $TEMP # to be able to delete the $INSTDIR
-    RMDir /r $INSTDIR
-    Abort
-   ${endif} # endif $PathLaTeX != ""
-  ${endif}
-
-  FunctionEnd
-
-!endif # endif ${SETUPTYPE} == BUNDLE
-
 # ------------------------------
 
 Function ConfigureMiKTeX
@@ -276,83 +226,28 @@ Function ConfigureMiKTeX
    # files in Resources\tex
    SetOutPath "$PathLaTeXLocal\tex\latex\lyx"
    CopyFiles /SILENT "$INSTDIR\Resources\tex\*.*" "$PathLaTeXLocal\tex\latex\lyx"
+
+   # refresh MiKTeX's file name database (do this always to assure everything is in place)
+   ${if} $MultiUser.Privileges != "Admin"
+   ${andif} $MultiUser.Privileges != "Power"
+    # call the non-admin version
+    nsExec::ExecToLog "$PathLaTeX\initexmf --update-fndb"
+   ${else}
+    ${if} $MiKTeXUser != "HKCU" # call the admin version
+     nsExec::ExecToLog "$PathLaTeX\initexmf --admin --update-fndb"
+    ${else}
+     nsExec::ExecToLog "$PathLaTeX\initexmf --update-fndb"
+    ${endif}
+   ${endif}
+   Pop $UpdateFNDBReturn # Return value
   ${endif}
   
   # install a Perl interpreter for splitindex and pdfcrop
   SetOutPath "$INSTDIR"
   # recursively copy all files under Perl
   File /r "${FILES_PERL}"
-  
-  # refresh MiKTeX's file name database (do this always to assure everything is in place)
-  ${if} $MultiUser.Privileges != "Admin"
-  ${andif} $MultiUser.Privileges != "Power"
-   # call the non-admin version
-   nsExec::ExecToLog "$PathLaTeX\initexmf --update-fndb"
-  ${else}
-   ${if} $MiKTeXUser != "HKCU" # call the admin version
-    nsExec::ExecToLog "$PathLaTeX\initexmf --admin --update-fndb"
-   ${else}
-    nsExec::ExecToLog "$PathLaTeX\initexmf --update-fndb"
-   ${endif}
-  ${endif}
-  Pop $UpdateFNDBReturn # Return value
-  
- ${endif} # end if $PathLaTeX != ""
-  
-  # enable package installation without asking (1 = Yes, 0 = No, 2 = Ask me first) and
-  # if there is not package repository (MiKTeX's primary package repository) then set it
-  ${if} ${RunningX64}
-  ${andif} $Is64bit == "true"
-   SetRegView 64
-  ${else}
-   SetRegView 32
-  ${endif}
-  ${if} $MiKTeXUser == "HKCU" # if only for current user
-   # if AutoInstall is set to "0" we can assume that this was set purposly since the default is "1"
-   ReadRegStr $2 HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall"
-   ${if} $2 == "0"
-    Goto NoAutoInstall
-   ${endif}
-   WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1"
-   ReadRegStr $1 HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository"
-   ${if} $1 == ""
-    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}" 
-    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote"
-   ${endif}
-  ${else}
-   # if AutoInstall is set to "0" we can assume that this was set purposly since the default is "1"
-   ReadRegStr $2 HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall"
-   ${if} $2 == "0"
-    Goto NoAutoInstall
-   ${endif}
-   WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1"
-   ReadRegStr $1 HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository"
-   ${if} $1 == ""
-    WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}"
-    WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote"
-   ${endif}
-   # we need to state that missing packages should be installed for all users too
-   WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoAdmin" "t"
-  ${endif}
-  NoAutoInstall:
-  
-  # update MiKTeX's package file list
-  ${if} $MultiUser.Privileges != "Admin"
-  ${andif} $MultiUser.Privileges != "Power"
-   # call the non-admin version
-   nsExec::ExecToLog "$PathLaTeX\mpm.exe --update-fndb"
-  ${else}
-   ${if} $MiKTeXUser != "HKCU" # call the admin version
-    nsExec::ExecToLog "$PathLaTeX\mpm.exe --admin --update-fndb"
-   ${else}
-    nsExec::ExecToLog "$PathLaTeX\mpm.exe --update-fndb"
-   ${endif}
-  ${endif}
-  Pop $UpdateFNDBReturn # Return value
-  
-  # we must return to 32bit because LyX is a 32bit application
-  SetRegView 32
-  
+
+  ${endif} # end if $PathLaTeX != ""  
 FunctionEnd
 
 # ------------------------------
@@ -372,13 +267,9 @@ Function ConfigureTeXLive
    # files in Resources\tex
    SetOutPath "$PathLaTeXLocal\texmf-dist\tex\latex\lyx"
    CopyFiles /SILENT "$INSTDIR\Resources\tex\*.*" "$PathLaTeXLocal\texmf-dist\tex\latex\lyx"
+   # update TeXLive's package file list
+   ExecWait '$PathLaTeX\texhash'
   ${endif}
  ${endif}
- 
- # update TeXLive's package file list
- ExecWait '$PathLaTeX\texhash'
- 
- # update TeXLive
- ExecWait '$PathLaTeX\tlmgr update --all'
  
 FunctionEnd

@@ -40,9 +40,7 @@ Var Pointer
 Var PSVPath
 Var PythonPath
 Var Search
-!if ${SETUPTYPE} != BUNDLE
- Var State
-!endif
+Var State
 Var SVGPath
 Var StartmenuFolder
 Var String

@@ -14,7 +14,7 @@ These typically need to be modified for each LyX release
 !define APP_VERSION_REVISION 1
 !define APP_VERSION_EMERGENCY "" # use "1" for an emergency release of LyX otherwise ""
 !define APP_EMERGENCY_DOT "" # use "." for an emergency release of LyX otherwise ""
-!define APP_VERSION_BUILD 2 # Start with 1 for the installer releases of each version
+!define APP_VERSION_BUILD 3 # Start with 1 for the installer releases of each version
 
 !define APP_VERSION "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION}${APP_EMERGENCY_DOT}${APP_VERSION_EMERGENCY}" # Version to display
 
@@ -27,9 +27,6 @@ These typically need to be modified for each LyX release
 
 !ifndef ExeFile
   !define ExeFile "${APP_NAME}-${APP_VERSION_MAJOR}${APP_VERSION_MINOR}${APP_VERSION_REVISION}${APP_VERSION_EMERGENCY}-Installer-${APP_VERSION_BUILD}.exe"
-!endif
-!ifndef BundleExeFile
-  !define BundleExeFile "${APP_NAME}-${APP_VERSION_MAJOR}${APP_VERSION_MINOR}${APP_VERSION_REVISION}${APP_VERSION_EMERGENCY}-Bundle-${APP_VERSION_BUILD}.exe"
 !endif
 
 #--------------------------------
@@ -49,11 +46,4 @@ These typically need to be modified for each LyX release
 
 !define MiKTeXRepo "ftp://ftp.tu-chemnitz.de/pub/tex/systems/win32/miktex/tm/packages/"
 
-!define MiKTeXDeliveredVersion "2.9"
 !define ImageMagickVersion "7.0.7"
-
-# definitions for the Complete installer
-!if ${SETUPTYPE} == BUNDLE
- !define MiKTeXInstall "$INSTDIR\basic-miktex-2.9.6813-x64.exe"
- !define MiKTeXInstaller "${FILES_BASE}\basic-miktex-2.9.6813-x64.exe"
-!endif
