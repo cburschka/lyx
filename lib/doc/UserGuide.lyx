@@ -52,6 +52,7 @@
 \begin_modules
 customHeadersFooters
 enumitem
+logicalmkup
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -145,6 +146,7 @@ enumitem
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller"
 \author 5863208 "ab"
 \end_header
 
@@ -13594,6 +13596,13 @@ Modern
 
 \begin_layout Subsection
 Using Different Character Styles
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:charstyles"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -13618,20 +13627,194 @@ Text Style
 
 \begin_layout Standard
 As we've already seen, \SpecialChar LyX
- automatically changes the character style for certain
- paragraph environments.
- \SpecialChar LyX
+ automatically changes the style for certain paragraph
+ environments.
+ In this section, we will explain how the style of selected text passages
+ can by changed.
+ This is where we meet the concept of 
+\emph on
+character styles
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+By default, \SpecialChar LyX
  supports two character styles, 
-\family sans
+\emph on
 Emphasized
-\family default
+\emph default
  and 
+\noun on
+Noun
+\noun default
+.
+ These are 
+\emph on
+builtin
+\emph default
+, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., available with all document classes.
+ On top of that, some document classes and modules provide 
+\emph on
+custom character styles
+\emph default
+ for specific purposes.
+ We describe both types of characters styles in a minute.
+\end_layout
+
+\begin_layout Standard
+Before we do that, though, allow us just a few words of what we mean by
+ 
+\emph on
+character styles
+\emph default
+ in contrast to 
+\emph on
+text properties
+\emph default
+.
+ Traditional word processors used to focus on so-called 
+\emph on
+formal markup
+\emph default
+: if you wanted to emphasize a word, you selected it and chose e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+bold style
+\begin_inset Quotes erd
+\end_inset
+
+ — you customized the 
+\emph on
+text properties
+\emph default
+.
+ Modern processors, \SpecialChar LyX
+ among them, encourage the use of 
+\emph on
+semantic 
+\emph default
+(or 
+\emph on
+logical
+\emph default
+) 
+\emph on
+markup
+\emph default
+ instead (although formal markup is still possible; see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Fine-Tuning-with-the"
+
+\end_inset
+
+).
+ Rather than fiddling with 
+\emph on
+text properties
+\emph default
+, they encourage the use of 
+\emph on
+character 
+\emph default
+(or 
+\emph on
+text
+\emph default
+)
+\emph on
+ styles
+\emph default
+, who are defined with regard to their function (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., 
+\begin_inset Quotes els
+\end_inset
+
+emphasize
+\begin_inset Quotes ers
+\end_inset
+
+), not their form (
+\begin_inset Quotes els
+\end_inset
+
+bold
+\begin_inset Quotes ers
+\end_inset
+
+).
+ There are many advantages of the semantic approach.
+ To begin with, using functional categories keeps you thinking about why
+ you are actually marking up, if your markup is consistent and systematic,
+ and whether this particular markup makes sense.
+ On a more practical level, it is easy to change the appearance if needed.
+ Consider the case when you are writing a paper and set all proper names
+ in 
+\shape smallcaps
+small caps
+\shape default
+ via formal markup.
+ Now if the publisher requests to have names appear differently (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in normal font, or ALL-CAPS), you would have to change any single occurrence.
+ With a semantic markup (such as 
+\noun on
+noun
+\noun default
+; see below), you'd just need to change the definition of 
 \family sans
 Noun
 \family default
+ once and for all.
+ It's a ten second change (if you know how to change the \SpecialChar LaTeX
+ definition).
+ Moreover, semantic markup even allows you to produce different versions
+ of a document, using different markup semantics.
+\end_layout
+
+\begin_layout Standard
+With that in mind, we now turn to the semantic character styles that are
+ provided by \SpecialChar LyX
 .
- You can activate both of these styles via key bindings, the menus, and
- the toolbar.
+\end_layout
+
+\begin_layout Subsubsection
+Builtin Character Styles
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Builtin-Character-Styles"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The two builtin character styles can be activated via the 
+\family sans
+Text Style
+\family default
+ dialog, key bindings, and the toolbar.
 \end_layout
 
 \begin_layout Standard
@@ -13657,6 +13840,37 @@ use the key binding
 \begin_inset Info
 type  "shortcut"
 arg   "font-noun"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+use the 
+\family sans
+Text Style
+\family default
+ dialog (
+\begin_inset Info
+type  "menu"
+arg   "dialog-show character"
+\end_inset
+
+ or 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+) as described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Fine-Tuning-with-the"
+
 \end_inset
 
 
@@ -13694,6 +13908,18 @@ Matthias Ettrich
 \end_layout
 
 \begin_layout Standard
+By default, 
+\family sans
+Noun
+\family default
+ is producing text in 
+\shape smallcaps
+Small Caps
+\shape default
+, but the definition can be changed.
+\end_layout
+
+\begin_layout Standard
 A more widely used character style is the 
 \family sans
 Emphasized
@@ -13726,14 +13952,47 @@ arg   "font-emph"
 
 \end_layout
 
+\begin_layout Itemize
+use the 
+\family sans
+Text Style
+\family default
+ dialog (
+\begin_inset Info
+type  "menu"
+arg   "dialog-show character"
+\end_inset
+
+ or 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+) as described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Fine-Tuning-with-the"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 Normally the 
 \family sans
 Emphasized
 \family default
  style is equivalent to an italic font but some document classes or \SpecialChar LaTeX
--packages
- use a different font.
+ packages
+ use a different font, and you can also customize it yourself by changing
+ the \SpecialChar LaTeX
+ definition.
 \end_layout
 
 \begin_layout Standard
@@ -13760,23 +14019,26 @@ It's also a warning in addition to an example.
 \end_layout
 
 \begin_layout Standard
-You can always reset to the default font using the key binding 
+In contrast to the custom character styles, the builtin styles are represented
+ only as font changes and integrated in the 
+\family sans
+Text Style
+\family default
+ dialog.
+ You can therefore always reset to the default font using the key binding
+ 
 \begin_inset Info
 type  "shortcut"
 arg   "font-default"
 \end_inset
 
- or the dialog 
-\family sans
-Edit\SpecialChar menuseparator
-Text
-\begin_inset space ~
+ or that dialog (
+\begin_inset Info
+type  "menu"
+arg   "dialog-show character"
 \end_inset
 
-Style\SpecialChar menuseparator
-Customized
-\family default
- (
+ or 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show character"
@@ -13785,12 +14047,150 @@ arg   "dialog-show character"
 ).
 \end_layout
 
+\begin_layout Subsubsection
+Custom Character Styles
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Custom-Character-Styles"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Custom character styles can be provided by the document class, a module
+ (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Modules"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), or local layout settings (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Local-Layout"
+
+\end_inset
+
+).
+ As the two builtin styles, they provide 
+\emph on
+semantic
+\emph default
+ markup for specific functions.
+ For instance, \SpecialChar LyX
+ ships a 
+\emph on
+Linguistics
+\emph default
+ module that provides, among other things, some custom character styles
+ to markup linguistic levels: 
+\emph on
+expressions
+\emph default
+, 
+\noun on
+concepts
+\noun default
+, and 
+\begin_inset Quotes els
+\end_inset
+
+meanings
+\begin_inset Quotes ers
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+These styles can be found, if available, in the 
+\family sans
+Edit\SpecialChar menuseparator
+Text Style
+\family default
+ menu.
+\end_layout
+
+\begin_layout Standard
+For the purpose of demonstration, we have loaded in this document the optional
+ module 
+\family sans
+Logical Markup
+\family default
+ that replicates and extends the two builtin styles.
+ By example of the emphasized style, we can see the differences in look
+ and feel (although the result in the typeset output is the same): while
+ the builtin 
+\emph on
+emphasized style
+\emph default
+ appears as normal font change, the custom character style 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+Emph
+\end_layout
+
+\end_inset
+
+ appears as an inset, with a label below that identifies its semantics.
+ This is the way all custom character styles look and feel like.
+ For instance, the three others from the module we have loaded are: 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+Code
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Strong
+status open
+
+\begin_layout Plain Layout
+Strong
+\end_layout
+
+\end_inset
+
+, and 
+\begin_inset Flex Noun
+status open
+
+\begin_layout Plain Layout
+Noun
+\end_layout
+
+\end_inset
+
+.
+ Note that custom character styles might (as in the example) or might not
+ emulate on screen their formal appearance.
+\end_layout
+
 \begin_layout Subsection
-Fine-Tuning with the 
+Tweaking Text Properties with the 
 \family sans
 Text Style
 \family default
- dialog
+ Dialog
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Fine-Tuning-with-the"
@@ -13811,9 +14211,9 @@ Text Style
 \end_layout
 
 \begin_layout Standard
-There are always occasions when you will need to do some fine-tuning; so
- \SpecialChar LyX
- gives you a way to create a custom character style.
+There are always occasions when you will need to do some formal fine-tuning;
+ so \SpecialChar LyX
+ gives you a way to customize the properties of text passages.
  For example, an academic journal or a corporation may have a style sheet
  requiring a sans-serif font be used in certain situations.
  Also, writers sometimes use a different font to offset a character's thoughts
@@ -13821,8 +14221,20 @@ There are always occasions when you will need to do some fine-tuning; so
 \end_layout
 
 \begin_layout Standard
-Before we document how to use custom character style, we want to issue a
- warning yet again: Don't overuse character styles! 
+If there are no custom character styles provided by the document class or
+ a module for this purpose (which is, as written above, generally the better
+ way of handling such issues), you often find yourself wanting to quickly
+ tweak the properties of the respective text passages.
+ That's where 
+\emph on
+formal markup
+\emph default
+ comes in as a last resort.
+\end_layout
+
+\begin_layout Standard
+Before we document how to tweak the text properties, we want to issue a
+ warning yet again: Don't overuse that! 
 \begin_inset Newline newline
 \end_inset
 
@@ -13831,16 +14243,12 @@ Documents that overuse different fonts and sizes are not easy to read and
 \end_layout
 
 \begin_layout Standard
-To use custom character styles, open the 
-\family sans
-Edit\SpecialChar menuseparator
-Text
-\begin_inset space ~
+To tweak text properties, open the 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show character"
 \end_inset
 
-Style\SpecialChar menuseparator
-Customized
-\family default
  dialog or press the toolbar button 
 \begin_inset Info
 type  "icon"
@@ -13848,8 +14256,8 @@ arg   "dialog-show character"
 \end_inset
 
 .
- There are several boxes in this dialog, each corresponding to a different
- font property that you can choose.
+ There are several combo boxes in this dialog, each corresponding to a different
+ text property that you can choose.
  You can choose an option for one of these properties, or select 
 \family sans
 No
@@ -13861,7 +14269,7 @@ change
 , which keeps the current state of that property.
  The item 
 \family sans
-Reset
+Default
 \family default
  will reset the property to whatever is the default.
  You can use this to reset attributes across a bunch of different paragraph
@@ -13869,7 +14277,7 @@ Reset
 \end_layout
 
 \begin_layout Standard
-The font properties, and their options (in addition to 
+The text properties, and their options (in addition to 
 \family sans
 No
 \begin_inset space ~
@@ -13879,7 +14287,7 @@ change
 \family default
  and 
 \family sans
-Reset
+Default
 \family default
 ) are:
 \end_layout
@@ -13967,6 +14375,135 @@ arg   "font-typewriter"
 )
 \end_layout
 
+\begin_layout Standard
+The general differences of these families are:
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Serif
+\family default
+ fonts use characters with serifs.
+ These are the small 
+\begin_inset Quotes eld
+\end_inset
+
+appendices
+\begin_inset Quotes erd
+\end_inset
+
+ at the ends of the strokes that form the character.
+ The following example shows the difference:
+\begin_inset Newline newline
+\end_inset
+
+text with serifs
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+text without serifs
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+Serifs facilitate quick and easy reading.
+ These fonts are therefore used as default (named 
+\family sans
+roman
+\family default
+).
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Sans serif
+\family default
+ is not recommended for use as a base type.
+ This font type is therefore often only used for headings and short texts.
+ We use it in this document to highlight menu names.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Typewriter
+\family default
+ is a so called 
+\begin_inset Quotes eld
+\end_inset
+
+monospaced
+\begin_inset Quotes erd
+\end_inset
+
+ font, which means every character has the same width; the 
+\begin_inset Quotes eld
+\end_inset
+
+i
+\begin_inset Quotes erd
+\end_inset
+
+ is as wide as the 
+\begin_inset Quotes eld
+\end_inset
+
+m
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Here is an example
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+no 
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+typewriter text
+\family default
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+For more on phantoms see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Phantom-Space"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+no typewriter text
+\end_layout
+
 \end_deeper
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
@@ -14042,11 +14579,8 @@ Italic
 This
 \shape default
  
-\family sans
 \shape italic
-i
-\family default
-s the Italic font shape
+is the Italic font shape
 \shape default
 \emph on
 .
@@ -14092,14 +14626,10 @@ This is the Small caps font shape
 Color
 \family default
  Alters the text color.
- Note that not all DVI-viewers are able to display colors.
+ Note that not all DVI viewers are able to display colors.
  Besides 
 \family sans
-No
-\begin_inset space ~
-\end_inset
-
-color
+(Without)
 \family default
 , which means that the document default color set in 
 \family sans
@@ -14115,7 +14645,7 @@ Main
 
 text
 \family default
- is used, you can choose between 
+ is used, you can select 
 \family sans
 Black
 \family default
@@ -14212,9 +14742,9 @@ Language
 \family default
  This is used to mark regions of text as having a different language from
  the language of the document.
- Text marked in this way will be underlined in blue to indicate the change
- (only within \SpecialChar LyX
-).
+ Text marked in this way will be underlined in the \SpecialChar LyX
+ workarea in blue to
+ indicate the change.
 \begin_inset Newline newline
 \end_inset
 
@@ -14242,8 +14772,8 @@ reference "sec:Spellchecking"
 Size
 \family default
  Alters the size of the font.
- You will find no numerical values here; all possible sizes are actually
- proportional to the document font size.
+ You won't find numerical values here; all possible sizes are actually proportio
+nal to the document font size.
  Once again, you don't feed \SpecialChar LyX
  the details, but a general description of what
  you want to do.
@@ -14610,9 +15140,18 @@ yet again
 \labelwidthstring 00.00.0000
 
 \family sans
-Misc
+Underlining
 \family default
- Here you can change a few other things at the character level.
+ Here you can have text passages being underlined.
+ Avoid using underlining if you can! It is a hangover from the typewriter
+ days, when you could not change fonts.
+ One no longer needs to emphasize text by underscoring characters.
+ This is only possible in \SpecialChar LyX
+ because some people 
+\emph on
+may
+\emph default
+ need it in order to follow style sheets for journal submissions.
  Options are:
 \end_layout
 
@@ -14621,37 +15160,20 @@ Misc
 \labelwidthstring 00.00.0000
 
 \family sans
-Emph
+(Without)
 \family default
- 
-\emph on
-This is text with emphasize on
-\emph default
-.
- This might seem like the same as 
-\shape italic
-Italic
-\shape default
-, but it is actually a bit different.
- Emphasized is a 
-\emph on
-logical
-\emph default
- attribute.
- That means every document class can define its own font used for emphasized
- text.
- Normally this font is equal to italic.
+ Don't use underlining.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
-Underbar
+Single
 \family default
  
 \bar under
-This is text with Underbar on.
+This is text with Single underlining on.
 
 \bar default
  (key binding 
@@ -14667,16 +15189,6 @@ arg   "font-underline"
 \end_inset
 
 
-\family default
-Avoid using underbar if you can! It is a hangover from the typewriter days,
- when you could not change fonts.
- One no longer needs to emphasize text by underscoring characters.
- This is only possible in \SpecialChar LyX
- because some people 
-\emph on
-may
-\emph default
- need it in order to follow style sheets for journal submissions.
 \end_layout
 
 \begin_layout Labeling
@@ -14684,14 +15196,10 @@ may
 
 \family sans
 Double
-\begin_inset space ~
-\end_inset
-
-underbar
 \family default
  
 \uuline on
-This is text with Double underbar on.
+This is text with Double underlining on.
 
 \uuline default
  (key binding 
@@ -14700,12 +15208,7 @@ type  "shortcut"
 arg   "font-underunderline"
 \end_inset
 
-)
-\begin_inset Newline newline
-\end_inset
-
-As we just warned you against using underbar, you can imagine what we think
- about double underbar.
+).
 \end_layout
 
 \begin_layout Labeling
@@ -14713,14 +15216,10 @@ As we just warned you against using underbar, you can imagine what we think
 
 \family sans
 Wavy
-\begin_inset space ~
-\end_inset
-
-underbar
 \family default
  
 \uwave on
-This is text with Wavy underbar on.
+This is text with Wavy underlining on.
 
 \uwave default
  (key binding 
@@ -14737,19 +15236,35 @@ Use this only if a journal absolutely insists on it.
  Keep antinausea pills handy.
 \end_layout
 
+\end_deeper
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
-Strike
-\begin_inset space ~
-\end_inset
+Strikethrough
+\family default
+ lets you strike-through text passages in two ways:
+\end_layout
 
-out
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+(Without)
+\family default
+ Don't use strikethrough.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+Single
 \family default
  
 \strikeout on
-This is text with Strikeout on.
+This is text with Single strikethrough on.
 
 \strikeout default
  (key binding 
@@ -14770,15 +15285,15 @@ This is frequently used to indicate an older version of text that has been
 \labelwidthstring 00.00.0000
 
 \family sans
-Cross
+With
 \begin_inset space ~
 \end_inset
 
-out
+/
 \family default
  
 \xout on
-This is text with Cross out on.
+This is text with /-strikethrough on.
 \xout default
 
 \begin_inset Newline newline
@@ -14787,357 +15302,87 @@ This is text with Cross out on.
 This is used to make text hardly readable.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-Noun
-\family default
- 
-\noun on
-This is text with Noun on.
-
-\noun default
- Like 
-\family sans
-Emph
-\family default
-, this is a logical attribute.
- Normally it's equivalent to 
-\family sans
-Small
-\begin_inset space ~
-\end_inset
-
-Caps
-\family default
-.
-\end_layout
-
 \end_deeper
 \begin_layout Standard
-So you have a huge number of combinations to choose from.
- Once you have chosen a new character style via the 
-\family sans
-Edit\SpecialChar menuseparator
-Text
-\begin_inset space ~
-\end_inset
-
-Style\SpecialChar menuseparator
-Customized
-\family default
- (
-\begin_inset Info
-type  "icon"
-arg   "dialog-show character"
-\end_inset
-
-) dialog, the settings are saved.
- You can activate them by using the toolbar button 
-\begin_inset Info
-type  "icon"
-arg   "textstyle-apply"
-\end_inset
-
-.
- The button lets you apply your custom character style even when the dialog
- isn't visible.
-\end_layout
-
-\begin_layout Standard
-To completely reset the character style to the default, use 
-\begin_inset Info
-type  "shortcut"
-arg   "font-default"
-\end_inset
-
-.
- If you want to toggle only those properties that you have just changed
- (suppose you just set the shape to 
-\begin_inset Quotes eld
-\end_inset
-
-slanted
-\begin_inset Quotes erd
-\end_inset
-
- and the series to 
-\begin_inset Quotes eld
-\end_inset
-
-bold
-\begin_inset Quotes erd
-\end_inset
-
-), set the 
-\family sans
-Toggle
-\begin_inset space ~
-\end_inset
-
-all
-\family default
- switch and press 
-\family sans
-Apply
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-You should also know something about the differences between the three main
- font types 
-\family sans
-serif
-\family default
-, 
-\family sans
-sans
-\begin_inset space ~
-\end_inset
-
-serif
-\family default
-, and 
-\family sans
-typewriter
-\family default
-:
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Typewriter
-\family default
- is a so called 
-\begin_inset Quotes eld
-\end_inset
-
-monospaced
-\begin_inset Quotes erd
-\end_inset
-
- font, which means every character has the same width; the 
-\begin_inset Quotes eld
-\end_inset
-
-i
-\begin_inset Quotes erd
-\end_inset
-
- is as wide as the 
-\begin_inset Quotes eld
-\end_inset
-
-m
-\begin_inset Quotes erd
-\end_inset
-
-.
- Here is an example
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Phantom HPhantom
-status open
-
-\begin_layout Plain Layout
-no 
-\end_layout
-
-\end_inset
-
-
-\family typewriter
-typewriter text
-\family default
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-For more on phantoms see section
+In addition to all the formal markup described above, the dialog also provides
+ you access to the two builtin semantic character styles (see section
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Phantom-Space"
+reference "subsec:Builtin-Character-Styles"
 
 \end_inset
 
+):
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Emphasized:
+\family default
+ 
+\emph on
+This is text with emphasize on
+\emph default
 .
 \end_layout
 
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-no typewriter text
-\end_layout
-
 \begin_layout Itemize
 
 \family sans
-Serif
+Noun:
 \family default
- fonts use characters with serifs.
- These are the small 
-\begin_inset Quotes eld
-\end_inset
-
-appendices
-\begin_inset Quotes erd
-\end_inset
-
- at the ends of the strokes that form the character.
- The following example shows the difference:
-\begin_inset Newline newline
-\end_inset
-
-text with serifs
-\begin_inset Newline newline
-\end_inset
-
-
-\family sans
-text without serifs
-\family default
-
-\begin_inset Newline newline
-\end_inset
-
-Serifs facilitate quick and easy reading.
- These fonts are therefore used as default (named 
-\family sans
-roman
-\family default
-).
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Sans serif
-\family default
- is not recommended for use as a base type.
- This font type is therefore often only used for headings and short texts.
- We use it in this document to highlight menu names.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Quotes eld
-\end_inset
-
-Toggling
-\begin_inset Quotes erd
-\end_inset
-
- refers to applying or removing font properties.
- When a property is marked for toggling in the 
-\family sans
-Text
-\begin_inset space ~
-\end_inset
-
-Style
-\family default
- dialog, applying the style to text that already has the property will cause
- the property to be removed.
- If you, for example, apply a style with properties A, B and C to text that
- currently has font properties B, C, F and G, and if B is set to toggle
- and C is set not to toggle, the text ends up with properties A, C, F and
- G.
  
-\begin_inset Quotes eld
-\end_inset
-
-Never toggled
-\begin_inset Quotes erd
-\end_inset
-
- and 
-\begin_inset Quotes eld
-\end_inset
-
-always toggled
-\begin_inset Quotes erd
-\end_inset
-
- mean that you do not control the toggling behavior.
- For the properties on the left side of the dialog (
-\begin_inset Quotes eld
-\end_inset
-
-Family
-\begin_inset Quotes erd
-\end_inset
-
- etc.), toggling behavior is up to you.
- If 
-\family sans
-Toggle
-\begin_inset space ~
-\end_inset
-
-all
-\family default
- is checked, all of the left side properties are toggled; by default, none
- of them are.
- Finally, 
-\begin_inset Quotes eld
-\end_inset
-
-Reset
-\begin_inset Quotes erd
-\end_inset
-
- is never toggled.
- If you, for example, set 
-\begin_inset Quotes eld
-\end_inset
-
-Series
-\begin_inset Quotes erd
-\end_inset
-
- to 
-\begin_inset Quotes eld
-\end_inset
-
-Reset
-\begin_inset Quotes erd
-\end_inset
-
- and select 
-\family sans
-Toggle
-\begin_inset space ~
-\end_inset
-
-all
-\family default
-, then apply the style to bold face text, the text will revert to the default
- series (
-\begin_inset Quotes eld
-\end_inset
-
-Medium
-\begin_inset Quotes erd
-\end_inset
-
-), no matter how many times you apply the style.
+\noun on
+This is text with Noun on.
 \end_layout
 
 \begin_layout Standard
-We conclude with the same warning once again: Do not overuse the fonts!
- They are, more often than not, a kludge and a bad substitute for good writing.
+So you have a huge number of combinations to select from.
+ Once you have applied a text property via the 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show character"
+\end_inset
+
+ (
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+) dialog, the settings are temporarily saved.
+ You can activate the last applied properties by using the toolbar button
+ 
+\begin_inset Info
+type  "icon"
+arg   "textstyle-apply"
+\end_inset
+
+.
+ The button lets you apply those even when the dialog isn't visible.
+\end_layout
+
+\begin_layout Standard
+To completely reset the text properties of a selection to the default, use
+ 
+\begin_inset Info
+type  "shortcut"
+arg   "font-default"
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+We conclude this section with the same warning once again: Do not overuse
+ the fonts! They are, more often than not, a kludge and a bad substitute
+ for good writing.
 \end_layout
 
 \begin_layout Section
@@ -37982,7 +38227,32 @@ Text Style
 \end_layout
 
 \begin_layout Standard
-Described in section
+
+\change_inserted -712698321 1525595818
+This sub-menu provides several ways to customize the appearance of text
+ passages.
+ You can
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -712698321 1525595876
+Customize text properties by means of the 
+\family sans
+Text Style
+\family default
+ dialog (via 
+\family sans
+Customized\SpecialChar ldots
+
+\family default
+; this is 
+\change_deleted -712698321 1525595580
+D
+\change_inserted -712698321 1525595580
+d
+\change_unchanged
+escribed in section
 \begin_inset space ~
 \end_inset
 
@@ -37993,7 +38263,67 @@ reference "subsec:Fine-Tuning-with-the"
 
 \end_inset
 
+
+\change_inserted -712698321 1525595582
+)
+\change_deleted -712698321 1525595616
 .
+\change_inserted -712698321 1525595617
+
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -712698321 1525595704
+Change the casing of selected text (
+\family sans
+Capitalize
+\family default
+, 
+\family sans
+Uppercase
+\family default
+, 
+\family sans
+Lowercase
+\family default
+)
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -712698321 1525599421
+Select custom character styles if provided by the document class or a module
+ (in the case of this document: 
+\family sans
+Code
+\family default
+, 
+\family sans
+Emph
+\family default
+, 
+\family sans
+Noun
+\family default
+ and 
+\family sans
+Strong
+\family default
+; see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Custom-Character-Styles"
+
+\end_inset
+
+)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection

@@ -31,21 +31,19 @@ enum FontState {
 	///
 	IGNORE,
 	///
-	EMPH_TOGGLE,
+	UNDERBAR,
 	///
-	UNDERBAR_TOGGLE,
+	STRIKEOUT,
 	///
-	NOUN_TOGGLE,
+	XOUT,
 	///
-	STRIKEOUT_TOGGLE,
+	UULINE,
 	///
-	XOUT_TOGGLE,
+	UWAVE,
 	///
-	UULINE_TOGGLE,
+	INHERIT,
 	///
-	UWAVE_TOGGLE,
-	///
-	INHERIT
+	NONE
 };
 
 typedef std::pair<QString, FontFamily> FamilyPair;
@@ -65,6 +63,8 @@ public:
 
 protected Q_SLOTS:
 	void change_adaptor();
+	void on_emphCB_clicked();
+	void on_nounCB_clicked();
 
 private:
 	/// \name Dialog inherited methods
@@ -82,20 +82,26 @@ private:
 
 	///
 	void paramsToDialog(Font const & font);
+	///
+	void setBar(FontInfo & fi, FontState val);
+	///
+	void setStrike(FontInfo & fi, FontState val);
 
 	QList<FamilyPair> family;
 	QList<SeriesPair> series;
 	QList<ShapePair>  shape;
 	QList<SizePair>   size;
 	QList<BarPair>    bar;
+	QList<BarPair>    strike;
 	QList<ColorCode> color;
 	QList<LanguagePair> language;
 
 	///
-	///
 	Font font_;
 	///
-	bool toggleall_;
+	bool emph_;
+	///
+	bool noun_;
 };
 
 } // namespace frontend

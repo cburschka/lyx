@@ -1,325 +1,311 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>CharacterUi</class>
- <widget class="QDialog" name="CharacterUi" >
-  <property name="geometry" >
+ <widget class="QDialog" name="CharacterUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>325</width>
-    <height>231</height>
+    <width>523</width>
+    <height>365</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <property name="sizeGripEnabled" >
+  <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>11</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
+  <layout class="QGridLayout" name="gridLayout_6">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <layout class="QGridLayout" >
-       <property name="margin" >
-        <number>0</number>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="title">
+        <string>Font Properties</string>
        </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item row="0" column="0" >
-        <widget class="QLabel" name="familyLA" >
-         <property name="toolTip" >
-          <string>Font family</string>
-         </property>
-         <property name="text" >
-          <string>&amp;Family:</string>
-         </property>
-         <property name="buddy" >
-          <cstring>familyCO</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1" >
-        <widget class="QComboBox" name="shapeCO" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>3</hsizetype>
-           <vsizetype>0</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="toolTip" >
-          <string>Font shape</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0" >
-        <widget class="QLabel" name="shapeLA" >
-         <property name="toolTip" >
-          <string>Font shape</string>
-         </property>
-         <property name="text" >
-          <string>S&amp;hape:</string>
-         </property>
-         <property name="buddy" >
-          <cstring>shapeCO</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1" >
-        <widget class="QComboBox" name="seriesCO" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>3</hsizetype>
-           <vsizetype>0</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="toolTip" >
-          <string>Font series</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1" >
-        <widget class="QComboBox" name="langCO" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>3</hsizetype>
-           <vsizetype>0</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="toolTip" >
-          <string>Language</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1" >
-        <widget class="QComboBox" name="familyCO" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>3</hsizetype>
-           <vsizetype>0</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="toolTip" >
-          <string>Font family</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1" >
-        <widget class="QComboBox" name="colorCO" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>3</hsizetype>
-           <vsizetype>0</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="toolTip" >
-          <string>Font color</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0" >
-        <widget class="QLabel" name="langLA" >
-         <property name="toolTip" >
-          <string>Language</string>
-         </property>
-         <property name="text" >
-          <string>&amp;Language:</string>
-         </property>
-         <property name="buddy" >
-          <cstring>langCO</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0" >
-        <widget class="QLabel" name="seriesLA" >
-         <property name="toolTip" >
-          <string>Font series</string>
-         </property>
-         <property name="text" >
-          <string>&amp;Series:</string>
-         </property>
-         <property name="buddy" >
-          <cstring>seriesCO</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0" >
-        <widget class="QLabel" name="colorLA" >
-         <property name="enabled" >
-          <bool>true</bool>
-         </property>
-         <property name="toolTip" >
-          <string>Font color</string>
-         </property>
-         <property name="text" >
-          <string>&amp;Color:</string>
-         </property>
-         <property name="buddy" >
-          <cstring>colorCO</cstring>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item>
-        <widget class="QGroupBox" name="sizeGB" >
-         <property name="title" >
-          <string>Never Toggled</string>
-         </property>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>11</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="sizeLA" >
-            <property name="toolTip" >
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="familyLA">
+            <property name="toolTip">
+             <string>Font family</string>
+            </property>
+            <property name="text">
+             <string>Fa&amp;mily:</string>
+            </property>
+            <property name="buddy">
+             <cstring>familyCO</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="familyCO">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>Font family</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="seriesLA">
+            <property name="toolTip">
+             <string>Font series</string>
+            </property>
+            <property name="text">
+             <string>&amp;Series:</string>
+            </property>
+            <property name="buddy">
+             <cstring>seriesCO</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QComboBox" name="seriesCO">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>Font series</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="shapeLA">
+            <property name="toolTip">
+             <string>Font shape</string>
+            </property>
+            <property name="text">
+             <string>S&amp;hape:</string>
+            </property>
+            <property name="buddy">
+             <cstring>shapeCO</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QComboBox" name="shapeCO">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>Font shape</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="sizeLA">
+            <property name="toolTip">
              <string>Font size</string>
             </property>
-            <property name="text" >
+            <property name="text">
              <string>Si&amp;ze:</string>
             </property>
-            <property name="buddy" >
+            <property name="buddy">
              <cstring>sizeCO</cstring>
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QComboBox" name="sizeCO" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>3</hsizetype>
-              <vsizetype>0</vsizetype>
+          <item row="3" column="1">
+           <widget class="QComboBox" name="sizeCO">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
-            <property name="toolTip" >
+            <property name="toolTip">
              <string>Font size</string>
             </property>
            </widget>
           </item>
          </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="miscGB" >
-         <property name="toolTip" >
-          <string>Other font settings</string>
-         </property>
-         <property name="title" >
-          <string>Always Toggled</string>
-         </property>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>11</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="miscLA" >
-            <property name="text" >
-             <string>&amp;Misc:</string>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_2">
+       <property name="title">
+        <string>Decoration</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0">
+           <widget class="QLabel" name="colorLA">
+            <property name="enabled">
+             <bool>true</bool>
             </property>
-            <property name="buddy" >
-             <cstring>miscCO</cstring>
+            <property name="toolTip">
+             <string>Font color</string>
+            </property>
+            <property name="text">
+             <string>&amp;Color:</string>
+            </property>
+            <property name="buddy">
+             <cstring>colorCO</cstring>
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QComboBox" name="miscCO" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>3</hsizetype>
-              <vsizetype>0</vsizetype>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="colorCO">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
-            </property>           
-            <property name="toolTip" >
-             <string>Other font settings</string>
+            </property>
+            <property name="toolTip">
+             <string>Font color</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="ulineLA">
+            <property name="text">
+             <string>U&amp;nderlining:</string>
+            </property>
+            <property name="buddy">
+             <cstring>ulineCO</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QComboBox" name="ulineCO">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>Underlining of text</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="strikeLA">
+            <property name="text">
+             <string>S&amp;trikethrough:</string>
+            </property>
+            <property name="buddy">
+             <cstring>strikeCO</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QComboBox" name="strikeCO">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>Strike-through text</string>
             </property>
            </widget>
           </item>
          </layout>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QCheckBox" name="toggleallCB" >
-       <property name="toolTip" >
-        <string>toggle font on all of the above</string>
-       </property>
-       <property name="text" >
-        <string>&amp;Toggle all</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="autoapplyCB" >
-       <property name="toolTip" >
-        <string>Apply each change automatically</string>
-       </property>
-       <property name="text" >
-        <string>Apply changes &amp;immediately</string>
-       </property>
+        </item>
+        <item row="1" column="0">
+         <spacer name="verticalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>36</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </widget>
      </item>
     </layout>
    </item>
-   <item>
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QGroupBox" name="groupBox_4">
+       <property name="title">
+        <string>&amp;Language</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_7">
+        <item row="0" column="0">
+         <widget class="QComboBox" name="langCO">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip">
+           <string>Language</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_3">
+       <property name="title">
+        <string>Semantic Markup</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_5">
+        <item row="0" column="0">
+         <widget class="QCheckBox" name="emphCB">
+          <property name="toolTip">
+           <string>Semantic emphasizing (italic by default, but can be adapted)</string>
+          </property>
+          <property name="text">
+           <string>&amp;Emphasized</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QCheckBox" name="nounCB">
+          <property name="toolTip">
+           <string>Semantic markup of nouns (small caps by default, but can be adapted)</string>
+          </property>
+          <property name="text">
+           <string>&amp;Noun</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeType" >
+     <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
        <height>20</height>
@@ -327,23 +313,42 @@
      </property>
     </spacer>
    </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
+   <item row="3" column="0">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>6</number>
      </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QCheckBox" name="autoapplyCB">
+       <property name="toolTip">
+        <string>Apply each change automatically</string>
+       </property>
+       <property name="text">
+        <string>Apply changes &amp;immediately</string>
+       </property>
+      </widget>
+     </item>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeType" >
+       <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>20</width>
          <height>20</height>
@@ -352,34 +357,34 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="okPB" >
-       <property name="text" >
+      <widget class="QPushButton" name="okPB">
+       <property name="text">
         <string>&amp;OK</string>
        </property>
-       <property name="default" >
+       <property name="default">
         <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="applyPB" >
-       <property name="text" >
+      <widget class="QPushButton" name="applyPB">
+       <property name="text">
         <string>&amp;Apply</string>
        </property>
-       <property name="autoDefault" >
+       <property name="autoDefault">
         <bool>false</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="closePB" >
-       <property name="text" >
+      <widget class="QPushButton" name="closePB">
+       <property name="text">
         <string>Close</string>
        </property>
-       <property name="autoDefault" >
+       <property name="autoDefault">
         <bool>false</bool>
        </property>
-       <property name="default" >
+       <property name="default">
         <bool>false</bool>
        </property>
       </widget>
@@ -394,16 +399,12 @@
   <tabstop>shapeCO</tabstop>
   <tabstop>colorCO</tabstop>
   <tabstop>langCO</tabstop>
-  <tabstop>toggleallCB</tabstop>
-  <tabstop>sizeCO</tabstop>
-  <tabstop>miscCO</tabstop>
-  <tabstop>autoapplyCB</tabstop>
   <tabstop>okPB</tabstop>
   <tabstop>applyPB</tabstop>
   <tabstop>closePB</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>
