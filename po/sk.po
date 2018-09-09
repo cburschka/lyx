@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-08-23 11:49+0200\n"
-"PO-Revision-Date: 2018-08-23 10:31+0000\n"
+"POT-Creation-Date: 2018-09-08 13:33+0200\n"
+"PO-Revision-Date: 2018-09-09 11:33+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -960,12 +960,12 @@ msgstr "Zvýr&aznenie"
 #: src/frontends/qt4/ui/CharacterUi.ui:362
 msgid "Semantic markup of nouns (small caps by default, but can be adapted)"
 msgstr ""
-"Sémantické označenie mien (štandard sú malé kapitálky, ale môže byť "
-"prispôsobené)"
+"Sémantické označenie podstatných mien (štandard sú malé kapitálky, ale môže "
+"byť prispôsobené)"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:365
 msgid "&Noun"
-msgstr "&Meno"
+msgstr "Podstatné &meno"
 
 #: src/frontends/qt4/ui/CitationUi.ui:48
 msgid "Select the fields on which the filter applies"
@@ -13628,8 +13628,8 @@ msgid ""
 "Defines some character styles for logical markup: noun, emph, strong, and "
 "code."
 msgstr ""
-"Definuje niektoré logické štýly znakov (logical markup): meno (noun), dôraz "
-"(emph), (silný dôraz) strong, kód (code)."
+"Definuje niektoré logické štýly znakov (logical markup): podstatné meno "
+"(noun), dôraz (emph), (silný dôraz) strong, kód (code)."
 
 #: lib/layouts/logicalmkup.module:5
 msgid "charstyles"
@@ -13637,11 +13637,11 @@ msgstr "štýly znakov"
 
 #: lib/layouts/logicalmkup.module:11
 msgid "Noun"
-msgstr "Meno"
+msgstr "Podstatné meno"
 
 #: lib/layouts/logicalmkup.module:13
 msgid "noun"
-msgstr "meno"
+msgstr "podstatné meno"
 
 #: lib/layouts/logicalmkup.module:35
 msgid "emph"
@@ -33234,6 +33234,18 @@ msgstr "Všetky registre"
 #: src/insets/InsetIndex.cpp:465
 msgid "subindex"
 msgstr "Pod-register"
+
+#: src/insets/InsetInfo.cpp:186
+msgid "No long date format (language unknown)!"
+msgstr "Nemá dlhý formát dátumu (neznámy jazyk)!"
+
+#: src/insets/InsetInfo.cpp:189
+msgid "No medium date format (language unknown)!"
+msgstr "Nemá stredný formát dátumu (neznámy jazyk)!"
+
+#: src/insets/InsetInfo.cpp:192
+msgid "No short date format (language unknown)!"
+msgstr "Nemá krátky formát dátumu (neznámy jazyk)!"
 
 #: src/insets/InsetInfo.cpp:218
 msgid "Please select a valid type!"
