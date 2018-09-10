@@ -847,7 +847,8 @@ void handle_hline_below(RowInfo & ri, vector<CellInfo> & ci)
 
 
 void handle_tabular(Parser & p, ostream & os, string const & name,
-                    string const & tabularwidth, Context & context)
+                    string const & tabularwidth, string const & halign,
+                    Context & context)
 {
 	bool const is_long_tabular(name == "longtable");
 	bool booktabs = false;
@@ -1417,6 +1418,8 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 		   << write_attribute("lastFootTopDL", endlastfoot.topDL)
 		   << write_attribute("lastFootBottomDL", endlastfoot.bottomDL)
 		   << write_attribute("lastFootEmpty", endlastfoot.empty);
+		if (!halign.empty())
+			os << write_attribute("longtabularalignment", halign);
 	} else
 		os << write_attribute("tabularvalignment", tabularvalignment)
 		   << write_attribute("tabularwidth", tabularwidth);
