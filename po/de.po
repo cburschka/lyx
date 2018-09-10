@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-09-09 12:43+0200\n"
-"PO-Revision-Date: 2018-09-09 12:45+0100\n"
+"POT-Creation-Date: 2018-09-10 11:23+0200\n"
+"PO-Revision-Date: 2018-09-10 11:28+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -979,7 +979,6 @@ msgid "Font family"
 msgstr "Schriftfamilie"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:36
-#, fuzzy
 msgid "Fa&mily:"
 msgstr "&Familie:"
 
@@ -1016,28 +1015,26 @@ msgid "&Color:"
 msgstr "F&arbe:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:179
-#, fuzzy
 msgid "U&nderlining:"
-msgstr "underline"
+msgstr "&Unterstreichung:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:195
 msgid "Underlining of text"
 msgstr "Unterstreichung des Texts"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:202
-#, fuzzy
 msgid "S&trikethrough:"
-msgstr "Durchgestrichen"
+msgstr "&Durchstreichung:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:218
-#, fuzzy
 msgid "Strike-through text"
-msgstr "Durchgestrichen"
+msgstr "Durchstreichung des Texts"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:250
-#, fuzzy
 msgid "&Language"
-msgstr "S&prache:"
+msgstr ""
+""
+"S&prache:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:262
 #: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/bicaption.module:15
@@ -1050,9 +1047,8 @@ msgid "Language"
 msgstr "Sprache"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:272
-#, fuzzy
 msgid "Semantic Markup"
-msgstr "Logisches Markup"
+msgstr "Semantische Auszeichnung"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:278
 msgid "Semantic emphasizing (italic by default, but can be adapted)"
@@ -1061,9 +1057,8 @@ msgstr ""
 "angepasst werden)"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:281
-#, fuzzy
 msgid "&Emphasized"
-msgstr "Hervorhebung"
+msgstr "&Hervorgehoben"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:288
 msgid "Semantic markup of nouns (small caps by default, but can be adapted)"
@@ -1072,9 +1067,8 @@ msgstr ""
 "jedoch angepasst werden)"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:291
-#, fuzzy
 msgid "&Noun"
-msgstr "Eigenname"
+msgstr "&Eigenname"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:336
 msgid "Apply each change automatically"
@@ -2956,7 +2950,6 @@ msgid "Indent displayed formulas instead of centering"
 msgstr "Abgesetzte Formeln einrücken (nicht zentrieren)"
 
 #: src/frontends/qt4/ui/MathsUi.ui:79
-#, fuzzy
 msgid "Indent &formulas"
 msgstr "&Formeln einrücken"
 
@@ -3161,7 +3154,6 @@ msgid "Scaling factor for images used for math output."
 msgstr "Skalierungsfaktor für Bilder in der Mathe-Ausgabe."
 
 #: src/frontends/qt4/ui/OutputUi.ui:275
-#, fuzzy
 msgid "Write CSS to file"
 msgstr "CSS in Datei schreiben"
 
@@ -4047,7 +4039,7 @@ msgstr "Aktiviert"
 msgid "Ctrl"
 msgstr "Strg-Taste"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:265
+#: src/frontends/qt4/ui/PrefInputUi.ui:265 src/insets/InsetInfo.cpp:367
 msgid "Shift"
 msgstr "Umschalttaste"
 
@@ -6136,7 +6128,7 @@ msgstr "Abbildungsanmerkungen"
 #: lib/layouts/stdlayouts.inc:35 lib/layouts/stdlayouts.inc:57
 #: lib/layouts/stdlayouts.inc:77 lib/layouts/stdletter.inc:13
 #: lib/layouts/svcommon.inc:27 lib/layouts/svcommon.inc:612
-#: lib/layouts/svcommon.inc:623 lib/layouts/tufte-book.layout:211
+#: lib/layouts/svcommon.inc:623 lib/layouts/tufte-book.layout:238
 msgid "MainText"
 msgstr "Haupttext"
 
@@ -6696,7 +6688,7 @@ msgstr "IEEE Transactions"
 #: lib/layouts/sigplanconf.layout:41 lib/layouts/simplecv.layout:18
 #: lib/layouts/slides.layout:61 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdinsets.inc:638 lib/layouts/stdletter.inc:12
-#: lib/layouts/svcommon.inc:26 lib/layouts/tufte-book.layout:20
+#: lib/layouts/svcommon.inc:26 lib/layouts/tufte-book.layout:47
 #: lib/ui/stdtoolbars.inc:69 src/insets/InsetRef.cpp:419
 msgid "Standard"
 msgstr "Standard"
@@ -6729,7 +6721,7 @@ msgstr "Standard"
 #: lib/layouts/simplecv.layout:134 lib/layouts/stdtitle.inc:14
 #: lib/layouts/svcommon.inc:57 lib/layouts/svcommon.inc:324
 #: lib/layouts/svmult.layout:47 lib/layouts/svprobth.layout:76
-#: lib/layouts/tufte-book.layout:35
+#: lib/layouts/tufte-book.layout:62
 msgid "Title"
 msgstr "Titel"
 
@@ -6768,7 +6760,7 @@ msgstr "Kleinschreibung"
 #: lib/layouts/scrclass.inc:202 lib/layouts/siamltex.layout:218
 #: lib/layouts/sigplanconf.layout:147 lib/layouts/stdtitle.inc:35
 #: lib/layouts/svcommon.inc:344 lib/layouts/svmult.layout:79
-#: lib/layouts/svprobth.layout:93 lib/layouts/tufte-book.layout:40
+#: lib/layouts/svprobth.layout:93 lib/layouts/tufte-book.layout:67
 msgid "Author"
 msgstr "Autor"
 
@@ -6929,8 +6921,8 @@ msgstr "Kurztitel für den Anhang"
 #: lib/layouts/scrclass.inc:268 lib/layouts/scrreprt.layout:12
 #: lib/layouts/scrreprt.layout:14 lib/layouts/siamltex.layout:326
 #: lib/layouts/simplecv.layout:156 lib/layouts/stdstruct.inc:54
-#: lib/layouts/svcommon.inc:575 lib/layouts/tufte-book.layout:263
-#: lib/layouts/tufte-book.layout:265 lib/layouts/tufte-handout.layout:77
+#: lib/layouts/svcommon.inc:575 lib/layouts/tufte-book.layout:290
+#: lib/layouts/tufte-book.layout:292 lib/layouts/tufte-handout.layout:77
 #: src/frontends/qt4/GuiDocument.cpp:1558
 msgid "Bibliography"
 msgstr "Literaturverzeichnis"
@@ -7210,7 +7202,7 @@ msgstr "Danksagungen."
 #: lib/layouts/scrclass.inc:80 lib/layouts/siamltex.layout:369
 #: lib/layouts/simplecv.layout:31 lib/layouts/spie.layout:21
 #: lib/layouts/stdsections.inc:77 lib/layouts/svcommon.inc:196
-#: lib/layouts/tufte-book.layout:94 src/frontends/qt4/GuiDocument.cpp:136
+#: lib/layouts/tufte-book.layout:121 src/frontends/qt4/GuiDocument.cpp:136
 msgid "Section"
 msgstr "Abschnitt"
 
@@ -7229,7 +7221,7 @@ msgstr "Abschnitt"
 #: lib/layouts/revtex.layout:52 lib/layouts/scrclass.inc:88
 #: lib/layouts/siamltex.layout:380 lib/layouts/simplecv.layout:59
 #: lib/layouts/stdsections.inc:108 lib/layouts/svcommon.inc:205
-#: lib/layouts/tufte-book.layout:123
+#: lib/layouts/tufte-book.layout:150
 msgid "Subsection"
 msgstr "Unterabschnitt"
 
@@ -7266,7 +7258,7 @@ msgstr "Unterunterabschnitt"
 #: lib/layouts/scrclass.inc:209 lib/layouts/scrlettr.layout:165
 #: lib/layouts/scrlttr2.layout:244 lib/layouts/siamltex.layout:237
 #: lib/layouts/stdtitle.inc:54 lib/layouts/svcommon.inc:370
-#: lib/layouts/tufte-book.layout:45 lib/ui/stdmenus.inc:396
+#: lib/layouts/tufte-book.layout:72 lib/ui/stdmenus.inc:396
 msgid "Date"
 msgstr "Datum"
 
@@ -7631,8 +7623,8 @@ msgstr "American Chemical Society (ACS)"
 #: lib/layouts/scrclass.inc:307 lib/layouts/siamltex.layout:205
 #: lib/layouts/simplecv.layout:51 lib/layouts/stdinsets.inc:645
 #: lib/layouts/stdsections.inc:32 lib/layouts/stdsections.inc:64
-#: lib/layouts/stdsections.inc:95 lib/layouts/tufte-book.layout:83
-#: lib/layouts/tufte-book.layout:112 lib/layouts/tufte-handout.layout:40
+#: lib/layouts/stdsections.inc:95 lib/layouts/tufte-book.layout:110
+#: lib/layouts/tufte-book.layout:139 lib/layouts/tufte-handout.layout:40
 msgid "Short Title|S"
 msgstr "Kurztitel|z"
 
@@ -8104,7 +8096,7 @@ msgstr "Randabbildung (nur sigchi-a)"
 
 #: lib/layouts/acmart.layout:520 lib/layouts/beamer.layout:1647
 #: lib/layouts/powerdot.layout:532 lib/layouts/sciposter.layout:109
-#: lib/layouts/stdfloats.inc:33 lib/layouts/tufte-book.layout:257
+#: lib/layouts/stdfloats.inc:33 lib/layouts/tufte-book.layout:284
 msgid "List of Figures"
 msgstr "Abbildungsverzeichnis"
 
@@ -8114,7 +8106,7 @@ msgstr "Randtabelle (nur sigchi-a)"
 
 #: lib/layouts/acmart.layout:533 lib/layouts/beamer.layout:1634
 #: lib/layouts/powerdot.layout:515 lib/layouts/sciposter.layout:123
-#: lib/layouts/stdfloats.inc:18 lib/layouts/tufte-book.layout:241
+#: lib/layouts/stdfloats.inc:18 lib/layouts/tufte-book.layout:268
 msgid "List of Tables"
 msgstr "Tabellenverzeichnis"
 
@@ -8511,7 +8503,7 @@ msgstr "Teil"
 #: lib/layouts/recipebook.layout:42 lib/layouts/scrbook.layout:17
 #: lib/layouts/scrclass.inc:68 lib/layouts/stdsections.inc:45
 #: lib/layouts/svcommon.inc:152 lib/layouts/svmult.layout:111
-#: lib/layouts/tufte-book.layout:66
+#: lib/layouts/tufte-book.layout:93
 msgid "Chapter"
 msgstr "Kapitel"
 
@@ -9345,7 +9337,7 @@ msgstr "Die Längste Marke in dieser Liste (gibt die Einzugsbreite vor)"
 #: lib/layouts/stdsections.inc:78 lib/layouts/svcommon.inc:117
 #: lib/layouts/svcommon.inc:159 lib/layouts/svcommon.inc:172
 #: lib/layouts/svcommon.inc:184 lib/layouts/svcommon.inc:416
-#: lib/layouts/tufte-book.layout:68 lib/layouts/tufte-book.layout:95
+#: lib/layouts/tufte-book.layout:95 lib/layouts/tufte-book.layout:122
 #: lib/layouts/tufte-handout.layout:24
 msgid "Sectioning"
 msgstr "Gliederung"
@@ -9385,7 +9377,7 @@ msgstr "Abschnitt \\arabic{section}"
 
 #: lib/layouts/beamer.layout:272 lib/layouts/scrclass.inc:149
 #: lib/layouts/simplecv.layout:52 lib/layouts/stdsections.inc:96
-#: lib/layouts/tufte-book.layout:113
+#: lib/layouts/tufte-book.layout:140
 msgid "The section as it appears in the table of contents/running headers"
 msgstr ""
 "Der Abschnittstitel, wie er im Inhaltsverzeichnis/Kolumnentitel erscheint"
@@ -13265,7 +13257,7 @@ msgstr "\\theexamplei (\\alph{subexample})"
 msgid "\\theexamplei (\\alph{subexamplei})"
 msgstr "\\theexamplei (\\alph{subexamplei})"
 
-#: lib/layouts/linguistics.module:32 lib/layouts/linguistics.module:260
+#: lib/layouts/linguistics.module:32 lib/layouts/linguistics.module:266
 msgid "Tableaux"
 msgstr "Tableaus"
 
@@ -13289,71 +13281,71 @@ msgstr "Die Nummerierung anpassen"
 msgid "Subexample"
 msgstr "Unterbeispiel"
 
-#: lib/layouts/linguistics.module:107 lib/layouts/linguistics.module:109
+#: lib/layouts/linguistics.module:113 lib/layouts/linguistics.module:115
 msgid "Glosse"
 msgstr "Glosse"
 
-#: lib/layouts/linguistics.module:134 lib/layouts/linguistics.module:169
+#: lib/layouts/linguistics.module:140 lib/layouts/linguistics.module:175
 msgid "Translation"
 msgstr "Übersetzung"
 
-#: lib/layouts/linguistics.module:135 lib/layouts/linguistics.module:170
+#: lib/layouts/linguistics.module:141 lib/layouts/linguistics.module:176
 msgid "Glosse Translation|s"
 msgstr "Glossen-Übersetzung"
 
-#: lib/layouts/linguistics.module:136 lib/layouts/linguistics.module:171
+#: lib/layouts/linguistics.module:142 lib/layouts/linguistics.module:177
 msgid "Add a translation for the glosse"
 msgstr "Fügt der Glosse eine Übersetzung (Paraphrase) hinzu"
 
-#: lib/layouts/linguistics.module:142 lib/layouts/linguistics.module:144
+#: lib/layouts/linguistics.module:148 lib/layouts/linguistics.module:150
 msgid "Tri-Glosse"
 msgstr "Tri-Glosse"
 
-#: lib/layouts/linguistics.module:177
+#: lib/layouts/linguistics.module:183
 msgid "Structure Tree"
 msgstr "Strukturbaum"
 
-#: lib/layouts/linguistics.module:179
+#: lib/layouts/linguistics.module:185
 msgid "Tree"
 msgstr "Baum"
 
-#: lib/layouts/linguistics.module:203
+#: lib/layouts/linguistics.module:209
 msgid "Expression"
 msgstr "Ausdruck"
 
-#: lib/layouts/linguistics.module:205
+#: lib/layouts/linguistics.module:211
 msgid "expr."
 msgstr "Ausdr."
 
-#: lib/layouts/linguistics.module:219
+#: lib/layouts/linguistics.module:225
 msgid "Concepts"
 msgstr "Konzept"
 
-#: lib/layouts/linguistics.module:221
+#: lib/layouts/linguistics.module:227
 msgid "concept"
 msgstr "Konzept"
 
-#: lib/layouts/linguistics.module:235
+#: lib/layouts/linguistics.module:241
 msgid "Meaning"
 msgstr "Bedeutung"
 
-#: lib/layouts/linguistics.module:237
+#: lib/layouts/linguistics.module:243
 msgid "meaning"
 msgstr "Bedeutung"
 
-#: lib/layouts/linguistics.module:250
+#: lib/layouts/linguistics.module:256
 msgid "GroupGlossedWords"
 msgstr "Glossierte Wortgruppen"
 
-#: lib/layouts/linguistics.module:252
+#: lib/layouts/linguistics.module:258
 msgid "Group"
 msgstr "Gruppe"
 
-#: lib/layouts/linguistics.module:264
+#: lib/layouts/linguistics.module:270
 msgid "Tableau"
 msgstr "Tableau"
 
-#: lib/layouts/linguistics.module:269
+#: lib/layouts/linguistics.module:275
 msgid "List of Tableaux"
 msgstr "Tableaux-Verzeichnis"
 
@@ -14894,7 +14886,7 @@ msgid "Addchap"
 msgstr "Kapitel (Inhaltsverz.)"
 
 #: lib/layouts/scrclass.inc:138 lib/layouts/stdsections.inc:65
-#: lib/layouts/tufte-book.layout:84
+#: lib/layouts/tufte-book.layout:111
 msgid "The chapter as it appears in the table of contents/running headers"
 msgstr "Der Kapiteltitel, wie er im Inhaltsverzeichnis/Kolumnentitel erscheint"
 
@@ -15784,9 +15776,8 @@ msgid "Proof(smartQED)"
 msgstr "Beweis (smartQED)"
 
 #: lib/layouts/svglobal.layout:3
-#, fuzzy
 msgid "Springer's Global Journal Template (Obsolete Version)"
-msgstr "Springer SV Global (veraltete Version)"
+msgstr "Springers globale Vorlage für Zeitschriften (veraltete Version!)"
 
 #: lib/layouts/svglobal.layout:67 lib/layouts/svjog.layout:71
 #: lib/layouts/svprobth.layout:101
@@ -15830,9 +15821,8 @@ msgid "Offprints:"
 msgstr "Adresse für Sonderdrucke:"
 
 #: lib/layouts/svglobal3.layout:3
-#, fuzzy
 msgid "Springer's Global Journal Template (V. 3)"
-msgstr "Springer SV Global (V. 3)"
+msgstr "Springers globale Vorlage für Zeitschriften (V. 3)"
 
 #: lib/layouts/svglobal3.layout:73
 msgid "Subclass"
@@ -16898,55 +16888,55 @@ msgstr "Japanischer Bericht (vertikale Schreibrichtung)"
 msgid "Tufte Book"
 msgstr "Tufte-Buch"
 
-#: lib/layouts/tufte-book.layout:137
+#: lib/layouts/tufte-book.layout:164
 msgid "Sidenote"
 msgstr "Randnotiz (nummeriert)"
 
-#: lib/layouts/tufte-book.layout:142
+#: lib/layouts/tufte-book.layout:169
 msgid "sidenote"
 msgstr "Randnotiz (numm.)"
 
-#: lib/layouts/tufte-book.layout:157
+#: lib/layouts/tufte-book.layout:184
 msgid "Marginnote"
 msgstr "Randnotiz (nicht nummeriert)"
 
-#: lib/layouts/tufte-book.layout:161
+#: lib/layouts/tufte-book.layout:188
 msgid "marginnote"
 msgstr "Randnotiz (nicht numm.)"
 
-#: lib/layouts/tufte-book.layout:170
+#: lib/layouts/tufte-book.layout:197
 msgid "NewThought"
 msgstr "Neuer Gedanke"
 
-#: lib/layouts/tufte-book.layout:174
+#: lib/layouts/tufte-book.layout:201
 msgid "new thought"
 msgstr "Neuer Gedanke"
 
-#: lib/layouts/tufte-book.layout:185
+#: lib/layouts/tufte-book.layout:212
 msgid "AllCaps"
 msgstr "Versalien"
 
-#: lib/layouts/tufte-book.layout:188
+#: lib/layouts/tufte-book.layout:215
 msgid "allcaps"
 msgstr "Versalien"
 
-#: lib/layouts/tufte-book.layout:198
+#: lib/layouts/tufte-book.layout:225
 msgid "SmallCaps"
 msgstr "Kapitälchen"
 
-#: lib/layouts/tufte-book.layout:201
+#: lib/layouts/tufte-book.layout:228
 msgid "smallcaps"
 msgstr "Kapitälchen"
 
-#: lib/layouts/tufte-book.layout:207
+#: lib/layouts/tufte-book.layout:234
 msgid "Full Width"
 msgstr "Volle Breite"
 
-#: lib/layouts/tufte-book.layout:233
+#: lib/layouts/tufte-book.layout:260
 msgid "MarginTable"
 msgstr "Randtabelle"
 
-#: lib/layouts/tufte-book.layout:249
+#: lib/layouts/tufte-book.layout:276
 msgid "MarginFigure"
 msgstr "Randabbildung"
 
@@ -25903,7 +25893,7 @@ msgstr ""
 "Wählen Sie eine passende Kodierung (bspw. utf8)\n"
 "oder ändern Sie den LaTeX-Code im Vorspann."
 
-#: src/BufferParams.cpp:2453
+#: src/BufferParams.cpp:2458
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -25918,11 +25908,11 @@ msgstr ""
 "Formaten wird benutzt werden. LyX wird nicht in der Lage sein eine korrekte\n"
 "Ausgabe zu erzeugen."
 
-#: src/BufferParams.cpp:2459
+#: src/BufferParams.cpp:2464
 msgid "Document class not found"
 msgstr "Dokumentklasse nicht gefunden"
 
-#: src/BufferParams.cpp:2466
+#: src/BufferParams.cpp:2471
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -25937,15 +25927,15 @@ msgstr ""
 "korrekte\n"
 "Ausgabe erzeugen können."
 
-#: src/BufferParams.cpp:2472 src/BufferView.cpp:1329 src/BufferView.cpp:1361
+#: src/BufferParams.cpp:2477 src/BufferView.cpp:1329 src/BufferView.cpp:1361
 msgid "Could not load class"
 msgstr "Konnte Klasse nicht laden"
 
-#: src/BufferParams.cpp:2525
+#: src/BufferParams.cpp:2530
 msgid "Error reading internal layout information"
 msgstr "Fehler beim Einlesen interner Format-Informationen"
 
-#: src/BufferParams.cpp:2526 src/TextClass.cpp:1704 src/TextClass.cpp:1739
+#: src/BufferParams.cpp:2531 src/TextClass.cpp:1704 src/TextClass.cpp:1739
 msgid "Read Error"
 msgstr "Lesefehler"
 
@@ -28204,7 +28194,7 @@ msgstr "Mathe-Editor-Modus"
 msgid "No valid math formula"
 msgstr "Keine gültige Matheformel"
 
-#: src/Text3.cpp:205 src/mathed/InsetMathNest.cpp:1035
+#: src/Text3.cpp:205 src/mathed/InsetMathNest.cpp:1036
 msgid "Already in regular expression mode"
 msgstr "Bereits im Regexp-Modus"
 
@@ -28220,19 +28210,19 @@ msgstr "Format "
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text3.cpp:2211 src/frontends/qt4/GuiApplication.cpp:1706
+#: src/Text3.cpp:2208 src/frontends/qt4/GuiApplication.cpp:1706
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/Text3.cpp:2363 src/Text3.cpp:2375
+#: src/Text3.cpp:2360 src/Text3.cpp:2372
 msgid "Character set"
 msgstr "Zeichensatz"
 
-#: src/Text3.cpp:2528
+#: src/Text3.cpp:2525
 msgid "Path to thesaurus directory not set!"
 msgstr "Pfad zum Thesaurus-Wörterbuch nicht festlegt!"
 
-#: src/Text3.cpp:2529
+#: src/Text3.cpp:2526
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -28244,7 +28234,7 @@ msgstr ""
 "Im Benutzerhandbuch, Abschnitt 6.15.11, finden Sie Hinweise,\n"
 "um den Thesaurus einzurichten."
 
-#: src/Text3.cpp:2596 src/Text3.cpp:2607
+#: src/Text3.cpp:2593 src/Text3.cpp:2604
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
@@ -28713,9 +28703,8 @@ msgid "Create new document?"
 msgstr "Möchten Sie ein neues Dokument erstellen?"
 
 #: src/buffer_funcs.cpp:129
-#, fuzzy
 msgid "&Yes, Create New Document"
-msgstr "Möchten Sie ein neues Dokument erstellen?"
+msgstr "&Ja, neues Dokument erstellen"
 
 #: src/buffer_funcs.cpp:129
 msgid "&No, Do Not Create"
@@ -29355,9 +29344,8 @@ msgid "Single[[underlining]]"
 msgstr "Einfach"
 
 #: src/frontends/qt4/GuiCharacter.cpp:88
-#, fuzzy
 msgid "Double[[underlining]]"
-msgstr "Doppelt unterstrichen %1$s, "
+msgstr "Doppelt"
 
 #: src/frontends/qt4/GuiCharacter.cpp:89
 msgid "Wavy"
@@ -31934,27 +31922,27 @@ msgstr "Quelltext-Vorschau"
 msgid "%1[[preview format name]] Preview"
 msgstr "%1-Vorschau"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1531
+#: src/frontends/qt4/GuiWorkArea.cpp:1532
 msgid "Close File"
 msgstr "Datei schließen"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2047
+#: src/frontends/qt4/GuiWorkArea.cpp:2048
 msgid "%1 (read only)"
 msgstr "%1 (schreibgeschützt)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2051
+#: src/frontends/qt4/GuiWorkArea.cpp:2052
 msgid "%1 (modified externally)"
 msgstr "%1 (extern bearbeitet)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2071
+#: src/frontends/qt4/GuiWorkArea.cpp:2072
 msgid "Hide tab"
 msgstr "Unterfenster verstecken"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2073
+#: src/frontends/qt4/GuiWorkArea.cpp:2074
 msgid "Close tab"
 msgstr "Unterfenster schließen"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2190
+#: src/frontends/qt4/GuiWorkArea.cpp:2191
 msgid "<b>The file %1 changed on disk.</b>"
 msgstr "<b>Die Datei %1 wurde auf der Festplatte verändert.</b>"
 
@@ -32737,29 +32725,77 @@ msgstr "Alle Indexe"
 msgid "subindex"
 msgstr "Unterindex"
 
-#: src/insets/InsetInfo.cpp:123
+#: src/insets/InsetInfo.cpp:125
 #, c-format
 msgid "Information regarding %1$s '%2$s'"
 msgstr "Information bezüglich %1$s '%2$s'"
 
-#: src/insets/InsetInfo.cpp:147
+#: src/insets/InsetInfo.cpp:149
 msgid "Missing \\end_inset at this point."
 msgstr "Fehlendes \\end_inset an dieser Stelle."
 
-#: src/insets/InsetInfo.cpp:316 src/insets/InsetInfo.cpp:328
-#: src/insets/InsetInfo.cpp:334 src/insets/InsetInfo.cpp:341
+#: src/insets/InsetInfo.cpp:325 src/insets/InsetInfo.cpp:409
+#: src/insets/InsetInfo.cpp:415 src/insets/InsetInfo.cpp:422
 msgid "undefined"
 msgstr "undefiniert"
 
-#: src/insets/InsetInfo.cpp:355 src/insets/InsetInfo.cpp:364
+#: src/insets/InsetInfo.cpp:343 src/insets/InsetInfo.cpp:379
+msgid "Return[[Key]]"
+msgstr "Return"
+
+#: src/insets/InsetInfo.cpp:347
+msgid "Tab[[Key]]"
+msgstr "Tab"
+
+#: src/insets/InsetInfo.cpp:351
+msgid "PgUp"
+msgstr "Bild hoch"
+
+#: src/insets/InsetInfo.cpp:355
+msgid "PgDown"
+msgstr "Bild runter"
+
+#: src/insets/InsetInfo.cpp:359
+msgid "Backtab"
+msgstr "Rücktab"
+
+#: src/insets/InsetInfo.cpp:363
+msgid "Tab"
+msgstr "Tab"
+
+#: src/insets/InsetInfo.cpp:371
+msgid "CapsLock"
+msgstr "Feststelltaste"
+
+#: src/insets/InsetInfo.cpp:375
+msgid "Command[[Key]]"
+msgstr "Command"
+
+#: src/insets/InsetInfo.cpp:383
+msgid "Option[[Key]]"
+msgstr "Option"
+
+#: src/insets/InsetInfo.cpp:387
+msgid "Delete[[Key]]"
+msgstr "Rücktaste"
+
+#: src/insets/InsetInfo.cpp:391
+msgid "Fn+Del"
+msgstr "Fn+Rücktaste"
+
+#: src/insets/InsetInfo.cpp:395
+msgid "Esc"
+msgstr "Esc"
+
+#: src/insets/InsetInfo.cpp:436 src/insets/InsetInfo.cpp:445
 msgid "yes"
 msgstr "ja"
 
-#: src/insets/InsetInfo.cpp:355 src/insets/InsetInfo.cpp:364
+#: src/insets/InsetInfo.cpp:436 src/insets/InsetInfo.cpp:445
 msgid "no"
 msgstr "nein"
 
-#: src/insets/InsetInfo.cpp:470
+#: src/insets/InsetInfo.cpp:551
 msgid "No version control"
 msgstr "Keine Versionskontrolle"
 
@@ -33610,24 +33646,24 @@ msgstr "Mathe-Makro: \\%1$s"
 msgid "Invalid macro! \\%1$s"
 msgstr "Ungültiges Makro! \\%1$s"
 
-#: src/mathed/InsetMathNest.cpp:715 src/mathed/InsetMathNest.cpp:1730
-#: src/mathed/InsetMathNest.cpp:1873
+#: src/mathed/InsetMathNest.cpp:715 src/mathed/InsetMathNest.cpp:1731
+#: src/mathed/InsetMathNest.cpp:1874
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Autokorrektur Aus ('!' zum Ausführen)"
 
-#: src/mathed/InsetMathNest.cpp:1021
+#: src/mathed/InsetMathNest.cpp:1022
 msgid "create new math text environment ($...$)"
 msgstr "Neue Mathe-Textumgebung erzeugen ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1024
+#: src/mathed/InsetMathNest.cpp:1025
 msgid "entered math text mode (textrm)"
 msgstr "Mathe-Textmodus betreten (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1046
+#: src/mathed/InsetMathNest.cpp:1047
 msgid "Regular expression editor mode"
 msgstr "Bearbeitungsmodus für reguläre Ausdrücke"
 
-#: src/mathed/InsetMathNest.cpp:1735 src/mathed/InsetMathNest.cpp:1875
+#: src/mathed/InsetMathNest.cpp:1736 src/mathed/InsetMathNest.cpp:1876
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Autokorrektur An (<Leertaste> zum Beenden)"
 
@@ -33662,11 +33698,11 @@ msgstr ""
 "Das angegebene Dokument %1$s\n"
 "konnte nicht geöffnet werden."
 
-#: src/output_latex.cpp:1426
+#: src/output_latex.cpp:1429
 msgid "Error in latexParagraphs"
 msgstr "Fehler in latexParagraphs"
 
-#: src/output_latex.cpp:1427
+#: src/output_latex.cpp:1430
 #, c-format
 msgid ""
 "You are using at least one layout (%1$s) intended for the title, after using "
@@ -35008,9 +35044,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "%1$s (*.%2$s)"
 #~ msgstr "%1$s (*.%2$s)"
-
-#~ msgid "&Down"
-#~ msgstr "A&b"
 
 #~ msgid "Any supported format (*.*)"
 #~ msgstr "Jedes unterstützte Format (*.*)"
