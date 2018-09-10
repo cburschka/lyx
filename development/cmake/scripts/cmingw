@@ -16,7 +16,7 @@ while getopts ":dDh" opt; do
     d      )  CMAKE="echo $CMAKE";;
     h      )  usage;              
               exit 0;;
-    D      )  DEVEL="-DLYX_CONSOLE=FORCE _DLYX_DEBUG=ON";;
+    D      )  DEVEL="-DLYX_CONSOLE=FORCE -DLYX_DEBUG=ON";;
     /?     )  echo -e $USAGE;
               exit 1;;
   esac
