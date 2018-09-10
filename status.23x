@@ -96,6 +96,9 @@ What's new
 
 - Fix text direction issue in info insets with RTL context (bug 10463).
 
+- Fix text direction problem with polyglossia with nested languages
+  (part of bug 10111).
+
 - Fix output of key symbols with info inset on the Mac (bug 10641).
 
 - Fix output of table cells with multiple languages (bug 11128).
@@ -108,7 +111,7 @@ What's new
 
 - Ignore horizontal wheel scrolling in work area (bug 11257).
 
-- Avoid crash wne cursor is outside of workarea (bug 11296).
+- Avoid crash when cursor is outside of work area (bug 11296).
 
 
 

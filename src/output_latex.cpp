@@ -835,11 +835,14 @@ void TeXOnePar(Buffer const & buf,
 	// Also, if an RTL language is set via environment in polyglossia,
 	// only a nested \\text<lang> command will reset the direction for LTR
 	// languages (see # 10111).
-	bool const pg_rtl_env =
-		use_polyglossia && outer_language->rightToLeft() && !par_language->rightToLeft();
+	bool const in_polyglossia_rtl_env =
+		use_polyglossia
+		&& runparams.local_font != 0
+		&& outer_language->rightToLeft()
+		&& !par_language->rightToLeft();
 	bool const localswitch = text.inset().forceLocalFontSwitch()
 			|| (using_begin_end && text.inset().forcePlainLayout())
-			|| pg_rtl_env;
+			|| in_polyglossia_rtl_env;
 	if (localswitch) {
 		lang_begin_command = use_polyglossia ?
 			    "\\text$$lang$$opts{" : lyxrc.language_command_local;
@@ -1181,7 +1184,7 @@ void TeXOnePar(Buffer const & buf,
 				    || (atSameLastLangSwitchDepth(state)
 					&& state->lang_switch_depth_.size()
 					&& cur_lang != par_lang)
-				    || pg_rtl_env)
+				    || in_polyglossia_rtl_env)
 				{
 					if (using_begin_end && !localswitch)
 						os << breakln;
