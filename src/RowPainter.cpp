@@ -312,9 +312,9 @@ void RowPainter::paintDepthBar() const
 	for (depth_type i = 1; i <= depth; ++i) {
 		int const w = nestMargin() / 5;
 		int x = int(xo_) + w * i;
-		// only consider the changebar space if we're drawing outermost text
+		// consider the bufferview left margin if we're drawing outermost text
 		if (text_.isMainText())
-			x += changebarMargin();
+			x += pi_.base.bv->leftMargin();
 
 		int const starty = yo_ - row_.ascent();
 		int const h =  row_.height() - 1 - (i - next_depth - 1) * 3;
