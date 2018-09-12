@@ -48,7 +48,7 @@ public:
 	///
 	InsetCode lyxCode() const { return BIBTEX_CODE; }
 	///
-	DisplayType display() const { return Display; }
+	DisplayType display() const { return AlignCenter; }
 	///
 	void latex(otexstream &, OutputParams const &) const;
 	///

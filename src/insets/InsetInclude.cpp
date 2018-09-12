@@ -1159,7 +1159,7 @@ string InsetInclude::contextMenuName() const
 
 Inset::DisplayType InsetInclude::display() const
 {
-	return type(params()) == INPUT ? Inline : Display;
+	return type(params()) == INPUT ? Inline : AlignCenter;
 }
 
 

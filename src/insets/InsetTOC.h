@@ -37,7 +37,7 @@ public:
 	///
 	docstring layoutName() const;
 	///
-	DisplayType display() const { return Display; }
+	DisplayType display() const { return AlignCenter; }
 	///
 	virtual void validate(LaTeXFeatures &) const;
 	///

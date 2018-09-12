@@ -467,26 +467,14 @@ public:
 	/// does this inset try to use all available space (like \\hfill does)?
 	virtual bool isHfill() const { return false; }
 
-	// Describe how the inset should be typeset
 	enum DisplayType {
 		Inline = 0,
-		// break row before this inset
-		BreakBefore = 1,
-		// break row after this inset
-		BreakAfter = 2,
-		// optionally break row after this inset (not used yet)
-		CanBreakAfter = 4,
-		// specify an alignment (left, right) for a display inset (default is center)
-		AlignLeft = 8,
-		AlignRight = 16,
-		// do not allow cursor to go at the end of the row before
-		// a display inset (not used yet)
-		NoBoundary = 32,
-		// A display inset breaks row at both ends
-		Display = BreakBefore | BreakAfter
+		AlignLeft,
+		AlignCenter,
+		AlignRight
 	};
 
-	/// How should this inset be typeset?
+	/// should we have a non-filled line before this inset?
 	virtual DisplayType display() const { return Inline; }
 	/// indentation before this inset (only needed for displayed hull insets with fleqn option)
 	virtual int indent(BufferView const &) const { return 0; }
@@ -645,21 +633,6 @@ protected:
 
 	Buffer * buffer_;
 };
-
-
-inline Inset::DisplayType operator|(Inset::DisplayType const d1,
-                                    Inset::DisplayType const d2)
-{
-	return static_cast<Inset::DisplayType>(int(d1) | int(d2));
-}
-
-
-inline Inset::DisplayType operator&(Inset::DisplayType const d1,
-                                    Inset::DisplayType const d2)
-{
-	return static_cast<Inset::DisplayType>(int(d1) & int(d2));
-}
-
 
 } // namespace lyx
 

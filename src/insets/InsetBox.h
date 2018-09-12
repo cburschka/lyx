@@ -111,6 +111,8 @@ public:
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
+	DisplayType display() const { return Inline; }
+	///
 	ColorCode backgroundColor(PainterInfo const &) const;
 	///
 	LyXAlignment contentAlignment() const;

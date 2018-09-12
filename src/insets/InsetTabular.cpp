@@ -5396,13 +5396,13 @@ Inset::DisplayType InsetTabular::display() const
 		if (tabular.is_long_tabular) {
 			switch (tabular.longtabular_alignment) {
 			case Tabular::LYX_LONGTABULAR_ALIGN_LEFT:
-				return Display | AlignLeft;
+				return AlignLeft;
 			case Tabular::LYX_LONGTABULAR_ALIGN_CENTER:
-				return Display;
+				return AlignCenter;
 			case Tabular::LYX_LONGTABULAR_ALIGN_RIGHT:
-				return Display | AlignRight;
+				return AlignRight;
 			default:
-				return Display;
+				return AlignCenter;
 			}
 		} else
 			return Inline;

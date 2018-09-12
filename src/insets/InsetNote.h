@@ -61,6 +61,8 @@ private:
 	InsetCode lyxCode() const { return NOTE_CODE; }
 	///
 	docstring layoutName() const;
+	///
+	DisplayType display() const;
 	/** returns false if, when outputing LaTeX, font changes should
 	    be closed before generating this inset. This is needed for
 	    insets that may contain several paragraphs */
