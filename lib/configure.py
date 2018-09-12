@@ -805,8 +805,8 @@ def checkConverterEntries():
         rc_entry = [r'''\converter latex      lyx        "%% -f $$i $$o"	""
 \converter latexclipboard lyx        "%% -fixedenc utf8 -f $$i $$o"	""
 \converter literate   lyx        "%% -n -m noweb -f $$i $$o"	""
-\converter sweave   lyx        "%% -n -m sweave -f $$i $$o"	"needauth"
-\converter knitr   lyx        "%% -n -m knitr -f $$i $$o"	"needauth"'''], not_found = 'tex2lyx')
+\converter sweave   lyx        "%% -n -m sweave -f $$i $$o"	""
+\converter knitr   lyx        "%% -n -m knitr -f $$i $$o"	""'''], not_found = 'tex2lyx')
     if path == '':
         logger.warning("Failed to find tex2lyx on your system.")
 
