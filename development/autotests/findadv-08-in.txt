@@ -29,6 +29,8 @@ KK: [\\w]* a
 KK: \Ae
 # search next
 KK: \Al
+# The following Escape is too fast
+Sleep 1
 KK: \[Escape]
 #KD: 1
 Cr: ^.*Putting
