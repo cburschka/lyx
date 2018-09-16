@@ -9,10 +9,10 @@
 # Georger Araujo <georger_br@yahoo.com.br> 2015 - 2017 "
 msgid ""
 msgstr ""
-"Project-Id-Version: pt_BR 2.3.0\n"
+"Project-Id-Version: pt_BR 2.3.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-08-09 13:09-0400\n"
-"PO-Revision-Date: 2018-01-31 21:04-0300\n"
+"PO-Revision-Date: 2018-09-15 23:00-0300\n"
 "Last-Translator: Georger Araujo <georger underline br pound yahoo dot com "
 "dot br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br at yahoo dot com "
@@ -649,7 +649,7 @@ msgid ""
 "active."
 msgstr ""
 "Acrescentar o nome deste ramo ao nome do arquivo de saída, caso o ramo "
-"esteja ativo"
+"esteja ativo."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:38
 msgid "Filename &Suffix"
@@ -657,7 +657,7 @@ msgstr "&Sufixo de nome de arquivo"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
 msgid "Show undefined branches used in this document."
-msgstr "Mostrar ramos indefinidos usados neste documento"
+msgstr "Mostrar ramos indefinidos usados neste documento."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
 msgid "&Undefined Branches"
@@ -714,7 +714,7 @@ msgstr "&Adicionar Selecionados"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:35
 msgid "Add all unknown branches to the list."
-msgstr "Adicionar à lista todos os ramos desconhecidos"
+msgstr "Adicionar à lista todos os ramos desconhecidos."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:38
 msgid "Add A&ll"
@@ -931,7 +931,7 @@ msgstr "&Idioma:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:161
 msgid "&Series:"
-msgstr "&Série"
+msgstr "&Série:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:177
 msgid "&Color:"
@@ -1243,7 +1243,7 @@ msgstr "&Inserir"
 #: src/frontends/qt4/ui/DelimiterUi.ui:144
 #: src/frontends/qt4/GuiDelimiter.cpp:326
 msgid "TeX Code: "
-msgstr "Código TeX:"
+msgstr "Código TeX: "
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:243
 msgid "Match delimiter types"
@@ -1908,18 +1908,19 @@ msgstr "Nome do arquivo de imagem"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:313
 msgid "&Coordinates and Clipping"
-msgstr ""
+msgstr "&Coordenadas e Corte"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:347
 msgid ""
 "Clip to the coordinates specified below (bounding box for DVI/PS output, "
 "viewport for PDF output)"
 msgstr ""
+"Cortar de acordo com as coordenadas abaixo (caixa delimitadora se a saída "
+"for DVI/PS, região de visualização se a saída for PDF)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:350
-#, fuzzy
 msgid "Clip to c&oordinates"
-msgstr "Cortar para caber nos valores da caixa delimitadora"
+msgstr "Cortar para caber na caixa delimitadora"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:438
 #: src/frontends/qt4/ui/GraphicsUi.ui:445
@@ -1936,6 +1937,8 @@ msgid ""
 "Read coordinates from the file (bounding box value in case of PostScript "
 "files, graphic dimensions in case of other file types)"
 msgstr ""
+"Ler coordenadas a partir do arquivo (valor da caixa delimitadora se for um "
+"arquivo PostScript, dimensões do gráfico se for outro tipo de arquivo)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:520
 #: src/frontends/qt4/ui/GraphicsUi.ui:527
@@ -1974,9 +1977,8 @@ msgid "Graphics Group"
 msgstr "Grupo de Gráficos"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:680
-#, fuzzy
 msgid "Assigned &to group:"
-msgstr "A&ssociado ao grupo:"
+msgstr "Atribuído ao grupo:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:690
 msgid "Click to define a new graphics group."
@@ -1988,7 +1990,7 @@ msgstr "A&brir novo grupo..."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:700
 msgid "Select an existing group for the current graphics."
-msgstr "Selecione um grupo já existente para o gráfico atual"
+msgstr "Selecione um grupo já existente para o gráfico atual."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:713
 msgid "Draft mode"
@@ -2553,7 +2555,7 @@ msgstr "&Quebrar linhas longas"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:281
 msgid "Make spaces visible by a special symbol"
-msgstr "Tornar espaços visíveis por um símbolo especial "
+msgstr "Tornar espaços visíveis por um símbolo especial"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:284
 msgid "S&pace as symbol"
@@ -2614,7 +2616,7 @@ msgstr "&Última linha:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:427
 msgid "The last line to be printed"
-msgstr "A última linha a ser impressa "
+msgstr "A última linha a ser impressa"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:444
 msgid "Ad&vanced"
@@ -2964,7 +2966,7 @@ msgid ""
 "Runs the LaTeX backend with the -shell-escape option (Warning: use only when "
 "really necessary)"
 msgstr ""
-"Roda a implementação LaTeX com a opção -shell-escape option (Aviso: só use "
+"Roda a implementação LaTeX com a opção -shell-escape (Aviso: use somente "
 "quando realmente necessário)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:114
@@ -2995,7 +2997,7 @@ msgstr "Opções de Saída XHTML"
 
 #: src/frontends/qt4/ui/OutputUi.ui:175
 msgid "Whether to comply strictly with XHTML 1.1."
-msgstr "Se deve ou não seguir estritamente XHTML 1.1"
+msgstr "Se deve ou não seguir estritamente XHTML 1.1."
 
 #: src/frontends/qt4/ui/OutputUi.ui:178
 msgid "&Strict XHTML 1.1"
@@ -3294,9 +3296,8 @@ msgid "&Vertical Phantom"
 msgstr "Phantom &Vertical"
 
 #: src/frontends/qt4/ui/PreambleUi.ui:38
-#, fuzzy
 msgid "Find"
-msgstr "&Localizar:"
+msgstr "Localizar"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:46
 msgid "A&lter..."
@@ -3533,7 +3534,7 @@ msgstr "Fator para o tamanho de previsualização"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:118
 msgid "Mark end of paragraphs on screen with a pilcrow character."
-msgstr "Marcar com pé-de-mosca (¶) o fim dos parágrafos na tela"
+msgstr "Marcar com pé-de-mosca (¶) o fim dos parágrafos na tela."
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:121
 msgid "&Mark end of paragraphs"
@@ -3733,7 +3734,7 @@ msgstr "Ocultar barra de &status"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:209
 msgid "&Limit text width"
-msgstr "Limitar &largura do texto "
+msgstr "Limitar &largura do texto"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:221
 msgid "Screen used (&pixels):"
@@ -4371,7 +4372,7 @@ msgstr "Mostrar combinações de teclas contendo:"
 msgid "If unchecked, notes and comments will be excluded from spell checking"
 msgstr ""
 "Se isto estiver desmarcado, não será feita revisão ortográfica de notas e "
-"comentários."
+"comentários"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:44
 msgid "Spellcheck &notes and comments"
@@ -6684,7 +6685,7 @@ msgstr "MarcarAmbos"
 
 #: lib/layouts/IEEEtran.layout:248
 msgid "Publication ID"
-msgstr "ID de Publicação "
+msgstr "ID de Publicação"
 
 #: lib/layouts/IEEEtran.layout:267
 msgid "Abstract---"
@@ -7496,7 +7497,7 @@ msgstr "Título curto que aparecerá no cabeçalho corrido"
 
 #: lib/layouts/achemso.layout:109 lib/layouts/acmart.layout:125
 msgid "Short name"
-msgstr "Nome (abrev.):"
+msgstr "Nome (abrev.)"
 
 #: lib/layouts/achemso.layout:110
 msgid "Short name which appears in the footer of the title page"
@@ -7644,7 +7645,7 @@ msgstr "Agradecimentos"
 
 #: lib/layouts/acmart.layout:100
 msgid "Thanks: "
-msgstr "Agradecimentos:"
+msgstr "Agradecimentos: "
 
 #: lib/layouts/acmart.layout:106
 msgid "ACM Journal"
@@ -7658,7 +7659,7 @@ msgstr "Preâmbulo"
 
 #: lib/layouts/acmart.layout:111
 msgid "Journal's Short Name: "
-msgstr "Nome Curto da Revista:"
+msgstr "Nome Curto da Revista: "
 
 #: lib/layouts/acmart.layout:122
 msgid "ACM Conference"
@@ -7674,7 +7675,7 @@ msgstr "Local"
 
 #: lib/layouts/acmart.layout:140
 msgid "Conference Name: "
-msgstr "Nome da Conferência:"
+msgstr "Nome da Conferência: "
 
 #: lib/layouts/acmart.layout:147
 msgid "Short title"
@@ -7682,7 +7683,7 @@ msgstr "Título curto"
 
 #: lib/layouts/acmart.layout:178
 msgid "Email address: "
-msgstr "Endereço de email:"
+msgstr "Endereço de email: "
 
 #: lib/layouts/acmart.layout:190
 msgid "ORCID"
@@ -7694,7 +7695,7 @@ msgstr "ORCID: "
 
 #: lib/layouts/acmart.layout:212
 msgid "Affiliation: "
-msgstr "Afiliação:"
+msgstr "Afiliação: "
 
 #: lib/layouts/acmart.layout:216
 msgid "Additional Affiliation"
@@ -7702,7 +7703,7 @@ msgstr "Afiliação Adicional"
 
 #: lib/layouts/acmart.layout:218
 msgid "Additional Affiliation: "
-msgstr "Afiliação Adicional:"
+msgstr "Afiliação Adicional: "
 
 #: lib/layouts/acmart.layout:222 lib/layouts/acmart.layout:226
 msgid "Position"
@@ -7751,7 +7752,7 @@ msgstr "NotaDeTitulo"
 
 #: lib/layouts/acmart.layout:296
 msgid "Title Note: "
-msgstr "Nota de Título:"
+msgstr "Nota de Título: "
 
 #: lib/layouts/acmart.layout:302
 msgid "SubtitleNote"
@@ -7759,7 +7760,7 @@ msgstr "NotaDeSubtitulo"
 
 #: lib/layouts/acmart.layout:304
 msgid "Subtitle Note: "
-msgstr "Nota de Subtítulo:"
+msgstr "Nota de Subtítulo: "
 
 #: lib/layouts/acmart.layout:308 lib/layouts/apa6.layout:274
 msgid "AuthorNote"
@@ -7767,7 +7768,7 @@ msgstr "NotaDoAutor"
 
 #: lib/layouts/acmart.layout:310
 msgid "Note: "
-msgstr "Nota:"
+msgstr "Nota: "
 
 #: lib/layouts/acmart.layout:314
 msgid "ACM Volume"
@@ -7815,7 +7816,7 @@ msgstr "Num Seq Art ACM"
 
 #: lib/layouts/acmart.layout:346
 msgid "Article Sequential Number: "
-msgstr "Número Sequencial do Artigo:"
+msgstr "Número Sequencial do Artigo: "
 
 #: lib/layouts/acmart.layout:350
 msgid "ACM Submission ID"
@@ -7855,7 +7856,7 @@ msgstr "Insígnia ACM D"
 
 #: lib/layouts/acmart.layout:376
 msgid "ACM Badge R: "
-msgstr "Insígnia ACM D:"
+msgstr "Insígnia ACM D: "
 
 #: lib/layouts/acmart.layout:380
 msgid "ACM Badge L"
@@ -7863,7 +7864,7 @@ msgstr "Insígnia ACM E"
 
 #: lib/layouts/acmart.layout:382
 msgid "ACM Badge L: "
-msgstr "Insígnia ACM E:"
+msgstr "Insígnia ACM E: "
 
 #: lib/layouts/acmart.layout:386
 msgid "Start Page"
@@ -7875,11 +7876,11 @@ msgstr "Página Inicial: "
 
 #: lib/layouts/acmart.layout:394
 msgid "Terms: "
-msgstr "Termos:"
+msgstr "Termos: "
 
 #: lib/layouts/acmart.layout:400
 msgid "Keywords: "
-msgstr "Palavras-chave:"
+msgstr "Palavras-chave: "
 
 #: lib/layouts/acmart.layout:404
 msgid "CCSXML"
@@ -7934,7 +7935,7 @@ msgstr "Estágio"
 
 #: lib/layouts/acmart.layout:471
 msgid "Received: "
-msgstr "Recebido:"
+msgstr "Recebido: "
 
 #: lib/layouts/acmart.layout:479
 msgid "ShortAuthors"
@@ -7942,7 +7943,7 @@ msgstr "AutoresAbrev"
 
 #: lib/layouts/acmart.layout:487
 msgid "Short authors: "
-msgstr "Autores (abrev.):"
+msgstr "Autores (abrev.): "
 
 #: lib/layouts/acmart.layout:501
 msgid "Sidebar"
@@ -8233,7 +8234,7 @@ msgstr "CitaçãoCurta"
 
 #: lib/layouts/acmsiggraph-0-92.layout:328 lib/layouts/acmsiggraph.layout:284
 msgid "Short cite"
-msgstr "Citação curta "
+msgstr "Citação curta"
 
 #: lib/layouts/acmsiggraph-0-92.layout:336 lib/layouts/acmsiggraph.layout:292
 #: lib/layouts/jss.layout:179 lib/layouts/jss.layout:181
@@ -9300,7 +9301,7 @@ msgstr "Especificações de superposição para esta moldura"
 
 #: lib/layouts/beamer.layout:466 lib/layouts/beamer.layout:534
 msgid "Default Overlay Specifications"
-msgstr "Especificações Padrão de Superposição "
+msgstr "Especificações Padrão de Superposição"
 
 #: lib/layouts/beamer.layout:467 lib/layouts/beamer.layout:535
 msgid "Default overlay specifications within this frame"
@@ -11001,7 +11002,7 @@ msgstr "MarcaAutorCorrespondente"
 
 #: lib/layouts/elsarticle.layout:209
 msgid "CorAuthor mark"
-msgstr "Marca de AutorCorrespondente "
+msgstr "Marca de AutorCorrespondente"
 
 #: lib/layouts/elsarticle.layout:216
 msgid "Corresponding author"
@@ -11087,7 +11088,7 @@ msgstr "Opções de Enumerate"
 
 #: lib/layouts/enumitem.module:74
 msgid "Description Options"
-msgstr "Oções de Description"
+msgstr "Opções de Description"
 
 #: lib/layouts/enumitem.module:86 lib/layouts/scrclass.inc:51
 #: lib/layouts/scrlettr.layout:26 lib/layouts/scrlttr2.layout:31
@@ -11804,7 +11805,7 @@ msgstr "Restrição:"
 #: lib/layouts/foils.layout:239 lib/layouts/heb-article.layout:45
 #: lib/layouts/llncs.layout:431
 msgid "Theorem #."
-msgstr "Teorema #. "
+msgstr "Teorema #."
 
 #: lib/layouts/foils.layout:253 lib/layouts/heb-article.layout:60
 #: lib/layouts/llncs.layout:370
@@ -12817,7 +12818,7 @@ msgstr "Números PACS:"
 
 #: lib/layouts/jasatex.layout:223
 msgid "Preprint number"
-msgstr "Número de Preprint "
+msgstr "Número de Preprint"
 
 #: lib/layouts/jasatex.layout:226
 msgid "Preprint number:"
@@ -13044,7 +13045,7 @@ msgstr "SemTelefone"
 
 #: lib/layouts/lettre.layout:531
 msgid "EndOfMessage."
-msgstr "FimDeMensagem"
+msgstr "FimDeMensagem."
 
 #: lib/layouts/lettre.layout:543
 msgid "EndOfFile."
@@ -13514,7 +13515,7 @@ msgstr "Primeiro nome"
 
 #: lib/layouts/moderncv.layout:106
 msgid "FamilyName"
-msgstr "NomeDeFamília:"
+msgstr "NomeDeFamília"
 
 #: lib/layouts/moderncv.layout:110
 msgid "Family Name:"
@@ -13654,7 +13655,7 @@ msgstr "Resumo à esquerda"
 
 #: lib/layouts/moderncv.layout:444
 msgid "Left Text"
-msgstr "Texto à Esquerda "
+msgstr "Texto à Esquerda"
 
 #: lib/layouts/moderncv.layout:445
 msgid "Left text"
@@ -13816,7 +13817,7 @@ msgstr "Noweb"
 
 #: lib/layouts/noweb.module:5
 msgid "Allows to use Noweb as a literate programming tool."
-msgstr "Permite usar Noweb como uma ferramenta de programação literária"
+msgstr "Permite usar Noweb como uma ferramenta de programação literária."
 
 #: lib/layouts/numarticle.inc:9 lib/layouts/powerdot.layout:240
 msgid "\\arabic{section}"
@@ -14511,7 +14512,7 @@ msgstr "Afiliação (alternativa):"
 
 #: lib/layouts/revtex4-1.layout:93 lib/layouts/revtex4.layout:161
 msgid "Alternate Affiliation Option"
-msgstr "Opção de Afiliação Alternativa:"
+msgstr "Opção de Afiliação Alternativa"
 
 #: lib/layouts/revtex4-1.layout:94 lib/layouts/revtex4.layout:162
 msgid "Optional argument to the altaffiliation command"
@@ -15216,7 +15217,7 @@ msgstr "AnoDeCopyright"
 
 #: lib/layouts/sigplanconf.layout:101
 msgid "Copyright year:"
-msgstr "Ano de copyright"
+msgstr "Ano de copyright:"
 
 #: lib/layouts/sigplanconf.layout:105
 msgid "Copyrightdata"
@@ -15572,7 +15573,7 @@ msgstr "Título Corrido"
 
 #: lib/layouts/svcommon.inc:408
 msgid "Running Author"
-msgstr "Autor Corrido:"
+msgstr "Autor Corrido"
 
 #: lib/layouts/svcommon.inc:414 lib/layouts/svmult.layout:115
 msgid "Running Chapter"
@@ -16657,7 +16658,7 @@ msgstr "Etiqueta do problema correspondente"
 
 #: lib/layouts/theorems-without-preamble.inc:372
 msgid "Property \\theproperty."
-msgstr "Propriedade \\theproperty"
+msgstr "Propriedade \\theproperty."
 
 #: lib/layouts/todonotes.module:2
 msgid "TODO Notes"
@@ -18240,7 +18241,7 @@ msgstr "Rejeitar Alteração|R"
 
 #: lib/ui/stdcontext.inc:358
 msgid "Apply Last Text Style|A"
-msgstr "Aplicar Último Estilo de Texto|A"
+msgstr "Aplicar Último Estilo de Texto|p"
 
 #: lib/ui/stdcontext.inc:359
 msgid "Text Style|x"
@@ -18251,9 +18252,8 @@ msgid "Paragraph Settings...|P"
 msgstr "Configurações de Parágrafo..."
 
 #: lib/ui/stdcontext.inc:361
-#, fuzzy
 msgid "Unify Graphics Groups|U"
-msgstr "Grupo de Gráficos"
+msgstr "Unificar Grupos de Gráficos|U"
 
 #: lib/ui/stdcontext.inc:364
 msgid "Fullscreen Mode"
@@ -19630,7 +19630,7 @@ msgstr "Verificar ortografia"
 
 #: lib/ui/stdtoolbars.inc:76
 msgid "Spellcheck continuously"
-msgstr "Verificar ortografia continuamente "
+msgstr "Verificar ortografia continuamente"
 
 #: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1377
 msgid "Undo"
@@ -20747,28 +20747,24 @@ msgid "cancelto"
 msgstr "cancelto"
 
 #: lib/ui/stdtoolbars.inc:468
-#, fuzzy
 msgid "Insert left/right side scripts (sideset)"
-msgstr "Inserir caracteres nos cantos do operador"
+msgstr "Inserir caracteres nos cantos do operador (sideset)"
 
 #: lib/ui/stdtoolbars.inc:469
-#, fuzzy
 msgid "Insert right side scripts (sidesetr)"
 msgstr ""
 "Inserir caracteres nos cantos direitos superior e inferior, e/ou antes, do "
-"operador"
+"operador (sidesetr)"
 
 #: lib/ui/stdtoolbars.inc:470
-#, fuzzy
 msgid "Insert left side scripts (sidesetl)"
 msgstr ""
 "Inserir caracteres nos cantos esquerdos superior e inferior, e/ou depois, do "
-"operador"
+"operador (sidesetl)"
 
 #: lib/ui/stdtoolbars.inc:471
-#, fuzzy
 msgid "Insert side scripts (sidesetn)"
-msgstr "Inserir caracteres antes e depois do operador"
+msgstr "Inserir caracteres à esquerda e à direita do operador (sidesetn)"
 
 #: lib/ui/stdtoolbars.inc:472
 msgid "overset"
@@ -24976,7 +24972,7 @@ msgstr "Entrada bibliográfica não encontrada!"
 
 #: src/Buffer.cpp:416
 msgid "Disk Error: "
-msgstr "Erro de Disco:"
+msgstr "Erro de Disco: "
 
 #: src/Buffer.cpp:417
 #, c-format
@@ -25477,6 +25473,10 @@ msgid ""
 "contains spaces, but your TeX installation does not allow them. You should "
 "save the file to a directory whose name does not contain spaces."
 msgstr ""
+"O caminho de pasta para o documento\n"
+"%1$s\n"
+"contém espaços, que não são permitidos pela sua instalação TeX. Você deve "
+"salvar o arquivo para uma pasta cujo nome não contenha espaços."
 
 #: src/Buffer.cpp:4462 src/Buffer.cpp:4476 src/frontends/qt4/GuiView.cpp:692
 msgid "Document export cancelled."
@@ -25721,7 +25721,7 @@ msgstr "Classe de documento não está disponível"
 #: src/insets/InsetListings.cpp:239 src/insets/InsetListings.cpp:262
 #: src/mathed/MathExtern.cpp:1483
 msgid "LyX Warning: "
-msgstr "Aviso do LyX:"
+msgstr "Aviso do LyX: "
 
 #: src/BufferParams.cpp:2158 src/Encoding.cpp:247 src/Paragraph.cpp:2724
 #: src/insets/InsetListings.cpp:232 src/insets/InsetListings.cpp:240
@@ -26535,7 +26535,7 @@ msgstr ""
 
 #: src/Converter.cpp:644 src/Format.cpp:722 src/Format.cpp:793
 msgid "Executing command: "
-msgstr "Rodando comando:"
+msgstr "Rodando comando: "
 
 #: src/Converter.cpp:691
 msgid "Build errors"
@@ -28700,15 +28700,15 @@ msgstr ""
 
 #: src/frontends/qt4/GuiAbout.cpp:219
 msgid "Built from git commit hash "
-msgstr "Compilado do commit git de hash"
+msgstr "Compilado do commit git de hash "
 
 #: src/frontends/qt4/GuiAbout.cpp:226
 msgid "Library directory: "
-msgstr "Pasta de biblioteca:"
+msgstr "Pasta de biblioteca: "
 
 #: src/frontends/qt4/GuiAbout.cpp:229
 msgid "User directory: "
-msgstr "Pasta de usuário:"
+msgstr "Pasta de usuário: "
 
 #: src/frontends/qt4/GuiAbout.cpp:232
 #, c-format
@@ -28806,8 +28806,8 @@ msgid ""
 "updated document class specifications."
 msgstr ""
 "O sistema foi reconfigurado.\n"
-"É necessário reiniciar o LyX para usar especificações\n"
-"de classe de documento porventura atualizadas."
+"Se alguma especificação de classe de documento tiver sido\n"
+"atualizada, é necessário reiniciar o LyX para poder usá-la."
 
 #: src/frontends/qt4/GuiApplication.cpp:1626
 msgid "Exiting."
@@ -28866,7 +28866,7 @@ msgstr ""
 "O Lyx encontrou uma exceção, e tentará agora salvar todos os documentos que "
 "ainda não foram salvos e encerrar.\n"
 "\n"
-"Exceção:"
+"Exceção: "
 
 #: src/frontends/qt4/GuiApplication.cpp:2745
 #: src/frontends/qt4/GuiApplication.cpp:2751
@@ -30447,7 +30447,7 @@ msgstr "C&omando:"
 #: src/frontends/qt4/GuiPrefs.cpp:810 src/frontends/qt4/GuiPrefs.cpp:835
 #: src/frontends/qt4/GuiPrefs.cpp:963 src/frontends/qt4/GuiPrefs.cpp:990
 msgid "Co&mmand:"
-msgstr "&Comando: "
+msgstr "&Comando:"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1019
 msgid "Screen Fonts"
@@ -30803,7 +30803,7 @@ msgstr "Latino Estendido-B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:57
 msgid "IPA Extensions"
-msgstr "Extensões IPA "
+msgstr "Extensões IPA"
 
 #: src/frontends/qt4/GuiSymbols.cpp:58
 msgid "Spacing Modifier Letters"
@@ -31135,7 +31135,7 @@ msgstr "Informação TeX"
 
 #: src/frontends/qt4/GuiThesaurus.cpp:208
 msgid "No thesaurus available for this language!"
-msgstr "Este idioma não tem dicionário de sinônimos."
+msgstr "Este idioma não tem dicionário de sinônimos!"
 
 #: src/frontends/qt4/GuiToc.cpp:36
 msgid "Outline"
@@ -32096,7 +32096,7 @@ msgstr ""
 
 #: src/insets/InsetBibtex.cpp:232
 msgid "Options: "
-msgstr "Opções:"
+msgstr "Opções: "
 
 #: src/insets/InsetBibtex.cpp:326
 msgid ""
@@ -32382,7 +32382,7 @@ msgstr ""
 #: src/insets/InsetInclude.cpp:719 src/insets/InsetInclude.cpp:803
 #: src/insets/InsetInclude.cpp:828
 msgid "Error: "
-msgstr "Erro:"
+msgstr "Erro: "
 
 #: src/insets/InsetInclude.cpp:728
 #, c-format
@@ -32960,7 +32960,7 @@ msgstr "Referência a Nome"
 
 #: src/insets/InsetRef.cpp:425
 msgid "NameRef: "
-msgstr "RefANome:"
+msgstr "RefANome: "
 
 #: src/insets/InsetRef.cpp:426
 msgid "Label Only"
@@ -32968,7 +32968,7 @@ msgstr "Somente Etiqueta"
 
 #: src/insets/InsetRef.cpp:426
 msgid "Label: "
-msgstr "Etiqueta:"
+msgstr "Etiqueta: "
 
 #: src/insets/InsetScript.cpp:341
 msgid "subscript"
