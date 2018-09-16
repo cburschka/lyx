@@ -3670,7 +3670,7 @@ def convert_captionlayouts(document):
 
             document.body[j:j] = ["\\end_layout", "", "\\end_inset", "", ""]
             document.body[i:i+1] = ["\\begin_layout %s" % document.default_layout,
-                                    "\\begin_inset Caption %s" % caption_dict[val], "",
+                                    "\\begin_inset Caption %s" % caption_dict[captype], "",
                                     "\\begin_layout %s" % document.default_layout]
         i += 1
 
