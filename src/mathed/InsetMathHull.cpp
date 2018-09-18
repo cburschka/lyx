@@ -1295,8 +1295,8 @@ void InsetMathHull::addRow(row_type row)
 	if (type_ == hullMultline) {
 		if (row + 1 == nrows())  {
 			numbered_[row] = NONUMBER;
-			std::swap(label, label_[row]);
-			std::swap(number, numbers_[row]);
+			swap(label, label_[row]);
+			swap(number, numbers_[row]);
 		} else
 			numbered = false;
 	}
@@ -1314,9 +1314,9 @@ void InsetMathHull::swapRow(row_type row)
 		return;
 	if (row + 1 == nrows())
 		--row;
-	std::swap(numbered_[row], numbered_[row + 1]);
-	std::swap(numbers_[row], numbers_[row + 1]);
-	std::swap(label_[row], label_[row + 1]);
+	swap(numbered_[row], numbered_[row + 1]);
+	swap(numbers_[row], numbers_[row + 1]);
+	swap(label_[row], label_[row + 1]);
 	InsetMathGrid::swapRow(row);
 }
 
@@ -1326,9 +1326,9 @@ void InsetMathHull::delRow(row_type row)
 	if (nrows() <= 1 || !rowChangeOK())
 		return;
 	if (row + 1 == nrows() && type_ == hullMultline) {
-		std::swap(numbered_[row - 1], numbered_[row]);
-		std::swap(numbers_[row - 1], numbers_[row]);
-		std::swap(label_[row - 1], label_[row]);
+		swap(numbered_[row - 1], numbered_[row]);
+		swap(numbers_[row - 1], numbers_[row]);
+		swap(label_[row - 1], label_[row]);
 		InsetMathGrid::delRow(row);
 		return;
 	}
