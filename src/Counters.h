@@ -239,9 +239,6 @@ private:
 	std::vector<docstring> counter_stack_;
 	/// Same, but for last layout.
 	std::vector<Layout const *> layout_stack_;
-
-	///
-	friend void swap(Counters &, Counters &);
 };
 
 } // namespace lyx

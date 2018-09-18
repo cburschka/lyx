@@ -697,12 +697,4 @@ void Counters::endEnvironment()
 }
 
 
-void swap(Counters & c1, Counters & c2)
-{
-	Counters tmp = move(c1);
-	c1 = move(c2);
-	c2 = move(tmp);
-}
-
-
 } // namespace lyx
