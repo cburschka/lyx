@@ -1663,8 +1663,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			DocIterator scur = cur;
 			depth_type const max_depth = cur.paragraph().params().depth() + 1;
 			cur.forwardPar();
-			while (cur.paragraph().params().depth() < min(nextpar_depth, max_depth))
+			while (cur.paragraph().params().depth() < min(nextpar_depth, max_depth)) {
+				depth_type const olddepth = cur.paragraph().params().depth();
 				lyx::dispatch(FuncRequest(LFUN_DEPTH_INCREMENT));
+				if (olddepth == cur.paragraph().params().depth())
+					// leave loop if no incrementation happens
+					break;
+			}
 			cur.setCursor(scur);
 		}
 
