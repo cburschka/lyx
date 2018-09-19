@@ -1517,9 +1517,9 @@ void LyXAction::init()
  * \li Params: outer: If this is given, LyX will split the outermost environment in
                       the current nesting hierarchy.\n
                previous: If this is given, LyX will split the environment in the previous
-                      paragraph (is there is one).\n
-               before: If this is given, the new environment will be appended rather than
-                      prepended.
+                         paragraph (if there is one).\n
+               before:   If this is given, the new environment will be appended rather than
+                         prepended.
  * \li Origin: spitz, 23 Dec 2012
  * \endvar
  */

@@ -108,6 +108,8 @@ What's new
 
 * USER INTERFACE
 
+- Fix infinite loop while separating environments (bug 11295).
+
 - Fix loss of citation list after Undo (bug 9158).
 
 - Fix document-wide language setting with minted (bug 11203).
@@ -120,7 +122,7 @@ What's new
 
 - Draw menu separator symbol according to text direction.
 
-- Improve automatic removal of extra spaces, aka DEPM (bug 10503)
+- Improve automatic removal of extra spaces, aka DEPM (bug 10503).
 
 
 
