@@ -1330,6 +1330,34 @@ def revert_listpargs(document):
         i += 1
 
 
+def revert_lformatinfo(document):
+    " Revert layout format Info inset to text. "
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Info", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of Info inset.")
+            i = i + 1
+            continue
+        tp = find_token(document.body, 'type', i, j)
+        tpv = get_quoted_value(document.body, "type", tp)
+        if tpv != "lyxinfo":
+            i = i + 1
+            continue
+        arg = find_token(document.body, 'arg', i, j)
+        argv = get_quoted_value(document.body, "arg", arg)
+        if argv != "layoutformat":
+            i = i + 1
+            continue
+        # hardcoded for now
+        document.body[i : j+1] = "69"
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -1354,10 +1382,12 @@ convert = [
            [560, []],
            [561, [convert_latexFonts]], # Handle dejavu, ibmplex fonts in GUI
            [562, []],
-           [563, []]
+           [563, []],
+           [564, []]
           ]
 
 revert =  [
+           [563, [revert_lformatinfo]],
            [562, [revert_listpargs]],
            [561, [revert_l7ninfo]],
            [560, [revert_latexFonts]], # Handle dejavu, ibmplex fonts in user preamble

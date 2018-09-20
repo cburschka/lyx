@@ -98,8 +98,8 @@ icon: argument is the name of the LFUN such as "paste". The syntax is the same
 buffer: argument can be one of "name", "name-noext", "path", "class". This inset output the
     filename (with extension), filename (without extension), path, and textclass of this buffer.
 
-lyxinfo: argument must (presently) be "version". This inset outputs information
-    about the version of LyX currently in use.
+lyxinfo: argument must be "version" or "layoutformat". This outputs information
+    about the version of LyX currently in use or the current LyX layout format, respectively.
 
 vcs: argument can be one of "revision", "tree-revision", "author", "time", "date".
     This insets outputs revision control information, if available.

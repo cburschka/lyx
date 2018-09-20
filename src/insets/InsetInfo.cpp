@@ -281,6 +281,7 @@ vector<pair<string,docstring>> InsetInfoParams::getArguments(Buffer const * buf,
 
 	case LYX_INFO:
 		result.push_back(make_pair("version", _("LyX version")));
+		result.push_back(make_pair("layoutformat", _("LyX layout format")));
 		break;
 
 	case FIXDATE_INFO:
@@ -384,7 +385,7 @@ bool InsetInfoParams::validateArgument(Buffer const * buf, docstring const & arg
 		return false;
 
 	case LYX_INFO:
-		return name == "version";
+		return name == "version" || name == "layoutformat";
 
 	case FIXDATE_INFO: {
 		string date;
@@ -532,7 +533,10 @@ docstring InsetInfo::toolTip(BufferView const &, int, int) const
 			result = _("Version control time");
 		break;
 	case InsetInfoParams::LYX_INFO:
-		result = _("The current LyX version");
+		if (params_.name == "version")
+			result = _("The current LyX version");
+		else if (params_.name == "layoutformat")
+			result = _("The current LyX layout format");
 		break;
 	case InsetInfoParams::DATE_INFO:
 		result = _("The current date");
@@ -1084,6 +1088,8 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 			break;
 		if (params_.name == "version")
 			setText(from_ascii(lyx_version), params_.lang);
+		else if (params_.name == "layoutformat")
+			setText(convert<docstring>(LAYOUT_FORMAT), params_.lang);
 		initialized_ = true;
 		break;
 	case InsetInfoParams::DATE_INFO:
