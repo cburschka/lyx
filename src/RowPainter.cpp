@@ -269,6 +269,21 @@ void RowPainter::paintStringAndSel(Row::Element const & e) const
 }
 
 
+void RowPainter::paintTextDecoration(Row::Element const & e) const
+{
+	// element selected?
+	bool const sel = (e.pos >= row_.sel_beg && e.endpos <= row_.sel_end)
+		|| pi_.selected;
+	FontInfo copy = e.font.fontInfo();
+	if (sel || e.change.changed()) {
+		Color const col = e.change.changed() ? e.change.color()
+		                                     : Color_selectiontext;
+		copy.setPaintColor(col);
+	}
+	pi_.pain.textDecoration(copy, int(x_), yo_, int(e.full_width()));
+}
+
+
 void RowPainter::paintChange(Row::Element const & e) const
 {
 	e.change.paintCue(pi_, x_, yo_, x_ + e.full_width(), e.font.fontInfo());
@@ -603,10 +618,11 @@ void RowPainter::paintText()
 
 		case Row::INSET:
 			paintInset(e);
+			paintTextDecoration(e);
 			break;
 
 		case Row::SPACE:
-			pi_.pain.textDecoration(e.font.fontInfo(), int(x_), yo_, int(e.full_width()));
+			paintTextDecoration(e);
 		}
 
 		// The markings of foreign languages
