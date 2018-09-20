@@ -2947,7 +2947,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_INFO_INSERT:
 		code = INFO_CODE;
-		enable = infoparams.validateArgument(cur.buffer(), cmd.argument(), true);
+		enable = cmd.argument().empty()
+			|| infoparams.validateArgument(cur.buffer(), cmd.argument(), true);
 		break;
 	case LFUN_ARGUMENT_INSERT: {
 		code = ARG_CODE;
