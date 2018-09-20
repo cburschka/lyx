@@ -897,7 +897,23 @@ void GuiWorkArea::wheelEvent(QWheelEvent * ev)
 {
 	// Wheel rotation by one notch results in a delta() of 120 (see
 	// documentation of QWheelEvent)
+	// But first we have to ignore horizontal scroll events.
+#if QT_VERSION < 0x050000
+	if (ev->orientation() == Qt::Horizontal) {
+		ev->accept();
+		return;
+	}
 	double const delta = ev->delta() / 120.0;
+#else
+	QPoint const aDelta = ev->angleDelta();
+	// skip horizontal wheel event
+	if (abs(aDelta.x()) > abs(aDelta.y())) {
+		ev->accept();
+		return;
+	}
+	double const delta = aDelta.y() / 120.0;
+#endif
+
 	bool zoom = false;
 	switch (lyxrc.scroll_wheel_zoom) {
 	case LyXRC::SCROLL_WHEEL_ZOOM_CTRL:
