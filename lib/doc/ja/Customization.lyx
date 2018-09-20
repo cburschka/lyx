@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 564
 \begin_document
 \begin_header
 \save_transient_properties false
@@ -88,7 +88,7 @@ End
 \language japanese
 \language_package default
 \inputencoding auto
-\fontencoding global
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -5954,7 +5954,19 @@ Format
 \end_inset
 
 タグは挿入しなくてはなりません．どの書式を使用しても構いませんが，通常は，執筆時点の最新書式を用いることになるでしょう(\SpecialChar LyX
- 2.2では，最新書式は60です)
+ 
+\begin_inset Info
+type  "lyxinfo"
+arg   "version"
+\end_inset
+
+では，最新書式は
+\begin_inset Info
+type  "lyxinfo"
+arg   "layoutformat"
+\end_inset
+
+です)
 \end_layout
 
 \begin_layout Standard
@@ -6277,7 +6289,13 @@ DeclareLyXModule{My Package}
 \end_layout
 
 \begin_layout LyX-Code
-Format 60
+Format 
+\begin_inset Info
+type  "lyxinfo"
+arg   "layoutformat"
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -7608,10 +7626,16 @@ status collapsed
 \end_inset
 
 1.3.x以前のレイアウトファイルには，明示されたファイル形式がないため，書式1と解されます．\SpecialChar LyX
-現行版のファイル形式は，書式60です．しかし，\SpecialChar LyX
+現行版のファイル形式は，書式
+\begin_inset Info
+type  "lyxinfo"
+arg   "layoutformat"
+\end_inset
+
+です．しかし，\SpecialChar LyX
 の各版は，旧版の\SpecialChar LyX
-で作成さ
-れたファイルを読むことができるように，旧版のレイアウトファイルも読むことができます．しかしながら，以前の書式に変換する方法はありません．
+で作成されたファイルを読むことができるように，旧版のレイアウトファイルも読むことができます．しかしながら，以前の書式に変換する方法
+はありません．
 \end_layout
 
 \begin_layout Subsection

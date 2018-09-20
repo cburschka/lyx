@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 564
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -44,7 +44,7 @@ logicalmkup
 \language french
 \language_package default
 \inputencoding auto
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
 \font_typewriter "lmtt" "default"
@@ -6487,7 +6487,19 @@ Format
  N'importe quel format est admissible, mais on utilise d'habitude le format
  de la version de \SpecialChar LyX
  utilisée (pour \SpecialChar LyX
- 2.2, le format porte le numéro 60).
+ 
+\begin_inset Info
+type  "lyxinfo"
+arg   "version"
+\end_inset
+
+, le format porte le numéro 
+\begin_inset Info
+type  "lyxinfo"
+arg   "layoutformat"
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -6883,7 +6895,13 @@ DeclareLyXModule{mon paquetage}
 \begin_layout LyX-Code
 
 \lang english
-Format 60
+Format 
+\begin_inset Info
+type  "lyxinfo"
+arg   "layoutformat"
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -8530,7 +8548,13 @@ Format
 
 \lang french
 .
- Le numéro de format du présent fichier est le numéro 60.
+ Le numéro de format du présent fichier est le numéro 
+\begin_inset Info
+type  "lyxinfo"
+arg   "layoutformat"
+\end_inset
+
+.
  mais chaque version de \SpecialChar LyX
  peut lire les fichiers de format d'une version
  plus ancienne, comme elle peut lire les documents crées avec une version

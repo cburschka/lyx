@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 564
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -45,7 +45,7 @@ logicalmkup
 \language english
 \language_package default
 \inputencoding auto
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
 \font_typewriter "lmtt" "default"
@@ -6974,7 +6974,19 @@ Format
  Any format is acceptable, but one would normally use the format current
  at the time.
  (In \SpecialChar LyX
- 2.3, the current layout format is 63.)
+ 
+\begin_inset Info
+type  "lyxinfo"
+arg   "version"
+\end_inset
+
+, the current layout format is 
+\begin_inset Info
+type  "lyxinfo"
+arg   "layoutformat"
+\end_inset
+
+.)
 \end_layout
 
 \begin_layout Standard
@@ -7344,7 +7356,13 @@ DeclareLyXModule{My Class}
 \end_layout
 
 \begin_layout LyX-Code
-Format 63
+Format 
+\begin_inset Info
+type  "lyxinfo"
+arg   "layoutformat"
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 

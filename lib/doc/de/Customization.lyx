@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 564
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -53,7 +53,7 @@ logicalmkup
 \language ngerman
 \language_package default
 \inputencoding auto
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "FreeSerif"
 \font_sans "lmss" "FreeSans"
 \font_typewriter "lmtt" "FreeMono"
@@ -5399,7 +5399,19 @@ Format
 u.).
  Dabei ist jedes (bekannte) Format möglich, sinnvollerweise sollten Sie
  aber das jeweils aktuelle verwenden (das aktuelle Format in \SpecialChar LyX
- 2.3 ist 63).
+ 
+\begin_inset Info
+type  "lyxinfo"
+arg   "version"
+\end_inset
+
+ ist 
+\begin_inset Info
+type  "lyxinfo"
+arg   "layoutformat"
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -5806,7 +5818,13 @@ DeclareLyXModule{My Class}
 \end_layout
 
 \begin_layout LyX-Code
-Format 63
+Format 
+\begin_inset Info
+type  "lyxinfo"
+arg   "layoutformat"
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 

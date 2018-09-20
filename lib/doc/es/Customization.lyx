@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 564
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -44,7 +44,7 @@ logicalmkup
 \language spanish
 \language_package default
 \inputencoding auto
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
 \font_typewriter "lmtt" "default"
@@ -6426,7 +6426,19 @@ Format
  Cualquier formato es aceptable, pero debería usarse normalmente el actual
  formato.
  (En \SpecialChar LyX
- 2.2 el formato actual es 60).
+ 
+\begin_inset Info
+type  "lyxinfo"
+arg   "version"
+\end_inset
+
+ el formato actual es 
+\begin_inset Info
+type  "lyxinfo"
+arg   "layoutformat"
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -6807,7 +6819,13 @@ DeclareLyXModule{My Package}
 \end_layout
 
 \begin_layout LyX-Code
-Format 60
+Format 
+\begin_inset Info
+type  "lyxinfo"
+arg   "layoutformat"
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -8364,7 +8382,13 @@ Format
 
 .
  El número para la versión actual de \SpecialChar LyX
- es formato 60.
+ es formato 
+\begin_inset Info
+type  "lyxinfo"
+arg   "layoutformat"
+\end_inset
+
+.
  Cada versión de \SpecialChar LyX
  es capaz de leer los formatos de versiones anteriores,
  de la misma forma que puede leer archivos producidos con versiones de \SpecialChar LyX
