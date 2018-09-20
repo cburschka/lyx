@@ -22,6 +22,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "CoordCache.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "FuncRequest.h"
@@ -969,7 +970,14 @@ bool InsetMathGrid::idxUpDown(Cursor & cur, bool up) const
 		LASSERT(cur.idx() > 0, return false);
 		--cur.idx();
 	}
-	cur.pos() = cur.cell().x2pos(&cur.bv(), cur.x_target() - cur.cell().xo(cur.bv()));
+	// FIXME: this is only a workaround to avoid a crash if the inset
+	// in not in coord cache. The best would be to force a FitCursor
+	// operation.
+	CoordCache::Arrays const & arraysCache = cur.bv().coordCache().arrays();
+	if (arraysCache.has(&cur.cell()))
+		cur.pos() = cur.cell().x2pos(&cur.bv(), cur.x_target() - cur.cell().xo(cur.bv()));
+	else
+		cur.pos() = 0;
 	return true;
 }
 
