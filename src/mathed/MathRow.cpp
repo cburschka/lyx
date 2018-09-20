@@ -381,12 +381,14 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 
 		if (!s1.empty()) {
 			f.setColor(Color_inlinecompletion);
-			pi.pain.text(x, y, s1, f);
+			// offset the text by e.after to make sure that the
+			// spacing is after the completion, not before.
+			pi.pain.text(x - e.after, y, s1, f);
 			x += mathed_string_width(f, s1);
 		}
 		if (!s2.empty()) {
 			f.setColor(Color_nonunique_inlinecompletion);
-			pi.pain.text(x, y, s2, f);
+			pi.pain.text(x - e.after, y, s2, f);
 			x += mathed_string_width(f, s2);
 		}
 	}
