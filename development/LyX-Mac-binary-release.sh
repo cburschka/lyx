@@ -720,7 +720,7 @@ content_directory() {
 
 installname() {
 		echo install_name_tool "$@"
-		install_name_tool "$@"
+		install_name_tool "$@" || exit 1
 }
 
 private_framework() {
