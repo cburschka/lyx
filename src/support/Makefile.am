@@ -164,7 +164,11 @@ check_PROGRAMS = \
 	check_trivstring
 
 if INSTALL_MACOSX
-ADD_FRAMEWORKS = -framework QtCore -framework AppKit -framework ApplicationServices
+ADD_FRAMEWORKS = \
+	-framework QtCore -framework AppKit -framework ApplicationServices \
+	-Wl,-rpath,@loader_path/../Frameworks \
+	-Wl,-rpath,@executable_path/../Frameworks \
+	-Wl,-headerpad_max_install_names
 endif
 
 check_convert_LDADD = liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) $(QT_CORE_LIBS) $(LIBSHLWAPI) @LIBS@

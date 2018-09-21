@@ -17,7 +17,10 @@ lyxclient_LDADD = \
 	$(QT_LIB) $(QT_LDFLAGS) $(LIBSHLWAPI) $(LIBPSAPI)
 
 if INSTALL_MACOSX
-lyxclient_LDFLAGS = -framework AppKit
+lyxclient_LDFLAGS = -framework AppKit \
+	-Wl,-rpath,@loader_path/../Frameworks \
+	-Wl,-rpath,@executable_path/../Frameworks \
+	-Wl,-headerpad_max_install_names
 endif
 
 SOURCEFILES = \

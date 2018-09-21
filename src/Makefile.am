@@ -48,7 +48,8 @@ endif
 if INSTALL_MACOSX
 lyx_LDFLAGS = -framework AppKit -framework ApplicationServices \
 	-Wl,-rpath,@loader_path/../Frameworks \
-	-Wl,-rpath,@executable_path/../Frameworks
+	-Wl,-rpath,@executable_path/../Frameworks \
+	-Wl,-headerpad_max_install_names
 endif
 
 if INSTALL_MACOSX
