@@ -23,7 +23,8 @@ lyxconvert_LDADD = \
 
 lyxconvert_LDFLAGS = -framework AppKit \
 	-Wl,-rpath,@loader_path/../Frameworks \
-	-Wl,-rpath,@executable_path/../Frameworks
+	-Wl,-rpath,@executable_path/../Frameworks \
+	-Wl,-headerpad_max_install_names
 
 else
 

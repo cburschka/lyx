@@ -135,7 +135,8 @@ tex2lyx_LDADD = \
 if INSTALL_MACOSX
 tex2lyx_LDFLAGS = -framework AppKit \
 	-Wl,-rpath,@loader_path/../Frameworks \
-	-Wl,-rpath,@executable_path/../Frameworks
+	-Wl,-rpath,@executable_path/../Frameworks \
+	-Wl,-headerpad_max_install_names
 endif
 
 .PHONY: alltests alltests-recursive updatetests
