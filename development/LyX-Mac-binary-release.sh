@@ -776,7 +776,7 @@ EOF
 						# pattern match for: /path/to/qt/lib/QtGui.framework/Versions/4/QtGui (compatibility version 4.6.0, current version 4.6.2)
 						case "${library}" in
 						*@rpath/*"${libnm}"*"("*version*")"*)
-							echo rpath based name for ${libnm} is ok.
+							# echo rpath based name for ${libnm} is ok.
 							;;
 						*"${libnm}"*"("*version*")"*)
 							installname -change\
