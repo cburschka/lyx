@@ -403,6 +403,7 @@ case $SDKs in
 	;;
 esac
 MYCFLAGS="-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}"
+MYLDFLAGS="-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}"
 
 build_qt() {
 	echo Build Qt library ${QtSourceDir}
@@ -465,7 +466,7 @@ if [ -d "${LibMagicSourceDir}" -a ! -f "${LibMagicInstallHdr}" ]; then
 
 	for arch in ${ARCH_LIST} ; do
 		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export CPPFLAGS
-		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export LDFLAGS
+		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYLDFLAGS}"; export LDFLAGS
 		"${LibMagicSourceDir}/configure"\
 			--prefix="${LibMagicInstallDir}"\
 			${LibMagicConfigureOptions}
@@ -527,7 +528,7 @@ if [ -d "${HunSpellSourceDir}" -a ! -f "${HunSpellInstallHdr}" ]; then
 	for arch in ${ARCH_LIST} ; do
 		make distclean
 		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export CPPFLAGS
-		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export LDFLAGS
+		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYLDFLAGS}"; export LDFLAGS
 		"${HunSpellSourceDir}/configure"\
 			--prefix="${HunSpellInstallDir}"\
 			${HunspellConfigureOptions}
@@ -590,7 +591,7 @@ if [ -d "${ASpellSourceDir}" -a ! -f "${ASpellInstallHdr}" -a "yes" = "${aspell_
 	for arch in ${ARCH_LIST} ; do
 		make distclean
 		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export CPPFLAGS
-		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export LDFLAGS
+		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYLDFLAGS}"; export LDFLAGS
 		CXXFLAGS=-g "${ASpellSourceDir}/configure"\
 			--prefix="${ASpellInstallDir}"\
 			${AspellConfigureOptions}
@@ -690,7 +691,7 @@ build_lyx() {
 		mkdir -p "${LyxBuildDir}" && cd "${LyxBuildDir}"
 
 		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"
-		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"
+		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYLDFLAGS}"
 
 		if [ "$configure_qt_frameworks" = "yes" ]; then
 			export QT_CORE_CFLAGS="-FQtCore"
