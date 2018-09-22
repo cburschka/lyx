@@ -202,7 +202,8 @@ void GuiCitation::applyView()
 
 void GuiCitation::showEvent(QShowEvent * e)
 {
-	filter_->clear();
+	if (!filter_->text().isEmpty())
+		filterPressed();
 	availableLV->setFocus();
 	DialogView::showEvent(e);
 }
