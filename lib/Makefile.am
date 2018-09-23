@@ -2169,7 +2169,7 @@ dist_layouts_DATA =\
 	layouts/bxjsslide.layout \
 	layouts/changebars.module \
 	layouts/chess.layout \
-	layouts/chessboard.layout \
+	layouts/chessboard.module \
 	layouts/cl2emult.layout \
 	layouts/copernicus.layout \
 	layouts/ctex-article.layout \

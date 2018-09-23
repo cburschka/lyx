@@ -1,17 +1,22 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 563
+\lyxformat 564
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin /systemlyxdir/examples/
-\textclass chessboard
+\textclass article
 \begin_preamble
-\usepackage{multicol}
+\AtBeginDocument{%
 \columnsep 0.25in
 \columnseprule 0.4pt
 \hyphenpenalty 10000
+}
 \end_preamble
 \use_default_options true
+\begin_modules
+chessboard
+multicol
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -51,10 +56,9 @@
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine biblatex-natbib
-\cite_engine_type authoryear
-\biblatex_bibstyle authoryear
-\biblatex_citestyle authoryear
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -72,14 +76,14 @@
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation skip
-\defskip medskip
+\defskip smallskip
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
-\paperpagestyle default
+\paperpagestyle empty
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -116,37 +120,25 @@ Game start 05/29/2001
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Multiple Columns
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 The following game was played at the IECC (International Email Chess Club).
  It is presented as an example of the fun you can have with \SpecialChar LyX
 's new chessboard
- layout (based on the 
-\begin_inset Quotes eld
-\end_inset
-
-xskak.sty
-\begin_inset Quotes erd
-\end_inset
-
- package from CTAN
+ module (using the 
+\family sans
+xskak
+\family default
+ and 
+\family sans
+chessboard
+\family default
+ packages).
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset CommandInset line
 LatexCommand rule
 offset "0.5ex"
@@ -158,14 +150,14 @@ height "1pt"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \noun on
 Sylvan, Kayvan
 \begin_inset space \hfill{}
 \end_inset
 
-Wakeham, Marc 
+Wakeham, Marc
 \noun default
 
 \begin_inset Newline newline
@@ -175,10 +167,10 @@ Wakeham, Marc
 \begin_inset space \hfill{}
 \end_inset
 
- (1639)
+(1639)
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \noindent
 \begin_inset CommandInset line
 LatexCommand rule
@@ -191,7 +183,24 @@ height "1pt"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout NewChessGame
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex SetChessBoard
+status open
+
+\begin_layout Plain Layout
+pgfstyle=straightmove,arrow=to,linewidth=0.1em,smallboard
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Flex Mainline
 status open
 
@@ -207,12 +216,6 @@ outvar
 
 \end_inset
 
-
-\begin_inset Argument 2
-status open
-
-\begin_layout Plain Layout
-
 1.
  e4 c5 2.
  Nc3 d6 3.
@@ -226,57 +229,35 @@ status open
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
+\begin_layout ChessBoard
 \noindent
 \align center
 \begin_inset Flex ChessBoard
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 
-d2-d4
+markmoves={d2-d4},pgfstyle=knightmove,markmove={g1-e2},pgfstyle=circle,markfield
+s={d4,f4}
 \end_layout
 
 \end_inset
 
 
-\begin_inset Argument 3
-status open
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
-d4,f4
-\end_layout
-
-\end_inset
-
-
-\begin_inset Argument 2
-status open
-
-\begin_layout Plain Layout
-g1-e2
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \noindent
 \align block
 So far, so good.
@@ -285,13 +266,8 @@ So far, so good.
  The diagrammed position has been reached before in hundreds of GM games.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex Mainline
-status open
-
 \begin_layout Plain Layout
-
-\begin_inset Argument 2
+\begin_inset Flex Mainline
 status open
 
 \begin_layout Plain Layout
@@ -305,12 +281,7 @@ status open
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
+\begin_layout Plain Layout
 \noindent
 \align block
 \begin_inset Flex Variation
@@ -328,20 +299,9 @@ invar
 
 \end_inset
 
-
-\begin_inset Argument 2
-status open
-
-\begin_layout Plain Layout
-
 5...
  Ng7
-\end_layout
-
-\end_inset
-
-
-\begin_inset Argument 3
+\begin_inset Argument post:1
 status open
 
 \begin_layout Plain Layout
@@ -361,7 +321,7 @@ equal{} was better
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Flex Mainline
 status open
 
@@ -377,12 +337,6 @@ outvar
 
 \end_inset
 
-
-\begin_inset Argument 2
-status open
-
-\begin_layout Plain Layout
-
 6.
  d4 cxd4 7.
  Nxd4 a6
@@ -393,21 +347,16 @@ status open
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
+\begin_layout Plain Layout
 With 7...
  a6, we are back in the well-trodden theory of this opening.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Flex ChessBoard
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -418,13 +367,8 @@ status open
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex Mainline
-status open
-
 \begin_layout Plain Layout
-
-\begin_inset Argument 2
+\begin_inset Flex Mainline
 status open
 
 \begin_layout Plain Layout
@@ -442,24 +386,21 @@ status open
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
+\begin_layout ChessBoard
 \noindent
 \align center
 \begin_inset Flex ChessBoard
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 
-a1-d1
+markmoves={a1-d1}
 \end_layout
 
 \end_inset
@@ -472,29 +413,19 @@ a1-d1
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 White continues to develop pieces and also sets a trap for Black.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Flex Mainline
 status open
 
 \begin_layout Plain Layout
 
-\begin_inset Argument 2
-status open
-
-\begin_layout Plain Layout
-
 12...
- O-O?
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Argument 3
+ O-O? 
+\begin_inset Argument post:1
 status open
 
 \begin_layout Plain Layout
@@ -512,11 +443,11 @@ This move loses instantly.
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The following was better, even though white retains the upper hand.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Flex Variation
 status open
 
@@ -532,22 +463,11 @@ invar
 
 \end_inset
 
-
-\begin_inset Argument 2
-status open
-
-\begin_layout Plain Layout
-
 12...
  e5 13.
  Be3 Qc7 14.
  Na4 O-O
-\end_layout
-
-\end_inset
-
-
-\begin_inset Argument 3
+\begin_inset Argument post:1
 status open
 
 \begin_layout Plain Layout
@@ -567,7 +487,7 @@ wbetter
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Flex Mainline
 status open
 
@@ -583,12 +503,6 @@ outvar
 
 \end_inset
 
-
-\begin_inset Argument 2
-status open
-
-\begin_layout Plain Layout
-
 13.
  e5!
 \end_layout
@@ -598,23 +512,13 @@ status open
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
+\begin_layout Plain Layout
 Black's knight and bishop form a bumbling pair here.
  The bishop is doomed.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex Mainline
-status open
-
 \begin_layout Plain Layout
-
-\begin_inset Argument 2
+\begin_inset Flex Mainline
 status open
 
 \begin_layout Plain Layout
@@ -626,12 +530,7 @@ status open
  Bxd6 Rfd8 17.
  Bc7 Rd7 18.
  Bf4
-\end_layout
-
-\end_inset
-
-
-\begin_inset Argument 3
+\begin_inset Argument post:1
 status open
 
 \begin_layout Plain Layout
@@ -649,11 +548,11 @@ status open
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Flex ChessBoard
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -662,17 +561,6 @@ status open
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
 \end_layout
 
 \end_inset

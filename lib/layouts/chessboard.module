@@ -1,0 +1,139 @@
+#\DeclareLyXModule[chessboard.sty,chessfss.sty,xskak.sty]{Chessboard}
+#DescriptionBegin
+#Support for the chessboard package to print chess games
+#See chessboard-article.lyx example file.
+#DescriptionEnd
+# Author: Kornel Benko <kornel@lyx.org>
+#         Jürgen Spitzmüller <spitz@lyx.org>
+
+Format          69
+
+#
+# XSkak basics
+#
+
+Style NewChessGame
+	LatexType		command
+	LatexName		newchessgame
+	Margin			Dynamic
+	LabelType		Static
+	LabelSep		XX
+	LabelString		"[Start New Chess Game]"
+	LabelFont
+		Family         typewriter
+		Series         Medium
+		Size           Normal
+		Color          red
+	EndFont
+	KeepEmpty		1
+	Argument 1
+		LabelString	"Options"
+		MenuString	"Chessgame Options"
+		ToolTip		"See xskak manual for a comprehensive list of keys and values"
+		PassThru	1
+		Font
+			Color	latex
+			Family	typewriter
+		EndFont
+	EndArgument
+	Requires		xskak
+End
+
+
+InsetLayout Flex:Mainline
+	LyXType			custom
+	LatexType		command
+	LatexName		mainline
+	Decoration		classic
+	LabelString		"Mainline:"
+	PassThru		1
+	ParbreakIsNewline	1
+	LabelFont
+		Color		blue
+	EndFont
+	Font
+		Color		blue
+	EndFont
+	Argument 1
+		LabelString	"Options"
+		MenuString	"Mainline Options"
+		ToolTip		"See xskak manual for possible options"
+		Font
+			Color	latex
+			Family	typewriter
+		EndFont
+	EndArgument
+	Argument post:1
+		LabelString	"Comment"
+		MenuString	"Comment"
+		LeftDelim	"<br/>"
+		RightDelim	"%"
+		Font
+			Color	green
+		EndFont
+	EndArgument
+	Requires		xskak
+End
+
+InsetLayout Flex:Variation
+	CopyStyle		Flex:Mainline
+	LatexName		variation
+	LabelString		Variation
+End
+
+
+#
+# Chessboard additions
+#
+
+InsetLayout Flex:SetChessBoard
+	LyxType			custom
+	Decoration		classic
+	LatexType		command
+	LatexName		setchessboard
+	LabelString		"Global Chessboard Settings"
+	Font
+		Color		latex
+		Family		typewriter
+	EndFont
+	LabelFont
+		Color		blue
+	EndFont
+	Requires		chessboard
+End
+
+
+InsetLayout Flex:SetBoardStoreStyle
+	CopyStyle		Flex:SetChessBoard
+	LabelString		"Set Chessboard Style"
+	Argument 1
+		Mandatory	true
+		LabelString	"Style Name"
+		MenuString	"Chessboard Style Name"
+		ToolTip		"Here you can store chessboard settings under a style name for later reuse. See chessboard manual for details."
+		AutoInsert	true
+		Decoration	conglomerate
+	EndArgument
+End
+
+
+InsetLayout Flex:ChessBoard
+	LyxType			custom
+	Decoration		classic
+	LatexType		command
+	LatexType		command
+	LatexName		chessboard
+	LabelString		"Chessboard"
+	Argument 1
+		LabelString	"Options"
+		MenuString	"Chessboard Options"
+		ToolTip		"See chessboard manual for a comprehensive list of keys and values"
+		PassThru	1
+		Font
+			Color	latex
+			Family	typewriter
+		EndFont
+	EndArgument
+	Requires		chessboard
+End
+

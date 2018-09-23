@@ -999,7 +999,9 @@ char const * simplefeatures[] = {
 	"tablefootnote",
 	"afterpage",
 	"tabularx",
-	"xltabular"
+	"xltabular",
+	"chessboard",
+	"xskak"
 };
 
 char const * bibliofeatures[] = {
