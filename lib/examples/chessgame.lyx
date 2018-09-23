@@ -94,10 +94,30 @@ status open
 \series bold
 Note:
 \series default
- In order to get proper output (arrows etc.), this document needs to be compiled
- to format PDF (ps2pdf), which is set as default output format.
- PDF (pdflatex) and PDF (dvipdfm) will produce output, but without movement
- indicators.
+ In order to get proper PDF output, this document needs to be compiled to
+ either format 
+\family sans
+PDF (ps2pdf)
+\family default
+ or 
+\family sans
+PDF (XeTeX)
+\family default
+.
+ The former is set as default output format.
+ 
+\family sans
+PDF (dvipdfm)
+\family default
+ will produce output, but without movement indicators, 
+\family sans
+PDF (pdflatex)
+\family default
+ and 
+\family sans
+PDF (LuaTeX)
+\family default
+ will produce LaTeX errors.
 \end_layout
 
 \end_inset
@@ -179,7 +199,6 @@ height "1pt"
 \end_layout
 
 \begin_layout Mainline
-
 1.
  e4 c5 2.
  Nc3 d6 3.
@@ -232,12 +251,10 @@ status collapsed
 \end_layout
 
 \begin_layout KnightMove
-
 g1->e2
 \end_layout
 
 \begin_layout HighLight
-
 d4,f4
 \end_layout
 
@@ -254,13 +271,11 @@ So far, so good.
 \end_layout
 
 \begin_layout Mainline
-
 5...
  Be7?!
 \end_layout
 
 \begin_layout Variation
-
 5...
  Nge7 [ 
 \backslash
@@ -268,7 +283,6 @@ equal{} ]
 \end_layout
 
 \begin_layout Mainline
-
 6.
  d4 cxd4 7.
  Nxd4 a6
@@ -319,7 +333,6 @@ status collapsed
 \end_layout
 
 \begin_layout Mainline
-
 8.
  Nxc6 bxc6 9.
  O-O Bb7 10.
@@ -365,7 +378,6 @@ status collapsed
 \end_layout
 
 \begin_layout Arrow
-
 a1->d1
 \end_layout
 
@@ -381,13 +393,11 @@ White continues to develop pieces and also sets a trap for Black.
 \end_layout
 
 \begin_layout Mainline
-
 12...O-O? [ This move loses instantly.
  ]
 \end_layout
 
 \begin_layout Variation
-
 12...
  e5 13.
  Be3 Qc7 14.
@@ -397,7 +407,6 @@ wbetter{} is best ]
 \end_layout
 
 \begin_layout Mainline
-
 13.
  e5!
 \end_layout
@@ -408,7 +417,6 @@ Black's knight and bishop are in each other's way.
 \end_layout
 
 \begin_layout Mainline
-
 13...
  Nd5!? 14.
  Bxd5 cxd5 15.
