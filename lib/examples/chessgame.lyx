@@ -28,7 +28,7 @@
 \use_microtype false
 \use_dash_ligatures false
 \graphics default
-\default_output_format pdf3
+\default_output_format pdf
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -85,8 +85,7 @@
 
 \begin_body
 
-\begin_layout Title
-Email Chess Game analyzed
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -95,14 +94,19 @@ status open
 \series bold
 Note:
 \series default
- This document does not compile with pdflatex.
- For viewing and exporting this as PDF, use in the PDF (ps2pdf) or PDF (dvipdfm).
- The latter is set as default output format.
+ In order to get proper output (arrows etc.), this document needs to be compiled
+ to format PDF (ps2pdf), which is set as default output format.
+ PDF (pdflatex) and PDF (dvipdfm) will produce output, but without movement
+ indicators.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Title
+Email Chess Game analyzed
 \end_layout
 
 \begin_layout Author
@@ -175,6 +179,7 @@ height "1pt"
 \end_layout
 
 \begin_layout Mainline
+
 1.
  e4 c5 2.
  Nc3 d6 3.
@@ -227,10 +232,12 @@ status collapsed
 \end_layout
 
 \begin_layout KnightMove
+
 g1->e2
 \end_layout
 
 \begin_layout HighLight
+
 d4,f4
 \end_layout
 
@@ -247,11 +254,13 @@ So far, so good.
 \end_layout
 
 \begin_layout Mainline
+
 5...
  Be7?!
 \end_layout
 
 \begin_layout Variation
+
 5...
  Nge7 [ 
 \backslash
@@ -259,6 +268,7 @@ equal{} ]
 \end_layout
 
 \begin_layout Mainline
+
 6.
  d4 cxd4 7.
  Nxd4 a6
@@ -309,6 +319,7 @@ status collapsed
 \end_layout
 
 \begin_layout Mainline
+
 8.
  Nxc6 bxc6 9.
  O-O Bb7 10.
@@ -354,6 +365,7 @@ status collapsed
 \end_layout
 
 \begin_layout Arrow
+
 a1->d1
 \end_layout
 
@@ -369,11 +381,13 @@ White continues to develop pieces and also sets a trap for Black.
 \end_layout
 
 \begin_layout Mainline
+
 12...O-O? [ This move loses instantly.
  ]
 \end_layout
 
 \begin_layout Variation
+
 12...
  e5 13.
  Be3 Qc7 14.
@@ -383,6 +397,7 @@ wbetter{} is best ]
 \end_layout
 
 \begin_layout Mainline
+
 13.
  e5!
 \end_layout
@@ -393,6 +408,7 @@ Black's knight and bishop are in each other's way.
 \end_layout
 
 \begin_layout Mainline
+
 13...
  Nd5!? 14.
  Bxd5 cxd5 15.
