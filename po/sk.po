@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-09-15 11:55+0200\n"
-"PO-Revision-Date: 2018-09-15 10:09+0000\n"
+"POT-Creation-Date: 2018-09-23 13:46+0200\n"
+"PO-Revision-Date: 2018-09-23 14:13+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -10288,17 +10288,37 @@ msgstr "Ťah jazdca:"
 msgid "Chessboard"
 msgstr "Šachovnica"
 
-#: lib/layouts/chessboard.layout:47
-msgid "id"
-msgstr "id"
+#: lib/layouts/chessboard.module:6
+msgid ""
+"Support for the chessboard package to print chess games See chessboard-"
+"article.lyx example file."
+msgstr ""
+"Podpora balíka chessboard na tlač šachových hier. Viď príkladný súbor "
+"chessboard-article.lyx."
 
-#: lib/layouts/chessboard.layout:48
-msgid "'invar' or 'outvar'"
-msgstr "'invar' alebo 'outvar'"
+#: lib/layouts/chessboard.module:15
+msgid "NewChessGame"
+msgstr "Nová šachová partia"
 
-#: lib/layouts/chessboard.layout:53
-msgid "Moves"
-msgstr "Ťahy"
+#: lib/layouts/chessboard.module:21
+msgid "[Start New Chess Game]"
+msgstr "[Nová šachová partia]"
+
+#: lib/layouts/chessboard.module:31
+msgid "Chessgame Options"
+msgstr "Voľby partie"
+
+#: lib/layouts/chessboard.module:32
+msgid "See xskak manual for a comprehensive list of keys and values"
+msgstr "Viď manuál balíka xskak pre podrobný zoznam kľúčov a ich hodnôt"
+
+#: lib/layouts/chessboard.module:59
+msgid "Mainline Options"
+msgstr "Voľby hlavnej variácie"
+
+#: lib/layouts/chessboard.module:60
+msgid "See xskak manual for possible options"
+msgstr "Viď manuál balíka xskak pre možné voľby"
 
 #: lib/layouts/cl2emult.layout:3
 msgid "Springer Contributed Books (cl2emult, Obsolete!)"
@@ -12940,6 +12960,46 @@ msgstr "Tematicky"
 #: lib/layouts/pdfcomment.module:164 lib/layouts/stdinsets.inc:133
 msgid "Comment"
 msgstr "Komentár"
+
+#: lib/layouts/chessboard.module:89
+msgid "SetChessBoard"
+msgstr "Nastavenie šachovnice"
+
+#: lib/layouts/chessboard.module:94
+msgid "Global Chessboard Settings"
+msgstr "Globálne nastavenia šachovnice"
+
+#: lib/layouts/chessboard.module:106
+msgid "SetBoardStoreStyle"
+msgstr "Nastavenie štýlu úkladu šachovnice"
+
+#: lib/layouts/chessboard.module:108
+msgid "Set Chessboard Style"
+msgstr "Nastavenie štýlu šachovnice"
+
+#: lib/layouts/chessboard.module:111
+msgid "Style Name"
+msgstr "Meno štýlu"
+
+#: lib/layouts/chessboard.module:112
+msgid "Chessboard Style Name"
+msgstr "Meno štýlu šachovnice"
+
+#: lib/layouts/chessboard.module:113
+msgid ""
+"Here you can store chessboard settings under a style name for later reuse. "
+"See chessboard manual for details."
+msgstr ""
+"Tu môžte uložiť nastavenia šachovnice pod menom štýlu na neskoršie použitie. "
+"Pre detaily viď manuál chessboard."
+
+#: lib/layouts/chessboard.module:129
+msgid "Chessboard Options"
+msgstr "Možnosti šachovnice"
+
+#: lib/layouts/chessboard.module:130
+msgid "See chessboard manual for a comprehensive list of keys and values"
+msgstr "Viď manuál balíka chessboard pre podrobný zoznam kľúčov a ich hodnôt"
 
 #: lib/layouts/iopart.layout:108
 msgid "Paper"
@@ -20654,60 +20714,6 @@ msgstr "Rôzne"
 #: src/frontends/qt4/GuiSymbols.cpp:90
 msgid "Arrows"
 msgstr "Šípky"
-
-#: lib/layouts/chessboard.layout:85
-msgid "Comma separated list of the form from-to (like d2-d4)"
-msgstr "Čiarkou separovaný súpis vo forme od-kam (ako d2-d4)"
-
-#: lib/layouts/chessboard.layout:93
-msgid "Knigt"
-msgstr "Jazdec"
-
-#: lib/layouts/chessboard.layout:94
-msgid "List of knight moves (crooked arrows) g1-e2, g1-h3"
-msgstr "Súpis ťahow jazdca (ohnuté šípky) g1-e2, g1-h3"
-
-#: lib/layouts/chessboard.layout:100
-msgid "Mark"
-msgstr "Označiť"
-
-#: lib/layouts/chessboard.layout:101
-msgid ""
-"Comma separated list of fields to be marked with a circle (like d4,f4,c7)"
-msgstr ""
-"Čiarkou separovaný súpis políčiek ktoré budú označnené kruhom (ako d4,f4,c7)"
-
-#: lib/layouts/chessboard.layout:109
-msgid "ChessBoardStore"
-msgstr "Šachovnicu odložiť"
-
-#: lib/layouts/chessboard.layout:112
-msgid "StoreChessboard"
-msgstr "Šachovnicu odložiť"
-
-#: lib/layouts/chessboard.layout:114
-msgid "Store FEN"
-msgstr "Uložiť FEN"
-
-#: lib/layouts/chessboard.layout:115
-msgid "Store the 'FEN' under the given name"
-msgstr "Uložiť 'FEN' pod daným menom"
-
-#: lib/layouts/chessboard.layout:121
-msgid "ChessBoardRestore"
-msgstr "Šachovnicu rekonštruovať"
-
-#: lib/layouts/chessboard.layout:124
-msgid "RestoreChessboard"
-msgstr "Šachovnicu rekonštruovať"
-
-#: lib/layouts/chessboard.layout:126
-msgid "Restore FEN"
-msgstr "Obnoviť FEN"
-
-#: lib/layouts/chessboard.layout:127
-msgid "Restore the 'FEN' to the version saved under the given name"
-msgstr "Obnoviť 'FEN' na verziu odloženu pod daným menom"
 
 #: lib/ui/stdtoolbars.inc:311 lib/ui/stdtoolbars.inc:908
 msgid "Arrows (extended)"
@@ -33287,6 +33293,10 @@ msgstr "Čas"
 msgid "LyX version"
 msgstr "Verzia LyXu"
 
+#: src/insets/InsetInfo.cpp:284
+msgid "LyX layout format"
+msgstr "Schéma formátu LyX"
+
 #: src/insets/InsetInfo.cpp:376
 msgid "Invalid information inset"
 msgstr "Neplatná informačná vložka"
@@ -33370,6 +33380,10 @@ msgstr "Čas správy verzií"
 #: src/insets/InsetInfo.cpp:433
 msgid "The current LyX version"
 msgstr "Aktuálna verzia LyX-u"
+
+#: src/insets/InsetInfo.cpp:539
+msgid "The current LyX layout format"
+msgstr "Aktuálna schéma formátu LyX"
 
 #: src/insets/InsetInfo.cpp:436
 msgid "The current date"
@@ -34706,6 +34720,48 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "'invar' or 'outvar'"
+#~ msgstr "'invar' alebo 'outvar'"
+
+#~ msgid "Moves"
+#~ msgstr "Ťahy"
+
+#~ msgid "Comma separated list of the form from-to (like d2-d4)"
+#~ msgstr "Čiarkou separovaný súpis vo forme od-kam (ako d2-d4)"
+
+#~ msgid "Knigt"
+#~ msgstr "Jazdec"
+
+#~ msgid "List of knight moves (crooked arrows) g1-e2, g1-h3"
+#~ msgstr "Súpis ťahow jazdca (ohnuté šípky) g1-e2, g1-h3"
+
+#~ msgid "Mark"
+#~ msgstr "Označiť"
+
+#~ msgid ""
+#~ "Comma separated list of fields to be marked with a circle (like d4,f4,c7)"
+#~ msgstr ""
+#~ "Čiarkou separovaný súpis políčiek ktoré budú označnené kruhom (ako d4,f4,"
+#~ "c7)"
+
+#~ msgid "Store FEN"
+#~ msgstr "Uložiť FEN"
+
+#~ msgid "Store the 'FEN' under the given name"
+#~ msgstr "Uložiť 'FEN' pod daným menom"
+
+#~ msgid "ChessBoardRestore"
+#~ msgstr "Šachovnicu rekonštruovať"
+
+#~ msgid "RestoreChessboard"
+#~ msgstr "Šachovnicu rekonštruovať"
+
+#~ msgid "Restore FEN"
+#~ msgstr "Obnoviť FEN"
+
+#~ msgid "Restore the 'FEN' to the version saved under the given name"
+#~ msgstr "Obnoviť 'FEN' na verziu odloženu pod daným menom"
 
 #~ msgid "&Date format:"
 #~ msgstr "Fo&rmát dátumu:"
@@ -39473,3 +39529,9 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "The name of this file"
 #~ msgstr "Názov tohto súboru"
+
+#~ msgid "ChessBoardStore"
+#~ msgstr "Šachovnicu odložiť"
+
+#~ msgid "StoreChessboard"
+#~ msgstr "Šachovnicu odložiť"
