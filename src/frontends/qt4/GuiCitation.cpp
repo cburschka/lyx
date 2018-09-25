@@ -738,7 +738,7 @@ vector<docstring> GuiCitation::getPostTexts()
 	for (int i = 0; i != selected_model_.rowCount(); ++i) {
 		QStandardItem const * key = selected_model_.item(i, 1);
 		QStandardItem const * post = selected_model_.item(i, 2);
-		if (key && post)
+		if (key && post && !key->text().isEmpty() && !post->text().isEmpty())
 			res.push_back(qstring_to_ucs4(key->text()) + " " + qstring_to_ucs4(post->text()));
 	}
 	return res;
