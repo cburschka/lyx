@@ -57,6 +57,9 @@ public:
 	///
 	void updateBuffer(ParIterator const &, UpdateType);
 	///
+	void addToToc(DocIterator const & di, bool output_active,
+				  UpdateType utype, TocBackend & backend) const;
+	///
 	void collectBibKeys(InsetIterator const &, support::FileNameList &) const;
 	///
 	void validate(LaTeXFeatures &) const;
@@ -84,6 +87,8 @@ private:
 	void parseBibTeXFiles(support::FileNameList &) const;
 	///
 	bool usingBiblatex() const;
+	///
+	docstring getRefLabel() const;
 
 	/// \name Private functions inherited from Inset class
 	//@{
