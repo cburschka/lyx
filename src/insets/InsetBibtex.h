@@ -57,6 +57,9 @@ public:
 	int plaintext(odocstringstream & ods, OutputParams const & op,
 	              size_t max_length = INT_MAX) const;
 	///
+	void addToToc(DocIterator const & di, bool output_active,
+				  UpdateType utype, TocBackend & backend) const;
+	///
 	void collectBibKeys(InsetIterator const &, support::FileNameList &) const;
 	///
 	void validate(LaTeXFeatures &) const;
@@ -84,6 +87,8 @@ private:
 	void parseBibTeXFiles(support::FileNameList &) const;
 	///
 	bool usingBiblatex() const;
+	///
+	docstring getRefLabel() const;
 
 	/// \name Private functions inherited from Inset class
 	//@{

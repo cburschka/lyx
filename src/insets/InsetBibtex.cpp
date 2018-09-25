@@ -31,6 +31,7 @@
 #include "PDFOptions.h"
 #include "texstream.h"
 #include "TextClass.h"
+#include "TocBackend.h"
 
 #include "frontends/alert.h"
 
@@ -877,10 +878,31 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 }
 
 
+docstring InsetBibtex::getRefLabel() const 
+{ 
+	if (buffer().masterParams().documentClass().hasLaTeXLayout("chapter")) 
+		return buffer().B_("Bibliography"); 
+		return buffer().B_("References"); 
+} 
+
+
+void InsetBibtex::addToToc(DocIterator const & cpit, bool output_active,
+			   UpdateType, TocBackend & backend) const
+{
+	if (!prefixIs(to_utf8(getParam("options")), "bibtotoc"))
+		return;
+
+	docstring const str = getRefLabel();
+	TocBuilder & b = backend.builder("tableofcontents");
+	b.pushItem(cpit, str, output_active);
+	b.pop();
+}
+
+
 int InsetBibtex::plaintext(odocstringstream & os,
        OutputParams const & op, size_t max_length) const
 {
-	docstring const reflabel = buffer().B_("References");
+	docstring const reflabel = getRefLabel();
 
 	// We could output more information here, e.g., what databases are included
 	// and information about options. But I don't necessarily see any reason to
