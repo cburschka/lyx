@@ -132,6 +132,20 @@ Format 4
 \bind "M-o S-Return"            "environment-split outer"
 
 #
+# Character style menu
+#
+
+\bind "M-c n"                   "font-noun"
+\bind "M-c e"                   "font-emph"
+\bind "M-c b"                   "font-bold"
+\bind "M-c r"                   "font-roman"
+\bind "M-c s"                   "font-sans"
+\bind "M-c f"                   "font-frak"
+\bind "M-c i"                   "font-ital"
+\bind "M-c t"                   "font-typewriter"
+\bind "M-c space"               "font-default"
+
+#
 # Clashes
 #
 
