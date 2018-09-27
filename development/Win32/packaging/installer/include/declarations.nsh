@@ -57,7 +57,7 @@ Configuration of LyX installer
   !define APP_SETUPTYPE "Standard"
 !endif
 
-!define BIN_LYX "LyX${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.exe"
+!define BIN_LYX "LyX.exe"
 !define APP_RUN "bin\${BIN_LYX}"
 
 !define APP_REGKEY "Software\${APP_NAME}${APP_SERIES_KEY}" # like "LyX220"

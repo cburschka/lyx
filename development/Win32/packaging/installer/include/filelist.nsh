@@ -11,7 +11,7 @@ Lists of files to include in the installer
 !macro FileListLyXBin COMMAND DIRECTORY
 
   ${FILE}${BIN_LYX}"
-  ${FILE}tex2lyx${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.exe"
+  ${FILE}tex2lyx.exe"
 
 !macroend
 
