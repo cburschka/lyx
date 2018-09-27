@@ -258,28 +258,6 @@ int Systemcall::startscript(Starttype how, string const & what,
 	SystemcallPrivate d(infile, outfile, errfile);
 	bool do_events = process_events || how == WaitLoop;
 
-#ifdef Q_OS_WIN32
-	// QProcess::startDetached cannot provide environment variables. When the
-	// environment variables are set using the latexEnvCmdPrefix and the process
-	// is started with QProcess::startDetached, a console window is shown every
-	// time a viewer is started. To avoid this, we fall back on Windows to the
-	// original implementation that creates a QProcess object.
-	d.startProcess(cmd, path, lpath, false);
-	if (!d.waitWhile(SystemcallPrivate::Starting, do_events, -1)) {
-		if (d.state == SystemcallPrivate::Error) {
-			LYXERR0("Systemcall: '" << cmd << "' did not start!");
-			LYXERR0("error " << d.errorMessage());
-			return NOSTART;
-		} else if (d.state == SystemcallPrivate::Killed) {
-			LYXERR0("Killed: " << cmd);
-			return KILLED;
-		}
-	}
-	if (how == DontWait) {
-		d.releaseProcess();
-		return OK;
-	}
-#else
 	d.startProcess(cmd, path, lpath, how == DontWait);
 	if (how == DontWait && d.state == SystemcallPrivate::Running)
 		return OK;
@@ -295,7 +273,6 @@ int Systemcall::startscript(Starttype how, string const & what,
 			return KILLED;
 		}
 	}
-#endif
 
 	if (!d.waitWhile(SystemcallPrivate::Running, do_events,
 			 os::timeout_min() * 60 * 1000)) {
@@ -393,6 +370,15 @@ void SystemcallPrivate::startProcess(QString const & cmd, string const & path,
 	cmd_ = cmd;
 	if (detached) {
 		state = SystemcallPrivate::Running;
+#ifdef Q_OS_WIN32
+		// Avoid opening a console window when a viewer is started
+		if (in_file_.empty())
+			process_->setStandardInputFile(QProcess::nullDevice());
+		if (out_file_.empty())
+			process_->setStandardOutputFile(QProcess::nullDevice());
+		if (err_file_.empty())
+			process_->setStandardErrorFile(QProcess::nullDevice());
+#endif
 		if (!QProcess::startDetached(toqstr(latexEnvCmdPrefix(path, lpath)) + cmd_)) {
 			state = SystemcallPrivate::Error;
 			return;
