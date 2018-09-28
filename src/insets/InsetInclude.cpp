@@ -769,7 +769,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 						"uses module `%2$s'\n"
 						"which is not used in parent file."),
 						included_file.displayName(), from_utf8(module));
-					Alert::warning(_("Module not found"), text);
+					Alert::warning(_("Module not found"), text, true);
 				}
 			}
 		}
