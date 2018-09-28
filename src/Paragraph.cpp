@@ -1143,13 +1143,17 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	odocstream::pos_type const len = os.os().tellp();
 
 	if (inset->forceLTR()
-	    && !runparams.use_polyglossia
 	    && running_font.isRightToLeft()
 	    // ERT is an exception, it should be output with no
 	    // decorations at all
 	    && inset->lyxCode() != ERT_CODE) {
-		if (running_font.language()->lang() == "farsi")
-			os << "\\beginL" << termcmd;
+		if (runparams.use_polyglossia) {
+			if (style.isCommand())
+				os << "\\LR{";
+			os << "\\begin{LTR}";
+		} else if (running_font.language()->lang() == "farsi"
+			   || running_font.language()->lang() == "arabic_arabi")
+			os << "\\textLR{" << termcmd;
 		else
 			os << "\\L{";
 		close = true;
@@ -1206,10 +1210,10 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	}
 
 	if (close) {
-		if (running_font.language()->lang() == "farsi")
-				os << "\\endL" << termcmd;
-			else
-				os << '}';
+		if (runparams.use_polyglossia && !style.isCommand())
+			os << "\\end{LTR}";
+		else
+			os << '}';
 	}
 
 	if (os.texrow().rows() > previous_row_count) {
