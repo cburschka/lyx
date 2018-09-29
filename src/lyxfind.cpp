@@ -929,6 +929,20 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 			) {
 			++close_wildcards;
 		}
+		if (!opt.ignoreformat) {
+			// Remove extra '}' at end
+			regex_replace(par_as_string, par_as_string, "(.*)\\\\}$", "$1");
+			// save '\.'
+			regex_replace(par_as_string, par_as_string, "\\\\\\.", "_xxbdotxx_");
+			// handle '.' -> '[^]', replace later as '[^\}]'
+			regex_replace(par_as_string, par_as_string, "\\.", "[^]");
+			// replace '[^...]' with '[^...\}]'
+			regex_replace(par_as_string, par_as_string, "\\[\\^([^\\\\\\]]*)\\]", "_xxbrlxx_$1\\}_xxbrrxx_");
+			regex_replace(par_as_string, par_as_string, "_xxbrlxx_", "[^");
+			regex_replace(par_as_string, par_as_string, "_xxbrrxx_", "]");
+			// restore '\.'
+			regex_replace(par_as_string, par_as_string, "_xxbdotxx_", "\\.");
+		}
 		LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
 		LYXERR(Debug::FIND, "Open braces: " << open_braces);
 		LYXERR(Debug::FIND, "Close .*?  : " << close_wildcards);
@@ -974,10 +988,12 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 			return 0;
 		match_results<string::const_iterator> const & m = *re_it;
 
-		// Check braces on the segment that matched the entire regexp expression,
-		// plus the last subexpression, if a (.*?) was inserted in the constructor.
-		if (!braces_match(m[0].first, m[0].second, open_braces))
-			return 0;
+		if (0) { // Kornel Benko: DO NOT CHECKK
+			// Check braces on the segment that matched the entire regexp expression,
+			// plus the last subexpression, if a (.*?) was inserted in the constructor.
+			if (!braces_match(m[0].first, m[0].second, open_braces))
+				return 0;
+		}
 
 		// Check braces on segments that matched all (.*?) subexpressions,
 		// except the last "padding" one inserted by lyx.
