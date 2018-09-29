@@ -175,6 +175,8 @@ GuiCitation::GuiCitation(GuiView & lv)
 	selectedLV->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 #endif
 
+	selectedLV->setToolTip(qt_("Ordered list of all cited references.\n"
+				   "You can reorder, add and remove references with the buttons on the left."));
 	setFocusProxy(filter_);
 }
 
@@ -353,6 +355,12 @@ void GuiCitation::updateFormatting(CitationStyle const & currentStyle)
 			starredCB->setToolTip(qt_("Always list all authors (rather than using \"et al.\"), "
 						  "if the current citation style supports this."));
 	}
+	if (availableLV->selectionModel()->selectedIndexes().isEmpty())
+		availableLV->setToolTip(qt_("All references available for citing."));
+	else
+		availableLV->setToolTip(qt_("All references available for citing.\n"
+					    "To add the selected one, hit Add, press Enter or double-click.\n"
+					    "Hit Ctrl-Enter to add and close the dialog."));
 }
 
 
