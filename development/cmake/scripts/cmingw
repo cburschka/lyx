@@ -22,8 +22,10 @@ while getopts ":dDh" opt; do
   esac
 done
 
+
 $CMAKE $LYXSRC \
-	-DCMAKE_VERBOSE_MAKEFILE=1 \
+    -DLYX_PROGRAM_SUFFIX=0 \
+    -DCMAKE_VERBOSE_MAKEFILE=1 \
     -DLYX_CPACK=1 $DEVEL \
     -DLYX_XMINGW=$MINGW \
     -DLYX_USE_QT=QT5 \
