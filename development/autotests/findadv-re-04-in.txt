@@ -7,6 +7,7 @@ CP: Init key
 TestBegin test.lyx -dbg key,find > findadv-re-04.loga.txt 2>&1
 CP: Key (queried) [action=buffer-begin][Ctrl+Home]
 KK: The quick Brown \CeFox jUMps\Ce over the lazy Dog\[Return]
+Sleep 1
 KK: \C\[Home]
 KK: \Cs
 KK: \CF
@@ -29,7 +30,7 @@ KK: \CF
 # Uncheck ignore format (depends on IT language)
 KK: \At\Ai\Ah
 KK: \Ce
-KK: \Axregexp-mode\[Return][a-z]*\[Return]\[Return]\[Return]
+KK: \Axregexp-mode\[Return]\\b[a-z\\s]*\\b\[Return]\[Return]\[Return]
 Cr: ^.*Putting 
 CP: Putting selection at .*idx: 0 par: 0 pos: 16\n with len: 3
 Cr: ^.*Putting 
@@ -46,7 +47,7 @@ CN: Case sensitive, format not ignored [a-z]*
 KK: \CF
 KK: \At\Ai\Ah
 KK: \Ce
-KK: \Ao\[Tab]\Axregexp-mode\[Return][a-z]*\[Return]\[Return]\[Return]\[Return]\[Return]\[Return]\[Return]
+KK: \Az\[Tab]\Axregexp-mode\[Return][a-z]+\[Return]\[Return]\[Return]\[Return]
 Cr: ^.*Putting
 CP: Putting selection at .*idx: 0 par: 0 pos: 17\n with len: 2
 Cr: ^.*Putting
@@ -63,11 +64,11 @@ CN: Part 4
 CP: Init key
 TestBegin test.lyx -dbg key,find >> findadv-re-04.loga.txt 2>&1
 
-CN: Case sensitive, format not ignored [A-Z]*
+CN: Case sensitive, format not ignored [A-Z]+
 KK: \CF
 KK: \At\Ai\Ah
 KK: \Ce
-KK: \Ao\[Tab]\Axregexp-mode\[Return][A-Z]*\[Return]\[Return]\[Return]\[Return]\[Return]\[Return]
+KK: \Az\[Tab]\Axregexp-mode\[Return][A-Z]+\[Return]\[Return]\[Return]
 Cr: ^.*Putting
 CP: Putting selection at .*idx: 0 par: 0 pos: 16\n with len: 1
 Cr: ^.*Putting
