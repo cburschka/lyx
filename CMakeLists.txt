@@ -461,12 +461,16 @@ else()
   set(SYSTEM_DATADIR "${CMAKE_INSTALL_PREFIX}")
 endif()
 
-if(CMAKE_COMPILER_IS_GNUCXX)
-  message(STATUS "CMAKE_COMPILER_IS_GNUCXX = ${CMAKE_COMPILER_IS_GNUCXX}")
-  set(suffixing ${LYX_PROGRAM_SUFFIX})
-else()
+if(NOT CMAKE_COMPILER_IS_GNUCXX)
   # Not a GCC compiler, programs do not have a suffix
   set(suffixing ${LYX_PACKAGE_SUFFIX})
+elseif(WIN32 AND MINGW)
+  # We want to use a suffix for the package in this case,
+  # even if not for the program
+  set(suffixing ${LYX_PACKAGE_SUFFIX})
+else()
+  message(STATUS "CMAKE_COMPILER_IS_GNUCXX = ${CMAKE_COMPILER_IS_GNUCXX}")
+  set(suffixing ${LYX_PROGRAM_SUFFIX})
 endif()
 
 # The define PACKAGE below allows lyx-executable to find its default configuration files
@@ -475,7 +479,6 @@ endif()
 #    get_default_user_support_dir()
 #    relative_system_support_dir()
 # in src/support/Package.cpp
-#
 if(suffixing)
 	set(PACKAGE ${PACKAGE_BASE}${LYX_INSTALL_SUFFIX})
 else()
