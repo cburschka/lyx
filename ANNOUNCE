@@ -1,3 +1,25 @@
+Public release of LyX version 2.3.1-1
+=====================================
+
+We are proud to announce the release of LyX 2.3.1-1. This is an update 
+to the original release of LyX 2.3.1.
+
+There are three main changes, affecting only Windows and OSX.
+
+For Windows: 
+
+- We have fixed bug #11210, which caused a crash after closing the PDF 
+  viewer, and in some other cases. See that bug for info.
+
+- We have renamed the executables as "LyX.exe" and "tex2lyx.exe", rather
+  than "LyX2.3.exe" and "tex2lyx2.3.exe", in line with previous practice.
+
+For OSX, the only change is a packaging fix. The included version of
+tex2lyx was linked incorrectly and, as a result, did not work.
+
+Please see below for information on the original 2.3.1 release.
+
+
 Public release of LyX version 2.3.1
 ===================================
 
