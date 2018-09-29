@@ -575,9 +575,10 @@ void GuiCitation::regexChanged()
 
 void GuiCitation::updateFilterHint()
 {
-	QString const hint = instant_->isChecked() ?
+	QString hint = instant_->isChecked() ?
 		qt_("Enter string to filter the list of available citations") :
 		qt_("Enter string to filter the list of available citations and press <Enter>");
+	hint += qt_("\nThe down arrow key will get you into the list of filtered citations.");
 	filter_->setToolTip(hint);
 }
 
