@@ -186,6 +186,22 @@ def checkUpgrade():
                 return
 
 
+def checkUpgradeWin():
+    ''' Check for upgrade from previous version '''
+    cwd = os.getcwd()
+    basename = os.path.basename(cwd)
+    if basename != "LyX":
+        return
+    lyxrc = os.path.join(cwd, outfile)
+    if os.path.isfile(lyxrc):
+        return
+    olddir = os.path.join(os.path.dirname(cwd), "LyX2.3")
+    if not os.path.isdir(oldir):
+        return
+    logger.info('Copying ' + olddir + ' into ' + cwd)
+    copy_tree(olddir, cwd, True)
+
+
 def createDirectories():
     ''' Create the build directories if necessary '''
     for dir in ['bind', 'clipart', 'doc', 'examples', 'images', 'kbd',
@@ -1840,6 +1856,8 @@ Options:
     setEnviron()
     if sys.platform == 'darwin' and len(version_suffix) > 0:
         checkUpgrade()
+    if os.name == 'nt':
+        checkUpgradeWin()
     createDirectories()
     dtl_tools = checkDTLtools()
     ## Write the first part of outfile
