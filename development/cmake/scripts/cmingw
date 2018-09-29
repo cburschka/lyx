@@ -1,0 +1,35 @@
+#!/bin/bash
+
+CMAKE="mingw32-cmake";
+MINGW="i686-w64-mingw32";
+LYXSRC="";
+DEVEL="";
+
+function usage() {
+    echo "cmingw [-dD] /path/to/lyx-repo";
+    echo;
+    echo "Uses cmake to configures LyX for a mingw build.";
+}
+
+while getopts ":dDh" opt; do
+  case $opt in
+    d      )  CMAKE="echo $CMAKE";;
+    h      )  usage;              
+              exit 0;;
+    D      )  DEVEL="-DLYX_CONSOLE=FORCE _DLYX_DEBUG=ON";;
+    /?     )  echo -e $USAGE;
+              exit 1;;
+  esac
+done
+
+
+$CMAKE $LYXSRC \
+    -DLYX_PROGRAM_SUFFIX=0 \
+    -DCMAKE_VERBOSE_MAKEFILE=1 \
+    -DLYX_CPACK=1 $DEVEL \
+    -DLYX_XMINGW=$MINGW \
+    -DLYX_USE_QT=QT5 \
+    -DLYX_QUIET=1 \
+    -DLYX_HUNSPELL=1 \
+    -DLYX_3RDPARTY_BUILD=1 \
+    -DLYX_MERGE_FILES=0
