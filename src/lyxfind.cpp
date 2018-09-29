@@ -934,10 +934,10 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 			regex_replace(par_as_string, par_as_string, "(.*)\\\\}$", "$1");
 			// save '\.'
 			regex_replace(par_as_string, par_as_string, "\\\\\\.", "_xxbdotxx_");
-			// handle '.' -> '[^]', replace later as '[^\}]'
+			// handle '.' -> '[^]', replace later as '[^\}\{\\]'
 			regex_replace(par_as_string, par_as_string, "\\.", "[^]");
-			// replace '[^...]' with '[^...\}]'
-			regex_replace(par_as_string, par_as_string, "\\[\\^([^\\\\\\]]*)\\]", "_xxbrlxx_$1\\}_xxbrrxx_");
+			// replace '[^...]' with '[^...\}\{\\]'
+			regex_replace(par_as_string, par_as_string, "\\[\\^([^\\\\\\]]*)\\]", "_xxbrlxx_$1\\}\\{\\\\_xxbrrxx_");
 			regex_replace(par_as_string, par_as_string, "_xxbrlxx_", "[^");
 			regex_replace(par_as_string, par_as_string, "_xxbrrxx_", "]");
 			// restore '\.'
