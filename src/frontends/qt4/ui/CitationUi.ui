@@ -122,6 +122,11 @@
            </item>
            <item>
             <widget class="QListView" name="availableLV">
+             <property name="toolTip">
+              <string>All references available for citing.
+To select one, hit Add, press Enter or double-click.
+Hit Ctrl-Enter to select and close the dialog.</string>
+             </property>
              <property name="editTriggers">
               <set>QAbstractItemView::NoEditTriggers</set>
              </property>
@@ -234,7 +239,12 @@
             </widget>
            </item>
            <item>
-            <widget class="QTableView" name="selectedLV"/>
+            <widget class="QTableView" name="selectedLV">
+             <property name="toolTip">
+              <string>Ordered list of all cited references.
+You can reorder, add and remove references with the buttons on the left.</string>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
