@@ -114,3 +114,14 @@ ${LangFileString} SecUnPreferencesDescription 'Menghapus berkas konfigurasi LyX 
 						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
 						untuk semua pengguna.'
 ${LangFileString} SecUnProgramFilesDescription "Penghapusan LyX serta semua komponen yang ada."
+
+# MikTeX Update Stuff
+${LangFileString} MiKTeXUpdateMsg "Karena perubahan pada MiKTeX, pemasangan versi LyX lebih lambat dari 2.2.3 dapat menyebabkan pembaruan parsial yang membuat MiKTeX tidak dapat digunakan.$\r$\n\
+$\r$\n\
+Jika Anda belum melakukannya, kami menyarankan Anda memperbarui MiKTeX ke versi terbaru sebelum menginstal versi baru LyX.$\r$\n\
+$\r$\n\
+Anda sekarang dapat melanjutkan instalasi atau membatalkannya sehingga Anda dapat memperbarui MiKTeX.$\r$\n\
+$\r$\n\
+(Maaf untuk terjemahan otomatis.)"
+
+${LangFileString} MiKTeXUpdateHeader "PERINGATAN: Perubahan MiKTeX"

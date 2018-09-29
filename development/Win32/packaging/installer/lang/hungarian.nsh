@@ -114,3 +114,14 @@ ${LangFileString} SecUnPreferencesDescription 'A  LyX beállítások mappa törl
 						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
 						minden felhasználónál.'
 ${LangFileString} SecUnProgramFilesDescription "A LyX és minden komponensének eltávolítása."
+
+# MikTeX Update Stuff
+${LangFileString} MiKTeXUpdateMsg "A MiKTeX változásai miatt a LyX későbbi verzióinak telepítése a 2.2.3-os verzión keresztül részleges frissítést eredményezhet, ami a MiKTeX-t használhatatlanná teszi.$\r$\n\
+$\r$\n\
+Ha még nem tette meg, javasoljuk, hogy frissítse a MiKTeX-et a legújabb verzióra a LyX új verziójának telepítése előtt.$\r$\n\
+$\r$\n\
+Mostantól folytathatja a telepítést, vagy törölheti azt, így frissítheti a MiKTeX-et.$\r$\n\
+$\r$\n\
+(Elnézést az automatizált fordításért.)"
+
+${LangFileString} MiKTeXUpdateHeader "FIGYELEM: MiKTeX változások"

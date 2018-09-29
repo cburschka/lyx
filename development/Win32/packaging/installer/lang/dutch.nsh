@@ -108,3 +108,14 @@ ${LangFileString} SecUnPreferencesDescription 'Verwijder LyX$\'s configuratie ma
 						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
 						voor alle gebruikers.'
 ${LangFileString} SecUnProgramFilesDescription "Verwijder LyX en alle bijbehorende onderdelen."
+
+# MikTeX Update Stuff
+${LangFileString} MiKTeXUpdateMsg "Als gevolg van wijzigingen in MiKTeX kan de installatie van versies van LyX later dan 2.2.3 een gedeeltelijke update veroorzaken waardoor MiKTeX onbruikbaar wordt.$\r$\n\
+$\r$\n\
+Als u dit nog niet hebt gedaan, raden we u aan MiKTeX bij te werken naar de nieuwste versie voordat u een nieuwe versie van LyX installeert.$\r$\n\
+$\r$\n\
+U kunt nu doorgaan met de installatie of deze annuleren, zodat u MiKTeX kunt bijwerken.$\r$\n\
+$\r$\n\
+(Sorry voor de automatische vertaling.)"
+
+${LangFileString} MiKTeXUpdateHeader "WAARSCHUWING: MiKTeX-wijzigingen"

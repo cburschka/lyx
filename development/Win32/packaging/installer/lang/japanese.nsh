@@ -114,3 +114,14 @@ ${LangFileString} SecUnPreferencesDescription 'ユーザー共通のLyXの設定
 						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
 						を削除します。'
 ${LangFileString} SecUnProgramFilesDescription "LyXとすべての附属コンポーネントの導入解除を行います。"
+
+# MikTeX Update Stuff
+${LangFileString} MiKTeXUpdateMsg "MiKTeXが変更されたため、2.2.3より後のバージョンのLyXをインストールすると、MiKTeXを使用できなくする部分的な更新が発生する可能性があります。$\r$\n\
+$\r$\n\
+LyXの新しいバージョンをインストールする前に、MiKTeXを最新のバージョンにアップデートすることをお勧めします。$\r$\n\
+$\r$\n\
+これで、インストールを続行するか、キャンセルしてMiKTeXを更新することができます。$\r$\n\
+$\r$\n\
+自動翻訳には申し訳ありません"
+
+${LangFileString} MiKTeXUpdateHeader "警告：MiKTeXの変更点"

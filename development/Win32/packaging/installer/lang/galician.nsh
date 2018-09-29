@@ -108,3 +108,14 @@ ${LangFileString} SecUnPreferencesDescription 'Elimina as pastas de configuraci�
 						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
 						de todos os usuários.'
 ${LangFileString} SecUnProgramFilesDescription "Desinstala LyX e todos os seus componentes."
+
+# MikTeX Update Stuff
+${LangFileString} MiKTeXUpdateMsg "Debido aos cambios en MiKTeX, a instalación de versións de LyX máis tarde de 2.2.3 pode causar unha actualización parcial que fai que MiKTeX non se poida usar.$\r$\n\
+$\r$\n\
+Se aínda non o fixeches, recomendamos que actualice MiKTeX á última versión antes de instalar unha nova versión de LyX.$\r$\n\
+$\r$\n\
+Agora podes continuar coa instalación ou cancelala para que poidas actualizar MiKTeX.$\r$\n\
+$\r$\n\
+(Sentímolo pola tradución automática)."
+
+${LangFileString} MiKTeXUpdateHeader "AVISO: Cambios MiKTeX"

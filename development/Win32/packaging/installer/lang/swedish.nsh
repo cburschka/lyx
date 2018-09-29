@@ -108,3 +108,12 @@ ${LangFileString} SecUnPreferencesDescription 'Raderar LyX-konfiguration$\r$\n\
 						(katalog $\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
 						för dig eller för alla användare (om du är admin).'
 ${LangFileString} SecUnProgramFilesDescription "Avinstallera LyX och alla dess komponenter."
+
+# MikTeX Update Stuff
+${LangFileString} MiKTeXUpdateMsg "På grund av ändringar i MiKTeX kan installering av LyX senare än version 2.2.3 orsaka en delvis uppdatering som gör MiKTeX oanvändbar.$\r$\n\
+$\r$\n\
+Om du inte redan har gjort det så rekommenderar vi att du uppdaterar MiKTeX till den senaste versionen innan installering av en ny version av LyX.$\r$\n\
+$\r$\n\
+Du kan nu antingen fortsätta med installeringen eller avbryta den så du kan uppdatera MiKTeX."
+
+${LangFileString} MiKTeXUpdateHeader "Varning: MiKTeX-ändringar"

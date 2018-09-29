@@ -8,10 +8,6 @@ Handling of LaTeX distributions
 #
 # - LaTeXActions (checks if MiKTeX or TeXLive is installed)
 #
-# - InstallMiKTeX (installs MiKTeX if not already installed),
-#   only for bunlde installer, uses:
-#    LaTeXCheck # function from LyXUtils.nsh
-#
 # - ConfigureMiKTeX
 #   (installs the LaTeX class files that are delivered with LyX,
 #    a Perl interpreter for splitindex and pdfcrop
@@ -19,8 +15,6 @@ Handling of LaTeX distributions
 #
 # - ConfigureTeXLive
 #   (installs the LaTeX class files that are delivered with LyX)
-#
-# - UpdateMiKTeX (asks to update MiKTeX)
 
 # ---------------------------------------
 
@@ -204,50 +198,6 @@ Function LaTeXActions
 
 FunctionEnd
 
-# -------------------------------------------
-
-!if ${SETUPTYPE} == BUNDLE
-
- Function InstallMiKTeX
-  # installs MiKTeX if not already installed
-  
-  ${if} $PathLaTeX == ""
-   # launch MiKTeX's installer
-   MessageBox MB_OK|MB_ICONINFORMATION "$(LatexInfo)" /SD IDOK
-   ${if} $MultiUser.Privileges != "Admin"
-   ${andif} $MultiUser.Privileges != "Power"
-    # call the non-admin version
-    ExecWait ${MiKTeXInstall}
-   ${else}
-    ExecWait "${MiKTeXInstall} --shared"
-   ${endif}
-   # test if MiKTeX is installed
-   Call LaTeXActions
-   ${if} ${RunningX64}
-    SetRegView 32 # we install the 32bit version of MiKTeX
-   ${endif}
-   ${if} $PathLaTeX != ""
-    # special entry that it was installed together with LyX
-    # so that we can later uninstall it together with LyX
-    ${if} $MiKTeXUser == "HKCU"
-     WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
-    ${else}
-     WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
-    ${endif}
-    StrCpy $LaTeXInstalled "MiKTeX"
-    StrCpy $MiKTeXVersion ${MiKTeXDeliveredVersion}
-   ${else}
-    MessageBox MB_OK|MB_ICONSTOP "$(LatexError1)" /SD IDOK
-    SetOutPath $TEMP # to be able to delete the $INSTDIR
-    RMDir /r $INSTDIR
-    Abort
-   ${endif} # endif $PathLaTeX != ""
-  ${endif}
-
-  FunctionEnd
-
-!endif # endif ${SETUPTYPE} == BUNDLE
-
 # ------------------------------
 
 Function ConfigureMiKTeX
@@ -276,83 +226,28 @@ Function ConfigureMiKTeX
    # files in Resources\tex
    SetOutPath "$PathLaTeXLocal\tex\latex\lyx"
    CopyFiles /SILENT "$INSTDIR\Resources\tex\*.*" "$PathLaTeXLocal\tex\latex\lyx"
+
+   # refresh MiKTeX's file name database (do this always to assure everything is in place)
+   ${if} $MultiUser.Privileges != "Admin"
+   ${andif} $MultiUser.Privileges != "Power"
+    # call the non-admin version
+    nsExec::ExecToLog "$PathLaTeX\initexmf --update-fndb"
+   ${else}
+    ${if} $MiKTeXUser != "HKCU" # call the admin version
+     nsExec::ExecToLog "$PathLaTeX\initexmf --admin --update-fndb"
+    ${else}
+     nsExec::ExecToLog "$PathLaTeX\initexmf --update-fndb"
+    ${endif}
+   ${endif}
+   Pop $UpdateFNDBReturn # Return value
   ${endif}
   
   # install a Perl interpreter for splitindex and pdfcrop
   SetOutPath "$INSTDIR"
   # recursively copy all files under Perl
   File /r "${FILES_PERL}"
-  
-  # refresh MiKTeX's file name database (do this always to assure everything is in place)
-  ${if} $MultiUser.Privileges != "Admin"
-  ${andif} $MultiUser.Privileges != "Power"
-   # call the non-admin version
-   nsExec::ExecToLog "$PathLaTeX\initexmf --update-fndb"
-  ${else}
-   ${if} $MiKTeXUser != "HKCU" # call the admin version
-    nsExec::ExecToLog "$PathLaTeX\initexmf --admin --update-fndb"
-   ${else}
-    nsExec::ExecToLog "$PathLaTeX\initexmf --update-fndb"
-   ${endif}
-  ${endif}
-  Pop $UpdateFNDBReturn # Return value
-  
- ${endif} # end if $PathLaTeX != ""
-  
-  # enable package installation without asking (1 = Yes, 0 = No, 2 = Ask me first) and
-  # if there is not package repository (MiKTeX's primary package repository) then set it
-  ${if} ${RunningX64}
-  ${andif} $Is64bit == "true"
-   SetRegView 64
-  ${else}
-   SetRegView 32
-  ${endif}
-  ${if} $MiKTeXUser == "HKCU" # if only for current user
-   # if AutoInstall is set to "0" we can assume that this was set purposly since the default is "1"
-   ReadRegStr $2 HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall"
-   ${if} $2 == "0"
-    Goto NoAutoInstall
-   ${endif}
-   WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1"
-   ReadRegStr $1 HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository"
-   ${if} $1 == ""
-    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}" 
-    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote"
-   ${endif}
-  ${else}
-   # if AutoInstall is set to "0" we can assume that this was set purposly since the default is "1"
-   ReadRegStr $2 HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall"
-   ${if} $2 == "0"
-    Goto NoAutoInstall
-   ${endif}
-   WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1"
-   ReadRegStr $1 HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository"
-   ${if} $1 == ""
-    WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}"
-    WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote"
-   ${endif}
-   # we need to state that missing packages should be installed for all users too
-   WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoAdmin" "t"
-  ${endif}
-  NoAutoInstall:
-  
-  # update MiKTeX's package file list
-  ${if} $MultiUser.Privileges != "Admin"
-  ${andif} $MultiUser.Privileges != "Power"
-   # call the non-admin version
-   nsExec::ExecToLog "$PathLaTeX\mpm.exe --update-fndb"
-  ${else}
-   ${if} $MiKTeXUser != "HKCU" # call the admin version
-    nsExec::ExecToLog "$PathLaTeX\mpm.exe --admin --update-fndb"
-   ${else}
-    nsExec::ExecToLog "$PathLaTeX\mpm.exe --update-fndb"
-   ${endif}
-  ${endif}
-  Pop $UpdateFNDBReturn # Return value
-  
-  # we must return to 32bit because LyX is a 32bit application
-  SetRegView 32
-  
+
+  ${endif} # end if $PathLaTeX != ""  
 FunctionEnd
 
 # ------------------------------
@@ -372,105 +267,9 @@ Function ConfigureTeXLive
    # files in Resources\tex
    SetOutPath "$PathLaTeXLocal\texmf-dist\tex\latex\lyx"
    CopyFiles /SILENT "$INSTDIR\Resources\tex\*.*" "$PathLaTeXLocal\texmf-dist\tex\latex\lyx"
+   # update TeXLive's package file list
+   ExecWait '$PathLaTeX\texhash'
   ${endif}
  ${endif}
  
- # update TeXLive's package file list
- ExecWait '$PathLaTeX\texhash'
- 
- # update TeXLive
- ExecWait '$PathLaTeX\tlmgr update --all'
- 
-FunctionEnd
-
-# ------------------------------
-
-Function UpdateMiKTeX
- # asks to update MiKTeX
-
-  # only for the 2.3.0 installer: force a silent update of MiKTeX then restore
-  # MiKTeX's inernal links
-  # The reason is that MikTeX uses a new package handling system LyX must use
-  # Due to a bug in the old MikTeX package handling the update to the new package
-  # handling might fail and users cannot use LaTeX at all afterwards - they then
-  # would have no other choice than to reinstall MiKTeX
-  # This case is fixed by forcing the restoration of the internal links
-  # There is another issue: the MiKTeX update program needs to be replaced by
-  # the new MiKTeX console. This is a 3-step process.
-  #MessageBox MB_YESNO|MB_ICONINFORMATION "$(MiKTeXInfo)" #/SD IDNO IDYES UpdateNow IDNO UpdateLater
-  #UpdateNow:
-  # graphical update:
-  #MessageBox MB_OK|MB_ICONINFORMATION 'To assure that LyX can create PDF files the MiKTeX update program must be run two times.$\r$\n\
-  # Please click in the MiKTeX update program only on the "Next" button.$\r$\n\
-  # If "Next" is disabled, click on "Cancel" or "Finish".'
-  #${if} $MultiUser.Privileges != "Admin"
-  #${andif} $MultiUser.Privileges != "Power"
-  # # call the non-admin version
-  # nsExec::ExecToLog '"$PathLaTeX\internal\miktex-update.exe"'
-  #${else}
-  # ${if} $MiKTeXUser != "HKCU" # call the admin version
-  #  nsExec::ExecToLog '"$PathLaTeX\internal\miktex-update_admin.exe"'
-  # ${else}
-  #   nsExec::ExecToLog '"$PathLaTeX\internal\miktex-update.exe"'
-  # ${endif}
-  #${endif}
-  # silent update:
-  MessageBox MB_OK|MB_ICONINFORMATION "MiKTeX must be updated to assure that LyX can create PDF files.$\r$\n\
-   This update can take several minutes, depending on your Internet speed.$\r$\n\
-   Please do not close the LyX installer until it is finished!" /SD IDOK
-  ${if} $MultiUser.Privileges != "Admin"
-  ${andif} $MultiUser.Privileges != "Power"
-   # call the non-admin version
-   # the order of the different commands is important!
-   ${if} $Is64bit == "true"
-    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--update=miktex-bin-x64-2.9"'
-    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--install=miktex-console-bin-x64-2.9"'
-    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--uninstall=miktex-mpm-bin-x64-2.9"'
-   ${else}
-    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--update=miktex-bin-2.9"'
-    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--install=miktex-console-bin-2.9"'
-    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--uninstall=miktex-mpm-bin-2.9"'
-   ${endif}
-   nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--update"'
-  ${else}
-   ${if} $MiKTeXUser != "HKCU" # call the admin version
-    # the order of the different commands is important!
-    ${if} $Is64bit == "true"
-     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--update=miktex-bin-x64-2.9"'
-     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--install=miktex-console-bin-x64-2.9"'
-     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--uninstall=miktex-mpm-bin-x64-2.9"'
-    ${else}
-     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--update=miktex-bin-2.9"'
-     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--install=miktex-console-bin-2.9"'
-     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--uninstall=miktex-mpm-bin-2.9"'
-    ${endif}
-    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--update"'
-   ${else}
-    ${if} $Is64bit == "true"
-     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--update=miktex-bin-x64-2.9"'
-     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--install=miktex-console-bin-x64-2.9"'
-     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--uninstall=miktex-mpm-bin-x64-2.9"'
-    ${else}
-     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--update=miktex-bin-2.9"'
-     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--install=miktex-console-bin-2.9"'
-     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--uninstall=miktex-mpm-bin-2.9"'
-    ${endif}
-    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--update"'
-   ${endif}
-  ${endif}
-  # restore possibly broken internal MiKTeX links after the update
-  # suggested by the MikTeX maintainer: https://github.com/MiKTeX/miktex/issues/82
-  ${if} $MultiUser.Privileges != "Admin"
-  ${andif} $MultiUser.Privileges != "Power"
-   # call the non-admin version
-   nsExec::ExecToLog '"$PathLaTeX\initexmf.exe" "--mklinks" "--force"'
-  ${else}
-   ${if} $MiKTeXUser != "HKCU" # call the admin version
-    nsExec::ExecToLog '"$PathLaTeX\initexmf.exe" "--admin" "--mklinks" "--force"'
-   ${else}
-     nsExec::ExecToLog '"$PathLaTeX\initexmf.exe" "--mklinks" "--force"'
-   ${endif}
-  ${endif}
-  #UpdateLater:
-
 FunctionEnd

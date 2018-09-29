@@ -115,3 +115,13 @@ ${LangFileString} SecUnPreferencesDescription 'Odstráni konfiguračný adresár
 						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
 						pre všetkých užívateľov (keď máte administrátorské práva).'
 ${LangFileString} SecUnProgramFilesDescription "Odinštaluj LyX a všetky jeho súčiastky."
+
+
+# MikTeX Update Stuff
+${LangFileString} MiKTeXUpdateMsg "Kvôli zmenám MiKTeX-u, inštalácia verzie LyX-u novšej ako 2.2.3 môže byť dôvodom parciálnej aktualizácie. To by mohlo zrobiť MiKTeX nepoužiteľným.$\r$\n\
+$\r$\n\
+Ak ste to doteraz ešte neurobili, odporúčame aktualizovať MiKTeX na jeho najnovšiu verziu pred inštaláciou novej LyX- verzie.$\r$\n\
+$\r$\n\
+Teraz môžte buď s inštaláciou pokračovať, alebo ju zrušiť aby ste mohli aktualizovať MiKTeX."
+
+${LangFileString} MiKTeXUpdateHeader "VAROVANIE: Zmeny MiKTeX-u"

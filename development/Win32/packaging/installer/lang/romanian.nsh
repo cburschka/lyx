@@ -109,3 +109,14 @@ ${LangFileString} SecUnPreferencesDescription 'Şterge directorul cu setările L
 						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
 						pentru toţi utilizatorii.'
 ${LangFileString} SecUnProgramFilesDescription "Dezinstalaţi programul LyX şi toate componentele lui."
+
+# MikTeX Update Stuff
+${LangFileString} MiKTeXUpdateMsg "Datorită schimbărilor în MiKTeX, instalarea versiunilor LyX mai târziu de 2.2.3 poate provoca o actualizare parțială care face MiKTeX inutilizabil.$\r$\n\
+$\r$\n\
+Datorită schimbărilor în MiKTeX, instalarea versiunilor LyX mai târziu de 2.2.3 poate provoca o actualizare parțială care face MiKTeX inutilizabil.$\r$\n\
+$\r$\n\
+Datorită schimbărilor în MiKTeX, instalarea versiunilor LyX mai târziu de 2.2.3 poate provoca o actualizare parțială care face MiKTeX inutilizabil.$\r$\n\
+$\r$\n\
+(Ne pare rău pentru traducerea automată.)"
+
+${LangFileString} MiKTeXUpdateHeader "AVERTISMENT: MiKTeX Modificări"

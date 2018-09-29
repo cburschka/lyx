@@ -115,3 +115,14 @@ ${LangFileString} SecUnPreferencesDescription 'LyX-en konfigurazioa ezabatzen du
 						($\"$AppPre\erabiltzailea\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
 						zuretzako edo erabiltzaile guztientzako (administratzailea bazara).'
 ${LangFileString} SecUnProgramFilesDescription "Desinstalatu LyX eta bere osagai guztiak."
+
+# MikTeX Update Stuff
+${LangFileString} MiKTeXUpdateMsg "MiKTeX-en aldaketak direla-eta, LyX-en bertsioen instalazioa 2.2.3 baino aurreratuagoa izan daiteke. MiKTeX-ek ezin du bertsio partziala sortu.$\r$\n\
+$\r$\n\
+Oraindik ez baduzu egin, Lyk bertsio berria instalatu aurretik, MiKTeX eguneratzeko azken bertsioa gomendatzen dizugu.$\r$\n\
+$\r$\n\
+Orain instalazioarekin jarraitu edo bertan behera utzi dezakezu MiKTeX eguneratzeko.$\r$\n\
+$\r$\n\
+(Barkatu itzulpen automatikorako.)"
+
+${LangFileString} MiKTeXUpdateHeader "ABISUA: MiKTeX aldaketak"

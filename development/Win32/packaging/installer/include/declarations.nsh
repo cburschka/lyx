@@ -9,13 +9,12 @@ Configuration of LyX installer
 #--------------------------------
 # File locations
 
-!define FILES_LICENSE "license.rtf"
-!define FILES_ICONS "icons"
+!define FILES_LICENSE "${FILES_GIT}\license.rtf"
+!define FILES_ICONS "${FILES_GIT}\icons"
 !define FILES_PDFVIEW "${FILES_DEPS}\bin"
 !define FILES_MSVC "${FILES_DEPS}\bin"
 !define FILES_PERL "${FILES_DEPS}\Perl"
 !define FILES_PYTHON "${FILES_DEPS}\Python"
-!define FILES_ELYXER "${FILES_DEPS}\bin"
 !define FILES_UNOCONV "${FILES_DEPS}\bin"
 !define FILES_IMAGEMAGICK "${FILES_DEPS}\imagemagick"
 !define FILES_GHOSTSCRIPT "${FILES_DEPS}\ghostscript"
@@ -33,11 +32,6 @@ Configuration of LyX installer
 # CTAN and SourceForge select a mirror automatically
 
 !define DOWNLOAD_LATEX "http://mirrors.ctan.org/systems/win32/miktex/setup/${SETUPFILE_LATEX}"
-
-#--------------------------------
-# Locations of setup files for components (for bundled setup)
-
-!define INSTALL_LATEX "${SETUPFILE_LATEX}"
 
 #--------------------------------
 # Names and version
@@ -58,14 +52,13 @@ Configuration of LyX installer
 !define APP_WIKI "https://wiki.lyx.org"
 !define APP_WIKI_INFO "${APP_NAME} Wiki"
 !define APP_COPYRIGHT "${APP_NAME} is Copyright © 1995 by Matthias Ettrich, 1995-${COPYRIGHT_YEAR} by the ${APP_NAME} Team"
+
 !if ${SETUPTYPE} == STANDARD
   !define APP_SETUPTYPE "Standard"
-!else if ${SETUPTYPE} == BUNDLE
-  !define APP_SETUPTYPE "Bundle"
 !endif
 
-!define APP_RUN "bin\lyx.exe"
-!define BIN_LYX "lyx.exe"
+!define BIN_LYX "LyX.exe"
+!define APP_RUN "bin\${BIN_LYX}"
 
 !define APP_REGKEY "Software\${APP_NAME}${APP_SERIES_KEY}" # like "LyX220"
 !define APP_REGKEY_SETUP "${APP_REGKEY}\Setup"
@@ -86,9 +79,6 @@ Configuration of LyX installer
 
 !if ${SETUPTYPE} == STANDARD
   !define SETUP_EXE ${ExeFile}
-!else if ${SETUPTYPE} == BUNDLE
-  !define SETUP_EXE ${BundleExeFile}
-  !define BUNDLESETUP_LATEX
 !endif
 
 !define SETUP_ICON "${FILES_ICONS}\lyx.ico"

@@ -32,8 +32,10 @@ BrandingText " "
 # Welcome page
 !define MUI_WELCOMEPAGE_TEXT $(TEXT_WELCOME)
 !insertmacro MUI_PAGE_WELCOME
+
 # Show the license.
 !insertmacro MUI_PAGE_LICENSE "${FILES_LICENSE}"
+
 # Decision if it should be installed as admin or not
 !insertmacro MULTIUSER_PAGE_INSTALLMODE
 
@@ -50,10 +52,8 @@ BrandingText " "
 !define MUI_STARTMENUPAGE_DEFAULTFOLDER "${APP_NAME} ${APP_SERIES_NAME}"
 !insertmacro MUI_PAGE_STARTMENU ${APP_NAME} $StartmenuFolder
 
-!if ${SETUPTYPE} != BUNDLE
- # Select latex.exe manually
- Page custom LatexFolder LatexFolder_LeaveFunction
-!endif # end if != BUNDLE
+# Select latex.exe manually
+Page custom LatexFolder LatexFolder_LeaveFunction
 
 # Watch the components being installed.
 !insertmacro MUI_PAGE_INSTFILES

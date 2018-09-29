@@ -108,3 +108,13 @@ ${LangFileString} SecUnPreferencesDescription 'Smazat konfigurační adresář L
 						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
 						pro všechny uživatele.'
 ${LangFileString} SecUnProgramFilesDescription "Odinstalovat LyX a všechny jeho komponenty."
+
+
+# MikTeX Update Stuff
+${LangFileString} MiKTeXUpdateMsg "Kvůli změnám MiKTeX-u mohly starší instalace LyX-u (2.2.3) způsobit částečnou aktualizaci, která MiKTeX-u znemožní normální fungovaní.$\r$\n\
+$\r$\n\
+Pokud jste tak již neučinili, doporučujeme abyste si sami aktualizovali poslední verzi MiKTeX-u před instalací LyX-u.$\r$\n\
+$\r$\n\
+Nyní můžete buďto pokračovat v instalaci, anebo ji stornovat za účelem aktualizace MikTeX-u."
+
+${LangFileString} MiKTeXUpdateHeader "Upozornění: Změny MiKTeX-u"
