@@ -97,17 +97,14 @@ elseif(WIN32)
                 ${QT_BINARY_DIR}/Qt5PrintSupport.dll
                 ${QT_BINARY_DIR}/Qt5Svg.dll
                 ${QT_BINARY_DIR}/Qt5WinExtras.dll
-                DESTINATION bin
-                CONFIGURATIONS Release)
+                DESTINATION bin)
             install(FILES
                 ${QT_BINARY_DIR}/../lib/qt5/plugins/platforms/qminimal.dll
                 ${QT_BINARY_DIR}/../lib/qt5/plugins/platforms/qwindows.dll
-                DESTINATION bin/platforms
-                CONFIGURATIONS Release)
+                DESTINATION bin/platforms)
             install(FILES
                 ${QT_BINARY_DIR}/../lib/qt5/plugins/printsupport/windowsprintersupport.dll
-                DESTINATION bin/printsupport
-                CONFIGURATIONS Release)
+                DESTINATION bin/printsupport)
             install(FILES
                 ${QT_BINARY_DIR}/../lib/qt5/plugins/imageformats/qgif.dll
                 ${QT_BINARY_DIR}/../lib/qt5/plugins/imageformats/qicns.dll
@@ -118,16 +115,13 @@ elseif(WIN32)
                 ${QT_BINARY_DIR}/../lib/qt5/plugins/imageformats/qtiff.dll
                 ${QT_BINARY_DIR}/../lib/qt5/plugins/imageformats/qwbmp.dll
                 ${QT_BINARY_DIR}/../lib/qt5/plugins/imageformats/qwebp.dll
-                DESTINATION bin/imageformats
-                CONFIGURATIONS Release)
+                DESTINATION bin/imageformats)
             install(FILES
                 ${QT_BINARY_DIR}/../lib/qt5/plugins/styles/qwindowsvistastyle.dll
-                DESTINATION bin/styles
-                CONFIGURATIONS Release)
+                DESTINATION bin/styles)
             install(FILES
                 ${QT_BINARY_DIR}/../lib/qt5/plugins/iconengines/qsvgicon.dll
-                DESTINATION bin/iconengines
-                CONFIGURATIONS Release)
+                DESTINATION bin/iconengines)
         else()
             install(FILES
                 ${runtime}
@@ -140,7 +134,7 @@ elseif(WIN32)
                 ${QT_PLUGINS_DIR}/imageformats/qsvg4.dll
                 ${QT_PLUGINS_DIR}/imageformats/qtga4.dll
                 ${QT_PLUGINS_DIR}/imageformats/qtiff4.dll
-                DESTINATION bin CONFIGURATIONS Release)
+                DESTINATION bin)
         endif()
     endif()
 else()
