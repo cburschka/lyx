@@ -46,6 +46,10 @@ Section -ProgramFiles SecProgramFiles
   # Binaries
   SetOutPath "$INSTDIR\bin"
   !insertmacro FileListLyXBin File "${FILES_LYX}\bin\"
+  # The 2.3.0 and early 2.3.1 installers used a version suffix
+  # We need to remove the old binaries if we're installing into the same directory
+  Delete "$INSTDIR\bin\LyX2.3.exe"
+  Delete "$INSTDIR\bin\tex2lyx2.3.exe"
   !insertmacro FileListQtBin File "${FILES_QT}\bin\"
   !insertmacro FileListMSVC File "${FILES_MSVC}\"
   !insertmacro FileListNetpbmBin File "${FILES_NETPBM}\"
@@ -138,7 +142,6 @@ Section -ProgramFiles SecProgramFiles
   !insertmacro FileListUnoConv File "${FILES_UNOCONV}\"
 
   # install the LaTeX class files that are delivered with LyX to MiKTeX
-  # and enable MiKTeX's automatic package installation
   ${if} $LaTeXInstalled == "MiKTeX"
    Call ConfigureMiKTeX # Function from LaTeX.nsh
   ${endif}
