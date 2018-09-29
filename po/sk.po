@@ -1,15 +1,15 @@
 # Slovak translation of LyX
 # Copyright (C)
-# Zdenko Podobný <zdpo@mailbox.sk>, 2003, 2006
 #
+# Zdenko Podobný <zdpo@mailbox.sk>, 2003, 2006.
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
 # Kornel Benko <kornel@lyx.org>, 2009-2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-09-23 13:46+0200\n"
-"PO-Revision-Date: 2018-09-23 14:13+0000\n"
+"POT-Creation-Date: 2018-09-29 10:46+0200\n"
+"PO-Revision-Date: 2018-09-29 09:06+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -29706,6 +29706,14 @@ msgstr "Roz&lišovať veľkosť písmen"
 msgid "Search as you &type"
 msgstr "V&yhľadávať pri zadávaní"
 
+#: src/frontends/qt4/GuiCitation.cpp:178
+msgid ""
+"Ordered list of all cited references.\n"
+"You can reorder, add and remove references with the buttons on the left."
+msgstr ""
+"Usporiadaný zoznam všetkých citovaných referencií.\n"
+"Môžte preskupiť, pridať alebo zmazať referencie tlačidlom na ľavej strane."
+
 #: src/frontends/qt4/GuiCitation.cpp:293
 msgid "General text befo&re:"
 msgstr "Všeobecný text pred:"
@@ -29747,6 +29755,21 @@ msgstr ""
 msgid "Always list all authors (rather than using \"et al.\")"
 msgstr "Vynúti výpis všetkých autorov (miesto použitia \"a kol.\")"
 
+#: src/frontends/qt4/GuiCitation.cpp:363
+msgid "All references available for citing."
+msgstr "Všetky referencie dostupné na citovanie."
+
+#: src/frontends/qt4/GuiCitation.cpp:365
+msgid ""
+"All references available for citing.\n"
+"To add the selected one, hit Add, press Enter or double-click.\n"
+"Hit Ctrl-Enter to add and close the dialog."
+msgstr ""
+"Všetky referencie dostupné na citovanie.\n"
+"Keď chcete pridať vybrané, stlačte \"Pridať\", stisnite 'Enter' alebo "
+"použite dvojité kliknutie.\n"
+"Stisnite 'Ctrl-Enter' na pridanie a nasledovné zatvorenie dialógu."
+
 #: src/frontends/qt4/GuiCitation.cpp:426
 msgid "Keys"
 msgstr "Kľúče"
@@ -29768,6 +29791,14 @@ msgid ""
 "Enter string to filter the list of available citations and press <Enter>"
 msgstr ""
 "Zadajte reťazec na výber z listiny dostupných citácií a stlačte <Enter>"
+
+#: src/frontends/qt4/GuiCitation.cpp:585
+msgid ""
+"\n"
+"The down arrow key will get you into the list of filtered citations."
+msgstr ""
+"\n"
+"Klávesou šípky nadol dostanete zoznam filtrovaných citácií."
 
 #: src/frontends/qt4/GuiCitation.cpp:647
 msgid "Text before"
