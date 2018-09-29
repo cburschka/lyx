@@ -169,5 +169,7 @@ What's new
 
 * BUILD/INSTALLATION
 
-
+- Fix linker options for Mac builds to avoid failures when running
+  install_name_tool on Mac to create relocatable binaries using the
+  bundled private frameworks.
 
