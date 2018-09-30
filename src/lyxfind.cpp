@@ -951,13 +951,23 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 
 		// If entered regexp must match at begin of searched string buffer
 		// Kornel: Added parentheses to use $1 for size of the leading string
-		string regexp_str = "(" + lead_as_regexp + ")" + par_as_string;
+		string regexp_str;
+		string regexp2_str;
+		{
+			// TODO: Adapt '\[12345678]' in par_as_string to acount for the first '()
+			// Unfortunately is '\1', '\2', etc not working for strings with extra format
+			// so the convert has no effect in that case
+			for (int i = 8; i > 0; --i) {
+				string orig = "\\\\" + std::to_string(i);
+				string dest = "\\" + std::to_string(i+1);
+				while (regex_replace(par_as_string, par_as_string, orig, dest));
+			}
+			regexp_str = "(" + lead_as_regexp + ")" + par_as_string;
+			regexp2_str = "(" + lead_as_regexp + ").*" + par_as_string;
+		}
 		LYXERR(Debug::FIND, "Setting regexp to : '" << regexp_str << "'");
 		regexp = lyx::regex(regexp_str);
 
-		// If entered regexp may match wherever in searched string buffer
-		// Kornel: Added parentheses to use $1 for size of the leading string
-		string regexp2_str = "(" + lead_as_regexp + ").*" + par_as_string;
 		LYXERR(Debug::FIND, "Setting regexp2 to: '" << regexp2_str << "'");
 		regexp2 = lyx::regex(regexp2_str);
 	}
