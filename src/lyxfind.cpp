@@ -841,7 +841,8 @@ static size_t identifyLeading(string const & s)
 {
 	string t = s;
 	// @TODO Support \item[text]
-	while (regex_replace(t, t, REGEX_BOS "\\\\(emph|textbf|subsubsection|subsection|section|subparagraph|paragraph|part)\\*?\\{", "")
+	// Kornel: Added textsf, textit and noun
+	while (regex_replace(t, t, REGEX_BOS "\\\\(emph|noun|text(bf|sf|it)|subsubsection|subsection|section|subparagraph|paragraph|part)\\*?\\{", "")
 	       || regex_replace(t, t, REGEX_BOS "\\$", "")
 	       || regex_replace(t, t, REGEX_BOS "\\\\\\[ ", "")
 	       || regex_replace(t, t, REGEX_BOS "\\\\item ", "")
@@ -930,8 +931,8 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 			++close_wildcards;
 		}
 		if (!opt.ignoreformat) {
-			// Remove extra '}' at end
-			regex_replace(par_as_string, par_as_string, "(.*)\\\\}$", "$1");
+			// Remove extra '\}' at end
+			while ( regex_replace(par_as_string, par_as_string, "(.*)\\\\}$", "$1"));
 			// save '\.'
 			regex_replace(par_as_string, par_as_string, "\\\\\\.", "_xxbdotxx_");
 			// handle '.' -> '[^]', replace later as '[^\}\{\\]'
@@ -949,12 +950,14 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 		LYXERR(Debug::FIND, "Replaced text (to be used as regex): " << par_as_string);
 
 		// If entered regexp must match at begin of searched string buffer
-		string regexp_str = lead_as_regexp + par_as_string;
+		// Kornel: Added parentheses to use $1 for size of the leading string
+		string regexp_str = "(" + lead_as_regexp + ")" + par_as_string;
 		LYXERR(Debug::FIND, "Setting regexp to : '" << regexp_str << "'");
 		regexp = lyx::regex(regexp_str);
 
 		// If entered regexp may match wherever in searched string buffer
-		string regexp2_str = lead_as_regexp + ".*" + par_as_string;
+		// Kornel: Added parentheses to use $1 for size of the leading string
+		string regexp2_str = "(" + lead_as_regexp + ").*" + par_as_string;
 		LYXERR(Debug::FIND, "Setting regexp2 to: '" << regexp2_str << "'");
 		regexp2 = lyx::regex(regexp2_str);
 	}
@@ -999,14 +1002,29 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 		// except the last "padding" one inserted by lyx.
 		for (size_t i = 1; i < m.size() - 1; ++i)
 			if (!braces_match(m[i].first, m[i].second))
-				return false;
+				return 0;
 
 		// Exclude from the returned match length any length
 		// due to close wildcards added at end of regexp
+		// and also the length of the leading (e.g. '\emph{')
+		//
+		// Whole found string, including the leading: m[0].second - m[0].first
+		// Size of the leading string: m[1].second - m[1].first
+		int leadingsize = 0;
+		if (m.size() > 1)
+			leadingsize = m[1].second - m[1].first;
+		int result;
 		if (close_wildcards == 0)
-			return m[0].second - m[0].first;
+			result = m[0].second - m[0].first;
 
-		return m[m.size() - close_wildcards].first - m[0].first;
+		else
+			result =  m[m.size() - close_wildcards].first - m[0].first;
+
+		if (result > leadingsize)
+			result -= leadingsize;
+		else
+			result = 0;
+		return(result);
 	}
 
 	// else !use_regexp: but all code paths above return
@@ -1074,8 +1092,9 @@ string MatchStringAdv::normalize(docstring const & s, bool hack_braces) const
 	while ((pos = t.find("\n")) != string::npos)
 		t.replace(pos, 1, " ");
 	// Remove stale empty \emph{}, \textbf{} and similar blocks from latexify
+	// Kornel: Added textsf, textit and noun
 	LYXERR(Debug::FIND, "Removing stale empty \\emph{}, \\textbf{}, \\*section{} macros from: " << t);
-	while (regex_replace(t, t, "\\\\(emph|textbf|subsubsection|subsection|section|subparagraph|paragraph|part)(\\{\\})+", ""))
+	while (regex_replace(t, t, "\\\\(emph|noun|text(bf|sf|it)|subsubsection|subsection|section|subparagraph|paragraph|part)(\\{\\})+", ""))
 		LYXERR(Debug::FIND, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
 
 	// FIXME - check what preceeds the brace
