@@ -842,7 +842,7 @@ static size_t identifyLeading(string const & s)
 	string t = s;
 	// @TODO Support \item[text]
 	// Kornel: Added textsf, textit and noun
-	while (regex_replace(t, t, REGEX_BOS "\\\\(emph|noun|text(bf|sf|it)|subsubsection|subsection|section|subparagraph|paragraph|part)\\*?\\{", "")
+	while (regex_replace(t, t, REGEX_BOS "\\\\(emph|noun|text(bf|sl|sf|it|tt)|(u|uu)line|(s|x)out|uwave|subsubsection|subsection|section|subparagraph|paragraph|part)\\*?\\{", "")
 	       || regex_replace(t, t, REGEX_BOS "\\$", "")
 	       || regex_replace(t, t, REGEX_BOS "\\\\\\[ ", "")
 	       || regex_replace(t, t, REGEX_BOS "\\\\item ", "")
@@ -932,7 +932,9 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 		}
 		if (!opt.ignoreformat) {
 			// Remove extra '\}' at end
-			while ( regex_replace(par_as_string, par_as_string, "(.*)\\\\}$", "$1"));
+			while ( regex_replace(par_as_string, par_as_string, "(.*)\\\\}$", "$1")) {
+				open_braces++;
+			}
 			// save '\.'
 			regex_replace(par_as_string, par_as_string, "\\\\\\.", "_xxbdotxx_");
 			// handle '.' -> '[^]', replace later as '[^\}\{\\]'
@@ -1011,7 +1013,7 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 		// Check braces on segments that matched all (.*?) subexpressions,
 		// except the last "padding" one inserted by lyx.
 		for (size_t i = 1; i < m.size() - 1; ++i)
-			if (!braces_match(m[i].first, m[i].second))
+			if (!braces_match(m[i].first, m[i].second, open_braces))
 				return 0;
 
 		// Exclude from the returned match length any length
@@ -1104,7 +1106,7 @@ string MatchStringAdv::normalize(docstring const & s, bool hack_braces) const
 	// Remove stale empty \emph{}, \textbf{} and similar blocks from latexify
 	// Kornel: Added textsf, textit and noun
 	LYXERR(Debug::FIND, "Removing stale empty \\emph{}, \\textbf{}, \\*section{} macros from: " << t);
-	while (regex_replace(t, t, "\\\\(emph|noun|text(bf|sf|it)|subsubsection|subsection|section|subparagraph|paragraph|part)(\\{\\})+", ""))
+	while (regex_replace(t, t, "\\\\(emph|noun|text(bf|sl|sf|it|tt)|(u|uu)line|(s|x)out|uwave|subsubsection|subsection|section|subparagraph|paragraph|part)(\\{\\})+", ""))
 		LYXERR(Debug::FIND, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
 
 	// FIXME - check what preceeds the brace
