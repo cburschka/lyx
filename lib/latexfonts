@@ -199,6 +199,12 @@ Font IBMPlexSerifSemibold
 	PackageOption    semibold
 EndFont
 
+Font ADOBESourceSerifPro
+	GuiName		"Adobe Source Serif Pro"
+	Family		rm
+	Package		sourceserifpro
+EndFont
+
 Font garamondx
 	GuiName          "URW Garamond"
 	Family           rm
@@ -635,6 +641,14 @@ Font IBMPlexSansSemibold
 	ScaleOption      scale=$$val
 EndFont
 
+Font	ADOBESourceSansPro
+	GuiName		"Adobe Source Sans Pro"
+	Family		sf
+	Package		sourcesanspro
+	PackageOption	osf
+	ScaleOption	scaled=$$val
+EndFont
+
 Font helvet
 	GuiName          "Helvetica"
 	Family           sf
@@ -817,6 +831,13 @@ Font IBMPlexMonoSemibold
 	Package          plex-mono
 	ScaleOption      scale=$$val
 	PackageOption    semibold
+EndFont
+
+Font	ADOBESourceCodePro
+	GuiName		"Adobe Source Code Pro"
+	Family		tt
+	Package		sourcecodepro
+	ScaleOption	scaled=$$val
 EndFont
 
 Font libertine-mono

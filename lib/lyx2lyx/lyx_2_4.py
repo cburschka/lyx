@@ -151,6 +151,9 @@ def createFontMapping():
                           'IBMPlexMonoExtraLight,extralight', 'IBMPlexMonoLight,light',
                           'IBMPlexMonoSemibold,semibold'],
                          "typewriter", "tt", "plex-mono", "scale")
+    fm.expandFontMapping(['ADOBESourceSerifPro'], "roman", None, "sourceserifpro")
+    fm.expandFontMapping(['ADOBESourceSansPro'], "sans", "sf", "sourcesanspro", "scaled")
+    fm.expandFontMapping(['ADOBESourceCodePro'], "typewriter", "tt", "sourcecodepro", "scaled")
     return fm
 
 def convert_fonts(document, fm):
