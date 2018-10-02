@@ -126,7 +126,7 @@ class fontmapping:
             return fontname
         return None
 
-def createFontMapping():
+def createFontMapping(fontlist):
     # Create info for known fonts for the use in
     #   convert_latexFonts() and
     #   revert_latexFonts()
@@ -136,24 +136,28 @@ def createFontMapping():
     # * For now, add DejaVu and IBMPlex only.
     # * Expand, if desired
     fm = fontmapping()
-    fm.expandFontMapping(['DejaVuSerif', 'DejaVuSerifCondensed'], "roman", None, None)
-    fm.expandFontMapping(['DejaVuSans','DejaVuSansCondensed'], "sans", "sf", None, "scaled")
-    fm.expandFontMapping(['DejaVuSansMono'], "typewriter", "tt", None, "scaled")
-    fm.expandFontMapping(['IBMPlexSerif', 'IBMPlexSerifThin,thin',
-                          'IBMPlexSerifExtraLight,extralight', 'IBMPlexSerifLight,light',
-                          'IBMPlexSerifSemibold,semibold'],
-                         "roman", None, "plex-serif")
-    fm.expandFontMapping(['IBMPlexSans','IBMPlexSansCondensed,condensed',
-                          'IBMPlexSansThin,thin', 'IBMPlexSansExtraLight,extralight',
-                          'IBMPlexSansLight,light', 'IBMPlexSansSemibold,semibold'],
-                         "sans", "sf", "plex-sans", "scale")
-    fm.expandFontMapping(['IBMPlexMono', 'IBMPlexMonoThin,thin',
-                          'IBMPlexMonoExtraLight,extralight', 'IBMPlexMonoLight,light',
-                          'IBMPlexMonoSemibold,semibold'],
-                         "typewriter", "tt", "plex-mono", "scale")
-    fm.expandFontMapping(['ADOBESourceSerifPro'], "roman", None, "sourceserifpro")
-    fm.expandFontMapping(['ADOBESourceSansPro'], "sans", "sf", "sourcesanspro", "scaled")
-    fm.expandFontMapping(['ADOBESourceCodePro'], "typewriter", "tt", "sourcecodepro", "scaled")
+    for font in fontlist:
+        if font == 'DejaVu':
+            fm.expandFontMapping(['DejaVuSerif', 'DejaVuSerifCondensed'], "roman", None, None)
+            fm.expandFontMapping(['DejaVuSans','DejaVuSansCondensed'], "sans", "sf", None, "scaled")
+            fm.expandFontMapping(['DejaVuSansMono'], "typewriter", "tt", None, "scaled")
+        elif font == 'IBM':
+            fm.expandFontMapping(['IBMPlexSerif', 'IBMPlexSerifThin,thin',
+                                  'IBMPlexSerifExtraLight,extralight', 'IBMPlexSerifLight,light',
+                                  'IBMPlexSerifSemibold,semibold'],
+                                 "roman", None, "plex-serif")
+            fm.expandFontMapping(['IBMPlexSans','IBMPlexSansCondensed,condensed',
+                                  'IBMPlexSansThin,thin', 'IBMPlexSansExtraLight,extralight',
+                                  'IBMPlexSansLight,light', 'IBMPlexSansSemibold,semibold'],
+                                 "sans", "sf", "plex-sans", "scale")
+            fm.expandFontMapping(['IBMPlexMono', 'IBMPlexMonoThin,thin',
+                                  'IBMPlexMonoExtraLight,extralight', 'IBMPlexMonoLight,light',
+                                  'IBMPlexMonoSemibold,semibold'],
+                                 "typewriter", "tt", "plex-mono", "scale")
+        elif font == 'Adobe':
+            fm.expandFontMapping(['ADOBESourceSerifPro'], "roman", None, "sourceserifpro")
+            fm.expandFontMapping(['ADOBESourceSansPro'], "sans", "sf", "sourcesanspro", "scaled")
+            fm.expandFontMapping(['ADOBESourceCodePro'], "typewriter", "tt", "sourcecodepro", "scaled")
     return fm
 
 def convert_fonts(document, fm):
@@ -271,7 +275,7 @@ def convert_latexFonts(document):
     " Handle DejaVu and IBMPlex fonts definition to LaTeX "
 
     if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
-        fm = createFontMapping()
+        fm = createFontMapping(['DejaVu', 'IBM'])
         convert_fonts(document, fm)
 
 def revert_latexFonts(document):
@@ -279,7 +283,23 @@ def revert_latexFonts(document):
 
     if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         fontmap = dict()
-        fm = createFontMapping()
+        fm = createFontMapping(['DejaVu', 'IBM'])
+        revert_fonts(document, fm, fontmap)
+        add_preamble_fonts(document, fontmap)
+
+def convert_AdobeFonts(document):
+    " Handle DejaVu and IBMPlex fonts definition to LaTeX "
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        fm = createFontMapping(['Adobe'])
+        convert_fonts(document, fm)
+
+def revert_AdobeFonts(document):
+    " Revert native DejaVu font definition to LaTeX "
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        fontmap = dict()
+        fm = createFontMapping(['Adobe'])
         revert_fonts(document, fm, fontmap)
         add_preamble_fonts(document, fontmap)
 
@@ -1386,10 +1406,12 @@ convert = [
            [561, [convert_latexFonts]], # Handle dejavu, ibmplex fonts in GUI
            [562, []],
            [563, []],
-           [564, []]
+           [564, []],
+           [565, [convert_AdobeFonts]], # Handle adobe fonts in GUI
           ]
 
 revert =  [
+           [564, [revert_AdobeFonts]],
            [563, [revert_lformatinfo]],
            [562, [revert_listpargs]],
            [561, [revert_l7ninfo]],
