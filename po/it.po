@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-09-10 11:48+0200\n"
-"PO-Revision-Date: 2018-09-10 12:25+0200\n"
+"POT-Creation-Date: 2018-10-02 19:39+0200\n"
+"PO-Revision-Date: 2018-10-02 19:56+0200\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "Language: it\n"
@@ -80,7 +80,7 @@ msgstr ""
 "Usa letteralmente il contenuto del campo `Etichetta' per LaTeX. Utile se si "
 "vuole inserire codice LaTeX."
 
-#: src/frontends/qt4/ui/BibitemUi.ui:88 src/frontends/qt4/ui/CitationUi.ui:368
+#: src/frontends/qt4/ui/BibitemUi.ui:88 src/frontends/qt4/ui/CitationUi.ui:375
 #: src/frontends/qt4/ui/HyperlinkUi.ui:80 src/frontends/qt4/ui/NomenclUi.ui:72
 #: src/frontends/qt4/ui/PrintindexUi.ui:74
 msgid "Li&teral"
@@ -283,7 +283,7 @@ msgid "&Browse..."
 msgstr "&Sfoglia..."
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:162
-#: src/frontends/qt4/ui/BranchesUi.ui:113 src/frontends/qt4/ui/CitationUi.ui:143
+#: src/frontends/qt4/ui/BranchesUi.ui:113 src/frontends/qt4/ui/CitationUi.ui:146
 #: src/frontends/qt4/ui/IndicesUi.ui:134 src/CutAndPaste.cpp:423
 msgid "&Add"
 msgstr "A&ggiungi"
@@ -317,7 +317,7 @@ msgstr "&Aggiungi..."
 msgid "Remove the selected database"
 msgstr "Rimuovi il catalogo selezionato"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:61 src/frontends/qt4/ui/CitationUi.ui:156
+#: src/frontends/qt4/ui/BibtexUi.ui:61 src/frontends/qt4/ui/CitationUi.ui:159
 msgid "&Delete"
 msgstr "&Elimina"
 
@@ -325,7 +325,7 @@ msgstr "&Elimina"
 msgid "Move the selected database upwards in the list"
 msgstr "Sposta in alto il catalogo selezionato"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:71 src/frontends/qt4/ui/CitationUi.ui:188
+#: src/frontends/qt4/ui/BibtexUi.ui:71 src/frontends/qt4/ui/CitationUi.ui:191
 #: src/frontends/qt4/ui/ModulesUi.ui:117
 msgid "&Up"
 msgstr "S&u"
@@ -334,7 +334,7 @@ msgstr "S&u"
 msgid "Move the selected database downwards in the list"
 msgstr "Sposta in basso il catalogo selezionato"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:81 src/frontends/qt4/ui/CitationUi.ui:211
+#: src/frontends/qt4/ui/BibtexUi.ui:81 src/frontends/qt4/ui/CitationUi.ui:214
 #: src/frontends/qt4/ui/ModulesUi.ui:124
 msgid "Do&wn"
 msgstr "&Giù"
@@ -364,17 +364,17 @@ msgid "&Content:"
 msgstr "C&ontenuto:"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:185 src/frontends/qt4/GuiBibtex.cpp:340
-#: src/insets/InsetBibtex.cpp:221 src/insets/InsetBibtex.cpp:239
+#: src/insets/InsetBibtex.cpp:222 src/insets/InsetBibtex.cpp:240
 msgid "all cited references"
 msgstr "tutti i riferimenti citati"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:190 src/frontends/qt4/GuiBibtex.cpp:342
-#: src/insets/InsetBibtex.cpp:219
+#: src/insets/InsetBibtex.cpp:220
 msgid "all uncited references"
 msgstr "tutti i riferimenti non citati"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:195 src/frontends/qt4/GuiBibtex.cpp:343
-#: src/insets/InsetBibtex.cpp:217 src/insets/InsetBibtex.cpp:237
+#: src/insets/InsetBibtex.cpp:218 src/insets/InsetBibtex.cpp:238
 msgid "all references"
 msgstr "tutti i riferimenti"
 
@@ -399,7 +399,7 @@ msgstr ""
 "per i dettagli."
 
 #: src/frontends/qt4/ui/BibtexUi.ui:283 src/frontends/qt4/ui/CharacterUi.ui:362
-#: src/frontends/qt4/ui/CitationUi.ui:453
+#: src/frontends/qt4/ui/CitationUi.ui:460
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:183
 #: src/frontends/qt4/ui/CompareUi.ui:153 src/frontends/qt4/ui/DocumentUi.ui:67
 #: src/frontends/qt4/ui/ExternalUi.ui:600 src/frontends/qt4/ui/GraphicsUi.ui:773
@@ -712,7 +712,7 @@ msgid "Add A&ll"
 msgstr "Aggiungi &tutti"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:58
-#: src/frontends/qt4/ui/CitationUi.ui:476
+#: src/frontends/qt4/ui/CitationUi.ui:483
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:205
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
@@ -727,7 +727,7 @@ msgstr "Aggiungi &tutti"
 #: src/frontends/qt4/GuiView.cpp:2832 src/frontends/qt4/GuiView.cpp:3100
 #: src/frontends/qt4/GuiView.cpp:3114 src/frontends/qt4/GuiView.cpp:3216
 #: src/frontends/qt4/GuiView.cpp:3244 src/frontends/qt4/GuiView.cpp:3927
-#: src/frontends/qt4/GuiView.cpp:3934 src/insets/InsetBibtex.cpp:158
+#: src/frontends/qt4/GuiView.cpp:3934 src/insets/InsetBibtex.cpp:159
 msgid "&Cancel"
 msgstr "&Cancella"
 
@@ -1002,7 +1002,7 @@ msgstr "&Filtro:"
 msgid "Select the fields on which the filter applies"
 msgstr "Campo a cui applicare il filtro"
 
-#: src/frontends/qt4/ui/CitationUi.ui:61 src/frontends/qt4/GuiCitation.cpp:422
+#: src/frontends/qt4/ui/CitationUi.ui:61 src/frontends/qt4/GuiCitation.cpp:430
 msgid "All fields"
 msgstr "Tutti i campi"
 
@@ -1010,7 +1010,7 @@ msgstr "Tutti i campi"
 msgid "Select the entry types on which the filter applies"
 msgstr "Voce a cui applicare il filtro"
 
-#: src/frontends/qt4/ui/CitationUi.ui:85 src/frontends/qt4/GuiCitation.cpp:437
+#: src/frontends/qt4/ui/CitationUi.ui:85 src/frontends/qt4/GuiCitation.cpp:445
 msgid "All entry types"
 msgstr "Tutti i tipi di voce"
 
@@ -1026,43 +1026,43 @@ msgstr "O&pzioni"
 msgid "A&vailable Citations:"
 msgstr "Citazioni diponi&bili:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:140
+#: src/frontends/qt4/ui/CitationUi.ui:143
 msgid "Click or press Enter to add the selected citation to the list"
 msgstr "Cliccare o premere Enter per aggiungere alla lista la voce selezionata"
 
-#: src/frontends/qt4/ui/CitationUi.ui:153
+#: src/frontends/qt4/ui/CitationUi.ui:156
 msgid "Click or press Delete to delete the selected citation from the list"
 msgstr "Cliccare o premere Delete per rimuovere dalla lista la voce selezionata"
 
-#: src/frontends/qt4/ui/CitationUi.ui:185
+#: src/frontends/qt4/ui/CitationUi.ui:188
 msgid "Move the selected citation up (Ctrl-Up)"
 msgstr "Sposta la voce selezionata verso l'alto (Ctrl-Up)"
 
-#: src/frontends/qt4/ui/CitationUi.ui:208
+#: src/frontends/qt4/ui/CitationUi.ui:211
 msgid "Move the selected citation down (Ctrl-Down)"
 msgstr "Sposta la voce selezionata verso il basso (Ctrl-Down)"
 
-#: src/frontends/qt4/ui/CitationUi.ui:229
+#: src/frontends/qt4/ui/CitationUi.ui:232
 msgid "Selected &Citations:"
 msgstr "Citazioni &selezionate:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:269
+#: src/frontends/qt4/ui/CitationUi.ui:276
 msgid "Formatting"
 msgstr "Formattazione"
 
-#: src/frontends/qt4/ui/CitationUi.ui:279
+#: src/frontends/qt4/ui/CitationUi.ui:286
 msgid "Citation st&yle:"
 msgstr "St&ile citazione:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:289 src/frontends/qt4/GuiCitation.cpp:300
+#: src/frontends/qt4/ui/CitationUi.ui:296 src/frontends/qt4/GuiCitation.cpp:302
 msgid "Text befo&re:"
 msgstr "Testo pri&ma:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:309
+#: src/frontends/qt4/ui/CitationUi.ui:316
 msgid "Citation style to use, if different styles are provided"
 msgstr "Stile della citazione da usare, se ne sono disponibili diverse"
 
-#: src/frontends/qt4/ui/CitationUi.ui:318 src/frontends/qt4/GuiCitation.cpp:304
+#: src/frontends/qt4/ui/CitationUi.ui:325 src/frontends/qt4/GuiCitation.cpp:306
 msgid ""
 "Text that precedes the reference (e.g., \"cf.\"), if the current citation "
 "style supports this."
@@ -1070,11 +1070,11 @@ msgstr ""
 "Testo che precede il riferimento (p.es. \"cfr.\"), se lo stile di citazione "
 "corrente lo consente."
 
-#: src/frontends/qt4/ui/CitationUi.ui:325 src/frontends/qt4/GuiCitation.cpp:306
+#: src/frontends/qt4/ui/CitationUi.ui:332 src/frontends/qt4/GuiCitation.cpp:308
 msgid "&Text after:"
 msgstr "Testo &dopo:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:335 src/frontends/qt4/GuiCitation.cpp:310
+#: src/frontends/qt4/ui/CitationUi.ui:342 src/frontends/qt4/GuiCitation.cpp:312
 msgid ""
 "Text that follows the reference (e.g., pages), if the current citation style "
 "supports this."
@@ -1082,7 +1082,7 @@ msgstr ""
 "Testo che segue il riferimento (p.es. pagine), se lo stile di citazione "
 "corrente lo consente."
 
-#: src/frontends/qt4/ui/CitationUi.ui:365
+#: src/frontends/qt4/ui/CitationUi.ui:372
 msgid ""
 "Pass content of `Text before' and `Text after' fields literally to LaTeX. "
 "Check this if you want to enter LaTeX code."
@@ -1090,7 +1090,7 @@ msgstr ""
 "Usa letteralmente il contenuto dei campi `Testo prima' e `Testo dopo' per "
 "LaTeX. Utile se si vuole inserire codice LaTeX."
 
-#: src/frontends/qt4/ui/CitationUi.ui:388 src/frontends/qt4/GuiCitation.cpp:318
+#: src/frontends/qt4/ui/CitationUi.ui:395 src/frontends/qt4/GuiCitation.cpp:320
 msgid ""
 "Force upper case in names (\"Del Piero\", not \"del Piero\"), if the current "
 "citation style supports this."
@@ -1098,11 +1098,11 @@ msgstr ""
 "Forza maiuscolo nei nomi (\"Del Piero\", non \"del Piero\"), se lo stile di "
 "citazione corrente lo consente."
 
-#: src/frontends/qt4/ui/CitationUi.ui:391
+#: src/frontends/qt4/ui/CitationUi.ui:398
 msgid "Force upcas&ing"
 msgstr "For&za maiuscolo"
 
-#: src/frontends/qt4/ui/CitationUi.ui:398 src/frontends/qt4/GuiCitation.cpp:353
+#: src/frontends/qt4/ui/CitationUi.ui:405 src/frontends/qt4/GuiCitation.cpp:355
 msgid ""
 "Always list all authors (rather than using \"et al.\"), if the current "
 "citation style supports this."
@@ -1110,11 +1110,11 @@ msgstr ""
 "Lista tutti gli autori (invece che usare \"et al.\"), se lo stile di "
 "citazione corrente lo consente."
 
-#: src/frontends/qt4/ui/CitationUi.ui:401 src/frontends/qt4/GuiCitation.cpp:349
+#: src/frontends/qt4/ui/CitationUi.ui:408 src/frontends/qt4/GuiCitation.cpp:351
 msgid "All aut&hors"
 msgstr "&Tutti gli autori"
 
-#: src/frontends/qt4/ui/CitationUi.ui:430 src/frontends/qt4/ui/DocumentUi.ui:44
+#: src/frontends/qt4/ui/CitationUi.ui:437 src/frontends/qt4/ui/DocumentUi.ui:44
 #: src/frontends/qt4/ui/GraphicsUi.ui:744
 #: src/frontends/qt4/ui/InsetParamsUi.ui:82
 #: src/frontends/qt4/ui/ParagraphUi.ui:218 src/frontends/qt4/ui/PrefsUi.ui:44
@@ -1122,7 +1122,7 @@ msgstr "&Tutti gli autori"
 msgid "&Restore"
 msgstr "&Ripristina"
 
-#: src/frontends/qt4/ui/CitationUi.ui:466
+#: src/frontends/qt4/ui/CitationUi.ui:473
 msgid "App&ly"
 msgstr "&Applica"
 
@@ -5330,10 +5330,12 @@ msgid "LyX: Enter text"
 msgstr "LyX: Inserimento testo"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:44
+#: src/frontends/qt4/GuiProgress.cpp:194
 msgid "If you check this, LyX will not warn you again in the given case."
 msgstr "Se selezionato, LyX non avvertirà più nello stesso caso."
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:47
+#: src/frontends/qt4/GuiProgress.cpp:193
 msgid "&Do not show this warning again!"
 msgstr "Non mostrare più &questo avvertimento!"
 
@@ -5560,7 +5562,7 @@ msgstr "Super"
 msgid "Superscript"
 msgstr "Soprascritto"
 
-#: lib/citeengines/biblatex.citeengine:2 src/insets/InsetBibtex.cpp:153
+#: lib/citeengines/biblatex.citeengine:2 src/insets/InsetBibtex.cpp:154
 msgid "Biblatex"
 msgstr "Biblatex"
 
@@ -6699,7 +6701,7 @@ msgstr "Titolo revisione"
 #: lib/layouts/aastex.layout:378 lib/layouts/aastex6.layout:95
 #: lib/layouts/ijmpc.layout:425 lib/layouts/ijmpd.layout:438
 #: lib/layouts/kluwer.layout:326 lib/layouts/kluwer.layout:339
-#: src/RowPainter.cpp:327
+#: src/RowPainter.cpp:342
 msgid "Appendix"
 msgstr "Appendice"
 
@@ -6734,7 +6736,7 @@ msgstr "Forma breve del titolo per l'appendice"
 #: lib/layouts/simplecv.layout:156 lib/layouts/stdstruct.inc:54
 #: lib/layouts/svcommon.inc:575 lib/layouts/tufte-book.layout:263
 #: lib/layouts/tufte-book.layout:265 lib/layouts/tufte-handout.layout:77
-#: src/frontends/qt4/GuiDocument.cpp:1558
+#: src/frontends/qt4/GuiDocument.cpp:1558 src/insets/InsetBibtex.cpp:884
 msgid "Bibliography"
 msgstr "Bibliografia"
 
@@ -6749,8 +6751,8 @@ msgstr "Bibliografia"
 #: lib/layouts/kluwer.layout:347 lib/layouts/kluwer.layout:360
 #: lib/layouts/llncs.layout:285 lib/layouts/moderncv.layout:515
 #: lib/layouts/siamltex.layout:342 lib/layouts/stdstruct.inc:70
-#: lib/layouts/svcommon.inc:591 src/insets/InsetBibtex.cpp:883
-#: src/insets/InsetBibtex.cpp:936 src/output_plaintext.cpp:153
+#: lib/layouts/svcommon.inc:591 src/insets/InsetBibtex.cpp:885
+#: src/insets/InsetBibtex.cpp:958 src/output_plaintext.cpp:153
 msgid "References"
 msgstr "Riferimenti"
 
@@ -18115,7 +18117,7 @@ msgid "Copy"
 msgstr "Copia"
 
 #: lib/ui/stdcontext.inc:337 lib/ui/stdmenus.inc:108 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1422 src/mathed/InsetMathGrid.cpp:1582
+#: src/Text3.cpp:1422 src/mathed/InsetMathGrid.cpp:1590
 #: src/mathed/InsetMathNest.cpp:543
 msgid "Paste"
 msgstr "Incolla"
@@ -24631,7 +24633,7 @@ msgid "LyXHTML|y"
 msgstr "LyXHTML|y"
 
 #: lib/configure.py:697 src/frontends/qt4/GuiLog.cpp:252
-#: src/insets/InsetBibtex.cpp:153
+#: src/insets/InsetBibtex.cpp:154
 msgid "BibTeX"
 msgstr "BibTeX"
 
@@ -25318,7 +25320,7 @@ msgstr ""
 "Il nome del seguente file può causare problemi se si processa con LaTeX il "
 "file esportato e si apre poi il file DVI: "
 
-#: src/Buffer.cpp:3306 src/insets/InsetBibtex.cpp:339
+#: src/Buffer.cpp:3306 src/insets/InsetBibtex.cpp:340
 msgid "Export Warning!"
 msgstr "Avvertimento di esportazione!"
 
@@ -25633,14 +25635,14 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Classe del documento non disponibile"
 
-#: src/BufferParams.cpp:2157 src/Encoding.cpp:246 src/Paragraph.cpp:2723
+#: src/BufferParams.cpp:2157 src/Encoding.cpp:246 src/Paragraph.cpp:2727
 #: src/frontends/qt4/LaTeXHighlighter.cpp:122 src/insets/InsetListings.cpp:243
 #: src/insets/InsetListings.cpp:251 src/insets/InsetListings.cpp:274
 #: src/mathed/MathExtern.cpp:1483
 msgid "LyX Warning: "
 msgstr "Avviso di LyX: "
 
-#: src/BufferParams.cpp:2158 src/Encoding.cpp:247 src/Paragraph.cpp:2724
+#: src/BufferParams.cpp:2158 src/Encoding.cpp:247 src/Paragraph.cpp:2728
 #: src/insets/InsetListings.cpp:244 src/insets/InsetListings.cpp:252
 #: src/mathed/MathExtern.cpp:1484
 msgid "uncodable character"
@@ -25920,8 +25922,8 @@ msgstr ""
 msgid "ChkTeX warning id # %1$s"
 msgstr "Avvertimento di ChkTeX numero %1$s"
 
-#: src/Color.cpp:203 src/insets/InsetBibtex.cpp:194
-#: src/insets/InsetBibtex.cpp:213
+#: src/Color.cpp:203 src/insets/InsetBibtex.cpp:195
+#: src/insets/InsetBibtex.cpp:214
 msgid "none"
 msgstr "nessuno"
 
@@ -27796,15 +27798,15 @@ msgstr "Ripristino la versione salvata del documento?"
 msgid "&Revert"
 msgstr "&Ripristina"
 
-#: src/Paragraph.cpp:2058
+#: src/Paragraph.cpp:2062
 msgid "Senseless with this layout!"
 msgstr "Non ha senso con questo layout!"
 
-#: src/Paragraph.cpp:2119
+#: src/Paragraph.cpp:2123
 msgid "Alignment not permitted"
 msgstr "Allineamento non consentito"
 
-#: src/Paragraph.cpp:2120
+#: src/Paragraph.cpp:2124
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -27940,19 +27942,19 @@ msgstr "Layout "
 msgid " not known"
 msgstr " sconosciuto"
 
-#: src/Text3.cpp:2208 src/frontends/qt4/GuiApplication.cpp:1706
+#: src/Text3.cpp:2213 src/frontends/qt4/GuiApplication.cpp:1706
 msgid "Missing argument"
 msgstr "Argomento mancante"
 
-#: src/Text3.cpp:2360 src/Text3.cpp:2372
+#: src/Text3.cpp:2365 src/Text3.cpp:2377
 msgid "Character set"
 msgstr "Insieme di caratteri"
 
-#: src/Text3.cpp:2525
+#: src/Text3.cpp:2530
 msgid "Path to thesaurus directory not set!"
 msgstr "Percorso alla cartella dei dizionari lessicali non impostato!"
 
-#: src/Text3.cpp:2526
+#: src/Text3.cpp:2531
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -27964,7 +27966,7 @@ msgstr ""
 "Fare riferimento al paragrafo 6.15.1 della Guida Utente per\n"
 "istruzioni su come impostarlo."
 
-#: src/Text3.cpp:2593 src/Text3.cpp:2604
+#: src/Text3.cpp:2598 src/Text3.cpp:2609
 msgid "Paragraph layout set"
 msgstr "Ho impostato il layout del paragrafo"
 
@@ -28882,7 +28884,7 @@ msgstr ""
 msgid "Biblatex Bibliography"
 msgstr "Bibliografia Biblatex"
 
-#: src/frontends/qt4/GuiBibtex.cpp:345 src/insets/InsetBibtex.cpp:235
+#: src/frontends/qt4/GuiBibtex.cpp:345 src/insets/InsetBibtex.cpp:236
 msgid "all reference units"
 msgstr "tutte le unità con riferimenti"
 
@@ -29099,15 +29101,24 @@ msgstr "Maiusco&lo/minuscolo"
 msgid "Search as you &type"
 msgstr "Cerca &mentre si digita"
 
-#: src/frontends/qt4/GuiCitation.cpp:290
+#: src/frontends/qt4/GuiCitation.cpp:178
+msgid ""
+"Ordered list of all cited references.\n"
+"You can reorder, add and remove references with the buttons on the left."
+msgstr ""
+"Lista ordinata di tutti i riferimenti citati.\n"
+"Si può riordinare, aggiungere e rimuovere riferimenti con i pulsanti a "
+"sinistra."
+
+#: src/frontends/qt4/GuiCitation.cpp:292
 msgid "General text befo&re:"
 msgstr "Testo generale &prima:"
 
-#: src/frontends/qt4/GuiCitation.cpp:291 src/frontends/qt4/GuiCitation.cpp:295
+#: src/frontends/qt4/GuiCitation.cpp:293 src/frontends/qt4/GuiCitation.cpp:297
 msgid "General &text after:"
 msgstr "Testo generale &dopo:"
 
-#: src/frontends/qt4/GuiCitation.cpp:292
+#: src/frontends/qt4/GuiCitation.cpp:294
 msgid ""
 "Text that precedes the whole reference list. For text that precedes "
 "individual items, double-click on the respective entry above."
@@ -29115,7 +29126,7 @@ msgstr ""
 "Testo che precede l'intera lista di riferimenti. Per testo che precede "
 "singoli elementi fare doppio click sulle rispettive voci di sopra."
 
-#: src/frontends/qt4/GuiCitation.cpp:296
+#: src/frontends/qt4/GuiCitation.cpp:298
 msgid ""
 "Text that follows the whole reference list. For text that follows individual "
 "items, double-click on the respective entry above."
@@ -29123,53 +29134,76 @@ msgstr ""
 "Testo che segue l'intera lista di riferimenti. Per testo che segue singoli "
 "elementi fare doppio click sulle rispettive voci di sopra."
 
-#: src/frontends/qt4/GuiCitation.cpp:302
+#: src/frontends/qt4/GuiCitation.cpp:304
 msgid "Text that precedes the reference (e.g., \"cf.\")"
 msgstr "Testo che precede il riferimento (p.es. \"cfr.\")"
 
-#: src/frontends/qt4/GuiCitation.cpp:308
+#: src/frontends/qt4/GuiCitation.cpp:310
 msgid "Text that follows the reference (e.g., pages)"
 msgstr "Testo che segue il riferimento (p.es. pagine)"
 
-#: src/frontends/qt4/GuiCitation.cpp:316
+#: src/frontends/qt4/GuiCitation.cpp:318
 msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")."
 msgstr "Forza maiuscolo nei nomi (\"Del Piero\", non \"del Piero\")."
 
-#: src/frontends/qt4/GuiCitation.cpp:351
+#: src/frontends/qt4/GuiCitation.cpp:353
 msgid "Always list all authors (rather than using \"et al.\")"
 msgstr "Lista tutti gli autori (invece che usare \"et al.\")"
 
-#: src/frontends/qt4/GuiCitation.cpp:423
+#: src/frontends/qt4/GuiCitation.cpp:359
+msgid "All references available for citing."
+msgstr "Tutti i riferimenti disponibili per la citazione."
+
+#: src/frontends/qt4/GuiCitation.cpp:361
+msgid ""
+"All references available for citing.\n"
+"To add the selected one, hit Add, press Enter or double-click.\n"
+"Hit Ctrl-Enter to add and close the dialog."
+msgstr ""
+"Tutti i riferimenti disponibili per la citazione.\n"
+"Per aggiungere quello selezionato, cliccare Aggiungi, premere Invio o fare "
+"doppio click.\n"
+"Premere Ctrl-Invio per aggiungere e chiudere la finestra di dialogo."
+
+#: src/frontends/qt4/GuiCitation.cpp:431
 msgid "Keys"
 msgstr "Chiavi"
 
-#: src/frontends/qt4/GuiCitation.cpp:464
+#: src/frontends/qt4/GuiCitation.cpp:472
 msgid "Displays a sketchy preview if a citation is selected above"
 msgstr "Mostra una sommaria anteprima della citazione che viene selezionata"
 
-#: src/frontends/qt4/GuiCitation.cpp:468
+#: src/frontends/qt4/GuiCitation.cpp:476
 msgid "Sketchy preview of the selected citation"
 msgstr "Anteprima sommaria della citazione selezionata"
 
-#: src/frontends/qt4/GuiCitation.cpp:579
+#: src/frontends/qt4/GuiCitation.cpp:587
 msgid "Enter string to filter the list of available citations"
 msgstr "Inserire la maschera per filtrare la lista delle citazioni disponibili"
 
-#: src/frontends/qt4/GuiCitation.cpp:580
+#: src/frontends/qt4/GuiCitation.cpp:588
 msgid "Enter string to filter the list of available citations and press <Enter>"
 msgstr ""
 "Inserire la maschera per filtrare la lista delle citazioni disponibili e "
 "premere Invio"
 
-#: src/frontends/qt4/GuiCitation.cpp:644
+#: src/frontends/qt4/GuiCitation.cpp:589
+msgid ""
+"\n"
+"The down arrow key will get you into the list of filtered citations."
+msgstr ""
+"\n"
+"Il tasto freccia giù consente di accedere alla lista delle citazioni filtrate."
+
+#: src/frontends/qt4/GuiCitation.cpp:653
 msgid "Text before"
 msgstr "Testo prima"
 
-#: src/frontends/qt4/GuiCitation.cpp:645
+#: src/frontends/qt4/GuiCitation.cpp:654
 msgid "Cite key"
 msgstr "Chiave citazione"
 
-#: src/frontends/qt4/GuiCitation.cpp:646
+#: src/frontends/qt4/GuiCitation.cpp:655
 msgid "Text after"
 msgstr "Testo dopo"
 
@@ -31590,27 +31624,27 @@ msgstr "Anteprima sorgente"
 msgid "%1[[preview format name]] Preview"
 msgstr "Anteprima sorgente %1"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1532
+#: src/frontends/qt4/GuiWorkArea.cpp:1548
 msgid "Close File"
 msgstr "Chiudi file"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2048
+#: src/frontends/qt4/GuiWorkArea.cpp:2064
 msgid "%1 (read only)"
 msgstr "%1 (sola lettura)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2052
+#: src/frontends/qt4/GuiWorkArea.cpp:2068
 msgid "%1 (modified externally)"
 msgstr "%1 (modificato esternamente)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2072
+#: src/frontends/qt4/GuiWorkArea.cpp:2088
 msgid "Hide tab"
 msgstr "Nascondi linguetta"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2074
+#: src/frontends/qt4/GuiWorkArea.cpp:2090
 msgid "Close tab"
 msgstr "Chiudi linguetta"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2191
+#: src/frontends/qt4/GuiWorkArea.cpp:2207
 msgid "<b>The file %1 changed on disk.</b>"
 msgstr "<b>Il file %1 è stato modificato sul disco.</b>"
 
@@ -31943,7 +31977,7 @@ msgstr ""
 "La chiave %1$s esiste già,\n"
 "verrà cambiata in %2$s."
 
-#: src/insets/InsetBibtex.cpp:154
+#: src/insets/InsetBibtex.cpp:155
 #, c-format
 msgid ""
 "The %1$s[[BibTeX/Biblatex]] inset includes %2$s databases.\n"
@@ -31952,39 +31986,39 @@ msgstr ""
 "L'inserto %1$s include %2$s cataloghi.\n"
 "Se si procede, saranno aperti tutti."
 
-#: src/insets/InsetBibtex.cpp:157
+#: src/insets/InsetBibtex.cpp:158
 msgid "Open Databases?"
 msgstr "Aprire cataloghi?"
 
-#: src/insets/InsetBibtex.cpp:158
+#: src/insets/InsetBibtex.cpp:159
 msgid "&Proceed"
 msgstr "&Procedi"
 
-#: src/insets/InsetBibtex.cpp:182
+#: src/insets/InsetBibtex.cpp:183
 msgid "Biblatex Generated Bibliography"
 msgstr "Bibliografia generata da Biblatex"
 
-#: src/insets/InsetBibtex.cpp:183
+#: src/insets/InsetBibtex.cpp:184
 msgid "BibTeX Generated Bibliography"
 msgstr "Bibliografia generata da BibTeX"
 
-#: src/insets/InsetBibtex.cpp:189
+#: src/insets/InsetBibtex.cpp:190
 msgid "Databases:"
 msgstr "Cataloghi:"
 
-#: src/insets/InsetBibtex.cpp:212
+#: src/insets/InsetBibtex.cpp:213
 msgid "Style File:"
 msgstr "File di stile:"
 
-#: src/insets/InsetBibtex.cpp:215 src/insets/InsetBibtex.cpp:233
+#: src/insets/InsetBibtex.cpp:216 src/insets/InsetBibtex.cpp:234
 msgid "Lists:"
 msgstr "Elenchi:"
 
-#: src/insets/InsetBibtex.cpp:224 src/insets/InsetBibtex.cpp:242
+#: src/insets/InsetBibtex.cpp:225 src/insets/InsetBibtex.cpp:243
 msgid "included in TOC"
 msgstr "incluso nell'indice"
 
-#: src/insets/InsetBibtex.cpp:229
+#: src/insets/InsetBibtex.cpp:230
 msgid ""
 "Note: This bibliography is not output, since bibliographies in the master "
 "file are not allowed with the setting 'Multiple bibliographies per child "
@@ -31994,11 +32028,11 @@ msgstr ""
 "consentite bibliografie se è attiva l'opzione 'Bibliografie multiple per "
 "documento figlio'"
 
-#: src/insets/InsetBibtex.cpp:246
+#: src/insets/InsetBibtex.cpp:247
 msgid "Options: "
 msgstr "Opzioni: "
 
-#: src/insets/InsetBibtex.cpp:340
+#: src/insets/InsetBibtex.cpp:341
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -32979,19 +33013,19 @@ msgstr "Spazio orizzontale protetto (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Tipo di indice sconosciuto"
 
-#: src/insets/InsetTabular.cpp:4619
+#: src/insets/InsetTabular.cpp:4675
 msgid "Selections not supported."
 msgstr "Le selezioni non sono supportate."
 
-#: src/insets/InsetTabular.cpp:4641
+#: src/insets/InsetTabular.cpp:4697
 msgid "Multi-column in current or destination column."
 msgstr "Quella corrente o di destinazione è una multicolonna."
 
-#: src/insets/InsetTabular.cpp:4653
+#: src/insets/InsetTabular.cpp:4709
 msgid "Multi-row in current or destination row."
 msgstr "Quella corrente o di destinazione è una multiriga."
 
-#: src/insets/InsetTabular.cpp:5093
+#: src/insets/InsetTabular.cpp:5149
 msgid "Selection size should match clipboard content."
 msgstr ""
 "La dimensione della selezione deve corrispondere al contenuto degli appunti."
@@ -33210,27 +33244,27 @@ msgstr "Decorazione: %1$s"
 msgid "Environment: %1$s"
 msgstr "Ambiente: %1$s"
 
-#: src/mathed/InsetMathGrid.cpp:1730
+#: src/mathed/InsetMathGrid.cpp:1738
 msgid "Cursor not in table"
 msgstr "Il cursore non è all'interno della tabella"
 
-#: src/mathed/InsetMathGrid.cpp:1735
+#: src/mathed/InsetMathGrid.cpp:1743
 msgid "Only one row"
 msgstr "Una sola riga"
 
-#: src/mathed/InsetMathGrid.cpp:1741
+#: src/mathed/InsetMathGrid.cpp:1749
 msgid "Only one column"
 msgstr "Una sola colonna"
 
-#: src/mathed/InsetMathGrid.cpp:1749
+#: src/mathed/InsetMathGrid.cpp:1757
 msgid "No hline to delete"
 msgstr "Nessuna linea orizzontale da cancellare"
 
-#: src/mathed/InsetMathGrid.cpp:1758
+#: src/mathed/InsetMathGrid.cpp:1766
 msgid "No vline to delete"
 msgstr "Nessuna linea verticale da cancellare"
 
-#: src/mathed/InsetMathGrid.cpp:1787
+#: src/mathed/InsetMathGrid.cpp:1795
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "La caratteristica della tabella '%1$s' è sconosciuta"
@@ -33341,11 +33375,11 @@ msgstr ""
 "Non riesco ad aprire il documento specificato\n"
 "%1$s."
 
-#: src/output_latex.cpp:1429
+#: src/output_latex.cpp:1439
 msgid "Error in latexParagraphs"
 msgstr "Errore di composizione"
 
-#: src/output_latex.cpp:1430
+#: src/output_latex.cpp:1440
 #, c-format
 msgid ""
 "You are using at least one layout (%1$s) intended for the title, after using "
@@ -33431,7 +33465,7 @@ msgstr ""
 msgid "Directory not found"
 msgstr "Cartella non trovata"
 
-#: src/support/Systemcall.cpp:406
+#: src/support/Systemcall.cpp:397
 #, c-format
 msgid ""
 "The command\n"
@@ -33446,15 +33480,15 @@ msgstr ""
 "\n"
 "Devo fermarlo?"
 
-#: src/support/Systemcall.cpp:408
+#: src/support/Systemcall.cpp:399
 msgid "Stop command?"
 msgstr "Fermo il comando?"
 
-#: src/support/Systemcall.cpp:409
+#: src/support/Systemcall.cpp:400
 msgid "&Stop it"
 msgstr "&Fermalo"
 
-#: src/support/Systemcall.cpp:409
+#: src/support/Systemcall.cpp:400
 msgid "Let it &run"
 msgstr "Lascialo &andare"
 
