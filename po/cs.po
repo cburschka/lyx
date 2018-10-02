@@ -1949,9 +1949,8 @@ msgid "Graphics Group"
 msgstr "Skupiny obrázků"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:680
-#, fuzzy
 msgid "Assigned &to group:"
-msgstr "&Přiřazeno ke skupině:"
+msgstr "Př&iřazeno ke skupině:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:690
 msgid "Click to define a new graphics group."
@@ -3263,7 +3262,6 @@ msgid "&Vertical Phantom"
 msgstr "&Vertikální fantóm"
 
 #: src/frontends/qt4/ui/PreambleUi.ui:38
-#, fuzzy
 msgid "Find"
 msgstr "&Najít:"
 
@@ -6808,7 +6806,6 @@ msgid "Proof."
 msgstr "Důkaz."
 
 #: lib/layouts/InStar.module:2
-#, fuzzy
 msgid "Title and Preamble Hacks"
 msgstr "Triky pro titulek a preambuli"
 
@@ -18273,9 +18270,8 @@ msgid "Paragraph Settings...|P"
 msgstr "Nastavení odstavce...|a"
 
 #: lib/ui/stdcontext.inc:361
-#, fuzzy
 msgid "Unify Graphics Groups|U"
-msgstr "Skupiny obrázků"
+msgstr "Sjednotit skupinu pro obrázky|e"
 
 #: lib/ui/stdcontext.inc:364
 msgid "Fullscreen Mode"
@@ -25473,6 +25469,9 @@ msgid ""
 "contains spaces, but your TeX installation does not allow them. You should "
 "save the file to a directory whose name does not contain spaces."
 msgstr ""
+"Cesta k dokumentu\n"
+"%1$s\n"
+"obsahuje mezery, které však nejsou povoleny vaší instalací TeX-u. Je třeba soubor uložit v adresáři neobsahujím mezery."
 
 #: src/Buffer.cpp:4462 src/Buffer.cpp:4476 src/frontends/qt4/GuiView.cpp:692
 msgid "Document export cancelled."
@@ -32688,6 +32687,7 @@ msgid ""
 "inset, it is better using the  language combo box, unless you need to enter "
 "a language not offered there, otherwise the combo box will be disabled."
 msgstr ""
+"Vložte podporovaný jazyk. Pokud definujete vložku výpisu, je lepší vybrat jej přímo v sekci jazyka, je-li tam uveden (v opačném případě bude seznam neaktivní)."
 
 #: src/insets/InsetListingsParams.cpp:838
 msgid "File encoding used by Pygments for highlighting"
