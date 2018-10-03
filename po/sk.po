@@ -1,15 +1,15 @@
 # Slovak translation of LyX
 # Copyright (C)
-# Zdenko Podobný <zdpo@mailbox.sk>, 2003, 2006
 #
+# Zdenko Podobný <zdpo@mailbox.sk>, 2003, 2006.
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
 # Kornel Benko <kornel@lyx.org>, 2009-2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-09-09 12:37+0200\n"
-"PO-Revision-Date: 2018-09-09 11:35+0000\n"
+"POT-Creation-Date: 2018-10-02 08:25+0200\n"
+"PO-Revision-Date: 2018-10-03 08:03+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1533,7 +1533,7 @@ msgstr "Dbať aj na veľkosť písiem"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:80
 msgid "Case &sensitive"
-msgstr "R&ozlišovať veľkosť písmen"
+msgstr "Ro&zlišovať veľkosť písmen"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:96
 msgid "Find next occurrence [Enter]"
@@ -29055,6 +29055,14 @@ msgstr "Roz&lišovať veľkosť písmen"
 msgid "Search as you &type"
 msgstr "V&yhľadávať pri zadávaní"
 
+#: src/frontends/qt4/GuiCitation.cpp:178
+msgid ""
+"Ordered list of all cited references.\n"
+"You can reorder, add and remove references with the buttons on the left."
+msgstr ""
+"Usporiadaný zoznam všetkých citovaných referencií.\n"
+"Môžte preskupiť, pridať alebo zmazať referencie tlačidlom na ľavej strane."
+
 #: src/frontends/qt4/GuiCitation.cpp:290
 msgid "General text befo&re:"
 msgstr "Všeobecný text pred:"
@@ -29096,6 +29104,21 @@ msgstr ""
 msgid "Always list all authors (rather than using \"et al.\")"
 msgstr "Vynúti výpis všetkých autorov (miesto použitia \"a kol.\")"
 
+#: src/frontends/qt4/GuiCitation.cpp:359
+msgid "All references available for citing."
+msgstr "Všetky referencie dostupné na citovanie."
+
+#: src/frontends/qt4/GuiCitation.cpp:361
+msgid ""
+"All references available for citing.\n"
+"To add the selected one, hit Add, press Enter or double-click.\n"
+"Hit Ctrl-Enter to add and close the dialog."
+msgstr ""
+"Všetky referencie dostupné na citovanie.\n"
+"Keď chcete pridať vybrané, stlačte \"Pridať\", stisnite 'Enter' alebo "
+"použite dvojité kliknutie.\n"
+"Stisnite 'Ctrl-Enter' na pridanie a nasledovné zatvorenie dialógu."
+
 #: src/frontends/qt4/GuiCitation.cpp:423
 msgid "Keys"
 msgstr "Kľúče"
@@ -29117,6 +29140,14 @@ msgid ""
 "Enter string to filter the list of available citations and press <Enter>"
 msgstr ""
 "Zadajte reťazec na výber z listiny dostupných citácií a stlačte <Enter>"
+
+#: src/frontends/qt4/GuiCitation.cpp:589
+msgid ""
+"\n"
+"The down arrow key will get you into the list of filtered citations."
+msgstr ""
+"\n"
+"Klávesou šípky nadol dostanete zoznam filtrovaných citácií."
 
 #: src/frontends/qt4/GuiCitation.cpp:644
 msgid "Text before"
@@ -32355,6 +32386,54 @@ msgstr "Tu chýba \\end_inset ."
 #: src/insets/InsetInfo.cpp:334 src/insets/InsetInfo.cpp:341
 msgid "undefined"
 msgstr "nedefinované"
+
+#: src/insets/InsetInfo.cpp:343 src/insets/InsetInfo.cpp:379
+msgid "Return[[Key]]"
+msgstr "Enter"
+
+#: src/insets/InsetInfo.cpp:347
+msgid "Tab[[Key]]"
+msgstr "Tab"
+
+#: src/insets/InsetInfo.cpp:351
+msgid "PgUp"
+msgstr "PgUp"
+
+#: src/insets/InsetInfo.cpp:355
+msgid "PgDown"
+msgstr "PgDown"
+
+#: src/insets/InsetInfo.cpp:359
+msgid "Backtab"
+msgstr "Backtab"
+
+#: src/insets/InsetInfo.cpp:363
+msgid "Tab"
+msgstr "Tab"
+
+#: src/insets/InsetInfo.cpp:371
+msgid "CapsLock"
+msgstr "CapsLock"
+
+#: src/insets/InsetInfo.cpp:375
+msgid "Command[[Key]]"
+msgstr "Command"
+
+#: src/insets/InsetInfo.cpp:383
+msgid "Option[[Key]]"
+msgstr "Option"
+
+#: src/insets/InsetInfo.cpp:387
+msgid "Delete[[Key]]"
+msgstr "Delete"
+
+#: src/insets/InsetInfo.cpp:391
+msgid "Fn+Del"
+msgstr "Fn+Delete"
+
+#: src/insets/InsetInfo.cpp:395
+msgid "Esc"
+msgstr "Esc"
 
 #: src/insets/InsetInfo.cpp:355 src/insets/InsetInfo.cpp:364
 msgid "yes"
