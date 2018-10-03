@@ -1271,6 +1271,8 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 		// backing store has to be copied to screen (this is a no-op
 		// except on macOS).
 		d->updateScreen(ev->rect());
+		// Ignore this paint event, but request a new one for later.
+		viewport()->update();
 		ev->accept();
 		return;
 	}
