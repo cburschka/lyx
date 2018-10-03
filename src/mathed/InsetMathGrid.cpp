@@ -809,7 +809,7 @@ void InsetMathGrid::addRow(row_type row)
 {
 	rowinfo_.insert(rowinfo_.begin() + row + 1, RowInfo());
 	cells_.insert
-		(cells_.begin() + (row + 1) * ncols(), ncols(), MathData());
+		(cells_.begin() + (row + 1) * ncols(), ncols(), MathData(buffer_));
 	cellinfo_.insert
 		(cellinfo_.begin() + (row + 1) * ncols(), ncols(), CellInfo());
 }
@@ -833,8 +833,11 @@ void InsetMathGrid::delRow(row_type row)
 void InsetMathGrid::copyRow(row_type row)
 {
 	addRow(row);
-	for (col_type col = 0; col < ncols(); ++col)
+	for (col_type col = 0; col < ncols(); ++col) {
 		cells_[(row + 1) * ncols() + col] = cells_[row * ncols() + col];
+		// copying the cell does not set the buffer
+		cells_[(row + 1) * ncols() + col].setBuffer(*buffer_);
+	}
 }
 
 
@@ -864,6 +867,8 @@ void InsetMathGrid::addCol(col_type newcol)
 				= cellinfo_[row * nc + col];
 		}
 	swap(cells_, new_cells);
+	// copying cells loses the buffer reference
+	setBuffer(*buffer_);
 	swap(cellinfo_, new_cellinfo);
 
 	ColInfo inf;
@@ -895,8 +900,11 @@ void InsetMathGrid::delCol(col_type col)
 void InsetMathGrid::copyCol(col_type col)
 {
 	addCol(col+1);
-	for (row_type row = 0; row < nrows(); ++row)
+	for (row_type row = 0; row < nrows(); ++row) {
 		cells_[row * ncols() + col + 1] = cells_[row * ncols() + col];
+		// copying the cell does not set the buffer
+		cells_[row * ncols() + col + 1].setBuffer(*buffer_);
+	}
 }
 
 

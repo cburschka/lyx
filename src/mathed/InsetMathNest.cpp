@@ -118,11 +118,8 @@ InsetMathNest & InsetMathNest::operator=(InsetMathNest const & inset)
 void InsetMathNest::setBuffer(Buffer & buffer)
 {
 	InsetMath::setBuffer(buffer);
-	for (idx_type i = 0, n = nargs(); i != n; ++i) {
-		MathData & data = cell(i);
-		for (size_t j = 0; j != data.size(); ++j)
-			data[j].nucleus()->setBuffer(buffer);
-	}
+	for (MathData & data : cells_)
+		data.setBuffer(buffer);
 }
 
 

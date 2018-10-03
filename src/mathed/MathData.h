@@ -185,7 +185,7 @@ public:
 	///
 	void updateBuffer(ParIterator const &, UpdateType);
 	///
-	void setBuffer(Buffer & b) { buffer_ = &b; }
+	void setBuffer(Buffer & b);
 
 protected:
 	/// cached values for super/subscript placement
