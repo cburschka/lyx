@@ -52,6 +52,14 @@ MathData::MathData(Buffer * buf, const_iterator from, const_iterator to)
 {}
 
 
+void MathData::setBuffer(Buffer & b)
+{
+	buffer_ = &b;
+	for (MathAtom & at : *this)
+		at.nucleus()->setBuffer(b);
+}
+
+
 MathAtom & MathData::operator[](pos_type pos)
 {
 	LBUFERR(pos < size());
