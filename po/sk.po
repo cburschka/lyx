@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-10-02 08:25+0200\n"
-"PO-Revision-Date: 2018-10-03 08:03+0000\n"
+"POT-Creation-Date: 2018-10-04 22:55+0200\n"
+"PO-Revision-Date: 2018-10-04 21:02+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -17826,6 +17826,14 @@ msgstr "Textová referencia|x"
 msgid "Label Only|L"
 msgstr "Len heslo|L"
 
+#: lib/ui/stdcontext.inc:99
+msgid "Plural|a"
+msgstr "Plurál|u"
+
+#: lib/ui/stdcontext.inc:100
+msgid "Capitalize|C"
+msgstr "Prvé veľké|v"
+
 #: lib/ui/stdcontext.inc:99 lib/ui/stdcontext.inc:111 lib/ui/stdcontext.inc:121
 #: lib/ui/stdcontext.inc:129 lib/ui/stdcontext.inc:138
 #: lib/ui/stdcontext.inc:149 lib/ui/stdcontext.inc:156
@@ -29762,6 +29770,11 @@ msgstr "Vyžadované moduly: %1$s."
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr "Vylúčené moduly: %1$s."
+
+#: src/frontends/qt4/GuiDocument.cpp:2837
+#, c-format
+msgid "Filename: %1$s.module."
+msgstr "Súbor: %1$s.module."
 
 #: src/frontends/qt4/GuiDocument.cpp:2838
 msgid "WARNING: Some required packages are unavailable!"
