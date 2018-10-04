@@ -276,33 +276,6 @@ private:
 }; // TabWorkArea
 
 
-class DragTabBar : public QTabBar
-{
-	Q_OBJECT
-public:
-	///
-	DragTabBar(QWidget * parent = 0);
-
-protected:
-	///
-	void mousePressEvent(QMouseEvent * event);
-	///
-	void mouseMoveEvent(QMouseEvent * event);
-	///
-	void dragEnterEvent(QDragEnterEvent * event);
-	///
-	void dropEvent(QDropEvent * event);
-
-private:
-	///
-	QPoint dragStartPos_;
-
-Q_SIGNALS:
-	///
-	void tabMoveRequested(int fromIndex, int toIndex);
-};
-
-
 class GuiWorkAreaContainer : public QWidget, public Ui::WorkAreaUi
 {
 	Q_OBJECT
