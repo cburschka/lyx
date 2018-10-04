@@ -16,6 +16,7 @@
 #include "MathStream.h"
 #include "MathSupport.h"
 
+#include "Buffer.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "support/gettext.h"
@@ -61,7 +62,7 @@ char InsetMathSplit::defaultColAlign(col_type col)
 	    || name_ == "aligned"
 	    || name_ == "align"
 	    || name_ == "alignedat")
-		return colAlign(hullAlign, col);
+		return colAlign(hullAlign, col, buffer().params());
 	return 'l';
 }
 
@@ -78,7 +79,7 @@ char InsetMathSplit::displayColAlign(idx_type idx) const
 	    || name_ == "aligned"
 	    || name_ == "align"
 	    || name_ == "alignedat")
-		return colAlign(hullAlign, col(idx));
+		return colAlign(hullAlign, col(idx), buffer().params());
 	return InsetMathGrid::displayColAlign(idx);
 }
 

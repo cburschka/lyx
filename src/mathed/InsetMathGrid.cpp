@@ -1843,15 +1843,19 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 
 // static
-char InsetMathGrid::colAlign(HullType type, col_type col)
+char InsetMathGrid::colAlign(HullType type, col_type col, BufferParams const & bp)
 {
 	switch (type) {
 	case hullEqnArray:
 		return "rcl"[col % 3];
 
 	case hullMultline:
-	case hullGather:
 		return 'c';
+	case hullGather:
+		if (!bp.is_math_indent)
+			return 'c';
+		else
+			return 'l';
 
 	case hullAlign:
 	case hullAlignAt:
