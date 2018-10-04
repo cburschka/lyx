@@ -2832,6 +2832,10 @@ void GuiDocument::updateModuleInfo()
 		desc += bformat(_("Modules excluded: %1$s."), pkgdesc);
 	}
 
+	if (!desc.empty())
+		desc += "\n";
+	desc += bformat(_("Filename: %1$s.module."), from_utf8(modName));
+
 	if (!isModuleAvailable(modName)) {
 		if (!desc.empty())
 			desc += "\n";
