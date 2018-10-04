@@ -1556,19 +1556,19 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 		this, SLOT(closeCurrentBuffer()));
 	setCornerWidget(closeBufferButton, Qt::TopRightCorner);
 
-	// setup drag'n'drop
-	QTabBar* tb = new DragTabBar;
-	connect(tb, SIGNAL(tabMoveRequested(int, int)),
-		this, SLOT(moveTab(int, int)));
+	// set TabBar behaviour
+	QTabBar * tb = tabBar();
+	tb->setTabsClosable(!lyxrc.single_close_tab_button);
+	tb->setSelectionBehaviorOnRemove(QTabBar::SelectPreviousTab);
 	tb->setElideMode(Qt::ElideNone);
-	setTabBar(tb);
-
+	// allow dragging tabs
+	tb->setMovable(true);
 	// make us responsible for the context menu of the tabbar
 	tb->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(tb, SIGNAL(customContextMenuRequested(const QPoint &)),
-		this, SLOT(showContextMenu(const QPoint &)));
+	        this, SLOT(showContextMenu(const QPoint &)));
 	connect(tb, SIGNAL(tabCloseRequested(int)),
-		this, SLOT(closeTab(int)));
+	        this, SLOT(closeTab(int)));
 
 	setUsesScrollButtons(true);
 }
@@ -2083,7 +2083,7 @@ void TabWorkArea::updateTabTexts()
 void TabWorkArea::showContextMenu(const QPoint & pos)
 {
 	// which tab?
-	clicked_tab_ = static_cast<DragTabBar *>(tabBar())->tabAt(pos);
+	clicked_tab_ = tabBar()->tabAt(pos);
 	if (clicked_tab_ == -1)
 		return;
 
@@ -2109,84 +2109,6 @@ void TabWorkArea::moveTab(int fromIndex, int toIndex)
 	removeTab(fromIndex);
 	insertTab(toIndex, w, icon, text);
 	setCurrentIndex(toIndex);
-}
-
-
-DragTabBar::DragTabBar(QWidget* parent)
-	: QTabBar(parent)
-{
-	setAcceptDrops(true);
-	setTabsClosable(!lyxrc.single_close_tab_button);
-}
-
-
-void DragTabBar::mousePressEvent(QMouseEvent * event)
-{
-	if (event->button() == Qt::LeftButton)
-		dragStartPos_ = event->pos();
-	QTabBar::mousePressEvent(event);
-}
-
-
-void DragTabBar::mouseMoveEvent(QMouseEvent * event)
-{
-	// If the left button isn't pressed anymore then return
-	if (!(event->buttons() & Qt::LeftButton))
-		return;
-
-	// If the distance is too small then return
-	if ((event->pos() - dragStartPos_).manhattanLength()
-	    < QApplication::startDragDistance())
-		return;
-
-	// did we hit something after all?
-	int tab = tabAt(dragStartPos_);
-	if (tab == -1)
-		return;
-
-	// simulate button release to remove highlight from button
-	int i = currentIndex();
-	QMouseEvent me(QEvent::MouseButtonRelease, dragStartPos_,
-		event->button(), event->buttons(), 0);
-	QTabBar::mouseReleaseEvent(&me);
-	setCurrentIndex(i);
-
-	// initiate Drag
-	QDrag * drag = new QDrag(this);
-	QMimeData * mimeData = new QMimeData;
-	// a crude way to distinguish tab-reodering drops from other ones
-	mimeData->setData("action", "tab-reordering") ;
-	drag->setMimeData(mimeData);
-
-	// get tab pixmap as cursor
-	QRect r = tabRect(tab);
-	QPixmap pixmap(r.size());
-	render(&pixmap, - r.topLeft());
-	drag->setPixmap(pixmap);
-	drag->exec();
-}
-
-
-void DragTabBar::dragEnterEvent(QDragEnterEvent * event)
-{
-	// Only accept if it's an tab-reordering request
-	QMimeData const * m = event->mimeData();
-	QStringList formats = m->formats();
-	if (formats.contains("action")
-	    && m->data("action") == "tab-reordering")
-		event->acceptProposedAction();
-}
-
-
-void DragTabBar::dropEvent(QDropEvent * event)
-{
-	int fromIndex = tabAt(dragStartPos_);
-	int toIndex = tabAt(event->pos());
-
-	// Tell interested objects that
-	if (fromIndex != toIndex)
-		tabMoveRequested(fromIndex, toIndex);
-	event->acceptProposedAction();
 }
 
 
