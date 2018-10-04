@@ -134,12 +134,6 @@ bool InsetERT::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	switch (cmd.action()) {
-	case LFUN_INSET_EDIT:
-		status.setEnabled(tempfile_ == 0);
-		return true;
-	case LFUN_INSET_END_EDIT:
-		status.setEnabled(tempfile_ != 0);
-		return true;
 	case LFUN_INSET_INSERT:
 		status.setEnabled(false);
 		return true;

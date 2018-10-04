@@ -168,13 +168,13 @@ protected:
 	Inset * editXY(Cursor & cur, int x, int y);
 	///
 	mutable CollapseStatus status_;
+        ///
+        unique_ptr<support::TempFile> tempfile_;
 private:
 	///
 	Dimension dimensionCollapsed(BufferView const & bv) const;
 	///
 	docstring labelstring_;
-	///
-	unique_ptr<support::TempFile> tempfile_;
 
 	// These variables depend of the view in which the inset is displayed
 	struct View
