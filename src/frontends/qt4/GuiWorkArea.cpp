@@ -1272,7 +1272,7 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 		// except on macOS).
 		d->updateScreen(ev->rect());
 		// Ignore this paint event, but request a new one for later.
-		viewport()->update();
+		viewport()->update(ev->rect());
 		ev->accept();
 		return;
 	}
