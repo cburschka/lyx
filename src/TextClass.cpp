@@ -62,7 +62,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 69; //spitz: New argument type listpreamble
+int const LAYOUT_FORMAT = 70; // rkh: InsetLayout EditExternal
 
 
 // Layout format for the current lyx file format. Controls which format is

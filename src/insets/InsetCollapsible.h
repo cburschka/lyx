@@ -25,6 +25,8 @@ namespace lyx {
 class CursorSlice;
 class InsetLayout;
 
+namespace support { class TempFile; }
+
 namespace frontend { class Painter; }
 
 /** A collapsible text inset
@@ -36,6 +38,8 @@ public:
 	InsetCollapsible(Buffer *, InsetText::UsePlain = InsetText::PlainLayout);
 	///
 	InsetCollapsible(InsetCollapsible const & rhs);
+	///
+	InsetCollapsible const & operator=(InsetCollapsible const &);
 	///
 	virtual ~InsetCollapsible();
 	///
@@ -169,6 +173,8 @@ private:
 	Dimension dimensionCollapsed(BufferView const & bv) const;
 	///
 	docstring labelstring_;
+	///
+	unique_ptr<support::TempFile> tempfile_;
 
 	// These variables depend of the view in which the inset is displayed
 	struct View

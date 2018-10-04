@@ -220,6 +220,7 @@ InsetLayout ERT
 	KeepEmpty             true
 	FreeSpacing           true
 	ForceLTR              true
+	EditExternal          true
 End
 
 InsetLayout Phantom

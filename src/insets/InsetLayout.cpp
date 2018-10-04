@@ -90,6 +90,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_CUSTOMPARS,
 		IL_DECORATION,
 		IL_DISPLAY,
+		IL_EDITEXTERNAL,
 		IL_FIXEDWIDTH_PREAMBLE_ENCODING,
 		IL_FONT,
 		IL_FORCE_LOCAL_FONT_SWITCH,
@@ -146,6 +147,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "custompars", IL_CUSTOMPARS },
 		{ "decoration", IL_DECORATION },
 		{ "display", IL_DISPLAY },
+		{ "editexternal", IL_EDITEXTERNAL },
 		{ "end", IL_END },
 		{ "fixedwidthpreambleencoding", IL_FIXEDWIDTH_PREAMBLE_ENCODING },
 		{ "font", IL_FONT },
@@ -472,6 +474,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_ISTOCCAPTION:
 			lex >> is_toc_caption_;
+			break;
+		case IL_EDITEXTERNAL:
+			lex >> edit_external_;
 			break;
 		case IL_END:
 			getout = true;

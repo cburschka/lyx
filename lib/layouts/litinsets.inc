@@ -52,4 +52,5 @@ InsetLayout "Flex:Chunk"
     ResetsFont            false
     ForceOwnlines         true
     NeedCProtect          true
+    EditExternal          true
 End

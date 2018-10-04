@@ -28,18 +28,12 @@ namespace lyx {
 
 class Language;
 
-namespace support {
-	class TempFile;
-}
-
 class InsetERT : public InsetCollapsible {
 public:
 	///
 	InsetERT(Buffer *, CollapseStatus status = Open);
- 	///
-	InsetERT(InsetERT const &);
 	///
-	InsetERT & operator=(InsetERT const &);
+	InsetERT(InsetERT const & old);
 	///
 	static CollapseStatus string2params(std::string const &);
 	///
@@ -70,10 +64,6 @@ private:
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
  	///
-	bool editable() const;
-	///
-	bool descendable(BufferView const &) const;
-	///
 	Inset * clone() const { return new InsetERT(*this); }
 	///
 	docstring const buttonLabel(BufferView const & bv) const;

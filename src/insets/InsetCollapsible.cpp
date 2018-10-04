@@ -15,15 +15,19 @@
 #include "InsetCollapsible.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
+#include "CutAndPaste.h"
 #include "Cursor.h"
 #include "Dimension.h"
+#include "Format.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetLayout.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "TextClass.h"
 #include "TocBackend.h"
 
 #include "frontends/FontMetrics.h"
@@ -35,6 +39,7 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/RefChanger.h"
+#include "support/TempFile.h"
 
 using namespace std;
 
@@ -55,7 +60,18 @@ InsetCollapsible::InsetCollapsible(InsetCollapsible const & rhs)
 	: InsetText(rhs),
 	  status_(rhs.status_),
 	  labelstring_(rhs.labelstring_)
-{}
+{
+	tempfile_.reset();
+}
+
+
+InsetCollapsible const & InsetCollapsible::operator=(InsetCollapsible const & that)
+{
+	if (&that == this)
+		return *this;
+	*this = InsetCollapsible(that);
+	return *this;
+}
 
 
 InsetCollapsible::~InsetCollapsible()
@@ -393,6 +409,9 @@ void InsetCollapsible::cursorPos(BufferView const & bv,
 
 bool InsetCollapsible::editable() const
 {
+	if (tempfile_)
+		return false;
+	
 	switch (decoration()) {
 	case InsetLayout::CLASSIC:
 	case InsetLayout::MINIMALISTIC:
@@ -405,6 +424,9 @@ bool InsetCollapsible::editable() const
 
 bool InsetCollapsible::descendable(BufferView const & bv) const
 {
+	if (tempfile_)
+		return false;
+
 	return geometry(bv) != ButtonOnly;
 }
 
@@ -550,6 +572,41 @@ void InsetCollapsible::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.dispatched();
 		break;
 
+	case LFUN_INSET_EDIT: {
+		cur.push(*this);
+		text().selectAll(cur);
+		string const format =
+			cur.buffer()->params().documentClass().outputFormat();
+		string const ext = theFormats().extension(format);
+		tempfile_.reset(new support::TempFile("ert_editXXXXXX." + ext));
+		support::FileName const tempfilename = tempfile_->name();
+		string const name = tempfilename.toFilesystemEncoding();
+		ofdocstream os(name.c_str());
+		os << cur.selectionAsString(false);
+		os.close();
+		// Since we lock the inset while the external file is edited,
+		// we need to move the cursor outside and clear any selection inside
+		cur.clearSelection();
+		cur.pop();
+		cur.leaveInset(*this);
+		theFormats().edit(buffer(), tempfilename, format);
+		break;
+	}
+	case LFUN_INSET_END_EDIT: {
+		support::FileName const tempfilename = tempfile_->name();
+		docstring const s = tempfilename.fileContents("UTF-8");
+		cur.recordUndoInset(this);
+		cur.push(*this);
+		text().selectAll(cur);
+		cap::replaceSelection(cur);
+		cur.text()->insertStringAsLines(cur, s, cur.current_font);
+		// FIXME (gb) it crashes without this
+		cur.fixIfBroken();
+		tempfile_.reset();
+		cur.pop();
+		break;
+	}
+
 	default:
 		InsetText::doDispatch(cur, cmd);
 		break;
@@ -571,6 +628,14 @@ bool InsetCollapsible::getStatus(Cursor & cur, FuncRequest const & cmd,
 			flag.setOnOff(status_ == Open);
 		} else
 			flag.setEnabled(false);
+		return true;
+
+	case LFUN_INSET_EDIT:
+		flag.setEnabled(getLayout().editExternally() && tempfile_ == 0);
+		return true;
+
+	case LFUN_INSET_END_EDIT:
+		flag.setEnabled(getLayout().editExternally() && tempfile_ != 0);
 		return true;
 
 	default:

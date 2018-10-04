@@ -189,6 +189,8 @@ public:
 	std::string tocType() const { return toc_type_; }
 	///
 	bool isTocCaption() const { return is_toc_caption_; }
+	///
+	bool editExternally () const { return edit_external_; }
 private:
 	///
 	void makeDefaultCSS() const;
@@ -312,6 +314,8 @@ private:
 	std::string toc_type_;
 	///
 	bool is_toc_caption_;
+	///
+	bool edit_external_;
 };
 
 ///
