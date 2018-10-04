@@ -446,7 +446,7 @@ bool InsetMathHull::idxLast(Cursor & cur) const
 // alignment is not implemented in the LyXHTML output.
 char InsetMathHull::defaultColAlign(col_type col)
 {
-	return colAlign(type_, col);
+	return colAlign(type_, col, buffer().params());
 }
 
 
@@ -468,7 +468,7 @@ char InsetMathHull::displayColAlign(idx_type idx) const
 	case hullXAlignAt:
 	case hullXXAlignAt:
 	case hullFlAlign:
-		return colAlign(type_, col(idx));
+		return colAlign(type_, col(idx), buffer().params());
 	default:
 		break;
 	}

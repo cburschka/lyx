@@ -18,6 +18,8 @@
 
 namespace lyx {
 
+class BufferParams;
+
 
 /** Gridded math inset base class.
  *  This is the base to all grid-like editable math objects
@@ -267,8 +269,9 @@ protected:
 
 	// The following two functions are used in InsetMathHull and
 	// InsetMathSplit.
-	/// The value of a fixed col align for a certain hull type
-	static char colAlign(HullType type, col_type col);
+	/// The value of a fixed col align for a certain hull type (can
+	/// depend on the "indent math" setting).
+	static char colAlign(HullType type, col_type col,  BufferParams const &);
 	/// The value of a fixed col spacing for a certain hull type
 	static int colSpace(HullType type, col_type col);
 
