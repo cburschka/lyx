@@ -182,11 +182,15 @@ void InsetMathDelim::mathematica(MathematicaStream & os) const
 void InsetMathDelim::mathmlize(MathStream & os) const
 {
 	os << "<mo form='prefix' fence='true' stretchy='true' symmetric='true'>"
+	   << "<mrow>"
 	   << convertDelimToXMLEscape(left_)
+	   << "</mrow>"
 	   << "</mo>\n"
 	   << cell(0)
 	   << "\n<mo form='postfix' fence='true' stretchy='true' symmetric='true'>"
+	   << "<mrow>"
 	   << convertDelimToXMLEscape(right_)
+	   << "</mrow>"
 	   << "</mo>\n";
 }
 
