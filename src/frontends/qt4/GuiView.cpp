@@ -3666,15 +3666,21 @@ void GuiView::dispatchToBufferView(FuncRequest const & cmd, DispatchResult & dr)
 
 	// Let the current BufferView dispatch its own actions.
 	bv->dispatch(cmd, dr);
-	if (dr.dispatched())
+	if (dr.dispatched()) {
+		if (cmd.action() == LFUN_REDO || cmd.action() == LFUN_UNDO)
+			updateDialog("document", "");
 		return;
+	}
 
 	// Try with the document BufferView dispatch if any.
 	BufferView * doc_bv = documentBufferView();
 	if (doc_bv && doc_bv != bv) {
 		doc_bv->dispatch(cmd, dr);
-		if (dr.dispatched())
+		if (dr.dispatched()) {
+			if (cmd.action() == LFUN_REDO || cmd.action() == LFUN_UNDO)
+				updateDialog("document", "");
 			return;
+		}
 	}
 
 	// Then let the current Cursor dispatch its own actions.
