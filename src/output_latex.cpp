@@ -814,10 +814,12 @@ void TeXOnePar(Buffer const & buf,
 			    || (priorpar->getDepth() == par.getDepth()
 				    && priorpar->layout() != par.layout()));
 	Language const * const prev_language =
-		(priorpar && !priorpar->isPassThru())
-		? (use_prev_env_language ? state->prev_env_language_
-					 : priorpar->getParLanguage(bparams))
-		: outer_language;
+		runparams_in.for_search ?
+			languages.getLanguage("ignore")
+		:(priorpar && !priorpar->isPassThru())
+			? (use_prev_env_language ? state->prev_env_language_
+					 	: priorpar->getParLanguage(bparams))
+			: outer_language;
 
 	bool const use_polyglossia = runparams.use_polyglossia;
 	string const par_lang = use_polyglossia ?
@@ -854,7 +856,8 @@ void TeXOnePar(Buffer const & buf,
 		&& runparams.local_font != 0
 		&& outer_language->rightToLeft()
 		&& !par_language->rightToLeft();
-	bool const localswitch = text.inset().forceLocalFontSwitch()
+	bool const localswitch = runparams_in.for_search
+			|| text.inset().forceLocalFontSwitch()
 			|| (using_begin_end && text.inset().forcePlainLayout())
 			|| in_polyglossia_rtl_env;
 	if (localswitch) {
