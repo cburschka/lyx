@@ -855,12 +855,19 @@ static size_t identifyLeading(string const & s)
 	return s.find(t);
 }
 
+/*
+ * Given a latexified string, retrieve some handled features
+ * The features of the regex will later be compared with the features
+ * of the searched text. If the regex features are not a
+ * subset of the analized, then, in not format ignoring search
+ * we can early stop the search in the relevant inset.
+ */
 typedef map<string, bool> Features;
 
 static Features identifyFeatures(string const & s)
 {
 	static regex const feature("\\\\(([a-z]+(\\{([a-z]+)\\}|\\*)?))\\{");
-	static regex const valid("^(((emph|noun|text(bf|sl|sf|it|tt)|(textcolor|foreignlanguage)\\{[a-z]+\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part)\\*?)$");
+	static regex const valid("^(((emph|noun|text(bf|sl|sf|it|tt)|(textcolor|foreignlanguage)\\{[a-z]+\\})|item |(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part)\\*?)$");
 	smatch sub;
 	bool displ = true;
 	Features info;
@@ -891,6 +898,9 @@ static Features identifyFeatures(string const & s)
 	return(info);
 }
 
+/*
+ * Faster search for the related closing parenthesis
+ */
 static int findclosing(string p, int start, int end)
 {
 	int skip = 0;
@@ -909,7 +919,67 @@ static int findclosing(string p, int start, int end)
 	return(-1);
 }
 
+/*
+ * Discard any info for char sizes for now.
+ */
+static string removefontinfo(string par)
+{
+	// Remove fontsizes, inputencoding
+	smatch sub;
+	list <string> fpars;
+	static regex const sizescodings("(\\\\(footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge|inputencoding\\{[^\\}]*})(\b|(\\{(\\{\\})?\\})?(%\\n)?))");
+	for (sregex_iterator it(par.begin(), par.end(), sizescodings), end; it != end; ++it) {
+		sub = *it;
+		string token = sub.str(1);
+		fpars.push_back(token);
+	}
+	for (list<string>::const_iterator li = fpars.begin(); li != fpars.end(); ++li) {
+		string token = *li;
+		int f;
+		int firstpos = 0;
+		int ic;	// Position of closing part e.g. '}'
+		while ((f = par.find(token, firstpos)) >= 0) {
+			size_t ssize = token.length();
+			int parcount = 0;	// how many '{}' can be removed
+			if (f == 0)
+				ic = -1;
+			else {
+				if (par[f-1] != '{')
+					ic = -1;
+				else {
+					// here '{' preceedes
+					ic = findclosing(par, f + ssize, par.length());
+					if (f == 1)
+						parcount = 1;
+					else if ((f == 2) && (par[f-2] == '{')) {
+						if ((ic < 0) || (par[ic+1] == '}'))
+							parcount = 2;
+						else
+							parcount = 1;
+					} else while (f > parcount + 1) {
+						if (par[f-2-parcount] != '{')
+							break;
+						parcount++;
+						if ((ic > 0) && (par[ic+parcount] != '}'))
+							break;
+					}
+				}
+			}
+			firstpos = f;
 
+			if (ic < 0)
+				ic = par.length() - parcount;
+			par = par.substr(0, f-parcount) + par.substr(f+ssize, ic+parcount-f-ssize) + par.substr(ic+parcount);
+		}
+	}
+	return(par);
+}
+
+/*
+ * Try to unify the language specs in the latexified text.
+ * Resulting modified string is set to "", if
+ * the searched tex does not contain all the features in the search pattern
+ */
 static string correctlanguagesetting(string par, bool from_regex, bool withformat)
 {
 	static string langstart = "\\foreignlanguage{";
@@ -920,7 +990,6 @@ static string correctlanguagesetting(string par, bool from_regex, bool withforma
 	static bool regex_with_format = false;
 
 	int parlen = par.length();
-	string result = par;
 
 	while ((parlen > 0) && (par[parlen-1] == '\n')) {
 		parlen--;
@@ -951,45 +1020,78 @@ static string correctlanguagesetting(string par, bool from_regex, bool withforma
 	else {
 		// LYXERR0("No regex formats");
 	}
-	if (par.compare(0, llen, langstart) == 0) {
+	string result = removefontinfo(par.substr(0, parlen));
+	parlen = result.length();
+	if (result.compare(0, llen, langstart) == 0) {
 		if (from_regex) {
 			removefirstlang = false;
 		}
-		int i = findclosing(par, llen, parlen);
+		int i = findclosing(result, llen, parlen);
 		if (removefirstlang) {
 			if (i < 0)
 				result = "";
 			else {
-				int closepos = findclosing(par, i+2, parlen);
+				int closepos = findclosing(result, i+2, parlen);
 				if (closepos > 0) {
-					result = par.substr(i+2, closepos-i-2) + par.substr(closepos+1, parlen - closepos-1);
+					result = result.substr(i+2, closepos-i-2) + result.substr(closepos+1, parlen - closepos-1);
 				}
 				else {
-					result = par.substr(i+2, parlen-i-2);
+					result = result.substr(i+2, parlen-i-2);
 				}
 			}
 		}
 		else if (i > 0) {
 			// skip '}{' after the language spec
-			int closepos = findclosing(par, i+2, parlen);
-			size_t insertpos = par.find(langstart, i+2);
+			string samelang = "";
+			int startpos = i+2;
+			int closepos;
+			while(true) {
+				closepos = findclosing(result, startpos, parlen);
+				if (closepos >0) {
+					if (result[closepos+1] == '{') {
+						samelang += result.substr(startpos, closepos-startpos);
+						startpos = closepos + 2;
+					}
+					else {
+						samelang += result.substr(startpos, closepos-startpos);
+						result = result.substr(0, i+2) + samelang + result.substr(closepos);
+						closepos = i+2 + samelang.length();
+						break;
+					}
+				}
+				else {
+					result = result.substr(0, i+2) + samelang + result.substr(startpos) +"}";
+					closepos = result.length() - 1;
+					break;
+				}
+			}
+			size_t insertpos = result.find(langstart, i+2);
+
+			if (insertpos == string::npos)
+				insertpos = result.length();
 			if (closepos < 0) {
-				if (insertpos == string::npos) {
+				if (insertpos == result.length()) {
 					// there are no closing in par, and no next lang spec
-					result = par.substr(0, parlen) + "}";
+					result += "}";
 				}
 				else {
 					// Add '}' at insertpos only, because closing is missing
-					result = par.substr(0,insertpos) + "}" + par.substr(insertpos, parlen-insertpos);
+					result = result.substr(0,insertpos) + "}" + result.substr(insertpos, parlen-insertpos);
 				}
 			}
 			else if ((size_t) closepos > insertpos) {
 				// Add '}' at insertpos and remove from closepos if closepos > insertpos
-				result = par.substr(0,insertpos) + "}" + par.substr(insertpos, closepos - insertpos) + par.substr(closepos+1, parlen -closepos-1);
+				result = result.substr(0,insertpos) + "}" + result.substr(insertpos, closepos - insertpos) + result.substr(closepos+1, parlen -closepos-1);
+			}
+			else {
+				// here closepos < insertpos
+				if ((size_t) closepos +1 < insertpos) {
+					result = result.substr(0, closepos) + result.substr(closepos+1, insertpos-closepos-1) + "}" + result.substr(insertpos);
+				}
 			}
 		}
 		else {
-			result = par;
+			// result not good?, no closing '}' for \foreignlanguage{ ...>>> found
 			// For i == 0, it is empty language spec
 			// and for i < 0 it is Error
 		}
@@ -999,31 +1101,8 @@ static string correctlanguagesetting(string par, bool from_regex, bool withforma
 			removefirstlang = true;
 		}
 	}
-	// Remove fontsizes
-	static vector <string> fontssizes = { "footnotesize", "tiny", "scriptsize", "small", "large", "Large", "LARGE", "huge", "Huge"};
-	for (size_t i = 0; i < fontssizes.size(); i++) {
-		int f;
-		int firstpos = 0;
-		while ((f = result.find("{\\" + fontssizes[i], firstpos)) >= 0) {
-			if (f >= 0) {
-				firstpos = f;
-				size_t ssize = fontssizes[i].size() + 2;
-				int ic = findclosing(result, f + 1, result.length());
-
-				if ((result[f+ssize] == '{') && (result[f+ssize+1] == '}')) {
-					ssize += 2;
-				}
-				if (ic > 0) {
-					result = result.substr(0, f) + result.substr(f+ssize, ic-f-ssize) + result.substr(ic+1);
-				}
-				else {
-					result = result.substr(0, f) + result.substr(f+ssize);
-				}
-			}
-		}
-	}
 	// remove possible disturbing macros
-	while (regex_replace(result, result, "\\\\(inputencoding\\{[^\\}]*}|noindent )", ""))
+	while (regex_replace(result, result, "\\\\(noindent )", ""))
 		;
 	// Either not found language spec,or is single and closed spec or empty
 	// to be removed
@@ -1031,8 +1110,9 @@ static string correctlanguagesetting(string par, bool from_regex, bool withforma
 	static regex const parreg("((\\n)?\\\\[a-z]+par)\\{");
 
 	list <string> pars;
+	smatch sub;
 	for (sregex_iterator it(result.begin(), result.end(), parreg), end; it != end; ++it) {
-		smatch sub = *it;
+		sub = *it;
 		string token = sub.str(1);
 		pars.push_back(token);
 	}
@@ -1310,10 +1390,10 @@ string MatchStringAdv::normalize(docstring const & s, bool hack_braces) const
 	// Kornel: Added textsl, textsf, textit, texttt and noun
 	// + allow to seach for colored text too
 	LYXERR(Debug::FIND, "Removing stale empty \\emph{}, \\textbf{}, \\*section{} macros from: " << t);
-	while (regex_replace(t, t, "\\\\((emph|noun|text(bf|sl|sf|it|tt|color\\{[a-z]+\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part)\\*?)(\\{\\})+", ""))
+	while (regex_replace(t, t, "\\\\((emph|noun|text(bf|sl|sf|it|tt|color\\{[a-z]+\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part)\\*?)(\\{(\\{\\})?\\})+", ""))
 		LYXERR(Debug::FIND, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
 
-	while (regex_replace(t, t, "\\\\foreignlanguage\\{[a-z]+\\}(\\{(\\\\item )?\\})+", ""));
+	while (regex_replace(t, t, "\\\\foreignlanguage\\{[a-z]+\\}(\\{(\\\\item |\\{\\})?\\})+", ""));
 	// FIXME - check what preceeds the brace
 	if (hack_braces) {
 		if (opt.ignoreformat)
