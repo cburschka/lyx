@@ -955,12 +955,12 @@ static string correctlanguagesetting(string par, bool from_regex, bool withforma
 		if (from_regex) {
 			removefirstlang = false;
 		}
-		int i = findclosing(par, llen, par.length());
+		int i = findclosing(par, llen, parlen);
 		if (removefirstlang) {
 			if (i < 0)
 				result = "";
 			else {
-				int closepos = findclosing(par, i+2, par.length());
+				int closepos = findclosing(par, i+2, parlen);
 				if (closepos > 0) {
 					result = par.substr(i+2, closepos-i-2) + par.substr(closepos+1, parlen - closepos-1);
 				}
@@ -971,7 +971,7 @@ static string correctlanguagesetting(string par, bool from_regex, bool withforma
 		}
 		else if (i > 0) {
 			// skip '}{' after the language spec
-			int closepos = findclosing(par, i+2, par.length());
+			int closepos = findclosing(par, i+2, parlen);
 			size_t insertpos = par.find(langstart, i+2);
 			if (closepos < 0) {
 				if (insertpos == string::npos) {
@@ -999,10 +999,54 @@ static string correctlanguagesetting(string par, bool from_regex, bool withforma
 			removefirstlang = true;
 		}
 	}
-	// remove possible \inputencoding entries
-	while (regex_replace(result, result, "\\\\inputencoding\\{[^\\}]*}", ""))
+	// Remove fontsizes
+	static vector <string> fontssizes = { "footnotesize", "tiny", "scriptsize", "small", "large", "Large", "LARGE", "huge", "Huge"};
+	for (size_t i = 0; i < fontssizes.size(); i++) {
+		int f;
+		int firstpos = 0;
+		while ((f = result.find("{\\" + fontssizes[i], firstpos)) >= 0) {
+			if (f >= 0) {
+				firstpos = f;
+				size_t ssize = fontssizes[i].size() + 2;
+				int ic = findclosing(result, f + 1, result.length());
+
+				if ((result[f+ssize] == '{') && (result[f+ssize+1] == '}')) {
+					ssize += 2;
+				}
+				if (ic > 0) {
+					result = result.substr(0, f) + result.substr(f+ssize, ic-f-ssize) + result.substr(ic+1);
+				}
+				else {
+					result = result.substr(0, f) + result.substr(f+ssize);
+				}
+			}
+		}
+	}
+	// remove possible disturbing macros
+	while (regex_replace(result, result, "\\\\(inputencoding\\{[^\\}]*}|noindent )", ""))
 		;
 	// Either not found language spec,or is single and closed spec or empty
+	// to be removed
+	// [a-z+]par
+	static regex const parreg("((\\n)?\\\\[a-z]+par)\\{");
+
+	list <string> pars;
+	for (sregex_iterator it(result.begin(), result.end(), parreg), end; it != end; ++it) {
+		smatch sub = *it;
+		string token = sub.str(1);
+		pars.push_back(token);
+	}
+	for (list<string>::const_iterator li = pars.begin(); li != pars.end(); ++li) {
+		string token = *li;
+		int ti = result.find(token);
+		int tokensize = token.size() + 1;
+		if (ti >= 0) {
+			int tc = findclosing(result, ti + tokensize, result.size());
+			if (tc > 0)
+				result = result.substr(0, ti) + result.substr(ti + tokensize, tc - ti -tokensize) + result.substr(tc+1);
+
+		}
+	}
 	return(result);
 }
 
@@ -1445,13 +1489,11 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 {
 	if (!cur)
 		return 0;
-	static int max_missed = 0;
 	while (!theApp()->longOperationCancelled() && cur) {
 		LYXERR(Debug::FIND, "findForwardAdv() cur: " << cur);
 		int match_len = match(cur, -1, false);
 		LYXERR(Debug::FIND, "match_len: " << match_len);
 		if (match_len > 0) {
-			int count = 0;
 			int match_len_zero_count = 0;
 			for (; !theApp()->longOperationCancelled() && cur; cur.forwardPos()) {
 				LYXERR(Debug::FIND, "Advancing cur: " << cur);
@@ -1466,19 +1508,14 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 					}
 				}
 				if (match_len2 >= 0) {
-					count = 0;
 					if (match_len2 == 0)
 						match_len_zero_count++;
 					else
 						match_len_zero_count = 0;
 				}
 				else {
-					count++;
-					if (count > max_missed) max_missed = count;
-					if (count > 5) {
-						LYXERR(Debug::FIND, "match_len2_zero_count: " << match_len_zero_count << ", match_len was " << match_len);
-						break;
-					}
+					LYXERR(Debug::FIND, "match_len2_zero_count: " << match_len_zero_count << ", match_len was " << match_len);
+					break;
 				}
 			}
 			if (!cur)
