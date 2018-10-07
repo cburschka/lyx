@@ -61,7 +61,6 @@
 #include <QHeaderView>
 #include <QLineEdit>
 #include <QMessageBox>
-#include <QPixmapCache>
 #include <QPushButton>
 #include <QSpinBox>
 #include <QString>
@@ -995,8 +994,6 @@ PrefScreenFonts::PrefScreenFonts(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(screenHugerED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(pixmapCacheCB, SIGNAL(toggled(bool)),
-		this, SIGNAL(changed()));
 
 	screenTinyED->setValidator(new QDoubleValidator(screenTinyED));
 	screenSmallestED->setValidator(new QDoubleValidator(screenSmallestED));
@@ -1033,17 +1030,12 @@ void PrefScreenFonts::applyRC(LyXRC & rc) const
 	rc.font_sizes[FONT_SIZE_LARGEST] = widgetToDoubleStr(screenLargestED);
 	rc.font_sizes[FONT_SIZE_HUGE] = widgetToDoubleStr(screenHugeED);
 	rc.font_sizes[FONT_SIZE_HUGER] = widgetToDoubleStr(screenHugerED);
-	rc.use_pixmap_cache = pixmapCacheCB->isChecked();
 
 	if (rc.font_sizes != oldrc.font_sizes
 		|| rc.roman_font_name != oldrc.roman_font_name
 		|| rc.sans_font_name != oldrc.sans_font_name
 		|| rc.typewriter_font_name != oldrc.typewriter_font_name
 		|| rc.defaultZoom != oldrc.defaultZoom) {
-		// The global QPixmapCache is used in GuiPainter to cache text
-		// painting so we must reset it in case any of the above
-		// parameter is changed.
-		QPixmapCache::clear();
 		guiApp->fontLoader().update();
 		form_->updateScreenFonts();
 	}
@@ -1065,12 +1057,6 @@ void PrefScreenFonts::updateRC(LyXRC const & rc)
 
 	screenZoomSB->setValue(rc.defaultZoom);
 	updateScreenFontSizes(rc);
-
-	pixmapCacheCB->setChecked(rc.use_pixmap_cache);
-#if defined(Q_WS_X11) || defined(QPA_XCB)
-	pixmapCacheCB->setEnabled(false);
-#endif
-
 }
 
 

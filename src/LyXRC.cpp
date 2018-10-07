@@ -59,7 +59,7 @@ namespace {
 
 // The format should also be updated in configure.py, and conversion code
 // should be added to prefs2prefs_prefs.py.
-static unsigned int const LYXRC_FILEFORMAT = 28; // spitz: remove \\date_insert_format
+static unsigned int const LYXRC_FILEFORMAT = 29; // spitz: remove \\date_insert_format
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
 	{ "\\accept_compound", LyXRC::RC_ACCEPT_COMPOUND },
@@ -193,7 +193,6 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\use_converter_needauth_forbidden", LyXRC::RC_USE_CONVERTER_NEEDAUTH_FORBIDDEN },
 	{ "\\use_lastfilepos", LyXRC::RC_USELASTFILEPOS },
 	{ "\\use_native_filedialog", LyXRC::RC_USE_NATIVE_FILEDIALOG },
-	{ "\\use_pixmap_cache", LyXRC::RC_USE_PIXMAP_CACHE },
 	// compatibility with versions older than 1.4.0 only
 	{ "\\use_system_colors", LyXRC::RC_USE_SYSTEM_COLORS },
 	{ "\\use_system_theme_icons", LyXRC::RC_USE_SYSTEM_THEME_ICONS },
@@ -326,7 +325,6 @@ void LyXRC::setDefaults()
 	use_converter_needauth = true;
 	use_system_colors = false;
 	use_tooltip = true;
-	use_pixmap_cache = false;
 	converter_cache_maxage = 6 * 30 * 24 * 3600; // 6 months
 	user_name = to_utf8(support::user_name());
 	user_email = to_utf8(support::user_email());
@@ -876,9 +874,6 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			break;
 		case RC_USE_TOOLTIP:
 			lexrc >> use_tooltip;
-			break;
-		case RC_USE_PIXMAP_CACHE:
-			lexrc >> use_pixmap_cache;
 			break;
 		case RC_SPELLCHECKER:
 			lexrc >> spellchecker;
@@ -2414,16 +2409,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 		// fall through
-	case RC_USE_PIXMAP_CACHE:
-		if (ignore_system_lyxrc ||
-		    use_pixmap_cache != system_lyxrc.use_pixmap_cache) {
-			os << "\\use_pixmap_cache "
-			   << convert<string>(use_pixmap_cache)
-			   << '\n';
-		}
-		if (tag != RC_LAST)
-			break;
-		// fall through
 
 		os << "\n#\n"
 		   << "# LANGUAGE SUPPORT SECTION ##########################\n"
@@ -3005,7 +2990,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_USE_NATIVE_FILEDIALOG:
 	case LyXRC::RC_USE_SYSTEM_COLORS:
 	case LyXRC::RC_USE_TOOLTIP:
-	case LyXRC::RC_USE_PIXMAP_CACHE:
 	case LyXRC::RC_USE_SYSTEM_THEME_ICONS:
 	case LyXRC::RC_VIEWDVI_PAPEROPTION:
 	case LyXRC::RC_SINGLE_CLOSE_TAB_BUTTON:
@@ -3417,10 +3401,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_USE_TOOLTIP:
 		str = _("Enable the automatic appearance of tool tips in the work area.");
-		break;
-
-	case RC_USE_PIXMAP_CACHE:
-		str = _("Enable the pixmap cache that might improve performance on Mac and Windows.");
 		break;
 
 	case RC_VIEWDVI_PAPEROPTION:

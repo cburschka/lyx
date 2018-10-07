@@ -173,7 +173,6 @@ public:
 		RC_USE_NATIVE_FILEDIALOG,
 		RC_USE_SYSTEM_COLORS,
 		RC_USE_TOOLTIP,
-		RC_USE_PIXMAP_CACHE,
 		RC_USE_SYSTEM_THEME_ICONS,
 		RC_VIEWDVI_PAPEROPTION,
 		RC_VIEWER,
@@ -333,8 +332,6 @@ public:
 	bool use_system_colors;
 	/// use native file dialog or our own ?
 	bool use_native_filedialog;
-	/// Use pixmap cache?
-	bool use_pixmap_cache;
 	/// Spellchecker engine: aspell, hunspell, etc
 	std::string spellchecker;
 	/// Alternate language for spellchecker

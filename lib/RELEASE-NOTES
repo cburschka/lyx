@@ -29,6 +29,9 @@
 * \use_qimage
   This is no longer necessary due to the rewrite of the painter.
 
+* \use_pixmap_cacheqimage
+  There is no evidence that this painting mode was useful anymore.
+
 * \date_insert_format
   The function date-insert has been removed and superseded by info-insert date.
   The latter does not need a pref value anymore.

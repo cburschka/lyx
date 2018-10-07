@@ -407,16 +407,6 @@
      </property>
     </spacer>
    </item>
-   <item row="3" column="0">
-    <widget class="QCheckBox" name="pixmapCacheCB">
-     <property name="toolTip">
-      <string>Checking this improves performance, but might decrease the on-screen quality of fonts</string>
-     </property>
-     <property name="text">
-      <string>&amp;Use pixmap cache to speed up font rendering</string>
-     </property>
-    </widget>
-   </item>
    <item row="4" column="0">
     <spacer>
      <property name="orientation">

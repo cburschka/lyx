@@ -102,7 +102,6 @@
 #include <QMimeData>
 #include <QObject>
 #include <QPixmap>
-#include <QPixmapCache>
 #include <QRegExp>
 #include <QSessionManager>
 #include <QSettings>
@@ -1077,10 +1076,6 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	lyxrc.dpi = (w.logicalDpiX() + w.logicalDpiY()) / 2;
 
 	guiApp = this;
-
-	// Set the cache to 5120 kilobytes which corresponds to screen size of
-	// 1280 by 1024 pixels with a color depth of 32 bits.
-	QPixmapCache::setCacheLimit(5120);
 
 	// Initialize RC Fonts
 	if (lyxrc.roman_font_name.empty())

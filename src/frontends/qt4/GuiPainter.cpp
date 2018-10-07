@@ -29,16 +29,7 @@
 
 #include <algorithm>
 
-#include <QPixmapCache>
 #include <QTextLayout>
-
-// Set USE_PIXMAP_CACHE to 1 for enabling the use of a Pixmap cache when
-// drawing text. This is especially useful for older PPC/Mac systems.
-#if defined(Q_WS_X11) || defined(QPA_XCB)
-#define USE_PIXMAP_CACHE 0
-#else
-#define USE_PIXMAP_CACHE 1
-#endif
 
 using namespace std;
 using namespace lyx::support;
@@ -49,8 +40,7 @@ namespace frontend {
 const int Painter::thin_line = 1;
 
 GuiPainter::GuiPainter(QPaintDevice * device, double pixel_ratio)
-	: QPainter(device), Painter(pixel_ratio),
-	  use_pixmap_cache_(lyxrc.use_pixmap_cache && USE_PIXMAP_CACHE)
+	: QPainter(device), Painter(pixel_ratio)
 {
 	// set cache correctly
 	current_color_ = pen().color();
@@ -90,33 +80,6 @@ void GuiPainter::setQPainterPen(QColor const & col,
 	pen.setWidth(lw);
 
 	setPen(pen);
-}
-
-
-QString GuiPainter::generateStringSignature(QString const & str,
-                                            FontInfo const & f,
-                                            double wordspacing)
-{
-	QString sig = str;
-	sig.append(QChar(static_cast<short>(f.family())));
-	sig.append(QChar(static_cast<short>(f.series())));
-	sig.append(QChar(static_cast<short>(f.realShape())));
-	sig.append(QChar(static_cast<short>(f.size())));
-	Color const & color = f.realColor();
-	sig.append(QChar(static_cast<short>(color.baseColor)));
-	sig.append(QChar(static_cast<short>(color.mergeColor)));
-	sig.append(QString::number(wordspacing));
-	if (!monochrome_min_.empty()) {
-		QColor const & min = monochrome_min_.top();
-		QColor const & max = monochrome_max_.top();
-		sig.append(QChar(static_cast<short>(min.red())));
-		sig.append(QChar(static_cast<short>(min.green())));
-		sig.append(QChar(static_cast<short>(min.blue())));
-		sig.append(QChar(static_cast<short>(max.red())));
-		sig.append(QChar(static_cast<short>(max.green())));
-		sig.append(QChar(static_cast<short>(max.blue())));
-	}
-	return sig;
 }
 
 
@@ -396,7 +359,7 @@ void GuiPainter::text(int x, int y, docstring const & s,
 
 	int textwidth = 0;
 	if (tw == 0.0)
-		// Note that we have to take in account space stretching (word spacing)
+		// Take into account space stretching (word spacing)
 		textwidth = fm.width(s) +
 			static_cast<int>(fm.countExpanders(s) * wordspacing);
 	else
@@ -404,55 +367,6 @@ void GuiPainter::text(int x, int y, docstring const & s,
 
 	textDecoration(f, x, y, textwidth);
 
-	if (use_pixmap_cache_) {
-		QPixmap pm;
-		QString key = generateStringSignature(str, f, wordspacing);
-
-		// Warning: Left bearing is in general negative! Only the case
-		// where left bearing is negative is of interest WRT the
-		// pixmap width and the text x-position.
-		// Only the left bearing of the first character is important
-		// as we always write from left to right, even for
-		// right-to-left languages.
-		// FIXME: this is probably broken for RTL now that we draw full strings.
-		// Morover the first/last element is possibly not the right one since the glyph may have changed.
-		int const lb = min(fm.lbearing(s[0]), 0);
-		int const mA = fm.maxAscent();
-		if (QPixmapCache::find(key, pm)) {
-			// Draw the cached pixmap.
-			drawPixmap(x + lb, y - mA, pm);
-			return;
-		}
-
-		// Only the right bearing of the last character is
-		// important as we always write from left to right,
-		// even for right-to-left languages.
-		int const rb = fm.rbearing(s[s.size()-1]);
-		int const w = textwidth + rb - lb;
-		int const mD = fm.maxDescent();
-		int const h = mA + mD;
-		if (w > 0 && h > 0) {
-			pm = QPixmap(static_cast<int>(pixelRatio() * w),
-						 static_cast<int>(pixelRatio() * h));
-#if QT_VERSION >= 0x050000
-			pm.setDevicePixelRatio(pixelRatio());
-#endif
-			pm.fill(Qt::transparent);
-			GuiPainter p(&pm, pixelRatio());
-			p.do_drawText(-lb, mA, str, dir, f, ff);
-			QPixmapCache::insert(key, pm);
-			//LYXERR(Debug::PAINTING, "h=" << h << "  mA=" << mA << "  mD=" << mD
-			//	<< "  w=" << w << "  lb=" << lb << "  tw=" << textwidth
-			//	<< "  rb=" << rb);
-
-			// Draw the new cached pixmap.
-			drawPixmap(x + lb, y - mA, pm);
-			//rectangle(x-lb, y-mA, w, h, Color_green);
-		}
-		return;
-	}
-
-	// don't use the pixmap cache
 	setQPainterPen(computeColor(f.realColor()));
 	if (dir != Auto) {
 		shared_ptr<QTextLayout const> ptl =

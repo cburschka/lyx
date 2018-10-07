@@ -114,6 +114,9 @@
 # Incremented to format 28, by spitz
 #   Remove date_insert_format
 
+# Incremented to format 29, by lasgouttes
+#   Remove use_pixmap_cache
+
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py.
 
@@ -413,6 +416,11 @@ def remove_date_insert_format(line):
 		return no_match
 	return (True, "")
 
+def remove_use_pixmap_cache(line):
+	if not line.lower().startswith("\\use_pixmap_cache "):
+		return no_match
+	return (True, "")
+
 # End conversions for LyX 2.3 to 2.4
 ####################################
 
@@ -455,5 +463,6 @@ conversions = [
 	[ 25, [remove_use_qimage]],
 	[ 26, [remove_font_encoding]],
 	[ 27, []],
-	[ 28, [remove_date_insert_format]]
+	[ 28, [remove_date_insert_format]],
+	[ 29, [remove_use_pixmap_cache]]
 ]

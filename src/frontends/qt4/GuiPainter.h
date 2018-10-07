@@ -196,8 +196,6 @@ private:
 	Painter::line_style current_ls_;
 	int current_lw_;
 	///
-	bool const use_pixmap_cache_;
-	///
 	std::stack<QColor> monochrome_min_;
 	///
 	std::stack<QColor> monochrome_max_;
@@ -205,9 +203,6 @@ private:
 	QColor computeColor(Color col);
 	/// possibly apply monochrome mode
 	QColor filterColor(QColor const & col);
-	///
-	QString generateStringSignature(QString const & str, FontInfo const & f,
-	                                double wordspacing);
 };
 
 } // namespace frontend

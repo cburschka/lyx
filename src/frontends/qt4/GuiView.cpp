@@ -100,7 +100,6 @@
 #include <QMovie>
 #include <QPainter>
 #include <QPixmap>
-#include <QPixmapCache>
 #include <QPoint>
 #include <QPushButton>
 #include <QScrollBar>
@@ -4293,9 +4292,6 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			dr.setMessage(bformat(_("Zoom level is now %1$d% (default value: %2$d%)"),
 					      lyxrc.currentZoom, lyxrc.defaultZoom));
 
-			// The global QPixmapCache is used in GuiPainter to cache text
-			// painting so we must reset it.
-			QPixmapCache::clear();
 			guiApp->fontLoader().update();
 			dr.screenUpdate(Update::Force | Update::FitCursor);
 			break;
