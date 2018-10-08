@@ -260,6 +260,7 @@ GuiFontMetrics::getTextLayout(docstring const & s, bool const rtl,
 	QFont copy = font_;
 	copy.setWordSpacing(wordspacing);
 	ptl->setFont(copy);
+	// FIXME: This might not work in all cases. See breakAt_helper.
 	// Note that both setFlags and the enums are undocumented
 	ptl->setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
 	ptl->beginLayout();

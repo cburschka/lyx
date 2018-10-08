@@ -284,47 +284,6 @@ void GuiPainter::text(int x, int y, docstring const & s, FontInfo const & f)
 }
 
 
-void GuiPainter::do_drawText(int x, int y, QString str,
-                             GuiPainter::Direction const dir,
-                             FontInfo const & f, QFont ff)
-{
-	setQPainterPen(computeColor(f.realColor()));
-	if (font() != ff)
-		setFont(ff);
-
-	 /* In LyX, the character direction is forced by the language.
-	  * Therefore, we have to signal that fact to Qt.
-	  */
-#if 1
-	/* Use unicode override characters to enforce drawing direction
-	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
-	 */
-	if (dir == RtL)
-		// Right-to-left override: forces to draw text right-to-left
-		str = QChar(0x202E) + str;
-	else if (dir == LtR)
-		// Left-to-right override: forces to draw text left-to-right
-		str =  QChar(0x202D) + str;
-	drawText(x, y, str);
-#else
-	/* This looks like a cleaner solution, but it has drawbacks
-	 * - does not work reliably (Mac OS X, ...)
-	 * - it is not really documented
-	 * Keep it here for now, in case it can be helpful
-	 */
-	//This is much stronger than setLayoutDirection.
-	int flag = 0;
-	if (dir == RtL)
-		flag = Qt::TextForceRightToLeft;
-	else if (dir == LtR)
-		flag = Qt::TextForceLeftToRight;
-	drawText(x + ((dir == RtL) ? textwidth : 0), y - fm.maxAscent(), 0, 0,
-		 flag | Qt::TextDontClip,
-		 str);
-#endif
-}
-
-
 void GuiPainter::text(int x, int y, docstring const & s,
                       FontInfo const & f, Direction const dir,
                       double const wordspacing, double const tw)
@@ -369,11 +328,9 @@ void GuiPainter::text(int x, int y, docstring const & s,
 
 	setQPainterPen(computeColor(f.realColor()));
 	if (dir != Auto) {
-		shared_ptr<QTextLayout const> ptl =
-			fm.getTextLayout(s, dir == RtL, wordspacing);
+		auto ptl = fm.getTextLayout(s, dir == RtL, wordspacing);
 		ptl->draw(this, QPointF(x, y - fm.maxAscent()));
-	}
-	else {
+	} else {
 		if (font() != ff)
 			setFont(ff);
 		drawText(x, y, str);

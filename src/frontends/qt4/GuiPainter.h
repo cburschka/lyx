@@ -184,9 +184,6 @@ private:
 	// Direction for painting text
 	enum Direction { LtR, RtL, Auto };
 
-	// Helper for text() method
-	void do_drawText(int x, int y, QString str, Direction dir, FontInfo const & f, QFont ff);
-
 	// Real text() method
 	void text(int x, int y, docstring const & s,
               FontInfo const & f, Direction const dir,
