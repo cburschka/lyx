@@ -882,7 +882,7 @@ docstring InsetBibtex::getRefLabel() const
 { 
 	if (buffer().masterParams().documentClass().hasLaTeXLayout("chapter")) 
 		return buffer().B_("Bibliography"); 
-		return buffer().B_("References"); 
+	return buffer().B_("References"); 
 } 
 
 
