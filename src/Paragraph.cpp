@@ -1148,9 +1148,9 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	    // decorations at all
 	    && inset->lyxCode() != ERT_CODE) {
 		if (runparams.use_polyglossia) {
-			if (style.isCommand())
-				os << "\\LR{";
-			os << "\\begin{LTR}";
+			if (style.isEnvironment())
+				os << "\\begin{LTR}";
+			os << "\\LRE{";
 		} else if (running_font.language()->lang() == "farsi"
 			   || running_font.language()->lang() == "arabic_arabi")
 			os << "\\textLR{" << termcmd;
@@ -1210,7 +1210,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	}
 
 	if (close) {
-		if (runparams.use_polyglossia && !style.isCommand())
+		if (runparams.use_polyglossia && style.isEnvironment())
 			os << "\\end{LTR}";
 		else
 			os << '}';
