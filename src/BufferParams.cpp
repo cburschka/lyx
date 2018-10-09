@@ -2303,6 +2303,10 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		os << "\\usepackage{xunicode}\n";
 	}
 
+	// covington must be loaded after beamerarticle
+	if (features.isRequired("covington"))
+	    os << "\\usepackage{covington}\n";
+
 	// Polyglossia must be loaded last ...
 	if (use_polyglossia) {
 		// call the package

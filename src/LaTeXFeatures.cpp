@@ -971,7 +971,6 @@ char const * simplefeatures[] = {
 	// "cancel",
 	"ascii",
 	"url",
-	"covington",
 	"csquotes",
 	"enumitem",
 	"endnotes",
