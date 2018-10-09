@@ -136,6 +136,8 @@ What's new
 - Add "hyperref-driver=dvips" option to the extra flags of the
   latex->dvi converter (bug 11332).
 
+- Fix loading order conflict with beamer-article and covington.
+
 
 
 * USER INTERFACE
