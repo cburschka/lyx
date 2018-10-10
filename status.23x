@@ -133,6 +133,9 @@ What's new
 
 - Fix issue with erroneous qualified citations (bug 11308).
 
+- Add "hyperref-driver=dvips" option to the extra flags of the
+  latex->dvi converter (bug 11332).
+
 
 
 * USER INTERFACE
