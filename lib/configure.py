@@ -556,10 +556,10 @@ def checkLatex(dtl_tools):
         PPLATEX = LATEX
     if dtl_tools:
         # Windows only: DraftDVI
-        addToRC(r'''\converter latex      dvi2       "%s"	"latex"
+        addToRC(r'''\converter latex      dvi2       "%s"	"latex,hyperref-driver=dvips"
 \converter dvi2       dvi        "python -tt $$s/scripts/clean_dvi.py $$i $$o"	""''' % PPLATEX)
     else:
-        addToRC(r'\converter latex      dvi        "%s"	"latex"' % PPLATEX)
+        addToRC(r'\converter latex      dvi        "%s"	"latex,hyperref-driver=dvips"' % PPLATEX)
     # no latex
     if LATEX != '':
         # Check if latex is usable
