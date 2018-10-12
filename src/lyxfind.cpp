@@ -901,22 +901,26 @@ static Features identifyFeatures(string const & s)
 /*
  * Faster search for the related closing parenthesis
  */
-static int findclosing(string p, int start, int end)
+ static int findclosing(string p, int start, int end)
 {
 	int skip = 0;
 	int depth = 0;
+        int lastunclosed = start-1;
 	for (int i = start; i < end; i += 1 + skip) {
 		char c;
 		c = p[i];
 		skip = 0;
 		if (c == '\\') skip = 1;
-		else if (c == '{') depth++;
+		else if (c == '{') {
+                  depth++;
+                  lastunclosed = i;
+                }
 		else if (c == '}') {
 			if (depth == 0) return(i);
 			--depth;
 		}
 	}
-	return(-1);
+	return(0 - lastunclosed);
 }
 
 /*
@@ -975,6 +979,373 @@ static string removefontinfo(string par)
 	return(par);
 }
 
+
+class LangInfo {
+  public:
+    enum Type {
+      Invalid,
+      Valid,
+      LastValid,
+    };
+    Type valid;
+
+    /*LangInfo(LangInfo &orig) :
+    	par(orig.par),
+	maxoffset(orig.maxoffset),
+	search(orig.search) {valid = Invalid;}
+    */
+    LangInfo(string par, string search1 = "", int start = 0, int end = -1)
+      : par(par),
+      _tokenend(0),
+      _dataEnd(0),
+      actualdeptindex(0)
+      {
+      valid = Invalid;
+      _tokenstart = start;
+      if (end > int(par.length())) {
+        maxoffset = par.length();
+      }
+      else if (end > 0)
+        maxoffset = end;
+      else
+	maxoffset = par.length();
+      if (!search1.empty())
+        _search = search1;
+    }
+    bool nextInfo();	// of the same type, from the last start in the same reagion
+    bool firstInfo(string search, int datastart);
+    void setDataEnd(int value);
+    void setDataStart(int value);
+    int getDataStart() { return _dataStart;};
+    string name() { return _search;};
+    string lasttoken() { if (valid == Valid) return _foundtoken; else return "";};
+    int getStart() { return _tokenstart;};
+    int getTokenEnd() { return _tokenend;};
+    int getEnd() { return _dataEnd;};
+    bool isValid() { return (valid == Valid); };
+    void process(ostringstream &os);
+    void output(ostringstream &os, int);
+    void addIntervall(int upper);
+    void addIntervall(int low, int upper); /* if explicit */
+    void handleParentheses(int lastpos);
+    string show(int lastpos);
+  private:
+    string par;
+    string _search;
+    string _foundtoken;
+    int _tokenstart;
+    int _tokenend;
+    int _dataStart;
+    int _dataEnd;
+    bool atEnd;
+    size_t maxoffset;
+    int depts[20];
+    int closes[20];
+    int actualdeptindex;
+    int ignoreIntervalls[10][2];
+    int ignoreidx;
+};
+
+void LangInfo::setDataEnd(int dataend)
+{
+  if (dataend < _tokenend) {
+    _dataEnd = _tokenend;
+    // cout << "Wrong data start, too low\n";
+  }
+  else if (size_t(dataend) > par.length()) {
+    // cout << "Wrong data start, too high\n";
+    _dataEnd = par.length();
+  }
+  else
+    _dataEnd = dataend;
+}
+
+void LangInfo::setDataStart(int datastart)
+{
+  if (datastart < _tokenend) {
+    _dataStart = _tokenend;
+    // cout << "Wrong data start, too low\n";
+  }
+  else if (size_t(datastart) > par.length()) {
+    // cout << "Wrong data start, too high\n";
+    _dataStart = par.length();
+  }
+  else
+    _dataStart = datastart;
+  //cout << "found entry at " << _tokenstart << "\n";
+  actualdeptindex = 1;                  /* == Number of open brases */
+  depts[0] = _dataStart;
+  closes[0] = -1;
+  depts[1] = _dataStart;
+  ignoreidx = 0;
+  ignoreIntervalls[ignoreidx][0] = _dataStart;
+  if ((par[_dataStart] == '{') && (par[_dataStart+1] == '}')) {
+    // First candidates to be ignored
+    ignoreIntervalls[ignoreidx][1] = _dataStart+2;
+  }
+  else
+    ignoreIntervalls[ignoreidx][1] = _dataStart;
+}
+
+void LangInfo::handleParentheses(int lastpos)
+{
+  int skip = 0;
+  for (int i = depts[actualdeptindex]; i < lastpos; i+= 1 + skip) {
+    char c;
+    c = par[i];
+    skip = 0;
+    if (c == '\\') skip = 1;
+    else if (c == '{') {
+      actualdeptindex++;
+      depts[actualdeptindex] = i+1;
+      closes[actualdeptindex] = -1;
+    }
+    else if (c == '}') {
+      if (actualdeptindex <= 0) {
+        LYXERR0("ERROR ERROR ERROR"); /* should never happen! */
+      }
+      else {
+        closes[actualdeptindex] = i+1;
+        actualdeptindex--;
+      }
+    }
+  }
+}
+
+void LangInfo::addIntervall(int low, int upper)
+{
+  int idx;
+  if (low == upper) return;
+  for (idx = ignoreidx+1; idx > 0; --idx) {
+    if (low > ignoreIntervalls[idx-1][1]) {
+      break;
+    }
+  }
+  if (idx > ignoreidx) {
+    ignoreIntervalls[idx][0] = low;
+    ignoreIntervalls[idx][1] = upper;
+  }
+  else {
+    // Expand only if one of the new bounds is inside the interwall
+    if (((low <= ignoreIntervalls[idx][1]) && (low >= ignoreIntervalls[idx][0])) ||
+        ((upper <= ignoreIntervalls[idx][1]) && (upper >= ignoreIntervalls[idx][0]))) {
+      if (low < ignoreIntervalls[idx][0])
+        ignoreIntervalls[idx][0] = low;
+      if (upper > ignoreIntervalls[idx][1])
+        ignoreIntervalls[idx][1] = upper;
+    }
+  }
+  ignoreidx = idx;                      /* because upper is in all cases bigger */
+}
+
+void LangInfo::addIntervall(int upper)
+{
+  int low;
+  if (actualdeptindex >= 0)
+    low = depts[actualdeptindex];   /*  the position of last unclosed '{' */
+  else {
+    LYXERR0("ERROR ERROR ERROR2");
+    low = upper;
+  }
+  addIntervall(low, upper);
+}
+
+string LangInfo::show(int lastpos)
+{
+  ostringstream os;
+
+  os << par.substr(_tokenstart, _tokenend - _tokenstart);
+  int idx = 0;
+  for (int i = _dataStart; i < lastpos;) {
+    if (i <= ignoreIntervalls[idx][0]) {
+      os << par.substr(i, ignoreIntervalls[idx][0] - i);
+      i = ignoreIntervalls[idx][1];
+    }
+    idx++;
+    if (idx > ignoreidx) {
+      os << par.substr(i, lastpos-i);
+      break;
+    }
+  }
+  for (int i = actualdeptindex; i > 0; --i)
+    os << "}";
+  return os.str();
+}
+
+void LangInfo::output(ostringstream &os, int lastpos)
+{
+  // get number of chars to output
+  int idx = 0;                          /* int intervalls */
+  int count = 0;
+  for (int i = _dataStart; i < lastpos;) {
+    if (i <= ignoreIntervalls[idx][0]) {
+      count += ignoreIntervalls[idx][0] - i;
+      i = ignoreIntervalls[idx][1];
+    }
+    idx++;
+    if (idx > ignoreidx) {
+      count += lastpos-i;
+      break;
+    }
+  }
+  //cout << "Number of output chars would be " << count + actualdeptindex << "\n";
+  if (count > 0) {
+    // Now the acual data
+    os << par.substr(_tokenstart, _tokenend - _tokenstart);
+    idx = 0;
+    for (int i = _dataStart; i < lastpos;) {
+      if (i <= ignoreIntervalls[idx][0]) {
+        os << par.substr(i, ignoreIntervalls[idx][0] - i);
+        i = ignoreIntervalls[idx][1];
+      }
+      idx++;
+      if (idx > ignoreidx) {
+        os << par.substr(i, lastpos-i);
+        break;
+      }
+    }
+    for (int i = actualdeptindex; i > 0; --i)
+      os << "}";
+  }
+  handleParentheses(lastpos);
+}
+
+bool LangInfo::nextInfo()
+{
+  int start = _tokenstart;
+
+  // cout << par << "\n";
+  if (valid == Invalid)
+    _dataEnd = _tokenstart;
+  else if (valid == LastValid)
+    return false;
+  // cout << "Start search at " << _tokenclose << " for \"" << _search << "\n";
+  size_t foundstart = par.find(_search, _dataEnd);
+  if (foundstart == string::npos) {
+    if (valid == Valid)
+      valid = LastValid;
+    return false;                      // not found
+  }
+  if (foundstart >= maxoffset)
+    return false;
+  start = foundstart;
+  int closelang = findclosing(par, start + _search.length(), maxoffset);
+  if (closelang < 0)
+    return false;
+  if (size_t(closelang) >= maxoffset)
+    return false;
+  if (par[closelang] != '}')
+    return false;
+  valid = Valid;
+  _foundtoken = par.substr(start, closelang - start + 2);
+  _tokenstart = start;
+  _tokenend = closelang+2;
+  setDataStart(_tokenend);
+  closelang = findclosing(par, _dataStart, maxoffset);
+  if (closelang < 0) {
+    _dataEnd = maxoffset;
+    atEnd = true;
+  }
+  else {
+    _dataEnd = closelang;
+    atEnd = false;
+  }
+  return true;
+}
+
+bool LangInfo::firstInfo(string search1, int datastart)
+{
+  if (!search1.empty()) {
+    if (_search.compare(search1) != 0) {
+      _tokenstart = datastart;
+      _search = search1;
+      valid = Invalid;
+    }
+  }
+  return nextInfo();
+}
+
+void LangInfo::process(ostringstream &os)
+{
+  LangInfo color(*this);
+  (void) color.firstInfo("\\textcolor{", _dataStart);
+  while (color.isValid() && (color.getStart() < _dataEnd)) {
+    bool isEmpty = false;
+    if (color.getDataStart() == color.getEnd()) {
+      // Empty, e.g. par[color.getDataStart()] == '}'
+      isEmpty = true;
+    }
+    else if ((par[color.getDataStart()] == '{') && (par[color.getDataStart()+1] == '}')) {
+      // color starts with '{}', discard it
+      if (color.getDataStart()+2 == color.getEnd())
+        isEmpty = true;
+      else {
+        // discard the first '{}'
+        addIntervall(color.getDataStart(), color.getDataStart()+2);
+      }
+    }
+    if (isEmpty) {
+      // it is emty, so ignore and go to next color
+      addIntervall(color.getStart(), color.getEnd()+1);
+    }
+    else {
+      if (par[color.getStart()-1] != '{') {
+        output(os, color.getStart());
+        addIntervall(color.getStart());
+      }
+      // Check if color empty
+      output(os, color.getEnd()+1);
+      addIntervall(color.getEnd()+1);
+    }
+    for (int i = color.getEnd()+1; par[i] == '}'; i++) {
+      handleParentheses(i+1);
+      addIntervall(i+1);
+    }
+    color.nextInfo();
+  }
+  if (par[_dataEnd] != '}')
+    output(os, _dataEnd-1);
+  else
+    output(os, _dataEnd);
+}
+
+/*
+ * Called only if the par starts with lang spec
+ */
+
+string splitForColors(string par) {
+  ostringstream os;
+  LangInfo firstLanguage(par, "\\foreignlanguage{");
+  if (firstLanguage.firstInfo("\\foreignlanguage{", 0)) {
+    LangInfo nextLanguage(firstLanguage);
+    nextLanguage.setDataEnd(firstLanguage.getDataStart());
+    if (nextLanguage.firstInfo("\\foreignlanguage{", firstLanguage.getTokenEnd())) {
+      firstLanguage.setDataEnd(nextLanguage.getStart());
+    }
+    firstLanguage.process(os);
+    while (nextLanguage.isValid()) {
+      nextLanguage.process(os);
+      // To handle the gap, we need the end of last languuage to start of next
+      int gapstart = nextLanguage.getEnd()+1;
+      int gapend;
+      nextLanguage.nextInfo();
+      if (nextLanguage.isValid())
+        gapend = nextLanguage.getStart();
+      else
+        gapend = par.length();
+      // Now handle the gap, if there is one
+      if (gapend > gapstart) {
+        // cout << "Gap found, size = " << gapend - gapstart << "\n";
+        firstLanguage.setDataEnd(gapend);
+        firstLanguage.setDataStart(gapstart);
+        firstLanguage.process(os);
+      }
+    }
+  }
+  string s = os.str();
+  return s;
+}
+
 /*
  * Try to unify the language specs in the latexified text.
  * Resulting modified string is set to "", if
@@ -982,9 +1353,6 @@ static string removefontinfo(string par)
  */
 static string correctlanguagesetting(string par, bool from_regex, bool withformat)
 {
-	static string langstart = "\\foreignlanguage{";
-	static int llen = langstart.length();
-	static bool removefirstlang = false;
 	static Features regex_f;
 	static int missed = 0;
 	static bool regex_with_format = false;
@@ -994,112 +1362,42 @@ static string correctlanguagesetting(string par, bool from_regex, bool withforma
 	while ((parlen > 0) && (par[parlen-1] == '\n')) {
 		parlen--;
 	}
+        string result = removefontinfo(par.substr(0, parlen));
+        result = splitForColors(result);
+        LYXERR(Debug::FIND, "Converted: \"" << result << "\"");
+        bool handle_colors = false;
 	if (from_regex) {
 		missed = 0;
 		if (withformat) {
-			regex_f = identifyFeatures(par);
+			regex_f = identifyFeatures(result);
+                        string features = "";
 			for (auto it = regex_f.cbegin(); it != regex_f.cend(); ++it) {
 				string a = it->first;
 				regex_with_format = true;
+                                if (a.compare(0,10,"textcolor{") == 0)
+                                  handle_colors = true;
+                                features += " " + a;
 				// LYXERR0("Identified regex format:" << a);
 			}
+                        LYXERR(Debug::FIND, "Identified Features" << features);
 
 		}
 	} else if (regex_with_format) {
-		Features info = identifyFeatures(par);
+		Features info = identifyFeatures(result);
 		for (auto it = regex_f.cbegin(); it != regex_f.cend(); ++it) {
 			string a = it->first;
 			bool b = it->second;
 			if (b && ! info[a]) {
 				missed++;
-				// LYXERR0("Missed(" << missed << ", srclen = " << parlen );
+				LYXERR(Debug::FIND, "Missed(" << missed << " " << a <<", srclen = " << parlen );
 				return("");
 			}
+                        else if (a.compare(0,10,"textcolor{") == 0)
+                                handle_colors = true;
 		}
 	}
 	else {
 		// LYXERR0("No regex formats");
-	}
-	string result = removefontinfo(par.substr(0, parlen));
-	parlen = result.length();
-	if (result.compare(0, llen, langstart) == 0) {
-		if (from_regex) {
-			removefirstlang = false;
-		}
-		int i = findclosing(result, llen, parlen);
-		if (removefirstlang) {
-			if (i < 0)
-				result = "";
-			else {
-				int closepos = findclosing(result, i+2, parlen);
-				if (closepos > 0) {
-					result = result.substr(i+2, closepos-i-2) + result.substr(closepos+1, parlen - closepos-1);
-				}
-				else {
-					result = result.substr(i+2, parlen-i-2);
-				}
-			}
-		}
-		else if (i > 0) {
-			// skip '}{' after the language spec
-			string samelang = "";
-			int startpos = i+2;
-			int closepos;
-			while(true) {
-				closepos = findclosing(result, startpos, parlen);
-				if (closepos >0) {
-					if (result[closepos+1] == '{') {
-						samelang += result.substr(startpos, closepos-startpos);
-						startpos = closepos + 2;
-					}
-					else {
-						samelang += result.substr(startpos, closepos-startpos);
-						result = result.substr(0, i+2) + samelang + result.substr(closepos);
-						closepos = i+2 + samelang.length();
-						break;
-					}
-				}
-				else {
-					result = result.substr(0, i+2) + samelang + result.substr(startpos) +"}";
-					closepos = result.length() - 1;
-					break;
-				}
-			}
-			size_t insertpos = result.find(langstart, i+2);
-
-			if (insertpos == string::npos)
-				insertpos = result.length();
-			if (closepos < 0) {
-				if (insertpos == result.length()) {
-					// there are no closing in par, and no next lang spec
-					result += "}";
-				}
-				else {
-					// Add '}' at insertpos only, because closing is missing
-					result = result.substr(0,insertpos) + "}" + result.substr(insertpos, parlen-insertpos);
-				}
-			}
-			else if ((size_t) closepos > insertpos) {
-				// Add '}' at insertpos and remove from closepos if closepos > insertpos
-				result = result.substr(0,insertpos) + "}" + result.substr(insertpos, closepos - insertpos) + result.substr(closepos+1, parlen -closepos-1);
-			}
-			else {
-				// here closepos < insertpos
-				if ((size_t) closepos +1 < insertpos) {
-					result = result.substr(0, closepos) + result.substr(closepos+1, insertpos-closepos-1) + "}" + result.substr(insertpos);
-				}
-			}
-		}
-		else {
-			// result not good?, no closing '}' for \foreignlanguage{ ...>>> found
-			// For i == 0, it is empty language spec
-			// and for i < 0 it is Error
-		}
-	}
-	else {
-		if (from_regex) {
-			removefirstlang = true;
-		}
 	}
 	// remove possible disturbing macros
 	while (regex_replace(result, result, "\\\\(noindent )", ""))
@@ -1127,6 +1425,10 @@ static string correctlanguagesetting(string par, bool from_regex, bool withforma
 
 		}
 	}
+        if (handle_colors) {
+          while (regex_replace(result, result, "(\\{\\\\textcolor\\{[a-z]+\\}\\{)\\s*\\{\\}\\s*", "$1"));
+          while (regex_replace(result, result, "\\{\\\\textcolor\\{[a-z]+\\}\\{\\s*\\}\\s*\\}", ""));
+        }
 	return(result);
 }
 
@@ -1309,6 +1611,9 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 		if (m.size() > 1)
 			leadingsize = m[1].second - m[1].first;
 		int result;
+                for (size_t i = 0; i < m.size(); i++) {
+                  LYXERR(Debug::FIND, "Match " << i << " is " << m[i].second - m[i].first << " long");
+                }
 		if (close_wildcards == 0)
 			result = m[0].second - m[0].first;
 
@@ -1393,7 +1698,7 @@ string MatchStringAdv::normalize(docstring const & s, bool hack_braces) const
 	while (regex_replace(t, t, "\\\\((emph|noun|text(bf|sl|sf|it|tt|color\\{[a-z]+\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part)\\*?)(\\{(\\{\\})?\\})+", ""))
 		LYXERR(Debug::FIND, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
 
-	while (regex_replace(t, t, "\\\\foreignlanguage\\{[a-z]+\\}(\\{(\\\\item |\\{\\})?\\})+", ""));
+	while (regex_replace(t, t, "\\\\(foreignlanguage|textcolor)\\{[a-z]+\\}(\\{(\\\\item |\\{\\})?\\})+", ""));
 	// FIXME - check what preceeds the brace
 	if (hack_braces) {
 		if (opt.ignoreformat)
@@ -1477,9 +1782,8 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 			endpos = cur.pos() + len;
 		TeXOnePar(buf, *cur.innerText(), cur.pit(), os, runparams,
 			  string(), cur.pos(), endpos);
-		LYXERR(Debug::FIND, "Latexified text: '" << lyx::to_utf8(ods.str()) << "'");
 		string s = correctlanguagesetting(lyx::to_utf8(ods.str()), false, false);
-		LYXERR(Debug::FIND, "Latexified text: '" << s << "'");
+		LYXERR(Debug::FIND, "Latexified +modified text: '" << s << "'");
 		return(lyx::from_utf8(s));
 	} else if (cur.inMathed()) {
 		// Retrieve the math environment type, and add '$' or '$[' or others (\begin{equation}) accordingly
@@ -1538,7 +1842,7 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 		cur.forwardPos();
 	} while (cur && cur.depth() > d && match(cur) > 0);
 	cur = old_cur;
-	LASSERT(match(cur) > 0, return 0);
+	if (match(cur) <= 0) return 0;
 	LYXERR(Debug::FIND, "Ok");
 
 	// Compute the match length
@@ -1594,7 +1898,10 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 						match_len_zero_count = 0;
 				}
 				else {
-					LYXERR(Debug::FIND, "match_len2_zero_count: " << match_len_zero_count << ", match_len was " << match_len);
+                                        if (++match_len_zero_count > 3) {
+                                                LYXERR(Debug::FIND, "match_len2_zero_count: " << match_len_zero_count << ", match_len was " << match_len);
+                                                match_len_zero_count = 0;
+                                        }
 					break;
 				}
 			}
