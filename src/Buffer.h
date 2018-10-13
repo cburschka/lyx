@@ -500,6 +500,8 @@ public:
 	/// Calling this method invalidates the cache and so requires a
 	/// re-read.
 	void invalidateBibinfoCache() const;
+	/// Clear the bibfiles cache
+	void clearBibFileCache() const;
 	/// Updates the cached bibliography information, checking first to see
 	/// whether the cache is valid. If so, we do nothing. If not, then we
 	/// reload all the BibTeX info.
