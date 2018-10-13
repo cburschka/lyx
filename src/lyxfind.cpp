@@ -1522,7 +1522,7 @@ static string correctlanguagesetting(string par, bool from_regex, bool withforma
 		parlen--;
 	}
         string result = removefontinfo(par.substr(0, parlen));
-        LYXERR(Debug::FIND, "input: \"" << result, << "\n");
+        LYXERR(Debug::FIND, "input: \"" << result << "\"");
         result = splitForColors(result);
         LYXERR(Debug::FIND, "After split: \"" << result << "\"");
         bool handle_colors = false;
