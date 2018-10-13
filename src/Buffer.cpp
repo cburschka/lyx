@@ -2470,6 +2470,12 @@ void Buffer::checkIfBibInfoCacheIsValid() const
 }
 
 
+void Buffer::clearBibFileCache() const
+{
+	bibfileCache.clear();
+}
+
+
 void Buffer::reloadBibInfoCache() const
 {
 	// use the master's cache
@@ -2487,7 +2493,7 @@ void Buffer::reloadBibInfoCache() const
 	// FIXME Is this sufficient? Or should we also force that
 	// in some other cases? If so, then it is easy enough to
 	// add the following line in some other places.
-	bibfileCache.clear();
+	clearBibFileCache();
 	d->bibinfo_.clear();
 	FileNameList checkedFiles;
 	collectBibKeys(checkedFiles);
