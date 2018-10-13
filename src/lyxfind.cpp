@@ -998,7 +998,8 @@ class LangInfo {
       : par(par),
       _tokenend(0),
       _dataEnd(0),
-      actualdeptindex(0)
+      actualdeptindex(0),
+      ignoreidx(-1)
       {
       valid = Invalid;
       _tokenstart = start;
@@ -1011,6 +1012,12 @@ class LangInfo {
 	maxoffset = par.length();
       if (!search1.empty())
         _search = search1;
+      regexPossible = false;
+      size_t tmpreg = par.find("\\regexp{", _tokenstart);
+      if (tmpreg != string::npos) {
+        if (tmpreg < maxoffset)
+          regexPossible = true;
+      }
     }
     bool nextInfo();	// of the same type, from the last start in the same reagion
     bool firstInfo(string search, int datastart);
@@ -1029,6 +1036,7 @@ class LangInfo {
     void addIntervall(int low, int upper); /* if explicit */
     void handleParentheses(int lastpos);
     string show(int lastpos);
+    bool discardParethesizedInBlock(int start);
   private:
     string par;
     string _search;
@@ -1044,6 +1052,10 @@ class LangInfo {
     int actualdeptindex;
     int ignoreIntervalls[10][2];
     int ignoreidx;
+    bool regexPossible;
+    void adaptIgnoringParts(bool useOld = false);
+    int nextNotIgored(int start);
+    bool discarSuperfluousParentheses(int start);
 };
 
 void LangInfo::setDataEnd(int dataend)
@@ -1060,15 +1072,53 @@ void LangInfo::setDataEnd(int dataend)
     _dataEnd = dataend;
 }
 
+/*
+ * Try to reuse the ignoring parts from parent
+ *
+ */
+void LangInfo::adaptIgnoringParts(bool useOld)
+{
+  if (useOld && (ignoreidx >= 0)) {
+    int idx;
+    for (idx = 0; idx <= ignoreidx; idx++) {
+      if (ignoreIntervalls[idx][1] >= _dataStart) {
+        if (ignoreIntervalls[idx][0] < _dataStart)
+          ignoreIntervalls[idx][0] = _dataStart;
+        break;
+      }
+    }
+    if (idx > 0) {
+      for (int i = 0; i <= ignoreidx - idx; i++) {
+        ignoreIntervalls[i][0] = ignoreIntervalls[idx+i][0];
+        ignoreIntervalls[i][1] = ignoreIntervalls[idx+i][1];
+      }
+      ignoreidx -= idx;
+    }
+  }
+  else {
+    ignoreidx = 0;
+    ignoreIntervalls[ignoreidx][0] = _dataStart;
+    if ((par[_dataStart] == '{') && (par[_dataStart+1] == '}')) {
+      // First candidates to be ignored
+      ignoreIntervalls[ignoreidx][1] = _dataStart+2;
+    }
+    else
+      ignoreIntervalls[ignoreidx][1] = _dataStart;
+  }
+}
+
 void LangInfo::setDataStart(int datastart)
 {
+  bool reUse = true;                    /* Reuse previous ignoring intervalls */
   if (datastart < _tokenend) {
     _dataStart = _tokenend;
     // cout << "Wrong data start, too low\n";
+    reUse = false;
   }
   else if (size_t(datastart) > par.length()) {
     // cout << "Wrong data start, too high\n";
     _dataStart = par.length();
+    reUse = false;
   }
   else
     _dataStart = datastart;
@@ -1077,16 +1127,13 @@ void LangInfo::setDataStart(int datastart)
   depts[0] = _dataStart;
   closes[0] = -1;
   depts[1] = _dataStart;
-  ignoreidx = 0;
-  ignoreIntervalls[ignoreidx][0] = _dataStart;
-  if ((par[_dataStart] == '{') && (par[_dataStart+1] == '}')) {
-    // First candidates to be ignored
-    ignoreIntervalls[ignoreidx][1] = _dataStart+2;
-  }
-  else
-    ignoreIntervalls[ignoreidx][1] = _dataStart;
+  adaptIgnoringParts(reUse);
 }
 
+/*
+ * Keep the list of actual opened parentheses actual
+ * (e.g. depth == 4 means there are 4 '{' not processed yet)
+ */
 void LangInfo::handleParentheses(int lastpos)
 {
   int skip = 0;
@@ -1102,7 +1149,7 @@ void LangInfo::handleParentheses(int lastpos)
     }
     else if (c == '}') {
       if (actualdeptindex <= 0) {
-        LYXERR0("ERROR ERROR ERROR"); /* should never happen! */
+        LYXERR(Debug::FIND, "ERROR ERROR ERROR"); /* should never happen! */
       }
       else {
         closes[actualdeptindex] = i+1;
@@ -1112,6 +1159,10 @@ void LangInfo::handleParentheses(int lastpos)
   }
 }
 
+/*
+ * Expand the region of ignored parts of the input latex string
+ * The region is only relevant in output()
+ */
 void LangInfo::addIntervall(int low, int upper)
 {
   int idx;
@@ -1127,8 +1178,9 @@ void LangInfo::addIntervall(int low, int upper)
   }
   else {
     // Expand only if one of the new bounds is inside the interwall
-    if (((low <= ignoreIntervalls[idx][1]) && (low >= ignoreIntervalls[idx][0])) ||
-        ((upper <= ignoreIntervalls[idx][1]) && (upper >= ignoreIntervalls[idx][0]))) {
+    // or
+    if (((low <= ignoreIntervalls[idx][1]) && (upper >= ignoreIntervalls[idx][1])) ||
+        ((low <= ignoreIntervalls[idx][0]) && (upper >= ignoreIntervalls[idx][0]))) {
       if (low < ignoreIntervalls[idx][0])
         ignoreIntervalls[idx][0] = low;
       if (upper > ignoreIntervalls[idx][1])
@@ -1144,7 +1196,7 @@ void LangInfo::addIntervall(int upper)
   if (actualdeptindex >= 0)
     low = depts[actualdeptindex];   /*  the position of last unclosed '{' */
   else {
-    LYXERR0("ERROR ERROR ERROR2");
+    LYXERR(Debug::FIND, "ERROR ERROR ERROR2");
     low = upper;
   }
   addIntervall(low, upper);
@@ -1172,6 +1224,18 @@ string LangInfo::show(int lastpos)
   return os.str();
 }
 
+int LangInfo::nextNotIgored(int start)
+{
+    int idx = 0;                          /* int intervalls */
+    for (idx = 0; idx <= ignoreidx; idx++) {
+      if (start < ignoreIntervalls[idx][0])
+        return(start);
+      if (start < ignoreIntervalls[idx][1])
+        start = ignoreIntervalls[idx][1];
+    }
+    return start;
+}
+
 void LangInfo::output(ostringstream &os, int lastpos)
 {
   // get number of chars to output
@@ -1196,11 +1260,14 @@ void LangInfo::output(ostringstream &os, int lastpos)
     for (int i = _dataStart; i < lastpos;) {
       if (i <= ignoreIntervalls[idx][0]) {
         os << par.substr(i, ignoreIntervalls[idx][0] - i);
+        handleParentheses(ignoreIntervalls[idx][0]);
         i = ignoreIntervalls[idx][1];
       }
       idx++;
       if (idx > ignoreidx) {
-        os << par.substr(i, lastpos-i);
+        if (lastpos > i) {
+          os << par.substr(i, lastpos-i);
+        }
         break;
       }
     }
@@ -1261,8 +1328,85 @@ bool LangInfo::firstInfo(string search1, int datastart)
       _search = search1;
       valid = Invalid;
     }
+    else {
+      // This is a clone
+      _tokenstart = datastart;
+      valid = Invalid;
+    }
   }
   return nextInfo();
+}
+
+bool LangInfo::discardParethesizedInBlock(int start)
+{
+  int depth = 0;
+  int skip = 0;
+  bool isempty = true;
+
+  size_t regex_start, regex_end;
+  if (regexPossible) {
+    regex_start = par.find("\\regexp{", start);
+    if (regex_start == string::npos)
+      regexPossible = false;
+    else if (regex_start >= size_t(_dataEnd))
+      regexPossible = false;
+    else {
+      regex_end = par.find("\\endregexp{}}", regex_start + 8);
+      if (regex_end == string::npos)
+        regexPossible = false;
+      else if (regex_end > size_t(_dataEnd))
+        regexPossible = false;
+    }
+  }
+  if (!regexPossible) {
+    regex_start = _dataEnd;
+    regex_end = _dataEnd;
+  }
+  for (int i = start; i < _dataEnd; i += 1+skip) {
+    char c = par[i];
+    skip = 0;
+    if (c == '\\') {
+      if (size_t(i) == regex_start) {
+        // 12 is correct, even if the length of "\\endregexp{}}" is 13
+        skip = regex_end + 12 - i;
+      }
+      else
+        skip = 1;
+      isempty = false;
+    }
+    else if (c == '{') {
+      if (depth == 0) {
+        addIntervall(i, i+1);
+        // cout << "discard '{' at " << i << "\n";
+      }
+      else
+        isempty = false;
+      depth++;
+    }
+    else if (c == '}') {
+      if (depth == 1) {
+        addIntervall(i, i+1);
+        // cout << "discard '}' at " << i << "\n";
+      }
+      else if (depth < 1)
+        break;
+      depth--;
+    }
+    else
+      isempty = false;
+  }
+  return(isempty);
+}
+
+bool LangInfo::discarSuperfluousParentheses(int start)
+{
+  start = nextNotIgored(start);
+  while ((par[start] == '{') && (start < _dataEnd)) {
+    discardParethesizedInBlock(start);
+    start = nextNotIgored(start+1);
+  }
+  // It is empty if (par[start] == '}')
+  return ((start >= _dataEnd) || (par[start] == '}'));
 }
 
 void LangInfo::process(ostringstream &os)
@@ -1270,43 +1414,35 @@ void LangInfo::process(ostringstream &os)
   LangInfo color(*this);
   (void) color.firstInfo("\\textcolor{", _dataStart);
   while (color.isValid() && (color.getStart() < _dataEnd)) {
-    bool isEmpty = false;
-    if (color.getDataStart() == color.getEnd()) {
-      // Empty, e.g. par[color.getDataStart()] == '}'
-      isEmpty = true;
-    }
-    else if ((par[color.getDataStart()] == '{') && (par[color.getDataStart()+1] == '}')) {
-      // color starts with '{}', discard it
-      if (color.getDataStart()+2 == color.getEnd())
-        isEmpty = true;
-      else {
-        // discard the first '{}'
-        addIntervall(color.getDataStart(), color.getDataStart()+2);
-      }
-    }
+    bool isEmpty = discarSuperfluousParentheses(color.getDataStart());
     if (isEmpty) {
-      // it is emty, so ignore and go to next color
+      // it is empty, so ignore and go to next color
       addIntervall(color.getStart(), color.getEnd()+1);
+      int start = color.getEnd()+1;
+      discarSuperfluousParentheses(start);
     }
-    else {
+    else { // not empty
       if (par[color.getStart()-1] != '{') {
+        // We are not at start
         output(os, color.getStart());
         addIntervall(color.getStart());
       }
       // Check if color empty
       output(os, color.getEnd()+1);
       addIntervall(color.getEnd()+1);
-    }
-    for (int i = color.getEnd()+1; par[i] == '}'; i++) {
-      handleParentheses(i+1);
-      addIntervall(i+1);
+      discarSuperfluousParentheses(color.getEnd()+1);
     }
     color.nextInfo();
   }
-  if (par[_dataEnd] != '}')
-    output(os, _dataEnd-1);
-  else
-    output(os, _dataEnd);
+  int start;
+  if (color.valid == LastValid)
+    start = color.getEnd()+1;
+  else {
+    // Apparently nothing output so far
+    start = _dataStart;
+  }
+  discarSuperfluousParentheses(start);
+  output(os, _dataEnd);
 }
 
 /*
@@ -1318,15 +1454,30 @@ string splitForColors(string par) {
   LangInfo firstLanguage(par, "\\foreignlanguage{");
   if (firstLanguage.firstInfo("\\foreignlanguage{", 0)) {
     LangInfo nextLanguage(firstLanguage);
-    nextLanguage.setDataEnd(firstLanguage.getDataStart());
     if (nextLanguage.firstInfo("\\foreignlanguage{", firstLanguage.getTokenEnd())) {
       firstLanguage.setDataEnd(nextLanguage.getStart());
     }
+    else {
+      int oldend = firstLanguage.getEnd();
+      firstLanguage.setDataEnd(par.length());
+      // discard old closing
+      firstLanguage.addIntervall(oldend, oldend+1);
+      for (int i = 1; i < firstLanguage.getEnd(); i++) {
+        if (par[i] == '{')
+          firstLanguage.discardParethesizedInBlock(i);
+        else
+          break;
+      }
+    }
     firstLanguage.process(os);
+    // For the case, that the first language ends unexpected
+    int lastgapstart = firstLanguage.getEnd()+1;
     while (nextLanguage.isValid()) {
       nextLanguage.process(os);
       // To handle the gap, we need the end of last languuage to start of next
       int gapstart = nextLanguage.getEnd()+1;
+      if (gapstart > lastgapstart)
+        lastgapstart = gapstart;
       int gapend;
       nextLanguage.nextInfo();
       if (nextLanguage.isValid())
@@ -1339,7 +1490,15 @@ string splitForColors(string par) {
         firstLanguage.setDataEnd(gapend);
         firstLanguage.setDataStart(gapstart);
         firstLanguage.process(os);
+        lastgapstart = gapend+1;
       }
+    }
+    if (size_t(lastgapstart) < par.length()) {
+      int lastgapend = par.length();
+      // cout << "Found last gap, size = " << lastgapend - lastgapstart << "\n";
+      firstLanguage.setDataEnd(lastgapend);
+      firstLanguage.setDataStart(lastgapstart);
+      firstLanguage.process(os);
     }
   }
   string s = os.str();
@@ -1363,8 +1522,9 @@ static string correctlanguagesetting(string par, bool from_regex, bool withforma
 		parlen--;
 	}
         string result = removefontinfo(par.substr(0, parlen));
+        LYXERR(Debug::FIND, "input: \"" << result, << "\n");
         result = splitForColors(result);
-        LYXERR(Debug::FIND, "Converted: \"" << result << "\"");
+        LYXERR(Debug::FIND, "After split: \"" << result << "\"");
         bool handle_colors = false;
 	if (from_regex) {
 		missed = 0;
@@ -1695,7 +1855,9 @@ string MatchStringAdv::normalize(docstring const & s, bool hack_braces) const
 	// Kornel: Added textsl, textsf, textit, texttt and noun
 	// + allow to seach for colored text too
 	LYXERR(Debug::FIND, "Removing stale empty \\emph{}, \\textbf{}, \\*section{} macros from: " << t);
-	while (regex_replace(t, t, "\\\\((emph|noun|text(bf|sl|sf|it|tt|color\\{[a-z]+\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part)\\*?)(\\{(\\{\\})?\\})+", ""))
+	while (regex_replace(t, t, "\\\\(emph|noun|text(bf|sl|sf|it|tt)|(u|uu)line|(s|x)out|uwave)(\\{(\\{\\})?\\})+", ""))
+		LYXERR(Debug::FIND, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
+	while (regex_replace(t, t, "\\\\((sub)?(((sub)?section)|paragraph)|part)\\*?(\\{(\\{\\})?\\})+", ""))
 		LYXERR(Debug::FIND, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
 
 	while (regex_replace(t, t, "\\\\(foreignlanguage|textcolor)\\{[a-z]+\\}(\\{(\\\\item |\\{\\})?\\})+", ""));
