@@ -1576,10 +1576,17 @@ static string correctlanguagesetting(string par, bool from_regex, bool withforma
 	while ((parlen > 0) && (par[parlen-1] == '\n')) {
 		parlen--;
 	}
-        string result = removefontinfo(par.substr(0, parlen));
-        LYXERR(Debug::FIND, "input: \"" << result << "\"");
-        result = splitForColors(result);
-        LYXERR(Debug::FIND, "After split: \"" << result << "\"");
+	string result;
+	if (withformat) {
+		// Split the latex input into pieces which
+		// can be digested by our search engine
+		result = removefontinfo(par.substr(0, parlen));
+		LYXERR(Debug::FIND, "input: \"" << result << "\"");
+		result = splitForColors(result);
+		LYXERR(Debug::FIND, "After split: \"" << result << "\"");
+	}
+	else
+		result = par.substr(0, parlen);
         bool handle_colors = false;
 	if (from_regex) {
 		missed = 0;
