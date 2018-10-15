@@ -879,6 +879,13 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 }
 
 
+void InsetBibtex::updateBuffer(ParIterator const &, UpdateType)
+{
+	buffer().registerBibfiles(getBibFiles());
+}
+
+
+
 docstring InsetBibtex::getRefLabel() const 
 { 
 	if (buffer().masterParams().documentClass().hasLaTeXLayout("chapter")) 

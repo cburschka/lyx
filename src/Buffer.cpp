@@ -4808,6 +4808,11 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 	if (master == this && !d->ignore_parent) {
 		textclass.counters().reset(from_ascii("bibitem"));
 		reloadBibInfoCache();
+		// we will re-read this cache as we go through, but we need
+		// to know whether it's changed to know whether we need to
+		// update the bibinfo cache.
+		old_bibfiles = d->bibfiles_cache_;
+		d->bibfiles_cache_.clear();
 	}
 
 	// keep the buffers to be children in this set. If the call from the
