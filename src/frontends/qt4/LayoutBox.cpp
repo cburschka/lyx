@@ -423,11 +423,8 @@ void LayoutBox::showPopup()
 
 	bool enabled = view()->updatesEnabled();
 	view()->setUpdatesEnabled(false);
-
 	d->resetFilter();
-
 	QComboBox::showPopup();
-
 	view()->setUpdatesEnabled(enabled);
 }
 
