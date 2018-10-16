@@ -292,13 +292,13 @@ QString CCItemDelegate::underlineFilter(QString const & s) const
 
 static QString charFilterRegExpCC(QString const & filter)
 {
-	QString re;
+	QString re = ".*";
 	for (int i = 0; i < filter.length(); ++i) {
 		QChar c = filter[i];
 		if (c.isLower())
-			re += ".*[" + QRegExp::escape(c) + QRegExp::escape(c.toUpper()) + "]";
+			re += "[" + QRegExp::escape(c) + QRegExp::escape(c.toUpper()) + "]";
 		else
-			re += ".*" + QRegExp::escape(c);
+			re += QRegExp::escape(c);
 	}
 	return re;
 }
