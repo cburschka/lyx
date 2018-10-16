@@ -237,19 +237,22 @@ void LayoutItemDelegate::drawDisplay(QPainter * painter, QStyleOptionViewItem co
 QSize LayoutItemDelegate::sizeHint(QStyleOptionViewItem const & opt,
 								   QModelIndex const & index) const
 {
-	QSortFilterProxyModel const * model =
-		static_cast<QSortFilterProxyModel const *>(index.model());
 	QSize size = QItemDelegate::sizeHint(opt, index);
+	if (!lyxrc.group_layouts)
+		return size;
 
-	// Add space for the category headers here?
-	// Not for the standard layout though.
-	QString stdCat = category(*model->sourceModel(), 0);
-	QString cat = category(*index.model(), index.row());
-	if (lyxrc.group_layouts && stdCat != cat
-		&& (index.row() == 0 || cat != category(*index.model(), index.row() - 1))) {
+	// Add space for the category headers.
+	QSortFilterProxyModel const * const model =
+		static_cast<QSortFilterProxyModel const *>(index.model());
+	QString const stdCat = category(*model->sourceModel(), 0);
+	QString const cat = category(*index.model(), index.row());
+
+	// There is no header for the stuff at the top.
+	if (stdCat == cat)
+		return size;
+
+	if (index.row() == 0 || cat != category(*index.model(), index.row() - 1))
 		size.setHeight(size.height() + headerHeight(opt));
-	}
-
 	return size;
 }
 
