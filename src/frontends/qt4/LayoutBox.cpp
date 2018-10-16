@@ -118,7 +118,7 @@ public:
 		filterModel_(new GuiLayoutFilterModel(p)),
 		lastSel_(-1),
 		layoutItemDelegate_(new LayoutItemDelegate(parent)),
-		visibleCategories_(0), inShowPopup_(false)
+		visibleCategories_(0)
 	{
 		filterModel_->setSourceModel(model_);
 	}
@@ -149,8 +149,6 @@ public:
 	LayoutItemDelegate * layoutItemDelegate_;
 	///
 	unsigned visibleCategories_;
-	///
-	bool inShowPopup_;
 };
 
 
@@ -242,25 +240,6 @@ QSize LayoutItemDelegate::sizeHint(QStyleOptionViewItem const & opt,
 	QSortFilterProxyModel const * model =
 		static_cast<QSortFilterProxyModel const *>(index.model());
 	QSize size = QItemDelegate::sizeHint(opt, index);
-
-	/// QComboBox uses the first row height to estimate the
-	/// complete popup height during QComboBox::showPopup().
-	/// To avoid scrolling we have to sneak in space for the headers.
-	/// So we tweak this value accordingly. It's not nice, but the
-	/// only possible way it seems.
-	if (lyxrc.group_layouts && index.row() == 0 && layout_->d->inShowPopup_) {
-		int itemHeight = size.height();
-
-		// we have to show \c cats many headers:
-		unsigned cats = layout_->d->visibleCategories_;
-
-		// and we have \c n items to distribute the needed space over
-		unsigned n = layout_->model()->rowCount();
-
-		// so the needed average height (rounded upwards) is:
-		size.setHeight((headerHeight(opt) * cats + itemHeight * n + n - 1) / n);
-		return size;
-	}
 
 	// Add space for the category headers here?
 	// Not for the standard layout though.
@@ -378,23 +357,8 @@ void LayoutBox::Private::setFilter(QString const & s)
 			p->setCurrentIndex(i.row());
 	}
 
-	// Workaround to resize to content size
-	// FIXME: There must be a better way. The QComboBox::AdjustToContents)
-	//        does not help.
 	if (p->view()->isVisible()) {
-		// call QComboBox::showPopup. But set the inShowPopup_ flag to switch on
-		// the hack in the item delegate to make space for the headers.
-		// We do not call our implementation of showPopup because that
-		// would reset the filter again. This is only needed if the user clicks
-		// on the QComboBox.
-		LATTEST(!inShowPopup_);
-		inShowPopup_ = true;
 		p->QComboBox::showPopup();
-		inShowPopup_ = false;
-
-		// The item delegate hack is off again. So trigger a relayout of the popup.
-		filterModel_->triggerLayoutChange();
-
 		if (!s.isEmpty())
 			owner_.message(bformat(_("Filtering layouts with \"%1$s\". "
 						 "Press ESC to remove filter."),
@@ -462,15 +426,7 @@ void LayoutBox::showPopup()
 
 	d->resetFilter();
 
-	// call QComboBox::showPopup. But set the inShowPopup_ flag to switch on
-	// the hack in the item delegate to make space for the headers.
-	LATTEST(!d->inShowPopup_);
-	d->inShowPopup_ = true;
 	QComboBox::showPopup();
-	d->inShowPopup_ = false;
-
-	// The item delegate hack is off again. So trigger a relayout of the popup.
-	d->filterModel_->triggerLayoutChange();
 
 	view()->setUpdatesEnabled(enabled);
 }
