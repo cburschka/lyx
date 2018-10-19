@@ -80,6 +80,11 @@ docstring qstring_to_ucs4(QString const & qstr);
  */
 std::string fromqstr(QString const & str);
 
+/**
+ * constructs a regex to filter on consecutive characters
+ */
+QString charFilterRegExp(QString const & filter);
+
 } // namespace lyx
 
 #endif // QSTRING_HELPERS_H

@@ -24,6 +24,7 @@
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
+#include "support/qstring_helpers.h"
 
 #include <QAbstractTextDocumentLayout>
 #include <QComboBox>
@@ -290,20 +291,6 @@ QString CCItemDelegate::underlineFilter(QString const & s) const
 }
 
 
-static QString charFilterRegExpCC(QString const & filter)
-{
-	QString re = ".*";
-	for (int i = 0; i < filter.length(); ++i) {
-		QChar c = filter[i];
-		if (c.isLower())
-			re += "[" + QRegExp::escape(c) + QRegExp::escape(c.toUpper()) + "]";
-		else
-			re += QRegExp::escape(c);
-	}
-	return re;
-}
-
-
 void CategorizedCombo::Private::setFilter(QString const & s)
 {
 	bool enabled = p->view()->updatesEnabled();
@@ -315,7 +302,7 @@ void CategorizedCombo::Private::setFilter(QString const & s)
 		lastSel_ = filterModel_->mapToSource(filterModel_->index(sel, 0)).row();
 
 	filter_ = s;
-	filterModel_->setFilterRegExp(charFilterRegExpCC(filter_));
+    filterModel_->setFilterRegExp(charFilterRegExp(filter_));
 	countCategories();
 
 	// restore old selection

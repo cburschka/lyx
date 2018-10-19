@@ -16,6 +16,7 @@
 
 #include "support/debug.h"
 #include "support/docstring.h"
+#include "support/qstring_helpers.h"
 
 #include <QString>
 #include <QVector>
@@ -65,6 +66,19 @@ docstring qstring_to_ucs4(QString const & qstr)
 std::string fromqstr(QString const & str)
 {
 	return str.isEmpty() ? std::string() : std::string(str.toUtf8());
+}
+
+QString charFilterRegExp(QString const & filter)
+{
+    QString re = ".*";
+    for (int i = 0; i < filter.length(); ++i) {
+        QChar c = filter[i];
+        if (c.isLower())
+            re +=  "["+ QRegExp::escape(c) + QRegExp::escape(c.toUpper()) + "]";
+        else
+            re +=  QRegExp::escape(c);
+    }
+    return re;
 }
 
 } // namespace lyx
