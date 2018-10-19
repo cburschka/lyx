@@ -270,7 +270,7 @@ QString CCItemDelegate::underlineFilter(QString const & s) const
 		return s;
 	QString r(s);
 	QRegExp pattern(charFilterRegExpC(f));
-	r.replace(pattern, "<u>\\1</u>");
+	r.replace(pattern, "<b>\\1</b>");
 	return r;
 }
 
