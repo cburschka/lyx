@@ -18,6 +18,7 @@
 #include "support/docstring.h"
 #include "support/qstring_helpers.h"
 
+#include <QRegExp>
 #include <QString>
 #include <QVector>
 
