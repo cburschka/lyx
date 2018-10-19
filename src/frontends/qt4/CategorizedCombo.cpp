@@ -268,25 +268,9 @@ QString CCItemDelegate::underlineFilter(QString const & s) const
 	QString const & f = cc_->filter();
 	if (f.isEmpty())
 		return s;
-
-	// step through data item and put "(x)" for every matching character
-	QString r;
-	int lastp = -1;
-	for (int i = 0; i < f.length(); ++i) {
-		int p = s.indexOf(f[i], lastp + 1, Qt::CaseInsensitive);
-		if (p < 0)
-			continue;
-		if (lastp == p - 1 && lastp != -1) {
-			// remove ")" and append "x)"
-			r = r.left(r.length() - 4) + s[p] + "</u>";
-		} else {
-			// append "(x)"
-			r += s.mid(lastp + 1, p - lastp - 1);
-			r += QString("<u>") + s[p] + "</u>";
-		}
-		lastp = p;
-	}
-	r += s.mid(lastp + 1);
+	QString r(s);
+	QRegExp pattern(charFilterRegExpC(f));
+	r.replace(pattern, "<u>\\1</u>");
 	return r;
 }
 

@@ -82,8 +82,15 @@ std::string fromqstr(QString const & str);
 
 /**
  * constructs a regex to filter on consecutive characters
+ * matches lower- and uppercase on lowercase characters,
+ * and just uppercase for uppercase
  */
 QString charFilterRegExp(QString const & filter);
+
+/**
+ * as above, but constructs a capturing regex for a sequence of characters
+ */
+QString charFilterRegExpC(QString const & filter);
 
 } // namespace lyx
 
