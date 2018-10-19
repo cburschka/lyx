@@ -1023,7 +1023,7 @@ class Intervall {
   int closes[MAXOPENED];
   int actualdeptindex;
   int ignoreIntervalls[2*MAXOPENED][2];
-  int previousNotIgnored(int);
+  // int previousNotIgnored(int);
   int nextNotIgnored(int);
   void handleOpenP(int i);
   void handleCloseP(int i, bool closingAllowed);
@@ -1162,6 +1162,7 @@ void Intervall::resetOpenedP(int openPos)
   closes[1] = -1;
 }
 
+#if 0
 int Intervall::previousNotIgnored(int start)
 {
     int idx = 0;                          /* int intervalls */
@@ -1173,6 +1174,7 @@ int Intervall::previousNotIgnored(int start)
     }
     return start;
 }
+#endif
 
 int Intervall::nextNotIgnored(int start)
 {
@@ -1338,6 +1340,9 @@ void LatexInfo::makeKey(string key, KeyInfo keyI)
 
 void LatexInfo::buildKeys()
 {
+  static bool keysBuilt = false;
+
+  if (keysBuilt) return;
   KeyInfo foreign = KeyInfo(KeyInfo::isMain,     2);
   KeyInfo standard = KeyInfo(KeyInfo::isStandard,1);
   KeyInfo regex = KeyInfo(KeyInfo::isRegex,      1);
@@ -1373,6 +1378,7 @@ void LatexInfo::buildKeys()
   makeKey("footnote", leadremove);
   makeKey("code", leadremove);
   makeKey("lyx", ignoreMe);
+  keysBuilt = true;
 }
 
 /*
