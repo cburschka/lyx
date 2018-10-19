@@ -924,63 +924,6 @@ static Features identifyFeatures(string const & s)
 }
 
 /*
- * Discard any info for char sizes for now.
- */
-static string removefontinfo(string par)
-{
-	// Remove fontsizes, inputencoding
-	smatch sub;
-	list <string> fpars;
-	static regex const sizescodings("(\\\\(footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge|inputencoding\\{[^\\}]*})(\b|(\\{(\\{\\})?\\})?(%\\n)?))");
-	for (sregex_iterator it(par.begin(), par.end(), sizescodings), end; it != end; ++it) {
-		sub = *it;
-		string token = sub.str(1);
-		fpars.push_back(token);
-	}
-	for (list<string>::const_iterator li = fpars.begin(); li != fpars.end(); ++li) {
-		string token = *li;
-		int f;
-		int firstpos = 0;
-		int ic;	// Position of closing part e.g. '}'
-		while ((f = par.find(token, firstpos)) >= 0) {
-			size_t ssize = token.length();
-			int parcount = 0;	// how many '{}' can be removed
-			if (f == 0)
-				ic = -1;
-			else {
-				if (par[f-1] != '{')
-					ic = -1;
-				else {
-					// here '{' preceedes
-					ic = findclosing(par, f + ssize, par.length());
-					if (f == 1)
-						parcount = 1;
-					else if ((f == 2) && (par[f-2] == '{')) {
-						if ((ic < 0) || (par[ic+1] == '}'))
-							parcount = 2;
-						else
-							parcount = 1;
-					} else while (f > parcount + 1) {
-						if (par[f-2-parcount] != '{')
-							break;
-						parcount++;
-						if ((ic > 0) && (par[ic+parcount] != '}'))
-							break;
-					}
-				}
-			}
-			firstpos = f;
-
-			if (ic < 0)
-				ic = par.length() - parcount;
-			par = par.substr(0, f-parcount) + par.substr(f+ssize, ic+parcount-f-ssize) + par.substr(ic+parcount);
-		}
-	}
-	return(par);
-}
-
-
-/*
  * defines values features of a key "\\[a-z]+{"
  */
 class KeyInfo {
@@ -1013,6 +956,13 @@ class KeyInfo {
   int parenthesiscount;
 };
 
+class Border {
+ public:
+ Border(int l=0, int u=0) : low(l), upper(u) {};
+  int low;
+  int upper;
+};
+
 #define MAXOPENED 30
 class Intervall {
  public:
@@ -1022,7 +972,7 @@ class Intervall {
   int depts[MAXOPENED];
   int closes[MAXOPENED];
   int actualdeptindex;
-  int ignoreIntervalls[2*MAXOPENED][2];
+  Border borders[2*MAXOPENED];
   // int previousNotIgnored(int);
   int nextNotIgnored(int);
   void handleOpenP(int i);
@@ -1041,10 +991,10 @@ void Intervall::setForDefaultLang(int upTo)
 {
   // Enable the use of first token again
   if (ignoreidx >= 0) {
-    if (ignoreIntervalls[0][0] < upTo)
-      ignoreIntervalls[0][0] = upTo;
-    if (ignoreIntervalls[0][1] < upTo)
-      ignoreIntervalls[0][1] = upTo;
+    if (borders[0].low < upTo)
+      borders[0].low = upTo;
+    if (borders[0].upper < upTo)
+      borders[0].upper = upTo;
   }
 }
 
@@ -1075,54 +1025,50 @@ void Intervall::addIntervall(int low, int upper)
   int idx;
   if (low == upper) return;
   for (idx = ignoreidx+1; idx > 0; --idx) {
-    if (low > ignoreIntervalls[idx-1][1]) {
+    if (low > borders[idx-1].upper) {
       break;
     }
   }
+  Border br(low, upper);
   if (idx > ignoreidx) {
-    ignoreIntervalls[idx][0] = low;
-    ignoreIntervalls[idx][1] = upper;
+    borders[idx] = br;
     ignoreidx = idx;
     checkIgnoreIdx(ignoreidx);
     return;
   }
   else {
     // Expand only if one of the new bound is inside the interwall
-    // We know here that low > ignoreIntervalls[idx-1][1]
-    if (upper < ignoreIntervalls[idx][0]) {
+    // We know here that br.low > borders[idx-1].upper
+    if (br.upper < borders[idx].low) {
       // We have to insert at this pos
       for (int i = ignoreidx+1; i > idx; --i) {
-        ignoreIntervalls[i][1] = ignoreIntervalls[i-1][1];
-        ignoreIntervalls[i][0] = ignoreIntervalls[i-1][0];
+        borders[i] = borders[i-1];
       }
-      ignoreIntervalls[idx][0] = low;
-      ignoreIntervalls[idx][1] = upper;
+      borders[idx] = br;
       ignoreidx += 1;
       checkIgnoreIdx(ignoreidx);
       return;
     }
     // Here we know, that we are overlapping
-    if (low > ignoreIntervalls[idx][0])
-      low = ignoreIntervalls[idx][0];
+    if (br.low > borders[idx].low)
+      br.low = borders[idx].low;
     // check what has to be concatenated
     int count = 0;
     for (int i = idx; i <= ignoreidx; i++) {
-      if (upper >= ignoreIntervalls[i][0]) {
+      if (br.upper >= borders[i].low) {
         count++;
-        if (upper < ignoreIntervalls[i][1])
-          upper = ignoreIntervalls[i][1];
+        if (br.upper < borders[i].upper)
+          br.upper = borders[i].upper;
       }
       else {
         break;
       }
     }
     // count should be >= 1 here
-    ignoreIntervalls[idx][0] = low;
-    ignoreIntervalls[idx][1] = upper;
+    borders[idx] = br;
     if (count > 1) {
       for (int i = idx + count; i <= ignoreidx; i++) {
-        ignoreIntervalls[i-count+1][0] = ignoreIntervalls[i][0];
-        ignoreIntervalls[i-count+1][1] = ignoreIntervalls[i][1];
+        borders[i-count+1] = borders[i];
       }
       ignoreidx -= count - 1;
       return;
@@ -1167,10 +1113,10 @@ int Intervall::previousNotIgnored(int start)
 {
     int idx = 0;                          /* int intervalls */
     for (idx = ignoreidx; idx >= 0; --idx) {
-      if (start > ignoreIntervalls[idx][1])
+      if (start > borders[idx].upper)
         return(start);
-      if (start >= ignoreIntervalls[idx][0])
-        start = ignoreIntervalls[idx][0]-1;
+      if (start >= borders[idx].low)
+        start = borders[idx].low-1;
     }
     return start;
 }
@@ -1180,10 +1126,10 @@ int Intervall::nextNotIgnored(int start)
 {
     int idx = 0;                          /* int intervalls */
     for (idx = 0; idx <= ignoreidx; idx++) {
-      if (start < ignoreIntervalls[idx][0])
+      if (start < borders[idx].low)
         return(start);
-      if (start < ignoreIntervalls[idx][1])
-        start = ignoreIntervalls[idx][1];
+      if (start < borders[idx].upper)
+        start = borders[idx].upper;
     }
     return start;
 }
@@ -1200,7 +1146,7 @@ class LatexInfo {
   Intervall interval;
   void buildKeys();
   void buildEntries();
-  void makeKey(string, KeyInfo);
+  void makeKey(const string &, KeyInfo);
   void processRegion(ostringstream &os, int start, int region_end);
  public:
  LatexInfo(string par) {
@@ -1304,19 +1250,13 @@ void LatexInfo::buildEntries()
       found._tokenstart = sub.position(0);
       if (found.parenthesiscount == 0) {
         // Probably to be discarded
-        found.head = sub.str(0);
-        if (sub.str(6)[0] == ' ') {
-          // Probably to be discarded
-          found._dataEnd = sub.position(6);
-        }
-        else {
-          found._dataEnd = sub.position(6)+1;
-        }
-        found._tokensize = found.head.length() - 1;
+        if (interval.par[sub.position(0) + sub.str(3).length()] == ' ')
+          found.head = "\\" + sub.str(3) + " ";
+        else
+          found.head = "\\" + sub.str(3);
+        found._tokensize = found.head.length();
         found._dataStart = found._dataEnd;
       }
-      else if (sub.str(6)[0] != '{')
-        continue;
       else {
         if (found.parenthesiscount == 1)
           found.head = "\\" + sub.str(3) + "{";
@@ -1332,10 +1272,15 @@ void LatexInfo::buildEntries()
   }
 }
 
-void LatexInfo::makeKey(string key, KeyInfo keyI)
+void LatexInfo::makeKey(const string &keysstring, KeyInfo keyI)
 {
+  stringstream s(keysstring);
+  string key;
   KeyInfo keyII(keyI);
-  keys[key] = keyII;
+  const char delim = '|';
+  while (getline(s, key, delim)) {
+    keys[key] = keyII;
+  }
 }
 
 void LatexInfo::buildKeys()
@@ -1352,31 +1297,38 @@ void LatexInfo::buildKeys()
   KeyInfo leadremove = KeyInfo(KeyInfo::leadRemove,1);
   KeyInfo ignoreMe = KeyInfo(KeyInfo::isIgnored, 0);
 
-  makeKey("textsf",standard);
-  makeKey("texttt",standard);
-  makeKey("textbf",standard);
-  makeKey("textit",standard);
-  makeKey("emph",standard);
-  makeKey("noun",standard);
-  makeKey("uuline",standard);
-  makeKey("uline",standard);
-  makeKey("sout",standard);
-  makeKey("xout",standard);
-  makeKey("uwave",standard);
+  // Know statdard keys with 1 parameter.
+  // Split is done, if not at start of region
+  makeKey("textsf|texttt|textbf|textit|emph|noun|uuline|uline|sout|xout|uwave",standard);
+
+  // Regex, split is always done
   makeKey("regexp",regex);
+
+  // Split is done, if not at start of region
   makeKey("textcolor",color);
+
+  // Split is done always.
   makeKey("foreignlanguage",foreign);
-  makeKey("backslash",character);
-  makeKey("textbackslash",character);
-  makeKey("inputencoding", toremove);
-  makeKey("shortcut", toremove);
+
+  // Know charaters
+  // No split
+  makeKey("backslash|textbackslash",character);
+
+  // Known macros to remove (including their parameter)
+  // No split
+  makeKey("inputencoding|shortcut", toremove);
+
+  // Macros to remove, but let the parameter survive
+  // No split
   toremove.parenthesiscount = 0;
-  makeKey("noindent", toremove);
-  makeKey("url", leadremove);
-  makeKey("href", leadremove);
-  makeKey("menuitem", leadremove);
-  makeKey("footnote", leadremove);
-  makeKey("code", leadremove);
+  makeKey("url|href|menuitem|footnote|code", leadremove);
+
+  // Same effect as previous, parameter will survive (because there is no one anyway)
+  // No split
+  leadremove.parenthesiscount = 0;
+  makeKey("noindent|footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", leadremove);
+
+  // Survives, like known character
   makeKey("lyx", ignoreMe);
   keysBuilt = true;
 }
@@ -1412,18 +1364,18 @@ string Intervall::show(int lastpos)
   for (idx = 0; idx <= ignoreidx; idx++) {
     while (i < lastpos) {
       int printsize;
-      if (i <= ignoreIntervalls[idx][0]) {
-        if (ignoreIntervalls[idx][0] > lastpos)
+      if (i <= borders[idx].low) {
+        if (borders[idx].low > lastpos)
           printsize = lastpos - i;
         else
-          printsize = ignoreIntervalls[idx][0] - i;
+          printsize = borders[idx].low - i;
         s += par.substr(i, printsize);
         i += printsize;
-        if (i >= ignoreIntervalls[idx][0])
-          i = ignoreIntervalls[idx][1];
+        if (i >= borders[idx].low)
+          i = borders[idx].upper;
       }
       else {
-        i = ignoreIntervalls[idx][1];
+        i = borders[idx].upper;
         break;
       }
     }
@@ -1443,19 +1395,19 @@ void Intervall::output(ostringstream &os, int lastpos)
   for (idx = 0; idx <= ignoreidx; idx++) {
     if (i < lastpos) {
       int printsize;
-      if (i <= ignoreIntervalls[idx][0]) {
-        if (ignoreIntervalls[idx][0] > lastpos)
+      if (i <= borders[idx].low) {
+        if (borders[idx].low > lastpos)
           printsize = lastpos - i;
         else
-          printsize = ignoreIntervalls[idx][0] - i;
+          printsize = borders[idx].low - i;
         os << par.substr(i, printsize);
         i += printsize;
         handleParentheses(i, false);
-        if (i >= ignoreIntervalls[idx][0])
-          i = ignoreIntervalls[idx][1];
+        if (i >= borders[idx].low)
+          i = borders[idx].upper;
       }
       else {
-        i = ignoreIntervalls[idx][1];
+        i = borders[idx].upper;
       }
     }
     else
@@ -1512,40 +1464,62 @@ int LatexInfo::process(ostringstream &os, int actualidx, bool faking)
       old_start = end+1;
       break;
     }
-    if (entries[nextKeyIdx].keytype == KeyInfo::isMain) {
-      end = entries[nextKeyIdx]._tokenstart;
+    KeyInfo &nextKey = getKeyInfo(nextKeyIdx);
+    if (nextKey.keytype == KeyInfo::isMain) {
+      end = nextKey._tokenstart;
       break;
     }
-    if (entries[nextKeyIdx].keytype == KeyInfo::isChar) {
-      old_start = entries[nextKeyIdx]._dataEnd+1;
-      nextKeyIdx = getNextKey();
-    }
-    else if (entries[nextKeyIdx].keytype == KeyInfo::isStandard) {
-      processRegion(os, old_start, entries[nextKeyIdx]._tokenstart);
-      old_start = entries[nextKeyIdx]._dataEnd+1;
-      nextKeyIdx = process(os, nextKeyIdx, false);
-    }
-    else if (entries[nextKeyIdx].keytype == KeyInfo::doRemove) {
-      interval.addIntervall(entries[nextKeyIdx]._tokenstart, entries[nextKeyIdx]._dataEnd+1);
-      nextKeyIdx = getNextKey();
-    }
-    else if (entries[nextKeyIdx].keytype == KeyInfo::leadRemove) {
-      // Remove headerthe hull, that is "\url{abcd}" ==> "abcd"
-      interval.addIntervall(entries[nextKeyIdx]._tokenstart,entries[nextKeyIdx]._dataStart);
-      interval.addIntervall(entries[nextKeyIdx]._dataEnd, entries[nextKeyIdx]._dataEnd+1);
-      nextKeyIdx = getNextKey();
-    }
-    else if (entries[nextKeyIdx].keytype == KeyInfo::isRegex) {
-      // Copy regexp part as is
-      processRegion(os, old_start, entries[nextKeyIdx]._tokenstart);
-      interval.output(os, entries[nextKeyIdx]._dataEnd+1);
-      old_start = entries[nextKeyIdx]._dataEnd+1;
-      interval.addIntervall(entries[nextKeyIdx]._tokenstart, entries[nextKeyIdx]._dataEnd+1);
-      nextKeyIdx = getNextKey();
-    }
-    else {
-      // LYXERR0("Unhandled keytype");
-      nextKeyIdx = getNextKey();
+    switch (nextKey.keytype)
+      {
+      case KeyInfo::isChar: {
+        old_start = nextKey._dataEnd+1;
+        nextKeyIdx = getNextKey();
+        break;
+      }
+      case KeyInfo::isStandard: {
+        // Split on this key
+        processRegion(os, old_start, nextKey._tokenstart);
+        old_start = nextKey._dataEnd+1;
+        nextKeyIdx = process(os, nextKeyIdx, false);
+        break;
+      }
+      case KeyInfo::doRemove: {
+        // Remove the key with all parameters
+        interval.addIntervall(nextKey._tokenstart, nextKey._dataEnd+1);
+        nextKeyIdx = getNextKey();
+        break;
+      }
+      case KeyInfo::leadRemove: {
+        // Disable output of header of this key
+        // ( == remove header)
+        if (nextKey.parenthesiscount == 0) {
+          // "{\tiny{} ...}" ==> "{{} ...}"
+          interval.addIntervall(nextKey._tokenstart, nextKey._tokenstart + nextKey._tokensize);
+        }
+        else {
+          // Remove header hull, that is "\url{abcd}" ==> "abcd"
+          interval.addIntervall(nextKey._tokenstart, nextKey._dataStart);
+          interval.addIntervall(nextKey._dataEnd, nextKey._dataEnd+1);
+        }
+        nextKeyIdx = getNextKey();
+        break;
+      }
+      case KeyInfo::isRegex: {
+        // Copy regexp part as is
+        // Split in any case
+        processRegion(os, old_start, nextKey._tokenstart);
+        // Now split on end of regexp{ ...} too
+        interval.output(os, nextKey._dataEnd+1);
+        old_start = nextKey._dataEnd+1;
+        interval.addIntervall(nextKey._tokenstart, nextKey._dataEnd+1);
+        nextKeyIdx = getNextKey();
+        break;
+      }
+      default: {
+        // LYXERR0("Unhandled keytype");
+        nextKeyIdx = getNextKey();
+        break;
+      }
     }
   }
   // now nextKey is either invalid or is outside of actual._dataEnd
@@ -1564,7 +1538,7 @@ int LatexInfo::process(ostringstream &os, int actualidx, bool faking)
   return nextKeyIdx;
 }
 
-string splitForColors(string par) {
+string splitOnKnownMacros(string par) {
   ostringstream os;
   LatexInfo li(par);
   int firstkeyIdx = li.getFirstKey();
@@ -1585,7 +1559,7 @@ string splitForColors(string par) {
         // Fake the last opened parenthesis
         int testkey = li.process(os, firstkeyIdx, true); /* The returned key should be the same */
         if (testkey != nextkeyIdx) {
-          LYXERR(Debug::FIND,"Something wrong");
+          LYXERR(Debug::FIND,"Something's wrong");
         }
       }
       else {
@@ -1632,9 +1606,8 @@ static string correctlanguagesetting(string par, bool from_regex, bool withforma
 	if (withformat) {
 		// Split the latex input into pieces which
 		// can be digested by our search engine
-		result = removefontinfo(par.substr(0, parlen));
-		LYXERR(Debug::FIND, "input: \"" << result << "\"");
-		result = splitForColors(result);
+		LYXERR(Debug::FIND, "input: \"" << par << "\"");
+		result = splitOnKnownMacros(par);
 		LYXERR(Debug::FIND, "After split: \"" << result << "\"");
 	}
 	else
@@ -1843,7 +1816,6 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 	docstring docstr = stringifyFromForSearch(opt, cur, len);
 	string str = normalize(docstr, true);
 	if (!opt.ignoreformat) {
-		str = removefontinfo(str);
 		str = correctlanguagesetting(str, false, !opt.ignoreformat);
 	}
 	if (str.empty()) return(-1);
