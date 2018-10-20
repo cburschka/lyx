@@ -930,6 +930,7 @@ class KeyInfo {
  public:
   enum KeyType {
     isChar,
+    isSectioning,
     isMain,                             /* for \\foreignlanguage */
     isRegex,
     isStandard,
@@ -1214,7 +1215,7 @@ int Intervall::findclosing(int start, int end)
 
 void LatexInfo::buildEntries()
 {
-  static regex const rkeys("\\\\((([a-z]+)(\\{([a-z]+)\\}|\\*)?))([\\{ ])");
+  static regex const rkeys("\\\\((([a-z]+\\*?)(\\{([a-z]+)\\})?))([\\{ ])");
   smatch sub;
   bool evaluatingRegexp = false;
   KeyInfo found;
@@ -1258,8 +1259,9 @@ void LatexInfo::buildEntries()
         found._dataStart = found._dataEnd;
       }
       else {
-        if (found.parenthesiscount == 1)
+        if (found.parenthesiscount == 1) {
           found.head = "\\" + sub.str(3) + "{";
+        }
         else if (found.parenthesiscount == 2) {
           found.head = sub.str(0);
           found._tokensize = found.head.length();
@@ -1293,6 +1295,7 @@ void LatexInfo::buildKeys()
   KeyInfo regex = KeyInfo(KeyInfo::isRegex,      1);
   KeyInfo color = KeyInfo(KeyInfo::isStandard,   2);
   KeyInfo character = KeyInfo(KeyInfo::isChar,   1);
+  KeyInfo sectioning = KeyInfo(KeyInfo::isSectioning,1);
   KeyInfo toremove = KeyInfo(KeyInfo::doRemove,  1);
   KeyInfo leadremove = KeyInfo(KeyInfo::leadRemove,1);
   KeyInfo ignoreMe = KeyInfo(KeyInfo::isIgnored, 0);
@@ -1300,19 +1303,22 @@ void LatexInfo::buildKeys()
   // Know statdard keys with 1 parameter.
   // Split is done, if not at start of region
   makeKey("textsf|texttt|textbf|textit|emph|noun|uuline|uline|sout|xout|uwave",standard);
+  makeKey("section|subsection|subsubsection|paragraph|subparagraph", sectioning); /* let it survive */
+  makeKey("section*|subsection*|subsubsection*", sectioning); /* let it survive */
+  makeKey("title|part|part*", sectioning); /* let it survive */
 
-  // Regex, split is always done
-  makeKey("regexp",regex);
+  // Regex, split is not done, (but should it?)
+  makeKey("regexp", regex);
 
   // Split is done, if not at start of region
-  makeKey("textcolor",color);
+  makeKey("textcolor", color);
 
   // Split is done always.
-  makeKey("foreignlanguage",foreign);
+  makeKey("foreignlanguage", foreign);
 
   // Know charaters
   // No split
-  makeKey("backslash|textbackslash",character);
+  makeKey("backslash|textbackslash", character);
 
   // Known macros to remove (including their parameter)
   // No split
@@ -1483,6 +1489,19 @@ int LatexInfo::process(ostringstream &os, int actualidx, bool faking)
         nextKeyIdx = process(os, nextKeyIdx, false);
         break;
       }
+      case KeyInfo::isSectioning: {
+        // Discard space before _tokenstart
+        int count;
+        for (count = 0; count < nextKey._tokenstart; count++) {
+          if (interval.par[nextKey._tokenstart-count-1] != ' ')
+            break;
+        }
+        interval.addIntervall(nextKey._tokenstart-count, nextKey._tokenstart);
+        processRegion(os, old_start, nextKey._tokenstart);
+        old_start = nextKey._dataEnd+1;
+        nextKeyIdx = process(os, nextKeyIdx, false);
+        break;
+      }
       case KeyInfo::doRemove: {
         // Remove the key with all parameters
         interval.addIntervall(nextKey._tokenstart, nextKey._dataEnd+1);
@@ -1505,16 +1524,29 @@ int LatexInfo::process(ostringstream &os, int actualidx, bool faking)
         break;
       }
       case KeyInfo::isRegex: {
+        /* DO NOT SPLIT ON REGEX
         // Copy regexp part as is
-        // Split in any case
+        // Do split in any case
         processRegion(os, old_start, nextKey._tokenstart);
         // Now split on end of regexp{ ...} too
         interval.output(os, nextKey._dataEnd+1);
         old_start = nextKey._dataEnd+1;
         interval.addIntervall(nextKey._tokenstart, nextKey._dataEnd+1);
+        */
         nextKeyIdx = getNextKey();
         break;
       }
+      case KeyInfo::isIgnored: {
+        // Treat like a character for now
+        nextKeyIdx = getNextKey();
+        break;
+      }
+      case KeyInfo::isMain:
+        // This cannot happen, already handled
+        // fall through
+      case KeyInfo::invalid:
+        // This cannot happen, already handled
+        // fall through
       default: {
         // LYXERR0("Unhandled keytype");
         nextKeyIdx = getNextKey();
