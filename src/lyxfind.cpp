@@ -933,21 +933,23 @@ class KeyInfo {
     isSectioning,
     isMain,                             /* for \\foreignlanguage */
     isRegex,
+    isMath,
     isStandard,
+    isSize,
     invalid,
     doRemove,
-    leadRemove,
     isIgnored                           /* to be ignored by creating infos */
   };
- KeyInfo(string key) : head(key) {};
  KeyInfo()
    : keytype(invalid),
     head(""),
-    parenthesiscount(1)
+    parenthesiscount(1),
+    disabled(false)
   {};
- KeyInfo(KeyType type, int parcount)
+ KeyInfo(KeyType type, int parcount, bool disable)
    : keytype(type),
-    parenthesiscount(parcount) {};
+    parenthesiscount(parcount),
+    disabled(disable) {};
   KeyType keytype;
   string head;
   int _tokensize;
@@ -955,6 +957,7 @@ class KeyInfo {
   int _dataStart;
   int _dataEnd;
   int parenthesiscount;
+  bool disabled;
 };
 
 class Border {
@@ -1088,13 +1091,10 @@ void Intervall::handleOpenP(int i)
 void Intervall::handleCloseP(int i, bool closingAllowed)
 {
   if (actualdeptindex <= 0) {
-    if (closingAllowed) {
-      // if we are at the very end
-      addIntervall(i, i+1);
-    }
-    else {
-      LYXERR(Debug::FIND, "Bad closing parenthesis in latex");  /* should never happen! */
-    }
+    if (! closingAllowed)
+      LYXERR(Debug::FIND, "Bad closing parenthesis in latex");  /* should not happen, but the latex input may be wrong */
+    // if we are at the very end
+    addIntervall(i, i+1);
   }
   else {
     closes[actualdeptindex] = i+1;
@@ -1104,6 +1104,7 @@ void Intervall::handleCloseP(int i, bool closingAllowed)
 
 void Intervall::resetOpenedP(int openPos)
 {
+  // Used as initializer for foreignlanguage entry
   actualdeptindex = 1;
   depts[1] = openPos+1;
   closes[1] = -1;
@@ -1148,7 +1149,8 @@ class LatexInfo {
   void buildKeys();
   void buildEntries();
   void makeKey(const string &, KeyInfo);
-  void processRegion(ostringstream &os, int start, int region_end);
+  void processRegion(int start, int region_end); /*  remove {} parts */
+  void removeHead(KeyInfo&, int count=0);
  public:
  LatexInfo(string par) {
     interval.par = par;
@@ -1173,14 +1175,15 @@ class LatexInfo {
     }
   };
   bool setNextKey(int idx) {
-    if ((idx == entidx) && (entidx > 0)) {
+    if ((idx == entidx) && (entidx >= 0)) {
       entidx--;
       return true;
     }
     else
       return(false);
   };
-  int process(ostringstream &os, int actual, bool faking);
+  int process(ostringstream &os, KeyInfo &actual);
+  int dispatch(ostringstream &os, int previousStart, KeyInfo &actual);
   // string show(int lastpos) { return interval.show(lastpos);};
   int nextNotIgnored(int start) { return interval.nextNotIgnored(start);};
   KeyInfo &getKeyInfo(int keyinfo) {
@@ -1190,6 +1193,8 @@ class LatexInfo {
     else
       return entries[keyinfo];
   };
+  void setForDefaultLang(int upTo) {interval.setForDefaultLang(upTo);};
+
 };
 
 
@@ -1215,18 +1220,44 @@ int Intervall::findclosing(int start, int end)
 
 void LatexInfo::buildEntries()
 {
+  static regex const rmath("\\\\(begin|end)\\{((eqnarray|equation|flalign|gather|multiline|align)\\*?)\\}");
   static regex const rkeys("\\\\((([a-z]+\\*?)(\\{([a-z]+)\\})?))([\\{ ])");
-  smatch sub;
+  smatch sub, submath;
   bool evaluatingRegexp = false;
   KeyInfo found;
+  bool math_end_waiting = false;
+  size_t math_pos = 10000;
+  int math_size = 0;
+  int math_end_pos = -1;
+  string math_end;
+
+  for (sregex_iterator itmath(interval.par.begin(), interval.par.end(), rmath), end; itmath != end; ++itmath) {
+    submath = *itmath;
+    if (math_end_waiting) {
+      if ((submath.str(1).compare("end") == 0) &&
+          (submath.str(2).compare(math_end) == 0)) {
+        math_size = submath.position(0) + submath.str(0).length() - math_pos;
+        math_end_waiting = false;
+      }
+    }
+    else {
+      if (submath.str(1).compare("begin") == 0) {
+        math_end_waiting = true;
+        math_end = submath.str(2);
+        math_pos = submath.position(0);
+      }
+    }
+  }
   for (sregex_iterator it(interval.par.begin(), interval.par.end(), rkeys), end; it != end; ++it) {
     sub = *it;
     if (evaluatingRegexp) {
       if (sub.str(1).compare("endregexp") == 0) {
         evaluatingRegexp = false;
         // found._tokenstart already set
-        found._dataEnd = sub.position(0) + 12;
-        found._dataStart = found._tokenstart;
+        found._dataEnd = sub.position(0) + 13;
+        found._dataStart = found._dataEnd;
+        found._tokensize = found._dataEnd - found._tokenstart;
+        found.parenthesiscount = 0;
       }
     }
     else {
@@ -1245,10 +1276,25 @@ void LatexInfo::buildEntries()
     // Handle the other params of key
     if (found.keytype == KeyInfo::isIgnored)
       continue;
-    else if (found.keytype == KeyInfo::isRegex) {
+    else if (found.keytype == KeyInfo::isMath) {
+      if (size_t(sub.position(0)) == math_pos) {
+        found = keys[sub.str(3)];
+        found._tokenstart = sub.position(0);
+        found._tokensize = math_size;
+        found._dataEnd = found._tokenstart + found._tokensize;
+        found._dataStart = found._dataEnd;
+        found.parenthesiscount = 0;
+        math_end_pos = found._dataEnd;
+      }
+      else
+        continue;
     }
-    else {
+    else if (found.keytype != KeyInfo::isRegex) {
       found._tokenstart = sub.position(0);
+      if (found._tokenstart < math_end_pos) {
+        // Ignore if we are inside math equation
+        continue;
+      }
       if (found.parenthesiscount == 0) {
         // Probably to be discarded
         if (interval.par[sub.position(0) + sub.str(3).length()] == ' ')
@@ -1256,6 +1302,7 @@ void LatexInfo::buildEntries()
         else
           found.head = "\\" + sub.str(3);
         found._tokensize = found.head.length();
+        found._dataEnd = found._tokenstart + found._tokensize;
         found._dataStart = found._dataEnd;
       }
       else {
@@ -1266,6 +1313,7 @@ void LatexInfo::buildEntries()
           found.head = sub.str(0);
           found._tokensize = found.head.length();
         }
+        found._tokensize = found.head.length();
         found._dataStart = found._tokenstart + found.head.length();
         found._dataEnd = interval.findclosing(found._dataStart, interval.par.length());
       }
@@ -1287,55 +1335,67 @@ void LatexInfo::makeKey(const string &keysstring, KeyInfo keyI)
 
 void LatexInfo::buildKeys()
 {
-  static bool keysBuilt = false;
+  static bool keysBuilt        = false;
+  static bool ignoreFamily     = false;
+  static bool ignoreSeries     = false;
+  static bool ignoreShape      = false;
+  static bool ignoreUnderline  = false;
+  static bool ignoreMarkUp     = false;
+  static bool ignoreStrikeOut  = false;
+  static bool ignoreSectioning = false;
+  static bool ignoreColor      = false;
+  static bool ignoreLanguage   = false;
 
   if (keysBuilt) return;
-  KeyInfo foreign = KeyInfo(KeyInfo::isMain,     2);
-  KeyInfo standard = KeyInfo(KeyInfo::isStandard,1);
-  KeyInfo regex = KeyInfo(KeyInfo::isRegex,      1);
-  KeyInfo color = KeyInfo(KeyInfo::isStandard,   2);
-  KeyInfo character = KeyInfo(KeyInfo::isChar,   1);
-  KeyInfo sectioning = KeyInfo(KeyInfo::isSectioning,1);
-  KeyInfo toremove = KeyInfo(KeyInfo::doRemove,  1);
-  KeyInfo leadremove = KeyInfo(KeyInfo::leadRemove,1);
-  KeyInfo ignoreMe = KeyInfo(KeyInfo::isIgnored, 0);
 
   // Know statdard keys with 1 parameter.
   // Split is done, if not at start of region
-  makeKey("textsf|texttt|textbf|textit|emph|noun|uuline|uline|sout|xout|uwave",standard);
-  makeKey("section|subsection|subsubsection|paragraph|subparagraph", sectioning); /* let it survive */
-  makeKey("section*|subsection*|subsubsection*", sectioning); /* let it survive */
-  makeKey("title|part|part*", sectioning); /* let it survive */
+  makeKey("textsf|textss|texttt", KeyInfo(KeyInfo::isStandard, 1, ignoreFamily));
+  makeKey("textbf",               KeyInfo(KeyInfo::isStandard, 1, ignoreSeries));
+  makeKey("textit|textsc|textsl", KeyInfo(KeyInfo::isStandard, 1, ignoreShape));
+  makeKey("uuline|uline|uwave",   KeyInfo(KeyInfo::isStandard, 1, ignoreUnderline));
+  makeKey("emph|noun",            KeyInfo(KeyInfo::isStandard, 1, ignoreMarkUp));
+  makeKey("sout|xout",            KeyInfo(KeyInfo::isStandard, 1, ignoreStrikeOut));
 
-  // Regex, split is not done, (but should it?)
-  makeKey("regexp", regex);
+
+  makeKey("section|subsection|subsubsection|paragraph|subparagraph",
+          KeyInfo(KeyInfo::isSectioning, 1, ignoreSectioning));
+  makeKey("section*|subsection*|subsubsection*",
+          KeyInfo(KeyInfo::isSectioning, 1, ignoreSectioning));
+  makeKey("title|part|part*", KeyInfo(KeyInfo::isSectioning, 1, ignoreSectioning));
+
+  // Regex
+  makeKey("regexp", KeyInfo(KeyInfo::isRegex, 1, false));
 
   // Split is done, if not at start of region
-  makeKey("textcolor", color);
+  makeKey("textcolor", KeyInfo(KeyInfo::isStandard, 2, ignoreColor));
 
   // Split is done always.
-  makeKey("foreignlanguage", foreign);
+  makeKey("foreignlanguage", KeyInfo(KeyInfo::isMain, 2, ignoreLanguage));
 
   // Know charaters
   // No split
-  makeKey("backslash|textbackslash", character);
+  makeKey("backslash|textbackslash", KeyInfo(KeyInfo::isChar, 1, false));
 
   // Known macros to remove (including their parameter)
   // No split
-  makeKey("inputencoding|shortcut", toremove);
+  makeKey("inputencoding|shortcut", KeyInfo(KeyInfo::doRemove, 1, false));
 
   // Macros to remove, but let the parameter survive
   // No split
-  toremove.parenthesiscount = 0;
-  makeKey("url|href|menuitem|footnote|code", leadremove);
+  makeKey("url|href|menuitem|footnote|code", KeyInfo(KeyInfo::isStandard, 1, true));
 
   // Same effect as previous, parameter will survive (because there is no one anyway)
   // No split
-  leadremove.parenthesiscount = 0;
-  makeKey("noindent|footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", leadremove);
+  makeKey("noindent", KeyInfo(KeyInfo::isStandard, 0, true));
+  // like (tiny{} ... }
+  makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, true));
 
   // Survives, like known character
-  makeKey("lyx", ignoreMe);
+  makeKey("lyx", KeyInfo(KeyInfo::isIgnored, 0, false));
+
+  makeKey("begin", KeyInfo(KeyInfo::isMath, 1, false));
+
   keysBuilt = true;
 }
 
@@ -1429,9 +1489,8 @@ void Intervall::output(ostringstream &os, int lastpos)
   handleParentheses(lastpos, true); /* extra closings '}' allowed here */
 }
 
-void LatexInfo::processRegion(ostringstream &os, int start, int region_end)
+void LatexInfo::processRegion(int start, int region_end)
 {
-  int old_start = start;
   while (start < region_end) {
     if (interval.par[start] == '{') {
       int closing = interval.findclosing(start+1, region_end);
@@ -1440,177 +1499,233 @@ void LatexInfo::processRegion(ostringstream &os, int start, int region_end)
     }
     start = interval.nextNotIgnored(start+1);
   }
-  start = interval.nextNotIgnored(old_start);
-  if (start < region_end) {
-    interval.output(os, region_end);
-    interval.addIntervall(start, region_end);
+}
+
+void LatexInfo::removeHead(KeyInfo &actual, int count)
+{
+  if (actual.parenthesiscount == 0) {
+    // "{\tiny{} ...}" ==> "{{} ...}"
+    interval.addIntervall(actual._tokenstart-count, actual._tokenstart + actual._tokensize);
+  }
+  else {
+    // Remove header hull, that is "\url{abcd}" ==> "abcd"
+    interval.addIntervall(actual._tokenstart, actual._dataStart);
+    interval.addIntervall(actual._dataEnd, actual._dataEnd+1);
   }
 }
 
-int LatexInfo::process(ostringstream &os, int actualidx, bool faking)
+int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
 {
-  KeyInfo &actual = getKeyInfo(actualidx);
-  int nextKeyIdx = getNextKey();
-  int start, old_start;
+  int nextKeyIdx;
+  switch (actual.keytype)
+    {
+    case KeyInfo::isChar: {
+      nextKeyIdx = getNextKey();
+      break;
+    }
+    case KeyInfo::isSize: {
+      if (actual.disabled) {
+        // Allways disabled
+        processRegion(actual._dataEnd, actual._dataEnd+1); /* remove possibly following {} */
+        interval.addIntervall(actual._tokenstart, actual._dataEnd+1);
+        nextKeyIdx = getNextKey();
+      } else {
+        // Split on this key if not at start
+        int start = interval.nextNotIgnored(previousStart);
+        if (start < actual._tokenstart) {
+          interval.output(os, actual._tokenstart);
+          interval.addIntervall(start, actual._tokenstart);
+        }
+        // discard entry if at end of actual
+        nextKeyIdx = process(os, actual);
+      }
+      break;
+    }
+    case KeyInfo::isStandard: {
+      if (actual.disabled) {
+        removeHead(actual);
+        processRegion(actual._dataStart, actual._dataStart+1);
+        nextKeyIdx = getNextKey();
+      } else {
+        // Split on this key if not at start
+        int start = interval.nextNotIgnored(previousStart);
+        if (start < actual._tokenstart) {
+          interval.output(os, actual._tokenstart);
+          interval.addIntervall(start, actual._tokenstart);
+        }
+        // discard entry if at end of actual
+        nextKeyIdx = process(os, actual);
+      }
+      break;
+    }
+    case KeyInfo::doRemove: {
+      // Remove the key with all parameters
+      interval.addIntervall(actual._tokenstart, actual._dataEnd+1);
+      nextKeyIdx = getNextKey();
+      break;
+    }
+    case KeyInfo::isSectioning: {
+      // Discard space before _tokenstart
+      int count;
+      for (count = 0; count < actual._tokenstart; count++) {
+        if (interval.par[actual._tokenstart-count-1] != ' ')
+          break;
+      }
+      if (actual.disabled) {
+        removeHead(actual, count);
+        nextKeyIdx = getNextKey();
+      } else {
+        interval.addIntervall(actual._tokenstart-count, actual._tokenstart);
+        nextKeyIdx = process(os, actual);
+      }
+      break;
+    }
+    case KeyInfo::isMath: {
+      // Same as regex, use the content unchanged
+      nextKeyIdx = getNextKey();
+      break;
+    }
+    case KeyInfo::isRegex: {
+      // DO NOT SPLIT ON REGEX
+      // Do not disable
+      nextKeyIdx = getNextKey();
+      break;
+    }
+    case KeyInfo::isIgnored: {
+      // Treat like a character for now
+      nextKeyIdx = getNextKey();
+      break;
+    }
+    case KeyInfo::isMain: {
+      if (actual.disabled) {
+        removeHead(actual);
+        interval.resetOpenedP(actual._dataStart-1);
+      }
+      else {
+        if (actual._tokenstart == 0) {
+          // for the first (and maybe dummy) language
+          interval.setForDefaultLang(actual._tokenstart + actual._tokensize);
+        }
+        interval.resetOpenedP(actual._dataStart-1);
+      }
+      break;
+    }
+    case KeyInfo::invalid:
+      // This cannot happen, already handled
+      // fall through
+    default: {
+      // LYXERR0("Unhandled keytype");
+      nextKeyIdx = getNextKey();
+      break;
+    }
+    }
+  return(nextKeyIdx);
+}
+
+int LatexInfo::process(ostringstream &os, KeyInfo &actual )
+{
   int end = interval.nextNotIgnored(actual._dataEnd);
-  old_start = interval.nextNotIgnored(actual._dataStart);
-  if (faking) {
-    // Adapt for start of first open parenthesis
-    interval.setForDefaultLang(actual._tokenstart + actual._tokensize);
-  }
-  if (actual.keytype == KeyInfo::isMain) {
-    // Fake for opened braces
-    interval.resetOpenedP(actual._dataStart-1);
-  }
+  int oldStart = actual._dataStart;
+  int nextKeyIdx = getNextKey();
   while (true) {
     if ((nextKeyIdx < 0) ||
         (entries[nextKeyIdx]._tokenstart >= actual._dataEnd) ||
         (entries[nextKeyIdx].keytype == KeyInfo::invalid)) {
-      processRegion(os, old_start, end);
-      old_start = end+1;
+      if (oldStart <= end) {
+        processRegion(oldStart, end);
+        oldStart = end+1;
+      }
       break;
     }
     KeyInfo &nextKey = getKeyInfo(nextKeyIdx);
+
     if (nextKey.keytype == KeyInfo::isMain) {
+      (void) dispatch(os, actual._dataStart, nextKey);
       end = nextKey._tokenstart;
       break;
     }
-    switch (nextKey.keytype)
-      {
-      case KeyInfo::isChar: {
-        old_start = nextKey._dataEnd+1;
-        nextKeyIdx = getNextKey();
-        break;
-      }
-      case KeyInfo::isStandard: {
-        // Split on this key
-        processRegion(os, old_start, nextKey._tokenstart);
-        old_start = nextKey._dataEnd+1;
-        nextKeyIdx = process(os, nextKeyIdx, false);
-        break;
-      }
-      case KeyInfo::isSectioning: {
-        // Discard space before _tokenstart
-        int count;
-        for (count = 0; count < nextKey._tokenstart; count++) {
-          if (interval.par[nextKey._tokenstart-count-1] != ' ')
-            break;
-        }
-        interval.addIntervall(nextKey._tokenstart-count, nextKey._tokenstart);
-        processRegion(os, old_start, nextKey._tokenstart);
-        old_start = nextKey._dataEnd+1;
-        nextKeyIdx = process(os, nextKeyIdx, false);
-        break;
-      }
-      case KeyInfo::doRemove: {
-        // Remove the key with all parameters
-        interval.addIntervall(nextKey._tokenstart, nextKey._dataEnd+1);
-        nextKeyIdx = getNextKey();
-        break;
-      }
-      case KeyInfo::leadRemove: {
-        // Disable output of header of this key
-        // ( == remove header)
-        if (nextKey.parenthesiscount == 0) {
-          // "{\tiny{} ...}" ==> "{{} ...}"
-          interval.addIntervall(nextKey._tokenstart, nextKey._tokenstart + nextKey._tokensize);
-        }
-        else {
-          // Remove header hull, that is "\url{abcd}" ==> "abcd"
-          interval.addIntervall(nextKey._tokenstart, nextKey._dataStart);
-          interval.addIntervall(nextKey._dataEnd, nextKey._dataEnd+1);
-        }
-        nextKeyIdx = getNextKey();
-        break;
-      }
-      case KeyInfo::isRegex: {
-        /* DO NOT SPLIT ON REGEX
-        // Copy regexp part as is
-        // Do split in any case
-        processRegion(os, old_start, nextKey._tokenstart);
-        // Now split on end of regexp{ ...} too
-        interval.output(os, nextKey._dataEnd+1);
-        old_start = nextKey._dataEnd+1;
-        interval.addIntervall(nextKey._tokenstart, nextKey._dataEnd+1);
-        */
-        nextKeyIdx = getNextKey();
-        break;
-      }
-      case KeyInfo::isIgnored: {
-        // Treat like a character for now
-        nextKeyIdx = getNextKey();
-        break;
-      }
-      case KeyInfo::isMain:
-        // This cannot happen, already handled
-        // fall through
-      case KeyInfo::invalid:
-        // This cannot happen, already handled
-        // fall through
-      default: {
-        // LYXERR0("Unhandled keytype");
-        nextKeyIdx = getNextKey();
-        break;
-      }
-    }
+    processRegion(oldStart, nextKey._tokenstart);
+    nextKeyIdx = dispatch(os, actual._dataStart, nextKey);
+
+    oldStart = nextKey._dataEnd+1;
   }
   // now nextKey is either invalid or is outside of actual._dataEnd
-  // output the remaing and discard myself
-  start = interval.nextNotIgnored(actual._dataStart);
-  processRegion(os, start, end);
+  // output the remaining and discard myself
+  if (oldStart <= end) {
+    processRegion(oldStart, end);
+  }
   if (interval.par[end] == '}') {
     end += 1;
     // This is the normal case.
     // But if using the firstlanguage, the closing may be missing
   }
+  // get minimum of 'end' and  'actual._dataEnd' in case that the nextKey.keytype was 'KeyInfo::isMain'
+  int output_end;
+  if (actual._dataEnd < end)
+    output_end = interval.nextNotIgnored(actual._dataEnd);
+  else
+    output_end = interval.nextNotIgnored(end);
+  if (interval.nextNotIgnored(actual._dataStart) < output_end)
+    interval.output(os, output_end);
   interval.addIntervall(actual._tokenstart, end);
-  if (faking) {
-    // Adapt for start of first open parenthesis
-  }
   return nextKeyIdx;
 }
 
 string splitOnKnownMacros(string par) {
   ostringstream os;
   LatexInfo li(par);
+  KeyInfo DummyKey = KeyInfo(KeyInfo::KeyType::isMain, 2, true);
+  DummyKey.head="";
+  DummyKey._tokensize = 0;
+  DummyKey._tokenstart = 0;
+  DummyKey._dataStart = 0;
+  DummyKey._dataEnd = par.length();
+  DummyKey.disabled = true;
   int firstkeyIdx = li.getFirstKey();
   string s;
   if (firstkeyIdx >= 0) {
-    int nextkeyIdx = li.process(os, firstkeyIdx, true);
-    KeyInfo &firstKey = li.getKeyInfo(firstkeyIdx);
+    KeyInfo firstKey = li.getKeyInfo(firstkeyIdx);
+    int nextkeyIdx;
+    if ((firstKey.keytype != KeyInfo::isMain) || firstKey.disabled) {
+      // Create dummy firstKey
+      firstKey = DummyKey;
+      (void) li.setNextKey(firstkeyIdx);
+    }
+    nextkeyIdx = li.process(os, firstKey);
     while (nextkeyIdx >= 0) {
       // Check for a possible gap between the last
       // entry and this one
       int datastart = li.nextNotIgnored(firstKey._dataStart);
       KeyInfo &nextKey = li.getKeyInfo(nextkeyIdx);
-      if (nextKey._tokenstart > datastart) {
+      if ((nextKey._tokenstart > datastart)) {
         // Handle the gap
         firstKey._dataStart = datastart;
-        firstKey._dataEnd = nextKey._tokenstart;
+        firstKey._dataEnd = par.length();
         (void) li.setNextKey(nextkeyIdx);
+        if (firstKey._tokensize > 0)
+          li.setForDefaultLang(firstKey._tokensize);
         // Fake the last opened parenthesis
-        int testkey = li.process(os, firstkeyIdx, true); /* The returned key should be the same */
-        if (testkey != nextkeyIdx) {
-          LYXERR(Debug::FIND,"Something's wrong");
-        }
+        nextkeyIdx = li.process(os, firstKey);
       }
       else {
         if (nextKey.keytype != KeyInfo::isMain) {
           firstKey._dataStart = datastart;
           firstKey._dataEnd = nextKey._dataEnd+1;
           (void) li.setNextKey(nextkeyIdx);
-          nextkeyIdx = li.process(os, firstkeyIdx, true);
+          if (firstKey._tokensize > 0)
+            li.setForDefaultLang(firstKey._tokensize);
+          nextkeyIdx = li.process(os, firstKey);
         }
         else {
-          nextkeyIdx = li.process(os, nextkeyIdx, false);
+          nextkeyIdx = li.process(os, nextKey);
         }
       }
     }
     // Handle the remaining
     firstKey._dataStart = li.nextNotIgnored(firstKey._dataStart);
     firstKey._dataEnd = par.length();
-    if (firstKey._dataStart +1 < firstKey._dataEnd)
-      (void) li.process(os, firstkeyIdx, true);
+    if (firstKey._dataStart < firstKey._dataEnd)
+      (void) li.process(os, firstKey);
     s = os.str();
   }
   else
