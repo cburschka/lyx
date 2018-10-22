@@ -492,6 +492,14 @@ void BufferView::processUpdateFlags(Update::flags flags)
 	if (flags == Update::None)
 		return;
 
+	/* FIXME We would like to avoid doing this here, since it is very
+	 * expensive and is called in updateBuffer already. Howaver, even
+	 * inserting a plain character can invalidate the overly fragile
+	 * tables of child documents built by updateMacros. Some work is
+	 * needed to avoid doing that when not necessary.
+	 */
+	buffer_.updateMacros();
+
 	// SinglePar is ignored for now (this should probably change). We
 	// set it ourselves below, at the price of always rebreaking the
 	// paragraph at cursor. This can be expensive for large tables.
