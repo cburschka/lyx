@@ -1221,7 +1221,7 @@ int Intervall::findclosing(int start, int end)
 void LatexInfo::buildEntries()
 {
   static regex const rmath("\\\\(begin|end)\\{((eqnarray|equation|flalign|gather|multiline|align)\\*?)\\}");
-  static regex const rkeys("\\\\((([a-z]+\\*?)(\\{([a-z]+)\\})?))([\\{ ])");
+  static regex const rkeys("\\\\((([a-z]+\\*?)(\\{([a-z]+\\*?)\\})?))");
   smatch sub, submath;
   bool evaluatingRegexp = false;
   KeyInfo found;
@@ -1297,7 +1297,7 @@ void LatexInfo::buildEntries()
       }
       if (found.parenthesiscount == 0) {
         // Probably to be discarded
-        if (interval.par[sub.position(0) + sub.str(3).length()] == ' ')
+        if (interval.par[sub.position(0) + sub.str(3).length() + 1] == ' ')
           found.head = "\\" + sub.str(3) + " ";
         else
           found.head = "\\" + sub.str(3);
@@ -1310,7 +1310,7 @@ void LatexInfo::buildEntries()
           found.head = "\\" + sub.str(3) + "{";
         }
         else if (found.parenthesiscount == 2) {
-          found.head = sub.str(0);
+          found.head = sub.str(0) + "{";
           found._tokensize = found.head.length();
         }
         found._tokensize = found.head.length();
@@ -1388,13 +1388,16 @@ void LatexInfo::buildKeys()
   // Same effect as previous, parameter will survive (because there is no one anyway)
   // No split
   makeKey("noindent", KeyInfo(KeyInfo::isStandard, 0, true));
-  // like (tiny{} ... }
+  // like ('tiny{}' or '\tiny ' ... }
   makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, true));
 
   // Survives, like known character
   makeKey("lyx", KeyInfo(KeyInfo::isIgnored, 0, false));
 
   makeKey("begin", KeyInfo(KeyInfo::isMath, 1, false));
+  makeKey("end", KeyInfo(KeyInfo::isMath, 1, false));
+
+  makeKey("par", KeyInfo(KeyInfo::doRemove, 0, true));
 
   keysBuilt = true;
 }
@@ -1493,7 +1496,8 @@ void LatexInfo::processRegion(int start, int region_end)
 {
   while (start < region_end) {
     if (interval.par[start] == '{') {
-      int closing = interval.findclosing(start+1, region_end);
+      // Closing is allowed past the region
+      int closing = interval.findclosing(start+1, interval.par.length());
       interval.addIntervall(start, start+1);
       interval.addIntervall(closing, closing+1);
     }
@@ -1675,7 +1679,7 @@ string splitOnKnownMacros(string par) {
   ostringstream os;
   LatexInfo li(par);
   KeyInfo DummyKey = KeyInfo(KeyInfo::KeyType::isMain, 2, true);
-  DummyKey.head="";
+  DummyKey.head = "";
   DummyKey._tokensize = 0;
   DummyKey._tokenstart = 0;
   DummyKey._dataStart = 0;
