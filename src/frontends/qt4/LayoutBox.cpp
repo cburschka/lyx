@@ -301,7 +301,7 @@ QString LayoutItemDelegate::underlineFilter(QString const & s) const
 		return s;
 	QString r(s);
 	QRegExp pattern(charFilterRegExpC(f));
-	r.replace(pattern, "<b>\\1</b>");
+	r.replace(pattern, "<u><b>\\1</b></u>");
 	return r;
 }
 
