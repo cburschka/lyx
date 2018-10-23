@@ -844,8 +844,8 @@ static size_t identifyLeading(string const & s)
 	string t = s;
 	// @TODO Support \item[text]
 	// Kornel: Added textsl, textsf, textit, texttt and noun
-	// + allow to seach for colored text too
-	while (regex_replace(t, t, REGEX_BOS "\\\\(((emph|noun|text(bf|sl|sf|it|tt))|((textcolor|foreignlanguage)\\{[a-z]+\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part)\\*?)\\{", "")
+	// + allow to search for colored text too
+	while (regex_replace(t, t, REGEX_BOS "\\\\(((emph|noun|minisec|text(bf|sl|sf|it|tt))|((textcolor|foreignlanguage)\\{[a-z]+\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)\\{", "")
 	       || regex_replace(t, t, REGEX_BOS "\\$", "")
 	       || regex_replace(t, t, REGEX_BOS "\\\\\\[ ", "")
 	       || regex_replace(t, t, REGEX_BOS "\\\\item ", "")
@@ -1343,6 +1343,7 @@ void LatexInfo::buildKeys()
   static bool ignoreMarkUp     = false;
   static bool ignoreStrikeOut  = false;
   static bool ignoreSectioning = false;
+  static bool ignoreFrontMatter= true;
   static bool ignoreColor      = false;
   static bool ignoreLanguage   = false;
 
@@ -1358,12 +1359,12 @@ void LatexInfo::buildKeys()
   makeKey("sout|xout",            KeyInfo(KeyInfo::isStandard, 1, ignoreStrikeOut));
 
 
-  makeKey("section|subsection|subsubsection|paragraph|subparagraph",
+  makeKey("section|subsection|subsubsection|paragraph|subparagraph|minisec",
           KeyInfo(KeyInfo::isSectioning, 1, ignoreSectioning));
-  makeKey("section*|subsection*|subsubsection*",
+  makeKey("section*|subsection*|subsubsection*|paragraph*",
           KeyInfo(KeyInfo::isSectioning, 1, ignoreSectioning));
-  makeKey("title|part|part*", KeyInfo(KeyInfo::isSectioning, 1, ignoreSectioning));
-
+  makeKey("part|part*|chapter|chapter*", KeyInfo(KeyInfo::isSectioning, 1, ignoreSectioning));
+  makeKey("title|subtitle|author|subject|publishers|dedication|uppertitleback|lowertitleback|extratitle|lyxaddress|lyxrightaddress", KeyInfo(KeyInfo::isSectioning, 1, ignoreFrontMatter));
   // Regex
   makeKey("regexp", KeyInfo(KeyInfo::isRegex, 1, false));
 
