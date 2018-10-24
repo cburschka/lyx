@@ -867,7 +867,7 @@ typedef map<string, bool> Features;
 static Features identifyFeatures(string const & s)
 {
 	static regex const feature("\\\\(([a-z]+(\\{([a-z]+)\\}|\\*)?))\\{");
-	static regex const valid("^(((emph|noun|text(bf|sl|sf|it|tt)|(textcolor|foreignlanguage)\\{[a-z]+\\})|item |(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part)\\*?)$");
+	static regex const valid("^(((emph|noun|text(bf|sl|sf|it|tt)|(textcolor|foreignlanguage)\\{[a-z]+\\})|item |(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)$");
 	smatch sub;
 	bool displ = true;
 	Features info;
@@ -896,31 +896,6 @@ static Features identifyFeatures(string const & s)
 		}
 	}
 	return(info);
-}
-
-/*
- * Faster search for the related closing parenthesis
- */
- static int findclosing(string p, int start, int end)
-{
-	int skip = 0;
-	int depth = 0;
-        int lastunclosed = start-1;
-	for (int i = start; i < end; i += 1 + skip) {
-		char c;
-		c = p[i];
-		skip = 0;
-		if (c == '\\') skip = 1;
-		else if (c == '{') {
-                  depth++;
-                  lastunclosed = i;
-                }
-		else if (c == '}') {
-			if (depth == 0) return(i);
-			--depth;
-		}
-	}
-	return(0 - lastunclosed);
 }
 
 /*
@@ -1221,7 +1196,7 @@ int Intervall::findclosing(int start, int end)
 void LatexInfo::buildEntries()
 {
   static regex const rmath("\\\\(begin|end)\\{((eqnarray|equation|flalign|gather|multiline|align)\\*?)\\}");
-  static regex const rkeys("\\\\((([a-z]+\\*?)(\\{([a-z]+\\*?)\\})?))");
+  static regex const rkeys("\\\\((([a-zA-Z]+\\*?)(\\{([a-z]+\\*?)\\}|=[0-9]+[a-z]+)?))");
   smatch sub, submath;
   bool evaluatingRegexp = false;
   KeyInfo found;
@@ -1297,8 +1272,13 @@ void LatexInfo::buildEntries()
       }
       if (found.parenthesiscount == 0) {
         // Probably to be discarded
-        if (interval.par[sub.position(0) + sub.str(3).length() + 1] == ' ')
+        char following = interval.par[sub.position(0) + sub.str(3).length() + 1];
+        if (following == ' ')
           found.head = "\\" + sub.str(3) + " ";
+        else if (following == '=') {
+          // like \uldepth=1000pt
+          found.head = sub.str(0);
+        }
         else
           found.head = "\\" + sub.str(3);
         found._tokensize = found.head.length();
@@ -1398,7 +1378,7 @@ void LatexInfo::buildKeys()
   makeKey("begin", KeyInfo(KeyInfo::isMath, 1, false));
   makeKey("end", KeyInfo(KeyInfo::isMath, 1, false));
 
-  makeKey("par", KeyInfo(KeyInfo::doRemove, 0, true));
+  makeKey("par|uldepth|ULdepth", KeyInfo(KeyInfo::doRemove, 0, true));
 
   keysBuilt = true;
 }
@@ -1764,7 +1744,6 @@ static string correctlanguagesetting(string par, bool from_regex, bool withforma
 	}
 	else
 		result = par.substr(0, parlen);
-        bool handle_colors = false;
 	if (from_regex) {
 		missed = 0;
 		if (withformat) {
@@ -1773,8 +1752,6 @@ static string correctlanguagesetting(string par, bool from_regex, bool withforma
 			for (auto it = regex_f.cbegin(); it != regex_f.cend(); ++it) {
 				string a = it->first;
 				regex_with_format = true;
-                                if (a.compare(0,10,"textcolor{") == 0)
-                                  handle_colors = true;
                                 features += " " + a;
 				// LYXERR0("Identified regex format:" << a);
 			}
@@ -1791,43 +1768,11 @@ static string correctlanguagesetting(string par, bool from_regex, bool withforma
 				LYXERR(Debug::FIND, "Missed(" << missed << " " << a <<", srclen = " << parlen );
 				return("");
 			}
-                        else if (a.compare(0,10,"textcolor{") == 0)
-                                handle_colors = true;
 		}
 	}
 	else {
 		// LYXERR0("No regex formats");
 	}
-	// remove possible disturbing macros
-	while (regex_replace(result, result, "\\\\(noindent )", ""))
-		;
-	// Either not found language spec,or is single and closed spec or empty
-	// to be removed
-	// [a-z+]par
-	static regex const parreg("((\\n)?\\\\[a-z]+par)\\{");
-
-	list <string> pars;
-	smatch sub;
-	for (sregex_iterator it(result.begin(), result.end(), parreg), end; it != end; ++it) {
-		sub = *it;
-		string token = sub.str(1);
-		pars.push_back(token);
-	}
-	for (list<string>::const_iterator li = pars.begin(); li != pars.end(); ++li) {
-		string token = *li;
-		int ti = result.find(token);
-		int tokensize = token.size() + 1;
-		if (ti >= 0) {
-			int tc = findclosing(result, ti + tokensize, result.size());
-			if (tc > 0)
-				result = result.substr(0, ti) + result.substr(ti + tokensize, tc - ti -tokensize) + result.substr(tc+1);
-
-		}
-	}
-        if (handle_colors) {
-          while (regex_replace(result, result, "(\\{\\\\textcolor\\{[a-z]+\\}\\{)\\s*\\{\\}\\s*", "$1"));
-          while (regex_replace(result, result, "\\{\\\\textcolor\\{[a-z]+\\}\\{\\s*\\}\\s*\\}", ""));
-        }
 	return(result);
 }
 
