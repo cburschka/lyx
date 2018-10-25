@@ -286,9 +286,9 @@ if(UNIX OR MINGW)
 	set(LYX_GCC11_MODE "${CXX11_FLAG}")
 else()
 	set(LYX_USE_STD_REGEX 0)
-#	if(MSVC10)
-#		set(LYX_USE_STD_REGEX 1) #TODO should we use it in ECMAScript mode?
-#	endif()
+	if(MSVC10)
+		set(LYX_USE_STD_REGEX 1) #TODO should we use it in ECMAScript mode?
+	endif()
 endif()
 
 
