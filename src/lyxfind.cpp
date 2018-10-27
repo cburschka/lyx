@@ -919,12 +919,14 @@ class KeyInfo {
    : keytype(invalid),
     head(""),
     parenthesiscount(1),
-    disabled(false)
+    disabled(false),
+    used(false)
   {};
  KeyInfo(KeyType type, int parcount, bool disable)
    : keytype(type),
     parenthesiscount(parcount),
-    disabled(disable) {};
+    disabled(disable),
+    used(false) {};
   KeyType keytype;
   string head;
   int _tokensize;
@@ -933,6 +935,7 @@ class KeyInfo {
   int _dataEnd;
   int parenthesiscount;
   bool disabled;
+  bool used;                            /* by pattern */
 };
 
 class Border {
@@ -1115,23 +1118,104 @@ typedef map<string, KeyInfo> KeysMap;
 typedef vector< KeyInfo> Entries;
 static KeysMap keys = map<string, KeyInfo>();
 
+class IgnoreFormats {
+  static bool ignoreFamily;
+  static bool ignoreSeries;
+  static bool ignoreShape;
+  static bool ignoreUnderline;
+  static bool ignoreMarkUp;
+  static bool ignoreStrikeOut;
+  static bool ignoreSectioning;
+  static bool ignoreFrontMatter;
+  static bool ignoreColor;
+  static bool ignoreLanguage;
+ public:
+  bool getFamily() { return ignoreFamily; };
+  bool getSeries() { return ignoreSeries; };
+  bool getShape() { return ignoreShape; };
+  bool getUnderline() { return ignoreUnderline; };
+  bool getMarkUp() { return ignoreMarkUp; };
+  bool getStrikeOut() { return ignoreStrikeOut; };
+  bool getSectioning() { return ignoreSectioning; };
+  bool getFrontMatter() { return ignoreFrontMatter; };
+  bool getColor() { return ignoreColor; };
+  bool getLanguage() { return ignoreLanguage; };
+
+  void setIgnoreFormat(string type, bool value);
+};
+
+bool IgnoreFormats::ignoreFamily     = false;
+bool IgnoreFormats::ignoreSeries     = false;
+bool IgnoreFormats::ignoreShape      = false;
+bool IgnoreFormats::ignoreUnderline  = false;
+bool IgnoreFormats::ignoreMarkUp     = false;
+bool IgnoreFormats::ignoreStrikeOut  = false;
+bool IgnoreFormats::ignoreSectioning = false;
+bool IgnoreFormats::ignoreFrontMatter= true;
+bool IgnoreFormats::ignoreColor      = false;
+bool IgnoreFormats::ignoreLanguage   = false;
+
+void IgnoreFormats::setIgnoreFormat(string type, bool value)
+{
+  if (type == "color") {
+    ignoreColor = value;
+  }
+  else if (type == "language") {
+    ignoreLanguage = value;
+  }
+  else if (type == "sectioning") {
+    ignoreSectioning = value;
+    ignoreFrontMatter = value;
+  }
+  else if (type == "font") {
+    ignoreSeries = value;
+    ignoreShape = value;
+    ignoreFamily = value;
+  }
+  else if (type == "series") {
+    ignoreSeries = value;
+  }
+  else if (type == "shape") {
+    ignoreShape = value;
+  }
+  else if (type == "family") {
+    ignoreFamily = value;
+  }
+  else if (type == "markup") {
+    ignoreMarkUp = value;
+  }
+  else if (type == "underline") {
+    ignoreUnderline = value;
+  }
+  else if (type == "strike") {
+    ignoreStrikeOut = value;
+  }
+}
+
+void setIgnoreFormat(string type, bool value)
+{
+  IgnoreFormats().setIgnoreFormat(type, value);
+}
+
 class LatexInfo {
  private:
   int entidx;
   Entries entries;
   KeyInfo analyze(string key);
   Intervall interval;
-  void buildKeys();
-  void buildEntries();
-  void makeKey(const string &, KeyInfo);
+  void buildKeys(bool);
+  void buildEntries(bool);
+  void makeKey(const string &, KeyInfo, bool isPatternString);
   void processRegion(int start, int region_end); /*  remove {} parts */
   void removeHead(KeyInfo&, int count=0);
+  IgnoreFormats f;
+
  public:
- LatexInfo(string par) {
+  LatexInfo(string par, bool isPatternString) {
     interval.par = par;
-    buildKeys();
+    buildKeys(isPatternString);
     entries = vector<KeyInfo>();
-    buildEntries();
+    buildEntries(isPatternString);
   };
   int getFirstKey() {
     entidx = 0;
@@ -1193,7 +1277,7 @@ int Intervall::findclosing(int start, int end)
   return(end);
 }
 
-void LatexInfo::buildEntries()
+void LatexInfo::buildEntries(bool isPatternString)
 {
   static regex const rmath("\\\\(begin|end)\\{((eqnarray|equation|flalign|gather|multiline|align)\\*?)\\}");
   static regex const rkeys("\\\\((([a-zA-Z]+\\*?)(\\{([a-z]+\\*?)\\}|=[0-9]+[a-z]+)?))");
@@ -1211,7 +1295,7 @@ void LatexInfo::buildEntries()
     if (math_end_waiting) {
       if ((submath.str(1).compare("end") == 0) &&
           (submath.str(2).compare(math_end) == 0)) {
-        math_size = submath.position(0) + submath.str(0).length() - math_pos;
+        math_size = submath.position(size_t(0)) + submath.str(0).length() - math_pos;
         math_end_waiting = false;
       }
     }
@@ -1219,7 +1303,7 @@ void LatexInfo::buildEntries()
       if (submath.str(1).compare("begin") == 0) {
         math_end_waiting = true;
         math_end = submath.str(2);
-        math_pos = submath.position(0);
+        math_pos = submath.position(size_t(0));
       }
     }
   }
@@ -1229,7 +1313,7 @@ void LatexInfo::buildEntries()
       if (sub.str(1).compare("endregexp") == 0) {
         evaluatingRegexp = false;
         // found._tokenstart already set
-        found._dataEnd = sub.position(0) + 13;
+        found._dataEnd = sub.position(size_t(0)) + 13;
         found._dataStart = found._dataEnd;
         found._tokensize = found._dataEnd - found._tokenstart;
         found.parenthesiscount = 0;
@@ -1243,7 +1327,7 @@ void LatexInfo::buildEntries()
       found = keys[sub.str(3)];
       if (sub.str(3).compare("regexp") == 0) {
         evaluatingRegexp = true;
-        found._tokenstart = sub.position(0);
+        found._tokenstart = sub.position(size_t(0));
         found._tokensize = 0;
         continue;
       }
@@ -1252,9 +1336,9 @@ void LatexInfo::buildEntries()
     if (found.keytype == KeyInfo::isIgnored)
       continue;
     else if (found.keytype == KeyInfo::isMath) {
-      if (size_t(sub.position(0)) == math_pos) {
+      if (size_t(sub.position(size_t(0))) == math_pos) {
         found = keys[sub.str(3)];
-        found._tokenstart = sub.position(0);
+        found._tokenstart = sub.position(size_t(0));
         found._tokensize = math_size;
         found._dataEnd = found._tokenstart + found._tokensize;
         found._dataStart = found._dataEnd;
@@ -1265,14 +1349,14 @@ void LatexInfo::buildEntries()
         continue;
     }
     else if (found.keytype != KeyInfo::isRegex) {
-      found._tokenstart = sub.position(0);
+      found._tokenstart = sub.position(size_t(0));
       if (found._tokenstart < math_end_pos) {
         // Ignore if we are inside math equation
         continue;
       }
       if (found.parenthesiscount == 0) {
         // Probably to be discarded
-        char following = interval.par[sub.position(0) + sub.str(3).length() + 1];
+        char following = interval.par[sub.position(size_t(0)) + sub.str(3).length() + 1];
         if (following == ' ')
           found.head = "\\" + sub.str(3) + " ";
         else if (following == '=') {
@@ -1296,91 +1380,95 @@ void LatexInfo::buildEntries()
         found._tokensize = found.head.length();
         found._dataStart = found._tokenstart + found.head.length();
         found._dataEnd = interval.findclosing(found._dataStart, interval.par.length());
+        if (isPatternString) {
+          keys[sub.str(3)].used = true;
+        }
       }
     }
     entries.push_back(found);
   }
 }
 
-void LatexInfo::makeKey(const string &keysstring, KeyInfo keyI)
+void LatexInfo::makeKey(const string &keysstring, KeyInfo keyI, bool isPatternString)
 {
   stringstream s(keysstring);
   string key;
-  KeyInfo keyII(keyI);
   const char delim = '|';
   while (getline(s, key, delim)) {
+    KeyInfo keyII(keyI);
+    if (isPatternString) {
+      keyII.used = false;
+    }
+    else if ( !keys[key].used)
+      keyII.disabled = true;
     keys[key] = keyII;
   }
 }
 
-void LatexInfo::buildKeys()
+void LatexInfo::buildKeys(bool isPatternString)
 {
-  static bool keysBuilt        = false;
-  static bool ignoreFamily     = false;
-  static bool ignoreSeries     = false;
-  static bool ignoreShape      = false;
-  static bool ignoreUnderline  = false;
-  static bool ignoreMarkUp     = false;
-  static bool ignoreStrikeOut  = false;
-  static bool ignoreSectioning = false;
-  static bool ignoreFrontMatter= true;
-  static bool ignoreColor      = false;
-  static bool ignoreLanguage   = false;
 
-  if (keysBuilt) return;
+  static bool keysBuilt = false;
+  if (keysBuilt && !isPatternString) return;
 
   // Know statdard keys with 1 parameter.
   // Split is done, if not at start of region
-  makeKey("textsf|textss|texttt", KeyInfo(KeyInfo::isStandard, 1, ignoreFamily));
-  makeKey("textbf",               KeyInfo(KeyInfo::isStandard, 1, ignoreSeries));
-  makeKey("textit|textsc|textsl", KeyInfo(KeyInfo::isStandard, 1, ignoreShape));
-  makeKey("uuline|uline|uwave",   KeyInfo(KeyInfo::isStandard, 1, ignoreUnderline));
-  makeKey("emph|noun",            KeyInfo(KeyInfo::isStandard, 1, ignoreMarkUp));
-  makeKey("sout|xout",            KeyInfo(KeyInfo::isStandard, 1, ignoreStrikeOut));
-
+  makeKey("textsf|textss|texttt", KeyInfo(KeyInfo::isStandard, 1, f.getFamily()), isPatternString);
+  makeKey("textbf",               KeyInfo(KeyInfo::isStandard, 1, f.getSeries()), isPatternString);
+  makeKey("textit|textsc|textsl", KeyInfo(KeyInfo::isStandard, 1, f.getShape()), isPatternString);
+  makeKey("uuline|uline|uwave",   KeyInfo(KeyInfo::isStandard, 1, f.getUnderline()), isPatternString);
+  makeKey("emph|noun",            KeyInfo(KeyInfo::isStandard, 1, f.getMarkUp()), isPatternString);
+  makeKey("sout|xout",            KeyInfo(KeyInfo::isStandard, 1, f.getStrikeOut()), isPatternString);
 
   makeKey("section|subsection|subsubsection|paragraph|subparagraph|minisec",
-          KeyInfo(KeyInfo::isSectioning, 1, ignoreSectioning));
+          KeyInfo(KeyInfo::isSectioning, 1, f.getSectioning()), isPatternString);
   makeKey("section*|subsection*|subsubsection*|paragraph*",
-          KeyInfo(KeyInfo::isSectioning, 1, ignoreSectioning));
-  makeKey("part|part*|chapter|chapter*", KeyInfo(KeyInfo::isSectioning, 1, ignoreSectioning));
-  makeKey("title|subtitle|author|subject|publishers|dedication|uppertitleback|lowertitleback|extratitle|lyxaddress|lyxrightaddress", KeyInfo(KeyInfo::isSectioning, 1, ignoreFrontMatter));
+          KeyInfo(KeyInfo::isSectioning, 1, f.getSectioning()), isPatternString);
+  makeKey("part|part*|chapter|chapter*", KeyInfo(KeyInfo::isSectioning, 1, f.getSectioning()), isPatternString);
+  makeKey("title|subtitle|author|subject|publishers|dedication|uppertitleback|lowertitleback|extratitle|lyxaddress|lyxrightaddress", KeyInfo(KeyInfo::isSectioning, 1, f.getFrontMatter()), isPatternString);
   // Regex
-  makeKey("regexp", KeyInfo(KeyInfo::isRegex, 1, false));
+  makeKey("regexp", KeyInfo(KeyInfo::isRegex, 1, false), isPatternString);
 
   // Split is done, if not at start of region
-  makeKey("textcolor", KeyInfo(KeyInfo::isStandard, 2, ignoreColor));
+  makeKey("textcolor", KeyInfo(KeyInfo::isStandard, 2, f.getColor()), isPatternString);
 
   // Split is done always.
-  makeKey("foreignlanguage", KeyInfo(KeyInfo::isMain, 2, ignoreLanguage));
+  makeKey("foreignlanguage", KeyInfo(KeyInfo::isMain, 2, f.getLanguage()), isPatternString);
 
   // Know charaters
   // No split
-  makeKey("backslash|textbackslash", KeyInfo(KeyInfo::isChar, 1, false));
+  makeKey("backslash|textbackslash|textasciicircum|textasciitilde", KeyInfo(KeyInfo::isChar, 1, false), isPatternString);
 
   // Known macros to remove (including their parameter)
   // No split
-  makeKey("inputencoding|shortcut", KeyInfo(KeyInfo::doRemove, 1, false));
+  makeKey("inputencoding|shortcut", KeyInfo(KeyInfo::doRemove, 1, false), isPatternString);
 
   // Macros to remove, but let the parameter survive
   // No split
-  makeKey("url|href|menuitem|footnote|code", KeyInfo(KeyInfo::isStandard, 1, true));
+  makeKey("url|href|menuitem|footnote|code", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
 
   // Same effect as previous, parameter will survive (because there is no one anyway)
   // No split
-  makeKey("noindent", KeyInfo(KeyInfo::isStandard, 0, true));
+  makeKey("noindent", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
   // like ('tiny{}' or '\tiny ' ... }
-  makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, true));
+  makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, true), isPatternString);
 
   // Survives, like known character
-  makeKey("lyx", KeyInfo(KeyInfo::isIgnored, 0, false));
+  makeKey("lyx", KeyInfo(KeyInfo::isIgnored, 0, false), isPatternString);
 
-  makeKey("begin", KeyInfo(KeyInfo::isMath, 1, false));
-  makeKey("end", KeyInfo(KeyInfo::isMath, 1, false));
+  makeKey("begin", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
+  makeKey("end", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
 
-  makeKey("par|uldepth|ULdepth", KeyInfo(KeyInfo::doRemove, 0, true));
+  makeKey("par|uldepth|ULdepth", KeyInfo(KeyInfo::doRemove, 0, true), isPatternString);
 
-  keysBuilt = true;
+  if (isPatternString) {
+    // Allow the first searched string to rebuild the keys too
+    keysBuilt = false;
+  }
+  else {
+    // no need to rebuild again
+    keysBuilt = true;
+  }
 }
 
 /*
@@ -1656,9 +1744,9 @@ int LatexInfo::process(ostringstream &os, KeyInfo &actual )
   return nextKeyIdx;
 }
 
-string splitOnKnownMacros(string par) {
+string splitOnKnownMacros(string par, bool isPatternString) {
   ostringstream os;
-  LatexInfo li(par);
+  LatexInfo li(par, isPatternString);
   KeyInfo DummyKey = KeyInfo(KeyInfo::KeyType::isMain, 2, true);
   DummyKey.head = "";
   DummyKey._tokensize = 0;
@@ -1723,7 +1811,7 @@ string splitOnKnownMacros(string par) {
  * Resulting modified string is set to "", if
  * the searched tex does not contain all the features in the search pattern
  */
-static string correctlanguagesetting(string par, bool from_regex, bool withformat)
+static string correctlanguagesetting(string par, bool isPatternString, bool withformat)
 {
 	static Features regex_f;
 	static int missed = 0;
@@ -1739,12 +1827,12 @@ static string correctlanguagesetting(string par, bool from_regex, bool withforma
 		// Split the latex input into pieces which
 		// can be digested by our search engine
 		LYXERR(Debug::FIND, "input: \"" << par << "\"");
-		result = splitOnKnownMacros(par);
+		result = splitOnKnownMacros(par, isPatternString);
 		LYXERR(Debug::FIND, "After split: \"" << result << "\"");
 	}
 	else
 		result = par.substr(0, parlen);
-	if (from_regex) {
+	if (isPatternString) {
 		missed = 0;
 		if (withformat) {
 			regex_f = identifyFeatures(result);
