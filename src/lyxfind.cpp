@@ -1155,7 +1155,6 @@ bool IgnoreFormats::ignoreFrontMatter= true;
 bool IgnoreFormats::ignoreColor      = false;
 bool IgnoreFormats::ignoreLanguage   = false;
 
-#if 0
 void IgnoreFormats::setIgnoreFormat(string type, bool value)
 {
   if (type == "color") {
@@ -1192,14 +1191,11 @@ void IgnoreFormats::setIgnoreFormat(string type, bool value)
     ignoreStrikeOut = value;
   }
 }
-#endif
 
-#if 0
 void setIgnoreFormat(string type, bool value)
 {
   IgnoreFormats().setIgnoreFormat(type, value);
 }
-#endif
 
 class LatexInfo {
  private:
