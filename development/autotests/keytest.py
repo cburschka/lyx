@@ -593,7 +593,7 @@ if qt_frontend is None:
     qt_frontend = 'QT4'
 if qt_frontend == 'QT5':
     # Some tests sometimes failed with value 0.01 on Qt5.8
-    controlkey_delay = 0.02
+    controlkey_delay = 0.4
 else:
     controlkey_delay = 0.4
 

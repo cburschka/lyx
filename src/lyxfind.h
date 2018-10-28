@@ -138,6 +138,10 @@ docstring stringifyFromForSearch(
 	DocIterator const & cur,
 	int len = -1);
 
+/** Set format type to be ignore by search
+ **/
+void setIgnoreFormat(std::string type, bool value);
+
 } // namespace lyx
 
 #endif // LYXFIND_H

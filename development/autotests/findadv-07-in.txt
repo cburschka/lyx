@@ -3,6 +3,7 @@
 Lang sk_SK.utf8
 CO: findadv-07.ctrl
 TestBegin test.lyx -dbg key,find > findadv-07.loga.txt 2>&1
+KD: 100
 CN: Part 1
 KK: foo bar\[Return]
 #select itemized
@@ -15,6 +16,7 @@ KK: \Axdialog-show findreplaceadv\[Return]
 # Uncheck ignore format
 KK: \At\Ai\Ah
 KK: \Aob
+Sleep 1
 KK: foo\[Return]
 CP: Putting selection at .*idx: 0 par: 1 pos: 0\n with len: 3
 #
@@ -26,6 +28,7 @@ KK: \[Delete]
 # Uncheck ignore format
 #KK: \At\Ai\Ah
 KK: \Aob
+Sleep 1
 KK: bar\[Return]
 CP: Putting selection at .*idx: 0 par: 1 pos: 4\n with len: 3
 TestEnd

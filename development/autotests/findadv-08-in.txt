@@ -6,6 +6,7 @@ PrepareShortcuts
 Lang sk_SK.utf8
 CO: findadv-08.ctrl
 TestBegin test.lyx -dbg key,find > findadv-08.loga.txt 2>&1
+KD: 100
 CN: Part 1
 Cr: ^.*Putting
 CP: Key (queried) [action=buffer-begin][Ctrl+Home]
