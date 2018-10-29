@@ -1289,6 +1289,7 @@ void LatexInfo::buildEntries(bool isPatternString)
   static bool disableLanguageOverride = false;
   smatch sub, submath;
   bool evaluatingRegexp = false;
+  bool evaluatingMath = false;
   KeyInfo found;
   bool math_end_waiting = false;
   size_t math_pos = 10000;
@@ -1373,6 +1374,11 @@ void LatexInfo::buildEntries(bool isPatternString)
       }
     }
     else {
+      if (evaluatingMath) {
+        if (sub.position(size_t(0)) < math_end_pos)
+          continue;
+        evaluatingMath = false;
+      }
       if (keys.find(key) == keys.end()) {
         LYXERR(Debug::FIND, "Found unknown key " << sub.str(0));
         continue;
@@ -1397,6 +1403,7 @@ void LatexInfo::buildEntries(bool isPatternString)
         found._dataStart = found._dataEnd;
         found.parenthesiscount = 0;
         math_end_pos = found._dataEnd;
+        evaluatingMath = true;
       }
       else
         continue;

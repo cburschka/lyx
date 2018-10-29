@@ -3,6 +3,7 @@
 Lang sk_SK.utf8
 CO: findadv-re-06.ctrl
 TestBegin test.lyx -dbg key,find > findadv-re-06.loga.txt 2>&1
+KD: 50
 KK: \Cm\\frac 1-x\[Down]1+x^2 \C\[Home]
 KK: \CF
 # Uncheck ignore format (depends on IT language)

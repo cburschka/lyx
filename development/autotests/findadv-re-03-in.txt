@@ -42,6 +42,7 @@ KK: \CF
 KK: \At\Ai\Ah
 KK: \Axregexp-mode\[Return]\\}\[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 6\n with len: 1
+Sleep 1
 TestEnd
 Lang C
 Assert searchPatterns.pl base=findadv-re-03
