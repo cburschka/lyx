@@ -597,6 +597,7 @@ Escapes const & get_regexp_latex_escapes()
 		escape_map.push_back(P("\\]", "\\{\\]\\}"));
 		escape_map.push_back(P("\\^", "(?:\\^|\\\\textasciicircum\\{\\}|\\\\textasciicircum|\\\\mathcircumflex)"));
 		escape_map.push_back(P("%", "\\\\\\%"));
+		escape_map.push_back(P("#", "\\\\#"));
 	}
 	return escape_map;
 }
@@ -1191,11 +1192,15 @@ void IgnoreFormats::setIgnoreFormat(string type, bool value)
     ignoreStrikeOut = value;
   }
 }
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpragmas"
+#pragma GCC diagnostic ignored "-Wunused-function"
 
 void setIgnoreFormat(string type, bool value)
 {
   IgnoreFormats().setIgnoreFormat(type, value);
 }
+#pragma GCC diagnostic pop
 
 class LatexInfo {
  private:
@@ -1613,8 +1618,10 @@ void Intervall::output(ostringstream &os, int lastpos)
 
 void LatexInfo::processRegion(int start, int region_end)
 {
-  while (start < region_end) {
-    if (interval.par[start] == '{') {
+  while (start < region_end) {          /* Let {[} and {]} survive */
+    if ((interval.par[start] == '{') &&
+        (interval.par[start+1] != ']') &&
+        (interval.par[start+1] != '[')) {
       // Closing is allowed past the region
       int closing = interval.findclosing(start+1, interval.par.length());
       interval.addIntervall(start, start+1);
