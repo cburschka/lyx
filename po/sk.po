@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-10-04 22:55+0200\n"
-"PO-Revision-Date: 2018-10-04 21:02+0000\n"
+"POT-Creation-Date: 2018-10-30 23:11+0100\n"
+"PO-Revision-Date: 2018-10-30 22:12+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -4435,6 +4435,18 @@ msgstr "Ponuky"
 #: src/frontends/qt4/ui/PrefUi.ui:162
 msgid "&Maximum last files:"
 msgstr "&Maximum posledných súborov:"
+
+#: src/frontends/qt4/ui/PrefsUi.ui:87
+msgid ""
+"If this is checked, pressing OK or Apply will save the changes only for the "
+"current LyX session, not permanently."
+msgstr ""
+"Keď zaškrtnuté, tlačením 'OK' alebo 'Použiť' sa zmeny ukladnú len pre "
+"súčasné LyX-sedenie a nie na trvalo."
+
+#: src/frontends/qt4/ui/PrefsUi.ui:90
+msgid "A&pply to current session only"
+msgstr "Po&užiť len pre súčasné sedenie"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:70 src/frontends/qt4/GuiView.cpp:3100
 #: src/frontends/qt4/GuiView.cpp:3114 src/frontends/qt4/GuiView.cpp:3216
