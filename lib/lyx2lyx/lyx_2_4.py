@@ -36,7 +36,7 @@ from parser_tools import (count_pars_in_inset, find_end_of_inset, find_end_of_la
 #    is_in_inset, set_bool_value
 #    find_tokens, find_token_exact, check_token
 
-from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble)
+from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble, get_language_for_line)
 #  revert_font_attrs, insert_to_preamble, latex_length
 #  get_ert, lyx2latex, lyx2verbatim, length_in_bp, convert_info_insets
 #  revert_flex_inset, hex2ratio, str2bool
@@ -1381,6 +1381,22 @@ def revert_lformatinfo(document):
         i = i + 1
 
 
+def convert_hebrew_parentheses(document):
+    " Don't reverse parentheses in Hebrew text"
+    for i, line in enumerate(document.body):
+        if line.startswith('\\\\'):
+            # not a text line, skip
+            continue
+        if get_language_for_line(document, i) == 'hebrew':
+            document.body[i] = line.replace('(','\x00').replace(')','(').replace('\x00',')')
+
+
+def revert_hebrew_parentheses(document):
+    " Store parentheses in Hebrew text reversed"
+    # This only exists to keep the convert/revert nameing convention
+    convert_hebrew_parentheses(document)
+
+
 ##
 # Conversion hub
 #
@@ -1408,9 +1424,11 @@ convert = [
            [563, []],
            [564, []],
            [565, [convert_AdobeFonts]], # Handle adobe fonts in GUI
+           [566, [convert_hebrew_parentheses]],
           ]
 
 revert =  [
+           [565, [revert_hebrew_parentheses]],
            [564, [revert_AdobeFonts]],
            [563, [revert_lformatinfo]],
            [562, [revert_listpargs]],

@@ -1998,47 +1998,44 @@ char_type Paragraph::getUChar(BufferParams const & bparams,
 {
 	char_type c = d->text_[pos];
 
-	// Return unchanged character in LTR languages.
-	if (!getFontSettings(bparams, pos).isRightToLeft())
+	// Return unchanged character in LTR languages
+	// or if we use poylglossia/bidi.
+	if (rp.use_polyglossia || !getFontSettings(bparams, pos).isRightToLeft())
 		return c;
 
-	// FIXME This is a complete mess due to all the language-specific
-	// special cases. We need to unify this eventually, but this
-	// requires a file format change and some thought.
-	// We also need to unify the input of parentheses in different RTL
-	// languages. Currently, some have their own methods (Arabic:
-	// 18599/lyxsvn, Hebrew: e5f42f67d/lyxgit), some don't (Urdu, Syriac).
-	// Also note that the representation in the LyX file is probably wrong
-	// (see FIXME in TextMetrics::breakRow).
-	// Most likely, we should simply rely on Qt's unicode handling here.
+	// Without polyglossia/bidi, we need to account for some special cases.
+	// FIXME This needs to be audited!
+	// Check if:
+	// * The input is as expected for all delimiters
+	//   => checked for Hebrew!
+	// * The output matches the display in the LyX workarea
+	//   => checked for Hebrew!
+	// * The special cases below are really necessary
+	//   => checked for Hebrew!
+	// * In arabic_arabi, brackets are transformed to Arabic
+	//   Ornate Parentheses. Is this is really wanted?
+
 	string const & lang = getFontSettings(bparams, pos).language()->lang();
-
-	// With polyglossia, brackets and stuff need not be reversed in RTL scripts
-	// FIXME: The special casing for Hebrew parens is due to the special
-	// handling on input (for Hebrew in e5f42f67d/lyxgit); see #8251.
 	char_type uc = c;
-	if (rp.use_polyglossia) {
-		switch (c) {
-		case '(':
-			if (lang == "hebrew")
-				uc = ')';
-			break;
-		case ')':
-			if (lang == "hebrew")
-				uc = '(';
-			break;
-		}
-		return uc;
-	}
 
-	// In the following languages, brackets don't need to be reversed.
-	// Furthermore, in arabic_arabi, they are transformed to Arabic
-	// Ornate Parentheses (dunno if this is really wanted)
+	// 1. In the following languages, parentheses need to be reversed.
+	bool const reverseparens = lang == "hebrew";
+
+	// 2. In the following languages, brackets don't need to be reversed.
 	bool const reversebrackets = lang != "arabic_arabtex"
 			&& lang != "arabic_arabi"
-			&& lang != "farsi"; 
+			&& lang != "farsi";
 
+	// Now swap delimiters if needed.
 	switch (c) {
+	case '(':
+		if (reverseparens)
+			uc = ')';
+		break;
+	case ')':
+		if (reverseparens)
+			uc = '(';
+		break;
 	case '[':
 		if (reversebrackets)
 			uc = ']';

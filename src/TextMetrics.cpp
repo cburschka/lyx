@@ -892,17 +892,8 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 			// ¶ U+00B6 PILCROW SIGN
 			char_type const screen_char = (c == 0x2028) ? 0x2936 : 0x00B6;
 			row.add(i, screen_char, *fi, par.lookupChange(i));
-		} else {
-			// FIXME: please someone fix the Hebrew/Arabic parenthesis mess!
-			// see also Paragraph::getUChar.
-			if (fi->language()->lang() == "hebrew") {
-				if (c == '(')
-					c = ')';
-				else if (c == ')')
-					c = '(';
-			}
+		} else
 			row.add(i, c, *fi, par.lookupChange(i));
-		}
 
 		// add inline completion width
 		// draw logically behind the previous character
