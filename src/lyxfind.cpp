@@ -1194,9 +1194,16 @@ void IgnoreFormats::setIgnoreFormat(string type, bool value)
 }
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wpragmas"
+#pragma GCC diagnostic ignored "-Wunused"
 #pragma GCC diagnostic ignored "-Wunused-function"
 
-void setIgnoreFormat(string type, bool value)
+#ifdef __GNUC__
+#define SUPPRESS_NOT_USED_WARN __attribute__ ((unused))
+#else
+#define SUPPRESS_NOT_USED_WARN
+#endif
+
+void SUPPRESS_NOT_USED_WARN setIgnoreFormat(string type, bool value)
 {
   IgnoreFormats().setIgnoreFormat(type, value);
 }
@@ -1282,6 +1289,64 @@ int Intervall::findclosing(int start, int end)
   return(end);
 }
 
+class MathInfo {
+  class MathEntry {
+  public:
+    string wait;
+    size_t mathEnd;
+    size_t mathStart;
+    size_t mathSize;
+  };
+  size_t actualIdx;
+  vector<MathEntry> entries;
+ public:
+  MathInfo() {
+    actualIdx = 0;
+  }
+  void insert(string wait, size_t start, size_t end) {
+    MathEntry m = MathEntry();
+    m.wait = wait;
+    m.mathStart = start;
+    m.mathEnd = end;
+    m.mathSize = end - start;
+    entries.push_back(m);
+  }
+  bool evaluating(size_t pos) {
+    while (actualIdx < entries.size()) {
+      if (pos < entries[actualIdx].mathStart)
+        return false;
+      if (pos < entries[actualIdx].mathEnd)
+        return true;
+      actualIdx++;
+    }
+    return false;
+  }
+  bool empty() { return(entries.empty()); };
+  size_t getEndPos() {
+    if (entries.empty() || (actualIdx >= entries.size())) {
+      return 0;
+    }
+    return entries[actualIdx].mathEnd;
+  }
+  size_t getStartPos() {
+    if (entries.empty() || (actualIdx >= entries.size())) {
+      return 100000;                    /*  definitely enough? */
+    }
+    return entries[actualIdx].mathStart;
+  }
+  size_t getFirstPos() {
+    actualIdx = 0;
+    return getStartPos();
+  }
+  size_t getSize() {
+    if (entries.empty() || (actualIdx >= entries.size())) {
+      return size_t(0);
+    }
+    return entries[actualIdx].mathSize;
+  }
+  void incrEntry() { actualIdx++; };
+};
+
 void LatexInfo::buildEntries(bool isPatternString)
 {
   static regex const rmath("\\$|\\\\\\[|\\\\\\]|\\\\(begin|end)\\{((eqnarray|equation|flalign|gather|multiline|align)\\*?)\\}");
@@ -1289,12 +1354,11 @@ void LatexInfo::buildEntries(bool isPatternString)
   static bool disableLanguageOverride = false;
   smatch sub, submath;
   bool evaluatingRegexp = false;
+  MathInfo mi;
   bool evaluatingMath = false;
   KeyInfo found;
   bool math_end_waiting = false;
   size_t math_pos = 10000;
-  int math_size = 0;
-  int math_end_pos = -1;
   string math_end;
 
   for (sregex_iterator itmath(interval.par.begin(), interval.par.end(), rmath), end; itmath != end; ++itmath) {
@@ -1303,19 +1367,19 @@ void LatexInfo::buildEntries(bool isPatternString)
       size_t pos = submath.position(size_t(0));
       if (math_end == "$") {
         if ((submath.str(0) == "$") && (interval.par[pos-1] != '\\')) {
-          math_size = pos + 1 - math_pos;
+          mi.insert("$", math_pos, pos + 1);
           math_end_waiting = false;
         }
       }
       else if (math_end == "\\]") {
         if (submath.str(0) == "\\]") {
-          math_size = pos + 2 - math_pos;
+          mi.insert("\\]", math_pos, pos + 2);
           math_end_waiting = false;
         }
       }
       else if ((submath.str(1).compare("end") == 0) &&
           (submath.str(2).compare(math_end) == 0)) {
-        math_size = pos + submath.str(0).length() - math_pos;
+        mi.insert(math_end, math_pos, pos + submath.str(0).length());
         math_end_waiting = false;
       }
     }
@@ -1341,7 +1405,7 @@ void LatexInfo::buildEntries(bool isPatternString)
     }
   }
   if (isPatternString) {
-    if (math_pos < interval.par.length()) {
+    if (! mi.empty()) {
       // Disable language
       keys["foreignlanguage"].disabled = true;
       disableLanguageOverride = true;
@@ -1354,6 +1418,7 @@ void LatexInfo::buildEntries(bool isPatternString)
       keys["foreignlanguage"].disabled = true;
     }
   }
+  math_pos = mi.getFirstPos();
   for (sregex_iterator it(interval.par.begin(), interval.par.end(), rkeys), end; it != end; ++it) {
     sub = *it;
     string key = sub.str(3);
@@ -1375,9 +1440,11 @@ void LatexInfo::buildEntries(bool isPatternString)
     }
     else {
       if (evaluatingMath) {
-        if (sub.position(size_t(0)) < math_end_pos)
+        if (size_t(sub.position(size_t(0))) < mi.getEndPos())
           continue;
         evaluatingMath = false;
+        mi.incrEntry();
+        math_pos = mi.getStartPos();
       }
       if (keys.find(key) == keys.end()) {
         LYXERR(Debug::FIND, "Found unknown key " << sub.str(0));
@@ -1398,11 +1465,10 @@ void LatexInfo::buildEntries(bool isPatternString)
       if (size_t(sub.position(size_t(0))) == math_pos) {
         found = keys[key];
         found._tokenstart = sub.position(size_t(0));
-        found._tokensize = math_size;
+        found._tokensize = mi.getSize();
         found._dataEnd = found._tokenstart + found._tokensize;
         found._dataStart = found._dataEnd;
         found.parenthesiscount = 0;
-        math_end_pos = found._dataEnd;
         evaluatingMath = true;
       }
       else
@@ -1410,10 +1476,6 @@ void LatexInfo::buildEntries(bool isPatternString)
     }
     else if (found.keytype != KeyInfo::isRegex) {
       found._tokenstart = sub.position(size_t(0));
-      if (found._tokenstart < math_end_pos) {
-        // Ignore if we are inside math equation
-        continue;
-      }
       if (found.parenthesiscount == 0) {
         // Probably to be discarded
         char following = interval.par[sub.position(size_t(0)) + sub.str(3).length() + 1];
@@ -1829,7 +1891,7 @@ string splitOnKnownMacros(string par, bool isPatternString) {
     KeyInfo firstKey = li.getKeyInfo(firstkeyIdx);
     int nextkeyIdx;
     if ((firstKey.keytype != KeyInfo::isMain) || firstKey.disabled) {
-      // Create dummy firstKey
+      // Use dummy firstKey
       firstKey = DummyKey;
       (void) li.setNextKey(firstkeyIdx);
     }
@@ -1844,9 +1906,10 @@ string splitOnKnownMacros(string par, bool isPatternString) {
         firstKey._dataStart = datastart;
         firstKey._dataEnd = par.length();
         (void) li.setNextKey(nextkeyIdx);
-        if (firstKey._tokensize > 0)
+        if (firstKey._tokensize > 0) {
+          // Fake the last opened parenthesis
           li.setForDefaultLang(firstKey._tokensize);
-        // Fake the last opened parenthesis
+        }
         nextkeyIdx = li.process(os, firstKey);
       }
       else {
