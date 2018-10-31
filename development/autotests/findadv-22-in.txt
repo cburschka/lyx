@@ -1,0 +1,29 @@
+# Basic test for searching with regular expressions
+UseShortcut "C-F20" "regexp-mode"
+UseShortcut "C-F21" "command-sequence dialog-show findreplaceadv ; buffer-end ; buffer-begin-select ; char-delete-forward ;"
+PrepareShortcuts
+#
+Lang sk_SK.utf8
+CO: findadv-22.ctrl
+TestBegin test.lyx -dbg key,find >findadv-22.loga.txt 2>&1
+CN: Part 1
+KK: \Cm
+KK: I_t\\wedge s
+KK: \C\[Home]
+KK: \CF
+KK: \Cm
+KK: t\\wedge s\[Return]
+KK: 
+CP: Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 0\n.*idx: 1 par: 0 pos: 0\n.*with len: 3
+
+CN: Part 2
+KK: \[Escape]\C\[Home]
+KK: \CF
+KK: \At\Ai\Ah
+KK: \[Return]
+CP: Identified Features
+CP: Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 0\n.*idx: 1 par: 0 pos: 0\n.*with len: 3
+TestEnd
+Lang C
+Assert searchPatterns.pl base=findadv-22
+
