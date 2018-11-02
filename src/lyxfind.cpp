@@ -948,8 +948,9 @@ class Border {
 
 #define MAXOPENED 30
 class Intervall {
+  bool isPatternString;
  public:
- Intervall() : ignoreidx(-1), actualdeptindex(0) {};
+ Intervall(bool isPattern) : isPatternString(isPattern), ignoreidx(-1), actualdeptindex(0) {};
   string par;
   int ignoreidx;
   int depts[MAXOPENED];
@@ -1213,7 +1214,6 @@ class LatexInfo {
  private:
   int entidx;
   Entries entries;
-  KeyInfo analyze(string key);
   Intervall interval;
   void buildKeys(bool);
   void buildEntries(bool);
@@ -1223,7 +1223,7 @@ class LatexInfo {
   IgnoreFormats f;
 
  public:
-  LatexInfo(string par, bool isPatternString) {
+ LatexInfo(string par, bool isPatternString) : interval(isPatternString) {
     interval.par = par;
     buildKeys(isPatternString);
     entries = vector<KeyInfo>();
@@ -1404,6 +1404,7 @@ void LatexInfo::buildEntries(bool isPatternString)
       }
     }
   }
+  // Ignore language if there is math somewhere in pattern-string
   if (isPatternString) {
     if (! mi.empty()) {
       // Disable language
@@ -1497,7 +1498,6 @@ void LatexInfo::buildEntries(bool isPatternString)
         }
         else if (found.parenthesiscount == 2) {
           found.head = sub.str(0) + "{";
-          found._tokensize = found.head.length();
         }
         found._tokensize = found.head.length();
         found._dataStart = found._tokenstart + found.head.length();
@@ -1533,7 +1533,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   static bool keysBuilt = false;
   if (keysBuilt && !isPatternString) return;
 
-  // Know statdard keys with 1 parameter.
+  // Know standard keys with 1 parameter.
   // Split is done, if not at start of region
   makeKey("textsf|textss|texttt", KeyInfo(KeyInfo::isStandard, 1, f.getFamily()), isPatternString);
   makeKey("textbf",               KeyInfo(KeyInfo::isStandard, 1, f.getSeries()), isPatternString);
@@ -1563,7 +1563,7 @@ void LatexInfo::buildKeys(bool isPatternString)
 
   // Known macros to remove (including their parameter)
   // No split
-  makeKey("inputencoding|shortcut", KeyInfo(KeyInfo::doRemove, 1, false), isPatternString);
+  makeKey("inputencoding|shortcut|label|ref", KeyInfo(KeyInfo::doRemove, 1, false), isPatternString);
 
   // Macros to remove, but let the parameter survive
   // No split
@@ -1576,14 +1576,14 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, true), isPatternString);
 
   // Survives, like known character
-  makeKey("lyx", KeyInfo(KeyInfo::isIgnored, 0, false), isPatternString);
+  makeKey("lyx|latex|tex", KeyInfo(KeyInfo::isIgnored, 0, false), isPatternString);
   makeKey("item", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
 
   makeKey("begin|end", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
   makeKey("[|]", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
   makeKey("$", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
 
-  makeKey("par|uldepth|ULdepth", KeyInfo(KeyInfo::doRemove, 0, true), isPatternString);
+  makeKey("par|uldepth|ULdepth|protect", KeyInfo(KeyInfo::doRemove, 0, true), isPatternString);
 
   if (isPatternString) {
     // Allow the first searched string to rebuild the keys too
@@ -1682,6 +1682,8 @@ void Intervall::output(ostringstream &os, int lastpos)
   for (int i = actualdeptindex; i > 0; --i) {
     os << "}";
   }
+  if (! isPatternString)
+    os << "\n";
   handleParentheses(lastpos, true); /* extra closings '}' allowed here */
 }
 
@@ -2083,6 +2085,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 			while ( regex_replace(par_as_string, par_as_string, "(.*)\\\\}$", "$1")) {
 				open_braces++;
 			}
+			/*
 			// save '\.'
 			regex_replace(par_as_string, par_as_string, "\\\\\\.", "_xxbdotxx_");
 			// handle '.' -> '[^]', replace later as '[^\}\{\\]'
@@ -2093,6 +2096,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 			regex_replace(par_as_string, par_as_string, "_xxbrrxx_", "]");
 			// restore '\.'
 			regex_replace(par_as_string, par_as_string, "_xxbdotxx_", "\\.");
+			*/
 		}
 		LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
 		LYXERR(Debug::FIND, "Open braces: " << open_braces);
@@ -2305,16 +2309,17 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 			AS_STR_INSETS | AS_STR_SKIPDELETE | AS_STR_PLAINTEXT,
 			&runparams);
 	} else if (cur.inMathed()) {
-		docstring s;
 		CursorSlice cs = cur.top();
 		MathData md = cs.cell();
 		MathData::const_iterator it_end =
 			(( len == -1 || cs.pos() + len > int(md.size()))
 			 ? md.end()
 			 : md.begin() + cs.pos() + len );
+		MathData md2;
 		for (MathData::const_iterator it = md.begin() + cs.pos();
 		     it != it_end; ++it)
-			s = s + asString(*it);
+			md2.push_back(*it);
+		docstring s = asString(md2);
 		LYXERR(Debug::FIND, "Stringified math: '" << s << "'");
 		return s;
 	}
@@ -2371,10 +2376,12 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 			((len == -1 || cs.pos() + len > int(md.size()))
 			 ? md.end()
 			 : md.begin() + cs.pos() + len);
+		MathData md2;
 		for (MathData::const_iterator it = md.begin() + cs.pos();
 		     it != it_end; ++it)
-			ods << asString(*it);
+			md2.push_back(*it);
 
+		ods << asString(md2);
 		// Retrieve the math environment type, and add '$' or '$]'
 		// or others (\end{equation}) accordingly
 		for (int s = cur.depth() - 1; s >= 0; --s) {
