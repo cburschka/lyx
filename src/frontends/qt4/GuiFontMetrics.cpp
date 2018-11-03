@@ -256,13 +256,27 @@ GuiFontMetrics::getTextLayout(docstring const & s, bool const rtl,
 	PROFILE_CACHE_MISS(getTextLayout);
 	auto const ptl = make_shared<QTextLayout>();
 	ptl->setCacheEnabled(true);
-	ptl->setText(toqstr(s));
 	QFont copy = font_;
 	copy.setWordSpacing(wordspacing);
 	ptl->setFont(copy);
-	// FIXME: This might not work in all cases. See breakAt_helper.
+#if 1
+	/* Use unicode override characters to enforce drawing direction
+	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
+	 */
+	if (rtl)
+		// Right-to-left override: forces to draw text right-to-left
+		ptl->setText(QChar(0x202E) + toqstr(s));
+	else
+		// Left-to-right override: forces to draw text left-to-right
+		ptl->setText(QChar(0x202D) + toqstr(s));
+#define TEXTLAYOUT_OFFSET 1
+#else
+	// FIXME: This does not work with Qt 5.11 (ticket #11284).
 	// Note that both setFlags and the enums are undocumented
 	ptl->setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
+	ptl->setText(toqstr(s));
+#define TEXTLAYOUT_OFFSET 0
+#endif
 	ptl->beginLayout();
 	ptl->createLine();
 	ptl->endLayout();
@@ -281,7 +295,9 @@ int GuiFontMetrics::pos2x(docstring const & s, int pos, bool const rtl,
 	 * not be the same when there are high-plan unicode characters
 	 * (bug #10443).
 	 */
-	int const qpos = toqstr(s.substr(0, pos)).length();
+	// TEXTLAYOUT_OFFSET accounts for a possible direction override
+	// character in front of the string.
+	int const qpos = toqstr(s.substr(0, pos)).length() + TEXTLAYOUT_OFFSET;
 	return static_cast<int>(tl->lineForTextPosition(qpos).cursorToX(qpos));
 }
 
@@ -323,7 +339,9 @@ int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl,
 	 * (bug #10443).
 	 */
 #if QT_VERSION < 0x040801 || QT_VERSION >= 0x050100
-	return qstring_to_ucs4(tl->text().left(qpos)).length();
+	int pos = qstring_to_ucs4(tl->text().left(qpos)).length();
+	// there may be a direction override character in front of the string.
+	return max(pos - TEXTLAYOUT_OFFSET, 0);
 #else
 	/* Due to QTBUG-25536 in 4.8.1 <= Qt < 5.1.0, the string returned
 	 * by QString::toUcs4 (used by qstring_to_ucs4) may have wrong
@@ -333,6 +351,8 @@ int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl,
 	 * worthwhile to implement a dichotomy search if this shows up
 	 * under a profiler.
 	 */
+	// there may be a direction override character in front of the string.
+	qpos = max(qpos - TEXTLAYOUT_OFFSET, 0);
 	int pos = min(qpos, static_cast<int>(s.length()));
 	while (pos >= 0 && toqstr(s.substr(0, pos)).length() != qpos)
 		--pos;
