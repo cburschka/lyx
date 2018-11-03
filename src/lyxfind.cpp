@@ -849,7 +849,7 @@ static size_t identifyLeading(string const & s)
 	while (regex_replace(t, t, REGEX_BOS "\\\\(((emph|noun|minisec|text(bf|sl|sf|it|tt))|((textcolor|foreignlanguage)\\{[a-z]+\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)\\{", "")
 	       || regex_replace(t, t, REGEX_BOS "\\$", "")
 	       || regex_replace(t, t, REGEX_BOS "\\\\\\[ ", "")
-	       || regex_replace(t, t, REGEX_BOS "\\\\item ", "")
+	       || regex_replace(t, t, REGEX_BOS " ?\\\\item\\{[a-z]+\\}", "")
 	       || regex_replace(t, t, REGEX_BOS "\\\\begin\\{[a-zA-Z_]*\\*?\\} ", ""))
 	       ;
 	LYXERR(Debug::FIND, "  after removing leading $, \\[ , \\emph{, \\textbf{, etc.: '" << t << "'");
@@ -868,7 +868,7 @@ typedef map<string, bool> Features;
 static Features identifyFeatures(string const & s)
 {
 	static regex const feature("\\\\(([a-z]+(\\{([a-z]+)\\}|\\*)?))\\{");
-	static regex const valid("^(((emph|noun|text(bf|sl|sf|it|tt)|(textcolor|foreignlanguage)\\{[a-z]+\\})|item |(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)$");
+	static regex const valid("^(((emph|noun|text(bf|sl|sf|it|tt)|(textcolor|foreignlanguage|item)\\{[a-z]+\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)$");
 	smatch sub;
 	bool displ = true;
 	Features info;
@@ -914,6 +914,7 @@ class KeyInfo {
     isSize,
     invalid,
     doRemove,
+    isList,
     isIgnored                           /* to be ignored by creating infos */
   };
  KeyInfo()
@@ -965,7 +966,7 @@ class Intervall {
   void addIntervall(int upper);
   void addIntervall(int low, int upper); /* if explicit */
   void setForDefaultLang(int upTo);
-  int findclosing(int start, int end);
+  int findclosing(int start, int end, char up, char down);
   void handleParentheses(int lastpos, bool closingAllowed);
   void output(ostringstream &os, int lastpos);
   // string show(int lastpos);
@@ -1269,7 +1270,7 @@ class LatexInfo {
 };
 
 
-int Intervall::findclosing(int start, int end)
+int Intervall::findclosing(int start, int end, char up = '{', char down = '}')
 {
   int skip = 0;
   int depth = 0;
@@ -1278,10 +1279,10 @@ int Intervall::findclosing(int start, int end)
     c = par[i];
     skip = 0;
     if (c == '\\') skip = 1;
-    else if (c == '{') {
+    else if (c == up) {
       depth++;
     }
-    else if (c == '}') {
+    else if (c == down) {
       if (depth == 0) return(i);
       --depth;
     }
@@ -1577,7 +1578,7 @@ void LatexInfo::buildKeys(bool isPatternString)
 
   // Survives, like known character
   makeKey("lyx|latex|tex", KeyInfo(KeyInfo::isIgnored, 0, false), isPatternString);
-  makeKey("item", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  makeKey("item", KeyInfo(KeyInfo::isList, 1, false), isPatternString);
 
   makeKey("begin|end", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
   makeKey("[|]", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
@@ -1762,6 +1763,28 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
     case KeyInfo::doRemove: {
       // Remove the key with all parameters
       interval.addIntervall(actual._tokenstart, actual._dataEnd+1);
+      nextKeyIdx = getNextKey();
+      break;
+    }
+    case KeyInfo::isList: {
+      // Discard space before _tokenstart
+      int count;
+      for (count = 0; count < actual._tokenstart; count++) {
+        if (interval.par[actual._tokenstart-count-1] != ' ')
+          break;
+      }
+      if (actual.disabled) {
+        interval.addIntervall(actual._tokenstart-count, actual._dataEnd+1);
+      }
+      else {
+        interval.addIntervall(actual._tokenstart-count, actual._tokenstart);
+      }
+      // Discard extra parentheses '[]'
+      if (interval.par[actual._dataEnd+1] == '[') {
+        int posdown = interval.findclosing(actual._dataEnd+2, interval.par.length(), '[', ']');
+        interval.addIntervall(actual._dataEnd+1, actual._dataEnd+2);
+        interval.addIntervall(posdown, posdown+1);
+      }
       nextKeyIdx = getNextKey();
       break;
     }
@@ -2271,7 +2294,7 @@ string MatchStringAdv::normalize(docstring const & s, bool hack_braces) const
 	while (regex_replace(t, t, "\\\\((sub)?(((sub)?section)|paragraph)|part)\\*?(\\{(\\{\\})?\\})+", ""))
 		LYXERR(Debug::FIND, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
 
-	while (regex_replace(t, t, "\\\\(foreignlanguage|textcolor)\\{[a-z]+\\}(\\{(\\\\item |\\{\\})?\\})+", ""));
+	while (regex_replace(t, t, "\\\\(foreignlanguage|textcolor|item)\\{[a-z]+\\}(\\{(\\{\\})?\\})+", ""));
 	// FIXME - check what preceeds the brace
 	if (hack_braces) {
 		if (opt.ignoreformat)

@@ -679,11 +679,16 @@ void parStartCommand(Paragraph const & par, otexstream & os,
 		break;
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
-		os << "\\" + style.itemcommand();
-		// Item arguments
-		if (!style.itemargs().empty())
-			latexArgInsets(par, os, runparams, style.itemargs(), "item:");
-		os << " ";
+		if (runparams.for_search) {
+			os << "\\item{" << style.latexname() << "}";
+		}
+		else {
+			os << "\\" + style.itemcommand();
+			// Item arguments
+			if (!style.itemargs().empty())
+				latexArgInsets(par, os, runparams, style.itemargs(), "item:");
+			os << " ";
+		}
 		break;
 	case LATEX_BIB_ENVIRONMENT:
 		// ignore this, the inset will write itself
