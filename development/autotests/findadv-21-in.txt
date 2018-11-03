@@ -4,6 +4,7 @@
 Lang sk_SK.utf8
 CO: findadv-21.ctrl
 TestBegin test.lyx -dbg key,find > findadv-21.loga.txt 2>&1
+KD: 50
 KK: \Aob
 KK: one\[Return]
 KK: two\[Return]
@@ -22,20 +23,21 @@ KK: \CF
 # Uncheck ignore format
 KK: \At\Ai\Ah
 KK: \Aoe
-KK: \Axregexp-mode\[Return][a-z]* \[Return]\[Return]\[Return]\[Return]\[Return]
+KK: \Axregexp-mode\[Return][a-z]* \[Return]\[Return]
 Cr: ^.*Putting
-Cr: ^.*action=buffer-begin
+#Cr: ^.*action=buffer-begin
 CP: Putting selection at cur= inset: .* idx: 0 par: 3 pos: 0\n with len: 4
+CP: Putting selection at cur= inset: .* idx: 0 par: 4 pos: 0\n with len: 4
 
 KK: \[Escape]\[Escape]\C\[Home]
 Cr: ^.*Putting
-CP: Key (queried) [action=buffer-begin][Ctrl+Home]
+#CP: Key (queried) [action=buffer-begin][Ctrl+Home]
 
 KK: \CF\[Delete]
 # Uncheck ignore format
 #KK: \At\Ai\Ah
 KK: \Aol
-KK: \Axregexp-mode\[Return][a-z]2  \Axregexp-mode\[Return][a-z]*
+KK: \Axregexp-mode\[Return][a-z]2  \Axregexp-mode\[Return][a-z]+
 KK: \[Return]\[Return]\[Return]\[Return]\[Return]\[Return]
 Cr: ^.*Putting
 CP: Putting selection at cur= inset: .* idx: 0 par: 6 pos: 0\n with len: 8
