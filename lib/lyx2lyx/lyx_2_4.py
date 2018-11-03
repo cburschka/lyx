@@ -36,7 +36,7 @@ from parser_tools import (count_pars_in_inset, find_end_of_inset, find_end_of_la
 #    is_in_inset, set_bool_value
 #    find_tokens, find_token_exact, check_token
 
-from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble, get_language_for_line)
+from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble)
 #  revert_font_attrs, insert_to_preamble, latex_length
 #  get_ert, lyx2latex, lyx2verbatim, length_in_bp, convert_info_insets
 #  revert_flex_inset, hex2ratio, str2bool
@@ -1383,11 +1383,13 @@ def revert_lformatinfo(document):
 
 def convert_hebrew_parentheses(document):
     " Don't reverse parentheses in Hebrew text"
+    current_language = document.language
     for i, line in enumerate(document.body):
-        if line.startswith('\\\\'):
-            # not a text line, skip
-            continue
-        if get_language_for_line(document, i) == 'hebrew':
+        if line.startswith('\\lang '):
+            current_language = line[len('\\lang '):]
+        elif line.startswith('\\end_layout'):
+            current_language = document.language
+        if current_language == 'hebrew' and not line.startswith('\\'):
             document.body[i] = line.replace('(','\x00').replace(')','(').replace('\x00',')')
 
 

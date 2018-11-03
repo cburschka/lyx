@@ -83,9 +83,6 @@ insert_document_option(document, option):
 
 remove_document_option(document, option):
   Remove _option_ as a document option.
-
-get_language_for_line(document, i):
-  Return the language setting for line number i.
 '''
 
 import re
@@ -607,15 +604,3 @@ def is_document_option(document, option):
         return False
 
     return True
-
-
-def get_language_for_line(document, i):
-    " Return the language for line number i"
-    layout = get_containing_layout(document.body, i)
-    if not layout:
-        return document.language
-    start_of_par = layout[3]
-    for line in document.body[i:start_of_par:-1]:
-        if line.startswith('\\lang '):
-            return line[len('\\lang '):]
-    return document.language
