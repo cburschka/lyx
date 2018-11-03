@@ -1389,13 +1389,13 @@ def convert_hebrew_parentheses(document):
             current_language = line[len('\\lang '):]
         elif line.startswith('\\end_layout'):
             current_language = document.language
-        if current_language == 'hebrew' and not line.startswith('\\'):
+        elif current_language == 'hebrew' and not line.startswith('\\'):
             document.body[i] = line.replace('(','\x00').replace(')','(').replace('\x00',')')
 
 
 def revert_hebrew_parentheses(document):
     " Store parentheses in Hebrew text reversed"
-    # This only exists to keep the convert/revert nameing convention
+    # This only exists to keep the convert/revert naming convention
     convert_hebrew_parentheses(document)
 
 
