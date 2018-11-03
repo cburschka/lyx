@@ -680,7 +680,7 @@ void parStartCommand(Paragraph const & par, otexstream & os,
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
 		if (runparams.for_search) {
-			os << "\\item{" << style.latexname() << "}";
+			os << "\\" + style.itemcommand() << "{" << style.latexname() << "}";
 		}
 		else {
 			os << "\\" + style.itemcommand();
@@ -875,12 +875,12 @@ void TeXOnePar(Buffer const & buf,
 	bool const localswitch_needed = localswitch && par_lang != outer_lang;
 
 	// localswitches need to be closed and reopened at each par
-	if ((par_lang != prev_lang || localswitch_needed)
+	if (runparams_in.for_search || ((par_lang != prev_lang || localswitch_needed)
 	     // check if we already put language command in TeXEnvironment()
 	     && !(style.isEnvironment()
 		  && (pit == 0 || (priorpar->layout() != par.layout()
 			           && priorpar->getDepth() <= par.getDepth())
-		      || priorpar->getDepth() < par.getDepth()))) {
+		      || priorpar->getDepth() < par.getDepth())))) {
 		if (!localswitch
 		    && (!using_begin_end || langOpenedAtThisLevel(state))
 		    && !lang_end_command.empty()
