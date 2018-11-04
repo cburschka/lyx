@@ -1097,7 +1097,7 @@ int Intervall::previousNotIgnored(int start)
     int idx = 0;                          /* int intervalls */
     for (idx = ignoreidx; idx >= 0; --idx) {
       if (start > borders[idx].upper)
-        return(start);
+        return start;
       if (start >= borders[idx].low)
         start = borders[idx].low-1;
     }
@@ -1110,7 +1110,7 @@ int Intervall::nextNotIgnored(int start)
     int idx = 0;                          /* int intervalls */
     for (idx = 0; idx <= ignoreidx; idx++) {
       if (start < borders[idx].low)
-        return(start);
+        return start;
       if (start < borders[idx].upper)
         start = borders[idx].upper;
     }
@@ -1252,7 +1252,7 @@ class LatexInfo {
       return true;
     }
     else
-      return(false);
+      return false;
   };
   int process(ostringstream &os, KeyInfo &actual);
   int dispatch(ostringstream &os, int previousStart, KeyInfo &actual);
@@ -1283,11 +1283,11 @@ int Intervall::findclosing(int start, int end, char up = '{', char down = '}')
       depth++;
     }
     else if (c == down) {
-      if (depth == 0) return(i);
+      if (depth == 0) return i;
       --depth;
     }
   }
-  return(end);
+  return end;
 }
 
 class MathInfo {
@@ -1322,7 +1322,7 @@ class MathInfo {
     }
     return false;
   }
-  bool empty() { return(entries.empty()); };
+  bool empty() { return entries.empty(); };
   size_t getEndPos() {
     if (entries.empty() || (actualIdx >= entries.size())) {
       return 0;
@@ -1561,6 +1561,8 @@ void LatexInfo::buildKeys(bool isPatternString)
   // Know charaters
   // No split
   makeKey("backslash|textbackslash|textasciicircum|textasciitilde", KeyInfo(KeyInfo::isChar, 1, false), isPatternString);
+  // Found in fr/UserGuide.lyx
+  makeKey("og|fg", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
 
   // Known macros to remove (including their parameter)
   // No split
@@ -1568,7 +1570,7 @@ void LatexInfo::buildKeys(bool isPatternString)
 
   // Macros to remove, but let the parameter survive
   // No split
-  makeKey("url|href|menuitem|footnote|code", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+  makeKey("url|href|menuitem|footnote|code|index", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
 
   // Same effect as previous, parameter will survive (because there is no one anyway)
   // No split
@@ -1782,8 +1784,20 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       // Discard extra parentheses '[]'
       if (interval.par[actual._dataEnd+1] == '[') {
         int posdown = interval.findclosing(actual._dataEnd+2, interval.par.length(), '[', ']');
+        processRegion(actual._dataEnd+2, posdown);
         interval.addIntervall(actual._dataEnd+1, actual._dataEnd+2);
         interval.addIntervall(posdown, posdown+1);
+        int blk = interval.nextNotIgnored(actual._dataEnd+1);
+        if (blk > posdown) {
+          // Discard space after empty item
+          int count;
+          for (count = 0; count < 10; count++) {
+            if (interval.par[blk+count] != ' ')
+              break;
+          }
+          if (count > 0)
+            interval.addIntervall(blk, blk+count);
+        }
       }
       nextKeyIdx = getNextKey();
       break;
@@ -1848,7 +1862,7 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       break;
     }
   }
-  return(nextKeyIdx);
+  return nextKeyIdx;
 }
 
 int LatexInfo::process(ostringstream &os, KeyInfo &actual )
@@ -1954,8 +1968,11 @@ string splitOnKnownMacros(string par, bool isPatternString) {
     // Handle the remaining
     firstKey._dataStart = li.nextNotIgnored(firstKey._dataStart);
     firstKey._dataEnd = par.length();
-    if (firstKey._dataStart < firstKey._dataEnd)
+    if (firstKey._dataStart < firstKey._dataEnd) {
+      if (firstKey._tokensize > 0)
+        li.setForDefaultLang(firstKey._tokensize);
       (void) li.process(os, firstKey);
+    }
     s = os.str();
   }
   else
