@@ -645,6 +645,7 @@ QString formatToolTip(QString text, int em)
 	QTextDocument td("");
 	td.setHtml(text);
 	td.setDefaultFont(QToolTip::font());
+	td.setDocumentMargin(0);
 	td.setTextWidth(px_width);
 	double best_width = td.idealWidth();
 	// Set the line wrapping with appropriate width
