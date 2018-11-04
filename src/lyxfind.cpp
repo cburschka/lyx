@@ -798,7 +798,7 @@ static docstring buffer_to_latex(Buffer & buffer)
 	otexstream os(ods);
 	runparams.nice = true;
 	runparams.flavor = OutputParams::LATEX;
-	runparams.linelen = 80; //lyxrc.plaintext_linelen;
+	runparams.linelen = 100000; //lyxrc.plaintext_linelen;
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
 	runparams.for_search = true;
@@ -1718,9 +1718,9 @@ void LatexInfo::removeHead(KeyInfo &actual, int count)
 
 int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
 {
-  int nextKeyIdx;
+  int nextKeyIdx = 0;
   switch (actual.keytype)
-    {
+  {
     case KeyInfo::isChar: {
       nextKeyIdx = getNextKey();
       break;
@@ -1847,7 +1847,7 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       nextKeyIdx = getNextKey();
       break;
     }
-    }
+  }
   return(nextKeyIdx);
 }
 
@@ -2458,10 +2458,33 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 	if (old_len < 0) old_len = 0;
 	int new_len;
 	// Greedy behaviour while matching regexps
-	while ((new_len = match(cur, len + 1)) > old_len) {
-		++len;
-		old_len = new_len;
-		LYXERR(Debug::FIND, "verifying   match with len = " << len);
+	bool examining = true;
+	int lastvalidlen = len;
+	while (examining) {
+		examining = false;
+		// Kornel: The loop is needed, since it looks like
+		// incrementing 'cur.pos()' does not always lead to the following
+		// char which we could then match.
+		for (int count = 1; count < 5; ++count) {
+			if (cur.pos() + len + count > cur.lastpos()) {
+				break;
+			}
+			new_len = match(cur, len + count);
+			if (new_len > old_len) {
+				len += count;
+				old_len = new_len;
+				examining = true;
+				break;
+			}
+			else if (new_len == old_len)
+				lastvalidlen = len+count;
+		}
+	}
+	if (lastvalidlen == len + 1) {
+		// Kornel:  Don't know, why this is important
+		// All I can see, is that sometimes the last char
+		// is outside of a match although it should be inside
+		len++;
 	}
 	return len;
 }
