@@ -1784,12 +1784,18 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       // Discard extra parentheses '[]'
       if (interval.par[actual._dataEnd+1] == '[') {
         int posdown = interval.findclosing(actual._dataEnd+2, interval.par.length(), '[', ']');
-        processRegion(actual._dataEnd+2, posdown);
-        interval.addIntervall(actual._dataEnd+1, actual._dataEnd+2);
-        interval.addIntervall(posdown, posdown+1);
+        if ((interval.par[actual._dataEnd+2] == '{') &&
+            (interval.par[posdown-1] == '}')) {
+          interval.addIntervall(actual._dataEnd+1,actual._dataEnd+3);
+          interval.addIntervall(posdown-1, posdown+1);
+        }
+        else {
+          interval.addIntervall(actual._dataEnd+1, actual._dataEnd+2);
+          interval.addIntervall(posdown, posdown+1);
+        }
         int blk = interval.nextNotIgnored(actual._dataEnd+1);
         if (blk > posdown) {
-          // Discard space after empty item
+          // Discard spaces after empty item
           int count;
           for (count = 0; count < 10; count++) {
             if (interval.par[blk+count] != ' ')
@@ -1968,7 +1974,9 @@ string splitOnKnownMacros(string par, bool isPatternString) {
     // Handle the remaining
     firstKey._dataStart = li.nextNotIgnored(firstKey._dataStart);
     firstKey._dataEnd = par.length();
-    if (firstKey._dataStart < firstKey._dataEnd) {
+    // Check if ! empty
+    if ((firstKey._dataStart < firstKey._dataEnd) &&
+        (par[firstKey._dataStart] != '}')) {
       if (firstKey._tokensize > 0)
         li.setForDefaultLang(firstKey._tokensize);
       (void) li.process(os, firstKey);
@@ -2476,7 +2484,7 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 	int new_len;
 	// Greedy behaviour while matching regexps
 	bool examining = true;
-	int lastvalidlen = len;
+	int lastvalidlen = -1;
 	while (examining) {
 		examining = false;
 		// Kornel: The loop is needed, since it looks like
