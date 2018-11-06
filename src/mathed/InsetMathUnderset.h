@@ -28,12 +28,6 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	idx_type firstIdx() const { return 1; }
-	///
-	idx_type lastIdx() const { return 1; }
-	///
-	bool idxUpDown(Cursor & cur, bool up) const;
-	///
 	void write(WriteStream & ws) const;
 	///
 	void normalize(NormalStream & ns) const;

@@ -26,14 +26,11 @@ public:
 	InsetMathRoot(Buffer * buf);
 	///
 	bool idxUpDown(Cursor & cur, bool up) const;
+
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-	///
-	idx_type firstIdx() const { return 1; }
-	///
-	idx_type lastIdx() const { return 1; }
 
 	///
 	void write(WriteStream & os) const;

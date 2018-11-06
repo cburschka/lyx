@@ -22,6 +22,7 @@
 
 #include "frontends/Painter.h"
 
+#include "support/lassert.h"
 
 using namespace std;
 
@@ -84,7 +85,7 @@ void mathed_root_metrics(MetricsInfo & mi, MathData const & nucleus,
 
 void InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	mathed_root_metrics(mi, cell(1), &cell(0), dim);
+	mathed_root_metrics(mi, cell(0), &cell(1), dim);
 }
 
 
@@ -127,26 +128,26 @@ void mathed_draw_root(PainterInfo & pi, int x, int y, MathData const & nucleus,
 
 void InsetMathRoot::draw(PainterInfo & pi, int x, int y) const
 {
-	mathed_draw_root(pi, x, y, cell(1), &cell(0), dimension(*pi.base.bv));
+	mathed_draw_root(pi, x, y, cell(0), &cell(1), dimension(*pi.base.bv));
 }
 
 
 void InsetMathRoot::write(WriteStream & os) const
 {
 	MathEnsurer ensurer(os);
-	os << "\\sqrt[" << cell(0) << "]{" << cell(1) << '}';
+	os << "\\sqrt[" << cell(1) << "]{" << cell(0) << '}';
 }
 
 
 void InsetMathRoot::normalize(NormalStream & os) const
 {
-	os << "[root " << cell(0) << ' ' << cell(1) << ']';
+	os << "[root " << cell(1) << ' ' << cell(0) << ']';
 }
 
 
 bool InsetMathRoot::idxUpDown(Cursor & cur, bool up) const
 {
-	Cursor::idx_type const target = up ? 0 : 1;
+	Cursor::idx_type const target = up; //up ? 1 : 0;
 	if (cur.idx() == target)
 		return false;
 	cur.idx() = target;
@@ -157,34 +158,34 @@ bool InsetMathRoot::idxUpDown(Cursor & cur, bool up) const
 
 void InsetMathRoot::maple(MapleStream & os) const
 {
-	os << '(' << cell(1) << ")^(1/(" << cell(0) <<"))";
+	os << '(' << cell(0) << ")^(1/(" << cell(1) <<"))";
 }
 
 
 void InsetMathRoot::mathematica(MathematicaStream & os) const
 {
-	os << '(' << cell(1) << ")^(1/(" << cell(0) <<"))";
+	os << '(' << cell(0) << ")^(1/(" << cell(1) <<"))";
 }
 
 
 void InsetMathRoot::octave(OctaveStream & os) const
 {
-	os << '(' << cell(1) << ")^(1/(" << cell(0) <<"))";
+	os << '(' << cell(0) << ")^(1/(" << cell(1) <<"))";
 }
 
 
 void InsetMathRoot::mathmlize(MathStream & os) const
 {
-	os << MTag("mroot") << cell(1) << cell(0) << ETag("mroot");
+	os << MTag("mroot") << cell(0) << cell(1) << ETag("mroot");
 }
 
 
 void InsetMathRoot::htmlize(HtmlStream & os) const
 {
 	os << MTag("span", "class='root'")
-	   << MTag("sup") << cell(0) << ETag("sup")
+	   << MTag("sup") << cell(1) << ETag("sup")
 	   << from_ascii("&radic;")
-	   << MTag("span", "class='rootof'")	<< cell(1) << ETag("span")
+	   << MTag("span", "class='rootof'")	<< cell(0) << ETag("span")
 		 << ETag("span");
 }
 

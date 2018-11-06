@@ -36,15 +36,17 @@ Inset * InsetMathStackrel::clone() const
 
 bool InsetMathStackrel::idxUpDown(Cursor & cur, bool up) const
 {
+	idx_type const npos = 1234; // impossible number
+	idx_type target = npos;
 	if (up) {
-		if (cur.idx() == 0)
-			return false;
+		idx_type const targets[] = { 1, npos, 0 };
+		target = targets[cur.idx()];
 	} else {
-		if (cur.idx() + 1 ==  nargs())
-			return false;
+		idx_type const targets[] = { 2, 0, npos };
+		target = targets[cur.idx()];
 	}
-	InsetMath::idx_type target = up ? cur.idx() - 1 : cur.idx() + 1;
-	if (cur.idx() == target)
+
+	if (target == npos || target == nargs())
 		return false;
 	cur.idx() = target;
 	cur.pos() = cell(target).x2pos(&cur.bv(), cur.x_target());
@@ -62,21 +64,21 @@ MathClass InsetMathStackrel::mathClass() const
 void InsetMathStackrel::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy2 = mi.base.changeEnsureMath();
-	Dimension dim1;
-	cell(1).metrics(mi, dim1);
-	Changer dummy = mi.base.changeFrac();
 	Dimension dim0;
 	cell(0).metrics(mi, dim0);
+	Changer dummy = mi.base.changeFrac();
+	Dimension dim1;
+	cell(1).metrics(mi, dim1);
 	if (nargs() > 2) {
 		Dimension dim2;
 		cell(2).metrics(mi, dim2);
-		dim.wid = max(max(dim0.width(), dim1.width()), dim2.width()) + 4;
-		dim.asc = dim1.ascent() + dim0.height() + 4;
-		dim.des = dim1.descent() + dim2.height() + dim2.descent() + 1;
+		dim.wid = max(max(dim1.width(), dim0.width()), dim2.width()) + 4;
+		dim.asc = dim0.ascent() + dim1.height() + 4;
+		dim.des = dim0.descent() + dim2.height() + dim2.descent() + 1;
 	} else {
-		dim.wid = max(dim0.width(), dim1.width()) + 4;
-		dim.asc = dim1.ascent() + dim0.height() + 4;
-		dim.des = dim1.descent();
+		dim.wid = max(dim1.width(), dim0.width()) + 4;
+		dim.asc = dim0.ascent() + dim1.height() + 4;
+		dim.des = dim0.descent();
 	}
 }
 
@@ -88,13 +90,13 @@ void InsetMathStackrel::draw(PainterInfo & pi, int x, int y) const
 	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
 	Dimension const & dim1 = cell(1).dimension(*pi.base.bv);
 	int m  = x + dim.width() / 2;
-	int yo = y - dim1.ascent() - dim0.descent() - 1;
-	cell(1).draw(pi, m - dim1.width() / 2, y);
+	int yo = y - dim0.ascent() - dim1.descent() - 1;
+	cell(0).draw(pi, m - dim0.width() / 2, y);
 	Changer dummy = pi.base.changeFrac();
-	cell(0).draw(pi, m - dim0.width() / 2, yo);
+	cell(1).draw(pi, m - dim1.width() / 2, yo);
 	if (nargs() > 2) {
 		Dimension const & dim2 = cell(2).dimension(*pi.base.bv);
-		int y2 = y + dim1.descent() + dim2.ascent() + 1;
+		int y2 = y + dim0.descent() + dim2.ascent() + 1;
 		cell(2).draw(pi, m - dim2.width() / 2, y2);
 	}
 }
@@ -106,13 +108,13 @@ void InsetMathStackrel::write(WriteStream & os) const
 	os << "\\stackrel";
 	if (nargs() > 2)
 		os << '[' << cell(2) << ']';
-	os << '{' << cell(0) << "}{" << cell(1) << '}';
+	os << '{' << cell(1) << "}{" << cell(0) << '}';
 }
 
 
 void InsetMathStackrel::normalize(NormalStream & os) const
 {
-	os << "[stackrel " << cell(0) << ' ' << cell(1);
+	os << "[stackrel " << cell(1) << ' ' << cell(0);
 	if (nargs() > 2)
 		os << ' ' << cell(2);
 	os << ']';
@@ -122,9 +124,9 @@ void InsetMathStackrel::normalize(NormalStream & os) const
 void InsetMathStackrel::mathmlize(MathStream & ms) const
 {
 	if (nargs() > 2)
-		ms << "<munderover>" << cell(1) << cell(2) << cell(0) << "</munderover>";
+		ms << "<munderover>" << cell(0) << cell(2) << cell(1) << "</munderover>";
 	else
-		ms << "<mover accent='false'>" << cell(1) << cell(0) << "</mover>";
+		ms << "<mover accent='false'>" << cell(0) << cell(1) << "</mover>";
 }
 
 
@@ -132,14 +134,14 @@ void InsetMathStackrel::htmlize(HtmlStream & os) const
 {
 	if (nargs() > 2) {
 		os << MTag("span", "class='underoverset'")
-		   << MTag("span", "class='top'") << cell(0) << ETag("span")
-		   << MTag("span") << cell(1) << ETag("span")
+		   << MTag("span", "class='top'") << cell(1) << ETag("span")
+		   << MTag("span") << cell(0) << ETag("span")
 		   << MTag("span", "class='bottom'") << cell(2) << ETag("span");
 	} else {
 		// at the moment, this is exactly the same as overset
 		os << MTag("span", "class='overset'")
-		   << MTag("span", "class='top'") << cell(0) << ETag("span")
-		   << MTag("span") << cell(1) << ETag("span");
+		   << MTag("span", "class='top'") << cell(1) << ETag("span")
+		   << MTag("span") << cell(0) << ETag("span");
 	}
 	os << ETag("span");
 }

@@ -19,6 +19,8 @@
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 
+#include "support/lassert.h"
+
 using namespace std;
 
 namespace lyx {
@@ -32,14 +34,14 @@ Inset * InsetMathOverset::clone() const
 void InsetMathOverset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy2 = mi.base.changeEnsureMath();
-	Dimension dim1;
-	cell(1).metrics(mi, dim1);
-	Changer dummy = mi.base.changeFrac();
 	Dimension dim0;
 	cell(0).metrics(mi, dim0);
-	dim.wid = max(dim0.width(), dim1.wid) + 4;
-	dim.asc = dim1.asc + dim0.height() + 4;
-	dim.des = dim1.des;
+	Changer dummy = mi.base.changeFrac();
+	Dimension dim1;
+	cell(1).metrics(mi, dim1);
+	dim.wid = max(dim1.width(), dim0.wid) + 4;
+	dim.asc = dim0.asc + dim1.height() + 4;
+	dim.des = dim0.des;
 }
 
 
@@ -47,13 +49,24 @@ void InsetMathOverset::draw(PainterInfo & pi, int x, int y) const
 {
 	Changer dummy2 = pi.base.changeEnsureMath();
 	Dimension const dim = dimension(*pi.base.bv);
-	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
 	Dimension const & dim1 = cell(1).dimension(*pi.base.bv);
+	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
 	int m  = x + dim.wid / 2;
-	int yo = y - dim1.asc - dim0.des - 1;
-	cell(1).draw(pi, m - dim1.wid / 2, y);
+	int yo = y - dim0.asc - dim1.des - 1;
+	cell(0).draw(pi, m - dim0.wid / 2, y);
 	Changer dummy = pi.base.changeFrac();
-	cell(0).draw(pi, m - dim0.width() / 2, yo);
+	cell(1).draw(pi, m - dim1.width() / 2, yo);
+}
+
+
+bool InsetMathOverset::idxUpDown(Cursor & cur, bool up) const
+{
+	idx_type target = up; // up ? 1 : 0, since upper cell has idx 1
+	if (cur.idx() == target)
+		return false;
+	cur.idx() = target;
+	cur.pos() = cur.cell().x2pos(&cur.bv(), cur.x_target());
+	return true;
 }
 
 
@@ -62,27 +75,27 @@ void InsetMathOverset::write(WriteStream & os) const
 	MathEnsurer ensurer(os);
 	if (os.fragile())
 		os << "\\protect";
-	os << "\\overset{" << cell(0) << "}{" << cell(1) << '}';
+	os << "\\overset{" << cell(1) << "}{" << cell(0) << '}';
 }
 
 
 void InsetMathOverset::normalize(NormalStream & os) const
 {
-	os << "[overset " << cell(0) << ' ' << cell(1) << ']';
+	os << "[overset " << cell(1) << ' ' << cell(0) << ']';
 }
 
 
 void InsetMathOverset::mathmlize(MathStream & ms) const
 {
-	ms << "<mover accent='false'>" << cell(1) << cell(0) << "</mover>";
+	ms << "<mover accent='false'>" << cell(0) << cell(1) << "</mover>";
 }
 
 
 void InsetMathOverset::htmlize(HtmlStream & os) const
 {
 	os << MTag("span", "class='overset'")
-		 << MTag("span", "class='top'") << cell(0) << ETag("span")
-		 << MTag("span") << cell(1) << ETag("span")
+		 << MTag("span", "class='top'") << cell(1) << ETag("span")
+		 << MTag("span") << cell(0) << ETag("span")
 		 << ETag("span");
 }
 
