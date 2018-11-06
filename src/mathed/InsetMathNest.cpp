@@ -873,14 +873,10 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// via macro mode, we want to put the cursor inside it
 			// if relevant. Think typing "\frac<space>".
 			if (c == ' '
-				&& cur.inMacroMode() && cur.macroName() != "\\"
-				&& cur.macroModeClose() && cur.pos() > 0) {
-				MathAtom const atom = cur.prevAtom();
-				if (atom->asNestInset() && atom->isActive()) {
-					cur.posBackward();
-					cur.pushBackward(*cur.nextInset());
-				}
-			} else if (!interpretChar(cur, c)) {
+			    && cur.inMacroMode() && cur.macroName() != "\\"
+			    && cur.macroModeClose() && cur.pos() > 0)
+				cur.editInsertedInset();
+			else if (!interpretChar(cur, c)) {
 				cmd = FuncRequest(LFUN_FINISHED_FORWARD);
 				cur.undispatched();
 				// FIXME: can we avoid skipping the end of the string?

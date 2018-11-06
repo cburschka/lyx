@@ -901,6 +901,31 @@ void Cursor::pushBackward(Inset & p)
 }
 
 
+void Cursor::editInsertedInset()
+{
+	LASSERT(!empty(), return);
+	if (pos() == 0)
+		return;
+
+	InsetMath &p = prevMath();
+	if (!p.isActive())
+		return;
+
+	posBackward();
+	push(p);
+	p.idxFirst(*this);
+	// this could be a while() loop, but only one cell is not empty in
+	// cases we are interested in. The cell is not empty because we
+	// have inserted the selection in there.
+	if (!cell().empty()) {
+		// if it is not empty, move to the next one.
+		if (!inset().idxNext(*this))
+			// If there is no next one, exit the inset.
+			popForward();
+	}
+}
+
+
 bool Cursor::popBackward()
 {
 	LASSERT(!empty(), return false);
@@ -1521,14 +1546,9 @@ void Cursor::niceInsert(MathAtom const & t)
 	plainInsert(t);
 	// If possible, enter the new inset and move the contents of the selection
 	if (t->isActive()) {
-		posBackward();
-		// be careful here: don't use 'pushBackward(t)' as this we need to
-		// push the clone, not the original
-		pushBackward(*nextInset());
-		// We may not use niceInsert here (recursion)
-		MathData ar(buffer());
-		asArray(safe, ar);
-		insert(ar);
+		idx_type const idx = prevMath().asNestInset()->firstIdx();
+		asArray(safe, prevMath().cell(idx));
+		editInsertedInset();
 	} else if (t->asMacro() && !safe.empty()) {
 		MathData ar(buffer());
 		asArray(safe, ar);
@@ -1665,20 +1685,14 @@ bool Cursor::down()
 }
 
 
-void Cursor::handleNest(MathAtom const & a, int c)
-{
-	//lyxerr << "Cursor::handleNest: " << c << endl;
-	MathAtom t = a;
-	asArray(cap::grabAndEraseSelection(*this), t.nucleus()->cell(c));
-	insert(t);
-	posBackward();
-	pushBackward(*nextInset());
-}
-
-
 void Cursor::handleNest(MathAtom const & a)
 {
-	handleNest(a, a.nucleus()->asNestInset()->firstIdx());
+	idx_type const idx = a.nucleus()->asNestInset()->firstIdx();
+	//lyxerr << "Cursor::handleNest: " << idx << endl;
+	MathAtom t = a;
+	asArray(cap::grabAndEraseSelection(*this), t.nucleus()->cell(idx));
+	insert(t);
+	editInsertedInset();
 }
 
 

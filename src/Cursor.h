@@ -259,6 +259,10 @@ public:
 	void push(Inset & inset);
 	/// add a new cursor slice, place cursor at front (move backwards)
 	void pushBackward(Inset & inset);
+	/// try to put cursor in inset before it in entry cell, or next one
+	/// if it is not empty, or exit the slice if there is no next one.
+	void editInsertedInset();
+
 	/// pop one level off the cursor
 	void pop();
 	/// pop one slice off the cursor stack and go backwards
@@ -517,13 +521,9 @@ public:
 	/// the name of the macro we are currently inputting
 	docstring macroName();
 
-
 	/// replace selected stuff with at, placing the former
 	// selection in entry cell of atom
 	void handleNest(MathAtom const & at);
-	/// replace selected stuff with at, placing the former
-	// selection in given cell of atom
-	void handleNest(MathAtom const & at, int cell);
 
 	/// make sure cursor position is valid
 	/// FIXME: It does a subset of fixIfBroken. Maybe merge them?
