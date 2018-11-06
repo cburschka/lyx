@@ -951,7 +951,7 @@ class Border {
 class Intervall {
   bool isPatternString;
  public:
- Intervall(bool isPattern) : isPatternString(isPattern), ignoreidx(-1), actualdeptindex(0) {};
+ Intervall(bool isPattern) : isPatternString(isPattern), ignoreidx(-1), actualdeptindex(0) { depts[0] = 0;};
   string par;
   int ignoreidx;
   int depts[MAXOPENED];
@@ -1266,7 +1266,6 @@ class LatexInfo {
       return entries[keyinfo];
   };
   void setForDefaultLang(int upTo) {interval.setForDefaultLang(upTo);};
-
 };
 
 
@@ -1795,9 +1794,9 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
         }
         int blk = interval.nextNotIgnored(actual._dataEnd+1);
         if (blk > posdown) {
-          // Discard spaces after empty item
+          // Discard at most 1 space after empty item
           int count;
-          for (count = 0; count < 10; count++) {
+          for (count = 0; count < 1; count++) {
             if (interval.par[blk+count] != ' ')
               break;
           }
@@ -2484,7 +2483,6 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 	int new_len;
 	// Greedy behaviour while matching regexps
 	bool examining = true;
-	int lastvalidlen = -1;
 	while (examining) {
 		examining = false;
 		// Kornel: The loop is needed, since it looks like
@@ -2501,15 +2499,7 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 				examining = true;
 				break;
 			}
-			else if (new_len == old_len)
-				lastvalidlen = len+count;
 		}
-	}
-	if (lastvalidlen == len + 1) {
-		// Kornel:  Don't know, why this is important
-		// All I can see, is that sometimes the last char
-		// is outside of a match although it should be inside
-		len++;
 	}
 	return len;
 }
