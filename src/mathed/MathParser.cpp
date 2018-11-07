@@ -1432,12 +1432,10 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			parse(ar, FLAG_OPTION, mode);
 			if (!ar.empty()) {
 				cell->push_back(MathAtom(new InsetMathRoot(buf)));
-				cell->back().nucleus()->cell(0) = ar;
-				parse(cell->back().nucleus()->cell(1), FLAG_ITEM, mode);
-			} else {
+				cell->back().nucleus()->cell(1) = ar;
+			} else
 				cell->push_back(MathAtom(new InsetMathSqrt(buf)));
-				parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
-			}
+			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 		}
 
 		else if (t.cs() == "cancelto") {
@@ -1529,8 +1527,8 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			cell->push_back(MathAtom(new InsetMathStackrel(buf, !ar.empty())));
 			if (!ar.empty())
 				cell->back().nucleus()->cell(2) = ar;
-			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 			parse(cell->back().nucleus()->cell(1), FLAG_ITEM, mode);
+			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 		}
 
 		else if (t.cs() == "xrightarrow" || t.cs() == "xleftarrow") {
@@ -2032,6 +2030,12 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					    prevToken().cs() != "\\")
 						return success_;
 					putback();
+				}
+
+				else if (l->inset == "underset" || l->inset == "overset") {
+					cell->push_back(createInsetMath(t.cs(), buf));
+					parse(cell->back().nucleus()->cell(1), FLAG_ITEM, mode);
+					parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 				}
 
 				else {
