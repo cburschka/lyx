@@ -156,6 +156,30 @@ bool InsetMathRoot::idxUpDown(Cursor & cur, bool up) const
 }
 
 
+bool InsetMathRoot::idxForward(Cursor & cur) const
+{
+	// nucleus is 0 and is on the right
+	if (cur.idx() == 0)
+		return false;
+	else
+		cur.idx() = 0;
+
+	return true;
+}
+
+
+bool InsetMathRoot::idxBackward(Cursor & cur) const
+{
+	// nucleus is 0 and is on the right
+	if (cur.idx() == 1)
+		return false;
+	else
+		cur.idx() = 1;
+
+	return true;
+}
+
+
 void InsetMathRoot::maple(MapleStream & os) const
 {
 	os << '(' << cell(0) << ")^(1/(" << cell(1) <<"))";

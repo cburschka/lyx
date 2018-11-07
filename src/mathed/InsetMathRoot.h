@@ -26,6 +26,10 @@ public:
 	InsetMathRoot(Buffer * buf);
 	///
 	bool idxUpDown(Cursor & cur, bool up) const;
+	///
+	bool idxForward(Cursor & cur) const;
+	///
+	bool idxBackward(Cursor & cur) const;
 
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
