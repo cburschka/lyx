@@ -1472,8 +1472,35 @@ void LatexInfo::buildEntries(bool isPatternString)
         found.parenthesiscount = 0;
         evaluatingMath = true;
       }
-      else
-        continue;
+      else {
+        // begin|end of unknown env, discard
+        found = keys[key];
+        // discard spaces and '%' before pos(0)
+        int pos = sub.position(size_t(0));
+        int count;
+        for (count = 0; pos - count > 0; count++) {
+          char c = interval.par[pos-count-1];
+          if ((c != ' ') && (c != '%'))
+            break;
+        }
+        found.keytype = KeyInfo::doRemove;
+        found._tokenstart = pos - count;
+        if (sub.str(1).compare(0, 5, "begin") == 0) {
+          size_t pos1 = pos + sub.str(0).length();
+          if (interval.par[pos1] == '[') {
+            pos1 = interval.findclosing(pos1+1, interval.par.length(), '[', ']')+1;
+          }
+          found._dataEnd = interval.findclosing(pos1+1, interval.par.length()) + 1;
+          found._dataStart = found._dataEnd;
+        }
+        else {
+          found._dataStart = pos + sub.str(0).length();
+          found._dataEnd = found._dataStart;
+        }
+        found._tokensize = count + found._dataEnd - pos;
+        found.parenthesiscount = 0;
+        found.disabled = true;
+      }
     }
     else if (found.keytype != KeyInfo::isRegex) {
       found._tokenstart = sub.position(size_t(0));
@@ -1574,6 +1601,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   // Same effect as previous, parameter will survive (because there is no one anyway)
   // No split
   makeKey("noindent", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
+  makeKey("hline|tabularnewline|toprule|bottomrule|midrule", KeyInfo(KeyInfo::doRemove, 0, true), isPatternString);
   // like ('tiny{}' or '\tiny ' ... }
   makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, true), isPatternString);
 
@@ -1762,8 +1790,13 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       break;
     }
     case KeyInfo::doRemove: {
-      // Remove the key with all parameters
-      interval.addIntervall(actual._tokenstart, actual._dataEnd+1);
+      // Remove the key with all parameters and following spaces
+      size_t pos;
+      for (pos = actual._dataEnd+1; pos < interval.par.length(); pos++) {
+        if (interval.par[pos] != ' ')
+          break;
+      }
+      interval.addIntervall(actual._tokenstart, pos);
       nextKeyIdx = getNextKey();
       break;
     }
