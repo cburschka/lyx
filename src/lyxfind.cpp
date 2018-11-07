@@ -1490,7 +1490,12 @@ void LatexInfo::buildEntries(bool isPatternString)
           if (interval.par[pos1] == '[') {
             pos1 = interval.findclosing(pos1+1, interval.par.length(), '[', ']')+1;
           }
-          found._dataEnd = interval.findclosing(pos1+1, interval.par.length()) + 1;
+          if (interval.par[pos1] == '{') {
+            found._dataEnd = interval.findclosing(pos1+1, interval.par.length()) + 1;
+          }
+          else {
+            found._dataEnd = pos1;
+          }
           found._dataStart = found._dataEnd;
         }
         else {
@@ -2511,9 +2516,34 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 		LYXERR(Debug::FIND, "verifying unmatch with len = " << len);
 	}
 	// Length of matched text (different from len param)
-	int old_len = match(cur, len);
-	if (old_len < 0) old_len = 0;
-	int new_len;
+	int old_match = match(cur, len);
+	if (old_match < 0)
+		old_match = 0;
+	int prev_old_match = old_match;
+	int old_len = len;
+	int step = 20;
+	int new_match;
+	while (step == 20) {
+		if (cur.pos() + len + step >= cur.lastpos()) {
+			step = 1;
+			len = old_len;
+			old_match = prev_old_match;
+		}
+		else {
+			new_match = match(cur, len + step);
+			if (new_match > old_match) {
+				prev_old_match = old_match;
+				old_match = new_match;
+				old_len = len;
+				len += step;
+			}
+			else {
+				step = 1;
+				len = old_len;
+				old_match = prev_old_match;
+			}
+		}
+	}
 	// Greedy behaviour while matching regexps
 	bool examining = true;
 	while (examining) {
@@ -2525,10 +2555,10 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 			if (cur.pos() + len + count > cur.lastpos()) {
 				break;
 			}
-			new_len = match(cur, len + count);
-			if (new_len > old_len) {
+			new_match = match(cur, len + count);
+			if (new_match > old_match) {
 				len += count;
-				old_len = new_len;
+				old_match = new_match;
 				examining = true;
 				break;
 			}
