@@ -1475,12 +1475,12 @@ void LatexInfo::buildEntries(bool isPatternString)
       else {
         // begin|end of unknown env, discard
         found = keys[key];
-        // discard spaces and '%' before pos(0)
+        // discard spaces before pos(0)
         int pos = sub.position(size_t(0));
         int count;
         for (count = 0; pos - count > 0; count++) {
           char c = interval.par[pos-count-1];
-          if ((c != ' ') && (c != '%'))
+          if (c != ' ')
             break;
         }
         found.keytype = KeyInfo::doRemove;
@@ -1533,7 +1533,16 @@ void LatexInfo::buildEntries(bool isPatternString)
         }
         found._tokensize = found.head.length();
         found._dataStart = found._tokenstart + found.head.length();
-        found._dataEnd = interval.findclosing(found._dataStart, interval.par.length());
+        size_t endpos = interval.findclosing(found._dataStart, interval.par.length());
+        if ((endpos == interval.par.length()) &&
+            (found.keytype == KeyInfo::doRemove)) {
+          // Missing closing => error in latex-input?
+          // therefore do not delete remaining data
+          found._dataStart -= 1;
+          found._dataEnd = found._dataStart;
+        }
+        else
+          found._dataEnd = endpos;
         if (isPatternString) {
           keys[key].used = true;
         }
@@ -1591,7 +1600,7 @@ void LatexInfo::buildKeys(bool isPatternString)
 
   // Know charaters
   // No split
-  makeKey("backslash|textbackslash|textasciicircum|textasciitilde", KeyInfo(KeyInfo::isChar, 1, false), isPatternString);
+  makeKey("backslash|textbackslash|textasciicircum|textasciitilde|ldots", KeyInfo(KeyInfo::isChar, 1, false), isPatternString);
   // Found in fr/UserGuide.lyx
   makeKey("og|fg", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
 
@@ -1606,7 +1615,13 @@ void LatexInfo::buildKeys(bool isPatternString)
   // Same effect as previous, parameter will survive (because there is no one anyway)
   // No split
   makeKey("noindent", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
+  // Remove table decorations
   makeKey("hline|tabularnewline|toprule|bottomrule|midrule", KeyInfo(KeyInfo::doRemove, 0, true), isPatternString);
+  // Discard shape-header
+  makeKey("circlepar|diamondpar|heartpar|nutpar",  KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+  makeKey("trianglerightpar|hexagonpar|starpar",   KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+  makeKey("triangleuppar|triangledownpar|droppar", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+  makeKey("triangleleftpar|shapepar|dropuppar",    KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   // like ('tiny{}' or '\tiny ' ... }
   makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, true), isPatternString);
 
@@ -1846,7 +1861,7 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       break;
     }
     case KeyInfo::isSectioning: {
-      // Discard space before _tokenstart
+      // Discard spaces before _tokenstart
       int count;
       for (count = 0; count < actual._tokenstart; count++) {
         if (interval.par[actual._tokenstart-count-1] != ' ')
@@ -2019,6 +2034,10 @@ string splitOnKnownMacros(string par, bool isPatternString) {
       (void) li.process(os, firstKey);
     }
     s = os.str();
+    if (s.empty()) {
+      // return string definitelly impossible to match
+      s = "\\foreignlanguage{ignore}{ }";
+    }
   }
   else
     s = par;                            /* no known macros found */
