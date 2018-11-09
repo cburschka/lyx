@@ -161,9 +161,9 @@ bool InsetMathRoot::idxForward(Cursor & cur) const
 	// nucleus is 0 and is on the right
 	if (cur.idx() == 0)
 		return false;
-	else
-		cur.idx() = 0;
 
+	cur.idx() = 0;
+	cur.pos() = 0;
 	return true;
 }
 
@@ -173,9 +173,9 @@ bool InsetMathRoot::idxBackward(Cursor & cur) const
 	// nucleus is 0 and is on the right
 	if (cur.idx() == 1)
 		return false;
-	else
-		cur.idx() = 1;
 
+	cur.idx() = 1;
+	cur.pos() = cur.lastpos();
 	return true;
 }
 
