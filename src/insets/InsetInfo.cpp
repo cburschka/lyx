@@ -157,7 +157,7 @@ set<string> getTexFileList(string const & filename)
 
 	// Normalise paths like /foo//bar ==> /foo/bar
 	for (auto doc : doclist) {
-		subst(doc, from_ascii("\r"), docstring());
+		doc = subst(doc, from_ascii("\r"), docstring());
 		while (contains(doc, from_ascii("//")))
 			doc = subst(doc, from_ascii("//"), from_ascii("/"));
 		if (!doc.empty())
