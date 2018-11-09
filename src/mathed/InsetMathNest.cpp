@@ -216,7 +216,7 @@ bool InsetMathNest::idxPrev(Cursor & cur) const
 	if (cur.idx() == 0)
 		return false;
 	--cur.idx();
-	cur.pos() = cur.lastpos();
+	cur.pos() = lyxrc.mac_like_cursor_movement ? cur.lastpos() : 0;
 	return true;
 }
 
@@ -793,12 +793,24 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_CELL_FORWARD:
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
-		cur.inset().idxNext(cur);
+		cur.selHandle(false);
+		cur.clearTargetX();
+		cur.macroModeClose();
+		if (!cur.inset().idxNext(cur)) {
+			cur.idx() = firstIdx();
+			cur.pos() = 0;
+		}
 		break;
 
 	case LFUN_CELL_BACKWARD:
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
-		cur.inset().idxPrev(cur);
+		cur.selHandle(false);
+		cur.clearTargetX();
+		cur.macroModeClose();
+		if (!cur.inset().idxPrev(cur)) {
+			cur.idx() = lastIdx();
+			cur.pos() = lyxrc.mac_like_cursor_movement ? cur.lastpos() : 0;
+		}
 		break;
 
 	case LFUN_WORD_DELETE_BACKWARD:
