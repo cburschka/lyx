@@ -846,7 +846,7 @@ static size_t identifyLeading(string const & s)
 	// @TODO Support \item[text]
 	// Kornel: Added textsl, textsf, textit, texttt and noun
 	// + allow to search for colored text too
-	while (regex_replace(t, t, REGEX_BOS "\\\\(((emph|noun|minisec|text(bf|sl|sf|it|tt))|((textcolor|foreignlanguage)\\{[a-z]+\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)\\{", "")
+	while (regex_replace(t, t, REGEX_BOS "\\\\(((emph|noun|minisec|text(bf|md|sl|sf|it|tt))|((textcolor|foreignlanguage)\\{[a-z]+\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)\\{", "")
 	       || regex_replace(t, t, REGEX_BOS "\\$", "")
 	       || regex_replace(t, t, REGEX_BOS "\\\\\\[ ", "")
 	       || regex_replace(t, t, REGEX_BOS " ?\\\\item\\{[a-z]+\\}", "")
@@ -868,7 +868,7 @@ typedef map<string, bool> Features;
 static Features identifyFeatures(string const & s)
 {
 	static regex const feature("\\\\(([a-z]+(\\{([a-z]+)\\}|\\*)?))\\{");
-	static regex const valid("^(((emph|noun|text(bf|sl|sf|it|tt)|(textcolor|foreignlanguage|item)\\{[a-z]+\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)$");
+	static regex const valid("^(((emph|noun|text(bf|md|sl|sf|it|tt)|(textcolor|foreignlanguage|item)\\{[a-z]+\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)$");
 	smatch sub;
 	bool displ = true;
 	Features info;
@@ -1349,7 +1349,7 @@ class MathInfo {
 
 void LatexInfo::buildEntries(bool isPatternString)
 {
-  static regex const rmath("\\$|\\\\\\[|\\\\\\]|\\\\(begin|end)\\{((eqnarray|equation|flalign|gather|multiline|align)\\*?)\\}");
+  static regex const rmath("\\$|\\\\\\[|\\\\\\]|\\\\(begin|end)\\{((eqnarray|equation|flalign|gather|multline|align)\\*?)\\}");
   static regex const rkeys("\\$|\\\\\\[|\\\\\\]|\\\\((([a-zA-Z]+\\*?)(\\{([a-z]+\\*?)\\}|=[0-9]+[a-z]+)?))");
   static bool disableLanguageOverride = false;
   smatch sub, submath;
@@ -1365,23 +1365,24 @@ void LatexInfo::buildEntries(bool isPatternString)
     submath = *itmath;
     if (math_end_waiting) {
       size_t pos = submath.position(size_t(0));
-      if (math_end == "$") {
-        if ((submath.str(0) == "$") && (interval.par[pos-1] != '\\')) {
-          mi.insert("$", math_pos, pos + 1);
-          math_end_waiting = false;
-        }
+      if ((math_end == "$") &&
+          (submath.str(0) == "$") &&
+          (interval.par[pos-1] != '\\')) {
+        mi.insert("$", math_pos, pos + 1);
+        math_end_waiting = false;
       }
-      else if (math_end == "\\]") {
-        if (submath.str(0) == "\\]") {
-          mi.insert("\\]", math_pos, pos + 2);
-          math_end_waiting = false;
-        }
+      else if ((math_end == "\\]") &&
+               (submath.str(0) == "\\]")) {
+        mi.insert("\\]", math_pos, pos + 2);
+        math_end_waiting = false;
       }
       else if ((submath.str(1).compare("end") == 0) &&
           (submath.str(2).compare(math_end) == 0)) {
         mi.insert(math_end, math_pos, pos + submath.str(0).length());
         math_end_waiting = false;
       }
+      else
+        continue;
     }
     else {
       if (submath.str(1).compare("begin") == 0) {
@@ -1610,7 +1611,7 @@ void LatexInfo::buildKeys(bool isPatternString)
 
   // Macros to remove, but let the parameter survive
   // No split
-  makeKey("url|href|menuitem|footnote|code|index", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+  makeKey("url|href|menuitem|footnote|code|index|textmd", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
 
   // Same effect as previous, parameter will survive (because there is no one anyway)
   // No split
