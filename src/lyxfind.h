@@ -117,6 +117,9 @@ public:
 	SearchRestriction restr;
 };
 
+/// Set the formats that should be ignored
+void setIgnoreFormat(std::string type, bool value);
+
 /// Write a FindAdvOptions instance to a stringstream
 std::ostringstream & operator<<(std::ostringstream & os, lyx::FindAndReplaceOptions const & opt);
 

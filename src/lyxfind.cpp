@@ -59,6 +59,111 @@ using namespace lyx::support;
 
 namespace lyx {
 
+
+// Helper class for deciding what should be ignored
+class IgnoreFormats {
+ public:
+	///
+	IgnoreFormats()
+		: ignoreFamily_(false), ignoreSeries_(false),
+		  ignoreShape_(false), ignoreUnderline_(false),
+		  ignoreMarkUp_(false), ignoreStrikeOut_(false),
+		  ignoreSectioning_(false), ignoreFrontMatter_(true),
+		  ignoreColor_(false), ignoreLanguage_(false) {}
+	///
+	bool getFamily() { return ignoreFamily_; };
+	///
+	bool getSeries() { return ignoreSeries_; };
+	///
+	bool getShape() { return ignoreShape_; };
+	///
+	bool getUnderline() { return ignoreUnderline_; };
+	///
+	bool getMarkUp() { return ignoreMarkUp_; };
+	///
+	bool getStrikeOut() { return ignoreStrikeOut_; };
+	///
+	bool getSectioning() { return ignoreSectioning_; };
+	///
+	bool getFrontMatter() { return ignoreFrontMatter_; };
+	///
+	bool getColor() { return ignoreColor_; };
+	///
+	bool getLanguage() { return ignoreLanguage_; };
+	///
+	void setIgnoreFormat(string type, bool value);
+
+private:
+	///
+	bool ignoreFamily_;
+	///
+	bool ignoreSeries_;
+	///
+	bool ignoreShape_;
+	///
+	bool ignoreUnderline_;
+	///
+	bool ignoreMarkUp_;
+	///
+	bool ignoreStrikeOut_;
+	///
+	bool ignoreSectioning_;
+	///
+	bool ignoreFrontMatter_;
+	///
+	bool ignoreColor_;
+	///
+	bool ignoreLanguage_;
+};
+
+
+void IgnoreFormats::setIgnoreFormat(string type, bool value)
+{
+	if (type == "color") {
+		ignoreColor_ = value;
+	}
+	else if (type == "language") {
+		ignoreLanguage_ = value;
+	}
+	else if (type == "sectioning") {
+		ignoreSectioning_ = value;
+		ignoreFrontMatter_ = value;
+	}
+	else if (type == "font") {
+		ignoreSeries_ = value;
+		ignoreShape_ = value;
+		ignoreFamily_ = value;
+	}
+	else if (type == "series") {
+		ignoreSeries_ = value;
+	}
+	else if (type == "shape") {
+		ignoreShape_ = value;
+	}
+	else if (type == "family") {
+		ignoreFamily_ = value;
+	}
+	else if (type == "markup") {
+		ignoreMarkUp_ = value;
+	}
+	else if (type == "underline") {
+		ignoreUnderline_ = value;
+	}
+	else if (type == "strike") {
+		ignoreStrikeOut_ = value;
+	}
+}
+
+// The global variable that can be changed from outside
+IgnoreFormats ignoreFormats;
+
+
+void setIgnoreFormat(string type, bool value)
+{
+	ignoreFormats.setIgnoreFormat(type, value);
+}
+
+
 namespace {
 
 bool parse_bool(docstring & howto)
@@ -1121,96 +1226,6 @@ typedef map<string, KeyInfo> KeysMap;
 typedef vector< KeyInfo> Entries;
 static KeysMap keys = map<string, KeyInfo>();
 
-class IgnoreFormats {
-  static bool ignoreFamily;
-  static bool ignoreSeries;
-  static bool ignoreShape;
-  static bool ignoreUnderline;
-  static bool ignoreMarkUp;
-  static bool ignoreStrikeOut;
-  static bool ignoreSectioning;
-  static bool ignoreFrontMatter;
-  static bool ignoreColor;
-  static bool ignoreLanguage;
- public:
-  bool getFamily() { return ignoreFamily; };
-  bool getSeries() { return ignoreSeries; };
-  bool getShape() { return ignoreShape; };
-  bool getUnderline() { return ignoreUnderline; };
-  bool getMarkUp() { return ignoreMarkUp; };
-  bool getStrikeOut() { return ignoreStrikeOut; };
-  bool getSectioning() { return ignoreSectioning; };
-  bool getFrontMatter() { return ignoreFrontMatter; };
-  bool getColor() { return ignoreColor; };
-  bool getLanguage() { return ignoreLanguage; };
-
-  void setIgnoreFormat(string type, bool value);
-};
-
-bool IgnoreFormats::ignoreFamily     = false;
-bool IgnoreFormats::ignoreSeries     = false;
-bool IgnoreFormats::ignoreShape      = false;
-bool IgnoreFormats::ignoreUnderline  = false;
-bool IgnoreFormats::ignoreMarkUp     = false;
-bool IgnoreFormats::ignoreStrikeOut  = false;
-bool IgnoreFormats::ignoreSectioning = false;
-bool IgnoreFormats::ignoreFrontMatter= true;
-bool IgnoreFormats::ignoreColor      = false;
-bool IgnoreFormats::ignoreLanguage   = false;
-
-void IgnoreFormats::setIgnoreFormat(string type, bool value)
-{
-  if (type == "color") {
-    ignoreColor = value;
-  }
-  else if (type == "language") {
-    ignoreLanguage = value;
-  }
-  else if (type == "sectioning") {
-    ignoreSectioning = value;
-    ignoreFrontMatter = value;
-  }
-  else if (type == "font") {
-    ignoreSeries = value;
-    ignoreShape = value;
-    ignoreFamily = value;
-  }
-  else if (type == "series") {
-    ignoreSeries = value;
-  }
-  else if (type == "shape") {
-    ignoreShape = value;
-  }
-  else if (type == "family") {
-    ignoreFamily = value;
-  }
-  else if (type == "markup") {
-    ignoreMarkUp = value;
-  }
-  else if (type == "underline") {
-    ignoreUnderline = value;
-  }
-  else if (type == "strike") {
-    ignoreStrikeOut = value;
-  }
-}
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpragmas"
-#pragma GCC diagnostic ignored "-Wunused"
-#pragma GCC diagnostic ignored "-Wunused-function"
-
-#ifdef __GNUC__
-#define SUPPRESS_NOT_USED_WARN __attribute__ ((unused))
-#else
-#define SUPPRESS_NOT_USED_WARN
-#endif
-
-void SUPPRESS_NOT_USED_WARN setIgnoreFormat(string type, bool value)
-{
-  IgnoreFormats().setIgnoreFormat(type, value);
-}
-#pragma GCC diagnostic pop
-
 class LatexInfo {
  private:
   int entidx;
@@ -1221,7 +1236,6 @@ class LatexInfo {
   void makeKey(const string &, KeyInfo, bool isPatternString);
   void processRegion(int start, int region_end); /*  remove {} parts */
   void removeHead(KeyInfo&, int count=0);
-  IgnoreFormats f;
 
  public:
  LatexInfo(string par, bool isPatternString) : interval(isPatternString) {
@@ -1577,27 +1591,27 @@ void LatexInfo::buildKeys(bool isPatternString)
 
   // Know standard keys with 1 parameter.
   // Split is done, if not at start of region
-  makeKey("textsf|textss|texttt", KeyInfo(KeyInfo::isStandard, 1, f.getFamily()), isPatternString);
-  makeKey("textbf",               KeyInfo(KeyInfo::isStandard, 1, f.getSeries()), isPatternString);
-  makeKey("textit|textsc|textsl", KeyInfo(KeyInfo::isStandard, 1, f.getShape()), isPatternString);
-  makeKey("uuline|uline|uwave",   KeyInfo(KeyInfo::isStandard, 1, f.getUnderline()), isPatternString);
-  makeKey("emph|noun",            KeyInfo(KeyInfo::isStandard, 1, f.getMarkUp()), isPatternString);
-  makeKey("sout|xout",            KeyInfo(KeyInfo::isStandard, 1, f.getStrikeOut()), isPatternString);
+  makeKey("textsf|textss|texttt", KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getFamily()), isPatternString);
+  makeKey("textbf",               KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getSeries()), isPatternString);
+  makeKey("textit|textsc|textsl", KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getShape()), isPatternString);
+  makeKey("uuline|uline|uwave",   KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getUnderline()), isPatternString);
+  makeKey("emph|noun",            KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getMarkUp()), isPatternString);
+  makeKey("sout|xout",            KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getStrikeOut()), isPatternString);
 
   makeKey("section|subsection|subsubsection|paragraph|subparagraph|minisec",
-          KeyInfo(KeyInfo::isSectioning, 1, f.getSectioning()), isPatternString);
+          KeyInfo(KeyInfo::isSectioning, 1, ignoreFormats.getSectioning()), isPatternString);
   makeKey("section*|subsection*|subsubsection*|paragraph*",
-          KeyInfo(KeyInfo::isSectioning, 1, f.getSectioning()), isPatternString);
-  makeKey("part|part*|chapter|chapter*", KeyInfo(KeyInfo::isSectioning, 1, f.getSectioning()), isPatternString);
-  makeKey("title|subtitle|author|subject|publishers|dedication|uppertitleback|lowertitleback|extratitle|lyxaddress|lyxrightaddress", KeyInfo(KeyInfo::isSectioning, 1, f.getFrontMatter()), isPatternString);
+          KeyInfo(KeyInfo::isSectioning, 1, ignoreFormats.getSectioning()), isPatternString);
+  makeKey("part|part*|chapter|chapter*", KeyInfo(KeyInfo::isSectioning, 1, ignoreFormats.getSectioning()), isPatternString);
+  makeKey("title|subtitle|author|subject|publishers|dedication|uppertitleback|lowertitleback|extratitle|lyxaddress|lyxrightaddress", KeyInfo(KeyInfo::isSectioning, 1, ignoreFormats.getFrontMatter()), isPatternString);
   // Regex
   makeKey("regexp", KeyInfo(KeyInfo::isRegex, 1, false), isPatternString);
 
   // Split is done, if not at start of region
-  makeKey("textcolor", KeyInfo(KeyInfo::isStandard, 2, f.getColor()), isPatternString);
+  makeKey("textcolor", KeyInfo(KeyInfo::isStandard, 2, ignoreFormats.getColor()), isPatternString);
 
   // Split is done always.
-  makeKey("foreignlanguage", KeyInfo(KeyInfo::isMain, 2, f.getLanguage()), isPatternString);
+  makeKey("foreignlanguage", KeyInfo(KeyInfo::isMain, 2, ignoreFormats.getLanguage()), isPatternString);
 
   // Know charaters
   // No split
