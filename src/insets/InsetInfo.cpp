@@ -159,7 +159,7 @@ set<string> getTexFileList(string const & filename)
 	for (auto doc : doclist) {
 		subst(doc, from_ascii("\r"), docstring());
 		while (contains(doc, from_ascii("//")))
-			subst(doc, from_ascii("//"), from_ascii("/"));
+			doc = subst(doc, from_ascii("//"), from_ascii("/"));
 		if (!doc.empty())
 			list.insert(removeExtension(onlyFileName(to_utf8(doc))));
 	}
