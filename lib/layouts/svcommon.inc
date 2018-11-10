@@ -19,7 +19,7 @@
 # see http://www.springer.com/authors for class files and further instructions
 
 
-Format 69
+Format 70
 PageStyle		Plain
 
 
