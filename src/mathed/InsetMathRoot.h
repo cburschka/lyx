@@ -30,6 +30,10 @@ public:
 	bool idxForward(Cursor & cur) const;
 	///
 	bool idxBackward(Cursor & cur) const;
+	///
+	bool idxFirst(Cursor &) const;
+	///
+	bool idxLast(Cursor &) const;
 
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;

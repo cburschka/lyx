@@ -180,6 +180,24 @@ bool InsetMathRoot::idxBackward(Cursor & cur) const
 }
 
 
+bool InsetMathRoot::idxFirst(Cursor & cur) const
+{
+	LASSERT(&cur.inset() == this, return false);
+	cur.idx() = 1;
+	cur.pos() = 0;
+	return true;
+}
+
+
+bool InsetMathRoot::idxLast(Cursor & cur) const
+{
+	LASSERT(&cur.inset() == this, return false);
+	cur.idx() = 0;
+	cur.pos() = cur.lastpos();
+	return true;
+}
+
+
 void InsetMathRoot::maple(MapleStream & os) const
 {
 	os << '(' << cell(0) << ")^(1/(" << cell(1) <<"))";
