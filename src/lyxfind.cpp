@@ -1363,7 +1363,7 @@ class MathInfo {
 
 void LatexInfo::buildEntries(bool isPatternString)
 {
-  static regex const rmath("\\$|\\\\\\[|\\\\\\]|\\\\(begin|end)\\{((eqnarray|equation|flalign|gather|multline|align)\\*?)\\}");
+  static regex const rmath("\\$|\\\\\\[|\\\\\\]|\\\\(begin|end)\\{((eqnarray|equation|flalign|gather|multline|align|alignat)\\*?)\\}");
   static regex const rkeys("\\$|\\\\\\[|\\\\\\]|\\\\((([a-zA-Z]+\\*?)(\\{([a-z]+\\*?)\\}|=[0-9]+[a-z]+)?))");
   static bool disableLanguageOverride = false;
   smatch sub, submath;
@@ -1489,13 +1489,26 @@ void LatexInfo::buildEntries(bool isPatternString)
       }
       else {
         // begin|end of unknown env, discard
+        // First handle tables
+        // longtable|tabular
+        bool discardComment;
+        if ((sub.str(5).compare("longtable") == 0) ||
+            (sub.str(5).compare("tabular") == 0)) {
+          discardComment = true;        /* '%' */
+        }
+        else
+          discardComment = false;
         found = keys[key];
         // discard spaces before pos(0)
         int pos = sub.position(size_t(0));
         int count;
         for (count = 0; pos - count > 0; count++) {
           char c = interval.par[pos-count-1];
-          if (c != ' ')
+          if (discardComment) {
+            if ((c != ' ') && (c != '%'))
+              break;
+          }
+          else if (c != ' ')
             break;
         }
         found.keytype = KeyInfo::doRemove;
@@ -1637,7 +1650,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("trianglerightpar|hexagonpar|starpar",   KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("triangleuppar|triangledownpar|droppar", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("triangleleftpar|shapepar|dropuppar",    KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
-  // like ('tiny{}' or '\tiny ' ... }
+  // like ('tiny{}' or '\tiny ' ... )
   makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, true), isPatternString);
 
   // Survives, like known character
@@ -2247,6 +2260,56 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 }
 
 
+// Count number of characters in string
+// {]} ==> 1
+// \&  ==> 1
+// --- ==> 1
+// \\[a-zA-Z]+ ==> 1
+static int computeSize(string s, int len)
+{
+	if (len == 0)
+		return 0;
+	int skip = 1;
+	int count = 0;
+	for (int i = 0; i < len; i += skip, count++) {
+		if (s[i] == '\\') {
+			skip = 2;
+			if (isalpha(s[i+1])) {
+				for (int j = 2;  i+j < len; j++) {
+					if (! isalpha(s[i+j])) {
+						if (s[i+j] == ' ')
+							skip++;
+						else if ((s[i+j] == '{') && s[i+j+1] == '}')
+							skip += 2;
+						break;
+					}
+					skip++;
+				}
+			}
+		}
+		else if (s[i] == '{') {
+			if (s[i+1] == '}')
+				skip = 2;
+			else
+				skip = 3;
+		}
+		else if (s[i] == '-') {
+			if (s[i+1] == '-') {
+				if (s[i+2] == '-')
+					skip = 3;
+				else
+					skip = 2;
+			}
+			else
+				skip = 1;
+		}
+		else {
+			skip = 1;
+		}
+	}
+	return count;
+}
+
 int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) const
 {
 	if (at_begin &&
@@ -2310,11 +2373,19 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 		else
 			result =  m[m.size() - close_wildcards].first - m[0].first;
 
+		size_t pos = m.position(0);
+		// Ignore last closing characters
+		while (result > 0) {
+			if (str[pos+result-1] == '}')
+				--result;
+			else
+				break;
+		}
 		if (result > leadingsize)
 			result -= leadingsize;
 		else
 			result = 0;
-		return(result);
+		return computeSize(str.substr(pos+leadingsize,result), result);
 	}
 
 	// else !use_regexp: but all code paths above return
@@ -2557,6 +2628,8 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 	int old_len = len;
 	int step = 20;
 	int new_match;
+	if (match.opt.matchword)
+		step = 1;
 	while (step == 20) {
 		if (cur.pos() + len + step >= cur.lastpos()) {
 			step = 1;
@@ -2585,7 +2658,12 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 		// Kornel: The loop is needed, since it looks like
 		// incrementing 'cur.pos()' does not always lead to the following
 		// char which we could then match.
-		for (int count = 1; count < 5; ++count) {
+		int maxcnt;
+		if (match.opt.matchword)
+			maxcnt = 2;
+		else
+			maxcnt = 5;
+		for (int count = 1; count < maxcnt; ++count) {
 			if (cur.pos() + len + count > cur.lastpos()) {
 				break;
 			}
