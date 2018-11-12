@@ -493,7 +493,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 		return;
 
 	/* FIXME We would like to avoid doing this here, since it is very
-	 * expensive and is called in updateBuffer already. Howaver, even
+	 * expensive and is called in updateBuffer already. However, even
 	 * inserting a plain character can invalidate the overly fragile
 	 * tables of child documents built by updateMacros. Some work is
 	 * needed to avoid doing that when not necessary.
