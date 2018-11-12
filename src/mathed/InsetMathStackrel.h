@@ -24,6 +24,10 @@ public:
 	///
 	bool idxUpDown(Cursor &, bool up) const;
 	///
+	bool idxFirst(Cursor &) const;
+	///
+	bool idxLast(Cursor &) const;
+	///
 	MathClass mathClass() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;

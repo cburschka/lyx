@@ -30,6 +30,10 @@ public:
 	///
 	bool idxUpDown(Cursor & cur, bool up) const;
 	///
+	bool idxFirst(Cursor &) const;
+	///
+	bool idxLast(Cursor &) const;
+	///
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;

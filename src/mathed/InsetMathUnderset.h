@@ -28,6 +28,10 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
+	bool idxFirst(Cursor &) const;
+	///
+	bool idxLast(Cursor &) const;
+	///
 	void write(WriteStream & ws) const;
 	///
 	void normalize(NormalStream & ns) const;

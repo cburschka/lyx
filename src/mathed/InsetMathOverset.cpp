@@ -70,6 +70,24 @@ bool InsetMathOverset::idxUpDown(Cursor & cur, bool up) const
 }
 
 
+bool InsetMathOverset::idxFirst(Cursor & cur) const
+{
+	LASSERT(&cur.inset() == this, return false);
+	cur.idx() = 0;
+	cur.pos() = 0;
+	return true;
+}
+
+
+bool InsetMathOverset::idxLast(Cursor & cur) const
+{
+	LASSERT(&cur.inset() == this, return false);
+	cur.idx() = 0;
+	cur.pos() = cur.lastpos();
+	return true;
+}
+
+
 void InsetMathOverset::write(WriteStream & os) const
 {
 	MathEnsurer ensurer(os);

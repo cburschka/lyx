@@ -19,6 +19,8 @@
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 
+#include "support/lassert.h"
+
 using namespace std;
 
 namespace lyx {
@@ -50,6 +52,24 @@ bool InsetMathStackrel::idxUpDown(Cursor & cur, bool up) const
 		return false;
 	cur.idx() = target;
 	cur.pos() = cell(target).x2pos(&cur.bv(), cur.x_target());
+	return true;
+}
+
+
+bool InsetMathStackrel::idxFirst(Cursor & cur) const
+{
+	LASSERT(&cur.inset() == this, return false);
+	cur.idx() = 0;
+	cur.pos() = 0;
+	return true;
+}
+
+
+bool InsetMathStackrel::idxLast(Cursor & cur) const
+{
+	LASSERT(&cur.inset() == this, return false);
+	cur.idx() = 0;
+	cur.pos() = cur.lastpos();
 	return true;
 }
 

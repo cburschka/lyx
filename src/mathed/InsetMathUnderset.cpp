@@ -19,6 +19,7 @@
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 
+#include "support/lassert.h"
 
 using namespace std;
 
@@ -55,6 +56,24 @@ void InsetMathUnderset::draw(PainterInfo & pi, int x, int y) const
 	cell(0).draw(pi, m - dim0.width() / 2, y);
 	Changer dummy = pi.base.changeScript();
 	cell(1).draw(pi, m - dim1.width() / 2, yo);
+}
+
+
+bool InsetMathUnderset::idxFirst(Cursor & cur) const
+{
+	LASSERT(&cur.inset() == this, return false);
+	cur.idx() = 0;
+	cur.pos() = 0;
+	return true;
+}
+
+
+bool InsetMathUnderset::idxLast(Cursor & cur) const
+{
+	LASSERT(&cur.inset() == this, return false);
+	cur.idx() = 0;
+	cur.pos() = cur.lastpos();
+	return true;
 }
 
 
