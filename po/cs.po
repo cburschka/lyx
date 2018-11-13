@@ -9956,24 +9956,20 @@ msgid "Right Address"
 msgstr "Adresa napravo"
 
 #: lib/layouts/bxjsarticle.layout:3
-#, fuzzy
 msgid "Japanese Article (BXJS Class)"
-msgstr "Japanese Article (jarticle)"
+msgstr "Japanese Article (BXJS Class)"
 
 #: lib/layouts/bxjsbook.layout:3
-#, fuzzy
 msgid "Japanese Book (BXJS Class)"
-msgstr "Japanese Book (jsbook)"
+msgstr "Japanese Book (BXJS Class)"
 
 #: lib/layouts/bxjsreport.layout:3
-#, fuzzy
 msgid "Japanese Report (BXJS Class)"
-msgstr "Japanese Report (jreport)"
+msgstr "Japanese Report (BXJS Class)"
 
 #: lib/layouts/bxjsslide.layout:3
-#, fuzzy
 msgid "Japanese Slide (BXJS Class)"
-msgstr "Japonština (pLaTeX) (JIS)"
+msgstr "Japanese Slide (BXJS Class)"
 
 #: lib/layouts/changebars.module:2
 msgid "Change bars"
@@ -11461,7 +11457,6 @@ msgid "Fix LaTeX"
 msgstr "Opravy LaTeX-u"
 
 #: lib/layouts/fixltx2e.module:10
-#, fuzzy
 msgid ""
 "Loads the LaTeX package fixltx2e which contains some bug fixes for LaTeX. "
 "Those fixes were not part of older LaTeX kernels because of backward "
@@ -11472,10 +11467,10 @@ msgid ""
 "newer LaTeX distributions."
 msgstr ""
 "Načíst LaTeX-ový balíček fixltx2e, který obsahuje opravy pro LaTeX. Tyto "
-"opravy nejsou součástí jádra LaTeX-u kvůli dodržení zpětné kompatibility."
-"Pokud použijete tento balíček, je možné, že vysázený dokument bude odlišnýv "
+"opravy nebyly součástí starších jader LaTeX-u kvůli dodržení zpětné kompatibility."
+"Pokud použijete tento balíček, je možné, že vysázený dokument bude odlišný v "
 "budoucích verzích LaTeX-u díky dalším opravám, které přibudou do fixltx2e. "
-"Poznámka: nové kernely LaTeX-u (>2015) již obsahují fixltx2e funkcionalitu, "
+"Poznámka: nové kernely LaTeX-u (>=2015) již obsahují fixltx2e funkcionalitu, "
 "čímž se tento modul stal zastaralým."
 
 #: lib/layouts/fixme.module:2
@@ -11492,52 +11487,45 @@ msgid ""
 "Document > Settings > Document Class > Class Options > Custom). To display "
 "them always, insert \\fxsetup{draft} to Document > Settings > Preamble. NOTE "
 "also that you need version 4 or later of the FiXme package for some features."
-msgstr ""
+msgstr "Poskytne 'FiXme' anotace (po okraji stránky) pro účely revizí dokumentu. Seznam anotací lze vyprodukovat použitím stylu odstavce 'List of FIXMEs'. Detaily anotace lze upravit v preambuli LaTeX-u. Poznámka: standardně jsou poznámky zobrazeny pouze v módu konceptu (Vložte 'draft' do Dokument > Nastavení > Třída dokumentu > Nastavení třídy > Vlastní ). Vložením \\fxsetup{draft} do preambule budou zobrazeny vždy. Pro některé vlasnosti modulu je třeba alespoň verze 4 balíčku FiXme."
 
 #: lib/layouts/fixme.module:17 lib/layouts/fixme.module:55
 msgid "Fixme"
-msgstr ""
+msgstr "Fixme"
 
 #: lib/layouts/fixme.module:23
-#, fuzzy
 msgid "List of FIXMEs"
-msgstr "Seznam %1$s"
+msgstr "List of FIXMEs"
 
 #: lib/layouts/fixme.module:37
-#, fuzzy
 msgid "[List of FIXMEs]"
-msgstr "Seznam obrázků"
+msgstr "[List of FIXMEs]"
 
 #: lib/layouts/fixme.module:53
-#, fuzzy
 msgid "Fixme Note"
-msgstr "Figure Note"
+msgstr "Fixme Note"
 
 #: lib/layouts/fixme.module:68 lib/layouts/fixme.module:103
 #: lib/layouts/fixme.module:146 lib/layouts/fixme.module:188
-#, fuzzy
 msgid "Fixme Note Options|s"
-msgstr "Note Options"
+msgstr "Fixme Note Options|s"
 
 #: lib/layouts/fixme.module:69 lib/layouts/fixme.module:104
 #: lib/layouts/fixme.module:147 lib/layouts/fixme.module:189
 msgid "Consult the fixme package documentation for options"
-msgstr ""
+msgstr "Consult the fixme package documentation for options"
 
 #: lib/layouts/fixme.module:74
-#, fuzzy
 msgid "Fixme Warning"
-msgstr "význam"
+msgstr "Fixme Warning"
 
 #: lib/layouts/fixme.module:76
-#, fuzzy
 msgid "Warning"
-msgstr "Varování!"
+msgstr "Warning"
 
 #: lib/layouts/fixme.module:80
-#, fuzzy
 msgid "Fixme Error"
-msgstr "Chyba ve jméně souboru"
+msgstr "Fixme Error"
 
 #: lib/layouts/fixme.module:82 src/frontends/qt4/GuiCompare.cpp:198
 #: src/frontends/qt4/GuiDocument.cpp:2397
@@ -11548,181 +11536,167 @@ msgstr "Chyba"
 
 #: lib/layouts/fixme.module:86
 msgid "Fixme Fatal"
-msgstr ""
+msgstr "Fixme Fatal"
 
 #: lib/layouts/fixme.module:88
-#, fuzzy
 msgid "Fatal"
-msgstr "Katalánština"
+msgstr "Fatal"
 
 #: lib/layouts/fixme.module:97
 msgid "Fixme Note (Targeted)"
-msgstr ""
+msgstr "Fixme Note (Targeted)"
 
 #: lib/layouts/fixme.module:99
 msgid "Fixme (Targeted)"
-msgstr ""
+msgstr "Fixme (Targeted)"
 
 #: lib/layouts/fixme.module:109
-#, fuzzy
 msgid "Fixme Note|x"
-msgstr "Figure Note"
+msgstr "Fixme Note|x"
 
 #: lib/layouts/fixme.module:111
-#, fuzzy
 msgid "Insert the FIXME note here"
-msgstr "Vložit poznámku LyXu"
+msgstr "Insert the FIXME note here"
 
 #: lib/layouts/fixme.module:116
 msgid "Fixme Warning (Targeted)"
-msgstr ""
+msgstr "Fixme Warning (Targeted)"
 
 #: lib/layouts/fixme.module:118
 msgid "Warning (Targeted)"
-msgstr ""
+msgstr "Warning (Targeted)"
 
 #: lib/layouts/fixme.module:122
 msgid "Fixme Error (Targeted)"
-msgstr ""
+msgstr "Fixme Error (Targeted)"
 
 #: lib/layouts/fixme.module:124
 msgid "Error (Targeted)"
-msgstr ""
+msgstr "Error (Targeted)"
 
 #: lib/layouts/fixme.module:128
 msgid "Fixme Fatal (Targeted)"
-msgstr ""
+msgstr "Fixme Fatal (Targeted)"
 
 #: lib/layouts/fixme.module:130
 msgid "Fatal (Targeted)"
-msgstr ""
+msgstr "Fatal (Targeted)"
 
 #: lib/layouts/fixme.module:139
 msgid "Fixme Note (Multipar)"
-msgstr ""
+msgstr "Fixme Note (Multipar)"
 
 #: lib/layouts/fixme.module:141
 msgid "Fixme (Multipar)"
-msgstr ""
+msgstr "Fixme (Multipar)"
 
 #: lib/layouts/fixme.module:153 lib/layouts/fixme.module:195
-#, fuzzy
 msgid "Fixme Summary"
-msgstr "Left Summary"
+msgstr "Fixme Summary"
 
 #: lib/layouts/fixme.module:154 lib/layouts/fixme.module:196
 msgid "Insert a summary of the FIXME note here"
-msgstr ""
+msgstr "Insert a summary of the FIXME note here"
 
 #: lib/layouts/fixme.module:159
 msgid "Fixme Warning (Multipar)"
-msgstr ""
+msgstr "Fixme Warning (Multipar)"
 
 #: lib/layouts/fixme.module:161
 msgid "Warning (Multipar)"
-msgstr ""
+msgstr "Warning (Multipar)"
 
 #: lib/layouts/fixme.module:165
 msgid "Fixme Error (Multipar)"
-msgstr ""
+msgstr "Fixme Error (Multipar)"
 
 #: lib/layouts/fixme.module:167
 msgid "Error (Multipar)"
-msgstr ""
+msgstr "Error (Multipar)"
 
 #: lib/layouts/fixme.module:171
 msgid "Fixme Fatal (Multipar)"
-msgstr ""
+msgstr "Fixme Fatal (Multipar)"
 
 #: lib/layouts/fixme.module:173
 msgid "Fatal (Multipar)"
-msgstr ""
+msgstr "Fatal (Multipar)"
 
 #: lib/layouts/fixme.module:182
 msgid "Fixme Note (Multipar Targeted)"
-msgstr ""
+msgstr "Fixme Note (Multipar Targeted)"
 
 #: lib/layouts/fixme.module:184
 msgid "Fixme (MP Targ.)"
-msgstr ""
+msgstr "Fixme (MP Targ.)"
 
 #: lib/layouts/fixme.module:200
-#, fuzzy
 msgid "Annotated Text"
-msgstr "After Title Text"
+msgstr "Annotated Text"
 
 #: lib/layouts/fixme.module:202
 msgid "Annotated Text|x"
-msgstr ""
+msgstr "Annotated Text|x"
 
 #: lib/layouts/fixme.module:203
-#, fuzzy
 msgid "Insert the text to annotate here"
-msgstr "Nelze změnit počet sloupců v '%1$s'"
+msgstr "Insert the text to annotate here"
 
 #: lib/layouts/fixme.module:208
 msgid "Fixme Warning (Multipar Targeted)"
-msgstr ""
+msgstr "Fixme Warning (Multipar Targeted)"
 
 #: lib/layouts/fixme.module:210
 msgid "Warning (MP Targ.)"
-msgstr ""
+msgstr "Warning (MP Targ.)"
 
 #: lib/layouts/fixme.module:214
 msgid "Fixme Error (Multipar Targeted)"
-msgstr ""
+msgstr "Fixme Error (Multipar Targeted)"
 
 #: lib/layouts/fixme.module:216
 msgid "Error (MP Targ.)"
-msgstr ""
+msgstr "Error (MP Targ.)"
 
 #: lib/layouts/fixme.module:220
 msgid "Fixme Fatal (Multipar Targeted)"
-msgstr ""
+msgstr "Fixme Fatal (Multipar Targeted)"
 
 #: lib/layouts/fixme.module:222
 msgid "Fatal (MP Targ.)"
-msgstr ""
+msgstr "Fatal (MP Targ.)"
 
 #: lib/layouts/fixme.module:232
-#, fuzzy
 msgid "FxNote"
-msgstr "Poznámka"
+msgstr "FxNote"
 
 #: lib/layouts/fixme.module:236
-#, fuzzy
 msgid "FxNote*"
-msgstr "Poznámka*"
+msgstr "FxNote*"
 
 #: lib/layouts/fixme.module:240
-#, fuzzy
 msgid "FxWarning"
-msgstr "Varování!"
+msgstr "FxWarning"
 
 #: lib/layouts/fixme.module:244
-#, fuzzy
 msgid "FxWarning*"
-msgstr "Varování!"
+msgstr "FxWarning*"
 
 #: lib/layouts/fixme.module:248
-#, fuzzy
 msgid "FxError"
-msgstr "Chyba"
+msgstr "FxError"
 
 #: lib/layouts/fixme.module:252
-#, fuzzy
 msgid "FxError*"
-msgstr "Chyba"
+msgstr "FxError*"
 
 #: lib/layouts/fixme.module:256
-#, fuzzy
 msgid "FxFatal"
-msgstr "Katalánština"
+msgstr "FxFatal"
 
 #: lib/layouts/fixme.module:260
-#, fuzzy
 msgid "FxFatal*"
-msgstr "Katalánština"
+msgstr "FxFatal*"
 
 #: lib/layouts/foils.layout:3
 msgid "FoilTeX"
