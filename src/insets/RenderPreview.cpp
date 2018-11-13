@@ -304,6 +304,7 @@ void RenderMonitoredPreview::startMonitoring() const
 {
 	if (!monitoring()) {
 		monitor_ = FileSystemWatcher::activeMonitor(filename_);
+		// Disconnected at the same time as this is destroyed.
 		monitor_->connect([this](bool /* exists */){ changed_(); });
 	}
 }

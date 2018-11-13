@@ -60,10 +60,6 @@ typedef std::unique_ptr<ActiveFileMonitor> ActiveFileMonitorPtr;
 ///   monitor.connect(...);
 /// (stops watching the first)
 ///
-/// Reset connections:
-///   monitor.disconnect();
-///   or the disconnect method of the connection object for the boost signal.
-///
 class FileSystemWatcher
 {
 public:
@@ -137,9 +133,6 @@ public:
 	typedef sig::slot_type slot;
 	/// Connect and you'll be informed when the file has changed.
 	signals2::connection connect(slot const &);
-	/// disconnect all slots connected to the boost signal fileChanged_ or to
-	/// the qt signal fileChanged()
-	void disconnect();
 	/// absolute path being tracked
 	std::string const & filename() { return monitor_->filename(); }
 	/// Make sure the good file is being monitored, after e.g. a move or a
