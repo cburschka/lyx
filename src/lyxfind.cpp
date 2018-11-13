@@ -1630,7 +1630,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   // No split
   makeKey("backslash|textbackslash|textasciicircum|textasciitilde|ldots", KeyInfo(KeyInfo::isChar, 1, false), isPatternString);
   // Found in fr/UserGuide.lyx
-  makeKey("og|fg", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  makeKey("og|fg|textvisiblespace", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
 
   // Known macros to remove (including their parameter)
   // No split
@@ -2281,6 +2281,8 @@ static int computeSize(string s, int len)
 							skip++;
 						else if ((s[i+j] == '{') && s[i+j+1] == '}')
 							skip += 2;
+						else if ((s[i+j] == '{') && (i + j + 1 >= len))
+							skip++;
 						break;
 					}
 					skip++;
@@ -2693,6 +2695,9 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 			int match_len_zero_count = 0;
 			for (; !theApp()->longOperationCancelled() && cur; cur.forwardPos()) {
 				LYXERR(Debug::FIND, "Advancing cur: " << cur);
+				int match_len3 = match(cur, 1);
+				if (match_len3 < 0)
+					continue;
 				int match_len2 = match(cur);
 				LYXERR(Debug::FIND, "match_len2: " << match_len2);
 				if (match_len2 > 0) {
