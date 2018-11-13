@@ -176,7 +176,14 @@ FileMonitor::FileMonitor(std::shared_ptr<FileMonitorGuard> monitor)
 
 void FileMonitor::connectToFileMonitorGuard()
 {
+	// Connections need to be asynchronous because the receiver can own this
+	// object and therefore is allowed to delete it.
+	// Qt signal:
 	QObject::connect(monitor_.get(), SIGNAL(fileChanged(bool)),
+	                 this, SIGNAL(fileChanged(bool)),
+	                 Qt::QueuedConnection);
+	// Boost signal:
+	QObject::connect(this, SIGNAL(fileChanged(bool)),
 	                 this, SLOT(changed(bool)));
 }
 
@@ -187,18 +194,10 @@ signals2::connection FileMonitor::connect(slot const & slot)
 }
 
 
-void FileMonitor::disconnect()
-{
-	fileChanged_.disconnect_all_slots();
-	QObject::disconnect(this, SIGNAL(fileChanged(bool)));
-}
-
-
 void FileMonitor::changed(bool const exists)
 {
 	// emit boost signal
 	fileChanged_(exists);
-	Q_EMIT fileChanged(exists);
 }
 
 
@@ -244,7 +243,7 @@ void ActiveFileMonitor::checkModified()
 		}
 	}
 	if (changed)
-		FileMonitor::changed(exists);
+		Q_EMIT FileMonitor::fileChanged(exists);
 	QTimer::singleShot(interval_, this, SLOT(clearCooldown()));
 }
 
