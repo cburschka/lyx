@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-11-12 14:27-0500\n"
-"PO-Revision-Date: 2018-08-04 08:27+0200\n"
+"PO-Revision-Date: 2018-11-13 09:18+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 2.0\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:33
 msgid "Version"
@@ -880,9 +880,8 @@ msgid "&Reject"
 msgstr "&Відкинути"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:25
-#, fuzzy
 msgid "Font Properties"
-msgstr "Властивості PDF"
+msgstr "Властивості шрифту"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:33
 #: src/frontends/qt4/ui/CharacterUi.ui:52
@@ -890,9 +889,8 @@ msgid "Font family"
 msgstr "Гарнітура шрифту"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:36
-#, fuzzy
 msgid "Fa&mily:"
-msgstr "&Сімейство:"
+msgstr "&Гарнітура:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:59
 #: src/frontends/qt4/ui/CharacterUi.ui:78
@@ -927,28 +925,24 @@ msgid "&Color:"
 msgstr "&Колір:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:179
-#, fuzzy
 msgid "U&nderlining:"
-msgstr "підкреслений"
+msgstr "Пі&дкреслення:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:195
 msgid "Underlining of text"
-msgstr ""
+msgstr "Підкреслювання тексту"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:202
-#, fuzzy
 msgid "S&trikethrough:"
-msgstr "Перекреслити"
+msgstr "П&ерекреслення:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:218
-#, fuzzy
 msgid "Strike-through text"
-msgstr "Перекреслити"
+msgstr "Перекреслений текст"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:250
-#, fuzzy
 msgid "&Language"
-msgstr "&Мова:"
+msgstr "&Мова"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:262
 #: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/bicaption.module:15
@@ -961,27 +955,25 @@ msgid "Language"
 msgstr "Мова"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:272
-#, fuzzy
 msgid "Semantic Markup"
-msgstr "Логічна розмітка"
+msgstr "Семантична розмітка"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:278
 msgid "Semantic emphasizing (italic by default, but can be adapted)"
-msgstr ""
+msgstr "Семантичний наголос (типово курсив, але можна змінити)"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:281
-#, fuzzy
 msgid "&Emphasized"
-msgstr "Виокремлений"
+msgstr "&Виділений"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:288
 msgid "Semantic markup of nouns (small caps by default, but can be adapted)"
 msgstr ""
+"Семантичне позначення іменників (типово малі прописні, але можна змінити)"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:291
-#, fuzzy
 msgid "&Noun"
-msgstr "Термін"
+msgstr "&Іменник"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:336
 msgid "Apply each change automatically"
@@ -2859,7 +2851,6 @@ msgid "Indent displayed formulas instead of centering"
 msgstr "Додавати відступи для виключних формул замість центрування"
 
 #: src/frontends/qt4/ui/MathsUi.ui:79
-#, fuzzy
 msgid "Indent &formulas"
 msgstr "Ві&дступи для формул"
 
@@ -3064,7 +3055,6 @@ msgid "Scaling factor for images used for math output."
 msgstr "Коефіцієнт масштабування для зображень, призначених для показу формул."
 
 #: src/frontends/qt4/ui/OutputUi.ui:275
-#, fuzzy
 msgid "Write CSS to file"
 msgstr "Записати CSS до файла"
 
@@ -4496,11 +4486,13 @@ msgid ""
 "If this is checked, pressing OK or Apply will save the changes only for the "
 "current LyX session, not permanently."
 msgstr ""
+"Якщо позначено цей пункт, натискання кнопки «Гаразд» або «Застосувати»"
+" призведе до збереження змін лише для поточного сеансу LyX, а не для усіх"
+" інших сеансів."
 
 #: src/frontends/qt4/ui/PrefsUi.ui:90
-#, fuzzy
 msgid "A&pply to current session only"
-msgstr "Лише екранна версія"
+msgstr "З&астосувати лише до поточного сеансу"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:13
 msgid "Nomenclature settings"
@@ -10166,7 +10158,7 @@ msgstr "KnightMove:"
 
 #: lib/layouts/cl2emult.layout:3
 msgid "Springer Contributed Books (cl2emult, Obsolete!)"
-msgstr ""
+msgstr "Надіслані книги Springer (cl2emult, застарілий!)"
 
 #: lib/layouts/ctex-article.layout:3
 msgid "Chinese Article (CTeX)"
@@ -15668,9 +15660,8 @@ msgid "Proof(smartQED)"
 msgstr "Коректура(smartQED)"
 
 #: lib/layouts/svglobal.layout:3
-#, fuzzy
 msgid "Springer's Global Journal Template (Obsolete Version)"
-msgstr "Springer SV Global (застаріла версія)"
+msgstr "Загальний шаблон журналів Springer (застаріла версія)"
 
 #: lib/layouts/svglobal.layout:67 lib/layouts/svjog.layout:71
 #: lib/layouts/svprobth.layout:101
@@ -15714,9 +15705,8 @@ msgid "Offprints:"
 msgstr "Окремі відбитки:"
 
 #: lib/layouts/svglobal3.layout:3
-#, fuzzy
 msgid "Springer's Global Journal Template (V. 3)"
-msgstr "Springer SV Global (версія 3)"
+msgstr "Загальний шаблон журналів Springer (V. 3)"
 
 #: lib/layouts/svglobal3.layout:73
 msgid "Subclass"
@@ -15740,15 +15730,15 @@ msgstr "Розв’язування \\thesolution"
 
 #: lib/layouts/svjog.layout:3
 msgid "Journal of Geodesy (Springer)"
-msgstr ""
+msgstr "Journal of Geodesy (Springer)"
 
 #: lib/layouts/svmono.layout:3
 msgid "Springer Monographs (svmono)"
-msgstr ""
+msgstr "Монографії Springer (svmono)"
 
 #: lib/layouts/svmult.layout:3
 msgid "Springer Contributed Books (svmult)"
-msgstr ""
+msgstr "Надіслані книги Springer (svmult)"
 
 #: lib/layouts/svmult.layout:34
 msgid "Title*"
@@ -15782,7 +15772,7 @@ msgstr "Для редакторів"
 
 #: lib/layouts/svprobth.layout:3
 msgid "Probability Theory and Related Fields (Springer svprobth)"
-msgstr ""
+msgstr "Probability Theory and Related Fields (Springer svprobth)"
 
 #: lib/layouts/sweave.module:2 lib/configure.py:657
 msgid "Sweave"
@@ -17927,12 +17917,10 @@ msgid "Label Only|L"
 msgstr "Лише мітка|М"
 
 #: lib/ui/stdcontext.inc:99
-#, fuzzy
 msgid "Plural|a"
-msgstr "Множина"
+msgstr "Множина|м"
 
 #: lib/ui/stdcontext.inc:100
-#, fuzzy
 msgid "Capitalize|C"
 msgstr "Прописними|р"
 
@@ -28526,13 +28514,12 @@ msgid "Create new document?"
 msgstr "Створити новий документ з такою назвою?"
 
 #: src/buffer_funcs.cpp:129
-#, fuzzy
 msgid "&Yes, Create New Document"
-msgstr "Створити новий документ з такою назвою?"
+msgstr "&Так, створити документ"
 
 #: src/buffer_funcs.cpp:129
 msgid "&No, Do Not Create"
-msgstr ""
+msgstr "&Ні, не створювати"
 
 #: src/buffer_funcs.cpp:157
 #, c-format
@@ -29157,36 +29144,35 @@ msgstr "Малі прописні"
 
 #: src/frontends/qt4/GuiCharacter.cpp:86
 msgid "(Without)[[underlining]]"
-msgstr ""
+msgstr "(Без)"
 
 #: src/frontends/qt4/GuiCharacter.cpp:87
 msgid "Single[[underlining]]"
-msgstr ""
+msgstr "Одинарне"
 
 #: src/frontends/qt4/GuiCharacter.cpp:88
-#, fuzzy
 msgid "Double[[underlining]]"
-msgstr "Подвійне підкреслення %1$s, "
+msgstr "Подвійне"
 
 #: src/frontends/qt4/GuiCharacter.cpp:89
 msgid "Wavy"
-msgstr ""
+msgstr "Хвилястою"
 
 #: src/frontends/qt4/GuiCharacter.cpp:99
 msgid "(Without)[[strikethrough]]"
-msgstr ""
+msgstr "(Без)"
 
 #: src/frontends/qt4/GuiCharacter.cpp:100
 msgid "Single[[strikethrough]]"
-msgstr ""
+msgstr "Одинарне"
 
 #: src/frontends/qt4/GuiCharacter.cpp:101
 msgid "With /"
-msgstr ""
+msgstr "З /"
 
 #: src/frontends/qt4/GuiCharacter.cpp:191
 msgid "(Without)[[color]]"
-msgstr ""
+msgstr "(Без)"
 
 #: src/frontends/qt4/GuiCharacter.cpp:208
 msgid "Text Style"
@@ -29218,6 +29204,9 @@ msgid ""
 "Ordered list of all cited references.\n"
 "You can reorder, add and remove references with the buttons on the left."
 msgstr ""
+"Упорядкований список усіх посилань.\n"
+"Ви можете переупорядкувати, додати або вилучити посилання за допомогою"
+" розташованих ліворуч кнопок."
 
 #: src/frontends/qt4/GuiCitation.cpp:296
 msgid "General text befo&re:"
@@ -29263,7 +29252,7 @@ msgstr "Завжди виводити список усіх авторів (за
 
 #: src/frontends/qt4/GuiCitation.cpp:363
 msgid "All references available for citing."
-msgstr ""
+msgstr "Усі посилання, які можна цитувати."
 
 #: src/frontends/qt4/GuiCitation.cpp:365
 msgid ""
@@ -29271,6 +29260,10 @@ msgid ""
 "To add the selected one, hit Add, press Enter or double-click.\n"
 "Hit Ctrl-Enter to add and close the dialog."
 msgstr ""
+"Усі посилання, які можна цитувати.\n"
+"Щоб додати позначене, натисніть «Додати», клавішу Enter або двічі клацніть"
+" лівою кнопкою миші.\n"
+"Натисніть Ctrl-Enter, щоб додати і закрити це вікно."
 
 #: src/frontends/qt4/GuiCitation.cpp:435
 msgid "Keys"
@@ -29299,6 +29292,9 @@ msgid ""
 "\n"
 "The down arrow key will get you into the list of filtered citations."
 msgstr ""
+"\n"
+"Натискання клавіші зі стрілкою вниз надасть вам змогу перейти до списку"
+" фільтрованих посилань."
 
 #: src/frontends/qt4/GuiCitation.cpp:657
 msgid "Text before"
@@ -29923,7 +29919,7 @@ msgstr "Виключено модулі: %1$s."
 #: src/frontends/qt4/GuiDocument.cpp:2837
 #, c-format
 msgid "Filename: %1$s.module."
-msgstr ""
+msgstr "Назва файла: %1$s.module."
 
 #: src/frontends/qt4/GuiDocument.cpp:2842
 msgid "WARNING: Some required packages are unavailable!"
@@ -32570,57 +32566,51 @@ msgstr "невизначений"
 
 #: src/insets/InsetInfo.cpp:343 src/insets/InsetInfo.cpp:379
 msgid "Return[[Key]]"
-msgstr ""
+msgstr "Return"
 
 #: src/insets/InsetInfo.cpp:347
 msgid "Tab[[Key]]"
-msgstr ""
+msgstr "Tab"
 
 #: src/insets/InsetInfo.cpp:351
 msgid "PgUp"
-msgstr ""
+msgstr "PgUp"
 
 #: src/insets/InsetInfo.cpp:355
-#, fuzzy
 msgid "PgDown"
-msgstr "&Вниз"
+msgstr "PgDown"
 
 #: src/insets/InsetInfo.cpp:359
 msgid "Backtab"
-msgstr ""
+msgstr "Backtab"
 
 #: src/insets/InsetInfo.cpp:363
-#, fuzzy
 msgid "Tab"
-msgstr "Таблиця"
+msgstr "Tab"
 
 #: src/insets/InsetInfo.cpp:371
 msgid "CapsLock"
-msgstr ""
+msgstr "CapsLock"
 
 #: src/insets/InsetInfo.cpp:375
-#, fuzzy
 msgid "Command[[Key]]"
-msgstr "Command-"
+msgstr "Command"
 
 #: src/insets/InsetInfo.cpp:383
-#, fuzzy
 msgid "Option[[Key]]"
-msgstr "Параметри"
+msgstr "Option"
 
 #: src/insets/InsetInfo.cpp:387
-#, fuzzy
 msgid "Delete[[Key]]"
-msgstr "&Вилучити клавішу"
+msgstr "Delete"
 
 #: src/insets/InsetInfo.cpp:391
 msgid "Fn+Del"
-msgstr ""
+msgstr "Fn+Del"
 
 #: src/insets/InsetInfo.cpp:395
-#, fuzzy
 msgid "Esc"
-msgstr "csc"
+msgstr "Esc"
 
 #: src/insets/InsetInfo.cpp:436 src/insets/InsetInfo.cpp:445
 msgid "yes"
