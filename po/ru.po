@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-11-12 14:27-0500\n"
-"PO-Revision-Date: 2018-11-13 19:01+0200\n"
+"PO-Revision-Date: 2018-11-15 11:28+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -962,7 +962,7 @@ msgstr "Логическая разметка"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:278
 msgid "Semantic emphasizing (italic by default, but can be adapted)"
-msgstr "Семантическое выделение (курсив по умолчанию)"
+msgstr "Логическое выделение (курсив по умолчанию)"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:281
 msgid "&Emphasized"
@@ -970,7 +970,7 @@ msgstr "Выделение"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:288
 msgid "Semantic markup of nouns (small caps by default, but can be adapted)"
-msgstr "Семантическая разметка имени (капитель по умолчанию)"
+msgstr "Логическая разметка имени (капитель по умолчанию)"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:291
 msgid "&Noun"
@@ -2197,21 +2197,22 @@ msgstr "&Редактировать"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/IndicesUi.ui:143
 msgid "A&vailable Indexes:"
-msgstr "&Доступные индексы:"
+msgstr "&Доступные указатели:"
 
 #: src/frontends/qt4/ui/IndexUi.ui:69
 msgid "Select the index this entry should be listed in."
-msgstr "Выберите индекс для текущей записи."
+msgstr "Выберите указатель, в который попадёт текущая рубрика."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:19
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
-"Здесь можно указать альтернативный процессор индекса и указать его параметры."
+"Здесь можно задать альтернативный процессор указателей и указать его "
+"параметры."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22 src/frontends/qt4/ui/PrefLatexUi.ui:198
 msgid "Index Generation"
-msgstr "Создание индекса"
+msgstr "Создание указателя"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:54 src/frontends/qt4/GuiPrefs.cpp:801
 #: src/frontends/qt4/GuiPrefs.cpp:931
@@ -2224,11 +2225,11 @@ msgstr "Определите параметры для программы выб
 
 #: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
-msgstr "Выберите, если вам необходимы несколько индексов"
+msgstr "Выберите, если вам необходимы несколько указателей"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:92
 msgid "&Use multiple indexes"
-msgstr "Использовать несколько индексов"
+msgstr "Использовать несколько указателей"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:[[index]]"
@@ -2238,12 +2239,12 @@ msgstr "&Новый:"
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
-"Введите название желаемого индекса (например, «Указатель имён») и нажмите "
+"Введите название желаемого указателя (например, «Указатель имён») и нажмите "
 "«Добавить»"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:131
 msgid "Add a new index to the list"
-msgstr "Добавить новый индекс к списку"
+msgstr "Добавить новый указатель к списку"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149 src/frontends/qt4/ui/RefUi.ui:24
@@ -2252,11 +2253,11 @@ msgstr "1"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:162
 msgid "Remove the selected index"
-msgstr "Удалить выбранный индекс"
+msgstr "Удалить выбранный указатель"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:172
 msgid "Rename the selected index"
-msgstr "Переименовать выбранный индекс"
+msgstr "Переименовать выбранный указатель"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:175
 msgid "R&ename..."
@@ -2638,7 +2639,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:19
 msgid "Document-specific layout information"
-msgstr "Информация о макете, специфичная для документа"
+msgstr "Информация о макете текущего документа"
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:35
 msgid "&Validate"
@@ -3100,11 +3101,11 @@ msgstr "&Гиперссылки"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:222
 msgid "Allows link text to break across lines."
-msgstr "Позволить разрывать текст ссылки через строки."
+msgstr "Разрешить разрывать текст ссылок по строкам."
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:225
 msgid "B&reak links over lines"
-msgstr "Разрывать ссылки через строки"
+msgstr "Разрывать ссылки по строкам"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:232
 msgid "No &frames around links"
@@ -3136,7 +3137,7 @@ msgstr "&Нумерованные закладки"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:321
 msgid "&Open bookmark tree"
-msgstr "&Открыть дерево закладок"
+msgstr "&Открывать дерево закладок"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:346
 msgid "Number of levels"
@@ -3167,15 +3168,15 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:126
 msgid "&Orientation:"
-msgstr "&Положение:"
+msgstr "&Ориентация:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:136
 msgid "&Portrait"
-msgstr "П&ортрет"
+msgstr "&Книжная"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:146
 msgid "&Landscape"
-msgstr "&Ландшафт"
+msgstr "&Альбомная"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:162
 #: src/frontends/qt4/GuiDocument.cpp:1553
@@ -4078,15 +4079,15 @@ msgstr "Параметры:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:160
 msgid "Specific BibTeX command and options for pLaTeX (Japanese)"
-msgstr "Специфичная команда BibTeX и опции для pLaTeX (Японский)"
+msgstr "Особая команда BibTeX и опции для pLaTeX (Японский)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:232
 msgid "Index command and options (makeindex, xindy)"
-msgstr "Команда для создания индекса (makeindex, xindy)"
+msgstr "Команда для создания указателя (makeindex, xindy)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:249
 msgid "Specific index command and options for pLaTeX (Japanese)"
-msgstr "Специфичная команда создания индекса и параметры для pLaTeX (Японский)"
+msgstr "Особая команда создания указателя и параметры для pLaTeX (Японский)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:285
 msgid "Command and options for nomencl (usually makeindex)"
@@ -4154,7 +4155,7 @@ msgstr "Размер &бумаги:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:149
 msgid "Lan&dscape:"
-msgstr "Лан&дшафт:"
+msgstr "&Альбом:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:162
 msgid "Other Options"
@@ -4473,7 +4474,7 @@ msgid ""
 "If this is checked, pressing OK or Apply will save the changes only for the "
 "current LyX session, not permanently."
 msgstr ""
-"Если эта опция включена, нажатие кнопок OK или Применить будет сохранять "
+"Если эта опция включена, нажатие кнопки OK или Применить будет сохранять "
 "изменения только для текущей сессии."
 
 #: src/frontends/qt4/ui/PrefsUi.ui:90
@@ -4504,21 +4505,21 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:40
 msgid "Avai&lable indexes:"
-msgstr "&Доступные индексы:"
+msgstr "&Доступные указатели:"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:50
 msgid "Select the index that shall be printed at this place of the document."
-msgstr "Выберите индекс, который будет напечатан в этом месте документа."
+msgstr "Выберите указатель, который будет напечатан в этом месте документа."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:61
 msgid "Check if this index should be part (e.g., a section) of the former one."
 msgstr ""
-"Установите, если этот индекс должен быть частью (например, разделом) "
+"Установите, если этот указатель должен быть частью (например, разделом) "
 "предыдущего."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:64
 msgid "&Subindex"
-msgstr "&Подиндекс"
+msgstr "&Подуказатель"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:71
 msgid ""
@@ -15015,19 +15016,19 @@ msgstr "Семинар"
 
 #: lib/layouts/seminar.layout:26 lib/layouts/seminar.layout:89
 msgid "LandscapeSlide"
-msgstr "Ландшафтный слайд"
+msgstr "Альбомный слайд"
 
 #: lib/layouts/seminar.layout:27
 msgid "Landscape Slide"
-msgstr "Ландшафтный слайд"
+msgstr "Альбомный слайд"
 
 #: lib/layouts/seminar.layout:40 lib/layouts/seminar.layout:115
 msgid "PortraitSlide"
-msgstr "Портретный слайд"
+msgstr "Книжный слайд"
 
 #: lib/layouts/seminar.layout:42
 msgid "Portrait Slide"
-msgstr "Портретный слайд"
+msgstr "Книжный слайд"
 
 #: lib/layouts/seminar.layout:47
 msgid "SlideHeading"
@@ -15063,11 +15064,11 @@ msgstr "Содержание прогресса"
 
 #: lib/layouts/seminar.layout:101
 msgid "Landscape Slide:"
-msgstr "Ландшафтный слайд:"
+msgstr "Альбомный слайд:"
 
 #: lib/layouts/seminar.layout:118
 msgid "Portrait Slide:"
-msgstr "Портретный слайд:"
+msgstr "Книжный слайд:"
 
 #: lib/layouts/seminar.layout:120
 msgid "Slide*"
@@ -18829,7 +18830,7 @@ msgstr "Настройки блока...|б"
 
 #: lib/ui/stdmenus.inc:146
 msgid "Index Entry Settings...|y"
-msgstr "Настройки рубрики указателя...|W"
+msgstr "Настройки рубрики указателя...|у"
 
 #: lib/ui/stdmenus.inc:147
 msgid "Index Settings...|x"
@@ -24450,7 +24451,7 @@ msgstr ""
 "который вставьте в 'Options'.\n"
 "Примеры:\n"
 "* pages={x-y} (диапазон страниц)\n"
-"* pages={x,y,z} (некоторые страницы)\n"
+"* pages={x,y,z} (указанные страницы)\n"
 "* pages=- (все страницы)\n"
 "Чтобы узнать дополнительные параметры, прочитайте\n"
 "документацию пакета pdfpages.\n"
@@ -27674,7 +27675,7 @@ msgstr "Изменить размер предварительного пока�
 
 #: src/LyXRC.cpp:3364
 msgid "The option to print out in landscape."
-msgstr "Параметр для печати в ландшафтной ориентации."
+msgstr "Параметр для печати в альбомной ориентации."
 
 #: src/LyXRC.cpp:3368
 msgid "Option to specify the dimensions of the print paper."
@@ -28530,11 +28531,11 @@ msgstr "Невозможно прочитать шаблон"
 
 #: src/frontends/qt4/BulletsModule.cpp:41
 msgid "Standard[[Bullets]]"
-msgstr "Стандартные"
+msgstr "Стандартный"
 
 #: src/frontends/qt4/BulletsModule.cpp:42
 msgid "Maths"
-msgstr "Математические"
+msgstr "Математический"
 
 #: src/frontends/qt4/BulletsModule.cpp:43
 msgid "Dings 1"
@@ -29162,7 +29163,7 @@ msgstr "Одинарное"
 
 #: src/frontends/qt4/GuiCharacter.cpp:101
 msgid "With /"
-msgstr "С /"
+msgstr "Штриховое"
 
 #: src/frontends/qt4/GuiCharacter.cpp:191
 msgid "(Without)[[color]]"
@@ -30255,21 +30256,21 @@ msgstr "Цвет метки"
 
 #: src/frontends/qt4/GuiIndices.cpp:216
 msgid "Cannot remove standard index"
-msgstr "Невозможно удалить стандартный индекс"
+msgstr "Невозможно удалить стандартный указатель"
 
 #: src/frontends/qt4/GuiIndices.cpp:217
 msgid "The default index cannot be removed."
-msgstr "Индекс по умолчанию не может быть удалён."
+msgstr "Указатель по умолчанию не может быть удалён."
 
 #: src/frontends/qt4/GuiIndices.cpp:236
 msgid "Enter new index name"
-msgstr "Введите название нового индекса"
+msgstr "Введите название нового указателя"
 
 #: src/frontends/qt4/GuiIndices.cpp:244
 msgid "The index could not be renamed. Check if the new name already exists."
 msgstr ""
-"Невозможно переименовать индекс. Проверьте, существует ли индекс с таким же "
-"именем."
+"Невозможно переименовать указатель. Проверьте, существует ли указатель с "
+"таким же именем."
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "unknown"
@@ -30749,11 +30750,11 @@ msgstr "Настройки списка обозначений"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:37
 msgid "Index Settings"
-msgstr "Настройки индекса"
+msgstr "Настройки указателя"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:70
 msgid "<All indexes>"
-msgstr "<Все индексы>"
+msgstr "<Все указатели>"
 
 #: src/frontends/qt4/GuiProgressView.cpp:66
 msgid "Progress/Debug Messages"
