@@ -3376,6 +3376,16 @@ void LyXAction::init()
 		{ LFUN_REPEAT, "repeat", NoBuffer, Edit },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_SEARCH_IGNORE
+ * \li Action: Enables/disables searching for features in findadv
+ * \li Syntax: search-ignore <type> <value>
+ * \li Params: <type>: language|color|sectioning|font|series|shape|family|markup|underline|strike
+ * \li Params: <value>: true|false
+ * \endvar
+ */
+		{ LFUN_SEARCH_IGNORE, "search-ignore", ReadOnly|NoBuffer|NoUpdate, System },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_SCREEN_DOWN
  * \li Action: Moves the cursor one page in downward direction.
  * \li Syntax: screen-down

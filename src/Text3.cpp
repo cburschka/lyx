@@ -80,6 +80,7 @@
 
 #include "mathed/InsetMathHull.h"
 #include "mathed/InsetMathMacroTemplate.h"
+#include "lyxfind.h"
 
 #include <clocale>
 #include <sstream>
@@ -3451,6 +3452,12 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		} else {
 			enable = true;
 		}
+		break;
+	}
+
+	case LFUN_SEARCH_IGNORE: {
+		bool const value = cmd.getArg(1) == "true";
+		setIgnoreFormat(cmd.getArg(0), value);
 		break;
 	}
 

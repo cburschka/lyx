@@ -481,6 +481,7 @@ enum FuncCode
 	LFUN_MASTER_BUFFER_EXPORT,      // rkh, 20180417
 	LFUN_INSET_END_EDIT,            // gb/rkh, 20180605
 	// 375
+	LFUN_SEARCH_IGNORE,		// kornel, 20181115
 	LFUN_LASTACTION                 // end of the table
 };
 

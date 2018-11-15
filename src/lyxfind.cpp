@@ -1638,7 +1638,7 @@ void LatexInfo::buildKeys(bool isPatternString)
 
   // Macros to remove, but let the parameter survive
   // No split
-  makeKey("url|href|menuitem|footnote|code|index|textmd", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+  makeKey("url|href|menuitem|footnote|code|index|textmd|textrm", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
 
   // Same effect as previous, parameter will survive (because there is no one anyway)
   // No split
@@ -1994,6 +1994,9 @@ int LatexInfo::process(ostringstream &os, KeyInfo &actual )
     output_end = interval.nextNotIgnored(actual._dataEnd);
   else
     output_end = interval.nextNotIgnored(end);
+  if ((actual.keytype == KeyInfo::isMain) && actual.disabled) {
+    interval.addIntervall(actual._tokenstart, actual._tokenstart+actual._tokensize);
+  }
   if (interval.nextNotIgnored(actual._dataStart) < output_end)
     interval.output(os, output_end);
   interval.addIntervall(actual._tokenstart, end);
