@@ -1280,6 +1280,7 @@ class LatexInfo {
       return entries[keyinfo];
   };
   void setForDefaultLang(int upTo) {interval.setForDefaultLang(upTo);};
+  void addIntervall(int low, int up) { interval.addIntervall(low, up); };
 };
 
 
@@ -1921,6 +1922,8 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       break;
     }
     case KeyInfo::isMain: {
+      if (interval.par.substr(actual._dataStart, 2) == "% ")
+        interval.addIntervall(actual._dataStart, actual._dataStart+2);
       if (actual.disabled) {
         removeHead(actual);
         if ((interval.par.substr(actual._dataStart, 3) == " \\[") ||
@@ -2022,6 +2025,10 @@ string splitOnKnownMacros(string par, bool isPatternString) {
       // Use dummy firstKey
       firstKey = DummyKey;
       (void) li.setNextKey(firstkeyIdx);
+    }
+    else {
+      if (par.substr(firstKey._dataStart, 2) == "% ")
+        li.addIntervall(firstKey._dataStart, firstKey._dataStart+2);
     }
     nextkeyIdx = li.process(os, firstKey);
     while (nextkeyIdx >= 0) {
@@ -2631,13 +2638,13 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 		old_match = 0;
 	int prev_old_match = old_match;
 	int old_len = len;
-	int step = 20;
+	int step = 200;
 	int new_match;
 	if (match.opt.matchword)
 		step = 1;
-	while (step == 20) {
+	while (step > 4) {
 		if (cur.pos() + len + step >= cur.lastpos()) {
-			step = 1;
+			step /= 5 ;
 			len = old_len;
 			old_match = prev_old_match;
 		}
@@ -2650,7 +2657,7 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 				len += step;
 			}
 			else {
-				step = 1;
+				step /= 5;
 				len = old_len;
 				old_match = prev_old_match;
 			}
