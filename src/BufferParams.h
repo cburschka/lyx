@@ -136,7 +136,9 @@ public:
 	/// NOTE: This does not call makeDocumentClass() to update the local
 	/// DocumentClass. That needs to be done manually.
 	/// \param classname: the name of the layout file
-	bool setBaseClass(std::string const & classname);
+	/// \param path: non-empty only for local layout files
+	bool setBaseClass(std::string const & classname,
+	                  std::string const & path = std::string());
 	/// Adds the module information to the baseClass information to
 	/// create our local DocumentClass.
 	/// NOTE: This should NEVER be called externally unless one immediately goes

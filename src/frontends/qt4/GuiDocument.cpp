@@ -2467,7 +2467,7 @@ void GuiDocument::classChanged()
 	// according to the new class. Note, however, that, if you use
 	// the scroll wheel when sitting on the combo box, we'll load a
 	// lot of TextClass objects very quickly....
-	if (!bp_.setBaseClass(classname)) {
+	if (!bp_.setBaseClass(classname, buffer().layoutPos())) {
 		Alert::error(_("Error"), _("Unable to set document class."));
 		return;
 	}
@@ -2886,7 +2886,7 @@ void GuiDocument::updateDefaultFormat()
 	int const idx = latexModule->classCO->currentIndex();
 	if (idx >= 0) {
 		string const classname = fromqstr(latexModule->classCO->getData(idx));
-		param_copy.setBaseClass(classname);
+		param_copy.setBaseClass(classname, buffer().layoutPos());
 		param_copy.makeDocumentClass(true);
 	}
 	outputModule->defaultFormatCO->blockSignals(true);
@@ -3044,7 +3044,7 @@ void GuiDocument::applyView()
 	int idx = latexModule->classCO->currentIndex();
 	if (idx >= 0) {
 		string const classname = fromqstr(latexModule->classCO->getData(idx));
-		bp_.setBaseClass(classname);
+		bp_.setBaseClass(classname, buffer().layoutPos());
 	}
 
 	// Modules
@@ -4238,7 +4238,7 @@ void GuiDocument::useClassDefaults()
 
 	int idx = latexModule->classCO->currentIndex();
 	string const classname = fromqstr(latexModule->classCO->getData(idx));
-	if (!bp_.setBaseClass(classname)) {
+	if (!bp_.setBaseClass(classname, buffer().layoutPos())) {
 		Alert::error(_("Error"), _("Unable to set document class."));
 		return;
 	}

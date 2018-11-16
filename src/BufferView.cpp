@@ -1350,7 +1350,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		//  without calling recordUndo. Fix this before using
 		//  recordUndoBufferParams().
 		cur.recordUndoFullBuffer();
-		buffer_.params().setBaseClass(argument);
+		buffer_.params().setBaseClass(argument, buffer_.layoutPos());
 		makeDocumentClass();
 		dr.screenUpdate(Update::Force);
 		dr.forceBufferUpdate();
@@ -1374,7 +1374,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_LAYOUT_RELOAD: {
 		LayoutFileIndex bc = buffer_.params().baseClassID();
 		LayoutFileList::get().reset(bc);
-		buffer_.params().setBaseClass(bc);
+		buffer_.params().setBaseClass(bc, buffer_.layoutPos());
 		makeDocumentClass();
 		dr.screenUpdate(Update::Force);
 		dr.forceBufferUpdate();

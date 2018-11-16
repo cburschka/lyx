@@ -2453,7 +2453,7 @@ void BufferParams::setDocumentClass(DocumentClassConstPtr tc)
 }
 
 
-bool BufferParams::setBaseClass(string const & classname)
+bool BufferParams::setBaseClass(string const & classname, string const & path)
 {
 	LYXERR(Debug::TCLASS, "setBaseClass: " << classname);
 	LayoutFileList & bcl = LayoutFileList::get();
@@ -2469,7 +2469,7 @@ bool BufferParams::setBaseClass(string const & classname)
 		bcl.addEmptyClass(classname);
 	}
 
-	bool const success = bcl[classname].load();
+	bool const success = bcl[classname].load(path);
 	if (!success) {
 		docstring s =
 			bformat(_("Due to some error in it, the layout file:\n"
