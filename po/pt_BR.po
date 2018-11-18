@@ -9,10 +9,10 @@
 # Georger Araujo <georger_br@yahoo.com.br> 2015 - 2017 "
 msgid ""
 msgstr ""
-"Project-Id-Version: pt_BR 2.3.1\n"
+"Project-Id-Version: pt_BR 2.3.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-11-12 14:27-0500\n"
-"PO-Revision-Date: 2018-09-15 23:00-0300\n"
+"PO-Revision-Date: 2018-11-18 00:18-0300\n"
 "Last-Translator: Georger Araujo <georger underline br pound yahoo dot com "
 "dot br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br at yahoo dot com "
@@ -890,9 +890,8 @@ msgid "&Reject"
 msgstr "&Rejeitar"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:25
-#, fuzzy
 msgid "Font Properties"
-msgstr "Propriedades PDF"
+msgstr "Propriedades de Fonte"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:33
 #: src/frontends/qt4/ui/CharacterUi.ui:52
@@ -900,9 +899,8 @@ msgid "Font family"
 msgstr "Família da fonte"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:36
-#, fuzzy
 msgid "Fa&mily:"
-msgstr "&Família:"
+msgstr "Fa&mília:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:59
 #: src/frontends/qt4/ui/CharacterUi.ui:78
@@ -937,28 +935,24 @@ msgid "&Color:"
 msgstr "&Cor:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:179
-#, fuzzy
 msgid "U&nderlining:"
-msgstr "underline"
+msgstr "Subli&nhamento:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:195
 msgid "Underlining of text"
-msgstr ""
+msgstr "Sublinhamento do texto"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:202
-#, fuzzy
 msgid "S&trikethrough:"
-msgstr "Tachado"
+msgstr "&Tachado:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:218
-#, fuzzy
 msgid "Strike-through text"
-msgstr "Tachado"
+msgstr "Texto tachado"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:250
-#, fuzzy
 msgid "&Language"
-msgstr "&Idioma:"
+msgstr "&Idioma"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:262
 #: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/bicaption.module:15
@@ -971,27 +965,25 @@ msgid "Language"
 msgstr "Idioma"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:272
-#, fuzzy
 msgid "Semantic Markup"
-msgstr "Marcação Lógica"
+msgstr "Marcação Semântica"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:278
 msgid "Semantic emphasizing (italic by default, but can be adapted)"
-msgstr ""
+msgstr "Enfatização semântica (itálico por padrão, mas pode ser adaptado)"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:281
-#, fuzzy
 msgid "&Emphasized"
-msgstr "Enfatizar"
+msgstr "&Enfatizado"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:288
 msgid "Semantic markup of nouns (small caps by default, but can be adapted)"
 msgstr ""
+"Marcação semântica de nomes (versalete por padrão, mas pode ser adaptado)"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:291
-#, fuzzy
 msgid "&Noun"
-msgstr "Noun"
+msgstr "&Nome"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:336
 msgid "Apply each change automatically"
@@ -2867,9 +2859,8 @@ msgid "Indent displayed formulas instead of centering"
 msgstr "Indentar fórmulas displayed em vez de centralizar"
 
 #: src/frontends/qt4/ui/MathsUi.ui:79
-#, fuzzy
 msgid "Indent &formulas"
-msgstr "Indentar &Fórmulas"
+msgstr "Indentar &fórmulas"
 
 #: src/frontends/qt4/ui/MathsUi.ui:95 src/frontends/qt4/ui/TextLayoutUi.ui:48
 msgid "Size of the indentation"
@@ -3074,9 +3065,8 @@ msgstr ""
 "matemáticas."
 
 #: src/frontends/qt4/ui/OutputUi.ui:275
-#, fuzzy
 msgid "Write CSS to file"
-msgstr "Gravar CSS em Arquivo"
+msgstr "Gravar CSS em arquivo"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:28
 msgid "&Use hyperref support"
@@ -4502,11 +4492,12 @@ msgid ""
 "If this is checked, pressing OK or Apply will save the changes only for the "
 "current LyX session, not permanently."
 msgstr ""
+"Se isto estiver marcado, ao pressionar OK ou Aplicar as mudanças serão "
+"salvas somente na sessão atual do LyX, não permanentemente."
 
 #: src/frontends/qt4/ui/PrefsUi.ui:90
-#, fuzzy
 msgid "A&pply to current session only"
-msgstr "Apenas versão digital"
+msgstr "A&plicar apenas à sessão atual"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:13
 msgid "Nomenclature settings"
@@ -10170,7 +10161,7 @@ msgstr "MovimentoCavalo:"
 
 #: lib/layouts/cl2emult.layout:3
 msgid "Springer Contributed Books (cl2emult, Obsolete!)"
-msgstr ""
+msgstr "Springer Contributed Books (cl2emult, Obsoleta!)"
 
 #: lib/layouts/ctex-article.layout:3
 msgid "Chinese Article (CTeX)"
@@ -15672,9 +15663,8 @@ msgid "Proof(smartQED)"
 msgstr "Prova(smartQED)"
 
 #: lib/layouts/svglobal.layout:3
-#, fuzzy
 msgid "Springer's Global Journal Template (Obsolete Version)"
-msgstr "Springer SV Global (Versão Obsoleta)"
+msgstr "Springer's Global Journal Template (Versão Obsoleta)"
 
 #: lib/layouts/svglobal.layout:67 lib/layouts/svjog.layout:71
 #: lib/layouts/svprobth.layout:101
@@ -15718,9 +15708,8 @@ msgid "Offprints:"
 msgstr "Separatas:"
 
 #: lib/layouts/svglobal3.layout:3
-#, fuzzy
 msgid "Springer's Global Journal Template (V. 3)"
-msgstr "Springer SV Global (V. 3)"
+msgstr "Springer's Global Journal Template (V. 3)"
 
 #: lib/layouts/svglobal3.layout:73
 msgid "Subclass"
@@ -15744,15 +15733,15 @@ msgstr "Solução \\thesolution"
 
 #: lib/layouts/svjog.layout:3
 msgid "Journal of Geodesy (Springer)"
-msgstr ""
+msgstr "Journal of Geodesy (Springer)"
 
 #: lib/layouts/svmono.layout:3
 msgid "Springer Monographs (svmono)"
-msgstr ""
+msgstr "Springer Monographs (svmono)"
 
 #: lib/layouts/svmult.layout:3
 msgid "Springer Contributed Books (svmult)"
-msgstr ""
+msgstr "Springer Contributed Books (svmult)"
 
 #: lib/layouts/svmult.layout:34
 msgid "Title*"
@@ -15786,7 +15775,7 @@ msgstr "Para editores"
 
 #: lib/layouts/svprobth.layout:3
 msgid "Probability Theory and Related Fields (Springer svprobth)"
-msgstr ""
+msgstr "Probability Theory and Related Fields (Springer svprobth)"
 
 #: lib/layouts/sweave.module:2 lib/configure.py:657
 msgid "Sweave"
@@ -17936,12 +17925,10 @@ msgid "Label Only|L"
 msgstr "Somente Etiqueta|E"
 
 #: lib/ui/stdcontext.inc:99
-#, fuzzy
 msgid "Plural|a"
-msgstr "Plural"
+msgstr "Plural|a"
 
 #: lib/ui/stdcontext.inc:100
-#, fuzzy
 msgid "Capitalize|C"
 msgstr "Capitalizar|C"
 
@@ -18168,7 +18155,7 @@ msgstr "Personalizado|P"
 
 #: lib/ui/stdcontext.inc:289
 msgid "Settings...|e"
-msgstr "Configurações...|C"
+msgstr "Configurações...|g"
 
 #: lib/ui/stdcontext.inc:296 lib/ui/stdcontext.inc:582
 msgid "Include|c"
@@ -28541,13 +28528,12 @@ msgid "Create new document?"
 msgstr "Criar novo documento?"
 
 #: src/buffer_funcs.cpp:129
-#, fuzzy
 msgid "&Yes, Create New Document"
-msgstr "Criar novo documento?"
+msgstr "&Sim, Criar Novo Documento"
 
 #: src/buffer_funcs.cpp:129
 msgid "&No, Do Not Create"
-msgstr ""
+msgstr "&Não, Não Criar"
 
 #: src/buffer_funcs.cpp:157
 #, c-format
@@ -29174,36 +29160,35 @@ msgstr "Versalete"
 
 #: src/frontends/qt4/GuiCharacter.cpp:86
 msgid "(Without)[[underlining]]"
-msgstr ""
+msgstr "(Sem)[[underlining]]"
 
 #: src/frontends/qt4/GuiCharacter.cpp:87
 msgid "Single[[underlining]]"
-msgstr ""
+msgstr "Simples[[underlining]]"
 
 #: src/frontends/qt4/GuiCharacter.cpp:88
-#, fuzzy
 msgid "Double[[underlining]]"
-msgstr "Double underline %1$s, "
+msgstr "Duplo[[underlining]]"
 
 #: src/frontends/qt4/GuiCharacter.cpp:89
 msgid "Wavy"
-msgstr ""
+msgstr "Ondulado"
 
 #: src/frontends/qt4/GuiCharacter.cpp:99
 msgid "(Without)[[strikethrough]]"
-msgstr ""
+msgstr "(Sem)[[strikethrough]]"
 
 #: src/frontends/qt4/GuiCharacter.cpp:100
 msgid "Single[[strikethrough]]"
-msgstr ""
+msgstr "Simples[[strikethrough]]"
 
 #: src/frontends/qt4/GuiCharacter.cpp:101
 msgid "With /"
-msgstr ""
+msgstr "Com /"
 
 #: src/frontends/qt4/GuiCharacter.cpp:191
 msgid "(Without)[[color]]"
-msgstr ""
+msgstr "(Sem)[[color]]"
 
 #: src/frontends/qt4/GuiCharacter.cpp:208
 msgid "Text Style"
@@ -29235,6 +29220,8 @@ msgid ""
 "Ordered list of all cited references.\n"
 "You can reorder, add and remove references with the buttons on the left."
 msgstr ""
+"Lista ordenada de todas as referências citadas.\n"
+"Você pode reordenar, incluir e remover referências com os botões à esquerda."
 
 #: src/frontends/qt4/GuiCitation.cpp:296
 msgid "General text befo&re:"
@@ -29279,7 +29266,7 @@ msgstr "Sempre listar todos os autores (em vez de usar \"et al.\")"
 
 #: src/frontends/qt4/GuiCitation.cpp:363
 msgid "All references available for citing."
-msgstr ""
+msgstr "Todas as referências disponíveis para citação."
 
 #: src/frontends/qt4/GuiCitation.cpp:365
 msgid ""
@@ -29287,6 +29274,10 @@ msgid ""
 "To add the selected one, hit Add, press Enter or double-click.\n"
 "Hit Ctrl-Enter to add and close the dialog."
 msgstr ""
+"Todas as referências disponíveis para citação.\n"
+"Para incluir a selecionada, pressione Incluir, tecle Enter ou dê duplo "
+"clique.\n"
+"Tecle Ctrl-Enter para incluir e fechar a caixa de diálogo."
 
 #: src/frontends/qt4/GuiCitation.cpp:435
 msgid "Keys"
@@ -29320,6 +29311,8 @@ msgid ""
 "\n"
 "The down arrow key will get you into the list of filtered citations."
 msgstr ""
+"\n"
+"A tecla de seta para baixo o levará para a lista de citações filtradas."
 
 #: src/frontends/qt4/GuiCitation.cpp:657
 msgid "Text before"
@@ -29941,7 +29934,7 @@ msgstr "Módulo(s) excluído(s): %1$s."
 #: src/frontends/qt4/GuiDocument.cpp:2837
 #, c-format
 msgid "Filename: %1$s.module."
-msgstr ""
+msgstr "Nome do arquivo: %1$s.module."
 
 #: src/frontends/qt4/GuiDocument.cpp:2842
 msgid "WARNING: Some required packages are unavailable!"
@@ -32593,57 +32586,51 @@ msgstr "indefinido"
 
 #: src/insets/InsetInfo.cpp:343 src/insets/InsetInfo.cpp:379
 msgid "Return[[Key]]"
-msgstr ""
+msgstr "Enter[[Key]]"
 
 #: src/insets/InsetInfo.cpp:347
 msgid "Tab[[Key]]"
-msgstr ""
+msgstr "Tab[[Key]]"
 
 #: src/insets/InsetInfo.cpp:351
 msgid "PgUp"
-msgstr ""
+msgstr "PgUp"
 
 #: src/insets/InsetInfo.cpp:355
-#, fuzzy
 msgid "PgDown"
-msgstr "Para &baixo"
+msgstr "PgDown"
 
 #: src/insets/InsetInfo.cpp:359
 msgid "Backtab"
-msgstr ""
+msgstr "Backtab"
 
 #: src/insets/InsetInfo.cpp:363
-#, fuzzy
 msgid "Tab"
-msgstr "Tabela"
+msgstr "Tab"
 
 #: src/insets/InsetInfo.cpp:371
 msgid "CapsLock"
-msgstr ""
+msgstr "CapsLock"
 
 #: src/insets/InsetInfo.cpp:375
-#, fuzzy
 msgid "Command[[Key]]"
-msgstr "Command-"
+msgstr "Command[[Key]]"
 
 #: src/insets/InsetInfo.cpp:383
-#, fuzzy
 msgid "Option[[Key]]"
-msgstr "Opções"
+msgstr "Option[[Key]]"
 
 #: src/insets/InsetInfo.cpp:387
-#, fuzzy
 msgid "Delete[[Key]]"
-msgstr "&Excluir tecla"
+msgstr "Delete[[Key]]"
 
 #: src/insets/InsetInfo.cpp:391
 msgid "Fn+Del"
-msgstr ""
+msgstr "Fn+Del"
 
 #: src/insets/InsetInfo.cpp:395
-#, fuzzy
 msgid "Esc"
-msgstr "csc"
+msgstr "Esc"
 
 #: src/insets/InsetInfo.cpp:436 src/insets/InsetInfo.cpp:445
 msgid "yes"
