@@ -1516,24 +1516,42 @@ void LatexInfo::buildEntries(bool isPatternString)
         found._tokenstart = pos - count;
         if (sub.str(1).compare(0, 5, "begin") == 0) {
           size_t pos1 = pos + sub.str(0).length();
-          if (interval.par[pos1] == '[') {
-            pos1 = interval.findclosing(pos1+1, interval.par.length(), '[', ']')+1;
-          }
-          if (interval.par[pos1] == '{') {
-            found._dataEnd = interval.findclosing(pos1+1, interval.par.length()) + 1;
+          if (sub.str(5).compare("cjk") == 0) {
+            pos1 = interval.findclosing(pos1+1, interval.par.length()) + 1;
+            if ((interval.par[pos1] == '{') && (interval.par[pos1+1] == '}'))
+              pos1 += 2;
+            found.keytype = KeyInfo::isMain;
+            found._dataStart = pos1;
+            found._dataEnd = interval.par.length();
+            found.disabled = keys["foreignlanguage"].disabled;
+            found.used = keys["foreignlanguage"].used;
+            found._tokensize = pos1 - found._tokenstart;
+            found.head = interval.par.substr(found._tokenstart, found._tokensize);
           }
           else {
-            found._dataEnd = pos1;
+            if (interval.par[pos1] == '[') {
+              pos1 = interval.findclosing(pos1+1, interval.par.length(), '[', ']')+1;
+            }
+            if (interval.par[pos1] == '{') {
+              found._dataEnd = interval.findclosing(pos1+1, interval.par.length()) + 1;
+            }
+            else {
+              found._dataEnd = pos1;
+            }
+            found._dataStart = found._dataEnd;
+            found._tokensize = count + found._dataEnd - pos;
+            found.parenthesiscount = 0;
+            found.disabled = true;
           }
-          found._dataStart = found._dataEnd;
         }
         else {
+          // Handle "\end{...}"
           found._dataStart = pos + sub.str(0).length();
           found._dataEnd = found._dataStart;
+          found._tokensize = count + found._dataEnd - pos;
+          found.parenthesiscount = 0;
+          found.disabled = true;
         }
-        found._tokensize = count + found._dataEnd - pos;
-        found.parenthesiscount = 0;
-        found.disabled = true;
       }
     }
     else if (found.keytype != KeyInfo::isRegex) {
@@ -1631,7 +1649,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   // No split
   makeKey("backslash|textbackslash|textasciicircum|textasciitilde|ldots", KeyInfo(KeyInfo::isChar, 1, false), isPatternString);
   // Found in fr/UserGuide.lyx
-  makeKey("og|fg|textvisiblespace", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  makeKey("og|fg|textvisiblespace|lyx", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
 
   // Known macros to remove (including their parameter)
   // No split

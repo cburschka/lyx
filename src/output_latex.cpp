@@ -941,7 +941,7 @@ void TeXOnePar(Buffer const & buf,
 					os << "\\L{";
 			}
 			// With CJK, the CJK tag has to be closed first (see below)
-			if (runparams.encoding->package() != Encoding::CJK
+			if ((runparams.encoding->package() != Encoding::CJK || runparams.for_search)
 			    && (par_lang != openLanguageName(state) || localswitch)
 			    && !par_lang.empty()) {
 				string bc = use_polyglossia ?
@@ -1165,7 +1165,7 @@ void TeXOnePar(Buffer const & buf,
 			os << '\n';
 
 		// when the paragraph uses CJK, the language has to be closed earlier
-		if (font.language()->encoding()->package() != Encoding::CJK) {
+		if ((font.language()->encoding()->package() != Encoding::CJK) || runparams_in.for_search) {
 			if (lang_end_command.empty()) {
 				// If this is a child, we should restore the
 				// master language after the last paragraph.
