@@ -1650,6 +1650,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("backslash|textbackslash|textasciicircum|textasciitilde|ldots", KeyInfo(KeyInfo::isChar, 1, false), isPatternString);
   // Found in fr/UserGuide.lyx
   makeKey("og|fg|textvisiblespace|lyx", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  makeKey("textquotedbl|lyxarrow", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
 
   // Known macros to remove (including their parameter)
   // No split
@@ -1681,6 +1682,8 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("$", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
 
   makeKey("par|uldepth|ULdepth|protect", KeyInfo(KeyInfo::doRemove, 0, true), isPatternString);
+  // Remove RTL/LTR marker
+  makeKey("l|r|textlr|textfr|textar|beginl|endl", KeyInfo(KeyInfo::doRemove, 0, true), isPatternString);
 
   if (isPatternString) {
     // Allow the first searched string to rebuild the keys too
@@ -2656,13 +2659,15 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 		old_match = 0;
 	int prev_old_match = old_match;
 	int old_len = len;
-	int step = 200;
+	int step;
 	int new_match;
 	if (match.opt.matchword)
 		step = 1;
+	else
+		step = 2 + (cur.lastpos() - cur.pos())/4;
 	while (step > 4) {
 		if (cur.pos() + len + step >= cur.lastpos()) {
-			step /= 5 ;
+			step = 2 + step/4;
 			len = old_len;
 			old_match = prev_old_match;
 		}
@@ -2675,7 +2680,7 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 				len += step;
 			}
 			else {
-				step /= 5;
+				step = 2 + step/4;
 				len = old_len;
 				old_match = prev_old_match;
 			}
@@ -2692,7 +2697,7 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 		if (match.opt.matchword)
 			maxcnt = 2;
 		else
-			maxcnt = 5;
+			maxcnt = 4;
 		for (int count = 1; count < maxcnt; ++count) {
 			if (cur.pos() + len + count > cur.lastpos()) {
 				break;
