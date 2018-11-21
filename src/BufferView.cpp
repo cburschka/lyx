@@ -868,7 +868,7 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 		d->cursor_.setCurrentFont();
 		// Do not forget to reset the anchor (see #9912)
 		d->cursor_.resetAnchor();
-		processUpdateFlags(Update::FitCursor);
+		processUpdateFlags(Update::Force | Update::FitCursor);
 	}
 
 	return success;
