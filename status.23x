@@ -160,7 +160,7 @@ What's new
 
 - Avoid white space before math completion (bug 11283).
 
-- View and change Plural, Capitalization, and No Prefix options for 
+- View and change Plural, Capitalization, and No Prefix options for
   cross-references from the context menu (bug 11070).
 
 - Don't step counters in deleted material (bug 11135).
@@ -182,6 +182,8 @@ What's new
 - Fix display of overset, underset, and stackrel insets (bug 11367).
 
 - Avoid extra space at the end of tooltips (bug 11353).
+
+- Show cursor correctly when loading file (bug 11377).
 
 
 * INTERNALS
