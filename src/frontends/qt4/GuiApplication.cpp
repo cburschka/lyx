@@ -1412,11 +1412,13 @@ DispatchResult const & GuiApplication::dispatch(FuncRequest const & cmd)
 		// This handles undo groups automagically
 		UndoGroupHelper ugh(buffer);
 		dispatch(cmd, dr);
+		// redraw the screen at the end (first of the two drawing steps).
+		// This is done unless explicitly requested otherwise.
+		// This code is kept inside the undo group because updateBuffer
+		// can create undo actions (see #11292)
+		updateCurrentView(cmd, dr);
 	}
 
-	// redraw the screen at the end (first of the two drawing steps).
-	// This is done unless explicitly requested otherwise
-	updateCurrentView(cmd, dr);
 	d->dispatch_result_ = dr;
 	return d->dispatch_result_;
 }
