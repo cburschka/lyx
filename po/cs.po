@@ -12356,7 +12356,7 @@ msgstr "Scene"
 
 #: lib/layouts/hpstatement.module:2
 msgid "Hazard and Precautionary Statements"
-msgstr ""
+msgstr "Výkaz pro chem. rizika"
 
 #: lib/layouts/hpstatement.module:7
 msgid ""
@@ -12364,25 +12364,23 @@ msgid ""
 "precautionary statements. For a description see the file H-P-statements.lyx "
 "in LyX's examples folder."
 msgstr ""
+"Poskytne dvě vložky pro sazbu frází a čísel bezpečnostních rizik a chemických hazardů. Pro popis nahlédňete do souboru H-P-statements.lyx v příkladech."
 
 #: lib/layouts/hpstatement.module:11 lib/layouts/hpstatement.module:16
-#, fuzzy
 msgid "H-P number"
-msgstr "Žádné číslo"
+msgstr "H-P number"
 
 #: lib/layouts/hpstatement.module:35 lib/layouts/hpstatement.module:38
-#, fuzzy
 msgid "H-P statement"
-msgstr "Umístění"
+msgstr "H-P statement"
 
 #: lib/layouts/hpstatement.module:40
-#, fuzzy
 msgid "Statement Text"
-msgstr "After Title Text"
+msgstr "Statement Text"
 
 #: lib/layouts/hpstatement.module:41
 msgid "Text for statements that require some information"
-msgstr ""
+msgstr "Text for statements that require some information"
 
 #: lib/layouts/ijmpc.layout:3
 msgid "Int. Journal of Modern Physics C"
@@ -13043,24 +13041,20 @@ msgstr ""
 "linguistics.lyx v příkladech."
 
 #: lib/layouts/linguistics.module:14
-#, fuzzy
 msgid "(\\arabic{example})"
-msgstr "\\arabic{chapter}"
+msgstr "(\\arabic{example})"
 
 #: lib/layouts/linguistics.module:19
-#, fuzzy
 msgid "(\\arabic{examplei})"
-msgstr "\\arabic{enumi}."
+msgstr "(\\arabic{examplei})"
 
 #: lib/layouts/linguistics.module:24
-#, fuzzy
 msgid "\\theexamplei (\\alph{subexample})"
-msgstr "Příklad \\theexample"
+msgstr "\\theexamplei (\\alph{subexample})"
 
 #: lib/layouts/linguistics.module:29
-#, fuzzy
 msgid "\\theexamplei (\\alph{subexamplei})"
-msgstr "Příklad \\theexample"
+msgstr "\\theexamplei (\\alph{subexamplei})"
 
 #: lib/layouts/linguistics.module:32 lib/layouts/linguistics.module:272
 msgid "Tableaux"
@@ -13689,47 +13683,42 @@ msgid "Enclosing:"
 msgstr "Enclosing:"
 
 #: lib/layouts/multicol.module:2 lib/layouts/multicol.module:11
-#, fuzzy
 msgid "Multiple Columns"
-msgstr "&Vícesloupcová"
+msgstr "Vícesloupcový"
 
 #: lib/layouts/multicol.module:7
 msgid ""
 "Adds a custom inset whose content is set with multiple columns (2 by "
 "default). See the Additional manual, section 'Multiple Text Columns', for a "
 "detailed description of multiple columns."
-msgstr ""
+msgstr "Přidá novou vložku, která umožnuje sázet vícesloupcový text (standardně 2). Více v manuálu Rozšířených vlasností LyX-u, sekce 'Multiple Text Columns'."
 
 #: lib/layouts/multicol.module:19
-#, fuzzy
 msgid "Number of Columns"
 msgstr "Počet sloupců"
 
 #: lib/layouts/multicol.module:20
-#, fuzzy
 msgid "Insert the number of columns here"
-msgstr "Nelze změnit počet sloupců v '%1$s'"
+msgstr "Zde vložte počet sloupců"
 
 #: lib/layouts/multicol.module:26 lib/layouts/svcommon.inc:530
 #: lib/layouts/svcommon.inc:539 lib/layouts/svmult.layout:143
 msgid "Preface"
-msgstr "Preface"
+msgstr "Předmluva"
 
 #: lib/layouts/multicol.module:27
-#, fuzzy
 msgid "An optional preface"
-msgstr "Dodatečná mezera"
+msgstr "Volitelná předmluva"
 
 #: lib/layouts/multicol.module:30
-#, fuzzy
 msgid "Space Before Page Break"
-msgstr "Jednoduchý rám, více stran|v"
+msgstr "Mezera před zlomem stránky"
 
 #: lib/layouts/multicol.module:31
 msgid ""
 "Free space that needs to be on the page to start the multiple columns on "
 "this page"
-msgstr ""
+msgstr "Volné místo, které musí být na stránce, kde začíná vícesloupcová sazba"
 
 #: lib/layouts/mwart.layout:3
 msgid "Polish Article (MW Bundle)"
