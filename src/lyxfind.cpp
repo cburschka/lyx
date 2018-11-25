@@ -1863,7 +1863,7 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       // Remove the key with all parameters and following spaces
       size_t pos;
       for (pos = actual._dataEnd+1; pos < interval.par.length(); pos++) {
-        if (interval.par[pos] != ' ')
+        if ((interval.par[pos] != ' ') && (interval.par[pos] != '%'))
           break;
       }
       interval.addIntervall(actual._tokenstart, pos);
@@ -2406,7 +2406,7 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 		else
 			result =  m[m.size() - close_wildcards].first - m[0].first;
 
-		size_t pos = m.position(size_t(0));
+		size_t pos = m.position(0);
 		// Ignore last closing characters
 		while (result > 0) {
 			if (str[pos+result-1] == '}')
@@ -2451,19 +2451,28 @@ int MatchStringAdv::operator()(DocIterator const & cur, int len, bool at_begin) 
 	       << ", inTexted=" << cur.inTexted());
 	if (res == 0 || !at_begin || !opt.matchword || !cur.inTexted())
 		return res;
+        if ((len > 0) && (res < len))
+          return 0;
 	Paragraph const & par = cur.paragraph();
 	bool ws_left = (cur.pos() > 0)
 		? par.isWordSeparator(cur.pos() - 1)
 		: true;
-	bool ws_right = (cur.pos() + res < par.size())
-		? par.isWordSeparator(cur.pos() + res)
+	bool ws_right = (cur.pos() + len < par.size())
+		? par.isWordSeparator(cur.pos() + len)
 		: true;
 	LYXERR(Debug::FIND,
 	       "cur.pos()=" << cur.pos() << ", res=" << res
 	       << ", separ: " << ws_left << ", " << ws_right
+               << ", len: " << len
 	       << endl);
-	if (ws_left && ws_right)
-		return res;
+	if (ws_left && ws_right) {
+          // Check for word separators inside the found 'word'
+          for (int i = 0; i < len; i++) {
+            if (par.isWordSeparator(cur.pos() + i))
+              return 0;
+          }
+          return res;
+        }
 	return 0;
 }
 
@@ -2641,76 +2650,55 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 		cur.forwardPos();
 	} while (cur && cur.depth() > d && match(cur) > 0);
 	cur = old_cur;
-	if (match(cur) <= 0) return 0;
+	int max_match = match(cur);     /* match valid only if not searching whole words */
+	if (max_match <= 0) return 0;
 	LYXERR(Debug::FIND, "Ok");
 
 	// Compute the match length
-	int len = 1;
-	if (cur.pos() + len > cur.lastpos())
-		return 0;
-	LYXERR(Debug::FIND, "verifying unmatch with len = " << len);
-	while (cur.pos() + len <= cur.lastpos() && match(cur, len) <= 0) {
-		++len;
-		LYXERR(Debug::FIND, "verifying unmatch with len = " << len);
-	}
-	// Length of matched text (different from len param)
-	int old_match = match(cur, len);
-	if (old_match < 0)
-		old_match = 0;
-	int prev_old_match = old_match;
-	int old_len = len;
-	int step;
-	int new_match;
-	if (match.opt.matchword)
-		step = 1;
-	else
-		step = 2 + (cur.lastpos() - cur.pos())/4;
-	while (step > 4) {
-		if (cur.pos() + len + step >= cur.lastpos()) {
-			step = 2 + step/4;
-			len = old_len;
-			old_match = prev_old_match;
-		}
-		else {
-			new_match = match(cur, len + step);
-			if (new_match > old_match) {
-				prev_old_match = old_match;
-				old_match = new_match;
-				old_len = len;
-				len += step;
-			}
-			else {
-				step = 2 + step/4;
-				len = old_len;
-				old_match = prev_old_match;
-			}
-		}
-	}
-	// Greedy behaviour while matching regexps
-	bool examining = true;
-	while (examining) {
-		examining = false;
-		// Kornel: The loop is needed, since it looks like
-		// incrementing 'cur.pos()' does not always lead to the following
-		// char which we could then match.
-		int maxcnt;
-		if (match.opt.matchword)
-			maxcnt = 2;
-		else
-			maxcnt = 4;
-		for (int count = 1; count < maxcnt; ++count) {
-			if (cur.pos() + len + count > cur.lastpos()) {
-				break;
-			}
-			new_match = match(cur, len + count);
-			if (new_match > old_match) {
-				len += count;
-				old_match = new_match;
-				examining = true;
-				break;
-			}
-		}
-	}
+        int len = 1;
+	if (match.opt.matchword) {
+          if (cur.pos() + len > cur.lastpos())
+            return 0;
+          LYXERR(Debug::FIND, "verifying unmatch with len = " << len);
+          while (cur.pos() + len <= cur.lastpos() && match(cur, len) <= 0) {
+            ++len;
+            LYXERR(Debug::FIND, "verifying unmatch with len = " << len);
+          }
+          // Length of matched text (different from len param)
+          int old_match = match(cur, len);
+          if (old_match < 0)
+            old_match = 0;
+          int new_match;
+          // Greedy behaviour while matching regexps
+          while ((new_match = match(cur, len + 1)) > old_match) {
+            ++len;
+            old_match = new_match;
+            LYXERR(Debug::FIND, "verifying   match with len = " << len);
+          }
+          if (old_match == 0)
+            len = 0;
+        }
+	else {
+          int minl = 1;
+          int maxl = cur.lastpos() - cur.pos();
+          // Greedy behaviour while matching regexps
+          while (maxl > minl) {
+            int actual_match = match(cur, len);
+            if (actual_match == max_match) {
+              maxl = len;
+              len = (int)((maxl + minl)/2);
+            }
+            else if (actual_match < max_match) {
+              minl = len + 1;
+              len = (int)((maxl + minl)/2);
+            }
+            else {
+              // cannot happen, but in case of
+              LYXERR0("????");
+              max_match = actual_match;
+            }
+          }
+        }
 	return len;
 }
 
