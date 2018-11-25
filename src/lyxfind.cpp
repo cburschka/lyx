@@ -2406,7 +2406,7 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 		else
 			result =  m[m.size() - close_wildcards].first - m[0].first;
 
-		size_t pos = m.position(0);
+		size_t pos = m.position(size_t(0));
 		// Ignore last closing characters
 		while (result > 0) {
 			if (str[pos+result-1] == '}')
