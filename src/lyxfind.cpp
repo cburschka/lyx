@@ -2679,26 +2679,28 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
             len = 0;
         }
 	else {
-          int minl = 1;
-          int maxl = cur.lastpos() - cur.pos();
-          // Greedy behaviour while matching regexps
-          while (maxl > minl) {
-            int actual_match = match(cur, len);
-            if (actual_match == max_match) {
-              maxl = len;
-              len = (int)((maxl + minl)/2);
-            }
-            else if (actual_match < max_match) {
-              minl = len + 1;
-              len = (int)((maxl + minl)/2);
-            }
-            else {
-              // cannot happen, but in case of
-              LYXERR0("????");
-              max_match = actual_match;
-            }
-          }
-        }
+	  int minl = 1;
+	  int maxl = cur.lastpos() - cur.pos();
+	  // Greedy behaviour while matching regexps
+	  while (maxl > minl) {
+	    int actual_match = match(cur, len);
+	    if (actual_match >= max_match) {
+	      // actual_match > max_match _can_ happen,
+	      // if the search area splits
+	      // some following word so that the regex
+	      // (e.g. 'r.*r\b' matches 'r' from the middle of the
+	      // splitted word)
+	      // This means, the len value is too big
+	      maxl = len;
+	      len = (int)((maxl + minl)/2);
+	    }
+	    else {
+	      // (actual_match < max_match)
+	      minl = len + 1;
+	      len = (int)((maxl + minl)/2);
+	    }
+	  }
+	}
 	return len;
 }
 
