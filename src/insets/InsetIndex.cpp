@@ -74,14 +74,19 @@ void InsetIndex::latex(otexstream & os, OutputParams const & runparams_in) const
 		os << '{';
 	}
 
+	odocstringstream ourplain;
+	InsetText::plaintext(ourplain, runparams);
+	if (runparams.for_search) {
+		// No need for special handling, if we are only searching for some patterns
+		os << ourplain.str() << "}";
+		return;
+	}
 	// get contents of InsetText as LaTeX and plaintext
 	odocstringstream ourlatex;
 	// FIXME: do Tex/Row correspondence (I don't currently understand what is
 	// being generated from latexstr below)
 	otexstream ots(ourlatex);
 	InsetText::latex(ots, runparams);
-	odocstringstream ourplain;
-	InsetText::plaintext(ourplain, runparams);
 	docstring latexstr = ourlatex.str();
 	docstring plainstr = ourplain.str();
 
