@@ -24,6 +24,7 @@
 \myTOC
 \cleardoublepage
 \pagenumbering{arabic} }
+ \usepackage[T1]{fontenc}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -174,22 +175,21 @@ Mi a \SpecialChar LyX
 \begin_layout Standard
 A \SpecialChar LyX
  egy dokumentum előkészítő rendszer.
- Segítségével, nagyméretű és bonyolult műszaki és tudományos cikkeket készíthetü
-nk, képletekkel, keresztreferenciákkal, irodalomjegyzékkel, tárgymutatóval,
+ Segítségével nagyméretű, bonyolult, műszaki és tudományos cikkeket készíthetünk
+, képletekkel, keresztreferenciákkal, irodalomjegyzékkel, tárgymutatóval,
  stb.
- Nagyon jól használható bármilyen nagy méretű dokumentum készítéséhez, különösen
- azokhoz amelyeknél szükség van: automatikus szakasz számozásra, laptördelésre,
- helyesírás-ellenőrzésre és így tovább.
- Használhatja arra is, hogy levelet írjon az édesanyjának, valószínű ezen
- utóbbi célra léteznek egyszerűbb programok is.
- Nem a legjobb segédeszköz transzparensek, röplapok, hirdetések készítésére
- (később megtárgyaljuk miért), habár egy kis időráfordítással ezeket is
- el tudjuk készíteni.
- Néhány példa arra, mi mindent készítettek már vele: emlékeztetőket, leveleket,
- disszertációkat, előadás-jegyzeteket, tankönyveket, konferencia-jegyzőkönyveket
-, program dokumentációkat, könyveket, újságcikkeket hivatkozott tudományos
- folyóiratokban, színházi és film forgatókönyveket, üzleti javaslatokat,
- prezentációkat \SpecialChar ldots
+ Nagyon jól használható bármilyen nagy méretű dokumentum elkészítéséhez,
+ ahol szükség van: automatikus szakasz számozásra, laptördelésre, helyesírás-ell
+enőrzésre és így tovább.
+ Használhatja arra is, hogy levelet írjon az édesanyjának, noha ezen célra
+ léteznek egyszerűbb programok is.
+ Nem a legjobb eszköz transzparensek, röplapok, hirdetések készítésére (később
+ megtárgyaljuk miért), habár egy kis erőfeszítéssel ezeket is elkészíthetjük.
+ Íme néhány példa arra, mi mindent készítettek már vele: emlékeztetőket,
+ leveleket, értekezéseket és téziseket, előadás-jegyzeteket, tankönyveket,
+ konferenciaköteteket, program dokumentációkat, könyveket, újságcikkeket
+ hivatkozott tudományos folyóiratokba, színházi és film forgatókönyveket,
+ üzleti javaslatokat, prezentációkat \SpecialChar ldots
  
 \end_layout
 
@@ -207,17 +207,17 @@ A \SpecialChar LyX
  elvet.
  Azoknak a szerzőknek készült, akik művüknek professzionális kinézetet szeretnén
 ek minimális energiabefektetéssel anélkül, hogy nyomdai szakértőkké válnának.
- A formázás munkáját a számítógép végezni el helyettünk, nem a szerző.
+ A formázás munkáját többnyire a számítógép végezni el, nem a szerző.
  A \SpecialChar LyX
  használata közben a szerző, a művére tud koncentrálni.
 \end_layout
 
 \begin_layout Standard
-A használatból eredő kezdeti kihívás, a \SpecialChar LyX
- másfajta működéséből adódik, ezt
- kell önnek megértenie.
- Régen, szövegíráshoz csak írógépeink voltak, megtanultuk hogyan tudjuk
- kihozni belőlük amit csak lehet.
+A \SpecialChar LyX
+ használatából adódó kezdeti kihívás, részben az eltérő gondolkodásból
+ adódik, ezt el kell sajátítania.
+ Régen, dokumentumkészítéshez csak írógépeink voltak, megtanultuk hogyan
+ tudjuk kihozni belőlük amit csak lehet.
  Az aláhúzás, ami egy kicsit több, mint felülírni a 
 \begin_inset Quotes pld
 \end_inset
@@ -226,30 +226,30 @@ _
 \begin_inset Quotes prd
 \end_inset
 
- betűvel, a szövegkiemelés módja lett.
- Korábban, meg kellett tervezni a táblázatok oszlopméreteit és be kellett
- állítani a tabulátorokat, mielőtt elkészítettük volna a táblázatot.
+ jellel, a szövegkiemelés módja lett.
+ Korábban, egy táblázat elkészítése előtt, meg kellett tervezni annak oszlopmére
+teit és be kellett állítani a tabulátorokat.
  Ugyanez igaz, a levelekre, és a jobbra igazított szövegekre is.
  Továbbá a sor végi elválasztás jó szemet és gondos előrelátást követelt.
 \end_layout
 
 \begin_layout Standard
 Más szavakkal: mindannyian ki lettünk képezve arra, hogy aggódjunk az olyan
- apró részletek miatt, mint: melyik betű hova kerül.
+ apró részletek miatt: melyik betű hova kerül.
  Következésképpen, majdnem minden szövegszerkesztő ezt az elvet követi.
  Még mindig tabulátor pozíciókat használnak szóköz beiktatásához.
  Még mindig önnek kell aggódnia azon, mi hol jelenik meg a nyomtatott oldalon.
  Szövegkiemelés alatt, betűkészlet váltást értünk, ami hasonló az írógép
- tárcsájának cseréjéhez.
+ tárcsájának váltásához.
  Ezt nevezzük a szövegszerkesztésben: 
 \begin_inset Quotes pld
 \end_inset
 
-azt kapja amit lát
+Azt Látod Amit Kapsz Hűen
 \begin_inset Quotes prd
 \end_inset
 
-
+ - ALAKHŰ
 \begin_inset Foot
 status collapsed
 
@@ -273,7 +273,18 @@ WYSIWYG
 \begin_inset Quotes prd
 \end_inset
 
- 
+, 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://hu.wikipedia.org/wiki/WYSIWYG
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -283,7 +294,7 @@ WYSIWYG
 \begin_inset Quotes pld
 \end_inset
 
-csak azt kapja amit lát
+Amit Lát Csak Azt Kap 
 \begin_inset Quotes prd
 \end_inset
 
@@ -329,22 +340,21 @@ Ez az, ahol a \SpecialChar LyX
 mi az amit akar
 \emph default
  és a \SpecialChar LyX
- felügyeli a többit, követve a szabályok csoportját, amit 
+ megvalósítja, követve szabályok csoportját, amit 
 \emph on
 stílus
 \emph default
 nak hívunk.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset space ~
 \end_inset
 
 Azért ne felejtsük el, hogy a népszerű irodai programok jelenlegi verziói
- rendelkeznek valamilyen stílus oldalakkal, amelyek egyszerű jelzésmódot
- alkalmaznak.
- Habár, a tapasztalataink szerint ezek még mindig nincsenek használatban.
+ rendelkeznek valamelyest stílusokkal, amelyek egyszerű jelölésmódot követnek.
+ Habár, a tapasztalataink szerint ezeket még elég ritkán használják.
 \end_layout
 
 \end_inset
@@ -354,7 +364,7 @@ Azért ne felejtsük el, hogy a népszerű irodai programok jelenlegi verziói
 
 \begin_layout Standard
 Tegyük fel, hogy készít egy jelentést.
- A jelentés elkezdéséhez létre akar hozni egy bevezetőt, amit 
+ A jelentés elkezdéséhez létre hoz egy bevezetőt, amit 
 \begin_inset Quotes pld
 \end_inset
 
@@ -363,8 +373,9 @@ Bevezetés
 \end_inset
 
 -nek fog hívni.
- Ezért, a programja valamelyik menüjében megváltoztatja az aktuális betűméretet
- a kigondoltra, majd félkövérre vált és begépeli 
+ Ezért, a szövegszerkesztője valamelyik menüjében megváltoztatja az aktuális
+ betűméretet a kigondoltra.
+ Ezután félkövérre vált és begépeli 
 \begin_inset Quotes pld
 \end_inset
 
@@ -410,14 +421,14 @@ Igen, ez minden.
  Amennyiben kivág és beilleszt valahova egy fejezetet, automatikusan újra
  lesz számozva – mindenütt.
  Amennyiben a hivatkozásokat helyesen viszi be ehhez a szakaszhoz (beszúrva
- a kereszt-referencia elem-et), a \SpecialChar LyX
- automatikusan frissíteni fogja ezeket
- az egész fájlban, így sohasem fog fejezet számot beírni, sehova.
+ a kereszthivatkozás elemet), \SpecialChar LyX
+ automatikusan frissíteni fogja ezeket az
+ egész fájlban, így sohasem fog fejezet számot beírni, sehova.
 \end_layout
 
 \begin_layout Standard
 Most nézzük a következetesség problémáját.
- Öt nappal később, újra megnyitja egyik jelentését és elkezdi a 4.
+ Öt nappal később, újra megnyitja jelentését és elkezdi a 4.
 \begin_inset space ~
 \end_inset
 
@@ -427,25 +438,24 @@ fejezetet.
 \begin_inset space ~
 \end_inset
 
-fejezet címét egy másmilyen betűvel, mint amit az 1.
+fejezet címét egy másmilyen betűtípussal, mint amit az 1.
 \begin_inset space ~
 \end_inset
 
 fejezet-hez használt.
  Ez a probléma a \SpecialChar LyX
 -ben nem létezik.
- A számítógép gondoskodik azon ostoba információk nyilvántartásáról, hogy
- milyen dolognak, milyen méretűnek kell lennie, nem pedig ön.
+ A számítógép gondoskodik azon alapvető információk nyilvántartásáról, hogy
+ melyik dolognak, milyen méretűnek kell lennie, nem pedig ön.
  Ebben a számítógép nagyon jó.
 \end_layout
 
 \begin_layout Standard
 Itt egy másik példa.
- Tegyük fel egy listát készít.
- Más szövegszerkesztőkben a lista csak rengeteg tabulátor és újsorjel.
- Ki kell találnia hova rakja címkét a lista egyes elemeihez, annak milyen
- címkéje kell legyen, és mennyi üres sort kell rakni az elemek közé, és
- így tovább.
+ Tegyük fel készít egy listát.
+ Egy másik szövegszerkesztőben a lista csak rengeteg tabulátor és újsorjel.
+ Ki kell találnia hova rakja címkét a lista egyes elemeihez, milyen legyen
+ a címke, mennyi üres sort kell rakni az egyes elemek közé, és így tovább.
  \SpecialChar LyX
  használatakor, két dolgot kell észben tartania: milyen lista ez és mi
  az amit bele akar írni.
@@ -454,50 +464,21 @@ Itt egy másik példa.
 
 \begin_layout Standard
 A \SpecialChar LyX
- alapötlete: add meg 
+ alapötlete: adja meg 
 \emph on
 mit
 \emph default
- akarsz, és ne azt 
+ akar, és ne azt 
 \emph on
 hogyan
 \emph default
- akarod.
+ akarja.
  Az 
 \begin_inset Quotes pld
 \end_inset
 
-azt kapja amit lát
+Azt Látod Amit Kapsz Hűen
 \begin_inset Quotes erd
-\end_inset
-
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Quotes pld
-\end_inset
-
-What You See Is What You Get
-\begin_inset Quotes erd
-\end_inset
-
-, a továbbiakban: 
-\begin_inset Quotes pld
-\end_inset
-
-WYSIWYG
-\begin_inset Quotes prd
-\end_inset
-
-
-\end_layout
-
 \end_inset
 
  helyett, a \SpecialChar LyX
@@ -505,9 +486,9 @@ WYSIWYG
 \begin_inset Quotes pld
 \end_inset
 
-azt kapja amire 
+Azt Kapja Amire 
 \emph on
-gondol
+Gondol
 \emph default
 
 \begin_inset Quotes prd
@@ -550,7 +531,8 @@ WYSIWYM
  a nehézségeit.
  Szintén emiatt mondjuk, miért nem túl jó választás a \SpecialChar LyX
 , poszterek és röplapok
- készítésére – ezekben az esetekben, ön 
+ készítésére.
+ Ezekben az esetekben, ön 
 \emph on
 pontosan
 \emph default
@@ -559,7 +541,7 @@ pontosan
  Ez nem jelenti azt, hogy a \SpecialChar LyX
 -ből hiányoznak fontos funkciók.
  Egyszerűen csak azt jelenti, hogy nem ez a legjobb eszköz erre a munkára
- – ugye nem a csavarhúzóját használja egy szeg falba veréséhez.
+ – ugye nem használja a csavarhúzóját egy szeg falba veréséhez.
 \end_layout
 
 \begin_layout Subsection
@@ -569,7 +551,30 @@ Eltérések a \SpecialChar LyX
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
 \SpecialChar LyX
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}{LyX}
+\end_layout
+
+\end_inset
+
  és a többi szövegszerkesztő
 \end_layout
 
@@ -584,11 +589,11 @@ A következő dolgokat nem fogja megtalálni a \SpecialChar LyX
 \end_layout
 
 \begin_layout Itemize
-Vonalzó
+Vonalzó,
 \end_layout
 
 \begin_layout Itemize
-Tabulátor pozíció
+Tabulátor pozíció,
 \end_layout
 
 \begin_layout Itemize
@@ -600,60 +605,60 @@ Enter
 \family sans
 Szóköz
 \family default
- kettőnél többszöri leütésével)
+ kettőnél többszöri leütésével).
 \end_layout
 
 \begin_layout Standard
-Tabulátor pozíciók, a vonalzóval egyetemben a papíron elfoglalt pozíciókat
- mutatva, haszontalan dolgok a \SpecialChar LyX
+Tabulátorok, a vonalzóval egyetemben a papíron elfoglalt pozíciókat mutatva,
+ haszontalan dolgok a \SpecialChar LyX
 -ben.
  A program gondoskodik arról, mi hova kerül a papíron, nem ön.
  Az extra térköz szintén hasonló, a \SpecialChar LyX
- szükség esetén beállítja, természetesen
+ szükség esetén beszúrja amikor szükséges,
  a környezettől függően.
  Két üres sor bevitelének lehetetlensége először kicsit bosszantóan hat,
- azonban miután áttérünk a WYSIWYM gondolkodásra megértjük ezt.
+ de miután áttérünk a WYSIWYM gondolkodásra már megértjük az okát.
 \end_layout
 
 \begin_layout Standard
-Néhány dolog, ami ugyan létezik a \SpecialChar LyX
--ben, de mégis másként használjuk őket,
- mint ahogy elképzeli:
+Íme néhány dolog, ami ugyan létezik a \SpecialChar LyX
+-ben, de mégis másként használjuk
+ őket, mint ahogy várja:
 \end_layout
 
 \begin_layout Itemize
-Függő behúzás vezérlése
+Behúzás vezérlése,
 \end_layout
 
 \begin_layout Itemize
-Laptörés
+Laptörés,
 \end_layout
 
 \begin_layout Itemize
-Sortávolság (például: egyszeres, kétszeres, stb.)
+Sortávolság (például: egyszeres, kétszeres, stb.),
 \end_layout
 
 \begin_layout Itemize
-Térköz, vízszintes és függőleges
+Térköz, vízszintes és függőleges,
 \end_layout
 
 \begin_layout Itemize
-Betűk és betűméretek
+Betűk és betűméretek,
 \end_layout
 
 \begin_layout Itemize
-Betűstílusok (félkövér, dőlt, aláhúzott, stb.)
+Betűstílusok (félkövér, dőlt, aláhúzott, stb.).
 \end_layout
 
 \begin_layout Standard
 Habár mindezek léteznek a \SpecialChar LyX
 -ben, általában nincs rájuk szüksége.
  A \SpecialChar LyX
- gondoskodni fog ezekről a dolgokról, függően attól, hogy éppen mit csinál.
+ gondoskodik ezekről a dolgokról, attól függően, hogy éppen mit csinál.
  A dokumentum különböző részeit magától beállítja a megfelelő betűstílusokra
  és méretekre.
- A bekezdés behúzása függ az aktuális szövegkörnyezettől, különböző típusú
- bekezdésekhez különböző függő behúzásokat fog használni.
+ A bekezdések behúzása függ az aktuális szövegkörnyezettől, különböző típusú
+ bekezdésekhez különböző behúzásokat fog használni.
  A laptöréseket szintén automatikusan kezeli.
  Általánosan: a sorok, szavak, betűk és bekezdések közötti térköz változó,
  amit a \SpecialChar LyX
@@ -665,17 +670,17 @@ status collapsed
 \begin_inset space ~
 \end_inset
 
-Van rá mód, hogyan módosíthatjuk ezeket (közülük néhány \SpecialChar LaTeX
- ismeretet igényel),
- a teljes dokumentumra, vagy pedig a dokumentum egy bizonyos pontjára vonatkozóa
-n.
+Léteznek rá módok, hogyan módosítsuk ezeket (közülük csak néhány igényel
+ \SpecialChar LaTeX
+ ismeretet), a teljes dokumentumra, vagy pedig a dokumentum egy bizonyos
+ pontjára vonatkozóan.
  A részleteket megtalálja a 
 \shape italic
 Felhasználói kézikönyvben
 \shape default
- vagy a 
+ és/vagy a 
 \shape italic
-Haladó szolgáltatások
+További jellemzők
 \shape default
  kézikönyvben.
 \end_layout
@@ -693,35 +698,35 @@ n:
 \end_layout
 
 \begin_layout Itemize
-Elválasztás
+Elválasztás,
 \end_layout
 
 \begin_layout Itemize
-Tartalomjegyzék és bárminek a listája
+Bárminek a listája,
 \end_layout
 
 \begin_layout Itemize
-Képletek
+Képletek,
 \end_layout
 
 \begin_layout Itemize
-Táblázatok
+Táblázatok,
 \end_layout
 
 \begin_layout Itemize
-Kereszthivatkozások
+Kereszthivatkozások.
 \end_layout
 
 \begin_layout Standard
 Természetesen, sok modern szövegszerkesztő kezeli a matematikai szimbólumokat,
  táblázatokat és elválasztást.
- Sokuk továbblépett a típusdefiníció a WYSIWYM-elv felé.
- Habár mindezekre csak mostanában lettek képesek, amíg a \SpecialChar LyX
+ Sokuk már továbblépett a típusdefiníció a WYSIWYM-elv felé is.
+ Habár mindezekre csak mostanában lettek képesek, holott a \SpecialChar LyX
  a \SpecialChar LaTeX
  dokumentum
  formázó rendszerre épül.
  A \SpecialChar LaTeX
- már több, mint 20 éve létezik és 
+ már 1985 óta létezik és 
 \shape italic
 működik
 \shape default
@@ -756,7 +761,7 @@ A Guide to LateX2e
 
 \emph default
 .
- Az utalást megtalálja a 
+ A forrást megtalálja a 
 \emph on
 Felhasználói kézikönyv
 \emph default
@@ -766,12 +771,11 @@ Felhasználói kézikönyv
 \end_inset
 
  Ez a nyelv a \SpecialChar TeX
- írásszedő nyelvből lett kifejlesztve, melyet Donald Knuth
- készített 1984-ben.
+ írásszedő nyelvre épül, melyet Donald Knuth készített 1984-ben.
  A \SpecialChar TeX
- egy szöveges (ASCII) fájlban tárolt írásszedő parancsok sorozatát fogadja,
+ egy ASCII szöveges fájlban tárolt írásszedő parancsok sorozatát fogadja,
  amiket sorban végrehajt.
- A nyomtatás legtöbb 
+ A nyomtatás számtalan 
 \begin_inset Quotes pld
 \end_inset
 
@@ -781,11 +785,17 @@ trükkjét
 
  Knuth lemodellezte számítógépes algoritmusok segítségével és beépítette
  a \SpecialChar TeX
--be.
- Innen származik a kiváló kinézet nyomtatáskor.
+-be, innen származik a kiváló nyomtatási kinézet.
  A \SpecialChar TeX
- kimenete lehet egy hordozható pdf dokumentum vagy egy eszközfüggetlen
- formátum fájl
+ közvetlen kimenete egy hordozható dokumentum formátum 
+\emph on
+pdf
+\emph default
+ vagy egy úgynevezett eszközfüggetlen formátum fájl röviden 
+\emph on
+dvi
+\emph default
+
 \begin_inset Foot
 status collapsed
 
@@ -798,52 +808,51 @@ DVI – Device Independent
 
 \end_inset
 
- röviden dvi.
+.
  A dvi-t rendszerint előnézethez használjuk, de alkalmas később más formátumba
- való átalakításhoz is.
+ való átalakításhoz is, mint pl.
+ PostScript.
 \end_layout
 
 \begin_layout Standard
 A \SpecialChar TeX
- nem csak egy írásszedő motor, lehetőségünk van definiálni makrókat.
+ nem csak egy írásszedő motor, lehetőségünk van definiálni makrókat is.
  A legtöbb ember aki a a \SpecialChar TeX
 -et használja, valójában egy makrócsomagot használ,
  amit Knuth az írásszedő parancsok elrejtéséhez készített.
  Itt lép be a történetünkbe Leslie Lamport.
- Elképzelt egy makrócsomagot ami jobban felhasználó barát, mintsem szövegszedés
+ Elképzelt egy makrócsomagot ami jobban felhasználó barát, mintsem betűszedés
  orientált.
- Egy olyan parancskészletet, amivel következetesen szedhetünk például szakaszoka
-t, táblázatokat vagy képleteket egységes kinézetben a lehető legkevesebb
- problémával.
+ Egy olyan parancskészlettel, amivel következetesen szedhetünk például szakaszok
+at, táblázatokat vagy képleteket egységes következetes módon.
  Hát így született a \SpecialChar LaTeX
 .
 \end_layout
 
 \begin_layout Standard
 Most, a \SpecialChar LaTeX
- növekedésével és fejlesztésével párhuzamosan, egyesek készítettek
- saját \SpecialChar TeX
+ fejlődésével és növekedésével párhuzamosan, mások készítettek saját
+ \SpecialChar TeX
  makrócsomagokat, fóliákhoz, matematikai folyóiratokba készülő cikkekhez
  és így tovább.
- A megvalósításhoz néhány, a \SpecialChar TeX
- elemi lehetőségeit használja, míg mások elkezdték
- módosítani a \SpecialChar LaTeX
+ Néhányan, a \SpecialChar TeX
+ elemi lehetőségeit használták, míg mások elkezdték módosítani
+ a \SpecialChar LaTeX
 -et.
  Hogy az így kialakult zűrzavar csökkenjen, a 80-as évek végén \SpecialChar LaTeX
  mesterek
  elkezdtek dolgozni a \SpecialChar LaTeX2e
 -n, ami az aktuális \SpecialChar LaTeX
-.
+ változat.
  Ezen új változat tartalmaz olyan új parancsokat, amelyek könnyen használható
  felületet adnak a \SpecialChar TeX
- makrókészítő parancsaihoz (emlékszik még a \SpecialChar TeX
--re?), hogy
- könnyen használhassunk például új betűkészleteket, stb.
- Valójában a \SpecialChar LaTeX
- egy igen hatékony nyelv a maga nemében.
- Szerte a világban sok felhasználó elkészítette a saját \SpecialChar LaTeX
+ makrókészítő parancsaihoz, hogy könnyen használhassunk
+ például új betűkészleteket, stb.
+ Valójában, a \SpecialChar LaTeX
+ egy igen átfogó nyelv a maga nemében.
+ Szerte a világban sok felhasználó készíteti el a saját \SpecialChar LaTeX
  kiegészítőjét a
- beépítetteken kívül.
+ beépítetteken kívűl.
 \end_layout
 
 \begin_layout Standard
@@ -881,7 +890,7 @@ status collapsed
 osztály
 \emph default
 , \SpecialChar LaTeX
- makrók csoportja, ami leír egy új dokumentum típust, mint például könyv
+ makrók csoportja, leírni egy új dokumentum típust, mint például könyv
  vagy újságcikk.
  Készítettek osztályokat fóliákhoz, fizikai és matematikai folyóiratokhoz\SpecialChar ldots
 
@@ -894,16 +903,16 @@ stílus
 \emph on
 viselkedés formát
 \emph default
-, amit bármely dokumentum használhat.
+, amit bármely dokumentum használhatunk.
  A \SpecialChar LyX
  például a margót és a sortávolságot, két erre a célra tervezett \SpecialChar LaTeX
  stílus
  fájllal kezeli.
- Létezik stílus fájl rengeteg dologhoz: címke vagy boríték nyomtatáshoz,
- függőbehúzás módosításához, új betűkészlet felhasználásához, grafikák manipulác
-iójához, egyedi címlap tervezéshez, egyedi irodalomjegyzékhez, lábjegyzetek
- helyének és kinézetének megváltoztatásához, táblázatok, ábrák, listák megváltoz
-tatásához, stb.
+ Létezik stílus fájl rengeteg dologhoz: címkék vagy boríték nyomtatásához,
+ behúzás vislkedésének módosításához, új betűkészlet használatához, grafikák
+ manipulációjához, díszes fejléc tervezéshez, irodalomjegyzék testreszabáshoz,
+ lábjegyzetek helyének és kinézetének megváltoztatásához, táblázatok, ábrák,
+ listák megváltoztatásához, stb.
 \end_layout
 
 \begin_layout Standard
@@ -912,58 +921,74 @@ tatásához, stb.
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\series bold
 \SpecialChar TeX
-: írásszedő nyelv, makrózási képességekkel
+:
+\series default
+ betűszedő nyelv, makrózási képességekkel
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\series bold
 \SpecialChar LaTeX
-: \SpecialChar TeX
+:
+\series default
+ \SpecialChar TeX
 -re épülő makrócsomag
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-osztályok: dokumentum típusok leírása, \SpecialChar LaTeX
+
+\series bold
+osztályok:
+\series default
+ dokumentum típusok leírása, \SpecialChar LaTeX
  felhasználásával
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-stílusok: a \SpecialChar LaTeX
- viselkedésmódjának megváltoztatása valamilyen módon
+
+\series bold
+stílusok:
+\series default
+ konkrét \SpecialChar LaTeX
+ elemek alapértelmezett viselkedési módjának megváltoztatása
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\series bold
 \SpecialChar LyX
-: vizuális WYSIWYM szövegszerkesztő, ami a \SpecialChar LaTeX
+:
+\series default
+ vizuális WYSIWYM szövegszerkesztő, ami a \SpecialChar LaTeX
 -et használja, a professzionális
  végeredményhez.
 \end_layout
 
 \begin_layout Standard
-A \SpecialChar LaTeX
- az oka miért különbözik a \SpecialChar LyX
- a többi szövegszerkesztőtől.
- A \SpecialChar LyX
- egy grafikus felhasználói felület (GUI) a \SpecialChar LaTeX
--hez.
- Arra tervezték, hogy a dokumentumokat a makro parancsok ismerete nélkül
- készítse el.
- A \SpecialChar LyX
- sohasem fogja az összes makró parancsot grafikusan támogatni, de lehetővé
- teszi a használatukat, ezért a \SpecialChar LyX
- annyira hatékony, mint a \SpecialChar LaTeX
-.
-\end_layout
-
-\begin_layout Standard
-Csakúgy, mint a \SpecialChar LaTeX
- a \SpecialChar LyX
- is az írás tartalmára koncentrál — arra amit beír.
- A számítógép fog gondoskodni arról, hogyan nézzen ki.
+Ez a szakasz megpróbálja elmagyarázni a különbséget a LyX és egy másik szövegsze
+rkesztő között.
+ Egyszerűen fogalmazva, a \SpecialChar LaTeX
+ a különbség.
+ A háttérben \SpecialChar LaTeX
+-et használva, a \SpecialChar LyX
+ segít hogy jobban koncentráljon a 
+\emph on
+tartalomra
+\emph default
+ (mármint a szavakra) amit ír.
+ A számítógép ezután kezeli, 
+\emph on
+hogyan
+\emph default
+ kell kinéznie.
 \end_layout
 
 \begin_layout Section
@@ -971,32 +996,31 @@ A dokumentumok közötti eligazodás
 \end_layout
 
 \begin_layout Standard
-Hogy kérdéseire könnyen megtalálja a választ, és könnyen tudjuk bemutatni
- a \SpecialChar LyX
- összes sajátosságát, a dokumentációt több különböző részre bontottuk.
- Minden egyes résznek a maga feladata, ahogy azt később majd részletezzük.
- Mielőtt nekilátna valamelyik olvasásának, először olvassa végig ezt a fájlt,
- ugyanis sok hasznos információt tartalmaz, aminek tudatában időt spórolhat
- meg.
+Hogy kérdéseit könnyen megválaszolhassuk, és be tudjuk mutatni a \SpecialChar LyX
+ összes
+ jellemzőjét, a dokumentációt több különböző részre bontottuk.
+ Minden egyes résznek megvan a maga feladata, ahogy azt lentebb részletezzük.
+ Mielőtt nekilátna valamelyik fájlnak, olvassa el ezt a fejezetet alaposan,
+ mivel sok hasznos információt és kommentárt tartalmaz, ezekkel pedig időt
+ spórolhat meg.
 \end_layout
 
 \begin_layout Standard
 Remélhetőleg a \SpecialChar LyX
- fejlesztése sohasem fog leállni, a dokumentáció néhány része
- kiegészítésre szorulhat vagy már elavult, de igyekszünk azt frissen tartani.
+ fejlesztése sohasem fog leállni, ezért a dokumentáció néhány
+ része kiegészítésre szorulhat vagy már kicsit elavult, de igyekszünk azt
+ frissen tartani.
  Ahogy magát a programot, a dokumentációt is önkéntesek készítik, akiknek
- ugye emellett van 
+ ugye van 
 \begin_inset Quotes pld
 \end_inset
 
-igazi
+igazi munkájuk
 \begin_inset Quotes prd
 \end_inset
 
- munkájuk, családjuk, mosogatásra váró szennyesedényük, stb.
- Mi megteszünk, minden tőlünk telhetőt, hogy ez a dokumentáció mindig naprakész
- formában legyen, de ez nem mindig sikerül.
- Ha segíteni akar orvosolni ezt a problémát, mindenképpen olvassa el a 
+, családjuk, mosogatásra váró edényük, stb.
+ Ha segíteni szeretne, olvassa el a 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "rész:Közreműködés"
@@ -1007,14 +1031,13 @@ reference "rész:Közreműködés"
 \begin_inset space ~
 \end_inset
 
-részt\SpecialChar endofsentence
-
+részt, a dokumentum többi részén felül.
 \end_layout
 
 \begin_layout Standard
-Először is tegyen nekünk egy szívességet: ha valami nem tiszta, érthetetlen
- vagy rossz, ne habozzon, tudassa velünk! A dokumentációk jelenlegi fejlesztőit
- elérheti a levelezési listájukon: 
+Először is tegyen nekünk egy szívességet: ha a kézikönyvekben valami érthetetlen
+ vagy rossz, ne habozzon, tudassa velünk! A dokumentációk jelenlegi karbantartói
+t elérheti a levelezési listájukon: 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -1078,10 +1101,11 @@ A kézikönyvek formátuma
 Vannak akik nyomtatott formában olvassák a kézikönyvet, mások közvetlenül
  a \SpecialChar LyX
 -ből.
+ Van némi különbség az online \SpecialChar LyX
+-fájl és a nyomtatott változat között.
  A \SpecialChar LyX
- fájl és a nyomtatott forma között különbségek vannak.
- Először is, a cím nincs külön oldalon, egyszerűen csak ott van a dokumentum
- elején.
+-ben, a cím egyszerűen csak ott van a dokumentum elején, nem úgy mint
+ a nyomtatott változatnál egy külön oldalon.
  Továbbá, a lábjegyzet és a tartalomjegyzék sem látható.
  Ahhoz, hogy kinyissa a lábjegyzetet ami így néz ki: 
 \begin_inset Graphics
@@ -1090,13 +1114,20 @@ Vannak akik nyomtatott formában olvassák a kézikönyvet, mások közvetlenül
 
 \end_inset
 
- a bal egérgombbal kattintson a gombra.
- Ha meg akarja nézni a tartalomjegyzéket, kattintson a szürke gombra a cím
- alatt vagy a 
-\bar under
-N
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+FIXIT: csere magyarra???
+\end_layout
+
+\end_inset
+
+ kattintson a gombra bal egérgombbal.
+ Ha meg akarja nézni a Tartalomjegyzéket, kattintson a szürke gombra a cím
+ alatt vagy a N
 \family sans
-\bar default
 avigáció
 \family default
  menüpontra, ahol a tartalom automatikusan megjelenik.
@@ -1104,9 +1135,10 @@ avigáció
 
 \begin_layout Standard
 A nyomtatott formában az összes kereszthivatkozásnál látható az aktuális
- fejezet, szakasz, alszakasz száma.
- A fájlban minden ilyen helyen egy világosszürke gomb látható, mint ez:
- 
+ fejezet, szakasz, alszakasz száma és így tovább.
+ A \SpecialChar LyX
+-fájlban minden kereszthivatkozás helyén egy világosszürke gomb látható,
+ mint ez: 
 \begin_inset Graphics
 	filename ../clipart/reference.png
 	scale 75
@@ -1114,23 +1146,18 @@ A nyomtatott formában az összes kereszthivatkozásnál látható az aktuális
 \end_inset
 
 \SpecialChar endofsentence
- Ha rákattint az utóbbira bal egérgombbal, egy dialógusablak jelenik meg,
- ami a dokumentumban lévő összes hivatkozást tartalmazza.
- Ez a dokumentum csak kettőt tartalmaz az első a 
-\begin_inset Quotes pld
-\end_inset
-
-rész:Közreműködés
-\begin_inset Quotes prd
-\end_inset
-
-.
- A hivatkozott szakaszra ugorhat, ha jobb egérgombbal kattint a szürke dobozra
+ Ha rákattint erre a szürke dobozra a bal egérgombbal, egy dialógusablak
+ jelenik meg, ami a dokumentumban lévő összes hivatkozást tartalmazza.
+ A hivatkozott szakaszra ugorhat, ha jobb egérgombbal kattint a szürke gombra
  vagy ha rákattint az 
 \begin_inset Quotes pld
 \end_inset
 
-Ugrás
+
+\family sans
+Címkére ugrás
+\family default
+
 \begin_inset Quotes prd
 \end_inset
 
@@ -1140,21 +1167,21 @@ Ugrás
 \begin_inset Quotes pld
 \end_inset
 
+
+\family sans
 Visszaugrás
+\family default
+
 \begin_inset Quotes prd
 \end_inset
 
- gombra vagy használja következő billentyűkombinációt: 
-\family sans
-C-<
-\family default
-, a kurzor visszaugrik az eredeti pozíciójába.
+ gombra, hogy visszatérjen a korábbi kurzor pozícióba.
 \end_layout
 
 \begin_layout Standard
 Most, hogy tisztáztunk néhány különbséget a nyomtatott és az elektronikus
  forma között, folytathatjuk ezen dokumentum formai vizsgálatát.
- Esetenként találkozhat különböző betűstílusokkal:
+ Esetenként észrevehet dolgokat különböző betűstílusokkal:
 \end_layout
 
 \begin_layout Itemize
@@ -1162,8 +1189,8 @@ Most, hogy tisztáztunk néhány különbséget a nyomtatott és az elektronikus
 \emph on
 Kiemelt Stílus
 \emph default
- - ezt az általános kiemelésekhez, érvelésekhez, könyv címekhez, más kézikönyvek
- egyes részeire való hivatkozáshoz vagy a szerzők megjegyzéseihez használjuk
+ - általános kiemelésekhez, érvelésekhez, könyv címekhez, más kézikönyvek
+ egyes részeire való hivatkozáshoz és szerzők megjegyzéseihez használjuk,
 \end_layout
 
 \begin_layout Itemize
@@ -1171,8 +1198,8 @@ Kiemelt Stílus
 \family typewriter
 Írógép
 \family default
- - ezt a programok és fájlok neveihez, \SpecialChar LyX
- kódokhoz, funkciókhoz használjuk.
+ - programok és fájlok neveihez, \SpecialChar LyX
+ kódokhoz, funkciókhoz használjuk,
 \end_layout
 
 \begin_layout Itemize
@@ -1180,7 +1207,7 @@ Kiemelt Stílus
 \family sans
 Sans Serif
 \family default
- - ezt a menük, gombok, dialógus-ablakok és a billentyűk neveihez használjuk.
+ - a menük, gombok, dialógus-ablak és a billentyűk neveihez használjuk,
 \end_layout
 
 \begin_layout Itemize
@@ -1188,7 +1215,7 @@ Sans Serif
 \noun on
 Kiskapitális Stílus
 \noun default
- - ezzel jelöljük a személyneveket.
+ - ezzel jelöljük a személyneveket,
 \end_layout
 
 \begin_layout Itemize
@@ -1196,31 +1223,13 @@ Kiskapitális Stílus
 \series bold
 Félkövér
 \series default
- - a \SpecialChar LaTeX
- kódok jelöléséhez
+ - \SpecialChar LaTeX
+ kódok jelöléséhez használjuk.
 \end_layout
 
 \begin_layout Standard
-A menügyorsítókhoz, billentyű-kombinációkhoz elegendő információt kaphat
- a 
-\emph on
-
-\begin_inset Quotes pld
-\end_inset
-
-Haladó szolgáltatások kézikönyv
-\begin_inset Quotes prd
-\end_inset
-
- Billentyűzet-kombinációk
-\emph default
- részében (a fájl neve 
-\family typewriter
-Additional.lyx
-\family default
-).
- Amikor a billentyűzet-kombinációkat ismertetjük, mindig a következő jelölésmódo
-kat fogjuk használni:
+Amikor a billentyűzet-kombinációkat ismertetjük, mindig a következő jelölésmódok
+at fogjuk használni:
 \end_layout
 
 \begin_layout Itemize
@@ -1229,7 +1238,7 @@ kat fogjuk használni:
 \begin_inset Quotes pld
 \end_inset
 
-C-
+Ctrl+
 \begin_inset Quotes prd
 \end_inset
 
@@ -1239,7 +1248,7 @@ C-
 \family sans
 Control
 \family default
- billentyűt.
+ billentyűt
 \end_layout
 
 \begin_layout Itemize
@@ -1248,7 +1257,7 @@ Control
 \begin_inset Quotes pld
 \end_inset
 
-S-
+Shift+
 \family default
 
 \begin_inset Quotes prd
@@ -1258,7 +1267,7 @@ S-
 \family sans
 Shift
 \family default
- billentyűt.
+ billentyűt,
 \end_layout
 
 \begin_layout Itemize
@@ -1267,21 +1276,17 @@ Shift
 \begin_inset Quotes pld
 \end_inset
 
-M-
+Alt+
 \family default
 
 \begin_inset Quotes prd
 \end_inset
 
- jelöli a 
+ jelöli a
 \family sans
-Meta
+z Alt (Meta)
 \family default
- billentyűt, ami a legtöbb billentyűzeten a (jobb oldali) 
-\family sans
-Alt
-\family default
- billentyű.
+ billentyűt,
 \end_layout
 
 \begin_layout Itemize
@@ -1324,7 +1329,7 @@ Esc
 \begin_inset Quotes erd
 \end_inset
 
-: az escape billentyű.
+: az escape billentyű,
 \end_layout
 
 \begin_layout Itemize
@@ -1450,7 +1455,7 @@ PageDown
 \begin_inset Quotes erd
 \end_inset
 
-: ez 6 billentyű, ami legtöbbször a kurzor-mozgató billentyűk felett található
+: ez a 6 billentyű, ami legtöbbször a kurzor-mozgató billentyűk felett található
  egy PC billentyűzeten.
  A 
 \family sans
@@ -1533,8 +1538,7 @@ Enter
 \begin_inset Quotes erd
 \end_inset
 
- névvel van illetve.
- Néhol két külön billentyű is van.
+ névvel van jelölve, néhol pedig két külön billentyű is van.
  A \SpecialChar LyX
  mindegyiket egyformán kezeli, így mi a 
 \family sans
@@ -1548,88 +1552,36 @@ Enter
 \end_layout
 
 \begin_layout Standard
-Szintén sokat fog találkozni a következővel 
-\begin_inset Quotes pld
-\end_inset
-
-Lásd a 
-\emph on
-Haladó szolgáltatások kézikönyv
-\emph default
-
-\begin_inset Quotes prd
-\end_inset
-
-.
- Az összes lehetséges funkcióhoz tartozó alapértelmezett billentyűzet-kombináció
- megtalálható a 
-\begin_inset Quotes pld
-\end_inset
-
-
-\emph on
-Haladó szolgáltatások Kézikönyv
-\emph default
-
-\begin_inset Quotes prd
-\end_inset
-
--ben, nézzen utána ott is.
- Észrevehette, hogy két különböző billentyű-kombináció gyűjtemény is megtalálhat
-ó a \SpecialChar LyX
--ben.
- Az egyik a 
-\begin_inset Quotes pld
-\end_inset
-
-CUA
-\begin_inset Quotes prd
-\end_inset
-
- stílus, ami az alapértelmezett és azoknak ismerős, akik a PC-s világban
- nőttek fel, a másik pedig az 
-\begin_inset Quotes pld
-\end_inset
-
-emacs
-\begin_inset Quotes prd
-\end_inset
-
- stílusú, amelyiket főleg azok használnak akik Unix-on nőttek fel és az
- Emacs szövegszerkesztőt használták.
- Ha nincs külön jelezve, mi a dokumentációban mindig az alapértelmezett
- 
-\begin_inset Quotes pld
-\end_inset
-
-CUA
-\begin_inset Quotes prd
-\end_inset
-
- stílusút használjuk.
- Ha önnek az Emacs jobban tetszik, valószínűleg egyedül is meg fogja találni
- az önre vonatkozó billentyűzet-kombinációt.
+A lista a jelenleg beállított gyorsbillentyűkkel elérhető a 
+\family sans
+Segítség
+\family default
+ menüben a 
+\family sans
+Gyorsbillentyűk
+\family default
+ alatt.
 \end_layout
 
 \begin_layout Subsection
-Kézikönyvekben használt mértékegységek 
+Kézikönyvekben használt mértékegységek
 \end_layout
 
 \begin_layout Standard
-A dokumentációban található mértékegységek mégértéséhez a 
+A dokumentációban található mértékegységek megértéséhez a \SpecialChar LyX
+-ben használt
+ mértékegységeket értelmezését az 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:mertekegysegek"
 
 \end_inset
 
-.táblázatban taltálja meg a \SpecialChar LyX
--ben használt mértékegységeket értelmezését.
+.táblázatban találja meg.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
-placement t
 wide false
 sideways false
 status open
@@ -1667,7 +1619,7 @@ Mértékegységek
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1676,7 +1628,7 @@ Egység
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1687,7 +1639,7 @@ Név/Leírás
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1696,7 +1648,7 @@ mm
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1707,7 +1659,7 @@ milliméter
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1716,7 +1668,7 @@ cm
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1727,7 +1679,7 @@ centiméter
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1736,18 +1688,26 @@ in
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-inch
+inch (1
+\begin_inset space \thinspace{}
+\end_inset
+
+in = 2,54
+\begin_inset space \thinspace{}
+\end_inset
+
+cm)
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1756,11 +1716,11 @@ pt
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-point (72.27
+point (72,27
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1775,7 +1735,7 @@ in)
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1784,7 +1744,7 @@ pc
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1803,7 +1763,7 @@ pt)
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1812,11 +1772,11 @@ sp
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-scaled point (65536
+skálázott point (65536
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1831,7 +1791,7 @@ pt)
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1840,11 +1800,11 @@ bp
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-big point (72
+nagy point (72
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1859,7 +1819,7 @@ in)
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1868,7 +1828,7 @@ dd
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1880,7 +1840,7 @@ dd
 \begin_inset Formula $\approx$
 \end_inset
 
- 37.6
+ 37,6
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1891,7 +1851,7 @@ mm)
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1900,7 +1860,7 @@ cc
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1919,7 +1879,7 @@ dd)
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1928,7 +1888,7 @@ Scale%
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1939,7 +1899,7 @@ kép eredeti szélességének %-a
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1948,7 +1908,7 @@ text%
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1959,7 +1919,7 @@ a szöveg szélességének %-a
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1968,7 +1928,7 @@ col%
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1979,7 +1939,7 @@ a oszlop szélességének %-a
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1988,7 +1948,7 @@ page%
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1999,7 +1959,7 @@ a papír szélességének %-a
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2008,7 +1968,7 @@ line%
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2019,7 +1979,7 @@ a sor szélességének %-a
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2028,7 +1988,7 @@ theight%
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2039,7 +1999,7 @@ a szöveg magasságának %-a
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2048,7 +2008,7 @@ pheight%
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2059,7 +2019,7 @@ a papír magasságának %-a
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2068,7 +2028,7 @@ ex
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2083,7 +2043,7 @@ x
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2092,7 +2052,7 @@ em
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2107,7 +2067,7 @@ M
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2116,7 +2076,7 @@ mu
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2151,7 +2111,12 @@ A kézikönyvek
 \end_layout
 
 \begin_layout Standard
-A következő listából megismerheti az összes kézikönyv tartalmát:
+A következő lista ismerteti az alapvető dokumentációs fájlokat amiket a
+ 
+\family sans
+Segítség
+\family default
+ menüben talál:
 \end_layout
 
 \begin_layout Description
@@ -2160,32 +2125,24 @@ A következő listából megismerheti az összes kézikönyv tartalmát:
 Bevezetés
 \emph default
  
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
 \series medium
 Ez a fájl
+\series default
+,
 \end_layout
 
-\end_deeper
 \begin_layout Description
 
 \emph on
 Tankönyv 
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
 \series medium
+\emph default
 Ha
 \series default
  ön most találkozik először a \SpecialChar LyX
 -et, és nem használta korábban a \SpecialChar LaTeX
--et, ez az
- a kézikönyv amivel érdemes kezdenie.
+-et, ezzel
+ a kézikönyvvel érdemes kezdenie.
  Ha korábban már használta a \SpecialChar LaTeX
 -et, akkor is érdemes elolvasni a 
 \emph on
@@ -2206,7 +2163,6 @@ et.
  (A dokumentum többi részének átfutása sem fog ártani.)
 \end_layout
 
-\end_deeper
 \begin_layout Description
 
 \emph on
@@ -2215,11 +2171,8 @@ Felhasználói
 \end_inset
 
 Kézikönyv
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Az elsődleges dokumentáció.
+\emph default
+ Az elsődleges dokumentáció.
  Itt írjuk le a 
 \emph on
 legtöbb
@@ -2233,7 +2186,6 @@ Tankönyv
 et.
 \end_layout
 
-\end_deeper
 \begin_layout Description
 
 \emph on
@@ -2242,60 +2194,76 @@ Beágyazott
 \end_inset
 
 objektumok
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-
 \series medium
-A felhasználói kéziköny bővítése.
- Részletesen lerja, hogyan használjunk táblázatokat, képeket, lebegőket,
- jegyzeteket és dobozokat.
+\emph default
+ A 
+\series default
+\emph on
+Felhasználói kézikönyv
+\series medium
+\emph default
+ bővítése.
+ Részletesen leírja, hogyan használjunk táblázatokat, képeket, lebegőket,
+ jegyzeteket, program listákat és betéteket.
  \SpecialChar LaTeX
- mesterek sok trükkjét is tartalmazza.
+ mesterek számos trükkjét is tartalmazza.
 \end_layout
 
-\end_deeper
 \begin_layout Description
-
+Képlet
+\series medium
+ A 
+\series default
 \emph on
-Haladó
+Felhasználói kézikönyv
+\series medium
+\emph default
+ bővítése.
+ Részletesen lerja, hogyan készítsünk bármilyen matematikai formulát.
+\end_layout
+
+\begin_layout Description
+További
 \begin_inset space ~
 \end_inset
 
-Szolgáltatások
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Ez egy kiterjesztése a 
+jellemzők
+\series medium
+ A 
+\series default
 \emph on
-Felhasználói Kézikönyv
+Felhasználói kézikönyv
+\series medium
 \emph default
-nek.
- Itt ismerheti meg, hogyan használhat alap \SpecialChar LaTeX
+ bővítése.
+
+\series default
+ Dokumentálja, hogyan használja az alap \SpecialChar LaTeX
  parancsokat, további dokumentum
- osztályokat, speciális szerkesztési jellemzőket.
- 
+ osztályokat, speciális célú szerkesztési funkciókat.
 \end_layout
 
-\end_deeper
 \begin_layout Description
 
 \emph on
 Testreszabás
+\emph default
+ Bemutatja a \SpecialChar LyX
+ fejlett képességeit, hogyan szabjuk saját igényünkre a \SpecialChar LyX
+ általános
+ viselkedését.
+ Beleértve az olyan dolgokat, mint billentyűparancsok, honosítás, és a konfigurá
+ciós fájlok.
+ Ide tartoznak még a layout fájlok, amelyekre a \SpecialChar LyX
+-nek szüksége van, hogy
+ a \SpecialChar LaTeX
+ osztályokat és csomagokat támogassa.
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-Bemutatja a \SpecialChar LyX
- fejlett képességeit, valamint a saját igényeinknek megfelelő
- beállítást.
- Tartalmazza még a konfigurációs fájlok leírását, a honosítást, további
- billentyűzet-kombinációk beállítását is.
+\begin_layout Description
+Gyorsbillentyűk A jelenleg definiált gyorsbillentyűk táblázata
 \end_layout
 
-\end_deeper
 \begin_layout Description
 
 \emph on
@@ -2305,32 +2273,14 @@ Bemutatja a \SpecialChar LyX
 \end_inset
 
 információ
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Ez a fájl a telepítés vagy az újrakonfigurálás során jön létre.
- Ebben a fájlban találhat információt a \SpecialChar LyX
- aktuális beállításairól, az elérhető
- szolgáltatásokról.
+\emph default
+ Egy jelentés, amit a \SpecialChar LyX
+ készít a rendszeréről.
+ Ez a fájl tartalmazza azokat az információkat amiket a \SpecialChar LyX
+ megismert a telepítésér
+ől.
  Ha valamit hiányol először ezt érdemes megnéznie.
  
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-Ezek a fájlok egymásra is hivatkoznak, ha ez szükséges.
- Például a 
-\emph on
-Felhasználói Kézikönyv
-\emph default
- tartalmaz némi információt az telepítésről és testreszabásról, de bővebb
- információkért a 
-\emph on
-Testreszabás
-\emph default
- kézikönyvet ajánlja.
- Ismét szeretnénk felhívni a figyelmet arra, hogy:
 \end_layout
 
 \begin_layout Standard
@@ -2344,7 +2294,7 @@ Testreszabás
 \align center
 Ha most használja először a \SpecialChar LyX
 -et, olvassa el a Tankönyvet.
- Most azonnal!
+ Most.
 \end_layout
 
 \begin_layout Standard
@@ -2356,16 +2306,11 @@ Ha most használja először a \SpecialChar LyX
 
 \begin_layout Standard
 Különben felesleges csalódást okozhat önmagának.
- A \SpecialChar LyX
- mindent tud, amit egy szövegszerkesztőtől elvárhat, de másként közelíti
- meg a dolgokat, mint ahogy azokat megszokhatta.
 \end_layout
 
 \begin_layout Section
-Közreműködés a dokumentációs projekthez
-\end_layout
-
-\begin_layout Standard
+Közreműködés a \SpecialChar LyX
+ projekthez
 \begin_inset CommandInset label
 LatexCommand label
 name "rész:Közreműködés"
@@ -2382,9 +2327,10 @@ Közreműködés a \SpecialChar LyX
 
 \begin_layout Standard
 A \SpecialChar LyX
- többnyire C++-ban készült.
+ többnyire C++-ban készült (a \SpecialChar LaTeX
+ importáló viszont Pythonban).
  Egy hatalmas projekt, aminek eredményeként nem mentes programhibáktól,
- továbbá a továbbfejlesztésére is szükség van.
+ továbbá a forráskód továbbfejlesztésére is szükség van .
  
 \end_layout
 
@@ -2394,8 +2340,7 @@ Hiba jelentése
 
 \begin_layout Standard
 A \SpecialChar LyX
- használata közben előfordulhat, hogy a program valamire rosszul reagál
- és ezt ön hibaként fogja értelmezni.
+ használata közben előfordulhat olyan reakció amit ön hibaként fog értelmezni.
  Váratlan programkilépések, bár ritkán de előfordulhatnak.
  A felhasználói felület hibáit a \SpecialChar LyX
  csapat nagyon fontosnak tartja: különösen
@@ -2405,15 +2350,11 @@ A \SpecialChar LyX
 
 \begin_layout Standard
 A \SpecialChar LyX
- rendelkezik egy hibakövető rendszerrel, amelyet a következő web címen
- található meg: 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-https://www.lyx.org/trac/wiki/BugTrackerHome
-\end_layout
+ rendelkezik egy hibakövető rendszerrel, amit a következő web címen talál
+ meg: 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://www.lyx.org/trac/wiki/BugTrackerHome"
 
 \end_inset
 
@@ -2421,26 +2362,20 @@ https://www.lyx.org/trac/wiki/BugTrackerHome
  Ellenőriznie kell a hibakövetőt mielőtt bejelentene egy hibát, mivel lehet,
  hogy azt már valaki bejelentette! Amennyiben megjegyzése van egy hibához
  vagy új hibát szeretne jelenteni, megteheti ezt a hibakövetőn vagy küldhet
- egy levelet a fejlesztői levelező listára a 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-mailto:lyx-devel@lists.lyx.org
-\end_layout
+ egy levelet a fejlesztői levelező listára a következő címre: 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-devel@lists.lyx.org"
+type "mailto:"
+literal "false"
 
 \end_inset
 
--címen.
+.
  A levelezőlista archívumának címe megtalálható a 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.lyx.org
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org"
 
 \end_inset
 
@@ -2448,7 +2383,7 @@ http://www.lyx.org
 \end_layout
 
 \begin_layout Standard
-Egy hasznos hibajelentésnek tartalmazni kell, hogy a \SpecialChar LyX
+Egy használható hibajelentésnek tartalmazni kell, hogy a \SpecialChar LyX
  melyik verziójában
  talált hibát.
  Ajánlott pontosan és részletesen leírni a hibát - ellenben a fejlesztőknek
@@ -2460,8 +2395,7 @@ Egy hasznos hibajelentésnek tartalmazni kell, hogy a \SpecialChar LyX
  Adja meg a rendszerére telepített függvénykönyvtárak verziószámait, valamint
  szükség szerint a \SpecialChar LyX
  által használt egyéb programok verziószámait.
- Amennyiben ez egy forráskódból történő fordítási vagy beállítási hiba,
- csatolja a 
+ Amennyiben ez egy fordítási vagy beállítási hiba, csatolja a 
 \family typewriter
 config.log
 \family default
@@ -2469,7 +2403,7 @@ config.log
 \end_layout
 
 \begin_layout Subsubsection
-Javítások és új funkciók közreadása
+Közreműködés javításokhoz és új funkciókhoz
 \end_layout
 
 \begin_layout Standard
@@ -2478,8 +2412,7 @@ Ha megváltoztatta a \SpecialChar LyX
  azt a \SpecialChar LyX
  részévé tenni, módosításait diff fájlként (egységes formátumban)
  küldje el a fejlesztői levelezőlistára, az előbb említett címre.
- Csatoljon hozzá a módosításról pár szót és egy leírást arról, hogy módosítása
- mire vonatkozik.
+ Csatoljon a módosításról pár szót és egy leírást arról, hogy az mire vonatkozik.
 \end_layout
 
 \begin_layout Subsection
@@ -2490,10 +2423,9 @@ Közreműködés a dokumentációhoz
 A \SpecialChar LyX
  dokumentációja elég átfogó, habár folyamatos fejlesztés alatt van és
  minden új kiadás valamilyen újítást is tartalmaz.
- Úgy találhatja, a dokumentáció valamely részét ki kell javítani vagy ki
- kell egészíteni.
- Ez a szakasz leírja mit tegyen amennyiben hibát talál, vagy a dokumentáció
- javításához, kiegészítéséhez van javaslata.
+ Amennyiben úgy találhatja, a dokumentáció valamely részét fejleszteni kell.
+ Ez a szakasz leírja mit tegyen ha hibát talál, vagy a dokumentáció javításához,
+ kiegészítéséhez van javaslata.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2534,26 +2466,26 @@ Csatlakozás a dokumentációs csapathoz
 
 \begin_layout Standard
 A \SpecialChar LyX
- dokumentációs projekt, mint minden a \SpecialChar LyX
- projekten belül, hasznosítani tudja
- az ön segítségét is.
+ dokumentációs projektje, mint minden a \SpecialChar LyX
+ projekten belül, hasznosítani
+ tudja az ön segítségét is.
  Ha szeretne közreműködni, először is el kell végeznie a következőket:
 \end_layout
 
 \begin_layout Enumerate
 Töltse le a legfrissebb \SpecialChar LyX
- forráskódot a 
-\begin_inset Flex URL
-status collapsed
+ forráskódot innen:
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Plain Layout
 
-https://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "https://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master "
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Enumerate
@@ -2566,12 +2498,10 @@ et és a
 Tankönyv
 \emph default
 et.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_deeper
-\begin_layout Standard
-Ennek az a célja, hogy ötleteket adjon, hogyan is kell kinéznie a dokumentációna
-k.
+Ennek az a célja, hogy ötleteket adjon.
  A 
 \emph on
 Tankönyv
@@ -2580,17 +2510,17 @@ Tankönyv
 \emph on
 Felhasználói Kézikönyv
 \emph default
- egyébként mindig a legnaprakészebb az összes közül.
- Most már elmélyedhet az általunk kívánt formai követelményekben és tartalomban.
+ mindig a legnaprakészebb dokumentáció az összes közül.
+ Így összeszedheti a részleteket az olvasás módjáról és a formai követelményekrő
+l.
 \end_layout
 
-\end_deeper
 \begin_layout Enumerate
 Lépjen kapcsolatba a csapattal: 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_deeper
-\begin_layout Standard
+
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -2600,35 +2530,16 @@ literal "false"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Itt megvitathatjuk a szükséges változtatásokat, és kapunk róluk visszajelzést
- is.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-
-\emph on
-Semmi esetre se
-\emph default
- kezdjen dokumentációt írni, amíg nem lépett kapcsolatba a Dokumentációs
- Csapattal.
- A Dokumentációs Csapat honlapján: 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.lyx.org
-\end_layout
-
+\begin_inset Newline newline
 \end_inset
 
- vagy a levelezési listánkon betekintést nyerhet az éppen aktuális tevékenységei
-nkbe.
- 
+megvitatni a szükséges változtatásokat, és kapni róluk visszajelzést is.
+\end_layout
+
+\begin_layout Standard
+A változtatások amiket jelezhet, a szöveg pontosításától egészen a dokumentáció
+ átstruktúrálásáig terjedhetnek.
+ Bármilyen fejlesztést örömmel fogadunk.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2640,7 +2551,7 @@ Ha szeretne bekapcsolódni a dokumentációk fordításába, vegye fel a kapcsol
  a fordítókkal a következő e-mail címen: 
 \begin_inset CommandInset href
 LatexCommand href
-target "alex@lyx.hu"
+target "mail@szokesandor.hu"
 type "mailto:"
 literal "false"
 

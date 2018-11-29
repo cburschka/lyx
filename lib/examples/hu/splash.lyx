@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin /systemlyxdir/examples/hu/
+\origin unavailable
 \textclass article
 \begin_preamble
 \usepackage{indentfirst}
@@ -126,25 +126,14 @@ szövegszerkesztőnek
  sokkal könnyebbé teszi dokumentumok készítését.
  De ez csak egy kis különbség, szóval ne ijedjen meg.
  A dokumentációból minden világos lesz.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Eléggé kihangsúlyoztuk, hogy el kellene olvasni a dokumentációt?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
 A \SpecialChar LyX
- segítségével szép dokumentumokat készíthetünk! Válassza a 
+ által készített dokumentumok gyönyörűek! Válassza a 
 \family sans
-\lang english
-Document\SpecialChar menuseparator
-View
+Dokumentum\SpecialChar menuseparator
+Nézet
 \begin_inset space ~
 \end_inset
 
@@ -154,9 +143,13 @@ View
 
 (pdflatex)]
 \family default
- 
-\lang magyar
- menüpontot, és ellenőrizze saját maga.
+ menüpontot,vagy kattintson az eszköztáron a 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+ ikonra és ellenőrizze saját maga.
 \end_layout
 
 \begin_layout Enumerate
@@ -189,10 +182,10 @@ Tankönyv
 
 \begin_layout Enumerate
 A \SpecialChar LyX
- rengeteg hasznos lehetőséggel rendelkezik mindazok számára, akik az angol-tól
+ rengeteg hasznos lehetőséggel rendelkezik mindazok számára, akik angol-tól
  eltérő nyelven készítenek dokumentumokat.
- A billentyűzet, a eszköztárak és sok egyéb jellemző nagymértékben testreszabhat
-ó az igényeinek megfelelően.
+ A billentyűzet, az eszköztárak és sok egyéb jellemző nagymértékben testreszabha
+tó az igényeinek megfelelően.
  További információkért olvassa el a 
 \family sans
 Segítség\SpecialChar menuseparator
@@ -203,11 +196,7 @@ Testreszabás
 
 \begin_layout Enumerate
 A \SpecialChar LyX
- honlapja a következő címen található meg:
-\begin_inset Newline newline
-\end_inset
-
-
+ honlapja a következő címen található meg: 
 \begin_inset Flex URL
 status collapsed
 
@@ -222,11 +211,7 @@ https://www.lyx.org/WebHu.Home
  Itt további információkat tudhat meg a \SpecialChar LyX
 -ről, feliratkozhat a levelezőlistákra,
  vagy megnézheti hogyan néz ki a \SpecialChar LyX
- menetközben:
-\begin_inset Newline newline
-\end_inset
-
-
+ munka közben: 
 \begin_inset Flex URL
 status collapsed
 
@@ -243,11 +228,9 @@ https://www.lyx.org/WebHu.Walkthrough
 \begin_layout Enumerate
 
 \series bold
-\lang english
-Note for Linux users:
+Megjegyzés Linux felhasználóknak:
 \series default
- Please check that the language packages for the \SpecialChar LaTeX
- distribution 
+ Kérjük ellenőrizze, hogy a 
 \family sans
 \SpecialChar TeX
 
@@ -256,22 +239,23 @@ Note for Linux users:
 
 Live
 \family default
- are installed.
- Otherwise you will get \SpecialChar LaTeX
- errors.
+ \SpecialChar LaTeX
+ disztribúció nyelvi csomagjai telepítve vannak.
+ Különben \SpecialChar LaTeX
+ hibákat fog kapni.
 \begin_inset Newline newline
 \end_inset
 
-For example on the Linux distributions 
+Például a 
 \family sans
 (K,X)Ubuntu
 \family default
- and 
+ és 
 \family sans
 Debian
 \family default
- the package name for the German language is 
-\begin_inset Quotes eld
+ Linux disztribúcióknál, a német nyelvi csomag neve 
+\begin_inset Quotes pld
 \end_inset
 
 
@@ -279,24 +263,24 @@ Debian
 texlive-lang-german
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes prd
 \end_inset
 
 .
 \begin_inset Newline newline
 \end_inset
 
-After the installation of the language packages you must use the \SpecialChar LyX
- menu 
+A nyelvi csomagok telepítése után aktiválnia kell az 
 \family sans
-Tools
+Eszközök
 \family default
 \SpecialChar menuseparator
 
 \family sans
-Reconfigure
+Újrakonfigurálás 
 \family default
-.
+\SpecialChar LyX
+ menupontot.
 \end_layout
 
 \end_body
