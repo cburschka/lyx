@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 566
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -58,7 +58,7 @@ logicalmkup
 \language english
 \language_package default
 \inputencoding auto
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
 \font_typewriter "lmtt" "default"
@@ -2053,6 +2053,7 @@ reference "tab:Horizontal-scrollong-test"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -7793,6 +7794,8 @@ Abstract
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -11094,6 +11097,8 @@ reference "tab:Width-of-the"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -24486,6 +24491,8 @@ arg   "layout-paragraph"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -24637,6 +24644,8 @@ reference "fig:Star"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -24647,6 +24656,8 @@ status open
 
 
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -24688,6 +24699,8 @@ Undefinable
 
 
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -24800,6 +24813,8 @@ reference "tab:Table-float"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -26290,6 +26305,8 @@ reference "tab:Accent-names-and"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -27661,6 +27678,8 @@ reference "tab:Typefaces-and-the"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -34729,6 +34748,7 @@ reference "fig:Page-layout"
 \begin_layout Standard
 \begin_inset Float figure
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -36910,11 +36930,11 @@ en_US
 \end_layout
 
 \begin_layout Itemize
-th_en_EN_v2.idx
+th_en_US_v2.idx
 \end_layout
 
 \begin_layout Itemize
-th_en_EN_v2.dat
+th_en_US_v2.dat
 \end_layout
 
 \begin_layout Standard
@@ -49908,6 +49928,7 @@ reference "tab:Units"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
