@@ -2985,6 +2985,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		for ( ; cur ; cur.forwardPar())
 			cur.paragraph().anonymize();
 		dr.forceBufferUpdate();
+		dr.screenUpdate(Update::Force);
 		break;
 	}
 
