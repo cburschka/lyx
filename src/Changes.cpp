@@ -428,7 +428,7 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 	// signature needed by \lyxsout to correctly strike out display math
 	if (change.type == Change::DELETED && runparams.inDisplayMath
 	    && !dvipost) {
-		if (os.afterParbreak())
+		if (os.lastChar() == '\n')
 			str += from_ascii("\\\\\\noindent\n");
 		else
 			str += from_ascii("\\\\\\\\\n");
