@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Lyx 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-11-12 14:27-0500\n"
-"PO-Revision-Date: 2018-02-24 01:09-0800\n"
+"PO-Revision-Date: 2018-12-02 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
 "Language: cs\n"
@@ -13809,9 +13809,8 @@ msgid "SubTitle"
 msgstr "SubTitle"
 
 #: lib/layouts/paralist.module:2
-#, fuzzy
 msgid "Paragraph Lists (paralist)"
-msgstr "Paragraph Start"
+msgstr "Seznamy v odstavcích (paralist)"
 
 #: lib/layouts/paralist.module:9
 msgid ""
@@ -13820,7 +13819,7 @@ msgid ""
 "compact version. Most environments have optional arguments to format the "
 "labels. Additionally, the LaTeX environments itemize and enumerate are "
 "extended to use a similar optional argument."
-msgstr ""
+msgstr "Balíček paralist poskytuje prostředí pro nové typy seznamů. Položka, Výčet a Popis bude možné vysázet uvnitř odstavce, jako odstavec nebo v kompaktní verzi. Většina prostředí má volitelné argumenty pro formátování značek. Standardní prostředí LaTeX-ových seznamů budou rozšířena pro použítí s podobnými volitelnými argumenty. Pro detaily nahlédněte do specializovaného manuálu Paralist."
 
 #: lib/layouts/paralist.module:30 lib/layouts/paralist.module:37
 #: lib/layouts/paralist.module:52 lib/layouts/paralist.module:61
@@ -13828,99 +13827,80 @@ msgstr ""
 #: lib/layouts/paralist.module:91 lib/layouts/paralist.module:103
 #: lib/layouts/paralist.module:112 lib/layouts/paralist.module:121
 #: lib/layouts/paralist.module:133
-#, fuzzy
 msgid "Optional arguments for this list (see paralist manual)"
-msgstr "Optional arguments for this list (see enumitem manual)"
+msgstr "Volitelné argumenty pro tento seznam (viz manuál Paralist)"
 
 #: lib/layouts/paralist.module:47
-#, fuzzy
 msgid "AsParagraphItem"
-msgstr "Odstavec"
+msgstr "Položka-odstavec"
 
 #: lib/layouts/paralist.module:51
-#, fuzzy
 msgid "As Paragraph Itemize Options"
-msgstr "Nastavení položek"
+msgstr "Volby pro Položka-odstavec"
 
 #: lib/layouts/paralist.module:56
-#, fuzzy
 msgid "InParagraphItem"
-msgstr "Odstavec"
+msgstr "Položka-v-odstavci"
 
 #: lib/layouts/paralist.module:60
-#, fuzzy
 msgid "In Paragraph Itemize Options"
-msgstr "Nastavení položek"
+msgstr "Volby pro Položka-v-odstavec"
 
 #: lib/layouts/paralist.module:65
-#, fuzzy
 msgid "CompactItem"
-msgstr "NoteItem"
+msgstr "Položka-kompaktní"
 
 #: lib/layouts/paralist.module:72
-#, fuzzy
 msgid "Compact Itemize Options"
-msgstr "Nastavení položek"
+msgstr "Volby pro Položka-kompaktní"
 
 #: lib/layouts/paralist.module:77
-#, fuzzy
 msgid "AsParagraphEnum"
-msgstr "Odstavec"
+msgstr "Výčet-odstavec"
 
 #: lib/layouts/paralist.module:81
-#, fuzzy
 msgid "As Paragraph Enumerate Options"
-msgstr "Nastavení výčtu"
+msgstr "Volby pro Výčet-odstavec"
 
 #: lib/layouts/paralist.module:86
-#, fuzzy
 msgid "InParagraphEnum"
-msgstr "Odstavec"
+msgstr "Výčet-v-odstavci"
 
 #: lib/layouts/paralist.module:90
-#, fuzzy
 msgid "In Paragraph Enumerate Options"
-msgstr "Nastavení výčtu"
+msgstr "Volby pro Výčet-v-odstavci"
 
 #: lib/layouts/paralist.module:95
-#, fuzzy
 msgid "CompactEnum"
-msgstr "Company Name"
+msgstr "Výčet-kompaktní"
 
 #: lib/layouts/paralist.module:102
-#, fuzzy
 msgid "Compact Enumerate Options"
-msgstr "Nastavení výčtu"
+msgstr "Volby pro Výčet-kompaktní"
 
 #: lib/layouts/paralist.module:107
-#, fuzzy
 msgid "AsParagraphDescr"
-msgstr "Odstavec"
+msgstr "Popis-odstavec"
 
 #: lib/layouts/paralist.module:111
-#, fuzzy
 msgid "As Paragraph Description Options"
-msgstr "Nastavení popisu"
+msgstr "Volby pro Popis-odstavec"
 
 #: lib/layouts/paralist.module:116
-#, fuzzy
 msgid "InParagraphDescr"
-msgstr "Odstavec"
+msgstr "Popis-v-odstavci"
 
 #: lib/layouts/paralist.module:120
-#, fuzzy
 msgid "In Paragraph Description Options"
-msgstr "Nastavení popisu"
+msgstr "Volby pro Popis-v-odstavci"
 
 #: lib/layouts/paralist.module:125
-#, fuzzy
 msgid "CompactDescr"
-msgstr "Computer"
+msgstr "Popis-kompaktní"
 
 #: lib/layouts/paralist.module:132
-#, fuzzy
 msgid "Compact Description Options"
-msgstr "Nastavení popisu"
+msgstr "Volby pro Popis-kompaktní"
 
 #: lib/layouts/pdfcomment.module:2
 #, fuzzy
