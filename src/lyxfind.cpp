@@ -1442,8 +1442,16 @@ void LatexInfo::buildEntries(bool isPatternString)
     if (key == "") {
       if (sub.str(0)[0] == '\\')
         key = sub.str(0)[1];
-      else
+      else {
         key = sub.str(0);
+        if (key == "$") {
+          size_t k_pos = sub.position(size_t(0));
+          if ((k_pos > 0) && (interval.par[k_pos - 1] == '\\')) {
+            // Escaped '$', ignoring
+            continue;
+          }
+        }
+      }
     };
     if (evaluatingRegexp) {
       if (sub.str(1).compare("endregexp") == 0) {
