@@ -82,7 +82,7 @@ public:
 	explicit otexstream(odocstream & os)
 		: otexrowstream(os), canbreakline_(false),
 		  protectspace_(false), terminate_command_(false),
-		  parbreak_(true), lastchar_(0) {}
+		  parbreak_(true), blankline_(true), lastchar_(0) {}
 	///
 	void put(char_type const & c);
 	///
@@ -103,6 +103,7 @@ public:
 	void lastChar(char_type const & c)
 	{
 		parbreak_ = (!canbreakline_ && c == '\n');
+		blankline_ = ((!canbreakline_ && c == ' ') || c == '\n');
 		canbreakline_ = (c != '\n');
 		lastchar_ = c;
 	}
@@ -110,6 +111,8 @@ public:
 	char_type lastChar() const { return lastchar_; }
 	///
 	bool afterParbreak() const { return parbreak_; }
+	///
+	bool blankLine() const { return blankline_; }
 private:
 	///
 	bool canbreakline_;
@@ -119,6 +122,8 @@ private:
 	bool terminate_command_;
 	///
 	bool parbreak_;
+	///
+	bool blankline_;
 	///
 	char_type lastchar_;
 };
