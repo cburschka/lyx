@@ -1297,17 +1297,9 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		column += 14;
 		break;
 
-	case '&':
-	case '%': case '#':
-	case '_':
-		if (runparams.for_search) {
-			os.put(c);
-			column += 1;
-			break;
-		}
-		// fall through
-	case '$':
-	case '{': case '}':
+	case '$': case '&':
+	case '%': case '#': case '{':
+	case '}': case '_':
 		os << '\\';
 		os.put(c);
 		column += 1;
