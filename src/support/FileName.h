@@ -150,6 +150,8 @@ public:
 	/// support this.
 	/// \return true on success.
 	bool changePermission(unsigned long int mode) const;
+	// sets permission based on the file given as an argument
+	bool clonePermissions(FileName const & target);
 
 	/// remove pointed directory and all contents.
 	/// \return true on success.

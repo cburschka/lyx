@@ -288,6 +288,13 @@ bool FileName::changePermission(unsigned long int mode) const
 	return true;
 }
 
+bool FileName::clonePermissions(FileName const & source)
+{
+	QFile fin(toqstr(source.absFileName()));
+	QFile f(toqstr(absFileName()));
+
+	return f.setPermissions(fin.permissions());
+}
 
 string FileName::toFilesystemEncoding() const
 {
