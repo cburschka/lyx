@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-11-12 14:27-0500\n"
+"POT-Creation-Date: 2018-12-08 11:25-0500\n"
 "PO-Revision-Date: 2018-02-19 22:07+0200\n"
 "Last-Translator: Οδυσσέας Δαγκλής <o2d@freemail.gr>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -672,7 +672,7 @@ msgid "Remove the selected branch"
 msgstr "Αφαίρεση επιλεγμένου κλάδου"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136 src/frontends/qt4/ui/IndicesUi.ui:165
-#: src/Buffer.cpp:4661 src/Buffer.cpp:4674
+#: src/Buffer.cpp:4662 src/Buffer.cpp:4675
 msgid "&Remove"
 msgstr "&Αφαίρεση"
 
@@ -706,7 +706,7 @@ msgstr "Προσθήκη Όλ&ων"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:108 src/Buffer.cpp:1405
-#: src/Buffer.cpp:4635 src/Buffer.cpp:4699 src/LyXVC.cpp:114 src/LyXVC.cpp:304
+#: src/Buffer.cpp:4636 src/Buffer.cpp:4700 src/LyXVC.cpp:114 src/LyXVC.cpp:304
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:247
 #: src/frontends/qt4/GuiDocument.cpp:2384 src/frontends/qt4/GuiParagraph.cpp:69
@@ -7447,7 +7447,7 @@ msgstr ""
 #: lib/layouts/achemso.layout:127 lib/layouts/europasscv.layout:116
 #: lib/layouts/europecv.layout:93 lib/layouts/lettre.layout:46
 #: lib/layouts/lettre.layout:348 lib/layouts/moderncv.layout:170
-#: lib/layouts/scrlttr2.layout:196 lib/configure.py:754
+#: lib/layouts/scrlttr2.layout:196 lib/configure.py:770
 msgid "Fax"
 msgstr ""
 
@@ -12890,7 +12890,7 @@ msgstr ""
 msgid "Running author:"
 msgstr ""
 
-#: lib/layouts/knitr.module:2 lib/configure.py:660
+#: lib/layouts/knitr.module:2 lib/configure.py:676
 msgid "Rnw (knitr)"
 msgstr ""
 
@@ -15654,7 +15654,7 @@ msgstr "Για τους εκδότες"
 msgid "Probability Theory and Related Fields (Springer svprobth)"
 msgstr ""
 
-#: lib/layouts/sweave.module:2 lib/configure.py:657
+#: lib/layouts/sweave.module:2 lib/configure.py:673
 msgid "Sweave"
 msgstr ""
 
@@ -19439,7 +19439,7 @@ msgstr "Φόρμες PDF|Φ"
 msgid "Hazard and Precautionary Statements|H"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:640 lib/configure.py:657
+#: lib/ui/stdmenus.inc:640 lib/configure.py:673
 msgid "Sweave|S"
 msgstr ""
 
@@ -24262,480 +24262,480 @@ msgstr "Εικόνα Xfig"
 msgid "An Xfig figure.\n"
 msgstr "Μια εικόνα Xfig.\n"
 
-#: lib/configure.py:606
+#: lib/configure.py:622
 msgid "tgo"
 msgstr ""
 
-#: lib/configure.py:606
+#: lib/configure.py:622
 msgid "tgo|Tgif"
 msgstr ""
 
-#: lib/configure.py:609
+#: lib/configure.py:625
 msgid "FIG"
 msgstr ""
 
-#: lib/configure.py:612
+#: lib/configure.py:628
 msgid "DIA"
 msgstr ""
 
-#: lib/configure.py:615
+#: lib/configure.py:631
 msgid "sxd"
 msgstr ""
 
-#: lib/configure.py:615
+#: lib/configure.py:631
 msgid "sxd|OpenDocument"
 msgstr ""
 
-#: lib/configure.py:618
+#: lib/configure.py:634
 msgid "Grace"
 msgstr ""
 
-#: lib/configure.py:621
+#: lib/configure.py:637
 msgid "FEN"
 msgstr ""
 
-#: lib/configure.py:624
+#: lib/configure.py:640
 msgid "SVG"
 msgstr ""
 
-#: lib/configure.py:625
+#: lib/configure.py:641
 msgid "SVG (compressed)"
 msgstr "SVG (συμπιεσμένο)"
 
-#: lib/configure.py:628
+#: lib/configure.py:644
 msgid "BMP"
 msgstr ""
 
-#: lib/configure.py:629
+#: lib/configure.py:645
 msgid "GIF"
 msgstr ""
 
-#: lib/configure.py:630
+#: lib/configure.py:646
 msgid "jpeg"
 msgstr ""
 
-#: lib/configure.py:630
+#: lib/configure.py:646
 msgid "jpeg|JPEG"
 msgstr ""
 
-#: lib/configure.py:631
+#: lib/configure.py:647
 msgid "PBM"
 msgstr ""
 
-#: lib/configure.py:632
+#: lib/configure.py:648
 msgid "PGM"
 msgstr ""
 
-#: lib/configure.py:633 src/frontends/qt4/GuiClipboard.cpp:176
+#: lib/configure.py:649 src/frontends/qt4/GuiClipboard.cpp:176
 msgid "PNG"
 msgstr ""
 
-#: lib/configure.py:634
+#: lib/configure.py:650
 msgid "PPM"
 msgstr ""
 
-#: lib/configure.py:635
+#: lib/configure.py:651
 msgid "TIFF"
 msgstr ""
 
-#: lib/configure.py:636
+#: lib/configure.py:652
 msgid "XBM"
 msgstr ""
 
-#: lib/configure.py:637
+#: lib/configure.py:653
 msgid "XPM"
 msgstr ""
 
-#: lib/configure.py:650
+#: lib/configure.py:666
 msgid "Plain text (chess output)"
 msgstr "Απλό κείμενο (έξοδος chess)"
 
-#: lib/configure.py:651 src/frontends/qt4/GuiDocument.cpp:1410
+#: lib/configure.py:667 src/frontends/qt4/GuiDocument.cpp:1410
 #: src/frontends/qt4/GuiErrorList.cpp:45
 msgid "DocBook"
 msgstr ""
 
-#: lib/configure.py:651
+#: lib/configure.py:667
 msgid "DocBook|B"
 msgstr ""
 
-#: lib/configure.py:652
+#: lib/configure.py:668
 msgid "DocBook (XML)"
 msgstr ""
 
-#: lib/configure.py:653
+#: lib/configure.py:669
 msgid "Graphviz Dot"
 msgstr ""
 
-#: lib/configure.py:654
+#: lib/configure.py:670
 msgid "LaTeX (dviluatex)"
 msgstr ""
 
-#: lib/configure.py:655
+#: lib/configure.py:671
 msgid "LaTeX (pLaTeX)"
 msgstr ""
 
-#: lib/configure.py:656
+#: lib/configure.py:672
 msgid "NoWeb"
 msgstr ""
 
-#: lib/configure.py:656
+#: lib/configure.py:672
 msgid "NoWeb|N"
 msgstr ""
 
-#: lib/configure.py:658
+#: lib/configure.py:674
 #, fuzzy
 msgid "Sweave (Japanese)"
 msgstr "Ιαπωνικά"
 
-#: lib/configure.py:658
+#: lib/configure.py:674
 #, fuzzy
 msgid "Sweave (Japanese)|S"
 msgstr "Εγχειρίδιο Χρήσης Γραφής Braille|ρ"
 
-#: lib/configure.py:659
+#: lib/configure.py:675
 msgid "R/S code"
 msgstr "Κώδικας R/S"
 
-#: lib/configure.py:661
+#: lib/configure.py:677
 msgid "Rnw (knitr, Japanese)"
 msgstr ""
 
-#: lib/configure.py:662
+#: lib/configure.py:678
 msgid "LilyPond book (LaTeX)"
 msgstr ""
 
-#: lib/configure.py:663
+#: lib/configure.py:679
 msgid "LilyPond book (pLaTeX)"
 msgstr ""
 
-#: lib/configure.py:664
+#: lib/configure.py:680
 msgid "LaTeX (plain)"
 msgstr ""
 
-#: lib/configure.py:664
+#: lib/configure.py:680
 msgid "LaTeX (plain)|L"
 msgstr ""
 
-#: lib/configure.py:665
+#: lib/configure.py:681
 msgid "LaTeX (LuaTeX)"
 msgstr ""
 
-#: lib/configure.py:666
+#: lib/configure.py:682
 msgid "LaTeX (pdflatex)"
 msgstr ""
 
-#: lib/configure.py:667
+#: lib/configure.py:683
 msgid "LaTeX (XeTeX)"
 msgstr ""
 
-#: lib/configure.py:668
+#: lib/configure.py:684
 msgid "LaTeX (clipboard)"
 msgstr ""
 
-#: lib/configure.py:669
+#: lib/configure.py:685
 msgid "Plain text"
 msgstr "Απλό κείμενο"
 
-#: lib/configure.py:669
+#: lib/configure.py:685
 msgid "Plain text|a"
 msgstr "Απλό κείμενο|Α"
 
-#: lib/configure.py:670
+#: lib/configure.py:686
 msgid "Plain text (pstotext)"
 msgstr "Απλό κείμενο (pstotext)"
 
-#: lib/configure.py:671
+#: lib/configure.py:687
 msgid "Plain text (ps2ascii)"
 msgstr "Απλό κείμενο (ps2ascii)"
 
-#: lib/configure.py:672
+#: lib/configure.py:688
 msgid "Plain text (catdvi)"
 msgstr "Απλό κείμενο (catdvi)"
 
-#: lib/configure.py:673
+#: lib/configure.py:689
 msgid "Plain Text, Join Lines"
 msgstr "Απλό Κείμενο, Ένωση Γραμμών"
 
-#: lib/configure.py:674
+#: lib/configure.py:690
 msgid "Info (Beamer)"
 msgstr ""
 
-#: lib/configure.py:679
+#: lib/configure.py:695
 msgid "LilyPond music"
 msgstr ""
 
-#: lib/configure.py:682
+#: lib/configure.py:698
 msgid "Gnumeric spreadsheet"
 msgstr ""
 
-#: lib/configure.py:683
+#: lib/configure.py:699
 msgid "Excel spreadsheet"
 msgstr ""
 
-#: lib/configure.py:684
+#: lib/configure.py:700
 msgid "MS Excel Office Open XML"
 msgstr ""
 
-#: lib/configure.py:685
+#: lib/configure.py:701
 msgid "HTML Table (for spreadsheets)"
 msgstr ""
 
-#: lib/configure.py:686
+#: lib/configure.py:702
 msgid "OpenDocument spreadsheet"
 msgstr "Φύλλο εργασίας OpenDocument"
 
-#: lib/configure.py:689
+#: lib/configure.py:705
 msgid "LyXHTML"
 msgstr ""
 
-#: lib/configure.py:689
+#: lib/configure.py:705
 msgid "LyXHTML|y"
 msgstr ""
 
-#: lib/configure.py:697 src/frontends/qt4/GuiLog.cpp:252
+#: lib/configure.py:713 src/frontends/qt4/GuiLog.cpp:252
 #: src/insets/InsetBibtex.cpp:155
 msgid "BibTeX"
 msgstr ""
 
-#: lib/configure.py:705
+#: lib/configure.py:721
 msgid "EPS"
 msgstr ""
 
-#: lib/configure.py:706
+#: lib/configure.py:722
 msgid "EPS (uncropped)"
 msgstr ""
 
-#: lib/configure.py:707
+#: lib/configure.py:723
 msgid "EPS (cropped)"
 msgstr ""
 
-#: lib/configure.py:708
+#: lib/configure.py:724
 msgid "Postscript"
 msgstr ""
 
-#: lib/configure.py:708
+#: lib/configure.py:724
 msgid "Postscript|t"
 msgstr ""
 
-#: lib/configure.py:717
+#: lib/configure.py:733
 msgid "PDF (ps2pdf)"
 msgstr ""
 
-#: lib/configure.py:717
+#: lib/configure.py:733
 msgid "PDF (ps2pdf)|P"
 msgstr ""
 
-#: lib/configure.py:718
+#: lib/configure.py:734
 msgid "PDF (pdflatex)"
 msgstr ""
 
-#: lib/configure.py:718
+#: lib/configure.py:734
 msgid "PDF (pdflatex)|F"
 msgstr ""
 
-#: lib/configure.py:719
+#: lib/configure.py:735
 msgid "PDF (dvipdfm)"
 msgstr ""
 
-#: lib/configure.py:719
+#: lib/configure.py:735
 msgid "PDF (dvipdfm)|m"
 msgstr ""
 
-#: lib/configure.py:720
+#: lib/configure.py:736
 msgid "PDF (XeTeX)"
 msgstr ""
 
-#: lib/configure.py:720
+#: lib/configure.py:736
 msgid "PDF (XeTeX)|X"
 msgstr ""
 
-#: lib/configure.py:721
+#: lib/configure.py:737
 msgid "PDF (LuaTeX)"
 msgstr ""
 
-#: lib/configure.py:721
+#: lib/configure.py:737
 msgid "PDF (LuaTeX)|u"
 msgstr ""
 
-#: lib/configure.py:722
+#: lib/configure.py:738
 msgid "PDF (graphics)"
 msgstr "PDF (γραφικά)"
 
-#: lib/configure.py:723
+#: lib/configure.py:739
 msgid "PDF (cropped)"
 msgstr ""
 
-#: lib/configure.py:724
+#: lib/configure.py:740
 msgid "PDF (lower resolution)"
 msgstr ""
 
-#: lib/configure.py:729
+#: lib/configure.py:745
 msgid "DVI"
 msgstr ""
 
-#: lib/configure.py:729
+#: lib/configure.py:745
 msgid "DVI|D"
 msgstr ""
 
-#: lib/configure.py:730
+#: lib/configure.py:746
 msgid "DVI (LuaTeX)"
 msgstr ""
 
-#: lib/configure.py:730
+#: lib/configure.py:746
 msgid "DVI (LuaTeX)|V"
 msgstr ""
 
-#: lib/configure.py:733
+#: lib/configure.py:749
 msgid "DraftDVI"
 msgstr ""
 
-#: lib/configure.py:736 lib/configure.py:772
+#: lib/configure.py:752 lib/configure.py:788
 msgid "htm"
 msgstr ""
 
-#: lib/configure.py:736 lib/configure.py:772
+#: lib/configure.py:752 lib/configure.py:788
 msgid "htm|HTML"
 msgstr ""
 
-#: lib/configure.py:739
+#: lib/configure.py:755
 msgid "Noteedit"
 msgstr ""
 
-#: lib/configure.py:742
+#: lib/configure.py:758
 msgid "OpenDocument (tex4ht)"
 msgstr ""
 
-#: lib/configure.py:743
+#: lib/configure.py:759
 msgid "OpenDocument (eLyXer)"
 msgstr ""
 
-#: lib/configure.py:744
+#: lib/configure.py:760
 msgid "OpenDocument (Pandoc)"
 msgstr ""
 
-#: lib/configure.py:745
+#: lib/configure.py:761
 msgid "OpenOffice.Org (sxw)"
 msgstr ""
 
-#: lib/configure.py:748
+#: lib/configure.py:764
 msgid "Rich Text Format"
 msgstr ""
 
-#: lib/configure.py:749
+#: lib/configure.py:765
 msgid "MS Word"
 msgstr ""
 
-#: lib/configure.py:749
+#: lib/configure.py:765
 msgid "MS Word|W"
 msgstr ""
 
-#: lib/configure.py:750
+#: lib/configure.py:766
 msgid "MS Word Office Open XML"
 msgstr ""
 
-#: lib/configure.py:750
+#: lib/configure.py:766
 msgid "MS Word Office Open XML|O"
 msgstr ""
 
-#: lib/configure.py:753
+#: lib/configure.py:769
 msgid "Table (CSV)"
 msgstr "Πίνακας (CSV)"
 
-#: lib/configure.py:755 src/frontends/qt4/GuiView.cpp:1372
+#: lib/configure.py:771 src/frontends/qt4/GuiView.cpp:1372
 #: src/mathed/InsetMathMacroTemplate.cpp:541
 msgid "LyX"
 msgstr ""
 
-#: lib/configure.py:756
+#: lib/configure.py:772
 msgid "LyX 1.3.x"
 msgstr ""
 
-#: lib/configure.py:757
+#: lib/configure.py:773
 msgid "LyX 1.4.x"
 msgstr ""
 
-#: lib/configure.py:758
+#: lib/configure.py:774
 msgid "LyX 1.5.x"
 msgstr ""
 
-#: lib/configure.py:759
+#: lib/configure.py:775
 msgid "LyX 1.6.x"
 msgstr ""
 
-#: lib/configure.py:760
+#: lib/configure.py:776
 msgid "LyX 2.0.x"
 msgstr ""
 
-#: lib/configure.py:761
+#: lib/configure.py:777
 msgid "LyX 2.1.x"
 msgstr ""
 
-#: lib/configure.py:762
+#: lib/configure.py:778
 msgid "LyX 2.2.x"
 msgstr ""
 
-#: lib/configure.py:763
+#: lib/configure.py:779
 msgid "CJK LyX 1.4.x (big5)"
 msgstr ""
 
-#: lib/configure.py:764
+#: lib/configure.py:780
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr ""
 
-#: lib/configure.py:765
+#: lib/configure.py:781
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr ""
 
-#: lib/configure.py:766
+#: lib/configure.py:782
 msgid "LyX Preview"
 msgstr "Προεπισκόπηση LyX"
 
-#: lib/configure.py:767
+#: lib/configure.py:783
 msgid "pdf_tex"
 msgstr ""
 
-#: lib/configure.py:767
+#: lib/configure.py:783
 msgid "pdf_tex|PDFTEX"
 msgstr ""
 
-#: lib/configure.py:768
+#: lib/configure.py:784
 msgid "Program"
 msgstr "Πρόγραμμα"
 
-#: lib/configure.py:769
+#: lib/configure.py:785
 msgid "ps_tex"
 msgstr ""
 
-#: lib/configure.py:769
+#: lib/configure.py:785
 msgid "ps_tex|PSTEX"
 msgstr ""
 
-#: lib/configure.py:770 src/frontends/qt4/GuiClipboard.cpp:173
+#: lib/configure.py:786 src/frontends/qt4/GuiClipboard.cpp:173
 msgid "Windows Metafile"
 msgstr ""
 
-#: lib/configure.py:771 src/frontends/qt4/GuiClipboard.cpp:172
+#: lib/configure.py:787 src/frontends/qt4/GuiClipboard.cpp:172
 msgid "Enhanced Metafile"
 msgstr ""
 
-#: lib/configure.py:891
+#: lib/configure.py:907
 msgid "LyXBlogger"
 msgstr ""
 
-#: lib/configure.py:1097
+#: lib/configure.py:1113
 msgid "gnuplot"
 msgstr ""
 
-#: lib/configure.py:1097
+#: lib/configure.py:1113
 msgid "gnuplot|Gnuplot"
 msgstr ""
 
-#: lib/configure.py:1170
+#: lib/configure.py:1186
 msgid "LyX Archive (zip)"
 msgstr ""
 
-#: lib/configure.py:1173
+#: lib/configure.py:1189
 msgid "LyX Archive (tar.gz)"
 msgstr ""
 
@@ -24910,7 +24910,7 @@ msgstr ""
 "Το %1$s είναι από νεότερη έκδοση του LyX και το σενάριο lyx2lyx απέτυχε να "
 "το μετατρέψει."
 
-#: src/Buffer.cpp:1392 src/Buffer.cpp:4645 src/Buffer.cpp:4708
+#: src/Buffer.cpp:1392 src/Buffer.cpp:4646 src/Buffer.cpp:4709
 msgid "File is read-only"
 msgstr "Το αρχείο είναι μόνο για ανάγνωση"
 
@@ -25132,13 +25132,13 @@ msgstr "Ο κλάδος \"%1$s\" υπάρχει ήδη."
 msgid "Error viewing the output file."
 msgstr "Σφάλμα επισκόπησης αρχείου εξόδου."
 
-#: src/Buffer.cpp:3281 src/frontends/qt4/GuiView.cpp:2329
+#: src/Buffer.cpp:3282 src/frontends/qt4/GuiView.cpp:2329
 #: src/frontends/qt4/Validator.cpp:222 src/insets/ExternalSupport.cpp:386
 #: src/insets/InsetGraphics.cpp:684 src/insets/InsetInclude.cpp:544
 msgid "Invalid filename"
 msgstr "Άκυρο όνομα αρχείου"
 
-#: src/Buffer.cpp:3282 src/insets/ExternalSupport.cpp:387
+#: src/Buffer.cpp:3283 src/insets/ExternalSupport.cpp:387
 #: src/insets/InsetGraphics.cpp:685 src/insets/InsetInclude.cpp:545
 msgid ""
 "The following filename will cause troubles when running the exported file "
@@ -25147,12 +25147,12 @@ msgstr ""
 "Το ακόλουθο όνομα αρχείου θα προκαλέσει προβλήματα κατά την επεξεργασία του "
 "εξαγόμενου αρχείου από το LaTeX: "
 
-#: src/Buffer.cpp:3287 src/insets/ExternalSupport.cpp:392
+#: src/Buffer.cpp:3288 src/insets/ExternalSupport.cpp:392
 #: src/insets/InsetGraphics.cpp:692 src/insets/InsetInclude.cpp:549
 msgid "Problematic filename for DVI"
 msgstr ""
 
-#: src/Buffer.cpp:3288 src/insets/ExternalSupport.cpp:393
+#: src/Buffer.cpp:3289 src/insets/ExternalSupport.cpp:393
 #: src/insets/InsetGraphics.cpp:693 src/insets/InsetInclude.cpp:550
 msgid ""
 "The following filename can cause troubles when running the exported file "
@@ -25161,11 +25161,11 @@ msgstr ""
 "Το ακόλουθο όνομα αρχείου ίσως προκαλέσει προβλήματα κατά την επεξεργασία "
 "του εξαγόμενου αρχείου από το LaTeX και το άνοιγμα του παραγόμενου DVI: "
 
-#: src/Buffer.cpp:3316 src/insets/InsetBibtex.cpp:341
+#: src/Buffer.cpp:3317 src/insets/InsetBibtex.cpp:341
 msgid "Export Warning!"
 msgstr "Προειδοποίηση Εξαγωγής!"
 
-#: src/Buffer.cpp:3317
+#: src/Buffer.cpp:3318
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -25173,59 +25173,59 @@ msgstr ""
 "Υπάρχουν διαστήματα στα μονοπάτια προς τις βάσεις δεδομένων BibTeX.\n"
 "Το BibTeX δεν θα μπορέσει να τις βρει."
 
-#: src/Buffer.cpp:3949
+#: src/Buffer.cpp:3950
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Προεπισκόπηση κώδικα πηγής για την παράγραφο %1$d"
 
-#: src/Buffer.cpp:3953
+#: src/Buffer.cpp:3954
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Προεπισκόπηση κώδικα πηγής από την παράγραφο %1$s έως την %2$s"
 
-#: src/Buffer.cpp:4005
+#: src/Buffer.cpp:4006
 msgid "Preview source code"
 msgstr "Προεπισκόπηση κώδικα πηγής"
 
-#: src/Buffer.cpp:4007
+#: src/Buffer.cpp:4008
 msgid "Preview preamble"
 msgstr "Προεπισκόπηση preamble"
 
-#: src/Buffer.cpp:4009
+#: src/Buffer.cpp:4010
 msgid "Preview body"
 msgstr "Προεπισκόπηση σώματος"
 
-#: src/Buffer.cpp:4024
+#: src/Buffer.cpp:4025
 msgid "Plain text does not have a preamble."
 msgstr ""
 
-#: src/Buffer.cpp:4129
+#: src/Buffer.cpp:4130
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Αυτόματη αποθήκευση του %1$s"
 
-#: src/Buffer.cpp:4185
+#: src/Buffer.cpp:4186
 msgid "Autosave failed!"
 msgstr "Η αυτόματη αποθήκευση απέτυχε!"
 
-#: src/Buffer.cpp:4246
+#: src/Buffer.cpp:4247
 msgid "Autosaving current document..."
 msgstr "Αυτόματη αποθήκευση τρέχοντος εγγράφου..."
 
-#: src/Buffer.cpp:4371
+#: src/Buffer.cpp:4372
 msgid "Couldn't export file"
 msgstr "Δεν ήταν δυνατή η εξαγωγή του αρχείου"
 
-#: src/Buffer.cpp:4372
+#: src/Buffer.cpp:4373
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Δεν υπάρχουν πληροφορίες για την εξαγωγή της μορφής %1$s."
 
-#: src/Buffer.cpp:4434 src/frontends/qt4/GuiView.cpp:2473
+#: src/Buffer.cpp:4435 src/frontends/qt4/GuiView.cpp:2473
 msgid "File name error"
 msgstr "Σφάλμα ονόματος αρχείου"
 
-#: src/Buffer.cpp:4435
+#: src/Buffer.cpp:4436
 #, c-format
 msgid ""
 "The directory path to the document\n"
@@ -25234,21 +25234,21 @@ msgid ""
 "save the file to a directory whose name does not contain spaces."
 msgstr ""
 
-#: src/Buffer.cpp:4538 src/Buffer.cpp:4552 src/frontends/qt4/GuiView.cpp:692
+#: src/Buffer.cpp:4539 src/Buffer.cpp:4553 src/frontends/qt4/GuiView.cpp:692
 msgid "Document export cancelled."
 msgstr "Η εξαγωγή του εγγράφου ακυρώθηκε."
 
-#: src/Buffer.cpp:4555
+#: src/Buffer.cpp:4556
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Το έγγραφο εξήχθη ως %1$s στο αρχείο `%2$s'"
 
-#: src/Buffer.cpp:4562
+#: src/Buffer.cpp:4563
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Το έγγραφο εξήχθη ως %1$s"
 
-#: src/Buffer.cpp:4631
+#: src/Buffer.cpp:4632
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -25259,34 +25259,34 @@ msgstr ""
 "\n"
 "Επαναφορά αυτού του αντιγράφου;"
 
-#: src/Buffer.cpp:4634
+#: src/Buffer.cpp:4635
 msgid "Load emergency save?"
 msgstr "Φόρτωση αντιγράφου εκτάκτου ανάγκης;"
 
-#: src/Buffer.cpp:4635
+#: src/Buffer.cpp:4636
 msgid "&Recover"
 msgstr "&Επαναφορά"
 
-#: src/Buffer.cpp:4635
+#: src/Buffer.cpp:4636
 msgid "&Load Original"
 msgstr "&Φόρτωση Αυθεντικού"
 
-#: src/Buffer.cpp:4646
+#: src/Buffer.cpp:4647
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4653
+#: src/Buffer.cpp:4654
 msgid "Document was successfully recovered."
 msgstr "Το έγγραφο ανακτήθηκε επιτυχώς."
 
-#: src/Buffer.cpp:4655
+#: src/Buffer.cpp:4656
 msgid "Document was NOT successfully recovered."
 msgstr "Το έγγραφο ΔΕΝ ανακτήθηκε επιτυχώς."
 
-#: src/Buffer.cpp:4656
+#: src/Buffer.cpp:4657
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -25295,27 +25295,27 @@ msgstr ""
 "Διαγραφή αρχείου έκτακτης ανάγκης τώρα;\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:4660 src/Buffer.cpp:4672
+#: src/Buffer.cpp:4661 src/Buffer.cpp:4673
 msgid "Delete emergency file?"
 msgstr "Διαγραφή αρχείου έκτακτης ανάγκης;"
 
-#: src/Buffer.cpp:4661 src/Buffer.cpp:4674
+#: src/Buffer.cpp:4662 src/Buffer.cpp:4675
 msgid "&Keep"
 msgstr "&Διατήρηση"
 
-#: src/Buffer.cpp:4665
+#: src/Buffer.cpp:4666
 msgid "Emergency file deleted"
 msgstr "Το αρχείο έκτακτης ανάγκης διαγράφηκε"
 
-#: src/Buffer.cpp:4666
+#: src/Buffer.cpp:4667
 msgid "Do not forget to save your file now!"
 msgstr "Μη ξεχάσετε να αποθηκεύσετε το αρχείο σας τώρα!"
 
-#: src/Buffer.cpp:4673
+#: src/Buffer.cpp:4674
 msgid "Remove emergency file now?"
 msgstr "Διαγραφή αρχείου έκτακτης ανάγκης τώρα;"
 
-#: src/Buffer.cpp:4696
+#: src/Buffer.cpp:4697
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -25326,35 +25326,35 @@ msgstr ""
 "\n"
 "Να φορτωθεί αυτό εναλλακτικά;"
 
-#: src/Buffer.cpp:4698
+#: src/Buffer.cpp:4699
 msgid "Load backup?"
 msgstr "Φόρτωση αντιγράφου ασφαλείας;"
 
-#: src/Buffer.cpp:4699
+#: src/Buffer.cpp:4700
 msgid "&Load backup"
 msgstr "Φό&ρτωση αντιγράφου ασφαλείας"
 
-#: src/Buffer.cpp:4699
+#: src/Buffer.cpp:4700
 msgid "Load &original"
 msgstr "Φόρτωση &αυθεντικού"
 
-#: src/Buffer.cpp:4709
+#: src/Buffer.cpp:4710
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:5080 src/insets/InsetCaption.cpp:382
+#: src/Buffer.cpp:5081 src/insets/InsetCaption.cpp:382
 msgid "Senseless!!! "
 msgstr "Επιπόλαιο!!! "
 
-#: src/Buffer.cpp:5302
+#: src/Buffer.cpp:5303
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Το έγγραφο %1$s επαναφορτώθηκε."
 
-#: src/Buffer.cpp:5305
+#: src/Buffer.cpp:5306
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Δεν ήταν δυνατή η επαναφόρτωση του εγγράφου %1$s."

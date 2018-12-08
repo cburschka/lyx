@@ -351,7 +351,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-11-12 14:27-0500\n"
+"POT-Creation-Date: 2018-12-08 11:25-0500\n"
 "PO-Revision-Date: 2018-10-14 11:18+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
@@ -1032,7 +1032,7 @@ msgid "Remove the selected branch"
 msgstr "Enlever la branche sélectionnée"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136 src/frontends/qt4/ui/IndicesUi.ui:165
-#: src/Buffer.cpp:4661 src/Buffer.cpp:4674
+#: src/Buffer.cpp:4662 src/Buffer.cpp:4675
 msgid "&Remove"
 msgstr "&Enlever"
 
@@ -1066,7 +1066,7 @@ msgstr "Ajouter &tout"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:108 src/Buffer.cpp:1405
-#: src/Buffer.cpp:4635 src/Buffer.cpp:4699 src/LyXVC.cpp:114 src/LyXVC.cpp:304
+#: src/Buffer.cpp:4636 src/Buffer.cpp:4700 src/LyXVC.cpp:114 src/LyXVC.cpp:304
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:247
 #: src/frontends/qt4/GuiDocument.cpp:2384 src/frontends/qt4/GuiParagraph.cpp:69
@@ -7919,7 +7919,7 @@ msgstr "Également affiliation"
 #: lib/layouts/achemso.layout:127 lib/layouts/europasscv.layout:116
 #: lib/layouts/europecv.layout:93 lib/layouts/lettre.layout:46
 #: lib/layouts/lettre.layout:348 lib/layouts/moderncv.layout:170
-#: lib/layouts/scrlttr2.layout:196 lib/configure.py:754
+#: lib/layouts/scrlttr2.layout:196 lib/configure.py:770
 msgid "Fax"
 msgstr "Fax"
 
@@ -13361,7 +13361,7 @@ msgstr "AuteurCourant"
 msgid "Running author:"
 msgstr "Auteur courant :"
 
-#: lib/layouts/knitr.module:2 lib/configure.py:660
+#: lib/layouts/knitr.module:2 lib/configure.py:676
 msgid "Rnw (knitr)"
 msgstr "Rnw (knitr)"
 
@@ -16180,7 +16180,7 @@ msgstr "Pour éditeurs"
 msgid "Probability Theory and Related Fields (Springer svprobth)"
 msgstr "Théorie des probabilités et domaines connexes (Springer svprobth)"
 
-#: lib/layouts/sweave.module:2 lib/configure.py:657
+#: lib/layouts/sweave.module:2 lib/configure.py:673
 msgid "Sweave"
 msgstr "Sweave"
 
@@ -20058,7 +20058,7 @@ msgstr "Formulaires PDF|o"
 msgid "Hazard and Precautionary Statements|H"
 msgstr "Mentions de danger et conseils de prudence|u"
 
-#: lib/ui/stdmenus.inc:640 lib/configure.py:657
+#: lib/ui/stdmenus.inc:640 lib/configure.py:673
 msgid "Sweave|S"
 msgstr "Sweave|S"
 
@@ -24925,478 +24925,478 @@ msgstr "Figure Xfig"
 msgid "An Xfig figure.\n"
 msgstr "Une figure Xfig.\n"
 
-#: lib/configure.py:606
+#: lib/configure.py:622
 msgid "tgo"
 msgstr "tgo"
 
-#: lib/configure.py:606
+#: lib/configure.py:622
 msgid "tgo|Tgif"
 msgstr "tgo|Tgif"
 
-#: lib/configure.py:609
+#: lib/configure.py:625
 msgid "FIG"
 msgstr "FIG"
 
-#: lib/configure.py:612
+#: lib/configure.py:628
 msgid "DIA"
 msgstr "DIA"
 
-#: lib/configure.py:615
+#: lib/configure.py:631
 msgid "sxd"
 msgstr "sxd"
 
-#: lib/configure.py:615
+#: lib/configure.py:631
 msgid "sxd|OpenDocument"
 msgstr "sxd|OpenDocument"
 
-#: lib/configure.py:618
+#: lib/configure.py:634
 msgid "Grace"
 msgstr "Grace"
 
-#: lib/configure.py:621
+#: lib/configure.py:637
 msgid "FEN"
 msgstr "FEN"
 
-#: lib/configure.py:624
+#: lib/configure.py:640
 msgid "SVG"
 msgstr "SVG"
 
-#: lib/configure.py:625
+#: lib/configure.py:641
 msgid "SVG (compressed)"
 msgstr "SVG (compressé)"
 
-#: lib/configure.py:628
+#: lib/configure.py:644
 msgid "BMP"
 msgstr "BMP"
 
-#: lib/configure.py:629
+#: lib/configure.py:645
 msgid "GIF"
 msgstr "GIF"
 
-#: lib/configure.py:630
+#: lib/configure.py:646
 msgid "jpeg"
 msgstr "jpeg"
 
-#: lib/configure.py:630
+#: lib/configure.py:646
 msgid "jpeg|JPEG"
 msgstr "jpeg|JPEG"
 
-#: lib/configure.py:631
+#: lib/configure.py:647
 msgid "PBM"
 msgstr "PBM"
 
-#: lib/configure.py:632
+#: lib/configure.py:648
 msgid "PGM"
 msgstr "PGM"
 
-#: lib/configure.py:633 src/frontends/qt4/GuiClipboard.cpp:176
+#: lib/configure.py:649 src/frontends/qt4/GuiClipboard.cpp:176
 msgid "PNG"
 msgstr "PNG"
 
-#: lib/configure.py:634
+#: lib/configure.py:650
 msgid "PPM"
 msgstr "PPM"
 
-#: lib/configure.py:635
+#: lib/configure.py:651
 msgid "TIFF"
 msgstr "TIFF"
 
-#: lib/configure.py:636
+#: lib/configure.py:652
 msgid "XBM"
 msgstr "XBM"
 
-#: lib/configure.py:637
+#: lib/configure.py:653
 msgid "XPM"
 msgstr "XPM"
 
-#: lib/configure.py:650
+#: lib/configure.py:666
 msgid "Plain text (chess output)"
 msgstr "Texte brut (échecs)"
 
-#: lib/configure.py:651 src/frontends/qt4/GuiDocument.cpp:1410
+#: lib/configure.py:667 src/frontends/qt4/GuiDocument.cpp:1410
 #: src/frontends/qt4/GuiErrorList.cpp:45
 msgid "DocBook"
 msgstr "DocBook"
 
-#: lib/configure.py:651
+#: lib/configure.py:667
 msgid "DocBook|B"
 msgstr "DocBook|B"
 
-#: lib/configure.py:652
+#: lib/configure.py:668
 msgid "DocBook (XML)"
 msgstr "DocBook (XML)"
 
-#: lib/configure.py:653
+#: lib/configure.py:669
 msgid "Graphviz Dot"
 msgstr "Graphviz Dot"
 
-#: lib/configure.py:654
+#: lib/configure.py:670
 msgid "LaTeX (dviluatex)"
 msgstr "LaTeX (dviluatex)"
 
-#: lib/configure.py:655
+#: lib/configure.py:671
 msgid "LaTeX (pLaTeX)"
 msgstr "LaTeX (pLaTeX)"
 
-#: lib/configure.py:656
+#: lib/configure.py:672
 msgid "NoWeb"
 msgstr "NoWeb"
 
-#: lib/configure.py:656
+#: lib/configure.py:672
 msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
-#: lib/configure.py:658
+#: lib/configure.py:674
 msgid "Sweave (Japanese)"
 msgstr "Sweave (japonais)"
 
-#: lib/configure.py:658
+#: lib/configure.py:674
 msgid "Sweave (Japanese)|S"
 msgstr "Sweave (japonais)|S"
 
-#: lib/configure.py:659
+#: lib/configure.py:675
 msgid "R/S code"
 msgstr "R/S code"
 
-#: lib/configure.py:661
+#: lib/configure.py:677
 msgid "Rnw (knitr, Japanese)"
 msgstr "Rnw (knitr, japonais)"
 
-#: lib/configure.py:662
+#: lib/configure.py:678
 msgid "LilyPond book (LaTeX)"
 msgstr "Livre LilyPond (LaTeX)"
 
-#: lib/configure.py:663
+#: lib/configure.py:679
 msgid "LilyPond book (pLaTeX)"
 msgstr "Livre LilyPond (pLaTeX)"
 
-#: lib/configure.py:664
+#: lib/configure.py:680
 msgid "LaTeX (plain)"
 msgstr "LaTeX (standard)"
 
-#: lib/configure.py:664
+#: lib/configure.py:680
 msgid "LaTeX (plain)|L"
 msgstr "LaTeX (standard)|L"
 
-#: lib/configure.py:665
+#: lib/configure.py:681
 msgid "LaTeX (LuaTeX)"
 msgstr "LaTeX (LuaTeX)"
 
-#: lib/configure.py:666
+#: lib/configure.py:682
 msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
-#: lib/configure.py:667
+#: lib/configure.py:683
 msgid "LaTeX (XeTeX)"
 msgstr "LaTeX (XeTeX)"
 
-#: lib/configure.py:668
+#: lib/configure.py:684
 msgid "LaTeX (clipboard)"
 msgstr "LaTeX (presse-papier)"
 
-#: lib/configure.py:669
+#: lib/configure.py:685
 msgid "Plain text"
 msgstr "Texte brut"
 
-#: lib/configure.py:669
+#: lib/configure.py:685
 msgid "Plain text|a"
 msgstr "Texte brut|r"
 
-#: lib/configure.py:670
+#: lib/configure.py:686
 msgid "Plain text (pstotext)"
 msgstr "Texte brut (pstotext)"
 
-#: lib/configure.py:671
+#: lib/configure.py:687
 msgid "Plain text (ps2ascii)"
 msgstr "Texte brut (ps2ascii)"
 
-#: lib/configure.py:672
+#: lib/configure.py:688
 msgid "Plain text (catdvi)"
 msgstr "Texte brut (catdvi)"
 
-#: lib/configure.py:673
+#: lib/configure.py:689
 msgid "Plain Text, Join Lines"
 msgstr "Texte brut, lignes jointives"
 
-#: lib/configure.py:674
+#: lib/configure.py:690
 msgid "Info (Beamer)"
 msgstr "Info (Beamer)"
 
-#: lib/configure.py:679
+#: lib/configure.py:695
 msgid "LilyPond music"
 msgstr "Format musical LilyPond"
 
-#: lib/configure.py:682
+#: lib/configure.py:698
 msgid "Gnumeric spreadsheet"
 msgstr "Tableur Gnumeric"
 
-#: lib/configure.py:683
+#: lib/configure.py:699
 msgid "Excel spreadsheet"
 msgstr "Tableur Excel"
 
-#: lib/configure.py:684
+#: lib/configure.py:700
 msgid "MS Excel Office Open XML"
 msgstr "MS Excel Office Open XML"
 
-#: lib/configure.py:685
+#: lib/configure.py:701
 msgid "HTML Table (for spreadsheets)"
 msgstr "Tableau HTML (pour les feuilles de calcul)"
 
-#: lib/configure.py:686
+#: lib/configure.py:702
 msgid "OpenDocument spreadsheet"
 msgstr "Tableur OpenDocument"
 
-#: lib/configure.py:689
+#: lib/configure.py:705
 msgid "LyXHTML"
 msgstr "LyXHTML"
 
-#: lib/configure.py:689
+#: lib/configure.py:705
 msgid "LyXHTML|y"
 msgstr "LyXHTML|y"
 
-#: lib/configure.py:697 src/frontends/qt4/GuiLog.cpp:252
+#: lib/configure.py:713 src/frontends/qt4/GuiLog.cpp:252
 #: src/insets/InsetBibtex.cpp:155
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: lib/configure.py:705
+#: lib/configure.py:721
 msgid "EPS"
 msgstr "EPS"
 
-#: lib/configure.py:706
+#: lib/configure.py:722
 msgid "EPS (uncropped)"
 msgstr "EPS (non rogné)"
 
-#: lib/configure.py:707
+#: lib/configure.py:723
 msgid "EPS (cropped)"
 msgstr "EPS (rogné)"
 
-#: lib/configure.py:708
+#: lib/configure.py:724
 msgid "Postscript"
 msgstr "Postscript"
 
-#: lib/configure.py:708
+#: lib/configure.py:724
 msgid "Postscript|t"
 msgstr "Postscript|t"
 
-#: lib/configure.py:717
+#: lib/configure.py:733
 msgid "PDF (ps2pdf)"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:717
+#: lib/configure.py:733
 msgid "PDF (ps2pdf)|P"
 msgstr "PDF (ps2pdf)|P"
 
-#: lib/configure.py:718
+#: lib/configure.py:734
 msgid "PDF (pdflatex)"
 msgstr "PDF (pdflatex)"
 
-#: lib/configure.py:718
+#: lib/configure.py:734
 msgid "PDF (pdflatex)|F"
 msgstr "PDF (pdflatex)|F"
 
-#: lib/configure.py:719
+#: lib/configure.py:735
 msgid "PDF (dvipdfm)"
 msgstr "PDF (dvipdfm)"
 
-#: lib/configure.py:719
+#: lib/configure.py:735
 msgid "PDF (dvipdfm)|m"
 msgstr "PDF (dvipdfm)|m"
 
-#: lib/configure.py:720
+#: lib/configure.py:736
 msgid "PDF (XeTeX)"
 msgstr "PDF (XeTeX)"
 
-#: lib/configure.py:720
+#: lib/configure.py:736
 msgid "PDF (XeTeX)|X"
 msgstr "PDF (XeTeX)|X"
 
-#: lib/configure.py:721
+#: lib/configure.py:737
 msgid "PDF (LuaTeX)"
 msgstr "PDF (LuaTeX)"
 
-#: lib/configure.py:721
+#: lib/configure.py:737
 msgid "PDF (LuaTeX)|u"
 msgstr "PDF (LuaTeX)|u"
 
-#: lib/configure.py:722
+#: lib/configure.py:738
 msgid "PDF (graphics)"
 msgstr "PDF (graphiques)"
 
-#: lib/configure.py:723
+#: lib/configure.py:739
 msgid "PDF (cropped)"
 msgstr "PDF (rogné)"
 
-#: lib/configure.py:724
+#: lib/configure.py:740
 msgid "PDF (lower resolution)"
 msgstr "PDF (résolution réduite)"
 
-#: lib/configure.py:729
+#: lib/configure.py:745
 msgid "DVI"
 msgstr "DVI"
 
-#: lib/configure.py:729
+#: lib/configure.py:745
 msgid "DVI|D"
 msgstr "DVI|D"
 
-#: lib/configure.py:730
+#: lib/configure.py:746
 msgid "DVI (LuaTeX)"
 msgstr "DVI (LuaTeX)"
 
-#: lib/configure.py:730
+#: lib/configure.py:746
 msgid "DVI (LuaTeX)|V"
 msgstr "DVI (LuaTeX)|V"
 
-#: lib/configure.py:733
+#: lib/configure.py:749
 msgid "DraftDVI"
 msgstr "BrouillonDVI"
 
-#: lib/configure.py:736 lib/configure.py:772
+#: lib/configure.py:752 lib/configure.py:788
 msgid "htm"
 msgstr "htm"
 
-#: lib/configure.py:736 lib/configure.py:772
+#: lib/configure.py:752 lib/configure.py:788
 msgid "htm|HTML"
 msgstr "htm|HTML"
 
-#: lib/configure.py:739
+#: lib/configure.py:755
 msgid "Noteedit"
 msgstr "Noteedit"
 
-#: lib/configure.py:742
+#: lib/configure.py:758
 msgid "OpenDocument (tex4ht)"
 msgstr "OpenDocument (tex4ht)"
 
-#: lib/configure.py:743
+#: lib/configure.py:759
 msgid "OpenDocument (eLyXer)"
 msgstr "OpenDocument (eLyXer)"
 
-#: lib/configure.py:744
+#: lib/configure.py:760
 msgid "OpenDocument (Pandoc)"
 msgstr "OpenDocument (pandoc)"
 
-#: lib/configure.py:745
+#: lib/configure.py:761
 msgid "OpenOffice.Org (sxw)"
 msgstr "OpenOffice.Org (sxw)"
 
-#: lib/configure.py:748
+#: lib/configure.py:764
 msgid "Rich Text Format"
 msgstr "Rich Text Format"
 
-#: lib/configure.py:749
+#: lib/configure.py:765
 msgid "MS Word"
 msgstr "MS Word"
 
-#: lib/configure.py:749
+#: lib/configure.py:765
 msgid "MS Word|W"
 msgstr "MS Word|W"
 
-#: lib/configure.py:750
+#: lib/configure.py:766
 msgid "MS Word Office Open XML"
 msgstr "MS Word Office Open XML"
 
-#: lib/configure.py:750
+#: lib/configure.py:766
 msgid "MS Word Office Open XML|O"
 msgstr "MS Word Office Open XML|O"
 
-#: lib/configure.py:753
+#: lib/configure.py:769
 msgid "Table (CSV)"
 msgstr "Tableau (CSV)"
 
-#: lib/configure.py:755 src/frontends/qt4/GuiView.cpp:1372
+#: lib/configure.py:771 src/frontends/qt4/GuiView.cpp:1372
 #: src/mathed/InsetMathMacroTemplate.cpp:541
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:756
+#: lib/configure.py:772
 msgid "LyX 1.3.x"
 msgstr "LyX 1.3.x"
 
-#: lib/configure.py:757
+#: lib/configure.py:773
 msgid "LyX 1.4.x"
 msgstr "LyX 1.4.x"
 
-#: lib/configure.py:758
+#: lib/configure.py:774
 msgid "LyX 1.5.x"
 msgstr "LyX 1.5.x"
 
-#: lib/configure.py:759
+#: lib/configure.py:775
 msgid "LyX 1.6.x"
 msgstr "LyX 1.6.x"
 
-#: lib/configure.py:760
+#: lib/configure.py:776
 msgid "LyX 2.0.x"
 msgstr "LyX 2.0.x"
 
-#: lib/configure.py:761
+#: lib/configure.py:777
 msgid "LyX 2.1.x"
 msgstr "LyX 2.1.x"
 
-#: lib/configure.py:762
+#: lib/configure.py:778
 msgid "LyX 2.2.x"
 msgstr "LyX 2.2.x"
 
-#: lib/configure.py:763
+#: lib/configure.py:779
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
 
-#: lib/configure.py:764
+#: lib/configure.py:780
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:765
+#: lib/configure.py:781
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:766
+#: lib/configure.py:782
 msgid "LyX Preview"
 msgstr "Aperçu"
 
-#: lib/configure.py:767
+#: lib/configure.py:783
 msgid "pdf_tex"
 msgstr "pdf_tex"
 
-#: lib/configure.py:767
+#: lib/configure.py:783
 msgid "pdf_tex|PDFTEX"
 msgstr "pdf_tex|PDFTEX"
 
-#: lib/configure.py:768
+#: lib/configure.py:784
 msgid "Program"
 msgstr "Listing de code source"
 
-#: lib/configure.py:769
+#: lib/configure.py:785
 msgid "ps_tex"
 msgstr "ps_tex"
 
-#: lib/configure.py:769
+#: lib/configure.py:785
 msgid "ps_tex|PSTEX"
 msgstr "ps_tex|PSTEX"
 
-#: lib/configure.py:770 src/frontends/qt4/GuiClipboard.cpp:173
+#: lib/configure.py:786 src/frontends/qt4/GuiClipboard.cpp:173
 msgid "Windows Metafile"
 msgstr "Métafichier Windows"
 
-#: lib/configure.py:771 src/frontends/qt4/GuiClipboard.cpp:172
+#: lib/configure.py:787 src/frontends/qt4/GuiClipboard.cpp:172
 msgid "Enhanced Metafile"
 msgstr "Métafichier amélioré"
 
-#: lib/configure.py:891
+#: lib/configure.py:907
 msgid "LyXBlogger"
 msgstr "LyxBlogger"
 
-#: lib/configure.py:1097
+#: lib/configure.py:1113
 msgid "gnuplot"
 msgstr "gnuplot"
 
-#: lib/configure.py:1097
+#: lib/configure.py:1113
 msgid "gnuplot|Gnuplot"
 msgstr "gnuplot|Gnuplot"
 
-#: lib/configure.py:1170
+#: lib/configure.py:1186
 msgid "LyX Archive (zip)"
 msgstr "Archive LyX (zip)"
 
-#: lib/configure.py:1173
+#: lib/configure.py:1189
 msgid "LyX Archive (tar.gz)"
 msgstr "Archive LyX (tar.gz)"
 
@@ -25571,7 +25571,7 @@ msgstr ""
 "%1$s vient d'une version plus récente de LyX, et le script lyx2lyx n'a pas "
 "réussi à le convertir."
 
-#: src/Buffer.cpp:1392 src/Buffer.cpp:4645 src/Buffer.cpp:4708
+#: src/Buffer.cpp:1392 src/Buffer.cpp:4646 src/Buffer.cpp:4709
 msgid "File is read-only"
 msgstr "Fichier en lecture seule"
 
@@ -25821,13 +25821,13 @@ msgstr "La branche « %1$s » existe déjà."
 msgid "Error viewing the output file."
 msgstr "Erreur lors de l'affichage du fichier imprimable."
 
-#: src/Buffer.cpp:3281 src/frontends/qt4/GuiView.cpp:2329
+#: src/Buffer.cpp:3282 src/frontends/qt4/GuiView.cpp:2329
 #: src/frontends/qt4/Validator.cpp:222 src/insets/ExternalSupport.cpp:386
 #: src/insets/InsetGraphics.cpp:684 src/insets/InsetInclude.cpp:544
 msgid "Invalid filename"
 msgstr "Nom de fichier invalide"
 
-#: src/Buffer.cpp:3282 src/insets/ExternalSupport.cpp:387
+#: src/Buffer.cpp:3283 src/insets/ExternalSupport.cpp:387
 #: src/insets/InsetGraphics.cpp:685 src/insets/InsetInclude.cpp:545
 msgid ""
 "The following filename will cause troubles when running the exported file "
@@ -25836,12 +25836,12 @@ msgstr ""
 "Le nom de fichier suivant risque de causer des problèmes quand le fichier "
 "exporté sera traité avec LaTeX : "
 
-#: src/Buffer.cpp:3287 src/insets/ExternalSupport.cpp:392
+#: src/Buffer.cpp:3288 src/insets/ExternalSupport.cpp:392
 #: src/insets/InsetGraphics.cpp:692 src/insets/InsetInclude.cpp:549
 msgid "Problematic filename for DVI"
 msgstr "Nom de fichier problématique pour DVI"
 
-#: src/Buffer.cpp:3288 src/insets/ExternalSupport.cpp:393
+#: src/Buffer.cpp:3289 src/insets/ExternalSupport.cpp:393
 #: src/insets/InsetGraphics.cpp:693 src/insets/InsetInclude.cpp:550
 msgid ""
 "The following filename can cause troubles when running the exported file "
@@ -25850,11 +25850,11 @@ msgstr ""
 "Le nom de fichier suivant risque de causer des problèmes quand le fichier "
 "exporté sera traité avec LaTeX, à l'ouverture du fichier DVI : "
 
-#: src/Buffer.cpp:3316 src/insets/InsetBibtex.cpp:341
+#: src/Buffer.cpp:3317 src/insets/InsetBibtex.cpp:341
 msgid "Export Warning!"
 msgstr "Alerte d'exportation !"
 
-#: src/Buffer.cpp:3317
+#: src/Buffer.cpp:3318
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -25862,59 +25862,59 @@ msgstr ""
 "Il y a des espaces dans les chemins de vos bases de données BibTeX.\n"
 "BibTeX n'arrivera pas à les trouver."
 
-#: src/Buffer.cpp:3949
+#: src/Buffer.cpp:3950
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Visionner le code LaTeX du paragraphe %1$d"
 
-#: src/Buffer.cpp:3953
+#: src/Buffer.cpp:3954
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Visionner le code LaTeX des paragraphes %1$s à %2$s"
 
-#: src/Buffer.cpp:4005
+#: src/Buffer.cpp:4006
 msgid "Preview source code"
 msgstr "Visionner le code LaTeX"
 
-#: src/Buffer.cpp:4007
+#: src/Buffer.cpp:4008
 msgid "Preview preamble"
 msgstr "Aperçu préambule"
 
-#: src/Buffer.cpp:4009
+#: src/Buffer.cpp:4010
 msgid "Preview body"
 msgstr "Aperçu corps"
 
-#: src/Buffer.cpp:4024
+#: src/Buffer.cpp:4025
 msgid "Plain text does not have a preamble."
 msgstr "Le texte brut ne possède pas de préambule."
 
-#: src/Buffer.cpp:4129
+#: src/Buffer.cpp:4130
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Sauvegarde automatique de %1$s"
 
-#: src/Buffer.cpp:4185
+#: src/Buffer.cpp:4186
 msgid "Autosave failed!"
 msgstr "La sauvegarde automatique a échoué !"
 
-#: src/Buffer.cpp:4246
+#: src/Buffer.cpp:4247
 msgid "Autosaving current document..."
 msgstr "Sauvegarde automatique du document..."
 
-#: src/Buffer.cpp:4371
+#: src/Buffer.cpp:4372
 msgid "Couldn't export file"
 msgstr "Exportation du fichier impossible"
 
-#: src/Buffer.cpp:4372
+#: src/Buffer.cpp:4373
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Pas d'information pour exporter au format %1$s."
 
-#: src/Buffer.cpp:4434 src/frontends/qt4/GuiView.cpp:2473
+#: src/Buffer.cpp:4435 src/frontends/qt4/GuiView.cpp:2473
 msgid "File name error"
 msgstr "Erreur de nom de fichier"
 
-#: src/Buffer.cpp:4435
+#: src/Buffer.cpp:4436
 #, c-format
 msgid ""
 "The directory path to the document\n"
@@ -25928,21 +25928,21 @@ msgstr ""
 "devriez enregistrer le fichier dans un répertoire dont le chemin d'accès ne "
 "contient pas d'espaces."
 
-#: src/Buffer.cpp:4538 src/Buffer.cpp:4552 src/frontends/qt4/GuiView.cpp:692
+#: src/Buffer.cpp:4539 src/Buffer.cpp:4553 src/frontends/qt4/GuiView.cpp:692
 msgid "Document export cancelled."
 msgstr "Export du document annulé."
 
-#: src/Buffer.cpp:4555
+#: src/Buffer.cpp:4556
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Document exporté en tant que %1$s vers le fichier `%2$s'"
 
-#: src/Buffer.cpp:4562
+#: src/Buffer.cpp:4563
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Document exporté en tant que %1$s"
 
-#: src/Buffer.cpp:4631
+#: src/Buffer.cpp:4632
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -25953,19 +25953,19 @@ msgstr ""
 "\n"
 "Voulez-vous récupérer la sauvegarde d'urgence ?"
 
-#: src/Buffer.cpp:4634
+#: src/Buffer.cpp:4635
 msgid "Load emergency save?"
 msgstr "Charger la sauvegarde d'urgence ?"
 
-#: src/Buffer.cpp:4635
+#: src/Buffer.cpp:4636
 msgid "&Recover"
 msgstr "&Récupérer"
 
-#: src/Buffer.cpp:4635
+#: src/Buffer.cpp:4636
 msgid "&Load Original"
 msgstr "&Charger l'original"
 
-#: src/Buffer.cpp:4646
+#: src/Buffer.cpp:4647
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -25975,15 +25975,15 @@ msgstr ""
 "original %1$s est en lecture seule. Il faudra sauvegarder le document sous "
 "un autre nom."
 
-#: src/Buffer.cpp:4653
+#: src/Buffer.cpp:4654
 msgid "Document was successfully recovered."
 msgstr "Le document a été récupéré correctement."
 
-#: src/Buffer.cpp:4655
+#: src/Buffer.cpp:4656
 msgid "Document was NOT successfully recovered."
 msgstr "Le document n'a PAS été récupéré avec succès."
 
-#: src/Buffer.cpp:4656
+#: src/Buffer.cpp:4657
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -25992,27 +25992,27 @@ msgstr ""
 "Supprimer la sauvegarde d'urgence maintenant ?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:4660 src/Buffer.cpp:4672
+#: src/Buffer.cpp:4661 src/Buffer.cpp:4673
 msgid "Delete emergency file?"
 msgstr "Supprimer la sauvegarde d'urgence ?"
 
-#: src/Buffer.cpp:4661 src/Buffer.cpp:4674
+#: src/Buffer.cpp:4662 src/Buffer.cpp:4675
 msgid "&Keep"
 msgstr "&Conserver"
 
-#: src/Buffer.cpp:4665
+#: src/Buffer.cpp:4666
 msgid "Emergency file deleted"
 msgstr "Sauvegarde d'urgence supprimée"
 
-#: src/Buffer.cpp:4666
+#: src/Buffer.cpp:4667
 msgid "Do not forget to save your file now!"
 msgstr "N'oubliez pas d'enregistrer votre fichier maintenant !"
 
-#: src/Buffer.cpp:4673
+#: src/Buffer.cpp:4674
 msgid "Remove emergency file now?"
 msgstr "Supprimer la sauvegarde d'urgence maintenant ?"
 
-#: src/Buffer.cpp:4696
+#: src/Buffer.cpp:4697
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -26023,19 +26023,19 @@ msgstr ""
 "\n"
 "Voulez-vous charger la sauvegarde automatique ?"
 
-#: src/Buffer.cpp:4698
+#: src/Buffer.cpp:4699
 msgid "Load backup?"
 msgstr "Charger la sauvegarde automatique ?"
 
-#: src/Buffer.cpp:4699
+#: src/Buffer.cpp:4700
 msgid "&Load backup"
 msgstr "&Charger la sauvegarde"
 
-#: src/Buffer.cpp:4699
+#: src/Buffer.cpp:4700
 msgid "Load &original"
 msgstr "Charger l'&original"
 
-#: src/Buffer.cpp:4709
+#: src/Buffer.cpp:4710
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -26045,16 +26045,16 @@ msgstr ""
 "original %1$s est en lecture seule. Il faudra sauvegarder le document sous "
 "un autre nom."
 
-#: src/Buffer.cpp:5080 src/insets/InsetCaption.cpp:382
+#: src/Buffer.cpp:5081 src/insets/InsetCaption.cpp:382
 msgid "Senseless!!! "
 msgstr "Inapproprié !!! "
 
-#: src/Buffer.cpp:5302
+#: src/Buffer.cpp:5303
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Document %1$s rechargé."
 
-#: src/Buffer.cpp:5305
+#: src/Buffer.cpp:5306
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Impossible de recharger le document %1$s."
