@@ -1,34 +1,24 @@
-Public release of LyX version 2.3.1
+Public release of LyX version 2.3.2
 ===================================
 
-We are proud to announce the release of LyX 2.3.1. This is the first
+We are proud to announce the release of LyX 2.3.2. This is the second
 maintenance release in the 2.3.x series. 
 
-You can download LyX 2.3.1 from http://www.lyx.org/Download/.
+You can download LyX 2.3.2 from http://www.lyx.org/Download/.
 
 LyX is a document processor that encourages an approach to writing based 
 on the structure of your documents and not simply their appearance. It is
 released under a Free and Open Source Software license.
 
-LyX 2.3.1 is the result of on-going efforts to make our stable version more 
-reliable and more stable. We have fixed a number of bugs and added some new
-features. Please see below for a full list. Perhaps the most important of
-these is that Jean-Marc Lasgouttes re-wrote the document painting mechanism. 
-This makes LyX snappier, especially on repeated events.
-
-All python scripts distributed with LyX should now be compatible with both
-python 2.x and python 3.x.
-
-One oft-requested enhancement was to restore a keyboard shortcut for opening
-the 'settings' menu of graphics, reference, etc, insets. This is now Control-
-Alt-i, on Windows and Linux, and Control-Option-i on OSX (assuming you are
-using the default keybindings).
-
-A change to how math macros are output can break some documents that use
-ERT to comment out macros. Please see bug #11216 if you experience this sort 
-of problem.
+LyX 2.3.2 is the result of on-going efforts to make our stable version more 
+reliable and more stable. One main fix involves a crash with external viewers 
+on Windows. We have also fixed a number of problems with the output of right-
+to-left languages, thanks to the involvement of users. There was also an 
+infinite loop bug connected with the separation of environments that has been 
+fixed. But, for the most part, the fixes here are incremental. Please see below 
+for a full list.
   
-If you think you have found a bug in LyX 2.3.1, please open a bug report at
+If you think you have found a bug in LyX 2.3.2, please open a bug report at
 http://www.lyx.org/trac/wiki/BugTrackerHome. If you're not sure whether it
 really is a bug, you can e-mail the LyX developers' mailing list (lyx-devel 
 <at> lists.lyx.org) and ask. 
@@ -39,10 +29,11 @@ is at http://wiki.lyx.org/. If you can't find the answer there, e-mail the
 LyX users' list (lyx-users <at> lists.lyx.org), where you will find an 
 active community of people who are ready to help.
 
-We hope you enjoy using LyX 2.3.1.
+We hope you enjoy using LyX 2.3.2.
 
 The LyX team.
 http://www.lyx.org
+
 
 
 What's new
@@ -53,110 +44,74 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- It possible to anonymize document's content for bug submissions
-  via buffer-anonymize lfun (bug 7259).
+- Add support for non-ASCII characters in hyperlinks (bug 11165).
 
-- Support rotation of multi-page tables via (pdf)lscape (bug 9194).
+- Support rotated table cells with linebreaks (bug 8085).
 
-- Added LFUN_MASTER_BUFFER_EXPORT, which exports the master buffer, along
-  the lines of LFUN_MASTER_BUFFER_VIEW (bug 11118).
+- Add support for LyX logo in RTL output (bug 10423).
 
-- Needauth is not needed for exporting R code (only when executing the code).
+- Update support for linguistic subexamples.
 
-- Center longtable explicitly for compatibility with some packages (bug 10690).
-
-- Fix problems with default conversion script for graphics (part of bug 11186).
-
-
-* MISCELLANEOUS
-
-- Updated to Qt5 the LyX server example client in development/lyxserver/
+- Support key symbols via menukeys package (part of bug 10641).
 
 
 * TEX2LYX IMPROVEMENTS
 
-- Add support for biblatex.
+- Add support for multirow (bug 11164).
 
-- Add support for chapterbib.
+- Improve import of titling commands other than \maketitle (bug 6461).
 
-- Add support for \includeonly.
+- Add support for horizontal longtabular alignment.
 
-- Add support for beamer overlay arguments (bug 11068).
+- Add support for btUnit (multibib).
 
-- Update tex2lyx quotation marks detection:
-  * Consider new quote styles of LyX 2.3.
-  * Consider changed quote styles in LYX 2.3.
-  * Try to be a bit smarter with ambiguous quotation marks,
-    depending on the main quote style and the local context.
+- Add support for decimal alignment in table cells.
 
-- Consider options passed via \PassOptionsToPackage.
-
-- Add support for URW Classico, MinionPro and the new Libertine fonts.
-
-- Add support for \lstinputlisting and \inputminted.
-
-- Add support for the \t*{} (bottomtiebar) macro of TIPA.
-
-- Implement better parsing of some command options (via "literate"
-  function of some insets) (bug 9563).
-
-- Add support for alignment pseudo-environments as used inside floats
-  (bug 7857).
+- Add support for plural and capitalized refstyle references.
 
 
 * USER INTERFACE
 
-- Overhaul the document painting mechanism. Now the screen is updated
-  asyncronously (as all normal applications do), which makes LyX
-  snappier, especially on repeated events. As an added bonus, subpixel
-  aliasing is honored in the work area.
+- Improve layout of the character dialog (bugs 2752, 3804, 3884, and 4836).
 
-- Use native file dialogs on all platforms by default. It is now
-  possible to switch to LyX custom dialogs (which have extra shortcuts
-  to relevant directories) by setting the preference
-  \use_native_filedialog true
+- Rework OK/Apply/Cancel behavior of preferences dialog (bug 10016).
 
-- Let caret height depend on character size in math editor.
+- Disambiguate dialog message (bug 11242).
 
-- Handle properly top/bottom of inset with mac-like cursor movement
-  (bug 10701).
+- Unify capitalzation in dialog (bug 11237).
 
-- Respect the last setting of the 'literal' checkbox when adding citations
-  via the LyX server (e.g., from JabRef).
+- Allow to change multiple table columns' width at once (bug 11205).
 
-- Allow unification of graphic groups inside marked block via context
-  menu.
+- When using formal tables, draw top/bottom rules thicker when adequate.
 
-- Cosmetic polishment of the "Math Options" pane of Document Settings
-  (bug 10777).
+- Draw underline (and friends) over insets too (bug 11297).
 
-- UI improvements in the graphics dialog (bug 10771).
+- Handle properly branches with a space in their name (bug 11108).
 
-- Set tab stop in preamble editor to four characters.
+- Allow the 'module in child not used in master' warning to be disabled.
 
-- Provide simple search functionality in preamble (bug 11099).
+- Add bibtex inset to outliner if "add to toc" is checked (bug 11309).
 
-- Change Settings -> Local Layout to Fixed-width Font and Nowrap (bug 10992).
+- Show module name with description (bug 11275).
 
-- Allow LFUN_UNICODE_INSERT to take multiple arguments (bug 11084).
+- GuiCitation: Don't reset filter on show (bug 11291).
 
-- Added C-M-i as a shortcut for LFUN_INSET_SETTINGS (bug 7662).
+- If a master is being created at loading the child, un-hide it (bug 11162).
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Updated Arabic, Chinese (Simplified), German, Hungarian, Italian, Russian,
-  Slovakian and Ukrainian user interface localization.
+- Update Brazilian Portuguese, Simplified Chinese, German, Italian, Russian,
+  Slovak, Swedish and Ukrainian user interface localization.
+
+- Add some tooltips in citation dialog in favor of keyboard users (bug 11317).
 
 
 * BUILD/INSTALLATION
 
-- Add support for v.2 of the enchant spell checker (bug 10986).
-
-- Support new hunspell C++ ABI if LyX is built against hunspell >= 1.5
-  (bug 10547).
-
-- Fix spurious warning when compiling with Qt 5.10.
+- The Windows installer no longer has a 'bundled' version that installs MiKTeX
+  alongside LyX. Users will need to install their own LaTeX distribution (as on
+  other platforms), preferably before installing LyX itself.
 
 
 
@@ -165,223 +120,111 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Properly escape labels entered for included program listings in Insert > File
-  > Child Document (part of bug 10544).
+- Fix footnotes in table with hyperref (bug 11212).
 
-- Fix the implementation of new libertine font package.
+- When cloning a buffer, do not start from a parent if it is not the
+  current master (e.g., when compiling a child alone).
 
-- Properly escape braces in non-literate context in insets.
+- Disallow paragraph customization in some single-par charstyle insets
+  (bug 9192).
 
-- Fix output of citation commands in child documents (bug 11083).
+- Fix problems with extra table borders added on table modification
+  (bug 10010).
 
-- Use normal footnote (rather than \tablefootnote) for tables in minipages.
+- Fix text direction in figure wrap floats with RTL (bug 11029).
 
-- Fix detection of Open Document files.
+- Fix text direction issue in info insets with RTL context (bug 10463).
 
-- Fix language settings and line spacing in InPreamble-titles
-  (bug 9332, 1049).
+- Fix text direction problem with polyglossia with nested languages
+  (part of bug 10111).
 
-- Respect 'literal' setting when calculating longest bibitem (bug 10817).
+- Use LTR environment for forceLTR content in RTL context with
+  polyglossia (bug 10548).
 
-- Do not embrace numbers in \beginL ... \endL with polyglossia in Right-
-  to-Left languages, since bidi handles the numbers automatically.
+- Fix output of key symbols with info inset on the Mac (bug 10641).
 
-- Fix polyglossia language switches for Arabic (bug 11057).
+- Fix output of table cells with multiple languages (bug 11128).
 
-- Fix language allocation after PassThru paragraphs (bug 10793).
+- Fix RTL table output with bidi package (non-TeX fonts) (bug 9686).
 
-- Set correct path to (biblatex) bibliography databases that are entered
-  relative to child documents (bug 11105).
+- Do not mark the import converters for Sweave and knitr as needauth.
 
-- Load hyperref with a suitable driver (bug 6418).
+- Fix conversion of captions from LyX 2.0 documents.
 
-- Fix LaTeX errors with nested ulem commands.
+- Ignore horizontal wheel scrolling in work area (bug 11257).
 
-- Recompile grandchildren when they have updated (bug 11112).
+- Avoid crash when cursor is outside of work area (bug 11296).
 
-- Output list of bibliography files in the order given in the dialog, rather
-  than sorted.
+- Fix crash on Windows when closing external viewers (bug 11210).
 
-- Fixed the last python scripts to support both python 2 and 3 (bug 11101). All 
-  scripts should now be able to run in a python 3 only environment.
+- Fix issue with erroneous qualified citations (bug 11308).
 
-- Correctly strike-out deleted math immediately following a float (bug 11174).
+- Add "hyperref-driver=dvips" option to the extra flags of the
+  latex->dvi converter (bug 11332).
 
-- Fix problem with unwanted spaces caused by math macro definitions (bug 11216).
+- Fix loading order conflict with beamer-article and covington.
+
 
 
 * USER INTERFACE
 
-- Fix "Paste from LaTeX" on Windows (bug 9139).
+- Fix infinite loop while separating environments (bug 11295).
 
-- Disable BUFFER_EXPORT and BUFFER_EXPORT_AS while buffer is processed
-  (bug 8338).
+- Fix loss of citation list after Undo (bug 9158).
 
-- Disable CheckTeX while buffer is processed (bug 7434).
+- Fix document-wide language setting with minted (bug 11203).
 
-- Disable completion in text when there is a selection.
+- Fix display of percent sign with numbers in RTL (bug 4057).
 
-- Do not use English, but the context language, when pasting from LaTeX
-  (bug 9199).
+- Fix issues with dead key accents (bug 11183).
 
-- Do not use English, but the context language, when pasting from math
-  (bug 2596).
+- Fix disappearance of blue (language) line in some situations.
 
-- Fix ChkTeX on Windows (requires ChkTeX 1.7.7 at least) (bug 9989).
+- Draw menu separator symbol according to text direction.
 
-- When entering a math macro name, Escape properly cancels the
-  operation (bug 9251).
+- Improve automatic removal of extra spaces, aka DEPM (bug 10503).
 
-- Fix list of viewable formats in view/update menu (bug 11044).
+- Avoid white space before math completion (bug 11283).
 
-- Fix encoding problems with listings insets and non-TeX fonts (bug
-  11056).
+- View and change Plural, Capitalization, and No Prefix options for
+  cross-references from the context menu (bug 11070).
 
-- When only Enchant is configured as a spell checker, configure it
-  properly as default.
+- Don't step counters in deleted material (bug 11135).
 
-- Do not show errors from master when compiling child (bug 11106).
+- Fix display of raster graphics with viewports (bug 11180).
 
-- Fix crash with server-get-xy and tall inset (bug 8120).
+- Fix some missing screen updates (bug 11323, regression in 2.3.1).
 
-- Fix crash when opening file with non-acii file name in single
-  instance mode (bug 11167).
+- Allow adjustment of margin settings in InsetLayout (bug 10177).
 
-- Improve Undo for operations that act on several buffers (bug 10823).
+- Fix suprious comma in book and thesis bib preview (bug 11272).
 
-- Improve rendering of square roots in math editor (bug 10814).
+- Merge paragraphs when pasted into an inset that forbids multiple
+  paragraphs (bug 8281).
 
-- Set minimum height for math cells (bug 11050).
+- Fix display issue of individual pre- and posttext in citation dialog
+  (biblatex only) (bug 11352).
 
-- Fix display of citation labels when pasting from a document
-  with other citation type (bug 10829).
+- Fix display of overset, underset, and stackrel insets (bug 11367).
 
-- Save the list of recent files when a file is open/saved so that it
-  is up to date after a crash (bug 10712).
+- Avoid extra space at the end of tooltips (bug 11353).
 
-- Only show header for bibliography in outliner (bug 11045).
-
-- Take actual font height into account when drawing placeholder box
-  for graphics (bug 11048).
-
-- Correctly set default bibliography style in the Document Settings
-  dialog (bug 11088).
-
-- Assure that the External Inset dialog is opened at first tab for
-  new insets (bug 11081).
-
-- Ignore deleted material when generating a proposed label (bug 11102).
-
-- Reload citation list when undoing or redoing removal of bibliography
-  inset (bug 9158).
-
-- Fix some master/child issues with biblatex (bug 11083).
-
-- Recalculate citation insets when bibliography info changes as a result
-  of undo or redo (bug 11005).
-
-- Allow for spaces in bibliography keys (bug 9847).
-
-- Fix weird bug with counters when reloading with emergency file.
-
-- Handle math insets properly when inserting index entries (bug 6344).
-
-- When adding a label in the first paragraph after a division (section,
-  etc), use the label prefix for it (bug 10624).
-
-- Fix crash when canceling entry of macro name in a mathed subscript
-  (bug 11125).
-
-- Improve error message when document path contains spaces.
-
-- Fix blinking caret position while entering text with input method.
-
-- Do not allow paragraph styles in listings (bug 11127).
-
-- Fix duplicate, disabled "Separated <Environment> Below" menu item.
-
-- Fix horizontal alignment of some Box types on screen.
-
-- Correct list of previous versions to check for user directory contents
-  (bug 11142 on Mac).
-
-- Honor the syntax highlighting package choice when adding listing params
-  without actually inserting a listing (bug 11151).
-
-- Handle correctly zero table special arguments (bug 10247).
-
-- Fix "New Inset" function in the Nomenclature list dialog.
-
-- Improve warning message dialogs.
-
-- Fix insertion of quotation marks and brackets in RTL languages
-  (bugs 11188 and 11187).
-
-- Fix nesting problem with numbers in RTL text (bug 6283).
-
-- Fix display of RTL text in tooltips (bug 10672).
-
-- Fix size policy of buffer combo in refs dialog (bug 9316).
-
-- Fix line break in Bib(La)TeX tooltip (bug 11252).
-
-
-* INTERNALS
-
-- Fix bug that TeX files were not detected when reconfiguring LyX 
-  (bug 11053).
-
-- Fix language code of Austrian (old spelling).
-
-- When reconfiguring LyX, correctly detect commands specified with a
-  full path with spaces (bug 11214).
-
-- Fix the LyX server on Windows so that replies are actually output.
-
-- Fix the configure.py script for python 3.7.
-
-
-* DOCUMENTATION AND LOCALIZATION
-
-- Fix old problem with lib/fonts/test/stmary10.lyx, and update that file
-  to current format.
+- Show cursor correctly when loading file (bug 11377).
 
 
 * TEX2LYX
 
-- Do not force default bibliography style if none is set (bug 10673).
+- Consider required modules when checking for layout definitions in modules
+  (bug 11156).
 
-- Handle whitespace in table column declaration (bug 10804).
+- Fix import of Arabic polyglossia environment (part of bug 10111).
 
-- Fix import of flalign* environment (bug 10501).
-
-- Fix import of subfloats without caption (bug 10385).
-
-- Import straight quotations marks (e.g. babel shorthands) as ERT (bug 75).
-
-- Do not add duplicate \makebeamertitle.
-
-- Keep empty paragraph it keepempty is true (bug 11078).
-
-- Fix parsing issue in nested CJK (bug 9562).
-
-- Fix import of package options with comments (bug 5737).
-
-- Fix import of xymatrix (bug 10638).
-
-
-* ADVANCED FIND AND REPLACE
+- Fix import of unknown commands'/environments' options (bug 8685).
 
 
 * BUILD/INSTALLATION
 
-- Add support for automake 1.16.
-
-- Fix build of lyxconvert (used on Mac) with Qt4 (bug 11094).
-
-- Fix some compiler warnings.
-
-- Support building with Qt 5.11 with CMake.
-
-- When building with CMake, require at least CMake version 3.1.0.
+- Fix linker options for Mac builds to avoid failures when running
+  install_name_tool on Mac to create relocatable binaries using the
+  bundled private frameworks.
 

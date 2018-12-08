@@ -1,6 +1,6 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 2.3.2.
+This file describes what has been done in the preparation of LyX 2.3.3.
 All comments are welcome.
 
 We try to group things by topic and in decreasing order of importance.
@@ -15,77 +15,26 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Add support for non-ASCII characters in hyperlinks (bug 11165).
-
-- Support rotated table cells with linebreaks (bug 8085).
-
-- Add support for LyX logo in RTL output (bug 10423).
-
-- Update support for linguistic subexamples.
-
-- Support key symbols via menukeys package (part of bug 10641).
 
 
 * MISCELLANEOUS
 
 
 
-
 * TEX2LYX IMPROVEMENTS
 
-- Add support for multirow (bug 11164).
-
-- Improve import of titling commands other than \maketitle (bug 6461).
-
-- Add support for horizontal longtabular alignment.
-
-- Add support for btUnit (multibib).
-
-- Add support for decimal alignment in table cells.
-
-- Add support for plural and capitalized refstyle references.
 
 
 * USER INTERFACE
 
-- Improve layout of the character dialog (bugs 2752, 3804, 3884, and 4836).
-
-- Rework OK/Apply/Cancel behavior of preferences dialog (bug 10016).
-
-- Disambiguate dialog message (bug 11242).
-
-- Unify capitalzation in dialog (bug 11237).
-
-- Allow to change multiple table columns' width at once (bug 11205).
-
-- When using formal tables, draw top/bottom rules thicker when adequate.
-
-- Draw underline (and friends) over insets too (bug 11297).
-
-- Handle properly branches with a space in their name (bug 11108).
-
-- Allow the 'module in child not used in master' warning to be disabled.
-
-- Add bibtex inset to outliner if "add to toc" is checked (bug 11309).
-
-- Show module name with description (bug 11275).
-
-- GuiCitation: Don't reset filter on show (bug 11291).
-
-- If a master is being created at loading the child, un-hide it (bug 11162).
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Update Brazilian Portuguese, Simplified Chinese, German, Italian, Russian,
-  Slovak, Swedish and Ukrainian user interface localization.
-
-- Add some tooltips in citation dialog in favor of keyboard users (bug 11317).
 
 
 * BUILD/INSTALLATION
 
-- [[Need to include description of changes to the Windows installer.]]
 
 
 
@@ -94,100 +43,13 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix footnotes in table with hyperref (bug 11212).
-
-- When cloning a buffer, do not start from a parent if it is not the
-  current master (e.g., when compiling a child alone).
-
-- Disallow paragraph customization in some single-par charstyle insets
-  (bug 9192).
-
-- Fix problems with extra table borders added on table modification
-  (bug 10010).
-
-- Fix text direction in figure wrap floats with RTL (bug 11029).
-
-- Fix text direction issue in info insets with RTL context (bug 10463).
-
-- Fix text direction problem with polyglossia with nested languages
-  (part of bug 10111).
-
-- Use LTR environment for forceLTR content in RTL context with
-  polyglossia (bug 10548).
-
-- Fix output of key symbols with info inset on the Mac (bug 10641).
-
-- Fix output of table cells with multiple languages (bug 11128).
-
-- Fix RTL table output with bidi package (non-TeX fonts) (bug 9686).
-
-- Do not mark the import converters for Sweave and knitr as needauth.
-
-- Fix conversion of captions from LyX 2.0 documents.
-
-- Ignore horizontal wheel scrolling in work area (bug 11257).
-
-- Avoid crash when cursor is outside of work area (bug 11296).
-
-- Fix crash on Windows when closing external viewers (bug 11210).
-
-- Fix issue with erroneous qualified citations (bug 11308).
-
-- Add "hyperref-driver=dvips" option to the extra flags of the
-  latex->dvi converter (bug 11332).
-
-- Fix loading order conflict with beamer-article and covington.
-
 
 
 * USER INTERFACE
 
-- Fix infinite loop while separating environments (bug 11295).
-
-- Fix loss of citation list after Undo (bug 9158).
-
-- Fix document-wide language setting with minted (bug 11203).
-
-- Fix display of percent sign with numbers in RTL (bug 4057).
-
-- Fix issues with dead key accents (bug 11183).
-
-- Fix disappearance of blue (language) line in some situations.
-
-- Draw menu separator symbol according to text direction.
-
-- Improve automatic removal of extra spaces, aka DEPM (bug 10503).
-
-- Avoid white space before math completion (bug 11283).
-
-- View and change Plural, Capitalization, and No Prefix options for
-  cross-references from the context menu (bug 11070).
-
-- Don't step counters in deleted material (bug 11135).
-
-- Fix display of raster graphics with viewports (bug 11180).
-
-- Fix some missing screen updates (bug 11323, regression in 2.3.1).
-
-- Allow adjustment of margin settings in InsetLayout (bug 10177).
-
-- Fix suprious comma in book and thesis bib preview (bug 11272).
-
-- Merge paragraphs when pasted into an inset that forbids multiple
-  paragraphs (bug 8281).
-
-- Fix display issue of individual pre- and posttext in citation dialog
-  (biblatex only) (bug 11352).
-
-- Fix display of overset, underset, and stackrel insets (bug 11367).
-
-- Avoid extra space at the end of tooltips (bug 11353).
-
-- Show cursor correctly when loading file (bug 11377).
 
 
 * INTERNALS
-
 
 
 
@@ -195,15 +57,8 @@ What's new
 
 
 
-
 * TEX2LYX
 
-- Consider required modules when checking for layout definitions in modules
-  (bug 11156).
-
-- Fix import of Arabic polyglossia environment (part of bug 10111).
-
-- Fix import of unknown commands'/environments' options (bug 8685).
 
 
 * ADVANCED FIND AND REPLACE
@@ -211,8 +66,4 @@ What's new
 
 
 * BUILD/INSTALLATION
-
-- Fix linker options for Mac builds to avoid failures when running
-  install_name_tool on Mac to create relocatable binaries using the
-  bundled private frameworks.
 
