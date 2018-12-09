@@ -1,0 +1,10 @@
+This file documents (finally) some of the 'dependencies' needed to build 
+the Windows installer.
+
+ImageMagick
+	ImageMagick-7.0.8-15-Q16-x86-dll.exe
+	The version number will of course vary. Basically, it seems that we just
+	need to install this, and then copy the installed files over into the 
+	Dependencies folder.
+	It would be nice to know if we could instead use the portable version.
+
