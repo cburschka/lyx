@@ -142,6 +142,7 @@ cmake/doc/ReplaceValues.py \
 cmake/lyx_date.h.cmake \
 cmake/lyx.rc \
 cmake/man/CMakeLists.txt \
+cmake/lyx.coff \
 cmake/mingw.bat \
 cmake/modules/FindASPELL.cmake \
 cmake/modules/FindAiksaurusLIB.cmake \
@@ -167,6 +168,7 @@ cmake/pcheaders.h \
 cmake/po/cat.py \
 cmake/po/unix2dos.py \
 cmake/post_install/CMakeLists.txt \
+cmake/scripts/cmingw \
 cmake/scripts/LyXCreateImagesResource.cmake \
 cmake/scripts/LyXGetVersion.cmake \
 cmake/scripts/xmingw \
