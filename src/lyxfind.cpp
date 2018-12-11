@@ -1099,16 +1099,17 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 			AS_STR_INSETS | AS_STR_SKIPDELETE | AS_STR_PLAINTEXT,
 			&runparams);
 	} else if (cur.inMathed()) {
-		docstring s;
 		CursorSlice cs = cur.top();
 		MathData md = cs.cell();
 		MathData::const_iterator it_end =
 			(( len == -1 || cs.pos() + len > int(md.size()))
 			 ? md.end()
 			 : md.begin() + cs.pos() + len );
+		MathData md2;
 		for (MathData::const_iterator it = md.begin() + cs.pos();
 		     it != it_end; ++it)
-			s = s + asString(*it);
+			md2.push_back(*it);
+		docstring s = asString(md2);
 		LYXERR(Debug::FIND, "Stringified math: '" << s << "'");
 		return s;
 	}
@@ -1162,9 +1163,11 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 			((len == -1 || cs.pos() + len > int(md.size()))
 			 ? md.end()
 			 : md.begin() + cs.pos() + len);
+		MathData md2;
 		for (MathData::const_iterator it = md.begin() + cs.pos();
 		     it != it_end; ++it)
-			ods << asString(*it);
+			md2.push_back(*it);
+		ods << asString(md2);
 
 		// Retrieve the math environment type, and add '$' or '$]'
 		// or others (\end{equation}) accordingly
