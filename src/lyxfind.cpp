@@ -1013,6 +1013,7 @@ class KeyInfo {
     isChar,
     isSectioning,
     isMain,                             /* for \\foreignlanguage */
+    noMain,                             /* to discard language in content */
     isRegex,
     isMath,
     isStandard,
@@ -1371,6 +1372,9 @@ void LatexInfo::buildEntries(bool isPatternString)
   bool evaluatingRegexp = false;
   MathInfo mi;
   bool evaluatingMath = false;
+  bool evaluatingCode = false;
+  size_t codeEnd = 0;
+  int codeStart = -1;
   KeyInfo found;
   bool math_end_waiting = false;
   size_t math_pos = 10000;
@@ -1589,6 +1593,29 @@ void LatexInfo::buildEntries(bool isPatternString)
         found._tokensize = found.head.length();
         found._dataStart = found._tokenstart + found.head.length();
         size_t endpos = interval.findclosing(found._dataStart, interval.par.length());
+        if (found.keytype == KeyInfo::noMain) {
+          evaluatingCode = true;
+          codeEnd = endpos;
+          codeStart = found._dataStart;
+        }
+        else if (evaluatingCode) {
+          if (size_t(found._dataStart) > codeEnd)
+            evaluatingCode = false;
+          else if (found.keytype == KeyInfo::isMain) {
+            // Disable this key, treate it as standard
+            found.keytype = KeyInfo::isStandard;
+            found.disabled = true;
+            if ((codeEnd == interval.par.length()) &&
+                (found._tokenstart == codeStart)) {
+              // trickery, because the code inset starts
+              // with \selectlanguage ...
+              codeEnd = endpos;
+              if (entries.size() > 1) {
+                entries[entries.size()-1]._dataEnd = codeEnd;
+              }
+            }
+          }
+        }
         if ((endpos == interval.par.length()) &&
             (found.keytype == KeyInfo::doRemove)) {
           // Missing closing => error in latex-input?
@@ -1629,7 +1656,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   static bool keysBuilt = false;
   if (keysBuilt && !isPatternString) return;
 
-  // Know standard keys with 1 parameter.
+  // Known standard keys with 1 parameter.
   // Split is done, if not at start of region
   makeKey("textsf|textss|texttt", KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getFamily()), isPatternString);
   makeKey("textbf",               KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getSeries()), isPatternString);
@@ -1664,9 +1691,15 @@ void LatexInfo::buildKeys(bool isPatternString)
   // No split
   makeKey("inputencoding|shortcut|label|ref", KeyInfo(KeyInfo::doRemove, 1, false), isPatternString);
 
+  // handle like standard keys with 1 parameter.
+  makeKey("url|href", KeyInfo(KeyInfo::isStandard, 1, false), isPatternString);
+
   // Macros to remove, but let the parameter survive
   // No split
-  makeKey("url|href|menuitem|footnote|code|index|textmd|textrm", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+  makeKey("menuitem|index|textmd|textrm", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+
+  // Remove language spec from content of these insets
+  makeKey("code|footnote", KeyInfo(KeyInfo::noMain, 1, false), isPatternString);
 
   // Same effect as previous, parameter will survive (because there is no one anyway)
   // No split
@@ -1850,6 +1883,8 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       }
       break;
     }
+    case KeyInfo::noMain:
+      // fall through
     case KeyInfo::isStandard: {
       if (actual.disabled) {
         removeHead(actual);
