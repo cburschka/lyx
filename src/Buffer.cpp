@@ -2493,6 +2493,9 @@ void Buffer::clearBibFileCache() const
 
 void Buffer::reloadBibInfoCache() const
 {
+	if (isInternal())
+		return;
+
 	// use the master's cache
 	Buffer const * const tmp = masterBuffer();
 	if (tmp != this) {
