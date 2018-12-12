@@ -2334,6 +2334,7 @@ void Buffer::updateBibfilesCache(UpdateScope scope) const
 		return;
 	}
 
+	docstring_list old_cache = d->bibfiles_cache_;
 	d->bibfiles_cache_.clear();
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
 		if (it->lyxCode() == BIBTEX_CODE) {
@@ -2357,8 +2358,9 @@ void Buffer::updateBibfilesCache(UpdateScope scope) const
 		}
 	}
 	d->bibfile_cache_valid_ = true;
-	d->bibinfo_cache_valid_ = false;
 	d->cite_labels_valid_ = false;
+	if (d->bibfiles_cache_ != old_cache)
+		d->bibinfo_cache_valid_ = false;
 }
 
 
@@ -2455,6 +2457,9 @@ void Buffer::checkIfBibInfoCacheIsValid() const
 		return;
 	}
 
+	// we'll assume it's ok and change this if it's not
+	d->bibinfo_cache_valid_ = true;
+	d->cite_labels_valid_ = true;
 	// compare the cached timestamps with the actual ones.
 	docstring_list const & bibfiles_cache = getBibfiles();
 	for (auto const & bf : bibfiles_cache) {
@@ -2488,6 +2493,7 @@ void Buffer::reloadBibInfoCache() const
 	checkIfBibInfoCacheIsValid();
 	if (d->bibinfo_cache_valid_)
 		return;
+	LYXERR(Debug::FILES, "Bibinfo cache was invalid.");
 
 	// re-read file locations when this info changes
 	// FIXME Is this sufficient? Or should we also force that
