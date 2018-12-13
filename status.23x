@@ -58,6 +58,9 @@ What's new
 
 - Fix selection of unmarked RtL characters with Qt 5.11 (bug 11284).
 
+- Fix on-screen display of macros whose name is a single non-letter symbol
+  (part of bug 11158).
+
 
 * INTERNALS
 
