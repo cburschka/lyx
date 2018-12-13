@@ -1017,6 +1017,7 @@ class KeyInfo {
     isRegex,
     isMath,
     isStandard,
+    noContent,                          /* discard content */
     isSize,
     invalid,
     doRemove,
@@ -1682,28 +1683,40 @@ void LatexInfo::buildKeys(bool isPatternString)
 
   // Know charaters
   // No split
-  makeKey("backslash|textbackslash|textasciicircum|textasciitilde|ldots", KeyInfo(KeyInfo::isChar, 1, false), isPatternString);
+  makeKey("backslash|textbackslash|slash",  KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  makeKey("textasciicircum|textasciitilde", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  makeKey("textasciiacute",                 KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  makeKey("dots|ldots",                     KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  // Spaces
+  makeKey("quad|qquad|hfill|dotfill",               KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  makeKey("textvisiblespace|nobreakspace",          KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  makeKey("negthickspace|negmedspace|negthinspace", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  // Skip
+  makeKey("enskip|smallskip|medskip|bigskip|vfill", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  // Custom space/skip, remove the content (== length value)
+  makeKey("vspace|hspace|mspace", KeyInfo(KeyInfo::noContent, 1, false), isPatternString);
   // Found in fr/UserGuide.lyx
-  makeKey("og|fg|textvisiblespace|lyx", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-  makeKey("textquotedbl|lyxarrow", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-
+  makeKey("og|fg", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  // quotes
+  makeKey("textquotedbl|quotesinglbase|lyxarrow", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  makeKey("textquotedblleft|textquotedblright", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   // Known macros to remove (including their parameter)
   // No split
-  makeKey("inputencoding|shortcut|label|ref", KeyInfo(KeyInfo::doRemove, 1, false), isPatternString);
+  makeKey("inputencoding|shortcut|label|ref|index", KeyInfo(KeyInfo::doRemove, 1, false), isPatternString);
 
   // handle like standard keys with 1 parameter.
-  makeKey("url|href", KeyInfo(KeyInfo::isStandard, 1, false), isPatternString);
+  makeKey("url|href|vref|thanks", KeyInfo(KeyInfo::isStandard, 1, false), isPatternString);
 
   // Macros to remove, but let the parameter survive
   // No split
-  makeKey("menuitem|index|textmd|textrm", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+  makeKey("menuitem|textmd|textrm", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
 
   // Remove language spec from content of these insets
   makeKey("code|footnote", KeyInfo(KeyInfo::noMain, 1, false), isPatternString);
 
   // Same effect as previous, parameter will survive (because there is no one anyway)
   // No split
-  makeKey("noindent", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
+  makeKey("noindent|textcompwordmark", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
   // Remove table decorations
   makeKey("hline|tabularnewline|toprule|bottomrule|midrule", KeyInfo(KeyInfo::doRemove, 0, true), isPatternString);
   // Discard shape-header
@@ -1715,16 +1728,16 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, true), isPatternString);
 
   // Survives, like known character
-  makeKey("lyx|latex|tex", KeyInfo(KeyInfo::isIgnored, 0, false), isPatternString);
+  makeKey("lyx|latex|latexe|tex", KeyInfo(KeyInfo::isIgnored, 0, false), isPatternString);
   makeKey("item", KeyInfo(KeyInfo::isList, 1, false), isPatternString);
 
   makeKey("begin|end", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
   makeKey("[|]", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
   makeKey("$", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
 
-  makeKey("par|uldepth|ULdepth|protect", KeyInfo(KeyInfo::doRemove, 0, true), isPatternString);
+  makeKey("par|uldepth|ULdepth|protect|nobreakdash", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
   // Remove RTL/LTR marker
-  makeKey("l|r|textlr|textfr|textar|beginl|endl", KeyInfo(KeyInfo::doRemove, 0, true), isPatternString);
+  makeKey("l|r|textlr|textfr|textar|beginl|endl", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
 
   if (isPatternString) {
     // Allow the first searched string to rebuild the keys too
@@ -1883,6 +1896,10 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       }
       break;
     }
+    case KeyInfo::noContent: {
+      interval.addIntervall(actual._dataStart, actual._dataEnd);
+    }
+      // fall through
     case KeyInfo::noMain:
       // fall through
     case KeyInfo::isStandard: {
