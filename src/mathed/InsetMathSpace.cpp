@@ -320,9 +320,11 @@ void InsetMathSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "mathspace") {
 			MathData ar;
+			Buffer * buf = buffer_;
 			if (createInsetMath_fromDialogStr(cmd.argument(), ar)) {
 				cur.recordUndo();
 				*this = *ar[0].nucleus()->asSpaceInset();
+				buffer_ = buf;
 				break;
 			}
 		}
