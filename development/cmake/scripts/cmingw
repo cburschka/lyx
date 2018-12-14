@@ -33,3 +33,6 @@ $CMAKE $LYXSRC \
     -DLYX_HUNSPELL=1 \
     -DLYX_3RDPARTY_BUILD=1 \
     -DLYX_MERGE_FILES=0
+
+# Then run make in the build directory
+# Then run make package
