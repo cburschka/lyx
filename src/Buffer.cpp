@@ -2404,6 +2404,13 @@ docstring_list const & Buffer::getBibfiles(UpdateScope scope) const
 	Buffer const * const pbuf = masterBuffer();
 	if (pbuf != this && scope != UpdateChildOnly)
 		return pbuf->getBibfiles();
+
+	// In 2.3.x, we have:
+	//if (!d->bibfile_cache_valid_)
+	//	this->updateBibfilesCache(scope);
+	// I think that is a leftover, but there have been so many back-
+	// and-forths with this, due to Windows issues, that I am not sure.
+
 	return d->bibfiles_cache_;
 }
 
