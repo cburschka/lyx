@@ -186,6 +186,12 @@ public:
 	void setSelection(DocIterator const & where, int n);
 	///
 	void clearSelection();
+	/// check whether selection contains specific type of inset
+	/// returns 0 if no selection was made
+	bool insetInSelection(InsetCode const & inset);
+	/// count occurences of specific inset type in the selection
+	/// returns 0 if no selection was made
+	int countInsetsInSelection(InsetCode const & inset);
 	/// access start of selection
 	CursorSlice selBegin() const;
 	/// access end of selection

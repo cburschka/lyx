@@ -1149,7 +1149,7 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_GRAPHICS_UNIFY:
-		flag.setEnabled(cur.selection());
+		flag.setEnabled(cur.countInsetsInSelection(GRAPHICS_CODE)>1);
 		break;
 
 	case LFUN_WORD_FINDADV: {

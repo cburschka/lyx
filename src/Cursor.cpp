@@ -1014,6 +1014,56 @@ void Cursor::clearSelection()
 }
 
 
+int Cursor::countInsetsInSelection(InsetCode const & inset_code)
+{
+	if (!selection_)
+		return 0;
+
+	DocIterator from, to;
+	from = selectionBegin();
+	to = selectionEnd();
+
+	int count = 0;
+
+	if (!from.nextInset())      //move to closest inset
+		from.forwardInset();
+
+	while (!from.empty() && from < to) {
+		Inset * inset = from.nextInset();
+		if (!inset)
+			break;
+		if (inset->lyxCode() == inset_code)
+			count ++;
+		from.forwardInset();
+	}
+	return count;
+}
+
+
+bool Cursor::insetInSelection(InsetCode const & inset_code)
+{
+	if (!selection_)
+		return false;
+
+	DocIterator from, to;
+	from = selectionBegin();
+	to = selectionEnd();
+
+	if (!from.nextInset())      //move to closest inset
+		from.forwardInset();
+
+	while (!from.empty() && from < to) {
+		Inset * inset = from.nextInset();
+		if (!inset)
+			break;
+		if (inset->lyxCode() == inset_code)
+			return true;
+		from.forwardInset();
+	}
+	return false;
+}
+
+
 void Cursor::setTargetX(int x)
 {
 	x_target_ = x;
