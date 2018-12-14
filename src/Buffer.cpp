@@ -2335,6 +2335,7 @@ void Buffer::getLabelList(vector<docstring> & list) const
 }
 
 
+#if 0
 void Buffer::updateBibfilesCache(UpdateScope scope) const
 {
 	// FIXME This is probably unnecssary, given where we call this.
@@ -2372,6 +2373,7 @@ void Buffer::updateBibfilesCache(UpdateScope scope) const
 	if (d->bibfiles_cache_ != old_cache)
 		d->bibinfo_cache_valid_ = false;
 }
+#endif
 
 
 void Buffer::invalidateBibinfoCache() const
@@ -2392,9 +2394,6 @@ docstring_list const & Buffer::getBibfiles(UpdateScope scope) const
 	Buffer const * const pbuf = masterBuffer();
 	if (pbuf != this && scope != UpdateChildOnly)
 		return pbuf->getBibfiles();
-
-	if (!d->bibfile_cache_valid_)
-		this->updateBibfilesCache(scope);
 
 	return d->bibfiles_cache_;
 }
