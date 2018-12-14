@@ -682,6 +682,28 @@ bool Formats::view(Buffer const & buffer, FileName const & filename,
 
 	string command = format->viewer();
 
+	// Escape backslashes if not already in double or single quotes.
+	// We cannot simply quote the whole command as there may be arguments.
+	if (contains(command, '\\')) {
+		bool inquote1 = false;
+		bool inquote2 = false;
+		string::iterator cit = command.begin();
+		for (; cit != command.end(); ++cit) {
+			switch (*cit) {
+			case '"':
+				inquote1 = !inquote1;
+				break;
+			case '\'':
+				inquote2 = !inquote2;
+				break;
+			case '\\':
+				if (!inquote1 && !inquote2)
+					cit = ++command.insert(cit, '\\');
+				break;
+			}
+		}
+	}
+
 	if (format_name == "dvi" &&
 	    !lyxrc.view_dvi_paper_option.empty()) {
 		string paper_size = buffer.params().paperSizeName(BufferParams::XDVI);
