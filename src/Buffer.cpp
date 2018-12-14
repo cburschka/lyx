@@ -1431,6 +1431,9 @@ bool Buffer::save() const
 
 	FileName savefile(tempfile->name());
 	LYXERR(Debug::FILES, "Saving to " << savefile.absFileName());
+	if (!savefile.clonePermissions(fileName()))
+		LYXERR0("Failed to clone the permission from " << fileName().absFileName() << " to " << savefile.absFileName());
+
 	if (!writeFile(savefile))
 		return false;
 
