@@ -2335,6 +2335,9 @@ void Buffer::getLabelList(vector<docstring> & list) const
 }
 
 
+// This is not in master, so it has been removed at 2126d5a3, on
+// 14 December 2018, so as to test whether it's needed. If there
+// aren't any complaints, it can be fully removed.
 #if 0
 void Buffer::updateBibfilesCache(UpdateScope scope) const
 {
