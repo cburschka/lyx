@@ -1010,19 +1010,34 @@ static Features identifyFeatures(string const & s)
 class KeyInfo {
  public:
   enum KeyType {
+    /* Char type with content discarded
+     * like \hspace{1cm} */
+    noContent,
+    /* Char, like \backslash */
     isChar,
+    /* \part, \section*, ... */
     isSectioning,
-    isMain,                             /* for \\foreignlanguage */
-    noMain,                             /* to discard language in content */
+    /* \foreignlanguage{ngerman}, ... */
+    isMain,
+    /* inside \code{} or \footnote{}
+     * to discard language in content */
+    noMain,
     isRegex,
+    /* \begin{eqnarray}...\end{eqnarray}, ... $...$ */
     isMath,
+    /* fonts, colors, markups, ... */
     isStandard,
-    noContent,                          /* discard content */
+    /* footnotesize, ... large, ...
+     * Ignore all of them */
     isSize,
     invalid,
+    /* inputencoding, shortcut, ...
+     * Discard also content, because they do not help in search */
     doRemove,
+    /* item */
     isList,
-    isIgnored                           /* to be ignored by creating infos */
+    /* tex, latex, ... like isChar */
+    isIgnored
   };
  KeyInfo()
    : keytype(invalid),
@@ -1571,7 +1586,8 @@ void LatexInfo::buildEntries(bool isPatternString)
       found._tokenstart = sub.position(size_t(0));
       if (found.parenthesiscount == 0) {
         // Probably to be discarded
-        char following = interval.par[sub.position(size_t(0)) + sub.str(3).length() + 1];
+        size_t following_pos = sub.position(size_t(0)) + sub.str(3).length() + 1;
+        char following = interval.par[following_pos];
         if (following == ' ')
           found.head = "\\" + sub.str(3) + " ";
         else if (following == '=') {
@@ -1874,6 +1890,10 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
   int nextKeyIdx = 0;
   switch (actual.keytype)
   {
+    case KeyInfo::noContent: {          /* char like "\hspace{2cm}" */
+      interval.addIntervall(actual._dataStart, actual._dataEnd);
+    }
+      // fall through
     case KeyInfo::isChar: {
       nextKeyIdx = getNextKey();
       break;
@@ -1896,10 +1916,6 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       }
       break;
     }
-    case KeyInfo::noContent: {
-      interval.addIntervall(actual._dataStart, actual._dataEnd);
-    }
-      // fall through
     case KeyInfo::noMain:
       // fall through
     case KeyInfo::isStandard: {
