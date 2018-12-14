@@ -2480,6 +2480,10 @@ void Buffer::checkIfBibInfoCacheIsValid() const
 	if (!d->bibinfo_cache_valid_)
 		return;
 
+	// we'll assume it's ok and change this if it's not
+	d->bibinfo_cache_valid_ = true;
+	d->cite_labels_valid_ = true;
+
 	// compare the cached timestamps with the actual ones.
 	docstring_list const & bibfiles_cache = getBibfiles();
 	for (auto const & bf : bibfiles_cache) {
@@ -2503,6 +2507,10 @@ void Buffer::clearBibFileCache() const
 
 void Buffer::reloadBibInfoCache(bool const force) const
 {
+	// we should not need to do this for internal buffers
+	if (isInternal())
+		return;
+
 	// use the master's cache
 	Buffer const * const tmp = masterBuffer();
 	if (tmp != this) {
@@ -2516,6 +2524,7 @@ void Buffer::reloadBibInfoCache(bool const force) const
 			return;
 	}
 
+	LYXERR(Debug::FILES, "Bibinfo cache was invalid.");
 	// re-read file locations when this info changes
 	// FIXME Is this sufficient? Or should we also force that
 	// in some other cases? If so, then it is easy enough to
