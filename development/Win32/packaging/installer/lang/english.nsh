@@ -85,8 +85,8 @@ ${LangFileString} ModifyingConfigureFailed "Could not set 'path_prefix' in the c
 #${LangFileString} RunConfigureFailed "Could not execute the configure script"
 ${LangFileString} InstallRunning "The installer is already running!"
 ${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} is already installed!$\r$\n\
-				Installing over existing installations is not recommended if the installed version\
-				is a test release or if you have problems with your existing LyX installation.\
+				Installing over existing installations is not recommended if the installed version \
+				is a test release or if you have problems with your existing LyX installation. \
 				In these cases better reinstall LyX.$\r$\n\
 				Do you nevertheless want to install LyX over the existing version?"
 ${LangFileString} NewerInstalled "You are trying to install an older version of LyX than what you have installed.$\r$\n\
