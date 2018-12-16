@@ -7,16 +7,15 @@
 
 //  See http://www.boost.org for updates, documentation, and revision history. 
 
-#ifndef BOOST_MATH_COMMON_FACTOR_CT_HPP
-#define BOOST_MATH_COMMON_FACTOR_CT_HPP
+#ifndef BOOST_INTEGER_COMMON_FACTOR_CT_HPP
+#define BOOST_INTEGER_COMMON_FACTOR_CT_HPP
 
-#include <boost/math_fwd.hpp>  // self include
+#include <boost/integer_fwd.hpp>  // self include
 #include <boost/config.hpp>  // for BOOST_STATIC_CONSTANT, etc.
-#include <boost/mpl/integral_c.hpp>
 
 namespace boost
 {
-namespace math
+namespace integer
 {
 
 //  Implementation details  --------------------------------------------------//
@@ -76,22 +75,28 @@ namespace detail
 
 //  Compile-time greatest common divisor evaluator class declaration  --------//
 
-template < static_gcd_type Value1, static_gcd_type Value2 >
-struct static_gcd : public mpl::integral_c<static_gcd_type, (detail::static_gcd_helper_t<Value1, Value2>::value) >
+template < static_gcd_type Value1, static_gcd_type Value2 > struct static_gcd
 {
-};  // boost::math::static_gcd
+    BOOST_STATIC_CONSTANT( static_gcd_type, value = (detail::static_gcd_helper_t<Value1, Value2>::value) );
+};  // boost::integer::static_gcd
 
+#if !defined(BOOST_NO_INCLASS_MEMBER_INITIALIZATION)
+template< static_gcd_type Value1, static_gcd_type Value2 > static_gcd_type const static_gcd< Value1, Value2 >::value;
+#endif
 
 //  Compile-time least common multiple evaluator class declaration  ----------//
 
-template < static_gcd_type Value1, static_gcd_type Value2 >
-struct static_lcm : public mpl::integral_c<static_gcd_type, (detail::static_lcm_helper_t<Value1, Value2>::value) >
+template < static_gcd_type Value1, static_gcd_type Value2 > struct static_lcm
 {
-};  // boost::math::static_lcm
+    BOOST_STATIC_CONSTANT( static_gcd_type, value = (detail::static_lcm_helper_t<Value1, Value2>::value) );
+};  // boost::integer::static_lcm
 
+#if !defined(BOOST_NO_INCLASS_MEMBER_INITIALIZATION)
+template< static_gcd_type Value1, static_gcd_type Value2 > static_gcd_type const static_lcm< Value1, Value2 >::value;
+#endif
 
-}  // namespace math
+}  // namespace integer
 }  // namespace boost
 
 
-#endif  // BOOST_MATH_COMMON_FACTOR_CT_HPP
+#endif  // BOOST_INTEGER_COMMON_FACTOR_CT_HPP
