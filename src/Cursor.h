@@ -241,9 +241,10 @@ private:
 
 	// FIXME: make them private
 public:
-	/// the current font settings
+	/// The current font settings. This holds the settings for output.
 	Font current_font;
-	/// the current font
+	/// The current display font. This holds the settings of the text
+	/// in the workarea.
 	Font real_current_font;
 };
 
