@@ -388,7 +388,7 @@ lyx::FontState setMarkupState(Qt::CheckState cs)
 void GuiCharacter::updateContents()
 {
 	if (bufferview()->cursor().selection()) {
-		Font font = bufferview()->cursor().real_current_font;
+		Font font = bufferview()->cursor().current_font;
 		FontInfo fi = font.fontInfo();
 		BufferParams const & bp = buffer().masterParams();
 
@@ -430,7 +430,7 @@ void GuiCharacter::updateContents()
 		}
 		font_ = font;
 	} else
-		font_ = bufferview()->cursor().real_current_font;
+		font_ = bufferview()->cursor().current_font;
 
 	paramsToDialog(font_);
 }
