@@ -1642,9 +1642,9 @@ void LatexInfo::buildEntries(bool isPatternString)
         }
         else
           found._dataEnd = endpos;
-        if (isPatternString) {
-          keys[key].used = true;
-        }
+      }
+      if (isPatternString) {
+        keys[key].used = true;
       }
     }
     entries.push_back(found);
@@ -1741,7 +1741,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("triangleuppar|triangledownpar|droppar", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("triangleleftpar|shapepar|dropuppar",    KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   // like ('tiny{}' or '\tiny ' ... )
-  makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, true), isPatternString);
+  makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, false), isPatternString);
 
   // Survives, like known character
   makeKey("lyx|latex|latexe|tex", KeyInfo(KeyInfo::isIgnored, 0, false), isPatternString);
@@ -1899,12 +1899,18 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       break;
     }
     case KeyInfo::isSize: {
-      if (actual.disabled) {
-        // Allways disabled
+      if (actual.disabled || (interval.par[actual._dataStart] != '{')) {
         processRegion(actual._dataEnd, actual._dataEnd+1); /* remove possibly following {} */
         interval.addIntervall(actual._tokenstart, actual._dataEnd+1);
         nextKeyIdx = getNextKey();
       } else {
+        // Determine the end if used like '{\tiny{}...}'
+        if (interval.par[actual._dataStart+1] == '}') {
+          actual._dataStart += 1;
+          interval.addIntervall(actual._dataStart, actual._dataStart+1);
+          actual._dataEnd = interval.findclosing(actual._dataStart+1, interval.par.length()) + 1;
+          actual.parenthesiscount = 1;
+        }
         // Split on this key if not at start
         int start = interval.nextNotIgnored(previousStart);
         if (start < actual._tokenstart) {
@@ -2097,7 +2103,15 @@ int LatexInfo::process(ostringstream &os, KeyInfo &actual )
   if ((actual.keytype == KeyInfo::isMain) && actual.disabled) {
     interval.addIntervall(actual._tokenstart, actual._tokenstart+actual._tokensize);
   }
-  if (interval.nextNotIgnored(actual._dataStart) < output_end)
+  // Remove possible empty data
+  int dstart = interval.nextNotIgnored(actual._dataStart);
+  while ((dstart < output_end) && (interval.par[dstart] == '{')) {
+    interval.addIntervall(dstart, dstart+1);
+    int dend = interval.findclosing(dstart+1, output_end);
+    interval.addIntervall(dend, dend+1);
+    dstart = interval.nextNotIgnored(dstart+1);
+  }
+  if (dstart < output_end)
     interval.output(os, output_end);
   interval.addIntervall(actual._tokenstart, end);
   return nextKeyIdx;
