@@ -951,7 +951,7 @@ static size_t identifyLeading(string const & s)
 	// @TODO Support \item[text]
 	// Kornel: Added textsl, textsf, textit, texttt and noun
 	// + allow to search for colored text too
-	while (regex_replace(t, t, REGEX_BOS "\\\\(((emph|noun|minisec|text(bf|md|sl|sf|it|tt))|((textcolor|foreignlanguage)\\{[a-z]+\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)\\{", "")
+	while (regex_replace(t, t, REGEX_BOS "\\\\(((footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge|emph|noun|minisec|text(bf|md|sl|sf|it|tt))|((textcolor|foreignlanguage)\\{[a-z]+\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)\\{", "")
 	       || regex_replace(t, t, REGEX_BOS "\\$", "")
 	       || regex_replace(t, t, REGEX_BOS "\\\\\\[ ", "")
 	       || regex_replace(t, t, REGEX_BOS " ?\\\\item\\{[a-z]+\\}", "")
@@ -973,7 +973,7 @@ typedef map<string, bool> Features;
 static Features identifyFeatures(string const & s)
 {
 	static regex const feature("\\\\(([a-z]+(\\{([a-z]+)\\}|\\*)?))\\{");
-	static regex const valid("^(((emph|noun|text(bf|md|sl|sf|it|tt)|(textcolor|foreignlanguage|item)\\{[a-z]+\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)$");
+	static regex const valid("^(((footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge|emph|noun|text(bf|md|sl|sf|it|tt)|(textcolor|foreignlanguage|item)\\{[a-z]+\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)$");
 	smatch sub;
 	bool displ = true;
 	Features info;
