@@ -363,12 +363,12 @@ FontState getStrike(FontInfo const & fi)
 Qt::CheckState getMarkupState(lyx::FontState fs)
 {
 	switch (fs) {
+	case FONT_INHERIT:
 	case FONT_OFF:
 		return Qt::Unchecked;
 	case FONT_ON:
 		return Qt::Checked;
 	case FONT_TOGGLE:
-	case FONT_INHERIT:
 	case FONT_IGNORE:
 	default:
 		return Qt::PartiallyChecked;
