@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-09-29 10:46+0200\n"
-"PO-Revision-Date: 2018-09-29 09:06+0000\n"
+"POT-Creation-Date: 2018-12-17 13:46+0100\n"
+"PO-Revision-Date: 2018-12-17 12:49+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -4302,16 +4302,6 @@ msgstr "No&rmálne:"
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:387
 msgid "&Tiny:"
 msgstr "&Drobné:"
-
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:413
-msgid ""
-"Checking this improves performance, but might decrease the on-screen quality "
-"of fonts"
-msgstr "Zlepší výkonnosť, ale môže zhoršiť zobrazenie fontov na obrazovke"
-
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:416
-msgid "&Use pixmap cache to speed up font rendering"
-msgstr "&Použiť vyrovnávaciu pamäť pre rýchlejšie vykresľovanie fontov"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:68
 msgid "&New"
@@ -14252,19 +14242,21 @@ msgstr "Podtitul"
 msgid "Paragraph Lists (paralist)"
 msgstr "Odstavcové listiny (paralist)"
 
-#: lib/layouts/paralist.module:9
+#: lib/layouts/paralist.module:10
 msgid ""
 "The package paralist provides some new list environments. Itemized and "
 "enumerated lists can be typeset within paragraphs, as paragraphs and in a "
 "compact version. Most environments have optional arguments to format the "
 "labels. Additionally, the LaTeX environments itemize and enumerate are "
-"extended to use a similar optional argument."
+"extended to use a similar optional argument. For details see Paralist in "
+"Specific Manuals."
 msgstr ""
 "Balík paralist poskytuje niekoľké nové listinové prostredia. Položkové a "
 "číslované listiny môžu byť vysádzané vnútri odstavcov, ako odstavce a aj v "
 "kompaktnej verzii. Väčšina prostredí má voliteľné argumenty na formátovanie "
 "návestia. Dodatočne, LaTeX-ové prostredia itemize a enumerate sú rozšírené "
-"na použitie obdobného voliteľného argumentu."
+"na použitie obdobného voliteľného argumentu. Pre detaily viď Paralist v "
+"Špecifické manuály."
 
 #: lib/layouts/paralist.module:30 lib/layouts/paralist.module:37
 #: lib/layouts/paralist.module:52 lib/layouts/paralist.module:61
@@ -17670,6 +17662,10 @@ msgstr "IBM Plex serifové svetlé"
 msgid "IBM Plex Serif Semibold"
 msgstr "IBM Plex serifové polotučné"
 
+#: lib/latexfonts:203
+msgid "Adobe Source Serif Pro"
+msgstr "Adobe Source Serif Pro"
+
 #: lib/latexfonts:169 lib/latexfonts:178
 msgid "URW Garamond"
 msgstr "URW Garamond"
@@ -17800,6 +17796,10 @@ msgstr "IBM Plex bezserifové svetlé"
 msgid "IBM Plex Sans Semibold"
 msgstr "IBM Plex bezserifové polotučné"
 
+#: lib/latexfonts:645
+msgid "Adobe Source Sans Pro"
+msgstr "Adobe Source Sans Pro"
+
 #: lib/latexfonts:558
 msgid "Helvetica"
 msgstr "Helvetica"
@@ -17899,6 +17899,10 @@ msgstr "IBM Plex strojopisné svetlé"
 #: lib/latexfonts:815
 msgid "IBM Plex Mono Semibold"
 msgstr "IBM Plex strojopisné polotučné"
+
+#: lib/latexfonts:837
+msgid "Adobe Source Code Pro"
+msgstr "Adobe Source Code Pro"
 
 #: lib/latexfonts:703 lib/latexfonts:711
 msgid "Libertine Mono"
@@ -18636,6 +18640,14 @@ msgstr "Jednoduchý oddeľovač|J"
 msgid "Paragraph Break|B"
 msgstr "Zlomiť odstavec|Z"
 
+#: lib/ui/stdcontext.inc:339
+msgid "Edit Externally..."
+msgstr "Externe upraviť…"
+
+#: lib/ui/stdcontext.inc:340
+msgid "End Editing Externally..."
+msgstr "Externú úpravu dokončiť…"
+
 #: lib/ui/stdcontext.inc:339 lib/ui/stdmenus.inc:106 lib/ui/stdtoolbars.inc:80
 #: src/Text3.cpp:1518 src/mathed/InsetMathNest.cpp:564
 msgid "Cut"
@@ -18956,10 +18968,6 @@ msgstr "Vybrať sekciu|V"
 #: lib/ui/stdcontext.inc:653
 msgid "Wrap by Preview|y"
 msgstr "Obtekať pri náhľade|b"
-
-#: lib/ui/stdcontext.inc:656
-msgid "End Editing Externally...|e"
-msgstr "Externú úpravu dokončiť…|E"
 
 #: lib/ui/stdcontext.inc:672 lib/ui/stdmenus.inc:359
 msgid "Lock Toolbars|L"
@@ -28286,13 +28294,6 @@ msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr ""
 "Umožniť automatické zobrazovanie bublinových nápovedí na pracovnej ploche."
 
-#: src/LyXRC.cpp:3443
-msgid ""
-"Enable the pixmap cache that might improve performance on Mac and Windows."
-msgstr ""
-"Zapnúť rýchlu vyrovnávaciu pamäť pre pixmap, ktorá môže zlepšiť výkonnosť na "
-"Mac-u a Windows."
-
 #: src/LyXRC.cpp:3447
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
@@ -29254,6 +29255,10 @@ msgstr "Preferencie"
 #: src/frontends/qt4/GuiApplication.cpp:686
 msgid "Reconfigure"
 msgstr "Rekonfigurácia"
+
+#: src/frontends/qt4/GuiApplication.cpp:686
+msgid "Restore Defaults"
+msgstr "Vrátiť na Predvolené"
 
 #: src/frontends/qt4/GuiApplication.cpp:687
 msgid "Quit %1"
@@ -30410,6 +30415,11 @@ msgstr "Vyžadované moduly: %1$s."
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr "Vylúčené moduly: %1$s."
+
+#: src/frontends/qt4/GuiDocument.cpp:2926
+#, c-format
+msgid "Filename: %1$s.module."
+msgstr "Súbor: %1$s.module."
 
 #: src/frontends/qt4/GuiDocument.cpp:2927
 msgid "WARNING: Some required packages are unavailable!"
@@ -34751,6 +34761,20 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid ""
+#~ "Checking this improves performance, but might decrease the on-screen "
+#~ "quality of fonts"
+#~ msgstr "Zlepší výkonnosť, ale môže zhoršiť zobrazenie fontov na obrazovke"
+
+#~ msgid "&Use pixmap cache to speed up font rendering"
+#~ msgstr "&Použiť vyrovnávaciu pamäť pre rýchlejšie vykresľovanie fontov"
+
+#~ msgid ""
+#~ "Enable the pixmap cache that might improve performance on Mac and Windows."
+#~ msgstr ""
+#~ "Zapnúť rýchlu vyrovnávaciu pamäť pre pixmap, ktorá môže zlepšiť výkonnosť "
+#~ "na Mac-u a Windows."
 
 #~ msgid "'invar' or 'outvar'"
 #~ msgstr "'invar' alebo 'outvar'"
@@ -39566,3 +39590,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "StoreChessboard"
 #~ msgstr "Šachovnicu odložiť"
+
+#~ msgid "End Editing Externally...|e"
+#~ msgstr "Externú úpravu dokončiť…|E"
