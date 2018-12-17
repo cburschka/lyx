@@ -683,6 +683,7 @@ public:
 		_("About %1");
 		_("Preferences");
 		_("Reconfigure");
+		_("Restore Defaults");
 		_("Quit %1");
 		_("&OK");
 		// Already in po: "Cancel", "&Cancel"
