@@ -56,6 +56,8 @@ What's new
 
 - Fix reloading of local layout file (bug 11120).
 
+- Check for dirty hidden child documents when closing (bug 11405).
+
 - Fix selection of unmarked RtL characters with Qt 5.11 (bug 11284).
 
 - Fix on-screen display of macros whose name is a single non-letter symbol

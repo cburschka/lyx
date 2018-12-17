@@ -3019,9 +3019,13 @@ bool GuiView::closeBuffer(Buffer & buf)
 					break;
 			} else {
 				// In this case the child buffer is open but hidden.
-				// It therefore should not (MUST NOT) be dirty!
-				LATTEST(child_buf->isClean());
-				theBufferList().release(child_buf);
+				// Even in this case, children can be dirty (e.g.,
+				// after a label change in the master, see #11405).
+				// Therefore, check this.
+				if (saveBufferIfNeeded(*child_buf, false)) {
+					child_buf->removeAutosaveFile();
+					theBufferList().release(child_buf);
+				}
 			}
 		}
 	}
