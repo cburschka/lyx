@@ -402,7 +402,7 @@ void GuiCharacter::updateContents()
 			}
 			Paragraph const & par = dit.paragraph();
 			pos_type const pos = dit.pos();
-			Font tmp = par.getFont(bp, pos, font);
+			Font tmp = par.getFontSettings(bp, pos);
 			if (font.language() != tmp.language())
 				font.setLanguage(ignore_language);
 			if (fi.family() != tmp.fontInfo().family())
