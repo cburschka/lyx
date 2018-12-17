@@ -348,6 +348,9 @@ FontState getBar(FontInfo const & fi)
 	if (fi.underbar() == FONT_IGNORE)
 		return IGNORE;
 
+	if (fi.underbar() == FONT_INHERIT)
+		return INHERIT;
+
 	return NONE;
 }
 
@@ -362,6 +365,9 @@ FontState getStrike(FontInfo const & fi)
 
 	if (fi.strikeout() == FONT_IGNORE)
 		return IGNORE;
+
+	if (fi.strikeout() == FONT_INHERIT)
+		return INHERIT;
 
 	return NONE;
 }
@@ -446,6 +452,10 @@ void GuiCharacter::updateContents()
 		font_ = font;
 	} else
 		font_ = bufferview()->cursor().current_font;
+
+	// If we use the buffer language, display "Default"
+	if (font_.language() == buffer().params().language)
+		font_.setLanguage(reset_language);
 
 	paramsToDialog(font_);
 }
