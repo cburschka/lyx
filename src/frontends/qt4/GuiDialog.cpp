@@ -106,8 +106,10 @@ void GuiDialog::slotButtonBox(QAbstractButton * button)
 		slotClose();
 		break;
 	case QDialogButtonBox::Reset:
-	case QDialogButtonBox::RestoreDefaults:
 		slotRestore();
+		break;
+	case QDialogButtonBox::RestoreDefaults:
+		slotRestoreDefaults();
 		break;
 	default:
 		break;

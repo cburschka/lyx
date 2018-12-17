@@ -49,6 +49,8 @@ public Q_SLOTS:
 	 */
 	// Restore button clicked
 	void slotRestore();
+	// Restore Defaults button clicked
+	virtual void slotRestoreDefaults() {}
 	// OK button clicked
 	void slotOK();
 	// Apply button clicked

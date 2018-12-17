@@ -34,6 +34,7 @@
 #include "support/lstrings.h"
 
 #include <QAbstractItemModel>
+#include <QPushButton>
 #include <QComboBox>
 #include <QModelIndex>
 #include <QSettings>
@@ -251,6 +252,7 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
 	bc().setApply(buttonBox->button(QDialogButtonBox::Apply));
 	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
+	bc().setRestore(buttonBox->button(QDialogButtonBox::Reset));
 	bc().setAutoApply(autoapplyCB);
 	bc().addReadOnly(familyCO);
 	bc().addReadOnly(seriesCO);
@@ -307,19 +309,12 @@ void GuiCharacter::on_nospellcheckCB_clicked()
 }
 
 
-
-void GuiCharacter::change_adaptor()
+void GuiCharacter::slotRestoreDefaults()
 {
-	changed();
-
-	if (!autoapplyCB->isChecked())
-		return;
-
-	// to be really good here, we should set the combos to the values of
-	// the current text, and make it appear as "no change" if the values
-	// stay the same between applys. Might be difficult though wrt to a
-	// moved cursor - jbl
-	slotApply();
+	Font font(inherit_font);
+	font.setLanguage(reset_language);
+	paramsToDialog(font);
+	change_adaptor();
 }
 
 
@@ -404,6 +399,41 @@ lyx::FontState setMarkupState(Qt::CheckState cs)
 } // end namespace anon
 
 
+void GuiCharacter::change_adaptor()
+{
+	changed();
+
+	checkRestoreDefaults();
+
+	if (!autoapplyCB->isChecked())
+		return;
+
+	// to be really good here, we should set the combos to the values of
+	// the current text, and make it appear as "no change" if the values
+	// stay the same between applys. Might be difficult though wrt to a
+	// moved cursor - jbl
+	slotApply();
+}
+
+
+void GuiCharacter::checkRestoreDefaults()
+{
+	// (De)Activate Restore Defaults button
+	buttonBox->button(QDialogButtonBox::RestoreDefaults)->setEnabled(
+		family[familyCO->currentIndex()].second != INHERIT_FAMILY
+		|| series[seriesCO->currentIndex()].second != INHERIT_SERIES
+		|| shape[shapeCO->currentIndex()].second != INHERIT_SHAPE
+		|| size[sizeCO->currentIndex()].second != FONT_SIZE_INHERIT
+		|| setMarkupState(emphCB->checkState()) != FONT_OFF
+		|| setMarkupState(nounCB->checkState()) != FONT_OFF
+		|| setMarkupState(nospellcheckCB->checkState()) != FONT_OFF
+		|| bar[ulineCO->currentIndex()].second != INHERIT
+		|| strike[strikeCO->currentIndex()].second != INHERIT
+		|| lcolor.getFromLyXName(fromqstr(colorCO->itemData(colorCO->currentIndex()).toString())) != Color_inherit
+		|| languages.getLanguage(fromqstr(language[langCO->currentIndex()].second)) != reset_language);
+}
+
+
 void GuiCharacter::updateContents()
 {
 	if (bufferview()->cursor().selection()) {
@@ -458,6 +488,8 @@ void GuiCharacter::updateContents()
 		font_.setLanguage(reset_language);
 
 	paramsToDialog(font_);
+
+	checkRestoreDefaults();
 }
 
 
