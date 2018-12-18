@@ -1042,12 +1042,20 @@ class KeyInfo {
  KeyInfo()
    : keytype(invalid),
     head(""),
+    _tokensize(-1),
+    _tokenstart(-1),
+    _dataStart(-1),
+    _dataEnd(-1),
     parenthesiscount(1),
     disabled(false),
     used(false)
   {};
  KeyInfo(KeyType type, int parcount, bool disable)
    : keytype(type),
+    _tokensize(-1),
+    _tokenstart(-1),
+    _dataStart(-1),
+    _dataEnd(-1),
     parenthesiscount(parcount),
     disabled(disable),
     used(false) {};
@@ -1073,7 +1081,10 @@ class Border {
 class Intervall {
   bool isPatternString;
  public:
- Intervall(bool isPattern) : isPatternString(isPattern), ignoreidx(-1), actualdeptindex(0) { depts[0] = 0;};
+ explicit Intervall(bool isPattern) :
+  isPatternString(isPattern),
+    ignoreidx(-1),
+    actualdeptindex(0) { depts[0] = 0; closes[0] = 0;};
   string par;
   int ignoreidx;
   int depts[MAXOPENED];
@@ -1255,7 +1266,7 @@ class LatexInfo {
   void removeHead(KeyInfo&, int count=0);
 
  public:
- LatexInfo(string par, bool isPatternString) : interval(isPatternString) {
+ LatexInfo(string par, bool isPatternString) : entidx(-1), interval(isPatternString) {
     interval.par = par;
     buildKeys(isPatternString);
     entries = vector<KeyInfo>();
@@ -1342,16 +1353,6 @@ class MathInfo {
     m.mathEnd = end;
     m.mathSize = end - start;
     entries.push_back(m);
-  }
-  bool evaluating(size_t pos) {
-    while (actualIdx < entries.size()) {
-      if (pos < entries[actualIdx].mathStart)
-        return false;
-      if (pos < entries[actualIdx].mathEnd)
-        return true;
-      actualIdx++;
-    }
-    return false;
   }
   bool empty() { return entries.empty(); };
   size_t getEndPos() {
@@ -1826,8 +1827,8 @@ void Intervall::output(ostringstream &os, int lastpos)
   int i = 0;
   for (idx = 0; idx <= ignoreidx; idx++) {
     if (i < lastpos) {
-      int printsize;
       if (i <= borders[idx].low) {
+        int printsize;
         if (borders[idx].low > lastpos)
           printsize = lastpos - i;
         else
@@ -1899,17 +1900,23 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       break;
     }
     case KeyInfo::isSize: {
-      if (actual.disabled || (interval.par[actual._dataStart] != '{')) {
+      if (actual.disabled || (interval.par[actual._dataStart] != '{') || (interval.par[actual._dataStart-1] == ' ')) {
         processRegion(actual._dataEnd, actual._dataEnd+1); /* remove possibly following {} */
         interval.addIntervall(actual._tokenstart, actual._dataEnd+1);
         nextKeyIdx = getNextKey();
       } else {
-        // Determine the end if used like '{\tiny{}...}'
-        if (interval.par[actual._dataStart+1] == '}') {
-          actual._dataStart += 1;
-          interval.addIntervall(actual._dataStart, actual._dataStart+1);
+        // Here _dataStart points to '{', so correct it
+        actual._dataStart += 1;
+        actual._tokensize += 1;
+        actual.parenthesiscount = 1;
+        if (interval.par[actual._dataStart] == '}') {
+          // Determine the end if used like '{\tiny{}...}'
           actual._dataEnd = interval.findclosing(actual._dataStart+1, interval.par.length()) + 1;
-          actual.parenthesiscount = 1;
+          interval.addIntervall(actual._dataStart, actual._dataStart+1);
+        }
+        else {
+          // Determine the end if used like '\tiny{...}'
+          actual._dataEnd = interval.findclosing(actual._dataStart, interval.par.length()) + 1;
         }
         // Split on this key if not at start
         int start = interval.nextNotIgnored(previousStart);
