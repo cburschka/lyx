@@ -65,6 +65,8 @@ protected Q_SLOTS:
 	void change_adaptor();
 	void on_emphCB_clicked();
 	void on_nounCB_clicked();
+	void on_restorePB_clicked();
+	void checkRestoreDefaults();
 
 private:
 	/// \name Dialog inherited methods

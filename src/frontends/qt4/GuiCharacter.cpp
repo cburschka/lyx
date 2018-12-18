@@ -213,6 +213,7 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(resetPB, SIGNAL(clicked()), this, SLOT(slotRestore()));
 	connect(autoapplyCB, SIGNAL(stateChanged(int)), this,
 		SLOT(slotAutoApply()));
 
@@ -252,6 +253,7 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	bc().setApply(applyPB);
 	bc().setCancel(closePB);
 	bc().setAutoApply(autoapplyCB);
+	bc().setRestore(resetPB);
 	bc().addReadOnly(familyCO);
 	bc().addReadOnly(seriesCO);
 	bc().addReadOnly(sizeCO);
@@ -295,18 +297,12 @@ void GuiCharacter::on_nounCB_clicked()
 }
 
 
-void GuiCharacter::change_adaptor()
+void GuiCharacter::on_restorePB_clicked()
 {
-	changed();
-
-	if (!autoapplyCB->isChecked())
-		return;
-
-	// to be really good here, we should set the combos to the values of
-	// the current text, and make it appear as "no change" if the values
-	// stay the same between applys. Might be difficult though wrt to a
-	// moved cursor - jbl
-	slotApply();
+	Font font(inherit_font);
+	font.setLanguage(reset_language);
+	paramsToDialog(font);
+	change_adaptor();
 }
 
 
@@ -391,6 +387,40 @@ lyx::FontState setMarkupState(Qt::CheckState cs)
 } // end namespace anon
 
 
+void GuiCharacter::change_adaptor()
+{
+	changed();
+
+	checkRestoreDefaults();
+
+	if (!autoapplyCB->isChecked())
+		return;
+
+	// to be really good here, we should set the combos to the values of
+	// the current text, and make it appear as "no change" if the values
+	// stay the same between applys. Might be difficult though wrt to a
+	// moved cursor - jbl
+	slotApply();
+}
+
+
+void GuiCharacter::checkRestoreDefaults()
+{
+	// (De)Activate Restore Defaults button
+	restorePB->setEnabled(
+		family[familyCO->currentIndex()].second != INHERIT_FAMILY
+		|| series[seriesCO->currentIndex()].second != INHERIT_SERIES
+		|| shape[shapeCO->currentIndex()].second != INHERIT_SHAPE
+		|| size[sizeCO->currentIndex()].second != FONT_SIZE_INHERIT
+		|| setMarkupState(emphCB->checkState()) != FONT_OFF
+		|| setMarkupState(nounCB->checkState()) != FONT_OFF
+		|| bar[ulineCO->currentIndex()].second != INHERIT
+		|| strike[strikeCO->currentIndex()].second != INHERIT
+		|| lcolor.getFromLyXName(fromqstr(colorCO->itemData(colorCO->currentIndex()).toString())) != Color_inherit
+		|| languages.getLanguage(fromqstr(language[langCO->currentIndex()].second)) != reset_language);
+}
+
+
 void GuiCharacter::updateContents()
 {
 	if (bufferview()->cursor().selection()) {
@@ -443,6 +473,8 @@ void GuiCharacter::updateContents()
 		font_.setLanguage(reset_language);
 
 	paramsToDialog(font_);
+
+	checkRestoreDefaults();
 }
 
 
