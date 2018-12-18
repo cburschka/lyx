@@ -15,6 +15,7 @@
 #include "InsetMathMacro.h"
 
 #include "InsetMathChar.h"
+#include "InsetMathScript.h"
 #include "MathCompletionList.h"
 #include "MathExtern.h"
 #include "MathFactory.h"
@@ -1106,7 +1107,22 @@ void InsetMathMacro::write(WriteStream & os) const
 	// print out optionals
 	for (i=0; i < cells_.size() && i < emptyOptFrom; ++i) {
 		first = false;
-		os << "[" << cell(i) << "]";
+		// For correctly parsing it when a document is reloaded, we
+		// need to enclose an optional argument in braces if it starts
+		// with a script inset with empty nucleus or ends with a
+		// delimiter-size-modifier macro (see #10497 and #11346)
+		bool braced = false;
+		size_type last = cell(i).size() - 1;
+		if (cell(i)[last].nucleus()->asUnknownInset()) {
+			latexkeys const * l = in_word_set(cell(i)[last].nucleus()->name());
+			braced = (l && l->inset == "big");
+		} else if (cell(i)[0].nucleus()->asScriptInset()) {
+			braced = cell(i)[0].nucleus()->asScriptInset()->nuc().empty();
+		}
+		if (braced)
+			os << "[{" << cell(i) << "}]";
+		else
+			os << "[" << cell(i) << "]";
 	}
 
 	// skip the tailing empty optionals
