@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-12-14 19:53+0100\n"
-"PO-Revision-Date: 2018-12-15 14:42+0000\n"
+"POT-Creation-Date: 2018-12-18 07:00+0100\n"
+"PO-Revision-Date: 2018-12-18 07:52+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -983,6 +983,14 @@ msgstr "Používať každú zmenu automaticky"
 #: src/frontends/qt4/ui/CharacterUi.ui:339
 msgid "Apply changes &immediately"
 msgstr "O&kamžite použiť zmeny"
+
+#: src/frontends/qt4/ui/CharacterUi.ui:363
+msgid "Reset"
+msgstr "Obnoviť"
+
+#: src/frontends/qt4/ui/CharacterUi.ui:370
+msgid "Restore Defaults"
+msgstr "Vrátiť na Predvolené"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:372
 #: src/frontends/qt4/ui/DocumentUi.ui:77 src/frontends/qt4/ui/ExternalUi.ui:610
@@ -18490,9 +18498,8 @@ msgid "Wrap by Preview|y"
 msgstr "Obtekať pri náhľade|b"
 
 #: lib/ui/stdcontext.inc:669
-#, fuzzy
 msgid "End Editing Externally...|e"
-msgstr "Externe upraviť…|x"
+msgstr "Externú úpravu dokončiť…"
 
 #: lib/ui/stdcontext.inc:682 lib/ui/stdmenus.inc:355
 msgid "Lock Toolbars|L"
@@ -33726,9 +33733,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "&Create"
 #~ msgstr "&Vytvoriť"
-
-#~ msgid "Reset"
-#~ msgstr "Obnoviť"
 
 #~ msgid "Underbar"
 #~ msgstr "Podčiarknuté"
