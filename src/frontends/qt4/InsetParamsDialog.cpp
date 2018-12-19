@@ -253,6 +253,9 @@ void InsetParamsDialog::updateView()
 	bool const update_widget =
 		(synchronizedCB->isChecked() || immediateApplyCB->isChecked());
 	updateView(update_widget);
+	
+	// Somewhere in the chain this can lose default status (#11417)
+	buttonBox->button(QDialogButtonBox::Ok)->setDefault(true);
 }
 
 
