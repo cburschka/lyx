@@ -1248,7 +1248,10 @@ Inset * BufferView::editedInset(string const & name) const
 
 void BufferView::editInset(string const & name, Inset * inset)
 {
-	d->edited_insets_[name] = inset;
+	if (inset)
+		d->edited_insets_[name] = inset;
+	else
+		d->edited_insets_.erase(name);
 }
 
 

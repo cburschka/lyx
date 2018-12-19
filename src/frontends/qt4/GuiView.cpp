@@ -4559,7 +4559,7 @@ void GuiView::doShowDialog(QString const & qname, QString const & qdata,
 		if (dialog) {
 			bool const visible = dialog->isVisibleView();
 			dialog->showData(data);
-			if (inset && currentBufferView())
+			if (currentBufferView())
 				currentBufferView()->editInset(name, inset);
 			// We only set the focus to the new dialog if it was not yet
 			// visible in order not to change the existing previous behaviour
