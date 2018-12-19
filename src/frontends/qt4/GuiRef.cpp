@@ -385,6 +385,8 @@ void GuiRef::updateContents()
 	// Activate OK/Apply buttons if the users inserts a new ref
 	// and we have a valid pre-setting.
 	bc().setValid(isValid() && new_inset);
+	// Somewhere in the chain this can lose default status (#11417)
+	buttonBox->button(QDialogButtonBox::Ok)->setDefault(true);
 }
 
 
