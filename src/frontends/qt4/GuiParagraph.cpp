@@ -304,6 +304,8 @@ void GuiParagraph::updateView()
 		linespacingValue->setText(QString());
 		linespacingValue->setEnabled(false);
 	}
+	// Somewhere in the chain this can lose default status (#11417)
+	buttonBox->button(QDialogButtonBox::Ok)->setDefault(true);
 }
 
 
