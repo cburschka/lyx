@@ -114,6 +114,7 @@ public:
 	QPushButton * cancel_;
 	QPushButton * restore_;
 	QCheckBox * auto_apply_;
+	QPushButton * default_;
 
 	typedef QList<QWidget *> Widgets;
 	Widgets read_only_;
@@ -205,7 +206,7 @@ bool ButtonController::setReadOnly(bool ro)
 	// refreshReadOnly(); This will enable all widgets in dialogs, no matter if
 	//                    they allowed to be enabled, so when you plan to
 	//                    reenable this call, read this before:
-    // http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg128222.html
+	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg128222.html
 	refresh();
 	return ro;
 }
@@ -243,7 +244,9 @@ void ButtonController::refresh() const
 		bool const enabled = policy().buttonStatus(ButtonPolicy::AUTOAPPLY);
 		d->auto_apply_->setEnabled(enabled);
 	}
-
+	if (d->default_)
+		// Somewhere in the chain this can lose default status (#11417)
+		d->default_->setDefault(true);
 }
 
 
@@ -263,15 +266,19 @@ void ButtonController::addCheckedLineEdit(QLineEdit * input, QWidget * label)
 }
 
 
-void ButtonController::setOK(QPushButton * obj)
+void ButtonController::setOK(QPushButton * obj, bool const default_button)
 {
 	d->okay_ = obj;
+	if (default_button)
+		d->default_ = obj;
 }
 
 
-void ButtonController::setApply(QPushButton * obj)
+void ButtonController::setApply(QPushButton * obj, bool const default_button)
 {
 	d->apply_ = obj;
+	if (default_button)
+		d->default_ = obj;
 }
 
 
@@ -281,15 +288,19 @@ void ButtonController::setAutoApply(QCheckBox * obj)
 }
 
 
-void ButtonController::setCancel(QPushButton * obj)
+void ButtonController::setCancel(QPushButton * obj, bool const default_button)
 {
 	d->cancel_ = obj;
+	if (default_button)
+		d->default_ = obj;
 }
 
 
-void ButtonController::setRestore(QPushButton * obj)
+void ButtonController::setRestore(QPushButton * obj, bool const default_button)
 {
 	d->restore_ = obj;
+	if (default_button)
+		d->default_ = obj;
 }
 
 

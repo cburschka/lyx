@@ -154,10 +154,6 @@ void GuiInclude::typeChanged(int v)
 			listingsGB->setEnabled(false);
 			break;
 	}
-	//see this thread
-	//  http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg118471.html
-	//for the reason this is here.
-	buttonBox->button(QDialogButtonBox::Ok)->setDefault(true);
 }
 
 

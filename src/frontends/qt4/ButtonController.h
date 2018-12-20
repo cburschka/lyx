@@ -92,11 +92,13 @@ public:
 	//
 
 	//@{
-	/// Store pointers to these widgets.
-	void setOK(QPushButton * obj);
-	void setApply(QPushButton * obj);
-	void setCancel(QPushButton * obj);
-	void setRestore(QPushButton * obj);
+	/// Store pointers to these widgets. \param default_button determines
+	/// the default button of the dialog (bound to return). This is
+	/// OK by default.
+	void setOK(QPushButton * obj, bool const default_button = true);
+	void setApply(QPushButton * obj, bool const default_button = false);
+	void setCancel(QPushButton * obj, bool const default_button = false);
+	void setRestore(QPushButton * obj, bool const default_button = false);
 	void setAutoApply(QCheckBox * obj);
 	//@}
 
