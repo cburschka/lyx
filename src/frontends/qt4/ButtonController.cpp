@@ -93,7 +93,7 @@ public:
 	typedef QList<CheckedLineEdit> CheckedWidgetList;
 
 	Private()
-		: okay_(0), apply_(0), cancel_(0), restore_(0), auto_apply_(0),
+		: okay_(0), apply_(0), cancel_(0), restore_(0), auto_apply_(0), default_(0),
 			policy_(ButtonPolicy::IgnorantPolicy)
 	{}
 
