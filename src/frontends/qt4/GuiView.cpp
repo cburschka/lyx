@@ -3043,39 +3043,46 @@ bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer)
 
 bool GuiView::closeBuffer(Buffer & buf)
 {
-	// If we are in a close_event all children will be closed in some time,
-	// so no need to do it here. This will ensure that the children end up
-	// in the session file in the correct order. If we close the master
-	// buffer, we can close or release the child buffers here too.
 	bool success = true;
-	if (!closing_) {
-		ListOfBuffers clist = buf.getChildren();
-		ListOfBuffers::const_iterator it = clist.begin();
-		ListOfBuffers::const_iterator const bend = clist.end();
-		for (; it != bend; ++it) {
-			Buffer * child_buf = *it;
-			if (theBufferList().isOthersChild(&buf, child_buf)) {
-				child_buf->setParent(0);
-				continue;
-			}
+	ListOfBuffers clist = buf.getChildren();
+	ListOfBuffers::const_iterator it = clist.begin();
+	ListOfBuffers::const_iterator const bend = clist.end();
+	for (; it != bend; ++it) {
+		Buffer * child_buf = *it;
+		if (theBufferList().isOthersChild(&buf, child_buf)) {
+			child_buf->setParent(0);
+			continue;
+		}
 
-			// FIXME: should we look in other tabworkareas?
-			// ANSWER: I don't think so. I've tested, and if the child is
-			// open in some other window, it closes without a problem.
-			GuiWorkArea * child_wa = workArea(*child_buf);
-			if (child_wa) {
-				success = closeWorkArea(child_wa, true);
-				if (!success)
-					break;
-			} else {
-				// In this case the child buffer is open but hidden.
-				// Even in this case, children can be dirty (e.g.,
-				// after a label change in the master, see #11405).
-				// Therefore, check this.
-				if (saveBufferIfNeeded(*child_buf, false)) {
-					child_buf->removeAutosaveFile();
-					theBufferList().release(child_buf);
-				}
+		// FIXME: should we look in other tabworkareas?
+		// ANSWER: I don't think so. I've tested, and if the child is
+		// open in some other window, it closes without a problem.
+		GuiWorkArea * child_wa = workArea(*child_buf);
+		if (child_wa) {
+			if (closing_)
+				// If we are in a close_event all children will be closed in some time,
+				// so no need to do it here. This will ensure that the children end up
+				// in the session file in the correct order. If we close the master
+				// buffer, we can close or release the child buffers here too.
+				continue;
+			success = closeWorkArea(child_wa, true);
+			if (!success)
+				break;
+		} else {
+			// In this case the child buffer is open but hidden.
+			// Even in this case, children can be dirty (e.g.,
+			// after a label change in the master, see #11405).
+			// Therefore, check this
+			if (closing_ && (child_buf->isClean() || child_buf->paragraphs().empty()))
+				// If we are in a close_event all children will be closed in some time,
+				// so no need to do it here. This will ensure that the children end up
+				// in the session file in the correct order. If we close the master
+				// buffer, we can close or release the child buffers here too.
+				continue;
+			// Save dirty buffers also if closing_!
+			if (saveBufferIfNeeded(*child_buf, false)) {
+				child_buf->removeAutosaveFile();
+				theBufferList().release(child_buf);
 			}
 		}
 	}
