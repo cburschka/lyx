@@ -27,7 +27,7 @@
 namespace lyx {
 namespace frontend {
 
-enum FontState {
+enum FontDeco {
 	///
 	IGNORE,
 	///
@@ -51,7 +51,7 @@ typedef std::pair<QString, FontFamily> FamilyPair;
 typedef std::pair<QString, FontSeries> SeriesPair;
 typedef std::pair<QString, FontShape>  ShapePair;
 typedef std::pair<QString, FontSize>   SizePair;
-typedef std::pair<QString, FontState>  BarPair;
+typedef std::pair<QString, FontDeco>  BarPair;
 typedef std::pair<QString, QString>    LanguagePair;
 
 class GuiCharacter : public GuiDialog, public Ui::CharacterUi
@@ -86,9 +86,9 @@ private:
 	///
 	void paramsToDialog(Font const & font);
 	///
-	void setBar(FontInfo & fi, FontState val);
+	void setBar(FontInfo & fi, FontDeco val);
 	///
-	void setStrike(FontInfo & fi, FontState val);
+	void setStrike(FontInfo & fi, FontDeco val);
 
 	QList<FamilyPair> family;
 	QList<SeriesPair> series;

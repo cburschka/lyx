@@ -329,7 +329,7 @@ static int findPos2nd(QList<P> const & vec, B const & val)
 
 
 namespace{
-FontState getBar(FontInfo const & fi)
+FontDeco getBar(FontInfo const & fi)
 {
 	if (fi.underbar() == FONT_ON)
 		return UNDERBAR;
@@ -350,7 +350,7 @@ FontState getBar(FontInfo const & fi)
 }
 
 
-FontState getStrike(FontInfo const & fi)
+FontDeco getStrike(FontInfo const & fi)
 {
 	if (fi.strikeout() == FONT_ON)
 		return STRIKEOUT;
@@ -493,7 +493,7 @@ void GuiCharacter::updateContents()
 }
 
 
-void GuiCharacter::setBar(FontInfo & fi, FontState val)
+void GuiCharacter::setBar(FontInfo & fi, FontDeco val)
 {
 	switch (val) {
 	case IGNORE:
@@ -531,7 +531,7 @@ void GuiCharacter::setBar(FontInfo & fi, FontState val)
 }
 
 
-void GuiCharacter::setStrike(FontInfo & fi, FontState val)
+void GuiCharacter::setStrike(FontInfo & fi, FontDeco val)
 {
 	switch (val) {
 	case IGNORE:
