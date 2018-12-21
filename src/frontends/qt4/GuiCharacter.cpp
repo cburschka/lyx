@@ -36,6 +36,7 @@
 #include <QAbstractItemModel>
 #include <QPushButton>
 #include <QComboBox>
+#include <QMenu>
 #include <QModelIndex>
 #include <QSettings>
 #include <QVariant>
@@ -267,6 +268,18 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	bc().addReadOnly(colorCO);
 	bc().addReadOnly(autoapplyCB);
 
+	// Add button menu to restore button to reset
+	// all widgets to "Defaults" or "No Change"
+	resetdefault_ = new QAction(qt_("Reset All To &Default"), this);
+	resetnochange_ = new QAction(qt_("Reset All To No Chan&ge"), this);
+	QMenu * resetmenu = new QMenu();
+	resetmenu->addAction(resetdefault_);
+	resetmenu->addAction(resetnochange_);
+	buttonBox->button(QDialogButtonBox::RestoreDefaults)->setMenu(resetmenu);
+	buttonBox->button(QDialogButtonBox::RestoreDefaults)->setText(qt_("&Reset All Fields"));
+	connect(resetdefault_, SIGNAL(triggered()), this, SLOT(resetToDefault()));
+	connect(resetnochange_, SIGNAL(triggered()), this, SLOT(resetToNoChange()));
+
 #ifdef Q_OS_MAC
 	// On Mac it's common to have tool windows which are always in the
 	// foreground and are hidden when the main window is not focused.
@@ -309,10 +322,19 @@ void GuiCharacter::on_nospellcheckCB_clicked()
 }
 
 
-void GuiCharacter::slotRestoreDefaults()
+void GuiCharacter::resetToDefault()
 {
 	Font font(inherit_font);
 	font.setLanguage(reset_language);
+	paramsToDialog(font);
+	change_adaptor();
+}
+
+
+void GuiCharacter::resetToNoChange()
+{
+	Font font(ignore_font);
+	font.setLanguage(ignore_language);
 	paramsToDialog(font);
 	change_adaptor();
 }
@@ -418,8 +440,15 @@ void GuiCharacter::change_adaptor()
 
 void GuiCharacter::checkRestoreDefaults()
 {
-	// (De)Activate Restore Defaults button
-	buttonBox->button(QDialogButtonBox::RestoreDefaults)->setEnabled(
+	if (familyCO->currentIndex() == -1 || seriesCO->currentIndex() == -1
+	    || shapeCO->currentIndex() == -1 || sizeCO->currentIndex() == -1
+	    || ulineCO->currentIndex() == -1 || strikeCO->currentIndex() == -1
+	    || colorCO->currentIndex() == -1 || langCO->currentIndex() == -1)
+		// dialog not yet built
+		return;
+
+	// (De)Activate Restore Defaults menu items
+	resetdefault_->setEnabled(
 		family[familyCO->currentIndex()].second != INHERIT_FAMILY
 		|| series[seriesCO->currentIndex()].second != INHERIT_SERIES
 		|| shape[shapeCO->currentIndex()].second != INHERIT_SHAPE
@@ -431,6 +460,19 @@ void GuiCharacter::checkRestoreDefaults()
 		|| strike[strikeCO->currentIndex()].second != INHERIT
 		|| lcolor.getFromLyXName(fromqstr(colorCO->itemData(colorCO->currentIndex()).toString())) != Color_inherit
 		|| languages.getLanguage(fromqstr(language[langCO->currentIndex()].second)) != reset_language);
+
+	resetnochange_->setEnabled(
+		family[familyCO->currentIndex()].second != IGNORE_FAMILY
+		|| series[seriesCO->currentIndex()].second != IGNORE_SERIES
+		|| shape[shapeCO->currentIndex()].second != IGNORE_SHAPE
+		|| size[sizeCO->currentIndex()].second != FONT_SIZE_IGNORE
+		|| setMarkupState(emphCB->checkState()) != FONT_IGNORE
+		|| setMarkupState(nounCB->checkState()) != FONT_IGNORE
+		|| setMarkupState(nospellcheckCB->checkState()) != FONT_IGNORE
+		|| bar[ulineCO->currentIndex()].second != IGNORE
+		|| strike[strikeCO->currentIndex()].second != IGNORE
+		|| lcolor.getFromLyXName(fromqstr(colorCO->itemData(colorCO->currentIndex()).toString())) != Color_ignore
+		|| languages.getLanguage(fromqstr(language[langCO->currentIndex()].second)) != ignore_language);
 }
 
 
