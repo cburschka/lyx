@@ -850,7 +850,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		&& old.pos() == cur[depth].pos();
 
 	// If the chars around the old cursor were spaces, delete some of
-	// them , but only if the cursor has really moved.
+	// them, but only if the cursor has really moved.
 	if (!same_par_pos) {
 		// find range of spaces around cursors
 		int from = old.pos();
@@ -866,6 +866,9 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 
 		// If we are not at the extremity of the paragraph, keep one space
 		if (from != to && from > 0 && to < oldpar.size())
+			++from;
+
+		if (same_par && cur.pos() > from && cur.pos() < to)
 			++from;
 
 		// Remove spaces and adapt cursor.
@@ -884,7 +887,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		}
 	}
 
-	// only do our magic if we changed paragraph
+	// only do our other magic if we changed paragraph
 	if (same_par)
 		return false;
 
