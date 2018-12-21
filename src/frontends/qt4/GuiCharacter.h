@@ -112,9 +112,9 @@ private:
 	bool nospellcheck_;
 
 	///
-	QAction * resetdefault_ = new QAction;
+	QAction * resetdefault_ = new QAction(this);
 	///
-	QAction * resetnochange_ = new QAction;
+	QAction * resetnochange_ = new QAction(this);
 };
 
 } // namespace frontend
