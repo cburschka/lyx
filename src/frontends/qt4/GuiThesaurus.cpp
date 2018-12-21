@@ -87,7 +87,7 @@ GuiThesaurus::GuiThesaurus(GuiView & lv)
 		entryCO->completer()->setCompletionMode(QCompleter::PopupCompletion);
 
 	bc().setCancel(buttonBox->button(QDialogButtonBox::Close));
-	bc().setApply(replacePB);
+	bc().setApply(replacePB, true);
 	bc().addReadOnly(replaceED);
 	bc().addReadOnly(replacePB);
 	bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
