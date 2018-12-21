@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-12-17 13:46+0100\n"
-"PO-Revision-Date: 2018-12-17 12:49+0000\n"
+"POT-Creation-Date: 2018-12-21 15:07+0100\n"
+"PO-Revision-Date: 2018-12-21 17:29+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -29694,6 +29694,18 @@ msgstr "(Bez)"
 #: src/frontends/qt4/GuiCharacter.cpp:208
 msgid "Text Properties"
 msgstr "Vlastnosti textu"
+
+#: src/frontends/qt4/GuiCharacter.cpp:273
+msgid "Reset All To &Default"
+msgstr "Vrátiť všetko na '&Predvolené'"
+
+#: src/frontends/qt4/GuiCharacter.cpp:274
+msgid "Reset All To No Chan&ge"
+msgstr "Vrátiť všetko na 'Bez &Zmeny'"
+
+#: src/frontends/qt4/GuiCharacter.cpp:279
+msgid "&Reset All Fields"
+msgstr "Vrát&iť všetky políčka"
 
 #: src/frontends/qt4/GuiCitation.cpp:106
 msgid "All avail. citations"
