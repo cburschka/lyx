@@ -18,6 +18,8 @@
 #include "ui_CharacterUi.h"
 #include "Font.h"
 
+#include <QAction>
+
 #include <utility>
 
 #ifdef IGNORE
@@ -65,7 +67,8 @@ protected Q_SLOTS:
 	void change_adaptor();
 	void on_emphCB_clicked();
 	void on_nounCB_clicked();
-	void on_restorePB_clicked();
+	void resetToDefault();
+	void resetToNoChange();
 	void checkRestoreDefaults();
 
 private:
@@ -104,6 +107,11 @@ private:
 	bool emph_;
 	///
 	bool noun_;
+
+	///
+	QAction * resetdefault_ = new QAction(this);
+	///
+	QAction * resetnochange_ = new QAction(this);
 };
 
 } // namespace frontend
