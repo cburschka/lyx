@@ -1149,6 +1149,10 @@ PrefColors::PrefColors(GuiPreferences * form)
 
 	connect(colorChangePB, SIGNAL(clicked()),
 		this, SLOT(changeColor()));
+	connect(colorResetPB, SIGNAL(clicked()),
+		this, SLOT(resetColor()));
+	connect(colorResetAllPB, SIGNAL(clicked()),
+		this, SLOT(resetAllColor()));
 	connect(lyxObjectsLW, SIGNAL(itemSelectionChanged()),
 		this, SLOT(changeLyxObjectsSelection()));
 	connect(lyxObjectsLW, SIGNAL(itemActivated(QListWidgetItem*)),
@@ -1176,15 +1180,17 @@ void PrefColors::applyRC(LyXRC & rc) const
 
 void PrefColors::updateRC(LyXRC const & rc)
 {
-	for (unsigned int i = 0; i < lcolors_.size(); ++i) {
+	for (size_type i = 0; i < lcolors_.size(); ++i) {
 		QColor color = QColor(guiApp->colorCache().get(lcolors_[i], false));
 		QPixmap coloritem(32, 32);
 		coloritem.fill(color);
-		lyxObjectsLW->item(i)->setIcon(QIcon(coloritem));
+		lyxObjectsLW->item(int(i))->setIcon(QIcon(coloritem));
 		newcolors_[i] = curcolors_[i] = color.name();
 	}
 	syscolorsCB->setChecked(rc.use_system_colors);
 	changeLyxObjectsSelection();
+
+	setDisabledResets();
 }
 
 
@@ -1196,25 +1202,115 @@ void PrefColors::changeColor()
 	if (row < 0)
 		return;
 
-	QString const color = newcolors_[row];
-	QColor c = QColorDialog::getColor(QColor(color), qApp->focusWidget());
+	QString const color = newcolors_[size_t(row)];
+	QColor const c = QColorDialog::getColor(QColor(color), qApp->focusWidget());
 
-	if (c.isValid() && c.name() != color) {
-		newcolors_[row] = c.name();
-		QPixmap coloritem(32, 32);
-		coloritem.fill(c);
-		lyxObjectsLW->currentItem()->setIcon(QIcon(coloritem));
+	if (setColor(row, c, color)) {
+		setDisabledResets();
 		// emit signal
 		changed();
 	}
 }
+
+
+void PrefColors::resetColor()
+{
+	int const row = lyxObjectsLW->currentRow();
+
+	// just to be sure
+	if (row < 0)
+		return;
+
+	QString const color = newcolors_[size_t(row)];
+	QColor const c = getDefaultColorByRow(row);
+
+	if (setColor(row, c, color)) {
+		setDisabledResets();
+		// emit signal
+		changed();
+	}
+}
+
+
+void PrefColors::resetAllColor()
+{
+	bool isChanged = false;
+
+	colorResetAllPB->setDisabled(true);
+
+	for (int irow = 0, count = lyxObjectsLW->count(); irow < count; ++irow) {
+		QString const color = newcolors_[size_t(irow)];
+		QColor const c = getDefaultColorByRow(irow);
+
+		if (setColor(irow, c, color))
+			isChanged = true;
+	}
+
+	if (isChanged) {
+		setDisabledResets();
+		// emit signal
+		changed();
+	}
+}
+
+
+bool PrefColors::setColor(int const row, QColor const new_color,
+			  QString const old_color)
+{
+	if (new_color.isValid() && new_color.name() != old_color) {
+		newcolors_[size_t(row)] = new_color.name();
+		QPixmap coloritem(32, 32);
+		coloritem.fill(new_color);
+		lyxObjectsLW->item(row)->setIcon(QIcon(coloritem));
+		return true;
+	}
+	return false;
+}
+
+
+void PrefColors::setDisabledResets()
+{
+	int const row = lyxObjectsLW->currentRow();
+	// set disable reset buttons ...
+	if (row >= 0)
+		colorResetPB->setDisabled(isDefaultColor(row, newcolors_[size_t(row)]));
+
+	colorResetAllPB->setDisabled(true);
+
+	// ... in between process qt events to give quicker visual feedback to the user ...
+	guiApp->processEvents();
+
+	// ... set disable Reset All button
+	for (int irow = 0, count = lyxObjectsLW->count(); irow < count; ++irow) {
+		if (!isDefaultColor(irow, newcolors_[size_t(irow)])) {
+			colorResetAllPB->setDisabled(false);
+			// the break condition might hide performance issues
+			// if a non-default color is at the top of the list
+			break;
+		}
+	}
+}
+
+
+bool PrefColors::isDefaultColor(int const row, QString const color)
+{
+	return color == getDefaultColorByRow(row).name();
+}
+
+
+QColor PrefColors::getDefaultColorByRow(int const row)
+{
+	ColorSet const defaultcolor;
+	return defaultcolor.getX11Name(lcolors_[size_t(row)]).c_str();
+}
+
 
 void PrefColors::changeSysColor()
 {
 	for (int row = 0 ; row < lyxObjectsLW->count() ; ++row) {
 		// skip colors that are taken from system palette
 		bool const disable = syscolorsCB->isChecked()
-			&& guiApp->colorCache().isSystem(lcolors_[row]);
+			&& guiApp->colorCache().isSystem(lcolors_[size_t(row)]);
 
 		QListWidgetItem * const item = lyxObjectsLW->item(row);
 		Qt::ItemFlags const flags = item->flags();
@@ -1226,9 +1322,17 @@ void PrefColors::changeSysColor()
 	}
 }
 
+
 void PrefColors::changeLyxObjectsSelection()
 {
-	colorChangePB->setDisabled(lyxObjectsLW->currentRow() < 0);
+	int currentRow = lyxObjectsLW->currentRow();
+	colorChangePB->setDisabled(currentRow < 0);
+
+	if (currentRow < 0)
+		colorResetPB->setDisabled(true);
+	else
+		colorResetPB->setDisabled(
+			isDefaultColor(currentRow, newcolors_[size_t(currentRow)]));
 }
 
 

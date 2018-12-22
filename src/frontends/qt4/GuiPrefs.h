@@ -255,12 +255,23 @@ public:
 
 private Q_SLOTS:
 	void changeColor();
+	void resetColor();
+	void resetAllColor();
 	void changeSysColor();
 	void changeLyxObjectsSelection();
+	bool setColor(int const row, QColor const new_color,
+		      QString const old_color);
+	bool isDefaultColor(int const row, QString const color);
+	void setDisabledResets();
 
 private:
+	///
+	QColor getDefaultColorByRow(int const row);
+	///
 	std::vector<ColorCode> lcolors_;
+	///
 	std::vector<QString> curcolors_;
+	///
 	std::vector<QString> newcolors_;
 };
 
