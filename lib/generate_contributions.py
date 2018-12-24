@@ -469,7 +469,7 @@ contributors = [
                  "The LyX licence",
                  "m=123100818303101",
                  "3 January 2009",
-                 u"small bugfixes, CMake build system, Slovak translation"),
+                 u"CMake build system, Slovak translation, Advanced search with format"),
 
      contributor(u"Jacob Bishop",
                  "bishop.jacob () gmail ! com",
