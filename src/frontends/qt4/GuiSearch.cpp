@@ -47,6 +47,9 @@ GuiSearch::GuiSearch(GuiView & lv)
 {
 	setupUi(this);
 
+	// fix height to minimum
+	setFixedHeight(sizeHint().height());
+
 	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
 		this, SLOT(slotButtonBox(QAbstractButton *)));
 	connect(findPB, SIGNAL(clicked()), this, SLOT(findClicked()));
