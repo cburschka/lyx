@@ -3083,6 +3083,11 @@ bool GuiView::closeBuffer(Buffer & buf)
 			if (saveBufferIfNeeded(*child_buf, false)) {
 				child_buf->removeAutosaveFile();
 				theBufferList().release(child_buf);
+			} else {
+				// Saving of dirty children has been cancelled.
+				// Cancel the whole process.
+				success = false;
+				break;
 			}
 		}
 	}
