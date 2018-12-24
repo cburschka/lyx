@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-12-22 10:24+0100\n"
-"PO-Revision-Date: 2018-12-22 09:24+0000\n"
+"POT-Creation-Date: 2018-12-24 12:02+0100\n"
+"PO-Revision-Date: 2018-12-24 11:02+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3314,13 +3314,38 @@ msgstr "&Vertikálny Fantóm"
 msgid "Find"
 msgstr "Hľadať"
 
+#: src/frontends/qt4/ui/PrefColorsUi.ui:26
+msgid "Use the color scheme of your Operating System/Desktop Environment"
+msgstr ""
+"Použiť farebnú schému vášho Operačného Systému/Prostredia Pracovnej Plochy"
+
 #: src/frontends/qt4/ui/PrefColorsUi.ui:46
 msgid "A&lter..."
 msgstr "Z&meniť…"
 
+#: src/frontends/qt4/ui/PrefColorsUi.ui:67
+msgid "Reset the selected color to its original value"
+msgstr "Vrátiť vybranú farbu na pôvodnú hodnotu"
+
+#: src/frontends/qt4/ui/PrefColorsUi.ui:70
+msgid "Reset to &Default"
+msgstr "Vrátiť na '&Predvolené'"
+
+#: src/frontends/qt4/ui/PrefColorsUi.ui:77
+msgid "Reset all colors to their original value"
+msgstr "Vrátiť všetky farby na pôvodné hodnoty"
+
+#: src/frontends/qt4/ui/PrefColorsUi.ui:80
+msgid "Reset A&ll"
+msgstr "Vrátiť &všetky políčka"
+
 #: src/frontends/qt4/ui/PrefColorsUi.ui:81
 msgid "&Use system colors"
 msgstr "Použiť farby &systému"
+
+#: src/frontends/qt4/ui/PrefColorsUi.ui:57
+msgid "Change the selected color"
+msgstr "Zmeniť označenú farbu"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:26
 msgid "In Math"
