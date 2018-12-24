@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-12-23 10:42+0100\n"
-"PO-Revision-Date: 2018-12-23 10:55+0100\n"
+"POT-Creation-Date: 2018-12-24 18:48+0100\n"
+"PO-Revision-Date: 2018-12-24 18:58+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -608,20 +608,20 @@ msgstr "Dehnen"
 #: src/frontends/qt4/ui/BoxUi.ui:265 src/frontends/qt4/ui/ListingsUi.ui:104
 #: src/frontends/qt4/ui/TabularUi.ui:332 src/frontends/qt4/ui/TabularUi.ui:1519
 #: src/frontends/qt4/ui/WrapUi.ui:47 src/frontends/qt4/GuiDocument.cpp:1416
-#: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:924
+#: src/frontends/qt4/GuiParagraph.cpp:114 src/frontends/qt4/GuiTabular.cpp:924
 msgid "Left"
 msgstr "Links"
 
 #: src/frontends/qt4/ui/BoxUi.ui:270 src/frontends/qt4/ui/TabularUi.ui:337
 #: src/frontends/qt4/GuiExternal.cpp:79 src/frontends/qt4/GuiGraphics.cpp:73
-#: src/frontends/qt4/GuiParagraph.cpp:113 src/frontends/qt4/GuiTabular.cpp:925
+#: src/frontends/qt4/GuiParagraph.cpp:116 src/frontends/qt4/GuiTabular.cpp:925
 msgid "Center"
 msgstr "Zentriert"
 
 #: src/frontends/qt4/ui/BoxUi.ui:275 src/frontends/qt4/ui/ListingsUi.ui:109
 #: src/frontends/qt4/ui/TabularUi.ui:342 src/frontends/qt4/ui/TabularUi.ui:1536
 #: src/frontends/qt4/ui/WrapUi.ui:52 src/frontends/qt4/GuiDocument.cpp:1418
-#: src/frontends/qt4/GuiParagraph.cpp:112 src/frontends/qt4/GuiTabular.cpp:926
+#: src/frontends/qt4/GuiParagraph.cpp:115 src/frontends/qt4/GuiTabular.cpp:926
 msgid "Right"
 msgstr "Rechts"
 
@@ -778,13 +778,13 @@ msgstr "A&lle hinzufügen"
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:247
 #: src/frontends/qt4/GuiDocument.cpp:2472
-#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/GuiPrefs.cpp:3351
+#: src/frontends/qt4/GuiParagraph.cpp:164 src/frontends/qt4/GuiPrefs.cpp:3351
 #: src/frontends/qt4/GuiView.cpp:2550 src/frontends/qt4/GuiView.cpp:2698
 #: src/frontends/qt4/GuiView.cpp:2722 src/frontends/qt4/GuiView.cpp:2736
 #: src/frontends/qt4/GuiView.cpp:2837 src/frontends/qt4/GuiView.cpp:2882
-#: src/frontends/qt4/GuiView.cpp:3161 src/frontends/qt4/GuiView.cpp:3175
-#: src/frontends/qt4/GuiView.cpp:3277 src/frontends/qt4/GuiView.cpp:3305
-#: src/frontends/qt4/GuiView.cpp:4009 src/frontends/qt4/GuiView.cpp:4016
+#: src/frontends/qt4/GuiView.cpp:3166 src/frontends/qt4/GuiView.cpp:3180
+#: src/frontends/qt4/GuiView.cpp:3282 src/frontends/qt4/GuiView.cpp:3310
+#: src/frontends/qt4/GuiView.cpp:4014 src/frontends/qt4/GuiView.cpp:4021
 #: src/insets/InsetBibtex.cpp:148
 msgid "&Cancel"
 msgstr "&Abbrechen"
@@ -817,7 +817,7 @@ msgstr "&Größe:"
 #: src/frontends/qt4/GuiCharacter.cpp:138
 #: src/frontends/qt4/GuiCharacter.cpp:149
 #: src/frontends/qt4/GuiCharacter.cpp:192
-#: src/frontends/qt4/GuiCharacter.cpp:240 src/frontends/qt4/GuiDocument.cpp:122
+#: src/frontends/qt4/GuiCharacter.cpp:243 src/frontends/qt4/GuiDocument.cpp:122
 #: src/frontends/qt4/GuiDocument.cpp:836 src/frontends/qt4/GuiDocument.cpp:953
 #: src/frontends/qt4/GuiDocument.cpp:1022
 #: src/frontends/qt4/GuiDocument.cpp:1068
@@ -1005,7 +1005,7 @@ msgstr "Spracheinstellungen"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:256
 #: src/frontends/qt4/ui/LanguageUi.ui:113
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:27
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:70
 #: src/frontends/qt4/ui/ThesaurusUi.ui:23
 msgid "&Language:"
 msgstr "S&prache:"
@@ -1238,37 +1238,51 @@ msgstr "Alt:"
 msgid "New:"
 msgstr "Neu:"
 
-#: src/frontends/qt4/ui/CompareUi.ui:46
-msgid "&New Document:"
-msgstr "&Neues Dokument:"
+#: src/frontends/qt4/ui/CompareUi.ui:35
+msgid "Old Documen&t:"
+msgstr "Altes Do&kument:"
 
-#: src/frontends/qt4/ui/CompareUi.ui:69 src/frontends/qt4/ui/ExternalUi.ui:89
-#: src/frontends/qt4/ui/GraphicsUi.ui:75 src/frontends/qt4/ui/IncludeUi.ui:46
-#: src/frontends/qt4/ui/LaTeXUi.ui:161 src/frontends/qt4/ui/PrefInputUi.ui:111
-msgid "&Browse..."
-msgstr "&Durchsuchen..."
+#: src/frontends/qt4/ui/CompareUi.ui:51
+msgid "Specify the original version of the document here (comparation source)"
+msgstr "Geben Sie hier die Originalversion des Dokuments an (Vergleichsquelle)"
 
-#: src/frontends/qt4/ui/CompareUi.ui:79
-msgid "Old Do&cument:"
-msgstr "&Altes Dokument:"
-
-#: src/frontends/qt4/ui/CompareUi.ui:102 src/frontends/qt4/ui/PrefUi.ui:50
+#: src/frontends/qt4/ui/CompareUi.ui:61 src/frontends/qt4/ui/PrefUi.ui:61
 msgid "Bro&wse..."
 msgstr "Du&rchsuchen..."
 
-#: src/frontends/qt4/ui/CompareUi.ui:118
-msgid "Copy Document Settings from:"
-msgstr "Kopiere Dokument-Einstellungen von:"
+#: src/frontends/qt4/ui/CompareUi.ui:71
+msgid "&New Document:"
+msgstr "&Neues Dokument:"
 
-#: src/frontends/qt4/ui/CompareUi.ui:124
+#: src/frontends/qt4/ui/CompareUi.ui:87
+msgid "Specify the modified version of the document here (comparation target)"
+msgstr ""
+"Geben Sie hier die veränderte Version des Dokuments an (Vergleichsziel)"
+
+#: src/frontends/qt4/ui/CompareUi.ui:97 src/frontends/qt4/ui/ExternalUi.ui:89
+#: src/frontends/qt4/ui/GraphicsUi.ui:75 src/frontends/qt4/ui/IncludeUi.ui:46
+#: src/frontends/qt4/ui/LaTeXUi.ui:161 src/frontends/qt4/ui/PrefInputUi.ui:52
+msgid "&Browse..."
+msgstr "&Durchsuchen..."
+
+#: src/frontends/qt4/ui/CompareUi.ui:117
+msgid "Select the document from which the settings should be taken"
+msgstr ""
+"Wählen Sie das Dokument, von dem die Einstellungen übernommen werden sollen"
+
+#: src/frontends/qt4/ui/CompareUi.ui:120 src/frontends/qt4/GuiDocument.cpp:762
+msgid "Document Settings"
+msgstr "Dokument-Einstellungen"
+
+#: src/frontends/qt4/ui/CompareUi.ui:129
+msgid "O&ld Document"
+msgstr "A&ltes Dokument"
+
+#: src/frontends/qt4/ui/CompareUi.ui:136
 msgid "New Docu&ment"
-msgstr "N&euem Dokument"
+msgstr "N&eues Dokument"
 
-#: src/frontends/qt4/ui/CompareUi.ui:131
-msgid "Ol&d Document"
-msgstr "A&ltem Dokument"
-
-#: src/frontends/qt4/ui/CompareUi.ui:162
+#: src/frontends/qt4/ui/CompareUi.ui:183
 msgid ""
 "Turns on the change tracking and showing changes in LaTeX output for the "
 "resulting document"
@@ -1276,9 +1290,9 @@ msgstr ""
 "Die Unterschiede werden in der Ausgabe des Dokuments durch "
 "Änderungsmarkierungen angezeigt"
 
-#: src/frontends/qt4/ui/CompareUi.ui:165
-msgid "Enable &change tracking features in the output"
-msgstr "Änderungs&verfolgung in der Ausgabe"
+#: src/frontends/qt4/ui/CompareUi.ui:186
+msgid "&Enable change tracking features in the output"
+msgstr "Änderungs&verfolgung in der Ausgabe aktivieren"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:122
 #: src/frontends/qt4/GuiDelimiter.cpp:326
@@ -1551,108 +1565,117 @@ msgstr "TabWidget"
 msgid "Sear&ch"
 msgstr "Su&che"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:29 src/frontends/qt4/ui/LogUi.ui:95
-msgid "&Find:"
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:29
+#: src/frontends/qt4/ui/SearchUi.ui:33
+msgid "Fi&nd:"
 msgstr "&Suchen:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:53
 msgid "Replace &with:"
 msgstr "Ersetzen &durch:"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:77
-msgid "Perform a case-sensitive search"
-msgstr "Suche unter Beachtung der Groß-/Kleinschreibung"
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:107
+msgid "Shift+Enter search backwards directly"
+msgstr "Drücken Sie Shift+Enter, um direkt rückwärts zu suchen."
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:80
-msgid "Case &sensitive"
-msgstr "&Groß-/Kleinschreibung beachten"
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:110
+#: src/frontends/qt4/ui/SearchUi.ui:147
+msgid "Search &backwards"
+msgstr "&Rückwärts suchen"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:96
-msgid "Find next occurrence [Enter]"
-msgstr "Nächster Treffer [Eingabe]"
-
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:99
-#: src/frontends/qt4/ui/SearchUi.ui:66
-msgid "Find &Next"
-msgstr "&Nächstes suchen"
-
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:112
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:120
 msgid "Restrict search to whole words only"
 msgstr "Suche auf vollständige Wörter beschränken"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:115
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:123
 msgid "W&hole words"
 msgstr "Gan&ze Wörter"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:131
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:130
+msgid "Perform a case-sensitive search"
+msgstr "Suche unter Beachtung der Groß-/Kleinschreibung"
+
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:133
+msgid "Case &sensitive"
+msgstr "&Groß-/Kleinschreibung beachten"
+
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:160
+msgid "Find next occurrence [Enter]"
+msgstr "Nächster Treffer [Eingabe]"
+
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:163
+#: src/frontends/qt4/ui/SearchUi.ui:111
+msgid "Find &Next"
+msgstr "&Nächstes suchen"
+
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:176
 msgid "Replace and find next occurrence [Enter]"
 msgstr "Ersetze und finde nächsten Treffer [Eingabe]"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:134
-#: src/frontends/qt4/ui/SearchUi.ui:79
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:133
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:179
+#: src/frontends/qt4/ui/SearchUi.ui:124
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:51
 #: src/frontends/qt4/ui/ThesaurusUi.ui:86
 msgid "&Replace"
 msgstr "&Ersetzen"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:141
-msgid "Shift+Enter search backwards directly"
-msgstr "Drücken Sie Shift+Enter, um direkt rückwärts zu suchen."
-
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:144
-#: src/frontends/qt4/ui/SearchUi.ui:170
-msgid "Search &backwards"
-msgstr "&Rückwärts suchen"
-
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:160
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:189
 msgid "Replace all occurrences at once"
 msgstr "Alle Vorkommen auf einmal ersetzen"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:163
-#: src/frontends/qt4/ui/SearchUi.ui:89
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:165
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:192
+#: src/frontends/qt4/ui/SearchUi.ui:161
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:151
 msgid "Replace &All"
 msgstr "&Alle ersetzen"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:173
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:206
 msgid "S&ettings"
 msgstr "E&instellungen"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:188
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:221
 msgid "The scope to which the search horizon is restricted"
 msgstr "Der Bereich, auf den die Suche sich erstreckt"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:194
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:227
 msgid "Scope"
 msgstr "Bereich"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:206
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:239
 msgid "C&urrent document"
 msgstr "Aktuelles Dok&ument"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:225
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:258
 msgid ""
 "Current document and all related documents belonging to the same master "
 "document"
 msgstr "Alle Dokumente, die zum selben Hauptdokument wie das aktuelle gehören"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:228
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:261
 msgid "&Master document"
 msgstr "Hau&ptdokument"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:238
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:271
 msgid "All open documents"
 msgstr "Alle geöffneten Dokumente"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:241
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:274
 msgid "&Open documents"
 msgstr "&Geöffnete Dokumente"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:251
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:284
 msgid "&All manuals"
 msgstr "&Alle LyX-Handbücher"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:269
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:312
+msgid "Restrict search to math environments only"
+msgstr "Suche auf die Mathe-Umgebung beschränken"
+
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:315
+msgid "Search on&ly in maths"
+msgstr "Nur im Ma&the-Umfeld"
+
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:325
 msgid ""
 "If unchecked, the search will be limited to occurrences of the selected text "
 "and paragraph style"
@@ -1660,11 +1683,15 @@ msgstr ""
 "Wenn Sie dies deaktivieren, wird die Suche nur auf Vorkommen beschränkt, die "
 "die den ausgewählten Text- und Absatzstil verwenden."
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:272
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:328
 msgid "I&gnore format"
 msgstr "Ignoriere For&mat"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:282
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:341
+msgid "&Expand macros"
+msgstr "&Makros ausklappen"
+
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:348
 msgid ""
 "Keep the case of the replacement's first letter as in each matching text "
 "first letter"
@@ -1672,21 +1699,9 @@ msgstr ""
 "Groß-/Kleinschreibung des ersten Buchstabens des gefundenen Textes "
 "beibehalten"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:285
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:351
 msgid "&Preserve first case on replace"
 msgstr "Gr&oß-/Kleinschreibung bewahren"
-
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:295
-msgid "&Expand macros"
-msgstr "&Makros ausklappen"
-
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:302
-msgid "Restrict search to math environments only"
-msgstr "Suche auf die Mathe-Umgebung beschränken"
-
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:305
-msgid "Search on&ly in maths"
-msgstr "Nur im Ma&the-Umfeld"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:14
 #: src/frontends/qt4/ui/OutputUi.ui:14 src/frontends/qt4/ui/PDFSupportUi.ui:13
@@ -2348,7 +2363,7 @@ msgid "A&vailable Indexes:"
 msgstr "&Verfügbare Indexe:"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
-#: src/frontends/qt4/ui/ProgressViewUi.ui:149 src/frontends/qt4/ui/RefUi.ui:24
+#: src/frontends/qt4/ui/ProgressViewUi.ui:168 src/frontends/qt4/ui/RefUi.ui:24
 msgid "1"
 msgstr "1"
 
@@ -2784,6 +2799,10 @@ msgstr "Springe zur nächsten Warnmeldung."
 msgid "Next &Warning"
 msgstr "Nächste &Warnung"
 
+#: src/frontends/qt4/ui/LogUi.ui:95
+msgid "&Find:"
+msgstr "&Suchen:"
+
 #: src/frontends/qt4/ui/LogUi.ui:105
 msgid "Hit Enter to search, or click Go!"
 msgstr "Drücken Sie die Enter-Taste oder klicken Sie \"Los!\" an"
@@ -2902,7 +2921,7 @@ msgid "&Columns:"
 msgstr "&Spalten:"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:122
-#: src/frontends/qt4/ui/TabularCreateUi.ui:112
+#: src/frontends/qt4/ui/TabularCreateUi.ui:106
 msgid "Resize this to the correct table dimensions"
 msgstr "Verändern Sie die Größe hinsichtlich der korrekten Tabellenmaße"
 
@@ -2972,7 +2991,7 @@ msgstr "&Verfügbar:"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:103
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:187
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:216
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:181
 msgid "A&dd"
 msgstr "&Hinzufügen"
 
@@ -3411,37 +3430,37 @@ msgstr "&Vertikales Phantom"
 msgid "Find"
 msgstr "Suchen"
 
-#: src/frontends/qt4/ui/PrefColorsUi.ui:39
-msgid "Use the color scheme of your Operating System/Desktop Environment"
-msgstr "Verwendet das Farbschema Ihres Betriebssystems/Ihrer Desktop-Umgebung"
-
-#: src/frontends/qt4/ui/PrefColorsUi.ui:42
-msgid "&Use system colors"
-msgstr "S&ystemfarben verwenden"
-
-#: src/frontends/qt4/ui/PrefColorsUi.ui:83
+#: src/frontends/qt4/ui/PrefColorsUi.ui:60
 msgid "Change the selected color"
 msgstr "Die ausgewählte Farbe ändern"
 
-#: src/frontends/qt4/ui/PrefColorsUi.ui:86
+#: src/frontends/qt4/ui/PrefColorsUi.ui:63
 msgid "A&lter..."
 msgstr "&Ändern..."
 
-#: src/frontends/qt4/ui/PrefColorsUi.ui:93
+#: src/frontends/qt4/ui/PrefColorsUi.ui:70
 msgid "Reset the selected color to its original value"
 msgstr "Die ausgewählte Farbe auf den Auslieferungswert zurücksetzen"
 
-#: src/frontends/qt4/ui/PrefColorsUi.ui:96
+#: src/frontends/qt4/ui/PrefColorsUi.ui:73
 msgid "Restore &Default"
 msgstr "Auf Aus&gangswert"
 
-#: src/frontends/qt4/ui/PrefColorsUi.ui:103
+#: src/frontends/qt4/ui/PrefColorsUi.ui:80
 msgid "Reset all colors to their original value"
 msgstr "Alle Farben auf den Auslieferungswert zurücksetzen"
 
-#: src/frontends/qt4/ui/PrefColorsUi.ui:106
+#: src/frontends/qt4/ui/PrefColorsUi.ui:83
 msgid "Restore A&ll"
 msgstr "A&lle auf Ausgangswert"
+
+#: src/frontends/qt4/ui/PrefColorsUi.ui:105
+msgid "Use the color scheme of your Operating System/Desktop Environment"
+msgstr "Verwendet das Farbschema Ihres Betriebssystems/Ihrer Desktop-Umgebung"
+
+#: src/frontends/qt4/ui/PrefColorsUi.ui:108
+msgid "&Use system colors"
+msgstr "S&ystemfarben verwenden"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:26
 msgid "In Math"
@@ -3997,20 +4016,20 @@ msgstr "Tastatur"
 msgid "Use &keyboard map"
 msgstr "&Tastaturtabelle verwenden"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:45
-msgid "&Primary:"
-msgstr "&Primäre:"
-
 #: src/frontends/qt4/ui/PrefInputUi.ui:65
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:83
 msgid "Br&owse..."
-msgstr "&Durchsuchen..."
+msgstr "Du&rchsuchen..."
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:91
+#: src/frontends/qt4/ui/PrefInputUi.ui:78
 msgid "S&econdary:"
 msgstr "S&ekundäre:"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:121
+#: src/frontends/qt4/ui/PrefInputUi.ui:91
+msgid "&Primary:"
+msgstr "&Primäre:"
+
+#: src/frontends/qt4/ui/PrefInputUi.ui:101
 msgid ""
 "Mac OS X specific setting for use with emacs bindings. Takes effect next "
 "time LyX is launched."
@@ -4018,19 +4037,19 @@ msgstr ""
 "Mac-OSX-spezifische Einstellung für die Emacs-Tastaturbelegung. Wird beim "
 "nächsten LyX-Neustart wirksam."
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:124
+#: src/frontends/qt4/ui/PrefInputUi.ui:104
 msgid "Do not swap Apple and Control keys"
 msgstr "Vertausche Apfel- und Control-Taste nicht"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:137
+#: src/frontends/qt4/ui/PrefInputUi.ui:124
 msgid "Mouse"
 msgstr "Maus"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:162
+#: src/frontends/qt4/ui/PrefInputUi.ui:138
 msgid "&Wheel scrolling speed:"
 msgstr "Mausrad-S&crollgeschwindigkeit:"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:172
+#: src/frontends/qt4/ui/PrefInputUi.ui:148
 msgid ""
 "1.0 is the standard scrolling speed with the mouse wheel. Higher values will "
 "speed it up, low values slow it down."
@@ -4038,33 +4057,33 @@ msgstr ""
 "1,0 ist die Standardscrollgeschwindigkeit mit dem Mausrad. Größere Werte "
 "erhöhen die Geschwindigkeit, kleinere verringern sie."
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:194
+#: src/frontends/qt4/ui/PrefInputUi.ui:185
 msgid ""
 "If this is checked, the middle mouse button will paste the recent selection"
 msgstr ""
 "Aktiviert das Einfügen der Auswahl unter Verwendung der mittleren Maustaste"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:197
+#: src/frontends/qt4/ui/PrefInputUi.ui:188
 msgid "&Middle mouse button pasting"
 msgstr "&Mittlere Maustaste fügt Auswahl ein"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:213
+#: src/frontends/qt4/ui/PrefInputUi.ui:204
 msgid "Scroll Wheel Zoom"
 msgstr "Textgröße mit dem Mausrad einstellen"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:246
-msgid "Enable"
-msgstr "Aktiviert"
+#: src/frontends/qt4/ui/PrefInputUi.ui:230
+msgid "&Enable"
+msgstr "&Aktiv"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:260
+#: src/frontends/qt4/ui/PrefInputUi.ui:244
 msgid "Ctrl"
 msgstr "Strg-Taste"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:265 src/insets/InsetInfo.cpp:814
+#: src/frontends/qt4/ui/PrefInputUi.ui:249 src/insets/InsetInfo.cpp:814
 msgid "Shift"
 msgstr "Umschalttaste"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:270
+#: src/frontends/qt4/ui/PrefInputUi.ui:254
 msgid "Alt"
 msgstr "Alt-Taste"
 
@@ -4539,14 +4558,18 @@ msgid "General Look && Feel"
 msgstr "Aussehen und Handhabung allgemein"
 
 #: src/frontends/qt4/ui/PrefUi.ui:37
+msgid "Use icons from system's &theme"
+msgstr "S&ymboldesign des Systems verwenden"
+
+#: src/frontends/qt4/ui/PrefUi.ui:48
 msgid "&User interface file:"
 msgstr "&UI-Datei:"
 
-#: src/frontends/qt4/ui/PrefUi.ui:74
+#: src/frontends/qt4/ui/PrefUi.ui:68
 msgid "&Icon set:"
 msgstr "&Symboldesign:"
 
-#: src/frontends/qt4/ui/PrefUi.ui:84
+#: src/frontends/qt4/ui/PrefUi.ui:78
 msgid ""
 "The icon set to use. Warning: normal size of icons may be wrong until you "
 "save the preferences and restart LyX."
@@ -4554,15 +4577,11 @@ msgstr ""
 "Das zu verwendende Symboldesign. Um die richtige Symbolgröße angezeigt zu "
 "bekommen, müssen Sie LyX ggf. neu starten."
 
-#: src/frontends/qt4/ui/PrefUi.ui:108
-msgid "Use icons from system's &theme"
-msgstr "S&ymboldesign des Systems verwenden"
-
-#: src/frontends/qt4/ui/PrefUi.ui:120
+#: src/frontends/qt4/ui/PrefUi.ui:106
 msgid "Context Help"
 msgstr "Kontexthilfe"
 
-#: src/frontends/qt4/ui/PrefUi.ui:138
+#: src/frontends/qt4/ui/PrefUi.ui:133
 msgid ""
 "Checking this allows the automatic display of helpful comments for insets in "
 "the main work area of an edited document"
@@ -4570,15 +4589,15 @@ msgstr ""
 "Zeigt hilfreiche Kommentare zu Einfügungen im Hauptarbeitsbereich des "
 "bearbeiteten Dokuments"
 
-#: src/frontends/qt4/ui/PrefUi.ui:141
+#: src/frontends/qt4/ui/PrefUi.ui:136
 msgid "&Enable tool tips in main work area"
 msgstr "&Tooltips im Hauptarbeitsbereich aktivieren"
 
-#: src/frontends/qt4/ui/PrefUi.ui:151
+#: src/frontends/qt4/ui/PrefUi.ui:146
 msgid "Menus"
 msgstr "Menüs"
 
-#: src/frontends/qt4/ui/PrefUi.ui:162
+#: src/frontends/qt4/ui/PrefUi.ui:157
 msgid "&Maximum last files:"
 msgstr "&Maximale Anzahl letzter Dateien:"
 
@@ -4643,60 +4662,60 @@ msgstr ""
 "Übergebe Indexnamen unformatiert an LaTeX. Aktivieren Sie dies, wenn Sie "
 "LaTeX-Code eingeben wollen."
 
-#: src/frontends/qt4/ui/ProgressViewUi.ui:90 src/frontends/qt4/GuiPrefs.cpp:253
+#: src/frontends/qt4/ui/ProgressViewUi.ui:93 src/frontends/qt4/GuiPrefs.cpp:253
 msgid "Output"
 msgstr "Ausgabe"
 
-#: src/frontends/qt4/ui/ProgressViewUi.ui:133
+#: src/frontends/qt4/ui/ProgressViewUi.ui:143
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: src/frontends/qt4/ui/ProgressViewUi.ui:145
+#: src/frontends/qt4/ui/ProgressViewUi.ui:164
 msgid "Select the debug messages that should be displayed"
 msgstr "Wählen Sie die Fehlermeldungen, die angezeigt werden sollen"
 
-#: src/frontends/qt4/ui/ProgressViewUi.ui:173
+#: src/frontends/qt4/ui/ProgressViewUi.ui:192
 msgid "Automatic cleanup of the window before LaTeX compilation proceeds"
 msgstr ""
 "Das Fenster automatisch aufräumen, bevor die LaTeX-Ausgabe fortgesetzt wird"
 
-#: src/frontends/qt4/ui/ProgressViewUi.ui:176
+#: src/frontends/qt4/ui/ProgressViewUi.ui:195
 msgid "&Clear automatically"
 msgstr "A&utomatisch aufräumen"
 
-#: src/frontends/qt4/ui/ProgressViewUi.ui:191
+#: src/frontends/qt4/ui/ProgressViewUi.ui:208
 msgid "Debug messages"
 msgstr "Testmeldungen"
 
-#: src/frontends/qt4/ui/ProgressViewUi.ui:203
+#: src/frontends/qt4/ui/ProgressViewUi.ui:229
 msgid "Display no debug messages"
 msgstr "Keine Testmeldungen anzeigen"
 
-#: src/frontends/qt4/ui/ProgressViewUi.ui:206
+#: src/frontends/qt4/ui/ProgressViewUi.ui:232
 msgid "&None"
 msgstr "&Keine"
 
-#: src/frontends/qt4/ui/ProgressViewUi.ui:213
+#: src/frontends/qt4/ui/ProgressViewUi.ui:239
 msgid "Display the debug messages selected to the right"
 msgstr "Die rechts ausgewählten Testmeldungen anzeigen"
 
-#: src/frontends/qt4/ui/ProgressViewUi.ui:216
+#: src/frontends/qt4/ui/ProgressViewUi.ui:242
 msgid "S&elected"
 msgstr "Ausgew&ählte"
 
-#: src/frontends/qt4/ui/ProgressViewUi.ui:223
+#: src/frontends/qt4/ui/ProgressViewUi.ui:249
 msgid "Display all debug messages"
 msgstr "Alle Testmeldungen anzeigen"
 
-#: src/frontends/qt4/ui/ProgressViewUi.ui:226
+#: src/frontends/qt4/ui/ProgressViewUi.ui:252
 msgid "&All"
 msgstr "&Alle"
 
-#: src/frontends/qt4/ui/ProgressViewUi.ui:236
+#: src/frontends/qt4/ui/ProgressViewUi.ui:262
 msgid "Display statusbar messages?"
 msgstr "Statusmeldungen anzeigen?"
 
-#: src/frontends/qt4/ui/ProgressViewUi.ui:239
+#: src/frontends/qt4/ui/ProgressViewUi.ui:265
 msgid "&Statusbar messages"
 msgstr "&Statusmeldungen"
 
@@ -4826,19 +4845,15 @@ msgstr "Den Teil der Marke vor \":\" nicht ausgeben"
 msgid "No Prefix"
 msgstr "Ohne Präfix"
 
-#: src/frontends/qt4/ui/SearchUi.ui:23
-msgid "Fi&nd:"
-msgstr "&Suchen:"
-
-#: src/frontends/qt4/ui/SearchUi.ui:105
+#: src/frontends/qt4/ui/SearchUi.ui:71
 msgid "Repla&ce with:"
 msgstr "Ersetzen &durch:"
 
-#: src/frontends/qt4/ui/SearchUi.ui:140
+#: src/frontends/qt4/ui/SearchUi.ui:133
 msgid "Case &sensitive[[search]]"
 msgstr "&Groß-/Kleinschreibung beachten"
 
-#: src/frontends/qt4/ui/SearchUi.ui:163
+#: src/frontends/qt4/ui/SearchUi.ui:140
 msgid "Match w&hole words only"
 msgstr "Nur ganze &Wörter"
 
@@ -4895,66 +4910,66 @@ msgstr "Aktuelles Tastenkürzel entfernen"
 msgid "C&lear"
 msgstr "Ent&fernen"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:19
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:20
 #: src/frontends/qt4/GuiSpellchecker.cpp:251
 #: src/frontends/qt4/GuiSpellchecker.cpp:258
 #: src/frontends/qt4/GuiSpellchecker.cpp:541
 msgid "Spell Checker"
 msgstr "Rechtschreibprüfung"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:43
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:29
+msgid "Replace with selected word"
+msgstr "Ersetze durch das ausgewählte Wort"
+
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:48
+msgid "Replace word with current choice"
+msgstr "Wort durch die aktuelle Auswahl ersetzen"
+
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:58
+msgid "Ignore this word"
+msgstr "Dieses Wort ignorieren"
+
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:61
+#: src/frontends/qt4/ui/WorkAreaUi.ui:89
+msgid "&Ignore"
+msgstr "&Ignorieren"
+
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:86
 msgid ""
 "The checked language. Switching this alters the language of the checked word."
 msgstr ""
 "Die überprüfte Sprache. Hier können Sie die Sprache des überprüften Worts "
 "ändern."
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:59
-msgid "Unknown word:"
-msgstr "Unbekanntes Wort:"
-
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:69
-msgid "Current word"
-msgstr "Aktuelles Wort"
-
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:85
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:98
 msgid "&Find Next"
 msgstr "&Nächstes suchen"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:92
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:105
+msgid "Unknown word:"
+msgstr "Unbekanntes Wort:"
+
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:115
+msgid "Current word"
+msgstr "Aktuelles Wort"
+
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:122
 msgid "Re&placement:"
 msgstr "E&rsetzung:"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:105
-msgid "Replace with selected word"
-msgstr "Ersetze durch das ausgewählte Wort"
-
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:130
-msgid "Replace word with current choice"
-msgstr "Wort durch die aktuelle Auswahl ersetzen"
-
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:146
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:138
 msgid "S&uggestions:"
 msgstr "&Vorschläge:"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:181
-msgid "Ignore this word"
-msgstr "Dieses Wort ignorieren"
-
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:184
-#: src/frontends/qt4/ui/WorkAreaUi.ui:89
-msgid "&Ignore"
-msgstr "&Ignorieren"
-
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:197
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:158
 msgid "Ignore this word throughout this session"
 msgstr "Dieses Wort während dieser Sitzung ignorieren"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:200
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:161
 msgid "I&gnore All"
 msgstr "&Alle ignorieren"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:213
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:178
 msgid "Add the word to your personal dictionary"
 msgstr "Das Wort zum persönlichen Wörterbuch hinzufügen"
 
@@ -5076,7 +5091,7 @@ msgstr "Benutzerdefiniert"
 msgid "Horizontal alignment in column"
 msgstr "Horizontale Ausrichtung in der Spalte"
 
-#: src/frontends/qt4/ui/TabularUi.ui:327 src/frontends/qt4/GuiParagraph.cpp:110
+#: src/frontends/qt4/ui/TabularUi.ui:327 src/frontends/qt4/GuiParagraph.cpp:113
 #: src/frontends/qt4/GuiTabular.cpp:928
 msgid "Justified"
 msgstr "Blocksatz"
@@ -5598,8 +5613,8 @@ msgstr "Nur Vorspann"
 msgid "Body Only"
 msgstr "Nur Haupttext"
 
-#: src/frontends/qt4/ui/WorkAreaUi.ui:82 src/frontends/qt4/GuiView.cpp:3305
-#: src/frontends/qt4/GuiView.cpp:4009
+#: src/frontends/qt4/ui/WorkAreaUi.ui:82 src/frontends/qt4/GuiView.cpp:3310
+#: src/frontends/qt4/GuiView.cpp:4014
 msgid "&Reload"
 msgstr "Ne&u laden"
 
@@ -26579,7 +26594,7 @@ msgid "This portion of the document is deleted."
 msgstr "Dieser Teil des Dokuments wird gelöscht."
 
 #: src/BufferView.cpp:1129 src/BufferView.cpp:2149
-#: src/frontends/qt4/GuiView.cpp:3884 src/frontends/qt4/GuiView.cpp:3967
+#: src/frontends/qt4/GuiView.cpp:3889 src/frontends/qt4/GuiView.cpp:3972
 msgid "Absolute filename expected."
 msgstr "Ein absoluter Dateipfad wird erwartet."
 
@@ -27644,7 +27659,7 @@ msgstr "Nummer %1$s"
 msgid "Cannot view file"
 msgstr "Datei kann nicht betrachtet werden"
 
-#: src/Format.cpp:654 src/Format.cpp:746 src/frontends/qt4/GuiView.cpp:3572
+#: src/Format.cpp:654 src/Format.cpp:746 src/frontends/qt4/GuiView.cpp:3577
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Die Datei existiert nicht: %1$s"
@@ -28680,7 +28695,7 @@ msgstr "LyX-VK: Protokollmeldung"
 msgid "(no log message)"
 msgstr "(keine Protokollmeldung)"
 
-#: src/LyXVC.cpp:246 src/frontends/qt4/GuiView.cpp:3430
+#: src/LyXVC.cpp:246 src/frontends/qt4/GuiView.cpp:3435
 msgid "LyX VC: Log Message"
 msgstr "LyX VK: Protokollmeldung"
 
@@ -28701,7 +28716,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Zur gespeicherten Version des Dokuments zurückkehren?"
 
-#: src/LyXVC.cpp:304 src/frontends/qt4/GuiView.cpp:4016
+#: src/LyXVC.cpp:304 src/frontends/qt4/GuiView.cpp:4021
 msgid "&Revert"
 msgstr "&Wiederherstellen"
 
@@ -29034,7 +29049,7 @@ msgstr "Nomenklatureinträge"
 #: src/VCBackend.cpp:927 src/VCBackend.cpp:986 src/VCBackend.cpp:1045
 #: src/VCBackend.cpp:1053 src/VCBackend.cpp:1354 src/VCBackend.cpp:1456
 #: src/VCBackend.cpp:1462 src/VCBackend.cpp:1485 src/VCBackend.cpp:1971
-#: src/frontends/qt4/GuiView.cpp:3348 src/frontends/qt4/GuiView.cpp:3392
+#: src/frontends/qt4/GuiView.cpp:3353 src/frontends/qt4/GuiView.cpp:3397
 msgid "Revision control error."
 msgstr "Fehler der Versionskontrolle."
 
@@ -29297,7 +29312,7 @@ msgstr ""
 "Möchten Sie die Änderungen verwerfen und zur gespeicherten Version "
 "zurückkehren?"
 
-#: src/buffer_funcs.cpp:77 src/frontends/qt4/GuiView.cpp:4007
+#: src/buffer_funcs.cpp:77 src/frontends/qt4/GuiView.cpp:4012
 msgid "Reload saved document?"
 msgstr "Gespeichertes Dokument neu laden?"
 
@@ -30015,7 +30030,7 @@ msgstr "Geändert am %1\n"
 #: src/frontends/qt4/GuiCharacter.cpp:137
 #: src/frontends/qt4/GuiCharacter.cpp:148
 #: src/frontends/qt4/GuiCharacter.cpp:191
-#: src/frontends/qt4/GuiCharacter.cpp:241
+#: src/frontends/qt4/GuiCharacter.cpp:244
 msgid "No change"
 msgstr "Keine Änderung"
 
@@ -30059,15 +30074,15 @@ msgstr "(Ohne)"
 msgid "Text Properties"
 msgstr "Texteigenschaften"
 
-#: src/frontends/qt4/GuiCharacter.cpp:273
+#: src/frontends/qt4/GuiCharacter.cpp:276
 msgid "Reset All To &Default"
 msgstr "Zurücksetzen zu &Standard"
 
-#: src/frontends/qt4/GuiCharacter.cpp:274
+#: src/frontends/qt4/GuiCharacter.cpp:277
 msgid "Reset All To No Chan&ge"
 msgstr "Zurücksetzen zu &Keine Änderung"
 
-#: src/frontends/qt4/GuiCharacter.cpp:279
+#: src/frontends/qt4/GuiCharacter.cpp:282
 msgid "&Reset All Fields"
 msgstr "Alle Felder &zurücksetzen"
 
@@ -30225,7 +30240,7 @@ msgstr "Wählen Sie einen Dateinamen, um die eingefügte Grafik zu speichern als
 #: src/frontends/qt4/GuiClipboard.cpp:215 src/frontends/qt4/GuiView.cpp:2365
 #: src/frontends/qt4/GuiView.cpp:2508 src/frontends/qt4/GuiView.cpp:2524
 #: src/frontends/qt4/GuiView.cpp:2536 src/frontends/qt4/GuiView.cpp:2553
-#: src/frontends/qt4/GuiView.cpp:2637 src/frontends/qt4/GuiView.cpp:3979
+#: src/frontends/qt4/GuiView.cpp:2637 src/frontends/qt4/GuiView.cpp:3984
 msgid "Canceled."
 msgstr "Abgebrochen."
 
@@ -30347,10 +30362,6 @@ msgstr "Konvertierung in aktuelles stabiles Format nicht möglich."
 #: src/frontends/qt4/GuiDocument.cpp:705
 msgid "Convert to current format"
 msgstr "Konvertiere in ein aktuelles Format"
-
-#: src/frontends/qt4/GuiDocument.cpp:762
-msgid "Document Settings"
-msgstr "Dokument-Einstellungen"
 
 #: src/frontends/qt4/GuiDocument.cpp:871 src/frontends/qt4/GuiInclude.cpp:49
 #: src/frontends/qt4/Menus.cpp:1480
@@ -31573,7 +31584,7 @@ msgstr "Notiz-Einstellungen"
 msgid "Paragraph Settings"
 msgstr "Absatz-Einstellungen"
 
-#: src/frontends/qt4/GuiParagraph.cpp:80
+#: src/frontends/qt4/GuiParagraph.cpp:83
 msgid ""
 "As described in the User Guide, the width of this text determines the width "
 "of the label part of each item in environments like List and Description.\n"
@@ -31588,7 +31599,7 @@ msgstr ""
 "Normalerweise müssen Sie diese Breite nicht festlegen, da die maximale "
 "Breite aller Punkte verwendet wird."
 
-#: src/frontends/qt4/GuiParagraph.cpp:163 src/frontends/qt4/GuiView.cpp:2937
+#: src/frontends/qt4/GuiParagraph.cpp:166 src/frontends/qt4/GuiView.cpp:2937
 msgid "&Close"
 msgstr "&Schließen"
 
@@ -32675,7 +32686,7 @@ msgstr ""
 "Dokument konnte nicht geschlossen werden, da es gerade von LyX verarbeitet "
 "wird."
 
-#: src/frontends/qt4/GuiView.cpp:3157 src/frontends/qt4/GuiView.cpp:3272
+#: src/frontends/qt4/GuiView.cpp:3162 src/frontends/qt4/GuiView.cpp:3277
 #, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -32686,16 +32697,16 @@ msgstr ""
 "\n"
 "Möchten Sie das Dokument speichern?"
 
-#: src/frontends/qt4/GuiView.cpp:3160 src/frontends/qt4/GuiView.cpp:3275
+#: src/frontends/qt4/GuiView.cpp:3165 src/frontends/qt4/GuiView.cpp:3280
 msgid "Save new document?"
 msgstr "Neues Dokument speichern?"
 
-#: src/frontends/qt4/GuiView.cpp:3161 src/frontends/qt4/GuiView.cpp:3175
-#: src/frontends/qt4/GuiView.cpp:3277
+#: src/frontends/qt4/GuiView.cpp:3166 src/frontends/qt4/GuiView.cpp:3180
+#: src/frontends/qt4/GuiView.cpp:3282
 msgid "&Save"
 msgstr "&Speichern"
 
-#: src/frontends/qt4/GuiView.cpp:3166
+#: src/frontends/qt4/GuiView.cpp:3171
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -32706,7 +32717,7 @@ msgstr ""
 "sind nicht gespeichert.\n"
 "Möchten Sie das Dokument speichern oder die Änderungen verwerfen?"
 
-#: src/frontends/qt4/GuiView.cpp:3169
+#: src/frontends/qt4/GuiView.cpp:3174
 #, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -32717,19 +32728,19 @@ msgstr ""
 "\n"
 "Möchten Sie das Dokument speichern oder es endgültig verwerfen?"
 
-#: src/frontends/qt4/GuiView.cpp:3173 src/frontends/qt4/GuiView.cpp:3269
+#: src/frontends/qt4/GuiView.cpp:3178 src/frontends/qt4/GuiView.cpp:3274
 msgid "Save changed document?"
 msgstr "Geändertes Dokument speichern?"
 
-#: src/frontends/qt4/GuiView.cpp:3173
+#: src/frontends/qt4/GuiView.cpp:3178
 msgid "Save document?"
 msgstr "Dokument speichern?"
 
-#: src/frontends/qt4/GuiView.cpp:3175
+#: src/frontends/qt4/GuiView.cpp:3180
 msgid "&Discard"
 msgstr "&Verwerfen"
 
-#: src/frontends/qt4/GuiView.cpp:3266
+#: src/frontends/qt4/GuiView.cpp:3271
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -32740,7 +32751,7 @@ msgstr ""
 "\n"
 "Möchten Sie das Dokument speichern?"
 
-#: src/frontends/qt4/GuiView.cpp:3301
+#: src/frontends/qt4/GuiView.cpp:3306
 #, c-format
 msgid ""
 "Document \n"
@@ -32752,37 +32763,37 @@ msgstr ""
 "wurde extern verändert. Wollen Sie es erneut laden?\n"
 "Alle lokalen Veränderungen werden dann verworfen."
 
-#: src/frontends/qt4/GuiView.cpp:3304
+#: src/frontends/qt4/GuiView.cpp:3309
 msgid "Reload externally changed document?"
 msgstr "Extern geändertes Dokument neu laden?"
 
-#: src/frontends/qt4/GuiView.cpp:3349
+#: src/frontends/qt4/GuiView.cpp:3354
 msgid "Document could not be checked in."
 msgstr "Das Dokument konnte nicht eingecheckt werden."
 
-#: src/frontends/qt4/GuiView.cpp:3393
+#: src/frontends/qt4/GuiView.cpp:3398
 msgid "Error when setting the locking property."
 msgstr "Fehler beim Setzen der Dateisperrung."
 
-#: src/frontends/qt4/GuiView.cpp:3439
+#: src/frontends/qt4/GuiView.cpp:3444
 msgid "Directory is not accessible."
 msgstr "Das Verzeichnis ist nicht lesbar."
 
-#: src/frontends/qt4/GuiView.cpp:3515
+#: src/frontends/qt4/GuiView.cpp:3520
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Öffne Unterdokument %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:3579
+#: src/frontends/qt4/GuiView.cpp:3584
 #, c-format
 msgid "No buffer for file: %1$s."
 msgstr "Kein Pufferspeicher für Datei: %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:3589
+#: src/frontends/qt4/GuiView.cpp:3594
 msgid "Inverse Search Failed"
 msgstr "Rückwärtssuche gescheitert"
 
-#: src/frontends/qt4/GuiView.cpp:3590
+#: src/frontends/qt4/GuiView.cpp:3595
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You may need to update the viewed document."
@@ -32790,35 +32801,35 @@ msgstr ""
 "Die Rückwärtssuche wollte eine ungültige Position anspringen.\n"
 "Bitte aktualisieren Sie das ausgegebene Dokument."
 
-#: src/frontends/qt4/GuiView.cpp:3671
+#: src/frontends/qt4/GuiView.cpp:3676
 msgid "Export Error"
 msgstr "Exportfehler"
 
-#: src/frontends/qt4/GuiView.cpp:3672
+#: src/frontends/qt4/GuiView.cpp:3677
 msgid "Error cloning the Buffer."
 msgstr "Fehler beim Klonen des Pufferspeichers."
 
-#: src/frontends/qt4/GuiView.cpp:3824 src/frontends/qt4/GuiView.cpp:3844
+#: src/frontends/qt4/GuiView.cpp:3829 src/frontends/qt4/GuiView.cpp:3849
 msgid "Exporting ..."
 msgstr "Exportiere ..."
 
-#: src/frontends/qt4/GuiView.cpp:3853
+#: src/frontends/qt4/GuiView.cpp:3858
 msgid "Previewing ..."
 msgstr "Generiere Vorschau ..."
 
-#: src/frontends/qt4/GuiView.cpp:3891
+#: src/frontends/qt4/GuiView.cpp:3896
 msgid "Document not loaded"
 msgstr "Dokument nicht geladen"
 
-#: src/frontends/qt4/GuiView.cpp:3973
+#: src/frontends/qt4/GuiView.cpp:3978
 msgid "Select file to insert"
 msgstr "Wählen Sie das einzufügende Dokument"
 
-#: src/frontends/qt4/GuiView.cpp:3976
+#: src/frontends/qt4/GuiView.cpp:3981
 msgid "All Files (*)"
 msgstr "Alle Dateien (*)"
 
-#: src/frontends/qt4/GuiView.cpp:4004
+#: src/frontends/qt4/GuiView.cpp:4009
 #, c-format
 msgid ""
 "The current version will be lost. Are you sure you want to load the version "
@@ -32828,7 +32839,7 @@ msgstr ""
 "dass Sie die auf der Festplatte gespeicherte Version des Dokuments %1$s "
 "laden möchten?"
 
-#: src/frontends/qt4/GuiView.cpp:4011
+#: src/frontends/qt4/GuiView.cpp:4016
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -32837,57 +32848,57 @@ msgstr ""
 "Alle Änderungen gehen verloren. Sind Sie sicher, dass Sie zur gespeicherten "
 "Version des Dokuments %1$s zurückkehren möchten?"
 
-#: src/frontends/qt4/GuiView.cpp:4014
+#: src/frontends/qt4/GuiView.cpp:4019
 msgid "Revert to saved document?"
 msgstr "Gespeichertes Dokument neu laden?"
 
-#: src/frontends/qt4/GuiView.cpp:4042
+#: src/frontends/qt4/GuiView.cpp:4047
 msgid "Saving all documents..."
 msgstr "Speichere alle Dokumente..."
 
-#: src/frontends/qt4/GuiView.cpp:4052
+#: src/frontends/qt4/GuiView.cpp:4057
 msgid "All documents saved."
 msgstr "Alle Dokumente wurden gespeichert."
 
-#: src/frontends/qt4/GuiView.cpp:4072
+#: src/frontends/qt4/GuiView.cpp:4077
 msgid "Developer mode is now enabled."
 msgstr "Der Entwicklermodus ist nun aktiviert."
 
-#: src/frontends/qt4/GuiView.cpp:4074
+#: src/frontends/qt4/GuiView.cpp:4079
 msgid "Developer mode is now disabled."
 msgstr "Der Entwicklermodus ist nun deaktiviert."
 
-#: src/frontends/qt4/GuiView.cpp:4098
+#: src/frontends/qt4/GuiView.cpp:4103
 msgid "Toolbars unlocked."
 msgstr "Werkzeugleisten nicht verankert."
 
-#: src/frontends/qt4/GuiView.cpp:4100
+#: src/frontends/qt4/GuiView.cpp:4105
 msgid "Toolbars locked."
 msgstr "Werkzeugleisten verankert."
 
-#: src/frontends/qt4/GuiView.cpp:4113
+#: src/frontends/qt4/GuiView.cpp:4118
 #, c-format
 msgid "Icon size set to %1$dx%2$d."
 msgstr "Eingestellte Symbolgröße: %1$dx%2$d."
 
-#: src/frontends/qt4/GuiView.cpp:4199
+#: src/frontends/qt4/GuiView.cpp:4204
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "LFUN_UI_TOGGLE %1$s unbekannter Befehl!"
 
-#: src/frontends/qt4/GuiView.cpp:4303
+#: src/frontends/qt4/GuiView.cpp:4308
 msgid "Zoom level is now %1$d% (default value: %2$d%)"
 msgstr "Aktueller Skalierungsfaktor: %1$d% (Standardwert: %2$d%)"
 
-#: src/frontends/qt4/GuiView.cpp:4356
+#: src/frontends/qt4/GuiView.cpp:4361
 msgid "Please, preview the document first."
 msgstr "Bitte geben Sie das Dokument zunächst aus."
 
-#: src/frontends/qt4/GuiView.cpp:4372
+#: src/frontends/qt4/GuiView.cpp:4377
 msgid "Couldn't proceed."
 msgstr "Konnte nicht fortfahren."
 
-#: src/frontends/qt4/GuiView.cpp:4850
+#: src/frontends/qt4/GuiView.cpp:4855
 msgid "Disable Shell Escape"
 msgstr "Erlaubnis zum Aufruf externer Programme widerrufen"
 
@@ -35208,6 +35219,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Copy Document Settings from:"
+#~ msgstr "Kopiere Dokument-Einstellungen von:"
+
+#~ msgid "Enable"
+#~ msgstr "Aktiviert"
 
 #~ msgid ""
 #~ "Checking this improves performance, but might decrease the on-screen "
