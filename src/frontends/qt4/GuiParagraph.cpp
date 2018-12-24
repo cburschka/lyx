@@ -50,6 +50,9 @@ GuiParagraph::GuiParagraph(GuiView & lv)
 {
 	setupUi(this);
 
+	// fix height to minimum
+	setFixedHeight(sizeHint().height());
+
 	connect(alignDefaultRB, SIGNAL(clicked()), this, SLOT(changed()));
 	connect(alignJustRB, SIGNAL(clicked()), this, SLOT(changed()));
 	connect(alignLeftRB, SIGNAL(clicked()), this, SLOT(changed()));
