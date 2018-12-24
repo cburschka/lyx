@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-12-23 13:08+0100\n"
-"PO-Revision-Date: 2018-12-23 12:19+0000\n"
+"POT-Creation-Date: 2018-12-24 19:28+0100\n"
+"PO-Revision-Date: 2018-12-24 18:41+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1139,9 +1139,21 @@ msgstr "Stará:"
 msgid "New:"
 msgstr "Nová:"
 
+#: src/frontends/qt4/ui/CompareUi.ui:35
+msgid "Old Documen&t:"
+msgstr "&Bývalí dokument:"
+
+#: src/frontends/qt4/ui/CompareUi.ui:51
+msgid "Specify the original version of the document here (comparation source)"
+msgstr "Špecifikujte verziu originálneho dokumentu tu (zdroj porovnania)"
+
 #: src/frontends/qt4/ui/CompareUi.ui:46
 msgid "&New Document:"
 msgstr "&Nový dokument:"
+
+#: src/frontends/qt4/ui/CompareUi.ui:87
+msgid "Specify the modified version of the document here (comparation target)"
+msgstr "Špecifikujte verziu modifikovaného dokumentu tu (cieľ porovnania)"
 
 #: src/frontends/qt4/ui/CompareUi.ui:69 src/frontends/qt4/ui/ExternalUi.ui:89
 #: src/frontends/qt4/ui/GraphicsUi.ui:75 src/frontends/qt4/ui/IncludeUi.ui:46
@@ -1149,25 +1161,17 @@ msgstr "&Nový dokument:"
 msgid "&Browse..."
 msgstr "Pre&chádzať…"
 
-#: src/frontends/qt4/ui/CompareUi.ui:79
-msgid "Old Do&cument:"
-msgstr "&Bývalí dokument:"
+#: src/frontends/qt4/ui/CompareUi.ui:117
+msgid "Select the document from which the settings should be taken"
+msgstr "Vyberte dokument z ktorého chcete nastavenia kopírovať"
 
 #: src/frontends/qt4/ui/CompareUi.ui:102 src/frontends/qt4/ui/PrefUi.ui:50
 msgid "Bro&wse..."
 msgstr "P&rechádzať…"
 
-#: src/frontends/qt4/ui/CompareUi.ui:118
-msgid "Copy Document Settings from:"
-msgstr "Nastavenia dokumentu z:"
-
 #: src/frontends/qt4/ui/CompareUi.ui:124
 msgid "New Docu&ment"
 msgstr "Nový &dokument"
-
-#: src/frontends/qt4/ui/CompareUi.ui:131
-msgid "Ol&d Document"
-msgstr "Bý&valí dokument"
 
 #: src/frontends/qt4/ui/CompareUi.ui:162
 msgid ""
@@ -1177,9 +1181,9 @@ msgstr ""
 "Zapne sledovanie zmien a ukazovanie zmien v LaTeXovom výstupe pre nasledovný "
 "dokument"
 
-#: src/frontends/qt4/ui/CompareUi.ui:165
-msgid "Enable &change tracking features in the output"
-msgstr "&Umožni sledovanie zmien vo výstupe"
+#: src/frontends/qt4/ui/CompareUi.ui:186
+msgid "&Enable change tracking features in the output"
+msgstr "&Umožniť sledovanie zmien vo výstupe"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:122
 #: src/frontends/qt4/GuiDelimiter.cpp:326
@@ -3913,9 +3917,9 @@ msgstr "S&tredné tlačidlo vlepuje výber"
 msgid "Scroll Wheel Zoom"
 msgstr "Lupa pomocou rolovacieho tlačítka"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:246
-msgid "Enable"
-msgstr "Zapnúť"
+#: src/frontends/qt4/ui/PrefInputUi.ui:230
+msgid "&Enable"
+msgstr "Z&apnutá"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:260
 msgid "Ctrl"
@@ -30004,6 +30008,10 @@ msgstr "Konvertovať na aktuálny formát"
 msgid "Document Settings"
 msgstr "Nastavenia dokumentu"
 
+#: src/frontends/qt4/ui/CompareUi.ui:129
+msgid "O&ld Document"
+msgstr "Bý&valí dokument"
+
 #: src/frontends/qt4/GuiDocument.cpp:871 src/frontends/qt4/GuiInclude.cpp:49
 #: src/frontends/qt4/Menus.cpp:1480
 msgid "Child Document"
@@ -34798,6 +34806,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Enable"
+#~ msgstr "Zapnúť"
+
+#~ msgid "Copy Document Settings from:"
+#~ msgstr "Nastavenia dokumentu z:"
 
 #~ msgid ""
 #~ "Checking this improves performance, but might decrease the on-screen "
@@ -39630,3 +39644,12 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "End Editing Externally...|e"
 #~ msgstr "Externú úpravu dokončiť…|E"
+
+#~ msgid "Old Do&cument:"
+#~ msgstr "&Bývalí dokument:"
+
+#~ msgid "Ol&d Document"
+#~ msgstr "Bý&valí dokument"
+
+#~ msgid "Enable &change tracking features in the output"
+#~ msgstr "&Umožni sledovanie zmien vo výstupe"
