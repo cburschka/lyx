@@ -213,6 +213,9 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 {
 	setupUi(this);
 
+	// fix height to minimum
+	setFixedHeight(sizeHint().height());
+
 	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
 		this, SLOT(slotButtonBox(QAbstractButton *)));
 	connect(autoapplyCB, SIGNAL(stateChanged(int)), this,
