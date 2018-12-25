@@ -207,6 +207,9 @@
          <property name="title">
           <string>Debug messages</string>
          </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
          <layout class="QGridLayout">
           <property name="leftMargin">
            <number>9</number>

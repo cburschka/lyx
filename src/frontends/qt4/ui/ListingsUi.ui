@@ -29,6 +29,9 @@
          <property name="title">
           <string>Placement</string>
          </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
          <layout class="QGridLayout" name="gridLayout">
           <item row="0" column="0" colspan="2">
            <widget class="QCheckBox" name="inlineCB">
@@ -77,6 +80,9 @@
         <widget class="QGroupBox" name="numberstyleGB">
          <property name="title">
           <string>Line numbering</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
          </property>
          <layout class="QGridLayout" name="gridLayout_2">
           <item row="0" column="0">
@@ -185,6 +191,9 @@
         <widget class="QGroupBox" name="basicstyleGB">
          <property name="title">
           <string>Style</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
          </property>
          <layout class="QGridLayout" name="gridLayout_5">
           <item row="0" column="0">
@@ -333,6 +342,9 @@
          <property name="title">
           <string>Language</string>
          </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
          <layout class="QGridLayout" name="gridLayout_3">
           <item row="0" column="0">
            <widget class="QLabel" name="languageLBL">
@@ -375,6 +387,9 @@
         <widget class="QGroupBox" name="rangeGB">
          <property name="title">
           <string>Range</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
           <item row="0" column="0">
@@ -449,6 +464,9 @@
          </property>
          <property name="title">
           <string>More Parameters</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
          </property>
          <layout class="QGridLayout" name="gridLayout_7">
           <item row="0" column="0">

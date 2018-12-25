@@ -102,6 +102,9 @@
          <property name="title">
           <string>&amp;Template</string>
          </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
          <layout class="QGridLayout">
           <property name="leftMargin">
            <number>9</number>

@@ -19,6 +19,9 @@
      <property name="title">
       <string>Document &amp;Class</string>
      </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
      <layout class="QGridLayout">
       <property name="margin">
        <number>9</number>
@@ -56,6 +59,9 @@
     <widget class="QGroupBox" name="optionsGB">
      <property name="title">
       <string>Class Options</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
      <layout class="QGridLayout" name="gridLayout_1">
       <item row="0" column="0">
@@ -134,6 +140,9 @@
      </property>
      <property name="title">
       <string>Select de&amp;fault master document</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
      <property name="checkable">
       <bool>true</bool>

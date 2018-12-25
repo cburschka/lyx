@@ -1,70 +1,98 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>PDFSupportUi</class>
- <widget class="QWidget" name="PDFSupportUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="PDFSupportUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>437</width>
-    <height>400</height>
+    <height>488</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
+  <layout class="QGridLayout">
+   <property name="leftMargin">
     <number>9</number>
    </property>
-   <property name="spacing" >
+   <property name="topMargin">
+    <number>9</number>
+   </property>
+   <property name="rightMargin">
+    <number>9</number>
+   </property>
+   <property name="bottomMargin">
+    <number>9</number>
+   </property>
+   <property name="spacing">
     <number>6</number>
    </property>
-   <item row="0" column="0" >
-    <widget class="QGroupBox" name="use_hyperrefGB" >
-     <property name="focusPolicy" >
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="use_hyperrefGB">
+     <property name="focusPolicy">
       <enum>Qt::StrongFocus</enum>
      </property>
-     <property name="title" >
+     <property name="title">
       <string>&amp;Use hyperref support</string>
      </property>
-     <property name="flat" >
+     <property name="flat">
       <bool>true</bool>
      </property>
-     <property name="checkable" >
+     <property name="checkable">
       <bool>true</bool>
      </property>
-     <property name="checked" >
+     <property name="checked">
       <bool>false</bool>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
+     <layout class="QGridLayout">
+      <property name="leftMargin">
        <number>9</number>
       </property>
-      <property name="spacing" >
+      <property name="topMargin">
+       <number>9</number>
+      </property>
+      <property name="rightMargin">
+       <number>9</number>
+      </property>
+      <property name="bottomMargin">
+       <number>9</number>
+      </property>
+      <property name="spacing">
        <number>6</number>
       </property>
-      <item row="0" column="0" >
-       <widget class="QTabWidget" name="tabWidget" >
-        <property name="currentIndex" >
+      <item row="0" column="0">
+       <widget class="QTabWidget" name="tabWidget">
+        <property name="currentIndex">
          <number>0</number>
         </property>
-        <widget class="QWidget" name="tab" >
-         <attribute name="title" >
+        <widget class="QWidget" name="tab">
+         <attribute name="title">
           <string>&amp;General</string>
          </attribute>
-         <layout class="QGridLayout" >
-          <property name="margin" >
+         <layout class="QGridLayout">
+          <property name="leftMargin">
            <number>9</number>
           </property>
-          <property name="spacing" >
+          <property name="topMargin">
+           <number>9</number>
+          </property>
+          <property name="rightMargin">
+           <number>9</number>
+          </property>
+          <property name="bottomMargin">
+           <number>9</number>
+          </property>
+          <property name="spacing">
            <number>6</number>
           </property>
-          <item row="2" column="0" >
+          <item row="2" column="0">
            <spacer>
-            <property name="orientation" >
+            <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
-            <property name="sizeHint" stdset="0" >
+            <property name="sizeHint" stdset="0">
              <size>
               <width>20</width>
               <height>40</height>
@@ -72,12 +100,12 @@
             </property>
            </spacer>
           </item>
-          <item row="1" column="1" >
+          <item row="1" column="1">
            <spacer>
-            <property name="orientation" >
+            <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
-            <property name="sizeHint" stdset="0" >
+            <property name="sizeHint" stdset="0">
              <size>
               <width>181</width>
               <height>41</height>
@@ -85,97 +113,109 @@
             </property>
            </spacer>
           </item>
-          <item row="0" column="0" colspan="2" >
-           <widget class="QGroupBox" name="groupBox_2" >
-            <property name="title" >
+          <item row="0" column="0" colspan="2">
+           <widget class="QGroupBox" name="groupBox_2">
+            <property name="title">
              <string>Header Information</string>
             </property>
-            <layout class="QGridLayout" >
-             <property name="margin" >
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+            <layout class="QGridLayout">
+             <property name="leftMargin">
               <number>9</number>
              </property>
-             <property name="spacing" >
+             <property name="spacing">
               <number>6</number>
              </property>
-             <item row="0" column="0" >
-              <widget class="QLabel" name="titleL" >
-               <property name="text" >
+             <item row="0" column="0">
+              <widget class="QLabel" name="titleL">
+               <property name="text">
                 <string>&amp;Title:</string>
                </property>
-               <property name="buddy" >
+               <property name="buddy">
                 <cstring>titleLE</cstring>
                </property>
               </widget>
              </item>
-             <item row="0" column="1" >
-              <widget class="QLineEdit" name="titleLE" />
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="titleLE"/>
              </item>
-             <item row="1" column="0" >
-              <widget class="QLabel" name="authorL" >
-               <property name="text" >
+             <item row="1" column="0">
+              <widget class="QLabel" name="authorL">
+               <property name="text">
                 <string>&amp;Author:</string>
                </property>
-               <property name="buddy" >
+               <property name="buddy">
                 <cstring>authorLE</cstring>
                </property>
               </widget>
              </item>
-             <item row="1" column="1" >
-              <widget class="QLineEdit" name="authorLE" />
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="authorLE"/>
              </item>
-             <item row="2" column="0" >
-              <widget class="QLabel" name="subjectL" >
-               <property name="text" >
-                <string>&amp;Subject:</string>
+             <item row="2" column="0">
+              <widget class="QLabel" name="subjectL">
+               <property name="text">
+                <string>Sub&amp;ject:</string>
                </property>
-               <property name="buddy" >
+               <property name="buddy">
                 <cstring>subjectLE</cstring>
                </property>
               </widget>
              </item>
-             <item row="2" column="1" >
-              <widget class="QLineEdit" name="subjectLE" />
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="subjectLE"/>
              </item>
-             <item row="3" column="0" >
-              <widget class="QLabel" name="keywordsL" >
-               <property name="text" >
+             <item row="3" column="0">
+              <widget class="QLabel" name="keywordsL">
+               <property name="text">
                 <string>&amp;Keywords:</string>
                </property>
-               <property name="buddy" >
+               <property name="buddy">
                 <cstring>keywordsLE</cstring>
                </property>
               </widget>
              </item>
-             <item row="3" column="1" >
-              <widget class="QLineEdit" name="keywordsLE" />
+             <item row="3" column="1">
+              <widget class="QLineEdit" name="keywordsLE"/>
              </item>
             </layout>
            </widget>
           </item>
-          <item row="1" column="0" >
-           <layout class="QVBoxLayout" >
-            <property name="spacing" >
+          <item row="1" column="0">
+           <layout class="QVBoxLayout">
+            <property name="spacing">
              <number>6</number>
             </property>
-            <property name="margin" >
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
              <number>0</number>
             </property>
             <item>
-             <widget class="QCheckBox" name="pdfusetitleCB" >
-              <property name="toolTip" >
+             <widget class="QCheckBox" name="pdfusetitleCB">
+              <property name="toolTip">
                <string>If not stated explicitly, fill title and author from appropriate environments</string>
               </property>
-              <property name="text" >
+              <property name="text">
                <string>Automatically fi&amp;ll header</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="fullscreenCB" >
-              <property name="toolTip" >
+             <widget class="QCheckBox" name="fullscreenCB">
+              <property name="toolTip">
                <string>Enable fullscreen PDF presentation</string>
               </property>
-              <property name="text" >
+              <property name="text">
                <string>Load in &amp;fullscreen mode</string>
               </property>
              </widget>
@@ -184,23 +224,32 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="tab_2" >
-         <attribute name="title" >
+        <widget class="QWidget" name="tab_2">
+         <attribute name="title">
           <string>H&amp;yperlinks</string>
          </attribute>
-         <layout class="QGridLayout" >
-          <property name="margin" >
+         <layout class="QGridLayout">
+          <property name="leftMargin">
            <number>9</number>
           </property>
-          <property name="spacing" >
+          <property name="topMargin">
+           <number>9</number>
+          </property>
+          <property name="rightMargin">
+           <number>9</number>
+          </property>
+          <property name="bottomMargin">
+           <number>9</number>
+          </property>
+          <property name="spacing">
            <number>6</number>
           </property>
-          <item row="1" column="0" >
+          <item row="1" column="0">
            <spacer>
-            <property name="orientation" >
+            <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
-            <property name="sizeHint" stdset="0" >
+            <property name="sizeHint" stdset="0">
              <size>
               <width>20</width>
               <height>40</height>
@@ -208,65 +257,74 @@
             </property>
            </spacer>
           </item>
-          <item row="0" column="0" >
-           <layout class="QVBoxLayout" >
-            <property name="spacing" >
+          <item row="0" column="0">
+           <layout class="QVBoxLayout">
+            <property name="spacing">
              <number>6</number>
             </property>
-            <property name="margin" >
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
              <number>0</number>
             </property>
             <item>
-             <widget class="QCheckBox" name="breaklinksCB" >
-              <property name="toolTip" >
+             <widget class="QCheckBox" name="breaklinksCB">
+              <property name="toolTip">
                <string>Allows link text to break across lines.</string>
               </property>
-              <property name="text" >
+              <property name="text">
                <string>B&amp;reak links over lines</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="pdfborderCB" >
-              <property name="text" >
+             <widget class="QCheckBox" name="pdfborderCB">
+              <property name="text">
                <string>No &amp;frames around links</string>
               </property>
-              <property name="tristate" >
+              <property name="tristate">
                <bool>false</bool>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="colorlinksCB" >
-              <property name="text" >
+             <widget class="QCheckBox" name="colorlinksCB">
+              <property name="text">
                <string>C&amp;olor links</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label" >
-              <property name="toolTip" >
+             <widget class="QLabel" name="label">
+              <property name="toolTip">
                <string>Bibliographical backreferences</string>
               </property>
-              <property name="text" >
+              <property name="text">
                <string>B&amp;ackreferences:</string>
               </property>
-              <property name="buddy" >
+              <property name="buddy">
                <cstring>backrefCO</cstring>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="backrefCO" />
+             <widget class="QComboBox" name="backrefCO"/>
             </item>
            </layout>
           </item>
-          <item row="0" column="1" >
+          <item row="0" column="1">
            <spacer>
-            <property name="orientation" >
+            <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
-            <property name="sizeHint" stdset="0" >
+            <property name="sizeHint" stdset="0">
              <size>
               <width>151</width>
               <height>20</height>
@@ -276,85 +334,112 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="tab_3" >
-         <attribute name="title" >
+        <widget class="QWidget" name="tab_3">
+         <attribute name="title">
           <string>&amp;Bookmarks</string>
          </attribute>
-         <layout class="QGridLayout" >
-          <property name="margin" >
+         <layout class="QGridLayout">
+          <property name="leftMargin">
            <number>9</number>
           </property>
-          <property name="spacing" >
+          <property name="topMargin">
+           <number>9</number>
+          </property>
+          <property name="rightMargin">
+           <number>9</number>
+          </property>
+          <property name="bottomMargin">
+           <number>9</number>
+          </property>
+          <property name="spacing">
            <number>6</number>
           </property>
-          <item row="0" column="0" >
-           <widget class="QGroupBox" name="bookmarksGB" >
-            <property name="title" >
+          <item row="0" column="0">
+           <widget class="QGroupBox" name="bookmarksGB">
+            <property name="title">
              <string>G&amp;enerate bookmarks (toc)</string>
             </property>
-            <property name="flat" >
+            <property name="flat">
              <bool>true</bool>
             </property>
-            <property name="checkable" >
+            <property name="checkable">
              <bool>true</bool>
             </property>
-            <property name="checked" >
+            <property name="checked">
              <bool>true</bool>
             </property>
-            <layout class="QGridLayout" >
-             <property name="margin" >
+            <layout class="QGridLayout">
+             <property name="leftMargin">
               <number>9</number>
              </property>
-             <property name="spacing" >
+             <property name="topMargin">
+              <number>9</number>
+             </property>
+             <property name="rightMargin">
+              <number>9</number>
+             </property>
+             <property name="bottomMargin">
+              <number>9</number>
+             </property>
+             <property name="spacing">
               <number>6</number>
              </property>
-             <item row="0" column="0" colspan="2" >
-              <widget class="QCheckBox" name="bookmarksnumberedCB" >
-               <property name="text" >
+             <item row="0" column="0" colspan="2">
+              <widget class="QCheckBox" name="bookmarksnumberedCB">
+               <property name="text">
                 <string>&amp;Numbered bookmarks</string>
                </property>
               </widget>
              </item>
-             <item row="1" column="0" >
-              <widget class="QCheckBox" name="bookmarksopenGB" >
-               <property name="text" >
+             <item row="1" column="0">
+              <widget class="QCheckBox" name="bookmarksopenGB">
+               <property name="text">
                 <string>&amp;Open bookmark tree</string>
                </property>
               </widget>
              </item>
-             <item row="2" column="0" >
-              <layout class="QHBoxLayout" >
-               <property name="spacing" >
+             <item row="2" column="0">
+              <layout class="QHBoxLayout">
+               <property name="spacing">
                 <number>6</number>
                </property>
-               <property name="margin" >
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
                 <number>0</number>
                </property>
                <item>
-                <widget class="QLabel" name="bookmarksopenlevelLA" >
-                 <property name="text" >
+                <widget class="QLabel" name="bookmarksopenlevelLA">
+                 <property name="text">
                   <string>&amp;Level:</string>
                  </property>
-                 <property name="buddy" >
+                 <property name="buddy">
                   <cstring>bookmarksopenlevelSB</cstring>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QSpinBox" name="bookmarksopenlevelSB" >
-                 <property name="toolTip" >
+                <widget class="QSpinBox" name="bookmarksopenlevelSB">
+                 <property name="toolTip">
                   <string>Number of levels</string>
                  </property>
                 </widget>
                </item>
               </layout>
              </item>
-             <item row="2" column="1" >
+             <item row="2" column="1">
               <spacer>
-               <property name="orientation" >
+               <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
-               <property name="sizeHint" stdset="0" >
+               <property name="sizeHint" stdset="0">
                 <size>
                  <width>40</width>
                  <height>20</height>
@@ -365,12 +450,12 @@
             </layout>
            </widget>
           </item>
-          <item row="1" column="0" >
+          <item row="1" column="0">
            <spacer>
-            <property name="orientation" >
+            <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
-            <property name="sizeHint" stdset="0" >
+            <property name="sizeHint" stdset="0">
              <size>
               <width>20</width>
               <height>40</height>
@@ -382,38 +467,45 @@
         </widget>
        </widget>
       </item>
-      <item row="1" column="0" >
-       <widget class="QGroupBox" name="groupBox_3" >
-        <property name="title" >
+      <item row="1" column="0">
+       <widget class="QGroupBox" name="groupBox_3">
+        <property name="title">
          <string>Additional O&amp;ptions</string>
         </property>
-        <property name="flat" >
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+        <property name="checkable">
          <bool>false</bool>
         </property>
-        <property name="checkable" >
+        <property name="checked">
          <bool>false</bool>
         </property>
-        <property name="checked" >
-         <bool>false</bool>
-        </property>
-        <layout class="QGridLayout" >
-         <property name="margin" >
+        <layout class="QGridLayout">
+         <property name="leftMargin">
           <number>9</number>
          </property>
-         <property name="spacing" >
+         <property name="topMargin">
+          <number>9</number>
+         </property>
+         <property name="rightMargin">
+          <number>9</number>
+         </property>
+         <property name="bottomMargin">
+          <number>9</number>
+         </property>
+         <property name="spacing">
           <number>6</number>
          </property>
-         <item row="0" column="0" >
-          <widget class="QLineEdit" name="optionsLE" >
-           <property name="sizePolicy" >
-            <sizepolicy>
-             <hsizetype>7</hsizetype>
-             <vsizetype>0</vsizetype>
+         <item row="0" column="0">
+          <widget class="QLineEdit" name="optionsLE">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="toolTip" >
+           <property name="toolTip">
             <string>e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels</string>
            </property>
           </widget>
@@ -424,12 +516,12 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="0" >
+   <item row="1" column="0">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeHint" stdset="0" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>402</width>
        <height>16</height>

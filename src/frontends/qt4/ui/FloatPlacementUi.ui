@@ -146,6 +146,9 @@
      <property name="title">
       <string>Further Options</string>
      </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
        <widget class="QCheckBox" name="spanCB">
@@ -168,6 +171,9 @@
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
       <string>Position on Page</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">

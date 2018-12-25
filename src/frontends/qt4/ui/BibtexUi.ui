@@ -25,6 +25,9 @@
      <property name="title">
       <string>&amp;Databases</string>
      </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -279,6 +282,9 @@
     <widget class="QGroupBox" name="optionsGB">
      <property name="title">
       <string>Options</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="0" column="0">

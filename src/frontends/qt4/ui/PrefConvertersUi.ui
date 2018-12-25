@@ -1,96 +1,143 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>PrefConvertersUi</class>
- <widget class="QWidget" name="PrefConvertersUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="PrefConvertersUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>438</width>
-    <height>466</height>
+    <width>483</width>
+    <height>513</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
+  <layout class="QGridLayout">
+   <property name="leftMargin">
     <number>9</number>
    </property>
-   <property name="spacing" >
+   <property name="topMargin">
+    <number>9</number>
+   </property>
+   <property name="rightMargin">
+    <number>9</number>
+   </property>
+   <property name="bottomMargin">
+    <number>9</number>
+   </property>
+   <property name="spacing">
     <number>6</number>
    </property>
-   <item row="0" column="0" >
-    <widget class="QGroupBox" name="converterDefGB" >
-     <property name="title" >
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="converterDefGB">
+     <property name="title">
       <string>Converter Defi&amp;nitions</string>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout">
+      <property name="leftMargin">
        <number>9</number>
       </property>
-      <property name="spacing" >
+      <property name="topMargin">
+       <number>9</number>
+      </property>
+      <property name="rightMargin">
+       <number>9</number>
+      </property>
+      <property name="bottomMargin">
+       <number>9</number>
+      </property>
+      <property name="spacing">
        <number>6</number>
       </property>
-      <item row="0" column="0" >
-       <widget class="QListWidget" name="convertersLW" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>7</hsizetype>
-          <vsizetype>7</vsizetype>
+      <item row="0" column="0">
+       <widget class="QListWidget" name="convertersLW">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
        </widget>
       </item>
-      <item row="2" column="0" colspan="2" >
-       <layout class="QGridLayout" >
-        <property name="margin" >
+      <item row="2" column="0" colspan="2">
+       <layout class="QGridLayout">
+        <property name="leftMargin">
          <number>0</number>
         </property>
-        <property name="spacing" >
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
          <number>6</number>
         </property>
-        <item row="0" column="1" >
-         <layout class="QVBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
+        <item row="0" column="1">
+         <layout class="QVBoxLayout">
+          <property name="spacing">
            <number>6</number>
           </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
-           <widget class="QLineEdit" name="converterED" />
+           <widget class="QLineEdit" name="converterED"/>
           </item>
           <item>
-           <widget class="QLineEdit" name="converterFlagED" />
+           <widget class="QLineEdit" name="converterFlagED"/>
           </item>
          </layout>
         </item>
-        <item row="0" column="0" >
-         <layout class="QVBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
+        <item row="0" column="0">
+         <layout class="QVBoxLayout">
+          <property name="spacing">
            <number>6</number>
           </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
-           <widget class="QLabel" name="converterLA" >
-            <property name="text" >
-             <string>C&amp;onverter:</string>
+           <widget class="QLabel" name="converterLA">
+            <property name="text">
+             <string>&amp;Converter:</string>
             </property>
-            <property name="buddy" >
+            <property name="buddy">
              <cstring>converterED</cstring>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="converterFlagLA" >
-            <property name="text" >
+           <widget class="QLabel" name="converterFlagLA">
+            <property name="text">
              <string>E&amp;xtra flag:</string>
             </property>
-            <property name="buddy" >
+            <property name="buddy">
              <cstring>converterFlagED</cstring>
             </property>
            </widget>
@@ -99,38 +146,54 @@
         </item>
        </layout>
       </item>
-      <item row="1" column="0" colspan="2" >
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
+      <item row="1" column="0" colspan="2">
+       <layout class="QHBoxLayout">
+        <property name="spacing">
          <number>6</number>
         </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
         <item>
-         <layout class="QVBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
+         <layout class="QVBoxLayout">
+          <property name="spacing">
            <number>6</number>
           </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
-           <widget class="QLabel" name="converterFromLA" >
-            <property name="text" >
-             <string>&amp;From format:</string>
+           <widget class="QLabel" name="converterFromLA">
+            <property name="text">
+             <string>Fro&amp;m format:</string>
             </property>
-            <property name="buddy" >
+            <property name="buddy">
              <cstring>converterFromCO</cstring>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="converterFromCO" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>3</hsizetype>
-              <vsizetype>0</vsizetype>
+           <widget class="QComboBox" name="converterFromCO">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -140,29 +203,36 @@
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
+         <layout class="QVBoxLayout">
+          <property name="spacing">
            <number>6</number>
           </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
-           <widget class="QLabel" name="converterToLA" >
-            <property name="text" >
+           <widget class="QLabel" name="converterToLA">
+            <property name="text">
              <string>&amp;To format:</string>
             </property>
-            <property name="buddy" >
+            <property name="buddy">
              <cstring>converterToCO</cstring>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="converterToCO" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>3</hsizetype>
-              <vsizetype>0</vsizetype>
+           <widget class="QComboBox" name="converterToCO">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -173,49 +243,56 @@
         </item>
        </layout>
       </item>
-      <item row="0" column="1" >
-       <layout class="QVBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
+      <item row="0" column="1">
+       <layout class="QVBoxLayout">
+        <property name="spacing">
          <number>6</number>
         </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
         <item>
-         <widget class="QPushButton" name="converterNewPB" >
-          <property name="text" >
+         <widget class="QPushButton" name="converterNewPB">
+          <property name="text">
            <string>A&amp;dd</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="converterModifyPB" >
-          <property name="text" >
+         <widget class="QPushButton" name="converterModifyPB">
+          <property name="text">
            <string>&amp;Modify</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="converterRemovePB" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>1</hsizetype>
-            <vsizetype>0</vsizetype>
+         <widget class="QPushButton" name="converterRemovePB">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
-          <property name="text" >
+          <property name="text">
            <string>Remo&amp;ve</string>
           </property>
          </widget>
         </item>
         <item>
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Vertical</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>75</width>
             <height>16</height>
@@ -228,39 +305,60 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="0" >
-    <widget class="QGroupBox" name="cacheGB" >
-     <property name="title" >
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="cacheGB">
+     <property name="title">
       <string>Converter File Cache</string>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout">
+      <property name="leftMargin">
        <number>9</number>
       </property>
-      <property name="spacing" >
+      <property name="topMargin">
+       <number>9</number>
+      </property>
+      <property name="rightMargin">
+       <number>9</number>
+      </property>
+      <property name="bottomMargin">
+       <number>9</number>
+      </property>
+      <property name="spacing">
        <number>6</number>
       </property>
-      <item row="0" column="0" >
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
+      <item row="0" column="0">
+       <layout class="QHBoxLayout">
+        <property name="spacing">
          <number>6</number>
         </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
         <item>
-         <widget class="QCheckBox" name="cacheCB" >
-          <property name="text" >
+         <widget class="QCheckBox" name="cacheCB">
+          <property name="text">
            <string>&amp;Enabled</string>
           </property>
          </widget>
         </item>
         <item>
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>40</width>
             <height>20</height>
@@ -269,60 +367,81 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="maxAgeLA" >
-          <property name="text" >
+         <widget class="QLabel" name="maxAgeLA">
+          <property name="text">
            <string>Maximum a&amp;ge (in days):</string>
           </property>
-          <property name="buddy" >
+          <property name="buddy">
            <cstring>maxAgeLE</cstring>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="maxAgeLE" />
+         <widget class="QLineEdit" name="maxAgeLE"/>
         </item>
        </layout>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="2" column="0" >
-    <widget class="QGroupBox" name="securityGB" >
-     <property name="title" >
+   <item row="2" column="0">
+    <widget class="QGroupBox" name="securityGB">
+     <property name="title">
       <string>Security</string>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout">
+      <property name="leftMargin">
        <number>9</number>
       </property>
-      <property name="spacing" >
+      <property name="topMargin">
+       <number>9</number>
+      </property>
+      <property name="rightMargin">
+       <number>9</number>
+      </property>
+      <property name="bottomMargin">
+       <number>9</number>
+      </property>
+      <property name="spacing">
        <number>6</number>
       </property>
-      <item row="0" column="0" >
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
+      <item row="0" column="0">
+       <layout class="QHBoxLayout">
+        <property name="spacing">
          <number>6</number>
         </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
         <item>
-         <widget class="QCheckBox" name="needauthForbiddenCB" >
-          <property name="text" >
-           <string>&amp;Forbid use of needauth converters</string>
-          </property>
+         <widget class="QCheckBox" name="needauthForbiddenCB">
           <property name="toolTip">
            <string>When enabled, use of converters with the 'needauth' option is forbidden.</string>
+          </property>
+          <property name="text">
+           <string>&amp;Forbid use of needauth converters</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="needauthCB" >
-          <property name="text" >
-           <string>Use need&amp;auth option</string>
-          </property>
+         <widget class="QCheckBox" name="needauthCB">
           <property name="toolTip">
            <string>When enabled, ask user before launching any external converter with the 'needauth' option.</string>
+          </property>
+          <property name="text">
+           <string>Use need&amp;auth option</string>
           </property>
          </widget>
         </item>
@@ -344,7 +463,7 @@
   <tabstop>converterRemovePB</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>

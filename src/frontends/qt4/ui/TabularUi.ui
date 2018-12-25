@@ -38,6 +38,9 @@
          <property name="title">
           <string>Row setting</string>
          </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
          <layout class="QGridLayout" name="gridLayout_6">
           <item row="0" column="0">
            <widget class="QCheckBox" name="multirowCB">
@@ -89,6 +92,9 @@
         <widget class="QGroupBox" name="groupBox_2">
          <property name="title">
           <string>Cell setting</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
          </property>
          <layout class="QGridLayout" name="gridLayout_5">
           <item row="0" column="0">
@@ -163,6 +169,9 @@
          </property>
          <property name="title">
           <string>Table-wide settings</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
           <item row="0" column="0">
@@ -291,6 +300,9 @@
         <widget class="QGroupBox" name="GroupBox12">
          <property name="title">
           <string>Column settings</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
          </property>
          <layout class="QGridLayout" name="gridLayout_9">
           <item row="0" column="0">
@@ -559,6 +571,9 @@
          <property name="title">
           <string>Set Borders</string>
          </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
          <layout class="QGridLayout">
           <item row="0" column="0">
            <widget class="QFrame" name="bordersF">
@@ -724,6 +739,15 @@
                  </color>
                 </brush>
                </colorrole>
+               <colorrole role="PlaceholderText">
+                <brush brushstyle="NoBrush">
+                 <color alpha="128">
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                </brush>
+               </colorrole>
               </active>
               <inactive>
                <colorrole role="WindowText">
@@ -876,6 +900,15 @@
                   <red>232</red>
                   <green>232</green>
                   <blue>232</blue>
+                 </color>
+                </brush>
+               </colorrole>
+               <colorrole role="PlaceholderText">
+                <brush brushstyle="NoBrush">
+                 <color alpha="128">
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
                  </color>
                 </brush>
                </colorrole>
@@ -1034,6 +1067,15 @@
                  </color>
                 </brush>
                </colorrole>
+               <colorrole role="PlaceholderText">
+                <brush brushstyle="NoBrush">
+                 <color alpha="128">
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                </brush>
+               </colorrole>
               </disabled>
              </palette>
             </property>
@@ -1068,6 +1110,9 @@
          <property name="title">
           <string>All Borders</string>
          </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
          <layout class="QGridLayout">
           <item row="0" column="0">
            <widget class="QPushButton" name="borderSetPB">
@@ -1096,6 +1141,9 @@
         <widget class="QGroupBox" name="borderStyleGB">
          <property name="title">
           <string>Style</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
          </property>
          <layout class="QGridLayout">
           <item row="1" column="0">
@@ -1512,6 +1560,9 @@
          <property name="title">
           <string>Multi-page table alignment</string>
          </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
          <layout class="QGridLayout" name="gridLayout9">
           <item row="0" column="0">
            <widget class="QRadioButton" name="leftRB">
@@ -1533,7 +1584,7 @@
           <item row="0" column="2">
            <widget class="QRadioButton" name="rightRB">
             <property name="text">
-             <string>Right</string>
+             <string>Ri&amp;ght</string>
             </property>
            </widget>
           </item>
