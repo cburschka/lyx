@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>283</width>
-    <height>423</height>
+    <height>359</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -100,7 +100,7 @@
          </spacer>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
+         <layout class="QVBoxLayout" name="cbVerticalLayout">
           <item>
            <widget class="QCheckBox" name="searchbackCB">
             <property name="toolTip">
@@ -134,23 +134,10 @@
             </property>
            </widget>
           </item>
-          <item>
-           <spacer name="verticalSpacer_5">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
+         <layout class="QVBoxLayout" name="pbVerticalLayout">
           <item>
            <widget class="QPushButton" name="findNextPB">
             <property name="enabled">

@@ -50,6 +50,9 @@ GuiSearch::GuiSearch(GuiView & lv)
 	// fix height to minimum
 	setFixedHeight(sizeHint().height());
 
+	// align items in grid on top
+	mainGridLayout->setAlignment(Qt::AlignTop);
+
 	connect(buttonBox, SIGNAL(clicked(QAbstractButton *)),
 		this, SLOT(slotButtonBox(QAbstractButton *)));
 	connect(findPB, SIGNAL(clicked()), this, SLOT(findClicked()));

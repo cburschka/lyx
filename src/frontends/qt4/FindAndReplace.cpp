@@ -69,6 +69,10 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 	replace_work_area_->stopBlinkingCaret();
 	old_buffer_ = view_.documentBufferView() ? 
 	    &(view_.documentBufferView()->buffer()) : 0;
+
+	// align items on top
+	cbVerticalLayout->setAlignment(Qt::AlignTop);
+	pbVerticalLayout->setAlignment(Qt::AlignTop);
 }
 
 
