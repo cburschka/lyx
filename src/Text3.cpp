@@ -2378,7 +2378,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 					break;
 				}
 			} else {
-				cur.message(_("Invalid argument (must be a positive number)!"));
+				cur.message(_("Invalid argument (must be a non-negative number)!"));
 				break;
 			}
 		}
