@@ -72,6 +72,7 @@
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
+#include "support/limited_stack.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 #include "support/lyxtime.h"
@@ -105,7 +106,8 @@ using cap::pasteSimpleText;
 using frontend::Clipboard;
 
 // globals...
-static Font freefont(ignore_font, ignore_language);
+typedef limited_stack<pair<docstring, Font>> FontStack;
+static FontStack freeFonts(15);
 static bool toggleall = false;
 
 static void toggleAndShow(Cursor & cur, Text * text,
@@ -2364,10 +2366,26 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_TEXTSTYLE_APPLY:
-		toggleAndShow(cur, this, freefont, toggleall);
-		cur.message(_("Character set"));
+	case LFUN_TEXTSTYLE_APPLY: {
+		unsigned int num = 0;
+		string const arg = to_utf8(cmd.argument());
+		// Argument?
+		if (!arg.empty()) {
+			if (isStrUnsignedInt(arg)) {
+				num = convert<uint>(arg);
+				if (num >= freeFonts.size()) {
+					cur.message(_("Invalid argument (number exceeds stack size)!"));
+					break;
+				}
+			} else {
+				cur.message(_("Invalid argument (must be a positive number)!"));
+				break;
+			}
+		}
+		toggleAndShow(cur, this, freeFonts[num].second, toggleall);
+		cur.message(bformat(_("Text properties applied: %1$s"), freeFonts[num].first));
 		break;
+	}
 
 	// Set the freefont using the contents of \param data dispatched from
 	// the frontends and apply it at the current cursor location.
@@ -2375,17 +2393,17 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		Font font;
 		bool toggle;
 		if (font.fromString(to_utf8(cmd.argument()), toggle)) {
-			freefont = font;
+			docstring const props = font.stateText(&bv->buffer().params(), true);
+			freeFonts.push(make_pair(props, font));
 			toggleall = toggle;
-			toggleAndShow(cur, this, freefont, toggleall);
+			toggleAndShow(cur, this, font, toggleall);
 			// We need a buffer update if we change the language
 			// of an info inset
 			if (cur.insetInSelection(INFO_CODE))
 				cur.forceBufferUpdate();
-			cur.message(_("Character set"));
-		} else {
-			lyxerr << "Argument not ok";
-		}
+			cur.message(bformat(_("Text properties applied: %1$s"), props));
+		} else
+			LYXERR0("Invalid argument of textstyle-update");
 		break;
 	}
 
@@ -3378,9 +3396,12 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FONT_CROSSOUT:
 	case LFUN_FONT_UNDERUNDERLINE:
 	case LFUN_FONT_UNDERWAVE:
-	case LFUN_TEXTSTYLE_APPLY:
 	case LFUN_TEXTSTYLE_UPDATE:
 		enable = !cur.paragraph().isPassThru();
+		break;
+
+	case LFUN_TEXTSTYLE_APPLY:
+		enable = !freeFonts.empty();
 		break;
 
 	case LFUN_WORD_DELETE_FORWARD:
@@ -3504,6 +3525,21 @@ bool Text::inDescriptionItem(Cursor & cur) const
 	return (pos < body_pos
 		|| (pos == body_pos
 		    && (pos == 0 || par.getChar(pos - 1) != ' ')));
+}
+
+
+std::vector<docstring> Text::getFreeFonts() const
+{
+	vector<docstring> ffList;
+
+	FontStack::const_iterator cit = freeFonts.begin();
+	FontStack::const_iterator end = freeFonts.end();
+	for (; cit != end; ++cit)
+		// we do not use cit-> here because gcc 2.9x does not
+		// like it (JMarc)
+		ffList.push_back((*cit).first);
+
+	return ffList;
 }
 
 } // namespace lyx

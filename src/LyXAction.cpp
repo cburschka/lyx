@@ -3830,8 +3830,10 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_TEXTSTYLE_APPLY
- * \li Action: Toggle user-defined (=last-time used) text style.
- * \li Notion: This style is set via #LFUN_TEXTSTYLE_UPDATE, which is
+ * \li Action: Apply last used text properties.
+ * \li Syntax: textstyle-apply [<NUM>]
+ * \li Params: <NUM>: number of the selection in the internal freefonts stack to be applied.
+ * \li Notion: These properties are stored via #LFUN_TEXTSTYLE_UPDATE, which is
                automatically triggered when using Text Style dialog.
  * \li Syntax: textstyle-apply
  * \li Origin: leeming, 12 Mar 2003

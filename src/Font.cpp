@@ -143,41 +143,41 @@ void Font::update(Font const & newfont,
 }
 
 
-docstring const stateText(FontInfo const & f)
+docstring const stateText(FontInfo const & f, bool const terse)
 {
 	odocstringstream os;
-	if (f.family() != INHERIT_FAMILY)
+	if (f.family() != INHERIT_FAMILY && (!terse || f.family() != IGNORE_FAMILY))
 		os << _(GUIFamilyNames[f.family()]) << ", ";
-	if (f.series() != INHERIT_SERIES)
+	if (f.series() != INHERIT_SERIES && (!terse || f.series() != IGNORE_SERIES))
 		os << _(GUISeriesNames[f.series()]) << ", ";
-	if (f.shape() != INHERIT_SHAPE)
+	if (f.shape() != INHERIT_SHAPE && (!terse || f.shape() != IGNORE_SHAPE))
 		os << _(GUIShapeNames[f.shape()]) << ", ";
-	if (f.size() != FONT_SIZE_INHERIT)
+	if (f.size() != FONT_SIZE_INHERIT && (!terse || f.size() != FONT_SIZE_IGNORE))
 		os << _(GUISizeNames[f.size()]) << ", ";
-	if (f.color() != Color_inherit)
+	if (f.color() != Color_inherit && (!terse || f.color() != Color_ignore))
 		os << lcolor.getGUIName(f.color()) << ", ";
 	// FIXME: uncomment this when we support background.
 	//if (f.background() != Color_inherit)
 	//	os << lcolor.getGUIName(f.background()) << ", ";
-	if (f.emph() != FONT_INHERIT)
+	if (f.emph() != FONT_INHERIT && (!terse || f.emph() != FONT_IGNORE))
 		os << bformat(_("Emphasis %1$s, "),
 			      _(GUIMiscNames[f.emph()]));
-	if (f.underbar() != FONT_INHERIT)
+	if (f.underbar() != FONT_INHERIT && (!terse || f.underbar() == FONT_ON))
 		os << bformat(_("Underline %1$s, "),
 			      _(GUIMiscNames[f.underbar()]));
-	if (f.strikeout() != FONT_INHERIT)
-		os << bformat(_("Strike out %1$s, "),
-			      _(GUIMiscNames[f.strikeout()]));
-	if (f.xout() != FONT_INHERIT)
-		os << bformat(_("Cross out %1$s, "),
-			      _(GUIMiscNames[f.xout()]));
-	if (f.uuline() != FONT_INHERIT)
+	if (f.uuline() != FONT_INHERIT && (!terse || f.uuline() == FONT_ON))
 		os << bformat(_("Double underline %1$s, "),
 			      _(GUIMiscNames[f.uuline()]));
-	if (f.uwave() != FONT_INHERIT)
+	if (f.uwave() != FONT_INHERIT && (!terse || f.uwave() == FONT_ON))
 		os << bformat(_("Wavy underline %1$s, "),
 			      _(GUIMiscNames[f.uwave()]));
-	if (f.noun() != FONT_INHERIT)
+	if (f.strikeout() != FONT_INHERIT && (!terse || f.strikeout() == FONT_ON))
+		os << bformat(_("Strike out %1$s, "),
+			      _(GUIMiscNames[f.strikeout()]));
+	if (f.xout() != FONT_INHERIT && (!terse || f.strikeout() == FONT_ON))
+		os << bformat(_("Cross out %1$s, "),
+			      _(GUIMiscNames[f.xout()]));
+	if (f.noun() != FONT_INHERIT && (!terse || f.noun() != FONT_IGNORE))
 		os << bformat(_("Noun %1$s, "),
 			      _(GUIMiscNames[f.noun()]));
 	if (f == inherit_font)
@@ -187,11 +187,12 @@ docstring const stateText(FontInfo const & f)
 }
 
 
-docstring const Font::stateText(BufferParams * params) const
+docstring const Font::stateText(BufferParams * params, bool const terse) const
 {
 	odocstringstream os;
-	os << lyx::stateText(bits_);
-	if (!params || (language() != params->language)) {
+	os << lyx::stateText(bits_, terse);
+	if ((!params || (language() != params->language))
+	    && (!terse || language() != ignore_language)) {
 		// reset_language is a null pointer!
 		os << bformat(_("Language: %1$s, "),
 			      (language() == reset_language) ? _("Default")

@@ -109,6 +109,8 @@ public:
 
 	///
 	void toggleFree(Cursor & cur, Font const &, bool toggleall = false);
+	/// Stack to save recent text propterty applications
+	std::vector<docstring> getFreeFonts() const;
 
 	/// ???
 	/// FIXME: replace Cursor with DocIterator.

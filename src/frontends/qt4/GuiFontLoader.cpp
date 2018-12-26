@@ -42,7 +42,8 @@ int const num_math_fonts = sizeof(math_fonts) / sizeof(*math_fonts);
 
 namespace lyx {
 
-extern docstring const stateText(FontInfo const & f);
+extern docstring const stateText(FontInfo const & f,
+				 bool const terse = false);
 
 namespace frontend {
 

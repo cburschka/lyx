@@ -41,6 +41,7 @@
 
 #include "insets/InsetText.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -318,8 +319,9 @@ void DynamicMenuButton::initialize()
 
 bool DynamicMenuButton::isMenuType(string const & s)
 {
-	return s == "dynamic-custom-insets" ||
-	       s == "dynamic-char-styles";
+	return s == "dynamic-custom-insets"
+		|| s == "dynamic-char-styles"
+		|| s == "dynamic-freefonts";
 }
 
 
@@ -336,28 +338,54 @@ void DynamicMenuButton::updateTriggered()
 		setEnabled(false);
 		setMinimumWidth(sizeHint().width());
 		d->text_class_.reset();
-		d->inset_ = 0;
+		d->inset_ = nullptr;
 		return;
 	}
 
-	DocumentClassConstPtr text_class = 
-			bv->buffer().params().documentClassPtr();
-	InsetText const * inset = &(bv->cursor().innerText()->inset());
-	// if the text class has changed, then we need to reload the menu
-	if (d->text_class_ != text_class) {
-		d->text_class_ = text_class;
-		// at the moment, we can just call loadFlexInsets, and it will
-		// handle both types. if there were more types of menus, then we 
-		// might need to have other options.
-		loadFlexInsets();
+	string const & menutype = tbitem_.name_;
+	if (menutype == "dynamic-custom-insets" || menutype == "dynamic-char-styles") {
+		DocumentClassConstPtr text_class =
+				bv->buffer().params().documentClassPtr();
+		InsetText const * inset = &(bv->cursor().innerText()->inset());
+		// if the text class has changed, then we need to reload the menu
+		if (d->text_class_ != text_class) {
+			d->text_class_ = text_class;
+			// at the moment, we can just call loadFlexInsets, and it will
+			// handle both types. if there were more types of menus, then we
+			// might need to have other options.
+			loadFlexInsets();
+		}
+		// remember where we are
+		d->inset_ = inset;
+		// note that enabling here might need to be more subtle if there
+		// were other kinds of menus.
+		setEnabled(!bv->buffer().isReadonly()
+			   && !m->isEmpty()
+			   && inset->insetAllowed(FLEX_CODE));
+	} else if (menutype == "dynamic-freefonts") {
+		m->clear();
+		vector<docstring> ffList = bv->cursor().innerText()->getFreeFonts();
+		unsigned int i = 0;
+		Action * default_act = nullptr;
+		for (auto const & f : ffList) {
+			FuncRequest func(LFUN_TEXTSTYLE_APPLY, convert<docstring>(i),
+					 FuncRequest::TOOLBAR);
+			docstring const lb = char_type('&') + convert<docstring>(i)
+				+ from_ascii(". ") + f ;
+			Action * act = new Action(func, QIcon(), toqstr(lb), toqstr(f), this);
+			m->addAction(act);
+			// The most recent one is the default
+			if (i == 0)
+				default_act = act;
+			++i;
+		}
+		if (default_act) {
+			QToolButton::setDefaultAction(default_act);
+			QToolButton::setIcon(getIcon(FuncRequest(LFUN_TEXTSTYLE_APPLY), false));
+		}
+		setPopupMode(QToolButton::DelayedPopup);
+		setEnabled(lyx::getStatus(FuncRequest(LFUN_TEXTSTYLE_APPLY)).enabled());
 	}
-	// remember where we are
-	d->inset_ = inset;
-	// note that enabling here might need to be more subtle if there
-	// were other kinds of menus.
-	setEnabled(!bv->buffer().isReadonly() &&
-						 !m->isEmpty() && 
-						 inset->insetAllowed(FLEX_CODE));
 }
 
 
