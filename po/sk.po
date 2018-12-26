@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-12-25 18:48+0100\n"
-"PO-Revision-Date: 2018-12-25 18:03+0000\n"
+"POT-Creation-Date: 2018-12-26 17:44+0100\n"
+"PO-Revision-Date: 2018-12-26 16:47+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -20186,10 +20186,6 @@ msgstr "Prepnúť štýl meno"
 msgid "Custom text styles"
 msgstr "Vlastné štýly textu"
 
-#: lib/ui/stdtoolbars.inc:90
-msgid "Apply last text properties"
-msgstr "Použiť posledné vlastnosti textu"
-
 #: lib/ui/stdtoolbars.inc:92
 msgid "Insert math"
 msgstr "Vložiť matematiku"
@@ -20337,6 +20333,10 @@ msgstr "Zahrnúť súbor"
 #: lib/ui/stdtoolbars.inc:141
 msgid "Text properties"
 msgstr "Vlastnosti textu"
+
+#: lib/ui/stdtoolbars.inc:141
+msgid "Apply recent text properties"
+msgstr "Použiť nedávne vlastnosti textu"
 
 #: lib/ui/stdtoolbars.inc:142
 msgid "Paragraph settings"
@@ -28535,9 +28535,18 @@ msgstr " neznámy"
 msgid "Missing argument"
 msgstr "Chýbajúci parameter"
 
-#: src/Text3.cpp:2370 src/Text3.cpp:2386
-msgid "Character set"
-msgstr "Znaková sada"
+#: src/Text3.cpp:2377
+msgid "Invalid argument (number exceeds stack size)!"
+msgstr "Neplatný argument (číslo prekračuje rozsah skladu)!"
+
+#: src/Text3.cpp:2381
+msgid "Invalid argument (must be a non-negative number)!"
+msgstr "Neplatný argument (musí byť nie-negatívne číslo)!"
+
+#: src/Text3.cpp:2386 src/Text3.cpp:2404
+#, c-format
+msgid "Text properties applied: %1$s"
+msgstr "Vlastnosti textu aplikované: %1$s"
 
 #: src/Text3.cpp:2539
 msgid "Path to thesaurus directory not set!"
@@ -34807,6 +34816,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "Character set"
+#~ msgstr "Znaková sada"
+
 #~ msgid "Enable"
 #~ msgstr "Zapnúť"
 
@@ -39653,3 +39665,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Enable &change tracking features in the output"
 #~ msgstr "&Umožni sledovanie zmien vo výstupe"
+
+#~ msgid "Apply last text properties"
+#~ msgstr "Použiť posledné vlastnosti textu"
