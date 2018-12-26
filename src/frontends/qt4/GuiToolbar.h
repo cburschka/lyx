@@ -87,6 +87,7 @@ protected Q_SLOTS:
 ///		dynamic-custom-insets
 ///		dynamic-char-styles
 ///		dynamic-freefonts
+///		paste
 /// To add a new one of these, you must add a routine, like 
 /// loadFlexInsets, that will populate the menu, and call it from
 /// updateTriggered. Make sure to add the new type to isMenuType().

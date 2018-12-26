@@ -22,6 +22,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Cursor.h"
+#include "CutAndPaste.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "GuiApplication.h"
@@ -43,6 +44,7 @@
 
 #include "support/convert.h"
 #include "support/debug.h"
+#include "support/docstring_list.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
@@ -321,7 +323,8 @@ bool DynamicMenuButton::isMenuType(string const & s)
 {
 	return s == "dynamic-custom-insets"
 		|| s == "dynamic-char-styles"
-		|| s == "dynamic-freefonts";
+		|| s == "dynamic-freefonts"
+		|| s == "paste";
 }
 
 
@@ -385,6 +388,32 @@ void DynamicMenuButton::updateTriggered()
 		}
 		setPopupMode(QToolButton::DelayedPopup);
 		setEnabled(lyx::getStatus(FuncRequest(LFUN_TEXTSTYLE_APPLY)).enabled());
+	} else if (menutype == "paste") {
+		m->clear();
+		docstring_list const sel = cap::availableSelections(&bv->buffer());
+
+		docstring_list::const_iterator cit = sel.begin();
+		docstring_list::const_iterator end = sel.end();
+
+		Action * default_act = nullptr;
+		for (unsigned int index = 0; cit != end; ++cit, ++index) {
+			docstring const s = *cit;
+			FuncRequest func(LFUN_PASTE, convert<docstring>(index),
+					 FuncRequest::TOOLBAR);
+			docstring const lb = char_type('&') + convert<docstring>(index)
+				+ from_ascii(". ") + s ;
+			Action * act = new Action(func, QIcon(), toqstr(lb), toqstr(s), this);
+			m->addAction(act);
+			// The most recent one is the default
+			if (index == 0)
+				default_act = act;
+		}
+		Action * default_action = new Action(FuncRequest(LFUN_PASTE),
+						     getIcon(FuncRequest(LFUN_PASTE), false),
+						     qt_("Paste"), qt_("Paste"), this);
+		QToolButton::setDefaultAction(default_action);
+		setPopupMode(QToolButton::DelayedPopup);
+		setEnabled(lyx::getStatus(FuncRequest(LFUN_PASTE)).enabled());
 	}
 }
 

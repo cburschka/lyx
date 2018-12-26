@@ -79,7 +79,7 @@ ToolbarSet
 		Item "Redo" "redo"
 		Item "Cut" "cut"
 		Item "Copy" "copy"
-		Item "Paste" "paste"
+		DynamicMenu "paste" "Paste"
 		Item "Find and replace" "dialog-show findreplace"
 		Item "Find and replace (advanced)" "dialog-toggle findreplaceadv"
 		Item "Navigate back" "bookmark-goto 0"
