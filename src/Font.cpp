@@ -191,9 +191,12 @@ docstring const Font::stateText(BufferParams * params) const
 {
 	odocstringstream os;
 	os << lyx::stateText(bits_);
-	if (!params || (language() != params->language))
+	if (!params || (language() != params->language)) {
+		// reset_language is a null pointer!
 		os << bformat(_("Language: %1$s, "),
-			      _(language()->display()));
+			      (language() == reset_language) ? _("Default")
+							     : _(language()->display()));
+	}
 	if (bits_.number() != FONT_OFF)
 		os << "  " << bformat(_("Number %1$s"),
 			      _(GUIMiscNames[bits_.number()]));
