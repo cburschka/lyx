@@ -386,7 +386,7 @@ void DynamicMenuButton::updateTriggered()
 			QToolButton::setDefaultAction(default_act);
 			QToolButton::setIcon(getIcon(FuncRequest(LFUN_TEXTSTYLE_APPLY), false));
 		}
-		setPopupMode(QToolButton::DelayedPopup);
+		setPopupMode(QToolButton::MenuButtonPopup);
 		setEnabled(lyx::getStatus(FuncRequest(LFUN_TEXTSTYLE_APPLY)).enabled());
 	} else if (menutype == "paste") {
 		m->clear();
@@ -408,7 +408,7 @@ void DynamicMenuButton::updateTriggered()
 						     getIcon(FuncRequest(LFUN_PASTE), false),
 						     qt_("Paste"), qt_("Paste"), this);
 		QToolButton::setDefaultAction(default_action);
-		setPopupMode(QToolButton::DelayedPopup);
+		setPopupMode(QToolButton::MenuButtonPopup);
 		setEnabled(lyx::getStatus(FuncRequest(LFUN_PASTE)).enabled());
 	}
 }
