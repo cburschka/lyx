@@ -86,7 +86,7 @@ protected Q_SLOTS:
 /// (stdtoolbars.inc, usually) and must be one of:
 ///		dynamic-custom-insets
 ///		dynamic-char-styles
-///		dynamic-freefonts
+///		textstyle-apply
 ///		paste
 /// To add a new one of these, you must add a routine, like 
 /// loadFlexInsets, that will populate the menu, and call it from

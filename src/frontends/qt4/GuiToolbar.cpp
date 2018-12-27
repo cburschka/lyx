@@ -323,7 +323,7 @@ bool DynamicMenuButton::isMenuType(string const & s)
 {
 	return s == "dynamic-custom-insets"
 		|| s == "dynamic-char-styles"
-		|| s == "dynamic-freefonts"
+		|| s == "textstyle-apply"
 		|| s == "paste";
 }
 
@@ -365,7 +365,7 @@ void DynamicMenuButton::updateTriggered()
 		setEnabled(!bv->buffer().isReadonly()
 			   && !m->isEmpty()
 			   && inset->insetAllowed(FLEX_CODE));
-	} else if (menutype == "dynamic-freefonts") {
+	} else if (menutype == "textstyle-apply") {
 		m->clear();
 		vector<docstring> ffList = bv->cursor().innerText()->getFreeFonts();
 		unsigned int i = 0;

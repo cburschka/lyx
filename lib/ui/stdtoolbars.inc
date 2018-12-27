@@ -138,7 +138,7 @@ ToolbarSet
 		Item "Include file" "dialog-show-new-inset include"
 		Separator
 		Item "Text properties" "dialog-show character"
-		DynamicMenu "dynamic-freefonts" "Apply recent text properties"
+		DynamicMenu "textstyle-apply" "Apply recent text properties"
 		Item "Paragraph settings" "layout-paragraph"
 		Item "Thesaurus" "thesaurus-entry"
 	End
