@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 566
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -65,7 +65,7 @@ logicalmkup
 \language ngerman
 \language_package default
 \inputencoding auto
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
 \font_typewriter "lmtt" "default"
@@ -2100,6 +2100,7 @@ reference "tab:Horizontaler-Bildlauf"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -8073,6 +8074,8 @@ Zusammenfassung
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -11314,6 +11317,8 @@ reference "tab:Breite-der-verschiedenen"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -15637,6 +15642,10 @@ nachdem
 Textstil
 \family default
  geschlossen wurde.
+ Wenn Sie den Knopf kurz drücken, werden die zuletzt angewandten Texteigenschaft
+en nochmals angewandt, wenn Sie länger drücken, öffnet sich ein Menü mit
+ den (max.
+ 20) zuletzt angewandten Eigenschaften, aus denen Sie dann auswählen können.
 \end_layout
 
 \begin_layout Standard
@@ -23644,6 +23653,8 @@ arg   "layout-paragraph"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -23781,6 +23792,8 @@ reference "fig:Stern"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -23791,6 +23804,8 @@ status open
 
 
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -23832,6 +23847,8 @@ Undefinierbar
 
 
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -23944,6 +23961,8 @@ reference "tab:Ein-Tabellen-Gleitobjekt"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -25276,6 +25295,8 @@ reference "tab:Akzente"
 \begin_layout Standard
 \align center
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -26548,6 +26569,7 @@ reference "tab:Mathematik-Schriftstile"
 \family typewriter
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -33439,6 +33461,7 @@ reference "fig:Seitenlayout-mit-benutzer"
 \begin_layout Standard
 \begin_inset Float figure
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -40647,7 +40670,7 @@ Auswahlbox für die Umgebungen
 \begin_layout Standard
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="22" columns="2">
+<lyxtabular version="3" rows="23" columns="2">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -41136,11 +41159,9 @@ arg   "dialog-show character"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family sans
 \begin_inset Info
 type  "icon"
-arg   "textstyle-apply"
+arg   "dynamic-char-styles"
 \end_inset
 
 
@@ -41152,13 +41173,10 @@ arg   "textstyle-apply"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Formatiert Text mit der aktuellen Einstellungen des Dialogs 
-\begin_inset Info
-type  "menu"
-arg   "dialog-show character"
-\end_inset
 
-
+\family sans
+Bearbeiten\SpecialChar menuseparator
+Spezifische Textstile
 \end_layout
 
 \end_inset
@@ -41252,6 +41270,34 @@ arg   "tabular-insert"
 \family sans
 Einfügen\SpecialChar menuseparator
 Tabelle
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "icon"
+arg   "dynamic-custom-insets"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Einfügen\SpecialChar menuseparator
+Spezifische Einfügungen
 \end_layout
 
 \end_inset
@@ -41393,7 +41439,7 @@ Die Extra-Werkzeugleiste enthält wie oben gezeigt von links nach rechts
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="25" columns="2">
+<lyxtabular version="3" rows="26" columns="2">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -42095,6 +42141,39 @@ Benutzerdefiniert
 \family sans
 \begin_inset Info
 type  "icon"
+arg   "textstyle-apply"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Formatiert Text mit den letzten Einstellungen des Dialogs 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show character"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset Info
+type  "icon"
 arg   "layout-paragraph"
 \end_inset
 
@@ -42384,8 +42463,6 @@ arg   "view-others"
 \end_inset
 
 
-\family sans
-*
 \end_layout
 
 \end_inset
@@ -42421,7 +42498,7 @@ type  "icon"
 arg   "update-others"
 \end_inset
 
-*
+
 \end_layout
 
 \end_inset
@@ -42452,11 +42529,6 @@ aktualisieren
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-* Diese Knöpfe können anders aussehen, wenn sie nicht das voreingestellte
- Symboldesign verwenden.
 \end_layout
 
 \begin_layout Subsection
@@ -47497,6 +47569,7 @@ reference "tab:Maßeinheiten"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open

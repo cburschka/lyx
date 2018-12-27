@@ -16005,6 +16005,13 @@ your custom character style
 those 
 \change_unchanged
 even when the dialog isn't visible.
+
+\change_inserted -712698321 1545899208
+ A short press will apply the most recent setting again, a longer press
+ will open a menu with the (max.
+ 20) most recently applied settings, from which you can select one.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -42465,7 +42472,7 @@ pull-down box for the environments
 \begin_layout Standard
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="22" columns="2">
+<lyxtabular version="3" rows="24" columns="2">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -42983,10 +42990,10 @@ arg   "dialog-show character"
 
 \begin_layout Plain Layout
 
-\family sans
+\change_inserted -712698321 1545900859
 \begin_inset Info
 type  "icon"
-arg   "textstyle-apply"
+arg   "dynamic-char-styles"
 \end_inset
 
 
@@ -42998,9 +43005,45 @@ arg   "textstyle-apply"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Format text using the current settings in the 
-\change_deleted -712698321 1525758229
 
+\change_inserted -712698321 1545900930
+
+\family sans
+Edit\SpecialChar menuseparator
+Custom Text Styles
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_deleted -712698321 1545899987
+
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "textstyle-apply"
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_deleted -712698321 1545900001
+Format text using the current settings in the 
 \family sans
 Edit\SpecialChar menuseparator
 Text
@@ -43009,18 +43052,10 @@ Text
 
 Style\SpecialChar menuseparator
 Customized
-\change_inserted -712698321 1525758229
-
 \family default
-
-\begin_inset Info
-type  "menu"
-arg   "dialog-show character"
-\end_inset
-
-
-\change_unchanged
  dialog
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -43114,6 +43149,38 @@ arg   "tabular-insert"
 \family sans
 Insert\SpecialChar menuseparator
 Table
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1545900837
+\begin_inset Info
+type  "icon"
+arg   "dynamic-custom-insets"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1545900953
+
+\family sans
+Insert\SpecialChar menuseparator
+Custom Insets
 \end_layout
 
 \end_inset
@@ -43255,7 +43322,7 @@ The extra toolbar as shown above contains from left to right the following
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="25" columns="2">
+<lyxtabular version="3" rows="26" columns="2">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -43990,6 +44057,43 @@ Customized
 
 \begin_layout Plain Layout
 
+\change_inserted -712698321 1545899981
+
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "textstyle-apply"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1545900045
+Format text using the recent settings in the 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show character"
+\end_inset
+
+ dialog
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \family sans
 \begin_inset Info
 type  "icon"
@@ -44278,8 +44382,12 @@ arg   "view-others"
 \end_inset
 
 
+\change_deleted -712698321 1545901299
+
 \family sans
 *
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -44307,7 +44415,11 @@ type  "icon"
 arg   "update-others"
 \end_inset
 
+
+\change_deleted -712698321 1545901301
 *
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -44333,8 +44445,12 @@ Update (Other Formats)
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1545901302
 * These icons might look different for you if you do not use the default
  icon set.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
