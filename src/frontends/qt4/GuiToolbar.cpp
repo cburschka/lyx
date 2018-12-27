@@ -395,7 +395,6 @@ void DynamicMenuButton::updateTriggered()
 		docstring_list::const_iterator cit = sel.begin();
 		docstring_list::const_iterator end = sel.end();
 
-		Action * default_act = nullptr;
 		for (unsigned int index = 0; cit != end; ++cit, ++index) {
 			docstring const s = *cit;
 			FuncRequest func(LFUN_PASTE, convert<docstring>(index),
@@ -404,9 +403,6 @@ void DynamicMenuButton::updateTriggered()
 				+ from_ascii(". ") + s ;
 			Action * act = new Action(func, QIcon(), toqstr(lb), toqstr(s), this);
 			m->addAction(act);
-			// The most recent one is the default
-			if (index == 0)
-				default_act = act;
 		}
 		Action * default_action = new Action(FuncRequest(LFUN_PASTE),
 						     getIcon(FuncRequest(LFUN_PASTE), false),
