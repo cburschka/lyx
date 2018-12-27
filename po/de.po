@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-12-26 09:04+0100\n"
-"PO-Revision-Date: 2018-12-26 09:09+0100\n"
+"POT-Creation-Date: 2018-12-27 08:52+0100\n"
+"PO-Revision-Date: 2018-12-27 08:59+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -811,8 +811,8 @@ msgstr "&Größe:"
 #: src/frontends/qt4/ui/BulletsUi.ui:66 src/frontends/qt4/ui/ParagraphUi.ui:55
 #: src/frontends/qt4/ui/TabularUi.ui:1195
 #: src/frontends/qt4/ui/TabularUi.ui:1214
-#: src/frontends/qt4/ui/TabularUi.ui:1262 lib/ui/stdtoolbars.inc:116
-#: src/Font.cpp:184 src/frontends/qt4/GuiCharacter.cpp:53
+#: src/frontends/qt4/ui/TabularUi.ui:1262 lib/ui/stdtoolbars.inc:115
+#: src/Font.cpp:184 src/Font.cpp:198 src/frontends/qt4/GuiCharacter.cpp:53
 #: src/frontends/qt4/GuiCharacter.cpp:66 src/frontends/qt4/GuiCharacter.cpp:87
 #: src/frontends/qt4/GuiCharacter.cpp:100
 #: src/frontends/qt4/GuiCharacter.cpp:138
@@ -5249,8 +5249,8 @@ msgstr ""
 #: src/frontends/qt4/ui/TabularUi.ui:1395
 #: src/frontends/qt4/ui/TabularUi.ui:1436
 #: src/frontends/qt4/ui/TabularUi.ui:1467
-#: src/frontends/qt4/ui/TabularUi.ui:1505 src/frontends/qt4/GuiToolbar.cpp:536
-#: src/frontends/qt4/GuiToolbar.cpp:545 src/insets/InsetBranch.cpp:78
+#: src/frontends/qt4/ui/TabularUi.ui:1505 src/frontends/qt4/GuiToolbar.cpp:589
+#: src/frontends/qt4/GuiToolbar.cpp:598 src/insets/InsetBranch.cpp:78
 #: src/insets/InsetBranch.cpp:81
 msgid "on"
 msgstr "an"
@@ -7491,7 +7491,7 @@ msgstr "Aufzählung"
 #: lib/layouts/paper.layout:97 lib/layouts/scrclass.inc:45
 #: lib/layouts/scrlettr.layout:19 lib/layouts/scrlttr2.layout:24
 #: lib/layouts/stdlists.inc:87 lib/layouts/svcommon.inc:610
-#: lib/ui/stdtoolbars.inc:120
+#: lib/ui/stdtoolbars.inc:119
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -7511,7 +7511,7 @@ msgstr "Beschreibung"
 #: lib/layouts/scrlttr2.layout:40 lib/layouts/simplecv.layout:99
 #: lib/layouts/stdlists.inc:14 lib/layouts/stdlists.inc:50
 #: lib/layouts/stdlists.inc:88 lib/layouts/stdlists.inc:127
-#: lib/layouts/stdlyxlist.inc:7 lib/ui/stdtoolbars.inc:119
+#: lib/layouts/stdlyxlist.inc:7 lib/ui/stdtoolbars.inc:118
 msgid "List"
 msgstr "Liste"
 
@@ -18902,18 +18902,18 @@ msgid "End Editing Externally..."
 msgstr "Externe Bearbeitung beenden..."
 
 #: lib/ui/stdcontext.inc:342 lib/ui/stdmenus.inc:106 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1520 src/mathed/InsetMathNest.cpp:561
+#: src/Text3.cpp:1522 src/mathed/InsetMathNest.cpp:561
 msgid "Cut"
 msgstr "Ausschneiden"
 
 #: lib/ui/stdcontext.inc:343 lib/ui/stdmenus.inc:107 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1525 src/mathed/InsetMathNest.cpp:570
+#: src/Text3.cpp:1527 src/mathed/InsetMathNest.cpp:570
 msgid "Copy"
 msgstr "Kopieren"
 
 #: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:108 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1466 src/mathed/InsetMathGrid.cpp:1579
-#: src/mathed/InsetMathNest.cpp:540
+#: src/Text3.cpp:1468 src/frontends/qt4/GuiToolbar.cpp:409
+#: src/mathed/InsetMathGrid.cpp:1579 src/mathed/InsetMathNest.cpp:540
 msgid "Paste"
 msgstr "Einfügen"
 
@@ -20412,157 +20412,157 @@ msgstr "Eigenname an/aus"
 msgid "Custom text styles"
 msgstr "Spezifische Textstile"
 
-#: lib/ui/stdtoolbars.inc:90
-msgid "Apply last text properties"
-msgstr "Zuletzt verwendete Texteigenschaften anwenden"
-
-#: lib/ui/stdtoolbars.inc:92
+#: lib/ui/stdtoolbars.inc:91
 msgid "Insert math"
 msgstr "Mathe einfügen"
 
-#: lib/ui/stdtoolbars.inc:93
+#: lib/ui/stdtoolbars.inc:92
 msgid "Insert graphics"
 msgstr "Grafik einfügen"
 
-#: lib/ui/stdtoolbars.inc:94
+#: lib/ui/stdtoolbars.inc:93
 msgid "Insert table"
 msgstr "Tabelle einfügen"
 
-#: lib/ui/stdtoolbars.inc:95
+#: lib/ui/stdtoolbars.inc:94
 msgid "Custom insets"
 msgstr "Spezifische Einfügungen"
 
-#: lib/ui/stdtoolbars.inc:97
+#: lib/ui/stdtoolbars.inc:96
 msgid "Toggle outline"
 msgstr "Gliederung an/aus"
 
-#: lib/ui/stdtoolbars.inc:98
+#: lib/ui/stdtoolbars.inc:97
 msgid "Toggle math toolbar"
 msgstr "Mathe-Werkzeugleiste an/aus"
 
-#: lib/ui/stdtoolbars.inc:99
+#: lib/ui/stdtoolbars.inc:98
 msgid "Toggle table toolbar"
 msgstr "Tabellen-Werkzeugleiste an/aus"
 
-#: lib/ui/stdtoolbars.inc:100
+#: lib/ui/stdtoolbars.inc:99
 msgid "Toggle review toolbar"
 msgstr "Überarbeitungs-Werkzeugleiste an/aus"
 
-#: lib/ui/stdtoolbars.inc:103
+#: lib/ui/stdtoolbars.inc:102
 msgid "View/Update"
 msgstr "Ansicht/Aktualisierung"
 
-#: lib/ui/stdtoolbars.inc:104
+#: lib/ui/stdtoolbars.inc:103
 msgid "View"
 msgstr "Ansehen"
 
-#: lib/ui/stdtoolbars.inc:105
+#: lib/ui/stdtoolbars.inc:104
 msgid "Update"
 msgstr "Aktualisieren"
 
-#: lib/ui/stdtoolbars.inc:106
+#: lib/ui/stdtoolbars.inc:105
 msgid "View master document"
 msgstr "Hauptdokument ansehen"
 
-#: lib/ui/stdtoolbars.inc:107
+#: lib/ui/stdtoolbars.inc:106
 msgid "Update master document"
 msgstr "Hauptdokument aktualisieren"
 
-#: lib/ui/stdtoolbars.inc:109
+#: lib/ui/stdtoolbars.inc:108
 msgid "Enable Forward/Reverse Search"
 msgstr "Vorwärts-/Rückwärtssuche aktivieren"
 
-#: lib/ui/stdtoolbars.inc:111
+#: lib/ui/stdtoolbars.inc:110
 msgid "View other formats"
 msgstr "In anderen Formaten ansehen"
 
-#: lib/ui/stdtoolbars.inc:112
+#: lib/ui/stdtoolbars.inc:111
 msgid "Update other formats"
 msgstr "Andere Formate aktualisieren"
 
-#: lib/ui/stdtoolbars.inc:115
+#: lib/ui/stdtoolbars.inc:114
 msgid "Extra"
 msgstr "Extra"
 
-#: lib/ui/stdtoolbars.inc:117
+#: lib/ui/stdtoolbars.inc:116
 msgid "Numbered list"
 msgstr "Aufzählung"
 
-#: lib/ui/stdtoolbars.inc:118
+#: lib/ui/stdtoolbars.inc:117
 msgid "Itemized list"
 msgstr "Auflistung"
 
-#: lib/ui/stdtoolbars.inc:121
+#: lib/ui/stdtoolbars.inc:120
 msgid "Increase depth"
 msgstr "Tiefe erhöhen"
 
-#: lib/ui/stdtoolbars.inc:122
+#: lib/ui/stdtoolbars.inc:121
 msgid "Decrease depth"
 msgstr "Tiefe verringern"
 
-#: lib/ui/stdtoolbars.inc:124
+#: lib/ui/stdtoolbars.inc:123
 msgid "Insert figure float"
 msgstr "Abbildungs-Gleitobjekt einfügen"
 
-#: lib/ui/stdtoolbars.inc:125
+#: lib/ui/stdtoolbars.inc:124
 msgid "Insert table float"
 msgstr "Tabellen-Gleitobjekt einfügen"
 
-#: lib/ui/stdtoolbars.inc:126
+#: lib/ui/stdtoolbars.inc:125
 msgid "Insert label"
 msgstr "Marke einfügen"
 
-#: lib/ui/stdtoolbars.inc:127
+#: lib/ui/stdtoolbars.inc:126
 msgid "Insert cross-reference"
 msgstr "Querverweis einfügen"
 
-#: lib/ui/stdtoolbars.inc:128
+#: lib/ui/stdtoolbars.inc:127
 msgid "Insert citation"
 msgstr "Literaturverweis einfügen"
 
-#: lib/ui/stdtoolbars.inc:129
+#: lib/ui/stdtoolbars.inc:128
 msgid "Insert index entry"
 msgstr "Stichwort einfügen"
 
-#: lib/ui/stdtoolbars.inc:130
+#: lib/ui/stdtoolbars.inc:129
 msgid "Insert nomenclature entry"
 msgstr "Nomenklatureintrag einfügen"
 
-#: lib/ui/stdtoolbars.inc:132
+#: lib/ui/stdtoolbars.inc:131
 msgid "Insert footnote"
 msgstr "Fußnote einfügen"
 
-#: lib/ui/stdtoolbars.inc:133
+#: lib/ui/stdtoolbars.inc:132
 msgid "Insert margin note"
 msgstr "Randnotiz einfügen"
 
-#: lib/ui/stdtoolbars.inc:134
+#: lib/ui/stdtoolbars.inc:133
 msgid "Insert LyX note"
 msgstr "LyX-Notiz einfügen"
 
-#: lib/ui/stdtoolbars.inc:135
+#: lib/ui/stdtoolbars.inc:134
 msgid "Insert box"
 msgstr "Box einfügen"
 
-#: lib/ui/stdtoolbars.inc:136
+#: lib/ui/stdtoolbars.inc:135
 msgid "Insert hyperlink"
 msgstr "Hyperlink einfügen"
 
-#: lib/ui/stdtoolbars.inc:137
+#: lib/ui/stdtoolbars.inc:136
 msgid "Insert TeX code"
 msgstr "TeX-Code einfügen"
 
-#: lib/ui/stdtoolbars.inc:138
+#: lib/ui/stdtoolbars.inc:137
 msgid "Insert math macro"
 msgstr "Mathe-Makro einfügen"
 
-#: lib/ui/stdtoolbars.inc:139
+#: lib/ui/stdtoolbars.inc:138
 msgid "Include file"
 msgstr "Datei einbinden"
 
-#: lib/ui/stdtoolbars.inc:141
+#: lib/ui/stdtoolbars.inc:140
 msgid "Text properties"
 msgstr "Texteigenschaften"
+
+#: lib/ui/stdtoolbars.inc:141
+msgid "Apply recent text properties"
+msgstr "Zuletzt verwendete Texteigenschaften anwenden"
 
 #: lib/ui/stdtoolbars.inc:142
 msgid "Paragraph settings"
@@ -27624,35 +27624,35 @@ msgstr "Unterstrichen %1$s, "
 
 #: src/Font.cpp:169
 #, c-format
-msgid "Strike out %1$s, "
-msgstr "Durchgestrichen %1$s, "
-
-#: src/Font.cpp:172
-#, c-format
-msgid "Cross out %1$s, "
-msgstr "Durchgekreuzt %1$s, "
-
-#: src/Font.cpp:175
-#, c-format
 msgid "Double underline %1$s, "
 msgstr "Doppelt unterstrichen %1$s, "
 
-#: src/Font.cpp:178
+#: src/Font.cpp:172
 #, c-format
 msgid "Wavy underline %1$s, "
 msgstr "Wellig unterstrichen %1$s, "
+
+#: src/Font.cpp:175
+#, c-format
+msgid "Strike out %1$s, "
+msgstr "Durchgestrichen %1$s, "
+
+#: src/Font.cpp:178
+#, c-format
+msgid "Cross out %1$s, "
+msgstr "Durchgekreuzt %1$s, "
 
 #: src/Font.cpp:181
 #, c-format
 msgid "Noun %1$s, "
 msgstr "Eigenname %1$s, "
 
-#: src/Font.cpp:195
+#: src/Font.cpp:197
 #, c-format
 msgid "Language: %1$s, "
 msgstr "Sprache: %1$s, "
 
-#: src/Font.cpp:198
+#: src/Font.cpp:202
 #, c-format
 msgid "Number %1$s"
 msgstr "Nummer %1$s"
@@ -28835,43 +28835,52 @@ msgstr ", Grenze: "
 msgid "No font change defined."
 msgstr "Keine Schriftänderung definiert."
 
-#: src/Text3.cpp:197
+#: src/Text3.cpp:199
 msgid "Math editor mode"
 msgstr "Mathe-Editor-Modus"
 
-#: src/Text3.cpp:199
+#: src/Text3.cpp:201
 msgid "No valid math formula"
 msgstr "Keine gültige Matheformel"
 
-#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1041
+#: src/Text3.cpp:209 src/mathed/InsetMathNest.cpp:1041
 msgid "Already in regular expression mode"
 msgstr "Bereits im Regexp-Modus"
 
-#: src/Text3.cpp:220
+#: src/Text3.cpp:222
 msgid "Regexp editor mode"
 msgstr "Regexp-Editor-Modus"
 
-#: src/Text3.cpp:1559
+#: src/Text3.cpp:1561
 msgid "Layout "
 msgstr "Format "
 
-#: src/Text3.cpp:1560
+#: src/Text3.cpp:1562
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text3.cpp:2213 src/frontends/qt4/GuiApplication.cpp:1718
+#: src/Text3.cpp:2215 src/frontends/qt4/GuiApplication.cpp:1718
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/Text3.cpp:2369 src/Text3.cpp:2385
-msgid "Character set"
-msgstr "Zeichensatz"
+#: src/Text3.cpp:2377
+msgid "Invalid argument (number exceeds stack size)!"
+msgstr "Ungültiges Argument (Zahl größer als Zwischenspeicher)!"
 
-#: src/Text3.cpp:2538
+#: src/Text3.cpp:2381
+msgid "Invalid argument (must be a non-negative number)!"
+msgstr "Ungültiges Argument (muss eine nicht-negative Zahl sein)!"
+
+#: src/Text3.cpp:2386 src/Text3.cpp:2404
+#, c-format
+msgid "Text properties applied: %1$s"
+msgstr "Angewendete Texteigenschaften: %1$s"
+
+#: src/Text3.cpp:2556
 msgid "Path to thesaurus directory not set!"
 msgstr "Pfad zum Thesaurus-Wörterbuch nicht festlegt!"
 
-#: src/Text3.cpp:2539
+#: src/Text3.cpp:2557
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -28883,7 +28892,7 @@ msgstr ""
 "Im Benutzerhandbuch, Abschnitt 6.15.11, finden Sie Hinweise,\n"
 "um den Thesaurus einzurichten."
 
-#: src/Text3.cpp:2606 src/Text3.cpp:2617
+#: src/Text3.cpp:2624 src/Text3.cpp:2635
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
@@ -32338,25 +32347,25 @@ msgstr "Kein Thesaurus für diese Sprache vorhanden!"
 msgid "Outline"
 msgstr "Gliederung"
 
-#: src/frontends/qt4/GuiToolbar.cpp:528 src/frontends/qt4/Toolbars.cpp:393
+#: src/frontends/qt4/GuiToolbar.cpp:581 src/frontends/qt4/Toolbars.cpp:393
 msgid "auto"
 msgstr "automatisch"
 
-#: src/frontends/qt4/GuiToolbar.cpp:533 src/frontends/qt4/GuiToolbar.cpp:542
+#: src/frontends/qt4/GuiToolbar.cpp:586 src/frontends/qt4/GuiToolbar.cpp:595
 #: src/insets/InsetBranch.cpp:78 src/insets/InsetBranch.cpp:81
 msgid "off"
 msgstr "aus"
 
-#: src/frontends/qt4/GuiToolbar.cpp:549 src/frontends/qt4/GuiToolbar.cpp:569
+#: src/frontends/qt4/GuiToolbar.cpp:602 src/frontends/qt4/GuiToolbar.cpp:622
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "Status der Werkzeugleiste \"%1$s\" auf %2$s gesetzt"
 
-#: src/frontends/qt4/GuiToolbar.cpp:566
+#: src/frontends/qt4/GuiToolbar.cpp:619
 msgid "movable"
 msgstr "beweglich"
 
-#: src/frontends/qt4/GuiToolbar.cpp:568
+#: src/frontends/qt4/GuiToolbar.cpp:621
 msgid "immovable"
 msgstr "verankert"
 
@@ -35221,6 +35230,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Character set"
+#~ msgstr "Zeichensatz"
 
 #~ msgid "&Subject:"
 #~ msgstr "&Betreff:"
