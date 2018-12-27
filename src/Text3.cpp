@@ -2368,7 +2368,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	// Set the freefont using the contents of \param data dispatched from
 	// the frontends and apply it at the current cursor location.
 	case LFUN_TEXTSTYLE_UPDATE: {
-		Font font;
+		Font font(ignore_font, ignore_language);
 		bool toggle;
 		if (font.fromString(to_utf8(cmd.argument()), toggle)) {
 			freefont = font;

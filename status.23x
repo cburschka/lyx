@@ -44,6 +44,9 @@ What's new
 
 - Fix regression where spaces are disappearing when editing text (bug 11412).
 
+- The function textstyle-update now only changes explicitly stated font
+  attributes (bug 11111).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
