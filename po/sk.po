@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-12-26 17:44+0100\n"
-"PO-Revision-Date: 2018-12-26 16:47+0000\n"
+"POT-Creation-Date: 2018-12-27 14:28+0100\n"
+"PO-Revision-Date: 2018-12-27 14:17+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -123,7 +123,7 @@ msgstr "Štýl ktorý určuje schému citácií"
 #: src/frontends/qt4/ui/BiblioUi.ui:180 src/frontends/qt4/ui/BiblioUi.ui:241
 #: src/frontends/qt4/ui/BiblioUi.ui:291
 msgid "Reset to the preset default"
-msgstr "Návrat na predvolený štandard"
+msgstr "Nastaviť na predvolený štandard"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:183
 msgid "Rese&t"
@@ -1210,7 +1210,7 @@ msgstr "&Prehodiť && obrátiť"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:93
 msgid "Reset to the default settings for the document class"
-msgstr "Obnovte štandardné nastavenie triedy dokumentu"
+msgstr "Nastaviť na štandardné nastavenie triedy dokumentu"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:96
 msgid "Use Class Defaults"
@@ -3308,7 +3308,7 @@ msgstr "Z&meniť…"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:70
 msgid "Reset the selected color to its original value"
-msgstr "Vrátiť vybranú farbu na pôvodnú hodnotu"
+msgstr "Nastaviť vybranú farbu na pôvodnú hodnotu"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:73
 msgid "Restore &Default"
@@ -4120,7 +4120,7 @@ msgstr "Zvoliť štandardné voľby pri zmene triedy"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:323
 msgid "R&eset class options when document class changes"
-msgstr "O&bnoviť triedne voľby pri zmene triedy dokumentu"
+msgstr "&Nastaviť triedne voľby pri zmene triedy dokumentu"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:20
 msgid "Forward Search"
@@ -29733,13 +29733,13 @@ msgstr "(Bez)"
 msgid "Text Properties"
 msgstr "Vlastnosti textu"
 
-#: src/frontends/qt4/GuiCharacter.cpp:273
+#: src/frontends/qt4/GuiCharacter.cpp:276
 msgid "Reset All To &Default"
-msgstr "Vrátiť všetko na '&Predvolené'"
+msgstr "Nastaviť všetko na '&Predvolené'"
 
-#: src/frontends/qt4/GuiCharacter.cpp:274
+#: src/frontends/qt4/GuiCharacter.cpp:277
 msgid "Reset All To No Chan&ge"
-msgstr "Vrátiť všetko na 'Bez &Zmeny'"
+msgstr "Nastaviť všetko na 'Bez &Zmeny'"
 
 #: src/frontends/qt4/GuiCharacter.cpp:279
 msgid "&Reset All Fields"
@@ -31969,6 +31969,14 @@ msgstr "Nedostupný tezaurus pre tento jazyk!"
 msgid "Outline"
 msgstr "Osnova"
 
+#: src/frontends/qt4/GuiToolbar.cpp:387
+msgid "&Reset to default"
+msgstr "Nastaviť na '&Predvolené'"
+
+#: src/frontends/qt4/GuiToolbar.cpp:387
+msgid "Reset all font settings to their defaults"
+msgstr "Nastaviť všetko vlastnosti fontu na štandard"
+
 #: src/frontends/qt4/GuiToolbar.cpp:528 src/frontends/qt4/Toolbars.cpp:393
 msgid "auto"
 msgstr "auto"
@@ -32751,17 +32759,17 @@ msgstr "nemenné"
 #: src/frontends/qt4/Menus.cpp:1884
 #, c-format
 msgid "Reset to document default (%1$s, %2$s)|o"
-msgstr "Vrátiť na štandard dokumentu (%1$s, %2$s)|o"
+msgstr "Nastaviť na štandard dokumentu (%1$s, %2$s)|o"
 
 #: src/frontends/qt4/Menus.cpp:1891
 #, c-format
 msgid "Reset to language default (%1$s, %2$s)|l"
-msgstr "Vrátiť na štandard jazyku (%1$s, %2$s)|j"
+msgstr "Nastaviť na štandard jazyku (%1$s, %2$s)|j"
 
 #: src/frontends/qt4/Menus.cpp:1893
 #, c-format
 msgid "Reset to language default (%1$s)|l"
-msgstr "Vrátiť na štandard jazyku (%1$s)|a"
+msgstr "Nastaviť na štandard jazyku (%1$s)|a"
 
 #: src/frontends/qt4/Menus.cpp:1901
 msgid "Change Style|y"
