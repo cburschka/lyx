@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-12-27 08:52+0100\n"
-"PO-Revision-Date: 2018-12-27 08:59+0100\n"
+"POT-Creation-Date: 2018-12-27 14:39+0100\n"
+"PO-Revision-Date: 2018-12-27 14:43+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -5249,8 +5249,8 @@ msgstr ""
 #: src/frontends/qt4/ui/TabularUi.ui:1395
 #: src/frontends/qt4/ui/TabularUi.ui:1436
 #: src/frontends/qt4/ui/TabularUi.ui:1467
-#: src/frontends/qt4/ui/TabularUi.ui:1505 src/frontends/qt4/GuiToolbar.cpp:589
-#: src/frontends/qt4/GuiToolbar.cpp:598 src/insets/InsetBranch.cpp:78
+#: src/frontends/qt4/ui/TabularUi.ui:1505 src/frontends/qt4/GuiToolbar.cpp:594
+#: src/frontends/qt4/GuiToolbar.cpp:603 src/insets/InsetBranch.cpp:78
 #: src/insets/InsetBranch.cpp:81
 msgid "on"
 msgstr "an"
@@ -18912,7 +18912,7 @@ msgid "Copy"
 msgstr "Kopieren"
 
 #: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:108 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1468 src/frontends/qt4/GuiToolbar.cpp:409
+#: src/Text3.cpp:1468 src/frontends/qt4/GuiToolbar.cpp:414
 #: src/mathed/InsetMathGrid.cpp:1579 src/mathed/InsetMathNest.cpp:540
 msgid "Paste"
 msgstr "Einfügen"
@@ -32347,25 +32347,33 @@ msgstr "Kein Thesaurus für diese Sprache vorhanden!"
 msgid "Outline"
 msgstr "Gliederung"
 
-#: src/frontends/qt4/GuiToolbar.cpp:581 src/frontends/qt4/Toolbars.cpp:393
+#: src/frontends/qt4/GuiToolbar.cpp:387
+msgid "&Reset to default"
+msgstr "Auf &Voreinstellungen zurücksetzen"
+
+#: src/frontends/qt4/GuiToolbar.cpp:387
+msgid "Reset all font settings to their defaults"
+msgstr "Alle Schrifteigenschaften auf die Voreinstellungen zurücksetzen"
+
+#: src/frontends/qt4/GuiToolbar.cpp:586 src/frontends/qt4/Toolbars.cpp:393
 msgid "auto"
 msgstr "automatisch"
 
-#: src/frontends/qt4/GuiToolbar.cpp:586 src/frontends/qt4/GuiToolbar.cpp:595
+#: src/frontends/qt4/GuiToolbar.cpp:591 src/frontends/qt4/GuiToolbar.cpp:600
 #: src/insets/InsetBranch.cpp:78 src/insets/InsetBranch.cpp:81
 msgid "off"
 msgstr "aus"
 
-#: src/frontends/qt4/GuiToolbar.cpp:602 src/frontends/qt4/GuiToolbar.cpp:622
+#: src/frontends/qt4/GuiToolbar.cpp:607 src/frontends/qt4/GuiToolbar.cpp:627
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "Status der Werkzeugleiste \"%1$s\" auf %2$s gesetzt"
 
-#: src/frontends/qt4/GuiToolbar.cpp:619
+#: src/frontends/qt4/GuiToolbar.cpp:624
 msgid "movable"
 msgstr "beweglich"
 
-#: src/frontends/qt4/GuiToolbar.cpp:621
+#: src/frontends/qt4/GuiToolbar.cpp:626
 msgid "immovable"
 msgstr "verankert"
 
