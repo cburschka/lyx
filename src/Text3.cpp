@@ -3387,7 +3387,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_ACCENT_UMLAUT:
 	case LFUN_ACCENT_UNDERBAR:
 	case LFUN_ACCENT_UNDERDOT:
-	case LFUN_FONT_DEFAULT:
 	case LFUN_FONT_FRAK:
 	case LFUN_FONT_SIZE:
 	case LFUN_FONT_STATE:
@@ -3399,6 +3398,38 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_TEXTSTYLE_UPDATE:
 		enable = !cur.paragraph().isPassThru();
 		break;
+
+	case LFUN_FONT_DEFAULT: {
+		Font font(inherit_font, ignore_language);
+		BufferParams const & bp = cur.buffer()->masterParams();
+		if (cur.selection()) {
+			enable = false;
+			// Check if we have a non-default font attribute
+			// in the selection range.
+			DocIterator const from = cur.selectionBegin();
+			DocIterator const to = cur.selectionEnd();
+			for (DocIterator dit = from ; dit != to && !dit.atEnd(); ) {
+				if (!dit.inTexted()) {
+					dit.forwardPos();
+					continue;
+				}
+				Paragraph const & par = dit.paragraph();
+				pos_type const pos = dit.pos();
+				Font tmp = par.getFontSettings(bp, pos);
+				if (tmp.fontInfo() != font.fontInfo()
+				    || tmp.language() != bp.language) {
+					enable = true;
+					break;
+				}
+				dit.forwardPos();
+			}
+			break;
+		}
+		// Disable if all is default already.
+		enable = (cur.current_font.fontInfo() != font.fontInfo()
+			  || cur.current_font.language() != bp.language);
+		break;
+	}
 
 	case LFUN_TEXTSTYLE_APPLY:
 		enable = !freeFonts.empty();
