@@ -8604,10 +8604,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8620,6 +8622,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8643,6 +8646,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -15650,7 +15654,7 @@ ften nochmals angewandt, wenn Sie auf den Pfeil daneben drücken, öffnet
 
 \begin_layout Standard
 Um die Texteigenschaften komplett auf die Voreinstellung zurückzusetzen,
- drückt man 
+ drücken Sie entweder 
 \family sans
 Alt+Z
 \begin_inset space ~
@@ -15658,6 +15662,16 @@ Alt+Z
 
 Leertaste
 \family default
+ oder wählen 
+\family sans
+Auf Voreinstellungen zurücksetzen
+\family default
+ aus dem Menü des erwähnten Werkzeugleistenknopfs 
+\begin_inset Info
+type  "icon"
+arg   "textstyle-apply"
+\end_inset
+
 .
 \end_layout
 

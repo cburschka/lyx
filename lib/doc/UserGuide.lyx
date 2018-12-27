@@ -8346,12 +8346,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8364,6 +8366,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8387,6 +8390,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -16021,12 +16025,32 @@ character style
 \change_inserted -712698321 1525600823
 text properties of a selection
 \change_unchanged
- to the default, use 
+ to the default, use
+\change_inserted -712698321 1545917704
+ either 
+\change_deleted -712698321 1545917700
+ 
+\change_unchanged
+
 \begin_inset Info
 type  "shortcut"
 arg   "font-default"
 \end_inset
 
+
+\change_inserted -712698321 1545917733
+ or select 
+\family sans
+Reset to default
+\family default
+ from the menu of the toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "textstyle-apply"
+\end_inset
+
+
+\change_unchanged
 .
  
 \change_deleted -712698321 1525600803
