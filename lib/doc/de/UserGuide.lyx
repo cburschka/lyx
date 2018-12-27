@@ -15642,9 +15642,9 @@ nachdem
 Textstil
 \family default
  geschlossen wurde.
- Wenn Sie den Knopf kurz drücken, werden die zuletzt angewandten Texteigenschaft
-en nochmals angewandt, wenn Sie länger drücken, öffnet sich ein Menü mit
- den (max.
+ Wenn Sie den Knopf direkt drücken, werden die zuletzt angewandten Texteigenscha
+ften nochmals angewandt, wenn Sie auf den Pfeil daneben drücken, öffnet
+ sich ein Menü mit den (max.
  20) zuletzt angewandten Eigenschaften, aus denen Sie dann auswählen können.
 \end_layout
 
@@ -40965,7 +40965,13 @@ arg   "paste"
 
 \family sans
 Bearbeiten\SpecialChar menuseparator
-Einfügen
+Einfügen 
+\family default
+bzw.
+
+\family sans
+ Bearbeiten\SpecialChar menuseparator
+Einfügen (vorherige Auswahl)
 \end_layout
 
 \end_inset

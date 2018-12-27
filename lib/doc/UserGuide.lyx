@@ -16006,9 +16006,9 @@ those
 \change_unchanged
 even when the dialog isn't visible.
 
-\change_inserted -712698321 1545899208
- A short press will apply the most recent setting again, a longer press
- will open a menu with the (max.
+\change_inserted -712698321 1545905101
+ A press on the button will apply the most recent setting again, a press
+ on the down-arrow will open a menu with the (max.
  20) most recently applied settings, from which you can select one.
 \change_unchanged
 
@@ -42768,6 +42768,15 @@ arg   "paste"
 \family sans
 Edit\SpecialChar menuseparator
 Paste
+\change_inserted -712698321 1545905310
+ 
+\family default
+or
+\family sans
+ Edit\SpecialChar menuseparator
+Paste Recent
+\change_unchanged
+
 \end_layout
 
 \end_inset
