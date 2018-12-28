@@ -306,6 +306,8 @@ public:
 		///
 		SET_TABULAR_WIDTH,
 		///
+		SET_INNER_LINES,
+		///
 		LAST_ACTION
 	};
 	///
