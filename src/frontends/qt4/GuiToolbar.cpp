@@ -368,8 +368,8 @@ void DynamicMenuButton::updateTriggered()
 	} else if (menutype == "textstyle-apply") {
 		m->clear();
 		setPopupMode(QToolButton::MenuButtonPopup);
-		QToolButton::setIcon(getIcon(FuncRequest(LFUN_TEXTSTYLE_APPLY), false));
 		if (!bv) {
+			QToolButton::setIcon(getIcon(FuncRequest(LFUN_TEXTSTYLE_APPLY), false));
 			setEnabled(false);
 			return;
 		}
@@ -396,6 +396,7 @@ void DynamicMenuButton::updateTriggered()
 		m->addAction(reset_act);
 		if (default_act)
 			QToolButton::setDefaultAction(default_act);
+		QToolButton::setIcon(getIcon(FuncRequest(LFUN_TEXTSTYLE_APPLY), false));
 		setEnabled(lyx::getStatus(FuncRequest(LFUN_TEXTSTYLE_APPLY)).enabled()
 			   || lyx::getStatus(FuncRequest(LFUN_FONT_DEFAULT)).enabled());
 	} else if (menutype == "paste") {
