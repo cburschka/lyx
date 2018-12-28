@@ -198,6 +198,7 @@ TabularFeature tabularFeature[] =
 	{ Tabular::LONGTABULAR_ALIGN_RIGHT, "longtabular-align-right", false },
 	{ Tabular::SET_DECIMAL_POINT, "set-decimal-point", true },
 	{ Tabular::SET_TABULAR_WIDTH, "set-tabular-width", true },
+	{ Tabular::SET_INNER_LINES, "set-inner-lines", false },
 	{ Tabular::LAST_ACTION, "", false }
 };
 
@@ -4744,6 +4745,7 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 
 		case Tabular::SET_ALL_LINES:
 		case Tabular::UNSET_ALL_LINES:
+		case Tabular::SET_INNER_LINES:
 		case Tabular::SET_BORDER_LINES:
 			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
 			break;
@@ -5554,6 +5556,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	row_type sel_row_start;
 	row_type sel_row_end;
 	bool setLines = false;
+	bool setLinesInnerOnly = false;
 	LyXAlignment setAlign = LYX_ALIGN_LEFT;
 	Tabular::VAlignment setVAlign = Tabular::LYX_VALIGN_TOP;
 
@@ -5899,6 +5902,9 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		break;
 	}
 
+	case Tabular::SET_INNER_LINES:
+		setLinesInnerOnly = true;
+		// fall through
 	case Tabular::SET_ALL_LINES:
 		setLines = true;
 		// fall through
@@ -5906,10 +5912,16 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
 			for (col_type c = sel_col_start; c <= sel_col_end; ++c) {
 				idx_type const cell = tabular.cellIndex(r, c);
-				tabular.setTopLine(cell, setLines);
-				tabular.setBottomLine(cell, setLines);
-				tabular.setRightLine(cell, setLines);
-				tabular.setLeftLine(cell, setLines);
+				if (!setLinesInnerOnly || r != sel_row_start)
+					tabular.setTopLine(cell, setLines);
+				if ((!setLinesInnerOnly || r != sel_row_end)
+				    && (!setLines || r == sel_row_end))
+					tabular.setBottomLine(cell, setLines);
+				if ((!setLinesInnerOnly || c != sel_col_end)
+				    && (!setLines || c == sel_col_end))
+					tabular.setRightLine(cell, setLines);
+				if ((!setLinesInnerOnly || c != sel_col_start))
+					tabular.setLeftLine(cell, setLines);
 			}
 		break;
 

@@ -167,6 +167,7 @@ What's new
 - Quote filenames when calling gunzip and avoid a crash when the filename
   of a compressed file does not end with a proper extension (bug 4269).
 
+- Fix behavior of (un)setting all tabular borders (bug 11382).
 
 
 * INTERNALS

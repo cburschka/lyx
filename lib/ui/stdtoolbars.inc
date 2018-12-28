@@ -156,6 +156,7 @@ ToolbarSet
 		Item "Set right line" "tabular-feature toggle-line-right"
 		Item "Set border lines" "tabular-feature set-border-lines"
 		Item "Set all lines" "tabular-feature set-all-lines"
+		Item "Set inner lines" "tabular-feature set-inner-lines"
 		Item "Unset all lines" "tabular-feature unset-all-lines"
 		Separator
 		Item "Align left" "command-alternatives tabular-feature m-align-left;tabular-feature align-left"
