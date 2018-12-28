@@ -336,17 +336,17 @@ void DynamicMenuButton::updateTriggered()
 	LASSERT(m, return);
 	GuiView const & owner = bar_->owner();
 	BufferView const * bv = owner.currentBufferView();
-	if (!bv) {
-		m->clear();
-		setEnabled(false);
-		setMinimumWidth(sizeHint().width());
-		d->text_class_.reset();
-		d->inset_ = nullptr;
-		return;
-	}
 
 	string const & menutype = tbitem_.name_;
 	if (menutype == "dynamic-custom-insets" || menutype == "dynamic-char-styles") {
+		if (!bv) {
+			m->clear();
+			setEnabled(false);
+			setMinimumWidth(sizeHint().width());
+			d->text_class_.reset();
+			d->inset_ = nullptr;
+			return;
+		}
 		DocumentClassConstPtr text_class =
 				bv->buffer().params().documentClassPtr();
 		InsetText const * inset = &(bv->cursor().innerText()->inset());
@@ -367,6 +367,12 @@ void DynamicMenuButton::updateTriggered()
 			   && inset->insetAllowed(FLEX_CODE));
 	} else if (menutype == "textstyle-apply") {
 		m->clear();
+		setPopupMode(QToolButton::MenuButtonPopup);
+		QToolButton::setIcon(getIcon(FuncRequest(LFUN_TEXTSTYLE_APPLY), false));
+		if (!bv) {
+			setEnabled(false);
+			return;
+		}
 		vector<docstring> ffList = bv->cursor().innerText()->getFreeFonts();
 		unsigned int i = 0;
 		Action * default_act = nullptr;
@@ -390,14 +396,19 @@ void DynamicMenuButton::updateTriggered()
 		m->addAction(reset_act);
 		if (default_act)
 			QToolButton::setDefaultAction(default_act);
-
-		QToolButton::setIcon(getIcon(FuncRequest(LFUN_TEXTSTYLE_APPLY), false));
-
-		setPopupMode(QToolButton::MenuButtonPopup);
 		setEnabled(lyx::getStatus(FuncRequest(LFUN_TEXTSTYLE_APPLY)).enabled()
 			   || lyx::getStatus(FuncRequest(LFUN_FONT_DEFAULT)).enabled());
 	} else if (menutype == "paste") {
 		m->clear();
+		setPopupMode(QToolButton::MenuButtonPopup);
+		Action * default_action = new Action(FuncRequest(LFUN_PASTE),
+						     getIcon(FuncRequest(LFUN_PASTE), false),
+						     qt_("Paste"), qt_("Paste"), this);
+		if (!bv) {
+			setEnabled(false);
+			QToolButton::setDefaultAction(default_action);
+			return;
+		}
 		docstring_list const sel = cap::availableSelections(&bv->buffer());
 
 		docstring_list::const_iterator cit = sel.begin();
@@ -412,11 +423,7 @@ void DynamicMenuButton::updateTriggered()
 			Action * act = new Action(func, QIcon(), toqstr(lb), toqstr(s), this);
 			m->addAction(act);
 		}
-		Action * default_action = new Action(FuncRequest(LFUN_PASTE),
-						     getIcon(FuncRequest(LFUN_PASTE), false),
-						     qt_("Paste"), qt_("Paste"), this);
 		QToolButton::setDefaultAction(default_action);
-		setPopupMode(QToolButton::MenuButtonPopup);
 		setEnabled(lyx::getStatus(FuncRequest(LFUN_PASTE)).enabled());
 	}
 }
