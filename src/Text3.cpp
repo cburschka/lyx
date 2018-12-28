@@ -3233,7 +3233,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			for (DocIterator it = cur.selectionBegin(); ; it.forwardPar()) {
 				pos_type const beg = it.pos();
 				pos_type end;
-				bool const in_last_par = (it.pit() == cur.selectionEnd().pit());
+				bool const in_last_par = (it.pit() == cur.selectionEnd().pit() &&
+							  it.idx() == cur.selectionEnd().idx());
 				if (in_last_par)
 					end = cur.selectionEnd().pos();
 				else
