@@ -552,7 +552,7 @@ def revert_floatpclass(document):
             k = find_token(document.body, 'placement document', i, i + 2)
             if k != -1:
                 del document.body[k]
-            i = j
+            i += 1
             continue
         del document.body[k]
 
@@ -587,7 +587,7 @@ def revert_floatalignment(document):
         l = find_token(document.body, "\\begin_layout Plain Layout", i, j)
         if l == -1:
             document.warning("Can't find float layout!")
-            i = j
+            i += 1
             continue
         alcmd = []
         if alignment == "left":
@@ -598,7 +598,7 @@ def revert_floatalignment(document):
             alcmd = put_cmd_in_ert("\\raggedleft{}")
         if len(alcmd) > 0:
             document.body[l+1:l+1] = alcmd
-        i = j 
+        i += 1 
 
 
 def revert_tuftecite(document):
