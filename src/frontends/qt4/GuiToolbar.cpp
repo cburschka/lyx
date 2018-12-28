@@ -386,10 +386,11 @@ void DynamicMenuButton::updateTriggered()
 		Action * dact = new Action(FuncRequest(LFUN_FONT_DEFAULT, FuncRequest::TOOLBAR), getIcon(FuncRequest(LFUN_UNDO), false),
 					   qt_("&Reset to default"), qt_("Reset all font settings to their defaults"), this);
 		m->addAction(dact);
-		if (default_act) {
+		if (default_act)
 			QToolButton::setDefaultAction(default_act);
-			QToolButton::setIcon(getIcon(FuncRequest(LFUN_TEXTSTYLE_APPLY), false));
-		}
+
+		QToolButton::setIcon(getIcon(FuncRequest(LFUN_TEXTSTYLE_APPLY), false));
+
 		setPopupMode(QToolButton::MenuButtonPopup);
 		setEnabled(lyx::getStatus(FuncRequest(LFUN_TEXTSTYLE_APPLY)).enabled()
 			   || lyx::getStatus(FuncRequest(LFUN_FONT_DEFAULT)).enabled());
