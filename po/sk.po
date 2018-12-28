@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-12-27 14:28+0100\n"
-"PO-Revision-Date: 2018-12-27 14:17+0000\n"
+"POT-Creation-Date: 2018-12-28 16:13+0100\n"
+"PO-Revision-Date: 2018-12-28 15:14+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -20375,28 +20375,32 @@ msgid "Move column right"
 msgstr "Presunúť stĺpec doprava"
 
 #: lib/ui/stdtoolbars.inc:156
-msgid "Set top line"
-msgstr "Nastaviť hornú líniu"
+msgid "Toggle top line"
+msgstr "Prepnúť hornú čiaru"
 
 #: lib/ui/stdtoolbars.inc:157
-msgid "Set bottom line"
-msgstr "Nastaviť spodnú líniu"
+msgid "Toggle bottom line"
+msgstr "Prepnúť spodnú čiaru"
 
 #: lib/ui/stdtoolbars.inc:158
-msgid "Set left line"
-msgstr "Nastaviť ľavú líniu"
+msgid "Toggle left line"
+msgstr "Prepnúť ľavú čiaru"
 
 #: lib/ui/stdtoolbars.inc:159
-msgid "Set right line"
-msgstr "Nastaviť pravú líniu"
+msgid "Toggle right line"
+msgstr "Prepnúť pravú čiaru"
 
 #: lib/ui/stdtoolbars.inc:160
 msgid "Set border lines"
-msgstr "Nastaviť okrajové línie"
+msgstr "Nastaviť okrajové čiary"
 
 #: lib/ui/stdtoolbars.inc:161
 msgid "Set all lines"
-msgstr "Nastaviť všetky línie"
+msgstr "Nastaviť všetky čiary"
+
+#: lib/ui/stdtoolbars.inc:162
+msgid "Set inner lines"
+msgstr "Nastaviť vnútorné čiary"
 
 #: lib/ui/stdtoolbars.inc:162
 msgid "Unset all lines"
@@ -34823,6 +34827,15 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Set top line"
+#~ msgstr "Prepnúť hornú čiaru"
+
+#~ msgid "Set bottom line"
+#~ msgstr "Prepnúť spodnú čiaru"
+
+#~ msgid "Set left line"
+#~ msgstr "Prepnúť ľavú čiaru"
 
 #~ msgid "Character set"
 #~ msgstr "Znaková sada"
