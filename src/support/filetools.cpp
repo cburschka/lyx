@@ -925,9 +925,9 @@ FileName const unzipFile(FileName const & zipped_file, string const & unzipped_f
 		unzippedFileName(zipped_file.toFilesystemEncoding()) :
 		unzipped_file);
 	// Run gunzip
-	string const command = "gunzip -c " +
-		zipped_file.toFilesystemEncoding() + " > " +
-		tempfile.toFilesystemEncoding();
+	string const command = "gunzip -c \"" +
+		zipped_file.toFilesystemEncoding() + "\" > \"" +
+		tempfile.toFilesystemEncoding() + "\"";
 	Systemcall one;
 	one.startscript(Systemcall::Wait, command);
 	// test that command was executed successfully (anon)
