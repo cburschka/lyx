@@ -301,108 +301,154 @@ thepage
 
 \end_layout
 
-\begin_layout Chapter
-Title of first chapter
+\begin_layout Left Header
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Section
-Overview
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rightmark
 \end_layout
 
-\begin_layout Standard
-bla bla bla bla bla bla bla bla bla bla bla, see 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:The-next-section"
-
 \end_inset
 
-.
- Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
- bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
- bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
- bla bla bla bla bla bla bla bla bla bla bla DLC-coatings
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "DLC"
-description "diamond-like carbon"
-literal "false"
 
-\end_inset
+\begin_inset Note Note
+status collapsed
 
- bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
- bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla,
- see 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Fowl1928"
-literal "true"
-
-\end_inset
-
-.
- 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:Integral-sine"
-
-\end_inset
-
- is the definition of the integral sine function.
-\begin_inset Formula 
-\begin{equation}
-\int\frac{\sin(x)}{x}\,\mathrm{d}x=\mathrm{Si}(x)\label{eq:Integral-sine}
-\end{equation}
+\begin_layout Plain Layout
+remove the chapter from the header line
+\end_layout
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Section
-The next section
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:The-next-section"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Branch Standalone
-inverted 0
+\begin_layout Right Header
+\begin_inset Argument 1
 status open
 
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leftmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+restore the right header line
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "thesisExample"
+options "alpha"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Left Header
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Nomenclature
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+print 
+\begin_inset Quotes eld
+\end_inset
+
+Nomenclature
+\begin_inset Quotes erd
+\end_inset
+
+ in the header line
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Header
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Nomenclature
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomencl_print
+LatexCommand printnomenclature
+set_width "custom"
+width "2.5cm"
+
+\end_inset
+
+
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-The contents of this branch is only output if this chapter is processed
- on its own, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e., not from the master.
- This allows you to have a bibliography and a nomenclature if you only want
- to output this chapter.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Bibliography.lyx"
-
-\end_inset
-
-
+The width of the nomenclature entries can be changed by clicking on the
+ nomenclature inset.
 \end_layout
 
 \end_inset

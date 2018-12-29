@@ -126,8 +126,8 @@ customHeadersFooters
 \justification true
 \use_refstyle 0
 \use_minted 0
-\branch NoChildDocument
-\selected 0
+\branch Standalone
+\selected 1
 \filename_suffix 0
 \color #ff0000
 \end_branch
@@ -340,15 +340,24 @@ The next section
 \end_layout
 
 \begin_layout Standard
-\begin_inset Branch NoChildDocument
+\begin_inset Branch Standalone
 inverted 0
-status collapsed
+status open
 
 \begin_layout Standard
-\begin_inset CommandInset bibtex
-LatexCommand bibtex
-bibfiles "thesisExample"
-options "alpha"
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The contents of this branch is only output if this chapter is processed
+ on its own, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., not from the master.
+ This allows you to have a bibliography and a nomenclature if you only want
+ to output this chapter.
+\end_layout
 
 \end_inset
 
@@ -356,10 +365,9 @@ options "alpha"
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset nomencl_print
-LatexCommand printnomenclature
-set_width "custom"
-width "2.5cm"
+\begin_inset CommandInset include
+LatexCommand include
+filename "Bibliography.lyx"
 
 \end_inset
 
