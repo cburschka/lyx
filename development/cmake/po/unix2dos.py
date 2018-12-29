@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/python3
 
 ###############
 import sys
@@ -11,7 +11,7 @@ for fname in sys.argv[1:]:
 
     if len(outstr) == len(instr):
         continue
-    
+
     outfile = open( fname , "wb" )
     outfile.write( outstr )
     outfile.close()

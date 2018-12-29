@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/python3
 # -*- coding: utf-8 -*-
 # Copyright (C) 2007 Michael Gerz <michael.gerz@teststep.org>
 # Copyright (C) 2007 José Matos <jamatos@lyx.org>
@@ -40,7 +40,7 @@ import sys
 
 # Reset the locale
 import locale
-locale.setlocale(locale.LC_ALL, 'C') 
+locale.setlocale(locale.LC_ALL, 'C')
 os.environ['LC_ALL'] = 'C'
 
 def extract_number(line, issues, prop):

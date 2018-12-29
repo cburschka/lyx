@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/python3
 # -*- coding: utf-8 -*-
 
 # file src/tex2lyx/test/runtests.py
@@ -161,4 +161,3 @@ def getlyxinput(lyx, lyxfx, lyxf, uselyx2lyx):
 
 if __name__ == "__main__":
     main(sys.argv)
-

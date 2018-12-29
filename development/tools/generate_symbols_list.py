@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/python3
 # -*- coding: utf-8 -*-
 
 # file generate_symbols_images.py

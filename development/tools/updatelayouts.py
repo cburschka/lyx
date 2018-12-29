@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/python3
 # -*- coding: utf-8 -*-
 
 # file updatelayouts.py
@@ -30,7 +30,7 @@ def main(argv):
             (base, ext) = os.path.splitext(i)
             if ext == ".old":
                 continue
-            args = ["layout2layout", i + ".old", i] 
+            args = ["layout2layout", i + ".old", i]
             shutil.copy(args[2], args[1])
             layout2layout(args)
 

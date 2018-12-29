@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/python3
 # -*- coding: utf-8 -*-
 
 # file gen_lfuns.py
@@ -39,7 +39,7 @@ LFUN_SAMPLE_ID = u"\\li Sample: "
 LFUN_ORIGIN_ID = u"\\li Origin: "
 LFUN_ENDVAR = u"\\endvar"
 
-ID_DICT = dict(name=LFUN_NAME_ID, action=LFUN_ACTION_ID, notion=LFUN_NOTION_ID, 
+ID_DICT = dict(name=LFUN_NAME_ID, action=LFUN_ACTION_ID, notion=LFUN_NOTION_ID,
                 syntax=LFUN_SYNTAX_ID, params=LFUN_PARAMS_ID, sample=LFUN_SAMPLE_ID, origin=LFUN_ORIGIN_ID)
 
 LFUNS_HEADER = u"""# gen_lfuns.py generated this file. For more info see http://www.lyx.org/
@@ -153,7 +153,7 @@ About this manual
 \\end_layout
 
 \\begin_layout Standard
-This manual documents the 
+This manual documents the
 \\begin_inset Quotes eld
 \\end_inset
 
@@ -175,7 +175,7 @@ LFUNs are also used in the files that define keyboard shortcuts, menu or
  So if you want to change\\SpecialChar breakableslash
 customize the user interface, you need to deal
  with LFUNs.
- Furthermore, external programs can use LFUNs to communicate with and 
+ Furthermore, external programs can use LFUNs to communicate with and
 \\begin_inset Quotes eld
 \\end_inset
 
@@ -186,7 +186,7 @@ remote-control
  \\SpecialChar LyX
  .
  Finally, you can also issue LFUNs directly via the so called mini-buffer
- which can be opened via 
+ which can be opened via
 \\begin_inset Info
 type  "shortcuts"
 arg   "command-execute"
@@ -208,15 +208,15 @@ LFUNS_FOOTER = u"""\\end_body
 
 def parse_lfun(str):
     """Takes a comment block (str) and parses it for fields describing the LFUN. Returns a dict containing the fields."""
-    
+
     lfun = dict(action="", notion="", syntax="", params="", sample="", origin="")
     field = ""
     lines = str.splitlines()
-    # strip leading whitespace and * from the lines of the comment to get 
+    # strip leading whitespace and * from the lines of the comment to get
     # rid of unimportant characters
     for i in range(0, len(lines)):
         lines[i] = lines[i].strip(" *")
-    
+
     for i in range(0, len(lines) - 1):
         # work out what field is being read if none of these is found, the line will be added
         #     to the last field edited
@@ -257,11 +257,11 @@ def parse_lfun(str):
                 pre_space = ""
             else:
                 pre_space = " "
-        
+
         # add the line to the field, processing it for \ characters and \n
         # which, if occurring at the end of a line, must become a LYX_NEWLINE
         line = lines[i][skip:]
-        
+
         # deal with \htmlonly
         # TODO: convert chars found in htmlonly to unicode
         start = line.find(HTMLONLY_START)
@@ -276,7 +276,7 @@ def parse_lfun(str):
             #else:
             # TODO: if HTMLONLY_END is not found, look on the next line
             # TODO: in the current LyXAction.cpp there are no htmlonly fields which go over a line break
-        
+
         # deal with \ but leave \n if at the end of the line
         slash_idx = line.find("\\")
         while slash_idx >= 0:
@@ -284,7 +284,7 @@ def parse_lfun(str):
             or slash_idx == len(line)-1:
                 # true when the \ is not the last or second last char
                 #      or when the slash is the last char of the line
-                
+
                 # slash must be interpreted literaly so swap it for a LYX_BACKSLASH
                 line = line[:slash_idx] + LYX_BACKSLASH + line[slash_idx+1:]
                 # skip the index ahead beyond the added text
@@ -292,10 +292,10 @@ def parse_lfun(str):
             elif line[slash_idx+1] != "n": # only evaluated if the line ends "\x" where 'x' != 'n'
                 line = line[:slash_idx] + LYX_BACKSLASH + line[slash_idx+1:]
                 # skip the index ahead beyond the added text
-                slash_idx = slash_idx + len(LYX_BACKSLASH) 
+                slash_idx = slash_idx + len(LYX_BACKSLASH)
             # look for the next \
             slash_idx = line.find("\\", slash_idx+1)
-            
+
         # \n at the end of lines will not be processed by the above while loop
         # so sort those out now
         # sometime lines end " \n" so chop the space if its there
@@ -303,11 +303,11 @@ def parse_lfun(str):
             line = line[:len(line)-3] + LYX_NEWLINE
         elif line.endswith("\\n"):
             line = line[:len(line)-2] + LYX_NEWLINE
-        
+
         # any references to other LFUNs need the # removing
         # TODO: actually insert a cross-reference here
         line = line.replace("#LFUN", "LFUN")
-        
+
         # handle the few #lyx:: cases
         line = line.replace("#lyx::", "lyx::")
 
@@ -316,9 +316,9 @@ def parse_lfun(str):
         # to avoid an error
         if field != "":
             lfun[field] = lfun[field] + pre_space + line
-        
+
         # TODO: sort out chopping lines of more that 80 chars in length
-        
+
     return lfun
 
 def write_fields(file, lfun):
@@ -379,7 +379,7 @@ def write_sections(file,lfuns):
         for lf in lfuns:
             if lf["type"] == val:
                 write_fields(file, lf)
-    
+
 def main(argv):
     # parse command line arguments
     script_path, script_name = os.path.split(argv[0])
@@ -408,7 +408,7 @@ def main(argv):
     lyxaction_text = lyxaction_file.read()
 
     lfuns_file.write(LFUNS_HEADER)
-    
+
     # An introductory section
     lfuns_file.write(LFUNS_INTRO)
 
@@ -452,7 +452,7 @@ def main(argv):
             done = 1
 
     lfun_list = sorted(lfun_list_unsorted, key=lambda k: k['name'])
-    
+
     # write the lfuns to the file
     write_sections(lfuns_file, lfun_list)
 
@@ -460,11 +460,11 @@ def main(argv):
 
     # write the last part of LFUNs.lyx
     lfuns_file.write(LFUNS_FOOTER)
-    
+
     lyxaction_file.close()
     lfuns_file.close()
-    
+
     sys.stderr.write(script_name + ": Finished\n")
-    
+
 if __name__ == "__main__":
     main(sys.argv)

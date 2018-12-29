@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 # file lyx_pot.py
@@ -698,5 +698,3 @@ if __name__ == '__main__':
         encodings_l10n(input_files, output, base)
     else:
         languages_l10n(input_files, output, base)
-
-
