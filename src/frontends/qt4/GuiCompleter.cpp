@@ -216,6 +216,11 @@ bool GuiCompleter::eventFilter(QObject * watched, QEvent * e)
 			tab();
 			ke->accept();
 			return true;
+		case Qt::Key_Escape:
+			hidePopup();
+			hideInline();
+			updateVisibility(false, false);
+			return true;
 		default: break;
 		}
 	}
