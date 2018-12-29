@@ -450,7 +450,7 @@ def revert_font_attrs(lines, name, LaTeXname):
   while True:
     i = find_token(lines, name + ' on', i)
     if i == -1:
-      return changed
+      break
     j = find_token(lines, name + ' default', i)
     k = find_token(lines, name + ' on', i + 1)
     # if there is no default set, the style ends with the layout
@@ -463,6 +463,16 @@ def revert_font_attrs(lines, name, LaTeXname):
     lines[i:i + 1] = put_cmd_in_ert(LaTeXname + "{")
     changed = True
     i += 1
+
+  # now delete all remaining lines that manipulate this attribute
+  i = 0
+  while True:
+    i = find_token(lines, name, i)
+    if i = -1:
+      break
+    del lines[i]
+
+  return changed
 
 
 def revert_layout_command(lines, name, LaTeXname):
