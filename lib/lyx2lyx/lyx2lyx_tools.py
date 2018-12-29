@@ -483,7 +483,7 @@ def revert_font_attrs(lines, name, LaTeXname):
   i = 0
   while True:
     i = find_token(lines, name, i)
-    if i = -1:
+    if i == -1:
       break
     del lines[i]
 
