@@ -13920,240 +13920,208 @@ msgid "Compact Description Options"
 msgstr "Volby pro Popis-kompaktní"
 
 #: lib/layouts/pdfcomment.module:2
-#, fuzzy
 msgid "PDF Comments"
-msgstr "Komentář"
+msgstr "PDF Komentáře"
 
 #: lib/layouts/pdfcomment.module:7
 msgid ""
 "Provides various kinds of annotations for the PDF output. The module uses "
 "the pdfcomment package. Please consult the LyX example file PDF-comment.lyx "
 "and the package documentation for details."
-msgstr ""
+msgstr "Poskytuje různé styly anotací pro PDF výstup. Modul používá balíček pdfcomment. Pro další detaily viz PDF-comment.lyx v příkladech a dokumentaci k balíčku."
 
 #: lib/layouts/pdfcomment.module:19
 msgid "Define Avatar"
-msgstr ""
+msgstr "Define Avatar"
 
 #: lib/layouts/pdfcomment.module:20
-#, fuzzy
 msgid "PDF-comment"
-msgstr "APLcomment"
+msgstr "PDF-comment"
 
 #: lib/layouts/pdfcomment.module:27
 msgid "PDF-comment avatar:"
-msgstr ""
+msgstr "PDF-comment avatar:"
 
 #: lib/layouts/pdfcomment.module:30
-#, fuzzy
 msgid "Name of the Avatar"
-msgstr "Name of the author"
+msgstr "Name of the Avatar"
 
 #: lib/layouts/pdfcomment.module:41
 msgid "Define PDF-Comment Style"
-msgstr ""
+msgstr "Define PDF-Comment Style"
 
 #: lib/layouts/pdfcomment.module:44
-#, fuzzy
 msgid "PDF-comment style:"
-msgstr "značka komentáře"
+msgstr "PDF-comment style:"
 
 #: lib/layouts/pdfcomment.module:47
-#, fuzzy
 msgid "Name of the style"
-msgstr "Name of the language"
+msgstr "Name of the style"
 
 #: lib/layouts/pdfcomment.module:52
 msgid "Define PDF-Comment List Style"
-msgstr ""
+msgstr "Define PDF-Comment List Style"
 
 #: lib/layouts/pdfcomment.module:55
 msgid "Definition of PDF-comment list style:"
-msgstr ""
+msgstr "Definition of PDF-comment list style:"
 
 #: lib/layouts/pdfcomment.module:58
-#, fuzzy
 msgid "Name of the list style"
-msgstr "Jméno standardní tiskárny"
+msgstr "Name of the list style"
 
 #: lib/layouts/pdfcomment.module:63
 msgid "Set PDF-Comment List Style"
-msgstr ""
+msgstr "Set PDF-Comment List Style"
 
 #: lib/layouts/pdfcomment.module:66
-#, fuzzy
 msgid "PDF-comment list style:"
-msgstr "Nastavit styl indexů"
+msgstr "PDF-comment list style:"
 
 #: lib/layouts/pdfcomment.module:70
 msgid "PDF-Comment-Setup"
-msgstr ""
+msgstr "PDF-Comment-Setup"
 
 #: lib/layouts/pdfcomment.module:74
-#, fuzzy
 msgid "PDF (Setup)"
-msgstr "PDF (XeTeX)"
+msgstr "PDF (Setup)"
 
 #: lib/layouts/pdfcomment.module:82
-#, fuzzy
 msgid "PDF-Comment setup options"
-msgstr "Nastavení dokumentu"
+msgstr "PDF-Comment setup options"
 
 #: lib/layouts/pdfcomment.module:83 lib/layouts/pdfcomment.module:106
 #: lib/layouts/pdfcomment.module:222
 msgid "Opts"
-msgstr ""
+msgstr "Opts"
 
 #: lib/layouts/pdfcomment.module:84
 msgid "Insert PDF-Comment setup options here (see the pdfcomment manual)"
-msgstr ""
+msgstr "Insert PDF-Comment setup options here (see the pdfcomment manual)"
 
 #: lib/layouts/pdfcomment.module:93
-#, fuzzy
 msgid "PDF-Annotation"
-msgstr "Značení"
+msgstr "PDF-Annotation"
 
 #: lib/layouts/pdfcomment.module:97 src/frontends/qt4/GuiClipboard.cpp:175
 msgid "PDF"
 msgstr "PDF"
 
 #: lib/layouts/pdfcomment.module:105
-#, fuzzy
 msgid "PDFComment Options"
-msgstr "Column Options"
+msgstr "PDFComment Options"
 
 #: lib/layouts/pdfcomment.module:107
-#, fuzzy
 msgid "Insert PDFComment options here (see pdfcomment manual)"
-msgstr "Column options (see beamer manual)"
+msgstr "Insert PDFComment options here (see pdfcomment manual)"
 
 #: lib/layouts/pdfcomment.module:112
-#, fuzzy
 msgid "PDF-Margin"
-msgstr "Okraje stránky"
+msgstr "PDF-Margin"
 
 #: lib/layouts/pdfcomment.module:114
-#, fuzzy
 msgid "PDF (Margin)"
-msgstr "Okraje stránky"
+msgstr "PDF (Margin)"
 
 #: lib/layouts/pdfcomment.module:122
 msgid "PDF-Markup"
-msgstr ""
+msgstr "PDF-Markup"
 
 #: lib/layouts/pdfcomment.module:124
-#, fuzzy
 msgid "PDF (Markup)"
-msgstr "PDF (ořezaný)"
+msgstr "PDF (Markup)"
 
 #: lib/layouts/pdfcomment.module:129
 msgid "Insert the comment to the marked-up text here"
-msgstr ""
+msgstr "Insert the comment to the marked-up text here"
 
 #: lib/layouts/pdfcomment.module:133
 msgid "PDF-Freetext"
-msgstr ""
+msgstr "PDF-Freetext"
 
 #: lib/layouts/pdfcomment.module:135
-#, fuzzy
 msgid "PDF (Freetext)"
-msgstr "PDF (pdflatex)"
+msgstr "PDF (Freetext)"
 
 #: lib/layouts/pdfcomment.module:139
-#, fuzzy
 msgid "PDF-Square"
-msgstr "Čtverec"
+msgstr "PDF-Square"
 
 #: lib/layouts/pdfcomment.module:141
-#, fuzzy
 msgid "PDF (Square)"
-msgstr "PDF (LuaTeX)"
+msgstr "PDF (Square)"
 
 #: lib/layouts/pdfcomment.module:145
-#, fuzzy
 msgid "PDF-Circle"
-msgstr "Kružnice"
+msgstr "PDF-Circle"
 
 #: lib/layouts/pdfcomment.module:147
-#, fuzzy
 msgid "PDF (Circle)"
-msgstr "Kružnice"
+msgstr "PDF (Circle)"
 
 #: lib/layouts/pdfcomment.module:151
 msgid "PDF-Line"
-msgstr ""
+msgstr "PDF-Line"
 
 #: lib/layouts/pdfcomment.module:153
-#, fuzzy
 msgid "PDF (Line)"
-msgstr "PDF (LuaTeX)"
+msgstr "PDF (Line)"
 
 #: lib/layouts/pdfcomment.module:157
-#, fuzzy
 msgid "PDF-Sideline"
-msgstr "Sidenote"
+msgstr "PDF-Sideline"
 
 #: lib/layouts/pdfcomment.module:159
-#, fuzzy
 msgid "PDF (Sideline)"
-msgstr "PDF (pdflatex)"
+msgstr "PDF (Sideline)"
 
 #: lib/layouts/pdfcomment.module:166
-#, fuzzy
 msgid "Insert the comment here"
-msgstr "Nelze změnit počet sloupců v '%1$s'"
+msgstr "Insert the comment here"
 
 #: lib/layouts/pdfcomment.module:170
 msgid "PDF-Reply"
-msgstr ""
+msgstr "PDF-Reply"
 
 #: lib/layouts/pdfcomment.module:172
-#, fuzzy
 msgid "PDF (Reply)"
-msgstr "PDF (pdflatex)"
+msgstr "PDF (Reply)"
 
 #: lib/layouts/pdfcomment.module:180
 msgid "PDF-Tooltip"
-msgstr ""
+msgstr "PDF-Tooltip"
 
 #: lib/layouts/pdfcomment.module:182
-#, fuzzy
 msgid "PDF (Tooltip)"
-msgstr "PDF (dvipdfm)"
+msgstr "PDF (Tooltip)"
 
 #: lib/layouts/pdfcomment.module:189
-#, fuzzy
 msgid "Tooltip Text"
-msgstr "Zkopírovat text|k"
+msgstr "Tooltip Text"
 
 #: lib/layouts/pdfcomment.module:190
 msgid "Tooltip"
-msgstr ""
+msgstr "Tooltip"
 
 #: lib/layouts/pdfcomment.module:192
-#, fuzzy
 msgid "Insert the tooltip text here"
-msgstr "Enter the default text here"
+msgstr "Insert the tooltip text here"
 
 #: lib/layouts/pdfcomment.module:200
-#, fuzzy
 msgid "List of PDF Comments"
-msgstr "Poznámky pod čarou"
+msgstr "List of PDF Comments"
 
 #: lib/layouts/pdfcomment.module:214
-#, fuzzy
 msgid "[List of PDF Comments]"
-msgstr "Poznámky pod čarou"
+msgstr "[List of PDF Comments]"
 
 #: lib/layouts/pdfcomment.module:223
-#, fuzzy
 msgid "List Options|s"
-msgstr "Note Options"
+msgstr "List Options|s"
 
 #: lib/layouts/pdfcomment.module:224
-#, fuzzy
 msgid "Insert list options here (see pdfcomment manual)"
-msgstr "Twocolumn options (see powerdot manual)"
+msgstr "Insert list options here (see pdfcomment manual)"
 
 # TODO
 #: lib/layouts/pdfform.module:2
