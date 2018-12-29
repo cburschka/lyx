@@ -67,11 +67,13 @@ void InsetLabel::uniqueLabel(docstring & label) const
 {
 	docstring const new_label = label;
 	int i = 1;
-	while (buffer().insetLabel(label)) {
+	bool ambiguous = false;
+	while (buffer().activeLabel(label)) {
 		label = new_label + '-' + convert<docstring>(i);
 		++i;
+		ambiguous = true;
 	}
-	if (label != new_label) {
+	if (ambiguous) {
 		// Warn the user that the label has been changed to something else.
 		frontend::Alert::warning(_("Label names must be unique!"),
 			bformat(_("The label %1$s already exists,\n"
@@ -143,12 +145,17 @@ docstring InsetLabel::screenLabel() const
 void InsetLabel::updateBuffer(ParIterator const & par, UpdateType utype)
 {
 	docstring const & label = getParam("name");
-	if (buffer().insetLabel(label)) {
-		// Problem: We already have an InsetLabel with the same name!
+
+	// Check if this one is deleted (ct)
+	Paragraph const & para = par.paragraph();
+	bool const active = !para.isDeleted(par.pos());
+
+	if (buffer().activeLabel(label) && active) {
+		// Problem: We already have an active InsetLabel with the same name!
 		screen_label_ = _("DUPLICATE: ") + label;
 		return;
 	}
-	buffer().setInsetLabel(label, this);
+	buffer().setInsetLabel(label, this, active);
 	screen_label_ = label;
 
 	if (utype == OutputUpdate) {
@@ -172,8 +179,11 @@ void InsetLabel::addToToc(DocIterator const & cpit, bool output_active,
 						  UpdateType, TocBackend & backend) const
 {
 	docstring const & label = getParam("name");
+	if (!buffer().activeLabel(label))
+		return;
+
 	shared_ptr<Toc> toc = backend.toc("label");
-	if (buffer().insetLabel(label) != this) {
+	if (buffer().insetLabel(label, true) != this) {
 		toc->push_back(TocItem(cpit, 0, screen_label_, output_active));
 	} else {
 		toc->push_back(TocItem(cpit, 0, screen_label_, output_active));

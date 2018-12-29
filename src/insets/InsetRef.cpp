@@ -303,7 +303,7 @@ int InsetRef::docbook(odocstream & os, OutputParams const & runparams) const
 docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const & op) const
 {
 	docstring const & ref = getParam("reference");
-	InsetLabel const * il = buffer().insetLabel(ref);
+	InsetLabel const * il = buffer().insetLabel(ref, true);
 	string const & cmd = params().getCmdName();
 	docstring display_string;
 
@@ -423,7 +423,7 @@ void InsetRef::addToToc(DocIterator const & cpit, bool output_active,
 						UpdateType, TocBackend & backend) const
 {
 	docstring const & label = getParam("reference");
-	if (buffer().insetLabel(label))
+	if (buffer().activeLabel(label))
 		// This InsetRef has already been taken care of in InsetLabel::addToToc().
 		return;
 

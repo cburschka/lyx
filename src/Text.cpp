@@ -2047,7 +2047,7 @@ docstring Text::getPossibleLabel(DocIterator const & cur) const
 	// We need a unique label
 	docstring label = text;
 	int i = 1;
-	while (cur.buffer()->insetLabel(label)) {
+	while (cur.buffer()->activeLabel(label)) {
 			label = text + '-' + convert<docstring>(i);
 			++i;
 		}
