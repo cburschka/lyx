@@ -1,0 +1,536 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass maa-monthly
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 2
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Sample Article Title
+\end_layout
+
+\begin_layout Abbreviated Title
+Abbreviated Article Title
+\end_layout
+
+\begin_layout Author
+Woodrow Wilson and Herbert Hoover
+\end_layout
+
+\begin_layout Abstract
+An abstract should not contain concrete mathematics, but rather should be
+ discrete.
+ Be brief and avoid using mathematical notation except where absolutely
+ necessary, since this brief synopsis will be used by search engines to
+ identify your article!
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+American Mathematical Monthly
+\emph default
+ style incorporates the following 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+ packages.
+ These styles should 
+\emph on
+not
+\emph default
+ be included in the document header.
+\end_layout
+
+\begin_layout Itemize
+times
+\end_layout
+
+\begin_layout Itemize
+pifont
+\end_layout
+
+\begin_layout Itemize
+graphicx
+\end_layout
+
+\begin_layout Itemize
+color
+\end_layout
+
+\begin_layout Itemize
+AMS styles: amsmath, amsthm, amsfonts, amssymb
+\end_layout
+
+\begin_layout Itemize
+url
+\end_layout
+
+\begin_layout Standard
+Use of other 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+packages should be minimized as much as possible.
+ Math notation, like 
+\begin_inset Formula $c=\sqrt{a^{2}+b^{2}}$
+\end_inset
+
+, can be left in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+TeX
+\end_layout
+
+\end_inset
+
+'s default Computer Modern typefaces for manuscript preparation; or, if
+ you have the appropriate fonts installed, the 
+\family typewriter
+mathtime
+\family default
+ or 
+\family typewriter
+mtpro
+\family default
+ packages may be used, which will better approximate the finished article.
+\end_layout
+
+\begin_layout Standard
+Web links can be embedded using the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+verb~
+\backslash
+url{...}~
+\end_layout
+
+\end_inset
+
+ command, which will result in something like 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.maa.org
+\end_layout
+
+\end_inset
+
+.
+ These links will be active and stylized in the online publication.
+\end_layout
+
+\begin_layout Section
+First-level section heading.
+\end_layout
+
+\begin_layout Standard
+Section headings use an initial capital letter on the first word, with subsequen
+t words lowercase.
+ In general, the style of the journal is to leave all section headings unnumbere
+d.
+ Consult the journal editor if you wish to depart from this and other convention
+s.
+\end_layout
+
+\begin_layout Subsection
+Second-level heading.
+\end_layout
+
+\begin_layout Standard
+The same goes for second-level headings.
+ It is not necessary to add font commands to make the math within heads
+ bold and sans serif; this change will occur automatically when the production
+ style is applied.
+\end_layout
+
+\begin_layout Section
+Graphics.
+\end_layout
+
+\begin_layout Standard
+Figures for the 
+\shape smallcaps
+Monthly
+\shape default
+ can be submitted as either color or black & white graphics.
+ Generally, color graphics will be used for the online publication, and
+ converted to black & white images for the print journal.
+ We recommend using whatever graphics program you are most comfortable with,
+ so long as the submitted graphic is provided as a separate file using a
+ standard file format.
+\end_layout
+
+\begin_layout Standard
+For best results, please follow the following guidelines:
+\end_layout
+
+\begin_layout Enumerate
+Bitmapped file formats---preferably TIFF or JPEG, but not BMP---are appropriate
+ for photographs, using a resolution of at least 300 dpi at the final scaled
+ size of the image.
+\end_layout
+
+\begin_layout Enumerate
+Line art will reproduce best if provided in vector form, preferably EPS.
+\end_layout
+
+\begin_layout Enumerate
+Alternatively, both photographs and line art can be provided as PDF files.
+ Note that creating a PDF does not affect whether the graphic is a bitmap
+ or vector; saving a scanned piece of line art as PDF does not convert it
+ to scalable line art.
+\end_layout
+
+\begin_layout Enumerate
+If you generating graphics using a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+TeX
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+package, please be sure to provide a PDF of the manuscript.
+ In the production process, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+TeX
+\end_layout
+
+\end_inset
+
+-generated graphics will eventually be converted to more conventional graphics
+ so the 
+\shape smallcaps
+Monthly
+\shape default
+ can be delivered in e-reader formats.
+\end_layout
+
+\begin_layout Enumerate
+For photos of contributing authors, we prefer photos that are not cropped
+ tight to the author's profile, so that production staff can crop the head
+ shot to an equal height and width.
+ If possible, avoid photographs that have excess shadows or glare.
+\end_layout
+
+\begin_layout Section
+Theorems, definitions, proofs, and all that.
+\end_layout
+
+\begin_layout Standard
+Following the defaults of the 
+\family typewriter
+amsthm
+\family default
+ package, styling is provided for 
+\family typewriter
+theorem
+\family default
+, 
+\family typewriter
+definition
+\family default
+, and 
+\family typewriter
+remark
+\family default
+ styles, although the latter two use the same styling.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Pythagorean Theorem
+\end_layout
+
+\end_inset
+
+Theorems, lemmas, axioms, and the like are stylized using italicized text.
+ These environments can be numbered or unnumbered, at the author's discretion.
+\end_layout
+
+\begin_layout Proof
+Proofs set in roman (upright) text, and conclude with an 
+\begin_inset Quotes eld
+\end_inset
+
+end of proof
+\begin_inset Quotes erd
+\end_inset
+
+ (q.e.d.) symbol that is set automatically when you end the proof environment.
+ When the proof ends with an equation or other non-text element, you need
+ to add 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+verb~
+\backslash
+qedhere~
+\end_layout
+
+\end_inset
+
+ to the element to set the end of proof symbol; see the 
+\family typewriter
+amsthm
+\family default
+ package documentation for more details.
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Secant Line
+\end_layout
+
+\end_inset
+
+Definitions, remarks, and notation are stylized as roman text.
+ They are typically unnumbered, but there are no hard-and-fast rules about
+ numbering.
+\end_layout
+
+\begin_layout Remark*
+Remarks stylize the same as definitions.
+\end_layout
+
+\begin_layout Acknowledgments
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Acknowledgment.
+\end_layout
+
+\end_inset
+
+The authors wish to thank the Greek polymath Anonymous, whose prolific works
+ are an endless source of inspiration.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "parker13"
+
+\end_inset
+
+Adam Parker, Who solved the Bernoulli equation and how did they do it? 
+\emph on
+Coll.
+ Math.
+ J.
+
+\emph default
+ 
+\series bold
+44
+\series default
+ (2013) 89–97.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "hopkins"
+
+\end_inset
+
+Brian Hopkins, ed., 
+\emph on
+Resources for Teaching Discrete Mathematics
+\emph default
+, Mathematical Association of America, Washington DC, 2009.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Biographies
+
+\end_layout
+
+\begin_deeper
+\begin_layout Author Biography
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Woodrow Wilson
+\end_layout
+
+\end_inset
+
+received his Ph.D.
+ in history and political science from Johns Hopkins University.
+ He held visiting positions at Cornell and Wesleyan before joining the faculty
+ at Princeton, where he was eventually appointed president of the university.
+ Among his proudest accomplishments was the abolition of eating clubs at
+ Princeton on the grounds that they were elitist.
+\end_layout
+
+\begin_layout Affiliation
+Office of the President, Princeton University, Princeton NJ 08544
+\begin_inset Newline newline
+\end_inset
+
+twoodwilson@princeton.edu
+\end_layout
+
+\begin_layout Author Biography
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Herbert Hoover
+\end_layout
+
+\end_inset
+
+entered Stanford University in 1891, after failing all of the entrance exams
+ except mathematics.
+ He received his B.S.
+ degree in geology in 1895, spent time as a mining engineer, then was appointed
+ by his co-author to the U.S.
+ Food Administration and the Supreme Economic Council, where he orchestrated
+ the greatest famine relief efforts of all time.
+\end_layout
+
+\begin_layout Affiliation
+Hoover Institution, Stanford University, Stanford CA 94305
+\begin_inset Newline newline
+\end_inset
+
+herbhoover@stanford.edu
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 566
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -10,7 +10,7 @@
 \language english
 \language_package none
 \inputencoding iso8859-15
-\fontencoding global
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -3981,6 +3981,51 @@ The \SpecialChar LyX
 \end_layout
 
 \end_deeper
+\begin_layout Subsection
+maa-monthly
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "textclass"
+arg   "maa-monthly"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\series bold
+Web:
+\series default
+ 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://www.maa.org/press/periodicals/american-mathematical-monthly
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+maa-monthly
+\family default
+ class is used for submissions to 
+\emph on
+American Mathematical Monthly
+\emph default
+.
+\end_layout
+
 \begin_layout Subsection
 memoir
 \end_layout
