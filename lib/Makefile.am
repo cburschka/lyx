@@ -2218,6 +2218,7 @@ dist_layouts_DATA =\
 	layouts/logicalmkup.module \
 	layouts/ltugboat.layout \
 	layouts/lyxmacros.inc \
+	layouts/maa-monthly.layout \
 	layouts/memoir.layout \
 	layouts/minimalistic.module \
 	layouts/moderncv.layout \
@@ -2403,6 +2404,7 @@ dist_templates_DATA = \
 	templates/koma-letter2.lyx \
 	templates/letter.lyx \
 	templates/lettre.lyx \
+	templates/maa-monthly.lyx \
 	templates/PDF-cropped.lyx \
 	templates/poster-a0poster-colored.lyx \
 	templates/poster-a0poster-simple.lyx \
