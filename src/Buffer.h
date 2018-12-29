@@ -713,7 +713,8 @@ public:
 	void setInsetLabel(docstring const & label, InsetLabel const * il,
 			   bool const active);
 	/// \return the InsetLabel associated with this \p label string
-	/// If \p active is true we only return active labels.
+	/// If \p active is true we only return active labels
+	/// (see @ref activeLabel)
 	InsetLabel const * insetLabel(docstring const & label,
 				      bool const active = false) const;
 	/// \return true if this \param label is an active label.

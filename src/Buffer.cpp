@@ -318,7 +318,7 @@ public:
 	/// was missing).
 	bool preview_error_;
 
-	/// Cache the insets, their associated refs (with positions),
+	/// Cache the label insets, their associated refs (with positions),
 	/// and whether the insets are active.
 	mutable RefCache ref_cache_;
 
@@ -3900,7 +3900,7 @@ Buffer::References & Buffer::getReferenceCache(docstring const & label)
 	// In what follows, we look whether we find an active label
 	// with the given string in the cache. If so, return its
 	// references cache. If we only find an inactive one, return
-	// that (the last we find, coincidentally). If we find noting,
+	// that (the last we find, coincidentally). If we find nothing,
 	// return an empty references cache.
 	static LabelInfo linfo;
 	linfo.inset = nullptr;
@@ -3965,14 +3965,10 @@ InsetLabel const * Buffer::insetLabel(docstring const & label,
 
 bool Buffer::activeLabel(docstring const & label) const
 {
-	if (!insetLabel(label))
+	if (!insetLabel(label, true))
 		return false;
 
-	for (auto & rc : masterBuffer()->d->ref_cache_) {
-		if (rc.label == label && rc.active)
-			return true;
-	}
-	return false;
+	return true;
 }
 
 
