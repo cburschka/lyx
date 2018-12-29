@@ -3943,10 +3943,9 @@ void Buffer::addReference(docstring const & label, Inset * inset, ParIterator it
 void Buffer::setInsetLabel(docstring const & label, InsetLabel const * il,
 			   bool const active)
 {
-	static LabelInfo linfo;
+	LabelInfo linfo;
 	linfo.label = label;
 	linfo.inset = il;
-	linfo.references = References();
 	linfo.active = active;
 	masterBuffer()->d->ref_cache_.push_back(linfo);
 }
