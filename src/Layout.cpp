@@ -597,25 +597,25 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		}
 
 		case LT_AUTONESTS: {
-			docstring const autonest =
-				subst(subst(subst(lex.getLongString(from_ascii("EndAutoNests")),
-						  from_ascii("\n"), docstring()),
-					    from_ascii(" "), docstring()),
-				      from_ascii("\t"), docstring());
+			docstring autonest = lex.getLongString(from_ascii("EndAutoNests"));
+			autonest = subst(autonest, from_ascii("\n"), docstring());
+			autonest = subst(autonest, from_ascii("\t"), docstring());
+			autonest = subst(autonest, from_ascii("\""), docstring());
+			autonest = subst(autonest, '_', ' ');
 			vector<docstring> const autonests =
-				getVectorFromString(autonest);
+				getVectorFromString(autonest, from_ascii(","), false, true);
 			autonests_.insert(autonests.begin(), autonests.end());
 			break;
 		}
 
 		case LT_AUTONESTEDBY: {
-			docstring const autonest =
-				subst(subst(subst(lex.getLongString(from_ascii("EndIsAutoNestedBy")),
-						  from_ascii("\n"), docstring()),
-					    from_ascii(" "), docstring()),
-				      from_ascii("\t"), docstring());
+			docstring autonest = lex.getLongString(from_ascii("EndIsAutoNestedBy"));
+			autonest = subst(autonest, from_ascii("\n"), docstring());
+			autonest = subst(autonest, from_ascii("\t"), docstring());
+			autonest = subst(autonest, from_ascii("\""), docstring());
+			autonest = subst(autonest, '_', ' ');
 			vector<docstring> const autonests =
-				getVectorFromString(autonest);
+				getVectorFromString(autonest, from_ascii(","), false, true);
 			autonested_by_.insert(autonests.begin(), autonests.end());
 			break;
 		}
