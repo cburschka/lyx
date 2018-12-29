@@ -283,6 +283,7 @@ dist_thesisexamples_DATA = \
 	examples/thesis/Acknowledgments.lyx \
 	examples/thesis/alpha.bst \
 	examples/thesis/Appendix.lyx \
+	examples/thesis/Bibliography.lyx \
 	examples/thesis/chapter-1.lyx \
 	examples/thesis/chapter-2.lyx \
 	examples/thesis/Summary.lyx \
