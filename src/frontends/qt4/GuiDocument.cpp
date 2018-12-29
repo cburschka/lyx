@@ -4464,10 +4464,9 @@ void GuiDocument::dispatchParams()
 	// This must come first so that a language change is correctly noticed
 	setLanguage();
 
-	// Apply the BufferParams. Note that this will set the base class
-	// and then update the buffer's layout.
-	dispatch_bufferparams(*this, params(), LFUN_BUFFER_PARAMS_APPLY, &buffer());
-
+	// We need to load the master before we formally update the params,
+	// since otherwise we run updateBuffer, etc, before the child's master
+	// has been set.
 	if (!params().master.empty()) {
 		FileName const master_file = support::makeAbsPath(params().master,
 			   support::onlyPath(buffer().absFileName()));
@@ -4488,6 +4487,10 @@ void GuiDocument::dispatchParams()
 							   from_utf8(params().master)));
 		}
 	}
+
+	// Apply the BufferParams. Note that this will set the base class
+	// and then update the buffer's layout.
+	dispatch_bufferparams(*this, params(), LFUN_BUFFER_PARAMS_APPLY, &buffer());
 
 	// Generate the colours requested by each new branch.
 	BranchList & branchlist = params().branchlist();
