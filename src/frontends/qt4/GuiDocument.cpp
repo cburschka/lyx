@@ -632,8 +632,10 @@ void LocalLayout::hideConvert()
 
 void LocalLayout::textChanged()
 {
-	static const QString message =
-		qt_("Press button to check validity...");
+	// Flashy red bold text
+	static const QString ivpar("<p style=\"color: #c00000; font-weight: bold; text-align:left\">"
+				   "%1</p>");
+	static const QString message = ivpar.arg(qt_("Validation required!"));
 	string const layout =
 		fromqstr(locallayoutTE->document()->toPlainText().trimmed());
 
@@ -673,9 +675,9 @@ void LocalLayout::convertPressed() {
 
 void LocalLayout::validate() {
 	// Bold text
-	static const QString vpar("<p style=\"font-weight: bold;\">%1</p>");
+	static const QString vpar("<p style=\"font-weight: bold; text-align:left\">%1</p>");
 	// Flashy red bold text
-	static const QString ivpar("<p style=\"color: #c00000; font-weight: bold; \">"
+	static const QString ivpar("<p style=\"color: #c00000; font-weight: bold; text-align:left\">"
 	                           "%1</p>");
 	string const layout =
 		fromqstr(locallayoutTE->document()->toPlainText().trimmed());
