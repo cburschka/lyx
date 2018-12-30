@@ -304,6 +304,7 @@ dist_examples_DATA = \
 	examples/Literate.lyx \
 	examples/aa_sample.lyx \
 	examples/aas_sample.lyx \
+	examples/aas_sample62.lyx \
 	examples/achemso.lyx \
 	examples/addressExample.adr \
 	examples/amsart-test.lyx \
@@ -2100,6 +2101,7 @@ dist_layouts_DATA =\
 	layouts/aapaper.layout \
 	layouts/aastex.layout \
 	layouts/aastex6.layout \
+	layouts/aastex62.layout \
 	layouts/achemso.layout \
 	layouts/acm-sigs.layout \
 	layouts/acm-sigs-alt.layout \
@@ -2373,6 +2375,7 @@ templatesdir = $(pkgdatadir)/templates
 dist_templates_DATA = \
 	templates/aa.lyx \
 	templates/aastex6.lyx \
+	templates/aastex62.lyx \
 	templates/acmart.lyx \
 	templates/AEA.lyx \
 	templates/APA.lyx \
