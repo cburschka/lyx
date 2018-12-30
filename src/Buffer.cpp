@@ -2457,6 +2457,11 @@ void Buffer::checkIfBibInfoCacheIsValid() const
 		return;
 	}
 
+	// if we already know the cache is invalid, no need to check
+	// the timestamps
+	if (!d->bibinfo_cache_valid_)
+		return;
+
 	// we'll assume it's ok and change this if it's not
 	d->bibinfo_cache_valid_ = true;
 	d->cite_labels_valid_ = true;
