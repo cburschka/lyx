@@ -148,7 +148,17 @@ void InsetLabel::updateBuffer(ParIterator const & par, UpdateType utype)
 
 	// Check if this one is deleted (ct)
 	Paragraph const & para = par.paragraph();
-	bool const active = !para.isDeleted(par.pos());
+	bool active = !para.isDeleted(par.pos());
+	// If not, check whether we are in a deleted inset
+	if (active) {
+		for (size_type sl = 0 ; sl < par.depth() ; ++sl) {
+			Paragraph const & outer_par = par[sl].paragraph();
+			if (outer_par.isDeleted(par[sl].pos())) {
+				active = false;
+				break;
+			}
+		}
+	}
 
 	if (buffer().activeLabel(label) && active) {
 		// Problem: We already have an active InsetLabel with the same name!
