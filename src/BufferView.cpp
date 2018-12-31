@@ -2515,15 +2515,26 @@ bool BufferView::setCursorFromInset(Inset const * inset)
 
 void BufferView::gotoLabel(docstring const & label)
 {
+	FuncRequest action;
+	bool have_inactive = false;
 	for (Buffer const * buf : buffer().allRelatives()) {
 		// find label
 		for (TocItem const & item : *buf->tocBackend().toc("label")) {
-			if (label == item.str()) {
+			if (label == item.str() && item.isOutput()) {
 				lyx::dispatch(item.action());
 				return;
 			}
+			// If we find an inactive label, save it for the case
+			// that no active one is there
+			if (label == item.str() && !have_inactive) {
+				have_inactive = true;
+				action = item.action();
+			}
 		}
 	}
+	// We only found an inactive label. Go there.
+	if (have_inactive)
+		lyx::dispatch(action);
 }
 
 
