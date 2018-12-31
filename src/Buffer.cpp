@@ -2472,6 +2472,18 @@ void Buffer::checkIfBibInfoCacheIsValid() const
 		return;
 	}
 
+	// If we already know the cache is invalid, stop here.
+	// This is important in the case when the bibliography
+	// environment (rather than Bib[la]TeX) is used.
+	// In that case, the timestamp check below gives no
+	// sensible result. Rather than that, the cache will
+	// be invalidated explicitly via invalidateBibInfoCache()
+	// by the Bibitem inset.
+	// Same applies for bib encoding changes, which trigger
+	// invalidateBibInfoCache() by InsetBibtex.
+	if (!d->bibinfo_cache_valid_)
+		return;
+
 	// we'll assume it's ok and change this if it's not
 	d->bibinfo_cache_valid_ = true;
 	d->cite_labels_valid_ = true;
