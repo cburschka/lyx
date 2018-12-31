@@ -2386,6 +2386,7 @@ void Buffer::invalidateBibinfoCache() const
 {
 	d->bibinfo_cache_valid_ = false;
 	d->cite_labels_valid_ = false;
+	removeBiblioTempFiles();
 	// also invalidate the cache for the parent buffer
 	Buffer const * const pbuf = d->parent();
 	if (pbuf)
