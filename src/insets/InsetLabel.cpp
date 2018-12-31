@@ -146,14 +146,16 @@ void InsetLabel::updateBuffer(ParIterator const & par, UpdateType utype)
 {
 	docstring const & label = getParam("name");
 
-	// Check if this one is deleted (ct)
+	// Check if this one is active (i.e., neither deleted with change-tracking
+	// nor in an inset that does not produce output, such as notes or inactive branches)
 	Paragraph const & para = par.paragraph();
-	bool active = !para.isDeleted(par.pos());
-	// If not, check whether we are in a deleted inset
+	bool active = !para.isDeleted(par.pos()) && para.inInset().producesOutput();
+	// If not, check whether we are in a deleted/non-outputting inset
 	if (active) {
 		for (size_type sl = 0 ; sl < par.depth() ; ++sl) {
 			Paragraph const & outer_par = par[sl].paragraph();
-			if (outer_par.isDeleted(par[sl].pos())) {
+			if (outer_par.isDeleted(par[sl].pos())
+			    || !outer_par.inInset().producesOutput()) {
 				active = false;
 				break;
 			}
