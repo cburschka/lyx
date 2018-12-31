@@ -148,7 +148,9 @@ struct LabelInfo {
 	bool active;
 };
 
-typedef vector<LabelInfo> RefCache;
+typedef vector<LabelInfo> LabelCache;
+
+typedef map<docstring, Buffer::References> RefCache;
 
 } // namespace
 
@@ -318,9 +320,11 @@ public:
 	/// was missing).
 	bool preview_error_;
 
-	/// Cache the label insets, their associated refs (with positions),
-	/// and whether the insets are active.
+	/// Cache the references associated to a label and their positions
+	/// in the buffer.
 	mutable RefCache ref_cache_;
+	/// Cache the label insets and their activity status.
+	mutable LabelCache label_cache_;
 
 	/// our Text that should be wrapped in an InsetText
 	InsetText * inset;
@@ -3904,33 +3908,14 @@ Buffer::References & Buffer::getReferenceCache(docstring const & label)
 	if (d->parent())
 		return const_cast<Buffer *>(masterBuffer())->getReferenceCache(label);
 
-	// In what follows, we look whether we find an active label
-	// with the given string in the cache. If so, return its
-	// references cache. If we only find an inactive one, return
-	// that (the last we find, coincidentally). If we find nothing,
-	// return an empty references cache.
-	static LabelInfo linfo;
-	linfo.inset = nullptr;
-	linfo.references = References();
-	linfo.active = false;
-	bool have_inactive = false;
-	for (auto & rc : d->ref_cache_) {
-		if (rc.label == label) {
-			if (rc.active)
-				return rc.references;
-			else {
-				linfo = rc;
-				have_inactive = true;
-			}
-		}
-	}
+	RefCache::iterator it = d->ref_cache_.find(label);
+	if (it != d->ref_cache_.end())
+		return it->second;
 
-	if (!have_inactive)
-		// We found nothing, so insert the empty one to the cache
-		// for further processing
-		d->ref_cache_.push_back(linfo);
-
-	return linfo.references;
+	static References const dummy_refs = References();
+	it = d->ref_cache_.insert(
+		make_pair(label, dummy_refs)).first;
+	return it->second;
 }
 
 
@@ -3954,14 +3939,14 @@ void Buffer::setInsetLabel(docstring const & label, InsetLabel const * il,
 	linfo.label = label;
 	linfo.inset = il;
 	linfo.active = active;
-	masterBuffer()->d->ref_cache_.push_back(linfo);
+	masterBuffer()->d->label_cache_.push_back(linfo);
 }
 
 
 InsetLabel const * Buffer::insetLabel(docstring const & label,
 				      bool const active) const
 {
-	for (auto & rc : masterBuffer()->d->ref_cache_) {
+	for (auto & rc : masterBuffer()->d->label_cache_) {
 		if (rc.label == label && (rc.active || !active))
 			return rc.inset;
 	}
@@ -3980,8 +3965,10 @@ bool Buffer::activeLabel(docstring const & label) const
 
 void Buffer::clearReferenceCache() const
 {
-	if (!d->parent())
+	if (!d->parent()) {
 		d->ref_cache_.clear();
+		d->label_cache_.clear();
+	}
 }
 
 
