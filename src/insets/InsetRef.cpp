@@ -423,9 +423,11 @@ void InsetRef::addToToc(DocIterator const & cpit, bool output_active,
 						UpdateType, TocBackend & backend) const
 {
 	docstring const & label = getParam("reference");
-	if (buffer().activeLabel(label))
+	if (buffer().insetLabel(label)) {
+		broken_ = !buffer().activeLabel(label);
 		// This InsetRef has already been taken care of in InsetLabel::addToToc().
 		return;
+	}
 
 	// It seems that this reference does not point to any valid label.
 
