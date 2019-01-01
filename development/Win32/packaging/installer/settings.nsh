@@ -11,8 +11,8 @@ These typically need to be modified for each LyX release
 
 !define APP_VERSION_MAJOR 2
 !define APP_VERSION_MINOR 3
-!define APP_VERSION_REVISION 1
-!define APP_VERSION_EMERGENCY "" # use "1" for an emergency release of LyX otherwise ""
+!define APP_VERSION_REVISION 2
+!define APP_VERSION_EMERGENCY "-2" # use "1" for an emergency release of LyX otherwise ""
 !define APP_EMERGENCY_DOT "" # use "." for an emergency release of LyX otherwise ""
 !define APP_VERSION_BUILD 10 # Start with 1 for the installer releases of each version
 
