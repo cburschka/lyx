@@ -1137,12 +1137,12 @@ def revert_BoxFeatures(document):
         beg = document.body[i+2].find('"');
         end = document.body[i+2].rfind('"');
         shadowsize = document.body[i+2][beg+1:end];
-        # delete the specification
-        del document.body[i:i+3]
         # output ERT
         # first output the closing brace
         if shadowsize != defaultShadow or separation != defaultSep or thickness != defaultThick:
-            document.body[einset -1 : einset - 1] = put_cmd_in_ert("}")
+            document.body[einset + 1 : einset + 1] = put_cmd_in_ert("}")
+        # delete the specification
+        del document.body[i:i+3]
         # we have now the problem that if there is already \(f)colorbox in ERT around the inset
         # the ERT from this routine must be around it
         regexp = re.compile(r'^.*colorbox{.*$')
@@ -1273,27 +1273,36 @@ def revert_colorbox(document):
 
     i = 0
     while True:
-        i = find_token(document.body, "\\begin_inset Box", i+1)
+        i = find_token(document.body, "\\begin_inset Box", i)
         if i == -1:
             return
+
+        j = find_end_of_inset(document.body, i)
+        k = find_token(document.body, "\\begin_layout", i, j)
+        if k == -1:
+            document.warning("Malformed LyX document: no layout in Box inset!")
+            i += 1
+            continue
         # Get and delete colour settings:
-        framecolor = get_quoted_value(document.body, "framecolor", i+14, i+15, delete=True)
-        backcolor = get_quoted_value(document.body, "backgroundcolor", i+14, i+15, delete=True)
+        framecolor = get_quoted_value(document.body, "framecolor", i, k, delete=True)
+        backcolor = get_quoted_value(document.body, "backgroundcolor", i, k + 1, delete=True)
         if not framecolor or not backcolor:
             document.warning("Malformed LyX document: color options not found in Box inset!")
+            i += 1
             continue
         if framecolor == "black" and backcolor == "none": # default values
-            i += 15 # skip box option lines
+            i += 1
             continue
 
         # Emulate non-default colours with LaTeX code:
         einset = find_end_of_inset(document.body, i)
         if einset == -1:
             document.warning("Malformed LyX document: Can't find end of box inset!")
+            i += 1
             continue
         add_to_preamble(document, ["\\@ifundefined{rangeHsb}{\\usepackage{xcolor}}{}"])
         # insert the closing brace first (keeps indices 'i' and 'einset' valid)
-        document.body[einset+1:einset+1] = put_cmd_in_ert("}") + [""]
+        document.body[einset+1:einset+1] = put_cmd_in_ert("}")
         # now insert the (f)color box command
         if ("Box Boxed" in document.body[i]): # framed box, use \fcolorbox
             # change the box type (frame added by \fcolorbox)
@@ -1309,7 +1318,7 @@ def revert_colorbox(document):
         else:
             ertinset = put_cmd_in_ert("\\colorbox{%s}{" % backcolor)
         document.body[i:i] = ertinset + [""]
-        i = einset # skip inset
+        i += 13
 
 
 def revert_mathmulticol(document):
