@@ -1113,10 +1113,10 @@ void InsetMathMacro::write(WriteStream & os) const
 		// delimiter-size-modifier macro (see #10497 and #11346)
 		bool braced = false;
 		size_type last = cell(i).size() - 1;
-		if (cell(i)[last].nucleus()->asUnknownInset()) {
+		if (cell(i).size() && cell(i)[last].nucleus()->asUnknownInset()) {
 			latexkeys const * l = in_word_set(cell(i)[last].nucleus()->name());
 			braced = (l && l->inset == "big");
-		} else if (cell(i)[0].nucleus()->asScriptInset()) {
+		} else if (cell(i).size() && cell(i)[0].nucleus()->asScriptInset()) {
 			braced = cell(i)[0].nucleus()->asScriptInset()->nuc().empty();
 		}
 		if (braced)
