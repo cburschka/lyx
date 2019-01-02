@@ -708,6 +708,12 @@ docstring convertDelimToXMLEscape(docstring const & name)
 			return from_ascii("&gt;");
 		else
 			return name;
+	} else if (name.size() == 2 && name[0] == '\\') {
+		char_type const c = name[1];
+		if (c == '{')
+			return from_ascii("&#123;");
+		else if (c == '}')
+			return from_ascii("&#125;");
 	}
 	MathWordList const & words = mathedWordList();
 	MathWordList::const_iterator it = words.find(name);
