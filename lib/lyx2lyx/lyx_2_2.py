@@ -1727,190 +1727,349 @@ def revert_external_bbox(document):
 
 
 def revert_tcolorbox_1(document):
-  " Reverts the Flex:Subtitle inset of tcolorbox to TeX-code "
-  i = -1
-  while True:
-    i = find_token(document.header, "tcolorbox", i)
+    " Reverts the Flex:Subtitle inset of tcolorbox to TeX-code "
+
+    i = find_token(document.header, "tcolorbox", 0)
     if i == -1:
-      break
-    else:
-      flex = 0
-      flexEnd = -1
-      flex = find_token(document.body, "\\begin_inset Flex Subtitle", flex)
-      if flex == -1:
-        return flexEnd
-      flexEnd = find_end_of_inset(document.body, flex)
-      wasOpt = revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, False, True, False)
-      revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, False, False, False)
-      flexEnd = find_end_of_inset(document.body, flex)
-      if wasOpt == True:
-        document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\tcbsubtitle")
-      else:
-        document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\tcbsubtitle{")
-      document.body[flexEnd + 4 : flexEnd + 7] = put_cmd_in_ert("}")
-      flex += 1
+        return
+
+    flex = 0
+
+    while True:
+        flex = find_token(document.body, "\\begin_inset Flex Subtitle", flex)
+        if flex == -1:
+            return
+
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Subtitle found.")
+            flex += 1
+            continue
+
+        wasOpt = revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, False, True, False)
+        revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, False, False, False)
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Subtitle found.")
+            flex += 1
+            continue
+
+        bp = find_token(document.body, "\\begin_layout Plain Layout", flex)
+        if bp == -1:
+            document.warning("Malformed LyX document! No Flex Subtitle layout found.")
+            flex += 1
+            continue
+
+        ep = find_end_of_layout(document.body, bp)
+        if ep == -1:
+            document.warning("Malformed LyX document! No end of layout found.")
+            flex += 1
+            continue
+
+        document.body[ep : flexEnd + 1] = put_cmd_in_ert("}")
+        if wasOpt == True:
+            document.body[flex : bp + 1] = put_cmd_in_ert("\\tcbsubtitle")
+        else:
+            document.body[flex : bp + 1] = put_cmd_in_ert("\\tcbsubtitle{")
+        flex += 1
 
 
 def revert_tcolorbox_2(document):
-  " Reverts the Flex:Raster_Color_Box inset of tcolorbox to TeX-code "
-  i = -1
-  while True:
-    i = find_token(document.header, "tcolorbox", i)
+    " Reverts the Flex:Raster_Color_Box inset of tcolorbox to TeX-code "
+
+    i = find_token(document.header, "tcolorbox", 0)
     if i == -1:
-      break
-    else:
-      flex = 0
-      flexEnd = -1
-      flex = find_token(document.body, "\\begin_inset Flex Raster Color Box", flex)
-      if flex == -1:
-        return flexEnd
-      flexEnd = find_end_of_inset(document.body, flex)
-      revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
-      flexEnd = find_end_of_inset(document.body, flex)
-      document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\begin{tcbraster}")
-      document.body[flexEnd + 4 : flexEnd + 7] = put_cmd_in_ert("\\end{tcbraster}")
-      flex += 1
+        return
+
+    flex = 0
+    while True:
+        flex = find_token(document.body, "\\begin_inset Flex Raster Color Box", flex)
+        if flex == -1:
+            return
+
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Raster Color Box found.")
+            flex += 1
+            continue
+
+        revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
+
+        bp = find_token(document.body, "\\begin_layout Plain Layout", flex)
+        if bp == -1:
+            document.warning("Malformed LyX document! No plain layout in Raster Color Box found.")
+            flex += 1
+            continue
+
+        ep = find_end_of_layout(document.body, bp)
+        if ep == -1:
+            document.warning("Malformed LyX document! No end of layout found.")
+            flex += 1
+            continue
+
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Raster Color Box found.")
+            flex += 1
+            continue
+        document.body[ep : flexEnd + 1] = put_cmd_in_ert("\\end{tcbraster}")
+        document.body[flex : bp + 1] = put_cmd_in_ert("\\begin{tcbraster}")
+        flex += 1
 
 
 def revert_tcolorbox_3(document):
-  " Reverts the Flex:Custom_Color_Box_1 inset of tcolorbox to TeX-code "
-  i = -1
-  while True:
-    i = find_token(document.header, "tcolorbox", i)
+    " Reverts the Flex:Custom_Color_Box_1 inset of tcolorbox to TeX-code "
+
+    i = find_token(document.header, "tcolorbox", 0)
     if i == -1:
-      break
-    else:
-      flex = 0
-      flexEnd = -1
-      flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 1", flex)
-      if flex == -1:
-        return flexEnd
-      flexEnd = find_end_of_inset(document.body, flex)
-      revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
-      revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
-      flexEnd = find_end_of_inset(document.body, flex)
-      document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\begin{cBoxA}")
-      document.body[flexEnd + 4 : flexEnd + 7] = put_cmd_in_ert("{}\\end{cBoxA}")
-      flex += 1
+        return
+
+    flex = 0
+    while True:
+        flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 1", flex)
+        if flex == -1:
+            return
+
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Custom Color Box 1 found.")
+            flex += 1
+            continue
+
+        revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
+        revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
+
+        bp = find_token(document.body, "\\begin_layout Plain Layout", flex)
+        if bp == -1:
+            document.warning("Malformed LyX document! No plain layout in Custom Color Box 1 found.")
+            flex += 1
+            continue
+
+        ep = find_end_of_layout(document.body, bp)
+        if ep == -1:
+            document.warning("Malformed LyX document! No end of layout found.")
+            flex += 1
+            continue
+
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Custom Color Box 1 found.")
+            flex += 1
+            continue
+
+        document.body[ep : flexEnd + 1] = put_cmd_in_ert("{}\\end{cBoxA}")
+        document.body[flex : bp + 1] = put_cmd_in_ert("\\begin{cBoxA}")
+        flex += 1
 
 
 def revert_tcolorbox_4(document):
-  " Reverts the Flex:Custom_Color_Box_2 inset of tcolorbox to TeX-code "
-  i = -1
-  while True:
-    i = find_token(document.header, "tcolorbox", i)
+    " Reverts the Flex:Custom_Color_Box_2 inset of tcolorbox to TeX-code "
+
+    i = find_token(document.header, "tcolorbox", 0)
     if i == -1:
-      break
-    else:
-      flex = 0
-      flexEnd = -1
-      flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 2", flex)
-      if flex == -1:
-        return flexEnd
-      flexEnd = find_end_of_inset(document.body, flex)
-      revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
-      revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
-      flexEnd = find_end_of_inset(document.body, flex)
-      document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\begin{cBoxB}")
-      document.body[flexEnd + 4 : flexEnd + 7] = put_cmd_in_ert("{}\\end{cBoxB}")
-      flex += 1
+        return
+
+    flex = 0
+    while True:
+        flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 2", flex)
+        if flex == -1:
+            return
+
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Custom Color Box 2 found.")
+            flex += 1
+            continue
+
+        revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
+        revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Custom Color Box 2 found.")
+            flex += 1
+            continue
+
+        bp = find_token(document.body, "\\begin_layout Plain Layout", flex)
+        if bp == -1:
+            document.warning("Malformed LyX document! No plain layout in Custom Color Box 2 found.")
+            flex += 1
+            continue
+
+        ep = find_end_of_layout(document.body, bp)
+        if ep == -1:
+            document.warning("Malformed LyX document! No end of layout found.")
+            flex += 1
+            continue
+
+        document.body[ep : flexEnd + 1] = put_cmd_in_ert("{}\\end{cBoxB}")
+        document.body[flex : bp + 1] = put_cmd_in_ert("\\begin{cBoxB}")
+        flex += 1
 
 
 def revert_tcolorbox_5(document):
-  " Reverts the Flex:Custom_Color_Box_3 inset of tcolorbox to TeX-code "
-  i = -1
-  while True:
-    i = find_token(document.header, "tcolorbox", i)
+    " Reverts the Flex:Custom_Color_Box_3 inset of tcolorbox to TeX-code "
+
+    i = find_token(document.header, "tcolorbox", 0)
     if i == -1:
-      break
-    else:
-      flex = 0
-      flexEnd = -1
-      flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 3", flex)
-      if flex == -1:
-        return flexEnd
-      flexEnd = find_end_of_inset(document.body, flex)
-      revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
-      revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
-      flexEnd = find_end_of_inset(document.body, flex)
-      document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\begin{cBoxC}")
-      document.body[flexEnd + 4 : flexEnd + 7] = put_cmd_in_ert("{}\\end{cBoxC}")
-      flex += 1
+        return
+
+    flex = 0
+    while True:
+        flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 3", flex)
+        if flex == -1:
+            return
+
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Custom Color Box 3 found.")
+            flex += 1
+            continue
+
+        revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
+        revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Custom Color Box 3 found.")
+            flex += 1
+            continue
+
+        bp = find_token(document.body, "\\begin_layout Plain Layout", flex)
+        if bp == -1:
+            document.warning("Malformed LyX document! No plain layout in Custom Color Box 3 found.")
+            flex += 1
+            continue
+
+        ep = find_end_of_layout(document.body, bp)
+        if ep == -1:
+            document.warning("Malformed LyX document! No end of layout found.")
+            flex += 1
+            continue
+
+        document.body[ep : flexEnd + 1] = put_cmd_in_ert("{}\\end{cBoxC}")
+        document.body[flex : bp + 1] = put_cmd_in_ert("\\begin{cBoxC}")
+        flex += 1
 
 
 def revert_tcolorbox_6(document):
-  " Reverts the Flex:Custom_Color_Box_4 inset of tcolorbox to TeX-code "
-  i = -1
-  while True:
-    i = find_token(document.header, "tcolorbox", i)
+    " Reverts the Flex:Custom_Color_Box_4 inset of tcolorbox to TeX-code "
+
+    i = find_token(document.header, "tcolorbox", 0)
     if i == -1:
-      break
-    else:
-      flex = 0
-      flexEnd = -1
-      flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 4", flex)
-      if flex == -1:
-        return flexEnd
-      flexEnd = find_end_of_inset(document.body, flex)
-      revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
-      revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
-      flexEnd = find_end_of_inset(document.body, flex)
-      document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\begin{cBoxD}")
-      document.body[flexEnd + 4 : flexEnd + 7] = put_cmd_in_ert("{}\\end{cBoxD}")
-      flex += 1
+        return
+
+    flex = 0
+    while True:
+        flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 4", flex)
+        if flex == -1:
+            return
+
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Custom Color Box 4 found.")
+            flex += 1
+            continue
+
+        revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
+        revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Custom Color Box 4 found.")
+            flex += 1
+            continue
+
+        bp = find_token(document.body, "\\begin_layout Plain Layout", flex)
+        if bp == -1:
+            document.warning("Malformed LyX document! No plain layout in Custom Color Box 4 found.")
+            flex += 1
+            continue
+
+        ep = find_end_of_layout(document.body, bp)
+        if ep == -1:
+            document.warning("Malformed LyX document! No end of layout found.")
+            flex += 1
+            continue
+
+        document.body[ep : flexEnd + 1] = put_cmd_in_ert("{}\\end{cBoxD}")
+        document.body[flex : bp + 1] = put_cmd_in_ert("\\begin{cBoxD}")
+        flex += 1
 
 
 def revert_tcolorbox_7(document):
-  " Reverts the Flex:Custom_Color_Box_5 inset of tcolorbox to TeX-code "
-  i = -1
-  while True:
-    i = find_token(document.header, "tcolorbox", i)
+    " Reverts the Flex:Custom_Color_Box_5 inset of tcolorbox to TeX-code "
+
+    i = find_token(document.header, "tcolorbox", 0)
     if i == -1:
-      break
-    else:
-      flex = 0
-      flexEnd = -1
-      flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 5", flex)
-      if flex == -1:
-        return flexEnd
-      flexEnd = find_end_of_inset(document.body, flex)
-      revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
-      revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
-      flexEnd = find_end_of_inset(document.body, flex)
-      document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\begin{cBoxE}")
-      document.body[flexEnd + 4 : flexEnd + 7] = put_cmd_in_ert("{}\\end{cBoxE}")
-      flex += 1
+        return
+
+    flex = 0
+    while True:
+        flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 5", flex)
+        if flex == -1:
+            return
+
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Custom Color Box 5 found.")
+            flex += 1
+            continue
+
+        revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
+        revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Custom Color Box 5 found.")
+            flex += 1
+            continue
+
+        bp = find_token(document.body, "\\begin_layout Plain Layout", flex)
+        if bp == -1:
+            document.warning("Malformed LyX document! No plain layout in Custom Color Box 5 found.")
+            flex += 1
+            continue
+
+        ep = find_end_of_layout(document.body, bp)
+        if ep == -1:
+            document.warning("Malformed LyX document! No end of layout found.")
+            flex += 1
+            continue
+
+        document.body[ep : flexEnd + 1] = put_cmd_in_ert("{}\\end{cBoxE}")
+        document.body[flex : bp + 1] = put_cmd_in_ert("\\begin{cBoxE}")
+        flex += 1
 
 
 def revert_tcolorbox_8(document):
-  " Reverts the layout New Color Box Type of tcolorbox to TeX-code "
-  i = 0
-  j = 0
-  k = 0
-  while True:
-    if i != -1:
-      i = find_token(document.body, "\\begin_layout New Color Box Type", i)
-    if i != -1:
-      j = find_end_of_layout(document.body, i)
-      wasOpt = revert_Argument_to_TeX_brace(document, i, j, 1, 1, False, True, False)
-      revert_Argument_to_TeX_brace(document, i, 0, 2, 2, False, False, True)
-      revert_Argument_to_TeX_brace(document, i, 0, 3, 4, False, True, False)
-      document.body[i] = document.body[i].replace("\\begin_layout New Color Box Type", "\\begin_layout Standard")
-      if wasOpt == True:
-        document.body[i + 1 : i + 1] = put_cmd_in_ert("\\newtcolorbox")
-      else:
-        document.body[i + 1 : i + 1] = put_cmd_in_ert("\\newtcolorbox{")
-      k = find_end_of_inset(document.body, j)
-      k = find_token(document.body, "\\end_inset", k + 1)
-      k = find_token(document.body, "\\end_inset", k + 1)
-      if wasOpt == True:
+    " Reverts the layout New Color Box Type of tcolorbox to TeX-code "
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_layout New Color Box Type", i)
+        if i == -1:
+            return
+
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document! No end of New Color Box Type layout found.")
+            i += 1
+            continue
+
+        wasOpt = revert_Argument_to_TeX_brace(document, i, j, 1, 1, False, True, True)
+        revert_Argument_to_TeX_brace(document, i, 0, 2, 2, False, False, True)
+        revert_Argument_to_TeX_brace(document, i, 0, 3, 4, False, True, False)
+        document.body[i] = document.body[i].replace("\\begin_layout New Color Box Type", "\\begin_layout Standard")
+        if wasOpt == True:
+            document.body[i + 1 : i + 1] = put_cmd_in_ert("\\newtcolorbox")
+        else:
+            document.body[i + 1 : i + 1] = put_cmd_in_ert("\\newtcolorbox{")
+        k = find_end_of_inset(document.body, j)
         k = find_token(document.body, "\\end_inset", k + 1)
-      document.body[k + 2 : j + 2] = put_cmd_in_ert("{")
-      j = find_token(document.body, "\\begin_layout Standard", j + 1)
-      document.body[j - 2 : j - 2] = put_cmd_in_ert("}")
-      i += 1
-    if i == -1:
-      return
+        k = find_token(document.body, "\\end_inset", k + 1)
+        if wasOpt == True:
+            k = find_token(document.body, "\\end_inset", k + 1)
+        document.body[k + 2 : j + 2] = put_cmd_in_ert("{") + ["\\begin_inset ERT", "status collapsed", "\\begin_layout Plain Layout"]
+        j = find_token(document.body, "\\begin_layout Standard", j + 1)
+        document.body[j - 2 : j - 2] = ["\\end_layout", "\\end_inset"] + put_cmd_in_ert("}")
+        i += 1
 
 
 def revert_moderncv_1(document):
