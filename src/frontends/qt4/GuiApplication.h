@@ -63,22 +63,22 @@ public:
 
 	/// \name Methods inherited from Application class
 	//@{
-	DispatchResult const & dispatch(FuncRequest const &);
-	void dispatch(FuncRequest const &, DispatchResult & dr);
-	FuncStatus getStatus(FuncRequest const & cmd) const;
-	void restoreGuiSession();
-	Buffer const * updateInset(Inset const * inset) const;
-	int exec();
-	void exit(int status);
-	bool event(QEvent * e);
-	bool getRgbColor(ColorCode col, RGBColor & rgbcol);
-	std::string const hexName(ColorCode col);
-	void registerSocketCallback(int fd, SocketCallback func);
-	void unregisterSocketCallback(int fd);
-	bool searchMenu(FuncRequest const & func, docstring_list & names) const;
-	bool hasBufferView() const;
-	void handleKeyFunc(FuncCode action);
-	bool unhide(Buffer * buf); //override
+	DispatchResult const & dispatch(FuncRequest const &) override;
+	void dispatch(FuncRequest const &, DispatchResult & dr) override;
+	FuncStatus getStatus(FuncRequest const & cmd) const override;
+	void restoreGuiSession() override;
+	Buffer const * updateInset(Inset const * inset) const override;
+	int exec() override;
+	void exit(int status) override;
+	bool event(QEvent * e) override;
+	bool getRgbColor(ColorCode col, RGBColor & rgbcol) override;
+	std::string const hexName(ColorCode col) override;
+	void registerSocketCallback(int fd, SocketCallback func) override;
+	void unregisterSocketCallback(int fd) override;
+	bool searchMenu(FuncRequest const & func, docstring_list & names) const override;
+	bool hasBufferView() const override;
+	void handleKeyFunc(FuncCode action) override;
+	bool unhide(Buffer * buf) override;
 	//@}
 
 	///
@@ -106,13 +106,13 @@ public:
 
 	/// \name Methods inherited from QApplication class
 	//@{
-	bool notify(QObject * receiver, QEvent * event);
+	bool notify(QObject * receiver, QEvent * event) override;
 	void commitData(QSessionManager & sm);
 #ifdef Q_WS_X11
-	bool x11EventFilter(XEvent * ev);
+	bool x11EventFilter(XEvent * ev) override;
 #elif defined(QPA_XCB)
 	virtual bool nativeEventFilter(const QByteArray & eventType, void * message,
-	                               long * result) Q_DECL_OVERRIDE;
+	                               long * result) override;
 #endif
 	//@}
 
@@ -197,13 +197,13 @@ public:
 	void gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer);
 
 	/// Start a long operation with some cancel possibility (button or ESC)
-	void startLongOperation();
+	void startLongOperation() override;
 	/// This needs to be periodically called to avoid freezing the GUI
-	bool longOperationCancelled();
+	bool longOperationCancelled() override;
 	/// Stop the long operation mode (i.e., release the GUI)
-	void stopLongOperation();
+	void stopLongOperation() override;
 	/// A started long operation is still in progress ?
-	bool longOperationStarted();
+	bool longOperationStarted() override;
 private Q_SLOTS:
 	///
 	void execBatchCommands();
