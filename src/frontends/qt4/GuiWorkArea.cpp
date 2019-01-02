@@ -639,7 +639,7 @@ void GuiWorkArea::Private::showCaret()
 		return;
 
 	updateCaretGeometry();
-	p->viewport()->update(caret_->rect());
+	p->viewport()->update();
 }
 
 
@@ -650,7 +650,7 @@ void GuiWorkArea::Private::hideCaret()
 
 	caret_visible_ = false;
 	//if (!qApp->focusWidget())
-		p->viewport()->update(caret_->rect());
+		p->viewport()->update();
 }
 
 
