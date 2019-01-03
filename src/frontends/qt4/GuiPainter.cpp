@@ -455,11 +455,10 @@ void GuiPainter::text(int x, int y, docstring const & s,
 	// don't use the pixmap cache
 	setQPainterPen(computeColor(f.realColor()));
 	if (dir != Auto) {
-		shared_ptr<QTextLayout const> ptl =
-			fm.getTextLayout(s, dir == RtL, wordspacing);
-		ptl->draw(this, QPointF(x, y - fm.maxAscent()));
-	}
-	else {
+		auto ptl = fm.getTextLayout(s, dir == RtL, wordspacing);
+		QTextLine const & tline = ptl->lineForTextPosition(0);
+		ptl->draw(this, QPointF(x, y - tline.ascent()));
+	} else {
 		if (font() != ff)
 			setFont(ff);
 		drawText(x, y, str);
