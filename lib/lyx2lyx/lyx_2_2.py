@@ -70,11 +70,8 @@ def revert_Argument_to_TeX_brace(document, line, endline, n, nmax, environment, 
           l = endInset + 1
         if environment == False:
           if opt == False:
-            if nolastopt == False:
-              document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}{")
-            else:
-              document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}")
-            del(document.body[lineArg : beginPlain + 1])
+            document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}")
+            document.body[lineArg : beginPlain + 1] = put_cmd_in_ert("{")
             wasOpt = False
           else:
             document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("]")
@@ -1747,7 +1744,12 @@ def revert_tcolorbox_1(document):
             continue
 
         wasOpt = revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, False, True, False)
-        revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, False, False, False)
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Subtitle found.")
+            flex += 1
+            continue
+        revert_Argument_to_TeX_brace(document, flex, flexEnd, 2, 2, False, False, False)
         flexEnd = find_end_of_inset(document.body, flex)
         if flexEnd == -1:
             document.warning("Malformed LyX document! No end of Flex Subtitle found.")
@@ -1837,7 +1839,12 @@ def revert_tcolorbox_3(document):
             continue
 
         revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
-        revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Subtitle found.")
+            flex += 1
+            continue
+        revert_Argument_to_TeX_brace(document, flex, flexEnd, 2, 2, True, False, False)
 
         bp = find_token(document.body, "\\begin_layout Plain Layout", flex)
         if bp == -1:
@@ -1882,7 +1889,12 @@ def revert_tcolorbox_4(document):
             continue
 
         revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
-        revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Subtitle found.")
+            flex += 1
+            continue
+        revert_Argument_to_TeX_brace(document, flex, flexEnd, 2, 2, True, False, False)
         flexEnd = find_end_of_inset(document.body, flex)
         if flexEnd == -1:
             document.warning("Malformed LyX document! No end of Flex Custom Color Box 2 found.")
@@ -1926,7 +1938,12 @@ def revert_tcolorbox_5(document):
             continue
 
         revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
-        revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Subtitle found.")
+            flex += 1
+            continue
+        revert_Argument_to_TeX_brace(document, flex, flexEnd, 2, 2, True, False, False)
         flexEnd = find_end_of_inset(document.body, flex)
         if flexEnd == -1:
             document.warning("Malformed LyX document! No end of Flex Custom Color Box 3 found.")
@@ -1970,7 +1987,12 @@ def revert_tcolorbox_6(document):
             continue
 
         revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
-        revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Subtitle found.")
+            flex += 1
+            continue
+        revert_Argument_to_TeX_brace(document, flex, flexEnd, 2, 2, True, False, False)
         flexEnd = find_end_of_inset(document.body, flex)
         if flexEnd == -1:
             document.warning("Malformed LyX document! No end of Flex Custom Color Box 4 found.")
@@ -2014,7 +2036,12 @@ def revert_tcolorbox_7(document):
             continue
 
         revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
-        revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
+        flexEnd = find_end_of_inset(document.body, flex)
+        if flexEnd == -1:
+            document.warning("Malformed LyX document! No end of Flex Subtitle found.")
+            flex += 1
+            continue
+        revert_Argument_to_TeX_brace(document, flex, flexEnd, 2, 2, True, False, False)
         flexEnd = find_end_of_inset(document.body, flex)
         if flexEnd == -1:
             document.warning("Malformed LyX document! No end of Flex Custom Color Box 5 found.")
@@ -2054,18 +2081,26 @@ def revert_tcolorbox_8(document):
             continue
 
         wasOpt = revert_Argument_to_TeX_brace(document, i, j, 1, 1, False, True, True)
-        revert_Argument_to_TeX_brace(document, i, 0, 2, 2, False, False, True)
-        revert_Argument_to_TeX_brace(document, i, 0, 3, 4, False, True, False)
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document! No end of New Color Box Type layout found.")
+            i += 1
+            continue
+        revert_Argument_to_TeX_brace(document, i, j, 2, 2, False, False, True)
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document! No end of New Color Box Type layout found.")
+            i += 1
+            continue
+        revert_Argument_to_TeX_brace(document, i, j, 3, 4, False, True, False)
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document! No end of New Color Box Type layout found.")
+            i += 1
+            continue
         document.body[i] = document.body[i].replace("\\begin_layout New Color Box Type", "\\begin_layout Standard")
-        if wasOpt == True:
-            document.body[i + 1 : i + 1] = put_cmd_in_ert("\\newtcolorbox")
-        else:
-            document.body[i + 1 : i + 1] = put_cmd_in_ert("\\newtcolorbox{")
+        document.body[i + 1 : i + 1] = put_cmd_in_ert("\\newtcolorbox")
         k = find_end_of_inset(document.body, j)
-        k = find_token(document.body, "\\end_inset", k + 1)
-        k = find_token(document.body, "\\end_inset", k + 1)
-        if wasOpt == True:
-            k = find_token(document.body, "\\end_inset", k + 1)
         document.body[k + 2 : j + 2] = put_cmd_in_ert("{") + ["\\begin_inset ERT", "status collapsed", "\\begin_layout Plain Layout"]
         j = find_token(document.body, "\\begin_layout Standard", j + 1)
         document.body[j - 2 : j - 2] = ["\\end_layout", "\\end_inset"] + put_cmd_in_ert("}")
