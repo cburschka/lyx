@@ -329,7 +329,8 @@ void GuiPainter::text(int x, int y, docstring const & s,
 	setQPainterPen(computeColor(f.realColor()));
 	if (dir != Auto) {
 		auto ptl = fm.getTextLayout(s, dir == RtL, wordspacing);
-		ptl->draw(this, QPointF(x, y - fm.maxAscent()));
+		QTextLine const & tline = ptl->lineForTextPosition(0);
+		ptl->draw(this, QPointF(x, y - tline.ascent()));
 	} else {
 		if (font() != ff)
 			setFont(ff);
