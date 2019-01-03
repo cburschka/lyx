@@ -111,6 +111,12 @@ int GuiFontMetrics::maxDescent() const
 }
 
 
+int GuiFontMetrics::leading() const
+{
+	return metrics_.leading();
+}
+
+
 int GuiFontMetrics::em() const
 {
 	return QFontInfo(font_).pixelSize();

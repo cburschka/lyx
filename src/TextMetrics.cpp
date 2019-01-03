@@ -48,6 +48,7 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/lassert.h"
+#include "support/lyxlib.h"
 
 #include <stdlib.h>
 #include <cmath>
@@ -61,6 +62,10 @@ using frontend::FontMetrics;
 
 namespace {
 
+// the somewhat arbitrary leading added between rows. This is 20% of
+// the characters height, inluding the possible leading of the font.
+// 20% is a standard value used by LaTeX and word processors.
+double const extra_leading = 0.2;
 
 int numberOfLabelHfills(Paragraph const & par, Row const & row)
 {
@@ -1088,27 +1093,19 @@ void TextMetrics::setRowHeight(Row & row) const
 	// Initial value for ascent (useful if row is empty).
 	Font const font = displayFont(row.pit(), row.pos());
 	FontMetrics const & fm = theFontMetrics(font);
-	int maxasc = int(fm.maxAscent() * spacing_val);
-	int maxdes = int(fm.maxDescent() * spacing_val);
+	int maxasc = fm.maxAscent() + fm.leading();
+	int maxdes = fm.maxDescent();
 
 	// Find the ascent/descent of the row contents
 	for (Row::Element const & e : row) {
-		if (e.inset) {
-			maxasc = max(maxasc, e.dim.ascent());
-			maxdes = max(maxdes, e.dim.descent());
-		} else {
-			FontMetrics const & fm2 = theFontMetrics(e.font);
-			maxasc = max(maxasc, int(fm2.maxAscent() * spacing_val));
-			maxdes = max(maxdes, int(fm2.maxDescent() * spacing_val));
-		}
+		maxasc = max(maxasc, e.dim.ascent());
+		maxdes = max(maxdes, e.dim.descent());
 	}
 
-	// This is nicer with box insets
-	++maxasc;
-	++maxdes;
-
-	row.dimension().asc = maxasc;
-	row.dimension().des = maxdes;
+	// Add some leading (split between before and after)
+	int const leading = support::iround(extra_leading * (maxasc + maxdes));
+	row.dimension().asc = int((maxasc + leading - leading / 2) * spacing_val);
+	row.dimension().des = int((maxdes + leading / 2) * spacing_val);
 }
 
 
@@ -2009,7 +2006,8 @@ void TextMetrics::completionPosAndDim(Cursor const & cur, int & x, int & y,
 
 int defaultRowHeight()
 {
-	return int(theFontMetrics(sane_font).maxHeight() *  1.2);
+	FontMetrics const & fm = theFontMetrics(sane_font);
+	return support::iround(fm.maxHeight() * (1 + extra_leading) + fm.leading());
 }
 
 } // namespace lyx

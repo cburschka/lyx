@@ -60,6 +60,8 @@ public:
 	virtual int maxAscent() const = 0;
 	/// return the maximum descent of the font
 	virtual int maxDescent() const = 0;
+	/// return the default leading of the font (often 0)
+	virtual int leading() const = 0;
 	/// return default dimension of the font.
 	/// \warning \c width is set to zero.
 	virtual Dimension const defaultDimension() const = 0;
