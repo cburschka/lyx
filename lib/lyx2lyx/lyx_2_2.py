@@ -1360,215 +1360,127 @@ def revert_jss(document):
     if document.textclass != "jss":
         return
 
-    h = 0
-    m = 0
-    j = 0
-    k = 0
-    n = 0
+    # at first revert the inset layouts because 
+    # they can be part of the In_Preamble layouts
+    il_dict = {
+      "Pkg"      :  "pkg",
+      "Proglang" :  "proglang",
+      "Code"     :  "code",
+      "E-mail"   :  "email",
+      "URL"      :  "url",
+      }
+    for iltype in il_dict.keys():
+        i = 0
+        while True:
+            i = find_token(document.body, "\\begin_inset Flex " + iltype, i)
+            if i != -1:
+                break
+
+            if iltype == "Code" and document.body[i][-1] != "e":
+                # Code Chunk inset. Continue
+                i += 1
+                continue
+
+            end = find_end_of_inset(document.body, i)
+            if end == -1:
+                document.warning("Malformed LyX document: No end of Flex " + iltype + " found!")
+                i += 1
+                continue
+            document.body[end - 2 : end + 1] = put_cmd_in_ert("}")
+            document.body[i : i + 4] = put_cmd_in_ert("\\%s{" % il_dict[iltype])
+            i += 1
+
+    # now revert the In_Preamble layouts
+    ipl_dict = {
+      "Title"          :  "title",
+      "Author"         :  "author",
+      "Plain Author"   :  "Plainauthor",
+      "Plain Title"    :  "Plaintitle",
+      "Short Title"    :  "Shorttitle",
+      "Abstract"       :  "Abstract",
+      "Keywords"       :  "Keywords",
+      "Plain Keywords" :  "Plainkeywords",
+      "Address"        :  "Address",
+      }
+    for ipltype in ipl_dict.keys():
+        i = 0
+        while True:
+            i = find_token(document.body, "\\begin_layout " + ipltype, i)
+            if i == -1:
+                break
+
+            end = find_end_of_layout(document.body, i)
+            if end == -1:
+                document.warning("Malformed LyX document: Can't find end of " + ipltype + " layout")
+                i += 1
+                continue
+
+            content = lyx2latex(document, document.body[i:end + 1])
+            add_to_preamble(document, ["\\" + ipl_dict[ipltype] + "{" + content + "}"])
+            del document.body[i:end + 1]
+            i += 1
+
+    # Now code chunks
+    i = 0
     while True:
-      # at first revert the inset layouts because they can be part of the In_Preamble layouts
-      while m != -1 or j != -1 or h != -1 or k != -1 or n != -1:
-        # \pkg
-        if h != -1:
-          h = find_token(document.body, "\\begin_inset Flex Pkg", h)
-        if h != -1:
-          endh = find_end_of_inset(document.body, h)
-          document.body[endh - 2 : endh + 1] = put_cmd_in_ert("}")
-          document.body[h : h + 4] = put_cmd_in_ert("\\pkg{")
-          h = h + 5
-        # \proglang
-        if m != -1:
-          m = find_token(document.body, "\\begin_inset Flex Proglang", m)
-        if m != -1:
-          endm = find_end_of_inset(document.body, m)
-          document.body[endm - 2 : endm + 1] = put_cmd_in_ert("}")
-          document.body[m : m + 4] = put_cmd_in_ert("\\proglang{")
-          m = m + 5
-        # \code
-        if j != -1:
-          j = find_token(document.body, "\\begin_inset Flex Code", j)
-        if j != -1:
-          # assure that we are not in a Code Chunk inset
-          if document.body[j][-1] == "e":
-              endj = find_end_of_inset(document.body, j)
-              document.body[endj - 2 : endj + 1] = put_cmd_in_ert("}")
-              document.body[j : j + 4] = put_cmd_in_ert("\\code{")
-              j = j + 5
-          else:
-              j = j + 1
-        # \email
-        if k != -1:
-          k = find_token(document.body, "\\begin_inset Flex E-mail", k)
-        if k != -1:
-          endk = find_end_of_inset(document.body, k)
-          document.body[endk - 2 : endk + 1] = put_cmd_in_ert("}")
-          document.body[k : k + 4] = put_cmd_in_ert("\\email{")
-          k = k + 5
-        # \url
-        if n != -1:
-          n = find_token(document.body, "\\begin_inset Flex URL", n)
-        if n != -1:
-          endn = find_end_of_inset(document.body, n)
-          document.body[endn - 2 : endn + 1] = put_cmd_in_ert("}")
-          document.body[n : n + 4] = put_cmd_in_ert("\\url{")
-          n = n + 5
-      # now revert the In_Preamble layouts
-      # \title
-      i = find_token(document.body, "\\begin_layout Title", 0)
-      if i == -1:
-        return
-      j = find_end_of_layout(document.body, i)
-      if j == -1:
-        document.warning("Malformed LyX document: Can't find end of Title layout")
-        i += 1
-        continue
-      content = lyx2latex(document, document.body[i:j + 1])
-      add_to_preamble(document, ["\\title{" + content + "}"])
-      del document.body[i:j + 1]
-      # \author
-      i = find_token(document.body, "\\begin_layout Author", 0)
-      if i == -1:
-        return
-      j = find_end_of_layout(document.body, i)
-      if j == -1:
-        document.warning("Malformed LyX document: Can't find end of Author layout")
-        i += 1
-        continue
-      content = lyx2latex(document, document.body[i:j + 1])
-      add_to_preamble(document, ["\\author{" + content + "}"])
-      del document.body[i:j + 1]
-      # \Plainauthor
-      i = find_token(document.body, "\\begin_layout Plain Author", 0)
-      if i == -1:
-        return
-      j = find_end_of_layout(document.body, i)
-      if j == -1:
-        document.warning("Malformed LyX document: Can't find end of Plain Author layout")
-        i += 1
-        continue
-      content = lyx2latex(document, document.body[i:j + 1])
-      add_to_preamble(document, ["\\Plainauthor{" + content + "}"])
-      del document.body[i:j + 1]
-      # \Plaintitle
-      i = find_token(document.body, "\\begin_layout Plain Title", 0)
-      if i == -1:
-        return
-      j = find_end_of_layout(document.body, i)
-      if j == -1:
-        document.warning("Malformed LyX document: Can't find end of Plain Title layout")
-        i += 1
-        continue
-      content = lyx2latex(document, document.body[i:j + 1])
-      add_to_preamble(document, ["\\Plaintitle{" + content + "}"])
-      del document.body[i:j + 1]
-      # \Shorttitle
-      i = find_token(document.body, "\\begin_layout Short Title", 0)
-      if i == -1:
-        return
-      j = find_end_of_layout(document.body, i)
-      if j == -1:
-        document.warning("Malformed LyX document: Can't find end of Short Title layout")
-        i += 1
-        continue
-      content = lyx2latex(document, document.body[i:j + 1])
-      add_to_preamble(document, ["\\Shorttitle{" + content + "}"])
-      del document.body[i:j + 1]
-      # \Abstract
-      i = find_token(document.body, "\\begin_layout Abstract", 0)
-      if i == -1:
-        return
-      j = find_end_of_layout(document.body, i)
-      if j == -1:
-        document.warning("Malformed LyX document: Can't find end of Abstract layout")
-        i += 1
-        continue
-      content = lyx2latex(document, document.body[i:j + 1])
-      add_to_preamble(document, ["\\Abstract{" + content + "}"])
-      del document.body[i:j + 1]
-      # \Keywords
-      i = find_token(document.body, "\\begin_layout Keywords", 0)
-      if i == -1:
-        return
-      j = find_end_of_layout(document.body, i)
-      if j == -1:
-        document.warning("Malformed LyX document: Can't find end of Keywords layout")
-        i += 1
-        continue
-      content = lyx2latex(document, document.body[i:j + 1])
-      add_to_preamble(document, ["\\Keywords{" + content + "}"])
-      del document.body[i:j + 1]
-      # \Plainkeywords
-      i = find_token(document.body, "\\begin_layout Plain Keywords", 0)
-      if i == -1:
-        return
-      j = find_end_of_layout(document.body, i)
-      if j == -1:
-        document.warning("Malformed LyX document: Can't find end of Plain Keywords layout")
-        i += 1
-        continue
-      content = lyx2latex(document, document.body[i:j + 1])
-      add_to_preamble(document, ["\\Plainkeywords{" + content + "}"])
-      del document.body[i:j + 1]
-      # \Address
-      i = find_token(document.body, "\\begin_layout Address", 0)
-      if i == -1:
-        return
-      j = find_end_of_layout(document.body, i)
-      if j == -1:
-        document.warning("Malformed LyX document: Can't find end of Address layout")
-        i += 1
-        continue
-      content = lyx2latex(document, document.body[i:j + 1])
-      add_to_preamble(document, ["\\Address{" + content + "}"])
-      del document.body[i:j + 1]
-      # finally handle the code layouts
-      h = 0
-      m = 0
-      j = 0
-      k = 0
-      while m != -1 or j != -1 or h != -1 or k != -1:
         # \CodeChunk
-        if h != -1:
-          h = find_token(document.body, "\\begin_inset Flex Code Chunk", h)
-        if h != -1:
-          endh = find_end_of_inset(document.body, h)
-          document.body[endh : endh + 1] = put_cmd_in_ert("\\end{CodeChunk}")
-          document.body[h : h + 3] = put_cmd_in_ert("\\begin{CodeChunk}")
-          document.body[h - 1 : h] = ["\\begin_layout Standard"]
-          h = h + 1
-        # \CodeInput
-        if j != -1:
-          j = find_token(document.body, "\\begin_layout Code Input", j)
-        if j != -1:
-          endj = find_end_of_layout(document.body, j)
-          document.body[endj : endj + 1] = ["\\end_layout", "", "\\begin_layout Standard"]
-          document.body[endj + 3 : endj + 4] = put_cmd_in_ert("\\end{CodeInput}")
-          document.body[endj + 13 : endj + 13] = ["\\end_layout", "", "\\begin_layout Standard"]
-          document.body[j + 1 : j] = ["\\end_layout", "", "\\begin_layout Standard"]
-          document.body[j : j + 1] = put_cmd_in_ert("\\begin{CodeInput}")
-          j = j + 1
-        # \CodeOutput
-        if k != -1:
-          k = find_token(document.body, "\\begin_layout Code Output", k)
-        if k != -1:
-          endk = find_end_of_layout(document.body, k)
-          document.body[endk : endk + 1] = ["\\end_layout", "", "\\begin_layout Standard"]
-          document.body[endk + 3 : endk + 4] = put_cmd_in_ert("\\end{CodeOutput}")
-          document.body[endk + 13 : endk + 13] = ["\\end_layout", "", "\\begin_layout Standard"]
-          document.body[k + 1 : k] = ["\\end_layout", "", "\\begin_layout Standard"]
-          document.body[k : k + 1] = put_cmd_in_ert("\\begin{CodeOutput}")
-          k = k + 1
-        # \Code
-        if m != -1:
-          m = find_token(document.body, "\\begin_layout Code", m)
-        if m != -1:
-          endm = find_end_of_layout(document.body, m)
-          document.body[endm : endm + 1] = ["\\end_layout", "", "\\begin_layout Standard"]
-          document.body[endm + 3 : endm + 4] = put_cmd_in_ert("\\end{Code}")
-          document.body[endm + 13 : endm + 13] = ["\\end_layout", "", "\\begin_layout Standard"]
-          document.body[m + 1 : m] = ["\\end_layout", "", "\\begin_layout Standard"]
-          document.body[m : m + 1] = put_cmd_in_ert("\\begin{Code}")
-          m = m + 1
+        i = find_token(document.body, "\\begin_inset Flex Code Chunk", i)
+        if i == -1:
+            break
+
+        end = find_end_of_inset(document.body, i)
+        if end == -1:
+            document.warning("Malformed LyX document: No end of Flex Code Chunk found!")
+            i += 1
+            continue
+
+        document.body[end : end + 1] = ["\\end_layout", "", "\\begin_layout Standard"] + put_cmd_in_ert("\\end{CodeChunk}")
+        document.body[i : i + 2] = put_cmd_in_ert("\\begin{CodeChunk}")
+        i += 1
+
+    # finally handle the code layouts
+    codes_dict = {
+        "Code Input"  :  "CodeInput",
+        "Code Output" :  "CodeOutput",
+        "Code"        :  "Code",
+        }
+    for ctype in codes_dict.keys():
+        i = 0
+        while True:
+            i = find_token(document.body, "\\begin_layout " + ctype, i)
+            if i == -1:
+                break
+            if document.body[i] != "\\begin_layout " + ctype:
+                # Not an exact match!
+                i += 1
+                continue
+            end = find_end_of_layout(document.body, i)
+            if end == -1:
+                document.warning("Malformed LyX document: No end of " + ctype + " layout found!")
+                i += 1
+                continue
+            seq_end = end
+            # Handle subsequent layouts
+            while True:
+                j = find_token(document.body, "\\begin_layout ", seq_end)
+                if j == -1 or document.body[j] != "\\begin_layout " + ctype:
+                    break
+                this_end = find_end_of_layout(document.body, j)
+                if this_end == -1:
+                    document.warning("Malformed LyX document: No end of " + ctype + " layout found!")
+                    j += 1
+                    continue
+                seq_end = this_end
+            document.body[seq_end + 1 : seq_end + 1] = ["\\end_inset", "\\end_layout", "", "\\begin_layout Standard"] + put_cmd_in_ert("\\end{%s}" % codes_dict[ctype])
+            if seq_end != end:
+                k = i + 1
+                while k < seq_end:
+                    document.body[k] = document.body[k].replace("\\begin_layout " + ctype, "\\begin_layout Plain Layout")
+                    k += 1
+            document.body[i : i + 1] = ["\\end_layout", "", "\\begin_layout Standard"] \
+                + put_cmd_in_ert("\\begin{%s}" % codes_dict[ctype]) \
+                + ["\\end_layout", "", "\\begin_layout Standard", "", "\\begin_inset ERT", "status open", "", "\\begin_layout Plain Layout"]
+            i += 1
 
 
 def convert_subref(document):
