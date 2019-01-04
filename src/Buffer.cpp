@@ -297,6 +297,8 @@ public:
 	/// we ran updateBuffer(), i.e., whether citation labels may need
 	/// to be updated.
 	mutable bool cite_labels_valid_;
+	/// Do we have a bibliography environment?
+	mutable bool have_bibitems_;
 
 	/// These two hold the file name and format, written to by
 	/// Buffer::preview and read from by LFUN_BUFFER_VIEW_CACHE.
@@ -431,8 +433,8 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	  file_fully_loaded(false), file_format(LYX_FORMAT), need_format_backup(false),
 	  ignore_parent(false),  toc_backend(owner), macro_lock(false),
 	  checksum_(0), wa_(0),  gui_(0), undo_(*owner), bibinfo_cache_valid_(false),
-	  bibfile_cache_valid_(false), cite_labels_valid_(false), preview_error_(false),
-	  inset(0), preview_loader_(0), cloned_buffer_(cloned_buffer),
+	  bibfile_cache_valid_(false), cite_labels_valid_(false), have_bibitems_(false),
+	  preview_error_(false), inset(0), preview_loader_(0), cloned_buffer_(cloned_buffer),
 	  clone_list_(0), doing_export(false),
 	  tracked_changes_present_(0), externally_modified_(false), parent_buffer(0),
 	  word_count_(0), char_count_(0), blank_count_(0)
@@ -454,6 +456,7 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	bibfile_cache_valid_ = cloned_buffer_->d->bibfile_cache_valid_;
 	bibfile_status_ = cloned_buffer_->d->bibfile_status_;
 	cite_labels_valid_ = cloned_buffer_->d->cite_labels_valid_;
+	have_bibitems_ = cloned_buffer_->d->have_bibitems_;
 	unnamed = cloned_buffer_->d->unnamed;
 	internal_buffer = cloned_buffer_->d->internal_buffer;
 	layout_position = cloned_buffer_->d->layout_position;
@@ -2485,7 +2488,16 @@ void Buffer::checkIfBibInfoCacheIsValid() const
 	if (!d->bibinfo_cache_valid_)
 		return;
 
-	// we'll assume it's ok and change this if it's not
+	if (d->have_bibitems_) {
+		// We have a bibliography environment.
+		// Invalidate the bibinfo cache unconditionally.
+		// Cite labels will get invalidated by the inset if needed.
+		d->bibinfo_cache_valid_ = false;
+		return;
+	}
+
+	// OK. This is with Bib(la)tex. We'll assume the cache
+	// is valid and change this if we find changes in the bibs.
 	d->bibinfo_cache_valid_ = true;
 	d->cite_labels_valid_ = true;
 	// compare the cached timestamps with the actual ones.
@@ -2533,6 +2545,7 @@ void Buffer::reloadBibInfoCache() const
 	clearBibFileCache();
 	d->bibinfo_.clear();
 	FileNameList checkedFiles;
+	d->have_bibitems_ = false;
 	collectBibKeys(checkedFiles);
 	d->bibinfo_cache_valid_ = true;
 }
@@ -2540,8 +2553,15 @@ void Buffer::reloadBibInfoCache() const
 
 void Buffer::collectBibKeys(FileNameList & checkedFiles) const
 {
-	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it)
+	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
 		it->collectBibKeys(it, checkedFiles);
+		if (it->lyxCode() == BIBITEM_CODE) {
+			if (parent() != 0)
+				parent()->d->have_bibitems_ = true;
+			else
+				d->have_bibitems_ = true;
+		}
+	}
 }
 
 
