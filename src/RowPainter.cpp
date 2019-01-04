@@ -432,7 +432,7 @@ void RowPainter::paintLabel() const
 	double x = x_;
 
 	if (row_.isRTL())
-		x = xo_ + tm_.width() - row_.right_margin + fm.width(layout.labelsep);
+		x = xo_ + row_.width() + fm.width(layout.labelsep);
 	else
 		x = x_ - fm.width(layout.labelsep) - fm.width(str);
 
