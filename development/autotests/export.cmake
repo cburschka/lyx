@@ -77,7 +77,7 @@ else()
     endif()
   if(extension MATCHES "\\.lyx$")
     # Font-type not relevant for lyx16/lyx21 exports
-    set(result_file_base ${file})
+    set(result_file_base "${TempDir}/${file}")
   else()
     set(result_file_name ${file}.${extension})
   endif()
