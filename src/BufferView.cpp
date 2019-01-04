@@ -1904,10 +1904,12 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			// At least one complete cell is selected and inset is a table.
 			// Select all cells
 			cur.idx() = 0;
+			cur.pit() = 0;
 			cur.pos() = 0;
 			cur.resetAnchor();
 			cur.selection(true);
 			cur.idx() = cur.lastidx();
+			cur.pit() = cur.lastpit();
 			cur.pos() = cur.lastpos();
 		} else {
 			// select current cell
