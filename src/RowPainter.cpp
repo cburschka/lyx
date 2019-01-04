@@ -402,7 +402,7 @@ void RowPainter::paintLabel() const
 	double x = x_;
 
 	if (row_.isRTL())
-		x = tm_.width() - row_.right_margin + fm.width(layout.labelsep);
+		x = xo_ + row_.width() + fm.width(layout.labelsep);
 	else
 		x = x_ - fm.width(layout.labelsep) - fm.width(str);
 
@@ -437,10 +437,10 @@ void RowPainter::paintTopLevelLabel() const
 
 	double x = x_;
 	if (layout.labeltype == LABEL_CENTERED) {
-		x = row_.left_margin + (tm_.width() - row_.left_margin - row_.right_margin) / 2;
+		x += (tm_.width() - row_.left_margin - row_.right_margin) / 2;
 		x -= fm.width(str) / 2;
 	} else if (row_.isRTL()) {
-		x = tm_.width() - row_.right_margin - fm.width(str);
+		x = xo_ + tm_.width() - row_.right_margin - fm.width(str);
 	}
 	pi_.pain.text(int(x), yo_ - maxdesc - labeladdon, str, font);
 }
@@ -525,9 +525,9 @@ void RowPainter::paintLast() const
 		}
 
 		if (endlabel == END_LABEL_BOX)
-			pi_.pain.rectangle(x, y, size, size, Color_eolmarker);
+			pi_.pain.rectangle(xo_ + x, y, size, size, Color_eolmarker);
 		else
-			pi_.pain.fillRectangle(x, y, size, size, Color_eolmarker);
+			pi_.pain.fillRectangle(xo_ + x, y, size, size, Color_eolmarker);
 		break;
 	}
 
