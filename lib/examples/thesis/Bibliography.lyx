@@ -373,17 +373,18 @@ restore the right header line
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Lightning"
-literal "false"
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This .lyx file will give an error if compiled on its own, since there is
+ no reference included (BibTeX gives an error in this case).
+ This file is only intended to be included in other documents.
+\end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "thesisExample"
