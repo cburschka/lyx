@@ -5,64 +5,8 @@
 \save_transient_properties true
 \origin /systemlyxdir/examples/thesis/
 \textclass scrbook
-\begin_preamble
-% in case somebody want to have the label "Equation"
-%\renewcommand{\eqref}[1]{Equation~(\negthinspace\autoref{#1})}
-
-% that links to image floats jumps to the beginning
-% of the float and not to its caption
-\usepackage[figure]{hypcap}
-
-% the pages of the TOC is numbered roman
-% and a pdf-bookmark for the TOC is added
-\let\myTOC\tableofcontents
-\renewcommand\tableofcontents{%
-  \frontmatter
-  \pdfbookmark[1]{\contentsname}{}
-  \myTOC
-  \mainmatter }
-
-% makes caption labels bold
-% for more info about these settings, see
-% https://ctan.org/tex-archive/macros/latex/contrib/koma-script/doc/scrguien.pdf
-\setkomafont{captionlabel}{\bfseries}
-\setcapindent{1em}
-
-% enables calculations
-\usepackage{calc}
-
-% fancy page header/footer settings
-% for more information see section 9 of
-% ftp://www.ctan.org/pub/tex-archive/macros/latex2e/contrib/fancyhdr/fancyhdr.pdf
-\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
-
-% increases the bottom float placement fraction
-\renewcommand{\bottomfraction}{0.5}
-
-% avoids that floats are placed above its sections
-\let\mySection\section\renewcommand{\section}{\suppressfloats[t]\mySection}
-
-% increases link area for cross-references and autoname them
-% if you change the document language to e.g. French
-% you must change "extrasenglish" to "extrasfrench"
-% if you uncomment the following lines, you cannot use the reference version Ref+Text in LyX
-%\AtBeginDocument{%
-% \renewcommand{\ref}[1]{\autoref{#1}}
-%}
-%\def\refnamechanges{%
-% \renewcommand*{\equationautorefname}[1]{}
-% \renewcommand{\sectionautorefname}{sec.\negthinspace}
-% \renewcommand{\subsectionautorefname}{sec.\negthinspace}
-% \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}
-% \renewcommand{\figureautorefname}{Fig.\negthinspace}
-% \renewcommand{\tableautorefname}{Tab.\negthinspace}
-%}
-%\@ifpackageloaded{babel}{\addto\extrasenglish{\refnamechanges}}{\refnamechanges}
-\end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage
 \use_default_options true
-\master thesis.lyx
 \begin_modules
 customHeadersFooters
 \end_modules
@@ -373,6 +317,18 @@ restore the right header line
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This .lyx file will give an error if compiled on its own, since there is
+ no reference included (BibTeX gives an error in this case).
+ This file is only intended to be included in other documents.
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "thesisExample"
