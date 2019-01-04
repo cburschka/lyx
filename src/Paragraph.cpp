@@ -3409,7 +3409,10 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 		} else {
 			char_type c = getUChar(buf.masterBuffer()->params(),
 					       runparams, i);
-			xs << c;
+			if (c == ' ' && style.free_spacing)
+				xs << XHTMLStream::ESCAPE_NONE << "&nbsp;";
+			else
+				xs << c;
 		}
 		font_old = font.fontInfo();
 	}
