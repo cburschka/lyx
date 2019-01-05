@@ -1,13 +1,54 @@
 #!/bin/bash
+
+# \author Stephan Witt
+# Full author contact details are available in file CREDITS.
+
 unset DISPLAY
+
+# check for file arguments with relative path names
+# convert them to absolute path names
+# inkscape on Mac changes the working directory
+# this invalidates relative path names
+startinkscape() {
+	inkscape="$1" ; shift
+	pwd=$(pwd)
+	iparams=( "$@" )
+	oparams=()
+	for i in ${!iparams[@]}; do
+		# echo $i "=>" "${iparams[$i]}"
+		case "${iparams[$i]}" in
+		--file=/*|--export-pdf=/*|--export-eps=/*|--export-png=/*|--export-emf=/*|--export-wmf=/*|--export-ps=/*|--export-ps-level=/*|--export-pdf-version=/*)
+			oparams+=( "${iparams[$i]}" )
+			;;
+		--file=*|--export-pdf=*|--export-eps=*|--export-png=*|--export-emf=*|--export-wmf=*|--export-ps=*|--export-ps-level=*|--export-pdf-version=*)
+			oparams+=( "${iparams[$i]//=/=${pwd}/}" )
+			;;
+		--without-gui|-z)
+			# ignore this argument - its provided below anyway
+			;;
+		*)
+			oparams+=( "${iparams[$i]}" )
+			;;
+		esac
+	done
+	exec "${inkscape}" --without-gui "${oparams[@]}"
+}
+
+# try to find the inkscape installation...
 # at first try the well known location
 RESDIR="/Applications/Inkscape.app/Contents/Resources"
-test -f "${RESDIR}"/bin/inkscape -a -x "${RESDIR}"/bin/inkscape && exec "${RESDIR}"/bin/inkscape --without-gui "$@"
+if [ -f "${RESDIR}"/bin/inkscape -a -x "${RESDIR}"/bin/inkscape ]; then
+	startinkscape "${RESDIR}"/bin/inkscape "$@"
+	exit 0
+fi
 # this failed... so try PATH expansion to start the inkscape shell wrapper
 IFS=":" read -ra DIRLIST <<< "${PATH}"
 for BINDIR in "${DIRLIST[@]}" ; do
 	RESDIR=$(dirname "${BINDIR}")
-	test -f "${RESDIR}"/bin/inkscape -a -x "${RESDIR}"/bin/inkscape && exec "${RESDIR}"/bin/inkscape --without-gui "$@"
+	if [ -f "${RESDIR}"/bin/inkscape -a -x "${RESDIR}"/bin/inkscape ]; then
+		startinkscape "${RESDIR}"/bin/inkscape "$@"
+		exit 0
+	fi
 done
 # report error and exit with failure status
 exec 1>&2
