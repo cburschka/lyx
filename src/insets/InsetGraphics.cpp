@@ -586,8 +586,14 @@ copyToDirIfNeeded(DocFileName const & file, string const & dir)
 		// extension removed, because base.eps and base.eps.gz may
 		// have different content but would get the same mangled
 		// name in this case.
+		// Also take into account that if the name of the zipped file
+		// has no zip extension then the name of the unzipped one is
+		// prefixed by "unzipped_".
 		string const base = removeExtension(file.unzippedFileName());
-		string::size_type const ext_len = file_in.length() - base.length();
+		string::size_type const prefix_len =
+			prefixIs(onlyFileName(base), "unzipped_") ? 9 : 0;
+		string::size_type const ext_len =
+			file_in.length() + prefix_len - base.length();
 		mangled[mangled.length() - ext_len] = '.';
 	}
 	FileName const file_out(makeAbsPath(mangled, dir));
