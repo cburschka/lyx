@@ -105,6 +105,9 @@ export/doc/ar/(Intro|Shortcuts|Tutorial|UserGuide)_pdf4_texF
 # This simple example doc is meant to test Arabic export of pdf2
 export/export/latex/arabic_simple_(dvi3|pdf5)_(texF|systemF)
 export/export/latex/arabic_simple_pdf4_texF
+# See note about "Missing ␣" in file "ignoreLatexErrorsTests".
+export/doc/ar/UserGuide_lyx(22|23)
+
 
 # Polyglossia + LuaTeX does not support Farsi yet. See:
 #     https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
