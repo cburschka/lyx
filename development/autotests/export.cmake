@@ -68,7 +68,7 @@ else()
   set(LYX_SOURCE "${TempDir}/${file}.lyx")
   message(STATUS "Using source \"${LYX_ROOT}/${file}.lyx\"")
   message(STATUS "Using dest \"${LYX_SOURCE}\"")
-  execute_process(COMMAND ${PERL_EXECUTABLE} "${Perl_Script}" "${LYX_ROOT}/${file}.lyx" "${LYX_SOURCE}" ${format} "default" "default" ${LanguageFile}
+  execute_process(COMMAND ${PERL_EXECUTABLE} "${Perl_Script}" "${LYX_ROOT}/${file}.lyx" "${LYX_SOURCE}" ${format} "dontChange" "default" ${LanguageFile}
     RESULT_VARIABLE _err)
   string(COMPARE EQUAL  ${_err} 0 _erg)
   if(NOT _erg)

@@ -56,6 +56,9 @@ sub initLyxStack($$$)
   if ($_[1] eq "systemF") {
     $useNonTexFont = "true";
   }
+  elsif ($_[1] eq "dontChange") {
+    $useNonTexFont = "dontChange";
+  }
   else {
     $useNonTexFont = "false";
     $inputEncoding = $_[2];
@@ -144,6 +147,13 @@ sub newMatch(%)
   if (! defined($elem{"fileidx"})) {
     $elem{"fileidx"} = 1;
   }
+  if (exists($elem{"search"})) {
+    my $ref = ref($elem{"search"});
+    diestack("Wrong or invalid regex (ref == $ref) specified") if ($ref ne "Regexp");
+  }
+  else {
+    diestack("No search defined");
+  }
   diestack("No result defined") if (! defined($elem{"result"}));
   return(\%elem);
 }
@@ -213,10 +223,12 @@ sub checkForHeader($)
 	push(@rElems, $elem, $elem1, $elem2);
       }
     }
-    my $elemntf = newMatch("search" => '^\\\\use_non_tex_fonts\s+(false|true)',
-			    "filetype" => "replace_only",
-			    "result" => ["\\use_non_tex_fonts $useNonTexFont"]);
-    push(@rElems, $elemntf);
+    if ($useNonTexFont ne "dontChange") {
+      my $elemntf = newMatch("search" => qr/^\\use_non_tex_fonts\s+(false|true)/,
+			      "filetype" => "replace_only",
+			      "result" => ["\\use_non_tex_fonts $useNonTexFont"]);
+      push(@rElems, $elemntf);
+    }
     if (defined($inputEncoding)) {
       my $inputenc = newMatch("search" =>  '^\\\\inputencoding\s+(' . $inputEncoding->{search} . ')',
 			      "filetype" => "replace_only",
