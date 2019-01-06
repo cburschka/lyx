@@ -78,6 +78,10 @@ export/mathmacros/Spacechild[123].*
 export/examples/springer/svmono_(acknow|acronym|appendix|chapter|dedication|foreword|glossary|part|preface|referenc|solutions)_lyx[0-9][0-9]
 export/examples/springer/svmult_(acknow|acronym|appendix|cblist|dedication|foreword|glossary|part|preface|referenc)_lyx[0-9][0-9]
 export/examples/thesis/(Acknowledgments|Appendix|Summary|Bibliography|chapter-[12])_lyx[0-9][0-9]
+# Bibliography.lyx is not expected to compile. See the following for discussion:
+#   https://www.mail-archive.com/search?l=mid&q=20190104195414.opgeuggeqakxl2fo%40barna
+# Ignore all formats except xhtml export
+export/examples/thesis/Bibliography_[^x].*
 
 # Document class "Docbook article (SGML)" does not work with LaTeX:
 export/examples/docbook_article_(dvi3|pdf[245]).*
