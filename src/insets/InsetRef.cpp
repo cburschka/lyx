@@ -476,8 +476,8 @@ InsetRef::type_info const InsetRef::types[] = {
 	{ "pageref",   N_("Page Number"),           N_("Page: ")},
 	{ "vpageref",  N_("Textual Page Number"),   N_("TextPage: ")},
 	{ "vref",      N_("Standard+Textual Page"), N_("Ref+Text: ")},
-	{ "formatted", N_("Formatted"),             N_("Format: ")},
 	{ "nameref",   N_("Reference to Name"),     N_("NameRef: ")},
+	{ "formatted", N_("Formatted"),             N_("Format: ")},
 	{ "labelonly", N_("Label Only"),            N_("Label: ")},
 	{ "", "", "" }
 };

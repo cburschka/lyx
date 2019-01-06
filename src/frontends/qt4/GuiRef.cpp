@@ -150,9 +150,11 @@ void GuiRef::enableBoxes()
 {
 	bool const isFormatted =
 	    (InsetRef::getName(typeCO->currentIndex()) == "formatted");
+	LYXERR0(InsetRef::getName(typeCO->currentIndex()));
 	bool const isLabelOnly =
 	    (InsetRef::getName(typeCO->currentIndex()) == "labelonly");
 	bool const usingRefStyle = buffer().params().use_refstyle;
+	LYXERR0(usingRefStyle);
 	pluralCB->setEnabled(isFormatted && usingRefStyle);
 	capsCB->setEnabled(isFormatted && usingRefStyle);
 	noprefixCB->setEnabled(isLabelOnly);
