@@ -29,8 +29,6 @@ public:
 		std::string short_gui_name;
 	};
 	static const type_info types[];
-	///
-	static int getType(std::string const & name);
 
 	///
 	InsetRef(Buffer * buffer, InsetCommandParams const &);
