@@ -148,10 +148,10 @@ void GuiRef::enableView(bool enable)
 
 void GuiRef::enableBoxes()
 {
-	bool const isFormatted =
-	    (InsetRef::getName(typeCO->currentIndex()) == "formatted");
-	bool const isLabelOnly =
-	    (InsetRef::getName(typeCO->currentIndex()) == "labelonly");
+	QString const reftype =
+		typeCO->itemData(typeCO->currentIndex()).toString();
+	bool const isFormatted = (reftype == "formatted");
+	bool const isLabelOnly = (reftype == "labelonly");
 	bool const usingRefStyle = buffer().params().use_refstyle;
 	pluralCB->setEnabled(isFormatted && usingRefStyle);
 	capsCB->setEnabled(isFormatted && usingRefStyle);
