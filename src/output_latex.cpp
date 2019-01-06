@@ -1383,7 +1383,7 @@ void latexParagraphs(Buffer const & buf,
 	// if the document's language is a CJK language
 	// (but not in child documents)
 	OutputState * state = getOutputState();
-	if (maintext && !is_child
+	if (maintext && !is_child && !bparams.useNonTeXFonts
 	    && bparams.language->encoding()->package() == Encoding::CJK) {
 		docstring const cjkenc = (bparams.encoding().iconvName() == "UTF-8"
 					  && LaTeXFeatures::isAvailable("CJKutf8")) ?
