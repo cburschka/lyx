@@ -323,6 +323,8 @@ void GuiRef::updateContents()
 
 	// FIXME Bring InsetMathRef on par with InsetRef
 	// (see #9798)
+	// NOTE: The order here must be kept in sync with the defintion
+	// of the types[] array in InsetRef.cpp.
 	typeCO->addItem(qt_("<reference>"), "ref");
 	typeCO->addItem(qt_("(<reference>)"), "eqref");
 	typeCO->addItem(qt_("<page>"), "pageref");
