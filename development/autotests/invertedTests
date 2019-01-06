@@ -44,11 +44,6 @@ export/templates/IEEEtran-(Journal|TransMag)_pdf4_systemF
 # Find out why and whether the script could be improved.
 export/examples/listerrors_(pdf[245]).*
 
-# Requires CJK.
-# Why does it fail with pdflatex and dvipdfm? CJK restriction? Workarounds?
-# (Also fails with Xe/LuaTeX and TeX-fonts -- as expected, see ignoredTests)
-export/examples/ko/splash_(dvi||pdf[23]?|lyx22|lyx23)
-
 # iconv fails, if a nomenclature inset contains an uncodable character
 export/export/latex/iconv-error-nomenclature_pdf2
 
