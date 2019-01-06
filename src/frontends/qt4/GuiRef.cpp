@@ -145,10 +145,10 @@ void GuiRef::enableView(bool enable)
 
 void GuiRef::enableBoxes()
 {
-	bool const isFormatted =
-	    (InsetRef::getName(typeCO->currentIndex()) == "formatted");
-	bool const isLabelOnly =
-	    (InsetRef::getName(typeCO->currentIndex()) == "labelonly");
+	QString const reftype =
+		typeCO->itemData(typeCO->currentIndex()).toString();
+	bool const isFormatted = (reftype == "formatted");
+	bool const isLabelOnly = (reftype == "labelonly");
 	bool const usingRefStyle = buffer().params().use_refstyle;
 	pluralCB->setEnabled(isFormatted && usingRefStyle);
 	capsCB->setEnabled(isFormatted && usingRefStyle);
@@ -323,8 +323,6 @@ void GuiRef::updateContents()
 
 	// FIXME Bring InsetMathRef on par with InsetRef
 	// (see #9798)
-	// NOTE: The order here must be kept in sync with the defintion
-	// of the types[] array in InsetRef.cpp.
 	typeCO->addItem(qt_("<reference>"), "ref");
 	typeCO->addItem(qt_("(<reference>)"), "eqref");
 	typeCO->addItem(qt_("<page>"), "pageref");

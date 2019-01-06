@@ -31,8 +31,6 @@ public:
 	static const type_info types[];
 	///
 	static int getType(std::string const & name);
-	///
-	static std::string const & getName(int type);
 
 	///
 	InsetRef(Buffer * buffer, InsetCommandParams const &);

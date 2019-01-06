@@ -494,12 +494,6 @@ int InsetRef::getType(string const & name)
 }
 
 
-string const & InsetRef::getName(int type)
-{
-	return types[type].latex_name;
-}
-
-
 docstring InsetRef::getTOCString() const
 {
 	return tooltip_.empty() ? screenLabel() : tooltip_;
