@@ -1859,8 +1859,6 @@ Format %i
     inkscape_cl = inkscape_gui
     if os.name == 'nt':
         inkscape_cl = inkscape_gui.replace('.exe', '.com')
-    # On MacOSX, Inkscape requires full path file arguments. This
-    # is not needed on Linux and Win and even breaks the latter.
     checkFormatEntries(dtl_tools)
     checkConverterEntries()
     (chk_docbook, bool_docbook, docbook_cmd) = checkDocBook()
