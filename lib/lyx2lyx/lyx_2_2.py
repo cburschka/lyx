@@ -1373,11 +1373,11 @@ def revert_jss(document):
         i = 0
         while True:
             i = find_token(document.body, "\\begin_inset Flex " + iltype, i)
-            if i != -1:
+            if i == -1:
                 break
 
-            if iltype == "Code" and document.body[i][-1] != "e":
-                # Code Chunk inset. Continue
+            if document.body[i] != "\\begin_inset Flex " + iltype:
+                # Not an exact match!
                 i += 1
                 continue
 
