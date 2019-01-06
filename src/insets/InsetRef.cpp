@@ -483,15 +483,6 @@ InsetRef::type_info const InsetRef::types[] = {
 };
 
 
-int InsetRef::getType(string const & name)
-{
-	for (int i = 0; !types[i].latex_name.empty(); ++i)
-		if (name == types[i].latex_name)
-			return i;
-	return 0;
-}
-
-
 docstring InsetRef::getTOCString() const
 {
 	return tooltip_.empty() ? screenLabel() : tooltip_;
