@@ -1,10 +1,35 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 509
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 566
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass article
+\begin_preamble
+\@ifpackageloaded{fontspec}{%
+  % Unicode fonts, nothing to do
+}{% setup Unicode with 8-bit LaTeX fonts:
+  % character-providing packages are not auto-loaded with "utf8-plain"
+  \usepackage{textcomp}
+
+  \ifdefined\XeTeXinputencoding
+    % XeTeX in legacy mode
+    \XeTeXinputencoding "bytes" % current file
+    \XeTeXdefaultencoding "bytes" % included files
+    \let\origUmathchar\Umathchar
+    \let\Umathchar\@undefined
+    \usepackage[utf8]{inputenc}
+    \let\Umathchar\origUmathchar
+  \fi
+  \ifdefined\directlua
+    \usepackage[utf8]{luainputenc} % must come after textcomp!
+  \else
+    \usepackage[utf8]{inputenc} % default since TeXLive 2018
+  \fi
+  % set up macro for INFINITY Character '∞'
+  \DeclareUnicodeCharacter{221E}{\ensuremath{\infty}}
+}
+\end_preamble
 \use_default_options true
 \begin_modules
 logicalmkup
@@ -13,8 +38,8 @@ logicalmkup
 \language english
 \language_package default
 \inputencoding utf8-plain
-\fontencoding global
-\font_roman "default" "default"
+\fontencoding auto
+\font_roman "lmodern" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
@@ -25,11 +50,14 @@ logicalmkup
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -54,6 +82,7 @@ logicalmkup
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -62,7 +91,10 @@ logicalmkup
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -76,11 +108,32 @@ logicalmkup
 \begin_body
 
 \begin_layout Standard
-¹²³¼½¬¸@ł€¶←
+With LaTeX input encoding 
+\family typewriter
+utf8-plain
+\family default
+ (UTF-8 (XeTeX)), the author must ensure non-standard characters are defined
+ in the user preamble (see Document>Settings>LaTeX
+\begin_inset space ~
+\end_inset
+
+Preamble).
 \end_layout
 
-\begin_layout Standard
-ätsch Grüße, em- and en-dash: — ―
+\begin_layout Itemize
+Hübner und Örtel sind 30 µm groß.
+\end_layout
+
+\begin_layout Itemize
+em- and en-dash: — –
+\end_layout
+
+\begin_layout Itemize
+Textcomp characters: ¹²³¼½¬¸@ł€¶←→
+\end_layout
+
+\begin_layout Itemize
+INFINITY Character defined in the user preamble: ∞
 \end_layout
 
 \end_body
