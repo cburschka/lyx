@@ -580,10 +580,7 @@ void RowPainter::paintLast() const
 
 void RowPainter::paintOnlyInsets()
 {
-	Row::const_iterator cit = row_.begin();
-	Row::const_iterator const & end = row_.end();
-	for ( ; cit != end ; ++cit) {
-		Row::Element const & e = *cit;
+	for (Row::Element const & e : row_) {
 		if (e.type == Row::INSET) {
 			paintInset(e);
 			// The markings of foreign languages
@@ -601,11 +598,7 @@ void RowPainter::paintOnlyInsets()
 
 void RowPainter::paintText()
 {
-	Row::const_iterator cit = row_.begin();
-	Row::const_iterator const & end = row_.end();
-	for ( ; cit != end ; ++cit) {
-		Row::Element const & e = *cit;
-
+	for (Row::Element const & e : row_) {
 		switch (e.type) {
 		case Row::STRING:
 		case Row::VIRTUAL:
