@@ -83,6 +83,8 @@ What's new
 - Fix SVG to PNG image conversion problem with inkscape on Mac.
   On-screen display of SVG graphics was broken for e.g. users guide.
 
+- Fix paragraph alignment in RTL when using polyglossia (bidi) (bug 11399).
+
 
 * USER INTERFACE
 
