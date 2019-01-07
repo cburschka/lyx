@@ -2369,7 +2369,7 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 	string const begin_tag = "\\begin";
 	InsetCode code = ownerCode();
 	bool const lastpar = runparams.isLastPar;
-	// RTL without the Bidi package switches the left/right logic
+	// RTL in classic (PDF)LaTeX (without the Bidi package)
 	bool const rtl_classic = owner_->getParLanguage(bparams)->rightToLeft()
 		&& !runparams.use_polyglossia;
 
@@ -2381,16 +2381,18 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_DECIMAL:
 		break;
 	case LYX_ALIGN_LEFT: {
-		if (!rtl_classic)
-			corrected_env(os, begin_tag, "flushleft", code, lastpar, column);
-		else
+		if (rtl_classic)
+			// Classic (PDF)LaTeX switches the left/right logic in RTL mode
 			corrected_env(os, begin_tag, "flushright", code, lastpar, column);
+		else
+			corrected_env(os, begin_tag, "flushleft", code, lastpar, column);
 		break;
 	} case LYX_ALIGN_RIGHT: {
-		if (!rtl_classic)
-			corrected_env(os, begin_tag, "flushright", code, lastpar, column);
-		else
+		if (rtl_classic)
+			// Classic (PDF)LaTeX switches the left/right logic in RTL mode
 			corrected_env(os, begin_tag, "flushleft", code, lastpar, column);
+		else
+			corrected_env(os, begin_tag, "flushright", code, lastpar, column);
 		break;
 	} case LYX_ALIGN_CENTER: {
 		corrected_env(os, begin_tag, "center", code, lastpar, column);
@@ -2430,7 +2432,7 @@ bool Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 	string const end_tag = "\\par\\end";
 	InsetCode code = ownerCode();
 	bool const lastpar = runparams.isLastPar;
-	// RTL without the Bidi package switches the left/right logic
+	// RTL in classic (PDF)LaTeX (without the Bidi package)
 	bool const rtl_classic = owner_->getParLanguage(bparams)->rightToLeft()
 		&& !runparams.use_polyglossia;
 
@@ -2442,16 +2444,18 @@ bool Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_DECIMAL:
 		break;
 	case LYX_ALIGN_LEFT: {
-		if (!rtl_classic)
-			output = corrected_env(os, end_tag, "flushleft", code, lastpar, col);
-		else
+		if (rtl_classic)
+			// Classic (PDF)LaTeX switches the left/right logic in RTL mode
 			output = corrected_env(os, end_tag, "flushright", code, lastpar, col);
+		else
+			output = corrected_env(os, end_tag, "flushleft", code, lastpar, col);
 		break;
 	} case LYX_ALIGN_RIGHT: {
-		if (!rtl_classic)
-			output = corrected_env(os, end_tag, "flushright", code, lastpar, col);
-		else
+		if (rtl_classic)
+			// Classic (PDF)LaTeX switches the left/right logic in RTL mode
 			output = corrected_env(os, end_tag, "flushleft", code, lastpar, col);
+		else
+			output = corrected_env(os, end_tag, "flushright", code, lastpar, col);
 		break;
 	} case LYX_ALIGN_CENTER: {
 		corrected_env(os, end_tag, "center", code, lastpar, col);
