@@ -2369,6 +2369,9 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 	string const begin_tag = "\\begin";
 	InsetCode code = ownerCode();
 	bool const lastpar = runparams.isLastPar;
+	// RTL without the Bidi package switches the left/right logic
+	bool const rtl_classic = owner_->getParLanguage(bparams)->rightToLeft()
+		&& !runparams.use_polyglossia;
 
 	switch (curAlign) {
 	case LYX_ALIGN_NONE:
@@ -2378,13 +2381,13 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_DECIMAL:
 		break;
 	case LYX_ALIGN_LEFT: {
-		if (!owner_->getParLanguage(bparams)->rightToLeft())
+		if (!rtl_classic)
 			corrected_env(os, begin_tag, "flushleft", code, lastpar, column);
 		else
 			corrected_env(os, begin_tag, "flushright", code, lastpar, column);
 		break;
 	} case LYX_ALIGN_RIGHT: {
-		if (!owner_->getParLanguage(bparams)->rightToLeft())
+		if (!rtl_classic)
 			corrected_env(os, begin_tag, "flushright", code, lastpar, column);
 		else
 			corrected_env(os, begin_tag, "flushleft", code, lastpar, column);
@@ -2427,6 +2430,9 @@ bool Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 	string const end_tag = "\\par\\end";
 	InsetCode code = ownerCode();
 	bool const lastpar = runparams.isLastPar;
+	// RTL without the Bidi package switches the left/right logic
+	bool const rtl_classic = owner_->getParLanguage(bparams)->rightToLeft()
+		&& !runparams.use_polyglossia;
 
 	switch (curAlign) {
 	case LYX_ALIGN_NONE:
@@ -2436,13 +2442,13 @@ bool Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_DECIMAL:
 		break;
 	case LYX_ALIGN_LEFT: {
-		if (!owner_->getParLanguage(bparams)->rightToLeft())
+		if (!rtl_classic)
 			output = corrected_env(os, end_tag, "flushleft", code, lastpar, col);
 		else
 			output = corrected_env(os, end_tag, "flushright", code, lastpar, col);
 		break;
 	} case LYX_ALIGN_RIGHT: {
-		if (!owner_->getParLanguage(bparams)->rightToLeft())
+		if (!rtl_classic)
 			output = corrected_env(os, end_tag, "flushright", code, lastpar, col);
 		else
 			output = corrected_env(os, end_tag, "flushleft", code, lastpar, col);
