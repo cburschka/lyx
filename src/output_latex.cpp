@@ -1621,6 +1621,9 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 	// This does of course only work in special cases (e.g. switch from
 	// tis620-0 to latin1, but the text in latin1 contains ASCII only),
 	// but it is the best we can do
+	// 
+	// 2019-01-08 Possibly no longer required since tis620-0 is supported
+	// by inputenc (but check special encodings "utf8-plain" and "default").
 	if (oldEnc.package() == Encoding::none
 		|| newEnc.package() == Encoding::none)
 		return make_pair(false, 0);

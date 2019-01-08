@@ -166,6 +166,11 @@ End
 Encoding pt154 pt154 "Cyrillic (pt 154)" PT154 fixed inputenc
 End
 
+# from https://ctan.org/pkg/babel-thai
+Encoding tis620-0 tis620 "Thai (TIS 620-0)" TIS620-0 fixed inputenc
+End
+
+
 # encodings used by CJK.sty
 
 # The following encodings that are supported by the CJK package are not
@@ -231,15 +236,9 @@ End
 Encoding utf8-platex utf8 "Japanese (pLaTeX) (UTF8)" UTF-8 variable japanese
 End
 
-# This one needs hardcoded support, since the inputenc package does not know
-# tis620-0, and thailatex sets up babel directly to use tis620-0, so the
-# LaTeX name is never output to .tex files (but needed for the hardcoded
-# tis620-0 support).
-Encoding tis620-0 tis620-0 "Thai (TIS 620-0)" TIS620-0 fixed none
-End
-
-# A plain utf8 encoding that does not use the inputenc package.
-# Such an encoding is required for XeTeX.
+# A plain utf8 encoding that does not use the inputenc package
+# nor the LyX-added conversions in lib/unicodesymbols.
+# Such an encoding is required for XeTeX and LuaTeX.
 Encoding utf8-plain utf8-plain "Unicode (XeTeX) (utf8)" UTF-8 variable none
 End
 
