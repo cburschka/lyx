@@ -95,6 +95,12 @@ export/templates/acmart_lyx(16|21|22)
 export/templates/acmart_(dvi3|pdf4|pdf5)_systemF
 export/templates/acmart_pdf
 
+# the 001-4-latin_utf8x_pdf2 test passes and the 001-4-latin_utf8-cjk_pdf2 test
+# fails, which means that there are characters in the .lyx file that are only
+# available with utf8-extended encoding, so the utf8 test is never expected to
+# pass in the future.
+export/export/latex/unicodesymbols/001-4-latin_utf8-cjk_pdf2
+
 # ============================================================
 Sublabel: obsolete
 # Documents relying on no longer available packages or classes
