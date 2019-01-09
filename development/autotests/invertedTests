@@ -161,6 +161,13 @@ export/export/latex/ru-accent-ascii.*
 # Cyrillic fails with utf8 and Cyrillic encodings:
 export/export/latex/unicodesymbols/008-greek-and-coptic_(utf8|utf8x)_pdf2
 
+#11454 luainputenc must be loaded after textcomp
+export/export/latex/luainputenc-utf8_pdf5_texF
+# (The version with Unicode fonts fails because some symbols are missing
+# in LatinModern as well as DejaVu. This shows that there are use cases
+# for traditional 8-bit fonts.)
+export/export/latex/luainputenc-utf8_pdf5_systemF
+
 # ==============================================================
 Sublabel: ert
 # Export failures due to "raw" LaTeX use in ERT or preamble code
