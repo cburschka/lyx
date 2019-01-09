@@ -620,7 +620,7 @@
 #0x02c4 ""                         "" "" # MODIFIER LETTER UP ARROWHEAD
 #0x02c5 ""                         "" "" # MODIFIER LETTER DOWN ARROWHEAD
 0x02c6 "\\^{ }"                   "" "" # MODIFIER LETTER CIRCUMFLEX ACCENT
-0x02c7 "\\v{ }"                   "" "" # CARON
+0x02c7 "\\textasciicaron"         "textcomp" "" # CARON
 0x02c8 "\\textprimstress"         "tipa" "force" # MODIFIER LETTER VERTICAL LINE
 0x02c9 "\\={ }"                   "" "force=utf8" # MODIFIER LETTER MACRON
 0x02ca "\\'{ }"                   "" "force=utf8" # MODIFIER LETTER ACUTE ACCENT
@@ -637,7 +637,7 @@
 0x02d5 "\\textlowering{ }"        "tipa" "force" # MODIFIER LETTER DOWN TACK
 0x02d6 ""                         "" "notermination=math,force=utf8;utf8x" "+" # MODIFIER LETTER PLUS SIGN
 0x02d7 ""                         "" "notermination=math,force=utf8;utf8x" "-" # MODIFIER LETTER MINUS SIGN
-0x02d8 "\\u{ }"                   "" "" # BREVE
+0x02d8 "\\textasciibreve"         "textcomp" "" # BREVE
 0x02d9 "\\.{ }"                   "" "force=utf8" # DOT ABOVE
 0x02da "\\r{ }"                   "" "force=utf8" # RING ABOVE
 0x02db "\\k{ }"                   "" "force=utf8" # OGONEK
@@ -1801,13 +1801,14 @@
 0x2047 "??"                       "" "notermination=text,force=utf8;utf8x" "??" "" # DOUBLE QUESTION MARK # ≈ 2×QUESTION MARK
 0x2048 "?!"                       "" "notermination=text,force=utf8;utf8x" "" "" # QUESTION EXCLAMATION MARK
 0x2049 "!?"                       "" "notermination=text,force=utf8;utf8x" "" "" # EXCLAMATION QUESTION MARK
+0x204e "\\textasteriskcentered"   "textcomp" "force=utf8x" "\\ast" "" # LOW ASTERISK
 0x2052 "\\textdiscount"           "textcomp" "force=utf8x" # COMMERCIAL MINUS SIGN
 0x205d ""                         "" "force=utf8;utf8x" "\\vdots" ""# TRICOLON # ≈ VERTICAL ELLIPSIS, fails in text mode, if "mathdots" is loaded.
 #0x205e ""                         "" "" "" "" # VERTICAL FOUR DOTS
 0x205f ""                         "" "notermination=math,force=utf8" "\\:" "" # MEDIUM MATHEMATICAL SPACE
 #0x2060 ""                         "" "" "" "" # WORD JOINER
 #
-# superscripts and subscripts
+# 71 Superscripts and Subscripts
 #
 0x2070 "\\textsuperscript{0}"     "" "force=utf8" "{{}^0}" "" # SUPERSCRIPT ZERO
 0x2071 "\\textsuperscript{i}"     "" "force=utf8" "{{}^i}" "" # SUPERSCRIPT LATIN SMALL LETTER I
@@ -1905,7 +1906,7 @@
 0x2128 ""                         "" "force=utf8" "\\mathfrak{Z}" "amssymb" # BLACK-LETTER CAPITAL Z
 #0x2129 ""                         "" "" "" "" # TURNED GREEK SMALL LETTER IOTA
 0x212a "K"                        "" "notermination=text" "" "" # KELVIN SIGN
-0x212b "\\AA"                     "" "force=utf8,deprecated" "" "" # ANGSTROM SIGN
+0x212b "\\AA"                     "" "force=utf8;utf8-cjk,deprecated" "" "" # ANGSTROM SIGN
 0x212c ""                         "" "force=utf8" "\\mathscr{B}" "mathrsfs" # SCRIPT CAPITAL B
 0x212d ""                         "" "force=utf8" "\\mathfrak{C}" "amssymb" # BLACK-LETTER CAPITAL C
 0x212e "\\textestimated"          "textcomp" "force=utf8x" # ESTIMATED SYMBOL
@@ -2149,7 +2150,7 @@
 0x2214 ""                         "" "force!=utf8x" "\\dotplus" "amssymb" # DOT PLUS
 0x2215 ""                         "" "force!=utf8x" "\\slash" # DIVISION SLASH
 0x2216 ""                         "" "force!=utf8x" "\\setminus" "" # SET MINUS
-0x2217 "\\textasteriskcentered"   "textcomp" "force!=utf8x" "\\ast" "" # ASTERISK OPERATOR
+0x2217 "\\textasteriskcentered"   "textcomp" "force!=utf8x,deprecated" "\\ast" "" # ASTERISK OPERATOR
 0x2218 ""                         "" "force!=utf8x" "\\circ" "" # RING OPERATOR
 0x2219 ""                         "" "force!=utf8x" "\\centerdot" "amssymb" # BULLET OPERATOR
 0x221a "\\textsurd"               "textcomp" "force!=utf8x" "\\surd" "" # SQUARE ROOT
