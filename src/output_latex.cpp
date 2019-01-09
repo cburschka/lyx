@@ -307,7 +307,7 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 	if (data.par_language->encoding()->package() == Encoding::CJK &&
 	    state->open_encoding_ != CJK && pit->isMultiLingual(bparams)) {
 		if (prev_par_language->encoding()->package() == Encoding::CJK) {
-			docstring const cjkenc = (bparams.encoding().iconvName() == "UTF-8"
+			docstring const cjkenc = (bparams.encoding().name() == "utf8-cjk"
 						  && LaTeXFeatures::isAvailable("CJKutf8")) ?
 							from_ascii("UTF8")
 						      : from_ascii(data.par_language->encoding()->latexName());
@@ -999,7 +999,7 @@ void TeXOnePar(Buffer const & buf,
 			// context (nesting issue).
 			if (par_language->encoding()->package() == Encoding::CJK
 				&& state->open_encoding_ != CJK && state->cjk_inherited_ == 0) {
-				docstring const cjkenc = (bparams.encoding().iconvName() == "UTF-8"
+				docstring const cjkenc = (bparams.encoding().name() == "utf8-cjk"
 							  && LaTeXFeatures::isAvailable("CJKutf8")) ?
 								from_ascii("UTF8")
 							      : from_ascii(par_language->encoding()->latexName());
@@ -1406,8 +1406,10 @@ void latexParagraphs(Buffer const & buf,
 	// (but not in child documents)
 	OutputState * state = getOutputState();
 	if (maintext && !is_child && !bparams.useNonTeXFonts
-	    && bparams.language->encoding()->package() == Encoding::CJK) {
-		docstring const cjkenc = (bparams.encoding().iconvName() == "UTF-8"
+	    && bparams.language->encoding()->package() == Encoding::CJK
+	    && (bparams.encoding().name() == "utf8-cjk"
+		|| bparams.encoding().iconvName() != "UTF-8")) {
+		docstring const cjkenc = (bparams.encoding().name() == "utf8-cjk"
 					  && LaTeXFeatures::isAvailable("CJKutf8")) ?
 						from_ascii("UTF8")
 					      : from_ascii(bparams.encoding().latexName());
@@ -1605,7 +1607,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 	bool const from_to_cjk =
 		((oldEnc.package() == Encoding::CJK && newEnc.package() != Encoding::CJK)
 		|| (oldEnc.package() != Encoding::CJK && newEnc.package() == Encoding::CJK))
-		&& (bparams.inputenc != "utf8" && LaTeXFeatures::isAvailable("CJKutf8"));
+		&& (bparams.encoding().name() != "utf8-cjk" || !LaTeXFeatures::isAvailable("CJKutf8"));
 	if (!force && !from_to_cjk
 	    && ((bparams.inputenc != "auto" && bparams.inputenc != "default") || moving_arg))
 		return make_pair(false, 0);
@@ -1677,7 +1679,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 				os << "\\egroup";
 				count += 7;
 			}
-			docstring const cjkenc = (bparams.encoding().iconvName() == "UTF-8"
+			docstring const cjkenc = (bparams.encoding().name() == "utf8-cjk"
 						  && LaTeXFeatures::isAvailable("CJKutf8")) ?
 							from_ascii("UTF8")
 						      : from_ascii(bparams.encoding().latexName());
