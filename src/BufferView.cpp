@@ -2507,6 +2507,8 @@ bool BufferView::setCursorFromInset(Inset const * inset)
 
 void BufferView::gotoLabel(docstring const & label)
 {
+	FuncRequest action;
+	bool have_inactive = false;
 	ListOfBuffers bufs = buffer().allRelatives();
 	ListOfBuffers::iterator it = bufs.begin();
 	for (; it != bufs.end(); ++it) {
@@ -2517,12 +2519,21 @@ void BufferView::gotoLabel(docstring const & label)
 		Toc::const_iterator toc_it = toc->begin();
 		Toc::const_iterator end = toc->end();
 		for (; toc_it != end; ++toc_it) {
-			if (label == toc_it->str()) {
+			if (label == toc_it->str() && toc_it->isOutput()) {
 				lyx::dispatch(toc_it->action());
 				return;
 			}
+			// If we find an inactive label, save it for the case
+			// that no active one is there
+			if (label == toc_it->str() && !have_inactive) {
+				have_inactive = true;
+				action = toc_it->action();
+			}
 		}
 	}
+	// We only found an inactive label. Go there.
+	if (have_inactive)
+		lyx::dispatch(action);
 }
 
 

@@ -707,18 +707,28 @@ public:
 	///
 	bool isExporting() const;
 
-	///
+	/// A collection of InsetRef insets and their position in the buffer
 	typedef std::vector<std::pair<Inset *, ParIterator> > References;
-	///
+	/// Get all InsetRef insets and their positions associated with
+	/// the InsetLabel with the label string \p label
 	References const & references(docstring const & label) const;
-	///
+	/// Add an InsetRef at position \p it to the Insetlabel
+	/// with the label string \p label
 	void addReference(docstring const & label, Inset * inset, ParIterator it);
-	///
+	/// Clear the whole reference cache
 	void clearReferenceCache() const;
-	///
-	void setInsetLabel(docstring const & label, InsetLabel const * il);
-	///
-	InsetLabel const * insetLabel(docstring const & label) const;
+	/// Set the InsetLabel for a given \p label string. \p active
+	/// determines whether this is an active label (see @ref activeLabel)
+	void setInsetLabel(docstring const & label, InsetLabel const * il,
+			   bool const active);
+	/// \return the InsetLabel associated with this \p label string
+	/// If \p active is true we only return active labels
+	/// (see @ref activeLabel)
+	InsetLabel const * insetLabel(docstring const & label,
+				      bool const active = false) const;
+	/// \return true if this \param label is an active label.
+	/// Inactive labels are currently deleted labels (in ct mode)
+	bool activeLabel(docstring const & label) const;
 
 	/// return a list of all used branches (also in children)
 	void getUsedBranches(std::list<docstring> &, bool const from_master = false) const;

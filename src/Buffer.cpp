@@ -135,7 +135,22 @@ namespace {
 int const LYX_FORMAT = LYX_FORMAT_LYX;
 
 typedef map<string, bool> DepClean;
-typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
+
+// Information about labels and their associated refs
+struct LabelInfo {
+	/// label string
+	docstring label;
+	/// label inset
+	InsetLabel const * inset;
+	/// associated references cache
+	Buffer::References references;
+	/// whether this label is active (i.e., not deleted)
+	bool active;
+};
+
+typedef vector<LabelInfo> LabelCache;
+
+typedef map<docstring, Buffer::References> RefCache;
 
 } // namespace
 
@@ -309,7 +324,11 @@ public:
 	/// was missing).
 	bool preview_error_;
 
+	/// Cache the references associated to a label and their positions
+	/// in the buffer.
 	mutable RefCache ref_cache_;
+	/// Cache the label insets and their activity status.
+	mutable LabelCache label_cache_;
 
 	/// our Text that should be wrapped in an InsetText
 	InsetText * inset;
@@ -3915,13 +3934,12 @@ Buffer::References & Buffer::getReferenceCache(docstring const & label)
 
 	RefCache::iterator it = d->ref_cache_.find(label);
 	if (it != d->ref_cache_.end())
-		return it->second.second;
+		return it->second;
 
-	static InsetLabel const * dummy_il = 0;
 	static References const dummy_refs = References();
 	it = d->ref_cache_.insert(
-		make_pair(label, make_pair(dummy_il, dummy_refs))).first;
-	return it->second.second;
+		make_pair(label, dummy_refs)).first;
+	return it->second;
 }
 
 
@@ -3938,22 +3956,43 @@ void Buffer::addReference(docstring const & label, Inset * inset, ParIterator it
 }
 
 
-void Buffer::setInsetLabel(docstring const & label, InsetLabel const * il)
+void Buffer::setInsetLabel(docstring const & label, InsetLabel const * il,
+			   bool const active)
 {
-	masterBuffer()->d->ref_cache_[label].first = il;
+	LabelInfo linfo;
+	linfo.label = label;
+	linfo.inset = il;
+	linfo.active = active;
+	masterBuffer()->d->label_cache_.push_back(linfo);
 }
 
 
-InsetLabel const * Buffer::insetLabel(docstring const & label) const
+InsetLabel const * Buffer::insetLabel(docstring const & label,
+				      bool const active) const
 {
-	return masterBuffer()->d->ref_cache_[label].first;
+	for (auto & rc : masterBuffer()->d->label_cache_) {
+		if (rc.label == label && (rc.active || !active))
+			return rc.inset;
+	}
+	return nullptr;
+}
+
+
+bool Buffer::activeLabel(docstring const & label) const
+{
+	if (!insetLabel(label, true))
+		return false;
+
+	return true;
 }
 
 
 void Buffer::clearReferenceCache() const
 {
-	if (!d->parent())
+	if (!d->parent()) {
 		d->ref_cache_.clear();
+		d->label_cache_.clear();
+	}
 }
 
 

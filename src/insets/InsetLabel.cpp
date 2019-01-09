@@ -67,11 +67,13 @@ void InsetLabel::uniqueLabel(docstring & label) const
 {
 	docstring const new_label = label;
 	int i = 1;
-	while (buffer().insetLabel(label)) {
+	bool ambiguous = false;
+	while (buffer().activeLabel(label)) {
 		label = new_label + '-' + convert<docstring>(i);
 		++i;
+		ambiguous = true;
 	}
-	if (label != new_label) {
+	if (ambiguous) {
 		// Warn the user that the label has been changed to something else.
 		frontend::Alert::warning(_("Label names must be unique!"),
 			bformat(_("The label %1$s already exists,\n"
@@ -146,12 +148,27 @@ docstring InsetLabel::screenLabel() const
 void InsetLabel::updateBuffer(ParIterator const & par, UpdateType utype)
 {
 	docstring const & label = getParam("name");
-	if (buffer().insetLabel(label)) {
-		// Problem: We already have an InsetLabel with the same name!
+
+	// Check if this one is deleted (ct)
+	Paragraph const & para = par.paragraph();
+	bool active = !para.isDeleted(par.pos());
+	// If not, check whether we are in a deleted inset
+	if (active) {
+		for (size_type sl = 0 ; sl < par.depth() ; ++sl) {
+			Paragraph const & outer_par = par[sl].paragraph();
+			if (outer_par.isDeleted(par[sl].pos())) {
+				active = false;
+				break;
+			}
+		}
+	}
+
+	if (buffer().activeLabel(label) && active) {
+		// Problem: We already have an active InsetLabel with the same name!
 		screen_label_ = _("DUPLICATE: ") + label;
 		return;
 	}
-	buffer().setInsetLabel(label, this);
+	buffer().setInsetLabel(label, this, active);
 	screen_label_ = label;
 
 	if (utype == OutputUpdate) {
@@ -175,23 +192,25 @@ void InsetLabel::addToToc(DocIterator const & cpit, bool output_active,
 						  UpdateType, TocBackend & backend) const
 {
 	docstring const & label = getParam("name");
+	// inactive labels get a cross mark
+	if (buffer().insetLabel(label, true) != this)
+		output_active = false;
+
+	// We put both  active and inactive labels to the outliner
 	shared_ptr<Toc> toc = backend.toc("label");
-	if (buffer().insetLabel(label) != this) {
-		toc->push_back(TocItem(cpit, 0, screen_label_, output_active));
-	} else {
-		toc->push_back(TocItem(cpit, 0, screen_label_, output_active));
-		Buffer::References const & refs = buffer().references(label);
-		Buffer::References::const_iterator it = refs.begin();
-		Buffer::References::const_iterator end = refs.end();
-		for (; it != end; ++it) {
-			DocIterator const ref_pit(it->second);
-			if (it->first->lyxCode() == MATH_REF_CODE)
+	toc->push_back(TocItem(cpit, 0, screen_label_, output_active));
+	// The refs get assigned only to the active label. If no active one exists,
+	// assign the (BROKEN) refs to the first inactive one.
+	if (buffer().insetLabel(label, true) == this || !buffer().activeLabel(label)) {
+		for (auto const & p : buffer().references(label)) {
+			DocIterator const ref_pit(p.second);
+			if (p.first->lyxCode() == MATH_REF_CODE)
 				toc->push_back(TocItem(ref_pit, 1,
-						it->first->asInsetMath()->asRefInset()->screenLabel(),
+						p.first->asInsetMath()->asRefInset()->screenLabel(),
 						output_active));
 			else
 				toc->push_back(TocItem(ref_pit, 1,
-						static_cast<InsetRef *>(it->first)->getTOCString(),
+						static_cast<InsetRef *>(p.first)->getTOCString(),
 						output_active));
 		}
 	}
