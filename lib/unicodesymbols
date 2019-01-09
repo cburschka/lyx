@@ -58,36 +58,36 @@
 #
 # 2 Latin-1 Supplement
 #
-0x00a0 "~"                        "" "force=koi8-u,notermination=both" "~" "" # NO-BREAK SPACE
+0x00a0 "~"                        "" "force=koi8-u;iso8859-7,notermination=both" "~" "" # NO-BREAK SPACE
 0x00a1 "\\textexclamdown"         "" "" # INVERTED EXCLAMATION MARK
 0x00a2 "\\textcent"               "textcomp" "" #"\\mathcent" "txfonts|pxfonts" # CENT SIGN
-0x00a3 "\\pounds"                 "" "" "\\pounds" "" # £ POUND SIGN
+0x00a3 "\\pounds"                 "" "force=iso8859-7" "\\pounds" "" # £ POUND SIGN
 0x00a4 "\\textcurrency"           "textcomp" "" # CURRENCY SYMBOL
 0x00a5 "\\textyen"                "textcomp" "" "\\yen" "amssymb" # YEN SIGN
-0x00a6 "\\textbrokenbar"          "textcomp" "" # BROKEN BAR
-0x00a7 "\\textsection"            "textcomp" "" "\\mathsection" "" # SECTION SIGN
-0x00a8 "\\textasciidieresis"      "textcomp" "" # DIAERESIS
-0x00a9 "\\textcopyright"          "textcomp" "force=koi8-u" # COPYRIGHT SIGN
+0x00a6 "\\textbrokenbar"          "textcomp" "force=iso8859-7" # BROKEN BAR
+0x00a7 "\\textsection"            "textcomp" "force=iso8859-7" "\\mathsection" "" # SECTION SIGN
+0x00a8 "\\textasciidieresis"      "textcomp" "force=iso8859-7" # DIAERESIS
+0x00a9 "\\textcopyright"          "textcomp" "force=koi8-u;iso8859-7" # COPYRIGHT SIGN
 0x00aa "\\textordfeminine"        "textcomp" "" # FEMININE ORDINAL INDICATOR
-0x00ab "\\guillemotleft"          "" "force=armscii8" # LEFT-POINTING DOUBLE ANGLE QUOTATION MARK
+0x00ab "\\guillemotleft"          "" "force=armscii8;iso8859-7" # LEFT-POINTING DOUBLE ANGLE QUOTATION MARK
 0x00ac "\\textlnot"               "textcomp" "force" "\\neg" "" # ¬ NOT SIGN
 0x00ad "\\-"                      "" "force=iso8859-13,notermination=text" "" "" # SOFT HYPHEN
 0x00ae "\\textregistered"         "textcomp" "" "\\circledR" "amssymb" # REGISTERED SIGN
 0x00af "\\textasciimacron"        "textcomp" "" # MACRON
-0x00b0 "\\textdegree"             "textcomp" "force=koi8-u" "{^\\circ}" "" # DEGREE SIGN
+0x00b0 "\\textdegree"             "textcomp" "force=koi8-u;iso8859-7" "{^\\circ}" "" # DEGREE SIGN
 0x00b1 "\\textpm"                 "textcomp" "force" "\\pm" "" # ± PLUS-MINUS SIGN
 0x00b2 "\\texttwosuperior"        "textcomp" "force" "{{}^2}" "" # ² SUPERSCRIPT TWO
 0x00b3 "\\textthreesuperior"      "textcomp" "force" "{{}^3}" "" # ³ SUPERSCRIPT THREE
 0x00b4 "\\textasciiacute"         "textcomp" "" # ACUTE ACCENT
 0x00b5 "\\textmu"                 "textcomp" "force" "" "" # µ MICRO SIGN (upright, not $\mu$)
 0x00b6 "\\textparagraph"          "textcomp" "" "\\mathparagraph" "" # PILCROW SIGN # not equal to \textpilcrow
-0x00b7 "\\textperiodcentered"     "" "force=koi8-u" "\\cdot" "" # MIDDLE DOT
+0x00b7 "\\textperiodcentered"     "" "force=koi8-u;iso8859-7" "\\cdot" "" # MIDDLE DOT
 0x00b8 "\\c{ }"                   "" "" "" "" # CEDILLA
 0x00b9 "\\textonesuperior"        "textcomp" "force" "{{}^1}" "" # ¹ SUPERSCRIPT ONE
 0x00ba "\\textordmasculine"       "textcomp" "" # MASCULINE ORDINAL INDICATOR
-0x00bb "\\guillemotright"         "" "force=armscii8" # RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
+0x00bb "\\guillemotright"         "" "force=armscii8;iso8859-7" # RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
 0x00bc "\\textonequarter"         "textcomp" "" "\\sfrac{1}{4}" "xfrac" # 1/4 FRACTION
-0x00bd "\\textonehalf"            "textcomp" "" "\\sfrac{1}{2}" "xfrac" # 1/2 FRACTION
+0x00bd "\\textonehalf"            "textcomp" "force=iso8859-7" "\\sfrac{1}{2}" "xfrac" # 1/2 FRACTION
 0x00be "\\textthreequarters"      "textcomp" "" "\\sfrac{3}{4}" "xfrac" # 3/4 FRACTION
 0x00bf "\\textquestiondown"       "" "" # INVERTED QUESTION MARK
 0x00c0 "\\`{A}"                   "" "mathalpha" "\\grave{A}" # LATIN CAPITAL LETTER A WITH GRAVE
@@ -608,7 +608,7 @@
 0x02b8 "\\textsuperscript{y}"      "" "force=utf8" # MODIFIER LETTER SMALL Y
 0x02b9 "\\textasciiacute"          "textcomp" "force=utf8;utf8x" # MODIFIER LETTER PRIME
 0x02ba "\\textacutedbl"            "textcomp" "force=utf8;utf8x" # MODIFIER LETTER DOUBLE PRIME
-0x02bb "\\textquoteleft"           "" "force=utf8;utf8x" # MODIFIER LETTER TURNED COMMA
+0x02bb "\\textquoteleft"           "" "force=utf8;utf8x;iso8859-7" # MODIFIER LETTER TURNED COMMA
 0x02bc "'"                         "" "notermination=both,force=utf8;utf8x" # MODIFIER LETTER APOSTROPHE
 0x02bd "\\textrevapostrophe"       "tipa" "force" # MODIFIER LETTER REVERSED COMMA
 #0x02be ""                         "" "" # MODIFIER LETTER RIGHT HALF RING
@@ -789,7 +789,7 @@
 0x0375 "\\textgreek{\textaristerikeraia}" "textgreek" "" # GREEK LOWER NUMERAL SIGN
 #0x0376 ""                         "" "" "" "" # GREEK CAPITAL LETTER PAMPHYLIAN DIGAMMA
 #0x0377 ""                         "" "" "" "" # GREEK SMALL LETTER PAMPHYLIAN DIGAMMA
-0x037a "\\textgreek{\\textcompwordmark\\ypogegrammeni}" "textgreek" "" # GREEK YPOGEGRAMMENI
+0x037a "\\textgreek{\\textcompwordmark\\ypogegrammeni}" "textgreek" "force=iso8859-7" # GREEK YPOGEGRAMMENI
 #0x037b ""                         "" "" "" "" # GREEK SMALL REVERSED LUNATE SIGMA SYMBOL
 #0x037c ""                         "" "" "" "" # GREEK SMALL DOTTED LUNATE SIGMA SYMBOL
 #0x037d ""                         "" "" "" "" # GREEK SMALL REVERSED DOTTED LUNATE SIGMA SYMBOL
@@ -1750,8 +1750,8 @@
 0x2015 "\\LyXbar" "\\newcommand*\\LyXbar{\\rule[0.585ex]{1.2em}{0.25pt}}" "force"
 0x2016 "\\textbardbl"             "textcomp" "force=utf8x,notermination=math,tipashortcut=\\textdoublevertline{}" "\\|" "" # DOUBLE VERTICAL LINE
 0x2017 "\\subdoublebar{ }"        "extraipa" "force=cp850;utf8;utf8x" "" "" # DOUBLE LOW LINE
-0x2018 "\\textquoteleft"          "" "" # LEFT SINGLE QUOTATION MARK
-0x2019 "\\textquoteright"         "" "" # RIGHT SINGLE QUOTATION MARK
+0x2018 "\\textquoteleft"          "" "force=iso8859-7" # LEFT SINGLE QUOTATION MARK
+0x2019 "\\textquoteright"         "" "force=iso8859-7" # RIGHT SINGLE QUOTATION MARK
 0x201a "\\quotesinglbase"         "" "" # SINGLE LOW-9 QUOTATION MARK
 #0x201b ""                         "" "" # SINGLE HIGH-REVERSED-9 QUOTATION MARK
 0x201c "\\textquotedblleft"       "" "" # LEFT DOUBLE QUOTATION MARK
@@ -1854,7 +1854,7 @@
 0x20a9 "\\textwon"                "textcomp" "" # WON SIGN
 #0x20aa ""                         "" "" # NEW SHEQEL SIGN
 0x20ab "\\textdong"               "textcomp" "" # DONG SIGN
-0x20ac "\\texteuro"               "textcomp" "" # EURO SIGN
+0x20ac "\\texteuro"               "textcomp" "force=iso8859-7" # EURO SIGN
 0x20b1 "\\textpeso"               "textcomp" "force=utf8x" # PESO SIGN
 0x20b2 "\\textguarani"            "textcomp" "force=utf8;utf8x" # GUARANI SIGN
 0x20b9 "\\rupee"                  "tfrupee" "" "" "" # INDIAN RUPEE SIGN
