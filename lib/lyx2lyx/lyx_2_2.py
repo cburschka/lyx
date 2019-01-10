@@ -346,7 +346,8 @@ def convert_parbreak(document):
             return
         lay = get_containing_layout(document.body, i)
         if lay == False:
-            document.warning("Malformed LyX document: Can't convert separator inset at line " + str(i))
+            document.warning("Malformed LyX document: "
+                             "Can't convert separator inset at line %d"%i)
             i += 1
             continue
         if lay[0] == "Standard":
