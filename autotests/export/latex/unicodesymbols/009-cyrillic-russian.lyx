@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 515
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 566
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -13,7 +13,7 @@
 \language english
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
 \font_typewriter "lmtt" "default"
@@ -25,6 +25,7 @@
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -54,6 +55,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \branch na
 \selected 0
 \filename_suffix 0
@@ -67,7 +69,10 @@
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -88,6 +93,7 @@ Currently input encoding utf8 requires setting Cyrillic parts to a language
 LatexCommand href
 name "#9681"
 target "http://www.lyx.org/trac/ticket/9681"
+literal "false"
 
 \end_inset
 
@@ -364,37 +370,6 @@ status open
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection*
-31 Thai
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-3640 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-ุ ู ฺ
-\end_layout
-
-\end_inset
-
- ฿ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-เ แ
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \end_body

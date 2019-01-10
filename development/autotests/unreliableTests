@@ -99,7 +99,3 @@ export/export/mixing_inTitle_layouts_(pdf|dvi).*
 # (not expecting much attention because DVI is not given high priority)
 export/doc/es/Customization_dvi3_systemF
 export/examples/(|es/)(europe|modern)CV_dvi3_systemF
-
-#9681 textgreek and textcyr also required for encodable characters
-# -> Latin transcription instead of Greek
-export/export/latex/unicodesymbols/008-greek-and-coptic_iso8859-7_pdf2
