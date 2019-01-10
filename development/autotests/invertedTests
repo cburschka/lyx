@@ -156,11 +156,6 @@ export/examples/es/linguistics_pdf4_texF
 !export/export/latex/ru-accent-ascii_pdf2
 export/export/latex/ru-accent-ascii.*
 
-#9681 textgreek and textcyr also required for encodable characters
-# Greek fails with utf8 and utf8x encodings,
-# Cyrillic fails with utf8 and Cyrillic encodings:
-export/export/latex/unicodesymbols/008-greek-and-coptic_(utf8|utf8x)_pdf2
-
 #11454 luainputenc must be loaded after textcomp
 export/export/latex/luainputenc-utf8_pdf5_texF
 # (The version with Unicode fonts fails because some symbols are missing
