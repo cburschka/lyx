@@ -34,6 +34,12 @@ export/examples/PDF-form_(dvi.*|pdf[^25]*)
 export/examples/(|de/|fr/)PDF-comment_dvi3_.*F
 export/examples/(|de/|fr/)PDF-comment_pdf5_texF
 
+# Seems, like only latex and pdflatex compilations work
+#! Missing number, treated as zero.
+# in copernicus.cls:199
+# \ifnum\pdfoutput=\z@
+export/templates/copernicus_(dvi3|pdf4|pdf5)_(texF|systemF)
+
 # Document uses Postscript specials
 # Does not compile with pdflatex (see note in the document source).
 export/examples/instant_preview_(dvi3|pdf4)_systemF
@@ -67,14 +73,14 @@ export/.*/ja/(knitr|sweave).*
 #
 export/.*/ja/.*_(pdf[245]|dvi3).*
 
-# These files are not expected to compile, they use math-macros
-# defined in master 'autotests/mathmacros/masterOfSpace.lyx'
+# Subdocuments that are not expected to work as stand-alone documents:
 export/mathmacros/Spacechild[123].*
-
-# These files are subdocuments, they are not expected to behave
 export/examples/springer/svmono_(acknow|acronym|appendix|chapter|dedication|foreword|glossary|part|preface|referenc|solutions)_lyx[0-9][0-9]
 export/examples/springer/svmult_(acknow|acronym|appendix|cblist|dedication|foreword|glossary|part|preface|referenc)_lyx[0-9][0-9]
 export/examples/thesis/(Acknowledgments|Appendix|Summary|Bibliography|chapter-[12])_lyx[0-9][0-9]
+# Used only as include file for some tests
+.*/export/IncludeMissingEndTagDiv.*
+
 # Bibliography.lyx is not expected to compile. See the following for discussion:
 #   https://www.mail-archive.com/search?l=mid&q=20190104195414.opgeuggeqakxl2fo%40barna
 # Ignore all formats except xhtml export
@@ -84,19 +90,10 @@ export/examples/thesis/Bibliography_[^x].*
 export/examples/docbook_article_(dvi3|pdf[245]).*
 export/templates/DocBook_article_(dvi3|pdf[245]).*
 
-# Used only as include file for some tests
-.*/export/IncludeMissingEndTagDiv.*
-
-# acmart is new to lyx23
+# `acmart` and `copernicus` are not supported by LyX < 2.3
 export/templates/acmart_lyx(16|21|22)
-export/templates/acmart_(dvi3|pdf4|pdf5)_systemF
-export/templates/acmart_pdf
+export/templates/copernicus_lyx(16|21|22)
 
-# the 001-4-latin_utf8x_pdf2 test passes and the 001-4-latin_utf8-cjk_pdf2 test
-# fails, which means that there are characters in the .lyx file that are only
-# available with utf8-extended encoding, so the utf8 test is never expected to
-# pass in the future.
-export/export/latex/unicodesymbols/001-4-latin_utf8-cjk_pdf2
 
 # ============================================================
 Sublabel: obsolete
@@ -134,11 +131,3 @@ check_load/export/latex/.*
 lyx2lyx/export/latex/.*
 # don't check export to other LyX versions or HTML
 export/export/latex.*(lyx..|xhtml)
-
-Sublabel: noluatex, noxetex
-#! Missing number, treated as zero.
-# in copernicus.cls:199
-# \ifnum\pdfoutput=\z@
-# Seems, like only latex and pdflatex compilations work
-export/templates/copernicus_(dvi3|pdf4|pdf5)_(texF|systemF)
-export/templates/copernicus_lyx(16|21|22)

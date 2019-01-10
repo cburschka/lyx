@@ -47,6 +47,21 @@ export/examples/listerrors_(pdf[245]).*
 # iconv fails, if a nomenclature inset contains an uncodable character
 export/export/latex/iconv-error-nomenclature_pdf2
 
+# `acmart` document class:
+# poblems with the exported Postscript file (the first page does not display
+# for some reason) and hence ps2pdf fails:
+export/templates/acmart_pdf
+#
+# issues with listsof, reported to the maintainer
+# https://www.mail-archive.com/search?l=mid&q=of84gj%24l6b%241%40blaine.gmane.org
+# LyX gives the following terminal message:
+#
+#    TextClass.cpp (1385): The layout does not provide a list command for
+#      the float `sidebar'. LyX will not be able to produce a float list.
+#
+check_load/templates/acmart
+
+
 # input encoding tests
 # --------------------
 # Please test and correct!
@@ -73,10 +88,6 @@ export/export/latex/unicodesymbols/070-72-general-punctuation-sub-super-currency
 export/export/latex/unicodesymbols/074-76-letterlike-numberforms-arrows_cp1256_pdf2
 
 # CJK:
-# Many unicode blocks work fine with utf8-cjk
-# Only a few are failing now (special documentclass required?):
-export/export/latex/unicodesymbols/(070|074).*_utf8-cjk_pdf2
-
 export/export/latex/unicodesymbols/.*_euc-cn_pdf2
 export/export/latex/unicodesymbols/.*_gbk_pdf2
 export/export/latex/unicodesymbols/.*_jis_pdf2
@@ -148,7 +159,6 @@ export/doc/es/Customization_pdf4_texF
 # see also the discussion at:
 # https://www.mail-archive.com/search?l=mid&q=20170228190738.cgs3tl3ny2bxiegk%40steph
 export/examples/es/linguistics_pdf4_texF
-
 
 #9637 textgreek and textcyr depend on font-encoding, not input encoding
 #6463 font encoding changes and combining accents
@@ -240,7 +250,7 @@ export/export/latex/TableErrorIfSlovakTextInserted_(dvi|pdf[23]?|.*_texF)
 # https://www.mail-archive.com/search?l=mid&q=1478004223.2367.5.camel%40lyx.org
 export/doc/(sk|nb)/Intro_(dvi3|pdf5)_systemF
 
-# fontspec errors with slides class:
+# fontspec errors with `slides` class:
 # LaTeX error: "kernel/command-already-defined"
 # Lines 2684 ... 2690 in fontspec-xetex.sty
 # Lines 2608 ... 2614 in fontspec-luatex.sty
@@ -249,15 +259,6 @@ export/templates/slides_.*_systemF
 # Beamer: conflicts with some combinations of packages/settings/languages
 export/templates/ja_beamer-conference-ornate-20min_(pdf2|pdf[45]).*
 export/templates/es_beamer-conference-ornate-20min_pdf4_texF
-
-# issues with listsof, reported to the maintainer
-# https://www.mail-archive.com/search?l=mid&q=of84gj%24l6b%241%40blaine.gmane.org
-# LyX gives the following terminal message:
-#
-#    TextClass.cpp (1385): The layout does not provide a list command for
-#      the float `sidebar'. LyX will not be able to produce a float list.
-#
-check_load/templates/acmart
 
 # Arabic only works with XeTeX + system fonts (pdf4_systemF)
 export/examples/ar/splash_(dvi.*|pdf|pdf[^4].*)
