@@ -597,19 +597,19 @@
 #
 # 6 Spacing Modifier Letters
 #
-0x02b0 "\\textsuperscript{h}"      "" "force=utf8" # MODIFIER LETTER SMALL H
+0x02b0 "\\textsuperscript{h}"      "" "force=utf8;utf8-cjk" # MODIFIER LETTER SMALL H
 0x02b1 "\\textsuperscript{\\texthth}"  "tipa" "force" # MODIFIER LETTER SMALL H WITH HOOK
-0x02b2 "\\textsuperscript{j}"      "" "force=utf8" # MODIFIER LETTER SMALL J
-0x02b3 "\\textsuperscript{r}"      "" "force=utf8" # MODIFIER LETTER SMALL R
+0x02b2 "\\textsuperscript{j}"      "" "force=utf8;utf8-cjk" # MODIFIER LETTER SMALL J
+0x02b3 "\\textsuperscript{r}"      "" "force=utf8;utf8-cjk" # MODIFIER LETTER SMALL R
 0x02b4 "\\textsuperscript{\\textturnr}" "tipa" "force" # MODIFIER LETTER SMALL TURNED R
 0x02b5 "\\textsuperscript{\\textturnrrtail}" "tipa" "force" # MODIFIER LETTER SMALL TURNED R WITH HOOK
 0x02b6 "\\textsuperscript{\\textinvscr}" "tipa" "force" # MODIFIER LETTER SMALL CAPITAL INVERTED R
-0x02b7 "\\textsuperscript{w}"      "" "force=utf8" # MODIFIER LETTER SMALL W
-0x02b8 "\\textsuperscript{y}"      "" "force=utf8" # MODIFIER LETTER SMALL Y
-0x02b9 "\\textasciiacute"          "textcomp" "force=utf8;utf8x" # MODIFIER LETTER PRIME
-0x02ba "\\textacutedbl"            "textcomp" "force=utf8;utf8x" # MODIFIER LETTER DOUBLE PRIME
-0x02bb "\\textquoteleft"           "" "force=utf8;utf8x;iso8859-7" # MODIFIER LETTER TURNED COMMA
-0x02bc "'"                         "" "notermination=both,force=utf8;utf8x" # MODIFIER LETTER APOSTROPHE
+0x02b7 "\\textsuperscript{w}"      "" "force=utf8;utf8-cjk" # MODIFIER LETTER SMALL W
+0x02b8 "\\textsuperscript{y}"      "" "force=utf8;utf8-cjk" # MODIFIER LETTER SMALL Y
+0x02b9 "\\textasciiacute"          "textcomp" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER PRIME
+0x02ba "\\textacutedbl"            "textcomp" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER DOUBLE PRIME
+0x02bb "\\textquoteleft"           "" "force=utf8;utf8x;utf8-cjk;iso8859-7" # MODIFIER LETTER TURNED COMMA
+0x02bc "'"                         "" "notermination=both,force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER APOSTROPHE
 0x02bd "\\textrevapostrophe"       "tipa" "force" # MODIFIER LETTER REVERSED COMMA
 #0x02be ""                         "" "" # MODIFIER LETTER RIGHT HALF RING
 #0x02bf ""                         "" "" # MODIFIER LETTER LEFT HALF RING
@@ -622,11 +622,11 @@
 0x02c6 "\\^{ }"                   "" "" # MODIFIER LETTER CIRCUMFLEX ACCENT
 0x02c7 "\\textasciicaron"         "textcomp" "" # CARON
 0x02c8 "\\textprimstress"         "tipa" "force" # MODIFIER LETTER VERTICAL LINE
-0x02c9 "\\={ }"                   "" "force=utf8" # MODIFIER LETTER MACRON
-0x02ca "\\'{ }"                   "" "force=utf8" # MODIFIER LETTER ACUTE ACCENT
-0x02cb "\\`{ }"                   "" "force=utf8" # MODIFIER LETTER GRAVE ACCENT
+0x02c9 "\\={ }"                   "" "force=utf8;utf8-cjk" # MODIFIER LETTER MACRON
+0x02ca "\\'{ }"                   "" "force=utf8;utf8-cjk" # MODIFIER LETTER ACUTE ACCENT
+0x02cb "\\`{ }"                   "" "force=utf8;utf8-cjk" # MODIFIER LETTER GRAVE ACCENT
 0x02cc "\\textsecstress"          "tipa" "force" # MODIFIER LETTER LOW VERTICAL LINE
-0x02cd "\\b{ }"                   "" "force=utf8" # MODIFIER LETTER LOW MACRON
+0x02cd "\\b{ }"                   "" "force=utf8;utf8-cjk" # MODIFIER LETTER LOW MACRON
 0x02ce "\\textsubgrave{ }"        "tipa" "force" # MODIFIER LETTER LOW GRAVE ACCENT
 0x02cf "\\textsubacute{ }"        "tipa" "force" # MODIFIER LETTER LOW ACUTE ACCENT
 0x02d0 "\\textlengthmark"         "tipa" "force,tipashortcut=:" # MODIFIER LETTER TRIANGULAR COLON
@@ -635,20 +635,20 @@
 #0x02d3 ""                         "" "" # MODIFIER LETTER CENTRED LEFT HALF RING
 0x02d4 "\\textraising{ }"         "tipa" "force" # MODIFIER LETTER UP TACK
 0x02d5 "\\textlowering{ }"        "tipa" "force" # MODIFIER LETTER DOWN TACK
-0x02d6 ""                         "" "notermination=math,force=utf8;utf8x" "+" # MODIFIER LETTER PLUS SIGN
-0x02d7 ""                         "" "notermination=math,force=utf8;utf8x" "-" # MODIFIER LETTER MINUS SIGN
+0x02d6 ""                         "" "notermination=math,force=utf8;utf8x;utf8-cjk" "+" # MODIFIER LETTER PLUS SIGN
+0x02d7 ""                         "" "notermination=math,force=utf8;utf8x;utf8-cjk" "-" # MODIFIER LETTER MINUS SIGN
 0x02d8 "\\textasciibreve"         "textcomp" "" # BREVE
-0x02d9 "\\.{ }"                   "" "force=utf8" # DOT ABOVE
-0x02da "\\r{ }"                   "" "force=utf8" # RING ABOVE
-0x02db "\\k{ }"                   "" "force=utf8" # OGONEK
+0x02d9 "\\.{ }"                   "" "force=utf8;utf8-cjk" # DOT ABOVE
+0x02da "\\r{ }"                   "" "force=utf8;utf8-cjk" # RING ABOVE
+0x02db "\\k{ }"                   "" "force=utf8;utf8-cjk" # OGONEK
 0x02dc "\\~{ }"                   "" "" # SMALL TILDE
 0x02dd "\\H{ }"                   "" "force=utf8" # DOUBLE ACUTE ACCENT
 0x02de "\\textrhoticity"          "tipa" "force" # MODIFIER LETTER RHOTIC HOOK
 #0x02df "\\textovercross{ }"       "tipa" "force" # MODIFIER LETTER CROSS ACCENT
 0x02e0 "\\textsuperscript{\\textgamma}"  "tipa" "force" # MODIFIER LETTER SMALL GAMMA
-0x02e1 "\\textsuperscript{l}"     "" "force=utf8;utf8x" # MODIFIER LETTER SMALL L
-0x02e2 "\\textsuperscript{s}"     "" "force=utf8;utf8x" # MODIFIER LETTER SMALL S
-0x02e3 "\\textsuperscript{x}"     "" "force=utf8;utf8x" # MODIFIER LETTER SMALL X
+0x02e1 "\\textsuperscript{l}"     "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL L
+0x02e2 "\\textsuperscript{s}"     "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL S
+0x02e3 "\\textsuperscript{x}"     "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL X
 0x02e4 "\\textsuperscript{\\textrevglotstop}" "tipa" "force" # MODIFIER LETTER SMALL REVERSED GLOTTAL STOP
 0x02e5 "\\tone{55}"               "tone" "force" # MODIFIER LETTER EXTRA-HIGH TONE BAR
 0x02e6 "\\tone{44}"               "tone" "force" # MODIFIER LETTER HIGH TONE BAR
