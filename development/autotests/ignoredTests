@@ -11,9 +11,6 @@ Sublabel: problematic
 # Documents that cause problems for the test suite
 # ================================================
 
-# Endless loop after the third roundtrip
-export/templates/IEEEtran-Journal_lyx16
-
 # problems exporting to lyx16x
 export/examples/(Literate|noweb2lyx)_lyx16
 
