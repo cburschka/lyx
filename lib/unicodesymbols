@@ -230,7 +230,7 @@
 0x0146 "\\c{n}"                   "textbaltic!=L7x" "mathalpha,force=utf8" "\\cedilla{n}" "accents,cedilla" # LATIN SMALL LETTER N WITH CEDILLA (actually a comma accent, Latvian)
 0x0147 "\\v{N}"                   "" "mathalpha" "\\check{N}" # LATIN CAPITAL LETTER N WITH CARON
 0x0148 "\\v{n}"                   "" "mathalpha" "\\check{n}" # LATIN SMALL LETTER N WITH CARON
-0x0149 "'n"                       "" "force=utf8;utf8x,deprecated" "" "" # LATIN SMALL LETTER N PRECEDED BY APOSTROPHE
+0x0149 "'n"                       "" "force=utf8;utf8-cjk;utf8x,deprecated" "" "" # LATIN SMALL LETTER N PRECEDED BY APOSTROPHE
 0x014a "\\NG"                     "" "" "" "" # LATIN CAPITAL LETTER ENG
 0x014b "\\ng"                     "" "tipashortcut=N" "" "" # LATIN SMALL LETTER ENG
 0x014c "\\={O}"                   "" "mathalpha" "\\bar{O}" # LATIN CAPITAL LETTER O WITH MACRON
@@ -355,7 +355,7 @@
 0x01c0 "\\textpipe"               "tipa" "force,tipashortcut=|" # LATIN LETTER DENTAL CLICK
 0x01c1 "\\textdoublepipe"         "tipa" "force,tipashortcut=||" # LATIN LETTER LATERAL CLICK
 0x01c2 "\\textdoublebarpipe"      "tipa" "force" # LATIN LETTER ALVEOLAR CLICK
-0x01c3 "!"                        "" "force=utf8;utf8x,notermination=text" "" "" # LATIN LETTER RETROFLEX CLICK
+0x01c3 "!"                        "" "force=utf8;utf8-cjk;utf8x,notermination=text" "" "" # LATIN LETTER RETROFLEX CLICK
 #0x01c4 ""                         "" "" # LATIN CAPITAL LETTER DZ WITH CARON
 #0x01c5 ""                         "" "" # LATIN CAPITAL LETTER D WITH SMALL LETTER Z WITH CARON
 #0x01c6 ""                         "" "" # LATIN SMALL LETTER DZ WITH CARON
@@ -400,7 +400,7 @@
 #0x01ed ""                         "" "" # LATIN SMALL LETTER O WITH OGONEK AND MACRON
 #0x01ee ""                         "" "" # LATIN CAPITAL LETTER EZH WITH CARON
 #0x01ef ""                         "" "" # LATIN SMALL LETTER EZH WITH CARON
-0x01f0 "\\v{\\j}"                 "" "mathalpha,force=utf8" "\\check{\\jmath}" "" # LATIN SMALL LETTER J WITH CARON
+0x01f0 "\\v{\\j}"                 "" "mathalpha,force=utf8;utf8-cjk" "\\check{\\jmath}" "" # LATIN SMALL LETTER J WITH CARON
 #0x01f1 ""                         "" "" # LATIN CAPITAL LETTER DZ
 #0x01f2 ""                         "" "" # LATIN CAPITAL LETTER D WITH SMALL LETTER Z
 #0x01f3 ""                         "" "" # LATIN SMALL LETTER DZ
@@ -408,8 +408,8 @@
 0x01f5 "\\'{g}"                   "" "mathalpha" "\\acute{g}" # LATIN SMALL LETTER G WITH ACUTE
 #0x01f6 ""                         "" "" # LATIN CAPITAL LETTER HWAIR
 #0x01f7 ""                         "" "" # LATIN CAPITAL LETTER WYNN
-0x01f8 "\\`{N}"                   "" "mathalpha,force=utf8" "\\grave{N}" # LATIN CAPITAL LETTER N WITH GRAVE
-0x01f9 "\\`{n}"                   "" "mathalpha,force=utf8" "\\grave{n}" # LATIN SMALL LETTER N WITH GRAVE
+0x01f8 "\\`{N}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\grave{N}" # LATIN CAPITAL LETTER N WITH GRAVE
+0x01f9 "\\`{n}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\grave{n}" # LATIN SMALL LETTER N WITH GRAVE
 #0x01fa ""                         "" "" # LATIN CAPITAL LETTER A WITH RING ABOVE AND ACUTE
 #0x01fb ""                         "" "" # LATIN SMALL LETTER A WITH RING ABOVE AND ACUTE
 0x01fc "\\'{\\AE}"                "" "force=utf8;utf8-cjk" # LATIN CAPITAL LETTER AE WITH ACUTE
@@ -446,31 +446,31 @@
 0x021b "\\textcommabelow{t}"      "textcommabelow!=utf8;iso8859-16" "" # LATIN SMALL LETTER T WITH COMMA BELOW
 #0x021c ""                         "" "" # LATIN CAPITAL LETTER YOGH
 #0x021d ""                         "" "" # LATIN SMALL LETTER YOGH
-0x021e "\\v{H}"                   "" "mathalpha,force=utf8" "\\check{H}" # LATIN CAPITAL LETTER H WITH CARON
-0x021f "\\v{h}"                   "" "mathalpha,force=utf8" "\\check{h}" # LATIN SMALL LETTER H WITH CARON
+0x021e "\\v{H}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\check{H}" # LATIN CAPITAL LETTER H WITH CARON
+0x021f "\\v{h}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\check{h}" # LATIN SMALL LETTER H WITH CARON
 #0x0220 ""                         "" "" # LATIN CAPITAL LETTER N WITH LONG RIGHT LEG
 #0x0222 ""                         "" "" # LATIN CAPITAL LETTER OU
 #0x0223 ""                         "" "" # LATIN SMALL LETTER OU
 #0x0224 ""                         "" "" # LATIN CAPITAL LETTER Z WITH HOOK
 #0x0225 ""                         "" "" # LATIN SMALL LETTER Z WITH HOOK
-0x0226 "\\.{A}"                   "" "mathalpha,force=utf8" "\\dot{A}" # LATIN CAPITAL LETTER A WITH DOT ABOVE
-0x0227 "\\.{a}"                   "" "mathalpha,force=utf8" "\\dot{a}" # LATIN SMALL LETTER A WITH DOT ABOVE
-0x0228 "\\c{E}"                   "" "mathalpha,force=utf8" "\\cedilla{E}" "accents,cedilla" # LATIN CAPITAL LETTER E WITH CEDILLA
-0x0229 "\\c{e}"                   "" "mathalpha,force=utf8" "\\cedilla{e}" "accents,cedilla" # LATIN SMALL LETTER E WITH CEDILLA
+0x0226 "\\.{A}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\dot{A}" # LATIN CAPITAL LETTER A WITH DOT ABOVE
+0x0227 "\\.{a}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\dot{a}" # LATIN SMALL LETTER A WITH DOT ABOVE
+0x0228 "\\c{E}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\cedilla{E}" "accents,cedilla" # LATIN CAPITAL LETTER E WITH CEDILLA
+0x0229 "\\c{e}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\cedilla{e}" "accents,cedilla" # LATIN SMALL LETTER E WITH CEDILLA
 #0x022a ""                         "" "" # LATIN CAPITAL LETTER O WITH DIAERESIS AND MACRON
 #0x022b ""                         "" "" # LATIN SMALL LETTER O WITH DIAERESIS AND MACRON
 #0x022c ""                         "" "" # LATIN CAPITAL LETTER O WITH TILDE AND MACRON
 #0x022d ""                         "" "" # LATIN SMALL LETTER O WITH TILDE AND MACRON
-0x022e "\\.{O}"                   "" "mathalpha,force=utf8" "\\dot{O}" # LATIN CAPITAL LETTER O WITH DOT ABOVE
-0x022f "\\.{o}"                   "" "mathalpha,force=utf8" "\\dot{o}" # LATIN SMALL LETTER O WITH DOT ABOVE
+0x022e "\\.{O}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\dot{O}" # LATIN CAPITAL LETTER O WITH DOT ABOVE
+0x022f "\\.{o}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\dot{o}" # LATIN SMALL LETTER O WITH DOT ABOVE
 #0x0230 ""                         "" "" # LATIN CAPITAL LETTER O WITH DOT ABOVE AND MACRON
 #0x0231 ""                         "" "" # LATIN SMALL LETTER O WITH DOT ABOVE AND MACRON
-0x0232 "\\={Y}"                   "" "mathalpha,force=utf8" "\\bar{Y}" # LATIN CAPITAL LETTER Y WITH MACRON
-0x0233 "\\={y}"                   "" "mathalpha,force=utf8" "\\bar{y}" # LATIN SMALL LETTER Y WITH MACRON
+0x0232 "\\={Y}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\bar{Y}" # LATIN CAPITAL LETTER Y WITH MACRON
+0x0233 "\\={y}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\bar{y}" # LATIN SMALL LETTER Y WITH MACRON
 #0x0234 ""                         "" "" # LATIN SMALL LETTER L WITH CURL
 0x0235 "\\textctn"                "tipa" "force" # LATIN SMALL LETTER N WITH CURL
 0x0236 "\\textctt"                "tipa" "force" # LATIN SMALL LETTER T WITH CURL
-0x0237 "\\j"                      "" "mathalpha,force=utf8;utf8x" "\\jmath" "" # LATIN SMALL LETTER DOTLESS J
+0x0237 "\\j"                      "" "mathalpha,force=utf8;utf8-cjk;utf8x" "\\jmath" "" # LATIN SMALL LETTER DOTLESS J
 0x0238 "\\textdblig"              "tipx" "force" # LATIN SMALL LETTER DB DIGRAPH
 0x0239 "\\textqplig"              "tipx" "force" # LATIN SMALL LETTER QP DIGRAPH
 #0x023a ""                         "" "" "" "" # LATIN CAPITAL LETTER A WITH STROKE
@@ -1749,7 +1749,7 @@
 # use the following macro for the character HORIZONTAL BAR
 0x2015 "\\LyXbar" "\\newcommand*\\LyXbar{\\rule[0.585ex]{1.2em}{0.25pt}}" "force"
 0x2016 "\\textbardbl"             "textcomp" "force=utf8x,notermination=math,tipashortcut=\\textdoublevertline{}" "\\|" "" # DOUBLE VERTICAL LINE
-0x2017 "\\subdoublebar{ }"        "extraipa" "force=cp850;utf8;utf8x" "" "" # DOUBLE LOW LINE
+0x2017 "\\subdoublebar{ }"        "extraipa" "force=cp850;utf8;utf8-cjk;utf8x" "" "" # DOUBLE LOW LINE
 0x2018 "\\textquoteleft"          "" "force=iso8859-7" # LEFT SINGLE QUOTATION MARK
 0x2019 "\\textquoteright"         "" "force=iso8859-7" # RIGHT SINGLE QUOTATION MARK
 0x201a "\\quotesinglbase"         "" "" # SINGLE LOW-9 QUOTATION MARK
@@ -1762,8 +1762,8 @@
 0x2021 "\\ddag"                   "" "" "\\ddagger" "" # DOUBLE DAGGER
 0x2022 "\\textbullet"             "textcomp" "" "\\bullet" "" # BULLET
 0x2023 "\\textifsymbol[ifgeo]{116}" "ifsym" "force=utf8;utf8x;utf8-cjk" # TRIANGULAR BULLET # ≈ 0x25b8
-0x2024 "."                        "" "notermination=text,force=utf8;utf8x" "" "" # ONE DOT LEADER # ≈ FULL STOP
-0x2025 ".\\,."                    "" "notermination=text,force=utf8;utf8x" "" "" # TWO DOT LEADER
+0x2024 "."                        "" "notermination=text,force=utf8;utf8-cjk;utf8x" "" "" # ONE DOT LEADER # ≈ FULL STOP
+0x2025 ".\\,."                    "" "notermination=text,force=utf8;utf8-cjk;utf8x" "" "" # TWO DOT LEADER
 0x2026 "\\dots"                   "" "force=armscii8" "\\ldots" "" # HORIZONTAL ELLIPSIS
 #0x2027 ""                        "" "notermination=text" "" "" # HYPHENATION POINT (visible symbol used to indicate correct positions for word breaking, looks like but is not 0x00b7 middle dot)
 0x2028 "\\\\"                      "" "" "" "" # LINE SEPARATOR
@@ -1786,11 +1786,11 @@
 0x2039 "\\guilsinglleft"          "" "" # SINGLE LEFT-POINTING ANGLE QUOTATION MARK
 0x203a "\\guilsinglright"         "" "" # SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
 0x203b "\\textreferencemark"      "textcomp" "" # REFERENCE MARK
-0x203c "!!"                       "" "notermination=text,force=utf8;utf8x" "!!" "" # DOUBLE EXCLAMATION MARK # ≈ 2×EXCLAMATION MARK
+0x203c "!!"                       "" "notermination=text,force=utf8;utf8-cjk;utf8x" "!!" "" # DOUBLE EXCLAMATION MARK # ≈ 2×EXCLAMATION MARK
 0x203d "\\textinterrobang"        "textcomp" "" # INTERROBANG
 # use the following macro for the character OVERLINE
 0x203e "\\LyXoverline" "\\newcommand*\\LyXoverline{\\raisebox{2.6ex}{\\_}}" "force=utf8;utf8x;utf8-cjk"
-0x203f "\\textbottomtiebar{ }"    "tipa" "tipashortcut=\\t*{ },force=utf8;utf8x" # UNDERTIE
+0x203f "\\textbottomtiebar{ }"    "tipa" "tipashortcut=\\t*{ },force=utf8;utf8-cjk;utf8x" # UNDERTIE
 #0x2040 ""                         "" "" "" "" # CHARACTER TIE
 #0x2041 ""                         "" "" "" "" # CARET INSERTION POINT
 #0x2042 ""                         "" "" "" "" # ASTERISM
@@ -1798,9 +1798,9 @@
 0x2044 "\\textfractionsolidus"    "textcomp" "force=utf8x" # FRACTION SLASH
 0x2045 "\\textlquill"             "textcomp" "force=utf8;utf8x;utf8-cjk" # LEFT SQUARE BRACKET WITH QUILL
 0x2046 "\\textrquill"             "textcomp" "force=utf8;utf8x;utf8-cjk" # RIGHT SQUARE BRACKET WITH QUILL
-0x2047 "??"                       "" "notermination=text,force=utf8;utf8x" "??" "" # DOUBLE QUESTION MARK # ≈ 2×QUESTION MARK
-0x2048 "?!"                       "" "notermination=text,force=utf8;utf8x" "" "" # QUESTION EXCLAMATION MARK
-0x2049 "!?"                       "" "notermination=text,force=utf8;utf8x" "" "" # EXCLAMATION QUESTION MARK
+0x2047 "??"                       "" "notermination=text,force=utf8;utf8-cjk;utf8x" "??" "" # DOUBLE QUESTION MARK # ≈ 2×QUESTION MARK
+0x2048 "?!"                       "" "notermination=text,force=utf8;utf8-cjk;utf8x" "" "" # QUESTION EXCLAMATION MARK
+0x2049 "!?"                       "" "notermination=text,force=utf8;utf8-cjk;utf8x" "" "" # EXCLAMATION QUESTION MARK
 0x204e "\\textasteriskcentered"   "textcomp" "force=utf8x" "\\ast" "" # LOW ASTERISK
 0x2052 "\\textdiscount"           "textcomp" "force=utf8x" # COMMERCIAL MINUS SIGN
 0x205d ""                         "" "force=utf8;utf8x;utf8-cjk" "\\vdots" ""# TRICOLON # ≈ VERTICAL ELLIPSIS, fails in text mode, if "mathdots" is loaded.
@@ -1823,7 +1823,7 @@
 0x207c "\\textsuperscript{=}"     "" "force=utf8;utf8-cjk" "{{}^=}" "" # SUPERSCRIPT EQUALS SIGN
 0x207d "\\textsuperscript{(}"     "" "force=utf8;utf8-cjk" "{{}^(}" "" # SUPERSCRIPT LEFT PARENTHESIS
 0x207e "\\textsuperscript{)}"     "" "force=utf8;utf8-cjk" "{{}^)}" "" # SUPERSCRIPT RIGHT PARENTHESIS
-0x207f "\\textsuperscript{n}"     "" "force=utf8;cp437;cp437de;cp865" "{{}^n}" "" # SUPERSCRIPT LATIN SMALL LETTER N
+0x207f "\\textsuperscript{n}"     "" "force=utf8;utf8-cjk;cp437;cp437de;cp865" "{{}^n}" "" # SUPERSCRIPT LATIN SMALL LETTER N
 0x2080 "\\textsubscript{0}"       "subscript" "force=utf8;utf8-cjk" "{{}_0}" "" # SUBSCRIPT ZERO
 0x2081 "\\textsubscript{1}"       "subscript" "force=utf8;utf8-cjk" "{{}_1}" "" # SUBSCRIPT ONE
 0x2082 "\\textsubscript{2}"       "subscript" "force=utf8;utf8-cjk" "{{}_2}" "" # SUBSCRIPT TWO
@@ -2091,7 +2091,7 @@
 0x21dd ""                         "" "force=utf8;utf8x;utf8-cjk" "\\rightsquigarrow" "amssymb" # RIGHTWARDS SQUIGGLE ARROW
 # FIXME Yes, these are constructed, but better than a key symbols text.
 0x21de "\\ooalign{\\textuparrow\\cr\\kern.1em\\textdblhyphen}"  "textcomp" "force=utf8;utf8x;utf8-cjk" "" "" #Qt::Key_PageUp, UPWARDS ARROW WITH DOUBLE STROKE = page up "\\nHuparrow" "boisik|stix"
-0x21df "\\ooalign{\\textdownarrow\\cr\\kern.1em\\textdblhyphen}" "textcomp" "force=utf8;utf8x,notermination=text" "" "" # Qt::Key_PageDown, DOWNWARDS ARROW WITH DOUBLE STROKE = page down "\\nHdownarrow" "boisik|stix"
+0x21df "\\ooalign{\\textdownarrow\\cr\\kern.1em\\textdblhyphen}" "textcomp" "force=utf8;utf8-cjk;utf8x,notermination=text" "" "" # Qt::Key_PageDown, DOWNWARDS ARROW WITH DOUBLE STROKE = page down "\\nHdownarrow" "boisik|stix"
 0x21e0 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\dashleftarrow" "amssymb" # LEFTWARDS DASHED ARROW
 #0x21e1 ""                         "" "" "" "" # UPWARDS DASHED ARROW
 0x21e2 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\dashrightarrow" "amssymb" # RIGHTWARDS DASHED ARROW
