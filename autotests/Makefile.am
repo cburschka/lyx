@@ -11,7 +11,7 @@ TEST_FILES = \
 	export/MissingEndLayoutBetweenTables.lyx \
 	export/MissingEndTagDiv.lyx \
 	export/latex/TableErrorIfSlovakTextInserted.lyx \
-	export/latex/utf8-plain-with-tex-fonts.lyx \
+	export/latex/inputenc-utf8-plain.lyx \
 	export/WrongDfnTagHandling.lyx \
 	mathmacros/architecture.lyx \
 	mathmacros/architecture.lyx \
