@@ -2997,7 +2997,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_PARAGRAPH_MARKERS:
 	case LyXRC::RC_PATH_PREFIX:
 		if (lyxrc_orig.path_prefix != lyxrc_new.path_prefix) {
-			prependEnvPath("PATH", lyxrc_new.path_prefix);
+			prependEnvPath("PATH", replaceEnvironmentPath(lyxrc_new.path_prefix));
 			// Resets python path
 			support::os::python(true);
 		}
