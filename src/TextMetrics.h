@@ -97,7 +97,7 @@ public:
 	/// Rebreaks the given paragraph.
 	/// \retval true if a full screen redraw is needed.
 	/// \retval false if a single paragraph redraw is enough.
-	bool redoParagraph(pit_type const pit);
+	bool redoParagraph(pit_type const pit, bool align_rows = true);
 	/// Clear cache of paragraph metrics
 	void clear() { par_metrics_.clear(); }
 	/// Is cache of paragraph metrics empty ?
@@ -145,11 +145,10 @@ private:
 	/// \return true when another row is required (after a newline)
 	bool breakRow(Row & row, int right_margin) const;
 
-	// Expand the alignment of row \param row in paragraph \param par
+	// Expands the alignment of row \param row in paragraph \param par
 	LyXAlignment getAlign(Paragraph const & par, Row const & row) const;
-	/** this calculates the specified parameters. needed when setting
-	 * the cursor and when creating a visible row */
-	void computeRowMetrics(Row & row, int width) const;
+	/// Aligns properly the row contents (computes spaces and fills)
+	void setRowAlignment(Row & row, int width) const;
 
 	/// Set the height of the row (without space above/below paragraph)
 	void setRowHeight(Row & row) const;

@@ -182,11 +182,19 @@ bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim, int min_width,
 	bool changed = false;
 	unsigned int h = 0;
 	for (pit_type pit = 0; pit != npar; ++pit) {
-		changed |= redoParagraph(pit);
+		// create rows, but do not set alignment yet
+		changed |= redoParagraph(pit, false);
 		ParagraphMetrics const & pm = par_metrics_[pit];
 		h += pm.height();
 		if (dim_.wid < pm.width())
 			dim_.wid = pm.width();
+	}
+
+	// Now set alignment for all rows (the width might not have been known before).
+	for (pit_type pit = 0; pit != npar; ++pit) {
+		ParagraphMetrics & pm = par_metrics_[pit];
+		for (Row & row : pm.rows())
+			setRowAlignment(row, dim_.wid);
 	}
 
 	dim_.asc = par_metrics_[0].ascent();
@@ -354,7 +362,7 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 }
 
 
-bool TextMetrics::redoParagraph(pit_type const pit)
+bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 {
 	Paragraph & par = text_->getPar(pit);
 	// IMPORTANT NOTE: We pass 'false' explicitly in order to not call
@@ -474,14 +482,14 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 			/* If there is more than one row or the row has been
 			 * broken by a display inset or a newline, expand the text
 			 * to the full allowable width. This setting here is
-			 * needed for the computeRowMetrics() below.
+			 * needed for the setRowAlignment() below.
 			 * We do nothing when inside a table cell.
 			 */
 			if (dim_.wid < max_width_)
 				dim_.wid = max_width_;
 		}
-		int const max_row_width = max(dim_.wid, row.width());
-		computeRowMetrics(row, max_row_width);
+		if (align_rows)
+			setRowAlignment(row, max(dim_.wid, row.width()));
 		first = row.endpos();
 		++row_index;
 
@@ -588,7 +596,7 @@ LyXAlignment TextMetrics::getAlign(Paragraph const & par, Row const & row) const
 }
 
 
-void TextMetrics::computeRowMetrics(Row & row, int width) const
+void TextMetrics::setRowAlignment(Row & row, int width) const
 {
 	row.label_hfill = 0;
 	row.separator = 0;
