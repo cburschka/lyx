@@ -891,22 +891,25 @@ int Paragraph::Private::latexSurrogatePair(BufferParams const & bparams,
 	}
 	docstring latex2 = encoding.latexChar(c).first;
 
-	if (docstring(1, next) == latex1) {
+	// Handle combining characters in "script" context (i.e., \textgreek and \textcyrillic)
+	docstring::size_type const brace1 = latex2.find_first_of(from_ascii("{"));
+	docstring::size_type const brace2 = latex2.find_last_of(from_ascii("}"));
+	string script = to_ascii(latex2.substr(1, brace1 - 1));
+	// "Script chars" need to embraced in \textcyrillic and \textgreek notwithstanding
+	// whether they are encodable or not (it only depends on the font encoding),
+	// except if we are using fontspec.
+	bool scriptchar = false;
+	if (!bparams.useNonTeXFonts)
+		// This will get us a script value to deal with below
+		scriptchar = Encodings::isKnownScriptChar(c, script);
+
+	if (!scriptchar && docstring(1, next) == latex1) {
 		// The encoding supports the combination:
 		// output as is (combining char after base char).
 		os << latex2 << latex1;
 		return latex1.length() + latex2.length();
 	}
 
-	// Handle combining characters in "script" context (i.e., \textgreek and \textcyrillic)
-	docstring::size_type const brace1 = latex2.find_first_of(from_ascii("{"));
-	docstring::size_type const brace2 = latex2.find_last_of(from_ascii("}"));
-	string script = to_ascii(latex2.substr(1, brace1 - 1));
-	// "Script chars" need to embraced in \textcyrillic and \textgreek notwithstanding
-	// whether they are encodable or not (it only depends on the font encoding)
-	if (!runparams.isFullUnicode())
-		// This will get us a script value to deal with below
-		Encodings::isKnownScriptChar(c, script);
 	int pos = 0;
 	int length = brace2;
 	string fontenc;
@@ -1392,8 +1395,9 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		string fontenc;
 		fontenc = running_font.language()->fontenc(bparams);
 		// "Script chars" need to embraced in \textcyrillic and \textgreek notwithstanding
-		// whether they are encodable or not (it only depends on the font encoding)
-		if (!runparams.isFullUnicode() && Encodings::isKnownScriptChar(c, script)) {
+		// whether they are encodable or not (it only depends on the font encoding),
+		// except if we are using fontspec.
+		if (!bparams.useNonTeXFonts && Encodings::isKnownScriptChar(c, script)) {
 			docstring const wrapper = from_ascii("\\" + script + "{");
 			docstring ltx = latex.first;
 			if (!prefixIs(ltx, wrapper))
