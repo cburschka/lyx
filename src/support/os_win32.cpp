@@ -158,6 +158,11 @@ void init(int argc, char ** argv[])
 	 */
 
 
+	// Remove PYTHONPATH from the environment as it may point to an
+	// external python installation and cause reconfigure failures.
+	unsetEnv("PYTHONPATH");
+
+
 #if defined(_MSC_VER) && (_MSC_VER >= 1900)
 	// Removing an argument from argv leads to an assertion on Windows
 	// when compiling with MSVC 2015 in debug mode (see bug #10440).
