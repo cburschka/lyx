@@ -224,7 +224,7 @@
 0x0146 "\\c{n}"                   "textbaltic" "mathalpha,force=utf8" "\\cedilla{n}" "accents,cedilla" # LATIN SMALL LETTER N WITH CEDILLA (actually a comma accent, Latvian)
 0x0147 "\\v{N}"                   "" "mathalpha" "\\check{N}" # LATIN CAPITAL LETTER N WITH CARON
 0x0148 "\\v{n}"                   "" "mathalpha" "\\check{n}" # LATIN SMALL LETTER N WITH CARON
-0x0149 "'n"                       "" "force=utf8;utf8x,deprecated" "" "" # LATIN SMALL LETTER N PRECEDED BY APOSTROPHE
+0x0149 "'n"                       "" "force=utf8;utf8-cjk;utf8x,deprecated" "" "" # LATIN SMALL LETTER N PRECEDED BY APOSTROPHE
 0x014a "\\NG"                     "" "" "" "" # LATIN CAPITAL LETTER ENG
 0x014b "\\ng"                     "" "tipashortcut=N" "" "" # LATIN SMALL LETTER ENG
 0x014c "\\={O}"                   "" "mathalpha" "\\bar{O}" # LATIN CAPITAL LETTER O WITH MACRON
@@ -349,7 +349,7 @@
 0x01c0 "\\textpipe"               "tipa" "force,tipashortcut=|" # LATIN LETTER DENTAL CLICK
 0x01c1 "\\textdoublepipe"         "tipa" "force,tipashortcut=||" # LATIN LETTER LATERAL CLICK
 0x01c2 "\\textdoublebarpipe"      "tipa" "force" # LATIN LETTER ALVEOLAR CLICK
-0x01c3 "!"                        "" "force=utf8;utf8x,notermination=text" "" "" # LATIN LETTER RETROFLEX CLICK
+0x01c3 "!"                        "" "force=utf8;utf8-cjk;utf8x,notermination=text" "" "" # LATIN LETTER RETROFLEX CLICK
 #0x01c4 ""                         "" "" # LATIN CAPITAL LETTER DZ WITH CARON
 #0x01c5 ""                         "" "" # LATIN CAPITAL LETTER D WITH SMALL LETTER Z WITH CARON
 #0x01c6 ""                         "" "" # LATIN SMALL LETTER DZ WITH CARON
@@ -394,7 +394,7 @@
 #0x01ed ""                         "" "" # LATIN SMALL LETTER O WITH OGONEK AND MACRON
 #0x01ee ""                         "" "" # LATIN CAPITAL LETTER EZH WITH CARON
 #0x01ef ""                         "" "" # LATIN SMALL LETTER EZH WITH CARON
-0x01f0 "\\v{\\j}"                 "" "mathalpha,force=utf8" "\\check{\\jmath}" "" # LATIN SMALL LETTER J WITH CARON
+0x01f0 "\\v{\\j}"                 "" "mathalpha,force=utf8;utf8-cjk" "\\check{\\jmath}" "" # LATIN SMALL LETTER J WITH CARON
 #0x01f1 ""                         "" "" # LATIN CAPITAL LETTER DZ
 #0x01f2 ""                         "" "" # LATIN CAPITAL LETTER D WITH SMALL LETTER Z
 #0x01f3 ""                         "" "" # LATIN SMALL LETTER DZ
@@ -402,14 +402,14 @@
 0x01f5 "\\'{g}"                   "" "mathalpha" "\\acute{g}" # LATIN SMALL LETTER G WITH ACUTE
 #0x01f6 ""                         "" "" # LATIN CAPITAL LETTER HWAIR
 #0x01f7 ""                         "" "" # LATIN CAPITAL LETTER WYNN
-0x01f8 "\\`{N}"                   "" "mathalpha,force=utf8" "\\grave{N}" # LATIN CAPITAL LETTER N WITH GRAVE
-0x01f9 "\\`{n}"                   "" "mathalpha,force=utf8" "\\grave{n}" # LATIN SMALL LETTER N WITH GRAVE
+0x01f8 "\\`{N}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\grave{N}" # LATIN CAPITAL LETTER N WITH GRAVE
+0x01f9 "\\`{n}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\grave{n}" # LATIN SMALL LETTER N WITH GRAVE
 #0x01fa ""                         "" "" # LATIN CAPITAL LETTER A WITH RING ABOVE AND ACUTE
 #0x01fb ""                         "" "" # LATIN SMALL LETTER A WITH RING ABOVE AND ACUTE
-0x01fc "\\'{\\AE}"                "" "force=utf8" # LATIN CAPITAL LETTER AE WITH ACUTE
-0x01fd "\\'{\\ae}"                "" "force=utf8" # LATIN SMALL LETTER AE WITH ACUTE
-0x01fe "\\'{\\O}"                 "" "force=utf8" # LATIN CAPITAL LETTER O WITH STROKE AND ACUTE
-0x01ff "\\'{\\o}"                 "" "force=utf8" # LATIN SMALL LETTER O WITH STROKE AND ACUTE
+0x01fc "\\'{\\AE}"                "" "force=utf8;utf8-cjk" # LATIN CAPITAL LETTER AE WITH ACUTE
+0x01fd "\\'{\\ae}"                "" "force=utf8;utf8-cjk" # LATIN SMALL LETTER AE WITH ACUTE
+0x01fe "\\'{\\O}"                 "" "force=utf8;utf8-cjk" # LATIN CAPITAL LETTER O WITH STROKE AND ACUTE
+0x01ff "\\'{\\o}"                 "" "force=utf8;utf8-cjk" # LATIN SMALL LETTER O WITH STROKE AND ACUTE
 0x0200 "\\textdoublegrave{A}"     "tipa" "force,mathalpha" "\\dgrave{A}" "tipasymb,dgrave" # LATIN CAPITAL LETTER A WITH DOUBLE GRAVE
 0x0201 "\\textdoublegrave{a}"     "tipa" "force,mathalpha" "\\dgrave{a}" "tipasymb,dgrave" # LATIN SMALL LETTER A WITH DOUBLE GRAVE
 0x0202 "\\textroundcap{A}"        "tipa" "force,mathalpha" "\\rcap{A}" "tipasymb,rcap" # LATIN CAPITAL LETTER A WITH INVERTED BREVE
@@ -440,31 +440,31 @@
 0x021b "\\textcommabelow{t}"      "textcommabelow" "force" # LATIN SMALL LETTER T WITH COMMA BELOW
 #0x021c ""                         "" "" # LATIN CAPITAL LETTER YOGH
 #0x021d ""                         "" "" # LATIN SMALL LETTER YOGH
-0x021e "\\v{H}"                   "" "mathalpha,force=utf8" "\\check{H}" # LATIN CAPITAL LETTER H WITH CARON
-0x021f "\\v{h}"                   "" "mathalpha,force=utf8" "\\check{h}" # LATIN SMALL LETTER H WITH CARON
+0x021e "\\v{H}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\check{H}" # LATIN CAPITAL LETTER H WITH CARON
+0x021f "\\v{h}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\check{h}" # LATIN SMALL LETTER H WITH CARON
 #0x0220 ""                         "" "" # LATIN CAPITAL LETTER N WITH LONG RIGHT LEG
 #0x0222 ""                         "" "" # LATIN CAPITAL LETTER OU
 #0x0223 ""                         "" "" # LATIN SMALL LETTER OU
 #0x0224 ""                         "" "" # LATIN CAPITAL LETTER Z WITH HOOK
 #0x0225 ""                         "" "" # LATIN SMALL LETTER Z WITH HOOK
-0x0226 "\\.{A}"                   "" "mathalpha,force=utf8" "\\dot{A}" # LATIN CAPITAL LETTER A WITH DOT ABOVE
-0x0227 "\\.{a}"                   "" "mathalpha,force=utf8" "\\dot{a}" # LATIN SMALL LETTER A WITH DOT ABOVE
-0x0228 "\\c{E}"                   "" "mathalpha,force=utf8" "\\cedilla{E}" "accents,cedilla" # LATIN CAPITAL LETTER E WITH CEDILLA
-0x0229 "\\c{e}"                   "" "mathalpha,force=utf8" "\\cedilla{e}" "accents,cedilla" # LATIN SMALL LETTER E WITH CEDILLA
+0x0226 "\\.{A}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\dot{A}" # LATIN CAPITAL LETTER A WITH DOT ABOVE
+0x0227 "\\.{a}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\dot{a}" # LATIN SMALL LETTER A WITH DOT ABOVE
+0x0228 "\\c{E}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\cedilla{E}" "accents,cedilla" # LATIN CAPITAL LETTER E WITH CEDILLA
+0x0229 "\\c{e}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\cedilla{e}" "accents,cedilla" # LATIN SMALL LETTER E WITH CEDILLA
 #0x022a ""                         "" "" # LATIN CAPITAL LETTER O WITH DIAERESIS AND MACRON
 #0x022b ""                         "" "" # LATIN SMALL LETTER O WITH DIAERESIS AND MACRON
 #0x022c ""                         "" "" # LATIN CAPITAL LETTER O WITH TILDE AND MACRON
 #0x022d ""                         "" "" # LATIN SMALL LETTER O WITH TILDE AND MACRON
-0x022e "\\.{O}"                   "" "mathalpha,force=utf8" "\\dot{O}" # LATIN CAPITAL LETTER O WITH DOT ABOVE
-0x022f "\\.{o}"                   "" "mathalpha,force=utf8" "\\dot{o}" # LATIN SMALL LETTER O WITH DOT ABOVE
+0x022e "\\.{O}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\dot{O}" # LATIN CAPITAL LETTER O WITH DOT ABOVE
+0x022f "\\.{o}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\dot{o}" # LATIN SMALL LETTER O WITH DOT ABOVE
 #0x0230 ""                         "" "" # LATIN CAPITAL LETTER O WITH DOT ABOVE AND MACRON
 #0x0231 ""                         "" "" # LATIN SMALL LETTER O WITH DOT ABOVE AND MACRON
-0x0232 "\\={Y}"                   "" "mathalpha,force=utf8" "\\bar{Y}" # LATIN CAPITAL LETTER Y WITH MACRON
-0x0233 "\\={y}"                   "" "mathalpha,force=utf8" "\\bar{y}" # LATIN SMALL LETTER Y WITH MACRON
+0x0232 "\\={Y}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\bar{Y}" # LATIN CAPITAL LETTER Y WITH MACRON
+0x0233 "\\={y}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\bar{y}" # LATIN SMALL LETTER Y WITH MACRON
 #0x0234 ""                         "" "" # LATIN SMALL LETTER L WITH CURL
 0x0235 "\\textctn"                "tipa" "force" # LATIN SMALL LETTER N WITH CURL
 0x0236 "\\textctt"                "tipa" "force" # LATIN SMALL LETTER T WITH CURL
-0x0237 "\\j"                      "" "mathalpha,force=utf8;utf8x" "\\jmath" "" # LATIN SMALL LETTER DOTLESS J
+0x0237 "\\j"                      "" "mathalpha,force=utf8;utf8-cjk;utf8x" "\\jmath" "" # LATIN SMALL LETTER DOTLESS J
 0x0238 "\\textdblig"              "tipx" "force" # LATIN SMALL LETTER DB DIGRAPH
 0x0239 "\\textqplig"              "tipx" "force" # LATIN SMALL LETTER QP DIGRAPH
 #0x023a ""                         "" "" "" "" # LATIN CAPITAL LETTER A WITH STROKE
@@ -591,19 +591,19 @@
 #
 # 6 Spacing Modifier Letters
 #
-0x02b0 "\\textsuperscript{h}"      "" "force=utf8" # MODIFIER LETTER SMALL H
+0x02b0 "\\textsuperscript{h}"      "" "force=utf8;utf8-cjk" # MODIFIER LETTER SMALL H
 0x02b1 "\\textsuperscript{\\texthth}"  "tipa" "force" # MODIFIER LETTER SMALL H WITH HOOK
-0x02b2 "\\textsuperscript{j}"      "" "force=utf8" # MODIFIER LETTER SMALL J
-0x02b3 "\\textsuperscript{r}"      "" "force=utf8" # MODIFIER LETTER SMALL R
+0x02b2 "\\textsuperscript{j}"      "" "force=utf8;utf8-cjk" # MODIFIER LETTER SMALL J
+0x02b3 "\\textsuperscript{r}"      "" "force=utf8;utf8-cjk" # MODIFIER LETTER SMALL R
 0x02b4 "\\textsuperscript{\\textturnr}" "tipa" "force" # MODIFIER LETTER SMALL TURNED R
 0x02b5 "\\textsuperscript{\\textturnrrtail}" "tipa" "force" # MODIFIER LETTER SMALL TURNED R WITH HOOK
 0x02b6 "\\textsuperscript{\\textinvscr}" "tipa" "force" # MODIFIER LETTER SMALL CAPITAL INVERTED R
-0x02b7 "\\textsuperscript{w}"      "" "force=utf8" # MODIFIER LETTER SMALL W
-0x02b8 "\\textsuperscript{y}"      "" "force=utf8" # MODIFIER LETTER SMALL Y
-0x02b9 "\\textasciiacute"          "textcomp" "force=utf8;utf8x" # MODIFIER LETTER PRIME
-0x02ba "\\textacutedbl"            "textcomp" "force=utf8;utf8x" # MODIFIER LETTER DOUBLE PRIME
-0x02bb "\\textquoteleft"           "" "force=utf8;utf8x" # MODIFIER LETTER TURNED COMMA
-0x02bc "'"                         "" "notermination=both,force=utf8;utf8x" # MODIFIER LETTER APOSTROPHE
+0x02b7 "\\textsuperscript{w}"      "" "force=utf8;utf8-cjk" # MODIFIER LETTER SMALL W
+0x02b8 "\\textsuperscript{y}"      "" "force=utf8;utf8-cjk" # MODIFIER LETTER SMALL Y
+0x02b9 "\\textasciiacute"          "textcomp" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER PRIME
+0x02ba "\\textacutedbl"            "textcomp" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER DOUBLE PRIME
+0x02bb "\\textquoteleft"           "" "force=utf8;utf8x;utf8-cjk;iso8859-7" # MODIFIER LETTER TURNED COMMA
+0x02bc "'"                         "" "notermination=both,force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER APOSTROPHE
 0x02bd "\\textrevapostrophe"       "tipa" "force" # MODIFIER LETTER REVERSED COMMA
 #0x02be ""                         "" "" # MODIFIER LETTER RIGHT HALF RING
 #0x02bf ""                         "" "" # MODIFIER LETTER LEFT HALF RING
@@ -616,11 +616,11 @@
 0x02c6 "\\^{ }"                   "" "" # MODIFIER LETTER CIRCUMFLEX ACCENT
 0x02c7 "\\v{ }"                   "" "" # CARON
 0x02c8 "\\textprimstress"         "tipa" "force" # MODIFIER LETTER VERTICAL LINE
-0x02c9 "\\={ }"                   "" "force=utf8" # MODIFIER LETTER MACRON
-0x02ca "\\'{ }"                   "" "force=utf8" # MODIFIER LETTER ACUTE ACCENT
-0x02cb "\\`{ }"                   "" "force=utf8" # MODIFIER LETTER GRAVE ACCENT
+0x02c9 "\\={ }"                   "" "force=utf8;utf8-cjk" # MODIFIER LETTER MACRON
+0x02ca "\\'{ }"                   "" "force=utf8;utf8-cjk" # MODIFIER LETTER ACUTE ACCENT
+0x02cb "\\`{ }"                   "" "force=utf8;utf8-cjk" # MODIFIER LETTER GRAVE ACCENT
 0x02cc "\\textsecstress"          "tipa" "force" # MODIFIER LETTER LOW VERTICAL LINE
-0x02cd "\\b{ }"                   "" "force=utf8" # MODIFIER LETTER LOW MACRON
+0x02cd "\\b{ }"                   "" "force=utf8;utf8-cjk" # MODIFIER LETTER LOW MACRON
 0x02ce "\\textsubgrave{ }"        "tipa" "force" # MODIFIER LETTER LOW GRAVE ACCENT
 0x02cf "\\textsubacute{ }"        "tipa" "force" # MODIFIER LETTER LOW ACUTE ACCENT
 0x02d0 "\\textlengthmark"         "tipa" "force,tipashortcut=:" # MODIFIER LETTER TRIANGULAR COLON
@@ -629,20 +629,20 @@
 #0x02d3 ""                         "" "" # MODIFIER LETTER CENTRED LEFT HALF RING
 0x02d4 "\\textraising{ }"         "tipa" "force" # MODIFIER LETTER UP TACK
 0x02d5 "\\textlowering{ }"        "tipa" "force" # MODIFIER LETTER DOWN TACK
-0x02d6 ""                         "" "notermination=math,force=utf8;utf8x" "+" # MODIFIER LETTER PLUS SIGN
-0x02d7 ""                         "" "notermination=math,force=utf8;utf8x" "-" # MODIFIER LETTER MINUS SIGN
-0x02d8 "\\u{ }"                   "" "" # BREVE
-0x02d9 "\\.{ }"                   "" "force=utf8" # DOT ABOVE
-0x02da "\\r{ }"                   "" "force=utf8" # RING ABOVE
-0x02db "\\k{ }"                   "" "force=utf8" # OGONEK
+0x02d6 ""                         "" "notermination=math,force=utf8;utf8x;utf8-cjk" "+" # MODIFIER LETTER PLUS SIGN
+0x02d7 ""                         "" "notermination=math,force=utf8;utf8x;utf8-cjk" "-" # MODIFIER LETTER MINUS SIGN
+0x02d8 "\\textasciibreve"         "textcomp" "" # BREVE
+0x02d9 "\\.{ }"                   "" "force=utf8;utf8-cjk" # DOT ABOVE
+0x02da "\\r{ }"                   "" "force=utf8;utf8-cjk" # RING ABOVE
+0x02db "\\k{ }"                   "" "force=utf8;utf8-cjk" # OGONEK
 0x02dc "\\~{ }"                   "" "" # SMALL TILDE
-0x02dd "\\H{ }"                   "" "" # DOUBLE ACUTE ACCENT
+0x02dd "\\H{ }"                   "" "force=utf8;utf8-cjk" # DOUBLE ACUTE ACCENT
 0x02de "\\textrhoticity"          "tipa" "force" # MODIFIER LETTER RHOTIC HOOK
 #0x02df "\\textovercross{ }"       "tipa" "force" # MODIFIER LETTER CROSS ACCENT
 0x02e0 "\\textsuperscript{\\textgamma}"  "tipa" "force" # MODIFIER LETTER SMALL GAMMA
-0x02e1 "\\textsuperscript{l}"     "" "force=utf8;utf8x" # MODIFIER LETTER SMALL L
-0x02e2 "\\textsuperscript{s}"     "" "force=utf8;utf8x" # MODIFIER LETTER SMALL S
-0x02e3 "\\textsuperscript{x}"     "" "force=utf8;utf8x" # MODIFIER LETTER SMALL X
+0x02e1 "\\textsuperscript{l}"     "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL L
+0x02e2 "\\textsuperscript{s}"     "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL S
+0x02e3 "\\textsuperscript{x}"     "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL X
 0x02e4 "\\textsuperscript{\\textrevglotstop}" "tipa" "force" # MODIFIER LETTER SMALL REVERSED GLOTTAL STOP
 0x02e5 "\\tone{55}"               "tone" "force" # MODIFIER LETTER EXTRA-HIGH TONE BAR
 0x02e6 "\\tone{44}"               "tone" "force" # MODIFIER LETTER HIGH TONE BAR
@@ -1138,69 +1138,69 @@
 #0x1d29 ""                         "" "" # GREEK LETTER SMALL CAPITAL RHO
 #0x1d2a ""                         "" "" # GREEK LETTER SMALL CAPITAL PSI
 #0x1d2b ""                         "" "" # CYRILLIC LETTER SMALL CAPITAL EL
-0x1d2c "\\textsuperscript{A}"      "" "force=utf8;utf8x" # MODIFIER LETTER CAPITAL A
-0x1d2d "\\textsuperscript{\\AE}"   "" "force=utf8;utf8x" # MODIFIER LETTER CAPITAL AE
-0x1d2e "\\textsuperscript{B}"      "" "force=utf8;utf8x" # MODIFIER LETTER CAPITAL B
+0x1d2c "\\textsuperscript{A}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER CAPITAL A
+0x1d2d "\\textsuperscript{\\AE}"   "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER CAPITAL AE
+0x1d2e "\\textsuperscript{B}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER CAPITAL B
 #0x1d2f ""                         "" "" # MODIFIER LETTER CAPITAL BARRED B
-0x1d30 "\\textsuperscript{D}"      "" "force=utf8;utf8x" # MODIFIER LETTER CAPITAL D
-0x1d31 "\\textsuperscript{E}"      "" "force=utf8;utf8x" # MODIFIER LETTER CAPITAL E
+0x1d30 "\\textsuperscript{D}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER CAPITAL D
+0x1d31 "\\textsuperscript{E}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER CAPITAL E
 #0x1d32 ""                         "" "" # MODIFIER LETTER CAPITAL REVERSED E
-0x1d33 "\\textsuperscript{G}"      "" "force=utf8;utf8x" # MODIFIER LETTER CAPITAL G
-0x1d34 "\\textsuperscript{H}"      "" "force=utf8;utf8x" # MODIFIER LETTER CAPITAL H
-0x1d35 "\\textsuperscript{I}"      "" "force=utf8;utf8x" # MODIFIER LETTER CAPITAL I
-0x1d36 "\\textsuperscript{J}"      "" "force=utf8;utf8x" # MODIFIER LETTER CAPITAL J
-0x1d37 "\\textsuperscript{K}"      "" "force=utf8;utf8x" # MODIFIER LETTER CAPITAL K
-0x1d38 "\\textsuperscript{L}"      "" "force=utf8;utf8x" # MODIFIER LETTER CAPITAL L
-0x1d39 "\\textsuperscript{M}"      "" "force=utf8;utf8x" # MODIFIER LETTER CAPITAL M
-0x1d3a "\\textsuperscript{N}"      "" "force=utf8;utf8x" # MODIFIER LETTER CAPITAL N
+0x1d33 "\\textsuperscript{G}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER CAPITAL G
+0x1d34 "\\textsuperscript{H}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER CAPITAL H
+0x1d35 "\\textsuperscript{I}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER CAPITAL I
+0x1d36 "\\textsuperscript{J}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER CAPITAL J
+0x1d37 "\\textsuperscript{K}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER CAPITAL K
+0x1d38 "\\textsuperscript{L}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER CAPITAL L
+0x1d39 "\\textsuperscript{M}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER CAPITAL M
+0x1d3a "\\textsuperscript{N}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER CAPITAL N
 #0x1d3b ""                         "" "" # MODIFIER LETTER CAPITAL REVERSED N
-0x1d3c "\\textsuperscript{O}"      "" "force=utf8;utf8x" # MODIFIER LETTER CAPITAL O
+0x1d3c "\\textsuperscript{O}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER CAPITAL O
 #0x1d3d ""                         "" "" # MODIFIER LETTER CAPITAL OU
-0x1d3e "\\textsuperscript{P}"      "" "force=utf8;utf8x" # MODIFIER LETTER CAPITAL P
-0x1d3f "\\textsuperscript{R}"      "" "force=utf8;utf8x" # MODIFIER LETTER CAPITAL R
-0x1d40 "\\textsuperscript{T}"      "" "force=utf8;utf8x" # MODIFIER LETTER CAPITAL T
-0x1d41 "\\textsuperscript{U}"      "" "force=utf8;utf8x" # MODIFIER LETTER CAPITAL U
-0x1d42 "\\textsuperscript{W}"      "" "force=utf8;utf8x" # MODIFIER LETTER CAPITAL W
-0x1d43 "\\textsuperscript{a}"      "" "force=utf8;utf8x" # MODIFIER LETTER SMALL A
+0x1d3e "\\textsuperscript{P}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER CAPITAL P
+0x1d3f "\\textsuperscript{R}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER CAPITAL R
+0x1d40 "\\textsuperscript{T}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER CAPITAL T
+0x1d41 "\\textsuperscript{U}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER CAPITAL U
+0x1d42 "\\textsuperscript{W}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER CAPITAL W
+0x1d43 "\\textsuperscript{a}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL A
 0x1d44 "\\textsuperscript{\\textturna}" "tipa" "force" # MODIFIER LETTER SMALL TURNED A
 0x1d45 "\\textsuperscript{\\textscripta}" "tipa" "force" # MODIFIER LETTER SMALL ALPHA
 #0x1d46 ""                         "" "" # MODIFIER LETTER SMALL TURNED AE
-0x1d47 "\\textsuperscript{b}"      "" "force=utf8;utf8x" # MODIFIER LETTER SMALL B
-0x1d48 "\\textsuperscript{d}"      "" "force=utf8;utf8x" # MODIFIER LETTER SMALL D
-0x1d49 "\\textsuperscript{e}"      "" "force=utf8;utf8x" # MODIFIER LETTER SMALL E
+0x1d47 "\\textsuperscript{b}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL B
+0x1d48 "\\textsuperscript{d}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL D
+0x1d49 "\\textsuperscript{e}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL E
 0x1d4a "\\textsuperscript{\\textschwa}" "tipa" "force" # MODIFIER LETTER SMALL SCHWA
 0x1d4b "\\textsuperscript{\\textepsilon}" "tipa" "force" # MODIFIER LETTER SMALL OPEN E
 0x1d4c "\\textsuperscript{\\textrevepsilon}" "tipa" "force" # MODIFIER LETTER SMALL TURNED OPEN E
-0x1d4d "\\textsuperscript{g}"       "" "force=utf8;utf8x" # MODIFIER LETTER SMALL G
+0x1d4d "\\textsuperscript{g}"       "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL G
 #0x1d4e ""                         "" "" # MODIFIER LETTER SMALL TURNED I
-0x1d4f "\\textsuperscript{k}"      "" "force=utf8;utf8x" # MODIFIER LETTER SMALL K
-0x1d50 "\\textsuperscript{m}"      "" "force=utf8;utf8x" # MODIFIER LETTER SMALL M
+0x1d4f "\\textsuperscript{k}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL K
+0x1d50 "\\textsuperscript{m}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL M
 0x1d51 "\\textsuperscript{\\ng}"   "tipa" "force" # MODIFIER LETTER SMALL ENG
-0x1d52 "\\textsuperscript{o}"      "" "force=utf8;utf8x" # MODIFIER LETTER SMALL O
+0x1d52 "\\textsuperscript{o}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL O
 0x1d53 "\\textsuperscript{\\textopeno}" "tipa" "force" # MODIFIER LETTER SMALL OPEN O
 #0x1d54 ""                         "" "" # MODIFIER LETTER SMALL TOP HALF O
 #0x1d55 ""                         "" "" # MODIFIER LETTER SMALL BOTTOM HALF O
-0x1d56 "\\textsuperscript{p}"      "" "force=utf8;utf8x" # MODIFIER LETTER SMALL P
-0x1d57 "\\textsuperscript{t}"      "" "force=utf8;utf8x" # MODIFIER LETTER SMALL T
-0x1d58 "\\textsuperscript{u}"      "" "force=utf8;utf8x" # MODIFIER LETTER SMALL U
+0x1d56 "\\textsuperscript{p}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL P
+0x1d57 "\\textsuperscript{t}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL T
+0x1d58 "\\textsuperscript{u}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL U
 #0x1d59 ""                         "" "" # MODIFIER LETTER SMALL SIDEWAYS U
 0x1d5a "\\textsuperscript{\\textturnm}" "tipa" "force" # MODIFIER LETTER SMALL TURNED M
-0x1d5b "\\textsuperscript{v}"      "" "force=utf8;utf8x" # MODIFIER LETTER SMALL V
+0x1d5b "\\textsuperscript{v}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL V
 #0x1d5c ""                         "" "" # MODIFIER LETTER SMALL AIN
-0x1d5d "\\textsuperscript{\\textgreek{b}}" "textgreek" "force=utf8;utf8x" # MODIFIER LETTER SMALL BETA
-0x1d5e "\\textsuperscript{\\textgreek{g}}" "textgreek" "force=utf8;utf8x" # MODIFIER LETTER SMALL GREEK GAMMA
-0x1d5f "\\textsuperscript{\\textgreek{d}}" "textgreek" "force=utf8;utf8x" # MODIFIER LETTER SMALL DELTA
-0x1d60 "\\textsuperscript{\\textgreek{f}}" "textgreek" "force=utf8;utf8x" # MODIFIER LETTER SMALL GREEK PHI
-0x1d61 "\\textsuperscript{\\textgreek{q}}" "textgreek" "force=utf8;utf8x" # MODIFIER LETTER SMALL CHI
-0x1d62 "\\textsubscript{i}"       "subscript" "force=utf8;utf8x" "{{}_i}" "" # LATIN SUBSCRIPT SMALL LETTER I
-0x1d63 "\\textsubscript{r}"       "subscript" "force=utf8;utf8x" "{{}_r}" "" # LATIN SUBSCRIPT SMALL LETTER R
-0x1d64 "\\textsubscript{u}"       "subscript" "force=utf8;utf8x" "{{}_u}" "" # LATIN SUBSCRIPT SMALL LETTER U
-0x1d65 "\\textsubscript{v}"       "subscript" "force=utf8;utf8x" "{{}_v}" "" # LATIN SUBSCRIPT SMALL LETTER V
-0x1d66 "\\textsubscript{\\textgreek{b}}" "subscript,textgreek" "force=utf8;utf8x" "{{}_\\beta}" "" # GREEK SUBSCRIPT SMALL LETTER BETA
-0x1d67 "\\textsubscript{\\textgreek{g}}" "subscript,textgreek" "force=utf8;utf8x" "{{}_\\gamma}" "" # GREEK SUBSCRIPT SMALL LETTER GAMMA
-0x1d68 "\\textsubscript{\\textgreek{r}}" "subscript,textgreek" "force=utf8;utf8x" "{{}_\\rho}" "" # GREEK SUBSCRIPT SMALL LETTER RHO
-0x1d69 "\\textsubscript{\\textgreek{f}}" "subscript,textgreek" "force=utf8;utf8x" "{{}_\\phi}" "" # GREEK SUBSCRIPT SMALL LETTER PHI
-0x1d6a "\\textsubscript{\\textgreek{q}}" "subscript,textgreek" "force=utf8;utf8x" "{{}_\\chi}" "" # GREEK SUBSCRIPT SMALL LETTER CHI
+0x1d5d "\\textsuperscript{\\textgreek{\\textbeta}}" "textgreek" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL BETA
+0x1d5e "\\textsuperscript{\\textgreek{\\textgamma}}" "textgreek" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL GREEK GAMMA
+0x1d5f "\\textsuperscript{\\textgreek{\\textdelta}}" "textgreek" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL DELTA
+0x1d60 "\\textsuperscript{\\textgreek{\\textphi}}" "textgreek" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL GREEK PHI
+0x1d61 "\\textsuperscript{\\textgreek{\\textchi}}" "textgreek" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL CHI
+0x1d62 "\\textsubscript{i}"       "subscript" "force=utf8;utf8x;utf8-cjk" "{{}_i}" "" # LATIN SUBSCRIPT SMALL LETTER I
+0x1d63 "\\textsubscript{r}"       "subscript" "force=utf8;utf8x;utf8-cjk" "{{}_r}" "" # LATIN SUBSCRIPT SMALL LETTER R
+0x1d64 "\\textsubscript{u}"       "subscript" "force=utf8;utf8x;utf8-cjk" "{{}_u}" "" # LATIN SUBSCRIPT SMALL LETTER U
+0x1d65 "\\textsubscript{v}"       "subscript" "force=utf8;utf8x;utf8-cjk" "{{}_v}" "" # LATIN SUBSCRIPT SMALL LETTER V
+0x1d66 "\\textsubscript{\\textgreek{\\textbeta}}" "subscript,textgreek" "force=utf8;utf8x;utf8-cjk" "{{}_\\beta}" "" # GREEK SUBSCRIPT SMALL LETTER BETA
+0x1d67 "\\textsubscript{\\textgreek{\\textgamma}}" "subscript,textgreek" "force=utf8;utf8x;utf8-cjk" "{{}_\\gamma}" "" # GREEK SUBSCRIPT SMALL LETTER GAMMA
+0x1d68 "\\textsubscript{\\textgreek{\\textrho}}" "subscript,textgreek" "force=utf8;utf8x;utf8-cjk" "{{}_\\rho}" "" # GREEK SUBSCRIPT SMALL LETTER RHO
+0x1d69 "\\textsubscript{\\textgreek{\\textphi}}" "subscript,textgreek" "force=utf8;utf8x;utf8-cjk" "{{}_\\phi}" "" # GREEK SUBSCRIPT SMALL LETTER PHI
+0x1d6a "\\textsubscript{\\textgreek{\\textchi}}" "subscript,textgreek" "force=utf8;utf8x;utf8-cjk" "{{}_\\chi}" "" # GREEK SUBSCRIPT SMALL LETTER CHI
 #0x1d6b ""                         "" "" # LATIN SMALL LETTER UE
 #0x1d6c ""                         "" "" # LATIN SMALL LETTER B WITH MIDDLE TILDE
 0x1d6d "\\textsuperimposetilde{d}" "tipa" "force" # LATIN SMALL LETTER D WITH MIDDLE TILDE
@@ -1235,20 +1235,20 @@
 0x1e01 "\\textsubring{a}"         "tipa" "force,mathalpha" "\\subring{a}" "accents,subring" # LATIN SMALL LETTER A WITH RING BELOW
 0x1e02 "\\.{B}"                   "" "mathalpha" "\\dot{B}" # LATIN CAPITAL LETTER B WITH DOT ABOVE
 0x1e03 "\\.{b}"                   "" "mathalpha" "\\dot{b}" # LATIN SMALL LETTER B WITH DOT ABOVE
-0x1e04 "\\d{B}"                   "" "force=utf8,mathalpha" "\\subdot{B}" "accents,subdot" # LATIN CAPITAL LETTER B WITH DOT BELOW
-0x1e05 "\\d{b}"                   "" "force=utf8,mathalpha" "\\subdot{b}" "accents,subdot" # LATIN SMALL LETTER B WITH DOT BELOW
-0x1e06 "\\b{B}"                   "" "force=utf8" # LATIN CAPITAL LETTER B WITH LINE BELOW
-0x1e07 "\\b{b}"                   "" "force=utf8" # LATIN SMALL LETTER B WITH LINE BELOW
+0x1e04 "\\d{B}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{B}" "accents,subdot" # LATIN CAPITAL LETTER B WITH DOT BELOW
+0x1e05 "\\d{b}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{b}" "accents,subdot" # LATIN SMALL LETTER B WITH DOT BELOW
+0x1e06 "\\b{B}"                   "" "force=utf8;utf8-cjk" # LATIN CAPITAL LETTER B WITH LINE BELOW
+0x1e07 "\\b{b}"                   "" "force=utf8;utf8-cjk" # LATIN SMALL LETTER B WITH LINE BELOW
 #0x1e08 ""                         "" "" # LATIN CAPITAL LETTER C WITH CEDILLA AND ACUTE
 #0x1e09 ""                         "" "" # LATIN SMALL LETTER C WITH CEDILLA AND ACUTE
-0x1e0a "\\.{D}"                   "" "force=utf8,mathalpha" "\\dot{D}" # LATIN CAPITAL LETTER D WITH DOT ABOVE
-0x1e0b "\\.{d}"                   "" "force=utf8,mathalpha" "\\dot{d}" # LATIN SMALL LETTER D WITH DOT ABOVE
-0x1e0c "\\d{D}"                   "" "force=utf8,mathalpha" "\\subdot{D}" "accents,subdot" # LATIN CAPITAL LETTER D WITH DOT BELOW
-0x1e0d "\\d{d}"                   "" "force=utf8,mathalpha" "\\subdot{d}" "accents,subdot" # LATIN SMALL LETTER D WITH DOT BELOW
-0x1e0e "\\b{D}"                   "" "force=utf8" # LATIN CAPITAL LETTER D WITH LINE BELOW
-0x1e0f "\\b{d}"                   "" "force=utf8" # LATIN SMALL LETTER D WITH LINE BELOW
-0x1e10 "\\c{D}"                   "" "force=utf8,mathalpha" "\\cedilla{D}" "accents,cedilla" # LATIN CAPITAL LETTER D WITH CEDILLA
-0x1e11 "\\c{d}"                   "" "force=utf8,mathalpha" "\\cedilla{d}" "accents,cedilla" # LATIN SMALL LETTER D WITH CEDILLA
+0x1e0a "\\.{D}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{D}" # LATIN CAPITAL LETTER D WITH DOT ABOVE
+0x1e0b "\\.{d}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{d}" # LATIN SMALL LETTER D WITH DOT ABOVE
+0x1e0c "\\d{D}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{D}" "accents,subdot" # LATIN CAPITAL LETTER D WITH DOT BELOW
+0x1e0d "\\d{d}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{d}" "accents,subdot" # LATIN SMALL LETTER D WITH DOT BELOW
+0x1e0e "\\b{D}"                   "" "force=utf8;utf8-cjk" # LATIN CAPITAL LETTER D WITH LINE BELOW
+0x1e0f "\\b{d}"                   "" "force=utf8;utf8-cjk" # LATIN SMALL LETTER D WITH LINE BELOW
+0x1e10 "\\c{D}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\cedilla{D}" "accents,cedilla" # LATIN CAPITAL LETTER D WITH CEDILLA
+0x1e11 "\\c{d}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\cedilla{d}" "accents,cedilla" # LATIN SMALL LETTER D WITH CEDILLA
 0x1e12 "\\textsubcircum{D}"       "tipa" "force,mathalpha" "\\subhat{D}" "accents,subhat" # LATIN CAPITAL LETTER D WITH CIRCUMFLEX BELOW
 0x1e13 "\\textsubcircum{d}"       "tipa" "force,mathalpha" "\\subhat{d}" "accents,subhat" # LATIN SMALL LETTER D WITH CIRCUMFLEX BELOW
 #0x1e14 ""                         "" "" # LATIN CAPITAL LETTER E WITH MACRON AND GRAVE
@@ -1261,50 +1261,50 @@
 0x1e1b "\\textsubtilde{e}"        "tipa" "force,mathalpha" "\\subtilde{e}" "accents,subtilde" # LATIN SMALL LETTER E WITH TILDE BELOW
 #0x1e1c ""                         "" "" # LATIN CAPITAL LETTER E WITH CEDILLA AND BREVE
 #0x1e1d ""                         "" "" # LATIN SMALL LETTER E WITH CEDILLA AND BREVE
-0x1e1e "\\.{F}"                   "" "force=utf8,mathalpha" "\\dot{F}" # LATIN CAPITAL LETTER F WITH DOT ABOVE
-0x1e1f "\\.{f}"                   "" "force=utf8,mathalpha" "\\dot{f}" # LATIN SMALL LETTER F WITH DOT ABOVE
-0x1e20 "\\={G}"                   "" "force=utf8" # LATIN CAPITAL LETTER G WITH MACRON
-0x1e21 "\\={g}"                   "" "force=utf8," # LATIN SMALL LETTER G WITH MACRON
-0x1e22 "\\.{H}"                   "" "force=utf8,mathalpha" "\\dot{H}" # LATIN CAPITAL LETTER H WITH DOT ABOVE
-0x1e23 "\\.{h}"                   "" "force=utf8,mathalpha" "\\dot{h}" # LATIN SMALL LETTER H WITH DOT ABOVE
-0x1e24 "\\d{H}"                   "" "force=utf8,mathalpha" "\\subdot{H}" "accents,subdot" # LATIN CAPITAL LETTER H WITH DOT BELOW
-0x1e25 "\\d{h}"                   "" "force=utf8,mathalpha" "\\subdot{h}" "accents,subdot" # LATIN SMALL LETTER H WITH DOT BELOW
-0x1e26 "\\\"{H}"                  "" "force=utf8,mathalpha" "\\ddot{H}" # LATIN CAPITAL LETTER H WITH DIAERESIS
-0x1e27 "\\\"{h}"                  "" "force=utf8,mathalpha" "\\ddot{h}" # LATIN SMALL LETTER H WITH DIAERESIS
-0x1e28 "\\c{H}"                   "" "force=utf8,mathalpha" "\\cedilla{H}" "accents,cedilla" # LATIN CAPITAL LETTER H WITH CEDILLA
-0x1e29 "\\c{h}"                   "" "force=utf8,mathalpha" "\\cedilla{h}" "accents,cedilla" # LATIN SMALL LETTER H WITH CEDILLA
+0x1e1e "\\.{F}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{F}" # LATIN CAPITAL LETTER F WITH DOT ABOVE
+0x1e1f "\\.{f}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{f}" # LATIN SMALL LETTER F WITH DOT ABOVE
+0x1e20 "\\={G}"                   "" "force=utf8;utf8-cjk" # LATIN CAPITAL LETTER G WITH MACRON
+0x1e21 "\\={g}"                   "" "force=utf8;utf8-cjk," # LATIN SMALL LETTER G WITH MACRON
+0x1e22 "\\.{H}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{H}" # LATIN CAPITAL LETTER H WITH DOT ABOVE
+0x1e23 "\\.{h}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{h}" # LATIN SMALL LETTER H WITH DOT ABOVE
+0x1e24 "\\d{H}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{H}" "accents,subdot" # LATIN CAPITAL LETTER H WITH DOT BELOW
+0x1e25 "\\d{h}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{h}" "accents,subdot" # LATIN SMALL LETTER H WITH DOT BELOW
+0x1e26 "\\\"{H}"                  "" "force=utf8;utf8-cjk,mathalpha" "\\ddot{H}" # LATIN CAPITAL LETTER H WITH DIAERESIS
+0x1e27 "\\\"{h}"                  "" "force=utf8;utf8-cjk,mathalpha" "\\ddot{h}" # LATIN SMALL LETTER H WITH DIAERESIS
+0x1e28 "\\c{H}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\cedilla{H}" "accents,cedilla" # LATIN CAPITAL LETTER H WITH CEDILLA
+0x1e29 "\\c{h}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\cedilla{h}" "accents,cedilla" # LATIN SMALL LETTER H WITH CEDILLA
 #0x1e2a ""                         "" "" # LATIN CAPITAL LETTER H WITH BREVE BELOW
 #0x1e2b ""                         "" "" # LATIN SMALL LETTER H WITH BREVE BELOW
 0x1e2c "\\textsubtilde{I}"        "tipa" "force,mathalpha" "\\subtilde{I}" "accents,subtilde" # LATIN CAPITAL LETTER I WITH TILDE BELOW
 0x1e2d "\\textsubtilde{i}"        "tipa" "force,mathalpha" "\\subtilde{i}" "accents,subtilde" # LATIN SMALL LETTER I WITH TILDE BELOW
 #0x1e2e ""                         "" "" # LATIN CAPITAL LETTER I WITH DIAERESIS AND ACUTE
 #0x1e2f ""                         "" "" # LATIN SMALL LETTER I WITH DIAERESIS AND ACUTE
-0x1e30 "\\'{K}"                   "" "force=utf8,mathalpha" "\\acute{K}" # LATIN CAPITAL LETTER K WITH ACUTE
-0x1e31 "\\'{k}"                   "" "force=utf8,mathalpha" "\\acute{k}" # LATIN SMALL LETTER K WITH ACUTE
-0x1e32 "\\d{K}"                   "" "force=utf8,mathalpha" "\\subdot{K}" "accents,subdot" # LATIN CAPITAL LETTER K WITH DOT BELOW
-0x1e33 "\\d{k}"                   "" "force=utf8,mathalpha" "\\subdot{k}" "accents,subdot" # LATIN SMALL LETTER K WITH DOT BELOW
-0x1e34 "\\b{K}"                   "" "force=utf8" # LATIN CAPITAL LETTER K WITH LINE BELOW
-0x1e35 "\\b{k}"                   "" "force=utf8" # LATIN SMALL LETTER K WITH LINE BELOW
-0x1e36 "\\d{L}"                   "" "force=utf8,mathalpha" "\\subdot{L}" "accents,subdot" # LATIN CAPITAL LETTER L WITH DOT BELOW
-0x1e37 "\\d{l}"                   "" "force=utf8,mathalpha" "\\subdot{l}" "accents,subdot" # LATIN SMALL LETTER L WITH DOT BELOW
+0x1e30 "\\'{K}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\acute{K}" # LATIN CAPITAL LETTER K WITH ACUTE
+0x1e31 "\\'{k}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\acute{k}" # LATIN SMALL LETTER K WITH ACUTE
+0x1e32 "\\d{K}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{K}" "accents,subdot" # LATIN CAPITAL LETTER K WITH DOT BELOW
+0x1e33 "\\d{k}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{k}" "accents,subdot" # LATIN SMALL LETTER K WITH DOT BELOW
+0x1e34 "\\b{K}"                   "" "force=utf8;utf8-cjk" # LATIN CAPITAL LETTER K WITH LINE BELOW
+0x1e35 "\\b{k}"                   "" "force=utf8;utf8-cjk" # LATIN SMALL LETTER K WITH LINE BELOW
+0x1e36 "\\d{L}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{L}" "accents,subdot" # LATIN CAPITAL LETTER L WITH DOT BELOW
+0x1e37 "\\d{l}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{l}" "accents,subdot" # LATIN SMALL LETTER L WITH DOT BELOW
 #0x1e38 ""                         "" "" # LATIN CAPITAL LETTER L WITH DOT BELOW AND MACRON
 #0x1e39 ""                         "" "" # LATIN SMALL LETTER L WITH DOT BELOW AND MACRON
-0x1e3a "\\b{L}"                   "" "force=utf8" # LATIN CAPITAL LETTER L WITH LINE BELOW
-0x1e3b "\\b{l}"                   "" "force=utf8" # LATIN SMALL LETTER L WITH LINE BELOW
+0x1e3a "\\b{L}"                   "" "force=utf8;utf8-cjk" # LATIN CAPITAL LETTER L WITH LINE BELOW
+0x1e3b "\\b{l}"                   "" "force=utf8;utf8-cjk" # LATIN SMALL LETTER L WITH LINE BELOW
 0x1e3c "\\textsubcircum{L}"       "tipa" "force,mathalpha" "\\subhat{L}" "accents,subhat" # LATIN CAPITAL LETTER L WITH CIRCUMFLEX BELOW
 0x1e3d "\\textsubcircum{l}"       "tipa" "force,mathalpha" "\\subhat{l}" "accents,subhat" # LATIN SMALL LETTER L WITH CIRCUMFLEX BELOW
-0x1e3e "\\'{M}"                   "" "force=utf8,mathalpha" "\\acute{M}" # LATIN CAPITAL LETTER M WITH ACUTE
-0x1e3f "\\'{m}"                   "" "force=utf8,mathalpha" "\\acute{m}" # LATIN SMALL LETTER M WITH ACUTE
-0x1e40 "\\.{M}"                   "" "force=utf8,mathalpha" "\\dot{M}" # LATIN CAPITAL LETTER M WITH DOT ABOVE
-0x1e41 "\\.{m}"                   "" "force=utf8,mathalpha" "\\dot{m}" # LATIN SMALL LETTER M WITH DOT ABOVE
-0x1e42 "\\d{M}"                   "" "force=utf8,mathalpha" "\\subdot{M}" "accents,subdot" # LATIN CAPITAL LETTER M WITH DOT BELOW
-0x1e43 "\\d{m}"                   "" "force=utf8,mathalpha" "\\subdot{m}" "accents,subdot" # LATIN SMALL LETTER M WITH DOT BELOW
-0x1e44 "\\.{N}"                   "" "force=utf8,mathalpha" "\\dot{N}" # LATIN CAPITAL LETTER N WITH DOT ABOVE
-0x1e45 "\\.{n}"                   "" "force=utf8,mathalpha" "\\dot{n}" # LATIN SMALL LETTER N WITH DOT ABOVE
-0x1e46 "\\d{N}"                   "" "force=utf8,mathalpha" "\\subdot{N}" "accents,subdot" # LATIN CAPITAL LETTER N WITH DOT BELOW
-0x1e47 "\\d{n}"                   "" "force=utf8,mathalpha" "\\subdot{n}" "accents,subdot" # LATIN SMALL LETTER N WITH DOT BELOW
-0x1e48 "\\b{N}"                   "" "force=utf8" # LATIN CAPITAL LETTER N WITH LINE BELOW
-0x1e49 "\\b{n}"                   "" "force=utf8" # LATIN SMALL LETTER N WITH LINE BELOW
+0x1e3e "\\'{M}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\acute{M}" # LATIN CAPITAL LETTER M WITH ACUTE
+0x1e3f "\\'{m}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\acute{m}" # LATIN SMALL LETTER M WITH ACUTE
+0x1e40 "\\.{M}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{M}" # LATIN CAPITAL LETTER M WITH DOT ABOVE
+0x1e41 "\\.{m}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{m}" # LATIN SMALL LETTER M WITH DOT ABOVE
+0x1e42 "\\d{M}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{M}" "accents,subdot" # LATIN CAPITAL LETTER M WITH DOT BELOW
+0x1e43 "\\d{m}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{m}" "accents,subdot" # LATIN SMALL LETTER M WITH DOT BELOW
+0x1e44 "\\.{N}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{N}" # LATIN CAPITAL LETTER N WITH DOT ABOVE
+0x1e45 "\\.{n}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{n}" # LATIN SMALL LETTER N WITH DOT ABOVE
+0x1e46 "\\d{N}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{N}" "accents,subdot" # LATIN CAPITAL LETTER N WITH DOT BELOW
+0x1e47 "\\d{n}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{n}" "accents,subdot" # LATIN SMALL LETTER N WITH DOT BELOW
+0x1e48 "\\b{N}"                   "" "force=utf8;utf8-cjk" # LATIN CAPITAL LETTER N WITH LINE BELOW
+0x1e49 "\\b{n}"                   "" "force=utf8;utf8-cjk" # LATIN SMALL LETTER N WITH LINE BELOW
 0x1e4a "\\textsubcircum{N}"       "tipa" "force,mathalpha" "\\subhat{N}" "accents,subhat" # LATIN CAPITAL LETTER N WITH CIRCUMFLEX BELOW
 0x1e4b "\\textsubcircum{n}"       "tipa" "force,mathalpha" "\\subhat{n}" "accents,subhat" # LATIN SMALL LETTER N WITH CIRCUMFLEX BELOW
 #0x1e4c ""                         "" "" # LATIN CAPITAL LETTER O WITH TILDE AND ACUTE
@@ -1315,34 +1315,34 @@
 #0x1e51 ""                         "" "" # LATIN SMALL LETTER O WITH MACRON AND GRAVE
 #0x1e52 ""                         "" "" # LATIN CAPITAL LETTER O WITH MACRON AND ACUTE
 #0x1e53 ""                         "" "" # LATIN SMALL LETTER O WITH MACRON AND ACUTE
-0x1e54 "\\'{P}"                   "" "force=utf8,mathalpha" "\\acute{P}" # LATIN CAPITAL LETTER P WITH ACUTE
-0x1e55 "\\'{p}"                   "" "force=utf8,mathalpha" "\\acute{p}" # LATIN SMALL LETTER P WITH ACUTE
-0x1e56 "\\.{P}"                   "" "force=utf8,mathalpha" "\\dot{P}" # LATIN CAPITAL LETTER P WITH DOT ABOVE
-0x1e57 "\\.{p}"                   "" "force=utf8,mathalpha" "\\dot{p}" # LATIN SMALL LETTER P WITH DOT ABOVE
-0x1e58 "\\.{R}"                   "" "force=utf8,mathalpha" "\\dot{R}" # LATIN CAPITAL LETTER R WITH DOT ABOVE
-0x1e59 "\\.{r}"                   "" "force=utf8,mathalpha" "\\dot{r}" # LATIN SMALL LETTER R WITH DOT ABOVE
-0x1e5a "\\d{R}"                   "" "force=utf8,mathalpha" "\\subdot{R}" "accents,subdot" # LATIN CAPITAL LETTER R WITH DOT BELOW
-0x1e5b "\\d{r}"                   "" "force=utf8,mathalpha" "\\subdot{r}" "accents,subdot" # LATIN SMALL LETTER R WITH DOT BELOW
+0x1e54 "\\'{P}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\acute{P}" # LATIN CAPITAL LETTER P WITH ACUTE
+0x1e55 "\\'{p}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\acute{p}" # LATIN SMALL LETTER P WITH ACUTE
+0x1e56 "\\.{P}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{P}" # LATIN CAPITAL LETTER P WITH DOT ABOVE
+0x1e57 "\\.{p}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{p}" # LATIN SMALL LETTER P WITH DOT ABOVE
+0x1e58 "\\.{R}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{R}" # LATIN CAPITAL LETTER R WITH DOT ABOVE
+0x1e59 "\\.{r}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{r}" # LATIN SMALL LETTER R WITH DOT ABOVE
+0x1e5a "\\d{R}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{R}" "accents,subdot" # LATIN CAPITAL LETTER R WITH DOT BELOW
+0x1e5b "\\d{r}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{r}" "accents,subdot" # LATIN SMALL LETTER R WITH DOT BELOW
 #0x1e5c ""                         "" "" # LATIN CAPITAL LETTER R WITH DOT BELOW AND MACRON
 #0x1e5d ""                         "" "" # LATIN SMALL LETTER R WITH DOT BELOW AND MACRON
-0x1e5e "\\b{R}"                   "" "force=utf8" # LATIN CAPITAL LETTER R WITH LINE BELOW
-0x1e5f "\\b{r}"                   "" "force=utf8" # LATIN SMALL LETTER R WITH LINE BELOW
-0x1e60 "\\.{S}"                   "" "force=utf8,mathalpha" "\\dot{S}" # LATIN CAPITAL LETTER S WITH DOT ABOVE
-0x1e61 "\\.{s}"                   "" "force=utf8,mathalpha" "\\dot{s}" # LATIN SMALL LETTER S WITH DOT ABOVE
-0x1e62 "\\d{S}"                   "" "force=utf8,mathalpha" "\\subdot{S}" "accents,subdot" # LATIN CAPITAL LETTER S WITH DOT BELOW
-0x1e63 "\\d{s}"                   "" "force=utf8,mathalpha" "\\subdot{s}" "accents,subdot" # LATIN SMALL LETTER S WITH DOT BELOW
+0x1e5e "\\b{R}"                   "" "force=utf8;utf8-cjk" # LATIN CAPITAL LETTER R WITH LINE BELOW
+0x1e5f "\\b{r}"                   "" "force=utf8;utf8-cjk" # LATIN SMALL LETTER R WITH LINE BELOW
+0x1e60 "\\.{S}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{S}" # LATIN CAPITAL LETTER S WITH DOT ABOVE
+0x1e61 "\\.{s}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{s}" # LATIN SMALL LETTER S WITH DOT ABOVE
+0x1e62 "\\d{S}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{S}" "accents,subdot" # LATIN CAPITAL LETTER S WITH DOT BELOW
+0x1e63 "\\d{s}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{s}" "accents,subdot" # LATIN SMALL LETTER S WITH DOT BELOW
 #0x1e64 ""                         "" "" # LATIN CAPITAL LETTER S WITH ACUTE AND DOT ABOVE
 #0x1e65 ""                         "" "" # LATIN SMALL LETTER S WITH ACUTE AND DOT ABOVE
 #0x1e66 ""                         "" "" # LATIN CAPITAL LETTER S WITH CARON AND DOT ABOVE
 #0x1e67 ""                         "" "" # LATIN SMALL LETTER S WITH CARON AND DOT ABOVE
 #0x1e68 ""                         "" "" # LATIN CAPITAL LETTER S WITH DOT BELOW AND DOT ABOVE
 #0x1e69 ""                         "" "" # LATIN SMALL LETTER S WITH DOT BELOW AND DOT ABOVE
-0x1e6a "\\.{T}"                   "" "force=utf8,mathalpha" "\\dot{T}" # LATIN CAPITAL LETTER T WITH DOT ABOVE
-0x1e6b "\\.{t}"                   "" "force=utf8,mathalpha" "\\dot{t}" # LATIN SMALL LETTER T WITH DOT ABOVE
-0x1e6c "\\d{T}"                   "" "force=utf8,mathalpha" "\\subdot{T}" "accents,subdot" # LATIN CAPITAL LETTER T WITH DOT BELOW
-0x1e6d "\\d{t}"                   "" "force=utf8,mathalpha" "\\subdot{t}" "accents,subdot" # LATIN SMALL LETTER T WITH DOT BELOW
-0x1e6e "\\b{T}"                   "" "force=utf8" # LATIN CAPITAL LETTER T WITH LINE BELOW
-0x1e6f "\\b{t}"                   "" "force=utf8" # LATIN SMALL LETTER T WITH LINE BELOW
+0x1e6a "\\.{T}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{T}" # LATIN CAPITAL LETTER T WITH DOT ABOVE
+0x1e6b "\\.{t}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{t}" # LATIN SMALL LETTER T WITH DOT ABOVE
+0x1e6c "\\d{T}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{T}" "accents,subdot" # LATIN CAPITAL LETTER T WITH DOT BELOW
+0x1e6d "\\d{t}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{t}" "accents,subdot" # LATIN SMALL LETTER T WITH DOT BELOW
+0x1e6e "\\b{T}"                   "" "force=utf8;utf8-cjk" # LATIN CAPITAL LETTER T WITH LINE BELOW
+0x1e6f "\\b{t}"                   "" "force=utf8;utf8-cjk" # LATIN SMALL LETTER T WITH LINE BELOW
 0x1e70 "\\textsubcircum{T}"       "tipa" "force,mathalpha" "\\subhat{T}" "accents,subhat" # LATIN CAPITAL LETTER T WITH CIRCUMFLEX BELOW
 0x1e71 "\\textsubcircum{t}"       "tipa" "force,mathalpha" "\\subhat{t}" "accents,subhat" # LATIN SMALL LETTER T WITH CIRCUMFLEX BELOW
 0x1e72 "\\textsubumlaut{U}"       "tipa" "force" # LATIN CAPITAL LETTER U WITH DIAERESIS BELOW
@@ -1355,41 +1355,41 @@
 #0x1e79 ""                         "" "" # LATIN SMALL LETTER U WITH TILDE AND ACUTE
 #0x1e7a ""                         "" "" # LATIN CAPITAL LETTER U WITH MACRON AND DIAERESIS
 #0x1e7b ""                         "" "" # LATIN SMALL LETTER U WITH MACRON AND DIAERESIS
-0x1e7c "\\~{V}"                   "" "force=utf8,mathalpha" "\\tilde{V}" # LATIN CAPITAL LETTER V WITH TILDE
-0x1e7d "\\~{v}"                   "" "force=utf8,mathalpha" "\\tilde{v}" # LATIN SMALL LETTER V WITH TILDE
-0x1e7e "\\d{V}"                   "" "force=utf8,mathalpha" "\\subdot{V}" "accents,subdot" # LATIN CAPITAL LETTER V WITH DOT BELOW
-0x1e7f "\\d{v}"                   "" "force=utf8,mathalpha" "\\subdot{v}" "accents,subdot" # LATIN SMALL LETTER V WITH DOT BELOW
-0x1e80 "\\`{W}"                   "" "force=utf8,mathalpha" "\\grave{W}" # LATIN CAPITAL LETTER W WITH GRAVE
-0x1e81 "\\`{w}"                   "" "force=utf8,mathalpha" "\\grave{w}" # LATIN SMALL LETTER W WITH GRAVE
-0x1e82 "\\'{W}"                   "" "force=utf8,mathalpha" "\\acute{W}" # LATIN CAPITAL LETTER W WITH ACUTE
-0x1e83 "\\'{w}"                   "" "force=utf8,mathalpha" "\\acute{w}" # LATIN SMALL LETTER W WITH ACUTE
-0x1e84 "\\\"{W}"                  "" "force=utf8,mathalpha" "\\ddot{W}" # LATIN CAPITAL LETTER W WITH DIAERESIS
-0x1e85 "\\\"{w}"                  "" "force=utf8,mathalpha" "\\ddot{w}" # LATIN SMALL LETTER W WITH DIAERESIS
-0x1e86 "\\.{W}"                   "" "force=utf8,mathalpha" "\\dot{W}" # LATIN CAPITAL LETTER W WITH DOT ABOVE
-0x1e87 "\\.{w}"                   "" "force=utf8,mathalpha" "\\dot{w}" # LATIN SMALL LETTER W WITH DOT ABOVE
-0x1e88 "\\d{W}"                   "" "force=utf8,mathalpha" "\\subdot{W}" "accents,subdot" # LATIN CAPITAL LETTER W WITH DOT BELOW
-0x1e89 "\\d{w}"                   "" "force=utf8,mathalpha" "\\subdot{w}" "accents,subdot" # LATIN SMALL LETTER W WITH DOT BELOW
-0x1e8a "\\.{X}"                   "" "force=utf8,mathalpha" "\\dot{X}" # LATIN CAPITAL LETTER X WITH DOT ABOVE
-0x1e8b "\\.{x}"                   "" "force=utf8,mathalpha" "\\dot{x}" # LATIN SMALL LETTER X WITH DOT ABOVE
-0x1e8c "\\\"{X}"                  "" "force=utf8,mathalpha" "\\ddot{X}" # LATIN CAPITAL LETTER X WITH DIAERESIS
-0x1e8d "\\\"{x}"                  "" "force=utf8,mathalpha" "\\ddot{x}" # LATIN SMALL LETTER X WITH DIAERESIS
-0x1e8e "\\.{Y}"                   "" "force=utf8,mathalpha" "\\dot{Y}" # LATIN CAPITAL LETTER Y WITH DOT ABOVE
-0x1e8f "\\.{y}"                   "" "force=utf8,mathalpha" "\\dot{y}" # LATIN SMALL LETTER Y WITH DOT ABOVE
-0x1e90 "\\^{Z}"                   "" "force=utf8,mathalpha" "\\hat{Z}" # LATIN CAPITAL LETTER Z WITH CIRCUMFLEX
-0x1e91 "\\^{z}"                   "" "force=utf8,mathalpha" "\\hat{z}" # LATIN SMALL LETTER Z WITH CIRCUMFLEX
-0x1e92 "\\d{Z}"                   "" "force=utf8,mathalpha" "\\subdot{Z}" "accents,subdot" # LATIN CAPITAL LETTER Z WITH DOT BELOW
-0x1e93 "\\d{z}"                   "" "force=utf8,mathalpha" "\\subdot{z}" "accents,subdot" # LATIN SMALL LETTER Z WITH DOT BELOW
-0x1e94 "\\b{Z}"                   "" "force=utf8" # LATIN CAPITAL LETTER Z WITH LINE BELOW
-0x1e95 "\\b{z}"                   "" "force=utf8" # LATIN SMALL LETTER Z WITH LINE BELOW
-0x1e96 "\\b{h}"                   "" "force=utf8" # LATIN SMALL LETTER H WITH LINE BELOW
-0x1e97 "\\\"{t}"                  "" "force=utf8,mathalpha" "\\ddot{t}" # LATIN SMALL LETTER T WITH DIAERESIS
-0x1e98 "\\r{w}"                   "" "force=utf8,mathalpha" "\\mathring{w}" # LATIN SMALL LETTER W WITH RING ABOVE
-0x1e99 "\\r{y}"                   "" "force=utf8,mathalpha" "\\mathring{y}" # LATIN SMALL LETTER Y WITH RING ABOVE
+0x1e7c "\\~{V}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\tilde{V}" # LATIN CAPITAL LETTER V WITH TILDE
+0x1e7d "\\~{v}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\tilde{v}" # LATIN SMALL LETTER V WITH TILDE
+0x1e7e "\\d{V}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{V}" "accents,subdot" # LATIN CAPITAL LETTER V WITH DOT BELOW
+0x1e7f "\\d{v}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{v}" "accents,subdot" # LATIN SMALL LETTER V WITH DOT BELOW
+0x1e80 "\\`{W}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\grave{W}" # LATIN CAPITAL LETTER W WITH GRAVE
+0x1e81 "\\`{w}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\grave{w}" # LATIN SMALL LETTER W WITH GRAVE
+0x1e82 "\\'{W}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\acute{W}" # LATIN CAPITAL LETTER W WITH ACUTE
+0x1e83 "\\'{w}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\acute{w}" # LATIN SMALL LETTER W WITH ACUTE
+0x1e84 "\\\"{W}"                  "" "force=utf8;utf8-cjk,mathalpha" "\\ddot{W}" # LATIN CAPITAL LETTER W WITH DIAERESIS
+0x1e85 "\\\"{w}"                  "" "force=utf8;utf8-cjk,mathalpha" "\\ddot{w}" # LATIN SMALL LETTER W WITH DIAERESIS
+0x1e86 "\\.{W}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{W}" # LATIN CAPITAL LETTER W WITH DOT ABOVE
+0x1e87 "\\.{w}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{w}" # LATIN SMALL LETTER W WITH DOT ABOVE
+0x1e88 "\\d{W}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{W}" "accents,subdot" # LATIN CAPITAL LETTER W WITH DOT BELOW
+0x1e89 "\\d{w}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{w}" "accents,subdot" # LATIN SMALL LETTER W WITH DOT BELOW
+0x1e8a "\\.{X}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{X}" # LATIN CAPITAL LETTER X WITH DOT ABOVE
+0x1e8b "\\.{x}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{x}" # LATIN SMALL LETTER X WITH DOT ABOVE
+0x1e8c "\\\"{X}"                  "" "force=utf8;utf8-cjk,mathalpha" "\\ddot{X}" # LATIN CAPITAL LETTER X WITH DIAERESIS
+0x1e8d "\\\"{x}"                  "" "force=utf8;utf8-cjk,mathalpha" "\\ddot{x}" # LATIN SMALL LETTER X WITH DIAERESIS
+0x1e8e "\\.{Y}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{Y}" # LATIN CAPITAL LETTER Y WITH DOT ABOVE
+0x1e8f "\\.{y}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{y}" # LATIN SMALL LETTER Y WITH DOT ABOVE
+0x1e90 "\\^{Z}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\hat{Z}" # LATIN CAPITAL LETTER Z WITH CIRCUMFLEX
+0x1e91 "\\^{z}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\hat{z}" # LATIN SMALL LETTER Z WITH CIRCUMFLEX
+0x1e92 "\\d{Z}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{Z}" "accents,subdot" # LATIN CAPITAL LETTER Z WITH DOT BELOW
+0x1e93 "\\d{z}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{z}" "accents,subdot" # LATIN SMALL LETTER Z WITH DOT BELOW
+0x1e94 "\\b{Z}"                   "" "force=utf8;utf8-cjk" # LATIN CAPITAL LETTER Z WITH LINE BELOW
+0x1e95 "\\b{z}"                   "" "force=utf8;utf8-cjk" # LATIN SMALL LETTER Z WITH LINE BELOW
+0x1e96 "\\b{h}"                   "" "force=utf8;utf8-cjk" # LATIN SMALL LETTER H WITH LINE BELOW
+0x1e97 "\\\"{t}"                  "" "force=utf8;utf8-cjk,mathalpha" "\\ddot{t}" # LATIN SMALL LETTER T WITH DIAERESIS
+0x1e98 "\\r{w}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\mathring{w}" # LATIN SMALL LETTER W WITH RING ABOVE
+0x1e99 "\\r{y}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\mathring{y}" # LATIN SMALL LETTER Y WITH RING ABOVE
 #0x1e9a ""                         "" "" # LATIN SMALL LETTER A WITH RIGHT HALF RING
 #0x1e9b ""                         "" "" # LATIN SMALL LETTER LONG S WITH DOT ABOVE
-0x1e9e "\\SS"                     "" "force=utf8;utf8x" "" "" # LATIN CAPITAL LETTER SHARP S
-0x1ea0 "\\d{A}"                   "" "force=utf8,mathalpha" "\\subdot{A}" "accents,subdot" # LATIN CAPITAL LETTER A WITH DOT BELOW
-0x1ea1 "\\d{a}"                   "" "force=utf8,mathalpha" "\\subdot{a}" "accents,subdot" # LATIN SMALL LETTER A WITH DOT BELOW
+0x1e9e "\\SS"                     "" "force=utf8;utf8x;utf8-cjk" "" "" # LATIN CAPITAL LETTER SHARP S
+0x1ea0 "\\d{A}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{A}" "accents,subdot" # LATIN CAPITAL LETTER A WITH DOT BELOW
+0x1ea1 "\\d{a}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{a}" "accents,subdot" # LATIN SMALL LETTER A WITH DOT BELOW
 #0x1ea2 ""                         "" "" # LATIN CAPITAL LETTER A WITH HOOK ABOVE
 #0x1ea3 ""                         "" "" # LATIN SMALL LETTER A WITH HOOK ABOVE
 #0x1ea4 ""                         "" "" # LATIN CAPITAL LETTER A WITH CIRCUMFLEX AND ACUTE
@@ -1412,12 +1412,12 @@
 #0x1eb5 ""                         "" "" # LATIN SMALL LETTER A WITH BREVE AND TILDE
 #0x1eb6 ""                         "" "" # LATIN CAPITAL LETTER A WITH BREVE AND DOT BELOW
 #0x1eb7 ""                         "" "" # LATIN SMALL LETTER A WITH BREVE AND DOT BELOW
-0x1eb8 "\\d{E}"                   "" "force=utf8,mathalpha" "\\subdot{E}" "accents,subdot" # LATIN CAPITAL LETTER E WITH DOT BELOW
-0x1eb9 "\\d{e}"                   "" "force=utf8,mathalpha" "\\subdot{e}" "accents,subdot" # LATIN SMALL LETTER E WITH DOT BELOW
+0x1eb8 "\\d{E}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{E}" "accents,subdot" # LATIN CAPITAL LETTER E WITH DOT BELOW
+0x1eb9 "\\d{e}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{e}" "accents,subdot" # LATIN SMALL LETTER E WITH DOT BELOW
 #0x1eba ""                         "" "" # LATIN CAPITAL LETTER E WITH HOOK ABOVE
 #0x1ebb ""                         "" "" # LATIN SMALL LETTER E WITH HOOK ABOVE
-0x1ebc "\\~{E}"                   "" "force=utf8,mathalpha" "\\tilde{E}" # LATIN CAPITAL LETTER E WITH TILDE
-0x1ebd "\\~{e}"                   "" "force=utf8,mathalpha" "\\tilde{e}" # LATIN SMALL LETTER E WITH TILDE
+0x1ebc "\\~{E}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\tilde{E}" # LATIN CAPITAL LETTER E WITH TILDE
+0x1ebd "\\~{e}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\tilde{e}" # LATIN SMALL LETTER E WITH TILDE
 #0x1ebe ""                         "" "" # LATIN CAPITAL LETTER E WITH CIRCUMFLEX AND ACUTE
 #0x1ebf ""                         "" "" # LATIN SMALL LETTER E WITH CIRCUMFLEX AND ACUTE
 #0x1ec0 ""                         "" "" # LATIN CAPITAL LETTER E WITH CIRCUMFLEX AND GRAVE
@@ -1430,10 +1430,10 @@
 #0x1ec7 ""                         "" "" # LATIN SMALL LETTER E WITH CIRCUMFLEX AND DOT BELOW
 #0x1ec8 ""                         "" "" # LATIN CAPITAL LETTER I WITH HOOK ABOVE
 #0x1ec9 ""                         "" "" # LATIN SMALL LETTER I WITH HOOK ABOVE
-0x1eca "\\d{I}"                   "" "force=utf8,mathalpha" "\\subdot{I}" "accents,subdot" # LATIN CAPITAL LETTER I WITH DOT BELOW
-0x1ecb "\\d{i}"                   "" "force=utf8,mathalpha" "\\subdot{i}" "accents,subdot" # LATIN SMALL LETTER I WITH DOT BELOW
-0x1ecc "\\d{O}"                   "" "force=utf8,mathalpha" "\\subdot{O}" "accents,subdot" # LATIN CAPITAL LETTER O WITH DOT BELOW
-0x1ecd "\\d{o}"                   "" "force=utf8,mathalpha" "\\subdot{o}" "accents,subdot" # LATIN SMALL LETTER O WITH DOT BELOW
+0x1eca "\\d{I}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{I}" "accents,subdot" # LATIN CAPITAL LETTER I WITH DOT BELOW
+0x1ecb "\\d{i}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{i}" "accents,subdot" # LATIN SMALL LETTER I WITH DOT BELOW
+0x1ecc "\\d{O}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{O}" "accents,subdot" # LATIN CAPITAL LETTER O WITH DOT BELOW
+0x1ecd "\\d{o}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{o}" "accents,subdot" # LATIN SMALL LETTER O WITH DOT BELOW
 #0x1ece ""                         "" "" # LATIN CAPITAL LETTER O WITH HOOK ABOVE
 #0x1ecf ""                         "" "" # LATIN SMALL LETTER O WITH HOOK ABOVE
 #0x1ed0 ""                         "" "" # LATIN CAPITAL LETTER O WITH CIRCUMFLEX AND ACUTE
@@ -1456,8 +1456,8 @@
 #0x1ee1 ""                         "" "" # LATIN SMALL LETTER O WITH HORN AND TILDE
 #0x1ee2 ""                         "" "" # LATIN CAPITAL LETTER O WITH HORN AND DOT BELOW
 #0x1ee3 ""                         "" "" # LATIN SMALL LETTER O WITH HORN AND DOT BELOW
-0x1ee4 "\\d{U}"                   "" "force=utf8,mathalpha" "\\subdot{U}" "accents,subdot" # LATIN CAPITAL LETTER U WITH DOT BELOW
-0x1ee5 "\\d{u}"                   "" "force=utf8,mathalpha" "\\subdot{u}" "accents,subdot" # LATIN SMALL LETTER U WITH DOT BELOW
+0x1ee4 "\\d{U}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{U}" "accents,subdot" # LATIN CAPITAL LETTER U WITH DOT BELOW
+0x1ee5 "\\d{u}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{u}" "accents,subdot" # LATIN SMALL LETTER U WITH DOT BELOW
 #0x1ee6 ""                         "" "" # LATIN CAPITAL LETTER U WITH HOOK ABOVE
 #0x1ee7 ""                         "" "" # LATIN SMALL LETTER U WITH HOOK ABOVE
 #0x1ee8 ""                         "" "" # LATIN CAPITAL LETTER U WITH HORN AND ACUTE
@@ -1470,14 +1470,14 @@
 #0x1eef ""                         "" "" # LATIN SMALL LETTER U WITH HORN AND TILDE
 #0x1ef0 ""                         "" "" # LATIN CAPITAL LETTER U WITH HORN AND DOT BELOW
 #0x1ef1 ""                         "" "" # LATIN SMALL LETTER U WITH HORN AND DOT BELOW
-0x1ef2 "\\`{Y}"                   "" "force=utf8,mathalpha" "\\grave{Y}" # LATIN CAPITAL LETTER Y WITH GRAVE
-0x1ef3 "\\`{y}"                   "" "force=utf8,mathalpha" "\\grave{y}" # LATIN SMALL LETTER Y WITH GRAVE
-0x1ef4 "\\d{Y}"                   "" "force=utf8,mathalpha" "\\subdot{Y}" "accents,subdot" # LATIN CAPITAL LETTER Y WITH DOT BELOW
-0x1ef5 "\\d{y}"                   "" "force=utf8,mathalpha" "\\subdot{y}" "accents,subdot" # LATIN SMALL LETTER Y WITH DOT BELOW
+0x1ef2 "\\`{Y}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\grave{Y}" # LATIN CAPITAL LETTER Y WITH GRAVE
+0x1ef3 "\\`{y}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\grave{y}" # LATIN SMALL LETTER Y WITH GRAVE
+0x1ef4 "\\d{Y}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{Y}" "accents,subdot" # LATIN CAPITAL LETTER Y WITH DOT BELOW
+0x1ef5 "\\d{y}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{y}" "accents,subdot" # LATIN SMALL LETTER Y WITH DOT BELOW
 #0x1ef6 ""                         "" "" # LATIN CAPITAL LETTER Y WITH HOOK ABOVE
 #0x1ef7 ""                         "" "" # LATIN SMALL LETTER Y WITH HOOK ABOVE
-0x1ef8 "\\~{Y}"                   "" "force=utf8,mathalpha" "\\tilde{Y}" # LATIN CAPITAL LETTER Y WITH TILDE
-0x1ef9 "\\~{y}"                   "" "force=utf8,mathalpha" "\\tilde{y}" # LATIN SMALL LETTER Y WITH TILDE
+0x1ef8 "\\~{Y}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\tilde{Y}" # LATIN CAPITAL LETTER Y WITH TILDE
+0x1ef9 "\\~{y}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\tilde{y}" # LATIN SMALL LETTER Y WITH TILDE
 #
 # 69 Greek extended
 #
@@ -1717,18 +1717,18 @@
 #
 # 70 General Punctuation
 #
-0x2000 "\\enskip"                 "" "force=utf8" "\\enskip" "" # EN QUAD
-0x2001 "\\quad"                   "" "force=utf8" "\\quad" "" # EM QUAD
-0x2002 "\\enskip"                 "" "force=utf8" "\\enskip" "" # EN SPACE
-0x2003 "\\quad"                   "" "force=utf8" "\\quad" "" # EM SPACE
-0x2004 "\\LyXThreePerEmSpace" "\\newcommand*{\\LyXThreePerEmSpace}{\\hskip0.3333em\\relax}" "force=utf8" "\\LyXThreePerEmSpace" "\\newcommand*{\\LyXThreePerEmSpace}{\\hskip0.3333em\\relax}" # THREE-PER-EM SPACE
-0x2005 "\\LyXFourPerEmSpace" "\\newcommand*{\\LyXFourPerEmSpace}{\\hskip0.25em\\relax}" "force=utf8" "\\LyXFourPerEmSpace" "\\newcommand*{\\LyXFourPerEmSpace}{\\hskip0.25em\\relax}" # FOUR-PER-EM SPACE
-0x2006 "\\LyXSixPerEmSpace" "\\newcommand*{\\LyXSixPerEmSpace}{\\hskip0.16667em\\relax}" "force=utf8" "\\LyXSixPerEmSpace" "\\newcommand*{\\LyXSixPerEmSpace}{\\hskip0.16667em\\relax}" # SIX-PER-EM SPACE
+0x2000 "\\enskip"                 "" "force=utf8;utf8-cjk" "\\enskip" "" # EN QUAD
+0x2001 "\\quad"                   "" "force=utf8;utf8-cjk" "\\quad" "" # EM QUAD
+0x2002 "\\enskip"                 "" "force=utf8;utf8-cjk" "\\enskip" "" # EN SPACE
+0x2003 "\\quad"                   "" "force=utf8;utf8-cjk" "\\quad" "" # EM SPACE
+0x2004 "\\LyXThreePerEmSpace" "\\newcommand*{\\LyXThreePerEmSpace}{\\hskip0.3333em\\relax}" "force=utf8;utf8-cjk" "\\LyXThreePerEmSpace" "\\newcommand*{\\LyXThreePerEmSpace}{\\hskip0.3333em\\relax}" # THREE-PER-EM SPACE
+0x2005 "\\LyXFourPerEmSpace" "\\newcommand*{\\LyXFourPerEmSpace}{\\hskip0.25em\\relax}" "force=utf8;utf8-cjk" "\\LyXFourPerEmSpace" "\\newcommand*{\\LyXFourPerEmSpace}{\\hskip0.25em\\relax}" # FOUR-PER-EM SPACE
+0x2006 "\\LyXSixPerEmSpace" "\\newcommand*{\\LyXSixPerEmSpace}{\\hskip0.16667em\\relax}" "force=utf8;utf8-cjk" "\\LyXSixPerEmSpace" "\\newcommand*{\\LyXSixPerEmSpace}{\\hskip0.16667em\\relax}" # SIX-PER-EM SPACE
 0x2007 "\\LyXFigureSpace" "\\newcommand*\\LyXFigureSpace{\\hphantom{0}}" "force" "\\LyXFigureSpace" "\\newcommand*\\LyXFigureSpace{\\hphantom{0}}" # FIGURE SPACE
 0x2008 "\\LyXPunctSpace" "\\newcommand*\\LyXPunctSpace{\\hphantom{,}}" "force" "\\LyXPunctSpace" "\\newcommand*\\LyXPunctSpace{\\hphantom{,}}" # PUNCTUATION SPACE
-0x2009 "\\LyXThinSpace" "\\newcommand*\\LyXThinSpace{\\,\\hspace{0pt}}" "force=utf8" "\\LyXThinSpace" "\\newcommand*\\LyXThinSpace{\\,\\hspace{0pt}}" # THIN SPACE
+0x2009 "\\LyXThinSpace" "\\newcommand*\\LyXThinSpace{\\,\\hspace{0pt}}" "force=utf8;utf8-cjk" "\\LyXThinSpace" "\\newcommand*\\LyXThinSpace{\\,\\hspace{0pt}}" # THIN SPACE
 0x200a "\\LyXHairSpace" "\\newcommand*\\LyXHairSpace{\\hspace{1pt}}" "force" "\\LyXHairSpace" "\\newcommand*\\LyXHairSpace{\\hspace{1pt}}" # HAIR SPACE
-0x200b "\\LyXZeroWidthSpace" "\\newcommand*\\LyXZeroWidthSpace{\\hspace{0pt}}" "force=utf8" "\\LyXZeroWidthSpace" "\\newcommand*\\LyXZeroWidthSpace{\\hspace{0pt}}" # ZERO WIDTH SPACE
+0x200b "\\LyXZeroWidthSpace" "\\newcommand*\\LyXZeroWidthSpace{\\hspace{0pt}}" "force=utf8;utf8-cjk" "\\LyXZeroWidthSpace" "\\newcommand*\\LyXZeroWidthSpace{\\hspace{0pt}}" # ZERO WIDTH SPACE
 0x200c "\\textcompwordmark"       "" "" "" "" # ZERO WIDTH NON-JOINER
 #0x200d ""                         "" "" "" "" # ZERO WIDTH JOINER
 #0x200e ""                         "" "" "" "" # LEFT-TO-RIGHT MARK
@@ -1741,7 +1741,7 @@
 # use the following macro for the character HORIZONTAL BAR
 0x2015 "\\LyXbar" "\\newcommand*\\LyXbar{\\rule[0.585ex]{1.2em}{0.25pt}}" "force"
 0x2016 "\\textbardbl"             "textcomp" "force=utf8x,notermination=math,tipashortcut=\\textdoublevertline{}" "\\|" "" # DOUBLE VERTICAL LINE
-0x2017 "\\subdoublebar{ }"        "extraipa" "force=cp850;utf8;utf8x" "" "" # DOUBLE LOW LINE
+0x2017 "\\subdoublebar{ }"        "extraipa" "force=cp850;utf8;utf8-cjk;utf8x" "" "" # DOUBLE LOW LINE
 0x2018 "\\textquoteleft"          "" "" # LEFT SINGLE QUOTATION MARK
 0x2019 "\\textquoteright"         "" "" # RIGHT SINGLE QUOTATION MARK
 0x201a "\\quotesinglbase"         "" "" # SINGLE LOW-9 QUOTATION MARK
@@ -1753,9 +1753,9 @@
 0x2020 "\\dag"                    "" "" "\\dagger" "" # DAGGER
 0x2021 "\\ddag"                   "" "" "\\ddagger" "" # DOUBLE DAGGER
 0x2022 "\\textbullet"             "textcomp" "" "\\bullet" "" # BULLET
-0x2023 "\\textifsymbol[ifgeo]{116}" "ifsym" "force=utf8;utf8x" # TRIANGULAR BULLET # ≈ 0x25b8
-0x2024 "."                        "" "notermination=text,force=utf8;utf8x" "" "" # ONE DOT LEADER # ≈ FULL STOP
-0x2025 ".\\,."                    "" "notermination=text,force=utf8;utf8x" "" "" # TWO DOT LEADER
+0x2023 "\\textifsymbol[ifgeo]{116}" "ifsym" "force=utf8;utf8x;utf8-cjk" # TRIANGULAR BULLET # ≈ 0x25b8
+0x2024 "."                        "" "notermination=text,force=utf8;utf8-cjk;utf8x" "" "" # ONE DOT LEADER # ≈ FULL STOP
+0x2025 ".\\,."                    "" "notermination=text,force=utf8;utf8-cjk;utf8x" "" "" # TWO DOT LEADER
 0x2026 "\\dots"                   "" "force=armscii8" "\\ldots" "" # HORIZONTAL ELLIPSIS
 #0x2027 ""                        "" "notermination=text" "" "" # HYPHENATION POINT (visible symbol used to indicate correct positions for word breaking, looks like but is not 0x00b7 middle dot)
 0x2028 "\\\\"                      "" "" "" "" # LINE SEPARATOR
@@ -1768,73 +1768,74 @@
 0x202f "\\,"                      "" "notermination=both" "\\," "" # NARROW NO-BREAK SPACE
 0x2030 "\\textperthousand"        "textcomp" "" # PER MILLE SIGN
 0x2031 "\\textpertenthousand"     "textcomp" "" # PER TEN THOUSAND SIGN
-0x2032 "\\textasciiacute"         "textcomp" "force=utf8" "\\prime" "" # PRIME
-0x2033 "\\textacutedbl"           "textcomp" "force=utf8" # DOUBLE PRIME
+0x2032 "\\textasciiacute"         "textcomp" "force=utf8;utf8-cjk" "\\prime" "" # PRIME
+0x2033 "\\textacutedbl"           "textcomp" "force=utf8;utf8-cjk" # DOUBLE PRIME
 #0x2034 ""                         "" "" # TRIPLE PRIME
-0x2035 "\\textasciigrave"         "textcomp" "force=utf8;utf8x" "\\backprime" "amssymb" # REVERSED PRIME
-0x2036 "\\textgravedbl"           "textcomp" "force=utf8;utf8x" # REVERSED DOUBLE PRIME
+0x2035 "\\textasciigrave"         "textcomp" "force=utf8;utf8x;utf8-cjk" "\\backprime" "amssymb" # REVERSED PRIME
+0x2036 "\\textgravedbl"           "textcomp" "force=utf8;utf8x;utf8-cjk" # REVERSED DOUBLE PRIME
 #0x2037 ""                         "" "" # REVERSED TRIPLE PRIME
-0x2038 "\\textsubcircum{ }"       "tipa" "force=utf8;utf8x" "" "" # CARET
+0x2038 "\\textsubcircum{ }"       "tipa" "force=utf8;utf8x;utf8-cjk" "" "" # CARET
 0x2039 "\\guilsinglleft"          "" "" # SINGLE LEFT-POINTING ANGLE QUOTATION MARK
 0x203a "\\guilsinglright"         "" "" # SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
 0x203b "\\textreferencemark"      "textcomp" "" # REFERENCE MARK
-0x203c "!!"                       "" "notermination=text,force=utf8;utf8x" "!!" "" # DOUBLE EXCLAMATION MARK # ≈ 2×EXCLAMATION MARK
+0x203c "!!"                       "" "notermination=text,force=utf8;utf8-cjk;utf8x" "!!" "" # DOUBLE EXCLAMATION MARK # ≈ 2×EXCLAMATION MARK
 0x203d "\\textinterrobang"        "textcomp" "" # INTERROBANG
 # use the following macro for the character OVERLINE
-0x203e "\\LyXoverline" "\\newcommand*\\LyXoverline{\\raisebox{2.6ex}{\\_}}" "force=utf8;utf8x"
-0x203f "\\textbottomtiebar{ }"    "tipa" "tipashortcut=\\t*{ },force=utf8;utf8x" # UNDERTIE
+0x203e "\\LyXoverline" "\\newcommand*\\LyXoverline{\\raisebox{2.6ex}{\\_}}" "force=utf8;utf8x;utf8-cjk"
+0x203f "\\textbottomtiebar{ }"    "tipa" "tipashortcut=\\t*{ },force=utf8;utf8-cjk;utf8x" # UNDERTIE
 #0x2040 ""                         "" "" "" "" # CHARACTER TIE
 #0x2041 ""                         "" "" "" "" # CARET INSERTION POINT
 #0x2042 ""                         "" "" "" "" # ASTERISM
 #0x2043 ""                         "" "" "" "" # HYPHEN BULLET
 0x2044 "\\textfractionsolidus"    "textcomp" "force=utf8x" # FRACTION SLASH
-0x2045 "\\textlquill"             "textcomp" "force=utf8;utf8x" # LEFT SQUARE BRACKET WITH QUILL
-0x2046 "\\textrquill"             "textcomp" "force=utf8;utf8x" # RIGHT SQUARE BRACKET WITH QUILL
-0x2047 "??"                       "" "notermination=text,force=utf8;utf8x" "??" "" # DOUBLE QUESTION MARK # ≈ 2×QUESTION MARK
-0x2048 "?!"                       "" "notermination=text,force=utf8;utf8x" "" "" # QUESTION EXCLAMATION MARK
-0x2049 "!?"                       "" "notermination=text,force=utf8;utf8x" "" "" # EXCLAMATION QUESTION MARK
+0x2045 "\\textlquill"             "textcomp" "force=utf8;utf8x;utf8-cjk" # LEFT SQUARE BRACKET WITH QUILL
+0x2046 "\\textrquill"             "textcomp" "force=utf8;utf8x;utf8-cjk" # RIGHT SQUARE BRACKET WITH QUILL
+0x2047 "??"                       "" "notermination=text,force=utf8;utf8-cjk;utf8x" "??" "" # DOUBLE QUESTION MARK # ≈ 2×QUESTION MARK
+0x2048 "?!"                       "" "notermination=text,force=utf8;utf8-cjk;utf8x" "" "" # QUESTION EXCLAMATION MARK
+0x2049 "!?"                       "" "notermination=text,force=utf8;utf8-cjk;utf8x" "" "" # EXCLAMATION QUESTION MARK
+0x204e "\\textasteriskcentered"   "textcomp" "force=utf8x" "\\ast" "" # LOW ASTERISK
 0x2052 "\\textdiscount"           "textcomp" "force=utf8x" # COMMERCIAL MINUS SIGN
-0x205d ""                         "" "force=utf8;utf8x" "\\vdots" ""# TRICOLON # ≈ VERTICAL ELLIPSIS, fails in text mode, if "mathdots" is loaded.
+0x205d ""                         "" "force=utf8;utf8x;utf8-cjk" "\\vdots" ""# TRICOLON # ≈ VERTICAL ELLIPSIS, fails in text mode, if "mathdots" is loaded.
 #0x205e ""                         "" "" "" "" # VERTICAL FOUR DOTS
 0x205f ""                         "" "notermination=math,force=utf8" "\\:" "" # MEDIUM MATHEMATICAL SPACE
 #0x2060 ""                         "" "" "" "" # WORD JOINER
 #
 # superscripts and subscripts
 #
-0x2070 "\\textsuperscript{0}"     "" "force=utf8" "{{}^0}" "" # SUPERSCRIPT ZERO
-0x2071 "\\textsuperscript{i}"     "" "force=utf8" "{{}^i}" "" # SUPERSCRIPT LATIN SMALL LETTER I
-0x2074 "\\textsuperscript{4}"     "" "force=utf8" "{{}^4}" "" # SUPERSCRIPT FOUR
-0x2075 "\\textsuperscript{5}"     "" "force=utf8" "{{}^5}" "" # SUPERSCRIPT FIVE
-0x2076 "\\textsuperscript{6}"     "" "force=utf8" "{{}^6}" "" # SUPERSCRIPT SIX
-0x2077 "\\textsuperscript{7}"     "" "force=utf8" "{{}^7}" "" # SUPERSCRIPT SEVEN
-0x2078 "\\textsuperscript{8}"     "" "force=utf8" "{{}^8}" "" # SUPERSCRIPT EIGHT
-0x2079 "\\textsuperscript{9}"     "" "force=utf8" "{{}^9}" "" # SUPERSCRIPT NINE
-0x207a "\\textsuperscript{+}"     "" "force=utf8" "{{}^+}" "" # SUPERSCRIPT PLUS SIGN
-0x207b "\\textsuperscript{-}"     "" "force=utf8" "{{}^-}" "" # SUPERSCRIPT MINUS
-0x207c "\\textsuperscript{=}"     "" "force=utf8" "{{}^=}" "" # SUPERSCRIPT EQUALS SIGN
-0x207d "\\textsuperscript{(}"     "" "force=utf8" "{{}^(}" "" # SUPERSCRIPT LEFT PARENTHESIS
-0x207e "\\textsuperscript{)}"     "" "force=utf8" "{{}^)}" "" # SUPERSCRIPT RIGHT PARENTHESIS
-0x207f "\\textsuperscript{n}"     "" "force=utf8;cp437;cp437de;cp865" "{{}^n}" "" # SUPERSCRIPT LATIN SMALL LETTER N
-0x2080 "\\textsubscript{0}"       "subscript" "force=utf8" "{{}_0}" "" # SUBSCRIPT ZERO
-0x2081 "\\textsubscript{1}"       "subscript" "force=utf8" "{{}_1}" "" # SUBSCRIPT ONE
-0x2082 "\\textsubscript{2}"       "subscript" "force=utf8" "{{}_2}" "" # SUBSCRIPT TWO
-0x2083 "\\textsubscript{3}"       "subscript" "force=utf8" "{{}_3}" "" # SUBSCRIPT THREE
-0x2084 "\\textsubscript{4}"       "subscript" "force=utf8" "{{}_4}" "" # SUBSCRIPT FOUR
-0x2085 "\\textsubscript{5}"       "subscript" "force=utf8" "{{}_5}" "" # SUBSCRIPT FIVE
-0x2086 "\\textsubscript{6}"       "subscript" "force=utf8" "{{}_6}" "" # SUBSCRIPT SIX
-0x2087 "\\textsubscript{7}"       "subscript" "force=utf8" "{{}_7}" "" # SUBSCRIPT SEVEN
-0x2088 "\\textsubscript{8}"       "subscript" "force=utf8" "{{}_8}" "" # SUBSCRIPT EIGHT
-0x2089 "\\textsubscript{9}"       "subscript" "force=utf8" "{{}_9}" "" # SUBSCRIPT NINE
-0x208a "\\textsubscript{+}"       "subscript" "force=utf8" "{{}_+}" "" # SUBSCRIPT PLUS SIGN
-0x208b "\\textsubscript{-}"       "subscript" "force=utf8" "{{}_-}" "" # SUBSCRIPT MINUS
-0x208c "\\textsubscript{=}"       "subscript" "force=utf8" "{{}_=}" "" # SUBSCRIPT EQUALS SIGN
-0x208d "\\textsubscript{(}"       "subscript" "force=utf8" "{{}_(}" "" # SUBSCRIPT LEFT PARENTHESIS
-0x208e "\\textsubscript{)}"       "subscript" "force=utf8" "{{}_)}" "" # SUBSCRIPT RIGHT PARENTHESIS
-0x2090 "\\textsubscript{a}"       "subscript" "force=utf8;utf8x" "{{}_a}" "" # LATIN SUBSCRIPT SMALL LETTER A
-0x2091 "\\textsubscript{e}"       "subscript" "force=utf8;utf8x" "{{}_e}" "" # LATIN SUBSCRIPT SMALL LETTER E
-0x2092 "\\textsubscript{o}"       "subscript" "force=utf8;utf8x" "{{}_o}" "" # LATIN SUBSCRIPT SMALL LETTER O
-0x2093 "\\textsubscript{x}"       "subscript" "force=utf8;utf8x" "{{}_x}" "" # LATIN SUBSCRIPT SMALL LETTER X
-0x2094 "\\textsubscript{\\textschwa}" "subscript" "force=utf8;utf8x" "{{}_\\textschwa}" "tipa" # LATIN SUBSCRIPT SMALL LETTER SCHWA
+0x2070 "\\textsuperscript{0}"     "" "force=utf8;utf8-cjk" "{{}^0}" "" # SUPERSCRIPT ZERO
+0x2071 "\\textsuperscript{i}"     "" "force=utf8;utf8-cjk" "{{}^i}" "" # SUPERSCRIPT LATIN SMALL LETTER I
+0x2074 "\\textsuperscript{4}"     "" "force=utf8;utf8-cjk" "{{}^4}" "" # SUPERSCRIPT FOUR
+0x2075 "\\textsuperscript{5}"     "" "force=utf8;utf8-cjk" "{{}^5}" "" # SUPERSCRIPT FIVE
+0x2076 "\\textsuperscript{6}"     "" "force=utf8;utf8-cjk" "{{}^6}" "" # SUPERSCRIPT SIX
+0x2077 "\\textsuperscript{7}"     "" "force=utf8;utf8-cjk" "{{}^7}" "" # SUPERSCRIPT SEVEN
+0x2078 "\\textsuperscript{8}"     "" "force=utf8;utf8-cjk" "{{}^8}" "" # SUPERSCRIPT EIGHT
+0x2079 "\\textsuperscript{9}"     "" "force=utf8;utf8-cjk" "{{}^9}" "" # SUPERSCRIPT NINE
+0x207a "\\textsuperscript{+}"     "" "force=utf8;utf8-cjk" "{{}^+}" "" # SUPERSCRIPT PLUS SIGN
+0x207b "\\textsuperscript{-}"     "" "force=utf8;utf8-cjk" "{{}^-}" "" # SUPERSCRIPT MINUS
+0x207c "\\textsuperscript{=}"     "" "force=utf8;utf8-cjk" "{{}^=}" "" # SUPERSCRIPT EQUALS SIGN
+0x207d "\\textsuperscript{(}"     "" "force=utf8;utf8-cjk" "{{}^(}" "" # SUPERSCRIPT LEFT PARENTHESIS
+0x207e "\\textsuperscript{)}"     "" "force=utf8;utf8-cjk" "{{}^)}" "" # SUPERSCRIPT RIGHT PARENTHESIS
+0x207f "\\textsuperscript{n}"     "" "force=utf8;utf8-cjk;cp437;cp437de;cp865" "{{}^n}" "" # SUPERSCRIPT LATIN SMALL LETTER N
+0x2080 "\\textsubscript{0}"       "subscript" "force=utf8;utf8-cjk" "{{}_0}" "" # SUBSCRIPT ZERO
+0x2081 "\\textsubscript{1}"       "subscript" "force=utf8;utf8-cjk" "{{}_1}" "" # SUBSCRIPT ONE
+0x2082 "\\textsubscript{2}"       "subscript" "force=utf8;utf8-cjk" "{{}_2}" "" # SUBSCRIPT TWO
+0x2083 "\\textsubscript{3}"       "subscript" "force=utf8;utf8-cjk" "{{}_3}" "" # SUBSCRIPT THREE
+0x2084 "\\textsubscript{4}"       "subscript" "force=utf8;utf8-cjk" "{{}_4}" "" # SUBSCRIPT FOUR
+0x2085 "\\textsubscript{5}"       "subscript" "force=utf8;utf8-cjk" "{{}_5}" "" # SUBSCRIPT FIVE
+0x2086 "\\textsubscript{6}"       "subscript" "force=utf8;utf8-cjk" "{{}_6}" "" # SUBSCRIPT SIX
+0x2087 "\\textsubscript{7}"       "subscript" "force=utf8;utf8-cjk" "{{}_7}" "" # SUBSCRIPT SEVEN
+0x2088 "\\textsubscript{8}"       "subscript" "force=utf8;utf8-cjk" "{{}_8}" "" # SUBSCRIPT EIGHT
+0x2089 "\\textsubscript{9}"       "subscript" "force=utf8;utf8-cjk" "{{}_9}" "" # SUBSCRIPT NINE
+0x208a "\\textsubscript{+}"       "subscript" "force=utf8;utf8-cjk" "{{}_+}" "" # SUBSCRIPT PLUS SIGN
+0x208b "\\textsubscript{-}"       "subscript" "force=utf8;utf8-cjk" "{{}_-}" "" # SUBSCRIPT MINUS
+0x208c "\\textsubscript{=}"       "subscript" "force=utf8;utf8-cjk" "{{}_=}" "" # SUBSCRIPT EQUALS SIGN
+0x208d "\\textsubscript{(}"       "subscript" "force=utf8;utf8-cjk" "{{}_(}" "" # SUBSCRIPT LEFT PARENTHESIS
+0x208e "\\textsubscript{)}"       "subscript" "force=utf8;utf8-cjk" "{{}_)}" "" # SUBSCRIPT RIGHT PARENTHESIS
+0x2090 "\\textsubscript{a}"       "subscript" "force=utf8;utf8x;utf8-cjk" "{{}_a}" "" # LATIN SUBSCRIPT SMALL LETTER A
+0x2091 "\\textsubscript{e}"       "subscript" "force=utf8;utf8x;utf8-cjk" "{{}_e}" "" # LATIN SUBSCRIPT SMALL LETTER E
+0x2092 "\\textsubscript{o}"       "subscript" "force=utf8;utf8x;utf8-cjk" "{{}_o}" "" # LATIN SUBSCRIPT SMALL LETTER O
+0x2093 "\\textsubscript{x}"       "subscript" "force=utf8;utf8x;utf8-cjk" "{{}_x}" "" # LATIN SUBSCRIPT SMALL LETTER X
+0x2094 "\\textsubscript{\\textschwa}" "subscript" "force=utf8;utf8x;utf8-cjk" "{{}_\\textschwa}" "tipa" # LATIN SUBSCRIPT SMALL LETTER SCHWA
 #
 # 72 Currency Symbols
 #
@@ -1848,71 +1849,71 @@
 0x20ab "\\textdong"               "textcomp" "" # DONG SIGN
 0x20ac "\\texteuro"               "textcomp" "" # EURO SIGN
 0x20b1 "\\textpeso"               "textcomp" "force=utf8x" # PESO SIGN
-0x20b2 "\\textguarani"            "textcomp" "force=utf8;utf8x" # GUARANI SIGN
+0x20b2 "\\textguarani"            "textcomp" "force=utf8;utf8x;utf8-cjk" # GUARANI SIGN
 0x20b9 "\\rupee"                  "tfrupee" "" "" "" # INDIAN RUPEE SIGN
 #
 # 74 Letterlike Symbols
 #
-0x2100 "\\smallLetterFrac{a}{c}" "smallLetterFrac" "force=utf8;utf8x" "" ""# ACCOUNT OF
-0x2101 "\\smallLetterFrac{a}{s}" "smallLetterFrac" "force=utf8;utf8x" "" ""# ADRESSED TO THE SUBJECT
-0x2102 ""                         "" "force=utf8" "\\mathbb{C}" "amssymb" # DOUBLE-STRUCK CAPITAL C
+0x2100 "\\smallLetterFrac{a}{c}" "smallLetterFrac" "force=utf8;utf8x;utf8-cjk" "" ""# ACCOUNT OF
+0x2101 "\\smallLetterFrac{a}{s}" "smallLetterFrac" "force=utf8;utf8x;utf8-cjk" "" ""# ADRESSED TO THE SUBJECT
+0x2102 ""                         "" "force=utf8;utf8-cjk" "\\mathbb{C}" "amssymb" # DOUBLE-STRUCK CAPITAL C
 0x2103 "\\textcelsius"            "textcomp" "force=utf8x" "" "" # DEGREE CELSIUS
 #0x2104 ""                         "" "" "" "" # CENTRE LINE SYMBOL
-0x2105 "\\smallLetterFrac{c}{o}" "smallLetterFrac" "force=utf8;utf8x" "" "" # CARE OF
-0x2106 "\\smallLetterFrac{c}{u}" "smallLetterFrac" "force=utf8;utf8x" "" "" # CADA UNA
+0x2105 "\\smallLetterFrac{c}{o}" "smallLetterFrac" "force=utf8;utf8x;utf8-cjk" "" "" # CARE OF
+0x2106 "\\smallLetterFrac{c}{u}" "smallLetterFrac" "force=utf8;utf8x;utf8-cjk" "" "" # CADA UNA
 #0x2107 ""                         "" "" "" "" # EULER CONSTANT
 #0x2108 ""                         "" "" "" "" # SCRUPLE
 0x2109 "\\textdegree{}F"          "" "force,notermination=text" "" "" # DEGREE FAHRENHEIT
 # mathrsfs has no small letters
 #0x210a ""                         "" "" "\\mathscr{g}" "mathrsfs" # SCRIPT SMALL G
-0x210b ""                         "" "force=utf8" "\\mathscr{H}" "mathrsfs" # SCRIPT CAPITAL H
-0x210c ""                         "" "force=utf8" "\\mathfrak{H}" "amssymb" # BLACK-LETTER CAPITAL H
-0x210d ""                         "" "force=utf8" "\\mathbb{H}" "amssymb" # DOUBLE-STRUCK CAPITAL H
-0x210e ""                         "" "force=utf8,notermination=math" "h" # PLANCK CONSTANT
-0x210f ""                         "" "force=utf8" "\\hbar" "amssymb" # PLANCK CONSTANT OVER TWO PI
-0x2110 ""                         "" "force=utf8" "\\mathscr{I}" "mathrsfs" # SCRIPT CAPITAL I
-0x2111 ""                         "" "force=utf8" "\\mathfrak{I}" "amssymb" # BLACK-LETTER CAPITAL I
-0x2112 ""                         "" "force=utf8" "\\mathscr{L}" "mathrsfs" # SCRIPT CAPITAL L
-0x2113 ""                         "" "force=utf8" "\\ell" # SCRIPT SMALL L
+0x210b ""                         "" "force=utf8;utf8-cjk" "\\mathscr{H}" "mathrsfs" # SCRIPT CAPITAL H
+0x210c ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{H}" "amssymb" # BLACK-LETTER CAPITAL H
+0x210d ""                         "" "force=utf8;utf8-cjk" "\\mathbb{H}" "amssymb" # DOUBLE-STRUCK CAPITAL H
+0x210e ""                         "" "force=utf8;utf8-cjk,notermination=math" "h" # PLANCK CONSTANT
+0x210f ""                         "" "force=utf8;utf8-cjk" "\\hbar" "amssymb" # PLANCK CONSTANT OVER TWO PI
+0x2110 ""                         "" "force=utf8;utf8-cjk" "\\mathscr{I}" "mathrsfs" # SCRIPT CAPITAL I
+0x2111 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{I}" "amssymb" # BLACK-LETTER CAPITAL I
+0x2112 ""                         "" "force=utf8;utf8-cjk" "\\mathscr{L}" "mathrsfs" # SCRIPT CAPITAL L
+0x2113 ""                         "" "force=utf8;utf8-cjk" "\\ell" # SCRIPT SMALL L
 #0x2114 ""                         "" "" "" "" # L B BAR SYMBOL
-0x2115 ""                         "" "force=utf8" "\\mathbb{N}" "amssymb" # DOUBLE-STRUCK CAPITAL N
+0x2115 ""                         "" "force=utf8;utf8-cjk" "\\mathbb{N}" "amssymb" # DOUBLE-STRUCK CAPITAL N
 0x2116 "\\textnumero"             "textcomp" "" # NUMERO SIGN
 0x2117 "\\textcircledP"           "textcomp" "force=utf8x" # SOUND RECORDING COYRIGHT
-0x2118 ""                         "" "force=utf8" "\\wp" "amssymb" # ℘ Weierstrass elliptic function, misnamed SCRIPT CAPITAL P
-0x2119 ""                         "" "force=utf8" "\\mathbb{P}" "amssymb" # DOUBLE-STRUCK CAPITAL P
-0x211a ""                         "" "force=utf8" "\\mathbb{Q}" "amssymb" # DOUBLE-STRUCK CAPITAL Q
-0x211b ""                         "" "force=utf8" "\\mathscr{R}" "mathrsfs" # SCRIPT CAPITAL R
-0x211c ""                         "" "force=utf8" "\\mathfrak{R}" "amssymb" # BLACK-LETTER CAPITAL R
-0x211d ""                         "" "force=utf8" "\\mathbb{R}" "amssymb" # DOUBLE-STRUCK CAPITAL R
+0x2118 ""                         "" "force=utf8;utf8-cjk" "\\wp" "amssymb" # ℘ Weierstrass elliptic function, misnamed SCRIPT CAPITAL P
+0x2119 ""                         "" "force=utf8;utf8-cjk" "\\mathbb{P}" "amssymb" # DOUBLE-STRUCK CAPITAL P
+0x211a ""                         "" "force=utf8;utf8-cjk" "\\mathbb{Q}" "amssymb" # DOUBLE-STRUCK CAPITAL Q
+0x211b ""                         "" "force=utf8;utf8-cjk" "\\mathscr{R}" "mathrsfs" # SCRIPT CAPITAL R
+0x211c ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{R}" "amssymb" # BLACK-LETTER CAPITAL R
+0x211d ""                         "" "force=utf8;utf8-cjk" "\\mathbb{R}" "amssymb" # DOUBLE-STRUCK CAPITAL R
 0x211e "\\textrecipe"             "textcomp" "force=utf8x" # PRESCRIPTION TAKE
 #0x211f ""                         "" "" "" "" # RESPONSE
 0x2120 "\\textservicemark"        "textcomp" "" # SERVICE MARK
 #0x2121 ""                         "" "" # TELEPHONE SIGN
 0x2122 "\\texttrademark"          "textcomp" "" # TRADE MARK SIGN
 #0x2123 ""                         "" "" "" "" # VERSICLE
-0x2124 ""                         "" "force=utf8" "\\mathbb{Z}" "amssymb" # DOUBLE-STRUCK CAPITAL Z
+0x2124 ""                         "" "force=utf8;utf8-cjk" "\\mathbb{Z}" "amssymb" # DOUBLE-STRUCK CAPITAL Z
 #0x2125 ""                         "" "" "" "" # OUNCE SIGN
 0x2126 "\\textohm"                "textcomp" "" # OHM SIGN
 0x2127 "\\textmho"                "textcomp" "" "\\mho" "amssymb" # INVERTED OHM SIGN
-0x2128 ""                         "" "force=utf8" "\\mathfrak{Z}" "amssymb" # BLACK-LETTER CAPITAL Z
+0x2128 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{Z}" "amssymb" # BLACK-LETTER CAPITAL Z
 #0x2129 ""                         "" "" "" "" # TURNED GREEK SMALL LETTER IOTA
 0x212a "K"                        "" "notermination=text" "" "" # KELVIN SIGN
-0x212b "\\AA"                     "" "force=utf8,deprecated" "" "" # ANGSTROM SIGN
-0x212c ""                         "" "force=utf8" "\\mathscr{B}" "mathrsfs" # SCRIPT CAPITAL B
-0x212d ""                         "" "force=utf8" "\\mathfrak{C}" "amssymb" # BLACK-LETTER CAPITAL C
+0x212b "\\AA"                     "" "force=utf8;utf8-cjk,deprecated" "" "" # ANGSTROM SIGN
+0x212c ""                         "" "force=utf8;utf8-cjk" "\\mathscr{B}" "mathrsfs" # SCRIPT CAPITAL B
+0x212d ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{C}" "amssymb" # BLACK-LETTER CAPITAL C
 0x212e "\\textestimated"          "textcomp" "force=utf8x" # ESTIMATED SYMBOL
 # mathrsfs has no small letters
 #0x212f ""                         "" "" "\\mathscr{e}" "mathrsfs" # SCRIPT SMALL E
-0x2130 ""                         "" "force=utf8" "\\mathscr{E}" "mathrsfs" # SCRIPT CAPITAL E
-0x2131 ""                         "" "force=utf8" "\\mathscr{F}" "mathrsfs" # SCRIPT CAPITAL F
-0x2132 ""                         "" "force=utf8;utf8x" "\\Finv" "amssymb" # TURNED CAPITAL F
-0x2133 ""                         "" "force=utf8" "\\mathscr{M}" "mathrsfs" # SCRIPT CAPITAL M
+0x2130 ""                         "" "force=utf8;utf8-cjk" "\\mathscr{E}" "mathrsfs" # SCRIPT CAPITAL E
+0x2131 ""                         "" "force=utf8;utf8-cjk" "\\mathscr{F}" "mathrsfs" # SCRIPT CAPITAL F
+0x2132 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\Finv" "amssymb" # TURNED CAPITAL F
+0x2133 ""                         "" "force=utf8;utf8-cjk" "\\mathscr{M}" "mathrsfs" # SCRIPT CAPITAL M
 # mathrsfs has no small letters
 #0x2134 ""                         "" "" "\\mathscr{o}" "mathrsfs" # SCRIPT SMALL O
-0x2135 ""                         "" "force=utf8" "\\aleph" "amssymb" # ALEF SYMBOL
-0x2136 ""                         "" "force=utf8" "\\beth" "amssymb" # BET SYMBOL
-0x2137 ""                         "" "force=utf8" "\\gimel" "amssymb" # GIMEL SYMBOL
-0x2138 ""                         "" "force=utf8" "\\daleth" "amssymb" # DALET SYMBOL
+0x2135 ""                         "" "force=utf8;utf8-cjk" "\\aleph" "amssymb" # ALEF SYMBOL
+0x2136 ""                         "" "force=utf8;utf8-cjk" "\\beth" "amssymb" # BET SYMBOL
+0x2137 ""                         "" "force=utf8;utf8-cjk" "\\gimel" "amssymb" # GIMEL SYMBOL
+0x2138 ""                         "" "force=utf8;utf8-cjk" "\\daleth" "amssymb" # DALET SYMBOL
 #0x2139 ""                         "" "" # INFORMATION SOURCE
 #0x213a ""                         "" "" "" "" # ROTATED CAPITAL Q
 #0x213b ""                         "" "" # FACSIMILE SIGN
@@ -1921,72 +1922,72 @@
 #0x213e ""                         "" "" "" "" # DOUBLE-STRUCK CAPITAL GAMMA
 #0x213f ""                         "" "" "" "" # DOUBLE-STRUCK CAPITAL PI
 #0x2140 ""                         "" "" "" "" # DOUBLE-STRUCK N-ARY SUMMATION
-0x2141 ""                         "" "force=utf8;utf8x" "\\Game" "amssymb" # TURNED SANS-SERIF CAPITAL G
+0x2141 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\Game" "amssymb" # TURNED SANS-SERIF CAPITAL G
 #0x2142 ""                         "" "" "" "" # TURNED SANS-SERIF CAPITAL L
 #0x2143 ""                         "" "" "" "" # REVERSED SANS-SERIF CAPITAL L
-0x2144 ""                         "" "force=utf8;utf8x" "\Yup" "stmaryrd" # TURNED SANS-SERIF CAPITAL Y
+0x2144 ""                         "" "force=utf8;utf8x;utf8-cjk" "\Yup" "stmaryrd" # TURNED SANS-SERIF CAPITAL Y
 #0x2145 ""                         "" "" "" "" # DOUBLE-STRUCK ITALIC CAPITAL D
 #0x2146 ""                         "" "" "" "" # DOUBLE-STRUCK ITALIC SMALL D
 #0x2147 ""                         "" "" "" "" # DOUBLE-STRUCK ITALIC SMALL E
 #0x2148 ""                         "" "" "" "" # DOUBLE-STRUCK ITALIC SMALL I
 #0x2149 ""                         "" "" "" "" # DOUBLE-STRUCK ITALIC SMALL J
 #0x214a ""                         "" "" "" "" # PROPERTY LINE
-0x214b ""                         "" "force=utf8;utf8x" "\\bindnasrepma" "stmaryrd" # TURNED AMPERSAND
+0x214b ""                         "" "force=utf8;utf8x;utf8-cjk" "\\bindnasrepma" "stmaryrd" # TURNED AMPERSAND
 #0x214c ""                         "" "" "" "" # PER SIGN
-0x214d "\\sfrac{A}{\\kern-.08em S}" "xfrac" "force=utf8;utf8x" "" "" # ⅍ AKTIESELSKAB
+0x214d "\\sfrac{A}{\\kern-.08em S}" "xfrac" "force=utf8;utf8x;utf8-cjk" "" "" # ⅍ AKTIESELSKAB
 #0x214e ""                         "" "" "" "" # TURNED SMALL F
 #0x214f ""                         "" "" "" "" # SYMBOL FOR SAMARITAN SOURCE
 #
 # 75 Number Forms
 #
-0x2150 "\\sfrac{1}{7}"            "xfrac" "force=utf8;utf8x" "\\sfrac{1}{7}" "xfrac" # VULGAR FRACTION ONE SEVENTH
-0x2151 "\\sfrac{1}{9}"            "xfrac" "force=utf8;utf8x" "\\sfrac{1}{9}" "xfrac" # VULGAR FRACTION ONE NINTH
-0x2152 "\\sfrac{1}{10}"           "xfrac" "force=utf8;utf8x" "\\sfrac{1}{10}" "xfrac" # VULGAR FRACTION ONE TENTH
-0x2153 "\\sfrac{1}{3}"            "xfrac" "force=utf8;utf8x" "\\sfrac{1}{3}" "xfrac" # VULGAR FRACTION ONE THIRD
-0x2154 "\\sfrac{2}{3}"            "xfrac" "force=utf8;utf8x" "\\sfrac{2}{3}" "xfrac" # VULGAR FRACTION TWO THIRDS
-0x2155 "\\sfrac{1}{5}"            "xfrac" "force=utf8;utf8x" "\\sfrac{1}{5}" "xfrac" # VULGAR FRACTION ONE FIFTH
-0x2156 "\\sfrac{2}{5}"            "xfrac" "force=utf8;utf8x" "\\sfrac{2}{5}" "xfrac" # VULGAR FRACTION TWO FIFTHS
-0x2157 "\\sfrac{3}{5}"            "xfrac" "force=utf8;utf8x" "\\sfrac{3}{5}" "xfrac" # VULGAR FRACTION THREE FIFTHS
-0x2158 "\\sfrac{4}{5}"            "xfrac" "force=utf8;utf8x" "\\sfrac{4}{5}" "xfrac" # VULGAR FRACTION FOUR FIFTHS
-0x2159 "\\sfrac{1}{6}"            "xfrac" "force=utf8;utf8x" "\\sfrac{1}{6}" "xfrac" # VULGAR FRACTION ONE SIXTH
-0x215a "\\sfrac{5}{6}"            "xfrac" "force=utf8;utf8x" "\\sfrac{5}{6}" "xfrac" # VULGAR FRACTION FIVE SIXTHS
-0x215b "\\sfrac{1}{8}"            "xfrac" "force=utf8;utf8x" "\\sfrac{1}{8}" "xfrac" # VULGAR FRACTION ONE EIGHT
-0x215c "\\sfrac{3}{8}"            "xfrac" "force=utf8;utf8x" "\\sfrac{3}{8}" "xfrac" # VULGAR FRACTION THREE EIGHTS
-0x215d "\\sfrac{5}{8}"            "xfrac" "force=utf8;utf8x" "\\sfrac{5}{8}" "xfrac" # VULGAR FRACTION FIVE EIGHTS
-0x215e "\\sfrac{7}{8}"            "xfrac" "force=utf8;utf8x" "\\sfrac{7}{8}" "xfrac" # VULGAR FRACTION SEVEN EIGHTS
-0x215f "\\sfrac{1}{}"             "xfrac" "force=utf8;utf8x" "\\sfrac{1}{}"  "xfrac" # FRACTION NUMERATOR ONE
-0x2160 "\\mbox{I}"                "" "force=utf8;utf8x" # ROMAN NUMERAL ONE
-0x2161 "\\mbox{II}"               "" "force=utf8;utf8x" # ROMAN NUMERAL TWO
-0x2162 "\\mbox{III}"              "" "force=utf8;utf8x" # ROMAN NUMERAL THREE
-0x2163 "\\mbox{IV}"               "" "force=utf8;utf8x" # ROMAN NUMERAL FOUR
-0x2164 "\\mbox{V}"                "" "force=utf8;utf8x" # ROMAN NUMERAL FIVE
-0x2165 "\\mbox{VI}"               "" "force=utf8;utf8x" # ROMAN NUMERAL SIX
-0x2166 "\\mbox{VII}"              "" "force=utf8;utf8x" # ROMAN NUMERAL SEVEN
-0x2167 "\\mbox{VIII}"             "" "force=utf8;utf8x" # ROMAN NUMERAL EIGHT
-0x2168 "\\mbox{IX}"               "" "force=utf8;utf8x" # ROMAN NUMERAL NINE
-0x2169 "\\mbox{X}"                "" "force=utf8;utf8x" # ROMAN NUMERAL TEN
-0x216a "\\mbox{XI}"               "" "force=utf8;utf8x" # ROMAN NUMERAL ELEVEN
-0x216b "\\mbox{XII}"              "" "force=utf8;utf8x" # ROMAN NUMERAL TWELVE
-0x216c "\\mbox{L}"                "" "force=utf8;utf8x" # ROMAN NUMERAL FIFTY
-0x216d "\\mbox{C}"                "" "force=utf8;utf8x" # ROMAN NUMERAL ONE HUNDRED
-0x216e "\\mbox{D}"                "" "force=utf8;utf8x" # ROMAN NUMERAL FIVE HUNDRED
-0x216f "\\mbox{M}"                "" "force=utf8;utf8x" # ROMAN NUMERAL ONE THOUSAND
-0x2170 "\\mbox{i}"                "" "force=utf8;utf8x" # SMALL ROMAN NUMERAL ONE
-0x2171 "\\mbox{ii}"               "" "force=utf8;utf8x" # SMALL ROMAN NUMERAL TWO
-0x2172 "\\mbox{iii}"              "" "force=utf8;utf8x" # SMALL ROMAN NUMERAL THREE
-0x2173 "\\mbox{iv}"               "" "force=utf8;utf8x" # SMALL ROMAN NUMERAL FOUR
-0x2174 "\\mbox{v}"                "" "force=utf8;utf8x" # SMALL ROMAN NUMERAL FIVE
-0x2175 "\\mbox{vi}"               "" "force=utf8;utf8x" # SMALL ROMAN NUMERAL SIX
-0x2176 "\\mbox{vii}"              "" "force=utf8;utf8x" # SMALL ROMAN NUMERAL SEVEN
-0x2177 "\\mbox{viii}"             "" "force=utf8;utf8x" # SMALL ROMAN NUMERAL EIGHT
-0x2178 "\\mbox{ix}"               "" "force=utf8;utf8x" # SMALL ROMAN NUMERAL NINE
-0x2179 "\\mbox{x}"                "" "force=utf8;utf8x" # SMALL ROMAN NUMERAL TEN
-0x217a "\\mbox{xi}"               "" "force=utf8;utf8x" # SMALL ROMAN NUMERAL ELEVEN
-0x217b "\\mbox{xii}"              "" "force=utf8;utf8x" # SMALL ROMAN NUMERAL TWELVE
-0x217c "\\mbox{l}"                "" "force=utf8;utf8x" # SMALL ROMAN NUMERAL FIFTY
-0x217d "\\mbox{c}"                "" "force=utf8;utf8x" # SMALL ROMAN NUMERAL ONE HUNDRED
-0x217e "\\mbox{d}"                "" "force=utf8;utf8x" # SMALL ROMAN NUMERAL FIVE HUNDRED
-0x217f "\\mbox{m}"                "" "force=utf8;utf8x" # SMALL ROMAN NUMERAL ONE THOUSAND
+0x2150 "\\sfrac{1}{7}"            "xfrac" "force=utf8;utf8x;utf8-cjk" "\\sfrac{1}{7}" "xfrac" # VULGAR FRACTION ONE SEVENTH
+0x2151 "\\sfrac{1}{9}"            "xfrac" "force=utf8;utf8x;utf8-cjk" "\\sfrac{1}{9}" "xfrac" # VULGAR FRACTION ONE NINTH
+0x2152 "\\sfrac{1}{10}"           "xfrac" "force=utf8;utf8x;utf8-cjk" "\\sfrac{1}{10}" "xfrac" # VULGAR FRACTION ONE TENTH
+0x2153 "\\sfrac{1}{3}"            "xfrac" "force=utf8;utf8x;utf8-cjk" "\\sfrac{1}{3}" "xfrac" # VULGAR FRACTION ONE THIRD
+0x2154 "\\sfrac{2}{3}"            "xfrac" "force=utf8;utf8x;utf8-cjk" "\\sfrac{2}{3}" "xfrac" # VULGAR FRACTION TWO THIRDS
+0x2155 "\\sfrac{1}{5}"            "xfrac" "force=utf8;utf8x;utf8-cjk" "\\sfrac{1}{5}" "xfrac" # VULGAR FRACTION ONE FIFTH
+0x2156 "\\sfrac{2}{5}"            "xfrac" "force=utf8;utf8x;utf8-cjk" "\\sfrac{2}{5}" "xfrac" # VULGAR FRACTION TWO FIFTHS
+0x2157 "\\sfrac{3}{5}"            "xfrac" "force=utf8;utf8x;utf8-cjk" "\\sfrac{3}{5}" "xfrac" # VULGAR FRACTION THREE FIFTHS
+0x2158 "\\sfrac{4}{5}"            "xfrac" "force=utf8;utf8x;utf8-cjk" "\\sfrac{4}{5}" "xfrac" # VULGAR FRACTION FOUR FIFTHS
+0x2159 "\\sfrac{1}{6}"            "xfrac" "force=utf8;utf8x;utf8-cjk" "\\sfrac{1}{6}" "xfrac" # VULGAR FRACTION ONE SIXTH
+0x215a "\\sfrac{5}{6}"            "xfrac" "force=utf8;utf8x;utf8-cjk" "\\sfrac{5}{6}" "xfrac" # VULGAR FRACTION FIVE SIXTHS
+0x215b "\\sfrac{1}{8}"            "xfrac" "force=utf8;utf8x;utf8-cjk" "\\sfrac{1}{8}" "xfrac" # VULGAR FRACTION ONE EIGHT
+0x215c "\\sfrac{3}{8}"            "xfrac" "force=utf8;utf8x;utf8-cjk" "\\sfrac{3}{8}" "xfrac" # VULGAR FRACTION THREE EIGHTS
+0x215d "\\sfrac{5}{8}"            "xfrac" "force=utf8;utf8x;utf8-cjk" "\\sfrac{5}{8}" "xfrac" # VULGAR FRACTION FIVE EIGHTS
+0x215e "\\sfrac{7}{8}"            "xfrac" "force=utf8;utf8x;utf8-cjk" "\\sfrac{7}{8}" "xfrac" # VULGAR FRACTION SEVEN EIGHTS
+0x215f "\\sfrac{1}{}"             "xfrac" "force=utf8;utf8x;utf8-cjk" "\\sfrac{1}{}"  "xfrac" # FRACTION NUMERATOR ONE
+0x2160 "\\mbox{I}"                "" "force=utf8;utf8x;utf8-cjk" # ROMAN NUMERAL ONE
+0x2161 "\\mbox{II}"               "" "force=utf8;utf8x;utf8-cjk" # ROMAN NUMERAL TWO
+0x2162 "\\mbox{III}"              "" "force=utf8;utf8x;utf8-cjk" # ROMAN NUMERAL THREE
+0x2163 "\\mbox{IV}"               "" "force=utf8;utf8x;utf8-cjk" # ROMAN NUMERAL FOUR
+0x2164 "\\mbox{V}"                "" "force=utf8;utf8x;utf8-cjk" # ROMAN NUMERAL FIVE
+0x2165 "\\mbox{VI}"               "" "force=utf8;utf8x;utf8-cjk" # ROMAN NUMERAL SIX
+0x2166 "\\mbox{VII}"              "" "force=utf8;utf8x;utf8-cjk" # ROMAN NUMERAL SEVEN
+0x2167 "\\mbox{VIII}"             "" "force=utf8;utf8x;utf8-cjk" # ROMAN NUMERAL EIGHT
+0x2168 "\\mbox{IX}"               "" "force=utf8;utf8x;utf8-cjk" # ROMAN NUMERAL NINE
+0x2169 "\\mbox{X}"                "" "force=utf8;utf8x;utf8-cjk" # ROMAN NUMERAL TEN
+0x216a "\\mbox{XI}"               "" "force=utf8;utf8x;utf8-cjk" # ROMAN NUMERAL ELEVEN
+0x216b "\\mbox{XII}"              "" "force=utf8;utf8x;utf8-cjk" # ROMAN NUMERAL TWELVE
+0x216c "\\mbox{L}"                "" "force=utf8;utf8x;utf8-cjk" # ROMAN NUMERAL FIFTY
+0x216d "\\mbox{C}"                "" "force=utf8;utf8x;utf8-cjk" # ROMAN NUMERAL ONE HUNDRED
+0x216e "\\mbox{D}"                "" "force=utf8;utf8x;utf8-cjk" # ROMAN NUMERAL FIVE HUNDRED
+0x216f "\\mbox{M}"                "" "force=utf8;utf8x;utf8-cjk" # ROMAN NUMERAL ONE THOUSAND
+0x2170 "\\mbox{i}"                "" "force=utf8;utf8x;utf8-cjk" # SMALL ROMAN NUMERAL ONE
+0x2171 "\\mbox{ii}"               "" "force=utf8;utf8x;utf8-cjk" # SMALL ROMAN NUMERAL TWO
+0x2172 "\\mbox{iii}"              "" "force=utf8;utf8x;utf8-cjk" # SMALL ROMAN NUMERAL THREE
+0x2173 "\\mbox{iv}"               "" "force=utf8;utf8x;utf8-cjk" # SMALL ROMAN NUMERAL FOUR
+0x2174 "\\mbox{v}"                "" "force=utf8;utf8x;utf8-cjk" # SMALL ROMAN NUMERAL FIVE
+0x2175 "\\mbox{vi}"               "" "force=utf8;utf8x;utf8-cjk" # SMALL ROMAN NUMERAL SIX
+0x2176 "\\mbox{vii}"              "" "force=utf8;utf8x;utf8-cjk" # SMALL ROMAN NUMERAL SEVEN
+0x2177 "\\mbox{viii}"             "" "force=utf8;utf8x;utf8-cjk" # SMALL ROMAN NUMERAL EIGHT
+0x2178 "\\mbox{ix}"               "" "force=utf8;utf8x;utf8-cjk" # SMALL ROMAN NUMERAL NINE
+0x2179 "\\mbox{x}"                "" "force=utf8;utf8x;utf8-cjk" # SMALL ROMAN NUMERAL TEN
+0x217a "\\mbox{xi}"               "" "force=utf8;utf8x;utf8-cjk" # SMALL ROMAN NUMERAL ELEVEN
+0x217b "\\mbox{xii}"              "" "force=utf8;utf8x;utf8-cjk" # SMALL ROMAN NUMERAL TWELVE
+0x217c "\\mbox{l}"                "" "force=utf8;utf8x;utf8-cjk" # SMALL ROMAN NUMERAL FIFTY
+0x217d "\\mbox{c}"                "" "force=utf8;utf8x;utf8-cjk" # SMALL ROMAN NUMERAL ONE HUNDRED
+0x217e "\\mbox{d}"                "" "force=utf8;utf8x;utf8-cjk" # SMALL ROMAN NUMERAL FIVE HUNDRED
+0x217f "\\mbox{m}"                "" "force=utf8;utf8x;utf8-cjk" # SMALL ROMAN NUMERAL ONE THOUSAND
 #0x2180 ""                         "" "" "" "" # ROMAN NUMERAL ONE THOUSAND C D
 #0x2181 ""                         "" "" "" "" # ROMAN NUMERAL FIVE THOUSAND
 #0x2182 ""                         "" "" "" "" # ROMAN NUMERAL TEN THOUSAND
@@ -2004,94 +2005,94 @@
 0x2191 "\\textuparrow"            "textcomp" "" "\\uparrow" # UPWARDS ARROW
 0x2192 "\\textrightarrow"         "textcomp" "" "\\rightarrow" # RIGHTWARDS ARROW
 0x2193 "\\textdownarrow"          "textcomp" "" "\\downarrow" # DOWNWARDS ARROW
-0x2194 ""                         "" "force=utf8" "\\leftrightarrow" # LEFT RIGHT ARROW
-0x2195 ""                         "" "force=utf8" "\\updownarrow" # UP DOWN ARROW
-0x2196 ""                         "" "force=utf8;utf8x" "\\nwarrow" "" # NORTH WEST ARROW
-0x2197 "\\textglobrise"           "tipa" "force=utf8;utf8x" "\\nearrow" "" # NORTH EAST ARROW
-0x2198 "\\textglobfall"           "tipa" "force=utf8;utf8x" "\\searrow" "" #
-0x2199 ""                         "" "force=utf8;utf8x" "\\swarrow" "" # SOUTH WEST ARROW
-0x219a ""                         "" "force=utf8;utf8x" "\\nleftarrow" "amssymb" # LEFTWARDS ARROW WITH STROKE
-0x219b ""                         "" "force=utf8;utf8x" "\\nrightarrow" "amssymb" # RIGHTWARDS ARROW WITH STROKE
+0x2194 ""                         "" "force=utf8;utf8-cjk" "\\leftrightarrow" # LEFT RIGHT ARROW
+0x2195 ""                         "" "force=utf8;utf8-cjk" "\\updownarrow" # UP DOWN ARROW
+0x2196 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\nwarrow" "" # NORTH WEST ARROW
+0x2197 "\\textglobrise"           "tipa" "force=utf8;utf8x;utf8-cjk" "\\nearrow" "" # NORTH EAST ARROW
+0x2198 "\\textglobfall"           "tipa" "force=utf8;utf8x;utf8-cjk" "\\searrow" "" #
+0x2199 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\swarrow" "" # SOUTH WEST ARROW
+0x219a ""                         "" "force=utf8;utf8x;utf8-cjk" "\\nleftarrow" "amssymb" # LEFTWARDS ARROW WITH STROKE
+0x219b ""                         "" "force=utf8;utf8x;utf8-cjk" "\\nrightarrow" "amssymb" # RIGHTWARDS ARROW WITH STROKE
 #0x219c ""                         "" "" "" "" # LEFTWARDS WAVE ARROW
 # amssymb and amsfonts define leadsto as well, but wrong (looks like 0x21dd)
-0x219d ""                         "" "force=utf8" "\\leadsto" "latexsym|wasysym" # RIGHTWARDS WAVE ARROW,
-0x219e ""                         "" "force=utf8" "\\twoheadleftarrow" "amssymb" # LEFTWARDS TWO HEADED ARROW
+0x219d ""                         "" "force=utf8;utf8-cjk" "\\leadsto" "latexsym|wasysym" # RIGHTWARDS WAVE ARROW,
+0x219e ""                         "" "force=utf8;utf8-cjk" "\\twoheadleftarrow" "amssymb" # LEFTWARDS TWO HEADED ARROW
 #0x219f ""                         "" "" "" "" # UPWARDS TWO HEADED ARROW
-0x21a0 ""                         "" "force=utf8" "\\twoheadrightarrow" "amssymb" # RIGHTWARDS TWO HEADED ARROW
+0x21a0 ""                         "" "force=utf8;utf8-cjk" "\\twoheadrightarrow" "amssymb" # RIGHTWARDS TWO HEADED ARROW
 #0x21a1 ""                         "" "" "" "" # DOWNWARDS TWO HEADED ARROW
-0x21a2 ""                         "" "force=utf8" "\\leftarrowtail" "amssymb" # LEFTWARDS ARROW WITH TAIL
-0x21a3 ""                         "" "force=utf8" "\\rightarrowtail" "amssymb" # RIGHTWARDS ARROW WITH TAIL
-0x21a4 ""                         "" "force=utf8;utf8x" "\\mapsfrom" "stmaryrd" # LEFTWARDS ARROW FROM BAR
+0x21a2 ""                         "" "force=utf8;utf8-cjk" "\\leftarrowtail" "amssymb" # LEFTWARDS ARROW WITH TAIL
+0x21a3 ""                         "" "force=utf8;utf8-cjk" "\\rightarrowtail" "amssymb" # RIGHTWARDS ARROW WITH TAIL
+0x21a4 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\mapsfrom" "stmaryrd" # LEFTWARDS ARROW FROM BAR
 #0x21a5 ""                         "" "" "" "" # UPWARDS ARROW FROM BAR
-0x21a6 ""                         "" "force=utf8" "\\mapsto" "" # RIGHTWARDS ARROW FROM BAR
+0x21a6 ""                         "" "force=utf8;utf8-cjk" "\\mapsto" "" # RIGHTWARDS ARROW FROM BAR
 #0x21a7 ""                         "" "" "" "" # DOWNWARDS ARROW FROM BAR
-0x21a8 "\\ETB"                    "ascii" "force=utf8;utf8x" # UP DOWN ARROW WITH BASE
-0x21a9 ""                         "" "force=utf8" "\\hookleftarrow" "" # LEFTWARDS ARROW WITH HOOK
-0x21aa ""                         "" "force=utf8" "\\hookrightarrow" "" # RIGHTWARDS ARROW WITH HOOK
-0x21ab ""                         "" "force=utf8;utf8x" "\\looparrowleft" "amssymb" # LEFTWARDS ARROW WITH LOOP
-0x21ac ""                         "" "force=utf8;utf8x" "\\looparrowright" "amssymb" # RIGHTWARDS ARROW WITH LOOP
-0x21ad ""                         "" "force=utf8;utf8x" "\\leftrightsquigarrow" "amssymb" # LEFT RIGHT WAVE ARROW
-0x21ae ""                         "" "force=utf8;utf8x" "\\nleftrightarrow" "amssymb" # LEFT RIGHT ARROW WITH STROKE
+0x21a8 "\\ETB"                    "ascii" "force=utf8;utf8x;utf8-cjk" # UP DOWN ARROW WITH BASE
+0x21a9 ""                         "" "force=utf8;utf8-cjk" "\\hookleftarrow" "" # LEFTWARDS ARROW WITH HOOK
+0x21aa ""                         "" "force=utf8;utf8-cjk" "\\hookrightarrow" "" # RIGHTWARDS ARROW WITH HOOK
+0x21ab ""                         "" "force=utf8;utf8x;utf8-cjk" "\\looparrowleft" "amssymb" # LEFTWARDS ARROW WITH LOOP
+0x21ac ""                         "" "force=utf8;utf8x;utf8-cjk" "\\looparrowright" "amssymb" # RIGHTWARDS ARROW WITH LOOP
+0x21ad ""                         "" "force=utf8;utf8x;utf8-cjk" "\\leftrightsquigarrow" "amssymb" # LEFT RIGHT WAVE ARROW
+0x21ae ""                         "" "force=utf8;utf8x;utf8-cjk" "\\nleftrightarrow" "amssymb" # LEFT RIGHT ARROW WITH STROKE
 # stmaryrd defines \lightnig as math-command but this clashes with wasysym where \lightning in math mode produces "`"
-0x21af "\\lightning"              "wasysym" "force=utf8;utf8x" "" "" # DOWNWARDS ZIGZAG ARROW
-0x21b0 ""                         "" "force=utf8;utf8x" "\\Lsh" "amssymb" # UPWARDS ARROW WITH TIP LEFTWARDS
-0x21b1 ""                         "" "force=utf8;utf8x" "\\Rsh" "amssymb" # UPWARDS ARROW WITH TIP RIGHTWARDS
+0x21af "\\lightning"              "wasysym" "force=utf8;utf8x;utf8-cjk" "" "" # DOWNWARDS ZIGZAG ARROW
+0x21b0 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\Lsh" "amssymb" # UPWARDS ARROW WITH TIP LEFTWARDS
+0x21b1 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\Rsh" "amssymb" # UPWARDS ARROW WITH TIP RIGHTWARDS
 #0x21b2 ""                         "" "" "" "" # DOWNWARDS ARROW WITH TIP LEFTWARDS
 #0x21b3 ""                         "" "" "" "" # DOWNWARDS ARROW WITH TIP RIGHTWARDS
 #0x21b4 ""                         "" "" "" "" # RIGHTWARDS ARROW WITH CORNER DOWNWARDS
-0x21b5 "{\\Pisymbol{psy}{191}}"   "pifont" "force=utf8;utf8x" # DOWNWARDS ARROW WITH CORNER LEFTWARDS, Return key
-0x21b6 ""                         "" "force=utf8;utf8x" "\\curvearrowleft" "amssymb" # ANTICLOCKWISE TOP SEMICIRCLE ARROW
-0x21b7 ""                         "" "force=utf8;utf8x" "\\curvearrowright" "amssymb" # CLOCKWISE TOP SEMICIRCLE ARROW
+0x21b5 "{\\Pisymbol{psy}{191}}"   "pifont" "force=utf8;utf8x;utf8-cjk" # DOWNWARDS ARROW WITH CORNER LEFTWARDS, Return key
+0x21b6 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\curvearrowleft" "amssymb" # ANTICLOCKWISE TOP SEMICIRCLE ARROW
+0x21b7 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\curvearrowright" "amssymb" # CLOCKWISE TOP SEMICIRCLE ARROW
 #0x21b8 ""                         "" "" "" "" # NORTH WEST ARROW TO LONG BAR
 0x21b9 "\\tabwin"                  "menukeys" "force" "" "" # LEFTWARDS ARROW TO BAR OVER RIGHTWARDS ARROW TO BAR
-0x21ba ""                         "" "force=utf8;utf8x" "\\circlearrowleft" "amssymb" # ANTICLOCKWISE OPEN CIRCLE ARROW
-0x21bb ""                         "" "force=utf8;utf8x" "\\circlearrowright" "amssymb" # CLOCKWISE OPEN CIRCLE ARROW
-0x21bc ""                         "" "force=utf8" "\\leftharpoonup" "" # LEFTWARDS HARPOON WITH BARB UPWARDS
-0x21bd ""                         "" "force=utf8" "\\leftharpoondown" "" # LEFTWARDS HARPOON WITH BARB DOWNWARDS
-0x21be ""                         "" "force=utf8" "\\upharpoonright" "amssymb" # UPWARDS HARPOON WITH BARB RIGHTWARDS
-0x21bf ""                         "" "force=utf8" "\\upharpoonleft" "amssymb" # UPWARDS HARPOON WITH BARB LEFTWARDS
-0x21c0 ""                         "" "force=utf8" "\\rightharpoonup" "" # RIGHTWARDS HARPOON WITH BARB UPWARDS
-0x21c1 ""                         "" "force=utf8" "\\rightharpoondown" "" # RIGHTWARDS HARPOON WITH BARB DOWNWARDS
-0x21c2 ""                         "" "force=utf8" "\\downharpoonright" "amssymb" # DOWNWARDS HARPOON WITH BARB RIGHTWARDS
-0x21c3 ""                         "" "force=utf8" "\\downharpoonleft" "amssymb" # DOWNWARDS HARPOON WITH BARB LEFTWARDS
-0x21c4 ""                         "" "force=utf8;utf8x" "\\rightleftarrows" "amssymb" # RIGHTWARDS ARROW OVER LEFTWARDS ARROW
+0x21ba ""                         "" "force=utf8;utf8x;utf8-cjk" "\\circlearrowleft" "amssymb" # ANTICLOCKWISE OPEN CIRCLE ARROW
+0x21bb ""                         "" "force=utf8;utf8x;utf8-cjk" "\\circlearrowright" "amssymb" # CLOCKWISE OPEN CIRCLE ARROW
+0x21bc ""                         "" "force=utf8;utf8-cjk" "\\leftharpoonup" "" # LEFTWARDS HARPOON WITH BARB UPWARDS
+0x21bd ""                         "" "force=utf8;utf8-cjk" "\\leftharpoondown" "" # LEFTWARDS HARPOON WITH BARB DOWNWARDS
+0x21be ""                         "" "force=utf8;utf8-cjk" "\\upharpoonright" "amssymb" # UPWARDS HARPOON WITH BARB RIGHTWARDS
+0x21bf ""                         "" "force=utf8;utf8-cjk" "\\upharpoonleft" "amssymb" # UPWARDS HARPOON WITH BARB LEFTWARDS
+0x21c0 ""                         "" "force=utf8;utf8-cjk" "\\rightharpoonup" "" # RIGHTWARDS HARPOON WITH BARB UPWARDS
+0x21c1 ""                         "" "force=utf8;utf8-cjk" "\\rightharpoondown" "" # RIGHTWARDS HARPOON WITH BARB DOWNWARDS
+0x21c2 ""                         "" "force=utf8;utf8-cjk" "\\downharpoonright" "amssymb" # DOWNWARDS HARPOON WITH BARB RIGHTWARDS
+0x21c3 ""                         "" "force=utf8;utf8-cjk" "\\downharpoonleft" "amssymb" # DOWNWARDS HARPOON WITH BARB LEFTWARDS
+0x21c4 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\rightleftarrows" "amssymb" # RIGHTWARDS ARROW OVER LEFTWARDS ARROW
 #0x21c5 ""                         "" "" "\\updownarrows" "mathabx" # UPWARDS ARROW LEFTWARDS OF DOWNWARDS ARROW
-0x21c6 ""                         "" "force=utf8;utf8x" "\\leftrightarrows" "amssymb" # LEFTWARDS ARROW OVER RIGHTWARDS ARROW
-0x21c7 ""                         "" "force=utf8;utf8x" "\\leftleftarrows" "amssymb" # LEFTWARDS PAIRED ARROWS
-0x21c8 ""                         "" "force=utf8;utf8x" "\\upuparrows" "amssymb" # UPWARDS PAIRED ARROWS
-0x21c9 ""                         "" "force=utf8;utf8x" "\\rightrightarrows" "amssymb" # RIGHTWARDS PAIRED ARROWS
-0x21ca ""                         "" "force=utf8;utf8x" "\\downdownarrows" "amssymb" # DOWNWARDS PAIRED ARROWS
-0x21cb ""                         "" "force=utf8" "\\leftrightharpoons" "amssymb" # LEFTWARDS HARPOON OVER RIGHTWARDS HARPOON
-0x21cc ""                         "" "force=utf8" "\\rightleftharpoons" "amssymb" # RIGHTWARDS HARPOON OVER LEFTWARDS HARPOON
-0x21cd ""                         "" "force=utf8;utf8x" "\\nLeftarrow" "amssymb" # LEFTWARDS DOUBLE ARROW WITH STROKE
-0x21ce ""                         "" "force=utf8;utf8x" "\\nLeftrightarrow" "amssymb" # LEFT RIGHT DOUBLE ARROW WITH STROKE
-0x21cf ""                         "" "force=utf8;utf8x" "\\nRightarrow" "amssymb" # RIGHTWARDS DOUBLE ARROW WITH STROKE
-0x21d0 ""                         "" "force=utf8" "\\Leftarrow" "" # LEFTWARDS DOUBLE ARROW
-0x21d1 ""                         "" "force=utf8" "\\Uparrow" "" # UPWARDS DOUBLE ARROW
-0x21d2 ""                         "" "force=utf8" "\\Rightarrow" "" # RIGHTWARDS DOUBLE ARROW
-0x21d3 ""                         "" "force=utf8" "\\Downarrow" "" # DOWNWARDS DOUBLE ARROW
-0x21d4 ""                         "" "force=utf8" "\\Leftrightarrow" "" # LEFT RIGHT DOUBLE ARROW
-0x21d5 ""                         "" "force=utf8" "\\Updownarrow" "" # UP DOWN DOUBLE ARROW
+0x21c6 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\leftrightarrows" "amssymb" # LEFTWARDS ARROW OVER RIGHTWARDS ARROW
+0x21c7 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\leftleftarrows" "amssymb" # LEFTWARDS PAIRED ARROWS
+0x21c8 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\upuparrows" "amssymb" # UPWARDS PAIRED ARROWS
+0x21c9 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\rightrightarrows" "amssymb" # RIGHTWARDS PAIRED ARROWS
+0x21ca ""                         "" "force=utf8;utf8x;utf8-cjk" "\\downdownarrows" "amssymb" # DOWNWARDS PAIRED ARROWS
+0x21cb ""                         "" "force=utf8;utf8-cjk" "\\leftrightharpoons" "amssymb" # LEFTWARDS HARPOON OVER RIGHTWARDS HARPOON
+0x21cc ""                         "" "force=utf8;utf8-cjk" "\\rightleftharpoons" "amssymb" # RIGHTWARDS HARPOON OVER LEFTWARDS HARPOON
+0x21cd ""                         "" "force=utf8;utf8x;utf8-cjk" "\\nLeftarrow" "amssymb" # LEFTWARDS DOUBLE ARROW WITH STROKE
+0x21ce ""                         "" "force=utf8;utf8x;utf8-cjk" "\\nLeftrightarrow" "amssymb" # LEFT RIGHT DOUBLE ARROW WITH STROKE
+0x21cf ""                         "" "force=utf8;utf8x;utf8-cjk" "\\nRightarrow" "amssymb" # RIGHTWARDS DOUBLE ARROW WITH STROKE
+0x21d0 ""                         "" "force=utf8;utf8-cjk" "\\Leftarrow" "" # LEFTWARDS DOUBLE ARROW
+0x21d1 ""                         "" "force=utf8;utf8-cjk" "\\Uparrow" "" # UPWARDS DOUBLE ARROW
+0x21d2 ""                         "" "force=utf8;utf8-cjk" "\\Rightarrow" "" # RIGHTWARDS DOUBLE ARROW
+0x21d3 ""                         "" "force=utf8;utf8-cjk" "\\Downarrow" "" # DOWNWARDS DOUBLE ARROW
+0x21d4 ""                         "" "force=utf8;utf8-cjk" "\\Leftrightarrow" "" # LEFT RIGHT DOUBLE ARROW
+0x21d5 ""                         "" "force=utf8;utf8-cjk" "\\Updownarrow" "" # UP DOWN DOUBLE ARROW
 #0x21d6 ""                         "" "" "\\Nwarrow" "MnSymbol" # NORTH WEST DOUBLE ARROW
 #0x21d7 ""                         "" "" "\\Nearrow" "MnSymbol" # NORTH EAST DOUBLE ARROW
 #0x21d8 ""                         "" "" "\\Searrow" "MnSymbol" # SOUTH EAST DOUBLE ARROW
 #0x21d9 ""                         "" "" "\\Swarrow" "MnSymbol" # SOUTH WEST DOUBLE ARROW
-0x21da ""                         "" "force=utf8;utf8x" "\\Lleftarrow" "amssymb" # LEFTWARDS TRIPLE ARROW
-0x21db ""                         "" "force=utf8;utf8x" "\\Rrightarrow" "amssymb" # RIGHTWARDS TRIPLE ARROW
+0x21da ""                         "" "force=utf8;utf8x;utf8-cjk" "\\Lleftarrow" "amssymb" # LEFTWARDS TRIPLE ARROW
+0x21db ""                         "" "force=utf8;utf8x;utf8-cjk" "\\Rrightarrow" "amssymb" # RIGHTWARDS TRIPLE ARROW
 #0x21dc ""                         "" "" "\\leftsquigarrow" "mathabx" # LEFTWARDS SQUIGGLE ARROW
-0x21dd ""                         "" "force=utf8;utf8x" "\\rightsquigarrow" "amssymb" # RIGHTWARDS SQUIGGLE ARROW
+0x21dd ""                         "" "force=utf8;utf8x;utf8-cjk" "\\rightsquigarrow" "amssymb" # RIGHTWARDS SQUIGGLE ARROW
 # FIXME Yes, these are constructed, but better than a key symbols text.
-0x21de "\\ooalign{\\textuparrow\\cr\\kern.1em\\textdblhyphen}"  "textcomp" "force=utf8;utf8x" "" "" #Qt::Key_PageUp, UPWARDS ARROW WITH DOUBLE STROKE = page up "\\nHuparrow" "boisik|stix"
-0x21df "\\ooalign{\\textdownarrow\\cr\\kern.1em\\textdblhyphen}" "textcomp" "force=utf8;utf8x,notermination=text" "" "" # Qt::Key_PageDown, DOWNWARDS ARROW WITH DOUBLE STROKE = page down "\\nHdownarrow" "boisik|stix"
-0x21e0 ""                         "" "force=utf8;utf8x" "\\dashleftarrow" "amssymb" # LEFTWARDS DASHED ARROW
+0x21de "\\ooalign{\\textuparrow\\cr\\kern.1em\\textdblhyphen}"  "textcomp" "force=utf8;utf8x;utf8-cjk" "" "" #Qt::Key_PageUp, UPWARDS ARROW WITH DOUBLE STROKE = page up "\\nHuparrow" "boisik|stix"
+0x21df "\\ooalign{\\textdownarrow\\cr\\kern.1em\\textdblhyphen}" "textcomp" "force=utf8;utf8-cjk;utf8x,notermination=text" "" "" # Qt::Key_PageDown, DOWNWARDS ARROW WITH DOUBLE STROKE = page down "\\nHdownarrow" "boisik|stix"
+0x21e0 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\dashleftarrow" "amssymb" # LEFTWARDS DASHED ARROW
 #0x21e1 ""                         "" "" "" "" # UPWARDS DASHED ARROW
-0x21e2 ""                         "" "force=utf8;utf8x" "\\dashrightarrow" "amssymb" # RIGHTWARDS DASHED ARROW
+0x21e2 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\dashrightarrow" "amssymb" # RIGHTWARDS DASHED ARROW
 #0x21e3 ""                         "" "" "" "" # DOWNWARDS DASHED ARROW
 0x21e4 "\\reflectbox{\\tabmac}"   "menukeys,graphics" "force" "" "" # Qt::Key_Backtab, LEFTWARDS ARROW TO BAR = leftward tab "\\barleftarrow" "boisik|stix"
 0x21e5 "\\tabmac"                 "menukeys" "force" "" "" # Qt::Key_Tab, RIGHTWARDS ARROW TO BAR = rightward tab "\\rightarrowbar" "boisik|stix"
 #0x21e6 ""                         "" "" "" "" # LEFTWARDS WHITE ARROW
 0x21e7 "\\shift"                  "menukeys" "force" "" "" # UPWARDS WHITE ARROW
-0x21e8 "\\pointer"                "wasysym" "force=utf8;utf8x" "" "" # RIGHTWARDS WHITE ARROW
+0x21e8 "\\pointer"                "wasysym" "force=utf8;utf8x;utf8-cjk" "" "" # RIGHTWARDS WHITE ARROW
 #0x21e9 ""                         "" "" "" "" # DOWNWARDS WHITE ARROW
 0x21ea "\\capslockmac"             "menukeys" "force" "" "" # Qt::Key_CapsLock, UPWARDS WHITE ARROW FROM BAR = caps lock "\\whitearrowupfrombar" "boisik|stix"
 #0x21eb ""                         "" "" "" "" # UPWARDS WHITE ARROW ON PEDESTAL
@@ -2112,8 +2113,8 @@
 #0x21fa ""                         "" "" "" "" # LEFTWARDS ARROW WITH DOUBLE VERTICAL STROKE
 #0x21fb ""                         "" "" "" "" # RIGHTWARDS ARROW WITH DOUBLE VERTICAL STROKE
 #0x21fc ""                         "" "" "" "" # LEFT RIGHT ARROW WITH DOUBLE VERTICAL STROKE
-0x21fd ""                         "" "force=utf8;utf8x" "\\leftarrowtriangle" "stmaryrd" # LEFTWARDS OPEN-HEADED ARROW
-0x21fe ""                         "" "force=utf8;utf8x" "\\rightarrowtriangle" "stmaryrd" # RIGHTWARDS OPEN-HEADED ARROW
+0x21fd ""                         "" "force=utf8;utf8x;utf8-cjk" "\\leftarrowtriangle" "stmaryrd" # LEFTWARDS OPEN-HEADED ARROW
+0x21fe ""                         "" "force=utf8;utf8x;utf8-cjk" "\\rightarrowtriangle" "stmaryrd" # RIGHTWARDS OPEN-HEADED ARROW
 #0x21ff ""                         "" "" "" "" # LEFT RIGHT OPEN-HEADED ARROW
 #
 # 77 Mathematical Operators
@@ -2386,10 +2387,10 @@
 #0x2305 ""                         "" "" "" "" # PROJECTIVE
 #0x2306 ""                         "" "" "" "" # PERSPECTIVE
 #0x2307 ""                         "" "" "" "" # WAVY LINE
-0x2308 ""                         "" "force=utf8" "\\lceil" "" # LEFT CEILING
-0x2309 ""                         "" "force=utf8" "\\rceil" "" # RIGHT CEILING
-0x230a ""                         "" "force=utf8" "\\lfloor" "" # LEFT FLOOR
-0x230b ""                         "" "force=utf8" "\\rfloor" "" # RIGHT FLOOR
+0x2308 ""                         "" "force=utf8;utf8-cjk" "\\lceil" "" # LEFT CEILING
+0x2309 ""                         "" "force=utf8;utf8-cjk" "\\rceil" "" # RIGHT CEILING
+0x230a ""                         "" "force=utf8;utf8-cjk" "\\lfloor" "" # LEFT FLOOR
+0x230b ""                         "" "force=utf8;utf8-cjk" "\\rfloor" "" # RIGHT FLOOR
 #0x230c ""                         "" "" "" "" # BOTTOM RIGHT CROP
 #0x230d ""                         "" "" "" "" # BOTTOM LEFT CROP
 #0x230e ""                         "" "" "" "" # TOP RIGHT CROP
@@ -2992,22 +2993,22 @@
 #0x265d ""                         "" "" "" "" # BLACK CHESS BISHOP
 #0x265e ""                         "" "" "" "" # BLACK CHESS KNIGHT
 #0x265f ""                         "" "" "" "" # BLACK CHESS PAWN
-0x2660 "\\ding{171}"              "pifont" "force=utf8" "\\spadesuit" # BLACK SPADE SUIT
-0x2661 ""                         "" "force=utf8" "\\heartsuit" # WHITE HEART SUIT
-0x2662 ""                         "" "force=utf8" "\\diamondsuit" # WHITE DIAMOND SUIT
-0x2663 "\\ding{168}"              "pifont" "force=utf8" "\\clubsuit" # BLACK CLUB SUIT
+0x2660 "\\ding{171}"              "pifont" "force=utf8;utf8-cjk" "\\spadesuit" # BLACK SPADE SUIT
+0x2661 ""                         "" "force=utf8;utf8-cjk" "\\heartsuit" # WHITE HEART SUIT
+0x2662 ""                         "" "force=utf8;utf8-cjk" "\\diamondsuit" # WHITE DIAMOND SUIT
+0x2663 "\\ding{168}"              "pifont" "force=utf8;utf8-cjk" "\\clubsuit" # BLACK CLUB SUIT
 #0x2664 ""                         "" "" "\\varspadesuit" "txfonts|pxfonts" # WHITE SPADE SUIT
 0x2665 "\\ding{170}"              "pifont" "force" "" "" # BLACK HEART SUIT
 0x2666 "\\ding{169}"              "pifont" "force" "" "" # BLACK DIAMOND SUIT
 #0x2667 ""                         "" "" "\\varclubsuit" "txfonts|pxfonts" # WHITE CLUB SUIT
 #0x2668 ""                         "" "" "" "" # HOT SPRINGS
-0x2669 "\\quarternote"            "wasysym" "force=utf8" "\\quarternote" "wasysym" # QUARTER NOTE
+0x2669 "\\quarternote"            "wasysym" "force=utf8;utf8-cjk" "\\quarternote" "wasysym" # QUARTER NOTE
 0x266a "\\textmusicalnote"        "textcomp" "" # EIGHTH NOTE
-0x266b "\\twonotes"               "wasysym" "force=utf8" "\\twonotes" "wasysym" # BEAMED EIGHTH NOTES
+0x266b "\\twonotes"               "wasysym" "force=utf8;utf8-cjk" "\\twonotes" "wasysym" # BEAMED EIGHTH NOTES
 #0x266c ""                         "" "" "" "" # BEAMED SIXTEENTH NOTES
-0x266d ""                         "" "force=utf8" "\\flat" "" # MUSIC FLAT SIGN
-0x266e ""                         "" "force=utf8" "\\natural" "" # MUSIC NATURAL SIGN
-0x266f ""                         "" "force=utf8" "\\sharp" "" # MUSIC SHARP SIGN
+0x266d ""                         "" "force=utf8;utf8-cjk" "\\flat" "" # MUSIC FLAT SIGN
+0x266e ""                         "" "force=utf8;utf8-cjk" "\\natural" "" # MUSIC NATURAL SIGN
+0x266f ""                         "" "force=utf8;utf8-cjk" "\\sharp" "" # MUSIC SHARP SIGN
 #0x2670 ""                         "" "" "" "" # WEST SYRIAC CROSS
 #0x2671 ""                         "" "" "" "" # EAST SYRIAC CROSS
 0x2672 "\\Recycling"              "marvosym" "force" "" "" # UNIVERSAL RECYCLING SYMBOL
@@ -3347,10 +3348,10 @@
 0x27c2 ""                         "" "force" "\\perp" "" # PERPENDICULAR
 0x27c5 ""                         "" "force" "\\Lbag" "stmaryrd" # LEFT S-SHAPED BAG DELIMITER
 0x27c6 ""                         "" "force" "\\Rbag" "stmaryrd" # RIGHT S-SHAPED BAG DELIMITER
-0x27e6 ""                         "" "force=utf8" "\\llbracket" "stmaryrd" # MATHEMATICAL LEFT WHITE SQUARE BRACKET
-0x27e7 ""                         "" "force=utf8" "\\rrbracket" "stmaryrd" # MATHEMATICAL RIGHT WHITE SQUARE BRACKET
-0x27e8 "\\textlangle"             "textcomp" "force=utf8" "\\langle" "" # MATHEMATICAL LEFT ANGLE BRACKET
-0x27e9 "\\textrangle"             "textcomp" "force=utf8" "\\rangle" "" # MATHEMATICAL RIGHT ANGLE BRACKET
+0x27e6 ""                         "" "force=utf8;utf8-cjk" "\\llbracket" "stmaryrd" # MATHEMATICAL LEFT WHITE SQUARE BRACKET
+0x27e7 ""                         "" "force=utf8;utf8-cjk" "\\rrbracket" "stmaryrd" # MATHEMATICAL RIGHT WHITE SQUARE BRACKET
+0x27e8 "\\textlangle"             "textcomp" "force=utf8;utf8-cjk" "\\langle" "" # MATHEMATICAL LEFT ANGLE BRACKET
+0x27e9 "\\textrangle"             "textcomp" "force=utf8;utf8-cjk" "\\rangle" "" # MATHEMATICAL RIGHT ANGLE BRACKET
 #
 # 88 Supplemental Arrows-A
 #
@@ -3359,14 +3360,14 @@
 #0x27f2 ""                         "" "" "" "" # ANTICLOCKWISE GAPPED CIRCLE ARROW
 #0x27f3 ""                         "" "" "" "" # CLOCKWISE GAPPED CIRCLE ARROW
 #0x27f4 ""                         "" "" "" "" # RIGHT ARROW WITH CIRCLED PLUS
-0x27f5 ""                         "" "force=utf8" "\\longleftarrow" "" # LONG LEFTWARDS ARROW
-0x27f6 ""                         "" "force=utf8" "\\longrightarrow" "" # LONG RIGHTWARDS ARROW
-0x27f7 ""                         "" "force=utf8" "\\longleftrightarrow" "" # LONG LEFT RIGHT ARROW
-0x27f8 ""                         "" "force=utf8" "\\Longleftarrow" "" # LONG LEFTWARDS DOUBLE ARROW
-0x27f9 ""                         "" "force=utf8" "\\Longrightarrow" "" # LONG RIGHTWARDS DOUBLE ARROW
-0x27fa ""                         "" "force=utf8" "\\Longleftrightarrow" "" # LONG LEFT RIGHT DOUBLE ARROW
+0x27f5 ""                         "" "force=utf8;utf8-cjk" "\\longleftarrow" "" # LONG LEFTWARDS ARROW
+0x27f6 ""                         "" "force=utf8;utf8-cjk" "\\longrightarrow" "" # LONG RIGHTWARDS ARROW
+0x27f7 ""                         "" "force=utf8;utf8-cjk" "\\longleftrightarrow" "" # LONG LEFT RIGHT ARROW
+0x27f8 ""                         "" "force=utf8;utf8-cjk" "\\Longleftarrow" "" # LONG LEFTWARDS DOUBLE ARROW
+0x27f9 ""                         "" "force=utf8;utf8-cjk" "\\Longrightarrow" "" # LONG RIGHTWARDS DOUBLE ARROW
+0x27fa ""                         "" "force=utf8;utf8-cjk" "\\Longleftrightarrow" "" # LONG LEFT RIGHT DOUBLE ARROW
 0x27fb ""                         "" "force" "\\longmapsfrom" "stmaryrd" # LONG LEFTWARDS ARROW FROM BAR
-0x27fc ""                         "" "force=utf8" "\\longmapsto" "" # LONG RIGHTWARDS ARROW FROM BAR
+0x27fc ""                         "" "force=utf8;utf8-cjk" "\\longmapsto" "" # LONG RIGHTWARDS ARROW FROM BAR
 0x27fd ""                         "" "force" "\\Longmapsfrom" "stmaryrd" # LONG LEFTWARDS DOUBLE ARROW FROM BAR
 0x27fe ""                         "" "force" "\\Longmapsto" "stmaryrd" # LONG RIGHTWARDS DOUBLE ARROW FROM BAR
 #0x27ff ""                         "" "" "" "" # LONG RIGHTWARDS SQUIGGLE ARROW
@@ -3645,299 +3646,299 @@
 #
 # 246 Mathematical Alphanumeric Symbols
 #
-0x1d400 ""                         "" "force=utf8" "\\mathbf{A}" "" # 𝐀 MATHEMATICAL BOLD CAPITAL A
-0x1d401 ""                         "" "force=utf8" "\\mathbf{B}" "" # 𝐁 MATHEMATICAL BOLD CAPITAL B
-0x1d402 ""                         "" "force=utf8" "\\mathbf{C}" "" # 𝐂 MATHEMATICAL BOLD CAPITAL C
-0x1d403 ""                         "" "force=utf8" "\\mathbf{D}" "" # 𝐃 MATHEMATICAL BOLD CAPITAL D
-0x1d404 ""                         "" "force=utf8" "\\mathbf{E}" "" # 𝐄 MATHEMATICAL BOLD CAPITAL E
-0x1d405 ""                         "" "force=utf8" "\\mathbf{F}" "" # 𝐅 MATHEMATICAL BOLD CAPITAL F
-0x1d406 ""                         "" "force=utf8" "\\mathbf{G}" "" # 𝐆 MATHEMATICAL BOLD CAPITAL G
-0x1d407 ""                         "" "force=utf8" "\\mathbf{H}" "" # 𝐇 MATHEMATICAL BOLD CAPITAL H
-0x1d408 ""                         "" "force=utf8" "\\mathbf{I}" "" # 𝐈 MATHEMATICAL BOLD CAPITAL I
-0x1d409 ""                         "" "force=utf8" "\\mathbf{J}" "" # 𝐉 MATHEMATICAL BOLD CAPITAL J
-0x1d40a ""                         "" "force=utf8" "\\mathbf{K}" "" # 𝐊 MATHEMATICAL BOLD CAPITAL K
-0x1d40b ""                         "" "force=utf8" "\\mathbf{L}" "" # 𝐋 MATHEMATICAL BOLD CAPITAL L
-0x1d40c ""                         "" "force=utf8" "\\mathbf{M}" "" # 𝐌 MATHEMATICAL BOLD CAPITAL M
-0x1d40d ""                         "" "force=utf8" "\\mathbf{N}" "" # 𝐍 MATHEMATICAL BOLD CAPITAL N
-0x1d40e ""                         "" "force=utf8" "\\mathbf{O}" "" # 𝐎 MATHEMATICAL BOLD CAPITAL O
-0x1d40f ""                         "" "force=utf8" "\\mathbf{P}" "" # 𝐏 MATHEMATICAL BOLD CAPITAL P
-0x1d410 ""                         "" "force=utf8" "\\mathbf{Q}" "" # 𝐐 MATHEMATICAL BOLD CAPITAL Q
-0x1d411 ""                         "" "force=utf8" "\\mathbf{R}" "" # 𝐑 MATHEMATICAL BOLD CAPITAL R
-0x1d412 ""                         "" "force=utf8" "\\mathbf{S}" "" # 𝐒 MATHEMATICAL BOLD CAPITAL S
-0x1d413 ""                         "" "force=utf8" "\\mathbf{T}" "" # 𝐓 MATHEMATICAL BOLD CAPITAL T
-0x1d414 ""                         "" "force=utf8" "\\mathbf{U}" "" # 𝐔 MATHEMATICAL BOLD CAPITAL U
-0x1d415 ""                         "" "force=utf8" "\\mathbf{V}" "" # 𝐕 MATHEMATICAL BOLD CAPITAL V
-0x1d416 ""                         "" "force=utf8" "\\mathbf{W}" "" # 𝐖 MATHEMATICAL BOLD CAPITAL W
-0x1d417 ""                         "" "force=utf8" "\\mathbf{X}" "" # 𝐗 MATHEMATICAL BOLD CAPITAL X
-0x1d418 ""                         "" "force=utf8" "\\mathbf{Y}" "" # 𝐘 MATHEMATICAL BOLD CAPITAL Y
-0x1d419 ""                         "" "force=utf8" "\\mathbf{Z}" "" # 𝐙 MATHEMATICAL BOLD CAPITAL Z
-0x1d41a ""                         "" "force=utf8" "\\mathbf{a}" "" # 𝐚 MATHEMATICAL BOLD SMALL A
-0x1d41b ""                         "" "force=utf8" "\\mathbf{b}" "" # 𝐛 MATHEMATICAL BOLD SMALL B
-0x1d41c ""                         "" "force=utf8" "\\mathbf{c}" "" # 𝐜 MATHEMATICAL BOLD SMALL C
-0x1d41d ""                         "" "force=utf8" "\\mathbf{d}" "" # 𝐝 MATHEMATICAL BOLD SMALL D
-0x1d41e ""                         "" "force=utf8" "\\mathbf{e}" "" # 𝐞 MATHEMATICAL BOLD SMALL E
-0x1d41f ""                         "" "force=utf8" "\\mathbf{f}" "" # 𝐟 MATHEMATICAL BOLD SMALL F
-0x1d420 ""                         "" "force=utf8" "\\mathbf{g}" "" # 𝐠 MATHEMATICAL BOLD SMALL G
-0x1d421 ""                         "" "force=utf8" "\\mathbf{h}" "" # 𝐡 MATHEMATICAL BOLD SMALL H
-0x1d422 ""                         "" "force=utf8" "\\mathbf{i}" "" # 𝐢 MATHEMATICAL BOLD SMALL I
-0x1d423 ""                         "" "force=utf8" "\\mathbf{j}" "" # 𝐣 MATHEMATICAL BOLD SMALL J
-0x1d424 ""                         "" "force=utf8" "\\mathbf{k}" "" # 𝐤 MATHEMATICAL BOLD SMALL K
-0x1d425 ""                         "" "force=utf8" "\\mathbf{l}" "" # 𝐥 MATHEMATICAL BOLD SMALL L
-0x1d426 ""                         "" "force=utf8" "\\mathbf{m}" "" # 𝐦 MATHEMATICAL BOLD SMALL M
-0x1d427 ""                         "" "force=utf8" "\\mathbf{n}" "" # 𝐧 MATHEMATICAL BOLD SMALL N
-0x1d428 ""                         "" "force=utf8" "\\mathbf{o}" "" # 𝐨 MATHEMATICAL BOLD SMALL O
-0x1d429 ""                         "" "force=utf8" "\\mathbf{p}" "" # 𝐩 MATHEMATICAL BOLD SMALL P
-0x1d42a ""                         "" "force=utf8" "\\mathbf{q}" "" # 𝐪 MATHEMATICAL BOLD SMALL Q
-0x1d42b ""                         "" "force=utf8" "\\mathbf{r}" "" # 𝐫 MATHEMATICAL BOLD SMALL R
-0x1d42c ""                         "" "force=utf8" "\\mathbf{s}" "" # 𝐬 MATHEMATICAL BOLD SMALL S
-0x1d42d ""                         "" "force=utf8" "\\mathbf{t}" "" # 𝐭 MATHEMATICAL BOLD SMALL T
-0x1d42e ""                         "" "force=utf8" "\\mathbf{u}" "" # 𝐮 MATHEMATICAL BOLD SMALL U
-0x1d42f ""                         "" "force=utf8" "\\mathbf{v}" "" # 𝐯 MATHEMATICAL BOLD SMALL V
-0x1d430 ""                         "" "force=utf8" "\\mathbf{w}" "" # 𝐰 MATHEMATICAL BOLD SMALL W
-0x1d431 ""                         "" "force=utf8" "\\mathbf{x}" "" # 𝐱 MATHEMATICAL BOLD SMALL X
-0x1d432 ""                         "" "force=utf8" "\\mathbf{y}" "" # 𝐲 MATHEMATICAL BOLD SMALL Y
-0x1d433 ""                         "" "force=utf8" "\\mathbf{z}" "" # 𝐳 MATHEMATICAL BOLD SMALL Z
-0x1d434 ""                         "" "force=utf8,notermination=math" "A" "" # 𝐴 MATHEMATICAL ITALIC CAPITAL A
-0x1d435 ""                         "" "force=utf8,notermination=math" "B" "" # 𝐵 MATHEMATICAL ITALIC CAPITAL B
-0x1d436 ""                         "" "force=utf8,notermination=math" "C" "" # 𝐶 MATHEMATICAL ITALIC CAPITAL C
-0x1d437 ""                         "" "force=utf8,notermination=math" "D" "" # 𝐷 MATHEMATICAL ITALIC CAPITAL D
-0x1d438 ""                         "" "force=utf8,notermination=math" "E" "" # 𝐸 MATHEMATICAL ITALIC CAPITAL E
-0x1d439 ""                         "" "force=utf8,notermination=math" "F" "" # 𝐹 MATHEMATICAL ITALIC CAPITAL F
-0x1d43a ""                         "" "force=utf8,notermination=math" "G" "" # 𝐺 MATHEMATICAL ITALIC CAPITAL G
-0x1d43b ""                         "" "force=utf8,notermination=math" "H" "" # 𝐻 MATHEMATICAL ITALIC CAPITAL H
-0x1d43c ""                         "" "force=utf8,notermination=math" "I" "" # 𝐼 MATHEMATICAL ITALIC CAPITAL I
-0x1d43d ""                         "" "force=utf8,notermination=math" "J" "" # 𝐽 MATHEMATICAL ITALIC CAPITAL J
-0x1d43e ""                         "" "force=utf8,notermination=math" "K" "" # 𝐾 MATHEMATICAL ITALIC CAPITAL K
-0x1d43f ""                         "" "force=utf8,notermination=math" "L" "" # 𝐿 MATHEMATICAL ITALIC CAPITAL L
-0x1d440 ""                         "" "force=utf8,notermination=math" "M" "" # 𝑀 MATHEMATICAL ITALIC CAPITAL M
-0x1d441 ""                         "" "force=utf8,notermination=math" "N" "" # 𝑁 MATHEMATICAL ITALIC CAPITAL N
-0x1d442 ""                         "" "force=utf8,notermination=math" "O" "" # 𝑂 MATHEMATICAL ITALIC CAPITAL O
-0x1d443 ""                         "" "force=utf8,notermination=math" "P" "" # 𝑃 MATHEMATICAL ITALIC CAPITAL P
-0x1d444 ""                         "" "force=utf8,notermination=math" "Q" "" # 𝑄 MATHEMATICAL ITALIC CAPITAL Q
-0x1d445 ""                         "" "force=utf8,notermination=math" "R" "" # 𝑅 MATHEMATICAL ITALIC CAPITAL R
-0x1d446 ""                         "" "force=utf8,notermination=math" "S" "" # 𝑆 MATHEMATICAL ITALIC CAPITAL S
-0x1d447 ""                         "" "force=utf8,notermination=math" "T" "" # 𝑇 MATHEMATICAL ITALIC CAPITAL T
-0x1d448 ""                         "" "force=utf8,notermination=math" "U" "" # 𝑈 MATHEMATICAL ITALIC CAPITAL U
-0x1d449 ""                         "" "force=utf8,notermination=math" "V" "" # 𝑉 MATHEMATICAL ITALIC CAPITAL V
-0x1d44a ""                         "" "force=utf8,notermination=math" "W" "" # 𝑊 MATHEMATICAL ITALIC CAPITAL W
-0x1d44b ""                         "" "force=utf8,notermination=math" "X" "" # 𝑋 MATHEMATICAL ITALIC CAPITAL X
-0x1d44c ""                         "" "force=utf8,notermination=math" "Y" "" # 𝑌 MATHEMATICAL ITALIC CAPITAL Y
-0x1d44d ""                         "" "force=utf8,notermination=math" "Z" "" # 𝑍 MATHEMATICAL ITALIC CAPITAL Z
-0x1d44e ""                         "" "force=utf8,notermination=math" "a" "" # 𝑎 MATHEMATICAL ITALIC SMALL A
-0x1d44f ""                         "" "force=utf8,notermination=math" "b" "" # 𝑏 MATHEMATICAL ITALIC SMALL B
-0x1d450 ""                         "" "force=utf8,notermination=math" "c" "" # 𝑐 MATHEMATICAL ITALIC SMALL C
-0x1d451 ""                         "" "force=utf8,notermination=math" "d" "" # 𝑑 MATHEMATICAL ITALIC SMALL D
-0x1d452 ""                         "" "force=utf8,notermination=math" "e" "" # 𝑒 MATHEMATICAL ITALIC SMALL E
-0x1d453 ""                         "" "force=utf8,notermination=math" "f" "" # 𝑓 MATHEMATICAL ITALIC SMALL F
-0x1d454 ""                         "" "force=utf8,notermination=math" "g" "" # 𝑔 MATHEMATICAL ITALIC SMALL G
-0x1d456 ""                         "" "force=utf8,notermination=math" "i" "" # 𝑖 MATHEMATICAL ITALIC SMALL I
-0x1d457 ""                         "" "force=utf8,notermination=math" "j" "" # 𝑗 MATHEMATICAL ITALIC SMALL J
-0x1d458 ""                         "" "force=utf8,notermination=math" "k" "" # 𝑘 MATHEMATICAL ITALIC SMALL K
-0x1d459 ""                         "" "force=utf8,notermination=math" "l" "" # 𝑙 MATHEMATICAL ITALIC SMALL L
-0x1d45a ""                         "" "force=utf8,notermination=math" "m" "" # 𝑚 MATHEMATICAL ITALIC SMALL M
-0x1d45b ""                         "" "force=utf8,notermination=math" "n" "" # 𝑛 MATHEMATICAL ITALIC SMALL N
-0x1d45c ""                         "" "force=utf8,notermination=math" "o" "" # 𝑜 MATHEMATICAL ITALIC SMALL O
-0x1d45d ""                         "" "force=utf8,notermination=math" "p" "" # 𝑝 MATHEMATICAL ITALIC SMALL P
-0x1d45e ""                         "" "force=utf8,notermination=math" "q" "" # 𝑞 MATHEMATICAL ITALIC SMALL Q
-0x1d45f ""                         "" "force=utf8,notermination=math" "r" "" # 𝑟 MATHEMATICAL ITALIC SMALL R
-0x1d460 ""                         "" "force=utf8,notermination=math" "s" "" # 𝑠 MATHEMATICAL ITALIC SMALL S
-0x1d461 ""                         "" "force=utf8,notermination=math" "t" "" # 𝑡 MATHEMATICAL ITALIC SMALL T
-0x1d462 ""                         "" "force=utf8,notermination=math" "u" "" # 𝑢 MATHEMATICAL ITALIC SMALL U
-0x1d463 ""                         "" "force=utf8,notermination=math" "v" "" # 𝑣 MATHEMATICAL ITALIC SMALL V
-0x1d464 ""                         "" "force=utf8,notermination=math" "w" "" # 𝑤 MATHEMATICAL ITALIC SMALL W
-0x1d465 ""                         "" "force=utf8,notermination=math" "x" "" # 𝑥 MATHEMATICAL ITALIC SMALL X
-0x1d466 ""                         "" "force=utf8,notermination=math" "y" "" # 𝑦 MATHEMATICAL ITALIC SMALL Y
-0x1d467 ""                         "" "force=utf8,notermination=math" "z" "" # 𝑧 MATHEMATICAL ITALIC SMALL Z
-0x1d49c ""                         "" "force=utf8" "\\mathscr{A}" "mathrsfs" # 𝒜 MATHEMATICAL SCRIPT CAPITAL A
-0x1d49e ""                         "" "force=utf8" "\\mathscr{C}" "mathrsfs" # 𝒞 MATHEMATICAL SCRIPT CAPITAL C
-0x1d49f ""                         "" "force=utf8" "\\mathscr{D}" "mathrsfs" # 𝒟 MATHEMATICAL SCRIPT CAPITAL D
-0x1d4a2 ""                         "" "force=utf8" "\\mathscr{G}" "mathrsfs" # 𝒢 MATHEMATICAL SCRIPT CAPITAL G
-0x1d4a5 ""                         "" "force=utf8" "\\mathscr{J}" "mathrsfs" # 𝒥 MATHEMATICAL SCRIPT CAPITAL J
-0x1d4a6 ""                         "" "force=utf8" "\\mathscr{K}" "mathrsfs" # 𝒦 MATHEMATICAL SCRIPT CAPITAL K
-0x1d4a9 ""                         "" "force=utf8" "\\mathscr{N}" "mathrsfs" # 𝒩 MATHEMATICAL SCRIPT CAPITAL N
-0x1d4aa ""                         "" "force=utf8" "\\mathscr{O}" "mathrsfs" # 𝒪 MATHEMATICAL SCRIPT CAPITAL O
-0x1d4ab ""                         "" "force=utf8" "\\mathscr{P}" "mathrsfs" # 𝒫 MATHEMATICAL SCRIPT CAPITAL P
-0x1d4ac ""                         "" "force=utf8" "\\mathscr{Q}" "mathrsfs" # 𝒬 MATHEMATICAL SCRIPT CAPITAL Q
-0x1d4ae ""                         "" "force=utf8" "\\mathscr{S}" "mathrsfs" # 𝒮 MATHEMATICAL SCRIPT CAPITAL S
-0x1d4af ""                         "" "force=utf8" "\\mathscr{T}" "mathrsfs" # 𝒯 MATHEMATICAL SCRIPT CAPITAL T
-0x1d4b0 ""                         "" "force=utf8" "\\mathscr{U}" "mathrsfs" # 𝒰 MATHEMATICAL SCRIPT CAPITAL U
-0x1d4b1 ""                         "" "force=utf8" "\\mathscr{V}" "mathrsfs" # 𝒱 MATHEMATICAL SCRIPT CAPITAL V
-0x1d4b2 ""                         "" "force=utf8" "\\mathscr{W}" "mathrsfs" # 𝒲 MATHEMATICAL SCRIPT CAPITAL W
-0x1d4b3 ""                         "" "force=utf8" "\\mathscr{X}" "mathrsfs" # 𝒳 MATHEMATICAL SCRIPT CAPITAL X
-0x1d4b4 ""                         "" "force=utf8" "\\mathscr{Y}" "mathrsfs" # 𝒴 MATHEMATICAL SCRIPT CAPITAL Y
-0x1d4b5 ""                         "" "force=utf8" "\\mathscr{Z}" "mathrsfs" # 𝒵 MATHEMATICAL SCRIPT CAPITAL Z
-0x1d504 ""                         "" "force=utf8" "\\mathfrak{A}" "amssymb" # 𝔄 MATHEMATICAL FRAKTUR CAPITAL A
-0x1d505 ""                         "" "force=utf8" "\\mathfrak{B}" "amssymb" # 𝔅 MATHEMATICAL FRAKTUR CAPITAL B
-0x1d507 ""                         "" "force=utf8" "\\mathfrak{D}" "amssymb" # 𝔇 MATHEMATICAL FRAKTUR CAPITAL D
-0x1d508 ""                         "" "force=utf8" "\\mathfrak{E}" "amssymb" # 𝔈 MATHEMATICAL FRAKTUR CAPITAL E
-0x1d509 ""                         "" "force=utf8" "\\mathfrak{F}" "amssymb" # 𝔉 MATHEMATICAL FRAKTUR CAPITAL F
-0x1d50a ""                         "" "force=utf8" "\\mathfrak{G}" "amssymb" # 𝔊 MATHEMATICAL FRAKTUR CAPITAL G
-0x1d50d ""                         "" "force=utf8" "\\mathfrak{J}" "amssymb" # 𝔍 MATHEMATICAL FRAKTUR CAPITAL J
-0x1d50e ""                         "" "force=utf8" "\\mathfrak{K}" "amssymb" # 𝔎 MATHEMATICAL FRAKTUR CAPITAL K
-0x1d50f ""                         "" "force=utf8" "\\mathfrak{L}" "amssymb" # 𝔏 MATHEMATICAL FRAKTUR CAPITAL L
-0x1d510 ""                         "" "force=utf8" "\\mathfrak{M}" "amssymb" # 𝔐 MATHEMATICAL FRAKTUR CAPITAL M
-0x1d511 ""                         "" "force=utf8" "\\mathfrak{N}" "amssymb" # 𝔑 MATHEMATICAL FRAKTUR CAPITAL N
-0x1d512 ""                         "" "force=utf8" "\\mathfrak{O}" "amssymb" # 𝔒 MATHEMATICAL FRAKTUR CAPITAL O
-0x1d513 ""                         "" "force=utf8" "\\mathfrak{P}" "amssymb" # 𝔓 MATHEMATICAL FRAKTUR CAPITAL P
-0x1d514 ""                         "" "force=utf8" "\\mathfrak{Q}" "amssymb" # 𝔔 MATHEMATICAL FRAKTUR CAPITAL Q
-0x1d516 ""                         "" "force=utf8" "\\mathfrak{S}" "amssymb" # 𝔖 MATHEMATICAL FRAKTUR CAPITAL S
-0x1d517 ""                         "" "force=utf8" "\\mathfrak{T}" "amssymb" # 𝔗 MATHEMATICAL FRAKTUR CAPITAL T
-0x1d518 ""                         "" "force=utf8" "\\mathfrak{U}" "amssymb" # 𝔘 MATHEMATICAL FRAKTUR CAPITAL U
-0x1d519 ""                         "" "force=utf8" "\\mathfrak{V}" "amssymb" # 𝔙 MATHEMATICAL FRAKTUR CAPITAL V
-0x1d51a ""                         "" "force=utf8" "\\mathfrak{W}" "amssymb" # 𝔚 MATHEMATICAL FRAKTUR CAPITAL W
-0x1d51b ""                         "" "force=utf8" "\\mathfrak{X}" "amssymb" # 𝔛 MATHEMATICAL FRAKTUR CAPITAL X
-0x1d51c ""                         "" "force=utf8" "\\mathfrak{Y}" "amssymb" # 𝔜 MATHEMATICAL FRAKTUR CAPITAL Y
-0x1d51e ""                         "" "force=utf8" "\\mathfrak{a}" "amssymb" # 𝔞 MATHEMATICAL FRAKTUR SMALL A
-0x1d51f ""                         "" "force=utf8" "\\mathfrak{b}" "amssymb" # 𝔟 MATHEMATICAL FRAKTUR SMALL B
-0x1d520 ""                         "" "force=utf8" "\\mathfrak{c}" "amssymb" # 𝔠 MATHEMATICAL FRAKTUR SMALL C
-0x1d521 ""                         "" "force=utf8" "\\mathfrak{d}" "amssymb" # 𝔡 MATHEMATICAL FRAKTUR SMALL D
-0x1d522 ""                         "" "force=utf8" "\\mathfrak{e}" "amssymb" # 𝔢 MATHEMATICAL FRAKTUR SMALL E
-0x1d523 ""                         "" "force=utf8" "\\mathfrak{f}" "amssymb" # 𝔣 MATHEMATICAL FRAKTUR SMALL F
-0x1d524 ""                         "" "force=utf8" "\\mathfrak{g}" "amssymb" # 𝔤 MATHEMATICAL FRAKTUR SMALL G
-0x1d525 ""                         "" "force=utf8" "\\mathfrak{h}" "amssymb" # 𝔥 MATHEMATICAL FRAKTUR SMALL H
-0x1d526 ""                         "" "force=utf8" "\\mathfrak{i}" "amssymb" # 𝔦 MATHEMATICAL FRAKTUR SMALL I
-0x1d527 ""                         "" "force=utf8" "\\mathfrak{j}" "amssymb" # 𝔧 MATHEMATICAL FRAKTUR SMALL J
-0x1d528 ""                         "" "force=utf8" "\\mathfrak{k}" "amssymb" # 𝔨 MATHEMATICAL FRAKTUR SMALL K
-0x1d529 ""                         "" "force=utf8" "\\mathfrak{l}" "amssymb" # 𝔩 MATHEMATICAL FRAKTUR SMALL L
-0x1d52a ""                         "" "force=utf8" "\\mathfrak{m}" "amssymb" # 𝔪 MATHEMATICAL FRAKTUR SMALL M
-0x1d52b ""                         "" "force=utf8" "\\mathfrak{n}" "amssymb" # 𝔫 MATHEMATICAL FRAKTUR SMALL N
-0x1d52c ""                         "" "force=utf8" "\\mathfrak{o}" "amssymb" # 𝔬 MATHEMATICAL FRAKTUR SMALL O
-0x1d52d ""                         "" "force=utf8" "\\mathfrak{p}" "amssymb" # 𝔭 MATHEMATICAL FRAKTUR SMALL P
-0x1d52e ""                         "" "force=utf8" "\\mathfrak{q}" "amssymb" # 𝔮 MATHEMATICAL FRAKTUR SMALL Q
-0x1d52f ""                         "" "force=utf8" "\\mathfrak{r}" "amssymb" # 𝔯 MATHEMATICAL FRAKTUR SMALL R
-0x1d530 ""                         "" "force=utf8" "\\mathfrak{s}" "amssymb" # 𝔰 MATHEMATICAL FRAKTUR SMALL S
-0x1d531 ""                         "" "force=utf8" "\\mathfrak{t}" "amssymb" # 𝔱 MATHEMATICAL FRAKTUR SMALL T
-0x1d532 ""                         "" "force=utf8" "\\mathfrak{u}" "amssymb" # 𝔲 MATHEMATICAL FRAKTUR SMALL U
-0x1d533 ""                         "" "force=utf8" "\\mathfrak{v}" "amssymb" # 𝔳 MATHEMATICAL FRAKTUR SMALL V
-0x1d534 ""                         "" "force=utf8" "\\mathfrak{w}" "amssymb" # 𝔴 MATHEMATICAL FRAKTUR SMALL W
-0x1d535 ""                         "" "force=utf8" "\\mathfrak{x}" "amssymb" # 𝔵 MATHEMATICAL FRAKTUR SMALL X
-0x1d536 ""                         "" "force=utf8" "\\mathfrak{y}" "amssymb" # 𝔶 MATHEMATICAL FRAKTUR SMALL Y
-0x1d537 ""                         "" "force=utf8" "\\mathfrak{z}" "amssymb" # 𝔷 MATHEMATICAL FRAKTUR SMALL Z
-0x1d538 ""                         "" "force=utf8" "\\mathbb{A}" "amssymb" # 𝔸 MATHEMATICAL DOUBLE-STRUCK CAPITAL A
-0x1d539 ""                         "" "force=utf8" "\\mathbb{B}" "amssymb" # 𝔹 MATHEMATICAL DOUBLE-STRUCK CAPITAL B
-0x1d53b ""                         "" "force=utf8" "\\mathbb{D}" "amssymb" # 𝔻 MATHEMATICAL DOUBLE-STRUCK CAPITAL D
-0x1d53c ""                         "" "force=utf8" "\\mathbb{E}" "amssymb" # 𝔼 MATHEMATICAL DOUBLE-STRUCK CAPITAL E
-0x1d53d ""                         "" "force=utf8" "\\mathbb{F}" "amssymb" # 𝔽 MATHEMATICAL DOUBLE-STRUCK CAPITAL F
-0x1d53e ""                         "" "force=utf8" "\\mathbb{G}" "amssymb" # 𝔾 MATHEMATICAL DOUBLE-STRUCK CAPITAL G
-0x1d540 ""                         "" "force=utf8" "\\mathbb{I}" "amssymb" # 𝕀 MATHEMATICAL DOUBLE-STRUCK CAPITAL I
-0x1d541 ""                         "" "force=utf8" "\\mathbb{J}" "amssymb" # 𝕁 MATHEMATICAL DOUBLE-STRUCK CAPITAL J
-0x1d542 ""                         "" "force=utf8" "\\mathbb{K}" "amssymb" # 𝕂 MATHEMATICAL DOUBLE-STRUCK CAPITAL K
-0x1d543 ""                         "" "force=utf8" "\\mathbb{L}" "amssymb" # 𝕃 MATHEMATICAL DOUBLE-STRUCK CAPITAL L
-0x1d544 ""                         "" "force=utf8" "\\mathbb{M}" "amssymb" # 𝕄 MATHEMATICAL DOUBLE-STRUCK CAPITAL M
-0x1d546 ""                         "" "force=utf8" "\\mathbb{O}" "amssymb" # 𝕆 MATHEMATICAL DOUBLE-STRUCK CAPITAL O
+0x1d400 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{A}" "" # 𝐀 MATHEMATICAL BOLD CAPITAL A
+0x1d401 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{B}" "" # 𝐁 MATHEMATICAL BOLD CAPITAL B
+0x1d402 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{C}" "" # 𝐂 MATHEMATICAL BOLD CAPITAL C
+0x1d403 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{D}" "" # 𝐃 MATHEMATICAL BOLD CAPITAL D
+0x1d404 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{E}" "" # 𝐄 MATHEMATICAL BOLD CAPITAL E
+0x1d405 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{F}" "" # 𝐅 MATHEMATICAL BOLD CAPITAL F
+0x1d406 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{G}" "" # 𝐆 MATHEMATICAL BOLD CAPITAL G
+0x1d407 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{H}" "" # 𝐇 MATHEMATICAL BOLD CAPITAL H
+0x1d408 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{I}" "" # 𝐈 MATHEMATICAL BOLD CAPITAL I
+0x1d409 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{J}" "" # 𝐉 MATHEMATICAL BOLD CAPITAL J
+0x1d40a ""                         "" "force=utf8;utf8-cjk" "\\mathbf{K}" "" # 𝐊 MATHEMATICAL BOLD CAPITAL K
+0x1d40b ""                         "" "force=utf8;utf8-cjk" "\\mathbf{L}" "" # 𝐋 MATHEMATICAL BOLD CAPITAL L
+0x1d40c ""                         "" "force=utf8;utf8-cjk" "\\mathbf{M}" "" # 𝐌 MATHEMATICAL BOLD CAPITAL M
+0x1d40d ""                         "" "force=utf8;utf8-cjk" "\\mathbf{N}" "" # 𝐍 MATHEMATICAL BOLD CAPITAL N
+0x1d40e ""                         "" "force=utf8;utf8-cjk" "\\mathbf{O}" "" # 𝐎 MATHEMATICAL BOLD CAPITAL O
+0x1d40f ""                         "" "force=utf8;utf8-cjk" "\\mathbf{P}" "" # 𝐏 MATHEMATICAL BOLD CAPITAL P
+0x1d410 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{Q}" "" # 𝐐 MATHEMATICAL BOLD CAPITAL Q
+0x1d411 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{R}" "" # 𝐑 MATHEMATICAL BOLD CAPITAL R
+0x1d412 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{S}" "" # 𝐒 MATHEMATICAL BOLD CAPITAL S
+0x1d413 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{T}" "" # 𝐓 MATHEMATICAL BOLD CAPITAL T
+0x1d414 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{U}" "" # 𝐔 MATHEMATICAL BOLD CAPITAL U
+0x1d415 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{V}" "" # 𝐕 MATHEMATICAL BOLD CAPITAL V
+0x1d416 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{W}" "" # 𝐖 MATHEMATICAL BOLD CAPITAL W
+0x1d417 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{X}" "" # 𝐗 MATHEMATICAL BOLD CAPITAL X
+0x1d418 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{Y}" "" # 𝐘 MATHEMATICAL BOLD CAPITAL Y
+0x1d419 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{Z}" "" # 𝐙 MATHEMATICAL BOLD CAPITAL Z
+0x1d41a ""                         "" "force=utf8;utf8-cjk" "\\mathbf{a}" "" # 𝐚 MATHEMATICAL BOLD SMALL A
+0x1d41b ""                         "" "force=utf8;utf8-cjk" "\\mathbf{b}" "" # 𝐛 MATHEMATICAL BOLD SMALL B
+0x1d41c ""                         "" "force=utf8;utf8-cjk" "\\mathbf{c}" "" # 𝐜 MATHEMATICAL BOLD SMALL C
+0x1d41d ""                         "" "force=utf8;utf8-cjk" "\\mathbf{d}" "" # 𝐝 MATHEMATICAL BOLD SMALL D
+0x1d41e ""                         "" "force=utf8;utf8-cjk" "\\mathbf{e}" "" # 𝐞 MATHEMATICAL BOLD SMALL E
+0x1d41f ""                         "" "force=utf8;utf8-cjk" "\\mathbf{f}" "" # 𝐟 MATHEMATICAL BOLD SMALL F
+0x1d420 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{g}" "" # 𝐠 MATHEMATICAL BOLD SMALL G
+0x1d421 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{h}" "" # 𝐡 MATHEMATICAL BOLD SMALL H
+0x1d422 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{i}" "" # 𝐢 MATHEMATICAL BOLD SMALL I
+0x1d423 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{j}" "" # 𝐣 MATHEMATICAL BOLD SMALL J
+0x1d424 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{k}" "" # 𝐤 MATHEMATICAL BOLD SMALL K
+0x1d425 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{l}" "" # 𝐥 MATHEMATICAL BOLD SMALL L
+0x1d426 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{m}" "" # 𝐦 MATHEMATICAL BOLD SMALL M
+0x1d427 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{n}" "" # 𝐧 MATHEMATICAL BOLD SMALL N
+0x1d428 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{o}" "" # 𝐨 MATHEMATICAL BOLD SMALL O
+0x1d429 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{p}" "" # 𝐩 MATHEMATICAL BOLD SMALL P
+0x1d42a ""                         "" "force=utf8;utf8-cjk" "\\mathbf{q}" "" # 𝐪 MATHEMATICAL BOLD SMALL Q
+0x1d42b ""                         "" "force=utf8;utf8-cjk" "\\mathbf{r}" "" # 𝐫 MATHEMATICAL BOLD SMALL R
+0x1d42c ""                         "" "force=utf8;utf8-cjk" "\\mathbf{s}" "" # 𝐬 MATHEMATICAL BOLD SMALL S
+0x1d42d ""                         "" "force=utf8;utf8-cjk" "\\mathbf{t}" "" # 𝐭 MATHEMATICAL BOLD SMALL T
+0x1d42e ""                         "" "force=utf8;utf8-cjk" "\\mathbf{u}" "" # 𝐮 MATHEMATICAL BOLD SMALL U
+0x1d42f ""                         "" "force=utf8;utf8-cjk" "\\mathbf{v}" "" # 𝐯 MATHEMATICAL BOLD SMALL V
+0x1d430 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{w}" "" # 𝐰 MATHEMATICAL BOLD SMALL W
+0x1d431 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{x}" "" # 𝐱 MATHEMATICAL BOLD SMALL X
+0x1d432 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{y}" "" # 𝐲 MATHEMATICAL BOLD SMALL Y
+0x1d433 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{z}" "" # 𝐳 MATHEMATICAL BOLD SMALL Z
+0x1d434 ""                         "" "force=utf8;utf8-cjk,notermination=math" "A" "" # 𝐴 MATHEMATICAL ITALIC CAPITAL A
+0x1d435 ""                         "" "force=utf8;utf8-cjk,notermination=math" "B" "" # 𝐵 MATHEMATICAL ITALIC CAPITAL B
+0x1d436 ""                         "" "force=utf8;utf8-cjk,notermination=math" "C" "" # 𝐶 MATHEMATICAL ITALIC CAPITAL C
+0x1d437 ""                         "" "force=utf8;utf8-cjk,notermination=math" "D" "" # 𝐷 MATHEMATICAL ITALIC CAPITAL D
+0x1d438 ""                         "" "force=utf8;utf8-cjk,notermination=math" "E" "" # 𝐸 MATHEMATICAL ITALIC CAPITAL E
+0x1d439 ""                         "" "force=utf8;utf8-cjk,notermination=math" "F" "" # 𝐹 MATHEMATICAL ITALIC CAPITAL F
+0x1d43a ""                         "" "force=utf8;utf8-cjk,notermination=math" "G" "" # 𝐺 MATHEMATICAL ITALIC CAPITAL G
+0x1d43b ""                         "" "force=utf8;utf8-cjk,notermination=math" "H" "" # 𝐻 MATHEMATICAL ITALIC CAPITAL H
+0x1d43c ""                         "" "force=utf8;utf8-cjk,notermination=math" "I" "" # 𝐼 MATHEMATICAL ITALIC CAPITAL I
+0x1d43d ""                         "" "force=utf8;utf8-cjk,notermination=math" "J" "" # 𝐽 MATHEMATICAL ITALIC CAPITAL J
+0x1d43e ""                         "" "force=utf8;utf8-cjk,notermination=math" "K" "" # 𝐾 MATHEMATICAL ITALIC CAPITAL K
+0x1d43f ""                         "" "force=utf8;utf8-cjk,notermination=math" "L" "" # 𝐿 MATHEMATICAL ITALIC CAPITAL L
+0x1d440 ""                         "" "force=utf8;utf8-cjk,notermination=math" "M" "" # 𝑀 MATHEMATICAL ITALIC CAPITAL M
+0x1d441 ""                         "" "force=utf8;utf8-cjk,notermination=math" "N" "" # 𝑁 MATHEMATICAL ITALIC CAPITAL N
+0x1d442 ""                         "" "force=utf8;utf8-cjk,notermination=math" "O" "" # 𝑂 MATHEMATICAL ITALIC CAPITAL O
+0x1d443 ""                         "" "force=utf8;utf8-cjk,notermination=math" "P" "" # 𝑃 MATHEMATICAL ITALIC CAPITAL P
+0x1d444 ""                         "" "force=utf8;utf8-cjk,notermination=math" "Q" "" # 𝑄 MATHEMATICAL ITALIC CAPITAL Q
+0x1d445 ""                         "" "force=utf8;utf8-cjk,notermination=math" "R" "" # 𝑅 MATHEMATICAL ITALIC CAPITAL R
+0x1d446 ""                         "" "force=utf8;utf8-cjk,notermination=math" "S" "" # 𝑆 MATHEMATICAL ITALIC CAPITAL S
+0x1d447 ""                         "" "force=utf8;utf8-cjk,notermination=math" "T" "" # 𝑇 MATHEMATICAL ITALIC CAPITAL T
+0x1d448 ""                         "" "force=utf8;utf8-cjk,notermination=math" "U" "" # 𝑈 MATHEMATICAL ITALIC CAPITAL U
+0x1d449 ""                         "" "force=utf8;utf8-cjk,notermination=math" "V" "" # 𝑉 MATHEMATICAL ITALIC CAPITAL V
+0x1d44a ""                         "" "force=utf8;utf8-cjk,notermination=math" "W" "" # 𝑊 MATHEMATICAL ITALIC CAPITAL W
+0x1d44b ""                         "" "force=utf8;utf8-cjk,notermination=math" "X" "" # 𝑋 MATHEMATICAL ITALIC CAPITAL X
+0x1d44c ""                         "" "force=utf8;utf8-cjk,notermination=math" "Y" "" # 𝑌 MATHEMATICAL ITALIC CAPITAL Y
+0x1d44d ""                         "" "force=utf8;utf8-cjk,notermination=math" "Z" "" # 𝑍 MATHEMATICAL ITALIC CAPITAL Z
+0x1d44e ""                         "" "force=utf8;utf8-cjk,notermination=math" "a" "" # 𝑎 MATHEMATICAL ITALIC SMALL A
+0x1d44f ""                         "" "force=utf8;utf8-cjk,notermination=math" "b" "" # 𝑏 MATHEMATICAL ITALIC SMALL B
+0x1d450 ""                         "" "force=utf8;utf8-cjk,notermination=math" "c" "" # 𝑐 MATHEMATICAL ITALIC SMALL C
+0x1d451 ""                         "" "force=utf8;utf8-cjk,notermination=math" "d" "" # 𝑑 MATHEMATICAL ITALIC SMALL D
+0x1d452 ""                         "" "force=utf8;utf8-cjk,notermination=math" "e" "" # 𝑒 MATHEMATICAL ITALIC SMALL E
+0x1d453 ""                         "" "force=utf8;utf8-cjk,notermination=math" "f" "" # 𝑓 MATHEMATICAL ITALIC SMALL F
+0x1d454 ""                         "" "force=utf8;utf8-cjk,notermination=math" "g" "" # 𝑔 MATHEMATICAL ITALIC SMALL G
+0x1d456 ""                         "" "force=utf8;utf8-cjk,notermination=math" "i" "" # 𝑖 MATHEMATICAL ITALIC SMALL I
+0x1d457 ""                         "" "force=utf8;utf8-cjk,notermination=math" "j" "" # 𝑗 MATHEMATICAL ITALIC SMALL J
+0x1d458 ""                         "" "force=utf8;utf8-cjk,notermination=math" "k" "" # 𝑘 MATHEMATICAL ITALIC SMALL K
+0x1d459 ""                         "" "force=utf8;utf8-cjk,notermination=math" "l" "" # 𝑙 MATHEMATICAL ITALIC SMALL L
+0x1d45a ""                         "" "force=utf8;utf8-cjk,notermination=math" "m" "" # 𝑚 MATHEMATICAL ITALIC SMALL M
+0x1d45b ""                         "" "force=utf8;utf8-cjk,notermination=math" "n" "" # 𝑛 MATHEMATICAL ITALIC SMALL N
+0x1d45c ""                         "" "force=utf8;utf8-cjk,notermination=math" "o" "" # 𝑜 MATHEMATICAL ITALIC SMALL O
+0x1d45d ""                         "" "force=utf8;utf8-cjk,notermination=math" "p" "" # 𝑝 MATHEMATICAL ITALIC SMALL P
+0x1d45e ""                         "" "force=utf8;utf8-cjk,notermination=math" "q" "" # 𝑞 MATHEMATICAL ITALIC SMALL Q
+0x1d45f ""                         "" "force=utf8;utf8-cjk,notermination=math" "r" "" # 𝑟 MATHEMATICAL ITALIC SMALL R
+0x1d460 ""                         "" "force=utf8;utf8-cjk,notermination=math" "s" "" # 𝑠 MATHEMATICAL ITALIC SMALL S
+0x1d461 ""                         "" "force=utf8;utf8-cjk,notermination=math" "t" "" # 𝑡 MATHEMATICAL ITALIC SMALL T
+0x1d462 ""                         "" "force=utf8;utf8-cjk,notermination=math" "u" "" # 𝑢 MATHEMATICAL ITALIC SMALL U
+0x1d463 ""                         "" "force=utf8;utf8-cjk,notermination=math" "v" "" # 𝑣 MATHEMATICAL ITALIC SMALL V
+0x1d464 ""                         "" "force=utf8;utf8-cjk,notermination=math" "w" "" # 𝑤 MATHEMATICAL ITALIC SMALL W
+0x1d465 ""                         "" "force=utf8;utf8-cjk,notermination=math" "x" "" # 𝑥 MATHEMATICAL ITALIC SMALL X
+0x1d466 ""                         "" "force=utf8;utf8-cjk,notermination=math" "y" "" # 𝑦 MATHEMATICAL ITALIC SMALL Y
+0x1d467 ""                         "" "force=utf8;utf8-cjk,notermination=math" "z" "" # 𝑧 MATHEMATICAL ITALIC SMALL Z
+0x1d49c ""                         "" "force=utf8;utf8-cjk" "\\mathscr{A}" "mathrsfs" # 𝒜 MATHEMATICAL SCRIPT CAPITAL A
+0x1d49e ""                         "" "force=utf8;utf8-cjk" "\\mathscr{C}" "mathrsfs" # 𝒞 MATHEMATICAL SCRIPT CAPITAL C
+0x1d49f ""                         "" "force=utf8;utf8-cjk" "\\mathscr{D}" "mathrsfs" # 𝒟 MATHEMATICAL SCRIPT CAPITAL D
+0x1d4a2 ""                         "" "force=utf8;utf8-cjk" "\\mathscr{G}" "mathrsfs" # 𝒢 MATHEMATICAL SCRIPT CAPITAL G
+0x1d4a5 ""                         "" "force=utf8;utf8-cjk" "\\mathscr{J}" "mathrsfs" # 𝒥 MATHEMATICAL SCRIPT CAPITAL J
+0x1d4a6 ""                         "" "force=utf8;utf8-cjk" "\\mathscr{K}" "mathrsfs" # 𝒦 MATHEMATICAL SCRIPT CAPITAL K
+0x1d4a9 ""                         "" "force=utf8;utf8-cjk" "\\mathscr{N}" "mathrsfs" # 𝒩 MATHEMATICAL SCRIPT CAPITAL N
+0x1d4aa ""                         "" "force=utf8;utf8-cjk" "\\mathscr{O}" "mathrsfs" # 𝒪 MATHEMATICAL SCRIPT CAPITAL O
+0x1d4ab ""                         "" "force=utf8;utf8-cjk" "\\mathscr{P}" "mathrsfs" # 𝒫 MATHEMATICAL SCRIPT CAPITAL P
+0x1d4ac ""                         "" "force=utf8;utf8-cjk" "\\mathscr{Q}" "mathrsfs" # 𝒬 MATHEMATICAL SCRIPT CAPITAL Q
+0x1d4ae ""                         "" "force=utf8;utf8-cjk" "\\mathscr{S}" "mathrsfs" # 𝒮 MATHEMATICAL SCRIPT CAPITAL S
+0x1d4af ""                         "" "force=utf8;utf8-cjk" "\\mathscr{T}" "mathrsfs" # 𝒯 MATHEMATICAL SCRIPT CAPITAL T
+0x1d4b0 ""                         "" "force=utf8;utf8-cjk" "\\mathscr{U}" "mathrsfs" # 𝒰 MATHEMATICAL SCRIPT CAPITAL U
+0x1d4b1 ""                         "" "force=utf8;utf8-cjk" "\\mathscr{V}" "mathrsfs" # 𝒱 MATHEMATICAL SCRIPT CAPITAL V
+0x1d4b2 ""                         "" "force=utf8;utf8-cjk" "\\mathscr{W}" "mathrsfs" # 𝒲 MATHEMATICAL SCRIPT CAPITAL W
+0x1d4b3 ""                         "" "force=utf8;utf8-cjk" "\\mathscr{X}" "mathrsfs" # 𝒳 MATHEMATICAL SCRIPT CAPITAL X
+0x1d4b4 ""                         "" "force=utf8;utf8-cjk" "\\mathscr{Y}" "mathrsfs" # 𝒴 MATHEMATICAL SCRIPT CAPITAL Y
+0x1d4b5 ""                         "" "force=utf8;utf8-cjk" "\\mathscr{Z}" "mathrsfs" # 𝒵 MATHEMATICAL SCRIPT CAPITAL Z
+0x1d504 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{A}" "amssymb" # 𝔄 MATHEMATICAL FRAKTUR CAPITAL A
+0x1d505 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{B}" "amssymb" # 𝔅 MATHEMATICAL FRAKTUR CAPITAL B
+0x1d507 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{D}" "amssymb" # 𝔇 MATHEMATICAL FRAKTUR CAPITAL D
+0x1d508 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{E}" "amssymb" # 𝔈 MATHEMATICAL FRAKTUR CAPITAL E
+0x1d509 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{F}" "amssymb" # 𝔉 MATHEMATICAL FRAKTUR CAPITAL F
+0x1d50a ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{G}" "amssymb" # 𝔊 MATHEMATICAL FRAKTUR CAPITAL G
+0x1d50d ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{J}" "amssymb" # 𝔍 MATHEMATICAL FRAKTUR CAPITAL J
+0x1d50e ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{K}" "amssymb" # 𝔎 MATHEMATICAL FRAKTUR CAPITAL K
+0x1d50f ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{L}" "amssymb" # 𝔏 MATHEMATICAL FRAKTUR CAPITAL L
+0x1d510 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{M}" "amssymb" # 𝔐 MATHEMATICAL FRAKTUR CAPITAL M
+0x1d511 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{N}" "amssymb" # 𝔑 MATHEMATICAL FRAKTUR CAPITAL N
+0x1d512 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{O}" "amssymb" # 𝔒 MATHEMATICAL FRAKTUR CAPITAL O
+0x1d513 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{P}" "amssymb" # 𝔓 MATHEMATICAL FRAKTUR CAPITAL P
+0x1d514 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{Q}" "amssymb" # 𝔔 MATHEMATICAL FRAKTUR CAPITAL Q
+0x1d516 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{S}" "amssymb" # 𝔖 MATHEMATICAL FRAKTUR CAPITAL S
+0x1d517 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{T}" "amssymb" # 𝔗 MATHEMATICAL FRAKTUR CAPITAL T
+0x1d518 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{U}" "amssymb" # 𝔘 MATHEMATICAL FRAKTUR CAPITAL U
+0x1d519 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{V}" "amssymb" # 𝔙 MATHEMATICAL FRAKTUR CAPITAL V
+0x1d51a ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{W}" "amssymb" # 𝔚 MATHEMATICAL FRAKTUR CAPITAL W
+0x1d51b ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{X}" "amssymb" # 𝔛 MATHEMATICAL FRAKTUR CAPITAL X
+0x1d51c ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{Y}" "amssymb" # 𝔜 MATHEMATICAL FRAKTUR CAPITAL Y
+0x1d51e ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{a}" "amssymb" # 𝔞 MATHEMATICAL FRAKTUR SMALL A
+0x1d51f ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{b}" "amssymb" # 𝔟 MATHEMATICAL FRAKTUR SMALL B
+0x1d520 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{c}" "amssymb" # 𝔠 MATHEMATICAL FRAKTUR SMALL C
+0x1d521 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{d}" "amssymb" # 𝔡 MATHEMATICAL FRAKTUR SMALL D
+0x1d522 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{e}" "amssymb" # 𝔢 MATHEMATICAL FRAKTUR SMALL E
+0x1d523 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{f}" "amssymb" # 𝔣 MATHEMATICAL FRAKTUR SMALL F
+0x1d524 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{g}" "amssymb" # 𝔤 MATHEMATICAL FRAKTUR SMALL G
+0x1d525 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{h}" "amssymb" # 𝔥 MATHEMATICAL FRAKTUR SMALL H
+0x1d526 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{i}" "amssymb" # 𝔦 MATHEMATICAL FRAKTUR SMALL I
+0x1d527 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{j}" "amssymb" # 𝔧 MATHEMATICAL FRAKTUR SMALL J
+0x1d528 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{k}" "amssymb" # 𝔨 MATHEMATICAL FRAKTUR SMALL K
+0x1d529 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{l}" "amssymb" # 𝔩 MATHEMATICAL FRAKTUR SMALL L
+0x1d52a ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{m}" "amssymb" # 𝔪 MATHEMATICAL FRAKTUR SMALL M
+0x1d52b ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{n}" "amssymb" # 𝔫 MATHEMATICAL FRAKTUR SMALL N
+0x1d52c ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{o}" "amssymb" # 𝔬 MATHEMATICAL FRAKTUR SMALL O
+0x1d52d ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{p}" "amssymb" # 𝔭 MATHEMATICAL FRAKTUR SMALL P
+0x1d52e ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{q}" "amssymb" # 𝔮 MATHEMATICAL FRAKTUR SMALL Q
+0x1d52f ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{r}" "amssymb" # 𝔯 MATHEMATICAL FRAKTUR SMALL R
+0x1d530 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{s}" "amssymb" # 𝔰 MATHEMATICAL FRAKTUR SMALL S
+0x1d531 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{t}" "amssymb" # 𝔱 MATHEMATICAL FRAKTUR SMALL T
+0x1d532 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{u}" "amssymb" # 𝔲 MATHEMATICAL FRAKTUR SMALL U
+0x1d533 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{v}" "amssymb" # 𝔳 MATHEMATICAL FRAKTUR SMALL V
+0x1d534 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{w}" "amssymb" # 𝔴 MATHEMATICAL FRAKTUR SMALL W
+0x1d535 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{x}" "amssymb" # 𝔵 MATHEMATICAL FRAKTUR SMALL X
+0x1d536 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{y}" "amssymb" # 𝔶 MATHEMATICAL FRAKTUR SMALL Y
+0x1d537 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{z}" "amssymb" # 𝔷 MATHEMATICAL FRAKTUR SMALL Z
+0x1d538 ""                         "" "force=utf8;utf8-cjk" "\\mathbb{A}" "amssymb" # 𝔸 MATHEMATICAL DOUBLE-STRUCK CAPITAL A
+0x1d539 ""                         "" "force=utf8;utf8-cjk" "\\mathbb{B}" "amssymb" # 𝔹 MATHEMATICAL DOUBLE-STRUCK CAPITAL B
+0x1d53b ""                         "" "force=utf8;utf8-cjk" "\\mathbb{D}" "amssymb" # 𝔻 MATHEMATICAL DOUBLE-STRUCK CAPITAL D
+0x1d53c ""                         "" "force=utf8;utf8-cjk" "\\mathbb{E}" "amssymb" # 𝔼 MATHEMATICAL DOUBLE-STRUCK CAPITAL E
+0x1d53d ""                         "" "force=utf8;utf8-cjk" "\\mathbb{F}" "amssymb" # 𝔽 MATHEMATICAL DOUBLE-STRUCK CAPITAL F
+0x1d53e ""                         "" "force=utf8;utf8-cjk" "\\mathbb{G}" "amssymb" # 𝔾 MATHEMATICAL DOUBLE-STRUCK CAPITAL G
+0x1d540 ""                         "" "force=utf8;utf8-cjk" "\\mathbb{I}" "amssymb" # 𝕀 MATHEMATICAL DOUBLE-STRUCK CAPITAL I
+0x1d541 ""                         "" "force=utf8;utf8-cjk" "\\mathbb{J}" "amssymb" # 𝕁 MATHEMATICAL DOUBLE-STRUCK CAPITAL J
+0x1d542 ""                         "" "force=utf8;utf8-cjk" "\\mathbb{K}" "amssymb" # 𝕂 MATHEMATICAL DOUBLE-STRUCK CAPITAL K
+0x1d543 ""                         "" "force=utf8;utf8-cjk" "\\mathbb{L}" "amssymb" # 𝕃 MATHEMATICAL DOUBLE-STRUCK CAPITAL L
+0x1d544 ""                         "" "force=utf8;utf8-cjk" "\\mathbb{M}" "amssymb" # 𝕄 MATHEMATICAL DOUBLE-STRUCK CAPITAL M
+0x1d546 ""                         "" "force=utf8;utf8-cjk" "\\mathbb{O}" "amssymb" # 𝕆 MATHEMATICAL DOUBLE-STRUCK CAPITAL O
 0x1d547 ""                         "" "force" "\\mathbb{P}" "amssymb" # 𝕆 MATHEMATICAL DOUBLE-STRUCK CAPITAL P
-0x1d54a ""                         "" "force=utf8" "\\mathbb{S}" "amssymb" # 𝕊 MATHEMATICAL DOUBLE-STRUCK CAPITAL S
-0x1d54b ""                         "" "force=utf8" "\\mathbb{T}" "amssymb" # 𝕋 MATHEMATICAL DOUBLE-STRUCK CAPITAL T
-0x1d54c ""                         "" "force=utf8" "\\mathbb{U}" "amssymb" # 𝕌 MATHEMATICAL DOUBLE-STRUCK CAPITAL U
-0x1d54d ""                         "" "force=utf8" "\\mathbb{V}" "amssymb" # 𝕍 MATHEMATICAL DOUBLE-STRUCK CAPITAL V
-0x1d54e ""                         "" "force=utf8" "\\mathbb{W}" "amssymb" # 𝕎 MATHEMATICAL DOUBLE-STRUCK CAPITAL W
-0x1d54f ""                         "" "force=utf8" "\\mathbb{X}" "amssymb" # 𝕏 MATHEMATICAL DOUBLE-STRUCK CAPITAL X
-0x1d550 ""                         "" "force=utf8" "\\mathbb{Y}" "amssymb" # 𝕐 MATHEMATICAL DOUBLE-STRUCK CAPITAL Y
+0x1d54a ""                         "" "force=utf8;utf8-cjk" "\\mathbb{S}" "amssymb" # 𝕊 MATHEMATICAL DOUBLE-STRUCK CAPITAL S
+0x1d54b ""                         "" "force=utf8;utf8-cjk" "\\mathbb{T}" "amssymb" # 𝕋 MATHEMATICAL DOUBLE-STRUCK CAPITAL T
+0x1d54c ""                         "" "force=utf8;utf8-cjk" "\\mathbb{U}" "amssymb" # 𝕌 MATHEMATICAL DOUBLE-STRUCK CAPITAL U
+0x1d54d ""                         "" "force=utf8;utf8-cjk" "\\mathbb{V}" "amssymb" # 𝕍 MATHEMATICAL DOUBLE-STRUCK CAPITAL V
+0x1d54e ""                         "" "force=utf8;utf8-cjk" "\\mathbb{W}" "amssymb" # 𝕎 MATHEMATICAL DOUBLE-STRUCK CAPITAL W
+0x1d54f ""                         "" "force=utf8;utf8-cjk" "\\mathbb{X}" "amssymb" # 𝕏 MATHEMATICAL DOUBLE-STRUCK CAPITAL X
+0x1d550 ""                         "" "force=utf8;utf8-cjk" "\\mathbb{Y}" "amssymb" # 𝕐 MATHEMATICAL DOUBLE-STRUCK CAPITAL Y
 0x1d55c ""                         "" "force" "\\Bbbk" "amssymb" # 𝕜 MATHEMATICAL DOUBLE-STRUCK SMALL K
-0x1d5a0 ""                         "" "force=utf8" "\\mathsf{A}" "" # 𝖠 MATHEMATICAL SANS-SERIF CAPITAL A
-0x1d5a1 ""                         "" "force=utf8" "\\mathsf{B}" "" # 𝖡 MATHEMATICAL SANS-SERIF CAPITAL B
-0x1d5a2 ""                         "" "force=utf8" "\\mathsf{C}" "" # 𝖢 MATHEMATICAL SANS-SERIF CAPITAL C
-0x1d5a3 ""                         "" "force=utf8" "\\mathsf{D}" "" # 𝖣 MATHEMATICAL SANS-SERIF CAPITAL D
-0x1d5a4 ""                         "" "force=utf8" "\\mathsf{E}" "" # 𝖤 MATHEMATICAL SANS-SERIF CAPITAL E
-0x1d5a5 ""                         "" "force=utf8" "\\mathsf{F}" "" # 𝖥 MATHEMATICAL SANS-SERIF CAPITAL F
-0x1d5a6 ""                         "" "force=utf8" "\\mathsf{G}" "" # 𝖦 MATHEMATICAL SANS-SERIF CAPITAL G
-0x1d5a7 ""                         "" "force=utf8" "\\mathsf{H}" "" # 𝖧 MATHEMATICAL SANS-SERIF CAPITAL H
-0x1d5a8 ""                         "" "force=utf8" "\\mathsf{I}" "" # 𝖨 MATHEMATICAL SANS-SERIF CAPITAL I
-0x1d5a9 ""                         "" "force=utf8" "\\mathsf{J}" "" # 𝖩 MATHEMATICAL SANS-SERIF CAPITAL J
-0x1d5aa ""                         "" "force=utf8" "\\mathsf{K}" "" # 𝖪 MATHEMATICAL SANS-SERIF CAPITAL K
-0x1d5ab ""                         "" "force=utf8" "\\mathsf{L}" "" # 𝖫 MATHEMATICAL SANS-SERIF CAPITAL L
-0x1d5ac ""                         "" "force=utf8" "\\mathsf{M}" "" # 𝖬 MATHEMATICAL SANS-SERIF CAPITAL M
-0x1d5ad ""                         "" "force=utf8" "\\mathsf{N}" "" # 𝖭 MATHEMATICAL SANS-SERIF CAPITAL N
-0x1d5ae ""                         "" "force=utf8" "\\mathsf{O}" "" # 𝖮 MATHEMATICAL SANS-SERIF CAPITAL O
-0x1d5af ""                         "" "force=utf8" "\\mathsf{P}" "" # 𝖯 MATHEMATICAL SANS-SERIF CAPITAL P
-0x1d5b0 ""                         "" "force=utf8" "\\mathsf{Q}" "" # 𝖰 MATHEMATICAL SANS-SERIF CAPITAL Q
-0x1d5b1 ""                         "" "force=utf8" "\\mathsf{R}" "" # 𝖱 MATHEMATICAL SANS-SERIF CAPITAL R
-0x1d5b2 ""                         "" "force=utf8" "\\mathsf{S}" "" # 𝖲 MATHEMATICAL SANS-SERIF CAPITAL S
-0x1d5b3 ""                         "" "force=utf8" "\\mathsf{T}" "" # 𝖳 MATHEMATICAL SANS-SERIF CAPITAL T
-0x1d5b4 ""                         "" "force=utf8" "\\mathsf{U}" "" # 𝖴 MATHEMATICAL SANS-SERIF CAPITAL U
-0x1d5b5 ""                         "" "force=utf8" "\\mathsf{V}" "" # 𝖵 MATHEMATICAL SANS-SERIF CAPITAL V
-0x1d5b6 ""                         "" "force=utf8" "\\mathsf{W}" "" # 𝖶 MATHEMATICAL SANS-SERIF CAPITAL W
-0x1d5b7 ""                         "" "force=utf8" "\\mathsf{X}" "" # 𝖷 MATHEMATICAL SANS-SERIF CAPITAL X
-0x1d5b8 ""                         "" "force=utf8" "\\mathsf{Y}" "" # 𝖸 MATHEMATICAL SANS-SERIF CAPITAL Y
-0x1d5b9 ""                         "" "force=utf8" "\\mathsf{Z}" "" # 𝖹 MATHEMATICAL SANS-SERIF CAPITAL Z
-0x1d5ba ""                         "" "force=utf8" "\\mathsf{a}" "" # 𝖺 MATHEMATICAL SANS-SERIF SMALL A
-0x1d5bb ""                         "" "force=utf8" "\\mathsf{b}" "" # 𝖻 MATHEMATICAL SANS-SERIF SMALL B
-0x1d5bc ""                         "" "force=utf8" "\\mathsf{c}" "" # 𝖼 MATHEMATICAL SANS-SERIF SMALL C
-0x1d5bd ""                         "" "force=utf8" "\\mathsf{d}" "" # 𝖽 MATHEMATICAL SANS-SERIF SMALL D
-0x1d5be ""                         "" "force=utf8" "\\mathsf{e}" "" # 𝖾 MATHEMATICAL SANS-SERIF SMALL E
-0x1d5bf ""                         "" "force=utf8" "\\mathsf{f}" "" # 𝖿 MATHEMATICAL SANS-SERIF SMALL F
-0x1d5c0 ""                         "" "force=utf8" "\\mathsf{g}" "" # 𝗀 MATHEMATICAL SANS-SERIF SMALL G
-0x1d5c1 ""                         "" "force=utf8" "\\mathsf{h}" "" # 𝗁 MATHEMATICAL SANS-SERIF SMALL H
-0x1d5c2 ""                         "" "force=utf8" "\\mathsf{i}" "" # 𝗂 MATHEMATICAL SANS-SERIF SMALL I
-0x1d5c3 ""                         "" "force=utf8" "\\mathsf{j}" "" # 𝗃 MATHEMATICAL SANS-SERIF SMALL J
-0x1d5c4 ""                         "" "force=utf8" "\\mathsf{k}" "" # 𝗄 MATHEMATICAL SANS-SERIF SMALL K
-0x1d5c5 ""                         "" "force=utf8" "\\mathsf{l}" "" # 𝗅 MATHEMATICAL SANS-SERIF SMALL L
-0x1d5c6 ""                         "" "force=utf8" "\\mathsf{m}" "" # 𝗆 MATHEMATICAL SANS-SERIF SMALL M
-0x1d5c7 ""                         "" "force=utf8" "\\mathsf{n}" "" # 𝗇 MATHEMATICAL SANS-SERIF SMALL N
-0x1d5c8 ""                         "" "force=utf8" "\\mathsf{o}" "" # 𝗈 MATHEMATICAL SANS-SERIF SMALL O
-0x1d5c9 ""                         "" "force=utf8" "\\mathsf{p}" "" # 𝗉 MATHEMATICAL SANS-SERIF SMALL P
-0x1d5ca ""                         "" "force=utf8" "\\mathsf{q}" "" # 𝗊 MATHEMATICAL SANS-SERIF SMALL Q
-0x1d5cb ""                         "" "force=utf8" "\\mathsf{r}" "" # 𝗋 MATHEMATICAL SANS-SERIF SMALL R
-0x1d5cc ""                         "" "force=utf8" "\\mathsf{s}" "" # 𝗌 MATHEMATICAL SANS-SERIF SMALL S
-0x1d5cd ""                         "" "force=utf8" "\\mathsf{t}" "" # 𝗍 MATHEMATICAL SANS-SERIF SMALL T
-0x1d5ce ""                         "" "force=utf8" "\\mathsf{u}" "" # 𝗎 MATHEMATICAL SANS-SERIF SMALL U
-0x1d5cf ""                         "" "force=utf8" "\\mathsf{v}" "" # 𝗏 MATHEMATICAL SANS-SERIF SMALL V
-0x1d5d0 ""                         "" "force=utf8" "\\mathsf{w}" "" # 𝗐 MATHEMATICAL SANS-SERIF SMALL W
-0x1d5d1 ""                         "" "force=utf8" "\\mathsf{x}" "" # 𝗑 MATHEMATICAL SANS-SERIF SMALL X
-0x1d5d2 ""                         "" "force=utf8" "\\mathsf{y}" "" # 𝗒 MATHEMATICAL SANS-SERIF SMALL Y
-0x1d5d3 ""                         "" "force=utf8" "\\mathsf{z}" "" # 𝗓 MATHEMATICAL SANS-SERIF SMALL Z
-0x1d670 ""                         "" "force=utf8" "\\mathtt{A}" "" # 𝙰 MATHEMATICAL MONOSPACE CAPITAL A
-0x1d671 ""                         "" "force=utf8" "\\mathtt{B}" "" # 𝙱 MATHEMATICAL MONOSPACE CAPITAL B
-0x1d672 ""                         "" "force=utf8" "\\mathtt{C}" "" # 𝙲 MATHEMATICAL MONOSPACE CAPITAL C
-0x1d673 ""                         "" "force=utf8" "\\mathtt{D}" "" # 𝙳 MATHEMATICAL MONOSPACE CAPITAL D
-0x1d674 ""                         "" "force=utf8" "\\mathtt{E}" "" # 𝙴 MATHEMATICAL MONOSPACE CAPITAL E
-0x1d675 ""                         "" "force=utf8" "\\mathtt{F}" "" # 𝙵 MATHEMATICAL MONOSPACE CAPITAL F
-0x1d676 ""                         "" "force=utf8" "\\mathtt{G}" "" # 𝙶 MATHEMATICAL MONOSPACE CAPITAL G
-0x1d677 ""                         "" "force=utf8" "\\mathtt{H}" "" # 𝙷 MATHEMATICAL MONOSPACE CAPITAL H
-0x1d678 ""                         "" "force=utf8" "\\mathtt{I}" "" # 𝙸 MATHEMATICAL MONOSPACE CAPITAL I
-0x1d679 ""                         "" "force=utf8" "\\mathtt{J}" "" # 𝙹 MATHEMATICAL MONOSPACE CAPITAL J
-0x1d67a ""                         "" "force=utf8" "\\mathtt{K}" "" # 𝙺 MATHEMATICAL MONOSPACE CAPITAL K
-0x1d67b ""                         "" "force=utf8" "\\mathtt{L}" "" # 𝙻 MATHEMATICAL MONOSPACE CAPITAL L
-0x1d67c ""                         "" "force=utf8" "\\mathtt{M}" "" # 𝙼 MATHEMATICAL MONOSPACE CAPITAL M
-0x1d67d ""                         "" "force=utf8" "\\mathtt{N}" "" # 𝙽 MATHEMATICAL MONOSPACE CAPITAL N
-0x1d67e ""                         "" "force=utf8" "\\mathtt{O}" "" # 𝙾 MATHEMATICAL MONOSPACE CAPITAL O
-0x1d67f ""                         "" "force=utf8" "\\mathtt{P}" "" # 𝙿 MATHEMATICAL MONOSPACE CAPITAL P
-0x1d680 ""                         "" "force=utf8" "\\mathtt{Q}" "" # 𝚀 MATHEMATICAL MONOSPACE CAPITAL Q
-0x1d681 ""                         "" "force=utf8" "\\mathtt{R}" "" # 𝚁 MATHEMATICAL MONOSPACE CAPITAL R
-0x1d682 ""                         "" "force=utf8" "\\mathtt{S}" "" # 𝚂 MATHEMATICAL MONOSPACE CAPITAL S
-0x1d683 ""                         "" "force=utf8" "\\mathtt{T}" "" # 𝚃 MATHEMATICAL MONOSPACE CAPITAL T
-0x1d684 ""                         "" "force=utf8" "\\mathtt{U}" "" # 𝚄 MATHEMATICAL MONOSPACE CAPITAL U
-0x1d685 ""                         "" "force=utf8" "\\mathtt{V}" "" # 𝚅 MATHEMATICAL MONOSPACE CAPITAL V
-0x1d686 ""                         "" "force=utf8" "\\mathtt{W}" "" # 𝚆 MATHEMATICAL MONOSPACE CAPITAL W
-0x1d687 ""                         "" "force=utf8" "\\mathtt{X}" "" # 𝚇 MATHEMATICAL MONOSPACE CAPITAL X
-0x1d688 ""                         "" "force=utf8" "\\mathtt{Y}" "" # 𝚈 MATHEMATICAL MONOSPACE CAPITAL Y
-0x1d689 ""                         "" "force=utf8" "\\mathtt{Z}" "" # 𝚉 MATHEMATICAL MONOSPACE CAPITAL Z
-0x1d68a ""                         "" "force=utf8" "\\mathtt{a}" "" # 𝚊 MATHEMATICAL MONOSPACE SMALL A
-0x1d68b ""                         "" "force=utf8" "\\mathtt{b}" "" # 𝚋 MATHEMATICAL MONOSPACE SMALL B
-0x1d68c ""                         "" "force=utf8" "\\mathtt{c}" "" # 𝚌 MATHEMATICAL MONOSPACE SMALL C
-0x1d68d ""                         "" "force=utf8" "\\mathtt{d}" "" # 𝚍 MATHEMATICAL MONOSPACE SMALL D
-0x1d68e ""                         "" "force=utf8" "\\mathtt{e}" "" # 𝚎 MATHEMATICAL MONOSPACE SMALL E
-0x1d68f ""                         "" "force=utf8" "\\mathtt{f}" "" # 𝚏 MATHEMATICAL MONOSPACE SMALL F
-0x1d690 ""                         "" "force=utf8" "\\mathtt{g}" "" # 𝚐 MATHEMATICAL MONOSPACE SMALL G
-0x1d691 ""                         "" "force=utf8" "\\mathtt{h}" "" # 𝚑 MATHEMATICAL MONOSPACE SMALL H
-0x1d692 ""                         "" "force=utf8" "\\mathtt{i}" "" # 𝚒 MATHEMATICAL MONOSPACE SMALL I
-0x1d693 ""                         "" "force=utf8" "\\mathtt{j}" "" # 𝚓 MATHEMATICAL MONOSPACE SMALL J
-0x1d694 ""                         "" "force=utf8" "\\mathtt{k}" "" # 𝚔 MATHEMATICAL MONOSPACE SMALL K
-0x1d695 ""                         "" "force=utf8" "\\mathtt{l}" "" # 𝚕 MATHEMATICAL MONOSPACE SMALL L
-0x1d696 ""                         "" "force=utf8" "\\mathtt{m}" "" # 𝚖 MATHEMATICAL MONOSPACE SMALL M
-0x1d697 ""                         "" "force=utf8" "\\mathtt{n}" "" # 𝚗 MATHEMATICAL MONOSPACE SMALL N
-0x1d698 ""                         "" "force=utf8" "\\mathtt{o}" "" # 𝚘 MATHEMATICAL MONOSPACE SMALL O
-0x1d699 ""                         "" "force=utf8" "\\mathtt{p}" "" # 𝚙 MATHEMATICAL MONOSPACE SMALL P
-0x1d69a ""                         "" "force=utf8" "\\mathtt{q}" "" # 𝚚 MATHEMATICAL MONOSPACE SMALL Q
-0x1d69b ""                         "" "force=utf8" "\\mathtt{r}" "" # 𝚛 MATHEMATICAL MONOSPACE SMALL R
-0x1d69c ""                         "" "force=utf8" "\\mathtt{s}" "" # 𝚜 MATHEMATICAL MONOSPACE SMALL S
-0x1d69d ""                         "" "force=utf8" "\\mathtt{t}" "" # 𝚝 MATHEMATICAL MONOSPACE SMALL T
-0x1d69e ""                         "" "force=utf8" "\\mathtt{u}" "" # 𝚞 MATHEMATICAL MONOSPACE SMALL U
-0x1d69f ""                         "" "force=utf8" "\\mathtt{v}" "" # 𝚟 MATHEMATICAL MONOSPACE SMALL V
-0x1d6a0 ""                         "" "force=utf8" "\\mathtt{w}" "" # 𝚠 MATHEMATICAL MONOSPACE SMALL W
-0x1d6a1 ""                         "" "force=utf8" "\\mathtt{x}" "" # 𝚡 MATHEMATICAL MONOSPACE SMALL X
-0x1d6a2 ""                         "" "force=utf8" "\\mathtt{y}" "" # 𝚢 MATHEMATICAL MONOSPACE SMALL Y
-0x1d6a3 ""                         "" "force=utf8" "\\mathtt{z}" "" # 𝚣 MATHEMATICAL MONOSPACE SMALL Z
+0x1d5a0 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{A}" "" # 𝖠 MATHEMATICAL SANS-SERIF CAPITAL A
+0x1d5a1 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{B}" "" # 𝖡 MATHEMATICAL SANS-SERIF CAPITAL B
+0x1d5a2 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{C}" "" # 𝖢 MATHEMATICAL SANS-SERIF CAPITAL C
+0x1d5a3 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{D}" "" # 𝖣 MATHEMATICAL SANS-SERIF CAPITAL D
+0x1d5a4 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{E}" "" # 𝖤 MATHEMATICAL SANS-SERIF CAPITAL E
+0x1d5a5 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{F}" "" # 𝖥 MATHEMATICAL SANS-SERIF CAPITAL F
+0x1d5a6 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{G}" "" # 𝖦 MATHEMATICAL SANS-SERIF CAPITAL G
+0x1d5a7 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{H}" "" # 𝖧 MATHEMATICAL SANS-SERIF CAPITAL H
+0x1d5a8 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{I}" "" # 𝖨 MATHEMATICAL SANS-SERIF CAPITAL I
+0x1d5a9 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{J}" "" # 𝖩 MATHEMATICAL SANS-SERIF CAPITAL J
+0x1d5aa ""                         "" "force=utf8;utf8-cjk" "\\mathsf{K}" "" # 𝖪 MATHEMATICAL SANS-SERIF CAPITAL K
+0x1d5ab ""                         "" "force=utf8;utf8-cjk" "\\mathsf{L}" "" # 𝖫 MATHEMATICAL SANS-SERIF CAPITAL L
+0x1d5ac ""                         "" "force=utf8;utf8-cjk" "\\mathsf{M}" "" # 𝖬 MATHEMATICAL SANS-SERIF CAPITAL M
+0x1d5ad ""                         "" "force=utf8;utf8-cjk" "\\mathsf{N}" "" # 𝖭 MATHEMATICAL SANS-SERIF CAPITAL N
+0x1d5ae ""                         "" "force=utf8;utf8-cjk" "\\mathsf{O}" "" # 𝖮 MATHEMATICAL SANS-SERIF CAPITAL O
+0x1d5af ""                         "" "force=utf8;utf8-cjk" "\\mathsf{P}" "" # 𝖯 MATHEMATICAL SANS-SERIF CAPITAL P
+0x1d5b0 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{Q}" "" # 𝖰 MATHEMATICAL SANS-SERIF CAPITAL Q
+0x1d5b1 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{R}" "" # 𝖱 MATHEMATICAL SANS-SERIF CAPITAL R
+0x1d5b2 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{S}" "" # 𝖲 MATHEMATICAL SANS-SERIF CAPITAL S
+0x1d5b3 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{T}" "" # 𝖳 MATHEMATICAL SANS-SERIF CAPITAL T
+0x1d5b4 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{U}" "" # 𝖴 MATHEMATICAL SANS-SERIF CAPITAL U
+0x1d5b5 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{V}" "" # 𝖵 MATHEMATICAL SANS-SERIF CAPITAL V
+0x1d5b6 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{W}" "" # 𝖶 MATHEMATICAL SANS-SERIF CAPITAL W
+0x1d5b7 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{X}" "" # 𝖷 MATHEMATICAL SANS-SERIF CAPITAL X
+0x1d5b8 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{Y}" "" # 𝖸 MATHEMATICAL SANS-SERIF CAPITAL Y
+0x1d5b9 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{Z}" "" # 𝖹 MATHEMATICAL SANS-SERIF CAPITAL Z
+0x1d5ba ""                         "" "force=utf8;utf8-cjk" "\\mathsf{a}" "" # 𝖺 MATHEMATICAL SANS-SERIF SMALL A
+0x1d5bb ""                         "" "force=utf8;utf8-cjk" "\\mathsf{b}" "" # 𝖻 MATHEMATICAL SANS-SERIF SMALL B
+0x1d5bc ""                         "" "force=utf8;utf8-cjk" "\\mathsf{c}" "" # 𝖼 MATHEMATICAL SANS-SERIF SMALL C
+0x1d5bd ""                         "" "force=utf8;utf8-cjk" "\\mathsf{d}" "" # 𝖽 MATHEMATICAL SANS-SERIF SMALL D
+0x1d5be ""                         "" "force=utf8;utf8-cjk" "\\mathsf{e}" "" # 𝖾 MATHEMATICAL SANS-SERIF SMALL E
+0x1d5bf ""                         "" "force=utf8;utf8-cjk" "\\mathsf{f}" "" # 𝖿 MATHEMATICAL SANS-SERIF SMALL F
+0x1d5c0 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{g}" "" # 𝗀 MATHEMATICAL SANS-SERIF SMALL G
+0x1d5c1 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{h}" "" # 𝗁 MATHEMATICAL SANS-SERIF SMALL H
+0x1d5c2 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{i}" "" # 𝗂 MATHEMATICAL SANS-SERIF SMALL I
+0x1d5c3 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{j}" "" # 𝗃 MATHEMATICAL SANS-SERIF SMALL J
+0x1d5c4 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{k}" "" # 𝗄 MATHEMATICAL SANS-SERIF SMALL K
+0x1d5c5 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{l}" "" # 𝗅 MATHEMATICAL SANS-SERIF SMALL L
+0x1d5c6 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{m}" "" # 𝗆 MATHEMATICAL SANS-SERIF SMALL M
+0x1d5c7 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{n}" "" # 𝗇 MATHEMATICAL SANS-SERIF SMALL N
+0x1d5c8 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{o}" "" # 𝗈 MATHEMATICAL SANS-SERIF SMALL O
+0x1d5c9 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{p}" "" # 𝗉 MATHEMATICAL SANS-SERIF SMALL P
+0x1d5ca ""                         "" "force=utf8;utf8-cjk" "\\mathsf{q}" "" # 𝗊 MATHEMATICAL SANS-SERIF SMALL Q
+0x1d5cb ""                         "" "force=utf8;utf8-cjk" "\\mathsf{r}" "" # 𝗋 MATHEMATICAL SANS-SERIF SMALL R
+0x1d5cc ""                         "" "force=utf8;utf8-cjk" "\\mathsf{s}" "" # 𝗌 MATHEMATICAL SANS-SERIF SMALL S
+0x1d5cd ""                         "" "force=utf8;utf8-cjk" "\\mathsf{t}" "" # 𝗍 MATHEMATICAL SANS-SERIF SMALL T
+0x1d5ce ""                         "" "force=utf8;utf8-cjk" "\\mathsf{u}" "" # 𝗎 MATHEMATICAL SANS-SERIF SMALL U
+0x1d5cf ""                         "" "force=utf8;utf8-cjk" "\\mathsf{v}" "" # 𝗏 MATHEMATICAL SANS-SERIF SMALL V
+0x1d5d0 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{w}" "" # 𝗐 MATHEMATICAL SANS-SERIF SMALL W
+0x1d5d1 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{x}" "" # 𝗑 MATHEMATICAL SANS-SERIF SMALL X
+0x1d5d2 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{y}" "" # 𝗒 MATHEMATICAL SANS-SERIF SMALL Y
+0x1d5d3 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{z}" "" # 𝗓 MATHEMATICAL SANS-SERIF SMALL Z
+0x1d670 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{A}" "" # 𝙰 MATHEMATICAL MONOSPACE CAPITAL A
+0x1d671 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{B}" "" # 𝙱 MATHEMATICAL MONOSPACE CAPITAL B
+0x1d672 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{C}" "" # 𝙲 MATHEMATICAL MONOSPACE CAPITAL C
+0x1d673 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{D}" "" # 𝙳 MATHEMATICAL MONOSPACE CAPITAL D
+0x1d674 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{E}" "" # 𝙴 MATHEMATICAL MONOSPACE CAPITAL E
+0x1d675 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{F}" "" # 𝙵 MATHEMATICAL MONOSPACE CAPITAL F
+0x1d676 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{G}" "" # 𝙶 MATHEMATICAL MONOSPACE CAPITAL G
+0x1d677 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{H}" "" # 𝙷 MATHEMATICAL MONOSPACE CAPITAL H
+0x1d678 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{I}" "" # 𝙸 MATHEMATICAL MONOSPACE CAPITAL I
+0x1d679 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{J}" "" # 𝙹 MATHEMATICAL MONOSPACE CAPITAL J
+0x1d67a ""                         "" "force=utf8;utf8-cjk" "\\mathtt{K}" "" # 𝙺 MATHEMATICAL MONOSPACE CAPITAL K
+0x1d67b ""                         "" "force=utf8;utf8-cjk" "\\mathtt{L}" "" # 𝙻 MATHEMATICAL MONOSPACE CAPITAL L
+0x1d67c ""                         "" "force=utf8;utf8-cjk" "\\mathtt{M}" "" # 𝙼 MATHEMATICAL MONOSPACE CAPITAL M
+0x1d67d ""                         "" "force=utf8;utf8-cjk" "\\mathtt{N}" "" # 𝙽 MATHEMATICAL MONOSPACE CAPITAL N
+0x1d67e ""                         "" "force=utf8;utf8-cjk" "\\mathtt{O}" "" # 𝙾 MATHEMATICAL MONOSPACE CAPITAL O
+0x1d67f ""                         "" "force=utf8;utf8-cjk" "\\mathtt{P}" "" # 𝙿 MATHEMATICAL MONOSPACE CAPITAL P
+0x1d680 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{Q}" "" # 𝚀 MATHEMATICAL MONOSPACE CAPITAL Q
+0x1d681 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{R}" "" # 𝚁 MATHEMATICAL MONOSPACE CAPITAL R
+0x1d682 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{S}" "" # 𝚂 MATHEMATICAL MONOSPACE CAPITAL S
+0x1d683 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{T}" "" # 𝚃 MATHEMATICAL MONOSPACE CAPITAL T
+0x1d684 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{U}" "" # 𝚄 MATHEMATICAL MONOSPACE CAPITAL U
+0x1d685 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{V}" "" # 𝚅 MATHEMATICAL MONOSPACE CAPITAL V
+0x1d686 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{W}" "" # 𝚆 MATHEMATICAL MONOSPACE CAPITAL W
+0x1d687 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{X}" "" # 𝚇 MATHEMATICAL MONOSPACE CAPITAL X
+0x1d688 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{Y}" "" # 𝚈 MATHEMATICAL MONOSPACE CAPITAL Y
+0x1d689 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{Z}" "" # 𝚉 MATHEMATICAL MONOSPACE CAPITAL Z
+0x1d68a ""                         "" "force=utf8;utf8-cjk" "\\mathtt{a}" "" # 𝚊 MATHEMATICAL MONOSPACE SMALL A
+0x1d68b ""                         "" "force=utf8;utf8-cjk" "\\mathtt{b}" "" # 𝚋 MATHEMATICAL MONOSPACE SMALL B
+0x1d68c ""                         "" "force=utf8;utf8-cjk" "\\mathtt{c}" "" # 𝚌 MATHEMATICAL MONOSPACE SMALL C
+0x1d68d ""                         "" "force=utf8;utf8-cjk" "\\mathtt{d}" "" # 𝚍 MATHEMATICAL MONOSPACE SMALL D
+0x1d68e ""                         "" "force=utf8;utf8-cjk" "\\mathtt{e}" "" # 𝚎 MATHEMATICAL MONOSPACE SMALL E
+0x1d68f ""                         "" "force=utf8;utf8-cjk" "\\mathtt{f}" "" # 𝚏 MATHEMATICAL MONOSPACE SMALL F
+0x1d690 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{g}" "" # 𝚐 MATHEMATICAL MONOSPACE SMALL G
+0x1d691 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{h}" "" # 𝚑 MATHEMATICAL MONOSPACE SMALL H
+0x1d692 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{i}" "" # 𝚒 MATHEMATICAL MONOSPACE SMALL I
+0x1d693 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{j}" "" # 𝚓 MATHEMATICAL MONOSPACE SMALL J
+0x1d694 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{k}" "" # 𝚔 MATHEMATICAL MONOSPACE SMALL K
+0x1d695 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{l}" "" # 𝚕 MATHEMATICAL MONOSPACE SMALL L
+0x1d696 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{m}" "" # 𝚖 MATHEMATICAL MONOSPACE SMALL M
+0x1d697 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{n}" "" # 𝚗 MATHEMATICAL MONOSPACE SMALL N
+0x1d698 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{o}" "" # 𝚘 MATHEMATICAL MONOSPACE SMALL O
+0x1d699 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{p}" "" # 𝚙 MATHEMATICAL MONOSPACE SMALL P
+0x1d69a ""                         "" "force=utf8;utf8-cjk" "\\mathtt{q}" "" # 𝚚 MATHEMATICAL MONOSPACE SMALL Q
+0x1d69b ""                         "" "force=utf8;utf8-cjk" "\\mathtt{r}" "" # 𝚛 MATHEMATICAL MONOSPACE SMALL R
+0x1d69c ""                         "" "force=utf8;utf8-cjk" "\\mathtt{s}" "" # 𝚜 MATHEMATICAL MONOSPACE SMALL S
+0x1d69d ""                         "" "force=utf8;utf8-cjk" "\\mathtt{t}" "" # 𝚝 MATHEMATICAL MONOSPACE SMALL T
+0x1d69e ""                         "" "force=utf8;utf8-cjk" "\\mathtt{u}" "" # 𝚞 MATHEMATICAL MONOSPACE SMALL U
+0x1d69f ""                         "" "force=utf8;utf8-cjk" "\\mathtt{v}" "" # 𝚟 MATHEMATICAL MONOSPACE SMALL V
+0x1d6a0 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{w}" "" # 𝚠 MATHEMATICAL MONOSPACE SMALL W
+0x1d6a1 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{x}" "" # 𝚡 MATHEMATICAL MONOSPACE SMALL X
+0x1d6a2 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{y}" "" # 𝚢 MATHEMATICAL MONOSPACE SMALL Y
+0x1d6a3 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{z}" "" # 𝚣 MATHEMATICAL MONOSPACE SMALL Z
 0x1d6a4 ""                         "" "force" "\\imath" "" # 𝚤 MATHEMATICAL ITALIC SMALL DOTLESS I
 0x1d6a5 ""                         "" "force" "\\jmath" "" # 𝚥 MATHEMATICAL ITALIC SMALL DOTLESS J
 0x1d6aa ""                         "" "force" "\\mathbf{\\Gamma}" "" # 𝚪 MATHEMATICAL BOLD CAPITAL GAMMA
@@ -3993,33 +3994,33 @@
 0x1d719 ""                         "" "force" "\\phi" "" # 𝜙 MATHEMATICAL ITALIC PHI SYMBOL
 0x1d71a ""                         "" "force" "\\varrho" "" # 𝜚 MATHEMATICAL ITALIC RHO SYMBOL
 0x1d71b ""                         "" "force" "\\varpi" "" # 𝜛 MATHEMATICAL ITALIC PI SYMBOL
-0x1d7ce ""                         "" "force=utf8" "\\mathbf{0}" "" # 𝟎 MATHEMATICAL BOLD DIGIT ZERO
-0x1d7cf ""                         "" "force=utf8" "\\mathbf{1}" "" # 𝟏 MATHEMATICAL BOLD DIGIT ONE
-0x1d7d0 ""                         "" "force=utf8" "\\mathbf{2}" "" # 𝟐 MATHEMATICAL BOLD DIGIT TWO
-0x1d7d1 ""                         "" "force=utf8" "\\mathbf{3}" "" # 𝟑 MATHEMATICAL BOLD DIGIT THREE
-0x1d7d2 ""                         "" "force=utf8" "\\mathbf{4}" "" # 𝟒 MATHEMATICAL BOLD DIGIT FOUR
-0x1d7d3 ""                         "" "force=utf8" "\\mathbf{5}" "" # 𝟓 MATHEMATICAL BOLD DIGIT FIVE
-0x1d7d4 ""                         "" "force=utf8" "\\mathbf{6}" "" # 𝟔 MATHEMATICAL BOLD DIGIT SIX
-0x1d7d5 ""                         "" "force=utf8" "\\mathbf{7}" "" # 𝟕 MATHEMATICAL BOLD DIGIT SEVEN
-0x1d7d6 ""                         "" "force=utf8" "\\mathbf{8}" "" # 𝟖 MATHEMATICAL BOLD DIGIT EIGHT
-0x1d7d7 ""                         "" "force=utf8" "\\mathbf{9}" "" # 𝟗 MATHEMATICAL BOLD DIGIT NINE
-0x1d7e2 ""                         "" "force=utf8" "\\mathsf{0}" "" # 𝟢 MATHEMATICAL SANS-SERIF DIGIT ZERO
-0x1d7e3 ""                         "" "force=utf8" "\\mathsf{1}" "" # 𝟣 MATHEMATICAL SANS-SERIF DIGIT ONE
-0x1d7e4 ""                         "" "force=utf8" "\\mathsf{2}" "" # 𝟤 MATHEMATICAL SANS-SERIF DIGIT TWO
-0x1d7e5 ""                         "" "force=utf8" "\\mathsf{3}" "" # 𝟥 MATHEMATICAL SANS-SERIF DIGIT THREE
-0x1d7e6 ""                         "" "force=utf8" "\\mathsf{4}" "" # 𝟦 MATHEMATICAL SANS-SERIF DIGIT FOUR
-0x1d7e7 ""                         "" "force=utf8" "\\mathsf{5}" "" # 𝟧 MATHEMATICAL SANS-SERIF DIGIT FIVE
-0x1d7e8 ""                         "" "force=utf8" "\\mathsf{6}" "" # 𝟨 MATHEMATICAL SANS-SERIF DIGIT SIX
-0x1d7e9 ""                         "" "force=utf8" "\\mathsf{7}" "" # 𝟩 MATHEMATICAL SANS-SERIF DIGIT SEVEN
-0x1d7ea ""                         "" "force=utf8" "\\mathsf{8}" "" # 𝟪 MATHEMATICAL SANS-SERIF DIGIT EIGHT
-0x1d7eb ""                         "" "force=utf8" "\\mathsf{9}" "" # 𝟫 MATHEMATICAL SANS-SERIF DIGIT NINE
-0x1d7f6 ""                         "" "force=utf8" "\\mathtt{0}" "" # 𝟶 MATHEMATICAL MONOSPACE DIGIT ZERO
-0x1d7f7 ""                         "" "force=utf8" "\\mathtt{1}" "" # 𝟷 MATHEMATICAL MONOSPACE DIGIT ONE
-0x1d7f8 ""                         "" "force=utf8" "\\mathtt{2}" "" # 𝟸 MATHEMATICAL MONOSPACE DIGIT TWO
-0x1d7f9 ""                         "" "force=utf8" "\\mathtt{3}" "" # 𝟹 MATHEMATICAL MONOSPACE DIGIT THREE
-0x1d7fa ""                         "" "force=utf8" "\\mathtt{4}" "" # 𝟺 MATHEMATICAL MONOSPACE DIGIT FOUR
-0x1d7fb ""                         "" "force=utf8" "\\mathtt{5}" "" # 𝟻 MATHEMATICAL MONOSPACE DIGIT FIVE
-0x1d7fc ""                         "" "force=utf8" "\\mathtt{6}" "" # 𝟼 MATHEMATICAL MONOSPACE DIGIT SIX
-0x1d7fd ""                         "" "force=utf8" "\\mathtt{7}" "" # 𝟽 MATHEMATICAL MONOSPACE DIGIT SEVEN
-0x1d7fe ""                         "" "force=utf8" "\\mathtt{8}" "" # 𝟾 MATHEMATICAL MONOSPACE DIGIT EIGHT
-0x1d7ff ""                         "" "force=utf8" "\\mathtt{9}" "" # 𝟿 MATHEMATICAL MONOSPACE DIGIT NINE
+0x1d7ce ""                         "" "force=utf8;utf8-cjk" "\\mathbf{0}" "" # 𝟎 MATHEMATICAL BOLD DIGIT ZERO
+0x1d7cf ""                         "" "force=utf8;utf8-cjk" "\\mathbf{1}" "" # 𝟏 MATHEMATICAL BOLD DIGIT ONE
+0x1d7d0 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{2}" "" # 𝟐 MATHEMATICAL BOLD DIGIT TWO
+0x1d7d1 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{3}" "" # 𝟑 MATHEMATICAL BOLD DIGIT THREE
+0x1d7d2 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{4}" "" # 𝟒 MATHEMATICAL BOLD DIGIT FOUR
+0x1d7d3 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{5}" "" # 𝟓 MATHEMATICAL BOLD DIGIT FIVE
+0x1d7d4 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{6}" "" # 𝟔 MATHEMATICAL BOLD DIGIT SIX
+0x1d7d5 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{7}" "" # 𝟕 MATHEMATICAL BOLD DIGIT SEVEN
+0x1d7d6 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{8}" "" # 𝟖 MATHEMATICAL BOLD DIGIT EIGHT
+0x1d7d7 ""                         "" "force=utf8;utf8-cjk" "\\mathbf{9}" "" # 𝟗 MATHEMATICAL BOLD DIGIT NINE
+0x1d7e2 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{0}" "" # 𝟢 MATHEMATICAL SANS-SERIF DIGIT ZERO
+0x1d7e3 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{1}" "" # 𝟣 MATHEMATICAL SANS-SERIF DIGIT ONE
+0x1d7e4 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{2}" "" # 𝟤 MATHEMATICAL SANS-SERIF DIGIT TWO
+0x1d7e5 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{3}" "" # 𝟥 MATHEMATICAL SANS-SERIF DIGIT THREE
+0x1d7e6 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{4}" "" # 𝟦 MATHEMATICAL SANS-SERIF DIGIT FOUR
+0x1d7e7 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{5}" "" # 𝟧 MATHEMATICAL SANS-SERIF DIGIT FIVE
+0x1d7e8 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{6}" "" # 𝟨 MATHEMATICAL SANS-SERIF DIGIT SIX
+0x1d7e9 ""                         "" "force=utf8;utf8-cjk" "\\mathsf{7}" "" # 𝟩 MATHEMATICAL SANS-SERIF DIGIT SEVEN
+0x1d7ea ""                         "" "force=utf8;utf8-cjk" "\\mathsf{8}" "" # 𝟪 MATHEMATICAL SANS-SERIF DIGIT EIGHT
+0x1d7eb ""                         "" "force=utf8;utf8-cjk" "\\mathsf{9}" "" # 𝟫 MATHEMATICAL SANS-SERIF DIGIT NINE
+0x1d7f6 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{0}" "" # 𝟶 MATHEMATICAL MONOSPACE DIGIT ZERO
+0x1d7f7 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{1}" "" # 𝟷 MATHEMATICAL MONOSPACE DIGIT ONE
+0x1d7f8 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{2}" "" # 𝟸 MATHEMATICAL MONOSPACE DIGIT TWO
+0x1d7f9 ""                         "" "force=utf8;utf8-cjk" "\\mathtt{3}" "" # 𝟹 MATHEMATICAL MONOSPACE DIGIT THREE
+0x1d7fa ""                         "" "force=utf8;utf8-cjk" "\\mathtt{4}" "" # 𝟺 MATHEMATICAL MONOSPACE DIGIT FOUR
+0x1d7fb ""                         "" "force=utf8;utf8-cjk" "\\mathtt{5}" "" # 𝟻 MATHEMATICAL MONOSPACE DIGIT FIVE
+0x1d7fc ""                         "" "force=utf8;utf8-cjk" "\\mathtt{6}" "" # 𝟼 MATHEMATICAL MONOSPACE DIGIT SIX
+0x1d7fd ""                         "" "force=utf8;utf8-cjk" "\\mathtt{7}" "" # 𝟽 MATHEMATICAL MONOSPACE DIGIT SEVEN
+0x1d7fe ""                         "" "force=utf8;utf8-cjk" "\\mathtt{8}" "" # 𝟾 MATHEMATICAL MONOSPACE DIGIT EIGHT
+0x1d7ff ""                         "" "force=utf8;utf8-cjk" "\\mathtt{9}" "" # 𝟿 MATHEMATICAL MONOSPACE DIGIT NINE
