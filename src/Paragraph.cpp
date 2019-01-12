@@ -927,7 +927,9 @@ int Paragraph::Private::latexSurrogatePair(BufferParams const & bparams,
 		length -= pos;
 		latex2 = latex2.substr(pos, length);
 		// We only need the script macro with non-native font encodings
-		if (Encodings::needsScriptWrapper(script, fontenc)) {
+		// and with ASCII encoding (e.g., XeTeX with TeX fonts)
+		if (Encodings::needsScriptWrapper(script, fontenc)
+		    && runparams.encoding != encodings.fromLyXName("ascii")) {
 			scriptmacro = from_ascii("\\" + script + "{");
 			cb = from_ascii("}");
 		}
@@ -1020,7 +1022,10 @@ int Paragraph::Private::writeScriptChars(BufferParams const & bparams,
 	int pos = 0;
 	int length = brace2;
 	bool closing_brace = true;
-	if (!Encodings::needsScriptWrapper(script, fontenc)) {
+	// We only need the script macro with non-native font encodings
+	// and with ASCII encoding (e.g., XeTeX with TeX fonts)
+	if (!Encodings::needsScriptWrapper(script, fontenc)
+	    && runparams.encoding != encodings.fromLyXName("ascii")) {
 		// Correct font encoding is being used, so we can avoid \text[greek|cyr].
 		pos = brace1 + 1;
 		length -= pos;
