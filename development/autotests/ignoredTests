@@ -73,6 +73,12 @@ export/.*/ja/(knitr|sweave).*
 #
 export/.*/ja/.*_(pdf[245]|dvi3).*
 
+# export of minted documents to 2.2.x is not guaranteed to work (and currently
+# fails for our two minted example files), as explained here:
+# https://www.mail-archive.com/search?l=mid&q=20190113085555.GA7928%40GIOVE
+export/examples/minted.*lyx22
+
+
 # Subdocuments that are not expected to work as stand-alone documents:
 export/mathmacros/Spacechild[123].*
 export/examples/springer/svmono_(acknow|acronym|appendix|chapter|dedication|foreword|glossary|part|preface|referenc|solutions)_lyx[0-9][0-9]
