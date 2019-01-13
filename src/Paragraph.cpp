@@ -928,8 +928,8 @@ int Paragraph::Private::latexSurrogatePair(BufferParams const & bparams,
 		latex2 = latex2.substr(pos, length);
 		// We only need the script macro with non-native font encodings
 		// and with XeTeX/LuaTeX (with TeX fonts)
-		if (!Encodings::needsScriptWrapper(script, fontenc)
-		    && !runparams.isFullUnicode()) {
+		if (Encodings::needsScriptWrapper(script, fontenc)
+		    || runparams.isFullUnicode()) {
 			scriptmacro = from_ascii("\\" + script + "{");
 			cb = from_ascii("}");
 		}
