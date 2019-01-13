@@ -163,6 +163,8 @@ export/examples/es/linguistics_pdf4_texF
 #9637 textgreek and textcyr depend on font-encoding, not input encoding
 #6463 font encoding changes and combining accents
 # this leads to failure of ru/Intro with XeTeX (pdf4_texF)
+# Note that this file is not expected to work with XeTeX/LuaTeX and TeX fonts:
+# https://www.mail-archive.com/search?l=mid&q=0c10c03d85badf3cef7346aa5c97a7e35fc380b2.camel%40lyx.org
 !export/export/latex/ru-accent-ascii_pdf2
 export/export/latex/ru-accent-ascii.*
 
