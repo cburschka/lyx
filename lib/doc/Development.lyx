@@ -120,7 +120,6 @@ n mailing list,
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 <lyx-docs@lists.lyx.org>
 \end_layout
 
@@ -1420,7 +1419,6 @@ lib/doc/LaTeXConfig.lyx
 status collapsed
 
 \begin_layout Plain Layout
-\paragraph_spacing single
 info-insert package <name>
 \end_layout
 
@@ -2974,7 +2972,6 @@ Note that some tests cannot be run in parallel.
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 RUN_SERIAL ON
 \end_layout
 
@@ -3384,7 +3381,7 @@ invertedTests
 \begin_inset Quotes erd
 \end_inset
 
- file) (see 
+ file (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "par:Inverted-tests"
