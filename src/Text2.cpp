@@ -824,8 +824,8 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 	   There are still some small problems that can lead to
 	   double spaces stored in the document file or space at
 	   the beginning of paragraphs(). This happens if you have
-	   the cursor between to spaces and then save. Or if you
-	   cut and paste and the selection have a space at the
+	   the cursor between two spaces and then save. Or if you
+	   cut and paste and the selection has a space at the
 	   beginning and then save right after the paste. (Lgb)
 	*/
 
@@ -845,7 +845,8 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 
 	// Whether a common inset is found and whether the cursor is still in
 	// the same paragraph (possibly nested).
-	bool const same_par = depth < cur.depth() && old.pit() == cur[depth].pit();
+	bool const same_par = depth < cur.depth() && old.idx() == cur[depth].idx()
+		&& old.pit() == cur[depth].pit();
 	bool const same_par_pos = depth == cur.depth() - 1 && same_par
 		&& old.pos() == cur[depth].pos();
 
@@ -868,7 +869,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		if (from != to && from > 0 && to < oldpar.size())
 			++from;
 
-		if (same_par && cur.pos() > from && cur.pos() < to)
+		if (same_par && cur.pos() >= from && cur.pos() < to)
 			++from;
 
 		// Remove spaces and adapt cursor.
