@@ -79,7 +79,7 @@
 0x00b2 "\\texttwosuperior"        "textcomp" "force" "{{}^2}" "" # ² SUPERSCRIPT TWO
 0x00b3 "\\textthreesuperior"      "textcomp" "force" "{{}^3}" "" # ³ SUPERSCRIPT THREE
 0x00b4 "\\textasciiacute"         "textcomp" "" # ACUTE ACCENT
-0x00b5 "\\textmu"                 "textcomp" "force" "" "" # µ MICRO SIGN (upright, not $\mu$)
+0x00b5 "\\textmu"                 "textcomp" "force!=utf8" "" "" # µ MICRO SIGN (upright, not $\mu$)
 0x00b6 "\\textparagraph"          "textcomp" "" "\\mathparagraph" "" # PILCROW SIGN # not equal to \textpilcrow
 0x00b7 "\\textperiodcentered"     "" "force=koi8-u;iso8859-7" "\\cdot" "" # MIDDLE DOT
 0x00b8 "\\c{ }"                   "" "" "" "" # CEDILLA
@@ -2413,6 +2413,8 @@
 #0x2317 ""                         "" "" "" "" # VIEWDATA SQUARE
 0x2318 "\\cmdmac"                 "menukeys" "force" "" "" # PLACE OF INTEREST SIGN
 #0x2319 ""                         "" "" "" "" # TURNED NOT SIGN
+0x2329 "\\textlangle"             "textcomp" "force=utf8x,cp1256,iso8859-6" "" "" # LEFT-POINTING ANGLE BRACKET
+0x232a "\\textrangle"             "textcomp" "force=utf8x,cp1256,iso8859-6" "" "" # RIGHT-POINTING ANGLE BRACKET
 0x231a "\\Clocklogo"              "marvosym" "force" # WATCH
 #0x231b ""                         "" "" "" "" # HOURGLASS
 0x231c ""                         "" "force" "\\ulcorner" "amssymb" # TOP LEFT CORNER
@@ -3356,10 +3358,10 @@
 0x27c2 ""                         "" "force" "\\perp" "" # PERPENDICULAR
 0x27c5 ""                         "" "force" "\\Lbag" "stmaryrd" # LEFT S-SHAPED BAG DELIMITER
 0x27c6 ""                         "" "force" "\\Rbag" "stmaryrd" # RIGHT S-SHAPED BAG DELIMITER
-0x27e6 ""                         "" "force=utf8;utf8-cjk" "\\llbracket" "stmaryrd" # MATHEMATICAL LEFT WHITE SQUARE BRACKET
+0x27e6 ""                         "" "force" "\\llbracket" "stmaryrd" # MATHEMATICAL LEFT WHITE SQUARE BRACKET
 0x27e7 ""                         "" "force=utf8;utf8-cjk" "\\rrbracket" "stmaryrd" # MATHEMATICAL RIGHT WHITE SQUARE BRACKET
-0x27e8 "\\textlangle"             "textcomp" "force=utf8;utf8-cjk" "\\langle" "" # MATHEMATICAL LEFT ANGLE BRACKET
-0x27e9 "\\textrangle"             "textcomp" "force=utf8;utf8-cjk" "\\rangle" "" # MATHEMATICAL RIGHT ANGLE BRACKET
+0x27e8 "\\textlangle"             "textcomp" "force" "\\langle" "" # MATHEMATICAL LEFT ANGLE BRACKET
+0x27e9 "\\textrangle"             "textcomp" "force" "\\rangle" "" # MATHEMATICAL RIGHT ANGLE BRACKET
 #
 # 88 Supplemental Arrows-A
 #
