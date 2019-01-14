@@ -48,10 +48,7 @@ export/examples/listerrors_(pdf[245]).*
 export/export/latex/iconv-error-nomenclature_pdf2
 
 # `acmart` document class:
-# poblems with the exported Postscript file (the first page does not display
-# for some reason) and hence ps2pdf fails:
-export/templates/acmart_pdf
-#
+# (see also lyxbugs below and ignoredTests)
 # issues with listsof, reported to the maintainer
 # https://www.mail-archive.com/search?l=mid&q=of84gj%24l6b%241%40blaine.gmane.org
 # LyX gives the following terminal message:
@@ -160,13 +157,9 @@ export/doc/es/Customization_pdf4_texF
 # https://www.mail-archive.com/search?l=mid&q=20170228190738.cgs3tl3ny2bxiegk%40steph
 export/examples/es/linguistics_pdf4_texF
 
-#9637 textgreek and textcyr depend on font-encoding, not input encoding
 #6463 font encoding changes and combining accents
-# this leads to failure of ru/Intro with XeTeX (pdf4_texF)
-# Note that this file is not expected to work with XeTeX/LuaTeX and TeX fonts:
-# https://www.mail-archive.com/search?l=mid&q=0c10c03d85badf3cef7346aa5c97a7e35fc380b2.camel%40lyx.org
-!export/export/latex/ru-accent-ascii_pdf2
-export/export/latex/ru-accent-ascii.*
+# problem remains for Cyrillic in a non-Cyrillic-using language
+export/export/latex/cyrillic-accent-ascii_pdf2
 
 #11454 luainputenc must be loaded after textcomp
 export/export/latex/luainputenc-utf8_pdf5_texF
@@ -177,6 +170,17 @@ export/export/latex/luainputenc-utf8_pdf5_systemF
 
 #11455 "Unable to process argument!" with multiple 1.6.x roundtrips
 export/templates/IEEEtran-Journal_lyx16
+
+#9744 allow parallel configuration of TeX and non-TeX fonts
+# parallel configuration implemented ([2fc430d5aede/lyxgit] 11/09/15),
+# use case for new setting value useNonTeXFonts == "automatic"
+# The font package "libertine" sets up "non-TeX fonts" if Xe/LuaTeX
+# is detected:
+# The "acmart" document class calls "libertine" as default font:
+# * With pdf5 (LuaTeX), this clashes with LyX setting up 8-bit TeX fonts
+# * with pdf4 (XeTeX) this does not clash but
+    selects CM fonts with different metrics -> unreliableTests wrong output.
+export/templates/acmart_pdf5_texF
 
 
 # ==============================================================

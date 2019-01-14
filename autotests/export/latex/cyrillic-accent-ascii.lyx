@@ -5,29 +5,9 @@
 \save_transient_properties true
 \origin unavailable
 \textclass article
-\begin_preamble
-% DO NOT ALTER THIS PREAMBLE!!! 
-%
-%This preamble is designed to ensure that the document prints
-% out as advertised. If you mess with this preamble,
-% parts of the document may not print out as expected. If you
-% have problems LaTeXing this file, please contact 
-% the documentation team
-% email: lyx-docs@lists.lyx.org
-
-% the pages of the TOC is numbered roman
-% and a pdf-bookmark for the TOC is added
-\pagenumbering{roman}
-\let\myTOC\tableofcontents
-\renewcommand\tableofcontents{%
-\pdfbookmark[1]{\contentsname}{}
-\myTOC
-\cleardoublepage
-\pagenumbering{arabic} }
-\end_preamble
 \use_default_options false
 \maintain_unincluded_children false
-\language russian
+\language english
 \language_package default
 \inputencoding ascii
 \fontencoding auto
@@ -99,7 +79,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style swiss
+\quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -114,8 +94,19 @@
 \begin_body
 
 \begin_layout Standard
-Accented cyrillic characters failed if the input encoding is ASCII, both
- ERT
+Accented cyrillic characters still fail if the input encoding is ASCII and
+ the current language not using a cyrillic script (i.e.
+ if the 
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+textcyr
+\begin_inset Quotes erd
+\end_inset
+
+ feature is required), both ERT
 \end_layout
 
 \begin_layout Quotation
