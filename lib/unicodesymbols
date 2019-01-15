@@ -2413,8 +2413,8 @@
 #0x2317 ""                         "" "" "" "" # VIEWDATA SQUARE
 0x2318 "\\cmdmac"                 "menukeys" "force" "" "" # PLACE OF INTEREST SIGN
 #0x2319 ""                         "" "" "" "" # TURNED NOT SIGN
-0x2329 "\\textlangle"             "textcomp" "force=utf8x,cp1256,iso8859-6" "" "" # LEFT-POINTING ANGLE BRACKET
-0x232a "\\textrangle"             "textcomp" "force=utf8x,cp1256,iso8859-6" "" "" # RIGHT-POINTING ANGLE BRACKET
+0x2329 "\\textlangle"             "textcomp" "force=utf8x" "" "" # LEFT-POINTING ANGLE BRACKET
+0x232a "\\textrangle"             "textcomp" "force=utf8x" "" "" # RIGHT-POINTING ANGLE BRACKET
 0x231a "\\Clocklogo"              "marvosym" "force" # WATCH
 #0x231b ""                         "" "" "" "" # HOURGLASS
 0x231c ""                         "" "force" "\\ulcorner" "amssymb" # TOP LEFT CORNER
