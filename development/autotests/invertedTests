@@ -171,18 +171,6 @@ export/export/latex/luainputenc-utf8_pdf5_systemF
 #11455 "Unable to process argument!" with multiple 1.6.x roundtrips
 export/templates/IEEEtran-Journal_lyx16
 
-#9744 allow parallel configuration of TeX and non-TeX fonts
-# parallel configuration implemented ([2fc430d5aede/lyxgit] 11/09/15),
-# use case for new setting value useNonTeXFonts == "automatic"
-# The font package "libertine" sets up "non-TeX fonts" if Xe/LuaTeX
-# is detected:
-# The "acmart" document class calls "libertine" as default font:
-# * With pdf5 (LuaTeX), this clashes with LyX setting up 8-bit TeX fonts
-# * with pdf4 (XeTeX) this does not clash but
-    selects CM fonts with different metrics -> unreliableTests wrong output.
-export/templates/acmart_pdf5_texF
-
-
 # ==============================================================
 Sublabel: ert
 # Export failures due to "raw" LaTeX use in ERT or preamble code

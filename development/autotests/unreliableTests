@@ -61,14 +61,11 @@ export/export/latex/cp858_pdf2
 # Seminar export with LaTeX fails in latest TeXLive:
 export/examples/(|fr/)seminar_(dvi|pdf).*
 
-# `acmart` requires PDF-latex in TeXLive < 2018
-# * Missing page number in DVI -> ignoredTests wrong output
-# * First page not displayed in Postscript
-#   ("evince" viewer hangs and displays # "Loading...")
-# * "PDF (ps2pdf)": `ps2pdf` fails as result of the problem with Postscript
-export/templates/acmart_dvi.*
-#export/templates/acmart_ps # not tested by ctest autotests
-export/templates/acmart_pdf
+# `acmart` calls "libertine" as default font.
+# With TeXLive < 18, this clashes with LyX setting up 8-bit TeX fonts
+# PDF (luatex) and PDF (xetex) (compilation error or wrong fonts).
+# See also #9744 allow parallel configuration of TeX and non-TeX fonts.
+export/templates/acmart_pdf[45]_texF
 
 
 Sublabel: wrong_output
@@ -109,19 +106,13 @@ export/export/mixing_inTitle_layouts_(pdf|dvi).*
 export/doc/es/Customization_dvi3_systemF
 export/examples/(|es/)(europe|modern)CV_dvi3_systemF
 
-
 # original problem fixed but run-together words in Russian
 #9637 textgreek and textcyr depend on font-encoding, not input encoding
 export/export/latex/ru-accent-ascii_pdf2
 
-
-#9744 allow parallel configuration of TeX and non-TeX fonts
-# parallel configuration implemented ([2fc430d5aede/lyxgit] 11/09/15),
-# use case for new setting value useNonTeXFonts == "automatic"
-# The font package "libertine" sets up "non-TeX fonts" if Xe/LuaTeX
-# is detected:
-# * With pdf5 (LuaTeX), this clashes with LyX setting up 8-bit TeX fonts
-# * with pdf4 (XeTeX) this does not clash but
-    selects fonts with different metrics -> unreliableTests wrong output.
-# The "acmart" document class calls "libertine" as default font:
-export/templates/acmart_pdf4_texF
+# `acmart` requires PDFlatex:
+# * Missing page number in DVI, Postscript, and PDF (ps2pdf)
+# * "PDF (ps2pdf)" fails (problem with Postscript) in TeXLive < 2018
+export/templates/acmart_dvi.*
+#export/templates/acmart_ps # not tested by ctest autotests
+export/templates/acmart_pdf

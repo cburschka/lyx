@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 566
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -28,7 +28,7 @@ PackageOptions algorithm2e ruled
 \language english
 \language_package auto
 \inputencoding auto
-\fontencoding global
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -42,10 +42,12 @@ PackageOptions algorithm2e ruled
 \use_microtype false
 \use_dash_ligatures true
 \graphics default
-\default_output_format default
+\default_output_format pdf2
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -94,6 +96,21 @@ PackageOptions algorithm2e ruled
 \end_header
 
 \begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+For correct output, compile with pdflatex.
+ Alternatively set Document>Settings>Fonts>use non-TeX fonts and compile
+ with XeTeX or LuaTeX.
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout In Preamble
 \begin_inset Note Note
@@ -518,6 +535,7 @@ reference "tab:one"
 \begin_layout Standard
 \begin_inset Float algorithm
 placement t
+alignment document
 wide false
 sideways false
 status open
@@ -824,6 +842,8 @@ Sieve of Eratosthenes.
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -860,6 +880,8 @@ Figure.
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
