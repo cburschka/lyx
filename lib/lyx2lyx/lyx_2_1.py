@@ -556,8 +556,6 @@ def handle_longtable_captions(document, forward):
                     get_option_value(document.body[begin_row], 'endlastfoot') != 'true'):
                     document.body[begin_row] = set_option_value(document.body[begin_row], 'caption', 'true", endfirsthead="true')
             elif get_option_value(document.body[begin_row], 'caption') == 'true':
-                if get_option_value(document.body[begin_row], 'endfirsthead') == 'true':
-                    document.body[begin_row] = set_option_value(document.body[begin_row], 'endfirsthead', 'false')
                 if get_option_value(document.body[begin_row], 'endhead') == 'true':
                     document.body[begin_row] = set_option_value(document.body[begin_row], 'endhead', 'false')
                 if get_option_value(document.body[begin_row], 'endfoot') == 'true':
