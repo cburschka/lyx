@@ -4771,6 +4771,32 @@ Buffer::ReadStatus Buffer::loadEmergency()
 				_("&Remove"), _("&Keep"));
 		if (del_emerg == 0)
 			emergencyFile.removeFile();
+		else {
+			// See bug #11464
+			FileName newname;
+			string const ename = emergencyFile.absFileName();
+			bool noname = true;
+			// Surely we can find one in 100 tries?
+			for (int i = 1; i < 100; ++i) {
+				newname.set(ename + to_string(i) + ".lyx");
+				if (!newname.exists()) {
+					noname = false;
+					break;
+				}
+			}
+			if (!noname) {
+				// renameTo returns true on success. So inverting that
+				// will give us true if we fail.
+				noname = !emergencyFile.renameTo(newname);
+			}
+			if (noname) {
+				Alert::warning(_("Can't rename emergency file!"),
+					_("LyX was unable to rename the emergency file. "
+					  "You should do so manually. Otherwise, you will be"
+					  "asked about it again the next time you try to load"
+					  "this file, and may over-write your own work."));
+			}
+		}
 		return ReadOriginal;
 	}
 
