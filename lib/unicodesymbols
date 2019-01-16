@@ -1773,7 +1773,7 @@
 #0x202c ""                         "" "" "" "" # POP DIRECTIONAL FORMATTING
 #0x202d ""                         "" "" "" "" # LEFT-TO-RIGHT OVERRIDE
 #0x202e ""                         "" "" "" "" # RIGHT-TO-LEFT OVERRIDE
-0x202f "\\,"                      "" "notermination=both" "\\," "" # NARROW NO-BREAK SPACE
+0x202f "\\,"                      "" "force=utf8;utf8-cjk;utf8x,notermination=both" "\\," "" # NARROW NO-BREAK SPACE
 0x2030 "\\textperthousand"        "textcomp" "" # PER MILLE SIGN
 0x2031 "\\textpertenthousand"     "textcomp" "" # PER TEN THOUSAND SIGN
 0x2032 "\\textasciiacute"         "textcomp" "force=utf8;utf8-cjk" "\\prime" "" # PRIME
