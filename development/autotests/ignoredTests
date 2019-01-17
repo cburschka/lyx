@@ -45,7 +45,7 @@ export/templates/copernicus_(dvi3|pdf4|pdf5)_(texF|systemF)
 export/examples/instant_preview_(dvi3|pdf4)_systemF
 export/examples/instant_preview_pdf[25].*
 export/examples/(chessgame|chess-article|powerdot)_pdf[25].*
-export/examples/chessboard-article_(lyx(16|21|22|23)|(pdf3|pdf5|dvi3)_texF)
+export/examples/chessboard-article_(lyx(16|20|21|22|23)|(pdf3|pdf5|dvi3)_texF)
 export/examples/fr/powerdot_pdf[25].*
 
 # requires jss.cls (not on CTAN)
@@ -97,8 +97,8 @@ export/examples/docbook_article_(dvi3|pdf[245]).*
 export/templates/DocBook_article_(dvi3|pdf[245]).*
 
 # `acmart` and `copernicus` are not supported by LyX < 2.3
-export/templates/acmart_lyx(16|21|22)
-export/templates/copernicus_lyx(16|21|22)
+export/templates/acmart_lyx(16|20|21|22)
+export/templates/copernicus_lyx(16|20|21|22)
 
 
 # ============================================================
@@ -113,7 +113,7 @@ export/templates/attic/latex8_(dvi|dvi3_.*|lyx(22|23))
 
 # aastex.cls is obsolete and replaced by aastex6.cls
 # aastex6.cls is obsolete and replaced by aastex62.cls
-export/doc/attic/aastex6_sample_(dvi|pdf|lyx(16|21|22|23)).*
+export/doc/attic/aastex6_sample_(dvi|pdf|lyx(16|20|21|22|23)).*
 export/templates/aastex6_.*
 export/templates/aastex62_lyx16
 export/examples/aas_sample_.*
