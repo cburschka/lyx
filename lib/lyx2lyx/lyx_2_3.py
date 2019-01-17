@@ -1837,6 +1837,9 @@ def convert_dashligatures(document):
                 document.warning("Malformed LyX document: "
                                 "Can't find layout at line %d" % i)
                 continue
+            if not layoutname:
+                document.warning("Malformed LyX document: "
+                                 "Missing layout name on line %d"%start)
             if layoutname == "LyX-Code":
                 i = end
                 continue

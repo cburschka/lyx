@@ -639,12 +639,15 @@ def get_containing_inset(lines, i):
 
 def get_containing_layout(lines, i):
   '''
-  Finds out what kind of layout line i is within. Returns a
-  list containing what follows \begin_layout on the line
-  on which the layout begins, plus the starting and ending line
-  and the start of the paragraph (after all params). I.e, returns:
+  Find out what kind of layout line `i` is within.
+  Return a tuple
     (layoutname, layoutstart, layoutend, startofcontent)
-  Returns False on any kind of error.
+  containing
+    * layout style/name,
+    * start line number,
+    * end line number, and
+    * number of first paragraph line (after all params).
+  Return `False` on any kind of error.
   '''
   j = i
   while True:
@@ -659,10 +662,13 @@ def get_containing_layout(lines, i):
   if endlay < i:
       return False
 
-  lay = get_value(lines, "\\begin_layout", stlay)
-  if lay == "":
-      # shouldn't happen
-      return False
+  layoutname = get_value(lines, "\\begin_layout", stlay)
+  if layoutname == "": # layout style missing
+      # TODO: What shall we do in this case?
+      pass
+      # layoutname == "Standard" # use same fallback as the LyX parser:
+      # raise ValueError("Missing layout name on line %d"%stlay) # diagnosis
+      # return False # generic error response
   par_params = ["\\noindent", "\\indent", "\\indent-toggle", "\\leftindent",
                 "\\start_of_appendix", "\\paragraph_spacing", "\\align",
                 "\\labelwidthstring"]
@@ -671,7 +677,7 @@ def get_containing_layout(lines, i):
       stpar += 1
       if lines[stpar].split(' ', 1)[0] not in par_params:
           break
-  return (lay, stlay, endlay, stpar)
+  return (layoutname, stlay, endlay, stpar)
 
 
 def count_pars_in_inset(lines, i):
