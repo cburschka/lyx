@@ -85,23 +85,14 @@
 
 \begin_body
 
-\begin_layout Standard
-Currently input encoding utf8 requires setting Cyrillic parts to a language
- using the Cyrillic script (here Russian).
- See 
-\begin_inset CommandInset href
-LatexCommand href
-name "#9681"
-target "http://www.lyx.org/trac/ticket/9681"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection*
 9) Cyrillic
+\end_layout
+
+\begin_layout Standard
+With language set to Russian, wrapping in 
+\backslash
+textcyrillic is not required:
 \end_layout
 
 \begin_layout Labeling
@@ -370,6 +361,10 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+English again
 \end_layout
 
 \end_body
