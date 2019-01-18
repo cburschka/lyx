@@ -84,13 +84,19 @@ export/export/latex/unicodesymbols/069-greek-extended_cp1256_pdf2
 export/export/latex/unicodesymbols/070-72-general-punctuation-sub-super-currency_cp1256_pdf2
 export/export/latex/unicodesymbols/074-76-letterlike-numberforms-arrows_cp1256_pdf2
 
-# CJK:
+# CJK 
+# with 8-bit encodings: missing "\usepackage[<encoding(s)>]{inputenc}"
+# leads to #   ! Undefined control sequence.
+#                   \inputencoding 
+#                         {latin9}
+# if there is a non-CJK language in the document.
 export/export/latex/unicodesymbols/.*_euc-cn_pdf2
 export/export/latex/unicodesymbols/.*_gbk_pdf2
 export/export/latex/unicodesymbols/.*_jis_pdf2
 export/export/latex/unicodesymbols/.*_euc-kr_pdf2
 export/export/latex/unicodesymbols/.*_euc-tw_pdf2
 export/export/latex/unicodesymbols/.*_euc-jp_pdf2
+
 # pLaTeX
 export/export/latex/unicodesymbols/.*_euc-jp-platex_pdf2
 export/export/latex/unicodesymbols/.*_jis-platex_pdf2
@@ -111,7 +117,6 @@ export/export/latex/arabic_simple_pdf4_texF
 # See note about "Missing ␣" in file "ignoreLatexErrorsTests".
 export/doc/ar/UserGuide_lyx(22|23)
 
-
 # Polyglossia + LuaTeX does not support Farsi yet. See:
 #     https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
 # Why does farsi fail with Babel?
@@ -129,20 +134,15 @@ export/templates/kluwer_.*_systemF
 # back-conversion fails for rotated float inset in a list
 export/export/lyx2lyx/lyx_2_3_test_lyx(16|20|21|22)
 
+
 # ================================================
 Sublabel: lyxbugs
 # LyX bugs with a Trac number.
 # ================================================
 
-#10355 xmllint detects failures
-export/doc/attic/eu_UserGuide_xhtml
-export/doc/(es|ja)/UserGuide_xhtml
-export/examples/spreadsheet_xhtml
-export/export/WrongDfnTagHandling_xhtml
-
-#10371 Compilation error if longest label marker in labeling style
-# contains underscores etc.
-export/export/latex/LongestLabelWithUnderscore.*
+#6463 font encoding changes and combining accents
+# problem remains for Cyrillic in a non-Cyrillic-using language
+export/export/latex/cyrillic-accent-ascii_pdf2
 
 #9871 LyX sends invalid Unicode to iconv when converting to ASCII
 # most probably due to BabelPreamble code (language specific headings for
@@ -156,10 +156,17 @@ export/doc/es/Customization_pdf4_texF
 # see also the discussion at:
 # https://www.mail-archive.com/search?l=mid&q=20170228190738.cgs3tl3ny2bxiegk%40steph
 export/examples/es/linguistics_pdf4_texF
+export/latex/bug9871-slovak-ascii-preambleencoding
 
-#6463 font encoding changes and combining accents
-# problem remains for Cyrillic in a non-Cyrillic-using language
-export/export/latex/cyrillic-accent-ascii_pdf2
+#10355 xmllint detects failures
+export/doc/attic/eu_UserGuide_xhtml
+export/doc/(es|ja)/UserGuide_xhtml
+export/examples/spreadsheet_xhtml
+export/export/WrongDfnTagHandling_xhtml
+
+#10371 Compilation error if longest label marker in labeling style
+# contains underscores etc.
+export/export/latex/LongestLabelWithUnderscore.*
 
 #11454 luainputenc must be loaded after textcomp
 export/export/latex/luainputenc-utf8_pdf5_texF
@@ -170,6 +177,7 @@ export/export/latex/luainputenc-utf8_pdf5_systemF
 
 #11455 "Unable to process argument!" with multiple 1.6.x roundtrips
 export/templates/IEEEtran-Journal_lyx16
+
 
 # ==============================================================
 Sublabel: ert
