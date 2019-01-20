@@ -58,12 +58,19 @@ export/export/latex/iconv-error-nomenclature_pdf2
 #
 check_load/templates/acmart
 
+# Failing LyX2LyX conversions for old versions: 
+#
 # "beamer" lyx2lyx fails sometimes for versions < 2.1
 # Back-conversion results in some layouts without name ("\begin_layout \n")
 # which trigger a warning message leading to test failure.
 export/examples/(|de/|fr/|ja/)beamer_lyx(16|20)
 export/templates/.*beamer-conference-ornate-20min_lyx(16|20)
 export/examples/beamerlyxexample1_lyx(16|20)
+#
+# modernCV fails for versions < 2.1
+# * reversed order of \end_layout and \end_inset results in corrupt LyX file
+# * reversed order of command arguments results in incompilable LaTeX 
+export/examples/modernCV_lyx(16|20)
 
 
 # input encoding tests
