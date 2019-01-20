@@ -3,13 +3,13 @@
 #
 # Zdenko Podobný <zdpo@mailbox.sk>, 2003, 2006.
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
-# Kornel Benko <kornel@lyx.org>, 2009-2018.
+# Kornel Benko <kornel@lyx.org>, 2009-2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-12-28 16:13+0100\n"
-"PO-Revision-Date: 2018-12-28 15:14+0000\n"
+"POT-Creation-Date: 2019-01-20 09:12+0100\n"
+"PO-Revision-Date: 2019-01-20 08:15+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -10190,10 +10190,10 @@ msgstr "Značky zmien"
 #: lib/layouts/changebars.module:7
 msgid ""
 "Enables LyX to add vertical change bars in the margin of PDF output when "
-"change tracking is turned on and pdflatex output format is chosen."
+"Show Changes in Output is turned on and pdflatex output format is chosen."
 msgstr ""
 "Umožní LyX pridať vertikálne značky zmien na okraji PDF-výstupu. Treba na to "
-"zapnúť sledovanie zmien a zvoliť pdflatex ako výstupný formát."
+"zapnúť sledovanie zmien vo výstupe a zvoliť pdflatex ako výstupný formát."
 
 #: lib/layouts/chess.layout:3
 msgid "Chess"
@@ -13737,6 +13737,30 @@ msgstr "silný dôraz"
 #: lib/layouts/ltugboat.layout:3
 msgid "TUGboat"
 msgstr "TUGboat"
+
+#: lib/layouts/maa-monthly.layout:3
+msgid "Mathematical Monthly article"
+msgstr "Mathematical Monthly článok"
+
+#: lib/layouts/maa-monthly.layout:64
+msgid "Abbreviated Title"
+msgstr "Skrátený titul"
+
+#: lib/layouts/maa-monthly.layout:74 lib/layouts/maa-monthly.layout:77
+msgid "Biographies"
+msgstr "Životopisy"
+
+#: lib/layouts/maa-monthly.layout:89 lib/layouts/maa-monthly.layout:96
+msgid "Author Biography"
+msgstr "Životopis autora"
+
+#: lib/layouts/maa-monthly.layout:112
+msgid "Affiliation (include email):"
+msgstr "Príslušenstvo (vrátane e-mail):"
+
+#: lib/layouts/maa-monthly.layout:128
+msgid "Title of acknowledgment"
+msgstr "Titul poďakovania"
 
 #: lib/layouts/memoir.layout:3
 msgid "Memoir"
@@ -20438,9 +20462,9 @@ msgstr "Zarovnať dospodu"
 msgid "Rotate cell by 90 degrees or unset rotation"
 msgstr "Otočiť túto bunku o 90 stupňov alebo vymazať rotáciu"
 
-#: lib/ui/stdtoolbars.inc:174
+#: lib/ui/stdtoolbars.inc:175
 msgid "Rotate table by 90 degrees or unset rotation"
-msgstr "Otočiť túto bunku o 90 stupňov alebo vymazať rotáciu"
+msgstr "Otočiť túto tabuĺku o 90 stupňov alebo vymazať rotáciu"
 
 #: lib/ui/stdtoolbars.inc:175
 msgid "Set multi-column"
@@ -26095,6 +26119,20 @@ msgstr "Teraz nezabudnite uložiť váš súbor!"
 msgid "Remove emergency file now?"
 msgstr "Zmazať núdzovú kópiu teraz?"
 
+#: src/Buffer.cpp:4792
+msgid "Can't rename emergency file!"
+msgstr "Nemôžem premenovať núdzový súbor!"
+
+#: src/Buffer.cpp:4793
+msgid ""
+"LyX was unable to rename the emergency file. You should do so manually. "
+"Otherwise, you will be asked about it again the next time you try to load "
+"this file, and may over-write your own work."
+msgstr ""
+"LyX nebol schopný premenovať núdzový súbor. Mali by ste ho premenovať ručne. "
+"Ináč, v prípade že chcete tento súbor nabudúce čítať, budete opýtaný ešte "
+"raz a tak by ste mohli prepísať vlastnú prácu."
+
 #: src/Buffer.cpp:4670
 #, c-format
 msgid ""
@@ -29993,9 +30031,9 @@ msgstr "Modul nenájdený!"
 msgid "End Edit"
 msgstr "Úprava skončila"
 
-#: src/frontends/qt4/GuiDocument.cpp:636
-msgid "Press button to check validity..."
-msgstr "Kliknite tlačidlo na kontrolu validity…"
+#: src/frontends/qt4/GuiDocument.cpp:638
+msgid "Validation required!"
+msgstr "Požaduje validáciu!"
 
 #: src/frontends/qt4/GuiDocument.cpp:686
 msgid "Layout is valid!"
@@ -34827,6 +34865,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Press button to check validity..."
+#~ msgstr "Kliknite tlačidlo na kontrolu validity…"
 
 #~ msgid "Set top line"
 #~ msgstr "Prepnúť hornú čiaru"
@@ -39689,3 +39730,10 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Apply last text properties"
 #~ msgstr "Použiť posledné vlastnosti textu"
+
+#~ msgid ""
+#~ "Enables LyX to add vertical change bars in the margin of PDF output when "
+#~ "change tracking is turned on and pdflatex output format is chosen."
+#~ msgstr ""
+#~ "Umožní LyX pridať vertikálne značky zmien na okraji PDF-výstupu. Treba na to "
+#~ "zapnúť sledovanie zmien a zvoliť pdflatex ako výstupný formát."
