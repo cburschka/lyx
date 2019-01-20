@@ -4791,8 +4791,8 @@ Buffer::ReadStatus Buffer::loadEmergency()
 			if (noname) {
 				Alert::warning(_("Can't rename emergency file!"),
 					_("LyX was unable to rename the emergency file. "
-					  "You should do so manually. Otherwise, you will be"
-					  "asked about it again the next time you try to load"
+					  "You should do so manually. Otherwise, you will be "
+					  "asked about it again the next time you try to load "
 					  "this file, and may over-write your own work."));
 			}
 		}
