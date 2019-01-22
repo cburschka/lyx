@@ -60,7 +60,6 @@ export/export/latex/iconv-error-nomenclature_pdf2
 check_load/templates/acmart
 export/templates/acmart_lyx23
 
-
 # Failing LyX2LyX conversions for old versions: 
 #
 # "beamer" lyx2lyx fails sometimes for versions < 2.1
@@ -78,6 +77,12 @@ export/examples/(|es/)modernCV_lyx(16|20)
 # Farsi font encoding LAE should be added also to custom font encoding
 # (similar to the Greek font encoding LGR).
 export/export/latex/fa-OT1_pdf2
+
+# No "system font" (fontspec) setup for multiple scripts (Japanese+Latin+Greek)
+# -> Missing character (Greek letter omikron with tonos),
+#    suboptimal character spacing in non-Japanese text parts.
+export/examples/ja/multilingual_.*_systemF
+
 
 # input encoding tests
 # --------------------
@@ -285,6 +290,9 @@ export/templates/es_beamer-conference-ornate-20min_pdf4_texF
 # Arabic only works with XeTeX + system fonts (pdf4_systemF)
 export/examples/ar/splash_(dvi.*|pdf|pdf[^4].*)
 export/examples/ar/splash_pdf4_texF
+
+# CJKutf8 does not work with XeTeX and LuaTeX (and 8-bit fonts)
+export/examples/ja/multilingual_.*_texF
 
 
 # ================================================

@@ -67,6 +67,9 @@ export/examples/(|fr/)seminar_(dvi|pdf).*
 # See also #9744 allow parallel configuration of TeX and non-TeX fonts.
 export/templates/acmart_pdf[45]_texF
 
+# "UnicodeDecodeError" with Python 2
+export/examples/ja/multilingual_lyx.*
+
 
 Sublabel: wrong_output
 ######################

@@ -63,14 +63,16 @@ export/.*/zh_CN/.*texF
 # For a discussion of alternatives for Japanese with LaTeX , see also
 # http://www.preining.info/blog/2014/12/writing-japanese-in-latex-part-1-introduction/
 #
-# Exception: ja knitr.lyx and sweave.lyx support only XeLaTeX with system fonts
-# because they use the "bxjsarticle" class.
-#
+# Exceptions: 
+# * Japanese knitr.lyx and sweave.lyx support only XeLaTeX
+#   with system fonts because they use the "bxjsarticle" class.
+# * examples/multilingual.lyx uses "Japanese (CJK)"
 # The "!" means the following:
 #   "Protect these tests from being matched by future patterns in this file".
 !export/.*/ja/(knitr|sweave).*_(lyx.*|xhtml|pdf4_systemF)
 export/.*/ja/(knitr|sweave).*
 #
+!export/.*/ja/multilingual.*
 export/.*/ja/.*_(pdf[245]|dvi3).*
 
 # export of minted documents to 2.2.x is not guaranteed to work (and currently
