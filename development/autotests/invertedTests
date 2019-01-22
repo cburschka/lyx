@@ -56,8 +56,10 @@ export/export/latex/iconv-error-nomenclature_pdf2
 #    TextClass.cpp (1385): The layout does not provide a list command for
 #      the float `sidebar'. LyX will not be able to produce a float list.
 #
+# which makes "check_load" and "lyx2lyx" fail (lyx2lyx for < 2.3 is ignored).
 check_load/templates/acmart
 export/templates/acmart_lyx23
+
 
 # Failing LyX2LyX conversions for old versions: 
 #
@@ -73,6 +75,9 @@ export/examples/beamerlyxexample1_lyx(16|20)
 # * reversed order of command arguments results in incompilable LaTeX 
 export/examples/(|es/)modernCV_lyx(16|20)
 
+# Farsi font encoding LAE should be added also to custom font encoding
+# (similar to the Greek font encoding LGR).
+export/export/latex/fa-OT1_pdf2
 
 # input encoding tests
 # --------------------
