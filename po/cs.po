@@ -14900,69 +14900,57 @@ msgid "KOMA-Script Report"
 msgstr "KOMA-Script Report"
 
 #: lib/layouts/sectionbox.module:2
-#, fuzzy
 msgid "Section Boxes"
-msgstr "Sekce"
+msgstr "Rámečky sekcí"
 
 #: lib/layouts/sectionbox.module:6
 msgid ""
 "Defines Boxes with section header. Mainly intended for the SciPoster class."
-msgstr ""
+msgstr "Definuje rámečky s hlavičkou sekce. Určeno zejméno pro třídu SciPoster."
 
 #: lib/layouts/sectionbox.module:11
-#, fuzzy
 msgid "SectionBox"
-msgstr "Sekce"
+msgstr "SectionBox"
 
 #: lib/layouts/sectionbox.module:13
-#, fuzzy
 msgid "Section Box"
-msgstr "Sekce"
+msgstr "Section Box"
 
 #: lib/layouts/sectionbox.module:22
-#, fuzzy
 msgid "Section Box Width|S"
-msgstr "Výběr|V"
+msgstr "Section Box Width|S"
 
 #: lib/layouts/sectionbox.module:23
-#, fuzzy
 msgid "Width of the section Box"
-msgstr "Šířka obrázku na výstupu"
+msgstr "Width of the section Box"
 
 #: lib/layouts/sectionbox.module:26 lib/layouts/todonotes.module:46
-#, fuzzy
 msgid "Heading"
-msgstr "Headings"
+msgstr "Heading"
 
 #: lib/layouts/sectionbox.module:27
-#, fuzzy
 msgid "Section Box Heading"
-msgstr "Sectioning"
+msgstr "Section Box Heading"
 
 #: lib/layouts/sectionbox.module:31
-#, fuzzy
 msgid "Insert the section box header here"
-msgstr "Vložit mezeru i za zalomení řádku"
+msgstr "Insert the section box header here"
 
 #: lib/layouts/sectionbox.module:40
-#, fuzzy
 msgid "SubsectionBox"
-msgstr "Podsekce"
+msgstr "SubsectionBox"
 
 #: lib/layouts/sectionbox.module:42
-#, fuzzy
 msgid "Subsection Box"
-msgstr "Podsekce"
+msgstr "Subsection Box"
 
 #: lib/layouts/sectionbox.module:46
-#, fuzzy
 msgid "SubsubsectionBox"
-msgstr "Podpodsekce"
+msgstr "SubsubsectionBox"
 
 #: lib/layouts/sectionbox.module:48
-#, fuzzy
 msgid "Subsubsection Box"
-msgstr "Podpodsekce"
+msgstr "Subsubsection Box"
 
 #: lib/layouts/seminar.layout:3
 msgid "Seminar"
@@ -15607,9 +15595,8 @@ msgid "Proof(smartQED)"
 msgstr "Proof(smartQED)"
 
 #: lib/layouts/svglobal.layout:3
-#, fuzzy
 msgid "Springer's Global Journal Template (Obsolete Version)"
-msgstr "Springer SV Global (Obsolete Version)"
+msgstr "Springer's Global Journal Template (Obsolete Version)"
 
 #: lib/layouts/svglobal.layout:67 lib/layouts/svjog.layout:71
 #: lib/layouts/svprobth.layout:101
@@ -15653,9 +15640,8 @@ msgid "Offprints:"
 msgstr "Offprints:"
 
 #: lib/layouts/svglobal3.layout:3
-#, fuzzy
 msgid "Springer's Global Journal Template (V. 3)"
-msgstr "Springer SV Global (V. 3)"
+msgstr "Springer's Global Journal Template (V. 3)"
 
 #: lib/layouts/svglobal3.layout:73
 msgid "Subclass"
@@ -16626,9 +16612,8 @@ msgid "Property \\theproperty."
 msgstr "Vlastnost \\theproperty."
 
 #: lib/layouts/todonotes.module:2
-#, fuzzy
 msgid "TODO Notes"
-msgstr "Table Notes"
+msgstr "Poznámky TODO"
 
 #: lib/layouts/todonotes.module:8
 msgid ""
@@ -16636,80 +16621,71 @@ msgid ""
 "todonotes package). In order to generate a 'List of TODOs', the module "
 "provides a paragraph style. Passing 'final' as document class option "
 "suppresses the output of TODO notes."
-msgstr ""
+msgstr "Poskytuje vložky pro vkládání TODO položek do dokumentu (za použití třídy todonotes). Modul poskytuje styl odstavce pro generování seznamu TODO. Pokud v nastavení třídy použijete 'final' vložky TODO se nebudou vkládat do konečného výstupu."
 
 #: lib/layouts/todonotes.module:14 lib/layouts/todonotes.module:119
 msgid "TODO"
-msgstr ""
+msgstr "TODO"
 
 #: lib/layouts/todonotes.module:22
-#, fuzzy
 msgid "List of TODOs"
-msgstr "Seznam tabulek"
+msgstr "List of TODOs"
 
 #: lib/layouts/todonotes.module:36
-#, fuzzy
 msgid "[List of TODOs]"
-msgstr "Seznam tabulek"
+msgstr "[List of TODOs]"
 
 #: lib/layouts/todonotes.module:47
-#, fuzzy
 msgid "List of TODOs Heading|s"
-msgstr "Seznam výpisů"
+msgstr "List of TODOs Heading|s"
 
 #: lib/layouts/todonotes.module:48
 msgid "Enter a custom header for the List of TODOs here"
-msgstr ""
+msgstr "Enter a custom header for the List of TODOs here"
 
 #: lib/layouts/todonotes.module:58
 msgid "TODO Note (Margin)"
-msgstr ""
+msgstr "TODO Note (Margin)"
 
 #: lib/layouts/todonotes.module:60
 msgid "TODO (Margin)"
-msgstr ""
+msgstr "TODO (Margin)"
 
 #: lib/layouts/todonotes.module:79 lib/layouts/todonotes.module:91
-#, fuzzy
 msgid "TODO Note Options|s"
-msgstr "Note Options"
+msgstr "TODO Note Options|s"
 
 #: lib/layouts/todonotes.module:80 lib/layouts/todonotes.module:109
 msgid "See the todonotes manual for possible options"
-msgstr ""
+msgstr "See the todonotes manual for possible options"
 
 #: lib/layouts/todonotes.module:86
 msgid "TODO Note (inline)"
-msgstr ""
+msgstr "TODO Note (inline)"
 
 #: lib/layouts/todonotes.module:88
-#, fuzzy
 msgid "TODO (Inline)"
-msgstr "TOG online ID"
+msgstr "TODO (Inline)"
 
 #: lib/layouts/todonotes.module:101 lib/layouts/todonotes.module:103
-#, fuzzy
 msgid "Missing Figure"
-msgstr "Chybějící soubor"
+msgstr "Missing Figure"
 
 #: lib/layouts/todonotes.module:108
 msgid "Missing Figure Note Options|s"
-msgstr ""
+msgstr "Missing Figure Note Options|s"
 
 #: lib/layouts/todonotes.module:123
-#, fuzzy
 msgid "Todo[Inline]"
-msgstr "&V řádce"
+msgstr "Todo[Inline]"
 
 #: lib/layouts/todonotes.module:127
-#, fuzzy
 msgid "Todo[margin]"
-msgstr "okraj"
+msgstr "Todo[margin]"
 
 #: lib/layouts/todonotes.module:131
-#, fuzzy
 msgid "MissingFigure"
-msgstr "Chybějící soubor"
+msgstr "MissingFigure"
 
 #: lib/layouts/treport.layout:3
 msgid "Japanese Report (Vertical Writing)"
