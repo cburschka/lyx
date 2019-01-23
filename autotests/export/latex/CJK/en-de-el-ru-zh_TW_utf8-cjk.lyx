@@ -5,15 +5,21 @@
 \save_transient_properties true
 \origin unavailable
 \textclass article
-\use_default_options false
+\begin_preamble
+% Fix the MIKRO SIGN symbol:
+% CJKutf8 overwrites \textmu with $\mu$,
+% use the symbol from "textcomp" or the Greek fonts instead
+\DeclareTextSymbolDefault{\textmu}{TS1}
+\end_preamble
+\use_default_options true
 \maintain_unincluded_children false
-\language korean
+\language english
 \language_package default
 \inputencoding utf8-cjk
-\fontencoding default
-\font_roman "lmodern" "NanumMyeongjo"
-\font_sans "default" "NanumGothic"
-\font_typewriter "default" "NanumGothicCoding"
+\fontencoding auto
+\font_roman "libertine" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -21,9 +27,9 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\font_cjk mj
+\font_cjk bsmi
 \use_microtype false
-\use_dash_ligatures false
+\use_dash_ligatures true
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -54,7 +60,7 @@
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 0
+\use_refstyle 1
 \use_minted 0
 \index Index
 \shortcut idx
@@ -81,39 +87,64 @@
 \begin_body
 
 \begin_layout Standard
-
-\lang english
-For multi-lingual document, with parts in European languages, you can use
- the CJK LaTeX bundle.
+For multi-lingual document, with parts in European languages and parts in
+ Chinese, Korean, or Japanese, you can use the CJK LaTeX bundle.
 \end_layout
 
 \begin_layout Enumerate
-LyX 는 훌륭한 문서를 동반합니다 - 사용하세요!
+The main language of this document is English.
 \end_layout
 
 \begin_layout Enumerate
+Set Language>Encoding to 
+\begin_inset Quotes eld
+\end_inset
 
-\series bold
-Short
-\series default
- texts may be written without setting the language (hyphenation will be
- missing and spell-checking complain): Greetings; Grüße; Приветы; Λογος
+utf8-cjk
+\begin_inset Quotes erd
+\end_inset
+
+ and Fonts>CJK to 
+\begin_inset Quotes eld
+\end_inset
+
+bsmi
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+bkai
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Enumerate
+Short texts may be written without setting the language (hyphenation will
+ be missing and spell-checking complain): Greetings; Grüße; Приветы; χαιρετισμός
+, 迎接.
+\end_layout
 
-\lang japanese-cjk
-For 
-\series bold
-longer
-\series default
- text parts, it is recommended to set the correct language:
+\begin_layout Enumerate
+For longer text parts, it is recommended to set the correct language:
 \end_layout
 
 \begin_deeper
 \begin_layout Description
 
-\lang english
+\lang chinese-traditional
+(traditional)
+\begin_inset space ~
+\end_inset
+
+Chinese: 香港《蘋果日報》在2月14日引述中國導演馮小剛的說法，稱許多簡體中文是「不合理的簡化」，而負責香港教育的官員則是在「對抗這股浪潮」。
+\end_layout
+
+\begin_layout Description
 English: Greetings from Österreich 5
 \begin_inset space ~
 \end_inset
@@ -160,89 +191,6 @@ Deutsch: Grüße aus Österreich 5
 µm Schnee.
 \end_layout
 
-\begin_layout Description
-Language
-\begin_inset space ~
-\end_inset
-
-order
-\begin_inset space ~
-\end_inset
-
-bug:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-The last language argument becomes the main document language.
-\end_layout
-
-\begin_layout Itemize
-CJK-languages don't add to the language documents, because they have no
- Babel-name.
-\end_layout
-
-\begin_layout Itemize
-LyX sorts languages alphabetically
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-or by order in 
-\begin_inset Quotes eld
-\end_inset
-
-lib/languages
-\begin_inset Quotes erd
-\end_inset
-
-?
-\end_layout
-
-\end_inset
-
- and moves the document language to the end of the 
-\begin_inset Quotes eld
-\end_inset
-
-languages list
-\begin_inset Quotes erd
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-If the main language is empty, Babel wrongly assumes the last in list to
- be the document language (here 
-\begin_inset Quotes eld
-\end_inset
-
-russian
-\begin_inset Quotes erd
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Itemize
-As 
-\begin_inset Quotes eld
-\end_inset
-
-russian
-\begin_inset Quotes erd
-\end_inset
-
- requires font encoding T2A, babel sets it as 
-\emph on
-document font encoding, 
-\emph default
-leading to suboptimal replacement fonts beeing used (bitmap instead of LatinMode
-rn) for Latin words unless a specific language is set.
-\end_layout
-
-\end_deeper
 \end_deeper
 \end_body
 \end_document

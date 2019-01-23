@@ -1262,7 +1262,7 @@ void TeXOnePar(Buffer const & buf,
 	// if this is a CJK-paragraph and the next isn't, close CJK
 	// also if the next paragraph is a multilingual environment (because of nesting)
 	if (nextpar
-		&& state->open_encoding_ == CJK
+		&& (state->open_encoding_ == CJK && bparams.encoding().iconvName() != "UTF-8")
 		&& (nextpar_language->encoding()->package() != Encoding::CJK
 		   || (nextpar->layout().isEnvironment() && nextpar->isMultiLingual(bparams)))
 		// inbetween environments, CJK has to be closed later (nesting!)
@@ -1402,17 +1402,19 @@ void latexParagraphs(Buffer const & buf,
 	}
 
 	// Open a CJK environment at the beginning of the main buffer
-	// if the document's language is a CJK language
-	// (but not in child documents)
+	// (but not in child documents or documents using system fonts)
+	// if the document's language is a CJK language (with some exceptions)
+	// or the document encoding is utf8-cjk:
 	OutputState * state = getOutputState();
 	if (maintext && !is_child && !bparams.useNonTeXFonts
-	    && bparams.language->encoding()->package() == Encoding::CJK
-	    && (bparams.encoding().name() == "utf8-cjk"
-		|| bparams.encoding().iconvName() != "UTF-8")) {
-		docstring const cjkenc = (bparams.encoding().name() == "utf8-cjk"
-					  && LaTeXFeatures::isAvailable("CJKutf8")) ?
-						from_ascii("UTF8")
-					      : from_ascii(bparams.encoding().latexName());
+	    && ((bparams.language->encoding()->package() == Encoding::CJK
+			 && (bparams.encoding().iconvName() != "UTF-8"
+				 || bparams.encoding().name() == "utf8-cjk"
+				 || bparams.encoding().name() == "utf8" ))
+			|| (bparams.encoding().name() == "utf8-cjk"
+				&& LaTeXFeatures::isAvailable("CJKutf8")))) {
+		docstring const cjkenc = bparams.encoding().iconvName() == "UTF-8"
+		  		  			   	 ? from_ascii("UTF8") : from_ascii(bparams.encoding().latexName());
 		os << "\\begin{CJK}{" << cjkenc
 		   << "}{" << from_ascii(bparams.fonts_cjk) << "}%\n";
 		state->open_encoding_ = CJK;
@@ -1624,8 +1626,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 	// 
 	// 2019-01-08 Possibly no longer required since tis620-0 is supported
 	// by inputenc (but check special encodings "utf8-plain" and "default").
-	if (oldEnc.package() == Encoding::none
-		|| newEnc.package() == Encoding::none)
+	if (oldEnc.package() == Encoding::none || newEnc.package() == Encoding::none)
 		return make_pair(false, 0);
 
 	LYXERR(Debug::LATEX, "Changing LaTeX encoding from "
@@ -1682,10 +1683,9 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 				os << "\\egroup";
 				count += 7;
 			}
-			docstring const cjkenc = (bparams.encoding().name() == "utf8-cjk"
-						  && LaTeXFeatures::isAvailable("CJKutf8")) ?
-							from_ascii("UTF8")
-						      : from_ascii(bparams.encoding().latexName());
+			docstring const cjkenc = (bparams.encoding().iconvName() == "UTF-8"
+									  && LaTeXFeatures::isAvailable("CJKutf8"))
+			  						  ? from_ascii("UTF8") : from_ascii(newEnc.latexName());
 			os << "\\begin{CJK}{" << cjkenc << "}{"
 			   << from_ascii(bparams.fonts_cjk) << "}";
 			state->open_encoding_ = CJK;

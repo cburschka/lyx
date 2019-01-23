@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 566
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -22,9 +22,9 @@
 \language chinese-simplified
 \language_package default
 \inputencoding utf8-cjk
-\fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
+\fontencoding auto
+\font_roman "default" "Noto Serif"
+\font_sans "default" "Noto Sans CJK SC"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
@@ -37,11 +37,12 @@
 \use_microtype false
 \use_dash_ligatures false
 \graphics default
-\default_output_format pdf2
+\default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
 \float_placement th
+\float_alignment class
 \paperfontsize 12
 \spacing onehalf
 \use_hyperref true

@@ -5,13 +5,19 @@
 \save_transient_properties true
 \origin unavailable
 \textclass article
+\begin_preamble
+% Fix the MIKRO SIGN symbol:
+% CJKutf8 overwrites \textmu with $\mu$,
+% use the symbol from "textcomp" or the Greek fonts instead
+\DeclareTextSymbolDefault{\textmu}{TS1}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language english
 \language_package default
 \inputencoding utf8-cjk
 \fontencoding auto
-\font_roman "default" "default"
+\font_roman "libertine" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
@@ -21,7 +27,7 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\font_cjk bsmi
+\font_cjk gbsn
 \use_microtype false
 \use_dash_ligatures true
 \graphics default
@@ -81,7 +87,16 @@
 \begin_body
 
 \begin_layout Standard
-Test the 
+For multi-lingual document, with parts in European languages and parts in
+ Chinese, Korean, or Japanese, you can use the CJK LaTeX bundle.
+\end_layout
+
+\begin_layout Enumerate
+The main language of this document is English.
+\end_layout
+
+\begin_layout Enumerate
+Set Language>Encoding to 
 \begin_inset Quotes eld
 \end_inset
 
@@ -89,18 +104,81 @@ utf8-cjk
 \begin_inset Quotes erd
 \end_inset
 
- input encoding.
+ and Fonts>CJK to 
+\begin_inset Quotes eld
+\end_inset
+
+gbsn
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+gkai
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
-\begin_layout Standard
-English: Grüße aus Österreich 5
+\begin_layout Enumerate
+Short texts may be written without setting the language (hyphenation will
+ be missing and spell-checking complain): Greetings; Grüße; Приветы; χαιρετισμός
+, 迎接.
+\end_layout
+
+\begin_layout Enumerate
+For longer text parts, it is recommended to set the correct language:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+
+\lang chinese-simplified
+Chinesisch: 就是说我们都已经习惯于关心字符排版的细枝末节，几乎所有的字处理软件也都是这种理念。人们还在使用 Tab 键创建空白；你还需要关心什么东西
+应该出现在页面上的什么位置；强调某处文本就是改变一下字体
+\end_layout
+
+\begin_layout Description
+English: Greetings from Österreich 5
 \begin_inset space ~
 \end_inset
 
-µm Schnee.
+µm snow.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang ngerman
+Griechisch:
+\lang greek
+ Η 
+\series bold
+Ελλάδα
+\series default
+ (στην καθαρεύουσα Ελλάς), συνταγματικό όνομα Ελληνική Δημοκρατία, είναι
+ χώρα της νοτιοανατολικής Ευρώπης στο νοτιότερο άκρο της Βαλκανικής χερσονήσου.
+\end_layout
+
+\begin_layout Description
+
+\lang ngerman
+Russisch:
+\lang russian
+ Привет с 
+\series bold
+новым
+\series default
+ годом! У нас эсть 5
+\begin_inset space ~
+\end_inset
+
+µm Снег.
+\end_layout
+
+\begin_layout Description
 
 \lang ngerman
 Deutsch: Grüße aus Österreich 5
@@ -108,53 +186,8 @@ Deutsch: Grüße aus Österreich 5
 \end_inset
 
 µm Schnee.
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-
-\lang ngerman
-Gibts Brötchen?
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang ngerman
-Griechisch:
-\lang greek
- Γρυσσε αυσ Οεστερρειχ 5
-\lang english
-
-\begin_inset space ~
-\end_inset
-
-μm
-\lang greek
- Σνη.
-\end_layout
-
-\begin_layout Standard
-
-\lang ngerman
-Russisch:
-\lang russian
- Привет с новом годом! У нас эсть 5
-\begin_inset space ~
-\end_inset
-
-µm Снег.
-\end_layout
-
-\begin_layout Standard
-
-\lang chinese-simplified
-Chinesisch: 是一文作
-\end_layout
-
+\end_deeper
 \end_body
 \end_document

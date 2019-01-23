@@ -50,8 +50,8 @@
 Encoding utf8 utf8 "Unicode (utf8)" UTF-8 variable inputenc
 End
 
-# This one is used by many CJK packages. utf8 is supposed to be the successor,
-# but does not have all features of utf8x yet.
+# extended utf8 support from the "ucs" package:
+# Larger set of supported characters but conflicts with some packages.
 Encoding utf8x utf8x "Unicode (ucs-extended) (utf8x)" UTF-8 variable inputenc
 End
 

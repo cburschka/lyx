@@ -81,31 +81,39 @@
 \begin_body
 
 \begin_layout Standard
-For multi-lingual document, with parts in European languages, you can use
- the CJK LaTeX bundle.
+For multi-lingual document, with parts in European languages and parts in
+ Chinese, Korean, or Japanese, you can use the CJK LaTeX bundle.
 \end_layout
 
 \begin_layout Enumerate
+The main language of this document is English.
+\end_layout
 
-\lang japanese-cjk
-\SpecialChar LyX
-は優秀な取扱説明書を同梱していますので、これをお使いください！まずは
-\family sans
-ヘルプ\SpecialChar menuseparator
-はじめの一歩
-\family default
-から始めてください。これは、各取扱説明書を簡潔に紹介しています。つぎに
-\family sans
-ヘルプ\SpecialChar menuseparator
-入門篇
-\family default
-をお読みになれば、\SpecialChar LyX
-の使い方を学ぶことができます。
+\begin_layout Enumerate
+Set Language>Encoding to 
+\begin_inset Quotes eld
+\end_inset
+
+utf8-cjk
+\begin_inset Quotes erd
+\end_inset
+
+ and Fonts>CJK to, e.g.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+min
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Enumerate
 Short texts may be written without setting the language (hyphenation will
- be missing and spell-checking complain): Greetings; Grüße; Приветы; Λογος
+ be missing and spell-checking complain): Greetings; Grüße; Приветы; χαιρετισμός
+, 挨拶 (あいさつ).
 \end_layout
 
 \begin_layout Enumerate
@@ -158,6 +166,32 @@ Russisch:
 \end_inset
 
 µm Снег.
+\end_layout
+
+\begin_layout Description
+
+\lang japanese-cjk
+Japanese: (
+\begin_inset Quotes eld
+\end_inset
+
+Japanese CJK
+\begin_inset Quotes erd
+\end_inset
+
+) \SpecialChar LyX
+は優秀な取扱説明書を同梱していますので、これをお使いください！まずは
+\family sans
+ヘルプ\SpecialChar menuseparator
+はじめの一歩
+\family default
+から始めてください。これは、各取扱説明書を簡潔に紹介しています。つぎに
+\family sans
+ヘルプ\SpecialChar menuseparator
+入門篇
+\family default
+をお読みになれば、\SpecialChar LyX
+の使い方を学ぶことができます。
 \end_layout
 
 \end_deeper

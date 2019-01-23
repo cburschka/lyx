@@ -11,6 +11,9 @@
 \usepackage{textcomp}
 \end_preamble
 \use_default_options false
+\begin_modules
+logicalmkup
+\end_modules
 \maintain_unincluded_children false
 \language japanese-cjk
 \language_package auto
@@ -103,14 +106,14 @@ arg   "long"
 \begin_layout Standard
 
 \lang english
-For multi-lingual documents, with parts in European languages, you can use
+For multi-lingual documents with parts in European languages, you can use
  the CJK LaTeX bundle:
 \end_layout
 
 \begin_layout Itemize
 
 \lang english
-Set a standard document classe (the document classes starting with 
+Set a standard document class (document classes starting with 
 \begin_inset Quotes bld
 \end_inset
 
@@ -124,7 +127,7 @@ Japanese
 \begin_layout Itemize
 
 \lang english
-Set the language to 
+Set the document language to 
 \begin_inset Quotes bld
 \end_inset
 
@@ -138,6 +141,32 @@ Japanese (CJK)
 
 Unicode (CJK) (utf8)
 \begin_inset Quotes brd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Select a Japanese CJK-font, e.g.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Quotes sld
+\end_inset
+
+min
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 .
@@ -241,7 +270,7 @@ Deutsch: Grüße aus Österreich!
 \lang ngerman
 Griechisch:
 \lang greek
- χαιρετισμός
+ χαιρετισμός!
 \end_layout
 
 \begin_layout Description
