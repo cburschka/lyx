@@ -67,9 +67,6 @@ export/examples/(|fr/)seminar_(dvi|pdf).*
 # See also #9744 allow parallel configuration of TeX and non-TeX fonts.
 export/templates/acmart_pdf[45]_texF
 
-# "UnicodeDecodeError" with Python 2
-export/examples/ja/multilingual_lyx.*
-
 
 Sublabel: wrong_output
 ######################
@@ -119,3 +116,7 @@ export/export/latex/ru-accent-ascii_pdf2
 export/templates/acmart_dvi.*
 #export/templates/acmart_ps # not tested by ctest autotests
 export/templates/acmart_pdf
+
+# lyx2lyx back-conversion of "Date" info-inset writes 
+# the name of the day in English instead of Japanese.
+export/examples/ja/multilingual_lyx.*

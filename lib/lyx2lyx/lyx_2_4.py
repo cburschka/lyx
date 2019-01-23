@@ -1094,6 +1094,10 @@ def revert_dateinfo(document):
             fmt = re.sub('[^\'%]d', '%d', fmt)
             fmt = fmt.replace("'", "")
             result = dte.strftime(fmt)
+        if sys.version_info < (3,0):
+            # In Python 2, datetime module works with binary strings,
+            # our dateformat strings are utf8-encoded:
+            result = result.decode('utf-8')
         document.body[i : j+1] = result
         i = i + 1
 
