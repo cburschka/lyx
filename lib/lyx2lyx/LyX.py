@@ -447,8 +447,8 @@ class LyX_base:
         else:
             header = self.header
 
-        for line in header + [''] + self.body:
-            self.output.write(line+u"\n")
+        for line in header + [u''] + self.body:
+            self.output.write(line+u'\n')
 
 
     def choose_output(self, output):

@@ -33,8 +33,6 @@ from parser_tools import (del_token, del_value, del_complete_lines,
 
 from lyx2lyx_tools import (add_to_preamble, put_cmd_in_ert, revert_font_attrs,
                            insert_to_preamble, latex_length)
-#  get_ert, lyx2latex, lyx2verbatim, length_in_bp, convert_info_insets
-#  revert_flex_inset, hex2ratio, str2bool
 
 ####################################################################
 # Private helper functions
