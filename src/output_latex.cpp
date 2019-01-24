@@ -1279,9 +1279,9 @@ void TeXOnePar(Buffer const & buf,
 				// do nothing at the end of child documents
 				if (maintext && buf.masterBuffer() != &buf)
 					break;
-				// end of main text
+				// end of main text: also insert a \clearpage (see #5386)
 				if (maintext) {
-					os << "\n\\end{CJK}\n";
+					os << "\n\\clearpage\n\\end{CJK}\n";
 				// end of an inset
 				} else
 					os << "\\end{CJK}";
