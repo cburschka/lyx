@@ -84,9 +84,10 @@ export/export/latex/fa-OT1_pdf2
 export/examples/ja/multilingual_.*_systemF
 #
 # Noto Fonts not found with LuaTeX.
-# "Hand-compiling" with XeTeX works but the test still fails:
-export/doc/zh_CN/Intro_.*_systemF
-export/doc/zh_CN/Tutorial_.*_systemF
+export/doc/zh_CN/Intro_(dvi3|pdf5)_systemF
+export/doc/zh_CN/Tutorial_(dvi3|pdf5)_systemF
+# "Hand-compiling" with XeTeX works but the test fails here (G.Milde)
+#export/doc/zh_CN/Tutorial_pdf4_systemF
 
 # CJK for multilingual documents:
 #
