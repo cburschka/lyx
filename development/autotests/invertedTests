@@ -82,12 +82,6 @@ export/export/latex/fa-OT1_pdf2
 # -> Missing character (Greek letter omikron with tonos),
 #    suboptimal character spacing in non-Japanese text parts.
 export/examples/ja/multilingual_.*_systemF
-#
-# Noto Fonts not found with LuaTeX.
-export/doc/zh_CN/Intro_(dvi3|pdf5)_systemF
-export/doc/zh_CN/Tutorial_(dvi3|pdf5)_systemF
-# "Hand-compiling" with XeTeX works but the test fails here (G.Milde)
-#export/doc/zh_CN/Tutorial_pdf4_systemF
 
 # CJK for multilingual documents:
 #
