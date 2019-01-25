@@ -125,6 +125,19 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 	if (parlist.empty())
 		return PasteReturnValue(pit, pos, need_update);
 
+	// Check whether we paste into an inset that does not
+	// produce output (needed for label duplicate check)
+	bool in_active_inset = cur.paragraph().inInset().producesOutput();
+	if (in_active_inset) {
+		for (size_type sl = 0 ; sl < cur.depth() ; ++sl) {
+			Paragraph const & outer_par = cur[sl].paragraph();
+			if (!outer_par.inInset().producesOutput()) {
+				in_active_inset = false;
+				break;
+			}
+		}
+	}
+
 	InsetText * target_inset = cur.inset().asInsetText();
 	if (!target_inset) {
 		InsetTabular * it = cur.inset().asInsetTabular();
@@ -305,7 +318,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 					continue;
 				InsetLabel * lab = labels[i];
 				docstring const oldname = lab->getParam("name");
-				lab->updateLabel(oldname);
+				lab->updateLabel(oldname, in_active_inset);
 				// We need to update the buffer reference cache.
 				need_update = true;
 				docstring const newname = lab->getParam("name");
@@ -336,7 +349,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 			// check for duplicates
 			InsetLabel & lab = static_cast<InsetLabel &>(*it);
 			docstring const oldname = lab.getParam("name");
-			lab.updateLabel(oldname);
+			lab.updateLabel(oldname, in_active_inset);
 			// We need to update the buffer reference cache.
 			need_update = true;
 			docstring const newname = lab.getParam("name");

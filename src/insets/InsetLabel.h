@@ -32,7 +32,7 @@ public:
 	///
 	docstring const & prettyCounter() const { return pretty_counter_; }
 	/// Updates only the label string, doesn't handle undo nor references.
-	void updateLabel(docstring const & new_label);
+	void updateLabel(docstring const & new_label, bool const active = true);
 	/// Updates the label and the references to it.
 	/// Will also handle undo/redo if \p cursor is passed.
 	void updateLabelAndRefs(docstring const & new_label, Cursor * cursor = 0);

@@ -82,10 +82,11 @@ void InsetLabel::uniqueLabel(docstring & label) const
 }
 
 
-void InsetLabel::updateLabel(docstring const & new_label)
+void InsetLabel::updateLabel(docstring const & new_label, bool const active)
 {
 	docstring label = new_label;
-	uniqueLabel(label);
+	if (active)
+		uniqueLabel(label);
 	setParam("name", label);
 }
 
