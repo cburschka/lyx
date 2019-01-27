@@ -71,7 +71,7 @@ def main():
     parser.add_argument("-l", "--list", action="store_true",
                       help = "List all available formats and supported versions.")
     parser.add_argument("-n", "--try-hard", action="store_true",
-                      help = "Try hard (ignore any convertion errors).")
+                      help = "Try hard (ignore any conversion errors).")
     parser.add_argument("-s", "--systemlyxdir", type=cmd_arg, dest= "systemlyxdir",
                       help= "LyX system directory for conversion from" 
 		      	    " version 489 or older.")
