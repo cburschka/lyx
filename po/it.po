@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-01-05 19:36+0100\n"
-"PO-Revision-Date: 2019-01-05 20:46+0100\n"
+"POT-Creation-Date: 2019-01-27 11:23+0100\n"
+"PO-Revision-Date: 2019-01-27 11:33+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "Language: it\n"
@@ -638,7 +638,7 @@ msgid "Add a new branch to the list"
 msgstr "Aggiunge un nuovo ramo alla lista"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:113 src/frontends/qt4/ui/CitationUi.ui:146
-#: src/frontends/qt4/ui/IndicesUi.ui:134 src/CutAndPaste.cpp:431
+#: src/frontends/qt4/ui/IndicesUi.ui:134 src/CutAndPaste.cpp:444
 msgid "&Add"
 msgstr "A&ggiungi"
 
@@ -684,7 +684,7 @@ msgid "Add A&ll"
 msgstr "Aggiungi &tutti"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:58 src/Buffer.cpp:1439
-#: src/Buffer.cpp:4731 src/Buffer.cpp:4795 src/LyXVC.cpp:114 src/LyXVC.cpp:304
+#: src/Buffer.cpp:4731 src/Buffer.cpp:4821 src/LyXVC.cpp:114 src/LyXVC.cpp:304
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:247 src/frontends/qt4/GuiDocument.cpp:2474
 #: src/frontends/qt4/GuiParagraph.cpp:164 src/frontends/qt4/GuiPrefs.cpp:3351
@@ -10198,8 +10198,8 @@ msgstr "Barre di modifica"
 
 #: lib/layouts/changebars.module:7
 msgid ""
-"Enables LyX to add vertical change bars in the margin of PDF output when "
-"change tracking is turned on and pdflatex output format is chosen."
+"Enables LyX to add vertical change bars in the margin of PDF output when Show "
+"Changes in Output is turned on and pdflatex output format is chosen."
 msgstr ""
 "Consente di aggiungere barre verticali di modifica a margine del file PDF "
 "quando il tracciamento modifiche è attivato ed il formato di uscita è "
@@ -18179,67 +18179,67 @@ msgstr "Cirillico (KOI8-U)"
 msgid "Cyrillic (pt 154)"
 msgstr "Cirillico (pt 154)"
 
-#: lib/encodings:177
-msgid "Chinese (traditional) (Big5)"
-msgstr "Cinese (tradizionale) (Big5)"
-
-#: lib/encodings:187
-msgid "Japanese (CJK) (SJIS)"
-msgstr "Giapponese (CJK) (SJIS)"
-
-#: lib/encodings:194
-msgid "Chinese (simplified) (EUC-CN)"
-msgstr "Cinese (semplificato) (EUC-CN)"
-
-#: lib/encodings:198
-msgid "Chinese (simplified) (GBK)"
-msgstr "Cinese (semplificato) (GBK)"
-
-#: lib/encodings:202
-msgid "Japanese (CJK) (JIS)"
-msgstr "Giapponese (CJK) (JIS)"
-
-#: lib/encodings:206
-msgid "Korean (EUC-KR)"
-msgstr "Coreano (EUC-KR)"
-
-#: lib/encodings:210
-msgid "Unicode (CJK) (utf8)"
-msgstr "Unicode (CJK) (utf8)"
-
-#: lib/encodings:214
-msgid "Chinese (traditional) (EUC-TW)"
-msgstr "Cinese (tradizionale) (EUC-TW)"
-
-#: lib/encodings:218
-msgid "Japanese (CJK) (EUC-JP)"
-msgstr "Giapponese (CJK) (EUC-JP)"
-
-#: lib/encodings:225
-msgid "Japanese (pLaTeX) (EUC-JP)"
-msgstr "Giapponese (pLaTeX) (EUC-JP)"
-
-#: lib/encodings:227
-msgid "Japanese (pLaTeX) (JIS)"
-msgstr "Giapponese (pLaTeX) (JIS)"
-
-#: lib/encodings:229
-msgid "Japanese (pLaTeX) (SJIS)"
-msgstr "Giapponese (pLaTeX) (SJIS)"
-
-#: lib/encodings:231
-msgid "Japanese (pLaTeX) (UTF8)"
-msgstr "Giapponese (pLaTeX) (EUC-JP)"
-
-#: lib/encodings:238
+#: lib/encodings:170
 msgid "Thai (TIS 620-0)"
 msgstr "Tailandese (TIS 620-0)"
 
-#: lib/encodings:243
+#: lib/encodings:182
+msgid "Chinese (traditional) (Big5)"
+msgstr "Cinese (tradizionale) (Big5)"
+
+#: lib/encodings:192
+msgid "Japanese (CJK) (SJIS)"
+msgstr "Giapponese (CJK) (SJIS)"
+
+#: lib/encodings:199
+msgid "Chinese (simplified) (EUC-CN)"
+msgstr "Cinese (semplificato) (EUC-CN)"
+
+#: lib/encodings:203
+msgid "Chinese (simplified) (GBK)"
+msgstr "Cinese (semplificato) (GBK)"
+
+#: lib/encodings:207
+msgid "Japanese (CJK) (JIS)"
+msgstr "Giapponese (CJK) (JIS)"
+
+#: lib/encodings:211
+msgid "Korean (EUC-KR)"
+msgstr "Coreano (EUC-KR)"
+
+#: lib/encodings:215
+msgid "Unicode (CJK) (utf8)"
+msgstr "Unicode (CJK) (utf8)"
+
+#: lib/encodings:219
+msgid "Chinese (traditional) (EUC-TW)"
+msgstr "Cinese (tradizionale) (EUC-TW)"
+
+#: lib/encodings:223
+msgid "Japanese (CJK) (EUC-JP)"
+msgstr "Giapponese (CJK) (EUC-JP)"
+
+#: lib/encodings:230
+msgid "Japanese (pLaTeX) (EUC-JP)"
+msgstr "Giapponese (pLaTeX) (EUC-JP)"
+
+#: lib/encodings:232
+msgid "Japanese (pLaTeX) (JIS)"
+msgstr "Giapponese (pLaTeX) (JIS)"
+
+#: lib/encodings:234
+msgid "Japanese (pLaTeX) (SJIS)"
+msgstr "Giapponese (pLaTeX) (SJIS)"
+
+#: lib/encodings:236
+msgid "Japanese (pLaTeX) (UTF8)"
+msgstr "Giapponese (pLaTeX) (EUC-JP)"
+
+#: lib/encodings:242
 msgid "Unicode (XeTeX) (utf8)"
 msgstr "Unicode (XeTeX) (utf8)"
 
-#: lib/encodings:247
+#: lib/encodings:246
 msgid "ASCII"
 msgstr "ASCII"
 
@@ -25512,19 +25512,19 @@ msgstr "Metafile di Windows"
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
 
-#: lib/configure.py:1101
+#: lib/configure.py:1096
 msgid "gnuplot"
 msgstr "gnuplot"
 
-#: lib/configure.py:1101
+#: lib/configure.py:1096
 msgid "gnuplot|Gnuplot"
 msgstr "gnuplot|Gnuplot"
 
-#: lib/configure.py:1174
+#: lib/configure.py:1169
 msgid "LyX Archive (zip)"
 msgstr "Archivio LyX (zip)"
 
-#: lib/configure.py:1177
+#: lib/configure.py:1172
 msgid "LyX Archive (tar.gz)"
 msgstr "Archivio LyX (tar.gz)"
 
@@ -25697,7 +25697,7 @@ msgstr ""
 "Il file %1$s è stato generato da una versione\n"
 "più recente di LyX e lo script lyx2lyx non è riuscito a convertirlo."
 
-#: src/Buffer.cpp:1426 src/Buffer.cpp:4741 src/Buffer.cpp:4804
+#: src/Buffer.cpp:1426 src/Buffer.cpp:4741 src/Buffer.cpp:4830
 msgid "File is read-only"
 msgstr "Il file è in sola lettura"
 
@@ -26147,6 +26147,20 @@ msgid "Remove emergency file now?"
 msgstr "Rimuovo la copia di emergenza?"
 
 #: src/Buffer.cpp:4792
+msgid "Can't rename emergency file!"
+msgstr "Impossibile rinominare la copia di emergenza!"
+
+#: src/Buffer.cpp:4793
+msgid ""
+"LyX was unable to rename the emergency file. You should do so manually. "
+"Otherwise, you will be asked about it again the next time you try to load "
+"this file, and may over-write your own work."
+msgstr ""
+"LyX non è riuscito a rinominare la copia di emergenza e quindi bisogna farlo "
+"manualmente. Altrimenti la prossima volta verrà riposta la domanda, col "
+"rischio di sovrascrivere cambiamenti apportati successivamente."
+
+#: src/Buffer.cpp:4818
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -26157,19 +26171,19 @@ msgstr ""
 "\n"
 "Apro la copia di backup?"
 
-#: src/Buffer.cpp:4794
+#: src/Buffer.cpp:4820
 msgid "Load backup?"
 msgstr "Apro backup?"
 
-#: src/Buffer.cpp:4795
+#: src/Buffer.cpp:4821
 msgid "&Load backup"
 msgstr "&Apri backup"
 
-#: src/Buffer.cpp:4795
+#: src/Buffer.cpp:4821
 msgid "Load &original"
 msgstr "Apri &originale"
 
-#: src/Buffer.cpp:4805
+#: src/Buffer.cpp:4831
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -26179,16 +26193,16 @@ msgstr ""
 "lettura.\n"
 "Assicuratevi di salvare il documento con un nome diverso."
 
-#: src/Buffer.cpp:5171 src/insets/InsetCaption.cpp:381
+#: src/Buffer.cpp:5197 src/insets/InsetCaption.cpp:381
 msgid "Senseless!!! "
 msgstr "Non ha senso!!! "
 
-#: src/Buffer.cpp:5391
+#: src/Buffer.cpp:5417
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Il documento %1$s è stato riaperto."
 
-#: src/Buffer.cpp:5394
+#: src/Buffer.cpp:5420
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Non riesco a riaprire il documento %1$s."
@@ -26300,14 +26314,14 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Classe del documento non disponibile"
 
-#: src/BufferParams.cpp:2152 src/Encoding.cpp:246 src/Paragraph.cpp:2812
+#: src/BufferParams.cpp:2152 src/Encoding.cpp:246 src/Paragraph.cpp:2831
 #: src/frontends/qt4/LaTeXHighlighter.cpp:122 src/insets/InsetListings.cpp:246
 #: src/insets/InsetListings.cpp:254 src/insets/InsetListings.cpp:277
 #: src/mathed/MathExtern.cpp:1483
 msgid "LyX Warning: "
 msgstr "Avviso di LyX: "
 
-#: src/BufferParams.cpp:2153 src/Encoding.cpp:247 src/Paragraph.cpp:2813
+#: src/BufferParams.cpp:2153 src/Encoding.cpp:247 src/Paragraph.cpp:2832
 #: src/insets/InsetListings.cpp:247 src/insets/InsetListings.cpp:255
 #: src/mathed/MathExtern.cpp:1484
 msgid "uncodable character"
@@ -27253,7 +27267,7 @@ msgstr ", Cella: "
 msgid ", Position: "
 msgstr ", Posizione: "
 
-#: src/CutAndPaste.cpp:196
+#: src/CutAndPaste.cpp:209
 #, c-format
 msgid ""
 "The character \"%1$s\" is uncodable in this verbatim context and thus has not "
@@ -27262,7 +27276,7 @@ msgstr ""
 "Il carattere \"%1$s\" è intraducibile in questo contesto testuale e quindi "
 "non è stato incollato."
 
-#: src/CutAndPaste.cpp:200
+#: src/CutAndPaste.cpp:213
 #, c-format
 msgid ""
 "The characters \"%1$s\" are uncodable in this verbatim context and thus have "
@@ -27271,11 +27285,11 @@ msgstr ""
 "I caratteri \"%1$s\" sono intraducibili in questo contesto testuale e quindi "
 "non sono stati incollati."
 
-#: src/CutAndPaste.cpp:243
+#: src/CutAndPaste.cpp:256
 msgid "Uncodable content"
 msgstr "Contenuto intraducibile"
 
-#: src/CutAndPaste.cpp:427
+#: src/CutAndPaste.cpp:440
 #, c-format
 msgid ""
 "The pasted branch \"%1$s\" is undefined.\n"
@@ -27284,31 +27298,31 @@ msgstr ""
 "Il ramo incollato \"%1$s\" non è definito.\n"
 "Volete aggiungerlo alla lista dei rami del documento?"
 
-#: src/CutAndPaste.cpp:430
+#: src/CutAndPaste.cpp:443
 msgid "Unknown branch"
 msgstr "Ramo sconosciuto"
 
-#: src/CutAndPaste.cpp:431
+#: src/CutAndPaste.cpp:444
 msgid "&Don't Add"
 msgstr "&Non aggiungerlo"
 
-#: src/CutAndPaste.cpp:817 src/Text.cpp:393
+#: src/CutAndPaste.cpp:830 src/Text.cpp:393
 #, c-format
 msgid "Layout `%1$s' was not found."
 msgstr "Layout `%1$s' non trovato."
 
-#: src/CutAndPaste.cpp:818 src/Text.cpp:394
+#: src/CutAndPaste.cpp:831 src/Text.cpp:394
 msgid "Layout Not Found"
 msgstr "Layout non trovato"
 
-#: src/CutAndPaste.cpp:846
+#: src/CutAndPaste.cpp:859
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr ""
 "L'inserto flessibile %1$s non è definito dopo l'aggiornamento del layout `"
 "%2$s'."
 
-#: src/CutAndPaste.cpp:849
+#: src/CutAndPaste.cpp:862
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
@@ -27317,7 +27331,7 @@ msgstr ""
 "L'inserto flessibile %1$s non è definito a causa della conversione del layout "
 "da `%2$s' a `%3$s'."
 
-#: src/CutAndPaste.cpp:854
+#: src/CutAndPaste.cpp:867
 msgid "Undefined flex inset"
 msgstr "Inserto flessibile non definito"
 
@@ -28489,15 +28503,15 @@ msgstr "Ripristino la versione salvata del documento?"
 msgid "&Revert"
 msgstr "&Ripristina"
 
-#: src/Paragraph.cpp:2147
+#: src/Paragraph.cpp:2156
 msgid "Senseless with this layout!"
 msgstr "Non ha senso con questo layout!"
 
-#: src/Paragraph.cpp:2208
+#: src/Paragraph.cpp:2217
 msgid "Alignment not permitted"
 msgstr "Allineamento non consentito"
 
-#: src/Paragraph.cpp:2209
+#: src/Paragraph.cpp:2218
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -33711,7 +33725,7 @@ msgstr ""
 "L'etichetta %1$s esiste già,\n"
 "verrà cambiata in %2$s."
 
-#: src/insets/InsetLabel.cpp:167
+#: src/insets/InsetLabel.cpp:168
 msgid "DUPLICATE: "
 msgstr "DUPLICATA: "
 
@@ -34124,21 +34138,21 @@ msgstr "Pagina usuale e testuale"
 msgid "Ref+Text: "
 msgstr "Riferimento e testo: "
 
-#: src/insets/InsetRef.cpp:481
-msgid "Formatted"
-msgstr "Formattato"
-
-#: src/insets/InsetRef.cpp:481
-msgid "Format: "
-msgstr "Formato: "
-
-#: src/insets/InsetRef.cpp:482 src/mathed/InsetMathRef.cpp:248
+#: src/insets/InsetRef.cpp:481 src/mathed/InsetMathRef.cpp:248
 msgid "Reference to Name"
 msgstr "Riferimento a nome"
 
-#: src/insets/InsetRef.cpp:482 src/mathed/InsetMathRef.cpp:248
+#: src/insets/InsetRef.cpp:481 src/mathed/InsetMathRef.cpp:248
 msgid "NameRef: "
 msgstr "NameRef: "
+
+#: src/insets/InsetRef.cpp:482
+msgid "Formatted"
+msgstr "Formattato"
+
+#: src/insets/InsetRef.cpp:482
+msgid "Format: "
+msgstr "Formato: "
 
 #: src/insets/InsetRef.cpp:483
 msgid "Label Only"
@@ -34580,11 +34594,11 @@ msgstr ""
 "Non riesco ad aprire il documento specificato\n"
 "%1$s."
 
-#: src/output_latex.cpp:1461
+#: src/output_latex.cpp:1479
 msgid "Error in latexParagraphs"
 msgstr "Errore di composizione"
 
-#: src/output_latex.cpp:1462
+#: src/output_latex.cpp:1480
 #, c-format
 msgid ""
 "You are using at least one layout (%1$s) intended for the title, after using "
@@ -34883,11 +34897,11 @@ msgstr ""
 msgid "Fatal Exception!"
 msgstr "Eccezione fatale!"
 
-#: src/support/os_win32.cpp:487
+#: src/support/os_win32.cpp:492
 msgid "System file not found"
 msgstr "File di sistema non trovato"
 
-#: src/support/os_win32.cpp:488
+#: src/support/os_win32.cpp:493
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
@@ -34895,11 +34909,11 @@ msgstr ""
 "Non riesco a caricare shfolder.dll\n"
 "Occorre installarlo."
 
-#: src/support/os_win32.cpp:493
+#: src/support/os_win32.cpp:498
 msgid "System function not found"
 msgstr "Funzione di sistema non trovata"
 
-#: src/support/os_win32.cpp:494
+#: src/support/os_win32.cpp:499
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."
