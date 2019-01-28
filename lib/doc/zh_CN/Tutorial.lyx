@@ -13,7 +13,19 @@
 %\XeTeXlinebreakskip = 0pt plus 1pt 
 \usepackage{ifxetex}
 \ifxetex
-\usepackage{xeCJK}
+  \usepackage{xeCJK}
+  %\setCJKmainfont{WenQuanYi Micro Hei}
+  %\setCJKmonofont{WenQuanYi Micro Hei Mono}
+\fi
+
+% proper line breaking, punctuation kerning and font switching
+% features with LuaTeX
+% see https://tex.stackexchange.com/questions/222980/how-to-use-chinese-with-lualatex
+\usepackage{ifluatex}
+\ifluatex
+  \usepackage{luatexja-fontspec}
+  \setmainjfont[Mapping=tex-text]{WenQuanYi Micro Hei}
+  \setsansjfont[Mapping=tex-text]{WenQuanYi Micro Hei}
 \fi
 \end_preamble
 \options cjk
@@ -23,9 +35,9 @@
 \language_package default
 \inputencoding utf8-cjk
 \fontencoding auto
-\font_roman "default" "Noto Serif CJK SC"
-\font_sans "default" "Noto Sans CJK SC"
-\font_typewriter "default" "Noto Sans Mono CJK SC"
+\font_roman "lmodern" "WenQuanYi Micro Hei"
+\font_sans "default" "WenQuanYi Micro Hei"
+\font_typewriter "default" "WenQuanYi Micro Hei Mono"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false

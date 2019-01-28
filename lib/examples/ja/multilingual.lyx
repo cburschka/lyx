@@ -6,9 +6,26 @@
 \origin /systemlyxdir/examples/ja/
 \textclass article
 \begin_preamble
-% CJKutf8 (4.8.4) maps the Greek letter mu to a mathematical (italic)
-% symbol $\mu$ unless the package "textcomp" is loaded.
-\usepackage{textcomp}
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{xeCJK}
+  \setCJKmainfont{IPAexMincho}
+  \setCJKsansfont{IPAexGothic}
+\fi
+
+% proper line breaking, punctuation kerning and font switching
+% features with LuaTeX
+% see https://tex.stackexchange.com/questions/222980/how-to-use-chinese-with-lualatex
+\usepackage{ifluatex}
+\ifluatex
+  \usepackage{luatexja-fontspec}
+  % use Mainfont (DejaVu) for Greek and Cyrillic:
+  \ltjsetparameter{jacharrange={-2}}
+  %\usepackage[match]{luatexja-fontspec}
+  %\setmainjfont[Mapping=tex-text]{WenQuanYi Micro Hei}
+  %\setsansjfont[Mapping=tex-text]{WenQuanYi Micro Hei}
+  %\setmonojfont{WenQuanYi Micro Hei Mono}
+\fi
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -19,9 +36,9 @@ logicalmkup
 \language_package auto
 \inputencoding utf8-cjk
 \fontencoding auto
-\font_roman "DejaVuSerif" "IPAMincho"
-\font_sans "default" "IPAGothic"
-\font_typewriter "default" "default"
+\font_roman "DejaVuSerif" "DejaVu Serif"
+\font_sans "DejaVuSans" "DejaVu Sans"
+\font_typewriter "DejaVuSansMono" "DejaVu Sans Mono"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -192,6 +209,15 @@ DejaVu
 Libertine
 \emph default
  work).
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\lang english
+Alternatively, you can use non-TeX fonts with xeCJK (XeTeX) or luatexja
+ (LuaTeX).
+ See the document preamble for an example.
 \end_layout
 
 \begin_layout Standard
