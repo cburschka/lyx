@@ -219,32 +219,6 @@ Then, the following should work:
 \begin_layout Enumerate
 Short texts may be written without setting the language (hyphenation will
  be missing and spell-checking complain): Greetings; Grüße; Приветы; χαιρετισμός
-\lang greek
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-CJKutf8 (4.8.4) maps the Greek letter 
-\lang greek
-μ
-\lang english
- to a mathematical (italic) symbol 
-\begin_inset Formula $\mu$
-\end_inset
-
- unless the package 
-\family typewriter
-textcomp
-\family default
- is loaded.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate

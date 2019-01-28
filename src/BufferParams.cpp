@@ -1745,6 +1745,17 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			os << "\\usepackage{unicode-math}\n";
 	}
 
+	// load CJK support package before font selection
+	// (see autotests/export/latex/CJK/micro-sign_utf8-cjk-libertine.lyx)
+	if (!useNonTeXFonts && encoding().package() != Encoding::none
+		&& (encoding().package() == Encoding::CJK || features.mustProvide("CJK"))) {
+		if (encoding().iconvName() == "UTF-8"
+			&& LaTeXFeatures::isAvailable("CJKutf8"))
+			os << "\\usepackage{CJKutf8}\n";
+		else
+			os << "\\usepackage[encapsulated]{CJK}\n";
+	}
+
 	// font selection must be done before loading fontenc.sty
 	string const fonts = loadFonts(features);
 	if (!fonts.empty())
@@ -3240,16 +3251,10 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			else
 				os << "]{inputenc}\n";
 		}
-		if (package == Encoding::CJK || features.mustProvide("CJK")) {
-			if (language->encoding()->name() == "utf8-cjk"
-			    && LaTeXFeatures::isAvailable("CJKutf8"))
-				os << "\\usepackage{CJKutf8}\n";
-			else
-				os << "\\usepackage{CJK}\n";
-		}
 	} else if (inputenc != "default") {
 		switch (encoding().package()) {
 		case Encoding::none:
+		case Encoding::CJK:
 		case Encoding::japanese:
 			break;
 		case Encoding::inputenc:
@@ -3265,22 +3270,6 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			else
 				os << "]{inputenc}\n";
 			break;
-		case Encoding::CJK:
-			if (encoding().name() == "utf8-cjk"
-			    && LaTeXFeatures::isAvailable("CJKutf8"))
-				os << "\\usepackage{CJKutf8}\n";
-			else
-				os << "\\usepackage{CJK}\n";
-			break;
-		}
-		// Load the CJK package if needed by a secondary language.
-		// If the main encoding is some variant of UTF8, use CJKutf8.
-		if (encoding().package() != Encoding::CJK && features.mustProvide("CJK")) {
-			if (language->encoding()->name() == "utf8-cjk"
-			    && LaTeXFeatures::isAvailable("CJKutf8"))
-				os << "\\usepackage{CJKutf8}\n";
-			else
-				os << "\\usepackage{CJK}\n";
 		}
 	}
 }
