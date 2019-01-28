@@ -7,11 +7,11 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language greek
 \language_package default
 \inputencoding utf8-cjk
 \fontencoding auto
-\font_roman "libertine" "default"
+\font_roman "lmodern" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
@@ -66,7 +66,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style french
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -80,104 +80,47 @@
 
 \begin_body
 
-\begin_layout Standard
-For multi-lingual documents with parts in European languages, you can use
- the CJK LaTeX bundle.
- However,
-\end_layout
-
-\begin_layout Itemize
-CJKutf8 defines the MICRO SIGN 
-\begin_inset Quotes eld
-\end_inset
-
-µ
-\begin_inset Quotes erd
-\end_inset
-
- as mathematical symbol (italic) 
-\begin_inset Formula $\mu$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-The packages 
-\begin_inset Quotes eld
-\end_inset
-
-textcomp
-\begin_inset Quotes erd
-\end_inset
-
- and the Greek (LGR) font definition file overwrite this definition with
- a correct symbol, but only if loaded 
-\series bold
-after 
-\series default
-CJKutf8.
-\end_layout
-
-\begin_layout Itemize
-LyX now loads CJKutf8 before the font setup, so that 
-\begin_inset Quotes eld
-\end_inset
-
-libertine
-\begin_inset Quotes erd
-\end_inset
-
- (that internally loads textcomp) does not lead to wrong output.
-\end_layout
-
-\begin_layout Itemize
-A workaround for earlier LyX-versions is adding
-\end_layout
-
-\begin_deeper
-\begin_layout Verbatim
-
-
-\backslash
-DeclareTextSymbolDefault{
-\backslash
-textmu}{TS1}
-\end_layout
-
-\begin_layout Standard
-in the LaTeX preamble.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-Example:
+\begin_layout Enumerate
+This is a Greek document with LGR fonts:
 \end_layout
 
 \begin_layout Enumerate
-In order to include Chinese, Korean, or Japanese text, we use CJKutf8.
+ASCII characters are treated as a Latin transliteration and become Greek
+ letters in the output: Greetings; Grüße
 \end_layout
 
 \begin_layout Enumerate
-Short texts may be written without setting the language (hyphenation will
- be missing and spell-checking complain): Greetings; Grüße; Приветы; χαιρετισμός
-, 迎接.
+Non-ASCII works fine: Приветы; χαιρετισμός, 迎接.
 \end_layout
 
 \begin_layout Enumerate
-Setting the correct language does not change the appearance of the letter
- MU:
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-
+Setting the correct language does help: 
+\lang english
+Greetings;
 \lang ngerman
-Griechisch: 
-\lang greek
-χαιρετισμός
+ Grüße
+\end_layout
+
+\begin_layout Enumerate
+However, not with CJK languages (that are not given
+\emph on
+ Babel 
+\emph default
+language tags):
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang chinese-simplified
+Chinesisch: 你还需要关心什么东西应该出现在页面上的什么位置；强调某处文本就是改变一下字体。这就是所见即所得的字处理软件的哲学根基（WYSIWYG：
+ What You See Is What You Get）。不幸的是它常常变为“所见到的就是你的所有”。
 \end_layout
 
 \end_deeper
+\begin_layout Enumerate
+This is a pity
+\end_layout
+
 \end_body
 \end_document

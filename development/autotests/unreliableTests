@@ -117,10 +117,19 @@ export/templates/acmart_dvi.*
 #export/templates/acmart_ps # not tested by ctest autotests
 export/templates/acmart_pdf
 
-# lyx2lyx back-conversion of "Date" info-inset writes 
+# lyx2lyx back-conversion of "Date" info-inset writes
 # the name of the day in English instead of Japanese.
 export/examples/ja/multilingual_lyx.*
 
 # CJKutf8 uses $\mu$ for \textmu unless overwritten by textcomp.
 # libertine loads textcomp and is loaded before CJKutf8
 export/export/latex/CJK/micro-sign_utf8-cjk_libertine.*
+
+# No localization of auto-strings with Chinese language:
+export/export/latex/CJK/zh_CN-toc.*
+
+# CJK languages don't change/reset the "language" (which is problematic for
+# documents in a language that uses a non-standard font encoding)
+# In a Greek document, Latin letters in a text part set to "Chinese"
+# come out as Greek letters:
+export/export/latex/CJK/el-zh_CN_utf8-cjk.*

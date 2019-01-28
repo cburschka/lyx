@@ -1,0 +1,54 @@
+%% LyX 2.4.0dev created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[ngerman,greek,russian,english]{article}
+\usepackage{CJKutf8}
+\usepackage{DejaVuSerif}
+\usepackage[T2A,LGR,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+\DeclareRobustCommand*{\lyxarrow}{%
+\@ifstar
+{\leavevmode\,$\triangleleft$\,\allowbreak}
+{\leavevmode\,$\triangleright$\,\allowbreak}}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+For a multi-lingual document, with parts in European languages, you
+can use the CJK LaTeX bundle.
+\begin{enumerate}
+\item \begin{CJK}{UTF8}{min}\LyX ¤ÏÍ¥½¨¤Ê¼è°·ÀâÌÀ½ñ¤òÆ±º­¤·¤Æ¤¤¤Þ¤¹¤Î¤Ç¡¢¤³¤ì¤ò¤ª»È¤¤¤¯¤À¤µ¤¤¡ª¤Þ¤º¤Ï\textsf{¥Ø¥ë¥×\lyxarrow ¤Ï¤¸¤á¤Î°ìÊâ}¤«¤é»Ï¤á¤Æ¤¯¤À¤µ¤¤¡£¤³¤ì¤Ï¡¢³Æ¼è°·ÀâÌÀ½ñ¤ò´Ê·é¤Ë¾Ò²ð¤·¤Æ¤¤¤Þ¤¹¡£¤Ä¤®¤Ë\textsf{¥Ø¥ë¥×\lyxarrow ÆþÌçÊÓ}¤ò¤ªÆÉ¤ß¤Ë¤Ê¤ì¤Ð¡¢\LyX ¤Î»È¤¤Êý¤ò³Ø¤Ö¤³¤È¤¬¤Ç¤­¤Þ¤¹¡£
+\item \end{CJK}\inputencoding{latin9}Short texts may be written without
+setting the language (hyphenation will be missing and spell-checking
+complain): Greetings; Grüße; \textcyrillic{\CYRP\cyrr\cyri\cyrv\cyre\cyrt\cyrery};
+\textgreek{\textLambda\textomicron\textgamma\textomicron\textfinalsigma}
+\item For longer text parts, it is recommended to set the correct language:
+\begin{description}
+\item [{English:}] Greetings from Österreich 5~\textmu m snow.
+\selectlanguage{ngerman}%
+\item [{Deutsch:}] Grüße aus Österreich 5~\textmu m Schnee.
+\item [{Griechisch:}] \foreignlanguage{greek}{\textEta \textbf{\textEpsilon\textlambda\textlambda\'\textalpha\textdelta\textalpha}
+(\textsigma\texttau\texteta\textnu \textkappa\textalpha\texttheta\textalpha\textrho\textepsilon\'\textupsilon\textomicron\textupsilon\textsigma\textalpha
+\textEpsilon\textlambda\textlambda\'\textalpha\textfinalsigma), \textsigma\textupsilon\textnu\texttau\textalpha\textgamma\textmu\textalpha\texttau\textiota\textkappa\'\textomicron
+\'\textomicron\textnu\textomicron\textmu\textalpha \textEpsilon\textlambda\textlambda\texteta\textnu\textiota\textkappa\'\texteta
+\textDelta\texteta\textmu\textomicron\textkappa\textrho\textalpha\texttau\'\textiota\textalpha,
+\textepsilon\'\textiota\textnu\textalpha\textiota \textchi\'\textomega\textrho\textalpha
+\texttau\texteta\textfinalsigma \textnu\textomicron\texttau\textiota\textomicron\textalpha\textnu\textalpha\texttau\textomicron\textlambda\textiota\textkappa\'\texteta\textfinalsigma
+\textEpsilon\textupsilon\textrho\'\textomega\textpi\texteta\textfinalsigma
+\textsigma\texttau\textomicron \textnu\textomicron\texttau\textiota\'\textomicron\texttau\textepsilon\textrho\textomicron
+\'\textalpha\textkappa\textrho\textomicron \texttau\texteta\textfinalsigma
+\textBeta\textalpha\textlambda\textkappa\textalpha\textnu\textiota\textkappa\'\texteta\textfinalsigma
+\textchi\textepsilon\textrho\textsigma\textomicron\textnu\'\texteta\textsigma\textomicron\textupsilon.}
+\item [{Russisch:}] \foreignlanguage{russian}{\CYRP\cyrr\cyri\cyrv\cyre\cyrt
+\cyrs \textbf{\cyrn\cyro\cyrv\cyrery\cyrm} \cyrg\cyro\cyrd\cyro\cyrm!
+\CYRU \cyrn\cyra\cyrs \cyrerev\cyrs\cyrt\cyrsftsn 5~\textmu m \CYRS\cyrn\cyre\cyrg.}\selectlanguage{english}%
+\end{description}
+\end{enumerate}
+
+\end{document}

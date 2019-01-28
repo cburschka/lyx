@@ -11,7 +11,7 @@
 \language_package default
 \inputencoding utf8-cjk
 \fontencoding auto
-\font_roman "libertine" "default"
+\font_roman "lmodern" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
@@ -80,102 +80,42 @@
 
 \begin_body
 
-\begin_layout Standard
-For multi-lingual documents with parts in European languages, you can use
- the CJK LaTeX bundle.
- However,
-\end_layout
-
-\begin_layout Itemize
-CJKutf8 defines the MICRO SIGN 
+\begin_layout Enumerate
+This is an English document with CJK text parts; 
 \begin_inset Quotes eld
 \end_inset
 
-µ
+inputencoding
 \begin_inset Quotes erd
 \end_inset
 
- as mathematical symbol (italic) 
-\begin_inset Formula $\mu$
-\end_inset
-
-.
+ is cjk-utf8.
 \end_layout
 
-\begin_layout Itemize
-The packages 
-\begin_inset Quotes eld
-\end_inset
-
-textcomp
-\begin_inset Quotes erd
-\end_inset
-
- and the Greek (LGR) font definition file overwrite this definition with
- a correct symbol, but only if loaded 
-\series bold
-after 
-\series default
-CJKutf8.
-\end_layout
-
-\begin_layout Itemize
-LyX now loads CJKutf8 before the font setup, so that 
-\begin_inset Quotes eld
-\end_inset
-
-libertine
-\begin_inset Quotes erd
-\end_inset
-
- (that internally loads textcomp) does not lead to wrong output.
-\end_layout
-
-\begin_layout Itemize
-A workaround for earlier LyX-versions is adding
+\begin_layout Enumerate
+Short texts in other languages: Grüße; Приветы; χαιρετισμός, 迎接.
 \end_layout
 
 \begin_deeper
-\begin_layout Verbatim
+\begin_layout Standard
+The last paragraph is Standard and nested in an environment.
+ LaTeX complains:
+\begin_inset Newline newline
+\end_inset
 
+! LaTeX Error: 
+\backslash
+begin{enumerate} on input line 27 ended by 
+\backslash
+end{CJK}.
+\begin_inset Newline newline
+\end_inset
 
-\backslash
-DeclareTextSymbolDefault{
-\backslash
-textmu}{TS1}
+The output is OK.
 \end_layout
 
 \begin_layout Standard
-in the LaTeX preamble.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-Example:
-\end_layout
-
-\begin_layout Enumerate
-In order to include Chinese, Korean, or Japanese text, we use CJKutf8.
-\end_layout
-
-\begin_layout Enumerate
-Short texts may be written without setting the language (hyphenation will
- be missing and spell-checking complain): Greetings; Grüße; Приветы; χαιρετισμός
-, 迎接.
-\end_layout
-
-\begin_layout Enumerate
-Setting the correct language does not change the appearance of the letter
- MU:
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-
-\lang ngerman
-Griechisch: 
-\lang greek
-χαιρετισμός
+We must not close the CJK environment in a nested context.
 \end_layout
 
 \end_deeper
