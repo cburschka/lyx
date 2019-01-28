@@ -780,30 +780,6 @@ bool Text::cursorDownParagraph(Cursor & cur)
 }
 
 
-namespace {
-// fix the cursor `cur' after characters has been deleted at `where'
-// position. Called by deleteEmptyParagraphMechanism
-void fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where,
-						  pos_type from, pos_type to)
-{
-	// Do nothing if cursor is not in the paragraph where the
-	// deletion occurred,
-	if (cur.pit() != where.pit())
-		return;
-
-	// If cursor position is after the deletion place update it
-	if (cur.pos() > from)
-		cur.pos() = max(from, cur.pos() - (to - from));
-
-	// Check also if we don't want to set the cursor on a spot behind the
-	// pagragraph because we erased the last character.
-	if (cur.pos() > cur.lastpos())
-		cur.pos() = cur.lastpos();
-}
-
-}
-
-
 bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		Cursor & old, bool & need_anchor_change)
 {
@@ -849,34 +825,51 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 	// them, but only if the cursor has really moved.
 	if (!same_par_pos) {
 		// find range of spaces around cursors
-		int from = old.pos();
+		pos_type from = old.pos();
 		while (from > 0
 		       && oldpar.isLineSeparator(from - 1)
 		       && !oldpar.isDeleted(from - 1))
 			--from;
-		int to = old.pos();
+		pos_type to = old.pos();
 		while (to < oldpar.size() - 1
 		       && oldpar.isLineSeparator(to)
 		       && !oldpar.isDeleted(to))
 			++to;
 
+		int num_spaces = to - from;
+
 		// If we are not at the extremity of the paragraph, keep one space
 		if (from != to && from > 0 && to < oldpar.size())
-			++from;
+			--num_spaces;
 
-		if (same_par && cur.pos() >= from && cur.pos() < to)
-			++from;
+		// If cursor is inside range, keep one additional space
+		if (same_par && cur.pos() > from && cur.pos() < to)
+			--num_spaces;
 
 		// Remove spaces and adapt cursor.
-		if (from < to) {
-			oldpar.eraseChars(from, to, cur.buffer()->params().track_changes);
-// FIXME: This will not work anymore when we have multiple views of the same buffer
-// In this case, we will have to correct also the cursors held by
-// other bufferviews. It will probably be easier to do that in a more
-// automated way in CursorSlice code. (JMarc 26/09/2001)
-			// correct all cursor parts
+		if (num_spaces > 0) {
+			// delete first spaces marked as inserted
+			int pos = from;
+			int ns = num_spaces;
+			while (pos < to && ns > 0) {
+				Change const & change = oldpar.lookupChange(pos);
+				if (change.inserted() && change.currentAuthor()) {
+					oldpar.eraseChar(pos, cur.buffer()->params().track_changes);
+					--ns;
+					--to;
+				} else
+					++pos;
+			}
+
+			// Then remove remaining spaces
+			oldpar.eraseChars(from, from + ns, cur.buffer()->params().track_changes);
+			// correct cur position
+			// FIXME: there can be other cursors pointing there, we should update them
 			if (same_par) {
-				fixCursorAfterDelete(cur[depth], old.top(), from, to);
+				if (cur[depth].pos() >= to)
+					cur[depth].pos() -= num_spaces;
+				else if (cur[depth].pos() > from)
+					cur[depth].pos() = min(from + 1, old.lastpos());
 				need_anchor_change = true;
 			}
 			return true;
