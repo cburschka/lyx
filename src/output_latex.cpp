@@ -1272,9 +1272,10 @@ void TeXOnePar(Buffer const & buf,
 	}
 
 	// If this is the last paragraph, close the CJK environment
-	// if necessary. If it's an environment, we'll have to \end that first.
-	// FIXME: don't close if the paragraph is nested in an environment
-	if (runparams.isLastPar && !style.isEnvironment()) {
+	// if necessary. If it's an environment or nested in an environment,
+	// we'll have to \end that first.
+	if (runparams.isLastPar && !style.isEnvironment()
+		&& par.params().depth() < 1) {
 		switch (state->open_encoding_) {
 			case CJK: {
 				// do nothing at the end of child documents
@@ -1631,7 +1632,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 	if (oldEnc.package() == Encoding::none || newEnc.package() == Encoding::none)
 		return make_pair(false, 0);
 
-	// change encoding (not required for CJK with UTF8)
+	// change encoding (not required with UTF8)
 	if (bparams.encoding().iconvName() != "UTF-8") {
 		LYXERR(Debug::LATEX, "Changing LaTeX encoding from "
 			   << oldEnc.name() << " to " << newEnc.name());

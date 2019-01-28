@@ -91,9 +91,6 @@ export/examples/ja/multilingual_.*_systemF
 # but that is not so easy if the main language does not require CJK:
 export/export/latex/CJK/en-de-el-ru-.*_utf8_pdf2
 #
-# CJK environment closes too early when the final paragraph is nested:
-export/export/latex/CJK/final-paragraph-nested_utf8-cjk_pdf2
-#
 # "language default" legacy encodings fail (missing fonts)
 export/export/latex/CJK/ko_default_pdf2
 export/export/latex/CJK/zh_CN_default_pdf2
