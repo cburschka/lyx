@@ -877,7 +877,7 @@ void TeXOnePar(Buffer const & buf,
 		lang_end_command = "}";
 		lang_command_termination.clear();
 	}
-	
+
 	bool const localswitch_needed = localswitch && par_lang != outer_lang;
 
 	// localswitches need to be closed and reopened at each par
@@ -890,7 +890,7 @@ void TeXOnePar(Buffer const & buf,
 		if (!localswitch
 		    && (!using_begin_end || langOpenedAtThisLevel(state))
 		    && !lang_end_command.empty()
-		    && prev_lang != outer_lang 
+		    && prev_lang != outer_lang
 		    && !prev_lang.empty()
 		    && (!using_begin_end || !style.isEnvironment())) {
 			os << from_ascii(subst(lang_end_command,
@@ -1273,6 +1273,7 @@ void TeXOnePar(Buffer const & buf,
 
 	// If this is the last paragraph, close the CJK environment
 	// if necessary. If it's an environment, we'll have to \end that first.
+	// FIXME: don't close if the paragraph is nested in an environment
 	if (runparams.isLastPar && !style.isEnvironment()) {
 		switch (state->open_encoding_) {
 			case CJK: {
@@ -1563,7 +1564,7 @@ void latexParagraphs(Buffer const & buf,
 	// If the last paragraph is an environment, we'll have to close
 	// CJK at the very end to do proper nesting.
 	if (maintext && !is_child && state->open_encoding_ == CJK) {
-		os << "\\end{CJK}\n";
+		os << "\\clearpage\n\\end{CJK}\n";
 		state->open_encoding_ = none;
 	}
 	// Likewise for polyglossia or when using begin/end commands
@@ -1608,8 +1609,9 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 	// except if we use CJKutf8
 	bool const from_to_cjk =
 		((oldEnc.package() == Encoding::CJK && newEnc.package() != Encoding::CJK)
-		|| (oldEnc.package() != Encoding::CJK && newEnc.package() == Encoding::CJK))
-		&& (bparams.encoding().name() != "utf8-cjk" || !LaTeXFeatures::isAvailable("CJKutf8"));
+		 || (oldEnc.package() != Encoding::CJK && newEnc.package() == Encoding::CJK))
+		&& ((bparams.encoding().name() != "utf8-cjk" && bparams.encoding().name() != "utf8")
+			|| !LaTeXFeatures::isAvailable("CJKutf8"));
 	if (!force && !from_to_cjk
 	    && ((bparams.inputenc != "auto" && bparams.inputenc != "default") || moving_arg))
 		return make_pair(false, 0);
@@ -1623,17 +1625,20 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 	// This does of course only work in special cases (e.g. switch from
 	// tis620-0 to latin1, but the text in latin1 contains ASCII only),
 	// but it is the best we can do
-	// 
+	//
 	// 2019-01-08 Possibly no longer required since tis620-0 is supported
 	// by inputenc (but check special encodings "utf8-plain" and "default").
 	if (oldEnc.package() == Encoding::none || newEnc.package() == Encoding::none)
 		return make_pair(false, 0);
 
-	LYXERR(Debug::LATEX, "Changing LaTeX encoding from "
-		<< oldEnc.name() << " to " << newEnc.name());
-	os << setEncoding(newEnc.iconvName());
-	if (bparams.inputenc == "default")
-		return make_pair(true, 0);
+	// change encoding (not required for CJK with UTF8)
+	if (bparams.encoding().iconvName() != "UTF-8") {
+		LYXERR(Debug::LATEX, "Changing LaTeX encoding from "
+			   << oldEnc.name() << " to " << newEnc.name());
+		os << setEncoding(newEnc.iconvName());
+		if (bparams.inputenc == "default")
+		  return make_pair(true, 0);
+	}
 
 	docstring const inputenc_arg(from_ascii(newEnc.latexName()));
 	OutputState * state = getOutputState();
@@ -1694,7 +1699,6 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 	}
 	// Dead code to avoid a warning:
 	return make_pair(true, 0);
-
 }
 
 } // namespace lyx
