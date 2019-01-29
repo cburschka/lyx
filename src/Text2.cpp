@@ -866,11 +866,12 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 			++to;
 
 		// If we are not at the start of the paragraph, keep one space
-		if (from != to && from > 0)
-			++from;
-
-		if (same_par && cur.pos() >= from && cur.pos() < to)
-			++from;
+		if (from != to && from > 0) {
+			--to;
+			// if the new cursor is inside the sequence of spaces, keep one more space
+			if (same_par && cur.pos() > from && cur.pos() <= to)
+				--to;
+		}
 
 		// Remove spaces and adapt cursor.
 		if (from < to) {
