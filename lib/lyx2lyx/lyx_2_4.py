@@ -220,7 +220,8 @@ def convert_fonts(document, fm):
         if j != -1:
             val = get_value(document.header, ft, j)
             vals = val.split()
-            document.header[j] = ft + ' "' + fn + '" ' + vals[1]
+            vals[0] = '"' + fn + '"'
+            document.header[j] = ft + ' ' + ' '.join(vals)
 
 def revert_fonts(document, fm, fontmap):
     " Revert native font definition to LaTeX "
@@ -251,7 +252,8 @@ def revert_fonts(document, fm, fontmap):
         val = fontinfo.package
         if not val in fontmap:
             fontmap[val] = []
-        document.header[i] = ft + ' "default" ' + words[1]
+        words[0] = '"default"'
+        document.header[i] = ft + ' ' + ' '.join(words) 
         if fontinfo.scaleopt != None:
             xval =  get_value(document.header, "\\font_" + fontinfo.scaletype + "_scale", 0)
             mo = rscales.search(xval)
