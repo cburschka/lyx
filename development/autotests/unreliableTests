@@ -121,9 +121,10 @@ export/templates/acmart_pdf
 # the name of the day in English instead of Japanese.
 export/examples/ja/multilingual_lyx.*
 
-# No localization of auto-strings with Chinese language (LyXHTML is OK)
+# No localization of auto-strings with Chinese language under 8-bit TeX
+# (ctex font issue with texlive-lang-chinese (from Debian) under pdflatex):
 export/export/latex/CJK/zh_CN-toc.*
-export/doc/zh_CN/(Intro|Tutorial)_(dvi|pdf).*
+export/doc/zh_CN/(Intro|Tutorial)_(dvi|pdf).?
 
 # Missing Chinese characters in the DVI (LuaTex)
 export/doc/zh_CN/(Intro|Tutorial)_dvi3_systemF

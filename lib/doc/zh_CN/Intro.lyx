@@ -6,20 +6,11 @@
 \origin /systemlyxdir/doc/zh_CN/
 \textclass article
 \begin_preamble
-\usepackage{ifxetex}
-\ifxetex
-\usepackage{xeCJK}
-\fi
-
-% proper line breaking, punctuation kerning and font switching
-% features with LuaTeX
-% see https://tex.stackexchange.com/questions/222980/how-to-use-chinese-with-lualatex
-\usepackage{ifluatex}
-\ifluatex
-  \usepackage{luatexja-fontspec}
-  \setmainjfont[Mapping=tex-text]{WenQuanYi Micro Hei}
-  \setsansjfont[Mapping=tex-text]{WenQuanYi Micro Hei}
-\fi
+% Chinese localization
+\@ifpackageloaded{fontspec}%
+{\usepackage{ctex}}% ctex with non-TeX fonts
+{%\usepackage[UTF8]{ctex}% error with font setup (missing font?)
+}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -1498,27 +1489,6 @@ literal "false"
 
 \begin_layout Standard
 无论你修改文档的想法是什么，只要它能够改善文档质量，我们都是乐于接受的。
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-The following clearpage is required to avoid compilation errors at some
- installations for an unknown reason.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
 \end_layout
 
 \end_body

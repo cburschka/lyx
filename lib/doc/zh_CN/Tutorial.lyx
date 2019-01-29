@@ -6,27 +6,11 @@
 \origin /systemlyxdir/doc/zh_CN/
 \textclass book
 \begin_preamble
-%\usepackage{fontspec}
-%\setromanfont{AR PL ShanHeiSun Uni}%字体来自Adobe Reader 8.0 OpenType，可以选用任何系统已有的字体
-%中文断行 
-%\XeTeXlinebreaklocale "zh"
-%\XeTeXlinebreakskip = 0pt plus 1pt 
-\usepackage{ifxetex}
-\ifxetex
-  \usepackage{xeCJK}
-  %\setCJKmainfont{WenQuanYi Micro Hei}
-  %\setCJKmonofont{WenQuanYi Micro Hei Mono}
-\fi
-
-% proper line breaking, punctuation kerning and font switching
-% features with LuaTeX
-% see https://tex.stackexchange.com/questions/222980/how-to-use-chinese-with-lualatex
-\usepackage{ifluatex}
-\ifluatex
-  \usepackage{luatexja-fontspec}
-  \setmainjfont[Mapping=tex-text]{WenQuanYi Micro Hei}
-  \setsansjfont[Mapping=tex-text]{WenQuanYi Micro Hei}
-\fi
+% Chinese localization
+\@ifpackageloaded{fontspec}%
+{\usepackage{ctex}}% ctex with non-TeX fonts
+{%\usepackage[UTF8]{ctex}% error with font setup (missing font?)
+}
 \end_preamble
 \options cjk
 \use_default_options true
@@ -2961,22 +2945,6 @@ Bib\SpecialChar TeX
  文档中发生错误的地方，并显示详细 \SpecialChar LaTeX
 
  错误信息。
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-clearpage
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_body
