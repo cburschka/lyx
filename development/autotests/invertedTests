@@ -60,6 +60,10 @@ export/export/latex/iconv-error-nomenclature_pdf2
 check_load/templates/acmart
 export/templates/acmart_lyx23
 
+# lyx2lyx generates an invalid file when forward-converting a file with
+# whitespace in the "non-tex font" setting:
+export/examples/ja/multilingual_lyx.*
+
 # Failing LyX2LyX conversions for old versions: 
 #
 # "beamer" lyx2lyx fails sometimes for versions < 2.1
@@ -77,11 +81,6 @@ export/examples/(|es/)modernCV_lyx(16|20)
 # Farsi font encoding LAE should be added also to custom font encoding
 # (similar to the Greek font encoding LGR).
 export/export/latex/fa-OT1_pdf2
-
-# No "system font" (fontspec) setup for multiple scripts (CJK+Latin+Greek)
-# -> Missing character (Greek letter omikron with tonos),
-#    suboptimal character spacing in non-Japanese text parts.
-export/examples/ja/multilingual_.*_systemF
 
 # CJK for multilingual documents:
 #

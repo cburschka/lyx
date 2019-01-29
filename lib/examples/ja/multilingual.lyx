@@ -6,6 +6,11 @@
 \origin /systemlyxdir/examples/ja/
 \textclass article
 \begin_preamble
+% line breaking, punctuation kerning and font switching features
+% for CJK with non-TeX fonts requires additional packages
+% currently without GUI support:
+
+% with XeTeX, https://ctan.org/pkg/xecjk
 \usepackage{ifxetex}
 \ifxetex
   \usepackage{xeCJK}
@@ -13,8 +18,7 @@
   \setCJKsansfont{IPAexGothic}
 \fi
 
-% proper line breaking, punctuation kerning and font switching
-% features with LuaTeX
+% with LuaTeX, https://www.ctan.org/pkg/luatexja
 % see https://tex.stackexchange.com/questions/222980/how-to-use-chinese-with-lualatex
 \usepackage{ifluatex}
 \ifluatex
