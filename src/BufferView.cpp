@@ -2608,7 +2608,7 @@ bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 		return false;
 
 	bool need_anchor_change = false;
-	bool changed = d->cursor_.text()->deleteEmptyParagraphMechanism(cur, old,
+	bool changed = Text::deleteEmptyParagraphMechanism(cur, old,
 		need_anchor_change);
 
 	if (need_anchor_change)

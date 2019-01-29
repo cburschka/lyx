@@ -779,6 +779,32 @@ bool Text::cursorDownParagraph(Cursor & cur)
 	return updated;
 }
 
+namespace {
+
+void deleteSpaces(Paragraph & par, pos_type const from, pos_type to,
+				  int num_spaces, bool const trackChanges)
+{
+	if (!num_spaces)
+		return;
+
+	// First, delete spaces marked as inserted
+	int pos = from;
+	while (pos < to && num_spaces > 0) {
+		Change const & change = par.lookupChange(pos);
+		if (change.inserted() && change.currentAuthor()) {
+			par.eraseChar(pos, trackChanges);
+			--num_spaces;
+			--to;
+		} else
+			++pos;
+	}
+
+	// Then remove remaining spaces
+	par.eraseChars(from, from + num_spaces, trackChanges);
+}
+
+}
+
 
 bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		Cursor & old, bool & need_anchor_change)
@@ -848,26 +874,14 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 
 		// Remove spaces and adapt cursor.
 		if (num_spaces > 0) {
-			// delete first spaces marked as inserted
-			int pos = from;
-			int ns = num_spaces;
-			while (pos < to && ns > 0) {
-				Change const & change = oldpar.lookupChange(pos);
-				if (change.inserted() && change.currentAuthor()) {
-					oldpar.eraseChar(pos, cur.buffer()->params().track_changes);
-					--ns;
-					--to;
-				} else
-					++pos;
-			}
-
-			// Then remove remaining spaces
-			oldpar.eraseChars(from, from + ns, cur.buffer()->params().track_changes);
+			pos_type const oldsize = oldpar.size();
+			deleteSpaces(oldpar, from, to, num_spaces,
+				cur.buffer()->params().track_changes);
 			// correct cur position
 			// FIXME: there can be other cursors pointing there, we should update them
 			if (same_par) {
 				if (cur[depth].pos() >= to)
-					cur[depth].pos() -= num_spaces;
+					cur[depth].pos() -= oldsize - oldpar.size();
 				else if (cur[depth].pos() > from)
 					cur[depth].pos() = min(from + 1, old.lastpos());
 				need_anchor_change = true;
@@ -952,12 +966,15 @@ void Text::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool tra
 			// empty? We are done
 			if (from == to)
 				break;
-			// if inside the line, keep one space
-			if (from > 0 && to < par.size())
-				++from;
-			// remove the extra spaces
-			if (from < to)
-				par.eraseChars(from, to, trackChanges);
+
+			int num_spaces = to - from;
+
+			// If we are not at the extremity of the paragraph, keep one space
+			if (from != to && from > 0 && to < par.size())
+				--num_spaces;
+
+			// Remove spaces if needed
+			deleteSpaces(par, from , to, num_spaces, trackChanges);
 		}
 
 		// don't delete anything if this is the only remaining paragraph
