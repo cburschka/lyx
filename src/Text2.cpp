@@ -789,7 +789,7 @@ namespace {
 // fix the cursor `cur' after characters has been deleted at `where'
 // position. Called by deleteEmptyParagraphMechanism
 void fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where,
-						  pos_type from, pos_type to)
+                          pos_type from, int num_chars)
 {
 	// Do nothing if cursor is not in the paragraph where the
 	// deletion occurred,
@@ -798,7 +798,7 @@ void fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where,
 
 	// If cursor position is after the deletion place update it
 	if (cur.pos() > from)
-		cur.pos() = max(from, cur.pos() - (to - from));
+		cur.pos() = max(from + 1, cur.pos() - num_chars);
 
 	// Check also if we don't want to set the cursor on a spot behind the
 	// pagragraph because we erased the last character.
@@ -874,6 +874,10 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 
 		// Remove spaces and adapt cursor.
 		if (from < to) {
+			// we need to remember what the size was because
+			// eraseChars might mark spaces as deleted instead of
+			// removing them.
+			int const oldsize = oldpar.size();
 			oldpar.eraseChars(from, to, cur.buffer()->params().track_changes);
 // FIXME: This will not work anymore when we have multiple views of the same buffer
 // In this case, we will have to correct also the cursors held by
@@ -881,7 +885,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 // automated way in CursorSlice code. (JMarc 26/09/2001)
 			// correct all cursor parts
 			if (same_par) {
-				fixCursorAfterDelete(cur[depth], old.top(), from, to);
+				fixCursorAfterDelete(cur[depth], old.top(), from, oldsize - oldpar.size());
 				need_anchor_change = true;
 			}
 			return true;
