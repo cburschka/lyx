@@ -60,10 +60,6 @@ export/export/latex/iconv-error-nomenclature_pdf2
 check_load/templates/acmart
 export/templates/acmart_lyx23
 
-# lyx2lyx generates an invalid file when forward-converting a file with
-# whitespace in the "non-tex font" setting:
-export/examples/ja/multilingual_lyx.*
-
 # Failing LyX2LyX conversions for old versions: 
 #
 # "beamer" lyx2lyx fails sometimes for versions < 2.1

@@ -219,9 +219,9 @@ def convert_fonts(document, fm):
         j = find_token(document.header, ft, 0)
         if j != -1:
             val = get_value(document.header, ft, j)
-            vals = val.split()
-            vals[0] = '"' + fn + '"'
-            document.header[j] = ft + ' ' + ' '.join(vals)
+            words = val.split() # ! splits also values like '"DejaVu Sans"'
+            words[0] = '"' + fn + '"'
+            document.header[j] = ft + ' ' + ' '.join(words)
 
 def revert_fonts(document, fm, fontmap):
     " Revert native font definition to LaTeX "
@@ -243,8 +243,8 @@ def revert_fonts(document, fm, fontmap):
             continue
         ft = mo.group(1)    # 'roman', 'sans', 'typewriter', 'math'
         val = get_value(document.header, ft, i)
-        words = val.split()
-        font = words[0].replace('"', '')
+        words = val.split(' ')     # ! splits also values like '"DejaVu Sans"'
+        font = words[0].strip('"') # TeX font name has no whitespace
         if not font in fm.font2pkgmap:
             i += 1
             continue
@@ -253,7 +253,7 @@ def revert_fonts(document, fm, fontmap):
         if not val in fontmap:
             fontmap[val] = []
         words[0] = '"default"'
-        document.header[i] = ft + ' ' + ' '.join(words) 
+        document.header[i] = ft + ' ' + ' '.join(words)
         if fontinfo.scaleopt != None:
             xval =  get_value(document.header, "\\font_" + fontinfo.scaletype + "_scale", 0)
             mo = rscales.search(xval)
@@ -600,7 +600,7 @@ def revert_floatalignment(document):
             alcmd = put_cmd_in_ert("\\raggedleft{}")
         if len(alcmd) > 0:
             document.body[l+1:l+1] = alcmd
-        i += 1 
+        i += 1
 
 
 def revert_tuftecite(document):
@@ -730,7 +730,7 @@ def revert_vcolumns(document):
                             if vval != "":
                                 needarray = True
                             vval += "V{\\linewidth}"
-                
+
                             document.body[col_line] = document.body[col_line][:-1] + " special=\"" + vval + "\">"
                             # ERT newlines and linebreaks (since LyX < 2.4 automatically inserts parboxes
                             # with newlines, and we do not want that)
@@ -776,7 +776,7 @@ def revert_bibencoding(document):
     if engine in ["biblatex", "biblatex-natbib"]:
         biblatex = True
 
-    # Map lyx to latex encoding names 
+    # Map lyx to latex encoding names
     encodings = {
         "utf8" : "utf8",
         "utf8x" : "utf8x",
@@ -1328,7 +1328,7 @@ def revert_l7ninfo(document):
             continue
         arg = find_token(document.body, 'arg', i, j)
         argv = get_quoted_value(document.body, "arg", arg)
-        # remove trailing colons, menu accelerator (|...) and qt accelerator (&), while keeping literal " & " 
+        # remove trailing colons, menu accelerator (|...) and qt accelerator (&), while keeping literal " & "
         argv = argv.rstrip(':').split('|')[0].replace(" & ", "</amp;>").replace("&", "").replace("</amp;>", " & ")
         document.body[i : j+1] = argv
         i = i + 1
