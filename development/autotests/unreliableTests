@@ -124,7 +124,8 @@ export/templates/acmart_pdf
 export/examples/ja/multilingual_lyx.*
 
 # No localization of auto-strings with Chinese language under 8-bit TeX
-# (ctex font issue with texlive-lang-chinese (from Debian) under pdflatex):
+# (ctex font issue with texlive-lang-chinese (from Debian) under pdflatex)
+# and only partial localization with non-tex-fonts:
 export/export/latex/CJK/zh_CN-toc.*
 export/doc/zh_CN/(Intro|Tutorial)_(dvi|pdf).?
 

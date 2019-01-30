@@ -101,11 +101,6 @@ if ($fontT eq "systemF") {
     $font{sans} = "FreeFarsi";
     $font{typewriter} = "FreeFarsi Monospace";
   }
-  elsif ($lang eq "zh_CN") {
-    $font{roman} = "WenQuanYi Micro Hei";
-    $font{sans} = "WenQuanYi Micro Hei";
-    $font{typewriter} = "WenQuanYi Micro Hei";
-  }
   elsif ($lang eq "ko" ) {
     $font{roman} = "NanumGothic"; # NanumMyeongjo, NanumGothic Eco, NanumGothicCoding
     $font{sans} = "NanumGothic";

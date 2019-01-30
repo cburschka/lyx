@@ -6,7 +6,11 @@
 \origin unavailable
 \textclass report
 \begin_preamble
-
+% Chinese localization
+\@ifpackageloaded{fontspec}%
+{\usepackage{ctex}}% ctex with non-TeX fonts
+{%\usepackage[UTF8]{ctex}% error with font setup (missing font?)
+}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -14,12 +18,12 @@
 \language_package default
 \inputencoding utf8-cjk
 \fontencoding auto
-\font_roman "lmodern" "WenQuanYi Micro Hei"
-\font_sans "default" "WenQuanYi Micro Hei"
-\font_typewriter "default" "WenQuanYi Micro Hei Mono"
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
-\use_non_tex_fonts false
+\use_non_tex_fonts true
 \font_sc false
 \font_osf false
 \font_sf_scale 100 100
@@ -28,7 +32,7 @@
 \use_microtype false
 \use_dash_ligatures false
 \graphics default
-\default_output_format pdf2
+\default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -111,7 +115,8 @@ This is a Chinese test document for \SpecialChar LyX
  with the CJK package.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+\noindent
 The 
 \emph on
 Table of Contents 
@@ -124,10 +129,44 @@ Contents
 \begin_inset Quotes erd
 \end_inset
 
- in the PDF.
+ with PDF (pdflatex).
+ This is fixed with 
+\begin_inset Quotes eld
+\end_inset
+
+non-TeX fonts
+\begin_inset Quotes erd
+\end_inset
+
+ by use of the 
+\begin_inset Quotes eld
+\end_inset
+
+ctex
+\begin_inset Quotes erd
+\end_inset
+
+ package (see preamble).
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+The prefix 
+\emph on
+Chapter
+\emph default
+ in the chapter heading is not translated — not even with 
+\begin_inset Quotes eld
+\end_inset
+
+ctex
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\noindent
 Without a 
 \backslash
 clearpage before closing the 
@@ -141,19 +180,38 @@ CJK
  environment, Chinese characters in a section title lead to errors like
 \end_layout
 
+\begin_deeper
 \begin_layout LyX-Code
+\noindent
 ! Package inputenc Error: Unicode char 中 (U+4E2D) 
 \end_layout
 
 \begin_layout LyX-Code
+\noindent
 (inputenc) not set up for use with LaTeX.
 \end_layout
 
 \begin_layout Standard
+\paragraph_spacing single
+\noindent
 (cf.
- https://www.lyx.org/trac/ticket/5386).
+ Test document for part
+\begin_inset space ~
+\end_inset
+
+2 of 
+\begin_inset CommandInset href
+LatexCommand href
+name "#5386"
+target "https://www.lyx.org/trac/ticket/5386"
+literal "false"
+
+\end_inset
+
+).
 \end_layout
 
+\end_deeper
 \begin_layout Section
 Section in English
 \end_layout
@@ -163,7 +221,7 @@ This section head is in English.
 \end_layout
 
 \begin_layout Section
-Secition in Chinese 中文名
+Section in Chinese 中文名
 \end_layout
 
 \begin_layout Standard
