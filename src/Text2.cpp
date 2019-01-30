@@ -857,15 +857,14 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		       && !oldpar.isDeleted(from - 1))
 			--from;
 		pos_type to = old.pos();
-		while (to < oldpar.size() - 1
+		while (to < old.lastpos()
 		       && oldpar.isLineSeparator(to)
 		       && !oldpar.isDeleted(to))
 			++to;
 
 		int num_spaces = to - from;
-
-		// If we are not at the extremity of the paragraph, keep one space
-		if (from != to && from > 0 && to < oldpar.size())
+		// If we are not at the start of the paragraph, keep one space
+		if (from != to && from > 0)
 			--num_spaces;
 
 		// If cursor is inside range, keep one additional space
@@ -874,14 +873,14 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 
 		// Remove spaces and adapt cursor.
 		if (num_spaces > 0) {
-			pos_type const oldsize = oldpar.size();
+			pos_type const oldlast = old.lastpos();
 			deleteSpaces(oldpar, from, to, num_spaces,
 				cur.buffer()->params().track_changes);
 			// correct cur position
 			// FIXME: there can be other cursors pointing there, we should update them
 			if (same_par) {
 				if (cur[depth].pos() >= to)
-					cur[depth].pos() -= oldsize - oldpar.size();
+					cur[depth].pos() -= oldlast - old.lastpos();
 				else if (cur[depth].pos() > from)
 					cur[depth].pos() = min(from + 1, old.lastpos());
 				need_anchor_change = true;
