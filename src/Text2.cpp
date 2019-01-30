@@ -860,13 +860,13 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		       && !oldpar.isDeleted(from - 1))
 			--from;
 		int to = old.pos();
-		while (to < oldpar.size() - 1
+		while (to < oldpar.size()
 		       && oldpar.isLineSeparator(to)
 		       && !oldpar.isDeleted(to))
 			++to;
 
-		// If we are not at the extremity of the paragraph, keep one space
-		if (from != to && from > 0 && to < oldpar.size())
+		// If we are not at the start of the paragraph, keep one space
+		if (from != to && from > 0)
 			++from;
 
 		if (same_par && cur.pos() >= from && cur.pos() < to)
