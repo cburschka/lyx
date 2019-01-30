@@ -1405,16 +1405,23 @@ void latexParagraphs(Buffer const & buf,
 
 	// Open a CJK environment at the beginning of the main buffer
 	// (but not in child documents or documents using system fonts)
-	// if the document's language is a CJK language (with some exceptions)
-	// or the document encoding is utf8-cjk:
+	// if the document's language requires CJK,
+	// if a secondary language requires CJK and the encoding is utf8,
+	// or if the document encoding is utf8-cjk:
 	OutputState * state = getOutputState();
 	if (maintext && !is_child && !bparams.useNonTeXFonts
 	    && ((bparams.language->encoding()->package() == Encoding::CJK
 			 && (bparams.encoding().iconvName() != "UTF-8"
 				 || bparams.encoding().name() == "utf8-cjk"
-				 || bparams.encoding().name() == "utf8" ))
+				 || bparams.encoding().name() == "utf8"))
 			|| (bparams.encoding().name() == "utf8-cjk"
-				&& LaTeXFeatures::isAvailable("CJKutf8")))) {
+				&& LaTeXFeatures::isAvailable("CJKutf8"))
+			// FIXME: test for secondary language requiring CJK
+			// || (LaTeXFeatures::mustProvide("CJK"))
+			//     && bparams.encoding().name() == "utf8"
+			// 	   && LaTeXFeatures::isAvailable("CJKutf8"))
+			// error: cannot call member function ‘bool lyx::LaTeXFeatures::mustProvide(const string&) const’ without object 
+		   )) {
 		docstring const cjkenc = bparams.encoding().iconvName() == "UTF-8"
 		  		  			   	 ? from_ascii("UTF8") : from_ascii(bparams.encoding().latexName());
 		os << "\\begin{CJK}{" << cjkenc
@@ -1607,12 +1614,13 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 	Encoding const & oldEnc = *runparams.encoding;
 	bool moving_arg = runparams.moving_arg;
 	// If we switch from/to CJK, we need to switch anyway, despite custom inputenc,
-	// except if we use CJKutf8
+	// except if we use CJKutf8 or explicitely set inputenc to a CJK encoding
 	bool const from_to_cjk =
 		((oldEnc.package() == Encoding::CJK && newEnc.package() != Encoding::CJK)
 		 || (oldEnc.package() != Encoding::CJK && newEnc.package() == Encoding::CJK))
 		&& ((bparams.encoding().name() != "utf8-cjk" && bparams.encoding().name() != "utf8")
-			|| !LaTeXFeatures::isAvailable("CJKutf8"));
+			|| !LaTeXFeatures::isAvailable("CJKutf8"))
+		&& bparams.encoding().package() != Encoding::CJK;
 	if (!force && !from_to_cjk
 	    && ((bparams.inputenc != "auto" && bparams.inputenc != "default") || moving_arg))
 		return make_pair(false, 0);

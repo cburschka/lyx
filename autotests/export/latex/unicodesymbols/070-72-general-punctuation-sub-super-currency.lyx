@@ -93,7 +93,7 @@ Braces in
 \color cyan
 cyan
 \color inherit
- are placed around space characters.
+ are placed around space and formatting characters.
 \end_layout
 
 \begin_layout Labeling
@@ -149,14 +149,22 @@ inverted 0
 status open
 
 \begin_layout Standard
-‧     ‪ ‫ ‬ ‭ ‮  
+‧ ‫ ‬ ‭ ‮  
 \end_layout
 
 \end_inset
 
  
 \color cyan
-( )
+(
+\color inherit
+ 
+\color cyan
+) (
+\color inherit
+ 
+\color cyan
+) ( )
 \end_layout
 
 \begin_layout Labeling

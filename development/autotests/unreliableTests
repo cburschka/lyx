@@ -106,9 +106,11 @@ export/export/mixing_inTitle_layouts_(pdf|dvi).*
 export/doc/es/Customization_dvi3_systemF
 export/examples/(|es/)(europe|modern)CV_dvi3_systemF
 
-# original problem fixed but run-together words in Russian
-#9637 textgreek and textcyr depend on font-encoding, not input encoding
+# No termination of LICR macros when textcyr and textgreek is not required
+# Cf. #9637 textgreek and textcyr depend on font-encoding, not input encoding
+# -> original problem fixed but run-together words in Russian (and Greek)
 export/export/latex/ru-accent-ascii_pdf2
+export/export/latex/unicodesymbols/009-cyrillic_ru_euc-cn_pdf2
 
 # `acmart` requires PDFlatex:
 # * Missing page number in DVI, Postscript, and PDF (ps2pdf)
