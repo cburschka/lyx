@@ -55,6 +55,11 @@
 \justification true
 \use_refstyle 0
 \use_minted 0
+\branch na
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -99,47 +104,46 @@ literal "false"
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-900 ΄ ΅ Ά · Έ Ή Ί Ό
+370 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+Ͱ ͱ Ͳ ͳ
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-910 Ύ Ώ ΐ Α Β Γ Δ Ε Ζ Η
+\end_inset
+
+ ʹ ͵ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+Ͷ ͷ
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-920 Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ
+\end_inset
+
+ ͺ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+ͻ ͼ ͽ
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-930 Σ Τ Υ Φ Χ Ψ Ω Ϊ Ϋ
-\end_layout
+\end_inset
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-940 ά έ ή ί ΰ α β γ δ ε
-\end_layout
+ ; 
+\begin_inset Branch na
+inverted 0
+status collapsed
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-950 ζ η θ ι κ λ μ ν ξ ο
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-960 π ρ ς σ τ υ φ χ ψ ω
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-970 ϊ ϋ ό ύ ώ 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Ϗ ϐ ϑ ϒ ϓ
+\begin_layout Standard
+Ϳ
 \end_layout
 
 \end_inset
@@ -149,56 +153,33 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-980 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-ϕϖ
-\end_layout
-
-\end_inset
-
- 
+380 ΄ ΅ Ά · Έ Ή Ί Ό Ύ Ώ
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-990 
+390 ΐ Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-1000 
-\begin_inset Note Note
+3A0 Π Ρ Σ Τ Υ Φ Χ Ψ Ω Ϊ Ϋ ά έ ή ί
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+3B0 ΰ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+3C0 π ρ ς σ τ υ φ χ ψ ω ϊ ϋ ό ύ ώ 
+\begin_inset Branch na
+inverted 0
 status open
 
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-ϱ
+\begin_layout Standard
+Ϗ
 \end_layout
 
 \end_inset
@@ -208,24 +189,56 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-1010 
-\begin_inset Note Note
+3D0 
+\begin_inset Branch na
+inverted 0
 status open
 
-\begin_layout Plain Layout
+\begin_layout Standard
+ϐ ϑ ϒ ϓ ϔ ϕ ϖ ϗ
+\end_layout
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-ϵ
+\end_inset
+
+ Ϙ ϙ Ϛ ϛ Ϝ ϝ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+Ϟ
+\end_layout
+
+\end_inset
+
+ ϟ
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+3E0 Ϡ ϡ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+Ϣ ϣ Ϥ ϥ Ϧ ϧ Ϩ ϩ Ϫ ϫ Ϭ ϭ Ϯ ϯ
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+3F0 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+ϰ ϱ ϲ ϳ ϴ ϵ ϶ Ϸ ϸ Ϲ Ϻ ϻ ϼ Ͻ Ͼ Ͽ
 \end_layout
 
 \end_inset
@@ -234,13 +247,13 @@ status open
 \end_layout
 
 \begin_layout Standard
-Greek in math (only characters supported by TeX in math-mode)
+Greek in math (only some characters are supported in math mode)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-910 
-\begin_inset Formula $ΓΔ$
+370 
+\begin_inset Formula $;$
 \end_inset
 
 
@@ -248,8 +261,8 @@ Greek in math (only characters supported by TeX in math-mode)
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-920 
-\begin_inset Formula $ΘΛΞΠ$
+380 
+\begin_inset Formula $·$
 \end_inset
 
 
@@ -257,8 +270,8 @@ Greek in math (only characters supported by TeX in math-mode)
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-930 
-\begin_inset Formula $ΣΥΦΨΩ$
+390 
+\begin_inset Formula $ΓΔΘΛΞ$
 \end_inset
 
 
@@ -266,8 +279,8 @@ Greek in math (only characters supported by TeX in math-mode)
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-940 
-\begin_inset Formula $αβγδε$
+3A0 
+\begin_inset Formula $ΠΣΥΦΨΩ$
 \end_inset
 
 
@@ -275,8 +288,8 @@ Greek in math (only characters supported by TeX in math-mode)
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-950 
-\begin_inset Formula $ζηθικλμνξ$
+3B0 
+\begin_inset Formula $αβγδεζηθικλμνξ$
 \end_inset
 
 
@@ -284,7 +297,7 @@ Greek in math (only characters supported by TeX in math-mode)
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-960 
+3C0 
 \begin_inset Formula $πρςστυφχψω$
 \end_inset
 
@@ -293,8 +306,8 @@ Greek in math (only characters supported by TeX in math-mode)
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-970 
-\begin_inset Formula $ϑ$
+3D0 
+\begin_inset Formula $ϑϕϖϝ$
 \end_inset
 
 
@@ -302,8 +315,8 @@ Greek in math (only characters supported by TeX in math-mode)
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-980 
-\begin_inset Formula $ϕϖ\digamma$
+3E0 
+\begin_inset Formula $ $
 \end_inset
 
 
@@ -311,22 +324,8 @@ Greek in math (only characters supported by TeX in math-mode)
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-990
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-1000 
-\begin_inset Formula $ϰϱ$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-1010 
-\begin_inset Formula $ϵ$
+3F0 
+\begin_inset Formula $ϰϱϵ϶$
 \end_inset
 
 

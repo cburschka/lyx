@@ -115,15 +115,6 @@ export/export/latex/unicodesymbols/069-greek-extended_cp1256_pdf2
 export/export/latex/unicodesymbols/070-72-general-punctuation-sub-super-currency_cp1256_pdf2
 export/export/latex/unicodesymbols/074-76-letterlike-numberforms-arrows_cp1256_pdf2
 
-# CJK legacy encodings
-#export/export/latex/unicodesymbols/.*_euc-cn_pdf2
-# compilation of the next ones is also fixed, but correct output not verified:
-# (except for Greek, due to a missing "force" flag
-#export/export/latex/unicodesymbols/.*_jis_pdf2
-#export/export/latex/unicodesymbols/.*_euc-kr_pdf2
-export/export/latex/unicodesymbols/.*_euc-jp_pdf2
-export/export/latex/unicodesymbols/.*_euc-tw_pdf2
-
 # pLaTeX
 export/export/latex/unicodesymbols/.*_euc-jp-platex_pdf2
 export/export/latex/unicodesymbols/.*_jis-platex_pdf2
