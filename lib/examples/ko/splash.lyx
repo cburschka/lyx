@@ -5,15 +5,18 @@
 \save_transient_properties true
 \origin /systemlyxdir/examples/ko/
 \textclass article
+\begin_preamble
+\usepackage[cjk,hangul]{kotex}
+\end_preamble
 \use_default_options false
 \maintain_unincluded_children false
 \language korean
 \language_package default
 \inputencoding utf8-cjk
-\fontencoding OT1
-\font_roman "default" "Noto Serif CJK KR"
-\font_sans "default" "Noto Sans CJK KR"
-\font_typewriter "default" "Noto Sans Mono CJK KR"
+\fontencoding global
+\font_roman "lmodern" "UnJamoBatang"
+\font_sans "default" "UnJamoNovel"
+\font_typewriter "default" "UnTaza"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -171,7 +174,7 @@ arg   "buffer-view"
  장을 읽어주세요.
  (해당되지 않는 모든 사람들: 걱정 마시압, \SpecialChar LyX
  사용을 위해 \SpecialChar LaTeX
-를 꼭 알아야할 필요는 없습니다.) 
+를 꼭 알아야할 필요는 없습니다.)
 \end_layout
 
 \begin_layout Enumerate
@@ -247,13 +250,13 @@ For example on the Linux distributions
 \family sans
 Debian
 \family default
- the package name for the German language is 
+ the package name for the Korean language is 
 \begin_inset Quotes eld
 \end_inset
 
 
 \family typewriter
-texlive-lang-german
+texlive-lang-korean
 \family default
 
 \begin_inset Quotes erd

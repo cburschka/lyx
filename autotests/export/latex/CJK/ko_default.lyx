@@ -11,9 +11,9 @@
 \language_package default
 \inputencoding auto
 \fontencoding default
-\font_roman "default" "NanumMyeongjo"
-\font_sans "default" "NanumGothic"
-\font_typewriter "default" "NanumGothicCoding"
+\font_roman "default" "UnBatang"
+\font_sans "default" "UnJamoNovel"
+\font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -66,11 +66,12 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style cjkangle
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\bullet 0 0 9 -1
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -97,7 +98,66 @@ LyX 는 훌륭한 문서를 동반합니다 - 사용하세요!
 자습서
 \family default
 를 통해 LyX 사용법을 익히세요.
+\end_layout
+
+\begin_layout Itemize
+The CJK default font for Korean (mj) works with CJKutf8 but fails with the
  
+\begin_inset Quotes eld
+\end_inset
+
+KS
+\begin_inset Quotes erd
+\end_inset
+
+ legacy input encoding (Debian/stable with TeXLive17).
+\end_layout
+
+\begin_layout Itemize
+The Debian documentation for the 
+\begin_inset Quotes eld
+\end_inset
+
+latex-cjk-common
+\begin_inset Quotes erd
+\end_inset
+
+ package (/usr/share/doc/latex-cjk-common/examples/KS.tex ) tells:
+\end_layout
+
+\begin_deeper
+\begin_layout Quote
+% ko.tex-extra
+\end_layout
+
+\begin_layout Quote
+% Works: ph bm jsr jmj jnv sh pg yt gs pn
+\end_layout
+
+\begin_layout Quote
+% ko.tex-extra-hlfont
+\end_layout
+
+\begin_layout Quote
+% Does not work: dn [tries outdn* Unicode fonts, fails] pga [tries outpga*
+ Unicode fonts, fails]
+\end_layout
+
+\begin_layout Quote
+% Standard
+\end_layout
+
+\begin_layout Quote
+% Does not work: mj gt [do not seem to be packaged anymore]
+\end_layout
+
+\begin_layout Standard
+However, also the ko.tex-extra fonts fail here (with Debian/stretch).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Recommendation: Make utf8 the default language encoding for Korean!
 \end_layout
 
 \end_body

@@ -6,8 +6,8 @@
 # 2.) While copying,
 #   2a.) searches for relative references to files and
 #        replaces them with absolute ones
-#   2b.) In order to be able to compile with luatex or xetex
-#        changes default fonts to use non-tex-fonts instead
+#   2b.) Changes default fonts to use non-tex-fonts
+#   2c.) Changes the non-tex fonts setting if it is "default" (see below).
 #
 # Syntax: perl useSystemFonts.pl sourceFile destFile format
 # Each param represents a path to a file
@@ -101,11 +101,11 @@ if ($fontT eq "systemF") {
     $font{sans} = "FreeFarsi";
     $font{typewriter} = "FreeFarsi Monospace";
   }
-  elsif ($lang eq "ko" ) {
-    $font{roman} = "NanumGothic"; # NanumMyeongjo, NanumGothic Eco, NanumGothicCoding
-    $font{sans} = "NanumGothic";
-    $font{typewriter} = "NanumGothic";
-  }
+  # elsif ($lang eq "ko" ) {
+  #   $font{roman} = "NanumGothic"; # NanumMyeongjo, NanumGothic Eco, NanumGothicCoding
+  #   $font{sans} = "NanumGothic";
+  #   $font{typewriter} = "NanumGothic";
+  # }
   elsif ($lang eq "ar" ) {
     # available in 'fonts-sil-scheherazade' package
     $font{roman} = "Scheherazade";
