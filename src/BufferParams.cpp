@@ -3256,6 +3256,10 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 		case Encoding::none:
 		case Encoding::CJK:
 		case Encoding::japanese:
+			if (encoding().iconvName() != "UTF-8")
+			  // don't default to [utf8]{inputenc} with TeXLive >= 18
+			  os << "\\ifdefined\\UseRawInputEncoding\n"
+				 << "  \\UseRawInputEncoding\\fi\n";
 			break;
 		case Encoding::inputenc:
 			// do not load inputenc if japanese is used
@@ -3271,6 +3275,11 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 				os << "]{inputenc}\n";
 			break;
 		}
+	}
+	if (inputenc == "default" or features.isRequired("japanese")) {
+		// don't default to [utf8]{inputenc} with TeXLive >= 18
+		os << "\\ifdefined\\UseRawInputEncoding\n";
+		os << "  \\UseRawInputEncoding\\fi\n";
 	}
 }
 
