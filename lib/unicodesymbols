@@ -81,7 +81,7 @@
 0x00b4 "\\textasciiacute"         "textcomp" "force=euc-jp;euc-kr;jis" # ACUTE ACCENT
 0x00b5 "\\textmu"                 "textcomp" "force!=utf8;jis" "" "" # µ MICRO SIGN (upright, not $\mu$)
 0x00b6 "\\textparagraph"          "textcomp" "force=euc-jp;euc-kr;jis" "\\mathparagraph" "" # PILCROW SIGN # not equal to \textpilcrow
-0x00b7 "\\textperiodcentered"     "" "force=koi8-u;iso8859-7;gbk;euc-kr;euc-tw" "\\cdot" "" # MIDDLE DOT
+0x00b7 "\\textperiodcentered"     "" "force=koi8-u;iso8859-7;euc-kr;euc-tw;gbk" "\\cdot" "" # MIDDLE DOT
 0x00b8 "\\c{ }"                   "" "force=euc-jp;euc-kr" "" "" # CEDILLA
 0x00b9 "\\textonesuperior"        "textcomp" "force" "{{}^1}" "" # ¹ SUPERSCRIPT ONE
 0x00ba "\\textordmasculine"       "textcomp" "force=euc-jp;euc-kr" # MASCULINE ORDINAL INDICATOR
@@ -176,7 +176,7 @@
 0x0110 "\\DJ"                     "" "mathalpha,notermination=math,force=euc-jp" "\\mkern2mu\\rule[0.75ex]{0.75ex}{0.06ex}\\mkern-8mu D" # LATIN CAPITAL LETTER D WITH STROKE
 0x0111 "\\dj"                     "" "mathalpha,notermination=math,force=euc-jp;euc-kr" "\\mkern3mu\\mathchar'26\\mkern-12mu d" # LATIN SMALL LETTER D WITH STROKE
 0x0112 "\\={E}"                   "" "mathalpha,force=euc-jp" "\\bar{E}" # LATIN CAPITAL LETTER E WITH MACRON
-0x0113 "\\={e}"                   "" "mathalpha,force=euc-jp" "\\bar{e}" # LATIN SMALL LETTER E WITH MACRON
+0x0113 "\\={e}"                   "" "mathalpha,force=euc-cn;euc-jp;gbk" "\\bar{e}" # LATIN SMALL LETTER E WITH MACRON
 0x0114 "\\u{E}"                   "" "mathalpha" "\\breve{E}" # LATIN CAPITAL LETTER E WITH BREVE
 0x0115 "\\u{e}"                   "" "mathalpha" "\\breve{e}" # LATIN SMALL LETTER E WITH BREVE
 0x0116 "\\.{E}"                   "" "mathalpha,force=euc-jp" "\\dot{E}" # LATIN CAPITAL LETTER E WITH DOT ABOVE
@@ -184,7 +184,7 @@
 0x0118 "\\k{E}"                   "" "mathalpha,force=euc-jp" "\\ogonek{E}" "accents,tipasymb,ogonek" # LATIN CAPITAL LETTER E WITH OGONEK
 0x0119 "\\k{e}"                   "" "mathalpha,force=euc-jp" "\\ogonek{e}" "accents,tipasymb,ogonek" # LATIN SMALL LETTER E WITH OGONEK
 0x011a "\\v{E}"                   "" "mathalpha,force=euc-jp" "\\check{E}" # LATIN CAPITAL LETTER E WITH CARON
-0x011b "\\v{e}"                   "" "mathalpha,force=euc-jp" "\\check{e}" # LATIN SMALL LETTER E WITH CARON
+0x011b "\\v{e}"                   "" "mathalpha,force=euc-jp;gbk" "\\check{e}" # LATIN SMALL LETTER E WITH CARON
 0x011c "\\^{G}"                   "" "mathalpha,force=euc-jp" "\\hat{G}" # LATIN CAPITAL LETTER G WITH CIRCUMFLEX
 0x011d "\\^{g}"                   "" "mathalpha,force=euc-jp" "\\hat{g}" # LATIN SMALL LETTER G WITH CIRCUMFLEX
 0x011e "\\u{G}"                   "" "mathalpha,force=euc-jp" "\\breve{G}" # LATIN CAPITAL LETTER G WITH BREVE
@@ -231,7 +231,7 @@
 0x0147 "\\v{N}"                   "" "mathalpha,force=euc-jp" "\\check{N}" # LATIN CAPITAL LETTER N WITH CARON
 0x0148 "\\v{n}"                   "" "mathalpha,force=euc-jp;gbk" "\\check{n}" # LATIN SMALL LETTER N WITH CARON
 0x0149 "'n"                       "" "force=utf8;utf8-cjk;utf8x;euc-jp;euc-kr,deprecated" "" "" # LATIN SMALL LETTER N PRECEDED BY APOSTROPHE
-0x014a "\\NG"                     "" "force=euc-jp" "" "" # LATIN CAPITAL LETTER ENG
+0x014a "\\NG"                     "" "force=euc-jp;euc-kr" "" "" # LATIN CAPITAL LETTER ENG
 0x014b "\\ng"                     "" "force=euc-jp;euc-kr,tipashortcut=N" "" "" # LATIN SMALL LETTER ENG
 0x014c "\\={O}"                   "" "mathalpha,force=euc-jp" "\\bar{O}" # LATIN CAPITAL LETTER O WITH MACRON
 0x014d "\\={o}"                   "" "mathalpha,force=euc-cn;euc-jp;gbk" "\\bar{o}" # LATIN SMALL LETTER O WITH MACRON
