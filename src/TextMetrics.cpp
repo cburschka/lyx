@@ -1934,15 +1934,11 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		rp.paintDepthBar();
 		if (row.needsChangeBar())
 			rp.paintChangeBar();
-		if (i == 0 && !row.isRTL())
+		if (i == 0)
 			rp.paintFirst();
-		if (i == nrows - 1 && row.isRTL())
+		if (i == nrows - 1)
 			rp.paintLast();
 		rp.paintText();
-		if (i == nrows - 1 && !row.isRTL())
-			rp.paintLast();
-		if (i == 0 && row.isRTL())
-			rp.paintFirst();
 		rp.paintTooLargeMarks(row_x + row.left_x() < 0,
 				      row_x + row.right_x() > bv_->workWidth());
 		y += row.descent();

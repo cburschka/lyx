@@ -429,14 +429,10 @@ void RowPainter::paintLabel() const
 	Layout const & layout = par_.layout();
 	FontInfo const font = labelFont(false);
 	FontMetrics const & fm = theFontMetrics(font);
-	double x = x_;
+	int const x = row_.isRTL() ? row_.width() + fm.width(layout.labelsep)
+	                           : row_.left_margin - fm.width(layout.labelsep) - fm.width(str);
 
-	if (row_.isRTL())
-		x = xo_ + row_.width() + fm.width(layout.labelsep);
-	else
-		x = x_ - fm.width(layout.labelsep) - fm.width(str);
-
-	pi_.pain.text(int(x), yo_, str, font);
+	pi_.pain.text(xo_ + x, yo_, str, font);
 }
 
 
