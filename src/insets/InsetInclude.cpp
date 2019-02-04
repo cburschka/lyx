@@ -165,6 +165,23 @@ InsetLabel * createLabel(Buffer * buf, docstring const & label_str)
 	return new InsetLabel(buf, icp);
 }
 
+
+char_type replaceCommaInBraces(docstring & params)
+{
+	// Code point from private use area
+	char_type private_char = 0xE000;
+	int count = 0;
+	for (char_type & c : params) {
+		if (c == '{')
+			++count;
+		else if (c == '}')
+			--count;
+		else if (c == ',' && count)
+			c = private_char;
+	}
+	return private_char;
+}
+
 } // namespace
 
 
@@ -617,12 +634,18 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		docstring label;
 		docstring placement;
 		bool isfloat = lstparams.isFloat();
+		// We are going to split parameters at commas, so
+		// replace commas that are not parameter separators
+		// with a code point from the private use area
+		char_type comma = replaceCommaInBraces(parameters);
 		// Get float placement, language, caption, and
 		// label, then remove the relative options if minted.
 		vector<docstring> opts =
 			getVectorFromString(parameters, from_ascii(","), false);
 		vector<docstring> latexed_opts;
 		for (size_t i = 0; i < opts.size(); ++i) {
+			// Restore replaced commas
+			opts[i] = subst(opts[i], comma, ',');
 			if (use_minted && prefixIs(opts[i], from_ascii("float"))) {
 				if (prefixIs(opts[i], from_ascii("float=")))
 					placement = opts[i].substr(6);
