@@ -666,7 +666,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 								  ParamInfo::HANDLING_LATEXIFY);
 				opts.erase(opts.begin() + i--);
 				if (!use_minted)
-					latexed_opts.push_back(from_ascii("caption=") + caption);
+					latexed_opts.push_back(from_ascii("caption={") + caption + "}");
 			} else if (prefixIs(opts[i], from_ascii("label="))) {
 				label = params().prepareCommand(runparams, trim(opts[i].substr(6), "{}"),
 								ParamInfo::HANDLING_ESCAPE);
