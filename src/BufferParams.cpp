@@ -1749,8 +1749,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// (see autotests/export/latex/CJK/micro-sign_utf8-cjk-libertine.lyx)
 	if (!useNonTeXFonts && encoding().package() != Encoding::none
 		&& (encoding().package() == Encoding::CJK || features.mustProvide("CJK"))) {
-		if (encoding().iconvName() == "UTF-8"
-			&& LaTeXFeatures::isAvailable("CJKutf8"))
+		if (encoding().iconvName() == "UTF-8")
 			os << "\\usepackage{CJKutf8}\n";
 		else
 			os << "\\usepackage[encapsulated]{CJK}\n";

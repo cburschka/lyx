@@ -11,7 +11,7 @@
 \language_package none
 \inputencoding iso8859-15
 \fontencoding auto
-\font_roman "default" "default"
+\font_roman "lmodern" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
@@ -68,13 +68,14 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
 \html_latex_start <span class='latex'>
 \html_latex_end </span>
+\author -1402925745 "Günter Milde"
 \end_header
 
 \begin_body
@@ -7297,14 +7298,18 @@ cprotect
 \end_layout
 
 \begin_layout Subsection
-CJKutf8
+CJK
+\change_deleted -1402925745 1549302375
+utf8
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
 Found: 
 \begin_inset Info
 type  "package"
-arg   "CJKutf8"
+arg   "CJK"
 \end_inset
 
 
@@ -7317,18 +7322,30 @@ language/chinese/CJK/
 \end_layout
 
 \begin_layout Description
-Notes: The package 
+Notes: The 
+\change_deleted -1402925745 1549302395
+package 
 \family sans
 CJKutf8
 \family default
  (part of the
+\change_unchanged
+
 \family sans
  CJK
 \family default
- bundle) merges base \SpecialChar LaTeX
+ bundle
+\change_deleted -1402925745 1549302399
+) merges base \SpecialChar LaTeX
 's and CJK's UTF-8 support.
  It is needed to produce proper output with the combination of CJK, utf-8
  encoding, and hyperref.
+
+\change_inserted -1402925745 1549302480
+ provides simultaneous support for various Asian scripts in many encodings
+ (including Unicode).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
