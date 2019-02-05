@@ -1037,7 +1037,10 @@ class KeyInfo {
     /* item */
     isList,
     /* tex, latex, ... like isChar */
-    isIgnored
+    isIgnored,
+    /* like \lettrine[lines=5]{}{} */
+    cleanToStart,
+    endArguments
   };
  KeyInfo()
    : keytype(invalid),
@@ -1755,7 +1758,8 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("par|uldepth|ULdepth|protect|nobreakdash", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
   // Remove RTL/LTR marker
   makeKey("l|r|textlr|textfr|textar|beginl|endl", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
-
+  makeKey("lettrine", KeyInfo(KeyInfo::cleanToStart, 0, true), isPatternString);
+  makeKey("endarguments", KeyInfo(KeyInfo::endArguments, 0, true), isPatternString);
   if (isPatternString) {
     // Allow the first searched string to rebuild the keys too
     keysBuilt = false;
@@ -1891,6 +1895,35 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
   int nextKeyIdx = 0;
   switch (actual.keytype)
   {
+    case KeyInfo::cleanToStart: {
+      actual._dataEnd = actual._dataStart;
+      if (interval.par[actual._dataStart] == '[') {
+        // Discard optional params
+        actual._dataStart = interval.findclosing(actual._dataStart+1, interval.par.length(), '[', ']') + 1;
+      }
+      actual._dataEnd = actual._dataStart;
+      nextKeyIdx = getNextKey();
+      // Search for end of arguments
+      int tmpIdx = nextKeyIdx;
+      while (tmpIdx > 0) {
+        KeyInfo &nextk = entries[tmpIdx];
+        if (nextk.keytype == KeyInfo::endArguments) {
+          actual._dataEnd = nextk._dataEnd;
+          break;
+        }
+        nextk.disabled = true;
+        tmpIdx++;
+        if (tmpIdx >= int(entries.size()))
+          break;
+      }
+      while (interval.par[actual._dataEnd] == ' ')
+        actual._dataEnd++;
+      interval.addIntervall(0, actual._dataEnd+1);
+      interval.actualdeptindex = 0;
+      interval.depts[0] = actual._dataEnd+1;
+      interval.closes[0] = -1;
+      break;
+    }
     case KeyInfo::noContent: {          /* char like "\hspace{2cm}" */
       interval.addIntervall(actual._dataStart, actual._dataEnd);
     }
@@ -1929,6 +1962,11 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       }
       break;
     }
+    case KeyInfo::endArguments:
+      removeHead(actual);
+      processRegion(actual._dataStart, actual._dataStart+1);
+      nextKeyIdx = getNextKey();
+      break;
     case KeyInfo::noMain:
       // fall through
     case KeyInfo::isStandard: {

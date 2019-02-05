@@ -530,6 +530,10 @@ void getArgInsets(otexstream & os, OutputParams const & runparams, Layout::LaTeX
 			}
 		}
 	}
+	if (runparams.for_search) {
+		// Mark end of arguments for findadv() only
+		os << "\\endarguments{}";
+	}
 }
 
 
