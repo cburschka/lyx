@@ -783,7 +783,7 @@ namespace {
 
 /** delete num_spaces characters between from and to. Return the
  * number of spaces that got physically deleted (not marked as
- * deleted */
+ * deleted) */
 int deleteSpaces(Paragraph & par, pos_type const from, pos_type to,
 				  int num_spaces, bool const trackChanges)
 {
