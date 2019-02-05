@@ -781,11 +781,14 @@ bool Text::cursorDownParagraph(Cursor & cur)
 
 namespace {
 
-void deleteSpaces(Paragraph & par, pos_type const from, pos_type to,
+/** delete num_spaces characters between from and to. Return the
+ * number of spaces that got physically deleted (not marked as
+ * deleted */
+int deleteSpaces(Paragraph & par, pos_type const from, pos_type to,
 				  int num_spaces, bool const trackChanges)
 {
-	if (!num_spaces)
-		return;
+	if (num_spaces <= 0)
+		return 0;
 
 	// First, delete spaces marked as inserted
 	int pos = from;
@@ -800,7 +803,9 @@ void deleteSpaces(Paragraph & par, pos_type const from, pos_type to,
 	}
 
 	// Then remove remaining spaces
+	int const psize = par.size();
 	par.eraseChars(from, from + num_spaces, trackChanges);
+	return psize - par.size();
 }
 
 }
@@ -812,6 +817,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 	//LYXERR(Debug::DEBUG, "DEPM: cur:\n" << cur << "old:\n" << old);
 
 	Paragraph & oldpar = old.paragraph();
+	bool const trackChanges = cur.buffer()->params().track_changes;
 
 	// We allow all kinds of "mumbo-jumbo" when freespacing.
 	if (oldpar.isFreeSpacing())
@@ -873,14 +879,13 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 
 		// Remove spaces and adapt cursor.
 		if (num_spaces > 0) {
-			pos_type const oldlast = old.lastpos();
-			deleteSpaces(oldpar, from, to, num_spaces,
-				cur.buffer()->params().track_changes);
+			int const deleted =
+				deleteSpaces(oldpar, from, to, num_spaces, trackChanges);
 			// correct cur position
 			// FIXME: there can be other cursors pointing there, we should update them
 			if (same_par) {
 				if (cur[depth].pos() >= to)
-					cur[depth].pos() -= oldlast - old.lastpos();
+					cur[depth].pos() -= deleted;
 				else if (cur[depth].pos() > from)
 					cur[depth].pos() = min(from + 1, old.lastpos());
 				need_anchor_change = true;
@@ -929,7 +934,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		return true;
 	}
 
-	if (oldpar.stripLeadingSpaces(cur.buffer()->params().track_changes)) {
+	if (oldpar.stripLeadingSpaces(trackChanges)) {
 		need_anchor_change = true;
 		// We return true here because the Paragraph contents changed and
 		// we need a redraw before further action is processed.
@@ -973,7 +978,8 @@ void Text::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool tra
 				--num_spaces;
 
 			// Remove spaces if needed
-			deleteSpaces(par, from , to, num_spaces, trackChanges);
+			int const deleted = deleteSpaces(par, from , to, num_spaces, trackChanges);
+			from = to - deleted;
 		}
 
 		// don't delete anything if this is the only remaining paragraph
