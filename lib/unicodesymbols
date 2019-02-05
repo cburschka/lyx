@@ -876,15 +876,15 @@
 0x03d5 ""                         	 "textgreek" "mathalpha" "\phi" "" # GREEK PHI SYMBOL
 0x03d6 ""                         	 "textgreek" "mathalpha" "\varpi" "" # GREEK PI SYMBOL
 #0x03d7 ""                         	  "" "" "" "" # GREEK KAI SYMBOL
-0x03d8 "\\textgreek{\\textQoppa}"        "textgreek" "" # GREEK LETTER ARCHAIC KOPPA
-0x03d9 "\\textgreek{\\textqoppa}"        "textgreek" "" # GREEK SMALL LETTER ARCHAIC KOPPA
-0x03da "\\textgreek{\\textStigma}"       "textgreek" "" # GREEK LETTER STIGMA
+0x03d8 "\\textgreek{\\textQoppa}"        "textgreek" "force=utf8x" # GREEK LETTER ARCHAIC KOPPA
+0x03d9 "\\textgreek{\\textqoppa}"        "textgreek" "force=utf8x" # GREEK SMALL LETTER ARCHAIC KOPPA
+0x03da "\\textgreek{\\textStigma}"       "textgreek" "force=utf8x" # GREEK LETTER STIGMA
 0x03db "\\textgreek{\\textstigma}"       "textgreek" "" # GREEK SMALL LETTER STIGMA
 0x03dc "\\textgreek{\\textDigamma}"      "textgreek" "" # GREEK LETTER DIGAMMA
 0x03dd "\\textgreek{\\textdigamma}"      "textgreek" "" "\\digamma" "amssymb" # GREEK SMALL LETTER DIGAMMA
 #0x03de ""                         	  "" "" "" "" # GREEK LETTER KOPPA
 0x03df "\\textgreek{\\textkoppa}"        "textgreek" "" # GREEK SMALL LETTER KOPPA
-0x03e0 "\\textgreek{\\textSampi}"        "textgreek" "" # GREEK LETTER SAMPI
+0x03e0 "\\textgreek{\\textSampi}"        "textgreek" "force=utf8x" # GREEK LETTER SAMPI
 0x03e1 "\\textgreek{\\textsampi}"        "textgreek" "" # GREEK SMALL LETTER SAMPI
 0x03f0 ""                         	 "textgreek" "mathalpha" "\varkappa" "amssymb" # GREEK KAPPA SYMBOL
 0x03f1 ""                         	 "textgreek" "mathalpha" "\varrho" "" # GREEK RHO SYMBOL
@@ -1768,8 +1768,8 @@
 0x2025 ".\\,."                    "" "notermination=text,force=utf8;utf8-cjk;utf8x;euc-jp;euc-kr;euc-tw;gbk;jis" "" "" # TWO DOT LEADER
 0x2026 "\\dots"                   "" "force=armscii8;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\ldots" "" # HORIZONTAL ELLIPSIS
 #0x2027 ""                        "" "notermination=text" "" "" # HYPHENATION POINT (visible symbol used to indicate correct positions for word breaking, looks like but is not 0x00b7 middle dot)
-0x2028 "\\\\"                      "" "" "" "" # LINE SEPARATOR
-0x2029 "\\par"                     "" "" "" "" # PARAGRAPH SEPARATOR
+0x2028 "\\\\"                     "" "force=utf8;utf8-cjk" "" "" # LINE SEPARATOR
+0x2029 "\\par"                    "" "force=utf8;utf8-cjk" "" "" # PARAGRAPH SEPARATOR
 #0x202a ""                         "" "" "" "" # LEFT-TO-RIGHT EMBEDDING
 #0x202b ""                         "" "" "" "" # RIGHT-TO-LEFT EMBEDDING
 #0x202c ""                         "" "" "" "" # POP DIRECTIONAL FORMATTING
