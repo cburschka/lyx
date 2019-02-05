@@ -1747,9 +1747,9 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 
 	// load CJK support package before font selection
 	// (see autotests/export/latex/CJK/micro-sign_utf8-cjk-libertine.lyx)
-	if (!useNonTeXFonts && encoding().package() != Encoding::none
+	if (!useNonTeXFonts && encoding().package() != Encoding::none && inputenc != "utf8x"
 		&& (encoding().package() == Encoding::CJK || features.mustProvide("CJK"))) {
-		if (encoding().iconvName() == "UTF-8")
+		if (inputenc == "utf8-cjk" || inputenc == "utf8")
 			os << "\\usepackage{CJKutf8}\n";
 		else
 			os << "\\usepackage[encapsulated]{CJK}\n";
