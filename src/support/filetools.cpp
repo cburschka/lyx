@@ -357,25 +357,20 @@ FileName const libFileSearch(string const & dir, string const & name,
 FileName const i18nLibFileSearch(string const & dir, string const & name,
 		  string const & ext)
 {
-	/* The highest priority value is the `LANGUAGE' environment
-	   variable. But we don't use the value if the currently
-	   selected locale is the C locale. This is a GNU extension.
-
-	   Otherwise, w use a trick to guess what support/gettext.has done:
-	   each po file is able to tell us its name. (JMarc)
-	*/
-
+	// if the LANGUAGE variable is set, use it as a fallback for searching for files.
 	string lang = getGuiMessages().language();
 	string const language = getEnv("LANGUAGE");
-	if (!lang.empty() && !language.empty())
-		lang = language;
+	if (!language.empty())
+		lang += ":" + language;
 
-	string l;
-	lang = split(lang, l, ':');
-	while (!l.empty()) {
+	for (auto const & l : getVectorFromString(lang, ":")) {
 		FileName tmp;
 		// First try with the full name
-		tmp = libFileSearch(addPath(dir, l), name, ext);
+		// `en' files are not in a subdirectory
+		if (l == "en")
+			tmp = libFileSearch(dir, name, ext);
+		else
+			tmp = libFileSearch(addPath(dir, l), name, ext);
 		if (!tmp.empty())
 			return tmp;
 
@@ -386,18 +381,6 @@ FileName const i18nLibFileSearch(string const & dir, string const & name,
 			if (!tmp.empty())
 				return tmp;
 		}
-
-#if 1
-		// For compatibility, to be removed later (JMarc)
-		tmp = libFileSearch(dir, token(l, '_', 0) + '_' + name,
-				    ext);
-		if (!tmp.empty()) {
-			lyxerr << "i18nLibFileSearch: File `" << tmp
-			       << "' has been found by the old method" <<endl;
-			return tmp;
-		}
-#endif
-		lang = split(lang, l, ':');
 	}
 
 	return libFileSearch(dir, name, ext);
