@@ -1260,7 +1260,8 @@ void TeXOnePar(Buffer const & buf,
 	// if this is a CJK-paragraph and the next isn't, close CJK
 	// also if the next paragraph is a multilingual environment (because of nesting)
 	if (nextpar
-		&& (state->open_encoding_ == CJK && bparams.encoding().iconvName() != "UTF-8")
+		&& (state->open_encoding_ == CJK && bparams.encoding().iconvName() != "UTF-8"
+			&& bparams.encoding().package() != Encoding::CJK )
 		&& (nextpar_language->encoding()->package() != Encoding::CJK
 		   || (nextpar->layout().isEnvironment() && nextpar->isMultiLingual(bparams)))
 		// inbetween environments, CJK has to be closed later (nesting!)
@@ -1610,8 +1611,8 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 	bool const from_to_cjk =
 		((oldEnc.package() == Encoding::CJK && newEnc.package() != Encoding::CJK)
 		 || (oldEnc.package() != Encoding::CJK && newEnc.package() == Encoding::CJK))
-		&& (bparams.encoding().name() != "utf8-cjk" && bparams.encoding().name() != "utf8")
-		&& bparams.encoding().package() != Encoding::CJK;
+		&& bparams.encoding().iconvName() != "UTF8"
+	  	&& bparams.encoding().package() != Encoding::CJK;
 	if (!force && !from_to_cjk
 	    && ((bparams.inputenc != "auto" && bparams.inputenc != "default") || moving_arg))
 		return make_pair(false, 0);
@@ -1631,14 +1632,12 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 	if (oldEnc.package() == Encoding::none || newEnc.package() == Encoding::none)
 		return make_pair(false, 0);
 
-	// change encoding (not required with UTF8)
-	if (bparams.encoding().iconvName() != "UTF-8") {
-		LYXERR(Debug::LATEX, "Changing LaTeX encoding from "
-			   << oldEnc.name() << " to " << newEnc.name());
-		os << setEncoding(newEnc.iconvName());
-		if (bparams.inputenc == "default")
-		  return make_pair(true, 0);
-	}
+	// change encoding
+	LYXERR(Debug::LATEX, "Changing LaTeX encoding from "
+		   << oldEnc.name() << " to " << newEnc.name());
+	os << setEncoding(newEnc.iconvName());
+	if (bparams.inputenc == "default")
+	  return make_pair(true, 0);
 
 	docstring const inputenc_arg(from_ascii(newEnc.latexName()));
 	OutputState * state = getOutputState();
