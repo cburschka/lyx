@@ -1034,12 +1034,17 @@ class KeyInfo {
     /* inputencoding, shortcut, ...
      * Discard also content, because they do not help in search */
     doRemove,
+    /* twocolumns, ...
+     * like remove, but also all arguments */
+    removeWithArg,
     /* item */
     isList,
     /* tex, latex, ... like isChar */
     isIgnored,
     /* like \lettrine[lines=5]{}{} */
     cleanToStart,
+    /* End of arguments marker for lettrine,
+     * so that they can be ignored */
     endArguments
   };
  KeyInfo()
@@ -1094,7 +1099,7 @@ class Intervall {
   int closes[MAXOPENED];
   int actualdeptindex;
   Border borders[2*MAXOPENED];
-  // int previousNotIgnored(int);
+  int previousNotIgnored(int);
   int nextNotIgnored(int);
   void handleOpenP(int i);
   void handleCloseP(int i, bool closingAllowed);
@@ -1227,7 +1232,6 @@ void Intervall::resetOpenedP(int openPos)
   closes[1] = -1;
 }
 
-#if 0
 int Intervall::previousNotIgnored(int start)
 {
     int idx = 0;                          /* int intervalls */
@@ -1239,7 +1243,6 @@ int Intervall::previousNotIgnored(int start)
     }
     return start;
 }
-#endif
 
 int Intervall::nextNotIgnored(int start)
 {
@@ -1298,6 +1301,17 @@ class LatexInfo {
     }
     else
       return false;
+  };
+  int find(int start, KeyInfo::KeyType keytype) {
+    if (start < 0)
+      return (-1);
+    int tmpIdx = start;
+    while (tmpIdx < int(entries.size())) {
+      if (entries[tmpIdx].keytype == keytype)
+        return tmpIdx;
+      tmpIdx++;
+    }
+    return(-1);
   };
   int process(ostringstream &os, KeyInfo &actual);
   int dispatch(ostringstream &os, int previousStart, KeyInfo &actual);
@@ -1394,6 +1408,8 @@ void LatexInfo::buildEntries(bool isPatternString)
   bool evaluatingMath = false;
   bool evaluatingCode = false;
   size_t codeEnd = 0;
+  bool evaluatingOptional = false;
+  size_t optionalEnd = 0;
   int codeStart = -1;
   KeyInfo found;
   bool math_end_waiting = false;
@@ -1605,6 +1621,22 @@ void LatexInfo::buildEntries(bool isPatternString)
         found._dataStart = found._dataEnd;
       }
       else {
+        int params = found._tokenstart + key.length() + 1;
+        if (evaluatingOptional) {
+          if (size_t(found._tokenstart) > optionalEnd) {
+            evaluatingOptional = false;
+          }
+          else {
+            found.disabled = true;
+          }
+        }
+        if (interval.par[params] == '[') {
+          // discard optional parameters
+          int optend = interval.findclosing(params+1, interval.par.length(), '[', ']') + 1;
+          key += interval.par.substr(params, optend-params);
+          evaluatingOptional = true;
+          optionalEnd = optend;
+        }
         if (found.parenthesiscount == 1) {
           found.head = "\\" + key + "{";
         }
@@ -1759,7 +1791,10 @@ void LatexInfo::buildKeys(bool isPatternString)
   // Remove RTL/LTR marker
   makeKey("l|r|textlr|textfr|textar|beginl|endl", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
   makeKey("lettrine", KeyInfo(KeyInfo::cleanToStart, 0, true), isPatternString);
+  makeKey("lyxslide", KeyInfo(KeyInfo::isSectioning, 1, true), isPatternString);
   makeKey("endarguments", KeyInfo(KeyInfo::endArguments, 0, true), isPatternString);
+  makeKey("twocolumn", KeyInfo(KeyInfo::removeWithArg, 2, true), isPatternString);
+  makeKey("lyxend", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
   if (isPatternString) {
     // Allow the first searched string to rebuild the keys too
     keysBuilt = false;
@@ -1885,7 +1920,7 @@ void LatexInfo::removeHead(KeyInfo &actual, int count)
   }
   else {
     // Remove header hull, that is "\url{abcd}" ==> "abcd"
-    interval.addIntervall(actual._tokenstart, actual._dataStart);
+    interval.addIntervall(actual._tokenstart - count, actual._dataStart);
     interval.addIntervall(actual._dataEnd, actual._dataEnd+1);
   }
 }
@@ -1897,24 +1932,14 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
   {
     case KeyInfo::cleanToStart: {
       actual._dataEnd = actual._dataStart;
-      if (interval.par[actual._dataStart] == '[') {
-        // Discard optional params
-        actual._dataStart = interval.findclosing(actual._dataStart+1, interval.par.length(), '[', ']') + 1;
-      }
-      actual._dataEnd = actual._dataStart;
       nextKeyIdx = getNextKey();
       // Search for end of arguments
-      int tmpIdx = nextKeyIdx;
-      while (tmpIdx > 0) {
-        KeyInfo &nextk = entries[tmpIdx];
-        if (nextk.keytype == KeyInfo::endArguments) {
-          actual._dataEnd = nextk._dataEnd;
-          break;
+      int tmpIdx = find(nextKeyIdx, KeyInfo::endArguments);
+      if (tmpIdx > 0) {
+        for (int i = nextKeyIdx; i <= tmpIdx; i++) {
+          entries[i].disabled = true;
         }
-        nextk.disabled = true;
-        tmpIdx++;
-        if (tmpIdx >= int(entries.size()))
-          break;
+        actual._dataEnd = entries[tmpIdx]._dataEnd;
       }
       while (interval.par[actual._dataEnd] == ' ')
         actual._dataEnd++;
@@ -1986,6 +2011,19 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       }
       break;
     }
+    case KeyInfo::removeWithArg: {
+      nextKeyIdx = getNextKey();
+      // Search for end of arguments
+      int tmpIdx = find(nextKeyIdx, KeyInfo::endArguments);
+      if (tmpIdx > 0) {
+        for (int i = nextKeyIdx; i <= tmpIdx; i++) {
+          entries[i].disabled = true;
+        }
+        actual._dataEnd = entries[tmpIdx]._dataEnd;
+      }
+      interval.addIntervall(actual._tokenstart, actual._dataEnd+1);
+      break;
+    }
     case KeyInfo::doRemove: {
       // Remove the key with all parameters and following spaces
       size_t pos;
@@ -2040,9 +2078,14 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
     case KeyInfo::isSectioning: {
       // Discard spaces before _tokenstart
       int count;
-      for (count = 0; count < actual._tokenstart; count++) {
-        if (interval.par[actual._tokenstart-count-1] != ' ')
+      int val = actual._tokenstart;
+      for (count = 0; count < actual._tokenstart;) {
+        val = interval.previousNotIgnored(val-1);
+        if (interval.par[val] != ' ')
           break;
+        else {
+          count = actual._tokenstart - val;
+        }
       }
       if (actual.disabled) {
         removeHead(actual, count);
@@ -2079,7 +2122,8 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
           // Discard also the space before math-equation
           interval.addIntervall(actual._dataStart, actual._dataStart+1);
         }
-        interval.resetOpenedP(actual._dataStart-1);
+        nextKeyIdx = getNextKey();
+        // interval.resetOpenedP(actual._dataStart-1);
       }
       else {
         if (actual._tokenstart == 0) {
@@ -2119,7 +2163,7 @@ int LatexInfo::process(ostringstream &os, KeyInfo &actual )
     }
     KeyInfo &nextKey = getKeyInfo(nextKeyIdx);
 
-    if (nextKey.keytype == KeyInfo::isMain) {
+    if ((nextKey.keytype == KeyInfo::isMain) && !nextKey.disabled) {
       (void) dispatch(os, actual._dataStart, nextKey);
       end = nextKey._tokenstart;
       break;
@@ -2627,8 +2671,12 @@ string MatchStringAdv::normalize(docstring const & s, bool hack_braces) const
 		t = t.substr(0, t.size() - 1);
 	size_t pos;
 	// Replace all other \n with spaces
-	while ((pos = t.find("\n")) != string::npos)
-		t.replace(pos, 1, " ");
+	while ((pos = t.find("\n")) != string::npos) {
+		if (!std::isalnum(t[pos+1]) || !std::isalnum(t[pos-1]))
+			t.replace(pos, 1, "");
+		else
+			t.replace(pos, 1, " ");
+	}
 	// Remove stale empty \emph{}, \textbf{} and similar blocks from latexify
 	// Kornel: Added textsl, textsf, textit, texttt and noun
 	// + allow to seach for colored text too
