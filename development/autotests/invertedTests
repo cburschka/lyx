@@ -138,7 +138,7 @@ export/doc/ar/UserGuide_lyx(22|23)
 # Polyglossia + LuaTeX does not support Farsi yet. See:
 #     https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
 # Why does farsi fail with Babel?
-export/examples/fa/splash_(dvi|pdf).*
+export/examples/fa/splash_.*(texF|systemF)
 
 # nonstandard tests failing for unknown reason:
 export/examples/aa_sample_(dvi3|pdf[45])_.*
