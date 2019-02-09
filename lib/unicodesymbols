@@ -141,14 +141,15 @@
 0x00f0 "\\dh"                     "" "force=euc-jp;euc-kr,tipashortcut=D" "\\eth" "amssymb" # LATIN SMALL LETTER ETH
 0x00f1 "\\~{n}"                   "" "mathalpha,force=cp862;euc-jp" "\\tilde{n}" # LATIN SMALL LETTER N WITH TILDE
 0x00f2 "\\`{o}"                   "" "mathalpha,force=euc-cn;euc-jp;gbk" "\\grave{o}" # LATIN SMALL LETTER O WITH GRAVE
-0x00f3 "\\'{o}"                   "" "mathalpha,force=euc-cn;euc-jp;gbk" "\\acute{o}" # LATIN SMALL LETTER O WITH ACUTE
+0x00f3 "\\'{o}"                   "" "mathalpha,force=cp862;euc-cn;euc-jp;gbk" "\\acute{o}" # LATIN SMALL LETTER O WITH ACUTE
 0x00f4 "\\^{o}"                   "" "mathalpha,force=euc-jp" "\\hat{o}" # LATIN SMALL LETTER O WITH CIRCUMFLEX
 0x00f5 "\\~{o}"                   "" "mathalpha,force=euc-jp" "\\tilde{o}" # LATIN SMALL LETTER O WITH TILDE
 0x00f6 "\\\"{o}"                  "" "mathalpha,force=euc-jp" "\\ddot{o}" # LATIN SMALL LETTER O WITH DIAERESIS
 0x00f7 "\\textdiv"                "textcomp" "force" "\\div" # ÷ DIVISION SIGN
 0x00f8 "\\o"                      "" "mathalpha,force=euc-jp;euc-kr" "\\slashed{o}" "slashed" # LATIN SMALL LETTER O WITH STROKE
 0x00f9 "\\`{u}"                   "" "mathalpha,force=euc-cn;euc-jp;gbk" "\\grave{u}" # LATIN SMALL LETTER U WITH GRAVE
-0x00fa "\\'{u}"                   "" "mathalpha,force=euc-cn;euc-jp;gbk" "\\acute{u}" # LATIN SMALL LETTER U WITH ACUTE
+0x00fa "\\'{u}"                   "" "mathalpha,force=cp862;euc-cn;euc-jp;gbk" "\\acute{o}" # LATIN SMALL LETTER O WITH ACUTE
+0x00f4 "\\^{o}"                   "" "mathalpha,force=euc-jpeuc-cn;euc-jp;gbk" "\\acute{u}" # LATIN SMALL LETTER U WITH ACUTE
 0x00fb "\\^{u}"                   "" "mathalpha,force=euc-jp" "\\hat{u}" # LATIN SMALL LETTER U WITH CIRCUMFLEX
 0x00fc "\\\"{u}"                  "" "mathalpha,force=euc-cn;euc-jp;gbk" "\\ddot{u}" # LATIN SMALL LETTER U WITH DIAERESIS
 0x00fd "\\'{y}"                   "" "mathalpha,force=euc-jp" "\\acute{y}" # LATIN SMALL LETTER Y WITH ACUTE

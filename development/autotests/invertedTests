@@ -96,8 +96,6 @@ export/export/latex/CJK/ko_default_pdf2
 
 # Failing for unknown reason
 # Hebrew
-export/export/latex/unicodesymbols/001-4-latin_cp1255_pdf2
-export/export/latex/unicodesymbols/001-4-latin_cp862_pdf2
 export/export/latex/unicodesymbols/008-greek-and-coptic-with-textalpha_cp862_pdf2
 export/export/latex/unicodesymbols/008-greek-and-coptic_cp862_pdf2
 export/export/latex/unicodesymbols/070-72-general-punctuation-sub-super-currency_cp1255_pdf2
@@ -105,8 +103,6 @@ export/export/latex/unicodesymbols/070-72-general-punctuation-sub-super-currency
 export/export/latex/unicodesymbols/070-72-general-punctuation-sub-super-currency_iso8859-8_pdf2
 export/export/latex/unicodesymbols/074-76-letterlike-numberforms-arrows_cp862_pdf2
 # Arabic:
-export/export/latex/unicodesymbols/001-4-latin_cp1256_pdf2
-export/export/latex/unicodesymbols/001-4-latin_iso8859-6_pdf2
 export/export/latex/unicodesymbols/005-7-ipa-modifiers-combining_cp1256_pdf2
 export/export/latex/unicodesymbols/008-greek-and-coptic-with-textalpha_cp1256_pdf2
 export/export/latex/unicodesymbols/008-greek-and-coptic_cp1256_pdf2
@@ -137,7 +133,7 @@ export/doc/ar/UserGuide_lyx(22|23)
 
 # Polyglossia + LuaTeX does not support Farsi yet. See:
 #     https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
-# Why does farsi fail with Babel?
+# It also fails with tex-fonts and Xe/LuaTeX and with XeTeX+polygossia. Why?
 export/examples/fa/splash_.*(texF|systemF)
 
 # nonstandard tests failing for unknown reason:
