@@ -185,7 +185,7 @@
 0x0118 "\\k{E}"                   "" "mathalpha,force=euc-jp" "\\ogonek{E}" "accents,tipasymb,ogonek" # LATIN CAPITAL LETTER E WITH OGONEK
 0x0119 "\\k{e}"                   "" "mathalpha,force=euc-jp" "\\ogonek{e}" "accents,tipasymb,ogonek" # LATIN SMALL LETTER E WITH OGONEK
 0x011a "\\v{E}"                   "" "mathalpha,force=euc-jp" "\\check{E}" # LATIN CAPITAL LETTER E WITH CARON
-0x011b "\\v{e}"                   "" "mathalpha,force=euc-jp;gbk" "\\check{e}" # LATIN SMALL LETTER E WITH CARON
+0x011b "\\v{e}"                   "" "mathalpha,force=euc-cn;euc-jp;gbk" "\\check{e}" # LATIN SMALL LETTER E WITH CARON
 0x011c "\\^{G}"                   "" "mathalpha,force=euc-jp" "\\hat{G}" # LATIN CAPITAL LETTER G WITH CIRCUMFLEX
 0x011d "\\^{g}"                   "" "mathalpha,force=euc-jp" "\\hat{g}" # LATIN SMALL LETTER G WITH CIRCUMFLEX
 0x011e "\\u{G}"                   "" "mathalpha,force=euc-jp" "\\breve{G}" # LATIN CAPITAL LETTER G WITH BREVE
