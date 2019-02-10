@@ -151,19 +151,19 @@ SectionEnd
 
 Section /o "English (AU)" SecDEnglishAU
  StrCpy $DictCodes "en_AU,$DictCodes"
- AddSize 552
+ AddSize 557
 SectionEnd
 
 Section /o "English (CA)" SecDEnglishCA
  StrCpy $DictCodes "en_CA,$DictCodes"
- AddSize 550
+ AddSize 557
 SectionEnd
 
 Section "English (GB)" SecDEnglishGB
  # already installed by default
  SectionIn RO
  #StrCpy $DictCodes "en_GB,$DictCodes"
- AddSize 742
+ AddSize 1044
 SectionEnd
 
 Section /o "English (NZ)" SecDEnglishNZ
@@ -175,7 +175,7 @@ Section "English (US)" SecDEnglishUS
  # already installed by default
  SectionIn RO
  #StrCpy $DictCodes "en_US,$DictCodes"
- AddSize 548
+ AddSize 551
 SectionEnd
 
 Section "Español (ES)" SecDSpanishES
@@ -232,6 +232,11 @@ SectionEnd
 Section /o "Galego" SecDGalician
  StrCpy $DictCodes "gl_ES,$DictCodes"
  AddSize 3911
+SectionEnd
+
+Section /o "ქართული ენა" SecDGeorgian
+ StrCpy $DictCodes "ka_GE,$DictCodes"
+ AddSize 3952
 SectionEnd
 
 Section /o "עִברִית" SecDHebrew
@@ -406,7 +411,7 @@ SectionEnd
 
 Section /o "Türkmençe" SecDTurkmen
  StrCpy $DictCodes "tk_TM,$DictCodes"
- AddSize 950
+ AddSize 2797
 SectionEnd
 
 Section /o "Türkçe" SecDTurkish
@@ -416,7 +421,7 @@ SectionEnd
 
 Section /o "Українська" SecDUkrainian
  StrCpy $DictCodes "uk_UA,$DictCodes"
- AddSize 6375
+ AddSize 6905
 SectionEnd
 
 Section /o "اردو" SecDUrdu
@@ -921,6 +926,13 @@ Function .onInit
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
    SectionSetFlags ${SecDGalician} $0
    SectionSetSize ${SecDGalician} 0
+  ${endif}
+  StrCpy $Search "ka_GE"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDGeorgian} $0
+   SectionSetSize ${SecDGeorgian} 0
   ${endif}
   StrCpy $Search "he_IL"
   Call StrPoint
