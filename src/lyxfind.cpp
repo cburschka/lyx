@@ -880,7 +880,7 @@ private:
 	string par_as_string;
 	// regular expression to use for searching
 	lyx::regex regexp;
-	// same as regexp, but prefixed with a ".*"
+	// same as regexp, but prefixed with a ".*?"
 	lyx::regex regexp2;
 	// leading format material as string
 	string lead_as_string;
@@ -1541,13 +1541,17 @@ void LatexInfo::buildEntries(bool isPatternString)
         // First handle tables
         // longtable|tabular
         bool discardComment;
+        found = keys[key];
+        found.keytype = KeyInfo::doRemove;
         if ((sub.str(5).compare("longtable") == 0) ||
             (sub.str(5).compare("tabular") == 0)) {
           discardComment = true;        /* '%' */
         }
-        else
+        else {
           discardComment = false;
-        found = keys[key];
+          if (sub.str(5).compare("multicols") == 0)
+            found.keytype = KeyInfo::removeWithArg;
+        }
         // discard spaces before pos(0)
         int pos = sub.position(size_t(0));
         int count;
@@ -1560,7 +1564,6 @@ void LatexInfo::buildEntries(bool isPatternString)
           else if (c != ' ')
             break;
         }
-        found.keytype = KeyInfo::doRemove;
         found._tokenstart = pos - count;
         if (sub.str(1).compare(0, 5, "begin") == 0) {
           size_t pos1 = pos + sub.str(0).length();
@@ -1737,7 +1740,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   // No split
   makeKey("backslash|textbackslash|slash",  KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("textasciicircum|textasciitilde", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-  makeKey("textasciiacute",                 KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  makeKey("textasciiacute|texemdash",       KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("dots|ldots",                     KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   // Spaces
   makeKey("quad|qquad|hfill|dotfill",               KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
@@ -1764,7 +1767,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("menuitem|textmd|textrm", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
 
   // Remove language spec from content of these insets
-  makeKey("code|footnote", KeyInfo(KeyInfo::noMain, 1, false), isPatternString);
+  makeKey("code", KeyInfo(KeyInfo::noMain, 1, false), isPatternString);
 
   // Same effect as previous, parameter will survive (because there is no one anyway)
   // No split
@@ -1776,6 +1779,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("trianglerightpar|hexagonpar|starpar",   KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("triangleuppar|triangledownpar|droppar", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("triangleleftpar|shapepar|dropuppar",    KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+  makeKey("hphantom|footnote",    KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   // like ('tiny{}' or '\tiny ' ... )
   makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, false), isPatternString);
 
@@ -1787,7 +1791,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("[|]", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
   makeKey("$", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
 
-  makeKey("par|uldepth|ULdepth|protect|nobreakdash", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
+  makeKey("par|uldepth|ULdepth|protect|nobreakdash|medskip", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
   // Remove RTL/LTR marker
   makeKey("l|r|textlr|textfr|textar|beginl|endl", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
   makeKey("lettrine", KeyInfo(KeyInfo::cleanToStart, 0, true), isPatternString);
@@ -2000,7 +2004,7 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
         processRegion(actual._dataStart, actual._dataStart+1);
         nextKeyIdx = getNextKey();
       } else {
-        // Split on this key if not at start
+        // Split on this key if not at datastart of calling entry
         int start = interval.nextNotIgnored(previousStart);
         if (start < actual._tokenstart) {
           interval.output(os, actual._tokenstart);
@@ -2206,9 +2210,11 @@ int LatexInfo::process(ostringstream &os, KeyInfo &actual )
   return nextKeyIdx;
 }
 
-string splitOnKnownMacros(string par, bool isPatternString) {
+string splitOnKnownMacros(string par, bool isPatternString)
+{
   ostringstream os;
   LatexInfo li(par, isPatternString);
+  // LYXERR0("Berfore split: " << par);
   KeyInfo DummyKey = KeyInfo(KeyInfo::KeyType::isMain, 2, true);
   DummyKey.head = "";
   DummyKey._tokensize = 0;
@@ -2279,6 +2285,7 @@ string splitOnKnownMacros(string par, bool isPatternString) {
   }
   else
     s = par;                            /* no known macros found */
+  // LYXERR0("After split: " << s);
   return s;
 }
 
@@ -2459,7 +2466,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 				while (regex_replace(par_as_string, par_as_string, orig, dest));
 			}
 			regexp_str = "(" + lead_as_regexp + ")" + par_as_string;
-			regexp2_str = "(" + lead_as_regexp + ").*" + par_as_string;
+			regexp2_str = "(" + lead_as_regexp + ").*?" + par_as_string;
 		}
 		LYXERR(Debug::FIND, "Setting regexp to : '" << regexp_str << "'");
 		regexp = lyx::regex(regexp_str);
@@ -2670,12 +2677,25 @@ string MatchStringAdv::normalize(docstring const & s, bool hack_braces) const
 	while (!t.empty() && t[t.size() - 1] == '\n')
 		t = t.substr(0, t.size() - 1);
 	size_t pos;
-	// Replace all other \n with spaces
+	// Handle all other '\n'
 	while ((pos = t.find("\n")) != string::npos) {
-		if (!std::isalnum(t[pos+1]) || !std::isalnum(t[pos-1]))
+		if (pos > 1 && t[pos-1] == '\\' && t[pos-2] == '\\' ) {
+			// Handle '\\\n'
+			if (std::isalnum(t[pos+1])) {
+				t.replace(pos-2, 3, " ");
+			}
+			else {
+				t.replace(pos-2, 3, "");
+			}
+		}
+		else if (!std::isalnum(t[pos+1]) || !std::isalnum(t[pos-1])) {
+			// '\n' adjacent to non-alpha-numerics, discard
 			t.replace(pos, 1, "");
-		else
+		}
+		else {
+			// Replace all other \n with spaces
 			t.replace(pos, 1, " ");
+		}
 	}
 	// Remove stale empty \emph{}, \textbf{} and similar blocks from latexify
 	// Kornel: Added textsl, textsf, textit, texttt and noun
