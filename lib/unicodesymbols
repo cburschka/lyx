@@ -1870,7 +1870,7 @@
 0x2102 ""                         "" "force=utf8;utf8-cjk" "\\mathbb{C}" "amssymb" # DOUBLE-STRUCK CAPITAL C
 0x2103 "\\textcelsius"            "textcomp" "force=utf8x;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "" "" # DEGREE CELSIUS
 #0x2104 ""                         "" "" "" "" # CENTRE LINE SYMBOL
-0x2105 "\\smallLetterFrac{c}{o}" "smallLetterFrac" "force=utf8;utf8x;utf8-cjk;euc-tw" "" "" # CARE OF
+0x2105 "\\smallLetterFrac{c}{o}" "smallLetterFrac" "force=utf8;utf8x;utf8-cjk;euc-tw;gbk" "" "" # CARE OF
 0x2106 "\\smallLetterFrac{c}{u}" "smallLetterFrac" "force=utf8;utf8x;utf8-cjk" "" "" # CADA UNA
 #0x2107 ""                         "" "" "" "" # EULER CONSTANT
 #0x2108 ""                         "" "" "" "" # SCRUPLE
@@ -2018,10 +2018,10 @@
 0x2193 "\\textdownarrow"          "textcomp" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\downarrow" # DOWNWARDS ARROW
 0x2194 ""                         "" "force=utf8;utf8-cjk;euc-kr" "\\leftrightarrow" # LEFT RIGHT ARROW
 0x2195 ""                         "" "force=utf8;utf8-cjk;euc-kr" "\\updownarrow" # UP DOWN ARROW
-0x2196 ""                         "" "force=utf8;utf8x;utf8-cjk;euc-kr;euc-tw" "\\nwarrow" "" # NORTH WEST ARROW
-0x2197 "\\textglobrise"           "tipa" "force=utf8;utf8x;utf8-cjk;euc-kr;euc-tw" "\\nearrow" "" # NORTH EAST ARROW
-0x2198 "\\textglobfall"           "tipa" "force=utf8;utf8x;utf8-cjk;euc-kr;euc-tw" "\\searrow" "" #
-0x2199 ""                         "" "force=utf8;utf8x;utf8-cjk;euc-kr;euc-tw" "\\swarrow" "" # SOUTH WEST ARROW
+0x2196 ""                         "" "force=utf8;utf8x;utf8-cjk;euc-kr;euc-tw;gbk" "\\nwarrow" "" # NORTH WEST ARROW
+0x2197 "\\textglobrise"           "tipa" "force=utf8;utf8x;utf8-cjk;euc-kr;euc-tw;gbk" "\\nearrow" "" # NORTH EAST ARROW
+0x2198 "\\textglobfall"           "tipa" "force=utf8;utf8x;utf8-cjk;euc-kr;euc-tw;gbk" "\\searrow" "" #
+0x2199 ""                         "" "force=utf8;utf8x;utf8-cjk;euc-kr;euc-tw;gbk" "\\swarrow" "" # SOUTH WEST ARROW
 0x219a ""                         "" "force=utf8;utf8x;utf8-cjk" "\\nleftarrow" "amssymb" # LEFTWARDS ARROW WITH STROKE
 0x219b ""                         "" "force=utf8;utf8x;utf8-cjk" "\\nrightarrow" "amssymb" # RIGHTWARDS ARROW WITH STROKE
 #0x219c ""                         "" "" "" "" # LEFTWARDS WAVE ARROW
@@ -2080,9 +2080,9 @@
 0x21cf ""                         "" "force=utf8;utf8x;utf8-cjk" "\\nRightarrow" "amssymb" # RIGHTWARDS DOUBLE ARROW WITH STROKE
 0x21d0 ""                         "" "force=utf8;utf8-cjk" "\\Leftarrow" "" # LEFTWARDS DOUBLE ARROW
 0x21d1 ""                         "" "force=utf8;utf8-cjk" "\\Uparrow" "" # UPWARDS DOUBLE ARROW
-0x21d2 ""                         "" "force=utf8;utf8-cjk;euc-kr;jis" "\\Rightarrow" "" # RIGHTWARDS DOUBLE ARROW
+0x21d2 ""                         "" "force=utf8;utf8-cjk;euc-jp;euc-kr;jis" "\\Rightarrow" "" # RIGHTWARDS DOUBLE ARROW
 0x21d3 ""                         "" "force=utf8;utf8-cjk" "\\Downarrow" "" # DOWNWARDS DOUBLE ARROW
-0x21d4 ""                         "" "force=utf8;utf8-cjk;euc-kr;jis" "\\Leftrightarrow" "" # LEFT RIGHT DOUBLE ARROW
+0x21d4 ""                         "" "force=utf8;utf8-cjk;euc-jp;euc-kr;jis" "\\Leftrightarrow" "" # LEFT RIGHT DOUBLE ARROW
 0x21d5 ""                         "" "force=utf8;utf8-cjk" "\\Updownarrow" "" # UP DOWN DOUBLE ARROW
 #0x21d6 ""                         "" "" "\\Nwarrow" "MnSymbol" # NORTH WEST DOUBLE ARROW
 #0x21d7 ""                         "" "" "\\Nearrow" "MnSymbol" # NORTH EAST DOUBLE ARROW
