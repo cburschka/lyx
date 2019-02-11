@@ -2903,6 +2903,39 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 	      len = (int)((maxl + minl)/2);
 	    }
 	  }
+          old_cur = cur;
+          // Search for real start of matched characters
+          while (len > 1) {
+            int actual_match;
+            do {
+              cur.forwardPos();
+            } while (cur.depth() > old_cur.depth()); /* Skip inner insets */
+            if (cur.depth() < old_cur.depth()) {
+              // Outer inset?
+              LYXERR0("cur.depth() < old_cur.depth(), this should never happen");
+              break;
+            }
+            if (cur.pos() != old_cur.pos()) {
+              // OK, forwarded 1 pos in actual inset
+              actual_match = match(cur, len-1);
+              if (actual_match == max_match) {
+                // Ha, got it! The shorter selection has the same match length
+                len--;
+                old_cur = cur;
+              }
+              else {
+                // OK, the shorter selection matches less chars, revert to previous value
+                cur = old_cur;
+                break;
+              }
+            }
+            else {
+              LYXERR0("cur.pos() == old_cur.pos(), this should never happen");
+              actual_match = match(cur, len);
+              if (actual_match == max_match)
+                old_cur = cur;
+            }
+          }
 	}
 	return len;
 }
