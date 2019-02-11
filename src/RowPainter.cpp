@@ -525,9 +525,9 @@ void RowPainter::paintLast() const
 		}
 
 		if (endlabel == END_LABEL_BOX)
-			pi_.pain.rectangle(xo_ + x, y, size, size, Color_eolmarker);
+			pi_.pain.rectangle(int(xo_) + x, y, size, size, Color_eolmarker);
 		else
-			pi_.pain.fillRectangle(xo_ + x, y, size, size, Color_eolmarker);
+			pi_.pain.fillRectangle(int(xo_) + x, y, size, size, Color_eolmarker);
 		break;
 	}
 
