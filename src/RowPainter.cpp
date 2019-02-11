@@ -553,9 +553,9 @@ void RowPainter::paintLast() const
 		}
 
 		if (endlabel == END_LABEL_BOX)
-			pi_.pain.rectangle(xo_ + x, y, size, size, font.realColor());
+			pi_.pain.rectangle(int(xo_) + x, y, size, size, font.realColor());
 		else
-			pi_.pain.fillRectangle(xo_ + x, y, size, size, font.realColor());
+			pi_.pain.fillRectangle(int(xo_) + x, y, size, size, font.realColor());
 		break;
 	}
 
