@@ -1779,7 +1779,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		}
 	}
 
-	// TODO: load textcomp and pmboxdraw before (lua)inputenc (#11454)
+	// Load textcomp and pmboxdraw before (lua)inputenc (#11454)
 	if (features.mustProvide("textcomp"))
 		os << "\\usepackage{textcomp}\n";
 	if (features.mustProvide("pmboxdraw"))
