@@ -61,6 +61,9 @@ export/export/latex/cp858_pdf2
 # Seminar export with LaTeX fails in latest TeXLive:
 export/examples/(|fr/)seminar_(dvi|pdf).*
 
+# since TeXLive18, 8-bit LaTeX defaults to utf-8
+# ----------------------------------------------
+
 # `acmart` calls "libertine" as default font.
 # With TeXLive < 18, this clashes with LyX setting up 8-bit TeX fonts
 # PDF (luatex) and PDF (xetex) (compilation error or wrong fonts).
@@ -86,13 +89,15 @@ export/examples/(|fr/)seminar_(dvi|pdf).*
 # ÃŊndice instead of Índice.
 # The problem is generic to all Spanish documents but only manifests itself
 # if Babel strings with non-ASCII chars are deployed.
+# In some cases, export fails unless the inputencoding is set to utf-8, too
+# (see invertedTests, some more tests fail with TeXLive versions < 18).
 # Set inputenc to utf8? (Changing the default in lib/languages
 # requires more tests for utf8 first.)
 export/examples/es/(ejemplo_con_lyx|tufte_book)_(pdf5|dvi3)_texF
 export/doc/es/.*_(pdf5|dvi3)_texF
 
 #6197: „amssymb” with Polish babel: name clash \lll ("<<<" vs. "ł")
-# Wrong output with pdflatex 
+# Wrong output with pdflatex
 # missing character with XeTeX/LuaTeX and Babel (-> invertedTests)
 export/export/latex/6197-polish-amssymb_(dvi|pdf).?
 
