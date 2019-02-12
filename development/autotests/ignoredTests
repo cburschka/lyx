@@ -20,7 +20,10 @@ export/examples/(Literate|noweb2lyx)_lyx16
 
 # Ignore MergedManuals_xhtml because the test is very time-consuming
 # and the underlying subdocuments are already tested
-export/doc/(ja/|)MergedManuals_xhtml
+# Ignore MergedManuals_lyx2[2-9] too
+# due to following xhtml export of converted file
+export/doc/(ja/|)MergedManuals_(xhtml|lyx2[2-9])
+
 
 
 # ===========================================
