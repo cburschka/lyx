@@ -1512,10 +1512,16 @@ void LatexInfo::buildEntries(bool isPatternString)
         math_pos = mi.getStartPos();
       }
       if (keys.find(key) == keys.end()) {
-        LYXERR(Debug::FIND, "Found unknown key " << sub.str(0));
-        continue;
+        found = KeyInfo(KeyInfo::isStandard, 0, true);
+        if (isPatternString) {
+          found.keytype = KeyInfo::isChar;
+          found.disabled = false;
+          found.used = true;
+        }
+        keys[key] = found;
       }
-      found = keys[key];
+      else
+        found = keys[key];
       if (key.compare("regexp") == 0) {
         evaluatingRegexp = true;
         found._tokenstart = sub.position(size_t(0));
@@ -1747,7 +1753,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("textvisiblespace|nobreakspace",          KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("negthickspace|negmedspace|negthinspace", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   // Skip
-  makeKey("enskip|smallskip|medskip|bigskip|vfill", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  // makeKey("enskip|smallskip|medskip|bigskip|vfill", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   // Custom space/skip, remove the content (== length value)
   makeKey("vspace|hspace|mspace", KeyInfo(KeyInfo::noContent, 1, false), isPatternString);
   // Found in fr/UserGuide.lyx
@@ -1784,7 +1790,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, false), isPatternString);
 
   // Survives, like known character
-  makeKey("lyx|latex|latexe|tex", KeyInfo(KeyInfo::isIgnored, 0, false), isPatternString);
+  makeKey("lyx|latex|latexe|tex", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("item", KeyInfo(KeyInfo::isList, 1, false), isPatternString);
 
   makeKey("begin|end", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
@@ -1954,7 +1960,10 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       break;
     }
     case KeyInfo::noContent: {          /* char like "\hspace{2cm}" */
-      interval.addIntervall(actual._dataStart, actual._dataEnd);
+      if (actual.disabled)
+        interval.addIntervall(actual._tokenstart, actual._dataEnd);
+      else
+        interval.addIntervall(actual._dataStart, actual._dataEnd);
     }
       // fall through
     case KeyInfo::isChar: {
