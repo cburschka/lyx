@@ -105,9 +105,7 @@ export/export/latex/unicodesymbols/074-76-letterlike-numberforms-arrows_cp862_pd
 # Arabic:
 export/export/latex/unicodesymbols/005-7-ipa-modifiers-combining_cp1256_pdf2
 export/export/latex/unicodesymbols/008-greek-and-coptic-with-textalpha_cp1256_pdf2
-export/export/latex/unicodesymbols/008-greek-and-coptic_cp1256_pdf2
 export/export/latex/unicodesymbols/069-greek-extended-textalpha_cp1256_pdf2
-export/export/latex/unicodesymbols/069-greek-extended_cp1256_pdf2
 export/export/latex/unicodesymbols/070-72-general-punctuation-sub-super-currency_cp1256_pdf2
 export/export/latex/unicodesymbols/074-76-letterlike-numberforms-arrows_cp1256_pdf2
 
@@ -187,11 +185,9 @@ export/export/WrongDfnTagHandling_xhtml
 # contains underscores etc.
 export/export/latex/LongestLabelWithUnderscore.*
 
-#11454 luainputenc must be loaded after textcomp
-export/export/latex/luainputenc-utf8_pdf5_texF
-# (The version with Unicode fonts fails because some symbols are missing
-# in LatinModern as well as DejaVu. This shows that there are use cases
-# for traditional 8-bit fonts.)
+# Common Unicode fonts don't support all characters supported by
+# lib/unicodesymbols. (This shows that there are use cases for 8-bit fonts
+# or GUI support for selecting more than one system font.)
 export/export/latex/luainputenc-utf8_pdf5_systemF
 
 #11455 "Unable to process argument!" with multiple 1.6.x roundtrips
