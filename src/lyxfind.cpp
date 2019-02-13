@@ -1764,7 +1764,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   // Known macros to remove (including their parameter)
   // No split
   makeKey("inputencoding|shortcut|label|ref|index", KeyInfo(KeyInfo::doRemove, 1, false), isPatternString);
-
+  makeKey("addtocounter",                           KeyInfo(KeyInfo::noContent, 2, true), isPatternString);
   // handle like standard keys with 1 parameter.
   makeKey("url|href|vref|thanks", KeyInfo(KeyInfo::isStandard, 1, false), isPatternString);
 
@@ -1785,7 +1785,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("trianglerightpar|hexagonpar|starpar",   KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("triangleuppar|triangledownpar|droppar", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("triangleleftpar|shapepar|dropuppar",    KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
-  makeKey("hphantom|footnote",    KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+  makeKey("hphantom|footnote|includegraphics",     KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   // like ('tiny{}' or '\tiny ' ... )
   makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, false), isPatternString);
 
