@@ -30,15 +30,6 @@ export/export/latex/systemfonts-Math-missingchars.*systemF
 # XeTeX artifact? works with LuaTeX, explore:
 export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_systemF
 
-# Changes in TeX Live 2014 (see git blame for info) fixed
-# IEEEtran-CompSoc_pdf4_systemF but not others.
-# TODO Investigate if others can be fixed?
-# * IEEEtran-Journal_pdf4_systemF compiles here (GM)
-# * All IEEEtran-TransMag.* exports fail here:
-#   missing commands \IEEEtitleabstractindextext, \IEEEdisplaynontitleabstractindextext
-#   -> adapt template and style (GM)
-export/templates/IEEEtran-(Journal|TransMag)_pdf4_systemF
-
 # Example for lib/scripts/listerrors
 # Requires noweb. Seems to be restricted to plain "latex".
 # Find out why and whether the script could be improved.
