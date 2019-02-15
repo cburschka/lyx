@@ -831,15 +831,10 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 	if (oldpar.isFreeSpacing())
 		return false;
 
-	// Find a common inset and the corresponding depth.
-	size_t depth = 0;
-	for (; depth < cur.depth(); ++depth)
-		if (&old.inset() == &cur[depth].inset())
-			break;
-
 	// Whether a common inset is found and whether the cursor is still in
 	// the same paragraph (possibly nested).
-	bool const same_par = depth < cur.depth() && old.idx() == cur[depth].idx()
+	int const depth = cur.find(&old.inset());
+	bool const same_par = depth != -1 && old.idx() == cur[depth].idx()
 		&& old.pit() == cur[depth].pit();
 
 	/*
