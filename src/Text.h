@@ -301,13 +301,13 @@ public:
 
 	/// delete double spaces, leading spaces, and empty paragraphs around old cursor.
 	/// \retval true if a change has happened and we need a redraw.
-	/// FIXME: replace Cursor with DocIterator. This is not possible right
-	/// now because recordUndo() is called which needs a Cursor.
+	/// Handles undo.
 	static bool deleteEmptyParagraphMechanism(Cursor & cur,
 		Cursor & old, bool & need_anchor_change);
 
 	/// delete double spaces, leading spaces, and empty paragraphs
 	/// from \first to \last paragraph
+	/// Does NOT handle undo (responsibility of the caller)
 	void deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool trackChanges);
 
 	/// To resolve macros properly the texts get their DocIterator.

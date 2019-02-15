@@ -819,6 +819,10 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 	Paragraph & oldpar = old.paragraph();
 	bool const trackChanges = cur.buffer()->params().track_changes;
 
+	// We do not do anything on read-only documents
+	if (cur.buffer()->isReadonly())
+		return false;
+
 	// We allow all kinds of "mumbo-jumbo" when freespacing.
 	if (oldpar.isFreeSpacing())
 		return false;
@@ -879,6 +883,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 
 		// Remove spaces and adapt cursor.
 		if (num_spaces > 0) {
+			old.recordUndo();
 			int const deleted =
 				deleteSpaces(oldpar, from, to, num_spaces, trackChanges);
 			// correct cur position
