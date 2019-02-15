@@ -186,6 +186,8 @@ void Text::setLayout(pit_type start, pit_type end,
 		if (lyxlayout.margintype == MARGIN_MANUAL)
 			par.setLabelWidthString(par.expandLabel(lyxlayout, bp));
 	}
+
+	deleteEmptyParagraphMechanism(start, end - 1, bp.track_changes);
 }
 
 
@@ -198,6 +200,7 @@ void Text::setLayout(Cursor & cur, docstring const & layout)
 	pit_type end = cur.selEnd().pit() + 1;
 	cur.recordUndoSelection();
 	setLayout(start, end, layout);
+	cur.fixIfBroken();
 	cur.setCurrentFont();
 	cur.forceBufferUpdate();
 }
