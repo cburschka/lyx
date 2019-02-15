@@ -819,6 +819,10 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 	Paragraph & oldpar = old.paragraph();
 	bool const trackChanges = cur.buffer()->params().track_changes;
 
+	// We do nothing if cursor did not move
+	if (cur.top() == old.top())
+		return false;
+
 	// We do not do anything on read-only documents
 	if (cur.buffer()->isReadonly())
 		return false;
@@ -826,6 +830,22 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 	// We allow all kinds of "mumbo-jumbo" when freespacing.
 	if (oldpar.isFreeSpacing())
 		return false;
+
+	// Find a common inset and the corresponding depth.
+	size_t depth = 0;
+	for (; depth < cur.depth(); ++depth)
+		if (&old.inset() == &cur[depth].inset())
+			break;
+
+	// Whether a common inset is found and whether the cursor is still in
+	// the same paragraph (possibly nested).
+	bool const same_par = depth < cur.depth() && old.idx() == cur[depth].idx()
+		&& old.pit() == cur[depth].pit();
+
+	/*
+	 * (1) If the chars around the old cursor were spaces, delete some of
+	 * them, but only if the cursor has really moved.
+	 */
 
 	/* Ok I'll put some comments here about what is missing.
 	   There are still some small problems that can lead to
@@ -844,60 +864,47 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 	// delete the LineSeparator.
 	// MISSING
 
-	// Find a common inset and the corresponding depth.
-	size_t depth = 0;
-	for (; depth < cur.depth(); ++depth)
-		if (&old.inset() == &cur[depth].inset())
-			break;
+	// find range of spaces around cursors
+	pos_type from = old.pos();
+	while (from > 0
+		   && oldpar.isLineSeparator(from - 1)
+		   && !oldpar.isDeleted(from - 1))
+		--from;
+	pos_type to = old.pos();
+	while (to < old.lastpos()
+		   && oldpar.isLineSeparator(to)
+		   && !oldpar.isDeleted(to))
+		++to;
 
-	// Whether a common inset is found and whether the cursor is still in
-	// the same paragraph (possibly nested).
-	bool const same_par = depth < cur.depth() && old.idx() == cur[depth].idx()
-		&& old.pit() == cur[depth].pit();
-	bool const same_par_pos = depth == cur.depth() - 1 && same_par
-		&& old.pos() == cur[depth].pos();
+	int num_spaces = to - from;
+	// If we are not at the start of the paragraph, keep one space
+	if (from != to && from > 0)
+		--num_spaces;
 
-	// If the chars around the old cursor were spaces, delete some of
-	// them, but only if the cursor has really moved.
-	if (!same_par_pos) {
-		// find range of spaces around cursors
-		pos_type from = old.pos();
-		while (from > 0
-		       && oldpar.isLineSeparator(from - 1)
-		       && !oldpar.isDeleted(from - 1))
-			--from;
-		pos_type to = old.pos();
-		while (to < old.lastpos()
-		       && oldpar.isLineSeparator(to)
-		       && !oldpar.isDeleted(to))
-			++to;
+	// If cursor is inside range, keep one additional space
+	if (same_par && cur.pos() > from && cur.pos() < to)
+		--num_spaces;
 
-		int num_spaces = to - from;
-		// If we are not at the start of the paragraph, keep one space
-		if (from != to && from > 0)
-			--num_spaces;
-
-		// If cursor is inside range, keep one additional space
-		if (same_par && cur.pos() > from && cur.pos() < to)
-			--num_spaces;
-
-		// Remove spaces and adapt cursor.
-		if (num_spaces > 0) {
-			old.recordUndo();
-			int const deleted =
-				deleteSpaces(oldpar, from, to, num_spaces, trackChanges);
-			// correct cur position
-			// FIXME: there can be other cursors pointing there, we should update them
-			if (same_par) {
-				if (cur[depth].pos() >= to)
-					cur[depth].pos() -= deleted;
-				else if (cur[depth].pos() > from)
-					cur[depth].pos() = min(from + 1, old.lastpos());
-				need_anchor_change = true;
-			}
-			return true;
+	// Remove spaces and adapt cursor.
+	if (num_spaces > 0) {
+		old.recordUndo();
+		int const deleted =
+			deleteSpaces(oldpar, from, to, num_spaces, trackChanges);
+		// correct cur position
+		// FIXME: there can be other cursors pointing there, we should update them
+		if (same_par) {
+			if (cur[depth].pos() >= to)
+				cur[depth].pos() -= deleted;
+			else if (cur[depth].pos() > from)
+				cur[depth].pos() = min(from + 1, old.lastpos());
+			need_anchor_change = true;
 		}
+		return true;
 	}
+
+	/*
+	 * (2) If the paragraph where the cursor was is empty, delete it
+	 */
 
 	// only do our other magic if we changed paragraph
 	if (same_par)
