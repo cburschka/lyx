@@ -941,13 +941,6 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		return true;
 	}
 
-	if (oldpar.stripLeadingSpaces(trackChanges)) {
-		need_anchor_change = true;
-		// We return true here because the Paragraph contents changed and
-		// we need a redraw before further action is processed.
-		return true;
-	}
-
 	return false;
 }
 
@@ -1005,8 +998,6 @@ void Text::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool tra
 			--last;
 			continue;
 		}
-
-		par.stripLeadingSpaces(trackChanges);
 	}
 }
 
