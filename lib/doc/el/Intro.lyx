@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 550
+\lyxformat 566
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -562,44 +562,6 @@ WYSIWYM
 
 \lang greek
  και Άλλων Επεξεργαστών Κειμένου
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-
-\lang english
-\SpecialChar LyX
-
-\lang greek
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{LyX}
-\end_layout
-
-\end_inset
-
- και Άλλοι Επεξεργαστές Κειμένου
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1916,6 +1878,7 @@ reference "cap:Units-for-image"
 \begin_layout Standard
 \begin_inset Float table
 placement t
+alignment document
 wide false
 sideways false
 status open
