@@ -818,6 +818,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 
 	Paragraph & oldpar = old.paragraph();
 	bool const trackChanges = cur.buffer()->params().track_changes;
+	bool result = false;
 
 	// We do nothing if cursor did not move
 	if (cur.top() == old.top())
@@ -842,22 +843,13 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 	 * them, but only if the cursor has really moved.
 	 */
 
-	/* Ok I'll put some comments here about what is missing.
-	   There are still some small problems that can lead to
+	/* There are still some small problems that can lead to
 	   double spaces stored in the document file or space at
 	   the beginning of paragraphs(). This happens if you have
 	   the cursor between two spaces and then save. Or if you
 	   cut and paste and the selection has a space at the
 	   beginning and then save right after the paste. (Lgb)
 	*/
-
-	// If old.pos() == 0 and old.pos()(1) == LineSeparator
-	// delete the LineSeparator.
-	// MISSING
-
-	// If old.pos() == 1 and old.pos()(0) == LineSeparator
-	// delete the LineSeparator.
-	// MISSING
 
 	// find range of spaces around cursors
 	pos_type from = old.pos();
@@ -894,7 +886,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 				cur[depth].pos() = min(from + 1, old.lastpos());
 			need_anchor_change = true;
 		}
-		return true;
+		result = true;
 	}
 
 	/*
@@ -903,45 +895,46 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 
 	// only do our other magic if we changed paragraph
 	if (same_par)
-		return false;
+		return result;
+
+	// only do our magic if the paragraph is empty
+	if (!oldpar.empty())
+		return result;
 
 	// don't delete anything if this is the ONLY paragraph!
 	if (old.lastpit() == 0)
-		return false;
+		return result;
 
 	// Do not delete empty paragraphs with keepempty set.
 	if (oldpar.allowEmpty())
-		return false;
+		return result;
 
-	if (oldpar.empty() || (oldpar.size() == 1 && oldpar.isLineSeparator(0))) {
-		// Delete old par.
-		old.recordUndo(max(old.pit() - 1, pit_type(0)),
-		               min(old.pit() + 1, old.lastpit()));
-		ParagraphList & plist = old.text()->paragraphs();
-		bool const soa = oldpar.params().startOfAppendix();
-		plist.erase(lyx::next(plist.begin(), old.pit()));
-		// do not lose start of appendix marker (bug 4212)
-		if (soa && old.pit() < pit_type(plist.size()))
-			plist[old.pit()].params().startOfAppendix(true);
+	// Delete old par.
+	old.recordUndo(max(old.pit() - 1, pit_type(0)),
+	               min(old.pit() + 1, old.lastpit()));
+	ParagraphList & plist = old.text()->paragraphs();
+	bool const soa = oldpar.params().startOfAppendix();
+	plist.erase(lyx::next(plist.begin(), old.pit()));
+	// do not lose start of appendix marker (bug 4212)
+	if (soa && old.pit() < pit_type(plist.size()))
+		plist[old.pit()].params().startOfAppendix(true);
 
-		// see #warning (FIXME?) above
-		if (cur.depth() >= old.depth()) {
-			CursorSlice & curslice = cur[old.depth() - 1];
-			if (&curslice.inset() == &old.inset()
-			    && curslice.pit() > old.pit()) {
-				--curslice.pit();
-				// since a paragraph has been deleted, all the
-				// insets after `old' have been copied and
-				// their address has changed. Therefore we
-				// need to `regenerate' cur. (JMarc)
-				cur.updateInsets(&(cur.bottom().inset()));
-				need_anchor_change = true;
-			}
+	// see #warning (FIXME?) above
+	if (cur.depth() >= old.depth()) {
+		CursorSlice & curslice = cur[old.depth() - 1];
+		if (&curslice.inset() == &old.inset()
+		    && curslice.pit() > old.pit()) {
+			--curslice.pit();
+			// since a paragraph has been deleted, all the
+			// insets after `old' have been copied and
+			// their address has changed. Therefore we
+			// need to `regenerate' cur. (JMarc)
+			cur.updateInsets(&(cur.bottom().inset()));
+			need_anchor_change = true;
 		}
-		return true;
 	}
 
-	return false;
+	return true;
 }
 
 
