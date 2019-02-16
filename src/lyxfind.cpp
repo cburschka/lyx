@@ -1555,8 +1555,12 @@ void LatexInfo::buildEntries(bool isPatternString)
         }
         else {
           discardComment = false;
-          if (sub.str(5).compare("multicols") == 0)
+          static regex const removeArgs("^(multicols|multipar|sectionbox|subsectionbox|tcolorbox)$");
+          smatch sub2;
+          string token = sub.str(5);
+          if (regex_match(token, sub2, removeArgs)) {
             found.keytype = KeyInfo::removeWithArg;
+          }
         }
         // discard spaces before pos(0)
         int pos = sub.position(size_t(0));
@@ -1586,7 +1590,7 @@ void LatexInfo::buildEntries(bool isPatternString)
             found.head = interval.par.substr(found._tokenstart, found._tokensize);
           }
           else {
-            if (interval.par[pos1] == '[') {
+            while (interval.par[pos1] == '[') {
               pos1 = interval.findclosing(pos1+1, interval.par.length(), '[', ']')+1;
             }
             if (interval.par[pos1] == '{') {
@@ -1763,8 +1767,8 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("textquotedblleft|textquotedblright", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   // Known macros to remove (including their parameter)
   // No split
-  makeKey("inputencoding|shortcut|label|ref|index", KeyInfo(KeyInfo::doRemove, 1, false), isPatternString);
-  makeKey("addtocounter",                           KeyInfo(KeyInfo::noContent, 2, true), isPatternString);
+  makeKey("inputencoding|shortcut|label|ref|index|bibitem", KeyInfo(KeyInfo::doRemove, 1, false), isPatternString);
+  makeKey("addtocounter|setlength",                 KeyInfo(KeyInfo::noContent, 2, true), isPatternString);
   // handle like standard keys with 1 parameter.
   makeKey("url|href|vref|thanks", KeyInfo(KeyInfo::isStandard, 1, false), isPatternString);
 
@@ -1804,6 +1808,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("lyxslide", KeyInfo(KeyInfo::isSectioning, 1, true), isPatternString);
   makeKey("endarguments", KeyInfo(KeyInfo::endArguments, 0, true), isPatternString);
   makeKey("twocolumn", KeyInfo(KeyInfo::removeWithArg, 2, true), isPatternString);
+  makeKey("tnotetext|ead|fntext|cortext|address", KeyInfo(KeyInfo::removeWithArg, 0, true), isPatternString);
   makeKey("lyxend", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
   if (isPatternString) {
     // Allow the first searched string to rebuild the keys too
@@ -2055,13 +2060,20 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
         if (interval.par[actual._tokenstart-count-1] != ' ')
           break;
       }
+      nextKeyIdx = getNextKey();
+      int tmpIdx = find(nextKeyIdx, KeyInfo::endArguments);
+      if (tmpIdx > 0) {
+        for (int i = nextKeyIdx; i <= tmpIdx; i++) {
+          entries[i].disabled = true;
+        }
+        actual._dataEnd = entries[tmpIdx]._dataEnd;
+      }
       if (actual.disabled) {
         interval.addIntervall(actual._tokenstart-count, actual._dataEnd+1);
       }
       else {
         interval.addIntervall(actual._tokenstart-count, actual._tokenstart);
       }
-      // Discard extra parentheses '[]'
       if (interval.par[actual._dataEnd+1] == '[') {
         int posdown = interval.findclosing(actual._dataEnd+2, interval.par.length(), '[', ']');
         if ((interval.par[actual._dataEnd+2] == '{') &&
@@ -2085,7 +2097,6 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
             interval.addIntervall(blk, blk+count);
         }
       }
-      nextKeyIdx = getNextKey();
       break;
     }
     case KeyInfo::isSectioning: {
