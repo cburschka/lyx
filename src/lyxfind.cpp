@@ -1037,7 +1037,7 @@ class KeyInfo {
     /* twocolumns, ...
      * like remove, but also all arguments */
     removeWithArg,
-    /* item */
+    /* item, listitem */
     isList,
     /* tex, latex, ... like isChar */
     isIgnored,
@@ -1107,7 +1107,7 @@ class Intervall {
   void addIntervall(int upper);
   void addIntervall(int low, int upper); /* if explicit */
   void setForDefaultLang(int upTo);
-  int findclosing(int start, int end, char up, char down);
+  int findclosing(int start, int end, char up, char down, int repeat);
   void handleParentheses(int lastpos, bool closingAllowed);
   void output(ostringstream &os, int lastpos);
   // string show(int lastpos);
@@ -1329,10 +1329,11 @@ class LatexInfo {
 };
 
 
-int Intervall::findclosing(int start, int end, char up = '{', char down = '}')
+int Intervall::findclosing(int start, int end, char up = '{', char down = '}', int repeat = 1)
 {
   int skip = 0;
   int depth = 0;
+  repeat--;
   for (int i = start; i < end; i += 1 + skip) {
     char c;
     c = par[i];
@@ -1342,7 +1343,10 @@ int Intervall::findclosing(int start, int end, char up = '{', char down = '}')
       depth++;
     }
     else if (c == down) {
-      if (depth == 0) return i;
+      if (depth == 0) {
+        if ((repeat <= 0) || (par[i+1] != up))
+          return i;
+      }
       --depth;
     }
   }
@@ -1643,22 +1647,44 @@ void LatexInfo::buildEntries(bool isPatternString)
             found.disabled = true;
           }
         }
-        if (interval.par[params] == '[') {
+        int optend = params;
+        while (interval.par[optend] == '[') {
           // discard optional parameters
-          int optend = interval.findclosing(params+1, interval.par.length(), '[', ']') + 1;
+          optend = interval.findclosing(optend+1, interval.par.length(), '[', ']') + 1;
+        }
+        if (optend > params) {
           key += interval.par.substr(params, optend-params);
           evaluatingOptional = true;
           optionalEnd = optend;
         }
+        string token = sub.str(5);
+        int closings = found.parenthesiscount;
         if (found.parenthesiscount == 1) {
           found.head = "\\" + key + "{";
         }
-        else if (found.parenthesiscount == 2) {
-          found.head = sub.str(0) + "{";
+        else if (found.parenthesiscount > 1) {
+          if (token != "") {
+            found.head = sub.str(0) + "{";
+            closings = found.parenthesiscount - 1;
+          }
+          else {
+            found.head = "\\" + key + "{";
+          }
         }
-        found._tokensize = found.head.length();
         found._dataStart = found._tokenstart + found.head.length();
-        size_t endpos = interval.findclosing(found._dataStart, interval.par.length());
+        if (interval.par.substr(found._dataStart-1, 15).compare("\\endarguments{}") == 0) {
+          found._dataStart += 15;
+        }
+        size_t endpos = interval.findclosing(found._dataStart, interval.par.length(), '{', '}', closings);
+        if (found.keytype == KeyInfo::isList) {
+          // Check if it really is list env
+          static regex const listre("^([a-z]+)$");
+          smatch sub2;
+          if (!regex_match(token, sub2, listre)) {
+            // Change the key of this entry. It is not in a list/item environment
+            found.keytype = KeyInfo::endArguments;
+          }
+        }
         if (found.keytype == KeyInfo::noMain) {
           evaluatingCode = true;
           codeEnd = endpos;
@@ -1794,14 +1820,14 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, false), isPatternString);
 
   // Survives, like known character
-  makeKey("lyx|latex|latexe|tex", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-  makeKey("item", KeyInfo(KeyInfo::isList, 1, false), isPatternString);
+  makeKey("lyx|LyX|latex|LaTeX|latexe|LaTeXe|tex|TeX", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  makeKey("item|listitem", KeyInfo(KeyInfo::isList, 1, false), isPatternString);
 
   makeKey("begin|end", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
   makeKey("[|]", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
   makeKey("$", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
 
-  makeKey("par|uldepth|ULdepth|protect|nobreakdash|medskip", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
+  makeKey("par|uldepth|ULdepth|protect|nobreakdash|medskip|relax", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
   // Remove RTL/LTR marker
   makeKey("l|r|textlr|textfr|textar|beginl|endl", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
   makeKey("lettrine", KeyInfo(KeyInfo::cleanToStart, 0, true), isPatternString);
@@ -1845,7 +1871,6 @@ void Intervall::handleParentheses(int lastpos, bool closingAllowed)
 string Intervall::show(int lastpos)
 {
   int idx = 0;                          /* int intervalls */
-  int count = 0;
   string s;
   int i = 0;
   for (idx = 0; idx <= ignoreidx; idx++) {
@@ -2006,8 +2031,10 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       break;
     }
     case KeyInfo::endArguments:
-      removeHead(actual);
-      processRegion(actual._dataStart, actual._dataStart+1);
+      // Remove trailing '{}' too
+      actual._dataStart += 2;
+      actual._dataEnd += 2;
+      interval.addIntervall(actual._tokenstart, actual._dataEnd);
       nextKeyIdx = getNextKey();
       break;
     case KeyInfo::noMain:
@@ -2063,10 +2090,20 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       nextKeyIdx = getNextKey();
       int tmpIdx = find(nextKeyIdx, KeyInfo::endArguments);
       if (tmpIdx > 0) {
+        // Special case: \item is not a list, but a command (like in Style Author_Biography in maa-monthly.layout)
+        // with arguments
+        // How else can we catch this one?
         for (int i = nextKeyIdx; i <= tmpIdx; i++) {
           entries[i].disabled = true;
         }
         actual._dataEnd = entries[tmpIdx]._dataEnd;
+      }
+      else if (nextKeyIdx > 0) {
+        // Ignore any lang entries inside data region
+        for (int i = nextKeyIdx; i < int(entries.size()) && entries[i]._tokenstart < actual._dataEnd; i++) {
+          if (entries[i].keytype == KeyInfo::isMain)
+            entries[i].disabled = true;
+        }
       }
       if (actual.disabled) {
         interval.addIntervall(actual._tokenstart-count, actual._dataEnd+1);
@@ -2325,12 +2362,16 @@ static string correctlanguagesetting(string par, bool isPatternString, bool with
 	while ((parlen > 0) && (par[parlen-1] == '\n')) {
 		parlen--;
 	}
+	if (isPatternString && (parlen > 0) && (par[parlen-1] == '~')) {
+		// Happens to be there in case of description or labeling environment
+		parlen--;
+	}
 	string result;
 	if (withformat) {
 		// Split the latex input into pieces which
 		// can be digested by our search engine
 		LYXERR(Debug::FIND, "input: \"" << par << "\"");
-		result = splitOnKnownMacros(par, isPatternString);
+		result = splitOnKnownMacros(par.substr(0,parlen), isPatternString);
 		LYXERR(Debug::FIND, "After split: \"" << result << "\"");
 	}
 	else
