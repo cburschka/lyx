@@ -174,7 +174,7 @@ docstring const stateText(FontInfo const & f, bool const terse)
 	if (f.strikeout() != FONT_INHERIT && (!terse || f.strikeout() == FONT_ON))
 		os << bformat(_("Strike out %1$s, "),
 			      _(GUIMiscNames[f.strikeout()]));
-	if (f.xout() != FONT_INHERIT && (!terse || f.strikeout() == FONT_ON))
+	if (f.xout() != FONT_INHERIT && (!terse || f.xout() == FONT_ON))
 		os << bformat(_("Cross out %1$s, "),
 			      _(GUIMiscNames[f.xout()]));
 	if (f.noun() != FONT_INHERIT && (!terse || f.noun() != FONT_IGNORE))
