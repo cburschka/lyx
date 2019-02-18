@@ -37,8 +37,6 @@ public:
 	virtual void metrics(MetricsInfo & mi, Dimension & dim) const = 0;
 	/// draw inset and update (xo, yo)-cache
 	virtual void draw(PainterInfo & pi, int x, int y) const = 0;
-	///
-	Dimension const & dimension() const { return dim_; }
 
 	/// render state, exact meaning of state is render-specific
 	void setRenderState(bool state) { state_ = state; }
