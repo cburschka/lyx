@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 565
+\lyxformat 566
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -130,6 +130,7 @@ logicalmkup
 \html_css_as_file 0
 \html_be_strict true
 \author -712698321 "Jürgen Spitzmüller"
+\author -495245474 "Jean-Marc Lasgouttes"
 \author 731793113 "Richard Kimberly Heck" rikiheck@lyx.org
 \end_header
 
@@ -13080,10 +13081,58 @@ FreeSpacing
 \end_inset
 
  can be enabled.
- Note that \SpecialChar LyX
- will create protected blanks for the additional blanks when
- in another mode than \SpecialChar LaTeX
+ 
+\change_deleted -495245474 1550490105
+Note that 
+\change_unchanged
+\SpecialChar LyX
+ will create protected blanks for the additional blanks when in 
+\change_inserted -495245474 1550490096
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -495245474 1550490089
+Passthru 1
+\end_layout
+
+\end_inset
+
+ is not specified.
+\change_deleted -495245474 1550490116
+another mode than \SpecialChar LaTeX
 -mode.
+
+\change_inserted -495245474 1550247760
+ Note that 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -495245474 1550247736
+FreeSpacing
+\end_layout
+
+\end_inset
+
+ implies 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -495245474 1550247755
+KeepEmpty
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
