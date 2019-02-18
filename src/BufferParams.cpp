@@ -2348,19 +2348,25 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	}
 
 	// ... but before biblatex (see #7065)
-	if (features.mustProvide("biblatex")
+	if ((features.mustProvide("biblatex")
+	     || features.isRequired("biblatex-chicago"))
+	    && !features.isProvided("biblatex-chicago")
 	    && !features.isProvided("biblatex-natbib")
 	    && !features.isProvided("natbib-internal")
 	    && !features.isProvided("natbib")
 	    && !features.isProvided("jurabib")) {
+		// The biblatex-chicago package has a differing interface
+		// it uses a wrapper package and loads styles via fixed options
+		bool const chicago = features.isRequired("biblatex-chicago");
 		string delim = "";
 		string opts;
 		os << "\\usepackage";
 		if (!biblatex_bibstyle.empty()
-		    && (biblatex_bibstyle == biblatex_citestyle)) {
+		    && (biblatex_bibstyle == biblatex_citestyle)
+		    && !chicago) {
 			opts = "style=" + biblatex_bibstyle;
 			delim = ",";
-		} else {
+		} else if (!chicago) {
 			if (!biblatex_bibstyle.empty()) {
 				opts = "bibstyle=" + biblatex_bibstyle;
 				delim = ",";
@@ -2392,7 +2398,10 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			opts += delim + biblio_opts;
 		if (!opts.empty())
 			os << "[" << opts << "]";
-		os << "{biblatex}\n";
+		if (chicago)
+			os << "{biblatex-chicago}\n";
+		else
+			os << "{biblatex}\n";
 	}
 
 
