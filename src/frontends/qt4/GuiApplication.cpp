@@ -2920,13 +2920,13 @@ void GuiApplication::hideDialogs(string const & name, Inset * inset) const
 
 Buffer const * GuiApplication::updateInset(Inset const * inset) const
 {
-	Buffer const * buffer_ = 0;
+	Buffer const * buf = 0;
 	QHash<int, GuiView *>::const_iterator end = d->views_.end();
 	for (QHash<int, GuiView *>::iterator it = d->views_.begin(); it != end; ++it) {
 		if (Buffer const * ptr = (*it)->updateInset(inset))
-			buffer_ = ptr;
+			buf = ptr;
 	}
-	return buffer_;
+	return buf;
 }
 
 
