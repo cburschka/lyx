@@ -44,7 +44,8 @@ InsetLayout::InsetLayout() :
 	freespacing_(false), keepempty_(false), forceltr_(false),
 	forceownlines_(false), needprotect_(false), needcprotect_(false),
 	intoc_(false), spellcheck_(true), resetsfont_(false), display_(true),
-	forcelocalfontswitch_(false), add_to_toc_(false), is_toc_caption_(false)
+	forcelocalfontswitch_(false), add_to_toc_(false), is_toc_caption_(false),
+	edit_external_(false)
 {
 	labelfont_.setColor(Color_error);
 }
