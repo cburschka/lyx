@@ -512,7 +512,7 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 		// original value was 20px, which is 0.2in at 100dpi
 		int const margin = bv_->zoomedPixels(20);
 		if (pit == 0) {
-			pm.rows().front().dimension().asc += margin;
+			pm.rows().front().dim().asc += margin;
 			/* coverity thinks that we should update pm.dim().asc
 			 * below, but all the rows heights are actually counted as
 			 * part of the paragraph metric descent see loop above).
@@ -522,16 +522,16 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 		}
 		ParagraphList const & pars = text_->paragraphs();
 		if (pit + 1 == pit_type(pars.size())) {
-			pm.rows().back().dimension().des += margin;
+			pm.rows().back().dim().des += margin;
 			pm.dim().des += margin;
 		}
 	}
 
 	// The space above and below the paragraph.
 	int const top = parTopSpacing(pit);
-	pm.rows().front().dimension().asc += top;
+	pm.rows().front().dim().asc += top;
 	int const bottom = parBottomSpacing(pit);
-	pm.rows().back().dimension().des += bottom;
+	pm.rows().back().dim().des += bottom;
 	pm.dim().des += top + bottom;
 
 	pm.dim().asc += pm.rows()[0].ascent();
@@ -654,28 +654,28 @@ void TextMetrics::setRowAlignment(Row & row, int width) const
 			if (!row.setExtraWidth(w) && row.isRTL()) {
 				// Justification failed and the text is RTL: align to the right
 				row.left_margin += w;
-				row.dimension().wid += w;
+				row.dim().wid += w;
 			}
 			break;
 		case LYX_ALIGN_LEFT:
 			// a displayed inset that is flushed
 			if (Inset const * inset = par.getInset(row.pos())) {
 				row.left_margin += inset->indent(*bv_);
-				row.dimension().wid += inset->indent(*bv_);
+				row.dim().wid += inset->indent(*bv_);
 			}
 			break;
 		case LYX_ALIGN_RIGHT:
 			if (Inset const * inset = par.getInset(row.pos())) {
 				int const new_w = max(w - inset->indent(*bv_), 0);
 				row.left_margin += new_w;
-				row.dimension().wid += new_w;
+				row.dim().wid += new_w;
 			} else {
 				row.left_margin += w;
-				row.dimension().wid += w;
+				row.dim().wid += w;
 			}
 			break;
 		case LYX_ALIGN_CENTER:
-			row.dimension().wid += w / 2;
+			row.dim().wid += w / 2;
 			row.left_margin += w / 2;
 			break;
 		case LYX_ALIGN_NONE:
@@ -690,7 +690,7 @@ void TextMetrics::setRowAlignment(Row & row, int width) const
 	// Case nh > 0. There are hfill separators.
 	hfill = w / nh;
 	hfill_rem = w % nh;
-	row.dimension().wid += w;
+	row.dim().wid += w;
 	// Set size of hfill insets
 	pos_type const endpos = row.endpos();
 	pos_type body_pos = par.beginOfBody();
@@ -846,7 +846,7 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 		swap(row.left_margin, row.right_margin);
 	// Remember that the row width takes into account the left_margin
 	// but not the right_margin.
-	row.dimension().wid = row.left_margin;
+	row.dim().wid = row.left_margin;
 	// the width available for the row.
 	int const width = max_width_ - row.right_margin;
 
@@ -1104,8 +1104,8 @@ void TextMetrics::setRowHeight(Row & row) const
 
 	// Add some leading (split between before and after)
 	int const leading = support::iround(extra_leading * (maxasc + maxdes));
-	row.dimension().asc = int((maxasc + leading - leading / 2) * spacing_val);
-	row.dimension().des = int((maxdes + leading / 2) * spacing_val);
+	row.dim().asc = int((maxasc + leading - leading / 2) * spacing_val);
+	row.dim().des = int((maxdes + leading / 2) * spacing_val);
 }
 
 
@@ -1983,7 +1983,7 @@ void TextMetrics::completionPosAndDim(Cursor const & cur, int & x, int & y,
 	row.pos(wordStart.pos());
 	row.endpos(bvcur.pos());
 	setRowHeight(row);
-	dim = row.dimension();
+	dim = row.dim();
 
 	// get position on screen of the word start and end
 	//FIXME: Is it necessary to explicitly set this to false?

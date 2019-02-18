@@ -198,9 +198,9 @@ public:
 	bool flushed() const { return flushed_; }
 
 	///
-	Dimension const & dimension() const { return dim_; }
+	Dimension const & dim() const { return dim_; }
 	///
-	Dimension & dimension() { return dim_; }
+	Dimension & dim() { return dim_; }
 	///
 	int height() const { return dim_.height(); }
 	/// The width of the row, including the left margin, but not the right one.

@@ -956,7 +956,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 		int offset = coordOffset(dit).y_;
 		int ypos = pm.position() + offset;
 		Dimension const & row_dim =
-			pm.getRow(cs.pos(), dit.boundary()).dimension();
+			pm.getRow(cs.pos(), dit.boundary()).dim();
 		int scrolled = 0;
 		if (recenter)
 			scrolled = scroll(ypos - height_/2);
@@ -1000,7 +1000,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 	d->anchor_pit_ = bot_pit;
 	CursorSlice const & cs = dit.innerTextSlice();
 	Dimension const & row_dim =
-		pm.getRow(cs.pos(), dit.boundary()).dimension();
+		pm.getRow(cs.pos(), dit.boundary()).dim();
 
 	if (recenter)
 		d->anchor_ypos_ = height_/2;
