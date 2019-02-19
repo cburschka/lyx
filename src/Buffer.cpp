@@ -812,10 +812,9 @@ FileName Buffer::Impl::exportFileName() const
 	if (branch_suffix.empty())
 		return filename;
 
-	string const name = filename.onlyFileNameWithoutExt()
-		+ to_utf8(branch_suffix);
+	string const name = addExtension(filename.onlyFileNameWithoutExt()
+			+ to_utf8(branch_suffix), filename.extension());
 	FileName res(filename.onlyPath().absFileName() + "/" + name);
-	res.changeExtension(filename.extension());
 
 	return res;
 }
