@@ -49,7 +49,7 @@ public:
 	std::pair<pit_type, ParagraphMetrics const *> last() const;
 
 	///
-	Dimension const & dimension() const { return dim_; }
+	Dimension const & dim() const { return dim_; }
 	///
 	Point const & origin() const { return origin_; }
 

@@ -140,7 +140,7 @@ void InsetText::clear()
 Dimension const InsetText::dimensionHelper(BufferView const & bv) const
 {
 	TextMetrics const & tm = bv.textMetrics(&text_);
-	Dimension dim = tm.dimension();
+	Dimension dim = tm.dim();
 	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
 	dim.des += TEXT_TO_INSET_OFFSET;
 	dim.asc += TEXT_TO_INSET_OFFSET;
