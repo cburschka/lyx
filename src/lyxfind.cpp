@@ -68,7 +68,7 @@ class IgnoreFormats {
 		: ignoreFamily_(false), ignoreSeries_(false),
 		  ignoreShape_(false), ignoreUnderline_(false),
 		  ignoreMarkUp_(false), ignoreStrikeOut_(false),
-		  ignoreSectioning_(false), ignoreFrontMatter_(true),
+		  ignoreSectioning_(false), ignoreFrontMatter_(false),
 		  ignoreColor_(false), ignoreLanguage_(false) {}
 	///
 	bool getFamily() { return ignoreFamily_; };
@@ -972,8 +972,15 @@ typedef map<string, bool> Features;
 
 static Features identifyFeatures(string const & s)
 {
-	static regex const feature("\\\\(([a-z]+(\\{([a-z]+)\\}|\\*)?))\\{");
-	static regex const valid("^(((footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge|emph|noun|text(bf|md|sl|sf|it|tt)|(textcolor|foreignlanguage|item)\\{[a-z]+\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)$");
+	static regex const feature("\\\\(([a-zA-Z]+(\\{([a-z]+)\\}|\\*)?))\\{");
+	static regex const valid("^("
+		"("
+			"(footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge|"
+				"emph|noun|text(bf|md|sl|sf|it|tt)|"
+				"(textcolor|foreignlanguage|item|listitem)\\{[a-z]+\\})|"
+			"(u|uu)line|(s|x)out|uwave|"
+			"(sub|extra)?title|author|subject|publishers|dedication|(upper|lower)titleback|lyx(right)?address)|"
+		"((sub)?(((sub)?section)|paragraph)|part|chapter|lyxslide)\\*?)$");
 	smatch sub;
 	bool displ = true;
 	Features info;
@@ -1017,9 +1024,11 @@ class KeyInfo {
     isChar,
     /* \part, \section*, ... */
     isSectioning,
+    /* title, author etc */
+    isTitle,
     /* \foreignlanguage{ngerman}, ... */
     isMain,
-    /* inside \code{} or \footnote{}
+    /* inside \code{}
      * to discard language in content */
     noMain,
     isRegex,
@@ -1109,6 +1118,8 @@ class Intervall {
   void setForDefaultLang(int upTo);
   int findclosing(int start, int end, char up, char down, int repeat);
   void handleParentheses(int lastpos, bool closingAllowed);
+  bool hasTitle;
+  string titleValue;
   void output(ostringstream &os, int lastpos);
   // string show(int lastpos);
 };
@@ -1274,6 +1285,8 @@ class LatexInfo {
  public:
  LatexInfo(string par, bool isPatternString) : entidx(-1), interval(isPatternString) {
     interval.par = par;
+    interval.hasTitle = false;
+    interval.titleValue = "";
     buildKeys(isPatternString);
     entries = vector<KeyInfo>();
     buildEntries(isPatternString);
@@ -1282,6 +1295,21 @@ class LatexInfo {
     entidx = 0;
     if (entries.empty()) {
       return (-1);
+    }
+    if (entries[0].keytype == KeyInfo::isTitle) {
+      if (! entries[0].disabled) {
+        interval.hasTitle = true;
+        interval.titleValue = entries[0].head;
+      }
+      else {
+        interval.hasTitle = false;
+        interval.titleValue = "";
+      }
+      removeHead(entries[0]);
+      if (entries.size() > 1)
+        return (1);
+      else
+        return (-1);
     }
     return 0;
   };
@@ -1762,7 +1790,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("section*|subsection*|subsubsection*|paragraph*",
           KeyInfo(KeyInfo::isSectioning, 1, ignoreFormats.getSectioning()), isPatternString);
   makeKey("part|part*|chapter|chapter*", KeyInfo(KeyInfo::isSectioning, 1, ignoreFormats.getSectioning()), isPatternString);
-  makeKey("title|subtitle|author|subject|publishers|dedication|uppertitleback|lowertitleback|extratitle|lyxaddress|lyxrightaddress", KeyInfo(KeyInfo::isSectioning, 1, ignoreFormats.getFrontMatter()), isPatternString);
+  makeKey("title|subtitle|author|subject|publishers|dedication|uppertitleback|lowertitleback|extratitle|lyxaddress|lyxrightaddress", KeyInfo(KeyInfo::isTitle, 1, ignoreFormats.getFrontMatter()), isPatternString);
   // Regex
   makeKey("regexp", KeyInfo(KeyInfo::isRegex, 1, false), isPatternString);
 
@@ -1772,7 +1800,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   // Split is done always.
   makeKey("foreignlanguage", KeyInfo(KeyInfo::isMain, 2, ignoreFormats.getLanguage()), isPatternString);
 
-  // Know charaters
+  // Known charaters
   // No split
   makeKey("backslash|textbackslash|slash",  KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("textasciicircum|textasciitilde", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
@@ -1807,10 +1835,12 @@ void LatexInfo::buildKeys(bool isPatternString)
 
   // Same effect as previous, parameter will survive (because there is no one anyway)
   // No split
-  makeKey("noindent|textcompwordmark", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
+  makeKey("noindent|textcompwordmark|maketitle", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
   // Remove table decorations
   makeKey("hline|tabularnewline|toprule|bottomrule|midrule", KeyInfo(KeyInfo::doRemove, 0, true), isPatternString);
-  // Discard shape-header
+  // Discard shape-header.
+  // For footnote too, because of possible lang settings
+  // and wrong handling if used 'KeyInfo::noMain'
   makeKey("circlepar|diamondpar|heartpar|nutpar",  KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("trianglerightpar|hexagonpar|starpar",   KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("triangleuppar|triangledownpar|droppar", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
@@ -1904,6 +1934,8 @@ void Intervall::output(ostringstream &os, int lastpos)
   // get number of chars to output
   int idx = 0;                          /* int intervalls */
   int i = 0;
+  int printed = 0;
+  string startTitle = titleValue;
   for (idx = 0; idx <= ignoreidx; idx++) {
     if (i < lastpos) {
       if (i <= borders[idx].low) {
@@ -1912,8 +1944,12 @@ void Intervall::output(ostringstream &os, int lastpos)
           printsize = lastpos - i;
         else
           printsize = borders[idx].low - i;
-        os << par.substr(i, printsize);
-        i += printsize;
+        if (printsize > 0) {
+          os << startTitle << par.substr(i, printsize);
+          i += printsize;
+          printed += printsize;
+          startTitle = "";
+        }
         handleParentheses(i, false);
         if (i >= borders[idx].low)
           i = borders[idx].upper;
@@ -1926,12 +1962,15 @@ void Intervall::output(ostringstream &os, int lastpos)
       break;
   }
   if (lastpos > i) {
-    os << par.substr(i, lastpos-i);
+    os << startTitle << par.substr(i, lastpos-i);
+    printed += lastpos-i;
   }
   handleParentheses(lastpos, false);
   for (int i = actualdeptindex; i > 0; --i) {
     os << "}";
   }
+  if (hasTitle && (printed > 0))
+    os << "}";
   if (! isPatternString)
     os << "\n";
   handleParentheses(lastpos, true); /* extra closings '}' allowed here */
@@ -1970,6 +2009,11 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
   int nextKeyIdx = 0;
   switch (actual.keytype)
   {
+    case KeyInfo::isTitle: {
+      removeHead(actual);
+      nextKeyIdx = getNextKey();
+      break;
+    }
     case KeyInfo::cleanToStart: {
       actual._dataEnd = actual._dataStart;
       nextKeyIdx = getNextKey();
@@ -2275,7 +2319,6 @@ string splitOnKnownMacros(string par, bool isPatternString)
   KeyInfo DummyKey = KeyInfo(KeyInfo::KeyType::isMain, 2, true);
   DummyKey.head = "";
   DummyKey._tokensize = 0;
-  DummyKey._tokenstart = 0;
   DummyKey._dataStart = 0;
   DummyKey._dataEnd = par.length();
   DummyKey.disabled = true;
@@ -2283,6 +2326,7 @@ string splitOnKnownMacros(string par, bool isPatternString)
   string s;
   if (firstkeyIdx >= 0) {
     KeyInfo firstKey = li.getKeyInfo(firstkeyIdx);
+    DummyKey._tokenstart = firstKey._tokenstart;
     int nextkeyIdx;
     if ((firstKey.keytype != KeyInfo::isMain) || firstKey.disabled) {
       // Use dummy firstKey
