@@ -97,6 +97,9 @@ What's new
 - Fix LaTeX error caused by Control key shortcut inset on the Mac (remainder
   of bug 10641).
 
+- Correctly add the branch name suffix when the stem of the filename
+  contains a dot (bug 11490).
+
 
 * USER INTERFACE
 
