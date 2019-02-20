@@ -500,11 +500,6 @@ void BufferView::processUpdateFlags(Update::flags flags)
 	 */
 	buffer_.updateMacros();
 
-	// SinglePar is ignored for now (this should probably change). We
-	// set it ourselves below, at the price of always rebreaking the
-	// paragraph at cursor. This can be expensive for large tables.
-	flags = flags & ~Update::SinglePar;
-
 	// First check whether the metrics and inset positions should be updated
 	if (flags & Update::Force) {
 		// This will update the CoordCache items and replace Force
@@ -512,15 +507,14 @@ void BufferView::processUpdateFlags(Update::flags flags)
 		updateMetrics(flags);
 	}
 
-	// Detect whether we can only repaint a single paragraph.
+	// Detect whether we can only repaint a single paragraph (if we
+	// are not already redrawing all).
 	// We handle this before FitCursor because the later will require
 	// correct metrics at cursor position.
-	if (!(flags & Update::ForceDraw)) {
-		if (singleParUpdate())
-			flags = flags | Update::SinglePar;
-		else
+	if (!(flags & Update::ForceDraw)
+	    && (flags & Update::SinglePar)
+		&& !singleParUpdate())
 			updateMetrics(flags);
-	}
 
 	// Then make sure that the screen contains the cursor if needed
 	if (flags & Update::FitCursor) {
@@ -538,7 +532,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 	LYXERR(Debug::PAINTING, "Cumulative flags: " << flagsAsString(flags));
 
 	// Now compute the update strategy
-	// Possibly values in flag are None, Decoration, ForceDraw
+	// Possibly values in flag are None, SinglePar, Decoration, ForceDraw
 	LATTEST((d->update_flags_ & ~(Update::None | Update::SinglePar
 	                              | Update::Decoration | Update::ForceDraw)) == 0);
 

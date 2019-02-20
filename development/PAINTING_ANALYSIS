@@ -20,15 +20,9 @@ following section. Some actions are proposed.
 
 ** SinglePar update
 
-The flag Update::SinglePar is set in many places but never acted on.
-Instead, metrics update is skipped whenever the recorded height of
-current paragraph did not change and Update::Force was not specified.
-Is it better to keep that (which incurs extra work) or to condition it
-on Update::SinglePar? If the first solution is kept, the flag
-SingleParUpdate shall be removed.
-
-Moreover, I fail to see (yet) where the 'single' part of the program
-is acted on.
+This flag only has an effect in the current BufferView, but I think it
+is useful in other views too. Doing this will require some work on the
+update pipeline, though.
 
 ** Buffer::change issues
 
@@ -39,6 +33,7 @@ a good value? NoScreenUpdate?
 
 On a related note, what is the semantics of a call to
 Buffer::changed(false)? What does the caller mean?
+
 
 ** How to avoid redraw with FitCursor when the cursor is already OK?
 
@@ -59,12 +54,6 @@ cursor.
 
 
 * Clean-up of drawing code
-
-** Make SinglePar update flag useful again. 
-
-The current code can be very expensive when moving cursor inside a
-huge table, for example. We should test the flag again, although this
-will probably lead to some glitches here and there.
 
 ** Set Row::changed() in a finer way
 
@@ -139,15 +128,14 @@ DecorationUpdate). It triggers a recomputation of the metrics when either:
  + Update::Force has been specified
  + Update::FitCursor has been specified and there is a need to scroll
    the display.
- + the current paragraph, after rebreak, does not have the same height as in
-   existing metrics. Note that the Update::SinglePar flag is *never*
-   taken into account.
+ + Update::SinglePar has been specified and the current paragraph has
+   not changed height.
 
 If a computation of metrics has taken place, Force is removed from the
 flags and ForceDraw is added instead.
 
-It is OK to call processUptateFlags several times before an update. In
-this case, the effects are cumulative.processUpdateFlags execute the
+It is OK to call processUpateFlags several times before an update. In
+this case, the effects are cumulative. processUpdateFlags executes the
 metrics-related actions, but defers the actual drawing to the next
 paint event.
 
