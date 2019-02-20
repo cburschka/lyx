@@ -697,6 +697,11 @@ void parStartCommand(Paragraph const & par, otexstream & os,
 			os << " ";
 		}
 		break;
+	case LATEX_ENVIRONMENT:
+		if (runparams.for_search) {
+			os << "\\latexenvironment{" << style.latexname() << "}{";
+		}
+		break;
 	case LATEX_BIB_ENVIRONMENT:
 		// ignore this, the inset will write itself
 		break;
