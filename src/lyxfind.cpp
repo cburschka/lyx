@@ -1040,7 +1040,7 @@ class KeyInfo {
      * Ignore all of them */
     isSize,
     invalid,
-    /* inputencoding, shortcut, ...
+    /* inputencoding, ...
      * Discard also content, because they do not help in search */
     doRemove,
     /* twocolumns, ...
@@ -1115,7 +1115,7 @@ class Intervall {
   void resetOpenedP(int openPos);
   void addIntervall(int upper);
   void addIntervall(int low, int upper); /* if explicit */
-  void setForDefaultLang(int upTo);
+  void setForDefaultLang(KeyInfo &defLang);
   int findclosing(int start, int end, char up, char down, int repeat);
   void handleParentheses(int lastpos, bool closingAllowed);
   bool hasTitle;
@@ -1124,14 +1124,17 @@ class Intervall {
   // string show(int lastpos);
 };
 
-void Intervall::setForDefaultLang(int upTo)
+void Intervall::setForDefaultLang(KeyInfo &defLang)
 {
   // Enable the use of first token again
   if (ignoreidx >= 0) {
-    if (borders[0].low < upTo)
-      borders[0].low = upTo;
-    if (borders[0].upper < upTo)
-      borders[0].upper = upTo;
+    int value = defLang._tokenstart + defLang._tokensize;
+    if (value > 0) {
+      if (borders[0].low < value)
+        borders[0].low = value;
+      if (borders[0].upper < value)
+        borders[0].upper = value;
+    }
   }
 }
 
@@ -1352,7 +1355,7 @@ class LatexInfo {
     else
       return entries[keyinfo];
   };
-  void setForDefaultLang(int upTo) {interval.setForDefaultLang(upTo);};
+  void setForDefaultLang(KeyInfo &defLang) {interval.setForDefaultLang(defLang);};
   void addIntervall(int low, int up) { interval.addIntervall(low, up); };
 };
 
@@ -1699,6 +1702,7 @@ void LatexInfo::buildEntries(bool isPatternString)
             found.head = "\\" + key + "{";
           }
         }
+        found._tokensize = found.head.length();
         found._dataStart = found._tokenstart + found.head.length();
         if (interval.par.substr(found._dataStart-1, 15).compare("\\endarguments{}") == 0) {
           found._dataStart += 15;
@@ -1822,7 +1826,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("textquotedblleft|textquotedblright", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   // Known macros to remove (including their parameter)
   // No split
-  makeKey("inputencoding|shortcut|label|ref|index|bibitem", KeyInfo(KeyInfo::doRemove, 1, false), isPatternString);
+  makeKey("inputencoding|label|ref|index|bibitem", KeyInfo(KeyInfo::doRemove, 1, false), isPatternString);
   makeKey("addtocounter|setlength",                 KeyInfo(KeyInfo::noContent, 2, true), isPatternString);
   // handle like standard keys with 1 parameter.
   makeKey("url|href|vref|thanks", KeyInfo(KeyInfo::isStandard, 1, false), isPatternString);
@@ -1840,13 +1844,13 @@ void LatexInfo::buildKeys(bool isPatternString)
   // Remove table decorations
   makeKey("hline|tabularnewline|toprule|bottomrule|midrule", KeyInfo(KeyInfo::doRemove, 0, true), isPatternString);
   // Discard shape-header.
-  // For footnote too, because of possible lang settings
+  // For footnote or shortcut too, because of lang settings
   // and wrong handling if used 'KeyInfo::noMain'
   makeKey("circlepar|diamondpar|heartpar|nutpar",  KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("trianglerightpar|hexagonpar|starpar",   KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("triangleuppar|triangledownpar|droppar", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("triangleleftpar|shapepar|dropuppar",    KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
-  makeKey("hphantom|footnote|includegraphics",     KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+  makeKey("hphantom|footnote|shortcut|includegraphics",     KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   // like ('tiny{}' or '\tiny ' ... )
   makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, false), isPatternString);
 
@@ -2232,9 +2236,9 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
         // interval.resetOpenedP(actual._dataStart-1);
       }
       else {
-        if (actual._tokenstart == 0) {
+        if (actual._tokenstart < 26) {
           // for the first (and maybe dummy) language
-          interval.setForDefaultLang(actual._tokenstart + actual._tokensize);
+          interval.setForDefaultLang(actual);
         }
         interval.resetOpenedP(actual._dataStart-1);
       }
@@ -2349,10 +2353,8 @@ string splitOnKnownMacros(string par, bool isPatternString)
         firstKey._dataStart = datastart;
         firstKey._dataEnd = par.length();
         (void) li.setNextKey(nextkeyIdx);
-        if (firstKey._tokensize > 0) {
-          // Fake the last opened parenthesis
-          li.setForDefaultLang(firstKey._tokensize);
-        }
+        // Fake the last opened parenthesis
+        li.setForDefaultLang(firstKey);
         nextkeyIdx = li.process(os, firstKey);
       }
       else {
@@ -2360,8 +2362,7 @@ string splitOnKnownMacros(string par, bool isPatternString)
           firstKey._dataStart = datastart;
           firstKey._dataEnd = nextKey._dataEnd+1;
           (void) li.setNextKey(nextkeyIdx);
-          if (firstKey._tokensize > 0)
-            li.setForDefaultLang(firstKey._tokensize);
+          li.setForDefaultLang(firstKey);
           nextkeyIdx = li.process(os, firstKey);
         }
         else {
@@ -2375,8 +2376,7 @@ string splitOnKnownMacros(string par, bool isPatternString)
     // Check if ! empty
     if ((firstKey._dataStart < firstKey._dataEnd) &&
         (par[firstKey._dataStart] != '}')) {
-      if (firstKey._tokensize > 0)
-        li.setForDefaultLang(firstKey._tokensize);
+      li.setForDefaultLang(firstKey);
       (void) li.process(os, firstKey);
     }
     s = os.str();
