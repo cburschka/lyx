@@ -1826,7 +1826,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("textquotedblleft|textquotedblright", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   // Known macros to remove (including their parameter)
   // No split
-  makeKey("inputencoding|label|ref|index|bibitem", KeyInfo(KeyInfo::doRemove, 1, false), isPatternString);
+  makeKey("input|inputencoding|label|ref|index|bibitem", KeyInfo(KeyInfo::doRemove, 1, false), isPatternString);
   makeKey("addtocounter|setlength",                 KeyInfo(KeyInfo::noContent, 2, true), isPatternString);
   // handle like standard keys with 1 parameter.
   makeKey("url|href|vref|thanks", KeyInfo(KeyInfo::isStandard, 1, false), isPatternString);
@@ -1851,6 +1851,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("triangleuppar|triangledownpar|droppar", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("triangleleftpar|shapepar|dropuppar",    KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("hphantom|footnote|shortcut|includegraphics",     KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+  makeKey("parbox", KeyInfo(KeyInfo::doRemove, 1, true), isPatternString);
   // like ('tiny{}' or '\tiny ' ... )
   makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, false), isPatternString);
 
@@ -2225,6 +2226,11 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
     case KeyInfo::isMain: {
       if (interval.par.substr(actual._dataStart, 2) == "% ")
         interval.addIntervall(actual._dataStart, actual._dataStart+2);
+      if (actual._tokenstart > 0) {
+        int prev = interval.previousNotIgnored(actual._tokenstart - 1);
+        if ((prev >= 0) && interval.par[prev] == '%')
+          interval.addIntervall(prev, prev+1);
+      }
       if (actual.disabled) {
         removeHead(actual);
         if ((interval.par.substr(actual._dataStart, 3) == " \\[") ||
