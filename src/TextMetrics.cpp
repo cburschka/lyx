@@ -159,6 +159,16 @@ bool TextMetrics::isFirstRow(Row const & row) const
 }
 
 
+void TextMetrics::setRowChanged(pit_type pit, pos_type pos)
+{
+	for (auto & pm_pair : par_metrics_)
+		if (pm_pair.first == pit)
+			for (Row & row : pm_pair.second.rows())
+				if (row.pos() == pos)
+					row.changed(true);
+}
+
+
 ParagraphMetrics & TextMetrics::parMetrics(pit_type pit, bool redo)
 {
 	ParMetricsCache::iterator pmc_it = par_metrics_.find(pit);
@@ -1872,12 +1882,8 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 				row.change(row.end_margin_sel, sel_end.pit() > pit);
 		}
 
-		// has row changed since last paint?
-		bool row_has_changed = row.changed()
-			|| bv_->hadHorizScrollOffset(text_, pit, row.pos());
-
 		// Take this opportunity to spellcheck the row contents.
-		if (row_has_changed && pi.do_spellcheck && lyxrc.spellcheck_continuously) {
+		if (row.changed() && pi.do_spellcheck && lyxrc.spellcheck_continuously) {
 			text_->getPar(pit).spellCheck();
 		}
 
@@ -1885,7 +1891,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 
 		// Don't paint the row if a full repaint has not been requested
 		// and if it has not changed.
-		if (!pi.full_repaint && !row_has_changed) {
+		if (!pi.full_repaint && !row.changed()) {
 			// Paint only the insets if the text itself is
 			// unchanged.
 			rp.paintOnlyInsets();
@@ -1896,7 +1902,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 
 		// Clear background of this row if paragraph background was not
 		// already cleared because of a full repaint.
-		if (!pi.full_repaint && row_has_changed) {
+		if (!pi.full_repaint && row.changed()) {
 			LYXERR(Debug::PAINTING, "Clear rect@("
 			       << max(row_x, 0) << ", " << y - row.ascent() << ")="
 			       << width() << " x " << row.height());
@@ -1915,13 +1921,13 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		// Instrumentation for testing row cache (see also
 		// 12 lines lower):
 		if (lyxerr.debugging(Debug::PAINTING)
-		    && (row.selection() || pi.full_repaint || row_has_changed)) {
+		    && (row.selection() || pi.full_repaint || row.changed())) {
 			string const foreword = text_->isMainText() ? "main text redraw "
 				: "inset text redraw: ";
 			LYXERR0(foreword << "pit=" << pit << " row=" << i
 			        << (row.selection() ? " row_selection": "")
 			        << (pi.full_repaint ? " full_repaint" : "")
-			        << (row_has_changed ? " row_has_changed" : ""));
+			        << (row.changed() ? " row.changed" : ""));
 		}
 
 		// Backup full_repaint status and force full repaint

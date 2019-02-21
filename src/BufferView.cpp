@@ -316,9 +316,6 @@ struct BufferView::Private
 	/// a slice pointing to the start of the row where the cursor
 	/// is (at last draw time)
 	CursorSlice current_row_slice_;
-	/// a slice pointing to the start of the row where cursor was
-	/// at previous draw event
-	CursorSlice last_row_slice_;
 
 	// The vertical size of the blinking caret. Only used for math
 	// Using it for text could be bad when undo restores the cursor
@@ -3066,30 +3063,24 @@ int BufferView::horizScrollOffset(Text const * text,
 }
 
 
-bool BufferView::hadHorizScrollOffset(Text const * text,
-                                      pit_type pit, pos_type pos) const
-{
-	return !d->last_row_slice_.empty()
-	       && &text->inset() == d->last_row_slice_.inset().asInsetText()
-	       && pit ==  d->last_row_slice_.pit()
-	       && pos ==  d->last_row_slice_.pos();
-}
-
-
 void BufferView::setCurrentRowSlice(CursorSlice const & rowSlice)
 {
 	// nothing to do if the cursor was already on this row
-	if (d->current_row_slice_ == rowSlice) {
-		d->last_row_slice_ = CursorSlice();
+	if (d->current_row_slice_ == rowSlice)
 		return;
-	}
 
 	// if the (previous) current row was scrolled, we have to
 	// remember it in order to repaint it next time.
-	if (d->horiz_scroll_offset_ != 0)
-		d->last_row_slice_ = d->current_row_slice_;
-	else
-		d->last_row_slice_ = CursorSlice();
+	if (d->horiz_scroll_offset_ != 0) {
+		// search the old row in cache and mark it changed
+		for (auto & tm_pair : d->text_metrics_) {
+			if (&tm_pair.first->inset() == rowSlice.inset().asInsetText()) {
+				tm_pair.second.setRowChanged(rowSlice.pit(), rowSlice.pos());
+				// We found it, no need to continue.
+				break;
+			}
+		}
+	}
 
 	// Since we changed row, the scroll offset is not valid anymore
 	d->horiz_scroll_offset_ = 0;
@@ -3146,8 +3137,7 @@ void BufferView::checkCursorScrollOffset()
 		       << d->horiz_scroll_offset_ << " to " << offset);
 
 	if (d->update_strategy_ == NoScreenUpdate
-	    && (offset != d->horiz_scroll_offset_
-		|| !d->last_row_slice_.empty())) {
+	    && offset != d->horiz_scroll_offset_) {
 		// FIXME: if one uses SingleParUpdate, then home/end
 		// will not work on long rows. Why?
 		d->update_strategy_ = FullScreenUpdate;

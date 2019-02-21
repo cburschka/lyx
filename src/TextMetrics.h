@@ -49,6 +49,8 @@ public:
 	bool isLastRow(Row const & row) const;
 	/// is this row the first in the text?
 	bool isFirstRow(Row const & row) const;
+	///
+	void setRowChanged(pit_type pit, pos_type pos);
 
 	///
 	Dimension const & dim() const { return dim_; }
