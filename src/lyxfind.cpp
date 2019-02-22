@@ -1536,7 +1536,10 @@ void LatexInfo::buildEntries(bool isPatternString)
         found._dataStart = found._dataEnd;
         found._tokensize = found._dataEnd - found._tokenstart;
         found.parenthesiscount = 0;
+        found.head = interval.par.substr(found._tokenstart, found._tokensize);
       }
+      else
+        continue;
     }
     else {
       if (evaluatingMath) {
@@ -1575,6 +1578,7 @@ void LatexInfo::buildEntries(bool isPatternString)
         found._dataEnd = found._tokenstart + found._tokensize;
         found._dataStart = found._dataEnd;
         found.parenthesiscount = 0;
+        found.head = interval.par.substr(found._tokenstart, found._tokensize);
         evaluatingMath = true;
       }
       else {
@@ -1625,9 +1629,11 @@ void LatexInfo::buildEntries(bool isPatternString)
             found.head = interval.par.substr(found._tokenstart, found._tokensize);
           }
           else {
+            // Swallow possible optional params
             while (interval.par[pos1] == '[') {
               pos1 = interval.findclosing(pos1+1, interval.par.length(), '[', ']')+1;
             }
+            // Swallow also the eventual parameter
             if (interval.par[pos1] == '{') {
               found._dataEnd = interval.findclosing(pos1+1, interval.par.length()) + 1;
             }
@@ -1637,6 +1643,7 @@ void LatexInfo::buildEntries(bool isPatternString)
             found._dataStart = found._dataEnd;
             found._tokensize = count + found._dataEnd - pos;
             found.parenthesiscount = 0;
+            found.head = interval.par.substr(found._tokenstart, found._tokensize);
             found.disabled = true;
           }
         }
@@ -1646,6 +1653,7 @@ void LatexInfo::buildEntries(bool isPatternString)
           found._dataEnd = found._dataStart;
           found._tokensize = count + found._dataEnd - pos;
           found.parenthesiscount = 0;
+          found.head = interval.par.substr(found._tokenstart, found._tokensize);
           found.disabled = true;
         }
       }
