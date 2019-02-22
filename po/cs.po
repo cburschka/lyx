@@ -16756,9 +16756,8 @@ msgid "Handouts"
 msgstr "Sylaby"
 
 #: lib/layouts/varwidth.module:2
-#, fuzzy
 msgid "Variable-width Minipages"
-msgstr "Celotabulkové nastavení"
+msgstr "Ministránky s proměnlivou šířkou"
 
 #: lib/layouts/varwidth.module:11
 msgid ""
@@ -16768,33 +16767,35 @@ msgid ""
 "width).  The inset has two optional arguments: vertical adjustment (c|t|b) "
 "and maximum width (defaults to \\linewidth)."
 msgstr ""
+"Přidává vložku 'Ministránka (prom. šířka)' za použití balíčku varwidth. "
+"Tento balíček poskytuje ministránky s proměnlivou šířkou, která je definována "
+"šířkou svého obsahu (pokud nepřekročí specifikované maximum). "
+"Vložka má dvě nepovinné volby: vertikální zarovnání (c|t|b) "
+"a maximální šířku (implicitně \\linewidth). Více viz. příklady v varwidth-floats-side-by-side.lyx."
 
 #: lib/layouts/varwidth.module:17
 msgid "Minipage (Var. Width)"
-msgstr ""
+msgstr "Ministránka (prom. šířka)"
 
 #: lib/layouts/varwidth.module:19
-#, fuzzy
 msgid "Minipage (var.)"
-msgstr "Ministránka"
+msgstr "Ministránka (prom.)"
 
 #: lib/layouts/varwidth.module:31
-#, fuzzy
 msgid "Vert. Adjustment"
-msgstr "Vytisknout dokument"
+msgstr "Vert. zarovnání"
 
 #: lib/layouts/varwidth.module:32
 msgid "Vertical adjustment: c (center), t (top) or b (bottom)"
-msgstr ""
+msgstr "Vertikální zarovnání: c (centrovaně), t (nahoru), b (dolů)"
 
 #: lib/layouts/varwidth.module:35
-#, fuzzy
 msgid "Max. Width"
-msgstr "Šířka značky"
+msgstr "Max. šířka"
 
 #: lib/layouts/varwidth.module:36
 msgid "Maximum width (default: \\linewidth)"
-msgstr ""
+msgstr "Maximální šířka (implicitně \\linewidth)"
 
 #: lib/languages:102 src/Font.cpp:62 src/Font.cpp:65 src/Font.cpp:69
 #: src/Font.cpp:74 src/Font.cpp:77
