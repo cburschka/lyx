@@ -95,15 +95,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-01-25 14:49+0100\n"
-"PO-Revision-Date: 2019-01-25 15:01+0100\n"
+"POT-Creation-Date: 2019-02-23 17:49+0100\n"
+"PO-Revision-Date: 2019-02-23 17:57+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 18.12.0\n"
+"X-Generator: Lokalize 18.12.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:33
@@ -2281,11 +2281,11 @@ msgstr "Name der einzubindenden Datei"
 msgid "&Include Type:"
 msgstr "&Art der Einbindung:"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:383
+#: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:400
 msgid "Include"
 msgstr "Include"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:298 src/insets/InsetInclude.cpp:373
+#: src/frontends/qt4/ui/IncludeUi.ui:298 src/insets/InsetInclude.cpp:390
 msgid "Input"
 msgstr "Input"
 
@@ -2293,8 +2293,8 @@ msgstr "Input"
 msgid "Verbatim"
 msgstr "Unformatiert"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1306
-#: src/insets/InsetInclude.cpp:1312
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1329
+#: src/insets/InsetInclude.cpp:1335
 msgid "Program Listing"
 msgstr "Programmlisting"
 
@@ -25667,12 +25667,12 @@ msgstr "Fehler bei der Ansicht der Ausgabedatei."
 
 #: src/Buffer.cpp:3358 src/frontends/qt4/GuiView.cpp:2329
 #: src/frontends/qt4/Validator.cpp:222 src/insets/ExternalSupport.cpp:386
-#: src/insets/InsetGraphics.cpp:684 src/insets/InsetInclude.cpp:544
+#: src/insets/InsetGraphics.cpp:684 src/insets/InsetInclude.cpp:561
 msgid "Invalid filename"
 msgstr "Ungültiger Dateiname"
 
 #: src/Buffer.cpp:3359 src/insets/ExternalSupport.cpp:387
-#: src/insets/InsetGraphics.cpp:685 src/insets/InsetInclude.cpp:545
+#: src/insets/InsetGraphics.cpp:685 src/insets/InsetInclude.cpp:562
 msgid ""
 "The following filename will cause troubles when running the exported file "
 "through LaTeX: "
@@ -25681,12 +25681,12 @@ msgstr ""
 "exportierten Datei ausgeführt wird: "
 
 #: src/Buffer.cpp:3364 src/insets/ExternalSupport.cpp:392
-#: src/insets/InsetGraphics.cpp:692 src/insets/InsetInclude.cpp:549
+#: src/insets/InsetGraphics.cpp:692 src/insets/InsetInclude.cpp:566
 msgid "Problematic filename for DVI"
 msgstr "Problematischer Dateiname für DVI"
 
 #: src/Buffer.cpp:3365 src/insets/ExternalSupport.cpp:393
-#: src/insets/InsetGraphics.cpp:693 src/insets/InsetInclude.cpp:550
+#: src/insets/InsetGraphics.cpp:693 src/insets/InsetInclude.cpp:567
 msgid ""
 "The following filename can cause troubles when running the exported file "
 "through LaTeX and opening the resulting DVI: "
@@ -25866,12 +25866,10 @@ msgid ""
 "Otherwise, you will beasked about it again the next time you try to loadthis "
 "file, and may over-write your own work."
 msgstr ""
-"LyX konnte die Notspeicherungsdatei nicht umbenennen. Sie sollten das manuell"
-" tun. "
-"Sonst werden Sie nächstes Mal, wenn Sie diese Datei laden, wieder danach"
-" gefragt, "
-"und Ihre Datei könnte mit einer dann nicht mehr aktuellen Notspeicherung"
-" überschrieben werden."
+"LyX konnte die Notspeicherungsdatei nicht umbenennen. Sie sollten das "
+"manuell tun. Sonst werden Sie nächstes Mal, wenn Sie diese Datei laden, "
+"wieder danach gefragt, und Ihre Datei könnte mit einer dann nicht mehr "
+"aktuellen Notspeicherung überschrieben werden."
 
 #: src/Buffer.cpp:4819
 #, c-format
@@ -32761,7 +32759,7 @@ msgstr "LyX kann keine Liste mit %1$s erzeugen"
 msgid "footnote"
 msgstr "Fußnote"
 
-#: src/insets/InsetGraphics.cpp:563 src/insets/InsetInclude.cpp:845
+#: src/insets/InsetGraphics.cpp:563 src/insets/InsetInclude.cpp:868
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -32803,36 +32801,36 @@ msgstr "Datei"
 msgid "Hyperlink (%1$s) to %2$s"
 msgstr "Hyperlink (%1$s) to %2$s"
 
-#: src/insets/InsetInclude.cpp:376
+#: src/insets/InsetInclude.cpp:393
 msgid "Verbatim Input"
 msgstr "Unformatiert"
 
-#: src/insets/InsetInclude.cpp:379
+#: src/insets/InsetInclude.cpp:396
 msgid "Verbatim Input*"
 msgstr "Unformatiert*"
 
-#: src/insets/InsetInclude.cpp:385
+#: src/insets/InsetInclude.cpp:402
 msgid "Include (excluded)"
 msgstr "Include (ausgeschlossen)"
 
-#: src/insets/InsetInclude.cpp:391
+#: src/insets/InsetInclude.cpp:408
 msgid "Unknown"
 msgstr "Unbekannt"
 
-#: src/insets/InsetInclude.cpp:504 src/insets/InsetInclude.cpp:891
-#: src/insets/InsetInclude.cpp:966
+#: src/insets/InsetInclude.cpp:521 src/insets/InsetInclude.cpp:914
+#: src/insets/InsetInclude.cpp:989
 msgid "Recursive input"
 msgstr "Rekursive Eingabe"
 
-#: src/insets/InsetInclude.cpp:505 src/insets/InsetInclude.cpp:892
-#: src/insets/InsetInclude.cpp:967
+#: src/insets/InsetInclude.cpp:522 src/insets/InsetInclude.cpp:915
+#: src/insets/InsetInclude.cpp:990
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 "Sie haben versucht, die Datei %1$s in sich selbst einzubetten! Die "
 "Einbettung wird ignoriert."
 
-#: src/insets/InsetInclude.cpp:715
+#: src/insets/InsetInclude.cpp:738
 #, c-format
 msgid ""
 "Could not load included file\n"
@@ -32842,12 +32840,12 @@ msgstr ""
 "Die eingebettete Datei ,%1$s` kann nicht geladen werden.\n"
 "Bitte prüfen Sie, ob diese Datei existiert."
 
-#: src/insets/InsetInclude.cpp:719 src/insets/InsetInclude.cpp:803
-#: src/insets/InsetInclude.cpp:828
+#: src/insets/InsetInclude.cpp:742 src/insets/InsetInclude.cpp:826
+#: src/insets/InsetInclude.cpp:851
 msgid "Error: "
 msgstr "Fehler "
 
-#: src/insets/InsetInclude.cpp:728
+#: src/insets/InsetInclude.cpp:751
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -32858,11 +32856,11 @@ msgstr ""
 "hat die Textklasse ,%2$s`,\n"
 "während die Hauptdatei die Textklasse ,%3$s` hat."
 
-#: src/insets/InsetInclude.cpp:734
+#: src/insets/InsetInclude.cpp:757
 msgid "Different textclasses"
 msgstr "Unterschiedliche Textklassen"
 
-#: src/insets/InsetInclude.cpp:740
+#: src/insets/InsetInclude.cpp:763
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -32873,11 +32871,11 @@ msgstr ""
 "hat folgende Einstellung für ,Keine TeX-Schriften verwenden`: ,%2$s`,\n"
 "während die Hauptdatei diese Einstellung hat: ,%3$s`."
 
-#: src/insets/InsetInclude.cpp:746
+#: src/insets/InsetInclude.cpp:769
 msgid "Different use-non-TeX-fonts settings"
 msgstr "Verschiedene Einstellungen für die Verwendung von TeX-Schriften"
 
-#: src/insets/InsetInclude.cpp:761
+#: src/insets/InsetInclude.cpp:784
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -32888,11 +32886,11 @@ msgstr ""
 "benutzt Modul ,%2$s`,\n"
 "das nicht in der Hauptdatei benutzt wird."
 
-#: src/insets/InsetInclude.cpp:765
+#: src/insets/InsetInclude.cpp:788
 msgid "Module not found"
 msgstr "Modul nicht gefunden"
 
-#: src/insets/InsetInclude.cpp:794 src/insets/InsetInclude.cpp:820
+#: src/insets/InsetInclude.cpp:817 src/insets/InsetInclude.cpp:843
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
@@ -32903,11 +32901,11 @@ msgstr ""
 "wurde nicht korrekt exportiert.\n"
 "Vorsicht, die LaTeX-Ausgabe ist vermutlich lückenhaft!"
 
-#: src/insets/InsetInclude.cpp:879
+#: src/insets/InsetInclude.cpp:902
 msgid "Unsupported Inclusion"
 msgstr "Einbettung nicht unterstützt"
 
-#: src/insets/InsetInclude.cpp:880
+#: src/insets/InsetInclude.cpp:903
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -32960,12 +32958,12 @@ msgstr "Information bezüglich %1$s '%2$s'"
 msgid "Missing \\end_inset at this point."
 msgstr "Fehlendes \\end_inset an dieser Stelle."
 
-#: src/insets/InsetInfo.cpp:325 src/insets/InsetInfo.cpp:409
-#: src/insets/InsetInfo.cpp:415 src/insets/InsetInfo.cpp:422
+#: src/insets/InsetInfo.cpp:325 src/insets/InsetInfo.cpp:413
+#: src/insets/InsetInfo.cpp:419 src/insets/InsetInfo.cpp:426
 msgid "undefined"
 msgstr "undefiniert"
 
-#: src/insets/InsetInfo.cpp:343 src/insets/InsetInfo.cpp:379
+#: src/insets/InsetInfo.cpp:343 src/insets/InsetInfo.cpp:383
 msgid "Return[[Key]]"
 msgstr "Return"
 
@@ -32994,34 +32992,38 @@ msgid "CapsLock"
 msgstr "Feststelltaste"
 
 #: src/insets/InsetInfo.cpp:375
+msgid "Control[[Key]]"
+msgstr "Control"
+
+#: src/insets/InsetInfo.cpp:379
 msgid "Command[[Key]]"
 msgstr "Command"
 
-#: src/insets/InsetInfo.cpp:383
+#: src/insets/InsetInfo.cpp:387
 msgid "Option[[Key]]"
 msgstr "Option"
 
-#: src/insets/InsetInfo.cpp:387
+#: src/insets/InsetInfo.cpp:391
 msgid "Delete[[Key]]"
 msgstr "Rücktaste"
 
-#: src/insets/InsetInfo.cpp:391
+#: src/insets/InsetInfo.cpp:395
 msgid "Fn+Del"
 msgstr "Fn+Rücktaste"
 
-#: src/insets/InsetInfo.cpp:395
+#: src/insets/InsetInfo.cpp:399
 msgid "Esc"
 msgstr "Esc"
 
-#: src/insets/InsetInfo.cpp:436 src/insets/InsetInfo.cpp:445
+#: src/insets/InsetInfo.cpp:440 src/insets/InsetInfo.cpp:449
 msgid "yes"
 msgstr "ja"
 
-#: src/insets/InsetInfo.cpp:436 src/insets/InsetInfo.cpp:445
+#: src/insets/InsetInfo.cpp:440 src/insets/InsetInfo.cpp:449
 msgid "no"
 msgstr "nein"
 
-#: src/insets/InsetInfo.cpp:551
+#: src/insets/InsetInfo.cpp:555
 msgid "No version control"
 msgstr "Keine Versionskontrolle"
 
