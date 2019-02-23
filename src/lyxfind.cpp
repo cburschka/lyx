@@ -739,17 +739,20 @@ string escape_for_regex(string s, bool match_latex)
 		size_t new_pos = s.find("\\regexp{", pos);
 		if (new_pos == string::npos)
 			new_pos = s.size();
-		LYXERR(Debug::FIND, "new_pos: " << new_pos);
-		string t = apply_escapes(s.substr(pos, new_pos - pos), get_lyx_unescapes());
-		LYXERR(Debug::FIND, "t [lyx]: " << t);
-		t = apply_escapes(t, get_regexp_escapes());
-		LYXERR(Debug::FIND, "t [rxp]: " << t);
-		s.replace(pos, new_pos - pos, t);
-		new_pos = pos + t.size();
-		LYXERR(Debug::FIND, "Regexp after escaping: " << s);
-		LYXERR(Debug::FIND, "new_pos: " << new_pos);
-		if (new_pos == s.size())
-			break;
+		string t;
+		if (new_pos > pos) {
+			LYXERR(Debug::FIND, "new_pos: " << new_pos);
+			t = apply_escapes(s.substr(pos, new_pos - pos), get_lyx_unescapes());
+			LYXERR(Debug::FIND, "t [lyx]: " << t);
+			t = apply_escapes(t, get_regexp_escapes());
+			LYXERR(Debug::FIND, "t [rxp]: " << t);
+			s.replace(pos, new_pos - pos, t);
+			new_pos = pos + t.size();
+			LYXERR(Debug::FIND, "Regexp after escaping: " << s);
+			LYXERR(Debug::FIND, "new_pos: " << new_pos);
+			if (new_pos == s.size())
+				break;
+		}
 		// Might fail if \\endregexp{} is preceeded by unexpected stuff (weird escapes)
 		size_t end_pos = s.find("\\endregexp{}}", new_pos + 8);
 		LYXERR(Debug::FIND, "end_pos: " << end_pos);
@@ -1119,10 +1122,26 @@ class Intervall {
   int findclosing(int start, int end, char up, char down, int repeat);
   void handleParentheses(int lastpos, bool closingAllowed);
   bool hasTitle;
+  int isOpeningPar(int pos);
   string titleValue;
   void output(ostringstream &os, int lastpos);
   // string show(int lastpos);
 };
+
+int Intervall::isOpeningPar(int pos)
+{
+  if ((pos < 0) || (size_t(pos) >= par.size()))
+    return 0;
+  if (par[pos] != '{')
+    return 0;
+  if (size_t(pos) + 2 >= par.size())
+    return 1;
+  if (par[pos+2] != '}')
+    return 1;
+  if (par[pos+1] == '[' || par[pos+1] == ']')
+    return 3;
+  return 1;
+}
 
 void Intervall::setForDefaultLang(KeyInfo &defLang)
 {
@@ -1993,14 +2012,15 @@ void Intervall::output(ostringstream &os, int lastpos)
 void LatexInfo::processRegion(int start, int region_end)
 {
   while (start < region_end) {          /* Let {[} and {]} survive */
-    if ((interval.par[start] == '{') &&
-        (interval.par[start+1] != ']') &&
-        (interval.par[start+1] != '[')) {
+    int cnt = interval.isOpeningPar(start);
+    if (cnt == 1) {
       // Closing is allowed past the region
       int closing = interval.findclosing(start+1, interval.par.length());
       interval.addIntervall(start, start+1);
       interval.addIntervall(closing, closing+1);
     }
+    else if (cnt == 3)
+      start += 2;
     start = interval.nextNotIgnored(start+1);
   }
 }
@@ -2318,7 +2338,7 @@ int LatexInfo::process(ostringstream &os, KeyInfo &actual )
   }
   // Remove possible empty data
   int dstart = interval.nextNotIgnored(actual._dataStart);
-  while ((dstart < output_end) && (interval.par[dstart] == '{')) {
+  while (interval.isOpeningPar(dstart) == 1) {
     interval.addIntervall(dstart, dstart+1);
     int dend = interval.findclosing(dstart+1, output_end);
     interval.addIntervall(dend, dend+1);
@@ -2550,10 +2570,22 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 			++close_wildcards;
 		}
 		if (!opt.ignoreformat) {
-			// Remove extra '\}' at end
-			while ( regex_replace(par_as_string, par_as_string, "(.*)\\\\}$", "$1")) {
-				open_braces++;
+			// Remove extra '\}' at end if not part of \{\.\}
+			size_t lng = par_as_string.size();
+			while(lng > 2) {
+				if (par_as_string.substr(lng-2, 2).compare("\\}") == 0) {
+					if (lng >= 6) {
+						if (par_as_string.substr(lng-6,3).compare("\\{\\") == 0)
+							break;
+					}
+					lng -= 2;
+					open_braces++;
+				}
+				else
+					break;
 			}
+			if (lng < par_as_string.size())
+				par_as_string = par_as_string.substr(0,lng);
 			/*
 			// save '\.'
 			regex_replace(par_as_string, par_as_string, "\\\\\\.", "_xxbdotxx_");
