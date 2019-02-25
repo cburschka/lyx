@@ -46,6 +46,11 @@ Sublabel: erratic
 # Manual export fails the first time but works the second time. (Why?)
 export/doc/es/(Customization|Intro)_pdf4_texF
 
+# Missing Cyrillic LICR commands (on first run after changing from tex-fonts)
+# (leftover *.aux file?)
+export/doc/uk/Intro_pdf4_texF
+
+
 
 Sublabel: varying_versions
 ##########################

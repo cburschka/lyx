@@ -86,31 +86,7 @@ if ($source =~ /\/([a-z][a-z](_[A-Z][A-Z])?)[\/_]/) {
 
 my $inputEncoding = undef;
 if ($fontT eq "systemF") {
-  if ($lang =~ /^(ru|uk|sk|el)$/) {
-    $font{roman} = "DejaVu Serif";
-    $font{sans} = "DejaVu Sans";
-    $font{typewriter} = "DejaVu Sans Mono";
-  }
-  elsif ($lang =~ /^(he)$/) {
-    $font{roman} = "FreeSans";
-    $font{sans} = "FreeSans";
-    $font{typewriter} = "FreeSans";
-  }
-  elsif ($lang eq "fa") {
-    $font{roman} = "FreeFarsi";
-    $font{sans} = "FreeFarsi";
-    $font{typewriter} = "FreeFarsi Monospace";
-  }
-  elsif ($lang eq "ko" ) {
-    # $font{roman} = "NanumGothic"; # NanumMyeongjo, NanumGothic Eco, NanumGothicCoding
-    # $font{sans} = "NanumGothic";
-    # $font{typewriter} = "NanumGothic";
-  }
-  elsif ($lang eq "ar" ) {
-    # available in 'fonts-sil-scheherazade' package
-    $font{roman} = "Scheherazade";
-    $font{sans} = "Scheherazade";
-    $font{typewriter} = "Scheherazade";
+  if ($lang =~ /^(ar|ca|cs|da|de|el|es|eu|fa|fr|gl|he|hu|id|it|ko|nb|nl|pl|pt|ro|ru|se|sk|sl|sr|sv|uk)$/) {
   }
   else {
     # default system fonts

@@ -1,9 +1,11 @@
 Sublabel: missing_glyphs
-export/doc/UserGuide_(dvi3|pdf4|pdf5)_systemF
-export/doc/(de|es|fr)/UserGuide_(dvi3|pdf4|pdf5)_systemF
-export/doc/uk/Intro_pdf4_texF
-export/examples/uk/splash_pdf4_texF
+# CJK-quotes examples (missing in most Latin-script fonts)
+export/doc/(|de/|es/|fr/)UserGuide_(dvi3|pdf4|pdf5)_systemF
+
+# Greek characters in external file (Child Document>Program Listing)
+# (works with non-tex-fonts).
 export/examples/minted-filelisting_pdf4_texF
+
 # started failing after a TL 2016 update
 # for discussion on whether a bug should be reported or LyX output should be changed, see:
 # https://www.mail-archive.com/search?l=mid&q=20170225203955.nas2qopy4l4ukyqq%40steph
@@ -15,7 +17,7 @@ export/export/latex/languagenesting2_pdf5_systemF
 # glyph (for a different purpose) that is being used here. Clearly the
 # problem should be fixed somewhere else.
 export/export/latex/arabic_simple_pdf4_systemF
-export/doc/ar/Intro_pdf4_systemF
-
-# Kornel Benko: Missing ␣
+# works here (Debian/stretch):
+#export/doc/ar/Intro_pdf4_systemF
+# Kornel Benko: Missing ␣ (but see also invertedTests)
 export/doc/ar/UserGuide_pdf4_systemF

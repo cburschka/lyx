@@ -120,11 +120,6 @@ export/export/latex/arabic_simple_pdf4_texF
 # See note about "Missing ␣" in file "ignoreLatexErrorsTests".
 export/doc/ar/UserGuide_lyx(22|23)
 
-# Polyglossia + LuaTeX does not support Farsi yet. See:
-#     https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
-# It also fails with tex-fonts and Xe/LuaTeX and with XeTeX+polygossia. Why?
-export/examples/fa/splash_.*(texF|systemF)
-
 # nonstandard tests failing for unknown reason:
 export/examples/aa_sample_(dvi3|pdf[45])_.*
 export/templates/obsolete/ACM-siggraph_pdf5_(texF|systemF)
@@ -165,6 +160,19 @@ export/doc/es/Customization_pdf4_texF
 # https://www.mail-archive.com/search?l=mid&q=20170228190738.cgs3tl3ny2bxiegk%40steph
 export/examples/es/linguistics_pdf4_texF
 export/export/latex/bug9871-slovak-ascii-preambleencoding_pdf2
+
+#8035 work around a Polyglossia bug: 
+# An error is reported if the document font does not announce support for a 
+# script (Cyrillic, Greek, ...) which Polyglossia thinks is required to
+# typeset the document language. This is not required with LyX's check for 
+# missing characters and results in many false positives:
+# a) with fonts including the required characters but
+#    not the tag tested by Polyglossia,
+# b) if the document language is "Serbian (Latin Script)",
+#    the Cyrillic script is not required yet Polyglossia tests for support.
+# The document "sr/Braille.lyx" is an example of case b).
+# (For some reason, the false positive error is not thrown with PDF (luatex).)
+export/examples/sr/Braille_(dvi3|pdf4)_systemF
 
 #10355 xmllint detects failures
 export/doc/attic/eu_UserGuide_xhtml
@@ -210,7 +218,6 @@ Sublabel: texissues
 export/doc/(|de/|es/|fr/)UserGuide_pdf4_texF
 
 # Hebrew docs do not currently work with LuaTeX (will be fixed in TeXLive-16)
-# TODO: set working system fonts in the lyx sources
 export/.*/he/.*(dvi3|pdf5).*
 
 # ... nor with XeTeX and 8-bit TeX fonts (due to missing ASCII replacements)
@@ -272,6 +279,21 @@ export/templates/es_beamer-conference-ornate-20min_pdf4_texF
 # Arabic only works with XeTeX + system fonts (pdf4_systemF)
 export/examples/ar/splash_(dvi.*|pdf|pdf[^4].*)
 export/examples/ar/splash_pdf4_texF
+# Language nesting problem "! Extra \else"
+# and missing glyph "no ␣ in font Scheherazade":
+export/doc/ar/UserGuide_pdf4_systemF
+
+# Farsi
+# Fails with Polyglossia + LuaTeX (undefined command)
+# https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
+export/examples/fa/splash_(dvi3|pdf5)_systemF
+# Missing characters (em space and "English" quotes) with XeTeX + system fonts.
+export/examples/fa/splash_pdf4_systemF
+# Fails with ASCII inputenc (required by XeTeX + TeX fonts) due to missing
+# LICR substitutions in unicodesymbols.
+export/examples/fa/splash_pdf4_texF
+# "invalid utf-8 sequence" with Babel-Farsi, LuaTeX, and TeX fonts.
+export/examples/fa/splash_(dvi3|pdf5)_texF
 
 # CJKutf8 does not work with XeTeX and LuaTeX (and 8-bit fonts)
 export/examples/ja/multilingual_.*_texF
