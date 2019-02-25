@@ -51,10 +51,8 @@ BufferList::BufferList()
 
 BufferList::~BufferList()
 {
-	BufferStorage::iterator it = binternal.begin();
-	BufferStorage::iterator end = binternal.end();
-	for (; it != end; ++it)
-		delete (*it);
+	for (Buffer * buf : binternal)
+		delete buf;
 }
 
 
@@ -160,12 +158,8 @@ void BufferList::closeAll()
 FileNameList BufferList::fileNames() const
 {
 	FileNameList nvec;
-	BufferStorage::const_iterator it = bstore.begin();
-	BufferStorage::const_iterator end = bstore.end();
-	for (; it != end; ++it) {
-		Buffer * buf = *it;
+	for (Buffer const * buf : bstore)
 		nvec.push_back(buf->fileName());
-	}
 	return nvec;
 }
 
@@ -231,14 +225,12 @@ void BufferList::updateIncludedTeXfiles(string const & masterTmpDir,
 {
 	OutputParams runparams = runparams_in;
 	runparams.is_child = true;
-	BufferStorage::iterator it = bstore.begin();
-	BufferStorage::iterator end = bstore.end();
-	for (; it != end; ++it) {
-		if (!(*it)->isDepClean(masterTmpDir)) {
-			string writefile = addName(masterTmpDir, (*it)->latexName());
-			(*it)->makeLaTeXFile(FileName(writefile), masterTmpDir,
+	for (Buffer * buf : bstore) {
+		if (!buf->isDepClean(masterTmpDir)) {
+			string writefile = addName(masterTmpDir, buf->latexName());
+			buf->makeLaTeXFile(FileName(writefile), masterTmpDir,
 					     runparams, Buffer::OnlyBody);
-			(*it)->markDepClean(masterTmpDir);
+			buf->markDepClean(masterTmpDir);
 		}
 	}
 }
@@ -246,19 +238,15 @@ void BufferList::updateIncludedTeXfiles(string const & masterTmpDir,
 
 void BufferList::emergencyWriteAll()
 {
-	BufferStorage::const_iterator it = bstore.begin();
-	BufferStorage::const_iterator const en = bstore.end();
-	for (; it != en; ++it)
-		 (*it)->emergencyWrite();
+	for (Buffer * buf : bstore)
+		 buf->emergencyWrite();
 }
 
 
 void BufferList::invalidateConverterCache() const
 {
-	BufferStorage::const_iterator it = bstore.begin();
-	BufferStorage::const_iterator const en = bstore.end();
-	for (; it != en; ++it)
-		(*it)->params().invalidateConverterCache();
+	for (Buffer const * buf : bstore)
+		buf->params().invalidateConverterCache();
 }
 
 
@@ -288,7 +276,7 @@ bool BufferList::isInternal(Buffer const * b) const
 }
 
 
-bool BufferList::isOthersChild(Buffer * parent, Buffer * child)
+bool BufferList::isOthersChild(Buffer * parent, Buffer * child) const
 {
 	LASSERT(parent, return false);
 	LASSERT(child, return false);
@@ -299,7 +287,7 @@ bool BufferList::isOthersChild(Buffer * parent, Buffer * child)
 	if (parent_ && parent_ != parent)
 		return true;
 
-	for(Buffer * buf : bstore)
+	for(Buffer const * buf : bstore)
 		if (buf != parent && buf->isChild(child))
 			return true;
 	return false;
@@ -332,24 +320,19 @@ Buffer * BufferList::getBuffer(support::FileName const & fname, bool internal) c
 
 Buffer * BufferList::getBufferFromTmp(string const & s)
 {
-	BufferStorage::iterator it = bstore.begin();
-	BufferStorage::iterator end = bstore.end();
-	for (; it < end; ++it) {
-		if (prefixIs(s, (*it)->temppath())) {
+	for (Buffer * buf : bstore) {
+		if (prefixIs(s, buf->temppath())) {
 			// check whether the filename matches the master
-			string const master_name = (*it)->latexName();
+			string const master_name = buf->latexName();
 			if (suffixIs(s, master_name))
-				return *it;
+				return buf;
 			// if not, try with the children
-			ListOfBuffers clist = (*it)->getDescendents();
-			ListOfBuffers::const_iterator cit = clist.begin();
-			ListOfBuffers::const_iterator cend = clist.end();
-			for (; cit != cend; ++cit) {
+			for (Buffer * child : buf->getDescendents()) {
 				string const mangled_child_name = DocFileName(
-					changeExtension((*cit)->absFileName(),
+					changeExtension(child->absFileName(),
 						".tex")).mangledFileName();
 				if (suffixIs(s, mangled_child_name))
-					return *cit;
+					return child;
 			}
 		}
 	}
@@ -359,19 +342,15 @@ Buffer * BufferList::getBufferFromTmp(string const & s)
 
 void BufferList::recordCurrentAuthor(Author const & author)
 {
-	BufferStorage::iterator it = bstore.begin();
-	BufferStorage::iterator end = bstore.end();
-	for (; it != end; ++it)
-		(*it)->params().authors().recordCurrentAuthor(author);
+	for (Buffer * buf : bstore)
+		buf->params().authors().recordCurrentAuthor(author);
 }
 
 
 void BufferList::updatePreviews()
 {
-	BufferStorage::iterator it = bstore.begin();
-	BufferStorage::iterator end = bstore.end();
-	for (; it != end; ++it)
-		(*it)->updatePreviews();
+	for (Buffer * buf : bstore)
+		buf->updatePreviews();
 }
 
 
@@ -388,14 +367,10 @@ int BufferList::bufferNum(FileName const & fname) const
 
 void BufferList::changed(bool update_metrics) const
 {
-	BufferStorage::const_iterator it = bstore.begin();
-	BufferStorage::const_iterator end = bstore.end();
-	for (; it != end; ++it)
-		(*it)->changed(update_metrics);
-	it = binternal.begin();
-	end = binternal.end();
-	for (; it != end; ++it)
-		(*it)->changed(update_metrics);
+	for (Buffer const * buf : bstore)
+		buf->changed(update_metrics);
+	for (Buffer const * buf : binternal)
+		buf->changed(update_metrics);
 }
 
 

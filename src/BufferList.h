@@ -58,7 +58,7 @@ public:
 	/// Is child a child of some Buffer other than parent?
 	/// NOTE: child must be a child of parent, and both must be non-null.
 	/// Otherwise we assert.
-	bool isOthersChild(Buffer * parent, Buffer * child);
+	bool isOthersChild(Buffer * parent, Buffer * child) const;
 
 	/// delete a buffer
 	void release(Buffer * b);
