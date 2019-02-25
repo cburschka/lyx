@@ -1845,7 +1845,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   // Skip
   // makeKey("enskip|smallskip|medskip|bigskip|vfill", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   // Custom space/skip, remove the content (== length value)
-  makeKey("vspace|hspace|mspace", KeyInfo(KeyInfo::noContent, 1, false), isPatternString);
+  makeKey("vspace|vspace*|hspace|hspace*|mspace", KeyInfo(KeyInfo::noContent, 1, false), isPatternString);
   // Found in fr/UserGuide.lyx
   makeKey("og|fg", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   // quotes
@@ -1877,7 +1877,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("trianglerightpar|hexagonpar|starpar",   KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("triangleuppar|triangledownpar|droppar", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("triangleleftpar|shapepar|dropuppar",    KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
-  makeKey("hphantom|footnote|shortcut|includegraphics",     KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+  makeKey("hphantom|vphantom|footnote|shortcut|include|includegraphics",     KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("parbox", KeyInfo(KeyInfo::doRemove, 1, true), isPatternString);
   // like ('tiny{}' or '\tiny ' ... )
   makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, false), isPatternString);
@@ -3120,8 +3120,13 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 					}
 				}
 				if (match_len2 >= 0) {
-					if (match_len2 == 0)
-						match_len_zero_count++;
+					if (match_len2 == 0) {
+						if (match_len_zero_count++ > 10) {
+							// Omit loooong loops in long paragraphs
+							LYXERR(Debug::FIND, "match_len2_zero_count: " << match_len_zero_count << ", match_len was " << match_len);
+							break;
+						}
+					}
 					else
 						match_len_zero_count = 0;
 				}
