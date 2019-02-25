@@ -130,13 +130,6 @@ bool TextMetrics::contains(pit_type pit) const
 }
 
 
-ParagraphMetrics const & TextMetrics::parMetrics(pit_type pit) const
-{
-	return const_cast<TextMetrics *>(this)->parMetrics(pit, true);
-}
-
-
-
 pair<pit_type, ParagraphMetrics const *> TextMetrics::first() const
 {
 	ParMetricsCache::const_iterator it = par_metrics_.begin();
@@ -152,6 +145,20 @@ pair<pit_type, ParagraphMetrics const *> TextMetrics::last() const
 }
 
 
+bool TextMetrics::isLastRow(Row const & row) const
+{
+	ParagraphList const & pars = text_->paragraphs();
+	return row.endpos() >= pars[row.pit()].size()
+		&& row.pit() + 1 == pit_type(pars.size());
+}
+
+
+bool TextMetrics::isFirstRow(Row const & row) const
+{
+	return row.pos() == 0 && row.pit() == 0;
+}
+
+
 ParagraphMetrics & TextMetrics::parMetrics(pit_type pit, bool redo)
 {
 	ParMetricsCache::iterator pmc_it = par_metrics_.find(pit);
@@ -162,6 +169,42 @@ ParagraphMetrics & TextMetrics::parMetrics(pit_type pit, bool redo)
 	if (pmc_it->second.rows().empty() && redo)
 		redoParagraph(pit);
 	return pmc_it->second;
+}
+
+
+ParagraphMetrics const & TextMetrics::parMetrics(pit_type pit) const
+{
+	return const_cast<TextMetrics *>(this)->parMetrics(pit, true);
+}
+
+
+void TextMetrics::newParMetricsDown()
+{
+	pair<pit_type, ParagraphMetrics> const & last = *par_metrics_.rbegin();
+	pit_type const pit = last.first + 1;
+	if (pit == int(text_->paragraphs().size()))
+		return;
+
+	// do it and update its position.
+	redoParagraph(pit);
+	par_metrics_[pit].setPosition(last.second.position()
+		+ last.second.descent() + par_metrics_[pit].ascent());
+	updatePosCache(pit);
+}
+
+
+void TextMetrics::newParMetricsUp()
+{
+	pair<pit_type, ParagraphMetrics> const & first = *par_metrics_.begin();
+	if (first.first == 0)
+		return;
+
+	pit_type const pit = first.first - 1;
+	// do it and update its position.
+	redoParagraph(pit);
+	par_metrics_[pit].setPosition(first.second.position()
+		- first.second.ascent() - par_metrics_[pit].descent());
+	updatePosCache(pit);
 }
 
 
@@ -1204,35 +1247,6 @@ pos_type TextMetrics::x2pos(pit_type pit, int row, int x) const
 }
 
 
-void TextMetrics::newParMetricsDown()
-{
-	pair<pit_type, ParagraphMetrics> const & last = *par_metrics_.rbegin();
-	pit_type const pit = last.first + 1;
-	if (pit == int(text_->paragraphs().size()))
-		return;
-
-	// do it and update its position.
-	redoParagraph(pit);
-	par_metrics_[pit].setPosition(last.second.position()
-		+ last.second.descent() + par_metrics_[pit].ascent());
-	updatePosCache(pit);
-}
-
-
-void TextMetrics::newParMetricsUp()
-{
-	pair<pit_type, ParagraphMetrics> const & first = *par_metrics_.begin();
-	if (first.first == 0)
-		return;
-
-	pit_type const pit = first.first - 1;
-	// do it and update its position.
-	redoParagraph(pit);
-	par_metrics_[pit].setPosition(first.second.position()
-		- first.second.ascent() - par_metrics_[pit].descent());
-	updatePosCache(pit);
-}
-
 // y is screen coordinate
 pit_type TextMetrics::getPitNearY(int y)
 {
@@ -1563,20 +1577,6 @@ void TextMetrics::deleteLineForward(Cursor & cur)
 			cap::cutSelection(cur, false);
 		cur.checkBufferStructure();
 	}
-}
-
-
-bool TextMetrics::isLastRow(Row const & row) const
-{
-	ParagraphList const & pars = text_->paragraphs();
-	return row.endpos() >= pars[row.pit()].size()
-		&& row.pit() + 1 == pit_type(pars.size());
-}
-
-
-bool TextMetrics::isFirstRow(Row const & row) const
-{
-	return row.pos() == 0 && row.pit() == 0;
 }
 
 

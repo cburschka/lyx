@@ -42,11 +42,13 @@ public:
 	///
 	bool contains(pit_type pit) const;
 	///
-	ParagraphMetrics const & parMetrics(pit_type) const;
-	///
 	std::pair<pit_type, ParagraphMetrics const *> first() const;
 	///
 	std::pair<pit_type, ParagraphMetrics const *> last() const;
+	/// is this row the last in the text?
+	bool isLastRow(Row const & row) const;
+	/// is this row the first in the text?
+	bool isFirstRow(Row const & row) const;
 
 	///
 	Dimension const & dim() const { return dim_; }
@@ -54,14 +56,16 @@ public:
 	Point const & origin() const { return origin_; }
 
 
-	/// compute text metrics.
-	bool metrics(MetricsInfo & mi, Dimension & dim, int min_width = 0,
-		     bool const expand_on_multipars = true);
-
+	///
+	ParagraphMetrics const & parMetrics(pit_type) const;
 	///
 	void newParMetricsDown();
 	///
 	void newParMetricsUp();
+
+	/// compute text metrics.
+	bool metrics(MetricsInfo & mi, Dimension & dim, int min_width = 0,
+		     bool const expand_on_multipars = true);
 
 	/// The "nodraw" drawing stage for one single paragraph: set the
 	/// positions of the insets contained this paragraph in metrics
@@ -219,11 +223,6 @@ public:
 	bool cursorEnd(Cursor & cur);
 	///
 	void deleteLineForward(Cursor & cur);
-
-	/// is this row the last in the text?
-	bool isLastRow(Row const & row) const;
-	/// is this row the first in the text?
-	bool isFirstRow(Row const & row) const;
 
 	/// Returns an inset if inset was hit, or 0 if not.
 	/// \warning This method is not recursive! It will return the
