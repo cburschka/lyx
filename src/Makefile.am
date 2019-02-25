@@ -27,6 +27,8 @@ OTHERLIBS = $(BOOST_LIBS) $(MYTHES_LIBS) $(ENCHANT_LIBS) $(HUNSPELL_LIBS) \
 noinst_LIBRARIES = liblyxcore.a
 bin_PROGRAMS = lyx
 
+lyx_LDFLAGS = $(AM_LDFLAGS) $(QT_LDFLAGS)
+
 lyx_LDADD = \
 	liblyxcore.a \
 	liblyxmathed.a \
@@ -36,7 +38,6 @@ lyx_LDADD = \
 	liblyxgraphics.a \
 	support/liblyxsupport.a \
 	$(OTHERLIBS) \
-	$(QT_LDFLAGS) \
 	$(QT_LIB)
 
 if LYX_WIN_RESOURCE
@@ -46,7 +47,7 @@ if LYX_WIN_RESOURCE
 endif
 
 if INSTALL_MACOSX
-lyx_LDFLAGS = -framework AppKit -framework ApplicationServices \
+lyx_LDFLAGS += -framework AppKit -framework ApplicationServices \
 	-Wl,-rpath,@loader_path/../Frameworks \
 	-Wl,-rpath,@executable_path/../Frameworks \
 	-Wl,-headerpad_max_install_names

@@ -609,22 +609,29 @@ dnl prevent clash with system zlib that might be dragged in by other libs
 dnl Usage: LYX_CHECK_CALLSTACK_PRINTING: define LYX_CALLSTACK_PRINTING if the
 dnl        necessary APIs are available to print callstacks.
 AC_DEFUN([LYX_CHECK_CALLSTACK_PRINTING],
-[AC_CACHE_CHECK([whether printing callstack is possible],
-               [lyx_cv_callstack_printing],
-[AC_TRY_COMPILE([
-#include <execinfo.h>
-#include <cxxabi.h>
-], [
-	void* array[200];
-	size_t size = backtrace(array, 200);
-	backtrace_symbols(array, size);
-	int status = 0;
-	abi::__cxa_demangle("abcd", 0, 0, &status);
-],
-[lyx_cv_callstack_printing=yes], [lyx_cv_callstack_printing=no])])
+[AC_ARG_ENABLE([callstack-printing],
+               [AC_HELP_STRING([--disable-callstack-printing],[do not print a callstack when crashing])],
+               lyx_cv_callstack_printing=$enableval, lyx_cv_callstack_printing=yes)
+
+if test x"$lyx_cv_callstack_printing" = xyes; then
+  AC_CACHE_CHECK([whether printing callstack is possible],
+		 [lyx_cv_callstack_printing],
+  [AC_TRY_COMPILE([
+  #include <execinfo.h>
+  #include <cxxabi.h>
+  ], [
+	  void* array[200];
+	  size_t size = backtrace(array, 200);
+	  backtrace_symbols(array, size);
+	  int status = 0;
+	  abi::__cxa_demangle("abcd", 0, 0, &status);
+  ],, [lyx_cv_callstack_printing=no])])
+fi
 if test x"$lyx_cv_callstack_printing" = xyes; then
   AC_DEFINE([LYX_CALLSTACK_PRINTING], 1,
             [Define if callstack can be printed])
+  lyx_flags="$lyx_flags callback-printing"
+  AM_LDFLAGS="${AM_LDFLAGS} -rdynamic"
 fi
 ])
 
