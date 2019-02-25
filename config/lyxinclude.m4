@@ -68,7 +68,7 @@ dnl
 AC_DEFUN([LYX_CHECK_QT5],[
 AC_MSG_CHECKING([whether Qt5 is disabled])
 AC_ARG_ENABLE([qt5],
-  [  --disable-qt5           don't use Qt5 for building],
+  [AC_HELP_STRING([--disable-qt5],[do not use Qt5 for building])],
   USE_QT5=$enableval, USE_QT5=yes)
 if test x$USE_QT5 != xno ; then
   AC_MSG_RESULT([no])
