@@ -835,6 +835,14 @@ bool braces_match(string::const_iterator const & beg,
 }
 
 
+class MatchResult {
+public:
+	int match_len;
+	int match2end;
+	int pos;
+	MatchResult(): match_len(0),match2end(0), pos(0) {};
+};
+
 /** The class performing a match between a position in the document and the FindAdvOptions.
  **/
 class MatchStringAdv {
@@ -851,7 +859,7 @@ public:
 	 ** @return
 	 ** The length of the matching text, or zero if no match was found.
 	 **/
-	int operator()(DocIterator const & cur, int len = -1, bool at_begin = true) const;
+	MatchResult operator()(DocIterator const & cur, int len = -1, bool at_begin = true) const;
 
 public:
 	/// buffer
@@ -863,7 +871,7 @@ public:
 
 private:
 	/// Auxiliary find method (does not account for opt.matchword)
-	int findAux(DocIterator const & cur, int len = -1, bool at_begin = true) const;
+	MatchResult findAux(DocIterator const & cur, int len = -1, bool at_begin = true) const;
 
 	/** Normalize a stringified or latexified LyX paragraph.
 	 **
@@ -906,7 +914,7 @@ static docstring buffer_to_latex(Buffer & buffer)
 	otexstream os(ods);
 	runparams.nice = true;
 	runparams.flavor = OutputParams::LATEX;
-	runparams.linelen = 100000; //lyxrc.plaintext_linelen;
+	runparams.linelen = 10000; //lyxrc.plaintext_linelen;
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
 	runparams.for_search = true;
@@ -928,7 +936,7 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 		OutputParams runparams(&buffer.params().encoding());
 		runparams.nice = true;
 		runparams.flavor = OutputParams::LATEX;
-		runparams.linelen = 100000; //lyxrc.plaintext_linelen;
+		runparams.linelen = 10000; //lyxrc.plaintext_linelen;
 		runparams.dryrun = true;
 		runparams.for_search = true;
 		for (pos_type pit = pos_type(0); pit < (pos_type)buffer.paragraphs().size(); ++pit) {
@@ -2681,18 +2689,23 @@ static int computeSize(string s, int len)
 	return count;
 }
 
-int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) const
+MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) const
 {
+	MatchResult mres;
+
 	if (at_begin &&
 		(opt.restr == FindAndReplaceOptions::R_ONLY_MATHS && !cur.inMathed()) )
-		return 0;
+		return mres;
 
 	docstring docstr = stringifyFromForSearch(opt, cur, len);
 	string str = normalize(docstr, true);
 	if (!opt.ignoreformat) {
 		str = correctlanguagesetting(str, false, !opt.ignoreformat);
 	}
-	if (str.empty()) return(-1);
+	if (str.empty()) {
+		mres.match_len = -1;
+		return mres;
+	}
 	LYXERR(Debug::FIND, "Matching against     '" << lyx::to_utf8(docstr) << "'");
 	LYXERR(Debug::FIND, "After normalization: '" << str << "'");
 
@@ -2709,21 +2722,21 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 		}
 		sregex_iterator re_it(str.begin(), str.end(), *p_regexp, flags);
 		if (re_it == sregex_iterator())
-			return 0;
+			return mres;
 		match_results<string::const_iterator> const & m = *re_it;
 
 		if (0) { // Kornel Benko: DO NOT CHECKK
 			// Check braces on the segment that matched the entire regexp expression,
 			// plus the last subexpression, if a (.*?) was inserted in the constructor.
 			if (!braces_match(m[0].first, m[0].second, open_braces))
-				return 0;
+				return mres;
 		}
 
 		// Check braces on segments that matched all (.*?) subexpressions,
 		// except the last "padding" one inserted by lyx.
 		for (size_t i = 1; i < m.size() - 1; ++i)
 			if (!braces_match(m[i].first, m[i].second, open_braces))
-				return 0;
+				return mres;
 
 		// Exclude from the returned match length any length
 		// due to close wildcards added at end of regexp
@@ -2756,7 +2769,10 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 			result -= leadingsize;
 		else
 			result = 0;
-		return computeSize(str.substr(pos+leadingsize,result), result);
+		mres.match_len = computeSize(str.substr(pos+leadingsize,result), result);
+		mres.match2end = str.size() - pos - leadingsize;
+		mres.pos = pos+leadingsize;
+		return mres;
 	}
 
 	// else !use_regexp: but all code paths above return
@@ -2769,28 +2785,39 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 	if (at_begin) {
 		LYXERR(Debug::FIND, "size=" << par_as_string.size()
 					 << ", substr='" << str.substr(0, par_as_string.size()) << "'");
-		if (str.substr(0, par_as_string.size()) == par_as_string)
-			return par_as_string.size();
+		if (str.substr(0, par_as_string.size()) == par_as_string) {
+			mres.match_len = par_as_string.size();
+			mres.match2end = str.size();
+			mres.pos = 0;
+			return mres;
+		}
 	} else {
 		size_t pos = str.find(par_as_string_nolead);
-		if (pos != string::npos)
-			return par_as_string.size();
+		if (pos != string::npos) {
+			mres.match_len = par_as_string.size();
+			mres.match2end = str.size() - pos;
+			mres.pos = pos;
+			return mres;
+		}
 	}
-	return 0;
+	return mres;
 }
 
 
-int MatchStringAdv::operator()(DocIterator const & cur, int len, bool at_begin) const
+MatchResult MatchStringAdv::operator()(DocIterator const & cur, int len, bool at_begin) const
 {
-	int res = findAux(cur, len, at_begin);
+	MatchResult mres = findAux(cur, len, at_begin);
+	int res = mres.match_len;
 	LYXERR(Debug::FIND,
 	       "res=" << res << ", at_begin=" << at_begin
 	       << ", matchword=" << opt.matchword
 	       << ", inTexted=" << cur.inTexted());
 	if (res == 0 || !at_begin || !opt.matchword || !cur.inTexted())
-		return res;
-        if ((len > 0) && (res < len))
-          return 0;
+		return mres;
+        if ((len > 0) && (res < len)) {
+	  mres.match_len = 0;
+          return mres;
+	}
 	Paragraph const & par = cur.paragraph();
 	bool ws_left = (cur.pos() > 0)
 		? par.isWordSeparator(cur.pos() - 1)
@@ -2806,12 +2833,15 @@ int MatchStringAdv::operator()(DocIterator const & cur, int len, bool at_begin) 
 	if (ws_left && ws_right) {
           // Check for word separators inside the found 'word'
           for (int i = 0; i < len; i++) {
-            if (par.isWordSeparator(cur.pos() + i))
-              return 0;
+            if (par.isWordSeparator(cur.pos() + i)) {
+	      mres.match_len = 0;
+              return mres;
+	    }
           }
-          return res;
+          return mres;
         }
-	return 0;
+	mres.match_len = 0;
+	return mres;
 }
 
 
@@ -2887,14 +2917,15 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		OutputParams runparams(&cur.buffer()->params().encoding());
 		runparams.nice = true;
 		runparams.flavor = OutputParams::LATEX;
-		runparams.linelen = 100000; //lyxrc.plaintext_linelen;
+		runparams.linelen = 10000; //lyxrc.plaintext_linelen;
 		// No side effect of file copying and image conversion
 		runparams.dryrun = true;
 		LYXERR(Debug::FIND, "Stringifying with cur: "
 		       << cur << ", from pos: " << cur.pos() << ", end: " << end);
-		return par.asString(cur.pos(), end,
+		docstring result = par.asString(cur.pos(), end,
 			AS_STR_INSETS | AS_STR_SKIPDELETE | AS_STR_PLAINTEXT,
 			&runparams);
+		return result;
 	} else if (cur.inMathed()) {
 		CursorSlice cs = cur.top();
 		MathData md = cs.cell();
@@ -3003,9 +3034,9 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 		d = cur.depth();
 		old_cur = cur;
 		cur.forwardPos();
-	} while (cur && cur.depth() > d && match(cur) > 0);
+	} while (cur && cur.depth() > d && match(cur).match_len > 0);
 	cur = old_cur;
-	int max_match = match(cur);     /* match valid only if not searching whole words */
+	int max_match = match(cur).match_len;     /* match valid only if not searching whole words */
 	if (max_match <= 0) return 0;
 	LYXERR(Debug::FIND, "Ok");
 
@@ -3015,17 +3046,17 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 	  return 0;
 	if (match.opt.matchword) {
           LYXERR(Debug::FIND, "verifying unmatch with len = " << len);
-          while (cur.pos() + len <= cur.lastpos() && match(cur, len) <= 0) {
+          while (cur.pos() + len <= cur.lastpos() && match(cur, len).match_len <= 0) {
             ++len;
             LYXERR(Debug::FIND, "verifying unmatch with len = " << len);
           }
           // Length of matched text (different from len param)
-          int old_match = match(cur, len);
+          int old_match = match(cur, len).match_len;
           if (old_match < 0)
             old_match = 0;
           int new_match;
           // Greedy behaviour while matching regexps
-          while ((new_match = match(cur, len + 1)) > old_match) {
+          while ((new_match = match(cur, len + 1).match_len) > old_match) {
             ++len;
             old_match = new_match;
             LYXERR(Debug::FIND, "verifying   match with len = " << len);
@@ -3038,7 +3069,7 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 	  int maxl = cur.lastpos() - cur.pos();
 	  // Greedy behaviour while matching regexps
 	  while (maxl > minl) {
-	    int actual_match = match(cur, len);
+	    int actual_match = match(cur, len).match_len;
 	    if (actual_match >= max_match) {
 	      // actual_match > max_match _can_ happen,
 	      // if the search area splits
@@ -3069,7 +3100,7 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
             }
             if (cur.pos() != old_cur.pos()) {
               // OK, forwarded 1 pos in actual inset
-              actual_match = match(cur, len-1);
+              actual_match = match(cur, len-1).match_len;
               if (actual_match == max_match) {
                 // Ha, got it! The shorter selection has the same match length
                 len--;
@@ -3083,7 +3114,7 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
             }
             else {
               LYXERR0("cur.pos() == old_cur.pos(), this should never happen");
-              actual_match = match(cur, len);
+              actual_match = match(cur, len).match_len;
               if (actual_match == max_match)
                 old_cur = cur;
             }
@@ -3100,16 +3131,60 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 		return 0;
 	while (!theApp()->longOperationCancelled() && cur) {
 		LYXERR(Debug::FIND, "findForwardAdv() cur: " << cur);
-		int match_len = match(cur, -1, false);
+		MatchResult mres = match(cur, -1, false);
+		int match_len = mres.match_len;
 		LYXERR(Debug::FIND, "match_len: " << match_len);
+		if ((mres.pos > 10000) || (mres.match2end > 10000) || (match_len > 10000)) {
+			LYXERR0("BIG LENGTHS: " << mres.pos << ", " << match_len << ", " << mres.match2end);
+			match_len = 0;
+		}
 		if (match_len > 0) {
+			// Try to find the begin of searched string
+			int increment = mres.pos/2;
+			while (mres.pos > 5 && (increment > 5)) {
+				DocIterator old_cur = cur;
+				for (int i = 0; i < increment && cur; cur.forwardPos(), i++) {
+					/*
+					while (cur && cur.depth() != old_cur.depth())
+						cur.forwardPos();
+						*/
+				}
+				if (! cur) {
+					cur = old_cur;
+					increment /= 2;
+				}
+				else {
+					MatchResult mres2 = match(cur, -1, false);
+					if ((mres2.match2end < mres.match2end) ||
+					  (mres2.match_len < mres.match_len)) {
+						cur = old_cur;
+						increment /= 2;
+					}
+					else {
+						mres = mres2;
+						increment -= 2;
+						if (increment > mres.pos/2)
+							increment = mres.pos/2;
+					}
+				}
+			}
 			int match_len_zero_count = 0;
-			for (; !theApp()->longOperationCancelled() && cur; cur.forwardPos()) {
+			for (int i = 0; !theApp()->longOperationCancelled() && cur; cur.forwardPos()) {
+				if (i++ > 10) {
+					int remaining_len = match(cur, -1, false).match_len;
+					if (remaining_len <= 0) {
+						// Apparently the searched string is not in the remaining part
+						break;
+					}
+					else {
+						i = 0;
+					}
+				}
 				LYXERR(Debug::FIND, "Advancing cur: " << cur);
-				int match_len3 = match(cur, 1);
+				int match_len3 = match(cur, 1).match_len;
 				if (match_len3 < 0)
 					continue;
-				int match_len2 = match(cur);
+				int match_len2 = match(cur).match_len;
 				LYXERR(Debug::FIND, "match_len2: " << match_len2);
 				if (match_len2 > 0) {
 					// Sometimes in finalize we understand it wasn't a match
@@ -3161,7 +3236,7 @@ int findMostBackwards(DocIterator & cur, MatchStringAdv const & match)
 		LYXERR(Debug::FIND, "findMostBackwards(): cur=" << cur);
 		DocIterator new_cur = cur;
 		new_cur.backwardPos();
-		if (new_cur == cur || &new_cur.inset() != &inset || !match(new_cur))
+		if (new_cur == cur || &new_cur.inset() != &inset || !match(new_cur).match_len)
 			break;
 		int new_len = findAdvFinalize(new_cur, match);
 		if (new_len == len)
@@ -3187,7 +3262,7 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match)
 	bool pit_changed = false;
 	do {
 		cur.pos() = 0;
-		bool found_match = match(cur, -1, false);
+		bool found_match = (match(cur, -1, false).match_len > 0);
 
 		if (found_match) {
 			if (pit_changed)
@@ -3197,7 +3272,7 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match)
 			LYXERR(Debug::FIND, "findBackAdv2: cur: " << cur);
 			DocIterator cur_prev_iter;
 			do {
-				found_match = match(cur);
+				found_match = (match(cur).match_len > 0);
 				LYXERR(Debug::FIND, "findBackAdv3: found_match="
 				       << found_match << ", cur: " << cur);
 				if (found_match)
@@ -3327,7 +3402,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 		return;
 	LASSERT(sel_len > 0, return);
 
-	if (!matchAdv(sel_beg, sel_len))
+	if (!matchAdv(sel_beg, sel_len).match_len)
 		return;
 
 	// Build a copy of the replace buffer, adapted to the KeepCase option
