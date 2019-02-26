@@ -39,6 +39,51 @@ export/templates/IUCr-article_pdf4_systemF
 # see http://wiki.lyx.org/Examples/AcmSiggraph
 export/templates/obsolete/ACM-siggraph/ACM-siggraph_(dvi|pdf).*
 
+# R (http://www.r-project.org) 
+export/examples/sweave.*
+# R package knitr (http://yihui.name/knitr)
+export/examples/knitr.*
+
+# LilyPond-book version 2.13 or newer.
+export/examples/lilypond.*
+
+# svmono.cls
+export/examples/springer/svmono.*
+# svmult.cls
+export/examples/springer/svmult.*
+
+# AEA.cls (see https://wiki.lyx.org/Examples/AEA)
+export/templates/AEA.*
+
+# ws-ijmpc.cls, w-ijmpd.cls (see https://wiki.lyx.org/Examples/IJMP)
+export/templates/IJMPC.*
+export/templates/IJMPD.*
+
+# iopart.cls, iopams.sty, setstack.sty (see https://wiki.lyx.org/Layouts/Iopart)
+export/templates/IOP-article.*
+
+# jasatex.cls (see https://wiki.lyx.org/Layouts/JASATeX)
+export/templates/JASA.*
+
+# ectaart.cls (see https://wiki.lyx.org/Examples/Econometrica)
+export/templates/ectaart.*
+
+# maa-monthly.sty (not in TeXLive)
+# http://www.maa.org/sites/default/files/pdf/pubs/maa-monthly.sty
+export/templates/maa-monthly.*
+
+# svjour3.cls, svglov2.clo (see https://wiki.lyx.org/Examples/Springer)
+export/templates/springer/svjour3.*
+
+
+Sublabel: needauth
+##################
+# Tests that require authorisation to call external programs.
+export/examples/gnuplot.*
+export/examples/minted-filelisting.*
+export/examples/minted-listings.*
+
+
 Sublabel: erratic
 #################
 # Tests depending on local configuration, or the phase of the moon.
@@ -49,7 +94,6 @@ export/doc/es/(Customization|Intro)_pdf4_texF
 # Missing Cyrillic LICR commands (on first run after changing from tex-fonts)
 # (leftover *.aux file?)
 export/doc/uk/Intro_pdf4_texF
-
 
 
 Sublabel: varying_versions
