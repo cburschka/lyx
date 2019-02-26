@@ -203,21 +203,21 @@ sub checkForHeader($)
     $selem{name} = $1;
     unshift(@stack, \%selem);
     my @rElems = ();
-    $rElems[0] = newMatch("search" => '^\\\\master\s+(.*\.lyx)',
+    $rElems[0] = newMatch("search" => qr/^\\master\s+(.*\.lyx)/,
 			   "filetype" => "prefix_only",
 			   "result" => ["\\master ", ""]);
     if (keys %{$rFont}) {
       for my $ff ( keys %{$rFont}) {
 	# fontentry of type '\font_roman default'
-	my $elem = newMatch("search" => '^\\\\font_' . $ff . '\s+[^"]*\s*$',
+	my $elem = newMatch("search" => qr/^\\font_$ff\s+[^\"]*\s*$/,
 			     "filetype" => "replace_only",
 			     "result" => ["\\font_$ff ", $rFont->{$ff}]);
 	# fontentry of type '\font_roman "default"'
-	my $elem1 = newMatch("search" => '^\\\\font_' . $ff . '\s+"[^"]*"\s*$',
+	my $elem1 = newMatch("search" => qr/^\\font_$ff\s+\"[^\"]*\"\s*$/,
 			     "filetype" => "replace_only",
 			     "result" => ["\\font_$ff \"", $rFont->{$ff}, '"']);
 	# fontentry of type '\font_roman "default" "default"'
-	my $elem2 = newMatch("search" => '^\\\\font_' . $ff . '\s+"(.*)"\s+"default"\s*$',
+	my $elem2 = newMatch("search" => qr/^\\font_$ff\s+\"(.*)\"\s+\"default\"\s*$/,
 			     "filetype" => "replace_only",
 			     "result" => ["\\font_$ff ", '"', "1", '" "', $rFont->{$ff}, '"']);
 	push(@rElems, $elem, $elem1, $elem2);
@@ -230,7 +230,7 @@ sub checkForHeader($)
       push(@rElems, $elemntf);
     }
     if (defined($inputEncoding)) {
-      my $inputenc = newMatch("search" =>  '^\\\\inputencoding\s+(' . $inputEncoding->{search} . ')',
+      my $inputenc = newMatch("search" =>  qr/^\\inputencoding\s+($inputEncoding->{search})/,
 			      "filetype" => "replace_only",
 			      "result" => ["\\inputencoding " . $inputEncoding->{out}]);
       push(@rElems, $inputenc);
@@ -251,12 +251,12 @@ sub checkForPreamble($)
     $selem{name} = $1;
     unshift(@stack, \%selem);
     my $rElem = newMatch("ext" => [".eps", ".png"],
-			  "search" => '^\\\\(photo|ecvpicture)(.*\{)(.*)\}',
+			  "search" => qr/^\\(photo|ecvpicture)(.*\{)(.*)\}/,
 			  "fileidx" => 3,
 			  "result" => ["\\", "1", "2", "3", "}"]);
     #
     # Remove comments from preamble
-    my $comments = newMatch("search" => '^([^%]*)([%]+)([^%]*)$',
+    my $comments = newMatch("search" => qr/^([^%]*)([%]+)([^%]*)$/,
     	                    "filetype" => "replace_only",
 			    "result" => ["1", "2"]);
     setMatching([$rElem, $comments]);
@@ -277,7 +277,7 @@ sub checkForLayoutStart($)
     unshift(@stack, \%selem);
     if ($selem{name} =~ /^(Picture|Photo)$/ ) {
       my $rElem = newMatch("ext" => [".eps", ".png"],
-			    "search" => '^(.+)',
+			    "search" => qr/^(.+)/,
 			    "result" => ["", "", ""]);
       setMatching([$rElem]);
     }
@@ -297,7 +297,7 @@ sub checkForInsetStart($)
     $selem{name} = $1;
     unshift(@stack, \%selem);
     if ($selem{name} =~ /^(Graphics|External)$/) {
-      my $rElem = newMatch("search" => '^\s+filename\s+(.+)$',
+      my $rElem = newMatch("search" => qr/^\s+filename\s+(.+)$/,
 			    "filetype" => "copy_only",
 			    "result" => ["\tfilename ", "", ""]);
       setMatching([$rElem]);
@@ -318,24 +318,24 @@ sub checkForLatexCommand($)
 	if ($param eq "bibtex") {
 	  my $rElem1 = newMatch("ext" => ".bib",
 				 "filetype" => "prefix_for_list",
-				 "search" => '^bibfiles\s+\"(.+)\"',
+				 "search" => qr/^bibfiles\s+\"(.+)\"/,
 				 "result" => ["bibfiles \"", "1", "\""]);
 	  my $rElem2 = newMatch("ext" => ".bst",
 				 "filetype" => "prefix_for_list",
-				 "search" => '^options\s+\"(.+)\"',
+				 "search" => qr/^options\s+\"(.+)\"/,
 				 "result" => ["options \"", "1", "\""]);
 	  setMatching([$rElem1, $rElem2]);
 	}
       }
       elsif ($stack[0]->{name} =~ /^CommandInset\s+include$/) {
 	if ($param =~ /^(verbatiminput\*?|lstinputlisting|inputminted)$/) {
-	  my $rElem = newMatch("search" => '^filename\s+\"(.+)\"',
+	  my $rElem = newMatch("search" => qr/^filename\s+\"(.+)\"/,
 				"filetype" => "copy_only",
 				"result" => ["filename \"", "", "\""]);
 	  setMatching([$rElem]);
 	}
 	elsif ($param =~ /^(include|input)$/) {
-	  my $rElem = newMatch("search" => '^filename\s+\"(.+)\"',
+	  my $rElem = newMatch("search" => qr/^filename\s+\"(.+)\"/,
 				"filetype" => "interpret",
 				"result" => ["filename \"", "", "\""]);
 	  setMatching([$rElem]);
@@ -370,7 +370,7 @@ sub checkLyxLine($)
     my $rMatch = getMatching();
     for my $m ( @{$rMatch}) {
       my $search = getSearch($m);
-      if ($l =~ /$search/) {
+      if ($l =~ $search) {
 	my @matches = ($1, $2, $3, $4);
 	my $filetype = getFileType($m);
 	my @result2 = @{getResult($m)};
