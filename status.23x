@@ -116,10 +116,10 @@ What's new
 
 - Fix some display problems in the Text Properties dialog (bug 11385).
 
-- Accept/reject changes inside selection only if there are changes (bug 
+- Accept/reject changes inside selection only if there are changes (bug
   10338).
 
-- Fix missing TOC update (and related bugs) when setting default master (bug 
+- Fix missing TOC update (and related bugs) when setting default master (bug
   11422).
 
 - Properly update bibliography information (with bibliography environment)
@@ -153,6 +153,8 @@ What's new
   OS UI language.
 
 - Fix many drawing glitches in the IPA icons.
+
+- Fix crash when disabling math preview (bug 11498).
 
 
 

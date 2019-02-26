@@ -23,6 +23,8 @@
 #include "Converter.h"
 #include "FontEnums.h"
 #include "Format.h"
+#include "FuncCode.h"
+#include "FuncRequest.h"
 #include "Lexer.h"
 #include "LyX.h"
 #include "Mover.h"
@@ -3003,6 +3005,14 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 		}
 		// fall through
 	case LyXRC::RC_PREVIEW:
+		if (lyxrc_orig.preview != lyxrc_new.preview) {
+			// Update all previews of all documents.
+			/* FIXME: this can be very expensive. It would be cheaper
+			 * to kill all existing previews and update visible
+			 * previews.*/
+			theBufferList().updatePreviews();
+		}
+		// fall through
 	case LyXRC::RC_PREVIEW_HASHED_LABELS:
 	case LyXRC::RC_PREVIEW_SCALE_FACTOR:
 	case LyXRC::RC_PRINTLANDSCAPEFLAG:
@@ -3011,6 +3021,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_SAVE_COMPRESSED:
 	case LyXRC::RC_SAVE_ORIGIN:
 	case LyXRC::RC_SCREEN_DPI:
+
 	case LyXRC::RC_SCREEN_FONT_ROMAN:
 	case LyXRC::RC_SCREEN_FONT_ROMAN_FOUNDRY:
 	case LyXRC::RC_SCREEN_FONT_SANS:
@@ -3019,8 +3030,20 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_SCREEN_FONT_SIZES:
 	case LyXRC::RC_SCREEN_FONT_TYPEWRITER:
 	case LyXRC::RC_SCREEN_FONT_TYPEWRITER_FOUNDRY:
-	case LyXRC::RC_GEOMETRY_SESSION:
 	case LyXRC::RC_SCREEN_ZOOM:
+		if (lyxrc_orig.roman_font_name != lyxrc_new.roman_font_name
+		|| lyxrc_orig.sans_font_name != lyxrc_new.sans_font_name
+		|| lyxrc_orig.typewriter_font_name != lyxrc_new.typewriter_font_name
+		|| lyxrc_orig.roman_font_foundry != lyxrc_new.roman_font_foundry
+		|| lyxrc_orig.sans_font_foundry != lyxrc_new.sans_font_foundry
+		|| lyxrc_orig.use_scalable_fonts != lyxrc_new.use_scalable_fonts
+		|| lyxrc_orig.font_sizes != lyxrc_new.font_sizes
+		|| lyxrc_orig.typewriter_font_foundry != lyxrc_new.typewriter_font_foundry
+		|| lyxrc_orig.defaultZoom != lyxrc_new.defaultZoom) {
+		dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
+	}
+
+	case LyXRC::RC_GEOMETRY_SESSION:
 	case LyXRC::RC_SERVERPIPE:
 	case LyXRC::RC_SET_COLOR:
 	case LyXRC::RC_SHOW_BANNER:
