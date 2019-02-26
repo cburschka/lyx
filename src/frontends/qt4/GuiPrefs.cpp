@@ -1030,15 +1030,6 @@ void PrefScreenFonts::applyRC(LyXRC & rc) const
 	rc.font_sizes[FONT_SIZE_LARGEST] = widgetToDoubleStr(screenLargestED);
 	rc.font_sizes[FONT_SIZE_HUGE] = widgetToDoubleStr(screenHugeED);
 	rc.font_sizes[FONT_SIZE_HUGER] = widgetToDoubleStr(screenHugerED);
-
-	if (rc.font_sizes != oldrc.font_sizes
-		|| rc.roman_font_name != oldrc.roman_font_name
-		|| rc.sans_font_name != oldrc.sans_font_name
-		|| rc.typewriter_font_name != oldrc.typewriter_font_name
-		|| rc.defaultZoom != oldrc.defaultZoom) {
-		guiApp->fontLoader().update();
-		form_->updateScreenFonts();
-	}
 }
 
 
@@ -1366,16 +1357,10 @@ void PrefDisplay::applyRC(LyXRC & rc) const
 			rc.preview = LyXRC::PREVIEW_OFF;
 			break;
 		case 1:
-			if (rc.preview != LyXRC::PREVIEW_NO_MATH) {
-				rc.preview = LyXRC::PREVIEW_NO_MATH;
-				form_->updatePreviews();
-			}
+			rc.preview = LyXRC::PREVIEW_NO_MATH;
 			break;
 		case 2:
-			if (rc.preview != LyXRC::PREVIEW_ON) {
-				rc.preview = LyXRC::PREVIEW_ON;
-				form_->updatePreviews();
-			}
+			rc.preview = LyXRC::PREVIEW_ON;
 			break;
 	}
 
@@ -3456,8 +3441,7 @@ void PrefIdentity::updateRC(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 GuiPreferences::GuiPreferences(GuiView & lv)
-	: GuiDialog(lv, "prefs", qt_("Preferences")), update_screen_font_(false),
-	  update_previews_(false)
+	: GuiDialog(lv, "prefs", qt_("Preferences"))
 {
 	setupUi(this);
 
@@ -3560,8 +3544,6 @@ bool GuiPreferences::initialiseParams(string const &)
 	converters_.update(formats_);
 	movers_ = theMovers();
 	colors_.clear();
-	update_screen_font_ = false;
-	update_previews_ = false;
 
 	updateRC(rc_);
 	// Make sure that the bc is in the INITIAL state
@@ -3595,23 +3577,9 @@ void GuiPreferences::dispatchParams()
 
 	theMovers() = movers_;
 
-	vector<string>::const_iterator it = colors_.begin();
-	vector<string>::const_iterator const end = colors_.end();
-	for (; it != end; ++it)
-		dispatch(FuncRequest(LFUN_SET_COLOR, *it));
+	for (string const & color : colors_)
+		dispatch(FuncRequest(LFUN_SET_COLOR, color));
 	colors_.clear();
-
-	if (update_screen_font_) {
-		dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
-		// resets flag in case second apply in same dialog
-		update_screen_font_ = false;
-	}
-
-	if (update_previews_) {
-		// resets flag in case second apply in same dialog
-		theBufferList().updatePreviews();
-		update_previews_ = false;
-	}
 
 	// Save permanently
 	if (!tempSaveCB->isChecked())
@@ -3622,18 +3590,6 @@ void GuiPreferences::dispatchParams()
 void GuiPreferences::setColor(ColorCode col, QString const & hex)
 {
 	colors_.push_back(lcolor.getLyXName(col) + ' ' + fromqstr(hex));
-}
-
-
-void GuiPreferences::updateScreenFonts()
-{
-	update_screen_font_ = true;
-}
-
-
-void GuiPreferences::updatePreviews()
-{
-	update_previews_ = true;
 }
 
 

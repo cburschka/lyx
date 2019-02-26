@@ -1642,6 +1642,9 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_SCREEN_FONT_UPDATE: {
 		// handle the screen font changes.
+		/* FIXME: this only updates the current document, whereas all
+		 * documents should see their metrics updated.
+		 */
 		d->font_loader_.update();
 		dr.screenUpdate(Update::Force | Update::FitCursor);
 		break;
