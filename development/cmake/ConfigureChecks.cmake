@@ -153,7 +153,10 @@ check_cxx_source_compiles(
 	"
 SIZEOF_LONG_LONG_GREATER_THAN_SIZEOF_LONG)
 
-check_cxx_source_compiles(
+if(LYX_DISABLE_CALLSTACK_PRINTING)
+  set(LYX_CALLSTACK_PRINTING OFF CACHE BOOL "Print callstack when crashing")
+else()
+  check_cxx_source_compiles(
 	"
 	#include <execinfo.h>
 	#include <cxxabi.h>
@@ -165,7 +168,8 @@ check_cxx_source_compiles(
 		abi::__cxa_demangle(\"abcd\", 0, 0, &status);
 	}
 	"
-LYX_CALLSTACK_PRINTING)
+  LYX_CALLSTACK_PRINTING)
+endif()
 
 # Check whether STL is libstdc++
 check_cxx_source_compiles(
