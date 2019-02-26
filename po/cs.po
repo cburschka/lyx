@@ -868,9 +868,8 @@ msgid "&Reject"
 msgstr "&Zamítnout"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:25
-#, fuzzy
 msgid "Font Properties"
-msgstr "PDF vlastnosti"
+msgstr "Vlasnosti fontu"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:33
 #: src/frontends/qt4/ui/CharacterUi.ui:52
@@ -878,7 +877,6 @@ msgid "Font family"
 msgstr "Rodina písma"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:36
-#, fuzzy
 msgid "Fa&mily:"
 msgstr "&Rodina:"
 
@@ -915,26 +913,22 @@ msgid "&Color:"
 msgstr "&Barva:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:179
-#, fuzzy
 msgid "U&nderlining:"
-msgstr "underline"
+msgstr "&Podtržení:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:195
 msgid "Underlining of text"
-msgstr ""
+msgstr "Podtržení textu"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:202
-#, fuzzy
 msgid "S&trikethrough:"
-msgstr "Přeškrtnutý"
+msgstr "Př&eškrtnutí:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:218
-#, fuzzy
 msgid "Strike-through text"
-msgstr "Přeškrtnutý"
+msgstr "Přeškrtnutý text"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:250
-#, fuzzy
 msgid "&Language"
 msgstr "&Jazyk:"
 
@@ -949,27 +943,24 @@ msgid "Language"
 msgstr "Jazyk"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:272
-#, fuzzy
 msgid "Semantic Markup"
-msgstr "Logické styly"
+msgstr "Sémantický styl"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:278
 msgid "Semantic emphasizing (italic by default, but can be adapted)"
-msgstr ""
+msgstr "Sémantické zdůraznění (standardně kurzíva, ale lze upravit)"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:281
-#, fuzzy
 msgid "&Emphasized"
-msgstr "Emphasize"
+msgstr "&Zvýraznění"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:288
 msgid "Semantic markup of nouns (small caps by default, but can be adapted)"
-msgstr ""
+msgstr "Sémantický styl jmen (standardně kapitálky, ale lze upravit)"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:291
-#, fuzzy
 msgid "&Noun"
-msgstr "Jméno"
+msgstr "J&méno"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:336
 msgid "Apply each change automatically"
@@ -29016,36 +29007,35 @@ msgstr "Kapitálky"
 
 #: src/frontends/qt4/GuiCharacter.cpp:86
 msgid "(Without)[[underlining]]"
-msgstr ""
+msgstr "Bez podtržení"
 
 #: src/frontends/qt4/GuiCharacter.cpp:87
 msgid "Single[[underlining]]"
-msgstr ""
+msgstr "Jednoduché"
 
 #: src/frontends/qt4/GuiCharacter.cpp:88
-#, fuzzy
 msgid "Double[[underlining]]"
-msgstr "Dvojité podtržení %1$s, "
+msgstr "Dvojité"
 
 #: src/frontends/qt4/GuiCharacter.cpp:89
 msgid "Wavy"
-msgstr ""
+msgstr "Vlnkované"
 
 #: src/frontends/qt4/GuiCharacter.cpp:99
 msgid "(Without)[[strikethrough]]"
-msgstr ""
+msgstr "Bez přeškrtnutí"
 
 #: src/frontends/qt4/GuiCharacter.cpp:100
 msgid "Single[[strikethrough]]"
-msgstr ""
+msgstr "Jednoduché"
 
 #: src/frontends/qt4/GuiCharacter.cpp:101
 msgid "With /"
-msgstr ""
+msgstr "Pomocí /"
 
 #: src/frontends/qt4/GuiCharacter.cpp:191
 msgid "(Without)[[color]]"
-msgstr ""
+msgstr "Bez barvy"
 
 #: src/frontends/qt4/GuiCharacter.cpp:208
 msgid "Text Style"
