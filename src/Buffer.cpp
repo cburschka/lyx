@@ -4529,7 +4529,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 			bformat(_("The directory path to the document\n%1$s\n"
 			    "contains spaces, but your TeX installation does "
 			    "not allow them. You should save the file to a directory "
-					"whose name does not contain spaces."), from_ascii(filePath())));
+					"whose name does not contain spaces."), from_utf8(filePath())));
 		return ExportTexPathHasSpaces;
 	} else {
 		runparams.nice = false;
