@@ -1418,7 +1418,7 @@ void latexParagraphs(Buffer const & buf,
 				&& bparams.language->encoding()->package() == Encoding::CJK)
 				//  FIXME: should test if any language requires CJK
 				//  && LaTeXFeatures::mustProvide("CJK"))
-				// error: cannot call member function ‘bool lyx::LaTeXFeatures::mustProvide(const string&) const’ without object 
+				// error: cannot call member function ‘bool lyx::LaTeXFeatures::mustProvide(const string&) const’ without object
 		   )) {
 		docstring const cjkenc = bparams.encoding().iconvName() == "UTF-8"
 		  		  			   	 ? from_ascii("UTF8") : from_ascii(bparams.encoding().latexName());
@@ -1611,14 +1611,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 
 	Encoding const & oldEnc = *runparams.encoding;
 	bool moving_arg = runparams.moving_arg;
-	// If we switch from/to CJK, we need to switch anyway, despite custom inputenc,
-	// except if we use CJKutf8 or explicitely set inputenc to a CJK encoding
-	bool const from_to_cjk =
-		((oldEnc.package() == Encoding::CJK && newEnc.package() != Encoding::CJK)
-		 || (oldEnc.package() != Encoding::CJK && newEnc.package() == Encoding::CJK))
-		&& bparams.encoding().iconvName() != "UTF8"
-	  	&& bparams.encoding().package() != Encoding::CJK;
-	if (!force && !from_to_cjk
+	if (!force
 	    && ((bparams.inputenc != "auto" && bparams.inputenc != "default") || moving_arg))
 		return make_pair(false, 0);
 
@@ -1692,9 +1685,8 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 				os << "\\egroup";
 				count += 7;
 			}
-			docstring const cjkenc = (bparams.encoding().iconvName() == "UTF-8"
-			  						  ? from_ascii("UTF8") : from_ascii(newEnc.latexName()));
-			os << "\\begin{CJK}{" << cjkenc << "}{"
+			os << "\\begin{CJK}{"
+			   << from_ascii(newEnc.latexName()) << "}{"
 			   << from_ascii(bparams.fonts_cjk) << "}";
 			state->open_encoding_ = CJK;
 			return make_pair(true, count + 15);
