@@ -3303,14 +3303,8 @@ docstring stringifyFromForSearch(FindAndReplaceOptions const & opt,
 	        return docstring();
 	if (!opt.ignoreformat)
 		return latexifyFromCursor(cur, len);
-	else {
-		if (len < 0) {
-			return stringifyFromCursor(cur, len);
-		}
-		else {
-			return stringifyFromCursor(cur, len);
-		}
-	}
+	else
+		return stringifyFromCursor(cur, len);
 }
 
 
