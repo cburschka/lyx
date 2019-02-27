@@ -2920,12 +2920,12 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		runparams.linelen = 10000; //lyxrc.plaintext_linelen;
 		// No side effect of file copying and image conversion
 		runparams.dryrun = true;
+		runparams.for_search = true;
 		LYXERR(Debug::FIND, "Stringifying with cur: "
 		       << cur << ", from pos: " << cur.pos() << ", end: " << end);
-		docstring result = par.asString(cur.pos(), end,
+		return par.asString(cur.pos(), end,
 			AS_STR_INSETS | AS_STR_SKIPDELETE | AS_STR_PLAINTEXT,
 			&runparams);
-		return result;
 	} else if (cur.inMathed()) {
 		CursorSlice cs = cur.top();
 		MathData md = cs.cell();
@@ -3134,7 +3134,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 		MatchResult mres = match(cur, -1, false);
 		int match_len = mres.match_len;
 		LYXERR(Debug::FIND, "match_len: " << match_len);
-		if ((mres.pos > 10000) || (mres.match2end > 10000) || (match_len > 10000)) {
+		if ((mres.pos > 100000) || (mres.match2end > 100000) || (match_len > 100000)) {
 			LYXERR0("BIG LENGTHS: " << mres.pos << ", " << match_len << ", " << mres.match2end);
 			match_len = 0;
 		}
@@ -3144,10 +3144,6 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 			while (mres.pos > 5 && (increment > 5)) {
 				DocIterator old_cur = cur;
 				for (int i = 0; i < increment && cur; cur.forwardPos(), i++) {
-					/*
-					while (cur && cur.depth() != old_cur.depth())
-						cur.forwardPos();
-						*/
 				}
 				if (! cur) {
 					cur = old_cur;
@@ -3307,8 +3303,14 @@ docstring stringifyFromForSearch(FindAndReplaceOptions const & opt,
 	        return docstring();
 	if (!opt.ignoreformat)
 		return latexifyFromCursor(cur, len);
-	else
-		return stringifyFromCursor(cur, len);
+	else {
+		if (len < 0) {
+			return stringifyFromCursor(cur, len);
+		}
+		else {
+			return stringifyFromCursor(cur, len);
+		}
+	}
 }
 
 

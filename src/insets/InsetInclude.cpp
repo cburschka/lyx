@@ -967,10 +967,15 @@ int InsetInclude::plaintext(odocstringstream & os,
 	}
 
 	if (isVerbatim(params()) || isListings(params())) {
-		os << '[' << screenLabel() << '\n'
-		   // FIXME: We don't know the encoding of the file, default to UTF-8.
-		   << includedFileName(buffer(), params()).fileContents("UTF-8")
-		   << "\n]";
+		if (op.for_search) {
+			os << '[' << screenLabel() << ']';
+		}
+		else {
+			os << '[' << screenLabel() << '\n'
+			   // FIXME: We don't know the encoding of the file, default to UTF-8.
+			   << includedFileName(buffer(), params()).fileContents("UTF-8")
+			   << "\n]";
+		}
 		return PLAINTEXT_NEWLINE + 1; // one char on a separate line
 	}
 
