@@ -52,6 +52,7 @@
 #include "support/lstrings.h"
 
 #include "support/regex.h"
+#include "support/textutils.h"
 #include <map>
 
 using namespace std;
@@ -2118,9 +2119,9 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
     }
     case KeyInfo::endArguments:
       // Remove trailing '{}' too
-      actual._dataStart += 2;
-      actual._dataEnd += 2;
-      interval.addIntervall(actual._tokenstart, actual._dataEnd);
+      actual._dataStart += 1;
+      actual._dataEnd += 1;
+      interval.addIntervall(actual._tokenstart, actual._dataEnd+1);
       nextKeyIdx = getNextKey();
       break;
     case KeyInfo::noMain:
@@ -2863,14 +2864,14 @@ string MatchStringAdv::normalize(docstring const & s, bool hack_braces) const
 	while ((pos = t.find("\n")) != string::npos) {
 		if (pos > 1 && t[pos-1] == '\\' && t[pos-2] == '\\' ) {
 			// Handle '\\\n'
-			if (std::isalnum(t[pos+1])) {
+			if (isAlnumASCII(t[pos+1])) {
 				t.replace(pos-2, 3, " ");
 			}
 			else {
 				t.replace(pos-2, 3, "");
 			}
 		}
-		else if (!std::isalnum(t[pos+1]) || !std::isalnum(t[pos-1])) {
+		else if (!isAlnumASCII(t[pos+1]) || !isAlnumASCII(t[pos-1])) {
 			// '\n' adjacent to non-alpha-numerics, discard
 			t.replace(pos, 1, "");
 		}
