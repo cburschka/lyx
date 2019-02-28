@@ -3290,7 +3290,7 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			break;
 		}
 	}
-	if (inputenc == "default" or features.isRequired("japanese")) {
+	if (inputenc == "default" || features.isRequired("japanese")) {
 		// don't default to [utf8]{inputenc} with TeXLive >= 18
 		os << "\\ifdefined\\UseRawInputEncoding\n";
 		os << "  \\UseRawInputEncoding\\fi\n";
