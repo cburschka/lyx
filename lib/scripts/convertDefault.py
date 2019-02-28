@@ -35,7 +35,10 @@ if fout.close() != None:
     output = fout.readline()
     fout.close()
 if not PY2:
-    output = output.decode()
+    # Ensure we have a (unicode) string object in Python3
+    # (not required for version >= 3.5).
+    # FIXME: Check whether this is required with any supported 3.x version!
+    output = str(output)
 
 version = re_version.match(output)
 
