@@ -90,12 +90,11 @@
 #   used if the selected font is unavailable in FontEncoding. They provide all
 #   letters used in the language, but some only as "surrogate pairs" with
 #   possible problems for hyphenation and drag-and-drop from the generated
-#   documents.
-#   If not given, all standard text encodings (T<n>) as well as OT1 work.
-# * "FontEncoding none" tells LyX that fontenc should not be loaded with this
-#   language.
-# * "FontEncoding ASCII" means: "works with any standard text encoding
-#   as well as OT1".
+#   documents. Default: "ASCII".
+#   * "FontEncoding ASCII" means: "works with any standard text encoding
+#     (T<n>) as well as OT1".
+#   * "FontEncoding none" tells LyX that fontenc should not be loaded with
+#     this language.
 # * InternalEncoding is used to tell LyX that babel internally sets a
 #   non-standard font encoding (such as hebrew to LHE or greek to LGR).
 #   If True, LyX takes care for characters/macros that do not exist in
