@@ -924,8 +924,7 @@ int Paragraph::Private::latexSurrogatePair(BufferParams const & bparams,
 		length -= pos;
 		latex2 = latex2.substr(pos, length);
 		// and place it before the accent macro if required (#6463)
-		if (Encodings::needsScriptWrapper(script, fontenc)
-			|| runparams.isFullUnicode()) {
+		if (Encodings::needsScriptWrapper(script, fontenc)) {
 			scriptmacro = from_ascii("\\" + script + "{");
 			cb = from_ascii("}");
 		}
@@ -1010,10 +1009,8 @@ int Paragraph::Private::writeScriptChars(BufferParams const & bparams,
 	int length = brace2;
 	bool closing_brace = true;
 	// We only need the script macro with non-native font encodings
-	// and with XeTeX/LuaTeX (with TeX fonts)
-	if (!Encodings::needsScriptWrapper(script, fontenc)
-	    && !runparams.isFullUnicode()) {
-		// Correct font encoding is being used, so we can avoid \text[greek|cyr].
+	if (!Encodings::needsScriptWrapper(script, fontenc)) {
+		// Correct font encoding is being used, so we can avoid \text(greek|cyrrillic).
 		pos = brace1 + 1;
 		length -= pos;
 		closing_brace = false;
