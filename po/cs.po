@@ -976,9 +976,8 @@ msgid "Reset"
 msgstr "Vynulovat"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:370
-#, fuzzy
 msgid "Restore Defaults"
-msgstr "Použij &Standardní"
+msgstr "Obnov standardní"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:403
 #: src/frontends/qt4/ui/DocumentUi.ui:77 src/frontends/qt4/ui/ExternalUi.ui:610
@@ -2654,7 +2653,7 @@ msgstr "Chyby vypsány na terminál."
 #: src/frontends/qt4/GuiDocument.cpp:734
 #, fuzzy
 msgid "Edit"
-msgstr "&Editace"
+msgstr "&Editovat"
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:81
 msgid "Convert"
@@ -2847,7 +2846,6 @@ msgid "Indent displayed formulas instead of centering"
 msgstr "Indentace celořádkových vzorců namísto centrování"
 
 #: src/frontends/qt4/ui/MathsUi.ui:79
-#, fuzzy
 msgid "Indent &formulas"
 msgstr "&Indentace vzorců"
 
@@ -3050,7 +3048,6 @@ msgid "Scaling factor for images used for math output."
 msgstr "Měřítko pro zvětšení obrázků použitých pro výstup vzorců"
 
 #: src/frontends/qt4/ui/OutputUi.ui:275
-#, fuzzy
 msgid "Write CSS to file"
 msgstr "Zapsat CSS do souboru"
 
@@ -3317,9 +3314,8 @@ msgid "&Use system colors"
 msgstr "Používat &sytémové barvy"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:57
-#, fuzzy
 msgid "Change the selected color"
-msgstr "Změnit jméno vybrané větve"
+msgstr "Změnit vybranou barvu"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:60
 msgid "A&lter..."
@@ -3327,21 +3323,19 @@ msgstr "Z&měnit..."
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:67
 msgid "Reset the selected color to its original value"
-msgstr ""
+msgstr "Vrátit vybranou barvu do základního stavu"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:70
-#, fuzzy
 msgid "Reset to &Default"
-msgstr "Vrátit nastavení do základního stavu"
+msgstr "V&ynulovat"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:77
 msgid "Reset all colors to their original value"
-msgstr ""
+msgstr "Vrátit všechny barvy do základního stavu"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:80
-#, fuzzy
 msgid "Reset A&ll"
-msgstr "Vynulovat"
+msgstr "&Vynulovat vše"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:26
 msgid "In Math"
@@ -4480,12 +4474,11 @@ msgstr "&Maximum posledních souborů:"
 msgid ""
 "If this is checked, pressing OK or Apply will save the changes only for the "
 "current LyX session, not permanently."
-msgstr ""
+msgstr "Změny nebudou uloženy trvale, ale pouze pro současnou relaci LyX-u."
 
 #: src/frontends/qt4/ui/PrefsUi.ui:90
-#, fuzzy
 msgid "A&pply to current session only"
-msgstr "Screen version only"
+msgstr "&Nastavit pouze pro současnou relaci"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:13
 msgid "Nomenclature settings"
@@ -17996,12 +17989,10 @@ msgid "Label Only|L"
 msgstr "Pouze značka|k"
 
 #: lib/ui/stdcontext.inc:99
-#, fuzzy
 msgid "Plural|a"
-msgstr "Pl&urál"
+msgstr "Plurál|P"
 
 #: lib/ui/stdcontext.inc:100
-#, fuzzy
 msgid "Capitalize|C"
 msgstr "První velké|k"
 
@@ -18646,9 +18637,8 @@ msgid "Wrap by Preview|y"
 msgstr "Obalit náhledem (preview)|O"
 
 #: lib/ui/stdcontext.inc:669
-#, fuzzy
 msgid "End Editing Externally...|e"
-msgstr "Edituj externě...|x"
+msgstr "Konec externí editace...|t"
 
 #: lib/ui/stdcontext.inc:685 lib/ui/stdmenus.inc:355
 msgid "Lock Toolbars|L"
@@ -29222,19 +29212,16 @@ msgid "Text Style"
 msgstr "Styl textu"
 
 #: src/frontends/qt4/GuiCharacter.cpp:272
-#, fuzzy
 msgid "Reset All To &Default"
-msgstr "Použít standardní nastavení třídy"
+msgstr "Nastavit vše na &Standardní"
 
 #: src/frontends/qt4/GuiCharacter.cpp:273
-#, fuzzy
 msgid "Reset All To No Chan&ge"
-msgstr "Odmítnout všechny změny|O"
+msgstr "Nastavit vše na &Beze změny"
 
 #: src/frontends/qt4/GuiCharacter.cpp:278
-#, fuzzy
 msgid "&Reset All Fields"
-msgstr "Všechna pole"
+msgstr "&Vynulovat všechna pole"
 
 #: src/frontends/qt4/GuiCitation.cpp:104 src/frontends/qt4/GuiRef.cpp:60
 #: src/frontends/qt4/PanelStack.cpp:77
@@ -29472,13 +29459,12 @@ msgid "Module not found!"
 msgstr "Modul nenalezen!"
 
 #: src/frontends/qt4/GuiDocument.cpp:578 src/frontends/qt4/GuiDocument.cpp:750
-#, fuzzy
 msgid "End Edit"
-msgstr "&Editace"
+msgstr "Konec editace"
 
 #: src/frontends/qt4/GuiDocument.cpp:638
 msgid "Validation required!"
-msgstr ""
+msgstr "Je vyžadována validace!"
 
 #: src/frontends/qt4/GuiDocument.cpp:688
 msgid "Layout is valid!"
@@ -32601,62 +32587,55 @@ msgstr "nedefinováno"
 
 #: src/insets/InsetInfo.cpp:343 src/insets/InsetInfo.cpp:383
 msgid "Return[[Key]]"
-msgstr ""
+msgstr "Return"
 
 #: src/insets/InsetInfo.cpp:347
 msgid "Tab[[Key]]"
-msgstr ""
+msgstr "Tab"
 
 #: src/insets/InsetInfo.cpp:351
 msgid "PgUp"
-msgstr ""
+msgstr "PgUp"
 
 #: src/insets/InsetInfo.cpp:355
-#, fuzzy
 msgid "PgDown"
-msgstr "&Dolů"
+msgstr "PgDown"
 
 #: src/insets/InsetInfo.cpp:359
 msgid "Backtab"
-msgstr ""
+msgstr "Backtab"
 
 #: src/insets/InsetInfo.cpp:363
-#, fuzzy
 msgid "Tab"
-msgstr "Tabulka"
+msgstr "Tab"
 
 #: src/insets/InsetInfo.cpp:371
 msgid "CapsLock"
-msgstr ""
+msgstr "CapsLock"
 
 #: src/insets/InsetInfo.cpp:375
-#, fuzzy
 msgid "Control[[Key]]"
-msgstr "Command-"
+msgstr "Control"
 
 #: src/insets/InsetInfo.cpp:379
-#, fuzzy
 msgid "Command[[Key]]"
-msgstr "Command-"
+msgstr "Command"
 
 #: src/insets/InsetInfo.cpp:387
-#, fuzzy
 msgid "Option[[Key]]"
-msgstr "Volby"
+msgstr "Option"
 
 #: src/insets/InsetInfo.cpp:391
-#, fuzzy
 msgid "Delete[[Key]]"
-msgstr "&Smazat Klávesu"
+msgstr "Delete[[Key]]"
 
 #: src/insets/InsetInfo.cpp:395
 msgid "Fn+Del"
-msgstr ""
+msgstr "Fn+Del"
 
 #: src/insets/InsetInfo.cpp:399
-#, fuzzy
 msgid "Esc"
-msgstr "csc"
+msgstr "Esc"
 
 #: src/insets/InsetInfo.cpp:440 src/insets/InsetInfo.cpp:449
 msgid "yes"
