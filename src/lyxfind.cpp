@@ -914,7 +914,7 @@ static docstring buffer_to_latex(Buffer & buffer)
 	odocstringstream ods;
 	otexstream os(ods);
 	runparams.nice = true;
-	runparams.flavor = OutputParams::LATEX;
+	runparams.flavor = OutputParams::XETEX;
 	runparams.linelen = 10000; //lyxrc.plaintext_linelen;
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
@@ -936,7 +936,7 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 	} else {
 		OutputParams runparams(&buffer.params().encoding());
 		runparams.nice = true;
-		runparams.flavor = OutputParams::LATEX;
+		runparams.flavor = OutputParams::XETEX;
 		runparams.linelen = 10000; //lyxrc.plaintext_linelen;
 		runparams.dryrun = true;
 		runparams.for_search = true;
@@ -1127,6 +1127,7 @@ class Intervall {
   void resetOpenedP(int openPos);
   void addIntervall(int upper);
   void addIntervall(int low, int upper); /* if explicit */
+  void removeAccents();
   void setForDefaultLang(KeyInfo &defLang);
   int findclosing(int start, int end, char up, char down, int repeat);
   void handleParentheses(int lastpos, bool closingAllowed);
@@ -1240,6 +1241,80 @@ void Intervall::addIntervall(int low, int upper)
       }
       ignoreidx -= count - 1;
       return;
+    }
+  }
+}
+
+typedef map<string, string> AccentsMap;
+static AccentsMap accents = map<string, string>();
+
+static void buildaccent(string name, string param, string values)
+{
+  size_t start = 0;
+  for (size_t i = 0; i < param.size(); i++) {
+    string key = name + "{" + param[i] + "}";
+    // get the corresponding utf8-value
+    if ((values[start] & 0xc0) != 0xc0) {
+      // should not happen, utf8 encoding starts at least with 11xxxxxx
+      start++;
+      continue;
+    }
+    for (int j = 1; ;j++) {
+      if (start + j >= values.size())
+        break;
+      if ((values[start+j] & 0xc0) == 0xc0) {
+        // This is the first byte of following utf8 char
+        accents[key] = values.substr(start, j);
+        start += j;
+        break;
+      }
+    }
+  }
+}
+
+static void buildAccentsMap()
+{
+  accents["imath"] = "ı";
+  accents["ddot{\\imath}"] = "ï";
+  accents["acute{\\imath}"] = "í";
+  accents["lyxmathsym{ß}"] = "ß";
+  buildaccent("ddot", "aeouyAEOUY", "äëöüÿÄËÖÜŸ");
+  buildaccent("dot", "aeoyzAEOYZ", "ȧėȯẏżȦĖȮẎŻ");
+  buildaccent("acute", "aeouyAEOUY", "äëöüÿÄËÖÜŸ");
+  /*
+  buildaccent("dacute", "oOuU", "őŐűŰ");
+  buildaccent("H", "oOuU", "őŐűŰ");	// dacute in text
+  */
+  buildaccent("mathring", "uU", "ůŮ");
+  buildaccent("r", "uU", "ůŮ");	//mathring in text
+  buildaccent("check", "cdnrszCDNRSZ", "čďřňšžČĎŘŇŠŽ");
+  buildaccent("hat", "cCoOgGhHsS", "ĉĈôÔĝĜĥĤŝŜ");
+  buildaccent("bar", "aAeE", "āĀēĒ");
+}
+
+/*
+ * Created accents in math or regexp environment
+ * are macros, but we need the utf8 equivalent
+ */
+void Intervall::removeAccents()
+{
+  if (accents.empty())
+    buildAccentsMap();
+  static regex const accre("\\\\((lyxmathsym|ddot|dot|acute|mathring|r|check|check|hat|bar)\\{[^\\{\\}]+\\}|imath)");
+  smatch sub;
+  for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
+    sub = *itacc;
+    string key = sub.str(1);
+    if (accents.find(key) != accents.end()) {
+      string val = accents[key];
+      size_t pos = sub.position(0);
+      for (size_t i = 0; i < val.size(); i++) {
+        par[pos+i] = val[i];
+      }
+      addIntervall(pos+val.size(), pos + sub.str(0).size());
+    }
+    else {
+      LYXERR0("Not added accent for \"" << key << "\"");
     }
   }
 }
@@ -1479,6 +1554,8 @@ void LatexInfo::buildEntries(bool isPatternString)
   size_t math_pos = 10000;
   string math_end;
 
+  interval.removeAccents();
+
   for (sregex_iterator itmath(interval.par.begin(), interval.par.end(), rmath), end; itmath != end; ++itmath) {
     submath = *itmath;
     if (math_end_waiting) {
@@ -1566,8 +1643,9 @@ void LatexInfo::buildEntries(bool isPatternString)
         found.parenthesiscount = 0;
         found.head = interval.par.substr(found._tokenstart, found._tokensize);
       }
-      else
+      else {
         continue;
+      }
     }
     else {
       if (evaluatingMath) {
@@ -2917,7 +2995,7 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 			int(par.size()) : cur.pos() + len;
 		OutputParams runparams(&cur.buffer()->params().encoding());
 		runparams.nice = true;
-		runparams.flavor = OutputParams::LATEX;
+		runparams.flavor = OutputParams::XETEX;
 		runparams.linelen = 10000; //lyxrc.plaintext_linelen;
 		// No side effect of file copying and image conversion
 		runparams.dryrun = true;
@@ -2962,7 +3040,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 	otexstream os(ods);
 	OutputParams runparams(&buf.params().encoding());
 	runparams.nice = false;
-	runparams.flavor = OutputParams::LATEX;
+	runparams.flavor = OutputParams::XETEX;
 	runparams.linelen = 8000; //lyxrc.plaintext_linelen;
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
@@ -3436,7 +3514,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 		otexstream os(ods);
 		OutputParams runparams(&repl_buffer.params().encoding());
 		runparams.nice = false;
-		runparams.flavor = OutputParams::LATEX;
+		runparams.flavor = OutputParams::XETEX;
 		runparams.linelen = 8000; //lyxrc.plaintext_linelen;
 		runparams.dryrun = true;
 		TeXOnePar(repl_buffer, repl_buffer.text(), 0, os, runparams);
