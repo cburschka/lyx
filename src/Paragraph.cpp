@@ -869,7 +869,7 @@ int Paragraph::eraseChars(pos_type start, pos_type end, bool trackChanges)
 	return end - i;
 }
 
-
+// Handle combining characters
 int Paragraph::Private::latexSurrogatePair(BufferParams const & bparams,
 		otexstream & os, char_type c, char_type next,
 		OutputParams const & runparams)
@@ -895,16 +895,15 @@ int Paragraph::Private::latexSurrogatePair(BufferParams const & bparams,
 	docstring::size_type const brace1 = latex2.find_first_of(from_ascii("{"));
 	docstring::size_type const brace2 = latex2.find_last_of(from_ascii("}"));
 	string script = to_ascii(latex2.substr(1, brace1 - 1));
-	// "Script chars" need to embraced in \textcyrillic and \textgreek notwithstanding
-	// whether they are encodable or not (it only depends on the font encoding),
-	// except if we are using fontspec.
+
+	// Greek and Cyrillic letters need to be wrapped in \textcyrillic and \textgreek  if they
+	// are not encodable in the current font encoding (regardless of the input encoding).
 	bool scriptchar = false;
-	if (!bparams.useNonTeXFonts)
-		// This will get us a script value to deal with below
+	if (!bparams.useNonTeXFonts) // With non-TeX fonts the font encoding is Unicode.
 		scriptchar = Encodings::isKnownScriptChar(c, script);
 
 	if (!scriptchar && docstring(1, next) == latex1) {
-		// The encoding supports the combination:
+		// Font and input encoding support the combination:
 		// output as is (combining char after base char).
 		os << latex2 << latex1;
 		return latex1.length() + latex2.length();
@@ -920,32 +919,20 @@ int Paragraph::Private::latexSurrogatePair(BufferParams const & bparams,
 	docstring scriptmacro;
 	docstring cb;
 	if (script == "textgreek" || script == "textcyrillic") {
-		// We separate the script macro (\text[greek|cyr]) from the rest,
-		// since we need to include the combining char in it (#6463).
-		// This is "the rest":
+		// Strip the \text(greek|cyrillic) script macro  ...
 		pos = brace1 + 1;
 		length -= pos;
 		latex2 = latex2.substr(pos, length);
-		// We only need the script macro with non-native font encodings
-		// and with XeTeX/LuaTeX (with TeX fonts)
+		// and place it before the accent macro if required (#6463)
 		if (Encodings::needsScriptWrapper(script, fontenc)
-		    || runparams.isFullUnicode()) {
+			|| runparams.isFullUnicode()) {
 			scriptmacro = from_ascii("\\" + script + "{");
 			cb = from_ascii("}");
 		}
 	}
 
-	docstring lb;
-	docstring rb;
-	// polutonikogreek does not play nice with brackets
-	if (!runparams.local_font
-	    || runparams.local_font->language()->lang() != "polutonikogreek") {
-		lb = from_ascii("{");
-		rb = from_ascii("}");
-	}
-
-	os << scriptmacro << latex1 << lb << latex2 << rb << cb;
-	return latex1.length() + latex2.length() + lb.length() + rb.length() + cb.length();
+	os << scriptmacro << latex1 << "{" << latex2 << "}" << cb;
+	return latex1.length() + 1 + latex2.length() + 1 + cb.length();
 }
 
 

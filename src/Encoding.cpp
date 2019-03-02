@@ -580,7 +580,7 @@ string const Encodings::TIPAShortcut(char_type c)
 	return string();
 }
 
-
+// Return true, if `c` is a supported Greek or Cyrillic letter.
 bool Encodings::isKnownScriptChar(char_type const c, string & preamble)
 {
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
@@ -602,6 +602,8 @@ bool Encodings::isKnownScriptChar(char_type const c, string & preamble)
 
 bool Encodings::needsScriptWrapper(string const & script, string const & fontenc)
 {
+	// Note: the wrapper is not required with Unicode font encoding "TU".
+	// However, this function is not called with non-TeX (Unicode) fonts.
 	if (script == "textgreek")
 		return (fontenc != "LGR");
 	if (script == "textcyrillic") {
