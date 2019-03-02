@@ -1248,25 +1248,30 @@ void Intervall::addIntervall(int low, int upper)
 typedef map<string, string> AccentsMap;
 static AccentsMap accents = map<string, string>();
 
-static void buildaccent(string name, string param, string values)
+static void buildaccent(string n, string param, string values)
 {
-  size_t start = 0;
-  for (size_t i = 0; i < param.size(); i++) {
-    string key = name + "{" + param[i] + "}";
-    // get the corresponding utf8-value
-    if ((values[start] & 0xc0) != 0xc0) {
-      // should not happen, utf8 encoding starts at least with 11xxxxxx
-      start++;
-      continue;
-    }
-    for (int j = 1; ;j++) {
-      if (start + j >= values.size())
-        break;
-      if ((values[start+j] & 0xc0) == 0xc0) {
-        // This is the first byte of following utf8 char
-        accents[key] = values.substr(start, j);
-        start += j;
-        break;
+  stringstream s(n);
+  string name;
+  const char delim = '|';
+  while (getline(s, name, delim)) {
+    size_t start = 0;
+    for (size_t i = 0; i < param.size(); i++) {
+      string key = name + "{" + param[i] + "}";
+      // get the corresponding utf8-value
+      if ((values[start] & 0xc0) != 0xc0) {
+	// should not happen, utf8 encoding starts at least with 11xxxxxx
+	start++;
+	continue;
+      }
+      for (int j = 1; ;j++) {
+	if (start + j >= values.size())
+	  break;
+	if ((values[start+j] & 0xc0) == 0xc0) {
+	  // This is the first byte of following utf8 char
+	  accents[key] = values.substr(start, j);
+	  start += j;
+	  break;
+	}
       }
     }
   }
@@ -1277,19 +1282,22 @@ static void buildAccentsMap()
   accents["imath"] = "ı";
   accents["ddot{\\imath}"] = "ï";
   accents["acute{\\imath}"] = "í";
+  accents["tilde{\\imath}"] = "ĩ";
+  accents["jmath"] = "ȷ";
+  accents["hat{\\jmath}"] = "ĵ";
   accents["lyxmathsym{ß}"] = "ß";
-  buildaccent("ddot", "aeouyAEOUY", "äëöüÿÄËÖÜŸ");
+  buildaccent("ddot", "aeouyAEOUY", "äëöüÿÄËÖÜŸ");	// umlaut
   buildaccent("dot", "aeoyzAEOYZ", "ȧėȯẏżȦĖȮẎŻ");
-  buildaccent("acute", "aeouyAEOUY", "äëöüÿÄËÖÜŸ");
+  buildaccent("acute", "aAcCeElLoOnNrRsSuUyYzZI", "áÁćĆéÉĺĹóÓńŃŕŔśŚúÚýÝźŹÍ");
   /*
   buildaccent("dacute", "oOuU", "őŐűŰ");
   buildaccent("H", "oOuU", "őŐűŰ");	// dacute in text
   */
-  buildaccent("mathring", "uU", "ůŮ");
-  buildaccent("r", "uU", "ůŮ");	//mathring in text
-  buildaccent("check", "cdnrszCDNRSZ", "čďřňšžČĎŘŇŠŽ");
-  buildaccent("hat", "cCoOgGhHsS", "ĉĈôÔĝĜĥĤŝŜ");
-  buildaccent("bar", "aAeE", "āĀēĒ");
+  buildaccent("mathring|r", "uU", "ůŮ");
+  buildaccent("check", "cCdDeElLnNrRsSTzZ", "čČďĎěĚľĽňŇřŘšŠŤžŽ");	// caron
+  buildaccent("hat", "cCgGhHJsSwWyYoOgG", "ĉĈĝĜĥĤĴŝŜŵŴŷŶôÔĝĜ");	// circ
+  buildaccent("bar|=", "aAeEoOuU", "āĀēĒōŌūŪ");	// macron
+  buildaccent("tilde", "I", "Ĩ");	// macron
 }
 
 /*
@@ -1300,7 +1308,7 @@ void Intervall::removeAccents()
 {
   if (accents.empty())
     buildAccentsMap();
-  static regex const accre("\\\\((lyxmathsym|ddot|dot|acute|mathring|r|check|check|hat|bar)\\{[^\\{\\}]+\\}|imath)");
+  static regex const accre("\\\\((lyxmathsym|ddot|dot|acute|mathring|r|check|check|hat|bar|=)\\{[^\\{\\}]+\\}|imath|jmath)");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
