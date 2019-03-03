@@ -85,14 +85,6 @@ if ($source =~ /\/([a-z][a-z](_[A-Z][A-Z])?)[\/_]/) {
 
 my $inputEncoding = undef;
 if ($fontT eq "systemF") {
-  # if ($lang =~ /^(ar|ca|cs|da|de|el|es|eu|fa|fr|gl|he|hu|id|it|ko|nb|nl|pl|pt|ro|ru|se|sk|sl|sr|sv|uk)$/) {
-  # }
-  # else {
-  #   # default system fonts
-  #   $font{roman} = "FreeSerif";
-  #   $font{sans} = "FreeSans";
-  #   $font{typewriter} = "FreeMono";
-  # }
 }
 elsif ($encodingT ne "default") {
   # set input encoding to the requested value

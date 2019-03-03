@@ -1,4 +1,4 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
 \lyxformat 544
 \begin_document
 \begin_header
@@ -11,12 +11,12 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "palatino" "Scheherazade"
-\font_sans "helvet" "Scheherazade"
-\font_typewriter "courier" "Scheherazade"
+\font_roman "lmodern" "Scheherazade"
+\font_sans "default" "Scheherazade"
+\font_typewriter "default" "Scheherazade"
 \font_math "auto" "auto"
 \font_default_family default
-\use_non_tex_fonts true
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 95 95
@@ -203,6 +203,7 @@ https://www.lyx.org/Walkthrough
 \series default
  فضلا تأكد من تركيب حزمة اللغة التي تستخدمها في 
 \family sans
+\lang english
 \SpecialChar TeX
 
 \begin_inset space ~
@@ -210,23 +211,18 @@ https://www.lyx.org/Walkthrough
 
 Live
 \family default
+\lang arabic_arabi
  .
  وإلا فإنك ستحصل على رسالة خطأ.
 \begin_inset Newline newline
 \end_inset
 
 على سبيل المثال في اوبنتو ودبيان حزمة اللغة العربية هي 
-\begin_inset Quotes eld
-\end_inset
-
-
 \family typewriter
-texlive-lang-
+\lang english
+texlive-lang-arabic
 \family default
-arabic
-\begin_inset Quotes erd
-\end_inset
-
+\lang arabic_arabi
 .
 \begin_inset Newline newline
 \end_inset

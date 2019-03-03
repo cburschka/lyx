@@ -91,10 +91,6 @@ Sublabel: erratic
 # Manual export fails the first time but works the second time. (Why?)
 export/doc/es/(Customization|Intro)_pdf4_texF
 
-# Missing Cyrillic LICR commands (on first run after changing from tex-fonts)
-# (leftover *.aux file?)
-export/doc/uk/Intro_pdf4_texF
-
 
 Sublabel: varying_versions
 ##########################
@@ -156,8 +152,11 @@ export/export/latex/6197-polish-amssymb_(dvi|pdf).?
 #9681 Run-together words if language is set to Greek
 # if inputenc is 8-bit "language default".
 # See https://www.lyx.org/trac/ticket/9681#comment:6
-# TODO: add separate bug for:
-# Definition of "\LyX" needs "\textlatin" in Greek (printed as "ΛΨΞ").
+# No termination of LICR macros when textcyr and textgreek is not required
+# Cf. #9637 textgreek and textcyr depend on font-encoding, not input encoding
+# -> original problem fixed but run-together words in Russian (and Greek)
+export/export/latex/ru-accent-ascii_pdf2
+export/export/latex/unicodesymbols/009-cyrillic_ru_euc-cn_pdf2
 export/.*/el/.*(_texF|(dvi|pdf.?))
 
 # Non-ASCII char in verbatim environment is dropped (with a warning when
@@ -174,12 +173,6 @@ export/export/mixing_inTitle_layouts_(pdf|dvi).*
 # (not expecting much attention because DVI is not given high priority)
 export/doc/es/Customization_dvi3_systemF
 export/examples/(|es/)(europe|modern)CV_dvi3_systemF
-
-# No termination of LICR macros when textcyr and textgreek is not required
-# Cf. #9637 textgreek and textcyr depend on font-encoding, not input encoding
-# -> original problem fixed but run-together words in Russian (and Greek)
-export/export/latex/ru-accent-ascii_pdf2
-export/export/latex/unicodesymbols/009-cyrillic_ru_euc-cn_pdf2
 
 # `acmart` requires PDFlatex:
 # * Missing page number in DVI, Postscript, and PDF (ps2pdf)

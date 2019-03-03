@@ -30,6 +30,13 @@ export/export/latex/systemfonts-Math-missingchars.*systemF
 # XeTeX artifact? works with LuaTeX, explore:
 export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_systemF
 
+# missing character error after a TL 2016 update
+# TUenc.def converts \textcompwordmark to ZWNJ which is missing in LM.
+# for discussion on how to handle this problem see:
+# https://www.mail-archive.com/search?l=mid&q=20170225203955.nas2qopy4l4ukyqq%40steph
+export/export/latex/languagenesting2_pdf5_systemF
+
+
 # Example for lib/scripts/listerrors
 # Requires noweb. Seems to be restricted to plain "latex".
 # Find out why and whether the script could be improved.
@@ -51,7 +58,7 @@ export/export/latex/iconv-error-nomenclature_pdf2
 check_load/templates/acmart
 export/templates/acmart_lyx23
 
-# Failing LyX2LyX conversions for old versions: 
+# Failing LyX2LyX conversions for old versions:
 #
 # "beamer" lyx2lyx fails sometimes for versions < 2.1
 # Back-conversion results in some layouts without name ("\begin_layout \n")
@@ -62,7 +69,7 @@ export/examples/beamerlyxexample1_lyx(16|20)
 #
 # modernCV fails for versions < 2.1
 # * reversed order of \end_layout and \end_inset results in corrupt LyX file
-# * reversed order of command arguments results in incompilable LaTeX 
+# * reversed order of command arguments results in incompilable LaTeX
 export/examples/(|es/)modernCV_lyx(16|20)
 
 # Farsi font encoding LAE should be added also to custom font encoding
@@ -79,6 +86,12 @@ export/export/latex/CJK/en-de-el-ru-.*_utf8_pdf2
 #
 # some "language default" legacy encodings fail (missing fonts)
 export/export/latex/CJK/ko_default_pdf2
+
+# Arabic (see also "texissues")
+# "! Extra \else" and missing glyph "no ␣ in font Scheherazade":
+export/doc/ar/UserGuide_pdf4_systemF
+# the lyx2lyx test also tests compilation after round-trip:
+export/doc/ar/UserGuide_lyx(22|23)
 
 
 # input encoding tests
@@ -106,19 +119,6 @@ export/export/latex/unicodesymbols/.*_jis-platex_pdf2
 export/export/latex/unicodesymbols/.*_shift-jis-platex_pdf2
 export/export/latex/unicodesymbols/.*_utf8-platex_pdf2
 
-# Arabic
-# If we want to try to get it to work with pdfTeX:
-# - set all non-Arab text parts to a different language (e.g. English)
-# - define alternatives for hyperref (e.g. with textorpdfstring)
-#     for correct handling of hyperref.
-# see discussion here:
-# https://www.mail-archive.com/search?l=mid&q=20161114035123.s5lt4ib4x4obtptp%40steph
-export/doc/ar/(Intro|Shortcuts|Tutorial|UserGuide)_pdf4_texF
-# This simple example doc is meant to test Arabic export of pdf2
-export/export/latex/arabic_simple_(dvi3|pdf5)_(texF|systemF)
-export/export/latex/arabic_simple_pdf4_texF
-# See note about "Missing ␣" in file "ignoreLatexErrorsTests".
-export/doc/ar/UserGuide_lyx(22|23)
 
 # nonstandard tests failing for unknown reason:
 export/examples/aa_sample_(dvi3|pdf[45])_.*
@@ -161,10 +161,10 @@ export/doc/es/Customization_pdf4_texF
 export/examples/es/linguistics_pdf4_texF
 export/export/latex/bug9871-slovak-ascii-preambleencoding_pdf2
 
-#8035 work around a Polyglossia bug: 
-# An error is reported if the document font does not announce support for a 
+#8035 work around a Polyglossia bug:
+# An error is reported if the document font does not announce support for a
 # script (Cyrillic, Greek, ...) which Polyglossia thinks is required to
-# typeset the document language. This is not required with LyX's check for 
+# typeset the document language. This is not required with LyX's check for
 # missing characters and results in many false positives:
 # a) with fonts including the required characters but
 #    not the tag tested by Polyglossia,
@@ -217,18 +217,12 @@ Sublabel: texissues
 # Fails with ASCII (and hence also with XeTeX).
 export/doc/(|de/|es/|fr/)UserGuide_pdf4_texF
 
-# Hebrew docs do not currently work with LuaTeX (will be fixed in TeXLive-16)
-export/.*/he/.*(dvi3|pdf5).*
-
-# ... nor with XeTeX and 8-bit TeX fonts (due to missing ASCII replacements)
-export/.*/he/.*pdf4_texF
-
 # Babel-Russian uses UTF-8 for auto-strings if it detects Xe/LuaTeX.
 # This fails unless the inputencoding is set to utf-8, too.
 export/doc/ru/(Intro|Tutorial)_(dvi3|pdf[45])_texF
 export/examples/ru/(example_lyxified|splash)_(dvi3|pdf[45])_texF
 
-# Babel-Spanish uses  UTF-8 for auto-strings if it detects Xe/LuaTeX. 
+# Babel-Spanish uses  UTF-8 for auto-strings if it detects Xe/LuaTeX.
 # This leads to wrong output and fails in some cases with LyX's "language
 # default" ("latin9").
 # ! Undefined control sequence.
@@ -276,24 +270,46 @@ export/templates/slides_.*_systemF
 export/templates/ja_beamer-conference-ornate-20min_(pdf2|pdf[45]).*
 export/templates/es_beamer-conference-ornate-20min_pdf4_texF
 
-# Arabic only works with XeTeX + system fonts (pdf4_systemF)
-export/examples/ar/splash_(dvi.*|pdf|pdf[^4].*)
-export/examples/ar/splash_pdf4_texF
-# Language nesting problem "! Extra \else"
-# and missing glyph "no ␣ in font Scheherazade":
-export/doc/ar/UserGuide_pdf4_systemF
+# Arabic
+#
+# Larger Arabic documents currently have non-tex-fonts and XeTeX as default
+# output. To fix pdfTeX export:
+# - set all non-Arab text parts to a different language (e.g. English)
+# - define alternatives for hyperref (e.g. with textorpdfstring)
+#   for correct handling of hyperref.
+# - solve problem with ToC:
+#      ! This can't happen (copying).
+#      \AtBegShi@Output ...ipout \box \AtBeginShipoutBox
+#                                                        \fi \fi
+#      l.62 \tableofcontents
+#                           {}
+#      I'm broken. Please show this to someone who can fix can fix
+#
+# see discussion at https://www.mail-archive.com/search?l=mid&q=20161114035123.s5lt4ib4x4obtptp%40steph
+#
+# Babel-Arabic loads "inputenc" which fails with Xe/LuaTeX:
+export/.*/ar/.*_texF
+# Polyglossia problem with LuaTeX (see also Hebrew and Farsi):
+# Undefined control sequences "\luatexpardir" and "\luatextextdir".
+export/.*/ar/.*(dvi3|pdf5)_systemF
 
 # Farsi
-# Fails with Polyglossia + LuaTeX (undefined command)
+# Polyglossia problem with LuaTeX (undefined command) (cf. Arabic)
 # https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
 export/examples/fa/splash_(dvi3|pdf5)_systemF
 # Missing characters (em space and "English" quotes) with XeTeX + system fonts.
 export/examples/fa/splash_pdf4_systemF
-# Fails with ASCII inputenc (required by XeTeX + TeX fonts) due to missing
-# LICR substitutions in unicodesymbols.
+# missing ASCII replacements (required by XeTeX + TeX fonts)
 export/examples/fa/splash_pdf4_texF
 # "invalid utf-8 sequence" with Babel-Farsi, LuaTeX, and TeX fonts.
 export/examples/fa/splash_(dvi3|pdf5)_texF
+
+# Hebrew
+# does not currently work with LuaTeX
+export/.*/he/.*(dvi3|pdf5)_systemF
+# ... nor with XeTeX and 8-bit TeX fonts (missing ASCII replacements)
+export/.*/he/.*pdf4_texF
+
 
 # CJKutf8 does not work with XeTeX and LuaTeX (and 8-bit fonts)
 export/examples/ja/multilingual_.*_texF

@@ -1,4 +1,4 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
 \lyxformat 544
 \begin_document
 \begin_header
@@ -29,11 +29,11 @@
 \maintain_unincluded_children false
 \language arabic_arabi
 \language_package default
-\inputencoding auto
+\inputencoding utf8
 \fontencoding global
-\font_roman "palatino" "Scheherazade"
-\font_sans "helvet" "Scheherazade"
-\font_typewriter "courier" "Scheherazade"
+\font_roman "lmodern" "Scheherazade"
+\font_sans "default" "Scheherazade"
+\font_typewriter "default" "Scheherazade"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts true
@@ -331,7 +331,12 @@ WYSIWYG
 لذلك، فإن الفكرة الأساسية وراء ليك هي: تحديد ما تريد فعله، وليس كيف تقوم
  بفعله.
  بدلا من "ما تراه هو ما تحصل عليه"، نموذج ليك هو "ما تراه هو ما تريده" أو
- "WYSIWYM." انها فكرة قوية أن يبسط إلى حد كبير آليات كتابة الوثائق.
+ "
+\lang english
+WYSIWYM
+\lang arabic_arabi
+".
+ انها فكرة قوية أن يبسط إلى حد كبير آليات كتابة الوثائق.
  هذا أيضا هو السبب في ان ليك ليست جيدة جدا لانشاء الملصقات والنشرات.
  ففي هذه الحالة، عليك العمل على تعيين موضع كل شيء، لأنه لا توجد وحدات وظيفية
  مثل الفقرات والأقسام، وما إلى ذلك.
@@ -1151,7 +1156,11 @@ PageUp
 \begin_inset Quotes erd
 \end_inset
 
+
+\lang arabic_arabi
  و 
+\lang english
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -1206,8 +1215,10 @@ Next
 \lang english
 Return
 \family default
+\lang arabic_arabi
  و 
 \family sans
+\lang english
 Enter
 \family default
 \lang arabic_arabi
@@ -1246,8 +1257,10 @@ Enter,
 \lang english
 Return
 \family default
+\lang arabic_arabi
  و 
 \family sans
+\lang english
 Enter
 \family default
 \lang arabic_arabi
@@ -2108,9 +2121,9 @@ https://www.lyx.org/
  واذا كان هناك مجموعة من المشاكل أو كان لديك مشكلة في الضبط، فيفضل إرفاق
  
 \lang english
-config.log ، 
+config.log
 \lang arabic_arabi
-وذكر اي برنامج بناء 
+ ، وذكر اي برنامج بناء 
 \lang english
 compiler
 \lang arabic_arabi

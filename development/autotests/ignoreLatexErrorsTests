@@ -10,18 +10,10 @@ export/examples/minted-filelisting_pdf4_texF
 # (setting of custom TeX- and non-TeX font not possible at the same time).
 export/doc/attic/eu_Customization.*systemF
 
-# started failing after a TL 2016 update
-# for discussion on whether a bug should be reported or LyX output should be changed, see:
-# https://www.mail-archive.com/search?l=mid&q=20170225203955.nas2qopy4l4ukyqq%40steph
-export/export/latex/languagenesting2_pdf5_systemF
-
 # Juergen Spitzmueller: They do not have problems with xunicode, but without.
 # The reason is that the asterisk glyph is not included in the arabic font
 # (Scheherazade), but apparently, xunicode defines an extra asterisk
 # glyph (for a different purpose) that is being used here. Clearly the
 # problem should be fixed somewhere else.
-export/export/latex/arabic_simple_pdf4_systemF
 # works here (Debian/stretch):
 #export/doc/ar/Intro_pdf4_systemF
-# Kornel Benko: Missing ␣ (but see also invertedTests)
-export/doc/ar/UserGuide_pdf4_systemF
