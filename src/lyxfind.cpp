@@ -32,6 +32,7 @@
 #include "ParIterator.h"
 #include "TexRow.h"
 #include "Text.h"
+#include "Encoding.h"
 
 #include "frontends/Application.h"
 #include "frontends/alert.h"
@@ -910,7 +911,8 @@ private:
 
 static docstring buffer_to_latex(Buffer & buffer)
 {
-	OutputParams runparams(&buffer.params().encoding());
+	//OutputParams runparams(&buffer.params().encoding());
+	OutputParams runparams(encodings.fromLyXName("utf8"));
 	odocstringstream ods;
 	otexstream os(ods);
 	runparams.nice = true;
@@ -934,7 +936,8 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 	if (!opt.ignoreformat) {
 		str = buffer_to_latex(buffer);
 	} else {
-		OutputParams runparams(&buffer.params().encoding());
+		// OutputParams runparams(&buffer.params().encoding());
+		OutputParams runparams(encodings.fromLyXName("utf8"));
 		runparams.nice = true;
 		runparams.flavor = OutputParams::XETEX;
 		runparams.linelen = 10000; //lyxrc.plaintext_linelen;
@@ -1280,24 +1283,32 @@ static void buildaccent(string n, string param, string values)
 static void buildAccentsMap()
 {
   accents["imath"] = "ı";
-  accents["ddot{\\imath}"] = "ï";
-  accents["acute{\\imath}"] = "í";
-  accents["tilde{\\imath}"] = "ĩ";
   accents["jmath"] = "ȷ";
-  accents["hat{\\jmath}"] = "ĵ";
   accents["lyxmathsym{ß}"] = "ß";
-  buildaccent("ddot", "aeouyAEOUY", "äëöüÿÄËÖÜŸ");	// umlaut
-  buildaccent("dot", "aeoyzAEOYZ", "ȧėȯẏżȦĖȮẎŻ");
-  buildaccent("acute", "aAcCeElLoOnNrRsSuUyYzZI", "áÁćĆéÉĺĹóÓńŃŕŔśŚúÚýÝźŹÍ");
-  /*
-  buildaccent("dacute", "oOuU", "őŐűŰ");
-  buildaccent("H", "oOuU", "őŐűŰ");	// dacute in text
-  */
+  accents["ddot{\\imath}"] = "ï";
+  buildaccent("ddot", "aAeEIoOuUyY",
+                      "äÄëËÏöÖüÜÿŸ");	// umlaut
+  buildaccent("dot|.", "cCeEgGIzZaAoObBdDfFyY",
+                     "ċĊėĖġĠİżŻȧȦȯȮḃḂḋḊḟḞẏẎ");
+  accents["acute{\\imath}"] = "í";
+  buildaccent("acute", "aAcCeElLoOnNrRsSuUyYzZI",
+                       "áÁćĆéÉĺĹóÓńŃŕŔśŚúÚýÝźŹÍ");
+  buildaccent("dacute|H|h", "oOuU", "őŐűŰ");	// double acute
   buildaccent("mathring|r", "uU", "ůŮ");
-  buildaccent("check", "cCdDeElLnNrRsSTzZ", "čČďĎěĚľĽňŇřŘšŠŤžŽ");	// caron
-  buildaccent("hat", "cCgGhHJsSwWyYoOgG", "ĉĈĝĜĥĤĴŝŜŵŴŷŶôÔĝĜ");	// circ
-  buildaccent("bar|=", "aAeEoOuU", "āĀēĒōŌūŪ");	// macron
-  buildaccent("tilde", "I", "Ĩ");	// macron
+  accents["check{\\imath}"] = "ǐ";
+  accents["check{\\jmath}"] = "ǰ";
+  buildaccent("check|v", "cCdDaAeEIoOuUgGkKhHlLnNrRsSTzZ",
+                         "čČďĎǎǍěĚǏǒǑǔǓǧǦǩǨȟȞľĽňŇřŘšŠŤžŽ");	// caron
+  accents["hat{\\imath}"] = "î";
+  accents["hat{\\jmath}"] = "ĵ";
+  buildaccent("hat|^", "aAeEiIcCgGhHJsSwWyYzZoOuU",
+                       "âÂêÊîÎĉĈĝĜĥĤĴŝŜŵŴŷŶẑẐôÔûÛ");	// circ
+  accents["bar{\\imath}"] = "ī";
+  buildaccent("bar|=", "aAeEIoOuUyY",
+                       "āĀēĒĪōŌūŪȳȲ");	// macron
+  accents["tilde{\\imath}"] = "ĩ";
+  buildaccent("tilde", "aAnNoOIuU",
+                       "ãÃñÑõÕĨũŨ");	// tilde
 }
 
 /*
@@ -1308,7 +1319,7 @@ void Intervall::removeAccents()
 {
   if (accents.empty())
     buildAccentsMap();
-  static regex const accre("\\\\((lyxmathsym|ddot|dot|acute|mathring|r|check|check|hat|bar|=)\\{[^\\{\\}]+\\}|imath|jmath)");
+  static regex const accre("\\\\((lyxmathsym|ddot|dot|.|acute|dacute|h|H|mathring|r|check|v|hat|^|bar|=|tilde)\\{[^\\{\\}]+\\}|imath|jmath)");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
@@ -1320,6 +1331,10 @@ void Intervall::removeAccents()
         par[pos+i] = val[i];
       }
       addIntervall(pos+val.size(), pos + sub.str(0).size());
+      for (size_t i = pos+val.size(); i < pos + sub.str(0).size(); i++) {
+        // remove any remaining parentheses
+        par[i] = ' ';
+      }
     }
     else {
       LYXERR0("Not added accent for \"" << key << "\"");
@@ -3001,7 +3016,8 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		// TODO Try adding a AS_STR_INSERTS as last arg
 		pos_type end = ( len == -1 || cur.pos() + len > int(par.size()) ) ?
 			int(par.size()) : cur.pos() + len;
-		OutputParams runparams(&cur.buffer()->params().encoding());
+		// OutputParams runparams(&cur.buffer()->params().encoding());
+		OutputParams runparams(encodings.fromLyXName("utf8"));
 		runparams.nice = true;
 		runparams.flavor = OutputParams::XETEX;
 		runparams.linelen = 10000; //lyxrc.plaintext_linelen;
@@ -3046,7 +3062,8 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 
 	odocstringstream ods;
 	otexstream os(ods);
-	OutputParams runparams(&buf.params().encoding());
+	//OutputParams runparams(&buf.params().encoding());
+	OutputParams runparams(encodings.fromLyXName("utf8"));
 	runparams.nice = false;
 	runparams.flavor = OutputParams::XETEX;
 	runparams.linelen = 8000; //lyxrc.plaintext_linelen;
@@ -3232,7 +3249,9 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 				DocIterator old_cur = cur;
 				for (int i = 0; i < increment && cur; cur.forwardPos(), i++) {
 				}
-				if (! cur) {
+				if (! cur || (cur.pit() > old_cur.pit())) {
+					// Are we outside of the paragraph?
+					// This can happen if moving past some UTF8-encoded chars
 					cur = old_cur;
 					increment /= 2;
 				}
@@ -3520,7 +3539,8 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 	} else if (cur.inMathed()) {
 		odocstringstream ods;
 		otexstream os(ods);
-		OutputParams runparams(&repl_buffer.params().encoding());
+		// OutputParams runparams(&repl_buffer.params().encoding());
+		OutputParams runparams(encodings.fromLyXName("utf8"));
 		runparams.nice = false;
 		runparams.flavor = OutputParams::XETEX;
 		runparams.linelen = 8000; //lyxrc.plaintext_linelen;
