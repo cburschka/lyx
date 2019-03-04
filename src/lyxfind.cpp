@@ -1329,7 +1329,7 @@ void Intervall::removeAccents()
 {
   if (accents.empty())
     buildAccentsMap();
-  static regex const accre("\\\\((.|grave|breve|u|lyxmathsym|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde)\\{[^\\{\\}]+\\}|i|imath|jmath)");
+  static regex const accre("\\\\((.|grave|breve|lyxmathsym|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde)\\{[^\\{\\}]+\\}|(i|imath|jmath)(?![a-zA-Z]))");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
