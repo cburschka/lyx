@@ -143,10 +143,6 @@ Sublabel: lyxbugs
 # missing character with XeTeX/LuaTeX and Babel (OK with Polyglossia)
 export/export/latex/6197-polish-amssymb_pdf._texF
 
-#6463 font encoding changes and combining accents
-# problem remains for Cyrillic in a non-Cyrillic-using language
-export/export/latex/cyrillic-accent-ascii_pdf2
-
 #9871 LyX sends invalid Unicode to iconv when converting to ASCII
 # most probably due to BabelPreamble code (language specific headings for
 # theorems, problems , ... are written in the language's default encoding

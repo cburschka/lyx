@@ -94,8 +94,16 @@
 \begin_body
 
 \begin_layout Standard
-Accented cyrillic characters still fail if the input encoding is ASCII and
- the current language not using a cyrillic script (i.e.
+Accented cyrillic characters work since LyX 2.4.
+\end_layout
+
+\begin_layout Standard
+Test: English document with input encoding ASCII
+\end_layout
+
+\begin_layout Standard
+Accent as ERT still fails if the current language not using a cyrillic script
+ (i.e.
  if the 
 \begin_inset Quotes eld
 \end_inset
@@ -106,10 +114,14 @@ textcyr
 \begin_inset Quotes erd
 \end_inset
 
- feature is required), both ERT
+ feature is required)
 \end_layout
 
 \begin_layout Quotation
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Вы узн
 \begin_inset ERT
 status collapsed
@@ -126,8 +138,13 @@ status collapsed
 аете, как использовать LyX.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-and Combining chars
+it works for Combining chars
 \end_layout
 
 \begin_layout Quotation

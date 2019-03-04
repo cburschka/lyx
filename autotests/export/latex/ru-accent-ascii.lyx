@@ -114,8 +114,15 @@
 \begin_body
 
 \begin_layout Standard
-Accented cyrillic characters failed if the input encoding is ASCII, both
- ERT
+Accented cyrillic characters work since LyX 2.4.
+\end_layout
+
+\begin_layout Standard
+Test: Russian document with input encoding ASCII
+\end_layout
+
+\begin_layout Standard
+Accent in ERT
 \end_layout
 
 \begin_layout Quotation
@@ -136,7 +143,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-and Combining chars
+and as Combining character
 \end_layout
 
 \begin_layout Quotation
