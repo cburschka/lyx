@@ -106,6 +106,12 @@ export/export/latex/cp858_pdf2
 # Seminar export with LaTeX fails in latest TeXLive:
 export/examples/(|fr/)seminar_(dvi|pdf).*
 
+# since TL18, Babel-Ukrainean uses UTF-8 if it detects Xe/LuaTeX (for "\date").
+# * garbled output with LuaTeX + TeX fonts (since TL18)
+# * missing chars with XeTeX + TeX fonts (see invertedTests)
+export/export/latex/uk-babel-date-missing-chars-with-ascii_.*_texF
+export/(doc|examples)/uk/(Intro|splash)_pdf4_texF
+
 # since TeXLive18, 8-bit LaTeX defaults to utf-8
 # ----------------------------------------------
 
@@ -141,6 +147,7 @@ export/examples/(|fr/)seminar_(dvi|pdf).*
 export/examples/es/(ejemplo_con_lyx|tufte_book)_(pdf5|dvi3)_texF
 export/doc/es/.*_(pdf5|dvi3)_texF
 
+
 # LyX issues
 # **********
 
@@ -149,15 +156,15 @@ export/doc/es/.*_(pdf5|dvi3)_texF
 # missing character with XeTeX/LuaTeX and Babel (-> invertedTests)
 export/export/latex/6197-polish-amssymb_(dvi|pdf).?
 
-#9681 Run-together words if language is set to Greek
-# if inputenc is 8-bit "language default".
+#9681 Run-together words in Greek and Cyrillic documents
+# if inputenc is 8-bit "language default" or "ascii" (e.g. XeTeX + TeX fonts).
 # See https://www.lyx.org/trac/ticket/9681#comment:6
-# No termination of LICR macros when textcyr and textgreek is not required
+# No termination of LICR macros when textcyrillic and textgreek is not required
 # Cf. #9637 textgreek and textcyr depend on font-encoding, not input encoding
-# -> original problem fixed but run-together words in Russian (and Greek)
 export/export/latex/ru-accent-ascii_pdf2
 export/export/latex/unicodesymbols/009-cyrillic_ru_euc-cn_pdf2
-export/.*/el/.*(_texF|(dvi|pdf.?))
+export/.*/el/.*((dvi|pdf.?)|_texF)
+export/.*/(ru|uk)/.*(pdf4_texF)
 
 # Non-ASCII char in verbatim environment is dropped (with a warning when
 # doing this interactively) with ASCII (and hence also with XeTeX).

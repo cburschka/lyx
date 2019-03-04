@@ -222,6 +222,14 @@ export/doc/(|de/|es/|fr/)UserGuide_pdf4_texF
 export/doc/ru/(Intro|Tutorial)_(dvi3|pdf[45])_texF
 export/examples/ru/(example_lyxified|splash)_(dvi3|pdf[45])_texF
 
+# Babel-Ukrainean uses UTF-8 if it detects Xe/LuaTeX (for "\date").
+# * garbled output with LuaTeX + TeX fonts, see unreliableTests.wrong_output,
+# * since TL18, see unreliableTests.varying_versions.
+# * missing chars with XeTeX + TeX fonts:
+#   (workaround: suppressing auto-date or date inset in documents).
+export/export/latex/uk-babel-date-missing-chars-with-ascii_pdf4_texF
+export/(doc|examples)/uk/(Intro|splash)_pdf4_texF
+
 # Babel-Spanish uses  UTF-8 for auto-strings if it detects Xe/LuaTeX.
 # This leads to wrong output and fails in some cases with LyX's "language
 # default" ("latin9").
