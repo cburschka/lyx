@@ -1262,19 +1262,22 @@ static void buildaccent(string n, string param, string values)
       string key = name + "{" + param[i] + "}";
       // get the corresponding utf8-value
       if ((values[start] & 0xc0) != 0xc0) {
-	// should not happen, utf8 encoding starts at least with 11xxxxxx
-	start++;
-	continue;
+        // should not happen, utf8 encoding starts at least with 11xxxxxx
+        start++;
+        continue;
       }
       for (int j = 1; ;j++) {
-	if (start + j >= values.size())
-	  break;
-	if ((values[start+j] & 0xc0) == 0xc0) {
-	  // This is the first byte of following utf8 char
-	  accents[key] = values.substr(start, j);
-	  start += j;
-	  break;
-	}
+        if (start + j >= values.size()) {
+          accents[key] = values.substr(start, j);
+          start = values.size() - 1;
+          break;
+        }
+        else if ((values[start+j] & 0xc0) == 0xc0) {
+          // This is the first byte of following utf8 char
+          accents[key] = values.substr(start, j);
+          start += j;
+          break;
+        }
       }
     }
   }
@@ -1283,32 +1286,39 @@ static void buildaccent(string n, string param, string values)
 static void buildAccentsMap()
 {
   accents["imath"] = "ı";
+  accents["i"] = "ı";
   accents["jmath"] = "ȷ";
   accents["lyxmathsym{ß}"] = "ß";
   accents["ddot{\\imath}"] = "ï";
-  buildaccent("ddot", "aAeEIoOuUyY",
-                      "äÄëËÏöÖüÜÿŸ");	// umlaut
-  buildaccent("dot|.", "cCeEgGIzZaAoObBdDfFyY",
-                     "ċĊėĖġĠİżŻȧȦȯȮḃḂḋḊḟḞẏẎ");
+  buildaccent("ddot", "aAeEiIoOuUyY",
+                      "äÄëËïÏöÖüÜÿŸ");	// umlaut
+  buildaccent("dot|.", "cCeEgGiIzZaAoObBdDfFyY",
+                       "ċĊėĖġĠiİżŻȧȦȯȮḃḂḋḊḟḞẏẎ");
   accents["acute{\\imath}"] = "í";
-  buildaccent("acute", "aAcCeElLoOnNrRsSuUyYzZI",
-                       "áÁćĆéÉĺĹóÓńŃŕŔśŚúÚýÝźŹÍ");
+  buildaccent("acute", "aAcCeElLoOnNrRsSuUyYzZiI",
+                       "áÁćĆéÉĺĹóÓńŃŕŔśŚúÚýÝźŹíÍ");
   buildaccent("dacute|H|h", "oOuU", "őŐűŰ");	// double acute
   buildaccent("mathring|r", "uU", "ůŮ");
   accents["check{\\imath}"] = "ǐ";
   accents["check{\\jmath}"] = "ǰ";
-  buildaccent("check|v", "cCdDaAeEIoOuUgGkKhHlLnNrRsSTzZ",
-                         "čČďĎǎǍěĚǏǒǑǔǓǧǦǩǨȟȞľĽňŇřŘšŠŤžŽ");	// caron
+  buildaccent("check|v", "cCdDaAeEiIoOuUgGkKhHlLnNrRsSTzZ",
+                         "čČďĎǎǍěĚǐǏǒǑǔǓǧǦǩǨȟȞľĽňŇřŘšŠŤžŽ");	// caron
   accents["hat{\\imath}"] = "î";
   accents["hat{\\jmath}"] = "ĵ";
-  buildaccent("hat|^", "aAeEiIcCgGhHJsSwWyYzZoOuU",
-                       "âÂêÊîÎĉĈĝĜĥĤĴŝŜŵŴŷŶẑẐôÔûÛ");	// circ
+  buildaccent("hat|^", "aAeEiIcCgGhHjJsSwWyYzZoOuU",
+                       "âÂêÊîÎĉĈĝĜĥĤĵĴŝŜŵŴŷŶẑẐôÔûÛ");	// circ
   accents["bar{\\imath}"] = "ī";
-  buildaccent("bar|=", "aAeEIoOuUyY",
-                       "āĀēĒĪōŌūŪȳȲ");	// macron
+  buildaccent("bar|=", "aAeEiIoOuUyY",
+                       "āĀēĒīĪōŌūŪȳȲ");	// macron
   accents["tilde{\\imath}"] = "ĩ";
-  buildaccent("tilde", "aAnNoOIuU",
-                       "ãÃñÑõÕĨũŨ");	// tilde
+  buildaccent("tilde", "aAnNoOiIuU",
+                       "ãÃñÑõÕĩĨũŨ");	// tilde
+  accents["breve{\\imath}"] = "ĭ";
+  buildaccent("breve|u", "aAeEgGiIoOuU",
+                         "ăĂĕĔğĞĭĬŏŎŭŬ");    // breve
+  accents["grave{\\imath}"] = "ì";
+  buildaccent("grave|`", "aAeEiIoOuUnNwWyY",
+                         "àÀèÈìÌòÒùÙǹǸẁẀỳỲ");                // grave
 }
 
 /*
@@ -1319,7 +1329,7 @@ void Intervall::removeAccents()
 {
   if (accents.empty())
     buildAccentsMap();
-  static regex const accre("\\\\((lyxmathsym|ddot|dot|.|acute|dacute|h|H|mathring|r|check|v|hat|^|bar|=|tilde)\\{[^\\{\\}]+\\}|imath|jmath)");
+  static regex const accre("\\\\((.|grave|breve|u|lyxmathsym|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde)\\{[^\\{\\}]+\\}|i|imath|jmath)");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
@@ -2569,14 +2579,14 @@ static string correctlanguagesetting(string par, bool isPatternString, bool with
 		missed = 0;
 		if (withformat) {
 			regex_f = identifyFeatures(result);
-                        string features = "";
+			string features = "";
 			for (auto it = regex_f.cbegin(); it != regex_f.cend(); ++it) {
 				string a = it->first;
 				regex_with_format = true;
-                                features += " " + a;
+				features += " " + a;
 				// LYXERR0("Identified regex format:" << a);
 			}
-                        LYXERR(Debug::FIND, "Identified Features" << features);
+			LYXERR(Debug::FIND, "Identified Features" << features);
 
 		}
 	} else if (regex_with_format) {
