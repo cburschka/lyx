@@ -230,15 +230,6 @@ export/examples/ru/(example_lyxified|splash)_(dvi3|pdf[45])_texF
 export/export/latex/uk-babel-date-missing-chars-with-ascii_pdf4_texF
 export/(doc|examples)/uk/(Intro|splash)_pdf4_texF
 
-# Babel-Spanish uses  UTF-8 for auto-strings if it detects Xe/LuaTeX.
-# This leads to wrong output and fails in some cases with LyX's "language
-# default" ("latin9").
-# ! Undefined control sequence.
-# <argument> ...art {link}{\Hy@tocdestname }{\nonumberline Ã
-#                                                   ndice alfabÃ©tico}\hyper...
-#  See also unreliableTests.
-export/doc/es/EmbeddedObjects_(dvi3|pdf5)_texF
-
 # Gives the following error:
 # # ! Package hpstatement Error: H or P statement "H251"
 # # (hpstatement)                is not defined.
