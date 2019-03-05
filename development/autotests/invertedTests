@@ -284,7 +284,7 @@ export/templates/es_beamer-conference-ornate-20min_pdf4_texF
 #
 # Babel-Arabic loads "inputenc" which fails with Xe/LuaTeX:
 export/.*/ar/.*_texF
-# Polyglossia problem with LuaTeX (see also Hebrew and Farsi):
+# Polyglossia bug with LuaTeX and LTR languages (also Hebrew and Farsi):
 # Undefined control sequences "\luatexpardir" and "\luatextextdir".
 export/.*/ar/.*(dvi3|pdf5)_systemF
 
@@ -300,10 +300,13 @@ export/examples/fa/splash_pdf4_texF
 export/examples/fa/splash_(dvi3|pdf5)_texF
 
 # Hebrew
-# does not currently work with LuaTeX
+# does not currently work with LuaTeX (undefined command) (cf. Arabic)
+# terminal message: "Language hebrew not found in language.dat.lua"
 export/.*/he/.*(dvi3|pdf5)_systemF
-# ... nor with XeTeX and 8-bit TeX fonts (missing ASCII replacements)
-export/.*/he/.*pdf4_texF
+# Babel-Arabic loads "inputenc" which fails with Xe/LuaTeX
+# additionally: "! Right-to-Left Support Error: use TeX--XeT or e-TeX engine."
+# and (with XeTeX) missing ASCII replacements.
+export/.*/he/.*_texF
 
 
 # CJKutf8 does not work with XeTeX and LuaTeX (and 8-bit fonts)
