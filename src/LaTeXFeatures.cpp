@@ -63,16 +63,7 @@ namespace lyx {
 //\message{LyX LaTeX Extensions (LLE v0.2) of 11-Jan-1996.}
 
 static docstring const lyx_def = from_ascii(
-	"\\providecommand{\\LyX}{L\\kern-.1667em\\lower.25em\\hbox{Y}\\kern-.125emX\\@}");
-
-static docstring const lyx_rtl_def = from_ascii(
-	"\\let\\@@LyX\\LyX\n"
-	"\\def\\LyX{\\@ensure@LTR{\\@@LyX}}");
-
-static docstring const lyx_hyperref_def = from_ascii(
-	"\\providecommand{\\LyX}{\\texorpdfstring%\n"
-	"  {L\\kern-.1667em\\lower.25em\\hbox{Y}\\kern-.125emX\\@}\n"
-	"  {LyX}}");
+	"{%\n  L\\kern-.1667em\\lower.25em\\hbox{Y}\\kern-.125emX\\@}");
 
 static docstring const noun_def = from_ascii(
 	"\\newcommand{\\noun}[1]{\\textsc{#1}}");
@@ -929,6 +920,7 @@ bool LaTeXFeatures::hasRTLLanguage() const
 	return false;
 }
 
+
 namespace {
 
 char const * simplefeatures[] = {
@@ -1380,12 +1372,24 @@ TexString LaTeXFeatures::getMacros() const
 	}
 
 	if (mustProvide("LyX")) {
-		if (isRequired("hyperref"))
-			macros << lyx_hyperref_def << '\n';
-		else
-			macros << lyx_def << '\n';
+		macros << "\\providecommand{\\LyX}";
+		// open conditional wrappers
 		if (runparams_.use_polyglossia && hasRTLLanguage())
-			macros << lyx_rtl_def << '\n';
+			macros << "{\\@ensure@LTR";
+		if (isRequired("hyperref"))
+			macros << "{\\texorpdfstring";
+		if (useBabel())
+			macros << "{\\textlatin";
+		// main definition
+		macros << lyx_def;
+		// close conditional wrappers
+		if (useBabel())
+			macros << '}';
+   		if (isRequired("hyperref"))
+			macros << "{LyX}}";
+		if (runparams_.use_polyglossia && hasRTLLanguage())
+			macros << '}';
+		macros << '\n';
 	}
 
 	if (mustProvide("noun"))
