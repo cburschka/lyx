@@ -178,6 +178,11 @@ export/export/latex/LongestLabelWithUnderscore.*
 # lib/unicodesymbols. (This shows that there are use cases for 8-bit fonts
 # or GUI support for selecting more than one system font.)
 export/export/latex/luainputenc-utf8_pdf5_systemF
+# From Günter:
+# OK, so in TL18 the Ukrainean "auto-date" (7 березня 2019 р.) fails with
+# PDF (XeTeX) and DVI (LuaTeX) but not PDF (LuaTeX).
+# Strange.
+export/export/latex/luainputenc-utf8_pdf5_texF
 
 #11455 "Unable to process argument!" with multiple 1.6.x roundtrips
 export/templates/IEEEtran-Journal_lyx16
