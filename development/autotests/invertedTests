@@ -30,12 +30,6 @@ export/export/latex/systemfonts-Math-missingchars.*systemF
 # XeTeX artifact? works with LuaTeX, explore:
 export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_systemF
 
-# missing character error after a TL 2016 update
-# TUenc.def converts \textcompwordmark to ZWNJ which is missing in LM.
-# for discussion on how to handle this problem see:
-# https://www.mail-archive.com/search?l=mid&q=20170225203955.nas2qopy4l4ukyqq%40steph
-export/export/latex/languagenesting2_pdf5_systemF
-
 
 # Example for lib/scripts/listerrors
 # Requires noweb. Seems to be restricted to plain "latex".
