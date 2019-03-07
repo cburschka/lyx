@@ -302,10 +302,12 @@ export/.*/he/.*(dvi3|pdf5)_systemF
 # and (with XeTeX) missing ASCII replacements.
 export/.*/he/.*_texF
 
-
 # CJKutf8 does not work with XeTeX and LuaTeX (and 8-bit fonts)
 export/examples/ja/multilingual_.*_texF
 export/export/latex/CJK/zh_CN-toc_.*_texF
+
+# See comment in unreliableTests
+export/export/latex/uk-babel-date-missing-chars-with-ascii_pdf5_texF
 
 
 # ================================================
