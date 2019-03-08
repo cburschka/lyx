@@ -95,7 +95,7 @@
 0x00c2 "\\^{A}"                   "" "mathalpha,force=euc-jp" "\\hat{A}" # LATIN CAPITAL LETTER A WITH CIRCUMFLEX
 0x00c3 "\\~{A}"                   "" "mathalpha,force=euc-jp" "\\tilde{A}" # LATIN CAPITAL LETTER A WITH TILDE
 0x00c4 "\\\"{A}"                  "" "mathalpha,force=euc-jp" "\\ddot{A}" # LATIN CAPITAL LETTER A WITH DIAERESIS
-0x00c5 "\\AA"                     "" "mathalpha,force=euc-jp" "\\mathring{A}" "" # LATIN CAPITAL LETTER A WITH RING ABOVE
+0x00c5 "\\r{A}"                   "" "mathalpha,force=euc-jp" "\\mathring{A}" "" # LATIN CAPITAL LETTER A WITH RING ABOVE
 0x00c6 "\\AE"                     "" "force=euc-jp;euc-kr" # LATIN CAPITAL LETTER AE
 0x00c7 "\\c{C}"                   "" "mathalpha,force=euc-jp" "\\cedilla{C}" "accents,cedilla" # LATIN CAPITAL LETTER C WITH CEDILLA
 0x00c8 "\\`{E}"                   "" "mathalpha,force=euc-jp" "\\grave{E}" # LATIN CAPITAL LETTER E WITH GRAVE
@@ -127,7 +127,7 @@
 0x00e2 "\\^{a}"                   "" "mathalpha,force=cp1256;euc-jp" "\\hat{a}" # LATIN SMALL LETTER A WITH CIRCUMFLEX
 0x00e3 "\\~{a}"                   "" "mathalpha,force=euc-jp" "\\tilde{a}" # LATIN SMALL LETTER A WITH TILDE
 0x00e4 "\\\"{a}"                  "" "mathalpha,force=euc-jp" "\\ddot{a}" # LATIN SMALL LETTER A WITH DIAERESIS
-0x00e5 "\\aa"                     "" "mathalpha,force=euc-jp" "\\mathring{a}" "" # LATIN SMALL LETTER A WITH RING ABOVE
+0x00e5 "\\r{a}"                   "" "mathalpha,force=euc-jp" "\\mathring{a}" "" # LATIN SMALL LETTER A WITH RING ABOVE
 0x00e6 "\\ae"                     "" "force=euc-jp;euc-kr" # LATIN SMALL LETTER AE
 0x00e7 "\\c{c}"                   "" "mathalpha,force=cp1256;euc-jp" "\\cedilla{c}" "accents,cedilla" # LATIN SMALL LETTER C WITH CEDILLA
 0x00e8 "\\`{e}"                   "" "mathalpha,force=cp1256;euc-cn;euc-jp;gbk" "\\grave{e}" # LATIN SMALL LETTER E WITH GRAVE
@@ -1857,7 +1857,7 @@
 0x20a9 "\\textwon"                "textcomp" "force=euc-kr" # WON SIGN
 #0x20aa ""                         "" "" # NEW SHEQEL SIGN
 0x20ab "\\textdong"               "textcomp" "" # DONG SIGN
-0x20ac "\\texteuro"               "textcomp" "force=iso8859-7;euc-kr" # EURO SIGN
+0x20ac "\\texteuro"               "textcomp" "force=iso8859-7;euc-kr;gbk" # EURO SIGN
 0x20b1 "\\textpeso"               "textcomp" "force=utf8x" # PESO SIGN
 0x20b2 "\\textguarani"            "textcomp" "force=utf8;utf8x;utf8-cjk" # GUARANI SIGN
 0x20b9 "\\rupee"                  "tfrupee" "" "" "" # INDIAN RUPEE SIGN
@@ -1908,7 +1908,7 @@
 0x2128 ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{Z}" "amssymb" # BLACK-LETTER CAPITAL Z
 #0x2129 ""                         "" "" "" "" # TURNED GREEK SMALL LETTER IOTA
 0x212a "K"                        "" "notermination=text" "" "" # KELVIN SIGN
-0x212b "\\AA"                     "" "force=utf8;utf8-cjk,deprecated" "" "" # ANGSTROM SIGN
+0x212b "\\r{A}"                   "" "force=utf8;utf8-cjk,deprecated" "" "" # ANGSTROM SIGN
 0x212c ""                         "" "force=utf8;utf8-cjk" "\\mathscr{B}" "mathrsfs" # SCRIPT CAPITAL B
 0x212d ""                         "" "force=utf8;utf8-cjk" "\\mathfrak{C}" "amssymb" # BLACK-LETTER CAPITAL C
 0x212e "\\textestimated"          "textcomp" "force=utf8x" # ESTIMATED SYMBOL

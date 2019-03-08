@@ -65,7 +65,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
+\justification false
 \use_refstyle 0
 \use_minted 0
 \notefontcolor #0000ff
@@ -101,8 +101,62 @@ Minimal failing example for Math.lyx
 \end_layout
 
 \begin_layout Standard
-\SpecialChar LyX
-'s detailed Math manual fails with 
+Compiling \SpecialChar LyX
+'s detailed Math manual fails with non-TeX fonts due to missing
+ characters.
+ The documents uses the default set for LyX documentation: 
+\emph on
+Latin Modern
+\emph default
+ as text and 
+\emph on
+Computer Modern
+\emph default
+ for maths.
+\end_layout
+
+\begin_layout Standard
+There is no easy solution because of the nature of the Maths documentation:
+ 
+\end_layout
+
+\begin_layout Enumerate
+Changing only the text font results in a bad font mix — LyX documentation
+ must not give a bad example/showcase.
+\end_layout
+
+\begin_layout Enumerate
+Changing the math font does not work for Math.lyx:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Some of the documented packages and examples only work with the default
+ math font (no 
+\backslash
+maltese in 
+\begin_inset Quotes eld
+\end_inset
+
+txmath
+\begin_inset Quotes erd
+\end_inset
+
+, package incompatibilities with unicode-math, ...).
+\end_layout
+
+\begin_layout Itemize
+Besides: support for most math fonts is of inferiour quality (missing optical
+ sizes for indices, limited set of symbols)
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Missing characters with Latin Modern
+\end_layout
+
+\begin_layout Standard
+Excerpts from Math.lyx that lead to 
 \begin_inset Quotes eld
 \end_inset
 
@@ -110,15 +164,14 @@ missing character
 \begin_inset Quotes erd
 \end_inset
 
- errors for the following reasons:
+ errors and discussion of reasons and possible workarounds:
 \end_layout
 
 \begin_layout Quote
 Bold Formulas
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
+\begin_layout Quote
 To make a complete formula bold, the command 
 \series bold
 
@@ -129,9 +182,6 @@ mathbf
  small Greek letters.
  Furthermore it prints Latin letters always upright, like in the following
  equation:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
 \mathbf{\int_{n}^{2}f(\theta)=\Gamma}\qquad\textrm{equation with \textbackslash mathbf}
@@ -142,7 +192,6 @@ mathbf
 
 \end_layout
 
-\end_deeper
 \begin_layout Standard
 Capital Greek characters in 
 \backslash
@@ -171,310 +220,13 @@ fixmath
 Accents in Text
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
+\begin_layout Quote
 With the following commands all letters can be accented.
  The commands must be inserted in \SpecialChar TeX
  mode.
 \end_layout
 
-\begin_layout Standard
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="2">
-<features booktabs="true" tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="block" valignment="top">
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Command
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Result
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-
-\begin_inset Quotes grd
-\end_inset
-
-e
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-"e
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-`e
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-`e
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-^
-\begin_inset space \textvisiblespace{}
-\end_inset
-
-e
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-^e
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-=e
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-=e
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-u
-\begin_inset space \textvisiblespace{}
-\end_inset
-
-e
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-u e
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-b
-\begin_inset space \textvisiblespace{}
-\end_inset
-
-e
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-b e
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-t
-\begin_inset space \textvisiblespace{}
-\end_inset
-
-ee
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-t ee
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\begin_layout Quote
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
 <features booktabs="true" tabularvalignment="middle">
@@ -769,102 +521,43 @@ c e
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-With the command 
-\series bold
-
-\backslash
-t
-\series default
- also two different characters can be accented.
- The command 
-\series bold
-
-\backslash
-t
-\begin_inset space \textvisiblespace{}
-\end_inset
-
-sz
-\series default
- creates: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-t sz
+Accented characters missing in Latin Modern:
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-Examples for accented characters missing in Latin Modern:
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-
-\backslash
-t
-\family default
- leads to 0x0361 COMBINING DOUBLE INVERTED BREVE (ligature tie) and
-\end_layout
-
-\begin_layout Standard
-Missing character: There is no ͡ in font [lmroman12-regular]:mapping=tex-text!
- 
-\end_layout
-
-\begin_layout Standard
+\begin_layout Quote
 
 \family typewriter
 
 \backslash
 c e
 \family default
- leads to 0229 LATIN SMALL LETTER E WITH CEDILLA and
+ leads to 
 \end_layout
 
-\begin_layout Standard
-Missing character: There is no ȩ in font [lmroman12-regular]:mapping=tex-text!
- 
+\begin_layout Quote
+Missing character: There is no
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+̧ 
 \end_layout
 
-\begin_layout Standard
-Using a different non-tex font is not recommended for the 
-\begin_inset Quotes eld
 \end_inset
 
-Math
-\begin_inset Quotes erd
-\end_inset
-
- manual, because TeX-Maths uses Computer Modern which matches with Latin
- Modern and looks suboptimal with other fonts.
- 
+(U+0327) in font [lmroman12-regular]:+tlig;!
 \end_layout
 
 \begin_layout Standard
 OTOH, examples for ERT commands to get accented text letters are not really
- helpfull in a mathematics documentation even when mathematical text can
- be (ab)used to get them.
+ helpfull in a 
+\emph on
+mathematics
+\emph default
+ documentation even when mathematical text can be (ab)used to get them.
 \end_layout
 
 \begin_layout Standard
@@ -1043,6 +736,22 @@ TeX Code
 \end_inset
 
  (ERT) inset .
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00
+- Example 
+\backslash
+c e
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00
++ Example 
+\backslash
+c c or 
+\backslash
+c s (converted to pre-composed character available in LatinModern).
 \end_layout
 
 \end_body
