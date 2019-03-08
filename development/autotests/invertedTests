@@ -19,8 +19,6 @@ Sublabel: todo
 export/export/latex/ja_wrong_auto_encoding_(dvi|pdf(|3)).*
 
 # Missing characters with Unicode fonts
-# (the "hidden" replacement with FreeSerif does not help and results in bad
-# typography for mathematical content):
 # For details see the file "systemfonts-Math-missingchars.lyx"
 export/doc/(|de/|es/|fr/)Math.*systemF
 export/export/latex/systemfonts-Math-missingchars.*systemF
@@ -72,10 +70,8 @@ export/export/latex/fa-OT1_pdf2
 
 # CJK for multilingual documents:
 #
-# input-encoding "utf8" should work for documents using a CJK language:
-#export/export/latex/CJK/.*-en-de-el-ru_utf8_pdf2
-#
-# but that is not so easy if the main language does not require CJK:
+# input-encoding "utf8" should work for documents using a CJK language
+# also if the main language does not require CJK:
 export/export/latex/CJK/en-de-el-ru-.*_utf8_pdf2
 #
 # some "language default" legacy encodings fail (missing fonts)
@@ -86,6 +82,18 @@ export/export/latex/CJK/ko_default_pdf2
 export/doc/ar/UserGuide_pdf4_systemF
 # the lyx2lyx test also tests compilation after round-trip:
 export/doc/ar/UserGuide_lyx(22|23)
+
+
+# Common Unicode fonts don't support all characters supported by
+# lib/unicodesymbols in one font. (This shows that there are use cases for
+# 8-bit fonts or GUI support for selecting more than one system font.)
+# Write an enhancement ticket and move to lyxissues (together with other
+# "missing symbols" tests in the LyX documentation).
+export/export/latex/luainputenc-utf8_pdf5_systemF
+
+# New problem with TL18: endless loop?
+#    ! TeX capacity exceeded, sorry [input stack +size=5000].
+export/export/latex/luainputenc-utf8_pdf5_texF
 
 
 # input encoding tests
@@ -174,16 +182,6 @@ export/export/WrongDfnTagHandling_xhtml
 # contains underscores etc.
 export/export/latex/LongestLabelWithUnderscore.*
 
-# Common Unicode fonts don't support all characters supported by
-# lib/unicodesymbols. (This shows that there are use cases for 8-bit fonts
-# or GUI support for selecting more than one system font.)
-export/export/latex/luainputenc-utf8_pdf5_systemF
-# From Günter:
-# OK, so in TL18 the Ukrainean "auto-date" (7 березня 2019 р.) fails with
-# PDF (XeTeX) and DVI (LuaTeX) but not PDF (LuaTeX).
-# Strange.
-export/export/latex/luainputenc-utf8_pdf5_texF
-
 #11455 "Unable to process argument!" with multiple 1.6.x roundtrips
 export/templates/IEEEtran-Journal_lyx16
 
@@ -217,13 +215,16 @@ export/doc/(|de/|es/|fr/)UserGuide_pdf4_texF
 export/doc/ru/(Intro|Tutorial)_(dvi3|pdf[45])_texF
 export/examples/ru/(example_lyxified|splash)_(dvi3|pdf[45])_texF
 
-# Babel-Ukrainean uses UTF-8 if it detects Xe/LuaTeX (for "\date").
-# * garbled output with LuaTeX + TeX fonts, see unreliableTests.wrong_output,
-# * since TL18, see unreliableTests.varying_versions.
-# * missing chars with XeTeX + TeX fonts:
-#   (workaround: suppressing auto-date or date inset in documents).
-export/export/latex/uk-babel-date-missing-chars-with-ascii_pdf4_texF
-export/(doc|examples)/uk/(Intro|splash)_pdf4_texF
+# Babel-Ukrainian uses UTF-8 if it detects Xe/LuaTeX (for "\date").
+# With 8-bit TeX fonts this results in:
+# * garbled output with PDF (LuaTeX)
+# * missing chars with XeTeX and DVI (LuaTeX)
+# New in TL18 -> cf. unreliableTests.varying_versions.
+# Workaround: suppressing auto-date or using date inset (new in LyX 2.4)
+# 	      in the source documents.
+export/export/latex/uk-babel-date-missing-chars-with-ascii_(pdf4|dvi3)_texF
+export/(doc|examples)/uk/(Intro|splash)_(pdf4|dvi3)_texF
+
 
 # Gives the following error:
 # # ! Package hpstatement Error: H or P statement "H251"
