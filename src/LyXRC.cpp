@@ -2979,9 +2979,9 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 		|| lyxrc_orig.font_sizes != lyxrc_new.font_sizes
 		|| lyxrc_orig.typewriter_font_foundry != lyxrc_new.typewriter_font_foundry
 		|| lyxrc_orig.defaultZoom != lyxrc_new.defaultZoom) {
-		dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
-	}
-
+			dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
+		}
+		// fall through
 	case LyXRC::RC_GEOMETRY_SESSION:
 	case LyXRC::RC_SERVERPIPE:
 	case LyXRC::RC_SET_COLOR:
