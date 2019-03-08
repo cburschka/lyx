@@ -1298,7 +1298,8 @@ static void buildAccentsMap()
   buildaccent("acute", "aAcCeElLoOnNrRsSuUyYzZiI",
                        "áÁćĆéÉĺĹóÓńŃŕŔśŚúÚýÝźŹíÍ");
   buildaccent("dacute|H|h", "oOuU", "őŐűŰ");	// double acute
-  buildaccent("mathring|r", "uU", "ůŮ");
+  buildaccent("mathring|r", "aAuUwy",
+                            "åÅůŮẘẙ");  // ring
   accents["check{\\imath}"] = "ǐ";
   accents["check{\\jmath}"] = "ǰ";
   buildaccent("check|v", "cCdDaAeEiIoOuUgGkKhHlLnNrRsSTzZ",
@@ -1318,7 +1319,9 @@ static void buildAccentsMap()
                          "ăĂĕĔğĞĭĬŏŎŭŬ");    // breve
   accents["grave{\\imath}"] = "ì";
   buildaccent("grave|`", "aAeEiIoOuUnNwWyY",
-                         "àÀèÈìÌòÒùÙǹǸẁẀỳỲ");                // grave
+                         "àÀèÈìÌòÒùÙǹǸẁẀỳỲ");   // grave
+  buildaccent("subdot|d", "BbDdHhKkLlMmNnRrSsTtVvWwZzAaEeIiOoUuYy",
+                          "ḄḅḌḍḤḥḲḳḶḷṂṃṆṇṚṛṢṣṬṭṾṿẈẉẒẓẠạẸẹỊịỌọỤụỴỵ");  // dot below
 }
 
 /*
@@ -1329,7 +1332,7 @@ void Intervall::removeAccents()
 {
   if (accents.empty())
     buildAccentsMap();
-  static regex const accre("\\\\((.|grave|breve|lyxmathsym|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde)\\{[^\\{\\}]+\\}|(i|imath|jmath)(?![a-zA-Z]))");
+  static regex const accre("\\\\((.|grave|breve|lyxmathsym|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot)\\{[^\\{\\}]+\\}|(i|imath|jmath)(?![a-zA-Z]))");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
@@ -1342,7 +1345,7 @@ void Intervall::removeAccents()
       }
       addIntervall(pos+val.size(), pos + sub.str(0).size());
       for (size_t i = pos+val.size(); i < pos + sub.str(0).size(); i++) {
-        // remove any remaining parentheses
+        // remove traces of any remaining chars
         par[i] = ' ';
       }
     }
