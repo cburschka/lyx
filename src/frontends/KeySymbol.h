@@ -56,7 +56,7 @@ public:
 	 * Use the native UI format when \c forgui is true.
 	 * i.e. (translated and with special characters for Mac OS X)
 	 */
-	docstring const print(KeyModifier mod, bool forgui) const;
+	docstring const print(KeyModifier mod, bool forgui, bool untranslated = false) const;
 
 	///
 	int key() const { return key_; }

@@ -118,7 +118,8 @@ public:
 
 	/// Given an action, print the keybindings.
 	docstring printBindings(FuncRequest const & func,
-				KeySequence::outputFormat format) const;
+				KeySequence::outputFormat format,
+				bool const untranslated = false) const;
 
 	struct Binding {
 		Binding(FuncRequest const & r, KeySequence const & s, ItemType t)

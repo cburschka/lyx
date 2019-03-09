@@ -133,7 +133,7 @@ size_t KeySequence::parse(string const & s)
 }
 
 
-docstring const KeySequence::print(outputFormat format) const
+docstring const KeySequence::print(outputFormat format, bool const untranslated) const
 {
 	docstring buf;
 
@@ -142,10 +142,10 @@ docstring const KeySequence::print(outputFormat format) const
 	for (size_t i = 0; i != length; ++i) {
 		switch (format) {
 		case Portable:
-			buf += sequence[i].print(modifiers[i].first, false);
+			buf += sequence[i].print(modifiers[i].first, false, untranslated);
 			break;
 		case ForGui:
-			buf += sequence[i].print(modifiers[i].first, true);
+			buf += sequence[i].print(modifiers[i].first, true, untranslated);
 			break;
 		case BindFile:
 			KeyModifier mod = modifiers[i].first;

@@ -72,7 +72,7 @@ public:
 	 * @param format output format
 	 * @see parse()
 	 */
-	docstring const print(outputFormat format) const;
+	docstring const print(outputFormat format, bool const untranslated = false) const;
 
 	/**
 	 * Return the current sequence and available options as

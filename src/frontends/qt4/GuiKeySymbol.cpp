@@ -686,7 +686,7 @@ char_type KeySymbol::getUCSEncoded() const
 }
 
 
-docstring const KeySymbol::print(KeyModifier mod, bool forgui) const
+docstring const KeySymbol::print(KeyModifier mod, bool forgui, bool untranslated) const
 {
 	int tmpkey = key_;
 
@@ -703,7 +703,8 @@ docstring const KeySymbol::print(KeyModifier mod, bool forgui) const
 	QString str;
 
 	if (forgui)
-		str = seq.toString(QKeySequence::NativeText);
+		str = untranslated ? seq.toString(QKeySequence::PortableText)
+				   : seq.toString(QKeySequence::NativeText);
 	else {
 #ifdef Q_OS_MAC
 		// Qt/Mac does not use Command and friends in the

@@ -476,7 +476,8 @@ docstring const KeyMap::print(bool forgui) const
 
 
 docstring KeyMap::printBindings(FuncRequest const & func,
-				KeySequence::outputFormat format) const
+				KeySequence::outputFormat format,
+				bool const untranslated) const
 {
 	Bindings bindings = findBindings(func);
 	if (bindings.empty())
@@ -486,10 +487,10 @@ docstring KeyMap::printBindings(FuncRequest const & func,
 	Bindings::const_iterator cit = bindings.begin();
 	Bindings::const_iterator cit_end = bindings.end();
 	// print the first item
-	res << cit->print(format);
+	res << cit->print(format, untranslated);
 	// more than one shortcuts?
 	for (++cit; cit != cit_end; ++cit)
-		res << ", " << cit->print(format);
+		res << ", " << cit->print(format, untranslated);
 	return res.str();
 }
 
