@@ -1263,8 +1263,13 @@ static void buildaccent(string n, string param, string values)
       // get the corresponding utf8-value
       if ((values[start] & 0xc0) != 0xc0) {
         // should not happen, utf8 encoding starts at least with 11xxxxxx
-        start++;
-        continue;
+	// but value for '\dot{i}' is 'i', which is ascii
+	if ((values[start] & 0x80) == 0) {
+	  // is ascii
+	  accents[key] = values.substr(start, 1);
+	}
+	start++;
+	continue;
       }
       for (int j = 1; ;j++) {
         if (start + j >= values.size()) {
@@ -1272,7 +1277,7 @@ static void buildaccent(string n, string param, string values)
           start = values.size() - 1;
           break;
         }
-        else if ((values[start+j] & 0xc0) == 0xc0) {
+        else if ((values[start+j] & 0xc0) != 0x80) {
           // This is the first byte of following utf8 char
           accents[key] = values.substr(start, j);
           start += j;
@@ -1289,11 +1294,12 @@ static void buildAccentsMap()
   accents["i"] = "ı";
   accents["jmath"] = "ȷ";
   accents["lyxmathsym{ß}"] = "ß";
+  accents["text{ß}"] = "ß";
   accents["ddot{\\imath}"] = "ï";
-  buildaccent("ddot", "aAeEiIoOuUyY",
-                      "äÄëËïÏöÖüÜÿŸ");	// umlaut
-  buildaccent("dot|.", "cCeEgGiIzZaAoObBdDfFyY",
-                       "ċĊėĖġĠiİżŻȧȦȯȮḃḂḋḊḟḞẏẎ");
+  buildaccent("ddot", "aAeEiIioOuUyY",
+                      "äÄëËïÏïöÖüÜÿŸ");	// umlaut
+  buildaccent("dot|.", "cCeEGgIizZaAoObBdDfFyY",
+                       "ċĊėĖĠġİİżŻȧȦȯȮḃḂḋḊḟḞẏẎ"); // dot{i} can only happen if ignoring case, but there is no lowercase of 'İ'
   accents["acute{\\imath}"] = "í";
   buildaccent("acute", "aAcCeElLoOnNrRsSuUyYzZiI",
                        "áÁćĆéÉĺĹóÓńŃŕŔśŚúÚýÝźŹíÍ");
@@ -1302,8 +1308,8 @@ static void buildAccentsMap()
                             "åÅůŮẘẙ");  // ring
   accents["check{\\imath}"] = "ǐ";
   accents["check{\\jmath}"] = "ǰ";
-  buildaccent("check|v", "cCdDaAeEiIoOuUgGkKhHlLnNrRsSTzZ",
-                         "čČďĎǎǍěĚǐǏǒǑǔǓǧǦǩǨȟȞľĽňŇřŘšŠŤžŽ");	// caron
+  buildaccent("check|v", "cCdDaAeEiIoOuUgGkKhHlLnNrRsSTtzZ",
+                         "čČďĎǎǍěĚǐǏǒǑǔǓǧǦǩǨȟȞľĽňŇřŘšŠŤťžŽ");	// caron
   accents["hat{\\imath}"] = "î";
   accents["hat{\\jmath}"] = "ĵ";
   buildaccent("hat|^", "aAeEiIcCgGhHjJsSwWyYzZoOuU",
@@ -1332,7 +1338,7 @@ void Intervall::removeAccents()
 {
   if (accents.empty())
     buildAccentsMap();
-  static regex const accre("\\\\((.|grave|breve|lyxmathsym|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot)\\{[^\\{\\}]+\\}|(i|imath|jmath)(?![a-zA-Z]))");
+  static regex const accre("\\\\((.|grave|breve|lyxmathsym|text|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot)\\{[^\\{\\}]+\\}|(i|imath|jmath)(?![a-zA-Z]))");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
