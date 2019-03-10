@@ -1018,7 +1018,7 @@ contributors = [
      contributor(u"Joice Joseph",
                  "joicey () yandex ! com",
                  "GPL",
-                 "GPL",
+                 "Re: patch: added document language malayalam",
                  "m=155214496414909",
                  "9 March 2019",
                  u"Support for Malayalam"),
