@@ -257,7 +257,6 @@ def revert_new_babel_languages(document):
             revert_language(document, lang, lang, "")
         else:
             # These are supported by babel and polyglossia
-            # These are only supported by babel
             revert_language(document, lang, lang, lang)
 
 
