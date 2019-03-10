@@ -133,8 +133,9 @@ void InsetHyperlink::latex(otexstream & os,
 	if (!url.empty()) {
 		// Use URI/URL-style percent-encoded string (hexadecimal).
 		// We exclude some characters that must not be transformed
-		// in hrefs (% # / : ? = &) or that we need to treat manually (\).
-		url = to_percent_encoding(url, from_ascii("%#\\/:?=&"));
+		// in hrefs: % # / : ? = & ! * ' ( ) ; @ + $ , [ ]
+		// or that we need to treat manually: \.
+		url = to_percent_encoding(url, from_ascii("%#\\/:?=&!*'();@+$,[]"));
 		// We handle \ manually since \\ is valid
 		for (size_t i = 0, pos;
 			(pos = url.find('\\', i)) != string::npos;
