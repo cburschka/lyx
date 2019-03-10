@@ -1015,6 +1015,14 @@ contributors = [
                  "22 February 2005",
                  u"Public relations, feedback, documentation and support"),
 
+     contributor(u"Joice Joseph",
+                 "joicey () yandex ! com",
+                 "GPL",
+                 "GPL",
+                 "m=155214496414909",
+                 "9 March 2019",
+                 u"Support for Malayalam"),
+
      contributor(u"Robert van der Kamp",
                  "robnet () wxs ! nl",
                  "GPL",
