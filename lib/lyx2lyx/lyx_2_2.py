@@ -25,7 +25,8 @@ import sys, os
 # Uncomment only what you need to import, please.
 
 from lyx2lyx_tools import (add_to_preamble, put_cmd_in_ert, get_ert,
-    lyx2latex, lyx2verbatim, length_in_bp, convert_info_insets, insert_document_option)
+    lyx2latex, lyx2verbatim, length_in_bp, convert_info_insets, insert_document_option,
+    revert_language)
 
 from parser_tools import (check_token, del_complete_lines,
     find_end_of_inset, find_end_of_layout, find_nonempty_line, find_re,
@@ -852,15 +853,7 @@ def revert_specialchar(document):
 def revert_georgian(document):
     "Set the document language to English but assure Georgian output"
 
-    if document.language == "georgian":
-        document.language = "english"
-        i = find_token(document.header, "\\language georgian", 0)
-        if i != -1:
-            document.header[i] = "\\language english"
-        j = find_token(document.header, "\\language_package default", 0)
-        if j != -1:
-            document.header[j] = "\\language_package babel"
-        insert_document_option(document, "georgian")
+    revert_language(document, "georgian", "georgian", "")
 
 
 def revert_sigplan_doi(document):

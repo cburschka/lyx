@@ -30,7 +30,7 @@ from parser_tools import del_complete_lines, \
 
 from lyx2lyx_tools import add_to_preamble, insert_to_preamble, \
   put_cmd_in_ert, lyx2latex, latex_length, revert_flex_inset, \
-  revert_font_attrs, hex2ratio, str2bool
+  revert_font_attrs, hex2ratio, str2bool, revert_language
 
 ####################################################################
 # Private helper functions
@@ -1281,19 +1281,7 @@ def revert_notefontcolor(document):
 def revert_turkmen(document):
     "Set language Turkmen to English"
 
-    if document.language == "turkmen":
-        document.language = "english"
-        i = find_token(document.header, "\\language", 0)
-        if i != -1:
-            document.header[i] = "\\language english"
-
-    j = 0
-    while True:
-        j = find_token(document.body, "\\lang turkmen", j)
-        if j == -1:
-            return
-        document.body[j] = document.body[j].replace("\\lang turkmen", "\\lang english")
-        j += 1
+    revert_language(document, "turkmen", "turkmen", "turkmen")
 
 
 def revert_fontcolor(document):

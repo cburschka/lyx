@@ -34,7 +34,7 @@ from parser_tools import count_pars_in_inset, del_complete_lines, del_token, \
   #find_end_of_inset, find_end_of_layout, \
   #is_in_inset, del_token, check_token
 
-from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, get_ert
+from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, get_ert, revert_language
 
 #from lyx2lyx_tools import insert_to_preamble, \
 #  lyx2latex, latex_length, revert_flex_inset, \
@@ -1169,24 +1169,16 @@ def revert_ancientgreek(document):
 def revert_languages(document):
     "Set the document language for new supported languages to English"
 
-    languages = [
-                 "coptic", "divehi", "hindi", "kurmanji", "lao", "marathi", "occitan", "sanskrit",
-                 "syriac", "tamil", "telugu", "urdu"
-                ]
-    for n in range(len(languages)):
-        if document.language == languages[n]:
-            document.language = "english"
-            i = find_token(document.header, "\\language", 0)
-            if i != -1:
-                document.header[i] = "\\language english"
-        j = 0
-        while j < len(document.body):
-            j = find_token(document.body, "\\lang " + languages[n], j)
-            if j != -1:
-                document.body[j] = document.body[j].replace("\\lang " + languages[n], "\\lang english")
-                j += 1
-            else:
-                j = len(document.body)
+    # polyglossia-only
+    polyglossia_languages = ["coptic", "divehi", "hindi", "lao", "marathi",
+                             "occitan", "sanskrit", "syriac", "tamil",
+                             "telugu", "urdu"]
+    # babel-only
+    babel_languages = ["kurmanji"]
+    for lang in polyglossia_languages:
+        revert_language(document, lang, "", lang)
+    for lang in babel_languages:
+        revert_language(document, lang, lang, "")
 
 
 def convert_armenian(document):
@@ -4561,19 +4553,7 @@ def revert_aa2(document):
 def revert_tibetan(document):
     "Set the document language for Tibetan to English"
 
-    if document.language == "tibetan":
-        document.language = "english"
-        i = find_token(document.header, "\\language", 0)
-        if i != -1:
-            document.header[i] = "\\language english"
-    j = 0
-    while j < len(document.body):
-        j = find_token(document.body, "\\lang tibetan", j)
-        if j != -1:
-            document.body[j] = document.body[j].replace("\\lang tibetan", "\\lang english")
-            j += 1
-        else:
-            j = len(document.body)
+    revert_language(document, "tibetan", "", "tibetan")
 
 
 #############
