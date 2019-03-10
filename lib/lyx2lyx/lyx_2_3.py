@@ -32,7 +32,7 @@ from parser_tools import (del_token, del_value, del_complete_lines,
 #  find_tokens, find_token_exact, check_token, get_option_value
 
 from lyx2lyx_tools import (add_to_preamble, put_cmd_in_ert, revert_font_attrs,
-                           insert_to_preamble, latex_length)
+                           insert_to_preamble, latex_length, revert_language)
 
 ####################################################################
 # Private helper functions
@@ -248,30 +248,18 @@ def revert_new_babel_languages(document):
 
     Set the document language to English but use correct babel setting.
     """
-    # TODO: currently, text parts in these languages are kept as-is
-    # and are converted to the document language by LyX 2.2 with warnings like
-    # LyX: Unknown language `romansh' [around line 273 of file lyx_2_3_test.22.lyx current token: 'romansh' context: 'InsetSpaceParams::read']
 
-    if document.language not in ["bosnian", "friulan", "macedonian",
-                                 "piedmontese", "romansh"]:
-        return
-    i = find_token(document.header, "\\language")
-    if i != -1:
-        document.header[i] = "\\language english"
-    # ensure we use Babel:
-    # TODO: Polyglossia supports friulan, piedmontese, romansh
-    # but requires "\resetdefaultlanguage{...}" at begin of document.
-    j = find_token(document.header, "\\language_package default")
-    if j != -1:
-        document.header[j] = "\\language_package babel"
-    k = find_token(document.header, "\\options")
-    if k != -1:
-        document.header[k] = document.header[k].replace("\\options",
-                                    "\\options %s," % document.language)
-    else:
-        l = find_token(document.header, "\\use_default_options")
-        document.header.insert(l + 1, "\\options " + document.language)
-    document.language = "english"
+    nblanguages = ["bosnian", "friulan", "macedonian", "piedmontese", "romansh"]
+
+    for lang in nblanguages:
+        if lang == "bosnian" or lang == "macedonian":
+            # These are only supported by babel
+            revert_language(document, lang, lang, "")
+        else:
+            # These are supported by babel and polyglossia
+            # These are only supported by babel
+            revert_language(document, lang, lang, lang)
+
 
 # TODO:
 # def convert_new_babel_languages(document)
@@ -282,127 +270,37 @@ def revert_new_babel_languages(document):
 def revert_amharic(document):
     "Set the document language to English but assure Amharic output"
 
-    if document.language == "amharic":
-        document.language = "english"
-        i = find_token(document.header, "\\language amharic", 0)
-        if i != -1:
-            document.header[i] = "\\language english"
-        j = find_token(document.header, "\\language_package default", 0)
-        if j != -1:
-            document.header[j] = "\\language_package default"
-        add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{amharic}}"])
-        document.body[2 : 2] = ["\\begin_layout Standard",
-                                "\\begin_inset ERT", "status open", "",
-                                "\\begin_layout Plain Layout", "", "",
-                                "\\backslash",
-                                "resetdefaultlanguage{amharic}",
-                                "\\end_layout", "", "\\end_inset", "", "",
-                                "\\end_layout", ""]
+    revert_language(document, "amharic", "", "amharic")
 
 
 def revert_asturian(document):
     "Set the document language to English but assure Asturian output"
 
-    if document.language == "asturian":
-        document.language = "english"
-        i = find_token(document.header, "\\language asturian", 0)
-        if i != -1:
-            document.header[i] = "\\language english"
-        j = find_token(document.header, "\\language_package default", 0)
-        if j != -1:
-            document.header[j] = "\\language_package default"
-        add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{asturian}}"])
-        document.body[2 : 2] = ["\\begin_layout Standard",
-                                "\\begin_inset ERT", "status open", "",
-                                "\\begin_layout Plain Layout", "", "",
-                                "\\backslash",
-                                "resetdefaultlanguage{asturian}",
-                                "\\end_layout", "", "\\end_inset", "", "",
-                                "\\end_layout", ""]
+    revert_language(document, "asturian", "", "asturian")
 
 
 def revert_kannada(document):
     "Set the document language to English but assure Kannada output"
 
-    if document.language == "kannada":
-        document.language = "english"
-        i = find_token(document.header, "\\language kannada", 0)
-        if i != -1:
-            document.header[i] = "\\language english"
-        j = find_token(document.header, "\\language_package default", 0)
-        if j != -1:
-            document.header[j] = "\\language_package default"
-        add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{kannada}}"])
-        document.body[2 : 2] = ["\\begin_layout Standard",
-                                "\\begin_inset ERT", "status open", "",
-                                "\\begin_layout Plain Layout", "", "",
-                                "\\backslash",
-                                "resetdefaultlanguage{kannada}",
-                                "\\end_layout", "", "\\end_inset", "", "",
-                                "\\end_layout", ""]
+    revert_language(document, "kannada", "", "kannada")
 
 
 def revert_khmer(document):
     "Set the document language to English but assure Khmer output"
 
-    if document.language == "khmer":
-        document.language = "english"
-        i = find_token(document.header, "\\language khmer", 0)
-        if i != -1:
-            document.header[i] = "\\language english"
-        j = find_token(document.header, "\\language_package default", 0)
-        if j != -1:
-            document.header[j] = "\\language_package default"
-        add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{khmer}}"])
-        document.body[2 : 2] = ["\\begin_layout Standard",
-                                "\\begin_inset ERT", "status open", "",
-                                "\\begin_layout Plain Layout", "", "",
-                                "\\backslash",
-                                "resetdefaultlanguage{khmer}",
-                                "\\end_layout", "", "\\end_inset", "", "",
-                                "\\end_layout", ""]
+    revert_language(document, "khmer", "", "khmer")
 
 
 def revert_urdu(document):
     "Set the document language to English but assure Urdu output"
 
-    if document.language == "urdu":
-        document.language = "english"
-        i = find_token(document.header, "\\language urdu", 0)
-        if i != -1:
-            document.header[i] = "\\language english"
-        j = find_token(document.header, "\\language_package default", 0)
-        if j != -1:
-            document.header[j] = "\\language_package default"
-        add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{urdu}}"])
-        document.body[2 : 2] = ["\\begin_layout Standard",
-                                "\\begin_inset ERT", "status open", "",
-                                "\\begin_layout Plain Layout", "", "",
-                                "\\backslash",
-                                "resetdefaultlanguage{urdu}",
-                                "\\end_layout", "", "\\end_inset", "", "",
-                                "\\end_layout", ""]
+    revert_language(document, "urdu", "", "urdu")
 
 
 def revert_syriac(document):
     "Set the document language to English but assure Syriac output"
 
-    if document.language == "syriac":
-        document.language = "english"
-        i = find_token(document.header, "\\language syriac", 0)
-        if i != -1:
-            document.header[i] = "\\language english"
-        j = find_token(document.header, "\\language_package default", 0)
-        if j != -1:
-            document.header[j] = "\\language_package default"
-        add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{syriac}}"])
-        document.body[2 : 2] = ["\\begin_layout Standard",
-                                "\\begin_inset ERT", "status open", "",
-                                "\\begin_layout Plain Layout", "", "",
-                                "\\backslash",
-                                "resetdefaultlanguage{syriac}",
-                                "\\end_layout", "", "\\end_inset", "", "",
-                                "\\end_layout", ""]
+    revert_language(document, "syriac", "", "syriac")
 
 
 def revert_quotes(document):
