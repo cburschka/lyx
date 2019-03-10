@@ -635,8 +635,18 @@ def revert_language(document, lyxname, babelname, polyglossianame):
             if pack == "default" or pack == "auto":
                 use_polyglossia = True
 
+    # Do we use this language with polyglossia?
+    with_polyglossia = use_polyglossia and polyglossianame != ""
+    # Do we use this language with babel?
+    with_babel = with_polyglossia == False and babelname != ""
+
+    # Are we dealing with a primary or secondary language?
+    primary = False
+    secondary = False
+
     # Main language first
     if document.language == lyxname:
+        primary = True
         document.language = "english"
         i = find_token(document.header, "\\language %s" % lyxname, 0)
         if i != -1:
@@ -644,7 +654,7 @@ def revert_language(document, lyxname, babelname, polyglossianame):
         j = find_token(document.header, "\\language_package default", 0)
         if j != -1:
             document.header[j] = "\\language_package default"
-        if use_polyglossia and polyglossianame != "":
+        if with_polyglossia:
             add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{%s}}" % polyglossianame])
             document.body[2 : 2] = ["\\begin_layout Standard",
                                     "\\begin_inset ERT", "status open", "",
@@ -653,42 +663,104 @@ def revert_language(document, lyxname, babelname, polyglossianame):
                                     "resetdefaultlanguage{%s}" % polyglossianame,
                                     "\\end_layout", "", "\\end_inset", "", "",
                                     "\\end_layout", ""]
-        elif babelname != "":
-            k = find_token(document.header, "\\options")
-            if k != -1:
-                document.header[k] = document.header[k].replace("\\options",
-                                    "\\options %s," % babelname)
-            else:
-                l = find_token(document.header, "\\use_default_options")
-                document.header.insert(l + 1, "\\options %s," % babelname)
 
-    # now inline switches
-    envname = babelname
-    if use_polyglossia:
-        envname = polyglossianame
+    # Now secondary languages
     i = 0
     while True:
         i = find_token(document.body, '\\lang', i)
         if i == -1:
             return
         if document.body[i].startswith('\\lang %s' % lyxname):
-            if use_polyglossia and polyglossianame != "":
+            secondary = True
+            if with_polyglossia:
                 add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{%s}}" % polyglossianame])
-            if (use_polyglossia and polyglossianame != "") or (use_polyglossia == False and babelname != ""):
                 parent = get_containing_layout(document.body, i)
                 document.body[parent[2] : parent[2]] = ["\\begin_layout Standard",
                                         "\\begin_inset ERT", "status open", "",
                                         "\\begin_layout Plain Layout", "", "",
                                         "\\backslash",
-                                        "end{%s}" % envname,
+                                        "end{%s}" % polyglossianame,
+                                        "\\end_layout", "", "\\end_inset", "", "",
+                                        "\\end_layout", ""]
+            elif with_babel:
+                parent = get_containing_layout(document.body, i)
+                document.body[parent[2] : parent[2]] = ["\\begin_layout Standard",
+                                        "\\begin_inset ERT", "status open", "",
+                                        "\\begin_layout Plain Layout", "", "",
+                                        "\\backslash",
+                                        "end{otherlanguage}",
                                         "\\end_layout", "", "\\end_inset", "", "",
                                         "\\end_layout", ""]
             del document.body[i]
-            if (use_polyglossia and polyglossianame != "") or (use_polyglossia == False and babelname != ""):
+            if with_polyglossia:
                 document.body[i : i] = ["\\begin_inset ERT", "status open", "",
                                         "\\begin_layout Plain Layout", "", "",
                                         "\\backslash",
-                                        "begin{%s}" % envname,
+                                        "begin{%s}" % polyglossianame,
                                         "\\end_layout", "", "\\end_inset", "", "",
                                         ""]
+            elif with_babel:
+                document.body[i : i] = ["\\begin_inset ERT", "status open", "",
+                                        "\\begin_layout Plain Layout", "", "",
+                                        "\\backslash",
+                                        "begin{otherlanguage}{%s}" % babelname,
+                                        "\\end_layout", "", "\\end_inset", "", "",
+                                        ""]
+        elif primary and document.body[i].startswith('\\lang english'):
+            # Since we switched the main language manually, English parts need to be marked
+            if with_polyglossia:
+                parent = get_containing_layout(document.body, i)
+                document.body[parent[2] : parent[2]] = ["\\begin_layout Standard",
+                                        "\\begin_inset ERT", "status open", "",
+                                        "\\begin_layout Plain Layout", "", "",
+                                        "\\backslash",
+                                        "end{english}",
+                                        "\\end_layout", "", "\\end_inset", "", "",
+                                        "\\end_layout", ""]
+            elif with_babel:
+                parent = get_containing_layout(document.body, i)
+                document.body[parent[2] : parent[2]] = ["\\begin_layout Standard",
+                                        "\\begin_inset ERT", "status open", "",
+                                        "\\begin_layout Plain Layout", "", "",
+                                        "\\backslash",
+                                        "end{otherlanguage}",
+                                        "\\end_layout", "", "\\end_inset", "", "",
+                                        "\\end_layout", ""]
+            del document.body[i]
+            if with_polyglossia:
+                document.body[i : i] = ["\\begin_inset ERT", "status open", "",
+                                        "\\begin_layout Plain Layout", "", "",
+                                        "\\backslash",
+                                        "begin{english}",
+                                        "\\end_layout", "", "\\end_inset", "", "",
+                                        ""]
+            elif with_babel:
+                document.body[i : i] = ["\\begin_inset ERT", "status open", "",
+                                        "\\begin_layout Plain Layout", "", "",
+                                        "\\backslash",
+                                        "begin{otherlanguage}{english}",
+                                        "\\end_layout", "", "\\end_inset", "", "",
+                                        ""]
+        else:
+            i += 1
+
+        # With babel, we need to add the language options
+        if with_babel and (primary or secondary):
+            k = find_token(document.header, "\\options")
+            if k != -1:
+                opts = get_value(document.header, "\\options", i)
+                document.header[k] = "\\options %s,%s" % (opts, babelname)
+            else:
+                l = find_token(document.header, "\\use_default_options")
+                document.header.insert(l + 1, "\\options %s" % babelname)
+            if secondary:
+                # Since the user options are always placed after the babel options,
+                # we need to reset the main language
+                document.body[2 : 2] = ["\\begin_layout Standard",
+                                        "\\begin_inset ERT", "status open", "",
+                                        "\\begin_layout Plain Layout", "", "",
+                                        "\\backslash",
+                                        "selectlanguage{%s}" % document.language,
+                                        "\\end_layout", "", "\\end_inset", "", "",
+                                        "\\end_layout", ""]
 
