@@ -572,7 +572,7 @@ def insert_document_option(document, option):
         return
 
     # add it to the end of the options
-    document.header[options_line] += " ,%s" % option
+    document.header[options_line] += ",%s" % option
 
 
 def remove_document_option(document, option):
@@ -746,13 +746,7 @@ def revert_language(document, lyxname, babelname, polyglossianame):
 
         # With babel, we need to add the language options
         if with_babel and (primary or secondary):
-            k = find_token(document.header, "\\options")
-            if k != -1:
-                opts = get_value(document.header, "\\options", i)
-                document.header[k] = "\\options %s,%s" % (opts, babelname)
-            else:
-                l = find_token(document.header, "\\use_default_options")
-                document.header.insert(l + 1, "\\options %s" % babelname)
+            insert_document_option(document, babelname)
             if secondary:
                 # Since the user options are always placed after the babel options,
                 # we need to reset the main language
