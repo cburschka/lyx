@@ -36,7 +36,7 @@ from parser_tools import (count_pars_in_inset, find_end_of_inset, find_end_of_la
 #    is_in_inset, set_bool_value
 #    find_tokens, find_token_exact, check_token
 
-from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble)
+from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble, revert_language)
 #  revert_font_attrs, insert_to_preamble, latex_length
 #  get_ert, lyx2latex, lyx2verbatim, length_in_bp, convert_info_insets
 #  revert_flex_inset, hex2ratio, str2bool
@@ -997,6 +997,7 @@ def revert_dateinfo(document):
         "lowersorbian" : ["%A, %d. %B %Y", "%d.%m.%y", "%d %B %Y", "%d %b %Y", "%d.%m.%Y"],
         "macedonian" : ["%A, %d %B %Y", "%d.%m.%y", "%d %B %Y", "%d %b %Y", "%d.%m.%Y"],
         "magyar" : ["%Y. %B %d., %A", "%Y. %m. %d.", "%Y. %B %d.", "%Y. %b %d.", "%Y.%m.%d."],
+        "malayalam" : ["%A, %d %B, %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d-%m-%Y"],
         "marathi" : ["%A, %d %B, %Y", "%d/%m/%y", "%d %B %Y", "%d %b %Y", "%d-%m-%Y"],
         "mongolian" : ["%A, %Y оны %m сарын %d", "%Y-%m-%d", "%Y оны %m сарын %d", "%d-%m-%Y", "%d-%m-%Y"],
         "naustrian" : ["%A, %d. %B %Y", "%d.%m.%y", "%d. %B %Y", "%d. %b %Y", "%d.%m.%Y"],
@@ -1179,6 +1180,7 @@ def revert_timeinfo(document):
         "lowersorbian" : ["%H:%M:%S %Z", "%H:%M"],
         "macedonian" : ["%H:%M:%S %Z", "%H:%M"],
         "magyar" : ["%H:%M:%S %Z", "%H:%M"],
+        "malayalam" : ["%p %I:%M:%S %Z", "%p %I:%M"],
         "marathi" : ["%I:%M:%S %p %Z", "%I:%M %p"],
         "mongolian" : ["%H:%M:%S %Z", "%H:%M"],
         "naustrian" : ["%H:%M:%S %Z", "%H:%M"],
@@ -1405,6 +1407,12 @@ def revert_hebrew_parentheses(document):
     convert_hebrew_parentheses(document)
 
 
+def revert_malayalam(document):
+    " Set the document language to English but assure Malayalam output "
+
+    revert_language(document, "malayalam", "", "malayalam")
+
+
 ##
 # Conversion hub
 #
@@ -1433,9 +1441,11 @@ convert = [
            [564, []],
            [565, [convert_AdobeFonts]], # Handle adobe fonts in GUI
            [566, [convert_hebrew_parentheses]],
+           [567, []],
           ]
 
 revert =  [
+           [566, [revert_malayalam]],
            [565, [revert_hebrew_parentheses]],
            [564, [revert_AdobeFonts]],
            [563, [revert_lformatinfo]],

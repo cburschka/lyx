@@ -1001,6 +1001,16 @@ Language macedonian
 	Provides         textcyrillic
 End
 
+# not yet supported by babel
+Language malayalam
+	GuiName          "Malayalam"
+	PolyglossiaName  malayalam
+	Encoding         utf8
+	QuoteStyle       english
+	DateFormats      "dd MMMM yyyy|d MMM yyyy|dd-MM-yyyy"
+	LangCode         ml_IN
+End
+
 # not supported by babel
 Language marathi
 	GuiName          "Marathi"

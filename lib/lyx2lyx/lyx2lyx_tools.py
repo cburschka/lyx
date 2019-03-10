@@ -83,10 +83,15 @@ insert_document_option(document, option):
 
 remove_document_option(document, option):
   Remove _option_ as a document option.
+
+revert_language(document, lyxname, babelname, polyglossianame):
+  Reverts native language support to ERT
+  If babelname or polyglossianame is empty, it is assumed
+  this language package is not supported for the given language.
 '''
 
 import re
-from parser_tools import find_token, find_end_of_inset, get_containing_layout
+from parser_tools import find_token, find_end_of_inset, get_containing_layout, get_value, get_bool_value
 from unicode_symbols import unicode_reps
 
 # This will accept either a list of lines or a single line.
@@ -614,3 +619,76 @@ def is_document_option(document, option):
         return False
 
     return True
+
+
+def revert_language(document, lyxname, babelname, polyglossianame):
+    " Revert native language support "
+
+    # Are we using polyglossia?
+    use_polyglossia = False
+    if get_bool_value(document.header, "\\use_non_tex_fonts"):
+        i = find_token(document.header, "\\language_package")
+        if i == -1:
+            document.warning("Malformed document! Missing \\language_package")
+        else:
+            pack = get_value(document.header, "\\language_package", i)
+            if pack == "default" or pack == "auto":
+                use_polyglossia = True
+
+    # Main language first
+    if document.language == lyxname:
+        document.language = "english"
+        i = find_token(document.header, "\\language %s" % lyxname, 0)
+        if i != -1:
+            document.header[i] = "\\language english"
+        j = find_token(document.header, "\\language_package default", 0)
+        if j != -1:
+            document.header[j] = "\\language_package default"
+        if use_polyglossia and polyglossianame != "":
+            add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{%s}}" % polyglossianame])
+            document.body[2 : 2] = ["\\begin_layout Standard",
+                                    "\\begin_inset ERT", "status open", "",
+                                    "\\begin_layout Plain Layout", "", "",
+                                    "\\backslash",
+                                    "resetdefaultlanguage{%s}" % polyglossianame,
+                                    "\\end_layout", "", "\\end_inset", "", "",
+                                    "\\end_layout", ""]
+        elif babelname != "":
+            k = find_token(document.header, "\\options")
+            if k != -1:
+                document.header[k] = document.header[k].replace("\\options",
+                                    "\\options %s," % babelname)
+            else:
+                l = find_token(document.header, "\\use_default_options")
+                document.header.insert(l + 1, "\\options %s," % babelname)
+
+    # now inline switches
+    envname = babelname
+    if use_polyglossia:
+        envname = polyglossianame
+    i = 0
+    while True:
+        i = find_token(document.body, '\\lang', i)
+        if i == -1:
+            return
+        if document.body[i].startswith('\\lang %s' % lyxname):
+            if use_polyglossia and polyglossianame != "":
+                add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{%s}}" % polyglossianame])
+            if (use_polyglossia and polyglossianame != "") or (use_polyglossia == False and babelname != ""):
+                parent = get_containing_layout(document.body, i)
+                document.body[parent[2] : parent[2]] = ["\\begin_layout Standard",
+                                        "\\begin_inset ERT", "status open", "",
+                                        "\\begin_layout Plain Layout", "", "",
+                                        "\\backslash",
+                                        "end{%s}" % envname,
+                                        "\\end_layout", "", "\\end_inset", "", "",
+                                        "\\end_layout", ""]
+            del document.body[i]
+            if (use_polyglossia and polyglossianame != "") or (use_polyglossia == False and babelname != ""):
+                document.body[i : i] = ["\\begin_inset ERT", "status open", "",
+                                        "\\begin_layout Plain Layout", "", "",
+                                        "\\backslash",
+                                        "begin{%s}" % envname,
+                                        "\\end_layout", "", "\\end_inset", "", "",
+                                        ""]
+
