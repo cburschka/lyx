@@ -672,25 +672,31 @@ def revert_language(document, lyxname, babelname, polyglossianame):
             break
         if document.body[i].startswith('\\lang %s' % lyxname):
             secondary = True
+            endlang = get_containing_layout(document.body, i)[2]
+            langswitch = find_token(document.body, '\\lang', i + 1, endlang)
+            startlayout = "\\begin_layout Standard"
+            endlayout = "\\end_layout"
+            if langswitch != -1:
+                endlang = langswitch
+                startlayout = ""
+                endlayout = ""
             if with_polyglossia:
-                add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{%s}}" % polyglossianame])
-                parent = get_containing_layout(document.body, i)
-                document.body[parent[2] : parent[2]] = ["\\begin_layout Standard",
+                add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{%s}}" % polyglossianame])     
+                document.body[langswitch : langswitch] = [startlayout,
                                         "\\begin_inset ERT", "status open", "",
                                         "\\begin_layout Plain Layout", "", "",
                                         "\\backslash",
                                         "end{%s}" % polyglossianame,
                                         "\\end_layout", "", "\\end_inset", "", "",
-                                        "\\end_layout", ""]
+                                        endlayout, ""]
             elif with_babel:
-                parent = get_containing_layout(document.body, i)
-                document.body[parent[2] : parent[2]] = ["\\begin_layout Standard",
+                document.body[langswitch : langswitch] = [startlayout,
                                         "\\begin_inset ERT", "status open", "",
                                         "\\begin_layout Plain Layout", "", "",
                                         "\\backslash",
                                         "end{otherlanguage}",
                                         "\\end_layout", "", "\\end_inset", "", "",
-                                        "\\end_layout", ""]
+                                        endlayout, ""]
             del document.body[i]
             if with_polyglossia:
                 document.body[i : i] = ["\\begin_inset ERT", "status open", "",
@@ -708,24 +714,32 @@ def revert_language(document, lyxname, babelname, polyglossianame):
                                         ""]
         elif primary and document.body[i].startswith('\\lang english'):
             # Since we switched the main language manually, English parts need to be marked
+            endlang = get_containing_layout(document.body, i)[2]
+            langswitch = find_token(document.body, '\\lang', i + 1, endlang)
+            startlayout = "\\begin_layout Standard"
+            endlayout = "\\end_layout"
+            if langswitch != -1:
+                endlang = langswitch
+                startlayout = ""
+                endlayout = ""
             if with_polyglossia:
                 parent = get_containing_layout(document.body, i)
-                document.body[parent[2] : parent[2]] = ["\\begin_layout Standard",
+                document.body[langswitch : langswitch] = [startlayout,
                                         "\\begin_inset ERT", "status open", "",
                                         "\\begin_layout Plain Layout", "", "",
                                         "\\backslash",
                                         "end{english}",
                                         "\\end_layout", "", "\\end_inset", "", "",
-                                        "\\end_layout", ""]
+                                        endlayout, ""]
             elif with_babel:
                 parent = get_containing_layout(document.body, i)
-                document.body[parent[2] : parent[2]] = ["\\begin_layout Standard",
+                document.body[langswitch : langswitch] = [startlayout,
                                         "\\begin_inset ERT", "status open", "",
                                         "\\begin_layout Plain Layout", "", "",
                                         "\\backslash",
                                         "end{otherlanguage}",
                                         "\\end_layout", "", "\\end_inset", "", "",
-                                        "\\end_layout", ""]
+                                        endlayout, ""]
             del document.body[i]
             if with_polyglossia:
                 document.body[i : i] = ["\\begin_inset ERT", "status open", "",
