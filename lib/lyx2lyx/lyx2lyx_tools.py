@@ -682,7 +682,7 @@ def revert_language(document, lyxname, babelname, polyglossianame):
                 endlayout = ""
             if with_polyglossia:
                 add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{%s}}" % polyglossianame])     
-                document.body[langswitch : langswitch] = [startlayout,
+                document.body[endlang : endlang] = [startlayout,
                                         "\\begin_inset ERT", "status open", "",
                                         "\\begin_layout Plain Layout", "", "",
                                         "\\backslash",
@@ -690,7 +690,7 @@ def revert_language(document, lyxname, babelname, polyglossianame):
                                         "\\end_layout", "", "\\end_inset", "", "",
                                         endlayout, ""]
             elif with_babel:
-                document.body[langswitch : langswitch] = [startlayout,
+                document.body[endlang : endlang] = [startlayout,
                                         "\\begin_inset ERT", "status open", "",
                                         "\\begin_layout Plain Layout", "", "",
                                         "\\backslash",
@@ -724,7 +724,7 @@ def revert_language(document, lyxname, babelname, polyglossianame):
                 endlayout = ""
             if with_polyglossia:
                 parent = get_containing_layout(document.body, i)
-                document.body[langswitch : langswitch] = [startlayout,
+                document.body[endlang : endlang] = [startlayout,
                                         "\\begin_inset ERT", "status open", "",
                                         "\\begin_layout Plain Layout", "", "",
                                         "\\backslash",
@@ -733,7 +733,7 @@ def revert_language(document, lyxname, babelname, polyglossianame):
                                         endlayout, ""]
             elif with_babel:
                 parent = get_containing_layout(document.body, i)
-                document.body[langswitch : langswitch] = [startlayout,
+                document.body[endlang : endlang] = [startlayout,
                                         "\\begin_inset ERT", "status open", "",
                                         "\\begin_layout Plain Layout", "", "",
                                         "\\backslash",
