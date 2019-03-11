@@ -669,7 +669,7 @@ def revert_language(document, lyxname, babelname, polyglossianame):
     while True:
         i = find_token(document.body, '\\lang', i)
         if i == -1:
-            return
+            break
         if document.body[i].startswith('\\lang %s' % lyxname):
             secondary = True
             if with_polyglossia:
@@ -744,17 +744,17 @@ def revert_language(document, lyxname, babelname, polyglossianame):
         else:
             i += 1
 
-        # With babel, we need to add the language options
-        if with_babel and (primary or secondary):
-            insert_document_option(document, babelname)
-            if secondary:
-                # Since the user options are always placed after the babel options,
-                # we need to reset the main language
-                document.body[2 : 2] = ["\\begin_layout Standard",
-                                        "\\begin_inset ERT", "status open", "",
-                                        "\\begin_layout Plain Layout", "", "",
-                                        "\\backslash",
-                                        "selectlanguage{%s}" % document.language,
-                                        "\\end_layout", "", "\\end_inset", "", "",
-                                        "\\end_layout", ""]
+    # With babel, we need to add the language options
+    if with_babel and (primary or secondary):
+        insert_document_option(document, babelname)
+        if secondary:
+            # Since the user options are always placed after the babel options,
+            # we need to reset the main language
+            document.body[2 : 2] = ["\\begin_layout Standard",
+                                    "\\begin_inset ERT", "status open", "",
+                                    "\\begin_layout Plain Layout", "", "",
+                                    "\\backslash",
+                                    "selectlanguage{%s}" % document.language,
+                                    "\\end_layout", "", "\\end_inset", "", "",
+                                    "\\end_layout", ""]
 
