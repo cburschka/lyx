@@ -2079,6 +2079,14 @@ contributors = [
                  "22 February 2005",
                  u"support for CVS revision control, native spell checker interface for Mac OS"),
 
+     contributor(u"Jürgen Womser-Schütz",
+                 "jws1954 () gmx ! de",
+                 "GPL",
+                 "Re: Bug #11484",
+                 "m=154990590319314",
+                 "11 February 2019",
+                 u"Improvements to the Include File dialog"),
+
      contributor(u"Russ Woodroofe",
                  "paranoia () math ! cornell ! edu",
                  "GPL",
