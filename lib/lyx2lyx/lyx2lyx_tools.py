@@ -747,7 +747,7 @@ def revert_language(document, lyxname, babelname, polyglossianame):
     # With babel, we need to add the language options
     if with_babel and (primary or secondary):
         insert_document_option(document, babelname)
-        if secondary:
+        if secondary and document.body[10] != "selectlanguage{%s}" % document.language:
             # Since the user options are always placed after the babel options,
             # we need to reset the main language
             document.body[2 : 2] = ["\\begin_layout Standard",
