@@ -329,15 +329,6 @@ public:
 			     Font const & font,
 			     Layout const & style);
 
-	/// Output consecutive unicode chars, belonging to the same script as
-	/// specified by the latex macro \p ltx, to \p os starting from \p i.
-	/// \return the number of characters written.
-	int writeScriptChars(BufferParams const &, OutputParams const &,
-			     otexstream & os,
-			     docstring const & ltx,
-			     Change const &, Encoding const &,
-			     std::string const, pos_type & i);
-
 	/// This could go to ParagraphParameters if we want to.
 	int startTeXParParams(BufferParams const &, otexstream &,
 			      OutputParams const &) const;
@@ -365,7 +356,7 @@ public:
 				   BufferParams const & bparams,
 				   OutputParams const & runparams,
 				   Font const & running_font,
-				   Change const & running_change,
+				   string & alien_script,
 				   Layout const & style,
 				   pos_type & i,
 				   pos_type end_pos,
@@ -891,47 +882,15 @@ int Paragraph::Private::latexSurrogatePair(BufferParams const & bparams,
 	}
 	docstring latex2 = encoding.latexChar(c).first;
 
-	// Handle combining characters in "script" context (i.e., \textgreek and \textcyrillic)
-	docstring::size_type const brace1 = latex2.find_first_of(from_ascii("{"));
-	docstring::size_type const brace2 = latex2.find_last_of(from_ascii("}"));
-	string script = to_ascii(latex2.substr(1, brace1 - 1));
-
-	// Greek and Cyrillic letters need to be wrapped in \textcyrillic and \textgreek  if they
-	// are not encodable in the current font encoding (regardless of the input encoding).
-	bool scriptchar = false;
-	if (!bparams.useNonTeXFonts) // With non-TeX fonts the font encoding is Unicode.
-		scriptchar = Encodings::isKnownScriptChar(c, script);
-
-	if (!scriptchar && docstring(1, next) == latex1) {
-		// Font and input encoding support the combination:
+	if (bparams.useNonTeXFonts || docstring(1, next) == latex1) {
+		// Encoding supports the combination:
 		// output as is (combining char after base char).
 		os << latex2 << latex1;
 		return latex1.length() + latex2.length();
 	}
 
-	int pos = 0;
-	int length = brace2;
-	string fontenc;
-	if (runparams.local_font)
-		fontenc = runparams.local_font->language()->fontenc(bparams);
-	else
-		fontenc = bparams.language->fontenc(bparams);
-	docstring scriptmacro;
-	docstring cb;
-	if (script == "textgreek" || script == "textcyrillic") {
-		// Strip the \text(greek|cyrillic) script macro  ...
-		pos = brace1 + 1;
-		length -= pos;
-		latex2 = latex2.substr(pos, length);
-		// and place it before the accent macro if required (#6463)
-		if (Encodings::needsScriptWrapper(script, fontenc)) {
-			scriptmacro = from_ascii("\\" + script + "{");
-			cb = from_ascii("}");
-		}
-	}
-
-	os << scriptmacro << latex1 << "{" << latex2 << "}" << cb;
-	return latex1.length() + 1 + latex2.length() + 1 + cb.length();
+	os << latex1 << "{" << latex2 << "}";
+	return latex1.length() + latex2.length() + 2;
 }
 
 
@@ -978,94 +937,6 @@ bool Paragraph::Private::simpleTeXBlanks(BufferParams const & bparams,
 		os << ' ';
 	}
 	return false;
-}
-
-
-int Paragraph::Private::writeScriptChars(BufferParams const & bparams,
-					 OutputParams const & runparams,
-					 otexstream & os,
-					 docstring const & ltx,
-					 Change const & runningChange,
-					 Encoding const & encoding,
-					 string const fontenc,
-					 pos_type & i)
-{
-	// FIXME: modifying i here is not very nice...
-
-	// We only arrive here when character text_[i] could not be translated
-	// into the current latex encoding (or its latex translation has been forced,)
-	// and it belongs to a known script.
-	// Parameter ltx contains the latex translation of text_[i] as specified
-	// in the unicodesymbols file and is something like "\textXXX{<spec>}".
-	// The latex macro name "textXXX" specifies the script to which text_[i]
-	// belongs and we use it in order to check whether characters from the
-	// same script immediately follow, such that we can collect them in a
-	// single "\textXXX" macro. So, we have to retain "\textXXX{<spec>"
-	// for the first char but only "<spec>" for all subsequent chars.
-	docstring::size_type const brace1 = ltx.find_first_of(from_ascii("{"));
-	docstring::size_type const brace2 = ltx.find_last_of(from_ascii("}"));
-	string script = to_ascii(ltx.substr(1, brace1 - 1));
-	int pos = 0;
-	int length = brace2;
-	bool closing_brace = true;
-	// We only need the script macro with non-native font encodings
-	if (!Encodings::needsScriptWrapper(script, fontenc)) {
-		// Correct font encoding is being used, so we can avoid \text(greek|cyrrillic).
-		pos = brace1 + 1;
-		length -= pos;
-		closing_brace = false;
-	}
-	os << ltx.substr(pos, length);
-	int size = text_.size();
-	while (i + 1 < size) {
-		char_type const next = text_[i + 1];
-		// Stop here if next character belongs to another script
-		// or there is a change in change tracking status.
-		if (!Encodings::isKnownScriptChar(next, script) ||
-		    runningChange != owner_->lookupChange(i + 1))
-			break;
-		Font prev_font;
-		bool found = false;
-		FontList::const_iterator cit = fontlist_.begin();
-		FontList::const_iterator end = fontlist_.end();
-		for (; cit != end; ++cit) {
-			if (cit->pos() >= i && !found) {
-				prev_font = cit->font();
-				found = true;
-			}
-			if (cit->pos() >= i + 1)
-				break;
-		}
-		// Stop here if there is a font attribute or encoding change.
-		if (found && cit != end && prev_font != cit->font())
-			break;
-
-		// Check whether we have a combining pair
-		char_type next_next = '\0';
-		if (i + 2 < size) {
-			next_next = text_[i + 2];
-			if (Encodings::isCombiningChar(next_next)) {
-				length += latexSurrogatePair(bparams, os, next, next_next, runparams) - 1;
-				i += 2;
-				continue;
-			}
-		}
-
-		docstring const latex = encoding.latexChar(next).first;
-		docstring::size_type const b1 =
-					latex.find_first_of(from_ascii("{"));
-		docstring::size_type const b2 =
-					latex.find_last_of(from_ascii("}"));
-		int const len = b2 - b1 - 1;
-		os << latex.substr(b1 + 1, len);
-		length += len;
-		++i;
-	}
-	if (closing_brace) {
-		os << '}';
-		++length;
-	}
-	return length;
 }
 
 
@@ -1218,7 +1089,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 					  BufferParams const & bparams,
 					  OutputParams const & runparams,
 					  Font const & running_font,
-					  Change const & running_change,
+					  string & alien_script,
 					  Layout const & style,
 					  pos_type & i,
 					  pos_type end_pos,
@@ -1360,12 +1231,11 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 				break;
 			}
 		}
-		string script;
 		pair<docstring, bool> latex = encoding.latexChar(c);
 		docstring nextlatex;
 		bool nexttipas = false;
 		string nexttipashortcut;
-		if (next != '\0' && next != META_INSET && encoding.encodable(next)) {
+		if (next != '\0' && next != META_INSET && !encoding.encodable(next)) {
 			nextlatex = encoding.latexChar(next).first;
 			if (runparams.inIPA) {
 				nexttipashortcut = Encodings::TIPAShortcut(next);
@@ -1381,27 +1251,22 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 				tipas = true;
 			}
 		}
-		string fontenc;
-		fontenc = running_font.language()->fontenc(bparams);
-		// "Script chars" need to embraced in \textcyrillic and \textgreek notwithstanding
-		// whether they are encodable or not (it only depends on the font encoding),
-		// except if we are using fontspec.
-		if (!bparams.useNonTeXFonts && Encodings::isKnownScriptChar(c, script)) {
-			docstring const wrapper = from_ascii("\\" + script + "{");
-			docstring ltx = latex.first;
-			if (!prefixIs(ltx, wrapper))
-				ltx = wrapper + latex.first + from_ascii("}");
-			column += writeScriptChars(bparams, runparams, os, ltx, running_change,
-						   encoding, fontenc, i) - 1;
-		} else if (latex.second
+		// eventually close "script wrapper" command (see `Paragraph::latex`)
+		if (!alien_script.empty()
+			&& alien_script != Encodings::isKnownScriptChar(next)) {
+			column += latex.first.length();
+			alien_script.clear();
+			os << latex.first << "}";
+			break;
+		}
+		if (latex.second
 			 && ((!prefixIs(nextlatex, '\\')
 			       && !prefixIs(nextlatex, '{')
 			       && !prefixIs(nextlatex, '}'))
 			     || (nexttipas
 			         && !prefixIs(from_ascii(nexttipashortcut), '\\')))
 			 && !tipas) {
-			// Prevent eating of a following
-			// space or command corruption by
+			// Prevent eating of a following space or command corruption by
 			// following characters
 			if (next == ' ' || next == '\0') {
 				column += latex.first.length() + 1;
@@ -2487,6 +2352,11 @@ void Paragraph::latex(BufferParams const & bparams,
 	// of the body.
 	Font basefont;
 
+	// If there is an open font-encoding changing command (script wrapper),
+	// alien_script is set to its name
+	string alien_script;
+	string script;
+
 	// Maybe we have to create a optional argument.
 	pos_type body_pos = beginOfBody();
 	unsigned int column = 0;
@@ -2617,6 +2487,11 @@ void Paragraph::latex(BufferParams const & bparams,
 		}
 
 		if (bparams.output_changes && runningChange != change) {
+			if (!alien_script.empty()) {
+				column += 1;
+				os << "}";
+				alien_script.clear();
+			}
 			if (open_font) {
 				bool needPar = false;
 				column += running_font.latexWriteEndChanges(
@@ -2649,6 +2524,12 @@ void Paragraph::latex(BufferParams const & bparams,
 		    (current_font != running_font ||
 		     current_font.language() != running_font.language()))
 		{
+			// ensure there is no open script-wrapper
+			if (!alien_script.empty()) {
+				column += 1;
+				os << "}";
+				alien_script.clear();
+			}
 			bool needPar = false;
 			column += running_font.latexWriteEndChanges(
 				    os, bparams, runparams, basefont,
@@ -2806,10 +2687,24 @@ void Paragraph::latex(BufferParams const & bparams,
 					--parInline;
 			}
 		} else if (i >= start_pos && (end_pos == -1 || i < end_pos)) {
+			if (!bparams.useNonTeXFonts)
+			  script = Encodings::isKnownScriptChar(c);
+			if (script != alien_script) {
+				if (!alien_script.empty()) {
+					os << "}";
+					alien_script.clear();
+				}
+				string fontenc = running_font.language()->fontenc(bparams);
+				if (!script.empty()
+					&& !Encodings::fontencSupportsScript(fontenc, script)) {
+					column += script.length() + 2;
+					os << "\\" << script << "{";
+					alien_script = script;
+				}
+			}
 			try {
-				d->latexSpecialChar(os, bparams, rp,
-						    running_font, runningChange,
-						    style, i, end_pos, column);
+				d->latexSpecialChar(os, bparams, rp, running_font, 
+									alien_script, style, i, end_pos, column);
 			} catch (EncodingException & e) {
 				if (runparams.dryrun) {
 					os << "<" << _("LyX Warning: ")
@@ -2837,6 +2732,12 @@ void Paragraph::latex(BufferParams const & bparams,
 		// And finally, pass the post_macros upstream
 		runparams.post_macro = rp.post_macro;
 	}
+
+    // Close wrapper for alien script
+	if (!alien_script.empty()) {
+		os << "}";
+		alien_script.clear();
+	}	
 
 	// If we have an open font definition, we have to close it
 	if (open_font) {

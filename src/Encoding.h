@@ -272,17 +272,13 @@ public:
 	/// Return the TIPA shortcut
 	static std::string const TIPAShortcut(char_type c);
 	/**
-	 * Is this a known char from some language?
-	 * If \p preamble is empty and code point \p c is known to belong
-	 * to a supported script, true is returned and \p preamble is set
-	 * to the corresponding entry in the unicodesymbols file.
-	 * If \p preamble is not empty, a check is made whether code point
-	 * \p c is a known character matching the preamble entry.
+	 * Test, if \p c is a supported Greek or Cyrillic letter.
+	 * Return script macro name or empty string.
 	 */
-	static bool isKnownScriptChar(char_type const c, std::string & preamble);
-	/// Do we need to wrap scripts into \text<script> macros?
-	static bool needsScriptWrapper(std::string const & script,
-				       std::string const & fontenc);
+	static std::string const isKnownScriptChar(char_type const c);
+	/// Does \p fontenc support characters in \p script?
+	static bool fontencSupportsScript(std::string const & fontenc,
+									  std::string const & script);
 	/**
 	 * Do we have to display in italics this character when in mathmode?
 	 * This is true if the "mathalpha" flag is set. We use this for

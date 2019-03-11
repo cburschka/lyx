@@ -580,36 +580,29 @@ string const Encodings::TIPAShortcut(char_type c)
 	return string();
 }
 
-// Return true, if `c` is a supported Greek or Cyrillic letter.
-bool Encodings::isKnownScriptChar(char_type const c, string & preamble)
+
+string const Encodings::isKnownScriptChar(char_type const c)
 {
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
 
 	if (it == unicodesymbols.end())
-		return false;
-
-	if (it->second.textpreamble() != "textgreek"
-	    && it->second.textpreamble() != "textcyrillic")
-		return false;
-
-	if (preamble.empty()) {
-		preamble = it->second.textpreamble();
-		return true;
-	}
-	return it->second.textpreamble() == preamble;
+		return string();
+	// FIXME: parse complex textpreamble (may be list or alternatives,
+	// 		  e.g., "subscript,textgreek" or "textcomp|textgreek")
+	if (it->second.textpreamble() == "textgreek"
+		|| it->second.textpreamble() == "textcyrillic")
+		return it->second.textpreamble();
+	return string();
 }
 
 
-bool Encodings::needsScriptWrapper(string const & script, string const & fontenc)
+bool Encodings::fontencSupportsScript(string const & fontenc, string const & script)
 {
-	// Note: the wrapper is not required with Unicode font encoding "TU".
-	// However, this function is not called with non-TeX (Unicode) fonts.
 	if (script == "textgreek")
-		return (fontenc != "LGR");
-	if (script == "textcyrillic") {
-		return (fontenc != "T2A" && fontenc != "T2B"
-			&& fontenc != "T2C" && fontenc != "X2");
-	}
+		return (fontenc == "LGR" || fontenc == "TU");
+	if (script == "textcyrillic")
+		return (fontenc == "T2A" || fontenc == "T2B" || fontenc == "T2C"
+				|| fontenc == "X2" || fontenc == "TU");
 	return false;
 }
 
