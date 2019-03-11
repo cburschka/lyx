@@ -644,6 +644,7 @@ def revert_language(document, lyxname, babelname, polyglossianame):
     primary = False
     secondary = False
 
+    orig_doc_language = document.language
     # Main language first
     if document.language == lyxname:
         primary = True
@@ -761,14 +762,14 @@ def revert_language(document, lyxname, babelname, polyglossianame):
     # With babel, we need to add the language options
     if with_babel and (primary or secondary):
         insert_document_option(document, babelname)
-        if secondary and document.body[10] != "selectlanguage{%s}" % document.language:
+        if secondary and document.body[10] != "selectlanguage{%s}" % orig_doc_language:
             # Since the user options are always placed after the babel options,
             # we need to reset the main language
             document.body[2 : 2] = ["\\begin_layout Standard",
                                     "\\begin_inset ERT", "status open", "",
                                     "\\begin_layout Plain Layout", "", "",
                                     "\\backslash",
-                                    "selectlanguage{%s}" % document.language,
+                                    "selectlanguage{%s}" % orig_doc_language,
                                     "\\end_layout", "", "\\end_inset", "", "",
                                     "\\end_layout", ""]
 
