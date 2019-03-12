@@ -55,6 +55,7 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
+#include "support/FileName.h"
 #include "support/FileNameList.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
@@ -151,7 +152,7 @@ string const parentFileName(Buffer const & buffer)
 FileName const includedFileName(Buffer const & buffer,
 			      InsetCommandParams const & params)
 {
-	return makeAbsPath(to_utf8(params["filename"]),
+	return makeAbsPath(ltrim(to_utf8(params["filename"])),
 			onlyPath(parentFileName(buffer)));
 }
 
@@ -188,7 +189,7 @@ char_type replaceCommaInBraces(docstring & params)
 InsetInclude::InsetInclude(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p), include_label(uniqueID()),
 	  preview_(make_unique<RenderMonitoredPreview>(this)), failedtoload_(false),
-	  set_label_(false), label_(0), child_buffer_(0)
+	  set_label_(false), label_(0), child_buffer_(0), file_exist_(false)
 {
 	preview_->connect([=](){ fileChanged(); });
 
@@ -203,7 +204,7 @@ InsetInclude::InsetInclude(Buffer * buf, InsetCommandParams const & p)
 InsetInclude::InsetInclude(InsetInclude const & other)
 	: InsetCommand(other), include_label(other.include_label),
 	  preview_(make_unique<RenderMonitoredPreview>(this)), failedtoload_(false),
-	  set_label_(false), label_(0), child_buffer_(0)
+	  set_label_(false), label_(0), child_buffer_(0), file_exist_(other.file_exist_)
 {
 	preview_->connect([=](){ fileChanged(); });
 
@@ -265,7 +266,7 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action()) {
 
 	case LFUN_INSET_EDIT: {
-		editIncluded(to_utf8(params()["filename"]));
+		editIncluded(ltrim(to_utf8(params()["filename"])));
 		break;
 	}
 
@@ -385,12 +386,14 @@ bool InsetInclude::isChildIncluded() const
 		return true;
 	return (std::find(includeonlys.begin(),
 			  includeonlys.end(),
-			  to_utf8(params()["filename"])) != includeonlys.end());
+			  ltrim(to_utf8(params()["filename"]))) != includeonlys.end());
 }
 
 
 docstring InsetInclude::screenLabel() const
 {
+	docstring pre = file_exist_ ? docstring() : _("FILE MISSING:");
+
 	docstring temp;
 
 	switch (type(params())) {
@@ -419,12 +422,12 @@ docstring InsetInclude::screenLabel() const
 
 	temp += ": ";
 
-	if (params()["filename"].empty())
+	if (ltrim(params()["filename"]).empty())
 		temp += "???";
 	else
-		temp += from_utf8(onlyFileName(to_utf8(params()["filename"])));
+		temp += from_utf8(onlyFileName(ltrim(to_utf8(params()["filename"]))));
 
-	return temp;
+	return pre.empty() ? temp : pre + from_ascii(" ") + temp;
 }
 
 
@@ -511,11 +514,26 @@ Buffer * InsetInclude::loadIfNeeded() const
 
 void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 {
-	string incfile = to_utf8(params()["filename"]);
+	string incfile = ltrim(to_utf8(params()["filename"]));
 
-	// Do nothing if no file name has been specified
-	if (incfile.empty())
+	// Warn if no file name has been specified
+	if (incfile.empty()) {
+		frontend::Alert::warning(_("No file name specified"),
+			_("An included file name is empty.\n"
+			   "Ignoring Inclusion"),
+			true);
 		return;
+	}
+	// Warn if file doesn't exist
+	if (!includedFileExist()) {
+		frontend::Alert::warning(_("Included file not found"),
+			bformat(_("The included file\n"
+				  "'%1$s'\n"
+				  "has not been found. LyX will ignore the inclusion."),
+				from_utf8(incfile)),
+			true);
+		 return;
+	}
 
 	FileName const included_file = includedFileName(buffer(), params());
 
@@ -916,7 +934,7 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 			frontend::Alert::warning(_("Unsupported Inclusion"),
 					 bformat(_("LyX does not know how to include non-LyX files when "
 					           "generating HTML output. Offending file:\n%1$s"),
-					            params()["filename"]));
+					            ltrim(params()["filename"])));
 		return docstring();
 	}
 
@@ -927,7 +945,7 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 	if (buffer().absFileName() == included_file.absFileName()) {
 		Alert::error(_("Recursive input"),
 			       bformat(_("Attempted to include file %1$s in itself! "
-			       "Ignoring inclusion."), params()["filename"]));
+			       "Ignoring inclusion."), ltrim(params()["filename"])));
 		return docstring();
 	}
 
@@ -962,7 +980,7 @@ int InsetInclude::plaintext(odocstringstream & os,
 	// or are generating this for advanced search
 	if (op.for_tooltip || op.for_toc || op.for_search) {
 		os << '[' << screenLabel() << '\n'
-		   << getParam("filename") << "\n]";
+		   << ltrim(getParam("filename")) << "\n]";
 		return PLAINTEXT_NEWLINE + 1; // one char on a separate line
 	}
 
@@ -992,7 +1010,7 @@ int InsetInclude::plaintext(odocstringstream & os,
 
 int InsetInclude::docbook(odocstream & os, OutputParams const & runparams) const
 {
-	string incfile = to_utf8(params()["filename"]);
+	string incfile = ltrim(to_utf8(params()["filename"]));
 
 	// Do nothing if no file name has been specified
 	if (incfile.empty())
@@ -1056,7 +1074,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 {
 	LATTEST(&buffer() == &features.buffer());
 
-	string incfile = to_utf8(params()["filename"]);
+	string incfile = ltrim(to_utf8(params()["filename"]));
 	string const included_file =
 		includedFileName(buffer(), params()).absFileName();
 
@@ -1330,6 +1348,8 @@ void InsetInclude::updateCommand()
 
 void InsetInclude::updateBuffer(ParIterator const & it, UpdateType utype)
 {
+	file_exist_ = includedFileExist();
+
 	button_.update(screenLabel(), true, false);
 
 	Buffer const * const childbuffer = getChildBuffer();
@@ -1358,5 +1378,15 @@ void InsetInclude::updateBuffer(ParIterator const & it, UpdateType utype)
 	}
 }
 
+
+bool InsetInclude::includedFileExist() const
+{
+	// check whether the included file exist
+	string incFileName = ltrim(to_utf8(params()["filename"]));
+	FileName fn =
+		support::makeAbsPath(incFileName,
+				     support::onlyPath(buffer().absFileName()));
+	return fn.exists();
+}
 
 } // namespace lyx

@@ -137,6 +137,8 @@ private:
 	void editIncluded(std::string const & file);
 	///
 	bool isChildIncluded() const;
+	/// check whether the included file exist
+	bool includedFileExist() const;
 
 	/// \name Private functions inherited from Inset class
 	//@{
@@ -170,6 +172,7 @@ private:
 	mutable docstring listings_label_;
 	InsetLabel * label_;
 	mutable Buffer * child_buffer_;
+	mutable bool file_exist_;
 };
 
 
