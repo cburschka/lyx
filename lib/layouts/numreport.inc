@@ -1,7 +1,7 @@
 # Author : André Pönitz
 # This include file contains label definitions for a report-like numbering.
 
-Format 70
+Format 71
 
 Counter chapter
 	Within                ""

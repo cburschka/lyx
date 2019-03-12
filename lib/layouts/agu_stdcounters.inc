@@ -4,7 +4,7 @@
 # This include file contains all the counters that are defined as standard
 # in AGU-Article LyX layouts.
 
-Format 70
+Format 71
 Counter sect1
 	Within               section
 End
