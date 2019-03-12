@@ -317,6 +317,9 @@ public:
 	/** true when the verbatim stuff of this layout needs to be
 	    \cprotect'ed. */
 	bool needcprotect;
+	/** true when specific commands in this paragraph need to be
+	    protected in an \mbox. */
+	bool needmboxprotect;
 	/// true when empty paragraphs should be kept.
 	bool keepempty;
 	/// Type of LaTeX object

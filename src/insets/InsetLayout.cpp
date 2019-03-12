@@ -43,9 +43,9 @@ InsetLayout::InsetLayout() :
 	forceplain_(false), passthru_(false), parbreakisnewline_(false),
 	freespacing_(false), keepempty_(false), forceltr_(false),
 	forceownlines_(false), needprotect_(false), needcprotect_(false),
-	intoc_(false), spellcheck_(true), resetsfont_(false), display_(true),
-	forcelocalfontswitch_(false), add_to_toc_(false), is_toc_caption_(false),
-	edit_external_(false)
+	needmboxprotect_(false), intoc_(false), spellcheck_(true),
+	resetsfont_(false), display_(true), forcelocalfontswitch_(false),
+	add_to_toc_(false), is_toc_caption_(false), edit_external_(false)
 {
 	labelfont_.setColor(Color_error);
 }
@@ -122,6 +122,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_KEEPEMPTY,
 		IL_MULTIPAR,
 		IL_NEEDCPROTECT,
+		IL_NEEDMBOXPROTECT,
 		IL_NEEDPROTECT,
 		IL_PASSTHRU,
 		IL_PASSTHRU_CHARS,
@@ -179,6 +180,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "lyxtype", IL_LYXTYPE },
 		{ "multipar", IL_MULTIPAR },
 		{ "needcprotect", IL_NEEDCPROTECT },
+		{ "needmboxprotect", IL_NEEDMBOXPROTECT },
 		{ "needprotect", IL_NEEDPROTECT },
 		{ "obsoletedby", IL_OBSOLETEDBY },
 		{ "parbreakisnewline", IL_PARBREAKISNEWLINE },
@@ -329,6 +331,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_NEEDCPROTECT:
 			lex >> needcprotect_;
+			break;
+		case IL_NEEDMBOXPROTECT:
+			lex >> needmboxprotect_;
 			break;
 		case IL_CONTENTASLABEL:
 			lex >> contentaslabel_;

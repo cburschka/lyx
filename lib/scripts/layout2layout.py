@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 70
+currentFormat = 71
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -233,8 +233,11 @@ currentFormat = 70
 # Incremented to format 69, 16 August 2018 by spitz
 # New argument type "listpreamble"
 
-# Incremented to format 69, 5 June 2018 by rkh
+# Incremented to format 70, 5 June 2018 by rkh
 # New InsetLayout tag EditExternal
+
+# Incremented to format 71, 12 March 2019 by spitz
+# New [Inset]Layout tag NeedMBoxProtect
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
@@ -485,7 +488,7 @@ def convert(lines, end_format):
                 i += 1
             continue
 
-        if format >= 65 and format <= 69:
+        if format >= 65 and format <= 70:
             # nothing to do.
             i += 1
             continue

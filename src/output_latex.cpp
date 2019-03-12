@@ -1036,6 +1036,8 @@ void TeXOnePar(Buffer const & buf,
 	}
 
 	runparams.moving_arg |= style.needprotect;
+	if (style.needmboxprotect)
+		++runparams.inulemcmd;
 	Encoding const * const prev_encoding = runparams.encoding;
 
 	bool const useSetSpace = bparams.documentClass().provides("SetSpace");

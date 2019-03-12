@@ -103,9 +103,9 @@ public:
 	bool intitle;
 
 	/** inulemcmd > 0 means that the environment in which the
-	    inset is typeset is part of a ulem command (\uline, \uuline,
-	    \uwave, \sout  or \xout). Insets that output latex commands relying
-	    on local assignments (such as \cite) should enclose such
+	    inset is typeset is part of a ulem or soul command (e.g., \uline,
+	    \uuline, \uwave, \sout or \xout). Insets that output latex commands
+	    relying on local assignments (such as \cite) should enclose such
 	    commands in \mbox{} in order to avoid breakage.
 	*/
 	mutable int inulemcmd;

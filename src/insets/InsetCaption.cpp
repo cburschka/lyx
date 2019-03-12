@@ -329,6 +329,8 @@ void InsetCaption::getArgument(otexstream & os,
 		rp.pass_thru = true;
 	if (il.isNeedProtect())
 		rp.moving_arg = true;
+	if (il.isNeedMBoxProtect())
+		++rp.inulemcmd;
 	rp.par_begin = 0;
 	rp.par_end = paragraphs().size();
 

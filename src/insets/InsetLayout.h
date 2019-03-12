@@ -163,6 +163,9 @@ public:
 	bool isNeedProtect() const { return needprotect_; }
 	///
 	bool needsCProtect() const { return needcprotect_; }
+	/// Protection of some elements such as \ref and \cite
+	/// in \mbox (needed by commands building on soul or ulem)
+	bool isNeedMBoxProtect() const { return needmboxprotect_; }
 	///
 	bool isFreeSpacing() const { return freespacing_; }
 	///
@@ -289,6 +292,8 @@ private:
 	bool needprotect_;
 	///
 	bool needcprotect_;
+	///
+	bool needmboxprotect_;
 	/// should the contents be written to TOC strings?
 	bool intoc_;
 	/// check spelling of this inset?
