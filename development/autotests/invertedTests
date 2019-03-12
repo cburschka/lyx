@@ -145,6 +145,25 @@ Sublabel: lyxbugs
 # missing character with XeTeX/LuaTeX and Babel (OK with Polyglossia)
 export/export/latex/6197-polish-amssymb_pdf._texF
 
+#8035 work around a Polyglossia bug:
+# An error is reported if the document font does not announce support for a
+# script (Cyrillic, Greek, ...) which Polyglossia thinks is required to
+# typeset the document language. This is not required with LyX's check for
+# missing characters and results in many false positives:
+# a) with fonts including the required characters but
+#    not the tag tested by Polyglossia,
+# b) if the document language is "Serbian (Latin Script)",
+#    the Cyrillic script is not required yet Polyglossia tests for support.
+# The document "sr/Braille.lyx" is an example of case b).
+# (For some reason, the false positive error is not thrown with PDF (luatex).)
+export/examples/sr/Braille_(dvi3|pdf4)_systemF
+
+#9681 Run-together words in Greek and Cyrillic documents
+# no-termination of replacement macros can lead to non-existing macros if
+# unencodable or force-converted Greek or Cyrillic letters are immediately
+# followed by Latin letters. See also unreliableTests.
+export/export/latex/textcyr-textgreek-test_pdf2
+
 #9871 LyX sends invalid Unicode to iconv when converting to ASCII
 # most probably due to BabelPreamble code (language specific headings for
 # theorems, problems , ... are written in the language's default encoding
@@ -158,19 +177,6 @@ export/doc/es/Customization_pdf4_texF
 # https://www.mail-archive.com/search?l=mid&q=20170228190738.cgs3tl3ny2bxiegk%40steph
 export/examples/es/linguistics_pdf4_texF
 export/export/latex/bug9871-slovak-ascii-preambleencoding_pdf2
-
-#8035 work around a Polyglossia bug:
-# An error is reported if the document font does not announce support for a
-# script (Cyrillic, Greek, ...) which Polyglossia thinks is required to
-# typeset the document language. This is not required with LyX's check for
-# missing characters and results in many false positives:
-# a) with fonts including the required characters but
-#    not the tag tested by Polyglossia,
-# b) if the document language is "Serbian (Latin Script)",
-#    the Cyrillic script is not required yet Polyglossia tests for support.
-# The document "sr/Braille.lyx" is an example of case b).
-# (For some reason, the false positive error is not thrown with PDF (luatex).)
-export/examples/sr/Braille_(dvi3|pdf4)_systemF
 
 #10355 xmllint detects failures
 export/doc/attic/eu_UserGuide_xhtml
