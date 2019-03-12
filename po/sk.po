@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-01-20 09:12+0100\n"
-"PO-Revision-Date: 2019-01-20 08:15+0000\n"
+"POT-Creation-Date: 2019-03-12 09:32+0100\n"
+"PO-Revision-Date: 2019-03-12 09:08+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -17206,19 +17206,21 @@ msgstr "Letáky"
 msgid "Variable-width Minipages"
 msgstr "Variabilná šírka pre minipage"
 
-#: lib/layouts/varwidth.module:11
+#: lib/layouts/varwidth.module:13
 msgid ""
 "Adds a 'Minipage (Var. Width)' inset using the varwidth LaTeX package. The "
 "varwidth package provides a variable-width minipage, whose resulting width "
 "is the width of its contents (if this does not exceed the specified maximum "
 "width).  The inset has two optional arguments: vertical adjustment (c|t|b) "
-"and maximum width (defaults to \\linewidth)."
+"and maximum width (defaults to \\linewidth).  See example in varwidth-floats-"
+"side-by-side.lyx."
 msgstr ""
 "Pridá vložku 'Minipage (Var. šírka)' použijúc LaTeX balík varwidth. Balík "
 "varwidth poskytuje minipage s variabilnou šírkou, rezultuje v šírke jej "
 "obsahu (kým to nepresahuje stanovenú maximálnu šírku).  Vložka má dva "
-"voliteľné argumenty: vertikálna úprava (c|t|b) a maximálna šírka (štandardne "
-"\\linewidth)."
+"voliteľné argumenty: vertikálna úprava (c [stred],t [hore],b [dole]) a "
+"maximálna šírka (štandardne \\linewidth). Viď príklad v varwidth-floats-side-"
+"by-side.lyx."
 
 #: lib/layouts/varwidth.module:17
 msgid "Minipage (Var. Width)"
@@ -33245,6 +33247,10 @@ msgstr "súbor"
 msgid "Hyperlink (%1$s) to %2$s"
 msgstr "Hyperlinka (%1$s) na %2$s"
 
+#: src/insets/InsetInclude.cpp:395
+msgid "FILE MISSING:"
+msgstr "SÚBOR CHÝBA:"
+
 #: src/insets/InsetInclude.cpp:384
 msgid "Verbatim Input"
 msgstr "Doslovný vstup"
@@ -33256,6 +33262,33 @@ msgstr "Doslovný vstup*"
 #: src/insets/InsetInclude.cpp:393
 msgid "Include (excluded)"
 msgstr "Zahrnúť (vylúčené)"
+
+#: src/insets/InsetInclude.cpp:521
+msgid "No file name specified"
+msgstr "Chýba meno súboru"
+
+#: src/insets/InsetInclude.cpp:522
+msgid ""
+"An included file name is empty.\n"
+"Ignoring Inclusion"
+msgstr ""
+"Nejaké meno vloženého súboru je prázdne.\n"
+"Vloženie sa ignoruje"
+
+#: src/insets/InsetInclude.cpp:529
+msgid "Included file not found"
+msgstr "Uvedený súbor sa nenašiel"
+
+#: src/insets/InsetInclude.cpp:530
+#, c-format
+msgid ""
+"The included file\n"
+"'%1$s'\n"
+"has not been found. LyX will ignore the inclusion."
+msgstr ""
+"Uvedený súbor\n"
+"'%1$s'\n"
+"sa nenašiel. LyX bude toto vloženie ignorovať."
 
 #: src/insets/InsetInclude.cpp:512 src/insets/InsetInclude.cpp:905
 #: src/insets/InsetInclude.cpp:980
