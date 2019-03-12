@@ -33,6 +33,9 @@ class Text;
 /// A map from a Text to the map of paragraphs metrics
 class TextMetrics
 {
+	/// noncopyable
+	TextMetrics(TextMetrics const &);
+	void operator=(TextMetrics const &);
 public:
 	/// Default constructor (only here for STL containers).
 	TextMetrics() : bv_(0), text_(0), max_width_(0) {}
