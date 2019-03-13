@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-03-12 09:32+0100\n"
-"PO-Revision-Date: 2019-03-12 09:08+0000\n"
+"POT-Creation-Date: 2019-03-13 14:17+0100\n"
+"PO-Revision-Date: 2019-03-13 13:26+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -34394,13 +34394,30 @@ msgstr "%1$d reťazcov bolo nahradených."
 msgid "Invalid regular expression!"
 msgstr "Neplatný regulárny výraz!"
 
-#: src/lyxfind.cpp:1540
-msgid "Match not found!"
-msgstr "Vhodný výraz nenájdený!"
+#: src/lyxfind.cpp:3629
+msgid "One match has been replaced."
+msgstr "Jeden vhodný reťazec bol nahradený."
 
-#: src/lyxfind.cpp:1544
-msgid "Match found!"
-msgstr "Vhodný výraz nájdený!"
+#: src/lyxfind.cpp:3632
+msgid "Two matches have been replaced."
+msgstr "Dva vhodné reťazce boli nahradené."
+
+#: src/lyxfind.cpp:3635
+#, c-format
+msgid "%1$d matches have been replaced."
+msgstr "%1$d vhodných reťazcov bolo nahradených."
+
+#: src/lyxfind.cpp:3641
+msgid "Match not found."
+msgstr "Vhodný reťazec nenájdený."
+
+#: src/lyxfind.cpp:3647
+msgid "Match has been replaced."
+msgstr "Vhodný reťazec bol nahradený."
+
+#: src/lyxfind.cpp:3649
+msgid "Match found."
+msgstr "Vhodný reťazec nájdený."
 
 #: src/mathed/InsetMathAMSArray.cpp:115 src/mathed/InsetMathHull.cpp:2148
 #: src/mathed/InsetMathSplit.cpp:120 src/mathed/InsetMathSubstack.cpp:70
@@ -39770,3 +39787,9 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Umožní LyX pridať vertikálne značky zmien na okraji PDF-výstupu. Treba na to "
 #~ "zapnúť sledovanie zmien a zvoliť pdflatex ako výstupný formát."
+
+#~ msgid "Match not found!"
+#~ msgstr "Vhodný výraz nenájdený!"
+
+#~ msgid "Match found!"
+#~ msgstr "Vhodný výraz nájdený!"
