@@ -1851,8 +1851,10 @@ Buffer::ExportStatus Buffer::writeLaTeXSource(otexstream & os,
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
 	// This is only set once per document (in master)
-	if (!runparams.is_child)
+	if (!runparams.is_child) {
 		runparams.use_polyglossia = features.usePolyglossia();
+		runparams.use_CJK = features.mustProvide("CJK");
+	}
 	LYXERR(Debug::LATEX, "  Buffer validation done.");
 
 	bool const output_preamble =

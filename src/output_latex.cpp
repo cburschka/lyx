@@ -1417,11 +1417,8 @@ void latexParagraphs(Buffer const & buf,
 	if (maintext && !is_child && !bparams.useNonTeXFonts
 	    && (bparams.encoding().package() == Encoding::CJK
 			|| (bparams.encoding().name() == "utf8"
-				&& bparams.language->encoding()->package() == Encoding::CJK)
-				//  FIXME: should test if any language requires CJK
-				//  && LaTeXFeatures::mustProvide("CJK"))
-				// error: cannot call member function ‘bool lyx::LaTeXFeatures::mustProvide(const string&) const’ without object
-		   )) {
+				&& runparams.use_CJK))
+	   ) {
 		docstring const cjkenc = bparams.encoding().iconvName() == "UTF-8"
 		  		  			   	 ? from_ascii("UTF8") : from_ascii(bparams.encoding().latexName());
 		os << "\\begin{CJK}{" << cjkenc

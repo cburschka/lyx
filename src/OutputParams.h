@@ -159,6 +159,9 @@ public:
 	*/
 	bool use_polyglossia;
 
+	/// Do we use the CJK package?
+	bool use_CJK;
+
 	/** Are we generating multiple indices?
 	*/
 	bool use_indices;
