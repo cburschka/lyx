@@ -315,6 +315,7 @@ bool FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt, bool
 	Buffer * buf_orig = &bv->buffer();
 	DocIterator cur_orig(bv->cursor());
 	int wrap_answer = -1;
+	opt.replace_all = replace_all;
 	ostringstream oss;
 	oss << opt;
 	FuncRequest cmd(LFUN_WORD_FINDADV, from_utf8(oss.str()));

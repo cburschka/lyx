@@ -99,11 +99,12 @@ public:
 		docstring const & repl_buf_name,
 		bool keep_case,
 		SearchScope scope = S_BUFFER,
-		SearchRestriction restr = R_EVERYTHING
+		SearchRestriction restr = R_EVERYTHING,
+		bool replace_all = false
 	);
 	FindAndReplaceOptions() : casesensitive(false), matchword(false), forward(false),
 	                          expandmacros(false), ignoreformat(false),
-							  keep_case(false), scope(S_BUFFER), restr(R_EVERYTHING) {}
+	                          keep_case(false), scope(S_BUFFER), restr(R_EVERYTHING), replace_all(false) {}
 	docstring find_buf_name;
 	bool casesensitive;
 	bool matchword;
@@ -115,6 +116,7 @@ public:
 	bool keep_case;
 	SearchScope scope;
 	SearchRestriction restr;
+	bool replace_all;
 };
 
 /// Set the formats that should be ignored

@@ -2638,6 +2638,7 @@ static int identifyClosing(string & t)
 	return open_braces;
 }
 
+static int num_replaced = 0;
 
 MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & opt)
 	: p_buf(&buf), p_first_buf(&buf), opt(opt)
@@ -2645,6 +2646,8 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 	Buffer & find_buf = *theBufferList().getBuffer(FileName(to_utf8(opt.find_buf_name)), true);
 	docstring const & ds = stringifySearchBuffer(find_buf, opt);
 	use_regexp = lyx::to_utf8(ds).find("\\regexp{") != std::string::npos;
+	if (!opt.replace_all)
+		num_replaced = 0;	// count number of replaced strings
 	// When using regexp, braces are hacked already by escape_for_regex()
 	par_as_string = normalize(ds, !use_regexp);
 	open_braces = 0;
@@ -2861,7 +2864,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 
 		// Exclude from the returned match length any length
 		// due to close wildcards added at end of regexp
-		// and also the length of the leading (e.g. '\emph{')
+		// and also the length of the leading (e.g. '\emph{}')
 		//
 		// Whole found string, including the leading: m[0].second - m[0].first
 		// Size of the leading string: m[1].second - m[1].first
@@ -3437,10 +3440,10 @@ FindAndReplaceOptions::FindAndReplaceOptions(
 	docstring const & find_buf_name, bool casesensitive,
 	bool matchword, bool forward, bool expandmacros, bool ignoreformat,
 	docstring const & repl_buf_name, bool keep_case,
-	SearchScope scope, SearchRestriction restr)
+	SearchScope scope, SearchRestriction restr, bool replace_all)
 	: find_buf_name(find_buf_name), casesensitive(casesensitive), matchword(matchword),
 	  forward(forward), expandmacros(expandmacros), ignoreformat(ignoreformat),
-	  repl_buf_name(repl_buf_name), keep_case(keep_case), scope(scope), restr(restr)
+	  repl_buf_name(repl_buf_name), keep_case(keep_case), scope(scope), restr(restr), replace_all(replace_all)
 {
 }
 
@@ -3502,29 +3505,29 @@ static void changeFirstCase(Buffer & buffer, TextCase first_case, TextCase other
 } // namespace
 
 ///
-static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, MatchStringAdv & matchAdv)
+static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, MatchStringAdv & matchAdv)
 {
 	Cursor & cur = bv->cursor();
 	if (opt.repl_buf_name == docstring()
 	    || theBufferList().getBuffer(FileName(to_utf8(opt.repl_buf_name)), true) == 0
 	    || theBufferList().getBuffer(FileName(to_utf8(opt.find_buf_name)), true) == 0)
-		return;
+		return 0;
 
 	DocIterator sel_beg = cur.selectionBegin();
 	DocIterator sel_end = cur.selectionEnd();
 	if (&sel_beg.inset() != &sel_end.inset()
 	    || sel_beg.pit() != sel_end.pit()
 	    || sel_beg.idx() != sel_end.idx())
-		return;
+		return 0;
 	int sel_len = sel_end.pos() - sel_beg.pos();
 	LYXERR(Debug::FIND, "sel_beg: " << sel_beg << ", sel_end: " << sel_end
 	       << ", sel_len: " << sel_len << endl);
 	if (sel_len == 0)
-		return;
-	LASSERT(sel_len > 0, return);
+		return 0;
+	LASSERT(sel_len > 0, return 0);
 
 	if (!matchAdv(sel_beg, sel_len).match_len)
-		return;
+		return 0;
 
 	// Build a copy of the replace buffer, adapted to the KeepCase option
 	Buffer & repl_buffer_orig = *theBufferList().getBuffer(FileName(to_utf8(opt.repl_buf_name)), true);
@@ -3533,7 +3536,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 	string lyx = oss.str();
 	Buffer repl_buffer("", false);
 	repl_buffer.setUnnamed(true);
-	LASSERT(repl_buffer.readString(lyx), return);
+	LASSERT(repl_buffer.readString(lyx), return 0);
 	if (opt.keep_case && sel_len >= 2) {
 		LYXERR(Debug::FIND, "keep_case true: cur.pos()=" << cur.pos() << ", sel_len=" << sel_len);
 		if (cur.inTexted()) {
@@ -3586,6 +3589,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 	LYXERR(Debug::FIND, "After pos adj cur=" << cur << " with depth: " << cur.depth() << " and len: " << sel_len);
 	bv->putSelectionAt(DocIterator(cur), sel_len, !opt.forward);
 	bv->processUpdateFlags(Update::Force);
+	return 1;
 }
 
 
@@ -3605,7 +3609,7 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 		int length = bv->cursor().selectionEnd().pos() - bv->cursor().selectionBegin().pos();
 		if (length > 0)
 			bv->putSelectionAt(bv->cursor().selectionBegin(), length, !opt.forward);
-		findAdvReplace(bv, opt, matchAdv);
+		num_replaced += findAdvReplace(bv, opt, matchAdv);
 		cur = bv->cursor();
 		if (opt.forward)
 			match_len = findForwardAdv(cur, matchAdv);
@@ -3618,11 +3622,31 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 	}
 
 	if (match_len == 0) {
-		bv->message(_("Match not found!"));
+		if (num_replaced > 0) {
+			switch (num_replaced)
+			{
+				case 1:
+					bv->message(_("One matche has been replaced."));
+					break;
+				case 2:
+					bv->message(_("Two matches have been replaced."));
+					break;
+				default:
+					bv->message(bformat(_("%1$d matches have been replaced."), num_replaced));
+					break;
+			}
+			num_replaced = 0;
+		}
+		else {
+			bv->message(_("Match not found."));
+		}
 		return false;
 	}
 
-	bv->message(_("Match found!"));
+	if (num_replaced > 0)
+		bv->message(_("Match has been replaced."));
+	else
+		bv->message(_("Match found."));
 
 	LYXERR(Debug::FIND, "Putting selection at cur=" << cur << " with len: " << match_len);
 	bv->putSelectionAt(cur, match_len, !opt.forward);
@@ -3639,6 +3663,7 @@ ostringstream & operator<<(ostringstream & os, FindAndReplaceOptions const & opt
 	   << opt.forward << ' '
 	   << opt.expandmacros << ' '
 	   << opt.ignoreformat << ' '
+	   << opt.replace_all << ' '
 	   << to_utf8(opt.repl_buf_name) << "\nEOSS\n"
 	   << opt.keep_case << ' '
 	   << int(opt.scope) << ' '
@@ -3666,7 +3691,7 @@ istringstream & operator>>(istringstream & is, FindAndReplaceOptions & opt)
 	}
 	LYXERR(Debug::FIND, "file_buf_name: '" << s << "'");
 	opt.find_buf_name = from_utf8(s);
-	is >> opt.casesensitive >> opt.matchword >> opt.forward >> opt.expandmacros >> opt.ignoreformat;
+	is >> opt.casesensitive >> opt.matchword >> opt.forward >> opt.expandmacros >> opt.ignoreformat >> opt.replace_all;
 	is.get();	// Waste space before replace string
 	s = "";
 	getline(is, line);
