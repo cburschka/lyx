@@ -110,6 +110,7 @@ endmacro()
 
 set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
 set(ENV{LANG} "en_US.UTF-8") # to get all error-messages in english
+set(ENV{LANGUAGE} "US:en")
 #set(ENV{LC_ALL} "C")
 if (extension MATCHES "\\.lyx$")
   include(${TOP_SRC_DIR}/development/autotests/CheckLoadErrors.cmake)
