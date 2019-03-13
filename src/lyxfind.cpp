@@ -3626,7 +3626,7 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 			switch (num_replaced)
 			{
 				case 1:
-					bv->message(_("One matche has been replaced."));
+					bv->message(_("One match has been replaced."));
 					break;
 				case 2:
 					bv->message(_("Two matches have been replaced."));
