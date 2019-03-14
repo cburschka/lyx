@@ -303,8 +303,11 @@ void InsetLabel::latex(otexstream & os, OutputParams const & runparams_in) const
 	// we store the label and output it after the macro (#2154)
 	if (runparams_in.postpone_fragile_stuff)
 		runparams_in.post_macro += command;
-	else
+	else {
+		if (runparams.moving_arg)
+			os << "\\protect";
 		os << command;
+	}
 }
 
 
