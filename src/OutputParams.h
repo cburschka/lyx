@@ -197,6 +197,19 @@ public:
 	*/
 	std::shared_ptr<ExportData> exportdata;
 
+	/** Store labels, index entries (etc.) (in \ref post_macro)
+	 *  and output them later. This is used in particular to get
+	 *  labels and index entries (and potentially other fragile commands)
+	 *  outside of moving arguments (bug 2154)
+	 */
+	bool postpone_fragile_stuff;
+
+	/** Stuff to be postponed and output after the current macro
+	 *  (if \ref postpone_fragile_stuff is true). Used for labels and index
+	 *  entries in commands with moving arguments (\\section, \\caption etc.)
+	 */
+	mutable docstring post_macro;
+
 	/** Whether we are entering a display math inset.
 	 *  Needed to correctly strike out deleted math in change tracking.
 	 */

@@ -59,10 +59,12 @@ InsetIndex::InsetIndex(Buffer * buf, InsetIndexParams const & params)
 {}
 
 
-void InsetIndex::latex(otexstream & os, OutputParams const & runparams_in) const
+void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) const
 {
 	OutputParams runparams(runparams_in);
 	runparams.inIndexEntry = true;
+
+	otexstringstream os;
 
 	if (buffer().masterBuffer()->params().use_indices && !params_.index.empty()
 	    && params_.index != "idx") {
@@ -170,6 +172,13 @@ void InsetIndex::latex(otexstream & os, OutputParams const & runparams_in) const
 		os << "|" << cmd;
 	}
 	os << '}';
+
+	// In macros with moving arguments, such as \section,
+	// we store the index and output it after the macro (#2154)
+	if (runparams_in.postpone_fragile_stuff)
+		runparams_in.post_macro += os.str();
+	else
+		ios << os.release();
 }
 
 

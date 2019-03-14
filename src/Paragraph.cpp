@@ -2833,6 +2833,9 @@ void Paragraph::latex(BufferParams const & bparams,
 		// such as Note that do not produce any output, so that no
 		// command is ever executed but its opening was recorded.
 		runparams.inulemcmd = rp.inulemcmd;
+
+		// And finally, pass the post_macros upstream
+		runparams.post_macro = rp.post_macro;
 	}
 
 	// If we have an open font definition, we have to close it

@@ -48,6 +48,8 @@ public:
 	///
 	InsetCode lyxCode() const { return LABEL_CODE; }
 	///
+	void latex(otexstream & os, OutputParams const & runparams_in) const;
+	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
 	              size_t max_length = INT_MAX) const;
 	///

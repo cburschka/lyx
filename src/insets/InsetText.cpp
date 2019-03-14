@@ -509,6 +509,8 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 	// Output the contents of the inset
 	latexParagraphs(buffer(), text_, os, rp);
 	runparams.encoding = rp.encoding;
+	// Pass the post_macros upstream
+	runparams.post_macro = rp.post_macro;
 
 	if (!il.rightdelim().empty())
 		os << il.rightdelim();

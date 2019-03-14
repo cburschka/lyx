@@ -28,6 +28,7 @@
 #include "output_xhtml.h"
 #include "ParIterator.h"
 #include "sgml.h"
+#include "texstream.h"
 #include "Text.h"
 #include "TextClass.h"
 #include "TocBackend.h"
@@ -291,6 +292,19 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetCommand::doDispatch(cur, cmd);
 		break;
 	}
+}
+
+
+void InsetLabel::latex(otexstream & os, OutputParams const & runparams_in) const
+{
+	OutputParams runparams = runparams_in;
+	docstring command = getCommand(runparams);
+	// In macros with moving arguments, such as \section,
+	// we store the label and output it after the macro (#2154)
+	if (runparams_in.postpone_fragile_stuff)
+		runparams_in.post_macro += command;
+	else
+		os << command;
 }
 
 

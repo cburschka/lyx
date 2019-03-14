@@ -777,6 +777,11 @@ void TeXOnePar(Buffer const & buf,
 	if (style.pass_thru) {
 		Font const outerfont = text.outerFont(pit);
 		parStartCommand(par, os, runparams, style);
+		if (style.isCommand() && style.needprotect)
+			// Due to the moving argument, some fragile
+			// commands (labels, index entries)
+			// are output after this command (#2154)
+			runparams.postpone_fragile_stuff = true;
 		if (intitle_command)
 			os << '{';
 
@@ -861,6 +866,11 @@ void TeXOnePar(Buffer const & buf,
 	// (see #10849); thus open the command here.
 	if (intitle_command) {
 		parStartCommand(par, os, runparams, style);
+		if (style.isCommand() && style.needprotect)
+			// Due to the moving argument, some fragile
+			// commands (labels, index entries)
+			// are output after this command (#2154)
+			runparams.postpone_fragile_stuff = true;
 		os << '{';
 	}
 
@@ -1071,8 +1081,14 @@ void TeXOnePar(Buffer const & buf,
 
 	// For InTitle commands, we already started the command before
 	// the language switch
-	if (!intitle_command)
+	if (!intitle_command) {
 		parStartCommand(par, os, runparams, style);
+		if (style.isCommand() && style.needprotect)
+			// Due to the moving argument, some fragile
+			// commands (labels, index entries)
+			// are output after this command (#2154)
+			runparams.postpone_fragile_stuff = true;
+	}
 
 	Font const outerfont = text.outerFont(pit);
 
@@ -1092,6 +1108,12 @@ void TeXOnePar(Buffer const & buf,
 			os << '}';
 			if (!style.postcommandargs().empty())
 				latexArgInsets(par, os, runparams, style.postcommandargs(), "post:");
+			if (!runparams.post_macro.empty()) {
+				// Output the stored fragile commands (labels, indices etc.)
+				// that need to be output after the command with moving argument.
+				os << runparams.post_macro;
+				runparams.post_macro.clear();
+			}
 			if (runparams.encoding != prev_encoding) {
 				runparams.encoding = prev_encoding;
 				os << setEncoding(prev_encoding->iconvName());
@@ -1246,6 +1268,12 @@ void TeXOnePar(Buffer const & buf,
 			os << '}';
 			if (!style.postcommandargs().empty())
 				latexArgInsets(par, os, runparams, style.postcommandargs(), "post:");
+			if (!runparams.post_macro.empty()) {
+				// Output the stored fragile commands (labels, indices etc.)
+				// that need to be output after the command with moving argument.
+				os << runparams.post_macro;
+				runparams.post_macro.clear();
+			}
 			if (runparams.encoding != prev_encoding) {
 				runparams.encoding = prev_encoding;
 				os << setEncoding(prev_encoding->iconvName());
@@ -1323,6 +1351,9 @@ void TeXOnePar(Buffer const & buf,
 	// Otherwise, the current encoding should be set for the next paragraph.
 	else
 		runparams_in.encoding = runparams.encoding;
+
+	// Also pass the post_macros upstream
+	runparams_in.post_macro = runparams.post_macro;
 
 
 	// we don't need a newline for the last paragraph!!!

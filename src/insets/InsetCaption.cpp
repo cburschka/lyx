@@ -264,7 +264,16 @@ void InsetCaption::latex(otexstream & os,
 	// \caption{...}, later we will make it take advantage
 	// of the one of the caption packages. (Lgb)
 	OutputParams runparams = runparams_in;
+	// Some fragile commands (labels, index entries)
+	// are output after the caption (#2154)
+	runparams.postpone_fragile_stuff = true;
 	InsetText::latex(os, runparams);
+	if (!runparams.post_macro.empty()) {
+		// Output the stored fragile commands (labels, indices etc.)
+		// that need to be output after the caption.
+		os << runparams.post_macro;
+		runparams.post_macro.clear();
+	}
 	// Backwards compatibility: We always had a linebreak after
 	// the caption (see #8514)
 	os << breakln;
