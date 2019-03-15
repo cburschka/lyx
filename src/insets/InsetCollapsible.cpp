@@ -453,7 +453,7 @@ Inset * InsetCollapsible::editXY(Cursor & cur, int x, int y)
 {
 	//lyxerr << "InsetCollapsible: edit xy" << endl;
 	if (geometry(cur.bv()) == ButtonOnly
-	    || !editable()
+		|| !descendable(cur.bv())
 	    || (view_[&cur.bv()].button_dim_.contains(x, y)
 	        && geometry(cur.bv()) != NoButton))
 		return this;
