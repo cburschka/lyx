@@ -471,6 +471,14 @@ void InsetRef::validate(LaTeXFeatures & features) const
 		features.require("nameref");
 }
 
+bool InsetRef::forceLTR() const
+{
+	// We force LTR for references. Namerefs are output in the scripts direction
+	// at least with fontspec/bidi, though (see #11518).
+	// FIXME: Re-Audit all other RTL cases.
+	return (getCmdName() != "nameref" || !buffer().masterParams().useNonTeXFonts);
+}
+
 
 InsetRef::type_info const InsetRef::types[] = {
 	{ "ref",       N_("Standard"),              N_("Ref: ")},
