@@ -193,6 +193,9 @@ export/templates/IEEEtran-Journal_lyx16
 export/doc/(de|es)/Additional_pdf4_texF
 export/export/latex/xetex-inputenc-utf8_pdf4_texF
 
+#11519 Wrong input encoding when parent and child use different setting.
+export/export/latex/parent-with-other-inputenc_pdf2
+
 # ==============================================================
 Sublabel: ert
 # Export failures due to "raw" LaTeX use in ERT or preamble code
