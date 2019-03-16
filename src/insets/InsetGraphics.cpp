@@ -109,7 +109,7 @@ namespace {
 /// Note that \p format may be unknown (i. e. an empty string)
 string findTargetFormat(string const & format, OutputParams const & runparams)
 {
-	// Are we using latex or XeTeX/LuaTeX/pdflatex?
+	// Are we latexing to DVI or PDF?
 	if (runparams.flavor == OutputParams::PDFLATEX
 	    || runparams.flavor == OutputParams::XETEX
 	    || runparams.flavor == OutputParams::LUATEX) {

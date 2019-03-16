@@ -2071,7 +2071,7 @@ void GuiDocument::updateQuoteStyles(bool const set)
 
 void GuiDocument::languageChanged(int i)
 {
-	// some languages only work with polyglossia
+	// some languages only work with Polyglossia
 	Language const * lang = lyx::languages.getLanguage(
 		fromqstr(langModule->languageCO->itemData(i).toString()));
 	if (lang->babel().empty() && !lang->polyglossia().empty()) {
@@ -3853,9 +3853,8 @@ void GuiDocument::paramsToDialog()
 	if (nn >= 0)
 		listingsModule->packageCO->setCurrentIndex(nn);
 
-
 	// Fonts
-	// some languages only work with polyglossia/XeTeX
+	// some languages only work with Polyglossia (which requires non-TeX fonts)
 	Language const * lang = lyx::languages.getLanguage(
 		fromqstr(langModule->languageCO->itemData(
 			langModule->languageCO->currentIndex()).toString()));

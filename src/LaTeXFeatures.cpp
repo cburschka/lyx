@@ -315,67 +315,67 @@ static docstring const ogonek_def = from_ascii(
 
 static docstring const lyxaccent_def = from_ascii(
 	"%% custom text accent \\LyxTextAccent[<rise value (length)>]{<accent>}{<base>}\n"
-        "\\newcommand*{\\LyxTextAccent}[3][0ex]{%\n"
-        "  \\hmode@bgroup\\ooalign{\\null#3\\crcr\\hidewidth\n"
-        "  \\raise#1\\hbox{#2}\\hidewidth}\\egroup}\n"
-        "%% select a font size smaller than the current font size:\n"
-        "\\newcommand{\\LyxAccentSize}[1][\\sf@size]{%\n"
-        "  \\check@mathfonts\\fontsize#1\\z@\\math@fontsfalse\\selectfont\n"
-        "}\n");
+	"\\newcommand*{\\LyxTextAccent}[3][0ex]{%\n"
+	"  \\hmode@bgroup\\ooalign{\\null#3\\crcr\\hidewidth\n"
+	"  \\raise#1\\hbox{#2}\\hidewidth}\\egroup}\n"
+	"%% select a font size smaller than the current font size:\n"
+	"\\newcommand{\\LyxAccentSize}[1][\\sf@size]{%\n"
+	"  \\check@mathfonts\\fontsize#1\\z@\\math@fontsfalse\\selectfont\n"
+	"}\n");
 
 static docstring const textcommabelow_def = from_ascii(
-        "\\ProvideTextCommandDefault{\\textcommabelow}[1]{%%\n"
-        "  \\LyxTextAccent[-.31ex]{\\LyxAccentSize,}{#1}}\n");
+	"\\ProvideTextCommandDefault{\\textcommabelow}[1]{%%\n"
+	"  \\LyxTextAccent[-.31ex]{\\LyxAccentSize,}{#1}}\n");
 
 static docstring const textcommaabove_def = from_ascii(
-        "\\ProvideTextCommandDefault{\\textcommaabove}[1]{%%\n"
-        "  \\LyxTextAccent[.5ex]{\\LyxAccentSize`}{#1}}\n");
+	"\\ProvideTextCommandDefault{\\textcommaabove}[1]{%%\n"
+	"  \\LyxTextAccent[.5ex]{\\LyxAccentSize`}{#1}}\n");
 
 static docstring const textcommaaboveright_def = from_ascii(
-        "\\ProvideTextCommandDefault{\\textcommaaboveright}[1]{%%\n"
-        "  \\LyxTextAccent[.5ex]{\\LyxAccentSize\\ '}{#1}}\n");
+	"\\ProvideTextCommandDefault{\\textcommaaboveright}[1]{%%\n"
+	"  \\LyxTextAccent[.5ex]{\\LyxAccentSize\\ '}{#1}}\n");
 
 // Baltic languages use a comma-accent instead of a cedilla
 static docstring const textbaltic_def = from_ascii(
-        "%% use comma accent instead of cedilla for these characters:\n"
-        "\\DeclareTextCompositeCommand{\\c}{T1}{g}{\\textcommaabove{g}}\n"
-        "\\DeclareTextCompositeCommand{\\c}{T1}{G}{\\textcommabelow{G}}\n"
-        "\\DeclareTextCompositeCommand{\\c}{T1}{k}{\\textcommabelow{k}}\n"
-        "\\DeclareTextCompositeCommand{\\c}{T1}{K}{\\textcommabelow{K}}\n"
-        "\\DeclareTextCompositeCommand{\\c}{T1}{l}{\\textcommabelow{l}}\n"
-        "\\DeclareTextCompositeCommand{\\c}{T1}{L}{\\textcommabelow{L}}\n"
-        "\\DeclareTextCompositeCommand{\\c}{T1}{n}{\\textcommabelow{n}}\n"
-        "\\DeclareTextCompositeCommand{\\c}{T1}{N}{\\textcommabelow{N}}\n"
-        "\\DeclareTextCompositeCommand{\\c}{T1}{r}{\\textcommabelow{r}}\n"
-        "\\DeclareTextCompositeCommand{\\c}{T1}{R}{\\textcommabelow{R}}\n");
+	"%% use comma accent instead of cedilla for these characters:\n"
+	"\\DeclareTextCompositeCommand{\\c}{T1}{g}{\\textcommaabove{g}}\n"
+	"\\DeclareTextCompositeCommand{\\c}{T1}{G}{\\textcommabelow{G}}\n"
+	"\\DeclareTextCompositeCommand{\\c}{T1}{k}{\\textcommabelow{k}}\n"
+	"\\DeclareTextCompositeCommand{\\c}{T1}{K}{\\textcommabelow{K}}\n"
+	"\\DeclareTextCompositeCommand{\\c}{T1}{l}{\\textcommabelow{l}}\n"
+	"\\DeclareTextCompositeCommand{\\c}{T1}{L}{\\textcommabelow{L}}\n"
+	"\\DeclareTextCompositeCommand{\\c}{T1}{n}{\\textcommabelow{n}}\n"
+	"\\DeclareTextCompositeCommand{\\c}{T1}{N}{\\textcommabelow{N}}\n"
+	"\\DeclareTextCompositeCommand{\\c}{T1}{r}{\\textcommabelow{r}}\n"
+	"\\DeclareTextCompositeCommand{\\c}{T1}{R}{\\textcommabelow{R}}\n");
 
 // split-level fractions
 static docstring const xfrac_def = from_ascii(
 	   "\\usepackage{xfrac}\n");
 static docstring const smallLetterFrac_def = from_ascii(
-        "\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{default}{text}\n"
-		"  {phantom=c, scale-factor=1.0, slash-left-kern=-.05em}\n"
-		"\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{lmr}{text}\n"
-		"  {slash-symbol-font=ptm, phantom=c, scale-factor=1, slash-left-kern=-.05em}\n"
-		"\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{lmss}{text}\n"
-		"  {slash-symbol-font=ptm, phantom=c, scale-factor=1, slash-left-kern=-.05em}\n"
-		"\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{cmr}{text}\n"
-		"  {slash-symbol-font=ptm, phantom=c, scale-factor=1, slash-left-kern=-.05em}\n"
-		"\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{cmss}{text}\n"
-		"  {slash-symbol-font=ptm, phantom=c, scale-factor=1, slash-left-kern=-.05em}\n"
-		"\\newcommand{\\smallLetterFrac}[2]{%\n"
-		"  {\\UseCollection{xfrac}{smallLetterFrac}\\sfrac{#1}{#2}}}\n");
+	"\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{default}{text}\n"
+	"  {phantom=c, scale-factor=1.0, slash-left-kern=-.05em}\n"
+	"\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{lmr}{text}\n"
+	"  {slash-symbol-font=ptm, phantom=c, scale-factor=1, slash-left-kern=-.05em}\n"
+	"\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{lmss}{text}\n"
+	"  {slash-symbol-font=ptm, phantom=c, scale-factor=1, slash-left-kern=-.05em}\n"
+	"\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{cmr}{text}\n"
+	"  {slash-symbol-font=ptm, phantom=c, scale-factor=1, slash-left-kern=-.05em}\n"
+	"\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{cmss}{text}\n"
+	"  {slash-symbol-font=ptm, phantom=c, scale-factor=1, slash-left-kern=-.05em}\n"
+	"\\newcommand{\\smallLetterFrac}[2]{%\n"
+	"  {\\UseCollection{xfrac}{smallLetterFrac}\\sfrac{#1}{#2}}}\n");
 
 static docstring const lyxref_def = from_ascii(
-		"\\RS@ifundefined{subsecref}\n"
-		"  {\\newref{subsec}{name = \\RSsectxt}}\n"
-		"  {}\n"
-		"\\RS@ifundefined{thmref}\n"
-		"  {\\def\\RSthmtxt{theorem~}\\newref{thm}{name = \\RSthmtxt}}\n"
-		"  {}\n"
-		"\\RS@ifundefined{lemref}\n"
-		"  {\\def\\RSlemtxt{lemma~}\\newref{lem}{name = \\RSlemtxt}}\n"
-		"  {}\n");
+	"\\RS@ifundefined{subsecref}\n"
+	"  {\\newref{subsec}{name = \\RSsectxt}}\n"
+	"  {}\n"
+	"\\RS@ifundefined{thmref}\n"
+	"  {\\def\\RSthmtxt{theorem~}\\newref{thm}{name = \\RSthmtxt}}\n"
+	"  {}\n"
+	"\\RS@ifundefined{lemref}\n"
+	"  {\\def\\RSlemtxt{lemma~}\\newref{lem}{name = \\RSlemtxt}}\n"
+	"  {}\n");
 
 // Make sure the columns are also outputed as rtl
 static docstring const rtloutputdblcol_def = from_ascii(
@@ -454,7 +454,7 @@ static docstring const lyxstrikeout_style = from_ascii(
 
 
 LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p,
-			     OutputParams const & r)
+							 OutputParams const & r)
 	: buffer_(&b), params_(p), runparams_(r), in_float_(false),
 	  in_deleted_inset_(false)
 {}

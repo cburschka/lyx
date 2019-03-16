@@ -1250,7 +1250,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 	    && !runparams.isFullUnicode() && bparams.main_font_encoding() == "T1"
 	    && latexSpecialT1(c, os, i, column))
 		return;
-	// NOTE: XeTeX and LuaTeX use EU1/2 (pre 2017) or TU (as of 2017) encoding
+	// NOTE: "fontspec" (non-TeX fonts) sets the font encoding to "TU" (untill 2017 "EU1" or "EU2")
 	else if (!runparams.inIPA && !running_font.language()->internalFontEncoding()
 		 && runparams.isFullUnicode() && latexSpecialTU(c, os, i, column))
 		     return;

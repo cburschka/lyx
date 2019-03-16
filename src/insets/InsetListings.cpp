@@ -123,8 +123,7 @@ Encoding const * InsetListings::forcedEncoding(Encoding const * inner_enc,
 					       Encoding const * outer_enc) const
 {
 	// The listings package cannot deal with multi-byte-encoded
-	// glyphs, except if full-unicode aware backends
-	// such as XeTeX or LuaTeX are used, and with pLaTeX.
+	// glyphs, except for Xe/LuaTeX (with non-TeX fonts) or pLaTeX.
 	// Minted can deal with all encodings.
 	if (buffer().params().use_minted
 		|| inner_enc->name() == "utf8-plain"
@@ -135,6 +134,8 @@ Encoding const * InsetListings::forcedEncoding(Encoding const * inner_enc,
 
 	// We try if there's a singlebyte encoding for the outer
 	// language; if not, fall back to latin1.
+	// Power-users can set inputenc to utf8-plain to bypass this workaround
+	// and provide alternatives in the user-preamble.
 	return (outer_enc->hasFixedWidth()) ?
 			outer_enc : encodings.fromLyXName("iso8859-1");
 }
