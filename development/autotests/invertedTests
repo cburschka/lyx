@@ -141,14 +141,6 @@ export/export/latex/LongestLabelWithUnderscore.*
 #11455 "Unable to process argument!" with multiple 1.6.x roundtrips
 export/templates/Articles/IEEE_Transactions_Journal_lyx16
 
-#10600 forced use of "ascii" inputenc with XeTeX
-# Non-ASCII in ERT, fails with inputenc==ASCII
-#   Could not find LaTeX command for character 'í' (code point 0xed)
-export/doc/(de|es)/Additional_pdf4_texF
-export/export/latex/xetex-inputenc-utf8_pdf4_texF
-# no unicodesymbols replacements for Arab charaters
-export/export/latex/supported-languages_pdf4_texF
-
 #11520 "listerrors" fails with pdflatex, lualatex, and xelatex
 # Example for lib/scripts/listerrors
 # Requires noweb. Seems to be restricted to plain "latex".
@@ -218,18 +210,18 @@ export/doc/(|de/|es/|fr/)UserGuide_pdf4_texF
 # Babel-Russian uses UTF-8 for auto-strings if it detects Xe/LuaTeX.
 # This fails unless the inputencoding is set to utf-8, too.
 export/doc/ru/(Intro|Tutorial)_.*_texF
-export/examples/ru/.*(LyXified|Welcome).*_texF
+export/examples/ru/.*LyXified.*_texF
 
 # Babel-Ukrainian uses UTF-8 if it detects Xe/LuaTeX (for "\date").
 # With 8-bit TeX fonts this results in:
 # * garbled output with PDF (LuaTeX)
 # * missing glyphs with XeTeX and DVI (LuaTeX)
 # New in TL18 -> cf. unreliableTests.varying_versions.
-# Workaround: suppressing auto-date or using date inset (new in LyX 2.4)
-# 	      in the source documents.
+# Workaround: suppressing auto-date, setting inputenc to "utf8", or using
+#             date inset (new in LyX 2.4) in the source documents.
 export/export/latex/uk-babel-date-missing-chars-with-ascii_(pdf4|dvi3)_texF
 # the "dvi3" tests for these pass, but have wrong output.
-export/(doc|examples)/uk/(Intro|Welcome)_(pdf4)_texF
+export/doc/uk/Intro_pdf4_texF
 
 # Fails with XeTeX/LuaTeX
 # Reported upstream (https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg184435.html)
@@ -292,7 +284,9 @@ export/templates/es/Presentations/Beamer_pdf4_texF
 #
 # see discussion at https://www.mail-archive.com/search?l=mid&q=20161114035123.s5lt4ib4x4obtptp%40steph
 #
-# Babel-Arabic loads "inputenc" which fails with Xe/LuaTeX:
+# Babel-Arabic loads "inputenc" which fails with LuaTeX
+# Wit XeTeX, it works if "utf8" input encoding is set (as in ar/Welcome.lyx)
+!export/examples/ar/Welcome_pdf4_texF
 export/.*/ar/.*_texF
 # Polyglossia bug with LuaTeX and LTR languages (also Hebrew and Farsi):
 # Undefined control sequences "\luatexpardir" and "\luatextextdir".
@@ -306,8 +300,6 @@ export/export/latex/supported-languages_(dvi3|pdf5)_texF
 export/examples/fa/Welcome_(dvi3|pdf5)_systemF
 # missing glyphs (em space and "English" quotes) with XeTeX + system fonts.
 export/examples/fa/Welcome_pdf4_systemF
-# missing ASCII replacements (required by XeTeX + TeX fonts)
-export/examples/fa/Welcome_pdf4_texF
 # "invalid utf-8 sequence" with Babel-Farsi, LuaTeX, and TeX fonts.
 export/examples/fa/Welcome_(dvi3|pdf5)_texF
 
@@ -315,9 +307,8 @@ export/examples/fa/Welcome_(dvi3|pdf5)_texF
 # does not currently work with LuaTeX (undefined command) (cf. Arabic)
 # terminal message: "Language hebrew not found in language.dat.lua"
 export/.*/he/.*(dvi3|pdf5)_systemF
-# Babel-Arabic loads "inputenc" which fails with Xe/LuaTeX
-# additionally: "! Right-to-Left Support Error: use TeX--XeT or e-TeX engine."
-# and (with XeTeX) missing ASCII replacements.
+# Babel-Arabic loads "inputenc" which fails with LuaTeX
+# Xe/LuaTeX + TeX fonts: "! Right-to-Left Support Error: use TeX--XeT or e-TeX engine."
 export/.*/he/.*_texF
 
 # See comment in unreliableTests

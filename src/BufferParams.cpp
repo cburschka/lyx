@@ -102,8 +102,19 @@ static char const * const tex_graphics[] = {
 };
 
 
-
 namespace lyx {
+
+// XeTeX with TeX fonts:
+// run in 8-bit emulation mode and trick `inputenc` into working with XeTeX
+static docstring const xetex_pre_inputenc = from_ascii(
+	"\\XeTeXinputencoding \"bytes\" % current file\n"
+	"\\XeTeXdefaultencoding \"bytes\" % included files\n"
+	"\\makeatletter\n"
+	"\\let\\origUmathchar\\Umathchar\n"
+	"\\let\\Umathchar\\@undefined\n");
+static docstring const xetex_post_inputenc = from_ascii(
+	"\\let\\Umathchar\\origUmathchar\n"
+	"\\makeatother\n");
 
 // Local translators
 namespace {
@@ -1769,7 +1780,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		   << from_ascii(fonts_default_family) << "}\n";
 
 	// set font encoding
-	// XeTeX and LuaTeX (with OS fonts) do not need fontenc
+	// non-TeX fonts use font encoding TU (set by fontspec)
 	if (!useNonTeXFonts && !features.isProvided("fontenc")
 	    && main_font_encoding() != "default") {
 		// get main font encodings
@@ -2314,8 +2325,8 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// esint and the other packages that provide special glyphs
 	if (features.mustProvide("tipa") && useNonTeXFonts
 	    && !features.isProvided("xunicode")) {
-		// The package officially only supports XeTeX, but also works
-		// with LuaTeX. Thus we work around its XeTeX test.
+		// The `xunicode` package officially only supports XeTeX,
+		//  but also works with LuaTeX. We work around its XeTeX test.
 		if (features.runparams().flavor != OutputParams::XETEX) {
 			os << "% Pretend to xunicode that we are XeTeX\n"
 			   << "\\def\\XeTeXpicfile{}\n";
@@ -2631,13 +2642,17 @@ FormatList const & BufferParams::exportableFormats(bool only_viewable) const
 	if (useNonTeXFonts) {
 		excludes.insert("latex");
 		excludes.insert("pdflatex");
-	}
-	FormatList result =
-		theConverters().getReachable(backs[0], only_viewable, true, excludes);
+	} else if (inputenc != "ascii" && inputenc != "utf8"
+			   && inputenc != "utf8x" && inputenc != "utf8-plain")
+		  // XeTeX with TeX fonts requires input encoding ascii or utf8
+		  // (https://www.tug.org/pipermail/xetex/2010-April/016452.html).
+		  excludes.insert("xetex");
+	FormatList result = theConverters().getReachable(backs[0], only_viewable,
+													 true, excludes);
 	for (vector<string>::const_iterator it = backs.begin() + 1;
 	     it != backs.end(); ++it) {
 		FormatList r = theConverters().getReachable(*it, only_viewable,
-				false, excludes);
+													false, excludes);
 		result.insert(result.end(), r.begin(), r.end());
 	}
 	sort(result.begin(), result.end(), Format::formatSorter);
@@ -2661,7 +2676,9 @@ vector<string> BufferParams::backends() const
 				v.push_back("pdflatex");
 				v.push_back("latex");
 			}
-			v.push_back("xetex");
+			if (useNonTeXFonts || inputenc == "ascii" || inputenc == "utf8"
+			    || inputenc == "utf8x" || inputenc == "utf8-plain")
+				v.push_back("xetex");
 			v.push_back("luatex");
 			v.push_back("dviluatex");
 		}
@@ -3224,12 +3241,8 @@ docstring BufferParams::getGraphicsDriver(string const & package) const
 void BufferParams::writeEncodingPreamble(otexstream & os,
 					 LaTeXFeatures & features) const
 {
-	// XeTeX/LuaTeX: (see also #9740)
-	// With Unicode fonts we use utf8-plain without encoding package.
-	// With TeX fonts, we cannot use utf8-plain, but "inputenc" fails.
-	// XeTeX must use ASCII encoding (see Buffer.cpp),
-	//  for LuaTeX, we load "luainputenc" (see below).
-	if (useNonTeXFonts || features.runparams().flavor == OutputParams::XETEX)
+	// With no-TeX fonts we use utf8-plain without encoding package.
+	if (useNonTeXFonts)
 		return;
 
 	if (inputenc == "auto") {
@@ -3241,7 +3254,8 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 		// Create list of inputenc options:
 		set<string> encoding_set;
 		// luainputenc fails with more than one encoding
-		if (!features.runparams().isFullUnicode()) // if we reach this point, this means LuaTeX with TeX fonts
+		if (features.runparams().flavor != OutputParams::LUATEX
+			&& features.runparams().flavor != OutputParams::DVILUATEX)
 			// list all input encodings used in the document
 			encoding_set = features.getEncodingSet(doc_encoding);
 
@@ -3276,7 +3290,8 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 		case Encoding::none:
 		case Encoding::CJK:
 		case Encoding::japanese:
-			if (encoding().iconvName() != "UTF-8")
+			if (encoding().iconvName() != "UTF-8"
+				&& !features.runparams().isFullUnicode())
 			  // don't default to [utf8]{inputenc} with TeXLive >= 18
 			  os << "\\ifdefined\\UseRawInputEncoding\n"
 				 << "  \\UseRawInputEncoding\\fi\n";
@@ -3287,12 +3302,16 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			if (features.isRequired("japanese")
 			    || features.isProvided("inputenc"))
 				break;
+			if (features.runparams().flavor == OutputParams::XETEX)
+				os << xetex_pre_inputenc;
 			os << "\\usepackage[" << from_ascii(encoding().latexName());
 		   	if (features.runparams().flavor == OutputParams::LUATEX
 			    || features.runparams().flavor == OutputParams::DVILUATEX)
 				os << "]{luainputenc}\n";
 			else
 				os << "]{inputenc}\n";
+			if (features.runparams().flavor == OutputParams::XETEX)
+				os << xetex_post_inputenc;
 			break;
 		}
 	}
@@ -3412,12 +3431,6 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 Encoding const & BufferParams::encoding() const
 {
 	// Main encoding for LaTeX output.
-	//
-	// Exception: XeTeX with 8-bit TeX fonts requires ASCII (see #9740).
-	// As the "flavor" is only known once export started, this
-	// cannot be handled here. Instead, runparams.encoding is set
-	// to ASCII in Buffer::makeLaTeXFile (for export)
-	// and Buffer::writeLaTeXSource (for preview).
 	if (useNonTeXFonts)
 		return *(encodings.fromLyXName("utf8-plain"));
 	if (inputenc == "auto" || inputenc == "default")

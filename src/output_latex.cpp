@@ -1336,14 +1336,16 @@ void TeXOnePar(Buffer const & buf,
 		}
 	}
 
+	// Information about local language is stored as a font feature.
 	// If this is the last paragraph, and a local_font was set upon entering
-	// the inset, and we're using "auto" or "default" encoding, and not
-	// compiling with XeTeX or LuaTeX, the encoding
-	// should be set back to that local_font's encoding.
+	// the inset and we're using "auto" or "default" encoding (and not
+	// compiling with LuaTeX), ensure the encoding is set back to the default
+	// encoding of the local language.
 	if (runparams.isLastPar && runparams_in.local_font != 0
 	    && runparams_in.encoding != runparams_in.local_font->language()->encoding()
 	    && (bparams.inputenc == "auto" || bparams.inputenc == "default")
-		&& !runparams.isFullUnicode()
+		&& runparams.flavor != OutputParams::LUATEX
+		&& runparams.flavor != OutputParams::DVILUATEX
 	   ) {
 		runparams_in.encoding = runparams_in.local_font->language()->encoding();
 		os << setEncoding(runparams_in.encoding->iconvName());
@@ -1632,12 +1634,13 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 		   OutputParams const & runparams, Encoding const & newEnc,
 		   bool force, bool noswitchmacro)
 {
-	// XeTeX/LuaTeX use only one encoding per document:
-	// * with useNonTeXFonts: "utf8plain",
-	// * with XeTeX and TeX fonts: "ascii" (inputenc fails),
-	// * with LuaTeX and TeX fonts: only one encoding accepted by luainputenc.
-	if (runparams.isFullUnicode() || newEnc.name() == "inherit")
-		return make_pair(false, 0);
+	// Never switch encoding with non-TeX fonts (always "utf8plain") or
+	// with LuaTeX and TeX fonts (only one encoding accepted by luainputenc).
+	if (bparams.useNonTeXFonts
+		|| runparams.flavor == OutputParams::LUATEX
+		|| runparams.flavor == OutputParams::DVILUATEX
+		|| newEnc.name() == "inherit")
+	  return make_pair(false, 0);
 
 	Encoding const & oldEnc = *runparams.encoding;
 	bool moving_arg = runparams.moving_arg;

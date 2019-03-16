@@ -1719,13 +1719,6 @@ Buffer::ExportStatus Buffer::makeLaTeXFile(FileName const & fname,
 {
 	OutputParams runparams = runparams_in;
 
-	// XeTeX with TeX fonts is only safe with ASCII encoding (see also #9740),
-	// Check here, because the "flavor" is not known in BufferParams::encoding()
-	// (power users can override this safety measure selecting "utf8-plain").
-	if (!params().useNonTeXFonts && (runparams.flavor == OutputParams::XETEX)
-	    && (runparams.encoding->name() != "utf8-plain"))
-		runparams.encoding = encodings.fromLyXName("ascii");
-
 	string const encoding = runparams.encoding->iconvName();
 	LYXERR(Debug::LATEX, "makeLaTeXFile encoding: " << encoding << ", fname=" << fname.realPath());
 
@@ -1822,16 +1815,6 @@ Buffer::ExportStatus Buffer::writeLaTeXSource(otexstream & os,
 	// The child documents, if any, shall be already loaded at this point.
 
 	OutputParams runparams = runparams_in;
-
-	// XeTeX with TeX fonts is only safe with ASCII encoding,
-	// Check here, because the "flavor" is not known in BufferParams::encoding()
-	// (power users can override this safety measure selecting "utf8-plain").
-	if (!params().useNonTeXFonts && (runparams.flavor == OutputParams::XETEX)
-	    && (runparams.encoding->name() != "utf8-plain"))
-		runparams.encoding = encodings.fromLyXName("ascii");
-	// FIXME: when only the current paragraph is shown, this is ignored
-	//        (or not reached) and characters encodable in the current
-	//        encoding are not converted to ASCII-representation.
 
 	// Some macros rely on font encoding
 	runparams.main_fontenc = params().main_font_encoding();
@@ -4473,9 +4456,12 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 			if (!put_in_tempdir) {
 				// Only show this alert if this is an export to a non-temporary
 				// file (not for previewing).
-				Alert::error(_("Couldn't export file"), bformat(
-					_("No information for exporting the format %1$s."),
-					theFormats().prettyName(format)));
+				docstring s = _("No information for exporting the format %1$s.");
+				if (format == "pdf4")
+				  s += _("\nHint: use non-TeX fonts or set input encoding to "
+						 "'utf8' or 'ascii'");
+				Alert::error(_("Couldn't export file"),
+							 bformat(s, theFormats().prettyName(format)));
 			}
 			return ExportNoPathToFormat;
 		}

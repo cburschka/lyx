@@ -26,11 +26,18 @@ export/examples/Modules/Noweb2LyX_lyx16
 export/doc/(ja/|)MergedManuals_(xhtml|lyx2[2-9])
 
 
-
 # ===========================================
 Sublabel: special
 # Documents that do not work with all exports
 # ===========================================
+
+# XeTeX with TeX-fonts works only for input encodings "utf8" and "ascii".
+# special test cases for XeTeX with 8-bit fonts (ignore matches in this file):
+!export/.*(utf8|ascii)_pdf4_texF
+!export/examples/(|ar|ca|cs|da|de|el|es|eu|fa|fr|gl|he|hu|id|it|ko|nb|nl|pl|pt|pt_BR|pt_PT|ro|ru|sk|sl|sr|sv|uk|zh_CN)/Welcome_pdf4_texF
+# Documentation and templates use "auto" 8-bit encodings.
+.*_pdf4_texF
+export/(doc|examples|templates)/(|ar|ca|cs|da|de|el|es|eu|fa|fr|gl|he|hu|id|it|ja|ko|nb|nl|pl|pt|pt_BR|pt_PT|ro|ru|sk|sl|sr|sv|uk|zh_CN)/.*pdf4_texF
 
 # Inside these two files, we state that they should only be expected
 # to work with pdflatex and possibly lualatex.
