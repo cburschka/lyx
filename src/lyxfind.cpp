@@ -2923,7 +2923,8 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 			return mres;
 		}
 	} else {
-		size_t pos = str.find(par_as_string_nolead);
+		// Start the search _after_ the leading part
+		size_t pos = str.find(par_as_string_nolead, lead_as_string.size());
 		if (pos != string::npos) {
 			mres.match_len = par_as_string.size();
 			mres.match2end = str.size() - pos;
