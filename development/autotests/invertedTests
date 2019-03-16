@@ -18,16 +18,17 @@ Sublabel: todo
 # Error in Japanese document if LyX-logo is preceded by foreign language
 export/export/latex/ja_wrong_auto_encoding_(dvi|pdf(|3)).*
 
-# Missing characters with Unicode fonts
-# For details see the file "systemfonts-Math-missingchars.lyx"
+# Missing characters with non-TeX fonts
+# For details see the minimal example "systemfonts-Math-missingchars.lyx"
 export/doc/(|de/|es/|fr/)Math.*systemF
 export/export/latex/systemfonts-Math-missingchars.*systemF
+#
+export/export/latex/xetex-inputenc.*_pdf4_systemF
 
 # missing character: There is no ^^A in font [lmroman12-regular]
 # and all the line down to ^^Z and beyond...
 # XeTeX artifact? works with LuaTeX, explore:
 export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_systemF
-
 
 # Example for lib/scripts/listerrors
 # Requires noweb. Seems to be restricted to plain "latex".
@@ -186,6 +187,11 @@ export/export/latex/LongestLabelWithUnderscore.*
 #11455 "Unable to process argument!" with multiple 1.6.x roundtrips
 export/templates/IEEEtran-Journal_lyx16
 
+#10600 forced use of "ascii" inputenc with XeTeX
+# Non-ASCII in ERT, fails with inputenc==ASCII
+#   Could not find LaTeX command for character 'í' (code point 0xed)
+export/doc/(de|es)/Additional_pdf4_texF
+export/export/latex/xetex-inputenc-utf8_pdf4_texF
 
 # ==============================================================
 Sublabel: ert
@@ -193,10 +199,6 @@ Sublabel: ert
 # ==============================================================
 #
 # "Wontfix" if demonstrating correct use and OK in the default output format.
-
-# Non-ASCII in ERT, fails with inputenc==ASCII (e.g. XeTeX with tex-fonts)
-#   Could not find LaTeX command for character 'í' (code point 0xed)
-export/doc/(de|es)/Additional_pdf4_texF
 
 
 # ================================================
@@ -268,8 +270,8 @@ export/templates/es_beamer-conference-ornate-20min_pdf4_texF
 
 # Arabic
 #
-# Larger Arabic documents currently have non-tex-fonts and XeTeX as default
-# output. To fix pdfTeX export:
+# Larger Arabic documents currently have non-TeX fonts and XeTeX
+# as default output. To fix pdfTeX export:
 # - set all non-Arab text parts to a different language (e.g. English)
 # - define alternatives for hyperref (e.g. with textorpdfstring)
 #   for correct handling of hyperref.
