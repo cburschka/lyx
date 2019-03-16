@@ -2639,6 +2639,7 @@ static int identifyClosing(string & t)
 }
 
 static int num_replaced = 0;
+static bool previous_single_replace = true;
 
 MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & opt)
 	: p_buf(&buf), p_first_buf(&buf), opt(opt)
@@ -2646,8 +2647,14 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 	Buffer & find_buf = *theBufferList().getBuffer(FileName(to_utf8(opt.find_buf_name)), true);
 	docstring const & ds = stringifySearchBuffer(find_buf, opt);
 	use_regexp = lyx::to_utf8(ds).find("\\regexp{") != std::string::npos;
-	if (!opt.replace_all)
+	if (opt.replace_all && previous_single_replace) {
+		previous_single_replace = false;
+		num_replaced = 0;
+	}
+	else if (!opt.replace_all) {
 		num_replaced = 0;	// count number of replaced strings
+		previous_single_replace = true;
+	}
 	// When using regexp, braces are hacked already by escape_for_regex()
 	par_as_string = normalize(ds, !use_regexp);
 	open_braces = 0;
