@@ -619,7 +619,7 @@
 0x02c3 "\\textrptr"               "tipa" "force" # MODIFIER LETTER RIGHT ARROWHEAD
 #0x02c4 ""                         "" "" # MODIFIER LETTER UP ARROWHEAD
 #0x02c5 ""                         "" "" # MODIFIER LETTER DOWN ARROWHEAD
-0x02c6 "\\^{ }"                   "" "" # MODIFIER LETTER CIRCUMFLEX ACCENT
+0x02c6 "\\^{ }"                   "" "force=cp1256" # MODIFIER LETTER CIRCUMFLEX ACCENT
 0x02c7 "\\textasciicaron"         "textcomp" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk" # CARON
 0x02c8 "\\textprimstress"         "tipa" "force" # MODIFIER LETTER VERTICAL LINE
 0x02c9 "\\={ }"                   "" "force=utf8;utf8-cjk;euc-cn;euc-tw;gbk" # MODIFIER LETTER MACRON
@@ -808,12 +808,12 @@
 0x0390 "\\textgreek{\\\"'\\textiota}"    "textgreek" "force=euc-jp" # GREEK SMALL LETTER IOTA WITH DIALYTIKA AND TONOS
 0x0391 "\\textgreek{\\textAlpha}"        "textgreek" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # GREEK CAPITAL LETTER ALPHA
 0x0392 "\\textgreek{\\textBeta}"         "textgreek" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # GREEK CAPITAL LETTER BETA
-0x0393 "\\textgreek{\\textGamma}"        "textgreek" "force=cp437;cp437de;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\Gamma" "" # GREEK CAPITAL LETTER GAMMA
+0x0393 "\\textgreek{\\textGamma}"        "textgreek" "force=cp437;cp437de;cp862;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\Gamma" "" # GREEK CAPITAL LETTER GAMMA
 0x0394 "\\textgreek{\\textDelta}"	 "textgreek" "force=applemac;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\Delta" "" # GREEK CAPITAL LETTER DELTA
 0x0395 "\\textgreek{\\textEpsilon}"      "textgreek" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # GREEK CAPITAL LETTER EPSILON
 0x0396 "\\textgreek{\\textZeta}"         "textgreek" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # GREEK CAPITAL LETTER ZETA
 0x0397 "\\textgreek{\\textEta}"          "textgreek" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # GREEK CAPITAL LETTER ETA
-0x0398 "\\textgreek{\\textTheta}"	 "textgreek" "force=cp437;cp437de;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\Theta" "" # GREEK CAPITAL LETTER THETA
+0x0398 "\\textgreek{\\textTheta}"	 "textgreek" "force=cp437;cp437de;cp862;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\Theta" "" # GREEK CAPITAL LETTER THETA
 0x0399 "\\textgreek{\\textIota}"         "textgreek" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # GREEK CAPITAL LETTER IOTA
 0x039a "\\textgreek{\\textKappa}"        "textgreek" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # GREEK CAPITAL LETTER KAPPA
 0x039b "\\textgreek{\\textLambda}"       "textgreek" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\Lambda" "" # GREEK CAPITAL LETTER LAMDA
@@ -823,13 +823,13 @@
 0x039f "\\textgreek{\\textOmicron}"      "textgreek" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # GREEK CAPITAL LETTER OMICRON
 0x03a0 "\\textgreek{\\textPi}"           "textgreek" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\Pi" "" # GREEK CAPITAL LETTER PI
 0x03a1 "\\textgreek{\\textRho}"          "textgreek" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # GREEK CAPITAL LETTER RHO
-0x03a3 "\\textgreek{\\textSigma}"        "textgreek" "force=cp437;cp437de;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\Sigma" "" # GREEK CAPITAL LETTER SIGMA
+0x03a3 "\\textgreek{\\textSigma}"        "textgreek" "force=cp437;cp437de;cp862;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\Sigma" "" # GREEK CAPITAL LETTER SIGMA
 0x03a4 "\\textgreek{\\textTau}"          "textgreek" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # GREEK CAPITAL LETTER TAU
 0x03a5 "\\textgreek{\\textUpsilon}"      "textgreek" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\Upsilon" "" # GREEK CAPITAL LETTER UPSILON
-0x03a6 "\\textgreek{\\textPhi}"          "textgreek" "force=cp437;cp437de;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\Phi" "" # GREEK CAPITAL LETTER PHI
+0x03a6 "\\textgreek{\\textPhi}"          "textgreek" "force=cp437;cp437de;cp862;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\Phi" "" # GREEK CAPITAL LETTER PHI
 0x03a7 "\\textgreek{\\textChi}"          "textgreek" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # GREEK CAPITAL LETTER CHI
 0x03a8 "\\textgreek{\\textPsi}"          "textgreek" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\Psi" "" # GREEK CAPITAL LETTER PSI
-0x03a9 "\\textgreek{\\textOmega}"        "textgreek" "force=applemac;cp437;cp437de;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\Omega" "" # GREEK CAPITAL LETTER OMEGA
+0x03a9 "\\textgreek{\\textOmega}"        "textgreek" "force=applemac;cp437;cp437de;cp862;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\Omega" "" # GREEK CAPITAL LETTER OMEGA
 0x03aa "\\textgreek{\\\"\\textIota}"     "textgreek" "force=euc-jp" # GREEK CAPITAL LETTER IOTA WITH DIALYTIKA
 0x03ab "\\textgreek{\\\"\\textUpsilon}"  "textgreek" "force=euc-jp" # GREEK CAPITAL LETTER UPSILON WITH DIALYTIKA
 0x03ac "\\textgreek{\\'\\textalpha}"     "textgreek" "force=euc-jp" # GREEK SMALL LETTER ALPHA WITH TONOS
@@ -837,28 +837,28 @@
 0x03ae "\\textgreek{\\'\\texteta}"       "textgreek" "force=euc-jp" # GREEK SMALL LETTER ETA WITH TONOS
 0x03af "\\textgreek{\\'\\textiota}"      "textgreek" "force=euc-jp" # GREEK SMALL LETTER IOTA WITH TONOS
 0x03b0 "\\textgreek{\\\"'\\textupsilon}" "textgreek" "force=euc-jp" # GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND TONOS
-0x03b1 "\\textgreek{\\textalpha}"        "textgreek" "mathalpha,force=cp437;cp437de;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\alpha" "" # GREEK SMALL LETTER ALPHA
+0x03b1 "\\textgreek{\\textalpha}"        "textgreek" "mathalpha,force=cp437;cp437de;cp862;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\alpha" "" # GREEK SMALL LETTER ALPHA
 0x03b2 "\\textgreek{\\textbeta}"         "textgreek" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis,tipashortcut=B" "\\beta" "" # GREEK SMALL LETTER BETA
 0x03b3 "\\textgreek{\\textgamma}"        "textgreek" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\gamma" "" # GREEK SMALL LETTER GAMMA
-0x03b4 "\\textgreek{\\textdelta}"        "textgreek" "mathalpha,force=cp437;cp437de;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\delta" "" # GREEK SMALL LETTER DELTA
-0x03b5 "\\textgreek{\\textepsilon}"      "textgreek" "mathalpha,force=cp437;cp437de;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\varepsilon" "" # GREEK SMALL LETTER EPSILON
+0x03b4 "\\textgreek{\\textdelta}"        "textgreek" "mathalpha,force=cp437;cp437de;cp862;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\delta" "" # GREEK SMALL LETTER DELTA
+0x03b5 "\\textgreek{\\textepsilon}"      "textgreek" "mathalpha,force=cp437;cp437de;cp862;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\varepsilon" "" # GREEK SMALL LETTER EPSILON
 0x03b6 "\\textgreek{\\textzeta}"         "textgreek" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\zeta" "" # GREEK SMALL LETTER ZETA
 0x03b7 "\\textgreek{\\texteta}"          "textgreek" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\eta" "" # GREEK SMALL LETTER ETA
 0x03b8 "\\textgreek{\\texttheta}"        "textgreek" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis,tipashortcut=T" "\\theta" "" # GREEK SMALL LETTER THETA
 0x03b9 "\\textgreek{\\textiota}"         "textgreek" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\iota" "" # GREEK SMALL LETTER IOTA
 0x03ba "\\textgreek{\\textkappa}"        "textgreek" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\kappa" "" # GREEK SMALL LETTER KAPPA
 0x03bb "\\textgreek{\\textlambda}"       "textgreek" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\lambda" "" # GREEK SMALL LETTER LAMDA
-0x03bc "\\textgreek{\\textmu}"           "textgreek" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\mu" "" # GREEK SMALL LETTER MU
+0x03bc "\\textgreek{\\textmu}"           "textgreek" "mathalpha,force=cp862;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\mu" "" # GREEK SMALL LETTER MU
 0x03bd "\\textgreek{\\textnu}"           "textgreek" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\nu" "" # GREEK SMALL LETTER NU
 0x03be "\\textgreek{\\textxi}"           "textgreek" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\xi" "" # GREEK SMALL LETTER XI
 0x03bf "\\textgreek{\\textomicron}"      "textgreek" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # GREEK SMALL LETTER OMICRON
-0x03c0 "\\textgreek{\\textpi}"           "textgreek" "mathalpha,force=applemac;cp437;cp437de;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\pi" "" # GREEK SMALL LETTER PI
+0x03c0 "\\textgreek{\\textpi}"           "textgreek" "mathalpha,force=applemac;cp437;cp437de;cp862;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\pi" "" # GREEK SMALL LETTER PI
 0x03c1 "\\textgreek{\\textrho}"          "textgreek" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\rho" "" # GREEK SMALL LETTER RHO
 0x03c2 "\\textgreek{\\textfinalsigma}"   "textgreek" "mathalpha,force=iso8859-7;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\varsigma" "" # GREEK SMALL LETTER FINAL SIGMA
-0x03c3 "\\textgreek{\\textsigma}"        "textgreek" "mathalpha,force=iso8859-7;cp437;cp437de;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\sigma" "" # GREEK SMALL LETTER SIGMA
-0x03c4 "\\textgreek{\\texttau}"          "textgreek" "mathalpha,force=cp437;cp437de;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\tau" "" # GREEK SMALL LETTER TAU
+0x03c3 "\\textgreek{\\textsigma}"        "textgreek" "mathalpha,force=iso8859-7;cp437;cp437de;cp862;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\sigma" "" # GREEK SMALL LETTER SIGMA
+0x03c4 "\\textgreek{\\texttau}"          "textgreek" "mathalpha,force=cp437;cp437de;cp862;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\tau" "" # GREEK SMALL LETTER TAU
 0x03c5 "\\textgreek{\\textupsilon}"      "textgreek" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\upsilon" "" # GREEK SMALL LETTER UPSILON
-0x03c6 "\\textgreek{\\textphi}"          "textgreek" "mathalpha,force=cp437;cp437de;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\varphi" "" # GREEK SMALL LETTER PHI
+0x03c6 "\\textgreek{\\textphi}"          "textgreek" "mathalpha,force=cp437;cp437de;cp862;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\varphi" "" # GREEK SMALL LETTER PHI
 0x03c7 "\\textgreek{\\textchi}"          "textgreek" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis,tipashortcut=X" "\\chi" "" # GREEK SMALL LETTER CHI
 0x03c8 "\\textgreek{\\textpsi}"          "textgreek" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\psi" "" # GREEK SMALL LETTER PSI
 0x03c9 "\\textgreek{\\textomega}"        "textgreek" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\omega" "" # GREEK SMALL LETTER OMEGA
@@ -1751,22 +1751,22 @@
 # use the following macro for the character HORIZONTAL BAR
 0x2015 "\\LyXbar" "\\newcommand*\\LyXbar{\\rule[0.585ex]{1.2em}{0.25pt}}" "force"
 0x2016 "\\textbardbl"             "textcomp" "force=utf8x;euc-cn;euc-jp;euc-tw;gbk;jis,notermination=math,tipashortcut=\\textdoublevertline{}" "\\|" "" # DOUBLE VERTICAL LINE
-0x2017 "\\subdoublebar{ }"        "extraipa" "force=cp850;utf8;utf8-cjk;utf8x" "" "" # DOUBLE LOW LINE
-0x2018 "\\textquoteleft"          "" "force=iso8859-7;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # LEFT SINGLE QUOTATION MARK
-0x2019 "\\textquoteright"         "" "force=iso8859-7;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # RIGHT SINGLE QUOTATION MARK
-0x201a "\\quotesinglbase"         "" "" # SINGLE LOW-9 QUOTATION MARK
+0x2017 "\\subdoublebar{ }"        "extraipa" "force=cp850;iso8859-8;utf8;utf8-cjk;utf8x" "" "" # DOUBLE LOW LINE
+0x2018 "\\textquoteleft"          "" "force=cp1256;iso8859-7;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # LEFT SINGLE QUOTATION MARK
+0x2019 "\\textquoteright"         "" "force=cp1256;iso8859-7;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # RIGHT SINGLE QUOTATION MARK
+0x201a "\\quotesinglbase"         "" "force=cp1256" # SINGLE LOW-9 QUOTATION MARK
 #0x201b ""                         "" "" # SINGLE HIGH-REVERSED-9 QUOTATION MARK
-0x201c "\\textquotedblleft"       "" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # LEFT DOUBLE QUOTATION MARK
-0x201d "\\textquotedblright"      "" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # RIGHT DOUBLE QUOTATION MARK
-0x201e "\\quotedblbase"           "" "force=iso8859-13" # DOUBLE LOW-9 QUOTATION MARK
+0x201c "\\textquotedblleft"       "" "force=cp1256;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # LEFT DOUBLE QUOTATION MARK
+0x201d "\\textquotedblright"      "" "force=cp1256;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # RIGHT DOUBLE QUOTATION MARK
+0x201e "\\quotedblbase"           "" "force=cp1256;iso8859-13" # DOUBLE LOW-9 QUOTATION MARK
 #0x201f ""                         "" "" # DOUBLE HIGH-REVERSED-9 QUOTATION MARK
-0x2020 "\\dag"                    "" "force=euc-jp;euc-kr;jis" "\\dagger" "" # DAGGER
-0x2021 "\\ddag"                   "" "force=euc-jp;euc-kr;jis" "\\ddagger" "" # DOUBLE DAGGER
-0x2022 "\\textbullet"             "textcomp" "" "\\bullet" "" # BULLET
+0x2020 "\\dag"                    "" "force=cp1256;euc-jp;euc-kr;jis" "\\dagger" "" # DAGGER
+0x2021 "\\ddag"                   "" "force=cp1256;euc-jp;euc-kr;jis" "\\ddagger" "" # DOUBLE DAGGER
+0x2022 "\\textbullet"             "textcomp" "force=cp1256" "\\bullet" "" # BULLET
 0x2023 "\\textifsymbol[ifgeo]{116}" "ifsym" "force=utf8;utf8x;utf8-cjk" # TRIANGULAR BULLET # ≈ 0x25b8
 0x2024 "."                        "" "notermination=text,force=utf8;utf8-cjk;utf8x" "" "" # ONE DOT LEADER # ≈ FULL STOP
 0x2025 ".\\,."                    "" "notermination=text,force=utf8;utf8-cjk;utf8x;euc-jp;euc-kr;euc-tw;gbk;jis" "" "" # TWO DOT LEADER
-0x2026 "\\dots"                   "" "force=armscii8;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\ldots" "" # HORIZONTAL ELLIPSIS
+0x2026 "\\dots"                   "" "force=armscii8;cp1256;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\ldots" "" # HORIZONTAL ELLIPSIS
 #0x2027 ""                        "" "notermination=text" "" "" # HYPHENATION POINT (visible symbol used to indicate correct positions for word breaking, looks like but is not 0x00b7 middle dot)
 0x2028 "\\\\"                     "" "force=utf8;utf8-cjk" "" "" # LINE SEPARATOR
 0x2029 "\\par"                    "" "force=utf8;utf8-cjk" "" "" # PARAGRAPH SEPARATOR
@@ -1776,7 +1776,7 @@
 #0x202d ""                         "" "" "" "" # LEFT-TO-RIGHT OVERRIDE
 #0x202e ""                         "" "" "" "" # RIGHT-TO-LEFT OVERRIDE
 0x202f "\\,"                      "" "force=utf8;utf8-cjk;utf8x,notermination=both" "\\," "" # NARROW NO-BREAK SPACE
-0x2030 "\\textperthousand"        "textcomp" "force=euc-cn;euc-jp;euc-kr;gbk;jis" # PER MILLE SIGN
+0x2030 "\\textperthousand"        "textcomp" "force=cp1256;euc-cn;euc-jp;euc-kr;gbk;jis" # PER MILLE SIGN
 0x2031 "\\textpertenthousand"     "textcomp" "" # PER TEN THOUSAND SIGN
 0x2032 "\\textasciiacute"         "textcomp" "force=utf8;utf8-cjk;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\prime" "" # PRIME
 0x2033 "\\textacutedbl"           "textcomp" "force=utf8;utf8-cjk;euc-cn;euc-jp;euc-kr;gbk;jis" # DOUBLE PRIME
@@ -1785,8 +1785,8 @@
 0x2036 "\\textgravedbl"           "textcomp" "force=utf8;utf8x;utf8-cjk" # REVERSED DOUBLE PRIME
 #0x2037 ""                         "" "" # REVERSED TRIPLE PRIME
 0x2038 "\\textsubcircum{ }"       "tipa" "force=utf8;utf8x;utf8-cjk" "" "" # CARET
-0x2039 "\\guilsinglleft"          "" "" # SINGLE LEFT-POINTING ANGLE QUOTATION MARK
-0x203a "\\guilsinglright"         "" "" # SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
+0x2039 "\\guilsinglleft"          "" "force=cp1256" # SINGLE LEFT-POINTING ANGLE QUOTATION MARK
+0x203a "\\guilsinglright"         "" "force=cp1256" # SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
 0x203b "\\textreferencemark"      "textcomp" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # REFERENCE MARK
 0x203c "!!"                       "" "notermination=text,force=utf8;utf8-cjk;utf8x" "!!" "" # DOUBLE EXCLAMATION MARK # ≈ 2×EXCLAMATION MARK
 0x203d "\\textinterrobang"        "textcomp" "" # INTERROBANG
@@ -1825,7 +1825,7 @@
 0x207c "\\textsuperscript{=}"     "" "force=utf8;utf8-cjk" "{{}^=}" "" # SUPERSCRIPT EQUALS SIGN
 0x207d "\\textsuperscript{(}"     "" "force=utf8;utf8-cjk" "{{}^(}" "" # SUPERSCRIPT LEFT PARENTHESIS
 0x207e "\\textsuperscript{)}"     "" "force=utf8;utf8-cjk" "{{}^)}" "" # SUPERSCRIPT RIGHT PARENTHESIS
-0x207f "\\textsuperscript{n}"     "" "force=utf8;utf8-cjk;cp437;cp437de;cp865;euc-kr" "{{}^n}" "" # SUPERSCRIPT LATIN SMALL LETTER N
+0x207f "\\textsuperscript{n}"     "" "force=utf8;utf8-cjk;cp437;cp437de;cp862;cp865;euc-kr" "{{}^n}" "" # SUPERSCRIPT LATIN SMALL LETTER N
 0x2080 "\\textsubscript{0}"       "subscript" "force=utf8;utf8-cjk" "{{}_0}" "" # SUBSCRIPT ZERO
 0x2081 "\\textsubscript{1}"       "subscript" "force=utf8;utf8-cjk;euc-kr" "{{}_1}" "" # SUBSCRIPT ONE
 0x2082 "\\textsubscript{2}"       "subscript" "force=utf8;utf8-cjk;euc-kr" "{{}_2}" "" # SUBSCRIPT TWO
@@ -1857,7 +1857,7 @@
 0x20a9 "\\textwon"                "textcomp" "force=euc-kr" # WON SIGN
 #0x20aa ""                         "" "" # NEW SHEQEL SIGN
 0x20ab "\\textdong"               "textcomp" "" # DONG SIGN
-0x20ac "\\texteuro"               "textcomp" "force=iso8859-7;euc-kr;gbk" # EURO SIGN
+0x20ac "\\texteuro"               "textcomp" "force=cp1255;cp1256;iso8859-7;euc-kr;gbk" # EURO SIGN
 0x20b1 "\\textpeso"               "textcomp" "force=utf8x" # PESO SIGN
 0x20b2 "\\textguarani"            "textcomp" "force=utf8;utf8x;utf8-cjk" # GUARANI SIGN
 0x20b9 "\\rupee"                  "tfrupee" "" "" "" # INDIAN RUPEE SIGN
@@ -1899,7 +1899,7 @@
 #0x211f ""                         "" "" "" "" # RESPONSE
 0x2120 "\\textservicemark"        "textcomp" "" # SERVICE MARK
 #0x2121 ""                         "" "" # TELEPHONE SIGN
-0x2122 "\\texttrademark"          "textcomp" "force=euc-jp;euc-kr" # TRADE MARK SIGN
+0x2122 "\\texttrademark"          "textcomp" "force=cp1256;euc-jp;euc-kr" # TRADE MARK SIGN
 #0x2123 ""                         "" "" "" "" # VERSICLE
 0x2124 ""                         "" "force=utf8;utf8-cjk" "\\mathbb{Z}" "amssymb" # DOUBLE-STRUCK CAPITAL Z
 #0x2125 ""                         "" "" "" "" # OUNCE SIGN
