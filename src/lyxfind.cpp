@@ -1328,6 +1328,8 @@ static void buildAccentsMap()
                          "àÀèÈìÌòÒùÙǹǸẁẀỳỲ");   // grave
   buildaccent("subdot|d", "BbDdHhKkLlMmNnRrSsTtVvWwZzAaEeIiOoUuYy",
                           "ḄḅḌḍḤḥḲḳḶḷṂṃṆṇṚṛṢṣṬṭṾṿẈẉẒẓẠạẸẹỊịỌọỤụỴỵ");  // dot below
+  buildaccent("ogonek|k", "AaEeIiUuOo",
+                          "ĄąĘęĮįŲųǪǫ"); // ogonek
 }
 
 /*
@@ -1338,7 +1340,7 @@ void Intervall::removeAccents()
 {
   if (accents.empty())
     buildAccentsMap();
-  static regex const accre("\\\\((.|grave|breve|lyxmathsym|text|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot)\\{[^\\{\\}]+\\}|(i|imath|jmath)(?![a-zA-Z]))");
+  static regex const accre("\\\\((.|grave|breve|lyxmathsym|text|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek)\\{[^\\{\\}]+\\}|(i|imath|jmath)(?![a-zA-Z]))");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
