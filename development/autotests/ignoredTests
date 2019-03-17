@@ -77,6 +77,8 @@ export/.*/ja/(knitr|sweave).*
 #
 !export/.*/ja/multilingual.*
 export/.*/ja/.*_(pdf[245]|dvi3).*
+# the unicodesymbols-tests use pdflatex, too:
+export/export/latex/unicodesymbols/.*-platex_pdf2
 
 # export of minted documents to 2.2.x is not guaranteed to work (and currently
 # fails for our two minted example files), as explained here:

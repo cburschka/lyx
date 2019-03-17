@@ -18,22 +18,10 @@ Sublabel: todo
 # Error in Japanese document if LyX-logo is preceded by foreign language
 export/export/latex/ja_wrong_auto_encoding_(dvi|pdf(|3)).*
 
-# Missing characters with non-TeX fonts
-# For details see the minimal example "systemfonts-Math-missingchars.lyx"
-export/doc/(|de/|es/|fr/)Math.*systemF
-export/export/latex/systemfonts-Math-missingchars.*systemF
-#
-export/export/latex/xetex-inputenc.*_pdf4_systemF
-
 # missing character: There is no ^^A in font [lmroman12-regular]
 # and all the line down to ^^Z and beyond...
 # XeTeX artifact? works with LuaTeX, explore:
 export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_systemF
-
-# Example for lib/scripts/listerrors
-# Requires noweb. Seems to be restricted to plain "latex".
-# Find out why and whether the script could be improved.
-export/examples/listerrors_(pdf[245]).*
 
 # iconv fails, if a nomenclature inset contains an uncodable character
 export/export/latex/iconv-error-nomenclature_pdf2
@@ -64,58 +52,18 @@ export/examples/beamerlyxexample1_lyx(16|20)
 # * reversed order of \end_layout and \end_inset results in corrupt LyX file
 # * reversed order of command arguments results in incompilable LaTeX
 export/examples/(|es/)modernCV_lyx(16|20)
+#
+# back-conversion fails for rotated float inset in a list
+export/export/lyx2lyx/lyx_2_3_test_lyx(16|20|21|22)
 
-# Farsi font encoding LAE should be added also to custom font encoding
-# (similar to the Greek font encoding LGR).
-export/export/latex/fa-OT1_pdf2
 
-# CJK for multilingual documents:
-# some "language default" legacy encodings fail (missing fonts)
+# CJK
+# Korean legacy encoding fails (missing fonts)
 export/export/latex/CJK/ko_default_pdf2
-
-# Arabic (see also "texissues")
-# "! Extra \else" and missing glyph "no ␣ in font Scheherazade":
-export/doc/ar/UserGuide_pdf4_systemF
-# the lyx2lyx test also tests compilation after round-trip:
-export/doc/ar/UserGuide_lyx(22|23)
-
-
-# Common Unicode fonts don't support all characters supported by
-# lib/unicodesymbols in one font. (This shows that there are use cases for
-# 8-bit fonts or GUI support for selecting more than one system font.)
-# Write an enhancement ticket and move to lyxissues (together with other
-# "missing symbols" tests in the LyX documentation).
-export/export/latex/luainputenc-utf8_pdf5_systemF
 
 # New problem with TL18: endless loop?
 #    ! TeX capacity exceeded, sorry [input stack +size=5000].
 export/export/latex/luainputenc-utf8_pdf5_texF
-
-
-# input encoding tests
-# --------------------
-# Please test and correct!
-
-# Failing for unknown reason
-# Hebrew
-export/export/latex/unicodesymbols/008-greek-and-coptic-with-textalpha_cp862_pdf2
-export/export/latex/unicodesymbols/008-greek-and-coptic_cp862_pdf2
-export/export/latex/unicodesymbols/070-72-general-punctuation-sub-super-currency_cp1255_pdf2
-export/export/latex/unicodesymbols/070-72-general-punctuation-sub-super-currency_cp862_pdf2
-export/export/latex/unicodesymbols/070-72-general-punctuation-sub-super-currency_iso8859-8_pdf2
-export/export/latex/unicodesymbols/074-76-letterlike-numberforms-arrows_cp862_pdf2
-# Arabic:
-export/export/latex/unicodesymbols/005-7-ipa-modifiers-combining_cp1256_pdf2
-export/export/latex/unicodesymbols/008-greek-and-coptic-with-textalpha_cp1256_pdf2
-export/export/latex/unicodesymbols/069-greek-extended-textalpha_cp1256_pdf2
-export/export/latex/unicodesymbols/070-72-general-punctuation-sub-super-currency_cp1256_pdf2
-export/export/latex/unicodesymbols/074-76-letterlike-numberforms-arrows_cp1256_pdf2
-
-# pLaTeX
-export/export/latex/unicodesymbols/.*_euc-jp-platex_pdf2
-export/export/latex/unicodesymbols/.*_jis-platex_pdf2
-export/export/latex/unicodesymbols/.*_shift-jis-platex_pdf2
-export/export/latex/unicodesymbols/.*_utf8-platex_pdf2
 
 
 # nonstandard tests failing for unknown reason:
@@ -125,10 +73,6 @@ export/templates/IUCr-article_pdf4_systemF
 export/templates/RJournal_(dvi3|pdf[45])_systemF
 export/templates/aa_(dvi3|pdf[45])_.*
 export/templates/kluwer_.*_systemF
-
-# lyx2lyx tests:
-# back-conversion fails for rotated float inset in a list
-export/export/lyx2lyx/lyx_2_3_test_lyx(16|20|21|22)
 
 
 # ================================================
@@ -193,8 +137,50 @@ export/templates/IEEEtran-Journal_lyx16
 export/doc/(de|es)/Additional_pdf4_texF
 export/export/latex/xetex-inputenc-utf8_pdf4_texF
 
-#11519 Wrong input encoding when parent and child use different setting.
+#11519 Wrong input encoding when parent and child use different setting.q
 export/export/latex/parent-with-other-inputenc_pdf2
+
+#11520 "listerrors" fails with pdflatex, lualatex, and xelatex
+# Example for lib/scripts/listerrors
+# Requires noweb. Seems to be restricted to plain "latex".
+# Find out why and whether the script could be improved.
+export/examples/listerrors_(pdf[245]).*
+
+#11521 Font encoding "LAE" required with farsi.
+# The Farsi font encoding LAE must be added also to a custom font encoding
+# (similar to the Greek and Cyrillic font encodings LGR and T2A).
+export/export/latex/fa-OT1_pdf2
+
+#11522 Support specification of complementing non-TeX fonts
+# More than one non-TeX font required for the character set in many documents
+# to prevent "missing character" errors with non-TeX fonts
+export/export/latex/luainputenc-utf8_pdf5_systemF
+export/export/latex/xetex-inputenc.*_pdf4_systemF
+#
+export/doc/(|de/|es/|fr/)Math.*systemF
+# minimal example for Math.lyx:
+export/export/latex/systemfonts-Math-missingchars.*systemF
+#
+# CJK-quotes examples (missing in most Latin-script fonts)
+export/doc/(|de/|es/|fr/)UserGuide_(dvi3|pdf4|pdf5)_systemF
+#
+#
+# Arabic (see also "texissues")
+# "! Extra \else" and missing glyph "no ␣ in font Scheherazade":
+# (the lyx2lyx test also tests compilation after round-trip)
+export/doc/ar/UserGuide_pdf4_systemF
+export/doc/ar/UserGuide_lyx(22|23)
+#
+# Juergen Spitzmueller: They do not have problems with xunicode, but without.
+# The reason is that the asterisk glyph is not included in the arabic font
+# (Scheherazade), but apparently, xunicode defines an extra asterisk
+# glyph (for a different purpose) that is being used here. Clearly the
+# problem should be fixed somewhere else.
+# Günter Milde: works in TeXLive17 (Debian/stretch)
+# export/doc/ar/Intro_pdf4_systemF
+
+
+
 
 # ==============================================================
 Sublabel: ert
