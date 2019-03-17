@@ -112,52 +112,30 @@
 
 #else
 
-#ifdef _WIN32
-#include <windows.h>
-#else
-#include <sys/time.h>
-#endif
-
+#include <chrono>
 #include <iomanip>
 #include <iostream>
 
 
-#if defined(__GNUG__) && defined(_GLIBCXX_DEBUG)
-#error Profiling is not usable when run-time debugging is in effect
-#endif
-
-#ifdef _WIN32
-/* This function does not really returns the "time of day",
- * but it will suffice to evaluate elapsed times.
- */
-int gettimeofday(struct timeval * tv, struct timezone * /*tz*/)
-{
-	LARGE_INTEGER frequency, t;
-	QueryPerformanceFrequency(&frequency);
-	QueryPerformanceCounter(&t);
-
-	tv->tv_sec = long(t.QuadPart / frequency.QuadPart);
-	tv->tv_usec = long((1000000.0 * (t.QuadPart % frequency.QuadPart)) / frequency.QuadPart);
-	return 0;
-}
-
-#endif // _WIN32
+//#if defined(__GNUG__) && defined(_GLIBCXX_DEBUG)
+//#error Profiling is not usable when run-time debugging is in effect
+//#endif
 
 namespace {
 
-void dumpTime(long long value)
+void dumpTime(std::chrono::duration<double> value)
 {
+	double const val = value.count();
 	std::cerr << std::fixed << std::setprecision(2);
-	if (value >= 1000000)
-		std::cerr << value / 1000000 << "sec";
-	else if (value >= 1000)
-		std::cerr << value / 1000 << "msec";
+	if (val >= 1.0)
+	 	std::cerr << val << " s";
+	else if (val >= 0.001)
+		std::cerr << val * 1000 << " ms";
 	else
-		std::cerr << value << "usec";
+	 	std::cerr << val * 1000000 << " us";
 }
 
-void dump(long long sec, long long usec, unsigned long long count) {
-	double const total = sec * 1000000 + usec;
+void dump(std::chrono::duration<double> total, unsigned long long count) {
 	dumpTime(total / count);
 	std::cerr << ", count=" << count
 			  << ", total=";
@@ -176,44 +154,39 @@ void dump(long long sec, long long usec, unsigned long long count) {
 
 class PMProfStat {
 public:
-	PMProfStat(char const * name) : name_(name), sec_(0), usec_(0), count_(0),
-                                    miss_sec_(0), miss_usec_(0), miss_count_(0) {}
+	PMProfStat(char const * name) : name_(name), count_(0), miss_count_(0) {}
 
 	~PMProfStat() {
 		if (count_>0) {
 			if (miss_count_ == 0) {
 				std::cerr << "#pmprof# " << name_ << ": ";
-				dump(sec_, usec_, count_);
+				dump(dur_, count_);
 			}
 			else {
 				std::cerr << "#pmprof# " << name_ << ": ";
-				dump(sec_ + miss_sec_, usec_ + miss_usec_, count_ + miss_count_);
+				dump(dur_ + miss_dur_, count_ + miss_count_);
 				std::cerr << "   hit: " << 100 * count_ / (count_ + miss_count_) << "%, ";
-				dump(sec_, usec_, count_);
+				dump(dur_, count_);
 				std::cerr << "  miss: " << 100 * miss_count_ / (count_ + miss_count_) << "%, ";
-				dump(miss_sec_, miss_usec_, miss_count_);
+				dump(miss_dur_, miss_count_);
 			}
 		}
 	}
 
-	void add(const long long s, const long long u, const bool hit) {
+	void add(std::chrono::duration<double> d, const bool hit) {
 		if (hit) {
-			sec_ += s;
-			usec_ += u;
+			dur_ += d;
 			count_++;
 		} else {
-			miss_sec_ += s;
-			miss_usec_ += u;
+			miss_dur_ += d;
 			miss_count_++;
 		}
 	}
 
 private:
 	char const * name_;
-	long long sec_, usec_;
-	unsigned long long count_;
-	long long miss_sec_, miss_usec_;
-	unsigned long long miss_count_;
+	std::chrono::duration<double> dur_, miss_dur_;
+	unsigned long long count_, miss_count_;
 };
 
 
@@ -226,19 +199,17 @@ class PMProfInstance {
 public:
 	PMProfInstance(PMProfStat * stat) : hit(true), stat_(stat)
 	{
-		gettimeofday(&before_, 0);
+		before_ = std::chrono::system_clock::now();
 	}
 
 	~PMProfInstance() {
-		gettimeofday(&after_, 0);
-		stat_->add(after_.tv_sec - before_.tv_sec,
-		           after_.tv_usec - before_.tv_usec, hit);
+		stat_->add(std::chrono::system_clock::now() - before_, hit);
 	}
 
 	bool hit;
 
 private:
-	timeval before_, after_;
+	std::chrono::system_clock::time_point before_;
 	PMProfStat * stat_;
 };
 
