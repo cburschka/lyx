@@ -15,7 +15,7 @@ logicalmkup
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding auto
+\inputencoding iso8859-15
 \fontencoding auto
 \font_roman "lmodern" "FreeSerif"
 \font_sans "default" "FreeSans"
@@ -95,21 +95,22 @@ logicalmkup
 
 \begin_body
 
-\begin_layout Standard
-When the 
-\begin_inset Quotes eld
-\end_inset
-
-inputencoding
-\begin_inset Quotes erd
-\end_inset
-
- setting for parent and child differ, the parent loads the child doc with
- wrong input encoding.
+\begin_layout Subsection*
+Bug #11519: Wrong input encoding when parent and child use different setting.
 \end_layout
 
 \begin_layout Standard
-Example: This document uses 
+When 
+\end_layout
+
+\begin_layout Itemize
+\noindent
+a parent document sets a global input encoding (i.e.
+ not 
+\family typewriter
+auto
+\family default
+ (
 \begin_inset Quotes eld
 \end_inset
 
@@ -117,11 +118,33 @@ language default
 \begin_inset Quotes erd
 \end_inset
 
- (
+)) and
+\end_layout
+
+\begin_layout Itemize
+\noindent
+the 
+\begin_inset Quotes eld
+\end_inset
+
+inputencoding
+\begin_inset Quotes erd
+\end_inset
+
+ setting for parent and child differ, 
+\end_layout
+
+\begin_layout Standard
+\noindent
+the parent loads the child document with wrong input encoding.
+\end_layout
+
+\begin_layout Standard
+Example: This document uses 
 \family typewriter
-utf8
+latin9
 \family default
-), the included child
+, the included child
 \family typewriter
  utf8
 \family default
