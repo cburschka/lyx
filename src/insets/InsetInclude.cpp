@@ -792,6 +792,17 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 					from_utf8(child_tf),
 					from_utf8(master_tf));
 				Alert::warning(_("Different use-non-TeX-fonts settings"), text, true);
+			} 
+			else if (tmp->params().inputenc != masterBuffer->params().inputenc) {
+				docstring text = bformat(_("Included file `%1$s'\n"
+					"uses input encoding \"%2$s\" [%3$s]\n"
+					"while parent file uses input encoding \"%4$s\" [%5$s]."),
+					included_file.displayName(),
+					_(tmp->params().inputenc),
+					from_utf8(tmp->params().encoding().guiName()),
+					_(masterBuffer->params().inputenc),
+					from_utf8(masterBuffer->params().encoding().guiName()));
+				Alert::warning(_("Different LaTeX input encodings"), text, true);
 			}
 
 			// Make sure modules used in child are all included in master

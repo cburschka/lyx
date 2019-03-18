@@ -1575,5 +1575,22 @@ docstring bformat(docstring const & fmt,
 	return subst(str, from_ascii("%%"), from_ascii("%"));
 }
 
+docstring bformat(docstring const & fmt, docstring const & arg1,
+				  docstring const & arg2, docstring const & arg3,
+				  docstring const & arg4, docstring const & arg5)
+{
+	LATTEST(contains(fmt, from_ascii("%1$s")));
+	LATTEST(contains(fmt, from_ascii("%2$s")));
+	LATTEST(contains(fmt, from_ascii("%3$s")));
+	LATTEST(contains(fmt, from_ascii("%4$s")));
+	LATTEST(contains(fmt, from_ascii("%5$s")));
+	docstring str = subst(fmt, from_ascii("%1$s"), arg1);
+	str = subst(str, from_ascii("%2$s"), arg2);
+	str = subst(str, from_ascii("%3$s"), arg3);
+	str = subst(str, from_ascii("%4$s"), arg4);
+	str = subst(str, from_ascii("%5$s"), arg5);
+	return subst(str, from_ascii("%%"), from_ascii("%"));
+}
+
 } // namespace support
 } // namespace lyx

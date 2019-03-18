@@ -372,6 +372,7 @@ docstring bformat(docstring const & fmt, char const * arg1, docstring const & ar
 docstring bformat(docstring const & fmt, int arg1, int arg2);
 docstring bformat(docstring const & fmt, docstring const & arg1, docstring const & arg2, docstring const & arg3);
 docstring bformat(docstring const & fmt, docstring const & arg1, docstring const & arg2, docstring const & arg3, docstring const & arg4);
+docstring bformat(docstring const & fmt, docstring const & arg1, docstring const & arg2, docstring const & arg3, docstring const & arg4, docstring const & arg5);
 
 
 } // namespace support
