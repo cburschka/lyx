@@ -1347,7 +1347,7 @@ void Intervall::removeAccents()
     string key = sub.str(1);
     if (accents.find(key) != accents.end()) {
       string val = accents[key];
-      size_t pos = sub.position(0);
+      size_t pos = sub.position(size_t(0));
       for (size_t i = 0; i < val.size(); i++) {
         par[pos+i] = val[i];
       }
