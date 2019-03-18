@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Lyx 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2019-02-26 14:19+0100\n"
-"PO-Revision-Date: 2018-12-02 01:09-0800\n"
+"PO-Revision-Date: 2019-03-19 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
 "Language: cs\n"
@@ -3307,7 +3307,7 @@ msgstr "&Najít:"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:26
 msgid "Use the color scheme of your Operating System/Desktop Environment"
-msgstr ""
+msgstr "Použít barevné schéma definované operačním systémem/desktopovým prostředím"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:29
 msgid "&Use system colors"
@@ -7481,9 +7481,8 @@ msgid "Note-"
 msgstr "Note-"
 
 #: lib/layouts/aastex62.layout:3
-#, fuzzy
 msgid "American Astronomical Society (AASTeX v. 6.2)"
-msgstr "American Astronomical Society (AASTeX v. 6)"
+msgstr "American Astronomical Society (AASTeX v. 6.2)"
 
 #: lib/layouts/aastex62.layout:126 lib/layouts/ectaart.layout:178
 #: lib/layouts/ectaart.layout:181
@@ -7491,9 +7490,8 @@ msgid "Corresponding Author"
 msgstr "Corresponding Author"
 
 #: lib/layouts/aastex62.layout:132
-#, fuzzy
 msgid "Corresponding author:"
-msgstr "Corresponding author"
+msgstr "Corresponding author:"
 
 #: lib/layouts/aastex62.layout:151 lib/layouts/egs.layout:324
 #: lib/layouts/svmult.layout:83
@@ -7506,7 +7504,7 @@ msgstr "ORCID"
 
 #: lib/layouts/aastex62.layout:158
 msgid "Enter the 16 digit ORCID as xxxx-xxxx-xxxx-xxxx"
-msgstr ""
+msgstr "Enter the 16 digit ORCID as xxxx-xxxx-xxxx-xxxx"
 
 #: lib/layouts/aastex62.layout:167 lib/layouts/agu_stdtitle.inc:132
 #: lib/layouts/apa.layout:172 lib/layouts/apa6.layout:162
@@ -7527,44 +7525,36 @@ msgid "Collaboration:"
 msgstr "Collaboration:"
 
 #: lib/layouts/aastex62.layout:193
-#, fuzzy
 msgid "Nocollaboration"
-msgstr "Collaboration"
+msgstr "Nocollaboration"
 
 #: lib/layouts/aastex62.layout:200
-#, fuzzy
 msgid "No collaboration"
-msgstr "Collaboration"
+msgstr "No collaboration"
 
 #: lib/layouts/aastex62.layout:230
-#, fuzzy
 msgid "Section Appendix"
-msgstr "Příloha"
+msgstr "Section Appendix"
 
 #: lib/layouts/aastex62.layout:234
-#, fuzzy
 msgid "\\Alph{appendix}."
-msgstr "Appendix \\Alph{appendix}."
+msgstr "\\Alph{appendix}."
 
 #: lib/layouts/aastex62.layout:245
-#, fuzzy
 msgid "Subsection Appendix"
-msgstr "Subsection Box"
+msgstr "Subsection Appendix"
 
 #: lib/layouts/aastex62.layout:249
-#, fuzzy
 msgid "\\Alph{appendix}\\arabic{subappendix}."
-msgstr "\\Alph{chapter}.\\arabic{section}"
+msgstr "\\Alph{appendix}\\arabic{subappendix}."
 
 #: lib/layouts/aastex62.layout:260
-#, fuzzy
 msgid "Subsubsection Appendix"
-msgstr "Subsubsection Box"
+msgstr "Subsubsection Appendix"
 
 #: lib/layouts/aastex62.layout:264
-#, fuzzy
 msgid "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}."
-msgstr "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
+msgstr "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}."
 
 #: lib/layouts/achemso.layout:3
 msgid "American Chemical Society (ACS)"
@@ -10098,7 +10088,6 @@ msgid "Change bars"
 msgstr "Značky změn"
 
 #: lib/layouts/changebars.module:7
-#, fuzzy
 msgid ""
 "Enables LyX to add vertical change bars in the margin of PDF output when "
 "Show Changes in Output is turned on and pdflatex output format is chosen."
@@ -10216,7 +10205,7 @@ msgstr "KnightMove:"
 
 #: lib/layouts/cl2emult.layout:3
 msgid "Springer Contributed Books (cl2emult, Obsolete!)"
-msgstr ""
+msgstr "Springer Contributed Books (cl2emult, Obsolete!)"
 
 #: lib/layouts/ctex-article.layout:3
 msgid "Chinese Article (CTeX)"
@@ -13408,34 +13397,28 @@ msgid "TUGboat"
 msgstr "TUGboat"
 
 #: lib/layouts/maa-monthly.layout:3
-#, fuzzy
 msgid "Mathematical Monthly article"
-msgstr "American Mathematical Society (AMS) Article"
+msgstr "Mathematical Monthly article"
 
 #: lib/layouts/maa-monthly.layout:64
-#, fuzzy
 msgid "Abbreviated Title"
-msgstr "Abbreviations"
+msgstr "Abbreviated Title"
 
 #: lib/layouts/maa-monthly.layout:74 lib/layouts/maa-monthly.layout:77
-#, fuzzy
 msgid "Biographies"
-msgstr "Biography"
+msgstr "Biographies"
 
 #: lib/layouts/maa-monthly.layout:89 lib/layouts/maa-monthly.layout:96
-#, fuzzy
 msgid "Author Biography"
-msgstr "Biography"
+msgstr "Author Biography"
 
 #: lib/layouts/maa-monthly.layout:112
-#, fuzzy
 msgid "Affiliation (include email):"
-msgstr "Affiliation (none)"
+msgstr "Affiliation (include email):"
 
 #: lib/layouts/maa-monthly.layout:128
-#, fuzzy
 msgid "Title of acknowledgment"
-msgstr "acknowledgments"
+msgstr "Title of acknowledgment"
 
 #: lib/layouts/maa-monthly.layout:159 lib/layouts/theorems-order.inc:70
 #: lib/layouts/theorems-starred.inc:251
@@ -15811,15 +15794,15 @@ msgstr "Solution \\thesolution"
 
 #: lib/layouts/svjog.layout:3
 msgid "Journal of Geodesy (Springer)"
-msgstr ""
+msgstr "Journal of Geodesy (Springer)"
 
 #: lib/layouts/svmono.layout:3
 msgid "Springer Monographs (svmono)"
-msgstr ""
+msgstr "Springer Monographs (svmono)"
 
 #: lib/layouts/svmult.layout:3
 msgid "Springer Contributed Books (svmult)"
-msgstr ""
+msgstr "Springer Contributed Books (svmult)"
 
 #: lib/layouts/svmult.layout:34
 msgid "Title*"
@@ -15853,7 +15836,7 @@ msgstr "For editors"
 
 #: lib/layouts/svprobth.layout:3
 msgid "Probability Theory and Related Fields (Springer svprobth)"
-msgstr ""
+msgstr "Probability Theory and Related Fields (Springer svprobth)"
 
 #: lib/layouts/sweave.module:2 lib/configure.py:673
 msgid "Sweave"
@@ -29248,7 +29231,7 @@ msgstr "&Vyhledávat při zadávání"
 msgid ""
 "Ordered list of all cited references.\n"
 "You can reorder, add and remove references with the buttons on the left."
-msgstr ""
+msgstr "Seřazený seznam všech citací.\nZměnit setřídění a přidat/smazat citace můžete tlačítky vlevo."
 
 #: src/frontends/qt4/GuiCitation.cpp:296
 msgid "General text befo&re:"
@@ -29292,14 +29275,15 @@ msgstr "Vždy použít plný výčet autorů (namísto \"et al.\")"
 
 #: src/frontends/qt4/GuiCitation.cpp:363
 msgid "All references available for citing."
-msgstr ""
+msgstr "Všechny dostupné citace."
 
 #: src/frontends/qt4/GuiCitation.cpp:365
 msgid ""
 "All references available for citing.\n"
 "To add the selected one, hit Add, press Enter or double-click.\n"
 "Hit Ctrl-Enter to add and close the dialog."
-msgstr ""
+msgstr "Všechny dostupné citace.\nPro přidání vybrané stiskněte Přidat, zmáčkněte Enter anebo dvojitě klikněte.\nStiskněte Ctrl-Enter pokud chcete přidat a zároveň ukončit dialog."
+
 
 #: src/frontends/qt4/GuiCitation.cpp:435
 msgid "Keys"
@@ -29326,7 +29310,7 @@ msgstr "Zadejte řetězec pro filtrování seznamu citací s stiskněte <Enter>"
 msgid ""
 "\n"
 "The down arrow key will get you into the list of filtered citations."
-msgstr ""
+msgstr "\nŠipkou dolů se dostanete na seznam vyfiltrovaných citací."
 
 #: src/frontends/qt4/GuiCitation.cpp:657
 msgid "Text before"
