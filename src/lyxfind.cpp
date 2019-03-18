@@ -162,7 +162,7 @@ IgnoreFormats ignoreFormats;
 
 void setIgnoreFormat(string type, bool value)
 {
-	ignoreFormats.setIgnoreFormat(type, value);
+  ignoreFormats.setIgnoreFormat(type, value);
 }
 
 
@@ -1109,6 +1109,8 @@ class Border {
   int upper;
 };
 
+static vector<Border> borders = vector<Border>(30);
+
 #define MAXOPENED 30
 class Intervall {
   bool isPatternString;
@@ -1122,7 +1124,6 @@ class Intervall {
   int depts[MAXOPENED];
   int closes[MAXOPENED];
   int actualdeptindex;
-  Border borders[2*MAXOPENED];
   int previousNotIgnored(int);
   int nextNotIgnored(int);
   void handleOpenP(int i);
@@ -1173,20 +1174,28 @@ void Intervall::setForDefaultLang(KeyInfo &defLang)
 static void checkDepthIndex(int val)
 {
   static int maxdepthidx = MAXOPENED-2;
+  static int lastmaxdepth = 0;
+  if (val > lastmaxdepth) {
+    LYXERR0("Depth reached " << val);
+    lastmaxdepth = val;
+  }
   if (val > maxdepthidx) {
     maxdepthidx = val;
     LYXERR0("maxdepthidx now " << val);
   }
 }
 
+#if 0
+// Not needed, because borders are now dynamically expanded
 static void checkIgnoreIdx(int val)
 {
-  static int maxignoreidx = 2*MAXOPENED - 4;
-  if (val > maxignoreidx) {
-    maxignoreidx = val;
-    LYXERR0("maxignoreidx now " << val);
+  static int lastmaxignore = -1;
+  if ((lastmaxignore < val) && (size_t(val+1) >= borders.size())) {
+    LYXERR0("IgnoreIdx reached " << val);
+    lastmaxignore = val;
   }
 }
+#endif
 
 /*
  * Expand the region of ignored parts of the input latex string
@@ -1203,9 +1212,14 @@ void Intervall::addIntervall(int low, int upper)
   }
   Border br(low, upper);
   if (idx > ignoreidx) {
-    borders[idx] = br;
+    if (borders.size() <= size_t(idx)) {
+      borders.push_back(br);
+    }
+    else {
+      borders[idx] = br;
+    }
     ignoreidx = idx;
-    checkIgnoreIdx(ignoreidx);
+    // checkIgnoreIdx(ignoreidx);
     return;
   }
   else {
@@ -1213,12 +1227,18 @@ void Intervall::addIntervall(int low, int upper)
     // We know here that br.low > borders[idx-1].upper
     if (br.upper < borders[idx].low) {
       // We have to insert at this pos
-      for (int i = ignoreidx+1; i > idx; --i) {
+      if (size_t(ignoreidx+1) >= borders.size()) {
+        borders.push_back(borders[ignoreidx]);
+      }
+      else {
+        borders[ignoreidx+1] = borders[ignoreidx];
+      }
+      for (int i = ignoreidx; i > idx; --i) {
         borders[i] = borders[i-1];
       }
       borders[idx] = br;
       ignoreidx += 1;
-      checkIgnoreIdx(ignoreidx);
+      // checkIgnoreIdx(ignoreidx);
       return;
     }
     // Here we know, that we are overlapping
@@ -1263,13 +1283,14 @@ static void buildaccent(string n, string param, string values)
       // get the corresponding utf8-value
       if ((values[start] & 0xc0) != 0xc0) {
         // should not happen, utf8 encoding starts at least with 11xxxxxx
-	// but value for '\dot{i}' is 'i', which is ascii
-	if ((values[start] & 0x80) == 0) {
-	  // is ascii
-	  accents[key] = values.substr(start, 1);
-	}
-	start++;
-	continue;
+        // but value for '\dot{i}' is 'i', which is ascii
+        if ((values[start] & 0x80) == 0) {
+          // is ascii
+          accents[key] = values.substr(start, 1);
+          // LYXERR0("" << key << "=" << accents[key]);
+        }
+        start++;
+        continue;
       }
       for (int j = 1; ;j++) {
         if (start + j >= values.size()) {
@@ -1281,6 +1302,7 @@ static void buildaccent(string n, string param, string values)
           // This is the first byte of following utf8 char
           accents[key] = values.substr(start, j);
           start += j;
+          // LYXERR0("" << key << "=" << accents[key]);
           break;
         }
       }
@@ -1299,13 +1321,13 @@ static void buildAccentsMap()
   buildaccent("ddot", "aAeEiIioOuUyY",
                       "äÄëËïÏïöÖüÜÿŸ");	// umlaut
   buildaccent("dot|.", "cCeEGgIizZaAoObBdDfFyY",
-                       "ċĊėĖĠġİİżŻȧȦȯȮḃḂḋḊḟḞẏẎ"); // dot{i} can only happen if ignoring case, but there is no lowercase of 'İ'
+                       "ċĊėĖĠġİİżŻȧȦȯȮḃḂḋḊḟḞẏẎ");	// dot{i} can only happen if ignoring case, but there is no lowercase of 'İ'
   accents["acute{\\imath}"] = "í";
   buildaccent("acute", "aAcCeElLoOnNrRsSuUyYzZiI",
                        "áÁćĆéÉĺĹóÓńŃŕŔśŚúÚýÝźŹíÍ");
   buildaccent("dacute|H|h", "oOuU", "őŐűŰ");	// double acute
   buildaccent("mathring|r", "aAuUwy",
-                            "åÅůŮẘẙ");  // ring
+                            "åÅůŮẘẙ");	// ring
   accents["check{\\imath}"] = "ǐ";
   accents["check{\\jmath}"] = "ǰ";
   buildaccent("check|v", "cCdDaAeEiIoOuUgGkKhHlLnNrRsSTtzZ",
@@ -1322,22 +1344,22 @@ static void buildAccentsMap()
                        "ãÃñÑõÕĩĨũŨ");	// tilde
   accents["breve{\\imath}"] = "ĭ";
   buildaccent("breve|u", "aAeEgGiIoOuU",
-                         "ăĂĕĔğĞĭĬŏŎŭŬ");    // breve
+                         "ăĂĕĔğĞĭĬŏŎŭŬ");	// breve
   accents["grave{\\imath}"] = "ì";
   buildaccent("grave|`", "aAeEiIoOuUnNwWyY",
-                         "àÀèÈìÌòÒùÙǹǸẁẀỳỲ");   // grave
+                         "àÀèÈìÌòÒùÙǹǸẁẀỳỲ");	// grave
   buildaccent("subdot|d", "BbDdHhKkLlMmNnRrSsTtVvWwZzAaEeIiOoUuYy",
-                          "ḄḅḌḍḤḥḲḳḶḷṂṃṆṇṚṛṢṣṬṭṾṿẈẉẒẓẠạẸẹỊịỌọỤụỴỵ");  // dot below
+                          "ḄḅḌḍḤḥḲḳḶḷṂṃṆṇṚṛṢṣṬṭṾṿẈẉẒẓẠạẸẹỊịỌọỤụỴỵ");	// dot below
   buildaccent("ogonek|k", "AaEeIiUuOo",
-                          "ĄąĘęĮįŲųǪǫ"); // ogonek
-  buildaccent("cedilla|c", "CcGKkLlNnRrSsTtEeDdHh",
-                           "ÇçĢĶķĻļŅņŖŗŞşŢţȨȩḐḑḨḩ"); // cedilla
+                          "ĄąĘęĮįŲųǪǫ");	// ogonek
+  buildaccent("cedilla|c", "CcGgKkLlNnRrSsTtEeDdHh",
+                           "ÇçĢĢĶķĻļŅņŖŗŞşŢţȨȩḐḑḨḩ");	// cedilla
   buildaccent("subring|textsubring", "Aa",
-                                     "Ḁḁ"); // subring
+                                     "Ḁḁ");	// subring
   buildaccent("subhat|textsubcircum", "DdEeLlNnTtUu",
-                                      "ḒḓḘḙḼḽṊṋṰṱṶṷ"); // subcircum
+                                      "ḒḓḘḙḼḽṊṋṰṱṶṷ");	// subcircum
   buildaccent("subtilde|textsubtilde", "EeIiUu",
-                                       "ḚḛḬḭṴṵ"); // subtilde
+                                       "ḚḛḬḭṴṵ");	// subtilde
 }
 
 /*
@@ -1348,7 +1370,7 @@ void Intervall::removeAccents()
 {
   if (accents.empty())
     buildAccentsMap();
-  static regex const accre("\\\\((.|grave|breve|lyxmathsym|text|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde)\\{[^\\{\\}]+\\}|(i|imath|jmath)(?![a-zA-Z]))");
+  static regex const accre("\\\\(([\\S]|grave|breve|lyxmathsym|text|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde)\\{[^\\{\\}]+\\}|(i|imath|jmath)(?![a-zA-Z]))");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
