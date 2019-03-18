@@ -1330,6 +1330,14 @@ static void buildAccentsMap()
                           "ḄḅḌḍḤḥḲḳḶḷṂṃṆṇṚṛṢṣṬṭṾṿẈẉẒẓẠạẸẹỊịỌọỤụỴỵ");  // dot below
   buildaccent("ogonek|k", "AaEeIiUuOo",
                           "ĄąĘęĮįŲųǪǫ"); // ogonek
+  buildaccent("cedilla|c", "CcGKkLlNnRrSsTtEeDdHh",
+                           "ÇçĢĶķĻļŅņŖŗŞşŢţȨȩḐḑḨḩ"); // cedilla
+  buildaccent("subring|textsubring", "Aa",
+                                     "Ḁḁ"); // subring
+  buildaccent("subhat|textsubcircum", "DdEeLlNnTtUu",
+                                      "ḒḓḘḙḼḽṊṋṰṱṶṷ"); // subcircum
+  buildaccent("subtilde|textsubtilde", "EeIiUu",
+                                       "ḚḛḬḭṴṵ"); // subtilde
 }
 
 /*
@@ -1340,7 +1348,7 @@ void Intervall::removeAccents()
 {
   if (accents.empty())
     buildAccentsMap();
-  static regex const accre("\\\\((.|grave|breve|lyxmathsym|text|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek)\\{[^\\{\\}]+\\}|(i|imath|jmath)(?![a-zA-Z]))");
+  static regex const accre("\\\\((.|grave|breve|lyxmathsym|text|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde)\\{[^\\{\\}]+\\}|(i|imath|jmath)(?![a-zA-Z]))");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
