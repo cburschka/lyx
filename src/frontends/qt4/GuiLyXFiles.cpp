@@ -401,9 +401,10 @@ void GuiLyXFiles::dispatchParams()
 	dispatch(FuncRequest(lfun, arg));
 }
 
+
 FuncCode GuiLyXFiles::getLfun() const
 {
-	if (type_ == toqstr("examples"))
+	if (type_ == "examples")
 		return LFUN_FILE_OPEN;
 	return LFUN_BUFFER_NEW_TEMPLATE;
 }
