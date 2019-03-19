@@ -16,7 +16,7 @@ ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 	     sort | uniq ) > $@-t \
 	&& mv $@-t $@
 
-l10n_pots: qt4_l10n.pot layouts_l10n.pot languages_l10n.pot latexfonts_l10n.pot encodings_l10n.pot ui_l10n.pot external_l10n.pot formats_l10n.pot
+l10n_pots: qt4_l10n.pot layouts_l10n.pot languages_l10n.pot latexfonts_l10n.pot encodings_l10n.pot ui_l10n.pot external_l10n.pot formats_l10n.pot examples_templates_l10n.pot
 	cat $^ | msguniq -o $(DOMAIN).po
 	rm $^
 
@@ -55,6 +55,10 @@ external_l10n.pot: $(top_srcdir)/lib/xtemplates/*.xtemplate
 
 formats_l10n.pot: $(top_srcdir)/lib/configure.py
 	$(LYX_POT) -o $@ -t formats $^
+
+examples_templates_l10n.pot: $(top_srcdir)/lib/examples/* \
+                $(top_srcdir)/lib/templates/*
+	$(LYX_POT) -o $@ -t examples_templates '$^'
 
 # LyX specific code to generate l10n statistics for the web site
 i18n.inc: $(POFILES) postats.py
