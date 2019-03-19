@@ -67,11 +67,9 @@ export/export/latex/luainputenc-utf8_pdf5_texF
 
 
 # nonstandard tests failing for unknown reason:
-export/examples/aa_sample_(dvi3|pdf[45])_.*
 export/templates/obsolete/ACM-siggraph_pdf5_(texF|systemF)
 export/templates/IUCr-article_pdf4_systemF
 export/templates/RJournal_(dvi3|pdf[45])_systemF
-export/templates/aa_(dvi3|pdf[45])_.*
 export/templates/kluwer_.*_systemF
 
 
@@ -214,6 +212,11 @@ export/examples/ru/(example_lyxified|splash)_(dvi3|pdf[45])_texF
 export/export/latex/uk-babel-date-missing-chars-with-ascii_(pdf4|dvi3)_texF
 export/(doc|examples)/uk/(Intro|splash)_(pdf4|dvi3)_texF
 
+# Fails with XeTeX/LuaTeX
+# Reported upstream (https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg184435.html)
+# Is there a new version fixing the problem?
+export/examples/aa_sample_(dvi3|pdf[45])_.*
+export/templates/aa_(dvi3|pdf[45])_.*
 
 # Gives the following error:
 # # ! Package hpstatement Error: H or P statement "H251"

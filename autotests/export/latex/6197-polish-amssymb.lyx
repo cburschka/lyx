@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 566
+\lyxformat 567
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -105,6 +105,20 @@ lll as character 0x142 LATIN SMALL LETTER L WITH STROKE:
 \end_inset
 
  = ł.
+\end_layout
+
+\begin_layout Standard
+The toolbar button [
+\begin_inset Formula $\llless$
+\end_inset
+
+] inserts 
+\backslash
+lll which becomes 
+\begin_inset Formula $\lll$
+\end_inset
+
+.
 \end_layout
 
 \end_body

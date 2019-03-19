@@ -324,18 +324,20 @@ public:
 	 * The encoding of the LyX file is always utf8 and has nothing to
 	 * do with this setting.
 	 * The difference between \c auto and \c default is that \c auto also
-	 * causes loading of the inputenc package, while \c default does not.
+	 * causes loading of the inputenc package and writes a \inputenc{} command
+	 * to the file when switching to another encoding, while \c default does not.
 	 * \c default will not work unless the user takes additional measures
 	 * (such as using special environments like the CJK environment from
 	 * CJK.sty).
-	 * \c default can be seen as an unspecified 8bit encoding, since LyX
+	 * \c default can be seen as an unspecified mix of 8bit encodings, since LyX
 	 * does not interpret it in any way apart from display on screen.
 	 */
 	std::string inputenc;
 	/// The main encoding used by this buffer for LaTeX output.
-	/// Individual pieces of text can use different encodings.
+	/// If the main encoding is \c auto or \c default,
+	/// individual pieces of text can use different encodings.
 	/// Output for XeTeX with 8-bit TeX fonts uses ASCII (set at runtime)
-	/// instead of the value returned by this function.
+	/// instead of the value returned by this function (cf. #10600).
 	Encoding const & encoding() const;
 	///
 	std::string origin;
