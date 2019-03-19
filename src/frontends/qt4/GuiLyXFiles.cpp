@@ -154,8 +154,8 @@ GuiLyXFiles::GuiLyXFiles(GuiView & lv)
 	filter_->setButtonVisible(FancyLineEdit::Right, true);
 	filter_->setButtonToolTip(FancyLineEdit::Right, qt_("Clear text"));
 	filter_->setAutoHideButton(FancyLineEdit::Right, true);
-	filter_->setPlaceholderText(qt_("All available labels"));
-	filter_->setToolTip(qt_("Enter string to filter the list of available labels"));
+	filter_->setPlaceholderText(qt_("All available files"));
+	filter_->setToolTip(qt_("Enter string to filter the list of available files"));
 #if (QT_VERSION < 0x050000)
 	connect(filter_, SIGNAL(downPressed()),
 		filesLW, SLOT(setFocus()));
