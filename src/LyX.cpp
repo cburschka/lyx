@@ -500,7 +500,7 @@ int LyX::init(int & argc, char * argv[])
 
 	if (first_start) {
 		pimpl_->files_to_load_.push_back(
-			i18nLibFileSearch("examples", "splash.lyx").absFileName());
+			i18nLibFileSearch("examples", "Welcome.lyx").absFileName());
 	}
 
 	return EXIT_SUCCESS;

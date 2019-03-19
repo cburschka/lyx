@@ -3,11 +3,11 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin /systemlyxdir/examples/de/
+\origin /systemlyxdir/examples/Presentations/
 \textclass article-beamer
 \use_default_options true
 \maintain_unincluded_children false
-\language ngerman
+\language english
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -72,7 +72,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style german
+\quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -90,53 +90,47 @@
 \begin_inset Note Note
 status open
 
-\begin_layout Plain Layout
-Dies ist ein Begleitdokument zum Beispieldokument 
-\begin_inset Quotes gld
-\end_inset
-
-beamer.lyx
-\begin_inset Quotes grd
-\end_inset
-
- (siehe 
+\begin_layout Itemize
+This is an accompanying document to the beamer example (see 
 \family sans
-Hilfe\SpecialChar menuseparator
-Spezielle Handbücher\SpecialChar menuseparator
-Beamer-Präsentation
+Help\SpecialChar menuseparator
+Specific Manuals\SpecialChar menuseparator
+Beamer Presentation
 \family default
-en).
- Es zeigt, wie einfach es ist, mittels des 
-\begin_inset Quotes gld
+).
+ It demonstrates how easy it is to generate a handout via the 
+\begin_inset Quotes eld
 \end_inset
 
-Artikelmodus
-\begin_inset Quotes grd
+article
+\begin_inset Quotes erd
 \end_inset
 
- ein Handout zu erzeugen.
+ mode.
 \end_layout
 
-\begin_layout Plain Layout
-Wenn Sie beim Ansehen\SpecialChar breakableslash
-Exportieren einen Warnhinweis über 
-\begin_inset Quotes gld
+\begin_layout Itemize
+Except for the document class, you probably want most of the same document
+ settings as the included document.
+ For example, if you have Natbib author-year in child, you should have it
+ here as well.
+ If you use a module in the child, include it here also.
+ You might not need to copy some parts of the preamble, for example 
+\backslash
+setbeamertemplate{...}.
+\end_layout
+
+\begin_layout Itemize
+If you get a warning message about different text classes when you view
+ PDF, you can safely click 
+\begin_inset Quotes eld
 \end_inset
 
-unterschiedliche Textklassen
-\begin_inset Quotes grd
+Do not show this warning again!
+\begin_inset Quotes erd
 \end_inset
 
- bekommen, können Sie bedenkenlos 
-\begin_inset Quotes gld
-\end_inset
 
-Diese Warnung nicht mehr anzeigen!
-\begin_inset Quotes grd
-\end_inset
-
- wählen, um die Warnung zukünftig zu unterdrücken.
- 
 \end_layout
 
 \end_inset
@@ -147,7 +141,7 @@ Diese Warnung nicht mehr anzeigen!
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "beamer.lyx"
+filename "Beamer.lyx"
 
 \end_inset
 

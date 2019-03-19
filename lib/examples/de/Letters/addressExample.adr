@@ -1,0 +1,61 @@
+% Syntax:
+% \adrentry{Lastname}	-> #1
+% {Firstname}		-> #2
+% {Address}		-> #3
+% {Telephone}		-> #4
+% {F1}			-> #5
+% {F2}			-> #6
+% {Comment}		-> #7
+% {ID}			-> #8
+%
+% The F1 and F2 fields are free custom fields (F1 is used for gender
+% in this example). If you need more fields, there's also an \addrentry
+% entry type (note the additional 'd'), which has one additional field 
+% (cf. the KOMA-script documentation for details).
+% NOTE: the ID must be unique.
+
+
+\adrentry{Miller}
+ {John}
+ {43 Straight Street\\Boston}
+ {033-3445-90}
+ {m}
+ {}
+ {Customer}
+ {JOMILL}
+
+\adrentry{Boehme}
+ {Wilhelm}
+ {Ubierweg 49\\754127 Dingsda}
+ {0227557/35448}
+ {m}
+ {}
+ {Friend}
+ {WILBOE}
+
+\adrentry{Zylla}
+ {Rieke}
+ {Salierweg 9\\850289 Kolonia}
+ {022811/458290}
+ {f}
+ {}
+ {Supervisor}
+ {RIEZY}
+
+\adrentry{Klausen}
+ {Daniela}
+ {Promenadenweg 17\\23155 Fuhlingen}
+ {0672289/30945}
+ {f}
+ {}
+ {fellow student}
+ {DANKLA}
+
+\adrentry{Tollmann}
+ {Gerd}
+ {Ginsterweg 119\\48890 Karlingen}
+ {074418/90833}
+ {m}
+ {}
+ {Holiday 2004}
+ {GERTO}

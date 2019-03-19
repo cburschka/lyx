@@ -1,0 +1,877 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                  %%
+%%  This is the header of a LaTeX2e file exported from Gnumeric.    %%
+%%                                                                  %%
+%%  This file can be compiled as it stands or included in another   %%
+%%  LaTeX document. The table is based on the longtable package so  %%
+%%  the longtable options (headers, footers...) can be set in the   %%
+%%  preamble section below (see PRAMBLE).                           %%
+%%                                                                  %%
+%%  To include the file in another, the following two lines must be %%
+%%  in the including file:                                          %%
+%%        \def\inputGnumericTable{}                                 %%
+%%  at the beginning of the file and:                               %%
+%%        \input{name-of-this-file.tex}                             %%
+%%  where the table is to be placed. Note also that the including   %%
+%%  file must use the following packages for the table to be        %%
+%%  rendered correctly:                                             %%
+%%    \usepackage[latin1]{inputenc}                                 %%
+%%    \usepackage{color}                                            %%
+%%    \usepackage{array}                                            %%
+%%    \usepackage{longtable}                                        %%
+%%    \usepackage{calc}                                             %%
+%%    \usepackage{multirow}                                         %%
+%%    \usepackage{hhline}                                           %%
+%%    \usepackage{ifthen}                                           %%
+%%  optionally (for landscape tables embedded in another document): %%
+%%    \usepackage{lscape}                                           %%
+%%                                                                  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%  This section checks if we are begin input into another file or  %%
+%%  the file will be compiled alone. First use a macro taken from   %%
+%%  the TeXbook ex 7.7 (suggestion of Han-Wen Nienhuys).            %%
+\def\ifundefined#1{\expandafter\ifx\csname#1\endcsname\relax}
+
+
+%%  Check for the \def token for inputed files. If it is not        %%
+%%  defined, the file will be processed as a standalone and the     %%
+%%  preamble will be used.                                          %%
+\ifundefined{inputGnumericTable}
+
+%%  We must be able to close or not the document at the end.        %%
+	\def\gnumericTableEnd{\end{document}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                  %%
+%%  This is the PREAMBLE. Change these values to get the right      %%
+%%  paper size and other niceties.                                  %%
+%%                                                                  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	\documentclass[12pt%
+			  %,landscape%
+                    ]{report}
+       \usepackage[latin1]{inputenc}
+       \usepackage{fullpage}
+       \usepackage{color}
+       \usepackage{array}
+       \usepackage{longtable}
+       \usepackage{calc}
+       \usepackage{multirow}
+       \usepackage{hhline}
+       \usepackage{ifthen}
+
+	\begin{document}
+
+
+%%  End of the preamble for the standalone. The next section is for %%
+%%  documents which are included into other LaTeX2e files.          %%
+\else
+
+%%  We are not a stand alone document. For a regular table, we will %%
+%%  have no preamble and only define the closing to mean nothing.   %%
+    \def\gnumericTableEnd{}
+
+%%  If we want landscape mode in an embedded document, comment out  %%
+%%  the line above and uncomment the two below. The table will      %%
+%%  begin on a new page and run in landscape mode.                  %%
+%       \def\gnumericTableEnd{\end{landscape}}
+%       \begin{landscape}
+
+
+%%  End of the else clause for this file being \input.              %%
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                  %%
+%%  The rest is the gnumeric table, except for the closing          %%
+%%  statement. Changes below will alter the table's appearance.     %%
+%%                                                                  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\providecommand{\gnumericmathit}[1]{#1} 
+%%  Uncomment the next line if you would like your numbers to be in %%
+%%  italics if they are italizised in the gnumeric table.           %%
+%\renewcommand{\gnumericmathit}[1]{\mathit{#1}}
+\providecommand{\gnumericPB}[1]%
+{\let\gnumericTemp=\\#1\let\\=\gnumericTemp\hspace{0pt}}
+ \ifundefined{gnumericTableWidthDefined}
+        \newlength{\gnumericTableWidth}
+        \newlength{\gnumericTableWidthComplete}
+        \newlength{\gnumericMultiRowLength}
+        \global\def\gnumericTableWidthDefined{}
+ \fi
+%% The following setting protects this code from babel shorthands.  %%
+ \ifthenelse{\isundefined{\languageshorthands}}{}{\languageshorthands{english}}
+%%  The default table format retains the relative column widths of  %%
+%%  gnumeric. They can easily be changed to c, r or l. In that case %%
+%%  you may want to comment out the next line and uncomment the one %%
+%%  thereafter                                                      %%
+\providecommand\gnumbox{\makebox[0pt]}
+%%\providecommand\gnumbox[1][]{\makebox}
+
+%% to adjust positions in multirow situations                       %%
+\setlength{\bigstrutjot}{\jot}
+\setlength{\extrarowheight}{\doublerulesep}
+
+%%  The \setlongtables command keeps column widths the same across  %%
+%%  pages. Simply comment out next line for varying column widths.  %%
+\setlongtables
+
+\setlength\gnumericTableWidth{%
+	100pt+%
+	53pt+%
+	40pt+%
+	53pt+%
+0pt}
+\def\gumericNumCols{4}
+\setlength\gnumericTableWidthComplete{\gnumericTableWidth+%
+         \tabcolsep*\gumericNumCols*2+\arrayrulewidth*\gumericNumCols}
+\ifthenelse{\lengthtest{\gnumericTableWidthComplete > \linewidth}}%
+         {\def\gnumericScale{\ratio{\linewidth-%
+                        \tabcolsep*\gumericNumCols*2-%
+                        \arrayrulewidth*\gumericNumCols}%
+{\gnumericTableWidth}}}%
+{\def\gnumericScale{1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                  %%
+%% The following are the widths of the various columns. We are      %%
+%% defining them here because then they are easier to change.       %%
+%% Depending on the cell formats we may use them more than once.    %%
+%%                                                                  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifthenelse{\isundefined{\gnumericColB}}{\newlength{\gnumericColB}}{}\settowidth{\gnumericColB}{\begin{tabular}{@{}p{100pt*\gnumericScale}@{}}x\end{tabular}}
+\ifthenelse{\isundefined{\gnumericColC}}{\newlength{\gnumericColC}}{}\settowidth{\gnumericColC}{\begin{tabular}{@{}p{53pt*\gnumericScale}@{}}x\end{tabular}}
+\ifthenelse{\isundefined{\gnumericColD}}{\newlength{\gnumericColD}}{}\settowidth{\gnumericColD}{\begin{tabular}{@{}p{40pt*\gnumericScale}@{}}x\end{tabular}}
+\ifthenelse{\isundefined{\gnumericColE}}{\newlength{\gnumericColE}}{}\settowidth{\gnumericColE}{\begin{tabular}{@{}p{53pt*\gnumericScale}@{}}x\end{tabular}}
+
+\begin{longtable}[c]{%
+	b{\gnumericColB}%
+	b{\gnumericColC}%
+	b{\gnumericColD}%
+	b{\gnumericColE}%
+	}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  The longtable options. (Caption, headers... see Goosens, p.124) %%
+%	\caption{The Table Caption.}             \\	%
+% \hline	% Across the top of the table.
+%%  The rest of these options are table rows which are placed on    %%
+%%  the first, last or every page. Use \multicolumn if you want.    %%
+
+%%  Header for the first page.                                      %%
+%	\multicolumn{4}{c}{The First Header} \\ \hline 
+%	\multicolumn{1}{c}{colTag}	%Column 1
+%	&\multicolumn{1}{c}{colTag}	%Column 2
+%	&\multicolumn{1}{c}{colTag}	%Column 3
+%	&\multicolumn{1}{c}{colTag}	\\ \hline %Last column
+%	\endfirsthead
+
+%%  The running header definition.                                  %%
+%	\hline
+%	\multicolumn{4}{l}{\ldots\small\slshape continued} \\ \hline
+%	\multicolumn{1}{c}{colTag}	%Column 1
+%	&\multicolumn{1}{c}{colTag}	%Column 2
+%	&\multicolumn{1}{c}{colTag}	%Column 3
+%	&\multicolumn{1}{c}{colTag}	\\ \hline %Last column
+%	\endhead
+
+%%  The running footer definition.                                  %%
+%	\hline
+%	\multicolumn{4}{r}{\small\slshape continued\ldots} \\
+%	\endfoot
+
+%%  The ending footer definition.                                   %%
+%	\multicolumn{4}{c}{That's all folks} \\ \hline 
+%	\endlastfoot
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hhline{|----}
+	 \multicolumn{4}{|p{	\gnumericColB+%
+	\gnumericColC+%
+	\gnumericColD+%
+	\gnumericColE+%
+	\tabcolsep*2*3}|}%
+	{\gnumericPB{\centering}\gnumbox{{\color[rgb]{1.00,0.00,0.00} Long spreadsheet for LyX import}}}
+\\
+	 \multicolumn{4}{|p{	\gnumericColB+%
+	\gnumericColC+%
+	\gnumericColD+%
+	\gnumericColE+%
+	\tabcolsep*2*3}|}%
+	{\gnumericPB{\centering}\gnumbox{{\color[rgb]{1.00,0.00,0.00} \textit{longsheet.gnumeric}}}}
+\\
+\hhline{|-|-|-|-|}
+	 \multicolumn{1}{|p{\gnumericColB}|}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{{\color[rgb]{0.00,0.00,0.50} \textbf{Item}}}}
+	&\multicolumn{1}{p{\gnumericColC}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{{\color[rgb]{0.00,0.00,0.50} \textbf{Price}}}}
+	&\multicolumn{1}{p{\gnumericColD}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{{\color[rgb]{0.00,0.00,0.50} \textbf{\#}}}}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{{\color[rgb]{0.00,0.00,0.50} \textbf{Total}}}}
+\\
+\hhline{|-|-|-|-|}
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{{\color[rgb]{0.00,0.50,0.00} \textit{Stuff}}}}
+	&
+	&
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{scissors}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{8}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{30}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{240}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{pens}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{30}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{30}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{pencils}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{30}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{30}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{}
+	&
+	&
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{radio}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{105}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{105}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{camera}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1200}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{2}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{2400}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{telephoto lens}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{2000}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{2000}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{macro lens}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{300}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{2}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{600}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{flash}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{150}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{4}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{600}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{memory card 8G}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{40}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{16}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{640}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{}
+	&
+	&
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{computer}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{300}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{30}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{9000}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{os}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{0}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{30}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{0}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{sw packages}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{0}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{2600}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{0}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{sw docs}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{0}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{2600}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{0}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{license mgmt}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{0}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{0}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{0}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{sw upgrades}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{0}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{2600}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{0}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{}
+	&
+	&
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{{\color[rgb]{0.00,0.50,0.00} \textit{Clothes}}}}
+	&
+	&
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{socks}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{14}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{14}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{hats}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{8}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{3}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{24}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{jeans}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{30}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{2}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{60}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{black shoes}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{45}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{2}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{90}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{brown shoes}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{42}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{6}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{252}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{jacket}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{50}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{50}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{shirts}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{22}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{14}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{308}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{t-shirts}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{5}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{6}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{30}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{funny t-shirts}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{8}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{4}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{32}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{}
+	&
+	&
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{}
+	&
+	&
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{{\color[rgb]{0.00,0.50,0.00} \textit{Food}}}}
+	&
+	&
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{cheese}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{3}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{3}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{9}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{beer}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{48}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{48}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{bread}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{3}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{3}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{butter}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{3}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{3}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{garlic}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{2}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{5}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{10}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{meatballs}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{50}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{50}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{mustard}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{13}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{13}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{ketchup}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{11}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{11}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{salt}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{2}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{6}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{12}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{pepper}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{3}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{2}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{6}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{}
+	&
+	&
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{{\color[rgb]{0.00,0.50,0.00} \textit{Animals}}}}
+	&
+	&
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{cows}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{500}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{30}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{15000}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{sheep}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{300}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{800}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{240000}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{dogs}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{250}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{8}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{2000}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{cats}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{5}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{3}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{15}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{goats}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{350}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{60}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{21000}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{horse}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{660}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{660}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{pigs}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{400}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{200}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{80000}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{bears}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1800}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{4}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{7200}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{bears (polar)}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{5000}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{2}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{10000}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{giraffes}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{4500}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{2}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{9000}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{hippos}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{12000}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{16}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{192000}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{camels}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{800}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{12}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{9600}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{squirrels}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{8}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{16}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{128}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{mice}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{45}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{45}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{mice (white)}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{2}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{133}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{266}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{rats}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{2}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{20}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{40}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{elephants}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{10000}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{20}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{200000}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{crocodile (s)}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{500}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{18}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{9000}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{crocodile (m)}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1500}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{8}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{12000}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{crocodile (l)}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{3500}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{2}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{7000}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{crocodile (xl)}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{8000}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{8000}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{gnu}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{655}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{45}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{29475}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{leopards}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{9600}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{4}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{38400}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{weasel}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{45}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{12}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{540}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{zebras}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{400}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{12}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{4800}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{ant eater}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{83}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{83}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{ants}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1300}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{1300}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{gorillas}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{12000}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{5}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{60000}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{monkeys}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{300}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{45}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{13500}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{lions}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{8000}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{6}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{48000}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{}
+	&
+	&
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{}
+	&
+	&
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{{\color[rgb]{0.00,0.50,0.00} \textit{Furniture}}}}
+	&
+	&
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{chairs}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{12}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{64}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{768}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{tables}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{20}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{6}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{120}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{table (round)}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{33}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{33}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{chairs (office)}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{16}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{34}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{544}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{desks}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{42}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{30}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{1260}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{big desk}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{150}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{150}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{boss chair}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{120}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{120}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{desk lamps}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{8}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{30}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{240}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{wall lamps}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{4}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{22}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{88}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{standing lamps}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{11}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{12}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{132}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{water coolers}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{57}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{5}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{285}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{safe}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{6500}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{2}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{13000}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{bookshelf}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{19}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{13}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{247}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{world map}}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{3}
+	&\gnumericPB{\raggedleft}\gnumbox[r]{1}
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{3}}
+\\
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{}
+	&
+	&
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{}
+\\
+\hhline{|----|}
+	 \multicolumn{1}{|p{\gnumericColB}}%
+	{\gnumericPB{\raggedright}\gnumbox[l]{\textit{Total sum for everything:}}}
+	&
+	&
+	&\multicolumn{1}{p{\gnumericColE}|}%
+	{\gnumericPB{\raggedleft}\gnumbox[r]{\textit{1052712}}}
+\\
+\hhline{|----|}
+\end{longtable}
+
+\ifthenelse{\isundefined{\languageshorthands}}{}{\languageshorthands{\languagename}}
+\gnumericTableEnd

@@ -36,3 +36,35 @@ text editor (for example ed, ex or vi) that you don't want to set
 explicit for this template. LyX will use the user's default-values
 (defined in lyxrc) if a property isn't defined in the file itself.
 
+
+DIRECTORY STRUCTURE & FILE NAMING
+==================================
+
+The templates directory has the following structure
+
+templates/[language/]category/[subcategory]
+
+Please use the layout category (with identical spelling to assure translation)
+as category subdirectory (e.g., "Letters"). See \DeclareCategory entry of the
+layout which corresponds to your template. Substitute blanks by '_'.
+
+If your template consists of one file only, and if there are no further templates
+relating to your layout yet, use the layout name, as defined in \DeclareLaTeXClass,
+as file name. Substitute blanks by '_' (e.g., My_Layout.lyx). In any case, use
+a verbose, transparent name (do not use insider acronyms as file names).
+
+If your template consists of multiple files, use an additional subdirectory.
+Use the layout name, as defined in \DeclareLaTeXClass, as subcategory subfolder
+name. Substitute blanks by '_' (e.g., My_Layout). Give the files verbose,
+transparent names that clarify the function of the respective file in the templates
+bundle. Use '_' instead of blanks.
+
+The optional language subdirectory that immediately follows templates/ uses the
+language code (e.g., 'de' for German). Use this if you provide a translation of
+an existing English template.
+The language subdirectory expands to the same subfolders than the English version
+and uses the same [English) filename (e.g., templates/Letters/myletter.lyx > 
+templates/fr/Letters/myletter.lyx).
+
+If you add a new (sub)folder, you must create a new entry in Makefile.am.
+

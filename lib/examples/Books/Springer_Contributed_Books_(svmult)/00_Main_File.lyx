@@ -3,19 +3,20 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin /systemlyxdir/examples/springer/
-\textclass svmono
+\origin unavailable
+\textclass svmult
 \begin_preamble
-\usepackage{type1cm}
+%\usepackage{type1cm} % activate if the fonts mathptmx, helvet or courier are 
+                             % not available on your system
 
-\usepackage{multicol} % used for the two-column index
-\usepackage[bottom]{footmisc} % places footnotes at page bottom
+\usepackage{multicol}% used for the two-column index
+\usepackage[bottom]{footmisc}% places footnotes at page bottom
 
 %\makeindex % used for the subject index
                        % please use the style svind.ist with
                        % your makeindex program
 \end_preamble
-\options graybox,envcountchap,sectrefs
+\options graybox,envcountchap
 \use_default_options false
 \maintain_unincluded_children false
 \language english
@@ -78,7 +79,7 @@
 \color #008000
 \end_index
 \secnumdepth 3
-\tocdepth 2
+\tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
@@ -105,7 +106,13 @@ status open
 This is a template \SpecialChar LyX
  file for books and monographs to be published by the
  Springer publishing group.
- How to install the svmono \SpecialChar LaTeX
+ This template is for editors, the template for authors has the filename
+ 
+\family sans
+08_Author.lyx
+\family default
+.
+ How to install the svmult \SpecialChar LaTeX
  class to your \SpecialChar LaTeX
  system is explained in 
 \begin_inset Flex URL
@@ -126,28 +133,6 @@ https://wiki.lyx.org/Examples/Springer
 
 \end_layout
 
-\begin_layout Author
-Author name(s)
-\end_layout
-
-\begin_layout Title
-Book title
-\end_layout
-
-\begin_layout Subtitle
-– Monograph –
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-optional subtitle
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Front Matter
 
 \end_layout
@@ -155,47 +140,37 @@ optional subtitle
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "svmono_dedication.lyx"
+filename "01_Dedication.lyx"
 
 \end_inset
 
-
+ 
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "svmono_foreword.lyx"
+filename "02_Foreword.lyx"
 
 \end_inset
 
-
+ 
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "svmono_preface.lyx"
+filename "03_Preface.lyx"
 
 \end_inset
 
-
+ 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-acknowledgements are optional:
-\end_layout
-
-\end_inset
-
-
 \begin_inset CommandInset include
 LatexCommand include
-filename "svmono_acknow.lyx"
+filename "04_Acknowledgements.lyx"
 
 \end_inset
 
@@ -209,12 +184,16 @@ LatexCommand tableofcontents
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "svmono_acronym.lyx"
+filename "05_Contributor_List.lyx"
+
+\end_inset
+
+ 
+\begin_inset CommandInset include
+LatexCommand include
+filename "06_Acronym.lyx"
 
 \end_inset
 
@@ -228,31 +207,18 @@ filename "svmono_acronym.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "svmono_part.lyx"
+filename "07_Part.lyx"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
+ 
 \begin_inset CommandInset include
 LatexCommand include
-filename "svmono_chapter.lyx"
+filename "08_Author.lyx"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "svmono_appendix.lyx"
-
-\end_inset
-
-
+ 
 \end_layout
 
 \begin_layout Back Matter
@@ -260,45 +226,33 @@ filename "svmono_appendix.lyx"
 \end_layout
 
 \begin_layout Standard
+\start_of_appendix
 \begin_inset CommandInset include
 LatexCommand include
-filename "svmono_glossary.lyx"
+filename "09_Appendix.lyx"
 
 \end_inset
 
+ 
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "svmono_solutions.lyx"
+filename "10_Glossary.lyx"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
+ 
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
 name "Index"
 literal "false"
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-please use the style 
-\emph on
-svind.ist
-\emph default
- with your makeindex program
-\end_layout
 
 \end_inset
 

@@ -68,319 +68,427 @@ dist_commands_DATA = \
 
 arexamplesdir = $(pkgdatadir)/examples/ar
 dist_arexamples_DATA = \
-	examples/ar/splash.lyx
+	examples/ar/Welcome.lyx
 
 caexamplesdir = $(pkgdatadir)/examples/ca
 dist_caexamples_DATA = \
-	examples/ca/ItemizeBullets.lyx \
-	examples/ca/splash.lyx
+	examples/ca/Welcome.lyx
+
+cainsetexamplesdir = $(pkgdatadir)/examples/ca/Graphics_&_Insets
+dist_cainsetexamples_DATA = \
+	examples/ca/Graphics_&_Insets/Itemize_Bullets.lyx
 
 csexamplesdir = $(pkgdatadir)/examples/cs
 dist_csexamples_DATA = \
-	examples/cs/splash.lyx \
-	examples/cs/priklad_syrovy.lyx \
-	examples/cs/priklad_zLyXovany.lyx
+	examples/cs/Welcome.lyx \
+	examples/cs/Example_(LyXified).lyx \
+	examples/cs/Example_(raw).lyx
 
 daexamplesdir = $(pkgdatadir)/examples/da
 dist_daexamples_DATA = \
-	examples/da/splash.lyx
+	examples/da/Welcome.lyx
 
 deexamplesdir = $(pkgdatadir)/examples/de
 dist_deexamples_DATA = \
-	examples/de/beamer.lyx \
-	examples/de/beamer-article.lyx \
-	examples/de/beispiel_gelyxt.lyx \
-	examples/de/beispiel_roh.lyx \
-	examples/de/Braille.lyx \
-	examples/de/Dezimal.lyx \
-	examples/de/europassCV.lyx \
-	examples/de/FeynmanDiagrams.lyx \
-	examples/de/ItemizeBullets.lyx \
-	examples/de/Lebenslauf.lyx \
-	examples/de/linguistics.lyx \
-	examples/de/MultilingualCaptions.lyx \
-	examples/de/PDF-comment.lyx \
-	examples/de/PDF-form.lyx \
-	examples/de/serienbrief1.lyx \
-	examples/de/serienbrief2.lyx \
-	examples/de/serienbrief3.lyx \
-	examples/de/splash.lyx \
-	examples/de/tufte-handout.lyx
+	examples/de/Example_(LyXified).lyx \
+	examples/de/Example_(raw).lyx \
+	examples/de/Welcome.lyx
+
+decvexamplesdir = $(pkgdatadir)/examples/de/Curricula_Vitae
+dist_decvexamples_DATA = \
+	examples/de/Curricula_Vitae/Europass_CV_(2013).lyx \
+	examples/de/Curricula_Vitae/Simple_CV.lyx
+
+dehandoutexamplesdir = $(pkgdatadir)/examples/de/Curricula_Vitae
+dist_dehandoutexamples_DATA = \
+	examples/de/Handouts/Tufte_Handout.lyx
+
+deinsetexamplesdir = $(pkgdatadir)/examples/de/Graphics_&_Insets
+dist_deinsetexamples_DATA = \
+	examples/de/Graphics_&_Insets/Itemize_Bullets.lyx \
+	examples/de/Graphics_&_Insets/Feynman_Diagrams.lyx
+
+deletterexamplesdir = $(pkgdatadir)/examples/de/Letters
+dist_deletterexamples_DATA = \
+	examples/de/Letters/addressExample.adr \
+	examples/de/Letters/Serial_Letter_1.lyx \
+	examples/de/Letters/Serial_Letter_2.lyx \
+	examples/de/Letters/Serial_Letter_3.lyx
+
+depresentationexamplesdir = $(pkgdatadir)/examples/de/Presentations
+dist_depresentationexamples_DATA = \
+	examples/de/Presentations/Beamer.lyx \
+	examples/de/Presentations/Beamer_Article_(Standard_Class).lyx
+
+demoduleexamplesdir = $(pkgdatadir)/examples/de/Modules
+dist_demoduleexamples_DATA = \
+	examples/de/Modules/Braille.lyx \
+	examples/de/Modules/Linguistics.lyx \
+	examples/de/Modules/Multilingual_Captions.lyx \
+	examples/de/Modules/PDF_Comments.lyx \
+	examples/de/Modules/PDF_Form.lyx
 
 elexamplesdir = $(pkgdatadir)/examples/el
 dist_elexamples_DATA = \
-	examples/el/splash.lyx
+	examples/el/Welcome.lyx
 
 esexamplesdir = $(pkgdatadir)/examples/es
 dist_esexamples_DATA = \
-	examples/es/Braille.lyx \
-	examples/es/ejemplo_con_lyx.lyx \
-	examples/es/ejemplo_sin_lyx.lyx \
-	examples/es/europeCV.lyx \
-	examples/es/ItemizeBullets.lyx \
-	examples/es/linguistics.lyx \
-	examples/es/modernCV.lyx \
-	examples/es/splash.lyx \
-	examples/es/tufte-book.lyx \
-	examples/es/tufte-handout.lyx
+	examples/es/Example_(LyXified).lyx \
+	examples/es/Example_(raw).lyx \
+	examples/es/Welcome.lyx
+
+esbookexamplesdir = $(pkgdatadir)/examples/es/Books
+dist_esbookexamples_DATA = \
+	examples/es/Books/Tufte_Book.lyx
+
+escvexamplesdir = $(pkgdatadir)/examples/es/Curricula_Vitae
+dist_escvexamples_DATA = \
+	examples/es/Curricula_Vitae/Europe_CV.lyx \
+	examples/es/Curricula_Vitae/Modern_CV.lyx
+
+eshandoutexamplesdir = $(pkgdatadir)/examples/es/Handouts
+dist_eshandoutexamples_DATA = \
+	examples/es/Handouts/Tufte_Handout.lyx
+
+esinsetexamplesdir = $(pkgdatadir)/examples/es/Graphics_&_Insets
+dist_esinsetexamples_DATA = \
+	examples/es/Graphics_&_Insets/Itemize_Bullets.lyx
+
+esmoduleexamplesdir = $(pkgdatadir)/examples/es/Modules
+dist_esmoduleexamples_DATA = \
+	examples/es/Modules/Braille.lyx \
+	examples/es/Modules/Linguistics.lyx
 
 euexamplesdir = $(pkgdatadir)/examples/eu
 dist_euexamples_DATA = \
-	examples/eu/adibide_gordina.lyx \
-	examples/eu/adibide_lyx-atua.lyx \
-	examples/eu/splash.lyx
+	examples/eu/Example_(LyXified).lyx \
+	examples/eu/Example_(raw).lyx
+	examples/eu/Welcome.lyx
 
 faexamplesdir = $(pkgdatadir)/examples/fa
 dist_faexamples_DATA = \
-	examples/fa/splash.lyx
+	examples/fa/Welcome.lyx
 
 frexamplesdir = $(pkgdatadir)/examples/fr
 dist_frexamples_DATA = \
-	examples/fr/AlignementDecimal.lyx \
-	examples/fr/beamer.lyx \
-	examples/fr/beamer-article.lyx \
-	examples/fr/Braille.lyx \
-	examples/fr/exemple_brut.lyx \
-	examples/fr/exemple_lyxifie.lyx \
-	examples/fr/FeynmanDiagrams.lyx \
-	examples/fr/Foils.lyx \
-	examples/fr/linguistics.lyx \
-	examples/fr/ListesPuces.lyx \
-	examples/fr/MultilingualCaptions.lyx \
-	examples/fr/PDF-comment.lyx \
-	examples/fr/powerdot.lyx \
-	examples/fr/seminar.lyx \
-	examples/fr/simplecv.lyx \
-	examples/fr/splash.lyx \
-	examples/fr/xyfigure.lyx \
-	examples/fr/xyfigure.png \
-	examples/fr/xypic.lyx
+	examples/fr/Example_(LyXified).lyx \
+	examples/fr/Example_(raw).lyx \
+	examples/fr/Welcome.lyx
+
+frcvexamplesdir = $(pkgdatadir)/examples/fr/Curricula_Vitae
+dist_frcvexamples_DATA = \
+	examples/fr/Curricula_Vitae/Simple_CV.lyx
+
+frinsetexamplesdir = $(pkgdatadir)/examples/fr/Graphics_&_Insets
+dist_frinsetexamples_DATA = \
+	examples/fr/Graphics_&_Insets/Itemize_Bullets.lyx \
+	examples/fr/Graphics_&_Insets/Feynman_Diagrams.lyx \
+	examples/fr/Graphics_&_Insets/XY-Figure.lyx \
+	examples/fr/Graphics_&_Insets/xyfigure.png \
+	examples/fr/Graphics_&_Insets/XY-Pic.lyx
+
+frmoduleexamplesdir = $(pkgdatadir)/examples/fr/Modules
+dist_frmoduleexamples_DATA = \
+	examples/fr/Modules/Linguistics.lyx \
+	examples/fr/Modules/Multilingual_Captions.lyx \
+	examples/fr/Modules/PDF_Comments.lyx
+
+frpresentationexamplesdir = $(pkgdatadir)/examples/fr/Presentations
+dist_frpresentationexamples_DATA = \
+	examples/fr/Presentations/Beamer.lyx \
+	examples/fr/Presentations/Beamer_Article_(Standard_Class).lyx \
+	examples/fr/Presentations/Foils.lyx \
+	examples/fr/Presentations/Powerdot.lyx \
+	examples/fr/Presentations/Seminar.lyx
 
 glexamplesdir = $(pkgdatadir)/examples/gl
 dist_glexamples_DATA = \
-	examples/gl/exemplo_bruto.lyx \
-	examples/gl/exemplo_lyxificado.lyx \
-	examples/gl/splash.lyx
+	examples/gl/Example_(LyXified).lyx \
+	examples/gl/Example_(raw).lyx \
+	examples/gl/Welcome.lyx
 
 heexamplesdir = $(pkgdatadir)/examples/he
 dist_heexamples_DATA = \
-	examples/he/example_lyxified.lyx \
-	examples/he/example_raw.lyx \
-	examples/he/splash.lyx
+	examples/he/Example_(LyXified).lyx \
+	examples/he/Example_(raw).lyx \
+	examples/he/Welcome.lyx
 
 huexamplesdir = $(pkgdatadir)/examples/hu
 dist_huexamples_DATA = \
-	examples/hu/example_lyxified.lyx \
-	examples/hu/example_raw.lyx \
-	examples/hu/splash.lyx
+	examples/hu/Example_(LyXified).lyx \
+	examples/hu/Example_(raw).lyx \
+	examples/hu/Welcome.lyx
 
 idexamplesdir = $(pkgdatadir)/examples/id
 dist_idexamples_DATA = \
-	examples/id/splash.lyx
+	examples/id/Welcome.lyx
 
 itexamplesdir = $(pkgdatadir)/examples/it
 dist_itexamples_DATA = \
-	examples/it/ItemizeBullets.lyx \
-	examples/it/splash.lyx
+	examples/it/Welcome.lyx
+
+itinsetexamplesdir = $(pkgdatadir)/examples/it/Graphics_&_Insets
+dist_itinsetexamples_DATA = \
+	examples/it/Graphics_&_Insets/Itemize_Bullets.lyx
 
 jaexamplesdir = $(pkgdatadir)/examples/ja
 dist_jaexamples_DATA = \
-	examples/ja/Braille.lyx \
-	examples/ja/FeynmanDiagrams.lyx \
-	examples/ja/MultilingualCaptions.lyx \
-	examples/ja/beamer.lyx \
-	examples/ja/knitr.lyx \
-	examples/ja/lilypond.lyx \
-	examples/ja/linguistics.lyx \
-	examples/ja/splash.lyx \
-	examples/ja/sweave.lyx \
-	examples/ja/xyfigure.png \
-	examples/ja/xypic.lyx
+	examples/ja/Multilingual_Typesetting_(CJKutf8).lyx \
+	examples/ja/Welcome.lyx
+
+jainsetexamplesdir = $(pkgdatadir)/examples/ja/Graphics_&_Insets
+dist_jainsetexamples_DATA = \
+	examples/ja/Graphics_&_Insets/Feynman_Diagrams.lyx \
+	examples/ja/Graphics_&_Insets/xyfigure.png \
+	examples/ja/Graphics_&_Insets/XY-Pic.lyx
+
+jamoduleexamplesdir = $(pkgdatadir)/examples/ja/Modules
+dist_jamoduleexamples_DATA = \
+	examples/ja/Modules/Braille.lyx \
+	examples/ja/Modules/LilyPond_Book.lyx \
+	examples/ja/Modules/Linguistics.lyx \
+	examples/ja/Modules/Multilingual_Captions.lyx \
+	examples/ja/Modules/Rnw_(knitr).lyx \
+	examples/ja/Modules/Sweave.lyx
+
+japresentationexamplesdir = $(pkgdatadir)/examples/ja/Presentations
+dist_japresentationexamples_DATA = \
+	examples/ja/Presentations/Beamer.lyx
 
 koexamplesdir = $(pkgdatadir)/examples/ko
 dist_koexamples_DATA = \
-	examples/ko/splash.lyx
+	examples/ko/Welcome.lyx
 
 nbexamplesdir = $(pkgdatadir)/examples/nb
 dist_nbexamples_DATA = \
-	examples/nb/eksempel_lyxet.lyx \
-	examples/nb/eksempel_txt.lyx \
-	examples/nb/splash.lyx
+	examples/nb/Example_(LyXified).lyx \
+	examples/nb/Example_(raw).lyx \
+	examples/nb/Welcome.lyx
 
 nlexamplesdir = $(pkgdatadir)/examples/nl
 dist_nlexamples_DATA = \
-	examples/nl/opsommingstekens.lyx \
-	examples/nl/splash.lyx \
-	examples/nl/voorbeeld_ruw.lyx \
-	examples/nl/voorbeeld_verlyxt.lyx
+	examples/nl/Example_(LyXified).lyx \
+	examples/nl/Example_(raw).lyx \
+	examples/nl/Welcome.lyx
+
+nlinsetexamplesdir = $(pkgdatadir)/examples/nl/Graphics_&_Insets
+dist_nlinsetexamples_DATA = \
+	examples/nl/Graphics_&_Insets/Itemize_Bullets.lyx
 
 plexamplesdir = $(pkgdatadir)/examples/pl
 dist_plexamples_DATA = \
-	examples/pl/splash.lyx
+	examples/pl/Welcome.lyx
 
 pt_BRexamplesdir = $(pkgdatadir)/examples/pt_BR
 dist_pt_BRexamples_DATA = \
-	examples/pt_BR/splash.lyx
+	examples/pt_BR/Welcome.lyx
 
 pt_PTexamplesdir = $(pkgdatadir)/examples/pt_PT
 dist_pt_PTexamples_DATA = \
-	examples/pt_PT/splash.lyx
+	examples/pt_PT/Welcome.lyx
 
 roexamplesdir = $(pkgdatadir)/examples/ro
 dist_roexamples_DATA = \
-	examples/ro/splash.lyx
+	examples/ro/Welcome.lyx
 
 ruexamplesdir = $(pkgdatadir)/examples/ru
 dist_ruexamples_DATA = \
-	examples/ru/example_lyxified.lyx \
-	examples/ru/example_raw.lyx \
-	examples/ru/splash.lyx
+	examples/ru/Example_(LyXified).lyx \
+	examples/ru/Example_(raw).lyx
+	examples/ru/Welcome.lyx
 
 slexamplesdir = $(pkgdatadir)/examples/sl
 dist_slexamples_DATA = \
-	examples/sl/primer_lyxan.lyx \
-	examples/sl/primer_surov.lyx \
-	examples/sl/splash.lyx
+	examples/sl/Example_(LyXified).lyx \
+	examples/sl/Example_(raw).lyx \
+	examples/sl/Welcome.lyx
 
 skexamplesdir = $(pkgdatadir)/examples/sk
 dist_skexamples_DATA = \
-	examples/sk/splash.lyx
+	examples/sk/Welcome.lyx
 
 srexamplesdir = $(pkgdatadir)/examples/sr
 dist_srexamples_DATA = \
-	examples/sr/Braille.lyx \
-	examples/sr/splash.lyx
+	examples/sr/Welcome.lyx
+
+srmoduleexamplesdir = $(pkgdatadir)/examples/sr/Modules
+dist_srmoduleexamples_DATA = \
+	examples/sr/Modules/Braille.lyx
 
 svexamplesdir = $(pkgdatadir)/examples/sv
 dist_svexamples_DATA = \
-	examples/sv/splash.lyx
+	examples/sv/Welcome.lyx
 
-springerexamplesdir = $(pkgdatadir)/examples/springer
-dist_springerexamples_DATA = \
-	examples/springer/svmono_acknow.lyx \
-	examples/springer/svmono_acronym.lyx \
-	examples/springer/svmono_appendix.lyx \
-	examples/springer/svmono_book-master.lyx \
-	examples/springer/svmono_chapter.lyx \
-	examples/springer/svmono_dedication.lyx \
-	examples/springer/svmono_foreword.lyx \
-	examples/springer/svmono_glossary.lyx \
-	examples/springer/svmono_part.lyx \
-	examples/springer/svmono_preface.lyx \
-	examples/springer/svmono_referenc.lyx \
-	examples/springer/svmono_solutions.lyx \
-	examples/springer/svmult_acknow.lyx \
-	examples/springer/svmult_acronym.lyx \
-	examples/springer/svmult_appendix.lyx \
-	examples/springer/svmult_author.lyx \
-	examples/springer/svmult_cblist.lyx \
-	examples/springer/svmult_dedication.lyx \
-	examples/springer/svmult_editor-master.lyx \
-	examples/springer/svmult_foreword.lyx \
-	examples/springer/svmult_glossary.lyx \
-	examples/springer/svmult_part.lyx \
-	examples/springer/svmult_preface.lyx \
-	examples/springer/svmult_referenc.lyx
+thesisexamplesdir = $(pkgdatadir)/examples/Theses
+dist_thesisexamples_DATA =
 
-thesisexamplesdir = $(pkgdatadir)/examples/thesis
-dist_thesisexamples_DATA = \
-	examples/thesis/Acknowledgments.lyx \
-	examples/thesis/alpha.bst \
-	examples/thesis/Appendix.lyx \
-	examples/thesis/Bibliography.lyx \
-	examples/thesis/chapter-1.lyx \
-	examples/thesis/chapter-2.lyx \
-	examples/thesis/Summary.lyx \
-	examples/thesis/thesis.lyx \
-	examples/thesis/thesisExample.bib
+phdthesisexamplesdir = $(pkgdatadir)/examples/Theses/PhD_Thesis
+dist_phdthesisexamples_DATA = \
+	examples/Theses/PhD_Thesis/Acknowledgments.lyx \
+	examples/Theses/PhD_Thesis/alpha.bst \
+	examples/Theses/PhD_Thesis/Appendix.lyx \
+	examples/Theses/PhD_Thesis/Bibliography.lyx \
+	examples/Theses/PhD_Thesis/Chapter_1.lyx \
+	examples/Theses/PhD_Thesis/Chapter_2.lyx \
+	examples/Theses/PhD_Thesis/Main_File.lyx \
+	examples/Theses/PhD_Thesis/Summary.lyx \
+	examples/Theses/PhD_Thesis/thesisExample.bib
 
 ukexamplesdir = $(pkgdatadir)/examples/uk
 dist_ukexamples_DATA = \
-	examples/uk/splash.lyx
+	examples/uk/Welcome.lyx
 
 examplesdir = $(pkgdatadir)/examples
 dist_examples_DATA = \
-	examples/Braille.lyx \
-	examples/CV-image.eps \
-	examples/CV-image.png \
-	examples/Foils.lyx \
-	examples/ItemizeBullets.lyx \
-	examples/Literate.lyx \
-	examples/aa_sample.lyx \
-	examples/aas_sample.lyx \
-	examples/aas_sample62.lyx \
-	examples/achemso.lyx \
-	examples/addressExample.adr \
-	examples/amsart-test.lyx \
-	examples/amsbook-test.lyx \
-	examples/beamer.lyx \
-	examples/beamer-article.lyx \
-	examples/beamer-g4.jpg \
-	examples/beamer-g4-mask.jpg \
-	examples/beamer-icsi-logo.pdf \
-	examples/beamer-knight1-mask.png \
-	examples/beamer-knight1.png \
-	examples/beamer-knight2-mask.png \
-	examples/beamer-knight2.png \
-	examples/beamer-knight3-mask.png \
-	examples/beamer-knight3.png \
-	examples/beamer-knight4-mask.png \
-	examples/beamer-knight4.png \
-	examples/beamerlyxexample1.lyx \
-	examples/beamerposter.lyx \
 	examples/biblioExample.bib \
-	examples/chess-article.lyx \
-	examples/chessboard-article.lyx \
-	examples/chessgame.lyx \
-	examples/colored-boxes.lyx \
-	examples/docbook_article.lyx \
-	examples/europeCV.lyx \
-	examples/europassCV.lyx \
-	examples/example_lyxified.lyx \
-	examples/example_raw.lyx \
-	examples/FeynmanDiagrams.lyx \
-	examples/gnuplot.lyx \
-	examples/gnuplot-example.gp \
-	examples/H-P-statements.lyx \
-	examples/iecc05.fen \
-	examples/iecc07.fen \
-	examples/iecc12.fen \
-	examples/instant_preview.lyx \
-	examples/knitr.lyx \
-	examples/landslide.lyx \
-	examples/lilypond.lyx \
-	examples/linguistics.lyx \
-	examples/listerrors.lyx \
-	examples/localization_test.lyx \
-	examples/longsheet.gnumeric \
-	examples/minted-filelisting.lyx \
-	examples/minted-listings.lyx \
-	examples/modernCV.lyx \
-	examples/MultilingualCaptions.lyx \
-	examples/noweb2lyx.lyx \
-	examples/paralist.lyx \
-	examples/PDF-comment.lyx \
-	examples/PDF-form.lyx \
-	examples/powerdot.lyx \
-	examples/recipebook.lyx \
-	examples/script_form.lyx \
-	examples/seminar.lyx \
-	examples/serial_letter1.lyx \
-	examples/serial_letter2.lyx \
-	examples/serial_letter3.lyx \
-	examples/sheet1.gnumeric \
-	examples/sheet2.ods \
-	examples/sheet3.xls \
-	examples/simplecv.lyx \
-	examples/splash.lyx \
-	examples/spreadsheet.lyx \
-	examples/sweave.lyx \
-	examples/tufte-book.lyx \
-	examples/tufte-handout.lyx \
-	examples/varwidth-floats-side-by-side.lyx \
-	examples/xyfigure.lyx \
-	examples/xyfigure.png \
-	examples/xypic.lyx
+	examples/Example_(LyXified).lyx \
+	examples/Example_(raw).lyx \
+	examples/Localization_Test.lyx \
+	examples/Welcome.lyx
+
+articleexamplesdir = $(pkgdatadir)/examples/Articles
+dist_articleexamples_DATA = \
+	examples/Articles/Astronomy_&_Astrophysics.lyx \
+	examples/Articles/American_Astronomical_Society_(AASTeX_v._6).lyx \
+	examples/Articles/American_Astronomical_Society_(AASTeX_v._6.2).lyx \
+	examples/Articles/American_Chemical_Society_(ACS).lyx \
+	examples/Articles/American_Mathematical_Society_(AMS).lyx \
+	examples/Articles/DocBook_Article_(SGML).lyx
+
+articlechessexamplesdir = $(pkgdatadir)/examples/Articles/Chess
+dist_articlechessexamples_DATA = \
+	examples/Articles/Chess/Game_1.lyx \
+	examples/Articles/Chess/Game_2.lyx
+
+bookexamplesdir = $(pkgdatadir)/examples/Books
+dist_bookexamples_DATA = \
+	examples/Books/American_Mathematical_Society_(AMS).lyx \
+	examples/Books/Recipe_Book.lyx \
+	examples/Books/Tufte_Book.lyx
+
+booksvmonoexamplesdir = $(pkgdatadir)/examples/Books/Springer_Monographs_(svmono)
+dist_booksvmonoexamples_DATA = \
+	examples/Books/Springer_Monographs_(svmono)/00_Main_File.lyx \
+	examples/Books/Springer_Monographs_(svmono)/01_Dedication.lyx \
+	examples/Books/Springer_Monographs_(svmono)/02_Foreword.lyx \
+	examples/Books/Springer_Monographs_(svmono)/03_Preface.lyx \
+	examples/Books/Springer_Monographs_(svmono)/04_Acknowledgements.lyx \
+	examples/Books/Springer_Monographs_(svmono)/05_Acronym.lyx \
+	examples/Books/Springer_Monographs_(svmono)/06_Part.lyx \
+	examples/Books/Springer_Monographs_(svmono)/07_Chapter.lyx \
+	examples/Books/Springer_Monographs_(svmono)/08_Appendix.lyx \
+	examples/Books/Springer_Monographs_(svmono)/09_Glossary.lyx \
+	examples/Books/Springer_Monographs_(svmono)/10_Solutions.lyx \
+	examples/Books/Springer_Monographs_(svmono)/11_References.lyx
+
+booksvmultexamplesdir = $(pkgdatadir)/examples/Books/Springer_Contributed_Books_(svmult)
+dist_booksvmultexamples_DATA = \
+	examples/Books/Springer_Contributed_Books_(svmult)/00_Main_File.lyx \
+	examples/Books/Springer_Contributed_Books_(svmult)/01_Dedication.lyx \
+	examples/Books/Springer_Contributed_Books_(svmult)/02_Foreword.lyx \
+	examples/Books/Springer_Contributed_Books_(svmult)/03_Preface.lyx \
+	examples/Books/Springer_Contributed_Books_(svmult)/04_Acknowledgements.lyx \
+	examples/Books/Springer_Contributed_Books_(svmult)/05_Contributor_List.lyx \
+	examples/Books/Springer_Contributed_Books_(svmult)/06_Acronym.lyx \
+	examples/Books/Springer_Contributed_Books_(svmult)/07_Part.lyx \
+	examples/Books/Springer_Contributed_Books_(svmult)/08_Author.lyx \
+	examples/Books/Springer_Contributed_Books_(svmult)/09_Appendix.lyx \
+	examples/Books/Springer_Contributed_Books_(svmult)/10_Glossary.lyx \
+	examples/Books/Springer_Contributed_Books_(svmult)/11_References.lyx
+
+cvexamplesdir = $(pkgdatadir)/examples/Curricula_Vitae
+dist_cvexamples_DATA = \
+	examples/Curricula_Vitae/Europass_CV_(2013).lyx \
+	examples/Curricula_Vitae/Europe_CV.lyx \
+	examples/Curricula_Vitae/Modern_CV.lyx \
+	examples/Curricula_Vitae/Simple_CV.lyx \
+	examples/Curricula_Vitae/CV-image.eps \
+	examples/Curricula_Vitae/CV-image.png
+
+externalexamplesdir = $(pkgdatadir)/examples/External_Material
+dist_externalexamples_DATA = \
+	examples/External_Material/Gnuplot.lyx \
+	examples/External_Material/gnuplot-example.gp \
+	examples/External_Material/longsheet.gnumeric \
+	examples/External_Material/longsheet.tex \
+	examples/External_Material/sheet1.gnumeric \
+	examples/External_Material/sheet2.ods \
+	examples/External_Material/sheet3.xls \
+	examples/External_Material/Spreadsheet.lyx
+
+handoutexamplesdir = $(pkgdatadir)/examples/Handouts
+dist_handoutexamples_DATA = \
+	examples/Handouts/Tufte_Handout.lyx
+
+insetexamplesdir = $(pkgdatadir)/examples/Graphics_&_Insets
+dist_insetexamples_DATA = \
+	examples/Graphics_&_Insets/Feynman_Diagrams.lyx \
+	examples/Graphics_&_Insets/iecc05.fen \
+	examples/Graphics_&_Insets/iecc07.fen \
+	examples/Graphics_&_Insets/iecc12.fen \
+	examples/Graphics_&_Insets/Instant_Preview.lyx \
+	examples/Graphics_&_Insets/Itemize_Bullets.lyx \
+	examples/Graphics_&_Insets/Minted_File_Listing.lyx \
+	examples/Graphics_&_Insets/Minted_Listings.lyx \
+	examples/Graphics_&_Insets/XY-Figure.lyx \
+	examples/Graphics_&_Insets/xyfigure.png \
+	examples/Graphics_&_Insets/XY-Pic.lyx
+
+letterexamplesdir = $(pkgdatadir)/examples/Letters
+dist_letterexamples_DATA = \
+	examples/Letters/addressExample.adr \
+	examples/Letters/Serial_Letter_1.lyx \
+	examples/Letters/Serial_Letter_2.lyx \
+	examples/Letters/Serial_Letter_3.lyx
+
+moduleexamplesdir = $(pkgdatadir)/examples/Modules
+dist_moduleexamples_DATA = \
+	examples/Modules/Braille.lyx \
+	examples/Modules/Chessboard.lyx \
+	examples/Modules/Fancy_Colored_Boxes.lyx \
+	examples/Modules/Hazard_and_Precautionary_Statements.lyx \
+	examples/Modules/LilyPond_Book.lyx \
+	examples/Modules/Linguistics.lyx \
+	examples/Modules/Multilingual_Captions.lyx \
+	examples/Modules/Noweb.lyx \
+	examples/Modules/Noweb2LyX.lyx \
+	examples/Modules/Noweb_Listerrors.lyx \
+	examples/Modules/Paragraph_Lists_(paralist).lyx \
+	examples/Modules/PDF_Comments.lyx \
+	examples/Modules/PDF_Form.lyx \
+	examples/Modules/Rnw_(knitr).lyx \
+	examples/Modules/Sweave.lyx \
+	examples/Modules/Variable-width_Minipages.lyx
+
+posterexamplesdir = $(pkgdatadir)/examples/Posters
+dist_posterexamples_DATA = \
+	examples/Posters/Beamerposter.lyx
+
+presentationexamplesdir = $(pkgdatadir)/examples/Presentations
+dist_presentationexamples_DATA = \
+	examples/Presentations/Beamer.lyx \
+	examples/Presentations/Beamer_Article_(Standard_Class).lyx \
+	examples/Presentations/beamer-g4.jpg \
+	examples/Presentations/beamer-g4-mask.jpg \
+	examples/Presentations/beamer-icsi-logo.pdf \
+	examples/Presentations/beamer-knight1-mask.png \
+	examples/Presentations/beamer-knight1.png \
+	examples/Presentations/beamer-knight2-mask.png \
+	examples/Presentations/beamer-knight2.png \
+	examples/Presentations/beamer-knight3-mask.png \
+	examples/Presentations/beamer-knight3.png \
+	examples/Presentations/beamer-knight4-mask.png \
+	examples/Presentations/beamer-knight4.png \
+	examples/Presentations/Beamer_(Complex).lyx \
+	examples/Presentations/Foils.lyx \
+	examples/Presentations/Foils_Landslide.lyx \
+	examples/Presentations/Powerdot.lyx \
+	examples/Presentations/Seminar.lyx
+
+scriptexamplesdir = $(pkgdatadir)/examples/Scripts
+dist_scriptexamples_DATA = \
+	examples/Scripts/Hollywood.lyx
 
 fontsdir = $(pkgdatadir)/fonts
 dist_fonts_DATA = \
@@ -2410,66 +2518,96 @@ dist_scripts_DATA += \
 
 templatesdir = $(pkgdatadir)/templates
 dist_templates_DATA = \
-	templates/aa.lyx \
-	templates/aastex6.lyx \
-	templates/aastex62.lyx \
-	templates/acmart.lyx \
-	templates/AEA.lyx \
-	templates/APA.lyx \
-	templates/APA6.lyx \
-	templates/beamer-conference-ornate-20min.lyx \
-	templates/copernicus.lyx \
-	templates/ctex.lyx \
-	templates/de_beamer-conference-ornate-20min.lyx \
-	templates/dinbrief.lyx \
-	templates/DocBook_article.lyx \
-	templates/ectaart.lyx \
-	templates/elsarticle.lyx \
-	templates/EPS-cropped.lyx \
-	templates/es_beamer-conference-ornate-20min.lyx \
-	templates/fr_beamer-conference-ornate-20min.lyx \
-	templates/frletter.lyx \
-	templates/g-brief2.lyx \
-	templates/hollywood.lyx \
-	templates/IEEEtran-CompSoc.lyx \
-	templates/IEEEtran-Conference.lyx \
-	templates/IEEEtran-Journal.lyx \
-	templates/IEEEtran-TransMag.lyx \
-	templates/IJMPC.lyx \
-	templates/IJMPD.lyx \
-	templates/IOP-article.lyx \
-	templates/IUCr-article.lyx \
-	templates/ja_beamer-conference-ornate-20min.lyx \
-	templates/JASA.lyx \
-	templates/JSS-article.lyx \
-	templates/kluwer.lyx \
-	templates/koma-letter2.lyx \
-	templates/letter.lyx \
-	templates/lettre.lyx \
-	templates/maa-monthly.lyx \
-	templates/PDF-cropped.lyx \
-	templates/poster-a0poster-colored.lyx \
-	templates/poster-a0poster-simple.lyx \
-	templates/poster-beamerposter.lyx \
-	templates/poster-sciposter.lyx \
-	templates/README.new_templates \
-	templates/RJournal.lyx \
-	templates/revtex4.lyx \
-	templates/revtex4-1.lyx \
-	templates/slides.lyx
+	templates/EPS_(cropped).lyx \
+	templates/PDF_(cropped).lyx \
+	templates/README.new_templates
 
-obsoletetemplatesdir = $(pkgdatadir)/templates/obsolete
+articletemplatesdir = $(pkgdatadir)/templates/Articles
+dist_articletemplates_DATA = \
+	templates/Articles/American_Astronomical_Society_(AASTeX_v._6).lyx \
+	templates/Articles/American_Astronomical_Society_(AASTeX_v._6.2).lyx \
+	templates/Articles/American_Economic_Association_(AEA).lyx \
+	templates/Articles/American_Psychological_Association_(APA).lyx \
+	templates/Articles/American_Psychological_Association_(APA),_v._6.lyx \
+	templates/Articles/Association_for_Computing_Machinery_(ACM).lyx \
+	templates/Articles/Astronomy_&_Astrophysics.lyx \
+	templates/Articles/Chinese_Article_(CTeX).lyx \
+	templates/Articles/Copernicus_Publications_Manuscript_Preparation.lyx \
+	templates/Articles/DocBook_Article_(SGML).lyx \
+	templates/Articles/Econometrica.lyx \
+	templates/Articles/Elsevier.lyx \
+	templates/Articles/IEEE_Transactions_Computer_Society.lyx \
+	templates/Articles/IEEE_Transactions_Conference.lyx \
+	templates/Articles/IEEE_Transactions_Journal.lyx \
+	templates/Articles/IEEE_Transactions_on_Magnetics.lyx \
+	templates/Articles/Institute_of_Physics_(IOP).lyx \
+	templates/Articles/Int._Journal_of_Modern_Physics_C.lyx \
+	templates/Articles/Int._Journal_of_Modern_Physics_D.lyx \
+	templates/Articles/International_Union_of_Crystallography_(IUCr).lyx \
+	templates/Articles/Journal_of_Statistical_Software_(JSS)_version_2.lyx \
+	templates/Articles/Journal_of_the_Acoustical_Society_of_America_(JASA).lyx \
+	templates/Articles/Kluwer.lyx \
+	templates/Articles/Mathematical_Monthly.lyx \
+	templates/Articles/R_Journal.lyx \
+	templates/Articles/REVTeX_(V._4).lyx \
+	templates/Articles/REVTeX_(V._4.1).lyx \
+	templates/Articles/Springers_Global_Journal_Template_(V._3).lyx
+
+depresentationtemplatesdir = $(pkgdatadir)/templates/de/Presentations
+dist_depresentationtemplates_DATA = \
+	templates/de/Presentations/Beamer.lyx
+
+espresentationtemplatesdir = $(pkgdatadir)/templates/es/Presentations
+dist_espresentationtemplates_DATA = \
+	templates/es/Presentations/Beamer.lyx
+
+frpresentationtemplatesdir = $(pkgdatadir)/templates/fr/Presentations
+dist_frpresentationtemplates_DATA = \
+	templates/fr/Presentations/Beamer.lyx
+
+japresentationtemplatesdir = $(pkgdatadir)/templates/ja/Presentations
+dist_japresentationtemplates_DATA = \
+	templates/ja/Presentations/Beamer.lyx
+
+lettertemplatesdir = $(pkgdatadir)/templates/Letters
+dist_lettertemplates_DATA = \
+	templates/Letters/DIN-Brief.lyx \
+	templates/Letters/French_Letter_(frletter).lyx \
+	templates/Letters/French_Letter_(lettre).lyx \
+	templates/Letters/G-Brief_(V._2).lyx \
+	templates/Letters/KOMA-Script_Letter_(V._2).lyx \
+	templates/Letters/Letter_(Standard_Class).lyx
+
+obsoletetemplatesdir = $(pkgdatadir)/templates/Obsolete
 dist_obsoletetemplates_DATA = \
-	templates/obsolete/ACM-siggraph.lyx \
-	templates/obsolete/ACM-sigplan.lyx \
-	templates/obsolete/ACM-SIGS.lyx \
-	templates/obsolete/AGUTeX.lyx \
-	templates/obsolete/g-brief-de.lyx \
-	templates/obsolete/g-brief-en.lyx
+	templates/Obsolete/ACM_SIGGGRAPH_0.92_(obsolete).lyx \
+	templates/Obsolete/ACM_SIGPLAN_(Obsolete).lyx \
+	templates/Obsolete/ACM_SIG_Proceedings_(SP,_Obsolete).lyx \
+	templates/Obsolete/American_Geophysical_Union_(AGUTeX).lyx
 
-springertemplatesdir = $(pkgdatadir)/templates/springer
-dist_springertemplates_DATA = \
-	templates/springer/svjour3.lyx
+obsoletegbrieftemplatesdir = $(pkgdatadir)/templates/Obsolete/G-Brief_(V._1,_Obsolete)
+dist_obsoletegbrieftemplates_DATA = \
+	templates/Obsolete/G-Brief_(V._1,_Obsolete)/German.lyx \
+	templates/Obsolete/G-Brief_(V._1,_Obsolete)/English.lyx
+
+postertemplatesdir = $(pkgdatadir)/templates/Posters
+dist_postertemplates_DATA = \
+	templates/Posters/Beamerposter.lyx \
+	templates/Posters/SciPoster.lyx
+
+posteraztemplatesdir = $(pkgdatadir)/templates/Posters/A0_Poster
+dist_posteraztemplates_DATA = \
+	templates/Posters/A0_Poster/Colored.lyx \
+	templates/Posters/A0_Poster/Simple.lyx
+
+presentationtemplatesdir = $(pkgdatadir)/templates/Presentations
+dist_presentationtemplates_DATA = \
+	templates/Presentations/Beamer.lyx \
+	templates/Presentations/Slides.lyx
+
+scriptstemplatesdir = $(pkgdatadir)/templates/Scripts
+dist_scriptstemplates_DATA = \
+	templates/Scripts/Hollywood.lyx
 
 texdir = $(pkgdatadir)/tex
 dist_tex_DATA = \
@@ -2530,33 +2668,81 @@ endif
 dist_noinst_DATA += lyx.desktop.in images/lyx.svg images/lyx.png
 
 exampleandtemplate_files = \
+			   $(dist_articleexamples_DATA) \
+			   $(dist_articlechessexamples_DATA) \
+			   $(dist_articletemplates_DATA) \
+			   $(dist_bookexamples_DATA) \
+			   $(dist_booksvmonoexamples_DATA) \
+			   $(dist_booksvmultexamples_DATA) \
 			   $(dist_caexamples_DATA) \
+			   $(dist_cainsetexamples_DATA) \
 			   $(dist_csexamples_DATA) \
+			   $(dist_cvexamples_DATA) \
 			   $(dist_daexamples_DATA) \
 			   $(dist_deexamples_DATA) \
+			   $(dist_decvexamples_DATA) \
+			   $(dist_dehandoutexamples_DATA) \
+			   $(dist_deinsetexamples_DATA) \
+			   $(dist_deletterexamples_DATA) \
+			   $(dist_depresentationexamples_DATA) \
+			   $(dist_demoduleexamples_DATA) \
+			   $(dist_depresentationtemplates_DATA) \
 			   $(dist_elexamples_DATA) \
 			   $(dist_esexamples_DATA) \
+			   $(dist_esbookexamples_DATA) \
+			   $(dist_escvexamples_DATA) \
+			   $(dist_eshandoutexamples_DATA) \
+			   $(dist_esinsetexamples_DATA) \
+			   $(dist_esmoduleexamples_DATA) \
+			   $(dist_espresentationtemplates_DATA) \
 			   $(dist_euexamples_DATA) \
+			   $(dist_externalexamples_DATA) \
 			   $(dist_faexamples_DATA) \
 			   $(dist_frexamples_DATA) \
+			   $(dist_frcvexamples_DATA) \
+			   $(dist_frinsetexamples_DATA) \
+			   $(dist_frmoduleexamples_DATA) \
+			   $(dist_frpresentationexamples_DATA) \
+			   $(dist_frpresentationtemplates_DATA) \
 			   $(dist_glexamples_DATA) \
+			   $(dist_handoutexamples_DATA) \
 			   $(dist_heexamples_DATA) \
 			   $(dist_huexamples_DATA) \
 			   $(dist_idexamples_DATA) \
+			   $(dist_insetexamples_DATA) \
 			   $(dist_itexamples_DATA) \
+			   $(dist_itinsetexamples_DATA) \
 			   $(dist_jaexamples_DATA) \
+			   $(dist_jainsetexamples_DATA) \
+			   $(dist_jamoduleexamples_DATA) \
+			   $(dist_japresentationexamples_DATA) \
+			   $(dist_japresentationtemplates_DATA) \
 			   $(dist_koexamples_DATA) \
+			   $(dist_letterexamples_DATA) \
+			   $(dist_lettertemplates_DATA) \
+			   $(dist_moduleexamples_DATA) \
 			   $(dist_nbexamples_DATA) \
 			   $(dist_nlexamples_DATA) \
+			   $(dist_nlinsetexamples_DATA) \
+			   $(dist_obsoletetemplates_DATA) \
+			   $(dist_obsoletegbrieftemplates_DATA) \
+			   $(dist_phdthesisexamples_DATA) \
 			   $(dist_plexamples_DATA) \
+			   $(dist_posterexamples_DATA) \
+			   $(dist_postertemplates_DATA) \
+			   $(dist_posteraztemplates_DATA) \
+			   $(dist_presentationexamples_DATA) \
+			   $(dist_presentationtemplates_DATA) \
 			   $(dist_ptexamples_DATA) \
 			   $(dist_roexamples_DATA) \
 			   $(dist_ruexamples_DATA) \
+			   $(dist_scriptexamples_DATA) \
+			   $(dist_scriptstemplates_DATA) \
 			   $(dist_slexamples_DATA) \
 			   $(dist_skexamples_DATA) \
 			   $(dist_srexamples_DATA) \
+			   $(dist_srmoduleexamples_DATA) \
 			   $(dist_svexamples_DATA) \
-			   $(dist_springerexamples_DATA) \
 			   $(dist_thesisexamples_DATA) \
 			   $(dist_ukexamples_DATA) \
 			   $(dist_examples_DATA) \
