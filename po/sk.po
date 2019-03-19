@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-03-13 14:17+0100\n"
-"PO-Revision-Date: 2019-03-13 13:26+0000\n"
+"POT-Creation-Date: 2019-03-19 09:30+0100\n"
+"PO-Revision-Date: 2019-03-19 08:56+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -7766,8 +7766,8 @@ msgstr "ACM SIG Rokovacie Zväzky (SP, Zastaralé)"
 
 # Združenie pre Výpočetné Stroje
 #: lib/layouts/acmart.layout:3
-msgid "Association for Computing Machinery (ACM) article"
-msgstr "Association for Computing Machinery (ACM) článok"
+msgid "Association for Computing Machinery (ACM)"
+msgstr "Association for Computing Machinery (ACM)"
 
 #: lib/layouts/acmart.layout:86 lib/layouts/acmsiggraph-0-92.layout:332
 #: lib/layouts/acmsiggraph.layout:288 lib/layouts/amsdefs.inc:175
@@ -8938,9 +8938,9 @@ msgstr ""
 msgid "List of Algorithms"
 msgstr "Zoznam algoritmov"
 
-#: lib/layouts/amsart.layout:3
-msgid "American Mathematical Society (AMS) Article"
-msgstr "American Mathematical Society (AMS) článok"
+#: lib/layouts/amsart.layout:3 lib/layouts/amsbook.layout:3
+msgid "American Mathematical Society (AMS)"
+msgstr "American Mathematical Society (AMS)"
 
 #: lib/layouts/amsart.layout:85
 msgid "SpecialSection"
@@ -8966,10 +8966,6 @@ msgstr "Neočíslované"
 #: lib/layouts/svcommon.inc:271
 msgid "Subsubsection*"
 msgstr "Podpodsekcia*"
-
-#: lib/layouts/amsbook.layout:3
-msgid "American Mathematical Society (AMS) Book"
-msgstr "American Mathematical Society (AMS) Kniha"
 
 #: lib/layouts/amsbook.layout:4 lib/layouts/book.layout:4
 #: lib/layouts/bxjsbook.layout:4 lib/layouts/ctex-book.layout:4
@@ -19095,6 +19091,10 @@ msgstr "Otvoriť…|O"
 #: lib/ui/stdmenus.inc:48
 msgid "Open Recent|t"
 msgstr "Otvoriť nedávne|d"
+
+#: lib/ui/stdmenus.inc:49
+msgid "Open Example...|p"
+msgstr "Otvoriť Príklad...|P"
 
 #: lib/ui/stdmenus.inc:50
 msgid "Close|C"
@@ -31212,6 +31212,22 @@ msgstr "Žiadny protokolový súbor chýb lyx2lyx sa nenašiel."
 msgid "No version control log file found."
 msgstr "Protokolový súbor správy verzií nenájdený."
 
+#: src/frontends/qt4/GuiLyXFiles.cpp:147 src/frontends/qt4/GuiLyXFiles.cpp:377
+msgid "New File From Template"
+msgstr "Nový Súbor zo šablóny…|b"
+
+#: src/frontends/qt4/GuiLyXFiles.cpp:157
+msgid "All available files"
+msgstr "Všetky dostupné súbory"
+
+#: src/frontends/qt4/GuiLyXFiles.cpp:158
+msgid "Enter string to filter the list of available files"
+msgstr "Zadajte reťazec na výber z listiny dostupných súborov"
+
+#: src/frontends/qt4/GuiLyXFiles.cpp:189
+msgid "Templates"
+msgstr "Šablóny"
+
 #: src/frontends/qt4/GuiMathMatrix.cpp:34
 msgid "[x]"
 msgstr "[x]"
@@ -32145,6 +32161,10 @@ msgstr "Vyberte súbor šablóny"
 #: src/frontends/qt4/GuiView.cpp:2294 src/frontends/qt4/GuiView.cpp:2664
 msgid "&Templates"
 msgstr "Š&ablóny"
+
+#: src/frontends/qt4/GuiLyXFiles.cpp:375
+msgid "Open Example File"
+msgstr "Otvoriť Príkladný Súbor"
 
 #: src/frontends/qt4/GuiView.cpp:2321
 msgid "Document not loaded."
@@ -33346,6 +33366,21 @@ msgstr ""
 #: src/insets/InsetInclude.cpp:753
 msgid "Different use-non-TeX-fonts settings"
 msgstr "Odlišné nastavenie použitia nie-TeX-fontov"
+
+#: src/insets/InsetInclude.cpp:797
+#, c-format
+msgid ""
+"Included file `%1$s'\n"
+"uses input encoding \"%2$s\" [%3$s]\n"
+"while parent file uses input encoding \"%4$s\" [%5$s]."
+msgstr ""
+"Zahrnutý súbor `%1$s'\n"
+"používa kódovanie \"%2$s\" [%3$s]\n"
+"zatiaľ čo nadriadený súbor používa kódovanie \"%4$s\" [%5$s]."
+
+#: src/insets/InsetInclude.cpp:805
+msgid "Different LaTeX input encodings"
+msgstr "Nerovnaké LaTeX kódovania"
 
 #: src/insets/InsetInclude.cpp:768
 #, c-format
@@ -39793,3 +39828,9 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Match found!"
 #~ msgstr "Vhodný výraz nájdený!"
+
+#~ msgid "Association for Computing Machinery (ACM) article"
+#~ msgstr "Association for Computing Machinery (ACM) článok"
+
+#~ msgid "American Mathematical Society (AMS) Book"
+#~ msgstr "American Mathematical Society (AMS) Kniha"
