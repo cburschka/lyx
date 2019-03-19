@@ -39,9 +39,8 @@ using namespace lyx::support;
 namespace lyx {
 namespace frontend {
 
-namespace {
 
-void getFiles(QMap<QString, QString> & in, QString const type)
+void GuiLyXFiles::getFiles(QMap<QString, QString> & in, QString const type)
 {
 	// We look for lyx files in the subdirectory dir of
 	//   1) user_lyxdir
@@ -112,7 +111,7 @@ void getFiles(QMap<QString, QString> & in, QString const type)
 		QDirIterator it(dir, QDir::Files, QDirIterator::Subdirectories);
 		while (it.hasNext()) {
 			QString fn(QFile(it.next()).fileName());
-			if (!fn.endsWith(".lyx"))
+			if (!fn.endsWith(getSuffix()))
 				continue;
 			QString const relpath = toqstr(makeRelPath(qstring_to_ucs4(fn),
 								   qstring_to_ucs4(dir)));
@@ -139,8 +138,6 @@ void getFiles(QMap<QString, QString> & in, QString const type)
 		}
 	}
 }
-
-}// namespace anon
 
 
 GuiLyXFiles::GuiLyXFiles(GuiView & lv)
@@ -190,6 +187,15 @@ GuiLyXFiles::GuiLyXFiles(GuiView & lv)
 	fileTypeCO->addItem(qt_("Examples"), toqstr("examples"));
 
 	setFocusProxy(filter_);
+}
+
+
+QString const GuiLyXFiles::getSuffix()
+{
+	if (type_ == "bind" || type_ == "ui")
+		return toqstr(".") + type_;
+	
+	return ".lyx";
 }
 
 
@@ -273,7 +279,7 @@ void GuiLyXFiles::updateContents()
 		QString const filename = info.fileName();
 		QString const guiname =
 				toqstr(translateIfPossible(
-					       qstring_to_ucs4(filename.left(filename.lastIndexOf(".lyx")).replace('_', ' '))));
+					       qstring_to_ucs4(filename.left(filename.lastIndexOf(getSuffix())).replace('_', ' '))));
 		item->setIcon(0, iconprovider.icon(info));
 		item->setData(0, Qt::UserRole, info.filePath());
 		item->setData(0, Qt::DisplayRole, guiname);
@@ -390,10 +396,16 @@ void GuiLyXFiles::dispatchParams()
 	if (type_ == "templates")
 		arg = "newfile ";
 	arg += fromqstr(file_);
-	FuncCode const lfun = (type_ == toqstr("examples")) ?
-		LFUN_FILE_OPEN : getLfun();
+	FuncCode const lfun = getLfun();
 
 	dispatch(FuncRequest(lfun, arg));
+}
+
+FuncCode GuiLyXFiles::getLfun() const
+{
+	if (type_ == toqstr("examples"))
+		return LFUN_FILE_OPEN;
+	return LFUN_BUFFER_NEW_TEMPLATE;
 }
 
 Dialog * createGuiLyXFiles(GuiView & lv) { return new GuiLyXFiles(lv); }

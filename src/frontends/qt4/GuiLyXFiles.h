@@ -59,7 +59,11 @@ private:
 	///
 	bool isBufferDependent() const { return false; }
 	///
-	FuncCode getLfun() const { return LFUN_BUFFER_NEW_TEMPLATE; }
+	FuncCode getLfun() const;
+	///
+	QString const getSuffix();
+	///
+	void getFiles(QMap<QString, QString> &, QString const);
 
 private:
 	/// contains the search box
