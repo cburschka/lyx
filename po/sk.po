@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-03-19 09:30+0100\n"
-"PO-Revision-Date: 2019-03-19 08:56+0000\n"
-"Last-Translator: Kornel Benko <kornel@lyx.org>\n"
-"Language-Team: Slovak <kornel@lyx.org>\n"
+"POT-Creation-Date: 2019-03-19 18:04+0100\n"
+"PO-Revision-Date: 2019-03-19 17:27+0000\n"
+"Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
+"Language-Team: Slovak <kde-i18n-de@kde.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2816,6 +2816,12 @@ msgstr "&Horizontálne:"
 #: src/frontends/qt4/ui/MathMatrixUi.ui:234
 msgid "&Type:"
 msgstr "&Typ:"
+
+#: src/frontends/qt4/ui/LyXFilesUi.ui:45 src/frontends/qt4/ui/LyXFilesUi.ui:58
+msgid "Use this language if avaliable (if not, English is used as fallback)"
+msgstr ""
+"Použiť tento jazyk keď je súbor dostupný (keď nie, použiť Anglický jazyk ako "
+"záložný)"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:247
 msgid "decoration type / matrix border"
@@ -5671,7 +5677,7 @@ msgstr ""
 
 #: lib/layouts/AEA.layout:3
 msgid "American Economic Association (AEA)"
-msgstr "American Economic Association (AEA)"
+msgstr "Americká Ekonomická Spoločnosť (AEA)"
 
 #: lib/layouts/AEA.layout:4 lib/layouts/IEEEtran-CompSoc.layout:4
 #: lib/layouts/IEEEtran-TransMag.layout:4 lib/layouts/IEEEtran.layout:4
@@ -6491,7 +6497,7 @@ msgstr "Dôkaz"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:3
 msgid "IEEE Transactions Computer Society"
-msgstr "IEEE Transactions Computer Society"
+msgstr "IEEE Transakcie Počítačovej Spoločnosti"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:19
 #: lib/layouts/IEEEtran-TransMag.layout:20
@@ -6519,11 +6525,11 @@ msgstr "Index-Text pre beztitulný súhrn"
 
 #: lib/layouts/IEEEtran-TransMag.layout:3
 msgid "IEEE Transactions on Magnetics"
-msgstr "IEEE Transactions on Magnetics"
+msgstr "IEEE Transakcie Magnetizmu"
 
 #: lib/layouts/IEEEtran.layout:3
 msgid "IEEE Transactions"
-msgstr "IEEE Transactions"
+msgstr "IEEE Transackcie"
 
 #: lib/layouts/IEEEtran.layout:35 lib/layouts/aa.layout:36
 #: lib/layouts/aapaper.layout:35 lib/layouts/aastex.layout:61
@@ -7331,7 +7337,7 @@ msgstr "Listina"
 
 #: lib/layouts/aastex.layout:3
 msgid "American Astronomical Society (AASTeX v. 5)"
-msgstr "American Astronomical Society (AASTeX v. 5)"
+msgstr "Americká Astronomická Spoločnosť (AASTeX v. 5)"
 
 #: lib/layouts/aastex.layout:159 lib/layouts/aastex62.layout:164
 #: lib/layouts/achemso.layout:102 lib/layouts/acmart.layout:203
@@ -7504,7 +7510,7 @@ msgstr "Oddeliť identifikátor datasetu od textu"
 
 #: lib/layouts/aastex6.layout:3
 msgid "American Astronomical Society (AASTeX v. 6)"
-msgstr "American Astronomical Society (AASTeX v. 6)"
+msgstr "Americká Astronomická Spoločnosť (AASTeX v. 6)"
 
 #: lib/layouts/aastex6.layout:59 lib/layouts/aastex62.layout:70
 msgid "Software"
@@ -7528,7 +7534,7 @@ msgstr "Poznámka-"
 
 #: lib/layouts/aastex62.layout:3
 msgid "American Astronomical Society (AASTeX v. 6.2)"
-msgstr "American Astronomical Society (AASTeX v. 6.2)"
+msgstr "Americká Astronomická Spoločnosť (AASTeX v. 6.2)"
 
 #: lib/layouts/aastex62.layout:126 lib/layouts/ectaart.layout:178
 #: lib/layouts/ectaart.layout:181
@@ -7604,7 +7610,7 @@ msgstr "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}."
 
 #: lib/layouts/achemso.layout:3
 msgid "American Chemical Society (ACS)"
-msgstr "American Chemical Society (ACS)"
+msgstr "Americká Spoločnosť pre Chémiu (ACS)"
 
 #: lib/layouts/achemso.layout:74 lib/layouts/amsdefs.inc:41
 #: lib/layouts/apa.layout:257 lib/layouts/apa6.layout:357
@@ -8410,7 +8416,7 @@ msgstr "URL kódu:"
 
 #: lib/layouts/agu-dtd.layout:3
 msgid "American Geophysical Union (AGU, SGML Article)"
-msgstr "American Geophysical Union (AGU, SGML článok)"
+msgstr "Americká Únia pre Geofyziku (AGU, SGML článok)"
 
 #: lib/layouts/agu-dtd.layout:4 lib/layouts/docbook.layout:4
 msgid "Articles (DocBook)"
@@ -8792,7 +8798,7 @@ msgstr "Poštové smerovacie číslo"
 
 #: lib/layouts/agums.layout:3
 msgid "American Geophysical Union (AGUPLUS Manuscript)"
-msgstr "American Geophysical Union (AGUPLUS Manuskript)"
+msgstr "Americká Únia pre Geofyziku (AGUPLUS Manuskript)"
 
 #: lib/layouts/aguplus.inc:37 lib/layouts/amsart.layout:75
 #: lib/layouts/amsbook.layout:84 lib/layouts/beamer.layout:318
@@ -8896,7 +8902,7 @@ msgstr "Tabuľka"
 
 #: lib/layouts/agutex.layout:3
 msgid "American Geophysical Union (AGUTeX)"
-msgstr "American Geophysical Union (AGUTeX)"
+msgstr "Americká Únia pre Geofyziku (AGUTeX)"
 
 #: lib/layouts/agutex.layout:74
 msgid "Authors"
@@ -8940,7 +8946,7 @@ msgstr "Zoznam algoritmov"
 
 #: lib/layouts/amsart.layout:3 lib/layouts/amsbook.layout:3
 msgid "American Mathematical Society (AMS)"
-msgstr "American Mathematical Society (AMS)"
+msgstr "Americká Matematická Spoločnosť (AMS)"
 
 #: lib/layouts/amsart.layout:85
 msgid "SpecialSection"
@@ -9118,7 +9124,7 @@ msgstr "Klasifikácia matematických oblastí 2000:"
 
 #: lib/layouts/apa.layout:3
 msgid "American Psychological Association (APA)"
-msgstr "American Psychological Association (APA)"
+msgstr "Americká Psychologická Spoločnosť (APA)"
 
 #: lib/layouts/apa.layout:54
 msgid "RightHeader"
@@ -9223,7 +9229,7 @@ msgstr "(\\alph{enumii})"
 
 #: lib/layouts/apa6.layout:3
 msgid "American Psychological Association (APA), v. 6"
-msgstr "American Psychological Association (APA), v. 6"
+msgstr "Americká Psychologická Spoločnosť (APA), v. 6"
 
 #: lib/layouts/apa6.layout:113
 msgid "FiveAuthors"
@@ -13222,7 +13228,7 @@ msgstr "Japonská Kniha (Štandardná trieda)"
 
 #: lib/layouts/jgrga.layout:3
 msgid "American Geophysical Union (AGUPLUS JGR)"
-msgstr "American Geophysical Union (AGUPLUS JGR)"
+msgstr "Americká Únia pre Geofyziku (AGUPLUS JGR)"
 
 #: lib/layouts/jreport.layout:3
 msgid "Japanese Report (Standard Class)"
@@ -31228,6 +31234,14 @@ msgstr "Zadajte reťazec na výber z listiny dostupných súborov"
 msgid "Templates"
 msgstr "Šablóny"
 
+#: src/frontends/qt4/GuiLyXFiles.cpp:402
+msgid "User Interface Files"
+msgstr "Súbory s užívateľským rozhraním"
+
+#: src/frontends/qt4/GuiLyXFiles.cpp:404
+msgid "Key Binding Files"
+msgstr "Súbory pre skratky"
+
 #: src/frontends/qt4/GuiMathMatrix.cpp:34
 msgid "[x]"
 msgstr "[x]"
@@ -32162,9 +32176,13 @@ msgstr "Vyberte súbor šablóny"
 msgid "&Templates"
 msgstr "Š&ablóny"
 
-#: src/frontends/qt4/GuiLyXFiles.cpp:375
+#: src/frontends/qt4/GuiLyXFiles.cpp:412
 msgid "Open Example File"
-msgstr "Otvoriť Príkladný Súbor"
+msgstr "Otvoriť príkladný súbor"
+
+#: src/frontends/qt4/GuiLyXFiles.cpp:416
+msgid "Open File"
+msgstr "Otvoriť súbor"
 
 #: src/frontends/qt4/GuiView.cpp:2321
 msgid "Document not loaded."
