@@ -1332,6 +1332,7 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 	case LFUN_DIALOG_SHOW: {
 		string const name = cmd.getArg(0);
 		return name == "aboutlyx"
+			|| name == "lyxfiles"
 			|| name == "prefs"
 			|| name == "texinfo"
 			|| name == "progress"
@@ -1655,26 +1656,29 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (!current_view_
 		   || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
 			createView(QString(), false); // keep hidden
-			current_view_->newDocument(to_utf8(cmd.argument()), false);
+			current_view_->newDocument(to_utf8(cmd.argument()));
 			current_view_->show();
 			setActiveWindow(current_view_);
 		} else {
-			current_view_->newDocument(to_utf8(cmd.argument()), false);
+			current_view_->newDocument(to_utf8(cmd.argument()));
 		}
 		break;
 
-	case LFUN_BUFFER_NEW_TEMPLATE:
+	case LFUN_BUFFER_NEW_TEMPLATE: {
+		string const file = (cmd.getArg(0) == "newfile") ? string() : cmd.getArg(0);
+		string const temp = cmd.getArg(1);
 		validateCurrentView();
 		if (!current_view_
 		   || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
 			createView();
-			current_view_->newDocument(to_utf8(cmd.argument()), true);
+			current_view_->newDocument(file, temp, true);
 			if (!current_view_->documentBufferView())
 				current_view_->close();
 		} else {
-			current_view_->newDocument(to_utf8(cmd.argument()), true);
+			current_view_->newDocument(file, temp, true);
 		}
 		break;
+	}
 
 	case LFUN_FILE_OPEN: {
 		// FIXME: normally the code below is not needed, since getStatus makes sure that

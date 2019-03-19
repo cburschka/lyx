@@ -714,8 +714,11 @@ void LyXAction::init()
  * \li Action: Creates a new buffer (that is, document) from a template.
  * \li Notion: Path for new files and templates can be set in Preferences dialog.
                Template will be asked for via Open-dialog.
- * \li Syntax: buffer-new-template [<FILE>]
- * \li Params: <FILE>: filename of created file with absolute path.
+ * \li Syntax: buffer-new-template [<FILE>] [<TEMPLATE FILE>]
+ * \li Params: <FILE>: filename of created file with absolute path. If empty
+ *                     or "newfile", a file with appropriate name is generated.
+ *             <TEMPLATE FILE>: filename of template with absolute path. If empty,
+ *                              a dialog is opened to select the new file.
  * \endvar
  */
 		{ LFUN_BUFFER_NEW_TEMPLATE,"buffer-new-template", NoBuffer, Buffer },

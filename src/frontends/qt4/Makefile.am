@@ -109,6 +109,7 @@ SOURCEFILES = \
 	GuiLine.cpp \
 	GuiListings.cpp \
 	GuiLog.cpp \
+	GuiLyXFiles.cpp \
 	GuiMathMatrix.cpp \
 	GuiNomenclature.cpp \
 	GuiNote.cpp \
@@ -219,6 +220,7 @@ MOCHEADER = \
 	GuiLine.h \
 	GuiListings.h \
 	GuiLog.h \
+	GuiLyXFiles.h \
 	GuiMathMatrix.h \
 	GuiNomenclature.h \
 	GuiNote.h \
@@ -304,6 +306,7 @@ UIFILES = \
 	ListingsSettingsUi.ui \
 	LocalLayoutUi.ui \
 	LogUi.ui \
+	LyXFilesUi.ui \
 	MarginsUi.ui \
 	MasterChildUi.ui \
 	MathMatrixUi.ui \

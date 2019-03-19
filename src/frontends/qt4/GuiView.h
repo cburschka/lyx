@@ -105,7 +105,8 @@ public:
 	BufferView const * documentBufferView() const;
 
 	void newDocument(std::string const & filename,
-		bool fromTemplate);
+			 std::string templatefile = std::string(),
+			 bool fromTemplate = false);
 
 	/// display a message in the view
 	/// could be called from any thread

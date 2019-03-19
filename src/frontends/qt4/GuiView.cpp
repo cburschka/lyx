@@ -2098,6 +2098,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		if (!doc_buffer)
 			enable = name == "aboutlyx"
 				|| name == "file" //FIXME: should be removed.
+				|| name == "lyxfiles"
 				|| name == "prefs"
 				|| name == "texinfo"
 				|| name == "progress"
@@ -2566,7 +2567,8 @@ void GuiView::importDocument(string const & argument)
 }
 
 
-void GuiView::newDocument(string const & filename, bool from_template)
+void GuiView::newDocument(string const & filename, string templatefile,
+			  bool from_template)
 {
 	FileName initpath(lyxrc.document_path);
 	if (documentBufferView()) {
@@ -2576,9 +2578,9 @@ void GuiView::newDocument(string const & filename, bool from_template)
 			initpath = trypath;
 	}
 
-	string templatefile;
 	if (from_template) {
-		templatefile = selectTemplateFile().absFileName();
+		if (templatefile.empty())
+			templatefile =  selectTemplateFile().absFileName();
 		if (templatefile.empty())
 			return;
 	}
@@ -4545,7 +4547,7 @@ char const * const dialognames[] = {
 "citation", "compare", "comparehistory", "document", "errorlist", "ert",
 "external", "file", "findreplace", "findreplaceadv", "float", "graphics",
 "href", "include", "index", "index_print", "info", "listings", "label", "line",
-"log", "mathdelimiter", "mathmatrix", "mathspace", "nomenclature",
+"log", "lyxfiles", "mathdelimiter", "mathmatrix", "mathspace", "nomenclature",
 "nomencl_print", "note", "paragraph", "phantom", "prefs", "ref",
 "sendto", "space", "spellchecker", "symbols", "tabular", "tabularcreate",
 "thesaurus", "texinfo", "toc", "view-source", "vspace", "wrap", "progress"};
@@ -4741,6 +4743,7 @@ Dialog * createGuiInclude(GuiView & lv);
 Dialog * createGuiIndex(GuiView & lv);
 Dialog * createGuiListings(GuiView & lv);
 Dialog * createGuiLog(GuiView & lv);
+Dialog * createGuiLyXFiles(GuiView & lv);
 Dialog * createGuiMathMatrix(GuiView & lv);
 Dialog * createGuiNote(GuiView & lv);
 Dialog * createGuiParagraph(GuiView & lv);
@@ -4811,6 +4814,8 @@ Dialog * GuiView::build(string const & name)
 		return createGuiListings(*this);
 	if (name == "log")
 		return createGuiLog(*this);
+	if (name == "lyxfiles")
+		return createGuiLyXFiles(*this);
 	if (name == "mathdelimiter")
 		return createGuiDelimiter(*this);
 	if (name == "mathmatrix")
