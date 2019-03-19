@@ -183,9 +183,6 @@ GuiLyXFiles::GuiLyXFiles(GuiView & lv)
 	//filesLW->setViewMode(QListView::ListMode);
 	filesLW->setIconSize(QSize(22, 22));
 
-	fileTypeCO->addItem(qt_("Templates"), toqstr("templates"));
-	fileTypeCO->addItem(qt_("Examples"), toqstr("examples"));
-
 	setFocusProxy(filter_);
 }
 
@@ -196,6 +193,12 @@ QString const GuiLyXFiles::getSuffix()
 		return toqstr(".") + type_;
 	
 	return ".lyx";
+}
+
+
+bool GuiLyXFiles::translateName() const
+{
+	return (type_ == "templates" || type_ == "examples");
 }
 
 
@@ -277,9 +280,9 @@ void GuiLyXFiles::updateContents()
 			catItem = filesLW->findItems(cat, Qt::MatchExactly).first();
 		QTreeWidgetItem * item = new QTreeWidgetItem();
 		QString const filename = info.fileName();
-		QString const guiname =
-				toqstr(translateIfPossible(
-					       qstring_to_ucs4(filename.left(filename.lastIndexOf(getSuffix())).replace('_', ' '))));
+		QString guiname = filename.left(filename.lastIndexOf(getSuffix())).replace('_', ' ');
+		if (translateName())
+			guiname = toqstr(translateIfPossible(qstring_to_ucs4(guiname)));
 		item->setIcon(0, iconprovider.icon(info));
 		item->setData(0, Qt::UserRole, info.filePath());
 		item->setData(0, Qt::DisplayRole, guiname);
@@ -365,23 +368,33 @@ bool GuiLyXFiles::isValid()
 bool GuiLyXFiles::initialiseParams(string const & type)
 {
 	type_ = type.empty() ? toqstr("templates") : toqstr(type);
-	paramsToDialog(type_);
+	paramsToDialog();
 	return true;
 }
 
 
-void GuiLyXFiles::paramsToDialog(QString const & command)
+void GuiLyXFiles::paramsToDialog()
 {
-	if (!command.isEmpty()) {
-		int i = fileTypeCO->findData(command);
+	fileTypeCO->clear();
+	if (type_ == "examples" || type_ == "templates") {
+		fileTypeCO->addItem(qt_("Templates"), toqstr("templates"));
+		fileTypeCO->addItem(qt_("Examples"), toqstr("examples"));
+	} else if (type_ == "ui")
+		fileTypeCO->addItem(qt_("User Interface Files"), toqstr("ui"));
+	else if (type_ == "bind")
+		fileTypeCO->addItem(qt_("Key Binding Files"), toqstr("bind"));
+
+	if (!type_.isEmpty()) {
+		int i = fileTypeCO->findData(type_);
 		if (i != -1)
 			fileTypeCO->setCurrentIndex(i);
 	}
-	if (command == "examples")
+	if (type_ == "examples")
 		setTitle(qt_("Open Example File"));
-	else {
+	else if (type_ == "templates")
 		setTitle(qt_("New File From Template"));
-	}
+	else
+		setTitle(qt_("Open File"));
 
 	bc().setValid(isValid());
 }
@@ -406,7 +419,9 @@ FuncCode GuiLyXFiles::getLfun() const
 {
 	if (type_ == "examples")
 		return LFUN_FILE_OPEN;
-	return LFUN_BUFFER_NEW_TEMPLATE;
+	else if (type_ == "templates")
+		return LFUN_BUFFER_NEW_TEMPLATE;
+	return LFUN_NOACTION;
 }
 
 Dialog * createGuiLyXFiles(GuiView & lv) { return new GuiLyXFiles(lv); }

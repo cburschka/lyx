@@ -51,7 +51,7 @@ private:
 	///
 	bool initialiseParams(std::string const & data);
 	///
-	void paramsToDialog(QString const & command);
+	void paramsToDialog();
 	///
 	void clearParams() {}
 	///
@@ -62,6 +62,8 @@ private:
 	FuncCode getLfun() const;
 	///
 	QString const getSuffix();
+	///
+	bool translateName() const;
 	///
 	void getFiles(QMap<QString, QString> &, QString const);
 
