@@ -6,6 +6,8 @@
 
 project(testExamples)
 
-foreach(_arg longsheet.gnumeric iecc05.fen beamer-icsi-logo.pdf)
-  configure_file(${_arg} "${CMAKE_CURRENT_BINARY_DIR}/${_arg}" COPYONLY)
+foreach(_arg "External_Material/longsheet.gnumeric"
+             "Graphics_\&_Insets/iecc05.fen"
+             "Presentations/beamer-icsi-logo.pdf")
+  configure_file("${_arg}" "${CMAKE_CURRENT_BINARY_DIR}/${_arg}" COPYONLY)
 endforeach(_arg)

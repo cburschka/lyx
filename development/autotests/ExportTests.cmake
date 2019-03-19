@@ -333,7 +333,8 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
     # Strip extension
     string(REGEX REPLACE "\\.lyx$" "" f ${f})
     foreach(_lyx_format_num 16 20 21 22 23)
-      set(TestName "export/${libsubfolder}/${f}_lyx${_lyx_format_num}")
+      set(TestName1 "export/${libsubfolder}/${f}_lyx${_lyx_format_num}")
+      string(REGEX REPLACE "[\\(\\)]" "_" TestName "${TestName1}")
       set(mytestlabel ${testlabel} "lyx2lyx" "load")
       maketestname(TestName inverted invertedTests ignoredTests unreliableTests mytestlabel)
       if(TestName)
@@ -359,7 +360,8 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
       set(lyx2lyxtestlabel "lyx2lyx")
       # For use of lyx2lyx we need the python executable
       set(mytestlabel ${lyx2lyxtestlabel})
-      set(TestName "lyx2lyx/${libsubfolder}/${f}")
+      set(TestName1 "lyx2lyx/${libsubfolder}/${f}")
+      string(REGEX REPLACE "[\\(\\)]" "_" TestName "${TestName1}")
       maketestname(TestName inverted invertedTests ignoredTests unreliableTests mytestlabel)
       if(TestName)
         add_test(NAME ${TestName}
@@ -375,7 +377,8 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
     endif()
     set(loadtestlabel "load")
     set(mytestlabel ${loadtestlabel})
-    set(TestName "check_load/${libsubfolder}/${f}")
+    set(TestName1 "check_load/${libsubfolder}/${f}")
+    string(REGEX REPLACE "[\\(\\)]" "_" TestName "${TestName1}")
     maketestname(TestName inverted invertedTests ignoredTests unreliableTests mytestlabel)
     if(TestName)
       add_test(NAME ${TestName}
@@ -429,9 +432,9 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
             set(_enc "_${_enc2}")
           endif()
           if(fonttype MATCHES "defaultF")
-            set(TestName "export/${libsubfolder}/${f}${_enc}_${format}")
+            set(TestName1 "export/${libsubfolder}/${f}${_enc}_${format}")
           else()
-            set(TestName "export/${libsubfolder}/${f}${_enc}_${format}_${fonttype}")
+            set(TestName1 "export/${libsubfolder}/${f}${_enc}_${format}_${fonttype}")
           endif()
           if (format MATCHES "^${default_output_format}$")
             set(extraLabels "defaultoutput")
@@ -445,6 +448,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
           else()
             set(mytestlabel ${testlabel} ${extraLabels})
           endif()
+          string(REGEX REPLACE "[\\(\\)]" "_" TestName "${TestName1}")
           maketestname(TestName inverted invertedTests ignoredTests unreliableTests mytestlabel)
           if(TestName)
             add_test(NAME ${TestName}
