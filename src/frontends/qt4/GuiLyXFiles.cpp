@@ -51,53 +51,25 @@ void GuiLyXFiles::getFiles(QMap<QString, QString> & in, QString const type)
 	// We also consider i18n subdirectories and prefer them.
 	QStringList dirs;
 	QStringList relpaths;
-	QStringList langcodes;
 
 	// The three locations to look at.
 	string const user = addPath(package().user_support().absFileName(), fromqstr(type));
 	string const build = addPath(package().build_support().absFileName(), fromqstr(type));
 	string const system = addPath(package().system_support().absFileName(), fromqstr(type));
 
-	// If the LANGUAGE variable is set, use it as a fallback for searching for files.
-	string lang = getGuiMessages().language();
-	string const language = getEnv("LANGUAGE");
-	if (!language.empty())
-		lang += ":" + language;
-
-	// Get all supported languages (by code) in order to exclude those
-	// dirs later.
-	QAbstractItemModel * language_model = guiApp->languageModel();
-	for (int i = 0; i != language_model->rowCount(); ++i) {
-		QModelIndex index = language_model->index(i, 0);
-		Language const * lang =
-			languages.getLanguage(fromqstr(index.data(Qt::UserRole).toString()));
-		if (!lang)
-			continue;
-		string const code = lang->code();
-		langcodes << toqstr(code);
-		// Also store code without country code
-		string const shortcode = token(code, '_', 0);
-		if (shortcode != code)
-			langcodes << toqstr(shortcode);
-	}
-
-	for (auto const & l : getVectorFromString(lang, ":")) {
-		FileName tmp;
-		// First try with the full name
-		// `en' files are not in a subdirectory
-		if (l == "en")
-			break;
-		else {
-			dirs << toqstr(addPath(user, l));
-			dirs << toqstr(addPath(build, l));
-			dirs << toqstr(addPath(system, l));
-		}
+	// First, query the current language subdir (except for English)
+	QString const lang = languageCO->currentData().toString();
+	if (!lang.startsWith("en")) {
+		// First try with the full code
+		dirs << toqstr(addPath(user, fromqstr(lang)));
+		dirs << toqstr(addPath(build, fromqstr(lang)));
+		dirs << toqstr(addPath(system, fromqstr(lang)));
 		// Then the name without country code
-		string const shortl = token(l, '_', 0);
-		if (shortl != l) {
-			dirs << toqstr(addPath(user, shortl));
-			dirs << toqstr(addPath(build, shortl));
-			dirs << toqstr(addPath(system, shortl));
+		QString const shortl = lang.left(lang.indexOf('_'));
+		if (shortl != lang) {
+			dirs << toqstr(addPath(user, fromqstr(shortl)));
+			dirs << toqstr(addPath(build, fromqstr(shortl)));
+			dirs << toqstr(addPath(system, fromqstr(shortl)));
 		}
 	}
 
@@ -124,8 +96,8 @@ void GuiLyXFiles::getFiles(QMap<QString, QString> & in, QString const type)
 				int sc = relpath.indexOf('/', s + 1);
 				QString const subcat = (sc == -1) ?
 							QString() : relpath.mid(s + 1, sc - s - 1);
-				if (langcodes.contains(cat)
-				    && !langcodes.contains(dir.right(dir.lastIndexOf('/'))))
+				if (langcodes_.contains(cat)
+				    && !langcodes_.contains(dir.right(dir.lastIndexOf('/'))))
 					// Skip i18n dir
 					continue;
 				if (!subcat.isEmpty())
@@ -144,6 +116,47 @@ GuiLyXFiles::GuiLyXFiles(GuiView & lv)
 	: GuiDialog(lv, "lyxfiles", qt_("New File From Template"))
 {
 	setupUi(this);
+
+	// Get all supported languages (by code) in order to exclude those
+	// dirs later.
+	QAbstractItemModel * language_model = guiApp->languageModel();
+	language_model->sort(0);
+	for (int i = 0; i != language_model->rowCount(); ++i) {
+		QModelIndex index = language_model->index(i, 0);
+		Language const * lang =
+			languages.getLanguage(fromqstr(index.data(Qt::UserRole).toString()));
+		if (!lang)
+			continue;
+		string const code = lang->code();
+		languageCO->addItem(qt_(lang->display()), toqstr(code));
+		langcodes_ << toqstr(code);
+		// Also store code without country code
+		string const shortcode = token(code, '_', 0);
+		if (shortcode != code)
+			langcodes_ << toqstr(shortcode);
+	}
+	// Preset to GUI language
+	string lang = getGuiMessages().language();
+	string const language = getEnv("LANGUAGE");
+	if (!language.empty())
+		lang += ":" + language;
+
+	for (auto const & l : getVectorFromString(lang, ":")) {
+		// First try with the full name
+		// `en' files are not in a subdirectory
+		int i = languageCO->findData(toqstr(l));
+		if (i != -1) {
+			languageCO->setCurrentIndex(i);
+			break;
+		}
+		// Then the name without country code
+		string const shortl = token(l, '_', 0);
+		i = languageCO->findData(toqstr(l));
+		if (i != -1) {
+			languageCO->setCurrentIndex(i);
+			break;
+		}
+	}
 
 	// The filter bar
 	filter_ = new FancyLineEdit(this);
@@ -209,6 +222,12 @@ void GuiLyXFiles::changed_adaptor()
 
 
 void GuiLyXFiles::on_fileTypeCO_activated(int)
+{
+	updateContents();
+}
+
+
+void GuiLyXFiles::on_languageCO_activated(int)
 {
 	updateContents();
 }

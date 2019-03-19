@@ -34,6 +34,7 @@ public:
 private Q_SLOTS:
 	void changed_adaptor();
 	void on_fileTypeCO_activated(int);
+	void on_languageCO_activated(int);
 	void on_filesLW_itemDoubleClicked(QTreeWidgetItem *, int);
 	void on_browsePB_pressed();
 	void slotButtonBox(QAbstractButton *);
@@ -74,6 +75,8 @@ private:
 	QString type_;
 	///
 	QString file_;
+	///
+	QStringList langcodes_;
 };
 
 } // namespace frontend
