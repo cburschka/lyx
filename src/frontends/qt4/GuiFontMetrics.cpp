@@ -135,20 +135,29 @@ int GuiFontMetrics::strikeoutPos() const
 }
 
 
-int GuiFontMetrics::lbearing(char_type c) const
-{
-	if (!is_utf16(c))
-		// FIXME: QFontMetrics::leftBearing does not support the
-		//        full unicode range. Once it does, we could use:
-		//return metrics_.leftBearing(toqstr(docstring(1, c)));
-		return 0;
-
-	return metrics_.leftBearing(ucs4_to_qchar(c));
+namespace {
+int const outOfLimitMetric = -10000;
 }
 
 
-namespace {
-int const outOfLimitMetric = -10000;
+int GuiFontMetrics::lbearing(char_type c) const
+{
+	int value = lbearing_cache_.value(c, outOfLimitMetric);
+	if (value != outOfLimitMetric)
+		return value;
+
+	if (is_utf16(c))
+		value = metrics_.leftBearing(ucs4_to_qchar(c));
+	else {
+		// FIXME: QFontMetrics::leftBearing does not support the
+		//        full unicode range. Once it does, we could use:
+		// metrics_.leftBearing(toqstr(docstring(1, c)));
+		value = 0;
+	}
+
+	lbearing_cache_.insert(c, value);
+
+	return value;
 }
 
 
