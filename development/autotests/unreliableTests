@@ -114,7 +114,7 @@ export/examples/(|fr/)seminar_(dvi|pdf).*
 # * garbled output with LuaTeX + TeX fonts (since TL18)
 # * missing chars with XeTeX + TeX fonts (see invertedTests)
 export/export/latex/uk-babel-date-missing-chars-with-ascii_.*_texF
-export/(doc|examples)/uk/(Intro|splash)_.*_texF
+export/(doc|examples)/uk/(Intro|Welcome)_.*_texF
 
 # new problem with TL18 (see invertedTests)
 export/export/latex/luainputenc-utf8_pdf5_texF

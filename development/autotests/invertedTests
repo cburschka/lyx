@@ -200,7 +200,7 @@ export/doc/(|de/|es/|fr/)UserGuide_pdf4_texF
 # Babel-Russian uses UTF-8 for auto-strings if it detects Xe/LuaTeX.
 # This fails unless the inputencoding is set to utf-8, too.
 export/doc/ru/(Intro|Tutorial)_(dvi3|pdf[45])_texF
-export/examples/ru/(example_lyxified|splash)_(dvi3|pdf[45])_texF
+export/examples/ru/(example_lyxified|Welcome)_(dvi3|pdf[45])_texF
 
 # Babel-Ukrainian uses UTF-8 if it detects Xe/LuaTeX (for "\date").
 # With 8-bit TeX fonts this results in:
@@ -210,7 +210,7 @@ export/examples/ru/(example_lyxified|splash)_(dvi3|pdf[45])_texF
 # Workaround: suppressing auto-date or using date inset (new in LyX 2.4)
 # 	      in the source documents.
 export/export/latex/uk-babel-date-missing-chars-with-ascii_(pdf4|dvi3)_texF
-export/(doc|examples)/uk/(Intro|splash)_(pdf4|dvi3)_texF
+export/(doc|examples)/uk/(Intro|Welcome)_(pdf4|dvi3)_texF
 
 # Fails with XeTeX/LuaTeX
 # Reported upstream (https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg184435.html)
@@ -283,13 +283,13 @@ export/.*/ar/.*(dvi3|pdf5)_systemF
 # Farsi
 # Polyglossia problem with LuaTeX (undefined command) (cf. Arabic)
 # https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
-export/examples/fa/splash_(dvi3|pdf5)_systemF
+export/examples/fa/Welcome_(dvi3|pdf5)_systemF
 # Missing characters (em space and "English" quotes) with XeTeX + system fonts.
-export/examples/fa/splash_pdf4_systemF
+export/examples/fa/Welcome_pdf4_systemF
 # missing ASCII replacements (required by XeTeX + TeX fonts)
-export/examples/fa/splash_pdf4_texF
+export/examples/fa/Welcome_pdf4_texF
 # "invalid utf-8 sequence" with Babel-Farsi, LuaTeX, and TeX fonts.
-export/examples/fa/splash_(dvi3|pdf5)_texF
+export/examples/fa/Welcome_(dvi3|pdf5)_texF
 
 # Hebrew
 # does not currently work with LuaTeX (undefined command) (cf. Arabic)

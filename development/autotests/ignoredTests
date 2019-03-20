@@ -56,7 +56,7 @@ export/examples/fr/powerdot_pdf[25].*
 export/templates/JSS-article_(dvi|dvi3_.*|pdf3?)
 
 # CJK fails with LuaTeX or XeTeX and 8-bit fonts:
-export/examples/ko/splash.*texF
+export/examples/ko/Welcome.*texF
 export/.*/zh_CN/.*texF
 
 # Japanese manuals use language "japanese" wich is tied to "platex"
