@@ -1109,8 +1109,6 @@ class Border {
   int upper;
 };
 
-static vector<Border> borders = vector<Border>(30);
-
 #define MAXOPENED 30
 class Intervall {
   bool isPatternString;
@@ -1125,6 +1123,7 @@ public:
 
   string par;
   int ignoreidx;
+  static vector<Border> borders;
   int depts[MAXOPENED];
   int closes[MAXOPENED];
   int actualdeptindex;
@@ -1145,6 +1144,8 @@ public:
   void output(ostringstream &os, int lastpos);
   // string show(int lastpos);
 };
+
+vector<Border> Intervall::borders = vector<Border>(30);
 
 int Intervall::isOpeningPar(int pos)
 {
@@ -1364,6 +1365,14 @@ static void buildAccentsMap()
                                       "ḒḓḘḙḼḽṊṋṰṱṶṷ");	// subcircum
   buildaccent("subtilde|textsubtilde", "EeIiUu",
                                        "ḚḛḬḭṴṵ");	// subtilde
+  accents["dgrave{\\imath}"] = "ȉ";
+  accents["textdoublegrave{\\i}"] = "ȉ";
+  buildaccent("dgrave|textdoublegrave", "AaEeIiOoRrUu",
+                                        "ȀȁȄȅȈȉȌȍȐȑȔȕ"); // double grave
+  accents["rcap{\\imath}"] = "ȉ";
+  accents["textroundcap{\\i}"] = "ȉ";
+  buildaccent("rcap|textroundcap", "AaEeIiOoRrUu",
+                                   "ȂȃȆȇȊȋȎȏȒȓȖȗ"); // inverted breve
 }
 
 /*
@@ -1374,7 +1383,7 @@ void Intervall::removeAccents()
 {
   if (accents.empty())
     buildAccentsMap();
-  static regex const accre("\\\\(([\\S]|grave|breve|lyxmathsym|text|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde)\\{[^\\{\\}]+\\}|(i|imath|jmath)(?![a-zA-Z]))");
+  static regex const accre("\\\\(([\\S]|grave|breve|lyxmathsym|text|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde|dgrave|textdoublegrave|rcap|textroundcap)\\{[^\\{\\}]+\\}|(i|imath|jmath)(?![a-zA-Z]))");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
