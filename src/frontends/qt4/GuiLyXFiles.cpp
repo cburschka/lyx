@@ -58,7 +58,11 @@ void GuiLyXFiles::getFiles(QMap<QString, QString> & in, QString const type)
 	string const system = addPath(package().system_support().absFileName(), fromqstr(type));
 
 	// First, query the current language subdir (except for English)
+#if QT_VERSION >= 0x050200
 	QString const lang = languageCO->currentData().toString();
+#else
+	QString const lang = languageCO->currentText();
+#endif
 	if (!lang.startsWith("en")) {
 		// First try with the full code
 		dirs << toqstr(addPath(user, fromqstr(lang)));
