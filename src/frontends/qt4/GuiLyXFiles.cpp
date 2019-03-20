@@ -233,8 +233,12 @@ void GuiLyXFiles::on_languageCO_activated(int)
 }
 
 
-void GuiLyXFiles::on_filesLW_itemDoubleClicked(QTreeWidgetItem *, int)
+void GuiLyXFiles::on_filesLW_itemDoubleClicked(QTreeWidgetItem * item, int)
 {
+	if (!item->data(0, Qt::UserRole).toString().endsWith(getSuffix()))
+		// not a file (probably a header)
+		return;
+
 	applyView();
 	dispatchParams();
 	close();
