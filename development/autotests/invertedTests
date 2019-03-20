@@ -210,7 +210,8 @@ export/examples/ru/(example_lyxified|Welcome)_(dvi3|pdf[45])_texF
 # Workaround: suppressing auto-date or using date inset (new in LyX 2.4)
 # 	      in the source documents.
 export/export/latex/uk-babel-date-missing-chars-with-ascii_(pdf4|dvi3)_texF
-export/(doc|examples)/uk/(Intro|Welcome)_(pdf4|dvi3)_texF
+# the "dvi3" tests for these pass, but have wrong output.
+export/(doc|examples)/uk/(Intro|Welcome)_(pdf4)_texF
 
 # Fails with XeTeX/LuaTeX
 # Reported upstream (https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg184435.html)

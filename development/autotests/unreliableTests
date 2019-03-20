@@ -160,6 +160,10 @@ export/examples/(|fr/)seminar_(dvi|pdf).*
 export/examples/es/(ejemplo_con_lyx|tufte_book)_(pdf5|dvi3)_texF
 export/doc/es/.*_(pdf5|dvi3)_texF
 
+# The date and chapter headings are garbled. These exports used to fail with
+# TL16, but now compile without error (TL18, TL19-pre).
+export/(doc|examples)/uk/(Intro|Welcome)_dvi3_texF
+
 
 # LyX issues
 # **********
