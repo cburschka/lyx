@@ -618,6 +618,8 @@ dist_images_DATA1X = \
 	images/layout-toggle_LyX-Code.svgz \
 	images/layout-toggle_Chunk.svgz \
 	images/layout-toggle_Section.svgz \
+	images/lyxfiles-system.svgz \
+	images/lyxfiles-user.svgz \
 	images/lyx-quit.svgz \
 	images/marginalnote-insert.svgz \
 	images/master-buffer-update.svgz \

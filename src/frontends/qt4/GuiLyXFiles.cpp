@@ -30,7 +30,6 @@
 #include "support/Package.h"
 
 #include <QDirIterator>
-#include <QFileIconProvider>
 #include <QTreeWidget>
 
 using namespace std;
@@ -274,7 +273,8 @@ void GuiLyXFiles::updateContents()
 	getFiles(files, type);
 
 	filesLW->clear();
-	QFileIconProvider iconprovider;
+	QIcon user_icon(getPixmap("images/", "lyxfiles-user", "svgz,png"));
+	QIcon system_icon(getPixmap("images/", "lyxfiles-system", "svgz,png"));
 	QStringList cats;
 	QMap<QString, QString>::const_iterator it = files.constBegin();
 	QFont capfont;
@@ -306,7 +306,9 @@ void GuiLyXFiles::updateContents()
 		QString guiname = filename.left(filename.lastIndexOf(getSuffix())).replace('_', ' ');
 		if (translateName())
 			guiname = toqstr(translateIfPossible(qstring_to_ucs4(guiname)));
-		item->setIcon(0, iconprovider.icon(info));
+		QIcon file_icon = (info.filePath().startsWith(toqstr(package().user_support().absFileName()))) ?
+				user_icon : system_icon;
+		item->setIcon(0, file_icon);
 		item->setData(0, Qt::UserRole, info.filePath());
 		item->setData(0, Qt::DisplayRole, guiname);
 		item->setData(0, Qt::ToolTipRole, info.filePath());
@@ -326,6 +328,7 @@ void GuiLyXFiles::updateContents()
 				}
 			} else {
 				subcatItem->setText(0, subcat);
+				subcatItem->setIcon(0, file_icon);
 				cats << catsave;
 			}
 			subcatItem->addChild(item);
