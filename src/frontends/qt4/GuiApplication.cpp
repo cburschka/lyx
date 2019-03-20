@@ -689,6 +689,7 @@ public:
 		// Already in po: "Cancel", "&Cancel"
 		_("Apply"); // Already in po: "&Apply"
 		_("Reset"); // Already in po: "&Reset" "R&eset" "Rese&t"
+		_("Open");
 
 		docstring s = getGuiMessages().getIfFound(sourceText);
 		// This test should eventually be removed when translations are updated
