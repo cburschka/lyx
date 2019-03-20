@@ -1114,11 +1114,15 @@ static vector<Border> borders = vector<Border>(30);
 #define MAXOPENED 30
 class Intervall {
   bool isPatternString;
- public:
- explicit Intervall(bool isPattern) :
-  isPatternString(isPattern),
-    ignoreidx(-1),
-    actualdeptindex(0) { depts[0] = 0; closes[0] = 0;};
+public:
+  explicit Intervall(bool isPattern, string const & p) :
+  	isPatternString(isPattern), par(p), ignoreidx(-1), actualdeptindex(0),
+  	hasTitle(false)
+  {
+    depts[0] = 0;
+    closes[0] = 0;
+  }
+
   string par;
   int ignoreidx;
   int depts[MAXOPENED];
@@ -1463,10 +1467,8 @@ class LatexInfo {
   void removeHead(KeyInfo&, int count=0);
 
  public:
- LatexInfo(string par, bool isPatternString) : entidx(-1), interval(isPatternString) {
-    interval.par = par;
-    interval.hasTitle = false;
-    interval.titleValue = "";
+ LatexInfo(string par, bool isPatternString) : entidx(-1), interval(isPatternString, par)
+  {
     buildKeys(isPatternString);
     entries = vector<KeyInfo>();
     buildEntries(isPatternString);
