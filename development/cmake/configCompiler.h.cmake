@@ -36,7 +36,7 @@
 #cmakedefine HAVE_WCHAR_T 1
 #cmakedefine HAVE_WINT_T 1
 #cmakedefine HAVE_STDINT_H_WITH_UINTMAX 1
-#cmakedefine HAVE_LC_MESSAGES 1    
+#cmakedefine HAVE_LC_MESSAGES 1
 #cmakedefine HAVE_SSTREAM 1
 #cmakedefine HAVE_ARGZ_H 1
 #cmakedefine HAVE_MAGIC_H 1
@@ -54,7 +54,7 @@
 
 #ifdef HAVE_LONG_LONG
 #ifdef SIZEOF_LONG_LONG_GREATER_THAN_SIZEOF_LONG
-#define LYX_USE_LONG_LONG
+#define HAVE_LONG_LONG_INT 1
 #endif
 #endif
 
@@ -82,7 +82,7 @@
 #define PATH_MAX 512
 #endif
 
-#ifdef _WIN32 
+#ifdef _WIN32
 #undef HAVE_MKDIR // use _mkdir instead
 #endif
 
