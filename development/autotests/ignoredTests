@@ -12,7 +12,8 @@ Sublabel: problematic
 # ================================================
 
 # problems exporting to lyx16x
-export/examples/(Literate|noweb2lyx)_lyx16
+export/examples/Modules/Noweb_lyx16
+export/examples/Modules/Noweb2LyX_lyx16
 
 # Tests created for lyx2lyx-tests only
 !export/export/lyx2lyx/lyx_.*_test_lyx[12][1236]
@@ -33,27 +34,29 @@ Sublabel: special
 
 # Inside these two files, we state that they should only be expected
 # to work with pdflatex and possibly lualatex.
-export/examples/PDF-form_(dvi.*|pdf[^25]*)
-export/examples/(|de/|fr/)PDF-comment_dvi3_.*F
-export/examples/(|de/|fr/)PDF-comment_pdf5_texF
+export/examples/Modules/PDF_Form_(dvi.*|pdf[^25]*)
+export/examples/(|de/|fr/)Modules/PDF_Comments_dvi3_.*F
+export/examples/(|de/|fr/)Modules/PDF_Comments_pdf5_texF
 
 # Seems, like only latex and pdflatex compilations work
 #! Missing number, treated as zero.
 # in copernicus.cls:199
 # \ifnum\pdfoutput=\z@
-export/templates/copernicus_(dvi3|pdf4|pdf5)_(texF|systemF)
+export/templates/Articles/Copernicus_.*(dvi3|pdf4|pdf5)_(texF|systemF)
 
 # Document uses Postscript specials
-# Does not compile with pdflatex (see note in the document source).
-export/examples/instant_preview_(dvi3|pdf4)_systemF
-export/examples/instant_preview_pdf[25].*
-export/examples/(chessgame|chess-article|powerdot)_pdf[25].*
-export/examples/chessboard-article_(lyx(16|20|21|22|23)|(pdf3|pdf5|dvi3)_texF)
-export/examples/fr/powerdot_pdf[25].*
+# Does not compile with pdflatex or non-TeX fonts (see note in the document source).
+export/examples/Graphics_._Insets/Instant_Preview_pdf[25].*
+export/examples/Graphics_._Insets/Instant_Preview_(dvi3|pdf4)_systemF
+
+export/examples/(chessgame|chess-article)_pdf[25].*
+export/examples/(|fr/)Presentations/Powerdot_pdf[25].*
+export/examples/Modules/Chessboard_(lyx(16|20|21|22|23)|(pdf3|pdf5|dvi3)_texF)
+
 
 # requires jss.cls (not on CTAN)
 # "All documents need to be processed by pdflatex" [jss.pdf]
-export/templates/JSS-article_(dvi|dvi3_.*|pdf3?)
+export/templates/Articles/Journal_of_Statistical_Software_.*(dvi|dvi3_.*|pdf3?)
 
 # CJK fails with LuaTeX or XeTeX and 8-bit fonts:
 export/examples/ko/Welcome.*texF
@@ -69,13 +72,14 @@ export/.*/zh_CN/.*texF
 # Exceptions: 
 # * Japanese knitr.lyx and sweave.lyx support only XeLaTeX
 #   with system fonts because they use the "bxjsarticle" class.
-# * examples/multilingual.lyx uses "Japanese (CJK)"
 # The "!" means the following:
 #   "Protect these tests from being matched by future patterns in this file".
-!export/.*/ja/(knitr|sweave).*_(lyx.*|xhtml|pdf4_systemF)
-export/.*/ja/(knitr|sweave).*
-#
-!export/.*/ja/multilingual.*
+!export/examples/ja/Modules/Rnw.*knitr.*_(lyx.*|xhtml|pdf4_systemF)
+export/examples/ja/Modules/Rnw.*knitr.*
+!export/examples/ja/Modules/Sweave.*_(lyx.*|xhtml|pdf4_systemF)
+export/examples/ja/Modules/Sweave.*
+# examples/multilingual.lyx uses "Japanese (CJK)"
+!export/examples/ja/Multilingual_Typesetting_.*
 export/.*/ja/.*_(pdf[245]|dvi3).*
 # the unicodesymbols-tests use pdflatex, too:
 export/export/latex/unicodesymbols/.*-platex_pdf2
@@ -83,29 +87,29 @@ export/export/latex/unicodesymbols/.*-platex_pdf2
 # export of minted documents to 2.2.x is not guaranteed to work (and currently
 # fails for our two minted example files), as explained here:
 # https://www.mail-archive.com/search?l=mid&q=20190113085555.GA7928%40GIOVE
-export/examples/minted.*lyx22
+export/examples/Insets/Minted.*lyx22
 
 
 # Subdocuments that are not expected to work as stand-alone documents:
 export/mathmacros/Spacechild[123].*
-export/examples/springer/svmono_(acknow|acronym|appendix|chapter|dedication|foreword|glossary|part|preface|referenc|solutions)_lyx[0-9][0-9]
-export/examples/springer/svmult_(acknow|acronym|appendix|cblist|dedication|foreword|glossary|part|preface|referenc)_lyx[0-9][0-9]
-export/examples/thesis/(Acknowledgments|Appendix|Summary|Bibliography|chapter-[12])_lyx[0-9][0-9]
+# chapters of Springer books (svmono, svmult) (except 00_Main_File)
+export/examples/Books/Springer_.*(0[^0]|1.)_.*_lyx.*
+export/examples/Theses/PhD_Thesis/(Acknowledgments|Appendix|Summary|Bibliography|chapter-[12])_lyx[0-9][0-9]
 # Used only as include file for some tests
 .*/export/IncludeMissingEndTagDiv.*
 
 # Bibliography.lyx is not expected to compile. See the following for discussion:
 #   https://www.mail-archive.com/search?l=mid&q=20190104195414.opgeuggeqakxl2fo%40barna
 # Ignore all formats except xhtml export
-export/examples/thesis/Bibliography_[^x].*
+export/examples/Theses/PhD_Thesis/Bibliography_[^x].*
 
 # Document class "Docbook article (SGML)" does not work with LaTeX:
-export/examples/docbook_article_(dvi3|pdf[245]).*
-export/templates/DocBook_article_(dvi3|pdf[245]).*
+export/examples/Articles/DocBook_Article_(dvi3|pdf[245]).*
+export/templates/Articles/DocBook_Article_(dvi3|pdf[245]).*
 
 # `acmart` and `copernicus` are not supported by LyX < 2.3
-export/templates/acmart_lyx(16|20|21|22)
-export/templates/copernicus_lyx(16|20|21|22)
+export/templates/Articles/Association_for_Computing_Machinery_lyx(16|20|21|22)
+export/templates/Articles/Copernicus_Publications_.*_lyx(16|20|21|22)
 
 
 # ============================================================
@@ -121,13 +125,13 @@ export/templates/attic/latex8_(dvi|dvi3_.*|lyx(22|23))
 # aastex.cls is obsolete and replaced by aastex6.cls
 # aastex6.cls is obsolete and replaced by aastex62.cls
 export/doc/attic/aastex6_sample_(dvi|pdf|lyx(16|20|21|22|23)).*
-export/templates/aastex6_.*
-export/templates/aastex62_lyx16
-export/examples/aas_sample_.*
-export/examples/aas_sample62_lyx16
+export/examples/Articles/American_Astronomical_Society_.*v._6.*
+export/examples/Articles/American_Astronomical_Society_.*v._6.2.*_lyx16
+export/templates/Articles/American_Astronomical_Society_.*v._6.*
+export/templates/Articles/American_Astronomical_Society_.*v._6.2.*_lyx16
 check_load/doc/attic/aastex6_sample
-check_load/templates/aastex(6)?
-check_load/examples/aas_sample
+check_load/examples/Articles/American_Astronomical_Society_.*v._6.
+check_load/templates/Articles/American_Astronomical_Society_.*v._6.
 
 
 

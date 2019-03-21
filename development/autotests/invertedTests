@@ -36,22 +36,22 @@ export/export/latex/iconv-error-nomenclature_pdf2
 #      the float `sidebar'. LyX will not be able to produce a float list.
 #
 # which makes "check_load" and "lyx2lyx" fail (lyx2lyx for < 2.3 is ignored).
-check_load/templates/acmart
-export/templates/acmart_lyx23
+check_load/templates/Articles/Association_for_Computing_Machinery_.ACM.
+export/templates/Articles/Association_for_Computing_Machinery_.ACM._lyx23
 
 # Failing LyX2LyX conversions for old versions:
 #
 # "beamer" lyx2lyx fails sometimes for versions < 2.1
 # Back-conversion results in some layouts without name ("\begin_layout \n")
 # which trigger a warning message leading to test failure.
-export/examples/(|de/|fr/|ja/)beamer_lyx(16|20)
-export/templates/.*beamer-conference-ornate-20min_lyx(16|20)
-export/examples/beamerlyxexample1_lyx(16|20)
+export/examples/(|de/|fr/|ja/)Presentations/Beamer_lyx(16|20)
+export/examples/Presentations/Beamer_.Complex._lyx(16|20)
+export/templates/(|de/|es/|fr/|ja/)Presentations/Beamer_lyx(16|20)
 #
 # modernCV fails for versions < 2.1
 # * reversed order of \end_layout and \end_inset results in corrupt LyX file
 # * reversed order of command arguments results in incompilable LaTeX
-export/examples/(|es/)modernCV_lyx(16|20)
+export/examples/(|es/)Curricula_Vitae/Modern_CV_lyx(16|20)
 #
 # back-conversion fails for rotated float inset in a list
 export/export/lyx2lyx/lyx_2_3_test_lyx(16|20|21|22)
@@ -65,12 +65,11 @@ export/export/latex/CJK/ko_default_pdf2
 #    ! TeX capacity exceeded, sorry [input stack +size=5000].
 export/export/latex/luainputenc-utf8_pdf5_texF
 
-
 # nonstandard tests failing for unknown reason:
-export/templates/obsolete/ACM-siggraph_pdf5_(texF|systemF)
-export/templates/IUCr-article_pdf4_systemF
-export/templates/RJournal_(dvi3|pdf[45])_systemF
-export/templates/kluwer_.*_systemF
+export/templates/Obsolete/ACM_SIGGGRAPH.*_pdf5_(texF|systemF)
+export/templates/Articles/International_Union_of_Crystallography.*_pdf4_systemF
+export/templates/Articles/RJournal_(dvi3|pdf[45])_systemF
+export/templates/Articles/Kluwer_.*_systemF
 
 
 # ================================================
@@ -94,7 +93,7 @@ export/export/latex/6197-polish-amssymb_pdf._texF
 #    the Cyrillic script is not required yet Polyglossia tests for support.
 # The document "sr/Braille.lyx" is an example of case b).
 # (For some reason, the false positive error is not thrown with PDF (luatex).)
-export/examples/sr/Braille_(dvi3|pdf4)_systemF
+export/examples/sr/Modules/Braille_(dvi3|pdf4)_systemF
 
 #9681 Run-together words in Greek and Cyrillic documents
 # no-termination of replacement macros can lead to non-existing macros if
@@ -113,13 +112,13 @@ export/doc/(de|es|fr)/EmbeddedObjects_pdf4_texF
 export/doc/es/Customization_pdf4_texF
 # see also the discussion at:
 # https://www.mail-archive.com/search?l=mid&q=20170228190738.cgs3tl3ny2bxiegk%40steph
-export/examples/es/linguistics_pdf4_texF
+export/examples/es/Modules/Linguistics_pdf4_texF
 export/export/latex/bug9871-slovak-ascii-preambleencoding_pdf2
 
 #10355 xmllint detects failures
 export/doc/attic/eu_UserGuide_xhtml
 export/doc/(es|ja)/UserGuide_xhtml
-export/examples/spreadsheet_xhtml
+export/examples/External_Material/Spreadsheet_xhtml
 export/export/WrongDfnTagHandling_xhtml
 
 #10371 Compilation error if longest label marker in labeling style
@@ -127,7 +126,7 @@ export/export/WrongDfnTagHandling_xhtml
 export/export/latex/LongestLabelWithUnderscore.*
 
 #11455 "Unable to process argument!" with multiple 1.6.x roundtrips
-export/templates/IEEEtran-Journal_lyx16
+export/templates/Articles/IEEE_Transactions_Journal_lyx16
 
 #10600 forced use of "ascii" inputenc with XeTeX
 # Non-ASCII in ERT, fails with inputenc==ASCII
@@ -139,7 +138,7 @@ export/export/latex/xetex-inputenc-utf8_pdf4_texF
 # Example for lib/scripts/listerrors
 # Requires noweb. Seems to be restricted to plain "latex".
 # Find out why and whether the script could be improved.
-export/examples/listerrors_(pdf[245]).*
+export/examples/Modules/Noweb_Listerrors_(pdf[245]).*
 
 #11521 Font encoding "LAE" required with farsi.
 # The Farsi font encoding LAE must be added also to a custom font encoding
@@ -216,14 +215,14 @@ export/(doc|examples)/uk/(Intro|Welcome)_(pdf4)_texF
 # Fails with XeTeX/LuaTeX
 # Reported upstream (https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg184435.html)
 # Is there a new version fixing the problem?
-export/examples/aa_sample_(dvi3|pdf[45])_.*
-export/templates/aa_(dvi3|pdf[45])_.*
+export/examples/Articles/Astronomy_._Astrophysics_(dvi3|pdf[45])_.*
+export/templates/Articles/Astronomy_._Astrophysics_(dvi3|pdf[45])_.*
 
 # Gives the following error:
 # # ! Package hpstatement Error: H or P statement "H251"
 # # (hpstatement)                is not defined.
 # seems to be polyglossia-related (dvi3 worked with babel)
-export/examples/H-P-statements_.*_systemF
+export/examples/Modules/Hazard_and_Precautionary_Statements_.*_systemF
 
 # These files use packages that are not compatible with the newest LuaTeX. We
 # could potentially fix these by loading the luatex85 package early in the
@@ -252,11 +251,11 @@ export/doc/(sk|nb)/Intro_(dvi3|pdf5)_systemF
 # LaTeX error: "kernel/command-already-defined"
 # Lines 2684 ... 2690 in fontspec-xetex.sty
 # Lines 2608 ... 2614 in fontspec-luatex.sty
-export/templates/slides_.*_systemF
+export/templates/Presentations/Slides_.*_systemF
 
 # Beamer: conflicts with some combinations of packages/settings/languages
-export/templates/ja_beamer-conference-ornate-20min_(pdf2|pdf[45]).*
-export/templates/es_beamer-conference-ornate-20min_pdf4_texF
+export/templates/ja/Presentations/Beamer_(pdf2|pdf[45]).*
+export/templates/es/Presentations/Beamer_pdf4_texF
 
 # Arabic
 #
@@ -302,7 +301,7 @@ export/.*/he/.*(dvi3|pdf5)_systemF
 export/.*/he/.*_texF
 
 # CJKutf8 does not work with XeTeX and LuaTeX (and 8-bit fonts)
-export/examples/ja/multilingual_.*_texF
+export/examples/ja/Multilingual_Typesetting_.*_texF
 export/export/latex/CJK/zh_CN-toc_.*_texF
 
 # See comment in unreliableTests
@@ -320,7 +319,7 @@ Sublabel: externalissues
 # Error: /invalidfileaccess in --file--
 # ps2pdf succeeds if the -dNOSAFER flag is used. For discussion, see:
 # https://www.mail-archive.com/search?l=mid&q=1506851183.3130.15.camel%40lyx.org
-export/examples/ja/lilypond_pdf
+export/examples/ja/Modules/LilyPond_Book_pdf
 
 # ps2pdf gives the following error on updated TL18:
 #   Error: /undefined in d7Z
