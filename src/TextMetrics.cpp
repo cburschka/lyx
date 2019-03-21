@@ -1001,7 +1001,9 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 	// End of paragraph marker. The logic here is almost the
 	// same as in redoParagraph, remember keep them in sync.
 	ParagraphList const & pars = text_->paragraphs();
-	if (lyxrc.paragraph_markers && !need_new_row
+	Change const & change = par.lookupChange(i);
+	if ((lyxrc.paragraph_markers || change.changed())
+	    && !need_new_row
 	    && i == end && size_type(row.pit() + 1) < pars.size()) {
 		// add a virtual element for the end-of-paragraph
 		// marker; it is shown on screen, but does not exist
@@ -1012,7 +1014,7 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 			= text_->inset().buffer().params();
 		f.setLanguage(par.getParLanguage(bparams));
 		// ¶ U+00B6 PILCROW SIGN
-		row.addVirtual(end, docstring(1, char_type(0x00B6)), f, Change());
+		row.addVirtual(end, docstring(1, char_type(0x00B6)), f, change);
 	}
 
 	// Is there a end-of-paragaph change?

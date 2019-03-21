@@ -507,30 +507,6 @@ static int getEndLabel(pit_type p, Text const & text)
 void RowPainter::paintLast() const
 {
 	int const endlabel = getEndLabel(row_.pit(), text_);
-
-	// paint imaginary end-of-paragraph character
-
-	Change const & change = par_.lookupChange(par_.size());
-	if (change.changed()) {
-		FontMetrics const & fm =
-			theFontMetrics(pi_.base.bv->buffer().params().getFont());
-		int const length = fm.maxAscent() / 2;
-		Color col = change.color();
-
-		pi_.pain.line(int(x_) + 1, yo_ + 2, int(x_) + 1, yo_ + 2 - length, col,
-			   Painter::line_solid, 3);
-
-		if (change.deleted()) {
-			pi_.pain.line(int(x_) + 1 - length, yo_ + 2, int(x_) + 1 + length,
-				yo_ + 2, col, Painter::line_solid, 3);
-		} else {
-			pi_.pain.line(int(x_) + 1 - length, yo_ + 2, int(x_) + 1,
-				yo_ + 2, col, Painter::line_solid, 3);
-		}
-	}
-
-	// draw an endlabel
-
 	switch (endlabel) {
 	case END_LABEL_BOX:
 	case END_LABEL_FILLED_BOX: {
