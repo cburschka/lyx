@@ -39,8 +39,9 @@ namespace lyx {
 namespace frontend {
 
 
-void GuiLyXFiles::getFiles(QMap<QString, QString> & in, QString const type)
+QMap<QString, QString> GuiLyXFiles::getFiles()
 {
+	QMap<QString, QString> result;
 	// We look for lyx files in the subdirectory dir of
 	//   1) user_lyxdir
 	//   2) build_lyxdir (if not empty)
@@ -52,16 +53,20 @@ void GuiLyXFiles::getFiles(QMap<QString, QString> & in, QString const type)
 	QStringList relpaths;
 
 	// The three locations to look at.
-	string const user = addPath(package().user_support().absFileName(), fromqstr(type));
-	string const build = addPath(package().build_support().absFileName(), fromqstr(type));
-	string const system = addPath(package().system_support().absFileName(), fromqstr(type));
+	string const user = addPath(package().user_support().absFileName(), fromqstr(type_));
+	string const build = addPath(package().build_support().absFileName(), fromqstr(type_));
+	string const system = addPath(package().system_support().absFileName(), fromqstr(type_));
 
 	available_languages_.insert(toqstr("en"), qt_("English"));
 
-	// Search in the base path
-	dirs << toqstr(user)
-	     << toqstr(build)
-	     << toqstr(system);
+	QString const type = fileTypeCO->itemData(fileTypeCO->currentIndex()).toString();
+
+	// Search in the base paths
+	if (type == "all" || type == "user")
+		dirs << toqstr(user);
+	if (type == "all" || type == "system")
+		dirs << toqstr(build)
+		     << toqstr(system);
 
 	for (int i = 0; i < dirs.size(); ++i) {
 		QString const dir = dirs.at(i);
@@ -103,7 +108,7 @@ void GuiLyXFiles::getFiles(QMap<QString, QString> & in, QString const type)
 				if (localization != "en")
 					// strip off lang/
 					relpath = relpath.mid(relpath.indexOf('/') + 1);
-				in.insert(relpath, cat);
+				result.insert(relpath, cat);
 									
 				QMap<QString, QString> lm;
 				if (localizations_.contains(relpath))
@@ -139,6 +144,7 @@ void GuiLyXFiles::getFiles(QMap<QString, QString> & in, QString const type)
 	}
 	setLanguage();
 	languageLA->setText(qt_("Preferred &Language:"));
+	return result;
 }
 
 
@@ -209,6 +215,12 @@ GuiLyXFiles::GuiLyXFiles(GuiView & lv)
 
 	//filesLW->setViewMode(QListView::ListMode);
 	filesLW->setIconSize(QSize(22, 22));
+
+	QIcon user_icon(getPixmap("images/", "lyxfiles-user", "svgz,png"));
+	QIcon system_icon(getPixmap("images/", "lyxfiles-system", "svgz,png"));
+	fileTypeCO->addItem(qt_("User and System Files"), toqstr("all"));
+	fileTypeCO->addItem(user_icon, qt_("User Files Only"), toqstr("user"));
+	fileTypeCO->addItem(system_icon, qt_("System Files Only"), toqstr("system"));
 
 	setFocusProxy(filter_);
 }
@@ -342,10 +354,8 @@ void GuiLyXFiles::on_browsePB_pressed()
 
 void GuiLyXFiles::updateContents()
 {
-	QString type = fileTypeCO->itemData(fileTypeCO->currentIndex()).toString();
-	QMap<QString, QString> files;
 	languageCO->clear();
-	getFiles(files, type);
+	QMap<QString, QString> files = getFiles();
 	languageCO->model()->sort(0);
 
 	filesLW->clear();
@@ -494,20 +504,6 @@ bool GuiLyXFiles::initialiseParams(string const & type)
 
 void GuiLyXFiles::paramsToDialog()
 {
-	fileTypeCO->clear();
-	if (type_ == "examples" || type_ == "templates") {
-		fileTypeCO->addItem(qt_("Templates"), toqstr("templates"));
-		fileTypeCO->addItem(qt_("Examples"), toqstr("examples"));
-	} else if (type_ == "ui")
-		fileTypeCO->addItem(qt_("User Interface Files"), toqstr("ui"));
-	else if (type_ == "bind")
-		fileTypeCO->addItem(qt_("Key Binding Files"), toqstr("bind"));
-
-	if (!type_.isEmpty()) {
-		int i = fileTypeCO->findData(type_);
-		if (i != -1)
-			fileTypeCO->setCurrentIndex(i);
-	}
 	if (type_ == "examples")
 		setTitle(qt_("Open Example File"));
 	else if (type_ == "templates")
