@@ -133,6 +133,7 @@ void GuiLyXFiles::getFiles(QMap<QString, QString> & in, QString const type)
 		++i;
 	}
 	setLanguage();
+	languageLA->setText(qt_("Preferred &Language:"));
 }
 
 
@@ -238,6 +239,9 @@ void GuiLyXFiles::on_fileTypeCO_activated(int)
 void GuiLyXFiles::on_languageCO_activated(int i)
 {
 	savelang_ = languageCO->itemData(i).toString();
+	if (!filesLW->currentItem())
+		return;
+
 	filesLW->currentItem()->setData(0, Qt::ToolTipRole, getRealPath());
 	changed();
 }
@@ -269,10 +273,17 @@ void GuiLyXFiles::on_filesLW_itemClicked(QTreeWidgetItem * item, int)
 			languageCO->addItem(i.value(), i.key());
 		++i;
 	}
+	languageLA->setText(qt_("File &Language:"));
 	languageCO->setToolTip(qt_("All available languages of the selected file are displayed here.\n"
 				   "The selected language version will be opened."));
 	setLanguage();
-	filesLW->currentItem()->setData(0, Qt::ToolTipRole, getRealPath());
+	QString const realpath = getRealPath();
+	filesLW->currentItem()->setData(0, Qt::ToolTipRole, realpath);
+	QIcon user_icon(getPixmap("images/", "lyxfiles-user", "svgz,png"));
+	QIcon system_icon(getPixmap("images/", "lyxfiles-system", "svgz,png"));
+	QIcon file_icon = (realpath.startsWith(toqstr(package().user_support().absFileName()))) ?
+			user_icon : system_icon;
+	item->setIcon(0, file_icon);
 }
 
 
@@ -341,6 +352,7 @@ void GuiLyXFiles::updateContents()
 	capfont.setBold(true);
 	while (it != files.constEnd()) {
 		QFileInfo const info = QFileInfo(it.key());
+		QString const realpath = getRealPath(it.key());
 		QString cat = it.value();
 		QString subcat;
 		QString catsave;
@@ -366,12 +378,12 @@ void GuiLyXFiles::updateContents()
 		QString guiname = filename.left(filename.lastIndexOf(getSuffix())).replace('_', ' ');
 		if (translateName())
 			guiname = toqstr(translateIfPossible(qstring_to_ucs4(guiname)));
-		QIcon file_icon = (info.filePath().startsWith(toqstr(package().user_support().absFileName()))) ?
+		QIcon file_icon = (realpath.startsWith(toqstr(package().user_support().absFileName()))) ?
 				user_icon : system_icon;
 		item->setIcon(0, file_icon);
-		item->setData(0, Qt::UserRole, info.filePath());
+		item->setData(0, Qt::UserRole, it.key());
 		item->setData(0, Qt::DisplayRole, guiname);
-		item->setData(0, Qt::ToolTipRole, info.filePath());
+		item->setData(0, Qt::ToolTipRole, realpath);
 		if (subcat.isEmpty())
 			catItem->addChild(item);
 		else {
@@ -438,13 +450,19 @@ void GuiLyXFiles::resetFilter()
 	filterLabels();
 }
 
-QString const GuiLyXFiles::getRealPath()
+QString const GuiLyXFiles::getRealPath(QString relpath)
 {
-	QString const relpath = filesLW->currentItem()->data(0, Qt::UserRole).toString();
+	if (relpath.isEmpty())
+		relpath = filesLW->currentItem()->data(0, Qt::UserRole).toString();
 	QString const language = languageCO->itemData(languageCO->currentIndex()).toString();
-	if (localizations_.contains(relpath)
-	    && localizations_.find(relpath).value().contains(language))
-		return localizations_.find(relpath).value().find(language).value();
+	if (localizations_.contains(relpath)) {
+		if (localizations_.find(relpath).value().contains(language))
+			return localizations_.find(relpath).value().find(language).value();
+		else if (localizations_.find(relpath).value().contains(guilang_))
+			return localizations_.find(relpath).value().find(guilang_).value();
+		else if (localizations_.find(relpath).value().contains(toqstr("en")))
+			return localizations_.find(relpath).value().find(toqstr("en")).value();
+	}
 	return QString();
 }
 

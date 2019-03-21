@@ -71,7 +71,7 @@ private:
 	///
 	void getFiles(QMap<QString, QString> &, QString const);
 	/// Get the full file path in the selected localization
-	QString const getRealPath();
+	QString const getRealPath(QString relpath = QString());
 	///
 	void setLanguage();
 
