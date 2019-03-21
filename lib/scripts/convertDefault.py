@@ -62,7 +62,7 @@ else:
 # IM >= 5.5.8 separates options for source and target files
 # See http://www.imagemagick.org/Usage/basics/#why
 if im or gm:
-    sopts = "-depth 8"
+    sopts = ""
     topts = ""
 elif sys.platform == 'darwin':
     command = 'lyxconvert'
