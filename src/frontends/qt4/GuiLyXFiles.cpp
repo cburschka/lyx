@@ -92,7 +92,7 @@ QMap<QString, QString> GuiLyXFiles::getFiles()
 						available_languages_.insert(li.key(), li.value());
 					localization = cat;
 					int sc = relpath.indexOf('/', s + 1);
-					cat = (sc == -1) ? QString() : relpath.mid(s + 1, sc - s - 1);
+					cat = (sc == -1) ? qt_("General") : relpath.mid(s + 1, sc - s - 1);
 					s = sc;
 				}
 				if (s != -1) {
