@@ -1023,7 +1023,7 @@ static Features identifyFeatures(string const & s)
 			}
 		}
 	}
-	return(info);
+	return info;
 }
 
 /*
@@ -1111,10 +1111,10 @@ class Border {
 
 #define MAXOPENED 30
 class Intervall {
-  bool isPatternString;
+  bool isPatternString_;
 public:
   explicit Intervall(bool isPattern, string const & p) :
-  	isPatternString(isPattern), par(p), ignoreidx(-1), actualdeptindex(0),
+  	isPatternString_(isPattern), par(p), ignoreidx(-1), actualdeptindex(0),
   	hasTitle(false)
   {
     depts[0] = 0;
@@ -1466,9 +1466,9 @@ static KeysMap keys = map<string, KeyInfo>();
 
 class LatexInfo {
  private:
-  int entidx;
-  Entries entries;
-  Intervall interval;
+  int entidx_;
+  Entries entries_;
+  Intervall interval_;
   void buildKeys(bool);
   void buildEntries(bool);
   void makeKey(const string &, KeyInfo, bool isPatternString);
@@ -1476,46 +1476,46 @@ class LatexInfo {
   void removeHead(KeyInfo&, int count=0);
 
  public:
- LatexInfo(string par, bool isPatternString) : entidx(-1), interval(isPatternString, par)
+ LatexInfo(string par, bool isPatternString) : entidx_(-1), interval_(isPatternString, par)
   {
     buildKeys(isPatternString);
-    entries = vector<KeyInfo>();
+    entries_ = vector<KeyInfo>();
     buildEntries(isPatternString);
   };
   int getFirstKey() {
-    entidx = 0;
-    if (entries.empty()) {
-      return (-1);
+    entidx_ = 0;
+    if (entries_.empty()) {
+      return -1;
     }
-    if (entries[0].keytype == KeyInfo::isTitle) {
-      if (! entries[0].disabled) {
-        interval.hasTitle = true;
-        interval.titleValue = entries[0].head;
+    if (entries_[0].keytype == KeyInfo::isTitle) {
+      if (! entries_[0].disabled) {
+        interval_.hasTitle = true;
+        interval_.titleValue = entries_[0].head;
       }
       else {
-        interval.hasTitle = false;
-        interval.titleValue = "";
+        interval_.hasTitle = false;
+        interval_.titleValue = "";
       }
-      removeHead(entries[0]);
-      if (entries.size() > 1)
-        return (1);
+      removeHead(entries_[0]);
+      if (entries_.size() > 1)
+        return 1;
       else
-        return (-1);
+        return -1;
     }
     return 0;
   };
   int getNextKey() {
-    entidx++;
-    if (int(entries.size()) > entidx) {
-      return entidx;
+    entidx_++;
+    if (int(entries_.size()) > entidx_) {
+      return entidx_;
     }
     else {
-      return (-1);
+      return -1;
     }
   };
   bool setNextKey(int idx) {
-    if ((idx == entidx) && (entidx >= 0)) {
-      entidx--;
+    if ((idx == entidx_) && (entidx_ >= 0)) {
+      entidx_--;
       return true;
     }
     else
@@ -1523,28 +1523,28 @@ class LatexInfo {
   };
   int find(int start, KeyInfo::KeyType keytype) {
     if (start < 0)
-      return (-1);
+      return -1;
     int tmpIdx = start;
-    while (tmpIdx < int(entries.size())) {
-      if (entries[tmpIdx].keytype == keytype)
+    while (tmpIdx < int(entries_.size())) {
+      if (entries_[tmpIdx].keytype == keytype)
         return tmpIdx;
       tmpIdx++;
     }
-    return(-1);
+    return -1;
   };
   int process(ostringstream &os, KeyInfo &actual);
   int dispatch(ostringstream &os, int previousStart, KeyInfo &actual);
   // string show(int lastpos) { return interval.show(lastpos);};
-  int nextNotIgnored(int start) { return interval.nextNotIgnored(start);};
+  int nextNotIgnored(int start) { return interval_.nextNotIgnored(start);};
   KeyInfo &getKeyInfo(int keyinfo) {
     static KeyInfo invalidInfo = KeyInfo();
-    if ((keyinfo < 0) || ( keyinfo >= int(entries.size())))
+    if ((keyinfo < 0) || ( keyinfo >= int(entries_.size())))
       return invalidInfo;
     else
-      return entries[keyinfo];
+      return entries_[keyinfo];
   };
-  void setForDefaultLang(KeyInfo &defLang) {interval.setForDefaultLang(defLang);};
-  void addIntervall(int low, int up) { interval.addIntervall(low, up); };
+  void setForDefaultLang(KeyInfo &defLang) {interval_.setForDefaultLang(defLang);};
+  void addIntervall(int low, int up) { interval_.addIntervall(low, up); };
 };
 
 
@@ -1580,11 +1580,11 @@ class MathInfo {
     size_t mathStart;
     size_t mathSize;
   };
-  size_t actualIdx;
-  vector<MathEntry> entries;
+  size_t actualIdx_;
+  vector<MathEntry> entries_;
  public:
   MathInfo() {
-    actualIdx = 0;
+    actualIdx_ = 0;
   }
   void insert(string wait, size_t start, size_t end) {
     MathEntry m = MathEntry();
@@ -1592,32 +1592,32 @@ class MathInfo {
     m.mathStart = start;
     m.mathEnd = end;
     m.mathSize = end - start;
-    entries.push_back(m);
+    entries_.push_back(m);
   }
-  bool empty() { return entries.empty(); };
+  bool empty() { return entries_.empty(); };
   size_t getEndPos() {
-    if (entries.empty() || (actualIdx >= entries.size())) {
+    if (entries_.empty() || (actualIdx_ >= entries_.size())) {
       return 0;
     }
-    return entries[actualIdx].mathEnd;
+    return entries_[actualIdx_].mathEnd;
   }
   size_t getStartPos() {
-    if (entries.empty() || (actualIdx >= entries.size())) {
+    if (entries_.empty() || (actualIdx_ >= entries_.size())) {
       return 100000;                    /*  definitely enough? */
     }
-    return entries[actualIdx].mathStart;
+    return entries_[actualIdx_].mathStart;
   }
   size_t getFirstPos() {
-    actualIdx = 0;
+    actualIdx_ = 0;
     return getStartPos();
   }
   size_t getSize() {
-    if (entries.empty() || (actualIdx >= entries.size())) {
+    if (entries_.empty() || (actualIdx_ >= entries_.size())) {
       return size_t(0);
     }
-    return entries[actualIdx].mathSize;
+    return entries_[actualIdx_].mathSize;
   }
-  void incrEntry() { actualIdx++; };
+  void incrEntry() { actualIdx_++; };
 };
 
 void LatexInfo::buildEntries(bool isPatternString)
@@ -1639,15 +1639,15 @@ void LatexInfo::buildEntries(bool isPatternString)
   size_t math_pos = 10000;
   string math_end;
 
-  interval.removeAccents();
+  interval_.removeAccents();
 
-  for (sregex_iterator itmath(interval.par.begin(), interval.par.end(), rmath), end; itmath != end; ++itmath) {
+  for (sregex_iterator itmath(interval_.par.begin(), interval_.par.end(), rmath), end; itmath != end; ++itmath) {
     submath = *itmath;
     if (math_end_waiting) {
       size_t pos = submath.position(size_t(0));
       if ((math_end == "$") &&
           (submath.str(0) == "$") &&
-          (interval.par[pos-1] != '\\')) {
+          (interval_.par[pos-1] != '\\')) {
         mi.insert("$", math_pos, pos + 1);
         math_end_waiting = false;
       }
@@ -1677,7 +1677,7 @@ void LatexInfo::buildEntries(bool isPatternString)
       }
       else if (submath.str(0) == "$") {
         size_t pos = submath.position(size_t(0));
-        if ((pos == 0) || (interval.par[pos-1] != '\\')) {
+        if ((pos == 0) || (interval_.par[pos-1] != '\\')) {
           math_end_waiting = true;
           math_end = "$";
           math_pos = pos;
@@ -1701,7 +1701,7 @@ void LatexInfo::buildEntries(bool isPatternString)
     }
   }
   math_pos = mi.getFirstPos();
-  for (sregex_iterator it(interval.par.begin(), interval.par.end(), rkeys), end; it != end; ++it) {
+  for (sregex_iterator it(interval_.par.begin(), interval_.par.end(), rkeys), end; it != end; ++it) {
     sub = *it;
     string key = sub.str(3);
     if (key == "") {
@@ -1711,7 +1711,7 @@ void LatexInfo::buildEntries(bool isPatternString)
         key = sub.str(0);
         if (key == "$") {
           size_t k_pos = sub.position(size_t(0));
-          if ((k_pos > 0) && (interval.par[k_pos - 1] == '\\')) {
+          if ((k_pos > 0) && (interval_.par[k_pos - 1] == '\\')) {
             // Escaped '$', ignoring
             continue;
           }
@@ -1726,7 +1726,7 @@ void LatexInfo::buildEntries(bool isPatternString)
         found._dataStart = found._dataEnd;
         found._tokensize = found._dataEnd - found._tokenstart;
         found.parenthesiscount = 0;
-        found.head = interval.par.substr(found._tokenstart, found._tokensize);
+        found.head = interval_.par.substr(found._tokenstart, found._tokensize);
       }
       else {
         continue;
@@ -1769,7 +1769,7 @@ void LatexInfo::buildEntries(bool isPatternString)
         found._dataEnd = found._tokenstart + found._tokensize;
         found._dataStart = found._dataEnd;
         found.parenthesiscount = 0;
-        found.head = interval.par.substr(found._tokenstart, found._tokensize);
+        found.head = interval_.par.substr(found._tokenstart, found._tokensize);
         evaluatingMath = true;
       }
       else {
@@ -1796,7 +1796,7 @@ void LatexInfo::buildEntries(bool isPatternString)
         int pos = sub.position(size_t(0));
         int count;
         for (count = 0; pos - count > 0; count++) {
-          char c = interval.par[pos-count-1];
+          char c = interval_.par[pos-count-1];
           if (discardComment) {
             if ((c != ' ') && (c != '%'))
               break;
@@ -1808,25 +1808,25 @@ void LatexInfo::buildEntries(bool isPatternString)
         if (sub.str(1).compare(0, 5, "begin") == 0) {
           size_t pos1 = pos + sub.str(0).length();
           if (sub.str(5).compare("cjk") == 0) {
-            pos1 = interval.findclosing(pos1+1, interval.par.length()) + 1;
-            if ((interval.par[pos1] == '{') && (interval.par[pos1+1] == '}'))
+            pos1 = interval_.findclosing(pos1+1, interval_.par.length()) + 1;
+            if ((interval_.par[pos1] == '{') && (interval_.par[pos1+1] == '}'))
               pos1 += 2;
             found.keytype = KeyInfo::isMain;
             found._dataStart = pos1;
-            found._dataEnd = interval.par.length();
+            found._dataEnd = interval_.par.length();
             found.disabled = keys["foreignlanguage"].disabled;
             found.used = keys["foreignlanguage"].used;
             found._tokensize = pos1 - found._tokenstart;
-            found.head = interval.par.substr(found._tokenstart, found._tokensize);
+            found.head = interval_.par.substr(found._tokenstart, found._tokensize);
           }
           else {
             // Swallow possible optional params
-            while (interval.par[pos1] == '[') {
-              pos1 = interval.findclosing(pos1+1, interval.par.length(), '[', ']')+1;
+            while (interval_.par[pos1] == '[') {
+              pos1 = interval_.findclosing(pos1+1, interval_.par.length(), '[', ']')+1;
             }
             // Swallow also the eventual parameter
-            if (interval.par[pos1] == '{') {
-              found._dataEnd = interval.findclosing(pos1+1, interval.par.length()) + 1;
+            if (interval_.par[pos1] == '{') {
+              found._dataEnd = interval_.findclosing(pos1+1, interval_.par.length()) + 1;
             }
             else {
               found._dataEnd = pos1;
@@ -1834,7 +1834,7 @@ void LatexInfo::buildEntries(bool isPatternString)
             found._dataStart = found._dataEnd;
             found._tokensize = count + found._dataEnd - pos;
             found.parenthesiscount = 0;
-            found.head = interval.par.substr(found._tokenstart, found._tokensize);
+            found.head = interval_.par.substr(found._tokenstart, found._tokensize);
             found.disabled = true;
           }
         }
@@ -1844,7 +1844,7 @@ void LatexInfo::buildEntries(bool isPatternString)
           found._dataEnd = found._dataStart;
           found._tokensize = count + found._dataEnd - pos;
           found.parenthesiscount = 0;
-          found.head = interval.par.substr(found._tokenstart, found._tokensize);
+          found.head = interval_.par.substr(found._tokenstart, found._tokensize);
           found.disabled = true;
         }
       }
@@ -1854,7 +1854,7 @@ void LatexInfo::buildEntries(bool isPatternString)
       if (found.parenthesiscount == 0) {
         // Probably to be discarded
         size_t following_pos = sub.position(size_t(0)) + sub.str(3).length() + 1;
-        char following = interval.par[following_pos];
+        char following = interval_.par[following_pos];
         if (following == ' ')
           found.head = "\\" + sub.str(3) + " ";
         else if (following == '=') {
@@ -1878,12 +1878,12 @@ void LatexInfo::buildEntries(bool isPatternString)
           }
         }
         int optend = params;
-        while (interval.par[optend] == '[') {
+        while (interval_.par[optend] == '[') {
           // discard optional parameters
-          optend = interval.findclosing(optend+1, interval.par.length(), '[', ']') + 1;
+          optend = interval_.findclosing(optend+1, interval_.par.length(), '[', ']') + 1;
         }
         if (optend > params) {
-          key += interval.par.substr(params, optend-params);
+          key += interval_.par.substr(params, optend-params);
           evaluatingOptional = true;
           optionalEnd = optend;
         }
@@ -1903,10 +1903,10 @@ void LatexInfo::buildEntries(bool isPatternString)
         }
         found._tokensize = found.head.length();
         found._dataStart = found._tokenstart + found.head.length();
-        if (interval.par.substr(found._dataStart-1, 15).compare("\\endarguments{}") == 0) {
+        if (interval_.par.substr(found._dataStart-1, 15).compare("\\endarguments{}") == 0) {
           found._dataStart += 15;
         }
-        size_t endpos = interval.findclosing(found._dataStart, interval.par.length(), '{', '}', closings);
+        size_t endpos = interval_.findclosing(found._dataStart, interval_.par.length(), '{', '}', closings);
         if (found.keytype == KeyInfo::isList) {
           // Check if it really is list env
           static regex const listre("^([a-z]+)$");
@@ -1928,18 +1928,18 @@ void LatexInfo::buildEntries(bool isPatternString)
             // Disable this key, treate it as standard
             found.keytype = KeyInfo::isStandard;
             found.disabled = true;
-            if ((codeEnd == interval.par.length()) &&
+            if ((codeEnd == interval_.par.length()) &&
                 (found._tokenstart == codeStart)) {
               // trickery, because the code inset starts
               // with \selectlanguage ...
               codeEnd = endpos;
-              if (entries.size() > 1) {
-                entries[entries.size()-1]._dataEnd = codeEnd;
+              if (entries_.size() > 1) {
+                entries_[entries_.size()-1]._dataEnd = codeEnd;
               }
             }
           }
         }
-        if ((endpos == interval.par.length()) &&
+        if ((endpos == interval_.par.length()) &&
             (found.keytype == KeyInfo::doRemove)) {
           // Missing closing => error in latex-input?
           // therefore do not delete remaining data
@@ -1953,7 +1953,7 @@ void LatexInfo::buildEntries(bool isPatternString)
         keys[key].used = true;
       }
     }
-    entries.push_back(found);
+    entries_.push_back(found);
   }
 }
 
@@ -2130,7 +2130,7 @@ string Intervall::show(int lastpos)
   if (lastpos > i) {
     s += par.substr(i, lastpos-i);
   }
-  return (s);
+  return s;
 }
 #endif
 
@@ -2176,7 +2176,7 @@ void Intervall::output(ostringstream &os, int lastpos)
   }
   if (hasTitle && (printed > 0))
     os << "}";
-  if (! isPatternString)
+  if (! isPatternString_)
     os << "\n";
   handleParentheses(lastpos, true); /* extra closings '}' allowed here */
 }
@@ -2184,16 +2184,16 @@ void Intervall::output(ostringstream &os, int lastpos)
 void LatexInfo::processRegion(int start, int region_end)
 {
   while (start < region_end) {          /* Let {[} and {]} survive */
-    int cnt = interval.isOpeningPar(start);
+    int cnt = interval_.isOpeningPar(start);
     if (cnt == 1) {
       // Closing is allowed past the region
-      int closing = interval.findclosing(start+1, interval.par.length());
-      interval.addIntervall(start, start+1);
-      interval.addIntervall(closing, closing+1);
+      int closing = interval_.findclosing(start+1, interval_.par.length());
+      interval_.addIntervall(start, start+1);
+      interval_.addIntervall(closing, closing+1);
     }
     else if (cnt == 3)
       start += 2;
-    start = interval.nextNotIgnored(start+1);
+    start = interval_.nextNotIgnored(start+1);
   }
 }
 
@@ -2201,12 +2201,12 @@ void LatexInfo::removeHead(KeyInfo &actual, int count)
 {
   if (actual.parenthesiscount == 0) {
     // "{\tiny{} ...}" ==> "{{} ...}"
-    interval.addIntervall(actual._tokenstart-count, actual._tokenstart + actual._tokensize);
+    interval_.addIntervall(actual._tokenstart-count, actual._tokenstart + actual._tokensize);
   }
   else {
     // Remove header hull, that is "\url{abcd}" ==> "abcd"
-    interval.addIntervall(actual._tokenstart - count, actual._dataStart);
-    interval.addIntervall(actual._dataEnd, actual._dataEnd+1);
+    interval_.addIntervall(actual._tokenstart - count, actual._dataStart);
+    interval_.addIntervall(actual._dataEnd, actual._dataEnd+1);
   }
 }
 
@@ -2227,23 +2227,23 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       int tmpIdx = find(nextKeyIdx, KeyInfo::endArguments);
       if (tmpIdx > 0) {
         for (int i = nextKeyIdx; i <= tmpIdx; i++) {
-          entries[i].disabled = true;
+          entries_[i].disabled = true;
         }
-        actual._dataEnd = entries[tmpIdx]._dataEnd;
+        actual._dataEnd = entries_[tmpIdx]._dataEnd;
       }
-      while (interval.par[actual._dataEnd] == ' ')
+      while (interval_.par[actual._dataEnd] == ' ')
         actual._dataEnd++;
-      interval.addIntervall(0, actual._dataEnd+1);
-      interval.actualdeptindex = 0;
-      interval.depts[0] = actual._dataEnd+1;
-      interval.closes[0] = -1;
+      interval_.addIntervall(0, actual._dataEnd+1);
+      interval_.actualdeptindex = 0;
+      interval_.depts[0] = actual._dataEnd+1;
+      interval_.closes[0] = -1;
       break;
     }
     case KeyInfo::noContent: {          /* char like "\hspace{2cm}" */
       if (actual.disabled)
-        interval.addIntervall(actual._tokenstart, actual._dataEnd);
+        interval_.addIntervall(actual._tokenstart, actual._dataEnd);
       else
-        interval.addIntervall(actual._dataStart, actual._dataEnd);
+        interval_.addIntervall(actual._dataStart, actual._dataEnd);
     }
       // fall through
     case KeyInfo::isChar: {
@@ -2251,29 +2251,29 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       break;
     }
     case KeyInfo::isSize: {
-      if (actual.disabled || (interval.par[actual._dataStart] != '{') || (interval.par[actual._dataStart-1] == ' ')) {
+      if (actual.disabled || (interval_.par[actual._dataStart] != '{') || (interval_.par[actual._dataStart-1] == ' ')) {
         processRegion(actual._dataEnd, actual._dataEnd+1); /* remove possibly following {} */
-        interval.addIntervall(actual._tokenstart, actual._dataEnd+1);
+        interval_.addIntervall(actual._tokenstart, actual._dataEnd+1);
         nextKeyIdx = getNextKey();
       } else {
         // Here _dataStart points to '{', so correct it
         actual._dataStart += 1;
         actual._tokensize += 1;
         actual.parenthesiscount = 1;
-        if (interval.par[actual._dataStart] == '}') {
+        if (interval_.par[actual._dataStart] == '}') {
           // Determine the end if used like '{\tiny{}...}'
-          actual._dataEnd = interval.findclosing(actual._dataStart+1, interval.par.length()) + 1;
-          interval.addIntervall(actual._dataStart, actual._dataStart+1);
+          actual._dataEnd = interval_.findclosing(actual._dataStart+1, interval_.par.length()) + 1;
+          interval_.addIntervall(actual._dataStart, actual._dataStart+1);
         }
         else {
           // Determine the end if used like '\tiny{...}'
-          actual._dataEnd = interval.findclosing(actual._dataStart, interval.par.length()) + 1;
+          actual._dataEnd = interval_.findclosing(actual._dataStart, interval_.par.length()) + 1;
         }
         // Split on this key if not at start
-        int start = interval.nextNotIgnored(previousStart);
+        int start = interval_.nextNotIgnored(previousStart);
         if (start < actual._tokenstart) {
-          interval.output(os, actual._tokenstart);
-          interval.addIntervall(start, actual._tokenstart);
+          interval_.output(os, actual._tokenstart);
+          interval_.addIntervall(start, actual._tokenstart);
         }
         // discard entry if at end of actual
         nextKeyIdx = process(os, actual);
@@ -2284,7 +2284,7 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       // Remove trailing '{}' too
       actual._dataStart += 1;
       actual._dataEnd += 1;
-      interval.addIntervall(actual._tokenstart, actual._dataEnd+1);
+      interval_.addIntervall(actual._tokenstart, actual._dataEnd+1);
       nextKeyIdx = getNextKey();
       break;
     case KeyInfo::noMain:
@@ -2296,10 +2296,10 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
         nextKeyIdx = getNextKey();
       } else {
         // Split on this key if not at datastart of calling entry
-        int start = interval.nextNotIgnored(previousStart);
+        int start = interval_.nextNotIgnored(previousStart);
         if (start < actual._tokenstart) {
-          interval.output(os, actual._tokenstart);
-          interval.addIntervall(start, actual._tokenstart);
+          interval_.output(os, actual._tokenstart);
+          interval_.addIntervall(start, actual._tokenstart);
         }
         // discard entry if at end of actual
         nextKeyIdx = process(os, actual);
@@ -2312,21 +2312,21 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       int tmpIdx = find(nextKeyIdx, KeyInfo::endArguments);
       if (tmpIdx > 0) {
         for (int i = nextKeyIdx; i <= tmpIdx; i++) {
-          entries[i].disabled = true;
+          entries_[i].disabled = true;
         }
-        actual._dataEnd = entries[tmpIdx]._dataEnd;
+        actual._dataEnd = entries_[tmpIdx]._dataEnd;
       }
-      interval.addIntervall(actual._tokenstart, actual._dataEnd+1);
+      interval_.addIntervall(actual._tokenstart, actual._dataEnd+1);
       break;
     }
     case KeyInfo::doRemove: {
       // Remove the key with all parameters and following spaces
       size_t pos;
-      for (pos = actual._dataEnd+1; pos < interval.par.length(); pos++) {
-        if ((interval.par[pos] != ' ') && (interval.par[pos] != '%'))
+      for (pos = actual._dataEnd+1; pos < interval_.par.length(); pos++) {
+        if ((interval_.par[pos] != ' ') && (interval_.par[pos] != '%'))
           break;
       }
-      interval.addIntervall(actual._tokenstart, pos);
+      interval_.addIntervall(actual._tokenstart, pos);
       nextKeyIdx = getNextKey();
       break;
     }
@@ -2334,7 +2334,7 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       // Discard space before _tokenstart
       int count;
       for (count = 0; count < actual._tokenstart; count++) {
-        if (interval.par[actual._tokenstart-count-1] != ' ')
+        if (interval_.par[actual._tokenstart-count-1] != ' ')
           break;
       }
       nextKeyIdx = getNextKey();
@@ -2344,44 +2344,44 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
         // with arguments
         // How else can we catch this one?
         for (int i = nextKeyIdx; i <= tmpIdx; i++) {
-          entries[i].disabled = true;
+          entries_[i].disabled = true;
         }
-        actual._dataEnd = entries[tmpIdx]._dataEnd;
+        actual._dataEnd = entries_[tmpIdx]._dataEnd;
       }
       else if (nextKeyIdx > 0) {
         // Ignore any lang entries inside data region
-        for (int i = nextKeyIdx; i < int(entries.size()) && entries[i]._tokenstart < actual._dataEnd; i++) {
-          if (entries[i].keytype == KeyInfo::isMain)
-            entries[i].disabled = true;
+        for (int i = nextKeyIdx; i < int(entries_.size()) && entries_[i]._tokenstart < actual._dataEnd; i++) {
+          if (entries_[i].keytype == KeyInfo::isMain)
+            entries_[i].disabled = true;
         }
       }
       if (actual.disabled) {
-        interval.addIntervall(actual._tokenstart-count, actual._dataEnd+1);
+        interval_.addIntervall(actual._tokenstart-count, actual._dataEnd+1);
       }
       else {
-        interval.addIntervall(actual._tokenstart-count, actual._tokenstart);
+        interval_.addIntervall(actual._tokenstart-count, actual._tokenstart);
       }
-      if (interval.par[actual._dataEnd+1] == '[') {
-        int posdown = interval.findclosing(actual._dataEnd+2, interval.par.length(), '[', ']');
-        if ((interval.par[actual._dataEnd+2] == '{') &&
-            (interval.par[posdown-1] == '}')) {
-          interval.addIntervall(actual._dataEnd+1,actual._dataEnd+3);
-          interval.addIntervall(posdown-1, posdown+1);
+      if (interval_.par[actual._dataEnd+1] == '[') {
+        int posdown = interval_.findclosing(actual._dataEnd+2, interval_.par.length(), '[', ']');
+        if ((interval_.par[actual._dataEnd+2] == '{') &&
+            (interval_.par[posdown-1] == '}')) {
+          interval_.addIntervall(actual._dataEnd+1,actual._dataEnd+3);
+          interval_.addIntervall(posdown-1, posdown+1);
         }
         else {
-          interval.addIntervall(actual._dataEnd+1, actual._dataEnd+2);
-          interval.addIntervall(posdown, posdown+1);
+          interval_.addIntervall(actual._dataEnd+1, actual._dataEnd+2);
+          interval_.addIntervall(posdown, posdown+1);
         }
-        int blk = interval.nextNotIgnored(actual._dataEnd+1);
+        int blk = interval_.nextNotIgnored(actual._dataEnd+1);
         if (blk > posdown) {
           // Discard at most 1 space after empty item
           int count;
           for (count = 0; count < 1; count++) {
-            if (interval.par[blk+count] != ' ')
+            if (interval_.par[blk+count] != ' ')
               break;
           }
           if (count > 0)
-            interval.addIntervall(blk, blk+count);
+            interval_.addIntervall(blk, blk+count);
         }
       }
       break;
@@ -2391,8 +2391,8 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       int count;
       int val = actual._tokenstart;
       for (count = 0; count < actual._tokenstart;) {
-        val = interval.previousNotIgnored(val-1);
-        if (interval.par[val] != ' ')
+        val = interval_.previousNotIgnored(val-1);
+        if (interval_.par[val] != ' ')
           break;
         else {
           count = actual._tokenstart - val;
@@ -2402,7 +2402,7 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
         removeHead(actual, count);
         nextKeyIdx = getNextKey();
       } else {
-        interval.addIntervall(actual._tokenstart-count, actual._tokenstart);
+        interval_.addIntervall(actual._tokenstart-count, actual._tokenstart);
         nextKeyIdx = process(os, actual);
       }
       break;
@@ -2424,19 +2424,19 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       break;
     }
     case KeyInfo::isMain: {
-      if (interval.par.substr(actual._dataStart, 2) == "% ")
-        interval.addIntervall(actual._dataStart, actual._dataStart+2);
+      if (interval_.par.substr(actual._dataStart, 2) == "% ")
+        interval_.addIntervall(actual._dataStart, actual._dataStart+2);
       if (actual._tokenstart > 0) {
-        int prev = interval.previousNotIgnored(actual._tokenstart - 1);
-        if ((prev >= 0) && interval.par[prev] == '%')
-          interval.addIntervall(prev, prev+1);
+        int prev = interval_.previousNotIgnored(actual._tokenstart - 1);
+        if ((prev >= 0) && interval_.par[prev] == '%')
+          interval_.addIntervall(prev, prev+1);
       }
       if (actual.disabled) {
         removeHead(actual);
-        if ((interval.par.substr(actual._dataStart, 3) == " \\[") ||
-            (interval.par.substr(actual._dataStart, 8) == " \\begin{")) {
+        if ((interval_.par.substr(actual._dataStart, 3) == " \\[") ||
+            (interval_.par.substr(actual._dataStart, 8) == " \\begin{")) {
           // Discard also the space before math-equation
-          interval.addIntervall(actual._dataStart, actual._dataStart+1);
+          interval_.addIntervall(actual._dataStart, actual._dataStart+1);
         }
         nextKeyIdx = getNextKey();
         // interval.resetOpenedP(actual._dataStart-1);
@@ -2444,9 +2444,9 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       else {
         if (actual._tokenstart < 26) {
           // for the first (and maybe dummy) language
-          interval.setForDefaultLang(actual);
+          interval_.setForDefaultLang(actual);
         }
-        interval.resetOpenedP(actual._dataStart-1);
+        interval_.resetOpenedP(actual._dataStart-1);
       }
       break;
     }
@@ -2464,13 +2464,13 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
 
 int LatexInfo::process(ostringstream &os, KeyInfo &actual )
 {
-  int end = interval.nextNotIgnored(actual._dataEnd);
+  int end = interval_.nextNotIgnored(actual._dataEnd);
   int oldStart = actual._dataStart;
   int nextKeyIdx = getNextKey();
   while (true) {
     if ((nextKeyIdx < 0) ||
-        (entries[nextKeyIdx]._tokenstart >= actual._dataEnd) ||
-        (entries[nextKeyIdx].keytype == KeyInfo::invalid)) {
+        (entries_[nextKeyIdx]._tokenstart >= actual._dataEnd) ||
+        (entries_[nextKeyIdx].keytype == KeyInfo::invalid)) {
       if (oldStart <= end) {
         processRegion(oldStart, end);
         oldStart = end+1;
@@ -2494,7 +2494,7 @@ int LatexInfo::process(ostringstream &os, KeyInfo &actual )
   if (oldStart <= end) {
     processRegion(oldStart, end);
   }
-  if (interval.par[end] == '}') {
+  if (interval_.par[end] == '}') {
     end += 1;
     // This is the normal case.
     // But if using the firstlanguage, the closing may be missing
@@ -2502,23 +2502,23 @@ int LatexInfo::process(ostringstream &os, KeyInfo &actual )
   // get minimum of 'end' and  'actual._dataEnd' in case that the nextKey.keytype was 'KeyInfo::isMain'
   int output_end;
   if (actual._dataEnd < end)
-    output_end = interval.nextNotIgnored(actual._dataEnd);
+    output_end = interval_.nextNotIgnored(actual._dataEnd);
   else
-    output_end = interval.nextNotIgnored(end);
+    output_end = interval_.nextNotIgnored(end);
   if ((actual.keytype == KeyInfo::isMain) && actual.disabled) {
-    interval.addIntervall(actual._tokenstart, actual._tokenstart+actual._tokensize);
+    interval_.addIntervall(actual._tokenstart, actual._tokenstart+actual._tokensize);
   }
   // Remove possible empty data
-  int dstart = interval.nextNotIgnored(actual._dataStart);
-  while (interval.isOpeningPar(dstart) == 1) {
-    interval.addIntervall(dstart, dstart+1);
-    int dend = interval.findclosing(dstart+1, output_end);
-    interval.addIntervall(dend, dend+1);
-    dstart = interval.nextNotIgnored(dstart+1);
+  int dstart = interval_.nextNotIgnored(actual._dataStart);
+  while (interval_.isOpeningPar(dstart) == 1) {
+    interval_.addIntervall(dstart, dstart+1);
+    int dend = interval_.findclosing(dstart+1, output_end);
+    interval_.addIntervall(dend, dend+1);
+    dstart = interval_.nextNotIgnored(dstart+1);
   }
   if (dstart < output_end)
-    interval.output(os, output_end);
-  interval.addIntervall(actual._tokenstart, end);
+    interval_.output(os, output_end);
+  interval_.addIntervall(actual._tokenstart, end);
   return nextKeyIdx;
 }
 
@@ -2649,14 +2649,14 @@ static string correctlanguagesetting(string par, bool isPatternString, bool with
 			if (b && ! info[a]) {
 				missed++;
 				LYXERR(Debug::FIND, "Missed(" << missed << " " << a <<", srclen = " << parlen );
-				return("");
+				return "";
 			}
 		}
 	}
 	else {
 		// LYXERR0("No regex formats");
 	}
-	return(result);
+	return result;
 }
 
 
