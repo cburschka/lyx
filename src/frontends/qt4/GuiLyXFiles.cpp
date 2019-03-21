@@ -123,6 +123,16 @@ void GuiLyXFiles::getFiles(QMap<QString, QString> & in, QString const type)
 			break;
 		}
 	}
+	// pre-fill the language combo (it will be updated once an item 
+	// has been clicked)
+	languageCO->clear();
+	languageCO->addItem(qt_("English"), toqstr("en"));
+	QMap<QString, QString>::const_iterator i =available_languages_.constBegin();
+	while (i != available_languages_.constEnd()) {
+		languageCO->addItem(i.value(), i.key());
+		++i;
+	}
+	setLanguage();
 }
 
 
@@ -247,6 +257,10 @@ void GuiLyXFiles::on_filesLW_itemDoubleClicked(QTreeWidgetItem * item, int)
 void GuiLyXFiles::on_filesLW_itemClicked(QTreeWidgetItem * item, int)
 {
 	QString const data = item->data(0, Qt::UserRole).toString();
+	if (!data.endsWith(getSuffix()))
+		// not a file (probably a header)
+		return;
+
 	languageCO->clear();
 	QMap<QString, QString>::const_iterator i =available_languages_.constBegin();
 	while (i != available_languages_.constEnd()) {
@@ -257,13 +271,18 @@ void GuiLyXFiles::on_filesLW_itemClicked(QTreeWidgetItem * item, int)
 	}
 	languageCO->setToolTip(qt_("All available languages of the selected file are displayed here.\n"
 				   "The selected language version will be opened."));
-	// Set language combo
+	setLanguage();
+	filesLW->currentItem()->setData(0, Qt::ToolTipRole, getRealPath());
+}
+
+
+void GuiLyXFiles::setLanguage()
+{
 	// first try last setting
 	if (!savelang_.isEmpty()) {
 		int index = languageCO->findData(savelang_);
 		if (index != -1) {
 			languageCO->setCurrentIndex(index);
-			filesLW->currentItem()->setData(0, Qt::ToolTipRole, getRealPath());
 			return;
 		}
 	}
@@ -272,7 +291,6 @@ void GuiLyXFiles::on_filesLW_itemClicked(QTreeWidgetItem * item, int)
 		int index = languageCO->findData(guilang_);
 		if (index != -1) {
 			languageCO->setCurrentIndex(index);
-			filesLW->currentItem()->setData(0, Qt::ToolTipRole, getRealPath());
 			return;
 		}
 	}
@@ -280,7 +298,6 @@ void GuiLyXFiles::on_filesLW_itemClicked(QTreeWidgetItem * item, int)
 	int index = languageCO->findData(toqstr("en"));
 	if (index != -1) {
 		languageCO->setCurrentIndex(index);
-		filesLW->currentItem()->setData(0, Qt::ToolTipRole, getRealPath());
 	}
 }
 

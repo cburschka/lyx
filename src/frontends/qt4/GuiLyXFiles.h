@@ -72,6 +72,8 @@ private:
 	void getFiles(QMap<QString, QString> &, QString const);
 	/// Get the full file path in the selected localization
 	QString const getRealPath();
+	///
+	void setLanguage();
 
 private:
 	/// contains the search box
