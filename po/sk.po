@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-03-19 18:04+0100\n"
-"PO-Revision-Date: 2019-03-19 17:27+0000\n"
+"POT-Creation-Date: 2019-03-21 13:01+0100\n"
+"PO-Revision-Date: 2019-03-21 13:27+0000\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: Slovak <kde-i18n-de@kde.org>\n"
 "Language: sk\n"
@@ -2817,11 +2817,9 @@ msgstr "&Horizontálne:"
 msgid "&Type:"
 msgstr "&Typ:"
 
-#: src/frontends/qt4/ui/LyXFilesUi.ui:45 src/frontends/qt4/ui/LyXFilesUi.ui:58
-msgid "Use this language if avaliable (if not, English is used as fallback)"
-msgstr ""
-"Použiť tento jazyk keď je súbor dostupný (keď nie, použiť Anglický jazyk ako "
-"záložný)"
+#: src/frontends/qt4/ui/LyXFilesUi.ui:58
+msgid "The available language(s) of the selected file will be displayed here"
+msgstr "Tu sú zobrazené dostupné jazyky vybraného súboru"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:247
 msgid "decoration type / matrix border"
@@ -7070,7 +7068,7 @@ msgstr "Najväčší Gigantický kúsok"
 
 #: lib/layouts/aa.layout:3
 msgid "Astronomy & Astrophysics"
-msgstr "Astronomy & Astrophysics"
+msgstr "Astronómia a Astrofyzika"
 
 #: lib/layouts/aa.layout:68 lib/layouts/aapaper.inc:9
 #: lib/layouts/aapaper.layout:81 lib/layouts/acm-sigs.inc:10
@@ -7277,7 +7275,7 @@ msgstr "Tezaurus nepodporovaný v súčasnom A&A:"
 
 #: lib/layouts/aapaper.layout:3 lib/layouts/aapaper.layout:14
 msgid "Astronomy & Astrophysics (V. 4, Obsolete)"
-msgstr "Astronomy & Astrophysics (V. 4, zastaralé)"
+msgstr "Astronómia a Astrofyzika (V. 4, zastaralé)"
 
 #: lib/layouts/aapaper.layout:4 lib/layouts/acm-sigs-alt.layout:4
 #: lib/layouts/acm-sigs.layout:4 lib/layouts/acmsiggraph-0-92.layout:4
@@ -17198,7 +17196,7 @@ msgstr "Krajný obrázok"
 
 #: lib/layouts/tufte-handout.layout:3
 msgid "Tufte Handout"
-msgstr "Tufte Handout"
+msgstr "Tufte Leták"
 
 #: lib/layouts/tufte-handout.layout:4
 msgid "Handouts"
@@ -29364,6 +29362,10 @@ msgstr "Použiť"
 msgid "Reset"
 msgstr "Obnoviť"
 
+#: src/frontends/qt4/GuiApplication.cpp:692
+msgid "Open"
+msgstr "Otvoriť"
+
 #: src/frontends/qt4/GuiApplication.cpp:1153
 msgid "Nothing to do"
 msgstr "Nie je čo robiť"
@@ -31229,6 +31231,14 @@ msgstr "Všetky dostupné súbory"
 #: src/frontends/qt4/GuiLyXFiles.cpp:158
 msgid "Enter string to filter the list of available files"
 msgstr "Zadajte reťazec na výber z listiny dostupných súborov"
+
+#: src/frontends/qt4/GuiLyXFiles.cpp:258
+msgid ""
+"All available languages of the selected file are displayed here.\n"
+"The selected language version will be opened."
+msgstr ""
+"Tu sú zobrazené všetky dostupné jazyky vybraného súboru.\n"
+"Otvorí sa súbor s vybranou jazykovou verziou."
 
 #: src/frontends/qt4/GuiLyXFiles.cpp:189
 msgid "Templates"
@@ -34968,6 +34978,11 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Use this language if avaliable (if not, English is used as fallback)"
+#~ msgstr ""
+#~ "Použiť tento jazyk keď je súbor dostupný (keď nie, použiť Anglický jazyk "
+#~ "ako záložný)"
 
 #~ msgid "Press button to check validity..."
 #~ msgstr "Kliknite tlačidlo na kontrolu validity…"
