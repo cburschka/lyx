@@ -103,7 +103,7 @@ private:
 	/// fill in \c metrics_cache_ at specified value.
 	AscendDescend const fillMetricsCache(char_type) const;
 
-	/// Cache of char leftt bearings
+	/// Cache of char left bearings
 	mutable QHash<char_type, int> lbearing_cache_;
 	/// Cache of char right bearings
 	mutable QHash<char_type, int> rbearing_cache_;
