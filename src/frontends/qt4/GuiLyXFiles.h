@@ -36,6 +36,7 @@ private Q_SLOTS:
 	void on_fileTypeCO_activated(int);
 	void on_languageCO_activated(int);
 	void on_filesLW_itemDoubleClicked(QTreeWidgetItem *, int);
+	void on_filesLW_itemClicked(QTreeWidgetItem *, int);
 	void on_browsePB_pressed();
 	void slotButtonBox(QAbstractButton *);
 	void filterLabels();
@@ -67,6 +68,8 @@ private:
 	bool translateName() const;
 	///
 	void getFiles(QMap<QString, QString> &, QString const);
+	/// Get the full file path in the selected localization
+	QString const getRealPath();
 
 private:
 	/// contains the search box
@@ -75,8 +78,20 @@ private:
 	QString type_;
 	///
 	QString file_;
+	/// All languages (code, guiname)
+	QMap<QString, QString> all_languages_;
+	/// Languages available for files (code. guiname)
+	QMap<QString, QString> available_languages_;
 	///
-	QStringList langcodes_;
+	typedef QMap<QString, QMap<QString, QString>> localizationsMap;
+	///
+	localizationsMap localizations_;
+	/// Possible GUI language representations
+	std::vector<std::string> guilangs_;
+	/// The real GUI lang as stored in available_languages_
+	QString guilang_;
+	/// The last used language
+	QString savelang_;
 };
 
 } // namespace frontend

@@ -47,7 +47,7 @@ void GuiLyXFiles::getFiles(QMap<QString, QString> & in, QString const type)
 	//   3) system_lyxdir
 	// in this order. Files with a given sub-hierarchy will
 	// only be listed once.
-	// We also consider i18n subdirectories and prefer them.
+	// We also consider i18n subdirectories and store them separately.
 	QStringList dirs;
 	QStringList relpaths;
 
@@ -56,23 +56,9 @@ void GuiLyXFiles::getFiles(QMap<QString, QString> & in, QString const type)
 	string const build = addPath(package().build_support().absFileName(), fromqstr(type));
 	string const system = addPath(package().system_support().absFileName(), fromqstr(type));
 
-	// First, query the current language subdir (except for English)
-	QString const lang = languageCO->itemData(languageCO->currentIndex()).toString();
-	if (!lang.startsWith("en")) {
-		// First try with the full code
-		dirs << toqstr(addPath(user, fromqstr(lang)));
-		dirs << toqstr(addPath(build, fromqstr(lang)));
-		dirs << toqstr(addPath(system, fromqstr(lang)));
-		// Then the name without country code
-		QString const shortl = lang.left(lang.indexOf('_'));
-		if (shortl != lang) {
-			dirs << toqstr(addPath(user, fromqstr(shortl)));
-			dirs << toqstr(addPath(build, fromqstr(shortl)));
-			dirs << toqstr(addPath(system, fromqstr(shortl)));
-		}
-	}
+	available_languages_.insert(toqstr("en"), qt_("English"));
 
-	// Next, search in the base path
+	// Search in the base path
 	dirs << toqstr(user)
 	     << toqstr(build)
 	     << toqstr(system);
@@ -84,28 +70,57 @@ void GuiLyXFiles::getFiles(QMap<QString, QString> & in, QString const type)
 			QString fn(QFile(it.next()).fileName());
 			if (!fn.endsWith(getSuffix()))
 				continue;
-			QString const relpath = toqstr(makeRelPath(qstring_to_ucs4(fn),
-								   qstring_to_ucs4(dir)));
+			QString relpath = toqstr(makeRelPath(qstring_to_ucs4(fn),
+							     qstring_to_ucs4(dir)));
 			// <cat>/
 			int s = relpath.indexOf('/', 0);
 			QString cat = qt_("General");
+			QString localization = "en";
 			if (s != -1) {
 				// <cat>/<subcat>/
 				cat = relpath.left(s);
 				int sc = relpath.indexOf('/', s + 1);
 				QString const subcat = (sc == -1) ?
 							QString() : relpath.mid(s + 1, sc - s - 1);
-				if (langcodes_.contains(cat)
-				    && !langcodes_.contains(dir.right(dir.lastIndexOf('/'))))
-					// Skip i18n dir
-					continue;
+				if (all_languages_.contains(cat)
+				    && !all_languages_.contains(dir.right(dir.lastIndexOf('/')))) {
+					QMap<QString, QString>::const_iterator li = all_languages_.find(cat);
+					// Skip i18n dir, but add language to the combo
+					if (!available_languages_.contains(li.key()))
+						available_languages_.insert(li.key(), li.value());
+					localization = cat;
+				}
 				if (!subcat.isEmpty())
 					cat += '/' + subcat;
 			}
 			if (!relpaths.contains(relpath)) {
 				relpaths.append(relpath);
-				in.insert(fn, cat);
+				if (localization == "en")
+					in.insert(relpath, cat);
+				else
+					// strip off lang/
+					relpath = relpath.mid(relpath.indexOf('/') + 1);
+				QMap<QString, QString> lm;
+				if (localizations_.contains(relpath))
+					lm = localizations_.find(relpath).value();
+				lm.insert(localization, fn);
+				localizations_.insert(relpath, lm);
 			}
+		}
+	}
+	// Find and store GUI language
+	for (auto const & l : guilangs_) {
+		// First try with the full name
+		// `en' files are not in a subdirectory
+		if (available_languages_.contains(toqstr(l))) {
+			guilang_ = toqstr(l);
+			break;
+		}
+		// Then the name without country code
+		string const shortl = token(l, '_', 0);
+		if (available_languages_.contains(toqstr(shortl))) {
+			guilang_ = toqstr(shortl);
+			break;
 		}
 	}
 }
@@ -126,36 +141,20 @@ GuiLyXFiles::GuiLyXFiles(GuiView & lv)
 			languages.getLanguage(fromqstr(index.data(Qt::UserRole).toString()));
 		if (!lang)
 			continue;
-		string const code = lang->code();
-		languageCO->addItem(qt_(lang->display()), toqstr(code));
-		langcodes_ << toqstr(code);
+		QString const code = toqstr(lang->code());
+		if (!all_languages_.contains(code))
+			all_languages_.insert(code, qt_(lang->display()));
 		// Also store code without country code
-		string const shortcode = token(code, '_', 0);
-		if (shortcode != code)
-			langcodes_ << toqstr(shortcode);
+		QString const shortcode = code.left(code.indexOf('_'));
+		if (shortcode != code && !all_languages_.contains(shortcode))
+			all_languages_.insert(shortcode, qt_(lang->display()));
 	}
-	// Preset to GUI language
+	// Get GUI language
 	string lang = getGuiMessages().language();
 	string const language = getEnv("LANGUAGE");
 	if (!language.empty())
 		lang += ":" + language;
-
-	for (auto const & l : getVectorFromString(lang, ":")) {
-		// First try with the full name
-		// `en' files are not in a subdirectory
-		int i = languageCO->findData(toqstr(l));
-		if (i != -1) {
-			languageCO->setCurrentIndex(i);
-			break;
-		}
-		// Then the name without country code
-		string const shortl = token(l, '_', 0);
-		i = languageCO->findData(toqstr(l));
-		if (i != -1) {
-			languageCO->setCurrentIndex(i);
-			break;
-		}
-	}
+	guilangs_ =  getVectorFromString(lang, ":");
 
 	// The filter bar
 	filter_ = new FancyLineEdit(this);
@@ -226,9 +225,11 @@ void GuiLyXFiles::on_fileTypeCO_activated(int)
 }
 
 
-void GuiLyXFiles::on_languageCO_activated(int)
+void GuiLyXFiles::on_languageCO_activated(int i)
 {
-	updateContents();
+	savelang_ = languageCO->itemData(i).toString();
+	filesLW->currentItem()->setData(0, Qt::ToolTipRole, getRealPath());
+	changed();
 }
 
 
@@ -241,6 +242,46 @@ void GuiLyXFiles::on_filesLW_itemDoubleClicked(QTreeWidgetItem * item, int)
 	applyView();
 	dispatchParams();
 	close();
+}
+
+void GuiLyXFiles::on_filesLW_itemClicked(QTreeWidgetItem * item, int)
+{
+	QString const data = item->data(0, Qt::UserRole).toString();
+	languageCO->clear();
+	QMap<QString, QString>::const_iterator i =available_languages_.constBegin();
+	while (i != available_languages_.constEnd()) {
+		if (localizations_.contains(data)
+		    && localizations_.find(data).value().contains(i.key()))
+			languageCO->addItem(i.value(), i.key());
+		++i;
+	}
+	languageCO->setToolTip(qt_("All available languages of the selected file are displayed here.\n"
+				   "The selected language version will be opened."));
+	// Set language combo
+	// first try last setting
+	if (!savelang_.isEmpty()) {
+		int index = languageCO->findData(savelang_);
+		if (index != -1) {
+			languageCO->setCurrentIndex(index);
+			filesLW->currentItem()->setData(0, Qt::ToolTipRole, getRealPath());
+			return;
+		}
+	}
+	// next, try GUI lang
+	if (!guilang_.isEmpty()) {
+		int index = languageCO->findData(guilang_);
+		if (index != -1) {
+			languageCO->setCurrentIndex(index);
+			filesLW->currentItem()->setData(0, Qt::ToolTipRole, getRealPath());
+			return;
+		}
+	}
+	// Finally, fall back to English (which should be always there)
+	int index = languageCO->findData(toqstr("en"));
+	if (index != -1) {
+		languageCO->setCurrentIndex(index);
+		filesLW->currentItem()->setData(0, Qt::ToolTipRole, getRealPath());
+	}
 }
 
 
@@ -270,7 +311,9 @@ void GuiLyXFiles::updateContents()
 {
 	QString type = fileTypeCO->itemData(fileTypeCO->currentIndex()).toString();
 	QMap<QString, QString> files;
+	languageCO->clear();
 	getFiles(files, type);
+	languageCO->model()->sort(0);
 
 	filesLW->clear();
 	QIcon user_icon(getPixmap("images/", "lyxfiles-user", "svgz,png"));
@@ -378,10 +421,20 @@ void GuiLyXFiles::resetFilter()
 	filterLabels();
 }
 
+QString const GuiLyXFiles::getRealPath()
+{
+	QString const relpath = filesLW->currentItem()->data(0, Qt::UserRole).toString();
+	QString const language = languageCO->itemData(languageCO->currentIndex()).toString();
+	if (localizations_.contains(relpath)
+	    && localizations_.find(relpath).value().contains(language))
+		return localizations_.find(relpath).value().find(language).value();
+	return QString();
+}
+
 
 void GuiLyXFiles::applyView()
 {
-	file_ = filesLW->currentItem()->data(0, Qt::UserRole).toString();
+	file_ = getRealPath();
 }
 
 

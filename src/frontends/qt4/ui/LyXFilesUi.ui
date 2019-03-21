@@ -42,7 +42,7 @@
      <item row="1" column="0" colspan="2">
       <widget class="QLabel" name="languageLA">
        <property name="toolTip">
-        <string>Use this language if avaliable (if not, English is used as fallback)</string>
+        <string/>
        </property>
        <property name="text">
         <string>&amp;Language:</string>
@@ -55,7 +55,7 @@
      <item row="1" column="2">
       <widget class="QComboBox" name="languageCO">
        <property name="toolTip">
-        <string>Use this language if avaliable (if not, English is used as fallback)</string>
+        <string>The available language(s) of the selected file will be displayed here</string>
        </property>
       </widget>
      </item>
