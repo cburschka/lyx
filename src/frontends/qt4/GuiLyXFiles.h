@@ -16,6 +16,8 @@
 #include "FancyLineEdit.h"
 #include "ui_LyXFilesUi.h"
 
+#include <vector>
+
 class QListWidgetItem;
 
 namespace lyx {
