@@ -32,7 +32,7 @@
 #cmakedefine CXX_GLOBAL_CSTD 1
 #cmakedefine HAVE_WPRINTF 1
 #cmakedefine HAVE_LONG_DOUBLE 1
-#cmakedefine HAVE_LONG_LONG 1
+#cmakedefine HAVE_LONG_LONG_INT 1
 #cmakedefine HAVE_WCHAR_T 1
 #cmakedefine HAVE_WINT_T 1
 #cmakedefine HAVE_STDINT_H_WITH_UINTMAX 1
@@ -50,12 +50,6 @@
 #  ifdef SIZEOF_WCHAR_T_IS_4
 #    define SIZEOF_WCHAR_T 4
 #  endif
-#endif
-
-#ifdef HAVE_LONG_LONG
-#ifdef SIZEOF_LONG_LONG_GREATER_THAN_SIZEOF_LONG
-#define HAVE_LONG_LONG_INT 1
-#endif
 #endif
 
 #cmakedefine GETTEXT_FOUND 1

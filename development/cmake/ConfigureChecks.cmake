@@ -68,7 +68,7 @@ check_type_size(intmax_t HAVE_INTMAX_T)
 macro_bool_to_01(HAVE_UINTMAX_T HAVE_STDINT_H_WITH_UINTMAX)
 
 check_type_size("long double"  HAVE_LONG_DOUBLE)
-check_type_size("long long"  HAVE_LONG_LONG)
+check_type_size("long long"  HAVE_LONG_LONG_INT)
 check_type_size(wchar_t HAVE_WCHAR_T)
 check_type_size(wint_t  HAVE_WINT_T)
 
