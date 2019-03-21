@@ -46,7 +46,7 @@ Section -InstallData
   
   WriteRegStr SHCTX ${APP_UNINST_KEY} "UninstallString" '"$INSTDIR\${SETUP_UNINSTALLER}"'
   WriteRegStr SHCTX ${APP_UNINST_KEY} "DisplayVersion" "${APP_VERSION}"
-  WriteRegStr SHCTX ${APP_UNINST_KEY} "DisplayIcon" "$INSTDIR\bin\lyx,0"
+  WriteRegStr SHCTX ${APP_UNINST_KEY} "DisplayIcon" "$INSTDIR\bin\lyx.exe"
   WriteRegStr SHCTX ${APP_UNINST_KEY} "URLUpdateInfo" "${APP_WEBPAGE}"
   WriteRegStr SHCTX ${APP_UNINST_KEY} "URLInfoAbout" "https://www.lyx.org/AboutLyX"
   WriteRegStr SHCTX ${APP_UNINST_KEY} "Publisher" "${APP_NAME} Team"
@@ -233,11 +233,34 @@ Var ConfigureReturn
 
 Section -ConfigureScript
 
+  SetOutPath "$INSTDIR\Resources"
+  
+  # ask to update MiKTeX
+  ${if} $LaTeXInstalled == "MiKTeX"
+   Call UpdateMiKTeX # function from latex.nsh
+   # install all necessary packages at once because this is much faster then to install the packages one by one
+   DetailPrint $(TEXT_CONFIGURE_LYX)
+   ${if} $MultiUser.Privileges != "Admin"
+   ${andif} $MultiUser.Privileges != "Power"
+    # call the non-admin version
+    # at first we need to synchronize the package database
+    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--verbose" "--update-db"'
+    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--verbose" "--require=@$INSTDIR\Resources\Packages.txt"'
+   ${else}
+    ${if} $MiKTeXUser != "HKCU" # call the admin version
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--verbose" "--update-db"'
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--verbose" "--require=@$INSTDIR\Resources\Packages.txt"'
+    ${else}
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--verbose" "--update-db"'
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--verbose" "--require=@$INSTDIR\Resources\Packages.txt"'
+    ${endif}
+   ${endif}
+  ${endif}
+  
   DetailPrint $(TEXT_CONFIGURE_LYX)
   nsExec::ExecToLog '"$INSTDIR\Python\python.exe" "$INSTDIR\Resources\configure.py"'
   # $ConfigureReturn is "0" if successful, otherwise "1"
   Pop $ConfigureReturn # Return value
-  # Should we do something with that?
 
 SectionEnd
 
