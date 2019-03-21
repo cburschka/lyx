@@ -79,9 +79,6 @@ void GuiLyXFiles::getFiles(QMap<QString, QString> & in, QString const type)
 			if (s != -1) {
 				// <cat>/<subcat>/
 				cat = relpath.left(s);
-				int sc = relpath.indexOf('/', s + 1);
-				QString const subcat = (sc == -1) ?
-							QString() : relpath.mid(s + 1, sc - s - 1);
 				if (all_languages_.contains(cat)
 				    && !all_languages_.contains(dir.right(dir.lastIndexOf('/')))) {
 					QMap<QString, QString>::const_iterator li = all_languages_.find(cat);
@@ -89,17 +86,25 @@ void GuiLyXFiles::getFiles(QMap<QString, QString> & in, QString const type)
 					if (!available_languages_.contains(li.key()))
 						available_languages_.insert(li.key(), li.value());
 					localization = cat;
+					int sc = relpath.indexOf('/', s + 1);
+					cat = (sc == -1) ? QString() : relpath.mid(s + 1, sc - s - 1);
+					s = sc;
 				}
-				if (!subcat.isEmpty())
-					cat += '/' + subcat;
+				if (s != -1) {
+					int sc = relpath.indexOf('/', s + 1);
+					QString const subcat = (sc == -1) ?
+								QString() : relpath.mid(s + 1, sc - s - 1);
+					if (!subcat.isEmpty())
+						cat += '/' + subcat;
+				}
 			}
 			if (!relpaths.contains(relpath)) {
 				relpaths.append(relpath);
-				if (localization == "en")
-					in.insert(relpath, cat);
-				else
+				if (localization != "en")
 					// strip off lang/
 					relpath = relpath.mid(relpath.indexOf('/') + 1);
+				in.insert(relpath, cat);
+									
 				QMap<QString, QString> lm;
 				if (localizations_.contains(relpath))
 					lm = localizations_.find(relpath).value();
