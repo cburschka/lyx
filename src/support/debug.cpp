@@ -240,7 +240,7 @@ LyXErr & operator<<(LyXErr & l, long t)
 { return toStream(l, t); }
 LyXErr & operator<<(LyXErr & l, unsigned long t)
 { return toStream(l, t); }
-#ifdef LYX_USE_LONG_LONG
+#ifdef HAVE_LONG_LONG_INT
 LyXErr & operator<<(LyXErr & l, long long t)
 { return toStream(l, t); }
 LyXErr & operator<<(LyXErr & l, unsigned long long t)

@@ -105,7 +105,7 @@ docstring convert<docstring>(unsigned long ul)
 }
 
 
-#ifdef LYX_USE_LONG_LONG
+#ifdef HAVE_LONG_LONG_INT
 template<>
 string convert<string>(unsigned long long ull)
 {
@@ -135,7 +135,7 @@ docstring convert<docstring>(long l)
 }
 
 
-#ifdef LYX_USE_LONG_LONG
+#ifdef HAVE_LONG_LONG_INT
 template<>
 string convert<string>(long long ll)
 {

@@ -123,10 +123,6 @@ AC_SUBST([HAVE_WCHAR_T])
 
 # Needed for Mingw-w64
 AC_TYPE_LONG_LONG_INT
-if test "$ac_cv_type_long_long_int" = yes; then
-  AC_CHECK_SIZEOF(long)
-  AC_CHECK_SIZEOF(long long)
-fi
 
 ### We need iconv for unicode support (Qt4 frontend requires it too)
 LYX_USE_INCLUDED_ICONV
@@ -307,12 +303,6 @@ char * strerror(int n);
 
 #if defined(HAVE_WCHAR_T) && SIZEOF_WCHAR_T == 4
 #  define USE_WCHAR_T
-#endif
-
-#ifdef HAVE_LONG_LONG_INT
-#if SIZEOF_LONG_LONG > SIZEOF_LONG
-#define LYX_USE_LONG_LONG
-#endif
 #endif
 
 #endif

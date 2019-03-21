@@ -360,7 +360,7 @@ docstring to_percent_encoding(docstring const & in, docstring const & ex = docst
 
 docstring bformat(docstring const & fmt, int arg1);
 docstring bformat(docstring const & fmt, long arg1);
-#ifdef LYX_USE_LONG_LONG
+#ifdef HAVE_LONG_LONG_INT
 docstring bformat(docstring const & fmt, long long arg1);
 #endif
 docstring bformat(docstring const & fmt, unsigned int arg1);

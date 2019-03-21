@@ -1475,7 +1475,7 @@ docstring bformat(docstring const & fmt, long arg1)
 }
 
 
-#ifdef LYX_USE_LONG_LONG
+#ifdef HAVE_LONG_LONG_INT
 docstring bformat(docstring const & fmt, long long arg1)
 {
 	LATTEST(contains(fmt, from_ascii("%1$d")));
