@@ -1,4 +1,4 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
 \lyxformat 544
 \begin_document
 \begin_header
@@ -7,14 +7,17 @@
 \textclass heb-article
 \begin_preamble
 \frenchspacing
+
+% use Culmus vector fonts if available
+%\IfFileExists{culmus.sty}{\usepackage{culmus}}{}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
 \language hebrew
 \language_package default
 \inputencoding auto
-\fontencoding OT1
-\font_roman "default" "FreeSerif"
+\fontencoding global
+\font_roman "lmodern" "FreeSerif"
 \font_sans "default" "FreeSans"
 \font_typewriter "default" "FreeMono"
 \font_math "auto" "auto"
@@ -272,13 +275,13 @@ For example on the Linux distributions
 \family sans
 Debian
 \family default
- the package name for the German language is 
+ the package name for the Hebrew language is 
 \begin_inset Quotes eld
 \end_inset
 
 
 \family typewriter
-texlive-lang-german
+texlive-lang-other
 \family default
 
 \begin_inset Quotes erd

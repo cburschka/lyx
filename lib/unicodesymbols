@@ -1098,6 +1098,67 @@
 0x04f8 "\\\"\CYRERY"   "textcyrillic" "" # CYRILLIC CAPITAL LETTER YERU WITH DIAERESIS
 0x04f9 "\\\"\cyrery"   "textcyrillic" "" # CYRILLIC SMALL LETTER YERU WITH DIAERESIS
 #
+# 12 Hebrew
+#
+#0x0591 ""               "" "combining,force" "" "" # HEBREW ACCENT ETNAHTA
+#			 
+0x05b0 "\\sheva"	 "" "combining,force" "" "" # HEBREW POINT SHEVA
+0x05b1 "\\hatafsegol" 	 "" "combining,force" "" "" # HEBREW POINT HATAF SEGOL
+0x05b2 "\\hatafpatah"	 "" "combining,force" "" "" # HEBREW POINT HATAF PATAH
+0x05b3 "\\hatafqamats"	 "" "combining,force" "" "" # HEBREW POINT HATAF QAMATS
+0x05b4 "\\hiriq"      	 "" "combining,force" "" "" # HEBREW POINT HIRIQ
+0x05b5 "\\tsere"	 "" "combining,force" "" "" # HEBREW POINT TSERE
+0x05b6 "\\segol"	 "" "combining,force" "" "" # HEBREW POINT SEGOL
+0x05b7 "\\patah"         "" "combining,force" "" "" # HEBREW POINT PATAH
+0x05b8 "\\qamats"        "" "combining,force" "" "" # HEBREW POINT QAMATS
+0x05b9 "\\holam"         "" "combining,force" "" "" # HEBREW POINT HOLAM
+#0x05ba ""                "" "combining,force" "" "" # HEBREW POINT HOLAM HASER FOR VAV
+0x05bb "\\qubuts"        "" "combining,force" "" "" # HEBREW POINT QUBUTS
+0x05bc "\\dagesh"        "" "combining,force" "" "" # HEBREW POINT DAGESH OR MAPIQ
+0x05bd "\\meteg"         "" "combining,force" "" "" # HEBREW POINT METEG
+0x05be "\\maqaf"         "" "force=cp1255;utf8;utf8-cjk" "" "" # HEBREW PUNCTUATION MAQAF
+#0x05bf ""                "" "combining,force" "" "" # HEBREW POINT RAFE
+#0x05c0 ""                "" "" "" ""    	     # HEBREW PUNCTUATION PASEQ
+0x05c1 "\\shindot"       "" "combining,force" "" "" # HEBREW POINT SHIN DOT
+0x05c2 "\\sindot"        "" "combining,force" "" "" # HEBREW POINT SIN DOT
+0x05c3 "\\sofpasuq"      "" "force=cp1255;utf8;utf8-cjk" "" "" # HEBREW PUNCTUATION SOF PASUQ
+#0x05c4 ""                "" "combining,force" "" "" # HEBREW MARK UPPER DOT
+#0x05c5 ""                "" "combining,force" "" "" # HEBREW MARK LOWER DOT
+#0x05c6 ""                "" "" "" "" 	             # HEBREW PUNCTUATION NUN HAFUKHA
+#0x05c7 ""                "" "combining,force" "" "" # HEBREW POINT QAMATS QATAN
+0x05d0 "\\hebalef"       "" "force=utf8;utf8-cjk" "\\aleph" "amssymb" # HEBREW LETTER ALEF
+0x05d1 "\\hebbet"        "" "force=utf8;utf8-cjk" "\\beth" "amssymb" # HEBREW LETTER BET
+0x05d2 "\\hebgimel"      "" "force=utf8;utf8-cjk" "\\gimel" "amssymb" # HEBREW LETTER GIMEL
+0x05d3 "\\hebdalet"      "" "force=utf8;utf8-cjk" "\\daleth" "amssymb" # HEBREW LETTER DALET
+0x05d4 "\\hebhe"         "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER HE
+0x05d5 "\\hebvav"        "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER VAV
+0x05d6 "\\hebzayin"      "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER ZAYIN
+0x05d7 "\\hebhet"        "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER HET
+0x05d8 "\\hebtet"        "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER TET
+0x05d9 "\\hebyod"        "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER YOD
+0x05da "\\hebfinalkaf"   "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER FINAL KAF
+0x05db "\\hebkaf"        "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER KAF
+0x05dc "\\heblamed"      "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER LAMED
+0x05dd "\\hebfinalmem"   "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER FINAL MEM
+0x05de "\\hebmem"        "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER MEM
+0x05df "\\hebfinalnun"   "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER FINAL NUN
+0x05e0 "\\hebnun"        "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER NUN
+0x05e1 "\\hebsamekh"     "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER SAMEKH
+0x05e2 "\\hebayin"       "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER AYIN
+0x05e3 "\\hebfinalpe"    "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER FINAL PE
+0x05e4 "\\hebpe"         "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER PE
+0x05e5 "\\hebfinaltsadi" "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER FINAL TSADI
+0x05e6 "\\hebtsadi"      "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER TSADI
+0x05e7 "\\hebqof"        "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER QOF
+0x05e8 "\\hebresh"       "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER RESH
+0x05e9 "\\hebshin"       "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER SHIN
+0x05ea "\\hebtav"        "" "force=utf8;utf8-cjk" "" "" # HEBREW LETTER TAV
+0x05f0 "\doublevav"	 "" "force=cp1255;utf8;utf8-cjk" "" "" # HEBREW LIGATURE YIDDISH DOUBLE VAV
+0x05f1 "\vavyod"	 "" "force=cp1255;utf8;utf8-cjk" "" "" # HEBREW LIGATURE YIDDISH VAV YOD
+0x05f2 "\doubleyod"	 "" "force=cp1255;utf8;utf8-cjk" "" "" # HEBREW LIGATURE YIDDISH DOUBLE YOD
+#0x05f3 ""               "" "" "" "" # HEBREW PUNCTUATION GERESH
+#0x05f4 ""               "" "" "" "" # HEBREW PUNCTUATION GERSHAYIM
+#
 # 31 Thai
 #
 0x0e3f "\\textbaht"            "textcomp" "" # THAI CURRENCY SYMBOL BAHT
