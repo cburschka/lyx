@@ -112,7 +112,9 @@ ${LangFileString} UnLyXPreferencesTitle 'LyXove užívateľské nastavenia'
 ${LangFileString} SecUnMiKTeXDescription "Odinštaluje LaTeX-distribúciu MiKTeX."
 #${LangFileString} SecUnJabRefDescription "Odinštaluje manažéra bibliografie JabRef."
 ${LangFileString} SecUnPreferencesDescription 'Odstráni konfiguračný adresár LyXu $\r$\n\
-						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+						$\"$AppPre\username\$\r$\n\
+						$AppSuff\$\r$\n\
+						${APP_DIR_USERDATA}$\")$\r$\n\
 						pre všetkých užívateľov (keď máte administrátorské práva).'
 ${LangFileString} SecUnProgramFilesDescription "Odinštaluj LyX a všetky jeho súčiastky."
 

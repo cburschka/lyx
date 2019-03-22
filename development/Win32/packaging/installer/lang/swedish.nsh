@@ -105,7 +105,9 @@ ${LangFileString} UnLyXPreferencesTitle 'LyX-användarinställningar'
 ${LangFileString} SecUnMiKTeXDescription "Avinstallerar LaTeX-distributionen MiKTeX."
 #${LangFileString} SecUnJabRefDescription "Avinstallerar bibliografihanteraren JabRef."
 ${LangFileString} SecUnPreferencesDescription 'Raderar LyX-konfiguration$\r$\n\
-						(katalog $\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+						(katalog $\"$AppPre\username\$\r$\n\
+						$AppSuff\$\r$\n\
+						${APP_DIR_USERDATA}$\")$\r$\n\
 						för dig eller för alla användare (om du är admin).'
 ${LangFileString} SecUnProgramFilesDescription "Avinstallera LyX och alla dess komponenter."
 

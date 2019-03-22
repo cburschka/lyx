@@ -105,7 +105,9 @@ ${LangFileString} UnLyXPreferencesTitle 'LyX$\'s user preferences'
 ${LangFileString} SecUnMiKTeXDescription "Verwijder de LaTeX software MiKTeX."
 #${LangFileString} SecUnJabRefDescription "Verwijder de bibliografie manager JabRef."
 ${LangFileString} SecUnPreferencesDescription 'Verwijder LyX$\'s configuratie map$\r$\n\
-						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+						$\"$AppPre\username\$\r$\n\
+						$AppSuff\$\r$\n\
+						${APP_DIR_USERDATA}$\")$\r$\n\
 						voor alle gebruikers.'
 ${LangFileString} SecUnProgramFilesDescription "Verwijder LyX en alle bijbehorende onderdelen."
 

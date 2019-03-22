@@ -54,10 +54,6 @@ Function LaTeXActions
     IntOp $0 $0 + 1
     Goto loop32
    done32:
-   ${if} $String == "2.8"
-    StrCpy $MiKTeXVersion "2.8"
-    StrCpy $LaTeXName "MiKTeX 2.8"
-   ${endif}
    ${if} $String == "2.9"
     StrCpy $MiKTeXVersion "2.9"
     StrCpy $LaTeXName "MiKTeX 2.9"
@@ -78,10 +74,6 @@ Function LaTeXActions
     IntOp $0 $0 + 1
     Goto loop64
    done64:
-   ${if} $String == "2.8"
-    StrCpy $MiKTeXVersion "2.8"
-    StrCpy $LaTeXName "MiKTeX 2.8"
-   ${endif}
    ${if} $String == "2.9"
     StrCpy $MiKTeXVersion "2.9"
     StrCpy $LaTeXName "MiKTeX 2.9"
@@ -110,10 +102,6 @@ Function LaTeXActions
     IntOp $0 $0 + 1
     Goto loopB
    doneB:
-   ${if} $String == "2.8"
-    StrCpy $MiKTeXVersion "2.8"
-    StrCpy $LaTeXName "MiKTeX 2.8"
-   ${endif}
    ${if} $String == "2.9"
     StrCpy $MiKTeXVersion "2.9"
     StrCpy $LaTeXName "MiKTeX 2.9"
@@ -176,18 +164,11 @@ Function LaTeXActions
   ${endif}
   # finally set the name
   ${if} $PathLaTeX != ""
-  ${andif} $LaTeXName != "MiKTeX 2.8"
   ${andif} $LaTeXName != "MiKTeX 2.9"
    StrCpy $LaTeXInstalled "TeXLive"
    ReadRegStr $String HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2015" "DisplayVersion"
    ${if} $String == ""
     ReadRegStr $String HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2015" "DisplayVersion"
-   ${endif}
-   ${if} $String == ""
-    ReadRegStr $String HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2014" "DisplayVersion"
-   ${endif}
-   ${if} $String == ""
-    ReadRegStr $String HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2014" "DisplayVersion"
    ${endif}
    ${if} $String != ""
     StrCpy $LaTeXName "TeXLive $String"

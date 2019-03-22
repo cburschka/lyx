@@ -22,12 +22,6 @@
 #    StrPoint
 #    UnAppPreSuff
 #
-# - CheckAppPathPreferences (replaces the old install folder name with the new one in the preferences files)
-#                           (used by Update installer), uses:
-#    ReplaceLineContent
-#
-# - IsUserAdmin (checks if user is admin)
-#
 # - FileCheck (checks if a given file exists)
 #
 #--------------------------

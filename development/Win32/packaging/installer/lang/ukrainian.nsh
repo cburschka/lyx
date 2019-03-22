@@ -111,7 +111,9 @@ ${LangFileString} UnLyXPreferencesTitle 'Параметри LyX, встанов�
 ${LangFileString} SecUnMiKTeXDescription "Вилучає дистрибутив LaTeX - MiKTeX."
 #${LangFileString} SecUnJabRefDescription "Вилучає засіб для роботи з бібліографічними даними JabRef."
 ${LangFileString} SecUnPreferencesDescription 'Вилучає теку з налаштуваннями LyX$\r$\n\
-						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+						$\"$AppPre\username\$\r$\n\
+						$AppSuff\$\r$\n\
+						${APP_DIR_USERDATA}$\")$\r$\n\
 						для всіх користувачів.'
 ${LangFileString} SecUnProgramFilesDescription "Вилучити LyX і всі його компоненти."
 

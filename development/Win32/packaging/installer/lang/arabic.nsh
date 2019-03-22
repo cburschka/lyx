@@ -110,6 +110,8 @@ ${LangFileString} UnLyXPreferencesTitle 'تفضيلات مستخدم ليك'
 ${LangFileString} SecUnMiKTeXDescription "إزالة توزيعة لتيك MiKTeX."
 #${LangFileString} SecUnJabRefDescription "إزالة مدير ثبت المراجع JabRef."
 ${LangFileString} SecUnPreferencesDescription 'حذف LyX$\'s ضبط$\r$\n\
-						(مجلد $\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+						(مجلد $\"$AppPre\username\$\r$\n\
+						$AppSuff\$\r$\n\
+						${APP_DIR_USERDATA}$\")$\r$\n\
 						لك او لكل المستخدمين (إذا كنت المدير).'
 ${LangFileString} SecUnProgramFilesDescription "إزالة ليك مع كل مكوناته."

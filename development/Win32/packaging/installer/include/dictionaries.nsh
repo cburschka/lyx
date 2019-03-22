@@ -28,8 +28,8 @@ Function FindDictionaries
   
   # read out the possible spell-checker filenames from the file	
   FileOpen $R5 "$INSTDIR\Resources\HunspellDictionaryNames.txt" r
-  ${for} $5 1 72
-   # the file has 144 lines, but we only need to check for one of the 2 dictionary files per language
+  ${for} $5 1 73
+   # the file has 146 lines, but we only need to check for one of the 2 dictionary files per language
    # therefore check only for every second line
    FileRead $R5 $String # skip the .aff file
    FileRead $R5 $String # $String is now the .dic filename
@@ -66,20 +66,32 @@ Function DownloadHunspellDictionaries
  
  # read out the locations from the file	
  FileOpen $R5 "$INSTDIR\Resources\HunspellDictionaryNames.txt" r
- ${For} $5 1 144 # the file has 144 lines
+ ${For} $5 1 146 # the file has 146 lines
  
   FileRead $R5 $String # $String is now the dictionary name
   StrCpy $R3 $String -6 # $R3 is now the dictionary language code
   
   ${if} $DictCode == $R3
    StrCpy $String $String -2 # delete the linebreak characters at the end
-   # Download hunspell dictionaries
-   Push $R0
-   inetc::get /RECEIVETIMEOUT=5000 "https://sourceforge.net/projects/lyxwininstaller/files/hunspell/$String" "$INSTDIR\Resources\dicts\$String" /END
-   Pop $R0
+   # Download hunspell dictionaries,
+   # if first download repository is not available try the other ones listed in "DictionaryMirrors.txt"
+   FileOpen $R4 "$INSTDIR\Resources\DictionaryMirrors.txt" r
+   
+   ${For} $4 1 24 # there are 24 mirrors in the file
+    FileRead $R4 $Search # $Search is now the mirror
+    StrCpy $Search $Search -2 # delete the linebreak characters at the end
+    Push $R0
+    inetc::get /TIMEOUT=5000 "https://$Search.dl.sourceforge.net/project/lyxwininstaller/hunspell/$String" "$INSTDIR\Resources\dicts\$String" /END
+    Pop $R0
+    ${if} $R0 == "OK"
+     ${ExitFor}
+    ${endif}
+   ${Next}
+   
+   FileClose $R4
    # if download failed
    ${if} $R0 != "OK"
-    MessageBox MB_OK|MB_ICONEXCLAMATION "$(HunspellFailed): $R0"
+    MessageBox MB_OK|MB_ICONEXCLAMATION "$(HunspellFailed)"
     Goto abortinstall
    ${endif}
   ${endif} # end if $DictCode == $R3
@@ -107,13 +119,25 @@ Function DownloadThesaurusDictionaries
   
   ${if} $ThesCode == $R3
    StrCpy $String $String -2 # delete the linebreak characters at the end
-   # Download thesaurus files
-   Push $R0
-   inetc::get /POPUP /RECEIVETIMEOUT=5000 "https://sourceforge.net/projects/lyxwininstaller/files/thesaurus/$String" "$INSTDIR\Resources\thes\$String" /END
-   Pop $R0
+   # Download thesaurus files,
+   # if first download repository is not available try the other ones listed in "DictionaryMirrors.txt"
+   FileOpen $R4 "$INSTDIR\Resources\DictionaryMirrors.txt" r
+   
+   ${For} $4 1 24 # there are 24 mirrors in the file
+    FileRead $R4 $Search # $Search is now the mirror
+    StrCpy $Search $Search -2 # delete the linebreak characters at the end
+    Push $R0
+    inetc::get /TIMEOUT=5000 "https://$Search.dl.sourceforge.net/project/lyxwininstaller/thesaurus/$String" "$INSTDIR\Resources\thes\$String" /END
+    Pop $R0
+    ${if} $R0 == "OK"
+     ${ExitFor}
+    ${endif}
+   ${Next}
+   
+   FileClose $R4
    # if download failed
    ${if} $R0 != "OK"
-    MessageBox MB_OK|MB_ICONEXCLAMATION "$(ThesaurusFailed): $R0"
+    MessageBox MB_OK|MB_ICONEXCLAMATION "$(ThesaurusFailed)"
     Goto abortinstall
    ${endif}
   ${endif} # end if $ThesCode == $R3
