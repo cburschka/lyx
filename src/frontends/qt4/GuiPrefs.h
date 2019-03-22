@@ -15,6 +15,7 @@
 #define GUIPREFS_H
 
 #include "GuiDialog.h"
+#include "GuiLyXFiles.h"
 
 #include "Converter.h"
 #include "Format.h"
@@ -68,6 +69,7 @@ public:
 
 public Q_SLOTS:
 	void change_adaptor();
+	void slotFileSelected(QString);
 
 Q_SIGNALS:
 	void prefsApplied(LyXRC const & rc);
@@ -88,9 +90,9 @@ public:
 	bool isBufferDependent() const { return false; }
 
 	/// various file pickers
-	QString browsebind(QString const & file) const;
-	QString browseUI(QString const & file) const;
-	QString browsekbmap(QString const & file) const;
+	QString browsebind(QString const & file);
+	QString browseUI(QString const & file);
+	QString browsekbmap(QString const & file);
 
 	/// general browse
 	QString browse(QString const & file, QString const & title) const;
@@ -106,6 +108,9 @@ public:
 private:
 	///
 	void addModule(PrefModule * module);
+	///
+	QString browseLibFile(QString const & dir,
+		QString const & name, QString const & ext);
 
 	/// temporary lyxrc
 	LyXRC rc_;
@@ -118,6 +123,10 @@ private:
 
 	/// A list of colors to be dispatched
 	std::vector<std::string> colors_;
+	/// UI file selector
+	GuiLyXFiles * glf;
+	/// Selected UI file
+	QString uifile_;
 };
 
 

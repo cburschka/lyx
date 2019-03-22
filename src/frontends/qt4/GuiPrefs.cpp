@@ -19,6 +19,8 @@
 #include "GuiFontExample.h"
 #include "GuiFontLoader.h"
 #include "GuiKeySymbol.h"
+#include "GuiLyXFiles.h"
+#include "GuiView.h"
 #include "qt_helpers.h"
 #include "Validator.h"
 
@@ -122,46 +124,6 @@ QString browseFile(QString const & filename,
 		result = dlg.open(lastPath, filters, onlyFileName(filename));
 
 	return result.second;
-}
-
-
-/** Wrapper around browseFile which tries to provide a filename
-*  relative to the user or system directory. The dir, name and ext
-*  parameters have the same meaning as in the
-*  support::LibFileSearch function.
-*/
-QString browseLibFile(QString const & dir,
-	QString const & name,
-	QString const & ext,
-	QString const & title,
-	QStringList const & filters)
-{
-	// FIXME UNICODE
-	QString const label1 = qt_("&System files");
-	QString const dir1 =
-		toqstr(addName(package().system_support().absFileName(), fromqstr(dir)));
-
-	QString const label2 = qt_("&User files");
-	QString const dir2 =
-		toqstr(addName(package().user_support().absFileName(), fromqstr(dir)));
-
-	QString const result = browseFile(toqstr(
-		libFileSearch(dir, name, ext).absFileName()),
-		title, filters, false, dir1, dir2, QString(), QString(), dir1);
-
-	// remove the extension if it is the default one
-	QString noextresult;
-	if (getExtension(result) == ext)
-		noextresult = removeExtension(result);
-	else
-		noextresult = result;
-
-	// remove the directory, if it is the default one
-	QString const file = onlyFileName(noextresult);
-	if (toqstr(libFileSearch(dir, file, ext).absFileName()) == result)
-		return file;
-	else
-		return noextresult;
 }
 
 
@@ -3493,6 +3455,10 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	bc().setApply(buttonBox->button(QDialogButtonBox::Apply));
 	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
 	bc().setRestore(buttonBox->button(QDialogButtonBox::Reset));
+
+	glf = new GuiLyXFiles(lv);
+	connect(glf, SIGNAL(fileSelected(QString)),
+			this, SLOT(slotFileSelected(QString)));
 }
 
 
@@ -3593,24 +3559,59 @@ void GuiPreferences::setColor(ColorCode col, QString const & hex)
 }
 
 
-QString GuiPreferences::browsebind(QString const & file) const
+void GuiPreferences::slotFileSelected(QString const file)
 {
-	return browseLibFile("bind", file, "bind", qt_("Choose bind file"),
-			     QStringList(qt_("LyX bind files (*.bind)")));
+	uifile_ = file;
 }
 
 
-QString GuiPreferences::browseUI(QString const & file) const
+/** Wrapper around browseFile which tries to provide a filename
+*  relative to the user or system directory. The dir, name and ext
+*  parameters have the same meaning as in the
+*  support::LibFileSearch function.
+*/
+QString GuiPreferences::browseLibFile(QString const & dir,
+	QString const & name, QString const & ext)
 {
-	return browseLibFile("ui", file, "ui", qt_("Choose UI file"),
-			     QStringList(qt_("LyX UI files (*.ui)")));
+	uifile_.clear();
+
+	glf->passParams(fromqstr(dir));
+	glf->selectItem(name);
+	glf->exec();
+
+	QString const result = uifile_;
+
+	// remove the extension if it is the default one
+	QString noextresult;
+	if (getExtension(result) == ext)
+		noextresult = removeExtension(result);
+	else
+		noextresult = result;
+
+	// remove the directory, if it is the default one
+	QString const file = onlyFileName(noextresult);
+	if (toqstr(libFileSearch(dir, file, ext).absFileName()) == result)
+		return file;
+	else
+		return noextresult;
 }
 
 
-QString GuiPreferences::browsekbmap(QString const & file) const
+QString GuiPreferences::browsebind(QString const & file)
 {
-	return browseLibFile("kbd", file, "kmap", qt_("Choose keyboard map"),
-			     QStringList(qt_("LyX keyboard maps (*.kmap)")));
+	return browseLibFile("bind", file, "bind");
+}
+
+
+QString GuiPreferences::browseUI(QString const & file)
+{
+	return browseLibFile("ui", file, "ui");
+}
+
+
+QString GuiPreferences::browsekbmap(QString const & file)
+{
+	return browseLibFile("kbd", file, "kmap");
 }
 
 

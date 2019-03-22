@@ -239,6 +239,8 @@ QString const GuiLyXFiles::getSuffix()
 {
 	if (type_ == "bind" || type_ == "ui")
 		return toqstr(".") + type_;
+	else if (type_ == "kbd")
+		return ".kmap";
 	
 	return ".lyx";
 }
@@ -344,17 +346,43 @@ void GuiLyXFiles::setLanguage()
 
 void GuiLyXFiles::on_browsePB_pressed()
 {
-	bool const examples = (type_ == "examples");
-	FileDialog dlg(qt_("Select template file"));
-	dlg.setButton1(qt_("D&ocuments"), toqstr(lyxrc.document_path));
-	if (examples)
-		dlg.setButton2(qt_("&Examples"), toqstr(lyxrc.example_path));
-	else
-		dlg.setButton2(qt_("&Templates"), toqstr(lyxrc.template_path));
+	QString path1 = toqstr(lyxrc.document_path);
+	QString path2 = toqstr(lyxrc.example_path);
+	QString title = qt_("Select example file");
+	QString filter = qt_("LyX Documents (*.lyx)");
+	QString b1 = qt_("D&ocuments");
+	QString b2 = qt_("&Examples");
 
-	FileDialog::Result result = dlg.open(examples ? toqstr(lyxrc.example_path)
-						      : toqstr(lyxrc.template_path),
-				 QStringList(qt_("LyX Documents (*.lyx)")));
+	if (type_ == "templates") {
+		path2 = toqstr(lyxrc.template_path);
+		title = qt_("Select template file");
+		b1 = qt_("D&ocuments");
+		b2 = qt_("&Templates");
+	}
+	else if (type_ != "examples") {
+		path1 = toqstr(addName(package().user_support().absFileName(), fromqstr(type_)));
+		path2 = toqstr(addName(package().system_support().absFileName(), fromqstr(type_)));
+		b1 = qt_("&User files");
+		b2 = qt_("&System files");
+	}
+	if (type_ == "ui") {
+		title = qt_("Chose UI file");
+		filter = qt_("LyX UI Files (*.ui)");
+	}
+	if (type_ == "bind") {
+		title = qt_("Chose bind file");
+		filter = qt_("LyX Bind Files (*.bind)");
+	}
+	if (type_ == "kbd") {
+		title = qt_("Chose keyboard map");
+		filter = qt_("LyX Keymap Files (*.kmap)");
+	}
+
+	FileDialog dlg(title);
+	dlg.setButton1(b1, path1);
+	dlg.setButton2(b2, path2);
+
+	FileDialog::Result result = dlg.open(path2, QStringList(filter));
 
 	if (result.first != FileDialog::Later && !result.second.isEmpty()) {
 		file_ = toqstr(FileName(fromqstr(result.second)).absFileName());
@@ -513,6 +541,21 @@ bool GuiLyXFiles::initialiseParams(string const & type)
 }
 
 
+void GuiLyXFiles::passParams(string const & data)
+{
+	initialiseParams(data);
+	updateContents();
+}
+
+
+void GuiLyXFiles::selectItem(QString const item)
+{
+	QList<QTreeWidgetItem *> twi = filesLW->findItems(item, Qt::MatchExactly|Qt::MatchRecursive);
+	if (!twi.isEmpty())
+		twi.first()->setSelected(true);
+}
+
+
 void GuiLyXFiles::paramsToDialog()
 {
 	if (type_ == "examples")
@@ -537,7 +580,11 @@ void GuiLyXFiles::dispatchParams()
 	arg += fromqstr(file_);
 	FuncCode const lfun = getLfun();
 
-	dispatch(FuncRequest(lfun, arg));
+	if (lfun == LFUN_NOACTION)
+		// emit signal
+		fileSelected(file_);
+	else
+		dispatch(FuncRequest(lfun, arg));
 }
 
 

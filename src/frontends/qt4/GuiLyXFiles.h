@@ -32,6 +32,12 @@ class GuiLyXFiles : public GuiDialog, public Ui::LyXFilesUi
 
 public:
 	GuiLyXFiles(GuiView & lv);
+	/// A way to pass params to the dialog directly
+	void passParams(std::string const & data);
+	/// A way to pass params to the dialog directly
+	void selectItem(QString const item);
+Q_SIGNALS:
+	void fileSelected(QString const file);
 
 private Q_SLOTS:
 	void changed_adaptor();
