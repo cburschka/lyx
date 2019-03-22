@@ -110,7 +110,9 @@ ${LangFileString} UnLyXPreferencesTitle 'Пользовательские нас
 ${LangFileString} SecUnMiKTeXDescription "Удалить дистрибутив MiKTeX."
 #${LangFileString} SecUnJabRefDescription "Удалить менеджер библиографических ссылок JabRef."
 ${LangFileString} SecUnPreferencesDescription 'Удалить настройки LyX$\r$\n\
-						(каталог $\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+						(каталог $\"$AppPre\username\$\r$\n\
+						$AppSuff\$\r$\n\
+						${APP_DIR_USERDATA}$\")$\r$\n\
 						для вас или для всех пользователей (если вы администратор).'
 ${LangFileString} SecUnProgramFilesDescription "Удалить LyX и все его компоненты."
 

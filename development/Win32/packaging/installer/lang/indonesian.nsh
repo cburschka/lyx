@@ -111,7 +111,9 @@ ${LangFileString} UnLyXPreferencesTitle 'Preferensi pengguna LyX'
 ${LangFileString} SecUnMiKTeXDescription "Penghapusan distribusi LaTeX MiKTeX."
 #${LangFileString} SecUnJabRefDescription "Penghapusan program manajemen bibliografi JabRef."
 ${LangFileString} SecUnPreferencesDescription 'Menghapus berkas konfigurasi LyX pada folder$\r$\n\
-						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+						$\"$AppPre\username\$\r$\n\
+						$AppSuff\$\r$\n\
+						${APP_DIR_USERDATA}$\")$\r$\n\
 						untuk semua pengguna.'
 ${LangFileString} SecUnProgramFilesDescription "Penghapusan LyX serta semua komponen yang ada."
 

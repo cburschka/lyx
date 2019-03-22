@@ -111,7 +111,9 @@ ${LangFileString} UnLyXPreferencesTitle 'LyXのユーザー設定'
 ${LangFileString} SecUnMiKTeXDescription "LaTeX頒布版MiKTeXの導入解除を行います。"
 #${LangFileString} SecUnJabRefDescription "文献管理プログラムJabRefの導入解除を行います。"
 ${LangFileString} SecUnPreferencesDescription 'ユーザー共通のLyXの設定フォルダ$\r$\n\
-						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+						$\"$AppPre\username\$\r$\n\
+						$AppSuff\$\r$\n\
+						${APP_DIR_USERDATA}$\")$\r$\n\
 						を削除します。'
 ${LangFileString} SecUnProgramFilesDescription "LyXとすべての附属コンポーネントの導入解除を行います。"
 

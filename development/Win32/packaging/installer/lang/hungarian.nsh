@@ -111,7 +111,9 @@ ${LangFileString} UnLyXPreferencesTitle 'LyX felhasználói beállítások'
 ${LangFileString} SecUnMiKTeXDescription "MikTeX LaTeX-disztibúció eltávolítása."
 #${LangFileString} SecUnJabRefDescription "JabRef irodalomjegyzék kezelő eltávolítása."
 ${LangFileString} SecUnPreferencesDescription 'A  LyX beállítások mappa törlése$\r$\n\
-						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+						$\"$AppPre\username\$\r$\n\
+						$AppSuff\$\r$\n\
+						${APP_DIR_USERDATA}$\")$\r$\n\
 						minden felhasználónál.'
 ${LangFileString} SecUnProgramFilesDescription "A LyX és minden komponensének eltávolítása."
 

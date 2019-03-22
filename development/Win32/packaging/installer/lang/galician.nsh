@@ -105,7 +105,9 @@ ${LangFileString} UnLyXPreferencesTitle 'Preferéncias de usuário do LyX'
 ${LangFileString} SecUnMiKTeXDescription "Desinstala a distribución de LaTeX MiKTeX."
 #${LangFileString} SecUnJabRefDescription "Desinstala o xestor de referéncias bibliográficas JabRef."
 ${LangFileString} SecUnPreferencesDescription 'Elimina as pastas de configuración do  LyX$\r$\n\
-						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+						$\"$AppPre\username\$\r$\n\
+						$AppSuff\$\r$\n\
+						${APP_DIR_USERDATA}$\")$\r$\n\
 						de todos os usuários.'
 ${LangFileString} SecUnProgramFilesDescription "Desinstala LyX e todos os seus componentes."
 
