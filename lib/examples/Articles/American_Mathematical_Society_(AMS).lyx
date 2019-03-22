@@ -1,9 +1,9 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 567
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin /systemlyxdir/examples/
+\origin /systemlyxdir/examples/Articles/
 \textclass amsart
 \use_default_options false
 \begin_modules
@@ -15,9 +15,9 @@ theorems-ams-extended
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding default
-\fontencoding global
-\font_roman "default" "default"
+\inputencoding utf8
+\fontencoding auto
+\font_roman "lmodern" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
@@ -34,6 +34,8 @@ theorems-ams-extended
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false

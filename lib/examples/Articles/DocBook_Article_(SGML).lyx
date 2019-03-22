@@ -1,16 +1,16 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 567
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin /systemlyxdir/examples/
+\origin /systemlyxdir/examples/Articles/
 \textclass docbook
 \use_default_options false
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding default
-\fontencoding global
+\inputencoding utf8
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -24,10 +24,12 @@
 \use_microtype false
 \use_dash_ligatures false
 \graphics default
-\default_output_format pdf
+\default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -290,13 +292,14 @@ Notice that when the docbook code is exported the filename extension is
 \begin_layout Standard
 \begin_inset Float figure
 placement htbp
+alignment document
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../doc/clipart/platypus.eps
+	filename ../../doc/clipart/platypus.eps
 	width 2cm
 	height 3cm
 	scaleBeforeRotation
@@ -332,13 +335,14 @@ Wide figures are treated as normal figures.
 \begin_layout Standard
 \begin_inset Float figure
 placement htbp
+alignment document
 wide true
 sideways false
 status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../doc/clipart/platypus.eps
+	filename ../../doc/clipart/platypus.eps
 	width 2cm
 	height 3cm
 	scaleBeforeRotation
@@ -376,6 +380,7 @@ Tables
 There is also basic support for tables.
 \begin_inset Float table
 placement htbp
+alignment document
 wide false
 sideways false
 status open
