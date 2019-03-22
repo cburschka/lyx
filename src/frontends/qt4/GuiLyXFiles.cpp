@@ -315,6 +315,9 @@ void GuiLyXFiles::on_filesLW_itemClicked(QTreeWidgetItem * item, int)
 
 void GuiLyXFiles::setLanguage()
 {
+	// Enable language selection only if there is a selection.
+	languageCO->setEnabled(languageCO->count() > 1);
+	languageLA->setEnabled(languageCO->count() > 1);
 	// first try last setting
 	if (!savelang_.isEmpty()) {
 		int index = languageCO->findData(savelang_);
