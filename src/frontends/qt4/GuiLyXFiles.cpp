@@ -146,7 +146,6 @@ QMap<QString, QString> GuiLyXFiles::getFiles()
 	// pre-fill the language combo (it will be updated once an item 
 	// has been clicked)
 	languageCO->clear();
-	languageCO->addItem(qt_("English"), toqstr("en"));
 	QMap<QString, QString>::const_iterator i =available_languages_.constBegin();
 	while (i != available_languages_.constEnd()) {
 		languageCO->addItem(i.value(), i.key());
