@@ -36,7 +36,7 @@ from parser_tools import (count_pars_in_inset, find_end_of_inset, find_end_of_la
 #    is_in_inset, set_bool_value
 #    find_tokens, find_token_exact, check_token
 
-from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble, revert_language)
+from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble, revert_language, revert_flex_inset)
 #  revert_font_attrs, insert_to_preamble, latex_length
 #  get_ert, lyx2latex, lyx2verbatim, length_in_bp, convert_info_insets
 #  revert_flex_inset, hex2ratio, str2bool
@@ -1413,6 +1413,28 @@ def revert_malayalam(document):
     revert_language(document, "malayalam", "", "malayalam")
 
 
+def revert_soul(document):
+    " Revert soul module flex insets to ERT "
+
+    flexes = ["Spaceletters", "Strikethrough", "Underline", "Highlight", "Capitalize"]
+
+    for flex in flexes:
+        i = find_token(document.body, "\\begin_inset Flex %s" % flex, 0)
+        if i != -1:
+            add_to_preamble(document, ["\\usepackage{soul}"])
+            break
+    i = find_token(document.body, "\\begin_inset Flex Highlight", 0)
+    if i != -1:
+        add_to_preamble(document, ["\\usepackage{color}"])
+    
+    revert_flex_inset(document.body, "Spaceletters", "\\so")
+    revert_flex_inset(document.body, "Strikethrough", "\\st")
+    revert_flex_inset(document.body, "Underline", "\\ul")
+    revert_flex_inset(document.body, "Highlight", "\\hl")
+    revert_flex_inset(document.body, "Capitalize", "\\caps")
+
+
+
 ##
 # Conversion hub
 #
@@ -1442,9 +1464,11 @@ convert = [
            [565, [convert_AdobeFonts]], # Handle adobe fonts in GUI
            [566, [convert_hebrew_parentheses]],
            [567, []],
+           [568, []]
           ]
 
 revert =  [
+           [567, [revert_soul]],
            [566, [revert_malayalam]],
            [565, [revert_hebrew_parentheses]],
            [564, [revert_AdobeFonts]],

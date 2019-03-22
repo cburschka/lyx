@@ -2409,6 +2409,7 @@ dist_layouts_DATA =\
 	layouts/singlecol.layout \
 	layouts/singlecol-new.layout \
 	layouts/slides.layout \
+	layouts/soul.module \
 	layouts/spie.layout \
 	layouts/stdciteformats.inc \
 	layouts/stdclass.inc \

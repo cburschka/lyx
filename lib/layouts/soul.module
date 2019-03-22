@@ -1,0 +1,88 @@
+#\DeclareLyXModule[soul.sty]{Soul Text Markup}
+#DescriptionBegin
+#Defines text styles to highlight, space-out, strike-through
+#underline and capitalize text by means of the soul package.
+#DescriptionEnd
+#Requires	
+#Excludes
+
+#Author: Stephen [original implementation],
+#        Juergen Spitzmueller <spitz@lyx.org> [fixes]
+
+Format 71
+
+InsetLayout Flex:Spaceletters
+	LyxType		charstyle
+	LabelString	spaced
+	Decoration	conglomerate
+	LatexType	command
+	LatexName	so
+	LabelFont
+	    Size	Small
+	EndFont
+	NeedMBoxProtect	true
+	MultiPar	true
+	Requires	soul
+End
+
+InsetLayout Flex:Strikethrough
+	CopyStyle	Flex:Spaceletters
+	LabelString	strike
+	LatexName	st
+	Font
+	    Misc        strikeout
+	EndFont
+End
+
+InsetLayout Flex:Underline
+	CopyStyle	Flex:Spaceletters
+	LabelString	ul
+	LatexName	ul
+	Font
+	    Misc        underbar
+	EndFont
+End
+
+InsetLayout Flex:Highlight
+	CopyStyle	Flex:Spaceletters
+	LabelString	hl
+	LatexName	hl
+	BgColor		yellow
+	Requires	soul,color
+End
+
+InsetLayout Flex:Capitalize
+	CopyStyle	Flex:Spaceletters
+	LabelString	caps
+	LatexName	caps
+	Font
+	    Shape	smallcaps
+	EndFont
+End
+
+
+# Obsolete older forms used on wiki.lyx.org
+
+InsetLayout Flex:spaceletters
+	ObsoletedBy	Flex:Spaceletters
+End
+
+InsetLayout Flex:strikethrough
+	ObsoletedBy	Flex:Strikethrough
+End
+
+InsetLayout Flex:underline
+	ObsoletedBy	Flex:Underline
+End
+
+InsetLayout Flex:highlight
+	ObsoletedBy	Flex:Highlight
+End
+
+InsetLayout Flex:capitalise
+	ObsoletedBy	Flex:Capitalize
+End
+
+InsetLayout Flex:Capitalise
+	ObsoletedBy	Flex:Capitalize
+End
