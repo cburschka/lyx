@@ -188,6 +188,9 @@ Changer MetricsBase::changeScript()
 	case LM_ST_SCRIPT:
 	case LM_ST_SCRIPTSCRIPT:
 		return font.changeStyle(LM_ST_SCRIPTSCRIPT);
+	case LM_ST_INHERIT:
+	case LM_ST_IGNORE:
+		return Changer();
 	}
 	//remove Warning
 	return Changer();
@@ -204,6 +207,9 @@ Changer MetricsBase::changeFrac()
 	case LM_ST_SCRIPT:
 	case LM_ST_SCRIPTSCRIPT:
 		return font.changeStyle(LM_ST_SCRIPTSCRIPT);
+	case LM_ST_INHERIT:
+	case LM_ST_IGNORE:
+		return Changer();
 	}
 	//remove Warning
 	return Changer();

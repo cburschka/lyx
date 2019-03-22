@@ -154,6 +154,7 @@ docstring const stateText(FontInfo const & f, bool const terse)
 		os << _(GUIShapeNames[f.shape()]) << ", ";
 	if (f.size() != FONT_SIZE_INHERIT && (!terse || f.size() != FONT_SIZE_IGNORE))
 		os << _(GUISizeNames[f.size()]) << ", ";
+	// FIXME: shall style be handled there? Probably not.
 	if (f.color() != Color_inherit && (!terse || f.color() != Color_ignore))
 		os << lcolor.getGUIName(f.color()) << ", ";
 	// FIXME: uncomment this when we support background.
@@ -225,6 +226,7 @@ void Font::lyxWriteChanges(Font const & orgfont,
 		os << "\\shape " << LyXShapeNames[bits_.shape()] << "\n";
 	if (orgfont.fontInfo().size() != bits_.size())
 		os << "\\size " << LyXSizeNames[bits_.size()] << "\n";
+	// FIXME: shall style be handled there? Probably not.
 	if (orgfont.fontInfo().emph() != bits_.emph())
 		os << "\\emph " << LyXMiscNames[bits_.emph()] << "\n";
 	if (orgfont.fontInfo().number() != bits_.number())
@@ -662,7 +664,7 @@ bool Font::fromString(string const & data, bool & toggle)
 		} else if (token == "size") {
 			int const next = lex.getInteger();
 			bits_.setSize(FontSize(next));
-
+		// FIXME: shall style be handled there? Probably not.
 		} else if (token == "emph" || token == "underbar"
 			|| token == "noun" || token == "number"
 			|| token == "uuline" || token == "uwave"
@@ -808,6 +810,7 @@ ostream & operator<<(ostream & os, FontInfo const & f)
 		<< " series " << f.series()
 		<< " shape " << f.shape()
 		<< " size " << f.size()
+		<< " style " << f.style()
 		<< " color " << f.color()
 		// FIXME: uncomment this when we support background.
 		//<< " background " << f.background()

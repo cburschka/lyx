@@ -154,6 +154,10 @@ enum MathStyle {
 	///
 	LM_ST_DISPLAY,
 	///
+	LM_ST_INHERIT,
+	///
+	LM_ST_IGNORE,
+	/// the text and display fonts are the same
 	NUM_STYLE = LM_ST_DISPLAY
 };
 

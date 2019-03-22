@@ -149,6 +149,8 @@ int class_spacing(MathClass const mc1, MathClass const mc2,
 		switch (mb.font.style()) {
 		case LM_ST_DISPLAY:
 		case LM_ST_TEXT:
+		case LM_ST_IGNORE:
+		case LM_ST_INHERIT:
 			spc_code = abs(spc_code);
 			break;
 		case LM_ST_SCRIPT:

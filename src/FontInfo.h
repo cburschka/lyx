@@ -39,6 +39,7 @@ public:
 		FontSeries series,
 		FontShape  shape,
 		FontSize   size,
+		MathStyle  style,
 		ColorCode  color,
 		ColorCode  background,
 		FontState  emph,
@@ -51,7 +52,7 @@ public:
 		FontState  number,
 		FontState  nospellcheck)
 		: family_(family), series_(series), shape_(shape), size_(size),
-		style_(LM_ST_TEXT), color_(color), background_(background), emph_(emph),
+		style_(style), color_(color), background_(background), emph_(emph),
 		underbar_(underbar), strikeout_(strikeout), xout_(xout), uuline_(uuline),
 		uwave_(uwave), noun_(noun), number_(number), nospellcheck_(nospellcheck)
 	{}
@@ -206,6 +207,7 @@ inline bool operator==(FontInfo const & lhs, FontInfo const & rhs)
 		&& lhs.series_ == rhs.series_
 		&& lhs.shape_ == rhs.shape_
 		&& lhs.size_ == rhs.size_
+		&& lhs.style_ == rhs.style_
 		&& lhs.color_ == rhs.color_
 		&& lhs.background_ == rhs.background_
 		&& lhs.emph_ == rhs.emph_

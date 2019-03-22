@@ -62,6 +62,7 @@ FontInfo const sane_font(
 	MEDIUM_SERIES,
 	UP_SHAPE,
 	FONT_SIZE_NORMAL,
+	LM_ST_TEXT,
 	Color_none,
 	Color_background,
 	FONT_OFF,
@@ -79,6 +80,7 @@ FontInfo const inherit_font(
 	INHERIT_SERIES,
 	INHERIT_SHAPE,
 	FONT_SIZE_INHERIT,
+	LM_ST_INHERIT,
 	Color_inherit,
 	Color_inherit,
 	FONT_INHERIT,
@@ -96,6 +98,7 @@ FontInfo const ignore_font(
 	IGNORE_SERIES,
 	IGNORE_SHAPE,
 	FONT_SIZE_IGNORE,
+	LM_ST_IGNORE,
 	Color_ignore,
 	Color_ignore,
 	FONT_IGNORE,
@@ -187,6 +190,8 @@ double FontInfo::realSize() const
 	switch (style()) {
 	case LM_ST_DISPLAY:
 	case LM_ST_TEXT:
+	case LM_ST_INHERIT:
+	case LM_ST_IGNORE:
 		break;
 	case LM_ST_SCRIPT:
 		d *= .73;
@@ -211,6 +216,8 @@ void FontInfo::reduce(FontInfo const & tmplt)
 		shape_ = INHERIT_SHAPE;
 	if (size_ == tmplt.size_)
 		size_ = FONT_SIZE_INHERIT;
+	if (style_ == tmplt.style_)
+		style_ = LM_ST_INHERIT;
 	if (emph_ == tmplt.emph_)
 		emph_ = FONT_INHERIT;
 	if (underbar_ == tmplt.underbar_)
@@ -253,6 +260,9 @@ FontInfo & FontInfo::realize(FontInfo const & tmplt)
 
 	if (size_ == FONT_SIZE_INHERIT)
 		size_ = tmplt.size_;
+
+	if (style_ == LM_ST_INHERIT)
+		style_ = tmplt.style_;
 
 	if (emph_ == FONT_INHERIT)
 		emph_ = tmplt.emph_;
@@ -375,6 +385,10 @@ void FontInfo::update(FontInfo const & newfont, bool toggleall)
 			size_ = newfont.size_;
 	}
 
+	if (newfont.style_ != LM_ST_IGNORE) {
+			style_ = newfont.style_;
+	}
+
 	setEmph(setMisc(newfont.emph_, emph_));
 	setUnderbar(setMisc(newfont.underbar_, underbar_));
 	setStrikeout(setMisc(newfont.strikeout_, strikeout_));
@@ -401,6 +415,7 @@ bool FontInfo::resolved() const
 {
 	return (family_ != INHERIT_FAMILY && series_ != INHERIT_SERIES
 		&& shape_ != INHERIT_SHAPE && size_ != FONT_SIZE_INHERIT
+		&& style_ != LM_ST_INHERIT
 		&& emph_ != FONT_INHERIT && underbar_ != FONT_INHERIT
 		&& uuline_ != FONT_INHERIT && uwave_ != FONT_INHERIT
 		&& strikeout_ != FONT_INHERIT && xout_ != FONT_INHERIT
@@ -736,6 +751,7 @@ void lyxWrite(ostream & os, FontInfo const & f, string const & start, int level)
 	if (f.size() != FONT_SIZE_INHERIT)
 		oss << indent << "\tSize " << LyXSizeNames[f.size()]
 		    << '\n';
+	//FIXME: shall style be handled here? Probably not.
 	if (f.underbar() == FONT_ON)
 		oss << indent << "\tMisc Underbar\n";
 	else if (f.underbar() == FONT_OFF)
