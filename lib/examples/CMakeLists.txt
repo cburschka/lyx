@@ -7,7 +7,7 @@
 project(testExamples)
 
 foreach(_arg "External_Material/longsheet.gnumeric"
-             "Graphics_\&_Insets/iecc05.fen"
+             "Graphics_and_Insets/iecc05.fen"
              "Presentations/beamer-icsi-logo.pdf")
   configure_file("${_arg}" "${CMAKE_CURRENT_BINARY_DIR}/${_arg}" COPYONLY)
 endforeach(_arg)

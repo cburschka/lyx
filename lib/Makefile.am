@@ -74,9 +74,9 @@ caexamplesdir = $(pkgdatadir)/examples/ca
 dist_caexamples_DATA = \
 	examples/ca/Welcome.lyx
 
-cainsetexamplesdir = $(pkgdatadir)/examples/ca/Graphics_&_Insets
+cainsetexamplesdir = $(pkgdatadir)/examples/ca/Graphics_and_Insets
 dist_cainsetexamples_DATA = \
-	examples/ca/Graphics_&_Insets/Itemize_Bullets.lyx
+	examples/ca/Graphics_and_Insets/Itemize_Bullets.lyx
 
 csexamplesdir = $(pkgdatadir)/examples/cs
 dist_csexamples_DATA = \
@@ -103,10 +103,10 @@ dehandoutexamplesdir = $(pkgdatadir)/examples/de/Curricula_Vitae
 dist_dehandoutexamples_DATA = \
 	examples/de/Handouts/Tufte_Handout.lyx
 
-deinsetexamplesdir = $(pkgdatadir)/examples/de/Graphics_&_Insets
+deinsetexamplesdir = $(pkgdatadir)/examples/de/Graphics_and_Insets
 dist_deinsetexamples_DATA = \
-	examples/de/Graphics_&_Insets/Itemize_Bullets.lyx \
-	examples/de/Graphics_&_Insets/Feynman_Diagrams.lyx
+	examples/de/Graphics_and_Insets/Itemize_Bullets.lyx \
+	examples/de/Graphics_and_Insets/Feynman_Diagrams.lyx
 
 deletterexamplesdir = $(pkgdatadir)/examples/de/Letters
 dist_deletterexamples_DATA = \
@@ -151,9 +151,9 @@ eshandoutexamplesdir = $(pkgdatadir)/examples/es/Handouts
 dist_eshandoutexamples_DATA = \
 	examples/es/Handouts/Tufte_Handout.lyx
 
-esinsetexamplesdir = $(pkgdatadir)/examples/es/Graphics_&_Insets
+esinsetexamplesdir = $(pkgdatadir)/examples/es/Graphics_and_Insets
 dist_esinsetexamples_DATA = \
-	examples/es/Graphics_&_Insets/Itemize_Bullets.lyx
+	examples/es/Graphics_and_Insets/Itemize_Bullets.lyx
 
 esmoduleexamplesdir = $(pkgdatadir)/examples/es/Modules
 dist_esmoduleexamples_DATA = \
@@ -180,13 +180,13 @@ frcvexamplesdir = $(pkgdatadir)/examples/fr/Curricula_Vitae
 dist_frcvexamples_DATA = \
 	examples/fr/Curricula_Vitae/Simple_CV.lyx
 
-frinsetexamplesdir = $(pkgdatadir)/examples/fr/Graphics_&_Insets
+frinsetexamplesdir = $(pkgdatadir)/examples/fr/Graphics_and_Insets
 dist_frinsetexamples_DATA = \
-	examples/fr/Graphics_&_Insets/Itemize_Bullets.lyx \
-	examples/fr/Graphics_&_Insets/Feynman_Diagrams.lyx \
-	examples/fr/Graphics_&_Insets/XY-Figure.lyx \
-	examples/fr/Graphics_&_Insets/xyfigure.png \
-	examples/fr/Graphics_&_Insets/XY-Pic.lyx
+	examples/fr/Graphics_and_Insets/Itemize_Bullets.lyx \
+	examples/fr/Graphics_and_Insets/Feynman_Diagrams.lyx \
+	examples/fr/Graphics_and_Insets/XY-Figure.lyx \
+	examples/fr/Graphics_and_Insets/xyfigure.png \
+	examples/fr/Graphics_and_Insets/XY-Pic.lyx
 
 frmoduleexamplesdir = $(pkgdatadir)/examples/fr/Modules
 dist_frmoduleexamples_DATA = \
@@ -228,20 +228,20 @@ itexamplesdir = $(pkgdatadir)/examples/it
 dist_itexamples_DATA = \
 	examples/it/Welcome.lyx
 
-itinsetexamplesdir = $(pkgdatadir)/examples/it/Graphics_&_Insets
+itinsetexamplesdir = $(pkgdatadir)/examples/it/Graphics_and_Insets
 dist_itinsetexamples_DATA = \
-	examples/it/Graphics_&_Insets/Itemize_Bullets.lyx
+	examples/it/Graphics_and_Insets/Itemize_Bullets.lyx
 
 jaexamplesdir = $(pkgdatadir)/examples/ja
 dist_jaexamples_DATA = \
 	examples/ja/Multilingual_Typesetting_(CJKutf8).lyx \
 	examples/ja/Welcome.lyx
 
-jainsetexamplesdir = $(pkgdatadir)/examples/ja/Graphics_&_Insets
+jainsetexamplesdir = $(pkgdatadir)/examples/ja/Graphics_and_Insets
 dist_jainsetexamples_DATA = \
-	examples/ja/Graphics_&_Insets/Feynman_Diagrams.lyx \
-	examples/ja/Graphics_&_Insets/xyfigure.png \
-	examples/ja/Graphics_&_Insets/XY-Pic.lyx
+	examples/ja/Graphics_and_Insets/Feynman_Diagrams.lyx \
+	examples/ja/Graphics_and_Insets/xyfigure.png \
+	examples/ja/Graphics_and_Insets/XY-Pic.lyx
 
 jamoduleexamplesdir = $(pkgdatadir)/examples/ja/Modules
 dist_jamoduleexamples_DATA = \
@@ -272,9 +272,9 @@ dist_nlexamples_DATA = \
 	examples/nl/Example_(raw).lyx \
 	examples/nl/Welcome.lyx
 
-nlinsetexamplesdir = $(pkgdatadir)/examples/nl/Graphics_&_Insets
+nlinsetexamplesdir = $(pkgdatadir)/examples/nl/Graphics_and_Insets
 dist_nlinsetexamples_DATA = \
-	examples/nl/Graphics_&_Insets/Itemize_Bullets.lyx
+	examples/nl/Graphics_and_Insets/Itemize_Bullets.lyx
 
 plexamplesdir = $(pkgdatadir)/examples/pl
 dist_plexamples_DATA = \
@@ -421,19 +421,19 @@ handoutexamplesdir = $(pkgdatadir)/examples/Handouts
 dist_handoutexamples_DATA = \
 	examples/Handouts/Tufte_Handout.lyx
 
-insetexamplesdir = $(pkgdatadir)/examples/Graphics_&_Insets
+insetexamplesdir = $(pkgdatadir)/examples/Graphics_and_Insets
 dist_insetexamples_DATA = \
-	examples/Graphics_&_Insets/Feynman_Diagrams.lyx \
-	examples/Graphics_&_Insets/iecc05.fen \
-	examples/Graphics_&_Insets/iecc07.fen \
-	examples/Graphics_&_Insets/iecc12.fen \
-	examples/Graphics_&_Insets/Instant_Preview.lyx \
-	examples/Graphics_&_Insets/Itemize_Bullets.lyx \
-	examples/Graphics_&_Insets/Minted_File_Listing.lyx \
-	examples/Graphics_&_Insets/Minted_Listings.lyx \
-	examples/Graphics_&_Insets/XY-Figure.lyx \
-	examples/Graphics_&_Insets/xyfigure.png \
-	examples/Graphics_&_Insets/XY-Pic.lyx
+	examples/Graphics_and_Insets/Feynman_Diagrams.lyx \
+	examples/Graphics_and_Insets/iecc05.fen \
+	examples/Graphics_and_Insets/iecc07.fen \
+	examples/Graphics_and_Insets/iecc12.fen \
+	examples/Graphics_and_Insets/Instant_Preview.lyx \
+	examples/Graphics_and_Insets/Itemize_Bullets.lyx \
+	examples/Graphics_and_Insets/Minted_File_Listing.lyx \
+	examples/Graphics_and_Insets/Minted_Listings.lyx \
+	examples/Graphics_and_Insets/XY-Figure.lyx \
+	examples/Graphics_and_Insets/xyfigure.png \
+	examples/Graphics_and_Insets/XY-Pic.lyx
 
 letterexamplesdir = $(pkgdatadir)/examples/Letters
 dist_letterexamples_DATA = \
