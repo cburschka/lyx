@@ -2030,6 +2030,16 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// inside it.
 		doInsertInset(cur, this, cmd, true, true);
 		cur.posForward();
+		if (act == LFUN_SCRIPT_INSERT) {
+			/* Script insets change the font style in metrics(), and
+			 * this is used to compute the height of the caret
+			 * (because the font is stored in TextMetrics::font_).
+			 * When we insert, we have to make sure that metrics are
+			 * computed so that the caret height is wrong. Arguably,
+			 * this is hackish.*/
+			bv->processUpdateFlags(Update::SinglePar);
+		}
+		cur.setCurrentFont();
 		// Some insets are numbered, others are shown in the outline pane so
 		// let's update the labels and the toc backend.
 		cur.forceBufferUpdate();

@@ -86,7 +86,7 @@ public:
 	///
 	bool neverIndent() const { return true; }
 	///
-	bool inheritFont() const { return false; }
+	bool inheritFont() const { return true; }
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
 	              size_t max_length = INT_MAX) const;
@@ -129,6 +129,8 @@ private:
 	friend class InsetScriptParams;
 	///
 	InsetScriptParams params_;
+	/// The font of containing inset; this is necessary to compute shift
+	mutable FontInfo outer_font_;
 };
 
 

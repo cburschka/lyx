@@ -160,6 +160,8 @@ Inset::DisplayType InsetScript::display() const
 void InsetScript::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	int const shift = params_.shift(mi.base.font);
+	// Remember the value of the outser font, so that it can be used in cursorPos.
+	outer_font_ = mi.base.font;
 	Changer dummy = mi.base.changeScript();
 	InsetText::metrics(mi, dim);
 	dim.asc -= shift;
@@ -178,8 +180,7 @@ void InsetScript::draw(PainterInfo & pi, int x, int y) const
 void InsetScript::cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
-	Font const font = bv.textMetrics(&text()).displayFont(sl.pit(), sl.pos());
-	int const shift = params_.shift(font.fontInfo());
+	int const shift = params_.shift(outer_font_);
 	InsetText::cursorPos(bv, sl, boundary, x, y);
 	y += shift;
 }
