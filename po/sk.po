@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-03-21 13:01+0100\n"
-"PO-Revision-Date: 2019-03-21 13:27+0000\n"
+"POT-Creation-Date: 2019-03-22 09:54+0100\n"
+"PO-Revision-Date: 2019-03-22 09:29+0000\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: Slovak <kde-i18n-de@kde.org>\n"
 "Language: sk\n"
@@ -2696,6 +2696,10 @@ msgstr "Aktualizovať zobrazenie"
 msgid "&Update"
 msgstr "&Aktualizovať"
 
+#: src/frontends/qt4/ui/LyXFilesUi.ui:23
+msgid "Filter"
+msgstr "Filter"
+
 #: src/frontends/qt4/ui/MarginsUi.ui:28
 msgid "Use the margin settings provided by the document class"
 msgstr "Použi nastavenie okrajov z triedy dokumentu"
@@ -2816,6 +2820,12 @@ msgstr "&Horizontálne:"
 #: src/frontends/qt4/ui/MathMatrixUi.ui:234
 msgid "&Type:"
 msgstr "&Typ:"
+
+#: src/frontends/qt4/ui/LyXFilesUi.ui:45
+msgid ""
+"Determines whether only personal user files, system files or all files are "
+"displayed"
+msgstr "Rozhodne či ukázať vlastné súbory, súbory systému, alebo všetky súbory"
 
 #: src/frontends/qt4/ui/LyXFilesUi.ui:58
 msgid "The available language(s) of the selected file will be displayed here"
@@ -7771,7 +7781,7 @@ msgstr "ACM SIG Rokovacie Zväzky (SP, Zastaralé)"
 # Združenie pre Výpočetné Stroje
 #: lib/layouts/acmart.layout:3
 msgid "Association for Computing Machinery (ACM)"
-msgstr "Association for Computing Machinery (ACM)"
+msgstr "Spoločnosť pre Výpočtovú Mašinériu (ACM)"
 
 #: lib/layouts/acmart.layout:86 lib/layouts/acmsiggraph-0-92.layout:332
 #: lib/layouts/acmsiggraph.layout:288 lib/layouts/amsdefs.inc:175
@@ -31220,6 +31230,10 @@ msgstr "Žiadny protokolový súbor chýb lyx2lyx sa nenašiel."
 msgid "No version control log file found."
 msgstr "Protokolový súbor správy verzií nenájdený."
 
+#: src/frontends/qt4/GuiLyXFiles.cpp:146
+msgid "Preferred &Language:"
+msgstr "Preferenčný &Jazyk:"
+
 #: src/frontends/qt4/GuiLyXFiles.cpp:147 src/frontends/qt4/GuiLyXFiles.cpp:377
 msgid "New File From Template"
 msgstr "Nový Súbor zo šablóny…|b"
@@ -31232,6 +31246,22 @@ msgstr "Všetky dostupné súbory"
 msgid "Enter string to filter the list of available files"
 msgstr "Zadajte reťazec na výber z listiny dostupných súborov"
 
+#: src/frontends/qt4/GuiLyXFiles.cpp:221
+msgid "User and System Files"
+msgstr "Vlastné i Systémové Súbory"
+
+#: src/frontends/qt4/GuiLyXFiles.cpp:222
+msgid "User Files Only"
+msgstr "Len Vlastné Súbory"
+
+#: src/frontends/qt4/GuiLyXFiles.cpp:223
+msgid "System Files Only"
+msgstr "Len Systémové Súbory"
+
+#: src/frontends/qt4/GuiLyXFiles.cpp:293
+msgid "File &Language:"
+msgstr "&Jazyk Súboru:"
+
 #: src/frontends/qt4/GuiLyXFiles.cpp:258
 msgid ""
 "All available languages of the selected file are displayed here.\n"
@@ -31239,18 +31269,6 @@ msgid ""
 msgstr ""
 "Tu sú zobrazené všetky dostupné jazyky vybraného súboru.\n"
 "Otvorí sa súbor s vybranou jazykovou verziou."
-
-#: src/frontends/qt4/GuiLyXFiles.cpp:189
-msgid "Templates"
-msgstr "Šablóny"
-
-#: src/frontends/qt4/GuiLyXFiles.cpp:402
-msgid "User Interface Files"
-msgstr "Súbory s užívateľským rozhraním"
-
-#: src/frontends/qt4/GuiLyXFiles.cpp:404
-msgid "Key Binding Files"
-msgstr "Súbory pre skratky"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:34
 msgid "[x]"
@@ -34978,6 +34996,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Templates"
+#~ msgstr "Šablóny"
+
+#~ msgid "Key Binding Files"
+#~ msgstr "Súbory pre skratky"
 
 #~ msgid "Use this language if avaliable (if not, English is used as fallback)"
 #~ msgstr ""
@@ -39867,3 +39891,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "American Mathematical Society (AMS) Book"
 #~ msgstr "American Mathematical Society (AMS) Kniha"
+
+#~ msgid "User Interface Files"
+#~ msgstr "Súbory s užívateľským rozhraním"
