@@ -3456,8 +3456,8 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
 	bc().setRestore(buttonBox->button(QDialogButtonBox::Reset));
 
-	glf = new GuiLyXFiles(lv);
-	connect(glf, SIGNAL(fileSelected(QString)),
+	guilyxfiles_ = new GuiLyXFiles(lv);
+	connect(guilyxfiles_, SIGNAL(fileSelected(QString)),
 			this, SLOT(slotFileSelected(QString)));
 }
 
@@ -3565,19 +3565,14 @@ void GuiPreferences::slotFileSelected(QString const file)
 }
 
 
-/** Wrapper around browseFile which tries to provide a filename
-*  relative to the user or system directory. The dir, name and ext
-*  parameters have the same meaning as in the
-*  support::LibFileSearch function.
-*/
 QString GuiPreferences::browseLibFile(QString const & dir,
 	QString const & name, QString const & ext)
 {
 	uifile_.clear();
 
-	glf->passParams(fromqstr(dir));
-	glf->selectItem(name);
-	glf->exec();
+	guilyxfiles_->passParams(fromqstr(dir));
+	guilyxfiles_->selectItem(name);
+	guilyxfiles_->exec();
 
 	QString const result = uifile_;
 

@@ -124,7 +124,7 @@ private:
 	/// A list of colors to be dispatched
 	std::vector<std::string> colors_;
 	/// UI file selector
-	GuiLyXFiles * glf;
+	GuiLyXFiles * guilyxfiles_;
 	/// Selected UI file
 	QString uifile_;
 };
