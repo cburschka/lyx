@@ -559,7 +559,7 @@ void PreambleModule::editExternal() {
 		docstring const s = tempfilename.fileContents("UTF-8");
 		preambleTE->document()->setPlainText(toqstr(s));
 		tempfile_.reset();
-		editPB->setText(qt_("Edit"));
+		editPB->setText(qt_("&Edit"));
 		changed();
 		return;
 	}
@@ -575,7 +575,7 @@ void PreambleModule::editExternal() {
 	os.close();
 	preambleTE->setReadOnly(true);
 	theFormats().edit(*current_id_, tempfilename, format);
-	editPB->setText(qt_("End Edit"));
+	editPB->setText(qt_("&End Edit"));
 	changed();
 }
 
@@ -731,7 +731,7 @@ void LocalLayout::editExternal() {
 		docstring const s = tempfilename.fileContents("UTF-8");
 		locallayoutTE->document()->setPlainText(toqstr(s));
 		tempfile_.reset();
-		editPB->setText(qt_("Edit"));
+		editPB->setText(qt_("&Edit"));
 		changed();
 		return;
 	}
@@ -747,7 +747,7 @@ void LocalLayout::editExternal() {
 	os.close();
 	locallayoutTE->setReadOnly(true);
 	theFormats().edit(*current_id_, tempfilename, format);
-	editPB->setText(qt_("End Edit"));
+	editPB->setText(qt_("&End Edit"));
 	validatePB->setEnabled(false);
 	hideConvert();
 	changed();
