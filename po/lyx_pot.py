@@ -628,8 +628,7 @@ def examples_templates_l10n(input_files, output, base):
   output = io.open(output, 'w', encoding='utf_8', newline='\n')
   # only record each item once
   seen = []
-  inputfs = input_files[0].split()
-  for src in inputfs:
+  for src in input_files:
       parseExamplesTemplates(src, seen, output)
   output.close()
 
@@ -651,7 +650,7 @@ def parseExamplesTemplates(file, seen, output):
   seen.append(filename)
   if filename != "":
       print(u'#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
-                (relativePath(input_files[0], base), 0, filename.replace('_', ' ')), file=output)
+                (relativePath(input_files[0], base), 0, filename.replace('_', ' ').replace('%26', '&').replace('%28', '(').replace('%29', ')')), file=output)
 
 
 

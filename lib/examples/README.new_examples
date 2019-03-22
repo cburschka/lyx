@@ -7,18 +7,18 @@ examples/[language/]category/[subcategory]
 
 Please use the layout category (with identical spelling to assure translation)
 as category subdirectory (e.g., "Letters"). See \DeclareCategory entry of the
-layout which corresponds to your example. Substitute blanks by '_'.
+layout which corresponds to your example. Note the handling of special characters
+below.
 
 If your example consists of one file only, and if there are no further examples
 relating to your layout yet, use the layout name, as defined in \DeclareLaTeXClass,
-as file name. Substitute blanks by '_' (e.g., My_Layout.lyx). In any case, use
-a verbose, transparent name (do not use insider acronyms as file names).
+as file name. In any case, use a verbose, transparent name (do not use insider acronyms
+as file names). Note the handling of special characters below.
 
 If your example consists of multiple files, use an additional subdirectory.
 Use the layout name, as defined in \DeclareLaTeXClass, as subcategory subfolder
-name. Substitute blanks by '_' (e.g., My_Layout). Give the files verbose,
-transparent names that clarify the function of the respective file in the examples
-bundle. Use '_' instead of blanks.
+name. Give the files verbose, transparent names that clarify the function of the respective
+file in the examples bundle. Note the handling of special characters below.
 
 The optional language subdirectory that immediately follows examples/ uses the
 language code (e.g., 'de' for German). Use this if you provide a translation of
@@ -29,3 +29,15 @@ examples/fr/Letters/myletter.lyx).
 
 If you add a new (sub)folder, you must create a new entry in Makefile.am.
 
+
+NB: SPECIAL CHARACTERS IN FILE AND DIRECTORY NAMES:
+===================================================
+
+The following characters in file and directory names must be substituted, since they break
+LyX building with autotools:
+
+* Blanks by '_' (e.g., My_Layout.lyx)
+* Parentheses by %28 and %29 (e.g., My_Layout_%28v._1%29.lyx)
+* Apersands by %26 (e.g., Journal_of_This_%26_That.lyx)
+
+The subsitution characters will be replaced again for LyX for translation and GUI display.

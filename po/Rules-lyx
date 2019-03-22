@@ -58,7 +58,7 @@ formats_l10n.pot: $(top_srcdir)/lib/configure.py
 
 examples_templates_l10n.pot: $(top_srcdir)/lib/examples/* \
                 $(top_srcdir)/lib/templates/*
-	$(LYX_POT) -o $@ -t examples_templates '$^'
+	$(LYX_POT) -o $@ -t examples_templates $^
 
 # LyX specific code to generate l10n statistics for the web site
 i18n.inc: $(POFILES) postats.py

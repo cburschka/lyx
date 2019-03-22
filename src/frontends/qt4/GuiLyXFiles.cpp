@@ -38,6 +38,15 @@ using namespace lyx::support;
 namespace lyx {
 namespace frontend {
 
+namespace {
+
+QString const guiString(QString in)
+{
+	return in.replace("%26", "&").replace("%28", "(").replace("%29", ")");
+}
+
+} // namespace anon
+
 
 QMap<QString, QString> GuiLyXFiles::getFiles()
 {
@@ -375,10 +384,9 @@ void GuiLyXFiles::updateContents()
 			catsave = cat;
 			cat = catsave.left(catsave.indexOf('/'));
 			subcat = toqstr(translateIfPossible(
-					qstring_to_ucs4(catsave.mid(
-						catsave.indexOf('/') + 1).replace('_', ' '))));
+					qstring_to_ucs4(guiString(catsave.mid(catsave.indexOf('/') + 1)))));
 		}
-		cat =  toqstr(translateIfPossible(qstring_to_ucs4(cat.replace('_', ' '))));
+		cat =  toqstr(translateIfPossible(qstring_to_ucs4(guiString(cat))));
 		QTreeWidgetItem * catItem = new QTreeWidgetItem();
 		if (!cats.contains(cat)) {
 			catItem->setText(0, cat);
@@ -392,7 +400,7 @@ void GuiLyXFiles::updateContents()
 		QString const filename = info.fileName();
 		QString guiname = filename.left(filename.lastIndexOf(getSuffix())).replace('_', ' ');
 		if (translateName())
-			guiname = toqstr(translateIfPossible(qstring_to_ucs4(guiname)));
+			guiname = toqstr(translateIfPossible(qstring_to_ucs4(guiString(guiname))));
 		QIcon file_icon = (realpath.startsWith(toqstr(package().user_support().absFileName()))) ?
 				user_icon : system_icon;
 		item->setIcon(0, file_icon);
