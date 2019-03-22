@@ -2651,7 +2651,6 @@ msgstr "Chyby vypsány na terminál."
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:74
 #: src/frontends/qt4/ui/PreambleUi.ui:45 src/frontends/qt4/GuiDocument.cpp:562
 #: src/frontends/qt4/GuiDocument.cpp:734
-#, fuzzy
 msgid "Edit"
 msgstr "&Editovat"
 
@@ -14259,193 +14258,160 @@ msgstr "List Options|s"
 msgid "Insert list options here (see pdfcomment manual)"
 msgstr "Insert list options here (see pdfcomment manual)"
 
-# TODO
 #: lib/layouts/pdfform.module:2
-#, fuzzy
 msgid "PDF Form"
-msgstr "Form"
+msgstr "PDF formulář"
 
 #: lib/layouts/pdfform.module:7
 msgid ""
 "Provides fields and buttons for PDF forms. The module uses the LaTeX package "
 "hyperref. Please consult the LyX example file PDF-form.lyx and the "
 "documentation of hyperref for details."
-msgstr ""
+msgstr "Poskytuje tlačítka a pole pro PDF formuláře. Modul používá LaTeX-ový balíček hyperref. Detaily lze najít v dokumentaci k tomuto balíčku a souboru PDF-form.lyx v příkladech."
 
 #: lib/layouts/pdfform.module:15 lib/layouts/pdfform.module:26
 msgid "Begin PDF Form"
-msgstr ""
+msgstr "Begin PDF Form"
 
 #: lib/layouts/pdfform.module:19
-#, fuzzy
 msgid "PDF form"
-msgstr "PDF author"
+msgstr "PDF form"
 
 #: lib/layouts/pdfform.module:28 lib/layouts/pdfform.module:65
-#, fuzzy
 msgid "PDF Form Parameters"
-msgstr "Další parametry"
+msgstr "PDF Form Parameters"
 
 #: lib/layouts/pdfform.module:29 lib/layouts/pdfform.module:66
 msgid "Params"
-msgstr ""
+msgstr "Params"
 
 #: lib/layouts/pdfform.module:30 lib/layouts/pdfform.module:67
-#, fuzzy
 msgid "Insert PDF form parameters here"
-msgstr "Nelze změnit počet sloupců v '%1$s'"
+msgstr "Insert PDF form parameters here"
 
 #: lib/layouts/pdfform.module:40 lib/layouts/pdfform.module:43
 msgid "End PDF Form"
-msgstr ""
+msgstr "End PDF Form"
 
 #: lib/layouts/pdfform.module:47
-#, fuzzy
 msgid "PDF Link Setup"
-msgstr "PDF (XeTeX)"
+msgstr "PDF Link Setup"
 
 #: lib/layouts/pdfform.module:50
-#, fuzzy
 msgid "PDF link setup"
-msgstr "PDF (XeTeX)"
+msgstr "PDF link setup"
 
 #: lib/layouts/pdfform.module:58 lib/layouts/pdfform.module:63
-#, fuzzy
 msgid "TextField"
-msgstr "Text"
+msgstr "TextField"
 
 #: lib/layouts/pdfform.module:78 lib/layouts/pdfform.module:81
-#, fuzzy
 msgid "CheckBox"
-msgstr "CheckedBox"
+msgstr "CheckBox"
 
 #: lib/layouts/pdfform.module:84 lib/layouts/pdfform.module:87
-#, fuzzy
 msgid "ChoiceMenu"
-msgstr "MenuChoice"
+msgstr "ChoiceMenu"
 
 #: lib/layouts/pdfform.module:89
 msgid "Label"
 msgstr "Značka"
 
 #: lib/layouts/pdfform.module:92
-#, fuzzy
 msgid "Insert the label here"
-msgstr "Nelze změnit počet sloupců v '%1$s'"
+msgstr "Insert the label here"
 
 #: lib/layouts/pdfform.module:96 lib/layouts/pdfform.module:99
-#, fuzzy
 msgid "PushButton"
-msgstr "GuiButton"
+msgstr "PushButton"
 
 #: lib/layouts/pdfform.module:102 lib/layouts/pdfform.module:105
-#, fuzzy
 msgid "SubmitButton"
-msgstr "GuiButton"
+msgstr "SubmitButton"
 
 #: lib/layouts/pdfform.module:108 lib/layouts/pdfform.module:111
-#, fuzzy
 msgid "ResetButton"
-msgstr "Element:GuiButton"
+msgstr "ResetButton"
 
 #: lib/layouts/pdfform.module:118 lib/layouts/pdfform.module:121
-#, fuzzy
 msgid "PDFAction"
-msgstr "Action"
+msgstr "PDFAction"
 
 #: lib/layouts/pdfform.module:126
-#, fuzzy
 msgid "The name of the PDF action"
-msgstr "Počátek otáčení"
+msgstr "The name of the PDF action"
 
 #: lib/layouts/pdfform.module:134
-#, fuzzy
 msgid "Text Field Style"
-msgstr "Styl textu"
+msgstr "Text Field Style"
 
 #: lib/layouts/pdfform.module:137
-#, fuzzy
 msgid "Default text field style"
-msgstr "S&tandarní styl:"
+msgstr "Default text field style"
 
 #: lib/layouts/pdfform.module:141
-#, fuzzy
 msgid "Submit Button Style"
-msgstr "Styl citace"
+msgstr "Submit Button Style"
 
 #: lib/layouts/pdfform.module:144
-#, fuzzy
 msgid "Default submit button style"
-msgstr "S&tandarní styl:"
+msgstr "Default submit button style"
 
 #: lib/layouts/pdfform.module:147
-#, fuzzy
 msgid "Push Button Style"
-msgstr "Styl citace"
+msgstr "Push Button Style"
 
 #: lib/layouts/pdfform.module:150
-#, fuzzy
 msgid "Default push button style"
-msgstr "S&tandarní styl:"
+msgstr "Default push button style"
 
 #: lib/layouts/pdfform.module:153
-#, fuzzy
 msgid "Check Box Style"
-msgstr "Styl textu"
+msgstr "Check Box Style"
 
 #: lib/layouts/pdfform.module:156
-#, fuzzy
 msgid "Default check box style"
-msgstr "S&tandarní styl:"
+msgstr "Default check box style"
 
 #: lib/layouts/pdfform.module:159
-#, fuzzy
 msgid "Reset Button Style"
-msgstr "Styl citace"
+msgstr "Reset Button Style"
 
 #: lib/layouts/pdfform.module:162
-#, fuzzy
 msgid "Default reset button style"
-msgstr "S&tandarní styl:"
+msgstr "Default reset button style"
 
 #: lib/layouts/pdfform.module:165
-#, fuzzy
 msgid "List Box Style"
-msgstr "List of Slides"
+msgstr "List Box Style"
 
 #: lib/layouts/pdfform.module:168
-#, fuzzy
 msgid "Default list box style"
-msgstr "S&tandarní styl:"
+msgstr "Default list box style"
 
 #: lib/layouts/pdfform.module:171
-#, fuzzy
 msgid "Combo Box Style"
-msgstr "&Barevné odkazy"
+msgstr "Combo Box Style"
 
 #: lib/layouts/pdfform.module:174
-#, fuzzy
 msgid "Default combo box style"
-msgstr "S&tandarní styl:"
+msgstr "Default combo box style"
 
 #: lib/layouts/pdfform.module:177
 msgid "Popdown Box Style"
-msgstr ""
+msgstr "Popdown Box Style"
 
 #: lib/layouts/pdfform.module:180
-#, fuzzy
 msgid "Default popdown box style"
-msgstr "S&tandarní styl:"
+msgstr "Default popdown box style"
 
 #: lib/layouts/pdfform.module:183
-#, fuzzy
 msgid "Radio Box Style"
-msgstr "Styl citace"
+msgstr "Radio Box Style"
 
 #: lib/layouts/pdfform.module:186
-#, fuzzy
 msgid "Default radio box style"
-msgstr "S&tandarní styl:"
+msgstr "Default radio box style"
 
 #: lib/layouts/powerdot.layout:3
 msgid "Powerdot"
@@ -14734,14 +14700,14 @@ msgstr "PACS number:"
 
 #: lib/layouts/rsphrase.module:2
 msgid "Risk and Safety Statements"
-msgstr ""
+msgstr "R a S-věty"
 
 #: lib/layouts/rsphrase.module:7
 msgid ""
 "Provides two insets and one environment to typeset numbers and phrases of "
 "chemical risk and safety statements. For a description see the file R-S-"
 "statements.lyx in LyX's examples folder."
-msgstr ""
+msgstr "Poskytuje dvě vložky a jedno prostředí pro sazbu čísel a frází pokynů s nebezpečnými chemickými látkami (R a S-věty). Pro popis viz. soubor R-S-statements.lyx v příkladech."
 
 #: lib/layouts/rsphrase.module:11 lib/layouts/rsphrase.module:16
 msgid "R-S number"
@@ -20118,31 +20084,31 @@ msgstr "Fonetické symboly"
 
 #: lib/ui/stdtoolbars.inc:219 lib/ui/stdtoolbars.inc:1269
 msgid "IPA Pulmonic Consonants"
-msgstr ""
+msgstr "Pulmonické souhlásky (IPA)"
 
 #: lib/ui/stdtoolbars.inc:220 lib/ui/stdtoolbars.inc:1331
 msgid "IPA Non-Pulmonic Consonants"
-msgstr ""
+msgstr "Nepulmonické souhlásky (IPA)"
 
 #: lib/ui/stdtoolbars.inc:221 lib/ui/stdtoolbars.inc:1345
 msgid "IPA Vowels"
-msgstr ""
+msgstr "Samohlásky (IPA)"
 
 #: lib/ui/stdtoolbars.inc:222 lib/ui/stdtoolbars.inc:1376
 msgid "IPA Other Symbols"
-msgstr "Ostatní fonetické symboly (IPA)|F"
+msgstr "Ostatní fonetické symboly (IPA)"
 
 #: lib/ui/stdtoolbars.inc:223 lib/ui/stdtoolbars.inc:1391
 msgid "IPA Suprasegmentals"
-msgstr ""
+msgstr "Suprasegmentální jevy (IPA)"
 
 #: lib/ui/stdtoolbars.inc:224 lib/ui/stdtoolbars.inc:1403
 msgid "IPA Diacritics"
-msgstr ""
+msgstr "Diakritika (IPA)"
 
 #: lib/ui/stdtoolbars.inc:225 lib/ui/stdtoolbars.inc:1438
 msgid "IPA Tones and Word Accents"
-msgstr ""
+msgstr "Tóny a akcenty (IPA)"
 
 #: lib/ui/stdtoolbars.inc:228
 msgid "Command Buffer"
