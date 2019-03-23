@@ -2704,7 +2704,7 @@ string const GuiView::getTemplatesPath(Buffer & b)
 					  "appropriate to the layout category (%1$s).\n"
 					  "This subdirectory does not exists yet.\n"
 					  "Do you want to create it?"),
-					from_utf8(cat));
+					_(cat));
 			if (Alert::prompt(_("Create Category Directory?"),
 					  text, 0, 1, _("&Yes, Create"), _("&No, Save Template in Parent Directory")) == 0) {
 				// If the user agreed, we try to create it and report if this failed.
