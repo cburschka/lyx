@@ -1871,9 +1871,12 @@ public:
 	DisplayPath(int tab, FileName const & filename)
 		: tab_(tab)
 	{
+		// Recode URL encoded chars via fromPercentEncoding()
 		filename_ = (filename.extension() == "lyx") ?
-			toqstr(filename.onlyFileNameWithoutExt())
-			: toqstr(filename.onlyFileName());
+			QString(QByteArray::fromPercentEncoding(
+					toqstr(filename.onlyFileNameWithoutExt()).toUtf8()))
+			: QString(QByteArray::fromPercentEncoding(
+					  toqstr(filename.onlyFileName()).toUtf8()));
 		postfix_ = toqstr(filename.absoluteFilePath()).
 			split("/", QString::SkipEmptyParts);
 		postfix_.pop_back();

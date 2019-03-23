@@ -931,6 +931,9 @@ docstring const makeDisplayPath(string const & path, unsigned int threshold)
 {
 	string str = path;
 
+	// Recode URL encoded chars.
+	str = from_percent_encoding(str);
+
 	// If file is from LyXDir, display it as if it were relative.
 	string const system = package().system_support().absFileName();
 	if (prefixIs(str, system) && str != system)

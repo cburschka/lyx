@@ -357,6 +357,8 @@ std::string formatFPNumber(double);
 /// \p ex defines a string of characters that are excluded from the transformation
 docstring to_percent_encoding(docstring const & in, docstring const & ex = docstring());
 
+/// Returns a string decoded from an URI/URL-style percent-encoded string \p in.
+std::string from_percent_encoding(std::string const & in);
 
 docstring bformat(docstring const & fmt, int arg1);
 docstring bformat(docstring const & fmt, long arg1);

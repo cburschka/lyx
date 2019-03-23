@@ -42,8 +42,8 @@ namespace {
 
 QString const guiString(QString in)
 {
-	// recode specially encoded chars in file names
-	return in.replace('_', ' ').replace("%26", "&").replace("%28", "(").replace("%29", ")");
+	// recode specially encoded chars in file names (URL encoding and underbar)
+	return QString(QByteArray::fromPercentEncoding(in.toUtf8())).replace('_', ' ');
 }
 
 } // namespace anon
