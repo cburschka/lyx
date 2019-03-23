@@ -52,6 +52,7 @@
 #include "FuncRequest.h"
 #include "Intl.h"
 #include "Layout.h"
+#include "LayoutFile.h"
 #include "Lexer.h"
 #include "LyXAction.h"
 #include "LyX.h"
@@ -1990,6 +1991,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		}
 		// fall through
 	case LFUN_BUFFER_WRITE_AS:
+	case LFUN_BUFFER_WRITE_AS_TEMPLATE:
 		enable = doc_buffer != 0;
 		break;
 
@@ -2646,29 +2648,78 @@ void GuiView::insertLyXFile(docstring const & fname)
 }
 
 
+string const GuiView::getTemplatesPath(Buffer & b)
+{
+	// We start off with the user's templates path
+	string result = addPath(package().user_support().absFileName(), "templates");
+	// Do we have a layout category?
+	string const cat = b.params().baseClass() ?
+				b.params().baseClass()->category()
+			      : string();
+	if (!cat.empty()) {
+		string subpath = addPath(result, cat);
+		// If we have a subdirectory for the category already,
+		// navigate there
+		FileName sp = FileName(subpath);
+		if (sp.isDirectory())
+			result = subpath;
+		else {
+			// Ask whether we should create such a subdirectory
+			docstring const text =
+				bformat(_("It is suggested to save the template in a subdirectory\n"
+					  "appropriate to the layout category (%1$s).\n"
+					  "This subdirectory does not exists yet.\n"
+					  "Do you want to create it?"),
+					from_utf8(cat));
+			if (Alert::prompt(_("Create Category Directory?"),
+					  text, 0, 1, _("&Yes, Create"), _("&No, Save Template in Parent Directory")) == 0) {
+				// If the user agreed, we try to create it and report if this failed.
+				if (!sp.createDirectory(0777))
+					Alert::error(_("Subdirectory creation failed!"),
+						     _("Could not create subdirectory.\n"
+						       "The template will be saved in the parent directory."));
+				else
+					result = subpath;
+			}
+		}
+	}
+	return result;
+}
+
+
 bool GuiView::renameBuffer(Buffer & b, docstring const & newname, RenameKind kind)
 {
 	FileName fname = b.fileName();
 	FileName const oldname = fname;
+	bool const as_template = (kind == LV_WRITE_AS_TEMPLATE);
 
 	if (!newname.empty()) {
 		// FIXME UNICODE
-		fname = support::makeAbsPath(to_utf8(newname), oldname.onlyPath().absFileName());
+		if (as_template)
+			fname = support::makeAbsPath(to_utf8(newname), getTemplatesPath(b));
+		else
+			fname = support::makeAbsPath(to_utf8(newname),
+						     oldname.onlyPath().absFileName());
 	} else {
 		// Switch to this Buffer.
 		setBuffer(&b);
 
 		// No argument? Ask user through dialog.
 		// FIXME UNICODE
-		FileDialog dlg(qt_("Choose a filename to save document as"));
+		QString const title = as_template ? qt_("Choose a filename to save template as")
+						  : qt_("Choose a filename to save document as");
+		FileDialog dlg(title);
 		dlg.setButton1(qt_("D&ocuments"), toqstr(lyxrc.document_path));
 		dlg.setButton2(qt_("&Templates"), toqstr(lyxrc.template_path));
 
 		if (!isLyXFileName(fname.absFileName()))
 			fname.changeExtension(".lyx");
 
+		string const path = as_template ?
+					getTemplatesPath(b)
+				      : fname.onlyPath().absFileName();
 		FileDialog::Result result =
-			dlg.save(toqstr(fname.onlyPath().absFileName()),
+			dlg.save(toqstr(path),
 				   QStringList(qt_("LyX Documents (*.lyx)")),
 					 toqstr(fname.onlyFileName()));
 
@@ -2760,6 +2811,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname, RenameKind kin
 		break;
 	}
 	case LV_WRITE_AS:
+	case LV_WRITE_AS_TEMPLATE:
 		break;
 	}
 	// LyXVC created the file already in case of LV_VC_RENAME or
@@ -4040,6 +4092,12 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		case LFUN_BUFFER_WRITE_AS:
 			LASSERT(doc_buffer, break);
 			renameBuffer(*doc_buffer, cmd.argument());
+			break;
+
+		case LFUN_BUFFER_WRITE_AS_TEMPLATE:
+			LASSERT(doc_buffer, break);
+			renameBuffer(*doc_buffer, cmd.argument(),
+				     LV_WRITE_AS_TEMPLATE);
 			break;
 
 		case LFUN_BUFFER_WRITE_ALL: {

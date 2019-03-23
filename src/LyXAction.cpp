@@ -894,6 +894,17 @@ void LyXAction::init()
 		{ LFUN_BUFFER_WRITE_AS, "buffer-write-as", ReadOnly, Buffer },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_WRITE_AS_TEMPLATE
+ * \li Action: Rename and save current buffer in the local templates directory.
+ * \li Syntax: buffer-write-as-template <FILENAME>
+ * \li Params: <FILENAME>: New name of the buffer/file. A relative path
+	       is with respect to the original location of the buffer/file.
+ * \endvar
+ */
+		{ LFUN_BUFFER_WRITE_AS_TEMPLATE, "buffer-write-as-template", ReadOnly, Buffer },
+
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_EXTERNAL_MODIFICATION_CLEAR
  * \li Action: Clear the external modification flag on the current buffer.
  * \li Syntax: buffer-external-modification-clear

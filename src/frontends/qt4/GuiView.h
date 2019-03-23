@@ -380,7 +380,14 @@ private:
 	bool exportBufferAs(Buffer & b, docstring const & iformat);
 
 	///
-	enum RenameKind { LV_WRITE_AS, LV_VC_RENAME, LV_VC_COPY };
+	enum RenameKind {
+		LV_WRITE_AS,
+		LV_WRITE_AS_TEMPLATE,
+		LV_VC_RENAME,
+		LV_VC_COPY,
+	};
+	/// Get a path for LFUN_BUFFER_WRITE_AS_TEMPLATE
+	std::string const getTemplatesPath(Buffer & buf);
 	/// Save a buffer as a new file.
 	/**
 	Write a buffer to a new file name and rename the buffer

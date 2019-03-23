@@ -1222,7 +1222,8 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 	// GuiView::getStatus(). See above.
 	/*
 	case LFUN_BUFFER_WRITE:
-	case LFUN_BUFFER_WRITE_AS: {
+	case LFUN_BUFFER_WRITE_AS:
+	case LFUN_BUFFER_WRITE_AS_TEMPLATE: {
 		Buffer * b = theBufferList().getBuffer(FileName(cmd.getArg(0)));
 		enable = b && (b->isUnnamed() || !b->isClean());
 		break;
