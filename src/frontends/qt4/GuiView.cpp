@@ -51,6 +51,7 @@
 #include "FuncStatus.h"
 #include "FuncRequest.h"
 #include "Intl.h"
+#include "Language.h"
 #include "Layout.h"
 #include "LayoutFile.h"
 #include "Lexer.h"
@@ -2652,6 +2653,39 @@ string const GuiView::getTemplatesPath(Buffer & b)
 {
 	// We start off with the user's templates path
 	string result = addPath(package().user_support().absFileName(), "templates");
+	// Check for the document language
+	string const langcode = b.params().language->code();
+	string const shortcode = langcode.substr(0, 2);
+	if (!langcode.empty() && shortcode != "en") {
+		string subpath = addPath(result, shortcode);
+		string subpath_long = addPath(result, langcode);
+		// If we have a subdirectory for the language already,
+		// navigate there
+		FileName sp = FileName(subpath);
+		if (sp.isDirectory())
+			result = subpath;
+		else if (FileName(subpath_long).isDirectory())
+			result = subpath_long;
+		else {
+			// Ask whether we should create such a subdirectory
+			docstring const text =
+				bformat(_("It is suggested to save the template in a subdirectory\n"
+					  "appropriate to the document language (%1$s).\n"
+					  "This subdirectory does not exists yet.\n"
+					  "Do you want to create it?"),
+					_(b.params().language->display()));
+			if (Alert::prompt(_("Create Language Directory?"),
+					  text, 0, 1, _("&Yes, Create"), _("&No, Save Template in Parent Directory")) == 0) {
+				// If the user agreed, we try to create it and report if this failed.
+				if (!sp.createDirectory(0777))
+					Alert::error(_("Subdirectory creation failed!"),
+						     _("Could not create subdirectory.\n"
+						       "The template will be saved in the parent directory."));
+				else
+					result = subpath;
+			}
+		}
+	}
 	// Do we have a layout category?
 	string const cat = b.params().baseClass() ?
 				b.params().baseClass()->category()
