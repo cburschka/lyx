@@ -39,6 +39,9 @@
 
 !!!The following new LyX functions have been introduced in 2.4:
 
+* buffer-write-as-template is a new convenient function to ease saving a document
+  in the (personal) templates folder.
+
 * export-cancel: Used to cancel background export processes.
 
 
@@ -57,9 +60,20 @@
 
 !!!The following LyX documents have been moved in 2.4:
 
+* As a result of a major restructuring of the templates and example
+  directories, almost all examples and templates files have been renamed and
+  moved to subfolders that reflect the layout category.
+  The files now have much more decriptive (and longer) names, and they use
+  URL encoding for specific special characters such as '(', ')' and '&'.
+  Notably also the file that opens for new users has been renamed (from
+  splash.lyx to Welcome.lyx).
 
 
 !!!The following new folders have been added to the LyX directory
+
+* The examples and templates directories have been completely re-organized.
+  They are now much more structured (by means of layout categories) and thus
+  consist of many new subfolders. 
 
 
 
