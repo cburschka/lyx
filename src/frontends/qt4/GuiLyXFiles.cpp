@@ -430,7 +430,10 @@ void GuiLyXFiles::updateContents()
 		QTreeWidgetItem * item = new QTreeWidgetItem();
 		QString const filename = info.fileName();
 		QString guiname = filename.left(filename.lastIndexOf(getSuffix())).replace('_', ' ');
-		if (translateName())
+		// Special case: defaults.lyx
+		if (type_ == "templates" && guiname == "defaults")
+			guiname = qt_("Default Template");
+		else if (translateName())
 			guiname = toqstr(translateIfPossible(qstring_to_ucs4(guiString(guiname))));
 		QIcon file_icon = (realpath.startsWith(toqstr(package().user_support().absFileName()))) ?
 				user_icon : system_icon;
