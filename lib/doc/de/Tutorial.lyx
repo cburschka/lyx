@@ -5,6 +5,17 @@
 \save_transient_properties true
 \origin /systemlyxdir/doc/de/
 \textclass book
+\begin_preamble
+% Vermeiden von Schusterjungen
+% und ueberhaengenden Zeilen
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\hfuzz 0.3pt
+\widowpenalty = 10000
+\vfuzz \hfuzz
+\raggedbottom
+\end_preamble
 \use_default_options false
 \maintain_unincluded_children false
 \language ngerman
@@ -468,7 +479,13 @@ Tutorium
 \end_layout
 
 \begin_layout Subsubsection*
-beispiel_roh.lyx und beispiel_gelyxt.lyx
+
+\emph on
+Beispiel (roh)
+\emph default
+ und 
+\emph on
+Beispiel (geLyXt)
 \end_layout
 
 \begin_layout Standard
@@ -476,9 +493,9 @@ Und zum Schluss: Wir haben eine Datei erstellt, anhand der Sie den Umgang
  mit \SpecialChar LyX
  üben können.
  Sie heißt 
-\family typewriter
-beispiel_roh.lyx
-\family default
+\emph on
+Beispiel (roh)
+\emph default
 .
  Stellen Sie sich vor, diese Datei hätte jemand geschrieben, der keine Ahnung
  von den tollen \SpecialChar LyX
@@ -486,9 +503,9 @@ beispiel_roh.lyx
  Immer wenn Sie neue Funktionen von \SpecialChar LyX
  kennenlernen, werden Sie aufgefordert,
  die entsprechenden Abschnitte in der Datei 
-\family typewriter
-beispiel_roh.lyx
-\family default
+\emph on
+Beispiel (roh)
+\emph default
  zu korrigieren.
  Außerdem enthält die Datei auch Hinweise und Tipps, wie diese Korrektur
  erfolgen sollte.
@@ -507,22 +524,30 @@ Notizen
 \end_inset
 
  Überprüfen können Sie Ihre Arbeit anhand der Datei 
-\family typewriter
-beispiel_gelyxt.lyx
-\family default
+\emph on
+Beispiel (geLyXt)
+\emph default
 .
  Sie enthält denselben Text, diesmal aber von einem \SpecialChar LyX
 -Profi geschrieben.
 \end_layout
 
 \begin_layout Standard
-Die Beispieldateien finden Sie im Verzeichnis 
-\family typewriter
-[Resources/]examp\SpecialChar softhyphen
-les/de
+Die Beispieldateien finden Sie unter 
+\family sans
+Datei\SpecialChar menuseparator
+Beispiel öffnen\SpecialChar ldots
+
 \family default
- des \SpecialChar LyX
--Installationsordners.
+ im Abschnitt 
+\begin_inset Quotes gld
+\end_inset
+
+Allgemein
+\begin_inset Quotes grd
+\end_inset
+
+.
  Laden Sie die nicht modifizierte Datei und verwenden Sie 
 \family sans
 Datei\SpecialChar menuseparator
@@ -532,6 +557,7 @@ Speichern
 
 unter
 \family default
+\SpecialChar ldots
 , um eine editierbare Kopie in Ihrem privaten \SpecialChar LyX
 -Verzeichnis anzulegen.
  Sie können die Auswirkungen Ihrer Änderungen in der Vorschau betrachten.
@@ -539,8 +565,10 @@ unter
 
 \begin_layout Standard
 Darüber hinaus finden Sie in 
-\family typewriter
-examples[/de]
+\family sans
+Datei\SpecialChar menuseparator
+Beispiel öffnen\SpecialChar ldots
+
 \family default
  viele weitere Beispieldateien.
  Sie führen Ihnen vor, wie Sie das eine oder andere Formatierungsproblem
@@ -1492,16 +1520,9 @@ Unterunterabschn
 \series default
  Korrigieren Sie die Überschriften der Abschnitte und Unterabschnitte in
  der Datei 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-beispiel_roh.lyx
-\end_layout
-
-\end_inset
-
+\emph on
+Beispiel (roh)
+\emph default
 .
 \end_layout
 
@@ -1777,9 +1798,9 @@ Strg+Leertaste
 Übung
 \series default
 : Setzen Sie die Beispielliste in 
-\family typewriter
-beispiel_roh.lyx
-\family default
+\emph on
+Beispiel (roh)
+\emph default
 .
 \end_layout
 
@@ -1881,10 +1902,9 @@ Zitat
 Gedicht
 \family default
  in der Datei 
-\family typewriter
-bei\SpecialChar softhyphen
-spiel_roh.lyx
-\family default
+\emph on
+Beispiel (roh)
+\emph default
  richtig.
 \end_layout
 
@@ -1987,11 +2007,7 @@ Einstellungen
 \SpecialChar menuseparator
 
 \family sans
-Dokument-
-\begin_inset Newline linebreak
-\end_inset
-
-klasse
+Dokumentklasse
 \family default
 ), und sehen Sie sich an, auf welche Weise es dann gesetzt wird.
  Wenn Sie Ihr Dokument zum Beispiel in die Klasse 
@@ -2290,12 +2306,19 @@ von
 Vorlage
 \family default
 .
- Nachdem Sie einen Namen für Ihren Brief eingegeben haben, wählen Sie den
- Eintrag 
-\family typewriter
-letter.lyx
-\family default
- aus dem Vorlagendialog.
+ Wählen Sie 
+\emph on
+Letter (Standardklasse)
+\emph default
+ aus dem Vorlagendialog (Abschnitt 
+\begin_inset Quotes gld
+\end_inset
+
+Briefe
+\begin_inset Quotes grd
+\end_inset
+
+).
  Speichern Sie die neue Datei und drucken Sie sie aus, dann sehen Sie, wie
  die verschiedenen Textumgebungen gesetzt werden.
 \end_layout
@@ -2461,9 +2484,9 @@ Abstract
 Übung
 \series default
 : Bringen Sie in der Beispieldatei 
-\family typewriter
-beispiel_roh.lyx
-\family default
+\emph on
+Beispiel (roh)
+\emph default
  Überschrift, Autorenname und Datum in die korrekte Form.
 \end_layout
 
@@ -2829,15 +2852,9 @@ Querverweis
 \series bold
 Übung:
 \series default
- Korrigieren Sie die Querverweise in der Datei
-\begin_inset Newline newline
-\end_inset
-
-
-\family typewriter
-beispiel_roh.lyx
-\family default
-.
+ Korrigieren Sie die Querverweise in der Datei 
+\emph on
+Beispiel (roh).
 \end_layout
 
 \begin_layout Section
@@ -3007,15 +3024,9 @@ Wandeln Sie normalen Text in eine Randnotiz.
 \series bold
 Übung
 \series default
-: Korrigieren Sie die Fußnoten in der Datei
-\begin_inset Newline newline
-\end_inset
-
-
-\family typewriter
-beispiel_roh.lyx
-\family default
-.
+: Korrigieren Sie die Fußnoten in der Datei 
+\emph on
+Beispiel (roh).
 \end_layout
 
 \begin_layout Section
@@ -3192,10 +3203,9 @@ Benutzerhandbuch
 \series default
  Korrigieren Sie Literaturverzeichnis und Literaturverweise in der Datei
  
-\family typewriter
-bei\SpecialChar softhyphen
-spiel_roh.lyx
-\family default
+\emph on
+Beispiel (roh)
+\emph default
 .
 \end_layout
 
@@ -3288,15 +3298,9 @@ Um ein Inhaltsverzeichnis zu löschen, können Sie den Platzhalter ganz einfach
 \series bold
 Übung
 \series default
-: Korrigieren Sie das Inhaltsverzeichnis in der Datei
-\begin_inset Newline newline
-\end_inset
-
-
-\family typewriter
-beispiel_roh.lyx
-\family default
-.
+: Korrigieren Sie das Inhaltsverzeichnis in der Datei 
+\emph on
+Beispiel (roh).
 \end_layout
 
 \begin_layout Chapter
@@ -3810,11 +3814,10 @@ _
 \end_inset
 
 1 von 
-\family typewriter
-beispiel_roh.lyx
-\family default
- im Ma\SpecialChar softhyphen
-thematik-Modus.
+\emph on
+Beispiel (roh)
+\emph default
+ im Mathematik-Modus.
 \end_layout
 
 \begin_layout Section
@@ -4117,9 +4120,9 @@ Kontrollfläche
 \end_inset
 
 2 von 
-\family typewriter
-beispiel_roh.lyx
-\family default
+\emph on
+Beispiel (roh)
+\emph default
  im Ma\SpecialChar softhyphen
 thematik-Modus.
 \end_layout
@@ -4289,9 +4292,9 @@ auswahl eingefügt werden müssen, sind andere trigonometrische Funktionen
 \end_inset
 
 3 von 
-\family typewriter
-beispiel_roh.lyx
-\family default
+\emph on
+Beispiel (roh)
+\emph default
  im Ma\SpecialChar softhyphen
 thematik-Modus.
 \end_layout
@@ -4526,9 +4529,9 @@ nach
 Übung:
 \series default
  Setzen Sie in 
-\family typewriter
-beispiel_roh.lyx
-\family default
+\emph on
+Beispiel (roh)
+\emph default
  die verschiedenen Gleichungen in den abgesetzten Anzeigemodus und sehen
  Sie sich an, wie sich der Schriftsatz verändert.
 \end_layout

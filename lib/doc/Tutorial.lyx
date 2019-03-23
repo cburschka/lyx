@@ -85,11 +85,12 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -402,9 +403,18 @@ In this Tutorial, we are going to assume that you have a fully working version
 
 \begin_layout Standard
 Finally, we have written a file called 
+\change_deleted -712698321 1553351112
+
 \family typewriter
 example_raw.lyx
+\change_inserted -712698321 1553351120
+
 \family default
+\emph on
+Example (raw)
+\change_unchanged
+
+\emph default
  to let you practice your \SpecialChar LyX
  skills.
  Imagine that it was typed by someone who did not know about any of \SpecialChar LyX
@@ -413,11 +423,28 @@ example_raw.lyx
  As you learn new \SpecialChar LyX
  functions, we will suggest that you fix those parts of
  
+\change_deleted -712698321 1553351165
+
 \family typewriter
 example_raw.lyx
+\change_inserted -712698321 1553351165
+
 \family default
+\emph on
+Example (raw)
+\change_unchanged
+
+\emph default
 .
- It also contains `subtle' hints about how to fix things.
+ It also contains 
+\begin_inset Quotes els
+\end_inset
+
+subtle
+\begin_inset Quotes ers
+\end_inset
+
+ hints about how to fix things.
 \begin_inset Foot
 status collapsed
 
@@ -437,29 +464,63 @@ Notes
 \end_inset
 
  If you want to cheat, or check what you have done, there is also a file
- called
-\begin_inset Newline newline
-\end_inset
-
+ called 
+\change_deleted -712698321 1553351273
 
 \family typewriter
 example_lyxified.lyx
+\change_inserted -712698321 1553351278
+
 \family default
+\emph on
+Example (LyXified)
+\change_unchanged
+
+\emph default
  which contains the same text written and typeset by a \SpecialChar LyX
  master.
 \end_layout
 
 \begin_layout Standard
-The example files can be found in the 
+The example files can be found in 
+\change_inserted -712698321 1553351405
+the 
+\begin_inset Quotes eld
+\end_inset
+
+General
+\begin_inset Quotes erd
+\end_inset
+
+ section of 
+\family sans
+File\SpecialChar menuseparator
+Open Example\SpecialChar ldots
+
+\change_deleted -712698321 1553351425
+
+\family default
+the 
 \family typewriter
 examples
 \family default
  directory of \SpecialChar LyX
-'s installation folder.
+'s installation folder
+\change_unchanged
+.
  Open the document 
+\change_deleted -712698321 1553351441
+
 \family typewriter
 example_raw.lyx
+\change_inserted -712698321 1553351441
+
 \family default
+\emph on
+Example (raw)
+\change_unchanged
+
+\emph default
  and use 
 \family sans
 File\SpecialChar menuseparator
@@ -475,11 +536,23 @@ As
 \end_layout
 
 \begin_layout Standard
-By the way, the 
+By the way, 
+\change_deleted -712698321 1553351473
+the 
 \family typewriter
 examples
 \family default
- directory contains lots of other examples files.
+ directory
+\change_inserted -712698321 1553351473
+
+\family sans
+File\SpecialChar menuseparator
+Open Example\SpecialChar ldots
+
+\change_unchanged
+
+\family default
+ contains lots of other examples files.
  They will show you how to do various fancy things with \SpecialChar LyX
 .
  After you have read the Tutorial, or when you are confused about how to
@@ -1402,6 +1475,14 @@ Subsubsection
 Exercise
 \series default
 : Fix the section and subsection headings in
+\change_inserted -712698321 1553351516
+ 
+\emph on
+Example (raw)
+\change_deleted -712698321 1553351522
+
+\emph default
+
 \begin_inset Newline newline
 \end_inset
 
@@ -1411,6 +1492,8 @@ example_raw.lyx
 \family default
 .
  
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -1702,8 +1785,17 @@ s.
 Exercise
 \series default
 : Typeset the list in 
+\change_deleted -712698321 1553351539
+
 \family typewriter
 example_raw.lyx
+\change_inserted -712698321 1553351539
+
+\family default
+\emph on
+Example (raw)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -1792,12 +1884,22 @@ Quote, \SpecialChar LyX
 Verse
 \family default
  in
+\change_inserted -712698321 1553351552
+ 
+\emph on
+Example (raw)
+\change_deleted -712698321 1553351554
+
+\emph default
+
 \begin_inset Newline newline
 \end_inset
 
 
 \family typewriter
 example_raw.lyx
+\change_unchanged
+
 \end_layout
 
 \begin_layout Chapter
@@ -2152,12 +2254,26 @@ from
 \end_inset
 
 Template
+\change_inserted -712698321 1553351676
+
 \family default
+\SpecialChar ldots
+
+\change_unchanged
 .
  Select 
+\change_deleted -712698321 1553351662
+
 \family typewriter
 letter.lyx
+\change_inserted -712698321 1553351666
+
 \family default
+\emph on
+Letter (Standard Class)
+\change_unchanged
+
+\emph default
  as the template.
  Save and print the file to see how the various environments are typeset.
 \end_layout
@@ -2343,8 +2459,17 @@ Abstract
 Exercise
 \series default
 : Fix the title, date, and author in 
+\change_deleted -712698321 1553351568
+
 \family typewriter
 example_raw.lyx
+\change_inserted -712698321 1553351568
+
+\family default
+\emph on
+Example (raw)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -2691,8 +2816,17 @@ reference "sec:Document-Classes"
 Exercise
 \series default
 : Fix the references in 
+\change_deleted -712698321 1553351573
+
 \family typewriter
 example_raw.lyx
+\change_inserted -712698321 1553351573
+
+\family default
+\emph on
+Example (raw)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -2870,8 +3004,17 @@ Change your \SpecialChar LyX
 Exercise
 \series default
 : Fix the footnote in 
+\change_deleted -712698321 1553351579
+
 \family typewriter
 example_raw.lyx
+\change_inserted -712698321 1553351579
+
+\family default
+\emph on
+Example (raw)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -3063,8 +3206,17 @@ User's Guide
 Exercise:
 \series default
  Fix the bibliography and citation in 
+\change_deleted -712698321 1553351585
+
 \family typewriter
 example_raw.lyx
+\change_inserted -712698321 1553351585
+
+\family default
+\emph on
+Example (raw)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -3176,8 +3328,17 @@ To get rid of the Table of Contents, you can delete the table of contents
 Exercise
 \series default
 : Fix the table of contents in 
+\change_deleted -712698321 1553351589
+
 \family typewriter
 example_raw.lyx
+\change_inserted -712698321 1553351589
+
+\family default
+\emph on
+Example (raw)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Chapter
@@ -3538,9 +3699,18 @@ Exercise
 \end_inset
 
 1 of 
+\change_deleted -712698321 1553351597
+
 \family typewriter
 example_raw.lyx
+\change_inserted -712698321 1553351597
+
 \family default
+\emph on
+Example (raw)
+\change_unchanged
+
+\emph default
  into math mode.
 \end_layout
 
@@ -3883,9 +4053,18 @@ Exercise
 \end_inset
 
 2 of 
+\change_deleted -712698321 1553351607
+
 \family typewriter
 example_raw.lyx
+\change_inserted -712698321 1553351607
+
 \family default
+\emph on
+Example (raw)
+\change_unchanged
+
+\emph default
  into math mode.
 \end_layout
 
@@ -4071,9 +4250,18 @@ Exercise
 \end_inset
 
 3 of 
+\change_deleted -712698321 1553351612
+
 \family typewriter
 example_raw.lyx
+\change_inserted -712698321 1553351612
+
 \family default
+\emph on
+Example (raw)
+\change_unchanged
+
+\emph default
  into math mode.
 \end_layout
 
@@ -4278,9 +4466,18 @@ after
 Exercise
 \series default
 : Put the various equations in 
+\change_deleted -712698321 1553351617
+
 \family typewriter
 example_raw.lyx
+\change_inserted -712698321 1553351617
+
 \family default
+\emph on
+Example (raw)
+\change_unchanged
+
+\emph default
  into display mode, and see how they are typeset differently.
 \end_layout
 

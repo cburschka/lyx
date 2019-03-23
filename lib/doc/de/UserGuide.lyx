@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 566
+\lyxformat 568
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -614,7 +614,7 @@ Im Menü
 \family sans
 Datei
 \family default
- finden Sie die 10 einfachen Datei-Befehle einer jeden Textverarbeitung
+ finden Sie die zehn einfachen Datei-Befehle einer jeden Textverarbeitung
  und einige fortgeschrittene:
 \end_layout
 
@@ -663,7 +663,25 @@ arg   "file-open"
 \begin_layout Itemize
 
 \family sans
+Zuletzt geöffnet
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Beispiel öffnen
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
 Schließen, Strg+W
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Alle schließen
 \end_layout
 
 \begin_layout Itemize
@@ -695,13 +713,19 @@ unter, Strg+Umschalt+S
 \begin_layout Itemize
 
 \family sans
+Als Vorlage speichern
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
 Alles speichern
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Speicherung wieder herstellen
+Zum Gespeicherten zurückkehren
 \end_layout
 
 \begin_layout Itemize
@@ -716,21 +740,15 @@ Bis auf ein paar kleine Unterschiede machen sie dasselbe wie bei jeder anderen
  Der Menüpunkt 
 \family sans
 Datei\SpecialChar menuseparator
-Neu
-\begin_inset space \space{}
-\end_inset
-
-von
-\begin_inset space \space{}
-\end_inset
-
-Vorlage
+Neu von Vorlage
 \family default
  listet alle verfügbaren Vorlagen auf.
- Mit der Auswahl einer Vorlagedatei werden automatisch verschiedene Layout-Einst
-ellungen aktiviert, die Sie sonst von Hand verändern müssten.
- Derartige Vorlagen können für alle möglichen Textklassen verwendet werden,
- sie bieten sich aber vor allem für Briefe an (siehe Abschnitt 
+ Mit der Auswahl einer Vorlagendatei werden automatisch verschiedene Layout-Eins
+tellungen aktiviert und manchmal auch Textfragmente vorgeschlagen, die Sie
+ sonst von Hand verändern bzw.
+ eingeben müssten.
+ Derartige Vorlagen können für alle möglichen Textklassen verwendet werden;
+ nützlich sind sie insbesondere für Briefe an (siehe Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "subsec:Dokumentklassen"
@@ -738,6 +756,14 @@ reference "subsec:Dokumentklassen"
 \end_inset
 
 ).
+ Sie können auch leicht eigene Vorlagen zu dieser Liste hinzufügen, indem
+ Sie ein \SpecialChar LyX
+-Dokument über 
+\family sans
+Datei\SpecialChar menuseparator
+Als Vorlage speichern
+\family default
+ sichern.
 \end_layout
 
 \begin_layout Standard
@@ -3125,9 +3151,11 @@ nicht verfügbar
 
 B.
  die Vorlage 
-\family sans
-iop-article
-\family default
+\emph on
+\lang english
+Institute of Physics (IOP)
+\emph default
+\lang ngerman
  öffnen und eine Warnung erhalten, dass das Dokument Dateien benötigt, die
  nicht installiert sind.
  Daher könnte man meinen, dass etwas nicht stimmt.
@@ -36794,6 +36822,15 @@ Dieses Untermenü zeigt eine Liste aller zuletzt geöffneten Dateien.
 \end_layout
 
 \begin_layout Subsection
+Beispiel öffnen
+\end_layout
+
+\begin_layout Standard
+Dieser Menüeintrag gewährt Ihnen schnellen Zugriff auf alle \SpecialChar LyX
+-Beispieldateien.
+\end_layout
+
+\begin_layout Subsection
 Schließen
 \end_layout
 
@@ -36824,6 +36861,15 @@ Speichern unter
 \begin_layout Standard
 Speichert das aktuelle Dokument unter einem neuen Namen um eine Kopie zu
  erstellen.
+\end_layout
+
+\begin_layout Subsection
+Als Vorlage speichern
+\end_layout
+
+\begin_layout Standard
+Speichert eine Datei im Vorlagenverzeichnis, so dass es später als Vorlage
+ verwendet werden kann.
 \end_layout
 
 \begin_layout Subsection
@@ -39066,8 +39112,11 @@ Spezifische Einfügungen
 Fügt dokumentklassen-spezifische Einfügungen ein.
  Solche Einfügungen existieren nur, wenn sie in der Layout-Datei der Dokumentkla
 sse definiert sind.
- Ein Beispiel ist die Dokumentklasse „article (Elsevier)“ mit drei spezifischen
- Einfügungen.
+ Ein Beispiel ist die Dokumentklasse 
+\emph on
+Elsevier
+\emph default
+ mit drei spezifischen Einfügungen.
  Der Abschnitt 
 \emph on
 Flexible Einfügungen und InsetLayout
@@ -46399,8 +46448,7 @@ Dokumente
 \end_layout
 
 \begin_layout Description
-Dokumentvorlagen Dieses Verzeichnis öffnet \SpecialChar LyX
-, wenn Sie 
+Dokumentvorlagen In diesem Verzeichnis liegen die Vorlagen, die in 
 \family sans
 Datei\SpecialChar menuseparator
 Neu
@@ -46413,44 +46461,17 @@ von
 
 Vorlage
 \family default
- wählen.
+ angezeigt werden.
 \end_layout
 
 \begin_layout Description
-Beispieldateien Dieses Verzeichnis öffnet \SpecialChar LyX
-, wenn Sie im Menü 
+Beispieldateien In diesem Verzeichnis liegen die Beispieldateien, die in
+ 
 \family sans
 Datei\SpecialChar menuseparator
-Öffnen
+Beispiel öffnen
 \family default
- auf 
-\family sans
-Beispiele
-\family default
- klicken.
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Achtung:
-\series default
- Der Knopf 
-\family sans
-Beispiele
-\family default
- existiert nicht bei \SpecialChar LyX
- unter Windows oder Mac OS.
-\end_layout
-
-\end_inset
-
-
+ angezeigt werden.
 \end_layout
 
 \begin_layout Description

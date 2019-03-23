@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 566
+\lyxformat 568
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -622,6 +622,22 @@ Open
 \end_inset
 
 Recent
+\change_inserted -712698321 1553352530
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1553352546
+
+\family sans
+Open
+\begin_inset space ~
+\end_inset
+
+Example
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
@@ -635,6 +651,18 @@ type  "shortcut"
 arg   "view-close"
 \end_inset
 
+
+\change_inserted -712698321 1553353355
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1553353357
+
+\family sans
+Close All
+\change_unchanged
 
 \end_layout
 
@@ -675,6 +703,26 @@ type  "shortcut"
 arg   "buffer-write-as"
 \end_inset
 
+
+\change_inserted -712698321 1553352570
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1553352997
+
+\family sans
+Save
+\begin_inset space ~
+\end_inset
+
+As
+\begin_inset space ~
+\end_inset
+
+Template
+\change_unchanged
 
 \end_layout
 
@@ -723,8 +771,25 @@ from
 Template
 \family default
  command lists the available templates.
- Selecting a template will automatically set certain layout features for
- the document, features you would otherwise need to change manually.
+ Selecting a template will automatically set certain layout features 
+\change_inserted -712698321 1553353491
+and possibly propose text fragments 
+\change_unchanged
+for the document, features 
+\change_inserted -712698321 1553353500
+and text 
+\change_unchanged
+you would otherwise need to 
+\change_deleted -712698321 1553353510
+change
+\change_inserted -712698321 1553353510
+set
+\change_unchanged
+ 
+\change_inserted -712698321 1553353505
+or enter 
+\change_unchanged
+manually.
  They can be of use for certain classes, especially those for writing letters
  (see section
 \begin_inset space ~
@@ -738,6 +803,18 @@ reference "sec:Document-Classes"
 \end_inset
 
 ).
+
+\change_inserted -712698321 1553353657
+ You can also add your own templates to this list by means of storing a
+ \SpecialChar LyX
+ file with the 
+\family sans
+File\SpecialChar menuseparator
+Save As Template
+\family default
+ function.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -38215,6 +38292,12 @@ New from Template
 This menu entry prompts you for a template to use.
  Selecting a template will automatically set certain layout features for
  the document, features you would otherwise need to change manually.
+
+\change_inserted -712698321 1553353209
+ Furthermore, templates can provide text structures and fragments for recurring
+ writing tasks.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -38232,6 +38315,19 @@ Open Recent
 \begin_layout Standard
 The submenu shows a list of the recently opened files.
  Click there on a file to open it.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1553352812
+Open Example
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1553352848
+This menu entry gives you quick access to all \SpecialChar LyX
+ example files.
 \end_layout
 
 \begin_layout Subsection
@@ -38264,6 +38360,23 @@ Save As
 
 \begin_layout Standard
 Saves the actual document under a new name to create a copy.
+\change_inserted -712698321 1553352868
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1553352875
+Save As Template
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1553352904
+Saves the document in the appropriate templates directory for later use
+ as a template.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -40762,13 +40875,25 @@ Inserts document class-specific insets.
  Such insets only exist if they are defined in the layout file for a certain
  document class.
  An example is the document class 
+\change_deleted -712698321 1553354540
+
 \begin_inset Quotes eld
 \end_inset
 
-article (Elsevier)
+article (
+\change_unchanged
+
+\emph on
+Elsevier
+\change_deleted -712698321 1553354543
+
+\emph default
+)
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_unchanged
  with three custom insets.
  The section 
 \emph on
@@ -48654,7 +48779,15 @@ Document
 \begin_inset space ~
 \end_inset
 
-templates This directory will be opened when you use the menu 
+templates This directory 
+\change_inserted -712698321 1553354019
+contains the templates that are shown 
+\change_deleted -712698321 1553354025
+will be opened when you use the menu
+\change_inserted -712698321 1553354026
+in
+\change_unchanged
+ 
 \family sans
 File\SpecialChar menuseparator
 New
@@ -48675,16 +48808,34 @@ Example
 \begin_inset space ~
 \end_inset
 
-files This directory will be opened when you use the button 
+files This directory 
+\change_deleted -712698321 1553354035
+will be opened when you use the
+\change_inserted -712698321 1553354048
+contains the example files that are listed in
+\change_unchanged
+ 
+\change_deleted -712698321 1553352959
+button 
 \family sans
 Examples
 \family default
- in the 
+ in the
+\change_unchanged
+ 
 \family sans
 File\SpecialChar menuseparator
 Open
+\change_inserted -712698321 1553352950
+ Example
+\change_deleted -712698321 1553352963
+
 \family default
- dialog.
+ dialog
+\change_unchanged
+.
+\change_deleted -712698321 1553354004
+
 \begin_inset Newline newline
 \end_inset
 
@@ -48707,6 +48858,8 @@ Examples
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
