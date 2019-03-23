@@ -1,7 +1,9 @@
-#\DeclareLyXModule[soul.sty]{Soul Text Markup}
+#\DeclareLyXModule[soul.sty]{Hyphenatable Text Markup (Soul)}
 #DescriptionBegin
 #Defines text styles to highlight, space-out, strike-through
-#underline and capitalize text by means of the soul package.
+#underline and capitalize/small-cap text by means of the soul package.
+#As opposed to the markup provided by the Text Properties
+#dialog, words marked-up with soul are hyphenated.
 #DescriptionEnd
 #Requires	
 #Excludes
