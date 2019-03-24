@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-03-22 09:54+0100\n"
-"PO-Revision-Date: 2019-03-22 09:29+0000\n"
+"POT-Creation-Date: 2019-03-24 07:45+0100\n"
+"PO-Revision-Date: 2019-03-24 07:42+0000\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: Slovak <kde-i18n-de@kde.org>\n"
 "Language: sk\n"
@@ -2639,12 +2639,6 @@ msgstr "Chyby vypísané na terminál."
 msgid "Convert"
 msgstr "Konvertovať"
 
-#: src/frontends/qt4/ui/LocalLayoutUi.ui:59
-#: src/frontends/qt4/ui/PreambleUi.ui:45 src/frontends/qt4/GuiDocument.cpp:562
-#: src/frontends/qt4/GuiDocument.cpp:732
-msgid "Edit"
-msgstr "Upraviť"
-
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:69
 msgid "&Validate"
 msgstr "O&veriť"
@@ -3309,8 +3303,8 @@ msgid "Verti&cal Phantom"
 msgstr "&Vertikálny fantóm"
 
 #: src/frontends/qt4/ui/PreambleUi.ui:38
-msgid "Find"
-msgstr "Hľadať"
+msgid "&Find"
+msgstr "Ná&jsť"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:60
 msgid "Change the selected color"
@@ -15716,6 +15710,67 @@ msgstr "Viditeľný text"
 msgid "<Visible Text Follows>"
 msgstr "<Viditeľný text nasleduje>"
 
+#: lib/layouts/soul.module:2
+msgid "Hyphenatable Text Markup (Soul)"
+msgstr "Deliteľné Textové Značkovanie (Soul)"
+
+# space out: something like monospaced
+#: lib/layouts/soul.module:8
+msgid ""
+"Defines text styles to highlight, space-out, strike-through, underline and "
+"capitalize/small-cap text by means of the soul package. As opposed to the "
+"markup provided by the Text Properties dialog, words marked-up with soul are "
+"hyphenated."
+msgstr ""
+"Definuje štýly na zvýraznenie, odstúpenie, preškrtnutím, podčiarknutie a "
+"zmenu na veľké/malé kapitálky, spôsobom balíka soul. Naproti značkovaniu "
+"poskytnuté v dialógu Vlastnosti Textu, slová takto označené sú oddeliteľné "
+"spojovníkom."
+
+#: lib/layouts/soul.module:14
+msgid "Spaceletters"
+msgstr "Odstupné"
+
+#: lib/layouts/soul.module:16
+msgid "spaced"
+msgstr "odstupné"
+
+#: lib/layouts/soul.module:28
+msgid "Strikethrough"
+msgstr "Preškrtnutie"
+
+#: lib/layouts/soul.module:30
+msgid "strike"
+msgstr "škrtnúť"
+
+#: lib/layouts/soul.module:37
+msgid "Underline"
+msgstr "Podčiarknuté"
+
+#: lib/layouts/soul.module:39
+msgid "ul"
+msgstr "pč"
+
+#: lib/layouts/soul.module:48
+msgid "hl"
+msgstr "zw"
+
+#: lib/layouts/soul.module:54
+msgid "Capitalize"
+msgstr "Veľké písmená"
+
+#: lib/layouts/soul.module:56
+msgid "caps"
+msgstr "veľké"
+
+#: lib/layouts/soul.module:66
+msgid "spaceletters"
+msgstr "odstupné"
+
+#: lib/layouts/soul.module:70
+msgid "strikethrough"
+msgstr "preškrtnúť"
+
 #: lib/layouts/spie.layout:3
 msgid "SPIE Proceedings"
 msgstr "SPIE rokovacie zväzky"
@@ -19126,6 +19181,10 @@ msgstr "Uložiť|l"
 msgid "Save As...|A"
 msgstr "Uložiť ako…|a"
 
+#: lib/ui/stdmenus.inc:55
+msgid "Save As Template..."
+msgstr "Uložiť ako Šablónu…"
+
 #: lib/ui/stdmenus.inc:54
 msgid "Save All|l"
 msgstr "Uložiť všetko|v"
@@ -21287,6 +21346,18 @@ msgstr "overleftrightarrow"
 #: lib/ui/stdtoolbars.inc:460
 msgid "underline"
 msgstr "underline"
+
+#: lib/layouts/soul.module:78
+msgid "highlight"
+msgstr "zvýrazniť"
+
+#: lib/layouts/soul.module:82
+msgid "capitalise"
+msgstr "veľké písmená"
+
+#: lib/layouts/soul.module:86
+msgid "Capitalise"
+msgstr "Veľké písmená"
 
 #: lib/ui/stdtoolbars.inc:462
 msgid "underbrace"
@@ -29072,7 +29143,7 @@ msgstr "Vytvoriť nový dokument?"
 
 #: src/buffer_funcs.cpp:129
 msgid "&Yes, Create New Document"
-msgstr "Áno, &vytvoriť nový dokument"
+msgstr "Áno, &Vytvoriť Nový Dokument"
 
 #: src/buffer_funcs.cpp:129
 msgid "&No, Do Not Create"
@@ -30047,9 +30118,9 @@ msgstr "Variabilná"
 msgid "Module not found!"
 msgstr "Modul nenájdený!"
 
-#: src/frontends/qt4/GuiDocument.cpp:578 src/frontends/qt4/GuiDocument.cpp:748
-msgid "End Edit"
-msgstr "Úprava skončila"
+#: src/frontends/qt4/GuiDocument.cpp:578 src/frontends/qt4/GuiDocument.cpp:750
+msgid "&End Edit"
+msgstr "&Skončiť Úpravu"
 
 #: src/frontends/qt4/GuiDocument.cpp:638
 msgid "Validation required!"
@@ -31270,6 +31341,10 @@ msgstr ""
 "Tu sú zobrazené všetky dostupné jazyky vybraného súboru.\n"
 "Otvorí sa súbor s vybranou jazykovou verziou."
 
+#: src/frontends/qt4/GuiLyXFiles.cpp:351
+msgid "Select example file"
+msgstr "Vyberte príkladný súbor"
+
 #: src/frontends/qt4/GuiMathMatrix.cpp:34
 msgid "[x]"
 msgstr "[x]"
@@ -31351,6 +31426,34 @@ msgstr "Nastavenia fantómu"
 #: src/frontends/qt4/GuiPrefs.cpp:141
 msgid "&System files"
 msgstr "&Systémové súbory"
+
+#: src/frontends/qt4/GuiLyXFiles.cpp:369
+msgid "Chose UI file"
+msgstr "Zvoľte súbor užívateľského rozhrania"
+
+#: src/frontends/qt4/GuiLyXFiles.cpp:370
+msgid "LyX UI Files (*.ui)"
+msgstr "LyX UI súbory (*.ui)"
+
+#: src/frontends/qt4/GuiLyXFiles.cpp:373
+msgid "Chose bind file"
+msgstr "Zvoľte súbor väzbových skratiek"
+
+#: src/frontends/qt4/GuiLyXFiles.cpp:374
+msgid "LyX Bind Files (*.bind)"
+msgstr "Väzbové skratky LyX-u (*.bind)"
+
+#: src/frontends/qt4/GuiLyXFiles.cpp:377
+msgid "Chose keyboard map"
+msgstr "Zvoľte mapu kláves"
+
+#: src/frontends/qt4/GuiLyXFiles.cpp:378
+msgid "LyX Keymap Files (*.kmap)"
+msgstr "LyX klávesové mapy (*.kmap)"
+
+#: src/frontends/qt4/GuiLyXFiles.cpp:435
+msgid "Default Template"
+msgstr "Štandardná Šablóna"
 
 #: src/frontends/qt4/GuiPrefs.cpp:145
 msgid "&User files"
@@ -31592,30 +31695,6 @@ msgstr "Nemôžem pridať skratku do listiny"
 #: src/frontends/qt4/GuiPrefs.cpp:3377
 msgid "Identity"
 msgstr "Vaša identita"
-
-#: src/frontends/qt4/GuiPrefs.cpp:3600
-msgid "Choose bind file"
-msgstr "Zvoľte súbor väzbových skratiek"
-
-#: src/frontends/qt4/GuiPrefs.cpp:3601
-msgid "LyX bind files (*.bind)"
-msgstr "Väzbové skratky LyX-u (*.bind)"
-
-#: src/frontends/qt4/GuiPrefs.cpp:3607
-msgid "Choose UI file"
-msgstr "Zvoľte súbor užívateľského rozhrania"
-
-#: src/frontends/qt4/GuiPrefs.cpp:3608
-msgid "LyX UI files (*.ui)"
-msgstr "LyX UI súbory (*.ui)"
-
-#: src/frontends/qt4/GuiPrefs.cpp:3614
-msgid "Choose keyboard map"
-msgstr "Zvoľte mapu kláves"
-
-#: src/frontends/qt4/GuiPrefs.cpp:3615
-msgid "LyX keyboard maps (*.kmap)"
-msgstr "LyX klávesové mapy (*.kmap)"
 
 #: src/frontends/qt4/GuiPrintNomencl.cpp:49
 msgid "Longest label width"
@@ -32315,6 +32394,64 @@ msgstr "novýsúbor"
 #: src/frontends/qt4/GuiView.cpp:2622
 msgid "Select LyX document to insert"
 msgstr "Vyberte LyX dokument na vloženie"
+
+#: src/frontends/qt4/GuiView.cpp:2672
+#, c-format
+msgid ""
+"It is suggested to save the template in a subdirectory\n"
+"appropriate to the document language (%1$s).\n"
+"This subdirectory does not exists yet.\n"
+"Do you want to create it?"
+msgstr ""
+"Navrhuje sa uložiť šablónu do pod-adresára\n"
+"vhodné pre jazyk dokumentu (%1$s).\n"
+"Tento pod-adresár ešte neexistuje.\n"
+"Chcete ho vytvoriť?"
+
+#: src/frontends/qt4/GuiView.cpp:2677
+msgid "Create Language Directory?"
+msgstr "Vytvoriť jazykový adresár?"
+
+#: src/frontends/qt4/GuiView.cpp:2678 src/frontends/qt4/GuiView.cpp:2709
+msgid "&Yes, Create"
+msgstr "&Áno, Vytvoriť"
+
+#: src/frontends/qt4/GuiView.cpp:2678 src/frontends/qt4/GuiView.cpp:2709
+msgid "&No, Save Template in Parent Directory"
+msgstr "&Nie, Uložiť Šablónu v Nadriadenom Adresári"
+
+#: src/frontends/qt4/GuiView.cpp:2681 src/frontends/qt4/GuiView.cpp:2712
+msgid "Subdirectory creation failed!"
+msgstr "Vytvorenie pod-adresára zlyhalo!"
+
+#: src/frontends/qt4/GuiView.cpp:2682 src/frontends/qt4/GuiView.cpp:2713
+msgid ""
+"Could not create subdirectory.\n"
+"The template will be saved in the parent directory."
+msgstr ""
+"Nepodaril sa vytvoriť pod-adresár.\n"
+"Šablóna sa uloží do nadriadeného adresára."
+
+#: src/frontends/qt4/GuiView.cpp:2703
+#, c-format
+msgid ""
+"It is suggested to save the template in a subdirectory\n"
+"appropriate to the layout category (%1$s).\n"
+"This subdirectory does not exists yet.\n"
+"Do you want to create it?"
+msgstr ""
+"Navrhuje sa uložiť šablónu do pod-adresára\n"
+"vhodného pre kategóriu schémy (%1$s).\n"
+"Tento pod-adresár ešte neexistuje.\n"
+"Chcete ho vytvoriť?"
+
+#: src/frontends/qt4/GuiView.cpp:2708
+msgid "Create Category Directory?"
+msgstr "Vytvoriť adresár pre kategórie?"
+
+#: src/frontends/qt4/GuiView.cpp:2743
+msgid "Choose a filename to save template as"
+msgstr "Zvoľte názov súboru, pod ktorým sa má šablóna uložiť"
 
 #: src/frontends/qt4/GuiView.cpp:2662
 msgid "Choose a filename to save document as"
@@ -34996,6 +35133,15 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Soul Text Markup"
+#~ msgstr "Soul sémantické značkovanie"
+
+#~ msgid "Edit"
+#~ msgstr "Upraviť"
+
+#~ msgid "Find"
+#~ msgstr "Hľadať"
 
 #~ msgid "Templates"
 #~ msgstr "Šablóny"
@@ -39894,3 +40040,31 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "User Interface Files"
 #~ msgstr "Súbory s užívateľským rozhraním"
+
+#~ msgid "End Edit"
+#~ msgstr "Úprava skončila"
+
+#~ msgid "Choose bind file"
+#~ msgstr "Zvoľte súbor väzbových skratiek"
+
+#~ msgid "LyX bind files (*.bind)"
+#~ msgstr "Väzbové skratky LyX-u (*.bind)"
+
+#~ msgid "Choose UI file"
+#~ msgstr "Zvoľte súbor užívateľského rozhrania"
+
+#~ msgid "LyX UI files (*.ui)"
+#~ msgstr "LyX UI súbory (*.ui)"
+
+#~ msgid "Choose keyboard map"
+#~ msgstr "Zvoľte mapu kláves"
+
+#~ msgid "LyX keyboard maps (*.kmap)"
+#~ msgstr "LyX klávesové mapy (*.kmap)"
+
+#~ msgid ""
+#~ "Defines text styles to highlight, space-out, strike-through underline and "
+#~ "capitalize text by means of the soul package."
+#~ msgstr ""
+#~ "Definuje štýli na zvýraznenie, odstúpenie, preškrtnutie, podčiarknutie a "
+#~ "zmenu na veľké písmená spôsobom balíka soul."
