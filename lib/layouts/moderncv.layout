@@ -202,8 +202,17 @@ Style ExtraInfo
 	LabelString	"Extra Info:"
 End
 
+# Path to a digital image:
 Style Photo
 	CopyStyle	CVStyle
+	Font
+	  Family	typewriter
+	EndFont
+	LabelFont
+	  Family	Roman
+	  Series	Bold
+	  Color		Blue
+	EndFont
 	LatexName	photo
 	LabelString	"Photo:"
 	Argument 1
@@ -216,6 +225,7 @@ Style Photo
 	  Tooltip	"Thickness of the surrounding frame"
 	  PassThru	1
 	EndArgument
+	PassThru	1
 End
 
 Style Quote
