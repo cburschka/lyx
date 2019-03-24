@@ -3,13 +3,13 @@
 #
 # Zdenko Podobný <zdpo@mailbox.sk>, 2003, 2006.
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
-# Kornel Benko <kornel@lyx.org>, 2009-2018.
+# Kornel Benko <kornel@lyx.org>, 2009-2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-12-29 19:47+0100\n"
-"PO-Revision-Date: 2018-12-29 18:56+0000\n"
+"POT-Creation-Date: 2019-03-24 12:43+0100\n"
+"PO-Revision-Date: 2019-03-24 11:44+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2661,12 +2661,6 @@ msgstr "Chyby vypísané na terminál."
 msgid "Convert"
 msgstr "Konvertovať"
 
-#: src/frontends/qt4/ui/LocalLayoutUi.ui:59
-#: src/frontends/qt4/ui/PreambleUi.ui:45 src/frontends/qt4/GuiDocument.cpp:562
-#: src/frontends/qt4/GuiDocument.cpp:732
-msgid "Edit"
-msgstr "Upraviť"
-
 #: src/frontends/qt4/ui/LogUi.ui:39
 msgid "Hit Enter to search, or click Go!"
 msgstr "Stlačte Enter alebo kliknite na \"Hľadaj\"!"
@@ -3311,8 +3305,8 @@ msgid "&Vertical Phantom"
 msgstr "&Vertikálny Fantóm"
 
 #: src/frontends/qt4/ui/PreambleUi.ui:38
-msgid "Find"
-msgstr "Hľadať"
+msgid "&Find"
+msgstr "Ná&jsť"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:26
 msgid "Use the color scheme of your Operating System/Desktop Environment"
@@ -5687,7 +5681,7 @@ msgstr ""
 
 #: lib/layouts/AEA.layout:3
 msgid "American Economic Association (AEA)"
-msgstr "American Economic Association (AEA)"
+msgstr "Americká Ekonomická Spoločnosť (AEA)"
 
 #: lib/layouts/AEA.layout:4 lib/layouts/IEEEtran-CompSoc.layout:4
 #: lib/layouts/IEEEtran-TransMag.layout:4 lib/layouts/IEEEtran.layout:4
@@ -6502,7 +6496,7 @@ msgstr "Dôkaz"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:3
 msgid "IEEE Transactions Computer Society"
-msgstr "IEEE Transactions Computer Society"
+msgstr "IEEE Transakcie Počítačovej Spoločnosti"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:19
 #: lib/layouts/IEEEtran-TransMag.layout:20
@@ -6530,11 +6524,11 @@ msgstr "Index-Text pre beztitulný súhrn"
 
 #: lib/layouts/IEEEtran-TransMag.layout:3
 msgid "IEEE Transactions on Magnetics"
-msgstr "IEEE Transactions on Magnetics"
+msgstr "IEEE Transakcie Magnetizmu"
 
 #: lib/layouts/IEEEtran.layout:3
 msgid "IEEE Transactions"
-msgstr "IEEE Transactions"
+msgstr "IEEE Transackcie"
 
 #: lib/layouts/IEEEtran.layout:35 lib/layouts/aa.layout:36
 #: lib/layouts/aapaper.layout:35 lib/layouts/aastex.layout:61
@@ -7024,7 +7018,7 @@ msgstr "Najväčší Gigantický kúsok"
 
 #: lib/layouts/aa.layout:3
 msgid "Astronomy & Astrophysics"
-msgstr "Astronomy & Astrophysics"
+msgstr "Astronómia a Astrofyzika"
 
 #: lib/layouts/aa.layout:68 lib/layouts/aapaper.inc:9
 #: lib/layouts/aapaper.layout:81 lib/layouts/acm-sigs.inc:10
@@ -7229,7 +7223,7 @@ msgstr "Tezaurus nepodporovaný v súčasnom A&A:"
 
 #: lib/layouts/aapaper.layout:3 lib/layouts/aapaper.layout:14
 msgid "Astronomy & Astrophysics (V. 4, Obsolete)"
-msgstr "Astronomy & Astrophysics (V. 4, zastaralé)"
+msgstr "Astronómia a Astrofyzika (V. 4, zastaralé)"
 
 #: lib/layouts/aapaper.layout:4 lib/layouts/acm-sigs-alt.layout:4
 #: lib/layouts/acm-sigs.layout:4 lib/layouts/acmsiggraph-0-92.layout:4
@@ -7289,7 +7283,7 @@ msgstr "Listina"
 
 #: lib/layouts/aastex.layout:3
 msgid "American Astronomical Society (AASTeX v. 5)"
-msgstr "American Astronomical Society (AASTeX v. 5)"
+msgstr "Americká Astronomická Spoločnosť (AASTeX v. 5)"
 
 #: lib/layouts/aastex.layout:159 lib/layouts/achemso.layout:102
 #: lib/layouts/acmart.layout:203 lib/layouts/agu_stdtitle.inc:128
@@ -7460,7 +7454,7 @@ msgstr "Oddeliť identifikátor datasetu od textu"
 
 #: lib/layouts/aastex6.layout:3
 msgid "American Astronomical Society (AASTeX v. 6)"
-msgstr "American Astronomical Society (AASTeX v. 6)"
+msgstr "Americká Astronomická Spoločnosť (AASTeX v. 6)"
 
 #: lib/layouts/aastex6.layout:59
 msgid "Software"
@@ -7484,11 +7478,11 @@ msgstr "Poznámka-"
 
 #: lib/layouts/aastex62.layout:3
 msgid "American Astronomical Society (AASTeX v. 6.2)"
-msgstr "American Astronomical Society (AASTeX v. 6.2)"
+msgstr "Americká Astronomická Spoločnosť (AASTeX v. 6.2)"
 
 #: lib/layouts/achemso.layout:3
 msgid "American Chemical Society (ACS)"
-msgstr "American Chemical Society (ACS)"
+msgstr "Americká Spoločnosť pre Chémiu (ACS)"
 
 #: lib/layouts/achemso.layout:74 lib/layouts/amsdefs.inc:41
 #: lib/layouts/apa.layout:257 lib/layouts/apa6.layout:357
@@ -8299,7 +8293,7 @@ msgstr "URL kódu:"
 
 #: lib/layouts/agu-dtd.layout:3
 msgid "American Geophysical Union (AGU, SGML Article)"
-msgstr "American Geophysical Union (AGU, SGML článok)"
+msgstr "Americká Únia pre Geofyziku (AGU, SGML článok)"
 
 #: lib/layouts/agu-dtd.layout:4 lib/layouts/docbook.layout:4
 msgid "Articles (DocBook)"
@@ -8685,7 +8679,7 @@ msgstr "Poštové smerovacie číslo"
 
 #: lib/layouts/agums.layout:3
 msgid "American Geophysical Union (AGUPLUS Manuscript)"
-msgstr "American Geophysical Union (AGUPLUS Manuskript)"
+msgstr "Americká Únia pre Geofyziku (AGUPLUS Manuskript)"
 
 #: lib/layouts/aguplus.inc:37 lib/layouts/amsart.layout:75
 #: lib/layouts/amsbook.layout:84 lib/layouts/beamer.layout:288
@@ -8789,7 +8783,7 @@ msgstr "Tabuľka"
 
 #: lib/layouts/agutex.layout:3
 msgid "American Geophysical Union (AGUTeX)"
-msgstr "American Geophysical Union (AGUTeX)"
+msgstr "Americká Únia pre Geofyziku (AGUTeX)"
 
 #: lib/layouts/agutex.layout:74
 msgid "Authors"
@@ -8954,7 +8948,7 @@ msgstr "Klasifikácia matematických oblastí 2000:"
 
 #: lib/layouts/apa.layout:3
 msgid "American Psychological Association (APA)"
-msgstr "American Psychological Association (APA)"
+msgstr "Americká Psychologická Spoločnosť (APA)"
 
 #: lib/layouts/apa.layout:54
 msgid "RightHeader"
@@ -9059,7 +9053,7 @@ msgstr "(\\alph{enumii})"
 
 #: lib/layouts/apa6.layout:3
 msgid "American Psychological Association (APA), v. 6"
-msgstr "American Psychological Association (APA), v. 6"
+msgstr "Americká Psychologická Spoločnosť (APA), v. 6"
 
 #: lib/layouts/apa6.layout:113
 msgid "FiveAuthors"
@@ -10033,10 +10027,10 @@ msgstr "Značky zmien"
 #: lib/layouts/changebars.module:7
 msgid ""
 "Enables LyX to add vertical change bars in the margin of PDF output when "
-"change tracking is turned on and pdflatex output format is chosen."
+"Show Changes in Output is turned on and pdflatex output format is chosen."
 msgstr ""
 "Umožní LyX pridať vertikálne značky zmien na okraji PDF-výstupu. Treba na to "
-"zapnúť sledovanie zmien a zvoliť pdflatex ako výstupný formát."
+"zapnúť sledovanie zmien vo výstupe a zvoliť pdflatex ako výstupný formát."
 
 #: lib/layouts/chess.layout:3
 msgid "Chess"
@@ -12847,7 +12841,7 @@ msgstr "Japonská Kniha (Štandardná trieda)"
 
 #: lib/layouts/jgrga.layout:3
 msgid "American Geophysical Union (AGUPLUS JGR)"
-msgstr "American Geophysical Union (AGUPLUS JGR)"
+msgstr "Americká Únia pre Geofyziku (AGUPLUS JGR)"
 
 #: lib/layouts/jreport.layout:3
 msgid "Japanese Report (Standard Class)"
@@ -16850,7 +16844,7 @@ msgstr "Krajný obrázok"
 
 #: lib/layouts/tufte-handout.layout:3
 msgid "Tufte Handout"
-msgstr "Tufte Handout"
+msgstr "Tufte Leták"
 
 #: lib/layouts/tufte-handout.layout:4
 msgid "Handouts"
@@ -19929,6 +19923,10 @@ msgstr "Nastaviť okrajové čiary"
 #: lib/ui/stdtoolbars.inc:158
 msgid "Set all lines"
 msgstr "Nastaviť všetky čiary"
+
+#: lib/ui/stdtoolbars.inc:159
+msgid "Set inner lines"
+msgstr "Nastaviť vnútorné čiary"
 
 #: lib/ui/stdtoolbars.inc:159
 msgid "Unset all lines"
@@ -25604,6 +25602,20 @@ msgstr "Teraz nezabudnite uložiť váš súbor!"
 msgid "Remove emergency file now?"
 msgstr "Zmazať núdzovú kópiu teraz?"
 
+#: src/Buffer.cpp:4793
+msgid "Can't rename emergency file!"
+msgstr "Nemôžem premenovať núdzový súbor!"
+
+#: src/Buffer.cpp:4794
+msgid ""
+"LyX was unable to rename the emergency file. You should do so manually. "
+"Otherwise, you will beasked about it again the next time you try to loadthis "
+"file, and may over-write your own work."
+msgstr ""
+"LyX nebol schopný premenovať núdzový súbor. Mali by ste ho premenovať ručne. "
+"Ináč, v prípade že chcete tento súbor nabudúce čítať, budete opýtaný ešte "
+"raz a tak by ste mohli prepísať vlastnú prácu."
+
 #: src/Buffer.cpp:4697
 #, c-format
 msgid ""
@@ -28501,7 +28513,7 @@ msgstr "Vytvoriť nový dokument?"
 
 #: src/buffer_funcs.cpp:129
 msgid "&Yes, Create New Document"
-msgstr "Áno, &vytvoriť nový dokument"
+msgstr "Áno, &Vytvoriť Nový Dokument"
 
 #: src/buffer_funcs.cpp:129
 msgid "&No, Do Not Create"
@@ -29421,9 +29433,9 @@ msgstr "Variabilná"
 msgid "Module not found!"
 msgstr "Modul nenájdený!"
 
-#: src/frontends/qt4/GuiDocument.cpp:578 src/frontends/qt4/GuiDocument.cpp:748
-msgid "End Edit"
-msgstr "Úprava skončila"
+#: src/frontends/qt4/GuiDocument.cpp:578 src/frontends/qt4/GuiDocument.cpp:750
+msgid "&End Edit"
+msgstr "&Skončiť Úpravu"
 
 #: src/frontends/qt4/GuiDocument.cpp:638
 msgid "Validation required!"
@@ -32572,6 +32584,10 @@ msgid "CapsLock"
 msgstr "CapsLock"
 
 #: src/insets/InsetInfo.cpp:375
+msgid "Control[[Key]]"
+msgstr "Ctrl"
+
+#: src/insets/InsetInfo.cpp:375
 msgid "Command[[Key]]"
 msgstr "Command"
 
@@ -33817,6 +33833,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Edit"
+#~ msgstr "Upraviť"
+
+#~ msgid "Find"
+#~ msgstr "Hľadať"
 
 #~ msgid "Press button to check validity..."
 #~ msgstr "Kliknite tlačidlo na kontrolu validity…"
@@ -38312,3 +38334,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Springer SV Global (Obsolete Version)"
 #~ msgstr "Springer SV Global (zastaralá verzia)"
+
+#~ msgid "End Edit"
+#~ msgstr "Úprava skončila"
