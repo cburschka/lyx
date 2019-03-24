@@ -104,8 +104,8 @@ export/examples/Theses/PhD_Thesis/(Acknowledgments|Appendix|Summary|Bibliography
 export/examples/Theses/PhD_Thesis/Bibliography_[^x].*
 
 # Document class "Docbook article (SGML)" does not work with LaTeX:
-export/examples/Articles/DocBook_Article_(dvi3|pdf[245]).*
-export/templates/Articles/DocBook_Article_(dvi3|pdf[245]).*
+export/examples/Articles/DocBook_Article_.*(dvi3|pdf[245]).*
+export/templates/Articles/DocBook_Article_.*(dvi3|pdf[245]).*
 
 # `acmart` and `copernicus` are not supported by LyX < 2.3
 export/templates/Articles/Association_for_Computing_Machinery_lyx(16|20|21|22)

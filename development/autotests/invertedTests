@@ -51,7 +51,8 @@ export/templates/(|de/|es/|fr/|ja/)Presentations/Beamer_lyx(16|20)
 # modernCV fails for versions < 2.1
 # * reversed order of \end_layout and \end_inset results in corrupt LyX file
 # * reversed order of command arguments results in incompilable LaTeX
-export/examples/(|es/)Curricula_Vitae/Modern_CV_lyx(16|20)
+export/examples/(|es/)Curricula_Vitae/Modern_CV_(lyx(16|20)|dvi|dvi3.*F|pdf|pdf3)
+export/examples/(|es/)Curricula_Vitae/Europe_CV_(dvi|dvi3.*F|pdf|pdf3)
 #
 # back-conversion fails for rotated float inset in a list
 export/export/lyx2lyx/lyx_2_3_test_lyx(16|20|21|22)

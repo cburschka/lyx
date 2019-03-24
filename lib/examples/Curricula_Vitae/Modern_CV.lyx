@@ -1495,7 +1495,7 @@ or Bib\SpecialChar TeX
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 btprint "btPrintAll"
-bibfiles "biblioExample"
+bibfiles "../biblioExample"
 options "plain"
 
 \end_inset
