@@ -308,7 +308,7 @@ bool inSystemDir(FileName const & document_dir, string & system_dir)
 
 	string dir = document_dir.absFileName();
 
-	for (int i = 0; i < 2; ++i) {
+	for (int i = 0; i < 3; ++i) {
 		dir = addPath(dir, "..");
 		if (!fileSearch(dir, "configure.py").empty() &&
 		    !fileSearch(dir, "chkconfig.ltx").empty()) {
@@ -754,6 +754,15 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 				origin.replace(0, sysdirprefix.length() - 1,
 					package().system_support().absFileName());
 		}
+		string const builddirprefix = "/buildlyxdir/";
+		if (prefixIs(origin, builddirprefix)) {
+			string docsys;
+			if (inSystemDir(filepath, docsys))
+				origin.replace(0, builddirprefix.length() - 1, docsys);
+			else
+				origin.replace(0, builddirprefix.length() - 1,
+					package().system_support().absFileName());
+		}
 	} else if (token == "\\begin_preamble") {
 		readPreamble(lex);
 	} else if (token == "\\begin_local_layout") {
@@ -1141,8 +1150,12 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 			: addPath(package().system_support().realPath(), "");
 	string const relpath =
 		to_utf8(makeRelPath(from_utf8(filepath), from_utf8(sysdir)));
+	LYXERR0("docsys: " << docsys << ",build:  " << package().build_support().realPath());
 	if (!prefixIs(relpath, "../") && !FileName::isAbsolute(relpath))
-		filepath = addPath("/systemlyxdir", relpath);
+		filepath = (prefixIs(docsys, package().build_support().realPath())) ?
+					addPath("/buildlyxdir", relpath)
+				      : addPath("/systemlyxdir", relpath);
+
 	else if (!save_transient_properties || !lyxrc.save_origin)
 		filepath = "unavailable";
 	os << "\\origin " << quoteIfNeeded(filepath) << '\n';
