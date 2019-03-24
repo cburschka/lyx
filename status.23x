@@ -102,6 +102,9 @@ What's new
 - Correctly add the branch name suffix when the stem of the filename
   contains a dot (bug 11490).
 
+- Load required packages to correctly typeset unicode symbols entered
+  in math mode (bug 11526).
+
 
 * USER INTERFACE
 
