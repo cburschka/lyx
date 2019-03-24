@@ -306,10 +306,11 @@ bool Encodings::latexMathChar(char_type c, bool mathmode,
 		if (!encoding || command.empty()) {
 			command = it->second.textcommand();
 			needsTermination = !it->second.textnotermination();
-			addTextCmd(c);
 		}
 		if (mathmode)
 			addMathSym(c);
+		else
+			addTextCmd(c);
 	}
 	return use_math;
 }
