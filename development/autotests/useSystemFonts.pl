@@ -53,10 +53,10 @@ sub copyFoundSubdocuments($);
 sub copyJob($$);
 sub isrelativeFix($$$);
 sub isrelative($$$);
-sub createTemporaryFileName($$);
+sub createTemporaryFileName($$$);
 sub copyJobPending($$);
 sub addNewJob($$$$$);
-sub addFileCopyJob($$$$);
+sub addFileCopyJob($$$$$);
 sub getNewNameOf($$);
 sub getlangs($$);
 sub simplifylangs($);
@@ -128,8 +128,9 @@ if (! -d $destdir) {
 my $destdirOfSubdocuments;
 {
   my ($name, $pat, $suffix) = fileparse($source, qr/\.[^.]*/);
-  my $ext = $format . "_$lang";
-  $destdirOfSubdocuments = "$destdir/tmp_$ext" . "_$name"; # Global var, something TODO here
+  my $ext = $format . "-$lang";
+  $name =~ s/_/-/g;
+  $destdirOfSubdocuments = "$destdir/tmp-$ext" . "-$name"; # Global var, something TODO here
 }
 
 if(-d $destdirOfSubdocuments) {
@@ -205,14 +206,27 @@ sub interpretedCopy($$$$)
 	    }
 	    else {
 	      my ($newname, $res1);
-	      ($newname, $res1) = addFileCopyJob("$sourcedir/$f$ext",
+              my @extlist = ();
+              if (defined($rStatus->{ext}->[1])) {
+                @extlist = @{$rStatus->{ext}};
+              }
+              else {
+                @extlist = ($ext);
+              }
+              my $created = 0;
+              for my $extx (@extlist) {
+                if (-e "$sourcedir/$f$extx") {
+	          ($newname, $res1) = addFileCopyJob("$sourcedir/$f$extx",
 						  "$destdirOfSubdocuments",
 						  $rStatus->{"filetype"},
-						  $rFiles);
-	      print "Added ($res1) file \"$sourcedir/$f$ext\" to be copied to \"$newname\"\n";
-	      if ($ext ne "") {
-		$newname =~ s/$ext$//;
-	      }
+						  $rFiles, $created);
+	          print "Added ($res1) file \"$sourcedir/$f$ext\" to be copied to \"$newname\"\n";
+		  if (!$created && $extx ne "") {
+		    $newname =~ s/$extx$//;
+		  }
+                  $created = 1;
+		}
+              }
 	      $f = $newname;
 	      $res += $res1;
 	    }
@@ -237,7 +251,12 @@ sub interpretedCopy($$$$)
 	  }
 	}
 	if ($foundrelative) {
-	  $rF->[$fidx] = join($separator, @{$filelist});
+          # The result can be relative too
+          my @rel_list = ();
+          for my $fr (@{$filelist}) {
+            push(@rel_list, File::Spec->abs2rel($fr, $destdir));
+          }
+	  $rF->[$fidx] = join($separator, @rel_list);
 	  $l = join('', @{$rF});
 	}
       }
@@ -293,7 +312,7 @@ sub copyJob($$)
 	$rFiles->{$source}->{$k . "copied"} = 1;
 	my $dest = $rFiles->{$source}->{$k};
 	push(@dest, $dest);
-	if ($k eq "copyonly") {
+	if ($k =~ /^copyonly/) {
 	  diestack("Could not copy \"$source\" to \"$dest\"") if (! cp($source, $dest));
 	}
 	else {
@@ -333,15 +352,24 @@ sub isrelative($$$)
   }
 }
 
-sub createTemporaryFileName($$)
+my $oldfname = "";
+
+sub createTemporaryFileName($$$)
 {
-  my ($source, $destdir) = @_;
+  my ($source, $destdir, $created) = @_;
 
   # get the basename to be used for the template
   my ($name, $path, $suffix) = fileparse($source, qr/\.[^.]*/);
   #print "source = $source, name = $name, path = $path, suffix = $suffix\n";
-  my $template = "xx_$name" . "_";
-  my $fname = File::Temp::tempnam($destdir, $template);
+  my $template = "xx-$name" . "-";
+  my $fname;
+  if (! $created) {
+    $fname = File::Temp::tempnam($destdir, $template);
+    $oldfname = $fname;
+  }
+  else {
+    $fname = $oldfname;
+  }
 
   # Append extension from source
   if ($suffix ne "") {
@@ -371,9 +399,9 @@ sub addNewJob($$$$$)
   $rFiles->{$source} = $rJob;
 }
 
-sub addFileCopyJob($$$$)
+sub addFileCopyJob($$$$$)
 {
-  my ($source, $destdirOfSubdocuments, $filetype, $rFiles) = @_;
+  my ($source, $destdirOfSubdocuments, $filetype, $rFiles, $created) = @_;
   my ($res, $newname) = (0, undef);
   my $rJob = $rFiles->{$source};
 
@@ -383,7 +411,7 @@ sub addFileCopyJob($$$$)
   }
   if (!defined($rJob->{$hashname})) {
     addNewJob($source,
-	       createTemporaryFileName($source, $destdirOfSubdocuments),
+	       createTemporaryFileName($source, $destdirOfSubdocuments, $created),
 	       "$hashname", $rJob, $rFiles);
     $res = 1;
   }
