@@ -78,8 +78,9 @@ export/.*/zh_CN/.*texF
 export/examples/ja/Modules/Rnw.*knitr.*
 !export/examples/ja/Modules/Sweave.*_(lyx.*|xhtml|pdf4_systemF)
 export/examples/ja/Modules/Sweave.*
-# examples/multilingual.lyx uses "Japanese (CJK)"
-!export/examples/ja/Multilingual_Typesetting_.*
+# example for "Japanese (CJK)"
+!export/examples/ja/Multilingual_Typesetting_.*CJKutf8.*
+#
 export/.*/ja/.*_(pdf[245]|dvi3).*
 # the unicodesymbols-tests use pdflatex, too:
 export/export/latex/unicodesymbols/.*-platex_pdf2

@@ -16,8 +16,8 @@ Sublabel: nonstandard
 # TODO: rename to "extra" or "exotic"?
 
 # aa.cls (not in TeXLive).
-eport/examples/Articles/Astronomy_&_Astrophysics.*
-eport/templates/Articles/Astronomy_&_Astrophysics.*
+export/examples/Articles/Astronomy_%26_Astrophysics.*
+export/templates/Articles/Astronomy_%26_Astrophysics.*
 
 # AEA.cls (see https://wiki.lyx.org/Examples/AEA)
 export/templates/Articles/American_Economic_Association_(AEA).*
@@ -73,9 +73,9 @@ export/templates/Obsolete/.*
 export/templates/Articles/Springers_Global_Journal_Template.*
 
 # svmono.cls
-export/examples/Books/Springer_Monographs.*
+templates/examples/Books/Springer_Monographs.*
 # svmult.cls
-export/examples/springer/Books/Springer_Contributed_Books.*
+templates/examples/Books/Springer_Contributed_Books.*
 
 
 Sublabel: needauth
@@ -119,7 +119,7 @@ export/export/latex/luainputenc-utf8_pdf5_texF
 
 # aastex: hard-coded version in class name:
 # 2018-05-12 aastex6.cls -> aastex62.cls
-lib/examples/Articles/American_Astronomical_Society_.*
+export/examples/Articles/American_Astronomical_Society_.*
 export/templates/Articles/American_Astronomical_Society_.*
 
 # `acmart` calls "libertine" as default font.
