@@ -321,20 +321,20 @@ svexamplesdir = $(pkgdatadir)/examples/sv
 dist_svexamples_DATA = \
 	examples/sv/Welcome.lyx
 
-thesisexamplesdir = $(pkgdatadir)/examples/Theses
-dist_thesisexamples_DATA =
+thesistemplatesdir = $(pkgdatadir)/templates/Theses
+dist_thesistemplates_DATA =
 
-phdthesisexamplesdir = $(pkgdatadir)/examples/Theses/PhD_Thesis
-dist_phdthesisexamples_DATA = \
-	examples/Theses/PhD_Thesis/Acknowledgments.lyx \
-	examples/Theses/PhD_Thesis/alpha.bst \
-	examples/Theses/PhD_Thesis/Appendix.lyx \
-	examples/Theses/PhD_Thesis/Bibliography.lyx \
-	examples/Theses/PhD_Thesis/Chapter_1.lyx \
-	examples/Theses/PhD_Thesis/Chapter_2.lyx \
-	examples/Theses/PhD_Thesis/Main_File.lyx \
-	examples/Theses/PhD_Thesis/Summary.lyx \
-	examples/Theses/PhD_Thesis/thesisExample.bib
+phdthesistemplatesdir = $(pkgdatadir)/templates/Theses/PhD_Thesis
+dist_phdthesistemplates_DATA = \
+	templates/Theses/PhD_Thesis/Acknowledgments.lyx \
+	templates/Theses/PhD_Thesis/alpha.bst \
+	templates/Theses/PhD_Thesis/Appendix.lyx \
+	templates/Theses/PhD_Thesis/Bibliography.lyx \
+	templates/Theses/PhD_Thesis/Chapter_1.lyx \
+	templates/Theses/PhD_Thesis/Chapter_2.lyx \
+	templates/Theses/PhD_Thesis/Main_File.lyx \
+	templates/Theses/PhD_Thesis/Summary.lyx \
+	templates/Theses/PhD_Thesis/thesisExample.bib
 
 ukexamplesdir = $(pkgdatadir)/examples/uk
 dist_ukexamples_DATA = \
@@ -368,35 +368,35 @@ dist_bookexamples_DATA = \
 	examples/Books/Recipe_Book.lyx \
 	examples/Books/Tufte_Book.lyx
 
-booksvmonoexamplesdir = $(pkgdatadir)/examples/Books/Springer_Monographs_%28svmono%29
-dist_booksvmonoexamples_DATA = \
-	examples/Books/Springer_Monographs_%28svmono%29/00_Main_File.lyx \
-	examples/Books/Springer_Monographs_%28svmono%29/01_Dedication.lyx \
-	examples/Books/Springer_Monographs_%28svmono%29/02_Foreword.lyx \
-	examples/Books/Springer_Monographs_%28svmono%29/03_Preface.lyx \
-	examples/Books/Springer_Monographs_%28svmono%29/04_Acknowledgements.lyx \
-	examples/Books/Springer_Monographs_%28svmono%29/05_Acronym.lyx \
-	examples/Books/Springer_Monographs_%28svmono%29/06_Part.lyx \
-	examples/Books/Springer_Monographs_%28svmono%29/07_Chapter.lyx \
-	examples/Books/Springer_Monographs_%28svmono%29/08_Appendix.lyx \
-	examples/Books/Springer_Monographs_%28svmono%29/09_Glossary.lyx \
-	examples/Books/Springer_Monographs_%28svmono%29/10_Solutions.lyx \
-	examples/Books/Springer_Monographs_%28svmono%29/11_References.lyx
+booksvmonotemplatesdir = $(pkgdatadir)/templates/Books/Springer_Monographs_%28svmono%29
+dist_booksvmonotemplates_DATA = \
+	templates/Books/Springer_Monographs_%28svmono%29/00_Main_File.lyx \
+	templates/Books/Springer_Monographs_%28svmono%29/01_Dedication.lyx \
+	templates/Books/Springer_Monographs_%28svmono%29/02_Foreword.lyx \
+	templates/Books/Springer_Monographs_%28svmono%29/03_Preface.lyx \
+	templates/Books/Springer_Monographs_%28svmono%29/04_Acknowledgements.lyx \
+	templates/Books/Springer_Monographs_%28svmono%29/05_Acronym.lyx \
+	templates/Books/Springer_Monographs_%28svmono%29/06_Part.lyx \
+	templates/Books/Springer_Monographs_%28svmono%29/07_Chapter.lyx \
+	templates/Books/Springer_Monographs_%28svmono%29/08_Appendix.lyx \
+	templates/Books/Springer_Monographs_%28svmono%29/09_Glossary.lyx \
+	templates/Books/Springer_Monographs_%28svmono%29/10_Solutions.lyx \
+	templates/Books/Springer_Monographs_%28svmono%29/11_References.lyx
 
-booksvmultexamplesdir = $(pkgdatadir)/examples/Books/Springer_Contributed_Books_%28svmult%29
-dist_booksvmultexamples_DATA = \
-	examples/Books/Springer_Contributed_Books_%28svmult%29/00_Main_File.lyx \
-	examples/Books/Springer_Contributed_Books_%28svmult%29/01_Dedication.lyx \
-	examples/Books/Springer_Contributed_Books_%28svmult%29/02_Foreword.lyx \
-	examples/Books/Springer_Contributed_Books_%28svmult%29/03_Preface.lyx \
-	examples/Books/Springer_Contributed_Books_%28svmult%29/04_Acknowledgements.lyx \
-	examples/Books/Springer_Contributed_Books_%28svmult%29/05_Contributor_List.lyx \
-	examples/Books/Springer_Contributed_Books_%28svmult%29/06_Acronym.lyx \
-	examples/Books/Springer_Contributed_Books_%28svmult%29/07_Part.lyx \
-	examples/Books/Springer_Contributed_Books_%28svmult%29/08_Author.lyx \
-	examples/Books/Springer_Contributed_Books_%28svmult%29/09_Appendix.lyx \
-	examples/Books/Springer_Contributed_Books_%28svmult%29/10_Glossary.lyx \
-	examples/Books/Springer_Contributed_Books_%28svmult%29/11_References.lyx
+booksvmulttemplatesdir = $(pkgdatadir)/templates/Books/Springer_Contributed_Books_%28svmult%29
+dist_booksvmulttemplates_DATA = \
+	templates/Books/Springer_Contributed_Books_%28svmult%29/00_Main_File.lyx \
+	templates/Books/Springer_Contributed_Books_%28svmult%29/01_Dedication.lyx \
+	templates/Books/Springer_Contributed_Books_%28svmult%29/02_Foreword.lyx \
+	templates/Books/Springer_Contributed_Books_%28svmult%29/03_Preface.lyx \
+	templates/Books/Springer_Contributed_Books_%28svmult%29/04_Acknowledgements.lyx \
+	templates/Books/Springer_Contributed_Books_%28svmult%29/05_Contributor_List.lyx \
+	templates/Books/Springer_Contributed_Books_%28svmult%29/06_Acronym.lyx \
+	templates/Books/Springer_Contributed_Books_%28svmult%29/07_Part.lyx \
+	templates/Books/Springer_Contributed_Books_%28svmult%29/08_Author.lyx \
+	templates/Books/Springer_Contributed_Books_%28svmult%29/09_Appendix.lyx \
+	templates/Books/Springer_Contributed_Books_%28svmult%29/10_Glossary.lyx \
+	templates/Books/Springer_Contributed_Books_%28svmult%29/11_References.lyx
 
 cvexamplesdir = $(pkgdatadir)/examples/Curricula_Vitae
 dist_cvexamples_DATA = \
@@ -2676,8 +2676,8 @@ exampleandtemplate_files = \
 			   $(dist_articlechessexamples_DATA) \
 			   $(dist_articletemplates_DATA) \
 			   $(dist_bookexamples_DATA) \
-			   $(dist_booksvmonoexamples_DATA) \
-			   $(dist_booksvmultexamples_DATA) \
+			   $(dist_booksvmonotemplates_DATA) \
+			   $(dist_booksvmulttemplates_DATA) \
 			   $(dist_caexamples_DATA) \
 			   $(dist_cainsetexamples_DATA) \
 			   $(dist_csexamples_DATA) \
@@ -2730,7 +2730,7 @@ exampleandtemplate_files = \
 			   $(dist_nlinsetexamples_DATA) \
 			   $(dist_obsoletetemplates_DATA) \
 			   $(dist_obsoletegbrieftemplates_DATA) \
-			   $(dist_phdthesisexamples_DATA) \
+			   $(dist_phdthesistemplates_DATA) \
 			   $(dist_plexamples_DATA) \
 			   $(dist_posterexamples_DATA) \
 			   $(dist_postertemplates_DATA) \
@@ -2747,7 +2747,7 @@ exampleandtemplate_files = \
 			   $(dist_srexamples_DATA) \
 			   $(dist_srmoduleexamples_DATA) \
 			   $(dist_svexamples_DATA) \
-			   $(dist_thesisexamples_DATA) \
+			   $(dist_thesistemplates_DATA) \
 			   $(dist_ukexamples_DATA) \
 			   $(dist_examples_DATA) \
 			   $(dist_templates_DATA)
