@@ -1150,7 +1150,6 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 			: addPath(package().system_support().realPath(), "");
 	string const relpath =
 		to_utf8(makeRelPath(from_utf8(filepath), from_utf8(sysdir)));
-	// LYXERR0("docsys: " << docsys << ",build:  " << package().build_support().realPath());
 	if (!prefixIs(relpath, "../") && !FileName::isAbsolute(relpath))
 		filepath = (prefixIs(docsys, package().build_support().realPath())) ?
 					addPath("/buildlyxdir", relpath)
