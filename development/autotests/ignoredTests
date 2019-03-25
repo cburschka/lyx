@@ -94,15 +94,15 @@ export/examples/Insets/Minted.*lyx22
 # Subdocuments that are not expected to work as stand-alone documents:
 export/mathmacros/Spacechild[123].*
 # chapters of Springer books (svmono, svmult) (except 00_Main_File)
-export/examples/Books/Springer_.*(0[^0]|1.)_.*_lyx.*
-export/examples/Theses/PhD_Thesis/(Acknowledgments|Appendix|Summary|Bibliography|chapter-[12])_lyx[0-9][0-9]
+export/templates/Books/Springer_.*/(0[^0]|1.)_.*
+export/templates/Theses/PhD_Thesis/(Acknowledgments|Appendix|Summary|Bibliography|Chapter_[12])_lyx[0-9][0-9]
 # Used only as include file for some tests
 .*/export/IncludeMissingEndTagDiv.*
 
 # Bibliography.lyx is not expected to compile. See the following for discussion:
 #   https://www.mail-archive.com/search?l=mid&q=20190104195414.opgeuggeqakxl2fo%40barna
 # Ignore all formats except xhtml export
-export/examples/Theses/PhD_Thesis/Bibliography_[^x].*
+export/templates/Theses/PhD_Thesis/Bibliography_[^x].*
 
 # Document class "Docbook article (SGML)" does not work with LaTeX:
 export/examples/Articles/DocBook_Article_.*(dvi3|pdf[245]).*
