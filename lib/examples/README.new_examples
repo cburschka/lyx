@@ -48,9 +48,9 @@ New files must be added to Makefile.am. If you add a new (sub)folder, you must a
 in Makefile.am (cf. dehandoutexamplesdir and dist_phdthesistemplates_DATA as example).
 
 Please make sure before you commit (in a text editor) that the example that the file has the correct
-\origin specification. It should begin with /buildlyxdir/ and then point towards the subdirectory
+\origin specification. It should begin with /systemlyxdir/ and then point towards the subdirectory
 your file is in, e.g.
-\origin /buildlyxdir/templates/es/Presentations/
+\origin /systemlyxdir/templates/es/Presentations/
 This is particularly important if your file includes other files (such as graphics, bibliographies,
 children).
 
