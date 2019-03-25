@@ -4,7 +4,7 @@ SUBDIRS = doc lyx2lyx
 
 CHMOD = chmod
 
-EXTRA_DIST = examples/CMakeLists.txt scripts/CMakeLists.txt
+EXTRA_DIST = examples/CMakeLists.txt scripts/CMakeLists.txt examples/README.new_examples
 
 dist_pkgdata_DATA = CREDITS autocorrect chkconfig.ltx \
 	encodings layouttranslations languages latexfonts RELEASE-NOTES \
@@ -200,7 +200,8 @@ dist_frpresentationexamples_DATA = \
 	examples/fr/Presentations/Beamer_Article_%28Standard_Class%29.lyx \
 	examples/fr/Presentations/Foils.lyx \
 	examples/fr/Presentations/Powerdot.lyx \
-	examples/fr/Presentations/Seminar.lyx
+	examples/fr/Presentations/Seminar.lyx \
+	examples/fr/Presentations/Braille.lyx
 
 glexamplesdir = $(pkgdatadir)/examples/gl
 dist_glexamples_DATA = \
@@ -464,7 +465,9 @@ dist_moduleexamples_DATA = \
 
 posterexamplesdir = $(pkgdatadir)/examples/Posters
 dist_posterexamples_DATA = \
-	examples/Posters/Beamerposter.lyx
+	examples/Posters/Beamerposter.lyx \
+	examples/Posters/CV-image.png \
+	examples/Posters/beamer-knight1.png
 
 presentationexamplesdir = $(pkgdatadir)/examples/Presentations
 dist_presentationexamples_DATA = \
