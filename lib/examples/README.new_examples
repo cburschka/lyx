@@ -27,8 +27,6 @@ The language subdirectory expands to the same subfolders than the English versio
 and uses the same [English) filename (e.g., examples/Letters/myletter.lyx > 
 examples/fr/Letters/myletter.lyx).
 
-If you add a new (sub)folder, you must create a new entry in Makefile.am.
-
 
 NB: SPECIAL CHARACTERS IN FILE AND DIRECTORY NAMES:
 ===================================================
@@ -40,4 +38,19 @@ LyX building with autotools:
 * Parentheses by %28 and %29 (e.g., My_Layout_%28v._1%29.lyx)
 * Apersands by %26 (e.g., Journal_of_This_%26_That.lyx)
 
-The subsitution characters will be replaced again for LyX for translation and GUI display.
+The substitution characters will be replaced again for LyX for translation and GUI display.
+
+
+THINGS TO CHECK BEFORE COMMITTING:
+==================================
+
+New files must be added to Makefile.am. If you add a new (sub)folder, you must also create a new category
+in Makefile.am (cf. dehandoutexamplesdir and dist_phdthesistemplates_DATA as example).
+
+Please make sure before you commit (in a text editor) that the example that the file has the correct
+\origin specification. It should begin with /buildlyxdir/ and then point towards the subdirectory
+your file is in, e.g.
+\origin /buildlyxdir/templates/es/Presentations/
+This is particularly important if your file includes other files (such as graphics, bibliographies,
+children).
+
