@@ -325,12 +325,12 @@ bool inBuildDir(FileName const & abs_binary,
 
 	// Note that the name of the lyx binary may be a symbolic link.
 	// If that is the case, then we follow the links too.
-    FileName binary = abs_binary;
+	FileName binary = abs_binary;
 	while (true) {
 		// Try and find "lyxrc.defaults".
-		if( isBuildDir(binary, "../", build_support_dir) ||
-            isBuildDir(binary, "../../", build_support_dir))
-        {
+		if ( isBuildDir(binary, "../", build_support_dir)
+		    || isBuildDir(binary, "../../", build_support_dir))
+		{
 			// Try and find "chkconfig.ltx".
 			system_support_dir =
 				FileName(addPath(Package::top_srcdir().absFileName(), "lib"));
@@ -359,7 +359,7 @@ bool inBuildDir(FileName const & abs_binary,
 	system_support_dir = FileName();
 	build_support_dir = FileName();
 
-    return false;
+	return false;
 }
 
 
