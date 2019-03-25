@@ -129,7 +129,7 @@ my $destdirOfSubdocuments;
 {
   my ($name, $pat, $suffix) = fileparse($source, qr/\.[^.]*/);
   my $ext = $format . "-$lang";
-  $name =~ s/_/-/g;
+  $name =~ s/[%_]/-/g;
   $destdirOfSubdocuments = "$destdir/tmp-$ext" . "-$name"; # Global var, something TODO here
 }
 
@@ -207,25 +207,33 @@ sub interpretedCopy($$$$)
 	    else {
 	      my ($newname, $res1);
               my @extlist = ();
-              if (ref($rStatus->{ext}) eq "ARRAY" && defined($rStatus->{ext}->[1])) {
-                @extlist = @{$rStatus->{ext}};
+              if (ref($rStatus->{ext}) eq "ARRAY") {
+                my @extlist = @{$rStatus->{ext}};
+                my $created = 0;
+                for my $extx (@extlist) {
+                  if (-e "$sourcedir/$f$extx") {
+                    ($newname, $res1) = addFileCopyJob("$sourcedir/$f$extx",
+                                                       "$destdirOfSubdocuments",
+                                                       $rStatus->{"filetype"},
+                                                       $rFiles, $created);
+                    print "Added ($res1) file \"$sourcedir/$f$extx\" to be copied to \"$newname\"\n";
+                    if (!$created && $extx ne "") {
+                      $newname =~ s/$extx$//;
+                    }
+                    $created = 1;
+                  }
+                }
+                print "WARNING: No prefixed file.(" . join('|', @extlist) . ") seens to exist, at \"$source:$fi_line_no\"\n" if (!$created);
               }
               else {
-                @extlist = ($ext);
-              }
-              my $created = 0;
-              for my $extx (@extlist) {
-                if (-e "$sourcedir/$f$extx") {
-	          ($newname, $res1) = addFileCopyJob("$sourcedir/$f$extx",
+	      ($newname, $res1) = addFileCopyJob("$sourcedir/$f$ext",
 						  "$destdirOfSubdocuments",
 						  $rStatus->{"filetype"},
-						  $rFiles, $created);
-	          print "Added ($res1) file \"$sourcedir/$f$ext\" to be copied to \"$newname\"\n";
-		  if (!$created && $extx ne "") {
-		    $newname =~ s/$extx$//;
-		  }
-                  $created = 1;
-		}
+                                                   $rFiles, 0);
+	      print "Added ($res1) file \"$sourcedir/$f$ext\" to be copied to \"$newname\"\n";
+	      if ($ext ne "") {
+		$newname =~ s/$ext$//;
+	      }
               }
 	      $f = $newname;
 	      $res += $res1;
@@ -256,7 +264,7 @@ sub interpretedCopy($$$$)
           for my $fr (@{$filelist}) {
             push(@rel_list, File::Spec->abs2rel($fr, $destdir));
           }
-	  $rF->[$fidx] = join($separator, @rel_list);
+          $rF->[$fidx] = join($separator, @rel_list);
 	  $l = join('', @{$rF});
 	}
       }
@@ -309,16 +317,16 @@ sub copyJob($$)
   for my $k (values %type2hash) {
     if ($rFiles->{$source}->{$k}) {
       if (! $rFiles->{$source}->{$k . "copied"}) {
-	$rFiles->{$source}->{$k . "copied"} = 1;
-	my $dest = $rFiles->{$source}->{$k};
-	push(@dest, $dest);
-	if ($k =~ /^copyonly/) {
-	  diestack("Could not copy \"$source\" to \"$dest\"") if (! cp($source, $dest));
-	}
-	else {
-	  interpretedCopy($source, $dest, $destdirOfSubdocuments, $rFiles);
-	}
-	$res += 1;
+        $rFiles->{$source}->{$k . "copied"} = 1;
+        my $dest = $rFiles->{$source}->{$k};
+        push(@dest, $dest);
+        if ($k eq "copyonly") {
+          diestack("Could not copy \"$source\" to \"$dest\"") if (! cp($source, $dest));
+        }
+        else {
+          interpretedCopy($source, $dest, $destdirOfSubdocuments, $rFiles);
+        }
+        $res += 1;
       }
     }
   }
@@ -411,7 +419,7 @@ sub addFileCopyJob($$$$$)
   }
   if (!defined($rJob->{$hashname})) {
     addNewJob($source,
-	       createTemporaryFileName($source, $destdirOfSubdocuments, $created),
+               createTemporaryFileName($source, $destdirOfSubdocuments, $created),
 	       "$hashname", $rJob, $rFiles);
     $res = 1;
   }
