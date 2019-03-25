@@ -190,6 +190,7 @@ dist_frinsetexamples_DATA = \
 
 frmoduleexamplesdir = $(pkgdatadir)/examples/fr/Modules
 dist_frmoduleexamples_DATA = \
+	examples/fr/Presentations/Braille.lyx \
 	examples/fr/Modules/Linguistics.lyx \
 	examples/fr/Modules/Multilingual_Captions.lyx \
 	examples/fr/Modules/PDF_Comments.lyx
@@ -200,8 +201,7 @@ dist_frpresentationexamples_DATA = \
 	examples/fr/Presentations/Beamer_Article_%28Standard_Class%29.lyx \
 	examples/fr/Presentations/Foils.lyx \
 	examples/fr/Presentations/Powerdot.lyx \
-	examples/fr/Presentations/Seminar.lyx \
-	examples/fr/Presentations/Braille.lyx
+	examples/fr/Presentations/Seminar.lyx
 
 glexamplesdir = $(pkgdatadir)/examples/gl
 dist_glexamples_DATA = \
