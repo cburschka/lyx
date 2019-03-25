@@ -276,7 +276,7 @@ sub checkForLayoutStart($)
     $selem{name} = $1;
     unshift(@stack, \%selem);
     if ($selem{name} =~ /^(Picture|Photo)$/ ) {
-      my $rElem = newMatch("ext" => [".eps", ".png"],
+      my $rElem = newMatch("ext" => [".eps", ".png", ""],
                             "filetype" => "copy_only",
 			    "search" => qr/^(.+)/,
 			    "result" => ["", "", ""]);
