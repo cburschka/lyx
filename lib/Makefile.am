@@ -190,7 +190,7 @@ dist_frinsetexamples_DATA = \
 
 frmoduleexamplesdir = $(pkgdatadir)/examples/fr/Modules
 dist_frmoduleexamples_DATA = \
-	examples/fr/Presentations/Braille.lyx \
+	examples/fr/Modules/Braille.lyx \
 	examples/fr/Modules/Linguistics.lyx \
 	examples/fr/Modules/Multilingual_Captions.lyx \
 	examples/fr/Modules/PDF_Comments.lyx
