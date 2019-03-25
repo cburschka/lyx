@@ -207,7 +207,7 @@ sub interpretedCopy($$$$)
 	    else {
 	      my ($newname, $res1);
               my @extlist = ();
-              if (defined($rStatus->{ext}->[1])) {
+              if (ref($rStatus->{ext}) eq "ARRAY" && defined($rStatus->{ext}->[1])) {
                 @extlist = @{$rStatus->{ext}};
               }
               else {
