@@ -39,10 +39,12 @@
 
 !!!The following new LyX functions have been introduced in 2.4:
 
-* buffer-write-as-template is a new convenient function to ease saving a document
+* buffer-write-as-template is a new convenience function to ease saving a document
   in the (personal) templates folder.
 
 * export-cancel: Used to cancel background export processes.
+
+* tabular-style-insert: Insert a table in a specified style.
 
 
 !!!The following LyX functions have been changed in 2.4:
