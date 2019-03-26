@@ -65,6 +65,7 @@
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
+#include "support/Package.h"
 #include "support/TempFile.h"
 
 #include "frontends/alert.h"
@@ -74,6 +75,7 @@
 #include <QColor>
 #include <QColorDialog>
 #include <QCloseEvent>
+#include <QDirIterator>
 #include <QFontDatabase>
 #include <QHeaderView>
 #include <QScrollBar>
@@ -828,6 +830,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(textLayoutModule->justCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 
+	connect(textLayoutModule->tableStyleCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+
 	textLayoutModule->lspacingLE->setValidator(new QDoubleValidator(
 		textLayoutModule->lspacingLE));
 	textLayoutModule->indentLE->setValidator(new LengthValidator(
@@ -852,6 +857,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	// initialize the length validator
 	bc().addCheckedLineEdit(textLayoutModule->indentLE);
 	bc().addCheckedLineEdit(textLayoutModule->skipLE);
+	
+	textLayoutModule->tableStyleCO->addItem(qt_("Default"), toqstr("default"));
+	getTableStyles();
 
 
 	// master/child handling
@@ -2967,6 +2975,45 @@ void GuiDocument::updateNumbering()
 }
 
 
+void GuiDocument::getTableStyles()
+{
+	// We look for lyx files in the subdirectory dir of
+	//   1) user_lyxdir
+	//   2) build_lyxdir (if not empty)
+	//   3) system_lyxdir
+	// in this order. Files with a given sub-hierarchy will
+	// only be listed once.
+	// We also consider i18n subdirectories and store them separately.
+	QStringList dirs;
+
+	// The three locations to look at.
+	string const user = addPath(package().user_support().absFileName(), "tabletemplates");
+	string const build = addPath(package().build_support().absFileName(), "tabletemplates");
+	string const system = addPath(package().system_support().absFileName(), "tabletemplates");
+
+	dirs << toqstr(user)
+	     << toqstr(build)
+	     << toqstr(system);
+
+	for (int i = 0; i < dirs.size(); ++i) {
+		QString const dir = dirs.at(i);
+		QDirIterator it(dir, QDir::Files, QDirIterator::Subdirectories);
+		while (it.hasNext()) {
+			QString fn = QFileInfo(it.next()).fileName();
+			if (!fn.endsWith(".lyx") || fn.contains("_1x"))
+				continue;
+			QString data = fn.left(fn.lastIndexOf(".lyx"));
+			QString guiname = data;
+			guiname = toqstr(translateIfPossible(qstring_to_ucs4(guiname.replace('_', ' '))));
+			QString relpath = toqstr(makeRelPath(qstring_to_ucs4(fn),
+							     qstring_to_ucs4(dir)));
+			if (textLayoutModule->tableStyleCO->findData(data) == -1)
+				textLayoutModule->tableStyleCO->addItem(guiname, data);
+		}
+	}
+}
+
+
 void GuiDocument::updateDefaultFormat()
 {
 	if (!bufferview())
@@ -3285,6 +3332,8 @@ void GuiDocument::applyView()
 			break;
 		}
 	}
+	bp_.tablestyle = fromqstr(textLayoutModule->tableStyleCO->itemData(
+				      textLayoutModule->tableStyleCO->currentIndex()).toString());
 
 	bp_.options =
 		fromqstr(latexModule->optionsLE->text());
@@ -3737,6 +3786,9 @@ void GuiDocument::paramsToDialog()
 			bp_.spacing().getValueAsString());
 	}
 	setLSpacing(nitem);
+	int ts = textLayoutModule->tableStyleCO->findData(toqstr(bp_.tablestyle));
+	if (ts != -1)
+		textLayoutModule->tableStyleCO->setCurrentIndex(ts);
 
 	if (bp_.paragraph_separation == BufferParams::ParagraphIndentSeparation) {
 		textLayoutModule->indentRB->setChecked(true);

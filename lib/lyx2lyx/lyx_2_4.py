@@ -1434,6 +1434,15 @@ def revert_soul(document):
     revert_flex_inset(document.body, "Capitalize", "\\caps")
 
 
+def revert_tablestyle(document):
+    " Remove tablestyle params "
+
+    i = 0
+    i = find_token(document.header, "\\tablestyle", 0)
+    if i != -1:
+        del document.header[i]
+
+
 
 ##
 # Conversion hub
@@ -1464,10 +1473,12 @@ convert = [
            [565, [convert_AdobeFonts]], # Handle adobe fonts in GUI
            [566, [convert_hebrew_parentheses]],
            [567, []],
-           [568, []]
+           [568, []],
+           [569, []]
           ]
 
 revert =  [
+           [568, [revert_tablestyle]],
            [567, [revert_soul]],
            [566, [revert_malayalam]],
            [565, [revert_hebrew_parentheses]],

@@ -366,6 +366,8 @@ public:
 	///
 	std::string pagestyle;
 	///
+	std::string tablestyle;
+	///
 	RGBColor backgroundcolor;
 	///
 	bool isbackgroundcolor;

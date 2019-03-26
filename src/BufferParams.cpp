@@ -435,6 +435,7 @@ BufferParams::BufferParams()
 	columns = 1;
 	listings_params = string();
 	pagestyle = "default";
+	tablestyle = "default";
 	suppress_date = false;
 	justification = true;
 	// no color is the default (white)
@@ -1052,6 +1053,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		sides = sidestranslator().find(psides);
 	} else if (token == "\\paperpagestyle") {
 		lex >> pagestyle;
+	} else if (token == "\\tablestyle") {
+		lex >> tablestyle;
 	} else if (token == "\\bullet") {
 		readBullets(lex);
 	} else if (token == "\\bulletLaTeX") {
@@ -1396,7 +1399,8 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	   << "\n\\dynamic_quotes " << dynamic_quotes
 	   << "\n\\papercolumns " << columns
 	   << "\n\\papersides " << sides
-	   << "\n\\paperpagestyle " << pagestyle << '\n';
+	   << "\n\\paperpagestyle " << pagestyle
+	   << "\n\\tablestyle " << tablestyle << '\n';
 	if (!listings_params.empty())
 		os << "\\listings_params \"" <<
 			InsetListingsParams(listings_params).encodedString() << "\"\n";

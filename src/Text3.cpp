@@ -2077,7 +2077,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_TABULAR_INSERT:
+	case LFUN_TABULAR_INSERT: {
+		if (cur.buffer()->masterParams().tablestyle != "default") {
+			FuncRequest fr(LFUN_TABULAR_STYLE_INSERT,
+				       cur.buffer()->masterParams().tablestyle + " "
+				       + to_ascii(cmd.argument()));
+			lyx::dispatch(fr);
+			break;
+		}
 		// if there were no arguments, just open the dialog
 		if (doInsertInset(cur, this, cmd, false, true))
 			cur.posForward();
@@ -2085,6 +2092,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			bv->showDialog("tabularcreate");
 
 		break;
+	}
 
 	case LFUN_TABULAR_STYLE_INSERT: {
 		string const style = cmd.getArg(0);

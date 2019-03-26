@@ -32,8 +32,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 568 // spitz :soul.module
-#define LYX_FORMAT_TEX2LYX 568
+#define LYX_FORMAT_LYX 569 // spitz: tablestyle buffer param
+#define LYX_FORMAT_TEX2LYX 569
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
 #ifndef _MSC_VER

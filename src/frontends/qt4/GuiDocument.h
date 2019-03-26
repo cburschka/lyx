@@ -211,6 +211,8 @@ private:
 	void setLayoutComboByIDString(std::string const & idString);
 	/// Update quotes styles combo, indicating the current language's default
 	void updateQuoteStyles(bool const set = false);
+	///
+	void getTableStyles();
 
 	/// available modules
 	GuiIdListModel modules_av_model_;
