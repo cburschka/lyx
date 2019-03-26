@@ -46,4 +46,4 @@ These typically need to be modified for each LyX release
 
 !define MiKTeXRepo "ftp://ftp.tu-chemnitz.de/pub/tex/systems/win32/miktex/tm/packages/"
 
-!define ImageMagickVersion "7.0.8"
+!define ImageMagickVersion "7.0.7"
