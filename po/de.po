@@ -95,15 +95,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-03-23 11:48+0100\n"
-"PO-Revision-Date: 2019-03-23 12:07+0100\n"
+"POT-Creation-Date: 2019-03-26 13:41+0100\n"
+"PO-Revision-Date: 2019-03-26 13:58+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
-"Language-Team: German <lyx-docs@lists.lyx.org>\n"
+"Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 18.12.3\n"
+"X-Generator: Lokalize 18.12.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:42
@@ -785,7 +785,7 @@ msgstr "A&lle hinzufügen"
 #: src/frontends/qt4/GuiView.cpp:2925 src/frontends/qt4/GuiView.cpp:2970
 #: src/frontends/qt4/GuiView.cpp:3254 src/frontends/qt4/GuiView.cpp:3268
 #: src/frontends/qt4/GuiView.cpp:3370 src/frontends/qt4/GuiView.cpp:3398
-#: src/frontends/qt4/GuiView.cpp:4102 src/frontends/qt4/GuiView.cpp:4109
+#: src/frontends/qt4/GuiView.cpp:4106 src/frontends/qt4/GuiView.cpp:4113
 #: src/insets/InsetBibtex.cpp:148
 msgid "&Cancel"
 msgstr "&Abbrechen"
@@ -840,6 +840,7 @@ msgstr "&Größe:"
 #: src/frontends/qt4/GuiListings.cpp:154 src/frontends/qt4/GuiListings.cpp:161
 #: src/frontends/qt4/GuiPrefs.cpp:2432 src/frontends/qt4/GuiPrefs.cpp:2545
 #: src/frontends/qt4/GuiPrintNomencl.cpp:47
+#: src/frontends/qt4/GuiTabularCreate.cpp:107
 #: src/frontends/qt4/GuiViewSource.cpp:338
 msgid "Default"
 msgstr "Standard"
@@ -1015,7 +1016,7 @@ msgstr "S&prache:"
 #: src/frontends/qt4/ui/ListingsUi.ui:343 lib/layouts/bicaption.module:15
 #: lib/layouts/europasscv.layout:350 lib/layouts/europasscv.layout:383
 #: lib/layouts/europasscv.layout:390 lib/layouts/europecv.layout:247
-#: lib/layouts/europecv.layout:253 lib/layouts/moderncv.layout:467
+#: lib/layouts/europecv.layout:253 lib/layouts/moderncv.layout:477
 #: src/frontends/qt4/GuiDocument.cpp:1618 src/frontends/qt4/GuiPrefs.cpp:2387
 #: src/frontends/qt4/Menus.cpp:921
 msgid "Language"
@@ -2951,7 +2952,7 @@ msgid "&Columns:"
 msgstr "&Spalten:"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:122
-#: src/frontends/qt4/ui/TabularCreateUi.ui:106
+#: src/frontends/qt4/ui/TabularCreateUi.ui:112
 msgid "Resize this to the correct table dimensions"
 msgstr "Verändern Sie die Größe hinsichtlich der korrekten Tabellenmaße"
 
@@ -5013,6 +5014,10 @@ msgstr "Wählen Sie dies, um alle verfügbaren Zeichen auf einmal anzuzeigen"
 msgid "&Display all"
 msgstr "&Alle Anzeigen"
 
+#: src/frontends/qt4/ui/TabularCreateUi.ui:121
+msgid "&Style:"
+msgstr "&Stil:"
+
 #: src/frontends/qt4/ui/TabularUi.ui:33
 msgid "&Table Settings"
 msgstr "&Tabellen-Einstellungen"
@@ -5634,7 +5639,7 @@ msgid "Body Only"
 msgstr "Nur Haupttext"
 
 #: src/frontends/qt4/ui/WorkAreaUi.ui:82 src/frontends/qt4/GuiView.cpp:3398
-#: src/frontends/qt4/GuiView.cpp:4102
+#: src/frontends/qt4/GuiView.cpp:4106
 msgid "&Reload"
 msgstr "Ne&u laden"
 
@@ -5991,7 +5996,7 @@ msgstr "Kurztitel"
 #: lib/layouts/ltugboat.layout:161 lib/layouts/lyxmacros.inc:45
 #: lib/layouts/lyxmacros.inc:66 lib/layouts/moderncv.layout:41
 #: lib/layouts/moderncv.layout:84 lib/layouts/moderncv.layout:117
-#: lib/layouts/moderncv.layout:479 lib/layouts/revtex4-1.layout:67
+#: lib/layouts/moderncv.layout:489 lib/layouts/revtex4-1.layout:67
 #: lib/layouts/revtex4-1.layout:158 lib/layouts/revtex4-1.layout:181
 #: lib/layouts/revtex4.layout:107 lib/layouts/revtex4.layout:137
 #: lib/layouts/revtex4.layout:263 lib/layouts/sciposter.layout:41
@@ -6655,9 +6660,9 @@ msgstr "Lösung \\thesolution."
 #: lib/layouts/AEA.layout:292 lib/layouts/elsart.layout:421
 #: lib/layouts/europasscv.layout:224 lib/layouts/europasscv.layout:260
 #: lib/layouts/europecv.layout:169 lib/layouts/fixme.module:150
-#: lib/layouts/fixme.module:192 lib/layouts/moderncv.layout:381
-#: lib/layouts/moderncv.layout:382 lib/layouts/moderncv.layout:403
-#: lib/layouts/moderncv.layout:404
+#: lib/layouts/fixme.module:192 lib/layouts/moderncv.layout:391
+#: lib/layouts/moderncv.layout:392 lib/layouts/moderncv.layout:413
+#: lib/layouts/moderncv.layout:414
 #: lib/layouts/theorems-ams-extended-bytype.module:272
 #: lib/layouts/theorems-ams-extended-bytype.module:281
 #: lib/layouts/theorems-ams-extended-bytype.module:284
@@ -6942,7 +6947,7 @@ msgstr "Anhänge"
 #: lib/layouts/kluwer.layout:306 lib/layouts/llncs.layout:270
 #: lib/layouts/maa-monthly.layout:76 lib/layouts/maa-monthly.layout:91
 #: lib/layouts/maa-monthly.layout:111 lib/layouts/maa-monthly.layout:126
-#: lib/layouts/moderncv.layout:500 lib/layouts/powerdot.layout:377
+#: lib/layouts/moderncv.layout:510 lib/layouts/powerdot.layout:377
 #: lib/layouts/revtex4-1.layout:217 lib/layouts/revtex4.layout:244
 #: lib/layouts/siamltex.layout:327 lib/layouts/sigplanconf.layout:227
 #: lib/layouts/simplecv.layout:178 lib/layouts/stdstruct.inc:58
@@ -6990,7 +6995,7 @@ msgstr "Kurztitel für den Anhang"
 #: lib/layouts/ijmpc.layout:468 lib/layouts/ijmpd.layout:481
 #: lib/layouts/jasatex.layout:269 lib/layouts/latex8.layout:127
 #: lib/layouts/llncs.layout:269 lib/layouts/memoir.layout:265
-#: lib/layouts/memoir.layout:267 lib/layouts/moderncv.layout:499
+#: lib/layouts/memoir.layout:267 lib/layouts/moderncv.layout:509
 #: lib/layouts/mwbk.layout:23 lib/layouts/mwbk.layout:25
 #: lib/layouts/mwrep.layout:14 lib/layouts/mwrep.layout:16
 #: lib/layouts/powerdot.layout:376 lib/layouts/recipebook.layout:47
@@ -7016,7 +7021,7 @@ msgstr "Literaturverzeichnis"
 #: lib/layouts/iucr.layout:239 lib/layouts/iucr.layout:246
 #: lib/layouts/jasatex.layout:285 lib/layouts/kluwer.layout:347
 #: lib/layouts/kluwer.layout:360 lib/layouts/llncs.layout:285
-#: lib/layouts/moderncv.layout:515 lib/layouts/siamltex.layout:342
+#: lib/layouts/moderncv.layout:525 lib/layouts/siamltex.layout:342
 #: lib/layouts/stdstruct.inc:70 lib/layouts/svcommon.inc:591
 #: src/insets/InsetBibtex.cpp:909 src/insets/InsetBibtex.cpp:982
 #: src/output_plaintext.cpp:153
@@ -7030,7 +7035,7 @@ msgstr "Literaturverzeichnis"
 #: lib/layouts/elsarticle.layout:309 lib/layouts/ijmpc.layout:493
 #: lib/layouts/ijmpd.layout:506 lib/layouts/iopart.layout:293
 #: lib/layouts/jasatex.layout:294 lib/layouts/kluwer.layout:372
-#: lib/layouts/llncs.layout:293 lib/layouts/moderncv.layout:525
+#: lib/layouts/llncs.layout:293 lib/layouts/moderncv.layout:535
 #: lib/layouts/powerdot.layout:397 lib/layouts/siamltex.layout:354
 #: lib/layouts/simplecv.layout:190 lib/layouts/stdstruct.inc:87
 #: lib/layouts/svcommon.inc:599
@@ -7044,7 +7049,7 @@ msgstr "Lit.-Vorspann"
 #: lib/layouts/elsarticle.layout:310 lib/layouts/ijmpc.layout:494
 #: lib/layouts/ijmpd.layout:507 lib/layouts/iopart.layout:294
 #: lib/layouts/jasatex.layout:295 lib/layouts/kluwer.layout:373
-#: lib/layouts/llncs.layout:294 lib/layouts/moderncv.layout:526
+#: lib/layouts/llncs.layout:294 lib/layouts/moderncv.layout:536
 #: lib/layouts/powerdot.layout:398 lib/layouts/siamltex.layout:355
 #: lib/layouts/simplecv.layout:191 lib/layouts/stdstruct.inc:88
 #: lib/layouts/svcommon.inc:600
@@ -7058,7 +7063,7 @@ msgstr "Literaturverzeichnis-Vorspann"
 #: lib/layouts/elsarticle.layout:311 lib/layouts/ijmpc.layout:495
 #: lib/layouts/ijmpd.layout:508 lib/layouts/iopart.layout:295
 #: lib/layouts/jasatex.layout:296 lib/layouts/kluwer.layout:374
-#: lib/layouts/llncs.layout:295 lib/layouts/moderncv.layout:527
+#: lib/layouts/llncs.layout:295 lib/layouts/moderncv.layout:537
 #: lib/layouts/powerdot.layout:399 lib/layouts/siamltex.layout:356
 #: lib/layouts/simplecv.layout:192 lib/layouts/stdstruct.inc:89
 #: lib/layouts/svcommon.inc:601
@@ -7070,7 +7075,7 @@ msgstr ""
 msgid "Biography"
 msgstr "Biographie"
 
-#: lib/layouts/IEEEtran.layout:386 lib/layouts/moderncv.layout:205
+#: lib/layouts/IEEEtran.layout:386 lib/layouts/moderncv.layout:206
 msgid "Photo"
 msgstr "Foto"
 
@@ -7321,7 +7326,7 @@ msgstr "Danksagungen."
 #: lib/layouts/iucr.layout:46 lib/layouts/jss.layout:25
 #: lib/layouts/kluwer.layout:62 lib/layouts/latex8.layout:47
 #: lib/layouts/llncs.layout:48 lib/layouts/ltugboat.layout:47
-#: lib/layouts/memoir.layout:93 lib/layouts/moderncv.layout:234
+#: lib/layouts/memoir.layout:93 lib/layouts/moderncv.layout:244
 #: lib/layouts/numrevtex.inc:6 lib/layouts/paper.layout:54
 #: lib/layouts/powerdot.layout:233 lib/layouts/revtex.layout:40
 #: lib/layouts/revtex4-1.layout:33 lib/layouts/revtex4.layout:68
@@ -7342,7 +7347,7 @@ msgstr "Abschnitt"
 #: lib/layouts/iucr.layout:52 lib/layouts/jss.layout:29
 #: lib/layouts/kluwer.layout:71 lib/layouts/latex8.layout:56
 #: lib/layouts/llncs.layout:57 lib/layouts/ltugboat.layout:68
-#: lib/layouts/memoir.layout:108 lib/layouts/moderncv.layout:267
+#: lib/layouts/memoir.layout:108 lib/layouts/moderncv.layout:277
 #: lib/layouts/numrevtex.inc:15 lib/layouts/paper.layout:63
 #: lib/layouts/revtex.layout:52 lib/layouts/scrclass.inc:88
 #: lib/layouts/siamltex.layout:390 lib/layouts/simplecv.layout:59
@@ -7378,7 +7383,7 @@ msgstr "Unterunterabschnitt"
 #: lib/layouts/g-brief.layout:195 lib/layouts/g-brief2.layout:54
 #: lib/layouts/g-brief2.layout:862 lib/layouts/jasatex.layout:148
 #: lib/layouts/kluwer.layout:152 lib/layouts/lettre.layout:56
-#: lib/layouts/lettre.layout:219 lib/layouts/moderncv.layout:563
+#: lib/layouts/lettre.layout:219 lib/layouts/moderncv.layout:573
 #: lib/layouts/powerdot.layout:90 lib/layouts/revtex.layout:112
 #: lib/layouts/revtex4-1.layout:151 lib/layouts/revtex4.layout:127
 #: lib/layouts/scrclass.inc:209 lib/layouts/scrlettr.layout:165
@@ -7550,7 +7555,7 @@ msgstr "American Astronomical Society (AASTeX v. 5)"
 #: lib/layouts/apa.layout:159 lib/layouts/apa6.layout:149
 #: lib/layouts/iucr.layout:175 lib/layouts/jasatex.layout:106
 #: lib/layouts/latex8.layout:89 lib/layouts/maa-monthly.layout:109
-#: lib/layouts/moderncv.layout:347 lib/layouts/moderncv.layout:348
+#: lib/layouts/moderncv.layout:357 lib/layouts/moderncv.layout:358
 #: lib/layouts/revtex4-1.layout:66 lib/layouts/revtex4.layout:136
 #: lib/layouts/sigplanconf.layout:169
 msgid "Affiliation"
@@ -8066,14 +8071,14 @@ msgstr "Straße"
 #: lib/layouts/acmart.layout:254 lib/layouts/acmart.layout:256
 #: lib/layouts/agu_stdtitle.inc:460 lib/layouts/agu_stdtitle.inc:462
 #: lib/layouts/iucr.layout:75 lib/layouts/iucr.layout:80
-#: lib/layouts/moderncv.layout:355 lib/layouts/moderncv.layout:356
+#: lib/layouts/moderncv.layout:365 lib/layouts/moderncv.layout:366
 msgid "City"
 msgstr "Stadt"
 
 #: lib/layouts/acmart.layout:262 lib/layouts/acmart.layout:264
 #: lib/layouts/agu_stdtitle.inc:496 lib/layouts/agu_stdtitle.inc:498
 #: lib/layouts/iucr.layout:97 lib/layouts/iucr.layout:100
-#: lib/layouts/moderncv.layout:360 lib/layouts/moderncv.layout:361
+#: lib/layouts/moderncv.layout:370 lib/layouts/moderncv.layout:371
 msgid "Country"
 msgstr "Land"
 
@@ -8741,7 +8746,7 @@ msgstr "Unterparagraph"
 msgid "Subsubparagraph"
 msgstr "Unterunterparagraph"
 
-#: lib/layouts/agu_stdtitle.inc:13 lib/layouts/moderncv.layout:317
+#: lib/layouts/agu_stdtitle.inc:13 lib/layouts/moderncv.layout:327
 msgid "Header"
 msgstr "Kopfzeile"
 
@@ -9594,7 +9599,7 @@ msgstr "Die Längste Marke in dieser Liste (gibt die Einzugsbreite vor)"
 #: lib/layouts/europasscv.layout:188 lib/layouts/europecv.layout:130
 #: lib/layouts/foils.layout:45 lib/layouts/ltugboat.layout:48
 #: lib/layouts/ltugboat.layout:69 lib/layouts/memoir.layout:213
-#: lib/layouts/moderncv.layout:235 lib/layouts/powerdot.layout:235
+#: lib/layouts/moderncv.layout:245 lib/layouts/powerdot.layout:235
 #: lib/layouts/scrclass.inc:168 lib/layouts/simplecv.layout:32
 #: lib/layouts/stdsections.inc:13 lib/layouts/stdsections.inc:47
 #: lib/layouts/stdsections.inc:78 lib/layouts/svcommon.inc:117
@@ -9791,14 +9796,14 @@ msgstr "Eine Kurzform des Rahmentitels, die in manchen Themen verwendet wird"
 msgid "FrameSubtitle"
 msgstr "RahmenUntertitel"
 
-#: lib/layouts/beamer.layout:658 lib/layouts/moderncv.layout:305
-#: lib/layouts/moderncv.layout:320
+#: lib/layouts/beamer.layout:658 lib/layouts/moderncv.layout:315
+#: lib/layouts/moderncv.layout:330
 msgid "Column"
 msgstr "Spalte"
 
 #: lib/layouts/beamer.layout:659 lib/layouts/beamer.layout:685
 #: lib/layouts/beamer.layout:686 lib/layouts/beamer.layout:696
-#: lib/layouts/moderncv.layout:284 lib/layouts/multicol.module:14
+#: lib/layouts/moderncv.layout:294 lib/layouts/multicol.module:14
 msgid "Columns"
 msgstr "Spalten"
 
@@ -9870,7 +9875,7 @@ msgid "Overprint Area Width"
 msgstr "Überdruckbereichsbreite"
 
 #: lib/layouts/beamer.layout:774 lib/layouts/europasscv.layout:176
-#: lib/layouts/graphicboxes.module:48 lib/layouts/moderncv.layout:310
+#: lib/layouts/graphicboxes.module:48 lib/layouts/moderncv.layout:320
 #: lib/layouts/sectionbox.module:21 src/frontends/qt4/GuiBox.cpp:75
 msgid "Width"
 msgstr "Breite"
@@ -9900,7 +9905,7 @@ msgid "Overlay Area Height"
 msgstr "Überlagerungsbereichshöhe"
 
 #: lib/layouts/beamer.layout:838 lib/layouts/graphicboxes.module:55
-#: lib/layouts/moderncv.layout:210 src/frontends/qt4/GuiBox.cpp:74
+#: lib/layouts/moderncv.layout:219 src/frontends/qt4/GuiBox.cpp:74
 msgid "Height"
 msgstr "Höhe"
 
@@ -10023,7 +10028,7 @@ msgid "Quotation"
 msgstr "Zitat (lang)"
 
 #: lib/layouts/beamer.layout:1214 lib/layouts/egs.layout:121
-#: lib/layouts/moderncv.layout:221 lib/layouts/powerdot.layout:433
+#: lib/layouts/moderncv.layout:231 lib/layouts/powerdot.layout:433
 #: lib/layouts/stdlayouts.inc:34
 msgid "Quote"
 msgstr "Zitat (kurz)"
@@ -10952,8 +10957,8 @@ msgstr "DinBrief"
 #: lib/layouts/g-brief.layout:22 lib/layouts/g-brief.layout:41
 #: lib/layouts/g-brief.layout:238 lib/layouts/g-brief2.layout:58
 #: lib/layouts/g-brief2.layout:64 lib/layouts/iopart.layout:126
-#: lib/layouts/moderncv.layout:489 lib/layouts/moderncv.layout:496
-#: lib/layouts/moderncv.layout:540 lib/layouts/scrlettr.layout:42
+#: lib/layouts/moderncv.layout:499 lib/layouts/moderncv.layout:506
+#: lib/layouts/moderncv.layout:550 lib/layouts/scrlettr.layout:42
 #: lib/layouts/scrlettr.layout:43 lib/layouts/scrlettr.layout:74
 #: lib/layouts/scrlettr.layout:117 lib/layouts/scrlttr2.layout:98
 #: lib/layouts/scrlttr2.layout:150 lib/layouts/stdletter.inc:53
@@ -11120,7 +11125,7 @@ msgstr "Betreff:"
 #: lib/layouts/dinbrief.layout:184 lib/layouts/frletter.layout:37
 #: lib/layouts/g-brief.layout:211 lib/layouts/g-brief2.layout:56
 #: lib/layouts/g-brief2.layout:905 lib/layouts/lettre.layout:68
-#: lib/layouts/lettre.layout:547 lib/layouts/moderncv.layout:575
+#: lib/layouts/lettre.layout:547 lib/layouts/moderncv.layout:585
 #: lib/layouts/scrlettr.layout:63 lib/layouts/scrlttr2.layout:97
 #: lib/layouts/stdletter.inc:52
 msgid "Opening"
@@ -11135,7 +11140,7 @@ msgstr "Anrede:"
 #: lib/layouts/dinbrief.layout:200 lib/layouts/frletter.layout:45
 #: lib/layouts/g-brief.layout:237 lib/layouts/g-brief2.layout:60
 #: lib/layouts/g-brief2.layout:927 lib/layouts/lettre.layout:70
-#: lib/layouts/lettre.layout:561 lib/layouts/moderncv.layout:583
+#: lib/layouts/lettre.layout:561 lib/layouts/moderncv.layout:593
 #: lib/layouts/scrlettr.layout:73 lib/layouts/scrlttr2.layout:118
 #: lib/layouts/stdletter.inc:97
 msgid "Closing"
@@ -11870,7 +11875,7 @@ msgid "Additional vertical space"
 msgstr "Zusätzlicher vertikaler Abstand"
 
 #: lib/layouts/europasscv.layout:212 lib/layouts/europecv.layout:156
-#: lib/layouts/moderncv.layout:374
+#: lib/layouts/moderncv.layout:384
 msgid "Item"
 msgstr "Stichpunkt"
 
@@ -11879,7 +11884,7 @@ msgid "Summary of the item, can also be the time span"
 msgstr "Zusammenfassung des Eintrags, kann auch Zeitspanne sein"
 
 #: lib/layouts/europasscv.layout:231 lib/layouts/europecv.layout:176
-#: lib/layouts/moderncv.layout:388
+#: lib/layouts/moderncv.layout:398
 msgid "Item:"
 msgstr "Stichpunkt:"
 
@@ -14232,183 +14237,183 @@ msgstr "Extra-Info"
 msgid "Extra Info:"
 msgstr "Extra-Info:"
 
-#: lib/layouts/moderncv.layout:208
+#: lib/layouts/moderncv.layout:217
 msgid "Photo:"
 msgstr "Foto:"
 
-#: lib/layouts/moderncv.layout:211
+#: lib/layouts/moderncv.layout:220
 msgid "Height the photo is resized to"
 msgstr "Ausgabehöhe des Fotos"
 
-#: lib/layouts/moderncv.layout:215
+#: lib/layouts/moderncv.layout:224
 msgid "Thickness"
 msgstr "Dicke"
 
-#: lib/layouts/moderncv.layout:216
+#: lib/layouts/moderncv.layout:225
 msgid "Thickness of the surrounding frame"
 msgstr "Dicke des Rahmens"
 
-#: lib/layouts/moderncv.layout:255
+#: lib/layouts/moderncv.layout:265
 msgid "EmptySection"
 msgstr "LeererAbschnitt"
 
-#: lib/layouts/moderncv.layout:261
+#: lib/layouts/moderncv.layout:271
 msgid "Empty Section"
 msgstr "Leerer Abschnitt"
 
-#: lib/layouts/moderncv.layout:280
+#: lib/layouts/moderncv.layout:290
 msgid "CloseSection"
 msgstr "SchließeAbschnitt"
 
-#: lib/layouts/moderncv.layout:296
+#: lib/layouts/moderncv.layout:306
 msgid "Columns:"
 msgstr "Spalten:"
 
-#: lib/layouts/moderncv.layout:311
+#: lib/layouts/moderncv.layout:321
 msgid "Optional width"
 msgstr "Optionale Breite"
 
-#: lib/layouts/moderncv.layout:318
+#: lib/layouts/moderncv.layout:328
 msgid "Header content"
 msgstr "Kopfzeileninhalt"
 
-#: lib/layouts/moderncv.layout:328
+#: lib/layouts/moderncv.layout:338
 msgid "Entry"
 msgstr "Eintrag"
 
-#: lib/layouts/moderncv.layout:334 lib/layouts/moderncv.layout:335
+#: lib/layouts/moderncv.layout:344 lib/layouts/moderncv.layout:345
 msgid "Time[[period]]"
 msgstr "Zeitraum"
 
-#: lib/layouts/moderncv.layout:339 lib/layouts/moderncv.layout:340
+#: lib/layouts/moderncv.layout:349 lib/layouts/moderncv.layout:350
 msgid "What?"
 msgstr "Was?"
 
-#: lib/layouts/moderncv.layout:367
+#: lib/layouts/moderncv.layout:377
 msgid "Entry:"
 msgstr "Eintrag:"
 
-#: lib/layouts/moderncv.layout:395
+#: lib/layouts/moderncv.layout:405
 msgid "ItemWithComment"
 msgstr "Eintrag mit Kommentar"
 
-#: lib/layouts/moderncv.layout:398
+#: lib/layouts/moderncv.layout:408
 msgid "Item with Comment:"
 msgstr "Kommentar-Eintrag:"
 
-#: lib/layouts/moderncv.layout:408 lib/layouts/moderncv.layout:409
+#: lib/layouts/moderncv.layout:418 lib/layouts/moderncv.layout:419
 msgid "Text"
 msgstr "Text"
 
-#: lib/layouts/moderncv.layout:425
+#: lib/layouts/moderncv.layout:435
 msgid "ListItem"
 msgstr "Listeneintrag"
 
-#: lib/layouts/moderncv.layout:428
+#: lib/layouts/moderncv.layout:438
 msgid "List Item:"
 msgstr "Listeneintrag:"
 
-#: lib/layouts/moderncv.layout:432
+#: lib/layouts/moderncv.layout:442
 msgid "DoubleItem"
 msgstr "DoppelterEintrag"
 
-#: lib/layouts/moderncv.layout:435
+#: lib/layouts/moderncv.layout:445
 msgid "Double Item:"
 msgstr "Doppelter Eintrag:"
 
-#: lib/layouts/moderncv.layout:439
+#: lib/layouts/moderncv.layout:449
 msgid "Left Summary"
 msgstr "Zusammenfassung links"
 
-#: lib/layouts/moderncv.layout:440
+#: lib/layouts/moderncv.layout:450
 msgid "Left summary"
 msgstr "Zusammenfassung links"
 
-#: lib/layouts/moderncv.layout:444
+#: lib/layouts/moderncv.layout:454
 msgid "Left Text"
 msgstr "Text links"
 
-#: lib/layouts/moderncv.layout:445
+#: lib/layouts/moderncv.layout:455
 msgid "Left text"
 msgstr "Text links"
 
-#: lib/layouts/moderncv.layout:449
+#: lib/layouts/moderncv.layout:459
 msgid "Right Summary"
 msgstr "Zusammenfassung rechts"
 
-#: lib/layouts/moderncv.layout:450
+#: lib/layouts/moderncv.layout:460
 msgid "Right summary"
 msgstr "Zusammenfassung rechts"
 
-#: lib/layouts/moderncv.layout:454
+#: lib/layouts/moderncv.layout:464
 msgid "DoubleListItem"
 msgstr "Doppelter Leisteneintrag"
 
-#: lib/layouts/moderncv.layout:457
+#: lib/layouts/moderncv.layout:467
 msgid "Double List Item:"
 msgstr "Doppelter Listeneintrag:"
 
-#: lib/layouts/moderncv.layout:462
+#: lib/layouts/moderncv.layout:472
 msgid "First Item"
 msgstr "Erster Listeneintrag"
 
-#: lib/layouts/moderncv.layout:463
+#: lib/layouts/moderncv.layout:473
 msgid "First item"
 msgstr "Erster Listeneintrag"
 
-#: lib/layouts/moderncv.layout:471
+#: lib/layouts/moderncv.layout:481
 msgid "Computer"
 msgstr "Computer"
 
-#: lib/layouts/moderncv.layout:475
+#: lib/layouts/moderncv.layout:485
 msgid "MakeCVtitle"
 msgstr "CV-Titel ausgeben"
 
-#: lib/layouts/moderncv.layout:478
+#: lib/layouts/moderncv.layout:488
 msgid "Make CV Title"
 msgstr "CV-Titel ausgeben"
 
-#: lib/layouts/moderncv.layout:485
+#: lib/layouts/moderncv.layout:495
 msgid "MakeLetterTitle"
 msgstr "Brieftitel ausgeben"
 
-#: lib/layouts/moderncv.layout:488
+#: lib/layouts/moderncv.layout:498
 msgid "Make Letter Title"
 msgstr "Brieftitel ausgeben"
 
-#: lib/layouts/moderncv.layout:492
+#: lib/layouts/moderncv.layout:502
 msgid "MakeLetterClosing"
 msgstr "Briefschluss ausgeben"
 
-#: lib/layouts/moderncv.layout:495
+#: lib/layouts/moderncv.layout:505
 msgid "Close Letter"
 msgstr "Briefschluss"
 
-#: lib/layouts/moderncv.layout:536
+#: lib/layouts/moderncv.layout:546
 msgid "Recipient"
 msgstr "Empfänger"
 
-#: lib/layouts/moderncv.layout:544
+#: lib/layouts/moderncv.layout:554
 msgid "Company Name"
 msgstr "Firmenname"
 
-#: lib/layouts/moderncv.layout:545
+#: lib/layouts/moderncv.layout:555
 msgid "Company name"
 msgstr "Firmenname"
 
-#: lib/layouts/moderncv.layout:588
+#: lib/layouts/moderncv.layout:598
 msgid "Enclosing"
 msgstr "Anlagen"
 
-#: lib/layouts/moderncv.layout:593 lib/layouts/svcommon.inc:520
+#: lib/layouts/moderncv.layout:603 lib/layouts/svcommon.inc:520
 msgid "Alternative Name"
 msgstr "Alternativer Name"
 
-#: lib/layouts/moderncv.layout:594
+#: lib/layouts/moderncv.layout:604
 msgid "Alternative instead of 'Enclosure'"
 msgstr "Alternative Anhangskennzeichnung"
 
-#: lib/layouts/moderncv.layout:598
+#: lib/layouts/moderncv.layout:608
 msgid "Enclosing:"
 msgstr "Anhang:"
 
@@ -16215,6 +16220,34 @@ msgstr "Kapitel \\thechapter"
 #: lib/layouts/stdsections.inc:49
 msgid "Appendix \\thechapter"
 msgstr "Anhang \\thechapter"
+
+#: lib/layouts/stdspecialchars.inc:8 lib/ui/stdmenus.inc:463
+msgid "Ligature Break|k"
+msgstr "Ligaturtrenner|r"
+
+#: lib/layouts/stdspecialchars.inc:17 lib/ui/stdmenus.inc:415
+msgid "End of Sentence|E"
+msgstr "Satzendepunkt|S"
+
+#: lib/layouts/stdspecialchars.inc:26 lib/ui/stdmenus.inc:414
+msgid "Ellipsis|i"
+msgstr "Fortsetzungspunkte|F"
+
+#: lib/layouts/stdspecialchars.inc:36 lib/ui/stdmenus.inc:421
+msgid "Menu Separator|M"
+msgstr "Menütrenner|M"
+
+#: lib/layouts/stdspecialchars.inc:49 lib/ui/stdmenus.inc:462
+msgid "Hyphenation Point|H"
+msgstr "Trennmöglichkeit|ö"
+
+#: lib/layouts/stdspecialchars.inc:56 lib/ui/stdmenus.inc:419
+msgid "Breakable Slash|a"
+msgstr "Umbruchfähiger Schrägstrich|ä"
+
+#: lib/layouts/stdspecialchars.inc:65 lib/ui/stdmenus.inc:418
+msgid "Protected Hyphen|y"
+msgstr "Geschützter Trennstrich|T"
 
 #: lib/layouts/subequations.module:2 lib/layouts/subequations.module:10
 #: lib/layouts/subequations.module:13
@@ -19044,17 +19077,17 @@ msgid "End Editing Externally..."
 msgstr "Externe Bearbeitung beenden..."
 
 #: lib/ui/stdcontext.inc:342 lib/ui/stdmenus.inc:108 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1523 src/mathed/InsetMathNest.cpp:561
+#: src/Text3.cpp:1524 src/mathed/InsetMathNest.cpp:561
 msgid "Cut"
 msgstr "Ausschneiden"
 
 #: lib/ui/stdcontext.inc:343 lib/ui/stdmenus.inc:109 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1528 src/mathed/InsetMathNest.cpp:570
+#: src/Text3.cpp:1529 src/mathed/InsetMathNest.cpp:570
 msgid "Copy"
 msgstr "Kopieren"
 
 #: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:110 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1469 src/frontends/qt4/GuiToolbar.cpp:407
+#: src/Text3.cpp:1470 src/frontends/qt4/GuiToolbar.cpp:407
 #: src/mathed/InsetMathGrid.cpp:1579 src/mathed/InsetMathNest.cpp:540
 msgid "Paste"
 msgstr "Einfügen"
@@ -20068,14 +20101,6 @@ msgstr "Vorschau|V"
 msgid "Symbols...|b"
 msgstr "Symbole...|b"
 
-#: lib/ui/stdmenus.inc:414
-msgid "Ellipsis|i"
-msgstr "Fortsetzungspunkte|F"
-
-#: lib/ui/stdmenus.inc:415
-msgid "End of Sentence|E"
-msgstr "Satzendepunkt|S"
-
 #: lib/ui/stdmenus.inc:416
 msgid "Plain Quotation Mark|Q"
 msgstr "Nicht-typographisches Anführungszeichen|N"
@@ -20084,21 +20109,9 @@ msgstr "Nicht-typographisches Anführungszeichen|N"
 msgid "Inner Quotation Mark|n"
 msgstr "Inneres Anführungszeichen|I"
 
-#: lib/ui/stdmenus.inc:418
-msgid "Protected Hyphen|y"
-msgstr "Geschützter Trennstrich|T"
-
-#: lib/ui/stdmenus.inc:419
-msgid "Breakable Slash|a"
-msgstr "Umbruchfähiger Schrägstrich|ä"
-
 #: lib/ui/stdmenus.inc:420
 msgid "Visible Space|V"
 msgstr "Sichtbares Leerzeichen|L"
-
-#: lib/ui/stdmenus.inc:421
-msgid "Menu Separator|M"
-msgstr "Menütrenner|M"
 
 #: lib/ui/stdmenus.inc:422
 msgid "Phonetic Symbols|P"
@@ -20195,14 +20208,6 @@ msgstr "Vertikaler Abstand...|V"
 #: lib/ui/stdmenus.inc:460
 msgid "Phantom|m"
 msgstr "Phantom|m"
-
-#: lib/ui/stdmenus.inc:462
-msgid "Hyphenation Point|H"
-msgstr "Trennmöglichkeit|ö"
-
-#: lib/ui/stdmenus.inc:463
-msgid "Ligature Break|k"
-msgstr "Ligaturtrenner|r"
 
 #: lib/ui/stdmenus.inc:464
 msgid "Optional Line Break|B"
@@ -25863,84 +25868,12 @@ msgid "LyX Archive (tar.gz)"
 msgstr "LyX-Archiv (tar.gz)"
 
 #: lib/examples/Articles:0
-msgid "Game 1"
-msgstr "Spiel 1"
-
-#: lib/examples/Articles:0
 msgid "Game 2"
 msgstr "Spiel 2"
 
 #: lib/examples/Articles:0
-msgid "00 Main File"
-msgstr "00 Hauptdatei"
-
-#: lib/examples/Articles:0
-msgid "01 Dedication"
-msgstr "01 Widmung"
-
-#: lib/examples/Articles:0
-msgid "02 Foreword"
-msgstr "02 Vorwort"
-
-#: lib/examples/Articles:0
-msgid "03 Preface"
-msgstr "03 Vorwort"
-
-#: lib/examples/Articles:0
-msgid "04 Acknowledgements"
-msgstr "04 Danksagungen"
-
-#: lib/examples/Articles:0
-msgid "05 Acronym"
-msgstr "05 Akronyme"
-
-#: lib/examples/Articles:0
-msgid "06 Part"
-msgstr "06 Teil"
-
-#: lib/examples/Articles:0
-msgid "07 Chapter"
-msgstr "07 Kapitel"
-
-#: lib/examples/Articles:0
-msgid "08 Appendix"
-msgstr "08 Anhang"
-
-#: lib/examples/Articles:0
-msgid "09 Glossary"
-msgstr "09 Glossar"
-
-#: lib/examples/Articles:0
-msgid "10 Solutions"
-msgstr "10 Lösungen"
-
-#: lib/examples/Articles:0
-msgid "11 References"
-msgstr "11 Literaturverzeichnis"
-
-#: lib/examples/Articles:0
-msgid "08 Author"
-msgstr "08 Autor"
-
-#: lib/examples/Articles:0
-msgid "05 Contributor List"
-msgstr "05 Liste der Mitwirkenden"
-
-#: lib/examples/Articles:0
-msgid "06 Acronym"
-msgstr "06 Akronyme"
-
-#: lib/examples/Articles:0
-msgid "07 Part"
-msgstr "07 Teil"
-
-#: lib/examples/Articles:0
-msgid "09 Appendix"
-msgstr "09 Anhang"
-
-#: lib/examples/Articles:0
-msgid "10 Glossary"
-msgstr "10 Glossar"
+msgid "Game 1"
+msgstr "Spiel 1"
 
 #: lib/examples/Articles:0
 msgid "Example (LyXified)"
@@ -25960,32 +25893,32 @@ msgid "External Material"
 msgstr "Externes Material"
 
 #: lib/examples/Articles:0
-msgid "XY-Pic"
-msgstr "XY-Pic"
+msgid "Instant Preview"
+msgstr "Sofortige Vorschau"
 
 #: lib/examples/Articles:0
 msgid "XY-Figure"
 msgstr "XY-Figure"
 
 #: lib/examples/Articles:0
-msgid "Minted Listings"
-msgstr "Minted-Programmlistings"
-
-#: lib/examples/Articles:0
 msgid "Minted File Listing"
 msgstr "Minted-Programmlistings (Dateien)"
+
+#: lib/examples/Articles:0
+msgid "Feynman Diagrams"
+msgstr "Feynman-Diagramme"
 
 #: lib/examples/Articles:0
 msgid "Itemize Bullets"
 msgstr "Auflistungszeichen"
 
 #: lib/examples/Articles:0
-msgid "Instant Preview"
-msgstr "Sofortige Vorschau"
+msgid "XY-Pic"
+msgstr "XY-Pic"
 
 #: lib/examples/Articles:0
-msgid "Feynman Diagrams"
-msgstr "Feynman-Diagramme"
+msgid "Minted Listings"
+msgstr "Minted-Programmlistings"
 
 #: lib/examples/Articles:0
 msgid "Graphics and Insets"
@@ -26024,12 +25957,128 @@ msgid "Foils"
 msgstr "Foils"
 
 #: lib/examples/Articles:0
+msgid "Foils Landslide"
+msgstr "Foils (Querformat)"
+
+#: lib/examples/Articles:0
 msgid "Beamer (Complex)"
 msgstr "Beamer (komplex)"
 
 #: lib/examples/Articles:0
-msgid "Foils Landslide"
-msgstr "Foils (Querformat)"
+msgid "Welcome"
+msgstr "Willkommen"
+
+#: lib/examples/Articles:0
+msgid "Multilingual Typesetting (platex)"
+msgstr "Mehrsprachige Dokumente (platex)"
+
+#: lib/examples/Articles:0
+msgid "Multilingual Typesetting (CJKutf8)"
+msgstr "Mehrsprachige Dokumente (CJKutf8)"
+
+#: lib/examples/Articles:0
+msgid "IEEE Transactions Journal"
+msgstr "IEEE Transactions Journal"
+
+#: lib/examples/Articles:0
+msgid "Mathematical Monthly"
+msgstr "Mathematical Monthly"
+
+#: lib/examples/Articles:0
+msgid "Springers Global Journal Template (V. 3)"
+msgstr "Springers globale Vorlage für Zeitschriften (V. 3)"
+
+#: lib/examples/Articles:0
+msgid "IEEE Transactions Conference"
+msgstr "IEEE Transactions Conference"
+
+#: lib/examples/Articles:0
+msgid "AGU article"
+msgstr "AGU-Aufsatz"
+
+#: lib/examples/Articles:0
+msgid "Attic"
+msgstr "Rumpelkammer"
+
+#: lib/examples/Articles:0
+msgid "01 Dedication"
+msgstr "01 Widmung"
+
+#: lib/examples/Articles:0
+msgid "00 Main File"
+msgstr "00 Hauptdatei"
+
+#: lib/examples/Articles:0
+msgid "08 Appendix"
+msgstr "08 Anhang"
+
+#: lib/examples/Articles:0
+msgid "02 Foreword"
+msgstr "02 Vorwort"
+
+#: lib/examples/Articles:0
+msgid "07 Chapter"
+msgstr "07 Kapitel"
+
+#: lib/examples/Articles:0
+msgid "11 References"
+msgstr "11 Literaturverzeichnis"
+
+#: lib/examples/Articles:0
+msgid "03 Preface"
+msgstr "03 Vorwort"
+
+#: lib/examples/Articles:0
+msgid "05 Acronym"
+msgstr "05 Akronyme"
+
+#: lib/examples/Articles:0
+msgid "09 Glossary"
+msgstr "09 Glossar"
+
+#: lib/examples/Articles:0
+msgid "06 Part"
+msgstr "06 Teil"
+
+#: lib/examples/Articles:0
+msgid "10 Solutions"
+msgstr "10 Lösungen"
+
+#: lib/examples/Articles:0
+msgid "04 Acknowledgements"
+msgstr "04 Danksagungen"
+
+#: lib/examples/Articles:0
+msgid "10 Glossary"
+msgstr "10 Glossar"
+
+#: lib/examples/Articles:0
+msgid "08 Author"
+msgstr "08 Autor"
+
+#: lib/examples/Articles:0
+msgid "06 Acronym"
+msgstr "06 Akronyme"
+
+#: lib/examples/Articles:0
+msgid "07 Part"
+msgstr "07 Teil"
+
+#: lib/examples/Articles:0
+msgid "09 Appendix"
+msgstr "09 Anhang"
+
+#: lib/examples/Articles:0
+msgid "05 Contributor List"
+msgstr "05 Liste der Mitwirkenden"
+
+#: lib/examples/Articles:0
+msgid "Simple"
+msgstr "Schlicht"
+
+#: lib/examples/Articles:0
+msgid "Colored"
+msgstr "Farbig"
 
 #: lib/examples/Articles:0
 msgid "Main File"
@@ -26051,49 +26100,21 @@ msgstr "Doktorarbeit"
 msgid "Theses"
 msgstr "Qualifikationsschriften"
 
-#: lib/examples/Articles:0
-msgid "Welcome"
-msgstr "Willkommen"
+#: lib/tabletemplates/Formal.lyx:0
+msgid "Formal"
+msgstr "Formal"
 
-#: lib/examples/Articles:0
-msgid "Multilingual Typesetting (platex)"
-msgstr "Mehrsprachige Dokumente (platex)"
+#: lib/tabletemplates/Formal.lyx:0
+msgid "Grid with Head"
+msgstr "Gitter mit abgesetztem Kopf"
 
-#: lib/examples/Articles:0
-msgid "Multilingual Typesetting (CJKutf8)"
-msgstr "Mehrsprachige Dokumente (CJKutf8)"
+#: lib/tabletemplates/Formal.lyx:0
+msgid "No Borders"
+msgstr "Keine Linien"
 
-#: lib/examples/Articles:0
-msgid "Mathematical Monthly"
-msgstr "Mathematical Monthly"
-
-#: lib/examples/Articles:0
-msgid "Springers Global Journal Template (V. 3)"
-msgstr "Springers globale Vorlage für Zeitschriften (V. 3)"
-
-#: lib/examples/Articles:0
-msgid "IEEE Transactions Conference"
-msgstr "IEEE Transactions Conference"
-
-#: lib/examples/Articles:0
-msgid "IEEE Transactions Journal"
-msgstr "IEEE Transactions Journal"
-
-#: lib/examples/Articles:0
-msgid "AGU article"
-msgstr "AGU-Aufsatz"
-
-#: lib/examples/Articles:0
-msgid "Attic"
-msgstr "Rumpelkammer"
-
-#: lib/examples/Articles:0
-msgid "Colored"
-msgstr "Farbig"
-
-#: lib/examples/Articles:0
-msgid "Simple"
-msgstr "Schlicht"
+#: lib/tabletemplates/Formal.lyx:0
+msgid "Simple Grid"
+msgstr "Einfaches Gitter"
 
 #: src/Author.cpp:57
 #, c-format
@@ -26995,7 +27016,7 @@ msgid "This portion of the document is deleted."
 msgstr "Dieser Teil des Dokuments wird gelöscht."
 
 #: src/BufferView.cpp:1120 src/BufferView.cpp:2142
-#: src/frontends/qt4/GuiView.cpp:3977 src/frontends/qt4/GuiView.cpp:4060
+#: src/frontends/qt4/GuiView.cpp:3977 src/frontends/qt4/GuiView.cpp:4064
 msgid "Absolute filename expected."
 msgstr "Ein absoluter Dateipfad wird erwartet."
 
@@ -27092,17 +27113,17 @@ msgstr "Zweig existiert bereits"
 msgid "Inserting document %1$s..."
 msgstr "Füge Dokument %1$s ein..."
 
-#: src/BufferView.cpp:2899
+#: src/BufferView.cpp:2903
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView.cpp:2901
+#: src/BufferView.cpp:2905
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
 
-#: src/BufferView.cpp:3305
+#: src/BufferView.cpp:3309
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -27113,11 +27134,11 @@ msgstr ""
 "konnte aufgrund des folgenden Fehlers\n"
 "nicht gelesen werden: %2$s"
 
-#: src/BufferView.cpp:3307
+#: src/BufferView.cpp:3311
 msgid "Could not read file"
 msgstr "Die Datei konnte nicht gelesen werden"
 
-#: src/BufferView.cpp:3314
+#: src/BufferView.cpp:3318
 #, c-format
 msgid ""
 "%1$s\n"
@@ -27126,15 +27147,15 @@ msgstr ""
 "%1$s\n"
 "ist nicht lesbar."
 
-#: src/BufferView.cpp:3315 src/output.cpp:39
+#: src/BufferView.cpp:3319 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Die Datei konnte nicht geöffnet werden"
 
-#: src/BufferView.cpp:3322
+#: src/BufferView.cpp:3326
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lese nicht-UTF-8-kodierte Datei"
 
-#: src/BufferView.cpp:3323
+#: src/BufferView.cpp:3327
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -29117,7 +29138,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Zur gespeicherten Version des Dokuments zurückkehren?"
 
-#: src/LyXVC.cpp:304 src/frontends/qt4/GuiView.cpp:4109
+#: src/LyXVC.cpp:304 src/frontends/qt4/GuiView.cpp:4113
 msgid "&Revert"
 msgstr "&Wiederherstellen"
 
@@ -29234,52 +29255,52 @@ msgstr ", Grenze: "
 msgid "No font change defined."
 msgstr "Keine Schriftänderung definiert."
 
-#: src/Text3.cpp:199
+#: src/Text3.cpp:200
 msgid "Math editor mode"
 msgstr "Mathe-Editor-Modus"
 
-#: src/Text3.cpp:201
+#: src/Text3.cpp:202
 msgid "No valid math formula"
 msgstr "Keine gültige Matheformel"
 
-#: src/Text3.cpp:209 src/mathed/InsetMathNest.cpp:1041
+#: src/Text3.cpp:210 src/mathed/InsetMathNest.cpp:1041
 msgid "Already in regular expression mode"
 msgstr "Bereits im Regexp-Modus"
 
-#: src/Text3.cpp:222
+#: src/Text3.cpp:223
 msgid "Regexp editor mode"
 msgstr "Regexp-Editor-Modus"
 
-#: src/Text3.cpp:1562
+#: src/Text3.cpp:1563
 msgid "Layout "
 msgstr "Format "
 
-#: src/Text3.cpp:1563
+#: src/Text3.cpp:1564
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text3.cpp:2226 src/frontends/qt4/GuiApplication.cpp:1727
+#: src/Text3.cpp:2277 src/frontends/qt4/GuiApplication.cpp:1727
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/Text3.cpp:2388
+#: src/Text3.cpp:2439
 msgid "Invalid argument (number exceeds stack size)!"
 msgstr "Ungültiges Argument (Zahl größer als Zwischenspeicher)!"
 
-#: src/Text3.cpp:2392
+#: src/Text3.cpp:2443
 msgid "Invalid argument (must be a non-negative number)!"
 msgstr "Ungültiges Argument (muss eine nicht-negative Zahl sein)!"
 
-#: src/Text3.cpp:2397 src/Text3.cpp:2415
+#: src/Text3.cpp:2448 src/Text3.cpp:2466
 #, c-format
 msgid "Text properties applied: %1$s"
 msgstr "Angewendete Texteigenschaften: %1$s"
 
-#: src/Text3.cpp:2567
+#: src/Text3.cpp:2618
 msgid "Path to thesaurus directory not set!"
 msgstr "Pfad zum Thesaurus-Wörterbuch nicht festlegt!"
 
-#: src/Text3.cpp:2568
+#: src/Text3.cpp:2619
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -29291,7 +29312,7 @@ msgstr ""
 "Im Benutzerhandbuch, Abschnitt 6.15.11, finden Sie Hinweise,\n"
 "um den Thesaurus einzurichten."
 
-#: src/Text3.cpp:2635 src/Text3.cpp:2646
+#: src/Text3.cpp:2686 src/Text3.cpp:2697
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
@@ -29718,7 +29739,7 @@ msgstr ""
 "Möchten Sie die Änderungen verwerfen und zur gespeicherten Version "
 "zurückkehren?"
 
-#: src/buffer_funcs.cpp:77 src/frontends/qt4/GuiView.cpp:4100
+#: src/buffer_funcs.cpp:77 src/frontends/qt4/GuiView.cpp:4104
 msgid "Reload saved document?"
 msgstr "Gespeichertes Dokument neu laden?"
 
@@ -30652,7 +30673,7 @@ msgstr "Wählen Sie einen Dateinamen, um die eingefügte Grafik zu speichern als
 #: src/frontends/qt4/GuiClipboard.cpp:215 src/frontends/qt4/GuiView.cpp:2369
 #: src/frontends/qt4/GuiView.cpp:2512 src/frontends/qt4/GuiView.cpp:2528
 #: src/frontends/qt4/GuiView.cpp:2540 src/frontends/qt4/GuiView.cpp:2557
-#: src/frontends/qt4/GuiView.cpp:2642 src/frontends/qt4/GuiView.cpp:4072
+#: src/frontends/qt4/GuiView.cpp:2642 src/frontends/qt4/GuiView.cpp:4076
 msgid "Canceled."
 msgstr "Abgebrochen."
 
@@ -31939,7 +31960,7 @@ msgstr "Es wurde keine Protokolldatei der Versionskontrolle gefunden."
 msgid "Preferred &Language:"
 msgstr "Bevorzugte S&prache:"
 
-#: src/frontends/qt4/GuiLyXFiles.cpp:161 src/frontends/qt4/GuiLyXFiles.cpp:569
+#: src/frontends/qt4/GuiLyXFiles.cpp:161 src/frontends/qt4/GuiLyXFiles.cpp:572
 msgid "New File From Template"
 msgstr "Neu von Vorlage"
 
@@ -32026,11 +32047,15 @@ msgstr "Wählen Sie eine Tastaturtabelle"
 msgid "LyX Keymap Files (*.kmap)"
 msgstr "LyX-Tastaturtabellen (*.kmap)"
 
-#: src/frontends/qt4/GuiLyXFiles.cpp:567
+#: src/frontends/qt4/GuiLyXFiles.cpp:435
+msgid "Default Template"
+msgstr "Standardvorlage"
+
+#: src/frontends/qt4/GuiLyXFiles.cpp:570
 msgid "Open Example File"
 msgstr "Beispieldatei öffnen"
 
-#: src/frontends/qt4/GuiLyXFiles.cpp:571
+#: src/frontends/qt4/GuiLyXFiles.cpp:574
 msgid "Open File"
 msgstr "Datei öffnen"
 
@@ -32790,7 +32815,7 @@ msgstr "Symbole"
 msgid "Tabular Settings"
 msgstr "Tabellen-Einstellungen"
 
-#: src/frontends/qt4/GuiTabularCreate.cpp:29
+#: src/frontends/qt4/GuiTabularCreate.cpp:75
 msgid "Insert Table"
 msgstr "Tabelle einfügen"
 
@@ -33344,15 +33369,15 @@ msgstr "Generiere Vorschau ..."
 msgid "Document not loaded"
 msgstr "Dokument nicht geladen"
 
-#: src/frontends/qt4/GuiView.cpp:4066
+#: src/frontends/qt4/GuiView.cpp:4070
 msgid "Select file to insert"
 msgstr "Wählen Sie das einzufügende Dokument"
 
-#: src/frontends/qt4/GuiView.cpp:4069
+#: src/frontends/qt4/GuiView.cpp:4073
 msgid "All Files (*)"
 msgstr "Alle Dateien (*)"
 
-#: src/frontends/qt4/GuiView.cpp:4097
+#: src/frontends/qt4/GuiView.cpp:4101
 #, c-format
 msgid ""
 "The current version will be lost. Are you sure you want to load the version "
@@ -33362,7 +33387,7 @@ msgstr ""
 "dass Sie die auf der Festplatte gespeicherte Version des Dokuments %1$s "
 "laden möchten?"
 
-#: src/frontends/qt4/GuiView.cpp:4104
+#: src/frontends/qt4/GuiView.cpp:4108
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -33371,57 +33396,57 @@ msgstr ""
 "Alle Änderungen gehen verloren. Sind Sie sicher, dass Sie zur gespeicherten "
 "Version des Dokuments %1$s zurückkehren möchten?"
 
-#: src/frontends/qt4/GuiView.cpp:4107
+#: src/frontends/qt4/GuiView.cpp:4111
 msgid "Revert to saved document?"
 msgstr "Gespeichertes Dokument neu laden?"
 
-#: src/frontends/qt4/GuiView.cpp:4141
+#: src/frontends/qt4/GuiView.cpp:4145
 msgid "Saving all documents..."
 msgstr "Speichere alle Dokumente..."
 
-#: src/frontends/qt4/GuiView.cpp:4151
+#: src/frontends/qt4/GuiView.cpp:4155
 msgid "All documents saved."
 msgstr "Alle Dokumente wurden gespeichert."
 
-#: src/frontends/qt4/GuiView.cpp:4171
+#: src/frontends/qt4/GuiView.cpp:4175
 msgid "Developer mode is now enabled."
 msgstr "Der Entwicklermodus ist nun aktiviert."
 
-#: src/frontends/qt4/GuiView.cpp:4173
+#: src/frontends/qt4/GuiView.cpp:4177
 msgid "Developer mode is now disabled."
 msgstr "Der Entwicklermodus ist nun deaktiviert."
 
-#: src/frontends/qt4/GuiView.cpp:4197
+#: src/frontends/qt4/GuiView.cpp:4201
 msgid "Toolbars unlocked."
 msgstr "Werkzeugleisten nicht verankert."
 
-#: src/frontends/qt4/GuiView.cpp:4199
+#: src/frontends/qt4/GuiView.cpp:4203
 msgid "Toolbars locked."
 msgstr "Werkzeugleisten verankert."
 
-#: src/frontends/qt4/GuiView.cpp:4212
+#: src/frontends/qt4/GuiView.cpp:4216
 #, c-format
 msgid "Icon size set to %1$dx%2$d."
 msgstr "Eingestellte Symbolgröße: %1$dx%2$d."
 
-#: src/frontends/qt4/GuiView.cpp:4298
+#: src/frontends/qt4/GuiView.cpp:4302
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "LFUN_UI_TOGGLE %1$s unbekannter Befehl!"
 
-#: src/frontends/qt4/GuiView.cpp:4402
+#: src/frontends/qt4/GuiView.cpp:4406
 msgid "Zoom level is now %1$d% (default value: %2$d%)"
 msgstr "Aktueller Skalierungsfaktor: %1$d% (Standardwert: %2$d%)"
 
-#: src/frontends/qt4/GuiView.cpp:4455
+#: src/frontends/qt4/GuiView.cpp:4459
 msgid "Please, preview the document first."
 msgstr "Bitte geben Sie das Dokument zunächst aus."
 
-#: src/frontends/qt4/GuiView.cpp:4471
+#: src/frontends/qt4/GuiView.cpp:4475
 msgid "Couldn't proceed."
 msgstr "Konnte nicht fortfahren."
 
-#: src/frontends/qt4/GuiView.cpp:4952
+#: src/frontends/qt4/GuiView.cpp:4956
 msgid "Disable Shell Escape"
 msgstr "Erlaubnis zum Aufruf externer Programme widerrufen"
 
@@ -33438,23 +33463,23 @@ msgstr "%1-Vorschau"
 msgid "Close File"
 msgstr "Datei schließen"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2069
+#: src/frontends/qt4/GuiWorkArea.cpp:2072
 msgid "%1 (read only)"
 msgstr "%1 (schreibgeschützt)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2073
+#: src/frontends/qt4/GuiWorkArea.cpp:2076
 msgid "%1 (modified externally)"
 msgstr "%1 (extern bearbeitet)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2093
+#: src/frontends/qt4/GuiWorkArea.cpp:2096
 msgid "Hide tab"
 msgstr "Unterfenster verstecken"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2095
+#: src/frontends/qt4/GuiWorkArea.cpp:2098
 msgid "Close tab"
 msgstr "Unterfenster schließen"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2134
+#: src/frontends/qt4/GuiWorkArea.cpp:2137
 msgid "<b>The file %1 changed on disk.</b>"
 msgstr "<b>Die Datei %1 wurde auf der Festplatte verändert.</b>"
 
