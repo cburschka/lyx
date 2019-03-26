@@ -31,6 +31,7 @@ public:
 private Q_SLOTS:
 	void columnsChanged(int);
 	void rowsChanged(int);
+	void on_styleCO_activated(int);
 
 private:
 	/// Apply changes
@@ -44,16 +45,20 @@ private:
 	///
 	bool isBufferDependent() const { return true; }
 	///
-	FuncCode getLfun() const { return LFUN_TABULAR_INSERT; }
+	FuncCode getLfun() const;
 
 	///
 	typedef std::pair<size_t, size_t> rowsCols;
 	///
 	rowsCols & params() { return params_; }
+	///
+	void getFiles();
 
 private:
 	/// rows, cols params
 	rowsCols params_;
+	///
+	QString style_;
 };
 
 } // namespace frontend

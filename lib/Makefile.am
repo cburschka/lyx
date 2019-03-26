@@ -2637,6 +2637,21 @@ dist_ui_DATA = \
 	ui/stdmenus.inc \
 	ui/stdtoolbars.inc
 
+tabletemplatesdir = $(pkgdatadir)/tabletemplates
+dist_tabletemplates_DATA = \
+	tabletemplates/Formal.lyx \
+	tabletemplates/Formal_1x1.lyx \
+	tabletemplates/Formal_1x2.lyx \
+	tabletemplates/Grid_with_Head.lyx \
+	tabletemplates/Grid_with_Head_1x1.lyx \
+	tabletemplates/Grid_with_Head_1x2.lyx \
+	tabletemplates/No_Borders.lyx \
+	tabletemplates/No_Borders_1x1.lyx \
+	tabletemplates/No_Borders_1x2.lyx \
+	tabletemplates/Simple_Grid.lyx \
+	tabletemplates/Simple_Grid_1x1.lyx \
+	tabletemplates/Simple_Grid_1x2.lyx
+
 xtemplatesdir = $(pkgdatadir)/xtemplates
 dist_xtemplates_DATA = \
 	xtemplates/chess.xtemplate \
@@ -2751,6 +2766,7 @@ exampleandtemplate_files = \
 			   $(dist_srexamples_DATA) \
 			   $(dist_srmoduleexamples_DATA) \
 			   $(dist_svexamples_DATA) \
+			   $(dist_tabletemplates_DATA) \
 			   $(dist_thesistemplates_DATA) \
 			   $(dist_ukexamples_DATA) \
 			   $(dist_examples_DATA) \

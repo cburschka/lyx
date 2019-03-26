@@ -653,6 +653,29 @@ def parseExamplesTemplates(file, seen, output):
                 (relativePath(input_files[0], base), 0, filename.replace('_', ' ').replace('%26', '&').replace('%28', '(').replace('%29', ')')), file=output)
 
 
+def tabletemplates_l10n(input_files, output, base):
+  '''Generate pot file from lib/tabletemplates '''
+  output = io.open(output, 'w', encoding='utf_8', newline='\n')
+  # only record each item once
+  seen = []
+  for file in input_files:
+      filename = file.split(os.sep)[-1]
+      if os.path.isfile(file):
+          if filename[-4:] != ".lyx":
+              continue
+          filename = filename[:-4]
+          if filename[-4:-1] == "_1x":
+              continue
+          if seen.count(filename):
+              continue
+
+      seen.append(filename)
+      if filename != "":
+          print(u'#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
+                    (relativePath(input_files[0], base), 0, filename.replace('_', ' ')), file=output)
+  output.close()
+  
+
 
 Usage = '''
 lyx_pot.py [-b|--base top_src_dir] [-o|--output output_file] [-h|--help] [-s|src_file filename] -t|--type input_type input_files
@@ -675,6 +698,7 @@ where
         external: external templates files
         formats: formats predefined in lib/configure.py
         examples_templates: example and template files
+        tabletemplates: table template files
 '''
 
 if __name__ == '__main__':
@@ -698,7 +722,7 @@ if __name__ == '__main__':
         elif opt in ['-s', '--src_file']:
             input_files = [f.strip() for f in io.open(value, encoding='utf_8')]
 
-    if input_type not in ['ui', 'layouts', 'layouttranslations', 'qt4', 'languages', 'latexfonts', 'encodings', 'external', 'formats', 'examples_templates'] or output is None:
+    if input_type not in ['ui', 'layouts', 'layouttranslations', 'qt4', 'languages', 'latexfonts', 'encodings', 'external', 'formats', 'examples_templates', 'tabletemplates'] or output is None:
         print('Wrong input type or output filename.')
         sys.exit(1)
 
@@ -729,5 +753,7 @@ if __name__ == '__main__':
         encodings_l10n(input_files, output, base)
     elif input_type == 'examples_templates':
         examples_templates_l10n(input_files, output, base)
+    elif input_type == 'tabletemplates':
+        tabletemplates_l10n(input_files, output, base)
     else:
         languages_l10n(input_files, output, base)

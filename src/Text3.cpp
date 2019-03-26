@@ -70,6 +70,7 @@
 
 #include "support/convert.h"
 #include "support/debug.h"
+#include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/limited_stack.h"
@@ -2085,6 +2086,56 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 		break;
 
+	case LFUN_TABULAR_STYLE_INSERT: {
+		string const style = cmd.getArg(0);
+		string const rows = cmd.getArg(1);
+		string const cols = cmd.getArg(2);
+		if (cols.empty() || !isStrInt(cols)
+		    || rows.empty() || !isStrInt(rows))
+			break;
+		int const r = convert<int>(rows);
+		int const c = convert<int>(cols);
+			
+		string suffix;
+		if (r == 1)
+			suffix = "_1x1";
+		else if (r == 2)
+			suffix = "_1x2";
+		FileName const tabstyle = libFileSearch("tabletemplates",
+							style + suffix + ".lyx", "lyx");
+		if (tabstyle.empty())
+			    break;
+		UndoGroupHelper ugh(cur.buffer());
+		cur.recordUndo();
+		FuncRequest cmd2(LFUN_FILE_INSERT, tabstyle.absFileName() + " ignorelang");
+		lyx::dispatch(cmd2);
+		if (r > 2) {
+			// go into table
+			cur.backwardPos();
+			// move one cell up to middle cell
+			cur.up();
+			// now add the missing rows and columns
+			int const addrows = r - 3;
+			int const addcols = c - 1;
+			for (int i = 0 ; i < addrows ; ++i) {
+				FuncRequest fr(LFUN_TABULAR_FEATURE, "append-row");
+				lyx::dispatch(fr);
+			}
+			for (int i = 0 ; i < addcols ; ++i) {
+				FuncRequest fr(LFUN_TABULAR_FEATURE, "append-column");
+				lyx::dispatch(fr);
+			}
+			// go to first cell
+			cur.up();
+		} else {
+			// jump over table
+			cur.backwardChar();
+			// go to first cell
+			cur.forwardPos();
+		}
+		break;
+	}
+
 	case LFUN_FLOAT_INSERT:
 	case LFUN_FLOAT_WIDE_INSERT:
 	case LFUN_WRAP_INSERT: {
@@ -2782,7 +2833,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	bool enable = true;
 	bool allow_in_passthru = false;
 	InsetCode code = NO_CODE;
-
+	
 	switch (cmd.action()) {
 
 	case LFUN_DEPTH_DECREMENT:
@@ -2870,6 +2921,9 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		code = FOOT_CODE;
 		break;
 	case LFUN_TABULAR_INSERT:
+		code = TABULAR_CODE;
+		break;
+	case LFUN_TABULAR_STYLE_INSERT:
 		code = TABULAR_CODE;
 		break;
 	case LFUN_MARGINALNOTE_INSERT:

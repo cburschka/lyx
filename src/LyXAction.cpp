@@ -3787,6 +3787,18 @@ void LyXAction::init()
  */
 		{ LFUN_TABULAR_INSERT, "tabular-insert", Noop, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_TABULAR_STYLE_INSERT
+ * \li Action: Inserts table of a given style into the document.
+ * \li Notion: See #LFUN_TABULAR_FEATURE for some more details
+	       about tabular modifications.
+ * \li Syntax: tabular-style-insert <style> <ROWS> <COLUMNS>
+ * \li Params: Valid styles are the names of the files in lib/tabletemplates,
+ *             minus _1x<n> and .lyx suffix.
+ * \li Origin: spitz, 25 Mar 2019
+ * \endvar
+ */
+		{ LFUN_TABULAR_STYLE_INSERT, "tabular-style-insert", Noop, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_TAB_DELETE
