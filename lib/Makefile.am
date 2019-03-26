@@ -99,7 +99,7 @@ dist_decvexamples_DATA = \
 	examples/de/Curricula_Vitae/Europass_CV_%282013%29.lyx \
 	examples/de/Curricula_Vitae/Simple_CV.lyx
 
-dehandoutexamplesdir = $(pkgdatadir)/examples/de/Curricula_Vitae
+dehandoutexamplesdir = $(pkgdatadir)/examples/de/Handouts
 dist_dehandoutexamples_DATA = \
 	examples/de/Handouts/Tufte_Handout.lyx
 
