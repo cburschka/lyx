@@ -1,6 +1,6 @@
 %% LyX 2.4.0dev created this file.  For more info, see https://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
-\documentclass[american,english]{beamer}
+\documentclass[english]{beamer}
 \usepackage{lmodern}
 \renewcommand{\sfdefault}{lmss}
 \renewcommand{\ttdefault}{lmtt}
@@ -21,9 +21,8 @@
 \makeatletter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
-\providecommand{\LyX}{\texorpdfstring%
-  {L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX}}
+\providecommand{\LyX}{\texorpdfstring{\textlatin{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}}{LyX}}
 \DeclareRobustCommand*{\lyxarrow}{%
 \@ifstar
 {\leavevmode\,$\triangleleft$\,\allowbreak}
@@ -166,9 +165,8 @@ you want to be repeated via \alert{Insert\lyxarrow Overlay Specifications}
 \begin{itemize}
 \item Note that all frame content, if the style is not \structure{Frame},
 must be nested to the frame environment (via \alert{Edit\lyxarrow Increase List Depth}
-or \shortcut{\selectlanguage{american}%
-Alt+Shift+Right\selectlanguage{english}%
-}). This is done automatically if you insert new frame paragraphs.
+or \shortcut{Alt+Shift+Right}). This is done automatically if you
+insert new frame paragraphs.
 \item Nested content is marked by a red bar in the margin of the \LyX{} workarea
 \end{itemize}
 \end{frame}
@@ -188,9 +186,8 @@ below the frame (see UserGuide, sec.~3.4.6).
 
 There is a simple and much more convenient way to start a new frame:
 Issue \alert{Insert\lyxarrow Separated Frame Below} (\shortcut{undefined}
-if you are in a non-nested \structure{Frame} paragraph, or \shortcut{\selectlanguage{american}%
-Alt+P Shift+Return\selectlanguage{english}%
-}, respectively, if you are in a nested paragraph within the frame).
+if you are in a non-nested \structure{Frame} paragraph, or \shortcut{Alt+P Shift+Return},
+respectively, if you are in a nested paragraph within the frame).
 If you are in the frame heading, \alert{Insert\lyxarrow Separated Frame Above}
 inserts a new, properly separated frame above the current one!
 \end{block}
