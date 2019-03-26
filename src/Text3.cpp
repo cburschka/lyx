@@ -2078,19 +2078,28 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_TABULAR_INSERT: {
-		if (cur.buffer()->masterParams().tablestyle != "default") {
-			FuncRequest fr(LFUN_TABULAR_STYLE_INSERT,
-				       cur.buffer()->masterParams().tablestyle + " "
-				       + to_ascii(cmd.argument()));
-			lyx::dispatch(fr);
-			break;
-		}
 		// if there were no arguments, just open the dialog
+		if (cmd.argument().empty()) {
+			bv->showDialog("tabularcreate");
+			break;
+		} else if (cur.buffer()->masterParams().tablestyle != "default"
+			   || bv->buffer().params().documentClass().tablestyle() != "default") {
+			string tabstyle = cur.buffer()->masterParams().tablestyle;
+			if (tabstyle == "default")
+				tabstyle = bv->buffer().params().documentClass().tablestyle();
+			if (!libFileSearch("tabletemplates", tabstyle + ".lyx").empty()) {
+				FuncRequest fr(LFUN_TABULAR_STYLE_INSERT,
+					       tabstyle + " " + to_ascii(cmd.argument()));
+				lyx::dispatch(fr);
+				break;
+			} else
+				// Unknown style. Report and fall back to default.
+				cur.errorMessage(from_utf8(N_("Table Style ")) + from_utf8(tabstyle) +
+						     from_utf8(N_(" not known")));
+			
+		}
 		if (doInsertInset(cur, this, cmd, false, true))
 			cur.posForward();
-		else
-			bv->showDialog("tabularcreate");
-
 		break;
 	}
 

@@ -2440,6 +2440,7 @@ void BufferParams::useClassDefaults()
 	sides = tclass.sides();
 	columns = tclass.columns();
 	pagestyle = tclass.pagestyle();
+	tablestyle = tclass.tablestyle();
 	use_default_options = true;
 	// Only if class has a ToC hierarchy
 	if (tclass.hasTocLevels()) {
@@ -2456,6 +2457,7 @@ bool BufferParams::hasClassDefaults() const
 	return sides == tclass.sides()
 		&& columns == tclass.columns()
 		&& pagestyle == tclass.pagestyle()
+		&& tablestyle == tclass.tablestyle()
 		&& use_default_options
 		&& secnumdepth == tclass.secnumdepth()
 		&& tocdepth == tclass.tocdepth();

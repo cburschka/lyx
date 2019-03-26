@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 71
+currentFormat = 72
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -238,6 +238,9 @@ currentFormat = 71
 
 # Incremented to format 71, 12 March 2019 by spitz
 # New [Inset]Layout tag NeedMBoxProtect
+
+# Incremented to format 72, 26 March 2019 by spitz
+# New TextClass tag TableStyle
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
@@ -488,7 +491,7 @@ def convert(lines, end_format):
                 i += 1
             continue
 
-        if format >= 65 and format <= 70:
+        if format >= 65 and format <= 71:
             # nothing to do.
             i += 1
             continue

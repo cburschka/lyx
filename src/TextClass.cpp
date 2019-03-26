@@ -62,7 +62,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 71; // spitz: NeedMBoxProtect
+int const LAYOUT_FORMAT = 72; // spitz: TableStyle
 
 
 // Layout format for the current lyx file format. Controls which format is
@@ -151,9 +151,9 @@ TextClass::TextClass()
 	: loaded_(false), tex_class_avail_(false),
 	  opt_enginetype_("authoryear|numerical"), opt_fontsize_("10|11|12"),
 	  opt_pagestyle_("empty|plain|headings|fancy"), pagestyle_("default"),
-	  columns_(1), sides_(OneSide), secnumdepth_(3), tocdepth_(3),
-	  outputType_(LATEX), outputFormat_("latex"), has_output_format_(false),
-	  defaultfont_(sane_font),
+	  tablestyle_("default"), columns_(1), sides_(OneSide), secnumdepth_(3),
+	  tocdepth_(3), outputType_(LATEX), outputFormat_("latex"),
+	  has_output_format_(false), defaultfont_(sane_font), 
 	  titletype_(TITLE_COMMAND_AFTER), titlename_("maketitle"),
 	  min_toclevel_(0), max_toclevel_(0), maxcitenames_(2),
 	  cite_full_author_list_(true)
@@ -226,7 +226,8 @@ enum TextClassTags {
 	TC_MAXCITENAMES,
 	TC_DEFAULTBIBLIO,
 	TC_FULLAUTHORLIST,
-	TC_OUTLINERNAME
+	TC_OUTLINERNAME,
+	TC_TABLESTYLE
 };
 
 
@@ -279,6 +280,7 @@ LexerKeyword textClassTags[] = {
 	{ "secnumdepth",       TC_SECNUMDEPTH },
 	{ "sides",             TC_SIDES },
 	{ "style",             TC_STYLE },
+	{ "tablestyle",        TC_TABLESTYLE },
 	{ "titlelatexname",    TC_TITLELATEXNAME },
 	{ "titlelatextype",    TC_TITLELATEXTYPE },
 	{ "tocdepth",          TC_TOCDEPTH }
@@ -862,6 +864,11 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 
 		case TC_OUTLINERNAME:
 			error = !readOutlinerName(lexrc);
+			break;
+
+		case TC_TABLESTYLE:
+			lexrc.next();
+			tablestyle_ = rtrim(lexrc.getString());
 			break;
 		} // end of switch
 	}

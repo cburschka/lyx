@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 564
+\lyxformat 569
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -132,6 +132,7 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -9214,6 +9215,104 @@ reference "subsec:Einzelne-Absatz-Layouts"
  für mehr über Absatzstile.
 \end_layout
 
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+TableStyle
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<name>
+\end_layout
+
+\end_inset
+
+] legt den Standardstil fest, der für eingefügte Tabellen verwendet wird.
+ Die folgenden Stile stehen zur Verfügung:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Formal
+\end_layout
+
+\end_inset
+
+: formaler Stil (
+\begin_inset Quotes eld
+\end_inset
+
+booktabs
+\begin_inset Quotes erd
+\end_inset
+
+) nur mit horizontalen Linien und fetter Linie am Kopf und Fuß der Tabelle.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Simple_Grid
+\end_layout
+
+\end_inset
+
+: Einfache Tabellenlinien.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Grid_with_Head
+\end_layout
+
+\end_inset
+
+: Wie 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Simple_Grid
+\end_layout
+
+\end_inset
+
+, aber mit einer zusätzlichen horizontalen Linie unter der Kopfzeile.
+ Das ist auch der Standard-Tabellenstil von \SpecialChar LyX
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+No_Borders
+\end_layout
+
+\end_inset
+
+: Tabelle ohne Rahmenlinien.
+\end_layout
+
+\end_deeper
 \begin_layout Description
 \begin_inset Flex Code
 status collapsed

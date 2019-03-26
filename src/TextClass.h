@@ -277,6 +277,8 @@ protected:
 	///
 	std::string pagestyle_;
 	///
+	std::string tablestyle_;
+	///
 	std::string class_header_;
 	///
 	docstring defaultlayout_;
@@ -452,6 +454,8 @@ public:
 	std::string const & class_header() const { return class_header_; }
 	///
 	std::string const & pagestyle() const { return pagestyle_; }
+	///
+	std::string const & tablestyle() const { return tablestyle_; }
 	///
 	docstring const & preamble() const { return preamble_; }
 	///

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 567
+\lyxformat 569
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -124,6 +124,7 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
+\tablestyle default
 \tracking_changes true
 \output_changes false
 \html_math_output 0
@@ -10951,8 +10952,136 @@ reference "subsec:Paragraph-Styles"
 \end_inset
 
  for details on paragraph styles.
+\change_inserted -712698321 1553617804
+
 \end_layout
 
+\begin_layout Description
+
+\change_inserted -712698321 1553617862
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1553617809
+TableStyle
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1553617805
+<name>
+\end_layout
+
+\end_inset
+
+] defines the default table style that is used when inserting a table.
+ The following styles are available:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\change_inserted -712698321 1553617929
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1553617920
+Formal
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+: formal (
+\begin_inset Quotes eld
+\end_inset
+
+booktabs
+\begin_inset Quotes erd
+\end_inset
+
+) style with horizontal lines only and a bold top and bottom line.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1553618031
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1553618006
+Simple_Grid
+\end_layout
+
+\end_inset
+
+: Simple table lines.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1553618309
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1553618031
+Grid_with_Head
+\end_layout
+
+\end_inset
+
+: Like 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1553618043
+Simple_Grid
+\end_layout
+
+\end_inset
+
+, but with the header column offset with a second horizontal line.
+ This is also the default style of \SpecialChar LyX
+.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1553618280
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1553618261
+No_Borders
+\end_layout
+
+\end_inset
+
+: Table without lines.
+\change_unchanged
+
+\end_layout
+
+\end_deeper
 \begin_layout Description
 \begin_inset Flex Code
 status collapsed
