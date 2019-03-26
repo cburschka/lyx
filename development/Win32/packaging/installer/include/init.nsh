@@ -610,11 +610,6 @@ Function .onInit
    Abort
   ${endif}
   
-  # read the user and computer name
-  ReadRegStr $ComputerName HKLM "System\CurrentControlSet\Control\ComputerName\ActiveComputerName" "ComputerName"
-  System::Call "advapi32::GetUserName(t .r0, *i ${NSIS_MAX_STRLEN} r1) i.r2"
-  StrCpy $UserName $0
-  
   !insertmacro MULTIUSER_INIT
   
   # check if this LyX version is already installed
@@ -632,7 +627,7 @@ Function .onInit
    # check if the uninstaller was acidentally deleted
    # if so don't bother the user if he realy wants to install a new LyX over an existing one
    # because he won't have a chance to deny this
-   StrCpy $4 $0 -10 # remove '\bin\lyx,0'
+   StrCpy $4 $0 -12 # remove '\bin\lyx.exe'
    # (for FileCheck the variables $0 and $1 cannot be used)
    !insertmacro FileCheck $5 "Uninstall-${APP_NAME}.exe" "$4" # macro from LyXUtils.nsh
    ${if} $5 == "False"
