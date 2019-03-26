@@ -103,7 +103,8 @@ export/examples/sr/Modules/Braille_(dvi3|pdf4)_systemF
 #export/export/latex/textcyr-textgreek-test_pdf2
 
 # Kornel: unknown reason
-export/export/latex/unicodesymbols/012-31-hebrew_he-.*_pdf2
+# After reinstalling culmus under the TL19 control, it compiles
+#export/export/latex/unicodesymbols/012-31-hebrew_he-.*_pdf2
 
 #9871 LyX sends invalid Unicode to iconv when converting to ASCII
 # most probably due to BabelPreamble code (language specific headings for
