@@ -406,7 +406,8 @@ dist_cvexamples_DATA = \
 	examples/Curricula_Vitae/Modern_CV.lyx \
 	examples/Curricula_Vitae/Simple_CV.lyx \
 	examples/Curricula_Vitae/CV-image.eps \
-	examples/Curricula_Vitae/CV-image.png
+	examples/Curricula_Vitae/CV-image.png \
+	examples/Curricula_Vitae/REPLACEphoto.jpg
 
 externalexamplesdir = $(pkgdatadir)/examples/External_Material
 dist_externalexamples_DATA = \
