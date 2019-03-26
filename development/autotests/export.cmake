@@ -4,7 +4,7 @@
 # Copyright (c) 2012 Kornel Benko kornel@lyx.org
 #
 #
-# LYX_ROOT  = ${TOP_SRC_DIR}/lib/{doc,examples,templates}
+# LYX_ROOT  = ${TOP_SRC_DIR}/lib/{doc,examples,templates,tabletemplates}
 # LYX_USERDIR_VER = Name of environment variable for the user directory
 # lyx       =
 # format    = lyx16x|lyx20x|lyx21x|lyx22x|xhtml
@@ -254,7 +254,7 @@ if(inverted)
 else()
   string(COMPARE NOTEQUAL  ${_err} 0 _erg)
 endif()
-execute_process(COMMAND ${CMAKE_COMMAND} -E remove_directory "${TempDir}")
+#execute_process(COMMAND ${CMAKE_COMMAND} -E remove_directory "${TempDir}")
 if(_TestResultMessage)
   message(STATUS "Msg Summary:")
   foreach(_l ${_TestResultMessage})
