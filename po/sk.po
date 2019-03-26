@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-03-26 15:49+0100\n"
-"PO-Revision-Date: 2019-03-26 14:50+0000\n"
+"POT-Creation-Date: 2019-03-26 18:50+0100\n"
+"PO-Revision-Date: 2019-03-26 17:57+0000\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: Slovak <kde-i18n-de@kde.org>\n"
 "Language: sk\n"
@@ -5259,6 +5259,14 @@ msgstr "Typ rozstupu"
 #: src/frontends/qt4/ui/TextLayoutUi.ui:238
 msgid "Number of lines"
 msgstr "Počet riadkov"
+
+#: src/frontends/qt4/ui/TextLayoutUi.ui:90
+msgid "Table Style"
+msgstr "Štýl tabuľky"
+
+#: src/frontends/qt4/ui/TextLayoutUi.ui:98
+msgid "Default St&yle:"
+msgstr "Š&tandardný štýl:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:261
 msgid "Format text into two columns"
@@ -28663,6 +28671,10 @@ msgstr "Schéma "
 #: src/Text3.cpp:1558
 msgid " not known"
 msgstr " neznámy"
+
+#: src/Text3.cpp:2097
+msgid "Table Style "
+msgstr "Štýl tabuľky "
 
 #: src/Text3.cpp:2214 src/frontends/qt4/GuiApplication.cpp:1720
 msgid "Missing argument"
