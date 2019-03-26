@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 568
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -10,16 +10,16 @@
 \language slovak
 \language_package default
 \inputencoding auto
-\fontencoding global
-\font_roman "palatino" "TeX Gyre Pagella"
-\font_sans "helvet" "TeX Gyre Heros"
-\font_typewriter "courier" "TeX Gyre Cursor"
+\fontencoding auto
+\font_roman "palatino" "DejaVu Serif"
+\font_sans "helvet" "DejaVu Sans"
+\font_typewriter "courier" "DejaVu Sans Mono"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 95 100
+\font_sf_scale 95 95
 \font_tt_scale 100 100
 \use_microtype false
 \use_dash_ligatures false
@@ -28,6 +28,8 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false

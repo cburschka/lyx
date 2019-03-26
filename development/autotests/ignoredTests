@@ -119,9 +119,9 @@ Sublabel: obsolete
 # ============================================================
 
 # latex8.sty is obsolete and replaced by IEEEconf.
-check_load/templates/attic/latex8
-export/templates/attic/latex8_pdf.*
-export/templates/attic/latex8_(dvi|dvi3_.*|lyx(22|23))
+check_load/templates/Attic/latex8
+export/templates/Attic/latex8_pdf.*
+export/templates/Attic/latex8_(dvi|dvi3_.*|lyx(22|23))
 
 # aastex.cls is obsolete and replaced by aastex6.cls
 # aastex6.cls is obsolete and replaced by aastex62.cls

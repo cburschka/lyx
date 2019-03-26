@@ -69,8 +69,8 @@ export/export/latex/luainputenc-utf8_pdf5_texF
 # nonstandard tests failing for unknown reason:
 export/templates/Obsolete/ACM_SIGGGRAPH.*_pdf5_(texF|systemF)
 export/templates/Articles/International_Union_of_Crystallography.*_pdf4_systemF
-export/templates/Articles/RJournal_(dvi3|pdf[45])_systemF
-export/templates/Articles/Kluwer_.*_systemF
+export/templates/Articles/R_Journal_(dvi3|pdf[45])_systemF
+#export/templates/Articles/Kluwer_.*_systemF
 
 
 # ================================================
@@ -230,7 +230,7 @@ export/examples/Modules/Hazard_and_Precautionary_Statements_.*_systemF
 # LyX-generated preamble, but it seems it's better to wait until the packages
 # fix the root issue themselves.
 # xy package:
-export/examples/(|fr/)XY-(Pic|Figure)_pdf5.*
+export/examples/(|fr/)Graphics_and_Insets/XY-(Pic|Figure)_pdf5.*
 
 # Problem with Check and Slovak Babel support.
 # (reported per mail to Petr Tesa\v{r}\'ik, 2016-09-06)

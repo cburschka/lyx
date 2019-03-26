@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 568
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -10,10 +10,10 @@
 \language basque
 \language_package default
 \inputencoding iso8859-1
-\fontencoding global
-\font_roman "times" "default"
-\font_sans "helvet" "default"
-\font_typewriter "courier" "default"
+\fontencoding auto
+\font_roman "times" "DejaVu Serif"
+\font_sans "helvet" "DejaVu Sans"
+\font_typewriter "courier" "DejaVu Sans Mono"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -24,10 +24,12 @@
 \use_microtype false
 \use_dash_ligatures true
 \graphics default
-\default_output_format default
+\default_output_format pdf5
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false
