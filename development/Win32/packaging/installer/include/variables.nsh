@@ -14,7 +14,6 @@ Var APPDATemp
 Var AppPre
 var AppSubfolder
 Var AppSuff
-Var ComputerName
 Var CreateDesktopIcon
 Var CreateFileAssociations
 Var DictCode
@@ -49,6 +48,5 @@ Var ThesCode
 Var ThesCodes
 Var UpdateFNDBReturn
 Var UserList
-Var UserName
 
 Var LangName

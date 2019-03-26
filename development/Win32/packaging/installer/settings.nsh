@@ -18,12 +18,12 @@ These typically need to be modified for each LyX release
 
 !define APP_VERSION "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION}${APP_EMERGENCY_DOT}${APP_VERSION_EMERGENCY}" # Version to display
 
-!define COPYRIGHT_YEAR 2018
+!define COPYRIGHT_YEAR 2019
 
 #--------------------------------
 # Installer file name
 
-# Typical names for the release are "LyX-211-Installer-1.exe" etc.
+# Typical names for the release are "LyX-232-Installer-1.exe" etc.
 
 !ifndef ExeFile
   !define ExeFile "${APP_NAME}-${APP_VERSION_MAJOR}${APP_VERSION_MINOR}${APP_VERSION_REVISION}${APP_VERSION_EMERGENCY}-Installer-${APP_VERSION_BUILD}.exe"
@@ -46,4 +46,4 @@ These typically need to be modified for each LyX release
 
 !define MiKTeXRepo "ftp://ftp.tu-chemnitz.de/pub/tex/systems/win32/miktex/tm/packages/"
 
-!define ImageMagickVersion "7.0.7"
+!define ImageMagickVersion "7.0.8"
