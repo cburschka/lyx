@@ -1571,8 +1571,10 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_FILE_INSERT
  * \li Action: Inserts another LyX file.
- * \li Syntax: file-insert [<FILE>]
+ * \li Syntax: file-insert [<FILE>] [ignorelang]
  * \li Params: <FILE>: Filename to be inserted.
+ *             ignorelang: If given, the (main) language of the inserted file
+ *             is ignored (the context language is used).
  * \endvar
  */
 		{ LFUN_FILE_INSERT, "file-insert", Noop, Edit },

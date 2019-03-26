@@ -51,6 +51,10 @@
 
 * info-insert buffer vcs-*: renamed to info-insert vcs *
 
+* file-insert: optional second parameter "ignorelang" to make the insertion
+  ignore the inserted file's main language (and rather adapt it to the insertion
+  context's language).
+
 
 !!!The following LyX functions have been removed in 2.4:
 

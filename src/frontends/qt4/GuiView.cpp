@@ -2605,7 +2605,7 @@ void GuiView::newDocument(string const & filename, string templatefile,
 }
 
 
-void GuiView::insertLyXFile(docstring const & fname)
+void GuiView::insertLyXFile(docstring const & fname, bool ignorelang)
 {
 	BufferView * bv = documentBufferView();
 	if (!bv)
@@ -2644,7 +2644,7 @@ void GuiView::insertLyXFile(docstring const & fname)
 		}
 	}
 
-	bv->insertLyXFile(filename);
+	bv->insertLyXFile(filename, ignorelang);
 	bv->buffer().errors("Parse");
 }
 
@@ -4049,9 +4049,13 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				menu->exec(QCursor::pos());
 			break;
 
-		case LFUN_FILE_INSERT:
-			insertLyXFile(cmd.argument());
+		case LFUN_FILE_INSERT: {
+			if (cmd.getArg(1) == "ignorelang")
+				insertLyXFile(from_utf8(cmd.getArg(0)), true);
+			else
+				insertLyXFile(cmd.argument());
 			break;
+		}
 
 		case LFUN_FILE_INSERT_PLAINTEXT:
 		case LFUN_FILE_INSERT_PLAINTEXT_PARA: {

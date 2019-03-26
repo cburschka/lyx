@@ -373,7 +373,7 @@ private:
 	///
 	void toggleFullScreen();
 	///
-	void insertLyXFile(docstring const & fname);
+	void insertLyXFile(docstring const & fname, bool ignorelang = false);
 	///
 	/// Open Export As ... dialog. \p iformat is the format the
 	/// filter is initially set to.

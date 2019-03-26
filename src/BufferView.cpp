@@ -2875,7 +2875,7 @@ void BufferView::updatePosCache()
 }
 
 
-void BufferView::insertLyXFile(FileName const & fname)
+void BufferView::insertLyXFile(FileName const & fname, bool const ignorelang)
 {
 	LASSERT(d->cursor_.inTexted(), return);
 
@@ -2893,8 +2893,12 @@ void BufferView::insertLyXFile(FileName const & fname)
 		ErrorList & el = buffer_.errorList("Parse");
 		// Copy the inserted document error list into the current buffer one.
 		el = buf.errorList("Parse");
+		ParagraphList & pars = buf.paragraphs();
+		if (ignorelang)
+			// set main language of imported file to context language
+			buf.changeLanguage(buf.language(), d->cursor_.getFont().language());
 		buffer_.undo().recordUndo(d->cursor_);
-		cap::pasteParagraphList(d->cursor_, buf.paragraphs(),
+		cap::pasteParagraphList(d->cursor_, pars,
 					     buf.params().documentClassPtr(), el);
 		res = _("Document %1$s inserted.");
 	} else {

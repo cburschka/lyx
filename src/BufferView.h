@@ -340,7 +340,7 @@ public:
 	// Insert plain text file (if filename is empty, prompt for one)
 	void insertPlaintextFile(support::FileName const & f, bool asParagraph);
 	///
-	void insertLyXFile(support::FileName const & f);
+	void insertLyXFile(support::FileName const & f, bool const ignorelang = false);
 	/// save temporary bookmark for jump back navigation
 	void bookmarkEditPosition();
 	/// Find and return the inset associated with given dialog name.
