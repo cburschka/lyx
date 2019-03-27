@@ -1379,7 +1379,7 @@ TexString LaTeXFeatures::getMacros() const
 		if (isRequired("hyperref"))
 			macros << "{\\texorpdfstring";
 		if (useBabel())
-			macros << "{\\textlatin";
+			macros << "{\\ensureascii";
 		// main definition
 		macros << lyx_def;
 		// close conditional wrappers
