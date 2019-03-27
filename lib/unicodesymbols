@@ -1101,7 +1101,8 @@
 # 12 Hebrew
 #
 #0x0591 ""               "" "combining,force" "" "" # HEBREW ACCENT ETNAHTA
-#			 
+# Fixme: Placement of the "nikud" (vowel) signs is bad.
+# Maybe try ideas from https://www.culturestrings.org/typography/culmusx/ ?
 0x05b0 "\\sheva"	 "" "combining,force" "" "" # HEBREW POINT SHEVA
 0x05b1 "\\hatafsegol" 	 "" "combining,force" "" "" # HEBREW POINT HATAF SEGOL
 0x05b2 "\\hatafpatah"	 "" "combining,force" "" "" # HEBREW POINT HATAF PATAH
@@ -1119,8 +1120,9 @@
 0x05be "\\maqaf"         "" "force=cp1255;utf8;utf8-cjk" "" "" # HEBREW PUNCTUATION MAQAF
 #0x05bf ""                "" "combining,force" "" "" # HEBREW POINT RAFE
 #0x05c0 ""                "" "" "" ""    	     # HEBREW PUNCTUATION PASEQ
-0x05c1 "\\shindot"       "" "combining,force" "" "" # HEBREW POINT SHIN DOT
-0x05c2 "\\sindot"        "" "combining,force" "" "" # HEBREW POINT SIN DOT
+# shindot and shindot are actually combining unicode characters but work fine as postfix
+0x05c1 "\\shindot"       "" "force=cp1255;utf8;utf8-cjk" "" "" # HEBREW POINT SHIN DOT
+0x05c2 "\\sindot"        "" "force=cp1255;utf8;utf8-cjk" "" "" # HEBREW POINT SIN DOT
 0x05c3 "\\sofpasuq"      "" "force=cp1255;utf8;utf8-cjk" "" "" # HEBREW PUNCTUATION SOF PASUQ
 #0x05c4 ""                "" "combining,force" "" "" # HEBREW MARK UPPER DOT
 #0x05c5 ""                "" "combining,force" "" "" # HEBREW MARK LOWER DOT
