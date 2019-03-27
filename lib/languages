@@ -754,9 +754,15 @@ Language hebrew
 	Encoding          cp1255
 	QuoteStyle        english
 	InternalEncoding  true
-# Hebrew babel loads the font encodings
-# itself in the appropriate order
-#	FontEncoding      LHE
+	# babel-hebrew expects the encoding for *other* languages last:
+	# FontEncoding      HE8
+	# Define the font encoding the babel-hebrew way and
+	# work around too simple test for article-like classes in rlbabel.def.
+	PreBabelPreamble
+	  \def\HeblatexEncoding{HE8}
+	  \def\HeblatexEncodingFile{he8enc}
+	  \providecommand{\l@chapter}{\relax}
+	EndPreBabelPreamble
 	DateFormats      "d MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
 	RTL               true
 	LangCode          he_IL
