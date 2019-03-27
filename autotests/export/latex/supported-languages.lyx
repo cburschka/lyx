@@ -1,0 +1,3442 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 569
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrartcl
+\begin_preamble
+%\usepackage{fonts-tlwg}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding auto
+\font_roman "DejaVuSerif" "default"
+\font_sans "DejaVuSans" "default"
+\font_typewriter "DejaVuSansMono" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\font_cjk gbsn
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref section
+\pdf_pdfusetitle true
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification false
+\use_refstyle 0
+\use_minted 0
+\branch not-as-secondary-language
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch babel-only
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch non-TeX-fonts-only
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch polyglossia-only
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch conflict
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Languages supported by LyX.
+\end_layout
+
+\begin_layout Standard
+The language is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+languagename
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ but the input encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+inputencodingname
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ and the font encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+encodingdefault
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Da kommt größter Mist raus!
+\end_layout
+
+\begin_layout Subsection*
+Afrikaans
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel afrikaans
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode af_ZA
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch babel-only
+inverted 0
+status open
+
+\begin_layout Standard
+
+\emph on
+\lang afrikaans
+Afrikaans
+\emph default
+ is een van die elf amptelike tale van Suid-Afrika en daarnaas ook 'n belangrike
+ taal van Namibië.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Albanian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel albanian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia albanian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode sq_AL
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang albanian
+Shqipja
+\emph default
+ është gjuha zyrtare e Shqipërisë, dhe e Kosovës.
+\end_layout
+
+\begin_layout Subsection*
+Amharic
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia amharic
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode am_ET
+\end_layout
+
+\begin_layout Subsection*
+Arabic (Arabi)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX arabic_arabi
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel arabic
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia arabic
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+RTL true
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode ar_SA
+\end_layout
+
+\begin_layout Standard
+
+\lang arabic_arabi
+اللُّغَة العَرَبِيّة هي أكثر اللغات تحدثاً ونطقاً ضمن مجموعة اللغات السامية،
+ وإحدى أكثر اللغات انتشاراً في العالم، يتحدثها أكثر من 467 مليون نسمة، ويتوزع
+ متحدثوها في الوطن العربي، بالإضافة إلى العديد من المناطق الأخرى المجاورة
+ كالأحواز وتركيا وتشاد ومالي والسنغال وإرتيريا وإثيوبيا وجنوب السودان وإيران.
+\end_layout
+
+\begin_layout Subsection*
+Arabic (ArabTeX)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX arabic_arabtex 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel arabtex (dummy babel language for arabic_arabtex to be able to switch
+ the language the way of the ArabTeX-package)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+RTL true
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode ar_SA
+\end_layout
+
+\begin_layout Itemize
+Does not work as secondary language
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch not-as-secondary-language
+inverted 0
+status open
+
+\begin_layout Standard
+
+\lang arabic_arabtex
+اللُّغَة العَرَبِيّة هي أكثر اللغات تحدثاً ونطقاً ضمن مجموعة اللغات السامية،
+ وإحدى أكثر اللغات انتشاراً في العالم، يتحدثها أكثر من 467 مليون نسمة، ويتوزع
+ متحدثوها في الوطن العربي، بالإضافة إلى العديد من المناطق الأخرى المجاورة
+ كالأحواز وتركيا وتشاد ومالي والسنغال وإرتيريا وإثيوبيا وجنوب السودان وإيران.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Armenian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia armenian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode hy_AM
+\end_layout
+
+\begin_layout Subsection*
+Asturian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia asturian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode ast_ES
+\end_layout
+
+\begin_layout Subsection*
+Basque
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel basque
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia basque
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode eu_ES
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang basque
+Euskara
+\emph default
+ Euskal Herriko hizkuntza da.
+ Hizkuntza isolatua da, ez baitzaio ahaidetasunik aurkitu, eta morfologiari
+ dagokionez, hizkuntza ergatiboa da.
+\end_layout
+
+\begin_layout Subsection*
+Belarusian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel belarusian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode be_BY
+\end_layout
+
+\begin_layout Itemize
+Until 2018-08-25 (babel-belarusian 1.4), the babel option is "belarusianb"
+ but the language name "belarusian" (without trailing "b").
+\end_layout
+
+\begin_layout Itemize
+Option clash with Russian: 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+Package babel Error: if@uni@ode already defined.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Branch babel-only
+inverted 0
+status open
+
+\begin_layout Standard
+
+\emph on
+\lang belarusian
+Белару́ская мо́ва
+\emph default
+ — загрожаная мова ўсходняе групы славянскае галіны індаэўрапейскае сям’і
+ моваў, на якой размаўляюць беларусы і частка прадстаўнікоў этнічных мяншыняў
+ Беларусі.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Bosnian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel bosnian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode bs_BA
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang bosnian
+Bosanski jezik
+\emph default
+ je južnoslavenski standardni jezik zasnovan na štokavskom narječju koji
+ koriste uglavnom Bošnjaci, ali i značajan broj ostalih osoba bosanskohercegovač
+kog porijekla.
+\end_layout
+
+\begin_layout Subsection*
+Breton
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel breton
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia breton
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode br_FR
+\end_layout
+
+\begin_layout Standard
+
+\lang breton
+Ur yezh keltiek a orin eus an Enez Vreizh (Breizh-Veur/Preden) hag eus skourr
+ ar yezhoù predenek eo ar 
+\emph on
+brezhoneg
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection*
+Bulgarian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel bulgarian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia bulgarian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode bg_BG
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Provides textcyrillic
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang bulgarian
+Бъ̀лгарският езѝк
+\emph default
+ е индоевропейски език от групата на южнославянските езици.
+ Той е официалният език на Република България и един от 23-те официални
+ езика на Европейския съюз.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Catalan 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel catalan
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia catalan [babelshorthands=true]
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode ca_ES
+\end_layout
+
+\begin_layout Standard
+
+\lang catalan
+Català: Llengua històricament parlada a Catalunya, Andorra, País Valencià,
+ les illes Balears, la Catalunya Nord, l'Alguer i la Franja de Ponent.
+\end_layout
+
+\begin_layout Subsection*
+Chinese
+\begin_inset space ~
+\end_inset
+
+(simplified)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX chinese-simplified
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode zh_CN
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Requires CJK
+\end_layout
+
+\begin_layout Itemize
+Package clash CJK / Arabi
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch conflict
+inverted 0
+status open
+
+\begin_layout Standard
+
+\lang chinese-simplified
+普通话 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Chinese (traditional)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX chinese-traditional
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode zh_TW
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Requires CJK
+\end_layout
+
+\begin_layout Itemize
+The different CJK languages (simplified and traditional Chinese, Japanese,
+ and Korean) require different fonts but only one CJK-font can be set in
+ the preamble.
+\end_layout
+
+\begin_layout Subsection*
+Coptic
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia coptic
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode cop_EG
+\end_layout
+
+\begin_layout Subsection*
+Croatian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel croatian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia croatian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode hr_HR
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang croatian
+Hrvatski jezik
+\emph default
+ skupni je naziv za nacionalni standardni jezik Hrvata, te za skup narječja
+ i govora kojima govore ili su nekada govorili Hrvati.
+\end_layout
+
+\begin_layout Subsection*
+Czech
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel czech
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia czech
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode cs_CZ
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang czech
+Čeština
+\emph default
+ neboli český jazyk je západoslovanský jazyk, nejbližší slovenštině, poté
+ lužické srbštině a polštině.
+ Patří mezi slovanské jazyky, do rodiny jazyků indoevropských.
+\end_layout
+
+\begin_layout Subsection*
+Danish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel danish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia danish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode da_DK
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang danish
+Dansk
+\emph default
+ er et nordgermansk sprog af den østnordiske (kontinentale) gruppe, der
+ tales af ca.
+ seks millioner mennesker.
+ Det er stærkt påvirket af plattysk.
+\end_layout
+
+\begin_layout Subsection*
+Divehi
+\begin_inset space ~
+\end_inset
+
+(Maldivian)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia divehi
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode dv_MV
+\end_layout
+
+\begin_layout Subsection*
+Dutch
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel dutch
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia dutch [babelshorthands=true]
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode nl_NL
+\end_layout
+
+\begin_layout Standard
+
+\lang dutch
+Het 
+\emph on
+Nederlands
+\emph default
+ is een West-Germaanse taal en de moedertaal van de meeste inwoners van
+ Nederland, België en Suriname.
+ In de Europese Unie spreken ongeveer 23 miljoen mensen Nederlands als eerste
+ taal, en een bijkomende vijf miljoen als tweede taal.
+\end_layout
+
+\begin_layout Subsection*
+English
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel english
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia english [variant=american]
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode en_US
+\end_layout
+
+\begin_layout Subsubsection*
+English (Australia)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel australian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia english [variant=australian]
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode en_AU
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX canadian
+\end_layout
+
+\begin_layout Subsubsection*
+English
+\begin_inset space ~
+\end_inset
+
+(Canada)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel canadian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia english [variant=canadian] # support still missing
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode en_CA
+\end_layout
+
+\begin_layout Subsubsection*
+English
+\begin_inset space ~
+\end_inset
+
+(New
+\begin_inset space ~
+\end_inset
+
+Zealand)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel newzealand
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia english [variant=newzealand]
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode en_NZ
+\end_layout
+
+\begin_layout Subsubsection*
+English (USA)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel american
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia english [variant=american]
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode en_US
+\end_layout
+
+\begin_layout Subsubsection*
+English (UK)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel british
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia english [variant=british]
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode en_GB
+\end_layout
+
+\begin_layout Subsection*
+Esperanto
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel esperanto
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia esperanto
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode eo_EO (no country code but name of hunspell dictionary)
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang esperanto
+Esperanto
+\emph default
+, origine la Lingvo Internacia, estas la plej disvastigita internacia planlingvo.
+ En 1887 Esperanton parolis nur manpleno da homoj; Esperanto havis unu el
+ la plej malgrandaj lingvo-komunumoj de la mondo.
+ Ĝi funkciis dekomence kiel lingvo de alternativa komunikado kaj de arta
+ kreivo.
+\end_layout
+
+\begin_layout Subsection*
+Estonian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel estonian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia estonian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode et_EE
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang estonian
+Eesti keel
+\emph default
+ (varasem nimetus: maakeel) on läänemeresoome lõunarühma kuuluv keel.
+ Selle lähemad sugulased on läänemeresoome keeled vadja ja liivi keel.
+\end_layout
+
+\begin_layout Standard
+
+\lang estonian
+Tähed f, š, z ja ž esinevad ainult võõrsõnades (nt šokolaad).
+
+\lang english
+ 
+\end_layout
+
+\begin_layout Subsection*
+Farsi
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel farsi
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia farsi
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+RTL true
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode fa_IR
+\end_layout
+
+\begin_layout Standard
+
+\lang farsi
+«فارسی» و «پارسی» به اینجا تغییر مسیر دارند.
+ برای دیگر کاربردهای این دو، فارسی (ابهامزدایی) و پارسی (ابهامزدایی) را
+ ببینید.
+\end_layout
+
+\begin_layout Subsection*
+Finnish 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel finnish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia finnish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode fi_FI
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang finnish
+Suomen kieli
+\emph default
+ (suomi) on uralilaisten kielten itämerensuomalaiseen ryhmään kuuluva kieli.
+ Sitä puhuu äidinkielenään Suomessa 4,9 miljoonaa ja toisena kielenä 0,5
+ miljoonaa henkilöä.
+ Suurimmat suomea puhuvat vähemmistöt ovat Ruotsissa, Norjassa ja Venäjällä.
+\end_layout
+
+\begin_layout Subsection*
+French
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel french
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia french
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode fr_FR
+\end_layout
+
+\begin_layout Standard
+
+\lang french
+Le 
+\emph on
+français
+\emph default
+ est une langue indo-européenne de la famille des langues romanes.
+ Le français s'est formé en France (variété de la «
+\begin_inset space ~
+\end_inset
+
+langue d’oïl
+\begin_inset space ~
+\end_inset
+
+», qui est la langue de la partie septentrionale du pays).
+\end_layout
+
+\begin_layout Subsection*
+French
+\begin_inset space ~
+\end_inset
+
+(Canada)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel canadien
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode fr_CA
+\end_layout
+
+\begin_layout Subsection*
+Friulian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel friulan
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia friulan
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode fur_IT
+\end_layout
+
+\begin_layout Standard
+
+\lang friulan
+Il 
+\emph on
+furlan
+\emph default
+ e je une lenghe romanze de famee des lenghis retichis, che e je fevelade
+ soredut intal Friûl, ma ancje vie pal mont.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Galician
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel galician
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia galician
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode gl_ES
+\end_layout
+
+\begin_layout Standard
+
+\lang galician
+O 
+\emph on
+galego
+\emph default
+ é a lingua románica propia da nacionalidade histórica de Galicia, onde
+ é usada de xeito habitual por máis de dous millóns de persoas.
+\end_layout
+
+\begin_layout Subsection*
+Georgian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel georgian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode ka_GE
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+FontEncoding T8M,T8K
+\end_layout
+
+\begin_layout Itemize
+No T8K, T8M fonts encoding definitions in TeXLive16 (but in CTAN package
+ 
+\begin_inset Quotes eld
+\end_inset
+
+georgian
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Works with Babel and non-TeX fonts (Xe/LuaTeX)
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset Branch non-TeX-fonts-only
+inverted 0
+status open
+
+\begin_layout Standard
+
+\emph on
+\lang georgian
+ქართული ენა
+\emph default
+ — ქართველების მშობლიური ენა, საქართველოს სახელმწიფო ენა (აფხაზეთის ავტონომიურ
+ რესპუბლიკაში, მასთან ერთად სახელმწიფო ენად აღიარებულია აფხაზური ენა).
+ ქართულ ენაზე 5 მილიონზე მეტი ადამიანი ლაპარაკობს.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+German
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel ngerman
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia german [variant=german,spelling=new,babelshorthands=true]
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode de_DE
+\end_layout
+
+\begin_layout Standard
+
+\lang ngerman
+Grüße aus Großschönau!
+\end_layout
+
+\begin_layout Subsubsection*
+German
+\begin_inset space ~
+\end_inset
+
+(old
+\begin_inset space ~
+\end_inset
+
+spelling)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel german
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia german [variant=german,spelling=old,babelshorthands=true]
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode de_DE-1901
+\end_layout
+
+\begin_layout Subsubsection*
+German
+\begin_inset space ~
+\end_inset
+
+(Austria)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel naustrian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia german [variant=austrian,spelling=new,babelshorthands=true]
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode de_AT
+\end_layout
+
+\begin_layout Standard
+
+\lang naustrian
+Grüße aus Wien!
+\end_layout
+
+\begin_layout Subsubsection*
+German
+\begin_inset space ~
+\end_inset
+
+(Austria,
+\begin_inset space ~
+\end_inset
+
+old
+\begin_inset space ~
+\end_inset
+
+spelling)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel austrian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia german [variant=austrian,spelling=old,babelshorthands=true]
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode de_AT-1901
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangVariety alt
+\end_layout
+
+\begin_layout Subsubsection*
+German
+\begin_inset space ~
+\end_inset
+
+(Switzerland)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX german-ch
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel nswissgerman
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia german [variant=swiss,spelling=new,babelshorthands=true]
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode de_CH
+\end_layout
+
+\begin_layout Standard
+
+\lang german-ch
+Grüße aus Zürich!
+\end_layout
+
+\begin_layout Subsubsection*
+German
+\begin_inset space ~
+\end_inset
+
+(Switzerland,
+\begin_inset space ~
+\end_inset
+
+old
+\begin_inset space ~
+\end_inset
+
+spelling)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX german-ch-old
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel swissgerman
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia german
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+PolyglossiaOpts variant=swiss,spelling=old,babelshorthands=true
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode de_CH-1901
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX greek
+\end_layout
+
+\begin_layout Subsection*
+Greek
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel greek
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia greek, variant=monotonic
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+InternalEncoding true
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode el_GR
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Provides textgreek
+\end_layout
+
+\begin_layout Standard
+
+\lang greek
+Η 
+\emph on
+ελληνική γλώσσα
+\emph default
+ είναι μια από τις ινδοευρωπαϊκές γλώσσες και αποτελεί το μοναδικό μέλος
+ ενός ανεξάρτητου κλάδου, αυτής της οικογένειας γλωσσών, ενώ είναι η επίσημη
+ γλώσσα της Ελλάδος και της Κύπρου.
+\end_layout
+
+\begin_layout Subsubsection*
+Greek
+\begin_inset space ~
+\end_inset
+
+(ancient)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX ancientgreek 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel greek 
+\backslash
+languageattribute{greek}{ancient}
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia greek [variant=ancient]
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+InternalEncoding true
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode grc_GR
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Provides textgreek
+\end_layout
+
+\begin_layout Itemize
+Babel-Greek allows only one Greek variant per document.
+\end_layout
+
+\begin_layout Subsubsection*
+Greek
+\begin_inset space ~
+\end_inset
+
+(polytonic)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel polutonikogreek
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia greek [variant=polytonic]
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+InternalEncoding true
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode el_GR
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Provides textgreek
+\end_layout
+
+\begin_layout Itemize
+Babel-Greek allows only one Greek variant per document.
+\end_layout
+
+\begin_layout Subsection*
+Hebrew
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel hebrew
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia hebrew
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+InternalEncoding true
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+RTL true
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode he_IL
+\end_layout
+
+\begin_layout Standard
+
+\lang hebrew
+עִבְרִית היא שפה שמית, ממשפחת השפות האפרו-אסיאתיות, הידועה כשפתם של היהודים
+ ושל השומרונים, אשר ניב מודרני שלה (עברית ישראלית) הוא שפתה הרשמית של מדינת
+ ישראל, מעמד שעוגן בשנת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2018
+\numeric off
+ בחוק יסוד: ישראל – מדינת הלאום של העם היהודי.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Dummy paragraph to reset the input encoding 
+\end_layout
+
+\begin_layout Plain Layout
+LyX-Bug: Sometimes, an inputencoding switch is limited to a group by LaTeX
+ but LyX does not take this into account and subsequent non-ASCII characters
+ fail.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Hindi 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia hindi
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode hi_IN
+\end_layout
+
+\begin_layout Subsection*
+Icelandic
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel icelandic
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia icelandic
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode is_IS
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+FontEncoding: T1 (OT1 misses ð and Þ)
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang icelandic
+Íslenska
+\emph default
+ er vesturnorrænt, germanskt og indóevrópskt tungumál sem er einkum talað
+ og ritað á Íslandi og er móðurmál langflestra Íslendinga.
+ Það hefur tekið minni breytingum frá fornnorrænu en önnur norræn mál og
+ er skyldara norsku og færeysku en sænsku og dönsku.
+\end_layout
+
+\begin_layout Subsection*
+Indonesian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX bahasa
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel bahasa
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia bahasai
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode id_IDl
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang bahasa
+Bahasa Indonesia
+\emph default
+ adalah bentuk standar bahasa Melayu yang dijadikan sebagai bahasa resmi
+ Republik Indonesia dan bahasa persatuan bangsa Indonesia
+\end_layout
+
+\begin_layout Subsection*
+Interlingua
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel interlingua
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia interlingua
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode ia_IA (no country code but name of hunspell dictionary)
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang interlingua
+Interlingua
+\emph default
+ es un lingua auxiliar international naturalistic basate super le vocabulos
+ commun al major linguas europee e super un grammatica anglo-romance simple,
+ initialmente publicate in 1951 per International Auxiliary Language Association
+ (IALA).
+\end_layout
+
+\begin_layout Subsection*
+Irish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel irish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia irish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode ga_IE
+\end_layout
+
+\begin_layout Standard
+
+\lang irish
+Is ceann de na teangacha Ceilteacha í 
+\emph on
+an Ghaeilge
+\emph default
+, agus ceann den dtrí cinn de theangacha Ceilteacha ar a dtugtar na teangacha
+ Gaelacha go háirithe.
+
+\lang english
+ 
+\end_layout
+
+\begin_layout Subsection*
+Italian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel italian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia italian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode it_IT
+\end_layout
+
+\begin_layout Subsection*
+Japanese
+\begin_inset space ~
+\end_inset
+
+(platex)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel japanese
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode ja_JP
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Encoding jis-platex
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Requires japanese (platex).
+ 
+\end_layout
+
+\begin_layout Itemize
+Does not work with pdfLaTeX, XeTeX, nor LuaTeX.
+ 
+\end_layout
+
+\begin_layout Itemize
+Does not work as secondary language unless the document encoding is set
+ to one of the special 
+\begin_inset Quotes gld
+\end_inset
+
+-platex
+\begin_inset Quotes grd
+\end_inset
+
+ input encodings.
+\end_layout
+
+\begin_layout Itemize
+Does not load inputenc nor fontenc.
+\end_layout
+
+\begin_layout Subsection*
+Japanese
+\begin_inset space ~
+\end_inset
+
+(CJK)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX japanese-cjk
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Encoding euc-jp
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode ja_JP
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Requires CJK
+\end_layout
+
+\begin_layout Itemize
+The different CJK languages (simplified and traditional Chinese, Japanese,
+ and Korean) require different fonts but only one CJK-font can be set in
+ the preamble.
+\end_layout
+
+\begin_layout Itemize
+Package clash CJK / Arabi
+\end_layout
+
+\begin_layout Subsection*
+Kannada
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia kannada
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode kn_IN
+\end_layout
+
+\begin_layout Subsection*
+Kazakh
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX kazakh
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode kk_KZ
+\end_layout
+
+\begin_layout Itemize
+Not supported by Babel nor Polyglossia.
+\end_layout
+
+\begin_layout Itemize
+Bug: LyX sets font encoding to T2A (Cyrillic) as 
+\series bold
+main
+\series default
+ font encoding.
+ Don't set the text language for text parts!
+\end_layout
+
+\begin_layout Standard
+Қазақ тілі (латын: qazaq tili) — Қазақстан Республикасының мемлекеттік тілі,
+ сонымен қатар Ресей, Өзбекстан, Қытай, Моңғолия жəне т.б.
+ елдерде тұратын қазақтардың ана тілі.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Khmer
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia khmer
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode km_KH
+\end_layout
+
+\begin_layout Subsection*
+Korean
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX korean
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Encoding euc-kr
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+QuoteStyle cjkangle
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode ko_KR
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Requires CJK
+\end_layout
+
+\begin_layout Itemize
+The different CJK languages (simplified and traditional Chinese, Japanese,
+ and Korean) require different fonts but only one CJK-font can be set in
+ the preamble.
+\end_layout
+
+\begin_layout Subsection*
+Kurmanji
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel kurmanji
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode kmr
+\end_layout
+
+\begin_layout Standard
+
+\lang kurmanji
+Kurmancî an kurmanciya jorîn yek ji zaravayên zimanê kurdî ye.
+\end_layout
+
+\begin_layout Subsection*
+Lao
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia lao
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode lo_LA
+\end_layout
+
+\begin_layout Subsection*
+Latin
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel latin
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia latin
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode la_LA (no country code but name of hunspell dictionary)
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang latin
+Lingua Latina
+\emph default
+, sive sermo Latinus, est lingua Indoeuropaea, qua primum Latini universi
+ et Romani antiqui in primis loquebantur, quamobrem interdum etiam lingua
+ Latia (in Latio enim sueta) et lingua Romana (nam imperii Romani sermo
+ sollemnis) appellatur.
+\end_layout
+
+\begin_layout Subsection*
+Latvian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel latvian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia latvian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode lv_LV
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+AsBabelOptions true
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+FontEncoding: L7x required for hyphenation but not set by Babel
+\end_layout
+
+\begin_layout Standard
+
+\lang latvian
+Latviešu valoda ir dzimtā valoda apmēram 1,7 miljoniem cilvēku, galvenokārt
+ Latvijā, kur tā ir vienīgā valsts valoda.
+ Latviešu valoda pieder pie indoeiropiešu valodu saimes baltu valodu grupas.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Lithuanian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel lithuanian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia lithuanian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+FontEncoding: L7x (set by Babel)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode lt_LT
+\end_layout
+
+\begin_layout Itemize
+The L7x font encoding is not much supported.
+ In LyX by LatinModern and TeX-Gyre fonts.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang lithuanian
+Lietuvių kalba
+\emph default
+ – daugiausia vartotojų turinti rytų baltų kalba.
+ Baltų kalbos kilusios iš baltų prokalbės.
+ Lietuviškai šneka apie 3 mln.
+ žmonių Lietuvoje, šiek tiek Baltarusijoje ir Lenkijos šiaurės rytuose (vadinamo
+s lietuvių kalbos salos).
+\end_layout
+
+\begin_layout Standard
+Bug: The font encoding must be manually re-set after Lithuanian text parts.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fontencoding{T1}
+\backslash
+selectfont
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Lower
+\begin_inset space ~
+\end_inset
+
+Sorbian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel lowersorbian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia lsorbian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode dsb_DE
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang lowersorbian
+Dolnoserbšćina
+\emph default
+, 
+\emph on
+dolnoserbska rěc
+\emph default
+ jo jadna z dweju rěcowu Serbow, kotaraž se wužywa w Dolnej Łužycy, w pódpołdnjo
+wej Bramborskej, na pódzajtšu Nimskej.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Hungarian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel magyar
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia magyar
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode hu_HU
+\end_layout
+
+\begin_layout Standard
+
+\lang magyar
+A 
+\emph on
+magyar nyelv
+\emph default
+ az uráli nyelvcsalád tagja, a finnugor nyelvek közé tartozó ugor nyelvek
+ egyike.
+ Legközelebbi rokonai a manysi és a hanti nyelv, majd utánuk az udmurt,
+ a komi, a mari és a mordvin nyelvek.
+\end_layout
+
+\begin_layout Subsection*
+Macedonian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel macedonian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode mk_MK
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Provides textcyrillic
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch babel-only
+inverted 0
+status open
+
+\begin_layout Standard
+
+\emph on
+\lang macedonian
+Македонски јазик
+\emph default
+ — јужнословенски јазик, дел од групата на словенски јазици од јазичното
+ семејство на индоевропски јазици.
+ Македонскиот е службен и национален јазик во Македонија.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Malay
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel bahasam
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia bahasam
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode ms_MY
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang bahasam
+Bahasa Melayu
+\emph default
+ ialah sejenis bahasa Melayu-Polinesia di bawah keluarga bahasa Austronesia
+ yang telah digunakan di wilayah Malaysia, Indonesia, dan persekitarannya
+ sejak melebihi 1,000 tahun lalu.
+\end_layout
+
+\begin_layout Subsection*
+Malayalam
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia malayalam
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode ml_IN
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Standard
+
+\lang malayalam
+ഇന്ത്യയിൽ പ്രധാനമായും കേരള സംസ്ഥാനത്തിലും ലക്ഷദ്വീപിലും പുതുച്ചേരിയുടെ ഭാഗമായ
+ മയ്യഴിയിലും സംസാരിക്കപ്പെടുന്ന ഭാഷയാണ് മലയാളം.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\end_layout
+
+\begin_layout Subsection*
+Marathi
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia marathi
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode mr_IN
+\end_layout
+
+\begin_layout Subsection*
+Mongolian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel mongolian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode mn_MN
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Provides textcyrillic
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch babel-only
+inverted 0
+status open
+
+\begin_layout Standard
+
+\lang mongolian
+Монгол үндэстний эрт эдүгээ цагийн хэл аялгуу, үсэг бичгийг хамтад нь 
+\emph on
+Монгол хэл
+\emph default
+ бичиг гэнэ.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection*
+Norwegian
+\end_layout
+
+\begin_layout Subsubsection*
+Norwegian
+\begin_inset space ~
+\end_inset
+
+(Bokmaal)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel norsk
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia norsk
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode nb_NO
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang norsk
+Norsk
+\emph default
+ er et nordisk språk som snakkes som morsmål av rundt 5 millioner mennesker,
+ først og fremst i Norge, hvor det er offisielt språk.
+ Norsk, svensk og dansk utgjør sammen de fastlandsnordiske språkene, et
+ kontinuum av mer eller mindre innbyrdes forståelige dialekter i Skandinavia.
+\end_layout
+
+\begin_layout Subsubsection*
+Norwegian
+\begin_inset space ~
+\end_inset
+
+(Nynorsk)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel nynorsk
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia nynorsk
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode nn_NO
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang nynorsk
+Nynorsk
+\emph default
+, før 1929 offisielt kalla 
+\emph on
+landsmål
+\emph default
+, er sidan jamstillingsvedtaket av 12.
+\begin_inset space ~
+\end_inset
+
+mai 1885 ei av to offisielle målformer av norsk; den andre forma er bokmål.
+ Nynorsk blir i dag nytta av om lag 10–15% av innbyggjarane i Noreg.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Occitan
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia occitan
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode oc_FR
+\end_layout
+
+\begin_layout Subsection*
+Piedmontese
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel piedmontese
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia piedmontese
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode pms_IT
+\end_layout
+
+\begin_layout Standard
+
+\lang piedmontese
+Ël piemontèis a l'é na lenga romanza, visadì derivà dal latin.
+\end_layout
+
+\begin_layout Subsection*
+Polish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel polish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia polish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+FontEncoding: QX (required for hyphenation but not set by babel)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode pl_PL
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Język polski, polszczyzna
+\emph default
+ – język naturalny należący do grupy języków zachodniosłowiańskich, stanowiącej
+ część rodziny języków indoeuropejskich.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Portuguese
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX portuguese
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel portuges
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia portuges
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode pt_PT
+\end_layout
+
+\begin_layout Standard
+
+\lang portuguese
+A 
+\emph on
+língua portuguesa
+\emph default
+, também designada 
+\emph on
+português
+\emph default
+, é uma língua românica flexiva ocidental originada no galego-português
+ falado no Reino da Galiza e no norte de Portugal.
+\end_layout
+
+\begin_layout Subsubsection*
+Portuguese
+\begin_inset space ~
+\end_inset
+
+(Brazil)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel brazil
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia brazil
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode pt_BR
+\end_layout
+
+\begin_layout Subsection*
+Romanian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel romanian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia romanian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode ro_RO
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang romanian
+Limba română
+\emph default
+ este o limbă indo-europeană, din grupul italic și din subgrupul oriental
+ al limbilor romanice.
+ De asemenea, este înregistrată ca limbă de stat atât în România cât și
+ în Republica Moldova, unde circa 75% din populație o consideră limbă maternă
+ (inclusiv sub denumirea de „
+\emph on
+limba moldovenească
+\emph default
+”).
+\end_layout
+
+\begin_layout Subsection*
+Romansh
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel romansh
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia romansh
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode rm_CH
+\end_layout
+
+\begin_layout Standard
+
+\lang romansh
+Il 
+\emph on
+rumantsch dal Grischun
+\emph default
+ che vegn discurrì en il chantun Grischun fa part da las linguas neolatinas
+ e vegn numnà en la lingua da mintgadi ‹rumantsch› (sursilvan: ‹romontsch›
+ / puter: ‹rumauntsch›).
+\end_layout
+
+\begin_layout Subsection*
+Russian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel russian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia russian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode ru_RU
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Provides textcyrillic
+\end_layout
+
+\begin_layout Itemize
+Option clash with Belarusian: 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+Package babel Error: if@uni@ode already defined.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Branch conflict
+inverted 0
+status open
+
+\begin_layout Standard
+
+\lang russian
+Ру́сский язы́к — один из восточнославянских языков, национальный язык русского
+ народа.
+ Является одним из наиболее распространённых языков мира.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Russian
+\begin_inset space ~
+\end_inset
+
+(Petrine
+\begin_inset space ~
+\end_inset
+
+orthography)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX oldrussian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia russian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+PolyglossiaOpts spelling=old
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode ru_petr1708
+\end_layout
+
+\begin_layout Itemize
+Currently not supported (file format change!)
+\end_layout
+
+\begin_layout Subsection*
+North Sami
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel samin
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia samin
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode se_NO 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(why country code Norway? Also spoken in Sweden and Finland)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang samin
+Davvisámegiella
+\emph default
+ gullá sámegielaid oarjesámegielaid davvejovkui ovttas julev- ja bihtánsámegiela
+in.
+ Eará oarjesámegielat leat ubmisámegiella ja lullisámegiella.
+\end_layout
+
+\begin_layout Subsection*
+Sanskrit
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia sanskrit
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode sa_IN
+\end_layout
+
+\begin_layout Subsection*
+Scottish
+\end_layout
+
+\begin_layout Subsubsection*
+Gaidhlig (Scottish Gaelic)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel scottish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia scottish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode gd_GB
+\end_layout
+
+\begin_layout Standard
+
+\lang scottish
+'S i cànan dùthchasach na h-Alba a th' anns 
+\emph on
+a' Ghàidhlig
+\emph default
+.
+ 'S i ball den teaghlach de chànanan Ceilteach dhen mheur Ghoidhealach a
+ tha anns a' Ghàidhlig.
+\end_layout
+
+\begin_layout Subsubsection*
+Scots
+\end_layout
+
+\begin_layout Itemize
+not supported.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Scots
+\emph default
+ (or "Lallans") is a Wast Germanic leid o the Anglic varietie that's spaken
+ on the Lawlands an Northren Isles o Scotland an en tha stewartrie o Ulster
+ en Ireland.
+ En maist airts, it's spaken anent tha Scots Gaelic an Inglis leids.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Serbian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX serbian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel serbianc
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia serbian [script=Cyrillic]
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode sr_RS
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang serbian
+Српски језик
+\emph default
+ припада словенској групи језика породице индоевропских језика.
+ Српски језик је званичан у Србији, Босни и Херцеговини и Црној Гори и говори
+ га око 12 милиона људи.
+ Такође је мањински језик у државама централне и источне Европе.
+\end_layout
+
+\begin_layout Subsubsection*
+Serbian (Latin)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX serbian-latin
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel serbian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia serbian [script=Latin]
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode sr_RS-Latin
+\end_layout
+
+\begin_layout Standard
+
+\lang serbian-latin
+Ako bismo zanemarili do sada jasno nepotvrđene naučne hipoteze (koje imaju
+ osnova) o prethodnim slovenskim (pa time i srpskim) pismima, može se reći
+ da se, u različitim razdobljima 
+\emph on
+srpski
+\emph default
+ pisao latinicom, glagoljicom, ćirilicom i arapskim pismom.
+\end_layout
+
+\begin_layout Subsection*
+Slovak
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel slovak
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia slovak
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode sk_SK
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang slovak
+Slovenčina
+\emph default
+ patrí do skupiny západoslovanských jazykov.
+ Slovenčina je oficiálne úradným jazykom Slovenska, Vojvodiny a od 1.
+ mája 2004 jedným z jazykov Európskej únie.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Slovene
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel slovene
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia slovenian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode sl_SI
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang slovene
+Slovenščina
+\emph default
+ je združeni naziv za uradni knjižni jezik Slovencev in skupno ime za narečja
+ in govore, ki jih govorijo ali so jih nekoč govorili Slovenci.
+\end_layout
+
+\begin_layout Subsection*
+Spanish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel spanish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia spanish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode es_ES
+\end_layout
+
+\begin_layout Itemize
+Option clash with 
+\begin_inset Quotes eld
+\end_inset
+
+galician
+\begin_inset Quotes erd
+\end_inset
+
+: Command 
+\backslash
+quoting already defined.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch conflict
+inverted 0
+status open
+
+\begin_layout Standard
+
+\lang spanish
+El español o castellano es una lengua romance procedente del latín hablado.
+ Pertenece al grupo ibérico y es originaria de Castilla, reino medieval
+ de la península ibérica.
+ Es la segunda lengua del mundo por el número de personas que la hablan
+ como lengua materna tras el chino mandarín.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Spanish (Mexico)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX spanish-mexico
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel spanish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia spanish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode es_MX
+\end_layout
+
+\begin_layout Subsection*
+Swedish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel swedish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia swedish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode sv_SE
+\end_layout
+
+\begin_layout Standard
+
+\lang swedish
+Svenska är ett östnordiskt språk som talas av drygt elva miljoner personer
+ främst i Sverige där språket har en dominant ställning som huvudspråk,
+ men även som det ena nationalspråket i Finland och som enda officiella
+ språk på Åland.
+ Svenska är nära besläktat och i hög grad ömsesidigt begripligt med danska
+ och norska.
+\end_layout
+
+\begin_layout Subsection*
+Syriac
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia syriac
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+RTL true
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode syr_SY
+\end_layout
+
+\begin_layout Subsection*
+Tamil
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia tamil
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode ta_IN
+\end_layout
+
+\begin_layout Subsection*
+Telugu
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia telugu
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode te_IN
+\end_layout
+
+\begin_layout Subsection*
+Thai
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel thai
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia thai
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode th_TH
+\end_layout
+
+\begin_layout Itemize
+For emphasized text, load 
+\begin_inset Quotes eld
+\end_inset
+
+fonts-tlwg
+\begin_inset Quotes erd
+\end_inset
+
+ in the user preamble.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang thai
+ภาษาไทย
+\emph default
+ หรือ 
+\emph on
+ภาษาไทยกลาง
+\emph default
+ เป็นภาษาราชการและภาษาประจำชาติของประเทศไทย ภาษาไทยเป็นภาษาในกลุ่มภาษาไท
+ ซึ่งเป็นกลุ่มย่อยของตระกูลภาษาไท-กะได สันนิษฐานว่า ภาษาในตระกูลนี้มีถิ่นกำเนิดจ
+ากทางตอนใต้ของประเทศจีน และนักภาษาศาสตร์บางส่วนเสนอว่า ภาษาไทยน่าจะมีความเชื่อมโ
+ยงกับตระกูลภาษาออสโตร-เอเชียติก ตระกูลภาษาออสโตรนีเซียน และตระกูลภาษาจีน-ทิเบต
+\end_layout
+
+\begin_layout Subsection*
+Tibetan
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia tibetan
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode bo_CN
+\end_layout
+
+\begin_layout Subsection*
+Turkish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel turkish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia turkish
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode tr_TR
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang turkish
+Türkçe
+\emph default
+ ya da 
+\emph on
+Türk dili
+\emph default
+, batıda Balkanlar’dan başlayıp doğuda Hazar Denizi sahasına kadar konuşulan
+ Türki diller dil ailesine ait sondan eklemeli bir dil.
+ Türki diller ailesinin Oğuz dil grubundan Osmanlı Türkçesinin devamını
+ oluşturur.
+\end_layout
+
+\begin_layout Subsection*
+Turkmen
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel turkmen
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia turkmen
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode tk_TM
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang turkmen
+Türkmen dili
+\emph default
+: Türkmenistanyň resmi dilidir.
+ Türkmen dili - türki dilleriň oguz dilleri toparyna degişlidir.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Ukrainian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel ukrainian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia ukrainian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode uk_UA
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Provides textcyrillic
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang ukrainian
+Украї́нська мо́ва
+\emph default
+ (історичні назви — ру́ська, руси́нська) — національна мова українців.
+ Належить до слов'янської групи індоєвропейської мовної сім'ї.
+ Число мовців — близько 45 млн, більшість яких живе в Україні.
+\end_layout
+
+\begin_layout Subsection*
+Upper Sorbian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel uppersorbian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia usorbian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode hsb_DE
+\end_layout
+
+\begin_layout Standard
+
+\lang uppersorbian
+Hornjoserbšćina je zapadosłowjanska rěč, kotraž so w Hornjej Łužicy wokoło
+ městow Budyšin, Kamjenc a Wojerecy rěči.
+ Jako słowjanska rěč hornjoserbšćina k indoeuropskim rěčam słuša.
+\end_layout
+
+\begin_layout Subsection*
+Urdu
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia urdu
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+RTL true
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode ur_PK
+\end_layout
+
+\begin_layout Subsection*
+Vietnamese
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel vietnamese
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia vietnamese
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+FontEncoding T5
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode vi_VN
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang vietnamese
+Tiếng Việt
+\emph default
+, còn gọi 
+\emph on
+tiếng Việt Nam
+\emph default
+ hay 
+\emph on
+Việt ngữ
+\emph default
+, là ngôn ngữ của người Việt (người Kinh) và là ngôn ngữ chính thức tại
+ Việt Nam.
+\end_layout
+
+\begin_layout Subsection*
+Welsh
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel welsh
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia welsh
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode cy_GB
+\end_layout
+
+\begin_layout Standard
+
+\lang welsh
+Aelod o'r gangen Frythonaidd o'r ieithoedd Celtaidd a siaredir yn frodorol
+ yng Nghymru, gan Gymry a phobl eraill ar wasgar yn Lloegr, a chan gymuned
+ fechan yn Y Wladfa, yr Ariannin yw'r Gymraeg (hefyd 
+\emph on
+Cymraeg
+\emph default
+ heb y fannod).
+\end_layout
+
+\end_body
+\end_document
