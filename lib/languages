@@ -101,8 +101,8 @@
 #   some font encodings ("<", ">", "|" and straight quote).
 #   It is not required for standard encodings like T2A. See bug #5091.
 # * AsBabelOptions advices LyX to pass the languages locally to babel, not
-#   globally to the class. Some languages (basically those not directly
-#   supported by babel) need this.
+#   globally to the class. In the old days, some languages (basically those
+#   not natively supported by babel) needed this.
 #   FIXME: in this case, we might still need to pass the other languages
 #          globally, for the use of other packages (such as varioref).
 # * LangCode is also used for spellchecking and thesaurus, where the
@@ -231,7 +231,6 @@ Language arabic_arabi
 	FontEncoding     LAE
 	DateFormats      "d MMMM، yyyy|dd/MM/yyyy|d/M/yyyy"
 	RTL              true
-	AsBabelOptions   true
 	LangCode         ar_SA
 End
 
@@ -344,7 +343,6 @@ Language belarusian
 	FontEncoding	 T2A
 	DateFormats      "dd MMMM yyyy|d MMM yyyy|d.M.yyyy"
 	LangCode         be_BY
-	AsBabelOptions   true
 End
 
 # not yet supported by polyglossia
@@ -845,7 +843,6 @@ Language japanese
 	BabelName        japanese
 	Encoding         jis-platex
 	LangCode         ja_JP
-	AsBabelOptions   true
 	Requires         japanese
 	InternalEncoding true
 	FontEncoding     None
@@ -912,7 +909,6 @@ Language kurmanji
 	FontEncoding	 T1|OT1
 	DateFormats      "d. MMMM yyyy|d. M. yyyy|yyyy-MM-dd"
 	LangCode         kmr
-	AsBabelOptions   true
 End
 
 # not supported by babel
@@ -948,7 +944,6 @@ Language latvian
 	FontEncoding     L7x|T1|OT1
 	DateFormats      "yyyy. 'gada' d. MMMM|yyyy. 'gada' d. MMM|dd.MM.yyyy"
 	LangCode         lv_LV
-	AsBabelOptions   true
 End
 
 # lithuanian must be loaded locally with babel options,
@@ -963,7 +958,6 @@ Language lithuanian
 	FontEncoding     L7x
 	DateFormats      "yyyy 'm.' MMMM d 'd.'|yyyy 'm.' MMMM d 'd.'|yyyy-MM-dd"
 	LangCode         lt_LT
-	AsBabelOptions   true
 End
 
 Language lowersorbian
@@ -1030,7 +1024,6 @@ Language mongolian
 	FontEncoding     T2A
 	DateFormats      "yyyy оны M сарын d|d-M-yyyy|dd-MM-yyyy"
 	LangCode         mn_MN
-	AsBabelOptions   true
 	Provides         textcyrillic
 End
 
@@ -1213,7 +1206,6 @@ Language serbian
 	FontEncoding     T2A
 	DateFormats      "d. MMMM yyyy|d. MMM yyyy|dd.MM.yyyy"
 	LangCode         sr_RS
-	AsBabelOptions   true
 End
 
 # Note: script option is uppercase, even if the polyglossia
@@ -1372,7 +1364,6 @@ Language turkmen
 	FontEncoding	 T1|OT1
 	DateFormats      "yyyy ý. MMMM d|dd.MM.yyyy ý.|dd.MM.yy ý."
 	LangCode         tk_TM
-	AsBabelOptions   true
 End
 
 Language ukrainian
