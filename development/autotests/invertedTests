@@ -96,13 +96,7 @@ export/export/latex/6197-polish-amssymb_pdf._texF
 # (For some reason, the false positive error is not thrown with PDF (luatex).)
 export/examples/sr/Modules/Braille_(dvi3|pdf4)_systemF
 
-#9681 Run-together words in Greek and Cyrillic documents
-# no-termination of replacement macros can lead to non-existing macros if
-# unencodable or force-converted Greek or Cyrillic letters are immediately
-# followed by Latin letters. See also unreliableTests.
-#export/export/latex/textcyr-textgreek-test_pdf2
-
-# Kornel: unknown reason
+# Missing 8-bit fonts (see unreliableTests)
 # After reinstalling culmus under the TL19 control, it compiles
 #export/export/latex/unicodesymbols/012-31-hebrew_he-.*_pdf2
 

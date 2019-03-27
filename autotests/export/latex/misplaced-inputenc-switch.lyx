@@ -90,8 +90,16 @@
 \begin_body
 
 \begin_layout Standard
-LyX-Bug: Sometimes, an inputencoding switch is limited to a group by LaTeX
- but LyX does not take this into account and subsequent non-ASCII characters
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-Bug #11532"
+target "https://www.lyx.org/trac/ticket/11532"
+literal "false"
+
+\end_inset
+
+: Sometimes, an inputencoding switch is limited to a group by LaTeX but
+ LyX does not take this into account and subsequent non-ASCII characters
  fail.
 \end_layout
 

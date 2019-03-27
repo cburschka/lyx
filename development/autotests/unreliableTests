@@ -77,6 +77,11 @@ templates/examples/Books/Springer_Monographs.*
 # svmult.cls
 templates/examples/Books/Springer_Contributed_Books.*
 
+# TeXLive does not set up Hebrew 8-bit TeX fonts
+# (Workaround: the external package culmus-latex)
+export/export/latex/unicodesymbols/012-31-hebrew_he-thai_pdf2
+export/.*/he/.*((dvi|pdf.?)|_texF)
+
 
 Sublabel: needauth
 ##################
@@ -171,16 +176,6 @@ export/(doc|examples)/uk/(Intro|Welcome)_.*_texF
 # Wrong output with pdflatex
 # missing character with XeTeX/LuaTeX and Babel (-> invertedTests)
 export/export/latex/6197-polish-amssymb_(dvi|pdf).?
-
-#9681 Run-together words in Greek and Cyrillic documents
-# if inputenc is 8-bit "language default" or "ascii" (e.g. XeTeX + TeX fonts).
-# See https://www.lyx.org/trac/ticket/9681#comment:6
-# No termination of LICR macros when textcyrillic and textgreek is not required
-# Cf. #9637 textgreek and textcyr depend on font-encoding, not input encoding
-export/export/latex/ru-accent-ascii_pdf2
-export/export/latex/unicodesymbols/009-cyrillic_ru_euc-cn_pdf2
-export/.*/el/.*((dvi|pdf.?)|_texF)
-export/.*/(ru|uk)/.*(pdf4_texF)
 
 # Non-ASCII char in verbatim environment is dropped (with a warning when
 # doing this interactively) with ASCII (and hence also with XeTeX).
