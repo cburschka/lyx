@@ -1547,7 +1547,9 @@ void Cursor::niceInsert(MathAtom const & t)
 	// If possible, enter the new inset and move the contents of the selection
 	if (t->isActive()) {
 		idx_type const idx = prevMath().asNestInset()->firstIdx();
-		asArray(safe, prevMath().cell(idx));
+		MathData ar(buffer());
+		asArray(safe, ar);
+		prevMath().cell(idx).insert(0, ar);
 		editInsertedInset();
 	} else if (t->asMacro() && !safe.empty()) {
 		MathData ar(buffer());
