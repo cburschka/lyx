@@ -1121,8 +1121,8 @@
 #0x05bf ""                "" "combining,force" "" "" # HEBREW POINT RAFE
 #0x05c0 ""                "" "" "" ""    	     # HEBREW PUNCTUATION PASEQ
 # shindot and shindot are actually combining unicode characters but work fine as postfix
-0x05c1 "\\shindot"       "" "force=cp1255;utf8;utf8-cjk" "" "" # HEBREW POINT SHIN DOT
-0x05c2 "\\sindot"        "" "force=cp1255;utf8;utf8-cjk" "" "" # HEBREW POINT SIN DOT
+0x05c1 "\\shindot"       "" "force=cp1255;utf8;utf8-cjk;utf8x" "" "" # HEBREW POINT SHIN DOT
+0x05c2 "\\sindot"        "" "force=cp1255;utf8;utf8-cjk;utf8x" "" "" # HEBREW POINT SIN DOT
 0x05c3 "\\sofpasuq"      "" "force=cp1255;utf8;utf8-cjk" "" "" # HEBREW PUNCTUATION SOF PASUQ
 #0x05c4 ""                "" "combining,force" "" "" # HEBREW MARK UPPER DOT
 #0x05c5 ""                "" "combining,force" "" "" # HEBREW MARK LOWER DOT
