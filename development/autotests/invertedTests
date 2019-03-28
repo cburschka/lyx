@@ -18,10 +18,19 @@ Sublabel: todo
 # Error in Japanese document if LyX-logo is preceded by foreign language
 export/export/latex/ja_wrong_auto_encoding_(dvi|pdf(|3)).*
 
-# missing character: There is no ^^A in font [lmroman12-regular]
+# missing glyphs: There is no ^^A in font [lmroman12-regular]
 # and all the line down to ^^Z and beyond...
 # XeTeX artifact? works with LuaTeX, explore:
 export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_systemF
+
+# missing glyphs: Missing character: There is no ^^c3 in font cmr12!
+# LyXbug: no [open output anyway], because only DVI generated.
+# Hand-converting dvi -> ps -> pdf works fine.
+export/examples/ja/Modules/Braille_(dvi|pdf.*)
+export/examples/ja/Modules/Braille_lyx2[23]
+# Missing character: There is no ^^e2 in font cmss10!
+export/templates/ja/Presentations/Beamer_(dvi|pdf3?|lyx2[23])
+
 
 # iconv fails, if a nomenclature inset contains an uncodable character
 export/export/latex/iconv-error-nomenclature_pdf2
@@ -58,7 +67,6 @@ export/examples/(|es/)Curricula_Vitae/Europe_CV_(dvi|dvi3.*F|pdf|pdf3)
 export/export/lyx2lyx/lyx_2_3_test_lyx(16|20|21|22)
 
 
-# CJK
 # Korean legacy encoding fails (missing fonts)
 export/export/latex/CJK/ko_default_pdf2
 
@@ -91,14 +99,14 @@ Sublabel: lyxbugs
 
 #6197: „amssymb” with Polish babel name clash \lll ("<<<" vs. "ł")
 # Wrong output with pdflatex (-> unreliableTests),
-# missing character with XeTeX/LuaTeX and Babel (OK with Polyglossia)
+# missing glyph with XeTeX/LuaTeX and Babel (OK with Polyglossia)
 export/export/latex/6197-polish-amssymb_pdf._texF
 
 #8035 work around a Polyglossia bug:
 # An error is reported if the document font does not announce support for a
 # script (Cyrillic, Greek, ...) which Polyglossia thinks is required to
 # typeset the document language. This is not required with LyX's check for
-# missing characters and results in many false positives:
+# missing glyphs and results in many false positives:
 # a) with fonts including the required characters but
 #    not the tag tested by Polyglossia,
 # b) if the document language is "Serbian (Latin Script)",
@@ -159,7 +167,7 @@ export/export/latex/fa-OT1_pdf2
 
 #11522 Support specification of complementing non-TeX fonts
 # More than one non-TeX font required for the character set in many documents
-# to prevent "missing character" errors with non-TeX fonts
+# to prevent "missing glyph" errors with non-TeX fonts
 export/export/latex/luainputenc-utf8_pdf5_systemF
 export/export/latex/xetex-inputenc.*_pdf4_systemF
 #
@@ -211,13 +219,13 @@ export/doc/(|de/|es/|fr/)UserGuide_pdf4_texF
 
 # Babel-Russian uses UTF-8 for auto-strings if it detects Xe/LuaTeX.
 # This fails unless the inputencoding is set to utf-8, too.
-export/doc/ru/(Intro|Tutorial)_(dvi3|pdf[45])_texF
-export/examples/ru/(example_lyxified|Welcome)_(dvi3|pdf[45])_texF
+export/doc/ru/(Intro|Tutorial)_.*_texF
+export/examples/ru/.*(LyXified|Welcome).*_texF
 
 # Babel-Ukrainian uses UTF-8 if it detects Xe/LuaTeX (for "\date").
 # With 8-bit TeX fonts this results in:
 # * garbled output with PDF (LuaTeX)
-# * missing chars with XeTeX and DVI (LuaTeX)
+# * missing glyphs with XeTeX and DVI (LuaTeX)
 # New in TL18 -> cf. unreliableTests.varying_versions.
 # Workaround: suppressing auto-date or using date inset (new in LyX 2.4)
 # 	      in the source documents.
@@ -267,7 +275,6 @@ export/doc/(sk|nb)/Intro_(dvi3|pdf5)_systemF
 export/templates/Presentations/Slides_.*_systemF
 
 # Beamer: conflicts with some combinations of packages/settings/languages
-export/templates/ja/Presentations/Beamer_(pdf2|pdf[45]).*
 export/templates/es/Presentations/Beamer_pdf4_texF
 
 # Arabic
@@ -299,7 +306,7 @@ export/export/latex/supported-languages_(dvi3|pdf5)_texF
 # Polyglossia problem with LuaTeX (undefined command) (cf. Arabic)
 # https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
 export/examples/fa/Welcome_(dvi3|pdf5)_systemF
-# Missing characters (em space and "English" quotes) with XeTeX + system fonts.
+# missing glyphs (em space and "English" quotes) with XeTeX + system fonts.
 export/examples/fa/Welcome_pdf4_systemF
 # missing ASCII replacements (required by XeTeX + TeX fonts)
 export/examples/fa/Welcome_pdf4_texF
