@@ -21,7 +21,7 @@
 \makeatletter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
-\providecommand{\LyX}{\texorpdfstring{\textlatin{%
+\providecommand{\LyX}{\texorpdfstring{\ensureascii{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}}{LyX}}
 \DeclareRobustCommand*{\lyxarrow}{%
 \@ifstar
