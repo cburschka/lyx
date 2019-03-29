@@ -888,7 +888,7 @@ We can also import chess diagrams:
 
 \begin_inset External
 	template ChessDiagram
-	filename ../../../lib/examples/iecc05.fen
+	filename ../../../lib/examples/Graphics_and_Insets/iecc05.fen
 
 \end_inset
 
@@ -903,7 +903,7 @@ Spreadsheets:
 
 \begin_inset External
 	template GnumericSpreadsheet
-	filename ../../../lib/examples/longsheet.gnumeric
+	filename ../../../lib/examples/External_Material/longsheet.gnumeric
 
 \end_inset
 
@@ -933,7 +933,7 @@ and PDF pages:
 
 \begin_inset External
 	template PDFPages
-	filename ../../../lib/examples/beamer-icsi-logo.pdf
+	filename ../../../lib/examples/Presentations/beamer-icsi-logo.pdf
 	extra LaTeX "pages=-"
 	rotateAngle 22
 	rotateOrigin baselineleft
