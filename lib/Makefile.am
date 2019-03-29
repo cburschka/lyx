@@ -352,7 +352,6 @@ dist_examples_DATA = \
 articleexamplesdir = $(pkgdatadir)/examples/Articles
 dist_articleexamples_DATA = \
 	examples/Articles/Astronomy_%26_Astrophysics.lyx \
-	examples/Articles/American_Astronomical_Society_%28AASTeX_v._6%29.lyx \
 	examples/Articles/American_Astronomical_Society_%28AASTeX_v._6.2%29.lyx \
 	examples/Articles/American_Chemical_Society_%28ACS%29.lyx \
 	examples/Articles/American_Mathematical_Society_%28AMS%29.lyx \
@@ -2532,11 +2531,9 @@ dist_templates_DATA = \
 
 articletemplatesdir = $(pkgdatadir)/templates/Articles
 dist_articletemplates_DATA = \
-	templates/Articles/American_Astronomical_Society_%28AASTeX_v._6%29.lyx \
 	templates/Articles/American_Astronomical_Society_%28AASTeX_v._6.2%29.lyx \
 	templates/Articles/American_Economic_Association_%28AEA%29.lyx \
 	templates/Articles/American_Psychological_Association_%28APA%29.lyx \
-	templates/Articles/American_Psychological_Association_%28APA%29,_v._6.lyx \
 	templates/Articles/Association_for_Computing_Machinery_%28ACM%29.lyx \
 	templates/Articles/Astronomy_%26_Astrophysics.lyx \
 	templates/Articles/Chinese_Article_%28CTeX%29.lyx \
@@ -2591,7 +2588,8 @@ dist_obsoletetemplates_DATA = \
 	templates/Obsolete/ACM_SIGGGRAPH_0.92_%28obsolete%29.lyx \
 	templates/Obsolete/ACM_SIGPLAN_%28Obsolete%29.lyx \
 	templates/Obsolete/ACM_SIG_Proceedings_%28SP,_Obsolete%29.lyx \
-	templates/Obsolete/American_Geophysical_Union_%28AGUTeX%29.lyx
+	templates/Obsolete/American_Geophysical_Union_%28AGUTeX%29.lyx \
+	templates/Obsolete/Latex8_Article_%28Obsolete%29.lyx
 
 obsoletegbrieftemplatesdir = $(pkgdatadir)/templates/Obsolete/G-Brief_%28V._1,_Obsolete%29
 dist_obsoletegbrieftemplates_DATA = \
