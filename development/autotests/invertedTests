@@ -54,7 +54,7 @@ export/templates/Articles/Association_for_Computing_Machinery_.*_lyx23
 # Back-conversion results in some layouts without name ("\begin_layout \n")
 # which trigger a warning message leading to test failure.
 export/examples/(|de/|fr/|ja/)Presentations/Beamer_lyx(16|20)
-export/examples/Presentations/Beamer_.Complex._lyx(16|20)
+export/examples/Presentations/Beamer_.*Complex.*_lyx(16|20)
 export/templates/(|de/|es/|fr/|ja/)Presentations/Beamer_lyx(16|20)
 #
 # modernCV fails for versions < 2.1

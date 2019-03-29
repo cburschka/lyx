@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 568
+\lyxformat 569
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -76,6 +76,7 @@
 \papercolumns 2
 \papersides 1
 \paperpagestyle empty
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -230,7 +231,7 @@ status collapsed
 
 \begin_inset External
 	template ChessDiagram
-	filename /usr/local/share/lyx2.4/examples/Graphics_and_Insets/iecc05.fen
+	filename ../../Graphics_and_Insets/iecc05.fen
 
 \end_inset
 
@@ -312,7 +313,7 @@ status collapsed
 
 \begin_inset External
 	template ChessDiagram
-	filename /usr/local/share/lyx2.4/examples/Graphics_and_Insets/iecc07.fen
+	filename /usr/local/src/lyx/lib/examples/Graphics_and_Insets/iecc05.fen
 
 \end_inset
 
@@ -357,7 +358,7 @@ status collapsed
 
 \begin_inset External
 	template ChessDiagram
-	filename /usr/local/share/lyx2.4/examples/Graphics_and_Insets/iecc12.fen
+	filename ../../Graphics_and_Insets/iecc12.fen
 
 \end_inset
 

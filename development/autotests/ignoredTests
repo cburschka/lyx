@@ -96,7 +96,8 @@ export/examples/Insets/Minted.*lyx22
 export/mathmacros/Spacechild[123].*
 # chapters of Springer books (svmono, svmult) (except 00_Main_File)
 export/templates/Books/Springer_.*/(0[^0]|1.)_.*
-export/templates/Theses/PhD_Thesis/(Acknowledgments|Appendix|Summary|Bibliography|Chapter_[12])_lyx[0-9][0-9]
+check_load/templates/Books/Springer_.*/(0[^0]|1.)_.*
+export/templates/Theses/PhD_Thesis/(Acknowledgments|Appendix|Summary|Bibliography|Chapter_[12])_lyx.*
 # Used only as include file for some tests
 .*/export/IncludeMissingEndTagDiv.*
 
@@ -110,7 +111,7 @@ export/examples/Articles/DocBook_Article_.*(dvi3|pdf[245]).*
 export/templates/Articles/DocBook_Article_.*(dvi3|pdf[245]).*
 
 # `acmart` and `copernicus` are not supported by LyX < 2.3
-export/templates/Articles/Association_for_Computing_Machinery_lyx(16|20|21|22)
+export/templates/Articles/Association_for_Computing_Machinery.*_lyx(16|20|21|22)
 export/templates/Articles/Copernicus_Publications_.*_lyx(16|20|21|22)
 
 
