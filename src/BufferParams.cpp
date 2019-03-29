@@ -3550,4 +3550,20 @@ void BufferParams::copyForAdvFR(const BufferParams & bp)
 	setBaseClass(doc_class);
 }
 
+
+void BufferParams::setBibFileEncoding(string const & file, string const & enc)
+{
+	bib_encodings[file] = enc;
+}
+
+
+string const BufferParams::bibFileEncoding(string const & file) const
+{
+	if (bib_encodings.find(file) == bib_encodings.end())
+		return string();
+	return bib_encodings.find(file)->second;
+}
+
+
+
 } // namespace lyx

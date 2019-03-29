@@ -413,9 +413,9 @@ public:
 					std::string const &, bool nice) const;
 
 	/** Returns a vector of bibliography (*.bib) file paths suitable for the
-	 *  output in the respective BibTeX/Biblatex macro
+	 *  output in the respective BibTeX/Biblatex macro and potential individual encoding
 	 */
-	std::vector<docstring> const prepareBibFilePaths(OutputParams const &,
+	std::vector<std::pair<docstring, std::string>> const prepareBibFilePaths(OutputParams const &,
 				    const docstring_list & bibfilelist,
 				    bool const extension = true) const;
 

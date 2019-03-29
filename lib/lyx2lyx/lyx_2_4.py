@@ -835,6 +835,9 @@ def revert_bibencoding(document):
         k = find_token(document.body, "encoding", i, j)
         if k != -1:
             del document.body[k]
+        if encoding == "default":
+            i += 1
+            continue
         # Re-find inset end line
         j = find_end_of_inset(document.body, i)
         if biblatex:
@@ -1443,6 +1446,115 @@ def revert_tablestyle(document):
         del document.header[i]
 
 
+def revert_bibfileencodings(document):
+    " Revert individual Biblatex bibliography encodings "
+
+    # Get cite engine
+    engine = "basic"
+    i = find_token(document.header, "\\cite_engine", 0)
+    if i == -1:
+        document.warning("Malformed document! Missing \\cite_engine")
+    else:
+        engine = get_value(document.header, "\\cite_engine", i)
+
+    # Check if biblatex
+    biblatex = False
+    if engine in ["biblatex", "biblatex-natbib"]:
+        biblatex = True
+
+    # Map lyx to latex encoding names
+    encodings = {
+        "utf8" : "utf8",
+        "utf8x" : "utf8x",
+        "armscii8" : "armscii8",
+        "iso8859-1" : "latin1",
+        "iso8859-2" : "latin2",
+        "iso8859-3" : "latin3",
+        "iso8859-4" : "latin4",
+        "iso8859-5" : "iso88595",
+        "iso8859-6" : "8859-6",
+        "iso8859-7" : "iso-8859-7",
+        "iso8859-8" : "8859-8",
+        "iso8859-9" : "latin5",
+        "iso8859-13" : "latin7",
+        "iso8859-15" : "latin9",
+        "iso8859-16" : "latin10",
+        "applemac" : "applemac",
+        "cp437" : "cp437",
+        "cp437de" : "cp437de",
+        "cp850" : "cp850",
+        "cp852" : "cp852",
+        "cp855" : "cp855",
+        "cp858" : "cp858",
+        "cp862" : "cp862",
+        "cp865" : "cp865",
+        "cp866" : "cp866",
+        "cp1250" : "cp1250",
+        "cp1251" : "cp1251",
+        "cp1252" : "cp1252",
+        "cp1255" : "cp1255",
+        "cp1256" : "cp1256",
+        "cp1257" : "cp1257",
+        "koi8-r" : "koi8-r",
+        "koi8-u" : "koi8-u",
+        "pt154" : "pt154",
+        "utf8-platex" : "utf8",
+        "ascii" : "ascii"
+    }
+
+    i = 0
+    bibresources = []
+    while (True):
+        i = find_token(document.body, "\\begin_inset CommandInset bibtex", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of bibtex inset at line %d!!" %(i))
+            i += 1
+            continue
+        encodings = get_quoted_value(document.body, "file_encodings", i, j)
+        if not encodings:
+            i += 1
+            continue
+        bibfiles = get_quoted_value(document.body, "bibfiles", i, j).split(",")
+        opts = get_quoted_value(document.body, "biblatexopts", i, j)
+        if len(bibfiles) == 0:
+            document.warning("Bibtex inset at line %d does not have a bibfile!" %(i))
+        # remove encoding line
+        k = find_token(document.body, "file_encodings", i, j)
+        if k != -1:
+            del document.body[k]
+        # Re-find inset end line
+        j = find_end_of_inset(document.body, i)
+        if biblatex:
+            enclist = encodings.split("\t")
+            encmap = dict()
+            for pp in enclist:
+                ppp = pp.split(" ", 1)
+                encmap[ppp[0]] = ppp[1]
+            for bib in bibfiles:
+                pr = "\\addbibresource"
+                if bib in encmap.keys():
+                    pr += "[bibencoding=" + encmap[bib] + "]"
+                pr += "{" + bib + "}"
+                add_to_preamble(document, [pr])
+            # Insert ERT \\printbibliography and wrap bibtex inset to a Note
+            pcmd = "printbibliography"
+            if opts:
+                pcmd += "[" + opts + "]"
+            repl = ["\\begin_inset ERT", "status open", "", "\\begin_layout Plain Layout",\
+                    "", "", "\\backslash", pcmd, "\\end_layout", "", "\\end_inset", "", "",\
+                    "\\end_layout", "", "\\begin_layout Standard", "\\begin_inset Note Note",\
+                    "status open", "", "\\begin_layout Plain Layout" ]
+            repl += document.body[i:j+1]
+            repl += ["", "\\end_layout", "", "\\end_inset", "", ""]
+            document.body[i:j+1] = repl
+            j += 27
+
+        i = j + 1
+
+
 
 ##
 # Conversion hub
@@ -1474,10 +1586,12 @@ convert = [
            [566, [convert_hebrew_parentheses]],
            [567, []],
            [568, []],
-           [569, []]
+           [569, []],
+           [570, []]
           ]
 
 revert =  [
+           [569, [revert_bibfileencodings]],
            [568, [revert_tablestyle]],
            [567, [revert_soul]],
            [566, [revert_malayalam]],

@@ -84,6 +84,10 @@ private:
 	QStringList selectedBibs();
 	///
 	void setButtons();
+	///
+	std::vector<docstring> getFileEncodings();
+	///
+	void setFileEncodings(std::vector<docstring> const m);
 
 	///
 	bool initialiseParams(std::string const & data);
@@ -109,6 +113,8 @@ private:
 	QStringList selected_bibs_;
 	/// contains the search box
 	FancyLineEdit * filter_;
+	///
+	QMap<QString, QString> encodings_;
 };
 
 } // namespace frontend

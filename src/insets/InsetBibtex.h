@@ -89,6 +89,8 @@ private:
 	bool usingBiblatex() const;
 	///
 	docstring getRefLabel() const;
+	///
+	std::map<std::string, std::string> getFileEncodings() const;
 
 	/// \name Private functions inherited from Inset class
 	//@{

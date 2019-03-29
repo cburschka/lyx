@@ -1968,10 +1968,14 @@ Buffer::ExportStatus Buffer::writeLaTeXSource(otexstream & os,
 
 		// Biblatex bibliographies are loaded here
 		if (params().useBiblatex()) {
-			vector<docstring> const bibfiles =
+			vector<pair<docstring, string>> const bibfiles =
 				prepareBibFilePaths(runparams, getBibfiles(), true);
-			for (docstring const & file: bibfiles)
-				os << "\\addbibresource{" << file << "}\n";
+			for (pair<docstring, string> const & file: bibfiles) {
+				os << "\\addbibresource";
+				if (!file.second.empty())
+					os << "[bibencoding=" << file.second << "]";
+				os << "{" << file.first << "}\n";
+			}
 		}
 
 		if (!runparams.dryrun && features.hasPolyglossiaExclusiveLanguages()
@@ -3299,7 +3303,7 @@ string const Buffer::prepareFileNameForLaTeX(string const & name,
 }
 
 
-vector<docstring> const Buffer::prepareBibFilePaths(OutputParams const & runparams,
+vector<pair<docstring, string>> const Buffer::prepareBibFilePaths(OutputParams const & runparams,
 						docstring_list const & bibfilelist,
 						bool const add_extension) const
 {
@@ -3313,7 +3317,7 @@ vector<docstring> const Buffer::prepareBibFilePaths(OutputParams const & runpara
 	// Otherwise, store the (maybe absolute) path to the original,
 	// unmangled database name.
 
-	vector<docstring> res;
+	vector<pair<docstring, string>> res;
 
 	// determine the export format
 	string const tex_format = flavor2format(runparams.flavor);
@@ -3385,9 +3389,20 @@ vector<docstring> const Buffer::prepareBibFilePaths(OutputParams const & runpara
 
 		if (contains(path, ' '))
 			found_space = true;
+		string enc;
+		if (params().useBiblatex() && !params().bibFileEncoding(utf8input).empty())
+			enc = params().bibFileEncoding(utf8input);
 
-		if (find(res.begin(), res.end(), path) == res.end())
-			res.push_back(path);
+		bool recorded = false;
+		for (pair<docstring, string> pe : res) {
+			if (pe.first == path) {
+				recorded = true;
+				break;
+			}
+
+		}
+		if (!recorded)
+			res.push_back(make_pair(path, enc));
 	}
 
 	// Check if there are spaces in the path and warn BibTeX users, if so.

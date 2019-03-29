@@ -7,6 +7,11 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2019-03-29  Jürgen Spitzmüller <spitz@lyx.org>
+	* format incremented to 570: Add individual bib encodings for biblatex
+          \begin_inset CommandInset bibtex
+          file_encodings "<bibfile1> <encoding1>\t<bibfile2> <encoding2>"
+
 2019-03-26  Jürgen Spitzmüller <spitz@lyx.org>
 	* format incremented to 569: New buffer param \tablestyle
           Determines the standard table template to be used.

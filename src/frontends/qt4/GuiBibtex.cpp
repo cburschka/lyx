@@ -90,6 +90,7 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 	connect(browseBibPB, SIGNAL(clicked()),
 		this, SLOT(browseBibPressed()));
 
+	selected_model_.insertColumns(0, 1);
 	selectionManager = new GuiSelectionManager(this, availableLV, selectedLV,
 			addBibPB, deletePB, upPB, downPB, &available_model_, &selected_model_);
 	connect(selectionManager, SIGNAL(selectionChanged()),
@@ -126,15 +127,20 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 	bc().addReadOnly(bibtocCB);
 	bc().addReadOnly(bibEncodingCO);
 
+#if (QT_VERSION < 0x050000)
+	selectedLV->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+#else
+	selectedLV->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+#endif
+
 	// Always put the default encoding in the first position.
 	bibEncodingCO->addItem(qt_("Document Encoding"), "default");
-	QMap<QString, QString> encodinglist;
 	for (auto const & encvar : encodings) {
 		if (!encvar.unsafe() && !encvar.guiName().empty())
-			encodinglist.insert(qt_(encvar.guiName()), toqstr(encvar.name()));
+			encodings_.insert(qt_(encvar.guiName()), toqstr(encvar.name()));
 	}
-	QMap<QString, QString>::const_iterator it = encodinglist.constBegin();
-	while (it != encodinglist.constEnd()) {
+	QMap<QString, QString>::const_iterator it = encodings_.constBegin();
+	while (it != encodings_.constEnd()) {
 		bibEncodingCO->addItem(it.key(), it.value());
 		++it;
 	}
@@ -200,7 +206,7 @@ void GuiBibtex::browseBstPressed()
 
 	QString const filen = changeExtension(file, "");
 	bool present = false;
-	unsigned int pres = 0;
+	int pres = 0;
 
 	for (int i = 0; i != styleCB->count(); ++i) {
 		if (styleCB->itemText(i) == filen) {
@@ -251,6 +257,25 @@ void GuiBibtex::clearSelection()
 void GuiBibtex::setSelectedBibs(QStringList const sl)
 {
 	selected_model_.clear();
+	QStringList headers;
+	headers << qt_("Database")
+		<< qt_("File Encoding");
+	selected_model_.setHorizontalHeaderLabels(headers);
+	bool const moreencs = usingBiblatex() && sl.count() > 1;
+	selectedLV->setColumnHidden(1, !moreencs);
+	selectedLV->verticalHeader()->setVisible(false);
+	selectedLV->horizontalHeader()->setVisible(moreencs);
+	if (moreencs) {
+		bibEncodingLA->setText(qt_("General E&ncoding:"));
+		bibEncodingCO->setToolTip(qt_("If your bibliography databases use a different "
+					      "encoding than the LyX document, specify it here. "
+					      "If indivivual databases have different encodings, "
+					      "you can set it in the list above."));
+	} else {
+		bibEncodingLA->setText(qt_("E&ncoding:"));
+		bibEncodingCO->setToolTip(qt_("If your bibliography databases use a different "
+					      "encoding than the LyX document, specify it here"));
+	}
 	QStringList::const_iterator it  = sl.begin();
 	QStringList::const_iterator end = sl.end();
 	for (int i = 0; it != end; ++it, ++i) {
@@ -260,6 +285,17 @@ void GuiBibtex::setSelectedBibs(QStringList const sl)
 		si->setToolTip(*it);
 		si->setEditable(false);
 		selected_model_.insertRow(i, si);
+		QComboBox * cb = new QComboBox;
+		cb->addItem(qt_("General Encoding"), "general");
+		cb->addItem(qt_("Document Encoding"), "auto");
+		QMap<QString, QString>::const_iterator it = encodings_.constBegin();
+		while (it != encodings_.constEnd()) {
+			cb->addItem(it.key(), it.value());
+			++it;
+		}
+		cb->setToolTip(qt_("If this bibliography database uses a different "
+				   "encoding than specified below, set it here"));
+		selectedLV->setIndexWidget(selected_model_.index(i, 1), cb);
 	}
 }
 
@@ -354,6 +390,8 @@ void GuiBibtex::updateContents()
 			styleCB->clearEditText();
 	} else
 		biblatexOptsLE->setText(toqstr(params_["biblatexopts"]));
+
+	setFileEncodings(getVectorFromString(params_["file_encodings"], from_ascii("\t")));
 }
 
 
@@ -393,6 +431,9 @@ void GuiBibtex::applyView()
 	params_["btprint"] = qstring_to_ucs4(btPrintCO->itemData(btPrintCO->currentIndex()).toString());
 
 	params_["encoding"] = qstring_to_ucs4(bibEncodingCO->itemData(bibEncodingCO->currentIndex()).toString());
+
+	if (usingBiblatex())
+		params_["file_encodings"] = getStringFromVector(getFileEncodings(), from_ascii("\t"));
 }
 
 
@@ -446,6 +487,37 @@ QStringList GuiBibtex::bibFiles(bool const extension) const
 	// sort on filename only (no path)
 	sdata.sort();
 	return sdata;
+}
+
+
+vector<docstring> GuiBibtex::getFileEncodings()
+{
+	vector<docstring> res;
+	for (int i = 0; i != selected_model_.rowCount(); ++i) {
+		QStandardItem const * key = selected_model_.item(i, 0);
+		QComboBox * cb = qobject_cast<QComboBox*>(selectedLV->indexWidget(selected_model_.index(i, 1)));
+		QString fenc = cb ? cb->itemData(cb->currentIndex()).toString() : QString();
+		if (key && !key->text().isEmpty() && !fenc.isEmpty() && fenc != "general")
+			res.push_back(qstring_to_ucs4(key->text()) + " " + qstring_to_ucs4(fenc));
+	}
+	return res;
+}
+
+
+void GuiBibtex::setFileEncodings(vector<docstring> const m)
+{
+	for (docstring const & s: m) {
+		docstring key;
+		QString enc = toqstr(split(s, key, ' '));
+		QModelIndexList qmil =
+				selected_model_.match(selected_model_.index(0, 0),
+						     Qt::DisplayRole, toqstr(key), 1,
+						     Qt::MatchFlags(Qt::MatchExactly | Qt::MatchWrap));
+		if (!qmil.empty()) {
+			QComboBox * cb = qobject_cast<QComboBox*>(selectedLV->indexWidget(selected_model_.index(qmil.front().row(), 1)));
+			cb->setCurrentIndex(cb->findData(enc));
+		}
+	}
 }
 
 

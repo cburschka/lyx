@@ -73,6 +73,7 @@ ParamInfo const & InsetBibtex::findInfo(string const & /* cmdName */)
 		param_info_.add("bibfiles", ParamInfo::LATEX_REQUIRED);
 		param_info_.add("options", ParamInfo::LYX_INTERNAL);
 		param_info_.add("encoding", ParamInfo::LYX_INTERNAL);
+		param_info_.add("file_encodings", ParamInfo::LYX_INTERNAL);
 		param_info_.add("biblatexopts", ParamInfo::LATEX_OPTIONAL);
 	}
 	return param_info_;
@@ -290,8 +291,11 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 		os << "\n";
 	} else {// using BibTeX
 		// Database(s)
-		vector<docstring> const db_out =
+		vector<pair<docstring, string>> const dbs =
 			buffer().prepareBibFilePaths(runparams, getBibFiles(), false);
+		vector<docstring> db_out;
+		for (pair<docstring, string> const & db : dbs)
+			db_out.push_back(db.first);
 		// Style options
 		if (style == "default")
 			style = buffer().masterParams().defaultBiblioStyle();
@@ -895,10 +899,35 @@ void InsetBibtex::updateBuffer(ParIterator const &, UpdateType)
 	// record encoding of bib files for biblatex
 	string const enc = (params()["encoding"] == from_ascii("default")) ?
 				string() : to_ascii(params()["encoding"]);
+	bool invalidate = false;
 	if (buffer().params().bibEncoding() != enc) {
 		buffer().params().setBibEncoding(enc);
-		buffer().invalidateBibinfoCache();
+		invalidate = true;
 	}
+	map<string, string> encs = getFileEncodings();
+	map<string, string>::const_iterator it = encs.begin();
+	for (; it != encs.end(); ++it) {
+		if (buffer().params().bibFileEncoding(it->first) != it->second) {
+			buffer().params().setBibFileEncoding(it->first, it->second);
+			invalidate = true;
+		}
+	}
+	if (invalidate)
+		buffer().invalidateBibinfoCache();
+}
+
+
+map<string, string> InsetBibtex::getFileEncodings() const
+{
+	vector<string> ps =
+		getVectorFromString(to_utf8(getParam("file_encodings")), "\t");
+	std::map<string, string> res;
+	for (string const & s: ps) {
+		string key;
+		string val = split(s, key, ' ');
+		res[key] = val;
+	}
+	return res;
 }
 
 

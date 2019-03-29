@@ -169,11 +169,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QListView" name="selectedLV">
-          <property name="editTriggers">
-           <set>QAbstractItemView::NoEditTriggers</set>
-          </property>
-         </widget>
+         <widget class="QTableView" name="selectedLV"/>
         </item>
        </layout>
       </item>
