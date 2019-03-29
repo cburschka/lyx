@@ -113,6 +113,8 @@ public:
 	///
 	std::vector<std::string> biblatex_bibliographies;
 	///
+	std::vector<std::string> biblatex_encodings;
+	///
 	std::string bibencoding;
 	///
 	std::string docencoding;

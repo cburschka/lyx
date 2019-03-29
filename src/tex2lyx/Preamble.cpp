@@ -1752,7 +1752,28 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		}
 
 		if (t.cs() == "addbibresource") {
-			biblatex_bibliographies.push_back(removeExtension(p.getArg('{', '}')));
+			string const options =  p.getArg('[', ']');
+			string const arg = removeExtension(p.getArg('{', '}'));
+			if (!options.empty()) {
+				// check if the option contains a bibencoding, if yes, extract it
+				string::size_type pos = options.find("bibencoding=");
+				string encoding;
+				if (pos != string::npos) {
+					string::size_type i = options.find(',', pos);
+					if (i == string::npos)
+						encoding = options.substr(pos + 1);
+					else
+						encoding = options.substr(pos, i - pos);
+					pos = encoding.find('=');
+					if (pos == string::npos)
+						encoding.clear();
+					else
+						encoding = encoding.substr(pos + 1);
+				}
+				if (!encoding.empty())
+					biblatex_encodings.push_back(normalize_filename(arg) + ' ' + encoding);
+			}
+			biblatex_bibliographies.push_back(arg);
 			continue;
 		}
 

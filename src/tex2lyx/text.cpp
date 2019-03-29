@@ -5344,6 +5344,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				} else
 					os << "encoding " << '"' << enc->name() << '"' << "\n";
 			}
+			string bibfileencs;
+			for (auto const & bf : preamble.biblatex_encodings) {
+				if (!bibfileencs.empty())
+					bibfileencs += "\t";
+				bibfileencs += bf;
+			}
+			if (!bibfileencs.empty())
+				os << "file_encodings " << '"' << bibfileencs << '"' << "\n";
 			end_inset(os);
 			need_commentbib = false;
 			continue;
@@ -6209,6 +6217,14 @@ void check_comment_bib(ostream & os, Context & context)
 	}
 	if (!bibfiles.empty())
 		os << "bibfiles " << '"' << bibfiles << '"' << "\n";
+	string bibfileencs;
+	for (auto const & bf : preamble.biblatex_encodings) {
+		if (!bibfileencs.empty())
+			bibfileencs += "\t";
+		bibfileencs += bf;
+	}
+	if (!bibfileencs.empty())
+		os << "file_encodings " << '"' << bibfileencs << '"' << "\n";
 	end_inset(os);// Bibtex
 	os << "\\end_layout\n";
 	end_inset(os);// Note
