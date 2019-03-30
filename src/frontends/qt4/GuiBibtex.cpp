@@ -185,6 +185,7 @@ void GuiBibtex::setButtons()
 void GuiBibtex::selUpdated()
 {
 	selectionManager->update();
+	editPB->setEnabled(deletePB->isEnabled());
 	changed();
 }
 
@@ -237,6 +238,19 @@ void GuiBibtex::browseBibPressed()
 		setSelectedBibs(selected_bibs_);
 		changed();
 	}
+}
+
+
+void GuiBibtex::on_editPB_clicked()
+{
+	QModelIndexList selIdx =
+		selectedLV->selectionModel()->selectedIndexes();
+	if (selIdx.isEmpty())
+		return;
+	QModelIndex idx = selIdx.first();
+	QString sel = idx.data().toString();
+	FuncRequest fr(LFUN_INSET_EDIT, fromqstr(sel));
+	dispatch(fr);
 }
 
 
@@ -297,6 +311,7 @@ void GuiBibtex::setSelectedBibs(QStringList const sl)
 				   "encoding than specified below, set it here"));
 		selectedLV->setIndexWidget(selected_model_.index(i, 1), cb);
 	}
+	editPB->setEnabled(deletePB->isEnabled());
 }
 
 
@@ -392,6 +407,7 @@ void GuiBibtex::updateContents()
 		biblatexOptsLE->setText(toqstr(params_["biblatexopts"]));
 
 	setFileEncodings(getVectorFromString(params_["file_encodings"], from_ascii("\t")));
+	editPB->setEnabled(deletePB->isEnabled());
 }
 
 
@@ -399,8 +415,8 @@ void GuiBibtex::applyView()
 {
 	docstring dbs;
 
-	unsigned int maxCount = selected_bibs_.count();
-	for (unsigned int i = 0; i < maxCount; i++) {
+	int maxCount = selected_bibs_.count();
+	for (int i = 0; i < maxCount; i++) {
 		if (i != 0)
 			dbs += ',';
 		QString item = selected_bibs_.at(i);

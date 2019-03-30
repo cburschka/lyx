@@ -85,7 +85,7 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action()) {
 
 	case LFUN_INSET_EDIT:
-		editDatabases();
+		editDatabases(cmd.argument());
 		break;
 
 	case LFUN_INSET_MODIFY: {
@@ -132,7 +132,7 @@ bool InsetBibtex::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetBibtex::editDatabases() const
+void InsetBibtex::editDatabases(docstring const db) const
 {
 	vector<docstring> bibfilelist = getVectorFromString(getParam("bibfiles"));
 
@@ -140,7 +140,7 @@ void InsetBibtex::editDatabases() const
 		return;
 
 	size_t nr_databases = bibfilelist.size();
-	if (nr_databases > 1) {
+	if (nr_databases > 1 && db.empty()) {
 			docstring const engine = usingBiblatex() ? _("Biblatex") : _("BibTeX");
 			docstring message = bformat(_("The %1$s[[BibTeX/Biblatex]] inset includes %2$s databases.\n"
 						       "If you proceed, all of them will be opened."),
@@ -155,6 +155,8 @@ void InsetBibtex::editDatabases() const
 	vector<docstring>::const_iterator it = bibfilelist.begin();
 	vector<docstring>::const_iterator en = bibfilelist.end();
 	for (; it != en; ++it) {
+		if (!db.empty() && db != *it)
+			continue;
 		FileName const bibfile = buffer().getBibfilePath(*it);
 		theFormats().edit(buffer(), bibfile,
 		     theFormats().getFormatFromFile(bibfile));

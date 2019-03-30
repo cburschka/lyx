@@ -82,7 +82,7 @@ public:
 
 private:
 	///
-	void editDatabases() const;
+	void editDatabases(docstring const db = docstring()) const;
 	///
 	void parseBibTeXFiles(support::FileNameList &) const;
 	///
