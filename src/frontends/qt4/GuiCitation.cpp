@@ -268,7 +268,7 @@ void GuiCitation::updateControls(BiblioInfo const & bi)
 	int i = citationStyleCO->currentIndex();
 	if (i == -1 || i > int(citeStyles_.size()))
 		i = 0;
-	updateFormatting(citeStyles_[i]);
+	updateFormatting(citeStyles_[size_type(i)]);
 	selectionManager->update();
 }
 
@@ -501,7 +501,7 @@ void GuiCitation::findText(QString const & text, bool reset)
 		//either "All Fields" or "Keys" or an invalid value
 		field = from_ascii("");
 	else
-		field = fields[index];
+		field = fields[size_type(index)];
 
 	//Was it "Keys"?
 	bool const onlyKeys = index == -1;
@@ -513,7 +513,7 @@ void GuiCitation::findText(QString const & text, bool reset)
 	if (index < 0 || index >= int(entries.size()))
 		entry_type = from_ascii("");
 	else
-		entry_type = entries[index];
+		entry_type = entries[size_type(index)];
 
 	bool const case_sentitive = casesense_->isChecked();
 	bool const reg_exp = regexp_->isChecked();
@@ -545,7 +545,7 @@ void GuiCitation::on_citationStyleCO_currentIndexChanged(int index)
 {
 	if (index >= 0 && index < citationStyleCO->count()) {
 		vector<CitationStyle> const & styles = citeStyles_;
-		updateFormatting(styles[index]);
+		updateFormatting(styles[size_type(index)]);
 		changed();
 	}
 }
@@ -621,7 +621,7 @@ void GuiCitation::applyParams(int const choice, bool full, bool force,
 
 	vector<CitationStyle> const & styles = citeStyles_;
 
-	CitationStyle cs = styles[choice];
+	CitationStyle cs = styles[size_type(choice)];
 
 	if (!cs.textBefore)
 		before.clear();
@@ -814,7 +814,7 @@ void GuiCitation::init()
 		citationStyleCO->blockSignals(true);
 		citationStyleCO->setCurrentIndex(i);
 		citationStyleCO->blockSignals(false);
-		updateFormatting(citeStyles_[i]);
+		updateFormatting(citeStyles_[size_type(i)]);
 	} else
 		availableLV->setFocus();
 
@@ -885,7 +885,7 @@ BiblioInfo::CiteStringMap GuiCitation::citationStyles(BiblioInfo const & bi, siz
 	int ind = citationStyleCO->currentIndex();
 	if (ind == -1)
 		ind = 0;
-	CitationStyle cs = styles[ind];
+	CitationStyle cs = styles[size_type(ind)];
 	vector<docstring> pretexts = getPreTexts();
 	vector<docstring> posttexts = getPostTexts();
 	bool const qualified = cs.hasQualifiedList
