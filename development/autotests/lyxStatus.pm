@@ -37,6 +37,7 @@ my @stack = ();			# list of HASH-Arrays
 my $rFont = {};
 my $useNonTexFont = "true";
 my $inputEncoding = undef;
+my $sysdir = undef;
 
 # The elements are:
 # type (layout, inset, header, preamble, ...)
@@ -52,6 +53,8 @@ my $inputEncoding = undef;
 
 sub initLyxStack($$$)
 {
+  use Cwd 'abs_path';
+
   $rFont = $_[0];
   if ($_[1] eq "systemF") {
     $useNonTexFont = "true";
@@ -64,6 +67,11 @@ sub initLyxStack($$$)
     $inputEncoding = $_[2];
   }
   $stack[0] = { type => "Starting"};
+  my $p = abs_path( __FILE__ );
+  $p =~ s/\/development\/autotests\/.*$/\/lib/;
+  # Save the value to be used as replacement for systemlyxdir in \origin statements
+  $sysdir = $p;
+  # print "Sysdir set to $sysdir\n";
 }
 
 sub diestack($)
@@ -235,6 +243,10 @@ sub checkForHeader($)
 			      "result" => ["\\inputencoding " . $inputEncoding->{out}]);
       push(@rElems, $inputenc);
     }
+    my $origin = newMatch("search" => qr/^\\origin\s+(\/systemlyxdir)(.*)$/,
+                          "filetype" => "replace_only",
+                          "result" => ["\\origin $sysdir", "2"]);
+    push(@rElems, $origin);
     setMatching(\@rElems);
     return(1);
   }
