@@ -139,7 +139,7 @@ void InsetBibtex::editDatabases() const
 	if (bibfilelist.empty())
 		return;
 
-	int nr_databases = bibfilelist.size();
+	size_t nr_databases = bibfilelist.size();
 	if (nr_databases > 1) {
 			docstring const engine = usingBiblatex() ? _("Biblatex") : _("BibTeX");
 			docstring message = bformat(_("The %1$s[[BibTeX/Biblatex]] inset includes %2$s databases.\n"
@@ -676,8 +676,11 @@ void InsetBibtex::parseBibTeXFiles(FileNameList & checkedFiles) const
 			// record that we check this.
 			checkedFiles.push_back(bibfile);
 		string encoding = buffer().masterParams().encoding().iconvName();
-		string const ienc = to_ascii(params()["encoding"]);
-		if (!ienc.empty() && ienc != "default" && encodings.fromLyXName(ienc))
+		string ienc = buffer().masterParams().bibFileEncoding(to_utf8(bf));
+		if (ienc.empty() || ienc == "general")
+			ienc = to_ascii(params()["encoding"]);
+
+		if (!ienc.empty() && ienc != "default" && ienc != "auto" && encodings.fromLyXName(ienc))
 			encoding = encodings.fromLyXName(ienc)->iconvName();
 		ifdocstream ifs(bibfile.toFilesystemEncoding().c_str(),
 			ios_base::in, encoding);
@@ -994,7 +997,7 @@ int InsetBibtex::plaintext(odocstringstream & os,
 		refoutput += bibinfo.getInfo(entry.key(), buffer(), ci) + "\n\n";
 	}
 	os << refoutput;
-	return refoutput.size();
+	return int(refoutput.size());
 }
 
 
