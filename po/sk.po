@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-03-26 18:50+0100\n"
-"PO-Revision-Date: 2019-03-26 17:57+0000\n"
+"POT-Creation-Date: 2019-03-30 11:47+0100\n"
+"PO-Revision-Date: 2019-03-30 10:56+0000\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: Slovak <kde-i18n-de@kde.org>\n"
 "Language: sk\n"
@@ -278,6 +278,14 @@ msgstr "Presunúť označenú citáciu nadol (Ctrl-Down)"
 #: src/frontends/qt4/ui/ModulesUi.ui:124
 msgid "Do&wn"
 msgstr "Nado&l"
+
+#: src/frontends/qt4/ui/BibtexUi.ui:160
+msgid "Edit selected database externally"
+msgstr "Externe upraviť vybranú databázu"
+
+#: src/frontends/qt4/ui/BibtexUi.ui:163
+msgid "&Edit..."
+msgstr "&Upraviť…"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:161
 msgid "Sele&cted:"
@@ -29677,6 +29685,40 @@ msgstr ""
 #: src/frontends/qt4/GuiBibtex.cpp:130
 msgid "Document Encoding"
 msgstr "Kódovanie dokumentu"
+
+#: src/frontends/qt4/GuiBibtex.cpp:275
+msgid "Database"
+msgstr "Databáza"
+
+#: src/frontends/qt4/GuiBibtex.cpp:276
+msgid "File Encoding"
+msgstr "Kódovanie súboru"
+
+#: src/frontends/qt4/GuiBibtex.cpp:283
+msgid "General E&ncoding:"
+msgstr "Generálne &kódovanie:"
+
+#: src/frontends/qt4/GuiBibtex.cpp:284
+msgid ""
+"If your bibliography databases use a different encoding than the LyX "
+"document, specify it here. If indivivual databases have different encodings, "
+"you can set it in the list above."
+msgstr ""
+"Keď máte bibliografické databázy s iným kódovaním ako váš LyX-dokument, "
+"zadajte to tu. Individuálne databázy s iným kódovaním môžte nastaviť v "
+"listine povyše."
+
+#: src/frontends/qt4/GuiBibtex.cpp:303
+msgid "General Encoding"
+msgstr "Generálne kódovanie"
+
+#: src/frontends/qt4/GuiBibtex.cpp:310
+msgid ""
+"If this bibliography database uses a different encoding than specified "
+"below, set it here"
+msgstr ""
+"Keď je táto bibliografická databáza s iným kódovaním ako dole špecifikované, "
+"zadajte to tu"
 
 #: src/frontends/qt4/GuiBibtex.cpp:296
 msgid "Biblatex Bibliography"
