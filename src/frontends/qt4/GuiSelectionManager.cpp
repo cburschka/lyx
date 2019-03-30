@@ -71,9 +71,15 @@ GuiSelectionManager::GuiSelectionManager(QObject * parent,
 	connect(availableLV->selectionModel(),
 	        SIGNAL(selectionChanged(QItemSelection, QItemSelection)),
 	        this, SLOT(availableChanged(QItemSelection, QItemSelection)));
+	connect(availableLV->selectionModel(),
+		SIGNAL(selectionChanged(QItemSelection, QItemSelection)),
+		this, SLOT(updateButtons()));
 	connect(selectedLV->selectionModel(),
 	        SIGNAL(selectionChanged(QItemSelection, QItemSelection)),
 	        this, SLOT(selectedChanged(QItemSelection, QItemSelection)));
+	connect(selectedLV->selectionModel(),
+		SIGNAL(selectionChanged(QItemSelection, QItemSelection)),
+		this, SLOT(updateButtons()));
 	connect(selectedLV->itemDelegate(), SIGNAL(commitData(QWidget*)),
 		this, SLOT(selectedEdited()));
 	connect(addPB, SIGNAL(clicked()),
@@ -98,6 +104,13 @@ void GuiSelectionManager::update()
 	updateDelPB();
 	updateDownPB();
 	updateUpPB();
+}
+
+
+void GuiSelectionManager::updateButtons()
+{
+	update();
+	updateHook();
 }
 
 

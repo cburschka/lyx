@@ -132,6 +132,8 @@ protected Q_SLOTS:
 	void availableLV_doubleClicked(const QModelIndex &);
 	///
 	bool eventFilter(QObject *, QEvent *);
+	///
+	void updateButtons();
 
 private:
 	///
