@@ -2588,7 +2588,9 @@ dist_obsoletetemplates_DATA = \
 	templates/Obsolete/ACM_SIGGGRAPH_0.92_%28obsolete%29.lyx \
 	templates/Obsolete/ACM_SIGPLAN_%28Obsolete%29.lyx \
 	templates/Obsolete/ACM_SIG_Proceedings_%28SP,_Obsolete%29.lyx \
+	templates/Obsolete/American_Astronomical_Society_%28AASTeX_v._6%29.lyx \
 	templates/Obsolete/American_Geophysical_Union_%28AGUTeX%29.lyx \
+	templates/Obsolete/American_Psychological_Association_%28APA%29,_v._6.lyx \
 	templates/Obsolete/Latex8_Article_%28Obsolete%29.lyx
 
 obsoletegbrieftemplatesdir = $(pkgdatadir)/templates/Obsolete/G-Brief_%28V._1,_Obsolete%29
