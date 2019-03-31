@@ -258,8 +258,10 @@ sub interpretedCopy($$$$)
 	    }
 	  }
 	}
-	if ($foundrelative) {
+	if ($foundrelative && $rStatus->{"filetype"} ne "prefix_for_list") {
           # The result can be relative too
+          # but, since prefix_for_list does no copy, we have to use absolute paths
+          # to address files inside the source dir
           my @rel_list = ();
           for my $fr (@{$filelist}) {
             push(@rel_list, File::Spec->abs2rel($fr, $destdir));
