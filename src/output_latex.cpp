@@ -1393,7 +1393,7 @@ void TeXOnePar(Buffer const & buf,
 			     && nextpar->getAlign() == par.getAlign())
 			    || (!next_layout.isEnvironment()
 				&& nextpar->getDepth() > par.getDepth()
-				&& nextpar->getAlign() == par.getAlign())
+				&& nextpar->getAlign() == next_layout.align)
 			    || (!style.isEnvironment()
 				&& next_layout.latextype == LATEX_ENVIRONMENT
 				&& nextpar->getDepth() < par.getDepth())
