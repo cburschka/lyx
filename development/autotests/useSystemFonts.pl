@@ -182,7 +182,7 @@ sub interpretedCopy($$$$)
     $fi_line_no += 1;
     $l =~ s/[\n\r]+$//;
     #chomp($l);
-    my $rStatus = checkLyxLine($l);
+    my $rStatus = checkLyxLine($l, $sourcedir);
     if ($rStatus->{found}) {
       my $rF = $rStatus->{result};
       if ($rStatus->{"filetype"} eq "replace_only") {
@@ -258,7 +258,7 @@ sub interpretedCopy($$$$)
 	    }
 	  }
 	}
-	if ($foundrelative && $rStatus->{"filetype"} ne "prefix_for_list") {
+	if ($foundrelative && $rStatus->{"filetype"} !~ /^(prefix_for_list|prefix_only)$/) {
           # The result can be relative too
           # but, since prefix_for_list does no copy, we have to use absolute paths
           # to address files inside the source dir

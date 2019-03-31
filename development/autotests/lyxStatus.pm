@@ -26,12 +26,12 @@ sub getFileType($);
 sub getFileIdx($);
 sub getExt($);
 sub getResult($);
-sub checkForHeader($);
+sub checkForHeader($$);
 sub checkForPreamble($);
 sub checkForLayoutStart($);
 sub checkForInsetStart($);
 sub checkForLatexCommand($);
-sub checkLyxLine($);
+sub checkLyxLine($$);
 
 my @stack = ();			# list of HASH-Arrays
 my $rFont = {};
@@ -201,9 +201,9 @@ sub getResult($)
   return($m->{"result"});
 }
 
-sub checkForHeader($)
+sub checkForHeader($$)
 {
-  my ($l) = @_;
+  my ($l, $sourcedir) = @_;
 
   if ($l =~ /^\\begin_header\s*$/) {
     my %selem = ();
@@ -247,6 +247,10 @@ sub checkForHeader($)
                           "filetype" => "replace_only",
                           "result" => ["\\origin $sysdir", "2"]);
     push(@rElems, $origin);
+    my $originu = newMatch("search" => qr/^\\origin\s+unavailable/,
+                          "filetype" => "replace_only",
+                          "result" => ["\\origin $sourcedir"]);
+    push(@rElems, $originu);
     setMatching(\@rElems);
     return(1);
   }
@@ -369,11 +373,11 @@ sub checkForLatexCommand($)
 #    separator: to be used while concatenating the filenames
 #    filetype: prefix_only,replace_only,copy_only,interpret
 #              same as before, but without 'prefix_for_list'
-sub checkLyxLine($)
+sub checkLyxLine($$)
 {
-  my ($l) = @_;
+  my ($l, $sourcedir) = @_;
 
-  return({"found" => 0}) if (checkForHeader($l));
+  return({"found" => 0}) if (checkForHeader($l, $sourcedir));
   return({"found" => 0}) if (checkForPreamble($l));
   return({"found" => 0}) if (checkForEndBlock($l));
   return({"found" => 0}) if (checkForLayoutStart($l));
