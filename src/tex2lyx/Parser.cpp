@@ -577,6 +577,26 @@ string Parser::getFullParentheseArg()
 }
 
 
+bool Parser::hasListPreamble(string const itemcmd)
+{
+	// remember current position
+	unsigned int oldpos = pos_;
+	// jump over arguments
+	if (hasOpt())
+		getOpt();
+	if (hasOpt("{"))
+		getArg('{', '}');
+	// and swallow spaces and comments
+	skip_spaces(true);
+	// we have a preamvle if the next thing that follows is not
+	// the \item command
+	bool res =  next_token().cs() != itemcmd;
+	// back to orig position
+	pos_ = oldpos;
+	return res;
+}
+
+
 string const Parser::ertEnvironment(string const & name)
 {
 	if (!good())

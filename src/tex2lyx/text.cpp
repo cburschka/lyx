@@ -2300,6 +2300,9 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			}
 			switch (context.layout->latextype) {
 			case  LATEX_LIST_ENVIRONMENT:
+				context.in_list_preamble =
+					!context.layout->listpreamble().empty()
+					&& p.hasListPreamble(context.layout->itemcommand());
 				context.add_par_extra_stuff("\\labelwidthstring "
 							    + p.verbatim_item() + '\n');
 				p.skip_spaces();
@@ -2323,10 +2326,19 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 				output_arguments(os, p, outer, false, string(), context,
 						 context.layout->latexargs());
 			else if (context.layout->latextype == LATEX_ITEM_ENVIRONMENT) {
+				context.in_list_preamble =
+					!context.layout->listpreamble().empty()
+					&& p.hasListPreamble(context.layout->itemcommand());
 				ostringstream oss;
 				output_arguments(oss, p, outer, false, string(), context,
 						 context.layout->latexargs());
 				context.list_extra_stuff = oss.str();
+			}
+			if (context.in_list_preamble) {
+				// Collect the stuff between \begin and first \item
+				context.list_preamble =
+					parse_text_snippet(p, FLAG_END, outer, context);
+				context.in_list_preamble = false;
 			}
 			parse_text(p, os, FLAG_END, outer, context);
 			if (context.layout->latextype == LATEX_ENVIRONMENT)
@@ -2907,6 +2919,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		debugToken(cerr, t, flags);
 #endif
 
+		if (context.in_list_preamble
+		    && p.next_token().cs() == context.layout->itemcommand()) {
+			// We are parsing a list preamble. End before first \item.
+			flags |= FLAG_LEAVE;
+			context.in_list_preamble = false;
+		}
+
 		if (flags & FLAG_ITEM) {
 			if (t.cat() == catSpace)
 				continue;
@@ -3351,6 +3370,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (context.layout->labeltype != LABEL_MANUAL)
 				output_arguments(os, p, outer, false, "item", context,
 					         context.layout->itemargs());
+			if (!context.list_preamble.empty()) {
+				// We have a list preamble. Output it here.
+				begin_inset(os, "Argument listpreamble:1");
+				os << "\nstatus collapsed\n\n"
+				   << "\\begin_layout Plain Layout\n\n"
+				   << rtrim(context.list_preamble)
+				   << "\n\\end_layout";
+				end_inset(os);
+				context.list_preamble.clear();
+			}
 			if (!context.list_extra_stuff.empty()) {
 				os << context.list_extra_stuff;
 				context.list_extra_stuff.clear();

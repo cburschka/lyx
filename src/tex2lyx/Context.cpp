@@ -81,7 +81,7 @@ Context::Context(bool need_layout_,
 		 TeXFont const & font_)
 	: need_layout(need_layout_),
 	  need_end_layout(false), need_end_deeper(false),
-	  has_item(false), deeper_paragraph(false),
+	  has_item(false), in_list_preamble(false), deeper_paragraph(false),
 	  new_layout_allowed(true), merging_hyphens_allowed(true),
 	  textclass(textclass_),
 	  layout(layout_), parent_layout(parent_layout_),

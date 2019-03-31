@@ -259,6 +259,8 @@ public:
 	 * empty string if there is no such argument.
 	 */
 	std::string getFullParentheseArg();
+	/// Check if we have a list preamble
+	bool hasListPreamble(std::string const itemcmd);
 	/*!
 	 * \returns the contents of the environment \p name.
 	 * <tt>\begin{name}</tt> must be parsed already, <tt>\end{name}</tt>
