@@ -1,0 +1,56 @@
+%% LyX 2.4.0dev created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newenvironment{lyxlist}[1]
+	{\begin{list}{}
+		{\settowidth{\labelwidth}{#1}
+		 \setlength{\leftmargin}{\labelwidth}
+		 \addtolength{\leftmargin}{\labelsep}
+		 \renewcommand{\makelabel}[1]{##1\hfil}}}
+	{\end{list}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{babel}
+
+
+
+
+\usepackage{babel}
+
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\item one 
+\item two 
+\end{itemize}
+%
+\begin{itemize}
+\item one
+\item two
+\end{itemize}
+\begin{enumerate}
+\setlength{\itemsep}{0pt}
+\item one
+\item two
+\end{enumerate}
+\begin{lyxlist}{one}
+\setlength{\itemsep}{0pt}
+\item [{one}] one
+\item [{two}] two
+\end{lyxlist}
+%
+\begin{lyxlist}{one}
+\item [{one}] one
+\item [{two}] two
+\end{lyxlist}
+
+\end{document}

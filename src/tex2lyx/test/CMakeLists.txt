@@ -16,6 +16,7 @@ set(_tex_tests test.ltx
                box-color-size-space-align.tex
                CJK.tex
                CJKutf8.tex
+               listpreamble.tex
                tabular-x-test.tex
                test-insets-basic.tex
                test-insets.tex

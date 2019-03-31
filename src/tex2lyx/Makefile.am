@@ -33,6 +33,7 @@ TEST_FILES = \
 	test/Dummy~Document.tex \
 	test/foo.eps \
 	test/foo.png \
+	test/listpreamble.tex \
 	test/test-insets.tex \
 	test/test-insets-basic.tex \
 	test/test.ltx \
@@ -56,6 +57,7 @@ TEST_RESULTS = \
 	test/CJKutf8.lyx.lyx \
 	test/DummyDocument.lyx.lyx \
 	test/Dummy~Document.lyx.lyx \
+	test/listpreamble.lyx.lyx \
 	test/test-insets.lyx.lyx \
 	test/test-insets-basic.lyx.lyx \
 	test/test.lyx.lyx \
