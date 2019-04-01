@@ -80,7 +80,7 @@ templates/examples/Books/Springer_Contributed_Books.*
 # TeXLive does not set up Hebrew 8-bit TeX fonts
 # We use the external package culmus-latex
 # https://sourceforge.net/projects/ivritex/files/culmus-latex/culmus-latex-0.7/
-export/export/latex/unicodesymbols/012-31-hebrew_he-thai_pdf2
+export/export/latex/unicodesymbols/.*_he.*pdf2
 export/.*/he/.*((dvi|pdf.?)|_texF)
 
 
