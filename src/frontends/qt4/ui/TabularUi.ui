@@ -739,6 +739,15 @@
                  </color>
                 </brush>
                </colorrole>
+               <colorrole role="PlaceholderText">
+                <brush brushstyle="NoBrush">
+                 <color alpha="128">
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                </brush>
+               </colorrole>
               </active>
               <inactive>
                <colorrole role="WindowText">
@@ -891,6 +900,15 @@
                   <red>232</red>
                   <green>232</green>
                   <blue>232</blue>
+                 </color>
+                </brush>
+               </colorrole>
+               <colorrole role="PlaceholderText">
+                <brush brushstyle="NoBrush">
+                 <color alpha="128">
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
                  </color>
                 </brush>
                </colorrole>
@@ -1049,6 +1067,15 @@
                  </color>
                 </brush>
                </colorrole>
+               <colorrole role="PlaceholderText">
+                <brush brushstyle="NoBrush">
+                 <color alpha="128">
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                </brush>
+               </colorrole>
               </disabled>
              </palette>
             </property>
@@ -1119,6 +1146,26 @@
           <bool>true</bool>
          </property>
          <layout class="QGridLayout">
+          <item row="0" column="0">
+           <widget class="QRadioButton" name="borderDefaultRB">
+            <property name="toolTip">
+             <string>Use default (grid-like) border style</string>
+            </property>
+            <property name="text">
+             <string>De&amp;fault</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="resetFormalCB">
+            <property name="toolTip">
+             <string>If this is checked, the table will be reset to the formal default style (only top and bottom row have vertical lines)</string>
+            </property>
+            <property name="text">
+             <string>Use Default &amp;Formal Style</string>
+            </property>
+           </widget>
+          </item>
           <item row="1" column="0">
            <widget class="QRadioButton" name="booktabsRB">
             <property name="toolTip">
@@ -1129,16 +1176,6 @@
             </property>
             <property name="checked">
              <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QRadioButton" name="borderDefaultRB">
-            <property name="toolTip">
-             <string>Use default (grid-like) border style</string>
-            </property>
-            <property name="text">
-             <string>De&amp;fault</string>
             </property>
            </widget>
           </item>

@@ -3757,7 +3757,8 @@ void LyXAction::init()
                        valign-top|valign-bottom|valign-middle|longtabular-align-left|\n
                        longtabular-align-center|longtabular-align-right|m-align-left|m-align-right|\n
                        m-align-center|m-valign-top|m-valign-bottom|m-valign-middle|multicolumn|\n
-                       set-all-lines|unset-all-lines|toggle-longtabular|set-longtabular|unset-longtabular|set-pwidth|\n
+                       reset-formal-default|set-all-lines|unset-all-lines|toggle-longtabular|\n
+                       set-longtabular|unset-longtabular|set-pwidth|\n
                        set-mpwidth|set-rotate-tabular|unset-rotate-tabular|toggle-rotate-tabular|\n
                        set-rotate-cell|unset-rotate-cell|toggle-rotate-cell|set-usebox|set-lthead|\n
                        unset-lthead|set-ltfirsthead|unset-ltfirsthead|set-ltfoot|unset-ltfoot|\n

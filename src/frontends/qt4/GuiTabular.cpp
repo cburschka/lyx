@@ -86,6 +86,8 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(borderSet_clicked()));
 	connect(borderUnsetPB, SIGNAL(clicked()),
 		this, SLOT(borderUnset_clicked()));
+	connect(resetFormalCB, SIGNAL(clicked()),
+		this, SLOT(checkEnabled()));
 	connect(hAlignCO, SIGNAL(activated(int)),
 		this, SLOT(checkEnabled()));
 	connect(vAlignCO, SIGNAL(activated(int)),
@@ -234,6 +236,7 @@ void GuiTabular::enableWidgets() const
 		hAlignCO->itemData(hAlignCO->currentIndex()).toString() == QString("decimal");
 	decimalPointED->setEnabled(dalign);
 	decimalLA->setEnabled(dalign);
+	resetFormalCB->setEnabled(booktabsRB->isChecked());
 
 	bool const setwidth = TableAlignCO->currentText() == qt_("Middle");
 	tabularWidthLA->setEnabled(setwidth);
@@ -558,7 +561,9 @@ docstring GuiTabular::dialogToParams() const
 	}
 
 	//
-	if (borders->topLineSet() && borders->bottomLineSet() && borders->leftLineSet()
+	if (resetFormalCB->isChecked())
+		setParam(param_str, Tabular::RESET_FORMAL_DEFAULT);
+	else if (borders->topLineSet() && borders->bottomLineSet() && borders->leftLineSet()
 		&& borders->rightLineSet())
 		setParam(param_str, Tabular::SET_ALL_LINES);
 	else if (borders->topLineUnset() && borders->bottomLineUnset() && borders->leftLineUnset()

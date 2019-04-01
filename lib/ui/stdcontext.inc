@@ -435,6 +435,7 @@ Menuset
 		Item "Bottom|B" "tabular-feature toggle-line-bottom"
 		Item "Left|L" "tabular-feature toggle-line-left"
 		Item "Right|R" "tabular-feature toggle-line-right"
+		OptItem "Reset Formal Defaults|F" "tabular-feature reset-formal-default"
 	End
 
 	Menu "table-alignment"

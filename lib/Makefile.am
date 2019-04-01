@@ -680,6 +680,7 @@ dist_images_DATA1X = \
 	images/tabular-feature_move-row-up.svgz \
 	images/tabular-feature_multicolumn.svgz \
 	images/tabular-feature_multirow.svgz \
+	images/tabular-feature_reset-formal-default.svgz \
 	images/tabular-feature_set-all-lines.svgz \
 	images/tabular-feature_set-longtabular.svgz \
 	images/tabular-feature_set-rotate-cell.svgz \
@@ -1962,6 +1963,7 @@ dist_imagesoxygen_DATA1X = \
 	images/oxygen/tabular-feature_move-row-up.svgz \
 	images/oxygen/tabular-feature_multicolumn.svgz \
 	images/oxygen/tabular-feature_multirow.svgz \
+	images/oxygen/tabular-feature_reset-formal-default.svgz \
 	images/oxygen/tabular-feature_set-all-lines.svgz \
 	images/oxygen/tabular-feature_set-border-lines.svgz \
 	images/oxygen/tabular-feature_set-inner-lines.svgz \
@@ -2160,6 +2162,7 @@ dist_imagesclassic_DATA = \
 	images/classic/tabular-feature_m-valign-top.png  \
 	images/classic/tabular-feature_multicolumn.png  \
 	images/classic/tabular-feature_multirow.png  \
+	images/classic/tabular-feature_reset-formal-default.png \
 	images/classic/tabular-feature_set-all-lines.png  \
 	images/classic/tabular-feature_set-border-lines.png  \
 	images/classic/tabular-feature_set-inner-lines.png  \

@@ -155,6 +155,7 @@ TabularFeature tabularFeature[] =
 	{ Tabular::UNSET_MULTIROW, "unset-multirow", false },
 	{ Tabular::SET_MROFFSET, "set-mroffset", true },
 	{ Tabular::SET_ALL_LINES, "set-all-lines", false },
+	{ Tabular::RESET_FORMAL_DEFAULT, "reset-formal-default", false },
 	{ Tabular::UNSET_ALL_LINES, "unset-all-lines", false },
 	{ Tabular::TOGGLE_LONGTABULAR, "toggle-longtabular", false },
 	{ Tabular::SET_LONGTABULAR, "set-longtabular", false },
@@ -4983,6 +4984,10 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
 			break;
 
+		case Tabular::RESET_FORMAL_DEFAULT:
+			status.setEnabled(tabular.use_booktabs);
+			break;
+
 		case Tabular::SET_LINE_TOP:
 		case Tabular::SET_LINE_BOTTOM:
 			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
@@ -6163,6 +6168,19 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 				if ((!setLinesInnerOnly || c != sel_col_start))
 					tabular.setLeftLine(cell, setLines);
 			}
+		break;
+
+	case Tabular::RESET_FORMAL_DEFAULT:
+		for (row_type r = 0; r < tabular.nrows(); ++r) {
+			bool const head_or_foot = r == 0 || r == tabular.nrows() - 1;
+			for (col_type c = 0; c < tabular.ncols(); ++c) {
+				idx_type const cell = tabular.cellIndex(r, c);
+				tabular.setTopLine(cell, head_or_foot);
+				tabular.setBottomLine(cell, head_or_foot);
+				tabular.setRightLine(cell, false);
+				tabular.setLeftLine(cell, false);
+			}
+		}
 		break;
 
 	case Tabular::SET_BORDER_LINES:

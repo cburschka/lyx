@@ -223,6 +223,8 @@ public:
 		///
 		SET_ALL_LINES,
 		///
+		RESET_FORMAL_DEFAULT,
+		///
 		UNSET_ALL_LINES,
 		///
 		TOGGLE_LONGTABULAR,

@@ -161,6 +161,7 @@ ToolbarSet
 		Item "Set all lines" "tabular-feature set-all-lines"
 		Item "Set inner lines" "tabular-feature set-inner-lines"
 		Item "Unset all lines" "tabular-feature unset-all-lines"
+		Item "Reset formal default lines" "tabular-feature reset-formal-default"
 		Separator
 		Item "Align left" "command-alternatives tabular-feature m-align-left;tabular-feature align-left"
 		Item "Align center" "command-alternatives tabular-feature m-align-center;tabular-feature align-center"
