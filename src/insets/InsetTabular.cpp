@@ -965,17 +965,17 @@ bool Tabular::bottomLine(idx_type const cell) const
 }
 
 
-bool Tabular::leftLine(idx_type cell) const
+bool Tabular::leftLine(idx_type cell, bool const ignore_bt) const
 {
-	if (use_booktabs)
+	if (use_booktabs && !ignore_bt)
 		return false;
 	return cellInfo(cell).left_line;
 }
 
 
-bool Tabular::rightLine(idx_type cell) const
+bool Tabular::rightLine(idx_type cell, bool const ignore_bt) const
 {
-	if (use_booktabs)
+	if (use_booktabs && !ignore_bt)
 		return false;
 	return cellInfo(cell).right_line;
 }

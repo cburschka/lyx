@@ -33,6 +33,8 @@ private Q_SLOTS:
 	void checkEnabled();
 	void borderSet_clicked();
 	void borderUnset_clicked();
+	void booktabs_toggled(bool const check);
+	void nonbooktabs_toggled(bool const check);
 	void on_topspaceCO_activated(int index);
 	void on_bottomspaceCO_activated(int index);
 	void on_interlinespaceCO_activated(int index);
@@ -68,6 +70,10 @@ private:
 	bool firstheader_suppressable_;
 	///
 	bool lastfooter_suppressable_;
+	///
+	GuiSetBorder::BorderState orig_leftborder_;
+	///
+	GuiSetBorder::BorderState orig_rightborder_;
 };
 
 } // namespace frontend

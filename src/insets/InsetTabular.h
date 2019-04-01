@@ -413,9 +413,13 @@ public:
 	/// Returns true if there is a topline, returns false if not
 	bool bottomLine(idx_type cell) const;
 	/// Returns true if there is a topline, returns false if not
-	bool leftLine(idx_type cell) const;
+	/// If \p ignore_bt is true, we return the state as if booktabs was
+	/// not used
+	bool leftLine(idx_type cell, bool const ignore_bt = false) const;
 	/// Returns true if there is a topline, returns false if not
-	bool rightLine(idx_type cell) const;
+	/// If \p ignore_bt is true, we return the state as if booktabs was
+	/// not used
+	bool rightLine(idx_type cell, bool const ignore_bt = false) const;
 
 	/// return space occupied by the second horizontal line and
 	/// interline space above row \p row in pixels

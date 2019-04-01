@@ -47,7 +47,8 @@ namespace frontend {
 
 GuiTabular::GuiTabular(QWidget * parent)
 	: InsetParamsWidget(parent), firstheader_suppressable_(false),
-	  lastfooter_suppressable_(false)
+	  lastfooter_suppressable_(false), orig_leftborder_(GuiSetBorder::LINE_UNDEF),
+	  orig_rightborder_(GuiSetBorder::LINE_UNDEF)
 
 {
 	setupUi(this);
@@ -79,9 +80,9 @@ GuiTabular::GuiTabular(QWidget * parent)
 	connect(interlinespaceUnitLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
 	connect(booktabsRB, SIGNAL(clicked(bool)),
-		this, SLOT(checkEnabled()));
+		this, SLOT(booktabs_toggled(bool)));
 	connect(borderDefaultRB, SIGNAL(clicked(bool)),
-		this, SLOT(checkEnabled()));
+		this, SLOT(nonbooktabs_toggled(bool)));
 	connect(borderSetPB, SIGNAL(clicked()),
 		this, SLOT(borderSet_clicked()));
 	connect(borderUnsetPB, SIGNAL(clicked()),
@@ -374,6 +375,25 @@ void GuiTabular::borderUnset_clicked()
 	// repaint the setborder widget
 	borders->update();
 	checkEnabled();
+}
+
+
+void GuiTabular::booktabs_toggled(bool const check)
+{
+	// when switching from formal, restore the left/right lines
+	if (!check) {
+		borders->setLeft(orig_leftborder_);
+		borders->setRight(orig_rightborder_);
+	}
+	// repaint the setborder widget
+	borders->update();
+	checkEnabled();
+}
+
+
+void GuiTabular::nonbooktabs_toggled(bool const check)
+{
+	booktabs_toggled(!check);
 }
 
 
@@ -790,7 +810,7 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	}
 
 	// In what follows, we check the borders of all selected cells,
-	// and if there are diverging settings, we use the LINE_UNDECIDED
+	// and if there are diverging settings, we use the LINE_UNDEF
 	// border status.
 	GuiSetBorder::BorderState lt = GuiSetBorder::LINE_UNDEF;
 	GuiSetBorder::BorderState lb = GuiSetBorder::LINE_UNDEF;
@@ -814,12 +834,18 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 				lb = borderState(lb, tabular.bottomLine(cc));
 				ll = borderState(ll, tabular.leftLine(cc));
 				lr = borderState(lr, tabular.rightLine(cc));
+				// store left/right borders for the case of formal/nonformal switch
+				orig_leftborder_ = borderState(ll, tabular.leftLine(cc, true));
+				orig_rightborder_ = borderState(lr, tabular.rightLine(cc, true));
 			}
 	} else {
 		lt = tabular.topLine(cell) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
 		lb = tabular.bottomLine(cell) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
 		ll = tabular.leftLine(cell) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
 		lr = tabular.rightLine(cell) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
+		// store left/right borders for the case of formal/nonformal switch
+		orig_leftborder_ = tabular.leftLine(cell, true) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
+		orig_rightborder_ = tabular.rightLine(cell, true) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
 	}
 	borders->setTop(lt);
 	borders->setBottom(lb);
