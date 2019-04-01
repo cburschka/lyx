@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-03-30 11:47+0100\n"
-"PO-Revision-Date: 2019-03-30 10:56+0000\n"
+"POT-Creation-Date: 2019-04-01 11:37+0200\n"
+"PO-Revision-Date: 2019-04-01 09:37+0000\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: Slovak <kde-i18n-de@kde.org>\n"
 "Language: sk\n"
@@ -5035,6 +5035,18 @@ msgstr "Použiť štandardný štýl okraja (mriežka)"
 #: src/frontends/qt4/ui/TabularUi.ui:1120
 msgid "De&fault"
 msgstr "Štandardn&ý"
+
+#: src/frontends/qt4/ui/TabularUi.ui:1135
+msgid ""
+"If this is checked, the table will be reset to the formal default style "
+"(only top and bottom row have horizontal lines)"
+msgstr ""
+"Keď začiarknuté, tabuľka bude obnovená na formálny štýl (len vrchný a spodný "
+"riadok majú horizontálne čiary)"
+
+#: src/frontends/qt4/ui/TabularUi.ui:1138
+msgid "Use Default &Formal Style"
+msgstr "Po&užiť Formálny Štandard Štýlu"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1146
 msgid "Additional Space"
@@ -18958,6 +18970,10 @@ msgid "Right|R"
 msgstr "Vpravo|r"
 
 #: lib/ui/stdcontext.inc:438
+msgid "Reset Formal Defaults|F"
+msgstr "Obnoviť na Formálny Štandard|O"
+
+#: lib/ui/stdcontext.inc:438
 msgid "Left|f"
 msgstr "Vľavo|V"
 
@@ -20524,6 +20540,10 @@ msgstr "Nastaviť vnútorné čiary"
 #: lib/ui/stdtoolbars.inc:162
 msgid "Unset all lines"
 msgstr "Zmazať všetky línie"
+
+#: lib/ui/stdtoolbars.inc:164
+msgid "Reset formal default lines"
+msgstr "Obnoviť formálne štandardné čiary"
 
 #: lib/ui/stdtoolbars.inc:164
 msgid "Align left"
