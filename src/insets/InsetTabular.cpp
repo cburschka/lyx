@@ -6177,8 +6177,6 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 				idx_type const cell = tabular.cellIndex(r, c);
 				tabular.setTopLine(cell, head_or_foot);
 				tabular.setBottomLine(cell, head_or_foot);
-				tabular.setRightLine(cell, false);
-				tabular.setLeftLine(cell, false);
 			}
 		}
 		break;
