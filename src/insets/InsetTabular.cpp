@@ -4233,6 +4233,8 @@ void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 	int const w = tabular.cellWidth(cell);
 	int const h = tabular.cellHeight(cell);
 
+	col_type const col = tabular.cellColumn(cell);
+
 	// Top
 	bool drawline = tabular.topLine(cell)
 		|| (row > 0 && tabular.bottomLine(tabular.cellAbove(cell)));
@@ -4241,12 +4243,18 @@ void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 
 	// Bottom
 	drawline = tabular.bottomLine(cell);
-	heavy = tabular.use_booktabs && row == tabular.nrows() - 1
-		&& tabular.rowBottomLine(row);
+	row_type const lastrow = tabular.nrows() - 1;
+	// Consider multi-rows
+	row_type r = row;
+	while (r < lastrow && tabular.isMultiRow(tabular.cellIndex(r, col))
+		&& tabular.isPartOfMultiRow(r + 1, col))
+		r++;
+	heavy = tabular.use_booktabs
+		&& ((row == lastrow && tabular.rowBottomLine(row))
+		    || (r == lastrow && tabular.rowBottomLine(r)));
 	tabline(pi, x, y + h, x + w, y + h, drawline, heavy);
 
 	// Left
-	col_type const col = tabular.cellColumn(cell);
 	drawline = tabular.leftLine(cell)
 		|| (col > 0 && tabular.rightLine(tabular.cellIndex(row, col - 1)));
 	tabline(pi, x, y, x, y + h, drawline);
