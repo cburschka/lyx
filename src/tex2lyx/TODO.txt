@@ -34,12 +34,6 @@ Format LaTeX feature                        LyX feature
 443    unicode-math.sty                     InsetMath*
 453    automatic stmaryrd loading           \use_package stmaryrd
 457    automatic stackrel loading           \use_package stackrel
-568    Soul package                         soul.module
-       \caps{...}                           \begin_inset Flex Capitalize
-       \hl{...}                             \begin_inset Flex Highlight
-       \so{...}                             \begin_inset Flex Spaceletters
-       \st{...}                             \begin_inset Flex Strikethrough
-       \ul{...}                             \begin_inset Flex Underline
 
 
 
