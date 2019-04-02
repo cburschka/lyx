@@ -1,7 +1,8 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 503
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 569
 \begin_document
 \begin_header
+\save_transient_properties true
 \origin unavailable
 \textclass scrbook
 \begin_preamble
@@ -42,7 +43,7 @@
 
 \usepackage{t1enc}
 \end_preamble
-\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
 \begin_modules
 logicalmkup
@@ -97,7 +98,7 @@ End
 \language japanese
 \language_package default
 \inputencoding auto
-\fontencoding global
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -108,6 +109,8 @@ End
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -151,6 +154,7 @@ End
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \notefontcolor #0000ff
 \index 索引
 \shortcut idx
@@ -160,10 +164,15 @@ End
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -173,102 +182,16 @@ End
 
 \begin_body
 
-\begin_layout Title
-\SpecialChar LyX
-の高度な機能
-\begin_inset Newline newline
-\end_inset
-
-
-\size large
-第2.2.x版
-\end_layout
-
-\begin_layout Author
-\SpecialChar LyX
-プロジェクトチーム
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-このファイルは主にRichard Heckによって管理されています。コメントをされたい場合や誤りを発見された場合には、\SpecialChar LyX
-文書化メーリングリスト
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-\noindent
-
-\family typewriter
-<lyx-docs@lists.lyx.org>
-\end_layout
-
-\end_inset
-
-に英文にてお知らせ下さい。この文書の翻訳は、当初人見光太郎氏が行った貢献に基づいています。
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Chapter
-ソフトウェアを追加する必要がある \SpecialChar LyX
-機能
-\end_layout
-
-\begin_layout Section
-\SpecialChar TeX
-のチェック
-\end_layout
-
 \begin_layout Standard
 
-\noun on
-Asger Alstrup
-\noun default
-文
-\end_layout
-
-\begin_layout Section
-\SpecialChar LyX
-でのバージョン管理
-\end_layout
-
-\begin_layout Standard
-
-\noun on
-Lars Bullik Bjønnes
-\noun default
-および
-\noun on
-Pavel Sanda
-\noun default
-文
-\end_layout
-
-\begin_layout Subsection
-はじめに
+\lang english
+The following error if exporting to dvi shows only if the language immediately
+ before the (sub)section is in a secondary laguage.
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-The following error if exporting to dvi shows only if the language immediately
- before the subchapter is in non default laguage.
-\begin_inset Newline newline
-\end_inset
-
 There is something special with the \SpecialChar LyX
 -character in the subsection.
  The error shows only if '\SpecialChar LyX
@@ -290,109 +213,6 @@ There is something special with the \SpecialChar LyX
 \family default
 のサブメニューにあります。\SpecialChar LyX
 は、RCS 5.7/5.8に対して試験されています。
-\end_layout
-
-\begin_layout Subsubsection
-
-\family sans
-登録
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-【ヒント】
-\family sans
-\series default
-Jpgfdraw
-\family default
-で複雑な形を描く場合、まず形を好きなプログラムで描き、出来上がった画像を
-\family sans
-Jpgfdraw
-\family default
-に読み込む方法があります。この場合、画像の外枠に沿って、直線またはスプラインを描くだけですみます。
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-任意の段落形
-\family default
-モジュールは、
-\family sans
-shapepar
-\family default
-と
-\family sans
-Shapepar
-\family default
-の二つのコマンドも提供していて、任意の形を座標毎に定義するのに使用することができます。
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-これらのコマンドは、上述の全ての形で内部的に使用されています。
-\end_layout
-
-\end_inset
-
-これらのスタイルがどのように使われていて、どのような設定ができるのかについての詳しい情報は、
-\series bold
-shapepar
-\series default
-パッケージの取扱説明書
-\begin_inset CommandInset citation
-LatexCommand cite
-key "shapepar"
-
-\end_inset
-
-をご覧ください。
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "multicol"
-
-\end_inset
-
-\SpecialChar LaTeX
-パッケージ
-\begin_inset CommandInset href
-LatexCommand href
-name "multicol"
-target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
-
-\end_inset
-
-の取扱説明書
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "shapepar"
-
-\end_inset
-
-\SpecialChar LaTeX
-パッケージ
-\begin_inset CommandInset href
-LatexCommand href
-name "shapepar"
-target "http://mirrors.ctan.org/macros/latex/contrib/shapepar/shapepar.pdf"
-
-\end_inset
-
-の取扱説明書
 \end_layout
 
 \end_body

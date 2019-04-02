@@ -15,21 +15,10 @@ Sublabel: todo
 # * easyfix issues,
 # * LyX bugs to report at trac (move pattern to section "lyxbugs" once done).
 
-# Error in Japanese document if LyX-logo is preceded by foreign language
-export/export/latex/ja_wrong_auto_encoding_(dvi|pdf(|3)).*
-
 # missing glyphs: There is no ^^A in font [lmroman12-regular]
 # and all the line down to ^^Z and beyond...
 # XeTeX artifact? works with LuaTeX, explore:
 export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_systemF
-
-# missing glyphs: Missing character: There is no ^^c3 in font cmr12!
-# LyXbug: no [open output anyway], because only DVI generated.
-# Hand-converting dvi -> ps -> pdf works fine.
-export/examples/ja/Modules/Braille_(dvi|pdf.*)
-export/examples/ja/Modules/Braille_lyx2[23]
-# Missing character: There is no ^^e2 in font cmss10!
-export/templates/ja/Presentations/Beamer_(dvi|pdf3?|lyx2[23])
 
 
 # iconv fails, if a nomenclature inset contains an uncodable character
@@ -195,6 +184,9 @@ export/doc/ar/UserGuide_lyx(22|23)
 
 #11532 inputencoding desynchronisation
 export/export/latex/misplaced-inputenc-switch_pdf2
+# Error in Japanese document if LyX-logo is preceded by foreign language
+export/export/latex/ja_wrong_auto_encoding_(dvi|pdf(|3)).*
+
 
 
 # ==============================================================

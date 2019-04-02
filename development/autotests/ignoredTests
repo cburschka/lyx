@@ -53,8 +53,7 @@ export/examples/Articles/Chess/Game_2_pdf[25].*
 export/examples/(|fr/)Presentations/Powerdot_pdf[25].*
 export/examples/Modules/Chessboard_(lyx(16|20|21|22|23)|(pdf3|pdf5|dvi3)_texF)
 
-
-# requires jss.cls (not on CTAN)
+# jss.cls (not on CTAN)
 # "All documents need to be processed by pdflatex" [jss.pdf]
 export/templates/Articles/Journal_of_Statistical_Software_.*(dvi|dvi3_.*|pdf3?)
 
@@ -64,27 +63,22 @@ export/.*/ko/.*texF
 export/.*/zh_CN/.*texF
 export/export/latex/CJK/zh_CN-toc_.*_texF
 
-# Japanese manuals use language "japanese" wich is tied to "platex"
-# (automatically set instead of (plain) LaTeX).
-# For export with other engines, the language must be set to "Japanese (CJK).
-# see also INVERTED.TODO_export/export/latex/ja_wrong_auto_encoding_(dvi|pdf(|3)).*
-# For a discussion of alternatives for Japanese with LaTeX , see also
-# http://www.preining.info/blog/2014/12/writing-japanese-in-latex-part-1-introduction/
-#
-# Exceptions: 
-# * Japanese knitr.lyx and sweave.lyx support only XeLaTeX
-#   with system fonts because they use the "bxjsarticle" class.
+# Japanese knitr.lyx and sweave.lyx support only XeLaTeX with system fonts
+# because they use the "bxjsarticle" class.
 # The "!" means the following:
 #   "Protect these tests from being matched by future patterns in this file".
 !export/examples/ja/Modules/Rnw.*knitr.*_(lyx.*|xhtml|pdf4_systemF)
 export/examples/ja/Modules/Rnw.*knitr.*
 !export/examples/ja/Modules/Sweave.*_(lyx.*|xhtml|pdf4_systemF)
 export/examples/ja/Modules/Sweave.*
-# example for "Japanese (CJK)"
-!export/examples/ja/Multilingual_Typesetting_.*CJKutf8.*
 #
+# Other Japanese documents use language "japanese" wich is tied to "platex"
+# (automatically invoked instead of "latex" to create a DVI file).
+# Export by other engines works with language "japanese-cjk", e.g.
+!export/examples/ja/Multilingual_Typesetting_.*CJK.*
+# For a discussion of alternatives for Japanese with LaTeX , see also
+# http://www.preining.info/blog/2014/12/writing-japanese-in-latex-part-1-introduction/
 export/.*/ja/.*_(pdf[245]|dvi3).*
-
 # the unicodesymbols-tests use pdflatex, too:
 export/export/latex/unicodesymbols/.*-platex_pdf2
 

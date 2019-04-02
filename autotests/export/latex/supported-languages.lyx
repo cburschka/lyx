@@ -7,13 +7,15 @@
 \textclass scrartcl
 \begin_preamble
 %\usepackage{fonts-tlwg}
+
+\def\HeblatexEncoding{HE8}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
 \language english
 \language_package default
 \inputencoding auto
-\fontencoding auto
+\fontencoding HE8,T1
 \font_roman "DejaVuSerif" "default"
 \font_sans "DejaVuSans" "default"
 \font_typewriter "DejaVuSansMono" "default"
