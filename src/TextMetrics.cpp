@@ -48,6 +48,8 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/lassert.h"
+#include "support/lyxlib.h"
+#include "support/RefChanger.h"
 
 #include <stdlib.h>
 #include <cmath>
@@ -1818,6 +1820,9 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 	if (pm.rows().empty())
 		return;
 	size_t const nrows = pm.rows().size();
+	// Remember left and right margin for drawing math numbers
+	Changer changeleft = make_change(pi.leftx, x + leftMargin(pit));
+	Changer changeright = make_change(pi.rightx, x + width() - rightMargin(pit));
 
 	// Use fast lane in nodraw stage.
 	if (pi.pain.isNull()) {
@@ -1863,6 +1868,9 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 			sel_end_par.pos() = sel_end_par.lastpos();
 		}
 	}
+
+	if (text_->isRTL(pit))
+		swap(pi.leftx, pi.rightx);
 
 	for (size_t i = 0; i != nrows; ++i) {
 

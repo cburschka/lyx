@@ -560,17 +560,6 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.des += display_margin;
 	}
 
-	if (numberedType()) {
-		Changer dummy = mi.base.changeFontSet("mathrm");
-		int l = 0;
-		for (row_type row = 0; row < nrows(); ++row)
-			l = max(l, mathed_string_width(mi.base.font, nicelabel(row)));
-
-		if (l)
-			// Value was hardcoded to 30 pixels
-			dim.wid += mi.base.bv->zoomedPixels(30) + l;
-	}
-
 	// reserve some space for marker.
 	dim.wid += 2;
 }
@@ -647,44 +636,32 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 		return;
 	}
 
+	// First draw the numbers
 	ColorCode color = pi.selected && lyxrc.use_system_colors
 				? Color_selectiontext : standardColor();
 	bool const really_change_color = pi.base.font.color() == Color_none;
 	Changer dummy0 = really_change_color ? pi.base.font.changeColor(color)
 		: Changer();
-	Changer dummy1 = pi.base.changeFontSet(standardFont());
-	Changer dummy2 = pi.base.font.changeStyle(display() ? DISPLAY_STYLE
-	                                                    : TEXT_STYLE);
-
-	int xmath = x;
-	BufferParams::MathNumber const math_number = buffer().params().getMathNumber();
-	if (numberedType() && math_number == BufferParams::LEFT) {
-		Changer dummy = pi.base.changeFontSet("mathrm");
-		int l = 0;
-		for (row_type row = 0; row < nrows(); ++row)
-			l = max(l, mathed_string_width(pi.base.font, nicelabel(row)));
-
-		if (l)
-			// Value was hardcoded to 30 pixels
-			xmath += pi.base.bv->zoomedPixels(30) + l;
-	}
-
-	InsetMathGrid::draw(pi, xmath + 1, y);
-	drawMarkers(pi, x, y);
-
-	if (numberedType()) {
-		Changer dummy = pi.base.changeFontSet("mathrm");
+	if (pi.full_repaint && numberedType()) {
+		BufferParams::MathNumber const math_number = buffer().params().getMathNumber();
 		for (row_type row = 0; row < nrows(); ++row) {
 			int const yy = y + rowinfo(row).offset;
 			docstring const nl = nicelabel(row);
-			if (math_number == BufferParams::LEFT)
-				pi.draw(x, yy, nl);
-			else {
-				int l = mathed_string_width(pi.base.font, nl);
-				pi.draw(x + dim.wid - l, yy, nl);
+			if (math_number == BufferParams::LEFT) {
+				pi.draw(pi.leftx, yy, nl);
+			} else {
+				int const l = mathed_string_width(pi.base.font, nl);
+				pi.draw(pi.rightx - l, yy, nl);
 			}
 		}
 	}
+
+	// Then the equations
+	Changer dummy1 = pi.base.changeFontSet(standardFont());
+	Changer dummy2 = pi.base.font.changeStyle(display() ? DISPLAY_STYLE
+	                                                    : TEXT_STYLE);
+	InsetMathGrid::draw(pi, x + 1, y);
+	drawMarkers(pi, x, y);
 
 	// drawing change line
 	if (canPaintChange(*bv))

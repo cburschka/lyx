@@ -142,6 +142,8 @@ public:
 	bool full_repaint;
 	/// Current background color
 	ColorCode background_color;
+	/// Useful for drawing display math numbering
+	int leftx, rightx;
 };
 
 class TextMetricsInfo {};
