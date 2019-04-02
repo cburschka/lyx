@@ -8,7 +8,7 @@
 \begin_preamble
 \def\HeblatexEncoding{HE8}
 \end_preamble
-\use_default_options true
+\use_default_options false
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -25,7 +25,7 @@
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
-\use_dash_ligatures true
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -42,7 +42,7 @@
 \use_package amssymb 1
 \use_package cancel 1
 \use_package esint 1
-\use_package mathdots 1
+\use_package mathdots 0
 \use_package mathtools 1
 \use_package mhchem 1
 \use_package stackrel 1
@@ -55,8 +55,8 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification false
-\use_refstyle 1
+\justification true
+\use_refstyle 0
 \use_minted 0
 \branch na
 \selected 0
@@ -69,8 +69,8 @@
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip medskip
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
@@ -89,7 +89,7 @@
 \begin_body
 
 \begin_layout Subsection*
-152 Alphabetic Presentation Forms
+12 Hebrew
 \end_layout
 
 \begin_layout Standard
@@ -97,15 +97,16 @@ This document uses the nonstandard Hebrew font encoding HE8 that includes
  additional characters (see Document>Settings>Fonts and >User Preamble).
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-FB00 ﬀ ﬁ ﬂ ﬃ ﬄ 
+\begin_layout Standard
+590 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-ﬅ ﬆ
+
+\lang hebrew
+א֑ א֒ א֓ א֔ א֕ א֖ א֗ א֘ א֙ א֚ א֛ א֜ א֝ א֞ א֟ 
 \end_layout
 
 \end_inset
@@ -113,38 +114,57 @@ status open
 
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-FB10 
+\begin_layout Standard
+5A0
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-ﬓ ﬔ ﬕ ﬖ ﬗ 
+
+\lang hebrew
+א֠ א֡ א֢ א֣ א֤ א֥ א֦ א֧ א֨ א֩ א֪ א֫ א֬ א֭ א֮ א֯ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+5B0
+\lang hebrew
+ אְ אֱ אֲ אֳ אִ אֵ אֶ אַ אָ אֹ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+
+\lang hebrew
+אֺ
+\end_layout
+
+\end_inset
+
+ אֻ אּ אֽ ־ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+
+\lang hebrew
+אֿ
 \end_layout
 
 \end_inset
 
  
-\lang hebrew
-יִ
-\begin_inset Branch na
-inverted 0
-status open
+\end_layout
 
 \begin_layout Standard
-ﬞ 
-\end_layout
-
-\end_inset
-
-ײַ
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-FB20 
+5C0 
 \lang hebrew
 
 \begin_inset Branch na
@@ -154,40 +174,43 @@ status open
 \begin_layout Standard
 
 \lang hebrew
-ﬠ ﬡ ﬢ ﬣ ﬤ ﬥ ﬦ ﬧ ﬨ ﬩
+׀
 \end_layout
 
 \end_inset
 
- שׁ שׂ שּׁ שּׂ אַ אָ
-\lang english
+ שׁ שׂ ׃ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+
+\lang hebrew
+אׄ אׅ ׆ אׇ
+\end_layout
+
+\end_inset
+
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-The character 
-\backslash
-hebvarayin (ﬠ) is present in HE8 culmus fonts but not defined in he8enc.def.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-FB30 
+\begin_layout Standard
+5D0 
 \lang hebrew
-אּ בּ גּ דּ הּ וּ זּ טּ יּ ךּ כּ לּ מּ
+א ב ג ד ה ו ז ח ט י ך כ ל ם מ ן 
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-FB40 
+\begin_layout Standard
+5E0 
 \lang hebrew
-נּ סּ ףּ פּ צּ קּ רּ שּ תּ וֹ בֿ כֿ פֿ 
+נ ס ע ף פ ץ צ ק ר ש ת 
+\end_layout
+
+\begin_layout Standard
+5F0 
+\lang hebrew
+װ ױ ײ 
 \begin_inset Branch na
 inverted 0
 status open
@@ -195,12 +218,12 @@ status open
 \begin_layout Standard
 
 \lang hebrew
-ﭏ
+׳ ״
 \end_layout
 
 \end_inset
 
-
+ 
 \end_layout
 
 \end_body

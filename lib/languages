@@ -768,8 +768,6 @@ Language hebrew
 	# Define the font encoding the babel-hebrew way and
 	# work around too simple test for article-like classes in rlbabel.def.
 	PreBabelPreamble
-	  \def\HeblatexEncoding{HE8}
-	  \def\HeblatexEncodingFile{he8enc}
 	  \providecommand{\l@chapter}{\relax}
 	EndPreBabelPreamble
 	DateFormats      "d MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
