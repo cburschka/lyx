@@ -32,8 +32,6 @@ public:
 	InsetMathDelim const * asDelimInset() const { return this; }
 	///
 	MathClass mathClass() const { return MC_INNER; }
-	///
-	marker_type marker(BufferView const *) const { return NO_MARKER; }
 	/// is it (...)?
 	bool isParenthesis() const;
 	/// is it [...]?
