@@ -59,8 +59,10 @@ export/examples/Modules/Chessboard_(lyx(16|20|21|22|23)|(pdf3|pdf5|dvi3)_texF)
 export/templates/Articles/Journal_of_Statistical_Software_.*(dvi|dvi3_.*|pdf3?)
 
 # CJK fails with LuaTeX or XeTeX and 8-bit fonts:
-export/examples/ko/Welcome.*texF
+export/examples/ja/Multilingual_Typesetting_.*_texF
+export/.*/ko/.*texF
 export/.*/zh_CN/.*texF
+export/export/latex/CJK/zh_CN-toc_.*_texF
 
 # Japanese manuals use language "japanese" wich is tied to "platex"
 # (automatically set instead of (plain) LaTeX).
