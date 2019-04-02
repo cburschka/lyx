@@ -889,7 +889,7 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 	pos_type const end = par.size();
 	pos_type const pos = row.pos();
 	pos_type const body_pos = par.beginOfBody();
-	bool const is_rtl = text_->isRTL(par);
+	bool const is_rtl = text_->isRTL(row.pit());
 	bool need_new_row = false;
 
 	row.clear();

@@ -285,7 +285,7 @@ public:
 	/// FIXME: replace Cursor with DocIterator.
 	docstring getPossibleLabel(DocIterator const & cur) const;
 	/// is this paragraph right-to-left?
-	bool isRTL(Paragraph const & par) const;
+	bool isRTL(pit_type pit) const;
 
 	///
 	bool checkAndActivateInset(Cursor & cur, bool front);

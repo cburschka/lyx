@@ -562,10 +562,10 @@ void Text::number(Cursor & cur)
 }
 
 
-bool Text::isRTL(Paragraph const & par) const
+bool Text::isRTL(pit_type const pit) const
 {
 	Buffer const & buffer = owner_->buffer();
-	return par.isRTL(buffer.params());
+	return pars_[pit].isRTL(buffer.params());
 }
 
 
