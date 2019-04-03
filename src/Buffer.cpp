@@ -5153,16 +5153,20 @@ void Buffer::Impl::setLabel(ParIterator & it, UpdateType utype) const
 		docstring itemlabel;
 		switch (par.itemdepth) {
 		case 0:
+			// • U+2022 BULLET
 			itemlabel = char_type(0x2022);
 			break;
 		case 1:
+			// – U+2013 EN DASH
 			itemlabel = char_type(0x2013);
 			break;
 		case 2:
+			// ∗ U+2217 ASTERISK OPERATOR
 			itemlabel = char_type(0x2217);
 			break;
 		case 3:
-			itemlabel = char_type(0x2219); // or 0x00b7
+			// · U+00B7 MIDDLE DOT
+			itemlabel = char_type(0x00b7);
 			break;
 		}
 		par.params().labelString(itemlabel);
