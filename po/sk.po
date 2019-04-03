@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-04-01 11:37+0200\n"
-"PO-Revision-Date: 2019-04-01 09:37+0000\n"
+"POT-Creation-Date: 2019-04-03 18:42+0200\n"
+"PO-Revision-Date: 2019-04-03 16:45+0000\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
-"Language-Team: Slovak <kde-i18n-de@kde.org>\n"
+"Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26145,6 +26145,12 @@ msgstr "Nemôžem exportovať súbor"
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Žiadne informácie pre export formátu %1$s."
+
+#: src/Buffer.cpp:4463
+#, c-format
+msgid "Hint: use non-TeX fonts or set input encoding  to '%1$s' or '%2$s'"
+msgstr ""
+"Tip:Použite fonty mimo TeXu alebo nastavte kódovanie na '%1$s' alebo '%2$s'"
 
 #: src/Buffer.cpp:4407 src/frontends/qt4/GuiView.cpp:2524
 msgid "File name error"
