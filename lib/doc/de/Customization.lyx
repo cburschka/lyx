@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 569
+\lyxformat 571
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -9245,7 +9245,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Formal
+Formal_with_Footline
 \end_layout
 
 \end_inset
@@ -9259,6 +9259,26 @@ booktabs
 \end_inset
 
 ) nur mit horizontalen Linien und fetter Linie am Kopf und Fuß der Tabelle.
+ Zusätzlich sind die Kopf- und Fußzeile mit einer dünnen Linie vom Rest
+ der Tabelle abgegrenzt.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Formal_without_Footline
+\end_layout
+
+\end_inset
+
+: ähnlich wie der vorherige Stil, allerdings ist die letzte Zeile 
+\emph on
+nicht
+\emph default
+ mit einer dünnen Linie vom Rest der Tabelle abgegrenzt (also nicht als
+ Fußzeile markiert).
 \end_layout
 
 \begin_layout Itemize

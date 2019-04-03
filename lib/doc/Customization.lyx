@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 569
+\lyxformat 571
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -10989,14 +10989,14 @@ status collapsed
 \begin_deeper
 \begin_layout Itemize
 
-\change_inserted -712698321 1553617929
+\change_inserted -712698321 1554308039
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1553617920
-Formal
+\change_inserted -712698321 1554307928
+Formal_with_Footline
 \change_unchanged
 
 \end_layout
@@ -11011,7 +11011,27 @@ booktabs
 \begin_inset Quotes erd
 \end_inset
 
-) style with horizontal lines only and a bold top and bottom line.
+) style with horizontal lines only, using a bold top and bottom line, the
+ first and last row are additionally separated from the table body with
+ a thin middle line.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1554308087
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1554308042
+Formal_without_Footline
+\end_layout
+
+\end_inset
+
+: same as the above, but the last row is not separated with a middle line
+ from the body.
 \end_layout
 
 \begin_layout Itemize
