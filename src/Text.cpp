@@ -288,6 +288,35 @@ Font const Text::outerFont(pit_type par_offset) const
 }
 
 
+int Text::getEndLabel(pit_type p) const
+{
+	pit_type pit = p;
+	depth_type par_depth = pars_[p].getDepth();
+	while (pit != pit_type(pars_.size())) {
+		Layout const & layout = pars_[pit].layout();
+		int const endlabeltype = layout.endlabeltype;
+
+		if (endlabeltype != END_LABEL_NO_LABEL) {
+			if (p + 1 == pit_type(pars_.size()))
+				return endlabeltype;
+
+			depth_type const next_depth =
+				pars_[p + 1].getDepth();
+			if (par_depth > next_depth ||
+			    (par_depth == next_depth && layout != pars_[p + 1].layout()))
+				return endlabeltype;
+			break;
+		}
+		if (par_depth == 0)
+			break;
+		pit = outerHook(pit);
+		if (pit != pit_type(pars_.size()))
+			par_depth = pars_[pit].getDepth();
+	}
+	return END_LABEL_NO_LABEL;
+}
+
+
 static void acceptOrRejectChanges(ParagraphList & pars,
 	BufferParams const & bparams, Text::ChangeOp op)
 {

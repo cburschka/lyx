@@ -983,11 +983,17 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 		Inset const * inset = 0;
 		if (par.isNewline(i) || par.isEnvSeparator(i)
 		    || (i + 1 < end && (inset = par.getInset(i + 1))
-			&& inset->display())
+		        && inset->display())
 		    || (!row.empty() && row.back().inset
-			&& row.back().inset->display())) {
+		        && row.back().inset->display())) {
 			row.flushed(true);
-			need_new_row = par.isNewline(i);
+			// We will force a row creation after either
+			// - a newline;
+			// - a display inset followed by a end label.
+			need_new_row =
+				par.isNewline(i)
+				|| (inset->display() && i + 1 == end
+				    && text_->getEndLabel(row.pit()) != END_LABEL_NO_LABEL);
 			++i;
 			break;
 		}

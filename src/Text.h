@@ -345,6 +345,8 @@ public:
 	/// Get the font of the "environment" of paragraph \p par_offset in \p pars.
 	/// All font changes of the paragraph are relative to this font.
 	Font const outerFont(pit_type pit_offset) const;
+	/// Return the label type at the end of paragraph \c pit.
+	int getEndLabel(pit_type pit) const;
 
 private:
 	/// The InsetText owner shall have access to everything.
