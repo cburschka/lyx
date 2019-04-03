@@ -1844,7 +1844,7 @@ Requires japanese (platex).
 \end_layout
 
 \begin_layout Itemize
-Does not work with pdfLaTeX, XeTeX, nor LuaTeX.
+Does not work with pdfLaTeX, XeTeX, or LuaTeX.
  
 \end_layout
 
@@ -1862,7 +1862,15 @@ Does not work as secondary language unless the document encoding is set
 \end_layout
 
 \begin_layout Itemize
-Does not load inputenc nor fontenc.
+
+\emph on
+inputenc
+\emph default
+ and 
+\emph on
+fontenc
+\emph default
+ packages not loaded
 \end_layout
 
 \begin_layout Subsection*

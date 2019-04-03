@@ -6,14 +6,15 @@
 \origin unavailable
 \textclass scrartcl
 \begin_preamble
-
+% tell Babel-Hebrew to use HE8 font encoding:
+\def\HeblatexEncoding{HE8}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
 \language english
 \language_package default
 \inputencoding auto
-\fontencoding auto
+\fontencoding HE8,T1
 \font_roman "lmodern" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"

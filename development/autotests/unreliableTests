@@ -42,7 +42,7 @@ export/templates/Articles/Int._Journal_of_Modern_Physics_D.*
 # see https://wiki.lyx.org/Layouts/Iopart
 export/templates/Articles/Institute_of_Physics_.*
 
-# jasatex.cls 
+# jasatex.cls
 # see https://wiki.lyx.org/Layouts/JASATeX
 export/templates/Articles/Journal_of_the_Acoustical_Society_of_America.*
 
@@ -81,6 +81,7 @@ templates/examples/Books/Springer_Contributed_Books.*
 # We use the external package culmus-latex
 # https://sourceforge.net/projects/ivritex/files/culmus-latex/culmus-latex-0.7/
 export/export/latex/unicodesymbols/.*_he.*pdf2
+export/export/latex/(supported-languages|he-scrarticle).*
 export/.*/he/.*((dvi|pdf.?)|_texF)
 
 

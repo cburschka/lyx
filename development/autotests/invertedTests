@@ -20,9 +20,15 @@ Sublabel: todo
 # XeTeX artifact? works with LuaTeX, explore:
 export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_systemF
 
-
 # iconv fails, if a nomenclature inset contains an uncodable character
 export/export/latex/iconv-error-nomenclature_pdf2
+
+# Encoding cp858 only supported by some iconv variants.
+# (Gnu iconv only supports it, if configured with "--enable-extra-encodings"
+#  see https://www.gnu.org/software/libiconv/)
+# Configure should test for support before offering this encoding
+# in the "Document>Settings>Language>Encoding>Other" combo-box.
+export/export/latex/cp858_pdf2
 
 # `acmart` document class:
 # (see also lyxbugs below and ignoredTests)
