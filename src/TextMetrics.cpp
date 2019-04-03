@@ -992,7 +992,7 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 			// - a display inset followed by a end label.
 			need_new_row =
 				par.isNewline(i)
-				|| (inset->display() && i + 1 == end
+				|| (inset && inset->display() && i + 1 == end
 				    && text_->getEndLabel(row.pit()) != END_LABEL_NO_LABEL);
 			++i;
 			break;
