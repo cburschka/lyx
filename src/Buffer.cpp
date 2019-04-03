@@ -4456,12 +4456,15 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 			if (!put_in_tempdir) {
 				// Only show this alert if this is an export to a non-temporary
 				// file (not for previewing).
-				docstring s = _("No information for exporting the format %1$s.");
+				docstring s = bformat(_("No information for exporting the format %1$s."),
+						      theFormats().prettyName(format));
 				if (format == "pdf4")
-					s += "\n" + _("Hint: use non-TeX fonts or set input encoding "
-						      " to'utf8' or 'ascii'");
-				Alert::error(_("Couldn't export file"),
-							 bformat(s, theFormats().prettyName(format)));
+					s += "\n"
+					  + bformat(_("Hint: use non-TeX fonts or set input encoding "
+						      " to '%1$s' or '%2$s'"),
+						    from_utf8(encodings.fromLyXName("utf8")->guiName()),
+						    from_utf8(encodings.fromLyXName("ascii")->guiName()));
+				Alert::error(_("Couldn't export file"), s);
 			}
 			return ExportNoPathToFormat;
 		}
