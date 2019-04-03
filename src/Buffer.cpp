@@ -4458,8 +4458,8 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 				// file (not for previewing).
 				docstring s = _("No information for exporting the format %1$s.");
 				if (format == "pdf4")
-				  s += _("\nHint: use non-TeX fonts or set input encoding to "
-						 "'utf8' or 'ascii'");
+					s += "\n" + _("Hint: use non-TeX fonts or set input encoding "
+						      " to'utf8' or 'ascii'");
 				Alert::error(_("Couldn't export file"),
 							 bformat(s, theFormats().prettyName(format)));
 			}
