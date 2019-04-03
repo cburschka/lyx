@@ -74,6 +74,8 @@ private:
 	GuiSetBorder::BorderState orig_leftborder_;
 	///
 	GuiSetBorder::BorderState orig_rightborder_;
+	///
+	int lastrow_;
 };
 
 } // namespace frontend

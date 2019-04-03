@@ -179,6 +179,22 @@ public:
 		///FIXME: remove
 		TOGGLE_LINE_RIGHT,
 		///
+		SET_LTRIM_TOP,
+		///
+		SET_RTRIM_TOP,
+		///
+		SET_LTRIM_BOTTOM,
+		///
+		SET_RTRIM_BOTTOM,
+		///
+		TOGGLE_LTRIM_TOP,
+		///
+		TOGGLE_RTRIM_TOP,
+		///
+		TOGGLE_LTRIM_BOTTOM,
+		///
+		TOGGLE_RTRIM_BOTTOM,
+		///
 		ALIGN_LEFT,
 		///
 		ALIGN_RIGHT,
@@ -420,6 +436,10 @@ public:
 	/// If \p ignore_bt is true, we return the state as if booktabs was
 	/// not used
 	bool rightLine(idx_type cell, bool const ignore_bt = false) const;
+	/// Returns whether the top line is trimmed left and/or right
+	std::pair<bool, bool> topLineTrim(idx_type const cell) const;
+	/// Returns whether the bottom line is trimmed left and/or right
+	std::pair<bool, bool> bottomLineTrim(idx_type const cell) const;
 
 	/// return space occupied by the second horizontal line and
 	/// interline space above row \p row in pixels
@@ -452,6 +472,18 @@ public:
 	void setTopLine(idx_type cell, bool line);
 	///
 	void setBottomLine(idx_type cell, bool line);
+	///
+	void setTopLineLTrim(idx_type cell, bool val);
+	///
+	void setBottomLineLTrim(idx_type cell, bool val);
+	///
+	void setTopLineRTrim(idx_type cell, bool val);
+	///
+	void setBottomLineRTrim(idx_type cell, bool val);
+	///
+	void setTopLineTrim(idx_type cell, std::pair<bool, bool>);
+	///
+	void setBottomLineTrim(idx_type cell, std::pair<bool, bool>);
 	///
 	void setLeftLine(idx_type cell, bool line);
 	///
@@ -691,6 +723,14 @@ public:
 		bool left_line;
 		///
 		bool right_line;
+		///
+		bool top_line_rtrimmed;
+		///
+		bool top_line_ltrimmed;
+		///
+		bool bottom_line_rtrimmed;
+		///
+		bool bottom_line_ltrimmed;
 		///
 		BoxType usebox;
 		///

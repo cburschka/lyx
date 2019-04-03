@@ -1555,6 +1555,26 @@ def revert_bibfileencodings(document):
         i = j + 1
 
 
+def revert_cmidruletrimming(document):
+    " Remove \\cmidrule trimming "
+
+    # FIXME: Revert to TeX code?
+    i = 0
+    while True:
+        # first, let's find out if we need to do anything
+        i = find_token(document.body, '<cell ', i)
+        if i == -1:
+            return
+        j = document.body[i].find('trim="')
+        if j == -1:
+             i += 1
+             continue
+        rgx = re.compile(r' (bottom|top)line[lr]trim="true"')
+        # remove trim option
+        document.body[i] = rgx.sub('', document.body[i])
+
+        i += 1
+
 
 ##
 # Conversion hub
@@ -1587,10 +1607,12 @@ convert = [
            [567, []],
            [568, []],
            [569, []],
-           [570, []]
+           [570, []],
+           [571, []]
           ]
 
 revert =  [
+           [570, [revert_cmidruletrimming]],
            [569, [revert_bibfileencodings]],
            [568, [revert_tablestyle]],
            [567, [revert_soul]],

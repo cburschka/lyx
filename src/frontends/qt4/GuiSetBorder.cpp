@@ -5,6 +5,7 @@
  *
  * \author Edwin Leuven
  * \author John Levon
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -13,26 +14,29 @@
 
 #include "GuiSetBorder.h"
 
+#include "support/debug.h"
+
 #include <QPainter>
 #include <QMouseEvent>
 #include <QPaintEvent>
 
 
 GuiSetBorder::GuiSetBorder(QWidget * parent, Qt::WindowFlags fl)
-	: QWidget(parent, fl), buffer(75, 75)
+	: QWidget(parent, fl), buffer(75, 75), bottom_drawn_wide_(false),
+	  top_drawn_wide_(false)
 {
 	/* length of corner line */
-	l = buffer.width() / 10;
+	corner_length = buffer.width() / 10;
 	/* margin */
-	m = buffer.height() / 10;
+	margin = buffer.height() / 10;
 
-	w = buffer.width();
-	h = buffer.height();
+	bwidth = buffer.width();
+	bheight = buffer.height();
 
 	init();
 
-	setMinimumSize(w,h);
-	setMaximumSize(w,h);
+	setMinimumSize(bwidth, bheight);
+	setMaximumSize(bwidth, bheight);
 }
 
 
@@ -51,19 +55,26 @@ void GuiSetBorder::init()
 
 	paint.setPen(Qt::black);
 
-	// FIXME: wow, readable !! :)
+	// Draw the corner marks
+	paint.drawLine(margin + corner_length, margin,
+		       margin + corner_length, margin + corner_length);
+	paint.drawLine(bwidth - (margin + corner_length), margin,
+		       bwidth - (margin + corner_length), margin + corner_length);
 
-	paint.drawLine(m + l , m, m + l, m + l);
-	paint.drawLine(w - (m + l), m, w - (m + l), m + l);
+	paint.drawLine(margin, margin + corner_length,
+		       margin + corner_length, margin + corner_length);
+	paint.drawLine(margin, bheight - (margin + corner_length),
+		       margin + corner_length, bheight - (margin + corner_length));
 
-	paint.drawLine(m, m + l , m + l, m + l);
-	paint.drawLine(m, h - (m + l), m + l, h - (m + l));
+	paint.drawLine(margin + corner_length ,bheight - margin,
+		       margin + corner_length ,bheight - (margin + corner_length));
+	paint.drawLine(bwidth - (margin + corner_length), bheight - margin,
+		       bwidth - (margin + corner_length), bheight - (margin + corner_length));
 
-	paint.drawLine(m + l ,h - m, m + l ,h - (m + l));
-	paint.drawLine(w - (m + l), h - m, w - (m + l), h - (m + l));
-
-	paint.drawLine(h - m, m+l, h - (m + l), m + l);
-	paint.drawLine(h - m, h - (m + l), h - (m + l),h - (m + l));
+	paint.drawLine(bheight - margin, margin+corner_length,
+		       bheight - (margin + corner_length), margin + corner_length);
+	paint.drawLine(bheight - margin, bheight - (margin + corner_length),
+		       bheight - (margin + corner_length),bheight - (margin + corner_length));
 }
 
 
@@ -77,7 +88,15 @@ void GuiSetBorder::mousePressEvent(QMouseEvent * e)
 				leftSet();
 			}
 		} else {
-			if (bottom_.enabled) {
+			if (bottom_trim_left_.enabled && e->x() < margin + 4 + 2 * corner_length) {
+				setBottomLeftTrim(bottom_trim_left_.set == LINE_SET ? LINE_UNSET : LINE_SET);
+				// emit signal
+				bottomLTSet();
+			} else if (bottom_trim_right_.enabled && e->x() > bwidth - margin - 2 * corner_length - 4) {
+					setBottomRightTrim(bottom_trim_right_.set == LINE_SET ? LINE_UNSET : LINE_SET);
+					// emit signal
+					bottomRTSet();
+			} else if (bottom_.enabled) {
 				setBottom(bottom_.set == LINE_SET ? LINE_UNSET : LINE_SET);
 				// emit signal
 				bottomSet();
@@ -85,7 +104,15 @@ void GuiSetBorder::mousePressEvent(QMouseEvent * e)
 		}
 	} else {
 		if (e->y() < height() - e->x()) {
-			if (top_.enabled) {
+			if (top_trim_left_.enabled && e->x() < margin + 4 + 2 * corner_length) {
+				setTopLeftTrim(top_trim_left_.set == LINE_SET ? LINE_UNSET : LINE_SET);
+				// emit signal
+				topLTSet();
+			} else if (top_trim_right_.enabled && e->x() > bwidth - margin - 2 * corner_length - 4) {
+					setTopRightTrim(top_trim_right_.set == LINE_SET ? LINE_UNSET : LINE_SET);
+					// emit signal
+					topRTSet();
+			} else if (top_.enabled) {
 				setTop(top_.set == LINE_SET ? LINE_UNSET : LINE_SET);
 				// emit signal
 				topSet();
@@ -132,7 +159,8 @@ void GuiSetBorder::drawLeft(BorderState draw)
 	}
 	if (!left_.enabled)
 		col = QColor(Qt::lightGray);
-	drawLine(col, m + l, m + l + 2, m + l, h - m - l - 1);
+	drawLine(col, margin + corner_length, margin + corner_length + 2,
+		 margin + corner_length, bheight - margin - corner_length - 1);
 }
 
 
@@ -153,7 +181,8 @@ void GuiSetBorder::drawRight(BorderState draw)
 	}
 	if (!right_.enabled)
 		col = QColor(Qt::lightGray);
-	drawLine(col, h - m - l + 1, m + l + 2, h - m - l + 1, h - m - l - 1);
+	drawLine(col, bheight - margin - corner_length + 1, margin + corner_length + 2,
+		 bheight - margin - corner_length + 1, bheight - margin - corner_length - 1);
 }
 
 
@@ -163,22 +192,40 @@ void GuiSetBorder::drawTop(BorderState draw)
 	switch (draw) {
 	case LINE_SET:
 		col = Qt::black;
+		top_drawn_wide_ = true;
 		break;
 	case LINE_UNSET:
 		col = Qt::white;
+		top_drawn_wide_ = false;
 		break;
 	case LINE_UNDECIDED:
 	case LINE_UNDEF:
 		col = Qt::lightGray;
+		top_drawn_wide_ = true;
 		break;
 	}
 	if (!top_.enabled)
 		col = QColor(Qt::lightGray);
-	drawLine(col, m + l + 2, m + l, w - m - l - 1, m + l);
+	int const lt = (top_trim_left_.enabled) ? corner_length + 4 : 0;
+	int const rt = (top_trim_right_.enabled) ? corner_length + 4 : 0;
+	drawLine(col, margin + corner_length + 2 + lt, margin + corner_length,
+		 bwidth - margin - corner_length - 1 - rt, margin + corner_length);
 }
 
 
-void GuiSetBorder::drawBottom(BorderState draw)
+void GuiSetBorder::undrawWideTopLine()
+{
+	if (!top_drawn_wide_)
+		return;
+
+	// Overpaint previous lines white
+	drawLine(Qt::white, margin + corner_length + 2, margin + corner_length,
+		 bwidth - margin - corner_length - 1, margin + corner_length);
+	top_drawn_wide_ = false;
+}
+
+
+void GuiSetBorder::drawTopLeftTrim(BorderState draw)
 {
 	QColor col;
 	switch (draw) {
@@ -193,9 +240,123 @@ void GuiSetBorder::drawBottom(BorderState draw)
 		col = Qt::lightGray;
 		break;
 	}
+	if (!top_trim_left_.enabled)
+		col = QColor(Qt::white);
+	int const lt = corner_length;
+	if (top_trim_left_.enabled)
+		drawLine(col, margin + corner_length + 2, margin + corner_length,
+			 margin + corner_length + 2 + lt, margin + corner_length);
+}
+
+
+void GuiSetBorder::drawTopRightTrim(BorderState draw)
+{
+	QColor col;
+	switch (draw) {
+	case LINE_SET:
+		col = Qt::black;
+		break;
+	case LINE_UNSET:
+		col = Qt::white;
+		break;
+	case LINE_UNDECIDED:
+	case LINE_UNDEF:
+		col = Qt::lightGray;
+		break;
+	}
+	if (!top_trim_right_.enabled)
+		col = QColor(Qt::white);
+	int const rt = corner_length;
+	if (top_trim_right_.enabled)
+		drawLine(col, bwidth - margin - corner_length - 1 - rt, margin + corner_length,
+			bwidth - margin - corner_length - 1, margin + corner_length);
+}
+
+
+void GuiSetBorder::drawBottom(BorderState draw)
+{
+	QColor col;
+	switch (draw) {
+	case LINE_SET:
+		col = Qt::black;
+		bottom_drawn_wide_ = true;
+		break;
+	case LINE_UNSET:
+		col = Qt::white;
+		bottom_drawn_wide_ = false;
+		break;
+	case LINE_UNDECIDED:
+	case LINE_UNDEF:
+		col = Qt::lightGray;
+		bottom_drawn_wide_ = true;
+		break;
+	}
 	if (!bottom_.enabled)
 		col = QColor(Qt::lightGray);
-	drawLine(col, m + l + 2, w - m - l + 1, w - m - l - 1, w - m - l + 1);
+	int const lt = (bottom_trim_left_.enabled) ? corner_length + 4 : 0;
+	int const rt = (bottom_trim_right_.enabled) ? corner_length + 4 : 0;
+	drawLine(col, margin + corner_length + 2 + lt, bwidth - margin - corner_length + 1,
+		 bwidth - margin - corner_length - 1 - rt, bwidth - margin - corner_length + 1);
+}
+
+
+void GuiSetBorder::undrawWideBottomLine()
+{
+	if (!bottom_drawn_wide_)
+		return;
+
+	//Overpaint previous lines white
+	drawLine(Qt::white, margin + corner_length + 2, bwidth - margin - corner_length + 1,
+		 bwidth - margin - corner_length - 1, bwidth - margin - corner_length + 1);
+	bottom_drawn_wide_ = false;
+}
+
+
+void GuiSetBorder::drawBottomLeftTrim(BorderState draw)
+{
+	QColor col;
+	switch (draw) {
+	case LINE_SET:
+		col = Qt::black;
+		break;
+	case LINE_UNSET:
+		col = Qt::white;
+		break;
+	case LINE_UNDECIDED:
+	case LINE_UNDEF:
+		col = Qt::lightGray;
+		break;
+	}
+	if (!bottom_trim_left_.enabled)
+		col = QColor(Qt::white);
+	int const lt = corner_length;
+	if (bottom_trim_left_.enabled)
+		drawLine(col, margin + corner_length + 2, bwidth - margin - corner_length + 1,
+			 margin + corner_length + 2 + lt, bwidth - margin - corner_length + 1);
+}
+
+
+void GuiSetBorder::drawBottomRightTrim(BorderState draw)
+{
+	QColor col;
+	switch (draw) {
+	case LINE_SET:
+		col = Qt::black;
+		break;
+	case LINE_UNSET:
+		col = Qt::white;
+		break;
+	case LINE_UNDECIDED:
+	case LINE_UNDEF:
+		col = Qt::lightGray;
+		break;
+	}
+	if (!bottom_trim_right_.enabled)
+		col = QColor(Qt::white);
+	int const rt = corner_length;
+	if (bottom_trim_right_.enabled)
+		drawLine(col, bwidth - margin - corner_length - 1 - rt, bwidth - margin - corner_length + 1,
+			 bwidth - margin - corner_length - 1, bwidth - margin - corner_length + 1);
 }
 
 
@@ -227,6 +388,46 @@ void GuiSetBorder::setBottomEnabled(bool enabled)
 }
 
 
+void GuiSetBorder::setTopLeftTrimEnabled(bool enabled)
+{
+	top_trim_left_.enabled = enabled;
+	undrawWideTopLine();
+	drawTopLeftTrim(top_trim_left_.set);
+	drawTop(top_.set);
+	top_drawn_wide_ = !enabled;
+}
+
+
+void GuiSetBorder::setTopRightTrimEnabled(bool enabled)
+{
+	top_trim_right_.enabled = enabled;
+	undrawWideTopLine();
+	drawTopRightTrim(top_trim_right_.set);
+	drawTop(top_.set);
+	top_drawn_wide_ = !enabled;;
+}
+
+
+void GuiSetBorder::setBottomLeftTrimEnabled(bool enabled)
+{
+	bottom_trim_left_.enabled = enabled;
+	undrawWideBottomLine();
+	drawBottomLeftTrim(bottom_trim_left_.set);
+	drawBottom(bottom_.set);
+	bottom_drawn_wide_ = !enabled;;
+}
+
+
+void GuiSetBorder::setBottomRightTrimEnabled(bool enabled)
+{
+	bottom_trim_right_.enabled = enabled;
+	undrawWideBottomLine();
+	drawBottomRightTrim(bottom_trim_right_.set);
+	drawBottom(bottom_.set);
+	bottom_drawn_wide_ = !enabled;;
+}
+
+
 void GuiSetBorder::setLeft(BorderState border)
 {
 	left_.set = border;
@@ -255,12 +456,43 @@ void GuiSetBorder::setBottom(BorderState border)
 }
 
 
+void GuiSetBorder::setTopLeftTrim(BorderState border)
+{
+	top_trim_left_.set = border;
+	drawTopLeftTrim(border);
+}
+
+
+void GuiSetBorder::setTopRightTrim(BorderState border)
+{
+	top_trim_right_.set = border;
+	drawTopRightTrim(border);
+}
+
+
+void GuiSetBorder::setBottomLeftTrim(BorderState border)
+{
+	bottom_trim_left_.set = border;
+	drawBottomLeftTrim(border);
+}
+
+void GuiSetBorder::setBottomRightTrim(BorderState border)
+{
+	bottom_trim_right_.set = border;
+	drawBottomRightTrim(border);
+}
+
+
 void GuiSetBorder::setAll(BorderState border)
 {
 	setLeft(border);
 	setRight(border);
 	setTop(border);
 	setBottom(border);
+	setTopLeftTrim(border);
+	setTopRightTrim(border);
+	setBottomLeftTrim(border);
+	setBottomRightTrim(border);
 }
 
 
@@ -285,6 +517,30 @@ GuiSetBorder::BorderState GuiSetBorder::getTop()
 GuiSetBorder::BorderState GuiSetBorder::getBottom()
 {
 	return bottom_.set;
+}
+
+
+GuiSetBorder::BorderState GuiSetBorder::getTopLeftTrim()
+{
+	return top_trim_left_.set;
+}
+
+
+GuiSetBorder::BorderState GuiSetBorder::getTopRightTrim()
+{
+	return top_trim_right_.set;
+}
+
+
+GuiSetBorder::BorderState GuiSetBorder::getBottomLeftTrim()
+{
+	return bottom_trim_left_.set;
+}
+
+
+GuiSetBorder::BorderState GuiSetBorder::getBottomRightTrim()
+{
+	return bottom_trim_right_.set;
 }
 
 #include "moc_GuiSetBorder.cpp"

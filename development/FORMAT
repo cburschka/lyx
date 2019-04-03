@@ -7,6 +7,11 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2019-04-03  Jürgen Spitzmüller <spitz@lyx.org>
+	* format incremented to 571: Add \cmidrule trimming support
+          \cmidrule(lr){n-n}
+          <cell ... toplineltrim|toplinettrim|bottomlineltrim|bottomlinertrim true ...>
+
 2019-03-29  Jürgen Spitzmüller <spitz@lyx.org>
 	* format incremented to 570: Add individual bib encodings for biblatex
           \begin_inset CommandInset bibtex

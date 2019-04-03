@@ -127,12 +127,20 @@ TabularFeature tabularFeature[] =
 	{ Tabular::MOVE_ROW_UP, "move-row-up", false },
 	{ Tabular::SET_LINE_TOP, "set-line-top", true },
 	{ Tabular::SET_LINE_BOTTOM, "set-line-bottom", true },
+	{ Tabular::SET_LTRIM_TOP, "set-ltrim-top", true },
+	{ Tabular::SET_LTRIM_BOTTOM, "set-ltrim-bottom", true },
+	{ Tabular::SET_RTRIM_TOP, "set-rtrim-top", true },
+	{ Tabular::SET_RTRIM_BOTTOM, "set-rtrim-bottom", true },
 	{ Tabular::SET_LINE_LEFT, "set-line-left", true },
 	{ Tabular::SET_LINE_RIGHT, "set-line-right", true },
 	{ Tabular::TOGGLE_LINE_TOP, "toggle-line-top", false },
 	{ Tabular::TOGGLE_LINE_BOTTOM, "toggle-line-bottom", false },
 	{ Tabular::TOGGLE_LINE_LEFT, "toggle-line-left", false },
 	{ Tabular::TOGGLE_LINE_RIGHT, "toggle-line-right", false },
+	{ Tabular::TOGGLE_LTRIM_TOP, "toggle-ltrim-top", true },
+	{ Tabular::TOGGLE_LTRIM_BOTTOM, "toggle-ltrim-bottom", true },
+	{ Tabular::TOGGLE_RTRIM_TOP, "toggle-rtrim-top", true },
+	{ Tabular::TOGGLE_RTRIM_BOTTOM, "toggle-rtrim-bottom", true },
 	{ Tabular::ALIGN_LEFT, "align-left", false },
 	{ Tabular::ALIGN_RIGHT, "align-right", false },
 	{ Tabular::ALIGN_CENTER, "align-center", false },
@@ -585,6 +593,10 @@ Tabular::CellData::CellData(Buffer * buf)
 	  bottom_line(false),
 	  left_line(false),
 	  right_line(false),
+	  top_line_rtrimmed(false),
+	  top_line_ltrimmed(false),
+	  bottom_line_rtrimmed(false),
+	  bottom_line_ltrimmed(false),
 	  usebox(BOX_NONE),
 	  rotate(0),
 	  inset(new InsetTableCell(buf))
@@ -608,6 +620,10 @@ Tabular::CellData::CellData(CellData const & cs)
 	  bottom_line(cs.bottom_line),
 	  left_line(cs.left_line),
 	  right_line(cs.right_line),
+	  top_line_rtrimmed(cs.top_line_rtrimmed),
+	  top_line_ltrimmed(cs.top_line_ltrimmed),
+	  bottom_line_rtrimmed(cs.bottom_line_rtrimmed),
+	  bottom_line_ltrimmed(cs.bottom_line_ltrimmed),
 	  usebox(cs.usebox),
 	  rotate(cs.rotate),
 	  align_special(cs.align_special),
@@ -634,6 +650,10 @@ Tabular::CellData & Tabular::CellData::operator=(CellData const & cs)
 	bottom_line = cs.bottom_line;
 	left_line = cs.left_line;
 	right_line = cs.right_line;
+	top_line_rtrimmed = cs.top_line_rtrimmed;
+	top_line_ltrimmed = cs.top_line_ltrimmed;
+	bottom_line_rtrimmed = cs.bottom_line_rtrimmed;
+	bottom_line_rtrimmed = cs.bottom_line_rtrimmed;
 	usebox = cs.usebox;
 	rotate = cs.rotate;
 	align_special = cs.align_special;
@@ -981,6 +1001,24 @@ bool Tabular::rightLine(idx_type cell, bool const ignore_bt) const
 }
 
 
+pair<bool, bool> Tabular::topLineTrim(idx_type const cell) const
+{
+	if (!use_booktabs)
+		return make_pair(false, false);
+	return make_pair(cellInfo(cell).top_line_ltrimmed,
+			 cellInfo(cell).top_line_rtrimmed);
+}
+
+
+pair<bool, bool> Tabular::bottomLineTrim(idx_type const cell) const
+{
+	if (!use_booktabs)
+		return make_pair(false, false);
+	return make_pair(cellInfo(cell).bottom_line_ltrimmed,
+			 cellInfo(cell).bottom_line_rtrimmed);
+}
+
+
 int Tabular::interRowSpace(row_type row) const
 {
 	if (!row || row >= nrows())
@@ -1321,6 +1359,42 @@ void Tabular::setBottomLine(idx_type i, bool line)
 }
 
 
+void Tabular::setTopLineLTrim(idx_type i, bool val)
+{
+	cellInfo(i).top_line_ltrimmed = val;
+}
+
+
+void Tabular::setTopLineRTrim(idx_type i, bool val)
+{
+	cellInfo(i).top_line_rtrimmed = val;
+}
+
+
+void Tabular::setBottomLineLTrim(idx_type i, bool val)
+{
+	cellInfo(i).bottom_line_ltrimmed = val;
+}
+
+
+void Tabular::setBottomLineRTrim(idx_type i, bool val)
+{
+	cellInfo(i).bottom_line_rtrimmed = val;
+}
+
+
+void Tabular::setTopLineTrim(idx_type i, pair<bool, bool> trim)
+{
+	setTopLineLTrim(i, trim.first);
+	setTopLineRTrim(i, trim.second);
+}
+
+void Tabular::setBottomLineTrim(idx_type i, pair<bool, bool> trim)
+{
+	setBottomLineLTrim(i, trim.first);
+	setBottomLineRTrim(i, trim.second);
+}
+
 void Tabular::setLeftLine(idx_type cell, bool line)
 {
 	cellInfo(cell).left_line = line;
@@ -1615,7 +1689,11 @@ void Tabular::write(ostream & os) const
 			   << write_attribute("alignment", cell_info[r][c].alignment)
 			   << write_attribute("valignment", cell_info[r][c].valignment)
 			   << write_attribute("topline", cell_info[r][c].top_line)
+			   << write_attribute("toplineltrim", cell_info[r][c].top_line_ltrimmed)
+			   << write_attribute("toplinertrim", cell_info[r][c].top_line_rtrimmed)
 			   << write_attribute("bottomline", cell_info[r][c].bottom_line)
+			   << write_attribute("bottomlineltrim", cell_info[r][c].bottom_line_ltrimmed)
+			   << write_attribute("bottomlinertrim", cell_info[r][c].bottom_line_rtrimmed)
 			   << write_attribute("leftline", cell_info[r][c].left_line)
 			   << write_attribute("rightline", cell_info[r][c].right_line)
 			   << write_attribute("rotate", cell_info[r][c].rotate)
@@ -1729,7 +1807,11 @@ void Tabular::read(Lexer & lex)
 			getTokenValue(line, "alignment", cell_info[i][j].alignment);
 			getTokenValue(line, "valignment", cell_info[i][j].valignment);
 			getTokenValue(line, "topline", cell_info[i][j].top_line);
+			getTokenValue(line, "toplineltrim", cell_info[i][j].top_line_ltrimmed);
+			getTokenValue(line, "toplinertrim", cell_info[i][j].top_line_rtrimmed);
 			getTokenValue(line, "bottomline", cell_info[i][j].bottom_line);
+			getTokenValue(line, "bottomlineltrim", cell_info[i][j].bottom_line_ltrimmed);
+			getTokenValue(line, "bottomlinertrim", cell_info[i][j].bottom_line_rtrimmed);
 			getTokenValue(line, "leftline", cell_info[i][j].left_line);
 			getTokenValue(line, "rightline", cell_info[i][j].right_line);
 			getTokenValue(line, "rotate", cell_info[i][j].rotate);
@@ -2305,18 +2387,27 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, string const & lang,
 	// is done in Tabular::TeXBottomHLine(...)
 
 	// get for each column the topline (if any)
-	map<col_type, bool> topline;
+	map<col_type, bool> topline, topltrims, toprtrims;
 	col_type nset = 0;
+	bool have_trims = false;
 	for (auto const & c : columns) {
 		topline[c] = topLine(cellIndex(row, c));
+		topltrims[c] = topLineTrim(cellIndex(row, c)).first;
+		toprtrims[c] = topLineTrim(cellIndex(row, c)).second;
 		// If cell is part of a multirow and not the first cell of the
 		// multirow, no line must be drawn.
 		if (row != 0)
 			if (isMultiRow(cellIndex(row, c))
-			    && cell_info[row][c].multirow != CELL_BEGIN_OF_MULTIROW)
+			    && cell_info[row][c].multirow != CELL_BEGIN_OF_MULTIROW) {
 				topline[c] = false;
+				topltrims[c] = false;
+				toprtrims[c] = false;
+			}
 		if (topline.find(c) != topline.end() && topline.find(c)->second)
 			++nset;
+		if ((topltrims.find(c) != topltrims.end() && topltrims.find(c)->second)
+		     || (toprtrims.find(c) != toprtrims.end() && toprtrims.find(c)->second))
+			have_trims = true;
 	}
 
 	// do nothing if empty first row, or incomplete row line after
@@ -2324,36 +2415,57 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, string const & lang,
 		return;
 
 	// only output complete row lines and the 1st row's clines
-	if (nset == ncols()) {
+	if (nset == ncols() && !have_trims) {
 		if (use_booktabs) {
 			os << (row == 0 ? "\\toprule " : "\\midrule ");
 		} else {
 			os << "\\hline ";
 		}
-	} else if (row == 0) {
+	} else if (row == 0 || have_trims) {
+		string const cline = use_booktabs ? "\\cmidrule" : "\\cline";
 		for (auto & c : columns) {
 			if (topline.find(c)->second) {
 				col_type offset = 0;
-				for (col_type j = 0 ; j < c; ++j)
-					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
-						++offset;
-
-				//babel makes the "-" character an active one, so we have to suppress this here
-				//see http://groups.google.com/group/comp.text.tex/browse_thread/thread/af769424a4a0f289#
-				if (lang == "slovak" || lang == "czech")
-					os << "\\expandafter" << (use_booktabs ? "\\cmidrule" : "\\cline")
-					<< "\\expandafter{\\expandafter" << c + 1 + offset << "\\string-";
-				else
-					os << (use_booktabs ? "\\cmidrule{" : "\\cline{") << c + 1 + offset << '-';
-
+				string trim;
+				if (topltrims.find(c) != topltrims.end()
+				     && topltrims.find(c)->second)
+					trim = "l";
+				string const firstcol = convert<string>(c + 1 + offset);
 				col_type cstart = c;
-				for ( ; c < ncols() && topline.find(c)->second; ++c) {}
+				for ( ; c < ncols() - 1 && topline.find(c)->second ; ++c) {
+					if (c > cstart && topltrims.find(c) != topltrims.end()
+							&& topltrims.find(c)->second) {
+						--c;
+						break;
+					} else if (toprtrims.find(c) != toprtrims.end()
+						   && toprtrims.find(c)->second)
+						break;
+				}
 
 				for (col_type j = cstart ; j < c ; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
 						++offset;
+				col_type const lastcol = c + 1 + offset;
+				if (toprtrims.find(c) != toprtrims.end()
+				    && toprtrims.find(c)->second)
+					trim += "r";
 
-				os << c + offset << "} ";
+				//babel makes the "-" character an active one, so we have to suppress this here
+				//see http://groups.google.com/group/comp.text.tex/browse_thread/thread/af769424a4a0f289#
+				if (lang == "slovak" || lang == "czech") {
+					os << "\\expandafter" << cline;
+					if (!trim.empty())
+						os << "(" << trim << ")";
+					os << "\\expandafter{\\expandafter" << firstcol << "\\string-";
+				} else {
+					os << cline;
+					if (!trim.empty())
+						os << "(" << trim << ")";
+					os << "{" << firstcol << '-';
+				}
+				os << lastcol << "}";
+				if (c == ncols() - 1)
+					break;
 			}
 		}
 	}
@@ -2369,11 +2481,16 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, string const & lang,
 
 	// get the bottomlines of row r, and toplines in next row
 	bool lastrow = row == nrows() - 1;
-	map<col_type, bool> bottomline, topline;
+	map<col_type, bool> bottomline, topline, topltrims, toprtrims, bottomltrims, bottomrtrims;
 	bool nextrowset = true;
 	for (auto const & c : columns) {
+		idx_type const idx = cellIndex(row, c);
 		bottomline[c] = bottomLine(cellIndex(row, c));
+		bottomltrims[c] = bottomLineTrim(idx).first;
+		bottomrtrims[c] = bottomLineTrim(idx).second;
 		topline[c] =  !lastrow && topLine(cellIndex(row + 1, c));
+		topltrims[c] = !lastrow && topLineTrim(cellIndex(row + 1, c)).first;
+		toprtrims[c] = !lastrow && topLineTrim(cellIndex(row + 1, c)).second;
 		// If cell is part of a multirow and not the last cell of the
 		// multirow, no line must be drawn.
 		if (!lastrow)
@@ -2382,29 +2499,42 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, string const & lang,
 			    && cell_info[row + 1][c].multirow != CELL_BEGIN_OF_MULTIROW) {
 				bottomline[c] = false;
 				topline[c] = false;
-				}
+				bottomltrims[c] = false;
+				bottomrtrims[c] = false;
+				topltrims[c] = false;
+				toprtrims[c] = false;
+			}
 		nextrowset &= topline.find(c) != topline.end() && topline.find(c)->second;
 	}
 
 	// combine this row's bottom lines and next row's toplines if necessary
 	col_type nset = 0;
+	bool have_trims = false;
 	for (auto const & c : columns) {
 		if (!nextrowset)
 			bottomline[c] = bottomline.find(c)->second || topline.find(c)->second;
+		bottomltrims[c] = (bottomltrims.find(c) != bottomltrims.end() && bottomltrims.find(c)->second)
+				|| (topltrims.find(c) != topltrims.end() && topltrims.find(c)->second);
+		bottomrtrims[c] =(bottomrtrims.find(c) != bottomrtrims.end() && bottomrtrims.find(c)->second)
+				|| (toprtrims.find(c) != toprtrims.end() && toprtrims.find(c)->second);
 		if (bottomline.find(c)->second)
 			++nset;
+		if ((bottomltrims.find(c) != bottomltrims.end() && bottomltrims.find(c)->second)
+		     || (bottomrtrims.find(c) != bottomrtrims.end() && bottomrtrims.find(c)->second))
+			have_trims = true;
 	}
 
 	// do nothing if empty, OR incomplete row line with a topline in next row
 	if (nset == 0 || (nextrowset && nset != ncols()))
 		return;
 
-	if (nset == ncols()) {
+	if (nset == ncols() && !have_trims) {
 		if (use_booktabs)
 			os << (lastrow ? "\\bottomrule" : "\\midrule");
 		else
 			os << "\\hline ";
 	} else {
+		string const cline = use_booktabs ? "\\cmidrule" : "\\cline";
 		for (auto & c : columns) {
 			if (bottomline.find(c)->second) {
 				col_type offset = 0;
@@ -2412,22 +2542,46 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, string const & lang,
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
 						++offset;
 
-				//babel makes the "-" character an active one, so we have to suppress this here
-				//see http://groups.google.com/group/comp.text.tex/browse_thread/thread/af769424a4a0f289#
-				if (lang == "slovak" || lang == "czech")
-					os << "\\expandafter" << (use_booktabs ? "\\cmidrule" : "\\cline")
-					<< "\\expandafter{\\expandafter" << c + 1 + offset << "\\string-";
-				else
-					os << (use_booktabs ? "\\cmidrule{" : "\\cline{") << c + 1 + offset << '-';
-
+				string trim;
+				if (bottomltrims.find(c) != bottomltrims.end()
+				     && bottomltrims.find(c)->second)
+					trim = "l";
+				string const firstcol = convert<string>(c + 1 + offset);
 				col_type cstart = c;
-				for ( ; c < ncols() && bottomline.find(c)->second; ++c) {}
+				for ( ; c < ncols() - 1 && bottomline.find(c)->second ; ++c) {
+					if (c > cstart && bottomltrims.find(c) != bottomltrims.end()
+							&& bottomltrims.find(c)->second) {
+						--c;
+						break;
+					} else if (bottomrtrims.find(c) != bottomrtrims.end()
+						   && bottomrtrims.find(c)->second)
+						break;
+				}
 
 				for (col_type j = cstart ; j < c ; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
 						++offset;
+				col_type const lastcol = c + 1 + offset;
+				if (bottomrtrims.find(c) != bottomrtrims.end()
+				    && bottomrtrims.find(c)->second)
+					trim += "r";
 
-				os << c + offset << "} ";
+				//babel makes the "-" character an active one, so we have to suppress this here
+				//see http://groups.google.com/group/comp.text.tex/browse_thread/thread/af769424a4a0f289#
+				if (lang == "slovak" || lang == "czech") {
+					os << "\\expandafter" << cline;
+					if (!trim.empty())
+						os << "(" << trim << ")";
+					os << "\\expandafter{\\expandafter" << firstcol << "\\string-";
+				} else {
+					os << cline;
+					if (!trim.empty())
+						os << "(" << trim << ")";
+					os << "{" << firstcol << '-';
+				}
+				os << lastcol << "}";
+				if (c == ncols() - 1)
+					break;
 			}
 		}
 	}
@@ -4215,13 +4369,21 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 
 namespace {
 
-void tabline(PainterInfo const & pi, int x1, int y1, int x2, int y2,
+void tabline(PainterInfo const & pi, int x1, int y1, int x2, int y2, int lt, int rt,
              bool drawline, bool heavy = false)
 {
 	ColorCode const col = drawline ? Color_tabularline : Color_tabularonoffline;
-	pi.pain.line(x1, y1, x2, y2, pi.textColor(col),
+	if (drawline && lt > 0)
+		pi.pain.line(x1, y1, x1 + lt, y2, pi.textColor(Color_tabularonoffline),
+					 Painter::line_onoffdash,
+					 Painter::thin_line);
+	pi.pain.line(x1 + lt, y1, x2 - rt, y2, pi.textColor(col),
 				 drawline ? Painter::line_solid : Painter::line_onoffdash,
 				 (heavy ? 2 : 1) * Painter::thin_line);
+	if (drawline && rt > 0)
+		pi.pain.line(x2 - rt, y1, x2, y2, pi.textColor(Color_tabularonoffline),
+					 Painter::line_onoffdash,
+					 Painter::thin_line);
 }
 
 }
@@ -4233,6 +4395,8 @@ void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 	y -= tabular.rowAscent(row);
 	int const w = tabular.cellWidth(cell);
 	int const h = tabular.cellHeight(cell);
+	int lt = 0;
+	int rt = 0;
 
 	col_type const col = tabular.cellColumn(cell);
 
@@ -4240,9 +4404,16 @@ void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 	bool drawline = tabular.topLine(cell)
 		|| (row > 0 && tabular.bottomLine(tabular.cellAbove(cell)));
 	bool heavy = tabular.use_booktabs && row == 0 && tabular.rowTopLine(row);
-	tabline(pi, x, y, x + w, y, drawline, heavy);
+	if (tabular.topLineTrim(cell).first
+	    || (row > 0 && tabular.bottomLineTrim(tabular.cellIndex(row - 1, col)).first))
+		lt = 10;
+	if (tabular.topLineTrim(cell).second
+	    || (row > 0 && tabular.bottomLineTrim(tabular.cellIndex(row - 1, col)).second))
+		rt = 10;
+	tabline(pi, x, y, x + w, y, lt, rt, drawline, heavy);
 
 	// Bottom
+	lt = rt = 0;
 	drawline = tabular.bottomLine(cell);
 	row_type const lastrow = tabular.nrows() - 1;
 	// Consider multi-rows
@@ -4253,12 +4424,16 @@ void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 	heavy = tabular.use_booktabs
 		&& ((row == lastrow && tabular.rowBottomLine(row))
 		    || (r == lastrow && tabular.rowBottomLine(r)));
-	tabline(pi, x, y + h, x + w, y + h, drawline, heavy);
+	if (tabular.bottomLineTrim(cell).first)
+		lt = 10;
+	if (tabular.bottomLineTrim(cell).second)
+		rt = 10;
+	tabline(pi, x, y + h, x + w, y + h, lt, rt, drawline, heavy);
 
 	// Left
 	drawline = tabular.leftLine(cell)
 		|| (col > 0 && tabular.rightLine(tabular.cellIndex(row, col - 1)));
-	tabline(pi, x, y, x, y + h, drawline);
+	tabline(pi, x, y, x, y + h, 0, 0, drawline);
 
 	// Right
 	x -= tabular.interColumnSpace(cell);
@@ -4269,7 +4444,7 @@ void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 	drawline = tabular.rightLine(cell)
 		   || (next_cell_col < tabular.ncols()
 		       && tabular.leftLine(tabular.cellIndex(row, next_cell_col)));
-	tabline(pi, x + w, y, x + w, y + h, drawline);
+	tabline(pi, x + w, y, x + w, y + h, 0, 0, drawline);
 }
 
 
@@ -4999,6 +5174,20 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 			                  && !tabular.ltCaption(tabular.cellRow(cur.idx())));
 			break;
 
+		case Tabular::SET_LTRIM_TOP:
+		case Tabular::SET_RTRIM_TOP:
+			status.setEnabled(tabular.use_booktabs
+					  && tabular.cellRow(cur.idx()) != 0
+					  && !tabular.ltCaption(tabular.cellRow(cur.idx())));
+			break;
+
+		case Tabular::SET_LTRIM_BOTTOM:
+		case Tabular::SET_RTRIM_BOTTOM:
+			status.setEnabled(tabular.use_booktabs
+					  && tabular.cellRow(cur.idx()) != tabular.nrows() - 1
+					  && !tabular.ltCaption(tabular.cellRow(cur.idx())));
+			break;
+
 		case Tabular::TOGGLE_LINE_TOP:
 			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
 			status.setOnOff(tabular.topLine(cur.idx()));
@@ -5019,6 +5208,30 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 			status.setEnabled(!tabular.use_booktabs
 			                  && !tabular.ltCaption(tabular.cellRow(cur.idx())));
 			status.setOnOff(tabular.rightLine(cur.idx()));
+			break;
+
+		case Tabular::TOGGLE_LTRIM_TOP:
+			status.setEnabled(tabular.use_booktabs
+					  && !tabular.ltCaption(tabular.cellRow(cur.idx())));
+			status.setOnOff(tabular.topLineTrim(cur.idx()).first);
+			break;
+
+		case Tabular::TOGGLE_RTRIM_TOP:
+			status.setEnabled(tabular.use_booktabs
+					  && !tabular.ltCaption(tabular.cellRow(cur.idx())));
+			status.setOnOff(tabular.topLineTrim(cur.idx()).second);
+			break;
+
+		case Tabular::TOGGLE_LTRIM_BOTTOM:
+			status.setEnabled(tabular.use_booktabs
+					  && !tabular.ltCaption(tabular.cellRow(cur.idx())));
+			status.setOnOff(tabular.bottomLineTrim(cur.idx()).first);
+			break;
+
+		case Tabular::TOGGLE_RTRIM_BOTTOM:
+			status.setEnabled(tabular.use_booktabs
+					  && !tabular.ltCaption(tabular.cellRow(cur.idx())));
+			status.setOnOff(tabular.bottomLineTrim(cur.idx()).second);
 			break;
 
 		// multirow cells only inherit the alignment of the column if the column has
@@ -5901,9 +6114,12 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::DELETE_ROW:
 		if (sel_row_end == tabular.nrows() - 1 && sel_row_start != 0) {
-			for (col_type c = 0; c < tabular.ncols(); c++)
+			for (col_type c = 0; c < tabular.ncols(); c++) {
 				tabular.setBottomLine(tabular.cellIndex(sel_row_start - 1, c),
 					tabular.bottomLine(tabular.cellIndex(sel_row_end, c)));
+				tabular.setBottomLineTrim(tabular.cellIndex(sel_row_start - 1, c),
+					tabular.bottomLineTrim(tabular.cellIndex(sel_row_end, c)));
+			}
 		}
 
 		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
@@ -5985,6 +6201,46 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
 			for (col_type c = sel_col_start; c <= sel_col_end; ++c)
 				tabular.setBottomLine(tabular.cellIndex(r, c), lineSet);
+		break;
+	}
+
+	case Tabular::SET_LTRIM_TOP:
+	case Tabular::TOGGLE_LTRIM_TOP: {
+		bool l = (feature == Tabular::SET_LTRIM_TOP)
+			       ? (value == "true") : !tabular.topLineTrim(cur.idx()).first;
+		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
+			for (col_type c = sel_col_start; c <= sel_col_end; ++c)
+				tabular.setTopLineLTrim(tabular.cellIndex(r, c), l);
+		break;
+	}
+
+	case Tabular::SET_RTRIM_TOP:
+	case Tabular::TOGGLE_RTRIM_TOP: {
+		bool l = (feature == Tabular::SET_RTRIM_TOP)
+			       ? (value == "true") : !tabular.topLineTrim(cur.idx()).second;
+		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
+			for (col_type c = sel_col_start; c <= sel_col_end; ++c)
+				tabular.setTopLineRTrim(tabular.cellIndex(r, c), l);
+		break;
+	}
+
+	case Tabular::SET_LTRIM_BOTTOM:
+	case Tabular::TOGGLE_LTRIM_BOTTOM: {
+		bool l = (feature == Tabular::SET_LTRIM_BOTTOM)
+			       ? (value == "true") : !tabular.bottomLineTrim(cur.idx()).first;
+		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
+			for (col_type c = sel_col_start; c <= sel_col_end; ++c)
+				tabular.setBottomLineLTrim(tabular.cellIndex(r, c), l);
+		break;
+	}
+
+	case Tabular::SET_RTRIM_BOTTOM:
+	case Tabular::TOGGLE_RTRIM_BOTTOM: {
+		bool l = (feature == Tabular::SET_RTRIM_BOTTOM)
+			       ? (value == "true") : !tabular.bottomLineTrim(cur.idx()).second;
+		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
+			for (col_type c = sel_col_start; c <= sel_col_end; ++c)
+				tabular.setBottomLineRTrim(tabular.cellIndex(r, c), l);
 		break;
 	}
 

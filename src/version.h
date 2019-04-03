@@ -32,8 +32,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 570 // spitz: biblatex bibencodings
-#define LYX_FORMAT_TEX2LYX 570
+#define LYX_FORMAT_LYX 571 // spitz: cmidrule trimming
+#define LYX_FORMAT_TEX2LYX 571
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
 #ifndef _MSC_VER

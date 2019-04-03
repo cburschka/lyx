@@ -3752,7 +3752,10 @@ void LyXAction::init()
  * \li Params: Generally see #LFUN_INSET_INSERT for further details.\n
  *             <FEATURE>: append-row|append-column|delete-row|delete-column|copy-row|\n
                        copy-column|move-column-right|move-column-left|move-row-down|move-row-up|\n
+                       set-line-top|set-line-bottom|set-line-left|set-line-right|\n
                        toggle-line-top|toggle-line-bottom|toggle-line-left|toggle-line-right|\n
+                       set-ltrim-top|set-rtrim-top|set-ltrim-bottom|set-rtrim-bottom\n
+                       toggle-ltrim-top|toggle-rtrim-top|toggle-ltrim-bottom|toggle-rtrim-bottom\n
                        align-left|align-right|align-center|align-block|align-decimal|set-decimal-point|\n
                        valign-top|valign-bottom|valign-middle|longtabular-align-left|\n
                        longtabular-align-center|longtabular-align-right|m-align-left|m-align-right|\n

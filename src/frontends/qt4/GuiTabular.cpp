@@ -48,7 +48,7 @@ namespace frontend {
 GuiTabular::GuiTabular(QWidget * parent)
 	: InsetParamsWidget(parent), firstheader_suppressable_(false),
 	  lastfooter_suppressable_(false), orig_leftborder_(GuiSetBorder::LINE_UNDEF),
-	  orig_rightborder_(GuiSetBorder::LINE_UNDEF)
+	  orig_rightborder_(GuiSetBorder::LINE_UNDEF), lastrow_(0)
 
 {
 	setupUi(this);
@@ -146,6 +146,14 @@ GuiTabular::GuiTabular(QWidget * parent)
 	connect(borders, SIGNAL(rightSet()),
 		this, SLOT(checkEnabled()));
 	connect(borders, SIGNAL(leftSet()),
+		this, SLOT(checkEnabled()));
+	connect(borders, SIGNAL(topLTSet()),
+		this, SLOT(checkEnabled()));
+	connect(borders, SIGNAL(topRTSet()),
+		this, SLOT(checkEnabled()));
+	connect(borders, SIGNAL(bottomLTSet()),
+		this, SLOT(checkEnabled()));
+	connect(borders, SIGNAL(bottomRTSet()),
 		this, SLOT(checkEnabled()));
 	connect(rotateTabularCB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
@@ -344,6 +352,20 @@ void GuiTabular::enableWidgets() const
 	// Vertical lines cannot be set in formal tables
 	borders->setLeftEnabled(!booktabsRB->isChecked());
 	borders->setRightEnabled(!booktabsRB->isChecked());
+	// Trimming is only allowed in booktabs and if the line is set
+	int const row = tabularRowED->text().toInt();
+	borders->setTopLeftTrimEnabled(booktabsRB->isChecked()
+				       && borders->topLineSet()
+				       && row > 1);
+	borders->setTopRightTrimEnabled(booktabsRB->isChecked()
+					&& borders->topLineSet()
+					&& row > 1);
+	borders->setBottomLeftTrimEnabled(booktabsRB->isChecked()
+					  && borders->bottomLineSet()
+					  && row < lastrow_);
+	borders->setBottomRightTrimEnabled(booktabsRB->isChecked()
+					   && borders->bottomLineSet()
+					   && row < lastrow_);
 }
 
 
@@ -360,6 +382,10 @@ void GuiTabular::borderSet_clicked()
 	borders->setBottom(GuiSetBorder::LINE_SET);
 	borders->setLeft(GuiSetBorder::LINE_SET);
 	borders->setRight(GuiSetBorder::LINE_SET);
+	borders->setTopLeftTrim(GuiSetBorder::LINE_SET);
+	borders->setBottomLeftTrim(GuiSetBorder::LINE_SET);
+	borders->setTopRightTrim(GuiSetBorder::LINE_SET);
+	borders->setBottomRightTrim(GuiSetBorder::LINE_SET);
 	// repaint the setborder widget
 	borders->update();
 	checkEnabled();
@@ -372,6 +398,10 @@ void GuiTabular::borderUnset_clicked()
 	borders->setBottom(GuiSetBorder::LINE_UNSET);
 	borders->setLeft(GuiSetBorder::LINE_UNSET);
 	borders->setRight(GuiSetBorder::LINE_UNSET);
+	borders->setTopLeftTrim(GuiSetBorder::LINE_UNSET);
+	borders->setBottomLeftTrim(GuiSetBorder::LINE_UNSET);
+	borders->setTopRightTrim(GuiSetBorder::LINE_UNSET);
+	borders->setBottomRightTrim(GuiSetBorder::LINE_UNSET);
 	// repaint the setborder widget
 	borders->update();
 	checkEnabled();
@@ -603,6 +633,22 @@ docstring GuiTabular::dialogToParams() const
 			setParam(param_str, Tabular::SET_LINE_BOTTOM,
 				 borders->bottomLineSet() ? "true" : "false");
 	}
+	if (borders->topLineLTSet())
+		setParam(param_str, Tabular::SET_LTRIM_TOP, "false");
+	else if (borders->topLineLTUnset())
+		setParam(param_str, Tabular::SET_LTRIM_TOP, "true");
+	if (borders->topLineRTSet())
+		setParam(param_str, Tabular::SET_RTRIM_TOP, "false");
+	else if (borders->topLineRTUnset())
+		setParam(param_str, Tabular::SET_RTRIM_TOP, "true");
+	if (borders->bottomLineLTSet())
+		setParam(param_str, Tabular::SET_LTRIM_BOTTOM, "false");
+	else if (borders->bottomLineRTUnset())
+		setParam(param_str, Tabular::SET_LTRIM_BOTTOM, "true");
+	if (borders->bottomLineRTSet())
+		setParam(param_str, Tabular::SET_RTRIM_BOTTOM, "false");
+	else if (borders->bottomLineRTUnset())
+		setParam(param_str, Tabular::SET_RTRIM_BOTTOM, "true");
 
 	// apply the special alignment
 	string special = fromqstr(specialAlignmentED->text());
@@ -784,6 +830,7 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 
 	tabularRowED->setText(QString::number(row + 1));
 	tabularColumnED->setText(QString::number(col + 1));
+	lastrow_ = int(tabular.nrows());
 
 	bool const multicol = tabular.isMultiColumn(cell);
 	multicolumnCB->setChecked(multicol);
@@ -810,12 +857,16 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	}
 
 	// In what follows, we check the borders of all selected cells,
-	// and if there are diverging settings, we use the LINE_UNDEF
+	// and if there are diverging settings, we use the LINE_UNDECIDED
 	// border status.
-	GuiSetBorder::BorderState lt = GuiSetBorder::LINE_UNDEF;
-	GuiSetBorder::BorderState lb = GuiSetBorder::LINE_UNDEF;
-	GuiSetBorder::BorderState ll = GuiSetBorder::LINE_UNDEF;
-	GuiSetBorder::BorderState lr = GuiSetBorder::LINE_UNDEF;
+	GuiSetBorder::BorderState ltop = GuiSetBorder::LINE_UNDEF;
+	GuiSetBorder::BorderState lbottom = GuiSetBorder::LINE_UNDEF;
+	GuiSetBorder::BorderState lleft = GuiSetBorder::LINE_UNDEF;
+	GuiSetBorder::BorderState lright = GuiSetBorder::LINE_UNDEF;
+	GuiSetBorder::BorderState ltop_ltrim = GuiSetBorder::LINE_UNDEF;
+	GuiSetBorder::BorderState ltop_rtrim = GuiSetBorder::LINE_UNDEF;
+	GuiSetBorder::BorderState lbottom_ltrim = GuiSetBorder::LINE_UNDEF;
+	GuiSetBorder::BorderState lbottom_rtrim = GuiSetBorder::LINE_UNDEF;
 	CursorSlice const & beg = bv->cursor().selBegin();
 	CursorSlice const & end = bv->cursor().selEnd();
 	if (beg != end) {
@@ -830,27 +881,39 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 		for (Tabular::row_type r = rs; r <= re; ++r)
 			for (Tabular::col_type c = cs; c <= ce; ++c) {
 				idx_type const cc = tabular.cellIndex(r, c);
-				lt = borderState(lt, tabular.topLine(cc));
-				lb = borderState(lb, tabular.bottomLine(cc));
-				ll = borderState(ll, tabular.leftLine(cc));
-				lr = borderState(lr, tabular.rightLine(cc));
+				ltop = borderState(ltop, tabular.topLine(cc));
+				lbottom = borderState(lbottom, tabular.bottomLine(cc));
+				lleft = borderState(lleft, tabular.leftLine(cc));
+				lright = borderState(lright, tabular.rightLine(cc));
+				ltop_ltrim = borderState(ltop_ltrim, !tabular.topLineTrim(cc).first);
+				ltop_rtrim = borderState(ltop_rtrim, !tabular.topLineTrim(cc).second);
+				lbottom_ltrim = borderState(lbottom_ltrim, !tabular.bottomLineTrim(cc).first);
+				lbottom_rtrim = borderState(lbottom_rtrim, !tabular.bottomLineTrim(cc).second);
 				// store left/right borders for the case of formal/nonformal switch
-				orig_leftborder_ = borderState(ll, tabular.leftLine(cc, true));
-				orig_rightborder_ = borderState(lr, tabular.rightLine(cc, true));
+				orig_leftborder_ = borderState(lleft, tabular.leftLine(cc, true));
+				orig_rightborder_ = borderState(lright, tabular.rightLine(cc, true));
 			}
 	} else {
-		lt = tabular.topLine(cell) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
-		lb = tabular.bottomLine(cell) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
-		ll = tabular.leftLine(cell) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
-		lr = tabular.rightLine(cell) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
+		ltop = tabular.topLine(cell) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
+		lbottom = tabular.bottomLine(cell) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
+		lleft = tabular.leftLine(cell) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
+		lright = tabular.rightLine(cell) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
+		ltop_ltrim = tabular.topLineTrim(cell).first ? GuiSetBorder::LINE_UNSET : GuiSetBorder::LINE_SET;
+		ltop_rtrim = tabular.topLineTrim(cell).second ? GuiSetBorder::LINE_UNSET : GuiSetBorder::LINE_SET;
+		lbottom_ltrim = tabular.bottomLineTrim(cell).first ? GuiSetBorder::LINE_UNSET : GuiSetBorder::LINE_SET;
+		lbottom_rtrim = tabular.bottomLineTrim(cell).second ? GuiSetBorder::LINE_UNSET : GuiSetBorder::LINE_SET;
 		// store left/right borders for the case of formal/nonformal switch
 		orig_leftborder_ = tabular.leftLine(cell, true) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
 		orig_rightborder_ = tabular.rightLine(cell, true) ? GuiSetBorder::LINE_SET : GuiSetBorder::LINE_UNSET;
 	}
-	borders->setTop(lt);
-	borders->setBottom(lb);
-	borders->setLeft(ll);
-	borders->setRight(lr);
+	borders->setTop(ltop);
+	borders->setBottom(lbottom);
+	borders->setLeft(lleft);
+	borders->setRight(lright);
+	borders->setTopLeftTrim(ltop_ltrim);
+	borders->setTopRightTrim(ltop_rtrim);
+	borders->setBottomLeftTrim(lbottom_ltrim);
+	borders->setBottomRightTrim(lbottom_rtrim);
 	// repaint the setborder widget
 	borders->update();
 

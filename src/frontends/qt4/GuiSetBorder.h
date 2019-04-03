@@ -6,6 +6,7 @@
  *
  * \author Edwin Leuven
  * \author John Levon
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -26,7 +27,7 @@ class GuiSetBorder : public QWidget
 {
 	Q_OBJECT
 public:
-	GuiSetBorder(QWidget * parent = 0, Qt::WindowFlags fl = 0);
+	GuiSetBorder(QWidget * parent = nullptr, Qt::WindowFlags fl = nullptr);
 
 	// We need tristate for multi-cell selection
 	enum BorderState {
@@ -40,6 +41,10 @@ public:
 	BorderState getRight();
 	BorderState getTop();
 	BorderState getBottom();
+	BorderState getTopLeftTrim();
+	BorderState getTopRightTrim();
+	BorderState getBottomLeftTrim();
+	BorderState getBottomRightTrim();
 
 	bool leftLineSet() { return getLeft() ==  LINE_SET; }
 	bool rightLineSet() { return getRight() ==  LINE_SET; }
@@ -51,11 +56,25 @@ public:
 	bool topLineUnset() { return getTop() ==  LINE_UNSET; }
 	bool bottomLineUnset() { return getBottom() ==  LINE_UNSET; }
 
+	bool topLineLTSet() { return getTopLeftTrim() ==  LINE_SET; }
+	bool bottomLineLTSet() { return getBottomLeftTrim() ==  LINE_SET; }
+	bool topLineRTSet() { return getTopRightTrim() ==  LINE_SET; }
+	bool bottomLineRTSet() { return getBottomRightTrim() ==  LINE_SET; }
+
+	bool topLineLTUnset() { return getTopLeftTrim() ==  LINE_UNSET; }
+	bool bottomLineLTUnset() { return getBottomLeftTrim() ==  LINE_UNSET; }
+	bool topLineRTUnset() { return getTopRightTrim() ==  LINE_UNSET; }
+	bool bottomLineRTUnset() { return getBottomRightTrim() ==  LINE_UNSET; }
+
 Q_SIGNALS:
 	void rightSet();
 	void leftSet();
 	void topSet();
 	void bottomSet();
+	void topLTSet();
+	void bottomLTSet();
+	void topRTSet();
+	void bottomRTSet();
 	void clicked();
 
 public Q_SLOTS:
@@ -63,10 +82,18 @@ public Q_SLOTS:
 	void setRightEnabled(bool);
 	void setTopEnabled(bool);
 	void setBottomEnabled(bool);
+	void setTopLeftTrimEnabled(bool);
+	void setTopRightTrimEnabled(bool);
+	void setBottomLeftTrimEnabled(bool);
+	void setBottomRightTrimEnabled(bool);
 	void setLeft(BorderState);
 	void setRight(BorderState);
 	void setTop(BorderState);
 	void setBottom(BorderState);
+	void setTopLeftTrim(BorderState);
+	void setTopRightTrim(BorderState);
+	void setBottomLeftTrim(BorderState);
+	void setBottomRightTrim(BorderState);
 	void setAll(BorderState);
 
 protected:
@@ -81,7 +108,13 @@ private:
 	void drawLeft(BorderState);
 	void drawRight(BorderState);
 	void drawTop(BorderState);
+	void undrawWideTopLine();
 	void drawBottom(BorderState);
+	void undrawWideBottomLine();
+	void drawTopLeftTrim(BorderState);
+	void drawTopRightTrim(BorderState);
+	void drawBottomLeftTrim(BorderState);
+	void drawBottomRightTrim(BorderState);
 
 	class Border {
 	public:
@@ -94,13 +127,21 @@ private:
 	Border right_;
 	Border top_;
 	Border bottom_;
+	/// trim areas
+	Border top_trim_left_;
+	Border top_trim_right_;
+	Border bottom_trim_left_;
+	Border bottom_trim_right_;
 
-	int m;
-	int l;
-	int w;
-	int h;
+	int margin;
+	int corner_length;
+	int bwidth;
+	int bheight;
 
 	QPixmap buffer;
+
+	bool bottom_drawn_wide_;
+	bool top_drawn_wide_;
 };
 
 
