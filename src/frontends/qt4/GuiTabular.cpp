@@ -643,7 +643,7 @@ docstring GuiTabular::dialogToParams() const
 		setParam(param_str, Tabular::SET_RTRIM_TOP, "true");
 	if (borders->bottomLineLTSet())
 		setParam(param_str, Tabular::SET_LTRIM_BOTTOM, "false");
-	else if (borders->bottomLineRTUnset())
+	else if (borders->bottomLineLTUnset())
 		setParam(param_str, Tabular::SET_LTRIM_BOTTOM, "true");
 	if (borders->bottomLineRTSet())
 		setParam(param_str, Tabular::SET_RTRIM_BOTTOM, "false");
