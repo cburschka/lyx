@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 568
+\lyxformat 571
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -148,6 +148,7 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -20552,7 +20553,8 @@ Tabelle
 \family default
  einfügen.
  Es erscheint dann ein Dialog, der nach der Anzahl an Spalten und Zeilen
- fragt.
+ fragt und Ihnen die Auswahl eines Tabellenstils (der die Rahmengestaltung
+ betrifft) erlaubt.
  Die voreingestellte Tabelle besitzt Linien um jede Zelle und die erste
  Zeile erscheint von der restlichen Tabelle etwas abgesetzt.
  Dies kommt durch eine doppelte Linie zustande: Die Zellen der ersten Zeile
@@ -20726,6 +20728,69 @@ C
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Das entspricht dem Stil 
+\begin_inset Quotes gld
+\end_inset
+
+Gitter mit abgesetztem Kopf
+\begin_inset Quotes grd
+\end_inset
+
+ in der Stilauswahl.
+\end_layout
+
+\begin_layout Standard
+Andere auswählbare Stile sind:
+\end_layout
+
+\begin_layout Itemize
+Ein 
+\begin_inset Quotes gld
+\end_inset
+
+einfaches Gitter
+\begin_inset Quotes grd
+\end_inset
+
+, das so aussieht wie die Tabelle oben, aber ohne durch Doppellinien abgesetzten
+ Tabellenkopf,
+\end_layout
+
+\begin_layout Itemize
+eine rahmenlose Tabelle (ohne jegliche Linien)
+\end_layout
+
+\begin_layout Itemize
+und eine so genannte 
+\begin_inset Quotes gld
+\end_inset
+
+formale Tabelle
+\begin_inset Quotes grd
+\end_inset
+
+, wie sie häufig im professionellem Textsatz verwendet wird (nur mit horizontale
+n Linien und fetten Linien am Kopf und Fuß der Tabelle; das Handbuch 
+\emph on
+Eingebettete Objekte
+\emph default
+ hat dazu einen eigenen Abschnitt).
+\end_layout
+
+\begin_layout Standard
+Der Standardstil, der in diesem Dialog und auch vom Werkzeugleistenknopf
+ verwendet wird, kann in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Seitenlayout
+\family default
+ geändert werden.
+ Wenn der Standardstil oben nicht Ihren Bedürfnissen entspricht, sollten
+ Sie das tun.
 \end_layout
 
 \begin_layout Subsection
@@ -43015,6 +43080,19 @@ Blocksatz im \SpecialChar LyX
  den Text im Blocksatz anzeigt.
  Dies betrifft nur den Text innerhalb von \SpecialChar LyX
 , nicht den der Ausgabe.
+\end_layout
+
+\begin_layout Standard
+Die Option 
+\family sans
+Standardstil
+\family default
+ im Abschnitt 
+\family sans
+Tabellenstil
+\family default
+ legt fest, welcher Tabellenstil für neu einegfügte Tabellen standardmäßig
+ verwendet wird.
 \end_layout
 
 \begin_layout Section

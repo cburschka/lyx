@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 571
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -161,7 +161,7 @@ varwidth
 \language english
 \language_package default
 \inputencoding auto
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
 \font_typewriter "lmtt" "default"
@@ -234,6 +234,7 @@ varwidth
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
+\tablestyle default
 \tracking_changes true
 \output_changes false
 \html_math_output 0
@@ -804,6 +805,8 @@ reference "sec:Caption-Placement"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -847,6 +850,8 @@ A star in a float.
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -1024,6 +1029,8 @@ reference "fig:A-star"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -1034,6 +1041,8 @@ status open
 
 
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -1076,6 +1085,8 @@ Pink object.
 
 
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -1695,10 +1706,22 @@ Table
  set the column/row number of the table that should be created and then
  press a mouse button.
  When you use the menu to create a table, a dialog will appear, asking you
- for the number of rows and columns.
+ for the number of rows and columns
+\change_inserted -712698321 1554289643
+, and you can select a specific (border) style
+\change_unchanged
+.
+\change_deleted -712698321 1554289644
+
 \begin_inset Newline newline
 \end_inset
 
+
+\change_inserted -712698321 1554289645
+
+\end_layout
+
+\begin_layout Standard
 The default table has lines around any cell and the first row appears separated
  from the rest of the table.
  This separation occurs due to a double line: The cells of the first row
@@ -1909,6 +1932,85 @@ C
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1554289664
+This corresponds to the 
+\begin_inset Quotes eld
+\end_inset
+
+Grid with Head
+\begin_inset Quotes erd
+\end_inset
+
+ table style listed in the style selection.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1554289664
+Other available styles include:
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1554289664
+A 
+\begin_inset Quotes eld
+\end_inset
+
+simple grid
+\begin_inset Quotes erd
+\end_inset
+
+ which looks line the above table, but without the first row being separated
+ via double line,
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1554289664
+a border-less table with no lines at all,
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1554289664
+and a so-called 
+\begin_inset Quotes eld
+\end_inset
+
+formal table
+\begin_inset Quotes erd
+\end_inset
+
+ as often used in professional publishing with horizontal lines only and
+ bold top/bottom lines (see 
+\emph on
+Embedded Objects
+\emph default
+ manual, section 
+\emph on
+Formal Tables
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1554289664
+The default style used in the dialog as well as the style used by the toolbar
+ button can be changed in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Text Layout
+\family default
+.
+ So if the default style above is not the one you need, you should alter
+ this setting.
 \end_layout
 
 \begin_layout Section
@@ -2550,6 +2652,22 @@ arg   "tabular-feature toggle-line-right"
 \end_inset
 
  adds a line at the right side of the current cell / row or of a selection
+\change_inserted -712698321 1554289731
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted -712698321 1554289910
+\begin_inset Info
+type  "icon"
+arg   "tabular-feature set-border-lines"
+\end_inset
+
+ adds a border around the currently selected cells
+\change_unchanged
+
 \end_layout
 
 \begin_layout Labeling
@@ -2572,6 +2690,23 @@ arg   "tabular-feature unset-all-lines"
 
  deletes all lines of the current or selected cells - if the current cell
  is not a multicolumn cell this also affects the current row and column
+\change_inserted -712698321 1554289920
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted -712698321 1554292586
+\begin_inset Info
+type  "icon"
+arg   "tabular-feature reset-formal-default"
+\end_inset
+
+ If using a formal table, this resets the border to its default (only horizontal
+ lines in top and bottom rows)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Labeling
@@ -2776,6 +2911,7 @@ reference "sec:FloatIntroduction"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -11166,6 +11302,7 @@ Table ! Linebreaks
 \noindent
 \begin_inset Float table
 placement H
+alignment document
 wide false
 sideways false
 status open
@@ -11368,6 +11505,7 @@ reference "tab:Table-with-and"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -11843,6 +11981,7 @@ Multicolumns ! Calculations
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -12037,6 +12176,8 @@ reference "tab:Table-without-half"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -14733,7 +14874,19 @@ formal
 \end_inset
 
 .
- To make a table a formal table use the option 
+ To make a table a formal table
+\change_inserted -712698321 1554290084
+, select the table style 
+\begin_inset Quotes eld
+\end_inset
+
+Formal Table
+\begin_inset Quotes erd
+\end_inset
+
+ in the Table Creation dialog or
+\change_unchanged
+ use the option 
 \family sans
 Formal
 \family default
@@ -14741,12 +14894,21 @@ Formal
 \family sans
 Borders
 \family default
- tab of the table dialog.
+ tab of the table dialog
+\change_inserted -712698321 1554290131
+ (if you additionally check the option 
+\family sans
+Use Default Formal Style
+\family default
+, the border lines are adapted to a sensible default)
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -14761,7 +14923,13 @@ name "tab:Example-booktabs-table"
 
 \end_inset
 
-Example booktabs-table
+Example 
+\change_deleted -712698321 1554292310
+booktabs-
+\change_inserted -712698321 1554292311
+formal 
+\change_unchanged
+table
 \end_layout
 
 \end_inset
@@ -14775,8 +14943,8 @@ Example booktabs-table
 <lyxtabular version="3" rows="8" columns="4">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
@@ -14829,6 +14997,8 @@ Chip
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted -712698321 1554290161
 \begin_inset ERT
 status collapsed
 
@@ -14854,6 +15024,8 @@ cmidrule(l){3-4}
 
 \end_inset
 
+
+\change_unchanged
 Detector thickness in µm
 \end_layout
 
@@ -14897,7 +15069,7 @@ Edge angle in °
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" toplinertrim="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -14906,7 +15078,7 @@ Edge angle in °
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" toplineltrim="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -15010,6 +15182,8 @@ MTF at
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted -712698321 1554290260
 \begin_inset ERT
 status collapsed
 
@@ -15022,6 +15196,8 @@ cmidrule[2pt](l{10pt}){1-1}
 
 \end_inset
 
+
+\change_unchanged
 LSF-spatial resolution
 \end_layout
 
@@ -15245,6 +15421,8 @@ reference "cha:Units-available-in"
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1554290929
 Lines that do not span all table columns can be created by setting a table
  line for multicolumn cells.
  \SpecialChar LyX
@@ -15256,6 +15434,37 @@ cmidrule
 \series default
  to create this line.
  Its full scheme is
+\change_inserted -712698321 1554291959
+As in table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Example-booktabs-table"
+
+\end_inset
+
+, formal tables often use shortened lines to group columns.
+ This can be done in the borders widget of the table dialog.
+ With formal tables, the top and bottom borders have to small offset lines
+ to the left and the right.
+ Clicking on these will trim the line respectively.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1554291403
+If you need to adjust the length of the trimming or the height of the rules,
+ you have to resort to \SpecialChar TeX
+ Code.
+ The respective command (which is also used for the trimmed mid rules) is
+ this:
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -15267,6 +15476,8 @@ cmidrule[height](trim){startcol-endcol}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1554292020
 The options of 
 \series bold
 
@@ -15287,6 +15498,8 @@ s can manually be created by inserting the command as \SpecialChar TeX
  Code as the first
  cell entry of the first cell of a row.
  The line is then drawn in the output above the current row.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -15347,10 +15560,63 @@ trimwidth
 \begin_inset space \thinspace{}
 \end_inset
 
-em.
+em
+\change_inserted -712698321 1554291561
+ (this is what is done if you use trimming from the dialog)
+\change_unchanged
+.
+\change_inserted -712698321 1554292039
+
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -712698321 1554292207
+The 
+\emph on
+height
+\emph default
+ option of 
+\series bold
+
+\backslash
+cmidrule
+\series default
+ is currently not supported by \SpecialChar LyX
+, and neither are the 
+\emph on
+trimwidth
+\emph default
+ parameters.
+ If you need this you can manually insert a 
+\series bold
+
+\backslash
+cmidrule
+\series default
+ with the respective settings as \SpecialChar TeX
+ Code as the first cell entry of the first
+ cell of a row.
+ The line is then drawn in the output above the current row.
+ Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Special-booktabs-table"
+
+\end_inset
+
+ exemplifies this (in the sixth row).
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -712698321 1554291078
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -15370,6 +15636,8 @@ reference "tab:Example-booktabs-table"
 
 \begin_layout Standard
 
+\change_deleted -712698321 1554291077
+
 \series bold
 
 \backslash
@@ -15379,10 +15647,14 @@ cmidrule(l){3-4}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1554291077
 at the beginning of the second row and
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1554291077
 
 \series bold
 
@@ -15391,24 +15663,42 @@ cmidrule[2pt](l{10pt}){1-1}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1554291077
 in the sixth row.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1554292212
 \begin_inset VSpace bigskip
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-You might want to have overlapping 
+You 
+\change_inserted -712698321 1554291573
+also 
+\change_unchanged
+might want to have overlapping 
 \series bold
 
 \backslash
 cmidrule
 \series default
-s as in in Table
+s as 
+\change_deleted -712698321 1554296804
+in
+\change_inserted -712698321 1554296808
+exemplified as well
+\change_unchanged
+ in Table
 \begin_inset space ~
 \end_inset
 
@@ -15419,6 +15709,11 @@ reference "tab:Special-booktabs-table"
 
 \end_inset
 
+
+\change_inserted -712698321 1554291601
+, even though this is considered bad style (so only use it if you really
+ need to)
+\change_unchanged
 .
  This can be achieved with the \SpecialChar TeX
  Code command
@@ -15449,12 +15744,16 @@ reference "tab:Special-booktabs-table"
 
 \begin_layout Standard
 
+\change_deleted -712698321 1554291798
+
 \series bold
 
 \backslash
 cmidrule(r){2-2}
 \backslash
 cmidrule(l){3-4}
+\change_unchanged
+
 \backslash
 morecmidrules
 \backslash
@@ -15467,10 +15766,14 @@ The command for the sixth row is
 
 \begin_layout Standard
 
+\change_deleted -712698321 1554291810
+
 \series bold
 
 \backslash
 midrule
+\change_unchanged
+
 \backslash
 morecmidrules
 \backslash
@@ -15531,6 +15834,7 @@ status collapsed
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -15545,7 +15849,17 @@ name "tab:Special-booktabs-table"
 
 \end_inset
 
-Special booktabs-table
+Special 
+\change_inserted -712698321 1554292295
+(ugly) 
+\change_deleted -712698321 1554292304
+booktabs
+\change_inserted -712698321 1554292305
+formal 
+\change_deleted -712698321 1554292300
+-
+\change_unchanged
+table
 \end_layout
 
 \end_inset
@@ -15559,9 +15873,9 @@ Special booktabs-table
 <lyxtabular version="3" rows="8" columns="4">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
@@ -15572,7 +15886,7 @@ System
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" bottomlinertrim="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -15613,6 +15927,8 @@ Chip
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted -712698321 1554291732
 \begin_inset ERT
 status collapsed
 
@@ -15639,6 +15955,8 @@ cmidrule(l){3-4}
 \end_inset
 
 
+\change_unchanged
+
 \begin_inset ERT
 status collapsed
 
@@ -15653,7 +15971,7 @@ morecmidrules
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -15678,7 +15996,7 @@ Detector thickness in µm
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" toplineltrim="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -15687,7 +16005,7 @@ Detector thickness in µm
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -15834,13 +16152,17 @@ morecmidrules
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-cmidrule{3-4}
+cmidrule
+\change_inserted -712698321 1554291896
+[2pt](l{7pt})
+\change_unchanged
+{3-4}
 \end_layout
 
 \end_inset
@@ -16837,6 +17159,7 @@ Color ! for Table Cells
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -17458,6 +17781,7 @@ Style
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -17955,6 +18279,7 @@ rowcolors{1}{white}{lightgray}
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -18134,6 +18459,7 @@ hline]{1}{lightgray}{cyan}
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -18499,6 +18825,7 @@ If you want to have several colors, define more column formats.
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -18732,6 +19059,7 @@ arrayrulecolor{black}}
 
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -18897,6 +19225,7 @@ reference "tab:Table-with-colored"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -19115,6 +19444,8 @@ reference "tab:Table-with-different-hor"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -19743,6 +20074,8 @@ After this command insert the cell content the normal way and end the cell
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -20527,6 +20860,7 @@ cells were rotated by 45
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -20733,6 +21067,8 @@ reference "tab:Table-with-rotated-multi"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -21605,6 +21941,7 @@ reference "tab:Vertical-alignment-of"
 \noindent
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -21633,6 +21970,8 @@ Vertical alignment of text with large font sizes.
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -21747,6 +22086,8 @@ Huger
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -22005,6 +22346,7 @@ Separator
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -22092,6 +22434,7 @@ heading
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -22295,6 +22638,7 @@ reference "tab:Table-align-operator"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -22938,6 +23282,7 @@ for the cells in the second column.
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -23188,6 +23533,8 @@ arrayrulewidth}{1.5pt}
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -23471,6 +23818,8 @@ arrayrulewidth 0.4pt}}
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -23692,6 +24041,8 @@ for the other columns.
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -23873,6 +24224,7 @@ arydshln
 \begin_layout Standard
 \begin_inset Float table
 placement H
+alignment document
 wide false
 sideways false
 status open
@@ -24504,6 +24856,7 @@ color partial horizontal, dashed lines yellow
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -25548,6 +25901,7 @@ Floats ! Algorithms
 \begin_layout Standard
 \begin_inset Float algorithm
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -27932,6 +28286,8 @@ Note:
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways true
 status open
@@ -28097,6 +28453,8 @@ reference "tab:Two-subtables-side"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -28126,6 +28484,8 @@ Two subtables placed side by side.
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -28220,6 +28580,8 @@ e
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -28322,6 +28684,8 @@ test
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -28348,6 +28712,8 @@ Two subtables placed one above the other.
 \begin_layout Plain Layout
 \align center
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -28426,6 +28792,8 @@ test
 \begin_layout Plain Layout
 \align center
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -28607,6 +28975,8 @@ Width
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -29199,6 +29569,7 @@ The caption format is changed only for this example.
 \begin_layout Standard
 \begin_inset Float figure
 placement !p
+alignment document
 wide false
 sideways false
 status open
@@ -29259,6 +29630,7 @@ on}
 \begin_layout Standard
 \begin_inset Float table
 placement !p
+alignment document
 wide false
 sideways false
 status open
@@ -29560,6 +29932,8 @@ reference "tab:A-standard-table"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -29703,6 +30077,8 @@ c & d
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -30589,6 +30965,8 @@ FigBesBeg
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -30661,6 +31039,8 @@ TabBesBeg
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -30936,6 +31316,8 @@ sidecaptionvpos{figure}{c}
 
 
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -31008,6 +31390,8 @@ TabBesBeg[5]
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -32635,6 +33019,7 @@ usepackage{ftnright}
 \begin_layout Standard
 \begin_inset Float figure
 placement !h
+alignment document
 wide false
 sideways false
 status open
@@ -32702,6 +33087,7 @@ Standard footnote placement in two-column documents.
 \begin_layout Standard
 \begin_inset Float figure
 placement !h
+alignment document
 wide false
 sideways false
 status open
@@ -32844,6 +33230,8 @@ in \SpecialChar TeX
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -40596,6 +40984,7 @@ Include
 \begin_inset CommandInset include
 LatexCommand include
 filename "DummyDocument1.lyx"
+literal "true"
 
 \end_inset
 
@@ -40708,6 +41097,7 @@ Input
 \begin_inset CommandInset include
 LatexCommand input
 filename "DummyDocument2.lyx"
+literal "true"
 
 \end_inset
 
@@ -40763,6 +41153,7 @@ Here is a child document inserted as Verbatim:
 \begin_inset CommandInset include
 LatexCommand verbatiminput
 filename "DummyTextDocument.txt"
+literal "true"
 
 \end_inset
 
@@ -40778,6 +41169,7 @@ Mark spaces in output
 \begin_inset CommandInset include
 LatexCommand verbatiminput*
 filename "DummyTextDocument.txt"
+literal "true"
 
 \end_inset
 
@@ -41834,6 +42226,7 @@ reference "lst:file-listing"
 LatexCommand lstinputlisting
 filename "EmbeddedObjects.lyx"
 lstparams "breaklines=true,caption={Lines 10 - 15 of this LyX file},extendedchars=true,firstline=10,label={lst:file-listing},language={[LaTeX]TeX},lastline=15"
+literal "true"
 
 \end_inset
 
@@ -42050,6 +42443,7 @@ reference "tab:Units"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open

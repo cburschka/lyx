@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 568
+\lyxformat 571
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -141,6 +141,7 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
+\tablestyle default
 \tracking_changes true
 \output_changes false
 \html_math_output 0
@@ -21287,7 +21288,11 @@ Insert\SpecialChar menuseparator
 Table
 \family default
 .
- A dialog will appear, asking you for the number of rows and columns.
+ A dialog will appear, asking you for the number of rows and columns
+\change_inserted -712698321 1554288358
+, and you can select a specific (border) style
+\change_unchanged
+.
  The default table has lines around any cell and the first row appears separated
  from the rest of the table.
  This separation appears due to a double line: The cells of the first row
@@ -21502,6 +21507,87 @@ C
 \end_inset
 
 
+\change_inserted -712698321 1554288479
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1554288540
+This corresponds to the 
+\begin_inset Quotes eld
+\end_inset
+
+Grid with Head
+\begin_inset Quotes erd
+\end_inset
+
+ table style listed in the style selection.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1554288387
+Other available styles include:
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1554288551
+A 
+\begin_inset Quotes eld
+\end_inset
+
+simple grid
+\begin_inset Quotes erd
+\end_inset
+
+ which looks line the above table, but without the first row being separated
+ via double line,
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1554288764
+a border-less table with no lines at all,
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1554289543
+and a so-called 
+\begin_inset Quotes eld
+\end_inset
+
+formal table
+\begin_inset Quotes erd
+\end_inset
+
+ as often used in professional publishing with horizontal lines only and
+ bold top/bottom lines (see 
+\emph on
+Embedded Objects
+\emph default
+ manual, section 
+\emph on
+Formal Tables
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1554288823
+The default style used in the dialog as well as the style used by the toolbar
+ button can be changed in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Text Layout
+\family default
+.
+ So if the default style above is not the one you need, you should alter
+ this setting.
 \end_layout
 
 \begin_layout Subsection
@@ -45063,6 +45149,24 @@ Use justification in \SpecialChar LyX
  justifies the text on screen.
  This only affects the text inside \SpecialChar LyX
  not in the output.
+\change_inserted -712698321 1554288869
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1554288904
+The 
+\family sans
+Default Style
+\family default
+ setting in 
+\family sans
+Table Style
+\family default
+ lets you select which style newly inserted tables should use by default.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
