@@ -2642,9 +2642,12 @@ dist_ui_DATA = \
 
 tabletemplatesdir = $(pkgdatadir)/tabletemplates
 dist_tabletemplates_DATA = \
-	tabletemplates/Formal.lyx \
-	tabletemplates/Formal_1x1.lyx \
-	tabletemplates/Formal_1x2.lyx \
+	tabletemplates/Formal_with_Footline.lyx \
+	tabletemplates/Formal_with_Footline_1x1.lyx \
+	tabletemplates/Formal_with_Footline_1x2.lyx \
+	tabletemplates/Formal_without_Footline.lyx \
+	tabletemplates/Formal_without_Footline_1x1.lyx \
+	tabletemplates/Formal_without_Footline_1x2.lyx \
 	tabletemplates/Grid_with_Head.lyx \
 	tabletemplates/Grid_with_Head_1x1.lyx \
 	tabletemplates/Grid_with_Head_1x2.lyx \
