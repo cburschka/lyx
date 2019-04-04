@@ -101,6 +101,7 @@ Format 4
 #  -: "Shift-Command-`"              # Activate the previous open window in the frontmost application
 #  -: "Option-Command-`"             # Move focus to the window drawer
 #  +: "Command- - (minus)"           # Decrease the size of the selected item
+\bind "C-0"                          "buffer-zoom"
 \bind "C-minus"                      "buffer-zoom-out"
 #  +: "Shift-Command-="              # Increase the size of the selected item
 \bind "C-plus"                       "buffer-zoom-in"
