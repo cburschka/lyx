@@ -39,8 +39,6 @@ Format LaTeX feature                        LyX feature
 
 General
 
-* Consider layouts in modules that do not have a preamble definition (see #11259).
-
 * Use the language information provided by Language.cpp and the languages file (for babel/lyx/polyglossia name, quote style etc.)
   instead of hardcoding this information in Preamble.cpp.
 

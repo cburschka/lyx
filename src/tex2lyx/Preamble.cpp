@@ -373,6 +373,12 @@ bool Preamble::isPackageUsed(string const & package) const
 }
 
 
+bool Preamble::isPackageAutoLoaded(string const & package) const
+{
+	return auto_packages.find(package) != auto_packages.end();
+}
+
+
 vector<string> Preamble::getPackageOptions(string const & package) const
 {
 	map<string, vector<string> >::const_iterator it = used_packages.find(package);
@@ -390,6 +396,10 @@ void Preamble::registerAutomaticallyLoadedPackage(std::string const & package)
 
 void Preamble::addModule(string const & module)
 {
+	for (auto const & m : used_modules) {
+		if (m == module)
+			return;
+	}		
 	used_modules.push_back(module);
 }
 
@@ -998,8 +1008,10 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (name == "amsmath" || name == "amssymb" || name == "cancel" ||
 	         name == "esint" || name == "mhchem" || name == "mathdots" ||
 	         name == "mathtools" || name == "stackrel" ||
-		 name == "stmaryrd" || name == "undertilde")
+		 name == "stmaryrd" || name == "undertilde") {
 		h_use_packages[name] = "2";
+		registerAutomaticallyLoadedPackage(name);
+	}
 
 	else if (name == "babel") {
 		h_language_package = "default";

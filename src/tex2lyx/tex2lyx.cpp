@@ -321,17 +321,18 @@ bool checkModule(string const & name, bool command)
 	// Cache to avoid slowdown by repated searches
 	static set<string> failed[2];
 
-	// Only add the module if the command was actually defined in the LyX preamble
+	// Record whether the command was actually defined in the LyX preamble
 	bool theorem = false;
+	bool preamble_def = true;
 	if (command) {
 		if (possible_textclass_commands.find('\\' + name) == possible_textclass_commands.end())
-			return false;
+			preamble_def = false;
 	} else {
 		if (possible_textclass_environments.find(name) == possible_textclass_environments.end()) {
 			if (possible_textclass_theorems.find(name) != possible_textclass_theorems.end())
 				theorem = true;
 			else
-				return false;
+				preamble_def = false;
 		}
 	}
 	if (failed[command].find(name) != failed[command].end())
@@ -341,12 +342,16 @@ bool checkModule(string const & name, bool command)
 	LayoutFile const & baseClass = LayoutFileList::get()[textclass.name()];
 
 	// Try to find a module that defines the command.
-	// Only add it if the definition can be found in the preamble of the
-	// style that corresponds to the command. This is a heuristic and
-	// different from the way how we parse the builtin commands of the
-	// text class (in that case we only compare the name), but it is
-	// needed since it is not unlikely that two different modules define a
+	// For commands with preamble definitions we prefer modules where the definition
+	// can be found in the preamble of the style that corresponds to the command. 
+	// For others we check whether the command or module requires a package that is loaded
+	// in the tex file and use a style with the respective command.
+	// This is a heuristic and different from the way how we parse the builtin
+	// commands of the text class (in that case we only compare the name), 
+	// but it is needed since it is not unlikely that two different modules define a
 	// command with the same name.
+	string found_module;
+	vector<string> potential_modules;
 	ModuleMap::iterator const end = modules.end();
 	for (ModuleMap::iterator it = modules.begin(); it != end; ++it) {
 		string const module = it->first;
@@ -358,53 +363,102 @@ bool checkModule(string const & name, bool command)
 			continue;
 		DocumentClassConstPtr c = it->second;
 		Layout const * layout = findLayoutWithoutModule(*c, name, command);
-		InsetLayout const * insetlayout = layout ? 0 :
+		InsetLayout const * insetlayout = layout ? nullptr :
 			findInsetLayoutWithoutModule(*c, name, command);
 		docstring dpre;
-		if (layout)
+		std::set<std::string> cmd_reqs;
+		bool found_style = false;
+		if (layout) {
+			found_style = true;
 			dpre = layout->preamble();
-		else if (insetlayout)
+			std::set<std::string> lreqs = layout->requires();
+			if (!lreqs.empty())
+				cmd_reqs.insert(lreqs.begin(), lreqs.end());
+		} else if (insetlayout) {
+			found_style = true;
 			dpre = insetlayout->preamble();
-		if (dpre.empty())
+			std::set<std::string> lreqs = insetlayout->requires();
+			if (!lreqs.empty())
+				cmd_reqs.insert(lreqs.begin(), lreqs.end());
+		}
+		if (dpre.empty() && preamble_def)
 			continue;
-		bool add = false;
-		if (command) {
-			FullCommand const & cmd =
-				possible_textclass_commands['\\' + name];
-			if (dpre.find(cmd.def) != docstring::npos)
-				add = true;
-		} else if (theorem) {
-			FullCommand const & thm =
-				possible_textclass_theorems[name];
-			if (dpre.find(thm.def) != docstring::npos)
-				add = true;
-		} else {
-			FullEnvironment const & env =
-				possible_textclass_environments[name];
-			if (dpre.find(env.beg) != docstring::npos &&
-			    dpre.find(env.end) != docstring::npos)
-				add = true;
+		bool const package_cmd = dpre.empty();
+		bool match_req = false;
+		if (package_cmd) {
+			std::set<std::string> mreqs = it->second->requires();
+			if (!mreqs.empty())
+				cmd_reqs.insert(mreqs.begin(), mreqs.end());
+			for (auto const & pack : cmd_reqs) {
+				// If a requirement of the module matches a used package
+				// we load the module except if we have an auto-loaded package
+				// which is only required generally by the module, and the module
+				// does not provide the [inset]layout we are looking for.
+				// This heuristics should
+				// * load modules if the provide a style we don't have in the class
+				// * load modules that provide a package support generally (such as fixltx2e)
+				// * not unnecessarily load modules just because they require a package which we
+				//   load anyway.
+				if (preamble.isPackageUsed(pack)
+				    && (found_style || !preamble.isPackageAutoLoaded(pack))) {
+				    if (found_style)
+					    match_req = true;
+				    else		
+					    potential_modules.push_back(module);
+				    break;
+				}
+			}
+		}
+		bool add = match_req;
+		if (preamble_def) {
+			if (command) {
+				FullCommand const & cmd =
+					possible_textclass_commands['\\' + name];
+				if (dpre.find(cmd.def) != docstring::npos)
+					add = true;
+			} else if (theorem) {
+				FullCommand const & thm =
+					possible_textclass_theorems[name];
+				if (dpre.find(thm.def) != docstring::npos)
+					add = true;
+			} else {
+				FullEnvironment const & env =
+					possible_textclass_environments[name];
+				if (dpre.find(env.beg) != docstring::npos &&
+				    dpre.find(env.end) != docstring::npos)
+					add = true;
+			}
 		}
 		if (add) {
-			vector<string> v;
-			LayoutModuleList mods;
-			// addModule is necessary in order to catch required modules
-			// as well (see #11156)
-			if (!addModule(module, baseClass, mods, v))
+			found_module = module;
+			break;
+		}
+	}
+	if (found_module.empty()) {
+		// take one of the second row
+		if (!potential_modules.empty())
+			found_module = potential_modules.front();  
+	}
+		
+	if (!found_module.empty()) {
+		vector<string> v;
+		LayoutModuleList mods;
+		// addModule is necessary in order to catch required modules
+		// as well (see #11156)
+		if (!addModule(found_module, baseClass, mods, v))
+			return false;
+		for (auto const & mod : mods) {
+			if (!used_modules.moduleCanBeAdded(mod, &baseClass))
 				return false;
-			for (auto const & mod : mods) {
-				if (!used_modules.moduleCanBeAdded(mod, &baseClass))
-					return false;
-				FileName layout_file = libFileSearch("layouts", mod, "module");
-				if (textclass.read(layout_file, TextClass::MODULE)) {
-					used_modules.push_back(mod);
-					// speed up further searches:
-					// the module does not need to be checked anymore.
-					ModuleMap::iterator const it = modules.find(mod);
-					if (it != modules.end())
-						modules.erase(it);
-					return true;
-				}
+			FileName layout_file = libFileSearch("layouts", mod, "module");
+			if (textclass.read(layout_file, TextClass::MODULE)) {
+				used_modules.push_back(mod);
+				// speed up further searches:
+				// the module does not need to be checked anymore.
+				ModuleMap::iterator const it = modules.find(mod);
+				if (it != modules.end())
+					modules.erase(it);
+				return true;
 			}
 		}
 	}
