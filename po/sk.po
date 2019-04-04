@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-04-03 18:42+0200\n"
-"PO-Revision-Date: 2019-04-03 16:45+0000\n"
+"POT-Creation-Date: 2019-04-04 19:39+0200\n"
+"PO-Revision-Date: 2019-04-04 18:16+0000\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -6973,6 +6973,11 @@ msgstr "Dôkaz."
 msgid "Title and Preamble Hacks"
 msgstr "Kúzla v titule a v preambule"
 
+#: lib/layouts/InStar.module:3 lib/layouts/fix-cm.module:3
+#: lib/layouts/fixltx2e.module:3 lib/layouts/minimalistic.module:3
+msgid "Fixes and Hacks"
+msgstr "Nápravy a Heky"
+
 #: lib/layouts/InStar.module:12
 msgid ""
 "Provides two new styles: 1. An 'In Preamble' style that puts whatever is "
@@ -8963,6 +8968,10 @@ msgstr "Poďakovania."
 msgid "Algorithm2e"
 msgstr "Algorithm2e"
 
+#: lib/layouts/algorithm2e.module:3
+msgid "Floats"
+msgstr "Plávajúce objekty"
+
 #: lib/layouts/algorithm2e.module:7
 msgid ""
 "Use the algorithm2e package for algorithm floats rather than LyX's home-"
@@ -10076,6 +10085,10 @@ msgstr "Kniha (Štandardná trieda)"
 #: lib/layouts/braille.module:2
 msgid "Braille"
 msgstr "Braille"
+
+#: lib/layouts/braille.module:3
+msgid "Accessibility"
+msgstr "Prístupnosť"
 
 #: lib/layouts/braille.module:6
 msgid ""
@@ -11424,6 +11437,14 @@ msgstr "Internet"
 msgid "If content is 'url', email becomes an Internet address"
 msgstr "Keď obsah je 'url', e-mail sa zmení na internetovú adresu"
 
+#: lib/layouts/endnotes.module:2
+msgid "Endnotes"
+msgstr "Koncové Poznámky"
+
+#: lib/layouts/endnotes.module:3 lib/layouts/foottoend.module:3
+msgid "Foot- and Endnotes"
+msgstr "Poznámky pod čiarou a na Konci"
+
 #: lib/layouts/endnotes.module:2 lib/layouts/endnotes.module:13
 msgid "Endnote"
 msgstr "Koncová poznámka"
@@ -11455,6 +11476,10 @@ msgstr "Heslá:"
 #: lib/layouts/enumitem.module:2
 msgid "Customisable Lists (enumitem)"
 msgstr "Prispôsobilé listiny (enumitem)"
+
+#: lib/layouts/enumitem.module:3 lib/layouts/paralist.module:3
+msgid "List Enhancements"
+msgstr "Zoznam Rozšírení"
 
 #: lib/layouts/enumitem.module:6
 msgid ""
@@ -11887,8 +11912,8 @@ msgstr ""
 "http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
 
 #: lib/layouts/fixltx2e.module:2
-msgid "Fix LaTeX"
-msgstr "Upraviť LaTeX"
+msgid "Fix LaTeX (Obsolete)"
+msgstr "Zafixovať LaTeX (zastaralé)"
 
 #: lib/layouts/fixltx2e.module:10
 msgid ""
@@ -11910,6 +11935,11 @@ msgstr ""
 #: lib/layouts/fixme.module:2
 msgid "FiXme"
 msgstr "FiXme"
+
+#: lib/layouts/fixme.module:3 lib/layouts/pdfcomment.module:3
+#: lib/layouts/pdfform.module:3 lib/layouts/todonotes.module:3
+msgid "Annotations"
+msgstr "Anotácie"
 
 #: lib/layouts/fixme.module:11
 msgid ""
@@ -12641,6 +12671,11 @@ msgstr "Banka riadok F:"
 msgid "GraphicBoxes"
 msgstr "Rámčeky: Grafické"
 
+#: lib/layouts/graphicboxes.module:3 lib/layouts/sectionbox.module:3
+#: lib/layouts/tcolorbox.module:3 lib/layouts/varwidth.module:3
+msgid "Boxes"
+msgstr "Rámčeky"
+
 #: lib/layouts/graphicboxes.module:5
 msgid "Boxes to scale and rotate its contents"
 msgstr "Rámček na rozmer a rotáciu jeho obsahu"
@@ -12704,6 +12739,11 @@ msgstr "Točiaci uhol v stupňoch (v protismere hodín)"
 #: lib/layouts/hanging.module:2 lib/layouts/hanging.module:16
 msgid "Hanging"
 msgstr "Visiaci odstavec"
+
+#: lib/layouts/hanging.module:3 lib/layouts/initials.module:3
+#: lib/layouts/shapepar.module:3
+msgid "Paragraph Styles"
+msgstr "Štýly Odstavca"
 
 #: lib/layouts/hanging.module:6
 msgid ""
@@ -12873,7 +12913,7 @@ msgstr "Bodová listina"
 
 #: lib/layouts/ijmpc.layout:314 lib/layouts/ijmpd.layout:317
 msgid "RomanList"
-msgstr "Rýmska listina"
+msgstr "Rímska listina"
 
 #: lib/layouts/ijmpc.layout:320 lib/layouts/ijmpd.layout:323
 msgid "Numbering Scheme"
@@ -13360,6 +13400,11 @@ msgstr "Titul v hlavičke"
 msgid "Rnw (knitr)"
 msgstr "Rnw (knitr)"
 
+#: lib/layouts/knitr.module:3 lib/layouts/noweb.module:3
+#: lib/layouts/sweave.module:3
+msgid "Literate Programming"
+msgstr "Gramotné programovanie"
+
 #: lib/layouts/knitr.module:6
 msgid ""
 "Uses the knitr package in R for dynamic report generation. This R package "
@@ -13370,11 +13415,6 @@ msgstr ""
 "pracoval musí byť balík R inštalovaný: install.packages('knitr'). "
 "Zaznamenajte si že závisí na R >= 2.14.1. Pre viac informácie pozri na "
 "http://yihui.name/knitr"
-
-#: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
-#: lib/layouts/sweave.module:6
-msgid "literate"
-msgstr "literárne"
 
 #: lib/layouts/knitr.module:20 lib/layouts/sweave.module:30
 msgid "Sweave Options"
@@ -13738,6 +13778,10 @@ msgstr "Riešenie #."
 msgid "Logical Markup"
 msgstr "Logické značkovanie"
 
+#: lib/layouts/logicalmkup.module:3 lib/layouts/soul.module:3
+msgid "Text Markup"
+msgstr "Textové Značkovanie"
+
 #: lib/layouts/logicalmkup.module:5
 msgid ""
 "Defines some character styles for logical markup: noun, emph, strong, and "
@@ -13745,10 +13789,6 @@ msgid ""
 msgstr ""
 "Definuje niektoré logické štýly znakov (logical markup): podstatné meno "
 "(noun), dôraz (emph), (silný dôraz) strong, kód (code)."
-
-#: lib/layouts/logicalmkup.module:5
-msgid "charstyles"
-msgstr "štýly znakov"
 
 #: lib/layouts/logicalmkup.module:11
 msgid "Noun"
@@ -13776,7 +13816,7 @@ msgstr "TUGboat"
 
 #: lib/layouts/maa-monthly.layout:3
 msgid "Mathematical Monthly article"
-msgstr "Mathematical Monthly článok"
+msgstr "Mesačník Matematiky článok"
 
 #: lib/layouts/maa-monthly.layout:64
 msgid "Abbreviated Title"
@@ -16817,13 +16857,6 @@ msgstr ""
 "Zahrňuje Kritérium, Algoritmus, Axióma, Podmienka, Poznámka, Notácia, Súhrn, "
 "Poďakovania, Záver, Fakt, Predpoklad, Prípad a Otázka v oboch formách "
 "(číslované/neočíslované)."
-
-#: lib/layouts/theorems-ams-extended.module:10
-#: lib/layouts/theorems-ams.module:9 lib/layouts/theorems-chap.module:9
-#: lib/layouts/theorems-sec.module:8 lib/layouts/theorems-starred.module:7
-#: lib/layouts/theorems-std.module:8
-msgid "theorems"
-msgstr "teorémy"
 
 #: lib/layouts/theorems-ams-extended.module:40
 msgid "Criterion \\thetheorem."
@@ -32870,7 +32903,7 @@ msgstr "Náhľad kódu"
 
 #: src/frontends/qt4/GuiViewSource.cpp:457
 msgid "%1[[preview format name]] Preview"
-msgstr "%1 Náhľad"
+msgstr "Náhľad: %1"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1535
 msgid "Close File"
