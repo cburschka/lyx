@@ -1,4 +1,5 @@
 #\DeclareLyXModule{Theorems (Numbered by Chapter)}
+#\DeclareCategory{Theorems}
 #DescriptionBegin
 #Numbers theorems and the like by chapter (i.e., the counter is reset at
 #each chapter start). Use this module only with document classes that provide a chapter
@@ -6,7 +7,6 @@
 #DescriptionEnd
 #Requires: theorems-std | theorems-ams
 #Excludes: theorems-sec
-#Category: theorems
 
 # Author: Richard Heck <rgheck@comcast.net>
 

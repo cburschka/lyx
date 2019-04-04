@@ -1,4 +1,5 @@
 #\DeclareLyXModule{Theorems (AMS-Extended)}
+#\DeclareCategory{Theorems}
 #DescriptionBegin
 #Defines some additional theorem environments for use with the
 #AMS theorems packages. Includes Criterion, Algorithm, Axiom,
@@ -7,7 +8,6 @@
 #forms.
 #DescriptionEnd
 #Requires: theorems-ams
-#Category: theorems
 
 # Original Author : David L. Johnson <dlj0@lehigh.edu>
 # Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>

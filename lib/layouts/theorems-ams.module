@@ -1,4 +1,5 @@
 #\DeclareLyXModule{Theorems (AMS)}
+#\DeclareCategory{Theorems}
 #DescriptionBegin
 #Defines theorem environments and the proof environment using the extended 
 #AMS machinery. Both numbered and unnumbered types are provided. By default, 
@@ -6,7 +7,6 @@
 #changed by loading one of the 'Theorems (Numbered by ...)' modules.
 #DescriptionEnd
 #Excludes: theorems-std | theorems-starred
-#Category: theorems
 
 # Original Author : David L. Johnson <dlj0@lehigh.edu>
 # Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>

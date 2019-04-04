@@ -31,12 +31,12 @@ namespace lyx {
  *  The requires and excludes are given in comments within the module file,
  *  which must begin roughly so:
  *   #\DeclareLyXModule{Theorems (By Section)}
+ *   #\DeclateCategory{Theorems}
  *   #DescriptionBegin
  *   #Numbers theorems and the like by section.
  *   #DescriptionEnd
  *   #Requires: theorems-std | theorems-ams
  *   #Excludes: theorems-chap
- *   #Category: theorems
  *  The description is used in the gui to give information to the user. The
  *  Requires, Excludes, and Category lines are read by the configuration script
  *  and written to a file lyxmodules.lst in the user configuration directory.

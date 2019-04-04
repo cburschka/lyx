@@ -2902,7 +2902,8 @@ void GuiDocument::updateModuleInfo()
 	if (!cat.empty()) {
 		if (!desc.empty())
 			desc += "\n";
-		desc += bformat(_("Category: %1$s."), cat);
+		desc += bformat(_("Category: %1$s."),
+				translateIfPossible(cat));
 	}
 
 	vector<string> pkglist = getPackageList(modName);

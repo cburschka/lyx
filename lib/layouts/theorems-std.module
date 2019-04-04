@@ -1,11 +1,11 @@
 #\DeclareLyXModule{Theorems}
+#\DeclareCategory{Theorems}
 #DescriptionBegin
 #Defines some theorem environments for use with non-AMS classes. By default, 
 #the theorems are numbered consecutively throughout the document. This can be
 #changed by loading one of the 'Theorems (Numbered by ...)' modules.
 #DescriptionEnd
 #Excludes: theorems-ams | theorems-starred
-#Category: theorems
 
 # Author: Richard Heck <rgheck@comcast.net>
 

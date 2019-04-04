@@ -8545,12 +8545,39 @@ A module must begin with a line like the following:
 \begin_layout LyX-Code
 #
 \backslash
-DeclareLyXModule[endnotes.sty]{Endnotes} 
+DeclareLyXModule[endnotes.sty]{Endnotes}
+\change_inserted -712698321 1554395911
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1554395924
+
+\size small
+#
+\backslash
+DeclareCategory{Foot- and Endnotes}
+\change_deleted -712698321 1554395911
+
+\size default
+ 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-The mandatory argument, in curly brackets, is the name of the module, as
- it should appear in 
+The mandatory argument
+\change_inserted -712698321 1554395956
+ of 
+\family typewriter
+
+\backslash
+DeclareLyXModule
+\change_unchanged
+
+\family default
+, in curly brackets, is the name of the module, as it should appear in 
 \begin_inset Flex Noun
 status collapsed
 
@@ -8598,10 +8625,28 @@ to
 \end_inset
 
 '.
+
+\change_inserted -712698321 1554396133
+ The 
+\family typewriter
+
+\backslash
+DeclareCategory
+\family default
+ declaration is not strictly mandatory, but you should add it, since it
+ is helpful to find the module.
+ Please have a look at the existing module categories and if appropriate,
+ use one of those.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-The module declaration should then be followed by lines like the following:
+The module 
+\change_inserted -712698321 1554395988
+and category 
+\change_unchanged
+declaration should then be followed by lines like the following:
 \begin_inset Foot
 status collapsed
 

@@ -1,9 +1,9 @@
 #\DeclareLyXModule[knitr->latex]{Rnw (knitr)}
+#\DeclareCategory{Literate Programming}
 #DescriptionBegin
 #Uses the knitr package in R for dynamic report generation. This R package has to be installed for this module to work: install.packages('knitr'). Note it depends on R >= 2.14.1.
 #For more info see http://yihui.name/knitr
 #DescriptionEnd
-#Category: literate
 #Excludes: lilypond | sweave
 
 Format 72

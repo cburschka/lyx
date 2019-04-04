@@ -1517,7 +1517,7 @@ def processModuleFile(file, filename, bool_docbook):
     remods = re.compile(b'\s*#\s*\\\\DeclareLyXModule\s*(?:\[([^]]*?)\])?{(.*)}')
     rereqs = re.compile(b'\s*#+\s*Requires: (.*)')
     reexcs = re.compile(b'\s*#+\s*Excludes: (.*)')
-    recaty = re.compile(b'\s*#+\s*Category: (.*)')
+    recaty = re.compile(b'\\s*#\\s*\\\\DeclareCategory{(.*)}\\s*$')
     redbeg = re.compile(b'\s*#+\s*DescriptionBegin\s*$')
     redend = re.compile(b'\s*#+\s*DescriptionEnd\s*$')
 
