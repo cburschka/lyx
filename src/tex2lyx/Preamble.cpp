@@ -944,11 +944,14 @@ void Preamble::handle_package(Parser &p, string const & name,
 				// perhaps in future others.
 				// Therefore keep the babel call as it is as the user might have
 				// reasons for it.
-				h_preamble << "\\usepackage[" << opts << "]{babel}\n";
+				string const babelcall = "\\usepackage[" + opts + "]{babel}\n";
+				if (!contains(h_preamble.str(), babelcall))
+					h_preamble << babelcall;
 			}
 			delete_opt(options, known_languages);
 		} else {
-			h_preamble << "\\usepackage{babel}\n";
+			if (!contains(h_preamble.str(), "\\usepackage{babel}\n"))
+				h_preamble << "\\usepackage{babel}\n";
 			explicit_babel = true;
 		}
 	}
@@ -1781,7 +1784,8 @@ void Preamble::parse(Parser & p, string const & forceclass,
 					ss << '*';
 				ss << '{' << name << '}' << opt1 << opt2
 				   << '{' << body << "}";
-				h_preamble << ss.str();
+				if (prefixIs(t.cs(), "renew") || !contains(h_preamble.str(), ss.str()))
+					h_preamble << ss.str();
 /*
 				ostream & out = in_preamble ? h_preamble : os;
 				out << "\\" << t.cs() << "{" << name << "}"
