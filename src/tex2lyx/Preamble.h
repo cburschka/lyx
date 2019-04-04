@@ -67,6 +67,8 @@ public:
 	///
 	bool isPackageUsed(std::string const & package) const;
 	///
+	bool isPackageAutoLoaded(std::string const & package) const;
+	///
 	std::vector<std::string>
 	getPackageOptions(std::string const & package) const;
 	/// Tell that \p package will be loaded automatically by LyX.

@@ -106,32 +106,8 @@ theorem.
 The proof is recognized as a builtin style provided by the text class.
 \end_layout
 
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-begin{lem}
-\end_layout
-
-\end_inset
-
- this is a lemma
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-end{lem}
-\end_layout
-
-\end_inset
-
- 
+\begin_layout Lemma
+this is a lemma
 \end_layout
 
 \begin_layout Theorem
