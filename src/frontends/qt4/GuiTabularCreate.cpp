@@ -130,8 +130,8 @@ void GuiTabularCreate::rowsChanged(int)
 
 void GuiTabularCreate::applyView()
 {
-	params_.first = rowsSB->value();
-	params_.second = columnsSB->value();
+	params_.first = ulong(rowsSB->value());
+	params_.second = ulong(columnsSB->value());
 }
 
 
@@ -140,6 +140,7 @@ bool GuiTabularCreate::initialiseParams(string const &)
 	params_.first  = 5;
 	params_.second = 5;
 	style_ = styleCO->itemData(styleCO->currentIndex()).toString();
+	changed();
 	return true;
 }
 
