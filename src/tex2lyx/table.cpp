@@ -128,7 +128,9 @@ class CellInfo {
 public:
 	CellInfo() : multi(CELL_NORMAL), align('n'), valign('n'),
 		     leftlines(0), rightlines(0), topline(false),
-		     bottomline(false), rotate(0), mrxnum(0) {}
+		     bottomline(false), topline_ltrim(false),
+		     topline_rtrim(false), bottomline_ltrim(false),
+		     bottomline_rtrim(false), rotate(0), mrxnum(0) {}
 	/// cell content
 	string content;
 	/// multicolumn flag
@@ -145,6 +147,14 @@ public:
 	bool topline;
 	/// do we have a line below?
 	bool bottomline;
+	/// Left trimming of top line
+	bool topline_ltrim;
+	/// Right trimming of top line
+	bool topline_rtrim;
+	/// Left trimming of bottom line
+	bool bottomline_ltrim;
+	/// Right trimming of top line
+	bool bottomline_rtrim;
 	/// how is the cell rotated?
 	int rotate;
 	/// width for multicolumn cells
@@ -601,14 +611,21 @@ bool parse_hlines(Parser & p, Token const & t, string & hlines,
 		hlines += "\\cline{" + p.verbatim_item() + '}';
 
 	else if (t.cs() == "cmidrule") {
-		// We cannot handle the \cmidrule(l){3-4} form
 		p.pushPosition();
 		p.skip_spaces(true);
-		bool const hasParentheses(p.getFullArg('(', ')').first);
-		p.popPosition();
-		if (hasParentheses)
+		// We do not support the optional height argument
+		if (p.hasOpt())
 			return false;
-		hlines += "\\cmidrule{" + p.verbatim_item() + '}';
+		// We support the \cmidrule(l){3-4} form but
+		// not the trim length parameters (l{<with>}r{<width>})
+		string const trim = p.getFullParentheseArg();
+		string const range = p.verbatim_item();
+		if (!trim.empty()) {
+			if (support::contains(trim, "{"))
+				return false;
+			hlines += "\\cmidrule" + trim + "{" + range + "}";
+		} else
+			hlines += "\\cmidrule{" + range + '}';
 	}
 
 	else if (t.cs() == "addlinespace") {
@@ -990,7 +1007,7 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 
 		for (int i = 0; i <= 2; i += 2) {
 			//cerr << "   reading from line string '" << dummy[i] << "'\n";
-			Parser p1(dummy[i]);
+			Parser p1(dummy[size_type(i)]);
 			while (p1.good()) {
 				Token t = p1.get_token();
 				//cerr << "read token: " << t << "\n";
@@ -1016,10 +1033,13 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 						handle_hline_below(rowinfo[row], cellinfo[row]);
 					}
 				} else if (t.cs() == "cline" || t.cs() == "cmidrule") {
-					if (t.cs() == "cmidrule")
+					string trim;
+					if (t.cs() == "cmidrule") {
 						booktabs = true;
+						trim = p1.getFullParentheseArg();
+					}
 					string arg = p1.verbatim_item();
-					//cerr << "read " << t.cs() << " arg: '" << arg << "'\n";
+					//cerr << "read " << t.cs() << " arg: '" << arg << "', trim: '" << trim << "'\n";
 					vector<string> cols;
 					split(arg, cols, '-');
 					cols.resize(2);
@@ -1056,9 +1076,25 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 						if (i == 0) {
 							rowinfo[row].topline = true;
 							cellinfo[row][col].topline = true;
+							if (support::contains(trim, 'l') && col == from) {
+								//rowinfo[row].topline_ltrim = true;
+								cellinfo[row][col].topline_ltrim = true;
+							}
+							else if (support::contains(trim, 'r') && col == to) {
+								//rowinfo[row].topline_rtrim = true;
+								cellinfo[row][col].topline_rtrim = true;
+							}
 						} else {
 							rowinfo[row].bottomline = true;
 							cellinfo[row][col].bottomline = true;
+							if (support::contains(trim, 'l') && col == from) {
+								//rowinfo[row].bottomline_ltrim = true;
+								cellinfo[row][col].bottomline_ltrim = true;
+							}
+							else if (support::contains(trim, 'r') && col == to) {
+								//rowinfo[row].bottomline_rtrim = true;
+								cellinfo[row][col].bottomline_rtrim = true;
+							}
 						}
 					}
 				} else if (t.cs() == "addlinespace") {
@@ -1559,7 +1595,11 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 			   << " valignment=\"" << verbose_valign(cell.valign)
 			   << "\""
 			   << write_attribute("topline", cell.topline)
+			   << write_attribute("toplineltrim", cell.topline_ltrim)
+			   << write_attribute("toplinertrim", cell.topline_rtrim)
 			   << write_attribute("bottomline", cell.bottomline)
+			   << write_attribute("bottomlineltrim", cell.bottomline_ltrim)
+			   << write_attribute("bottomlinertrim", cell.bottomline_rtrim)
 			   << write_attribute("leftline", cell.leftlines > 0)
 			   << write_attribute("rightline", cell.rightlines > 0)
 			   << write_attribute("rotate", cell.rotate)
