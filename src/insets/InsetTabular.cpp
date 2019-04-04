@@ -5572,6 +5572,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 	// disable these with multiple cells selected
 	case LFUN_INSET_INSERT:
 	case LFUN_TABULAR_INSERT:
+	case LFUN_TABULAR_STYLE_INSERT:
 	case LFUN_FLEX_INSERT:
 	case LFUN_FLOAT_INSERT:
 	case LFUN_FLOAT_WIDE_INSERT:

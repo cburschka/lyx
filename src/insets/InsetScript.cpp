@@ -281,6 +281,7 @@ bool InsetScript::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_PREVIEW_INSERT:
 	case LFUN_QUOTE_INSERT:
 	case LFUN_TABULAR_INSERT:
+	case LFUN_TABULAR_STYLE_INSERT:
 	case LFUN_WRAP_INSERT:
 		flag.setEnabled(false);
 		return true;
