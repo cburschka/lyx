@@ -1337,15 +1337,13 @@ void TeXOnePar(Buffer const & buf,
 	}
 
 	// Information about local language is stored as a font feature.
-	// If this is the last paragraph, and a local_font was set upon entering
-	// the inset and we're using "auto" or "default" encoding (and not
-	// compiling with LuaTeX), ensure the encoding is set back to the default
-	// encoding of the local language.
+	// If this is the last paragraph of the inset and a local_font was set upon entering
+	// and we are mixing encodings ("auto" or "default" and no XeTeX or LuaTeX),
+	// ensure the encoding is set back to the default encoding of the local language.
 	if (runparams.isLastPar && runparams_in.local_font != 0
 	    && runparams_in.encoding != runparams_in.local_font->language()->encoding()
 	    && (bparams.inputenc == "auto" || bparams.inputenc == "default")
-		&& runparams.flavor != OutputParams::LUATEX
-		&& runparams.flavor != OutputParams::DVILUATEX
+		&& !runparams.isFullUnicode()
 	   ) {
 		runparams_in.encoding = runparams_in.local_font->language()->encoding();
 		os << setEncoding(runparams_in.encoding->iconvName());
