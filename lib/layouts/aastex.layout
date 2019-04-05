@@ -36,6 +36,7 @@
 #                        - new environments for \altaffiltext and \tablenotetext
 # Version 1.5   26/11/12 - added mandatory argument for \altaffiltext
 # Version 1.6   23/01/15 - fix for the optional argument of \figcaption
+# Version 1.7   05/04/19 - Normalize layout name of \thebibliography
 
 # Note: aastex.cls was replaced by aastex6.cls (v.1 2016/02/16)
 # 	in the CTAN and TeXLive "aastex" package in march 2016.
@@ -407,7 +408,7 @@ Style MathLetters
 End
 
 
-Style References
+Style Bibliography
 	Margin		First_Dynamic
 	LatexType	Bib_Environment
 	LatexName	thebibliography
@@ -440,6 +441,10 @@ Style References
 	    Color latex
 	  EndFont
 	EndArgument
+End
+
+Style References
+	Obsoletedby	Bibliography
 End
 
 
