@@ -1,136 +1,159 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>ModulesUi</class>
- <widget class="QWidget" name="ModulesUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="ModulesUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>407</width>
-    <height>340</height>
+    <height>343</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item row="1" column="0" >
-    <widget class="QTextBrowser" name="infoML" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="Maximum" hsizetype="Expanding" >
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="maximumSize" >
-      <size>
-       <width>16777215</width>
-       <height>120</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>6</number>
      </property>
-     <property name="margin" >
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
       <number>0</number>
      </property>
      <item>
-      <layout class="QVBoxLayout" >
-       <property name="spacing" >
+      <layout class="QVBoxLayout">
+       <property name="spacing">
         <number>6</number>
        </property>
-       <property name="margin" >
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
-        <widget class="QLabel" name="availmodL" >
-         <property name="frameShape" >
+        <widget class="QLabel" name="availmodL">
+         <property name="frameShape">
           <enum>QFrame::NoFrame</enum>
          </property>
-         <property name="text" >
+         <property name="text">
           <string>A&amp;vailable:</string>
          </property>
-         <property name="buddy" >
+         <property name="buddy">
           <cstring>availableLV</cstring>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QTreeView" name="availableLV" >
-         <property name="rootIsDecorated" >
+        <widget class="QTreeView" name="availableLV">
+         <property name="rootIsDecorated">
           <bool>false</bool>
          </property>
         </widget>
        </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QLabel" name="findModulesLA">
+           <property name="text">
+            <string>&amp;Filter:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="moduleFilterBarL"/>
+         </item>
+        </layout>
+       </item>
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" >
-       <property name="spacing" >
+      <layout class="QVBoxLayout">
+       <property name="spacing">
         <number>6</number>
        </property>
-       <property name="margin" >
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
         <spacer>
-         <property name="orientation" >
+         <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
-         <property name="sizeHint" stdset="0" >
+         <property name="sizeType">
+          <enum>QSizePolicy::Minimum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
           <size>
            <width>51</width>
            <height>20</height>
           </size>
          </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Minimum</enum>
-         </property>
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="addPB" >
-         <property name="text" >
+        <widget class="QPushButton" name="addPB">
+         <property name="text">
           <string>A&amp;dd</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="deletePB" >
-         <property name="text" >
+        <widget class="QPushButton" name="deletePB">
+         <property name="text">
           <string>De&amp;lete</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="upPB" >
-         <property name="text" >
+        <widget class="QPushButton" name="upPB">
+         <property name="text">
           <string>&amp;Up</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="downPB" >
-         <property name="text" >
+        <widget class="QPushButton" name="downPB">
+         <property name="text">
           <string>Do&amp;wn</string>
          </property>
         </widget>
        </item>
        <item>
         <spacer>
-         <property name="orientation" >
+         <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
-         <property name="sizeHint" stdset="0" >
+         <property name="sizeHint" stdset="0">
           <size>
            <width>60</width>
            <height>16</height>
@@ -141,33 +164,58 @@
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" >
-       <property name="spacing" >
+      <layout class="QVBoxLayout">
+       <property name="spacing">
         <number>6</number>
        </property>
-       <property name="margin" >
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
-        <widget class="QLabel" name="selmodL" >
-         <property name="text" >
+        <widget class="QLabel" name="selmodL">
+         <property name="text">
           <string>S&amp;elected:</string>
          </property>
-         <property name="buddy" >
+         <property name="buddy">
           <cstring>selectedLV</cstring>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QListView" name="selectedLV" >
-         <property name="editTriggers" >
-          <set>QAbstractItemView::NoEditTriggers</set>
+        <widget class="QTreeView" name="selectedLV">
+         <property name="rootIsDecorated">
+          <bool>false</bool>
          </property>
         </widget>
        </item>
       </layout>
      </item>
     </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QTextBrowser" name="infoML">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>120</height>
+      </size>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
@@ -177,11 +225,10 @@
   <tabstop>deletePB</tabstop>
   <tabstop>upPB</tabstop>
   <tabstop>downPB</tabstop>
-  <tabstop>selectedLV</tabstop>
   <tabstop>infoML</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>

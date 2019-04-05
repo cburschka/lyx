@@ -264,7 +264,7 @@ public:
 	///
 	ModuleSelectionManager(QObject * parent,
 	                       QTreeView * availableLV,
-	                       QListView * selectedLV,
+	                       QTreeView * selectedLV,
 	                       QPushButton * addPB,
 	                       QPushButton * delPB,
 	                       QPushButton * upPB,
@@ -1523,6 +1523,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	modulesModule->availableLV->header()->setVisible(false);
 	setSectionResizeMode(modulesModule->availableLV->header(), QHeaderView::ResizeToContents);
 	modulesModule->availableLV->header()->setStretchLastSection(false);
+	modulesModule->selectedLV->header()->setVisible(false);
+	setSectionResizeMode(modulesModule->selectedLV->header(), QHeaderView::ResizeToContents);
+	modulesModule->selectedLV->header()->setStretchLastSection(false);
 	selectionManager =
 		new ModuleSelectionManager(this, modulesModule->availableLV,
 		                           modulesModule->selectedLV,
@@ -1530,11 +1533,34 @@ GuiDocument::GuiDocument(GuiView & lv)
 		                           modulesModule->deletePB,
 		                           modulesModule->upPB,
 		                           modulesModule->downPB,
-		                           availableModel(), selectedModel(), this);
+					   availableModel(), selectedModel(), this);
 	connect(selectionManager, SIGNAL(updateHook()),
 		this, SLOT(updateModuleInfo()));
 	connect(selectionManager, SIGNAL(selectionChanged()),
 		this, SLOT(modulesChanged()));
+	// The filter bar
+	filter_ = new FancyLineEdit(this);
+	filter_->setButtonPixmap(FancyLineEdit::Right, getPixmap("images/", "editclear", "svgz,png"));
+	filter_->setButtonVisible(FancyLineEdit::Right, true);
+	filter_->setButtonToolTip(FancyLineEdit::Right, qt_("Clear text"));
+	filter_->setAutoHideButton(FancyLineEdit::Right, true);
+	filter_->setPlaceholderText(qt_("All avail. modules"));
+	modulesModule->moduleFilterBarL->addWidget(filter_, 0);
+	modulesModule->findModulesLA->setBuddy(filter_);
+
+	connect(filter_, SIGNAL(rightButtonClicked()),
+		this, SLOT(resetModuleFilter()));
+	connect(filter_, SIGNAL(textEdited(QString)),
+		this, SLOT(moduleFilterChanged(QString)));
+	connect(filter_, SIGNAL(returnPressed()),
+		this, SLOT(moduleFilterPressed()));
+#if (QT_VERSION < 0x050000)
+	connect(filter_, SIGNAL(downPressed()),
+		modulesModule->availableLV, SLOT(setFocus()));
+#else
+	connect(filter_, &FancyLineEdit::downPressed,
+		modulesModule->availableLV, [=](){ focusAndHighlight(modulesModule->availableLV); });
+#endif
 
 
 	// PDF support
@@ -1719,6 +1745,52 @@ void GuiDocument::slotButtonBox(QAbstractButton * button)
 	default:
 		break;
 	}
+}
+
+
+void GuiDocument::filterModules(QString const & str)
+{
+	updateAvailableModules();
+	if (str.isEmpty())
+		return;
+
+	modules_av_model_.clear();
+	list<modInfoStruct> modInfoList = getModuleInfo();
+	// Sort names according to the locale
+	modInfoList.sort([](modInfoStruct const & a, modInfoStruct const & b) {
+			return 0 < b.name.localeAwareCompare(a.name);
+		});
+	int i = 0;
+	for (modInfoStruct const & m : modInfoList) {
+		if (m.name.contains(str, Qt::CaseInsensitive) || contains(m.id, fromqstr(str))) {
+			modules_av_model_.insertRow(i, m.name, m.id, m.description);
+			++i;
+		}
+	}
+}
+
+
+void GuiDocument::moduleFilterChanged(const QString & text)
+{
+	if (!text.isEmpty()) {
+		filterModules(filter_->text());
+		return;
+	}
+	filterModules(filter_->text());
+	filter_->setFocus();
+}
+
+
+void GuiDocument::moduleFilterPressed()
+{
+	filterModules(filter_->text());
+}
+
+
+void GuiDocument::resetModuleFilter()
+{
+	filter_->setText(QString());
+	filterModules(filter_->text());
 }
 
 
@@ -4693,6 +4765,8 @@ GuiDocument::modInfoStruct GuiDocument::modInfo(LyXModule const & mod)
 	modInfoStruct m;
 	m.id = mod.getID();
 	m.name = toqstr(translateIfPossible(from_utf8(mod.getName())));
+	m.category = mod.category().empty() ? qt_("Miscellaneous")
+					    : toqstr(translateIfPossible(from_utf8(mod.category())));
 	QString desc = toqstr(translateIfPossible(from_utf8(mod.getDescription())));
 	// Find the first sentence of the description
 	QTextBoundaryFinder bf(QTextBoundaryFinder::Sentence, desc);
@@ -4712,8 +4786,7 @@ void GuiDocument::loadModuleInfo()
 {
 	moduleNames_.clear();
 	for (LyXModule const & mod : theModuleList)
-		if (mod.category().substr(0, 8) != "Citation")
-			moduleNames_.push_back(modInfo(mod));
+		moduleNames_.push_back(modInfo(mod));
 }
 
 

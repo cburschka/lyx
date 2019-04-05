@@ -155,6 +155,9 @@ private Q_SLOTS:
 	void allPackagesAuto();
 	void allPackagesAlways();
 	void allPackagesNot();
+	void moduleFilterPressed();
+	void moduleFilterChanged(const QString & text);
+	void resetModuleFilter();
 private:
 	/// validate listings parameters and return an error message, if any
 	QString validateListingsParameters();
@@ -219,6 +222,9 @@ private:
 	/// selected modules
 	GuiIdListModel modules_sel_model_;
 
+	/// Module filter
+	FancyLineEdit * filter_;
+
 	/// return false if validate_listings_params returns error
 	bool isValid();
 
@@ -249,6 +255,7 @@ private:
 		QString name;
 		std::string id;
 		QString description;
+		QString category;
 	};
 	///
 	static modInfoStruct modInfo(LyXModule const & mod);
@@ -304,6 +311,8 @@ private:
 	bool isBiblatex() const;
 	///
 	void checkPossibleCiteEngines();
+	///
+	void filterModules(QString const & string);
 	///
 	BufferParams bp_;
 	/// List of names of available modules
