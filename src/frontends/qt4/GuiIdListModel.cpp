@@ -31,35 +31,35 @@ QVariant GuiIdListModel::data(QModelIndex const & index, int role) const
 	if (!rowIsValid(row))
 		return QVariant();
 	if (role == Qt::DisplayRole || role == Qt::EditRole)
-		return userData_[row].uiString;
+		return userData_[ulong(row)].uiString;
 	if (role == Qt::ToolTipRole) {
-		QString const ttstr = userData_[row].ttString.toString();
-		return !ttstr.isEmpty() ? ttstr : userData_[row].uiString;
+		QString const ttstr = userData_[ulong(row)].ttString.toString();
+		return !ttstr.isEmpty() ? ttstr : userData_[ulong(row)].uiString;
 	}
 	if (role == Qt::UserRole)
-		return userData_[row].idString;
+		return userData_[ulong(row)].idString;
 	return QVariant();
 }
 
 
-bool GuiIdListModel::setData (QModelIndex const & index,
+bool GuiIdListModel::setData(QModelIndex const & index,
 		const QVariant & value, int role)
 {
 	int const row = index.row();
 	if (!rowIsValid(row))
 		return false;
 	if (role == Qt::DisplayRole || role == Qt::EditRole) {
-		userData_[row].uiString = value;
+		userData_[ulong(row)].uiString = value;
 		dataChanged(index, index);
 		return true;
 	}
 	if (role == Qt::UserRole) {
-		userData_[row].idString = value;
+		userData_[ulong(row)].idString = value;
 		dataChanged(index, index);
 		return true;
 	}
 	if (role == Qt::ToolTipRole) {
-		userData_[row].ttString = value;
+		userData_[ulong(row)].ttString = value;
 		dataChanged(index, index);
 		return true;
 	}
@@ -77,7 +77,7 @@ bool GuiIdListModel::insertRows(int row, int count,
 		return false;
 	vector<OurData>::iterator it = userData_.begin() + row;
 	beginInsertRows(QModelIndex(), row, row + count - 1);
-	userData_.insert(it, count, OurData());
+	userData_.insert(it, ulong(count), OurData());
 	endInsertRows();
 	return true;
 }
@@ -122,7 +122,7 @@ QMap<int, QVariant> GuiIdListModel::itemData(QModelIndex const & index) const
 	if (!rowIsValid(row))
 		return QMap<int, QVariant>();
 	QMap<int, QVariant> qm = QAbstractListModel::itemData(index);
-	qm[Qt::UserRole] = userData_[row].idString;
+	qm[Qt::UserRole] = userData_[ulong(row)].idString;
 	return qm;
 }
 

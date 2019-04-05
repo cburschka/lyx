@@ -45,7 +45,7 @@ public:
 	//////////////////////////////////////////////////////////////////////
 	///
 	int rowCount(QModelIndex const & = QModelIndex()) const
-		{ return userData_.size(); }
+		{ return int(userData_.size()); }
 
 	///
 	virtual QVariant data(QModelIndex const & index,
