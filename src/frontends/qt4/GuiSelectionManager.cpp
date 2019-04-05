@@ -306,18 +306,19 @@ void GuiSelectionManager::deletePB_clicked()
 	if (selIdx.isEmpty())
 		return;
 	QModelIndex idx = selIdx.first();
-	selectedModel->removeRow(idx.row());
+
+	int const row = idx.row();
+	int nrows = selectedLV->model()->rowCount();
+
+	selectedModel->removeRow(row);
 	selectionChanged(); //signal
 
-	int nrows = selectedLV->model()->rowCount();
-	if (idx.row() == nrows) //was last item on list
-		idx = idx.sibling(idx.row() - 1, idx.column());
-
-	if (nrows > 1)
-		selectedLV->setCurrentIndex(idx);
-	else if (nrows == 1)
+	// select previous item
+	if (nrows > 0)
+		selectedLV->setCurrentIndex(selectedLV->model()->index(row - 1, 0));
+	else if (nrows == 0)
 		selectedLV->setCurrentIndex(selectedLV->model()->index(0, 0));
-	selectedHasFocus_ = (nrows > 0);
+	selectedHasFocus_ = (nrows > 1);
 	updateHook();
 }
 

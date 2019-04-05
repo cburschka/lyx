@@ -329,11 +329,7 @@ QStringList GuiBibtex::selectedBibs()
 
 void GuiBibtex::databaseChanged()
 {
-	QString const item = selectionManager->getSelectedIndex().data().toString();
-	if (!selected_bibs_.contains(item)) {
-		selected_bibs_.append(item);
-	} else
-		selected_bibs_ = selectedBibs();
+	selected_bibs_ = selectedBibs();
 	setSelectedBibs(selected_bibs_);
 }
 
