@@ -895,12 +895,6 @@ Language kazakh
 	# FontEncoding   T2A # not set (no Babel support)
 	DateFormats      "dd MMMM yyyy|dd MMMM yyyy|yyyy-dd-MM"
 	LangCode         kk_KZ
-	# FIXME: this sets the global font encoding also
-	# if Kazakh is only used as secondary language.
-	PostBabelPreamble
-	\input{t2aenc.def}
-	\AtBeginDocument{\fontencoding{T2A}\selectfont}
-	EndPostBabelPreamble
 End
 
 # not supported by babel
