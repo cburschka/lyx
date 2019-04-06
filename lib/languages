@@ -161,6 +161,14 @@ End
 Language albanian
 	GuiName          "Albanian"
 	BabelName        albanian
+	# babel-albanian (albanian.ldf) (re-)defines the functions
+	# \sh \ch \th \cth \arsh \arch \arth \arcth \tg \ctg \arctg
+	# as math operators. This clashes with \th == letter thorn
+	# in font encoding T1
+	PostBabelPreamble
+	  % fix albanian: restore \th as LATIN LETTER THORN
+	  \@ifl@aded{def}{t1enc}{\DeclareTextSymbol{\th}{T1}{254}}{}
+	EndPostBabelPreamble
 	PolyglossiaName  albanian
 	QuoteStyle       swiss
 	Encoding         iso8859-2
@@ -884,7 +892,7 @@ End
 Language kazakh
 	GuiName          "Kazakh"
 	Encoding         ascii
-	FontEncoding     T2A
+	# FontEncoding   T2A # not set (no Babel support)
 	DateFormats      "dd MMMM yyyy|dd MMMM yyyy|yyyy-dd-MM"
 	LangCode         kk_KZ
 	# FIXME: this sets the global font encoding also
@@ -968,6 +976,13 @@ Language lithuanian
 	QuoteStyle       german
 	Encoding         iso8859-13
 	FontEncoding     L7x
+	# L7x defines \copyright as TextSymbol which leads to an endless loop 
+        # when it is used in other font encodings.
+	PostBabelPreamble
+	  % restore \coyright definition corrupted by l7xenc.def
+          \DeclareRobustCommand{\copyright}{%
+            \ifmmode{\nfss@text{\textcopyright}}\else\textcopyright\fi}
+	EndPostBabelPreamble
 	DateFormats      "yyyy 'm.' MMMM d 'd.'|yyyy 'm.' MMMM d 'd.'|yyyy-MM-dd"
 	LangCode         lt_LT
 End
@@ -1205,18 +1220,22 @@ Language scottish
 	LangCode         gd_GB
 End
 
-# Note: script option is uppercase, even if the polyglossia
-#       manual states otherwise.
+# Serbian with Cyrillic script.
+# Up to Version 3.0 (2019-01-12), input encoding and
+# font encoding were set document-wide to "utf8x" and "T2A" respectively
+# by "babel-serbianc", overriding LyX settings and leading to errors
+# in mulit-lingual documents.
 Language serbian
 	GuiName          "Serbian"
 	HasGuiSupport    true
 	BabelName        serbianc
 	PolyglossiaName  serbian
 	PolyglossiaOpts  "script=Cyrillic"
+	# Note: script option is uppercase, even if the polyglossia
+	#       manual states otherwise.
 	QuoteStyle       polish
 	Encoding         utf8
-        # Cyrillic font encoding required but not set by "serbianc".
-	# FontEncoding     T2A
+	FontEncoding     T2A
 	DateFormats      "d. MMMM yyyy|d. MMM yyyy|dd.MM.yyyy"
 	LangCode         sr_RS
 End
