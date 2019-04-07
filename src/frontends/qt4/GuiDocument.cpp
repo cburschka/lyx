@@ -2972,6 +2972,14 @@ void GuiDocument::updateModuleInfo()
 		return;
 	}
 	QModelIndex const & idx = lv->selectionModel()->currentIndex();
+
+	if (!focus_on_selected
+	    && modules_av_model_.itemFromIndex(idx)->hasChildren()) {
+		// This is a category header
+		modulesModule->infoML->document()->clear();
+		return;
+	}
+
 	string const modName = focus_on_selected ?
 				modules_sel_model_.getIDString(idx.row())
 			      : fromqstr(modules_av_model_.data(idx, Qt::UserRole).toString());
