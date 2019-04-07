@@ -359,6 +359,51 @@ Font newcent
 	Package          newcent
 EndFont
 
+Font NotoSerifRegular
+	GuiName         "Noto Serif Regular"
+	Family          rm
+	Package         noto-serif
+	PackageOption   regular
+	OsfDefault	0
+	OsfOption	osf
+EndFont
+
+Font NotoSerifMedium
+	GuiName         "Noto Serif Medium"
+	Family          rm
+	Package         noto-serif
+	PackageOption   medium
+	OsfDefault	0
+	OsfOption	osf
+EndFont
+
+Font NotoSerifThin
+	GuiName         "Noto Serif Thin"
+	Family          rm
+	Package         noto-serif
+	PackageOption   thin
+	OsfDefault	0
+	OsfOption	osf
+EndFont
+
+Font NotoSerifLight
+	GuiName         "Noto Serif Light"
+	Family          rm
+	Package         noto-serif
+	PackageOption   light
+	OsfDefault	0
+	OsfOption	osf
+EndFont
+
+Font NotoSerifExtralight
+	GuiName         "Noto Serif Extralight"
+	Family          rm
+	Package         noto-serif
+	PackageOption   extralight
+	OsfDefault	0
+	OsfOption	osf
+EndFont
+
 Font NotoSerif-TLF
 	GuiName          "Noto Serif"
 	Family           rm
@@ -720,6 +765,54 @@ Font lmss
 	Requires         lmodern
 EndFont
 
+Font NotoSansRegular
+	GuiName         "Noto Sans Regular"
+	Family          sf
+	ScaleOption     scaled=$$val
+	Package         noto-sans
+	OsfDefault	0
+	OsfOption	osf
+EndFont
+
+Font NotoSansMedium
+	GuiName         "Noto Sans Medium"
+	Family          sf
+	ScaleOption     scaled=$$val
+	Package         noto-sans
+	OsfDefault	0
+	OsfOption	osf
+EndFont
+
+Font NotoSansThin
+	GuiName         "Noto Sans Thin"
+	Family          sf
+	ScaleOption     scaled=$$val
+	Package         noto-sans
+	PackageOption   thin
+	OsfDefault	0
+	OsfOption	osf
+EndFont
+
+Font NotoSansLight
+	GuiName         "Noto Sans Light"
+	Family          sf
+	ScaleOption     scaled=$$val
+	Package         noto-sans
+	PackageOption   light
+	OsfDefault	0
+	OsfOption	osf
+EndFont
+
+Font NotoSansExtralight
+	GuiName         "Noto Sans Extralight"
+	Family          sf
+	ScaleOption     scaled=$$val
+	Package         noto-sans
+	PackageOption   extralight
+	OsfDefault	0
+	OsfOption	osf
+EndFont
+
 Font NotoSans-TLF
 	GuiName          "Noto Sans"
 	Family           sf
@@ -867,6 +960,14 @@ Font luximono
 	Family           tt
 	ScaleOption      scaled=$$val
 	Package          luximono
+EndFont
+
+Font NotoMonoRegular
+	GuiName         "Noto Mono Regular"
+	Family          tt
+	ScaleOption     scaled=$$val
+	Package         noto-mono
+	PackageOption	regular
 EndFont
 
 Font NotoMono-TLF

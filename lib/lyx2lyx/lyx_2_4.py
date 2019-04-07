@@ -158,6 +158,16 @@ def createFontMapping(fontlist):
             fm.expandFontMapping(['ADOBESourceSerifPro'], "roman", None, "sourceserifpro")
             fm.expandFontMapping(['ADOBESourceSansPro'], "sans", "sf", "sourcesanspro", "scaled")
             fm.expandFontMapping(['ADOBESourceCodePro'], "typewriter", "tt", "sourcecodepro", "scaled")
+        elif font == 'Noto':
+            fm.expandFontMapping(['NotoSerifRegular,regular', 'NotoSerifMedium,medium',
+                                  'NotoSerifThin,thin', 'NotoSerifLight,light',
+                                  'NotoSerifExtralight,extralight'],
+                                  "roman", None, "noto-serif")
+            fm.expandFontMapping(['NotoSansRegular,regular', 'NotoSansMedium,medium',
+                                  'NotoSansThin,thin', 'NotoSansLight,light',
+                                  'NotoSansExtralight,extralight'],
+                                  "sans", "sf", "noto-sans", "scaled")
+            fm.expandFontMapping(['NotoMonoRegular'], "typewriter", "tt", "noto-mono", "scaled")
     return fm
 
 def convert_fonts(document, fm):
@@ -272,6 +282,22 @@ def revert_fonts(document, fm, fontmap):
 ### Conversion and reversion routines
 ###
 ###############################################################################
+
+def convert_notoFonts(document):
+    " Handle Noto fonts definition to LaTeX "
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        fm = createFontMapping(['Noto'])
+        convert_fonts(document, fm)
+
+def revert_notoFonts(document):
+    " Revert native Noto font definition to LaTeX "
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        fontmap = dict()
+        fm = createFontMapping(['Noto'])
+        revert_fonts(document, fm, fontmap)
+        add_preamble_fonts(document, fontmap)
 
 def convert_latexFonts(document):
     " Handle DejaVu and IBMPlex fonts definition to LaTeX "
@@ -1608,10 +1634,12 @@ convert = [
            [568, []],
            [569, []],
            [570, []],
-           [571, []]
+           [571, []],
+           [572, [convert_notoFonts]]  # Added options thin, light, extralight for Noto
           ]
 
 revert =  [
+           [571, [revert_notoFonts]],
            [570, [revert_cmidruletrimming]],
            [569, [revert_bibfileencodings]],
            [568, [revert_tablestyle]],
