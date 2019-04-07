@@ -49,7 +49,7 @@ GuiSelectionManager::GuiSelectionManager(QObject * parent,
                                          QPushButton * del,
                                          QPushButton * up,
                                          QPushButton * down,
-                                         QAbstractListModel * amod,
+                                         QAbstractItemModel * amod,
                                          QAbstractItemModel * smod,
                                          int const main_sel_col)
 : QObject(parent), availableLV(avail), selectedLV(sel),
@@ -116,7 +116,7 @@ void GuiSelectionManager::updateButtons()
 
 QModelIndex GuiSelectionManager::getSelectedIndex(int const c) const
 {
-	QModelIndexList avail = availableLV->selectionModel()->selectedIndexes();
+	QModelIndexList avail = availableLV->selectionModel()->selectedRows(c);
 	QModelIndexList sel   = selectedLV->selectionModel()->selectedRows(c);
 	bool const have_avl = !avail.isEmpty();
 	bool const have_sel = !sel.isEmpty();

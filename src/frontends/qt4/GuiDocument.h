@@ -37,6 +37,8 @@
 #include "ui_PreambleUi.h"
 #include "ui_TextLayoutUi.h"
 
+#include <QStandardItemModel>
+
 namespace lyx {
 
 class BufferParams;
@@ -189,7 +191,7 @@ private:
 	ModuleSelectionManager * selectionManager;
 
 	/// Available modules
-	GuiIdListModel * availableModel() { return &modules_av_model_; }
+	QStandardItemModel * availableModel() { return &modules_av_model_; }
 	/// Selected modules
 	GuiIdListModel * selectedModel() { return &modules_sel_model_; }
 
@@ -218,7 +220,7 @@ private:
 	void getTableStyles();
 
 	/// available modules
-	GuiIdListModel modules_av_model_;
+	QStandardItemModel modules_av_model_;
 	/// selected modules
 	GuiIdListModel modules_sel_model_;
 

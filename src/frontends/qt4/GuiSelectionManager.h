@@ -48,7 +48,7 @@ public:
 						QPushButton * delPB,
 						QPushButton * upPB,
 						QPushButton * downPB,
-						QAbstractListModel * availableModel,
+						QAbstractItemModel * availableModel,
 						QAbstractItemModel * selectedModel,
 						int const main_sel_col = 0);
 	/// Sets the state of the various push buttons, depending upon the
@@ -105,7 +105,7 @@ protected:
 	///
 	QPushButton * downPB;
 	///
-	QAbstractListModel * availableModel;
+	QAbstractItemModel * availableModel;
 	///
 	QAbstractItemModel * selectedModel;
 

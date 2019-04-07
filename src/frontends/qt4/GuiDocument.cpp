@@ -269,7 +269,7 @@ public:
 	                       QPushButton * delPB,
 	                       QPushButton * upPB,
 	                       QPushButton * downPB,
-	                       GuiIdListModel * availableModel,
+	                       QStandardItemModel * availableModel,
 	                       GuiIdListModel * selectedModel,
 	                       GuiDocument const * container)
 		: GuiSelectionManager(parent, availableLV, selectedLV, addPB, delPB,
@@ -292,9 +292,9 @@ private:
 	///
 	virtual void updateDelPB();
 	/// returns availableModel as a GuiIdListModel
-	GuiIdListModel * getAvailableModel()
+	QStandardItemModel * getAvailableModel()
 	{
-		return dynamic_cast<GuiIdListModel *>(availableModel);
+		return dynamic_cast<QStandardItemModel *>(availableModel);
 	}
 	/// returns selectedModel as a GuiIdListModel
 	GuiIdListModel * getSelectedModel()
@@ -313,7 +313,7 @@ void ModuleSelectionManager::updateAddPB()
 {
 	int const arows = availableModel->rowCount();
 	QModelIndexList const avail_sels =
-			availableLV->selectionModel()->selectedIndexes();
+			availableLV->selectionModel()->selectedRows(0);
 
 	// disable if there aren't any modules (?), if none of them is chosen
 	// in the dialog, or if the chosen one is already selected for use.
@@ -323,7 +323,14 @@ void ModuleSelectionManager::updateAddPB()
 	}
 
 	QModelIndex const & idx = availableLV->selectionModel()->currentIndex();
-	string const modname = getAvailableModel()->getIDString(idx.row());
+
+	if (getAvailableModel()->itemFromIndex(idx)->hasChildren()) {
+		// This is a category header
+		addPB->setEnabled(false);
+		return;
+	}
+
+	string const modname = fromqstr(getAvailableModel()->data(idx, Qt::UserRole).toString());
 
 	bool const enable =
 		container_->params().layoutModuleCanBeAdded(modname);
@@ -1763,7 +1770,11 @@ void GuiDocument::filterModules(QString const & str)
 	int i = 0;
 	for (modInfoStruct const & m : modInfoList) {
 		if (m.name.contains(str, Qt::CaseInsensitive) || contains(m.id, fromqstr(str))) {
-			modules_av_model_.insertRow(i, m.name, m.id, m.description);
+			QStandardItem * item = new QStandardItem();
+			item->setData(m.name, Qt::DisplayRole);
+			item->setData(toqstr(m.id), Qt::UserRole);
+			item->setData(m.description, Qt::ToolTipRole);
+			modules_av_model_.insertRow(i, item);
 			++i;
 		}
 	}
@@ -2896,6 +2907,7 @@ void GuiDocument::modulesToParams(BufferParams & bp)
 	int const srows = modules_sel_model_.rowCount();
 	for (int i = 0; i < srows; ++i)
 		bp.addLayoutModule(modules_sel_model_.getIDString(i));
+	updateSelectedModules();
 
 	// update the list of removed modules
 	bp.clearRemovedModules();
@@ -2949,18 +2961,20 @@ void GuiDocument::updateModuleInfo()
 	//Module description
 	bool const focus_on_selected = selectionManager->selectedFocused();
 	QAbstractItemView * lv;
-	if (focus_on_selected)
+	bool category = false;
+	if (focus_on_selected) {
 		lv = modulesModule->selectedLV;
-	else
+		category = true;
+	} else
 		lv = modulesModule->availableLV;
 	if (lv->selectionModel()->selectedIndexes().isEmpty()) {
 		modulesModule->infoML->document()->clear();
 		return;
 	}
 	QModelIndex const & idx = lv->selectionModel()->currentIndex();
-	GuiIdListModel const & id_model =
-			focus_on_selected  ? modules_sel_model_ : modules_av_model_;
-	string const modName = id_model.getIDString(idx.row());
+	string const modName = focus_on_selected ?
+				modules_sel_model_.getIDString(idx.row())
+			      : fromqstr(modules_av_model_.data(idx, Qt::UserRole).toString());
 	docstring desc = getModuleDescription(modName);
 
 	LayoutModuleList const & provmods = bp_.baseClass()->providedModules();
@@ -2970,12 +2984,14 @@ void GuiDocument::updateModuleInfo()
 		desc += _("Module provided by document class.");
 	}
 
-	docstring cat = getModuleCategory(modName);
-	if (!cat.empty()) {
-		if (!desc.empty())
-			desc += "\n";
-		desc += bformat(_("Category: %1$s."),
-				translateIfPossible(cat));
+	if (category) {
+		docstring cat = getModuleCategory(modName);
+		if (!cat.empty()) {
+			if (!desc.empty())
+				desc += "\n";
+			desc += bformat(_("<p><b>Category:</b> %1$s.</p>"),
+					translateIfPossible(cat));
+		}
 	}
 
 	vector<string> pkglist = getPackageList(modName);
@@ -2983,7 +2999,7 @@ void GuiDocument::updateModuleInfo()
 	if (!pkgdesc.empty()) {
 		if (!desc.empty())
 			desc += "\n";
-		desc += bformat(_("Package(s) required: %1$s."), pkgdesc);
+		desc += bformat(_("<p><b>Package(s) required:</b> %1$s.</p>"), pkgdesc);
 	}
 
 	pkglist = getRequiredList(modName);
@@ -2992,7 +3008,7 @@ void GuiDocument::updateModuleInfo()
 		pkgdesc = formatStrVec(reqdescs, _("or"));
 		if (!desc.empty())
 			desc += "\n";
-		desc += bformat(_("Modules required: %1$s."), pkgdesc);
+		desc += bformat(_("<p><b>Modules required:</b> %1$s.</p>"), pkgdesc);
 	}
 
 	pkglist = getExcludedList(modName);
@@ -3001,20 +3017,20 @@ void GuiDocument::updateModuleInfo()
 		pkgdesc = formatStrVec(reqdescs, _( "and"));
 		if (!desc.empty())
 			desc += "\n";
-		desc += bformat(_("Modules excluded: %1$s."), pkgdesc);
+		desc += bformat(_("<p><b>Modules excluded:</b> %1$s.</p>"), pkgdesc);
 	}
 
 	if (!desc.empty())
 		desc += "\n";
-	desc += bformat(_("Filename: %1$s.module."), from_utf8(modName));
+	desc += bformat(_("<p><b>Filename:</b> <tt>%1$s.module</tt>.</p>"), from_utf8(modName));
 
 	if (!isModuleAvailable(modName)) {
 		if (!desc.empty())
 			desc += "\n";
-		desc += _("WARNING: Some required packages are unavailable!");
+		desc += _("<p><font color=red><b>WARNING: Some required packages are unavailable!</b></font></p>");
 	}
 
-	modulesModule->infoML->document()->setPlainText(toqstr(desc));
+	modulesModule->infoML->document()->setHtml(toqstr(desc));
 }
 
 
@@ -4216,10 +4232,28 @@ void GuiDocument::updateAvailableModules()
 			return 0 < b.name.localeAwareCompare(a.name);
 		});
 	int i = 0;
+	QFont catfont;
+	catfont.setBold(true);
 	for (modInfoStruct const & m : modInfoList) {
-		modules_av_model_.insertRow(i, m.name, m.id, m.description);
-		++i;
+		QStandardItem * item = new QStandardItem();
+		QStandardItem * catItem = new QStandardItem();
+		QString const catname = m.category;
+		QList<QStandardItem *> fcats = modules_av_model_.findItems(catname, Qt::MatchExactly);
+		if (!fcats.empty())
+			catItem = fcats.first();
+		else {
+			catItem->setText(catname);
+			catItem->setFont(catfont);
+			modules_av_model_.insertRow(i, catItem);
+			++i;
+		}
+		catItem->setEditable(false);
+		item->setData(m.name, Qt::DisplayRole);
+		item->setData(toqstr(m.id), Qt::UserRole);
+		item->setData(m.description, Qt::ToolTipRole);
+		catItem->appendRow(item);
 	}
+	modules_av_model_.sort(0);
 }
 
 
