@@ -868,6 +868,18 @@ void Preamble::handle_package(Parser &p, string const & name,
 		else if (opts.find("semibold") != string::npos)
 			h_font_roman[0] = "IBMPlexSerifSemibold";
 	}
+	if (name == "noto-serif") {
+		if (opts.empty())
+			h_font_roman[0] = "NotoSerifRegular";
+		else if (opts.find("thin") != string::npos)
+			h_font_roman[0] = "NotoSerifThin";
+		else if (opts.find("medium") != string::npos)
+			h_font_roman[0] = "NotoSerifMedium";
+		else if (opts.find("light") != string::npos)
+			h_font_roman[0] = "NotoSerifLight";
+		else if (opts.find("extralight") != string::npos)
+			h_font_roman[0] = "NotoSerifExtralight";
+	}
 
 	// sansserif fonts
 	if (is_known(name, known_sans_fonts)) {
@@ -920,6 +932,17 @@ void Preamble::handle_package(Parser &p, string const & name,
 				h_font_sf_scale[1] = scale;
 		}
 	}
+	if (name == "noto-sans") {
+		h_font_sans[0] = "NotoSansRegular";
+		if (opts.find("medium") != string::npos)
+			h_font_sans[0] = "NotoSansMedium";
+		else if (opts.find("thin") != string::npos)
+			h_font_sans[0] = "NotoSansThin";
+		else if (opts.find("light") != string::npos)
+			h_font_sans[0] = "NotoSansLight";
+		else if (opts.find("extralight") != string::npos)
+			h_font_sans[0] = "NotoSansExtralight";
+	}
 
 	// typewriter fonts
 	if (is_known(name, known_typewriter_fonts)) {
@@ -968,6 +991,10 @@ void Preamble::handle_package(Parser &p, string const & name,
 			if (!scale.empty())
 				h_font_tt_scale[1] = scale;
 		}
+	}
+
+	if (name == "noto-mono") {
+		h_font_typewriter[0] = "NotoMonoRegular";
 	}
 
 	// font uses old-style figure
