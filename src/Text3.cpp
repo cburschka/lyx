@@ -2126,30 +2126,27 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		cur.recordUndo();
 		FuncRequest cmd2(LFUN_FILE_INSERT, tabstyle.absFileName() + " ignorelang");
 		lyx::dispatch(cmd2);
+		// go into table
+		cur.backwardPos();
 		if (r > 2) {
-			// go into table
-			cur.backwardPos();
 			// move one cell up to middle cell
 			cur.up();
-			// now add the missing rows and columns
+			// add the missing rows
 			int const addrows = r - 3;
-			int const addcols = c - 1;
 			for (int i = 0 ; i < addrows ; ++i) {
 				FuncRequest fr(LFUN_TABULAR_FEATURE, "append-row");
 				lyx::dispatch(fr);
 			}
-			for (int i = 0 ; i < addcols ; ++i) {
-				FuncRequest fr(LFUN_TABULAR_FEATURE, "append-column");
-				lyx::dispatch(fr);
-			}
+		}
+		// add the missing columns
+		int const addcols = c - 1;
+		for (int i = 0 ; i < addcols ; ++i) {
+			FuncRequest fr(LFUN_TABULAR_FEATURE, "append-column");
+			lyx::dispatch(fr);
+		}
+		if (r > 1)
 			// go to first cell
 			cur.up();
-		} else {
-			// jump over table
-			cur.backwardChar();
-			// go to first cell
-			cur.forwardPos();
-		}
 		break;
 	}
 
