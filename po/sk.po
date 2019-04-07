@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-04-04 19:39+0200\n"
-"PO-Revision-Date: 2019-04-04 18:16+0000\n"
+"POT-Creation-Date: 2019-04-07 12:17+0200\n"
+"PO-Revision-Date: 2019-04-07 11:08+0000\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -6971,12 +6971,12 @@ msgstr "Dôkaz."
 
 #: lib/layouts/InStar.module:2
 msgid "Title and Preamble Hacks"
-msgstr "Kúzla v titule a v preambule"
+msgstr "Adaptácie v titule a v preambule"
 
 #: lib/layouts/InStar.module:3 lib/layouts/fix-cm.module:3
 #: lib/layouts/fixltx2e.module:3 lib/layouts/minimalistic.module:3
-msgid "Fixes and Hacks"
-msgstr "Nápravy a Heky"
+msgid "Fixes & Hacks"
+msgstr "Nápravy a Zlepšenia"
 
 #: lib/layouts/InStar.module:12
 msgid ""
@@ -8965,12 +8965,14 @@ msgid "Acknowledgments."
 msgstr "Poďakovania."
 
 #: lib/layouts/algorithm2e.module:2
-msgid "Algorithm2e"
-msgstr "Algorithm2e"
+msgid "Algorithm2e Float"
+msgstr "Algorithm2e-Prostredie pre plávajúci objekt"
 
-#: lib/layouts/algorithm2e.module:3
-msgid "Floats"
-msgstr "Plávajúce objekty"
+#: lib/layouts/algorithm2e.module:3 lib/layouts/bicaption.module:3
+#: lib/layouts/figs-within-sections.module:3
+#: lib/layouts/tabs-within-sections.module:3
+msgid "Floats & Captions"
+msgstr "Plávajúce objekty a Popisy"
 
 #: lib/layouts/algorithm2e.module:7
 msgid ""
@@ -10020,15 +10022,15 @@ msgid "Beamerposter"
 msgstr "Beamer-plagát"
 
 #: lib/layouts/bicaption.module:2
-msgid "Multilingual Captions"
-msgstr "Viac-jazykové popisy"
+msgid "Bilingual Captions"
+msgstr "Dvoj-jazykové popisy"
 
-#: lib/layouts/bicaption.module:6
+#: lib/layouts/bicaption.module:7
 msgid ""
-"Provides two styles to typeset multilingual captions. For a description see "
-"the file MultilingualCaptions.lyx in LyX's examples folder."
+"Provides two styles to typeset bilingual captions. For a description see the "
+"file MultilingualCaptions.lyx in LyX's examples folder."
 msgstr ""
-"Poskytuje dva štýly na sádzanie viac-jazykových popisov. Pre vysvetlenie "
+"Poskytuje dva štýly na sádzanie dvoj-jazykových popisov. Pre vysvetlenie "
 "pozri súbor MultilingualCaptions.lyx v adresári príkladov."
 
 #: lib/layouts/bicaption.module:10
@@ -10233,8 +10235,14 @@ msgid "Japanese Slide (BXJS Class)"
 msgstr "Japonská fólia (Trieda BXJS)"
 
 #: lib/layouts/changebars.module:2
-msgid "Change bars"
-msgstr "Značky zmien"
+msgid "Change Tracking Bars"
+msgstr "Pásy na sledovanie zmien"
+
+#: lib/layouts/changebars.module:3 lib/layouts/fixme.module:3
+#: lib/layouts/pdfcomment.module:3 lib/layouts/pdfform.module:3
+#: lib/layouts/todonotes.module:3
+msgid "Annotation & Revision"
+msgstr "Anotácia a Revízia"
 
 #: lib/layouts/changebars.module:7
 msgid ""
@@ -10351,6 +10359,14 @@ msgstr "Ťah jazdca"
 #: lib/layouts/chess.layout:192
 msgid "KnightMove:"
 msgstr "Ťah jazdca:"
+
+#: lib/layouts/chessboard.module:2
+msgid "Chess Board"
+msgstr "Šachovnica"
+
+#: lib/layouts/chessboard.module:3 lib/layouts/lilypond.module:3
+msgid "Leisure, Sports & Music"
+msgstr "Zábava, šport a hudba"
 
 #: lib/layouts/chessboard.layout:3
 msgid "Chessboard"
@@ -10583,8 +10599,8 @@ msgid "Chinese Report (CTeX)"
 msgstr "Čínsky Referát (CTeX)"
 
 #: lib/layouts/customHeadersFooters.module:2
-msgid "Custom Header/Footerlines"
-msgstr "Vlastné riadky pre hlavičku/Pätu"
+msgid "Custom Header/Footer Text"
+msgstr "Vlastný text pre hlavičku/Pätu"
 
 #: lib/layouts/customHeadersFooters.module:7
 msgid ""
@@ -11898,8 +11914,8 @@ msgstr ""
 "pri 'Obrázok 2.1'."
 
 #: lib/layouts/fix-cm.module:2
-msgid "Fix cm"
-msgstr "Fix cm"
+msgid "Fix Computer Modern Fonts"
+msgstr "Napraviť Computer Modern fonty"
 
 #: lib/layouts/fix-cm.module:8
 msgid ""
@@ -11912,8 +11928,8 @@ msgstr ""
 "http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
 
 #: lib/layouts/fixltx2e.module:2
-msgid "Fix LaTeX (Obsolete)"
-msgstr "Zafixovať LaTeX (zastaralé)"
+msgid "LaTeX Kernel Fixes (Obsolete)"
+msgstr "LaTeX Kernel nápravy (Zastaralé)"
 
 #: lib/layouts/fixltx2e.module:10
 msgid ""
@@ -11933,13 +11949,8 @@ msgstr ""
 "obsahujú fixltx2e, čiže od TeXLive 2015 je modul fixltx2e obsoletný."
 
 #: lib/layouts/fixme.module:2
-msgid "FiXme"
-msgstr "FiXme"
-
-#: lib/layouts/fixme.module:3 lib/layouts/pdfcomment.module:3
-#: lib/layouts/pdfform.module:3 lib/layouts/todonotes.module:3
-msgid "Annotations"
-msgstr "Anotácie"
+msgid "FiXme Notes"
+msgstr "Fixme poznámky"
 
 #: lib/layouts/fixme.module:11
 msgid ""
@@ -12276,8 +12287,8 @@ msgid "Definition*"
 msgstr "Definícia*"
 
 #: lib/layouts/foottoend.module:2
-msgid "Foot to End"
-msgstr "Pätky na koncové"
+msgid "Footnotes as Endnotes"
+msgstr "Poznámky pod čiarou ako Koncové"
 
 #: lib/layouts/foottoend.module:6
 msgid ""
@@ -12736,6 +12747,10 @@ msgstr "Uhol"
 msgid "Rotation angle in degrees (counterclockwise)"
 msgstr "Točiaci uhol v stupňoch (v protismere hodín)"
 
+#: lib/layouts/hanging.module:2
+msgid "Hanging Paragraphs"
+msgstr "Visiace Odstavce"
+
 #: lib/layouts/hanging.module:2 lib/layouts/hanging.module:16
 msgid "Hanging"
 msgstr "Visiaci odstavec"
@@ -12836,8 +12851,13 @@ msgid "Scene"
 msgstr "Scéna"
 
 #: lib/layouts/hpstatement.module:2
-msgid "Hazard and Precautionary Statements"
-msgstr "Rizikové a Bezpečnostné Inštrukcie"
+msgid "Chemistry: Hazard and Precautionary Statements"
+msgstr "Chémia: Rizikové a Bezpečnostné Inštrukcie"
+
+#: lib/layouts/hpstatement.module:3 lib/layouts/linguistics.module:3
+#: lib/layouts/rsphrase.module:3
+msgid "Academic Field Specifics"
+msgstr "Odborové špecifikácie"
 
 #: lib/layouts/hpstatement.module:7
 msgid ""
@@ -13002,16 +13022,16 @@ msgid "Comby"
 msgstr "Comby"
 
 #: lib/layouts/initials.module:2
-msgid "Initials"
+msgid "Initials (Drop Caps)"
 msgstr "Iniciálky"
 
-#: lib/layouts/initials.module:6
+#: lib/layouts/initials.module:7
 msgid ""
-"Define a style for paragraphs with an initial. See the EmbeddedObjects "
-"manual for a detailed description."
+"Defines a style for paragraphs with an enlarged initial letter (drop cap). "
+"See the EmbeddedObjects manual for a detailed description."
 msgstr ""
-"Definuje štýl pre odstavce s iniciálkou. Pozri manuál 'Vložené Objekty' pre "
-"detailné vysvetlenie."
+"Definuje štýl pre odstavce s zväčšenou iniciálkou. Pozri manuál 'Vložené "
+"Objekty' pre detailné vysvetlenie."
 
 #: lib/layouts/initials.module:14 lib/layouts/initials.module:16
 #: lib/layouts/initials.module:26 lib/layouts/initials.module:32
@@ -13432,6 +13452,10 @@ msgstr "S/R výraz"
 msgid "S/R expr"
 msgstr "S/R výraz"
 
+#: lib/layouts/landscape.module:2
+msgid "Landscape Document Parts"
+msgstr "Časti dokumentu vo formáte na šírku"
+
 #: lib/layouts/landscape.module:2 lib/layouts/landscape.module:10
 #: lib/layouts/landscape.module:15
 msgid "Landscape"
@@ -13529,8 +13553,8 @@ msgid "P.S.:"
 msgstr "P.S.:"
 
 #: lib/layouts/lilypond.module:2
-msgid "LilyPond Book"
-msgstr "LilyPond Kniha"
+msgid "LilyPond Music Notation"
+msgstr "LilyPond hudobné notácie"
 
 #: lib/layouts/lilypond.module:6
 msgid ""
@@ -13946,8 +13970,8 @@ msgid "Legend"
 msgstr "Legenda"
 
 #: lib/layouts/minimalistic.module:2
-msgid "Minimalistic"
-msgstr "Minimalistické"
+msgid "Minimalistic Insets"
+msgstr "Minimalistické vložky"
 
 #: lib/layouts/minimalistic.module:5
 msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
@@ -14294,8 +14318,8 @@ msgid "Polish Report (MW Bundle)"
 msgstr "Poľský Referát (MW balík)"
 
 #: lib/layouts/natbibapa.module:2
-msgid "Natbibapa"
-msgstr "Natbibapa"
+msgid "APA Style with Natbib"
+msgstr "APA Štýl s Natbib"
 
 #: lib/layouts/natbibapa.module:9
 msgid ""
@@ -15118,8 +15142,8 @@ msgid "PACS number:"
 msgstr "PACS-číslo:"
 
 #: lib/layouts/rsphrase.module:2
-msgid "Risk and Safety Statements"
-msgstr "Rizikové a Poistné Uzávierky"
+msgid "Chemistry: Risk and Safety Statements"
+msgstr "Chémia: Rizikové a Poistné Uzávierky"
 
 #: lib/layouts/rsphrase.module:7
 msgid ""
@@ -16478,8 +16502,8 @@ msgid "Exercise \\theexercise."
 msgstr "Úloha \\theexercise."
 
 #: lib/layouts/theorems-ams-bytype.module:2
-msgid "Theorems (AMS, Numbered by Type)"
-msgstr "Teorémy (AMS, číslované podľa typu)"
+msgid "AMS Theorems (Numbered by Type)"
+msgstr "AMS Teorémy (Číslované podľa typu)"
 
 #: lib/layouts/theorems-ams-bytype.module:11
 msgid ""
@@ -16553,8 +16577,8 @@ msgid "Claim \\thechapter.\\theclaim."
 msgstr "Nárok \\thechapter.\\theclaim."
 
 #: lib/layouts/theorems-ams-chap-bytype.module:2
-msgid "Theorems (AMS, Numbered by Type within Chapters)"
-msgstr "Teorémy (AMS, číslované podľa typu vnútri kapitol)"
+msgid "AMS Theorems (Numbered by Type within Chapters)"
+msgstr "AMS Teorémy (Číslované podľa typu vnútri kapitol)"
 
 #: lib/layouts/theorems-ams-chap-bytype.module:11
 msgid ""
@@ -16574,8 +16598,8 @@ msgstr ""
 "každej kapitoli: teoréma 1.1, teoréma 2.1, … "
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
-msgid "Theorems (AMS-Extended, Numbered by Type)"
-msgstr "Teorémy (rozšírenie AMS, číslované podľa typu)"
+msgid "AMS Theorems (Extended, Numbered by Type)"
+msgstr "AMS Teorémy (rozšírenie, číslované podľa typu)"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:12
 msgid ""
@@ -16775,8 +16799,8 @@ msgid "Question."
 msgstr "Otázka."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:2
-msgid "Theorems (AMS-Extended, Numbered by Type within Chapters)"
-msgstr "Teorémy (AMS-Rozšírenie, číslované podľa typu vnútri kapitol)"
+msgid "AMS Theorems (Extended, Numbered by Type within Chapters)"
+msgstr "AMS Teorémy (Rozšírenie, číslované podľa typu vnútri kapitol)"
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:12
 msgid ""
@@ -16843,8 +16867,8 @@ msgid "Question \\thechapter.\\thequestion."
 msgstr "Otázka \\thechapter.\\thequestion."
 
 #: lib/layouts/theorems-ams-extended.module:2
-msgid "Theorems (AMS-Extended)"
-msgstr "Teorémy (rozšírenie AMS)"
+msgid "AMS Theorems (Extended)"
+msgstr "AMS Teorémy (rozšírenie)"
 
 #: lib/layouts/theorems-ams-extended.module:9
 msgid ""
@@ -16927,8 +16951,8 @@ msgid "Claim \\thetheorem."
 msgstr "Nárok \\thetheorem."
 
 #: lib/layouts/theorems-ams.module:2
-msgid "Theorems (AMS)"
-msgstr "Teorémy (AMS)"
+msgid "AMS Theorems"
+msgstr "AMS Teorémy"
 
 #: lib/layouts/theorems-ams.module:8
 msgid ""
@@ -16943,8 +16967,8 @@ msgstr ""
 "'Teorémy (Číslované podľa …)' modulu."
 
 #: lib/layouts/theorems-bytype.module:2
-msgid "Theorems (Numbered by Type)"
-msgstr "Teorémy (Číslované podľa typu)"
+msgid "Standard Theorems (Numbered by Type)"
+msgstr "Štandardné Teorémy (Číslované podľa typu)"
 
 #: lib/layouts/theorems-bytype.module:10
 msgid ""
@@ -16980,8 +17004,8 @@ msgid "Case \\arabic{caseiv}."
 msgstr "Prípad \\arabic{caseiv}."
 
 #: lib/layouts/theorems-chap-bytype.module:2
-msgid "Theorems (Numbered by Type within Chapters)"
-msgstr "Teorémy (Číslované podľa typu vnútri kapitol)"
+msgid "Standard Theorems (Numbered by Type within Chapters)"
+msgstr "Štandardné Teorémy (Číslované podľa typu vnútri kapitol)"
 
 #: lib/layouts/theorems-chap-bytype.module:9
 msgid ""
@@ -16998,8 +17022,8 @@ msgstr ""
 "na začiatku každej kapitoly."
 
 #: lib/layouts/theorems-chap.module:2
-msgid "Theorems (Numbered by Chapter)"
-msgstr "Teorémy (Číslované podľa kapitoly)"
+msgid "Standard Theorems (Numbered by Chapter)"
+msgstr "Štandardné Teorémy (Číslované podľa kapitoly)"
 
 #: lib/layouts/theorems-chap.module:7
 msgid ""
@@ -17012,8 +17036,8 @@ msgstr ""
 "dokumentov, ktorá podporuje prostredie kapitoly."
 
 #: lib/layouts/theorems-named.module:3
-msgid "Named Theorems"
-msgstr "Menované teorémy"
+msgid "Standard Theorems (Nameable)"
+msgstr "Štandardné Teorémy (pomenovateľné)"
 
 #: lib/layouts/theorems-named.module:7
 msgid ""
@@ -17060,8 +17084,8 @@ msgid "Alternative proof string"
 msgstr "Alternatívny reťazec dôkazu"
 
 #: lib/layouts/theorems-sec-bytype.module:2
-msgid "Theorems (Numbered by Type within Sections)"
-msgstr "Teorémy (Číslovanie podľa typu vnútri sekcií)"
+msgid "Standard Theorems (Numbered by Type within Sections)"
+msgstr "Štandardné Teorémy (Číslovanie podľa typu vnútri sekcií)"
 
 #: lib/layouts/theorems-sec-bytype.module:9
 msgid ""
@@ -17078,8 +17102,8 @@ msgstr ""
 "na začiatku každej sekcie."
 
 #: lib/layouts/theorems-sec.module:2
-msgid "Theorems (Numbered by Section)"
-msgstr "Teorémy (Číslovanie podľa sekcie)"
+msgid "Standard Theorems (Numbered by Section)"
+msgstr "Štandardné Teorémy (Číslovanie podľa sekcie)"
 
 #: lib/layouts/theorems-sec.module:6
 msgid ""
@@ -17114,8 +17138,8 @@ msgid "Remark."
 msgstr "Pripomienka."
 
 #: lib/layouts/theorems-starred.module:2
-msgid "Theorems (Unnumbered)"
-msgstr "Teorémy (Neočíslované)"
+msgid "Standard Theorems (Unnumbered)"
+msgstr "Štandardné Teorémy (Neočíslované)"
 
 #: lib/layouts/theorems-starred.module:6
 msgid ""
@@ -17124,6 +17148,10 @@ msgid ""
 msgstr ""
 "Definuje len neočíslované prostredie pre vety a dôkazy, použitím rozšírenie "
 "AMS."
+
+#: lib/layouts/theorems-std.module:2
+msgid "Standard Theorems"
+msgstr "Štandardné Teorémy"
 
 #: lib/layouts/theorems-std.module:2
 msgid "Theorems"
@@ -17884,9 +17912,29 @@ msgstr "Minion Pro"
 msgid "New Century Schoolbook"
 msgstr "New Century Schoolbook"
 
-#: lib/latexfonts:323 lib/latexfonts:331
+#: lib/latexfonts:363
+msgid "Noto Serif Regular"
+msgstr "Noto serifové regulárne"
+
+#: lib/latexfonts:372
+msgid "Noto Serif Medium"
+msgstr "Noto serifové stredné"
+
+#: lib/latexfonts:381
+msgid "Noto Serif Thin"
+msgstr "Noto serifové tenké"
+
+#: lib/latexfonts:390
+msgid "Noto Serif Light"
+msgstr "Noto serifové svetlé"
+
+#: lib/latexfonts:399
+msgid "Noto Serif Extralight"
+msgstr "Noto serifové extra svetlé"
+
+#: lib/latexfonts:408 lib/latexfonts:416
 msgid "Noto Serif"
-msgstr "Noto Serif"
+msgstr "Noto serifové"
 
 #: lib/latexfonts:337 lib/latexfonts:349 lib/latexfonts:356 lib/latexfonts:362
 #: lib/latexfonts:369
@@ -18025,9 +18073,29 @@ msgstr "Kurier (Svetlé zhustené)"
 msgid "Latin Modern Sans"
 msgstr "Latin Modern Sans"
 
-#: lib/latexfonts:629
+#: lib/latexfonts:769
+msgid "Noto Sans Regular"
+msgstr "Noto bezserifové regulárne"
+
+#: lib/latexfonts:778
+msgid "Noto Sans Medium"
+msgstr "Noto bezserifové stredné"
+
+#: lib/latexfonts:787
+msgid "Noto Sans Thin"
+msgstr "Noto bezserifové tenké"
+
+#: lib/latexfonts:797
+msgid "Noto Sans Light"
+msgstr "Noto bezserifové svetlé"
+
+#: lib/latexfonts:807
+msgid "Noto Sans Extralight"
+msgstr "Noto bezserifové extra svetlé"
+
+#: lib/latexfonts:817
 msgid "Noto Sans"
-msgstr "Noto Sans"
+msgstr "Noto bezserifové"
 
 #: lib/latexfonts:636
 msgid "ParaType Sans"
@@ -18101,9 +18169,13 @@ msgstr "Latin Modern Typewriter"
 msgid "LuxiMono"
 msgstr "LuxiMono"
 
-#: lib/latexfonts:732
+#: lib/latexfonts:966
+msgid "Noto Mono Regular"
+msgstr "Noto strojopisné regulárne"
+
+#: lib/latexfonts:974
 msgid "Noto Mono"
-msgstr "Noto Mono"
+msgstr "Noto strojopisné"
 
 #: lib/latexfonts:739
 msgid "ParaType Mono"
@@ -30499,6 +30571,10 @@ msgstr ""
 "LyX triedu nenašiel. Overte si, či máte príslušnú triedu %1$s a všetky "
 "potrebné balíky (%2$s) inštalované."
 
+#: src/frontends/qt4/GuiDocument.cpp:1547
+msgid "All avail. modules"
+msgstr "Všetky dostupné moduly"
+
 #: src/frontends/qt4/GuiDocument.cpp:1601
 #: src/frontends/qt4/GuiDocument.cpp:1759
 msgid "Input listings parameters below. Enter ? for a list of parameters."
@@ -30696,38 +30772,42 @@ msgstr "%1$s (nedostupný)"
 msgid "Module provided by document class."
 msgstr "Modul poskytnutý triedou dokumentu."
 
-#: src/frontends/qt4/GuiDocument.cpp:2895
+#: src/frontends/qt4/GuiDocument.cpp:2992
 #, c-format
-msgid "Category: %1$s."
-msgstr "Kategória: %1$s."
+msgid "<p><b>Category:</b> %1$s.</p>"
+msgstr "<p><b>Kategória:</b> %1$s.</p>"
 
-#: src/frontends/qt4/GuiDocument.cpp:2903
+#: src/frontends/qt4/GuiDocument.cpp:3002
 #, c-format
-msgid "Package(s) required: %1$s."
-msgstr "Vyžadované balíčky: %1$s."
+msgid "<p><b>Package(s) required:</b> %1$s.</p>"
+msgstr "<p><b>Vyžadované balíčky:</b> %1$s.</p>"
 
 #: src/frontends/qt4/GuiDocument.cpp:2909
 msgid "or"
 msgstr "alebo"
 
-#: src/frontends/qt4/GuiDocument.cpp:2912
+#: src/frontends/qt4/GuiDocument.cpp:3011
 #, c-format
-msgid "Modules required: %1$s."
-msgstr "Vyžadované moduly: %1$s."
+msgid "<p><b>Modules required:</b> %1$s.</p>"
+msgstr "<p><b>Vyžadované moduly:</b> %1$s.</p>"
 
-#: src/frontends/qt4/GuiDocument.cpp:2921
+#: src/frontends/qt4/GuiDocument.cpp:3020
 #, c-format
-msgid "Modules excluded: %1$s."
-msgstr "Vylúčené moduly: %1$s."
+msgid "<p><b>Modules excluded:</b> %1$s.</p>"
+msgstr "<p><b>Vylúčené moduly:</b> %1$s.</p>"
 
-#: src/frontends/qt4/GuiDocument.cpp:2926
+#: src/frontends/qt4/GuiDocument.cpp:3025
 #, c-format
-msgid "Filename: %1$s.module."
-msgstr "Súbor: %1$s.module."
+msgid "<p><b>Filename:</b> <tt>%1$s.module</tt>.</p>"
+msgstr "<p><b>Súbor: </b> <tt>%1$s.module</tt>.</p>"
 
-#: src/frontends/qt4/GuiDocument.cpp:2927
-msgid "WARNING: Some required packages are unavailable!"
-msgstr "Upozornenie: Niektoré vyžadované balíky sú nedostupné!"
+#: src/frontends/qt4/GuiDocument.cpp:3030
+msgid ""
+"<p><font color=red><b>WARNING: Some required packages are unavailable!</b></"
+"font></p>"
+msgstr ""
+"<p><font color=red><b>Upozornenie: Niektoré vyžadované balíky sú nedostupné!"
+"</b></font></p>"
 
 #: src/frontends/qt4/GuiDocument.cpp:3507
 msgid "per part"
