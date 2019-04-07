@@ -1,53 +1,94 @@
-#LyX 1.6svn created this file. For more info see http://www.lyx.org/
-\lyxformat 318
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 572
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass amsart
+\use_default_options false
 \begin_modules
 theorems-ams
+eqs-within-sections
+figs-within-sections
 \end_modules
+\maintain_unincluded_children false
 \language english
+\language_package default
 \inputencoding auto
-\font_roman default
-\font_sans default
-\font_typewriter default
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
 \branch Branch1
 \selected 1
+\filename_suffix 0
 \color #fa8a00
 \end_branch
 \branch Branch2
 \selected 0
+\filename_suffix 0
 \color #00fabc
 \end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
-\quotes_language english
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
-\extra_embedded_files ""
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -61,8 +102,10 @@ Simple
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\backslash foo\mbox{ should be }\backslash foo\]
+\begin_inset Formula 
+\[
+\backslash foo\mbox{ should be }\backslash foo
+\]
 
 \end_inset
 
@@ -87,8 +130,10 @@ Simple
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\foo\mbox{ should be }A\]
+\begin_inset Formula 
+\[
+\foo\mbox{ should be }A
+\]
 
 \end_inset
 
@@ -123,8 +168,10 @@ Redefinition
 \noun default
 \color inherit
 
-\begin_inset Formula \[
-B\mbox{ should be }B\]
+\begin_inset Formula 
+\[
+B\mbox{ should be }B
+\]
 
 \end_inset
 
@@ -200,7 +247,7 @@ Environment
 \begin_inset Note Note
 status open
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 \begin_inset Formula $\foo\mbox{ should be }D$
 \end_inset
 
@@ -211,7 +258,7 @@ status open
 Environment local Definitions
 \end_layout
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -515,14 +562,14 @@ Tables
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
-<column alignment="center" valignment="top" leftline="true" width="0">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 \begin_inset Formula $\foo\mbox{ should be }K$
 \end_inset
 
@@ -531,21 +578,21 @@ Tables
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 bla
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -577,10 +624,10 @@ bla
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -633,6 +680,10 @@ Let
 \color inherit
 
 \begin_inset Formula $\foo\mbox{ should be }M$
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -716,6 +767,10 @@ And furthermore let
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -786,9 +841,10 @@ Branch
 
 \begin_layout Standard
 \begin_inset Branch Branch1
+inverted 0
 status open
 
-\begin_layout PlainLayout
+\begin_layout Standard
 
 \family roman
 \series medium
@@ -832,9 +888,10 @@ status open
 
 \begin_layout Standard
 \begin_inset Branch Branch2
+inverted 0
 status open
 
-\begin_layout PlainLayout
+\begin_layout Standard
 
 \family roman
 \series medium
@@ -1013,7 +1070,7 @@ bold font block with an
 \begin_inset Note Comment
 status open
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 \series bold
 note 
@@ -1054,7 +1111,7 @@ bold font block with an
 \begin_inset Note Comment
 status open
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 note inset 
 \end_layout
 
@@ -1070,11 +1127,13 @@ InsetTexts
 \begin_layout Standard
 Float: 
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -1095,10 +1154,10 @@ status open
 
 \end_layout
 
-\begin_layout PlainLayout
-\begin_inset Caption
+\begin_layout Plain Layout
+\begin_inset Caption Standard
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -1119,7 +1178,7 @@ status open
 
 \end_layout
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -1133,11 +1192,12 @@ status open
 \end_layout
 
 \begin_layout Standard
-LyX-Note: 
+\SpecialChar LyX
+-Note: 
 \begin_inset Note Note
 status open
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -1181,7 +1241,7 @@ Comment:
 \begin_inset Note Comment
 status open
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -1225,7 +1285,7 @@ Greyed out:
 \begin_inset Note Greyedout
 status open
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 \family roman
 \series medium

@@ -1,48 +1,85 @@
-#LyX 1.5.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 295
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 572
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass scrartcl
 \begin_preamble
 \usepackage{a4wide}
 \end_preamble
-\options fleqn
+\use_default_options false
+\maintain_unincluded_children false
 \language ngerman
+\language_package default
 \inputencoding auto
-\font_roman ae
-\font_sans default
-\font_typewriter default
+\fontencoding auto
+\font_roman "ae" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \float_placement h
 \paperfontsize 12
 \spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 2
-\use_esint 0
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language german
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style german
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
+\tablestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
-
 
 \begin_body
 
@@ -71,9 +108,11 @@
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
@@ -81,247 +120,317 @@
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
 
-\begin_inset Formula \begin{align*}
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\\
-\xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]] & \xyz[1][\xyz[\xyz[\xyz[1][2]][2]][\xyz[1][2]]]\end{align*}
+\begin_inset Formula 
+\begin{align*}
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]\\
+\xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}] & \xyz[1][{\xyz[{\xyz[{\xyz[1][2]}][2]}][{\xyz[1][2]}]}]
+\end{align*}
 
 \end_inset
 
