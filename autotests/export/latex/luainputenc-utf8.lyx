@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 566
+\lyxformat 571
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -86,6 +86,7 @@ logicalmkup
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -182,7 +183,7 @@ literal "false"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "unicodesymbols/009-cyrillic_ru.lyx"
+filename "unicodesymbols/009-cyrillic.lyx"
 literal "false"
 
 \end_inset
@@ -193,8 +194,48 @@ literal "false"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "unicodesymbols/009-31-cyrillic-thai.lyx"
+filename "unicodesymbols/009-cyrillic_ru.lyx"
 literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset include
+LatexCommand input
+filename "unicodesymbols/012-31-hebrew_he-thai.lyx"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset include
+LatexCommand input
+filename "unicodesymbols/012-hebrew_he_HE8.lyx"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hebrew does not work with XeTeX and TeX-fonts:
+\end_layout
+
+\begin_layout Plain Layout
+Error 256 (driver return code) generating output; file 012-hebrew_he_HE8.pdf
+ may not be valid.
+\end_layout
 
 \end_inset
 
