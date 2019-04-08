@@ -140,22 +140,22 @@ const char * const known_old_language_packages[] = {"french", "frenchle",
 
 char const * const known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
-const char * const known_roman_fonts[] = { "ae", "beraserif", "bookman",
+const char * const known_roman_font_packages[] = { "ae", "beraserif", "bookman",
 "ccfonts", "chancery", "charter", "cmr", "cochineal", "crimson", "DejaVuSerif", "DejaVuSerifCondensed", "fourier",
 "garamondx", "libertine", "libertineRoman", "libertine-type1", "lmodern", "mathdesign", "mathpazo",
-"mathptmx", "MinionPro", "newcent", "NotoSerif-TLF", "PTSerif-TLF", "tgbonum", "tgchorus",
+"mathptmx", "MinionPro", "newcent", "noto", "noto-serif", "PTSerif", "tgbonum", "tgchorus",
 "tgpagella", "tgschola", "tgtermes", "utopia", "xcharter", 0 };
 
-const char * const known_sans_fonts[] = { "avant", "berasans", "biolinum",
+const char * const known_sans_font_packages[] = { "avant", "berasans", "biolinum",
 "biolinum-type1", "cmbr", "cmss", "DejaVuSans", "DejaVuSansCondensed", "helvet", "iwona", "iwonac", "iwonal", "iwonalc",
-"kurier", "kurierc", "kurierl", "kurierlc", "lmss", "NotoSans-TLF", "PTSans-TLF",
+"kurier", "kurierc", "kurierl", "kurierlc", "lmss", "noto", "noto-sans", "PTSans",
 "tgadventor", "tgheros", "uop", 0 };
 
-const char * const known_typewriter_fonts[] = { "beramono", "cmtl", "cmtt",
+const char * const known_typewriter_font_packages[] = { "beramono", "cmtl", "cmtt",
 "courier", "DejaVuSansMono", "lmtt", "luximono", "fourier", "libertineMono", "libertineMono-type1", "lmodern",
-"mathpazo", "mathptmx", "newcent", "NotoMono-TLF", "PTMono-TLF", "tgcursor", "txtt", 0 };
+"mathpazo", "mathptmx", "newcent", "noto", "noto-mono", "PTMono", "tgcursor", "txtt", 0 };
 
-const char * const known_math_fonts[] = { "eulervm", "newtxmath", 0};
+const char * const known_math_font_packages[] = { "eulervm", "newtxmath", 0};
 
 const char * const known_paper_sizes[] = { "a0paper", "b0paper", "c0paper",
 "a1paper", "b1paper", "c1paper", "a2paper", "b2paper", "c2paper", "a3paper",
@@ -740,7 +740,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	// roman fonts
-	if (is_known(name, known_roman_fonts))
+	if (is_known(name, known_roman_font_packages))
 		h_font_roman[0] = name;
 
 	if (name == "fourier") {
@@ -869,20 +869,21 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_font_roman[0] = "IBMPlexSerifSemibold";
 	}
 	if (name == "noto-serif") {
-		if (opts.empty())
-			h_font_roman[0] = "NotoSerifRegular";
-		else if (opts.find("thin") != string::npos)
-			h_font_roman[0] = "NotoSerifThin";
-		else if (opts.find("medium") != string::npos)
-			h_font_roman[0] = "NotoSerifMedium";
-		else if (opts.find("light") != string::npos)
-			h_font_roman[0] = "NotoSerifLight";
-		else if (opts.find("extralight") != string::npos)
-			h_font_roman[0] = "NotoSerifExtralight";
+		h_font_roman[0] = "NotoSerifRegular";
+		if (!opts.empty()) {
+			if (opts.find("thin") != string::npos)
+				h_font_roman[0] = "NotoSerifThin";
+			else if (opts.find("medium") != string::npos)
+				h_font_roman[0] = "NotoSerifMedium";
+			else if (opts.find("extralight") != string::npos)
+				h_font_roman[0] = "NotoSerifExtralight";
+			else if (opts.find("light") != string::npos)
+				h_font_roman[0] = "NotoSerifLight";
+		}
 	}
 
 	// sansserif fonts
-	if (is_known(name, known_sans_fonts)) {
+	if (is_known(name, known_sans_font_packages)) {
 		h_font_sans[0] = name;
 		if (options.size() >= 1) {
 			if (scale_as_percentage(opts, h_font_sf_scale[0]))
@@ -934,18 +935,21 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 	if (name == "noto-sans") {
 		h_font_sans[0] = "NotoSansRegular";
-		if (opts.find("medium") != string::npos)
-			h_font_sans[0] = "NotoSansMedium";
-		else if (opts.find("thin") != string::npos)
-			h_font_sans[0] = "NotoSansThin";
-		else if (opts.find("light") != string::npos)
-			h_font_sans[0] = "NotoSansLight";
-		else if (opts.find("extralight") != string::npos)
-			h_font_sans[0] = "NotoSansExtralight";
+		if (!opts.empty()) {
+			if (opts.find("medium") != string::npos)
+				h_font_sans[0] = "NotoSansMedium";
+			else if (opts.find("thin") != string::npos)
+				h_font_sans[0] = "NotoSansThin";
+			else if (opts.find("extralight") != string::npos)
+				h_font_sans[0] = "NotoSansExtralight";
+			else if (opts.find("light") != string::npos)
+				h_font_sans[0] = "NotoSansLight";
+		}
+
 	}
 
 	// typewriter fonts
-	if (is_known(name, known_typewriter_fonts)) {
+	if (is_known(name, known_typewriter_font_packages)) {
 		// fourier can be set as roman font _only_
 		// fourier as typewriter is handled in handling of \ttdefault
 		if (name != "fourier") {
@@ -1002,7 +1006,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 		h_font_osf = "true";
 
 	// math fonts
-	if (is_known(name, known_math_fonts))
+	if (is_known(name, known_math_font_packages))
 		h_font_math[0] = name;
 
 	if (name == "newtxmath") {
@@ -1028,8 +1032,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	// after the detection and handling of special cases, we can remove the
 	// fonts, otherwise they would appear in the preamble, see bug #7856
-	if (is_known(name, known_roman_fonts) || is_known(name, known_sans_fonts)
-		||	is_known(name, known_typewriter_fonts) || is_known(name, known_math_fonts))
+	if (is_known(name, known_roman_font_packages) || is_known(name, known_sans_font_packages)
+		||	is_known(name, known_typewriter_font_packages) || is_known(name, known_math_font_packages))
 		;
 	//"On". See the enum Package in BufferParams.h if you thought that "2" should have been "42"
 	else if (name == "amsmath" || name == "amssymb" || name == "cancel" ||
@@ -1893,19 +1897,19 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			bool const was_in_lyx_preamble = in_lyx_preamble;
 			// font settings
 			if (name == "\\rmdefault")
-				if (is_known(body, known_roman_fonts)) {
+				if (is_known(body, known_roman_font_packages)) {
 					h_font_roman[0] = body;
 					p.skip_spaces();
 					in_lyx_preamble = true;
 				}
 			if (name == "\\sfdefault")
-				if (is_known(body, known_sans_fonts)) {
+				if (is_known(body, known_sans_font_packages)) {
 					h_font_sans[0] = body;
 					p.skip_spaces();
 					in_lyx_preamble = true;
 				}
 			if (name == "\\ttdefault")
-				if (is_known(body, known_typewriter_fonts)) {
+				if (is_known(body, known_typewriter_font_packages)) {
 					h_font_typewriter[0] = body;
 					p.skip_spaces();
 					in_lyx_preamble = true;
