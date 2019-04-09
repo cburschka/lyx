@@ -1,12 +1,12 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 569
+\lyxformat 571
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass article
 \begin_preamble
-
+\usepackage{textalpha}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -15,8 +15,8 @@
 \inputencoding utf8
 \fontencoding auto
 \font_roman "lmodern" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -89,141 +89,56 @@
 \begin_body
 
 \begin_layout Subsection*
-12) Hebrew
-\end_layout
-
-\begin_layout Standard
-Babel-Hebrew defaults to the legacy font encoding LHE, that only supports
- the basic Hebrew alphabet.
- Hebrew 8-bit fonts are not part of TeXLive.
-\end_layout
-
-\begin_layout Standard
-590 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-
-\lang hebrew
-א֑ א֒ א֓ א֔ א֕ א֖ א֗ א֘ א֙ א֚ א֛ א֜ א֝ א֞ א֟ 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-5A0
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-
-\lang hebrew
-א֠ א֡ א֢ א֣ א֤ א֥ א֦ א֧ א֨ א֩ א֪ א֫ א֬ א֭ א֮ א֯ 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-5B0
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-
-\lang hebrew
-אֻ אּ אֽ ־ אֿ אְ אֱ אֲ אֳ אִ אֵ אֶ אַ אָ אֹ אֺ
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-5C0 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-
-\lang hebrew
-שׁ שׂ ׃ אׄ אׅ ׆ אׇ ׀
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-5D0 
-\lang hebrew
-א ב ג ד ה ו ז ח ט י ך כ ל ם מ ן 
-\end_layout
-
-\begin_layout Standard
-5E0 
-\lang hebrew
-נ ס ע ף פ ץ צ ק ר ש ת 
-\end_layout
-
-\begin_layout Standard
-5F0 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-
-\lang hebrew
-װ ױ ײ ׳ ״
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Subsection*
 31 Thai
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-3640 
-\begin_inset Branch na
-inverted 0
-status open
-
 \begin_layout Standard
-ุ ู ฺ
-\end_layout
-
+Thai characters require the font encoding (LTH).
+ Set as (document wide) custom encoding or set Thai text to the 
+\begin_inset Quotes eld
 \end_inset
 
- ฿ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-เ แ
-\end_layout
-
+thai
+\begin_inset Quotes erd
 \end_inset
 
- 
+ language.
+\end_layout
+
+\begin_layout Standard
+
+\lang thai
+E00 ก ข ฃ ค ฅ ฆ ง จ ฉ ช ซ ฌ ญ ฎ ฏ 
+\end_layout
+
+\begin_layout Standard
+
+\lang thai
+E10 ฐ ฑ ฒ ณ ด ต ถ ท ธ น บ ป ผ ฝ พ ฟ 
+\end_layout
+
+\begin_layout Standard
+
+\lang thai
+E20 ภ ม ย ร ฤ ล ฦ ว ศ ษ ส ห ฬ อ ฮ ฯ 
+\end_layout
+
+\begin_layout Standard
+
+\lang thai
+E30 วะ วั วา วำ วิ วี วึ วื วุ วู วฺ ฿ 
+\end_layout
+
+\begin_layout Standard
+
+\lang thai
+E40 เ แ โ ใ ไ ๅ ๆ ว็ ว่ ว้ ว๊ ว๋ ว์ วํ ว๎ ๏ 
+\end_layout
+
+\begin_layout Standard
+
+\lang thai
+E50 ๐ ๑ ๒ ๓ ๔ ๕ ๖ ๗ ๘ ๙ ๚ ๛ 
 \end_layout
 
 \end_body

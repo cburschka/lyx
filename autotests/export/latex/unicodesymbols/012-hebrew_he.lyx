@@ -6,14 +6,14 @@
 \origin unavailable
 \textclass article
 \begin_preamble
-\def\HeblatexEncoding{HE8}
+
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
 \language english
 \language_package default
 \inputencoding utf8
-\fontencoding HE8,T1
+\fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -89,7 +89,7 @@
 \begin_body
 
 \begin_layout Subsection*
-12 Hebrew
+12) Hebrew
 \end_layout
 
 \begin_layout Standard
@@ -101,12 +101,14 @@ hebrew
 \begin_inset Quotes erd
 \end_inset
 
- language in order to select the right font encoding.
+ language in order to select the right font encoding (LHE or HE8).
+ Hebrew 8-bit TeX fonts are not part of TeXLive.
 \end_layout
 
 \begin_layout Standard
-This document uses the nonstandard Hebrew font encoding HE8 that includes
- additional characters (see Document>Settings>Fonts and >User Preamble).
+Babel-Hebrew defaults to the legacy font encoding LHE, that only supports
+ the basic Hebrew alphabet.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -145,8 +147,6 @@ status open
 
 \begin_layout Standard
 5B0
-\lang hebrew
- אְ אֱ אֲ אֳ אִ אֵ אֶ אַ אָ אֹ 
 \begin_inset Branch na
 inverted 0
 status open
@@ -154,31 +154,16 @@ status open
 \begin_layout Standard
 
 \lang hebrew
-אֺ
+אֻ אּ אֽ ־ אֿ אְ אֱ אֲ אֳ אִ אֵ אֶ אַ אָ אֹ אֺ
 \end_layout
 
 \end_inset
 
- אֻ אּ אֽ ־ 
-\begin_inset Branch na
-inverted 0
-status open
 
-\begin_layout Standard
-
-\lang hebrew
-אֿ
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Standard
 5C0 
-\lang hebrew
-
 \begin_inset Branch na
 inverted 0
 status open
@@ -186,25 +171,12 @@ status open
 \begin_layout Standard
 
 \lang hebrew
-׀
+שׁ שׂ ׃ אׄ אׅ ׆ אׇ ׀
 \end_layout
 
 \end_inset
 
- שׁ שׂ ׃ 
-\begin_inset Branch na
-inverted 0
-status open
 
-\begin_layout Standard
-
-\lang hebrew
-אׄ אׅ ׆ אׇ
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Standard
@@ -221,8 +193,6 @@ status open
 
 \begin_layout Standard
 5F0 
-\lang hebrew
-װ ױ ײ 
 \begin_inset Branch na
 inverted 0
 status open
@@ -230,7 +200,7 @@ status open
 \begin_layout Standard
 
 \lang hebrew
-׳ ״
+װ ױ ײ ׳ ״
 \end_layout
 
 \end_inset

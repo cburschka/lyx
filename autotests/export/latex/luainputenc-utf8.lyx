@@ -209,7 +209,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset include
 LatexCommand input
-filename "unicodesymbols/012-31-hebrew_he-thai.lyx"
+filename "unicodesymbols/012-hebrew_he.lyx"
 literal "false"
 
 \end_inset
@@ -235,6 +235,31 @@ Hebrew does not work with XeTeX and TeX-fonts:
 \begin_layout Plain Layout
 Error 256 (driver return code) generating output; file 012-hebrew_he_HE8.pdf
  may not be valid.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset include
+LatexCommand input
+filename "unicodesymbols/031-thai_th.lyx"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Thai sets catcodes for characters in Latin-Supplement block leading to wrong
+ output there.
 \end_layout
 
 \end_inset

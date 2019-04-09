@@ -1100,6 +1100,7 @@
 #
 # 12 Hebrew
 #
+# requires font encoding LHE or HE8 ("texthebrew" feature?)
 # The "nikud" (vowel) signs, shindot, and shindot  are combining Unicode
 # characters. However, LaTeX-Hebrew expects them as postfix characters, not
 # accent macros (cf. www.cs.tau.ac.il/~stoledo/Bib/Pubs/vowels.pdf).
@@ -1163,7 +1164,95 @@
 #
 # 31 Thai
 #
-0x0e3f "\\textbaht"            "textcomp" "" # THAI CURRENCY SYMBOL BAHT
+# requires font encoding LTH ("textthai" feature?)
+# Combining characters are handled by the font.
+0x0e01 "\\thaiKoKai"          "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER KO KAI
+0x0e02 "\\thaiKhoKhai"        "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER KHO KHAI
+0x0e03 "\\thaiKhoKhuat"       "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER KHO KHUAT
+0x0e04 "\\thaiKhoKhwai"       "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER KHO KHWAI
+0x0e05 "\\thaiKhoKhon"        "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER KHO KHON
+0x0e06 "\\thaiKhoRakhang"     "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER KHO RAKHANG
+0x0e07 "\\thaiNgoNgu"         "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER NGO NGU
+0x0e08 "\\thaiChoChan"        "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER CHO CHAN
+0x0e09 "\\thaiChoChing"       "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER CHO CHING
+0x0e0a "\\thaiChoChang"       "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER CHO CHANG
+0x0e0b "\\thaiSoSo"           "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER SO SO
+0x0e0c "\\thaiChoChoe"        "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER CHO CHOE
+0x0e0d "\\thaiYoYing"         "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER YO YING
+0x0e0e "\\thaiDoChada"        "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER DO CHADA
+0x0e0f "\\thaiToPatak"        "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER TO PATAK
+0x0e10 "\\thaiThoThan"        "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER THO THAN
+0x0e11 "\\thaiThoNangmontho"  "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER THO NANGMONTHO
+0x0e12 "\\thaiThoPhuthao"     "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER THO PHUTHAO
+0x0e13 "\\thaiNoNen"          "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER NO NEN
+0x0e14 "\\thaiDoDek"          "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER DO DEK
+0x0e15 "\\thaiToTao"          "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER TO TAO
+0x0e16 "\\thaiThoThung"       "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER THO THUNG
+0x0e17 "\\thaiThoThahan"      "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER THO THAHAN
+0x0e18 "\\thaiThoThong"       "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER THO THONG
+0x0e19 "\\thaiNoNu"           "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER NO NU
+0x0e1a "\\thaiBoBaimai"       "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER BO BAIMAI
+0x0e1b "\\thaiPoPla"          "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER PO PLA
+0x0e1c "\\thaiPhoPhung"       "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER PHO PHUNG
+0x0e1d "\\thaiFoFa"           "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER FO FA
+0x0e1e "\\thaiPhoPhan"        "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER PHO PHAN
+0x0e1f "\\thaiFoFan"          "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER FO FAN
+0x0e20 "\\thaiPhoSamphao"     "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER PHO SAMPHAO
+0x0e21 "\\thaiMoMa"           "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER MO MA
+0x0e22 "\\thaiYoYak"          "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER YO YAK
+0x0e23 "\\thaiRoRua"          "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER RO RUA
+0x0e24 "\\thaiRu"             "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER RU
+0x0e25 "\\thaiLoLing"         "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER LO LING
+0x0e26 "\\thaiLu"             "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER LU
+0x0e27 "\\thaiWoWaen"         "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER WO WAEN
+0x0e28 "\\thaiSoSala"         "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER SO SALA
+0x0e29 "\\thaiSoRusi"         "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER SO RUSI
+0x0e2a "\\thaiSoSua"          "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER SO SUA
+0x0e2b "\\thaiHoHip"          "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER HO HIP
+0x0e2c "\\thaiLoChula"        "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER LO CHULA
+0x0e2d "\\thaiOAng"           "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER O ANG
+0x0e2e "\\thaiHoNokhuk"       "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER HO NOKHUK
+0x0e2f "\\thaiPaiyannoi"      "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER PAIYANNOI
+0x0e30 "\\thaiSaraA"          "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER SARA A
+0x0e31 "\\thaiMaiHanakat"     "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER MAI HAN-AKAT
+0x0e32 "\\thaiSaraAa"         "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER SARA AA
+0x0e33 "\\thaiSaraAm"         "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER SARA AM
+0x0e34 "\\thaiSaraI"          "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER SARA I
+0x0e35 "\\thaiSaraIi"         "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER SARA II
+0x0e36 "\\thaiSaraUe"         "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER SARA UE
+0x0e37 "\\thaiSaraUee"        "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER SARA UEE
+0x0e38 "\\thaiSaraU"          "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER SARA U
+0x0e39 "\\thaiSaraUu"         "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER SARA UU
+0x0e3a "\\thaiPhinthu"        "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER PHINTHU
+0x0e3f "\\textbaht"           "textcomp" "" # THAI CURRENCY SYMBOL BAHT
+0x0e40 "\\thaiSaraE"          "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER SARA E
+0x0e41 "\\thaiSaraAe"         "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER SARA AE
+0x0e42 "\\thaiSaraO"          "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER SARA O
+0x0e43 "\\thaiSaraAiMaimuan"  "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER SARA AI MAIMUAN
+0x0e44 "\\thaiSaraAiMaimalai" "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER SARA AI MAIMALAI
+0x0e45 "\\thaiLakkhangyao"    "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER LAKKHANGYAO
+0x0e46 "\\thaiMaiyamok"       "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER MAIYAMOK
+0x0e47 "\\thaiMaitaikhu"      "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER MAITAIKHU
+0x0e48 "\\thaiMaiEk"          "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER MAI EK
+0x0e49 "\\thaiMaiTho"         "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER MAI THO
+0x0e4a "\\thaiMaiTri"         "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER MAI TRI
+0x0e4b "\\thaiMaiChattawa"    "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER MAI CHATTAWA
+0x0e4c "\\thaiThanthakhat"    "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER THANTHAKHAT
+0x0e4d "\\thaiNikhahit"       "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER NIKHAHIT
+0x0e4e "\\thaiYamakkan"       "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER YAMAKKAN
+0x0e4f "\\thaiFongman"        "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER FONGMAN
+0x0e50 "\\thaizero"           "" "force=utf8;utf8-cjk" "" "" # THAI DIGIT ZERO
+0x0e51 "\\thaione"            "" "force=utf8;utf8-cjk" "" "" # THAI DIGIT ONE
+0x0e52 "\\thaitwo"            "" "force=utf8;utf8-cjk" "" "" # THAI DIGIT TWO
+0x0e53 "\\thaithree"          "" "force=utf8;utf8-cjk" "" "" # THAI DIGIT THREE
+0x0e54 "\\thaifour"           "" "force=utf8;utf8-cjk" "" "" # THAI DIGIT FOUR
+0x0e55 "\\thaifive"           "" "force=utf8;utf8-cjk" "" "" # THAI DIGIT FIVE
+0x0e56 "\\thaisix"            "" "force=utf8;utf8-cjk" "" "" # THAI DIGIT SIX
+0x0e57 "\\thaiseven"          "" "force=utf8;utf8-cjk" "" "" # THAI DIGIT SEVEN
+0x0e58 "\\thaieight"          "" "force=utf8;utf8-cjk" "" "" # THAI DIGIT EIGHT
+0x0e59 "\\thainine"           "" "force=utf8;utf8-cjk" "" "" # THAI DIGIT NINE
+0x0e5a "\\thaiAngkhankhu"     "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER ANGKHANKHU
+0x0e5b "\\thaiKhomut"         "" "force=utf8;utf8-cjk" "" "" # THAI CHARACTER KHOMUT
 #
 # 65 Phonetic Extensions
 #

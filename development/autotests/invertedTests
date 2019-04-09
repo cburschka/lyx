@@ -110,10 +110,6 @@ export/export/latex/6197-polish-amssymb_pdf._texF
 # (For some reason, the false positive error is not thrown with PDF (luatex).)
 export/examples/sr/Modules/Braille_(dvi3|pdf4)_systemF
 
-# Missing 8-bit fonts (see unreliableTests)
-# After reinstalling culmus under the TL19 control, it compiles
-#export/export/latex/unicodesymbols/012-31-hebrew_he-.*_pdf2
-
 #9871 LyX sends invalid Unicode to iconv when converting to ASCII
 # most probably due to BabelPreamble code (language specific headings for
 # theorems, problems , ... are written in the language's default encoding
@@ -314,6 +310,14 @@ export/.*/he/.*_texF
 
 # See comment in unreliableTests
 export/export/latex/uk-babel-date-missing-chars-with-ascii_pdf5_texF
+
+# Missing 8-bit fonts (see unreliableTests)
+# After reinstalling culmus under the TL19 control, it compiles
+#export/export/latex/unicodesymbols/012-31-hebrew_he-.*_pdf2
+
+# Thai with CJK package requires the babel option "thaicjk" instead of "thai".
+# see thaifont.txt for setup details.
+export/export/latex/unicodesymbols/031-thai_th_(euc-|gbk|jis|utf8-cjk).*
 
 
 # ================================================

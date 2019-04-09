@@ -4381,11 +4381,25 @@ LangCode th_TH
 \end_layout
 
 \begin_layout Itemize
-The input encoding must support Thai characters.
+Non-ASCII characters are not parsed by 
+\emph on
+inputenc 
+\emph default
+because Babel-Thai’s “thai.ldf” changes character categories (catcode) 
+\series bold
+globally
+\series default
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+tested with version 1.8 (2013/03/31)
 \end_layout
 
-\begin_layout Itemize
-If the input encoding is set to 
+\end_inset
+
+ If the input encoding is set to 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4393,23 +4407,15 @@ language default
 \begin_inset Quotes erd
 \end_inset
 
-, some high bit characters are mixed up in the output.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Up to version 2013/03/31 v1.8, Babel’s “thai.ldf” changes character categories
- and the definitions for up-/dowcasing of letters (catcode, uccode, lccode)
- 
-\series bold
-globally
-\series default
-.
-\end_layout
-
+, some high bit characters are mixed up in the output, with 
+\begin_inset Quotes eld
 \end_inset
 
+utf8
+\begin_inset Quotes erd
+\end_inset
 
+, non-ASCII characters (except Thai) are wrong or lead to compilation errors.
 \end_layout
 
 \begin_deeper
