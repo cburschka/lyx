@@ -489,7 +489,11 @@ void GuiPainter::text(int x, int y, docstring const & str, Font const & f,
 	int const height = fm.maxAscent() + fm.maxDescent();
 	int xmin = fm.pos2x(str, from, dir == RtL, wordspacing);
 	int xmax = fm.pos2x(str, to, dir == RtL, wordspacing);
-	if (xmin > xmax)
+	// Avoid this case, since it would make the `other' text spill in some cases
+	if (xmin == xmax) {
+		text(x, y, str, fi, dir, wordspacing, tw);
+		return;
+	} else if (xmin > xmax)
 		swap(xmin, xmax);
 
 	// First the part in other color
