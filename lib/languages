@@ -1350,11 +1350,17 @@ Language thai
 	FontEncoding     LTH
 	DateFormats      "dd MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
 	LangCode         th_TH
+	PostBabelPreamble
+	  % restore \coyright definition corrupted by lthenc.def
+          \DeclareRobustCommand{\copyright}{%
+            \ifmmode{\nfss@text{\textcopyright}}\else\textcopyright\fi}
+	  \DeclareTextSymbol{\textcopyright}{LTH}{8}
+	EndPostBabelPreamble
 	# Fixme: load font package?
 	# +1 support for font attributes in thai emphasizing etc.
-	# -1 conflict with custom font settings and other languages' fonts
+	# -1 forces ComputerModern as "non-thai" font
 	# PostBabelPreamble
-	# \usepackage{fonts-tlwg}
+	#   \usepackage{fonts-tlwg}
 	# EndPostBabelPreamble
 End
 

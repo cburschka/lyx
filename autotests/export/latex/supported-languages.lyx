@@ -1,24 +1,22 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 569
+\lyxformat 571
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass scrartcl
 \begin_preamble
-%\usepackage{fonts-tlwg}
-
 \def\HeblatexEncoding{HE8}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
 \language english
-\language_package default
-\inputencoding auto
+\language_package auto
+\inputencoding utf8
 \fontencoding HE8,T1
-\font_roman "DejaVuSerif" "default"
-\font_sans "DejaVuSans" "default"
-\font_typewriter "DejaVuSansMono" "default"
+\font_roman "libertine" "FreeSerif"
+\font_sans "biolinum" "FreeSans"
+\font_typewriter "default" "FreeMono"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -76,7 +74,7 @@
 \color #faf0e6
 \end_branch
 \branch babel-only
-\selected 1
+\selected 0
 \filename_suffix 0
 \color #faf0e6
 \end_branch
@@ -92,6 +90,26 @@
 \end_branch
 \branch conflict
 \selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch debug
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch conflict-rus-belarus
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch conflict-es-gl
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch conflict-bg-mk
+\selected 1
 \filename_suffix 0
 \color #faf0e6
 \end_branch
@@ -125,6 +143,11 @@ Languages supported by LyX.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Branch debug
+inverted 0
+status open
+
+\begin_layout Standard
 The language is 
 \begin_inset Quotes eld
 \end_inset
@@ -146,7 +169,7 @@ languagename
 \begin_inset Quotes erd
 \end_inset
 
- but the input encoding 
+, the input encoding 
 \begin_inset Quotes eld
 \end_inset
 
@@ -179,7 +202,11 @@ status open
 
 
 \backslash
-encodingdefault
+makeatletter
+\backslash
+f@encoding
+\backslash
+makeatother
 \end_layout
 
 \end_inset
@@ -189,7 +216,70 @@ encodingdefault
 \end_inset
 
 .
- Da kommt größter Mist raus!
+ 
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+A0   ¡ ¢ £ ¤ ¥ ¦ § 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¨
+\end_layout
+
+\end_inset
+
+ © ª « ¬ ® 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¯
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+B0 ° ± ² ³ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+´
+\end_layout
+
+\end_inset
+
+ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿
+\end_layout
+
+\begin_layout Standard
+C0 À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï
+\end_layout
+
+\begin_layout Standard
+D0 Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß
+\end_layout
+
+\begin_layout Standard
+E0 à á â ã ä å æ ç è é ê ë ì í î ï
+\end_layout
+
+\begin_layout Standard
+F0 ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
@@ -206,7 +296,7 @@ Babel afrikaans
 LangCode af_ZA
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 \begin_inset Branch babel-only
 inverted 0
 status open
@@ -245,7 +335,18 @@ Polyglossia albanian
 LangCode sq_AL
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+albanian.ldf
+\begin_inset Quotes erd
+\end_inset
+
+ (re)defines document-wide the functions
+\end_layout
+
+\begin_layout Quote
 
 \emph on
 \lang albanian
@@ -297,7 +398,7 @@ RTL true
 LangCode ar_SA
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang arabic_arabi
 اللُّغَة العَرَبِيّة هي أكثر اللغات تحدثاً ونطقاً ضمن مجموعة اللغات السامية،
@@ -335,7 +436,7 @@ LangCode ar_SA
 Does not work as secondary language
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 \begin_inset Branch not-as-secondary-language
 inverted 0
 status open
@@ -401,7 +502,7 @@ Polyglossia basque
 LangCode eu_ES
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang basque
@@ -441,8 +542,13 @@ Package babel Error: if@uni@ode already defined.
 \end_layout
 
 \end_deeper
-\begin_layout Standard
+\begin_layout Quote
 \begin_inset Branch babel-only
+inverted 0
+status open
+
+\begin_layout Standard
+\begin_inset Branch conflict-rus-belarus
 inverted 0
 status open
 
@@ -455,6 +561,11 @@ status open
  — загрожаная мова ўсходняе групы славянскае галіны індаэўрапейскае сям’і
  моваў, на якой размаўляюць беларусы і частка прадстаўнікоў этнічных мяншыняў
  Беларусі.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -476,6 +587,11 @@ Babel bosnian
 LangCode bs_BA
 \end_layout
 
+\begin_layout Quote
+\begin_inset Branch babel-only
+inverted 0
+status open
+
 \begin_layout Standard
 
 \emph on
@@ -485,6 +601,11 @@ Bosanski jezik
  je južnoslavenski standardni jezik zasnovan na štokavskom narječju koji
  koriste uglavnom Bošnjaci, ali i značajan broj ostalih osoba bosanskohercegovač
 kog porijekla.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
@@ -506,7 +627,7 @@ Polyglossia breton
 LangCode br_FR
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang breton
 Ur yezh keltiek a orin eus an Enez Vreizh (Breizh-Veur/Preden) hag eus skourr
@@ -541,6 +662,13 @@ LangCode bg_BG
 Provides textcyrillic
 \end_layout
 
+\begin_layout Quote
+
+\emph on
+\begin_inset Branch conflict-bg-mk
+inverted 0
+status open
+
 \begin_layout Standard
 
 \emph on
@@ -550,7 +678,150 @@ Provides textcyrillic
  е индоевропейски език от групата на южнославянските езици.
  Той е официалният език на Република България и един от 23-те официални
  езика на Европейския съюз.
- 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch debug
+inverted 0
+status collapsed
+
+\begin_layout Standard
+The language is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+languagename
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, the input encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+inputencodingname
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ and the font encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+makeatletter
+\backslash
+f@encoding
+\backslash
+makeatother
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+A0   ¡ ¢ £ ¤ ¥ ¦ § 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¨
+\end_layout
+
+\end_inset
+
+ © ª « ¬ ® 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¯
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+B0 ° ± ² ³ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+´
+\end_layout
+
+\end_inset
+
+ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿
+\end_layout
+
+\begin_layout Standard
+C0 À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï
+\end_layout
+
+\begin_layout Standard
+D0 Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß
+\end_layout
+
+\begin_layout Standard
+E0 à á â ã ä å æ ç è é ê ë ì í î ï
+\end_layout
+
+\begin_layout Standard
+F0 ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
@@ -572,11 +843,14 @@ Polyglossia catalan [babelshorthands=true]
 LangCode ca_ES
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
+\emph on
 \lang catalan
-Català: Llengua històricament parlada a Catalunya, Andorra, País Valencià,
- les illes Balears, la Catalunya Nord, l'Alguer i la Franja de Ponent.
+Català
+\emph default
+: Llengua històricament parlada a Catalunya, Andorra, País Valencià, les
+ illes Balears, la Catalunya Nord, l'Alguer i la Franja de Ponent.
 \end_layout
 
 \begin_layout Subsection*
@@ -656,8 +930,7 @@ Coptic
 Polyglossia coptic
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 LangCode cop_EG
 \end_layout
 
@@ -680,7 +953,7 @@ Polyglossia croatian
 LangCode hr_HR
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang croatian
@@ -709,7 +982,7 @@ Polyglossia czech
 LangCode cs_CZ
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang czech
@@ -739,7 +1012,7 @@ Polyglossia danish
 LangCode da_DK
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang danish
@@ -788,7 +1061,7 @@ Polyglossia dutch [babelshorthands=true]
 LangCode nl_NL
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang dutch
 Het 
@@ -951,7 +1224,7 @@ Polyglossia esperanto
 LangCode eo_EO (no country code but name of hunspell dictionary)
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang esperanto
@@ -983,7 +1256,7 @@ Polyglossia estonian
 LangCode et_EE
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang estonian
@@ -993,13 +1266,10 @@ Eesti keel
  Selle lähemad sugulased on läänemeresoome keeled vadja ja liivi keel.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang estonian
 Tähed f, š, z ja ž esinevad ainult võõrsõnades (nt šokolaad).
-
-\lang english
- 
 \end_layout
 
 \begin_layout Subsection*
@@ -1034,6 +1304,21 @@ LangCode fa_IR
  ببینید.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LyX-Bug: Putting the above paragraph into a Quote environment de-synchronizes
+ LaTeX's and LyX's idea about inputencoding and subsequent non-ASCII characters
+ fail.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection*
 Finnish 
 \end_layout
@@ -1053,7 +1338,7 @@ Polyglossia finnish
 LangCode fi_FI
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang finnish
@@ -1084,7 +1369,7 @@ Polyglossia french
 LangCode fr_FR
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang french
 Le 
@@ -1140,7 +1425,7 @@ Polyglossia friulan
 LangCode fur_IT
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang friulan
 Il 
@@ -1149,7 +1434,6 @@ furlan
 \emph default
  e je une lenghe romanze de famee des lenghis retichis, che e je fevelade
  soredut intal Friûl, ma ancje vie pal mont.
- 
 \end_layout
 
 \begin_layout Subsection*
@@ -1171,6 +1455,11 @@ Polyglossia galician
 LangCode gl_ES
 \end_layout
 
+\begin_layout Quote
+\begin_inset Branch conflict-es-gl
+inverted 0
+status open
+
 \begin_layout Standard
 
 \lang galician
@@ -1180,6 +1469,11 @@ galego
 \emph default
  é a lingua románica propia da nacionalidade histórica de Galicia, onde
  é usada de xeito habitual por máis de dous millóns de persoas.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
@@ -1218,6 +1512,13 @@ georgian
 Works with Babel and non-TeX fonts (Xe/LuaTeX)
 \end_layout
 
+\begin_layout Quote
+
+\emph on
+\begin_inset Branch babel-only
+inverted 0
+status open
+
 \begin_layout Standard
 
 \emph on
@@ -1234,6 +1535,11 @@ status open
  — ქართველების მშობლიური ენა, საქართველოს სახელმწიფო ენა (აფხაზეთის ავტონომიურ
  რესპუბლიკაში, მასთან ერთად სახელმწიფო ენად აღიარებულია აფხაზური ენა).
  ქართულ ენაზე 5 მილიონზე მეტი ადამიანი ლაპარაკობს.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1260,10 +1566,31 @@ Polyglossia german [variant=german,spelling=new,babelshorthands=true]
 LangCode de_DE
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang ngerman
-Grüße aus Großschönau!
+Die 
+\emph on
+deutsche Sprache
+\emph default
+ bzw.
+ 
+\emph on
+Deutsch
+\emph default
+ ist eine westgermanische Sprache.
+\end_layout
+
+\begin_layout Quote
+
+\lang ngerman
+Ihr Sprachraum umfasst Deutschland, Österreich, die Deutschschweiz, Liechtenstei
+n, Luxemburg, Ostbelgien, Südtirol, das Elsass und Lothringen sowie Nordschleswi
+g.
+ Außerdem ist sie eine Minderheitensprache in einigen europäischen und außereuro
+päischen Ländern, z.
+ B.
+ in Rumänien und Südafrika, sowie Nationalsprache im afrikanischen Namibia.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1293,6 +1620,12 @@ Polyglossia german [variant=german,spelling=old,babelshorthands=true]
 LangCode de_DE-1901
 \end_layout
 
+\begin_layout Quote
+
+\lang german
+Für alle, die die Rechtschreibreform 1996 für puren Stuß halten.
+\end_layout
+
 \begin_layout Subsubsection*
 German
 \begin_inset space ~
@@ -1316,7 +1649,7 @@ Polyglossia german [variant=austrian,spelling=new,babelshorthands=true]
 LangCode de_AT
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang naustrian
 Grüße aus Wien!
@@ -1386,7 +1719,7 @@ Polyglossia german [variant=swiss,spelling=new,babelshorthands=true]
 LangCode de_CH
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang german-ch
 Grüße aus Zürich!
@@ -1467,7 +1800,7 @@ LangCode el_GR
 Provides textgreek
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang greek
 Η 
@@ -1589,7 +1922,7 @@ RTL true
 LangCode he_IL
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang hebrew
 עִבְרִית היא שפה שמית, ממשפחת השפות האפרו-אסיאתיות, הידועה כשפתם של היהודים
@@ -1633,13 +1966,152 @@ LangCode he_IL
 status open
 
 \begin_layout Plain Layout
-Dummy paragraph to reset the input encoding 
+Dummy paragraph to reset the input encoding
 \end_layout
 
 \begin_layout Plain Layout
 LyX-Bug: Sometimes, an inputencoding switch is limited to a group by LaTeX
  but LyX does not take this into account and subsequent non-ASCII characters
  fail.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch debug
+inverted 0
+status collapsed
+
+\begin_layout Standard
+The language is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+languagename
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, the input encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+inputencodingname
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ and the font encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+makeatletter
+\backslash
+f@encoding
+\backslash
+makeatother
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+A0   ¡ ¢ £ ¤ ¥ ¦ § 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¨
+\end_layout
+
+\end_inset
+
+ © ª « ¬ ® 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¯
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+B0 ° ± ² ³ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+´
+\end_layout
+
+\end_inset
+
+ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿
+\end_layout
+
+\begin_layout Standard
+C0 À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï
+\end_layout
+
+\begin_layout Standard
+D0 Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß
+\end_layout
+
+\begin_layout Standard
+E0 à á â ã ä å æ ç è é ê ë ì í î ï
+\end_layout
+
+\begin_layout Standard
+F0 ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
 \end_layout
 
 \end_inset
@@ -1682,10 +2154,10 @@ LangCode is_IS
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-FontEncoding: T1 (OT1 misses ð and Þ)
+FontEncoding: T1 (OT1 misses ð and Þ) 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang icelandic
@@ -1721,7 +2193,7 @@ Polyglossia bahasai
 LangCode id_IDl
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang bahasa
@@ -1750,7 +2222,7 @@ Polyglossia interlingua
 LangCode ia_IA (no country code but name of hunspell dictionary)
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang interlingua
@@ -1781,7 +2253,7 @@ Polyglossia irish
 LangCode ga_IE
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang irish
 Is ceann de na teangacha Ceilteacha í 
@@ -1790,9 +2262,6 @@ an Ghaeilge
 \emph default
 , agus ceann den dtrí cinn de theangacha Ceilteacha ar a dtugtar na teangacha
  Gaelacha go háirithe.
-
-\lang english
- 
 \end_layout
 
 \begin_layout Subsection*
@@ -1911,6 +2380,35 @@ The different CJK languages (simplified and traditional Chinese, Japanese,
 Package clash CJK / Arabi
 \end_layout
 
+\begin_layout Itemize
+The 
+\begin_inset Quotes eld
+\end_inset
+
+language default
+\begin_inset Quotes erd
+\end_inset
+
+ encoding does not work with fonts in Debian's texlive-lang-japanese.
+ Use 
+\begin_inset Quotes eld
+\end_inset
+
+utf8
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+utf8-cjk
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsection*
 Kannada
 \end_layout
@@ -1940,23 +2438,72 @@ LangCode kk_KZ
 \end_layout
 
 \begin_layout Itemize
-Not supported by Babel nor Polyglossia.
+Not supported by Babel nor Polyglossia, setting text to 
+\begin_inset Quotes eld
+\end_inset
+
+Kazakh
+\begin_inset Quotes erd
+\end_inset
+
+ only affects spell-checking.
 \end_layout
 
 \begin_layout Itemize
-Bug: LyX sets font encoding to T2A (Cyrillic) as 
-\series bold
-main
-\series default
- font encoding.
- Don't set the text language for text parts!
+LyX-bug: Polyglossia cannot be used if a document contains text marked up
+ as 
+\begin_inset Quotes eld
+\end_inset
+
+Kazakh
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
+\begin_layout Itemize
+Setting text to this language has only effect on spell-checking
+\end_layout
+
+\begin_layout Itemize
+For documents in Kazakh only, you may replace LyX's auto-wrapper in 
+\begin_inset Quotes eld
+\end_inset
+
+textcyrillic
+\begin_inset Quotes erd
+\end_inset
+
+ by setting the document font encoding to 
+\begin_inset Quotes eld
+\end_inset
+
+Custom T2A
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Quote
+
+\lang kazakh
+\begin_inset Branch babel-only
+inverted 0
+status open
+
 \begin_layout Standard
+
+\lang kazakh
 Қазақ тілі (латын: qazaq tili) — Қазақстан Республикасының мемлекеттік тілі,
  сонымен қатар Ресей, Өзбекстан, Қытай, Моңғолия жəне т.б.
  елдерде тұратын қазақтардың ана тілі.
- 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
@@ -2023,12 +2570,198 @@ LangCode kmr
 \end_layout
 
 \begin_layout Standard
+\begin_inset Branch babel-only
+inverted 0
+status open
+
+\begin_layout Standard
 
 \lang kurmanji
+\begin_inset space \qquad{}
+\end_inset
+
 Kurmancî an kurmanciya jorîn yek ji zaravayên zimanê kurdî ye.
+
+\lang english
+ 
 \end_layout
 
-\begin_layout Subsection*
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This should be a quote but this fails with 
+\begin_inset Quotes eld
+\end_inset
+
+inputenc auto
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+LaTeX/LyX-Bug: Normally, the switch with 
+\backslash
+inputencoding is limited to a group/environment, e.g.
+ a Quote.
+ However, 
+\backslash
+inputencoding{ut8} seems to be an exception requiring an explicit re-set.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch debug
+inverted 0
+status open
+
+\begin_layout Standard
+The language is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+languagename
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, the input encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+inputencodingname
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ and the font encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+makeatletter
+\backslash
+f@encoding
+\backslash
+makeatother
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+A0   ¡ ¢ £ ¤ ¥ ¦ § 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¨
+\end_layout
+
+\end_inset
+
+ © ª « ¬ ® 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¯
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+B0 ° ± ² ³ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+´
+\end_layout
+
+\end_inset
+
+ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿
+\end_layout
+
+\begin_layout Standard
+C0 À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï
+\end_layout
+
+\begin_layout Standard
+D0 Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß
+\end_layout
+
+\begin_layout Standard
+E0 à á â ã ä å æ ç è é ê ë ì í î ï
+\end_layout
+
+\begin_layout Standard
+F0 ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Lao
 \end_layout
 
@@ -2061,7 +2794,7 @@ Polyglossia latin
 LangCode la_LA (no country code but name of hunspell dictionary)
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang latin
@@ -2102,13 +2835,12 @@ AsBabelOptions true
 FontEncoding: L7x required for hyphenation but not set by Babel
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang latvian
 Latviešu valoda ir dzimtā valoda apmēram 1,7 miljoniem cilvēku, galvenokārt
  Latvijā, kur tā ir vienīgā valsts valoda.
  Latviešu valoda pieder pie indoeiropiešu valodu saimes baltu valodu grupas.
- 
 \end_layout
 
 \begin_layout Subsection*
@@ -2136,11 +2868,11 @@ LangCode lt_LT
 \end_layout
 
 \begin_layout Itemize
-The L7x font encoding is not much supported.
- In LyX by LatinModern and TeX-Gyre fonts.
+The L7x font encoding is supported by just a few fonts, e.g.
+ LatinModern and TeX-Gyre.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang lithuanian
@@ -2154,7 +2886,8 @@ s lietuvių kalbos salos).
 \end_layout
 
 \begin_layout Standard
-Bug: The font encoding must be manually re-set after Lithuanian text parts.
+Bug/TODO: The font encoding must be manually re-set after Lithuanian text
+ parts.
  
 \begin_inset ERT
 status open
@@ -2166,6 +2899,145 @@ status open
 fontencoding{T1}
 \backslash
 selectfont
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch debug
+inverted 0
+status open
+
+\begin_layout Standard
+The language is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+languagename
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, the input encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+inputencodingname
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ and the font encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+makeatletter
+\backslash
+f@encoding
+\backslash
+makeatother
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+A0   ¡ ¢ £ ¤ ¥ ¦ § 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¨
+\end_layout
+
+\end_inset
+
+ © ª « ¬ ® 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¯
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+B0 ° ± ² ³ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+´
+\end_layout
+
+\end_inset
+
+ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿
+\end_layout
+
+\begin_layout Standard
+C0 À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï
+\end_layout
+
+\begin_layout Standard
+D0 Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß
+\end_layout
+
+\begin_layout Standard
+E0 à á â ã ä å æ ç è é ê ë ì í î ï
+\end_layout
+
+\begin_layout Standard
+F0 ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
 \end_layout
 
 \end_inset
@@ -2196,7 +3068,7 @@ Polyglossia lsorbian
 LangCode dsb_DE
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang lowersorbian
@@ -2208,7 +3080,6 @@ dolnoserbska rěc
 \emph default
  jo jadna z dweju rěcowu Serbow, kotaraž se wužywa w Dolnej Łužycy, w pódpołdnjo
 wej Bramborskej, na pódzajtšu Nimskej.
- 
 \end_layout
 
 \begin_layout Subsection*
@@ -2230,7 +3101,7 @@ Polyglossia magyar
 LangCode hu_HU
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang magyar
 A 
@@ -2262,9 +3133,14 @@ LangCode mk_MK
 Provides textcyrillic
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 \begin_inset Branch babel-only
 inverted 0
+status open
+
+\begin_layout Standard
+\begin_inset Branch conflict-bg-mk
+inverted 1
 status open
 
 \begin_layout Standard
@@ -2276,6 +3152,11 @@ status open
  — јужнословенски јазик, дел од групата на словенски јазици од јазичното
  семејство на индоевропски јазици.
  Македонскиот е службен и национален јазик во Македонија.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2302,7 +3183,7 @@ Polyglossia bahasam
 LangCode ms_MY
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang bahasam
@@ -2327,7 +3208,7 @@ Polyglossia malayalam
 LangCode ml_IN
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 \begin_inset Branch polyglossia-only
 inverted 0
 status open
@@ -2390,11 +3271,45 @@ status open
 \begin_layout Standard
 
 \lang mongolian
+\begin_inset space \qquad{}
+\end_inset
+
 Монгол үндэстний эрт эдүгээ цагийн хэл аялгуу, үсэг бичгийг хамтад нь 
 \emph on
 Монгол хэл
 \emph default
  бичиг гэнэ.
+ 
+\lang english
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This should be a quote but this fails with 
+\begin_inset Quotes eld
+\end_inset
+
+inputenc auto
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+LaTeX/LyX-Bug: Normally, the switch with 
+\backslash
+inputencoding is limited to a group/environment, e.g.
+ a Quote.
+ However, 
+\backslash
+inputencoding{ut8} seems to be an exception requiring an explicit re-set.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2429,7 +3344,7 @@ Polyglossia norsk
 LangCode nb_NO
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang norsk
@@ -2464,7 +3379,7 @@ Polyglossia nynorsk
 LangCode nn_NO
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang nynorsk
@@ -2480,7 +3395,6 @@ landsmål
 
 mai 1885 ei av to offisielle målformer av norsk; den andre forma er bokmål.
  Nynorsk blir i dag nytta av om lag 10–15% av innbyggjarane i Noreg.
- 
 \end_layout
 
 \begin_layout Subsection*
@@ -2516,7 +3430,7 @@ Polyglossia piedmontese
 LangCode pms_IT
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang piedmontese
 Ël piemontèis a l'é na lenga romanza, visadì derivà dal latin.
@@ -2546,14 +3460,14 @@ FontEncoding: QX (required for hyphenation but not set by babel)
 LangCode pl_PL
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
+\lang polish
 Język polski, polszczyzna
 \emph default
  – język naturalny należący do grupy języków zachodniosłowiańskich, stanowiącej
  część rodziny języków indoeuropejskich.
- 
 \end_layout
 
 \begin_layout Subsection*
@@ -2580,7 +3494,7 @@ Polyglossia portuges
 LangCode pt_PT
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang portuguese
 A 
@@ -2637,7 +3551,7 @@ Polyglossia romanian
 LangCode ro_RO
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang romanian
@@ -2673,7 +3587,7 @@ Polyglossia romansh
 LangCode rm_CH
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang romansh
 Il 
@@ -2719,9 +3633,9 @@ Package babel Error: if@uni@ode already defined.
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-\begin_inset Branch conflict
-inverted 0
+\begin_layout Quote
+\begin_inset Branch conflict-rus-belarus
+inverted 1
 status open
 
 \begin_layout Standard
@@ -2730,6 +3644,145 @@ status open
 Ру́сский язы́к — один из восточнославянских языков, национальный язык русского
  народа.
  Является одним из наиболее распространённых языков мира.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch debug
+inverted 0
+status open
+
+\begin_layout Standard
+The language is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+languagename
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, the input encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+inputencodingname
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ and the font encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+makeatletter
+\backslash
+f@encoding
+\backslash
+makeatother
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+A0   ¡ ¢ £ ¤ ¥ ¦ § 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¨
+\end_layout
+
+\end_inset
+
+ © ª « ¬ ® 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¯
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+B0 ° ± ² ³ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+´
+\end_layout
+
+\end_inset
+
+ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿
+\end_layout
+
+\begin_layout Standard
+C0 À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï
+\end_layout
+
+\begin_layout Standard
+D0 Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß
+\end_layout
+
+\begin_layout Standard
+E0 à á â ã ä å æ ç è é ê ë ì í î ï
+\end_layout
+
+\begin_layout Standard
+F0 ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
 \end_layout
 
 \end_inset
@@ -2802,7 +3855,7 @@ status open
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang samin
@@ -2850,7 +3903,7 @@ Polyglossia scottish
 LangCode gd_GB
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang scottish
 'S i cànan dùthchasach na h-Alba a th' anns 
@@ -2870,7 +3923,7 @@ Scots
 not supported.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 Scots
@@ -2879,11 +3932,14 @@ Scots
  on the Lawlands an Northren Isles o Scotland an en tha stewartrie o Ulster
  en Ireland.
  En maist airts, it's spaken anent tha Scots Gaelic an Inglis leids.
- 
 \end_layout
 
 \begin_layout Subsection*
 Serbian
+\end_layout
+
+\begin_layout Subsubsection*
+Serbian (Cyrillic)
 \end_layout
 
 \begin_layout Labeling
@@ -2906,7 +3962,41 @@ Polyglossia serbian [script=Cyrillic]
 LangCode sr_RS
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+Up to Version 3.0 (2019-01-12), input encoding and font encoding were set
+ document-wide to 
+\begin_inset Quotes eld
+\end_inset
+
+utf8x
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+T2A
+\begin_inset Quotes erd
+\end_inset
+
+ respectively by 
+\begin_inset Quotes eld
+\end_inset
+
+babel-serbianc
+\begin_inset Quotes erd
+\end_inset
+
+, overriding LyX settings and leading to errors in multi-lingual documents.
+ 
+\end_layout
+
+\begin_layout Quote
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 
 \emph on
 \lang serbian
@@ -2916,6 +4006,93 @@ LangCode sr_RS
  Српски језик је званичан у Србији, Босни и Херцеговини и Црној Гори и говори
  га око 12 милиона људи.
  Такође је мањински језик у државама централне и источне Европе.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch debug
+inverted 0
+status open
+
+\begin_layout Standard
+The language is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+languagename
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, the input encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+inputencodingname
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ and the font encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+makeatletter
+\backslash
+f@encoding
+\backslash
+makeatother
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Da kommt größter Mist raus!
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2942,7 +4119,7 @@ Polyglossia serbian [script=Latin]
 LangCode sr_RS-Latin
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang serbian-latin
 Ako bismo zanemarili do sada jasno nepotvrđene naučne hipoteze (koje imaju
@@ -2973,7 +4150,7 @@ Polyglossia slovak
 LangCode sk_SK
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang slovak
@@ -2982,7 +4159,6 @@ Slovenčina
  patrí do skupiny západoslovanských jazykov.
  Slovenčina je oficiálne úradným jazykom Slovenska, Vojvodiny a od 1.
  mája 2004 jedným z jazykov Európskej únie.
- 
 \end_layout
 
 \begin_layout Subsection*
@@ -3047,9 +4223,9 @@ galician
 quoting already defined.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Branch conflict
-inverted 0
+\begin_layout Quote
+\begin_inset Branch conflict-es-gl
+inverted 1
 status open
 
 \begin_layout Standard
@@ -3091,6 +4267,18 @@ Polyglossia spanish
 LangCode es_MX
 \end_layout
 
+\begin_layout Itemize
+No difference to 
+\begin_inset Quotes eld
+\end_inset
+
+Spanish
+\begin_inset Quotes erd
+\end_inset
+
+ for LaTeX.
+\end_layout
+
 \begin_layout Subsection*
 Swedish
 \end_layout
@@ -3110,7 +4298,7 @@ Polyglossia swedish
 LangCode sv_SE
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang swedish
 Svenska är ett östnordiskt språk som talas av drygt elva miljoner personer
@@ -3184,9 +4372,68 @@ Polyglossia thai
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+FontEncoding LTH 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 LangCode th_TH
 \end_layout
 
+\begin_layout Itemize
+The input encoding must support Thai characters.
+\end_layout
+
+\begin_layout Itemize
+If the input encoding is set to 
+\begin_inset Quotes eld
+\end_inset
+
+language default
+\begin_inset Quotes erd
+\end_inset
+
+, some high bit characters are mixed up in the output.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Up to version 2013/03/31 v1.8, Babel’s “thai.ldf” changes character categories
+ and the definitions for up-/dowcasing of letters (catcode, uccode, lccode)
+ 
+\series bold
+globally
+\series default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Use input encoding 
+\begin_inset Quotes eld
+\end_inset
+
+Thai (tis620)
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+Unicode (ucs-extended) (utf8x)
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 For emphasized text, load 
 \begin_inset Quotes eld
@@ -3196,8 +4443,40 @@ fonts-tlwg
 \begin_inset Quotes erd
 \end_inset
 
- in the user preamble.
+ 
+\emph on
+after
+\emph default
+ 
+\begin_inset Quotes eld
+\end_inset
+
+babel
+\emph on
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+
+\emph default
+ In the user preamble, write
 \end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+
+\backslash
+AtBeginDocument{
+\backslash
+usepackage{fonts-tlwg}}
+\end_layout
+
+\end_deeper
+\begin_layout Quote
+\begin_inset Branch not-as-secondary-language
+inverted 0
+status open
 
 \begin_layout Standard
 
@@ -3213,6 +4492,11 @@ fonts-tlwg
  ซึ่งเป็นกลุ่มย่อยของตระกูลภาษาไท-กะได สันนิษฐานว่า ภาษาในตระกูลนี้มีถิ่นกำเนิดจ
 ากทางตอนใต้ของประเทศจีน และนักภาษาศาสตร์บางส่วนเสนอว่า ภาษาไทยน่าจะมีความเชื่อมโ
 ยงกับตระกูลภาษาออสโตร-เอเชียติก ตระกูลภาษาออสโตรนีเซียน และตระกูลภาษาจีน-ทิเบต
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
@@ -3248,7 +4532,7 @@ Polyglossia turkish
 LangCode tr_TR
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang turkish
@@ -3283,7 +4567,7 @@ Polyglossia turkmen
 LangCode tk_TM
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang turkmen
@@ -3291,7 +4575,6 @@ Türkmen dili
 \emph default
 : Türkmenistanyň resmi dilidir.
  Türkmen dili - türki dilleriň oguz dilleri toparyna degişlidir.
- 
 \end_layout
 
 \begin_layout Subsection*
@@ -3318,7 +4601,7 @@ LangCode uk_UA
 Provides textcyrillic
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang ukrainian
@@ -3327,6 +4610,25 @@ Provides textcyrillic
  (історичні назви — ру́ська, руси́нська) — національна мова українців.
  Належить до слов'янської групи індоєвропейської мовної сім'ї.
  Число мовців — близько 45 млн, більшість яких живе в Україні.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Dummy paragraph to reset the input encoding
+\end_layout
+
+\begin_layout Plain Layout
+LyX-Bug: Sometimes, an inputencoding switch is limited to a group by LaTeX
+ but LyX does not take this into account and subsequent non-ASCII characters
+ fail.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
@@ -3348,7 +4650,7 @@ Polyglossia usorbian
 LangCode hsb_DE
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang uppersorbian
 Hornjoserbšćina je zapadosłowjanska rěč, kotraž so w Hornjej Łužicy wokoło
@@ -3399,7 +4701,7 @@ FontEncoding T5
 LangCode vi_VN
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \emph on
 \lang vietnamese
@@ -3414,7 +4716,7 @@ tiếng Việt Nam
 Việt ngữ
 \emph default
 , là ngôn ngữ của người Việt (người Kinh) và là ngôn ngữ chính thức tại
- Việt Nam.
+ Việt Nam
 \end_layout
 
 \begin_layout Subsection*
@@ -3436,7 +4738,7 @@ Polyglossia welsh
 LangCode cy_GB
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang welsh
 Aelod o'r gangen Frythonaidd o'r ieithoedd Celtaidd a siaredir yn frodorol
