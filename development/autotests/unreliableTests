@@ -135,8 +135,15 @@ export/templates/Articles/American_Astronomical_Society_.*
 # See also #9744 allow parallel configuration of TeX and non-TeX fonts.
 export/templates/Articles/Association_for_Computing_Machinery_pdf[45]_texF
 
-# since TeXLive18, 8-bit LaTeX defaults to utf-8
-
+# ps2pdf gives the following error on updated TL18:
+#   Error: /undefined in d7Z
+# For previous² TL versions, there is no error but the output is incorrect
+# (jibberish instead of Japanese characters).
+# ² Which/were? Output is fine here (TL16/Debian) (GM)
+export/doc/ja/UserGuide_pdf
+# Simliar situation for this document, with the following error:
+#   Error: /undefined in =52+WsoG&
+export/doc/ja/Additional_pdf
 
 Sublabel: wrong_output
 ######################

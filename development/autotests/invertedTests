@@ -61,7 +61,6 @@ export/examples/(|es/)Curricula_Vitae/Europe_CV_(dvi|dvi3.*F|pdf|pdf3)
 # back-conversion fails for rotated float inset in a list
 export/export/lyx2lyx/lyx_2_3_test_lyx(16|20|21|22)
 
-
 # Korean legacy encoding fails (missing fonts)
 export/export/latex/CJK/ko_default_pdf2
 
@@ -86,6 +85,11 @@ export/export/latex/supported-languages_.*_systemF
 #  xdvipdfmx:warning: Interpreting special command ps: (ps:) failed.
 # maybe due to the Hebrew vocalisation using Postscript 3 specials
 export/export/latex/supported-languages_pdf3
+
+# Thai with CJK package requires the babel option "thaicjk" instead of "thai".
+# (see thaifont.txt in the CJK documentation for setup details).
+export/export/latex/unicodesymbols/031-thai_th_(euc-|gbk|jis|utf8-cjk).*
+
 
 # ================================================
 Sublabel: lyxbugs
@@ -178,7 +182,7 @@ export/doc/ar/UserGuide_lyx(22|23)
 
 #11532 inputencoding desynchronisation
 export/export/latex/misplaced-inputenc-switch_pdf2
-# Error in Japanese document if LyX-logo is preceded by foreign language
+# Error in Japanese document if LyX-logo is preceded by foreign language text
 export/export/latex/ja_wrong_auto_encoding_(dvi|pdf(|3)).*
 
 
@@ -218,7 +222,7 @@ export/examples/ru/.*LyXified.*_texF
 export/export/latex/uk-babel-date-missing-chars-with-ascii_(pdf4|dvi3)_texF
 # the "dvi3" tests for these pass, but have wrong output.
 export/doc/uk/Intro_pdf4_texF
-examples/uk/Welcome_pdf4_texF
+export/examples/uk/Welcome_pdf4_texF
 
 # Fails with XeTeX/LuaTeX
 # Reported upstream (https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg184435.html)
@@ -315,9 +319,15 @@ export/export/latex/uk-babel-date-missing-chars-with-ascii_pdf5_texF
 # After reinstalling culmus under the TL19 control, it compiles
 #export/export/latex/unicodesymbols/012-31-hebrew_he-.*_pdf2
 
-# Thai with CJK package requires the babel option "thaicjk" instead of "thai".
-# see thaifont.txt for setup details.
-export/export/latex/unicodesymbols/031-thai_th_(euc-|gbk|jis|utf8-cjk).*
+# ps2pdf gives the following error on updated TL18:
+#   Error: /undefined in d7Z
+# For previous² TL versions, there is no error but the output is incorrect
+# (jibberish instead of Japanese characters).
+# ² Which/were? Output is fine here (TL16/Debian) (GM)
+export/doc/ja/UserGuide_pdf
+# Simliar situation for this document, with the following error:
+#   Error: /undefined in =52+WsoG&
+export/doc/ja/Additional_pdf
 
 
 # ================================================
@@ -332,17 +342,6 @@ Sublabel: externalissues
 # ps2pdf succeeds if the -dNOSAFER flag is used. For discussion, see:
 # https://www.mail-archive.com/search?l=mid&q=1506851183.3130.15.camel%40lyx.org
 export/examples/ja/Modules/LilyPond_Book_pdf
-
-# ps2pdf gives the following error on updated TL18:
-#   Error: /undefined in d7Z
-# For previous TL versions, there is no error but the output is incorrect
-# (jibberish instead of Japanese characters).
-export/doc/ja/UserGuide_pdf
-# Simliar situation for this document, with the following error:
-#   Error: /undefined in =52+WsoG&
-export/doc/ja/Additional_pdf
-
-
 
 # ======================================================================
 Sublabel: attic
