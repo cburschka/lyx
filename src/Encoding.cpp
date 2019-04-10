@@ -189,17 +189,18 @@ bool Encoding::encodable(char_type c) const
 {
 	// assure the used encoding is properly initialized
 	init();
-
 	if (iconvName_ == "UTF-8" && package_ == none)
 		return true;
 	// platex does not load inputenc: force conversion of supported characters
-	if (name_ == "utf8-platex"
-	    &&  c > 0x007f                 // Latin-1 Supplement
-		&& (c < 0x05ff || c > 0x1d00)  // ... Hebrew + Phonetic Extensions
-		&& (c < 0x2aff || c > 0xfb00)  // ... Supplemental Mathematical Operators + Alphabetic...
-		&& (c < 0xfb4f || c > 0x1d400) // ...Presentation Forms + Mathematical...
-	    &&  c < 0x1d7ff)  	  		   // ...Alphanumeric Symbols
-		return false;  
+	if (package_ == Encoding::japanese
+	    && ((0x7f < c && c <= 0x05ff) // Latin-1 Supplement ... Hebrew
+			|| (0x1d00 < c && c <= 0x218f) // Phonetic Extensions ... Number Forms
+			|| (0x2193 < c && c <= 0x2aff) // Arrows ... Supplemental Mathematical Operators
+			|| (0xfb00 < c && c <= 0xfb4f) // Alphabetic Presentation Forms
+			|| (0x1d400 < c && c <= 0x1d7ff)) // Mathematical Alphanumeric Symbols
+		&& c != 0xa2 && c != 0xa3 && c != 0xa5 && c != 0xa7 // exceptions
+		&& c != 0xa8 && c != 0xb0 && c != 0xb4 && c != 0xb6)  
+		return false;
 	if (c < start_encodable_ && !isForced(c))
 		return true;
 	if (encodable_.find(c) != encodable_.end())

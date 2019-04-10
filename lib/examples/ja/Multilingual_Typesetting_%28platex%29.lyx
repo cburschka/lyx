@@ -9,7 +9,7 @@
 \maintain_unincluded_children false
 \language japanese
 \language_package auto
-\inputencoding utf8-platex
+\inputencoding utf8
 \fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "default" "default"
@@ -104,19 +104,11 @@ Deutsch: Grüße aus Österreich!
 \end_layout
 
 \begin_layout Standard
-Greek and Cyrillic Unicode characters are too wide.
- With Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Language\SpecialChar menuseparator
-Encoding 
-\begin_inset Quotes eld
-\end_inset
-
-Japanese (platex) (utf8)
-\begin_inset Quotes erd
-\end_inset
-
- they are converted to LaTeX macros, so that the output matches Latin letters:
+Some Japanese fonts contain Greek and Cyrillic characters, however they
+ are are considerabely wider than characters in Latin, Greek, and Cyrillic
+ TeX fonts.
+ Therefore, LyX converts them to LaTeX macros, so that the output matches
+ other non-Japanese text:
 \end_layout
 
 \begin_layout Quotation
@@ -132,8 +124,8 @@ Russisch: Привет с
 \end_layout
 
 \begin_layout Standard
-Text in other languages with correct language setting - works only for some
- languages:
+Text in some other languages with correct language setting (not all languages
+ supported by LyX are compatible with pLaTeX):
 \end_layout
 
 \begin_layout Standard

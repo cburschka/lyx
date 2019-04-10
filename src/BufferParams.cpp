@@ -3435,6 +3435,8 @@ Encoding const & BufferParams::encoding() const
 		return *(encodings.fromLyXName("utf8-plain"));
 	if (inputenc == "auto" || inputenc == "default")
 		return *language->encoding();
+	if (inputenc == "utf8" && language->lang() == "japanese")
+		return *(encodings.fromLyXName("utf8-platex"));
 	Encoding const * const enc = encodings.fromLyXName(inputenc);
 	if (enc)
 		return *enc;
