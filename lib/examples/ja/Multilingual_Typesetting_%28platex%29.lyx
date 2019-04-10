@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 567
+\lyxformat 572
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -70,6 +70,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -202,6 +203,8 @@ wrong encoding?, (Umlaut not as
 \end_layout
 
 \begin_layout Standard
+
+\emph on
 Wrong characters with inputenc 
 \begin_inset Quotes eld
 \end_inset
