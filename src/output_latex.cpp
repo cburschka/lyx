@@ -1136,7 +1136,7 @@ void TeXOnePar(Buffer const & buf,
 			pending_newline = true;
 		break;
 	case LATEX_ENVIRONMENT: {
-		// if its the last paragraph of the current environment
+		// if it's the last paragraph of the current environment
 		// skip it otherwise fall through
 		if (nextpar
 		    && ((nextpar->layout() != par.layout()
