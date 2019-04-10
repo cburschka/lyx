@@ -192,6 +192,14 @@ bool Encoding::encodable(char_type c) const
 
 	if (iconvName_ == "UTF-8" && package_ == none)
 		return true;
+	// platex does not load inputenc: force conversion of supported characters
+	if (name_ == "utf8-platex"
+	    &&  c > 0x007f                 // Latin-1 Supplement
+		&& (c < 0x05ff || c > 0x1d00)  // ... Hebrew + Phonetic Extensions
+		&& (c < 0x2aff || c > 0xfb00)  // ... Supplemental Mathematical Operators + Alphabetic...
+		&& (c < 0xfb4f || c > 0x1d400) // ...Presentation Forms + Mathematical...
+	    &&  c < 0x1d7ff)  	  		   // ...Alphanumeric Symbols
+		return false;  
 	if (c < start_encodable_ && !isForced(c))
 		return true;
 	if (encodable_.find(c) != encodable_.end())

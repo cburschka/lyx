@@ -9,9 +9,9 @@
 \maintain_unincluded_children false
 \language japanese
 \language_package auto
-\inputencoding jis-platex
-\fontencoding OT1
-\font_roman "default" "default"
+\inputencoding utf8-platex
+\fontencoding auto
+\font_roman "lmodern" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
@@ -104,8 +104,19 @@ Deutsch: Grüße aus Österreich!
 \end_layout
 
 \begin_layout Standard
-Greek and Cyrillic script use too wide characters (except for force-converted
- letters):
+Greek and Cyrillic Unicode characters are too wide.
+ With Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Language\SpecialChar menuseparator
+Encoding 
+\begin_inset Quotes eld
+\end_inset
+
+Japanese (platex) (utf8)
+\begin_inset Quotes erd
+\end_inset
+
+ they are converted to LaTeX macros, so that the output matches Latin letters:
 \end_layout
 
 \begin_layout Quotation
@@ -140,8 +151,23 @@ Afrikaans: Good dag minher.
 
 \begin_layout Standard
 
-\lang french
-French: «Bonsoir à vous.»
+\emph on
+Missing and wrong characters with 
+\emph default
+Language\SpecialChar menuseparator
+Encoding 
+\begin_inset Quotes eld
+\end_inset
+
+language default
+\emph on
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+:
 \end_layout
 
 \begin_layout Standard
@@ -152,68 +178,14 @@ Swedish: Hej då.
 
 \begin_layout Standard
 
-\emph on
-Missing characters with inputenc 
-\begin_inset Quotes eld
-\end_inset
-
-auto
-\begin_inset Quotes erd
-\end_inset
-
- 
-\emph default
-(language default) 
-\emph on
-and 
-\begin_inset Quotes eld
-\end_inset
-
-utf8-platex
-\begin_inset Quotes erd
-\end_inset
-
-
-\emph default
-: 
-\end_layout
-
-\begin_layout Standard
-
 \lang ngerman
 Deutsch: Grüße aus Österreich! 
-\lang japanese
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-wrong encoding?, (Umlaut not as 
-\backslash
-
-\begin_inset Quotes erd
-\end_inset
-
-{O})
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 
-\emph on
-Wrong characters with inputenc 
-\begin_inset Quotes eld
-\end_inset
-
-auto
-\begin_inset Quotes erd
-\end_inset
-
- (language default):
+\lang french
+French: «Bonsoir à vous.»
 \end_layout
 
 \begin_layout Standard
