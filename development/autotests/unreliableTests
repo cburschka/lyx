@@ -177,6 +177,15 @@ export/doc/es/.*_(pdf5|dvi3)_texF
 export/export/latex/uk-babel-date-missing-chars-with-ascii_.*_texF
 export/doc/uk/Intro_.*_texF
 
+# Thai
+# babel-thai globally changes catcodes for high-bit chars
+# which prevents parsing of utf8 with vanilla inputenc (utf8x works)
+# see also unreliable.wrong_output
+export/export/latex/en-th_utf8_(dvi3|pdf5)_texF
+export/export/latex/en-th_language-default_(dvi|pdf).*
+# only ASCII characters in DVI (LuaTeX) with non-TeX fonts:
+export/export/latex/en-th_utf8_dvi3_systemF
+
 
 # LyX issues
 # **********

@@ -149,3 +149,6 @@ Sublabel: irrelevant
 check_load/export/latex/.*
 lyx2lyx/export/latex/.*
 export/export/latex/.*(lyx..|xhtml)
+
+# don't test with non-TeX fonts:
+export/export/latex/en-th_(LTH|language-default).*systemF

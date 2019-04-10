@@ -186,7 +186,6 @@ export/export/latex/misplaced-inputenc-switch_pdf2
 export/export/latex/ja_wrong_auto_encoding_(dvi|pdf(|3)).*
 
 
-
 # ==============================================================
 Sublabel: ert
 # Export failures due to "raw" LaTeX use in ERT or preamble code
@@ -312,12 +311,20 @@ export/.*/he/.*(dvi3|pdf5)_systemF
 # Xe/LuaTeX + TeX fonts: "! Right-to-Left Support Error: use TeX--XeT or e-TeX engine."
 export/.*/he/.*_texF
 
+# Ukrainian
 # See comment in unreliableTests
 export/export/latex/uk-babel-date-missing-chars-with-ascii_pdf5_texF
 
+# Hebrew
 # Missing 8-bit fonts (see unreliableTests)
 # After reinstalling culmus under the TL19 control, it compiles
 #export/export/latex/unicodesymbols/012-31-hebrew_he-.*_pdf2
+
+# Thai
+# babel-thai globally changes catcodes for high-bit chars
+# which prevents parsing of utf8 with vanilla inputenc (utf8x works)
+# see also unreliable.wrong_output
+export/export/latex/en-th_utf8_(dvi|pdf[23]?|pdf4_texF)
 
 # ps2pdf gives the following error on updated TL18:
 #   Error: /undefined in d7Z
