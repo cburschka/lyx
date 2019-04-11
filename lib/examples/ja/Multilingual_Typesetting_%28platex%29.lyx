@@ -125,7 +125,15 @@ Russisch: Привет с
 
 \begin_layout Standard
 Text in some other languages with correct language setting (not all languages
- supported by LyX are compatible with pLaTeX):
+ supported by LyX are compatible with pLaTeX, try 
+\begin_inset Quotes eld
+\end_inset
+
+japanese (CJK)
+\begin_inset Quotes erd
+\end_inset
+
+):
 \end_layout
 
 \begin_layout Standard
@@ -139,27 +147,6 @@ English: Hello Mr.
 
 \lang afrikaans
 Afrikaans: Good dag minher.
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-Missing and wrong characters with 
-\emph default
-Language\SpecialChar menuseparator
-Encoding 
-\begin_inset Quotes eld
-\end_inset
-
-language default
-\emph on
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\emph default
-:
 \end_layout
 
 \begin_layout Standard

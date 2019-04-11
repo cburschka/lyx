@@ -3259,9 +3259,9 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			// list all input encodings used in the document
 			encoding_set = features.getEncodingSet(doc_encoding);
 
-		// If the "japanese" package (i.e. pLaTeX) is used,
-		// inputenc must be omitted.
-		// see http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
+		// The "japanese" babel-language requires  the pLaTeX engine
+		// which conflicts with "inputenc".
+		// See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
 		if ((!encoding_set.empty() || package == Encoding::inputenc)
 		    && !features.isRequired("japanese")
 		    && !features.isProvided("inputenc")) {

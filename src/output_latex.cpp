@@ -984,6 +984,7 @@ void TeXOnePar(Buffer const & buf,
 	// \inputencoding command; the encoding switch will occur when necessary
 	if (bparams.inputenc == "auto"
 		&& !runparams.isFullUnicode() // Xe/LuaTeX use one document-wide encoding  (see also switchEncoding())
+		&& runparams.encoding->package() != Encoding::japanese
 		&& runparams.encoding->package() != Encoding::none) {
 		// Look ahead for future encoding changes.
 		// We try to output them at the beginning of the paragraph,
@@ -1627,39 +1628,41 @@ void latexParagraphs(Buffer const & buf,
 	}
 }
 
-
+// Switch the input encoding for some part(s) of the document.
 pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 		   OutputParams const & runparams, Encoding const & newEnc,
 		   bool force, bool noswitchmacro)
 {
-	// Never switch encoding with non-TeX fonts (always "utf8plain") or
-	// with LuaTeX and TeX fonts (only one encoding accepted by luainputenc).
+	// Never switch encoding with non-TeX fonts (always "utf8plain"),
+	// with LuaTeX and TeX fonts (only one encoding accepted by luainputenc),
+	// or if we're in a moving argument or inherit the outer encoding.
 	if (bparams.useNonTeXFonts
 		|| runparams.flavor == OutputParams::LUATEX
 		|| runparams.flavor == OutputParams::DVILUATEX
 		|| newEnc.name() == "inherit")
 	  return make_pair(false, 0);
 
+	// Only switch for auto-selected legacy encodings (inputenc setting
+	// "auto" or "default").
+	// The "listings" environment can force a switch also with other
+	// encoding settings (it does not support variable width encodings
+	// (utf8, jis, ...) under 8-bit latex engines).
+	if (!force && ((bparams.inputenc != "auto" && bparams.inputenc != "default")
+				   || runparams.moving_arg))
+		return make_pair(false, 0);
+
 	Encoding const & oldEnc = *runparams.encoding;
-	bool moving_arg = runparams.moving_arg;
-	if (!force
-	    && ((bparams.inputenc != "auto" && bparams.inputenc != "default") || moving_arg))
+	// Do not switch, if the encoding is unchanged or switching is not supported.
+	if (oldEnc.name() == newEnc.name()
+		|| oldEnc.package() == Encoding::japanese
+		|| oldEnc.package() == Encoding::none
+		|| newEnc.package() == Encoding::none)
 		return make_pair(false, 0);
-
-	// Do nothing if the encoding is unchanged.
-	if (oldEnc.name() == newEnc.name())
-		return make_pair(false, 0);
-
 	// FIXME We ignore encoding switches from/to encodings that do
 	// neither support the inputenc package nor the CJK package here.
-	// This does of course only work in special cases (e.g. switch from
-	// tis620-0 to latin1, but the text in latin1 contains ASCII only),
-	// but it is the best we can do
-	//
-	// 2019-01-08 Possibly no longer required since tis620-0 is supported
-	// by inputenc (but check special encodings "utf8-plain" and "default").
-	if (oldEnc.package() == Encoding::none || newEnc.package() == Encoding::none)
-		return make_pair(false, 0);
+	// This may fail for characters not supported by "unicodesymbols"
+	// or for non-ASCII characters in "listings"
+	// but it is the best we can do.
 
 	// change encoding
 	LYXERR(Debug::LATEX, "Changing LaTeX encoding from "
@@ -1673,7 +1676,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 	switch (newEnc.package()) {
 		case Encoding::none:
 		case Encoding::japanese:
-			// shouldn't ever reach here, see above
+			// shouldn't ever reach here (see above) but avoids warning.
 			return make_pair(true, 0);
 		case Encoding::inputenc: {
 			int count = inputenc_arg.length();
@@ -1698,8 +1701,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 				count += 7;
 				state->open_encoding_ = inputenc;
 			}
-			// with the japanese option, inputenc is omitted.
-			if (runparams.use_japanese || noswitchmacro)
+			if (noswitchmacro)
 				return make_pair(true, count);
 			os << "\\inputencoding{" << inputenc_arg << '}';
 			return make_pair(true, count + 16);

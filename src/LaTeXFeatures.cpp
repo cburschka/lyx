@@ -747,7 +747,7 @@ void LaTeXFeatures::useLanguage(Language const * lang)
 	// They use the CJK package
 	if (lang->encoding()->package() == Encoding::CJK)
 		require("CJK");
-	// japanese package is special
+	// japanese babel language is special (tied to the pLaTeX engine).
 	if (lang->encoding()->package() == Encoding::japanese)
 		require("japanese");
 }
@@ -879,8 +879,7 @@ set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding) const
 	set<string> encs;
 	for (auto const & lang : UsedLanguages_)
 		if (lang->encoding()->latexName() != doc_encoding &&
-		    (lang->encoding()->package() == Encoding::inputenc
-		     || lang->encoding()->package() == Encoding::japanese))
+		    lang->encoding()->package() == Encoding::inputenc)
 			encs.insert(lang->encoding()->latexName());
 	return encs;
 }
