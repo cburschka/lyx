@@ -58,22 +58,22 @@
 #
 # 2 Latin-1 Supplement
 #
-0x00a0 "~"                        "" "force=cp862;cp1255;cp1256;koi8-u;iso8859-6;iso8859-7,notermination=both" "~" "" # NO-BREAK SPACE
-0x00a1 "\\textexclamdown"         "" "force=cp862;cp1255;euc-jp;euc-kr" # INVERTED EXCLAMATION MARK
+0x00a0 "~"                        "" "force=cp862;cp1255;cp1256;koi8-u;iso8859-6;iso8859-7;utf8-platex,notermination=both" "~" "" # NO-BREAK SPACE
+0x00a1 "\\textexclamdown"         "" "force=cp862;cp1255;euc-jp;euc-jp-platex;euc-kr;utf8-platex" # INVERTED EXCLAMATION MARK
 0x00a2 "\\textcent"               "textcomp" "force=cp862;cp1255;cp1256;euc-jp;euc-jp-platex;jis;shift-jis-platex" #"\\mathcent" "txfonts|pxfonts" # CENT SIGN
 0x00a3 "\\pounds"                 "" "force=cp862;cp1255;cp1256;iso8859-7;euc-jp;euc-jp-platex;jis;shift-jis-platex" "\\pounds" "" # £ POUND SIGN
-0x00a4 "\\textcurrency"           "textcomp" "force=cp1256;euc-cn;euc-jp;euc-kr;gbk;iso8859-6" # CURRENCY SYMBOL
-0x00a5 "\\textyen"                "textcomp" "force=cp862;cp1255;cp1256;euc-jp;jis;shift-jis-platex" "\\yen" "amssymb" # YEN SIGN
-0x00a6 "\\textbrokenbar"          "textcomp" "force=cp1255;cp1256;iso8859-7;euc-jp" # BROKEN BAR
+0x00a4 "\\textcurrency"           "textcomp" "force=cp1256;euc-cn;euc-jp;euc-jp-platex;euc-kr;gbk;iso8859-6;utf8-platex" # CURRENCY SYMBOL
+0x00a5 "\\textyen"                "textcomp" "force=cp862;cp1255;cp1256;euc-jp;euc-jp-platex;jis;shift-jis-platex" "\\yen" "amssymb" # YEN SIGN
+0x00a6 "\\textbrokenbar"          "textcomp" "force=cp1255;cp1256;iso8859-7;euc-jp;euc-jp-platex;utf8-platex" # BROKEN BAR
 0x00a7 "\\textsection"            "textcomp" "force=cp1255;cp1256;iso8859-7;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis;shift-jis-platex" "\\mathsection" "" # SECTION SIGN
 0x00a8 "\\textasciidieresis"      "textcomp" "force=cp1255;cp1256;iso8859-7;euc-cn;euc-jp;euc-kr;gbk;jis;shift-jis-platex" # DIAERESIS
-0x00a9 "\\textcopyright"          "textcomp" "force=cp1255;cp1256;koi8-u;iso8859-7;euc-jp" # COPYRIGHT SIGN
-0x00aa "\\textordfeminine"        "textcomp" "force=cp862;euc-jp;euc-kr" # FEMININE ORDINAL INDICATOR
-0x00ab "\\guillemotleft"          "" "force=armscii8;cp862;cp1255;cp1256;iso8859-7" # LEFT-POINTING DOUBLE ANGLE QUOTATION MARK
+0x00a9 "\\textcopyright"          "textcomp" "force=cp1255;cp1256;koi8-u;iso8859-7;euc-jp;euc-jp-platex;utf8-platex" # COPYRIGHT SIGN
+0x00aa "\\textordfeminine"        "textcomp" "force=cp862;euc-jp;euc-jp-platex;euc-kr;utf8-platex" # FEMININE ORDINAL INDICATOR
+0x00ab "\\guillemotleft"          "" "force=armscii8;cp862;cp1255;cp1256;iso8859-7;utf8-platex" # LEFT-POINTING DOUBLE ANGLE QUOTATION MARK
 0x00ac "\\textlnot"               "textcomp" "force" "\\neg" "" # ¬ NOT SIGN
-0x00ad "\\-"                      "" "force=cp1255;cp1256;iso8859-13;euc-jp;euc-kr;iso8859-6,notermination=text" "" "" # SOFT HYPHEN
-0x00ae "\\textregistered"         "textcomp" "force=cp1255;cp1256;euc-jp;euc-kr" "\\circledR" "amssymb" # REGISTERED SIGN
-0x00af "\\textasciimacron"        "textcomp" "force=cp1255;cp1256;euc-jp" # MACRON
+0x00ad "\\-"                      "" "force=cp1255;cp1256;iso8859-13;euc-jp;euc-kr;iso8859-6;utf8-platex,notermination=text" "" "" # SOFT HYPHEN
+0x00ae "\\textregistered"         "textcomp" "force=cp1255;cp1256;euc-jp;euc-jp-platex;euc-kr;utf8-platex" "\\circledR" "amssymb" # REGISTERED SIGN
+0x00af "\\textasciimacron"        "textcomp" "force=cp1255;cp1256;euc-jp;euc-jp-platex;utf8-platex" # MACRON
 0x00b0 "\\textdegree"             "textcomp" "force=cp862;cp1255;cp1256;koi8-u;iso8859-7;euc-cn;euc-jp;euc-jp-platex;euc-kr;euc-tw;gbk;jis;shift-jis-platex" "{^\\circ}" "" # DEGREE SIGN
 0x00b1 "\\textpm"                 "textcomp" "force" "\\pm" "" # ± PLUS-MINUS SIGN
 0x00b2 "\\texttwosuperior"        "textcomp" "force" "{{}^2}" "" # ² SUPERSCRIPT TWO
