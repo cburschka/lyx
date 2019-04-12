@@ -96,6 +96,10 @@ export/export/latex/supported-languages_pdf3
 # (see thaifont.txt in the CJK documentation for setup details).
 export/export/latex/unicodesymbols/031-thai_th_(euc-|gbk|jis|utf8-cjk).*
 
+# Package clashes when Japanese documents are compiled with non-TeX fonts,
+# e.g. the auto-loaded jsclasses/okumacro.sty needs format `pLaTeX2e'
+export/doc/ja/(Additional|Customization|EmbeddedObjects|Formula-numbering|Intro|LaTeXConfig|Math|Shortcuts|Tutorial|UserGuide).*_systemF
+
 
 # ================================================
 Sublabel: lyxbugs
@@ -161,11 +165,8 @@ export/export/latex/fa-OT1_pdf2
 #11522 Support specification of complementing non-TeX fonts
 # More than one non-TeX font required for the character set in many documents
 # to prevent "missing glyph" errors with non-TeX fonts
-# FIXME: fix and uninvert documents that work after setting a Japanese system font.
-export/export/latex/.*inputenc-.*_systemF
-!export/examples/ja/Multilingual_Typesetting_%28CJKutf8%29_.*_systemF
-export/.*/ja/.*_systemF
 #
+export/export/latex/.*inputenc-.*_systemF
 export/doc/(|de/|es/|fr/)Math.*systemF
 # minimal example for Math.lyx:
 export/export/latex/systemfonts-Math-missingchars.*systemF
