@@ -853,8 +853,8 @@ Language italian
 	LangCode         it_IT
 End
 
-# Since japanese does not load fontenc, we set
-# InternalEncoding to true.
+# Since 2016-12-18, babel-japanese works with non-TeX fonts (Xe/LuaTeX), too
+# (use with "Japanese (bxjs)" or standard document classes)
 Language japanese
 	GuiName          "Japanese"
 	HasGuiSupport    true
@@ -905,8 +905,10 @@ Language khmer
 	LangCode         km_KH
 End
 
+# Fixme: activate Polyglossia support (file format change)
 Language korean
 	GuiName         "Korean"
+	#PolyglossiaName  korean
 	Encoding        euc-kr
 	QuoteStyle      cjkangle
 	DateFormats     "yyyy년 M월 d일|yyyy. M. d.|yy. M. d."
@@ -1340,6 +1342,7 @@ Language telugu
 	LangCode         te_IN
 End
 
+# alternative support with CJK package and Babel name "thaicjk"
 Language thai
 	GuiName          "Thai"
 	BabelName        thai
