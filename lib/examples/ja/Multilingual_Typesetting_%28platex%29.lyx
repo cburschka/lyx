@@ -4,16 +4,16 @@
 \begin_header
 \save_transient_properties true
 \origin /systemlyxdir/examples/ja/
-\textclass jarticle
+\textclass bxjsarticle
 \use_default_options false
 \maintain_unincluded_children false
 \language japanese
 \language_package auto
 \inputencoding utf8
 \fontencoding auto
-\font_roman "lmodern" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
+\font_roman "DejaVuSerif" "IPAexMincho"
+\font_sans "DejaVuSans" "IPAexGothic"
+\font_typewriter "DejaVuSansMono" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -91,7 +91,27 @@
 \end_layout
 
 \begin_layout Standard
-Text in other languages:
+You can write text in other scripts and languages inside Japanese documents.
+ With non-TeX fonts, make sure to use document classes that support XeTeX
+ or LuaTeX.
+ (e.g.
+ document classes 
+\begin_inset Quotes eld
+\end_inset
+
+Japanese … (BXJS Class)
+\begin_inset Quotes erd
+\end_inset
+
+ or non-Japaneses standard classes).
+\end_layout
+
+\begin_layout Subsection*
+Examples
+\end_layout
+
+\begin_layout Standard
+Text in Latin script:
 \end_layout
 
 \begin_layout Quotation
@@ -105,27 +125,109 @@ Deutsch: Grüße aus Österreich!
 
 \begin_layout Standard
 Some Japanese fonts contain Greek and Cyrillic characters, however they
- are are considerabely wider than characters in Latin, Greek, and Cyrillic
- TeX fonts.
- Therefore, LyX converts them to LaTeX macros, so that the output matches
- other non-Japanese text:
+ are considerabely wider than characters in Latin, Greek, and Cyrillic TeX
+ fonts.
+ 
 \end_layout
 
-\begin_layout Quotation
-Griechisch: χαιρετισμός!
+\begin_layout Itemize
+With 
+\emph on
+TeX fonts
+\emph default
+, LyX converts them to LaTeX macros, so that the output matches other non-Japane
+se text.
+\end_layout
+
+\begin_layout Itemize
+With 
+\emph on
+non-TeX fonts 
+\emph default
+and
+\emph on
+ Xe/LuaTeX
+\emph default
+, there is no native support for use of specific fonts for different scripts/lan
+guages.
+ Some Unicode fonts provide a large range of characters, but quality is
+ not always best and 
+\begin_inset Quotes eld
+\end_inset
+
+exotic
+\begin_inset Quotes erd
+\end_inset
+
+ characters (like accented Greek) lead to 
+\emph on
+missing character 
+\emph default
+errors.
+\end_layout
+
+\begin_layout Standard
+Text in Cyrillic and Greek script:
 \end_layout
 
 \begin_layout Quotation
 Russisch: Привет с 
-\series bold
+\emph on
 новым
-\series default
+\emph default
  годом!
+\end_layout
+
+\begin_layout Quotation
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifdefined
+\backslash
+fontspec 
+\end_layout
+
+\end_inset
+
+Griechisch: χαιρετισμος!
+\end_layout
+
+\begin_layout Quotation
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else 
+\end_layout
+
+\end_inset
+
+Griechisch: χαιρετισμός! 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Text in some other languages with correct language setting (not all languages
- supported by LyX are compatible with pLaTeX, try 
+ supported by LyX are compatible with Japanese (you may try 
 \begin_inset Quotes eld
 \end_inset
 
@@ -169,17 +271,17 @@ French: «Bonsoir à vous.»
 
 \begin_layout Standard
 
-\lang greek
-Griechisch: χαιρετισμός!
+\lang afrikaans
+Griechisch: χαιρετισμος!
 \end_layout
 
 \begin_layout Standard
 
 \lang russian
 Russisch: Привет с 
-\series bold
+\emph on
 новым
-\series default
+\emph default
  годом!
 \end_layout
 

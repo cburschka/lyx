@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin /systemlyxdir/examples/ja/Modules/
-\textclass jarticle
+\textclass bxjsarticle
 \begin_preamble
 % color greyed-out notes blue
 \renewenvironment{lyxgreyedout}
@@ -19,8 +19,8 @@ braille
 \language_package default
 \inputencoding jis-platex
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
+\font_roman "default" "IPAexMincho"
+\font_sans "default" "IPAexGothic"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
