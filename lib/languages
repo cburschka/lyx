@@ -201,20 +201,20 @@ End
 # In Babel, this is supported since v. 1.8a of babel-greek (2013-12-03)
 # We introduce it with LyX 2.2 to give the support time to settle.
 Language ancientgreek
-	GuiName           "Greek (ancient)"
-	BabelName         greek
+	GuiName          "Greek (ancient)"
+	BabelName        greek
 	PostBabelPreamble
 	\languageattribute{greek}{ancient}
 	EndPostBabelPreamble
-	PolyglossiaName   greek
-	PolyglossiaOpts   "variant=ancient"
-	QuoteStyle        french
-	Encoding          iso8859-7
-	InternalEncoding  true
-	FontEncoding      LGR
+	PolyglossiaName  greek
+	PolyglossiaOpts  "variant=ancient"
+	QuoteStyle       french
+	Encoding         iso8859-7
+	InternalEncoding true
+	FontEncoding     LGR
 	DateFormats      "dd MMMM yyyy|dd MMM yyyy|dd/MM/yyyy"
-	LangCode          grc_GR
-	Provides          textgreek
+	LangCode         grc_GR
+	Provides         textgreek
 End
 
 # FIXME: dummy babel language for arabic_arabtex to be able
@@ -361,6 +361,10 @@ Language belarusian
 	LangCode         be_BY
 End
 
+# supported by polyglossia but not LyX:
+# Language bengali
+# 	PolyglossiaName  bengali
+
 # not yet supported by polyglossia
 # The (rarely used) Cyrillic script is not supported (try serbian).
 Language bosnian
@@ -483,6 +487,10 @@ Language chinese-traditional
 	DateFormats      "yyyy年M月d日|yyyy年M月d日|yy年M月d日"
 	Requires         CJK
 End
+
+# supported by polyglossia but not LyX:
+# Language churchslavonic
+# 	PolyglossiaName  churchslavonic
 
 # not supported by babel
 # FIXME DateFormats
@@ -735,52 +743,52 @@ Language german-ch-old
 End
 
 Language greek
-	GuiName           "Greek"
-	HasGuiSupport     true
-	BabelName         greek
-	PolyglossiaName   greek
-	PolyglossiaOpts   "variant=monotonic"
-	QuoteStyle        french
-	Encoding          iso8859-7
-	InternalEncoding  true
-	FontEncoding      LGR
+	GuiName          "Greek"
+	HasGuiSupport    true
+	BabelName        greek
+	PolyglossiaName  greek
+	PolyglossiaOpts  "variant=monotonic"
+	QuoteStyle       french
+	Encoding         iso8859-7
+	InternalEncoding true
+	FontEncoding     LGR
 	DateFormats      "dd MMMM yyyy|dd MMM yyyy|dd/MM/yyyy"
-	LangCode          el_GR
-	Provides          textgreek
+	LangCode         el_GR
+	Provides         textgreek
 End
 
 Language polutonikogreek
-	GuiName           "Greek (polytonic)"
-	BabelName         polutonikogreek
-	PolyglossiaName   greek
-	PolyglossiaOpts   "variant=polytonic"
-	QuoteStyle        french
-	Encoding          iso8859-7
-	InternalEncoding  true
-	FontEncoding      LGR
+	GuiName          "Greek (polytonic)"
+	BabelName        polutonikogreek
+	PolyglossiaName  greek
+	PolyglossiaOpts  "variant=polytonic"
+	QuoteStyle       french
+	Encoding         iso8859-7
+	InternalEncoding true
+	FontEncoding     LGR
 	DateFormats      "dd MMMM yyyy|dd MMM yyyy|dd/MM/yyyy"
-	LangCode          el_GR
-	Provides          textgreek
+	LangCode         el_GR
+	Provides         textgreek
 End
 
 Language hebrew
-	GuiName           "Hebrew"
-	HasGuiSupport     true
-	BabelName         hebrew
-	PolyglossiaName   hebrew
-	Encoding          cp1255
-	QuoteStyle        english
-	InternalEncoding  true
+	GuiName          "Hebrew"
+	HasGuiSupport    true
+	BabelName        hebrew
+	PolyglossiaName  hebrew
+	Encoding         cp1255
+	QuoteStyle       english
+	InternalEncoding true
 	# babel-hebrew expects the encoding for *other* languages last:
-	# FontEncoding      HE8
+	# FontEncoding    HE8
 	# Define the font encoding the babel-hebrew way and
 	# work around too simple test for article-like classes in rlbabel.def.
 	PreBabelPreamble
 	  \providecommand{\l@chapter}{\relax}
 	EndPreBabelPreamble
 	DateFormats      "d MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
-	RTL               true
-	LangCode          he_IL
+	RTL              true
+	LangCode         he_IL
 End
 
 # not supported by babel
@@ -971,7 +979,7 @@ Language lithuanian
 	QuoteStyle       german
 	Encoding         iso8859-13
 	FontEncoding     L7x
-	# L7x defines \copyright as TextSymbol which leads to an endless loop 
+	# L7x defines \copyright as TextSymbol which leads to an endless loop
         # when it is used in other font encodings.
 	PostBabelPreamble
 	  % restore \coyright definition corrupted by l7xenc.def
@@ -1072,6 +1080,11 @@ Language norsk
 	DateFormats      "d. MMMM yyyy|d. MMM yyyy|dd.MM.yyyy"
 	LangCode         nb_NO
 End
+
+# supported by polyglossia but not LyX:
+# Language nko
+#	GuiName		"N’Ko"            
+# 	PolyglossiaName	nko
 
 Language nynorsk
 	GuiName          "Norwegian (Nynorsk)"

@@ -579,6 +579,20 @@ status open
 \end_layout
 
 \begin_layout Subsection*
+Bengali
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX (LyX support missing)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia bengali
+\end_layout
+
+\begin_layout Subsection*
 Bosnian
 \end_layout
 
@@ -924,6 +938,20 @@ Requires CJK
 The different CJK languages (simplified and traditional Chinese, Japanese,
  and Korean) require different fonts but only one CJK-font can be set in
  the preamble.
+\end_layout
+
+\begin_layout Subsection*
+Churchslavonic
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX (LyX support missing)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia churchslavonic
 \end_layout
 
 \begin_layout Subsection*
@@ -2456,7 +2484,7 @@ LangCode kk_KZ
 \end_layout
 
 \begin_layout Itemize
-Not supported by Babel nor Polyglossia, setting text to 
+Not supported by Babel nor Polyglossia, marking text as 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2485,7 +2513,8 @@ Setting text to this language has only effect on spell-checking
 \end_layout
 
 \begin_layout Itemize
-For documents in Kazakh only, you may replace LyX's auto-wrapper in 
+For documents using only Cyrillic (and basic Latin) letters, you may get
+ rid of the auto-inserted 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2493,7 +2522,7 @@ textcyrillic
 \begin_inset Quotes erd
 \end_inset
 
- by setting the document font encoding to 
+ commands by setting the document font encoding to 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2550,16 +2579,6 @@ LyX korean
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Polyglossia korean (LyX support missing)
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Encoding euc-kr
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-QuoteStyle cjkangle
 \end_layout
 
 \begin_layout Labeling
@@ -3338,6 +3357,20 @@ inputencoding{ut8} seems to be an exception requiring an explicit re-set.
 \end_inset
 
  
+\end_layout
+
+\begin_layout Subsection*
+N'ko
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX (LyX support missing)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia nko
 \end_layout
 
 \begin_layout Subsection*
