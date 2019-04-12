@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 571
+\lyxformat 572
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -293,6 +293,11 @@ Babel afrikaans
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+Polyglossia n.a.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 LangCode af_ZA
 \end_layout
 
@@ -380,7 +385,7 @@ LyX arabic_arabi
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Babel arabic
+Babel arabic (fails with non-TeX fonts)
 \end_layout
 
 \begin_layout Labeling
@@ -2308,13 +2313,20 @@ Encoding jis-platex
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Requires japanese (platex).
+Requires japanese (platex) or non-TeX fonts
+\end_layout
+
+\begin_layout Itemize
+Does not work with pdfLaTeX and conflicts with 
+\emph on
+inputenc
+\emph default
+ package.
  
 \end_layout
 
 \begin_layout Itemize
-Does not work with pdfLaTeX, XeTeX, or LuaTeX.
- 
+XeTeX and LuaTeX work only with non-TeX fonts.
 \end_layout
 
 \begin_layout Itemize
@@ -2327,19 +2339,25 @@ Does not work as secondary language unless the document encoding is set
 \begin_inset Quotes grd
 \end_inset
 
- input encodings.
+ input encodings or non-TeX fonts are used.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Quote
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
 
-\emph on
-inputenc
-\emph default
- and 
-\emph on
-fontenc
-\emph default
- packages not loaded
+\begin_layout Standard
+
+\series bold
+日本語
+\series default
+（にほんご、にっぽんご[注 1]）は、主に日本国内や日本人同士の間で使用されている言語である。
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
