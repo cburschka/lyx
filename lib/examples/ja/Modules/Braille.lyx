@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin /systemlyxdir/examples/ja/Modules/
-\textclass bxjsarticle
+\textclass jsarticle
 \begin_preamble
 % color greyed-out notes blue
 \renewenvironment{lyxgreyedout}
@@ -17,7 +17,7 @@ braille
 \maintain_unincluded_children false
 \language japanese
 \language_package default
-\inputencoding jis-platex
+\inputencoding utf8
 \fontencoding global
 \font_roman "default" "IPAexMincho"
 \font_sans "default" "IPAexGothic"

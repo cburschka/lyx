@@ -97,9 +97,19 @@ export/export/latex/supported-languages_pdf3
 export/export/latex/unicodesymbols/031-thai_th_(euc-|gbk|jis|utf8-cjk).*
 
 # Package clashes when Japanese documents are compiled with non-TeX fonts,
-# e.g. the auto-loaded jsclasses/okumacro.sty needs format `pLaTeX2e'
-export/doc/ja/(Additional|Customization|EmbeddedObjects|Formula-numbering|Intro|LaTeXConfig|Math|Shortcuts|Tutorial|UserGuide).*_systemF
-
+#
+# the auto-loaded jsclasses/okumacro.sty needs format `pLaTeX2e'
+export/doc/ja/(Additional|Customization|EmbeddedObjects|Intro|LaTeXConfig|Math|Shortcuts|Tutorial|UserGuide).*_systemF
+export/doc/ja/Formula-numbering_pdf4_systemF
+# Test for command \pdfsave fails:
+# ! Package xypdf Error: pdfTeX version 1.40.0 or higher is needed for the xypdf
+export/examples/ja/Graphics_and_Insets/XY-Pic.*_systemF
+# Document class js*.cls requires platex <-> Xe/LuaTeX, 
+# fixed with "bxjs*.cls", however: bxjs*.cls <-> [unicode=true]{hyperref}
+# ! Class bxjsbook Error: The value of hyperref 'unicode' key is not suitable
+#export/doc/ja/Tutorial_pdf # (document class re-set to "jsbook")
+#export/examples/ja/Modules/Braille_pdf # (document class re-set to "jsbarticle")
+export/examples/ja/Modules/Braille.*_systemF
 
 # ================================================
 Sublabel: lyxbugs
@@ -163,6 +173,7 @@ export/examples/Modules/Noweb_Listerrors_(pdf[245]).*
 export/export/latex/fa-OT1_pdf2
 
 #11522 Support specification of complementing non-TeX fonts
+#
 # More than one non-TeX font required for the character set in many documents
 # to prevent "missing glyph" errors with non-TeX fonts
 #
@@ -174,6 +185,8 @@ export/export/latex/systemfonts-Math-missingchars.*systemF
 # CJK-quotes examples (missing in most Latin-script fonts)
 export/doc/(|de/|es/|fr/)UserGuide_(dvi3|pdf4|pdf5)_systemF
 #
+# Japanese
+export/examples/ja/Modules/Linguistics.*systemF
 #
 # Arabic (see also "texissues")
 # "! Extra \else" and missing glyph "no ␣ in font Scheherazade":
