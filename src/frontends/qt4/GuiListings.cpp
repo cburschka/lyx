@@ -47,26 +47,28 @@ namespace frontend {
 
 
 char const * languages_supported[] =
-{ "no language", "ABAP", "ACSL", "Ada", "ALGOL", "Assembler", "Awk", "bash", "Basic", "C",
-  "C++", "Caml", "Clean", "Cobol", "Comal 80", "command.com", "Comsol", "csh", "Delphi",
-  "Eiffel", "Elan", "erlang", "Euphoria", "Fortran", "Gnuplot", "Haskell", "HTML", "IDL", "inform",
-  "Java", "JVMIS", "ksh", "Lingo", "Lisp", "Logo", "make", "Mathematica", "Matlab", "Mercury",
-  "MetaPost", "Miranda", "ML", "Modula-2", "MuPAD", "NASTRAN", "Oberon-2", "OCL", "Octave",
+{ "no language", "ABAP", "ACM", "ACMscript", "ACSL", "Ada", "ALGOL", "Ant", "Assembler", "Awk", "bash", "Basic", "C",
+  "C++", "Caml", "CIL", "Clean", "Cobol", "Comal 80", "command.com", "Comsol", "csh", "Delphi",
+  "Eiffel", "Elan", "elisp", "erlang", "Euphoria", "Fortran", "GAP", "GCL", "Gnuplot", "Go",
+  "hansl", "Haskell", "HTML", "IDL", "inform",
+  "Java", "JVMIS", "ksh", "Lingo", "Lisp", "LLVM", "Logo", "Lua", "make", "Mathematica", "Matlab", "Mercury",
+  "MetaPost", "Miranda", "Mizar", "ML", "Modula-2", "MuPAD", "NASTRAN", "Oberon-2", "OCL", "Octave", "OORexx",
   "Oz", "Pascal", "Perl", "PHP", "PL/I", "Plasm", "PostScript", "POV", "Prolog", "Promela",
-  "PSTricks", "Python", "R", "Reduce", "Rexx", "RSL", "Ruby", "S", "SAS", "Scilab", "sh",
-  "SHELXL", "Simula", "tcl", "SPARQL", "SQL", "tcl", "TeX", "VBScript", "Verilog", "VHDL",
+  "PSTricks", "Python", "R", "Reduce", "Rexx", "RSL", "Ruby", "S", "SAS", "Scala", "Scilab", "sh",
+  "SHELXL", "Simula", "SPARQL", "SQL", "Swift", "tcl", "TeX", "VBScript", "Verilog", "VHDL",
   "VRML", "XML", "XSLT", "" };
 
 
 char const * languages_gui[] =
-{ N_("No language"), "ABAP", "ACSL", "Ada", "ALGOL", "Assembler", "Awk", "bash", "Basic",
-  "C", "C++", "Caml", "Clean", "Cobol", "Comal 80", "command.com", "Comsol", "csh", "Delphi",
-  "Eiffel", "Elan", "Erlang", "Euphoria", "Fortran", "Gnuplot", "Haskell", "HTML", "IDL", "inform",
-  "Java", "JVMIS", "ksh", "Lingo", "Lisp", "Logo", "make", "Mathematica", "Matlab", "Mercury",
-  "MetaPost", "Miranda", "ML", "Modula-2", "MuPAD", "NASTRAN", "Oberon-2", "OCL", "Octave",
+{ N_("No language"), "ABAP", "ACM", "ACMscript", "ACSL", "Ada", "ALGOL", "Ant", "Assembler", "Awk", "bash", "Basic", "C",
+  "C++", "Caml", "CIL", "Clean", "Cobol", "Comal 80", "command.com", "Comsol", "csh", "Delphi",
+  "Eiffel", "Elan", "elisp", "erlang", "Euphoria", "Fortran", "GAP", "GCL", "Gnuplot", "Go",
+  "hansl", "Haskell", "HTML", "IDL", "inform",
+  "Java", "JVMIS", "ksh", "Lingo", "Lisp", "LLVM", "Logo", "Lua", "make", "Mathematica", "Matlab", "Mercury",
+  "MetaPost", "Miranda", "Mizar", "ML", "Modula-2", "MuPAD", "NASTRAN", "Oberon-2", "OCL", "Octave", "OORexx",
   "Oz", "Pascal", "Perl", "PHP", "PL/I", "Plasm", "PostScript", "POV", "Prolog", "Promela",
-  "PSTricks", "Python", "R", "Reduce", "Rexx", "RSL", "Ruby", "S", "SAS", "Scilab", "sh",
-  "SHELXL", "Simula", "tcl", "SPARQL", "SQL", "tcl", "TeX", "VBScript", "Verilog", "VHDL",
+  "PSTricks", "Python", "R", "Reduce", "Rexx", "RSL", "Ruby", "S", "SAS", "Scala", "Scilab", "sh",
+  "SHELXL", "Simula", "SPARQL", "SQL", "Swift", "tcl", "TeX", "VBScript", "Verilog", "VHDL",
   "VRML", "XML", "XSLT", "" };
 
 
