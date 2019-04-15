@@ -1983,6 +1983,14 @@ contributors = [
                  "22 February 2005",
                  u"support for optional argument in sections/captions svjour/svjog, egs and llncs document classes. Lot of bug hunting (and fixing!)"),
 
+     contributor(u"Veselin",
+                 "vveesskkoo () gmail ! com",
+                 "GPL",
+                 "Re: po/bg.po update",
+                 "m=155531922001223",
+                 "15 April 2019",
+                 u"Bulgarian localization"),
+
      contributor(u"Jürgen Vigna",
                  "jug () lyx ! org",
                  "GPL",
@@ -2063,12 +2071,12 @@ contributors = [
                  "",
                  u"Maintainer of the @lists.lyx.org mailing-lists"),
 
-     contributor(u"Serge Winitzki",
-                 "winitzki () erebus ! phys ! cwru ! edu",
-                 "",
-                 "",
-                 "",
-                 "",
+     contributor(u"Sergei Winitzki",
+                 "winitzki () gmail ! com",
+                 "GPL",
+                 "Re: patch to include latest supported programming languages in listings.tex",
+                 "m=155530602429557",
+                 "15 April 2019",
                  u"updates to the Scientific Word bindings"),
 
      contributor(u"Stephan Witt",
