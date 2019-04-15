@@ -610,6 +610,16 @@ void Undo::endUndoGroup(CursorData const & cur_after)
 }
 
 
+void Undo::splitUndoGroup(CursorData const & cur)
+{
+	size_t const level = d->group_level_;
+	d->group_level_ = 1;
+	endUndoGroup(cur);
+	beginUndoGroup(cur);
+	d->group_level_ = level;
+}
+
+
 bool Undo::activeUndoGroup() const
 {
 	return d->group_level_ > 0

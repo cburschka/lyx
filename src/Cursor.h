@@ -183,6 +183,8 @@ public:
 	void beginUndoGroup() const;
 	/// end the current undo group
 	void endUndoGroup() const;
+	/// end abruptly the current group and create a new one wih the same nesting level
+	void splitUndoGroup() const;
 
 	/// The general case: prepare undo for an arbitrary range.
 	void recordUndo(pit_type from, pit_type to) const;
