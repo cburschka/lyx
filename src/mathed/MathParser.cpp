@@ -1017,7 +1017,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 		else if (t.cat() == catOther) {
 			char_type c = t.character();
-			if (isAsciiOrMathAlpha(c)
+			if (!Encodings::isUnicodeTextOnly(c)
 			    || mode_ & Parse::VERBATIM
 			    || !(mode_ & Parse::USETEXT)
 			    || mode == InsetMath::TEXT_MODE) {
@@ -1026,7 +1026,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				MathAtom at = createInsetMath("text", buf);
 				at.nucleus()->cell(0).push_back(MathAtom(new InsetMathChar(c)));
 				while (nextToken().cat() == catOther
-				       && !isAsciiOrMathAlpha(nextToken().character())) {
+				       && Encodings::isUnicodeTextOnly(nextToken().character())) {
 					c = getToken().character();
 					at.nucleus()->cell(0).push_back(MathAtom(new InsetMathChar(c)));
 				}
