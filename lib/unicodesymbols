@@ -2163,92 +2163,92 @@
 #
 # 76 Arrows
 #
-0x2190 "\\textleftarrow"          "textcomp" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\leftarrow" # LEFTWARDS ARROW
-0x2191 "\\textuparrow"            "textcomp" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\uparrow" # UPWARDS ARROW
-0x2192 "\\textrightarrow"         "textcomp" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\rightarrow" # RIGHTWARDS ARROW
-0x2193 "\\textdownarrow"          "textcomp" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\downarrow" # DOWNWARDS ARROW
-0x2194 ""                         "" "mathalpha,force=utf8;utf8-cjk;euc-kr" "\\leftrightarrow" # LEFT RIGHT ARROW
-0x2195 ""                         "" "mathalpha,force=utf8;utf8-cjk;euc-kr" "\\updownarrow" # UP DOWN ARROW
-0x2196 ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk;euc-kr;euc-tw;gbk" "\\nwarrow" "" # NORTH WEST ARROW
-0x2197 "\\textglobrise"           "tipa" "mathalpha,force=utf8;utf8x;utf8-cjk;euc-kr;euc-tw;gbk" "\\nearrow" "" # NORTH EAST ARROW
-0x2198 "\\textglobfall"           "tipa" "mathalpha,force=utf8;utf8x;utf8-cjk;euc-kr;euc-tw;gbk" "\\searrow" "" #
-0x2199 ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk;euc-kr;euc-tw;gbk" "\\swarrow" "" # SOUTH WEST ARROW
-0x219a ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\nleftarrow" "amssymb" # LEFTWARDS ARROW WITH STROKE
-0x219b ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\nrightarrow" "amssymb" # RIGHTWARDS ARROW WITH STROKE
+0x2190 "\\textleftarrow"          "textcomp" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\leftarrow" # LEFTWARDS ARROW
+0x2191 "\\textuparrow"            "textcomp" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\uparrow" # UPWARDS ARROW
+0x2192 "\\textrightarrow"         "textcomp" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\rightarrow" # RIGHTWARDS ARROW
+0x2193 "\\textdownarrow"          "textcomp" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\downarrow" # DOWNWARDS ARROW
+0x2194 ""                         "" "force=utf8;utf8-cjk;euc-kr" "\\leftrightarrow" # LEFT RIGHT ARROW
+0x2195 ""                         "" "force=utf8;utf8-cjk;euc-kr" "\\updownarrow" # UP DOWN ARROW
+0x2196 ""                         "" "force=utf8;utf8x;utf8-cjk;euc-kr;euc-tw;gbk" "\\nwarrow" "" # NORTH WEST ARROW
+0x2197 "\\textglobrise"           "tipa" "force=utf8;utf8x;utf8-cjk;euc-kr;euc-tw;gbk" "\\nearrow" "" # NORTH EAST ARROW
+0x2198 "\\textglobfall"           "tipa" "force=utf8;utf8x;utf8-cjk;euc-kr;euc-tw;gbk" "\\searrow" "" #
+0x2199 ""                         "" "force=utf8;utf8x;utf8-cjk;euc-kr;euc-tw;gbk" "\\swarrow" "" # SOUTH WEST ARROW
+0x219a ""                         "" "force=utf8;utf8x;utf8-cjk" "\\nleftarrow" "amssymb" # LEFTWARDS ARROW WITH STROKE
+0x219b ""                         "" "force=utf8;utf8x;utf8-cjk" "\\nrightarrow" "amssymb" # RIGHTWARDS ARROW WITH STROKE
 #0x219c ""                         "" "" "" "" # LEFTWARDS WAVE ARROW
 # amssymb and amsfonts define leadsto as well, but wrong (looks like 0x21dd)
-0x219d ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\leadsto" "latexsym|wasysym" # RIGHTWARDS WAVE ARROW,
-0x219e ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\twoheadleftarrow" "amssymb" # LEFTWARDS TWO HEADED ARROW
+0x219d ""                         "" "force=utf8;utf8-cjk" "\\leadsto" "latexsym|wasysym" # RIGHTWARDS WAVE ARROW,
+0x219e ""                         "" "force=utf8;utf8-cjk" "\\twoheadleftarrow" "amssymb" # LEFTWARDS TWO HEADED ARROW
 #0x219f ""                         "" "" "" "" # UPWARDS TWO HEADED ARROW
-0x21a0 ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\twoheadrightarrow" "amssymb" # RIGHTWARDS TWO HEADED ARROW
+0x21a0 ""                         "" "force=utf8;utf8-cjk" "\\twoheadrightarrow" "amssymb" # RIGHTWARDS TWO HEADED ARROW
 #0x21a1 ""                         "" "" "" "" # DOWNWARDS TWO HEADED ARROW
-0x21a2 ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\leftarrowtail" "amssymb" # LEFTWARDS ARROW WITH TAIL
-0x21a3 ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\rightarrowtail" "amssymb" # RIGHTWARDS ARROW WITH TAIL
-0x21a4 ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\mapsfrom" "stmaryrd" # LEFTWARDS ARROW FROM BAR
+0x21a2 ""                         "" "force=utf8;utf8-cjk" "\\leftarrowtail" "amssymb" # LEFTWARDS ARROW WITH TAIL
+0x21a3 ""                         "" "force=utf8;utf8-cjk" "\\rightarrowtail" "amssymb" # RIGHTWARDS ARROW WITH TAIL
+0x21a4 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\mapsfrom" "stmaryrd" # LEFTWARDS ARROW FROM BAR
 #0x21a5 ""                         "" "" "" "" # UPWARDS ARROW FROM BAR
-0x21a6 ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\mapsto" "" # RIGHTWARDS ARROW FROM BAR
+0x21a6 ""                         "" "force=utf8;utf8-cjk" "\\mapsto" "" # RIGHTWARDS ARROW FROM BAR
 #0x21a7 ""                         "" "" "" "" # DOWNWARDS ARROW FROM BAR
 0x21a8 "\\ETB"                    "ascii" "force=utf8;utf8x;utf8-cjk" # UP DOWN ARROW WITH BASE
-0x21a9 ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\hookleftarrow" "" # LEFTWARDS ARROW WITH HOOK
-0x21aa ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\hookrightarrow" "" # RIGHTWARDS ARROW WITH HOOK
-0x21ab ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\looparrowleft" "amssymb" # LEFTWARDS ARROW WITH LOOP
-0x21ac ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\looparrowright" "amssymb" # RIGHTWARDS ARROW WITH LOOP
-0x21ad ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\leftrightsquigarrow" "amssymb" # LEFT RIGHT WAVE ARROW
-0x21ae ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\nleftrightarrow" "amssymb" # LEFT RIGHT ARROW WITH STROKE
+0x21a9 ""                         "" "force=utf8;utf8-cjk" "\\hookleftarrow" "" # LEFTWARDS ARROW WITH HOOK
+0x21aa ""                         "" "force=utf8;utf8-cjk" "\\hookrightarrow" "" # RIGHTWARDS ARROW WITH HOOK
+0x21ab ""                         "" "force=utf8;utf8x;utf8-cjk" "\\looparrowleft" "amssymb" # LEFTWARDS ARROW WITH LOOP
+0x21ac ""                         "" "force=utf8;utf8x;utf8-cjk" "\\looparrowright" "amssymb" # RIGHTWARDS ARROW WITH LOOP
+0x21ad ""                         "" "force=utf8;utf8x;utf8-cjk" "\\leftrightsquigarrow" "amssymb" # LEFT RIGHT WAVE ARROW
+0x21ae ""                         "" "force=utf8;utf8x;utf8-cjk" "\\nleftrightarrow" "amssymb" # LEFT RIGHT ARROW WITH STROKE
 # stmaryrd defines \lightnig as math-command but this clashes with wasysym where \lightning in math mode produces "`"
 0x21af "\\lightning"              "wasysym" "force=utf8;utf8x;utf8-cjk" "" "" # DOWNWARDS ZIGZAG ARROW
-0x21b0 ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\Lsh" "amssymb" # UPWARDS ARROW WITH TIP LEFTWARDS
-0x21b1 ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\Rsh" "amssymb" # UPWARDS ARROW WITH TIP RIGHTWARDS
+0x21b0 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\Lsh" "amssymb" # UPWARDS ARROW WITH TIP LEFTWARDS
+0x21b1 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\Rsh" "amssymb" # UPWARDS ARROW WITH TIP RIGHTWARDS
 #0x21b2 ""                         "" "" "" "" # DOWNWARDS ARROW WITH TIP LEFTWARDS
 #0x21b3 ""                         "" "" "" "" # DOWNWARDS ARROW WITH TIP RIGHTWARDS
 #0x21b4 ""                         "" "" "" "" # RIGHTWARDS ARROW WITH CORNER DOWNWARDS
 0x21b5 "{\\Pisymbol{psy}{191}}"   "pifont" "force=utf8;utf8x;utf8-cjk" # DOWNWARDS ARROW WITH CORNER LEFTWARDS, Return key
-0x21b6 ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\curvearrowleft" "amssymb" # ANTICLOCKWISE TOP SEMICIRCLE ARROW
-0x21b7 ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\curvearrowright" "amssymb" # CLOCKWISE TOP SEMICIRCLE ARROW
+0x21b6 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\curvearrowleft" "amssymb" # ANTICLOCKWISE TOP SEMICIRCLE ARROW
+0x21b7 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\curvearrowright" "amssymb" # CLOCKWISE TOP SEMICIRCLE ARROW
 #0x21b8 ""                         "" "" "" "" # NORTH WEST ARROW TO LONG BAR
 0x21b9 "\\tabwin"                  "menukeys" "force" "" "" # LEFTWARDS ARROW TO BAR OVER RIGHTWARDS ARROW TO BAR
-0x21ba ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\circlearrowleft" "amssymb" # ANTICLOCKWISE OPEN CIRCLE ARROW
-0x21bb ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\circlearrowright" "amssymb" # CLOCKWISE OPEN CIRCLE ARROW
-0x21bc ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\leftharpoonup" "" # LEFTWARDS HARPOON WITH BARB UPWARDS
-0x21bd ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\leftharpoondown" "" # LEFTWARDS HARPOON WITH BARB DOWNWARDS
-0x21be ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\upharpoonright" "amssymb" # UPWARDS HARPOON WITH BARB RIGHTWARDS
-0x21bf ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\upharpoonleft" "amssymb" # UPWARDS HARPOON WITH BARB LEFTWARDS
-0x21c0 ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\rightharpoonup" "" # RIGHTWARDS HARPOON WITH BARB UPWARDS
-0x21c1 ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\rightharpoondown" "" # RIGHTWARDS HARPOON WITH BARB DOWNWARDS
-0x21c2 ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\downharpoonright" "amssymb" # DOWNWARDS HARPOON WITH BARB RIGHTWARDS
-0x21c3 ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\downharpoonleft" "amssymb" # DOWNWARDS HARPOON WITH BARB LEFTWARDS
-0x21c4 ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\rightleftarrows" "amssymb" # RIGHTWARDS ARROW OVER LEFTWARDS ARROW
-#0x21c5 ""                         "" "mathalpha" "\\updownarrows" "mathabx" # UPWARDS ARROW LEFTWARDS OF DOWNWARDS ARROW
-0x21c6 ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\leftrightarrows" "amssymb" # LEFTWARDS ARROW OVER RIGHTWARDS ARROW
-0x21c7 ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\leftleftarrows" "amssymb" # LEFTWARDS PAIRED ARROWS
-0x21c8 ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\upuparrows" "amssymb" # UPWARDS PAIRED ARROWS
-0x21c9 ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\rightrightarrows" "amssymb" # RIGHTWARDS PAIRED ARROWS
-0x21ca ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\downdownarrows" "amssymb" # DOWNWARDS PAIRED ARROWS
-0x21cb ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\leftrightharpoons" "amssymb" # LEFTWARDS HARPOON OVER RIGHTWARDS HARPOON
-0x21cc ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\rightleftharpoons" "amssymb" # RIGHTWARDS HARPOON OVER LEFTWARDS HARPOON
-0x21cd ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\nLeftarrow" "amssymb" # LEFTWARDS DOUBLE ARROW WITH STROKE
-0x21ce ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\nLeftrightarrow" "amssymb" # LEFT RIGHT DOUBLE ARROW WITH STROKE
-0x21cf ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\nRightarrow" "amssymb" # RIGHTWARDS DOUBLE ARROW WITH STROKE
-0x21d0 ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\Leftarrow" "" # LEFTWARDS DOUBLE ARROW
-0x21d1 ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\Uparrow" "" # UPWARDS DOUBLE ARROW
-0x21d2 ""                         "" "mathalpha,force=utf8;utf8-cjk;euc-jp;euc-kr;jis" "\\Rightarrow" "" # RIGHTWARDS DOUBLE ARROW
-0x21d3 ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\Downarrow" "" # DOWNWARDS DOUBLE ARROW
-0x21d4 ""                         "" "mathalpha,force=utf8;utf8-cjk;euc-jp;euc-kr;jis" "\\Leftrightarrow" "" # LEFT RIGHT DOUBLE ARROW
-0x21d5 ""                         "" "mathalpha,force=utf8;utf8-cjk" "\\Updownarrow" "" # UP DOWN DOUBLE ARROW
-#0x21d6 ""                         "" "mathalpha" "\\Nwarrow" "MnSymbol" # NORTH WEST DOUBLE ARROW
-#0x21d7 ""                         "" "mathalpha" "\\Nearrow" "MnSymbol" # NORTH EAST DOUBLE ARROW
-#0x21d8 ""                         "" "mathalpha" "\\Searrow" "MnSymbol" # SOUTH EAST DOUBLE ARROW
-#0x21d9 ""                         "" "mathalpha" "\\Swarrow" "MnSymbol" # SOUTH WEST DOUBLE ARROW
-0x21da ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\Lleftarrow" "amssymb" # LEFTWARDS TRIPLE ARROW
-0x21db ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\Rrightarrow" "amssymb" # RIGHTWARDS TRIPLE ARROW
-#0x21dc ""                         "" "mathalpha" "\\leftsquigarrow" "mathabx" # LEFTWARDS SQUIGGLE ARROW
-0x21dd ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\rightsquigarrow" "amssymb" # RIGHTWARDS SQUIGGLE ARROW
+0x21ba ""                         "" "force=utf8;utf8x;utf8-cjk" "\\circlearrowleft" "amssymb" # ANTICLOCKWISE OPEN CIRCLE ARROW
+0x21bb ""                         "" "force=utf8;utf8x;utf8-cjk" "\\circlearrowright" "amssymb" # CLOCKWISE OPEN CIRCLE ARROW
+0x21bc ""                         "" "force=utf8;utf8-cjk" "\\leftharpoonup" "" # LEFTWARDS HARPOON WITH BARB UPWARDS
+0x21bd ""                         "" "force=utf8;utf8-cjk" "\\leftharpoondown" "" # LEFTWARDS HARPOON WITH BARB DOWNWARDS
+0x21be ""                         "" "force=utf8;utf8-cjk" "\\upharpoonright" "amssymb" # UPWARDS HARPOON WITH BARB RIGHTWARDS
+0x21bf ""                         "" "force=utf8;utf8-cjk" "\\upharpoonleft" "amssymb" # UPWARDS HARPOON WITH BARB LEFTWARDS
+0x21c0 ""                         "" "force=utf8;utf8-cjk" "\\rightharpoonup" "" # RIGHTWARDS HARPOON WITH BARB UPWARDS
+0x21c1 ""                         "" "force=utf8;utf8-cjk" "\\rightharpoondown" "" # RIGHTWARDS HARPOON WITH BARB DOWNWARDS
+0x21c2 ""                         "" "force=utf8;utf8-cjk" "\\downharpoonright" "amssymb" # DOWNWARDS HARPOON WITH BARB RIGHTWARDS
+0x21c3 ""                         "" "force=utf8;utf8-cjk" "\\downharpoonleft" "amssymb" # DOWNWARDS HARPOON WITH BARB LEFTWARDS
+0x21c4 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\rightleftarrows" "amssymb" # RIGHTWARDS ARROW OVER LEFTWARDS ARROW
+#0x21c5 ""                         "" "" "\\updownarrows" "mathabx" # UPWARDS ARROW LEFTWARDS OF DOWNWARDS ARROW
+0x21c6 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\leftrightarrows" "amssymb" # LEFTWARDS ARROW OVER RIGHTWARDS ARROW
+0x21c7 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\leftleftarrows" "amssymb" # LEFTWARDS PAIRED ARROWS
+0x21c8 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\upuparrows" "amssymb" # UPWARDS PAIRED ARROWS
+0x21c9 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\rightrightarrows" "amssymb" # RIGHTWARDS PAIRED ARROWS
+0x21ca ""                         "" "force=utf8;utf8x;utf8-cjk" "\\downdownarrows" "amssymb" # DOWNWARDS PAIRED ARROWS
+0x21cb ""                         "" "force=utf8;utf8-cjk" "\\leftrightharpoons" "amssymb" # LEFTWARDS HARPOON OVER RIGHTWARDS HARPOON
+0x21cc ""                         "" "force=utf8;utf8-cjk" "\\rightleftharpoons" "amssymb" # RIGHTWARDS HARPOON OVER LEFTWARDS HARPOON
+0x21cd ""                         "" "force=utf8;utf8x;utf8-cjk" "\\nLeftarrow" "amssymb" # LEFTWARDS DOUBLE ARROW WITH STROKE
+0x21ce ""                         "" "force=utf8;utf8x;utf8-cjk" "\\nLeftrightarrow" "amssymb" # LEFT RIGHT DOUBLE ARROW WITH STROKE
+0x21cf ""                         "" "force=utf8;utf8x;utf8-cjk" "\\nRightarrow" "amssymb" # RIGHTWARDS DOUBLE ARROW WITH STROKE
+0x21d0 ""                         "" "force=utf8;utf8-cjk" "\\Leftarrow" "" # LEFTWARDS DOUBLE ARROW
+0x21d1 ""                         "" "force=utf8;utf8-cjk" "\\Uparrow" "" # UPWARDS DOUBLE ARROW
+0x21d2 ""                         "" "force=utf8;utf8-cjk;euc-jp;euc-kr;jis" "\\Rightarrow" "" # RIGHTWARDS DOUBLE ARROW
+0x21d3 ""                         "" "force=utf8;utf8-cjk" "\\Downarrow" "" # DOWNWARDS DOUBLE ARROW
+0x21d4 ""                         "" "force=utf8;utf8-cjk;euc-jp;euc-kr;jis" "\\Leftrightarrow" "" # LEFT RIGHT DOUBLE ARROW
+0x21d5 ""                         "" "force=utf8;utf8-cjk" "\\Updownarrow" "" # UP DOWN DOUBLE ARROW
+#0x21d6 ""                         "" "" "\\Nwarrow" "MnSymbol" # NORTH WEST DOUBLE ARROW
+#0x21d7 ""                         "" "" "\\Nearrow" "MnSymbol" # NORTH EAST DOUBLE ARROW
+#0x21d8 ""                         "" "" "\\Searrow" "MnSymbol" # SOUTH EAST DOUBLE ARROW
+#0x21d9 ""                         "" "" "\\Swarrow" "MnSymbol" # SOUTH WEST DOUBLE ARROW
+0x21da ""                         "" "force=utf8;utf8x;utf8-cjk" "\\Lleftarrow" "amssymb" # LEFTWARDS TRIPLE ARROW
+0x21db ""                         "" "force=utf8;utf8x;utf8-cjk" "\\Rrightarrow" "amssymb" # RIGHTWARDS TRIPLE ARROW
+#0x21dc ""                         "" "" "\\leftsquigarrow" "mathabx" # LEFTWARDS SQUIGGLE ARROW
+0x21dd ""                         "" "force=utf8;utf8x;utf8-cjk" "\\rightsquigarrow" "amssymb" # RIGHTWARDS SQUIGGLE ARROW
 # FIXME Yes, these are constructed, but better than a key symbols text.
 0x21de "\\ooalign{\\textuparrow\\cr\\kern.1em\\textdblhyphen}"  "textcomp" "force=utf8;utf8x;utf8-cjk" "" "" #Qt::Key_PageUp, UPWARDS ARROW WITH DOUBLE STROKE = page up "\\nHuparrow" "boisik|stix"
 0x21df "\\ooalign{\\textdownarrow\\cr\\kern.1em\\textdblhyphen}" "textcomp" "force=utf8;utf8-cjk;utf8x,notermination=text" "" "" # Qt::Key_PageDown, DOWNWARDS ARROW WITH DOUBLE STROKE = page down "\\nHdownarrow" "boisik|stix"
-0x21e0 ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\dashleftarrow" "amssymb" # LEFTWARDS DASHED ARROW
+0x21e0 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\dashleftarrow" "amssymb" # LEFTWARDS DASHED ARROW
 #0x21e1 ""                         "" "" "" "" # UPWARDS DASHED ARROW
-0x21e2 ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\dashrightarrow" "amssymb" # RIGHTWARDS DASHED ARROW
+0x21e2 ""                         "" "force=utf8;utf8x;utf8-cjk" "\\dashrightarrow" "amssymb" # RIGHTWARDS DASHED ARROW
 #0x21e3 ""                         "" "" "" "" # DOWNWARDS DASHED ARROW
 0x21e4 "\\reflectbox{\\tabmac}"   "menukeys,graphics" "force" "" "" # Qt::Key_Backtab, LEFTWARDS ARROW TO BAR = leftward tab "\\barleftarrow" "boisik|stix"
 0x21e5 "\\tabmac"                 "menukeys" "force" "" "" # Qt::Key_Tab, RIGHTWARDS ARROW TO BAR = rightward tab "\\rightarrowbar" "boisik|stix"
@@ -2267,7 +2267,7 @@
 #0x21f2 ""                         "" "" "" "" # SOUTH EAST ARROW TO CORNER
 #0x21f3 ""                         "" "" "" "" # UP DOWN WHITE ARROW
 #0x21f4 ""                         "" "" "" "" # RIGHT ARROW WITH SMALL CIRCLE
-#0x21f5 ""                         "" "mathalpha" "\\downuparrows" "mathabx" # DOWNWARDS ARROW LEFTWARDS OF UPWARDS ARROW
+#0x21f5 ""                         "" "" "\\downuparrows" "mathabx" # DOWNWARDS ARROW LEFTWARDS OF UPWARDS ARROW
 #0x21f6 ""                         "" "" "" "" # THREE RIGHTWARDS ARROWS
 #0x21f7 ""                         "" "" "" "" # LEFTWARDS ARROW WITH VERTICAL STROKE
 #0x21f8 ""                         "" "" "" "" # RIGHTWARDS ARROW WITH VERTICAL STROKE
@@ -2275,8 +2275,8 @@
 #0x21fa ""                         "" "" "" "" # LEFTWARDS ARROW WITH DOUBLE VERTICAL STROKE
 #0x21fb ""                         "" "" "" "" # RIGHTWARDS ARROW WITH DOUBLE VERTICAL STROKE
 #0x21fc ""                         "" "" "" "" # LEFT RIGHT ARROW WITH DOUBLE VERTICAL STROKE
-0x21fd ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\leftarrowtriangle" "stmaryrd" # LEFTWARDS OPEN-HEADED ARROW
-0x21fe ""                         "" "mathalpha,force=utf8;utf8x;utf8-cjk" "\\rightarrowtriangle" "stmaryrd" # RIGHTWARDS OPEN-HEADED ARROW
+0x21fd ""                         "" "force=utf8;utf8x;utf8-cjk" "\\leftarrowtriangle" "stmaryrd" # LEFTWARDS OPEN-HEADED ARROW
+0x21fe ""                         "" "force=utf8;utf8x;utf8-cjk" "\\rightarrowtriangle" "stmaryrd" # RIGHTWARDS OPEN-HEADED ARROW
 #0x21ff ""                         "" "" "" "" # LEFT RIGHT OPEN-HEADED ARROW
 #
 # 77 Mathematical Operators
