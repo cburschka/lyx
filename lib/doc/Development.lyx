@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 572
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -14,7 +14,7 @@ logicalmkup
 \language english
 \language_package default
 \inputencoding auto
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
 \font_typewriter "lmtt" "default"
@@ -87,6 +87,7 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -479,7 +480,7 @@ Add an entry to both format lists (for conversion and reversion) in
 status collapsed
 
 \begin_layout Plain Layout
-lib/lyx2lyx/lyx_2_3.py
+lib/lyx2lyx/lyx_2_4.py
 \end_layout
 
 \end_inset
@@ -582,8 +583,11 @@ src/tex2lyx/TODO.txt
 It would be nice if you could create a .lyx test file which contains instances
  of all changed or added features.
  This could then be used to test lyx2lyx and tex2lyx.
- Unfortunately, it has not yet been decided how to collect such examples,
- so please ask on the development list if you want to create one.
+ Test samples are collected under the corresponding subdirectories of 
+\family typewriter
+/autotests
+\family default
+.
 \end_layout
 
 \begin_layout Enumerate

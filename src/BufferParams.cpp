@@ -436,7 +436,7 @@ BufferParams::BufferParams()
 	fonts_sans_scale[1] = 100;
 	fonts_typewriter_scale[0] = 100;
 	fonts_typewriter_scale[1] = 100;
-	inputenc = "auto";
+	inputenc = "auto-legacy";
 	lang_package = "default";
 	graphics_driver = "default";
 	default_output_format = "default";
@@ -1786,6 +1786,8 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		// get main font encodings
 		vector<string> fontencs = font_encodings();
 		// get font encodings of secondary languages
+		// FIXME: some languages (hebrew, ...) assume a standard font encoding as last
+		// option (for text in other languages).
 		features.getFontEncodings(fontencs);
 		if (!fontencs.empty()) {
 			os << "\\usepackage["
@@ -1799,7 +1801,9 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		os << "\\usepackage{textcomp}\n";
 	if (features.mustProvide("pmboxdraw"))
 		os << "\\usepackage{pmboxdraw}\n";
-
+	
+	// FIXME: With Thai as document or secondary language, we must load babel
+	// before inputenc (see lib/languages).
 	// handle inputenc etc.
 	writeEncodingPreamble(os, features);
 
@@ -3245,7 +3249,7 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 	if (useNonTeXFonts)
 		return;
 
-	if (inputenc == "auto") {
+	if (inputenc == "auto-legacy") {
 		string const doc_encoding =
 			language->encoding()->latexName();
 		Encoding::Package const package =
@@ -3285,7 +3289,7 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			else
 				os << "]{inputenc}\n";
 		}
-	} else if (inputenc != "default") {
+	} else if (inputenc != "auto-legacy-plain") {
 		switch (encoding().package()) {
 		case Encoding::none:
 		case Encoding::CJK:
@@ -3315,7 +3319,7 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			break;
 		}
 	}
-	if (inputenc == "default" || features.isRequired("japanese")) {
+	if (inputenc == "auto-legacy-plain" || features.isRequired("japanese")) {
 		// don't default to [utf8]{inputenc} with TeXLive >= 18
 		os << "\\ifdefined\\UseRawInputEncoding\n";
 		os << "  \\UseRawInputEncoding\\fi\n";
@@ -3433,7 +3437,7 @@ Encoding const & BufferParams::encoding() const
 	// Main encoding for LaTeX output.
 	if (useNonTeXFonts)
 		return *(encodings.fromLyXName("utf8-plain"));
-	if (inputenc == "auto" || inputenc == "default")
+	if (inputenc == "auto-legacy" || inputenc == "auto-legacy-plain")
 		return *language->encoding();
 	if (inputenc == "utf8" && language->lang() == "japanese")
 		return *(encodings.fromLyXName("utf8-platex"));

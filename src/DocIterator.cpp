@@ -745,7 +745,7 @@ Encoding const * DocIterator::getEncoding() const
 										  text.outerFont(sl.pit())).language();
 	// If we have a custom encoding for the buffer, we don't switch
 	// encodings (see output_latex::switchEncoding())
-	bool const customenc = bp.inputenc != "auto" && bp.inputenc != "default";
+	bool const customenc = bp.inputenc != "auto-legacy" && bp.inputenc != "auto-legacy-plain";
 	Encoding const * enc = customenc ? &bp.encoding() : lang->encoding();
 
 	// Some insets force specific encodings sometimes (e.g., listings in

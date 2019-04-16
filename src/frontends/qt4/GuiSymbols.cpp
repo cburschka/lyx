@@ -321,8 +321,8 @@ void GuiSymbols::updateView()
 	chosenLE->clear();
 
 	string new_encoding = bufferview()->cursor().getEncoding()->name();
-	if (buffer().params().inputenc != "auto" &&
-	    buffer().params().inputenc != "default")
+	if (buffer().params().inputenc != "auto-legacy" &&
+	    buffer().params().inputenc != "auto-legacy-plain")
 		new_encoding = buffer().params().encoding().name();
 	if (new_encoding == encoding_)
 		// everything up to date

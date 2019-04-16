@@ -3201,11 +3201,11 @@ void GuiDocument::applyView()
 
 	// language & quotes
 	if (langModule->defaultencodingRB->isChecked()) {
-		bp_.inputenc = "auto";
+		bp_.inputenc = "auto-legacy";
 	} else {
 		int i = langModule->encodingCO->currentIndex();
 		if (i == 0)
-			bp_.inputenc = "default";
+			bp_.inputenc = "auto-legacy-plain";
 		else {
 			QString const enc_gui =
 				langModule->encodingCO->currentText();
@@ -3222,8 +3222,8 @@ void GuiDocument::applyView()
 			}
 			if (!found) {
 				// should not happen
-				lyxerr << "GuiDocument::apply: Unknown encoding! Resetting to default" << endl;
-				bp_.inputenc = "default";
+				lyxerr << "GuiDocument::apply: Unknown encoding! Resetting to utf8" << endl;
+				bp_.inputenc = "utf8";
 			}
 		}
 	}
@@ -3719,9 +3719,9 @@ void GuiDocument::paramsToDialog()
 	langModule->dynamicQuotesCB->setChecked(bp_.dynamic_quotes);
 
 	bool default_enc = true;
-	if (bp_.inputenc != "auto") {
+	if (bp_.inputenc != "auto-legacy") {
 		default_enc = false;
-		if (bp_.inputenc == "default") {
+		if (bp_.inputenc == "auto-legacy-plain") {
 			langModule->encodingCO->setCurrentIndex(0);
 		} else {
 			string enc_gui;
@@ -4087,7 +4087,7 @@ void GuiDocument::paramsToDialog()
 	if (nn >= 0)
 		fontModule->fontsDefaultCO->setCurrentIndex(nn);
 
-	if (bp_.fontenc == "auto" || bp_.fontenc == "default") {
+	if (bp_.fontenc == "auto-legacy" || bp_.fontenc == "auto-legacy-plain") {
 		fontModule->fontencCO->setCurrentIndex(
 			fontModule->fontencCO->findData(toqstr(bp_.fontenc)));
 		fontModule->fontencLE->setEnabled(false);

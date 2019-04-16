@@ -979,10 +979,10 @@ void TeXOnePar(Buffer const & buf,
 		}
 	}
 
-	// Switch file encoding if necessary; no need to do this for "default"
+	// Switch file encoding if necessary; no need to do this for "auto-legacy-plain"
 	// encoding, since this only affects the position of the outputted
 	// \inputencoding command; the encoding switch will occur when necessary
-	if (bparams.inputenc == "auto"
+	if (bparams.inputenc == "auto-legacy"
 		&& !runparams.isFullUnicode() // Xe/LuaTeX use one document-wide encoding  (see also switchEncoding())
 		&& runparams.encoding->package() != Encoding::japanese
 		&& runparams.encoding->package() != Encoding::none) {
@@ -1339,11 +1339,11 @@ void TeXOnePar(Buffer const & buf,
 
 	// Information about local language is stored as a font feature.
 	// If this is the last paragraph of the inset and a local_font was set upon entering
-	// and we are mixing encodings ("auto" or "default" and no XeTeX or LuaTeX),
+	// and we are mixing encodings ("auto-legacy" or "auto-legacy-plain" and no XeTeX or LuaTeX),
 	// ensure the encoding is set back to the default encoding of the local language.
 	if (runparams.isLastPar && runparams_in.local_font != 0
 	    && runparams_in.encoding != runparams_in.local_font->language()->encoding()
-	    && (bparams.inputenc == "auto" || bparams.inputenc == "default")
+	    && (bparams.inputenc == "auto-legacy" || bparams.inputenc == "auto-legacy-plain")
 		&& !runparams.isFullUnicode()
 	   ) {
 		runparams_in.encoding = runparams_in.local_font->language()->encoding();
@@ -1643,11 +1643,11 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 	  return make_pair(false, 0);
 
 	// Only switch for auto-selected legacy encodings (inputenc setting
-	// "auto" or "default").
+	// "auto-legacy" or "auto-legacy-plain").
 	// The "listings" environment can force a switch also with other
 	// encoding settings (it does not support variable width encodings
 	// (utf8, jis, ...) under 8-bit latex engines).
-	if (!force && ((bparams.inputenc != "auto" && bparams.inputenc != "default")
+	if (!force && ((bparams.inputenc != "auto-legacy" && bparams.inputenc != "auto-legacy-plain")
 				   || runparams.moving_arg))
 		return make_pair(false, 0);
 
@@ -1668,7 +1668,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 	LYXERR(Debug::LATEX, "Changing LaTeX encoding from "
 		   << oldEnc.name() << " to " << newEnc.name());
 	os << setEncoding(newEnc.iconvName());
-	if (bparams.inputenc == "default")
+	if (bparams.inputenc == "auto-legacy-plain")
 	  return make_pair(true, 0);
 
 	docstring const inputenc_arg(from_ascii(newEnc.latexName()));

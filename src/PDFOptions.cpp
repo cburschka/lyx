@@ -101,9 +101,12 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 	if (!runparams.hyperref_driver.empty())
 		opt += runparams.hyperref_driver + ",";
 
-	// since LyX uses unicode, also set the PDF strings to unicode strings with the
-	// hyperref option "unicode"
-	opt += "unicode=true,";
+	// Since LyX uses unicode, also set the PDF strings to unicode strings
+	// with the hyperref option "unicode".
+	// (With Xe/LuaTeX and pTeX, unicode=true is the default
+	// and the option leads to errors with some Japanese document classes)
+	if (!runparams.isFullUnicode() && !runparams.use_japanese)
+		opt += "unicode=true,";
 
 	// only use the hyperref settings if hyperref is enabled by the user
 	// see bug #7052

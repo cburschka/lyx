@@ -283,6 +283,22 @@ def revert_fonts(document, fm, fontmap):
 ###
 ###############################################################################
 
+def convert_inputencoding_namechange(document):
+    " Rename inputencoding settings. "
+    i = find_token(document.header, "\\inputencoding", 0)
+    if i == -1:
+        return
+    s = document.header[i].replace("auto", "auto-legacy")
+    document.header[i] = s.replace("default", "auto-legacy-plain")
+
+def revert_inputencoding_namechange(document):
+    " Rename inputencoding settings. "
+    i = find_token(document.header, "\\inputencoding", 0)
+    if i == -1:
+        return
+    s = document.header[i].replace("auto-legacy-plain", "default")
+    document.header[i] = s.replace("auto-legacy", "auto")
+
 def convert_notoFonts(document):
     " Handle Noto fonts definition to LaTeX "
 
@@ -1635,10 +1651,11 @@ convert = [
            [569, []],
            [570, []],
            [571, []],
-           [572, [convert_notoFonts]]  # Added options thin, light, extralight for Noto
+           [572, [convert_notoFonts]],  # Added options thin, light, extralight for Noto
+           [573, [convert_inputencoding_namechange]],
           ]
 
-revert =  [
+revert =  [[572, [revert_inputencoding_namechange]],
            [571, [revert_notoFonts]],
            [570, [revert_cmidruletrimming]],
            [569, [revert_bibfileencodings]],

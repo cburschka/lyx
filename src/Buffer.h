@@ -302,8 +302,8 @@ public:
 			   OutputParams const &,
 			   OutputWhat output = FullSource) const;
 	/** Export the buffer to LaTeX.
-	    If \p os is a file stream, and params().inputenc is "auto" or
-	    "default", and the buffer contains text in different languages
+	    If \p os is a file stream, and params().inputenc is "auto-legacy" or
+	    "auto-legacy-plain", and the buffer contains text in different languages
 	    with more than one encoding, then this method will change the
 	    encoding associated to \p os. Therefore you must not call this
 	    method with a string stream if the output is supposed to go to a

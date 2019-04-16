@@ -682,7 +682,7 @@ void InsetBibtex::parseBibTeXFiles(FileNameList & checkedFiles) const
 		if (ienc.empty() || ienc == "general")
 			ienc = to_ascii(params()["encoding"]);
 
-		if (!ienc.empty() && ienc != "default" && ienc != "auto" && encodings.fromLyXName(ienc))
+		if (!ienc.empty() && ienc != "auto-legacy-plain" && ienc != "auto-legacy" && encodings.fromLyXName(ienc))
 			encoding = encodings.fromLyXName(ienc)->iconvName();
 		ifdocstream ifs(bibfile.toFilesystemEncoding().c_str(),
 			ios_base::in, encoding);

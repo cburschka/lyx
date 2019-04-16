@@ -993,7 +993,7 @@ bool tex2lyx(FileName const & infilename, ostream & os, string encoding,
 	// actual encoding is different (bug 7509).
 	if (encoding.empty()) {
 		Encoding const * enc = 0;
-		if (preamble.inputencoding() == "auto") {
+		if (preamble.inputencoding() == "auto-legacy") {
 			ifdocstream is(setEncoding("ISO-8859-1"));
 			// forbid buffering on this stream
 			is.rdbuf()->pubsetbuf(0, 0);

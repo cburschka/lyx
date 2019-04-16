@@ -544,7 +544,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_html_math_output        = "0";
 	h_index[0]                = "Index";
 	h_index_command           = "default";
-	h_inputencoding           = "auto";
+	h_inputencoding           = "auto-legacy";
 	h_justification           = "true";
 	h_language                = "english";
 	h_language_package        = "none";
@@ -735,7 +735,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 		xetex = true;
 		h_use_non_tex_fonts = true;
 		registerAutomaticallyLoadedPackage("fontspec");
-		if (h_inputencoding == "auto")
+		if (h_inputencoding == "auto-legacy")
 			p.setEncoding("UTF-8");
 	}
 
@@ -1102,15 +1102,15 @@ void Preamble::handle_package(Parser &p, string const & name,
 		h_use_non_tex_fonts = true;
 		xetex = true;
 		registerAutomaticallyLoadedPackage("xunicode");
-		if (h_inputencoding == "auto")
+		if (h_inputencoding == "auto-legacy")
 			p.setEncoding("UTF-8");
 	}
 
 	else if (name == "CJK") {
-		// set the encoding to "auto" because it might be set to "default" by the babel handling
+		// set the encoding to "auto-legacy" because it might be set to "auto-legacy-plain" by the babel handling
 		// and this would not be correct for CJK
-		if (h_inputencoding == "default")
-			h_inputencoding = "auto";
+		if (h_inputencoding == "auto-legacy-plain")
+			h_inputencoding = "auto-legacy";
 		registerAutomaticallyLoadedPackage("CJK");
 	}
 
@@ -1128,7 +1128,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (name == "inputenc" || name == "luainputenc") {
 		// h_inputencoding is only set when there is not more than one
 		// inputenc option because otherwise h_inputencoding must be
-		// set to "auto" (the default encoding of the document language)
+		// set to "auto-legacy" (the default encodings of the document's languages)
 		// Therefore check that exactly one option is passed to inputenc.
 		// It is also only set when there is not more than one babel
 		// language option.
@@ -1572,8 +1572,8 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		return;
 
 	while (is_full_document && p.good()) {
-		if (detectEncoding && h_inputencoding != "auto" &&
-		    h_inputencoding != "default")
+		if (detectEncoding && h_inputencoding != "auto-legacy" &&
+		    h_inputencoding != "auto-legacy-plain")
 			return;
 
 		Token const & t = p.get_token();
@@ -1618,7 +1618,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				"% This document must be compiled with XeLaTeX ";
 			if (comment.size() > magicXeLaTeX.size()
 				  && comment.substr(0, magicXeLaTeX.size()) == magicXeLaTeX
-				  && h_inputencoding == "auto") {
+				  && h_inputencoding == "auto-legacy") {
 				if (!detectEncoding)
 					cerr << "XeLaTeX comment found, switching to UTF8\n";
 				h_inputencoding = "utf8";
@@ -2439,7 +2439,7 @@ string Preamble::parseEncoding(Parser & p, string const & forceclass)
 {
 	TeX2LyXDocClass dummy;
 	parse(p, forceclass, true, dummy);
-	if (h_inputencoding != "auto" && h_inputencoding != "default")
+	if (h_inputencoding != "auto-legacy" && h_inputencoding != "auto-legacy-plain")
 		return h_inputencoding;
 	return "";
 }
