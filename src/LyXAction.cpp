@@ -3251,6 +3251,15 @@ void LyXAction::init()
  */
 		{ LFUN_PARAGRAPH_UPDATE, "", Noop, Hidden },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_SELECT
+ * \li Action: Move cursor to beginning of current paragraph
+               and select to the end in downward direction
+ * \li Syntax: paragraph-select
+ * \li Origin: Kornel, 16 Apr 2019
+ * \endvar
+ */
+		{ LFUN_PARAGRAPH_SELECT, "paragraph-select", ReadOnly, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_UP_SELECT

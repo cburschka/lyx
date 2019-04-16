@@ -484,6 +484,7 @@ enum FuncCode
 	LFUN_SEARCH_IGNORE,		// kornel, 20181115
 	LFUN_BUFFER_WRITE_AS_TEMPLATE,	// spitz, 20190323
 	LFUN_TABULAR_STYLE_INSERT,	// spitz, 20190325
+	LFUN_PARAGRAPH_SELECT,          // Kornel, 20190416
 	LFUN_LASTACTION                 // end of the table
 };
 

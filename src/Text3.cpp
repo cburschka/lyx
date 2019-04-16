@@ -927,6 +927,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_PARAGRAPH_SELECT:
+		if (cur.pos() > 0)
+			needsUpdate |= setCursor(cur, cur.pit(), 0);
+		needsUpdate |= cur.selHandle(true);
+		if (cur.pos() < cur.lastpos())
+			needsUpdate |= setCursor(cur, cur.pit(), cur.lastpos());
+		break;
+
 	case LFUN_PARAGRAPH_UP:
 	case LFUN_PARAGRAPH_UP_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action() == LFUN_PARAGRAPH_UP_SELECT);
@@ -1762,9 +1770,12 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_TRIPLE:
 		if (cmd.button() == mouse_button::button1) {
-			tm->cursorHome(cur);
+			if (cur.pos() > 0)
+				setCursor(cur, cur.pit(), 0);
+			bv->cursor() = cur;
 			cur.resetAnchor();
-			tm->cursorEnd(cur);
+			if (cur.pos() < cur.lastpos())
+				setCursor(cur, cur.pit(), cur.lastpos());
 			cur.setSelection();
 			bv->cursor() = cur;
 		}
@@ -3534,6 +3545,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_UP_SELECT:
 	case LFUN_DOWN:
 	case LFUN_DOWN_SELECT:
+	case LFUN_PARAGRAPH_SELECT:
 	case LFUN_PARAGRAPH_UP_SELECT:
 	case LFUN_PARAGRAPH_DOWN_SELECT:
 	case LFUN_LINE_BEGIN_SELECT:
