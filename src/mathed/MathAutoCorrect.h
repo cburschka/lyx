@@ -16,10 +16,10 @@
 
 namespace lyx {
 
-class Cursor;
+class MathAtom;
 
 // make "corrections" according to file lib/autocorrect
-bool math_autocorrect(Cursor & cur, char_type c);
+bool math_autocorrect(MathAtom & at, char_type c);
 
 } // namespace lyx
 

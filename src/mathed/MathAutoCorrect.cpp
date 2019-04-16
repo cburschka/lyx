@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-#include "Cursor.h"
 #include "MathAutoCorrect.h"
 #include "MathData.h"
 #include "InsetMath.h"
@@ -39,18 +38,18 @@ public:
 	/// \brief Correction
 	Correction() : from2_(0) {}
 	///
-	bool correct(Cursor & cur, char_type c) const;
+	bool correct(MathAtom & at, char_type c) const;
 	///
 	bool read(idocstream & is);
 	///
 	void write(odocstream & os) const;
 private:
 	///
-	MathData from1_;
+	MathAtom from1_;
 	///
 	char_type from2_;
 	///
-	MathData to_;
+	MathAtom to_;
 };
 
 
@@ -65,35 +64,26 @@ bool Correction::read(idocstream & is)
 	MathData ar1, ar3;
 	mathed_parse_cell(ar1, s1);
 	mathed_parse_cell(ar3, s3);
-	from1_ = ar1;
+	if (ar1.size() != 1 || ar3.size() != 1)
+		return false;
+	from1_ = ar1.front();
 	from2_ = s2[0];
-	to_    = ar3;
+	to_    = ar3.front();
 	return true;
 }
 
 
-bool Correction::correct(Cursor & cur, char_type c) const
+bool Correction::correct(MathAtom & at, char_type c) const
 {
 	//LYXERR(Debug::MATHED,
 	//	"trying to correct ar: " << at << " from: '" << from1_ << '\'');
 	if (from2_ != c)
 		return false;
-	pos_type n = from1_.size();
-	if (cur.pos() < pos_type(from1_.size())) // not enough to match
+	if (asString(at) != asString(from1_))
 		return false;
-	pos_type start = cur.pos() - from1_.size();
-
-	for (pos_type i = 0; i < n; i++)
-		if (asString(cur.cell()[start + i]) != asString(from1_[i]))
-			return false;
-
-	LYXERR(Debug::MATHED, "match found! subst in " << cur.cell()
+	LYXERR(Debug::MATHED, "match found! subst in " << at
 		<< " from: '" << from1_ << "' to '" << to_ << '\'');
-
-	cur.cell().erase(cur.pos() - n, cur.pos());
-	cur.pos() -= n;
-
-	cur.insert(to_);
+	at = to_;
 	return true;
 }
 
@@ -131,17 +121,17 @@ public:
 	///
 	void insert(const Correction & corr) { data_.push_back(corr); }
 	///
-	bool correct(Cursor & cur, char_type c) const;
+	bool correct(MathAtom & at, char_type c) const;
 private:
 	///
 	vector<Correction> data_;
 };
 
 
-bool Corrections::correct(Cursor & cur, char_type c) const
+bool Corrections::correct(MathAtom & at, char_type c) const
 {
 	for (const_iterator it = data_.begin(); it != data_.end(); ++it)
-		if (it->correct(cur, c))
+		if (it->correct(at, c))
 			return true;
 	return false;
 }
@@ -182,7 +172,7 @@ void initAutoCorrect()
 } // namespace
 
 
-bool math_autocorrect(Cursor & cur, char_type c)
+bool math_autocorrect(MathAtom & at, char_type c)
 {
 	static bool initialized = false;
 
@@ -191,6 +181,8 @@ bool math_autocorrect(Cursor & cur, char_type c)
 		initialized = true;
 	}
 
-	return theCorrections.correct(cur, c);
+	return theCorrections.correct(at, c);
 }
+
+
 } // namespace lyx
