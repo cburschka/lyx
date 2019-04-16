@@ -267,10 +267,15 @@ bool isInside(DocIterator const & it, MathData const & ar,
 #endif
 
 
-bool MathData::hasCaret(BufferView * bv) const
+int MathData::caretAscent(BufferView const * bv) const
 {
-	Cursor & cur = bv->cursor();
-	return cur.inMathed() && &cur.cell() == this;
+	return mrow_cache_[bv].caret_ascent;
+}
+
+
+int MathData::caretDescent(BufferView const * bv) const
+{
+	return mrow_cache_[bv].caret_descent;
 }
 
 
@@ -288,8 +293,7 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim, bool tight) const
 	sshift_ = xascent / 4;
 
 	MathRow mrow(mi, this);
-	bool has_caret = mrow.metrics(mi, dim);
-	mrow_cache_[bv] = mrow;
+	mrow.metrics(mi, dim);
 	kerning_ = mrow.kerning(bv);
 
 	// Set a minimal ascent/descent for the cell
@@ -304,12 +308,11 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim, bool tight) const
 
 	// This is one of the the few points where the drawing font is known,
 	// so that we can set the caret vertical dimensions.
-	has_caret |= hasCaret(bv);
-	if (has_caret)
-		bv->setCaretAscentDescent(min(dim.asc, fm.maxAscent()),
-		                          min(dim.des, fm.maxDescent()));
+	mrow.caret_ascent = min(dim.asc, fm.maxAscent());
+	mrow.caret_descent = min(dim.des, fm.maxDescent());
 
-	// Cache the dimension.
+	// Cache row and dimension.
+	mrow_cache_[bv] = mrow;
 	bv->coordCache().arrays().add(this, dim);
 }
 

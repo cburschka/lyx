@@ -86,7 +86,7 @@ public:
 	};
 
 	///
-	MathRow() {};
+	MathRow() : caret_ascent(0), caret_descent(0) {};
 	///
 	typedef std::vector<Element> Elements;
 	///
@@ -110,13 +110,17 @@ public:
 	// compute the spacings.
 	MathRow(MetricsInfo & mi, MathData const * ar);
 
-	// this returns true if the caret is here
-	bool metrics(MetricsInfo & mi, Dimension & dim);
+	//
+	void metrics(MetricsInfo & mi, Dimension & dim);
 	//
 	void draw(PainterInfo & pi, int const x, int const y) const;
 
 	/// superscript kerning
 	int kerning(BufferView const *) const;
+
+	/// useful when the caret visits this cell
+	int caret_ascent, caret_descent;
+
 
 private:
 	// Index of the first inset element before position i

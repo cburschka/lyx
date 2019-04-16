@@ -124,8 +124,10 @@ public:
 	/// Add this array to a math row. Return true if contents got added
 	bool addToMathRow(MathRow &, MetricsInfo & mi) const;
 
-	// return true if caret is in this cell in this buffer view
-	bool hasCaret(BufferView * bv) const;
+	// ascent of caret in this cell
+	int caretAscent(BufferView const * bv) const;
+	/// descent of caret in this cell
+	int caretDescent(BufferView const * bv) const;
 
 	/// rebuild cached metrics information
 	/** When \c tight is true, the height of the cell will be at least
@@ -196,7 +198,7 @@ protected:
 	Buffer * buffer_;
 
 	/// cached object that describes typeset data
-	mutable std::map<BufferView*, MathRow> mrow_cache_;
+	mutable std::map<BufferView const *, MathRow> mrow_cache_;
 
 private:
 	/// is this an exact match at this position?
