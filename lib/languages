@@ -985,6 +985,7 @@ Language lithuanian
 	  % restore \coyright definition corrupted by l7xenc.def
           \DeclareRobustCommand{\copyright}{%
             \ifmmode{\nfss@text{\textcopyright}}\else\textcopyright\fi}
+	    \addto\noextraslithuanian{\latintext}
 	EndPostBabelPreamble
 	DateFormats      "yyyy 'm.' MMMM d 'd.'|yyyy 'm.' MMMM d 'd.'|yyyy-MM-dd"
 	LangCode         lt_LT
@@ -1355,7 +1356,8 @@ Language telugu
 	LangCode         te_IN
 End
 
-# alternative support with CJK package and Babel name "thaicjk"
+# There is an alternative support with CJK package and Babel name "thaicjk".
+
 Language thai
 	GuiName          "Thai"
 	BabelName        thai
@@ -1366,14 +1368,21 @@ Language thai
 	DateFormats      "dd MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
 	LangCode         th_TH
 	PostBabelPreamble
-	  % restore \coyright definition corrupted by lthenc.def
-          \DeclareRobustCommand{\copyright}{%
-            \ifmmode{\nfss@text{\textcopyright}}\else\textcopyright\fi}
+	  % Restore \coyright definition corrupted by lthenc.def
+	  \DeclareRobustCommand{\copyright}{%
+	    \ifmmode{\nfss@text{\textcopyright}}\else\textcopyright\fi}
 	  \DeclareTextSymbol{\textcopyright}{LTH}{8}
+	  % Restore catcodes changed by thai.ldf (active characters required for inputenc)
+	  \@tempcnta=161%
+	  \@whilenum\@tempcnta<252\do{%
+	    \catcode\@tempcnta=13
+	    \advance\@tempcnta\@ne
+	  }%	  
 	EndPostBabelPreamble
 	# Fixme: load font package?
 	# +1 support for font attributes in thai emphasizing etc.
 	# -1 forces ComputerModern as "non-thai" font
+	# TODO: set norasi as surrogate font for LTH (substitutefont.sty)
 	# PostBabelPreamble
 	#   \usepackage{fonts-tlwg}
 	# EndPostBabelPreamble

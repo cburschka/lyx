@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 572
+\lyxformat 573
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -12,7 +12,7 @@
 \maintain_unincluded_children false
 \language english
 \language_package auto
-\inputencoding utf8
+\inputencoding auto-legacy
 \fontencoding HE8,T1
 \font_roman "libertine" "FreeSerif"
 \font_sans "biolinum" "FreeSans"
@@ -74,7 +74,7 @@
 \color #faf0e6
 \end_branch
 \branch babel-only
-\selected 0
+\selected 1
 \filename_suffix 0
 \color #faf0e6
 \end_branch
@@ -145,7 +145,7 @@ Languages supported by LyX.
 \begin_layout Standard
 \begin_inset Branch debug
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 The language is 
@@ -289,11 +289,6 @@ Afrikaans
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Babel afrikaans
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Polyglossia n.a.
 \end_layout
 
 \begin_layout Labeling
@@ -529,6 +524,11 @@ Babel belarusian
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+FontEncoding T2A (Cyrillic)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 LangCode be_BY
 \end_layout
 
@@ -678,36 +678,22 @@ LangCode bg_BG
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Provides textcyrillic
+FontEncoding T2A (Cyrillic)
 \end_layout
 
 \begin_layout Quote
 
-\emph on
-\begin_inset Branch conflict-bg-mk
-inverted 0
-status open
-
-\begin_layout Standard
-
-\emph on
+\emph off
 \lang bulgarian
-Бъ̀лгарският езѝк
-\emph default
- е индоевропейски език от групата на южнославянските езици.
+Бъ̀лгарският езѝк е индоевропейски език от групата на южнославянските езици.
  Той е официалният език на Република България и един от 23-те официални
  езика на Европейския съюз.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 \begin_inset Branch debug
 inverted 0
-status collapsed
+status open
 
 \begin_layout Standard
 The language is 
@@ -952,6 +938,28 @@ LyX (LyX support missing)
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Polyglossia churchslavonic
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode cu
+\end_layout
+
+\begin_layout Quote
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Standard
+Црькъвьнословѣ́ньскъ ѩꙁꙑ́къ и црькъвьнословѣньскꙑ славєнскій ѧꙁꙑкъ · богоуслоужє
+бьнъ ѩꙁꙑкъ ѥстъ · ижє мъногꙑ православьнꙑ црькъви словѣньскъ странъ польꙃоуѭтъ
+ ⁙ Црькъвьнословѣньскъ ѩꙁꙑкъ словѣньска ѩꙁꙑка нꙑнєшьнъ фѡнитїчьскъ и грамматїчьс
+къ иꙁводъ ѥстъ · сѫщии жє с І҄В вѣка ѥстъ
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
@@ -2928,158 +2936,31 @@ s lietuvių kalbos salos).
 \end_layout
 
 \begin_layout Standard
-Bug/TODO: The font encoding must be manually re-set after Lithuanian text
- parts.
- 
+Bug/TODO: after Lithuanian text parts, the font encoding is not re-set (
+\backslash
+f@encoding re-set to T1 but the error still says L7x).
+ A 
+\backslash
+selectfont command is required to (re-)activate the 
+\begin_inset Quotes eld
+\end_inset
+
+outer
+\begin_inset Quotes erd
+\end_inset
+
+ font encoding
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
 
-\backslash
-fontencoding{T1}
 \backslash
 selectfont
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Branch debug
-inverted 0
-status open
-
-\begin_layout Standard
-The language is 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-languagename
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-, the input encoding 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-inputencodingname
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
- and the font encoding 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-makeatletter
-\backslash
-f@encoding
-\backslash
-makeatother
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-A0   ¡ ¢ £ ¤ ¥ ¦ § 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-¨
-\end_layout
-
-\end_inset
-
- © ª « ¬ ® 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-¯
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-B0 ° ± ² ³ 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-´
-\end_layout
-
-\end_inset
-
- µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿
-\end_layout
-
-\begin_layout Standard
-C0 À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï
-\end_layout
-
-\begin_layout Standard
-D0 Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß
-\end_layout
-
-\begin_layout Standard
-E0 à á â ã ä å æ ç è é ê ë ì í î ï
-\end_layout
-
-\begin_layout Standard
-F0 ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
 \end_layout
 
 \end_inset
@@ -3167,22 +3048,17 @@ Babel macedonian
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-LangCode mk_MK
+FontEncoding T2A (Cyrillic)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Provides textcyrillic
+LangCode mk_MK
 \end_layout
 
 \begin_layout Quote
 \begin_inset Branch babel-only
 inverted 0
-status open
-
-\begin_layout Standard
-\begin_inset Branch conflict-bg-mk
-inverted 1
 status open
 
 \begin_layout Standard
@@ -3194,11 +3070,6 @@ status open
  — јужнословенски јазик, дел од групата на словенски јазици од јазичното
  семејство на индоевропски јазици.
  Македонскиот е службен и национален јазик во Македонија.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -3302,7 +3173,7 @@ LangCode mn_MN
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Provides textcyrillic
+FontEncoding T2A (Cyrillic)
 \end_layout
 
 \begin_layout Standard
@@ -3676,7 +3547,7 @@ LangCode ru_RU
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Provides textcyrillic
+FontEncoding T2A (Cyrillic)
 \end_layout
 
 \begin_layout Itemize
@@ -4660,7 +4531,7 @@ LangCode uk_UA
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Provides textcyrillic
+FontEncoding T2A (Cyrillic)
 \end_layout
 
 \begin_layout Quote

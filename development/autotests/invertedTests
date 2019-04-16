@@ -98,7 +98,8 @@ export/export/latex/unicodesymbols/031-thai_th_(euc-|gbk|jis|utf8-cjk).*
 
 # Package clashes when Japanese documents are compiled with non-TeX fonts,
 #
-# the auto-loaded jsclasses/okumacro.sty needs format `pLaTeX2e'
+# The textclass-loaded jsclasses/okumacro.sty needs format `pLaTeX2e'
+# (okumacro provides \ruby support).
 export/doc/ja/(Additional|Customization|EmbeddedObjects|Intro|LaTeXConfig|Math|Shortcuts|Tutorial|UserGuide).*_systemF
 export/doc/ja/Formula-numbering_pdf4_systemF
 # Test for command \pdfsave fails:
