@@ -607,12 +607,6 @@ void CursorData::endUndoGroup() const
 }
 
 
-void CursorData::splitUndoGroup() const
-{
-	buffer()->undo().splitUndoGroup(*this);
-}
-
-
 void CursorData::recordUndo(pit_type from, pit_type to) const
 {
 	buffer()->undo().recordUndo(*this, from, to);

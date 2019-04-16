@@ -96,8 +96,6 @@ public:
 	void endUndoGroup();
 	/// end the current undo group and set UndoElement::cur_after if necessary.
 	void endUndoGroup(CursorData const & cur_after);
-	/// end abruptly the current group and create a new one wih the same nesting level
-	void splitUndoGroup(CursorData const & cur);
 	/// return true if an undo group is open and contains at least one element
 	bool activeUndoGroup() const;
 

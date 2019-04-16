@@ -90,17 +90,8 @@ bool Correction::correct(Cursor & cur, char_type c) const
 	LYXERR(Debug::MATHED, "match found! subst in " << cur.cell()
 		<< " from: '" << from1_ << "' to '" << to_ << '\'');
 
-	/* To allow undoing the completion, we proceed in 4 steps
-	 * - inset the raw character
-	 * - split undo group so that we have two separate undo actions
-	 * - record undo, delete the character we just entered and the from1_ part
-	 * - finally, do the insertion of the correction.
-	 */
-	cur.insert(c);
-	cur.splitUndoGroup();
-	cur.recordUndoSelection();
-	cur.cell().erase(cur.pos() - n - 1, cur.pos());
-	cur.pos() -= n + 1;
+	cur.cell().erase(cur.pos() - n, cur.pos());
+	cur.pos() -= n;
 
 	cur.insert(to_);
 	return true;
