@@ -1656,7 +1656,8 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 	if (oldEnc.name() == newEnc.name()
 		|| oldEnc.package() == Encoding::japanese
 		|| oldEnc.package() == Encoding::none
-		|| newEnc.package() == Encoding::none)
+		|| newEnc.package() == Encoding::none
+		|| runparams.for_search)
 		return make_pair(false, 0);
 	// FIXME We ignore encoding switches from/to encodings that do
 	// neither support the inputenc package nor the CJK package here.
