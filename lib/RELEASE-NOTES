@@ -39,6 +39,9 @@
 
 !!!The following new LyX functions have been introduced in 2.4:
 
+* paragraph-select is a new convenience function to select the paragraph
+  surrounding the actual cursor position.
+
 * buffer-write-as-template is a new convenience function to ease saving a document
   in the (personal) templates folder.
 
