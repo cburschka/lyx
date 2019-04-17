@@ -105,12 +105,7 @@ export/doc/ja/Formula-numbering_pdf4_systemF
 # Test for command \pdfsave fails:
 # ! Package xypdf Error: pdfTeX version 1.40.0 or higher is needed for the xypdf
 export/examples/ja/Graphics_and_Insets/XY-Pic.*_systemF
-# Document class js*.cls requires platex <-> Xe/LuaTeX, 
-# fixed with "bxjs*.cls", however: bxjs*.cls <-> [unicode=true]{hyperref}
-# ! Class bxjsbook Error: The value of hyperref 'unicode' key is not suitable
-#export/doc/ja/Tutorial_pdf # (document class re-set to "jsbook")
-#export/examples/ja/Modules/Braille_pdf # (document class re-set to "jsbarticle")
-export/examples/ja/Modules/Braille.*_systemF
+# Document class js*.cls requires platex <-> Xe/LuaTeX, fixed with "bxjs*.cls"
 
 # ================================================
 Sublabel: lyxbugs
