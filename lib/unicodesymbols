@@ -70,20 +70,20 @@
 0x00a9 "\\textcopyright"          "textcomp" "force=cp1255;cp1256;koi8-u;iso8859-7;euc-jp;euc-jp-platex;utf8-platex" # COPYRIGHT SIGN
 0x00aa "\\textordfeminine"        "textcomp" "force=cp862;euc-jp;euc-jp-platex;euc-kr;utf8-platex" # FEMININE ORDINAL INDICATOR
 0x00ab "\\guillemotleft"          "" "force=armscii8;cp862;cp1255;cp1256;iso8859-7;utf8-platex" # LEFT-POINTING DOUBLE ANGLE QUOTATION MARK
-0x00ac "\\textlnot"               "textcomp" "force" "\\neg" "" # ¬ NOT SIGN
+0x00ac "\\textlnot"               "textcomp" "force!=utf8;utf8-cjk" "\\neg" "" # ¬ NOT SIGN
 0x00ad "\\-"                      "" "force=cp1255;cp1256;iso8859-13;euc-jp;euc-kr;iso8859-6;utf8-platex,notermination=text" "" "" # SOFT HYPHEN
 0x00ae "\\textregistered"         "textcomp" "force=cp1255;cp1256;euc-jp;euc-jp-platex;euc-kr;utf8-platex" "\\circledR" "amssymb" # REGISTERED SIGN
 0x00af "\\textasciimacron"        "textcomp" "force=cp1255;cp1256;euc-jp;euc-jp-platex;utf8-platex" # MACRON
 0x00b0 "\\textdegree"             "textcomp" "force=cp862;cp1255;cp1256;koi8-u;iso8859-7;euc-cn;euc-jp;euc-jp-platex;euc-kr;euc-tw;gbk;jis;shift-jis-platex" "{^\\circ}" "" # DEGREE SIGN
-0x00b1 "\\textpm"                 "textcomp" "force" "\\pm" "" # ± PLUS-MINUS SIGN
-0x00b2 "\\texttwosuperior"        "textcomp" "force" "{{}^2}" "" # ² SUPERSCRIPT TWO
-0x00b3 "\\textthreesuperior"      "textcomp" "force" "{{}^3}" "" # ³ SUPERSCRIPT THREE
+0x00b1 "\\textpm"                 "textcomp" "force!=utf8;utf8-cjk;utf8x;latin10;" "\\pm" "" # ± PLUS-MINUS SIGN
+0x00b2 "\\texttwosuperior"        "textcomp" "force!=utf8;utf8-cjk;utf8x" "{{}^2}" "" # ² SUPERSCRIPT TWO
+0x00b3 "\\textthreesuperior"      "textcomp" "force!=utf8;utf8-cjk;utf8x" "{{}^3}" "" # ³ SUPERSCRIPT THREE
 0x00b4 "\\textasciiacute"         "textcomp" "force=cp1255;cp1256;euc-jp;euc-kr;jis;shift-jis-platex" # ACUTE ACCENT
 0x00b5 "\\textmu"                 "textcomp" "force!=utf8;jis" "" "" # µ MICRO SIGN (upright, not $\mu$)
 0x00b6 "\\textparagraph"          "textcomp" "force=cp1255;cp1256;euc-jp;euc-kr;jis;shift-jis-platex" "\\mathparagraph" "" # PILCROW SIGN # not equal to \textpilcrow
 0x00b7 "\\textperiodcentered"     "" "force=cp862;cp1255;cp1256;koi8-u;iso8859-7;euc-kr;euc-tw;gbk" "\\cdot" "" # MIDDLE DOT
 0x00b8 "\\c{ }"                   "" "force=cp1255;cp1256;euc-jp;euc-kr" "" "" # CEDILLA
-0x00b9 "\\textonesuperior"        "textcomp" "force" "{{}^1}" "" # ¹ SUPERSCRIPT ONE
+0x00b9 "\\textonesuperior"        "textcomp" "force!=utf8;utf8-cjk;utf8x" "{{}^1}" "" # ¹ SUPERSCRIPT ONE
 0x00ba "\\textordmasculine"       "textcomp" "force=cp862;euc-jp;euc-kr" # MASCULINE ORDINAL INDICATOR
 0x00bb "\\guillemotright"         "" "force=armscii8;cp862;cp1255;cp1256;iso8859-7" # RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
 0x00bc "\\textonequarter"         "textcomp" "force=cp862;cp1255;cp1256;euc-kr" "\\sfrac{1}{4}" "xfrac" # 1/4 FRACTION
@@ -113,7 +113,7 @@
 0x00d4 "\\^{O}"                   "" "mathalpha,force=euc-jp" "\\hat{O}" # LATIN CAPITAL LETTER O WITH CIRCUMFLEX
 0x00d5 "\\~{O}"                   "" "mathalpha,force=euc-jp" "\\tilde{O}" # LATIN CAPITAL LETTER O WITH TILDE
 0x00d6 "\\\"{O}"                  "" "mathalpha,force=euc-jp" "\\ddot{O}" # LATIN CAPITAL LETTER O WITH DIAERESIS
-0x00d7 "\\texttimes"              "textcomp" "force" "\\times" # × MULTIPLICATION SIGN
+0x00d7 "\\texttimes"              "textcomp" "force!=uft8;utf8-cjk;utf8x" "\\times" # × MULTIPLICATION SIGN
 0x00d8 "\\O"                      "" "mathalpha,force=euc-jp;euc-kr" "\\slashed{O}" "slashed" # LATIN CAPITAL LETTER O WITH STROKE
 0x00d9 "\\`{U}"                   "" "mathalpha,force=euc-jp" "\\grave{U}" # LATIN CAPITAL LETTER U WITH GRAVE
 0x00da "\\'{U}"                   "" "mathalpha,force=euc-jp" "\\acute{U}" # LATIN CAPITAL LETTER U WITH ACUTE
@@ -145,7 +145,7 @@
 0x00f4 "\\^{o}"                   "" "mathalpha,force=cp1256;euc-jp" "\\hat{o}" # LATIN SMALL LETTER O WITH CIRCUMFLEX
 0x00f5 "\\~{o}"                   "" "mathalpha,force=euc-jp" "\\tilde{o}" # LATIN SMALL LETTER O WITH TILDE
 0x00f6 "\\\"{o}"                  "" "mathalpha,force=euc-jp" "\\ddot{o}" # LATIN SMALL LETTER O WITH DIAERESIS
-0x00f7 "\\textdiv"                "textcomp" "force" "\\div" # ÷ DIVISION SIGN
+0x00f7 "\\textdiv"                "textcomp" "force!=utf8;utf8-cjk;utf8x" "\\div" # ÷ DIVISION SIGN
 0x00f8 "\\o"                      "" "mathalpha,force=euc-jp;euc-kr" "\\slashed{o}" "slashed" # LATIN SMALL LETTER O WITH STROKE
 0x00f9 "\\`{u}"                   "" "mathalpha,force=cp1256;euc-cn;euc-jp;gbk" "\\grave{u}" # LATIN SMALL LETTER U WITH GRAVE
 0x00fa "\\'{u}"                   "" "mathalpha,force=cp862;euc-cn;euc-jp;gbk" "\\acute{u}" # LATIN SMALL LETTER U WITH ACUTE
@@ -642,7 +642,7 @@
 0x02da "\\r{ }"                   "" "force=utf8;utf8-cjk;euc-jp;euc-kr" # RING ABOVE
 0x02db "\\k{ }"                   "" "force=utf8;utf8-cjk;euc-jp;euc-kr" # OGONEK
 0x02dc "\\~{ }"                   "" "" # SMALL TILDE
-0x02dd "\\H{ }"                   "" "force=utf8;utf8-cjk;euc-jp;euc-kr" # DOUBLE ACUTE ACCENT
+0x02dd "\\H{ }"                   "" "force=utf8-cjk;euc-jp;euc-kr" # DOUBLE ACUTE ACCENT
 0x02de "\\textrhoticity"          "tipa" "force" # MODIFIER LETTER RHOTIC HOOK
 #0x02df "\\textovercross{ }"       "tipa" "force" # MODIFIER LETTER CROSS ACCENT
 0x02e0 "\\textsuperscript{\\textgamma}"  "tipa" "force" # MODIFIER LETTER SMALL GAMMA
