@@ -120,6 +120,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_LYXTYPE,
 		IL_OBSOLETEDBY,
 		IL_KEEPEMPTY,
+		IL_MENUSTRING,
 		IL_MULTIPAR,
 		IL_NEEDCPROTECT,
 		IL_NEEDMBOXPROTECT,
@@ -178,6 +179,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "latextype", IL_LATEXTYPE },
 		{ "leftdelim", IL_LEFTDELIM },
 		{ "lyxtype", IL_LYXTYPE },
+		{ "menustring", IL_MENUSTRING },
 		{ "multipar", IL_MULTIPAR },
 		{ "needcprotect", IL_NEEDCPROTECT },
 		{ "needmboxprotect", IL_NEEDMBOXPROTECT },
@@ -250,6 +252,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		}
 		case IL_LABELSTRING:
 			lex >> labelstring_;
+			break;
+		case IL_MENUSTRING:
+			lex >> menustring_;
 			break;
 		case IL_DECORATION:
 			lex >> tmp;

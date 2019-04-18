@@ -1230,13 +1230,16 @@ void MenuDefinition::expandFlexInsert(
 		if (cit->second.lyxtype() == type) {
 			if (!cit->second.obsoleted_by().empty())
 				continue;
-			docstring label = cit->first;
+			docstring name = cit->first;
 			// we remove the "Flex:" prefix, if it is present
-			if (prefixIs(label, from_ascii("Flex:")))
-				label = label.substr(5);
+			if (prefixIs(name, from_ascii("Flex:")))
+				name = name.substr(5);
+			docstring const label = (cit->second.menustring().empty()) ?
+						name
+					      : cit->second.menustring();
 			addWithStatusCheck(MenuItem(MenuItem::Command,
 				toqstr(translateIfPossible(label)),
-				FuncRequest(LFUN_FLEX_INSERT, Lexer::quoteString(label))));
+				FuncRequest(LFUN_FLEX_INSERT, Lexer::quoteString(name))));
 		}
 	}
 	// FIXME This is a little clunky.

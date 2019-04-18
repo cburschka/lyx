@@ -66,6 +66,8 @@ public:
 	///
 	docstring labelstring() const { return labelstring_; }
 	///
+	docstring menustring() const { return menustring_; }
+	///
 	bool contentaslabel() const { return contentaslabel_; }
 	///
 	InsetDecoration decoration() const { return decoration_; }
@@ -211,6 +213,8 @@ private:
 	InsetLyXType lyxtype_;
 	///
 	docstring labelstring_;
+	///
+	docstring menustring_;
 	///
 	bool contentaslabel_;
 	///

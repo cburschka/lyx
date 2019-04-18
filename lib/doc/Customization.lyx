@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 571
+\lyxformat 573
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -44,7 +44,7 @@ logicalmkup
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
@@ -20256,6 +20256,80 @@ LyxType
 \end_inset
 
 .
+\change_inserted -712698321 1555575738
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1555575844
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1555575740
+MenuString
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1555575740
+[string]
+\end_layout
+
+\end_inset
+
+ A dedicated string for the menu.
+ You can define an accelerator by appending the respective character to
+ the string, divided by 
+\begin_inset Quotes eld
+\end_inset
+
+|
+\begin_inset Quotes erd
+\end_inset
+
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1555575781
+My Inset|M
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+).
+ This specification is optional.
+ If it is not given the inset name as specified in the type declaration
+ will be used instead for the menu.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

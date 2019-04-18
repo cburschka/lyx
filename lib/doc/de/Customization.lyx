@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 571
+\lyxformat 573
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -52,7 +52,7 @@ logicalmkup
 \maintain_unincluded_children false
 \language ngerman
 \language_package default
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding auto
 \font_roman "lmodern" "FreeSerif"
 \font_sans "lmss" "FreeSans"
@@ -18465,6 +18465,66 @@ LyxType
 \end_inset
 
  spezifiziert wird.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+MenuString
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[string]
+\end_layout
+
+\end_inset
+
+ Eine spezifische Zeichenkette für das Menü.
+ Sie können ein Tastenkürzel definieren, indem Sie das entsprechende Zeichen
+ an die Zeichenkette mit 
+\begin_inset Quotes gld
+\end_inset
+
+|
+\begin_inset Quotes grd
+\end_inset
+
+ abgetrennt anhängen (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Meine Einfügung|M
+\end_layout
+
+\end_inset
+
+).
+ Diese Spezifikation ist optional.
+ Wenn Sie fehlt, wird der Name der Einfügung (aus der 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Typ
+\end_layout
+
+\end_inset
+
+-Spezifikation) für das Menü verwendet.
 \end_layout
 
 \begin_layout Description
