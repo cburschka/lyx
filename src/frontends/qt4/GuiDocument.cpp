@@ -4255,6 +4255,7 @@ void GuiDocument::updateAvailableModules()
 			modules_av_model_.insertRow(i, catItem);
 			++i;
 		}
+		item->setEditable(false);
 		catItem->setEditable(false);
 		item->setData(m.name, Qt::DisplayRole);
 		item->setData(toqstr(m.id), Qt::UserRole);
