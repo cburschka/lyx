@@ -230,8 +230,8 @@ pair<docstring, docstring> Encoding::latexString(docstring const & input, bool d
 	docstring uncodable;
 	bool terminate = false;
 	for (size_t n = 0; n < input.size(); ++n) {
+		char_type const c = input[n];
 		try {
-			char_type const c = input[n];
 			pair<docstring, bool> latex_char = latexChar(c);
 			docstring const latex = latex_char.first;
 			if (terminate && !prefixIs(latex, '\\')
@@ -248,7 +248,8 @@ pair<docstring, docstring> Encoding::latexString(docstring const & input, bool d
 			result += latex;
 			terminate = latex_char.second;
 		} catch (EncodingException & /* e */) {
-			LYXERR0("Uncodable character in latexString!");
+			LYXERR0("Uncodable character <" << docstring(1, c) 
+					<< "> in latexString!");
 			if (dryrun) {
 				result += "<" + _("LyX Warning: ")
 					   + _("uncodable character") + " '";

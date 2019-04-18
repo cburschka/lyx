@@ -738,6 +738,10 @@ Encoding const * DocIterator::getEncoding() const
 	if (bp.useNonTeXFonts)
 		return encodings.fromLyXName("utf8-plain");
 
+	// With platex, we don't switch encodings (not even if forced).
+	if (bp.encoding().package() == Encoding::japanese)
+		return &bp.encoding();
+
 	CursorSlice const & sl = innerTextSlice();
 	Text const & text = *sl.text();
 	Language const * lang =
@@ -777,7 +781,7 @@ Encoding const * DocIterator::getEncoding() const
 														   otext.outerFont(slices_[i].pit())).language();
 			// Again, if we have a custom encoding, this is used
 			// instead of the language's.
-			Encoding const * oenc = customenc 
+			Encoding const * oenc = customenc
 									? &bp.encoding() : olang->encoding();
 			if (olang->encoding()->name() != "inherit")
 				return oenc;

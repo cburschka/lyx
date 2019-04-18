@@ -1913,9 +1913,11 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel,
 		// encodings, only with fixed width encodings. Therefore we
 		// need to force a fixed width encoding for
 		// \lstlistlistingname and \lstlistingname (bug 9382).
-		// This needs to be consistent with InsetListings::latex().
+		// This needs to be consistent with InsetListings::latex()
+		// rsp. InsetListings::forcedEncoding().
 		bool const need_fixedwidth = !use_minted &&
 					!runparams_.isFullUnicode() &&
+		  			buffer().params().encoding().package() != Encoding::japanese &&
 					it->second.fixedwidthpreambleencoding();
 		// language dependent commands (once per document)
 		snippets.insert(i18npreamble(it->second.langpreamble(),
