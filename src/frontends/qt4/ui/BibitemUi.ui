@@ -6,17 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>218</width>
-    <height>121</height>
+    <width>400</width>
+    <height>123</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
+  <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
       <widget class="QLabel" name="keyLA">
        <property name="toolTip">
         <string>The bibliography key</string>
@@ -29,31 +36,7 @@
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLabel" name="labelLA">
-       <property name="toolTip">
-        <string>The label as it appears in the document</string>
-       </property>
-       <property name="text">
-        <string>&amp;Label:</string>
-       </property>
-       <property name="buddy">
-        <cstring>labelED</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="0" column="1">
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
+     <item row="0" column="1">
       <widget class="QLineEdit" name="keyED">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -66,30 +49,70 @@
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLineEdit" name="labelED">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
+     <item row="1" column="0">
+      <widget class="QLabel" name="labelLA">
        <property name="toolTip">
         <string>The label as it appears in the document</string>
        </property>
+       <property name="text">
+        <string>&amp;Label:</string>
+       </property>
+       <property name="buddy">
+        <cstring>labelED</cstring>
+       </property>
       </widget>
      </item>
-     <item>
-      <widget class="QCheckBox" name="literalCB">
-       <property name="toolTip">
-        <string>Pass content of the `Label' field literally to LaTeX. Check this if you want to enter LaTeX code.</string>
+     <item row="1" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>0</number>
        </property>
-       <property name="text">
-        <string>Li&amp;teral</string>
-       </property>
-      </widget>
+       <item>
+        <widget class="QLineEdit" name="labelED">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>The label as it appears in the document</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="yearLA">
+         <property name="text">
+          <string>&amp;Year:</string>
+         </property>
+         <property name="margin">
+          <number>6</number>
+         </property>
+         <property name="buddy">
+          <cstring>yearED</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="yearED">
+         <property name="toolTip">
+          <string>The year with &quot;Author (Year)&quot; citations (without parentheses).</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
+   </item>
+   <item row="1" column="1">
+    <widget class="QCheckBox" name="literalCB">
+     <property name="toolTip">
+      <string>Pass content of the `Label' field literally to LaTeX. Check this if you want to enter LaTeX code.</string>
+     </property>
+     <property name="text">
+      <string>Li&amp;teral</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

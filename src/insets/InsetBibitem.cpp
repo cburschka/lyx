@@ -187,7 +187,10 @@ docstring InsetBibitem::bibLabel() const
 	BufferParams const & bp = buffer().masterBuffer()->params();
 	if (bp.citeEngineType() == ENGINE_TYPE_NUMERICAL)
 		return autolabel_;
-	docstring const & label = getParam("label");
+	docstring label = getParam("label");
+	if (!label.empty() && bp.citeEngine() == "natbib")
+		// Add a space before opening paren
+		label = subst(label, from_ascii("("), from_ascii(" ("));
 	return label.empty() ? autolabel_ : label;
 }
 

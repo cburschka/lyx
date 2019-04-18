@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \¸author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -11,6 +12,9 @@
 #include <config.h>
 
 #include "GuiBibitem.h"
+
+#include "Buffer.h"
+#include "BufferParams.h"
 
 #include "qt_helpers.h"
 
@@ -32,6 +36,8 @@ GuiBibitem::GuiBibitem(QWidget * parent) : InsetParamsWidget(parent)
 		this, SIGNAL(changed()));
 	connect(labelED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+	connect(yearED, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
 	connect(literalCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 }
@@ -42,16 +48,42 @@ void GuiBibitem::paramsToDialog(Inset const * inset)
 	InsetCommand const * ic = static_cast<InsetCommand const *>(inset);
 	InsetCommandParams const & params = ic->params();
 	keyED->setText(toqstr(params["key"]));
-	labelED->setText(toqstr(params["label"]));
 	literalCB->setChecked(params["literal"] == "true");
+	QString const label = toqstr(params["label"]);
+	BufferParams const bp = inset->buffer().masterParams();
+	if (bp.citeEngine() == "natbib" && bp.citeEngineType() == ENGINE_TYPE_AUTHORYEAR) {
+		yearED->setHidden(false);
+		yearLA->setHidden(false);
+		labelLA->setText(qt_("Author &Name:"));
+		labelED->setToolTip(qt_("Insert the author name(s) here. The year goes to the separate field."));
+		int const i = label.lastIndexOf("(");
+		int const j = label.lastIndexOf(")");
+		if (i != -1 && j != -1 && i < j) {
+			// Split Author(Year) to Author and Year
+			QString const year = label.left(j).mid(i + 1);
+			QString const author = label.left(i);
+			labelED->setText(author);
+			yearED->setText(year);
+		} else
+			labelED->setText(label);
+	} else {
+		yearED->setHidden(true);
+		yearLA->setHidden(true);
+		labelLA->setText(qt_("&Label:"));
+		labelED->setToolTip(qt_("The label as it appears in the document"));
+		labelED->setText(label);
+	}
 }
 
 
 docstring GuiBibitem::dialogToParams() const
 {
 	InsetCommandParams params(insetCode());
+	QString label = labelED->text();
+	if (!yearED->isHidden())
+		label += "(" + yearED->text() + ")";
 	params["key"] = qstring_to_ucs4(keyED->text());
-	params["label"] = qstring_to_ucs4(labelED->text());
+	params["label"] = qstring_to_ucs4(label);
 	params["literal"] = literalCB->isChecked()
 			? from_ascii("true") : from_ascii("false");
 	return from_utf8(InsetCommand::params2string(params));
@@ -64,7 +96,8 @@ bool GuiBibitem::checkWidgets(bool readonly) const
 	labelED->setReadOnly(readonly);
 	if (!InsetParamsWidget::checkWidgets())
 		return false;
-	return !keyED->text().isEmpty();
+	return !keyED->text().isEmpty()
+		&& (yearED->isHidden() || !yearED->text().isEmpty());
 }
 
 } // namespace frontend
