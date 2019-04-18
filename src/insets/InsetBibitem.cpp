@@ -188,9 +188,15 @@ docstring InsetBibitem::bibLabel() const
 	if (bp.citeEngineType() == ENGINE_TYPE_NUMERICAL)
 		return autolabel_;
 	docstring label = getParam("label");
-	if (!label.empty() && bp.citeEngine() == "natbib")
+	if (!label.empty() && bp.citeEngine() == "natbib") {
 		// Add a space before opening paren
 		label = subst(label, from_ascii("("), from_ascii(" ("));
+		// and strip off long author list
+		docstring striplabel;
+		label = rsplit(label, striplabel, ')');
+		if (!striplabel.empty())
+			label = striplabel + ")";
+	}
 	return label.empty() ? autolabel_ : label;
 }
 
