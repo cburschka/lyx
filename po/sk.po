@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-04-07 12:17+0200\n"
-"PO-Revision-Date: 2019-04-07 11:08+0000\n"
-"Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
+"POT-Creation-Date: 2019-04-18 16:43+0200\n"
+"PO-Revision-Date: 2019-04-18 15:56+0000\n"
+"Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
@@ -62,6 +62,27 @@ msgstr "Značka ako sa zobrazí v dokumente"
 #: src/frontends/qt4/ui/LabelUi.ui:36
 msgid "&Label:"
 msgstr "&Návestie:"
+
+#: src/frontends/qt4/ui/BibitemUi.ui:86
+msgid "&Year:"
+msgstr "&Rok:"
+
+#: src/frontends/qt4/ui/BibitemUi.ui:99
+msgid "The year with \"Author (Year)\" citations (without parentheses)."
+msgstr "Rok s citáciami \"Autor (rok)\" (bez zátvoriek)."
+
+#: src/frontends/qt4/ui/BibitemUi.ui:108
+msgid "A&ll Author Names:"
+msgstr "Vš&etky mená autorov:"
+
+#: src/frontends/qt4/ui/BibitemUi.ui:118
+msgid ""
+"If you want to use an abbreviated author list (with 'et al.') as well as a "
+"full list for author-year citation, you can put the full list here and the "
+"abbreviated list above."
+msgstr ""
+"Keď chcete využiť stručný zoznam autorov (s 'a kol.') a tiež plný zoznam pre "
+"autor-rok-citácie, vložte plný zoznam tu a stručný zoznam povyše."
 
 #: src/frontends/qt4/ui/BibitemUi.ui:85
 msgid ""
@@ -17153,10 +17174,6 @@ msgstr ""
 msgid "Standard Theorems"
 msgstr "Štandardné Teorémy"
 
-#: lib/layouts/theorems-std.module:2
-msgid "Theorems"
-msgstr "Teorémy"
-
 #: lib/layouts/theorems-std.module:7
 msgid ""
 "Defines some theorem environments for use with non-AMS classes. By default, "
@@ -29784,6 +29801,18 @@ msgstr ""
 "Preskúmajte pod Nástroje->Preferencie… -> Vzhľad -> Užívateľské rozhranie a\n"
 "skontrolujte ktorý užívateľský súbor používate."
 
+#: src/frontends/qt4/GuiBibitem.cpp:61
+msgid "Author &Names:"
+msgstr "&Mená autorov:"
+
+#: src/frontends/qt4/GuiBibitem.cpp:62
+msgid ""
+"Insert the author name(s) for the author-year reference here. If you use an "
+"abbreviated list (with 'et al.'), the full list can go below."
+msgstr ""
+"Vložte sem meno autora/autorov na referenciu autor-rok. Keď užívate stručný "
+"zoznam (s 'a kol.'), tak plný zoznam môže ísť poniže."
+
 #: src/frontends/qt4/GuiBibitem.h:36
 msgid "Bibliography Item Settings"
 msgstr "Nastavenia záznamu bibliografie"
@@ -35330,6 +35359,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Theorems"
+#~ msgstr "Teorémy"
 
 #~ msgid "Soul Text Markup"
 #~ msgstr "Soul sémantické značkovanie"
