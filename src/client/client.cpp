@@ -12,6 +12,8 @@
 
 #include <config.h>
 
+#include "LyXRC.h"
+
 #include "support/ConsoleApplication.h"
 #include "support/debug.h"
 #include "support/FileName.h"
@@ -70,9 +72,8 @@ namespace lyx {
 bool verbose = false;
 
 // Dummy LyXRC support
-struct LyXRC {
-	string icon_set;
-} lyxrc;
+LyXRC::LyXRC() {}
+LyXRC lyxrc;
 
 // Keep the linker happy on Windows
 void lyx_exit(int)

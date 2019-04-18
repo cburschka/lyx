@@ -20,6 +20,7 @@
 
 #include "Format.h"
 #include "LaTeXFeatures.h"
+#include "LyXRC.h"
 #include "output_xhtml.h"
 
 #include "support/Messages.h"
@@ -58,7 +59,8 @@ bool verbose = false;
 //
 
 
-class LyXRC {} lyxrc;
+LyXRC::LyXRC() {}
+LyXRC lyxrc;
 
 
 //
