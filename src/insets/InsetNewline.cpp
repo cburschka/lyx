@@ -146,7 +146,9 @@ void InsetNewline::latex(otexstream & os, OutputParams const & rp) const
 {
 	switch (params_.kind) {
 		case InsetNewlineParams::NEWLINE:
-			if (rp.inTableCell == OutputParams::PLAIN)
+			if (!rp.newlinecmd.empty())
+				os << "\\" << rp.newlinecmd << "\n";
+			else if (rp.inTableCell == OutputParams::PLAIN)
 				os << "\\newline\n";
 			else
 				os << "\\\\\n";

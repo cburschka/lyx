@@ -11995,6 +11995,56 @@ status collapsed
 \end_inset
 
 
+\change_inserted -712698321 1555579782
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1555579780
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1555579780
+NewlineCmd
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1555579780
+[string]
+\end_layout
+
+\end_inset
+
+ Option to define a different command (from the default 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1555579780
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+) to be used for line breaks.
+ The initial backslash must not be specified.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
@@ -20537,7 +20587,7 @@ cprotect
 
 \begin_layout Description
 
-\change_inserted -712698321 1552395824
+\change_inserted -712698321 1555579651
 \begin_inset Flex Code
 status collapsed
 
@@ -20632,6 +20682,54 @@ soul
 \family default
  commands which parse their content in complex ways.
  Default is false.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1555579742
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1555579658
+NewlineCmd
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1555579651
+[string]
+\end_layout
+
+\end_inset
+
+ Option to define a different command (from the default 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1555579742
+
+\backslash
+
+\backslash
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+) to be used for line breaks.
+ The initial backslash must not be specified.
 \change_unchanged
 
 \end_layout

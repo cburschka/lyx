@@ -43,7 +43,7 @@ InsetArgument::InsetArgument(Buffer * buf, string const & name)
     : InsetCollapsible(buf), name_(name), labelstring_(docstring()),
       font_(inherit_font), labelfont_(inherit_font), decoration_(string()),
       pass_thru_context_(false), pass_thru_local_(false), pass_thru_(false),
-      pass_thru_chars_(docstring()), is_toc_caption_(false)
+      pass_thru_chars_(docstring()), is_toc_caption_(false), newline_cmd_(string())
 {}
 
 
@@ -118,6 +118,7 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 		labelfont_ = (*lait).second.labelfont;
 		decoration_ = (*lait).second.decoration;
 		pass_thru_chars_ = (*lait).second.pass_thru_chars;
+		newline_cmd_ = (*lait).second.newlinecmd;
 		pass_thru_local_ = false;
 		if (lait->second.is_toc_caption) {
 			is_toc_caption_ = true;
@@ -311,6 +312,8 @@ void InsetArgument::latexArgument(otexstream & os,
 	OutputParams runparams = runparams_in;
 	if (!pass_thru_chars_.empty())
 		runparams.pass_thru_chars += pass_thru_chars_;
+	if (!newline_cmd_.empty())
+		runparams.newlinecmd = newline_cmd_;
 	runparams.pass_thru = isPassThru();
 	InsetText::latex(ots, runparams);
 	TexString ts = ots.release();

@@ -109,6 +109,7 @@ public:
 		ArgPassThru passthru;
 		docstring pass_thru_chars;
 		bool is_toc_caption;
+		std::string newlinecmd;
 	};
 	///
 	typedef std::map<std::string, latexarg> LaTeXArgMap;

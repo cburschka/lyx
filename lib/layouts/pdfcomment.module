@@ -8,7 +8,7 @@
 # Author: Juergen Spitzmueller <spitz@lyx.org>
 #         Uwe Stöhr <uwestoehr@lyx.org>
 
-Format 72
+Format 74
 
 #
 # helper commands
@@ -102,6 +102,7 @@ InsetLayout "Flex:PDF-Annotation"
 	  Size			Small
 	EndFont
 	MultiPar		false
+	NewlineCmd		textCR
 	Argument 1
 	  MenuString		"PDFComment Options"
 	  LabelString		"Opts"
@@ -125,10 +126,12 @@ InsetLayout "Flex:PDF-Markup"
 	LabelString		"PDF (Markup)"
 	LatexName		pdfmarkupcomment
 	NeedMBoxProtect		1
+	NewlineCmd		""
 	Argument post:1
 	  LabelString		"Comment"
 	  Mandatory		1
 	  ToolTip		"Insert the comment to the marked-up text here"
+	  NewlineCmd		textCR
 	EndArgument
 End
 
@@ -136,24 +139,28 @@ InsetLayout "Flex:PDF-Freetext"
 	CopyStyle		"Flex:PDF-Margin"
 	LabelString		"PDF (Freetext)"
 	LatexName		pdffreetextcomment
+	NewlineCmd		""
 End
 
 InsetLayout "Flex:PDF-Square"
 	CopyStyle		"Flex:PDF-Margin"
 	LabelString		"PDF (Square)"
 	LatexName		pdfsquarecomment
+	NewlineCmd		""
 End
 
 InsetLayout "Flex:PDF-Circle"
 	CopyStyle		"Flex:PDF-Margin"
 	LabelString		"PDF (Circle)"
 	LatexName		pdfcirclecomment
+	NewlineCmd		""
 End
 
 InsetLayout "Flex:PDF-Line"
 	CopyStyle		"Flex:PDF-Margin"
 	LabelString		"PDF (Line)"
 	LatexName		pdflinecomment
+	NewlineCmd		""
 End
 
 InsetLayout "Flex:PDF-Sideline"
@@ -162,10 +169,12 @@ InsetLayout "Flex:PDF-Sideline"
 	LatexType		environment
 	LatexName		pdfsidelinecomment
 	MultiPar		true
+	NewlineCmd		""
 	Argument 2
 	  LabelString		"Comment"
 	  Mandatory		1
 	  ToolTip		"Insert the comment here"
+	  NewlineCmd		textCR
 	EndArgument
 End
 
@@ -184,6 +193,7 @@ InsetLayout "Flex:PDF-Tooltip"
 	LabelString		"PDF (Tooltip)"
 	LatexName		pdftooltip
 	NeedMBoxProtect		0
+	NewlineCmd		""
 	LabelFont
 	  Color			red
 	  Size			Small

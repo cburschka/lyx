@@ -125,6 +125,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_NEEDCPROTECT,
 		IL_NEEDMBOXPROTECT,
 		IL_NEEDPROTECT,
+		IL_NEWLINE_CMD,
 		IL_PASSTHRU,
 		IL_PASSTHRU_CHARS,
 		IL_PARBREAKISNEWLINE,
@@ -184,6 +185,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "needcprotect", IL_NEEDCPROTECT },
 		{ "needmboxprotect", IL_NEEDMBOXPROTECT },
 		{ "needprotect", IL_NEEDPROTECT },
+		{ "newlinecmd", IL_NEWLINE_CMD },
 		{ "obsoletedby", IL_OBSOLETEDBY },
 		{ "parbreakisnewline", IL_PARBREAKISNEWLINE },
 		{ "passthru", IL_PASSTHRU },
@@ -321,6 +323,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_PASSTHRU_CHARS:
 			lex >> passthru_chars_;
+			break;
+		case IL_NEWLINE_CMD:
+			lex >> newline_cmd_;
 			break;
 		case IL_PARBREAKISNEWLINE:
 			lex >> parbreakisnewline_;
@@ -658,6 +663,9 @@ void InsetLayout::readArgument(Lexer & lex)
 		} else if (tok == "decoration") {
 			lex.next();
 			arg.decoration = lex.getString();
+		} else if (tok == "newlinecmd") {
+			lex.next();
+			arg.newlinecmd = lex.getString();
 		} else if (tok == "font") {
 			arg.font = lyxRead(lex, arg.font);
 		} else if (tok == "labelfont") {

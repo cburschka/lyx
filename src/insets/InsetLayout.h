@@ -160,6 +160,8 @@ public:
 	///
 	docstring passThruChars() const { return passthru_chars_; }
 	///
+	std::string newlineCmd() const { return newline_cmd_; }
+	///
 	bool parbreakIsNewline() const { return parbreakisnewline_; }
 	///
 	bool isNeedProtect() const { return needprotect_; }
@@ -282,6 +284,8 @@ private:
 	bool passthru_;
 	///
 	docstring passthru_chars_;
+	///
+	std::string newline_cmd_;
 	///
 	bool parbreakisnewline_;
 	///

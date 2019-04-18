@@ -10081,6 +10081,57 @@ LabelString
 status collapsed
 
 \begin_layout Plain Layout
+NewlineCmd
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[string]
+\end_layout
+
+\end_inset
+
+ erlaubt es, ein (von 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+) abweichendes Makro für Zeilenumbrüche zu verwenden.
+ Das 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ am Anfang des Makros müssen Sie bei der Spezifizierung nicht eingeben.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Tooltip
 \end_layout
 
@@ -18664,6 +18715,57 @@ protect
 nicht
 \emph default
  an, ob der Befehl selber geschützt werden soll.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NewlineCmd
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[string]
+\end_layout
+
+\end_inset
+
+ erlaubt es, ein (von 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+) abweichendes Makro für Zeilenumbrüche zu verwenden.
+ Das 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ am Anfang des Makros müssen Sie bei der Spezifizierung nicht eingeben.
+ 
 \end_layout
 
 \begin_layout Description

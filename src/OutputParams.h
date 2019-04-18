@@ -302,6 +302,9 @@ public:
 	/// Should we output verbatim specific chars?
 	docstring pass_thru_chars;
 
+	/// A specific newline macro
+	std::string newlinecmd;
+
 	/// Should we output captions?
 	bool html_disable_captions;
 

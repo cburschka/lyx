@@ -119,6 +119,8 @@ private:
 	bool is_toc_caption_;
 	/// The type of Toc this is the caption of, empty otherwise.
 	std::string caption_of_toc_;
+	/// Specific line break macro
+	std::string newline_cmd_;
 
 protected:
 	/// \name Protected functions inherited from Inset class

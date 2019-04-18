@@ -1076,6 +1076,9 @@ void Layout::readArgument(Lexer & lex)
 		} else if (tok == "decoration") {
 			lex.next();
 			arg.decoration = lex.getString();
+		} else if (tok == "newlinecmd") {
+			lex.next();
+			arg.newlinecmd = lex.getString();
 		} else if (tok == "font") {
 			arg.font = lyxRead(lex, arg.font);
 		} else if (tok == "labelfont") {
@@ -1146,6 +1149,8 @@ void writeArgument(ostream & os, string const & id, Layout::latexarg const & arg
 		os << "\t\tRequires \"" << arg.requires << "\"\n";
 	if (!arg.decoration.empty())
 		os << "\t\tDecoration \"" << arg.decoration << "\"\n";
+	if (!arg.newlinecmd.empty())
+		os << "\t\tNewlineCmd \"" << arg.newlinecmd << "\"\n";
 	if (arg.font != inherit_font)
 		lyxWrite(os, arg.font, "Font", 2);
 	if (arg.labelfont != inherit_font)
