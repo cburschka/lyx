@@ -3255,6 +3255,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_SELECT
  * \li Action: Move cursor to beginning of current paragraph
                and select to the end in downward direction
+ * \li Notion: This function is by default bound to triple mouse click
  * \li Syntax: paragraph-select
  * \li Origin: Kornel, 16 Apr 2019
  * \endvar
