@@ -20,7 +20,7 @@
 # - Claim
 # - Case (by inclusion)
 
-Format 72
+Format 74
 
 OutlinerName thm "Definitions & Theorems"
 

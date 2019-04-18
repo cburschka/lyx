@@ -4,7 +4,7 @@
 #
 # Detailed format description is available in the customization manual
 
-Format 72
+Format 74
 
 Provides stdinsets 1
 

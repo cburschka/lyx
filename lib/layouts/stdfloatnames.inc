@@ -1,6 +1,6 @@
 # This defines the names used by common Float types.
 
-Format 72
+Format 74
 
 OutlinerName table        "Tables"
 OutlinerName figure       "Figures"
