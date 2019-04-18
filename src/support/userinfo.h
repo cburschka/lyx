@@ -19,10 +19,10 @@ namespace lyx {
 namespace support {
 
 /// return the current user's real name or user name
-docstring const user_name();
+std::string const user_name();
 
 /// return the current user's e-mail address
-docstring const user_email();
+std::string const user_email();
 
 } // namespace support
 } // namespace lyx

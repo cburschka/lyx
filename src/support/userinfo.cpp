@@ -35,7 +35,7 @@ using namespace std;
 namespace lyx {
 namespace support {
 
-docstring const user_name()
+string const user_name()
 {
 #if defined (_WIN32)
 
@@ -43,32 +43,32 @@ docstring const user_name()
 	DWORD size = UNLEN + 1;
 	if (!GetUserName(name, &size))
 		return _("Unknown user");
-	return from_local8bit(name);
+	return to_utf8(from_local8bit(name));
 #else
 	struct passwd * pw = getpwuid(geteuid());
-	LASSERT(pw, return docstring());
+	LASSERT(pw, return string());
 
 	const string gecos = pw->pw_gecos;
 	const size_t pos = gecos.find(",");
 	string name = gecos.substr(0, pos);
 	if (name.empty())
 		name = pw->pw_name;
-	return from_local8bit(name);
+	return to_utf8(from_local8bit(name));
 #endif
 }
 
 
-docstring const user_email()
+string const user_email()
 {
 	//FIXME: quick fix wrt bug #3764; only Anonymous is detected now.
 	//The code after should be used only after user approval.
-	return docstring();
+	return string();
 
 #if 0
 	string email = getEnv("EMAIL_ADDRESS");
 	if (email.empty())
 		email = getEnv("EMAIL");
-	return from_local8bit(email);
+	return to_utf8(from_local8bit(email));
 #endif
 }
 

@@ -48,18 +48,10 @@ namespace Alert {
 
 
 //
-// Dummy verbose support
+// Required global variables
 //
 
 bool verbose = false;
-
-
-//
-// Dummy LyXRC support
-//
-
-
-LyXRC::LyXRC() {}
 LyXRC lyxrc;
 
 

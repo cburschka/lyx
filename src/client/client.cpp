@@ -68,11 +68,8 @@ using namespace lyx::support;
 
 namespace lyx {
 
-// Dummy verbose support
+// Required global variables
 bool verbose = false;
-
-// Dummy LyXRC support
-LyXRC::LyXRC() {}
 LyXRC lyxrc;
 
 // Keep the linker happy on Windows

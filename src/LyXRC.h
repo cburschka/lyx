@@ -19,8 +19,10 @@
 #define LYXRC_H
 
 #include "Length.h"
+#include "LyX.h"
 
 #include "support/strfwd.h"
+#include "support/userinfo.h"
 
 #include <map>
 #include <set>
@@ -183,9 +185,10 @@ public:
 	};
 
 	///
-	LyXRC();
-	///
-	void setDefaults();
+	LyXRC() : user_name(support::user_name()),
+	          user_email(support::user_email()) // always empty
+		{};
+
 	/// \param check_format: whether to try to convert the file format,
 	/// if it is not current. this should only be true, really, for the
 	/// user's own preferences file.
@@ -220,26 +223,26 @@ public:
 	// FIXME unused (was used for xforms. Do we still need this?)
 	//static docstring const getDescription(LyXRCTags);
 	///
-	std::string bind_file;
+	std::string bind_file = "cua";
 	///
-	std::string def_file;
+	std::string def_file = "default";
 	///
-	std::string ui_file;
+	std::string ui_file = "default";
 	///
-	std::string print_landscape_flag;
+	std::string print_landscape_flag = "-t landscape";
 	///
-	std::string print_paper_flag;
+	std::string print_paper_flag = "-t";
 	///
-	std::string print_paper_dimension_flag;
+	std::string print_paper_dimension_flag = "-T";
 	/// option for telling the dvi viewer about the paper size
 	std::string view_dvi_paper_option;
 	/// default paper size for local xdvi/dvips/ghostview/whatever
 	/// command to run chktex incl. options
-	std::string chktex_command;
+	std::string chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
 	/// all available commands to run bibtex incl. options
 	CommandSet bibtex_alternatives;
 	/// command to run bibtex incl. options
-	std::string bibtex_command;
+	std::string bibtex_command = "automatic";
 	/// command to run japanese bibtex incl. options
 	std::string jbibtex_command;
 	/// all available commands to run japanese bibtex incl. options
@@ -247,13 +250,13 @@ public:
 	/// all available index commands incl. options
 	CommandSet index_alternatives;
 	/// command to run makeindex incl. options or other index programs
-	std::string index_command;
+	std::string index_command = "makeindex -c -q";
 	/// command to run japanese index program incl. options
 	std::string jindex_command;
 	/// command to generate multiple indices
 	std::string splitindex_command;
 	/// command to run makeindex incl. options for nomencl
-	std::string nomencl_command;
+	std::string nomencl_command = "makeindex -s nomencl.ist";
 	/// command to run the python pygments syntax highlighter
 	std::string pygmentize_command;
 	///
@@ -269,43 +272,44 @@ public:
 	///
 	std::string hunspelldir_path;
 	///
-	bool auto_region_delete;
+	bool auto_region_delete = true;
 	/// enable middle-mouse-button paste
-	bool mouse_middlebutton_paste;
-	/// flag telling whether lastfiles should be checked for existance
-	bool auto_reset_options;
+	bool mouse_middlebutton_paste = true;
 	///
-	bool check_lastfiles;
+	bool auto_reset_options = false;
+	/// flag telling whether lastfiles should be checked for existance
+	bool check_lastfiles = true;
 	/// maximal number of lastfiles
-	unsigned int num_lastfiles;
+	unsigned int num_lastfiles = 20;
 	/// whether or not go to saved position when opening a file
-	bool use_lastfilepos;
+	bool use_lastfilepos = true;
 	/// load files from last session automatically
-	bool load_session;
+	bool load_session = false;
 	/// do we save new documents as compressed by default
-	bool save_compressed;
+	bool save_compressed = false;
 	/// whether or not to save the document dir in the file
-	bool save_origin;
+	bool save_origin = false;
 	/// shall a backup file be created
-	bool make_backup;
+	bool make_backup = true;
 	/// A directory for storing backup files
 	std::string backupdir_path;
 	/// Whether or not save/restore session information
 	/// like windows position and geometry.
-	bool allow_geometry_session;
+	bool allow_geometry_session = true;
 	/// Scrolling speed of the mouse wheel
-	double mouse_wheel_speed;
+	double mouse_wheel_speed = 1.0;
 	/// Default zoom factor for screen fonts
-	int defaultZoom;
+	int defaultZoom = 150;
 	/// Actual zoom factor for screen fonts
 	/// (default zoom plus buffer zoom factor)
-	int currentZoom;
+	int currentZoom = 150;
 	/// Screen font sizes in points for each font size
-	std::string font_sizes[10];
+	std::string font_sizes[10] = { "5.0", "7.0", "8.0", "9.0", "10.0",
+	                               "12.0", "14.4", "17.26", "20.74", "24.88"};
 	/// Allow the use of scalable fonts? Default is yes.
-	bool use_scalable_fonts;
+	bool use_scalable_fonts = true;
 	/// DPI of monitor
-	unsigned int dpi;
+	unsigned int dpi = 75;
 	///
 	std::string roman_font_name;
 	///
@@ -319,33 +323,44 @@ public:
 	///
 	std::string typewriter_font_foundry;
 	///
-	unsigned int autosave;
+	unsigned int autosave = 300;
 	///
-	unsigned int plaintext_linelen;
-	/// Accept compound words in spellchecker?
-	bool spellchecker_accept_compound;
+	unsigned int plaintext_linelen = 65;
 	/// End of paragraph markers?
-	bool paragraph_markers;
+	bool paragraph_markers = false;
 	/// Use tooltips?
-	bool use_tooltip;
+	bool use_tooltip = true;
 	/// Use the colors from current system theme?
-	bool use_system_colors;
+	bool use_system_colors = false;
 	/// use native file dialog or our own ?
-	bool use_native_filedialog;
+	bool use_native_filedialog = true;
 	/// Spellchecker engine: aspell, hunspell, etc
-	std::string spellchecker;
+	std::string spellchecker
+#if defined(USE_MACOSX_PACKAGING)
+		= "native";
+#elif defined(USE_ENCHANT)
+		= "enchant";
+#elif defined(USE_ASPELL)
+		= "aspell";
+#elif defined(USE_HUNSPELL)
+		= "hunspell";
+#else
+		= "aspell";
+#endif
 	/// Alternate language for spellchecker
 	std::string spellchecker_alt_lang;
 	/// Escape characters
 	std::string spellchecker_esc_chars;
+	/// Accept compound words in spellchecker?
+	bool spellchecker_accept_compound = false;
 	/// spellcheck continuously?
-	bool spellcheck_continuously;
+	bool spellcheck_continuously = false;
 	/// spellcheck notes and comments?
-	bool spellcheck_notes;
+	bool spellcheck_notes = true;
 	/// minimum length of words to complete
-	unsigned int completion_minlength;
+	unsigned int completion_minlength = 6;
 	///
-	bool use_kbmap;
+	bool use_kbmap = false;
 	///
 	std::string primary_kbmap;
 	///
@@ -353,19 +368,19 @@ public:
 	///
 	std::string lyxpipes;
 	///
-	std::string language_custom_package;
+	std::string language_custom_package = "\\usepackage{babel}";
 	///
-	bool language_auto_begin;
+	bool language_auto_begin = true;
 	///
-	bool language_auto_end;
+	bool language_auto_end = true;
 	///
-	std::string language_command_begin;
+	std::string language_command_begin = "\\selectlanguage{$$lang}";
 	///
 	std::string language_command_end;
 	///
-	std::string language_command_local;
+	std::string language_command_local = "\\foreignlanguage{$$lang}{";
 	///
-	bool language_global_options;
+	bool language_global_options = true;
 	///
 	enum LangPackageSelection {
 		LP_AUTO = 0,
@@ -374,33 +389,33 @@ public:
 		LP_NONE
 	};
 	///
-	LangPackageSelection language_package_selection;
+	LangPackageSelection language_package_selection = LP_AUTO;
 	/// bidi cursor movement: true = visual, false = logical
-	bool visual_cursor;
+	bool visual_cursor = false;
 	///
-	bool auto_number;
+	bool auto_number = true;
 	///
-	bool mark_foreign_language;
+	bool mark_foreign_language = true;
 	///
-	std::string gui_language;
+	std::string gui_language = "auto";
 	///
-	std::string default_otf_view_format;
+	std::string default_otf_view_format = "pdf4";
 	///
-	std::string default_platex_view_format;
+	std::string default_platex_view_format = "pdf3";
 	///
-	std::string default_view_format;
+	std::string default_view_format = "pdf2";
 	/// all available viewers
 	Alternatives viewer_alternatives;
 	/// all available editors
 	Alternatives editor_alternatives;
 	///
-	bool mac_dontswap_ctrl_meta;
+	bool mac_dontswap_ctrl_meta = false;
 	///
-	bool mac_like_cursor_movement;
+	bool mac_like_cursor_movement = false;
 	///
-	bool cursor_follows_scrollbar;
+	bool cursor_follows_scrollbar = false;
 	///
-	bool scroll_below_document;
+	bool scroll_below_document = false;
 	///
 	enum MacroEditStyle {
 		MACRO_EDIT_INLINE_BOX = 0,
@@ -408,13 +423,13 @@ public:
 		MACRO_EDIT_LIST
 	};
 	///
-	MacroEditStyle macro_edit_style;
+	MacroEditStyle macro_edit_style = MACRO_EDIT_INLINE_BOX;
 	///
-	bool dialogs_iconify_with_main;
+	bool dialogs_iconify_with_main = false;
 	///
-	bool display_graphics;
+	bool display_graphics = true;
 	///
-	bool show_banner;
+	bool show_banner = true;
 	///
 	enum PreviewStatus {
 		PREVIEW_OFF,
@@ -422,23 +437,23 @@ public:
 		PREVIEW_ON
 	};
 	///
-	PreviewStatus preview;
+	PreviewStatus preview = PREVIEW_OFF;
 	///
-	bool preview_hashed_labels;
+	bool preview_hashed_labels = false;
 	///
-	double preview_scale_factor;
+	double preview_scale_factor = 1.0;
 	/// user name
-	std::string user_name;
+	std::string user_name; // set in constructor
 	/// user email
-	std::string user_email;
+	std::string user_email; // set in constructor (empty for now)
 	/// icon set name
 	std::string icon_set;
 	/// whether to use the icons from the theme
-	bool use_system_theme_icons;
+	bool use_system_theme_icons = false;
 	/// True if the TeX engine cannot handle posix paths
-	bool windows_style_tex_paths;
+	bool windows_style_tex_paths = false;
 	/// True if the TeX engine can handle file names containing spaces
-	bool tex_allows_spaces;
+	bool tex_allows_spaces = false;
 	/** Prepend paths to the PATH environment variable.
 	 *  The string is input, stored and output in native format.
 	 */
@@ -447,69 +462,69 @@ public:
 	 *  The string is input, stored and output in native format.
 	 *  A '.' here stands for the current document directory.
 	 */
-	std::string texinputs_prefix;
+	std::string texinputs_prefix = ".";
 	/// Use the cache for file converters?
-	bool use_converter_cache;
+	bool use_converter_cache = true;
 	/// Forbid use of external converters with 'needauth' option
-	bool use_converter_needauth_forbidden;
+	bool use_converter_needauth_forbidden = true;
 	/// Ask user before calling external converters with 'needauth' option
-	bool use_converter_needauth;
+	bool use_converter_needauth = true;
 	/// The maximum age of cache files in seconds
-	unsigned int converter_cache_maxage;
+	unsigned int converter_cache_maxage = 6 * 30 * 24 * 3600; // 6 months;
 	/// Sort layouts alphabetically
-	bool sort_layouts;
+	bool sort_layouts = false;
 	/// Group layout by their category
-	bool group_layouts;
+	bool group_layouts = true;
 	/// Toggle toolbars in fullscreen mode?
-	bool full_screen_toolbars;
+	bool full_screen_toolbars = true;
 	/// Toggle scrollbar in fullscreen mode?
-	bool full_screen_scrollbar;
+	bool full_screen_scrollbar = true;
 	/// Toggle tabbar in fullscreen mode?
-	bool full_screen_tabbar;
+	bool full_screen_tabbar = true;
 	/// Toggle menubar in fullscreen mode?
-	bool full_screen_menubar;
+	bool full_screen_menubar = true;
 	/// Toggle statusbar in fullscreen mode?
-	bool full_screen_statusbar;
+	bool full_screen_statusbar = true;
 	/// Limit the text width?
-	bool full_screen_limit;
+	bool full_screen_limit = false;
 	/// Width of limited screen (in pixels) in fullscreen mode
-	int full_screen_width;
+	int full_screen_width = 700;
 	///
-	bool completion_cursor_text;
+	bool completion_cursor_text = true;
 	///
-	double completion_inline_delay;
+	double completion_inline_delay = 0.2;
 	///
-	bool completion_inline_math;
+	bool completion_inline_math = true;
 	///
-	bool completion_inline_text;
+	bool completion_inline_text = false;
 	///
-	int completion_inline_dots;
+	int completion_inline_dots = -1;
 	///
-	bool autocorrection_math;
+	double completion_popup_delay = 2.0;
 	///
-	double completion_popup_delay;
+	bool completion_popup_math = true;
 	///
-	bool completion_popup_math;
+	bool completion_popup_text = false;
 	///
-	bool completion_popup_text;
+	bool completion_popup_after_complete = true;
 	///
-	bool completion_popup_after_complete;
+	bool autocorrection_math = false;
 	///
-	bool open_buffers_in_tabs;
+	bool open_buffers_in_tabs = true;
 	///
-	bool single_close_tab_button;
+	bool single_close_tab_button = false;
 	///
-	bool single_instance;
+	bool single_instance = true;
 	///
 	std::string forward_search_dvi;
 	///
 	std::string forward_search_pdf;
 	///
-	int export_overwrite;
+	int export_overwrite = NO_FILES;
 	/// Default decimal point when aligning table columns on decimal
-	std::string default_decimal_point;
+	std::string default_decimal_point = ".";
 	///
-	Length::UNIT default_length_unit;
+	Length::UNIT default_length_unit = Length::CM;
 	///
 	enum ScrollWheelZoom {
 		SCROLL_WHEEL_ZOOM_OFF,
@@ -518,11 +533,11 @@ public:
 		SCROLL_WHEEL_ZOOM_ALT
 	};
 	///
-	ScrollWheelZoom scroll_wheel_zoom;
+	ScrollWheelZoom scroll_wheel_zoom = SCROLL_WHEEL_ZOOM_CTRL;
 	///
-	int cursor_width;
+	int cursor_width = 1;
 	/// One of: yes, no, ask
-	std::string close_buffer_with_last_view;
+	std::string close_buffer_with_last_view = "yes";
 };
 
 
