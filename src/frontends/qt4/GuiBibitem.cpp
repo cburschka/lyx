@@ -63,7 +63,7 @@ void GuiBibitem::paramsToDialog(Inset const * inset)
 					"If you use an abbreviated list (with 'et al.'), the full list can go below."));
 		allAuthorsLA->setText(qt_("A&ll Author Names:"));
 		allAuthorsLA->setMaximumWidth(allAuthorsLA->sizeHint().width());
-		literalCB->setToolTip(qt_("Pass content of the `Author', 'Year' and 'All Authors' fields literally to LaTeX. "
+		literalCB->setToolTip(qt_("Pass content of the `Author', `Year' and `All Authors' fields literally to LaTeX. "
 					  "Check this if you want to enter LaTeX code."));
 		int const i = label.lastIndexOf("(");
 		int const j = label.lastIndexOf(")");
