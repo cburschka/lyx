@@ -150,6 +150,44 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 	static regex const reg1("(.*)(basicstyle=\\{)([^\\}]*)(\\\\ttfamily)([^\\}]*)(\\})(.*)");
 	static regex const reg2("(.*)(basicstyle=\\{)([^\\}]*)(\\\\rmfamily)([^\\}]*)(\\})(.*)");
 	static regex const reg3("(.*)(basicstyle=\\{)([^\\}]*)(\\\\sffamily)([^\\}]*)(\\})(.*)");
+	static regex const reg4("(.*)(basicstyle=\\{)([^\\}]*)(\\\\(tiny|scriptsize|footnotesize|small|normalsize|large|Large))([^\\}]*)(\\})(.*)");
+	static regex const reg5("(.*)(fontfamily=)(tt|sf|rm)(.*)");
+	static regex const reg6("(.*)(fontsize=\\{)(\\\\(tiny|scriptsize|footnotesize|small|normalsize|large|Large))(\\})(.*)");
+	if (use_minted) {
+		// If params have been entered with "listings", and then the user switched to "minted",
+		// we have params that need to be translated.
+		// FIXME: We should use a backend-abstract syntax in listings params instead!
+		// Substitute fontstyle option
+		smatch sub;
+		if (regex_match(param_string, sub, reg1))
+			param_string = sub.str(1) + "fontfamily=tt," + sub.str(2) + sub.str(3)
+					+ sub.str(5) + sub.str(6) + sub.str(7);
+		if (regex_match(param_string, sub, reg2))
+			param_string = sub.str(1) + "fontfamily=rm," + sub.str(2) + sub.str(3)
+					+ sub.str(5) + sub.str(6) + sub.str(7);
+		if (regex_match(param_string, sub, reg3))
+			param_string = sub.str(1) + "fontfamily=sf," + sub.str(2) + sub.str(3)
+					+ sub.str(5) + sub.str(6) + sub.str(7);
+		// as well as fontsize option
+		if (regex_match(param_string, sub, reg4))
+			param_string = sub.str(1) + "fontsize={" + sub.str(4) + sub.str(3) + sub.str(7) + sub.str(8);
+	} else {
+		// And the same vice versa
+		// Substitute fontstyle option
+		smatch sub;
+		string basicstyle;
+		if (regex_match(param_string, sub, reg5)) {
+			basicstyle = "\\" + sub.str(3) + "family";
+			param_string = sub.str(1) + sub.str(4);
+		}
+		// as well as fontsize option
+		if (regex_match(param_string, sub, reg6)) {
+			basicstyle += sub.str(3);
+			param_string = sub.str(1) + sub.str(6);
+		}
+		if (!basicstyle.empty())
+			param_string = rtrim(param_string, ",") + ",basicstyle={" + basicstyle + "}";
+	}
 	if (runparams.use_polyglossia && runparams.local_font->isRightToLeft()) {
 		// We need to use the *latin switches (#11554)
 		smatch sub;

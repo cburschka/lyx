@@ -297,6 +297,9 @@ string GuiListings::construct_params()
 	string fontstyle = font_styles[qMax(0, fontstyleCO->currentIndex())];
 	string basicstyle;
 	string mintedsize;
+	// FIXME: We should not compose listings- or minted-dependant string here
+	//        This breaks if a users switches the backend without opening and
+	//        re-applying all listings insets. Use a backend-abstract syntax!
 	bool const use_minted = buffer().params().use_minted;
 	if (fontsize != "default") {
 		if (use_minted)
