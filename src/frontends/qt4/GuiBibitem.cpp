@@ -64,7 +64,9 @@ void GuiBibitem::paramsToDialog(Inset const * inset)
 		int const i = label.lastIndexOf("(");
 		int const j = label.lastIndexOf(")");
 		if (i != -1 && j != -1 && i < j) {
-			// Split Author(Year) to Author and Year
+			// Split Author(s) and Year
+			// Natbib syntax is "Jones et al.(1990)Jones, Baker, and Williams"
+			// (full list is optional)
 			QString const year = label.left(j).mid(i + 1);
 			QString const author = label.left(i);
 			QString const allauthors = label.mid(j + 1);

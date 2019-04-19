@@ -524,6 +524,12 @@ docstring const BibTeXInfo::getAuthorList(Buffer const * buf,
 			// in this case, we didn't find a "(",
 			// so we don't have author (year)
 			return docstring();
+		if (full) {
+			// Natbib syntax is "Jones et al.(1990)Jones, Baker, and Williams"
+			docstring const fullauthors = trim(rsplit(remainder, ')'));
+			if (!fullauthors.empty())
+				return fullauthors;
+		}
 		return authors;
 	}
 
