@@ -60,7 +60,7 @@ void GuiBibitem::paramsToDialog(Inset const * inset)
 		labelLA->setText(qt_("Author &Names:"));
 		labelLA->setMaximumWidth(labelLA->sizeHint().width());
 		labelED->setToolTip(qt_("Insert the author name(s) for the author-year reference here. "
-					"If you use an abbreviated list (with 'et al.'), the full list can go below."));
+					"If you use an abbreviated list (with `et al.'), the full list can go below."));
 		allAuthorsLA->setText(qt_("A&ll Author Names:"));
 		allAuthorsLA->setMaximumWidth(allAuthorsLA->sizeHint().width());
 		literalCB->setToolTip(qt_("Pass content of the `Author', `Year' and `All Authors' fields literally to LaTeX. "
