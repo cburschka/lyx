@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-04-18 17:04+0200\n"
-"PO-Revision-Date: 2019-04-18 17:08+0200\n"
+"POT-Creation-Date: 2019-04-19 15:07+0200\n"
+"PO-Revision-Date: 2019-04-19 15:14+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -130,36 +130,38 @@ msgstr "Erstellung"
 msgid "Release Notes"
 msgstr "Versionshinweise"
 
-#: src/frontends/qt4/ui/BibitemUi.ui:29 src/frontends/qt4/ui/BibitemUi.ui:48
+#: src/frontends/qt4/ui/BibitemUi.ui:26 src/frontends/qt4/ui/BibitemUi.ui:45
 msgid "The bibliography key"
 msgstr "Der Literaturschlüssel"
 
-#: src/frontends/qt4/ui/BibitemUi.ui:32
+#: src/frontends/qt4/ui/BibitemUi.ui:29
 msgid "Ke&y:"
 msgstr "Sch&lüssel:"
 
-#: src/frontends/qt4/ui/BibitemUi.ui:55 src/frontends/qt4/ui/BibitemUi.ui:79
+#: src/frontends/qt4/ui/BibitemUi.ui:52 src/frontends/qt4/ui/BibitemUi.ui:76
+#: src/frontends/qt4/GuiBibitem.cpp:91
 msgid "The label as it appears in the document"
 msgstr "Die Marke, wie sie im Dokument erscheint"
 
-#: src/frontends/qt4/ui/BibitemUi.ui:58 src/frontends/qt4/ui/IncludeUi.ui:183
-#: src/frontends/qt4/ui/LabelUi.ui:36
+#: src/frontends/qt4/ui/BibitemUi.ui:55 src/frontends/qt4/ui/IncludeUi.ui:183
+#: src/frontends/qt4/ui/LabelUi.ui:36 src/frontends/qt4/GuiBibitem.cpp:87
+#: src/frontends/qt4/GuiBibitem.cpp:89
 msgid "&Label:"
 msgstr "&Marke:"
 
-#: src/frontends/qt4/ui/BibitemUi.ui:86
+#: src/frontends/qt4/ui/BibitemUi.ui:83
 msgid "&Year:"
 msgstr "&Jahr: "
 
-#: src/frontends/qt4/ui/BibitemUi.ui:99
+#: src/frontends/qt4/ui/BibitemUi.ui:96
 msgid "The year with \"Author (Year)\" citations (without parentheses)."
 msgstr "Das Jahr bei Autor-Jahr-Verweisen (einzugeben ohne Klammern)."
 
-#: src/frontends/qt4/ui/BibitemUi.ui:108
+#: src/frontends/qt4/ui/BibitemUi.ui:105 src/frontends/qt4/GuiBibitem.cpp:64
 msgid "A&ll Author Names:"
-msgstr "A&lle Autorennamen:"
+msgstr "A&lle Autornamen:"
 
-#: src/frontends/qt4/ui/BibitemUi.ui:118
+#: src/frontends/qt4/ui/BibitemUi.ui:115
 msgid ""
 "If you want to use an abbreviated author list (with 'et al.') as well as a "
 "full list for author-year citation, you can put the full list here and the "
@@ -170,7 +172,7 @@ msgstr ""
 "Sie hier die vollständige Liste eingeben \n"
 "und die abgekürzte oben."
 
-#: src/frontends/qt4/ui/BibitemUi.ui:127
+#: src/frontends/qt4/ui/BibitemUi.ui:122 src/frontends/qt4/GuiBibitem.cpp:93
 msgid ""
 "Pass content of the `Label' field literally to LaTeX. Check this if you want "
 "to enter LaTeX code."
@@ -178,7 +180,7 @@ msgstr ""
 "Übergebe den Inhalt des ,Label`-Feldes unformatiert an LaTeX. Aktivieren Sie "
 "dies, wenn Sie LaTeX-Code eingeben wollen."
 
-#: src/frontends/qt4/ui/BibitemUi.ui:130 src/frontends/qt4/ui/CitationUi.ui:378
+#: src/frontends/qt4/ui/BibitemUi.ui:125 src/frontends/qt4/ui/CitationUi.ui:378
 #: src/frontends/qt4/ui/HyperlinkUi.ui:80 src/frontends/qt4/ui/IncludeUi.ui:302
 #: src/frontends/qt4/ui/NomenclUi.ui:72 src/frontends/qt4/ui/PrintindexUi.ui:74
 msgid "Li&teral"
@@ -865,7 +867,7 @@ msgstr "&Größe:"
 #: src/frontends/qt4/GuiDocument.cpp:2435
 #: src/frontends/qt4/GuiDocument.cpp:2520
 #: src/frontends/qt4/GuiDocument.cpp:3129
-#: src/frontends/qt4/GuiDocument.cpp:4559 src/frontends/qt4/GuiExternal.cpp:77
+#: src/frontends/qt4/GuiDocument.cpp:4560 src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiIndices.cpp:58
 #: src/frontends/qt4/GuiListings.cpp:156 src/frontends/qt4/GuiListings.cpp:163
 #: src/frontends/qt4/GuiPrefs.cpp:2432 src/frontends/qt4/GuiPrefs.cpp:2545
@@ -5924,9 +5926,9 @@ msgstr ""
 "Natbib bietet eine Reihe von Autor-Jahr- und nummerischen Stilen, die vor "
 "allem an den Bedürfnissen von Geisteswissenschaftlern ausgerichtet sind. "
 "Unterstützt werden u.a. Annotationen, optionale Anfangsgroßschreibung von "
-"Namenspräfixen, gekürzte und voll Autorennamenlisten, Natbib bietet aber "
-"auch zusätzliche Möglichkeiten für nummerische Stile wie automatisches "
-"Sortieren und Gruppieren der Nummern."
+"Namenspräfixen, gekürzte und voll Autornamenlisten, Natbib bietet aber auch "
+"zusätzliche Möglichkeiten für nummerische Stile wie automatisches Sortieren "
+"und Gruppieren der Nummern."
 
 #: lib/layouts/AEA.layout:3 lib/examples/Articles:0
 msgid "American Economic Association (AEA)"
@@ -9128,11 +9130,11 @@ msgstr "Paper-Id:"
 
 #: lib/layouts/aguplus.inc:156
 msgid "AuthorAddr"
-msgstr "Autoren-Adresse"
+msgstr "Autor-Adresse"
 
 #: lib/layouts/aguplus.inc:160
 msgid "Author Address:"
-msgstr "Autoren-Adresse:"
+msgstr "Autor-Adresse:"
 
 #: lib/layouts/aguplus.inc:164
 msgid "SlugComment"
@@ -9184,7 +9186,7 @@ msgstr "Zugehörigkeitsmarke"
 
 #: lib/layouts/agutex.layout:125
 msgid "Consecutive number for the author affiliations"
-msgstr "Fortlaufende Nummer für die Autorenzugehörigkeit"
+msgstr "Fortlaufende Nummer für die Autorzugehörigkeit"
 
 #: lib/layouts/agutex.layout:130
 msgid "Author affiliation:"
@@ -9560,7 +9562,7 @@ msgstr "Notiz"
 
 #: lib/layouts/apa6.layout:293
 msgid "Author Note:"
-msgstr "Autorenhinweise:"
+msgstr "Autorhinweise:"
 
 #: lib/layouts/apa6.layout:307 lib/layouts/egs.layout:395
 msgid "Journal"
@@ -11573,12 +11575,12 @@ msgstr "Optionales Argument für den author-Befehl"
 
 #: lib/layouts/elsart.layout:138
 msgid "Author Address"
-msgstr "Autoren-Adresse"
+msgstr "Autor-Adresse"
 
 #: lib/layouts/elsart.layout:157 lib/layouts/revtex4-1.layout:117
 #: lib/layouts/revtex4.layout:204
 msgid "Author Email"
-msgstr "Autoren-E-Mail"
+msgstr "Autor-E-Mail"
 
 #: lib/layouts/elsart.layout:167 lib/layouts/lettre.layout:410
 #: lib/layouts/llncs.layout:243 lib/layouts/moderncv.layout:180
@@ -11588,7 +11590,7 @@ msgstr "E-Mail:"
 #: lib/layouts/elsart.layout:178 lib/layouts/revtex4-1.layout:132
 #: lib/layouts/revtex4.layout:223
 msgid "Author URL"
-msgstr "Autoren-URL"
+msgstr "Autor-URL"
 
 #: lib/layouts/elsart.layout:207
 msgid "Thanks Option"
@@ -11692,7 +11694,7 @@ msgstr "Titelfußnote:"
 
 #: lib/layouts/elsarticle.layout:130
 msgid "Author Label"
-msgstr "Autorenmarke"
+msgstr "Autormarke"
 
 #: lib/layouts/elsarticle.layout:131
 msgid "Label you will reference in the address"
@@ -12331,7 +12333,7 @@ msgstr "Fixme-Fehler"
 #: lib/layouts/fixme.module:83 src/frontends/qt4/GuiCompare.cpp:199
 #: src/frontends/qt4/GuiDocument.cpp:2578
 #: src/frontends/qt4/GuiDocument.cpp:2652
-#: src/frontends/qt4/GuiDocument.cpp:4502
+#: src/frontends/qt4/GuiDocument.cpp:4503
 msgid "Error"
 msgstr "Fehler"
 
@@ -13210,11 +13212,11 @@ msgstr "Int. Journal of Modern Physics C"
 
 #: lib/layouts/ijmpc.layout:74 lib/layouts/ijmpd.layout:79
 msgid "Author Names"
-msgstr "Autorennamen"
+msgstr "Autornamen"
 
 #: lib/layouts/ijmpc.layout:75 lib/layouts/ijmpd.layout:80
 msgid "Author names that will appear in the header line"
-msgstr "Autorennamen, die im Kolumnentitel erscheinen"
+msgstr "Autornamen, die im Kolumnentitel erscheinen"
 
 #: lib/layouts/ijmpc.layout:88 lib/layouts/ijmpc.layout:92
 #: lib/layouts/ijmpc.layout:100 lib/layouts/ijmpd.layout:93
@@ -15343,7 +15345,7 @@ msgstr "Optionales Argument für den \"email\"-Befehl"
 
 #: lib/layouts/revtex4-1.layout:137 lib/layouts/revtex4.layout:229
 msgid "Author URL Option"
-msgstr "Autoren-URL-Option"
+msgstr "Autor-URL-Option"
 
 #: lib/layouts/revtex4-1.layout:138 lib/layouts/revtex4.layout:230
 msgid "Optional argument to the homepage command"
@@ -16181,11 +16183,11 @@ msgstr "SPIE-Tagungsbände"
 
 #: lib/layouts/spie.layout:56
 msgid "Authorinfo"
-msgstr "Autoren-Info"
+msgstr "Autor-Info"
 
 #: lib/layouts/spie.layout:68
 msgid "Authorinfo:"
-msgstr "Autoren-Info:"
+msgstr "Autor-Info:"
 
 #: lib/layouts/spie.layout:96
 msgid "ACKNOWLEDGMENTS"
@@ -21305,7 +21307,7 @@ msgid "Big operators"
 msgstr "Große Operatoren"
 
 #: lib/ui/stdtoolbars.inc:310 lib/ui/stdtoolbars.inc:658
-#: src/frontends/qt4/GuiDocument.cpp:4810
+#: src/frontends/qt4/GuiDocument.cpp:4811
 msgid "Miscellaneous"
 msgstr "Verschiedenes"
 
@@ -26304,16 +26306,16 @@ msgstr "Einfaches Gitter"
 msgid "%1$s[[name]] (%2$s[[email]])"
 msgstr "%1$s[[Name]] (%2$s[[Email]])"
 
-#: src/BiblioInfo.cpp:797 src/BiblioInfo.cpp:847 src/BiblioInfo.cpp:858
-#: src/BiblioInfo.cpp:913 src/BiblioInfo.cpp:917
+#: src/BiblioInfo.cpp:803 src/BiblioInfo.cpp:853 src/BiblioInfo.cpp:864
+#: src/BiblioInfo.cpp:919 src/BiblioInfo.cpp:923
 msgid "ERROR!"
 msgstr "FEHLER!"
 
-#: src/BiblioInfo.cpp:1292
+#: src/BiblioInfo.cpp:1298
 msgid "No year"
 msgstr "Kein Jahr"
 
-#: src/BiblioInfo.cpp:1302
+#: src/BiblioInfo.cpp:1308
 msgid "Bibliography entry not found!"
 msgstr "Literaturverzeichnis-Eintrag nicht gefunden!"
 
@@ -27177,7 +27179,7 @@ msgstr "Konnte Klasse nicht laden"
 msgid "Error reading internal layout information"
 msgstr "Fehler beim Einlesen interner Format-Informationen"
 
-#: src/BufferParams.cpp:2575 src/TextClass.cpp:1822 src/TextClass.cpp:1854
+#: src/BufferParams.cpp:2575 src/TextClass.cpp:1844 src/TextClass.cpp:1876
 msgid "Read Error"
 msgstr "Lesefehler"
 
@@ -28167,17 +28169,17 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "Das Kopieren von %1$s nach %2$s ist fehlgeschlagen."
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:150
-#: src/frontends/qt4/GuiDocument.cpp:4559 src/frontends/qt4/GuiListings.cpp:163
+#: src/frontends/qt4/GuiDocument.cpp:4560 src/frontends/qt4/GuiListings.cpp:163
 msgid "Roman"
 msgstr "Serifenschrift"
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:151
-#: src/frontends/qt4/GuiDocument.cpp:4559 src/frontends/qt4/GuiListings.cpp:163
+#: src/frontends/qt4/GuiDocument.cpp:4560 src/frontends/qt4/GuiListings.cpp:163
 msgid "Sans Serif"
 msgstr "Serifenlos"
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:152
-#: src/frontends/qt4/GuiDocument.cpp:4559 src/frontends/qt4/GuiListings.cpp:163
+#: src/frontends/qt4/GuiDocument.cpp:4560 src/frontends/qt4/GuiListings.cpp:163
 msgid "Typewriter"
 msgstr "Schreibmaschine"
 
@@ -29532,7 +29534,7 @@ msgid "Could not read stdinsets.inc! This may lead to data loss!"
 msgstr ""
 "Kann Datei stdinsets.inc nicht lesen! Dies kann zu Datenverlust führen!"
 
-#: src/TextClass.cpp:1798
+#: src/TextClass.cpp:1820
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -29546,11 +29548,11 @@ msgstr ""
 "Wenn Sie es erst kürzlich installiert haben,\n"
 "sollten Sie LyX neu konfigurieren.\n"
 
-#: src/TextClass.cpp:1803
+#: src/TextClass.cpp:1825
 msgid "Module not available"
 msgstr "Modul ist nicht verfügbar"
 
-#: src/TextClass.cpp:1809
+#: src/TextClass.cpp:1831
 #, c-format
 msgid ""
 "The module %1$s requires a package that is not\n"
@@ -29569,16 +29571,16 @@ msgstr ""
 "Konsultieren Sie Abschnitt 3.1.2.3 des Benutzerhandbuchs (Module) für "
 "weitere Informationen."
 
-#: src/TextClass.cpp:1816 src/TextClass.cpp:1848
+#: src/TextClass.cpp:1838 src/TextClass.cpp:1870
 msgid "Package not available"
 msgstr "Paket ist nicht verfügbar"
 
-#: src/TextClass.cpp:1821
+#: src/TextClass.cpp:1843
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr "Fehler beim Lesen von Modul %1$s\n"
 
-#: src/TextClass.cpp:1832
+#: src/TextClass.cpp:1854
 #, c-format
 msgid ""
 "The cite engine %1$s has been requested by\n"
@@ -29592,11 +29594,11 @@ msgstr ""
 "Wenn Sie sie erst kürzlich installiert haben,\n"
 "sollten Sie LyX neu konfigurieren.\n"
 
-#: src/TextClass.cpp:1837
+#: src/TextClass.cpp:1859
 msgid "Cite Engine not available"
 msgstr "Zitierformatdatei nicht verfügbar"
 
-#: src/TextClass.cpp:1841
+#: src/TextClass.cpp:1863
 #, c-format
 msgid ""
 "The cite engine %1$s requires a package that is not\n"
@@ -29615,7 +29617,7 @@ msgstr ""
 "Konsultieren Sie Abschnitt 3.1.2.3 des Benutzerhandbuchs (Module) für "
 "weitere Informationen."
 
-#: src/TextClass.cpp:1853
+#: src/TextClass.cpp:1875
 #, c-format
 msgid "Error reading cite engine %1$s\n"
 msgstr "Fehler beim Lesen der Zitierformatdatei %1$s\n"
@@ -30457,6 +30459,28 @@ msgstr ""
 "Bitte schauen Sie unter Werkzeuge > Einstellungen > Benutzeroberfläche\n"
 "nach, welche Konfigurationsdatei Sie verwenden, und überprüfen Sie diese."
 
+#: src/frontends/qt4/GuiBibitem.cpp:60
+msgid "Author &Names:"
+msgstr "Autor&namen:"
+
+#: src/frontends/qt4/GuiBibitem.cpp:62
+msgid ""
+"Insert the author name(s) for the author-year reference here. If you use an "
+"abbreviated list (with `et al.'), the full list can go below."
+msgstr ""
+"Geben Sie hier die Namen der Autoren für Autor-Jahr-Verweise ein. Wenn Sie "
+"eine abgekürzte Liste (mit ,et al.`) verwenden, können Sie die vollständige "
+"unten eingeben."
+
+#: src/frontends/qt4/GuiBibitem.cpp:66
+msgid ""
+"Pass content of the `Author', `Year' and `All Authors' fields literally to "
+"LaTeX. Check this if you want to enter LaTeX code."
+msgstr ""
+"Übergebe den Inhalt der Felder ,Autor`, ,Jahr` und ,Alle Autoren` "
+"unformatiert an LaTeX. Aktivieren Sie dies, wenn Sie LaTeX-Code eingeben "
+"wollen."
+
 #: src/frontends/qt4/GuiBibitem.h:36
 msgid "Bibliography Item Settings"
 msgstr "Literatureintrag-Einstellungen"
@@ -30625,7 +30649,7 @@ msgstr "Erweitere Dateinamen"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
 #: src/frontends/qt4/GuiDocument.cpp:3055
-#: src/frontends/qt4/GuiDocument.cpp:4284
+#: src/frontends/qt4/GuiDocument.cpp:4285
 #: src/frontends/qt4/GuiProgressView.cpp:144
 #: src/frontends/qt4/GuiProgressView.cpp:158
 #: src/frontends/qt4/GuiProgressView.cpp:179
@@ -30635,7 +30659,7 @@ msgstr "Ja"
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
 #: src/frontends/qt4/GuiDocument.cpp:3054
 #: src/frontends/qt4/GuiDocument.cpp:3657
-#: src/frontends/qt4/GuiDocument.cpp:4283
+#: src/frontends/qt4/GuiDocument.cpp:4284
 #: src/frontends/qt4/GuiProgressView.cpp:110
 #: src/frontends/qt4/GuiProgressView.cpp:143
 #: src/frontends/qt4/GuiProgressView.cpp:179
@@ -31385,13 +31409,13 @@ msgstr "LyX-Dokumente (*.lyx)"
 # , c-format
 #: src/frontends/qt4/GuiDocument.cpp:2638
 #: src/frontends/qt4/GuiDocument.cpp:2942
-#: src/frontends/qt4/GuiDocument.cpp:4491
+#: src/frontends/qt4/GuiDocument.cpp:4492
 msgid "Unapplied changes"
 msgstr "Nicht übernommene Änderungen"
 
 #: src/frontends/qt4/GuiDocument.cpp:2639
 #: src/frontends/qt4/GuiDocument.cpp:2943
-#: src/frontends/qt4/GuiDocument.cpp:4492
+#: src/frontends/qt4/GuiDocument.cpp:4493
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -31402,18 +31426,18 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:2641
 #: src/frontends/qt4/GuiDocument.cpp:2945
-#: src/frontends/qt4/GuiDocument.cpp:4494
+#: src/frontends/qt4/GuiDocument.cpp:4495
 msgid "&Apply"
 msgstr "&Anwenden"
 
 #: src/frontends/qt4/GuiDocument.cpp:2641
 #: src/frontends/qt4/GuiDocument.cpp:2945
-#: src/frontends/qt4/GuiDocument.cpp:4494
+#: src/frontends/qt4/GuiDocument.cpp:4495
 msgid "&Dismiss"
 msgstr "&Ablehnen"
 
 #: src/frontends/qt4/GuiDocument.cpp:2652
-#: src/frontends/qt4/GuiDocument.cpp:4502
+#: src/frontends/qt4/GuiDocument.cpp:4503
 msgid "Unable to set document class."
 msgstr "Kann Dokumentklasse nicht einstellen."
 
@@ -31522,24 +31546,24 @@ msgstr "H&yperref-Optionen anpassen"
 msgid "&Use Hyperref Support"
 msgstr "Hyperref-Unterstützung &verwenden"
 
-#: src/frontends/qt4/GuiDocument.cpp:4514
+#: src/frontends/qt4/GuiDocument.cpp:4515
 msgid "Can't set layout!"
 msgstr "Kann Format nicht verwenden!"
 
-#: src/frontends/qt4/GuiDocument.cpp:4515
+#: src/frontends/qt4/GuiDocument.cpp:4516
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Kann Format für ID '%1$s' nicht verwenden"
 
-#: src/frontends/qt4/GuiDocument.cpp:4613
+#: src/frontends/qt4/GuiDocument.cpp:4614
 msgid "Not Found"
 msgstr "Nicht gefunden"
 
-#: src/frontends/qt4/GuiDocument.cpp:4673
+#: src/frontends/qt4/GuiDocument.cpp:4674
 msgid "Assigned master does not include this file"
 msgstr "Zugewiesenes Hauptdokument bettet diese Datei nicht ein"
 
-#: src/frontends/qt4/GuiDocument.cpp:4674
+#: src/frontends/qt4/GuiDocument.cpp:4675
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -31550,11 +31574,11 @@ msgstr ""
 "'%1$s' einbetten, sonst bleibt die\n"
 "vorgenommene Zuordnung des Hauptdokuments wirkungslos."
 
-#: src/frontends/qt4/GuiDocument.cpp:4678
+#: src/frontends/qt4/GuiDocument.cpp:4679
 msgid "Could not load master"
 msgstr "Konnte das Hauptdokument nicht laden"
 
-#: src/frontends/qt4/GuiDocument.cpp:4679
+#: src/frontends/qt4/GuiDocument.cpp:4680
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -31563,7 +31587,7 @@ msgstr ""
 "Das Hauptdokument '%1$s'\n"
 "konnte nicht geladen werden."
 
-#: src/frontends/qt4/GuiDocument.cpp:4818
+#: src/frontends/qt4/GuiDocument.cpp:4819
 msgid "(Module name: %1)"
 msgstr "(Modulname: %1)"
 
