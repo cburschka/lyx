@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 571
+\lyxformat 573
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -64,7 +64,7 @@ logicalmkup
 \maintain_unincluded_children false
 \language ngerman
 \language_package default
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
@@ -28688,7 +28688,8 @@ ersten Zeile
 \emph default
  eines Absatzes werden Sie ein graues Kästchen mit einem Wort und einer
  Zahl in eckigen Klammern sehen.
- Wenn Sie darauf klicken, erscheint ein Menü, in dem Sie einen 
+ Wenn Sie darauf klicken, erscheint ein Eingabefenster, in dem Sie einen
+ 
 \family sans
 Schlüssel
 \family default
@@ -28772,7 +28773,7 @@ Marke
 Sie können auf Ihre Literaturangaben verweisen, indem Sie 
 \family sans
 Einfügen\SpecialChar menuseparator
-Zitat
+Literaturverweis
 \family default
  oder den Werkzeugleistenknopf 
 \begin_inset Info
@@ -28853,38 +28854,7 @@ status collapsed
 \end_inset
 
  können Sie auch Autor-Jahr- oder Autor-Nummer-Verweise erzeugen.
- Dazu muss die Marke die Form 
-\begin_inset Quotes gld
-\end_inset
-
-Autor(Jahr)
-\begin_inset Quotes grd
-\end_inset
-
- oder 
-\begin_inset Quotes eld
-\end_inset
-
-Autor A and Autor B(Jahr)
-\begin_inset Quotes erd
-\end_inset
-
- 
-\emph on
-ohne
-\emph default
- Leerzeichen zwischen dem Autor\SpecialChar breakableslash
-den Autoren und der öffnenden Klammer vor
- dem Jahr haben (die englische Form 
-\begin_inset Quotes gld
-\end_inset
-
-and
-\begin_inset Quotes grd
-\end_inset
-
- als Abgrenzung zwischen verschiedenen Autoren ist ebenfalls nötig).
- Wenn Sie dann 
+ Dazu müssen Sie 
 \family sans
 Natbib
 \begin_inset space ~
@@ -28917,8 +28887,70 @@ noprefix "false"
 
 \end_inset
 
-) wählen, können Sie zwischen verschiedenen Autor-Jahr oder Autor-Nummer-Stilen
- auswählen.
+) wählen.
+ Nachdem Sie das getan haben, hat der das Eingabefenster der Literaturverzeichni
+s-Umgebung drei Felder anstelle von 
+\family sans
+Marke
+\family default
+, nämlich 
+\family sans
+Autornamen
+\family default
+, 
+\family sans
+Jahr
+\family default
+ und 
+\family sans
+Alle Autornamen
+\family default
+.
+ In das erste geben Sie die Liste der Autoren ein, wie sie im Literaturverweis
+ erscheinen soll, in das zweite das Jahr (ohne Klammern).
+ In diese zwei Felder müssen Sie etwas eingeben.
+ Wenn der Eintrag mehrere Autoren hat und sie darauf sowohl in voller Form
+ (
+\emph on
+Meier, Müller und Schmidt
+\emph default
+) als auch in abgekürzter Form (
+\emph on
+Meier et al.
+\emph default
+) verweisen möchten, dann geben Sie die abgekürzte Form in 
+\family sans
+Autornamen
+\family default
+ ein und die volle in 
+\family sans
+Alle Autornamen
+\family default
+.
+ Wenn Sie es so eingegeben haben, können Sie in 
+\family sans
+Einfügen\SpecialChar menuseparator
+Literaturverweis
+\family default
+ zwischen verschiedenen Autor-Jahr oder Autor-Nummer-Stilen auswählen, und
+ wenn 
+\family sans
+Alle Autornamen
+\family default
+ verwendet wurde, schalter 
+\begin_inset Quotes gld
+\end_inset
+
+Alle Autoren
+\begin_inset Quotes grd
+\end_inset
+
+ im Literaturverweis-Fenster oder dem Kontextmenü eines Literaturverweises
+ zwischen voller und abgekürzter Autorenliste um.
+ Beachten Sie bitte, dass die Angabe von Autor und Jahr in diesem Fenster
+ nur für die Literaturverweise verwendet werden, nicht für den Literaturverzeich
+nis-Eintrag.
+ Dort müssen Sie Autor und Jahr zusätzlich manuell eingeben.
 \end_layout
 
 \begin_layout Standard

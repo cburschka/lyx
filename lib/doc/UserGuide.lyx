@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 571
+\lyxformat 573
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -57,7 +57,7 @@ logicalmkup
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
@@ -30071,7 +30071,9 @@ status collapsed
 \end_inset
 
 .
- In order to do so, the label needs to be given the form 
+ In order to do so, 
+\change_deleted -712698321 1555659455
+the label needs to be given the form 
 \begin_inset Quotes eld
 \end_inset
 
@@ -30093,7 +30095,9 @@ without
 \emph default
  a blank between the author(s) and the opening parenthesis that delimits
  the year.
- Then, if you select 
+ Then, if you 
+\change_unchanged
+select 
 \family sans
 Natbib
 \begin_inset space ~
@@ -30130,7 +30134,91 @@ noprefix "false"
 
 \end_inset
 
-), you can select between different author-year or author-number styles.
+)
+\change_inserted -712698321 1555660530
+.
+ Once you have done that, the 
+\family sans
+Bibliography
+\family default
+ dialog has three input fields instead of the 
+\family sans
+Label
+\family default
+ field:
+\family sans
+ Author Names
+\family default
+, 
+\family sans
+Year
+\family default
+ and 
+\family sans
+All Author Names
+\family default
+.
+ The first one takes the Author list as it should be displayed in the citation
+ reference, the second the year (without parentheses).
+ These two are madatory.
+ If there are multiple authors and you want to both refer to them as a full
+ list (
+\emph on
+Baker, Jones, and Williams
+\emph default
+) and in abrreviated form (
+\emph on
+Baker et al.
+\emph default
+)
+\change_unchanged
+,
+\change_inserted -712698321 1555660544
+ add the abbreviated form to 
+\family sans
+Author Names
+\family default
+ and the full list to the optional 
+\family sans
+All Author Names
+\family default
+ field.
+
+\change_unchanged
+ 
+\change_inserted -712698321 1555659886
+If specified like this, 
+\change_unchanged
+you can select between different author-year or author-number styles
+\change_inserted -712698321 1555660646
+ in the 
+\family sans
+Insert\SpecialChar menuseparator
+Citation
+\family default
+ dialog, and if 
+\family sans
+All Author Names
+\family default
+ is specified, toggling 
+\begin_inset Quotes eld
+\end_inset
+
+All authors
+\begin_inset Quotes erd
+\end_inset
+
+ in the citation dialog or the citation context menu will switch between
+ full and abbreviated list
+\change_unchanged
+.
+
+\change_inserted -712698321 1555660793
+ Note that the author and year specified in the dialog are only used for
+ the citation references.
+ In the bibliography entry, author and year must be added manually.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
