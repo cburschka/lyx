@@ -1927,7 +1927,9 @@ Layout const & DocumentClass::htmlTOCLayout() const
 string const DocumentClass::getCiteFormat(CiteEngineType const & type,
 	string const & entry, bool const punct, string const & fallback) const
 {
-	string default_format = "{%fullnames:author%[[%fullnames:author%, ]][[{%fullnames:editor%[[%fullnames:editor%, ed., ]]}]]}\"%title%\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]][[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %pages%]]}";
+	string default_format = "{%fullnames:author%[[%fullnames:author%, ]][[{%fullnames:editor%[[%fullnames:editor%, ed., ]]}]]}"
+				"\"%title%\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]]"
+				"[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %pages%]]}";
 	if (punct)
 		default_format += ".";
 
