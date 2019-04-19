@@ -147,6 +147,22 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 	// of the listings package (see page 25 of the manual)
 	bool const isInline = params().isInline();
 	bool const use_minted = buffer().params().use_minted;
+	static regex const reg1("(.*)(basicstyle=\\{)([^\\}]*)(\\\\ttfamily)([^\\}]*)(\\})(.*)");
+	static regex const reg2("(.*)(basicstyle=\\{)([^\\}]*)(\\\\rmfamily)([^\\}]*)(\\})(.*)");
+	static regex const reg3("(.*)(basicstyle=\\{)([^\\}]*)(\\\\sffamily)([^\\}]*)(\\})(.*)");
+	if (runparams.use_polyglossia && runparams.local_font->isRightToLeft()) {
+		// We need to use the *latin switches (#11554)
+		smatch sub;
+		if (regex_match(param_string, sub, reg1))
+			param_string = sub.str(1) + sub.str(2) + sub.str(3) + sub.str(4)
+					+ "latin"  + sub.str(5) + sub.str(6) + sub.str(7);
+		if (regex_match(param_string, sub, reg2))
+			param_string = sub.str(1) + sub.str(2) + sub.str(3) + sub.str(4)
+					+ "latin"  + sub.str(5) + sub.str(6) + sub.str(7);
+		if (regex_match(param_string, sub, reg3))
+			param_string = sub.str(1) + sub.str(2) + sub.str(3) + sub.str(4)
+					+ "latin"  + sub.str(5) + sub.str(6) + sub.str(7);
+	}
 	string minted_language;
 	string float_placement;
 	bool const isfloat = params().isFloat();
@@ -159,11 +175,11 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 			if (prefixIs(opts[i], "float")) {
 				if (prefixIs(opts[i], "float="))
 					float_placement = opts[i].substr(6);
-				opts.erase(opts.begin() + i--);
+				opts.erase(opts.begin() + int(i--));
 			}
 			else if (prefixIs(opts[i], "language=")) {
 				minted_language = opts[i].substr(9);
-				opts.erase(opts.begin() + i--);
+				opts.erase(opts.begin() + int(i--));
 			}
 		}
 		param_string = getStringFromVector(opts, ",");
@@ -489,6 +505,10 @@ void InsetListings::validate(LaTeXFeatures & features) const
 		OutputParams rp = features.runparams();
 		if (!params().isFloat() && !getCaption(rp).str.empty())
 			features.require("lyxmintcaption");
+		if (features.usePolyglossia() && features.hasRTLLanguage())
+			// minted loads color, but color must be loaded before bidi
+			// (i.e., polyglossia)
+			features.require("color");
 	} else {
 		features.require("listings");
 		if (contains(param_string, "\\color"))

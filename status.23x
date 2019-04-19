@@ -100,6 +100,8 @@ What's new
 - Fix text direction of namerefs in RTL scripts when using polyglossia (bidi)
   (bug 11518).
 
+- Use proper listings font styles with polyglossia (bidi) and RTL (bug 11554).
+
 - Fix LaTeX export of query strings in Hyperlinks (bugs 11482, 11511).
 
 - Fix breakage caused by commas in the caption of listings (bug 11484).
