@@ -12,7 +12,6 @@ namespace lyx {
 	bool verbose = false;
 
 	// Dummy LyXRC support
-	LyXRC::LyXRC() {}
 	LyXRC lyxrc;
 
 	// Dummy LyXAlignment support
