@@ -946,13 +946,22 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			parse(ar, FLAG_BRACE_LAST, mode);
 			// do not create a BraceInset if they were written by LyX
 			// this helps to keep the annoyance of  "a choose b"  to a minimum
-			// But create a BraceInset if a script follows (#9348)
 			InsetMathBrace const * mb;
-			if (ar.size() > 0)
-				mb = ar[0]->asBraceInset();
-			if (ar.size() == 1 && (ar[0]->extraBraces()
-			                       || (mb && mb->cell(0).size()
-			                           && !mb->cell(0)[0].nucleus()->asScriptInset())))
+			InsetMathChar const * mc;
+			for (size_type i = 0; i < ar.size(); ++i) {
+				mb = ar[i]->asBraceInset();
+				mc = mb && mb->cell(0).size() > 1 && mb->cell(0)[0]->asMacro()
+					? mb->cell(0)[1]->asCharInset(): 0;
+				if (mc && mc->getChar() == '[') {
+					// Remove the BraceInset around a macro
+					// with optional arguments. It will be
+					// automatically reinserted on write.
+					MathData md = mb->cell(0);
+					ar.erase(i);
+					ar.insert(i,md);
+				}
+			}
+			if (ar.size() == 1 && ar[0]->extraBraces())
 				cell->append(ar);
 			else
 				cell->push_back(MathAtom(new InsetMathBrace(ar)));
