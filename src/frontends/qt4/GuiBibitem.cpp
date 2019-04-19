@@ -58,8 +58,13 @@ void GuiBibitem::paramsToDialog(Inset const * inset)
 		allAuthorsED->setHidden(false);
 		allAuthorsLA->setHidden(false);
 		labelLA->setText(qt_("Author &Names:"));
+		labelLA->setMaximumWidth(labelLA->sizeHint().width());
 		labelED->setToolTip(qt_("Insert the author name(s) for the author-year reference here. "
 					"If you use an abbreviated list (with 'et al.'), the full list can go below."));
+		allAuthorsLA->setText(qt_("A&ll Author Names:"));
+		allAuthorsLA->setMaximumWidth(allAuthorsLA->sizeHint().width());
+		literalCB->setToolTip(qt_("Pass content of the `Author', 'Year' and 'All Authors' fields literally to LaTeX. "
+					  "Check this if you want to enter LaTeX code."));
 		int const i = label.lastIndexOf("(");
 		int const j = label.lastIndexOf(")");
 		if (i != -1 && j != -1 && i < j) {
@@ -79,9 +84,14 @@ void GuiBibitem::paramsToDialog(Inset const * inset)
 		yearLA->setHidden(true);
 		allAuthorsED->setHidden(true);
 		allAuthorsLA->setHidden(true);
+		allAuthorsLA->setText(qt_("&Label:"));
+		allAuthorsLA->setMaximumWidth(allAuthorsLA->sizeHint().width());
 		labelLA->setText(qt_("&Label:"));
+		labelLA->setMaximumWidth(labelLA->sizeHint().width());
 		labelED->setToolTip(qt_("The label as it appears in the document"));
 		labelED->setText(label);
+		literalCB->setToolTip(qt_("Pass content of the `Label' field literally to LaTeX. "
+					  "Check this if you want to enter LaTeX code."));
 	}
 }
 

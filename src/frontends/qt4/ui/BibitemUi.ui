@@ -6,38 +6,66 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>467</width>
-    <height>170</height>
+    <width>503</width>
+    <height>168</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
-   <item row="0" column="0" rowspan="2" colspan="2">
-    <widget class="QLabel" name="label">
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="keyLA">
+     <property name="toolTip">
+      <string>The bibliography key</string>
+     </property>
      <property name="text">
-      <string/>
+      <string>Ke&amp;y:</string>
+     </property>
+     <property name="buddy">
+      <cstring>keyED</cstring>
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="keyLA">
-       <property name="toolTip">
-        <string>The bibliography key</string>
-       </property>
-       <property name="text">
-        <string>Ke&amp;y:</string>
-       </property>
-       <property name="buddy">
-        <cstring>keyED</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1" colspan="2">
-      <widget class="QLineEdit" name="keyED">
+   <item row="0" column="1" colspan="2">
+    <widget class="QLineEdit" name="keyED">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip">
+      <string>The bibliography key</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="labelLA">
+     <property name="toolTip">
+      <string>The label as it appears in the document</string>
+     </property>
+     <property name="text">
+      <string>&amp;Label:</string>
+     </property>
+     <property name="buddy">
+      <cstring>labelED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QLineEdit" name="labelED">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -45,83 +73,50 @@
         </sizepolicy>
        </property>
        <property name="toolTip">
-        <string>The bibliography key</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="labelLA">
-       <property name="toolTip">
         <string>The label as it appears in the document</string>
        </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="yearLA">
        <property name="text">
-        <string>&amp;Label:</string>
+        <string>&amp;Year:</string>
+       </property>
+       <property name="margin">
+        <number>6</number>
        </property>
        <property name="buddy">
-        <cstring>labelED</cstring>
+        <cstring>yearED</cstring>
        </property>
       </widget>
      </item>
-     <item row="1" column="1" colspan="2">
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QLineEdit" name="labelED">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="toolTip">
-          <string>The label as it appears in the document</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="yearLA">
-         <property name="text">
-          <string>&amp;Year:</string>
-         </property>
-         <property name="margin">
-          <number>6</number>
-         </property>
-         <property name="buddy">
-          <cstring>yearED</cstring>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="yearED">
-         <property name="toolTip">
-          <string>The year with &quot;Author (Year)&quot; citations (without parentheses).</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item row="2" column="0" colspan="2">
-      <widget class="QLabel" name="allAuthorsLA">
-       <property name="text">
-        <string>A&amp;ll Author Names:</string>
-       </property>
-       <property name="buddy">
-        <cstring>allAuthorsED</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="2">
-      <widget class="QLineEdit" name="allAuthorsED">
+     <item>
+      <widget class="QLineEdit" name="yearED">
        <property name="toolTip">
-        <string>If you want to use an abbreviated author list (with 'et al.') as well as a full list for author-year citation, you can put the full list here and the abbreviated list above.</string>
+        <string>The year with &quot;Author (Year)&quot; citations (without parentheses).</string>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="2" column="1">
+   <item row="2" column="0" colspan="2">
+    <widget class="QLabel" name="allAuthorsLA">
+     <property name="text">
+      <string>A&amp;ll Author Names:</string>
+     </property>
+     <property name="buddy">
+      <cstring>allAuthorsED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QLineEdit" name="allAuthorsED">
+     <property name="toolTip">
+      <string>If you want to use an abbreviated author list (with 'et al.') as well as a full list for author-year citation, you can put the full list here and the abbreviated list above.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
     <widget class="QCheckBox" name="literalCB">
      <property name="toolTip">
       <string>Pass content of the `Label' field literally to LaTeX. Check this if you want to enter LaTeX code.</string>
@@ -130,6 +125,19 @@
       <string>Li&amp;teral</string>
      </property>
     </widget>
+   </item>
+   <item row="4" column="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>0</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>
