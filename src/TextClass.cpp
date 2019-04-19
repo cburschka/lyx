@@ -1280,36 +1280,58 @@ bool TextClass::readCiteFormat(Lexer & lexrc, ReadType rt)
 			continue;
 		if (initchar == '!' || initchar == '_' || prefixIs(etype, "B_")) {
 			bool defined = false;
+			bool aydefined = false;
+			bool numdefined = false;
 			// Check if the macro is already def'ed
 			for (auto const & cm : cite_macros_) {
 				if (!(type & cm.first))
 					continue;
-				if (cm.second.find(etype) != cm.second.end())
-					defined = true;
+				if (cm.second.find(etype) != cm.second.end()) {
+					if (type == cm.first)
+						// defined as default or specific type
+						defined = true;
+					if (cm.first == ENGINE_TYPE_AUTHORYEAR)
+						// defined for author-year
+						aydefined = true;
+					else if (cm.first == ENGINE_TYPE_NUMERICAL)
+						// defined for numerical
+						numdefined = true;
+				}
 			}
 			if (!defined || overwrite) {
-				if (type & ENGINE_TYPE_AUTHORYEAR)
+				if (type & ENGINE_TYPE_AUTHORYEAR && (type != ENGINE_TYPE_DEFAULT || !aydefined))
 					cite_macros_[ENGINE_TYPE_AUTHORYEAR][etype] = definition;
-				if (type & ENGINE_TYPE_NUMERICAL)
+				if (type & ENGINE_TYPE_NUMERICAL && (type != ENGINE_TYPE_DEFAULT || !numdefined))
 					cite_macros_[ENGINE_TYPE_NUMERICAL][etype] = definition;
-				if (type & ENGINE_TYPE_DEFAULT)
+				if (type == ENGINE_TYPE_DEFAULT)
 					cite_macros_[ENGINE_TYPE_DEFAULT][etype] = definition;
 			}
 		} else {
 			bool defined = false;
+			bool aydefined = false;
+			bool numdefined = false;
 			// Check if the format is already def'ed
 			for (auto const & cm : cite_formats_) {
 				if (!(type & cm.first))
 					continue;
-				if (cm.second.find(etype) != cm.second.end())
-					defined = true;
+				if (cm.second.find(etype) != cm.second.end()) {
+					if (type == cm.first)
+						// defined as default or specific type
+						defined = true;
+					if (cm.first == ENGINE_TYPE_AUTHORYEAR)
+						// defined for author-year
+						aydefined = true;
+					else if (cm.first == ENGINE_TYPE_NUMERICAL)
+						// defined for numerical
+						numdefined = true;
+				}
 			}
 			if (!defined || overwrite){
-				if (type & ENGINE_TYPE_AUTHORYEAR)
+				if (type & ENGINE_TYPE_AUTHORYEAR && (type != ENGINE_TYPE_DEFAULT || !aydefined))
 					cite_formats_[ENGINE_TYPE_AUTHORYEAR][etype] = definition;
-				if (type & ENGINE_TYPE_NUMERICAL)
+				if (type & ENGINE_TYPE_NUMERICAL && (type != ENGINE_TYPE_DEFAULT || !numdefined))
 					cite_formats_[ENGINE_TYPE_NUMERICAL][etype] = definition;
-				if (type & ENGINE_TYPE_DEFAULT)
+				if (type == ENGINE_TYPE_DEFAULT)
 					cite_formats_[ENGINE_TYPE_DEFAULT][etype] = definition;
 			}
 		}
