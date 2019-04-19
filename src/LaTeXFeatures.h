@@ -180,12 +180,12 @@ public:
 	void setHTMLTitle(docstring const & t) { htmltitle_ = t; }
 	///
 	docstring const & htmlTitle() const { return htmltitle_; }
+	///
+	bool hasRTLLanguage() const;
 
 private:
 	///
 	void useLayout(docstring const &, int);
-	///
-	bool hasRTLLanguage() const;
 	///
 	std::list<docstring> usedLayouts_;
 	///
