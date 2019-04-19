@@ -52,8 +52,7 @@ void GuiBibitem::paramsToDialog(Inset const * inset)
 	keyED->setText(toqstr(params["key"]));
 	literalCB->setChecked(params["literal"] == "true");
 	QString const label = toqstr(params["label"]);
-	BufferParams const bp = inset->buffer().masterParams();
-	if (bp.citeEngine() == "natbib" && bp.citeEngineType() == ENGINE_TYPE_AUTHORYEAR) {
+	if (inset->buffer().masterParams().citeEngine() == "natbib") {
 		yearED->setHidden(false);
 		yearLA->setHidden(false);
 		allAuthorsED->setHidden(false);
