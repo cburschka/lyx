@@ -1168,7 +1168,7 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 				cite_command_aliases_[s] = lyx_cmd;
 		}
 		vector<string> const stardescs = getVectorFromString(stardesc, "!");
-		int size = stardesc.size();
+		int size = int(stardesc.size());
 		if (size > 0)
 			cs.stardesc = stardescs[0];
 		if (size > 1)
@@ -1205,14 +1205,14 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 
 	// Add the styles from AddToCiteEngine to the class' styles
 	// (but only if they are not yet defined)
-	for (auto const cis : class_cite_styles_) {
+	for (auto const & cis : class_cite_styles_) {
 		// Only consider the current CiteEngineType
 		if (!(type & cis.first))
 			continue;
-		for (auto const ciss : cis.second) {
+		for (auto const & ciss : cis.second) {
 			bool defined = false;
 			// Check if the style "name" is already def'ed
-			for (auto const av : getCiteStyles(cis.first))
+			for (auto const & av : getCiteStyles(cis.first))
 				if (av.name == ciss.name)
 					defined = true;
 			if (!defined) {
@@ -1281,7 +1281,7 @@ bool TextClass::readCiteFormat(Lexer & lexrc, ReadType rt)
 		if (initchar == '!' || initchar == '_' || prefixIs(etype, "B_")) {
 			bool defined = false;
 			// Check if the macro is already def'ed
-			for (auto const cm : cite_macros_) {
+			for (auto const & cm : cite_macros_) {
 				if (!(type & cm.first))
 					continue;
 				if (cm.second.find(etype) != cm.second.end())
@@ -1298,7 +1298,7 @@ bool TextClass::readCiteFormat(Lexer & lexrc, ReadType rt)
 		} else {
 			bool defined = false;
 			// Check if the format is already def'ed
-			for (auto const cm : cite_formats_) {
+			for (auto const & cm : cite_formats_) {
 				if (!(type & cm.first))
 					continue;
 				if (cm.second.find(etype) != cm.second.end())
