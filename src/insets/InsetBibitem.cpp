@@ -216,7 +216,7 @@ int InsetBibitem::plaintext(odocstringstream & os,
 	docstring const str = oss.str();
 	os << str;
 
-	return str.size();
+	return int(str.size());
 }
 
 
@@ -229,7 +229,7 @@ docstring bibitemWidest(Buffer const & buffer, OutputParams const & runparams)
 
 	int w = 0;
 
-	InsetBibitem const * bitem = 0;
+	InsetBibitem const * bitem = nullptr;
 
 	// FIXME: this font is used unitialized for now but should  be set to
 	// a proportional font. Here is what Georg Baum has to say about it:
@@ -279,7 +279,7 @@ docstring bibitemWidest(Buffer const & buffer, OutputParams const & runparams)
 		// So for now we just use the label size in order to be sure
 		// that GUI and no-GUI gives the same bibitem (even if that is
 		// potentially the wrong one.
-		int const wx = label.size();
+		int const wx = int(label.size());
 
 		if (wx > w) {
 			w = wx;
