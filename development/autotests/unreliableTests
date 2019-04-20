@@ -160,15 +160,7 @@ export/examples/(|fr/)Presentations/Seminar_(dvi|pdf).*
 # Babel-Spanish uses UTF-8 encoded strings if it detects Xe/LuaTeX.
 # With "language default" (=="latin9"), Babel strings  come out wrong
 # when compiling with Xe/LuaTeX and TeX-fonts.
-# - The problem is generic to all Spanish documents but only manifests itself
-#   if Babel strings with non-ASCII chars are actually used
-#   (the ToC heading, e.g., becomes "ÃŊndice" instead of "Índice").
-# - In some cases, export fails
-#   (see invertedTests, some more tests fail with TeXLive versions < 18).
-# Should we set inputenc to utf8 in the documents to work around the problem?
-# (Changing the default in lib/languages requires more tests for utf8 first.)
-export/examples/es/.*_(pdf5|dvi3)_texF
-export/doc/es/.*_(pdf5|dvi3)_texF
+export/export/latex/es_auto-legacy_texF
 
 # since TL18, Babel-Ukrainean uses UTF-8 if it detects Xe/LuaTeX (for "\date").
 # * garbled output with LuaTeX + TeX fonts (since TL18)

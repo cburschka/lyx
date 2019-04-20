@@ -20,12 +20,6 @@ Sublabel: todo
 # XeTeX artifact? works with LuaTeX, explore:
 export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_systemF
 
-# WARNING: unknown cross-reference-class `hyperindexformat'! (ignored)
-# ! Undefined control sequence.
-# Text:  ...e Ã<8d>ndice alfabÃ©tico}{75}{section*.10}
-# Text inside 'Index Entries'?
-export/doc/es/(EmbeddedObjects|Math|UserGuide)_(dvi3|pdf5)_texF
-
 # iconv fails, if a nomenclature inset contains an uncodable character
 export/export/latex/iconv-error-nomenclature_pdf2
 
