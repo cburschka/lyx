@@ -63,6 +63,9 @@ bool GuiIdListModel::setData(QModelIndex const & index,
 		dataChanged(index, index);
 		return true;
 	}
+	if (role == Qt::DecorationRole)
+		// nothing to do
+		return true;
 	// If we assert here, it's because we're trying to set an
 	// unrecognized role.
 	LATTEST(false);
