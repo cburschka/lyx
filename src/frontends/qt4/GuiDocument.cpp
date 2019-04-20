@@ -78,6 +78,7 @@
 #include <QDirIterator>
 #include <QFontDatabase>
 #include <QHeaderView>
+#include <QPixmap>
 #include <QScrollBar>
 #include <QTextBoundaryFinder>
 #include <QTextCursor>
@@ -1767,6 +1768,10 @@ void GuiDocument::filterModules(QString const & str)
 	modInfoList.sort([](modInfoStruct const & a, modInfoStruct const & b) {
 			return 0 < b.name.localeAwareCompare(a.name);
 		});
+
+	QIcon user_icon(getPixmap("images/", "lyxfiles-user", "svgz,png"));
+	QIcon system_icon(getPixmap("images/", "lyxfiles-system", "svgz,png"));
+
 	int i = 0;
 	for (modInfoStruct const & m : modInfoList) {
 		if (m.name.contains(str, Qt::CaseInsensitive) || contains(m.id, fromqstr(str))) {
@@ -1774,6 +1779,10 @@ void GuiDocument::filterModules(QString const & str)
 			item->setData(m.name, Qt::DisplayRole);
 			item->setData(toqstr(m.id), Qt::UserRole);
 			item->setData(m.description, Qt::ToolTipRole);
+			if (m.local)
+				item->setIcon(user_icon);
+			else
+				item->setIcon(system_icon);
 			modules_av_model_.insertRow(i, item);
 			++i;
 		}
@@ -4239,9 +4248,13 @@ void GuiDocument::updateAvailableModules()
 	modInfoList.sort([](modInfoStruct const & a, modInfoStruct const & b) {
 			return 0 < b.name.localeAwareCompare(a.name);
 		});
+	QIcon user_icon(getPixmap("images/", "lyxfiles-user", "svgz,png"));
+	QIcon system_icon(getPixmap("images/", "lyxfiles-system", "svgz,png"));
 	int i = 0;
 	QFont catfont;
 	catfont.setBold(true);
+	QBrush unavbrush;
+	unavbrush.setColor(Qt::gray);
 	for (modInfoStruct const & m : modInfoList) {
 		QStandardItem * item = new QStandardItem();
 		QStandardItem * catItem = new QStandardItem();
@@ -4258,8 +4271,14 @@ void GuiDocument::updateAvailableModules()
 		item->setEditable(false);
 		catItem->setEditable(false);
 		item->setData(m.name, Qt::DisplayRole);
+		if (m.missingreqs)
+			item->setForeground(unavbrush);
 		item->setData(toqstr(m.id), Qt::UserRole);
 		item->setData(m.description, Qt::ToolTipRole);
+		if (m.local)
+			item->setIcon(user_icon);
+		else
+			item->setIcon(system_icon);
 		catItem->appendRow(item);
 	}
 	modules_av_model_.sort(0);
@@ -4612,6 +4631,8 @@ GuiDocument::makeModuleInfo(LayoutModuleList const & mods)
 		else {
 			m.id = name;
 			m.name = toqstr(name + " (") + qt_("Not Found") + toqstr(")");
+			m.local = false;
+			m.missingreqs = true;
 		}
 		mInfo.push_back(m);
 	}
@@ -4807,7 +4828,12 @@ GuiDocument::modInfoStruct GuiDocument::modInfo(LyXModule const & mod)
 	// change requires a lot of others
 	modInfoStruct m;
 	m.id = mod.getID();
-	m.name = toqstr(translateIfPossible(from_utf8(mod.getName())));
+	QString const guiname = toqstr(translateIfPossible(from_utf8(mod.getName())));
+	m.missingreqs = !isModuleAvailable(mod.getID());
+	if (m.missingreqs) {
+		m.name = QString(qt_("%1 (missing req.)")).arg(guiname);
+	} else
+		m.name = guiname;
 	m.category = mod.category().empty() ? qt_("Miscellaneous")
 					    : toqstr(translateIfPossible(from_utf8(mod.category())));
 	QString desc = toqstr(translateIfPossible(from_utf8(mod.getDescription())));
@@ -4816,11 +4842,15 @@ GuiDocument::modInfoStruct GuiDocument::modInfo(LyXModule const & mod)
 	int pos = bf.toNextBoundary();
 	if (pos > 0)
 		desc.truncate(pos);
-	QString modulename = QString(qt_("(Module name: %1)")).arg(toqstr(m.id));
-	// Tooltip is the desc followed by the module name
-	m.description = QString("%1<i>%2</i>")
+	m.local = mod.isLocal();
+	QString const mtype = m.local ? qt_("personal module") : qt_("distributed module");
+	QString modulename = QString(qt_("<b>Module name:</b> <i>%1</i> (%2)")).arg(toqstr(m.id)).arg(mtype);
+	// Tooltip is the desc followed by the module name and the type
+	m.description = QString("%1%2")
 		.arg(desc.isEmpty() ? QString() : QString("<p>%1</p>").arg(desc),
 		     modulename);
+	if (m.missingreqs)
+		m.description += QString("<p>%1</p>").arg(qt_("<b>Note:</b> Some requirements for this module are missing!"));
 	return m;
 }
 

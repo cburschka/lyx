@@ -54,7 +54,7 @@ public:
 	          std::vector<std::string> const & packagelist,
 	          std::vector<std::string> const & requires,
 	          std::vector<std::string> const & excludes,
-	          std::string const & catgy);
+		  std::string const & catgy, bool const local);
 	/// whether the required packages are available
 	bool isAvailable() const;
 	/// the missing prerequisites, if any
@@ -78,6 +78,8 @@ public:
 		{ return excluded_modules_; }
 	///
 	std::string category() const { return category_; }
+	/// Is this a local module (from the user directory)?
+	bool isLocal() const { return local_; }
 	/// \return true if the module is compatible with this one, i.e.,
 	/// it does not exclude us and we do not exclude it.
 	/// this will also return true if modname is unknown and we do not
@@ -109,6 +111,8 @@ private:
 	mutable bool checked_;
 	///
 	mutable bool available_;
+	///
+	mutable bool local_;
 	///
 	mutable std::vector<std::string> prerequisites_;
 };
@@ -149,7 +153,7 @@ public:
 	void addLayoutModule(std::string const &, std::string const &,
 		std::string const &, std::vector<std::string> const &,
 		std::vector<std::string> const &, std::vector<std::string> const &,
-		std::string const &);
+		std::string const &, bool const);
 	///
 	std::vector<LyXModule> modlist_;
 };

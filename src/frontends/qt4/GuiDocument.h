@@ -258,6 +258,8 @@ private:
 		std::string id;
 		QString description;
 		QString category;
+		bool local;
+		bool missingreqs;
 	};
 	///
 	static modInfoStruct modInfo(LyXModule const & mod);
