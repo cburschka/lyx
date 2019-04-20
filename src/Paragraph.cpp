@@ -3713,6 +3713,8 @@ int Paragraph::fixBiblio(Buffer const & buffer)
 	insertInset(0, inset, font, Change(track_changes ? Change::INSERTED
 				                   : Change::UNCHANGED));
 
+	// This is needed to get the counters right
+	buffer.updateBuffer();
 	return 1;
 }
 
