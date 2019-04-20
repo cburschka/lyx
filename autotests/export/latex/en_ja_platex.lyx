@@ -1,0 +1,125 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 572
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8-platex
+\fontencoding auto
+\font_roman "lmodern" "IPAexGothic"
+\font_sans "default" "IPAexMincho"
+\font_typewriter "default" "DejaVu Sans Mono"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\pdf_title "LyX's Additional Features manual"
+\pdf_author "LyX Team"
+\pdf_subject "LyX's additional features documentation"
+\pdf_keywords "LyX, Documentation, Additional"
+\pdf_bookmarks false
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "pdfencoding=pdfdoc, linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index 索引
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+An Englisch document with Japanese parts.
+ Works only with non-TeX fonts or input-encoding set to one of the Japanese
+ (platex) ones.
+ Grüße
+\end_layout
+
+\begin_layout Standard
+
+\lang japanese
+以下の節では\SpecialChar LyX
+でサポートされているRCSコマンドを説明します。それらのコマンドは
+\family sans
+ファイル\SpecialChar menuseparator
+バージョン管理
+\family default
+のサブメニューにあります。\SpecialChar LyX
+は、RCS 
+\lang japanese-cjk
+5.7/5.8に対して試験されています。
+\end_layout
+
+\end_body
+\end_document

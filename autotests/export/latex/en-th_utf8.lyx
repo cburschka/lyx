@@ -1,0 +1,455 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 573
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\AtBeginDocument{\usepackage{fonts-tlwg}}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "lmodern" "FreeSerif"
+\font_sans "default" "FreeSans"
+\font_typewriter "default" "FreeMono"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Subsection*
+Thai
+\end_layout
+
+\begin_layout Standard
+Up to version 2013/03/31 v1.8, Babel’s “thai.ldf” changes character categories
+ and the definitions for up-/dowcasing of letters (catcode, uccode, lccode)
+ 
+\series bold
+globally
+\series default
+.
+ As a result, high bit characters come out wrong in the output.
+ UTF8 encoded characters are not parsed but interpreted as byte (=character)
+ sequences:
+\end_layout
+
+\begin_layout Quotation
+
+\backslash
+languagename 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+languagename
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+
+\backslash
+familydefault 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+familydefault
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+
+\backslash
+f@encoding 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+makeatletter
+\backslash
+f@encoding
+\backslash
+makeatother
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and the 
+\emph on
+Latin supplement
+\emph default
+ characters are written
+\end_layout
+
+\begin_layout Quotation
+A0   ¡ ¢ £ ¤ ¥ ¦ § ¨ © ª « ¬ ® ¯
+\end_layout
+
+\begin_layout Quotation
+B0 ° ± ² ³ ´ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿
+\end_layout
+
+\begin_layout Quotation
+C0 À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï
+\end_layout
+
+\begin_layout Quotation
+D0 Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß
+\end_layout
+
+\begin_layout Quotation
+E0 à á â ã ä å æ ç è é ê ë ì í î ï
+\end_layout
+
+\begin_layout Quotation
+F0 ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
+\end_layout
+
+\begin_layout Itemize
+catcode 11 or 12 means, the characters are directly passed to the font and
+ come out wrong when the T1 font encoding differs from latin9.
+\end_layout
+
+\begin_layout Itemize
+uc/lccode changes prevent up/downcasing of high-bit characters
+\begin_inset Newline newline
+\end_inset
+
+(lösen → 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+MakeUppercase{
+\end_layout
+
+\end_inset
+
+lösen
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, LÖSEN → 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+MakeLowercase{
+\end_layout
+
+\end_inset
+
+LÖSEN
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+
+\lang thai
+Setting the text language to Thai:
+\end_layout
+
+\begin_layout Quotation
+
+\lang thai
+
+\backslash
+languagename 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+languagename
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+
+\lang thai
+
+\backslash
+familydefault 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+familydefault
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+
+\lang thai
+
+\backslash
+f@encoding 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+makeatletter
+\backslash
+f@encoding
+\backslash
+makeatother
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang thai
+Non-ASCII characters are mis-represented because the bytes are passed to
+ the (Thai) font as-is:
+\end_layout
+
+\begin_layout Quotation
+
+\lang thai
+A0   ¡ ¢ £ ¤ ¥ ¦ § ¨ © ª « ¬ ® ¯
+\end_layout
+
+\begin_layout Quotation
+
+\lang thai
+B0 ° ± ² ³ ´ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿
+\end_layout
+
+\begin_layout Quotation
+
+\lang thai
+C0 À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï
+\end_layout
+
+\begin_layout Quotation
+
+\lang thai
+D0 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang thai
+Ð
+\end_layout
+
+\end_inset
+
+ Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang thai
+Þ
+\end_layout
+
+\end_inset
+
+ ß
+\end_layout
+
+\begin_layout Quotation
+
+\lang thai
+E0 à á â ã ä å æ ç è é ê ë ì í î ï
+\end_layout
+
+\begin_layout Quotation
+
+\lang thai
+F0 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang thai
+ð
+\end_layout
+
+\end_inset
+
+ ñ ò ó ô õ ö ÷ ø ù ú û ü ý 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang thai
+þ
+\end_layout
+
+\end_inset
+
+ ÿ
+\end_layout
+
+\begin_layout Standard
+Example text in Thai.
+ Emphasizing works, if 
+\begin_inset Quotes eld
+\end_inset
+
+fonts-tlwg
+\begin_inset Quotes erd
+\end_inset
+
+ is loaded 
+\series bold
+after 
+\series default
+Babel:
+\end_layout
+
+\begin_layout Quote
+
+\series bold
+\lang thai
+ภาษาไทย
+\series default
+ หรือ 
+\emph on
+ภาษาไทยกลาง
+\emph default
+ เป็นภาษาราชการและภาษาประจำชาติของประเทศไทย ภาษาไทยเป็นภาษาในกลุ่มภาษาไท
+ ซึ่งเป็นกลุ่มย่อยของตระกูลภาษาไท-กะได สันนิษฐานว่า ภาษาในตระกูลนี้มีถิ่นกำเนิดจ
+ากทางตอนใต้ของประเทศจีน และนักภาษาศาสตร์บางส่วนเสนอว่า ภาษาไทยน่าจะมีความเชื่อมโ
+ยงกับตระกูลภาษาออสโตร-เอเชียติก ตระกูลภาษาออสโตรนีเซียน และตระกูลภาษาจีน-ทิเบต
+\end_layout
+
+\end_body
+\end_document
