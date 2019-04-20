@@ -1440,7 +1440,8 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 		otexstringstream os;
 		os << layout_->preamble();
 		size_t const length = os.length();
-		TeXOnePar(buf, buf.text(), buf.getParFromID(owner_->id()).pit(), os,
+		TeXOnePar(buf, *inset_owner_->getText(int(buf.getParFromID(owner_->id()).idx())),
+			  buf.getParFromID(owner_->id()).pit(), os,
 			  features.runparams(), string(), 0, -1, true);
 		if (os.length() > length)
 			features.addPreambleSnippet(os.release(), true);
