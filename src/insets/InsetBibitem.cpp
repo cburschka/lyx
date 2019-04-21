@@ -155,8 +155,9 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 		setParam("literal", p["literal"]);
 
 		if (p["key"] != old_key) {
+			cur.recordUndoFullBuffer();
+			cur.bv().buffer().changeRefsIfUnique(old_key, p["key"]);
 			updateCommand(p["key"]);
-			cur.bv().buffer().changeRefsIfUnique(old_key, params()["key"]);
 			cur.forceBufferUpdate();
 			buffer().invalidateBibinfoCache();
 		}
