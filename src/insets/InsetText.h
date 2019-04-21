@@ -227,7 +227,7 @@ public:
 	bool needsCProtection(bool const maintext = false,
 			      bool const fragile = false) const;
 	///
-	bool hasCProtectContent(bool const fragile = false) const;
+	bool hasCProtectContent(bool fragile = false) const;
 
 protected:
 	///

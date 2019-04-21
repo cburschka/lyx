@@ -1647,6 +1647,8 @@ void Paragraph::validate(LaTeXFeatures & features) const
 	d->validate(features);
 	bool fragile = features.runparams().moving_arg;
 	fragile |= layout().needprotect;
+	if (inInset().getLayout().isNeedProtect())
+		fragile = true;
 	if (needsCProtection(fragile))
 		features.require("cprotect");
 }
@@ -3435,10 +3437,31 @@ bool Paragraph::needsCProtection(bool const fragile) const
 	}
 
 	// now check whether we have insets that need cprotection
-	pos_type size = d->text_.size();
-	for (pos_type i = 0; i < size; ++i)
-		if (isInset(i) && getInset(i)->needsCProtection(maintext, fragile))
+	pos_type size = pos_type(d->text_.size());
+	for (pos_type i = 0; i < size; ++i) {
+		if (!isInset(i))
+			continue;
+		Inset const * ins = getInset(i);
+		if (ins->needsCProtection(maintext, fragile))
 			return true;
+		if (ins->getLayout().latextype() == InsetLayout::ENVIRONMENT)
+			// Environments need cprotection regardless the content
+			return true;
+		// Now check math environments
+		InsetMath const * im = getInset(i)->asInsetMath();
+		if (!im || im->cell(0).empty())
+			continue;
+		switch(im->cell(0)[0]->lyxCode()) {
+		case MATH_AMSARRAY_CODE:
+		case MATH_SUBSTACK_CODE:
+		case MATH_ENV_CODE:
+		case MATH_XYMATRIX_CODE:
+			// these need cprotection
+			return true;
+		default:
+			break;
+		}
+	}
 
 	return false;
 }

@@ -769,12 +769,13 @@ ParagraphList & InsetText::paragraphs()
 }
 
 
-bool InsetText::hasCProtectContent(bool const fragile) const
+bool InsetText::hasCProtectContent(bool fragile) const
 {
+	fragile |= getLayout().isNeedProtect();
 	ParagraphList const & pars = paragraphs();
-	pit_type pend = paragraphs().size();
+	pit_type pend = pit_type(paragraphs().size());
 	for (pit_type pit = 0; pit != pend; ++pit) {
-		Paragraph const & par = pars[pit];
+		Paragraph const & par = pars[size_type(pit)];
 		if (par.needsCProtection(fragile))
 			return true;
 	}
@@ -1127,10 +1128,10 @@ bool InsetText::needsCProtection(bool const maintext, bool const fragile) const
 		'&', '_', '$', '%', '#', '^', '{', '}', '\\'};
 
 	ParagraphList const & pars = paragraphs();
-	pit_type pend = paragraphs().size();
+	pit_type pend = pit_type(paragraphs().size());
 
 	for (pit_type pit = 0; pit != pend; ++pit) {
-		Paragraph const & par = pars[pit];
+		Paragraph const & par = pars[size_type(pit)];
 		if (par.needsCProtection(fragile))
 			return true;
 		docstring const pars = par.asString();
