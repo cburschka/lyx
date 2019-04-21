@@ -74,6 +74,7 @@ class InsetMathString;
 class InsetMathSpace;
 class InsetMathSpecialChar;
 class InsetMathSymbol;
+class InsetMathSubstack;
 class InsetMathUnknown;
 class InsetMathRef;
 
@@ -131,43 +132,45 @@ public:
 	virtual MathData const & cell(idx_type) const;
 
 	/// identifies certain types of insets
-	virtual InsetMathAMSArray       * asAMSArrayInset()       { return 0; }
-	virtual InsetMathAMSArray const * asAMSArrayInset() const { return 0; }
-	virtual InsetMathArray          * asArrayInset()          { return 0; }
-	virtual InsetMathArray const    * asArrayInset() const    { return 0; }
-	virtual InsetMathBrace          * asBraceInset()          { return 0; }
-	virtual InsetMathBrace const    * asBraceInset() const    { return 0; }
-	virtual InsetMathChar const     * asCharInset() const     { return 0; }
-	virtual InsetMathDelim          * asDelimInset()          { return 0; }
-	virtual InsetMathDelim const    * asDelimInset() const    { return 0; }
-	virtual InsetMathFracBase       * asFracBaseInset()       { return 0; }
-	virtual InsetMathFracBase const * asFracBaseInset() const { return 0; }
-	virtual InsetMathFrac           * asFracInset()           { return 0; }
-	virtual InsetMathFrac const     * asFracInset() const     { return 0; }
-	virtual InsetMathFont           * asFontInset()           { return 0; }
-	virtual InsetMathFont const     * asFontInset() const     { return 0; }
-	virtual InsetMathGrid           * asGridInset()           { return 0; }
-	virtual InsetMathGrid const     * asGridInset() const     { return 0; }
-	virtual InsetMathHull           * asHullInset()           { return 0; }
-	virtual InsetMathHull const     * asHullInset() const     { return 0; }
-	virtual InsetMathMacro               * asMacro()               { return 0; }
-	virtual InsetMathMacro const         * asMacro() const         { return 0; }
-	virtual InsetMathMacroTemplate       * asMacroTemplate()       { return 0; }
-	virtual InsetMathMacroTemplate const * asMacroTemplate() const { return 0; }
-	virtual InsetMathMatrix const   * asMatrixInset() const   { return 0; }
-	virtual InsetMathNest           * asNestInset()           { return 0; }
-	virtual InsetMathNest const     * asNestInset() const     { return 0; }
-	virtual InsetMathScript         * asScriptInset()         { return 0; }
-	virtual InsetMathScript const   * asScriptInset() const   { return 0; }
-	virtual InsetMathSpace          * asSpaceInset()          { return 0; }
-	virtual InsetMathSpace const    * asSpaceInset() const    { return 0; }
-	virtual InsetMathString         * asStringInset()         { return 0; }
-	virtual InsetMathString const   * asStringInset() const   { return 0; }
-	virtual InsetMathSymbol const   * asSymbolInset() const   { return 0; }
-	virtual InsetMathUnknown        * asUnknownInset()        { return 0; }
-	virtual InsetMathUnknown const  * asUnknownInset() const  { return 0; }
-	virtual InsetMathRef            * asRefInset()            { return 0; }
-	virtual InsetMathSpecialChar const * asSpecialCharInset() const { return 0; }
+	virtual InsetMathAMSArray       * asAMSArrayInset()       { return nullptr; }
+	virtual InsetMathAMSArray const * asAMSArrayInset() const { return nullptr; }
+	virtual InsetMathArray          * asArrayInset()          { return nullptr; }
+	virtual InsetMathArray const    * asArrayInset() const    { return nullptr; }
+	virtual InsetMathBrace          * asBraceInset()          { return nullptr; }
+	virtual InsetMathBrace const    * asBraceInset() const    { return nullptr; }
+	virtual InsetMathChar const     * asCharInset() const     { return nullptr; }
+	virtual InsetMathDelim          * asDelimInset()          { return nullptr; }
+	virtual InsetMathDelim const    * asDelimInset() const    { return nullptr; }
+	virtual InsetMathFracBase       * asFracBaseInset()       { return nullptr; }
+	virtual InsetMathFracBase const * asFracBaseInset() const { return nullptr; }
+	virtual InsetMathFrac           * asFracInset()           { return nullptr; }
+	virtual InsetMathFrac const     * asFracInset() const     { return nullptr; }
+	virtual InsetMathFont           * asFontInset()           { return nullptr; }
+	virtual InsetMathFont const     * asFontInset() const     { return nullptr; }
+	virtual InsetMathGrid           * asGridInset()           { return nullptr; }
+	virtual InsetMathGrid const     * asGridInset() const     { return nullptr; }
+	virtual InsetMathHull           * asHullInset()           { return nullptr; }
+	virtual InsetMathHull const     * asHullInset() const     { return nullptr; }
+	virtual InsetMathMacro               * asMacro()               { return nullptr; }
+	virtual InsetMathMacro const         * asMacro() const         { return nullptr; }
+	virtual InsetMathMacroTemplate       * asMacroTemplate()       { return nullptr; }
+	virtual InsetMathMacroTemplate const * asMacroTemplate() const { return nullptr; }
+	virtual InsetMathMatrix const   * asMatrixInset() const   { return nullptr; }
+	virtual InsetMathNest           * asNestInset()           { return nullptr; }
+	virtual InsetMathNest const     * asNestInset() const     { return nullptr; }
+	virtual InsetMathScript         * asScriptInset()         { return nullptr; }
+	virtual InsetMathScript const   * asScriptInset() const   { return nullptr; }
+	virtual InsetMathSpace          * asSpaceInset()          { return nullptr; }
+	virtual InsetMathSpace const    * asSpaceInset() const    { return nullptr; }
+	virtual InsetMathString         * asStringInset()         { return nullptr; }
+	virtual InsetMathString const   * asStringInset() const   { return nullptr; }
+	virtual InsetMathSubstack       * asSubstackInset()       { return nullptr; }
+	virtual InsetMathSubstack const * asSubstackInset() const { return nullptr; }
+	virtual InsetMathSymbol const   * asSymbolInset() const   { return nullptr; }
+	virtual InsetMathUnknown        * asUnknownInset()        { return nullptr; }
+	virtual InsetMathUnknown const  * asUnknownInset() const  { return nullptr; }
+	virtual InsetMathRef            * asRefInset()            { return nullptr; }
+	virtual InsetMathSpecialChar const * asSpecialCharInset() const { return nullptr; }
 
 	/// The class of the math object (used primarily for spacing)
 	virtual MathClass mathClass() const;
