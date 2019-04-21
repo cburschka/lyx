@@ -369,8 +369,9 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	// FIXME: This check ought to be done somewhere else. It is the reason
 	// why text_ is not const. But then, where else to do it?
 	// Well, how can you end up with either (a) a biblio environment that
-	// has no InsetBibitem or (b) a biblio environment with more than one
-	// InsetBibitem? I think the answer is: when paragraphs are merged;
+	// has no InsetBibitem, (b) a biblio environment with more than one
+	// InsetBibitem or (c) a paragraph that has a bib item but is no biblio
+	// environment? I think the answer is: when paragraphs are merged;
 	// when layout is set; when material is pasted.
 	if (par.brokenBiblio()) {
 		Cursor & cur = const_cast<Cursor &>(bv_->cursor());

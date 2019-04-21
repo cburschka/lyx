@@ -3648,32 +3648,43 @@ bool Paragraph::allowEmpty() const
 
 bool Paragraph::brokenBiblio() const
 {
-	// there is a problem if there is no bibitem at position 0 or
-	// if there is another bibitem in the paragraph.
-	return d->layout_->labeltype == LABEL_BIBLIO
+	// There is a problem if there is no bibitem at position 0 in
+	// paragraphs that need one, if there is another bibitem in the
+	// paragraph or if this paragraph is not supposed to have
+	// a bibitem inset at all.
+	return ((d->layout_->labeltype == LABEL_BIBLIO
 		&& (d->insetlist_.find(BIBITEM_CODE) != 0
-		    || d->insetlist_.find(BIBITEM_CODE, 1) > 0);
+		    || d->insetlist_.find(BIBITEM_CODE, 1) > 0))
+		|| (d->layout_->labeltype != LABEL_BIBLIO
+		    && d->insetlist_.find(BIBITEM_CODE) != -1));
 }
 
 
 int Paragraph::fixBiblio(Buffer const & buffer)
 {
-	// FIXME: What about the case where paragraph is not BIBLIO
-	// but there is an InsetBibitem?
 	// FIXME: when there was already an inset at 0, the return value is 1,
 	// which does not tell whether another inset has been remove; the
 	// cursor cannot be correctly updated.
 
-	if (d->layout_->labeltype != LABEL_BIBLIO)
-		return 0;
-
 	bool const track_changes = buffer.params().track_changes;
 	int bibitem_pos = d->insetlist_.find(BIBITEM_CODE);
-	bool const hasbibitem0 = bibitem_pos == 0;
 
+	// The case where paragraph is not BIBLIO
+	if (d->layout_->labeltype != LABEL_BIBLIO) {
+		if (bibitem_pos == -1)
+			// No InsetBibitem => OK
+			return 0;
+		// There is an InsetBibitem: remove it!
+		d->insetlist_.release(bibitem_pos);
+		eraseChar(bibitem_pos, track_changes);
+		return (bibitem_pos == 0) ? -1 : -bibitem_pos;
+	}
+
+	bool const hasbibitem0 = bibitem_pos == 0;
 	if (hasbibitem0) {
 		bibitem_pos = d->insetlist_.find(BIBITEM_CODE, 1);
-		// There was an InsetBibitem at pos 0, and no other one => OK
+		// There was an InsetBibitem at pos 0,
+		// and no other one => OK
 		if (bibitem_pos == -1)
 			return 0;
 		// there is a bibitem at the 0 position, but since
@@ -3688,7 +3699,7 @@ int Paragraph::fixBiblio(Buffer const & buffer)
 	}
 
 	// We need to create an inset at the beginning
-	Inset * inset = 0;
+	Inset * inset = nullptr;
 	if (bibitem_pos > 0) {
 		// there was one somewhere in the paragraph, let's move it
 		inset = d->insetlist_.release(bibitem_pos);
