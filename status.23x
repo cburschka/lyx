@@ -34,6 +34,9 @@ What's new
 
 - Allow nameref in math references (bug 9798).
 
+- Fix renaming of citation references after changing bibliography key
+  (bug 6494).
+
 - Make tab movement visible (bug 10733).
 
 - Add "Reset" and "Reset All Fields" buttons to Text Properties
@@ -54,7 +57,7 @@ What's new
 - Improve performance on Windows with lots of math insets or very long
   math formulas (bug 11546).
 
-- Add Shortcut (Comand-0) for workaera zoom reset to mac.bind.
+- Add Shortcut (Command-0) for workarwa zoom reset to mac.bind.
 
 - Improve some icons (bug 11476).
 
