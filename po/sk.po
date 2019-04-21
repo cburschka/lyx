@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-04-19 15:06+0200\n"
-"PO-Revision-Date: 2019-04-19 13:09+0000\n"
+"POT-Creation-Date: 2019-04-21 11:37+0200\n"
+"PO-Revision-Date: 2019-04-21 10:22+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1217,7 +1217,7 @@ msgstr "&Umožniť sledovanie zmien vo výstupe"
 #: src/frontends/qt4/ui/DelimiterUi.ui:122
 #: src/frontends/qt4/GuiDelimiter.cpp:326
 msgid "TeX Code: "
-msgstr "TeX Kód: "
+msgstr "TeX kód: "
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:221
 msgid "Match delimiter types"
@@ -3305,7 +3305,7 @@ msgstr "Na&jdlhšie návestie"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:201
 msgid "&Indent Paragraph"
-msgstr "Ods&adiť Odstavec"
+msgstr "Ods&adiť odstavec"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:44
 msgid "Horizontal and vertical space of the phantom content"
@@ -4503,7 +4503,7 @@ msgstr "V&lastná šírka:"
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
 msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
 msgstr ""
-"Vlastná hodnota. \"Odsadzovanie Zoznamov\" je treba nastaviť na \"Vlastné\"."
+"Vlastná hodnota. \"Odsadzovanie zoznamov\" je treba nastaviť na \"Vlastné\"."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:40
 msgid "Available i&ndexes:"
@@ -4636,7 +4636,7 @@ msgstr "Skočiť na vybrané heslo"
 
 #: src/frontends/qt4/ui/RefUi.ui:227 src/frontends/qt4/GuiRef.cpp:430
 msgid "&Go to Label"
-msgstr "Pre&jsť na Heslo"
+msgstr "Pre&jsť na heslo"
 
 #: src/frontends/qt4/ui/RefUi.ui:238
 msgid "Reference For&mat:"
@@ -5067,7 +5067,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:1138
 msgid "Use Default &Formal Style"
-msgstr "Po&užiť Formálny Štandard Štýlu"
+msgstr "Po&užiť formálny štandard štýlu"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1146
 msgid "Additional Space"
@@ -6999,7 +6999,7 @@ msgstr "Adaptácie v titule a v preambule"
 msgid "Fixes & Hacks"
 msgstr "Nápravy a Zlepšenia"
 
-#: lib/layouts/InStar.module:12
+#: lib/layouts/InStar.module:13
 msgid ""
 "Provides two new styles: 1. An 'In Preamble' style that puts whatever is "
 "entered into it into the preamble. This can be used, if one wishes, to "
@@ -7009,7 +7009,7 @@ msgid ""
 "in title-related material. (If you put these in a Standard layout, this "
 "signals to LyX to output \\maketitle, which may then come too early.)"
 msgstr ""
-"Poskytuje dva nové štýly: 1. Štýl 'V Preambule' ktorý položí všetko do neho "
+"Poskytuje dva nové štýly: 1. Štýl 'V preambule' ktorý položí všetko do neho "
 "zadané do preambuly. Keď si to niekto želá, dá sa použiť aj na inklúziu kódu "
 "preambuly do tela LyXového dokumentu. 2. Štýl 'V titule' položí svoj obsah "
 "do tela LaTeXového dokumentu, ale pred vydaním \\maketitle. Je to vhodné pre "
@@ -7103,7 +7103,7 @@ msgstr "Gigantický"
 #: lib/layouts/sciposter.layout:146 lib/layouts/sciposter.layout:149
 #: lib/layouts/sciposter.layout:175
 msgid "More Giant"
-msgstr "Viac Gigantický"
+msgstr "Viac gigantický"
 
 #: lib/layouts/a0poster.layout:63 lib/layouts/a0poster.layout:66
 #: lib/layouts/a0poster.layout:92 lib/layouts/beamerposter.layout:75
@@ -7111,7 +7111,7 @@ msgstr "Viac Gigantický"
 #: lib/layouts/sciposter.layout:152 lib/layouts/sciposter.layout:155
 #: lib/layouts/sciposter.layout:181
 msgid "Most Giant"
-msgstr "Najviac Gigantický"
+msgstr "Najviac gigantický"
 
 #: lib/layouts/a0poster.layout:69 lib/layouts/beamerposter.layout:81
 #: lib/layouts/sciposter.layout:158
@@ -10245,11 +10245,11 @@ msgstr "Japonský článok (Trieda BXJS)"
 
 #: lib/layouts/bxjsbook.layout:3
 msgid "Japanese Book (BXJS Class)"
-msgstr "Japonská Kniha (Trieda BXJS)"
+msgstr "Japonská kniha (Trieda BXJS)"
 
 #: lib/layouts/bxjsreport.layout:3
 msgid "Japanese Report (BXJS Class)"
-msgstr "Japonský Referát (Trieda BXJS)"
+msgstr "Japonský referát (Trieda BXJS)"
 
 #: lib/layouts/bxjsslide.layout:3
 msgid "Japanese Slide (BXJS Class)"
@@ -10263,7 +10263,7 @@ msgstr "Pásy na sledovanie zmien"
 #: lib/layouts/pdfcomment.module:3 lib/layouts/pdfform.module:3
 #: lib/layouts/todonotes.module:3
 msgid "Annotation & Revision"
-msgstr "Anotácia a Revízia"
+msgstr "Anotácia a revízia"
 
 #: lib/layouts/changebars.module:7
 msgid ""
@@ -10613,15 +10613,15 @@ msgstr "Čínsky článok (CTeX)"
 
 #: lib/layouts/ctex-book.layout:3
 msgid "Chinese Book (CTeX)"
-msgstr "Čínska Kniha (CTeX)"
+msgstr "Čínska kniha (CTeX)"
 
 #: lib/layouts/ctex-report.layout:3
 msgid "Chinese Report (CTeX)"
-msgstr "Čínsky Referát (CTeX)"
+msgstr "Čínsky referát (CTeX)"
 
 #: lib/layouts/customHeadersFooters.module:2
 msgid "Custom Header/Footer Text"
-msgstr "Vlastný text pre hlavičku/Pätu"
+msgstr "Vlastný text pre hlavičku/pätu"
 
 #: lib/layouts/customHeadersFooters.module:7
 msgid ""
@@ -11115,7 +11115,7 @@ msgstr "Kópia"
 
 #: lib/layouts/docbook-book.layout:3
 msgid "DocBook Book (SGML)"
-msgstr "DocBook-Kniha (SGML)"
+msgstr "DocBook kniha (SGML)"
 
 #: lib/layouts/docbook-book.layout:4 lib/layouts/docbook-chapter.layout:4
 #: lib/layouts/docbook-section.layout:4
@@ -11476,11 +11476,11 @@ msgstr "Keď obsah je 'url', e-mail sa zmení na internetovú adresu"
 
 #: lib/layouts/endnotes.module:2
 msgid "Endnotes"
-msgstr "Koncové Poznámky"
+msgstr "Koncové poznámky"
 
 #: lib/layouts/endnotes.module:3 lib/layouts/foottoend.module:3
 msgid "Foot- and Endnotes"
-msgstr "Poznámky pod čiarou a na Konci"
+msgstr "Poznámky pod čiarou a na konci"
 
 #: lib/layouts/endnotes.module:2 lib/layouts/endnotes.module:13
 msgid "Endnote"
@@ -11516,15 +11516,15 @@ msgstr "Prispôsobilé listiny (enumitem)"
 
 #: lib/layouts/enumitem.module:3 lib/layouts/paralist.module:3
 msgid "List Enhancements"
-msgstr "Zoznam Rozšírení"
+msgstr "Zoznam rozšírení"
 
-#: lib/layouts/enumitem.module:6
+#: lib/layouts/enumitem.module:7
 msgid ""
 "Controls the layout of enumerate, itemize, description, and list/labeling. "
 "See section Customized Lists of the User's Guide for a detailed description."
 msgstr ""
 "Kontroluje schému pre číslovanie, položky, opis a listina/etiketovanie.\n"
-"Pozrite si sekciu 'Customized Lists' v Užívateľskej Príručke pre detailné "
+"Pozrite si sekciu 'Customized Lists' v užívateľskej príručke pre detailné "
 "vysvetlenie."
 
 #: lib/layouts/enumitem.module:58 lib/layouts/paralist.module:29
@@ -12309,7 +12309,7 @@ msgstr "Definícia*"
 
 #: lib/layouts/foottoend.module:2
 msgid "Footnotes as Endnotes"
-msgstr "Poznámky pod čiarou ako Koncové"
+msgstr "Poznámky pod čiarou ako koncové"
 
 #: lib/layouts/foottoend.module:6
 msgid ""
@@ -12770,7 +12770,7 @@ msgstr "Točiaci uhol v stupňoch (v protismere hodín)"
 
 #: lib/layouts/hanging.module:2
 msgid "Hanging Paragraphs"
-msgstr "Visiace Odstavce"
+msgstr "Visiace odstavce"
 
 #: lib/layouts/hanging.module:2 lib/layouts/hanging.module:16
 msgid "Hanging"
@@ -12779,7 +12779,7 @@ msgstr "Visiaci odstavec"
 #: lib/layouts/hanging.module:3 lib/layouts/initials.module:3
 #: lib/layouts/shapepar.module:3
 msgid "Paragraph Styles"
-msgstr "Štýly Odstavca"
+msgstr "Štýly odstavca"
 
 #: lib/layouts/hanging.module:6
 msgid ""
@@ -13339,7 +13339,7 @@ msgstr "Online citát"
 
 #: lib/layouts/jbook.layout:3
 msgid "Japanese Book (Standard Class)"
-msgstr "Japonská Kniha (Štandardná trieda)"
+msgstr "Japonská kniha (Štandardná trieda)"
 
 #: lib/layouts/jgrga.layout:3
 msgid "American Geophysical Union (AGUPLUS JGR)"
@@ -13347,7 +13347,7 @@ msgstr "Americká Únia pre Geofyziku (AGUPLUS JGR)"
 
 #: lib/layouts/jreport.layout:3
 msgid "Japanese Report (Standard Class)"
-msgstr "Japonský Referát (Štandardná trieda)"
+msgstr "Japonský referát (Štandardná trieda)"
 
 #: lib/layouts/jsarticle.layout:3
 msgid "Japanese Article (JS Class)"
@@ -13355,7 +13355,7 @@ msgstr "Japonský článok (Trieda JS)"
 
 #: lib/layouts/jsbook.layout:3
 msgid "Japanese Book (JS Class)"
-msgstr "Japonská Kniha (Trieda JS)"
+msgstr "Japonská kniha (Trieda JS)"
 
 #: lib/layouts/jss.layout:3
 msgid "Journal of Statistical Software (JSS) version 2"
@@ -13496,7 +13496,7 @@ msgstr "Na šírku (plávanie)"
 
 #: lib/layouts/latex8.layout:3
 msgid "Latex8 Article (Obsolete)"
-msgstr "LaTeX8 Článok (Zastaralé)"
+msgstr "LaTeX8 článok (Zastaralé)"
 
 #: lib/layouts/letter.layout:3
 msgid "Letter (Standard Class)"
@@ -13825,7 +13825,7 @@ msgstr "Logické značkovanie"
 
 #: lib/layouts/logicalmkup.module:3 lib/layouts/soul.module:3
 msgid "Text Markup"
-msgstr "Textové Značkovanie"
+msgstr "Textové značkovanie"
 
 #: lib/layouts/logicalmkup.module:5
 msgid ""
@@ -14287,14 +14287,14 @@ msgstr "Príloha:"
 msgid "Multiple Columns"
 msgstr "Viac stĺpcové"
 
-#: lib/layouts/multicol.module:7
+#: lib/layouts/multicol.module:8
 msgid ""
 "Adds a custom inset whose content is set with multiple columns (2 by "
 "default). See the Additional manual, section 'Multiple Text Columns', for a "
 "detailed description of multiple columns."
 msgstr ""
 "Pridáva vlastnú vložku, ktorej obsah je postavený z viacerých stĺpcov (2 .sú "
-"prednastavené). Pozri Prídavný manuál, sekcia 'Viac Stĺpcový Text', pre "
+"prednastavené). Pozri prídavný manuál, sekcia 'Viac stĺpcový text', pre "
 "detailné vysvetlenie viac-stĺpcového prostredia."
 
 #: lib/layouts/multicol.module:19
@@ -14332,15 +14332,15 @@ msgstr "Poľský článok (MW balík)"
 
 #: lib/layouts/mwbk.layout:3
 msgid "Polish Book (MW Bundle)"
-msgstr "Poľská Kniha (MW balík)"
+msgstr "Poľská kniha (MW balík)"
 
 #: lib/layouts/mwrep.layout:3
 msgid "Polish Report (MW Bundle)"
-msgstr "Poľský Referát (MW balík)"
+msgstr "Poľský referát (MW balík)"
 
 #: lib/layouts/natbibapa.module:2
 msgid "APA Style with Natbib"
-msgstr "APA Štýl s Natbib"
+msgstr "APA štýl s Natbib"
 
 #: lib/layouts/natbibapa.module:9
 msgid ""
@@ -14515,7 +14515,7 @@ msgstr "Parametre pre kompaktný opis"
 
 #: lib/layouts/pdfcomment.module:2
 msgid "PDF Comments"
-msgstr "PDF-Komentáre"
+msgstr "PDF-komentáre"
 
 #: lib/layouts/pdfcomment.module:7
 msgid ""
@@ -14527,102 +14527,102 @@ msgstr ""
 "pdfcomment. Pre detaily si pozrite aj príkladný LyX-súbor\n"
 "PDF-comment.lyx a dokumentáciu balíka."
 
-#: lib/layouts/pdfcomment.module:19
-msgid "Define Avatar"
-msgstr "Definovať Avatár"
-
 #: lib/layouts/pdfcomment.module:20
+msgid "Define Avatar"
+msgstr "Definovať avatár"
+
+#: lib/layouts/pdfcomment.module:21
 msgid "PDF-comment"
-msgstr "PDF-Komentár"
+msgstr "PDF-komentár"
 
-#: lib/layouts/pdfcomment.module:27
+#: lib/layouts/pdfcomment.module:28
 msgid "PDF-comment avatar:"
-msgstr "PDF-Komentár avatár:"
+msgstr "PDF-komentár avatár:"
 
-#: lib/layouts/pdfcomment.module:30
+#: lib/layouts/pdfcomment.module:31
 msgid "Name of the Avatar"
-msgstr "Názov Avatára"
+msgstr "Názov avatára"
 
-#: lib/layouts/pdfcomment.module:41
+#: lib/layouts/pdfcomment.module:42
 msgid "Define PDF-Comment Style"
-msgstr "Definovať štýl PDF-Komentár"
+msgstr "Definovať štýl PDF-komentár"
 
-#: lib/layouts/pdfcomment.module:44
+#: lib/layouts/pdfcomment.module:45
 msgid "PDF-comment style:"
-msgstr "Štýl PDF-Komentár:"
+msgstr "Štýl PDF-komentár:"
 
 #: lib/layouts/pdfcomment.module:47
 msgid "Name of the style"
 msgstr "Názov štýlu"
 
-#: lib/layouts/pdfcomment.module:52
+#: lib/layouts/pdfcomment.module:53
 msgid "Define PDF-Comment List Style"
-msgstr "Definovať štýl listiny PDF-Komentár"
+msgstr "Definovať štýl listiny PDF-komentár"
 
-#: lib/layouts/pdfcomment.module:55
+#: lib/layouts/pdfcomment.module:56
 msgid "Definition of PDF-comment list style:"
-msgstr "Definícia štýlu listiny PDF-Komentár:"
+msgstr "Definícia štýlu listiny PDF-komentár:"
 
 #: lib/layouts/pdfcomment.module:58
 msgid "Name of the list style"
 msgstr "Názov štýlu listiny"
 
-#: lib/layouts/pdfcomment.module:63
+#: lib/layouts/pdfcomment.module:64
 msgid "Set PDF-Comment List Style"
-msgstr "Nastaviť štýl listiny PDF-Komentár"
+msgstr "Nastaviť štýl listiny PDF-komentár"
 
-#: lib/layouts/pdfcomment.module:66
+#: lib/layouts/pdfcomment.module:67
 msgid "PDF-comment list style:"
-msgstr "Štýl listiny PDF-Komentár:"
+msgstr "Štýl listiny PDF-komentár:"
 
-#: lib/layouts/pdfcomment.module:70
+#: lib/layouts/pdfcomment.module:71
 msgid "PDF-Comment-Setup"
-msgstr "Nastavenia na PDF-Komentár"
+msgstr "Nastavenia na PDF-komentár"
 
 #: lib/layouts/pdfcomment.module:74
 msgid "PDF (Setup)"
 msgstr "PDF (Nastavenie)"
 
-#: lib/layouts/pdfcomment.module:82
+#: lib/layouts/pdfcomment.module:83
 msgid "PDF-Comment setup options"
-msgstr "Voľby nastavenia PDF-Komentár"
+msgstr "Voľby nastavenia PDF-komentár"
 
 #: lib/layouts/pdfcomment.module:83 lib/layouts/pdfcomment.module:106
 #: lib/layouts/pdfcomment.module:222
 msgid "Opts"
 msgstr "Voľby"
 
-#: lib/layouts/pdfcomment.module:84
+#: lib/layouts/pdfcomment.module:85
 msgid "Insert PDF-Comment setup options here (see the pdfcomment manual)"
-msgstr "Tu sa vložia voľby pre PDF-Komentár (viď pdfcomment manuál)"
+msgstr "Tu sa vložia voľby pre PDF-komentár (viď pdfcomment manuál)"
 
-#: lib/layouts/pdfcomment.module:93
+#: lib/layouts/pdfcomment.module:94
 msgid "PDF-Annotation"
-msgstr "PDF-Anotácie"
+msgstr "PDF-anotácie"
 
 #: lib/layouts/pdfcomment.module:97 src/frontends/qt4/GuiClipboard.cpp:175
 msgid "PDF"
 msgstr "PDF"
 
-#: lib/layouts/pdfcomment.module:105
-msgid "PDFComment Options"
-msgstr "Voľby pre PDF-Komentár"
-
 #: lib/layouts/pdfcomment.module:107
-msgid "Insert PDFComment options here (see pdfcomment manual)"
-msgstr "Tu sa vložia voľby pre PDF-Komentár (viď pdfcomment manuál)"
+msgid "PDFComment Options"
+msgstr "Voľby pre PDF-komentár"
 
-#: lib/layouts/pdfcomment.module:112
+#: lib/layouts/pdfcomment.module:109
+msgid "Insert PDFComment options here (see pdfcomment manual)"
+msgstr "Tu sa vložia voľby pre PDF-komentár (viď pdfcomment manuál)"
+
+#: lib/layouts/pdfcomment.module:114
 msgid "PDF-Margin"
-msgstr "PDF-Okraj"
+msgstr "PDF-okraj"
 
 #: lib/layouts/pdfcomment.module:114
 msgid "PDF (Margin)"
 msgstr "PDF (Okraj)"
 
-#: lib/layouts/pdfcomment.module:122
+#: lib/layouts/pdfcomment.module:124
 msgid "PDF-Markup"
-msgstr "PDF-Prirážka"
+msgstr "PDF-prirážka"
 
 #: lib/layouts/pdfcomment.module:124
 msgid "PDF (Markup)"
@@ -14632,41 +14632,41 @@ msgstr "PDF (Prirážka)"
 msgid "Insert the comment to the marked-up text here"
 msgstr "Vložte sem komentár na prirážky"
 
-#: lib/layouts/pdfcomment.module:133
+#: lib/layouts/pdfcomment.module:138
 msgid "PDF-Freetext"
-msgstr "PDF-Voľnýtext"
+msgstr "PDF-voľnýtext"
 
 #: lib/layouts/pdfcomment.module:135
 msgid "PDF (Freetext)"
 msgstr "PDF (Voľnýtext)"
 
-#: lib/layouts/pdfcomment.module:139
+#: lib/layouts/pdfcomment.module:145
 msgid "PDF-Square"
-msgstr "PDF-Kocka"
+msgstr "PDF-kocka"
 
 #: lib/layouts/pdfcomment.module:141
 msgid "PDF (Square)"
 msgstr "PDF (Kocka)"
 
-#: lib/layouts/pdfcomment.module:145
+#: lib/layouts/pdfcomment.module:152
 msgid "PDF-Circle"
-msgstr "PDF-Kruh"
+msgstr "PDF-kruh"
 
 #: lib/layouts/pdfcomment.module:147
 msgid "PDF (Circle)"
 msgstr "PDF (Kruh)"
 
-#: lib/layouts/pdfcomment.module:151
+#: lib/layouts/pdfcomment.module:159
 msgid "PDF-Line"
-msgstr "PDF-Čiarka"
+msgstr "PDF-čiarka"
 
 #: lib/layouts/pdfcomment.module:153
 msgid "PDF (Line)"
 msgstr "PDF (Čiarka)"
 
-#: lib/layouts/pdfcomment.module:157
+#: lib/layouts/pdfcomment.module:166
 msgid "PDF-Sideline"
-msgstr "PDF-Postranná čiarka"
+msgstr "PDF-postranná čiarka"
 
 #: lib/layouts/pdfcomment.module:159
 msgid "PDF (Sideline)"
@@ -14676,17 +14676,17 @@ msgstr "PDF (Postrannáčiarka)"
 msgid "Insert the comment here"
 msgstr "Vložte sem komentár"
 
-#: lib/layouts/pdfcomment.module:170
+#: lib/layouts/pdfcomment.module:181
 msgid "PDF-Reply"
-msgstr "PDF-Odpoveď"
+msgstr "PDF-odpoveď"
 
 #: lib/layouts/pdfcomment.module:172
 msgid "PDF (Reply)"
 msgstr "PDF (Odpoveď)"
 
-#: lib/layouts/pdfcomment.module:180
+#: lib/layouts/pdfcomment.module:191
 msgid "PDF-Tooltip"
-msgstr "PDF-Pomocný návrh"
+msgstr "PDF-pomocný návrh"
 
 #: lib/layouts/pdfcomment.module:182
 msgid "PDF (Tooltip)"
@@ -14704,13 +14704,13 @@ msgstr "Pomocný návrh"
 msgid "Insert the tooltip text here"
 msgstr "Vložte sem text pre pomocný návrh"
 
-#: lib/layouts/pdfcomment.module:200
+#: lib/layouts/pdfcomment.module:213
 msgid "List of PDF Comments"
-msgstr "Zoznam PDF-Komentárov"
+msgstr "Zoznam PDF-komentárov"
 
-#: lib/layouts/pdfcomment.module:214
+#: lib/layouts/pdfcomment.module:227
 msgid "[List of PDF Comments]"
-msgstr "[Zoznam PDF-Komentárov]"
+msgstr "[Zoznam PDF-komentárov]"
 
 #: lib/layouts/pdfcomment.module:223
 msgid "List Options|s"
@@ -15164,7 +15164,7 @@ msgstr "PACS-číslo:"
 
 #: lib/layouts/rsphrase.module:2
 msgid "Chemistry: Risk and Safety Statements"
-msgstr "Chémia: Rizikové a Poistné Uzávierky"
+msgstr "Chémia: Rizikové a poistné uzávierky"
 
 #: lib/layouts/rsphrase.module:7
 msgid ""
@@ -15250,7 +15250,7 @@ msgstr "Beamer článok (KOMA-Script)"
 
 #: lib/layouts/scrbook.layout:3
 msgid "KOMA-Script Book"
-msgstr "KOMA-Script Kniha"
+msgstr "KOMA-Script kniha"
 
 #: lib/layouts/scrbook.layout:26
 msgid "\\thechapter.\\arabic{equation}"
@@ -15457,17 +15457,17 @@ msgstr "Koniec dopisu"
 
 #: lib/layouts/scrreprt.layout:3
 msgid "KOMA-Script Report"
-msgstr "KOMA-Script Referát"
+msgstr "KOMA-Script referát"
 
 #: lib/layouts/sectionbox.module:2
 msgid "Section Boxes"
 msgstr "Rámčeky: Sekciové"
 
-#: lib/layouts/sectionbox.module:6
+#: lib/layouts/sectionbox.module:7
 msgid ""
 "Defines Boxes with section header. Mainly intended for the SciPoster class."
 msgstr ""
-"Definuje rámiky s hlavičkou sekcie. Hlavne myslené pre Sci-Plagát triedu."
+"Definuje rámiky s hlavičkou sekcie. Hlavne myslené pre triedu Sci-plagát."
 
 #: lib/layouts/sectionbox.module:11
 msgid "SectionBox"
@@ -15597,15 +15597,15 @@ msgstr "[Obsah pokroku]"
 msgid "Custom Paragraph Shapes"
 msgstr "Vlastné tvary odstavca"
 
-#: lib/layouts/shapepar.module:7
+#: lib/layouts/shapepar.module:8
 msgid ""
 "Provides several paragraph shapes as well as commands to define custom "
 "shapes. For a description see LyX's Additional features manual, section 'Non-"
 "standard Paragraph Shapes'."
 msgstr ""
 "Poskytuje niekoľko tvarov odstavca ako aj príkazy na definovanie vlastných "
-"tvarov. Pre vysvetlenie pozri LyXov manuál Prídavné vlastnosti, sekcia 'Nie "
-"štandardné Tvary Odstavca'."
+"tvarov. Pre vysvetlenie pozri LyXov manuál 'Prídavné vlastnosti', sekcia 'Nie "
+"štandardné tvary odstavca'."
 
 #: lib/layouts/shapepar.module:26
 msgid "CD label"
@@ -15829,7 +15829,7 @@ msgstr "<Viditeľný text nasleduje>"
 
 #: lib/layouts/soul.module:2
 msgid "Hyphenatable Text Markup (Soul)"
-msgstr "Deliteľné Textové Značkovanie (Soul)"
+msgstr "Deliteľné textové značkovanie (Soul)"
 
 # space out: something like monospaced
 #: lib/layouts/soul.module:8
@@ -16326,7 +16326,7 @@ msgstr "Pre vydavateľov"
 
 #: lib/layouts/svprobth.layout:3
 msgid "Probability Theory and Related Fields (Springer svprobth)"
-msgstr "Springer, Teória Pravdepodobnosti a Príbuzné Polia (svprobth)"
+msgstr "Springer, Teória pravdepodobnosti a príbuzné polia (svprobth)"
 
 #: lib/layouts/sweave.module:2 lib/configure.py:663
 msgid "Sweave"
@@ -16363,7 +16363,7 @@ msgstr "Japonský článok (Štandardná trieda: Vertikálne písanie)"
 
 #: lib/layouts/tbook.layout:3
 msgid "Japanese Book (Standard Class: Vertical Writing)"
-msgstr "Japonská Kniha (Štandardná trieda: Vertikálne písanie)"
+msgstr "Japonská kniha (Štandardná trieda: Vertikálne písanie)"
 
 #: lib/layouts/tcolorbox.module:2
 msgid "Fancy Colored Boxes"
@@ -16524,7 +16524,7 @@ msgstr "Úloha \\theexercise."
 
 #: lib/layouts/theorems-ams-bytype.module:2
 msgid "AMS Theorems (Numbered by Type)"
-msgstr "AMS Teorémy (Číslované podľa typu)"
+msgstr "AMS teorémy (Číslované podľa typu)"
 
 #: lib/layouts/theorems-ams-bytype.module:11
 msgid ""
@@ -16599,7 +16599,7 @@ msgstr "Nárok \\thechapter.\\theclaim."
 
 #: lib/layouts/theorems-ams-chap-bytype.module:2
 msgid "AMS Theorems (Numbered by Type within Chapters)"
-msgstr "AMS Teorémy (Číslované podľa typu vnútri kapitol)"
+msgstr "AMS teorémy (Číslované podľa typu vnútri kapitol)"
 
 #: lib/layouts/theorems-ams-chap-bytype.module:11
 msgid ""
@@ -16620,7 +16620,7 @@ msgstr ""
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
 msgid "AMS Theorems (Extended, Numbered by Type)"
-msgstr "AMS Teorémy (rozšírenie, číslované podľa typu)"
+msgstr "AMS teorémy (rozšírenie, číslované podľa typu)"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:12
 msgid ""
@@ -16821,7 +16821,7 @@ msgstr "Otázka."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:2
 msgid "AMS Theorems (Extended, Numbered by Type within Chapters)"
-msgstr "AMS Teorémy (Rozšírenie, číslované podľa typu vnútri kapitol)"
+msgstr "AMS teorémy (Rozšírenie, číslované podľa typu vnútri kapitol)"
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:12
 msgid ""
@@ -16889,7 +16889,7 @@ msgstr "Otázka \\thechapter.\\thequestion."
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "AMS Theorems (Extended)"
-msgstr "AMS Teorémy (rozšírenie)"
+msgstr "AMS teorémy (rozšírenie)"
 
 #: lib/layouts/theorems-ams-extended.module:9
 msgid ""
@@ -16973,7 +16973,7 @@ msgstr "Nárok \\thetheorem."
 
 #: lib/layouts/theorems-ams.module:2
 msgid "AMS Theorems"
-msgstr "AMS Teorémy"
+msgstr "AMS teorémy"
 
 #: lib/layouts/theorems-ams.module:8
 msgid ""
@@ -16989,7 +16989,7 @@ msgstr ""
 
 #: lib/layouts/theorems-bytype.module:2
 msgid "Standard Theorems (Numbered by Type)"
-msgstr "Štandardné Teorémy (Číslované podľa typu)"
+msgstr "Štandardné teorémy (Číslované podľa typu)"
 
 #: lib/layouts/theorems-bytype.module:10
 msgid ""
@@ -17026,7 +17026,7 @@ msgstr "Prípad \\arabic{caseiv}."
 
 #: lib/layouts/theorems-chap-bytype.module:2
 msgid "Standard Theorems (Numbered by Type within Chapters)"
-msgstr "Štandardné Teorémy (Číslované podľa typu vnútri kapitol)"
+msgstr "Štandardné teorémy (Číslované podľa typu vnútri kapitol)"
 
 #: lib/layouts/theorems-chap-bytype.module:9
 msgid ""
@@ -17044,7 +17044,7 @@ msgstr ""
 
 #: lib/layouts/theorems-chap.module:2
 msgid "Standard Theorems (Numbered by Chapter)"
-msgstr "Štandardné Teorémy (Číslované podľa kapitoly)"
+msgstr "Štandardné teorémy (Číslované podľa kapitoly)"
 
 #: lib/layouts/theorems-chap.module:7
 msgid ""
@@ -17058,15 +17058,15 @@ msgstr ""
 
 #: lib/layouts/theorems-named.module:3
 msgid "Standard Theorems (Nameable)"
-msgstr "Štandardné Teorémy (pomenovateľné)"
+msgstr "Štandardné teorémy (pomenovateľné)"
 
-#: lib/layouts/theorems-named.module:7
+#: lib/layouts/theorems-named.module:8
 msgid ""
 "Facilitates the use of named theorems. The name of the theorem goes into the "
 "'Additional Theorem Text' argument."
 msgstr ""
 "Umožňuje používanie menovaných teorém. Meno teorému ide do vložky 'Dodatočný "
-"Text Teorémy'."
+"text teorémy'."
 
 #: lib/layouts/theorems-named.module:55
 msgid "Named Theorem"
@@ -17106,7 +17106,7 @@ msgstr "Alternatívny reťazec dôkazu"
 
 #: lib/layouts/theorems-sec-bytype.module:2
 msgid "Standard Theorems (Numbered by Type within Sections)"
-msgstr "Štandardné Teorémy (Číslovanie podľa typu vnútri sekcií)"
+msgstr "Štandardné teorémy (Číslovanie podľa typu vnútri sekcií)"
 
 #: lib/layouts/theorems-sec-bytype.module:9
 msgid ""
@@ -17124,7 +17124,7 @@ msgstr ""
 
 #: lib/layouts/theorems-sec.module:2
 msgid "Standard Theorems (Numbered by Section)"
-msgstr "Štandardné Teorémy (Číslovanie podľa sekcie)"
+msgstr "Štandardné teorémy (Číslovanie podľa sekcie)"
 
 #: lib/layouts/theorems-sec.module:6
 msgid ""
@@ -17160,7 +17160,7 @@ msgstr "Pripomienka."
 
 #: lib/layouts/theorems-starred.module:2
 msgid "Standard Theorems (Unnumbered)"
-msgstr "Štandardné Teorémy (Neočíslované)"
+msgstr "Štandardné teorémy (Neočíslované)"
 
 #: lib/layouts/theorems-starred.module:6
 msgid ""
@@ -17172,7 +17172,7 @@ msgstr ""
 
 #: lib/layouts/theorems-std.module:2
 msgid "Standard Theorems"
-msgstr "Štandardné Teorémy"
+msgstr "Štandardné teorémy"
 
 #: lib/layouts/theorems-std.module:7
 msgid ""
@@ -17307,11 +17307,11 @@ msgstr "Chybiaci obrázok"
 
 #: lib/layouts/treport.layout:3
 msgid "Japanese Report (Vertical Writing)"
-msgstr "Japonský Referát (Vertikálne písanie)"
+msgstr "Japonský referát (Vertikálne písanie)"
 
 #: lib/layouts/tufte-book.layout:3
 msgid "Tufte Book"
-msgstr "Tufte Kniha"
+msgstr "Tufte kniha"
 
 #: lib/layouts/tufte-book.layout:26 lib/layouts/tufte-book.layout:151
 msgid "Sidenote"
@@ -19321,7 +19321,7 @@ msgstr "Otvoriť nedávne|d"
 
 #: lib/ui/stdmenus.inc:49
 msgid "Open Example...|p"
-msgstr "Otvoriť Príklad...|P"
+msgstr "Otvoriť príklad...|p"
 
 #: lib/ui/stdmenus.inc:50
 msgid "Close|C"
@@ -19341,7 +19341,7 @@ msgstr "Uložiť ako…|a"
 
 #: lib/ui/stdmenus.inc:55
 msgid "Save As Template..."
-msgstr "Uložiť ako Šablónu…"
+msgstr "Uložiť ako šablónu…"
 
 #: lib/ui/stdmenus.inc:54
 msgid "Save All|l"
@@ -19483,9 +19483,9 @@ msgstr "Zmenšiť hĺbku listiny|Z"
 msgid "Dissolve Inset"
 msgstr "Rozpustiť vložku"
 
-#: lib/ui/stdmenus.inc:139
+#: lib/ui/stdmenus.inc:141
 msgid "TeX Code Settings...|C"
-msgstr "Nastavenia TeX Kódu…|K"
+msgstr "Nastavenia TeX kódu…|k"
 
 #: lib/ui/stdmenus.inc:141
 msgid "Float Settings...|a"
@@ -20275,9 +20275,9 @@ msgstr "Štatistika…|Š"
 msgid "Check TeX|h"
 msgstr "Kontrola TeXu|X"
 
-#: lib/ui/stdmenus.inc:619
+#: lib/ui/stdmenus.inc:622
 msgid "TeX Information|I"
-msgstr "TeX Informácia|I"
+msgstr "TeX informácia|i"
 
 #: lib/ui/stdmenus.inc:620
 msgid "Compare...|C"
@@ -20299,9 +20299,9 @@ msgstr "Úvod|v"
 msgid "Tutorial|T"
 msgstr "Príručka|P"
 
-#: lib/ui/stdmenus.inc:635
+#: lib/ui/stdmenus.inc:638
 msgid "User's Guide|U"
-msgstr "Užívateľská Príručka|U"
+msgstr "Užívateľská príručka|U"
 
 #: lib/ui/stdmenus.inc:636
 msgid "Additional Features|F"
@@ -20371,9 +20371,9 @@ msgstr "Viac-jazykové popisy|j"
 msgid "Paralist|t"
 msgstr "Paralist|t"
 
-#: lib/ui/stdmenus.inc:658
+#: lib/ui/stdmenus.inc:661
 msgid "PDF comments|D"
-msgstr "PDF-Komentáre|D"
+msgstr "PDF-komentáre|D"
 
 #: lib/ui/stdmenus.inc:659
 msgid "PDF forms|o"
@@ -25419,11 +25419,11 @@ msgstr "Rnw (knitr, japonský)"
 
 #: lib/configure.py:668
 msgid "LilyPond book (LaTeX)"
-msgstr "LilyPond Kniha (LaTeX)"
+msgstr "LilyPond kniha (LaTeX)"
 
 #: lib/configure.py:669
 msgid "LilyPond book (pLaTeX)"
-msgstr "LilyPond Kniha (pLaTeX)"
+msgstr "LilyPond kniha (pLaTeX)"
 
 #: lib/configure.py:670
 msgid "LaTeX (plain)"
@@ -26514,7 +26514,7 @@ msgstr ""
 "LaTeX balík undertilde použiť len v prípade, keď sa vo formulách nájdu aj "
 "dekorácie 'utilde'"
 
-#: src/BufferParams.cpp:731
+#: src/BufferParams.cpp:743
 #, c-format
 msgid ""
 "The selected document class\n"
@@ -26534,7 +26534,7 @@ msgstr ""
 "nebude schopný zrobiť výstup pokiaľ sú\n"
 "nasledujúce predpoklady neinštalované:\n"
 "\t%2$s\n"
-"Pozri na sekciu 3.1.2.2 (Dostupné triedy) Užívateľskej Príručky pre\n"
+"Pozri na sekciu 3.1.2.2 (Dostupné triedy) Užívateľskej príručky pre\n"
 "viac informácií."
 
 #: src/BufferParams.cpp:740
@@ -28743,10 +28743,10 @@ msgstr ""
 "Nemôžte vložiť medzeru na začiatok odstavca. Prečítajte si prosím "
 "Príručku(tutorial)."
 
-#: src/Text.cpp:933
+#: src/Text.cpp:962
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
-"Nemôžte takýmto spôsobom vložiť dve medzery. Prečítajte si, prosím, Príručku."
+"Nemôžte takýmto spôsobom vložiť dve medzery. Prečítajte si, prosím, príručku."
 
 #: src/Text.cpp:944
 msgid "Character is uncodable in this verbatim context."
@@ -28853,7 +28853,7 @@ msgstr "Vlastnosti textu aplikované: %1$s"
 msgid "Path to thesaurus directory not set!"
 msgstr "Cesta ku slovníkom tezauru nie je nastavená!"
 
-#: src/Text3.cpp:2540
+#: src/Text3.cpp:2644
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -28862,7 +28862,7 @@ msgid ""
 msgstr ""
 "Cesta ku slovníkom tezauru nebola stanovená.\n"
 "Tezaurus nie je funkčný.\n"
-"Pozri sekciu 6.15.1 Užívateľskej Príručky pre inštrukcie\n"
+"Pozri sekciu 6.15.1 Užívateľskej príručky pre inštrukcie\n"
 "nastavenia."
 
 #: src/Text3.cpp:2607 src/Text3.cpp:2618
@@ -28906,7 +28906,7 @@ msgstr ""
 msgid "Module not available"
 msgstr "Modul nie je dostupný"
 
-#: src/TextClass.cpp:1802
+#: src/TextClass.cpp:1831
 #, c-format
 msgid ""
 "The module %1$s requires a package that is not\n"
@@ -28921,7 +28921,7 @@ msgstr ""
 "ktorý nemáte inštalovaný. Nezaistený výstup z LaTeX-a.\n"
 "Chýbajúce predpoklady:\n"
 "\t%2$s\n"
-"Pozri sekciu 3.1.2.3 (Moduly) Užívateľskej Príručky pre viac informácií."
+"Pozri sekciu 3.1.2.3 (Moduly) Užívateľskej príručky pre viac informácií."
 
 #: src/TextClass.cpp:1809 src/TextClass.cpp:1841
 msgid "Package not available"
@@ -28949,7 +28949,7 @@ msgstr ""
 msgid "Cite Engine not available"
 msgstr "Obsluha citácie nie je dostupná"
 
-#: src/TextClass.cpp:1834
+#: src/TextClass.cpp:1863
 #, c-format
 msgid ""
 "The cite engine %1$s requires a package that is not\n"
@@ -28964,7 +28964,7 @@ msgstr ""
 "ktorý nemáte inštalovaný. Nezaistený výstup z LaTeX-a.\n"
 "Chýbajúce predpoklady:\n"
 "\t%2$s\n"
-"Pozri sekciu 3.1.2.3 (Moduly) Užívateľskej Príručky pre viac informácií."
+"Pozri sekciu 3.1.2.3 (Moduly) Užívateľskej príručky pre viac informácií."
 
 #: src/TextClass.cpp:1846
 #, c-format
@@ -30918,13 +30918,29 @@ msgstr ""
 "Hlavný dokument '%1$s'\n"
 "nie je možné nahrať."
 
-#: src/frontends/qt4/GuiDocument.cpp:4641
-msgid "(Module name: %1)"
-msgstr "(Názov modulu: %1)"
+#: src/frontends/qt4/GuiDocument.cpp:4834
+msgid "%1 (missing req.)"
+msgstr "%1 (chýbajúci predpoklad)"
+
+#: src/frontends/qt4/GuiDocument.cpp:4846
+msgid "personal module"
+msgstr "osobný modul"
+
+#: src/frontends/qt4/GuiDocument.cpp:4846
+msgid "distributed module"
+msgstr "distribuovaný modul"
+
+#: src/frontends/qt4/GuiDocument.cpp:4847
+msgid "<b>Module name:</b> <i>%1</i> (%2)"
+msgstr "<b>Meno modulu:</b> <i>%1</i> (%2)"
+
+#: src/frontends/qt4/GuiDocument.cpp:4853
+msgid "<b>Note:</b> Some requirements for this module are missing!"
+msgstr "<b>Poznámka:</b> Niektoré predpoklady pre tento modul chýbajú!"
 
 #: src/frontends/qt4/GuiERT.h:33
 msgid "TeX Mode Inset Settings"
-msgstr "Nastavenia Módu TeX"
+msgstr "Nastavenia módu TeX"
 
 #: src/frontends/qt4/GuiErrorList.cpp:47 src/frontends/qt4/GuiLog.cpp:261
 msgid "Literate"
@@ -34405,9 +34421,9 @@ msgstr "Makro. Štandard: \\textvisiblespace"
 msgid "For PHP only"
 msgstr "Len pre PHP"
 
-#: src/insets/InsetListingsParams.cpp:861
+#: src/insets/InsetListingsParams.cpp:862
 msgid "The style used by Pygments"
-msgstr "Štýl použitý v pygments"
+msgstr "Štýl použitý v Pygments"
 
 #: src/insets/InsetListingsParams.cpp:874
 msgid "A macro to redefine visible tabs"
