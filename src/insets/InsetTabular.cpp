@@ -4984,11 +4984,10 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (!tabularStackDirty()) {
 			// Check if we have plain text or HTML with rows/columns.
 			// and if so, pass over to LFUN_CLIPBOARD_PASTE
-			if (!theClipboard().hasGraphicsContents()
-			    && theClipboard().hasTextContents(Clipboard::AnyTextType)
+			if (theClipboard().hasTextContents(Clipboard::AnyTextType)
 			    && !theClipboard().hasTextContents(Clipboard::LyXTextType)) {
 				docstring const clip =
-					theClipboard().getAsText(Clipboard::PlainTextType);
+					theClipboard().getAsText(Clipboard::AnyTextType);
 				if (clip.find_first_of(from_ascii("\t\n")) != docstring::npos) {
 					FuncRequest ncmd = FuncRequest(LFUN_CLIPBOARD_PASTE, cmd.argument());
 					doDispatch(cur, ncmd);
