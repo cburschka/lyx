@@ -5,7 +5,12 @@
 # Please note that the package source code is licensed under its own license.
 
 project ( libiconv C )
-cmake_minimum_required ( VERSION 2.8 )
+cmake_minimum_required(VERSION 3.1)
+
+if (POLICY CMP0069)
+  cmake_policy(SET CMP0069 NEW)
+endif()
+
 set(CMAKE_MODULE_PATH .)
 include ( configure.cmake )
 

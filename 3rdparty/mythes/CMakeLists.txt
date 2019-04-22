@@ -1,4 +1,8 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.1)
+
+if (POLICY CMP0069)
+  cmake_policy(SET CMP0069 NEW)
+endif()
 
 set(VERSION "1.2.5")
 set(SRCDIR ${CMAKE_CURRENT_SOURCE_DIR}/${VERSION})
