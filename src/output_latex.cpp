@@ -12,6 +12,7 @@
 
 #include "output_latex.h"
 
+#include "BiblioInfo.h"
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "Encoding.h"
@@ -1374,7 +1375,8 @@ void latexParagraphs(Buffer const & buf,
 
 	if (multibib_child && mparams.useBiblatex())
 		os << "\\newrefsection";
-	else if (multibib_child && mparams.useBibtopic()) {
+	else if (multibib_child && mparams.useBibtopic()
+		 && !buf.masterBibInfo().empty()) {
 		os << "\\begin{btUnit}\n";
 		runparams.openbtUnit = true;
 	}
@@ -1484,7 +1486,8 @@ void latexParagraphs(Buffer const & buf,
 		    && layout.latexname() == bparams.multibib) {
 			if (runparams.openbtUnit)
 				os << "\\end{btUnit}\n";
-			if (!bparams.useBiblatex()) {
+			if (!bparams.useBiblatex()
+			    && !buf.masterBibInfo().empty()) {
 				os << '\n' << "\\begin{btUnit}\n";
 				runparams.openbtUnit = true;
 			}

@@ -122,6 +122,8 @@ What's new
 - Load required packages to correctly typeset unicode symbols entered
   in math mode (bug 11526).
 
+- Only write btUnits if we have a bibliography (bug 11562).
+
 
 * USER INTERFACE
 
