@@ -9316,7 +9316,7 @@ msgstr "\\arabic{section}.\\arabic{subsection}"
 msgid ""
 "Subsubsection \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 msgstr ""
-"\arabic{section}.\arabic{subsection}.\arabic{subsubsection} alalszakasz"
+"\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection} alalszakasz"
 
 #: lib/layouts/beamer.layout:396
 msgid ""
@@ -13259,11 +13259,11 @@ msgstr ""
 
 #: lib/layouts/linguistics.module:14
 msgid "(\\arabic{example})"
-msgstr "(\arabic{example})"
+msgstr "(\\arabic{example})"
 
 #: lib/layouts/linguistics.module:19
 msgid "(\\arabic{examplei})"
-msgstr "(\arabic{examplei})"
+msgstr "(\\arabic{examplei})"
 
 #: lib/layouts/linguistics.module:24
 msgid "\\theexamplei (\\alph{subexample})"
@@ -15027,7 +15027,7 @@ msgstr "\\thesection.\\arabic{equation}"
 
 #: lib/layouts/scrclass.inc:41
 msgid "\\alph{enumii})"
-msgstr "\alph{enumii})"
+msgstr "\\alph{enumii})"
 
 #: lib/layouts/scrclass.inc:122
 msgid "Addpart"
@@ -16834,7 +16834,7 @@ msgstr ""
 
 #: lib/layouts/theorems-case.inc:12
 msgid "Case \\arabic{casei}."
-msgstr "\arabic{casei}. eset"
+msgstr "\\arabic{casei}. eset"
 
 #: lib/layouts/theorems-case.inc:16
 msgid "Case \\roman{caseii}."
@@ -16847,7 +16847,7 @@ msgstr "\\thecase. eset"
 
 #: lib/layouts/theorems-case.inc:24
 msgid "Case \\arabic{caseiv}."
-msgstr "\arabic{caseiv}. eset"
+msgstr "\\arabic{caseiv}. eset"
 
 #: lib/layouts/theorems-chap-bytype.module:2
 msgid "Theorems (Numbered by Type within Chapters)"
