@@ -621,6 +621,9 @@ public:
 	typedef std::set<docstring> UserMacroSet;
 	mutable UserMacroSet usermacros;
 
+	/// Collect user macro names with optional parameters at loading time
+	mutable UserMacroSet usermacros_with_opts;
+
 	/// Replace the inset contents for insets which InsetCode is equal
 	/// to the passed \p inset_code.
 	void changeRefsIfUnique(docstring const & from, docstring const & to);
