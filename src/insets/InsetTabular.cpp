@@ -6997,20 +6997,26 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 	}
 
 	size_t op = 0;
-	idx_type const cells = loctab->numberofcells;
+	idx_type cells = loctab->numberofcells;
 	p = 0;
 	cols = ocol;
 	rows = loctab->nrows();
-	col_type const columns = loctab->ncols();
+	col_type columns = loctab->ncols();
 
-	while (cell < cells && p < len && row < rows &&
+	while (p < len &&
 	       (p = buf.find_first_of(from_ascii("\t\n"), p)) != docstring::npos)
 	{
 		if (p >= len)
 			break;
 		switch (buf[p]) {
 		case '\t':
-			// we can only set this if we are not too far right
+			// append column if necessary
+			if (cols == columns) {
+				loctab->appendColumn(cols - 1);
+				columns = loctab->ncols();
+				cells = loctab->numberofcells;
+				++cell;
+			}
 			if (cols < columns) {
 				shared_ptr<InsetTableCell> inset = loctab->cellInset(cell);
 				Font const font = bv.textMetrics(&inset->text()).
@@ -7032,6 +7038,12 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 			}
 			cols = ocol;
 			++row;
+			// append row if necessary
+			if (row == rows && p < len - 1) {
+				loctab->appendRow(row - 1);
+				rows = loctab->nrows();
+				cells = loctab->numberofcells;
+			}
 			if (row < rows)
 				cell = loctab->cellIndex(row, cols);
 			break;
