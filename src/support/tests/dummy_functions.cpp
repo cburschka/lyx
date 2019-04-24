@@ -1,5 +1,7 @@
 #include <config.h>
 
+#include "LyXRC.h"
+
 #include "support/Messages.h"
 
 using namespace std;
@@ -9,7 +11,7 @@ namespace lyx {
 	bool verbose = false;
 
 	// Dummy LyXRC support
-	class LyXRC { string icon_set; } lyxrc;
+	LyXRC lyxrc;
 
 	// Keep the linker happy on Windows
 	void lyx_exit(int) {}
