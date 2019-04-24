@@ -1083,18 +1083,6 @@ void InsetMathMacro::write(WriteStream & os) const
 	bool const inside_macro = os.insideMacro();
 	os.insideMacro(true);
 
-	// Enclose in braces to avoid latex errors with xargs if we have
-	// optional arguments and are in the optional argument of a macro
-	if (d->optionals_ && inside_macro)
-		os << '{';
-
-	// Always protect macros in a fragile environment
-	if (os.fragile())
-		os << "\\protect";
-
-	os << "\\" << name();
-	bool first = true;
-
 	// Optional arguments:
 	// First find last non-empty optional argument
 	idx_type emptyOptFrom = 0;
@@ -1103,6 +1091,18 @@ void InsetMathMacro::write(WriteStream & os) const
 		if (!cell(i).empty())
 			emptyOptFrom = i + 1;
 	}
+
+	// Enclose in braces to avoid latex errors with xargs if we have
+	// optional arguments and are in the optional argument of a macro
+	if (d->optionals_ && inside_macro && emptyOptFrom)
+		os << '{';
+
+	// Always protect macros in a fragile environment
+	if (os.fragile())
+		os << "\\protect";
+
+	os << "\\" << name();
+	bool first = true;
 
 	// print out optionals
 	for (i=0; i < cells_.size() && i < emptyOptFrom; ++i) {
@@ -1142,7 +1142,7 @@ void InsetMathMacro::write(WriteStream & os) const
 	}
 
 	// Close the opened brace or add space if there was no argument
-	if (d->optionals_ && inside_macro)
+	if (d->optionals_ && inside_macro && emptyOptFrom)
 		os << '}';
 	else if (first)
 		os.pendingSpace(true);

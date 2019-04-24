@@ -942,41 +942,27 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			cell->push_back(MathAtom(new InsetMathSpace(string(1, t.character()), "")));
 
 		else if (t.cat() == catBegin) {
+			bool const inbraces = nextToken().cat() == catBegin ||
+				(!cell->empty() && cell->back()->asMacro());
 			MathData ar;
 			parse(ar, FLAG_BRACE_LAST, mode);
 			// do not create a BraceInset if they were written by LyX
 			// this helps to keep the annoyance of  "a choose b"  to a minimum
-			InsetMathMacro const * ma;
-			InsetMathBrace const * mb;
-			InsetMathChar const * mc;
-			for (size_type i = 0; i < ar.size(); ++i) {
-				mb = ar[i]->asBraceInset();
-				ma = mb && mb->cell(0).size()
-					? mb->cell(0)[0]->asMacro() : 0;
-				mc = ma && mb && mb->cell(0).size() > 1
-					? mb->cell(0)[1]->asCharInset(): 0;
-				bool has_opts = mc && mc->getChar() == '[';
-				// If this is a macro, it may have optional
-				// arguments, even if only defaults are used.
-				// In this case, there is no following '['.
-				if (!has_opts && ma && buf) {
-					if (mode_ & Parse::TRACKMACRO)
-						has_opts = buf->usermacros_with_opts.count(ma->name());
-					else {
-						MacroData const * md = buf->getMacro(ma->name(), false);
-						has_opts = md && md->optionals();
-					}
-				}
-				if (has_opts) {
-					// Remove the BraceInset around a macro
-					// with optional arguments. It will be
-					// automatically reinserted on write.
-					MathData md = mb->cell(0);
-					ar.erase(i);
-					ar.insert(i,md);
+			InsetMathMacro const * ma = !inbraces && ar.size() ? ar[0]->asMacro() : 0;
+			InsetMathChar const * mc = ma && ar.size() > 1 ? ar[1]->asCharInset(): 0;
+			bool braced = mc && mc->getChar() == '[';
+			// If this is a macro, it may have optional
+			// arguments, even if only defaults are used.
+			// In this case, there is no following '['.
+			if (!inbraces && !braced && ma && buf) {
+				if (mode_ & Parse::TRACKMACRO)
+					braced = buf->usermacros_with_opts.count(ma->name());
+				else {
+					MacroData const * md = buf->getMacro(ma->name(), false);
+					braced = md && md->optionals();
 				}
 			}
-			if (ar.size() == 1 && ar[0]->extraBraces())
+			if ((ar.size() == 1 && ar[0]->extraBraces()) || braced)
 				cell->append(ar);
 			else
 				cell->push_back(MathAtom(new InsetMathBrace(ar)));
