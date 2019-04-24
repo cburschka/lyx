@@ -21,6 +21,7 @@ macro(sources _program)
 		target_link_libraries(${_program} shlwapi)
 	endif()
 	qt_use_modules(${_program} Core)
+	set_property(TARGET ${_program} PROPERTY INTERPROCEDURAL_OPTIMIZATION FALSE)
 endmacro()
 
 file(GLOB test_sources ${TOP_SRC_DIR}/src/support/tests/${LYX_CPP_FILES})
