@@ -340,16 +340,6 @@ export/export/latex/en-th_utf8_(dvi|pdf[23]?|pdf4_texF)
 # luainputenc fails with TL19:
 export/export/latex/en-th_language-default_(dvi3|pdf5)_texF
 
-# ps2pdf gives the following error on updated TL18:
-#   Error: /undefined in d7Z
-# For previous² TL versions, there is no error but the output is incorrect
-# (jibberish instead of Japanese characters).
-# ² Which/were? Output is fine here (TL16/Debian) (GM)
-export/doc/ja/UserGuide_pdf
-# Simliar situation for this document, with the following error:
-#   Error: /undefined in =52+WsoG&
-export/doc/ja/Additional_pdf
-
 
 # ================================================
 Sublabel: externalissues
@@ -358,11 +348,21 @@ Sublabel: externalissues
 #
 # e.g. a bug or missing feature in ps2pdf
 
+# Japanese (platex)
+# dvips requires special font setup for kanji, otherwise
+# * the Postscript file has wrong and missing characters
+#   (without error or warning)
+# * as a consequence, ps2pdf fails for some documents on TL18 and TL19:
+#
+# The following may also fail for other reasons with TL19
+#export/doc/ja/(Additional|Customization|EmbeddedObjects|Math|UserGuide)_pdf
+
 # ps2pdf gives the following and exits with error:
 # Error: /invalidfileaccess in --file--
 # ps2pdf succeeds if the -dNOSAFER flag is used. For discussion, see:
 # https://www.mail-archive.com/search?l=mid&q=1506851183.3130.15.camel%40lyx.org
 export/examples/ja/Modules/LilyPond_Book_pdf
+
 
 # ======================================================================
 Sublabel: attic

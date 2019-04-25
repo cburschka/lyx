@@ -50,7 +50,7 @@ export/templates/Articles/Journal_of_the_Acoustical_Society_of_America.*
 export/templates/Articles/Journal_of_Statistical_Software_.*
 
 # LilyPond-book version 2.13 or newer.
-export/examples/Modules/LilyPond_Book.*
+export/examples/(|ja/)Modules/LilyPond_Book_(dvi|pdf|lyx2[23]).*
 
 # maa-monthly.sty (not in TeXLive)
 # http://www.maa.org/sites/default/files/pdf/pubs/maa-monthly.sty
@@ -62,8 +62,8 @@ export/templates/Articles/RJournal_.*
 
 # R (http://www.r-project.org)
 # R package knitr (http://yihui.name/knitr)
-export/examples/Modules/Sweave.*
-export/examples/Modules/Rnw.*knitr.*
+export/examples/(|ja/)Modules/Sweave_(dvi|pdf|lyx2[23]).*
+export/examples/(|ja/)Modules/Rnw.*knitr.*_(dvi|pdf|lyx2[23]).*
 
 # obsolete versions of documentclass or style files
 export/templates/Obsolete/.*
@@ -83,6 +83,13 @@ templates/examples/Books/Springer_Contributed_Books.*
 export/export/latex/unicodesymbols/.*_he.*pdf2
 export/export/latex/(supported-languages|he-scrarticle).*
 export/.*/he/.*((dvi|pdf.?)|_texF)
+
+# Japanese (platex)
+# dvips requires special font setup for kanji, otherwise
+# * the Postscript file has wrong and missing characters
+#   (without error or warning)
+# * as a consequence, ps2pdf fails for some documents on TL18 and TL19:
+export/.*/ja/.*_pdf
 
 
 Sublabel: needauth
@@ -135,15 +142,6 @@ export/templates/Articles/American_Astronomical_Society_.*
 # See also #9744 allow parallel configuration of TeX and non-TeX fonts.
 export/templates/Articles/Association_for_Computing_Machinery_pdf[45]_texF
 
-# ps2pdf gives the following error on updated TL18:
-#   Error: /undefined in d7Z
-# For previous² TL versions, there is no error but the output is incorrect
-# (jibberish instead of Japanese characters).
-# ² Which/were? Output is fine here (TL16/Debian) (GM)
-export/doc/ja/UserGuide_pdf
-# Simliar situation for this document, with the following error:
-#   Error: /undefined in =52+WsoG&
-export/doc/ja/Additional_pdf
 
 # Thai
 # Babel-thai globally changes catcodes for high-bit chars
