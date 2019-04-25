@@ -81,10 +81,10 @@ public:
 	void ulemCmd(UlemCmdType ulemcmd) { ulemcmd_ = ulemcmd; }
 	/// tell which ulem command type we are inside
 	UlemCmdType ulemCmd() const { return ulemcmd_; }
-	/// record whether we are in the argument of a math macro
-	void insideMacro(bool insidemacro) { insidemacro_ = insidemacro; }
-	/// tell whether we are in the argument of a math macro
-	bool insideMacro() const { return insidemacro_; }
+	/// record whether we are in the optional argument of a math macro
+	void insideMacroOpt(bool inopt) { insidemacro_opt_ = inopt; }
+	/// tell whether we are in the optional argument of a math macro
+	bool insideMacroOpt() const { return insidemacro_opt_; }
 	/// writes space if next thing is isalpha()
 	void pendingSpace(bool how);
 	/// writes space if next thing is isalpha()
@@ -124,8 +124,8 @@ private:
 	int latex_;
 	/// output type (default, source preview, instant preview)?
 	OutputType output_;
-	/// are we in the argument of a math macro?
-	bool insidemacro_;
+	/// are we in the optional argument of a math macro?
+	bool insidemacro_opt_;
 	/// do we have a space pending?
 	bool pendingspace_;
 	/// do we have a brace pending?

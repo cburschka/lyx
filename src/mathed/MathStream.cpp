@@ -128,7 +128,7 @@ WriteStream & operator<<(WriteStream & ws, docstring const & s)
 WriteStream::WriteStream(otexrowstream & os, bool fragile, bool latex,
 						 OutputType output, Encoding const * encoding)
 	: os_(os), fragile_(fragile), firstitem_(false), latex_(latex),
-	  output_(output), insidemacro_(false), pendingspace_(false),
+	  output_(output), insidemacro_opt_(false), pendingspace_(false),
 	  pendingbrace_(false), textmode_(false), locked_(0), ascii_(0),
 	  canbreakline_(true), mathsout_(false), ulemcmd_(NONE), line_(0),
 	  encoding_(encoding), row_entry_(TexRow::row_none)
