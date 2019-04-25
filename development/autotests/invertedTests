@@ -79,11 +79,17 @@ export/templates/Articles/R_Journal_(dvi3|pdf[45])_systemF
 # * fails also due to #11522, see "lyxbugs" below.
 export/export/latex/supported-languages_.*_systemF
 
-# dvipdfm fails (missing Hebrew font DavidCLM-Medium.pfa)
-# also many warnings
+# dvipdfm fails with "culmus-latex" fonts, because some of the fonts are
+# type1 *.pfa while dvipdfm only works with *.pfb fonts:
+#   dvipdfmx:warning: Could not locate a virtual/physical font for TFM "david".
+#   dvipdfmx:warning: >> This font is mapped to a physical font "DavidCLM-Medium.pfa".
+#   dvipdfmx:warning: >> Please check if kpathsea library can find this font: DavidCLM-Medium.pfa
+# but: `kpsewhich DavidCLM-Medium.pfa` finds the font!
+#
+# The dvipdfmx log has also many warnings
+# due to the Hebrew vocalisation using Postscript 3 specials
 #  xdvipdfmx:warning: Interpreting PS code failed!!! Output might be broken!!!
 #  xdvipdfmx:warning: Interpreting special command ps: (ps:) failed.
-# maybe due to the Hebrew vocalisation using Postscript 3 specials
 export/export/latex/supported-languages_pdf3
 
 # Thai with CJK package requires the babel option "thaicjk" instead of "thai".
@@ -100,6 +106,7 @@ export/doc/ja/Formula-numbering_pdf4_systemF
 # ! Package xypdf Error: pdfTeX version 1.40.0 or higher is needed for the xypdf
 export/examples/ja/Graphics_and_Insets/XY-Pic.*_systemF
 # Document class js*.cls requires platex <-> Xe/LuaTeX, fixed with "bxjs*.cls"
+
 
 # ================================================
 Sublabel: lyxbugs
@@ -325,16 +332,13 @@ export/.*/he/.*_texF
 # See comment in unreliableTests
 export/export/latex/uk-babel-date-missing-chars-with-ascii_pdf5_texF
 
-# Hebrew
-# Missing 8-bit fonts (see unreliableTests)
-# After reinstalling culmus under the TL19 control, it compiles
-#export/export/latex/unicodesymbols/012-31-hebrew_he-.*_pdf2
-
 # Thai
 # babel-thai globally changes catcodes for high-bit chars
 # which prevents parsing of utf8 with vanilla inputenc (utf8x works)
-# see also unreliable.wrong_output
+# see also unreliable.wrong_output and unreliable.varying_versions
 export/export/latex/en-th_utf8_(dvi|pdf[23]?|pdf4_texF)
+# luainputenc fails with TL19:
+export/export/latex/en-th_language-default_(dvi3|pdf5)_texF
 
 # ps2pdf gives the following error on updated TL18:
 #   Error: /undefined in d7Z
