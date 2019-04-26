@@ -1,15 +1,15 @@
 # Български превод на LyX
-# Copyright (C) 2000, The LyX team.
+# Copyright (C) 2000ff., The LyX team.
 # V. Jeliazkov <vveesskkoo@google.com>
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 1.1.6\n"
+"Project-Id-Version: LyX 2.3.x\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-04-15 11:43+0200\n"
+"POT-Creation-Date: 2019-04-25 23:30-0400\n"
 "PO-Revision-Date: 2019-04-23 13:49+0300\n"
-"Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
-"Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
+"Last-Translator: V. Jeliazkov <vveesskkoo@google.com>\n"
+"Language-Team: Bulgarian <lyx-docs@lists.lyx.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3111,9 +3111,8 @@ msgstr "&Избрани:"
 # src/frontends/xforms/FormPreferences.C:226
 # src/frontends/xforms/FormPreferences.C:255
 #: src/frontends/qt4/ui/NomenclUi.ui:14 src/insets/InsetNomencl.cpp:184
-#, fuzzy
 msgid "Nomenclature"
-msgstr "Конвертори"
+msgstr "Означение"
 
 # src/lyxfont.C:42
 #: src/frontends/qt4/ui/NomenclUi.ui:22
@@ -4417,7 +4416,7 @@ msgstr "Команда за CheckTex:"
 # src/frontends/xforms/FormPreferences.C:255
 #: src/frontends/qt4/ui/PrefLatexUi.ui:292
 msgid "&Nomenclature command:"
-msgstr "Команда за индиксиране:"
+msgstr "Команда за индeксиране:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:307
 msgid ""
@@ -6041,13 +6040,13 @@ msgstr ""
 #: lib/citeengines/biblatex-natbib.citeengine:143 lib/citeengines/biblatex.citeengine:133
 #, fuzzy
 msgid "Footnote"
-msgstr "Бележки под линия"
+msgstr "Бележки под черта"
 
 # src/ext_l10n.h:246
 #: lib/citeengines/biblatex-natbib.citeengine:144 lib/citeengines/biblatex.citeengine:134
 #, fuzzy
 msgid "Foot"
-msgstr "Бел. под линия"
+msgstr "Бел. под черта"
 
 # src/ext_l10n.h:186
 #: lib/citeengines/biblatex-natbib.citeengine:145 lib/citeengines/biblatex.citeengine:135 lib/citeengines/jurabib.citeengine:125
@@ -6696,13 +6695,13 @@ msgstr "Стандартен"
 #: lib/layouts/IEEEtran-CompSoc.layout:31 lib/layouts/iucr.layout:103 lib/layouts/iucr.layout:106
 #, fuzzy
 msgid "Author Footnote"
-msgstr "Бел. под линия"
+msgstr "Бел. под черта"
 
 # src/ext_l10n.h:246
 #: lib/layouts/IEEEtran-CompSoc.layout:37
 #, fuzzy
 msgid "Author foot"
-msgstr "Бел. под линия"
+msgstr "Бел. под черта"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:61 lib/layouts/IEEEtran-TransMag.layout:39
 msgid "Nontitle Abstract Index Text"
@@ -7569,7 +7568,7 @@ msgstr "ред на таблица"
 #: lib/layouts/aastex.layout:522
 #, fuzzy
 msgid "Table note:"
-msgstr "Бел. под линия"
+msgstr "Бел. под черта"
 
 # src/LColor.C:97
 #: lib/layouts/aastex.layout:529
@@ -18055,9 +18054,8 @@ msgid "page[[nomencl]]"
 msgstr "стр."
 
 #: lib/layouts/stdinsets.inc:712 lib/layouts/stdinsets.inc:720
-#, fuzzy
 msgid "Nomenclature[[output]]"
-msgstr "Конвертори"
+msgstr "Речник на означенията"
 
 # src/insets/insetinclude.C:316
 #: lib/layouts/stdlayouts.inc:100
@@ -22595,7 +22593,7 @@ msgstr "Етикет...|Е"
 # src/frontends/kde/FormRef.C:103
 #: lib/ui/stdmenus.inc:394
 msgid "Nomenclature Entry...|y"
-msgstr "Запис в списъка на съкръщенията|З"
+msgstr "Запис в речника на съкръщенията|З"
 
 # src/ext_l10n.h:45
 #: lib/ui/stdmenus.inc:396
@@ -22844,7 +22842,7 @@ msgstr "Списък на списъците|п"
 # src/ext_l10n.h:136
 #: lib/ui/stdmenus.inc:511
 msgid "Nomenclature|N"
-msgstr "Списък с означения|о"
+msgstr "Речник с означения|о"
 
 # src/ext_l10n.h:186
 #: lib/ui/stdmenus.inc:512
@@ -32918,7 +32916,7 @@ msgstr "Уравнения"
 # src/frontends/kde/FormRef.C:103
 #: src/TocBackend.cpp:290
 msgid "Nomenclature Entries"
-msgstr "Списък на съкращенията"
+msgstr "Речник на съкращенията"
 
 # src/debug.C:44
 #: src/VCBackend.cpp:63 src/VCBackend.cpp:873 src/VCBackend.cpp:878 src/VCBackend.cpp:927 src/VCBackend.cpp:986 src/VCBackend.cpp:1045
@@ -35749,7 +35747,7 @@ msgstr "Матрица"
 # src/frontends/xforms/FormPreferences.C:255
 #: src/frontends/qt4/GuiNomenclature.h:36
 msgid "Nomenclature Settings"
-msgstr "Настройки на списък с означения"
+msgstr "Настройки на речник с означения"
 
 # src/form1.C:129 src/sp_form.C:58
 #: src/frontends/qt4/GuiNote.cpp:26
@@ -36060,7 +36058,7 @@ msgstr " Дълга таблица(L)|#L"
 # src/frontends/xforms/FormPreferences.C:255
 #: src/frontends/qt4/GuiPrintNomencl.h:40
 msgid "Nomenclature List Settings"
-msgstr "Настроики на списък със описания"
+msgstr "Настроики на речник с означения"
 
 # src/form1.C:129 src/sp_form.C:58
 #: src/frontends/qt4/GuiPrintindex.cpp:37
@@ -38845,7 +38843,7 @@ msgstr "означение: "
 # src/frontends/xforms/FormPreferences.C:255
 #: src/insets/InsetNomencl.cpp:90
 msgid "Nomenclature Symbol: "
-msgstr "Символ на описание: "
+msgstr "Символ на означение: "
 
 # src/ext_l10n.h:223
 #: src/insets/InsetNomencl.cpp:91
