@@ -942,27 +942,11 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			cell->push_back(MathAtom(new InsetMathSpace(string(1, t.character()), "")));
 
 		else if (t.cat() == catBegin) {
-			bool const inbraces = nextToken().cat() == catBegin ||
-				(!cell->empty() && cell->back()->asMacro());
 			MathData ar;
 			parse(ar, FLAG_BRACE_LAST, mode);
 			// do not create a BraceInset if they were written by LyX
 			// this helps to keep the annoyance of  "a choose b"  to a minimum
-			InsetMathMacro const * ma = !inbraces && ar.size() ? ar[0]->asMacro() : 0;
-			InsetMathChar const * mc = ma && ar.size() > 1 ? ar[1]->asCharInset(): 0;
-			bool braced = mc && mc->getChar() == '[';
-			// If this is a macro, it may have optional
-			// arguments, even if only defaults are used.
-			// In this case, there is no following '['.
-			if (!inbraces && !braced && ma && buf) {
-				if (mode_ & Parse::TRACKMACRO)
-					braced = buf->usermacros_with_opts.count(ma->name());
-				else {
-					MacroData const * md = buf->getMacro(ma->name(), false);
-					braced = md && md->optionals();
-				}
-			}
-			if ((ar.size() == 1 && ar[0]->extraBraces()) || braced)
+			if (ar.size() == 1 && ar[0]->extraBraces())
 				cell->append(ar);
 			else
 				cell->push_back(MathAtom(new InsetMathBrace(ar)));
@@ -1150,11 +1134,8 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				name, nargs, optionals, MacroTypeNewcommand,
 				optionalValues, def, display)));
 
-			if (buf && (mode_ & Parse::TRACKMACRO)) {
+			if (buf && (mode_ & Parse::TRACKMACRO))
 				buf->usermacros.insert(name);
-				if (optionals)
-					buf->usermacros_with_opts.insert(name);
-			}
 		}
 
 		else if (t.cs() == "newcommandx" ||
@@ -1274,11 +1255,8 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				name, nargs, optionals, MacroTypeNewcommandx,
 				optionalValues, def, display)));
 
-			if (buf && (mode_ & Parse::TRACKMACRO)) {
+			if (buf && (mode_ & Parse::TRACKMACRO))
 				buf->usermacros.insert(name);
-				if (optionals)
-					buf->usermacros_with_opts.insert(name);
-			}
 		}
 
 		else if (t.cs() == "(") {
