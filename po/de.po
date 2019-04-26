@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-03-23 08:10+0100\n"
+"POT-Creation-Date: 2019-04-25 23:30-0400\n"
 "PO-Revision-Date: 2019-03-23 08:17+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
@@ -607,7 +607,7 @@ msgstr "Oben"
 #: src/frontends/qt4/ui/BoxUi.ui:209 src/frontends/qt4/ui/BoxUi.ui:239
 #: src/frontends/qt4/ui/TabularUi.ui:282 src/frontends/qt4/ui/TabularUi.ui:537
 #: lib/ui/stdcontext.inc:444 src/frontends/qt4/GuiMathMatrix.cpp:53
-#: src/frontends/qt4/GuiTabular.cpp:228
+#: src/frontends/qt4/GuiTabular.cpp:229
 msgid "Middle"
 msgstr "Mitte"
 
@@ -641,21 +641,21 @@ msgstr "Dehnen"
 #: src/frontends/qt4/ui/BoxUi.ui:265 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:391 src/frontends/qt4/ui/TabularUi.ui:1549
 #: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiDocument.cpp:1421
-#: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:902
+#: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:928
 msgid "Left"
 msgstr "Links"
 
 #: src/frontends/qt4/ui/BoxUi.ui:270 src/frontends/qt4/ui/TabularUi.ui:396
 #: src/frontends/qt4/ui/TabularUi.ui:1556 src/frontends/qt4/GuiExternal.cpp:79
 #: src/frontends/qt4/GuiGraphics.cpp:73 src/frontends/qt4/GuiParagraph.cpp:113
-#: src/frontends/qt4/GuiTabular.cpp:903
+#: src/frontends/qt4/GuiTabular.cpp:929
 msgid "Center"
 msgstr "Zentriert"
 
 #: src/frontends/qt4/ui/BoxUi.ui:275 src/frontends/qt4/ui/ListingsUi.ui:108
 #: src/frontends/qt4/ui/TabularUi.ui:401 src/frontends/qt4/ui/TabularUi.ui:1566
 #: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiDocument.cpp:1423
-#: src/frontends/qt4/GuiParagraph.cpp:112 src/frontends/qt4/GuiTabular.cpp:904
+#: src/frontends/qt4/GuiParagraph.cpp:112 src/frontends/qt4/GuiTabular.cpp:930
 msgid "Right"
 msgstr "Rechts"
 
@@ -2585,7 +2585,7 @@ msgstr "&Paket zur Code-Hervorhebung:"
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:331
 #: lib/layouts/stdinsets.inc:337 lib/layouts/stdinsets.inc:383
 #: lib/layouts/stdinsets.inc:389 src/insets/InsetCaption.cpp:388
-#: src/insets/InsetListings.cpp:477 src/insets/InsetListings.cpp:479
+#: src/insets/InsetListings.cpp:493 src/insets/InsetListings.cpp:495
 msgid "Listing"
 msgstr "Listing"
 
@@ -5111,12 +5111,12 @@ msgid "Horizontal alignment in column"
 msgstr "Horizontale Ausrichtung in der Spalte"
 
 #: src/frontends/qt4/ui/TabularUi.ui:386 src/frontends/qt4/GuiParagraph.cpp:110
-#: src/frontends/qt4/GuiTabular.cpp:906
+#: src/frontends/qt4/GuiTabular.cpp:932
 msgid "Justified"
 msgstr "Blocksatz"
 
-#: src/frontends/qt4/ui/TabularUi.ui:406 src/frontends/qt4/GuiTabular.cpp:222
-#: src/frontends/qt4/GuiTabular.cpp:908
+#: src/frontends/qt4/ui/TabularUi.ui:406 src/frontends/qt4/GuiTabular.cpp:223
+#: src/frontends/qt4/GuiTabular.cpp:934
 msgid "At Decimal Separator"
 msgstr "Am Dezimaltrenner"
 
@@ -6178,7 +6178,7 @@ msgstr "Abbildungsanmerkungen"
 #: lib/layouts/stdlayouts.inc:57 lib/layouts/stdlayouts.inc:77
 #: lib/layouts/stdletter.inc:13 lib/layouts/svcommon.inc:27
 #: lib/layouts/svcommon.inc:612 lib/layouts/svcommon.inc:623
-#: lib/layouts/tufte-book.layout:238
+#: lib/layouts/tufte-book.layout:211
 msgid "MainText"
 msgstr "Haupttext"
 
@@ -6739,7 +6739,7 @@ msgstr "IEEE Transactions"
 #: lib/layouts/simplecv.layout:18 lib/layouts/slides.layout:61
 #: lib/layouts/stdclass.inc:28 lib/layouts/stdinsets.inc:638
 #: lib/layouts/stdletter.inc:12 lib/layouts/svcommon.inc:26
-#: lib/layouts/tufte-book.layout:47 lib/ui/stdtoolbars.inc:69
+#: lib/layouts/tufte-book.layout:20 lib/ui/stdtoolbars.inc:69
 #: src/insets/InsetRef.cpp:484
 msgid "Standard"
 msgstr "Standard"
@@ -6772,7 +6772,7 @@ msgstr "Standard"
 #: lib/layouts/simplecv.layout:134 lib/layouts/stdtitle.inc:14
 #: lib/layouts/svcommon.inc:57 lib/layouts/svcommon.inc:324
 #: lib/layouts/svmult.layout:47 lib/layouts/svprobth.layout:76
-#: lib/layouts/tufte-book.layout:62
+#: lib/layouts/tufte-book.layout:35
 msgid "Title"
 msgstr "Titel"
 
@@ -6812,7 +6812,7 @@ msgstr "Kleinschreibung"
 #: lib/layouts/scrclass.inc:202 lib/layouts/siamltex.layout:218
 #: lib/layouts/sigplanconf.layout:147 lib/layouts/stdtitle.inc:35
 #: lib/layouts/svcommon.inc:344 lib/layouts/svmult.layout:79
-#: lib/layouts/svprobth.layout:93 lib/layouts/tufte-book.layout:67
+#: lib/layouts/svprobth.layout:93 lib/layouts/tufte-book.layout:40
 msgid "Author"
 msgstr "Autor"
 
@@ -6977,8 +6977,8 @@ msgstr "Kurztitel für den Anhang"
 #: lib/layouts/scrclass.inc:268 lib/layouts/scrreprt.layout:12
 #: lib/layouts/scrreprt.layout:14 lib/layouts/siamltex.layout:326
 #: lib/layouts/simplecv.layout:156 lib/layouts/stdstruct.inc:54
-#: lib/layouts/svcommon.inc:575 lib/layouts/tufte-book.layout:290
-#: lib/layouts/tufte-book.layout:292 lib/layouts/tufte-handout.layout:77
+#: lib/layouts/svcommon.inc:575 lib/layouts/tufte-book.layout:263
+#: lib/layouts/tufte-book.layout:265 lib/layouts/tufte-handout.layout:77
 #: src/frontends/qt4/GuiDocument.cpp:1626 src/insets/InsetBibtex.cpp:892
 msgid "Bibliography"
 msgstr "Literaturverzeichnis"
@@ -7259,7 +7259,7 @@ msgstr "Danksagungen."
 #: lib/layouts/scrclass.inc:80 lib/layouts/siamltex.layout:369
 #: lib/layouts/simplecv.layout:31 lib/layouts/spie.layout:21
 #: lib/layouts/stdsections.inc:77 lib/layouts/svcommon.inc:196
-#: lib/layouts/tufte-book.layout:121 src/frontends/qt4/GuiDocument.cpp:138
+#: lib/layouts/tufte-book.layout:94 src/frontends/qt4/GuiDocument.cpp:138
 msgid "Section"
 msgstr "Abschnitt"
 
@@ -7278,7 +7278,7 @@ msgstr "Abschnitt"
 #: lib/layouts/revtex.layout:52 lib/layouts/scrclass.inc:88
 #: lib/layouts/siamltex.layout:380 lib/layouts/simplecv.layout:59
 #: lib/layouts/stdsections.inc:108 lib/layouts/svcommon.inc:205
-#: lib/layouts/tufte-book.layout:150
+#: lib/layouts/tufte-book.layout:123
 msgid "Subsection"
 msgstr "Unterabschnitt"
 
@@ -7315,7 +7315,7 @@ msgstr "Unterunterabschnitt"
 #: lib/layouts/scrclass.inc:209 lib/layouts/scrlettr.layout:165
 #: lib/layouts/scrlttr2.layout:244 lib/layouts/siamltex.layout:237
 #: lib/layouts/stdtitle.inc:54 lib/layouts/svcommon.inc:370
-#: lib/layouts/tufte-book.layout:72 lib/ui/stdmenus.inc:396
+#: lib/layouts/tufte-book.layout:45 lib/ui/stdmenus.inc:396
 msgid "Date"
 msgstr "Datum"
 
@@ -7760,8 +7760,8 @@ msgstr "American Chemical Society (ACS)"
 #: lib/layouts/scrclass.inc:307 lib/layouts/siamltex.layout:205
 #: lib/layouts/simplecv.layout:51 lib/layouts/stdinsets.inc:645
 #: lib/layouts/stdsections.inc:32 lib/layouts/stdsections.inc:64
-#: lib/layouts/stdsections.inc:95 lib/layouts/tufte-book.layout:110
-#: lib/layouts/tufte-book.layout:139 lib/layouts/tufte-handout.layout:40
+#: lib/layouts/stdsections.inc:95 lib/layouts/tufte-book.layout:83
+#: lib/layouts/tufte-book.layout:112 lib/layouts/tufte-handout.layout:40
 msgid "Short Title|S"
 msgstr "Kurztitel|z"
 
@@ -7885,7 +7885,7 @@ msgid "chemistry"
 msgstr "Chemie"
 
 #: lib/layouts/achemso.layout:305 lib/layouts/achemso.layout:308
-#: lib/languages:795
+#: lib/languages:796
 msgid "Latin"
 msgstr "Latein"
 
@@ -8229,7 +8229,7 @@ msgstr "Randabbildung (nur sigchi-a)"
 
 #: lib/layouts/acmart.layout:520 lib/layouts/beamer.layout:1647
 #: lib/layouts/powerdot.layout:532 lib/layouts/sciposter.layout:109
-#: lib/layouts/stdfloats.inc:33 lib/layouts/tufte-book.layout:284
+#: lib/layouts/stdfloats.inc:33 lib/layouts/tufte-book.layout:257
 msgid "List of Figures"
 msgstr "Abbildungsverzeichnis"
 
@@ -8239,7 +8239,7 @@ msgstr "Randtabelle (nur sigchi-a)"
 
 #: lib/layouts/acmart.layout:533 lib/layouts/beamer.layout:1634
 #: lib/layouts/powerdot.layout:515 lib/layouts/sciposter.layout:123
-#: lib/layouts/stdfloats.inc:18 lib/layouts/tufte-book.layout:268
+#: lib/layouts/stdfloats.inc:18 lib/layouts/tufte-book.layout:241
 msgid "List of Tables"
 msgstr "Tabellenverzeichnis"
 
@@ -8637,7 +8637,7 @@ msgstr "Teil"
 #: lib/layouts/recipebook.layout:42 lib/layouts/scrbook.layout:17
 #: lib/layouts/scrclass.inc:68 lib/layouts/stdsections.inc:45
 #: lib/layouts/svcommon.inc:152 lib/layouts/svmult.layout:111
-#: lib/layouts/tufte-book.layout:93
+#: lib/layouts/tufte-book.layout:66
 msgid "Chapter"
 msgstr "Kapitel"
 
@@ -9465,7 +9465,7 @@ msgstr "Die Längste Marke in dieser Liste (gibt die Einzugsbreite vor)"
 #: lib/layouts/stdsections.inc:78 lib/layouts/svcommon.inc:117
 #: lib/layouts/svcommon.inc:159 lib/layouts/svcommon.inc:172
 #: lib/layouts/svcommon.inc:184 lib/layouts/svcommon.inc:416
-#: lib/layouts/tufte-book.layout:95 lib/layouts/tufte-book.layout:122
+#: lib/layouts/tufte-book.layout:68 lib/layouts/tufte-book.layout:95
 #: lib/layouts/tufte-handout.layout:24
 msgid "Sectioning"
 msgstr "Gliederung"
@@ -9505,7 +9505,7 @@ msgstr "Abschnitt \\arabic{section}"
 
 #: lib/layouts/beamer.layout:272 lib/layouts/scrclass.inc:149
 #: lib/layouts/simplecv.layout:52 lib/layouts/stdsections.inc:96
-#: lib/layouts/tufte-book.layout:140
+#: lib/layouts/tufte-book.layout:113
 msgid "The section as it appears in the table of contents/running headers"
 msgstr ""
 "Der Abschnittstitel, wie er im Inhaltsverzeichnis/Kolumnentitel erscheint"
@@ -15027,7 +15027,7 @@ msgid "Addchap"
 msgstr "Kapitel (Inhaltsverz.)"
 
 #: lib/layouts/scrclass.inc:138 lib/layouts/stdsections.inc:65
-#: lib/layouts/tufte-book.layout:111
+#: lib/layouts/tufte-book.layout:84
 msgid "The chapter as it appears in the table of contents/running headers"
 msgstr "Der Kapiteltitel, wie er im Inhaltsverzeichnis/Kolumnentitel erscheint"
 
@@ -17025,55 +17025,55 @@ msgstr "Japanischer Bericht (vertikale Schreibrichtung)"
 msgid "Tufte Book"
 msgstr "Tufte-Buch"
 
-#: lib/layouts/tufte-book.layout:164
+#: lib/layouts/tufte-book.layout:137
 msgid "Sidenote"
 msgstr "Randnotiz (nummeriert)"
 
-#: lib/layouts/tufte-book.layout:169
+#: lib/layouts/tufte-book.layout:142
 msgid "sidenote"
 msgstr "Randnotiz (numm.)"
 
-#: lib/layouts/tufte-book.layout:184
+#: lib/layouts/tufte-book.layout:157
 msgid "Marginnote"
 msgstr "Randnotiz (nicht nummeriert)"
 
-#: lib/layouts/tufte-book.layout:188
+#: lib/layouts/tufte-book.layout:161
 msgid "marginnote"
 msgstr "Randnotiz (nicht numm.)"
 
-#: lib/layouts/tufte-book.layout:197
+#: lib/layouts/tufte-book.layout:170
 msgid "NewThought"
 msgstr "Neuer Gedanke"
 
-#: lib/layouts/tufte-book.layout:201
+#: lib/layouts/tufte-book.layout:174
 msgid "new thought"
 msgstr "Neuer Gedanke"
 
-#: lib/layouts/tufte-book.layout:212
+#: lib/layouts/tufte-book.layout:185
 msgid "AllCaps"
 msgstr "Versalien"
 
-#: lib/layouts/tufte-book.layout:215
+#: lib/layouts/tufte-book.layout:188
 msgid "allcaps"
 msgstr "Versalien"
 
-#: lib/layouts/tufte-book.layout:225
+#: lib/layouts/tufte-book.layout:198
 msgid "SmallCaps"
 msgstr "Kapitälchen"
 
-#: lib/layouts/tufte-book.layout:228
+#: lib/layouts/tufte-book.layout:201
 msgid "smallcaps"
 msgstr "Kapitälchen"
 
-#: lib/layouts/tufte-book.layout:234
+#: lib/layouts/tufte-book.layout:207
 msgid "Full Width"
 msgstr "Volle Breite"
 
-#: lib/layouts/tufte-book.layout:260
+#: lib/layouts/tufte-book.layout:233
 msgid "MarginTable"
 msgstr "Randtabelle"
 
-#: lib/layouts/tufte-book.layout:276
+#: lib/layouts/tufte-book.layout:249
 msgid "MarginFigure"
 msgstr "Randabbildung"
 
@@ -17217,320 +17217,320 @@ msgstr "Englisch (Großbritannien)"
 msgid "Bulgarian"
 msgstr "Bulgarisch"
 
-#: lib/languages:343
+#: lib/languages:344
 msgid "English (Canada)"
 msgstr "Englisch (Kanada)"
 
-#: lib/languages:356
+#: lib/languages:357
 msgid "French (Canada)"
 msgstr "Französisch (Kanada)"
 
-#: lib/languages:366
+#: lib/languages:367
 msgid "Catalan"
 msgstr "Katalanisch"
 
-#: lib/languages:378
+#: lib/languages:379
 msgid "Chinese (simplified)"
 msgstr "Chinesisch (vereinfacht)"
 
-#: lib/languages:388
+#: lib/languages:389
 msgid "Chinese (traditional)"
 msgstr "Chinesisch (traditionell)"
 
-#: lib/languages:398
+#: lib/languages:399
 msgid "Coptic"
 msgstr "Koptisch"
 
-#: lib/languages:405
+#: lib/languages:406
 msgid "Croatian"
 msgstr "Kroatisch"
 
-#: lib/languages:414
+#: lib/languages:415
 msgid "Czech"
 msgstr "Tschechisch"
 
-#: lib/languages:424
+#: lib/languages:425
 msgid "Danish"
 msgstr "Dänisch"
 
-#: lib/languages:435
+#: lib/languages:436
 msgid "Divehi (Maldivian)"
 msgstr "Dhivehi"
 
-#: lib/languages:442
+#: lib/languages:443
 msgid "Dutch"
 msgstr "Holländisch"
 
-#: lib/languages:453
+#: lib/languages:454
 msgid "English"
 msgstr "Englisch"
 
-#: lib/languages:466
+#: lib/languages:467
 msgid "Esperanto"
 msgstr "Esperanto"
 
-#: lib/languages:475
+#: lib/languages:476
 msgid "Estonian"
 msgstr "Estnisch"
 
-#: lib/languages:489
+#: lib/languages:490
 msgid "Farsi"
 msgstr "Persisch"
 
-#: lib/languages:504
+#: lib/languages:505
 msgid "Finnish"
 msgstr "Finnisch"
 
-#: lib/languages:515
+#: lib/languages:516
 msgid "French"
 msgstr "Französisch"
 
-#: lib/languages:531
+#: lib/languages:532
 msgid "Friulian"
 msgstr "Furlanisch"
 
-#: lib/languages:541
+#: lib/languages:542
 msgid "Galician"
 msgstr "Galizisch"
 
-#: lib/languages:554 src/frontends/qt4/GuiSymbols.cpp:77
+#: lib/languages:555 src/frontends/qt4/GuiSymbols.cpp:77
 msgid "Georgian"
 msgstr "Georgisch"
 
-#: lib/languages:564
+#: lib/languages:565
 msgid "German (old spelling)"
 msgstr "Deutsch (alte Rechtschreibung)"
 
-#: lib/languages:575
+#: lib/languages:576
 msgid "German"
 msgstr "Deutsch"
 
-#: lib/languages:590
+#: lib/languages:591
 msgid "German (Switzerland)"
 msgstr "Deutsch (Schweiz)"
 
-#: lib/languages:603
+#: lib/languages:604
 msgid "German (Switzerland, old spelling)"
 msgstr "Deutsch (Schweiz, alte Rechtschreibung)"
 
-#: lib/languages:613 lib/ui/stdtoolbars.inc:307 lib/ui/stdtoolbars.inc:600
+#: lib/languages:614 lib/ui/stdtoolbars.inc:307 lib/ui/stdtoolbars.inc:600
 #: src/frontends/qt4/GuiSymbols.cpp:60
 msgid "Greek"
 msgstr "Griechisch"
 
-#: lib/languages:626
+#: lib/languages:627
 msgid "Greek (polytonic)"
 msgstr "Griechisch (polytonisch)"
 
-#: lib/languages:638 src/frontends/qt4/GuiSymbols.cpp:63
+#: lib/languages:639 src/frontends/qt4/GuiSymbols.cpp:63
 msgid "Hebrew"
 msgstr "Hebräisch"
 
-#: lib/languages:654
+#: lib/languages:655
 msgid "Hindi"
 msgstr "Hindi"
 
-#: lib/languages:673
+#: lib/languages:674
 msgid "Icelandic"
 msgstr "Isländisch"
 
-#: lib/languages:684
+#: lib/languages:685
 msgid "Interlingua"
 msgstr "Interlingua"
 
-#: lib/languages:694
+#: lib/languages:695
 msgid "Irish"
 msgstr "Irisch"
 
-#: lib/languages:703
+#: lib/languages:704
 msgid "Italian"
 msgstr "Italienisch"
 
-#: lib/languages:718
+#: lib/languages:719
 msgid "Japanese"
 msgstr "Japanisch"
 
-#: lib/languages:732
+#: lib/languages:733
 msgid "Japanese (CJK)"
 msgstr "Japanisch (CJK)"
 
-#: lib/languages:741 src/frontends/qt4/GuiSymbols.cpp:72
+#: lib/languages:742 src/frontends/qt4/GuiSymbols.cpp:72
 msgid "Kannada"
 msgstr "Kannada"
 
-#: lib/languages:750
+#: lib/languages:751
 msgid "Kazakh"
 msgstr "Kasachisch"
 
-#: lib/languages:761
+#: lib/languages:762
 msgid "Khmer"
 msgstr "Khmer"
 
-#: lib/languages:768
+#: lib/languages:769
 msgid "Korean"
 msgstr "Koreanisch"
 
-#: lib/languages:777
+#: lib/languages:778
 msgid "Kurmanji"
 msgstr "Kurmandschi"
 
-#: lib/languages:786 src/frontends/qt4/GuiSymbols.cpp:75
+#: lib/languages:787 src/frontends/qt4/GuiSymbols.cpp:75
 msgid "Lao"
 msgstr "Laotisch"
 
-#: lib/languages:805
+#: lib/languages:806
 msgid "Latvian"
 msgstr "Lettisch"
 
-#: lib/languages:818
+#: lib/languages:819
 msgid "Lithuanian"
 msgstr "Litauisch"
 
-#: lib/languages:829
+#: lib/languages:830
 msgid "Lower Sorbian"
 msgstr "Niedersorbisch"
 
-#: lib/languages:838
+#: lib/languages:839
 msgid "Hungarian"
 msgstr "Ungarisch"
 
-#: lib/languages:849
+#: lib/languages:850
 msgid "Macedonian"
 msgstr "Mazedonisch"
 
-#: lib/languages:859
+#: lib/languages:860
 msgid "Marathi"
 msgstr "Marathi"
 
-#: lib/languages:869
+#: lib/languages:870
 msgid "Mongolian"
 msgstr "Mongolisch"
 
-#: lib/languages:878
+#: lib/languages:879
 msgid "English (New Zealand)"
 msgstr "Englisch (Neuseeland)"
 
-#: lib/languages:888
+#: lib/languages:889
 msgid "Norwegian (Bokmaal)"
 msgstr "Norwegisch (Bokmål)"
 
-#: lib/languages:898
+#: lib/languages:899
 msgid "Norwegian (Nynorsk)"
 msgstr "Norwegisch (Nynorsk)"
 
-#: lib/languages:909
+#: lib/languages:910
 msgid "Occitan"
 msgstr "Okzitanisch"
 
-#: lib/languages:930
+#: lib/languages:931
 msgid "Piedmontese"
 msgstr "Piemontesisch"
 
-#: lib/languages:940
+#: lib/languages:941
 msgid "Polish"
 msgstr "Polnisch"
 
-#: lib/languages:951
+#: lib/languages:952
 msgid "Portuguese"
 msgstr "Portugiesisch"
 
-#: lib/languages:961
+#: lib/languages:962
 msgid "Romanian"
 msgstr "Rumänisch"
 
-#: lib/languages:971
+#: lib/languages:972
 msgid "Romansh"
 msgstr "Rätoromanisch"
 
-#: lib/languages:981
+#: lib/languages:982
 msgid "Russian"
 msgstr "Russisch"
 
-#: lib/languages:992
+#: lib/languages:993
 msgid "North Sami"
 msgstr "Nordsamisch"
 
-#: lib/languages:1001
+#: lib/languages:1002
 msgid "Sanskrit"
 msgstr "Sanskrit"
 
-#: lib/languages:1008
+#: lib/languages:1009
 msgid "Scottish"
 msgstr "Schottisch"
 
-#: lib/languages:1019
+#: lib/languages:1020
 msgid "Serbian"
 msgstr "Serbisch"
 
-#: lib/languages:1034
+#: lib/languages:1035
 msgid "Serbian (Latin)"
 msgstr "Serbisch (latein. Schrift)"
 
-#: lib/languages:1044
+#: lib/languages:1045
 msgid "Slovak"
 msgstr "Slowakisch"
 
-#: lib/languages:1054
+#: lib/languages:1055
 msgid "Slovene"
 msgstr "Slowenisch"
 
-#: lib/languages:1063
+#: lib/languages:1064
 msgid "Spanish"
 msgstr "Spanisch"
 
-#: lib/languages:1077
+#: lib/languages:1078
 msgid "Spanish (Mexico)"
 msgstr "Spanisch (Mexiko)"
 
-#: lib/languages:1089
+#: lib/languages:1090
 msgid "Swedish"
 msgstr "Schwedisch"
 
-#: lib/languages:1100
+#: lib/languages:1101
 msgid "Syriac"
 msgstr "Syriakisch"
 
-#: lib/languages:1109 src/frontends/qt4/GuiSymbols.cpp:70
+#: lib/languages:1110 src/frontends/qt4/GuiSymbols.cpp:70
 msgid "Tamil"
 msgstr "Tamilisch"
 
-#: lib/languages:1117 src/frontends/qt4/GuiSymbols.cpp:71
+#: lib/languages:1118 src/frontends/qt4/GuiSymbols.cpp:71
 msgid "Telugu"
 msgstr "Telugu"
 
-#: lib/languages:1124 src/frontends/qt4/GuiSymbols.cpp:74
+#: lib/languages:1125 src/frontends/qt4/GuiSymbols.cpp:74
 msgid "Thai"
 msgstr "Thailändisch"
 
-#: lib/languages:1138 src/frontends/qt4/GuiSymbols.cpp:76
+#: lib/languages:1139 src/frontends/qt4/GuiSymbols.cpp:76
 msgid "Tibetan"
 msgstr "Tibetisch"
 
-#: lib/languages:1145
+#: lib/languages:1146
 msgid "Turkish"
 msgstr "Türkisch"
 
-#: lib/languages:1160
+#: lib/languages:1161
 msgid "Turkmen"
 msgstr "Turkmenisch"
 
-#: lib/languages:1170
+#: lib/languages:1171
 msgid "Ukrainian"
 msgstr "Ukrainisch"
 
-#: lib/languages:1181
+#: lib/languages:1182
 msgid "Upper Sorbian"
 msgstr "Obersorbisch"
 
-#: lib/languages:1191
+#: lib/languages:1192
 msgid "Urdu"
 msgstr "Urdu"
 
-#: lib/languages:1199
+#: lib/languages:1200
 msgid "Vietnamese"
 msgstr "Vietnamesisch"
 
-#: lib/languages:1208
+#: lib/languages:1209
 msgid "Welsh"
 msgstr "Walisisch"
 
@@ -26026,15 +26026,15 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Die Dokumentklasse ist nicht verfügbar"
 
-#: src/BufferParams.cpp:2157 src/Encoding.cpp:246 src/Paragraph.cpp:2727
-#: src/frontends/qt4/LaTeXHighlighter.cpp:122 src/insets/InsetListings.cpp:243
-#: src/insets/InsetListings.cpp:251 src/insets/InsetListings.cpp:274
+#: src/BufferParams.cpp:2157 src/Encoding.cpp:246 src/Paragraph.cpp:2728
+#: src/frontends/qt4/LaTeXHighlighter.cpp:122 src/insets/InsetListings.cpp:259
+#: src/insets/InsetListings.cpp:267 src/insets/InsetListings.cpp:290
 #: src/mathed/MathExtern.cpp:1483
 msgid "LyX Warning: "
 msgstr "LyX-Warnung: "
 
-#: src/BufferParams.cpp:2158 src/Encoding.cpp:247 src/Paragraph.cpp:2728
-#: src/insets/InsetListings.cpp:244 src/insets/InsetListings.cpp:252
+#: src/BufferParams.cpp:2158 src/Encoding.cpp:247 src/Paragraph.cpp:2729
+#: src/insets/InsetListings.cpp:260 src/insets/InsetListings.cpp:268
 #: src/mathed/MathExtern.cpp:1484
 msgid "uncodable character"
 msgstr "unkodierbares Zeichen"
@@ -28233,15 +28233,15 @@ msgstr "Zur gespeicherten Version des Dokuments zurückkehren?"
 msgid "&Revert"
 msgstr "&Wiederherstellen"
 
-#: src/Paragraph.cpp:2056
+#: src/Paragraph.cpp:2057
 msgid "Senseless with this layout!"
 msgstr "Für dieses Format nicht relevant!"
 
-#: src/Paragraph.cpp:2117
+#: src/Paragraph.cpp:2118
 msgid "Alignment not permitted"
 msgstr "Ausrichtung nicht erlaubt"
 
-#: src/Paragraph.cpp:2118
+#: src/Paragraph.cpp:2119
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -31569,7 +31569,7 @@ msgstr "<p>LaTeX-Code: %1</p>"
 msgid "Symbols"
 msgstr "Symbole"
 
-#: src/frontends/qt4/GuiTabular.h:45
+#: src/frontends/qt4/GuiTabular.h:47
 msgid "Tabular Settings"
 msgstr "Tabellen-Einstellungen"
 
@@ -33049,15 +33049,15 @@ msgstr "DUPLIKAT: "
 msgid "Horizontal line"
 msgstr "Horizontale Linie"
 
-#: src/insets/InsetListings.cpp:275
+#: src/insets/InsetListings.cpp:291
 msgid "no more lstline delimiters available"
 msgstr "keine lst-line-Begrenzungszeichen verfügbar"
 
-#: src/insets/InsetListings.cpp:280
+#: src/insets/InsetListings.cpp:296
 msgid "Running out of delimiters"
 msgstr "Die Begrenzungszeichen sind ausgegangen"
 
-#: src/insets/InsetListings.cpp:281
+#: src/insets/InsetListings.cpp:297
 msgid ""
 "For inline program listings, one character must be reserved\n"
 "as a delimiter. One of the listings, however, uses all available\n"
@@ -33071,11 +33071,11 @@ msgstr ""
 "verfügbar ist. Einstweilen wurde an der entsprechenden Stelle eine Warnung\n"
 "in das Dokument eingefügt, Sie müssen das Problem allerdings lösen!"
 
-#: src/insets/InsetListings.cpp:360 src/insets/InsetListings.cpp:369
+#: src/insets/InsetListings.cpp:376 src/insets/InsetListings.cpp:385
 msgid "Uncodable characters in listings inset"
 msgstr "Unkodierbare Zeichen in Programmlisting"
 
-#: src/insets/InsetListings.cpp:361
+#: src/insets/InsetListings.cpp:377
 #, c-format
 msgid ""
 "The following characters in one of the program listings are\n"
@@ -33096,7 +33096,7 @@ msgstr ""
 "verwenden'\n"
 "auszuwählen."
 
-#: src/insets/InsetListings.cpp:370
+#: src/insets/InsetListings.cpp:386
 #, c-format
 msgid ""
 "The following characters in one of the program listings are\n"
@@ -33560,22 +33560,22 @@ msgstr "Geschützter horizontaler Abstand (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Unbekannter Inhaltsverzeichnis-Typ"
 
-#: src/insets/InsetTabular.cpp:4676
+#: src/insets/InsetTabular.cpp:4684
 msgid "Selections not supported."
 msgstr ""
 "Gleichzeitiges Verschieben mehrerer Zeilen/Spalten ist leider nicht möglich."
 
-#: src/insets/InsetTabular.cpp:4698
+#: src/insets/InsetTabular.cpp:4706
 msgid "Multi-column in current or destination column."
 msgstr ""
 "Diese oder die Zielspalte ist eine Mehrfachspalte. Verschieben nicht möglich."
 
-#: src/insets/InsetTabular.cpp:4710
+#: src/insets/InsetTabular.cpp:4718
 msgid "Multi-row in current or destination row."
 msgstr ""
 "Diese oder die Zielzeile ist eine Mehrfachzeile. Verschieben nicht möglich."
 
-#: src/insets/InsetTabular.cpp:5151
+#: src/insets/InsetTabular.cpp:5159
 msgid "Selection size should match clipboard content."
 msgstr ""
 "Die Anzahl der ausgewählten Zellen stimmt nicht mit dem Inhalt der "
@@ -33927,11 +33927,11 @@ msgstr ""
 "Das angegebene Dokument %1$s\n"
 "konnte nicht geöffnet werden."
 
-#: src/output_latex.cpp:1455
+#: src/output_latex.cpp:1457
 msgid "Error in latexParagraphs"
 msgstr "Fehler in latexParagraphs"
 
-#: src/output_latex.cpp:1456
+#: src/output_latex.cpp:1458
 #, c-format
 msgid ""
 "You are using at least one layout (%1$s) intended for the title, after using "

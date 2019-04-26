@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-04-23 13:30+0200\n"
+"POT-Creation-Date: 2019-04-25 23:30-0400\n"
 "PO-Revision-Date: 2019-04-23 13:49+0300\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -7126,7 +7126,7 @@ msgstr "Фигура"
 #: lib/layouts/stdlayouts.inc:57 lib/layouts/stdlayouts.inc:77
 #: lib/layouts/stdletter.inc:13 lib/layouts/svcommon.inc:27
 #: lib/layouts/svcommon.inc:612 lib/layouts/svcommon.inc:623
-#: lib/layouts/tufte-book.layout:238
+#: lib/layouts/tufte-book.layout:211
 msgid "MainText"
 msgstr "текст"
 
@@ -7730,7 +7730,7 @@ msgstr "Преход"
 #: lib/layouts/simplecv.layout:18 lib/layouts/slides.layout:61
 #: lib/layouts/stdclass.inc:28 lib/layouts/stdinsets.inc:638
 #: lib/layouts/stdletter.inc:12 lib/layouts/svcommon.inc:26
-#: lib/layouts/tufte-book.layout:47 lib/ui/stdtoolbars.inc:69
+#: lib/layouts/tufte-book.layout:20 lib/ui/stdtoolbars.inc:69
 #: src/insets/InsetRef.cpp:484
 msgid "Standard"
 msgstr "По подразбиране"
@@ -7764,7 +7764,7 @@ msgstr "По подразбиране"
 #: lib/layouts/simplecv.layout:134 lib/layouts/stdtitle.inc:14
 #: lib/layouts/svcommon.inc:57 lib/layouts/svcommon.inc:324
 #: lib/layouts/svmult.layout:47 lib/layouts/svprobth.layout:76
-#: lib/layouts/tufte-book.layout:62
+#: lib/layouts/tufte-book.layout:35
 msgid "Title"
 msgstr "Заглавие"
 
@@ -7809,7 +7809,7 @@ msgstr "overset"
 #: lib/layouts/scrclass.inc:202 lib/layouts/siamltex.layout:218
 #: lib/layouts/sigplanconf.layout:147 lib/layouts/stdtitle.inc:35
 #: lib/layouts/svcommon.inc:344 lib/layouts/svmult.layout:79
-#: lib/layouts/svprobth.layout:93 lib/layouts/tufte-book.layout:67
+#: lib/layouts/svprobth.layout:93 lib/layouts/tufte-book.layout:40
 msgid "Author"
 msgstr "Автор"
 
@@ -8013,8 +8013,8 @@ msgstr "Кратко заглавие на приложението"
 #: lib/layouts/scrclass.inc:268 lib/layouts/scrreprt.layout:12
 #: lib/layouts/scrreprt.layout:14 lib/layouts/siamltex.layout:326
 #: lib/layouts/simplecv.layout:156 lib/layouts/stdstruct.inc:54
-#: lib/layouts/svcommon.inc:575 lib/layouts/tufte-book.layout:290
-#: lib/layouts/tufte-book.layout:292 lib/layouts/tufte-handout.layout:77
+#: lib/layouts/svcommon.inc:575 lib/layouts/tufte-book.layout:263
+#: lib/layouts/tufte-book.layout:265 lib/layouts/tufte-handout.layout:77
 #: src/frontends/qt4/GuiDocument.cpp:1626 src/insets/InsetBibtex.cpp:892
 msgid "Bibliography"
 msgstr "Литература"
@@ -8324,7 +8324,7 @@ msgstr ""
 #: lib/layouts/scrclass.inc:80 lib/layouts/siamltex.layout:369
 #: lib/layouts/simplecv.layout:31 lib/layouts/spie.layout:21
 #: lib/layouts/stdsections.inc:77 lib/layouts/svcommon.inc:196
-#: lib/layouts/tufte-book.layout:121 src/frontends/qt4/GuiDocument.cpp:138
+#: lib/layouts/tufte-book.layout:94 src/frontends/qt4/GuiDocument.cpp:138
 msgid "Section"
 msgstr "Раздел"
 
@@ -8344,7 +8344,7 @@ msgstr "Раздел"
 #: lib/layouts/revtex.layout:52 lib/layouts/scrclass.inc:88
 #: lib/layouts/siamltex.layout:380 lib/layouts/simplecv.layout:59
 #: lib/layouts/stdsections.inc:108 lib/layouts/svcommon.inc:205
-#: lib/layouts/tufte-book.layout:150
+#: lib/layouts/tufte-book.layout:123
 msgid "Subsection"
 msgstr "Подраздел"
 
@@ -8383,7 +8383,7 @@ msgstr "Подподраздел"
 #: lib/layouts/scrclass.inc:209 lib/layouts/scrlettr.layout:165
 #: lib/layouts/scrlttr2.layout:244 lib/layouts/siamltex.layout:237
 #: lib/layouts/stdtitle.inc:54 lib/layouts/svcommon.inc:370
-#: lib/layouts/tufte-book.layout:72 lib/ui/stdmenus.inc:396
+#: lib/layouts/tufte-book.layout:45 lib/ui/stdmenus.inc:396
 msgid "Date"
 msgstr "дата"
 
@@ -8938,8 +8938,8 @@ msgstr ""
 #: lib/layouts/scrclass.inc:307 lib/layouts/siamltex.layout:205
 #: lib/layouts/simplecv.layout:51 lib/layouts/stdinsets.inc:645
 #: lib/layouts/stdsections.inc:32 lib/layouts/stdsections.inc:64
-#: lib/layouts/stdsections.inc:95 lib/layouts/tufte-book.layout:110
-#: lib/layouts/tufte-book.layout:139 lib/layouts/tufte-handout.layout:40
+#: lib/layouts/stdsections.inc:95 lib/layouts/tufte-book.layout:83
+#: lib/layouts/tufte-book.layout:112 lib/layouts/tufte-handout.layout:40
 msgid "Short Title|S"
 msgstr "Кратък надпис"
 
@@ -9108,7 +9108,7 @@ msgstr ""
 
 # src/ext_l10n.h:433
 #: lib/layouts/achemso.layout:305 lib/layouts/achemso.layout:308
-#: lib/languages:795
+#: lib/languages:796
 msgid "Latin"
 msgstr "латинси"
 
@@ -9568,7 +9568,7 @@ msgstr "само главния файл"
 # src/ext_l10n.h:244
 #: lib/layouts/acmart.layout:520 lib/layouts/beamer.layout:1647
 #: lib/layouts/powerdot.layout:532 lib/layouts/sciposter.layout:109
-#: lib/layouts/stdfloats.inc:33 lib/layouts/tufte-book.layout:284
+#: lib/layouts/stdfloats.inc:33 lib/layouts/tufte-book.layout:257
 msgid "List of Figures"
 msgstr "Списък на изображенията"
 
@@ -9581,7 +9581,7 @@ msgstr ""
 # src/frontends/kde/tocdlg.C:30 src/insets/insettoc.C:28
 #: lib/layouts/acmart.layout:533 lib/layouts/beamer.layout:1634
 #: lib/layouts/powerdot.layout:515 lib/layouts/sciposter.layout:123
-#: lib/layouts/stdfloats.inc:18 lib/layouts/tufte-book.layout:268
+#: lib/layouts/stdfloats.inc:18 lib/layouts/tufte-book.layout:241
 msgid "List of Tables"
 msgstr "Списък на таблиците"
 
@@ -10088,7 +10088,7 @@ msgstr "Част"
 #: lib/layouts/recipebook.layout:42 lib/layouts/scrbook.layout:17
 #: lib/layouts/scrclass.inc:68 lib/layouts/stdsections.inc:45
 #: lib/layouts/svcommon.inc:152 lib/layouts/svmult.layout:111
-#: lib/layouts/tufte-book.layout:93
+#: lib/layouts/tufte-book.layout:66
 msgid "Chapter"
 msgstr "Глава"
 
@@ -11158,7 +11158,7 @@ msgstr ""
 #: lib/layouts/stdsections.inc:78 lib/layouts/svcommon.inc:117
 #: lib/layouts/svcommon.inc:159 lib/layouts/svcommon.inc:172
 #: lib/layouts/svcommon.inc:184 lib/layouts/svcommon.inc:416
-#: lib/layouts/tufte-book.layout:95 lib/layouts/tufte-book.layout:122
+#: lib/layouts/tufte-book.layout:68 lib/layouts/tufte-book.layout:95
 #: lib/layouts/tufte-handout.layout:24
 msgid "Sectioning"
 msgstr "раздели"
@@ -11205,7 +11205,7 @@ msgstr "Под-подраздел"
 # src/frontends/xforms/FormPreferences.C:1278
 #: lib/layouts/beamer.layout:272 lib/layouts/scrclass.inc:149
 #: lib/layouts/simplecv.layout:52 lib/layouts/stdsections.inc:96
-#: lib/layouts/tufte-book.layout:140
+#: lib/layouts/tufte-book.layout:113
 #, fuzzy
 msgid "The section as it appears in the table of contents/running headers"
 msgstr "Името на формата, както ще се вижда в менютата."
@@ -18204,7 +18204,7 @@ msgstr "Добави"
 
 # src/frontends/xforms/FormPreferences.C:1278
 #: lib/layouts/scrclass.inc:138 lib/layouts/stdsections.inc:65
-#: lib/layouts/tufte-book.layout:111
+#: lib/layouts/tufte-book.layout:84
 #, fuzzy
 msgid "The chapter as it appears in the table of contents/running headers"
 msgstr "Името на формата, както ще се вижда в менютата."
@@ -20606,67 +20606,67 @@ msgid "Tufte Book"
 msgstr ""
 
 # src/LColor.C:67
-#: lib/layouts/tufte-book.layout:164
+#: lib/layouts/tufte-book.layout:137
 msgid "Sidenote"
 msgstr "Странична бележка"
 
 # src/LColor.C:67
-#: lib/layouts/tufte-book.layout:169
+#: lib/layouts/tufte-book.layout:142
 msgid "sidenote"
 msgstr "странична бел."
 
 # src/ext_l10n.h:83
-#: lib/layouts/tufte-book.layout:184
+#: lib/layouts/tufte-book.layout:157
 msgid "Marginnote"
 msgstr "Бележка в полето (Tufte)"
 
 # src/frontends/xforms/form_document.C:98
-#: lib/layouts/tufte-book.layout:188
+#: lib/layouts/tufte-book.layout:161
 msgid "marginnote"
 msgstr "бел. в полето (Tufte)"
 
-#: lib/layouts/tufte-book.layout:197
+#: lib/layouts/tufte-book.layout:170
 msgid "NewThought"
 msgstr "Нова мисъл"
 
-#: lib/layouts/tufte-book.layout:201
+#: lib/layouts/tufte-book.layout:174
 msgid "new thought"
 msgstr "нова мисъл"
 
 # src/lyxfont.C:51
-#: lib/layouts/tufte-book.layout:212
+#: lib/layouts/tufte-book.layout:185
 msgid "AllCaps"
 msgstr "Само главни букви"
 
 # src/lyxfont.C:51
-#: lib/layouts/tufte-book.layout:215
+#: lib/layouts/tufte-book.layout:188
 msgid "allcaps"
 msgstr "само главни"
 
 # src/lyxfont.C:51
-#: lib/layouts/tufte-book.layout:225
+#: lib/layouts/tufte-book.layout:198
 msgid "SmallCaps"
 msgstr "Само по-малки главни букви"
 
 # src/lyxfont.C:51
-#: lib/layouts/tufte-book.layout:228
+#: lib/layouts/tufte-book.layout:201
 msgid "smallcaps"
 msgstr "по-малки главни"
 
 # src/frontends/kde/dlg/parageneraldlgdata.C:151
-#: lib/layouts/tufte-book.layout:234
+#: lib/layouts/tufte-book.layout:207
 #, fuzzy
 msgid "Full Width"
 msgstr "Ширина на етикет"
 
 # src/frontends/xforms/form_document.C:98
-#: lib/layouts/tufte-book.layout:260
+#: lib/layouts/tufte-book.layout:233
 #, fuzzy
 msgid "MarginTable"
 msgstr "Полета"
 
 # src/ext_l10n.h:244
-#: lib/layouts/tufte-book.layout:276
+#: lib/layouts/tufte-book.layout:249
 #, fuzzy
 msgid "MarginFigure"
 msgstr "Фигура"
@@ -20829,372 +20829,372 @@ msgid "Bulgarian"
 msgstr "български"
 
 # src/ext_l10n.h:437 src/language.C:35
-#: lib/languages:343
+#: lib/languages:344
 msgid "English (Canada)"
 msgstr "английски (Канада)"
 
 # src/ext_l10n.h:430
-#: lib/languages:356
+#: lib/languages:357
 msgid "French (Canada)"
 msgstr "френски (Канада)"
 
 # src/ext_l10n.h:432
-#: lib/languages:366
+#: lib/languages:367
 msgid "Catalan"
 msgstr "каталонски"
 
-#: lib/languages:378
+#: lib/languages:379
 msgid "Chinese (simplified)"
 msgstr "китайски (опростен)"
 
-#: lib/languages:388
+#: lib/languages:389
 msgid "Chinese (traditional)"
 msgstr "китайски (традиционен)"
 
-#: lib/languages:398
+#: lib/languages:399
 msgid "Coptic"
 msgstr "коптски"
 
 # src/ext_l10n.h:433
-#: lib/languages:405
+#: lib/languages:406
 msgid "Croatian"
 msgstr "хърватски"
 
 # src/ext_l10n.h:434
-#: lib/languages:414
+#: lib/languages:415
 msgid "Czech"
 msgstr "чешки"
 
 # src/ext_l10n.h:435
-#: lib/languages:424
+#: lib/languages:425
 msgid "Danish"
 msgstr "датски"
 
-#: lib/languages:435
+#: lib/languages:436
 msgid "Divehi (Maldivian)"
 msgstr "дивехи (малдивски)"
 
 # src/ext_l10n.h:436
-#: lib/languages:442
+#: lib/languages:443
 msgid "Dutch"
 msgstr "холандски"
 
 # src/ext_l10n.h:437 src/language.C:35
-#: lib/languages:453
+#: lib/languages:454
 msgid "English"
 msgstr "английски"
 
 # src/ext_l10n.h:438
-#: lib/languages:466
+#: lib/languages:467
 msgid "Esperanto"
 msgstr "есперанто"
 
 # src/ext_l10n.h:439
-#: lib/languages:475
+#: lib/languages:476
 msgid "Estonian"
 msgstr "естонски"
 
 # src/frontends/xforms/form_document.C:98
-#: lib/languages:489
+#: lib/languages:490
 msgid "Farsi"
 msgstr "персийски"
 
 # src/ext_l10n.h:440
-#: lib/languages:504
+#: lib/languages:505
 msgid "Finnish"
 msgstr "финландски"
 
 # src/ext_l10n.h:441
-#: lib/languages:515
+#: lib/languages:516
 msgid "French"
 msgstr "френски"
 
-#: lib/languages:531
+#: lib/languages:532
 msgid "Friulian"
 msgstr "фриулски"
 
 # src/ext_l10n.h:443
-#: lib/languages:541
+#: lib/languages:542
 msgid "Galician"
 msgstr "галисийски"
 
 # src/ext_l10n.h:444
-#: lib/languages:554 src/frontends/qt4/GuiSymbols.cpp:77
+#: lib/languages:555 src/frontends/qt4/GuiSymbols.cpp:77
 msgid "Georgian"
 msgstr "грузински"
 
-#: lib/languages:564
+#: lib/languages:565
 msgid "German (old spelling)"
 msgstr "немски (стар правопис)"
 
 # src/ext_l10n.h:444
-#: lib/languages:575
+#: lib/languages:576
 msgid "German"
 msgstr "немски"
 
-#: lib/languages:590
+#: lib/languages:591
 msgid "German (Switzerland)"
 msgstr "немски (Швейцария)"
 
-#: lib/languages:603
+#: lib/languages:604
 msgid "German (Switzerland, old spelling)"
 msgstr "немски (Швейцария, стар правопис)"
 
 # src/ext_l10n.h:446 src/mathed/math_forms.C:26
-#: lib/languages:613 lib/ui/stdtoolbars.inc:307 lib/ui/stdtoolbars.inc:600
+#: lib/languages:614 lib/ui/stdtoolbars.inc:307 lib/ui/stdtoolbars.inc:600
 #: src/frontends/qt4/GuiSymbols.cpp:60
 msgid "Greek"
 msgstr "гръцки"
 
-#: lib/languages:626
+#: lib/languages:627
 msgid "Greek (polytonic)"
 msgstr "гръцки (политоничен)"
 
 # src/ext_l10n.h:447
-#: lib/languages:638 src/frontends/qt4/GuiSymbols.cpp:63
+#: lib/languages:639 src/frontends/qt4/GuiSymbols.cpp:63
 msgid "Hebrew"
 msgstr "иврит"
 
-#: lib/languages:654
+#: lib/languages:655
 msgid "Hindi"
 msgstr "хинди"
 
-#: lib/languages:673
+#: lib/languages:674
 msgid "Icelandic"
 msgstr "исландски"
 
 # src/LyXAction.C:388
-#: lib/languages:684
+#: lib/languages:685
 msgid "Interlingua"
 msgstr "междуезичен"
 
 # src/ext_l10n.h:448
-#: lib/languages:694
+#: lib/languages:695
 msgid "Irish"
 msgstr "ирландски"
 
 # src/ext_l10n.h:449
-#: lib/languages:703
+#: lib/languages:704
 msgid "Italian"
 msgstr "италиански"
 
-#: lib/languages:718
+#: lib/languages:719
 msgid "Japanese"
 msgstr "японски"
 
-#: lib/languages:732
+#: lib/languages:733
 msgid "Japanese (CJK)"
 msgstr "японски (CJK)"
 
 # src/ext_l10n.h:430
-#: lib/languages:741 src/frontends/qt4/GuiSymbols.cpp:72
+#: lib/languages:742 src/frontends/qt4/GuiSymbols.cpp:72
 msgid "Kannada"
 msgstr "канадски"
 
-#: lib/languages:750
+#: lib/languages:751
 msgid "Kazakh"
 msgstr "казахски"
 
-#: lib/languages:761
+#: lib/languages:762
 msgid "Khmer"
 msgstr "кхмерски"
 
-#: lib/languages:768
+#: lib/languages:769
 msgid "Korean"
 msgstr "корейски"
 
 # src/frontends/kde/paraextradlg.C:25 src/lyxfont.C:56
-#: lib/languages:777
+#: lib/languages:778
 msgid "Kurmanji"
 msgstr "курманджи"
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1260
-#: lib/languages:786 src/frontends/qt4/GuiSymbols.cpp:75
+#: lib/languages:787 src/frontends/qt4/GuiSymbols.cpp:75
 msgid "Lao"
 msgstr "лаоски"
 
 # src/ext_l10n.h:433
-#: lib/languages:805
+#: lib/languages:806
 msgid "Latvian"
 msgstr "латвийски"
 
 # src/form1.C:161 src/frontends/kde/dlg/paraextradlgdata.C:91
 # src/frontends/xforms/form_graphics.C:44
 # src/frontends/xforms/form_paragraph.C:219
-#: lib/languages:818
+#: lib/languages:819
 msgid "Lithuanian"
 msgstr "литовски"
 
 # src/ext_l10n.h:458
-#: lib/languages:829
+#: lib/languages:830
 msgid "Lower Sorbian"
 msgstr "долнолужишки"
 
-#: lib/languages:838
+#: lib/languages:839
 msgid "Hungarian"
 msgstr "унгарски"
 
-#: lib/languages:849
+#: lib/languages:850
 msgid "Macedonian"
 msgstr "македонски"
 
 # src/frontends/xforms/form_document.C:244
-#: lib/languages:859
+#: lib/languages:860
 msgid "Marathi"
 msgstr "маратхи"
 
-#: lib/languages:869
+#: lib/languages:870
 msgid "Mongolian"
 msgstr "монголски"
 
 # src/ext_l10n.h:437 src/language.C:35
-#: lib/languages:878
+#: lib/languages:879
 msgid "English (New Zealand)"
 msgstr "английски (Нова зеландия)"
 
-#: lib/languages:888
+#: lib/languages:889
 msgid "Norwegian (Bokmaal)"
 msgstr "норвежки (букмол)"
 
-#: lib/languages:898
+#: lib/languages:899
 msgid "Norwegian (Nynorsk)"
 msgstr "норвежки (нюношк)"
 
-#: lib/languages:909
+#: lib/languages:910
 msgid "Occitan"
 msgstr "окситански"
 
-#: lib/languages:930
+#: lib/languages:931
 msgid "Piedmontese"
 msgstr "пиемонтски"
 
 # src/ext_l10n.h:453
-#: lib/languages:940
+#: lib/languages:941
 msgid "Polish"
 msgstr "полски"
 
 # src/ext_l10n.h:454
-#: lib/languages:951
+#: lib/languages:952
 msgid "Portuguese"
 msgstr "португалски"
 
 # src/ext_l10n.h:455
-#: lib/languages:961
+#: lib/languages:962
 msgid "Romanian"
 msgstr "румънски"
 
 # src/frontends/xforms/form_preferences.C:105 src/lyxfont.C:42
-#: lib/languages:971
+#: lib/languages:972
 msgid "Romansh"
 msgstr "романшки (Швейцария)"
 
 # src/ext_l10n.h:456
-#: lib/languages:981
+#: lib/languages:982
 msgid "Russian"
 msgstr "руски"
 
-#: lib/languages:992
+#: lib/languages:993
 msgid "North Sami"
 msgstr "северносаамски"
 
 # src/frontends/xforms/form_preferences.C:108
-#: lib/languages:1001
+#: lib/languages:1002
 msgid "Sanskrit"
 msgstr "санскрит"
 
 # src/ext_l10n.h:457
-#: lib/languages:1008
+#: lib/languages:1009
 msgid "Scottish"
 msgstr "шотландски"
 
 # src/ext_l10n.h:458
-#: lib/languages:1019
+#: lib/languages:1020
 msgid "Serbian"
 msgstr "сръбски"
 
 # src/ext_l10n.h:458
-#: lib/languages:1034
+#: lib/languages:1035
 msgid "Serbian (Latin)"
 msgstr "сръбски (латиница)"
 
 # src/ext_l10n.h:461
-#: lib/languages:1044
+#: lib/languages:1045
 msgid "Slovak"
 msgstr "словашки"
 
 # src/ext_l10n.h:462
-#: lib/languages:1054
+#: lib/languages:1055
 msgid "Slovene"
 msgstr "словенски"
 
 # src/ext_l10n.h:460
-#: lib/languages:1063
+#: lib/languages:1064
 msgid "Spanish"
 msgstr "испански"
 
 # src/ext_l10n.h:460
-#: lib/languages:1077
+#: lib/languages:1078
 msgid "Spanish (Mexico)"
 msgstr "испански (Мексико)"
 
 # src/ext_l10n.h:463
-#: lib/languages:1089
+#: lib/languages:1090
 msgid "Swedish"
 msgstr "шведски"
 
-#: lib/languages:1100
+#: lib/languages:1101
 msgid "Syriac"
 msgstr "сирийски"
 
 # src/layout_forms.C:23
-#: lib/languages:1109 src/frontends/qt4/GuiSymbols.cpp:70
+#: lib/languages:1110 src/frontends/qt4/GuiSymbols.cpp:70
 msgid "Tamil"
 msgstr "тамилски"
 
-#: lib/languages:1117 src/frontends/qt4/GuiSymbols.cpp:71
+#: lib/languages:1118 src/frontends/qt4/GuiSymbols.cpp:71
 msgid "Telugu"
 msgstr "телугу"
 
 # src/ext_l10n.h:464
-#: lib/languages:1124 src/frontends/qt4/GuiSymbols.cpp:74
+#: lib/languages:1125 src/frontends/qt4/GuiSymbols.cpp:74
 msgid "Thai"
 msgstr "тайски"
 
 # src/LColor.C:63
-#: lib/languages:1138 src/frontends/qt4/GuiSymbols.cpp:76
+#: lib/languages:1139 src/frontends/qt4/GuiSymbols.cpp:76
 msgid "Tibetan"
 msgstr "тибетски"
 
 # src/ext_l10n.h:465
-#: lib/languages:1145
+#: lib/languages:1146
 msgid "Turkish"
 msgstr "турски"
 
-#: lib/languages:1160
+#: lib/languages:1161
 msgid "Turkmen"
 msgstr "туркменски"
 
 # src/ext_l10n.h:466
-#: lib/languages:1170
+#: lib/languages:1171
 msgid "Ukrainian"
 msgstr "украински"
 
 # src/ext_l10n.h:458
-#: lib/languages:1181
+#: lib/languages:1182
 msgid "Upper Sorbian"
 msgstr "горнолужишки"
 
-#: lib/languages:1191
+#: lib/languages:1192
 msgid "Urdu"
 msgstr "урду (лашкари)"
 
 # src/form1.C:245
-#: lib/languages:1199
+#: lib/languages:1200
 msgid "Vietnamese"
 msgstr "виетнамски"
 
 # src/ext_l10n.h:468
-#: lib/languages:1208
+#: lib/languages:1209
 msgid "Welsh"
 msgstr "уелски"
 
@@ -39853,12 +39853,12 @@ msgid ""
 msgstr "Неуспех при отварянето"
 
 # src/buffer.C:323
-#: src/output_latex.cpp:1455
+#: src/output_latex.cpp:1457
 #, fuzzy
 msgid "Error in latexParagraphs"
 msgstr "Един абзац назад"
 
-#: src/output_latex.cpp:1456
+#: src/output_latex.cpp:1458
 #, c-format
 msgid ""
 "You are using at least one layout (%1$s) intended for the title, after using "
