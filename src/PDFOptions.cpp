@@ -105,7 +105,8 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 	// with the hyperref option "unicode".
 	// (With Xe/LuaTeX and pTeX, unicode=true is the default
 	// and the option leads to errors with some Japanese document classes)
-	if (!runparams.isFullUnicode() && !runparams.use_japanese)
+	if (!runparams.isFullUnicode() 
+		&& (!runparams.use_japanese || runparams.encoding->iconvName() == "UTF-8"))
 		opt += "unicode=true,";
 
 	// only use the hyperref settings if hyperref is enabled by the user

@@ -35214,61 +35214,11 @@ begin{multicols}{2}
 \lang ngerman
 Das Spektrum wird fouriertransformiert.
  Die Fouriertransformation wird verwendet, um die 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\begin_inset Quotes erd
-\end_inset
-
-u
-\end_layout
-
-\end_inset
-
-berlagerten Signale (Netzwerk, L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\begin_inset Quotes erd
-\end_inset
-
-o
-\end_layout
-
-\end_inset
-
-sungsmittel) zu trennen.
+ überlagerten Signale (Netzwerk, Lösungsmittel) zu trennen.
  Nachdem wir die Phasenverschiebung bestimmen konnten, interessiert uns
  nun das Aussehen des Ausgangssignals.
  Im Experiment haben wir es mit sehr vielen Teilchen zu tun, so das man
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\begin_inset Quotes erd
-\end_inset
-
-u
-\end_layout
-
-\end_inset
-
-ber alle Phasen integrieren muss.
+ über alle Phasen integrieren muss.
  Sei nun 
 \begin_inset Formula $S$
 \end_inset
@@ -35328,37 +35278,7 @@ wobei
 \end_inset
 
  gilt.
- Nun d
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\begin_inset Quotes erd
-\end_inset
-
-u
-\end_layout
-
-\end_inset
-
-rfen wir aber nicht den Relaxationsprozess au
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ss 
-\end_layout
-
-\end_inset
-
-er Acht lassen.
+ Nun dürfen wir aber nicht den Relaxationsprozess außer Acht lassen.
  Direkt nach dem 
 \begin_inset Formula $\nicefrac{\pi}{2}$
 \end_inset
@@ -35368,93 +35288,8 @@ er Acht lassen.
 \end_inset
 
 -rf-Puls beginnt sich die Magnetisierung zu entfokussieren, wodurch sich
- das Signal zus
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\begin_inset Quotes erd
-\end_inset
-
-a
-\end_layout
-
-\end_inset
-
-tzlich abschw
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\begin_inset Quotes erd
-\end_inset
-
-a
-\end_layout
-
-\end_inset
-
-cht.
- Diese Abschw
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\begin_inset Quotes erd
-\end_inset
-
-a
-\end_layout
-
-\end_inset
-
-chung verl
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\begin_inset Quotes erd
-\end_inset
-
-a
-\end_layout
-
-\end_inset
-
-uft exponentiell in Abh
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\begin_inset Quotes erd
-\end_inset
-
-a
-\end_layout
-
-\end_inset
-
-ngigkeit der so genannten 
+ das Signal zusätzlich abschwächt.
+ Diese Abschwächung verläuft exponentiell in Abhängigkeit der so genannten 
 \begin_inset Formula $T_{2}$
 \end_inset
 
