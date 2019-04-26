@@ -1101,14 +1101,24 @@ void InsetMathMacro::write(WriteStream & os) const
 		// For correctly parsing it when a document is reloaded, we
 		// need to enclose an optional argument in braces if it starts
 		// with a script inset with empty nucleus or ends with a
-		// delimiter-size-modifier macro (see #10497 and #11346)
+		// delimiter-size-modifier macro (see #10497 and #11346).
+		// We also need to do that when the optional argument
+		// contains macros with optionals.
 		bool braced = false;
 		size_type last = cell(i).size() - 1;
-		if (cell(i).size() && cell(i)[last].nucleus()->asUnknownInset()) {
-			latexkeys const * l = in_word_set(cell(i)[last].nucleus()->name());
+		if (cell(i).size() && cell(i)[last]->asUnknownInset()) {
+			latexkeys const * l = in_word_set(cell(i)[last]->name());
 			braced = (l && l->inset == "big");
-		} else if (cell(i).size() && cell(i)[0].nucleus()->asScriptInset()) {
-			braced = cell(i)[0].nucleus()->asScriptInset()->nuc().empty();
+		} else if (cell(i).size() && cell(i)[0]->asScriptInset()) {
+			braced = cell(i)[0]->asScriptInset()->nuc().empty();
+		} else {
+			for (size_type j = 0; j < cell(i).size(); ++j) {
+				InsetMathMacro const * ma = cell(i)[j]->asMacro();
+				if (ma && ma->optionals()) {
+					braced = true;
+					break;
+				}
+			}
 		}
 		if (braced)
 			os << "[{" << cell(i) << "}]";
