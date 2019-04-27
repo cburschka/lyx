@@ -42,7 +42,7 @@ string const user_name()
 	char name[UNLEN + 1];
 	DWORD size = UNLEN + 1;
 	if (!GetUserName(name, &size))
-		return _("Unknown user");
+		return to_utf8(_("Unknown user"));
 	return to_utf8(from_local8bit(name));
 #else
 	struct passwd * pw = getpwuid(geteuid());
