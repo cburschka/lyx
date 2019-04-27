@@ -326,16 +326,15 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-void InsetInclude::editIncluded(string const & file)
+void InsetInclude::editIncluded(string const & f)
 {
-	string const ext = support::getExtension(file);
-	if (ext == "lyx") {
-		FuncRequest fr(LFUN_BUFFER_CHILD_OPEN, file);
+	if (isLyXFileName(f)) {
+		FuncRequest fr(LFUN_BUFFER_CHILD_OPEN, f);
 		lyx::dispatch(fr);
 	} else
 		// tex file or other text file in verbatim mode
 		theFormats().edit(buffer(),
-			support::makeAbsPath(file, support::onlyPath(buffer().absFileName())),
+			support::makeAbsPath(f, support::onlyPath(buffer().absFileName())),
 			"text");
 }
 
