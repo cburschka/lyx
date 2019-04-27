@@ -36,7 +36,7 @@ class Language {
 public:
 	///
 	Language() : rightToLeft_(false), encoding_(0), internal_enc_(false),
-				 as_babel_options_(false), has_gui_support_(false) {}
+				 has_gui_support_(false) {}
 	/// LyX language name
 	std::string const lang() const { return lang_; }
 	/// Babel language name
@@ -88,8 +88,6 @@ public:
 	std::string fontenc(BufferParams const &) const;
 	/// Return the localized date formats (long, medium, short format)
 	std::string dateFormat(size_t i) const;
-	/// This language needs to be passed to babel itself (not the class)
-	bool asBabelOptions() const { return as_babel_options_; }
 	/// This language corresponds to a translation of the GUI
 	bool hasGuiSupport() const { return has_gui_support_; }
 	///

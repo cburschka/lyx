@@ -1603,21 +1603,6 @@ docstring const LaTeXFeatures::getBabelPostsettings() const
 }
 
 
-bool LaTeXFeatures::needBabelLangOptions() const
-{
-	if (!lyxrc.language_global_options || params_.language->asBabelOptions())
-		return true;
-
-	LanguageList::const_iterator it  = UsedLanguages_.begin();
-	LanguageList::const_iterator end = UsedLanguages_.end();
-	for (; it != end; ++it)
-		if ((*it)->asBabelOptions())
-			return true;
-
-	return false;
-}
-
-
 string const LaTeXFeatures::loadAMSPackages() const
 {
 	ostringstream tmp;

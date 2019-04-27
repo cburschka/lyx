@@ -17,7 +17,6 @@
 #	FontEncoding       <font encoding|font encoding|...>
 #	InternalEncoding   <true|false>
 #	RTL                <true|false>
-#	AsBabelOptions     <true|false>
 #	LangCode           <language_code>
 #	LangVariety        <language_variety>
 #	PreBabelPreamble
@@ -101,11 +100,6 @@
 #   If True, LyX takes care for characters/macros that do not exist in
 #   some font encodings ("<", ">", "|" and straight quote).
 #   It is not required for standard encodings like T2A. See bug #5091.
-# * AsBabelOptions advices LyX to pass the languages locally to babel, not
-#   globally to the class. In the old days, some languages (basically those
-#   not natively supported by babel) needed this.
-#   FIXME: in this case, we might still need to pass the other languages
-#          globally, for the use of other packages (such as varioref).
 # * LangCode is also used for spellchecking and thesaurus, where the
 #   dictionaries are named accordingly. Thus, check this when introducing/
 #   changing language codes (especially aspell, thesaurus).
@@ -781,10 +775,14 @@ Language hebrew
 	QuoteStyle       english
 	InternalEncoding true
 	# babel-hebrew expects the encoding for *other* languages last:
-	# FontEncoding    HE8
-	# Define the font encoding the babel-hebrew way and
+	# FontEncoding    HE8|LHE
+	## Use font encoding HE8 if the Culmus fonts are installed and
 	# work around too simple test for article-like classes in rlbabel.def.
 	PreBabelPreamble
+	  %\IfFileExists{he8david.fd}{%
+	  %  \providecommand{\HeblatexEncoding}{HE8}
+	  %  \providecommand{\HeblatexEncodingFile}{he8enc}%
+	  %}{}
 	  \providecommand{\l@chapter}{\relax}
 	EndPreBabelPreamble
 	DateFormats      "d MMMM yyyy|d MMM yyyy|dd/MM/yyyy"

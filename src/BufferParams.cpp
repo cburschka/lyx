@@ -1719,8 +1719,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 				language_options << ',';
 			language_options << language->babel();
 		}
-		if (global && !features.needBabelLangOptions()
-		    && !language_options.str().empty())
+		if (global && !language_options.str().empty())
 			clsoptions << language_options.str() << ',';
 	}
 
@@ -1802,8 +1801,8 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	if (features.mustProvide("pmboxdraw"))
 		os << "\\usepackage{pmboxdraw}\n";
 	
-	// FIXME: With Thai as document or secondary language, we must load babel
-	// before inputenc (see lib/languages).
+	// FIXME: In any document containing text in Thai language, 
+	// we must load babel before inputenc (see lib/languages).
 	// handle inputenc etc.
 	writeEncodingPreamble(os, features);
 
@@ -2090,7 +2089,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			os << features.getBabelPresettings();
 			// FIXME UNICODE
 			os << from_utf8(babelCall(language_options.str(),
-			                          features.needBabelLangOptions())) + '\n';
+									  !lyxrc.language_global_options)) + '\n';
 			os << features.getBabelPostsettings();
 	}
 
@@ -2286,7 +2285,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		os << features.getBabelPresettings();
 		// FIXME UNICODE
 		os << from_utf8(babelCall(language_options.str(),
-		                          features.needBabelLangOptions())) + '\n';
+		                          !lyxrc.language_global_options)) + '\n';
 		os << features.getBabelPostsettings();
 	}
 	if (features.isRequired("bicaption"))
@@ -3215,8 +3214,7 @@ string BufferParams::babelCall(string const & lang_opts, bool const langoptions)
 	// other languages are used (lang_opts is then empty)
 	if (lang_opts.empty())
 		return string();
-	// either a specific language (AsBabelOptions setting in
-	// lib/languages) or the prefs require the languages to
+	// The prefs may require the languages to
 	// be submitted to babel itself (not the class).
 	if (langoptions)
 		return "\\usepackage[" + lang_opts + "]{babel}";

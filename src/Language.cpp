@@ -114,8 +114,7 @@ string Language::dateFormat(size_t i) const
 bool Language::readLanguage(Lexer & lex)
 {
 	enum LanguageTags {
-		LA_AS_BABELOPTS = 1,
-		LA_BABELNAME,
+		LA_BABELNAME = 1,
 		LA_DATEFORMATS,
 		LA_ENCODING,
 		LA_END,
@@ -137,7 +136,6 @@ bool Language::readLanguage(Lexer & lex)
 
 	// Keep these sorted alphabetically!
 	LexerKeyword languageTags[] = {
-		{ "asbabeloptions",       LA_AS_BABELOPTS },
 		{ "babelname",            LA_BABELNAME },
 		{ "dateformats",          LA_DATEFORMATS },
 		{ "encoding",             LA_ENCODING },
@@ -180,9 +178,6 @@ bool Language::readLanguage(Lexer & lex)
 		switch (static_cast<LanguageTags>(le)) {
 		case LA_END: // end of structure
 			finished = true;
-			break;
-		case LA_AS_BABELOPTS:
-			lex >> as_babel_options_;
 			break;
 		case LA_BABELNAME:
 			lex >> babel_;
@@ -254,7 +249,6 @@ bool Language::readLanguage(Lexer & lex)
 
 bool Language::read(Lexer & lex)
 {
-	as_babel_options_ = 0;
 	encoding_ = 0;
 	internal_enc_ = 0;
 	rightToLeft_ = 0;
