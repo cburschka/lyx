@@ -318,6 +318,16 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_MOUSE_RELEASE: {
+		if (cmd.modifier() == ControlModifier) {
+			FileName const incfile = includedFileName(buffer(), params());
+			string const & incname = incfile.absFileName();
+			editIncluded(incname);
+			break;
+		}
+	}
+	// fall through
+
 	//pass everything else up the chain
 	default:
 		InsetCommand::doDispatch(cur, cmd);
