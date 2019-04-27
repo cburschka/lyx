@@ -6,7 +6,7 @@
 \origin unavailable
 \textclass article
 \begin_preamble
-\AtBeginDocument{\usepackage{fonts-tlwg}}
+
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -27,7 +27,7 @@
 \use_microtype false
 \use_dash_ligatures true
 \graphics default
-\default_output_format default
+\default_output_format pdf2
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -84,7 +84,7 @@
 \begin_body
 
 \begin_layout Subsection*
-Thai
+Test workaround for Thai language
 \end_layout
 
 \begin_layout Standard

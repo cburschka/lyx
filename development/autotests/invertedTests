@@ -74,7 +74,7 @@ export/templates/Articles/International_Union_of_Crystallography.*_pdf4_systemF
 export/templates/Articles/R_Journal_(dvi3|pdf[45])_systemF
 #export/templates/Articles/Kluwer_.*_systemF
 
-# Babel and fontenc not fails for some supported languages
+# Babel and fontenc fails for some supported languages
 # * check BabelPremble definitions in lib/languages
 # * fails also due to #11522, see "lyxbugs" below.
 export/export/latex/supported-languages_.*_systemF
@@ -331,14 +331,6 @@ export/.*/he/.*_texF
 # Ukrainian
 # See comment in unreliableTests
 export/export/latex/uk-babel-date-missing-chars-with-ascii_pdf5_texF
-
-# Thai
-# babel-thai globally changes catcodes for high-bit chars
-# which prevents parsing of utf8 with vanilla inputenc (utf8x works)
-# see also unreliable.wrong_output and unreliable.varying_versions
-export/export/latex/en-th_utf8_(dvi|pdf[23]?|pdf4_texF)
-# luainputenc fails with TL19:
-export/export/latex/en-th_language-default_(dvi3|pdf5)_texF
 
 
 # ================================================

@@ -143,12 +143,6 @@ export/templates/Articles/American_Astronomical_Society_.*
 export/templates/Articles/Association_for_Computing_Machinery_pdf[45]_texF
 
 
-# Thai
-# Babel-thai globally changes catcodes for high-bit chars
-# which clashes with vanilla inputenc (utf8x and 8-bit input encodings and
-# luainputenc work with TL17 but luainputenc fails with TL19):
-export/export/latex/en-th_language-default_(dvi3|pdf5)_texF
-
 Sublabel: wrong_output
 ######################
 # Export does not fail but the resulting document has errors.
@@ -173,15 +167,6 @@ export/export/latex/es_auto-legacy_texF
 export/export/latex/uk-babel-date-missing-chars-with-ascii_.*_texF
 export/doc/uk/Intro_.*_texF
 
-# Thai
-# Babel-thai globally changes catcodes for high-bit chars
-# which prevents parsing of utf8 with vanilla inputenc (utf8x works).
-# see also invertedTests
-export/export/latex/en-th_language-default_(dvi|pdf).?
-export/export/latex/en-th_utf8_(dvi|pdf).*
-#
-# only ASCII characters in DVI (LuaTeX) with non-TeX fonts:
-export/export/latex/en-th_utf8_dvi3_systemF
 
 # LyX issues
 # **********

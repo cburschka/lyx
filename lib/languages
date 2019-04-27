@@ -1366,25 +1366,25 @@ Language thai
 	FontEncoding     LTH
 	DateFormats      "dd MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
 	LangCode         th_TH
+	# The first workaround requires loading inputenc after babel
+	# (cf. BufferParams.cpp):
 	PostBabelPreamble
-	  % Restore \coyright definition corrupted by lthenc.def
-	  \DeclareRobustCommand{\copyright}{%
-	    \ifmmode{\nfss@text{\textcopyright}}\else\textcopyright\fi}
-	  \DeclareTextSymbol{\textcopyright}{LTH}{8}
 	  % Restore catcodes changed by thai.ldf (active characters required for inputenc)
 	  \@tempcnta=161%
 	  \@whilenum\@tempcnta<252\do{%
 	    \catcode\@tempcnta=13
 	    \advance\@tempcnta\@ne
 	  }%	  
+	  % Restore \coyright definition corrupted by lthenc.def
+	  \DeclareRobustCommand{\copyright}{%
+	    \ifmmode{\nfss@text{\textcopyright}}\else\textcopyright\fi}
+	  \DeclareTextSymbol{\textcopyright}{LTH}{8}
+          % set up Thai fonts as substitue for the default families
+          \usepackage{substitutefont}
+          \substitutefont{LTH}{\rmdefault}{norasi}
+          \substitutefont{LTH}{\sfdefault}{garuda}
+          \substitutefont{LTH}{\ttdefault}{ttypist}
 	EndPostBabelPreamble
-	# Fixme: load font package?
-	# +1 support for font attributes in thai emphasizing etc.
-	# -1 forces ComputerModern as "non-thai" font
-	# TODO: set norasi as surrogate font for LTH (substitutefont.sty)
-	# PostBabelPreamble
-	#   \usepackage{fonts-tlwg}
-	# EndPostBabelPreamble
 End
 
 # not supported by babel

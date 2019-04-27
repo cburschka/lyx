@@ -1801,10 +1801,11 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	if (features.mustProvide("pmboxdraw"))
 		os << "\\usepackage{pmboxdraw}\n";
 	
-	// FIXME: In any document containing text in Thai language, 
-	// we must load babel before inputenc (see lib/languages).
 	// handle inputenc etc.
-	writeEncodingPreamble(os, features);
+	// (In documents containing text in Thai language, 
+	// we must load inputenc after babel, see lib/languages).
+	if (!contains(features.getBabelPostsettings(), from_ascii("thai.ldf")))
+	  writeEncodingPreamble(os, features);
 
 	// includeonly
 	if (!features.runparams().includeall && !included_children_.empty()) {
@@ -2288,6 +2289,11 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		                          !lyxrc.language_global_options)) + '\n';
 		os << features.getBabelPostsettings();
 	}
+	// In documents containing text in Thai language, 
+	// we must load inputenc after babel (see lib/languages).
+	if (contains(features.getBabelPostsettings(), from_ascii("thai.ldf")))
+	  writeEncodingPreamble(os, features);
+
 	if (features.isRequired("bicaption"))
 		os << "\\usepackage{bicaption}\n";
 	if (!listings_params.empty()

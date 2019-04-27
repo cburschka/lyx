@@ -5,18 +5,15 @@
 \save_transient_properties true
 \origin unavailable
 \textclass article
-\begin_preamble
-\AtBeginDocument{\usepackage{fonts-tlwg}}
-\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language english
 \language_package default
 \inputencoding utf8
 \fontencoding auto
-\font_roman "lmodern" "FreeSerif"
-\font_sans "default" "FreeSans"
-\font_typewriter "default" "FreeMono"
+\font_roman "lmodern" "Norasi"
+\font_sans "default" "Garuda"
+\font_typewriter "default" "Tlwg Mono"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -84,7 +81,7 @@
 \begin_body
 
 \begin_layout Subsection*
-Thai
+Test workaround for Thai language
 \end_layout
 
 \begin_layout Standard
@@ -203,7 +200,11 @@ uc/lccode changes prevent up/downcasing of high-bit characters
 \begin_inset Newline newline
 \end_inset
 
-(lösen → 
+(lösen 
+\begin_inset Formula $→$
+\end_inset
+
+ 
 \begin_inset ERT
 status open
 
@@ -227,7 +228,11 @@ status open
 
 \end_inset
 
-, LÖSEN → 
+, LÖSEN 
+\begin_inset Formula $→$
+\end_inset
+
+ 
 \begin_inset ERT
 status open
 
