@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 566
+\lyxformat 573
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -104,6 +104,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -147,6 +148,61 @@ and as Combining character
 \end_layout
 
 \begin_layout Quotation
+Вы узна́ете, как использовать LyX.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Accent as ERT still fails if the current language not using a cyrillic script
+ (i.e.
+ if the 
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+textcyr
+\begin_inset Quotes erd
+\end_inset
+
+ feature is required) 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Вы узн
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+аете, как использовать LyX.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+It works for Combining chars
+\end_layout
+
+\begin_layout Quotation
+
+\lang english
 Вы узна́ете, как использовать LyX.
 \end_layout
 

@@ -125,7 +125,7 @@ export/examples/(|fr/)seminar_(dvi|pdf).*
 # since TL18, Babel-Ukrainean uses UTF-8 if it detects Xe/LuaTeX (for "\date").
 # * garbled output with LuaTeX + TeX fonts (since TL18)
 # * missing chars with XeTeX + TeX fonts (see invertedTests)
-export/export/latex/uk-babel-date-missing-chars-with-ascii_.*_texF
+export/export/latex/languages/uk-babel-date-missing-chars-with-ascii_.*_texF
 export/(doc|examples)/uk/(Intro|Welcome)_.*_texF
 
 # new problem with TL18 (see invertedTests)
@@ -164,7 +164,7 @@ export/export/latex/es_auto-legacy_texF
 # * garbled output with LuaTeX + TeX fonts (since TL18)
 #   (date and chapter headings)
 # * missing chars with XeTeX + TeX fonts (see invertedTests)
-export/export/latex/uk-babel-date-missing-chars-with-ascii_.*_texF
+export/export/latex/languages/uk-babel-date-missing-chars-with-ascii_.*_texF
 export/doc/uk/Intro_.*_texF
 
 

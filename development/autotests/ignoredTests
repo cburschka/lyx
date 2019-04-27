@@ -84,7 +84,7 @@ export/export/latex/CJK/zh_CN-toc_*.(dvi3|pdf5)_texF
 # ignore with pdflatex and Xe/LuaTeX with 8-bit fonts:
 #
 export/export/latex/.*platex.*(pdf2|texF)
-export/export/latex/ja_wrong_auto_encoding_.*(pdf2|texF)
+export/export/latex/languages/ja_wrong_auto_encoding_.*(pdf2|texF)
 #
 # Most Japanese documents use language "japanese" wich is tied to "platex"
 # (automatically invoked instead of "latex" to create a DVI file).
@@ -171,4 +171,3 @@ lyx2lyx/export/latex/.*
 export/export/latex/.*(lyx..|xhtml)
 
 # don't test with non-TeX fonts:
-#export/export/latex/en-th_(LTH|language-default).*systemF

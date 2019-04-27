@@ -77,7 +77,7 @@ export/templates/Articles/R_Journal_(dvi3|pdf[45])_systemF
 # Babel and fontenc fails for some supported languages
 # * check BabelPremble definitions in lib/languages
 # * fails also due to #11522, see "lyxbugs" below.
-export/export/latex/supported-languages_.*_systemF
+export/export/latex/languages/supported-languages_.*_systemF
 
 # dvipdfm fails with "culmus-latex" fonts, because some of the fonts are
 # type1 *.pfa while dvipdfm only works with *.pfb fonts:
@@ -90,7 +90,7 @@ export/export/latex/supported-languages_.*_systemF
 # due to the Hebrew vocalisation using Postscript 3 specials
 #  xdvipdfmx:warning: Interpreting PS code failed!!! Output might be broken!!!
 #  xdvipdfmx:warning: Interpreting special command ps: (ps:) failed.
-export/export/latex/supported-languages_pdf3
+export/export/latex/languages/supported-languages_pdf3
 
 # Thai with CJK package requires the babel option "thaicjk" instead of "thai".
 # (see thaifont.txt in the CJK documentation for setup details).
@@ -235,7 +235,7 @@ export/examples/ru/.*LyXified.*_texF
 # New in TL18 -> cf. unreliableTests.varying_versions.
 # Workaround: suppressing auto-date, setting inputenc to "utf8", or using
 #             date inset (new in LyX 2.4) in the source documents.
-export/export/latex/uk-babel-date-missing-chars-with-ascii_(pdf4|dvi3)_texF
+export/export/latex/languages/uk-babel-date-missing-chars-with-ascii_(pdf4|dvi3)_texF
 # the "dvi3" tests for these pass, but have wrong output.
 export/doc/uk/Intro_pdf4_texF
 export/examples/uk/Welcome_pdf4_texF
@@ -309,7 +309,7 @@ export/.*/ar/.*_texF
 # Undefined control sequences "\luatexpardir" and "\luatextextdir".
 export/.*/ar/.*(dvi3|pdf5)_systemF
 # no Arab charaters with luainputenc
-export/export/latex/supported-languages_(dvi3|pdf5)_texF
+export/export/latex/languages/supported-languages_(dvi3|pdf5)_texF
 
 # Farsi
 # Polyglossia problem with LuaTeX (undefined command) (cf. Arabic)
@@ -330,7 +330,7 @@ export/.*/he/.*_texF
 
 # Ukrainian
 # See comment in unreliableTests
-export/export/latex/uk-babel-date-missing-chars-with-ascii_pdf5_texF
+export/export/latex/languages/uk-babel-date-missing-chars-with-ascii_pdf5_texF
 
 
 # ================================================
