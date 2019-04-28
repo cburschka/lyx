@@ -225,8 +225,8 @@ export/doc/(|de/|es/|fr/)UserGuide_pdf4_texF
 
 # Babel-Russian uses UTF-8 for auto-strings if it detects Xe/LuaTeX.
 # This fails unless the inputencoding is set to utf-8, too.
-export/doc/ru/(Intro|Tutorial)_.*_texF
-export/examples/ru/.*LyXified.*_texF
+export/export/latex/languages/ru_auto-legacy-luatex.*_texF
+
 
 # Babel-Ukrainian uses UTF-8 if it detects Xe/LuaTeX (for "\date").
 # With 8-bit TeX fonts this results in:
