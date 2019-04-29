@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 571
+\lyxformat 573
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -94,7 +94,7 @@
 \begin_body
 
 \begin_layout Standard
-XeTeX should work with 8-bit fonts for 
+XeTeX works with 8-bit fonts for 
 \begin_inset Quotes eld
 \end_inset
 
@@ -110,15 +110,10 @@ ascii
 \begin_inset Quotes erd
 \end_inset
 
- input encodings and not force-convert the input encoding to 
-\begin_inset Quotes eld
-\end_inset
-
-ascii
-\begin_inset Quotes erd
-\end_inset
-
- (LyX bug #10600).
+ input encodings.
+ There are, however, a number of incompatibilities, because the combination
+ XeTeX+TeX-fonts is rarely used and some packages wrongly test for XeTeX
+ instead of fontenc.
 \end_layout
 
 \begin_layout Standard
@@ -249,24 +244,10 @@ Error 256 (driver return code) generating output; file 012-hebrew_he_HE8.pdf
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 \begin_inset CommandInset include
 LatexCommand input
 filename "unicodesymbols/031-thai_th.lyx"
 literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-Thai sets catcodes for characters in Latin-Supplement block leading to wrong
- output there.
-\end_layout
 
 \end_inset
 
@@ -318,10 +299,24 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset CommandInset include
 LatexCommand input
 filename "unicodesymbols/074-76-letterlike-numberforms-arrows.lyx"
 literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Compilation errors with XeTeX, TeX-fonts, inputenc utf8, and expl3.sty (required
+ by xfrac.sty).
+\end_layout
 
 \end_inset
 
@@ -340,10 +335,24 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset CommandInset include
 LatexCommand input
 filename "unicodesymbols/078-79-misc-technical-control-pics.lyx"
 literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Compilation errors with XeTeX, TeX-fonts, inputenc utf8, and expl3.sty (required
+ by menukeys.sty).
+\end_layout
 
 \end_inset
 

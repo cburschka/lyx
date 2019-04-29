@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 571
+\lyxformat 573
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -243,24 +243,10 @@ Error 256 (driver return code) generating output; file 012-hebrew_he_HE8.pdf
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 \begin_inset CommandInset include
 LatexCommand input
 filename "unicodesymbols/031-thai_th.lyx"
 literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-Thai sets catcodes for characters in Latin-Supplement block leading to wrong
- output there.
-\end_layout
 
 \end_inset
 

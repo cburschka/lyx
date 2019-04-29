@@ -131,6 +131,10 @@ export/(doc|examples)/uk/(Intro|Welcome)_.*_texF
 # new problem with TL18 (see invertedTests)
 export/export/latex/luainputenc-utf8_pdf5_texF
 
+# Compilation errors under TeXLive-19 with XeTeX, TeX-fonts, inputenc utf8,
+# and expl3.sty (TL 17 works).
+export/export/latex/xetex-inputenc-utf8-expl3-bug_pdf4_texF
+
 # aastex: hard-coded version in class name:
 # 2018-05-12 aastex6.cls -> aastex62.cls
 export/examples/Articles/American_Astronomical_Society_.*

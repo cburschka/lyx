@@ -1,11 +1,11 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 573
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass scrbook
-\options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
+\options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage
 \use_default_options true
 \begin_modules
 customHeadersFooters
@@ -13,8 +13,8 @@ customHeadersFooters
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding auto
-\fontencoding global
+\inputencoding utf8
+\fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
 \font_typewriter "lmtt" "default"
@@ -25,12 +25,15 @@ customHeadersFooters
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
 \bibtex_command bibtex
 \index_command default
 \float_placement h
+\float_alignment class
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -65,6 +68,7 @@ customHeadersFooters
 \suppress_date true
 \justification true
 \use_refstyle 0
+\use_minted 0
 \branch chapter-1
 \selected 1
 \filename_suffix 0
@@ -98,10 +102,15 @@ customHeadersFooters
 \tocdepth 2
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle fancy
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -121,6 +130,7 @@ Title of the thesis
 
 \begin_layout Standard
 \begin_inset Branch Summary
+inverted 0
 status open
 
 \begin_layout Standard
@@ -131,6 +141,7 @@ Dissolving or deactivating this branch makes xhtml export work
 \begin_inset CommandInset include
 LatexCommand include
 filename "IncludeMissingEndTagDiv.lyx"
+literal "true"
 
 \end_inset
 

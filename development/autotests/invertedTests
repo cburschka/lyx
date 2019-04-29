@@ -92,6 +92,7 @@ export/export/latex/languages/supported-languages_.*_systemF
 #  xdvipdfmx:warning: Interpreting special command ps: (ps:) failed.
 export/export/latex/languages/supported-languages_pdf3
 
+
 # Thai with CJK package requires the babel option "thaicjk" instead of "thai".
 # (see thaifont.txt in the CJK documentation for setup details).
 export/export/latex/unicodesymbols/031-thai_th_(euc-|gbk|jis|utf8-cjk).*
@@ -223,10 +224,20 @@ Sublabel: texissues
 # Fails with ASCII (and hence also with XeTeX).
 export/doc/(|de/|es/|fr/)UserGuide_pdf4_texF
 
+# Problem with Czech and Slovak Babel support.
+# (reported per mail to Petr Tesa\v{r}\'ik, 2016-09-06)
+# All exports using babel fail.
+# Without the Czech or Slovak text it compiles
+# No problem with inserted German (or other foreign language) text
+# No problem if the table is Slovak, too
+export/export/latex/TableErrorIfSlovakTextInserted_(dvi|pdf[23]?|.*_texF)
+
+# Xe/LuaTeX
+###########
+
 # Babel-Russian uses UTF-8 for auto-strings if it detects Xe/LuaTeX.
 # This fails unless the inputencoding is set to utf-8, too.
 export/export/latex/languages/ru_auto-legacy-luatex.*_texF
-
 
 # Babel-Ukrainian uses UTF-8 if it detects Xe/LuaTeX (for "\date").
 # With 8-bit TeX fonts this results in:
@@ -240,7 +251,7 @@ export/export/latex/languages/uk-babel-date-missing-chars-with-ascii_(pdf4|dvi3)
 export/doc/uk/Intro_pdf4_texF
 export/examples/uk/Welcome_pdf4_texF
 
-# Fails with XeTeX/LuaTeX
+# Some packages fail with XeTeX/LuaTeX
 # Reported upstream (https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg184435.html)
 # Is there a new version fixing the problem?
 export/examples/Articles/Astronomy_%26_Astrophysics_(dvi3|pdf[45])_.*
@@ -259,14 +270,6 @@ export/examples/Modules/Hazard_and_Precautionary_Statements_.*_systemF
 # xy package:
 export/examples/(|fr/)Graphics_and_Insets/XY-(Pic|Figure)_pdf5.*
 
-# Problem with Check and Slovak Babel support.
-# (reported per mail to Petr Tesa\v{r}\'ik, 2016-09-06)
-# All exports using babel fail.
-# Without the Czech or Slovak text it compiles
-# No problem with inserted German (or other foreign language) text
-# No problem if the table is Slovak, too
-export/export/latex/TableErrorIfSlovakTextInserted_(dvi|pdf[23]?|.*_texF)
-
 # Polyglossia + LuaTeX issue
 # Reported upstream here:
 # https://github.com/reutenauer/polyglossia/issues/163
@@ -283,6 +286,7 @@ export/templates/Presentations/Slides_.*_systemF
 
 # Beamer: conflicts with some combinations of packages/settings/languages
 export/templates/es/Presentations/Beamer_pdf4_texF
+
 
 # Arabic
 #
@@ -324,9 +328,12 @@ export/examples/fa/Welcome_(dvi3|pdf5)_texF
 # does not currently work with LuaTeX (undefined command) (cf. Arabic)
 # terminal message: "Language hebrew not found in language.dat.lua"
 export/.*/he/.*(dvi3|pdf5)_systemF
-# Babel-Arabic loads "inputenc" which fails with LuaTeX
-# Xe/LuaTeX + TeX fonts: "! Right-to-Left Support Error: use TeX--XeT or e-TeX engine."
+#
+# babel-hebrew loads "rlbabel.def" which fails with LuaTeX + TeX fonts:
+# "! Right-to-Left Support Error: use TeX--XeT or e-TeX engine."
+# (XeTeX works, if inputenc is set to "utf8")
 export/.*/he/.*_texF
+export/export/latex/languages/he-.*(dvi3|pdf5)_texF
 
 # Ukrainian
 # See comment in unreliableTests
