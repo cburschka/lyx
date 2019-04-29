@@ -353,12 +353,14 @@
 #                traduction de « modification »
 # -----------------------------------------------------------------
 # 15 avril 2019 : traduction des nouvelles chaînes de la version 2.4.0
+# -----------------------------------------------------------------
+# 19 avril 2019 : mise à jour 2.4.0
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-04-21 12:38+0200\n"
-"PO-Revision-Date: 2019-04-15 17:23+0200\n"
+"POT-Creation-Date: 2019-04-24 14:14+0200\n"
+"PO-Revision-Date: 2019-04-29 19:06+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -401,29 +403,25 @@ msgid "Ke&y:"
 msgstr "Cl&é :"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:52 src/frontends/qt4/ui/BibitemUi.ui:76
-#: src/frontends/qt4/GuiBibitem.cpp:91
 msgid "The label as it appears in the document"
 msgstr "Le nom de l'étiquette tel qu'elle apparaîtra dans le document"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:55 src/frontends/qt4/ui/IncludeUi.ui:183
-#: src/frontends/qt4/ui/LabelUi.ui:36 src/frontends/qt4/GuiBibitem.cpp:87
-#: src/frontends/qt4/GuiBibitem.cpp:89
+#: src/frontends/qt4/ui/LabelUi.ui:36
 msgid "&Label:"
 msgstr "É&tiquette :"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:83
-#, fuzzy
 msgid "&Year:"
-msgstr "Année : "
+msgstr "&Année : "
 
 #: src/frontends/qt4/ui/BibitemUi.ui:96
 msgid "The year with \"Author (Year)\" citations (without parentheses)."
-msgstr ""
+msgstr "L'année pour les citations « Auteur (année) » (sans parenthèses)"
 
-#: src/frontends/qt4/ui/BibitemUi.ui:105 src/frontends/qt4/GuiBibitem.cpp:64
-#, fuzzy
+#: src/frontends/qt4/ui/BibitemUi.ui:105
 msgid "A&ll Author Names:"
-msgstr "Noms des auteurs"
+msgstr "T&ous les noms des auteurs"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:115
 msgid ""
@@ -431,8 +429,11 @@ msgid ""
 "full list for author-year citation, you can put the full list here and the "
 "abbreviated list above."
 msgstr ""
+"Si vous souhaitez utiliser, pour une citation auteur-année, une liste "
+"d'auteurs abréviée (avec « et al. ») ainsi qu'une liste complète , vous "
+"pouvez mettre la liste complète ici et la liste abréviée au-dessus."
 
-#: src/frontends/qt4/ui/BibitemUi.ui:122 src/frontends/qt4/GuiBibitem.cpp:93
+#: src/frontends/qt4/ui/BibitemUi.ui:122
 msgid ""
 "Pass content of the `Label' field literally to LaTeX. Check this if you want "
 "to enter LaTeX code."
@@ -7473,7 +7474,7 @@ msgstr "Astuces pour le titre et le préambule"
 #: lib/layouts/InStar.module:3 lib/layouts/fix-cm.module:3
 #: lib/layouts/fixltx2e.module:3 lib/layouts/minimalistic.module:3
 msgid "Fixes & Hacks"
-msgstr ""
+msgstr "Solutions & astuces"
 
 #: lib/layouts/InStar.module:13
 msgid ""
@@ -8288,7 +8289,7 @@ msgid "chemistry"
 msgstr "chimie"
 
 #: lib/layouts/achemso.layout:305 lib/layouts/achemso.layout:308
-#: lib/languages:950
+#: lib/languages:951
 msgid "Latin"
 msgstr "Latin"
 
@@ -9465,16 +9466,14 @@ msgid "Acknowledgments."
 msgstr "Remerciements."
 
 #: lib/layouts/algorithm2e.module:2
-#, fuzzy
 msgid "Algorithm2e Float"
-msgstr "Algorithm2e"
+msgstr "Flottant d'Algorithm2e"
 
 #: lib/layouts/algorithm2e.module:3 lib/layouts/bicaption.module:3
 #: lib/layouts/figs-within-sections.module:3
 #: lib/layouts/tabs-within-sections.module:3
-#, fuzzy
 msgid "Floats & Captions"
-msgstr "Options de classe"
+msgstr "Flottants & légendes"
 
 #: lib/layouts/algorithm2e.module:8
 msgid ""
@@ -10540,18 +10539,16 @@ msgid "Beamerposter"
 msgstr "PosterBeame"
 
 #: lib/layouts/bicaption.module:2
-#, fuzzy
 msgid "Bilingual Captions"
-msgstr "Légendes multilingues"
+msgstr "Légendes bilingues"
 
 #: lib/layouts/bicaption.module:7
-#, fuzzy
 msgid ""
 "Provides two styles to typeset bilingual captions. For a description see the "
 "file MultilingualCaptions.lyx in LyX's examples folder."
 msgstr ""
-"Procure deux styles de légendes multilingues. Pour les détails, voir le "
-"fichier MultilingualCaptions.lyx dans le répertoire « examples » de LyX."
+"Procure deux styles de légendes bilingues. Pour les détails, voir le fichier "
+"MultilingualCaptions.lyx dans le répertoire « examples » de LyX."
 
 #: lib/layouts/bicaption.module:11
 msgid "Caption setup"
@@ -10609,7 +10606,7 @@ msgstr "Braille"
 
 #: lib/layouts/braille.module:3
 msgid "Accessibility"
-msgstr ""
+msgstr "Accessibilité"
 
 #: lib/layouts/braille.module:7
 msgid ""
@@ -10757,15 +10754,14 @@ msgid "Japanese Slide (BXJS Class)"
 msgstr "Transparent japonais (classe BXJS)"
 
 #: lib/layouts/changebars.module:2
-#, fuzzy
 msgid "Change Tracking Bars"
-msgstr "[Suivi des Modifications] "
+msgstr "Barres de suivi des modifications"
 
 #: lib/layouts/changebars.module:3 lib/layouts/fixme.module:3
 #: lib/layouts/pdfcomment.module:3 lib/layouts/pdfform.module:3
 #: lib/layouts/todonotes.module:3
 msgid "Annotation & Revision"
-msgstr ""
+msgstr "Annotation & revue"
 
 #: lib/layouts/changebars.module:8
 msgid ""
@@ -10886,13 +10882,12 @@ msgid "KnightMove:"
 msgstr "Mouvement_Cavalier :"
 
 #: lib/layouts/chessboard.module:2
-#, fuzzy
 msgid "Chess Board"
 msgstr "Échiquier"
 
 #: lib/layouts/chessboard.module:3 lib/layouts/lilypond.module:3
 msgid "Leisure, Sports & Music"
-msgstr ""
+msgstr "Loisirs, sports et musique"
 
 #: lib/layouts/chessboard.module:7
 msgid ""
@@ -11175,7 +11170,6 @@ msgid "Chinese Report (CTeX)"
 msgstr "Report chinois(CTeX)"
 
 #: lib/layouts/customHeadersFooters.module:2
-#, fuzzy
 msgid "Custom Header/Footer Text"
 msgstr "Personnalisation en-têtes/pieds de page"
 
@@ -12034,14 +12028,12 @@ msgstr ""
 "internet"
 
 #: lib/layouts/endnotes.module:2
-#, fuzzy
 msgid "Endnotes"
 msgstr "Notes en fin de document"
 
 #: lib/layouts/endnotes.module:3 lib/layouts/foottoend.module:3
-#, fuzzy
 msgid "Foot- and Endnotes"
-msgstr "Notes de bas de page"
+msgstr "Notes de bas de page et en fin de document"
 
 #: lib/layouts/endnotes.module:7
 msgid ""
@@ -12077,9 +12069,8 @@ msgid "Customisable Lists (enumitem)"
 msgstr "Liste personnalisable (enumitem)"
 
 #: lib/layouts/enumitem.module:3 lib/layouts/paralist.module:3
-#, fuzzy
 msgid "List Enhancements"
-msgstr "Liste des schémas"
+msgstr "Améliorations des listes"
 
 #: lib/layouts/enumitem.module:7
 msgid ""
@@ -12516,9 +12507,8 @@ msgstr ""
 "ajouter le numéro de section au numéro de figure, comme dans « fig. 2.1 »."
 
 #: lib/layouts/fix-cm.module:2
-#, fuzzy
 msgid "Fix Computer Modern Fonts"
-msgstr "Computer Modern Sans"
+msgstr "Polices Computer Modern corrigées"
 
 #: lib/layouts/fix-cm.module:9
 msgid ""
@@ -12531,9 +12521,8 @@ msgstr ""
 "du paquetage fix-cm : http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
 
 #: lib/layouts/fixltx2e.module:2
-#, fuzzy
 msgid "LaTeX Kernel Fixes (Obsolete)"
-msgstr "Article Latex8 (obsolète)"
+msgstr "Corrections du noyau LaTeX (obsolète)"
 
 #: lib/layouts/fixltx2e.module:11
 msgid ""
@@ -12554,9 +12543,8 @@ msgstr ""
 "module devient donc obsolète avec les nouvelles distributions LaTeX."
 
 #: lib/layouts/fixme.module:2
-#, fuzzy
 msgid "FiXme Notes"
-msgstr "Note fixme"
+msgstr "Notes Fixme"
 
 #: lib/layouts/fixme.module:12
 msgid ""
@@ -12895,9 +12883,8 @@ msgid "Definition*"
 msgstr "Définition*"
 
 #: lib/layouts/foottoend.module:2
-#, fuzzy
 msgid "Footnotes as Endnotes"
-msgstr "Étiquette de note de bas de page"
+msgstr "Notes de bas de page renvoyées en fin de document"
 
 #: lib/layouts/foottoend.module:7
 msgid ""
@@ -13293,9 +13280,8 @@ msgstr "Boîtes graphiques"
 
 #: lib/layouts/graphicboxes.module:3 lib/layouts/sectionbox.module:3
 #: lib/layouts/tcolorbox.module:3 lib/layouts/varwidth.module:3
-#, fuzzy
 msgid "Boxes"
-msgstr "Boîtes colorées"
+msgstr "Boîtes"
 
 #: lib/layouts/graphicboxes.module:6
 msgid "Boxes to scale and rotate its contents"
@@ -13360,15 +13346,13 @@ msgid "Rotation angle in degrees (counterclockwise)"
 msgstr "Angle de rotation en degrés (sens inverse des aiguilles d'une montre)"
 
 #: lib/layouts/hanging.module:2
-#, fuzzy
 msgid "Hanging Paragraphs"
-msgstr "In&denter paragraphe"
+msgstr "Paragraphes en renfoncement"
 
 #: lib/layouts/hanging.module:3 lib/layouts/initials.module:3
 #: lib/layouts/shapepar.module:3
-#, fuzzy
 msgid "Paragraph Styles"
-msgstr "Début de paragraphe"
+msgstr "Styles de paragraphe"
 
 #: lib/layouts/hanging.module:7
 msgid ""
@@ -13466,14 +13450,13 @@ msgid "Scene"
 msgstr "Scène"
 
 #: lib/layouts/hpstatement.module:2
-#, fuzzy
 msgid "Chemistry: Hazard and Precautionary Statements"
-msgstr "Mentions de danger et conseils de prudence"
+msgstr "Chimie : mentions de danger et conseils de prudence"
 
 #: lib/layouts/hpstatement.module:3 lib/layouts/linguistics.module:3
 #: lib/layouts/rsphrase.module:3
 msgid "Academic Field Specifics"
-msgstr ""
+msgstr "Particularités d'un domaine académique"
 
 #: lib/layouts/hpstatement.module:8
 msgid ""
@@ -13640,10 +13623,9 @@ msgstr "CommuniquéPar"
 
 #: lib/layouts/initials.module:2
 msgid "Initials (Drop Caps)"
-msgstr ""
+msgstr "Initiales (lettrines)"
 
 #: lib/layouts/initials.module:7
-#, fuzzy
 msgid ""
 "Defines a style for paragraphs with an enlarged initial letter (drop cap). "
 "See the EmbeddedObjects manual for a detailed description."
@@ -13995,7 +13977,6 @@ msgstr "Rnw (knitr)"
 
 #: lib/layouts/knitr.module:3 lib/layouts/noweb.module:3
 #: lib/layouts/sweave.module:3
-#, fuzzy
 msgid "Literate Programming"
 msgstr "Programmation littéraire"
 
@@ -14027,9 +14008,8 @@ msgid "S/R expr"
 msgstr "S/R expr"
 
 #: lib/layouts/landscape.module:2
-#, fuzzy
 msgid "Landscape Document Parts"
-msgstr "Document maître"
+msgstr "Parties du document en format paysage"
 
 #: lib/layouts/landscape.module:6
 msgid "Output parts of the document in landscape mode."
@@ -14127,9 +14107,8 @@ msgid "P.S.:"
 msgstr "P.S. :"
 
 #: lib/layouts/lilypond.module:2
-#, fuzzy
 msgid "LilyPond Music Notation"
-msgstr "Format musical LilyPond"
+msgstr "Notation du format musical LilyPond"
 
 #: lib/layouts/lilypond.module:7
 msgid ""
@@ -14380,9 +14359,8 @@ msgid "Logical Markup"
 msgstr "Balisage logique"
 
 #: lib/layouts/logicalmkup.module:3 lib/layouts/soul.module:3
-#, fuzzy
 msgid "Text Markup"
-msgstr "Balisage logique"
+msgstr "Balisage de texte"
 
 #: lib/layouts/logicalmkup.module:6
 msgid ""
@@ -14563,9 +14541,8 @@ msgid "Legend"
 msgstr "Légende"
 
 #: lib/layouts/minimalistic.module:2
-#, fuzzy
 msgid "Minimalistic Insets"
-msgstr "Minimaliste"
+msgstr "Inserts minimalistes"
 
 #: lib/layouts/minimalistic.module:6
 msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
@@ -14912,7 +14889,7 @@ msgstr "Report polonais (MW Bundle)"
 
 #: lib/layouts/natbibapa.module:2
 msgid "APA Style with Natbib"
-msgstr ""
+msgstr "Style APA avec Natbib"
 
 #: lib/layouts/natbibapa.module:10
 msgid ""
@@ -15743,9 +15720,8 @@ msgid "PACS number:"
 msgstr "Numéro PACS :"
 
 #: lib/layouts/rsphrase.module:2
-#, fuzzy
 msgid "Chemistry: Risk and Safety Statements"
-msgstr "Énoncés de Risque et Sécurité"
+msgstr "Chimie : énoncés de Risque et Sécurité"
 
 #: lib/layouts/rsphrase.module:8
 msgid ""
@@ -17126,9 +17102,8 @@ msgid "Exercise \\theexercise."
 msgstr "Exercice \\theexercise."
 
 #: lib/layouts/theorems-ams-bytype.module:2
-#, fuzzy
 msgid "AMS Theorems (Numbered by Type)"
-msgstr "Théorèmes (numérotation par type)"
+msgstr "Théorèmes AMS (numérotation par type)"
 
 #: lib/layouts/theorems-ams-bytype.module:12
 msgid ""
@@ -17204,9 +17179,8 @@ msgid "Claim \\thechapter.\\theclaim."
 msgstr "Affirmation \\thechapter.\\theclaim."
 
 #: lib/layouts/theorems-ams-chap-bytype.module:2
-#, fuzzy
 msgid "AMS Theorems (Numbered by Type within Chapters)"
-msgstr "Théorèmes (numérotation par type et par chapitre)"
+msgstr "Théorèmes AMS (numérotation par type et par chapitre)"
 
 #: lib/layouts/theorems-ams-chap-bytype.module:12
 msgid ""
@@ -17227,9 +17201,8 @@ msgstr ""
 "fait par chapitres : théorème 1.1, théorème 2.1,..."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
-#, fuzzy
 msgid "AMS Theorems (Extended, Numbered by Type)"
-msgstr "Théorèmes (AMS étendu, numérotation par type)"
+msgstr "Théorèmes AMS (étendu, numérotation par type)"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:13
 msgid ""
@@ -17429,9 +17402,8 @@ msgid "Question."
 msgstr "Question."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:2
-#, fuzzy
 msgid "AMS Theorems (Extended, Numbered by Type within Chapters)"
-msgstr "Théorèmes (AMS étendu, numérotation par type dans les chapitres)"
+msgstr "Théorèmes AMS (étendu, numérotation par type dans les chapitres)"
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:13
 msgid ""
@@ -17497,9 +17469,8 @@ msgid "Question \\thechapter.\\thequestion."
 msgstr "Question \\thechapter.\\thequestion."
 
 #: lib/layouts/theorems-ams-extended.module:2
-#, fuzzy
 msgid "AMS Theorems (Extended)"
-msgstr "Théorèmes (AMS étendu)"
+msgstr "Théorèmes AMS (étendu)"
 
 #: lib/layouts/theorems-ams-extended.module:10
 msgid ""
@@ -17582,9 +17553,8 @@ msgid "Claim \\thetheorem."
 msgstr "Affirmation \\thetheorem."
 
 #: lib/layouts/theorems-ams.module:2
-#, fuzzy
 msgid "AMS Theorems"
-msgstr "Théorèmes"
+msgstr "Théorèmes AMS"
 
 #: lib/layouts/theorems-ams.module:9
 msgid ""
@@ -17600,9 +17570,8 @@ msgstr ""
 "(numérotation par ...) »."
 
 #: lib/layouts/theorems-bytype.module:2
-#, fuzzy
 msgid "Standard Theorems (Numbered by Type)"
-msgstr "Théorèmes (numérotation par type)"
+msgstr "Théorèmes standard (numérotation par type)"
 
 #: lib/layouts/theorems-bytype.module:11
 msgid ""
@@ -17640,9 +17609,8 @@ msgid "Case \\arabic{caseiv}."
 msgstr "Cas \\arabic{caseiv}."
 
 #: lib/layouts/theorems-chap-bytype.module:2
-#, fuzzy
 msgid "Standard Theorems (Numbered by Type within Chapters)"
-msgstr "Théorèmes (numérotation par type et par chapitre)"
+msgstr "Théorèmes standard (numérotation par type et par chapitre)"
 
 #: lib/layouts/theorems-chap-bytype.module:10
 msgid ""
@@ -17660,9 +17628,8 @@ msgstr ""
 "chapitre."
 
 #: lib/layouts/theorems-chap.module:2
-#, fuzzy
 msgid "Standard Theorems (Numbered by Chapter)"
-msgstr "Théorèmes (numérotation par chapitre)"
+msgstr "Théorèmes standard (numérotation par chapitre)"
 
 #: lib/layouts/theorems-chap.module:8
 msgid ""
@@ -17676,7 +17643,7 @@ msgstr ""
 
 #: lib/layouts/theorems-named.module:3
 msgid "Standard Theorems (Nameable)"
-msgstr ""
+msgstr "Théorèmes standard (nommables)"
 
 #: lib/layouts/theorems-named.module:8
 msgid ""
@@ -17719,9 +17686,8 @@ msgid "Alternative proof string"
 msgstr "Autre expression de la preuve"
 
 #: lib/layouts/theorems-sec-bytype.module:2
-#, fuzzy
 msgid "Standard Theorems (Numbered by Type within Sections)"
-msgstr "Théorèmes (numérotation par type et par section)"
+msgstr "Théorèmes standard (numérotation par type et par section)"
 
 #: lib/layouts/theorems-sec-bytype.module:10
 msgid ""
@@ -17739,9 +17705,8 @@ msgstr ""
 "section."
 
 #: lib/layouts/theorems-sec.module:2
-#, fuzzy
 msgid "Standard Theorems (Numbered by Section)"
-msgstr "Théorèmes (numérotation par section)"
+msgstr "Théorèmes standard (numérotation par section)"
 
 #: lib/layouts/theorems-sec.module:7
 msgid ""
@@ -17776,9 +17741,8 @@ msgid "Remark."
 msgstr "Remarque."
 
 #: lib/layouts/theorems-starred.module:2
-#, fuzzy
 msgid "Standard Theorems (Unnumbered)"
-msgstr "Théorèmes (non numérotés)"
+msgstr "Théorèmes standard (non numérotés)"
 
 #: lib/layouts/theorems-starred.module:7
 msgid ""
@@ -17789,9 +17753,8 @@ msgstr ""
 "l'environnement de preuve, via le mécanisme AMS étendu."
 
 #: lib/layouts/theorems-std.module:2
-#, fuzzy
 msgid "Standard Theorems"
-msgstr "Théorèmes nommés"
+msgstr "Théorèmes standard"
 
 #: lib/layouts/theorems-std.module:8
 msgid ""
@@ -18130,329 +18093,329 @@ msgstr "Anglais (Royaume Uni)"
 msgid "Bulgarian"
 msgstr "Bulgare"
 
-#: lib/languages:430
+#: lib/languages:431
 msgid "English (Canada)"
 msgstr "Anglais (Canada)"
 
-#: lib/languages:445
+#: lib/languages:446
 msgid "French (Canada)"
 msgstr "Français (Canadien)"
 
-#: lib/languages:457
+#: lib/languages:458
 msgid "Catalan"
 msgstr "Catalan"
 
-#: lib/languages:471
+#: lib/languages:472
 msgid "Chinese (simplified)"
 msgstr "Chinois (simplifié)"
 
-#: lib/languages:482
+#: lib/languages:483
 msgid "Chinese (traditional)"
 msgstr "Chinois (traditionnel)"
 
-#: lib/languages:498
+#: lib/languages:499
 msgid "Coptic"
 msgstr "Copte"
 
-#: lib/languages:505
+#: lib/languages:506
 msgid "Croatian"
 msgstr "Croate"
 
-#: lib/languages:516
+#: lib/languages:517
 msgid "Czech"
 msgstr "Tchèque"
 
-#: lib/languages:528
+#: lib/languages:529
 msgid "Danish"
 msgstr "Danois"
 
-#: lib/languages:541
+#: lib/languages:542
 msgid "Divehi (Maldivian)"
 msgstr "Divehi (Maldivien)"
 
-#: lib/languages:549
+#: lib/languages:550
 msgid "Dutch"
 msgstr "Néerlandais"
 
-#: lib/languages:562 lib/examples/Articles:0
+#: lib/languages:563 lib/examples/Articles:0
 #: src/frontends/qt4/GuiLyXFiles.cpp:70
 msgid "English"
 msgstr "Anglais"
 
-#: lib/languages:577
+#: lib/languages:578
 msgid "Esperanto"
 msgstr "Espéranto"
 
-#: lib/languages:588
+#: lib/languages:589
 msgid "Estonian"
 msgstr "Estonien"
 
-#: lib/languages:604
+#: lib/languages:605
 msgid "Farsi"
 msgstr "Farsi"
 
-#: lib/languages:620
+#: lib/languages:621
 msgid "Finnish"
 msgstr "Finnois"
 
-#: lib/languages:633
+#: lib/languages:634
 msgid "French"
 msgstr "Français"
 
-#: lib/languages:651
+#: lib/languages:652
 msgid "Friulian"
 msgstr "Frioulan"
 
-#: lib/languages:663
+#: lib/languages:664
 msgid "Galician"
 msgstr "Galicien"
 
-#: lib/languages:679 src/frontends/qt4/GuiSymbols.cpp:79
+#: lib/languages:680 src/frontends/qt4/GuiSymbols.cpp:79
 msgid "Georgian"
 msgstr "Géorgien"
 
-#: lib/languages:689
+#: lib/languages:690
 msgid "German (old spelling)"
 msgstr "Allemand (ancienne orthographe)"
 
-#: lib/languages:702 lib/examples/Articles:0
+#: lib/languages:703 lib/examples/Articles:0
 msgid "German"
 msgstr "Allemand"
 
-#: lib/languages:719
+#: lib/languages:720
 msgid "German (Switzerland)"
 msgstr "Allemand (Suisse)"
 
-#: lib/languages:734
+#: lib/languages:735
 msgid "German (Switzerland, old spelling)"
 msgstr "Allemand (Suisse, ancienne orthographe)"
 
-#: lib/languages:746 lib/ui/stdtoolbars.inc:311 lib/ui/stdtoolbars.inc:604
+#: lib/languages:747 lib/ui/stdtoolbars.inc:311 lib/ui/stdtoolbars.inc:604
 #: src/frontends/qt4/GuiSymbols.cpp:62
 msgid "Greek"
 msgstr "Grec"
 
-#: lib/languages:761
+#: lib/languages:762
 msgid "Greek (polytonic)"
 msgstr "Grec (polytonique)"
 
-#: lib/languages:775 src/frontends/qt4/GuiSymbols.cpp:65
+#: lib/languages:776 src/frontends/qt4/GuiSymbols.cpp:65
 msgid "Hebrew"
 msgstr "Hébreu"
 
-#: lib/languages:796
+#: lib/languages:797
 msgid "Hindi"
 msgstr "Hindi"
 
-#: lib/languages:817
+#: lib/languages:818
 msgid "Icelandic"
 msgstr "Islandais"
 
-#: lib/languages:830
+#: lib/languages:831
 msgid "Interlingua"
 msgstr "Interlingua"
 
-#: lib/languages:842
+#: lib/languages:843
 msgid "Irish"
 msgstr "Irlandais"
 
-#: lib/languages:853
+#: lib/languages:854
 msgid "Italian"
 msgstr "Italien"
 
-#: lib/languages:867
+#: lib/languages:868
 msgid "Japanese"
 msgstr "Japonnais"
 
-#: lib/languages:880
+#: lib/languages:881
 msgid "Japanese (CJK)"
 msgstr "Japonnais (CJK)"
 
-#: lib/languages:890 src/frontends/qt4/GuiSymbols.cpp:74
+#: lib/languages:891 src/frontends/qt4/GuiSymbols.cpp:74
 msgid "Kannada"
 msgstr "Kannara"
 
-#: lib/languages:900
+#: lib/languages:901
 msgid "Kazakh"
 msgstr "Kazakh"
 
-#: lib/languages:909
+#: lib/languages:910
 msgid "Khmer"
 msgstr "Khmer"
 
-#: lib/languages:918
+#: lib/languages:919
 msgid "Korean"
 msgstr "Coréen"
 
-#: lib/languages:929
+#: lib/languages:930
 msgid "Kurmanji"
 msgstr "Kurmanji"
 
-#: lib/languages:939 src/frontends/qt4/GuiSymbols.cpp:77
+#: lib/languages:940 src/frontends/qt4/GuiSymbols.cpp:77
 msgid "Lao"
 msgstr "Lao"
 
-#: lib/languages:962
+#: lib/languages:963
 msgid "Latvian"
 msgstr "Letton"
 
-#: lib/languages:976
+#: lib/languages:977
 msgid "Lithuanian"
 msgstr "Lituanien"
 
 # C'est un dialecte allemand
 # Non, c'est une langue (JPC)
-#: lib/languages:995
+#: lib/languages:996
 msgid "Lower Sorbian"
 msgstr "Bas Sorabe"
 
-#: lib/languages:1006
+#: lib/languages:1007
 msgid "Hungarian"
 msgstr "Hongrois"
 
-#: lib/languages:1019
+#: lib/languages:1020
 msgid "Macedonian"
 msgstr "Macédonien"
 
-#: lib/languages:1031 src/frontends/qt4/GuiSymbols.cpp:75
+#: lib/languages:1032 src/frontends/qt4/GuiSymbols.cpp:75
 msgid "Malayalam"
 msgstr "Malayalam"
 
-#: lib/languages:1041
+#: lib/languages:1042
 msgid "Marathi"
 msgstr "Marathi"
 
-#: lib/languages:1052
+#: lib/languages:1053
 msgid "Mongolian"
 msgstr "Mongol"
 
-#: lib/languages:1062
+#: lib/languages:1063
 msgid "English (New Zealand)"
 msgstr "Anglais (Nouvelle Zélande)"
 
-#: lib/languages:1074
+#: lib/languages:1075
 msgid "Norwegian (Bokmaal)"
 msgstr "Norvégien (Bokmaal)"
 
-#: lib/languages:1091
+#: lib/languages:1092
 msgid "Norwegian (Nynorsk)"
 msgstr "Norvégien (Nynorsk)"
 
-#: lib/languages:1104
+#: lib/languages:1105
 msgid "Occitan"
 msgstr "Occitan"
 
-#: lib/languages:1127
+#: lib/languages:1128
 msgid "Piedmontese"
 msgstr "Piémontais"
 
-#: lib/languages:1139
+#: lib/languages:1140
 msgid "Polish"
 msgstr "Polonais"
 
-#: lib/languages:1151
+#: lib/languages:1152
 msgid "Portuguese"
 msgstr "Portugais"
 
-#: lib/languages:1163
+#: lib/languages:1164
 msgid "Romanian"
 msgstr "Roumain"
 
-#: lib/languages:1175
+#: lib/languages:1176
 msgid "Romansh"
 msgstr "Romand"
 
-#: lib/languages:1187
+#: lib/languages:1188
 msgid "Russian"
 msgstr "Russe"
 
-#: lib/languages:1201
+#: lib/languages:1202
 msgid "North Sami"
 msgstr "Nord Sami"
 
-#: lib/languages:1212
+#: lib/languages:1213
 msgid "Sanskrit"
 msgstr "Sanskrit"
 
-#: lib/languages:1222
+#: lib/languages:1223
 msgid "Scottish"
 msgstr "Écossais"
 
-#: lib/languages:1238
+#: lib/languages:1239
 msgid "Serbian"
 msgstr "Serbe"
 
-#: lib/languages:1255
+#: lib/languages:1256
 msgid "Serbian (Latin)"
 msgstr "Serbe (latin)"
 
-#: lib/languages:1267
+#: lib/languages:1268
 msgid "Slovak"
 msgstr "Slovaque"
 
-#: lib/languages:1279
+#: lib/languages:1280
 msgid "Slovene"
 msgstr "Slovène"
 
-#: lib/languages:1290
+#: lib/languages:1291
 msgid "Spanish"
 msgstr "Espagnol"
 
-#: lib/languages:1306
+#: lib/languages:1307
 msgid "Spanish (Mexico)"
 msgstr "Espagnol (Mexique)"
 
-#: lib/languages:1320
+#: lib/languages:1321
 msgid "Swedish"
 msgstr "Suédois"
 
-#: lib/languages:1333
+#: lib/languages:1334
 msgid "Syriac"
 msgstr "Syriaque"
 
-#: lib/languages:1343 src/frontends/qt4/GuiSymbols.cpp:72
+#: lib/languages:1344 src/frontends/qt4/GuiSymbols.cpp:72
 msgid "Tamil"
 msgstr "Tamoul"
 
-#: lib/languages:1352 src/frontends/qt4/GuiSymbols.cpp:73
+#: lib/languages:1353 src/frontends/qt4/GuiSymbols.cpp:73
 msgid "Telugu"
 msgstr "Télougou"
 
-#: lib/languages:1362 src/frontends/qt4/GuiSymbols.cpp:76
+#: lib/languages:1363 src/frontends/qt4/GuiSymbols.cpp:76
 msgid "Thai"
 msgstr "Thaï"
 
-#: lib/languages:1394 src/frontends/qt4/GuiSymbols.cpp:78
+#: lib/languages:1395 src/frontends/qt4/GuiSymbols.cpp:78
 msgid "Tibetan"
 msgstr "Tibétain"
 
-#: lib/languages:1401
+#: lib/languages:1402
 msgid "Turkish"
 msgstr "Turc"
 
-#: lib/languages:1418
+#: lib/languages:1419
 msgid "Turkmen"
 msgstr "Turkmen"
 
-#: lib/languages:1429
+#: lib/languages:1430
 msgid "Ukrainian"
 msgstr "Ukrainien"
 
 # C'est un dialecte allemand
 # Non, c'est une langue (JPC)
-#: lib/languages:1442
+#: lib/languages:1443
 msgid "Upper Sorbian"
 msgstr "Haut Sorabe"
 
-#: lib/languages:1454
+#: lib/languages:1455
 msgid "Urdu"
 msgstr "Urdu"
 
-#: lib/languages:1463
+#: lib/languages:1464
 msgid "Vietnamese"
 msgstr "Vietnamien"
 
-#: lib/languages:1474
+#: lib/languages:1475
 msgid "Welsh"
 msgstr "Gallois"
 
@@ -18558,29 +18521,24 @@ msgid "New Century Schoolbook"
 msgstr "New Century Schoolbook"
 
 #: lib/latexfonts:363
-#, fuzzy
 msgid "Noto Serif Regular"
-msgstr "Noto Serif"
+msgstr "Noto Serif Regular"
 
 #: lib/latexfonts:372
-#, fuzzy
 msgid "Noto Serif Medium"
-msgstr "Noto Serif"
+msgstr "Noto Serif Medium"
 
 #: lib/latexfonts:381
-#, fuzzy
 msgid "Noto Serif Thin"
-msgstr "Noto Serif"
+msgstr "Noto Serif Thin"
 
 #: lib/latexfonts:390
-#, fuzzy
 msgid "Noto Serif Light"
-msgstr "Noto Serif"
+msgstr "Noto Serif Light"
 
 #: lib/latexfonts:399
-#, fuzzy
 msgid "Noto Serif Extralight"
-msgstr "IBM Plex Serif Extra Light"
+msgstr "Noto Serif Extralight"
 
 #: lib/latexfonts:408 lib/latexfonts:416
 msgid "Noto Serif"
@@ -18724,29 +18682,24 @@ msgid "Latin Modern Sans"
 msgstr "Latin Modern Sans"
 
 #: lib/latexfonts:769
-#, fuzzy
 msgid "Noto Sans Regular"
-msgstr "Noto Sans"
+msgstr "Noto Sans Regular"
 
 #: lib/latexfonts:779
-#, fuzzy
 msgid "Noto Sans Medium"
-msgstr "Noto Sans"
+msgstr "Noto Sans Medium"
 
 #: lib/latexfonts:789
-#, fuzzy
 msgid "Noto Sans Thin"
-msgstr "Noto Sans"
+msgstr "Noto Sans Thin"
 
 #: lib/latexfonts:799
-#, fuzzy
 msgid "Noto Sans Light"
-msgstr "Noto Sans"
+msgstr "Noto Sans Light"
 
 #: lib/latexfonts:809
-#, fuzzy
 msgid "Noto Sans Extralight"
-msgstr "IBM Plex Sans Extra Light"
+msgstr "Noto Sans Extralight"
 
 #: lib/latexfonts:819
 msgid "Noto Sans"
@@ -18825,9 +18778,8 @@ msgid "LuxiMono"
 msgstr "LuxiMono"
 
 #: lib/latexfonts:968
-#, fuzzy
 msgid "Noto Mono Regular"
-msgstr "Noto Mono"
+msgstr "Noto Mono Regular"
 
 #: lib/latexfonts:976
 msgid "Noto Mono"
@@ -20509,7 +20461,7 @@ msgstr "Typographie spéciale|c"
 
 #: lib/ui/stdmenus.inc:379
 msgid "Field|i"
-msgstr "Champ|h"
+msgstr "Champ"
 
 #: lib/ui/stdmenus.inc:380
 msgid "List / TOC|s"
@@ -26388,12 +26340,12 @@ msgid "LyX Archive (tar.gz)"
 msgstr "Archive LyX (tar.gz)"
 
 #: lib/examples/Articles:0
-msgid "Game 1"
-msgstr "Partie 1"
-
-#: lib/examples/Articles:0
 msgid "Game 2"
 msgstr "Partie 2"
+
+#: lib/examples/Articles:0
+msgid "Game 1"
+msgstr "Partie 1"
 
 #: lib/examples/Articles:0
 msgid "Example (LyXified)"
@@ -26413,12 +26365,24 @@ msgid "External Material"
 msgstr "Objet externe"
 
 #: lib/examples/Articles:0
+msgid "XY-Figure"
+msgstr "Figure XY"
+
+#: lib/examples/Articles:0
+msgid "Minted File Listing"
+msgstr "Fichier de listing minted"
+
+#: lib/examples/Articles:0
 msgid "Feynman Diagrams"
 msgstr "Diagrammes de Feynman"
 
 #: lib/examples/Articles:0
 msgid "Instant Preview"
 msgstr "Aperçu sur le vif"
+
+#: lib/examples/Articles:0
+msgid "XY-Pic"
+msgstr "XY-Pic"
 
 #: lib/examples/Articles:0
 msgid "Itemize Bullets"
@@ -26429,18 +26393,6 @@ msgid "Minted Listings"
 msgstr "Listings minted"
 
 #: lib/examples/Articles:0
-msgid "XY-Figure"
-msgstr "Figure XY"
-
-#: lib/examples/Articles:0
-msgid "XY-Pic"
-msgstr "XY-Pic"
-
-#: lib/examples/Articles:0
-msgid "Minted File Listing"
-msgstr "Fichier de listing minted"
-
-#: lib/examples/Articles:0
 msgid "Graphics and Insets"
 msgstr "Graphiques et inserts"
 
@@ -26449,12 +26401,12 @@ msgid "Serial Letter 1"
 msgstr "Lettre en nombre 1"
 
 #: lib/examples/Articles:0
-msgid "Serial Letter 2"
-msgstr "Lettre en nombre 2"
-
-#: lib/examples/Articles:0
 msgid "Serial Letter 3"
 msgstr "Lettre en nombre 3"
+
+#: lib/examples/Articles:0
+msgid "Serial Letter 2"
+msgstr "Lettre en nombre 2"
 
 #: lib/examples/Articles:0
 msgid "Localization Test"
@@ -26465,20 +26417,20 @@ msgid "Hazard and Precautionary Statements"
 msgstr "Mentions de danger et conseils de prudence"
 
 #: lib/examples/Articles:0
-msgid "LilyPond Book"
-msgstr "Livre LilyPond"
-
-#: lib/examples/Articles:0
-msgid "Multilingual Captions"
-msgstr "Légendes multilingues"
-
-#: lib/examples/Articles:0
 msgid "Noweb2LyX"
 msgstr "Noweb2LyX"
 
 #: lib/examples/Articles:0
 msgid "Noweb Listerrors"
 msgstr "Liste d'erreurs Noweb"
+
+#: lib/examples/Articles:0
+msgid "LilyPond Book"
+msgstr "Livre LilyPond"
+
+#: lib/examples/Articles:0
+msgid "Multilingual Captions"
+msgstr "Légendes multilingues"
 
 #: lib/examples/Articles:0 src/frontends/qt4/GuiDocument.cpp:1654
 msgid "Modules"
@@ -26509,14 +26461,6 @@ msgid "Multilingual Typesetting (platex)"
 msgstr "Saisie multilingue (platex)"
 
 #: lib/examples/Articles:0
-msgid "Mathematical Monthly"
-msgstr "Mathematical Monthly"
-
-#: lib/examples/Articles:0
-msgid "Springers Global Journal Template (V. 3)"
-msgstr "Modèle revue Springer Global (V. 3)"
-
-#: lib/examples/Articles:0
 msgid "IEEE Transactions Conference"
 msgstr "IEEE Transactions Conference"
 
@@ -26525,84 +26469,96 @@ msgid "IEEE Transactions Journal"
 msgstr "IEEE Transactions Journal"
 
 #: lib/examples/Articles:0
-msgid "00 Main File"
-msgstr "00 Fichier principal"
+msgid "Mathematical Monthly"
+msgstr "Mathematical Monthly"
 
 #: lib/examples/Articles:0
-msgid "01 Dedication"
-msgstr "01 Dédicace"
-
-#: lib/examples/Articles:0
-msgid "02 Foreword"
-msgstr "02 Préambule"
-
-#: lib/examples/Articles:0
-msgid "03 Preface"
-msgstr "03 Préface"
-
-#: lib/examples/Articles:0
-msgid "04 Acknowledgements"
-msgstr "04 Remerciements"
-
-#: lib/examples/Articles:0
-msgid "05 Contributor List"
-msgstr "05 Liste des collaborateurs"
-
-#: lib/examples/Articles:0
-msgid "06 Acronym"
-msgstr "06 Acronyme"
-
-#: lib/examples/Articles:0
-msgid "07 Part"
-msgstr "07 Partie"
-
-#: lib/examples/Articles:0
-msgid "08 Author"
-msgstr "08 Auteur"
-
-#: lib/examples/Articles:0
-msgid "09 Appendix"
-msgstr "09 Annexe"
-
-#: lib/examples/Articles:0
-msgid "10 Glossary"
-msgstr "10 Glossaire"
-
-#: lib/examples/Articles:0
-msgid "11 References"
-msgstr "11 Références"
-
-#: lib/examples/Articles:0
-msgid "05 Acronym"
-msgstr "05 Acronyme"
-
-#: lib/examples/Articles:0
-msgid "06 Part"
-msgstr "06 Partie"
+msgid "Springers Global Journal Template (V. 3)"
+msgstr "Modèle revue Springer Global (V. 3)"
 
 #: lib/examples/Articles:0
 msgid "08 Appendix"
 msgstr "08 Annexe"
 
 #: lib/examples/Articles:0
-msgid "09 Glossary"
-msgstr "09 Glossaire"
+msgid "00 Main File"
+msgstr "00 Fichier principal"
 
 #: lib/examples/Articles:0
-msgid "10 Solutions"
-msgstr "10 Solutions"
+msgid "11 References"
+msgstr "11 Références"
+
+#: lib/examples/Articles:0
+msgid "03 Preface"
+msgstr "03 Préface"
 
 #: lib/examples/Articles:0
 msgid "07 Chapter"
 msgstr "07 Chapitre"
 
 #: lib/examples/Articles:0
-msgid "Colored"
-msgstr "En couleurs"
+msgid "04 Acknowledgements"
+msgstr "04 Remerciements"
+
+#: lib/examples/Articles:0
+msgid "06 Part"
+msgstr "06 Partie"
+
+#: lib/examples/Articles:0
+msgid "02 Foreword"
+msgstr "02 Préambule"
+
+#: lib/examples/Articles:0
+msgid "05 Acronym"
+msgstr "05 Acronyme"
+
+#: lib/examples/Articles:0
+msgid "01 Dedication"
+msgstr "01 Dédicace"
+
+#: lib/examples/Articles:0
+msgid "10 Solutions"
+msgstr "10 Solutions"
+
+#: lib/examples/Articles:0
+msgid "09 Glossary"
+msgstr "09 Glossaire"
+
+#: lib/examples/Articles:0
+msgid "08 Author"
+msgstr "08 Auteur"
+
+#: lib/examples/Articles:0
+msgid "10 Glossary"
+msgstr "10 Glossaire"
+
+#: lib/examples/Articles:0
+msgid "06 Acronym"
+msgstr "06 Acronyme"
+
+#: lib/examples/Articles:0
+msgid "09 Appendix"
+msgstr "09 Annexe"
+
+#: lib/examples/Articles:0
+msgid "07 Part"
+msgstr "07 Partie"
+
+#: lib/examples/Articles:0
+msgid "05 Contributor List"
+msgstr "05 Liste des collaborateurs"
 
 #: lib/examples/Articles:0
 msgid "Simple"
 msgstr "Simple"
+
+#: lib/examples/Articles:0
+msgid "Colored"
+msgstr "En couleurs"
+
+#: lib/examples/Articles:0
+msgid "Main File"
+msgstr "Fichier principal"
 
 #: lib/examples/Articles:0
 msgid "Chapter 1"
@@ -26613,10 +26569,6 @@ msgid "Chapter 2"
 msgstr "Chapitre 2"
 
 #: lib/examples/Articles:0
-msgid "Main File"
-msgstr "Fichier principal"
-
-#: lib/examples/Articles:0
 msgid "PhD Thesis"
 msgstr "Thèse"
 
@@ -26625,14 +26577,12 @@ msgid "Theses"
 msgstr "Thèses"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
-#, fuzzy
 msgid "Formal with Footline"
-msgstr "ligne mathématique"
+msgstr "standard "
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
-#, fuzzy
 msgid "Formal without Footline"
-msgstr "Biographie_sans_photo"
+msgstr "Formel sans ligne de base"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
 msgid "Grid with Head"
@@ -27171,6 +27121,8 @@ msgstr "Pas d'information pour exporter au format %1$s."
 #, c-format
 msgid "Hint: use non-TeX fonts or set input encoding  to '%1$s' or '%2$s'"
 msgstr ""
+"Astuce : utiliser les polices non-TeX ou positionner l'encodage d'entrée à « "
+"%1$s » ou « %2$s »"
 
 #: src/Buffer.cpp:4467
 msgid "Couldn't export file"
@@ -27448,14 +27400,14 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Classe de document non disponible"
 
-#: src/BufferParams.cpp:2187 src/Encoding.cpp:254 src/Paragraph.cpp:2711
+#: src/BufferParams.cpp:2187 src/Encoding.cpp:254 src/Paragraph.cpp:2713
 #: src/frontends/qt4/LaTeXHighlighter.cpp:122 src/insets/InsetListings.cpp:300
 #: src/insets/InsetListings.cpp:308 src/insets/InsetListings.cpp:331
 #: src/mathed/MathExtern.cpp:1483
 msgid "LyX Warning: "
 msgstr "Avertissement LyX : "
 
-#: src/BufferParams.cpp:2188 src/Encoding.cpp:255 src/Paragraph.cpp:2712
+#: src/BufferParams.cpp:2188 src/Encoding.cpp:255 src/Paragraph.cpp:2714
 #: src/insets/InsetListings.cpp:301 src/insets/InsetListings.cpp:309
 #: src/mathed/MathExtern.cpp:1484
 msgid "uncodable character"
@@ -29657,15 +29609,15 @@ msgstr "Revenir à la version enregistrée du document ?"
 msgid "&Revert"
 msgstr "&Revenir à la Sauvegarde"
 
-#: src/Paragraph.cpp:2006
+#: src/Paragraph.cpp:2008
 msgid "Senseless with this layout!"
 msgstr "Inapproprié avec ce style !"
 
-#: src/Paragraph.cpp:2067
+#: src/Paragraph.cpp:2069
 msgid "Alignment not permitted"
 msgstr "Alignement non autorisé"
 
-#: src/Paragraph.cpp:2068
+#: src/Paragraph.cpp:2070
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -30763,26 +30715,6 @@ msgstr ""
 "Merci d'ouvrir Outils>Préférences>Interface utilisateur\n"
 "et de vérifier le fichier d'interface utilisé."
 
-#: src/frontends/qt4/GuiBibitem.cpp:60
-#, fuzzy
-msgid "Author &Names:"
-msgstr "Noms des auteurs"
-
-#: src/frontends/qt4/GuiBibitem.cpp:62
-msgid ""
-"Insert the author name(s) for the author-year reference here. If you use an "
-"abbreviated list (with `et al.'), the full list can go below."
-msgstr ""
-
-#: src/frontends/qt4/GuiBibitem.cpp:66
-#, fuzzy
-msgid ""
-"Pass content of the `Author', `Year' and `All Authors' fields literally to "
-"LaTeX. Check this if you want to enter LaTeX code."
-msgstr ""
-"Transmet littéralement le contenu des champs « Symbole » et « Description » "
-"à LaTeX. À cocher si vous souhaitez saisir du code LaTeX."
-
 #: src/frontends/qt4/GuiBibitem.h:36
 msgid "Bibliography Item Settings"
 msgstr "Paramètres de champs bibliographiques"
@@ -31577,9 +31509,8 @@ msgstr ""
 "paquetages requis (%2$s) sont bien installés."
 
 #: src/frontends/qt4/GuiDocument.cpp:1555
-#, fuzzy
 msgid "All avail. modules"
-msgstr "Toutes les bases de données dispo."
+msgstr "Tous les modules dispo."
 
 #: src/frontends/qt4/GuiDocument.cpp:1645
 #: src/frontends/qt4/GuiDocument.cpp:1861
@@ -31777,40 +31708,41 @@ msgid "Module provided by document class."
 msgstr "Module fourni par la classe de document."
 
 #: src/frontends/qt4/GuiDocument.cpp:3009
-#, fuzzy, c-format
+#, c-format
 msgid "<p><b>Category:</b> %1$s.</p>"
-msgstr "Categorie : %1$s."
+msgstr "<p><b>Categorie :</b> %1$s.</p>"
 
 #: src/frontends/qt4/GuiDocument.cpp:3019
-#, fuzzy, c-format
+#, c-format
 msgid "<p><b>Package(s) required:</b> %1$s.</p>"
-msgstr "Paquetage(s) requis : %1$s."
+msgstr "<p><b>Paquetage(s) requis : </b> %1$s.</p>"
 
 #: src/frontends/qt4/GuiDocument.cpp:3025
 msgid "or"
 msgstr "ou"
 
 #: src/frontends/qt4/GuiDocument.cpp:3028
-#, fuzzy, c-format
+#, c-format
 msgid "<p><b>Modules required:</b> %1$s.</p>"
-msgstr "Modules requis : %1$s."
+msgstr "<p><b>Modules requis : </b> %1$s.</p>"
 
 #: src/frontends/qt4/GuiDocument.cpp:3037
-#, fuzzy, c-format
+#, c-format
 msgid "<p><b>Modules excluded:</b> %1$s.</p>"
-msgstr "Modules exclus : %1$s."
+msgstr "<p><b>Modules exclus : </b> %1$s.</p>"
 
 #: src/frontends/qt4/GuiDocument.cpp:3042
-#, fuzzy, c-format
+#, c-format
 msgid "<p><b>Filename:</b> <tt>%1$s.module</tt>.</p>"
-msgstr "Nom de fichier : %1$s.module"
+msgstr "<p><b>Nom de fichier : </b> <tt>%1$s.module</tt>.</p>"
 
 #: src/frontends/qt4/GuiDocument.cpp:3047
-#, fuzzy
 msgid ""
 "<p><font color=red><b>WARNING: Some required packages are unavailable!</b></"
 "font></p>"
-msgstr "AVERTISSEMENT : certains paquetages ne sont pas disponibles !"
+msgstr ""
+"<p><font color=red><b>AVERTISSEMENT : certains paquetages requis ne sont pas "
+"disponibles !</b></font></p>"
 
 #: src/frontends/qt4/GuiDocument.cpp:3668
 msgid "per part"
@@ -31887,25 +31819,23 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:4834
 msgid "%1 (missing req.)"
-msgstr ""
+msgstr "%1 (req. manquante)"
 
 #: src/frontends/qt4/GuiDocument.cpp:4846
-#, fuzzy
 msgid "personal module"
-msgstr "Info personnelles"
+msgstr "module personnel"
 
 #: src/frontends/qt4/GuiDocument.cpp:4846
 msgid "distributed module"
-msgstr ""
+msgstr "module distribué"
 
 #: src/frontends/qt4/GuiDocument.cpp:4847
-#, fuzzy
 msgid "<b>Module name:</b> <i>%1</i> (%2)"
-msgstr "(Nom de module : %1$s)"
+msgstr "<b>Nom du module : </b> <i>%1</i> (%2)"
 
 #: src/frontends/qt4/GuiDocument.cpp:4853
 msgid "<b>Note:</b> Some requirements for this module are missing!"
-msgstr ""
+msgstr "<b>Nota :</b> certains éléments pour ce module sont manquants !"
 
 #: src/frontends/qt4/GuiERT.h:33
 msgid "TeX Mode Inset Settings"
@@ -34932,7 +34862,6 @@ msgid "LyX version"
 msgstr "Version de LyX"
 
 #: src/insets/InsetInfo.cpp:290
-#, fuzzy
 msgid "LyX layout format"
 msgstr "Format LyX"
 
@@ -35679,19 +35608,19 @@ msgstr "Espace horizontal insécable (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Type de TDM inconnu"
 
-#: src/insets/InsetTabular.cpp:5113
+#: src/insets/InsetTabular.cpp:5125
 msgid "Selections not supported."
 msgstr "Sélections non reconnues."
 
-#: src/insets/InsetTabular.cpp:5135
+#: src/insets/InsetTabular.cpp:5147
 msgid "Multi-column in current or destination column."
 msgstr "Multi-colonnes dans la colonne courante ou la colonne visée."
 
-#: src/insets/InsetTabular.cpp:5147
+#: src/insets/InsetTabular.cpp:5159
 msgid "Multi-row in current or destination row."
 msgstr "Multi-lignes dans la ligne courante ou la ligne visée."
 
-#: src/insets/InsetTabular.cpp:5631
+#: src/insets/InsetTabular.cpp:5643
 msgid "Selection size should match clipboard content."
 msgstr ""
 "La taille de la sélection doit correspondre au contenu du presse-papier."
@@ -36061,11 +35990,11 @@ msgstr ""
 "Impossible d'ouvrir le document\n"
 "%1$s"
 
-#: src/output_latex.cpp:1517
+#: src/output_latex.cpp:1519
 msgid "Error in latexParagraphs"
 msgstr "Erreur dans latexParagraphs"
 
-#: src/output_latex.cpp:1518
+#: src/output_latex.cpp:1520
 #, c-format
 msgid ""
 "You are using at least one layout (%1$s) intended for the title, after using "
@@ -36392,6 +36321,18 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Utilisateur inconnu"
+
+#, fuzzy
+#~ msgid "Author &Names:"
+#~ msgstr "Noms des auteurs"
+
+#, fuzzy
+#~ msgid ""
+#~ "Pass content of the `Author', `Year' and `All Authors' fields literally "
+#~ "to LaTeX. Check this if you want to enter LaTeX code."
+#~ msgstr ""
+#~ "Transmet littéralement le contenu des champs « Symbole » et « Description "
+#~ "» à LaTeX. À cocher si vous souhaitez saisir du code LaTeX."
 
 #~ msgid "Change bars"
 #~ msgstr "Barres de modification"
