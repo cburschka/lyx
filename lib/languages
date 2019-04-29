@@ -779,10 +779,10 @@ Language hebrew
 	## Use font encoding HE8 if the Culmus fonts are installed and
 	# work around too simple test for article-like classes in rlbabel.def.
 	PreBabelPreamble
-	  %\IfFileExists{he8david.fd}{%
-	  %  \providecommand{\HeblatexEncoding}{HE8}
-	  %  \providecommand{\HeblatexEncodingFile}{he8enc}%
-	  %}{}
+	  \IfFileExists{he8david.fd}{%
+	    \providecommand{\HeblatexEncoding}{HE8}
+	    \providecommand{\HeblatexEncodingFile}{he8enc}%
+	  }{}
 	  \providecommand{\l@chapter}{\relax}
 	EndPreBabelPreamble
 	DateFormats      "d MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
