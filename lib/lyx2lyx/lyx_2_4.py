@@ -1435,14 +1435,23 @@ def revert_lformatinfo(document):
 
 
 def convert_hebrew_parentheses(document):
-    " Don't reverse parentheses in Hebrew text"
-    current_language = document.language
+    """ Swap opening/closing parentheses in Hebrew text. 
+    
+    Up to LyX 2.4, ")" was used as opening parenthesis and
+    "(" as closing parenthesis for Hebrew in the LyX source.
+    """
+    
+    print("convert hebrew parentheses")
+    current_languages = [document.language]
     for i, line in enumerate(document.body):
         if line.startswith('\\lang '):
-            current_language = line[len('\\lang '):]
+            current_languages[-1] = line.lstrip('\\lang ')
+        elif line.startswith('\\begin_layout'):
+            current_languages.append(current_languages[-1])
+            print (line, current_languages[-1])      
         elif line.startswith('\\end_layout'):
-            current_language = document.language
-        elif current_language == 'hebrew' and not line.startswith('\\'):
+            current_languages.pop()
+        elif current_languages[-1] == 'hebrew' and not line.startswith('\\'):
             document.body[i] = line.replace('(','\x00').replace(')','(').replace('\x00',')')
 
 
