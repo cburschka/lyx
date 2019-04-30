@@ -4096,7 +4096,7 @@ void GuiDocument::paramsToDialog()
 	if (nn >= 0)
 		fontModule->fontsDefaultCO->setCurrentIndex(nn);
 
-	if (bp_.fontenc == "auto-legacy" || bp_.fontenc == "auto-legacy-plain") {
+	if (bp_.fontenc == "auto" || bp_.fontenc == "default") {
 		fontModule->fontencCO->setCurrentIndex(
 			fontModule->fontencCO->findData(toqstr(bp_.fontenc)));
 		fontModule->fontencLE->setEnabled(false);
