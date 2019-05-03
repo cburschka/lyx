@@ -78,17 +78,28 @@ templates/examples/Books/Springer_Monographs.*
 templates/examples/Books/Springer_Contributed_Books.*
 
 # TeXLive does not set up Hebrew 8-bit TeX fonts
-# We use the external package culmus-latex
+# We use the external package "culmus-latex"
 # https://sourceforge.net/projects/ivritex/files/culmus-latex/culmus-latex-0.7/
+# With current "culmus-latex", dvipdfm fails because some of the fonts are
+# type1 *.pfa while dvipdfm only works with *.pfb fonts:
+#   dvipdfmx:warning: Could not locate a virtual/physical font for TFM "david".
+#   dvipdfmx:warning: >> This font is mapped to a physical font "DavidCLM-Medium.pfa".
+#   dvipdfmx:warning: >> Please check if kpathsea library can find this font: DavidCLM-Medium.pfa
+# but: `kpsewhich DavidCLM-Medium.pfa` finds the font!
+# Converting with `t1binary` (from t1utils) helps.
 export/export/latex/unicodesymbols/.*_he.*pdf2
 export/export/latex/(supported-languages|he-scrarticle).*
 export/.*/he/.*((dvi|pdf.?)|_texF)
+export/export/latex/languages/supported-languages_.*_pdf3
+
 
 # Japanese (platex)
-# dvips requires special font setup for kanji, otherwise
+# dvips requires special font setup for kanji.
+# Debian's texlive-lang-japanese does this automatically, tlmgr not.
+# Without proper font setup setup,
 # * the Postscript file has wrong and missing characters
-#   (without error or warning)
-# * as a consequence, ps2pdf fails for some documents on TL18 and TL19:
+#   (without error or warning),
+# * as a consequence, `ps2pdf` fails for some documents:
 export/.*/ja/.*_pdf
 
 

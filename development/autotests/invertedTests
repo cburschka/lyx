@@ -74,24 +74,10 @@ export/templates/Articles/International_Union_of_Crystallography.*_pdf4_systemF
 export/templates/Articles/R_Journal_(dvi3|pdf[45])_systemF
 #export/templates/Articles/Kluwer_.*_systemF
 
-# Babel and fontenc fails for some supported languages
-# * check BabelPremble definitions in lib/languages
-# * fails also due to #11522, see "lyxbugs" below.
-export/export/latex/languages/supported-languages_.*_systemF
-
-# dvipdfm fails with "culmus-latex" fonts, because some of the fonts are
-# type1 *.pfa while dvipdfm only works with *.pfb fonts:
-#   dvipdfmx:warning: Could not locate a virtual/physical font for TFM "david".
-#   dvipdfmx:warning: >> This font is mapped to a physical font "DavidCLM-Medium.pfa".
-#   dvipdfmx:warning: >> Please check if kpathsea library can find this font: DavidCLM-Medium.pfa
-# but: `kpsewhich DavidCLM-Medium.pfa` finds the font!
-#
-# The dvipdfmx log has also many warnings
-# due to the Hebrew vocalisation using Postscript 3 specials
-#  xdvipdfmx:warning: Interpreting PS code failed!!! Output might be broken!!!
-#  xdvipdfmx:warning: Interpreting special command ps: (ps:) failed.
-export/export/latex/languages/supported-languages_pdf3
-
+# Babel with non-TeX fonts fails for some supported languages
+# Lithuanian: L7x font encoding also set with LuaTeX and non-TeX fonts
+# (error but output OK)
+export/export/latex/languages/supported-languages_babel_non-tex_(dvi3|pdf5)_systemF
 
 # Thai with CJK package requires the babel option "thaicjk" instead of "thai".
 # (see thaifont.txt in the CJK documentation for setup details).
@@ -131,6 +117,10 @@ export/export/latex/6197-polish-amssymb_pdf._texF
 # The document "sr/Braille.lyx" is an example of case b).
 # (For some reason, the false positive error is not thrown with PDF (luatex).)
 export/examples/sr/Modules/Braille_(dvi3|pdf4)_systemF
+export/export/latex/language-in-tables_.*_systemF
+
+#9633 Nested language handling causes compilation failures with polyglossia
+export/export/latex/languagenesting-quote-branch_.*_systemF
 
 #9871 LyX sends invalid Unicode to iconv when converting to ASCII
 # most probably due to BabelPreamble code (language specific headings for
@@ -179,6 +169,9 @@ export/export/latex/.*inputenc-.*_systemF
 export/doc/(|de/|es/|fr/)Math.*systemF
 # minimal example for Math.lyx:
 export/export/latex/systemfonts-Math-missingchars.*systemF
+#
+# Farsi: missing glyphs (em space and "English" quotes)
+export/examples/fa/Welcome_pdf4_systemF
 #
 # CJK-quotes examples (missing in most Latin-script fonts)
 export/doc/(|de/|es/|fr/)UserGuide_(dvi3|pdf4|pdf5)_systemF
@@ -287,6 +280,11 @@ export/templates/Presentations/Slides_.*_systemF
 # Beamer: conflicts with some combinations of packages/settings/languages
 export/templates/es/Presentations/Beamer_pdf4_texF
 
+# Babel-French fails with Xe/LuaTeX and TeX fonts
+#   LaTeX Error: Command \at already defined. (and a lot more)
+export/export/latex/languages/supported-languages_(dvi|pdf).*_texF
+export/export/latex/languages/supported-languages_babel_(dvi|pdf).*_texF
+
 
 # Arabic
 #
@@ -306,34 +304,34 @@ export/templates/es/Presentations/Beamer_pdf4_texF
 # see discussion at https://www.mail-archive.com/search?l=mid&q=20161114035123.s5lt4ib4x4obtptp%40steph
 #
 # Babel-Arabic loads "inputenc" which fails with LuaTeX
-# Wit XeTeX, it works if "utf8" input encoding is set (as in ar/Welcome.lyx)
+# With XeTeX, it works if "utf8" input encoding is set (as in ar/Welcome.lyx)
 !export/examples/ar/Welcome_pdf4_texF
 export/.*/ar/.*_texF
-# Polyglossia bug with LuaTeX and LTR languages (also Hebrew and Farsi):
-# Undefined control sequences "\luatexpardir" and "\luatextextdir".
-export/.*/ar/.*(dvi3|pdf5)_systemF
 # no Arab charaters with luainputenc
 export/export/latex/languages/supported-languages_(dvi3|pdf5)_texF
+export/export/latex/languages/supported-languages_babel_auto-legacy_(dvi3|pdf5)_texF
 
 # Farsi
-# Polyglossia problem with LuaTeX (undefined command) (cf. Arabic)
-# https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
-export/examples/fa/Welcome_(dvi3|pdf5)_systemF
-# missing glyphs (em space and "English" quotes) with XeTeX + system fonts.
-export/examples/fa/Welcome_pdf4_systemF
 # "invalid utf-8 sequence" with Babel-Farsi, LuaTeX, and TeX fonts.
 export/examples/fa/Welcome_(dvi3|pdf5)_texF
 
 # Hebrew
-# does not currently work with LuaTeX (undefined command) (cf. Arabic)
-# terminal message: "Language hebrew not found in language.dat.lua"
-export/.*/he/.*(dvi3|pdf5)_systemF
-#
 # babel-hebrew loads "rlbabel.def" which fails with LuaTeX + TeX fonts:
 # "! Right-to-Left Support Error: use TeX--XeT or e-TeX engine."
 # (XeTeX works, if inputenc is set to "utf8")
 export/.*/he/.*_texF
 export/export/latex/languages/he-.*(dvi3|pdf5)_texF
+export/export/latex/languages/supported-languages_(dvi3|pdf5)_texF
+export/export/latex/languages/supported-languages_babel_(dvi3|pdf5)_texF
+
+# Polyglossia bug with LuaTeX and LTR languages (Arab, Hebrew and Farsi):
+# Undefined control sequences "\luatexpardir" and "\luatextextdir".
+# https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
+export/.*/ar/.*(dvi3|pdf5)_systemF
+export/.*/fa/Welcome_(dvi3|pdf5)_systemF
+# terminal message: "Language hebrew not found in language.dat.lua"
+export/.*/he/.*(dvi3|pdf5)_systemF
+export/export/latex/languages/supported-languages_(dvi3|pdf5)_systemF
 
 # Ukrainian
 # See comment in unreliableTests

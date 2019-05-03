@@ -74,7 +74,7 @@ export/examples/Modules/Chessboard_(lyx(16|20|21|22|23)|(pdf3|pdf5|dvi3)_texF)
 export/(doc|examples|templates)/.*_pdf4_texF
 export/(doc|examples|templates)/(|ar|ca|cs|da|de|el|es|eu|fa|fr|gl|he|hu|id|it|ja|ko|nb|nl|pl|pt|pt_BR|pt_PT|ro|sk|sl|sr|sv|uk|zh_CN)/.*pdf4_texF
 # dedicated tests with inputencoding "auto-legacy":
-export/export/latex/languages/supported-languages_pdf4_texF
+export/export/latex/languages/supported-languages_babel_auto-legacy_pdf4_texF
 
 # CJK fails (sometimes) with Xe/LuaTeX and 8-bit fonts:
 export/examples/ja/Multilingual_Typesetting_.*CJK.(dvi3|pdf5)_texF
@@ -174,6 +174,11 @@ lyx2lyx/export/latex/.*
 export/export/latex/.*(lyx..|xhtml)
 
 # don't test with non-TeX fonts:
+export/export/latex/languages/supported-languages_babel_(pdf|dvi)._systemF
+export/export/latex/languages/supported-languages_babel_auto-legacy_.*_systemF
+
+# don't test with TeX fonts:
+export/export/latex/languages/supported-languages_babel_non-tex_.*(dvi|pdf.?|texF)
 
 # HTML
 # don't check loading, lyx2lyx, or export to other LyX versions or DVI/PDF

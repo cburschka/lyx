@@ -24,7 +24,7 @@
 \use_microtype false
 \use_dash_ligatures false
 \graphics default
-\default_output_format default
+\default_output_format pdf2
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -81,8 +81,8 @@
 \begin_body
 
 \begin_layout Standard
-This document did not compile, if there because of the two paragraphs in
- the second column of fixed size (here 5 cm) with German text.
+This document did not compile because of language nesting issues with the
+ two paragraphs in the second table column of fixed size with German text.
 \end_layout
 
 \begin_layout Standard
