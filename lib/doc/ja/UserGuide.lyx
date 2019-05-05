@@ -48,7 +48,7 @@
 \DeclareCaptionOption{large}[]{\def\captionfont{\large}}
 \DeclareCaptionOption{Large}[]{\def\captionfont{\Large}}
 \end_preamble
-\options refpage,intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
+\options refpage,intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading,bookmarkpackage=false
 \use_default_options false
 \begin_modules
 customHeadersFooters
