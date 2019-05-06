@@ -3298,9 +3298,8 @@ msgid "&Vertical Phantom"
 msgstr "&Vertikální fantóm"
 
 #: src/frontends/qt4/ui/PreambleUi.ui:38
-#, fuzzy
 msgid "&Find"
-msgstr "&Najít:"
+msgstr "&Najít"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:26
 msgid "Use the color scheme of your Operating System/Desktop Environment"
@@ -11577,7 +11576,7 @@ msgstr ""
 
 #: lib/layouts/fixme.module:2
 msgid "FiXme"
-msgstr ""
+msgstr "FiXme"
 
 #: lib/layouts/fixme.module:11
 msgid ""
@@ -19932,9 +19931,8 @@ msgid "Set all lines"
 msgstr "Nastavit všechny linky"
 
 #: lib/ui/stdtoolbars.inc:159
-#, fuzzy
 msgid "Set inner lines"
-msgstr "Nastav linky okraje"
+msgstr "Nastav vnitřní linky"
 
 #: lib/ui/stdtoolbars.inc:160
 msgid "Unset all lines"
@@ -25608,16 +25606,15 @@ msgid "Remove emergency file now?"
 msgstr "Smazat nyní soubor s nouzovým uložením ?"
 
 #: src/Buffer.cpp:4792
-#, fuzzy
 msgid "Can't rename emergency file!"
-msgstr "Smazat nouzové uložení ?"
+msgstr "Nelze přejmenovat soubor nouzového uložení!"
 
 #: src/Buffer.cpp:4793
 msgid ""
 "LyX was unable to rename the emergency file. You should do so manually. "
 "Otherwise, you will beasked about it again the next time you try to loadthis "
 "file, and may over-write your own work."
-msgstr ""
+msgstr "Nebylo možné přejmenovat soubor nouzového uložení, zkuste tak učinit manuálně. V opačném případě se při příštím spuštění znovu zobrazí tento dialog a může dojít k přepsání novější verze vašeho dokumentu. "
 
 #: src/Buffer.cpp:4818
 #, c-format
@@ -28508,13 +28505,12 @@ msgid "Create new document?"
 msgstr "Vytvořit nový ?"
 
 #: src/buffer_funcs.cpp:129
-#, fuzzy
 msgid "&Yes, Create New Document"
-msgstr "Vytvořit nový ?"
+msgstr "&Ano, vytvořit nový dokument"
 
 #: src/buffer_funcs.cpp:129
 msgid "&No, Do Not Create"
-msgstr ""
+msgstr "&Ne, nevytvářet"
 
 #: src/buffer_funcs.cpp:157
 #, c-format
@@ -29426,9 +29422,8 @@ msgid "Module not found!"
 msgstr "Modul nenalezen!"
 
 #: src/frontends/qt4/GuiDocument.cpp:578 src/frontends/qt4/GuiDocument.cpp:750
-#, fuzzy
 msgid "&End Edit"
-msgstr "Konec editace"
+msgstr "Kone&c editace"
 
 #: src/frontends/qt4/GuiDocument.cpp:638
 msgid "Validation required!"
