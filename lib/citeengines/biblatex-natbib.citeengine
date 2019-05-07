@@ -84,7 +84,7 @@ CiteEngine authoryear
 	Citealp*[][]
 	Citeauthor*[][]
 	citeyearpar[][]
-	citeyear=cite*
+	citeyear[][]=cite*
 	citebyear[][]=citeyear
 	Footcite$[][]=smartcite
 	Autocite$[][]
