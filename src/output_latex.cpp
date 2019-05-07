@@ -305,8 +305,10 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 
 	// in multilingual environments, the CJK tags have to be nested properly
 	data.cjk_nested = false;
-	if (data.par_language->encoding()->package() == Encoding::CJK &&
-	    state->open_encoding_ != CJK && pit->isMultiLingual(bparams)) {
+	if (!bparams.useNonTeXFonts && (bparams.inputenc == "auto-legacy"
+									|| bparams.inputenc == "auto-legacy-plain")
+		&& data.par_language->encoding()->package() == Encoding::CJK
+		&& state->open_encoding_ != CJK && pit->isMultiLingual(bparams)) {
 		if (prev_par_language->encoding()->package() == Encoding::CJK) {
 			os << "\\begin{CJK}{"
 			   << from_ascii(data.par_language->encoding()->latexName())
