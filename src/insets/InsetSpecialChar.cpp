@@ -24,6 +24,7 @@
 #include "texstream.h"
 
 #include "frontends/FontMetrics.h"
+#include "frontends/NullPainter.h"
 #include "frontends/Painter.h"
 
 #include "support/debug.h"
@@ -44,48 +45,6 @@ InsetSpecialChar::Kind InsetSpecialChar::kind() const
 	return kind_;
 }
 
-
-namespace {
-
-int logoWidth(FontInfo const & font, InsetSpecialChar::Kind kind) {
-	frontend::FontMetrics const & fm = theFontMetrics(font);
-	int const em = fm.em();
-	int width = 0;
-	// See drawlogo() below to understand what this does.
-	switch (kind) {
-	case InsetSpecialChar::PHRASE_LYX:
-		width = fm.width(from_ascii("L")) - em / 6
-			+ fm.width(from_ascii("Y")) - em / 8
-			+ fm.width(from_ascii("X"));
-		break;
-
-	case InsetSpecialChar::PHRASE_TEX:
-		width = fm.width(from_ascii("T")) - em / 6
-			+ fm.width(from_ascii("E")) - em / 8
-			+ fm.width(from_ascii("X"));
-		break;
-
-	case InsetSpecialChar::PHRASE_LATEX2E:
-		width = logoWidth(font, InsetSpecialChar::PHRASE_LATEX)
-			+ 3 * em / 20
-			+ fm.width(from_ascii("2") + char_type(0x03b5));
-		break;
-	case InsetSpecialChar::PHRASE_LATEX: {
-		FontInfo smaller = font;
-		smaller.decSize().decSize();
-		width = fm.width(from_ascii("L")) - 9 * em / 25
-			+ theFontMetrics(smaller).width(from_ascii("A")) - 3 * em / 20
-			+ logoWidth(font, InsetSpecialChar::PHRASE_TEX);
-		break;
-	}
-	default:
-		LYXERR0("No information for computing width of logo " << kind);
-	}
-
-	return width;
-}
-
-} // namespace
 
 docstring InsetSpecialChar::toolTip(BufferView const &, int, int) const
 {
@@ -119,61 +78,6 @@ docstring InsetSpecialChar::toolTip(BufferView const &, int, int) const
 			break;
 	}
 	return message;
-}
-
-
-void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
-{
-	frontend::FontMetrics const & fm =
-		theFontMetrics(mi.base.font);
-	dim.asc = fm.maxAscent();
-	dim.des = 0;
-	dim.wid = 0;
-
-	docstring s;
-	switch (kind_) {
-		case ALLOWBREAK:
-			dim.asc = fm.xHeight();
-			dim.des = fm.descent('g');
-			dim.wid = fm.em() / 8;
-			break;
-		case LIGATURE_BREAK:
-			s = from_ascii("|");
-			break;
-		case END_OF_SENTENCE:
-			s = from_ascii(".");
-			break;
-		case LDOTS:
-			s = from_ascii(". . .");
-			break;
-		case MENU_SEPARATOR:
-			// ▹  U+25B9 WHITE RIGHT-POINTING SMALL TRIANGLE
-			// There is a \thinspace on each side of the triangle
-			dim.wid = 2 * fm.em() / 6 + fm.width(char_type(0x25B9));
-			break;
-		case HYPHENATION:
-			dim.wid = fm.width(from_ascii("-"));
-			if (dim.wid > 5)
-				dim.wid -= 2; // to make it look shorter
-			break;
-		case SLASH:
-			s = from_ascii("/");
-			dim.des = fm.descent(s[0]);
-			break;
-		case NOBREAKDASH:
-			s = from_ascii("-");
-			break;
-		case PHRASE_LYX:
-		case PHRASE_TEX:
-		case PHRASE_LATEX2E:
-		case PHRASE_LATEX:
-			dim.asc = fm.maxAscent();
-			dim.des = fm.maxDescent();
-			dim.wid = logoWidth(mi.base.font, kind_);
-			break;
-	}
-	if (dim.wid == 0)
-		dim.wid = fm.width(s);
 }
 
 
@@ -257,6 +161,64 @@ void drawLogo(PainterInfo & pi, int & x, int const y, InsetSpecialChar::Kind kin
 }
 
 } // namespace
+
+
+void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	frontend::FontMetrics const & fm =
+		theFontMetrics(mi.base.font);
+	dim.asc = fm.maxAscent();
+	dim.des = 0;
+	dim.wid = 0;
+
+	docstring s;
+	switch (kind_) {
+		case ALLOWBREAK:
+			dim.asc = fm.xHeight();
+			dim.des = fm.descent('g');
+			dim.wid = fm.em() / 8;
+			break;
+		case LIGATURE_BREAK:
+			s = from_ascii("|");
+			break;
+		case END_OF_SENTENCE:
+			s = from_ascii(".");
+			break;
+		case LDOTS:
+			s = from_ascii(". . .");
+			break;
+		case MENU_SEPARATOR:
+			// ▹  U+25B9 WHITE RIGHT-POINTING SMALL TRIANGLE
+			// There is a \thinspace on each side of the triangle
+			dim.wid = 2 * fm.em() / 6 + fm.width(char_type(0x25B9));
+			break;
+		case HYPHENATION:
+			dim.wid = fm.width(from_ascii("-"));
+			if (dim.wid > 5)
+				dim.wid -= 2; // to make it look shorter
+			break;
+		case SLASH:
+			s = from_ascii("/");
+			dim.des = fm.descent(s[0]);
+			break;
+		case NOBREAKDASH:
+			s = from_ascii("-");
+			break;
+		case PHRASE_LYX:
+		case PHRASE_TEX:
+		case PHRASE_LATEX2E:
+		case PHRASE_LATEX:
+			dim.asc = fm.maxAscent();
+			dim.des = fm.maxDescent();
+			frontend::NullPainter np;
+			PainterInfo pi(mi.base.bv, np);
+			drawLogo(pi, dim.wid, 0, kind_);
+			break;
+	}
+	if (dim.wid == 0)
+		dim.wid = fm.width(s);
+}
+
 
 void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 {
