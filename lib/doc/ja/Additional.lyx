@@ -84,9 +84,15 @@ EndFont
 Mandatory	1
 EndArgument
 Preamble
-\IfFileExists{okumacro.sty}
-{\usepackage{okumacro}}
-{\newcommand{\ruby}[2]{#2}}
+\ifdefined\kanjiskip
+  \IfFileExists{okumacro.sty}%
+    {\usepackage{okumacro}}%
+    {\newcommand{\ruby}[2]{\shortstack{\tiny ##2\\##1}}}%
+\else \ifdefined\luatexversion
+  \usepackage{luatexja-ruby}
+\else \ifdefined\XeTeXversion
+  \usepackage{ruby}%
+\fi\fi\fi
 EndPreamble
 End
 \end_local_layout

@@ -1,11 +1,11 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
 \lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties false
 \origin /systemlyxdir/doc/ja/
 \textclass bxjsbook
-\use_default_options false
+\use_default_options true
 \maintain_unincluded_children false
 \begin_local_layout
 InsetLayout		Flex:Ruby
@@ -28,9 +28,15 @@ EndFont
 Mandatory	1
 EndArgument
 Preamble
-\IfFileExists{okumacro.sty}
-{\usepackage{okumacro}}
-{\newcommand{\ruby}[2]{#2}}
+\ifdefined\kanjiskip
+  \IfFileExists{okumacro.sty}%
+    {\usepackage{okumacro}}%
+    {\newcommand{\ruby}[2]{\shortstack{\tiny ##2\\##1}}}%
+\else \ifdefined\luatexversion
+  \usepackage{luatexja-ruby}
+\else \ifdefined\XeTeXversion
+  \usepackage{ruby}%
+\fi\fi\fi
 EndPreamble
 End
 \end_local_layout
@@ -40,7 +46,7 @@ End
 \fontencoding global
 \font_roman "lmodern" "IPAexMincho"
 \font_sans "default" "IPAexGothic"
-\font_typewriter "default" "default"
+\font_typewriter "default" "IPAGothic"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -62,7 +68,7 @@ End
 \pdf_author "LyX Team, Japanese translation: Koji Yokata"
 \pdf_subject "LyX-documentation Tutorial"
 \pdf_keywords "LyX, documentation"
-\pdf_bookmarks false
+\pdf_bookmarks true
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 2

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 572
+\lyxformat 573
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -31,7 +31,7 @@
   %\setmonojfont{WenQuanYi Micro Hei Mono}
 \fi
 \end_preamble
-\use_default_options false
+\use_default_options true
 \begin_modules
 logicalmkup
 \end_modules
@@ -63,6 +63,15 @@ logicalmkup
 \paperfontsize default
 \spacing single
 \use_hyperref false
+\pdf_bookmarks false
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry false
 \use_package amsmath 1
@@ -135,7 +144,17 @@ For multi-lingual documents with parts in European languages, you can use
 \begin_layout Itemize
 
 \lang english
-Set a standard document class (document classes starting with 
+Use one of the Japanese 
+\begin_inset CommandInset href
+LatexCommand href
+name "BXjscls"
+target "https://www.ctan.org/pkg/bxjscls"
+literal "false"
+
+\end_inset
+
+ classes or a standard document class.
+ The other document classes starting with 
 \begin_inset Quotes bld
 \end_inset
 
@@ -143,7 +162,7 @@ Japanese
 \begin_inset Quotes brd
 \end_inset
 
- use pLaTeX).
+ require pLaTeX.
 \end_layout
 
 \begin_layout Itemize
@@ -161,7 +180,7 @@ Japanese (CJK)
 \begin_inset Quotes bld
 \end_inset
 
-Unicode (CJK) (utf8)
+Unicode (utf8)
 \begin_inset Quotes brd
 \end_inset
 
@@ -291,5 +310,18 @@ Russisch:
 \end_layout
 
 \end_deeper
+\begin_layout Enumerate
+
+\lang english
+Japanese characters (
+\lang japanese-cjk
+介, し
+\family sans
+, 門
+\family default
+\lang english
+) may also be used in text parts set to other languages.
+\end_layout
+
 \end_body
 \end_document
