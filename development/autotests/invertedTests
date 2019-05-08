@@ -128,13 +128,9 @@ export/export/latex/languagenesting-quote-branch_.*_systemF
 # theorems, problems , ... are written in the language's default encoding
 # if they contain non-ASCII characters)
 # Error 84 returned from iconv when converting from UCS-4LE to ascii:
-# Invalid or incomplete multibyte or wide character
-export/doc/(es|fr)/Additional_pdf4_texF
-export/doc/(de|es|fr)/EmbeddedObjects_pdf4_texF
-export/doc/es/Customization_pdf4_texF
+# Invalid or incomplete multibyte or wide character.
 # see also the discussion at:
 # https://www.mail-archive.com/search?l=mid&q=20170228190738.cgs3tl3ny2bxiegk%40steph
-export/examples/es/Modules/Linguistics_pdf4_texF
 export/export/latex/bug9871-slovak-ascii-preambleencoding_pdf2
 
 #10355 xmllint detects failures
@@ -214,10 +210,6 @@ Sublabel: texissues
 # e.g. non-ASCII in verbatim or listings, incompatible packages, ...
 # "Wontfix" if documents demonstrate correct use in the default output format.
 
-# Non-ASCII char in verbatim environment.
-# Fails with ASCII (and hence also with XeTeX).
-export/doc/(|de/|es/|fr/)UserGuide_pdf4_texF
-
 # Problem with Czech and Slovak Babel support.
 # (reported per mail to Petr Tesa\v{r}\'ik, 2016-09-06)
 # All exports using babel fail.
@@ -271,11 +263,11 @@ export/examples/(|fr/)Graphics_and_Insets/XY-(Pic|Figure)_pdf5.*
 # See discussion here:
 # https://www.mail-archive.com/search?l=mid&q=1478004223.2367.5.camel%40lyx.org
 export/doc/(sk|nb)/Intro_(dvi3|pdf5)_systemF
-# some Polyglossia languages work only with XeTeX and fail with LuaTeX
-# The font "NotoSansEthiopic" cannot be found.
-# sanskrit: ! Undefined control sequence.
+# some Polyglossia languages work only with XeTeX and fail with LuaTeX:
+# * The font "NotoSansEthiopic" cannot be found.
+# * sanskrit: ! Undefined control sequence.
 #             l.53 \newXeTeXintercharclass
-# RTL-languages: ! Undefined control sequence.
+# * RTL-languages: ! Undefined control sequence.
 #             \setLR ->\@RTLfalse \luatexpardir 
 export/export/latex/languages/supported-languages_polyglossia_(dvi3|pdf5)_systemF
 
@@ -285,14 +277,13 @@ export/export/latex/languages/supported-languages_polyglossia_(dvi3|pdf5)_system
 # Lines 2608 ... 2614 in fontspec-luatex.sty
 export/templates/Presentations/Slides_.*_systemF
 
-# Beamer: conflicts with some combinations of packages/settings/languages
-export/templates/es/Presentations/Beamer_pdf4_texF
-
 # Babel-French fails with Xe/LuaTeX and TeX fonts
 #   LaTeX Error: Command \at already defined. (and a lot more)
 export/export/latex/languages/supported-languages_(dvi|pdf).*_texF
 export/export/latex/languages/supported-languages_babel_(dvi|pdf).*_texF
 
+# Babel-Spanish fails sometimes with XeTeX and TeX fonts
+export/doc/es/(Math|UserGuide|EmbeddedObjects|Customization)_pdf4_texF
 
 # Arabic
 #
@@ -312,22 +303,21 @@ export/export/latex/languages/supported-languages_babel_(dvi|pdf).*_texF
 # see discussion at https://www.mail-archive.com/search?l=mid&q=20161114035123.s5lt4ib4x4obtptp%40steph
 #
 # Babel-Arabic loads "inputenc" which fails with LuaTeX
-# With XeTeX, it works if "utf8" input encoding is set (as in ar/Welcome.lyx)
-!export/examples/ar/Welcome_pdf4_texF
-export/.*/ar/.*_texF
+export/.*/ar/.*_(dvi3|pdf5)_texF
 # no Arab charaters with luainputenc
 export/export/latex/languages/supported-languages_(dvi3|pdf5)_texF
 export/export/latex/languages/supported-languages_babel_auto-legacy_(dvi3|pdf5)_texF
 
 # Farsi
 # "invalid utf-8 sequence" with Babel-Farsi, LuaTeX, and TeX fonts.
+# (XeTeX works, if inputenc is set to "utf8")
 export/examples/fa/Welcome_(dvi3|pdf5)_texF
 
 # Hebrew
 # babel-hebrew loads "rlbabel.def" which fails with LuaTeX + TeX fonts:
 # "! Right-to-Left Support Error: use TeX--XeT or e-TeX engine."
 # (XeTeX works, if inputenc is set to "utf8")
-export/.*/he/.*_texF
+export/.*/he/.*(dvi3|pdf5)_texF
 export/export/latex/languages/he-.*(dvi3|pdf5)_texF
 export/export/latex/languages/supported-languages_(dvi3|pdf5)_texF
 export/export/latex/languages/supported-languages_babel_(dvi3|pdf5)_texF

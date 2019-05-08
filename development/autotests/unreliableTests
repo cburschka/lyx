@@ -20,7 +20,7 @@ export/examples/Articles/Astronomy_%26_Astrophysics.*
 export/templates/Articles/Astronomy_%26_Astrophysics.*
 
 # AEA.cls (see https://wiki.lyx.org/Examples/AEA)
-export/templates/Articles/American_Economic_Association_(AEA).*
+export/templates/Articles/American_Economic_Association_.*AEA.*
 
 # copernicus.cls (not in TeXLive)
 # see https://publications.copernicus.org/for_authors/manuscript_preparation.html
@@ -58,7 +58,7 @@ export/templates/Articles/Mathematical_Monthly.*
 
 # knitr, RJournal.sty (not in TeXLive)
 # incompatible with fontspec?
-export/templates/Articles/RJournal_.*
+export/templates/Articles/R_Journal_.*
 
 # R (http://www.r-project.org)
 # R package knitr (http://yihui.name/knitr)
@@ -73,9 +73,10 @@ export/templates/Obsolete/.*
 export/templates/Articles/Springers_Global_Journal_Template.*
 
 # svmono.cls
-templates/examples/Books/Springer_Monographs.*
+export/templates/examples/Books/Springer_Monographs.*
 # svmult.cls
-templates/examples/Books/Springer_Contributed_Books.*
+export/templates/examples/Books/Springer_Contributed_Books.*
+
 
 # TeXLive does not set up Hebrew 8-bit TeX fonts
 # We use the external package "culmus-latex"
@@ -190,10 +191,6 @@ export/doc/uk/Intro_.*_texF
 # Wrong output with pdflatex
 # missing character with XeTeX/LuaTeX and Babel (-> invertedTests)
 export/export/latex/6197-polish-amssymb_(dvi|pdf).?
-
-# Non-ASCII char in verbatim environment is dropped (with a warning when
-# doing this interactively) with ASCII (and hence also with XeTeX).
-export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_texF
 
 # The following document mixes inTitle layouts and leads to
 # likely unintended output. See #10347

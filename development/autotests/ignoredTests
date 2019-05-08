@@ -64,16 +64,10 @@ export/examples/Modules/Chessboard_(lyx(16|20|21|22|23)|(pdf3|pdf5|dvi3)_texF)
 
 # XeTeX with TeX fonts
 ######################
-# XeTeX with TeX-fonts works only for input encodings "utf8" and "ascii".
-# Generally, documentation and templates use "auto-legacy" 8-bit encodings.
-# 1. Exceptions to the following pattern (test cases with the right encoding):
-!export/examples/(|ar|ca|cs|da|de|el|es|eu|fa|fr|gl|he|hu|id|it|ko|nb|nl|pl|pt|pt_BR|pt_PT|ro|ru|sk|sl|sr|sv|uk|zh_CN)/Welcome_pdf4_texF
-# 2. Catchall patterns to ignore the other tests:
-export/(doc|examples|mathmacros|tabletemplates|templates)/.*_pdf4_texF
-export/(doc|examples|templates)/(|ar|ca|cs|da|de|el|es|eu|fa|fr|gl|he|hu|id|it|ja|ko|nb|nl|pl|pt|pt_BR|pt_PT|ro|sk|sl|sr|sv|uk|zh_CN)/.*pdf4_texF
-# dedicated tests with inputencoding "auto-legacy":
+# XeTeX with TeX-fonts works only for input encodings "UTF-8" and "ASCII".
+# Ignore documents with other inputencoding values:
 export/export/latex/languages/supported-languages_babel_auto-legacy_pdf4_texF
-
+export/examples/fr/Example_%28raw%29_pdf4_texF
 
 # pLaTeX
 ########
