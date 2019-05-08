@@ -179,6 +179,7 @@ export/export/latex/languages/supported-languages_babel_auto-legacy_.*_systemF
 
 # don't test with TeX fonts:
 export/export/latex/languages/supported-languages_babel_non-tex_.*(dvi|pdf.?|texF)
+export/export/latex/languages/supported-languages_polyglossia_.*(dvi|pdf.?|texF)
 
 # HTML
 # don't check loading, lyx2lyx, or export to other LyX versions or DVI/PDF

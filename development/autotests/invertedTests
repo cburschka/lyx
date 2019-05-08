@@ -271,6 +271,13 @@ export/examples/(|fr/)Graphics_and_Insets/XY-(Pic|Figure)_pdf5.*
 # See discussion here:
 # https://www.mail-archive.com/search?l=mid&q=1478004223.2367.5.camel%40lyx.org
 export/doc/(sk|nb)/Intro_(dvi3|pdf5)_systemF
+# some Polyglossia languages work only with XeTeX and fail with LuaTeX
+# The font "NotoSansEthiopic" cannot be found.
+# sanskrit: ! Undefined control sequence.
+#             l.53 \newXeTeXintercharclass
+# RTL-languages: ! Undefined control sequence.
+#             \setLR ->\@RTLfalse \luatexpardir 
+export/export/latex/languages/supported-languages_polyglossia_(dvi3|pdf5)_systemF
 
 # fontspec errors with `slides` class:
 # LaTeX error: "kernel/command-already-defined"

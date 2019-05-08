@@ -6,7 +6,41 @@
 \origin unavailable
 \textclass scrartcl
 \begin_preamble
+\@ifpackageloaded{fontspec}{
+\newfontfamily\amharicfont[Script=Ethiopic]{Noto Sans Ethiopic}
+\newfontfamily\thaanafont[Script=Thaana]{Noto Sans Thaana}
+\newfontfamily\devanagarifont[Script=Devanagari]{Noto Serif Devanagari}
+\newfontfamily\kannadafont[Script=Kannada]{Noto Serif Kannada}
+\newfontfamily\khmerfont[Script=Khmer]{Noto Serif Khmer}
+\newfontfamily\laofont[Script=Lao]{Noto Serif Lao}
+% gloss-marathi.ldf has a spelling error: "script=Devaganari"
+\newfontfamily\marathifont[Script=Devanagari]{Noto Serif Devanagari}
+\newfontfamily\syriacfont[Script=Syriac]{FreeSans}
+\newfontfamily\tamilfont[Script=Tamil]{Noto Serif Tamil}
+\newfontfamily\telugufont[Script=Telugu]{Noto Serif Telugu}
+\newfontfamily\tibetanfont[Script=Tibetan]{Noto Sans Tibetan}
 
+% Font setup for Japanese (not supported by Polyglossia)
+% with XeTeX, https://ctan.org/pkg/xecjk
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{xeCJK}
+  \setCJKmainfont{IPAexMincho}
+  \setCJKsansfont{IPAexGothic}
+\fi
+% with LuaTeX, https://www.ctan.org/pkg/luatexja
+% see https://tex.stackexchange.com/questions/222980/how-to-use-chinese-with-lualatex
+\usepackage{ifluatex}
+\ifluatex
+  \usepackage{luatexja-fontspec}
+  % use Mainfont (DejaVu) for Greek and Cyrillic:
+  \ltjsetparameter{jacharrange={-2}}
+  %\usepackage[match]{luatexja-fontspec}
+  %\setmainjfont[Mapping=tex-text]{WenQuanYi Micro Hei}
+  %\setsansjfont[Mapping=tex-text]{WenQuanYi Micro Hei}
+  %\setmonojfont{WenQuanYi Micro Hei Mono}
+\fi
+}{}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -14,12 +48,12 @@
 \language_package auto
 \inputencoding utf8
 \fontencoding HE8,T1
-\font_roman "libertine" "FreeSerif"
-\font_sans "biolinum" "FreeSans"
+\font_roman "DejaVuSerif" "FreeSerif"
+\font_sans "DejaVuSans" "FreeSans"
 \font_typewriter "default" "FreeMono"
 \font_math "auto" "auto"
 \font_default_family default
-\use_non_tex_fonts true
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100 100
@@ -37,8 +71,8 @@
 \paperfontsize default
 \spacing single
 \use_hyperref true
-\pdf_bookmarks false
-\pdf_bookmarksnumbered false
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
 \pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
@@ -157,8 +191,16 @@ status open
 Languages supported by LyX
 \end_layout
 
-\begin_layout Subtitle
-With language examples that work with both, Babel and Polyglossia.
+\begin_layout Standard
+With language examples that work with both, 
+\emph on
+Babel
+\emph default
+ and 
+\emph on
+Polyglossia
+\emph default
+.
 \end_layout
 
 \end_inset
@@ -372,9 +414,45 @@ LangCode sq_AL
 Amharic
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting problem.
+\end_layout
+
+\end_inset
+
+
+\lang amharic
+አማርኛ ፡ የኢትዮጵያ ፡ መደበኛ ፡ ቋንቋ ፡ ነው። ከሴማዊ ፡ ቋንቋዎች ፡ እንደ ፡ ዕብራይስጥ ፡ ወይም ፡ ዓረብኛ
+ ፡ አንዱ ፡ ነው። በአፍሪካ ፡ ውስጥ ፡ ደግሞ ፡ ከምዕራብ ፡ አፍሪካው ፡ ሐውሳና ፡ ከምሥራቅ ፡ አፍሪካው ፡
+ ስዋሂሊ ፡ ቀጥሎ ፡ 
+\lang english
+3
+\lang amharic
+ኛውን ፡ ቦታ ፡ የያዘ ፡ ነው።
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Polyglossia amharic
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Script Amharic syllabary (Ge'ez)
 \end_layout
 
 \begin_layout Labeling
@@ -400,9 +478,13 @@ status open
 
 \lang arabic_arabi
 اللُّغَة العَرَبِيّة هي أكثر اللغات تحدثاً ونطقاً ضمن مجموعة اللغات السامية،
- وإحدى أكثر اللغات انتشاراً في العالم، يتحدثها أكثر من 467 مليون نسمة، ويتوزع
- متحدثوها في الوطن العربي، بالإضافة إلى العديد من المناطق الأخرى المجاورة
- كالأحواز وتركيا وتشاد ومالي والسنغال وإرتيريا وإثيوبيا وجنوب السودان وإيران.
+ وإحدى أكثر اللغات انتشاراً في العالم، يتحدثها أكثر من 
+\begin_inset Formula $467$
+\end_inset
+
+ مليون نسمة، ويتوزع متحدثوها في الوطن العربي، بالإضافة إلى العديد من المناطق
+ الأخرى المجاورة كالأحواز وتركيا وتشاد ومالي والسنغال وإرتيريا وإثيوبيا
+ وجنوب السودان وإيران.
 \end_layout
 
 \end_inset
@@ -432,7 +514,7 @@ Polyglossia arabic
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-RTL true
+Script Arabic (RTL)
 \end_layout
 
 \begin_layout Labeling
@@ -480,7 +562,7 @@ Babel arabtex (dummy babel language for arabic_arabtex to be able to switch
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-RTL true
+Script Arabic (RTL)
 \end_layout
 
 \begin_layout Labeling
@@ -496,9 +578,49 @@ Does not work as secondary language
 Armenian
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting problem.
+\end_layout
+
+\end_inset
+
+
+\emph on
+\lang armenian
+Հայերեն
+\emph default
+ (ավանդական՝ հայերէն), հնդեվրոպական լեզվաընտանիքի առանձին ճյուղ հանդիսացող
+ լեզու։
+\end_layout
+
+\begin_layout Quote
+
+\lang armenian
+Հայաստանի և Արցախի պետական լեզուն է։
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Polyglossia armenian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Script Armenian
 \end_layout
 
 \begin_layout Labeling
@@ -508,6 +630,38 @@ LangCode hy_AM
 
 \begin_layout Subsection*
 Asturian
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting problem.
+\end_layout
+
+\end_inset
+
+
+\emph on
+\lang asturian
+L'asturianu
+\emph default
+ ye una llingua romance propia d'Asturies, perteneciente al subgrupu asturllioné
+s.
+
+\lang english
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -1036,8 +1190,7 @@ Churchslavonic
 \end_layout
 
 \begin_layout Standard
-\begin_inset Branch polyglossia-only
-inverted 0
+\begin_inset Note Note
 status open
 
 \begin_layout Quote
@@ -1083,9 +1236,43 @@ LangCode cu
 Coptic
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting problem.
+\end_layout
+
+\end_inset
+
+
+\lang coptic
+ⲥⲟⲩⲙⲟⲥⲉ ⲣⲱⲙⲉ ⲛⲓⲙ ⲉⲩϣⲏϣ ⲉ ⲛⲉⲩⲉⲣⲏⲩ ϩⲛ ⲟⲩⲇⲓⲕⲁⲓⲟⲥⲩⲛⲏ.
+ ⲟⲩⲛ ϭⲟⲙ ⲙⲙⲟⲩ ⲉⲧⲣⲉⲩⲙⲉⲉⲩⲉ ⲁⲩⲱ ϣϣⲉ ⲉⲧⲣⲉⲩⲣ-ⲙⲛⲧⲙⲁⲓⲥⲟⲛ.
+
+\lang english
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Polyglossia coptic
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Script Coptic
 \end_layout
 
 \begin_layout Standard
@@ -1151,6 +1338,12 @@ Polyglossia czech
 LangCode cs_CZ
 \end_layout
 
+\begin_layout Itemize
+Sometimes, documents with Czech or Slovak text and a table fail to compile
+ (incompatibility of array or multirow packages with Babel-Czech and Babel-Slova
+k).
+\end_layout
+
 \begin_layout Subsection*
 Danish
 \end_layout
@@ -1190,9 +1383,41 @@ Divehi
 (Maldivian)
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting problem.
+\end_layout
+
+\end_inset
+
+
+\lang divehi
+ދިވެހިބަހަކީ ދިވެހިރާއްޖޭގެ ރަސްމީ ބަހެވެ.
+ މި ބަހުން ވާހަކަ ދައްކައި އުޅެނީ ދިވެހިރާއްޖޭގެ އަހުލުވެރިންގެ އިތުރުން
+ ހިންދުސްތާނުގެ މަލިކު ގެ އަހުލުވެރިންނެވެ.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Polyglossia divehi
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Script Thaana (RTL)
 \end_layout
 
 \begin_layout Labeling
@@ -1652,7 +1877,7 @@ Polyglossia farsi
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-RTL true
+Script Persian < Arabic (RTL)
 \end_layout
 
 \begin_layout Labeling
@@ -1844,6 +2069,36 @@ status open
 
 \lang galician
 O 
+\emph on
+galego
+\emph default
+ é a lingua románica propia da nacionalidade histórica de Galicia, onde
+ é usada de xeito habitual por máis de dous millóns de persoas.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting problem.
+\end_layout
+
+\end_inset
+
+
+\lang galician
+ O 
 \emph on
 galego
 \emph default
@@ -2117,6 +2372,12 @@ German
 (Switzerland)
 \end_layout
 
+\begin_layout Quote
+
+\lang german-ch
+Grüsse aus Zürich!
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 LyX german-ch
@@ -2135,12 +2396,6 @@ Polyglossia german [variant=swiss,spelling=new,babelshorthands=true]
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 LangCode de_CH
-\end_layout
-
-\begin_layout Quote
-
-\lang german-ch
-Grüsse aus Zürich!
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2278,9 +2533,18 @@ inverted 0
 status open
 
 \begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting issue.
+\end_layout
+
+\end_inset
+
 
 \lang ancientgreek
-Ὅτι μὲν ὑμεῖς, ὦ ἄνδρες Ἀθηναῖοι, πεπόνθατε ὑπὸ τῶν ἐμῶν κατηγόρων, οὐκ
+ Ὅτι μὲν ὑμεῖς, ὦ ἄνδρες Ἀθηναῖοι, πεπόνθατε ὑπὸ τῶν ἐμῶν κατηγόρων, οὐκ
  οἶδα· ἐγὼ δ' οὖν καὶ αὐτὸς ὑπ' αὐτῶν ὀλίγου ἐμαυτοῦ ἐπελαθόμην, οὕτω πιθανῶς
  ἔλεγον.
  Καίτοι ἀληθές γε ὡς ἔπος εἰπεῖν οὐδὲν εἰρήκασιν.
@@ -2337,9 +2601,18 @@ inverted 0
 status open
 
 \begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting issue.
+\end_layout
+
+\end_inset
+
 
 \lang polutonikogreek
-Ἡ δ' ἀπὸ τῆς Ἑλλάδος ἀποδημία του ἐγένετο πρόξενος πολλῶν ἀδίκων κρίσεων
+ Ἡ δ' ἀπὸ τῆς Ἑλλάδος ἀποδημία του ἐγένετο πρόξενος πολλῶν ἀδίκων κρίσεων
  περὶ προσώπων καὶ πραγμάτων καὶ πρῶτα πρῶτα τῆς περὶ ἧς ἀνωτέρω ἔγινε λόγος
  πρὸς τὸν κλῆρον συμπεριφορᾶς του.
 \end_layout
@@ -2574,12 +2847,7 @@ Polyglossia hebrew
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-InternalEncoding true
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-RTL true
+Script Hebrew (RTL)
 \end_layout
 
 \begin_layout Labeling
@@ -2591,9 +2859,45 @@ LangCode he_IL
 Hindi 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting problem.
+\end_layout
+
+\end_inset
+
+
+\emph on
+\lang hindi
+हिंदी
+\emph default
+ विश्व की एक प्रमुख भाषा है एवं भारत की राजभाषा है। केंद्रीय स्तर पर भारत
+ में दूसरी आधिकारिक भाषा अंग्रेजी है। यह हिंदुस्तानी भाषा की एक मानकीकृत
+ रूप है जिसमें संस्कृत के तत्सम तथा तद्भव शब्दों का प्रयोग अधिक है और अरबी-फ़ारस
+ी शब्द कम हैं।
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Polyglossia hindi
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Script Devanagari
 \end_layout
 
 \begin_layout Labeling
@@ -2787,7 +3091,7 @@ Japanese
 \end_layout
 
 \begin_layout Standard
-\begin_inset Branch polyglossia-only
+\begin_inset Branch only-as-document-language
 inverted 0
 status open
 
@@ -2846,6 +3150,25 @@ Does not work as secondary language unless the document encoding is set
  input encodings or non-TeX fonts are used.
 \end_layout
 
+\begin_layout Itemize
+Wrong characters/encoding in the PDF-bookmarks (toc) can be fixed with the
+ 
+\begin_inset Quotes eld
+\end_inset
+
+BXJS
+\begin_inset Quotes erd
+\end_inset
+
+ classes or 
+\family typewriter
+
+\backslash
+usepackage{pxjahyper}
+\family default
+ (for non-TeX fonts).
+\end_layout
+
 \begin_layout Subsection*
 Japanese
 \begin_inset space ~
@@ -2856,6 +3179,22 @@ Japanese
 
 \begin_layout Standard
 \begin_inset Branch CJK
+inverted 0
+status open
+
+\begin_layout Quote
+
+\series bold
+\lang japanese-cjk
+日本語
+\series default
+（にほんご、にっぽんご[注 1]）は、主に日本国内や日本人同士の間で使用されている言語である。
+\end_layout
+
+\end_inset
+
+
+\begin_inset Branch polyglossia-only
 inverted 0
 status open
 
@@ -2936,9 +3275,42 @@ utf8-cjk
 Kannada
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting problem.
+\end_layout
+
+\end_inset
+
+
+\lang kannada
+ ದ್ರಾವಿಡ ಭಾಷೆಗಳಲ್ಲಿ ಪ್ರಾಮುಖ್ಯವುಳ್ಳ ಭಾಷೆಯೂ ಭಾರತದ ಪುರಾತನವಾದ ಭಾಷೆಗಳಲ್ಲಿ ಒಂದೂ
+ ಆಗಿರುವ ಕನ್ನಡ ಭಾಷೆಯನ್ನು ಅದರ ವಿವಿಧ ರೂಪಗಳಲ್ಲಿ ಸುಮಾರು ೪೫ ದಶಲಕ್ಷ ಜನರು ಆಡು ನುಡಿಯಾಗಿ
+ ಬಳಸುತ್ತಲಿದ್ದಾರೆ.
+ ಕನ್ನಡ ಕರ್ನಾಟಕ ರಾಜ್ಯದ ಆಡಳಿತ ಭಾಷೆ.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Polyglossia kannada
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Script Kannada
 \end_layout
 
 \begin_layout Labeling
@@ -2987,6 +3359,8 @@ For documents using only Cyrillic (and basic Latin) letters, you may get
 \begin_inset Quotes eld
 \end_inset
 
+
+\backslash
 textcyrillic
 \begin_inset Quotes erd
 \end_inset
@@ -3000,6 +3374,25 @@ Custom T2A
 \end_inset
 
 .
+ 
+\end_layout
+
+\begin_layout Itemize
+The correct font encoding for Kazakz with Cyrillic is T2C which contains
+ required letters like the turned e (
+\backslash
+textschwa).
+ However, LyX currently would override this with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+textcyrillic
+\begin_inset Quotes erd
+\end_inset
+
+ forcing T2A.
 \end_layout
 
 \begin_layout Itemize
@@ -3013,9 +3406,50 @@ As of 2018, Kazakh is written in Cyrillic or Latin in Kazakhstan and in
 Khmer
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting problem.
+\end_layout
+
+\end_inset
+
+
+\lang khmer
+៖ខ្មែរ 
+\emph on
+ភាសាខ្មែរ
+\emph default
+ ខ្មែរ 
+\lang english
+khmer
+\lang khmer
+ ខេមរភាសាខ្មែរ គឺជាភាសារបស់ ប្រជាជាតិខ្មែរ ។ ភាសាសំស្ក្រឹត និងភាសាបាលីបានជួយបង្ក
+ើ ភាសា ព្រោះភាសាខ្មែរបានខ្ចីពាក្យច្រើនពីភាសាអស់នោះ ។ មានអក្សរក្រមវែងជាងគេនៅលើពិភ
+ពលោក ។ វាជាភាសាមួយដ៏ចំណាស់ ដែលប្រហែលជាមានដើមកំណើតតាំងតែពី ២០០០ ឆ្នាំមុនមកម៉្លេះ
+ ។
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Polyglossia khmer
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Script Khmer
 \end_layout
 
 \begin_layout Labeling
@@ -3296,9 +3730,42 @@ LangCode kmr
 Lao
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting problem.
+\end_layout
+
+\end_inset
+
+
+\emph on
+\lang lao
+ພາສາລາວ
+\emph default
+ ແມ່ນພາສາລັດຖະການຂອງ ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Polyglossia lao
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Script Lao
 \end_layout
 
 \begin_layout Labeling
@@ -3577,10 +4044,19 @@ inverted 0
 status open
 
 \begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting issue.
+\end_layout
+
+\end_inset
+
 
 \lang malayalam
-ഇന്ത്യയിൽ പ്രധാനമായും കേരള സംസ്ഥാനത്തിലും ലക്ഷദ്വീപിലും പുതുച്ചേരിയുടെ ഭാഗമായ
- മയ്യഴിയിലും സംസാരിക്കപ്പെടുന്ന ഭാഷയാണ് മലയാളം.
+ ഇന്ത്യയിൽ പ്രധാനമായും കേരള സംസ്ഥാനത്തിലും ലക്ഷദ്വീപിലും പുതുച്ചേരിയുടെ
+ ഭാഗമായ മയ്യഴിയിലും സംസാരിക്കപ്പെടുന്ന ഭാഷയാണ് മലയാളം.
 \end_layout
 
 \end_inset
@@ -3603,18 +4079,47 @@ Script Malayalam (Brahmic)
 LangCode ml_IN
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\end_layout
-
 \begin_layout Subsection*
 Marathi
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting issue.
+\end_layout
+
+\end_inset
+
+
+\lang marathi
+मराठी भाषा ही इंडो-युरोपीय भाषाकुलातील एक भाषा आहे.
+ भारतातील प्रमुख २२ भाषांपैकी मराठी एक आहे.
+ महाराष्ट्र आणि गोवा ह्या राज्यांची मराठी ही अधिकृत राजभाषा आहे.
+ मराठी मातृभाषा असणाऱ्या लोकसंख्येनुसार मराठी ही जगातील पंधरावी व भारतातील
+ तिसरी भाषा आहे.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Polyglossia marathi
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Script Devanagari
 \end_layout
 
 \begin_layout Labeling
@@ -3787,6 +4292,42 @@ LangCode nn_NO
 
 \begin_layout Subsection*
 Occitan
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting issue.
+\end_layout
+
+\end_inset
+
+
+\lang occitan
+L'
+\emph on
+occitan
+\emph default
+ (o 
+\emph on
+lenga d'òc
+\emph default
+) es una lenga romanica parlada en Occitània e pels occitans emigrats de
+ pel monde.
+ Es una lenga fòrça similara al catalan que d'unes considèran aquel coma
+ un dialècte.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -3993,8 +4534,11 @@ Polyglossia romansh
 LangCode rm_CH
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection*
 Russian
+\end_layout
+
+\begin_layout Standard
 \begin_inset Branch conflict-rus-belarus
 inverted 1
 status open
@@ -4012,8 +4556,30 @@ status open
 
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting issue.
+\end_layout
+
+\end_inset
+
+
+\lang russian
+Ру́сский язы́к — один из восточнославянских языков, национальный язык русского
+ народа.
+ Является одним из наиболее распространённых языков мира.
+\end_layout
+
+\end_inset
+
 Babel russian
 \end_layout
 
@@ -4024,12 +4590,12 @@ Polyglossia russian
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-LangCode ru_RU
+Script Cyrillic
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Script Cyrillic
+LangCode ru_RU
 \end_layout
 
 \begin_layout Itemize
@@ -4118,9 +4684,45 @@ status open
 Sanskrit
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting issue.
+\end_layout
+
+\end_inset
+
+
+\emph on
+\lang sanskrit
+संस्कृतम्
+\emph default
+ जगतः एकतमा अतिप्राचीना समृद्धा शास्त्रीया च भाषा वर्तते। संस्कृतं भारतस्य
+ जगत: वा भाषास्वेकतमा प्राचीनतमा। भारती सुरभारती अमरभारती अमरवाणी सुरवाणी
+ गीर्वाणवाणी गीर्वाणी देववाणी देवभाषा संस्कृता वाक् दैवीवाक् इत्यादिभिः
+ नामभिः एतद्भाषा प्रसिद्धा। 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Polyglossia sanskrit
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Script Devanagari
 \end_layout
 
 \begin_layout Labeling
@@ -4196,6 +4798,15 @@ inverted 0
 status open
 
 \begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting issue.
+\end_layout
+
+\end_inset
+
 
 \emph on
 \lang serbian
@@ -4586,6 +5197,32 @@ LangCode sv_SE
 Syriac
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+Variants of the Syriac alphabet: Esṭrangelā (
+\lang syriac
+ܐܣܛܪܢܓܠܐ
+\lang english
+), Serṭā (
+\lang syriac
+ܣܪܛܐ
+\lang english
+) and Madnḥāyā (
+\lang syriac
+ܡܕܢܚܝܐ
+\lang english
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Polyglossia syriac
@@ -4593,21 +5230,66 @@ Polyglossia syriac
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-RTL true
+Script Syriac (RTL)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-LangCode syr_SY
+LangCode syr_SY 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+classical Syriac: syc (ISO 639-3)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
 Tamil
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting issue.
+\end_layout
+
+\end_inset
+
+
+\emph on
+\lang tamil
+தமிழ் மொழி
+\emph default
+ தமிழர்களினதும், தமிழ் பேசும் பலரதும் தாய்மொழி ஆகும்.
+ தமிழ் திராவிட மொழிக் குடும்பத்தின் முதன்மையான மொழிகளில் ஒன்றும் செம்மொழியும்
+ ஆகும்.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Polyglossia tamil
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Script Tamil
 \end_layout
 
 \begin_layout Labeling
@@ -4619,9 +5301,41 @@ LangCode ta_IN
 Telugu
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting issue.
+\end_layout
+
+\end_inset
+
+
+\lang telugu
+ఆంధ్ర ప్రదేశ్, తెలంగాణ రాష్ట్రాల అధికార భాష తెలుగు.
+ భారత దేశంలో తెలుగు మాతృభాషగా మాట్లాడే 8.7 కోట్ల (2001) జనాభాతో ప్రాంతీయ
+ భాషలలో మొదటి స్థానంలో ఉంది.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Polyglossia telugu
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Script Telugu
 \end_layout
 
 \begin_layout Labeling
@@ -4633,12 +5347,21 @@ LangCode te_IN
 Thai
 \end_layout
 
-\begin_layout Quote
+\begin_layout Standard
 \begin_inset Branch polyglossia-only
 inverted 0
 status open
 
-\begin_layout Standard
+\begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting issue.
+\end_layout
+
+\end_inset
+
 
 \emph on
 \lang thai
@@ -4756,9 +5479,43 @@ usepackage{fonts-tlwg}}
 Tibetan
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting issue.
+\end_layout
+
+\end_inset
+
+
+\emph on
+\lang tibetan
+བོད་ཀྱི་སྐད་ཡིག་
+\emph default
+ནི་བོད་ཡུལ་དང་དེའི་ཉེ་འཁོར་གྱི་ས་ཁུལ་ཏེ། བལ་ཡུལ་དང་། འབྲུག འབྲས་ལྗོངས། ལ་དྭགས་ནས
+་ལྷོ་མོན་རོང་སོགས་སུ་བེད་སྤྱོད་བྱེད་པའི་སྐད་ཡིག་སྟེ།
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Polyglossia tibetan
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Script Tibetan
 \end_layout
 
 \begin_layout Labeling
@@ -4896,6 +5653,34 @@ LangCode hsb_DE
 Urdu
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting issue.
+\end_layout
+
+\end_inset
+
+
+\lang urdu
+اُردُو لشکری زبان (یا جدید معیاری اردو) ہندوستانی زبان کی معیاری قسم ہے۔
+ یہ پاکستان کی قومی اور رابطہ عامہ کی زبان ہے، جبکہ بھارت کی چھے ریاستوں
+ کی دفتری زبان کا درجہ رکھتی ہے۔ آئین ہند کے مطابق اسے 22 دفتری شناخت زبانوں
+ میں شامل کیا جاچکا ہے۔ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Polyglossia urdu
@@ -4903,7 +5688,7 @@ Polyglossia urdu
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-RTL true
+Script Urdu (<Persian<Arabic, RTL)
 \end_layout
 
 \begin_layout Labeling
@@ -4915,7 +5700,21 @@ LangCode ur_PK
 Vietnamese
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch conflict-babel-non-TeX-fonts
+inverted 0
+status open
+
 \begin_layout Quote
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dummy text to work around language nesting issue.
+\end_layout
+
+\end_inset
+
 
 \emph on
 \lang vietnamese
@@ -4931,6 +5730,11 @@ Việt ngữ
 \emph default
 , là ngôn ngữ của người Việt (người Kinh) và là ngôn ngữ chính thức tại
  Việt Nam
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling

@@ -1,0 +1,188 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 573
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrartcl
+\begin_preamble
+
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package auto
+\inputencoding auto-legacy
+\fontencoding HE8,T1
+\font_roman "libertine" "FreeSerif"
+\font_sans "biolinum" "FreeSans"
+\font_typewriter "default" "FreeMono"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\font_cjk gbsn
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref section
+\pdf_pdfusetitle true
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification false
+\use_refstyle 0
+\use_minted 0
+\branch only-as-document-language
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch babel-only
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch non-TeX-fonts-only
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch polyglossia-only
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch CJK
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch debug
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch conflict-rus-belarus
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch conflict-es-gl
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch conflict-bg-mk
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch conflict-babel-non-TeX-fonts
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch standalone
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Languages supported by LyX.
+\end_layout
+
+\begin_layout Standard
+\noindent
+With language examples that work with 
+\emph on
+Babel
+\emph default
+ and input encoding 
+\begin_inset Quotes eld
+\end_inset
+
+auto-legacy
+\begin_inset Quotes erd
+\end_inset
+
+, i.e.
+ each language uses its own default legacy input encoding.
+
+\emph on
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "supported-languages.lyx"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
