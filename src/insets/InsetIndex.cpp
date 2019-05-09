@@ -27,7 +27,7 @@
 #include "Lexer.h"
 #include "output_latex.h"
 #include "output_xhtml.h"
-#include "sgml.h"
+#include "xml.h"
 #include "texstream.h"
 #include "TextClass.h"
 #include "TocBackend.h"
@@ -55,7 +55,7 @@ namespace lyx {
 
 
 InsetIndex::InsetIndex(Buffer * buf, InsetIndexParams const & params)
-	: InsetCollapsible(buf), params_(params)
+        : InsetCollapsible(buf), params_(params)
 {}
 
 
@@ -67,7 +67,7 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 	otexstringstream os;
 
 	if (buffer().masterBuffer()->params().use_indices && !params_.index.empty()
-	    && params_.index != "idx") {
+		&& params_.index != "idx") {
 		os << "\\sindex[";
 		os << escape(params_.index);
 		os << "]{";
@@ -112,12 +112,12 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 			LYXERR0("The `|' separator was not found in the plaintext version!");
 	}
 
-	// Separate the entires and subentries, i.e., split on "!"
+	// Separate the entries and subentries, i.e., split on "!"
 	// FIXME This would do the wrong thing with escaped ! characters
 	std::vector<docstring> const levels =
-		getVectorFromString(latexstr, from_ascii("!"), true);
+			getVectorFromString(latexstr, from_ascii("!"), true);
 	std::vector<docstring> const levels_plain =
-		getVectorFromString(plainstr, from_ascii("!"), true);
+			getVectorFromString(plainstr, from_ascii("!"), true);
 
 	vector<docstring>::const_iterator it = levels.begin();
 	vector<docstring>::const_iterator end = levels.end();
@@ -138,27 +138,27 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 		if (contains(*it, '\\') && !contains(*it, '@')) {
 			// Plaintext might return nothing (e.g. for ERTs)
 			docstring const spart =
-				(it2 < levels_plain.end() && !(*it2).empty())
-				? *it2 : *it;
+					(it2 < levels_plain.end() && !(*it2).empty())
+					? *it2 : *it;
 			// Now we need to validate that all characters in
 			// the sorting part are representable in the current
 			// encoding. If not try the LaTeX macro which might
 			// or might not be a good choice, and issue a warning.
 			pair<docstring, docstring> spart_latexed =
-				runparams.encoding->latexString(spart, runparams.dryrun);
+					runparams.encoding->latexString(spart, runparams.dryrun);
 			if (!spart_latexed.second.empty())
-					LYXERR0("Uncodable character in index entry. Sorting might be wrong!");
+				LYXERR0("Uncodable character in index entry. Sorting might be wrong!");
 			if (spart != spart_latexed.first && !runparams.dryrun) {
 				// FIXME: warning should be passed to the error dialog
 				frontend::Alert::warning(_("Index sorting failed"),
-				bformat(_("LyX's automatic index sorting algorithm faced\n"
-				  "problems with the entry '%1$s'.\n"
-				  "Please specify the sorting of this entry manually, as\n"
-				  "explained in the User Guide."), spart));
+										 bformat(_("LyX's automatic index sorting algorithm faced\n"
+														   "problems with the entry '%1$s'.\n"
+														   "Please specify the sorting of this entry manually, as\n"
+														   "explained in the User Guide."), spart));
 			}
 			// remove remaining \'s for the sorting part
 			docstring const ppart =
-				subst(spart_latexed.first, from_ascii("\\"), docstring());
+					subst(spart_latexed.first, from_ascii("\\"), docstring());
 			os << ppart;
 			os << '@';
 		}
@@ -191,13 +191,13 @@ int InsetIndex::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-docstring InsetIndex::xhtml(XHTMLStream & xs, OutputParams const &) const
+docstring InsetIndex::xhtml(XMLStream & xs, OutputParams const &) const
 {
 	// we just print an anchor, taking the paragraph ID from
 	// our own interior paragraph, which doesn't get printed
 	std::string const magic = paragraphs().front().magicLabel();
 	std::string const attr = "id='" + magic + "'";
-	xs << html::CompTag("a", attr);
+	xs << xml::CompTag("a", attr);
 	return docstring();
 }
 
@@ -707,7 +707,7 @@ bool operator<(IndexEntry const & lhs, IndexEntry const & rhs)
 } // namespace
 
 
-docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
+docstring InsetPrintIndex::xhtml(XMLStream &, OutputParams const & op) const
 {
 	BufferParams const & bp = buffer().masterBuffer()->params();
 
@@ -747,14 +747,14 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 	// that's how we deal with the fact that we're probably inside a standard
 	// paragraph, and we don't want to be.
 	odocstringstream ods;
-	XHTMLStream xs(ods);
+	XMLStream xs(ods);
 
-	xs << html::StartTag("div", tocattr);
-	xs << html::StartTag(lay.htmltag(), lay.htmlattr())
+	xs << xml::StartTag("div", tocattr);
+	xs << xml::StartTag(lay.htmltag(), lay.htmlattr())
 		 << translateIfPossible(from_ascii("Index"),
 	                          op.local_font->language()->lang())
-		 << html::EndTag(lay.htmltag());
-	xs << html::StartTag("ul", "class='main'");
+		 << xml::EndTag(lay.htmltag());
+	xs << xml::StartTag("ul", "class='main'");
 	Font const dummy;
 
 	vector<IndexEntry>::const_iterator eit = entries.begin();
@@ -774,11 +774,11 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 				// close last entry or entries, depending.
 				if (level == 3) {
 					// close this sub-sub-entry
-					xs << html::EndTag("li") << html::CR();
+					xs << xml::EndTag("li") << xml::CR();
 					// is this another sub-sub-entry within the same sub-entry?
 					if (!eit->same_sub(last)) {
 						// close this level
-						xs << html::EndTag("ul") << html::CR();
+						xs << xml::EndTag("ul") << xml::CR();
 						level = 2;
 					}
 				}
@@ -789,11 +789,11 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 				// sub-entry. In that case, we do not want to close anything.
 				if (level == 2 && !eit->same_sub(last)) {
 					// close sub-entry
-					xs << html::EndTag("li") << html::CR();
+					xs << xml::EndTag("li") << xml::CR();
 					// is this another sub-entry with the same main entry?
 					if (!eit->same_main(last)) {
 						// close this level
-						xs << html::EndTag("ul") << html::CR();
+						xs << xml::EndTag("ul") << xml::CR();
 						level = 1;
 					}
 				}
@@ -802,7 +802,7 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 				// close the entry.
 				if (level == 1 && !eit->same_main(last)) {
 					// close entry
-					xs << html::EndTag("li") << html::CR();
+					xs << xml::EndTag("li") << xml::CR();
 				}
 			}
 
@@ -812,7 +812,7 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 			// We need to use our own stream, since we will have to
 			// modify what we get back.
 			odocstringstream ent;
-			XHTMLStream entstream(ent);
+			XMLStream entstream(ent);
 			OutputParams ours = op;
 			ours.for_toc = true;
 			par.simpleLyXHTMLOnePar(buffer(), entstream, ours, dummy);
@@ -830,8 +830,8 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 
 			if (level == 3) {
 				// another subsubentry
-				xs << html::StartTag("li", "class='subsubentry'")
-				   << XHTMLStream::ESCAPE_NONE << subsub;
+				xs << xml::StartTag("li", "class='subsubentry'")
+				   << XMLStream::ESCAPE_NONE << subsub;
 			} else if (level == 2) {
 				// there are two ways we can be here:
 				// (i) we can actually be inside a sub-entry already and be about
@@ -844,14 +844,14 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 				// note that in this case, too, though, the sub-entry might already
 				// have a sub-sub-entry.
 				if (eit->sub != last.sub)
-					xs << html::StartTag("li", "class='subentry'")
-					   << XHTMLStream::ESCAPE_NONE << sub;
+					xs << xml::StartTag("li", "class='subentry'")
+					   << XMLStream::ESCAPE_NONE << sub;
 				if (!subsub.empty()) {
 					// it's actually a subsubentry, so we need to start that list
-					xs << html::CR()
-					   << html::StartTag("ul", "class='subsubentry'")
-					   << html::StartTag("li", "class='subsubentry'")
-					   << XHTMLStream::ESCAPE_NONE << subsub;
+					xs << xml::CR()
+					   << xml::StartTag("ul", "class='subsubentry'")
+					   << xml::StartTag("li", "class='subsubentry'")
+					   << XMLStream::ESCAPE_NONE << subsub;
 					level = 3;
 				}
 			} else {
@@ -866,20 +866,20 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 				// note that in this case, too, though, the main entry might already
 				// have a sub-entry, or even a sub-sub-entry.
 				if (eit->main != last.main)
-					xs << html::StartTag("li", "class='main'") << main;
+					xs << xml::StartTag("li", "class='main'") << main;
 				if (!sub.empty()) {
 					// there's a sub-entry, too
-					xs << html::CR()
-					   << html::StartTag("ul", "class='subentry'")
-					   << html::StartTag("li", "class='subentry'")
-					   << XHTMLStream::ESCAPE_NONE << sub;
+					xs << xml::CR()
+					   << xml::StartTag("ul", "class='subentry'")
+					   << xml::StartTag("li", "class='subentry'")
+					   << XMLStream::ESCAPE_NONE << sub;
 					level = 2;
 					if (!subsub.empty()) {
 						// and a sub-sub-entry
-						xs << html::CR()
-						   << html::StartTag("ul", "class='subsubentry'")
-						   << html::StartTag("li", "class='subsubentry'")
-						   << XHTMLStream::ESCAPE_NONE << subsub;
+						xs << xml::CR()
+						   << xml::StartTag("ul", "class='subsubentry'")
+						   << xml::StartTag("li", "class='subsubentry'")
+						   << XMLStream::ESCAPE_NONE << subsub;
 						level = 3;
 					}
 				}
@@ -888,16 +888,16 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 		// finally, then, we can output the index link itself
 		string const parattr = "href='#" + par.magicLabel() + "'";
 		xs << (entry_number == 0 ? ":" : ",");
-		xs << " " << html::StartTag("a", parattr)
-		   << ++entry_number << html::EndTag("a");
+		xs << " " << xml::StartTag("a", parattr)
+		   << ++entry_number << xml::EndTag("a");
 		last = *eit;
 	}
 	// now we have to close all the open levels
 	while (level > 0) {
-		xs << html::EndTag("li") << html::EndTag("ul") << html::CR();
+		xs << xml::EndTag("li") << xml::EndTag("ul") << xml::CR();
 		--level;
 	}
-	xs << html::EndTag("div") << html::CR();
+	xs << xml::EndTag("div") << xml::CR();
 	return ods.str();
 }
 

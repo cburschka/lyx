@@ -11,6 +11,7 @@
  */
 
 #include <config.h>
+#include <xml.h>
 
 #include "InsetFloat.h"
 #include "InsetCaption.h"
@@ -32,6 +33,7 @@
 #include "TexRow.h"
 #include "texstream.h"
 #include "TextClass.h"
+#include "InsetList.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -334,7 +336,7 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 }
 
 
-docstring InsetFloat::xhtml(XHTMLStream & xs, OutputParams const & rp) const
+docstring InsetFloat::xhtml(XMLStream & xs, OutputParams const & rp) const
 {
 	FloatList const & floats = buffer().params().documentClass().floats();
 	Floating const & ftype = floats.getType(params_.type);
@@ -342,12 +344,12 @@ docstring InsetFloat::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 	string const & attr = ftype.htmlAttrib();
 
 	odocstringstream ods;
-	XHTMLStream newxs(ods);
-	newxs << html::StartTag(htmltype, attr);
+	XMLStream newxs(ods);
+	newxs << xml::StartTag(htmltype, attr);
 	InsetText::XHTMLOptions const opts =
 		InsetText::WriteLabel | InsetText::WriteInnerTag;
 	docstring deferred = InsetText::insetAsXHTML(newxs, rp, opts);
-	newxs << html::EndTag(htmltype);
+	newxs << xml::EndTag(htmltype);
 
 	if (rp.inFloat == OutputParams::NONFLOAT) {
 		// In this case, this float needs to be deferred, but we'll put it
@@ -358,7 +360,7 @@ docstring InsetFloat::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 		// we can write to the stream.
 		// Note that things will already have been escaped, so we do not
 		// want to escape them again.
-		xs << XHTMLStream::ESCAPE_NONE << ods.str();
+		xs << XMLStream::ESCAPE_NONE << ods.str();
 	}
 	return deferred;
 }

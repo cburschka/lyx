@@ -14,8 +14,11 @@
 #define OUTPUT_DOCBOOK_H
 
 #include "support/strfwd.h"
+#include "xml.h"
 
 namespace lyx {
+
+std::string const fontToDocBookTag(xml::FontTypes type);
 
 class Buffer;
 class OutputParams;

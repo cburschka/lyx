@@ -30,7 +30,7 @@
 #include "LyX.h"
 #include "OutputParams.h"
 #include "output_xhtml.h"
-#include "sgml.h"
+#include "xml.h"
 #include "texstream.h"
 #include "TocBackend.h"
 
@@ -55,7 +55,7 @@ namespace lyx {
 
 InsetNomencl::InsetNomencl(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p),
-	  nomenclature_entry_id(sgml::uniqueID(from_ascii("nomen")))
+	  nomenclature_entry_id(xml::uniqueID(from_ascii("nomen")))
 {}
 
 
@@ -108,13 +108,13 @@ int InsetNomencl::plaintext(odocstringstream & os,
 int InsetNomencl::docbook(odocstream & os, OutputParams const &) const
 {
 	os << "<glossterm linkend=\"" << nomenclature_entry_id << "\">"
-	   << sgml::escapeString(getParam("symbol"))
+	   << xml::escapeString(getParam("symbol"))
 	   << "</glossterm>";
 	return 0;
 }
 
 
-docstring InsetNomencl::xhtml(XHTMLStream &, OutputParams const &) const
+docstring InsetNomencl::xhtml(XMLStream &, OutputParams const &) const
 {
 	return docstring();
 }
@@ -124,10 +124,10 @@ int InsetNomencl::docbookGlossary(odocstream & os) const
 {
 	os << "<glossentry id=\"" << nomenclature_entry_id << "\">\n"
 	   << "<glossterm>"
-	   << sgml::escapeString(getParam("symbol"))
+	   << xml::escapeString(getParam("symbol"))
 	   << "</glossterm>\n"
 	   << "<glossdef><para>"
-	   << sgml::escapeString(getParam("description"))
+	   << xml::escapeString(getParam("description"))
 	   << "</para></glossdef>\n"
 	   <<"</glossentry>\n";
 	return 4;
@@ -200,7 +200,7 @@ struct NomenclEntry {
 typedef map<docstring, NomenclEntry > EntryMap;
 
 
-docstring InsetPrintNomencl::xhtml(XHTMLStream &, OutputParams const & op) const
+docstring InsetPrintNomencl::xhtml(XMLStream &, OutputParams const & op) const
 {
 	shared_ptr<Toc const> toc = buffer().tocBackend().toc("nomencl");
 
@@ -234,42 +234,42 @@ docstring InsetPrintNomencl::xhtml(XHTMLStream &, OutputParams const & op) const
 	// that's how we deal with the fact that we're probably inside a standard
 	// paragraph, and we don't want to be.
 	odocstringstream ods;
-	XHTMLStream xs(ods);
+	XMLStream xs(ods);
 
 	InsetLayout const & il = getLayout();
 	string const & tag = il.htmltag();
 	docstring toclabel = translateIfPossible(from_ascii("Nomenclature"),
 		op.local_font->language()->lang());
 
-	xs << html::StartTag("div", "class='nomencl'")
-	   << html::StartTag(tag, "class='nomencl'")
+	xs << xml::StartTag("div", "class='nomencl'")
+	   << xml::StartTag(tag, "class='nomencl'")
 		 << toclabel
-		 << html::EndTag(tag)
-	   << html::CR()
-	   << html::StartTag("dl")
-	   << html::CR();
+		 << xml::EndTag(tag)
+	   << xml::CR()
+	   << xml::StartTag("dl")
+	   << xml::CR();
 
 	EntryMap::const_iterator eit = entries.begin();
 	EntryMap::const_iterator const een = entries.end();
 	for (; eit != een; ++eit) {
 		NomenclEntry const & ne = eit->second;
 		string const parid = ne.par->magicLabel();
-		xs << html::StartTag("dt")
-		   << html::StartTag("a", "href='#" + parid + "' class='nomencl'")
+		xs << xml::StartTag("dt")
+		   << xml::StartTag("a", "href='#" + parid + "' class='nomencl'")
 		   << ne.symbol
-		   << html::EndTag("a")
-		   << html::EndTag("dt")
-		   << html::CR()
-		   << html::StartTag("dd")
+		   << xml::EndTag("a")
+		   << xml::EndTag("dt")
+		   << xml::CR()
+		   << xml::StartTag("dd")
 		   << ne.desc
-		   << html::EndTag("dd")
-		   << html::CR();
+		   << xml::EndTag("dd")
+		   << xml::CR();
 	}
 
-	xs << html::EndTag("dl")
-	   << html::CR()
-	   << html::EndTag("div")
-	   << html::CR();
+	xs << xml::EndTag("dl")
+	   << xml::CR()
+	   << xml::EndTag("div")
+	   << xml::CR();
 
 	return ods.str();
 }

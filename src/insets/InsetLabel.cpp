@@ -27,7 +27,7 @@
 #include "LyX.h"
 #include "output_xhtml.h"
 #include "ParIterator.h"
-#include "sgml.h"
+#include "xml.h"
 #include "texstream.h"
 #include "Text.h"
 #include "TextClass.h"
@@ -351,24 +351,24 @@ int InsetLabel::plaintext(odocstringstream & os,
 }
 
 
-int InsetLabel::docbook(odocstream & os, OutputParams const & runparams) const
+int InsetLabel::docbook(odocstream & os, OutputParams const &) const
 {
 	os << "<!-- anchor id=\""
-	   << sgml::cleanID(buffer(), runparams, getParam("name"))
+	   << xml::cleanID(getParam("name"))
 	   << "\" -->";
 	return 0;
 }
 
 
-docstring InsetLabel::xhtml(XHTMLStream & xs, OutputParams const &) const
+docstring InsetLabel::xhtml(XMLStream & xs, OutputParams const &) const
 {
 	// FIXME XHTML
 	// Unfortunately, the name attribute has been deprecated, so we have to use
 	// id here to get the document to validate as XHTML 1.1. This will cause a
 	// problem with some browsers, though, I'm sure. (Guess which!) So we will
 	// have to figure out what to do about this later.
-	docstring const attr = "id=\"" + html::cleanAttr(getParam("name")) + '"';
-	xs << html::CompTag("a", to_utf8(attr));
+	docstring const attr = "id=\"" + xml::cleanAttr(getParam("name")) + '"';
+	xs << xml::CompTag("a", to_utf8(attr));
 	return docstring();
 }
 

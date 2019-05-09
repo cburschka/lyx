@@ -136,11 +136,11 @@ int InsetTOC::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-void InsetTOC::makeTOCEntry(XHTMLStream & xs,
+void InsetTOC::makeTOCEntry(XMLStream & xs,
 		Paragraph const & par, OutputParams const & op) const
 {
 	string const attr = "href='#" + par.magicLabel() + "' class='tocentry'";
-	xs << html::StartTag("a", attr);
+	xs << xml::StartTag("a", attr);
 
 	// First the label, if there is one
 	docstring const & label = par.params().labelString();
@@ -152,11 +152,11 @@ void InsetTOC::makeTOCEntry(XHTMLStream & xs,
 	Font const dummy;
 	par.simpleLyXHTMLOnePar(buffer(), xs, ours, dummy);
 
-	xs << html::EndTag("a") << html::CR();
+	xs << xml::EndTag("a") << xml::CR();
 }
 
 
-void InsetTOC::makeTOCWithDepth(XHTMLStream & xs,
+void InsetTOC::makeTOCWithDepth(XMLStream & xs,
 		Toc const & toc, OutputParams const & op) const
 {
 	Toc::const_iterator it = toc.begin();
@@ -177,13 +177,13 @@ void InsetTOC::makeTOCWithDepth(XHTMLStream & xs,
 			continue;
 
 		if (depth > lastdepth) {
-			xs << html::CR();
+			xs << xml::CR();
 			// open as many tags as we need to open to get to this level
 			// this includes the tag for the current level
 			for (int i = lastdepth + 1; i <= depth; ++i) {
 				stringstream attr;
 				attr << "class='lyxtoc-" << i << "'";
-				xs << html::StartTag("div", attr.str()) << html::CR();
+				xs << xml::StartTag("div", attr.str()) << xml::CR();
 			}
 			lastdepth = depth;
 		}
@@ -191,18 +191,18 @@ void InsetTOC::makeTOCWithDepth(XHTMLStream & xs,
 			// close as many as we have to close to get back to this level
 			// this includes closing the last tag at this level
 			for (int i = lastdepth; i >= depth; --i)
-				xs << html::EndTag("div") << html::CR();
+				xs << xml::EndTag("div") << xml::CR();
 			// now open our tag
 			stringstream attr;
 			attr << "class='lyxtoc-" << depth << "'";
-			xs << html::StartTag("div", attr.str()) << html::CR();
+			xs << xml::StartTag("div", attr.str()) << xml::CR();
 			lastdepth = depth;
 		} else {
 			// no change of level, so close and open
-			xs << html::EndTag("div") << html::CR();
+			xs << xml::EndTag("div") << xml::CR();
 			stringstream attr;
 			attr << "class='lyxtoc-" << depth << "'";
-			xs << html::StartTag("div", attr.str()) << html::CR();
+			xs << xml::StartTag("div", attr.str()) << xml::CR();
 		}
 
 		// Now output TOC info for this entry
@@ -210,11 +210,11 @@ void InsetTOC::makeTOCWithDepth(XHTMLStream & xs,
 		makeTOCEntry(xs, par, op);
 	}
 	for (int i = lastdepth; i > 0; --i)
-		xs << html::EndTag("div") << html::CR();
+		xs << xml::EndTag("div") << xml::CR();
 }
 
 
-void InsetTOC::makeTOCNoDepth(XHTMLStream & xs,
+void InsetTOC::makeTOCNoDepth(XMLStream & xs,
 		Toc const & toc, const OutputParams & op) const
 {
 	Toc::const_iterator it = toc.begin();
@@ -225,17 +225,17 @@ void InsetTOC::makeTOCNoDepth(XHTMLStream & xs,
 		if (!it->isOutput())
 			continue;
 
-		xs << html::StartTag("div", "class='lyxtoc-flat'") << html::CR();
+		xs << xml::StartTag("div", "class='lyxtoc-flat'") << xml::CR();
 
 		Paragraph const & par = it->dit().innerParagraph();
 		makeTOCEntry(xs, par, op);
 
-		xs << html::EndTag("div");
+		xs << xml::EndTag("div");
 	}
 }
 
 
-docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
+docstring InsetTOC::xhtml(XMLStream &, OutputParams const & op) const
 {
 	string const & command = getCmdName();
 	if (command != "tableofcontents" && command != "lstlistoflistings") {
@@ -252,9 +252,9 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	// that's how we deal with the fact that we're probably inside a standard
 	// paragraph, and we don't want to be.
 	odocstringstream ods;
-	XHTMLStream xs(ods);
+	XMLStream xs(ods);
 
-	xs << html::StartTag("div", "class='toc'");
+	xs << xml::StartTag("div", "class='toc'");
 
 	// Title of TOC
 	InsetLayout const & il = getLayout();
@@ -263,9 +263,9 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	Layout const & lay = buffer().params().documentClass().htmlTOCLayout();
 	string const & tocclass = lay.defaultCSSClass();
 	string const tocattr = "class='tochead " + tocclass + "'";
-	xs << html::StartTag(tag, tocattr)
+	xs << xml::StartTag(tag, tocattr)
 		 << title
-		 << html::EndTag(tag);
+		 << xml::EndTag(tag);
 
 	// with lists of listings, at least, there is no depth
 	// to worry about. so the code can be simpler.
@@ -277,7 +277,7 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	else
 		makeTOCNoDepth(xs, *toc, op);
 
-	xs << html::EndTag("div") << html::CR();
+	xs << xml::EndTag("div") << xml::CR();
 	return ods.str();
 }
 

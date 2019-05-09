@@ -80,7 +80,7 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
-	docstring xhtml(XHTMLStream & os, OutputParams const &) const;
+	docstring xhtml(XMLStream & os, OutputParams const &) const;
 	/** Tell LyX what the latex features you need i.e. what latex packages
 	    you need to be included.
 	 */

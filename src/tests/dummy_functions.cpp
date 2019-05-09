@@ -5,6 +5,7 @@
 #include "LyXRC.h"
 
 #include "support/Messages.h"
+#include "xml.h"
 
 using namespace std;
 
@@ -47,6 +48,12 @@ Formats & theFormats()
 string alignmentToCSS(LyXAlignment)
 {
 	return string();
+}
+
+namespace xml {
+docstring StartTag::writeTag() const { return docstring(); }
+docstring StartTag::writeEndTag() const { return docstring(); }
+bool StartTag::operator==(FontTag const & rhs) const { return rhs == *this; }
 }
 
 } // namespace lyx

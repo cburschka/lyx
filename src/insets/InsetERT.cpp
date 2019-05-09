@@ -183,7 +183,7 @@ string InsetERT::params2string(CollapseStatus status)
 }
 
 
-docstring InsetERT::xhtml(XHTMLStream &, OutputParams const &) const
+docstring InsetERT::xhtml(XMLStream &, OutputParams const &) const
 {
 	return docstring();
 }

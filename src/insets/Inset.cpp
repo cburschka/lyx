@@ -472,7 +472,7 @@ int Inset::docbook(odocstream &, OutputParams const &) const
 }
 
 
-docstring Inset::xhtml(XHTMLStream & xs, OutputParams const &) const
+docstring Inset::xhtml(XMLStream & xs, OutputParams const &) const
 {
 	xs << "[[Inset: " << from_ascii(insetName(lyxCode())) << "]]";
 	return docstring();

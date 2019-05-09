@@ -41,7 +41,7 @@
 #include "output_xhtml.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
-#include "sgml.h"
+#include "xml.h"
 #include "TexRow.h"
 #include "TextClass.h"
 #include "TextPainter.h"
@@ -2416,7 +2416,7 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 
 	docstring bname = name;
 	if (!label(0).empty())
-		bname += " id='" + sgml::cleanID(buffer(), runparams, label(0)) + "'";
+		bname += " id='" + xml::cleanID(label(0)) + "'";
 
 	++ms.tab(); ms.cr(); ms.os() << '<' << bname << '>';
 
@@ -2446,9 +2446,9 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 
 	ms << from_ascii("<graphic fileref=\"eqn/");
 	if (!label(0).empty())
-		ms << sgml::cleanID(buffer(), runparams, label(0));
+		ms << xml::cleanID(label(0));
 	else
-		ms << sgml::uniqueID(from_ascii("anon"));
+		ms << xml::uniqueID(from_ascii("anon"));
 
 	if (runparams.flavor == OutputParams::XML)
 		ms << from_ascii("\"/>");
@@ -2585,7 +2585,7 @@ void InsetMathHull::mathAsLatex(WriteStream & os) const
 }
 
 
-docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
+docstring InsetMathHull::xhtml(XMLStream & xs, OutputParams const & op) const
 {
 	BufferParams::MathOutput const mathtype =
 		buffer().masterBuffer()->params().html_math_output;
@@ -2611,14 +2611,14 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		} catch (MathExportException const &) {}
 		if (success) {
 			if (getType() == hullSimple)
-				xs << html::StartTag("math",
+				xs << xml::StartTag("math",
 							"xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
 			else
-				xs << html::StartTag("math",
+				xs << xml::StartTag("math",
 				      "display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
-			xs << XHTMLStream::ESCAPE_NONE
+			xs << XMLStream::ESCAPE_NONE
 				 << os.str()
-				 << html::EndTag("math");
+				 << xml::EndTag("math");
 		}
 	} else if (mathtype == BufferParams::HTML) {
 		odocstringstream os;
@@ -2629,10 +2629,10 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		} catch (MathExportException const &) {}
 		if (success) {
 			string const tag = (getType() == hullSimple) ? "span" : "div";
-			xs << html::StartTag(tag, "class='formula'", true)
-			   << XHTMLStream::ESCAPE_NONE
+			xs << xml::StartTag(tag, "class='formula'", true)
+			   << XMLStream::ESCAPE_NONE
 			   << os.str()
-			   << html::EndTag(tag);
+			   << xml::EndTag(tag);
 		}
 	}
 
@@ -2672,11 +2672,11 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 			}
 
 			string const tag = (getType() == hullSimple) ? "span" : "div";
-			xs << html::CR()
-			   << html::StartTag(tag, "style = \"text-align: center;\"")
-				 << html::CompTag("img", "src=\"" + filename + "\" alt=\"Mathematical Equation\"")
-				 << html::EndTag(tag)
-				 << html::CR();
+			xs << xml::CR()
+			   << xml::StartTag(tag, "style = \"text-align: center;\"")
+				 << xml::CompTag("img", "src=\"" + filename + "\" alt=\"Mathematical Equation\"")
+				 << xml::EndTag(tag)
+				 << xml::CR();
 			success = true;
 		}
 	}
@@ -2699,10 +2699,10 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		// FIXME XHTML
 		// probably should allow for some kind of customization here
 		string const tag = (getType() == hullSimple) ? "span" : "div";
-		xs << html::StartTag(tag, "class='math'")
+		xs << xml::StartTag(tag, "class='math'")
 		   << latex
-		   << html::EndTag(tag)
-		   << html::CR();
+		   << xml::EndTag(tag)
+		   << xml::CR();
 	}
 	return docstring();
 }

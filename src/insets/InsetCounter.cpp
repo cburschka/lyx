@@ -17,7 +17,7 @@
 #include "LaTeXFeatures.h"
 #include "OutputParams.h"
 #include "output_xhtml.h"
-#include "sgml.h"
+#include "xml.h"
 #include "texstream.h"
 #include "TextClass.h"
 
@@ -194,7 +194,7 @@ int InsetCounter::docbook(odocstream &, OutputParams const &) const
 }
 
 
-docstring InsetCounter::xhtml(XHTMLStream &, OutputParams const &) const
+docstring InsetCounter::xhtml(XMLStream &, OutputParams const &) const
 {
 	// Here, we need to track counter values ourselves,
 	// since unlike in the LaTeX case, there is no external

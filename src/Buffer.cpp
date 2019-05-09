@@ -57,7 +57,7 @@
 #include "PDFOptions.h"
 #include "Session.h"
 #include "SpellChecker.h"
-#include "sgml.h"
+#include "xml.h"
 #include "texstream.h"
 #include "TexRow.h"
 #include "Text.h"
@@ -2195,13 +2195,13 @@ Buffer::ExportStatus Buffer::writeDocBookSource(odocstream & os, string const & 
 
 		params().documentClass().counters().reset();
 
-		sgml::openTag(os, top);
+		xml::openTag(os, top);
 		os << '\n';
 		try {
 			docbookParagraphs(text(), *this, os, runparams);
 		}
 		catch (ConversionException const &) { return ExportKilled; }
-		sgml::closeTag(os, top_element);
+		xml::closeTag(os, top_element);
 	}
 	return ExportSuccess;
 }
@@ -2259,7 +2259,7 @@ Buffer::ExportStatus Buffer::writeLyXHTMLSource(odocstream & os,
 		os << "<title>"
 		   << (doctitle.empty() ?
 		         from_ascii("LyX Document") :
-		         html::htmlize(doctitle, XHTMLStream::ESCAPE_ALL))
+		         xml::xmlize(doctitle, XMLStream::ESCAPE_ALL))
 		   << "</title>\n";
 
 		docstring styles = features.getTClassHTMLPreamble();
@@ -2325,7 +2325,7 @@ Buffer::ExportStatus Buffer::writeLyXHTMLSource(odocstream & os,
 		bool const output_body_tag = (output != IncludedFile);
 		if (output_body_tag)
 			os << "<body dir=\"auto\">\n";
-		XHTMLStream xs(os);
+		XMLStream xs(os);
 		if (output != IncludedFile)
 			// if we're an included file, the counters are in the master.
 			params().documentClass().counters().reset();
@@ -4123,7 +4123,7 @@ unique_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 			par.write(ods, params(), dt);
 			os << from_utf8(ods.str());
 		} else if (runparams.flavor == OutputParams::HTML) {
-			XHTMLStream xs(os);
+			XMLStream xs(os);
 			setMathFlavor(runparams);
 			xhtmlParagraphs(text(), *this, xs, runparams);
 		} else if (runparams.flavor == OutputParams::TEXT) {

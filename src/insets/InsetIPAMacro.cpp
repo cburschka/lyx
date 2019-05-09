@@ -312,7 +312,7 @@ int InsetIPADeco::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-docstring InsetIPADeco::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
+docstring InsetIPADeco::xhtml(XMLStream & xs, OutputParams const & runparams) const
 {
 	// FIXME: Like in plaintext, the combining characters "&#x361;" (toptiebar)
 	// or "&#x35c;" (bottomtiebar) would need to be inserted just in the mid
@@ -556,29 +556,29 @@ int InsetIPAChar::docbook(odocstream & /*os*/, OutputParams const &) const
 }
 
 
-docstring InsetIPAChar::xhtml(XHTMLStream & xs, OutputParams const &) const
+docstring InsetIPAChar::xhtml(XMLStream & xs, OutputParams const &) const
 {
 	switch (kind_) {
 	case TONE_FALLING:
-		xs << XHTMLStream::ESCAPE_NONE << "&#x2e5;"
-		   << XHTMLStream::ESCAPE_NONE << "&#x2e9;";
+		xs << XMLStream::ESCAPE_NONE << "&#x2e5;"
+		   << XMLStream::ESCAPE_NONE << "&#x2e9;";
 		break;
 	case TONE_RISING:
-		xs << XHTMLStream::ESCAPE_NONE << "&#x2e9;"
-		   << XHTMLStream::ESCAPE_NONE << "&#x2e5;";
+		xs << XMLStream::ESCAPE_NONE << "&#x2e9;"
+		   << XMLStream::ESCAPE_NONE << "&#x2e5;";
 		break;
 	case TONE_HIGH_RISING:
-		xs << XHTMLStream::ESCAPE_NONE << "&#x2e7;"
-		   << XHTMLStream::ESCAPE_NONE << "&#x2e5;";
+		xs << XMLStream::ESCAPE_NONE << "&#x2e7;"
+		   << XMLStream::ESCAPE_NONE << "&#x2e5;";
 		break;
 	case TONE_LOW_RISING:
-		xs << XHTMLStream::ESCAPE_NONE << "&#x2e9;"
-		   << XHTMLStream::ESCAPE_NONE << "&#x2e7;";
+		xs << XMLStream::ESCAPE_NONE << "&#x2e9;"
+		   << XMLStream::ESCAPE_NONE << "&#x2e7;";
 		break;
 	case TONE_HIGH_RISING_FALLING:
-		xs << XHTMLStream::ESCAPE_NONE << "&#x2e8;"
-		   << XHTMLStream::ESCAPE_NONE << "&#x2e5;"
-		   << XHTMLStream::ESCAPE_NONE << "&#x2e8;";
+		xs << XMLStream::ESCAPE_NONE << "&#x2e8;"
+		   << XMLStream::ESCAPE_NONE << "&#x2e5;"
+		   << XMLStream::ESCAPE_NONE << "&#x2e8;";
 		break;
 	}
 	return docstring();

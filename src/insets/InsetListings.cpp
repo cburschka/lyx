@@ -433,21 +433,21 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-docstring InsetListings::xhtml(XHTMLStream & os, OutputParams const & rp) const
+docstring InsetListings::xhtml(XMLStream & os, OutputParams const & rp) const
 {
 	odocstringstream ods;
-	XHTMLStream out(ods);
+	XMLStream out(ods);
 
 	bool const isInline = params().isInline();
 	if (isInline)
-		out << html::CompTag("br");
+		out << xml::CompTag("br");
 	else {
-		out << html::StartTag("div", "class='float-listings'");
+		out << xml::StartTag("div", "class='float-listings'");
 		docstring caption = getCaptionHTML(rp);
 		if (!caption.empty())
-			out << html::StartTag("div", "class='listings-caption'")
-			    << XHTMLStream::ESCAPE_NONE
-			    << caption << html::EndTag("div");
+			out << xml::StartTag("div", "class='listings-caption'")
+			    << XMLStream::ESCAPE_NONE
+			    << caption << xml::EndTag("div");
 	}
 
 	InsetLayout const & il = getLayout();
@@ -457,21 +457,21 @@ docstring InsetListings::xhtml(XHTMLStream & os, OutputParams const & rp) const
 	if (!lang.empty())
 		attr += " " + lang;
 	attr += "'";
-	out << html::StartTag(tag, attr);
+	out << xml::StartTag(tag, attr);
 	OutputParams newrp = rp;
 	newrp.html_disable_captions = true;
 	// We don't want to convert dashes here. That's the only conversion we
 	// do for XHTML, so this is safe.
 	newrp.pass_thru = true;
 	docstring def = InsetText::insetAsXHTML(out, newrp, InsetText::JustText);
-	out << html::EndTag(tag);
+	out << xml::EndTag(tag);
 
 	if (isInline) {
-		out << html::CompTag("br");
+		out << xml::CompTag("br");
 		// escaping will already have been done
-		os << XHTMLStream::ESCAPE_NONE << ods.str();
+		os << XMLStream::ESCAPE_NONE << ods.str();
 	} else {
-		out << html::EndTag("div");
+		out << xml::EndTag("div");
 		// In this case, this needs to be deferred, but we'll put it
 		// before anything the text itself deferred.
 		def = ods.str() + '\n' + def;

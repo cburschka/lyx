@@ -64,7 +64,7 @@ class ParIterator;
 class Text;
 class TocBackend;
 class TocList;
-class XHTMLStream;
+class XMLStream;
 class otexstream;
 
 namespace graphics { class PreviewLoader; }
@@ -343,11 +343,11 @@ public:
 	/// docbook output
 	virtual int docbook(odocstream & os, OutputParams const &) const;
 	/// XHTML output
-	/// the inset is expected to write XHTML to the XHTMLStream
+	/// the inset is expected to write XHTML to the XMLStream
 	/// \return any "deferred" material that should be written outside the
 	/// normal stream, and which will in fact be written after the current
 	/// paragraph closes. this is appropriate e.g. for floats.
-	virtual docstring xhtml(XHTMLStream & xs, OutputParams const &) const;
+	virtual docstring xhtml(XMLStream &, OutputParams const &) const;
 
 	/// Writes a string representation of the inset to the odocstream.
 	/// This one should be called when you want the whole contents of

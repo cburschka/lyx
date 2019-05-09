@@ -22,7 +22,7 @@
 #include "LaTeXFeatures.h"
 #include "OutputParams.h"
 #include "output_xhtml.h"
-#include "sgml.h"
+#include "xml.h"
 #include "texstream.h"
 
 #include "support/docstream.h"
@@ -218,20 +218,20 @@ int InsetHyperlink::docbook(odocstream & os, OutputParams const &) const
 	os << "<ulink url=\""
 	   << subst(getParam("target"), from_ascii("&"), from_ascii("&amp;"))
 	   << "\">"
-	   << sgml::escapeString(getParam("name"))
+	   << xml::escapeString(getParam("name"))
 	   << "</ulink>";
 	return 0;
 }
 
 
-docstring InsetHyperlink::xhtml(XHTMLStream & xs, OutputParams const &) const
+docstring InsetHyperlink::xhtml(XMLStream & xs, OutputParams const &) const
 {
 	docstring const & target =
-		html::htmlize(getParam("target"), XHTMLStream::ESCAPE_AND);
+		xml::xmlize(getParam("target"), XMLStream::ESCAPE_AND);
 	docstring const & name   = getParam("name");
-	xs << html::StartTag("a", to_utf8("href=\"" + target + "\""));
+	xs << xml::StartTag("a", to_utf8("href=\"" + target + "\""));
 	xs << (name.empty() ? target : name);
-	xs << html::EndTag("a");
+	xs << xml::EndTag("a");
 	return docstring();
 }
 

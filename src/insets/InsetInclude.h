@@ -96,7 +96,7 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
-	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///
@@ -159,8 +159,8 @@ private:
 	/// get the text displayed on the button
 	docstring screenLabel() const;
 	//@}
-
-	/// holds the entity name that defines the file location (SGML)
+	
+	/// holds the entity name that defines the file location (XML)
 	docstring const include_label;
 
 	/// The pointer never changes although *preview_'s contents may.

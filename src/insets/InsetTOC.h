@@ -46,7 +46,7 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
-	docstring xhtml(XHTMLStream & xs, OutputParams const &) const;
+	docstring xhtml(XMLStream & xs, OutputParams const &) const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
@@ -65,11 +65,11 @@ public:
 
 private:
 	///
-	void makeTOCWithDepth(XHTMLStream & xs, Toc const & toc, const OutputParams & op) const;
+	void makeTOCWithDepth(XMLStream & xs, Toc const & toc, const OutputParams & op) const;
 	///
-	void makeTOCNoDepth(XHTMLStream & xs, Toc const & toc, const OutputParams & op) const;
+	void makeTOCNoDepth(XMLStream & xs, Toc const & toc, const OutputParams & op) const;
 	///
-	void makeTOCEntry(XHTMLStream & xs, Paragraph const & par, OutputParams const & op) const;
+	void makeTOCEntry(XMLStream & xs, Paragraph const & par, OutputParams const & op) const;
 
 	/// \name Private functions inherited from Inset class
 	//@{

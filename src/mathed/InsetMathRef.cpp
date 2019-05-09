@@ -24,7 +24,7 @@
 #include "MathSupport.h"
 #include "OutputParams.h"
 #include "ParIterator.h"
-#include "sgml.h"
+#include "xml.h"
 
 #include "insets/InsetCommand.h"
 
@@ -186,14 +186,14 @@ int InsetMathRef::docbook(odocstream & os, OutputParams const & runparams) const
 {
 	if (cell(1).empty()) {
 		os << "<xref linkend=\""
-		   << sgml::cleanID(buffer(), runparams, asString(cell(0)));
+		   << xml::cleanID(asString(cell(0)));
 		if (runparams.flavor == OutputParams::XML)
 			os << "\"/>";
 		else
 			os << "\">";
 	} else {
 		os << "<link linkend=\""
-		   << sgml::cleanID(buffer(), runparams, asString(cell(0)))
+		   << xml::cleanID(asString(cell(0)))
 		   << "\">"
 		   << asString(cell(1))
 		   << "</link>";

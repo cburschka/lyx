@@ -172,7 +172,7 @@ SOURCEFILESCORE = \
 	RowPainter.cpp \
 	Server.cpp \
 	ServerSocket.cpp \
-	sgml.cpp \
+	xml.cpp \
 	Session.cpp \
 	Spacing.cpp \
 	TexRow.cpp \
@@ -279,7 +279,7 @@ HEADERFILESCORE = \
 	Server.h \
 	ServerSocket.h \
 	Session.h \
-	sgml.h \
+	xml.h \
 	Spacing.h \
 	SpellChecker.h \
 	TexRow.h \

@@ -50,7 +50,7 @@ class PainterInfo;
 class ParagraphParameters;
 class TocBackend;
 class WordLangTuple;
-class XHTMLStream;
+class XMLStream;
 class otexstream;
 
 class FontSpan {
@@ -203,7 +203,7 @@ public:
 	pos_type firstWordDocBook(odocstream & os, OutputParams const & runparams) const;
 
 	/// Output the first word of a paragraph, return the position where it left.
-	pos_type firstWordLyXHTML(XHTMLStream & xs, OutputParams const & runparams) const;
+	pos_type firstWordLyXHTML(XMLStream & xs, OutputParams const & runparams) const;
 
 	/// Writes to stream the docbook representation
 	void simpleDocBookOnePar(Buffer const & buf,
@@ -211,10 +211,11 @@ public:
 				 OutputParams const & runparams,
 				 Font const & outerfont,
 				 pos_type initial = 0) const;
+
 	/// \return any material that has had to be deferred until after the
 	/// paragraph has closed.
 	docstring simpleLyXHTMLOnePar(Buffer const & buf,
-				 XHTMLStream & xs,
+				 XMLStream & xs,
 				 OutputParams const & runparams,
 				 Font const & outerfont,
 				 bool start_paragraph = true,

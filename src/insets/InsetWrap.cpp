@@ -217,17 +217,17 @@ int InsetWrap::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-docstring InsetWrap::xhtml(XHTMLStream & xs, OutputParams const & rp) const
+docstring InsetWrap::xhtml(XMLStream & xs, OutputParams const & rp) const
 {
 	string const len = params_.width.asHTMLString();
 	string const width = len.empty() ? "50%" : len;
 	InsetLayout const & il = getLayout();
 	string const & tag = il.htmltag();
 	string const attr = il.htmlattr() + " style='width:" + width + ";'";
-	xs << html::StartTag(tag, attr);
+	xs << xml::StartTag(tag, attr);
 	docstring const deferred =
 		InsetText::insetAsXHTML(xs, rp, InsetText::WriteInnerTag);
-	xs << html::EndTag(tag);
+	xs << xml::EndTag(tag);
 	return deferred;
 }
 

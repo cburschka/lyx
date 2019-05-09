@@ -937,7 +937,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const & rp) const
+docstring InsetInclude::xhtml(XMLStream & xs, OutputParams const & rp) const
 {
 	if (rp.inComment)
 		 return docstring();
@@ -947,11 +947,11 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 	bool const listing = isListings(params());
 	if (listing || isVerbatim(params())) {
 		if (listing)
-			xs << html::StartTag("pre");
+			xs << xml::StartTag("pre");
 		// FIXME: We don't know the encoding of the file, default to UTF-8.
 		xs << includedFileName(buffer(), params()).fileContents("UTF-8");
 		if (listing)
-			xs << html::EndTag("pre");
+			xs << xml::EndTag("pre");
 		return docstring();
 	}
 
@@ -988,10 +988,10 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 		op.par_end = 0;
 		ibuf->writeLyXHTMLSource(xs.os(), op, Buffer::IncludedFile);
 	} else
-		xs << XHTMLStream::ESCAPE_NONE
+		xs << XMLStream::ESCAPE_NONE
 		   << "<!-- Included file: "
 		   << from_utf8(included_file.absFileName())
-		   << XHTMLStream::ESCAPE_NONE
+		   << XMLStream::ESCAPE_NONE
 			 << " -->";
 	
 	return docstring();

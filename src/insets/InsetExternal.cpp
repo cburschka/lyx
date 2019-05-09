@@ -33,6 +33,7 @@
 #include "output_latex.h"
 #include "output_xhtml.h"
 #include "texstream.h"
+#include "xml.h"
 #include "TocBackend.h"
 
 #include "frontends/alert.h"
@@ -789,7 +790,7 @@ int InsetExternal::docbook(odocstream & os,
 }
 
 
-docstring InsetExternal::xhtml(XHTMLStream & xs,
+docstring InsetExternal::xhtml(XMLStream & xs,
 			OutputParams const & runparams) const
 {
 	bool const external_in_tmpdir = !runparams.nice;
@@ -804,7 +805,7 @@ docstring InsetExternal::xhtml(XHTMLStream & xs,
 		if (buffer().isClone() && buffer().isExporting())
 			throw ConversionException();
 	}
-	xs << XHTMLStream::ESCAPE_NONE << ods.str();
+	xs << XMLStream::ESCAPE_NONE << ods.str();
 	return docstring();
 }
 

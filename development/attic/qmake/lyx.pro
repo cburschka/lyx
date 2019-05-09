@@ -125,7 +125,7 @@ SOURCES += \
 ../../src/Server.cpp \
 ../../src/ServerSocket.cpp \
 ../../src/Session.cpp \
-../../src/sgml.cpp \
+../../src/xml.cpp \
 ../../src/Spacing.cpp \
 ../../src/TexRow.cpp \
 ../../src/TexStream.cpp \
@@ -476,7 +476,7 @@ HEADERS += \
 ../../src/Server.h \
 ../../src/ServerSocket.h \
 ../../src/Session.h \
-../../src/sgml.h \
+../../src/xml.h \
 ../../src/Spacing.h \
 ../../src/TexRow.h \
 ../../src/TexStream.h \

@@ -83,7 +83,7 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
-	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///
 	enum XHTMLOptions {
 		JustText = 0,
@@ -93,7 +93,7 @@ public:
 		WriteEverything = 7
 	};
 	///
-	docstring insetAsXHTML(XHTMLStream &, OutputParams const &,
+	docstring insetAsXHTML(XMLStream &, OutputParams const &,
 	                       XHTMLOptions) const;
 	///
 	void validate(LaTeXFeatures & features) const;

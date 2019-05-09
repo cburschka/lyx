@@ -50,7 +50,7 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	/// Does nothing at the moment.
-	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const;
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes
@@ -94,7 +94,7 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
-	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///
 	InsetCode lyxCode() const;
 	///

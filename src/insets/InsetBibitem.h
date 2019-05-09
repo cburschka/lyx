@@ -58,7 +58,7 @@ public:
 	int plaintext(odocstringstream &, OutputParams const &,
 	              size_t max_length = INT_MAX) const;
 	///
-	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///
 	void collectBibKeys(InsetIterator const &, support::FileNameList &) const;
 	/// update the counter of this inset

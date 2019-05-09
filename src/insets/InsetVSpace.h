@@ -56,7 +56,7 @@ private:
 	/// The normal case is that this inset will be on a line by
 	/// itself, and in that case the present paragraph will not,
 	/// in fact, appear at all.
-	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///
 	void read(Lexer & lex);
 	///

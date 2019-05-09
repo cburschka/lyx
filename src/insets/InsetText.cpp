@@ -45,7 +45,7 @@
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
 #include "Row.h"
-#include "sgml.h"
+#include "xml.h"
 #include "TexRow.h"
 #include "texstream.h"
 #include "TextClass.h"
@@ -590,19 +590,19 @@ int InsetText::docbook(odocstream & os, OutputParams const & runparams) const
 	ParagraphList::const_iterator const beg = paragraphs().begin();
 
 	if (!undefined())
-		sgml::openTag(os, getLayout().latexname(),
+		xml::openTag(os, getLayout().latexname(),
 			      beg->getID(buffer(), runparams) + getLayout().latexparam());
 
 	docbookParagraphs(text_, buffer(), os, runparams);
 
 	if (!undefined())
-		sgml::closeTag(os, getLayout().latexname());
+		xml::closeTag(os, getLayout().latexname());
 
 	return 0;
 }
 
 
-docstring InsetText::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
+docstring InsetText::xhtml(XMLStream & xs, OutputParams const & runparams) const
 {
 	return insetAsXHTML(xs, runparams, WriteEverything);
 }
@@ -621,7 +621,7 @@ docstring InsetText::xhtml(XHTMLStream & xs, OutputParams const & runparams) con
 // if so, try to close fonts, etc.
 // There are probably limits to how well we can do here, though, and we will
 // have to rely upon users not putting footnotes inside noun-type insets.
-docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & rp,
+docstring InsetText::insetAsXHTML(XMLStream & xs, OutputParams const & rp,
                                   XHTMLOptions opts) const
 {
 	// we will always want to output all our paragraphs when we are
@@ -639,7 +639,7 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & rp,
 
 	InsetLayout const & il = getLayout();
 	if (opts & WriteOuterTag)
-		xs << html::StartTag(il.htmltag(), il.htmlattr());
+		xs << xml::StartTag(il.htmltag(), il.htmlattr());
 
 	if ((opts & WriteLabel) && !il.counter().empty()) {
 		BufferParams const & bp = buffer().masterBuffer()->params();
@@ -651,15 +651,15 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & rp,
 				cntrs.counterLabel(from_utf8(il.htmllabel()), bp.language->code());
 			// FIXME is this check necessary?
 			if (!lbl.empty()) {
-				xs << html::StartTag(il.htmllabeltag(), il.htmllabelattr());
+				xs << xml::StartTag(il.htmllabeltag(), il.htmllabelattr());
 				xs << lbl;
-				xs << html::EndTag(il.htmllabeltag());
+				xs << xml::EndTag(il.htmllabeltag());
 			}
 		}
 	}
 
 	if (opts & WriteInnerTag)
-		xs << html::StartTag(il.htmlinnertag(), il.htmlinnerattr());
+		xs << xml::StartTag(il.htmlinnertag(), il.htmlinnerattr());
 
 	// we will eventually lose information about the containing inset
 	if (!allowMultiPar() || opts == JustText)
@@ -672,10 +672,10 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & rp,
 	xs.endDivision();
 
 	if (opts & WriteInnerTag)
-		xs << html::EndTag(il.htmlinnertag());
+		xs << xml::EndTag(il.htmlinnertag());
 
 	if (opts & WriteOuterTag)
-		xs << html::EndTag(il.htmltag());
+		xs << xml::EndTag(il.htmltag());
 
 	return docstring();
 }

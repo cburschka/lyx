@@ -1263,7 +1263,7 @@ int InsetMathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) 
 }
 
 
-docstring InsetMathMacroTemplate::xhtml(XHTMLStream &, OutputParams const &) const
+docstring InsetMathMacroTemplate::xhtml(XMLStream &, OutputParams const &) const
 {
 	return docstring();
 }

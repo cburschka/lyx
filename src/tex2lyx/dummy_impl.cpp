@@ -114,4 +114,10 @@ string alignmentToCSS(LyXAlignment)
 void lyx_exit(int)
 {}
 
+namespace xml {
+docstring StartTag::writeTag() const { return docstring(); }
+docstring StartTag::writeEndTag() const { return docstring(); }
+bool StartTag::operator==(FontTag const & rhs) const { return rhs == *this; }
+}
+
 } // namespace lyx

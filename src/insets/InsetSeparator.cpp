@@ -174,9 +174,9 @@ int InsetSeparator::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-docstring InsetSeparator::xhtml(XHTMLStream & xs, OutputParams const &) const
+docstring InsetSeparator::xhtml(XMLStream & xs, OutputParams const &) const
 {
-	xs << html::CR() << html::CompTag("br") << html::CR();
+	xs << xml::CR() << xml::CompTag("br") << xml::CR();
 	return docstring();
 }
 

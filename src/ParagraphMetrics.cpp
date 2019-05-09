@@ -31,7 +31,7 @@
 #include "LyXRC.h"
 #include "Row.h"
 #include "OutputParams.h"
-#include "sgml.h"
+#include "xml.h"
 #include "TextClass.h"
 #include "TexRow.h"
 

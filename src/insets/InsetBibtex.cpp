@@ -28,6 +28,7 @@
 #include "LaTeXFeatures.h"
 #include "output_latex.h"
 #include "output_xhtml.h"
+#include "xml.h"
 #include "OutputParams.h"
 #include "PDFOptions.h"
 #include "texstream.h"
@@ -1008,7 +1009,7 @@ int InsetBibtex::plaintext(odocstringstream & os,
 		refoutput += "[" + entry.label() + "] ";
 		// FIXME Right now, we are calling BibInfo::getInfo on the key,
 		// which will give us all the cross-referenced info. But for every
-		// entry, so there's a lot of repitition. This should be fixed.
+		// entry, so there's a lot of repetition. This should be fixed.
 		refoutput += bibinfo.getInfo(entry.key(), buffer(), ci) + "\n\n";
 	}
 	os << refoutput;
@@ -1019,7 +1020,7 @@ int InsetBibtex::plaintext(odocstringstream & os,
 // FIXME
 // docstring InsetBibtex::entriesAsXHTML(vector<docstring> const & entries)
 // And then here just: entriesAsXHTML(buffer().masterBibInfo().citedEntries())
-docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
+docstring InsetBibtex::xhtml(XMLStream & xs, OutputParams const &) const
 {
 	BiblioInfo const & bibinfo = buffer().masterBibInfo();
 	bool const all_entries = getParam("btprint") == "btPrintAll";
@@ -1034,10 +1035,10 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 	ci.richtext = true;
 	ci.max_key_size = UINT_MAX;
 
-	xs << html::StartTag("h2", "class='bibtex'")
+	xs << xml::StartTag("h2", "class='bibtex'")
 		<< reflabel
-		<< html::EndTag("h2")
-		<< html::StartTag("div", "class='bibtex'");
+		<< xml::EndTag("h2")
+		<< xml::StartTag("div", "class='bibtex'");
 
 	// Now we loop over the entries
 	vector<docstring>::const_iterator vit = cites.begin();
@@ -1049,27 +1050,27 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 
 		BibTeXInfo const & entry = biit->second;
 		string const attr = "class='bibtexentry' id='LyXCite-"
-		    + to_utf8(html::cleanAttr(entry.key())) + "'";
-		xs << html::StartTag("div", attr);
+		    + to_utf8(xml::cleanAttr(entry.key())) + "'";
+		xs << xml::StartTag("div", attr);
 
 		// don't print labels if we're outputting all entries
 		if (!all_entries) {
-			xs << html::StartTag("span", "class='bibtexlabel'")
+			xs << xml::StartTag("span", "class='bibtexlabel'")
 				<< entry.label()
-				<< html::EndTag("span");
+				<< xml::EndTag("span");
 		}
 
 		// FIXME Right now, we are calling BibInfo::getInfo on the key,
 		// which will give us all the cross-referenced info. But for every
 		// entry, so there's a lot of repitition. This should be fixed.
-		xs << html::StartTag("span", "class='bibtexinfo'")
-		   << XHTMLStream::ESCAPE_AND
+		xs << xml::StartTag("span", "class='bibtexinfo'")
+		   << XMLStream::ESCAPE_AND
 		   << bibinfo.getInfo(entry.key(), buffer(), ci)
-		   << html::EndTag("span")
-		   << html::EndTag("div")
-		   << html::CR();
+		   << xml::EndTag("span")
+		   << xml::EndTag("div")
+		   << xml::CR();
 	}
-	xs << html::EndTag("div");
+	xs << xml::EndTag("div");
 	return docstring();
 }
 

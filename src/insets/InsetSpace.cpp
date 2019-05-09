@@ -762,7 +762,7 @@ int InsetSpace::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-docstring InsetSpace::xhtml(XHTMLStream & xs, OutputParams const &) const
+docstring InsetSpace::xhtml(XMLStream & xs, OutputParams const &) const
 {
 	string output;
 	switch (params_.kind) {
@@ -822,7 +822,7 @@ docstring InsetSpace::xhtml(XHTMLStream & xs, OutputParams const &) const
 		break;
 	}
 	// don't escape the entities!
-	xs << XHTMLStream::ESCAPE_NONE << from_ascii(output);
+	xs << XMLStream::ESCAPE_NONE << from_ascii(output);
 	return docstring();
 }
 

@@ -551,31 +551,31 @@ int InsetSpecialChar::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-docstring InsetSpecialChar::xhtml(XHTMLStream & xs, OutputParams const &) const
+docstring InsetSpecialChar::xhtml(XMLStream & xs, OutputParams const &) const
 {
 	switch (kind_) {
 	case HYPHENATION:
 		break;
 	case ALLOWBREAK:
-		xs << XHTMLStream::ESCAPE_NONE << "&#8203;";
+		xs << XMLStream::ESCAPE_NONE << "&#8203;";
 		break;
 	case LIGATURE_BREAK:
-		xs << XHTMLStream::ESCAPE_NONE << "&#8204;";
+		xs << XMLStream::ESCAPE_NONE << "&#8204;";
 		break;
 	case END_OF_SENTENCE:
 		xs << '.';
 		break;
 	case LDOTS:
-		xs << XHTMLStream::ESCAPE_NONE << "&hellip;";
+		xs << XMLStream::ESCAPE_NONE << "&hellip;";
 		break;
 	case MENU_SEPARATOR:
-		xs << XHTMLStream::ESCAPE_NONE << "&rArr;";
+		xs << XMLStream::ESCAPE_NONE << "&rArr;";
 		break;
 	case SLASH:
-		xs << XHTMLStream::ESCAPE_NONE << "&frasl;";
+		xs << XMLStream::ESCAPE_NONE << "&frasl;";
 		break;
 	case NOBREAKDASH:
-		xs << XHTMLStream::ESCAPE_NONE << "&#8209;";
+		xs << XMLStream::ESCAPE_NONE << "&#8209;";
 		break;
 	case PHRASE_LYX:
 		xs << "LyX";
@@ -584,7 +584,7 @@ docstring InsetSpecialChar::xhtml(XHTMLStream & xs, OutputParams const &) const
 		xs << "TeX";
 		break;
 	case PHRASE_LATEX2E:
-		xs << "LaTeX2" << XHTMLStream::ESCAPE_NONE << "&#x3b5;";
+		xs << "LaTeX2" << XMLStream::ESCAPE_NONE << "&#x3b5;";
 		break;
 	case PHRASE_LATEX:
 		xs << "LaTeX";

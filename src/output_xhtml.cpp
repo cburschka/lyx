@@ -24,7 +24,7 @@
 #include "Paragraph.h"
 #include "ParagraphList.h"
 #include "ParagraphParameters.h"
-#include "sgml.h"
+#include "xml.h"
 #include "Text.h"
 #include "TextClass.h"
 
@@ -44,212 +44,102 @@ using namespace lyx::support;
 
 namespace lyx {
 
-namespace html {
 
-docstring escapeChar(char_type c, XHTMLStream::EscapeSettings e)
+docstring const & fontToHtmlTag(xml::FontTypes type)
 {
-	docstring str;
-	switch (e) {
-	case XHTMLStream::ESCAPE_NONE:
-		str += c;
-		break;
-	case XHTMLStream::ESCAPE_ALL:
-		if (c == '<') {
-			str += "&lt;";
-			break;
-		} else if (c == '>') {
-			str += "&gt;";
-			break;
-		}
-	// fall through
-	case XHTMLStream::ESCAPE_AND:
-		if (c == '&')
-			str += "&amp;";
-		else
-			str	+=c ;
-		break;
-	}
-	return str;
+    switch(type) {
+        case xml::FontTypes::FT_EMPH:
+            return from_utf8("em");
+        case xml::FontTypes::FT_BOLD:
+            return from_utf8("b");
+        case xml::FontTypes::FT_NOUN:
+            return from_utf8("dfn");
+        case xml::FontTypes::FT_UBAR:
+        case xml::FontTypes::FT_WAVE:
+        case xml::FontTypes::FT_DBAR:
+            return from_utf8("u");
+        case xml::FontTypes::FT_SOUT:
+        case xml::FontTypes::FT_XOUT:
+            return from_utf8("del");
+        case xml::FontTypes::FT_ITALIC:
+            return from_utf8("i");
+        case xml::FontTypes::FT_UPRIGHT:
+        case xml::FontTypes::FT_SLANTED:
+        case xml::FontTypes::FT_SMALLCAPS:
+        case xml::FontTypes::FT_ROMAN:
+        case xml::FontTypes::FT_SANS:
+        case xml::FontTypes::FT_TYPE:
+        case xml::FontTypes::FT_SIZE_TINY:
+        case xml::FontTypes::FT_SIZE_SCRIPT:
+        case xml::FontTypes::FT_SIZE_FOOTNOTE:
+        case xml::FontTypes::FT_SIZE_SMALL:
+        case xml::FontTypes::FT_SIZE_NORMAL:
+        case xml::FontTypes::FT_SIZE_LARGE:
+        case xml::FontTypes::FT_SIZE_LARGER:
+        case xml::FontTypes::FT_SIZE_LARGEST:
+        case xml::FontTypes::FT_SIZE_HUGE:
+        case xml::FontTypes::FT_SIZE_HUGER:
+        case xml::FontTypes::FT_SIZE_INCREASE:
+        case xml::FontTypes::FT_SIZE_DECREASE:
+            return from_utf8("span");
+    }
+    // kill warning
+    return docstring();
 }
-
-
-// escape what needs escaping
-docstring htmlize(docstring const & str, XHTMLStream::EscapeSettings e)
-{
-	odocstringstream d;
-	docstring::const_iterator it = str.begin();
-	docstring::const_iterator en = str.end();
-	for (; it != en; ++it)
-		d << escapeChar(*it, e);
-	return d.str();
-}
-
-
-docstring escapeChar(char c, XHTMLStream::EscapeSettings e)
-{
-	LATTEST(static_cast<unsigned char>(c) < 0x80);
-	return escapeChar(static_cast<char_type>(c), e);
-}
-
-
-docstring cleanAttr(docstring const & str)
-{
-	docstring newname;
-	docstring::const_iterator it = str.begin();
-	docstring::const_iterator en = str.end();
-	for (; it != en; ++it) {
-		char_type const c = *it;
-		newname += isAlnumASCII(c) ? c : char_type('_');
-	}
-	return newname;
-}
-
-
-docstring StartTag::writeTag() const
-{
-	docstring output = '<' + from_utf8(tag_);
-	if (!attr_.empty())
-		output += ' ' + html::htmlize(from_utf8(attr_), XHTMLStream::ESCAPE_NONE);
-	output += ">";
-	return output;
-}
-
-
-docstring StartTag::writeEndTag() const
-{
-	string output = "</" + tag_ + ">";
-	return from_utf8(output);
-}
-
-
-bool StartTag::operator==(FontTag const & rhs) const
-{
-	return rhs == *this;
-}
-
-
-docstring EndTag::writeEndTag() const
-{
-	string output = "</" + tag_ + ">";
-	return from_utf8(output);
-}
-
-
-ParTag::ParTag(std::string const & tag, std::string attr,
-       std::string const & parid)
-  : StartTag(tag)
-{
-	if (!parid.empty())
-		attr += " id='" + parid + "'";
-	attr_ = attr;
-}
-
-
-docstring CompTag::writeTag() const
-{
-	docstring output = '<' + from_utf8(tag_);
-	if (!attr_.empty())
-		output += ' ' + html::htmlize(from_utf8(attr_), XHTMLStream::ESCAPE_NONE);
-	output += " />";
-	return output;
-}
-
 
 
 namespace {
 
-string fontToTag(html::FontTypes type)
+string fontToAttribute(xml::FontTypes type)
 {
 	switch(type) {
-	case FT_EMPH:
-		return "em";
-	case FT_BOLD:
-		return "b";
-	case FT_NOUN:
-		return "dfn";
-	case FT_UBAR:
-	case FT_WAVE:
-	case FT_DBAR:
-		return "u";
-	case FT_SOUT:
-	case FT_XOUT:
-		return "del";
-	case FT_ITALIC:
-		return "i";
-	case FT_UPRIGHT:
-	case FT_SLANTED:
-	case FT_SMALLCAPS:
-	case FT_ROMAN:
-	case FT_SANS:
-	case FT_TYPE:
-	case FT_SIZE_TINY:
-	case FT_SIZE_SCRIPT:
-	case FT_SIZE_FOOTNOTE:
-	case FT_SIZE_SMALL:
-	case FT_SIZE_NORMAL:
-	case FT_SIZE_LARGE:
-	case FT_SIZE_LARGER:
-	case FT_SIZE_LARGEST:
-	case FT_SIZE_HUGE:
-	case FT_SIZE_HUGER:
-	case FT_SIZE_INCREASE:
-	case FT_SIZE_DECREASE:
-		return "span";
-	}
-	// kill warning
-	return "";
-}
-
-string fontToAttribute(html::FontTypes type)
-{
-	switch(type) {
-	case FT_EMPH:
-	case FT_BOLD:
+	case xml::FontTypes::FT_EMPH:
+	case xml::FontTypes::FT_BOLD:
 		return "";
-	case FT_NOUN:
+	case xml::FontTypes::FT_NOUN:
 		return "class='lyxnoun'";
-	case FT_UBAR:
+	case xml::FontTypes::FT_UBAR:
 		return "";
-	case FT_DBAR:
+	case xml::FontTypes::FT_DBAR:
 		return "class='dline'";
-	case FT_XOUT:
-	case FT_SOUT:
+	case xml::FontTypes::FT_XOUT:
+	case xml::FontTypes::FT_SOUT:
 		return "class='strikeout'";
-	case FT_WAVE:
+	case xml::FontTypes::FT_WAVE:
 		return "class='wline'";
-	case FT_ITALIC:
+	case xml::FontTypes::FT_ITALIC:
 		return "";
-	case FT_UPRIGHT:
+	case xml::FontTypes::FT_UPRIGHT:
 		return "style='font-style:normal;'";
-	case FT_SLANTED:
+	case xml::FontTypes::FT_SLANTED:
 		return "style='font-style:oblique;'";
-	case FT_SMALLCAPS:
+	case xml::FontTypes::FT_SMALLCAPS:
 		return "style='font-variant:small-caps;'";
-	case FT_ROMAN:
+	case xml::FontTypes::FT_ROMAN:
 		return "style='font-family:serif;'";
-	case FT_SANS:
+	case xml::FontTypes::FT_SANS:
 		return "style='font-family:sans-serif;'";
-	case FT_TYPE:
+	case xml::FontTypes::FT_TYPE:
 		return "style='font-family:monospace;'";
-	case FT_SIZE_TINY:
-	case FT_SIZE_SCRIPT:
-	case FT_SIZE_FOOTNOTE:
+	case xml::FontTypes::FT_SIZE_TINY:
+	case xml::FontTypes::FT_SIZE_SCRIPT:
+	case xml::FontTypes::FT_SIZE_FOOTNOTE:
 		return "style='font-size:x-small;'";
-	case FT_SIZE_SMALL:
+	case xml::FontTypes::FT_SIZE_SMALL:
 		return "style='font-size:small;'";
-	case FT_SIZE_NORMAL:
+	case xml::FontTypes::FT_SIZE_NORMAL:
 		return "style='font-size:normal;'";
-	case FT_SIZE_LARGE:
+	case xml::FontTypes::FT_SIZE_LARGE:
 		return "style='font-size:large;'";
-	case FT_SIZE_LARGER:
-	case FT_SIZE_LARGEST:
+	case xml::FontTypes::FT_SIZE_LARGER:
+	case xml::FontTypes::FT_SIZE_LARGEST:
 		return "style='font-size:x-large;'";
-	case FT_SIZE_HUGE:
-	case FT_SIZE_HUGER:
+	case xml::FontTypes::FT_SIZE_HUGE:
+	case xml::FontTypes::FT_SIZE_HUGER:
 		return "style='font-size:xx-large;'";
-	case FT_SIZE_INCREASE:
+	case xml::FontTypes::FT_SIZE_INCREASE:
 		return "style='font-size:larger;'";
-	case FT_SIZE_DECREASE:
+	case xml::FontTypes::FT_SIZE_DECREASE:
 		return "style='font-size:smaller;'";
 	}
 	// kill warning
@@ -259,487 +149,29 @@ string fontToAttribute(html::FontTypes type)
 } // end anonymous namespace
 
 
-FontTag::FontTag(FontTypes type)
-  : StartTag(fontToTag(type), fontToAttribute(type)), font_type_(type)
-{}
-
-
-bool FontTag::operator==(StartTag const & tag) const
+xml::FontTag xhtmlStartFontTag(xml::FontTypes type)
 {
-	FontTag const * const ftag = tag.asFontTag();
-	if (!ftag)
-		return false;
-	return (font_type_ == ftag->font_type_);
+	return xml::FontTag(fontToHtmlTag(type), from_utf8(fontToAttribute(type)), type);
 }
 
 
-EndFontTag::EndFontTag(FontTypes type)
-	  : EndTag(fontToTag(type)), font_type_(type)
-{}
-
-} // namespace html
-
-
-
-////////////////////////////////////////////////////////////////
-///
-/// XHTMLStream
-///
-////////////////////////////////////////////////////////////////
-
-XHTMLStream::XHTMLStream(odocstream & os)
-  : os_(os), escape_(ESCAPE_ALL)
-{}
-
-
-#ifdef XHTML_DEBUG
-void XHTMLStream::dumpTagStack(string const & msg)
+xml::EndFontTag xhtmlEndFontTag(xml::FontTypes type)
 {
-	*this << html::CR();
-	writeError(msg);
-	*this << html::CR();
-	writeError("Tag Stack");
-	TagDeque::const_reverse_iterator it = tag_stack_.rbegin();
-	TagDeque::const_reverse_iterator en = tag_stack_.rend();
-	for (; it != en; ++it) {
-		writeError(it->get()->tag_);
-	}
-	writeError("End Tag Stack");
-	*this << html::CR();
-	writeError("Pending Tags");
-	it = pending_tags_.rbegin();
-	en = pending_tags_.rend();
-	for (; it != en; ++it) {
-		writeError(it->get()->tag_);
-	}
-	writeError("End Pending Tags");
-	*this << html::CR();
+	return xml::EndFontTag(fontToHtmlTag(type), type);
 }
-#endif
-
-
-void XHTMLStream::writeError(std::string const & s) const
-{
-	LYXERR0(s);
-	os_ << from_utf8("<!-- Output Error: " + s + " -->\n");
-}
-
-
-namespace {
-	// an illegal tag for internal use
-	static html::StartTag const parsep_tag("&LyX_parsep_tag&");
-} // namespace
-
-
-bool XHTMLStream::closeFontTags()
-{
-	if (isTagPending(parsep_tag))
-		// we haven't had any content
-		return true;
-
-#ifdef	XHTML_DEBUG
-	dumpTagStack("Beging Close Font Tags");
-#endif
-
-	// this may be a useless check, since we ought at least to have
-	// the parsep_tag. but it can't hurt too much to be careful.
-	if (tag_stack_.empty())
-		return true;
-
-	// first, we close any open font tags we can close
-	TagPtr curtag = tag_stack_.back();
-	while (curtag->asFontTag()) {
-		os_ << curtag->writeEndTag();
-		tag_stack_.pop_back();
-		// this shouldn't happen, since then the font tags
-		// weren't in any other tag.
-		LASSERT(!tag_stack_.empty(), return true);
-		curtag = tag_stack_.back();
-	}
-
-#ifdef	XHTML_DEBUG
-	dumpTagStack("End Close Font Tags");
-#endif
-
-	if (*curtag == parsep_tag)
-		return true;
-
-	// so we've hit a non-font tag.
-	writeError("Tags still open in closeFontTags(). Probably not a problem,\n"
-	           "but you might want to check these tags:");
-	TagDeque::const_reverse_iterator it = tag_stack_.rbegin();
-	TagDeque::const_reverse_iterator const en = tag_stack_.rend();
-	for (; it != en; ++it) {
-		if (**it == parsep_tag)
-			break;
-		writeError((*it)->tag_);
-	}
-	return false;
-}
-
-
-void XHTMLStream::startDivision(bool keep_empty)
-{
-	pending_tags_.push_back(makeTagPtr(html::StartTag(parsep_tag)));
-	if (keep_empty)
-		clearTagDeque();
-#ifdef	XHTML_DEBUG
-	dumpTagStack("StartDivision");
-#endif
-}
-
-
-void XHTMLStream::endDivision()
-{
-	if (isTagPending(parsep_tag)) {
-		// this case is normal. it just means we didn't have content,
-		// so the parsep_tag never got moved onto the tag stack.
-		while (!pending_tags_.empty()) {
-			// clear all pending tags up to and including the parsep tag.
-			// note that we work from the back, because we want to get rid
-			// of everything that hasn't been used.
-			TagPtr const cur_tag = pending_tags_.back();
-			pending_tags_.pop_back();
-			if (*cur_tag == parsep_tag)
-				break;
-		}
-
-#ifdef	XHTML_DEBUG
-		dumpTagStack("EndDivision");
-#endif
-
-		return;
-	}
-
-	if (!isTagOpen(parsep_tag)) {
-		writeError("No division separation tag found in endDivision().");
-		return;
-	}
-
-	// this case is also normal, if the parsep tag is the last one
-	// on the stack. otherwise, it's an error.
-	while (!tag_stack_.empty()) {
-		TagPtr const cur_tag = tag_stack_.back();
-		tag_stack_.pop_back();
-		if (*cur_tag == parsep_tag)
-			break;
-		writeError("Tag `" + cur_tag->tag_ + "' still open at end of paragraph. Closing.");
-		os_ << cur_tag->writeEndTag();
-	}
-
-#ifdef	XHTML_DEBUG
-	dumpTagStack("EndDivision");
-#endif
-}
-
-
-void XHTMLStream::clearTagDeque()
-{
-	while (!pending_tags_.empty()) {
-		TagPtr const tag = pending_tags_.front();
-		if (*tag != parsep_tag)
-			// tabs?
-			os_ << tag->writeTag();
-		tag_stack_.push_back(tag);
-		pending_tags_.pop_front();
-	}
-}
-
-
-XHTMLStream & XHTMLStream::operator<<(docstring const & d)
-{
-	clearTagDeque();
-	os_ << html::htmlize(d, escape_);
-	escape_ = ESCAPE_ALL;
-	return *this;
-}
-
-
-XHTMLStream & XHTMLStream::operator<<(const char * s)
-{
-	clearTagDeque();
-	docstring const d = from_ascii(s);
-	os_ << html::htmlize(d, escape_);
-	escape_ = ESCAPE_ALL;
-	return *this;
-}
-
-
-XHTMLStream & XHTMLStream::operator<<(char_type c)
-{
-	clearTagDeque();
-	os_ << html::escapeChar(c, escape_);
-	escape_ = ESCAPE_ALL;
-	return *this;
-}
-
-
-XHTMLStream & XHTMLStream::operator<<(char c)
-{
-	clearTagDeque();
-	os_ << html::escapeChar(c, escape_);
-	escape_ = ESCAPE_ALL;
-	return *this;
-}
-
-
-XHTMLStream & XHTMLStream::operator<<(int i)
-{
-	clearTagDeque();
-	os_ << i;
-	escape_ = ESCAPE_ALL;
-	return *this;
-}
-
-
-XHTMLStream & XHTMLStream::operator<<(EscapeSettings e)
-{
-	escape_ = e;
-	return *this;
-}
-
-
-XHTMLStream & XHTMLStream::operator<<(html::StartTag const & tag)
-{
-	if (tag.tag_.empty())
-		return *this;
-	pending_tags_.push_back(makeTagPtr(tag));
-	if (tag.keepempty_)
-		clearTagDeque();
-	return *this;
-}
-
-
-XHTMLStream & XHTMLStream::operator<<(html::ParTag const & tag)
-{
-	if (tag.tag_.empty())
-		return *this;
-	pending_tags_.push_back(makeTagPtr(tag));
-	return *this;
-}
-
-
-XHTMLStream & XHTMLStream::operator<<(html::CompTag const & tag)
-{
-	if (tag.tag_.empty())
-		return *this;
-	clearTagDeque();
-	os_ << tag.writeTag();
-	*this << html::CR();
-	return *this;
-}
-
-
-XHTMLStream & XHTMLStream::operator<<(html::FontTag const & tag)
-{
-	if (tag.tag_.empty())
-		return *this;
-	pending_tags_.push_back(makeTagPtr(tag));
-	return *this;
-}
-
-
-XHTMLStream & XHTMLStream::operator<<(html::CR const &)
-{
-	// tabs?
-	os_ << from_ascii("\n");
-	return *this;
-}
-
-
-bool XHTMLStream::isTagOpen(html::StartTag const & stag) const
-{
-	TagDeque::const_iterator sit = tag_stack_.begin();
-	TagDeque::const_iterator const sen = tag_stack_.end();
-	for (; sit != sen; ++sit)
-		if (**sit == stag)
-			return true;
-	return false;
-}
-
-
-bool XHTMLStream::isTagOpen(html::EndTag const & etag) const
-{
-	TagDeque::const_iterator sit = tag_stack_.begin();
-	TagDeque::const_iterator const sen = tag_stack_.end();
-	for (; sit != sen; ++sit)
-		if (etag == **sit)
-			return true;
-	return false;
-}
-
-
-bool XHTMLStream::isTagPending(html::StartTag const & stag) const
-{
-	TagDeque::const_iterator sit = pending_tags_.begin();
-	TagDeque::const_iterator const sen = pending_tags_.end();
-	for (; sit != sen; ++sit)
-		if (**sit == stag)
-			return true;
-	return false;
-}
-
-
-// this is complicated, because we want to make sure that
-// everything is properly nested. the code ought to make
-// sure of that, but we won't assert (yet) if we run into
-// a problem. we'll just output error messages and try our
-// best to make things work.
-XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
-{
-	if (etag.tag_.empty())
-		return *this;
-
-	// if this tag is pending, we can simply discard it.
-	if (!pending_tags_.empty()) {
-
-		if (etag == *pending_tags_.back()) {
-			// we have <tag></tag>, so we discard it and remove it
-			// from the pending_tags_.
-			pending_tags_.pop_back();
-			return *this;
-		}
-
-		// there is a pending tag that isn't the one we are trying
-		// to close.
-
-		// is this tag itself pending?
-		// non-const iterators because we may call erase().
-		TagDeque::iterator dit = pending_tags_.begin();
-		TagDeque::iterator const den = pending_tags_.end();
-		for (; dit != den; ++dit) {
-			if (etag == **dit) {
-				// it was pending, so we just erase it
-				writeError("Tried to close pending tag `" + etag.tag_
-				        + "' when other tags were pending. Last pending tag is `"
-				        + to_utf8(pending_tags_.back()->writeTag())
-				        + "'. Tag discarded.");
-				pending_tags_.erase(dit);
-				return *this;
-			}
-		}
-		// so etag isn't itself pending. is it even open?
-		if (!isTagOpen(etag)) {
-			writeError("Tried to close `" + etag.tag_
-			         + "' when tag was not open. Tag discarded.");
-			return *this;
-		}
-		// ok, so etag is open.
-		// our strategy will be as below: we will do what we need to
-		// do to close this tag.
-		string estr = "Closing tag `" + etag.tag_
-		        + "' when other tags are pending. Discarded pending tags:\n";
-		for (dit = pending_tags_.begin(); dit != den; ++dit)
-			estr += to_utf8(html::htmlize((*dit)->writeTag(), XHTMLStream::ESCAPE_ALL)) + "\n";
-		writeError(estr);
-		// clear the pending tags...
-		pending_tags_.clear();
-		// ...and then just fall through.
-	}
-
-	// make sure there are tags to be closed
-	if (tag_stack_.empty()) {
-		writeError("Tried to close `" + etag.tag_
-		         + "' when no tags were open!");
-		return *this;
-	}
-
-	// is the tag we are closing the last one we opened?
-	if (etag == *tag_stack_.back()) {
-		// output it...
-		os_ << etag.writeEndTag();
-		// ...and forget about it
-		tag_stack_.pop_back();
-		return *this;
-	}
-
-	// we are trying to close a tag other than the one last opened.
-	// let's first see if this particular tag is still open somehow.
-	if (!isTagOpen(etag)) {
-		writeError("Tried to close `" + etag.tag_
-		        + "' when tag was not open. Tag discarded.");
-		return *this;
-	}
-
-	// so the tag was opened, but other tags have been opened since
-	// and not yet closed.
-	// if it's a font tag, though...
-	if (etag.asFontTag()) {
-		// it won't be a problem if the other tags open since this one
-		// are also font tags.
-		TagDeque::const_reverse_iterator rit = tag_stack_.rbegin();
-		TagDeque::const_reverse_iterator ren = tag_stack_.rend();
-		for (; rit != ren; ++rit) {
-			if (etag == **rit)
-				break;
-			if (!(*rit)->asFontTag()) {
-				// we'll just leave it and, presumably, have to close it later.
-				writeError("Unable to close font tag `" + etag.tag_
-				        + "' due to open non-font tag `" + (*rit)->tag_ + "'.");
-				return *this;
-			}
-		}
-
-		// so we have e.g.:
-		//    <em>this is <strong>bold
-		// and are being asked to closed em. we want:
-		//    <em>this is <strong>bold</strong></em><strong>
-		// first, we close the intervening tags...
-		TagPtr curtag = tag_stack_.back();
-		// ...remembering them in a stack.
-		TagDeque fontstack;
-		while (etag != *curtag) {
-			os_ << curtag->writeEndTag();
-			fontstack.push_back(curtag);
-			tag_stack_.pop_back();
-			curtag = tag_stack_.back();
-		}
-		os_ << etag.writeEndTag();
-		tag_stack_.pop_back();
-
-		// ...and restore the other tags.
-		rit = fontstack.rbegin();
-		ren = fontstack.rend();
-		for (; rit != ren; ++rit)
-			pending_tags_.push_back(*rit);
-		return *this;
-	}
-
-	// it wasn't a font tag.
-	// so other tags were opened before this one and not properly closed.
-	// so we'll close them, too. that may cause other issues later, but it
-	// at least guarantees proper nesting.
-	writeError("Closing tag `" + etag.tag_
-	        + "' when other tags are open, namely:");
-	TagPtr curtag = tag_stack_.back();
-	while (etag != *curtag) {
-		writeError(curtag->tag_);
-		if (*curtag != parsep_tag)
-			os_ << curtag->writeEndTag();
-		tag_stack_.pop_back();
-		curtag = tag_stack_.back();
-	}
-	// curtag is now the one we actually want.
-	os_ << curtag->writeEndTag();
-	tag_stack_.pop_back();
-
-	return *this;
-}
-
-// End code for XHTMLStream
 
 namespace {
 
 // convenience functions
 
-inline void openParTag(XHTMLStream & xs, Layout const & lay,
+inline void openParTag(XMLStream & xs, Layout const & lay,
                        std::string parlabel)
 {
-	xs << html::ParTag(lay.htmltag(), lay.htmlattr(), parlabel);
+	xs << xml::ParTag(lay.htmltag(), lay.htmlattr(), parlabel);
 }
 
 
-void openParTag(XHTMLStream & xs, Layout const & lay,
+void openParTag(XMLStream & xs, Layout const & lay,
                 ParagraphParameters const & params,
                 std::string parlabel)
 {
@@ -750,35 +182,35 @@ void openParTag(XHTMLStream & xs, Layout const & lay,
 		return;
 	}
 	string attrs = lay.htmlattr() + " style='text-align: " + align + ";'";
-	xs << html::ParTag(lay.htmltag(), attrs, parlabel);
+	xs << xml::ParTag(lay.htmltag(), attrs, parlabel);
 }
 
 
-inline void closeTag(XHTMLStream & xs, Layout const & lay)
+inline void closeTag(XMLStream & xs, Layout const & lay)
 {
-	xs << html::EndTag(lay.htmltag());
+	xs << xml::EndTag(lay.htmltag());
 }
 
 
-inline void openLabelTag(XHTMLStream & xs, Layout const & lay)
+inline void openLabelTag(XMLStream & xs, Layout const & lay)
 {
-	xs << html::StartTag(lay.htmllabeltag(), lay.htmllabelattr());
+	xs << xml::StartTag(lay.htmllabeltag(), lay.htmllabelattr());
 }
 
 
-inline void closeLabelTag(XHTMLStream & xs, Layout const & lay)
+inline void closeLabelTag(XMLStream & xs, Layout const & lay)
 {
-	xs << html::EndTag(lay.htmllabeltag());
+	xs << xml::EndTag(lay.htmllabeltag());
 }
 
 
-inline void openItemTag(XHTMLStream & xs, Layout const & lay)
+inline void openItemTag(XMLStream & xs, Layout const & lay)
 {
-	xs << html::StartTag(lay.htmlitemtag(), lay.htmlitemattr(), true);
+	xs << xml::StartTag(lay.htmlitemtag(), lay.htmlitemattr(), true);
 }
 
 
-void openItemTag(XHTMLStream & xs, Layout const & lay,
+void openItemTag(XMLStream & xs, Layout const & lay,
              ParagraphParameters const & params)
 {
 	// FIXME Are there other things we should handle here?
@@ -788,13 +220,13 @@ void openItemTag(XHTMLStream & xs, Layout const & lay,
 		return;
 	}
 	string attrs = lay.htmlattr() + " style='text-align: " + align + ";'";
-	xs << html::StartTag(lay.htmlitemtag(), attrs);
+	xs << xml::StartTag(lay.htmlitemtag(), attrs);
 }
 
 
-inline void closeItemTag(XHTMLStream & xs, Layout const & lay)
+inline void closeItemTag(XMLStream & xs, Layout const & lay)
 {
-	xs << html::EndTag(lay.htmlitemtag());
+	xs << xml::EndTag(lay.htmlitemtag());
 }
 
 // end of convenience functions
@@ -844,7 +276,7 @@ ParagraphList::const_iterator findEndOfEnvironment(
 
 
 ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
-					    XHTMLStream & xs,
+					    XMLStream & xs,
 					    OutputParams const & runparams,
 					    Text const & text,
 					    ParagraphList::const_iterator const & pbegin,
@@ -861,7 +293,7 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 		// FIXME We should see if there's a label to be output and
 		// do something with it.
 		if (par != pbegin)
-			xs << html::CR();
+			xs << xml::CR();
 
 		// We want to open the paragraph tag if:
 		//   (i) the current layout permits multiple paragraphs
@@ -918,11 +350,11 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 
 		if (close_par) {
 			closeTag(xs, lay);
-			xs << html::CR();
+			xs << xml::CR();
 		}
 
 		if (!deferred.empty()) {
-			xs << XHTMLStream::ESCAPE_NONE << deferred << html::CR();
+			xs << XMLStream::ESCAPE_NONE << deferred << xml::CR();
 		}
 	}
 	return pend;
@@ -930,7 +362,7 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 
 
 ParagraphList::const_iterator makeBibliography(Buffer const & buf,
-				XHTMLStream & xs,
+				XMLStream & xs,
 				OutputParams const & runparams,
 				Text const & text,
 				ParagraphList::const_iterator const & pbegin,
@@ -938,14 +370,14 @@ ParagraphList::const_iterator makeBibliography(Buffer const & buf,
 {
 	// FIXME XHTML
 	// Use TextClass::htmlTOCLayout() to figure out how we should look.
-	xs << html::StartTag("h2", "class='bibliography'")
+	xs << xml::StartTag("h2", "class='bibliography'")
 	   << pbegin->layout().labelstring(false)
-	   << html::EndTag("h2")
-	   << html::CR()
-	   << html::StartTag("div", "class='bibliography'")
-	   << html::CR();
+	   << xml::EndTag("h2")
+	   << xml::CR()
+	   << xml::StartTag("div", "class='bibliography'")
+	   << xml::CR();
 	makeParagraphs(buf, xs, runparams, text, pbegin, pend);
-	xs << html::EndTag("div");
+	xs << xml::EndTag("div");
 	return pend;
 }
 
@@ -958,7 +390,7 @@ bool isNormalEnv(Layout const & lay)
 
 
 ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
-					      XHTMLStream & xs,
+					      XMLStream & xs,
 					      OutputParams const & runparams,
 					      Text const & text,
 					      ParagraphList::const_iterator const & pbegin,
@@ -971,7 +403,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 
 	// open tag for this environment
 	openParTag(xs, bstyle, pbegin->magicLabel());
-	xs << html::CR();
+	xs << xml::CR();
 
 	// we will on occasion need to remember a layout from before.
 	Layout const * lastlay = nullptr;
@@ -997,7 +429,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		case LATEX_ENVIRONMENT:
 		case LATEX_LIST_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
-			// There are two possiblities in this case.
+			// There are two possibilities in this case.
 			// One is that we are still in the environment in which we
 			// started---which we will be if the depth is the same.
 			if (par->params().depth() == origdepth) {
@@ -1028,20 +460,20 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 								xs << lbl;
 								closeLabelTag(xs, style);
 							}
-							xs << html::CR();
+							xs << xml::CR();
 						}
 					} else { // some kind of list
 						if (style.labeltype == LABEL_MANUAL) {
 							openLabelTag(xs, style);
 							sep = par->firstWordLyXHTML(xs, runparams);
 							closeLabelTag(xs, style);
-							xs << html::CR();
+							xs << xml::CR();
 						}
 						else {
 							openLabelTag(xs, style);
 							xs << par->params().labelString();
 							closeLabelTag(xs, style);
-							xs << html::CR();
+							xs << xml::CR();
 						}
 					}
 				} // end label output
@@ -1051,7 +483,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 
 				docstring deferred = par->simpleLyXHTMLOnePar(buf, xs, runparams,
 					text.outerFont(distance(begin, par)), true, true, sep);
-				xs << XHTMLStream::ESCAPE_NONE << deferred;
+				xs << XMLStream::ESCAPE_NONE << deferred;
 				++par;
 
 				// We may not want to close the tag yet, in particular:
@@ -1066,7 +498,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					lastlay = &style;
 				} else
 					closeItemTag(xs, style);
-				xs << html::CR();
+				xs << xml::CR();
 			}
 			// The other possibility is that the depth has increased, in which
 			// case we need to recurse.
@@ -1096,13 +528,13 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 	if (lastlay != nullptr)
 		closeItemTag(xs, *lastlay);
 	closeTag(xs, bstyle);
-	xs << html::CR();
+	xs << xml::CR();
 	return pend;
 }
 
 
 void makeCommand(Buffer const & buf,
-		 XHTMLStream & xs,
+		 XMLStream & xs,
 		 OutputParams const & runparams,
 		 Text const & text,
 		 ParagraphList::const_iterator const & pbegin)
@@ -1132,7 +564,7 @@ void makeCommand(Buffer const & buf,
 	pbegin->simpleLyXHTMLOnePar(buf, xs, runparams,
 			text.outerFont(distance(begin, pbegin)));
 	closeTag(xs, style);
-	xs << html::CR();
+	xs << xml::CR();
 }
 
 } // end anonymous namespace
@@ -1140,7 +572,7 @@ void makeCommand(Buffer const & buf,
 
 void xhtmlParagraphs(Text const & text,
 		       Buffer const & buf,
-		       XHTMLStream & xs,
+		       XMLStream & xs,
 		       OutputParams const & runparams)
 {
 	ParagraphList const & paragraphs = text.paragraphs();
@@ -1151,7 +583,7 @@ void xhtmlParagraphs(Text const & text,
 	pit_type bpit = runparams.par_begin;
 	pit_type const epit = runparams.par_end;
 	LASSERT(bpit < epit,
-		{ xs << XHTMLStream::ESCAPE_NONE << "<!-- XHTML output error! -->\n"; return; });
+		{ xs << XMLStream::ESCAPE_NONE << "<!-- XHTML output error! -->\n"; return; });
 
 	OutputParams ourparams = runparams;
 	ParagraphList::const_iterator const pend =

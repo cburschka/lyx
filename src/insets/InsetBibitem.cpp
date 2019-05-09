@@ -343,7 +343,7 @@ void InsetBibitem::updateBuffer(ParIterator const & it, UpdateType utype, bool c
 }
 
 
-docstring InsetBibitem::xhtml(XHTMLStream & xs, OutputParams const &) const
+docstring InsetBibitem::xhtml(XMLStream & xs, OutputParams const &) const
 {
 	// FIXME XHTML
 	// XHTML 1.1 doesn't have the "name" attribute for <a>, so we have to use
@@ -352,11 +352,11 @@ docstring InsetBibitem::xhtml(XHTMLStream & xs, OutputParams const &) const
 	// handle jumping to ids. If we don't do that, though, we can just put the
 	// id into the span tag.
 	string const attrs =
-		"id='LyXCite-" + to_utf8(html::cleanAttr(getParam("key"))) + "'";
-	xs << html::CompTag("a", attrs);
-	xs << html::StartTag("span", "class='bibitemlabel'");
+		"id='LyXCite-" + to_utf8(xml::cleanAttr(getParam("key"))) + "'";
+	xs << xml::CompTag("a", attrs);
+	xs << xml::StartTag("span", "class='bibitemlabel'");
 	xs << bibLabel();
-	xs << html::EndTag("span");
+	xs << xml::EndTag("span");
 	return docstring();
 }
 

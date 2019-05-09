@@ -68,7 +68,7 @@ TODO
 #include "Mover.h"
 #include "OutputParams.h"
 #include "output_xhtml.h"
-#include "sgml.h"
+#include "xml.h"
 #include "texstream.h"
 #include "TocBackend.h"
 
@@ -107,7 +107,7 @@ namespace Alert = frontend::Alert;
 namespace {
 
 /// Find the most suitable image format for images in \p format
-/// Note that \p format may be unknown (i. e. an empty string)
+/// Note that \p format may be unknown (i.e. an empty string)
 string findTargetFormat(string const & format, OutputParams const & runparams)
 {
 	// Are we latexing to DVI or PDF?
@@ -177,7 +177,7 @@ void readInsetGraphics(Lexer & lex, Buffer const & buf, bool allowOrigin,
 
 
 InsetGraphics::InsetGraphics(Buffer * buf)
-	: Inset(buf), graphic_label(sgml::uniqueID(from_ascii("graph"))),
+	: Inset(buf), graphic_label(xml::uniqueID(from_ascii("graph"))),
 	  graphic_(new RenderGraphic(this))
 {
 }
@@ -185,7 +185,7 @@ InsetGraphics::InsetGraphics(Buffer * buf)
 
 InsetGraphics::InsetGraphics(InsetGraphics const & ig)
 	: Inset(ig),
-	  graphic_label(sgml::uniqueID(from_ascii("graph"))),
+	  graphic_label(xml::uniqueID(from_ascii("graph"))),
 	  graphic_(new RenderGraphic(*ig.graphic_, this))
 {
 	setParams(ig.params());
@@ -501,10 +501,6 @@ docstring InsetGraphics::createDocBookAttributes() const
 {
 	// Calculate the options part of the command, we must do it to a string
 	// stream since we copied the code from createLatexParams() ;-)
-
-	// FIXME: av: need to translate spec -> Docbook XSL spec
-	// (http://www.sagehill.net/docbookxsl/ImageSizing.html)
-	// Right now it only works with my version of db2latex :-)
 
 	odocstringstream options;
 	double const scl = convert<double>(params().scale);
@@ -942,14 +938,14 @@ static int writeImageObject(char const * format, odocstream & os,
 {
 	if (runparams.flavor != OutputParams::XML)
 		os << "<![ %output.print." << format
-			 << "; [" << endl;
+		   << "; [" << endl;
 
 	os <<"<imageobject><imagedata fileref=\"&"
-		 << graphic_label
-		 << ";."
-		 << format
-		 << "\" "
-		 << attributes;
+	   << graphic_label
+	   << ";."
+	   << format
+	   << "\" "
+	   << attributes;
 
 	if (runparams.flavor == OutputParams::XML)
 		os <<  " role=\"" << format << "\"/>" ;
@@ -1078,7 +1074,7 @@ string InsetGraphics::prepareHTMLFile(OutputParams const & runparams) const
 }
 
 
-docstring InsetGraphics::xhtml(XHTMLStream & xs, OutputParams const & op) const
+docstring InsetGraphics::xhtml(XMLStream & xs, OutputParams const & op) const
 {
 	string const output_file = op.dryrun ? string() : prepareHTMLFile(op);
 
@@ -1087,7 +1083,7 @@ docstring InsetGraphics::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		        << params().filename << "' for output. File missing?");
 		string const attr = "src='" + params().filename.absFileName()
 		                    + "' alt='image: " + output_file + "'";
-		xs << html::CompTag("img", attr);
+		xs << xml::CompTag("img", attr);
 		return docstring();
 	}
 
@@ -1115,7 +1111,7 @@ docstring InsetGraphics::xhtml(XHTMLStream & xs, OutputParams const & op) const
 
 	string const attr = imgstyle + "src='" + output_file + "' alt='image: "
 	                    + output_file + "'";
-	xs << html::CompTag("img", attr);
+	xs << xml::CompTag("img", attr);
 	return docstring();
 }
 

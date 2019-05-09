@@ -64,7 +64,9 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const;
+	///
+	docstring docbook(XMLStream &, OutputParams const &) const;
 	///
 	std::string contextMenuName() const;
 	//@}

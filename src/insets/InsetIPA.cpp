@@ -233,7 +233,7 @@ void InsetIPA::latex(otexstream & os, OutputParams const & runparams_in) const
 }
 
 
-docstring InsetIPA::xhtml(XHTMLStream & xs, OutputParams const & runparams_in) const
+docstring InsetIPA::xhtml(XMLStream & xs, OutputParams const & runparams_in) const
 {
 	OutputParams runparams(runparams_in);
 	runparams.inIPA = true;

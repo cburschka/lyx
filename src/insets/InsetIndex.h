@@ -59,7 +59,7 @@ private:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
-	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///
 	void latex(otexstream &, OutputParams const &) const;
 	///
@@ -105,7 +105,7 @@ public:
 	///
 	void latex(otexstream &, OutputParams const &) const;
 	///
-	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///

@@ -31,7 +31,7 @@ public:
 	/// return the caption text
 	int getCaptionAsPlaintext(odocstream & os, OutputParams const &) const;
 	/// return the caption text as HTML
-	docstring getCaptionAsHTML(XHTMLStream & os, OutputParams const &) const;
+	docstring getCaptionAsHTML(XMLStream & os, OutputParams const &) const;
 	///
 	std::string contextMenuName() const;
 private:
@@ -78,7 +78,7 @@ private:
 	///
 	int docbook(odocstream & os, OutputParams const & runparams) const;
 	///
-	docstring xhtml(XHTMLStream & os, OutputParams const & runparams) const;
+	docstring xhtml(XMLStream & os, OutputParams const & runparams) const;
 	///
 	void addToToc(DocIterator const & di, bool output_active, UpdateType utype,
 	              TocBackend & backend) const;

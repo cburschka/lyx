@@ -367,7 +367,7 @@ int InsetPhantom::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-docstring InsetPhantom::xhtml(XHTMLStream &, OutputParams const &) const
+docstring InsetPhantom::xhtml(XMLStream &, OutputParams const &) const
 {
 	return docstring();
 }

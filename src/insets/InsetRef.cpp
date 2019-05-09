@@ -24,7 +24,7 @@
 #include "output_xhtml.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
-#include "sgml.h"
+#include "xml.h"
 #include "texstream.h"
 #include "TocBackend.h"
 
@@ -315,16 +315,16 @@ int InsetRef::docbook(odocstream & os, OutputParams const & runparams) const
 	if (name.empty()) {
 		if (runparams.flavor == OutputParams::XML) {
 			os << "<xref linkend=\""
-			   << sgml::cleanID(buffer(), runparams, getParam("reference"))
+			   << xml::cleanID(getParam("reference"))
 			   << "\" />";
 		} else {
 			os << "<xref linkend=\""
-			   << sgml::cleanID(buffer(), runparams, getParam("reference"))
+			   << xml::cleanID(getParam("reference"))
 			   << "\">";
 		}
 	} else {
 		os << "<link linkend=\""
-		   << sgml::cleanID(buffer(), runparams, getParam("reference"))
+		   << xml::cleanID(getParam("reference"))
 		   << "\">"
 		   << getParam("name")
 		   << "</link>";
@@ -334,7 +334,7 @@ int InsetRef::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const & op) const
+docstring InsetRef::xhtml(XMLStream & xs, OutputParams const & op) const
 {
 	docstring const & ref = getParam("reference");
 	InsetLabel const * il = buffer().insetLabel(ref, true);
@@ -375,10 +375,10 @@ docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const & op) const
 	// FIXME What we'd really like to do is to be able to output some
 	// appropriate sort of text here. But to do that, we need to associate
 	// some sort of counter with the label, and we don't have that yet.
-	docstring const attr = "href=\"#" + html::cleanAttr(ref) + '"';
-	xs << html::StartTag("a", to_utf8(attr));
+	docstring const attr = "href=\"#" + xml::cleanAttr(ref) + '"';
+	xs << xml::StartTag("a", to_utf8(attr));
 	xs << display_string;
-	xs << html::EndTag("a");
+	xs << xml::EndTag("a");
 	return docstring();
 }
 

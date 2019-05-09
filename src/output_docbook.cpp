@@ -23,7 +23,7 @@
 #include "Paragraph.h"
 #include "ParagraphList.h"
 #include "ParagraphParameters.h"
-#include "sgml.h"
+#include "xml.h"
 #include "Text.h"
 #include "TextClass.h"
 
@@ -40,6 +40,45 @@ using namespace lyx::support;
 namespace lyx {
 
 namespace {
+
+std::string const fontToDocBookTag(xml::FontTypes type) {
+    switch (type) {
+    case xml::FontTypes::FT_EMPH:
+    case xml::FontTypes::FT_BOLD:
+        return "emphasis";
+    case xml::FontTypes::FT_NOUN:
+        return "person";
+    case xml::FontTypes::FT_UBAR:
+    case xml::FontTypes::FT_WAVE:
+    case xml::FontTypes::FT_DBAR:
+    case xml::FontTypes::FT_SOUT:
+    case xml::FontTypes::FT_XOUT:
+    case xml::FontTypes::FT_ITALIC:
+    case xml::FontTypes::FT_UPRIGHT:
+    case xml::FontTypes::FT_SLANTED:
+    case xml::FontTypes::FT_SMALLCAPS:
+    case xml::FontTypes::FT_ROMAN:
+    case xml::FontTypes::FT_SANS:
+        return "emphasis";
+    case xml::FontTypes::FT_TYPE:
+        return "code";
+    case xml::FontTypes::FT_SIZE_TINY:
+    case xml::FontTypes::FT_SIZE_SCRIPT:
+    case xml::FontTypes::FT_SIZE_FOOTNOTE:
+    case xml::FontTypes::FT_SIZE_SMALL:
+    case xml::FontTypes::FT_SIZE_NORMAL:
+    case xml::FontTypes::FT_SIZE_LARGE:
+    case xml::FontTypes::FT_SIZE_LARGER:
+    case xml::FontTypes::FT_SIZE_LARGEST:
+    case xml::FontTypes::FT_SIZE_HUGE:
+    case xml::FontTypes::FT_SIZE_HUGER:
+    case xml::FontTypes::FT_SIZE_INCREASE:
+    case xml::FontTypes::FT_SIZE_DECREASE:
+        return "emphasis";
+    default:
+        return "";
+    }
+}
 
 ParagraphList::const_iterator searchParagraph(
 	ParagraphList::const_iterator p,
@@ -115,10 +154,10 @@ ParagraphList::const_iterator makeParagraph(
 			par->simpleDocBookOnePar(buf, os, runparams,
 					text.outerFont(distance(paragraphs.begin(), par)));
 		} else {
-			sgml::openTag(buf, os, runparams, *par);
+			xml::openTag(buf, os, runparams, *par);
 			par->simpleDocBookOnePar(buf, os, runparams,
 					text.outerFont(distance(paragraphs.begin(), par)));
-			sgml::closeTag(os, *par);
+			xml::closeTag(os, *par);
 		}
 	}
 	return pend;
@@ -140,7 +179,7 @@ ParagraphList::const_iterator makeEnvironment(
 	Layout const & bstyle = par->layout();
 
 	// Opening outter tag
-	sgml::openTag(buf, os, runparams, *pbegin);
+	xml::openTag(buf, os, runparams, *pbegin);
 	os << '\n';
 	if (bstyle.latextype == LATEX_ENVIRONMENT && bstyle.pass_thru)
 		os << "<![CDATA[";
@@ -156,23 +195,23 @@ ParagraphList::const_iterator makeEnvironment(
 		switch (bstyle.latextype) {
 		case LATEX_ENVIRONMENT:
 			if (!bstyle.innertag().empty()) {
-				sgml::openTag(os, bstyle.innertag(), id);
+				xml::openTag(os, bstyle.innertag(), id);
 			}
 			break;
 
 		case LATEX_ITEM_ENVIRONMENT:
 			if (!bstyle.labeltag().empty()) {
-				sgml::openTag(os, bstyle.innertag(), id);
-				sgml::openTag(os, bstyle.labeltag());
+				xml::openTag(os, bstyle.innertag(), id);
+				xml::openTag(os, bstyle.labeltag());
 				sep = par->firstWordDocBook(os, runparams) + 1;
-				sgml::closeTag(os, bstyle.labeltag());
+				xml::closeTag(os, bstyle.labeltag());
 			}
 			wrapper = defaultstyle.latexname();
 			// If a sub list (embedded list) appears next with a
 			// different depth, then there is no need to open
 			// another tag at the current depth.
 			if(par->params().depth() == pbegin->params().depth()) {
-				sgml::openTag(os, bstyle.itemtag());
+				xml::openTag(os, bstyle.itemtag());
 			}
 			break;
 		default:
@@ -183,10 +222,10 @@ ParagraphList::const_iterator makeEnvironment(
 		case LATEX_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
 			if (par->params().depth() == pbegin->params().depth()) {
-				sgml::openTag(os, wrapper);
+				xml::openTag(os, wrapper);
 				par->simpleDocBookOnePar(buf, os, runparams,
 					text.outerFont(distance(paragraphs.begin(), par)), sep);
-				sgml::closeTag(os, wrapper);
+				xml::closeTag(os, wrapper);
 				++par;
 			}
 			else {
@@ -212,7 +251,7 @@ ParagraphList::const_iterator makeEnvironment(
 		switch (bstyle.latextype) {
 		case LATEX_ENVIRONMENT:
 			if (!bstyle.innertag().empty()) {
-				sgml::closeTag(os, bstyle.innertag());
+				xml::closeTag(os, bstyle.innertag());
 				os << '\n';
 			}
 			break;
@@ -226,10 +265,10 @@ ParagraphList::const_iterator makeEnvironment(
 			// when par == pend but at the same time that the
 			// current tag is closed.
 			if((par != pend && par->params().depth() == pbegin->params().depth()) || par == pend) {
-				sgml::closeTag(os, bstyle.itemtag());
+				xml::closeTag(os, bstyle.itemtag());
 			}
 			if (!bstyle.labeltag().empty())
-				sgml::closeTag(os, bstyle.innertag());
+				xml::closeTag(os, bstyle.innertag());
 			break;
 		default:
 			break;
@@ -240,7 +279,7 @@ ParagraphList::const_iterator makeEnvironment(
 		os << "]]>";
 
 	// Closing outer tag
-	sgml::closeTag(os, *pbegin);
+	xml::closeTag(os, *pbegin);
 
 	return pend;
 }
@@ -259,22 +298,22 @@ ParagraphList::const_iterator makeCommand(
 	Layout const & bstyle = par->layout();
 
 	//Open outter tag
-	sgml::openTag(buf, os, runparams, *pbegin);
+	xml::openTag(buf, os, runparams, *pbegin);
 	os << '\n';
 
 	// Label around sectioning number:
 	if (!bstyle.labeltag().empty()) {
-		sgml::openTag(os, bstyle.labeltag());
+		xml::openTag(os, bstyle.labeltag());
 		// We don't care about appendix in DOCBOOK.
 		os << par->expandDocBookLabel(bstyle, buf.params());
-		sgml::closeTag(os, bstyle.labeltag());
+		xml::closeTag(os, bstyle.labeltag());
 	}
 
 	// Opend inner tag and	close inner tags
-	sgml::openTag(os, bstyle.innertag());
+	xml::openTag(os, bstyle.innertag());
 	par->simpleDocBookOnePar(buf, os, runparams,
 		text.outerFont(distance(paragraphs.begin(), par)));
-	sgml::closeTag(os, bstyle.innertag());
+	xml::closeTag(os, bstyle.innertag());
 	os << '\n';
 
 	++par;
@@ -307,7 +346,7 @@ ParagraphList::const_iterator makeCommand(
 		}
 	}
 	// Close outter tag
-	sgml::closeTag(os, *pbegin);
+	xml::closeTag(os, *pbegin);
 
 	return pend;
 }

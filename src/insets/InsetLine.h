@@ -43,7 +43,7 @@ private:
 	InsetCode lyxCode() const { return LINE_CODE; }
 	int docbook(odocstream &, OutputParams const &) const;
 	/// Does nothing at the moment.
-	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const;
 	bool hasSettings() const { return true; }
 	void metrics(MetricsInfo &, Dimension &) const;
 	void draw(PainterInfo & pi, int x, int y) const;

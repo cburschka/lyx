@@ -536,6 +536,79 @@ docstring InsetQuotesParams::getHTMLQuote(char_type c) const
 }
 
 
+docstring InsetQuotesParams::getXMLQuote(char_type c) const
+{
+	string res;
+
+	switch (c){
+		case 0x201a: // ,
+			res = "&#8218;";
+			break;
+		case 0x2019: // '
+			res = "&#8217;";
+			break;
+		case 0x2018: // `
+			res = "&#8216;";
+			break;
+		case 0x2039: // <
+			res = "&#8249;";
+			break;
+		case 0x203a: // >
+			res = "&#8250;";
+			break;
+		case 0x0027: // ' (plain)
+			res = "&#x27;";
+			break;
+		case 0x201e: // ,,
+			res = "&#8222;";
+			break;
+		case 0x201d: // ''
+			res = "&#8221;";
+			break;
+		case 0x201c: // ``
+			res = "&#8220;";
+			break;
+		case 0x00ab: // <<
+			res = "&#171;";
+			break;
+		case 0x00bb: // >>
+			res = "&#187;";
+			break;
+		case 0x0022: // "
+			res = "&#34;";
+			break;
+		case 0x300c: // LEFT CORNER BRACKET
+			res = "&#x300c;";
+			break;
+		case 0x300d: // RIGHT CORNER BRACKET
+			res = "&#x300d;";
+			break;
+		case 0x300e: // LEFT WHITE CORNER BRACKET
+			res = "&#x300e;";
+			break;
+		case 0x300f: // RIGHT WHITE CORNER BRACKET
+			res = "&#x300f;";
+			break;
+		case 0x300a: // LEFT DOUBLE ANGLE BRACKET
+			res = "&#x300a;";
+			break;
+		case 0x300b: // RIGHT DOUBLE ANGLE BRACKET
+			res = "&#x300b;";
+			break;
+		case 0x3008: // LEFT ANGLE BRACKET
+			res = "&#x3008;";
+			break;
+		case 0x3009: // RIGHT ANGLE BRACKET
+			res = "&#x3009;";
+			break;
+		default:
+			break;
+	}
+
+	return from_ascii(res);
+}
+
+
 map<string, docstring> InsetQuotesParams::getTypes() const
 {
 	map<string, docstring> res;
@@ -946,10 +1019,11 @@ int InsetQuotes::plaintext(odocstringstream & os,
 }
 
 
-docstring InsetQuotes::getQuoteEntity() const {
+docstring InsetQuotes::getQuoteEntity(bool isHTML) const {
 	InsetQuotesParams::QuoteStyle style =
 			(style_ == InsetQuotesParams::DynamicQuotes) ? global_style_ : style_;
-	docstring res = quoteparams.getHTMLQuote(quoteparams.getQuoteChar(style, level_, side_));
+	docstring res = isHTML ? quoteparams.getHTMLQuote(quoteparams.getQuoteChar(style, level_, side_)) :
+					quoteparams.getXMLQuote(quoteparams.getQuoteChar(style, level_, side_));
 	// in French, thin spaces are added inside double guillemets
 	if (prefixIs(context_lang_, "fr")
 	    && level_ == InsetQuotesParams::PrimaryQuotes
@@ -969,14 +1043,14 @@ docstring InsetQuotes::getQuoteEntity() const {
 
 int InsetQuotes::docbook(odocstream & os, OutputParams const &) const
 {
-	os << getQuoteEntity();
+	os << getQuoteEntity(false);
 	return 0;
 }
 
 
-docstring InsetQuotes::xhtml(XHTMLStream & xs, OutputParams const &) const
+docstring InsetQuotes::xhtml(XMLStream & xs, OutputParams const &) const
 {
-	xs << XHTMLStream::ESCAPE_NONE << getQuoteEntity();
+	xs << XMLStream::ESCAPE_NONE << getQuoteEntity(true);
 	return docstring();
 }
 

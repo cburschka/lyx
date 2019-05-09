@@ -82,6 +82,8 @@ public:
 				bool const rtl = false) const;
 	///
 	docstring getHTMLQuote(char_type c) const;
+	///
+	docstring getXMLQuote(char_type c) const;
 	/// Returns a descriptive label of a style suitable for dialog and menu
 	docstring const getGuiLabel(QuoteStyle const & qs,
 				    bool langdef = false);
@@ -146,7 +148,7 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
-	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const;
 
 	///
 	void toString(odocstream &) const;
@@ -180,7 +182,7 @@ private:
 	///
 	docstring displayString() const;
 	///
-	docstring getQuoteEntity() const;
+	docstring getQuoteEntity(bool isHTML) const;
 	///
 	InsetQuotesParams::QuoteStyle getStyle(std::string const &);
 

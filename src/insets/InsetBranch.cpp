@@ -333,7 +333,7 @@ int InsetBranch::docbook(odocstream & os,
 }
 
 
-docstring InsetBranch::xhtml(XHTMLStream & xs, OutputParams const & rp) const
+docstring InsetBranch::xhtml(XMLStream & xs, OutputParams const & rp) const
 {
 	if (producesOutput()) {
 		OutputParams newrp = rp;

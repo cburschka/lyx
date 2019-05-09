@@ -1159,7 +1159,7 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 	}
 
 	if (cleanit)
-		ret = html::cleanAttr(ret);
+		ret = xml::cleanAttr(ret);
 
 	// make sure it is not too big
 	support::truncateWithEllipsis(ret, maxsize);

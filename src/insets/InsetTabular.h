@@ -44,7 +44,7 @@ class FuncStatus;
 class Lexer;
 class OutputParams;
 class Paragraph;
-class XHTMLStream;
+class XMLStream;
 
 
 ///
@@ -72,7 +72,7 @@ public:
 	/// descending into insets
 	docstring asString(bool intoInsets = true);
 	///
-	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///
 	void addToToc(DocIterator const & di, bool output_active,
 				  UpdateType utype, TocBackend & backend) const;
@@ -573,7 +573,7 @@ public:
 	///
 	int docbook(odocstream & os, OutputParams const &) const;
 	///
-	docstring xhtml(XHTMLStream & os, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///
 	void plaintext(odocstringstream &,
 		       OutputParams const & runparams, int const depth,
@@ -908,7 +908,7 @@ public:
 	/// auxiliary function for docbook
 	int docbookRow(odocstream & os, row_type, OutputParams const &) const;
 	///
-	docstring xhtmlRow(XHTMLStream & xs, row_type, OutputParams const &,
+	docstring xhtmlRow(XMLStream & xs, row_type, OutputParams const &,
 	                   bool header = false) const;
 
 	/// change associated Buffer
@@ -981,7 +981,7 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
-	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///

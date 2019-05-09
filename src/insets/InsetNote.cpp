@@ -290,7 +290,7 @@ int InsetNote::docbook(odocstream & os, OutputParams const & runparams_in) const
 }
 
 
-docstring InsetNote::xhtml(XHTMLStream & xs, OutputParams const & rp) const
+docstring InsetNote::xhtml(XMLStream & xs, OutputParams const & rp) const
 {
 	if (params_.type == InsetNoteParams::Note)
 		return docstring();

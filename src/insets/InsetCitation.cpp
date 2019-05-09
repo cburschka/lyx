@@ -322,8 +322,8 @@ inline docstring wrapCitation(docstring const & key,
 		return content;
 	// we have to do the escaping here, because we will ultimately
 	// write this as a raw string, so as not to escape the tags.
-	return "<a href='#LyXCite-" + html::cleanAttr(key) + "'>" +
-			html::htmlize(content, XHTMLStream::ESCAPE_ALL) + "</a>";
+	return "<a href='#LyXCite-" + xml::cleanAttr(key) + "'>" +
+			xml::xmlize(content, XMLStream::ESCAPE_ALL) + "</a>";
 }
 
 } // anonymous namespace
@@ -554,14 +554,14 @@ int InsetCitation::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-docstring InsetCitation::xhtml(XHTMLStream & xs, OutputParams const &) const
+docstring InsetCitation::xhtml(XMLStream & xs, OutputParams const &) const
 {
 	string const & cmd = getCmdName();
 	if (cmd == "nocite")
 		return docstring();
 
 	// have to output this raw, because generateLabel() will include tags
-	xs << XHTMLStream::ESCAPE_NONE << generateLabel(true);
+	xs << XMLStream::ESCAPE_NONE << generateLabel(true);
 
 	return docstring();
 }

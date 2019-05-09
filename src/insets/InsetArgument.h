@@ -56,7 +56,7 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const { return 0; }
 	///
-	docstring xhtml(XHTMLStream &, OutputParams const &) const
+	docstring xhtml(XMLStream &, OutputParams const &) const
 		{ return docstring(); }
 	///
 	void write(std::ostream & os) const;

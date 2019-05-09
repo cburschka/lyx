@@ -3649,14 +3649,14 @@ int Tabular::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
+docstring Tabular::xhtmlRow(XMLStream & xs, row_type row,
 			   OutputParams const & runparams, bool header) const
 {
 	docstring ret;
 	string const celltag = header ? "th" : "td";
 	idx_type cell = getFirstCellInRow(row);
 
-	xs << html::StartTag("tr");
+	xs << xml::StartTag("tr");
 	for (col_type c = 0; c < ncols(); ++c) {
 		if (isPartOfMultiColumn(row, c) || isPartOfMultiRow(row, c))
 			continue;
@@ -3700,17 +3700,17 @@ docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
 		else if (isMultiRow(cell))
 			attr << " rowspan='" << rowSpan(cell) << "'";
 
-		xs << html::StartTag(celltag, attr.str(), true) << html::CR();
+		xs << xml::StartTag(celltag, attr.str(), true) << xml::CR();
 		ret += cellInset(cell)->xhtml(xs, runparams);
-		xs << html::EndTag(celltag) << html::CR();
+		xs << xml::EndTag(celltag) << xml::CR();
 		++cell;
 	}
-	xs << html::EndTag("tr");
+	xs << xml::EndTag("tr");
 	return ret;
 }
 
 
-docstring Tabular::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
+docstring Tabular::xhtml(XMLStream & xs, OutputParams const & runparams) const
 {
 	docstring ret;
 
@@ -3728,20 +3728,20 @@ docstring Tabular::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
 			align = "right";
 			break;
 		}
-		xs << html::StartTag("div", "class='longtable' style='text-align: " + align + ";'")
-		   << html::CR();
+		xs << xml::StartTag("div", "class='longtable' style='text-align: " + align + ";'")
+		   << xml::CR();
 		// The caption flag wins over head/foot
 		if (haveLTCaption()) {
-			xs << html::StartTag("div", "class='longtable-caption' style='text-align: " + align + ";'")
-			   << html::CR();
+			xs << xml::StartTag("div", "class='longtable-caption' style='text-align: " + align + ";'")
+			   << xml::CR();
 			for (row_type r = 0; r < nrows(); ++r)
 				if (row_info[r].caption)
 					ret += xhtmlRow(xs, r, runparams);
-			xs << html::EndTag("div") << html::CR();
+			xs << xml::EndTag("div") << xml::CR();
 		}
 	}
 
-	xs << html::StartTag("table") << html::CR();
+	xs << xml::StartTag("table") << xml::CR();
 
 	// output header info
 	bool const havefirsthead = haveLTFirstHead(false);
@@ -3750,7 +3750,7 @@ docstring Tabular::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
 	// in XHTML. this test accomplishes that.
 	bool const havehead = !havefirsthead && haveLTHead(false);
 	if (havehead || havefirsthead) {
-		xs << html::StartTag("thead") << html::CR();
+		xs << xml::StartTag("thead") << xml::CR();
 		for (row_type r = 0; r < nrows(); ++r) {
 			if (((havefirsthead && row_info[r].endfirsthead) ||
 			     (havehead && row_info[r].endhead)) &&
@@ -3758,14 +3758,14 @@ docstring Tabular::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
 				ret += xhtmlRow(xs, r, runparams, true);
 			}
 		}
-		xs << html::EndTag("thead") << html::CR();
+		xs << xml::EndTag("thead") << xml::CR();
 	}
 	// output footer info
 	bool const havelastfoot = haveLTLastFoot(false);
 	// as before.
 	bool const havefoot = !havelastfoot && haveLTFoot(false);
 	if (havefoot || havelastfoot) {
-		xs << html::StartTag("tfoot") << html::CR();
+		xs << xml::StartTag("tfoot") << xml::CR();
 		for (row_type r = 0; r < nrows(); ++r) {
 			if (((havelastfoot && row_info[r].endlastfoot) ||
 			     (havefoot && row_info[r].endfoot)) &&
@@ -3773,21 +3773,21 @@ docstring Tabular::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
 				ret += xhtmlRow(xs, r, runparams);
 			}
 		}
-		xs << html::EndTag("tfoot") << html::CR();
+		xs << xml::EndTag("tfoot") << xml::CR();
 	}
 
-	xs << html::StartTag("tbody") << html::CR();
+	xs << xml::StartTag("tbody") << xml::CR();
 	for (row_type r = 0; r < nrows(); ++r) {
 		if (isValidRow(r)) {
 			ret += xhtmlRow(xs, r, runparams);
 		}
 	}
-	xs << html::EndTag("tbody")
-	   << html::CR()
-	   << html::EndTag("table")
-	   << html::CR();
+	xs << xml::EndTag("tbody")
+	   << xml::CR()
+	   << xml::EndTag("table")
+	   << xml::CR();
 	if (is_long_tabular)
-		xs << html::EndTag("div") << html::CR();
+		xs << xml::EndTag("div") << xml::CR();
 	return ret;
 }
 
@@ -4167,7 +4167,7 @@ void InsetTableCell::addToToc(DocIterator const & di, bool output_active,
 }
 
 
-docstring InsetTableCell::xhtml(XHTMLStream & xs, OutputParams const & rp) const
+docstring InsetTableCell::xhtml(XMLStream & xs, OutputParams const & rp) const
 {
 	if (!isFixedWidth)
 		return InsetText::insetAsXHTML(xs, rp, InsetText::JustText);
@@ -4201,7 +4201,6 @@ void InsetTableCell::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des += bottomOffset(mi.base.bv);
 	dim.wid += horiz_offset;
 }
-
 
 
 /////////////////////////////////////////////////////////////////////
@@ -6028,7 +6027,7 @@ int InsetTabular::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-docstring InsetTabular::xhtml(XHTMLStream & xs, OutputParams const & rp) const
+docstring InsetTabular::xhtml(XMLStream & xs, OutputParams const & rp) const
 {
 	return tabular.xhtml(xs, rp);
 }

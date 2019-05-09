@@ -721,7 +721,7 @@ int InsetBox::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-docstring InsetBox::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
+docstring InsetBox::xhtml(XMLStream & xs, OutputParams const & runparams) const
 {
 	// construct attributes
 	string attrs = "class='" + params_.type + "'";
@@ -737,10 +737,10 @@ docstring InsetBox::xhtml(XHTMLStream & xs, OutputParams const & runparams) cons
 	if (!style.empty())
 		attrs += " style='" + style + "'";
 
-	xs << html::StartTag("div", attrs);
+	xs << xml::StartTag("div", attrs);
 	XHTMLOptions const opts = InsetText::WriteLabel | InsetText::WriteInnerTag;
 	docstring defer = InsetText::insetAsXHTML(xs, runparams, opts);
-	xs << html::EndTag("div");
+	xs << xml::EndTag("div");
 	xs << defer;
 	return docstring();
 }
