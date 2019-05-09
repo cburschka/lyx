@@ -680,8 +680,7 @@ def checkFormatEntries(dtl_tools):
     #
     checkViewerEditor('a text editor', texteditors,
         rc_entry = [r'''\Format asciichess asc    "Plain text (chess output)"  "" ""	"%%"	""	""
-\Format docbook    sgml    DocBook                B  ""	"%%"	"document,menu=export"	""
-\Format docbook-xml xml   "DocBook (XML)"         "" ""	"%%"	"document,menu=export"	"application/docbook+xml"
+\Format docbook5   xml    "DocBook 5"             "" ""	"%%"	"document,menu=export"	"application/docbook+xml"
 \Format dot        dot    "Graphviz Dot"          "" ""	"%%"	"vector"	"text/vnd.graphviz"
 \Format dviluatex  tex    "LaTeX (dviluatex)"     "" "" "%%"	"document,menu=export"	""
 \Format platex     tex    "LaTeX (pLaTeX)"        "" "" "%%" 	"document,menu=export"	""
@@ -1243,9 +1242,9 @@ def checkConverterEntries():
     # checkProg('Image converter', ['convert $$i $$o'])
     #
     # Entries that do not need checkProg
+    # \converter docbook    docbook5   "cp $$i $$o"	"xml"
     addToRC(r'''
 \converter csv        lyx        "python -tt $$s/scripts/csv2lyx.py $$i $$o"	""
-\converter docbook    docbook-xml "cp $$i $$o"	"xml"
 \converter fen        asciichess "python -tt $$s/scripts/fen2ascii.py $$i $$o"	""
 \converter lyx        lyx13x     "python -tt $$s/lyx2lyx/lyx2lyx -V 1.3 -o $$o $$i"	""
 \converter lyx        lyx14x     "python -tt $$s/lyx2lyx/lyx2lyx -V 1.4 -o $$o $$i"	""
@@ -1330,7 +1329,7 @@ def _checkForClassExtension(x):
     else:
         return x.strip()
 
-def processLayoutFile(file, bool_docbook):
+def processLayoutFile(file):
     ''' process layout file and get a line of result
 
         Declare lines look like this:
@@ -1368,7 +1367,7 @@ def processLayoutFile(file, bool_docbook):
         qres = q.match(line)
         if res != None:
             (classtype, optAll, opt, opt1, desc) = res.groups()
-            avai = {'LaTeX': 'false', 'DocBook': bool_docbook}[classtype]
+            avai = {'LaTeX': 'false', 'DocBook': 'true'}[classtype]
             if opt == None:
                 opt = classname
                 prereq_latex = _checkForClassExtension(classname)
@@ -1376,8 +1375,7 @@ def processLayoutFile(file, bool_docbook):
                 prereq_list = optAll[1:-1].split(',')
                 prereq_list = list(map(_checkForClassExtension, prereq_list))
                 prereq_latex = ','.join(prereq_list)
-            prereq_docbook = {'true':'', 'false':'docbook'}[bool_docbook]
-            prereq = {'LaTeX':prereq_latex, 'DocBook':prereq_docbook}[classtype]
+            prereq = {'LaTeX': prereq_latex, 'DocBook': ''}[classtype]
             classdeclaration = ('"%s" "%s" "%s" "%s" "%s"'
                                % (classname, opt, desc, avai, prereq))
             if categorydeclaration != '""':
@@ -1392,7 +1390,7 @@ def processLayoutFile(file, bool_docbook):
     return ""
 
 
-def checkLatexConfig(check_config, bool_docbook):
+def checkLatexConfig(check_config):
     ''' Explore the LaTeX configuration
         Return None (will be passed to sys.exit()) for success.
     '''
@@ -1430,7 +1428,7 @@ def checkLatexConfig(check_config, bool_docbook):
             # make sure the same class is not considered twice
             if foundClasses.count(cleanclass) == 0: # not found before
                 foundClasses.append(cleanclass)
-                retval = processLayoutFile(file, bool_docbook)
+                retval = processLayoutFile(file)
                 if retval:
                     tx.write(retval + os.linesep)
         tx.close()
@@ -1451,7 +1449,7 @@ def checkLatexConfig(check_config, bool_docbook):
     if not os.path.isfile( 'chkconfig.ltx' ):
         shutil.copyfile( os.path.join(srcdir, 'chkconfig.ltx'), 'chkconfig.ltx' )
         rmcopy = True
-    writeToFile('wrap_chkconfig.ltx', '%s\n\\input{chkconfig.ltx}\n' % docbook_cmd)
+    writeToFile('wrap_chkconfig.ltx', '\\def\\hasdocbook{yes}\n\\input{chkconfig.ltx}\n')
     # Construct the list of classes to test for.
     # build the list of available layout files and convert it to commands
     # for chkconfig.ltx
@@ -1564,14 +1562,14 @@ def checkModulesConfig():
           continue
 
       seen.append(filename)
-      retval = processModuleFile(file, filename, bool_docbook)
+      retval = processModuleFile(file, filename)
       if retval:
           tx.write(retval)
   tx.close()
   logger.info('\tdone')
 
 
-def processModuleFile(file, filename, bool_docbook):
+def processModuleFile(file, filename):
     ''' process module file and get a line of result
 
         The top of a module file should look like this:
@@ -1695,14 +1693,14 @@ def checkCiteEnginesConfig():
           continue
 
       seen.append(filename)
-      retval = processCiteEngineFile(file, filename, bool_docbook)
+      retval = processCiteEngineFile(file, filename)
       if retval:
           tx.write(retval)
   tx.close()
   logger.info('\tdone')
 
 
-def processCiteEngineFile(file, filename, bool_docbook):
+def processCiteEngineFile(file, filename):
     ''' process cite engines file and get a line of result
 
         The top of a cite engine file should look like this:
@@ -1939,7 +1937,6 @@ Format %i
     inkscape_stable = checkInkscapeStable()
     checkFormatEntries(dtl_tools)
     checkConverterEntries()
-    (chk_docbook, bool_docbook, docbook_cmd) = checkDocBook()
     checkTeXAllowSpaces()
     windows_style_tex_paths = checkTeXPaths()
     if windows_style_tex_paths:
@@ -1951,7 +1948,7 @@ Format %i
     checkCiteEnginesConfig()
     checkXTemplates()
     # --without-latex-config can disable lyx_check_config
-    ret = checkLatexConfig(lyx_check_config and LATEX, bool_docbook)
+    ret = checkLatexConfig(lyx_check_config and LATEX)
     removeTempFiles()
     # The return error code can be 256. Because most systems expect an error code
     # in the range 0-127, 256 can be interpretted as 'success'. Because we expect
