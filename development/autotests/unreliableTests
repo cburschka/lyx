@@ -129,7 +129,7 @@ Sublabel: varying_versions
 # Encoding cp858 only supported by some iconv variants
 # Gnu iconv only supports it, if configured with "--enable-extra-encodings"
 # (see https://www.gnu.org/software/libiconv/)
-export/export/latex/cp858_pdf2
+export/export/latex/inputenc-cp858_pdf2
 
 # Seminar export with LaTeX fails in latest TeXLive:
 export/examples/(|fr/)seminar_(dvi|pdf).*
