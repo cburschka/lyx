@@ -436,7 +436,7 @@ BufferParams::BufferParams()
 	fonts_sans_scale[1] = 100;
 	fonts_typewriter_scale[0] = 100;
 	fonts_typewriter_scale[1] = 100;
-	inputenc = "auto-legacy";
+	inputenc = "utf8";
 	lang_package = "default";
 	graphics_driver = "default";
 	default_output_format = "default";
