@@ -92,14 +92,14 @@ void InsetMathMatrix::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathMatrix::mathmlize(MathStream & os) const
+void InsetMathMatrix::mathmlize(MathStream & ms) const
 {
-	os << "<mo form='prefix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>"
-	   << convertDelimToXMLEscape(left_)
-	   << "</mo>"
+	ms << "<" << from_ascii(ms.namespacedTag("mo")) << " form='prefix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>"
+	   << convertDelimToXMLEscape(left_) 
+	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
 	   << MTag("mtable");
 	for (row_type row = 0; row < nrows(); ++row) {
-		os << MTag("mtr");
+		ms << MTag("mtr");
 		for (col_type col = 0; col < ncols(); ++col) {
 			idx_type const i = index(row, col);
 			if (cellinfo(i).multi != CELL_PART_OF_MULTICOLUMN) {
@@ -107,15 +107,15 @@ void InsetMathMatrix::mathmlize(MathStream & os) const
 				ostringstream attr;
 				if (cellcols > 1)
 					attr << "columnspan='" << cellcols << '\'';
-				os << MTag("mtd", attr.str()) << cell(i) << ETag("mtd");
+				ms << MTag("mtd", attr.str()) << cell(i) << ETag("mtd");
 			}
 		}
-		os << ETag("mtr");
+		ms << ETag("mtr");
 	}
-	os << ETag("mtable");
-	os << "<mo form='postfix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>"
-	   << convertDelimToXMLEscape(right_)
-	   << "</mo>";
+	ms << ETag("mtable")
+	   << "<" << from_ascii(ms.namespacedTag("mo")) << " form='postfix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>"
+	   << convertDelimToXMLEscape(right_) 
+	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">";
 }
 
 

@@ -124,7 +124,7 @@ void InsetMathExInt::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathExInt::mathmlize(MathStream & os) const
+void InsetMathExInt::mathmlize(MathStream & ms) const
 {
 	// At the moment, we are not extracting sums and the like for MathML.
 	// If we should decide to do so later, then we'll need to re-merge
@@ -134,27 +134,34 @@ void InsetMathExInt::mathmlize(MathStream & os) const
 	bool const lower = !cell(2).empty();
 	bool const upper = !cell(3).empty();
 	if (lower && upper)
-		os << MTag("msubsup");
+		ms << MTag("msubsup");
 	else if (lower)
-		os << MTag("msub");
+		ms << MTag("msub");
 	else if (upper)
-		os << MTag("msup");
-	os << MTag("mrow");
-	sym.mathmlize(os);
-	os << ETag("mrow");
+		ms << MTag("msup");
+	ms << MTag("mrow");
+	sym.mathmlize(ms);
+	ms << ETag("mrow");
 	if (lower)
-		os << MTag("mrow") << cell(2) << ETag("mrow");
+		ms << MTag("mrow") << cell(2) << ETag("mrow");
 	if (upper)
-		os << MTag("mrow") << cell(3) << ETag("mrow");
+		ms << MTag("mrow") << cell(3) << ETag("mrow");
 	if (lower && upper)
-		os << ETag("msubsup");
+		ms << ETag("msubsup");
 	else if (lower)
-		os << ETag("msub");
+		ms << ETag("msub");
 	else if (upper)
-		os << ETag("msup");
-	os << cell(0) << "<mo> &InvisibleTimes; </mo>"
-	   << MTag("mrow") << "<mo> &DifferentialD; </mo>"
-	   << cell(1) << ETag("mrow");
+		ms << ETag("msup");
+	ms << cell(0)
+	   << "<" << from_ascii(ms.namespacedTag("mo")) << "> "
+	   << " &InvisibleTimes; "
+       << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
+	   << MTag("mrow")
+	   << "<" << from_ascii(ms.namespacedTag("mo")) << "> "
+	   << " &DifferentialD; "
+	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
+	   << cell(1)
+	   << ETag("mrow");
 }
 
 

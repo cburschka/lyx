@@ -122,10 +122,15 @@ void InsetMathExFunc::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathExFunc::mathmlize(MathStream & os) const
+void InsetMathExFunc::mathmlize(MathStream & ms) const
 {
-	os << "<mi>" << name_ << "</mi><mo>&af;</mo>";
-	os << cell(0);
+	ms << "<" << from_ascii(ms.namespacedTag("mi")) << ">"
+	   << name_
+       << "</" << from_ascii(ms.namespacedTag("mi")) << ">"
+	   << "<" << from_ascii(ms.namespacedTag("mo")) << ">"
+	   << "&af;"
+	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
+	   << cell(0);
 }
 
 

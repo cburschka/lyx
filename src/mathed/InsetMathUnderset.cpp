@@ -94,7 +94,9 @@ void InsetMathUnderset::normalize(NormalStream & os) const
 
 void InsetMathUnderset::mathmlize(MathStream & ms) const
 {
-	ms << "<munder accent='false'>" << cell(0) << cell(1) << "</munder>";
+	ms << "<" << from_ascii(ms.namespacedTag("munder")) << " accent='false'>"
+	   << cell(0) << cell(1)
+	   << "</" << from_ascii(ms.namespacedTag("munder")) << ">";
 }
 
 

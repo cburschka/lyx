@@ -1586,19 +1586,19 @@ void mathematica(MathData const & dat, MathematicaStream & os)
 }
 
 
-void mathmlize(MathData const & dat, MathStream & os)
+void mathmlize(MathData const & dat, MathStream & ms)
 {
 	MathData ar = dat;
 	extractStructure(ar, MATHML);
 	if (ar.empty())
-		os << "<mrow/>";
+		ms << "<" << from_ascii(ms.namespacedTag("mrow")) << "/>";
 	else if (ar.size() == 1)
-		os << ar.front();
+		ms << ar.front();
 	else {
-		os << MTag("mrow");
+		ms << MTag("mrow");
 		for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
-			(*it)->mathmlize(os);
-		os << ETag("mrow");
+			(*it)->mathmlize(ms);
+		ms << ETag("mrow");
 	}
 }
 

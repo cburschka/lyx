@@ -216,9 +216,9 @@ void InsetMathRoot::octave(OctaveStream & os) const
 }
 
 
-void InsetMathRoot::mathmlize(MathStream & os) const
+void InsetMathRoot::mathmlize(MathStream & ms) const
 {
-	os << MTag("mroot") << cell(0) << cell(1) << ETag("mroot");
+	ms << MTag("mroot") << cell(0) << cell(1) << ETag("mroot");
 }
 
 

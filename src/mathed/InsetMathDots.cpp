@@ -85,7 +85,7 @@ void InsetMathDots::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetMathDots::mathmlize(MathStream & os) const
+void InsetMathDots::mathmlize(MathStream & ms) const
 {
 	// which symbols we support is decided by what is listed in
 	// lib/symbols as generating a dots inset
@@ -103,7 +103,7 @@ void InsetMathDots::mathmlize(MathStream & os) const
 		ent = "&vellip;";
 	else
 		LASSERT(false, ent = "&hellip;");
-	os << MTag("mi") << from_ascii(ent) << ETag("mi");
+	ms << MTag("mi") << from_ascii(ent) << ETag("mi");
 }
 
 

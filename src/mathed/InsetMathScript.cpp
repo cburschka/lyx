@@ -612,32 +612,32 @@ void InsetMathScript::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathScript::mathmlize(MathStream & os) const
+void InsetMathScript::mathmlize(MathStream & ms) const
 {
 	bool d = hasDown() && !down().empty();
 	bool u = hasUp() && !up().empty();
 	bool l = hasLimits();
 
 	if (u && d)
-		os << MTag(l ? "munderover" : "msubsup");
+		ms << MTag(l ? "munderover" : "msubsup");
 	else if (u)
-		os << MTag(l ? "mover" : "msup");
+		ms << MTag(l ? "mover" : "msup");
 	else if (d)
-		os << MTag(l ? "munder" : "msub");
+		ms << MTag(l ? "munder" : "msub");
 
 	if (!nuc().empty())
-		os << MTag("mrow") << nuc() << ETag("mrow");
+		ms << MTag("mrow") << nuc() << ETag("mrow");
 	else
-		os << "<mrow />";
+		ms << "<" << from_ascii(ms.namespacedTag("mrow")) << " />";
 
 	if (u && d)
-		os << MTag("mrow") << down() << ETag("mrow")
+		ms << MTag("mrow") << down() << ETag("mrow")
 		   << MTag("mrow") << up() << ETag("mrow")
 		   << ETag(l ? "munderover" : "msubsup");
 	else if (u)
-		os << MTag("mrow") << up() << ETag("mrow") << ETag(l ? "mover" : "msup");
+		ms << MTag("mrow") << up() << ETag("mrow") << ETag(l ? "mover" : "msup");
 	else if (d)
-		os << MTag("mrow") << down() << ETag("mrow") << ETag(l ? "munder" : "msub");
+		ms << MTag("mrow") << down() << ETag("mrow") << ETag(l ? "munder" : "msub");
 }
 
 

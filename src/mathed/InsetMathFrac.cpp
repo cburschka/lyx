@@ -491,14 +491,14 @@ void InsetMathFrac::octave(OctaveStream & os) const
 }
 
 
-void InsetMathFrac::mathmlize(MathStream & os) const
+void InsetMathFrac::mathmlize(MathStream & ms) const
 {
 	switch (kind_) {
 	case ATOP:
-		os << MTag("mfrac", "linethickeness='0'")
+		ms << MTag("mfrac", "linethickness='0'")
 		   << MTag("mrow") << cell(0) << ETag("mrow")
-			 << MTag("mrow") << cell(1) << ETag("mrow")
-			 << ETag("mfrac");
+		   << MTag("mrow") << cell(1) << ETag("mrow")
+		   << ETag("mfrac");
 		break;
 
 	// we do not presently distinguish these
@@ -509,38 +509,38 @@ void InsetMathFrac::mathmlize(MathStream & os) const
 	case CFRAC:
 	case CFRACLEFT:
 	case CFRACRIGHT:
-		os << MTag("mfrac")
+		ms << MTag("mfrac")
 		   << MTag("mrow") << cell(0) << ETag("mrow")
-			 << MTag("mrow") << cell(1) << ETag("mrow")
-			 << ETag("mfrac");
+		   << MTag("mrow") << cell(1) << ETag("mrow")
+		   << ETag("mfrac");
 		break;
 
 	case NICEFRAC:
-		os << MTag("mfrac", "bevelled='true'")
+		ms << MTag("mfrac", "bevelled='true'")
 		   << MTag("mrow") << cell(0) << ETag("mrow")
-			 << MTag("mrow") << cell(1) << ETag("mrow")
-			 << ETag("mfrac");
+		   << MTag("mrow") << cell(1) << ETag("mrow")
+		   << ETag("mfrac");
 		break;
 
 	case UNITFRAC:
 		if (nargs() == 3)
-			os << cell(2);
-		os << MTag("mfrac", "bevelled='true'")
+			ms << cell(2);
+		ms << MTag("mfrac", "bevelled='true'")
 		   << MTag("mrow") << cell(0) << ETag("mrow")
-			 << MTag("mrow") << cell(1) << ETag("mrow")
-			 << ETag("mfrac");
+		   << MTag("mrow") << cell(1) << ETag("mrow")
+		   << ETag("mfrac");
 		break;
 
 	case UNIT:
 		// FIXME This is not right, because we still output mi, etc,
 		// when we output the cell. So we need to prevent that somehow.
 		if (nargs() == 2)
-			os << cell(0)
-			   << MTag("mstyle mathvariant='normal'")
-			   << cell(1)
+			ms << cell(0)
+			   << MTag("mstyle mathvariant='normal'") 
+			   << cell(1) 
 			   << ETag("mstyle");
 		else
-			os << MTag("mstyle mathvariant='normal'")
+			ms << MTag("mstyle mathvariant='normal'")
 			   << cell(0)
 			   << ETag("mstyle");
 	}
@@ -730,7 +730,7 @@ void InsetMathBinom::normalize(NormalStream & os) const
 }
 
 
-void InsetMathBinom::mathmlize(MathStream & os) const
+void InsetMathBinom::mathmlize(MathStream & ms) const
 {
 	char ldelim = ' ';
 	char rdelim = ' ';
@@ -751,11 +751,15 @@ void InsetMathBinom::mathmlize(MathStream & os) const
 		rdelim = ']';
 		break;
 	}
-	os << "<mo fence='true' stretchy='true' form='prefix'>" << ldelim << "</mo>"
-	   << "<mfrac linethickness='0'>"
+	ms << "<" << from_ascii(ms.namespacedTag("mo")) << " fence='true' stretchy='true' form='prefix'>"
+	   << ldelim
+	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
+	   << "<" << from_ascii(ms.namespacedTag("mfrac")) << " linethickness='0'>"
 	   << cell(0) << cell(1)
-	   << "</mfrac>"
-	   << "<mo fence='true' stretchy='true' form='postfix'>" << rdelim << "</mo>";
+       << "</" << from_ascii(ms.namespacedTag("mfrac")) << ">"
+	   << "<" << from_ascii(ms.namespacedTag("mo")) << " fence='true' stretchy='true' form='postfix'>"
+	   << rdelim
+	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">";
 }
 
 

@@ -269,8 +269,8 @@ WriteStream & operator<<(WriteStream & ws, unsigned int i)
 //////////////////////////////////////////////////////////////////////
 
 
-MathStream::MathStream(odocstream & os)
-	: os_(os), tab_(0), line_(0), in_text_(false)
+MathStream::MathStream(odocstream & os, std::string xmlns)
+	: os_(os), tab_(0), line_(0), in_text_(false), xmlns_(xmlns)
 {}
 
 
@@ -339,10 +339,10 @@ MathStream & operator<<(MathStream & ms, MTag const & t)
 {
 	++ms.tab();
 	ms.cr();
-	ms.os() << '<' << from_ascii(t.tag_);
+	ms.os() << '<' << from_ascii(ms.namespacedTag(t.tag_));
 	if (!t.attr_.empty())
 		ms.os() << " " << from_ascii(t.attr_);
-	ms << '>';
+	ms << ">";
 	return ms;
 }
 
@@ -352,7 +352,18 @@ MathStream & operator<<(MathStream & ms, ETag const & t)
 	ms.cr();
 	if (ms.tab() > 0)
 		--ms.tab();
-	ms.os() << "</" << from_ascii(t.tag_) << '>';
+	ms.os() << "</" << from_ascii(ms.namespacedTag(t.tag_)) << ">";
+	return ms;
+}
+
+
+MathStream & operator<<(MathStream & ms, CTag const & t)
+{
+	ms.cr();
+	ms.os() << "<" << from_ascii(ms.namespacedTag(t.tag_));
+    if (!t.attr_.empty())
+        ms.os() << " " << from_utf8(t.attr_);
+    ms.os() << "/>";
 	return ms;
 }
 
@@ -452,17 +463,17 @@ HtmlStream & operator<<(HtmlStream & ms, docstring const & s)
 //////////////////////////////////////////////////////////////////////
 
 
-SetMode::SetMode(MathStream & os, bool text)
-	: os_(os)
+SetMode::SetMode(MathStream & ms, bool text)
+	: ms_(ms)
 {
-	was_text_ = os_.inText();
-	os_.setTextMode(text);
+	was_text_ = ms_.inText();
+	ms_.setTextMode(text);
 }
 
 
 SetMode::~SetMode()
 {
-	os_.setTextMode(was_text_);
+	ms_.setTextMode(was_text_);
 }
 
 

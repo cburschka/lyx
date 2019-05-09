@@ -385,41 +385,41 @@ void InsetMathSideset::normalize(NormalStream & os) const
 }
 
 
-void InsetMathSideset::mathmlize(MathStream & os) const
+void InsetMathSideset::mathmlize(MathStream & ms) const
 {
 	// FIXME This is only accurate if both scriptl_ and scriptr_ are true
 	if (!scriptl_)
-		os << MTag("mrow") << bl() << ETag("mrow");
+		ms << MTag("mrow") << bl() << ETag("mrow");
 	if (scriptl_ || scriptr_) {
-		os << MTag("mmultiscripts");
+		ms << MTag("mmultiscripts");
 
 		if (nuc().empty())
-			os << "<mrow />";
+			ms << "<" << from_ascii(ms.namespacedTag("mrow")) << " />";
 		else
-			os << MTag("mrow") << nuc() << ETag("mrow");
+			ms << MTag("mrow") << nuc() << ETag("mrow");
 
 		if (br().empty() || !scriptr_)
-			os << "<none />";
+			ms << "<" << from_ascii(ms.namespacedTag("none")) << " />";
 		else
-			os << MTag("mrow") << br() << ETag("mrow");
+			ms << MTag("mrow") << br() << ETag("mrow");
 		if (tr().empty() || !scriptr_)
-			os << "<none />";
+			ms << "<" << from_ascii(ms.namespacedTag("none")) << " />";
 		else
-			os << MTag("mrow") << tr() << ETag("mrow");
+			ms << MTag("mrow") << tr() << ETag("mrow");
 
 		if (bl().empty() || !scriptl_)
-			os << "<none />";
+			ms << "<" << from_ascii(ms.namespacedTag("none")) << " />";
 		else
-			os << MTag("mrow") << bl() << ETag("mrow");
+			ms << MTag("mrow") << bl() << ETag("mrow");
 		if (tl().empty() || !scriptl_)
-			os << "<none />";
+			ms << "<" << from_ascii(ms.namespacedTag("none")) << " />";
 		else
-			os << MTag("mrow") << tl() << ETag("mrow");
+			ms << MTag("mrow") << tl() << ETag("mrow");
 
-		os << ETag("mmultiscripts");
+		ms << ETag("mmultiscripts");
 	}
 	if (!scriptr_)
-		os << MTag("mrow") << br() << ETag("mrow");
+		ms << MTag("mrow") << br() << ETag("mrow");
 }
 
 

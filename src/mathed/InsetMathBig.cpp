@@ -135,11 +135,12 @@ void InsetMathBig::normalize(NormalStream & os) const
 }
 
 
-void InsetMathBig::mathmlize(MathStream & os) const
+void InsetMathBig::mathmlize(MathStream & ms) const
 {
-	os << "<mo form='prefix' fence='true' stretchy='true' symmetric='true'>"
+	ms << "<" << from_ascii(ms.namespacedTag("mo"))
+	   << " form='prefix' fence='true' stretchy='true' symmetric='true'>"
 	   << convertDelimToXMLEscape(delim_)
-	   << "</mo>";
+	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">";
 }
 
 

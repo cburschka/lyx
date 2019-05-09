@@ -105,16 +105,18 @@ void InsetMathOverset::normalize(NormalStream & os) const
 
 void InsetMathOverset::mathmlize(MathStream & ms) const
 {
-	ms << "<mover accent='false'>" << cell(0) << cell(1) << "</mover>";
+	ms << "<" << from_ascii(ms.namespacedTag("mover")) << " accent='false'>"
+	   << cell(0) << cell(1)
+	   << "</" << from_ascii(ms.namespacedTag("mover")) << ">";
 }
 
 
 void InsetMathOverset::htmlize(HtmlStream & os) const
 {
 	os << MTag("span", "class='overset'")
-		 << MTag("span", "class='top'") << cell(1) << ETag("span")
-		 << MTag("span") << cell(0) << ETag("span")
-		 << ETag("span");
+	   << MTag("span", "class='top'") << cell(1) << ETag("span")
+	   << MTag("span") << cell(0) << ETag("span")
+	   << ETag("span");
 }
 
 

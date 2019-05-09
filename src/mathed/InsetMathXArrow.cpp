@@ -123,9 +123,9 @@ void InsetMathXArrow::mathmlize(MathStream & ms) const
 		lyxerr << "mathmlize conversion for '" << name_ << "' not implemented" << endl;
 		LASSERT(false, arrow = "&rarr;");
 	}
-	ms << "<munderover accent='false' accentunder='false'>"
+	ms << "<" << from_ascii(ms.namespacedTag("munderover")) << " accent='false' accentunder='false'>"
 	   << arrow << cell(1) << cell(0)
-	   << "</munderover>";
+	   << "</" << from_ascii(ms.namespacedTag("munderover"))<< ">";
 }
 
 

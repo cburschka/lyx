@@ -293,6 +293,8 @@ private:
 //  MathML
 //
 
+
+/// Start tag.
 class MTag {
 public:
 	///
@@ -304,12 +306,27 @@ public:
 	std::string attr_;
 };
 
+
+/// End tag.
 class ETag {
 public:
 	///
 	explicit ETag(char const * const tag) : tag_(tag) {}
 	///
 	char const * const tag_;
+};
+
+
+/// Compound tag (no content, directly closed).
+class CTag {
+public:
+	///
+	CTag(char const * const tag, std::string attr = "")
+            : tag_(tag), attr_(attr) {}
+	///
+	char const * const tag_;
+    ///
+    std::string attr_;
 };
 
 
@@ -322,8 +339,8 @@ class MathExportException : public std::exception {};
 
 class MathStream {
 public:
-	///
-	explicit MathStream(odocstream & os);
+	/// Builds a stream proxy for os; the MathML namespace is given by xmlns (supposed to be already defined elsewhere in the document).
+	explicit MathStream(odocstream & os, std::string xmlns="");
 	///
 	void cr();
 	///
@@ -342,6 +359,10 @@ public:
 	docstring deferred() const;
 	///
 	bool inText() const { return in_text_; }
+	///
+	std::string xmlns() const { return xmlns_; }
+	/// Returns the tag name prefixed by the name space if needed.
+	std::string namespacedTag(std::string tag) const { return ((xmlns().empty()) ? "" : xmlns() + ":") + tag; }
 private:
 	///
 	void setTextMode(bool t) { in_text_ = t; }
@@ -355,6 +376,8 @@ private:
 	bool in_text_;
 	///
 	odocstringstream deferred_;
+	///
+	std::string xmlns_;
 	///
 	friend class SetMode;
 };
@@ -375,18 +398,20 @@ MathStream & operator<<(MathStream &, char_type);
 MathStream & operator<<(MathStream &, MTag const &);
 ///
 MathStream & operator<<(MathStream &, ETag const &);
+///
+MathStream & operator<<(MathStream &, CTag const &);
 
 
 /// A simpler version of ModeSpecifier, for MathML
 class SetMode {
 public:
 	///
-	explicit SetMode(MathStream & os, bool text);
+	explicit SetMode(MathStream & ms, bool text);
 	///
 	~SetMode();
 private:
 	///
-	MathStream & os_;
+	MathStream & ms_;
 	///
 	bool was_text_;
 };

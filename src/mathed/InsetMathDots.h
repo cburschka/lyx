@@ -35,7 +35,7 @@ public:
 	///
 	InsetCode lyxCode() const { return MATH_DOTS_CODE; }
 	///
-	void mathmlize(MathStream & os) const;
+	void mathmlize(MathStream & ms) const;
 	///
 	void htmlize(HtmlStream & os) const;
 protected:

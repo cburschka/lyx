@@ -193,7 +193,7 @@ void InsetMathFont::htmlize(HtmlStream & os) const
 
 
 // The fonts we want to support are listed in lib/symbols
-void InsetMathFont::mathmlize(MathStream & os) const
+void InsetMathFont::mathmlize(MathStream & ms) const
 {
 	// FIXME These are not quite right, because they do not nest
 	// correctly. A proper fix would presumably involve tracking
@@ -224,11 +224,11 @@ void InsetMathFont::mathmlize(MathStream & os) const
 	// no support at present for textipa, textsc, noun
 
 	if (!variant.empty())
-		os << MTag("mstyle", "mathvariant='" + variant + "'")
+		ms << MTag("mstyle", "mathvariant='" + variant + "'")
 		   << cell(0)
 		   << ETag("mstyle");
 	else
-		os << cell(0);
+		ms << cell(0);
 }
 
 

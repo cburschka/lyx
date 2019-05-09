@@ -209,7 +209,7 @@ void InsetMathSpace::mathmlize(MathStream & ms) const
 		l = ss.str() + "px";
 	}
 
-	ms << "<mspace";
+	ms << "<" << from_ascii(ms.namespacedTag("mspace"));
 	if (!l.empty())
 		ms << " width=\"" << from_ascii(l) << "\"";
 	ms << " />";

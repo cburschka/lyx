@@ -98,9 +98,9 @@ void InsetMathSqrt::octave(OctaveStream & os) const
 }
 
 
-void InsetMathSqrt::mathmlize(MathStream & os) const
+void InsetMathSqrt::mathmlize(MathStream & ms) const
 {
-	os << MTag("msqrt") << cell(0) << ETag("msqrt");
+	ms << MTag("msqrt") << cell(0) << ETag("msqrt");
 }
 
 

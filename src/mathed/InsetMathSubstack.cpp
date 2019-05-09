@@ -125,19 +125,19 @@ void InsetMathSubstack::maple(MapleStream & os) const
 }
 
 
-void InsetMathSubstack::mathmlize(MathStream & os) const
+void InsetMathSubstack::mathmlize(MathStream & ms) const
 {
 	int movers = 0;
 	row_type const numrows = nrows();
 	for (row_type row = 0; row < nrows(); ++row) {
 		if (row < numrows - 1) {
 			movers ++;
-			os << MTag("munder");
+			ms << MTag("munder");
 		}
-		os << MTag("mrow") << cell(index(row, 0)) << ETag("mrow");
+		ms << MTag("mrow") << cell(index(row, 0)) << ETag("mrow");
 	}
 	for (int i = 1; i <= movers; ++i)
-		os << ETag("munder");
+		ms << ETag("munder");
 }
 
 

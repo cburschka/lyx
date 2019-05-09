@@ -162,18 +162,18 @@ void InsetMathSymbol::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathSymbol::mathmlize(MathStream & os) const
+void InsetMathSymbol::mathmlize(MathStream & ms) const
 {
 	// FIXME We may need to do more interesting things
 	// with MathMLtype.
-	char const * type = sym_->MathMLtype();
-	os << '<' << type << "> ";
+	docstring tag = from_ascii(ms.namespacedTag(sym_->MathMLtype()));
+	ms << '<' << tag << ">";
 	if (sym_->xmlname == "x")
 		// unknown so far
-		os << name();
+		ms << name();
 	else
-		os << sym_->xmlname;
-	os << " </" << type << '>';
+		ms << sym_->xmlname;
+	ms << "</" << tag << '>';
 }
 
 

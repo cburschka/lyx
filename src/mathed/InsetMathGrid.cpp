@@ -1184,15 +1184,15 @@ void InsetMathGrid::normalize(NormalStream & os) const
 }
 
 
-void InsetMathGrid::mathmlize(MathStream & os) const
+void InsetMathGrid::mathmlize(MathStream & ms) const
 {
 	bool const havetable = nrows() > 1 || ncols() > 1;
 	if (havetable)
-		os << MTag("mtable");
+		ms << MTag("mtable");
 	char const * const celltag = havetable ? "mtd" : "mrow";
 	for (row_type row = 0; row < nrows(); ++row) {
 		if (havetable)
-			os << MTag("mtr");
+			ms << MTag("mtr");
 		for (col_type col = 0; col < ncols(); ++col) {
 			idx_type const i = index(row, col);
 			if (cellinfo_[i].multi != CELL_PART_OF_MULTICOLUMN) {
@@ -1200,16 +1200,16 @@ void InsetMathGrid::mathmlize(MathStream & os) const
 				ostringstream attr;
 				if (havetable && cellcols > 1)
 					attr << "colspan='" << cellcols << '\'';
-				os << MTag(celltag, attr.str());
-				os << cell(index(row, col));
-				os << ETag(celltag);
+				ms << MTag(celltag, attr.str());
+				ms << cell(index(row, col));
+				ms << ETag(celltag);
 			}
 		}
 		if (havetable)
-			os << ETag("mtr");
+			ms << ETag("mtr");
 	}
 	if (havetable)
-		os << ETag("mtable");
+		ms << ETag("mtable");
 }
 
 

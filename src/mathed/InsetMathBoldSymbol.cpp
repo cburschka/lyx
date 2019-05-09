@@ -107,9 +107,11 @@ void InsetMathBoldSymbol::write(WriteStream & os) const
 }
 
 
-void InsetMathBoldSymbol::mathmlize(MathStream & os) const
+void InsetMathBoldSymbol::mathmlize(MathStream & ms) const
 {
-	os << "<mstyle mathvariant='bold'>" << cell(0) << "</mstyle>";
+	ms << "<" << from_ascii(ms.namespacedTag("mstyle")) << " mathvariant='bold'>"
+	   << cell(0)
+	   << "</" << from_ascii(ms.namespacedTag("mstyle")) << ">";
 }
 
 

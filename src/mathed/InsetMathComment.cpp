@@ -83,9 +83,9 @@ void InsetMathComment::maple(MapleStream & os) const
 }
 
 
-void InsetMathComment::mathmlize(MathStream & os) const
+void InsetMathComment::mathmlize(MathStream & ms) const
 {
-	os << MTag("comment") << cell(0) << ETag("comment");
+	ms << MTag("comment") << cell(0) << ETag("comment");
 }
 
 

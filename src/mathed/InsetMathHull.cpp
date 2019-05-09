@@ -2517,13 +2517,13 @@ void InsetMathHull::htmlize(HtmlStream & os) const
 // this duplicates code from InsetMathGrid, but
 // we need access here to number information,
 // and we simply do not have that in InsetMathGrid.
-void InsetMathHull::mathmlize(MathStream & os) const
+void InsetMathHull::mathmlize(MathStream & ms) const
 {
 	bool const havenumbers = haveNumbers();
 	bool const havetable = havenumbers || nrows() > 1 || ncols() > 1;
 
 	if (havetable)
-		os << MTag("mtable");
+		ms << MTag("mtable");
 	char const * const celltag = havetable ? "mtd" : "mrow";
 	// FIXME There does not seem to be wide support at the moment
 	// for mlabeledtr, so we have to use just mtr for now.
@@ -2531,25 +2531,25 @@ void InsetMathHull::mathmlize(MathStream & os) const
 	char const * const rowtag = "mtr";
 	for (row_type row = 0; row < nrows(); ++row) {
 		if (havetable)
-			os << MTag(rowtag);
+			ms << MTag(rowtag);
 		for (col_type col = 0; col < ncols(); ++col) {
-			os << MTag(celltag)
+			ms << MTag(celltag)
 			   << cell(index(row, col))
 			   << ETag(celltag);
 		}
 		// fleqn?
 		if (havenumbers) {
-			os << MTag("mtd");
+			ms << MTag("mtd");
 			docstring const & num = numbers_[row];
 			if (!num.empty())
-				os << '(' << num << ')';
-		  os << ETag("mtd");
+				ms << '(' << num << ')';
+		  ms << ETag("mtd");
 		}
 		if (havetable)
-			os << ETag(rowtag);
+			ms << ETag(rowtag);
 	}
 	if (havetable)
-		os << ETag("mtable");
+		ms << ETag("mtable");
 }
 
 

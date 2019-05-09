@@ -179,19 +179,22 @@ void InsetMathDelim::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathDelim::mathmlize(MathStream & os) const
+void InsetMathDelim::mathmlize(MathStream & ms) const
 {
-	os << "<mo form='prefix' fence='true' stretchy='true' symmetric='true'>"
-	   << "<mrow>"
+	ms << "<" << from_ascii(ms.namespacedTag("mo")) << " form='prefix' fence='true' stretchy='true' symmetric='true'>"
+	   << "<" << from_ascii(ms.namespacedTag("mrow")) << ">"
 	   << convertDelimToXMLEscape(left_)
-	   << "</mrow>"
-	   << "</mo>\n"
+	   << "</" << from_ascii(ms.namespacedTag("mrow")) << ">"
+	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
+	   << "\n"
 	   << cell(0)
-	   << "\n<mo form='postfix' fence='true' stretchy='true' symmetric='true'>"
-	   << "<mrow>"
+	   << "\n"
+	   << "<" << from_ascii(ms.namespacedTag("mo")) << " form='postfix' fence='true' stretchy='true' symmetric='true'>"
+	   << "<" << from_ascii(ms.namespacedTag("mrow")) << ">"
 	   << convertDelimToXMLEscape(right_)
-	   << "</mrow>"
-	   << "</mo>\n";
+	   << "</" << from_ascii(ms.namespacedTag("mrow")) << ">"
+	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
+	   << "\n";
 }
 
 

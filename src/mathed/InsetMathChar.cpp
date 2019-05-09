@@ -239,15 +239,18 @@ void InsetMathChar::mathmlize(MathStream & ms) const
 	}
 
 	if (!entity.empty()) {
-		ms << "<mo>" << from_ascii(entity) << "</mo>";
+		ms << "<" << from_ascii(ms.namespacedTag("mo")) << ">"
+		   << from_ascii(entity)
+		   << "</" << from_ascii(ms.namespacedTag("mo")) << ">";
 		return;
 	}
 
 	char const * type =
 		(isAlphaASCII(char_) || Encodings::isMathAlpha(char_))
 			? "mi" : "mo";
-	// we don't use MTag and ETag because we do not want the spacing
-	ms << "<" << type << ">" << char_type(char_) << "</" << type << ">";
+	// we don't use MTag and ETag because we do not want the spacing before the end tag.
+	docstring tag = from_ascii(ms.namespacedTag(type));
+	ms << "<" << tag << ">" << char_type(char_) << "</" << tag << ">";
 }
 
 

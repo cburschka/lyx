@@ -1176,7 +1176,7 @@ void InsetMathMacro::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathMacro::mathmlize(MathStream & os) const
+void InsetMathMacro::mathmlize(MathStream & ms) const
 {
 	// macro_ is 0 if this is an unknown macro
 	LATTEST(d->macro_ || d->displayMode_ != DISPLAY_NORMAL);
@@ -1184,8 +1184,9 @@ void InsetMathMacro::mathmlize(MathStream & os) const
 		docstring const xmlname = d->macro_->xmlname();
 		if (!xmlname.empty()) {
 			char const * type = d->macro_->MathMLtype();
-			os << '<' << type << "> " << xmlname << " </"
-			   << type << '>';
+			ms << "<" << from_ascii(ms.namespacedTag(type)) << ">"
+			   << xmlname
+			   << "</" << from_ascii(ms.namespacedTag(type)) << ">";
 			return;
 		}
 	}
@@ -1193,7 +1194,7 @@ void InsetMathMacro::mathmlize(MathStream & os) const
 		// this means that we do not recognize the macro
 		throw MathExportException();
 	}
-	os << d->expanded_;
+	ms << d->expanded_;
 }
 
 

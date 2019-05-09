@@ -138,21 +138,21 @@ void InsetMathCancel::htmlize(HtmlStream & os) const
 }
 
 
-void InsetMathCancel::mathmlize(MathStream & os) const
+void InsetMathCancel::mathmlize(MathStream & ms) const
 {
 	switch (kind_) {
 	case cancel:
-		os << MTag("menclose", "notation='updiagonalstrike'")
+		ms << MTag("menclose", "notation='updiagonalstrike'")
 		   << cell(0)
 		   << ETag("menclose");
 		break;
 	case bcancel:
-		os << MTag("menclose", "notation='downdiagonalstrike'")
+		ms << MTag("menclose", "notation='downdiagonalstrike'")
 		   << cell(0)
 		   << ETag("menclose");
 		break;
 	case xcancel:
-		os << MTag("menclose", "notation='updiagonalstrike'")
+		ms << MTag("menclose", "notation='updiagonalstrike'")
 		   << MTag("menclose", "notation='downdiagonalstrike'")
 		   << cell(0)
 		   << ETag("menclose")

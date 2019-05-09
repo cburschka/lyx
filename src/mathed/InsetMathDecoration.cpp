@@ -218,16 +218,18 @@ namespace {
 	}
 } // namespace
 
-void InsetMathDecoration::mathmlize(MathStream & os) const
+void InsetMathDecoration::mathmlize(MathStream & ms) const
 {
 	TranslationMap const & t = translationMap();
 	TranslationMap::const_iterator cur = t.find(to_utf8(key_->name));
 	LASSERT(cur != t.end(), return);
 	char const * const outag = cur->second.over ? "mover" : "munder";
-	os << MTag(outag)
-		 << MTag("mrow") << cell(0) << ETag("mrow")
-		 << from_ascii("<mo stretchy=\"true\">" + cur->second.tag + "</mo>")
-		 << ETag(outag);
+	ms << MTag(outag)
+	   << MTag("mrow") << cell(0) << ETag("mrow")
+	   << "<" << from_ascii(ms.namespacedTag("mo")) << " stretchy=\"true\">"
+	   << from_ascii(cur->second.tag)
+	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
+	   << ETag(outag);
 }
 
 
