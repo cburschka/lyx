@@ -210,7 +210,7 @@
 0x0132 "\IJ"                      "" "mathalpha,force=utf8x;euc-jp;euc-kr,notermination=math" "IJ" "" # LATIN CAPITAL LIGATURE IJ
 0x0133 "\ij"                      "" "mathalpha,force=utf8x;euc-jp;euc-kr,notermination=math" "ij" "" # LATIN SMALL LIGATURE IJ
 0x0134 "\\^{J}"                   "" "mathalpha,force=euc-jp" "\\hat{J}" # LATIN CAPITAL LETTER J WITH CIRCUMFLEX
-0x0135 "\\^{\\j}"                 "" "mathalpha,force=utf8;euc-jp" "\\hat{\\jmath}" "" # LATIN SMALL LETTER J WITH CIRCUMFLEX
+0x0135 "\\^{\\j}"                 "" "mathalpha,force=euc-jp" "\\hat{\\jmath}" "" # LATIN SMALL LETTER J WITH CIRCUMFLEX
 0x0136 "\\c{K}"                   "textbaltic!=L7x" "mathalpha,force=utf8;euc-jp" "\\cedilla{K}" "accents,cedilla" # LATIN CAPITAL LETTER K WITH CEDILLA  (actually a comma accent, Latvian)
 0x0137 "\\c{k}"                   "textbaltic!=L7x" "mathalpha,force=utf8;euc-jp" "\\cedilla{k}" "accents,cedilla" # LATIN SMALL LETTER K WITH CEDILLA  (actually a comma accent, Latvian)
 #0x0138 ""                         "" "" "" "" # LATIN SMALL LETTER KRA
@@ -400,7 +400,7 @@
 #0x01ed ""                         "" "" # LATIN SMALL LETTER O WITH OGONEK AND MACRON
 #0x01ee ""                         "" "" # LATIN CAPITAL LETTER EZH WITH CARON
 #0x01ef ""                         "" "" # LATIN SMALL LETTER EZH WITH CARON
-0x01f0 "\\v{\\j}"                 "" "mathalpha,force=utf8;utf8-cjk" "\\check{\\jmath}" "" # LATIN SMALL LETTER J WITH CARON
+0x01f0 "\\v{\\j}"                 "" "mathalpha" "\\check{\\jmath}" "" # LATIN SMALL LETTER J WITH CARON
 #0x01f1 ""                         "" "" # LATIN CAPITAL LETTER DZ
 #0x01f2 ""                         "" "" # LATIN CAPITAL LETTER D WITH SMALL LETTER Z
 #0x01f3 ""                         "" "" # LATIN SMALL LETTER DZ
@@ -465,8 +465,8 @@
 0x022f "\\.{o}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\dot{o}" # LATIN SMALL LETTER O WITH DOT ABOVE
 #0x0230 ""                         "" "" # LATIN CAPITAL LETTER O WITH DOT ABOVE AND MACRON
 #0x0231 ""                         "" "" # LATIN SMALL LETTER O WITH DOT ABOVE AND MACRON
-0x0232 "\\={Y}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\bar{Y}" # LATIN CAPITAL LETTER Y WITH MACRON
-0x0233 "\\={y}"                   "" "mathalpha,force=utf8;utf8-cjk" "\\bar{y}" # LATIN SMALL LETTER Y WITH MACRON
+0x0232 "\\={Y}"                   "" "mathalpha" "\\bar{Y}" # LATIN CAPITAL LETTER Y WITH MACRON
+0x0233 "\\={y}"                   "" "mathalpha" "\\bar{y}" # LATIN SMALL LETTER Y WITH MACRON
 #0x0234 ""                         "" "" # LATIN SMALL LETTER L WITH CURL
 0x0235 "\\textctn"                "tipa" "force" # LATIN SMALL LETTER N WITH CURL
 0x0236 "\\textctt"                "tipa" "force" # LATIN SMALL LETTER T WITH CURL
@@ -1425,8 +1425,8 @@
 #0x1e1d ""                         "" "" # LATIN SMALL LETTER E WITH CEDILLA AND BREVE
 0x1e1e "\\.{F}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{F}" # LATIN CAPITAL LETTER F WITH DOT ABOVE
 0x1e1f "\\.{f}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{f}" # LATIN SMALL LETTER F WITH DOT ABOVE
-0x1e20 "\\={G}"                   "" "force=utf8;utf8-cjk" # LATIN CAPITAL LETTER G WITH MACRON
-0x1e21 "\\={g}"                   "" "force=utf8;utf8-cjk," # LATIN SMALL LETTER G WITH MACRON
+0x1e20 "\\={G}"                   "" "" # LATIN CAPITAL LETTER G WITH MACRON
+0x1e21 "\\={g}"                   "" "" # LATIN SMALL LETTER G WITH MACRON
 0x1e22 "\\.{H}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{H}" # LATIN CAPITAL LETTER H WITH DOT ABOVE
 0x1e23 "\\.{h}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\dot{h}" # LATIN SMALL LETTER H WITH DOT ABOVE
 0x1e24 "\\d{H}"                   "" "force=utf8;utf8-cjk,mathalpha" "\\subdot{H}" "accents,subdot" # LATIN CAPITAL LETTER H WITH DOT BELOW
@@ -1895,12 +1895,12 @@
 #0x200d ""                         "" "" "" "" # ZERO WIDTH JOINER
 #0x200e ""                         "" "" "" "" # LEFT-TO-RIGHT MARK
 #0x200f ""                         "" "" "" "" # RIGHT-TO-LEFT MARK
-0x2010 "-"                        "" "force=utf8x;euc-jp;gbk;jis,notermination=text" "" "" # HYPHEN # identic in LaTeX to FIGURE DASH
+0x2010 "-"                        "" "force=utf8x;euc-jp;gbk;jis,notermination=text" "" "" # HYPHEN, use HYPHEN-MINUS
 0x2011 "\\nobreakdash-"           "amsmath" "notermination=text" "" "" # NON-BREAKING HYPHEN
-0x2012 "-"                        "" "force=utf8x,notermination=text" "" "" # FIGURE DASH
+0x2012 "-"                        "" "force=utf8x,notermination=text" "" "" # FIGURE DASH, use HYPHEN-MINUS
 0x2013 "\\textendash"             "" "force=euc-tw;gbk" # EN DASH
 0x2014 "\\textemdash"             "" "force=armscii8;euc-tw;gbk" # EM DASH
-# use the following macro for the character HORIZONTAL BAR
+# use the following macro for the character HORIZONTAL BAR # inputenc uses \textemdash
 0x2015 "\\LyXbar" "\\newcommand*\\LyXbar{\\rule[0.585ex]{1.2em}{0.25pt}}" "force"
 0x2016 "\\textbardbl"             "textcomp" "force=utf8x;euc-cn;euc-jp;euc-tw;gbk;jis,notermination=math,tipashortcut=\\textdoublevertline{}" "\\|" "" # DOUBLE VERTICAL LINE
 0x2017 "\\subdoublebar{ }"        "extraipa" "force=cp850;iso8859-8;utf8;utf8-cjk;utf8x" "" "" # DOUBLE LOW LINE
