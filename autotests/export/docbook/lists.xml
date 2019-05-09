@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0dev
+  See http://www.lyx.org/ for more information -->
+<article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.1">
+<title>Test document</title>
+<para>A list: </para>
+<itemizedlist>
+<listitem>
+<para>First item</para>
+<itemizedlist>
+<listitem>
+<para>First first item</para>
+</listitem>
+<listitem>
+<para>First second item</para>
+</listitem>
+</itemizedlist>
+<para>Text after first item</para>
+</listitem>
+<listitem>
+<para>Second item</para>
+<orderedlist>
+<listitem>
+<para>Second first item</para>
+</listitem>
+<listitem>
+<para>Second second item</para>
+</listitem>
+</orderedlist>
+<para>Text after second item</para>
+</listitem>
+</itemizedlist>
+</article>

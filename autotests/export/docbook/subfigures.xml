@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0dev
+  See http://www.lyx.org/ for more information -->
+<article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.1">
+<title>Test document</title>
+<para>Formalgroup with two images: </para>
+<formalgroup>
+<title>Formalgroup, figures above.</title>
+<figure>
+<title>Subfigure a.</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="C:/Users/Thibaut/Documents/GitHub/Apprentissage_automatique/01_manus_lyx/lyx-logo.png"  />
+</imageobject>
+</mediaobject>
+</figure>
+<figure>
+<title>Subfigure b.</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="C:/Users/Thibaut/Documents/GitHub/Apprentissage_automatique/01_manus_lyx/lyx-logo.png"  />
+</imageobject>
+</mediaobject>
+</figure>
+</formalgroup>
+<formalgroup>
+<title>Formalgroup, figures below.</title>
+<figure>
+<title>Subfigure a.</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="C:/Users/Thibaut/Documents/GitHub/Apprentissage_automatique/01_manus_lyx/lyx-logo.png"  />
+</imageobject>
+</mediaobject>
+</figure>
+<figure>
+<title>Subfigure b.</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="C:/Users/Thibaut/Documents/GitHub/Apprentissage_automatique/01_manus_lyx/lyx-logo.png"  />
+</imageobject>
+</mediaobject>
+</figure>
+</formalgroup>
+<para>Formalgroup with two tables: </para>
+<formalgroup>
+<title>Formalgroup, tables above.</title>
+<table>
+<caption>Subtable a.</caption>
+<tbody>
+<tr>
+<td align='center' valign='top'>a</td>
+<td align='center' valign='top'>b</td>
+</tr><tr>
+<td align='center' valign='top'>c</td>
+<td align='center' valign='top'>d</td>
+</tr></tbody>
+</table>
+<table>
+<caption>Subtable b.</caption>
+<tbody>
+<tr>
+<td align='center' valign='top'>a</td>
+<td align='center' valign='top'>b</td>
+</tr><tr>
+<td align='center' valign='top'>c</td>
+<td align='center' valign='top'>d</td>
+</tr>
+</tbody>
+</table>
+</formalgroup>
+<formalgroup>
+<title>Formalgroup, tables above.</title>
+<table>
+<caption>Subtable a.</caption>
+<tbody>
+<tr>
+<td align='center' valign='top'>a</td>
+<td align='center' valign='top'>b</td>
+</tr><tr>
+<td align='center' valign='top'>c</td>
+<td align='center' valign='top'>d</td>
+</tr></tbody>
+</table>
+<table>
+<caption>Subtable b.</caption>
+<tbody>
+<tr>
+<td align='center' valign='top'>a</td>
+<td align='center' valign='top'>b</td>
+</tr><tr>
+<td align='center' valign='top'>c</td>
+<td align='center' valign='top'>d</td>
+</tr></tbody>
+</table>
+</formalgroup>
+
+</article>

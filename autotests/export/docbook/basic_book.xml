@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0dev
+  See http://www.lyx.org/ for more information -->
+<book xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.1">
+
+<info><title>Book title</title>
+<author><personname>Book author</personname></author>
+
+<abstract><para>Book abstract in info. </para>
+</abstract>
+</info>
+<chapter>
+<title>First chapter (outside part)</title>
+<para>Paragraph. </para>
+</chapter>
+<part>
+<title>First part</title>
+
+<partintro><para>Part intro. </para>
+</partintro>
+<chapter>
+<title>First chapter of first part</title>
+<para>Paragraph. </para>
+</chapter>
+<chapter>
+<title>Second chapter of first part</title>
+<para>Paragraph. </para>
+</chapter>
+</part>
+<part>
+<title>Second part</title>
+
+<partintro><para>Part 2 intro. </para>
+</partintro>
+<chapter>
+<title>First chapter of second part</title>
+<para>Paragraph. </para>
+</chapter>
+<chapter>
+<title>Second chapter of second part</title>
+<para>Paragraph. </para>
+</chapter>
+</part>
+
+</book>
