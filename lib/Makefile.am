@@ -355,8 +355,7 @@ dist_articleexamples_DATA = \
 	examples/Articles/Astronomy_%26_Astrophysics.lyx \
 	examples/Articles/American_Astronomical_Society_%28AASTeX_v._6.2%29.lyx \
 	examples/Articles/American_Chemical_Society_%28ACS%29.lyx \
-	examples/Articles/American_Mathematical_Society_%28AMS%29.lyx \
-	examples/Articles/DocBook_Article_%28SGML%29.lyx
+	examples/Articles/American_Mathematical_Society_%28AMS%29.lyx
 
 articlechessexamplesdir = $(pkgdatadir)/examples/Articles/Chess
 dist_articlechessexamples_DATA = \
@@ -2547,7 +2546,6 @@ dist_articletemplates_DATA = \
 	templates/Articles/Astronomy_%26_Astrophysics.lyx \
 	templates/Articles/Chinese_Article_%28CTeX%29.lyx \
 	templates/Articles/Copernicus_Publications_Manuscript_Preparation.lyx \
-	templates/Articles/DocBook_Article_%28SGML%29.lyx \
 	templates/Articles/Econometrica.lyx \
 	templates/Articles/Elsevier.lyx \
 	templates/Articles/Hebrew_Article_%28KOMA-Script%29.lyx \
