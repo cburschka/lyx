@@ -235,9 +235,24 @@ Language arabic_arabi
 	DateFormats      "d MMMM، yyyy|dd/MM/yyyy|d/M/yyyy"
 	RTL              true
 	PostBabelPreamble
-	  % arabi + hyperref redefines \noboundary as local textcommand
+	  % arabic + hyperref redefines \noboundary as local textcommand
 	  \let\orig@noboundary\noboundary
 	  \DeclareTextCommandDefault{\noboundary}{\orig@noboundary}
+	  % work around too simple test for article-like classes in arabicore.sty
+	  \ifdefined\chapter\else
+	    \def\thesection{\protect\if@rl\protect\I{\number\c@section}%
+	      \protect\else\protect\textLR{\number\c@section}%
+	      \protect\fi}
+	    \def\thesubsection{\protect\if@rl\protect\I{\number\c@subsection.\number\c@section}%
+	      \protect\else\protect\textLR{\number\c@section.\number\c@subsection}%
+	      \protect\fi}%
+	    \def\thetable{\protect\if@rl\protect\I{\number\c@table}%
+	      \protect\else\protect\textLR{\number\c@table}%
+	      \protect\fi}%
+	    \def\thefigure{\protect\if@rl\protect\I{\number\c@figure}%
+	      \protect\else\protect\textLR{\number\c@figure}%
+	      \protect\fi}%
+	  \fi
 	EndPostBabelPreamble
 	LangCode         ar_SA
 End
@@ -824,7 +839,7 @@ Language icelandic
 End
 
 # Interlingua has no official country code because it is an auxiliary
-# language. We therefore the name of its hunspell dictionary.
+# language. We use the name of its hunspell dictionary.
 Language interlingua
 	GuiName          "Interlingua"
 	HasGuiSupport    true
