@@ -89,8 +89,8 @@ export/export/latex/languages/ja[-_].*_(pdf2|texF)
 # Exceptions: 
 # The "!" means: "Protect these tests from being matched by future patterns in this file".
 # Export by plain- and pdflatex engines works with language "japanese-cjk", e.g.
-!export/examples/ja/Multilingual_Typesetting_.*CJK.*(dvi|pdf[23]?)
-!export/examples/ja/Multilingual_Typesetting_.*CJK.*systemF
+!export/examples/ja/Multilingual_Typesetting_with_CJK_(dvi|pdf[23]?)
+!export/examples/ja/Multilingual_Typesetting_with_CJK_.*systemF
 # the rest:
 export/.*/ja/.*_(pdf2|texF)
 

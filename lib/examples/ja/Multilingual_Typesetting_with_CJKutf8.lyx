@@ -144,17 +144,25 @@ For multi-lingual documents with parts in European languages, you can use
 \begin_layout Itemize
 
 \lang english
-Use one of the Japanese 
+Use one of the 
+\begin_inset Quotes bld
+\end_inset
+
+Japanese (
 \begin_inset CommandInset href
 LatexCommand href
-name "BXjscls"
+name "BXJS"
 target "https://www.ctan.org/pkg/bxjscls"
 literal "false"
 
 \end_inset
 
+)
+\begin_inset Quotes brd
+\end_inset
+
  classes or a standard document class.
- The other document classes starting with 
+ The other 
 \begin_inset Quotes bld
 \end_inset
 
@@ -162,7 +170,7 @@ Japanese
 \begin_inset Quotes brd
 \end_inset
 
- require pLaTeX.
+ document classes require pLaTeX.
 \end_layout
 
 \begin_layout Itemize
@@ -198,11 +206,11 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-\begin_inset Quotes sld
+\begin_inset Quotes bld
 \end_inset
 
 min
-\begin_inset Quotes srd
+\begin_inset Quotes brd
 \end_inset
 
 
@@ -239,7 +247,22 @@ Libertine
 \noindent
 
 \lang english
-Alternatively, you can use non-TeX fonts with xeCJK (XeTeX) or luatexja
+Alternatively, you can use non-TeX fonts with 
+\begin_inset Quotes bld
+\end_inset
+
+xeCJK
+\begin_inset Quotes brd
+\end_inset
+
+ (XeTeX) or 
+\begin_inset Quotes bld
+\end_inset
+
+luatexja
+\begin_inset Quotes brd
+\end_inset
+
  (LuaTeX).
  See the document preamble for an example.
 \end_layout

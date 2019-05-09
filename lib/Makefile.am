@@ -235,8 +235,8 @@ dist_itinsetexamples_DATA = \
 
 jaexamplesdir = $(pkgdatadir)/examples/ja
 dist_jaexamples_DATA = \
-	examples/ja/Multilingual_Typesetting_%28CJKutf8%29.lyx \
-	examples/ja/Multilingual_Typesetting_%28platex%29.lyx \
+	examples/ja/Multilingual_Typesetting_with_CJKutf8.lyx \
+	examples/ja/Multilingual_Typesetting_with_platex.lyx \
 	examples/ja/Welcome.lyx
 
 jainsetexamplesdir = $(pkgdatadir)/examples/ja/Graphics_and_Insets
