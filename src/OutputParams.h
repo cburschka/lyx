@@ -102,6 +102,11 @@ public:
 	*/
 	bool intitle;
 
+	/** inbranch == true means that the environment being typeset
+	    is inside an active branch inset.
+	*/
+	bool inbranch;
+
 	/** inulemcmd > 0 means that the environment in which the
 	    inset is typeset is part of a ulem or soul command (e.g., \uline,
 	    \uuline, \uwave, \sout or \xout). Insets that output latex commands

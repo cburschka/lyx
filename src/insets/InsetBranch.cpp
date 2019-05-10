@@ -292,8 +292,11 @@ bool InsetBranch::producesOutput() const
 
 void InsetBranch::latex(otexstream & os, OutputParams const & runparams) const
 {
-	if (producesOutput())
-		InsetText::latex(os, runparams);
+	if (producesOutput()) {
+		OutputParams rp = runparams;
+		rp.inbranch = true;
+		InsetText::latex(os, rp);
+	}
 }
 
 
