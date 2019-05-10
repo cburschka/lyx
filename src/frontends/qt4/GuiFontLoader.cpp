@@ -42,9 +42,6 @@ int const num_math_fonts = sizeof(math_fonts) / sizeof(*math_fonts);
 
 namespace lyx {
 
-extern docstring const stateText(FontInfo const & f,
-				 bool const terse = false);
-
 namespace frontend {
 
 /**
@@ -353,7 +350,7 @@ QFont makeQFont(FontInfo const & f)
 			break;
 	}
 
-	LYXERR(Debug::FONT, "Font '" << stateText(f)
+	LYXERR(Debug::FONT, "Font '" << f.stateText()
 		<< "' matched by\n" << font.family());
 
 	// Is this an exact match?

@@ -161,6 +161,9 @@ public:
 	/// \param realize the \param font against the current FontInfo.
 	Changer change(FontInfo font, bool realize = false);
 
+	/// Build GUI description of font state
+	docstring const stateText(bool const terse = false) const;
+
 private:
 	friend bool operator==(FontInfo const & lhs, FontInfo const & rhs);
 

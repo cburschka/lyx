@@ -49,32 +49,9 @@ extern char const * LyXSeriesNames[NUM_SERIES + 2];
 extern char const * LyXShapeNames[NUM_SHAPE + 2];
 extern char const * LyXSizeNames[NUM_SIZE + 4];
 extern char const * LyXMiscNames[5];
-
-//
-// Names for the GUI
-//
+extern char const * GUIMiscNames[5];
 
 namespace {
-
-char const * GUIFamilyNames[NUM_FAMILIES + 2 /* default & error */] =
-{ N_("Roman"), N_("Sans Serif"), N_("Typewriter"), N_("Symbol"),
-  "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "eufrak", "rsfs", "stmry",
-  "wasy", "esint", N_("Inherit"), N_("Ignore") };
-
-char const * GUISeriesNames[NUM_SERIES + 2 /* default & error */] =
-{ N_("Medium"), N_("Bold"), N_("Inherit"), N_("Ignore") };
-
-char const * GUIShapeNames[NUM_SHAPE + 2 /* default & error */] =
-{ N_("Upright"), N_("Italic"), N_("Slanted"), N_("Smallcaps"), N_("Inherit"),
-  N_("Ignore") };
-
-char const * GUISizeNames[NUM_SIZE + 4 /* increase, decrease, default & error */] =
-{ N_("Tiny"), N_("Smallest"), N_("Smaller"), N_("Small"), N_("Normal"), N_("Large"),
-  N_("Larger"), N_("Largest"), N_("Huge"), N_("Huger"), N_("Increase"), N_("Decrease"),
-  N_("Inherit"), N_("Ignore") };
-
-char const * GUIMiscNames[5] =
-{ N_("Off"), N_("On"), N_("Toggle"), N_("Inherit"), N_("Ignore") };
 
 //
 // Strings used to write LaTeX files
@@ -143,55 +120,10 @@ void Font::update(Font const & newfont,
 }
 
 
-docstring const stateText(FontInfo const & f, bool const terse)
-{
-	odocstringstream os;
-	if (f.family() != INHERIT_FAMILY && (!terse || f.family() != IGNORE_FAMILY))
-		os << _(GUIFamilyNames[f.family()]) << ", ";
-	if (f.series() != INHERIT_SERIES && (!terse || f.series() != IGNORE_SERIES))
-		os << _(GUISeriesNames[f.series()]) << ", ";
-	if (f.shape() != INHERIT_SHAPE && (!terse || f.shape() != IGNORE_SHAPE))
-		os << _(GUIShapeNames[f.shape()]) << ", ";
-	if (f.size() != FONT_SIZE_INHERIT && (!terse || f.size() != FONT_SIZE_IGNORE))
-		os << _(GUISizeNames[f.size()]) << ", ";
-	// FIXME: shall style be handled there? Probably not.
-	if (f.color() != Color_inherit && (!terse || f.color() != Color_ignore))
-		os << lcolor.getGUIName(f.color()) << ", ";
-	// FIXME: uncomment this when we support background.
-	//if (f.background() != Color_inherit)
-	//	os << lcolor.getGUIName(f.background()) << ", ";
-	if (f.emph() != FONT_INHERIT && (!terse || f.emph() != FONT_IGNORE))
-		os << bformat(_("Emphasis %1$s, "),
-			      _(GUIMiscNames[f.emph()]));
-	if (f.underbar() != FONT_INHERIT && (!terse || f.underbar() == FONT_ON))
-		os << bformat(_("Underline %1$s, "),
-			      _(GUIMiscNames[f.underbar()]));
-	if (f.uuline() != FONT_INHERIT && (!terse || f.uuline() == FONT_ON))
-		os << bformat(_("Double underline %1$s, "),
-			      _(GUIMiscNames[f.uuline()]));
-	if (f.uwave() != FONT_INHERIT && (!terse || f.uwave() == FONT_ON))
-		os << bformat(_("Wavy underline %1$s, "),
-			      _(GUIMiscNames[f.uwave()]));
-	if (f.strikeout() != FONT_INHERIT && (!terse || f.strikeout() == FONT_ON))
-		os << bformat(_("Strike out %1$s, "),
-			      _(GUIMiscNames[f.strikeout()]));
-	if (f.xout() != FONT_INHERIT && (!terse || f.xout() == FONT_ON))
-		os << bformat(_("Cross out %1$s, "),
-			      _(GUIMiscNames[f.xout()]));
-	if (f.noun() != FONT_INHERIT && (!terse || f.noun() != FONT_IGNORE))
-		os << bformat(_("Noun %1$s, "),
-			      _(GUIMiscNames[f.noun()]));
-	if (f == inherit_font)
-		os << _("Default") << ", ";
-
-	return os.str();
-}
-
-
 docstring const Font::stateText(BufferParams * params, bool const terse) const
 {
 	odocstringstream os;
-	os << lyx::stateText(bits_, terse);
+	os << bits_.stateText(terse);
 	if ((!params || (language() != params->language))
 	    && (!terse || language() != ignore_language)) {
 		// reset_language is a null pointer!
@@ -729,32 +661,32 @@ void Font::validate(LaTeXFeatures & features) const
 	if (bits_.noun() == FONT_ON) {
 		LYXERR(Debug::LATEX, "font.noun: " << bits_.noun());
 		features.require("noun");
-		LYXERR(Debug::LATEX, "Noun enabled. Font: " << to_utf8(stateText(0)));
+		LYXERR(Debug::LATEX, "Noun enabled. Font: " << to_utf8(stateText()));
 	}
 	if (bits_.underbar() == FONT_ON) {
 		LYXERR(Debug::LATEX, "font.underline: " << bits_.underbar());
 		features.require("ulem");
-		LYXERR(Debug::LATEX, "Underline enabled. Font: " << to_utf8(stateText(0)));
+		LYXERR(Debug::LATEX, "Underline enabled. Font: " << to_utf8(stateText()));
 	}
 	if (bits_.strikeout() == FONT_ON) {
 		LYXERR(Debug::LATEX, "font.strikeout: " << bits_.strikeout());
 		features.require("ulem");
-		LYXERR(Debug::LATEX, "Strike out enabled. Font: " << to_utf8(stateText(0)));
+		LYXERR(Debug::LATEX, "Strike out enabled. Font: " << to_utf8(stateText()));
 	}
 	if (bits_.xout() == FONT_ON) {
 		LYXERR(Debug::LATEX, "font.xout: " << bits_.xout());
 		features.require("ulem");
-		LYXERR(Debug::LATEX, "Cross out enabled. Font: " << to_utf8(stateText(0)));
+		LYXERR(Debug::LATEX, "Cross out enabled. Font: " << to_utf8(stateText()));
 	}
 	if (bits_.uuline() == FONT_ON) {
 		LYXERR(Debug::LATEX, "font.uuline: " << bits_.uuline());
 		features.require("ulem");
-		LYXERR(Debug::LATEX, "Double underline enabled. Font: " << to_utf8(stateText(0)));
+		LYXERR(Debug::LATEX, "Double underline enabled. Font: " << to_utf8(stateText()));
 	}
 	if (bits_.uwave() == FONT_ON) {
 		LYXERR(Debug::LATEX, "font.uwave: " << bits_.uwave());
 		features.require("ulem");
-		LYXERR(Debug::LATEX, "Wavy underline enabled. Font: " << to_utf8(stateText(0)));
+		LYXERR(Debug::LATEX, "Wavy underline enabled. Font: " << to_utf8(stateText()));
 	}
 	switch (bits_.color()) {
 		case Color_none:
@@ -780,7 +712,7 @@ void Font::validate(LaTeXFeatures & features) const
 			break;
 		default:
 			features.require("color");
-			LYXERR(Debug::LATEX, "Color enabled. Font: " << to_utf8(stateText(0)));
+			LYXERR(Debug::LATEX, "Color enabled. Font: " << to_utf8(stateText()));
 	}
 
 	// FIXME: Do something for background and soul package?

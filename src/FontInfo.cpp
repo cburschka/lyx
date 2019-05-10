@@ -22,6 +22,7 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstring.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/RefChanger.h"
 
@@ -33,6 +34,31 @@ using namespace std;
 using namespace lyx::support;
 
 namespace lyx {
+
+//
+// Names for the GUI
+//
+
+char const * GUIFamilyNames[NUM_FAMILIES + 2 /* default & error */] =
+{ N_("Roman"), N_("Sans Serif"), N_("Typewriter"), N_("Symbol"),
+  "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "eufrak", "rsfs", "stmry",
+  "wasy", "esint", N_("Inherit"), N_("Ignore") };
+
+char const * GUISeriesNames[NUM_SERIES + 2 /* default & error */] =
+{ N_("Medium"), N_("Bold"), N_("Inherit"), N_("Ignore") };
+
+char const * GUIShapeNames[NUM_SHAPE + 2 /* default & error */] =
+{ N_("Upright"), N_("Italic"), N_("Slanted"), N_("Smallcaps"), N_("Inherit"),
+  N_("Ignore") };
+
+char const * GUISizeNames[NUM_SIZE + 4 /* increase, decrease, default & error */] =
+{ N_("Tiny"), N_("Smallest"), N_("Smaller"), N_("Small"), N_("Normal"), N_("Large"),
+  N_("Larger"), N_("Largest"), N_("Huge"), N_("Huger"), N_("Increase"), N_("Decrease"),
+  N_("Inherit"), N_("Ignore") };
+
+char const * GUIMiscNames[5] =
+{ N_("Off"), N_("On"), N_("Toggle"), N_("Inherit"), N_("Ignore") };
+
 
 //
 // Strings used to read and write .lyx format files
@@ -566,6 +592,51 @@ docstring FontInfo::asCSS() const
 	if (!tmp.empty())
 		appendSep(retval, makeCSSTag("font-size", tmp));
 	return from_ascii(retval);
+}
+
+
+docstring const FontInfo::stateText(bool const terse) const
+{
+	odocstringstream os;
+	if (family() != INHERIT_FAMILY && (!terse || family() != IGNORE_FAMILY))
+		os << _(GUIFamilyNames[family()]) << ", ";
+	if (series() != INHERIT_SERIES && (!terse || series() != IGNORE_SERIES))
+		os << _(GUISeriesNames[series()]) << ", ";
+	if (shape() != INHERIT_SHAPE && (!terse || shape() != IGNORE_SHAPE))
+		os << _(GUIShapeNames[shape()]) << ", ";
+	if (size() != FONT_SIZE_INHERIT && (!terse || size() != FONT_SIZE_IGNORE))
+		os << _(GUISizeNames[size()]) << ", ";
+	// FIXME: shall style be handled there? Probably not.
+	if (color() != Color_inherit && (!terse || color() != Color_ignore))
+		os << lcolor.getGUIName(color()) << ", ";
+	// FIXME: uncomment this when we support background.
+	//if (background() != Color_inherit)
+	//	os << lcolor.getGUIName(background()) << ", ";
+	if (emph() != FONT_INHERIT && (!terse || emph() != FONT_IGNORE))
+		os << bformat(_("Emphasis %1$s, "),
+			      _(GUIMiscNames[emph()]));
+	if (underbar() != FONT_INHERIT && (!terse || underbar() == FONT_ON))
+		os << bformat(_("Underline %1$s, "),
+			      _(GUIMiscNames[underbar()]));
+	if (uuline() != FONT_INHERIT && (!terse || uuline() == FONT_ON))
+		os << bformat(_("Double underline %1$s, "),
+			      _(GUIMiscNames[uuline()]));
+	if (uwave() != FONT_INHERIT && (!terse || uwave() == FONT_ON))
+		os << bformat(_("Wavy underline %1$s, "),
+			      _(GUIMiscNames[uwave()]));
+	if (strikeout() != FONT_INHERIT && (!terse || strikeout() == FONT_ON))
+		os << bformat(_("Strike out %1$s, "),
+			      _(GUIMiscNames[strikeout()]));
+	if (xout() != FONT_INHERIT && (!terse || xout() == FONT_ON))
+		os << bformat(_("Cross out %1$s, "),
+			      _(GUIMiscNames[xout()]));
+	if (noun() != FONT_INHERIT && (!terse || noun() != FONT_IGNORE))
+		os << bformat(_("Noun %1$s, "),
+			      _(GUIMiscNames[noun()]));
+	if (*this == inherit_font)
+		os << _("Default") << ", ";
+
+	return os.str();
 }
 
 

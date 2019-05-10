@@ -90,7 +90,7 @@ public:
 
 
 	/// Build GUI description of font state
-	docstring const stateText(BufferParams * params, bool const terse = false) const;
+	docstring const stateText(BufferParams * params = 0, bool const terse = false) const;
 
 	///
 	void validate(LaTeXFeatures & features) const;
