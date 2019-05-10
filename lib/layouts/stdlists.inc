@@ -6,7 +6,7 @@
 # This include files contains various standard environments for lists.
 
 
-Format 81
+Format 82
 
 Input stdlyxlist.inc
 
@@ -43,6 +43,9 @@ Style Itemize
 			Color latex
 		EndFont
 	EndArgument
+	DocBookTag            itemizedlist
+	DocBookItemTag        listitem
+	DocBookItemInnerTag   para
 End
 
 
@@ -82,6 +85,9 @@ Style Enumerate
 			Color latex
 		EndFont
 	EndArgument
+	DocBookTag            orderedlist
+	DocBookItemTag        listitem
+	DocBookItemInnerTag   para
 End
 
 Style Description
@@ -121,6 +127,11 @@ Style Description
 			Color latex
 		EndFont
 	EndArgument
+	DocBookTag            variablelist
+	DocBookItemWrapperTag varlistentry
+	DocBookItemTag        listitem
+	DocBookItemInnerTag   para
+	DocBookItemLabelTag   term
 End
 
 

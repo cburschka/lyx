@@ -4,12 +4,13 @@
 # KOMA scrbook textclass definition file.
 # Bernd Rellermeyer <100.41728@germanynet.de>, 1998/7/11.
 
-Format 81
+Format 82
 Input scrclass.inc
 Input numreport.inc
 
 Sides			2
 PageStyle		Headings
+DocBookRoot		book
 
 NoStyle Abstract
 

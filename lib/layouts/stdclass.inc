@@ -7,7 +7,7 @@
 # ``standard'' layouts, like article and friends.
 
 
-Format 81
+Format 82
 Columns                 1
 Sides                   1
 SecNumDepth             2
@@ -41,6 +41,7 @@ Style Standard
 			margin-bottom: 2ex;
 		}
 	EndHTMLStyle
+	DocBookTag             para
 End
 
 #Input stdcharstyles.inc

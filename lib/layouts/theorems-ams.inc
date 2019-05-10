@@ -20,7 +20,7 @@
 # - Proof
 # - Case (by inclusion)
 
-Format 81
+Format 82
 
 OutlinerName thm "Definitions & Theorems"
 
@@ -278,6 +278,8 @@ Style Remark
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\remarkname}{_(Remark)}}
 	EndBabelPreamble
+	DocBookTag            note
+	DocBookItemTag        para
 End
 
 

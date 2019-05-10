@@ -27,7 +27,7 @@
 # Another command, \ingred{...}, is defined to typeset a
 # list of ingredients.
 
-Format 81
+Format 82
 Input scrclass.inc
 Input numreport.inc
 
@@ -35,6 +35,7 @@ Input numreport.inc
 SecNumDepth		2
 TocDepth		3
 PageStyle		Headings
+DocBookRoot		book
 
 # There is no abstract environment in scrbook.cls
 NoStyle Abstract

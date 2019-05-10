@@ -4,7 +4,7 @@
 #
 # Detailed format description is available in the customization manual
 
-Format 81
+Format 82
 
 Provides stdinsets 1
 
@@ -44,6 +44,8 @@ InsetLayout Marginal
 	EndHTMLStyle
 	AddToToc              marginalnote
 	IsTocCaption          true
+	DocBookTag            sidebar
+	DocBookAttr           role="margin"
 End
 
 InsetLayout Foot
@@ -87,6 +89,7 @@ InsetLayout Foot
 	EndHTMLStyle
 	AddToToc              footnote
 	IsTocCaption          true
+	DocBookTag            footnote
 End
 
 InsetLayout Foot:InTitle
@@ -379,6 +382,7 @@ InsetLayout Listings
 			margin: 1ex;
 	}
 	EndHTMLStyle
+	DocBookTag            programlisting
 End
 
 InsetLayout MintedListings
@@ -569,6 +573,7 @@ InsetLayout "Flex:URL"
 	  Size                Small
 	EndFont
 	HTMLIsBlock           false
+	DocBookTag            link
 End
 
 InsetLayout Argument

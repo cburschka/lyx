@@ -9,7 +9,7 @@
 # modifying the style of the regular sectioning layouts.
 
 
-Format 81
+Format 82
 Style Part*
 	CopyStyle	Part
 	Category	Unnumbered
@@ -18,6 +18,10 @@ Style Part*
 	LabelType	No_Label
 	LabelCounter	""
 	ResetArgs       1
+	DocBookTag            bridgehead
+	DocBookAttr           renderas="part"
+	DocBookSectionTag     NONE
+	DocBookForceAbstractTag	NONE
 End
 
 
@@ -29,6 +33,10 @@ Style Chapter*
 	LabelType	No_Label
 	LabelCounter	""
 	ResetArgs       1
+	DocBookTag            bridgehead
+	DocBookAttr           renderas="chapter"
+	DocBookSectionTag     NONE
+	DocBookForceAbstractTag	NONE
 End
 
 
@@ -40,6 +48,10 @@ Style Section*
 	LabelType	No_Label
 	LabelCounter	""
 	ResetArgs       1
+	DocBookTag            bridgehead
+	DocBookAttr           renderas="sect1"
+	DocBookSectionTag     NONE
+	DocBookForceAbstractTag	NONE
 End
 
 
@@ -51,6 +63,10 @@ Style Subsection*
 	LabelType	No_Label
 	LabelCounter	""
 	ResetArgs       1
+	DocBookTag            bridgehead
+	DocBookAttr           renderas="sect2"
+	DocBookSectionTag     NONE
+	DocBookForceAbstractTag	NONE
 End
 
 
@@ -62,6 +78,10 @@ Style Subsubsection*
 	LabelType	No_Label
 	LabelCounter	""
 	ResetArgs       1
+	DocBookTag            bridgehead
+	DocBookAttr           renderas="sect3"
+	DocBookSectionTag     NONE
+	DocBookForceAbstractTag	NONE
 End
 
 
@@ -73,6 +93,10 @@ Style Paragraph*
 	LabelType	No_Label
 	LabelCounter	""
 	ResetArgs       1
+	DocBookTag            bridgehead
+	DocBookAttr           renderas="sect4"
+	DocBookSectionTag     NONE
+	DocBookForceAbstractTag	NONE
 End
 
 
@@ -84,4 +108,8 @@ Style Subparagraph*
 	LabelType	No_Label
 	LabelCounter	""
 	ResetArgs       1
+	DocBookTag            bridgehead
+	DocBookAttr           renderas="sect5"
+	DocBookSectionTag     NONE
+	DocBookForceAbstractTag	NONE
 End

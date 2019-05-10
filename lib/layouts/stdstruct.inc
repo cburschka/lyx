@@ -8,7 +8,8 @@
 # a document, like abstract, bibliography and such.
 
 
-Format 81
+Format 82
+
 Style Abstract
 	Margin                Static
 	LatexType             Environment
@@ -48,6 +49,9 @@ Style Abstract
 			font-weight: bold;
 		}
 	EndHTMLStyle
+	DocBookTag            abstract
+	DocBookItemTag        para
+	DocBookInInfo         always
 End
 
 
@@ -93,4 +97,5 @@ Style Bibliography
 	    Color latex
 	  EndFont
 	EndArgument
+	DocBookTag            bibliography
 End

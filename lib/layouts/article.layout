@@ -6,11 +6,12 @@
 # Transposed by Pascal André <andre@via.ecp.fr>
 # Heavily modifed and enhanced by serveral developers.
 
-Format 81
+Format 82
 Input stdclass.inc
 
 SecNumDepth             3
 TocDepth                3
+DocBookRoot             article
 
 NoStyle Chapter
 NoCounter chapter

@@ -22,7 +22,7 @@
 # - Case (by inclusion)
 
 # We need separate counters for each theorem-like style.
-Format 81
+Format 82
 Counter theorem
 	GuiName Theorem
 End
@@ -327,6 +327,8 @@ Style Remark
 	  \addto\captions$$lang{\renewcommand{\remarkname}{_(Remark)}}
 	EndBabelPreamble
 	LabelCounter          remark
+	DocBookTag            note
+	DocBookItemTag        para
 End
 
 

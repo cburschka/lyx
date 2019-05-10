@@ -6,7 +6,7 @@
 # It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
-Format 81
+Format 82
 OutputType              docbook
 
 Columns                 1
@@ -33,10 +33,9 @@ End
 
 
 InsetLayout Flex:Firstname
-	LyXType element
 	LabelString Firstname
 	LatexType             Command
-	LatexName             firstname
+	DocBookTag            firstname
 	Font
 	  Shape               SmallCaps
 	EndFont
@@ -48,10 +47,9 @@ InsetLayout Flex:Firstname
 End
 
 InsetLayout Flex:Fname
-	LyXType element
 	LabelString Fname
 	LatexType             Command
-	LatexName             fname
+	DocBookTag            fname
 	Font
 	  Shape               SmallCaps
 	EndFont
@@ -64,10 +62,9 @@ End
 
 
 InsetLayout Flex:Surname
-	LyXType element
 	LabelString Surname
 	LatexType             Command
-	LatexName             surname
+	DocBookTag            surname
 	Font
 	  Shape               SmallCaps
 	EndFont
@@ -80,10 +77,9 @@ End
 
 
 InsetLayout Flex:Filename
-	LyXType element
 	LabelString Filename
 	LatexType             Command
-	LatexName             filename
+	DocBookTag            filename
 	Font
 	  Family              Typewriter
 	EndFont
@@ -96,10 +92,9 @@ End
 
 
 InsetLayout Flex:Literal
-	LyXType element
 	LabelString Literal
 	LatexType             Command
-	LatexName             literal
+	DocBookTag            literal
 	Font
 	  Family              Typewriter
 	EndFont
@@ -112,11 +107,10 @@ End
 
 
 InsetLayout Flex:Emph
-	LyXType element
 	LabelString Emph
 	LatexType             Command
-	LatexName             emph
-	LatexParam            "type=<italic>"
+	DocBookTag            emph
+	DocBookAttr           "type='italic'"
 	Font
 	  Shape               Italic
 	EndFont
@@ -129,10 +123,9 @@ End
 
 
 InsetLayout Flex:Abbrev
-	LyXType element
 	LabelString Abbrev
 	LatexType             Command
-	LatexName             abbrev
+	DocBookTag            abbrev
 	LabelFont
 	  Color               blue
 	EndFont
@@ -141,10 +134,9 @@ End
 
 
 InsetLayout Flex:Citation-number
-	LyXType element
 	LabelString Citation-number
 	LatexType             Command
-	LatexName             citation-number
+	DocBookTag            citation-number
 	LabelFont
 	  Color               blue
 	EndFont
@@ -153,10 +145,9 @@ End
 
 
 InsetLayout Flex:Volume
-	LyXType element
 	LabelString Volume
 	LatexType             Command
-	LatexName             volume
+	DocBookTag            volume
 	LabelFont
 	  Color               blue
 	EndFont
@@ -165,10 +156,9 @@ End
 
 
 InsetLayout Flex:Day
-	LyXType element
 	LabelString Day
 	LatexType             Command
-	LatexName             day
+	DocBookTag            day
 	LabelFont
 	  Color               blue
 	EndFont
@@ -177,10 +167,9 @@ End
 
 
 InsetLayout Flex:Month
-	LyXType element
 	LabelString Month
 	LatexType             Command
-	LatexName             month
+	DocBookTag            month
 	LabelFont
 	  Color               blue
 	EndFont
@@ -189,10 +178,9 @@ End
 
 
 InsetLayout Flex:Year
-	LyXType element
 	LabelString Year
 	LatexType             Command
-	LatexName             year
+	DocBookTag            year
 	LabelFont
 	  Color               blue
 	EndFont
@@ -201,10 +189,9 @@ End
 
 
 InsetLayout Flex:Issue-number
-	LyXType element
 	LabelString Issue-number
 	LatexType             Command
-	LatexName             issue-number
+	DocBookTag            issue-number
 	LabelFont
 	  Color               blue
 	EndFont
@@ -213,10 +200,9 @@ End
 
 
 InsetLayout Flex:Issue-day
-	LyXType element
 	LabelString Issue-day
 	LatexType             Command
-	LatexName             issue-day
+	DocBookTag            issue-day
 	LabelFont
 	  Color               blue
 	EndFont
@@ -225,10 +211,9 @@ End
 
 
 InsetLayout Flex:Issue-months
-	LyXType element
 	LabelString Issue-months
 	LatexType             Command
-	LatexName             issue-months
+	DocBookTag            issue-months
 	LabelFont
 	  Color               blue
 	EndFont

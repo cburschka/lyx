@@ -6,7 +6,7 @@
 # It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
-Format 81
+Format 82
 Input stdtitle.inc
 
 
@@ -320,10 +320,10 @@ End
 # Inside AGU-journal:
 
 InsetLayout Flex:ISSN
-	LyXType element
 	LabelString ISSN
 	LatexType             Command
-	LatexName             ISSN
+	DocBookTag            biblioid
+	DocBookAttr           "class='issn'"
 	LabelFont
 	  Color               blue
 	EndFont
@@ -332,10 +332,10 @@ End
 
 
 InsetLayout Flex:CODEN
-	LyXType element
 	LabelString CODEN
 	LatexType             Command
-	LatexName             CODEN
+	DocBookTag            biblioid
+	DocBookAttr           "class='coden'"
 	LabelFont
 	  Color               blue
 	EndFont
@@ -345,10 +345,9 @@ End
 # Inside Special-section:
 
 InsetLayout Flex:SS-Code
-	LyXType element
 	LabelString SS-Code
 	LatexType             Command
-	LatexName             ss-code
+	DocBookTag            ss-code
 	LabelFont
 	  Color               blue
 	EndFont
@@ -357,10 +356,9 @@ End
 
 
 InsetLayout Flex:SS-Title
-	LyXType element
 	LabelString SS-Title
 	LatexType             Command
-	LatexName             ss-title
+	DocBookTag            ss-title
 	LabelFont
 	  Color               blue
 	EndFont
@@ -370,10 +368,9 @@ End
 # Inside Copyright:
 
 InsetLayout Flex:CCC-Code
-	LyXType element
 	LabelString CCC-Code
 	LatexType             Command
-	LatexName             CCCcode
+	DocBookTag            CCCcode
 	LabelFont
 	  Color               blue
 	EndFont
@@ -384,10 +381,9 @@ End
 # Inside Index-term:
 
 InsetLayout Flex:Code
-	LyXType element
 	LabelString Code
 	LatexType             Command
-	LatexName             code
+	DocBookTag            code
 	LabelFont
 	  Color               blue
 	EndFont
@@ -396,10 +392,9 @@ End
 
 
 InsetLayout Flex:Dscr
-	LyXType element
 	LabelString Dscr
 	LatexType             Command
-	LatexName             dscr
+	DocBookTag            dscr
 	LabelFont
 	  Color               blue
 	EndFont
@@ -409,10 +404,9 @@ End
 # Inside Keywords:
 
 InsetLayout Flex:Keyword
-	LyXType element
 	LabelString Keyword
 	LatexType             Command
-	LatexName             keyword
+	DocBookTag            keyword
 	LabelFont
 	  Color               blue
 	EndFont
@@ -422,10 +416,9 @@ End
 #inside Affiliation:
 
 InsetLayout Flex:Orgdiv
-	LyXType element
 	LabelString Orgdiv
 	LatexType             Command
-	LatexName             orgdiv
+	DocBookTag            orgdiv
 	LabelFont
 	  Color               blue
 	EndFont
@@ -434,10 +427,9 @@ End
 
 
 InsetLayout Flex:Orgname
-	LyXType element
 	LabelString Orgname
 	LatexType             Command
-	LatexName             orgname
+	DocBookTag            orgname
 	LabelFont
 	  Color               blue
 	EndFont
@@ -446,10 +438,9 @@ End
 
 
 InsetLayout Flex:Street
-	LyXType element
 	LabelString Street
 	LatexType             Command
-	LatexName             street
+	DocBookTag            street
 	LabelFont
 	  Color               blue
 	EndFont
@@ -458,10 +449,9 @@ End
 
 
 InsetLayout Flex:City
-	LyXType element
 	LabelString City
 	LatexType             Command
-	LatexName             city
+	DocBookTag            city
 	LabelFont
 	  Color               blue
 	EndFont
@@ -470,10 +460,9 @@ End
 
 
 InsetLayout Flex:State
-	LyXType element
 	LabelString State
 	LatexType             Command
-	LatexName             state
+	DocBookTag            state
 	LabelFont
 	  Color               blue
 	EndFont
@@ -482,10 +471,9 @@ End
 
 
 InsetLayout Flex:Postcode
-	LyXType element
 	LabelString Postcode
 	LatexType             Command
-	LatexName             postcode
+	DocBookTag             postcode
 	LabelFont
 	  Color               blue
 	EndFont
@@ -494,10 +482,9 @@ End
 
 
 InsetLayout Flex:Country
-	LyXType element
 	LabelString Country
 	LatexType             Command
-	LatexName             country
+	DocBookTag             country
 	LabelFont
 	  Color               blue
 	EndFont

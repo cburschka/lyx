@@ -22,7 +22,7 @@
 # - Proof
 # - Case (by inclusion)
 
-Format 81
+Format 82
 
 Style Theorem
 	Category              Reasoning
@@ -283,6 +283,8 @@ Style Remark
 		\addto\captions$$lang{\renewcommand{\remarkname}{_(Remark)}}
 	EndBabelPreamble
 	LabelCounter          remark
+	DocBookTag            note
+	DocBookItemTag        para
 End
 
 

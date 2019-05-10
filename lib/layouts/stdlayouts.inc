@@ -7,7 +7,7 @@
 # quotations and such.
 
 
-Format 81
+Format 82
 
 Style Quotation
 	Category              MainText
@@ -28,6 +28,8 @@ Style Quotation
 	AlignPossible         Block, Left, Right, Center
 	HTMLTag               blockquote
 	HTMLItem              div
+	DocBookTag            blockquote
+	DocBookItemTag        para
 End
 
 
@@ -48,6 +50,8 @@ Style Quote
 	LabelType             No_Label
 	HTMLTag               blockquote
 	HTMLItem              div
+	DocBookTag            blockquote
+	DocBookItemTag        para
 End
 
 
@@ -70,6 +74,8 @@ Style Verse
 	LabelType             No_Label
 	HTMLTag               blockquote
 	HTMLItem              p
+	DocBookTag            literallayout
+	DocBookItemTag        para
 End
 
 
@@ -94,6 +100,7 @@ Style Verbatim
 	EndFont
 	HTMLTag               pre
 	HTMLItem              p
+	DocBookTag            programlisting
 End
 
 
