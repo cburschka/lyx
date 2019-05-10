@@ -420,15 +420,6 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting problem.
-\end_layout
-
-\end_inset
-
 
 \lang amharic
 አማርኛ ፡ የኢትዮጵያ ፡ መደበኛ ፡ ቋንቋ ፡ ነው። ከሴማዊ ፡ ቋንቋዎች ፡ እንደ ፡ ዕብራይስጥ ፡ ወይም ፡ ዓረብኛ
@@ -584,15 +575,6 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting problem.
-\end_layout
-
-\end_inset
-
 
 \emph on
 \lang armenian
@@ -638,15 +620,6 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting problem.
-\end_layout
-
-\end_inset
-
 
 \emph on
 \lang asturian
@@ -1242,15 +1215,6 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting problem.
-\end_layout
-
-\end_inset
-
 
 \lang coptic
 ⲥⲟⲩⲙⲟⲥⲉ ⲣⲱⲙⲉ ⲛⲓⲙ ⲉⲩϣⲏϣ ⲉ ⲛⲉⲩⲉⲣⲏⲩ ϩⲛ ⲟⲩⲇⲓⲕⲁⲓⲟⲥⲩⲛⲏ.
@@ -1389,15 +1353,6 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting problem.
-\end_layout
-
-\end_inset
-
 
 \lang divehi
 ދިވެހިބަހަކީ ދިވެހިރާއްޖޭގެ ރަސްމީ ބަހެވެ.
@@ -1703,34 +1658,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-
-\lang czech
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Czech dummy paragraph to work around a bug with inputencoding 
-\begin_inset Quotes eld
-\end_inset
-
-auto-legacy
-\begin_inset Quotes erd
-\end_inset
-
-: Normally, the switch with 
-\backslash
-inputencoding is limited to a group/environment, e.g.
- a Quote.
- However, 
-\backslash
-inputencoding{ut8} seems to be an exception requiring an explicit re-set.
-\end_layout
-
-\end_inset
-
-
-\lang english
-
 \begin_inset Branch debug
 inverted 0
 status collapsed
@@ -1944,19 +1871,6 @@ langue d’oïl
 », qui est la langue de la partie septentrionale du pays).
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Dummy text to close the language (polyglossia language nesting problem).
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \end_inset
 
 
@@ -2087,18 +2001,9 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting problem.
-\end_layout
-
-\end_inset
-
 
 \lang galician
- O 
+O 
 \emph on
 galego
 \emph default
@@ -2533,18 +2438,9 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting issue.
-\end_layout
-
-\end_inset
-
 
 \lang ancientgreek
- Ὅτι μὲν ὑμεῖς, ὦ ἄνδρες Ἀθηναῖοι, πεπόνθατε ὑπὸ τῶν ἐμῶν κατηγόρων, οὐκ
+Ὅτι μὲν ὑμεῖς, ὦ ἄνδρες Ἀθηναῖοι, πεπόνθατε ὑπὸ τῶν ἐμῶν κατηγόρων, οὐκ
  οἶδα· ἐγὼ δ' οὖν καὶ αὐτὸς ὑπ' αὐτῶν ὀλίγου ἐμαυτοῦ ἐπελαθόμην, οὕτω πιθανῶς
  ἔλεγον.
  Καίτοι ἀληθές γε ὡς ἔπος εἰπεῖν οὐδὲν εἰρήκασιν.
@@ -2601,18 +2497,9 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting issue.
-\end_layout
-
-\end_inset
-
 
 \lang polutonikogreek
- Ἡ δ' ἀπὸ τῆς Ἑλλάδος ἀποδημία του ἐγένετο πρόξενος πολλῶν ἀδίκων κρίσεων
+Ἡ δ' ἀπὸ τῆς Ἑλλάδος ἀποδημία του ἐγένετο πρόξενος πολλῶν ἀδίκων κρίσεων
  περὶ προσώπων καὶ πραγμάτων καὶ πρῶτα πρῶτα τῆς περὶ ἧς ἀνωτέρω ἔγινε λόγος
  πρὸς τὸν κλῆρον συμπεριφορᾶς του.
 \end_layout
@@ -2653,6 +2540,55 @@ Hebrew
 
 \begin_layout Quote
 \begin_inset Branch conflict-babel-non-TeX-fonts
+inverted 0
+status open
+
+\begin_layout Standard
+
+\lang hebrew
+עִבְרִית היא שפה שמית, ממשפחת השפות האפרו-אסיאתיות, הידועה כשפתם של היהודים
+ ושל השומרונים, אשר ניב מודרני שלה (עברית ישראלית) הוא שפתה הרשמית של מדינת
+ ישראל, מעמד שעוגן בשנת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2018
+\numeric off
+ בחוק יסוד: ישראל – מדינת הלאום של העם היהודי.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quote
+\begin_inset Branch polyglossia-only
 inverted 0
 status open
 
@@ -2855,6 +2791,60 @@ Script Hebrew (RTL)
 LangCode he_IL
 \end_layout
 
+\begin_layout Itemize
+With non-standard article-like classes (i.e.
+ document classes not defining 
+\backslash
+chapter), numbered sections and 
+\begin_inset Quotes eld
+\end_inset
+
+Table of Content
+\begin_inset Quotes erd
+\end_inset
+
+ generation fail.
+\end_layout
+
+\begin_layout Itemize
+Hebrew TeX fonts are not included with TeXLive.
+\end_layout
+
+\begin_layout Itemize
+With XeTeX there is a decent selection of free-licensed fonts, e.g.:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Serif: David/Frank Ruhl (Culmus or Google fonts).
+\end_layout
+
+\begin_layout Itemize
+Sans-serif: DejaVu Sans Serif, Alef
+\end_layout
+
+\begin_layout Itemize
+Monospace: Miriam Libre (Culmus or Google Fonts).
+\end_layout
+
+\begin_layout Itemize
+LuaTeX fails with RTL issues
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Hebrew fails with Xe/LuaTeX and 8-bit TeX fonts (driver error with XeTeX,
+ loading 
+\emph on
+inputenc
+\emph default
+ (despite 
+\emph on
+luainputenc
+\emph default
+ already loaded) with LuaTeX).
+\end_layout
+
 \begin_layout Subsection*
 Hindi 
 \end_layout
@@ -2865,15 +2855,6 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting problem.
-\end_layout
-
-\end_inset
-
 
 \emph on
 \lang hindi
@@ -3281,18 +3262,9 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting problem.
-\end_layout
-
-\end_inset
-
 
 \lang kannada
- ದ್ರಾವಿಡ ಭಾಷೆಗಳಲ್ಲಿ ಪ್ರಾಮುಖ್ಯವುಳ್ಳ ಭಾಷೆಯೂ ಭಾರತದ ಪುರಾತನವಾದ ಭಾಷೆಗಳಲ್ಲಿ ಒಂದೂ
+ದ್ರಾವಿಡ ಭಾಷೆಗಳಲ್ಲಿ ಪ್ರಾಮುಖ್ಯವುಳ್ಳ ಭಾಷೆಯೂ ಭಾರತದ ಪುರಾತನವಾದ ಭಾಷೆಗಳಲ್ಲಿ ಒಂದೂ
  ಆಗಿರುವ ಕನ್ನಡ ಭಾಷೆಯನ್ನು ಅದರ ವಿವಿಧ ರೂಪಗಳಲ್ಲಿ ಸುಮಾರು ೪೫ ದಶಲಕ್ಷ ಜನರು ಆಡು ನುಡಿಯಾಗಿ
  ಬಳಸುತ್ತಲಿದ್ದಾರೆ.
  ಕನ್ನಡ ಕರ್ನಾಟಕ ರಾಜ್ಯದ ಆಡಳಿತ ಭಾಷೆ.
@@ -3412,15 +3384,6 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting problem.
-\end_layout
-
-\end_inset
-
 
 \lang khmer
 ៖ខ្មែរ 
@@ -3432,9 +3395,7 @@ Dummy text to work around language nesting problem.
 khmer
 \lang khmer
  ខេមរភាសាខ្មែរ គឺជាភាសារបស់ ប្រជាជាតិខ្មែរ ។ ភាសាសំស្ក្រឹត និងភាសាបាលីបានជួយបង្ក
-ើ ភាសា ព្រោះភាសាខ្មែរបានខ្ចីពាក្យច្រើនពីភាសាអស់នោះ ។ មានអក្សរក្រមវែងជាងគេនៅលើពិភ
-ពលោក ។ វាជាភាសាមួយដ៏ចំណាស់ ដែលប្រហែលជាមានដើមកំណើតតាំងតែពី ២០០០ ឆ្នាំមុនមកម៉្លេះ
- ។
+ើ ភាសា ព្រោះភាសាខ្មែរបានខ្ចីពាក្យច្រើនពីភាសាអស់នោះ ។
 \end_layout
 
 \end_inset
@@ -3545,35 +3506,6 @@ status open
 
 \lang kurmanji
 Kurmancî an kurmanciya jorîn yek ji zaravayên zimanê kurdî ye.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang czech
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Czech dummy paragraph to work around a bug with inputencoding 
-\begin_inset Quotes eld
-\end_inset
-
-auto-legacy
-\begin_inset Quotes erd
-\end_inset
-
-: Normally, the switch with 
-\backslash
-inputencoding is limited to a group/environment, e.g.
- a Quote.
- However, 
-\backslash
-inputencoding{ut8} seems to be an exception requiring an explicit re-set.
 \end_layout
 
 \end_inset
@@ -3736,15 +3668,6 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting problem.
-\end_layout
-
-\end_inset
-
 
 \emph on
 \lang lao
@@ -4044,19 +3967,10 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting issue.
-\end_layout
-
-\end_inset
-
 
 \lang malayalam
- ഇന്ത്യയിൽ പ്രധാനമായും കേരള സംസ്ഥാനത്തിലും ലക്ഷദ്വീപിലും പുതുച്ചേരിയുടെ
- ഭാഗമായ മയ്യഴിയിലും സംസാരിക്കപ്പെടുന്ന ഭാഷയാണ് മലയാളം.
+ഇന്ത്യയിൽ പ്രധാനമായും കേരള സംസ്ഥാനത്തിലും ലക്ഷദ്വീപിലും പുതുച്ചേരിയുടെ ഭാഗമായ
+ മയ്യഴിയിലും സംസാരിക്കപ്പെടുന്ന ഭാഷയാണ് മലയാളം.
 \end_layout
 
 \end_inset
@@ -4089,15 +4003,6 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting issue.
-\end_layout
-
-\end_inset
-
 
 \lang marathi
 मराठी भाषा ही इंडो-युरोपीय भाषाकुलातील एक भाषा आहे.
@@ -4136,7 +4041,7 @@ Mongolian
 inverted 0
 status open
 
-\begin_layout Standard
+\begin_layout Quote
 
 \lang mongolian
 Монгол үндэстний эрт эдүгээ цагийн хэл аялгуу, үсэг бичгийг хамтад нь 
@@ -4144,36 +4049,6 @@ status open
 Монгол хэл
 \emph default
  бичиг гэнэ.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\lang czech
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Czech dummy paragraph to work around a bug with inputencoding 
-\begin_inset Quotes eld
-\end_inset
-
-auto-legacy
-\begin_inset Quotes erd
-\end_inset
-
-: Normally, the switch with 
-\backslash
-inputencoding is limited to a group/environment, e.g.
- a Quote.
- However, 
-\backslash
-inputencoding{ut8} seems to be an exception requiring an explicit re-set.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -4300,15 +4175,6 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting issue.
-\end_layout
-
-\end_inset
-
 
 \lang occitan
 L'
@@ -4562,15 +4428,6 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting issue.
-\end_layout
-
-\end_inset
-
 
 \lang russian
 Ру́сский язы́к — один из восточнославянских языков, национальный язык русского
@@ -4690,15 +4547,6 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting issue.
-\end_layout
-
-\end_inset
-
 
 \emph on
 \lang sanskrit
@@ -4798,15 +4646,6 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting issue.
-\end_layout
-
-\end_inset
-
 
 \emph on
 \lang serbian
@@ -5077,19 +4916,6 @@ castellano
  como lengua materna tras el chino mandarín.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Dummy text to close the language (polyglossia language nesting problem).
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \end_inset
 
 
@@ -5258,15 +5084,6 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting issue.
-\end_layout
-
-\end_inset
-
 
 \emph on
 \lang tamil
@@ -5307,15 +5124,6 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting issue.
-\end_layout
-
-\end_inset
-
 
 \lang telugu
 ఆంధ్ర ప్రదేశ్, తెలంగాణ రాష్ట్రాల అధికార భాష తెలుగు.
@@ -5353,15 +5161,6 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting issue.
-\end_layout
-
-\end_inset
-
 
 \emph on
 \lang thai
@@ -5418,22 +5217,35 @@ tested with version 1.8 (2013/03/31)
 \end_inset
 
  LyX's workaround requires laoding 
-\begin_inset Quotes eld
-\end_inset
-
+\emph on
 inputenc
-\begin_inset Quotes erd
-\end_inset
-
+\emph default
  after 
-\begin_inset Quotes eld
-\end_inset
-
+\emph on
 babel
-\begin_inset Quotes erd
+\emph default
+ which leads to problems in some documents
+\emph on
+.
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+E.g.
+ an option clash when also using Hebrew, which loads 
+\emph on
+inputenc 
+\emph default
+with the 8859-8 option if it is not loaded before 
+\emph on
+babel.
+\end_layout
+
 \end_inset
 
- which leads to problems in some documents.
+
 \end_layout
 
 \begin_layout Itemize
@@ -5474,6 +5286,16 @@ AtBeginDocument{
 usepackage{fonts-tlwg}}
 \end_layout
 
+\begin_layout Standard
+or set up the font substitutes with the 
+\emph on
+substitutefont 
+\emph default
+package
+\emph on
+.
+\end_layout
+
 \end_deeper
 \begin_layout Subsection*
 Tibetan
@@ -5485,15 +5307,6 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting issue.
-\end_layout
-
-\end_inset
-
 
 \emph on
 \lang tibetan
@@ -5659,15 +5472,6 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting issue.
-\end_layout
-
-\end_inset
-
 
 \lang urdu
 اُردُو لشکری زبان (یا جدید معیاری اردو) ہندوستانی زبان کی معیاری قسم ہے۔
@@ -5706,15 +5510,6 @@ inverted 0
 status open
 
 \begin_layout Quote
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dummy text to work around language nesting issue.
-\end_layout
-
-\end_inset
-
 
 \emph on
 \lang vietnamese
