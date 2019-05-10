@@ -2698,6 +2698,7 @@ vector<string> BufferParams::backends() const
 	}
 
 	v.push_back("xhtml");
+	v.push_back("docbook5");
 	v.push_back("text");
 	v.push_back("lyx");
 	return v;
