@@ -218,23 +218,11 @@ literal "false"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset CommandInset include
-LatexCommand input
-filename "unicodesymbols/012-hebrew_he_HE8.lyx"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-Hebrew does not work with XeTeX and TeX-fonts:
-\end_layout
-
-\begin_layout Plain Layout
-Error 256 (driver return code) generating output; file 012-hebrew_he_HE8.pdf
- may not be valid.
+Hebrew does not work with LuaTeX and TeX-fonts, because it loads 
+\emph on
+inputenc
+\emph default
+ if not already loaded.
 \end_layout
 
 \end_inset

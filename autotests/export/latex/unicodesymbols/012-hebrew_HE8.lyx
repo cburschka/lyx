@@ -1,19 +1,19 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 571
+\lyxformat 573
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass article
 \begin_preamble
-\def\HeblatexEncoding{HE8}
+
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
 \language english
 \language_package default
 \inputencoding utf8
-\fontencoding HE8,T1
+\fontencoding HE8
 \font_roman "lmodern" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -89,24 +89,16 @@
 \begin_body
 
 \begin_layout Subsection*
-12 Hebrew
+12) Hebrew
 \end_layout
 
 \begin_layout Standard
-Hebrew text must be set to the 
-\begin_inset Quotes eld
-\end_inset
-
-hebrew
-\begin_inset Quotes erd
-\end_inset
-
- language in order to select the right font encoding.
-\end_layout
-
-\begin_layout Standard
-This document uses the nonstandard Hebrew font encoding HE8 that includes
- additional characters (see Document>Settings>Fonts and >User Preamble).
+Hebrew characters are only available in the right font encoding (LHE or
+ HE8).
+ This file selects HE8 as custom font encoding under Document>Settings>Fonts.
+ The writing direction is unchanged, RTL support requires setting the text
+ language (cf.
+ 012-hebrew_he.lyx).
 \end_layout
 
 \begin_layout Standard
@@ -116,9 +108,7 @@ inverted 0
 status open
 
 \begin_layout Standard
-
-\lang hebrew
-א֑ א֒ א֓ א֔ א֕ א֖ א֗ א֘ א֙ א֚ א֛ א֜ א֝ א֞ א֟ 
+א֑ א֒ א֓ א֔ א֕ א֖ א֗ א֘ א֙ א֚ א֛ א֜ א֝ א֞ א֟
 \end_layout
 
 \end_inset
@@ -127,15 +117,13 @@ status open
 \end_layout
 
 \begin_layout Standard
-5A0
+5A0 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-
-\lang hebrew
-א֠ א֡ א֢ א֣ א֤ א֥ א֦ א֧ א֨ א֩ א֪ א֫ א֬ א֭ א֮ א֯ 
+א֠ א֡ א֢ א֣ א֤ א֥ א֦ א֧ א֨ א֩ א֪ א֫ א֬ א֭ א֮ א֯
 \end_layout
 
 \end_inset
@@ -144,16 +132,12 @@ status open
 \end_layout
 
 \begin_layout Standard
-5B0
-\lang hebrew
- אְ אֱ אֲ אֳ אִ אֵ אֶ אַ אָ אֹ 
+5B0 אְ אֱ אֲ אֳ אִ אֵ אֶ אַ אָ אֹ 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-
-\lang hebrew
 אֺ
 \end_layout
 
@@ -165,8 +149,6 @@ inverted 0
 status open
 
 \begin_layout Standard
-
-\lang hebrew
 אֿ
 \end_layout
 
@@ -177,65 +159,53 @@ status open
 
 \begin_layout Standard
 5C0 
-\lang hebrew
-
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-
-\lang hebrew
-׀
+׀ 
 \end_layout
 
 \end_inset
 
- שׁ שׂ ׃ 
+שׁ שׂ ׃ 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-
+אׄ אׅ ׆ א
 \lang hebrew
-אׄ אׅ ׆ אׇ
+ׇ
 \end_layout
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard
-5D0 
-\lang hebrew
-א ב ג ד ה ו ז ח ט י ך כ ל ם מ ן 
+5D0 א ב ג ד ה ו ז ח ט י ך כ ל ם מ ן
 \end_layout
 
 \begin_layout Standard
-5E0 
-\lang hebrew
-נ ס ע ף פ ץ צ ק ר ש ת 
+5E0 נ ס ע ף פ ץ צ ק ר ש ת 
 \end_layout
 
 \begin_layout Standard
-5F0 
-\lang hebrew
-װ ױ ײ 
+5F0 װ ױ ײ 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-
-\lang hebrew
 ׳ ״
 \end_layout
 
 \end_inset
 
- 
+
 \end_layout
 
 \end_body

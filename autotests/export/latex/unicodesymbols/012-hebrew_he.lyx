@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 571
+\lyxformat 573
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -63,6 +63,11 @@
 \filename_suffix 0
 \color #faf0e6
 \end_branch
+\branch HE8-only
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -101,14 +106,18 @@ hebrew
 \begin_inset Quotes erd
 \end_inset
 
- language in order to select the right font encoding (LHE or HE8).
+ language in order to select the right font encoding (LHE or HE8) and writing
+ direction (right-to-left).
  Hebrew 8-bit TeX fonts are not part of TeXLive.
 \end_layout
 
 \begin_layout Standard
 Babel-Hebrew defaults to the legacy font encoding LHE, that only supports
  the basic Hebrew alphabet.
- 
+\end_layout
+
+\begin_layout Standard
+LyX selects the HE8 font encoding if available.
 \end_layout
 
 \begin_layout Standard
@@ -120,7 +129,7 @@ status open
 \begin_layout Standard
 
 \lang hebrew
-א֑ א֒ א֓ א֔ א֕ א֖ א֗ א֘ א֙ א֚ א֛ א֜ א֝ א֞ א֟ 
+א֑ א֒ א֓ א֔ א֕ א֖ א֗ א֘ א֙ א֚ א֛ א֜ א֝ א֞ א֟
 \end_layout
 
 \end_inset
@@ -129,7 +138,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-5A0
+5A0 
 \begin_inset Branch na
 inverted 0
 status open
@@ -137,7 +146,7 @@ status open
 \begin_layout Standard
 
 \lang hebrew
-א֠ א֡ א֢ א֣ א֤ א֥ א֦ א֧ א֨ א֩ א֪ א֫ א֬ א֭ א֮ א֯ 
+א֠ א֡ א֢ א֣ א֤ א֥ א֦ א֧ א֨ א֩ א֪ א֫ א֬ א֭ א֮ א֯
 \end_layout
 
 \end_inset
@@ -147,6 +156,21 @@ status open
 
 \begin_layout Standard
 5B0
+\lang hebrew
+
+\begin_inset Branch HE8-only
+inverted 0
+status open
+
+\begin_layout Standard
+
+\lang hebrew
+אְ אֱ אֲ אֳ אִ אֵ אֶ אַ אָ אֹ
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset Branch na
 inverted 0
 status open
@@ -154,16 +178,70 @@ status open
 \begin_layout Standard
 
 \lang hebrew
-אֻ אּ אֽ ־ אֿ אְ אֱ אֲ אֳ אִ אֵ אֶ אַ אָ אֹ אֺ
+אֺ
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Branch HE8-only
+inverted 0
+status open
+
+\begin_layout Standard
+
+\lang hebrew
+אֻ אּ אֽ ־
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+
+\lang hebrew
+אֿ
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+5C0 
+\lang hebrew
+
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+
+\lang hebrew
+׀ 
 \end_layout
 
 \end_inset
 
 
-\end_layout
+\begin_inset Branch HE8-only
+inverted 0
+status open
 
 \begin_layout Standard
-5C0 
+
+\lang hebrew
+שׁ שׂ ׃ 
+\end_layout
+
+\end_inset
+
+
 \begin_inset Branch na
 inverted 0
 status open
@@ -171,7 +249,7 @@ status open
 \begin_layout Standard
 
 \lang hebrew
-שׁ שׂ ׃ אׄ אׅ ׆ אׇ ׀
+אׄ אׅ ׆ אׇ
 \end_layout
 
 \end_inset
@@ -182,7 +260,7 @@ status open
 \begin_layout Standard
 5D0 
 \lang hebrew
-א ב ג ד ה ו ז ח ט י ך כ ל ם מ ן 
+א ב ג ד ה ו ז ח ט י ך כ ל ם מ ן
 \end_layout
 
 \begin_layout Standard
@@ -193,6 +271,21 @@ status open
 
 \begin_layout Standard
 5F0 
+\lang hebrew
+
+\begin_inset Branch HE8-only
+inverted 0
+status open
+
+\begin_layout Standard
+
+\lang hebrew
+װ ױ ײ
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset Branch na
 inverted 0
 status open
@@ -200,12 +293,12 @@ status open
 \begin_layout Standard
 
 \lang hebrew
-װ ױ ײ ׳ ״
+׳ ״
 \end_layout
 
 \end_inset
 
- 
+
 \end_layout
 
 \end_body
