@@ -212,6 +212,7 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.des = fm.maxDescent();
 			frontend::NullPainter np;
 			PainterInfo pi(mi.base.bv, np);
+			pi.base.font = mi.base.font;
 			drawLogo(pi, dim.wid, 0, kind_);
 			break;
 	}
