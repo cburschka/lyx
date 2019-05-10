@@ -130,6 +130,7 @@ void drawLogo(PainterInfo & pi, int & x, int const y, InsetSpecialChar::Kind kin
 		drawLogo(pi, x, y, InsetSpecialChar::PHRASE_LATEX);
 		x += 3 * em / 20;
 		drawChar(pi, x, y, '2');
+		// ε U+03B5 GREEK SMALL LETTER EPSILON
 		drawChar(pi, x, y + em / 4, char_type(0x03b5));
 		break;
 
@@ -455,15 +456,18 @@ int InsetSpecialChar::plaintext(odocstringstream & os,
 	case HYPHENATION:
 		return 0;
 	case ALLOWBREAK:
+		// U+200B ZERO WIDTH SPACE (ZWSP)
 		os.put(0x200b);
 		return 1;
 	case LIGATURE_BREAK:
+		// U+200C ZERO WIDTH NON-JOINER
 		os.put(0x200c);
 		return 1;
 	case END_OF_SENTENCE:
 		os << '.';
 		return 1;
 	case LDOTS:
+		// … U+2026 HORIZONTAL ELLIPSIS
 		os.put(0x2026);
 		return 1;
 	case MENU_SEPARATOR:
@@ -473,6 +477,7 @@ int InsetSpecialChar::plaintext(odocstringstream & os,
 		os << '/';
 		return 1;
 	case NOBREAKDASH:
+		// ‑ U+2011 NON-BREAKING HYPHEN
 		os.put(0x2011);
 		return 1;
 	case PHRASE_LYX:
@@ -483,6 +488,7 @@ int InsetSpecialChar::plaintext(odocstringstream & os,
 		return 3;
 	case PHRASE_LATEX2E:
 		os << "LaTeX2";
+		// ε U+03B5 GREEK SMALL LETTER EPSILON
 		os.put(0x03b5);
 		return 7;
 	case PHRASE_LATEX:
@@ -499,6 +505,7 @@ int InsetSpecialChar::docbook(odocstream & os, OutputParams const &) const
 	case HYPHENATION:
 		break;
 	case ALLOWBREAK:
+		// U+200B ZERO WIDTH SPACE (ZWSP)
 		os.put(0x200b);
 		break;
 	case LIGATURE_BREAK:
@@ -526,6 +533,7 @@ int InsetSpecialChar::docbook(odocstream & os, OutputParams const &) const
 		break;
 	case PHRASE_LATEX2E:
 		os << "LaTeX2";
+		// ε U+03B5 GREEK SMALL LETTER EPSILON
 		os.put(0x03b5);
 		break;
 	case PHRASE_LATEX:
