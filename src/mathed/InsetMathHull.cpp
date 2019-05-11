@@ -198,7 +198,7 @@ docstring hullName(HullType type)
 static InsetLabel * dummy_pointer = 0;
 
 InsetMathHull::InsetMathHull(Buffer * buf)
-	: InsetMathGrid(buf, 1, 1), type_(hullNone), numbered_(1, NUMBER),
+	: InsetMathGrid(buf, 1, 1), type_(hullNone), numbered_(1, NONUMBER),
 	  numbers_(1, empty_docstring()), label_(1, dummy_pointer),
 	  preview_(new RenderPreview(this))
 {
