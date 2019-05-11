@@ -10,6 +10,12 @@
 
 !!Documents compilation process and images conversion
 
+* LyX now uses utf8 encoding per default for all languages. This does not affect
+  existing documents. Note that LyX also does not touch personal defaults.
+  That is to say, if you still see traditional encoding preset for new documents,
+  you can change that by selecting "Unicode (utf8) [default]" and hitting "Save
+  as Documents Defaults" afterwards.
+
 * LyX defaults to the "HE8" LaTeX font encoding with Hebrew if the
   "Culmus" LaTeX fonts are installed. 
 
