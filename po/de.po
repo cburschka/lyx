@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-05-11 12:12+0200\n"
-"PO-Revision-Date: 2019-05-11 12:15+0200\n"
+"POT-Creation-Date: 2019-05-11 19:05+0200\n"
+"PO-Revision-Date: 2019-05-11 19:07+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -30016,7 +30016,7 @@ msgid "Advanced Find and Replace"
 msgstr "Erweitertes Suchen und Ersetzen"
 
 #: src/frontends/qt4/FloatPlacement.cpp:182
-#: src/frontends/qt4/GuiDocument.cpp:966 src/frontends/qt4/GuiDocument.cpp:1055
+#: src/frontends/qt4/GuiDocument.cpp:1055
 #: src/frontends/qt4/GuiDocument.cpp:2469
 #: src/frontends/qt4/GuiDocument.cpp:2496
 msgid "Class Default"
@@ -31009,6 +31009,10 @@ msgstr "Unicode (utf8) [Standard]"
 #: src/frontends/qt4/GuiDocument.cpp:961
 msgid "Traditional (auto-selected)"
 msgstr "Traditionell (automatisch gewählt)"
+
+#: src/frontends/qt4/GuiDocument.cpp:966
+msgid "Traditional (inputenc not loaded)"
+msgstr "Traditionell, lade inputenc nicht"
 
 #: src/frontends/qt4/GuiDocument.cpp:1050
 msgid "10"
@@ -35725,11 +35729,11 @@ msgstr ""
 "Das angegebene Dokument %1$s\n"
 "konnte nicht geöffnet werden."
 
-#: src/output_latex.cpp:1521
+#: src/output_latex.cpp:1522
 msgid "Error in latexParagraphs"
 msgstr "Fehler in latexParagraphs"
 
-#: src/output_latex.cpp:1522
+#: src/output_latex.cpp:1523
 #, c-format
 msgid ""
 "You are using at least one layout (%1$s) intended for the title, after using "
