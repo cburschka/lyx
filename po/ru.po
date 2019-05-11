@@ -6,20 +6,20 @@
 # Nick A. Gusev <guusev@yandex.ru>, 2009.
 # Valeriy Kruchko <lerkru@gmail.com>, 2009.
 # Sergey Tereschenko <serg.partizan@gmail.com>, 2010.
-# Yuriy Skalko <yuriy.skalko@gmail.com>, 2017-2018.
+# Yuriy Skalko <yuriy.skalko@gmail.com>, 2017-2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2019-04-25 23:30-0400\n"
-"PO-Revision-Date: 2018-11-15 11:28+0200\n"
+"PO-Revision-Date: 2019-05-09 00:28+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Bookmarks: 1979,613,-1,-1,-1,-1,-1,-1,-1,-1\n"
@@ -990,9 +990,8 @@ msgid "Reset"
 msgstr "Сбросить"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:370
-#, fuzzy
 msgid "Restore Defaults"
-msgstr "По умолчанию"
+msgstr "Восстановить значения по умолчанию"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:403
 #: src/frontends/qt4/ui/DocumentUi.ui:77 src/frontends/qt4/ui/ExternalUi.ui:610
@@ -3315,22 +3314,21 @@ msgid "&Vertical Phantom"
 msgstr "Вертикальный фантом"
 
 #: src/frontends/qt4/ui/PreambleUi.ui:38
-#, fuzzy
 msgid "&Find"
-msgstr "&Найти:"
+msgstr "&Найти"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:26
 msgid "Use the color scheme of your Operating System/Desktop Environment"
 msgstr ""
+"Использовать цветовую схему операционной системы/окружения рабочего стола"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:29
 msgid "&Use system colors"
 msgstr "Использовать системные цвета"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:57
-#, fuzzy
 msgid "Change the selected color"
-msgstr "Переименовать выбранную ветку"
+msgstr "Изменить выбранный цвет"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:60
 msgid "A&lter..."
@@ -3338,21 +3336,19 @@ msgstr "&Изменить..."
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:67
 msgid "Reset the selected color to its original value"
-msgstr ""
+msgstr "Сбросить выбранный цвет к его исходному значению"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:70
-#, fuzzy
 msgid "Reset to &Default"
-msgstr "Выполнить сброс к настройкам по умолчанию"
+msgstr "Сбросить к настройкам по умолчанию"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:77
 msgid "Reset all colors to their original value"
-msgstr ""
+msgstr "Сбросить все цвета к их исходным значениям"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:80
-#, fuzzy
 msgid "Reset A&ll"
-msgstr "Сбросить"
+msgstr "Сбросить всё"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:26
 msgid "In Math"
@@ -7546,9 +7542,8 @@ msgid "Note-"
 msgstr "Заметка-"
 
 #: lib/layouts/aastex62.layout:3
-#, fuzzy
 msgid "American Astronomical Society (AASTeX v. 6.2)"
-msgstr "American Astronomical Society (AASTeX v. 6)"
+msgstr "American Astronomical Society (AASTeX v. 6.2)"
 
 #: lib/layouts/aastex62.layout:126 lib/layouts/ectaart.layout:178
 #: lib/layouts/ectaart.layout:181
@@ -7556,9 +7551,8 @@ msgid "Corresponding Author"
 msgstr "Автор для корреспонденции"
 
 #: lib/layouts/aastex62.layout:132
-#, fuzzy
 msgid "Corresponding author:"
-msgstr "Отвечающий автор"
+msgstr "Corresponding author:"
 
 #: lib/layouts/aastex62.layout:151 lib/layouts/egs.layout:324
 #: lib/layouts/svmult.layout:83
@@ -7571,7 +7565,7 @@ msgstr "ORCID"
 
 #: lib/layouts/aastex62.layout:158
 msgid "Enter the 16 digit ORCID as xxxx-xxxx-xxxx-xxxx"
-msgstr ""
+msgstr "Введите 16-значный ORCID в виде xxxx-xxxx-xxxx-xxxx"
 
 # ?
 #: lib/layouts/aastex62.layout:167 lib/layouts/agu_stdtitle.inc:132
@@ -7593,44 +7587,36 @@ msgid "Collaboration:"
 msgstr "Сотрудничество:"
 
 #: lib/layouts/aastex62.layout:193
-#, fuzzy
 msgid "Nocollaboration"
-msgstr "Сотрудничество"
+msgstr "Nocollaboration"
 
 #: lib/layouts/aastex62.layout:200
-#, fuzzy
 msgid "No collaboration"
-msgstr "Сотрудничество"
+msgstr "No collaboration"
 
 #: lib/layouts/aastex62.layout:230
-#, fuzzy
 msgid "Section Appendix"
-msgstr "Приложение"
+msgstr "Section Appendix"
 
 #: lib/layouts/aastex62.layout:234
-#, fuzzy
 msgid "\\Alph{appendix}."
-msgstr "Приложение \\Alph{appendix}."
+msgstr "\\Alph{appendix}."
 
 #: lib/layouts/aastex62.layout:245
-#, fuzzy
 msgid "Subsection Appendix"
-msgstr "Блок подраздела"
+msgstr "Subsection Appendix"
 
 #: lib/layouts/aastex62.layout:249
-#, fuzzy
 msgid "\\Alph{appendix}\\arabic{subappendix}."
-msgstr "Приложение \\Alph{appendix}."
+msgstr "\\Alph{appendix}\\arabic{subappendix}."
 
 #: lib/layouts/aastex62.layout:260
-#, fuzzy
 msgid "Subsubsection Appendix"
-msgstr "Блок подподраздела"
+msgstr "Subsubsection Appendix"
 
 #: lib/layouts/aastex62.layout:264
-#, fuzzy
 msgid "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}."
-msgstr "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
+msgstr "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}."
 
 #: lib/layouts/achemso.layout:3
 msgid "American Chemical Society (ACS)"
@@ -10171,7 +10157,6 @@ msgid "Change bars"
 msgstr "Полосы изменений"
 
 #: lib/layouts/changebars.module:7
-#, fuzzy
 msgid ""
 "Enables LyX to add vertical change bars in the margin of PDF output when "
 "Show Changes in Output is turned on and pdflatex output format is chosen."
@@ -13493,34 +13478,28 @@ msgid "TUGboat"
 msgstr "TUGboat"
 
 #: lib/layouts/maa-monthly.layout:3
-#, fuzzy
 msgid "Mathematical Monthly article"
-msgstr "Статья AMS"
+msgstr "Mathematical Monthly article"
 
 #: lib/layouts/maa-monthly.layout:64
-#, fuzzy
 msgid "Abbreviated Title"
-msgstr "Сокращения"
+msgstr "Abbreviated Title"
 
 #: lib/layouts/maa-monthly.layout:74 lib/layouts/maa-monthly.layout:77
-#, fuzzy
 msgid "Biographies"
-msgstr "Биография"
+msgstr "Biographies"
 
 #: lib/layouts/maa-monthly.layout:89 lib/layouts/maa-monthly.layout:96
-#, fuzzy
 msgid "Author Biography"
-msgstr "Биография"
+msgstr "Author Biography"
 
 #: lib/layouts/maa-monthly.layout:112
-#, fuzzy
 msgid "Affiliation (include email):"
-msgstr "Принадлежность (нет)"
+msgstr "Affiliation (include email):"
 
 #: lib/layouts/maa-monthly.layout:128
-#, fuzzy
 msgid "Title of acknowledgment"
-msgstr "благодарности"
+msgstr "Title of acknowledgment"
 
 #: lib/layouts/maa-monthly.layout:159 lib/layouts/theorems-order.inc:70
 #: lib/layouts/theorems-starred.inc:251
@@ -18723,9 +18702,8 @@ msgid "Wrap by Preview|y"
 msgstr "Предварительный просмотр"
 
 #: lib/ui/stdcontext.inc:669
-#, fuzzy
 msgid "End Editing Externally...|e"
-msgstr "Редактировать внешне...|в"
+msgstr "Завершить внешнее редактирование...|ш"
 
 #: lib/ui/stdcontext.inc:685 lib/ui/stdmenus.inc:355
 msgid "Lock Toolbars|L"
@@ -20065,9 +20043,8 @@ msgid "Set all lines"
 msgstr "Все линии"
 
 #: lib/ui/stdtoolbars.inc:159
-#, fuzzy
 msgid "Set inner lines"
-msgstr "Линии рамки"
+msgstr "Внутренние линии"
 
 #: lib/ui/stdtoolbars.inc:160
 msgid "Unset all lines"
@@ -25731,12 +25708,12 @@ msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr ""
-"Удалить запасной файл?\n"
+"Удалить аварийный файл?\n"
 "(%1$s)"
 
 #: src/Buffer.cpp:4756 src/Buffer.cpp:4768
 msgid "Delete emergency file?"
-msgstr "Удалить запасной файл?"
+msgstr "Удалить аварийный файл?"
 
 #: src/Buffer.cpp:4757 src/Buffer.cpp:4770
 msgid "&Keep"
@@ -25744,7 +25721,7 @@ msgstr "Хранить"
 
 #: src/Buffer.cpp:4761
 msgid "Emergency file deleted"
-msgstr "Обнаружен запасной файл"
+msgstr "Запасной файл удалён"
 
 #: src/Buffer.cpp:4762
 msgid "Do not forget to save your file now!"
@@ -25752,12 +25729,11 @@ msgstr "Не забудьте сохранить ваш файл прямо се
 
 #: src/Buffer.cpp:4769
 msgid "Remove emergency file now?"
-msgstr "Удалить запасной файл?"
+msgstr "Удалить аварийный файл?"
 
 #: src/Buffer.cpp:4792
-#, fuzzy
 msgid "Can't rename emergency file!"
-msgstr "Удалить запасной файл?"
+msgstr "Невозможно переименовать аварийный файл!"
 
 #: src/Buffer.cpp:4793
 msgid ""
@@ -25765,6 +25741,9 @@ msgid ""
 "Otherwise, you will beasked about it again the next time you try to loadthis "
 "file, and may over-write your own work."
 msgstr ""
+"LyX не удалось переименовать аварийный файл. Вы должны сделать это вручную. "
+"Иначе вас снова спросят об этом при следующей попытке загрузить этот файл и "
+"это может перезаписать вашу собственную работу."
 
 #: src/Buffer.cpp:4818
 #, c-format
@@ -29347,19 +29326,16 @@ msgid "Text Style"
 msgstr "Стиль текста"
 
 #: src/frontends/qt4/GuiCharacter.cpp:272
-#, fuzzy
 msgid "Reset All To &Default"
-msgstr "Использовать умолчания для класса"
+msgstr "Сбросить все на значения по умолчанию"
 
 #: src/frontends/qt4/GuiCharacter.cpp:273
-#, fuzzy
 msgid "Reset All To No Chan&ge"
-msgstr "Отклонить все изменения"
+msgstr "Сбросить все на \"Без изменений\""
 
 #: src/frontends/qt4/GuiCharacter.cpp:278
-#, fuzzy
 msgid "&Reset All Fields"
-msgstr "Все поля"
+msgstr "Сбросить все поля"
 
 #: src/frontends/qt4/GuiCitation.cpp:104 src/frontends/qt4/GuiRef.cpp:60
 #: src/frontends/qt4/PanelStack.cpp:77
@@ -29609,13 +29585,12 @@ msgid "Module not found!"
 msgstr "Модуль не найден!"
 
 #: src/frontends/qt4/GuiDocument.cpp:578 src/frontends/qt4/GuiDocument.cpp:750
-#, fuzzy
 msgid "&End Edit"
-msgstr "&Редактировать"
+msgstr "Завершить редактирование"
 
 #: src/frontends/qt4/GuiDocument.cpp:638
 msgid "Validation required!"
-msgstr ""
+msgstr "Требуется проверка!"
 
 #: src/frontends/qt4/GuiDocument.cpp:688
 msgid "Layout is valid!"
@@ -32773,9 +32748,8 @@ msgid "CapsLock"
 msgstr "CapsLock"
 
 #: src/insets/InsetInfo.cpp:375
-#, fuzzy
 msgid "Control[[Key]]"
-msgstr "Command"
+msgstr "Control"
 
 #: src/insets/InsetInfo.cpp:379
 msgid "Command[[Key]]"
