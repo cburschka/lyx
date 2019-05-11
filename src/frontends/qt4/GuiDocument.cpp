@@ -963,7 +963,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	langModule->encodingCO->addItem(qt_("ASCII"), toqstr("ascii"));
 	langModule->encodingCO->addItem(qt_("Custom"), toqstr("custom"));
 	// Always put the default encoding in the first position.
-	langModule->customEncodingCO->addItem(qt_("Class Default"),
+	langModule->customEncodingCO->addItem(qt_("Traditional (inputenc not loaded)"),
 					      toqstr("auto-legacy-plain"));
 	QMap<QString,QString> encodingmap;
 	for (auto const & encvar : encodings) {
