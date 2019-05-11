@@ -43198,98 +43198,65 @@ Hier werden die Grundsprache des Dokuments und der Stil der Anführungszeichen
 \end_layout
 
 \begin_layout Standard
-Wird die Option 
-\family sans
-Voreinstellung der Sprache
-\family default
- verwendet, wählt \SpecialChar LyX
- die Standard-Kodierung für die Grundsprache und auch
- für einzelne Textpassagen in anderen Sprachen.
- Wenn Ihr Dokument also mehrsprachig ist, werden in diesem Fall gegebenenfalls
- mehrere Kodierungen für das \SpecialChar LaTeX
--Dokument verwendet.
- wenn Sie diese Option jedoch nicht wählen, wird die von Ihnen gewählte
- Kodierung für alle Sprachen im Dokument verwendet, was zu Problemen führen
- kann, wenn die gewählte Kodierung für eine der verwendeten Sprachen nicht
- geeignet ist.
- Die Option 
-\family sans
-Voreinstellung der Sprache
-\family default
- wird deshalb empfohlen.
+Standardmäßig exportiert \SpecialChar LyX
+ Dateien in Unicode, genauer: in utf8 (dies ist
+ mittlerweile auch die Standardkodierung von \SpecialChar LaTeX
+).
+ Das sollte in den meisten Fällen die richtige Wahl sein, denn inzwischen
+ ist die Unicode-Unterstützung von \SpecialChar LaTeX
+ recht umfassend.
+ Vollständig ist sie allerdings noch nicht, daher kann es immer wieder Fälle
+ geben, in denen es nötig ist, auf eine traditionelle Kodierung zurückzugreifen.
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
- unterstützt auch Unicode-Ausgabe.
- Dies kann dann sinnvoll sein, wenn Sie sehr viele Sonderzeichen benötigen
- oder mit nicht-alphabetischen Schriften arbeiten.
- Wenn Sie Unicode benötigen (und vorausgesetzt, Ihre \SpecialChar LaTeX
--Version unterstützt
- ebenfalls Unicode, was in modernen Distributionen der Fall ist), wählen
- Sie eine der unten aufgeführten UTF8-Varianten.
- Leider ist die Unicode-Unterstützung im klassischen \SpecialChar LaTeX
- beschränkt; es kann
- also gut sein, dass Dokumente mit vielen Sonderzeichen mit der Option 
+ unterstützt auch diese traditionellen Kodierungen.
+ Wenn Sie unter 
 \family sans
-Voreinstellung der Sprache
+Kodierung
 \family default
- problemlos ausgegeben werden (da \SpecialChar LyX
- die Zeichen in entsprechende Befehle
- umwandelt), dass aber eine UTF8-Kodierung Fehler produziert (da \SpecialChar LyX
- dort keine
- Zeichen in Befehle umwandelt, \SpecialChar LaTeX
- aber nicht alle Zeichen kennt).
- Mit neueren \SpecialChar TeX
--Alternativen wir Xe\SpecialChar TeX
- und Lua\SpecialChar TeX
- gibt es diese Probleme in aller
- Regel nicht, denn sie wurden von Anfang an auf Unicode-Unterstützung angelegt.
- \SpecialChar LyX
- unterstützt beide dieser \SpecialChar TeX
--Alternativen über die Ausgabeformate 
+ die Auswahl 
 \family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-(XeTeX)
+Traditionell (automatisch gewählt)
 \family default
-, 
+ wählen, wählt \SpecialChar LyX
+ automatisch die passend traditionelle Kodierung für die
+ Sprache(n) des Dokuments aus.
+ Wenn Ihr Dokument mehrsprachig ist, werden in diesem Fall gegebenenfalls
+ mehrere Kodierungen für das \SpecialChar LaTeX
+-Dokument verwendet.
+\end_layout
+
+\begin_layout Standard
+Als dritte Option bietet \SpecialChar LyX
+ die Auswahl 
 \family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-(LuaTeX)
+ASCII
 \family default
- und 
-\family sans
-DVI
-\begin_inset space ~
-\end_inset
-
-(Lua\SpecialChar TeX
-)
-\family default
-, siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Ausgabe-Dateiformate"
-
-\end_inset
-
 .
- Sie können also auf diese zurückgreifen, wenn Sie mit vielen Sonderzeichen
- oder Akzenten arbeiten und 
+ Wenn dies gewählt wurde, wird jedes Zeichen außerhalb des 7-Bit-ASCII-Bereichs
+ als \SpecialChar LaTeX
+-Befehl ausgegeben.
+\end_layout
+
+\begin_layout Standard
+Schließlich können Sie auch 
 \family sans
-Voreinstellung der Sprache
+Benutzerdefiniert
 \family default
- nicht funktioniert.
+ wählen.
+ In diesem Fall können Sie eine spezifische (einzelne) Kodierung für das
+ gesamte Dokument auswählen.
+ Beachten Sie aber, dass diese Kodierung dann für 
+\emph on
+alle
+\emph default
+ Sprachen verwendet wird.
+ Die Liste mit den benutzerdefinierten Optionen (die weiter unten genauer
+ erläutert wird) besteht aus traditionellen Kodierungen, einigen Spezialfällen
+ für Unicode sowie anderen Spezialfällen für bestimmte Zwecke (vgl.
+ die Erläuterungen unten).
 \end_layout
 
 \begin_layout Standard
@@ -43411,21 +43378,21 @@ Hier ist eine Liste mit den wichtigen Kodierungen:
 \end_layout
 
 \begin_layout Description
-Sprach-Voreinstellung
+Traditionell,
 \begin_inset space ~
 \end_inset
 
-(ohne
+lade
 \begin_inset space ~
 \end_inset
 
-inputenc) Dasselbe wie 
+inputenc
+\begin_inset space ~
+\end_inset
+
+nicht Dasselbe wie 
 \family sans
-Voreinstellung
-\family default
- 
-\family sans
-der Sprache
+Traditionell (automatisch gewählt)
 \family default
 , das \SpecialChar LaTeX
 -Paket 
@@ -43445,6 +43412,9 @@ status collapsed
 
  wird jedoch nicht von \SpecialChar LyX
  geladen.
+ Diese Option kann nützlich sein, wenn Sie eine Klasse oder ein Paket verwenden,
+ welches inputenc selbst lädt, oder wenn inputenc aus irgend einem Grund
+ nicht verwendet werden kann.
  Wenn Sie dies verwenden, müssen Sie wahrscheinlich zusätzliche Pakete im
  \SpecialChar LaTeX
 -Vorspann manuell laden und auch die Kodierung für fremdsprachige Texte
@@ -43460,6 +43430,15 @@ ASCII die ASCII-Kodierung umfasst nur die im Standard-Englischen gebrauchten
 -Befehle um, was zu großen \SpecialChar LaTeX
 -Dateien führen
  kann, wenn Sie viele Nicht-ASCII-Zeichen verwenden.
+ Dies ist dasselbe wie die Option 
+\family sans
+ASCII
+\family default
+ der Haupt-Auswahlliste 
+\family sans
+Kodierung
+\family default
+.
 \end_layout
 
 \begin_layout Description
@@ -43971,6 +43950,17 @@ status collapsed
 \end_inset
 
  (für die Sprachen Chinesisch, Japanisch und Koreanisch).
+ Diese Kodierung wird von \SpecialChar LyX
+ in der Standardeinstellung (
+\family sans
+Unicode (utf8) [Standard]
+\family default
+ in der Haupt-Auswahlliste 
+\family sans
+Kodierung
+\family default
+) verwendet, wenn CJK-Sprachen verwendet werden.
+ Normalerweise müssen Sie diese Kodierung nicht manuell auswählen.
 \end_layout
 
 \begin_layout Description
@@ -44032,8 +44022,17 @@ status collapsed
 
 \end_inset
 
- (relativ umfassend, enthält lateinische, griechisch und kyrillische Alphabetzei
-chen sowie Chinesische, Koreanische und Japanische Zeichen).
+ (enthält lateinische, griechisch und kyrillische Alphabetzeichen sowie
+ Chinesische, Koreanische und Japanische Zeichen).
+ Diese Option war einmal umfassender als 
+\family sans
+Unicode
+\begin_inset space ~
+\end_inset
+
+(utf8)
+\family default
+; inzwischen jedoch ist sie veraltet.
 \end_layout
 
 \begin_layout Description
@@ -44058,8 +44057,17 @@ status collapsed
 \end_inset
 
 .
- Unterstützt derzeit nur einen eingeschränkten Teilbereich des Unicode-Spektrums
- (hauptsächlich lateinisch-alphabetische Zeichen).
+ Diese Kodierung wird von \SpecialChar LyX
+ in der Standardeinstellung (
+\family sans
+Unicode (utf8) [Standard]
+\family default
+ in der Haupt-Auswahlliste 
+\family sans
+Kodierung
+\family default
+) verwendet, wenn keine CJK-Sprachen verwendet werden.
+ Normalerweise müssen Sie diese Kodierung nicht manuell auswählen.
 \end_layout
 
 \begin_layout Description

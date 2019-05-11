@@ -45334,24 +45334,117 @@ The document language and quote styles are set here.
 -commands (this can fail if a \SpecialChar LaTeX
 -command is not known for
  a particular character).
+\change_inserted -712698321 1557594829
+
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -712698321 1557596095
+By default, \SpecialChar LyX
+ outputs \SpecialChar LaTeX
+ files in Unicode – or utf8, for that matter (which
+ is nowadays also \SpecialChar LaTeX
+'s default encoding).
+ This should normally fit your needs, since \SpecialChar LaTeX
+'s Unicode support covers the
+ characters of most scripts.
+ Nonetheless it is not yet comprehensive, so there might be cases where
+ using one of the traditional, or 
+\begin_inset Quotes eld
+\end_inset
+
+legacy
+\begin_inset Quotes erd
+\end_inset
+
+, encodings is necessary.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1557596136
+\SpecialChar LyX
+ provides support for these traditional encodings.
+ If you chose 
+\family sans
+Traditional (auto-selected)
+\family default
+ from the 
+\family sans
+Encodings
+\family default
+ dropdown, \SpecialChar LyX
+ automatically selects the appropriate traditional encoding for
+ the given language(s).
+ 
+\change_deleted -712698321 1557595310
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -712698321 1557595310
 If you use the option 
 \family sans
 Language Default
 \family default
 , \SpecialChar LyX
  determines the encoding of a text part from the language of this text.
- If the document contains text in more than one language you may get more
- than one encoding in the \SpecialChar LaTeX
+ 
+\change_unchanged
+If the document contains text in more than one language you 
+\change_inserted -712698321 1557595342
+thus 
+\change_unchanged
+may get more than one encoding in the \SpecialChar LaTeX
  file.
- If you do not use this option then the complete document will always use
+ 
+\change_deleted -712698321 1557595350
+If you do not use this option then the complete document will always use
  exactly one encoding.
  Checking this option is the preferred setting.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -712698321 1557596155
+As a third option, \SpecialChar LyX
+ provides the 
+\family sans
+ASCII
+\family default
+ selection.
+ If this is chosen, any character outside the 7bit ASCII range will be output
+ as a \SpecialChar LaTeX
+ command.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1557596040
+Finally, you can also select 
+\family sans
+Custom
+\family default
+, which lets you specify a specific (single) encoding for the whole document.
+ Note that this encoding is then used for 
+\emph on
+any
+\emph default
+ language.
+ The custom list (which is spelled out below) consists of traditional encodings,
+ some special cases of Unicode as well as some other special cases for specific
+ purposes (see explanation below).
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -712698321 1557596063
 \SpecialChar LyX
  also supports Unicode output, which is particularly useful if you need
  lots of special symbols or non-alphabetic scripts, respectively.
@@ -45419,6 +45512,8 @@ reference "subsec:Output-file-formats"
 Language Default
 \family default
  fails, you might try out one of these new engines.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -45553,21 +45648,45 @@ Here is a list with the important encodings:
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -712698321 1557595809
 Language
 \begin_inset space ~
 \end_inset
 
 Default
+\change_inserted -712698321 1557595810
+Traditional
+\change_unchanged
+
 \begin_inset space ~
 \end_inset
 
-(no
+(
+\change_deleted -712698321 1557595824
+no
 \begin_inset space ~
 \end_inset
 
-inputenc) Same as 
+
+\change_unchanged
+inputenc
+\change_inserted -712698321 1557595828
+ 
+\family sans
+not loaded
+\change_unchanged
+
+\family default
+) Same as 
+\change_deleted -712698321 1557595854
+
 \family sans
 Language Default
+\change_inserted -712698321 1557595854
+Traditional (auto-selected)
+\change_unchanged
+
 \family default
 , but the \SpecialChar LaTeX
 -package 
@@ -45585,8 +45704,21 @@ status collapsed
 
 \end_inset
 
- is not used.
- When using this, you probably need to load some additional packages manually
+ is not 
+\change_deleted -712698321 1557595861
+used
+\change_inserted -712698321 1557595879
+loaded by \SpecialChar LyX
+
+\change_unchanged
+.
+ 
+\change_inserted -712698321 1557595897
+This selection might be useful if you use a class or package that pre-loads
+ inputenc or if inputenc must not be used for some reason.
+ 
+\change_unchanged
+When using this, you probably need to load some additional packages manually
  in the preamble and specify the used encoding for text parts in foreign
  languages in \SpecialChar TeX
  code.
@@ -45599,6 +45731,19 @@ ASCII the ASCII encoding, covers only plain English (7-bit ASCII).
  commands, which may result in a big
  file when lots of \SpecialChar LaTeX
 -commands are needed.
+
+\change_inserted -712698321 1557596221
+ This is the same as the 
+\family sans
+ASCII
+\family default
+ option in the main 
+\family sans
+Encoding
+\family default
+ dropdown list.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -46070,6 +46215,21 @@ status collapsed
 \end_inset
 
  (for the languages Chinese, Japanese and Korean)
+\change_inserted -712698321 1557596410
+.
+ This encoding is selected by \SpecialChar LyX
+ with the default encoding (
+\family sans
+Unicode (utf8) [default]
+\family default
+ in the main 
+\family sans
+Encoding
+\family default
+ dropdown list) with CJK languages.
+ Normally you do not need to set this encoding manually.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -46133,7 +46293,24 @@ status collapsed
 
 \end_inset
 
- (comprehensive, including Latin, Greek, Cyrillic and CJK scripts).
+ (
+\change_deleted -712698321 1557596443
+comprehensive, 
+\change_unchanged
+including Latin, Greek, Cyrillic and CJK scripts).
+
+\change_inserted -712698321 1557596475
+ This used to be more comprehensive than 
+\family sans
+Unicode
+\begin_inset space ~
+\end_inset
+
+(utf8)
+\family default
+, but meanwhile it is rather outdated.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -46158,8 +46335,24 @@ status collapsed
 \end_inset
 
 .
- Currently only a limited range of characters (mainly for Latin scripts)
+ 
+\change_deleted -712698321 1557596266
+Currently only a limited range of characters (mainly for Latin scripts)
  is supported.
+\change_inserted -712698321 1557596400
+This encoding is selected by \SpecialChar LyX
+ with the default encoding (
+\family sans
+Unicode (utf8) [default]
+\family default
+ in the main 
+\family sans
+Encoding
+\family default
+ dropdown list) with non-CJK languages.
+ Normally you do not need to set this encoding manually.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
