@@ -1727,7 +1727,7 @@ Buffer::ExportStatus Buffer::makeLaTeXFile(FileName const & fname,
 	catch (iconv_codecvt_facet_exception const & e) {
 		lyxerr << "Caught iconv exception: " << e.what() << endl;
 		Alert::error(_("Iconv software exception Detected"),
-			bformat(_("Please verify that the 'iconv' support software is"
+			bformat(_("Please verify that the `iconv' support software is"
 					  " properly installed and supports the selected encoding"
 					  " (%1$s), or change the encoding in"
 					  " Document>Settings>Language."), from_ascii(encoding)));
