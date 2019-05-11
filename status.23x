@@ -205,6 +205,9 @@ What's new
 
 - Fix pre- and postnote fields in year-only biblatex-natbib citations.
 
+- Get rid of spurious empty entry in list of equations when creating new
+  formula (bug 11423).
+
 
 * INTERNALS
 
