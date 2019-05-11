@@ -152,6 +152,7 @@ private Q_SLOTS:
 	void deleteBoxBackgroundColor();
 	void languageChanged(int);
 	void osFontsChanged(bool);
+	void encodingSwitched(int);
 	void mathFontChanged(int);
 	void branchesRename(docstring const &, docstring const &);
 	void allPackagesAuto();

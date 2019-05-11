@@ -931,11 +931,11 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(langModule->languageCO, SIGNAL(activated(int)),
 		this, SLOT(languageChanged(int)));
-	connect(langModule->defaultencodingRB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
-	connect(langModule->otherencodingRB, SIGNAL(clicked()),
+	connect(langModule->encodingCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(langModule->encodingCO, SIGNAL(activated(int)),
+		this, SLOT(encodingSwitched(int)));
+	connect(langModule->customEncodingCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(langModule->quoteStyleCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
@@ -957,15 +957,24 @@ GuiDocument::GuiDocument(GuiView & lv)
 	langModule->languageCO->setModel(language_model);
 	langModule->languageCO->setModelColumn(0);
 
+	langModule->encodingCO->addItem(qt_("Unicode (utf8) [default]"), toqstr("utf8"));
+	langModule->encodingCO->addItem(qt_("Traditional (auto-selected)"),
+					toqstr("auto-legacy"));
+	langModule->encodingCO->addItem(qt_("ASCII"), toqstr("ascii"));
+	langModule->encodingCO->addItem(qt_("Custom"), toqstr("custom"));
 	// Always put the default encoding in the first position.
-	langModule->encodingCO->addItem(qt_("Language Default (no inputenc)"));
-	QStringList encodinglist;
+	langModule->customEncodingCO->addItem(qt_("Language Default (no inputenc)"),
+					      toqstr("auto-legacy-plain"));
+	QMap<QString,QString> encodingmap;
 	for (auto const & encvar : encodings) {
 		if (!encvar.unsafe() && !encvar.guiName().empty())
-			encodinglist.append(qt_(encvar.guiName()));
+			encodingmap.insert(qt_(encvar.guiName()), qt_(encvar.name()));
 	}
-	encodinglist.sort();
-	langModule->encodingCO->addItems(encodinglist);
+	QMap<QString, QString>::const_iterator it = encodingmap.constBegin();
+	while (it != encodingmap.constEnd()) {
+		langModule->customEncodingCO->addItem(it.key(), it.value());
+		++it;
+	}
 
 	langModule->languagePackageCO->addItem(
 		qt_("Default"), toqstr("default"));
@@ -2245,10 +2254,10 @@ void GuiDocument::osFontsChanged(bool nontexfonts)
 	fontModule->font_sf_scale = font_sf_scale;
 	fontModule->font_tt_scale = font_tt_scale;
 
-	langModule->encodingCO->setEnabled(tex_fonts &&
-		!langModule->defaultencodingRB->isChecked());
-	langModule->defaultencodingRB->setEnabled(tex_fonts);
-	langModule->otherencodingRB->setEnabled(tex_fonts);
+	langModule->customEncodingCO->setEnabled(tex_fonts &&
+		langModule->encodingCO->itemData(
+			langModule->encodingCO->currentIndex()).toString() == "custom");
+	langModule->encodingCO->setEnabled(tex_fonts);
 
 	fontModule->fontsDefaultCO->setEnabled(tex_fonts);
 	fontModule->fontsDefaultLA->setEnabled(tex_fonts);
@@ -2263,6 +2272,14 @@ void GuiDocument::osFontsChanged(bool nontexfonts)
 		fontModule->fontencLE->setEnabled(false);
 	else
 		fontencChanged(fontModule->fontencCO->currentIndex());
+}
+
+
+void GuiDocument::encodingSwitched(int i)
+{
+	langModule->customEncodingCO->setEnabled(
+				!fontModule->osFontsCB->isChecked()
+				&& langModule->encodingCO->itemData(i).toString() == "custom");
 }
 
 
@@ -3209,33 +3226,13 @@ void GuiDocument::applyView()
 	indicesModule->apply(bp_);
 
 	// language & quotes
-	if (langModule->defaultencodingRB->isChecked()) {
-		bp_.inputenc = "auto-legacy";
-	} else {
-		int i = langModule->encodingCO->currentIndex();
-		if (i == 0)
-			bp_.inputenc = "auto-legacy-plain";
-		else {
-			QString const enc_gui =
-				langModule->encodingCO->currentText();
-			Encodings::const_iterator it = encodings.begin();
-			Encodings::const_iterator const end = encodings.end();
-			bool found = false;
-			for (; it != end; ++it) {
-				if (qt_(it->guiName()) == enc_gui &&
-				    !it->unsafe()) {
-					bp_.inputenc = it->name();
-					found = true;
-					break;
-				}
-			}
-			if (!found) {
-				// should not happen
-				lyxerr << "GuiDocument::apply: Unknown encoding! Resetting to utf8" << endl;
-				bp_.inputenc = "utf8";
-			}
-		}
-	}
+	QString const encoding = langModule->encodingCO->itemData(
+				langModule->encodingCO->currentIndex()).toString();
+	if (encoding != "custom")
+		bp_.inputenc = fromqstr(encoding);
+	else
+		bp_.inputenc = fromqstr(langModule->customEncodingCO->itemData(
+					langModule->customEncodingCO->currentIndex()).toString());
 
 	bp_.quotes_style = (InsetQuotesParams::QuoteStyle) langModule->quoteStyleCO->itemData(
 		langModule->quoteStyleCO->currentIndex()).toInt();
@@ -3727,35 +3724,20 @@ void GuiDocument::paramsToDialog()
 		langModule->quoteStyleCO->findData(bp_.quotes_style));
 	langModule->dynamicQuotesCB->setChecked(bp_.dynamic_quotes);
 
-	bool default_enc = true;
-	if (bp_.inputenc != "auto-legacy") {
-		default_enc = false;
-		if (bp_.inputenc == "auto-legacy-plain") {
+	int p = langModule->encodingCO->findData(toqstr(bp_.inputenc));
+	if (p != -1)
+		langModule->encodingCO->setCurrentIndex(p);
+	else {
+		langModule->encodingCO->setCurrentIndex(
+			  langModule->encodingCO->findData("custom"));
+		p = langModule->customEncodingCO->findData(toqstr(bp_.inputenc));
+		if (p != -1)
+			langModule->customEncodingCO->setCurrentIndex(p);
+		else
 			langModule->encodingCO->setCurrentIndex(0);
-		} else {
-			string enc_gui;
-			Encodings::const_iterator it = encodings.begin();
-			Encodings::const_iterator const end = encodings.end();
-			for (; it != end; ++it) {
-				if (it->name() == bp_.inputenc &&
-				    !it->unsafe()) {
-					enc_gui = it->guiName();
-					break;
-				}
-			}
-			int const i = langModule->encodingCO->findText(
-					qt_(enc_gui));
-			if (i >= 0)
-				langModule->encodingCO->setCurrentIndex(i);
-			else
-				// unknown encoding. Set to default.
-				default_enc = true;
-		}
 	}
-	langModule->defaultencodingRB->setChecked(default_enc);
-	langModule->otherencodingRB->setChecked(!default_enc);
 
-	int const p = langModule->languagePackageCO->findData(toqstr(bp_.lang_package));
+	p = langModule->languagePackageCO->findData(toqstr(bp_.lang_package));
 	if (p == -1) {
 		langModule->languagePackageCO->setCurrentIndex(
 			  langModule->languagePackageCO->findData("custom"));
