@@ -45424,7 +45424,7 @@ ASCII
 
 \begin_layout Standard
 
-\change_inserted -712698321 1557596040
+\change_inserted -712698321 1557645585
 Finally, you can also select 
 \family sans
 Custom
@@ -45435,9 +45435,54 @@ Custom
 any
 \emph default
  language.
- The custom list (which is spelled out below) consists of traditional encodings,
- some special cases of Unicode as well as some other special cases for specific
- purposes (see explanation below).
+ The custom list (which is spelled out below) consists of traditional encodings
+ and some special cases of Unicode for specific purposes (see explanation
+ below).
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1557645268
+The 
+\family sans
+Do not load inputenc
+\family default
+ checkbox does what it states: It prevents \SpecialChar LyX
+ from automatically loading the
+ \SpecialChar LaTeX
+-package 
+\series bold
+inputenc
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1557645185
+\SpecialChar LaTeX
+ packages ! inputenc
+\end_layout
+
+\end_inset
+
+.
+ This option might be useful if you use a class or package that pre-loads
+ inputenc or if inputenc must not be used for some reason.
+ When using this, you probably need to load some additional packages manually
+ in the preamble and specify the used encoding for text parts in foreign
+ languages in \SpecialChar TeX
+ code.
+ Note that this option is only available for the standard 
+\family sans
+Unicode
+\family default
+ and 
+\family sans
+Traditional (auto-selected)
+\family default
+ encodings.
 \change_unchanged
 
 \end_layout
@@ -45649,44 +45694,22 @@ Here is a list with the important encodings:
 
 \begin_layout Description
 
-\change_deleted -712698321 1557595809
+\change_deleted -712698321 1557645284
 Language
 \begin_inset space ~
 \end_inset
 
 Default
-\change_inserted -712698321 1557595810
-Traditional
-\change_unchanged
-
 \begin_inset space ~
 \end_inset
 
-(
-\change_deleted -712698321 1557595824
-no
+(no
 \begin_inset space ~
 \end_inset
 
-
-\change_unchanged
-inputenc
-\change_inserted -712698321 1557595828
- 
-\family sans
-not loaded
-\change_unchanged
-
-\family default
-) Same as 
-\change_deleted -712698321 1557595854
-
+inputenc) Same as 
 \family sans
 Language Default
-\change_inserted -712698321 1557595854
-Traditional (auto-selected)
-\change_unchanged
-
 \family default
 , but the \SpecialChar LaTeX
 -package 
@@ -45704,24 +45727,13 @@ status collapsed
 
 \end_inset
 
- is not 
-\change_deleted -712698321 1557595861
-used
-\change_inserted -712698321 1557595879
-loaded by \SpecialChar LyX
-
-\change_unchanged
-.
- 
-\change_inserted -712698321 1557595897
-This selection might be useful if you use a class or package that pre-loads
- inputenc or if inputenc must not be used for some reason.
- 
-\change_unchanged
-When using this, you probably need to load some additional packages manually
+ is not used.
+ When using this, you probably need to load some additional packages manually
  in the preamble and specify the used encoding for text parts in foreign
  languages in \SpecialChar TeX
  code.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

@@ -43254,9 +43254,51 @@ alle
 \emph default
  Sprachen verwendet wird.
  Die Liste mit den benutzerdefinierten Optionen (die weiter unten genauer
- erläutert wird) besteht aus traditionellen Kodierungen, einigen Spezialfällen
- für Unicode sowie anderen Spezialfällen für bestimmte Zwecke (vgl.
+ erläutert wird) besteht aus traditionellen Kodierungen und einigen Unicode-Sond
+erformen für bestimmte Zwecke (vgl.
  die Erläuterungen unten).
+\end_layout
+
+\begin_layout Standard
+Die Option 
+\family sans
+Inputenc nicht laden
+\family default
+ macht genau das, was sie sagt: Sie hindert \SpecialChar LyX
+ daran, das \SpecialChar LaTeX
+-Paket 
+\series bold
+inputenc
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Paket ! inputenc
+\end_layout
+
+\end_inset
+
+ automatisch zu laden.
+ Diese Option kann nützlich sein, wenn Sie eine Klasse oder ein Paket verwenden,
+ welches inputenc selbst lädt, oder wenn inputenc aus irgend einem Grund
+ nicht verwendet werden kann.
+ Wenn Sie diese Option aktivieren, müssen Sie wahrscheinlich zusätzliche
+ Pakete im \SpecialChar LaTeX
+-Vorspann manuell laden und auch die Kodierung für fremdsprachige
+ Texte durch \SpecialChar TeX
+-Code selbst angeben.
+ Beachten Sie, dass diese Option nur für die Standard-
+\family sans
+Unicode
+\family default
+-Kodierung und für 
+\family sans
+Traditionell (automatisch gewählt)
+\family default
+ zur Verfügung steht.
 \end_layout
 
 \begin_layout Standard
@@ -43375,51 +43417,6 @@ Keines verwendet kein Sprachpaket.
 
 \begin_layout Standard
 Hier ist eine Liste mit den wichtigen Kodierungen:
-\end_layout
-
-\begin_layout Description
-Traditionell,
-\begin_inset space ~
-\end_inset
-
-lade
-\begin_inset space ~
-\end_inset
-
-inputenc
-\begin_inset space ~
-\end_inset
-
-nicht Dasselbe wie 
-\family sans
-Traditionell (automatisch gewählt)
-\family default
-, das \SpecialChar LaTeX
--Paket 
-\series bold
-inputenc
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-\SpecialChar LaTeX
--Paket ! inputenc
-\end_layout
-
-\end_inset
-
- wird jedoch nicht von \SpecialChar LyX
- geladen.
- Diese Option kann nützlich sein, wenn Sie eine Klasse oder ein Paket verwenden,
- welches inputenc selbst lädt, oder wenn inputenc aus irgend einem Grund
- nicht verwendet werden kann.
- Wenn Sie dies verwenden, müssen Sie wahrscheinlich zusätzliche Pakete im
- \SpecialChar LaTeX
--Vorspann manuell laden und auch die Kodierung für fremdsprachige Texte
- durch \SpecialChar TeX
--Code selbst angeben.
 \end_layout
 
 \begin_layout Description
