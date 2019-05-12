@@ -937,6 +937,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(encodingSwitched(int)));
 	connect(langModule->customEncodingCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
+	connect(langModule->noInputencCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 	connect(langModule->quoteStyleCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(langModule->languagePackageCO, SIGNAL(activated(int)),
@@ -962,9 +964,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 					toqstr("auto-legacy"));
 	langModule->encodingCO->addItem(qt_("ASCII"), toqstr("ascii"));
 	langModule->encodingCO->addItem(qt_("Custom"), toqstr("custom"));
-	// Always put the default encoding in the first position.
-	langModule->customEncodingCO->addItem(qt_("Traditional (inputenc not loaded)"),
-					      toqstr("auto-legacy-plain"));
+
 	QMap<QString,QString> encodingmap;
 	for (auto const & encvar : encodings) {
 		if (!encvar.unsafe() && !encvar.guiName().empty())
@@ -2258,6 +2258,10 @@ void GuiDocument::osFontsChanged(bool nontexfonts)
 		langModule->encodingCO->itemData(
 			langModule->encodingCO->currentIndex()).toString() == "custom");
 	langModule->encodingCO->setEnabled(tex_fonts);
+	langModule->noInputencCB->setEnabled(tex_fonts
+					     && langModule->encodingCO->currentIndex() < 2);
+	if (!tex_fonts)
+		langModule->noInputencCB->setChecked(false);
 
 	fontModule->fontsDefaultCO->setEnabled(tex_fonts);
 	fontModule->fontsDefaultLA->setEnabled(tex_fonts);
@@ -2280,6 +2284,11 @@ void GuiDocument::encodingSwitched(int i)
 	langModule->customEncodingCO->setEnabled(
 				!fontModule->osFontsCB->isChecked()
 				&& langModule->encodingCO->itemData(i).toString() == "custom");
+	langModule->noInputencCB->setEnabled(!fontModule->osFontsCB->isChecked()
+					     && langModule->encodingCO->currentIndex() < 2);
+	if (!langModule->noInputencCB->isEnabled())
+		langModule->noInputencCB->setChecked(false);
+
 }
 
 
@@ -3233,6 +3242,9 @@ void GuiDocument::applyView()
 	else
 		bp_.inputenc = fromqstr(langModule->customEncodingCO->itemData(
 					langModule->customEncodingCO->currentIndex()).toString());
+	if (langModule->noInputencCB->isChecked()
+	    && (encoding == "auto-legacy" || encoding == "utf8"))
+		bp_.inputenc += "-plain";
 
 	bp_.quotes_style = (InsetQuotesParams::QuoteStyle) langModule->quoteStyleCO->itemData(
 		langModule->quoteStyleCO->currentIndex()).toInt();
@@ -3724,13 +3736,20 @@ void GuiDocument::paramsToDialog()
 		langModule->quoteStyleCO->findData(bp_.quotes_style));
 	langModule->dynamicQuotesCB->setChecked(bp_.dynamic_quotes);
 
-	int p = langModule->encodingCO->findData(toqstr(bp_.inputenc));
+	QString inputenc = toqstr(bp_.inputenc);
+	bool plain = false;
+	if (inputenc.endsWith("-plain")) {
+		inputenc = inputenc.left(inputenc.lastIndexOf("-plain"));
+		plain = true;
+	}
+	langModule->noInputencCB->setChecked(plain);
+	int p = langModule->encodingCO->findData(inputenc);
 	if (p != -1)
 		langModule->encodingCO->setCurrentIndex(p);
 	else {
 		langModule->encodingCO->setCurrentIndex(
 			  langModule->encodingCO->findData("custom"));
-		p = langModule->customEncodingCO->findData(toqstr(bp_.inputenc));
+		p = langModule->customEncodingCO->findData(inputenc);
 		if (p != -1)
 			langModule->customEncodingCO->setCurrentIndex(p);
 		else

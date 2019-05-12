@@ -79,6 +79,33 @@
    </item>
    <item row="1" column="0" colspan="2">
     <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="2">
+      <widget class="QComboBox" name="customEncodingCO">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="toolTip">
+        <string>If you selected a custom output encoding to the left, yo can specifiy it here</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="languagePackageCO">
+       <property name="toolTip">
+        <string>Select which language package LyX should use</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="languagePackageLA">
+       <property name="text">
+        <string>Language pa&amp;ckage:</string>
+       </property>
+       <property name="buddy">
+        <cstring>languagePackageCO</cstring>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="0">
       <widget class="QLabel" name="encodingLA">
        <property name="text">
@@ -102,37 +129,20 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="2">
-      <widget class="QComboBox" name="customEncodingCO">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
+     <item row="2" column="2">
+      <widget class="QLineEdit" name="languagePackageLE">
        <property name="toolTip">
-        <string>If you selected a custom output encoding to the left, yo can specifiy it here</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="languagePackageLA">
-       <property name="text">
-        <string>Language pa&amp;ckage:</string>
-       </property>
-       <property name="buddy">
-        <cstring>languagePackageCO</cstring>
+        <string>Enter the command to load the language package (default: \usepackage{babel})</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QComboBox" name="languagePackageCO">
+      <widget class="QCheckBox" name="noInputencCB">
        <property name="toolTip">
-        <string>Select which language package LyX should use</string>
+        <string>If this is checked, LyX does not load the inputenc LaTeX package</string>
        </property>
-      </widget>
-     </item>
-     <item row="1" column="2">
-      <widget class="QLineEdit" name="languagePackageLE">
-       <property name="toolTip">
-        <string>Enter the command to load the language package (default: \usepackage{babel})</string>
+       <property name="text">
+        <string>Do not load &amp;inputenc</string>
        </property>
       </widget>
      </item>
