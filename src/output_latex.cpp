@@ -743,7 +743,7 @@ void TeXOnePar(Buffer const & buf,
 
 	OutputParams runparams = runparams_in;
 	runparams.isLastPar = (pit == pit_type(paragraphs.size() - 1));
-	// We reinitialze par begin and end to be on the safe side
+	// We reinitialize par begin and end to be on the safe side
 	// with embedded inset as we don't know if they set those
 	// value correctly.
 	runparams.par_begin = 0;
@@ -1330,6 +1330,12 @@ void TeXOnePar(Buffer const & buf,
 				break;
 			}
 			case inputenc: {
+				// FIXME: If we are in an inset and the switch happened outside this inset,
+				// do not switch back at the end of the inset (bug #8479)
+				// The following attempt does not help with listings-caption in a CJK document:
+				// if (runparams_in.local_font != 0
+				//    && runparams_in.encoding == runparams_in.local_font->language()->encoding())
+				//	break;
 				os << "\\egroup";
 				state->open_encoding_ = none;
 				break;
