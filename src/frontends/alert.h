@@ -20,7 +20,7 @@ namespace frontend {
 namespace Alert {
 
 /**
- * Prompt for a question. Returns 0-2 for the chosen button.
+ * Prompt for a question. Returns 0-3 for the chosen button.
  * Set default_button and cancel_button to reasonable values. b1-b3
  * should have accelerators marked with an '&'. title should be
  * a short summary. Strings should be gettextised.
@@ -32,9 +32,9 @@ namespace Alert {
  */
 int prompt(docstring const & title, docstring const & question,
 	   int default_button, int cancel_button,
-	   docstring const & b1, docstring const & b2,
-	   docstring const & b3 = empty_docstring(),
-	   docstring const & b4 = empty_docstring());
+	   docstring const & b0, docstring const & b1,
+	   docstring const & b2 = empty_docstring(),
+	   docstring const & b3 = empty_docstring());
 
 /**
  * Display a warning to the user. Title should be a short (general) summary.

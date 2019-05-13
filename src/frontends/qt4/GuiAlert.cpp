@@ -139,8 +139,8 @@ int doPrompt(docstring const & title0, docstring const & question,
 
 int prompt(docstring const & title0, docstring const & question,
 		  int default_button, int cancel_button,
-		  docstring const & b1, docstring const & b2,
-		  docstring const & b3, docstring const & b4)
+		  docstring const & b0, docstring const & b1,
+		  docstring const & b2, docstring const & b3)
 {
 #ifdef EXPORT_in_THREAD
 	return InGuiThread<int>().call(&doPrompt,
@@ -148,7 +148,7 @@ int prompt(docstring const & title0, docstring const & question,
 	return doPrompt(
 #endif
 				title0, question, default_button,
-				cancel_button, b1, b2, b3, b4);
+				cancel_button, b0, b1, b2, b3);
 }
 
 void doWarning(docstring const & title0, docstring const & message,
