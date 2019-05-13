@@ -231,8 +231,6 @@ public Q_SLOTS:
 	void updateWindowTitle(GuiWorkArea * wa);
 	///
 	void disableShellEscape();
-	///
-	void checkKillBackground();
 
 private Q_SLOTS:
 	///
