@@ -4,7 +4,7 @@
 # Update for Koma Script Release >=2.8q
 # Juergen Spitzmueller <spitz@lyx.org>, 2003/2/08.
 # Mapped List to Labeling
-# Guenter Milde <milde users.berlios.de>, 2009-02-02
+# Guenter Milde <milde@lyx.org>, 2009-02-02
 # Labeling is now used also in non-KOMA classes
 
 
