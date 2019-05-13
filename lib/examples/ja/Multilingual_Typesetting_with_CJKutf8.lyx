@@ -34,6 +34,7 @@
 \use_default_options true
 \begin_modules
 logicalmkup
+ruby
 \end_modules
 \maintain_unincluded_children false
 \language japanese-cjk
@@ -122,7 +123,7 @@ logicalmkup
 \begin_layout Title
 
 \lang english
-Multilingual typesetting with CJKutf8
+Multilingual typesetting with the CJK package
 \end_layout
 
 \begin_layout Date
@@ -274,7 +275,7 @@ Then, the following should work:
 \end_layout
 
 \begin_layout Enumerate
-\SpecialChar LyX
+Japanese text, of course: \SpecialChar LyX
 は優秀な取扱説明書を同梱していますので、これをお使いください！まずは
 \family sans
 ヘルプ\SpecialChar menuseparator
@@ -336,15 +337,79 @@ Russisch:
 \begin_layout Enumerate
 
 \lang english
-Japanese characters (
-\lang japanese-cjk
-介, し
+Japanese characters, e.g., 介 し
 \family sans
-, 門
+ 門
 \family default
-\lang english
-) may also be used in text parts set to other languages.
+, may also be used in text parts set to other languages.
 \end_layout
 
+\begin_layout Enumerate
+
+\lang english
+Ruby (ルビ, furigana) with the help of the Ruby module:
+\lang japanese-cjk
+ 
+\begin_inset Flex Ruby
+status open
+
+\begin_layout Plain Layout
+東 京
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+とう きょう
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+Select D
+\family sans
+ocument\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Modules\SpecialChar menuseparator
+Annotation&Revision\SpecialChar menuseparator
+Ruby
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Select 
+\family sans
+Edit\SpecialChar menuseparator
+Custom Text Styles\SpecialChar menuseparator
+Ruby
+\family default
+ for the base characters.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Select 
+\family sans
+Insert\SpecialChar menuseparator
+Ruby text
+\family default
+ for the reading aid.
+\end_layout
+
+\end_deeper
 \end_body
 \end_document

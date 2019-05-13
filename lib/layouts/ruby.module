@@ -1,0 +1,46 @@
+#\DeclareLyXModule{Ruby (Furigana)}
+#\DeclareCategory{Annotation & Revision}
+#DescriptionBegin
+#Defines an inset to typeset reading aids (ruby, furigana) to Chinese
+#characters. Uses the "okumakro", "luatexja-ruby", or "ruby" package
+#(depending on the TeX engine) or a fallback definition.
+#DescriptionEnd
+#Requires
+#Excludes
+
+#Authors: Koji Yokota (original implementation as local layout),
+#         Günter Milde <milde@lyx.org> (module)
+
+Format 74
+
+InsetLayout Flex:Ruby
+	LyxType		charstyle
+	LatexType	command
+	LatexName	ruby
+	BgColor		none
+	LabelString	"Ruby"
+	Decoration	Conglomerate
+	Preamble
+	  \ifdefined\kanjiskip
+	    \IfFileExists{okumacro.sty}{\usepackage{okumacro}}{}
+	  \else \ifdefined\luatexversion
+	    \usepackage{luatexja-ruby}
+	  \else \ifdefined\XeTeXversion
+	    \usepackage{ruby}%
+	  \fi\fi\fi
+	  \providecommand{\ruby}[2]{\shortstack{\tiny #2\\#1}}
+	EndPreamble
+	Argument	post:1
+		LabelString	"ruby text"
+		MenuString	"Ruby Text|R"
+		Tooltip		"Reading aid (ruby, furigana) for Chinese characters."
+		Decoration	Conglomerate
+		Font
+		  Size		tiny
+		EndFont
+		LabelFont
+		  Size		tiny
+		EndFont
+		Mandatory	1
+	EndArgument
+End
