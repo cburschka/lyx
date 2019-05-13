@@ -376,11 +376,8 @@ void Row::finalizeLast()
 
 	if (elt.type == STRING) {
 		dim_.wid -= elt.dim.wid;
-		FontMetrics const & fm = theFontMetrics(elt.font);
-		elt.dim.wid = fm.width(elt.str);
+		elt.dim.wid = theFontMetrics(elt.font).width(elt.str);
 		dim_.wid += elt.dim.wid;
-		dim_.asc = fm.maxAscent() + fm.leading();
-		dim_.des = fm.maxDescent();
 	}
 }
 

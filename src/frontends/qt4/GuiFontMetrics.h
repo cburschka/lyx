@@ -36,7 +36,6 @@ public:
 
 	virtual int maxAscent() const;
 	virtual int maxDescent() const;
-	virtual int leading() const;
 	virtual Dimension const defaultDimension() const;
 	virtual int em() const;
 	virtual int xHeight() const;
