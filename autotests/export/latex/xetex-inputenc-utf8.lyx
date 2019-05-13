@@ -13,7 +13,7 @@
 \language english
 \language_package default
 \inputencoding utf8
-\fontencoding auto
+\fontencoding HE8,T1
 \font_roman "lmodern" "FreeSerif"
 \font_sans "default" "FreeSans"
 \font_typewriter "default" "FreeMono"
@@ -203,6 +203,53 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fontencoding{HE8}
+\backslash
+selectfont
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "unicodesymbols/012-hebrew_HE8.lyx"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fontencoding{T1}
+\backslash
+selectfont
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -215,17 +262,6 @@ literal "false"
 \end_inset
 
  
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset include
-LatexCommand input
-filename "unicodesymbols/012-hebrew_he_HE8.lyx"
-literal "false"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Plain Layout
