@@ -305,6 +305,26 @@ typedef map<string, GuiToolbar *> ToolbarMap;
 
 typedef shared_ptr<Dialog> DialogPtr;
 
+
+// see https://wiki.qt.io/Clickable_QLabel
+class QClickableLabel : public QLabel {
+	Q_OBJECT
+public:
+	explicit QClickableLabel(QWidget * parent)
+		: QLabel(parent)
+	{}
+
+	~QClickableLabel() {}
+
+Q_SIGNALS:
+	void clicked();
+
+protected:
+	void mousePressEvent(QMouseEvent *) {
+		Q_EMIT clicked();
+	}
+};
+
 } // namespace
 
 
@@ -610,7 +630,7 @@ GuiView::GuiView(int id)
 	setAcceptDrops(true);
 
 	// add busy indicator to statusbar
-	QLabel * busylabel = new QLabel(statusBar());
+	QClickableLabel * busylabel = new QClickableLabel(statusBar());
 	statusBar()->addPermanentWidget(busylabel);
 	search_mode mode = theGuiApp()->imageSearchMode();
 	QString fn = toqstr(lyx::libFileSearch("images", "busy", "gif", mode).absFileName());
@@ -623,6 +643,7 @@ GuiView::GuiView(int id)
 		busylabel, SLOT(show()));
 	connect(&d.processing_thread_watcher_, SIGNAL(finished()),
 		busylabel, SLOT(hide()));
+	connect(busylabel, SIGNAL(clicked()), this, SLOT(checkKillBackground()));
 
 	QFontMetrics const fm(statusBar()->fontMetrics());
 	int const iconheight = max(int(d.normalIconSize), fm.height());
@@ -710,6 +731,17 @@ void GuiView::disableShellEscape()
 	theSession().shellescapeFiles().remove(bv->buffer().absFileName());
 	bv->buffer().params().shell_escape = false;
 	bv->processUpdateFlags(Update::Force);
+}
+
+
+void GuiView::checkKillBackground()
+{
+	docstring const ttl = _("Cancel background process?");
+	docstring const msg = _("Do you want to cancel the background export process?");
+	const int decision =
+		Alert::prompt(ttl, msg, 1, 1, _("&Cancel Export"), _("Conti&nue"));
+	if (decision == 0)
+		Systemcall::killscript();
 }
 
 

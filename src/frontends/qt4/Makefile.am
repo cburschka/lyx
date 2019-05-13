@@ -197,6 +197,7 @@ MOCHEADER = \
 	GuiChanges.h \
 	GuiCharacter.h \
 	GuiCitation.h \
+	GuiClickableLabel.h \
 	GuiClipboard.h \
 	GuiCommandBuffer.h \
 	GuiCommandEdit.h \
