@@ -66,6 +66,10 @@ bool GuiIdListModel::setData(QModelIndex const & index,
 	if (role == Qt::DecorationRole)
 		// nothing to do
 		return true;
+	if (role == Qt::UserRole - 1)
+		// This role is set by Qt <= 5.5 if setEditable()
+		// of the item is false
+		return true;
 	// If we assert here, it's because we're trying to set an
 	// unrecognized role.
 	LATTEST(false);
