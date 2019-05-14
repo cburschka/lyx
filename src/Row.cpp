@@ -19,6 +19,7 @@
 #include "Row.h"
 
 #include "DocIterator.h"
+#include "Language.h"
 
 #include "frontends/FontMetrics.h"
 
@@ -479,7 +480,25 @@ bool Row::shortenIfNeeded(pos_type const keep, int const w, int const next_width
 		// make a copy of the element to work on it.
 		Element brk = *cit_brk;
 		wid_brk -= brk.dim.wid;
-		if (brk.countSeparators() == 0 || brk.pos < keep)
+		/*
+		 * Some Asian languages split lines anywhere (no notion of
+		 * word). It seems that QTextLayout is not aware of this fact.
+		 * See for reference:
+		 *    https://en.wikipedia.org/wiki/Line_breaking_rules_in_East_Asian_languages
+		 *
+		 * FIXME: Something shall be done about characters which are
+		 * not allowed at the beginning or end of line.
+		 *
+		 * FIXME: hardcoding languages is bad. Put this information in
+		 * `languages' file.
+		*/
+		string const lang = brk.font.language()->lang();
+		bool force = lang == "chinese-simplified"
+		             || lang == "chinese-traditional"
+		             || lang == "japanese"
+		             || lang == "korean";
+		// FIXME: is it important to check for separators?
+		if ((!force && brk.countSeparators() == 0) || brk.pos < keep)
 			continue;
 		/* We have found a suitable separable element. This is the common case.
 		 * Try to break it cleanly (at word boundary) at a length that is both
@@ -487,7 +506,7 @@ bool Row::shortenIfNeeded(pos_type const keep, int const w, int const next_width
 		 * - shorter than the natural width of the element, in order to enforce
 		 *   break-up.
 		 */
-		if (brk.breakAt(min(w - wid_brk, brk.dim.wid - 2), false)) {
+		if (brk.breakAt(min(w - wid_brk, brk.dim.wid - 2), force)) {
 			/* if this element originally did not cause a row overflow
 			 * in itself, and the remainder of the row would still be
 			 * too large after breaking, then we will have issues in
