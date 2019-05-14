@@ -303,7 +303,7 @@
 #0x018c ""                         "" "" # LATIN SMALL LETTER D WITH TOPBAR
 #0x018d ""                         "" "" # LATIN SMALL LETTER TURNED DELTA
 #0x018e ""                         "" "" # LATIN CAPITAL LETTER REVERSED E
-#0x018f ""                         "" "" # LATIN CAPITAL LETTER SCHWA
+0x018f "\\textSchwa"               "textschwa" "force=utf8;utf8-cjk" # LATIN CAPITAL LETTER SCHWA
 #0x0190 ""                         "" "" # LATIN CAPITAL LETTER OPEN E
 #0x0191 ""                         "" "" # LATIN CAPITAL LETTER F WITH HOOK
 0x0192 "\\textflorin"             "textcomp" "force=cp862;cp1255;cp1256" # LATIN SMALL LETTER F WITH HOOK
@@ -507,7 +507,7 @@
 0x0256 "\\textrtaild"             "tipa" "force" # LATIN SMALL LETTER D WITH TAIL
 0x0257 "\\texthtd"                "tipa" "force" # LATIN SMALL LETTER D WITH HOOK
 0x0258 "\\textreve"               "tipa" "force,tipashortcut=9" # LATIN SMALL LETTER REVERSED E
-0x0259 "\\textschwa"              "tipa" "force,tipashortcut=@" # LATIN SMALL LETTER SCHWA
+0x0259 "\\textschwa"              "tipa|textschwa" "force,tipashortcut=@" # LATIN SMALL LETTER SCHWA
 0x025a "\\textrhookschwa"         "tipa" "force" # LATIN SMALL LETTER SCHWA WITH HOOK
 0x025b "\\textepsilon"            "tipa" "force,tipashortcut=E" "\\varepsilon" "" # LATIN SMALL LETTER OPEN E
 0x025c "\\textrevepsilon"         "tipa" "force,tipashortcut=3" # LATIN SMALL LETTER REVERSED OPEN E
@@ -1330,7 +1330,7 @@
 0x1d47 "\\textsuperscript{b}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL B
 0x1d48 "\\textsuperscript{d}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL D
 0x1d49 "\\textsuperscript{e}"      "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL E
-0x1d4a "\\textsuperscript{\\textschwa}" "tipa" "force" # MODIFIER LETTER SMALL SCHWA
+0x1d4a "\\textsuperscript{\\textschwa}" "tipa|textschwa" "force" # MODIFIER LETTER SMALL SCHWA
 0x1d4b "\\textsuperscript{\\textepsilon}" "tipa" "force" # MODIFIER LETTER SMALL OPEN E
 0x1d4c "\\textsuperscript{\\textrevepsilon}" "tipa" "force" # MODIFIER LETTER SMALL TURNED OPEN E
 0x1d4d "\\textsuperscript{g}"       "" "force=utf8;utf8x;utf8-cjk" # MODIFIER LETTER SMALL G
@@ -1997,7 +1997,7 @@
 0x2091 "\\textsubscript{e}"       "subscript" "force=utf8;utf8x;utf8-cjk" "{{}_e}" "" # LATIN SUBSCRIPT SMALL LETTER E
 0x2092 "\\textsubscript{o}"       "subscript" "force=utf8;utf8x;utf8-cjk" "{{}_o}" "" # LATIN SUBSCRIPT SMALL LETTER O
 0x2093 "\\textsubscript{x}"       "subscript" "force=utf8;utf8x;utf8-cjk" "{{}_x}" "" # LATIN SUBSCRIPT SMALL LETTER X
-0x2094 "\\textsubscript{\\textschwa}" "subscript" "force=utf8;utf8x;utf8-cjk" "{{}_\\textschwa}" "tipa" # LATIN SUBSCRIPT SMALL LETTER SCHWA
+0x2094 "\\textsubscript{\\textschwa}" "subscript,tipa|textschwa" "force=utf8;utf8x;utf8-cjk" "{{}_\\textschwa}" "tipa" # LATIN SUBSCRIPT SMALL LETTER SCHWA
 #
 # 72 Currency Symbols
 #

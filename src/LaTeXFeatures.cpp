@@ -349,6 +349,14 @@ static docstring const textbaltic_def = from_ascii(
 	"\\DeclareTextCompositeCommand{\\c}{T1}{r}{\\textcommabelow{r}}\n"
 	"\\DeclareTextCompositeCommand{\\c}{T1}{R}{\\textcommabelow{R}}\n");
 
+// Use cyrillic fonts to provide letter schwa in text (see #11062)
+static docstring const textschwa_def = from_ascii(
+	"%% letter schwa missing in Latin fonts, use Cyrillic schwa\n"
+	"\\DeclareTextSymbolDefault{\\CYRSCHWA}{T2A}\n"
+	"\\DeclareTextSymbolDefault{\\cyrschwa}{T2A}\n"
+	"\\ProvideTextCommandDefault{\\textSchwa}{\\CYRSCHWA}\n"
+	"\\ProvideTextCommandDefault{\\textschwa}{\\cyrschwa}\n");
+
 // split-level fractions
 static docstring const xfrac_def = from_ascii(
 	   "\\usepackage{xfrac}\n");
@@ -893,7 +901,7 @@ void LaTeXFeatures::getFontEncodings(vector<string> & encs, bool const onlylangs
 		if (mustProvide("textgreek")
 		    && find(encs.begin(), encs.end(), "LGR") == encs.end())
 			encs.insert(encs.begin(), "LGR");
-		if (mustProvide("textcyrillic")
+		if ((mustProvide("textcyrillic") || mustProvide("textschwa"))
 		    && find(encs.begin(), encs.end(), "T2A") == encs.end())
 			encs.insert(encs.begin(), "T2A");
 	}
@@ -1430,6 +1438,9 @@ TexString LaTeXFeatures::getMacros() const
 
 	if (mustProvide("textbaltic"))
 		macros << textbaltic_def << '\n';
+
+	if (mustProvide("textschwa"))
+		macros << textschwa_def << '\n';
 
 	// split-level fractions
 	if (mustProvide("xfrac") || mustProvide("smallLetterFrac"))

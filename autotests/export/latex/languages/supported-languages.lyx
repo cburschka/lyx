@@ -43,6 +43,9 @@
 }{}
 \end_preamble
 \use_default_options false
+\begin_modules
+enumitem
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package auto
@@ -645,6 +648,98 @@ Polyglossia asturian
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 LangCode ast_ES
+\end_layout
+
+\begin_layout Subsection*
+Azerbaijani (Azeri, Azeri Turkish)
+\end_layout
+
+\begin_layout Quote
+
+\emph on
+Azərbaycan dili
+\emph default
+ (
+\emph on
+Azərbaycanca
+\emph default
+, 
+\emph on
+Azərbaycan türkcəsi
+\emph default
+, tarixi adı: 
+\emph on
+Türk
+\emph default
+ 
+\emph on
+dili
+\emph default
+ və ya 
+\emph on
+Türkcə
+\emph default
+)[11] — Azərbaycan Respublikasının və Rusiya Federasiyasının Dağıstan Respublika
+sının rəsmi dövlət dilidir.
+ Altay dilləri ailəsinin türk dilləri şöbəsinin Oğuz sinfinin Qərb qrupuna
+ daxildir.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel azerbaijani (nicht von LyX unterstützt)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Script Latin
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode az_AZ
+\end_layout
+
+\begin_layout Itemize
+Arabic script was used up to 1929 (still used in Iran).
+ 
+\begin_inset Newline newline
+\end_inset
+
+Cyrillic script was used 1938-1991 (still used in Dagestan).
+\end_layout
+
+\begin_layout Itemize
+Requires font encodings T1 and T2A (for the letter schwa).
+ Use preamble code
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+DeclareTextCommand{
+\backslash
+textSchwa}{T1}{
+\backslash
+CYRSCHWA
+\backslash
+bbl@allowhyphens}
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+DeclareTextCommand{
+\backslash
+textschwa}{T1}{
+\backslash
+cyrschwa
+\backslash
+bbl@allowhyphens}
+\end_layout
+
+\begin_layout Subsection*
+Basq
 \end_layout
 
 \begin_layout Subsection*
