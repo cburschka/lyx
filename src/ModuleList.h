@@ -18,7 +18,7 @@
 namespace lyx {
 
 /**
- *  This class represents a particular LyX "module", which is a like a layout
+ *  This class represents a particular LyX "module", which is like a layout
  *  file, except that it does not stand alone. In that sense, it is more like
  *  a LaTeX package, where a layout file corresponds to a LaTeX class. Or, in
  *  LyX's own terms, a module is more like an included file that can be used
