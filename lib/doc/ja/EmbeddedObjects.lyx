@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 574
 \begin_document
 \begin_header
 \save_transient_properties false
@@ -174,45 +174,13 @@
 initials
 graphicboxes
 varwidth
+ruby
 \end_modules
 \maintain_unincluded_children false
-\begin_local_layout
-InsetLayout		Flex:Ruby
-LyxType		charstyle
-LatexType		command
-LatexName		ruby
-BgColor		none
-LabelString		"ルビ"
-Decoration		Conglomerate
-Argument post:1
-LabelString	"ルビ文"
-MenuString	"ルビ文(S)|S"
-Decoration	Conglomerate
-Font
-Size		tiny
-EndFont
-LabelFont
-Size		tiny
-EndFont
-Mandatory	1
-EndArgument
-Preamble
-\ifdefined\kanjiskip
-  \IfFileExists{okumacro.sty}%
-    {\usepackage{okumacro}}%
-    {\newcommand{\ruby}[2]{\shortstack{\tiny ##2\\##1}}}%
-\else \ifdefined\luatexversion
-  \usepackage{luatexja-ruby}
-\else \ifdefined\XeTeXversion
-  \usepackage{ruby}%
-\fi\fi\fi
-EndPreamble
-End
-\end_local_layout
 \language japanese
 \language_package default
-\inputencoding utf8-platex
-\fontencoding global
+\inputencoding utf8
+\fontencoding auto
 \font_roman "lmodern" "IPAexMincho"
 \font_sans "default" "IPAexGothic"
 \font_typewriter "default" "default"
@@ -289,6 +257,7 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
+\tablestyle default
 \bullet 1 1 34 -1
 \bullet 2 2 35 -1
 \bullet 3 2 7 -1
@@ -775,6 +744,8 @@ reference "sec:キャプションの配置"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -818,6 +789,8 @@ name "fig:星形"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -957,6 +930,8 @@ reference "fig:A-star"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -967,6 +942,8 @@ status open
 
 
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -1009,6 +986,8 @@ name "fig:Pink-object"
 
 
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -2503,6 +2482,7 @@ reference "sec:フロートはじめに"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -10687,6 +10667,7 @@ status collapsed
 \noindent
 \begin_inset Float table
 placement H
+alignment document
 wide false
 sideways false
 status open
@@ -10912,6 +10893,7 @@ p\SpecialChar LaTeX
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -11377,6 +11359,7 @@ status collapsed
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -11564,6 +11547,8 @@ reference "tab:半分でない表"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -14214,6 +14199,7 @@ reference "tab:ブックタブ表の例"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -14944,6 +14930,7 @@ status collapsed
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -16239,6 +16226,7 @@ status collapsed
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -16803,6 +16791,7 @@ cellcolor{Maroon}
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -17264,6 +17253,7 @@ rowcolors{1}{white}{lightgray}
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -17443,6 +17433,7 @@ hline]{1}{lightgray}{cyan}
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -17793,6 +17784,7 @@ Wc
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -18024,6 +18016,7 @@ arrayrulecolor{black}}
 
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -18184,6 +18177,7 @@ reference "tab:色付き罫線の表"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -18394,6 +18388,8 @@ reference "tab:着色水平罫線表"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -19008,6 +19004,8 @@ multicolumn{1}{|c|}{
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -19776,6 +19774,8 @@ reference "tab:回転表"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -19999,6 +19999,8 @@ is an example for a rotated multiline cell where a variable width minipage
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -20787,6 +20789,7 @@ reference "tab:垂直揃え"
 \noindent
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -20815,6 +20818,8 @@ name "tab:垂直揃え"
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -20929,6 +20934,8 @@ status collapsed
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -21160,6 +21167,7 @@ arg   "tabular-feature align-decimal"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -21247,6 +21255,7 @@ name "tab:表セル"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -21433,6 +21442,8 @@ reference "tab:演算子揃え表"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -22047,6 +22058,7 @@ S{2.5cm}{2}
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -22289,6 +22301,8 @@ arrayrulewidth}{1.5pt}
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -22567,6 +22581,8 @@ arrayrulewidth 0.4pt}}
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -22779,6 +22795,8 @@ Vc
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -22960,6 +22978,7 @@ arydshln
 \begin_layout Standard
 \begin_inset Float table
 placement H
+alignment document
 wide false
 sideways false
 status open
@@ -23559,6 +23578,7 @@ status collapsed
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -24545,6 +24565,7 @@ status collapsed
 \begin_layout Standard
 \begin_inset Float algorithm
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -26220,6 +26241,8 @@ status open
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways true
 status open
@@ -26367,6 +26390,8 @@ reference "tab:従属表を横に並べたもの"
 
 の従属フロートです．
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -26395,6 +26420,8 @@ name "tab:従属表を横に並べたもの"
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -26489,6 +26516,8 @@ name "tab:これは従属表a"
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -26588,6 +26617,8 @@ name "tab:これは従属表b"
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -26614,6 +26645,8 @@ name "tab:従属表を縦に並べたもの"
 \noindent
 \align center
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -26693,6 +26726,8 @@ status collapsed
 \noindent
 \align center
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -26854,6 +26889,8 @@ reference "sec:ミニページ"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -27355,6 +27392,7 @@ status open
 \begin_layout Standard
 \begin_inset Float figure
 placement !p
+alignment document
 wide false
 sideways false
 status open
@@ -27413,6 +27451,7 @@ on}
 \begin_layout Standard
 \begin_inset Float table
 placement !p
+alignment document
 wide false
 sideways false
 status open
@@ -27686,6 +27725,8 @@ reference "tab:標準表"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -27829,6 +27870,8 @@ c & d
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -28680,6 +28723,8 @@ FigBesBeg
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -28752,6 +28797,8 @@ TabBesBeg
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -29027,6 +29074,8 @@ sidecaptionvpos{figure}{c}
 
 
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -29099,6 +29148,8 @@ TabBesBeg[5]
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -30536,6 +30587,7 @@ status collapsed
 を読み込みます．
 \begin_inset Float figure
 placement !h
+alignment document
 wide false
 sideways false
 status open
@@ -30603,6 +30655,7 @@ name "fig:標準的脚注配置"
 \begin_layout Standard
 \begin_inset Float figure
 placement !h
+alignment document
 wide false
 sideways false
 status open
@@ -30721,6 +30774,8 @@ theendnotes
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -37741,6 +37796,7 @@ status collapsed
 \begin_inset CommandInset include
 LatexCommand include
 filename "DummyDocument1.lyx"
+literal "true"
 
 \end_inset
 
@@ -37829,6 +37885,7 @@ includeonly
 \begin_inset CommandInset include
 LatexCommand input
 filename "DummyDocument2.lyx"
+literal "true"
 
 \end_inset
 
@@ -37869,6 +37926,7 @@ textvisiblespace
 \begin_inset CommandInset include
 LatexCommand verbatiminput
 filename "DummyTextDocument.txt"
+literal "true"
 
 \end_inset
 
@@ -37884,6 +37942,7 @@ filename "DummyTextDocument.txt"
 \begin_inset CommandInset include
 LatexCommand verbatiminput*
 filename "DummyTextDocument.txt"
+literal "true"
 
 \end_inset
 
@@ -38768,6 +38827,7 @@ reference "lst:file-listing"
 LatexCommand lstinputlisting
 filename "EmbeddedObjects.lyx"
 lstparams "breaklines=true,caption={Lines 10 - 15 of this LyX file},extendedchars=true,firstline=10,label={lst:file-listing},language={[LaTeX]TeX},lastline=15"
+literal "true"
 
 \end_inset
 
@@ -38970,6 +39030,7 @@ reference "tab:単位"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open

@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 574
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -26,44 +26,14 @@
    \pagenumbering{arabic} }
 \end_preamble
 \use_default_options false
+\begin_modules
+ruby
+\end_modules
 \maintain_unincluded_children false
-\begin_local_layout
-InsetLayout		Flex:Ruby
-LyxType		charstyle
-LatexType		command
-LatexName		ruby
-BgColor		none
-LabelString		"ルビ"
-Decoration		Conglomerate
-Argument post:1
-LabelString	"ルビ文"
-MenuString	"ルビ文(S)|S"
-Decoration	Conglomerate
-Font
-Size		tiny
-EndFont
-LabelFont
-Size		tiny
-EndFont
-Mandatory	1
-EndArgument
-Preamble
-\ifdefined\kanjiskip
-  \IfFileExists{okumacro.sty}%
-    {\usepackage{okumacro}}%
-    {\newcommand{\ruby}[2]{\shortstack{\tiny ##2\\##1}}}%
-\else \ifdefined\luatexversion
-  \usepackage{luatexja-ruby}
-\else \ifdefined\XeTeXversion
-  \usepackage{ruby}%
-\fi\fi\fi
-EndPreamble
-End
-\end_local_layout
 \language japanese
 \language_package auto
-\inputencoding utf8-platex
-\fontencoding global
+\inputencoding utf8
+\fontencoding auto
 \font_roman "lmodern" "IPAexMincho"
 \font_sans "default" "IPAexGothic"
 \font_typewriter "default" "default"
@@ -135,6 +105,7 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -2991,6 +2962,8 @@ reference "tab:画像用単位"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open

@@ -1083,13 +1083,10 @@ def revert_dateinfo(document):
     }
 
     types = ["date", "fixdate", "moddate" ]
-    i = 0
-    i = find_token(document.header, "\\language", 0)
-    if i == -1:
-        # this should not happen
+    lang = get_value(document.header, "\\language")
+    if lang == "":
         document.warning("Malformed LyX document! No \\language header found!")
         return
-    lang = get_value(document.header, "\\language", i)
 
     i = 0
     while True:
@@ -1146,7 +1143,7 @@ def revert_dateinfo(document):
             # In Python 2, datetime module works with binary strings,
             # our dateformat strings are utf8-encoded:
             result = result.decode('utf-8')
-        document.body[i : j+1] = result
+        document.body[i : j+1] = [result]
         i = i + 1
 
 
@@ -1435,20 +1432,19 @@ def revert_lformatinfo(document):
 
 
 def convert_hebrew_parentheses(document):
-    """ Swap opening/closing parentheses in Hebrew text. 
-    
-    Up to LyX 2.4, ")" was used as opening parenthesis and
-    "(" as closing parenthesis for Hebrew in the LyX source.
+    """ Swap opening/closing parentheses in Hebrew text.
+
+    Up to LyX 2.4, "(" was used as closing parenthesis and
+    ")" as opening parenthesis for Hebrew in the LyX source.
     """
-    
-    print("convert hebrew parentheses")
+    # print("convert hebrew parentheses")
     current_languages = [document.language]
     for i, line in enumerate(document.body):
         if line.startswith('\\lang '):
             current_languages[-1] = line.lstrip('\\lang ')
         elif line.startswith('\\begin_layout'):
             current_languages.append(current_languages[-1])
-            print (line, current_languages[-1])      
+            # print (line, current_languages[-1])
         elif line.startswith('\\end_layout'):
             current_languages.pop()
         elif current_languages[-1] == 'hebrew' and not line.startswith('\\'):
@@ -1480,7 +1476,7 @@ def revert_soul(document):
     i = find_token(document.body, "\\begin_inset Flex Highlight", 0)
     if i != -1:
         add_to_preamble(document, ["\\usepackage{color}"])
-    
+
     revert_flex_inset(document.body, "Spaceletters", "\\so")
     revert_flex_inset(document.body, "Strikethrough", "\\st")
     revert_flex_inset(document.body, "Underline", "\\ul")
@@ -1627,6 +1623,78 @@ def revert_cmidruletrimming(document):
         i += 1
 
 
+ruby_inset_def = [
+    r'### Inserted by lyx2lyx (ruby inset) ###',
+    r'InsetLayout Flex:Ruby',
+    r'  LyxType       charstyle',
+    r'  LatexType     command',
+    r'  LatexName     ruby',
+    r'  HTMLTag       ruby',
+    r'  HTMLAttr      ""',
+    r'  HTMLInnerTag  rb',
+    r'  HTMLInnerAttr ""',
+    r'  BgColor       none',
+    r'  LabelString   "Ruby"',
+    r'  Decoration    Conglomerate',
+    r'  Preamble',
+    r'    \ifdefined\kanjiskip',
+    r'      \IfFileExists{okumacro.sty}{\usepackage{okumacro}}{}',
+    r'    \else \ifdefined\luatexversion',
+    r'      \usepackage{luatexja-ruby}',
+    r'    \else \ifdefined\XeTeXversion',
+    r'      \usepackage{ruby}%',
+    r'    \fi\fi\fi',
+    r'    \providecommand{\ruby}[2]{\shortstack{\tiny #2\\#1}}',
+    r'  EndPreamble',
+    r'  Argument  post:1',
+    r'    LabelString  "ruby text"',
+    r'    MenuString  "Ruby Text|R"',
+    r'    Tooltip    "Reading aid (ruby, furigana) for Chinese characters."',
+    r'    Decoration  Conglomerate',
+    r'    Font',
+    r'      Size    tiny',
+    r'    EndFont',
+    r'    LabelFont',
+    r'      Size    tiny',
+    r'    EndFont',
+    r'    Mandatory  1',
+    r'  EndArgument',
+    r'End',
+]
+
+def convert_ruby_module(document):
+    " Use ruby module instead of local module definition "
+    if document.del_local_layout(ruby_inset_def):
+        document.add_module("ruby")
+
+def revert_ruby_module(document):
+    " Replace ruby module with local module definition "
+    if document.del_module("ruby"):
+        document.append_local_layout(ruby_inset_def)
+
+
+def convert_utf8_japanese(document):
+    " Use generic utf8 with Japanese documents."
+    lang = get_value(document.header, "\\language")
+    if not lang.startswith("japanese"):
+        return
+    inputenc = get_value(document.header, "\\inputencoding")
+    if ((lang == "japanese" and inputenc == "utf8-platex")
+        or (lang == "japanese-cjk" and inputenc == "utf8-cjk")):
+        document.set_parameter("inputencoding", "utf8")
+
+def revert_utf8_japanese(document):
+    " Use Japanese utf8 variants with Japanese documents."
+    inputenc = get_value(document.header, "\\inputencoding")
+    if inputenc != "utf8":
+        return
+    lang = get_value(document.header, "\\language")
+    if lang == "japanese":
+        document.set_parameter("inputencoding", "utf8-platex")
+    if lang == "japanese-cjk":
+        document.set_parameter("inputencoding", "utf8-cjk")
+
+
 ##
 # Conversion hub
 #
@@ -1662,9 +1730,11 @@ convert = [
            [571, []],
            [572, [convert_notoFonts]],  # Added options thin, light, extralight for Noto
            [573, [convert_inputencoding_namechange]],
+           [574, [convert_ruby_module, convert_utf8_japanese]],
           ]
 
-revert =  [[572, [revert_inputencoding_namechange]],
+revert =  [[573, [revert_ruby_module, revert_utf8_japanese]],
+           [572, [revert_inputencoding_namechange]],
            [571, [revert_notoFonts]],
            [570, [revert_cmidruletrimming]],
            [569, [revert_bibfileencodings]],

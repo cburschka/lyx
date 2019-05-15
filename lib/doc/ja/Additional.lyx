@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 574
 \begin_document
 \begin_header
 \save_transient_properties false
@@ -48,6 +48,7 @@ theorems-ams
 theorems-ams-extended
 multicol
 shapepar
+ruby
 \end_modules
 \maintain_unincluded_children false
 \begin_local_layout
@@ -64,42 +65,11 @@ Preamble
 \newcommand*{\menuitem}[1]{{\sffamily #1}}
 EndPreamble
 End
-InsetLayout		Flex:Ruby
-LyxType		charstyle
-LatexType		command
-LatexName		ruby
-BgColor		none
-LabelString		"ルビ"
-Decoration		Conglomerate
-Argument post:1
-LabelString	"ルビ文"
-MenuString	"ルビ文(S)|S"
-Decoration	Conglomerate
-Font
-Size		tiny
-EndFont
-LabelFont
-Size		tiny
-EndFont
-Mandatory	1
-EndArgument
-Preamble
-\ifdefined\kanjiskip
-  \IfFileExists{okumacro.sty}%
-    {\usepackage{okumacro}}%
-    {\newcommand{\ruby}[2]{\shortstack{\tiny ##2\\##1}}}%
-\else \ifdefined\luatexversion
-  \usepackage{luatexja-ruby}
-\else \ifdefined\XeTeXversion
-  \usepackage{ruby}%
-\fi\fi\fi
-EndPreamble
-End
 \end_local_layout
 \language japanese
 \language_package default
-\inputencoding utf8-platex
-\fontencoding global
+\inputencoding utf8
+\fontencoding auto
 \font_roman "lmodern" "IPAexMincho"
 \font_sans "default" "IPAexGothic"
 \font_typewriter "default" "default"
@@ -173,6 +143,7 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -206,7 +177,6 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-\noindent
 
 \family typewriter
 <lyx-docs@lists.lyx.org>
@@ -5424,7 +5394,6 @@ includegraphics{logo.eps}}}
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 
 \family typewriter
 
@@ -23621,7 +23590,6 @@ go back to the default
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 shapepar
 \end_layout
 
@@ -24123,7 +24091,6 @@ shapepar
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 shapepar
 \end_layout
 
@@ -24447,6 +24414,7 @@ status open
 \begin_inset CommandInset include
 LatexCommand input
 filename "../SpecialParagraphShape.tex"
+literal "true"
 
 \end_inset
 
@@ -24520,7 +24488,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 shapepar
 \end_layout
 

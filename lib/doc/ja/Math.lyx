@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 574
 \begin_document
 \begin_header
 \save_transient_properties false
@@ -145,45 +145,13 @@
 \use_default_options true
 \begin_modules
 subequations
+ruby
 \end_modules
 \maintain_unincluded_children false
-\begin_local_layout
-InsetLayout		Flex:Ruby
-LyxType		charstyle
-LatexType		command
-LatexName		ruby
-BgColor		none
-LabelString		"ルビ"
-Decoration		Conglomerate
-Argument post:1
-LabelString	"ルビ文"
-MenuString	"ルビ文(S)|S"
-Decoration	Conglomerate
-Font
-Size		tiny
-EndFont
-LabelFont
-Size		tiny
-EndFont
-Mandatory	1
-EndArgument
-Preamble
-\ifdefined\kanjiskip
-  \IfFileExists{okumacro.sty}%
-    {\usepackage{okumacro}}%
-    {\newcommand{\ruby}[2]{\shortstack{\tiny ##2\\##1}}}%
-\else \ifdefined\luatexversion
-  \usepackage{luatexja-ruby}
-\else \ifdefined\XeTeXversion
-  \usepackage{ruby}%
-\fi\fi\fi
-EndPreamble
-End
-\end_local_layout
 \language japanese
 \language_package default
-\inputencoding utf8-platex
-\fontencoding global
+\inputencoding utf8
+\fontencoding auto
 \font_roman "lmodern" "IPAexMincho"
 \font_sans "default" "IPAexGothic"
 \font_typewriter "default" "default"
@@ -201,6 +169,8 @@ End
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref true
@@ -260,6 +230,7 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle plain
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -971,6 +942,7 @@ status collapsed
 \align center
 \begin_inset Float table
 placement H
+alignment document
 wide false
 sideways false
 status open
@@ -35219,8 +35191,8 @@ begin{multicols}{2}
 
 \lang ngerman
 Das Spektrum wird fouriertransformiert.
- Die Fouriertransformation wird verwendet, um die 
- überlagerten Signale (Netzwerk, Lösungsmittel) zu trennen.
+ Die Fouriertransformation wird verwendet, um die  überlagerten Signale
+ (Netzwerk, Lösungsmittel) zu trennen.
  Nachdem wir die Phasenverschiebung bestimmen konnten, interessiert uns
  nun das Aussehen des Ausgangssignals.
  Im Experiment haben wir es mit sehr vielen Teilchen zu tun, so das man
@@ -35295,7 +35267,8 @@ wobei
 
 -rf-Puls beginnt sich die Magnetisierung zu entfokussieren, wodurch sich
  das Signal zusätzlich abschwächt.
- Diese Abschwächung verläuft exponentiell in Abhängigkeit der so genannten 
+ Diese Abschwächung verläuft exponentiell in Abhängigkeit der so genannten
+ 
 \begin_inset Formula $T_{2}$
 \end_inset
 

@@ -11,12 +11,26 @@
 #Authors: Koji Yokota (original implementation as local layout),
 #         Günter Milde <milde@lyx.org> (module)
 
+# References:
+# required packages
+#   okumacro.sty:       https://ctan.org/pkg/jsclasses
+#   luatexja-ruby.sty:  https://ctan.org/pkg/luatexja
+#   ruby.sty:           https://www.ctan.org/pkg/cjk
+# extended ruby support package (currently not used): 
+#   https://ctan.org/pkg/pxrubrica
+# W3W spec: 
+#   https://www.w3.org/International/articles/ruby/markup.en.html
+
 Format 74
 
 InsetLayout Flex:Ruby
 	LyxType		charstyle
 	LatexType	command
 	LatexName	ruby
+	HTMLTag		ruby
+	HTMLAttr	""
+	HTMLInnerTag	rb
+	HTMLInnerAttr	""
 	BgColor		none
 	LabelString	"Ruby"
 	Decoration	Conglomerate
@@ -30,6 +44,7 @@ InsetLayout Flex:Ruby
 	  \fi\fi\fi
 	  \providecommand{\ruby}[2]{\shortstack{\tiny #2\\#1}}
 	EndPreamble
+        # Fixme: Currently the ruby text is ignored in HTML
 	Argument	post:1
 		LabelString	"ruby text"
 		MenuString	"Ruby Text|R"

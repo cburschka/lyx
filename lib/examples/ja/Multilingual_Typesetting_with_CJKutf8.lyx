@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 573
+\lyxformat 574
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -351,7 +351,7 @@ Ruby (ルビ, furigana) with the help of the Ruby module:
 \lang japanese-cjk
  
 \begin_inset Flex Ruby
-status open
+status collapsed
 
 \begin_layout Plain Layout
 東 京
@@ -396,7 +396,7 @@ Edit\SpecialChar menuseparator
 Custom Text Styles\SpecialChar menuseparator
 Ruby
 \family default
- for the base characters.
+ for the base character(s).
 \end_layout
 
 \begin_layout Itemize

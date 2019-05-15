@@ -26,7 +26,7 @@ import sys, os
 
 from parser_tools import (del_token, del_value, del_complete_lines,
     find_complete_lines, find_end_of, find_end_of_layout, find_end_of_inset,
-    find_re, find_substring, find_token, find_token_backwards,
+    find_re, find_substring, find_token, find_token_backwards, find_across_lines,
     get_containing_inset, get_containing_layout, get_bool_value, get_value,
     get_quoted_value, is_in_inset, set_bool_value)
 #  find_tokens, find_token_exact, check_token, get_option_value
@@ -157,6 +157,31 @@ def revert_ibranches(document):
         document.header[i:i] = lines
 
 
+beamer_article_styles = [
+    "### Inserted by lyx2lyx (more [scr]article styles) ###",
+    "Input article.layout",
+    "Input beamer.layout",
+    "Provides geometry 0",
+    "Provides hyperref 0",
+    "DefaultFont",
+    "     Family                Roman",
+    "     Series                Medium",
+    "     Shape                 Up",
+    "     Size                  Normal",
+    "     Color                 None",
+    "EndFont",
+    "Preamble",
+    "     \\usepackage{beamerarticle,pgf}",
+    "     % this default might be overridden by plain title style",
+    "     \\newcommand\makebeamertitle{\\frame{\\maketitle}}%",
+    "     \\AtBeginDocument{",
+    "             \\let\\origtableofcontents=\\tableofcontents",
+    "             \\def\\tableofcontents{\\@ifnextchar[{\\origtableofcontents}{\\gobbletableofcontents}}",
+    "             \\def\\gobbletableofcontents#1{\\origtableofcontents}",
+    "     }",
+    "EndPreamble",
+    "### End of insertion by lyx2lyx (more [scr]article styles) ###"]
+
 def revert_beamer_article_styles(document):
     " Include (scr)article styles in beamer article "
 
@@ -164,52 +189,9 @@ def revert_beamer_article_styles(document):
     if document.textclass not in beamer_articles:
         return
 
-    inclusion = "article.layout"
     if document.textclass == "scrarticle-beamer":
-        inclusion = "scrartcl.layout"
-
-    i = find_token(document.header, "\\begin_local_layout", 0)
-    if i == -1:
-        k = find_token(document.header, "\\language", 0)
-        if k == -1:
-            # this should not happen
-            document.warning("Malformed LyX document! No \\language header found!")
-            return
-        document.header[k-1 : k-1] = ["\\begin_local_layout", "\\end_local_layout"]
-        i = k - 1
-
-    j = find_end_of(document.header, i, "\\begin_local_layout", "\\end_local_layout")
-    if j == -1:
-        # this should not happen
-        document.warning("Malformed LyX document: Can't find end of local layout!")
-        return
-
-    document.header[i+1 : i+1] = [
-        "### Inserted by lyx2lyx (more [scr]article styles) ###",
-        "Input " + inclusion,
-        "Input beamer.layout",
-        "Provides geometry 0",
-        "Provides hyperref 0",
-        "DefaultFont",
-        "     Family                Roman",
-        "     Series                Medium",
-        "     Shape                 Up",
-        "     Size                  Normal",
-        "     Color                 None",
-        "EndFont",
-        "Preamble",
-        "     \\usepackage{beamerarticle,pgf}",
-        "     % this default might be overridden by plain title style",
-        "     \\newcommand\makebeamertitle{\\frame{\\maketitle}}%",
-        "     \\AtBeginDocument{",
-        "             \\let\\origtableofcontents=\\tableofcontents",
-        "             \\def\\tableofcontents{\\@ifnextchar[{\\origtableofcontents}{\\gobbletableofcontents}}",
-        "             \\def\\gobbletableofcontents#1{\\origtableofcontents}",
-        "     }",
-        "EndPreamble",
-        "### End of insertion by lyx2lyx (more [scr]article styles) ###"
-    ]
-
+        beamer_article_styles[1] = "Input scrartcl.layout"
+    document.append_local_layout(beamer_article_styles)
 
 def convert_beamer_article_styles(document):
     " Remove included (scr)article styles in beamer article "
@@ -218,29 +200,9 @@ def convert_beamer_article_styles(document):
     if document.textclass not in beamer_articles:
         return
 
-    i = find_token(document.header, "\\begin_local_layout", 0)
-    if i == -1:
-        return
-
-    j = find_end_of(document.header, i, "\\begin_local_layout", "\\end_local_layout")
-    if j == -1:
-        # this should not happen
-        document.warning("Malformed LyX document: Can't find end of local layout!")
-        return
-
-    k = find_token(document.header, "### Inserted by lyx2lyx (more [scr]article styles) ###", i, j)
-    if k != -1:
-        l = find_token(document.header, "### End of insertion by lyx2lyx (more [scr]article styles) ###", i, j)
-        if l == -1:
-            # this should not happen
-            document.warning("End of lyx2lyx local layout insertion not found!")
-            return
-
-        if k == i + 1 and l == j - 1:
-            # that was all the local layout there was
-            document.header[i : j + 1] = []
-        else:
-            document.header[k : l + 1] = []
+    if document.textclass == "scrarticle-beamer":
+        beamer_article_styles[1] = "Input scrartcl.layout"
+    document.del_local_layout(beamer_article_styles)
 
 
 def revert_new_babel_languages(document):
@@ -396,61 +358,22 @@ def revert_quotes(document):
         i = l
 
 
+iopart_local_layout = ["### Inserted by lyx2lyx (stdlayouts) ###",
+                       "Input stdlayouts.inc",
+                       "### End of insertion by lyx2lyx (stdlayouts) ###"""]
+
 def revert_iopart(document):
     " Input new styles via local layout "
     if document.textclass != "iopart":
         return
-
-    i = find_token(document.header, "\\begin_local_layout", 0)
-    if i == -1:
-        k = find_token(document.header, "\\language", 0)
-        if k == -1:
-            # this should not happen
-            document.warning("Malformed LyX document! No \\language header found!")
-            return
-        document.header[k-1 : k-1] = ["\\begin_local_layout", "\\end_local_layout"]
-        i = k-1
-
-    j = find_end_of(document.header, i, "\\begin_local_layout", "\\end_local_layout")
-    if j == -1:
-        # this should not happen
-        document.warning("Malformed LyX document! Can't find end of local layout!")
-        return
-
-    document.header[i+1 : i+1] = [
-        "### Inserted by lyx2lyx (stdlayouts) ###",
-        "Input stdlayouts.inc",
-        "### End of insertion by lyx2lyx (stdlayouts) ###"
-    ]
+    document.append_local_layout(iopart_local_layout)
 
 
 def convert_iopart(document):
     " Remove local layout we added, if it is there "
     if document.textclass != "iopart":
         return
-
-    i = find_token(document.header, "\\begin_local_layout", 0)
-    if i == -1:
-        return
-
-    j = find_end_of(document.header, i, "\\begin_local_layout", "\\end_local_layout")
-    if j == -1:
-        # this should not happen
-        document.warning("Malformed LyX document! Can't find end of local layout!")
-        return
-
-    k = find_token(document.header, "### Inserted by lyx2lyx (stdlayouts) ###", i, j)
-    if k != -1:
-        l = find_token(document.header, "### End of insertion by lyx2lyx (stdlayouts) ###", i, j)
-        if l == -1:
-            # this should not happen
-            document.warning("End of lyx2lyx local layout insertion not found!")
-            return
-        if k == i + 1 and l == j - 1:
-            # that was all the local layout there was
-            document.header[i : j + 1] = []
-        else:
-            document.header[k : l + 1] = []
+    document.del_local_layout(iopart_local_layout)
 
 
 def convert_quotestyle(document):
@@ -1192,27 +1115,12 @@ def revert_biblatex(document):
 
     # Emulate the old biblatex-workaround (pretend natbib in order to use the styles)
     if biblatex:
-        i = find_token(document.header, "\\begin_local_layout", 0)
-        if i == -1:
-            k = find_token(document.header, "\\language", 0)
-            if k == -1:
-                # this should not happen
-                document.warning("Malformed LyX document! No \\language header found!")
-                return
-            document.header[k-1 : k-1] = ["\\begin_local_layout", "\\end_local_layout"]
-            i = k-1
-
-        j = find_end_of(document.header, i, "\\begin_local_layout", "\\end_local_layout")
-        if j == -1:
-            # this should not happen
-            document.warning("Malformed LyX document! Can't find end of local layout!")
-            return
-
-        document.header[i+1 : i+1] = [
+        biblatex_emulation = [
             "### Inserted by lyx2lyx (biblatex emulation) ###",
             "Provides natbib 1",
             "### End of insertion by lyx2lyx (biblatex emulation) ###"
         ]
+        document.append_local_layout(biblatex_emulation)
 
 
 def revert_citekeyonly(document):
@@ -1273,28 +1181,12 @@ def revert_bibpackopts(document):
         # Nothing to do for empty options
         return
 
-    i = find_token(document.header, "\\begin_local_layout", 0)
-    if i == -1:
-        k = find_token(document.header, "\\language", 0)
-        if k == -1:
-            # this should not happen
-            document.warning("Malformed LyX document! No \\language header found!")
-            return
-        document.header[k-1 : k-1] = ["\\begin_local_layout", "\\end_local_layout"]
-        i = k - 1
-
-    j = find_end_of(document.header, i, "\\begin_local_layout", "\\end_local_layout")
-    if j == -1:
-        # this should not happen
-        document.warning("Malformed LyX document! Can't find end of local layout!")
-        return
-
-    document.header[i+1 : i+1] = [
+    bibliography_package_options = [
         "### Inserted by lyx2lyx (bibliography package options) ###",
         "PackageOptions " + engine + " " + biblio_options,
         "### End of insertion by lyx2lyx (bibliography package options) ###"
     ]
-
+    document.append_local_layout(bibliography_package_options)
 
 def revert_qualicites(document):
     " Revert qualified citation list commands to ERT "

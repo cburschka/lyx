@@ -20,8 +20,8 @@
 
 " The LyX module has all the rules related with different lyx file formats."
 
-from parser_tools import get_value, check_token, find_token, \
-     find_tokens, find_end_of
+from parser_tools import (get_value, check_token, find_token, find_tokens,
+                          find_end_of, find_complete_lines)
 import os.path
 import gzip
 import locale
@@ -595,6 +595,7 @@ class LyX_base:
 
     #Note that the module will be added at the END of the extant ones
     def add_module(self, module):
+      " Append module to the modules list."
       i = find_token(self.header, "\\begin_modules", 0)
       if i == -1:
         #No modules yet included
@@ -615,7 +616,16 @@ class LyX_base:
       self.header.insert(j, module)
 
 
+    def del_module(self, module):
+        " Delete `module` from module list, return success."
+        modlist = self.get_module_list()
+        if module not in modlist:
+            return False
+        self.set_module_list([line for line in modlist if line != "ruby"])
+        return True
+
     def get_module_list(self):
+      " Return list of modules."
       i = find_token(self.header, "\\begin_modules", 0)
       if (i == -1):
         return []
@@ -624,23 +634,23 @@ class LyX_base:
 
 
     def set_module_list(self, mlist):
-      modbegin = find_token(self.header, "\\begin_modules", 0)
-      newmodlist = ['\\begin_modules'] + mlist + ['\\end_modules']
-      if (modbegin == -1):
+      i = find_token(self.header, "\\begin_modules", 0)
+      if (i == -1):
         #No modules yet included
         tclass = find_token(self.header, "\\textclass", 0)
         if tclass == -1:
           self.warning("Malformed LyX document: No \\textclass!!")
           return
-        modbegin = tclass + 1
-        self.header[modbegin:modbegin] = newmodlist
-        return
-      modend = find_token(self.header, "\\end_modules", modbegin)
-      if modend == -1:
-        self.warning("(set_module_list)Malformed LyX document: No \\end_modules.")
-        return
-      newmodlist = ['\\begin_modules'] + mlist + ['\\end_modules']
-      self.header[modbegin:modend + 1] = newmodlist
+        i = j = tclass + 1
+      else: 
+        j = find_token(self.header, "\\end_modules", i)
+        if j == -1:
+            self.warning("(set_module_list) Malformed LyX document: No \\end_modules.")
+            return
+        j += 1
+      if mlist:
+          mlist = ['\\begin_modules'] + mlist + ['\\end_modules']
+      self.header[i:j] = mlist
 
 
     def set_parameter(self, param, value):
@@ -772,6 +782,53 @@ class LyX_base:
         self.warning("Convertion mode: %s\tsteps%s" %(mode, steps), 10)
         return mode, steps
 
+
+    def append_local_layout(self, new_layout):
+        " Append `new_layout` to the local layouts."
+        # new_layout may be a string or a list of strings (lines)
+        try:
+            new_layout = new_layout.splitlines()
+        except AttributeError:
+            pass
+        i = find_token(self.header, "\\begin_local_layout", 0)
+        if i == -1:
+            k = find_token(self.header, "\\language", 0)
+            if k == -1:
+                # this should not happen
+                self.warning("Malformed LyX document! No \\language header found!")
+                return
+            self.header[k-1 : k-1] = ["\\begin_local_layout", "\\end_local_layout"]
+            i = k - 1
+
+        j = find_end_of(self.header, i, "\\begin_local_layout", "\\end_local_layout")
+        if j == -1:
+            # this should not happen
+            self.warning("Malformed LyX document: Can't find end of local layout!")
+            return
+
+        self.header[i+1 : i+1] = new_layout
+
+    def del_local_layout(self, old_layout):
+        " Delete `old_layout` from local layouts, return success."
+        i = find_complete_lines(self.header, old_layout)
+        if i == -1:
+            return False
+        j = i+len(old_layout)
+        if (self.header[i-1] == "\\begin_local_layout" and
+            self.header[j] == "\\end_local_layout"):
+            i -=1
+            j +=1
+        self.header[i:j] = []
+        return True
+
+    def del_from_header(self, lines):
+        " Delete `lines` from the document header, return success."
+        i = find_complete_lines(self.header, lines)
+        if i == -1:
+            return False
+        j = i + len(lines)
+        self.header[i:j] = []
+        return True
 
 # Part of an unfinished attempt to make lyx2lyx gave a more
 # structured view of the document.
