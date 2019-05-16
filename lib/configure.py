@@ -1587,9 +1587,9 @@ def processModuleFile(file, filename, bool_docbook):
             cm.write(line + '\n')
         cm.close()
 
-    local = "true"
+    local = b"true"
     if (file.startswith(srcdir)):
-        local = "false"
+        local = b"false"
     return (b'"%s" "%s" "%s" "%s" "%s" "%s" "%s" "%s"\n'
             % (modname, filename, desc, pkgs, req, excl, catgy, local))
 
