@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 573
+\lyxformat 574
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -517,7 +517,19 @@ LangCode ar_SA
 \end_layout
 
 \begin_layout Itemize
-Package clash with CJK
+Package clash with CJK.
+\end_layout
+
+\begin_layout Itemize
+Fails with input encoding 
+\begin_inset Quotes eld
+\end_inset
+
+utf8x
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection*
@@ -1905,6 +1917,18 @@ Script Persian < Arabic (RTL)
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 LangCode fa_IR
+\end_layout
+
+\begin_layout Itemize
+Fails with input encoding 
+\begin_inset Quotes eld
+\end_inset
+
+utf8x
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection*
