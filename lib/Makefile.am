@@ -2399,6 +2399,7 @@ dist_layouts_DATA =\
 	layouts/revtex4.layout \
 	layouts/revtex4-1.layout \
 	layouts/rsphrase.module \
+	layouts/ruby.module \
 	layouts/sciposter.layout \
 	layouts/scrartcl.layout \
 	layouts/scrarticle-beamer.layout \
