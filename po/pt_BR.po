@@ -9,10 +9,10 @@
 # Georger Araujo <georger_br@yahoo.com.br> 2015 - 2017 "
 msgid ""
 msgstr ""
-"Project-Id-Version: pt_BR 2.3.2\n"
+"Project-Id-Version: pt_BR 2.3.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2019-04-25 23:30-0400\n"
-"PO-Revision-Date: 2018-11-18 00:18-0300\n"
+"PO-Revision-Date: 2019-05-14 18:02-0300\n"
 "Last-Translator: Georger Araujo <georger underline br pound yahoo dot com "
 "dot br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br at yahoo dot com "
@@ -163,7 +163,7 @@ msgstr "O estilo que determina o leiaute da bibliografia gerada por BibLaTeX"
 #: src/frontends/qt4/ui/ColorUi.ui:134 src/frontends/qt4/ui/ColorUi.ui:211
 #: src/frontends/qt4/ui/ColorUi.ui:272
 msgid "R&eset"
-msgstr "&Restaurar"
+msgstr "R&edefinir"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:251
 msgid "Match biblatex bibliography with citation style"
@@ -187,7 +187,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:294
 msgid "&Reset"
-msgstr "Redefinir"
+msgstr "&Redefinir"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:305
 msgid "Select this if you want to split your bibliography into sections"
@@ -996,12 +996,11 @@ msgstr "Aplicar modificações &imediatamente"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:363
 msgid "Reset"
-msgstr "Herdar"
+msgstr "Redefinir"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:370
-#, fuzzy
 msgid "Restore Defaults"
-msgstr "&Usar pré-definido"
+msgstr "Redefinir para os Padrões"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:403
 #: src/frontends/qt4/ui/DocumentUi.ui:77 src/frontends/qt4/ui/ExternalUi.ui:610
@@ -2520,7 +2519,7 @@ msgstr "Listagem inline"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:45
 msgid "Check for floating listings"
-msgstr "Marque para listagens 'float'"
+msgstr "Marque para listagens flutuantes"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:48
 msgid "&Float"
@@ -2532,7 +2531,7 @@ msgstr "&Posicionamento:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:68
 msgid "Specify placement (htbp) for floating listings"
-msgstr "Especifique o posicionamento (htbp) para listagens 'float'"
+msgstr "Especifique o posicionamento (htbp) para listagens flutuantes"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:78
 msgid "Line numbering"
@@ -2688,7 +2687,7 @@ msgstr "Converter"
 
 #: src/frontends/qt4/ui/LogUi.ui:39
 msgid "Hit Enter to search, or click Go!"
-msgstr "Tecle 'Enter' para localizar, ou clique 'Vai'"
+msgstr "Tecle Enter para localizar, ou clique Vai!"
 
 #: src/frontends/qt4/ui/LogUi.ui:46
 msgid "Log &Type:"
@@ -3334,22 +3333,20 @@ msgid "&Vertical Phantom"
 msgstr "Phantom &Vertical"
 
 #: src/frontends/qt4/ui/PreambleUi.ui:38
-#, fuzzy
 msgid "&Find"
-msgstr "&Localizar:"
+msgstr "&Localizar"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:26
 msgid "Use the color scheme of your Operating System/Desktop Environment"
-msgstr ""
+msgstr "Use o esquema de cores do seu Sistema Operacional/Ambiente de Desktop"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:29
 msgid "&Use system colors"
 msgstr "&Usar as cores do sistema"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:57
-#, fuzzy
 msgid "Change the selected color"
-msgstr "Renomear o ramo selecionado"
+msgstr "Mudar a cor selecionada"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:60
 msgid "A&lter..."
@@ -3357,21 +3354,19 @@ msgstr "A&lterar..."
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:67
 msgid "Reset the selected color to its original value"
-msgstr ""
+msgstr "Redefinir a cor selecionada para seu valor original"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:70
-#, fuzzy
 msgid "Reset to &Default"
-msgstr "&Usar pré-definido"
+msgstr "Redefinir para o Padrão"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:77
 msgid "Reset all colors to their original value"
-msgstr ""
+msgstr "Redefinir todas as cores para seus valores originais"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:80
-#, fuzzy
 msgid "Reset A&ll"
-msgstr "Herdar"
+msgstr "Redefinir Tudo"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:26
 msgid "In Math"
@@ -4189,7 +4184,7 @@ msgstr "Definir as opções de classe para os valores padrão ao mudar classe"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:340
 msgid "R&eset class options when document class changes"
-msgstr "Restaurar opções de classe ao mudar classe do documento"
+msgstr "Redefinir opções de classe ao mudar classe do documento"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:20
 msgid "Forward Search"
@@ -5261,15 +5256,15 @@ msgstr "Classes ou estilos selecionados"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:165
 msgid "LaTeX classes"
-msgstr "classes LaTeX"
+msgstr "Classes LaTeX"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:170
 msgid "LaTeX styles"
-msgstr "estilos LaTeX"
+msgstr "Estilos LaTeX"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:175
 msgid "BibTeX styles"
-msgstr "estilos BibTeX"
+msgstr "Estilos BibTeX"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:180
 msgid "BibTeX databases"
@@ -7559,9 +7554,8 @@ msgid "Note-"
 msgstr "Nota-"
 
 #: lib/layouts/aastex62.layout:3
-#, fuzzy
 msgid "American Astronomical Society (AASTeX v. 6.2)"
-msgstr "American Astronomical Society (AASTeX v. 6)"
+msgstr "American Astronomical Society (AASTeX v. 6.2)"
 
 #: lib/layouts/aastex62.layout:126 lib/layouts/ectaart.layout:178
 #: lib/layouts/ectaart.layout:181
@@ -7569,9 +7563,8 @@ msgid "Corresponding Author"
 msgstr "Autor Correspondente"
 
 #: lib/layouts/aastex62.layout:132
-#, fuzzy
 msgid "Corresponding author:"
-msgstr "Autor correspondente"
+msgstr "Autor correspondente:"
 
 #: lib/layouts/aastex62.layout:151 lib/layouts/egs.layout:324
 #: lib/layouts/svmult.layout:83
@@ -7584,7 +7577,7 @@ msgstr "ORCID"
 
 #: lib/layouts/aastex62.layout:158
 msgid "Enter the 16 digit ORCID as xxxx-xxxx-xxxx-xxxx"
-msgstr ""
+msgstr "Digite o código ORCID de 16 dígitos como xxxx-xxxx-xxxx-xxxx"
 
 #: lib/layouts/aastex62.layout:167 lib/layouts/agu_stdtitle.inc:132
 #: lib/layouts/apa.layout:172 lib/layouts/apa6.layout:162
@@ -7605,44 +7598,36 @@ msgid "Collaboration:"
 msgstr "Colaboração:"
 
 #: lib/layouts/aastex62.layout:193
-#, fuzzy
 msgid "Nocollaboration"
-msgstr "Colaboração"
+msgstr "Semcolaboracao"
 
 #: lib/layouts/aastex62.layout:200
-#, fuzzy
 msgid "No collaboration"
-msgstr "Colaboração"
+msgstr "Sem colaboração"
 
 #: lib/layouts/aastex62.layout:230
-#, fuzzy
 msgid "Section Appendix"
-msgstr "Apêndice"
+msgstr "Apêndice de Seção"
 
 #: lib/layouts/aastex62.layout:234
-#, fuzzy
 msgid "\\Alph{appendix}."
-msgstr "Apêndice \\Alph{appendix}."
+msgstr "\\Alph{appendix}."
 
 #: lib/layouts/aastex62.layout:245
-#, fuzzy
 msgid "Subsection Appendix"
-msgstr "Caixa de Subseção"
+msgstr "Apêndice de Subseção"
 
 #: lib/layouts/aastex62.layout:249
-#, fuzzy
 msgid "\\Alph{appendix}\\arabic{subappendix}."
-msgstr "Apêndice \\Alph{appendix}."
+msgstr "\\Alph{appendix}\\arabic{subappendix}."
 
 #: lib/layouts/aastex62.layout:260
-#, fuzzy
 msgid "Subsubsection Appendix"
-msgstr "Caixa de Subsubseção"
+msgstr "Apêndice de Subsubseção"
 
 #: lib/layouts/aastex62.layout:264
-#, fuzzy
 msgid "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}."
-msgstr "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
+msgstr "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}."
 
 #: lib/layouts/achemso.layout:3
 msgid "American Chemical Society (ACS)"
@@ -9220,7 +9205,7 @@ msgstr "CabeçalhoEsquerdo"
 
 #: lib/layouts/apa6.layout:136
 msgid "Left header:"
-msgstr "cabeçalho esquerdo:"
+msgstr "Cabeçalho esquerdo:"
 
 #: lib/layouts/apa6.layout:191
 msgid "FiveAffiliations"
@@ -9894,7 +9879,7 @@ msgstr "Enfatizar"
 
 #: lib/layouts/beamer.layout:1407
 msgid "Emph."
-msgstr "Ênfase"
+msgstr "Ênf."
 
 #: lib/layouts/beamer.layout:1425 lib/layouts/beamer.layout:1427
 msgid "Alert"
@@ -10178,13 +10163,12 @@ msgid "Change bars"
 msgstr "Barras de modificação"
 
 #: lib/layouts/changebars.module:7
-#, fuzzy
 msgid ""
 "Enables LyX to add vertical change bars in the margin of PDF output when "
 "Show Changes in Output is turned on and pdflatex output format is chosen."
 msgstr ""
 "Permite ao LyX adicionar barras de modificação verticais na margem da saída "
-"PDF quando o controle de alterações estiver ativado e o formato de saída "
+"PDF quando Mostrar Alterações na Saída estiver ativado e o formato de saída "
 "pdflatex for escolhido."
 
 #: lib/layouts/chess.layout:3
@@ -13500,34 +13484,28 @@ msgid "TUGboat"
 msgstr "TUGboat"
 
 #: lib/layouts/maa-monthly.layout:3
-#, fuzzy
 msgid "Mathematical Monthly article"
-msgstr "Artigo da American Mathematical Society (AMS)"
+msgstr "Artigo Mathematical Monthly"
 
 #: lib/layouts/maa-monthly.layout:64
-#, fuzzy
 msgid "Abbreviated Title"
-msgstr "Abreviações"
+msgstr "Título Abreviado"
 
 #: lib/layouts/maa-monthly.layout:74 lib/layouts/maa-monthly.layout:77
-#, fuzzy
 msgid "Biographies"
-msgstr "Biografia"
+msgstr "Biografias"
 
 #: lib/layouts/maa-monthly.layout:89 lib/layouts/maa-monthly.layout:96
-#, fuzzy
 msgid "Author Biography"
-msgstr "Biografia"
+msgstr "Biografia do Autor"
 
 #: lib/layouts/maa-monthly.layout:112
-#, fuzzy
 msgid "Affiliation (include email):"
-msgstr "Afiliação (nenhuma)"
+msgstr "Afiliação (incluir email):"
 
 #: lib/layouts/maa-monthly.layout:128
-#, fuzzy
 msgid "Title of acknowledgment"
-msgstr "agradecimentos"
+msgstr "Título de agradecimento"
 
 #: lib/layouts/maa-monthly.layout:159 lib/layouts/theorems-order.inc:70
 #: lib/layouts/theorems-starred.inc:251
@@ -17017,7 +16995,7 @@ msgstr "Minipágina (var.)"
 
 #: lib/layouts/varwidth.module:31
 msgid "Vert. Adjustment"
-msgstr "Alinhamento Vert."
+msgstr "Ajuste Vertical"
 
 #: lib/layouts/varwidth.module:32
 msgid "Vertical adjustment: c (center), t (top) or b (bottom)"
@@ -18722,9 +18700,8 @@ msgid "Wrap by Preview|y"
 msgstr "Quebrar texto na Previsualização"
 
 #: lib/ui/stdcontext.inc:669
-#, fuzzy
 msgid "End Editing Externally...|e"
-msgstr "Editar Externamente...|x"
+msgstr "Finalizar Editar Externamente...|x"
 
 #: lib/ui/stdcontext.inc:685 lib/ui/stdmenus.inc:355
 msgid "Lock Toolbars|L"
@@ -19624,7 +19601,7 @@ msgstr "Rejeitar Todas as Alterações"
 
 #: lib/ui/stdmenus.inc:560
 msgid "Show Changes in Output|S"
-msgstr "Mostrar Alterações no Resultado|R"
+msgstr "Mostrar Alterações na Saída|S"
 
 #: lib/ui/stdmenus.inc:567
 msgid "Bookmarks|B"
@@ -20063,9 +20040,8 @@ msgid "Set all lines"
 msgstr "Definir bordas internas e externas"
 
 #: lib/ui/stdtoolbars.inc:159
-#, fuzzy
 msgid "Set inner lines"
-msgstr "Definir bordas externas"
+msgstr "Definir bordas internas"
 
 #: lib/ui/stdtoolbars.inc:160
 msgid "Unset all lines"
@@ -25762,9 +25738,8 @@ msgid "Remove emergency file now?"
 msgstr "Excluir arquivo de emergência agora?"
 
 #: src/Buffer.cpp:4792
-#, fuzzy
 msgid "Can't rename emergency file!"
-msgstr "Excluir arquivo de emergência?"
+msgstr "Falha ao renomear arquivo de emergência!"
 
 #: src/Buffer.cpp:4793
 msgid ""
@@ -25772,6 +25747,10 @@ msgid ""
 "Otherwise, you will beasked about it again the next time you try to loadthis "
 "file, and may over-write your own work."
 msgstr ""
+"O LyX não conseguiu renomear o arquivo de emergência. Você deve fazer isso "
+"manualmente. Caso contrário, você será perguntado sobre isso novamente da "
+"próxima vez que tentar carregar esse arquivo, e poderá terminar por "
+"sobrescrever seu próprio trabalho."
 
 #: src/Buffer.cpp:4818
 #, c-format
@@ -27087,7 +27066,7 @@ msgstr ""
 
 #: src/KeyMap.cpp:237
 msgid "Could not find `cua.bind' file"
-msgstr "Não foi possível encontrar o arquivo `cua.bind'"
+msgstr "Não foi possível encontrar arquivo `cua.bind'"
 
 #: src/KeyMap.cpp:238
 msgid ""
@@ -29368,19 +29347,16 @@ msgid "Text Style"
 msgstr "Estilo de Texto"
 
 #: src/frontends/qt4/GuiCharacter.cpp:272
-#, fuzzy
 msgid "Reset All To &Default"
-msgstr "Usar Configurações Padrão da Classe"
+msgstr "Redefinir Tudo para o Padrão"
 
 #: src/frontends/qt4/GuiCharacter.cpp:273
-#, fuzzy
 msgid "Reset All To No Chan&ge"
-msgstr "Rejeitar Todas as Alterações"
+msgstr "Redefinir Tudo para Nenhuma Mudança"
 
 #: src/frontends/qt4/GuiCharacter.cpp:278
-#, fuzzy
 msgid "&Reset All Fields"
-msgstr "Todos os campos"
+msgstr "&Redefinir Todos os Campos"
 
 #: src/frontends/qt4/GuiCitation.cpp:104 src/frontends/qt4/GuiRef.cpp:60
 #: src/frontends/qt4/PanelStack.cpp:77
@@ -29633,13 +29609,12 @@ msgid "Module not found!"
 msgstr "Módulo não encontrado!"
 
 #: src/frontends/qt4/GuiDocument.cpp:578 src/frontends/qt4/GuiDocument.cpp:750
-#, fuzzy
 msgid "&End Edit"
-msgstr "&Editar"
+msgstr "Finalizar Edição"
 
 #: src/frontends/qt4/GuiDocument.cpp:638
 msgid "Validation required!"
-msgstr ""
+msgstr "Validação exigida!"
 
 #: src/frontends/qt4/GuiDocument.cpp:688
 msgid "Layout is valid!"
@@ -32674,7 +32649,7 @@ msgstr ""
 
 #: src/insets/InsetInclude.cpp:757
 msgid "Different textclasses"
-msgstr "textclasses diferentes"
+msgstr "Textclasses diferentes"
 
 #: src/insets/InsetInclude.cpp:763
 #, c-format
@@ -32806,9 +32781,8 @@ msgid "CapsLock"
 msgstr "CapsLock"
 
 #: src/insets/InsetInfo.cpp:375
-#, fuzzy
 msgid "Control[[Key]]"
-msgstr "Command[[Key]]"
+msgstr "Control[[Key]]"
 
 #: src/insets/InsetInfo.cpp:379
 msgid "Command[[Key]]"
@@ -33623,7 +33597,7 @@ msgstr "Não há vline para excluir"
 #: src/mathed/InsetMathGrid.cpp:1803
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
-msgstr "Recurso tabular '%1$s' desconhecido"
+msgstr "Recurso de tabular '%1$s' desconhecido"
 
 #: src/mathed/InsetMathHull.cpp:1717
 #, c-format
