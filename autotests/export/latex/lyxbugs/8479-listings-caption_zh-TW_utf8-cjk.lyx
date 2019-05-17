@@ -1,21 +1,18 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 566
+\lyxformat 574
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass scrartcl
-\use_default_options false
-\begin_modules
-theorems-ams-bytype
-\end_modules
+\textclass article
+\use_default_options true
 \maintain_unincluded_children false
-\language slovak
+\language chinese-traditional
 \language_package default
-\inputencoding ascii
+\inputencoding utf8-cjk
 \fontencoding auto
-\font_roman "default" "default"
-\font_sans "default" "default"
+\font_roman "default" "IPAexMincho"
+\font_sans "default" "IPAGothic"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
@@ -24,8 +21,9 @@ theorems-ams-bytype
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\font_cjk bsmi
 \use_microtype false
-\use_dash_ligatures false
+\use_dash_ligatures true
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -36,16 +34,7 @@ theorems-ams-bytype
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\pdf_bookmarks false
-\pdf_bookmarksnumbered false
-\pdf_bookmarksopen false
-\pdf_bookmarksopenlevel 1
-\pdf_breaklinks false
-\pdf_pdfborder true
-\pdf_colorlinks true
-\pdf_backref section
-\pdf_pdfusetitle true
-\papersize a4paper
+\papersize default
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -65,9 +54,9 @@ theorems-ams-bytype
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 0
+\use_refstyle 1
 \use_minted 0
-\index Stichwortverzeichnis
+\index Index
 \shortcut idx
 \color #008000
 \end_index
@@ -77,11 +66,12 @@ theorems-ams-bytype
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style german
+\quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -92,43 +82,49 @@ theorems-ams-bytype
 \begin_body
 
 \begin_layout Standard
-minimal test for bug #9871
+Chinese (中文)
 \end_layout
 
 \begin_layout Standard
-The error pop-up blames 
-\backslash
-listoflistings, but the Complete Log reveales that the problem is the
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ABCäöß
 \end_layout
 
-\begin_layout LyX-Code
-! Undefined control sequence.
- 
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-lstlistlistingname ->
-\backslash
-inputencoding
-\end_layout
-
-\begin_layout Standard
-which is inserted by LyX in the document preamble if a 
-\begin_inset Quotes gld
 \end_inset
 
-list of listings
-\begin_inset Quotes grd
-\end_inset
 
- is present:
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand lstlistoflistings
+\begin_layout Plain Layout
+
+void main()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\begin_inset Quotes eld
+\end_inset
+
+Größe
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
 
 \end_inset
 

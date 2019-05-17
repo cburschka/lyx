@@ -1,25 +1,22 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 567
+\lyxformat 574
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass article
-\begin_preamble
-
-\end_preamble
-\use_default_options true
+\textclass scrartcl
+\use_default_options false
 \begin_modules
-logicalmkup
+theorems-ams-bytype
 \end_modules
 \maintain_unincluded_children false
-\language english
+\language slovak
 \language_package default
-\inputencoding iso8859-15
+\inputencoding ascii
 \fontencoding auto
-\font_roman "lmodern" "FreeSerif"
-\font_sans "default" "FreeSans"
-\font_typewriter "default" "FreeMono"
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -39,7 +36,16 @@ logicalmkup
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize default
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref section
+\pdf_pdfusetitle true
+\papersize a4paper
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -59,19 +65,9 @@ logicalmkup
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 1
+\use_refstyle 0
 \use_minted 0
-\branch na
-\selected 0
-\filename_suffix 0
-\color #faf0e6
-\end_branch
-\branch bisect
-\selected 0
-\filename_suffix 0
-\color #faf0e6
-\end_branch
-\index Index
+\index Stichwortverzeichnis
 \shortcut idx
 \color #008000
 \end_index
@@ -81,11 +77,12 @@ logicalmkup
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style german
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -95,67 +92,70 @@ logicalmkup
 
 \begin_body
 
-\begin_layout Subsection*
-Bug #11519: Wrong input encoding when parent and child use different setting.
+\begin_layout Standard
+Minimal test for bug #9871
 \end_layout
 
 \begin_layout Standard
-When 
+Error 84 returned from iconv when converting from UCS-4LE to ascii: 
 \end_layout
 
-\begin_layout Itemize
-\noindent
-a parent document sets a global input encoding (i.e.
- not 
-\family typewriter
-auto
-\family default
- (
-\begin_inset Quotes eld
-\end_inset
-
-language default
-\begin_inset Quotes erd
-\end_inset
-
-)) and
+\begin_layout LyX-Code
+ Invalid or incomplete multibyte or wide character.
+ 
 \end_layout
 
-\begin_layout Itemize
-\noindent
-the 
-\begin_inset Quotes eld
-\end_inset
+\begin_layout Standard
+The error pop-up blames 
+\backslash
+listoflistings, but the Complete Log reveales that the problem is the
+\end_layout
 
+\begin_layout LyX-Code
+! Undefined control sequence.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+lstlistlistingname ->
+\backslash
 inputencoding
-\begin_inset Quotes erd
+\end_layout
+
+\begin_layout Standard
+which is inserted by LyX in the document preamble if a 
+\begin_inset Quotes gld
 \end_inset
 
- setting for parent and child differ, 
+list of listings
+\begin_inset Quotes grd
+\end_inset
+
+ is present due to BabelPreamble code.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Language specific headings for # theorems, problems , ...
+ are written in the language's default encoding if they contain non-ASCII
+ characters.
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Standard
-\noindent
-the parent loads the child document with wrong input encoding.
+See also the discussion at: https://www.mail-archive.com/search?l=mid&q=2017022819
+0738.cgs3tl3ny2bxiegk%40steph
 \end_layout
 
 \begin_layout Standard
-Example: This document uses 
-\family typewriter
-iso8859-15
-\family default
-, the included child
-\family typewriter
- utf8
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "unicodesymbols/001-4-latin.lyx"
-literal "false"
+\begin_inset CommandInset toc
+LatexCommand lstlistoflistings
 
 \end_inset
 

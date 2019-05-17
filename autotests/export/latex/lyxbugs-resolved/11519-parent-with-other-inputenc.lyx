@@ -1,19 +1,25 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 573
+\lyxformat 574
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass article
+\begin_preamble
+
+\end_preamble
 \use_default_options true
+\begin_modules
+logicalmkup
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding utf8
+\inputencoding iso8859-15
 \fontencoding auto
-\font_roman "lmodern" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
+\font_roman "lmodern" "FreeSerif"
+\font_sans "default" "FreeSans"
+\font_typewriter "default" "FreeMono"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -24,7 +30,7 @@
 \use_microtype false
 \use_dash_ligatures false
 \graphics default
-\default_output_format default
+\default_output_format pdf2
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -55,14 +61,24 @@
 \justification true
 \use_refstyle 1
 \use_minted 0
+\branch na
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch bisect
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation skip
-\defskip medskip
+\paragraph_separation indent
+\paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
@@ -80,80 +96,67 @@
 
 \begin_body
 
-\begin_layout Standard
-#8085, Wrap rotated cells with linebreaks in varwidth
+\begin_layout Subsection*
+Bug #11519: Wrong input encoding when parent and child use different setting.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top" width="10col%">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-a
+When 
 \end_layout
 
+\begin_layout Itemize
+\noindent
+a parent document sets a global input encoding (i.e.
+ not 
+\family typewriter
+auto
+\family default
+ (
+\begin_inset Quotes eld
 \end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rotate="90" usebox="none">
-\begin_inset Text
 
-\begin_layout Plain Layout
-test
-\begin_inset Newline newline
+language default
+\begin_inset Quotes erd
 \end_inset
 
-test
+)) and
 \end_layout
 
+\begin_layout Itemize
+\noindent
+the 
+\begin_inset Quotes eld
 \end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
 
-\begin_layout Plain Layout
-e
+inputencoding
+\begin_inset Quotes erd
+\end_inset
+
+ setting for parent and child differ, 
 \end_layout
 
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-b
+\begin_layout Standard
+\noindent
+the parent loads the child document with wrong input encoding.
 \end_layout
 
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-c
+\begin_layout Standard
+Example: This document uses 
+\family typewriter
+iso8859-15
+\family default
+, the included child
+\family typewriter
+ utf8
+\family default
+.
 \end_layout
 
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-d
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "8085-table-rotate-linebreak.lyx"
+literal "false"
 
 \end_inset
 

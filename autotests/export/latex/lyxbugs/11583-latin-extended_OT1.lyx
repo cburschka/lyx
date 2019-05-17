@@ -1,18 +1,18 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 523
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 574
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass article
 \begin_preamble
-\usepackage{wasysym} % provides \DH, \dh, \Thorn, \thorn
-\ProvideTextCommandDefault{\TH}{\Thorn}
-\ProvideTextCommandDefault{\th}{\thorn}
+%\usepackage{wasysym} % provides \DH, \dh, \Thorn, \thorn
+%\ProvideTextCommandDefault{\TH}{\Thorn}
+%\ProvideTextCommandDefault{\th}{\thorn}
 
-\DeclareTextAccentDefault{\k}{T1}
-\DeclareTextSymbolDefault{\NG}{T1}
-\DeclareTextSymbolDefault{\ng}{T1}
+%\DeclareTextAccentDefault{\k}{T1}
+%\DeclareTextSymbolDefault{\NG}{T1}
+%\DeclareTextSymbolDefault{\ng}{T1}
 %\DeclareTextSymbolDefault{\DH}{T1}
 %\DeclareTextSymbolDefault{\dh}{T1}
 %\DeclareTextSymbolDefault{\TH}{T1}
@@ -36,11 +36,14 @@
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format pdf2
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -65,6 +68,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \branch na
 \selected 0
 \filename_suffix 0
@@ -78,11 +82,14 @@
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
+\is_math_indent 0
+\math_numbering_side default
 \quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -166,6 +173,10 @@ th not available in the OT1 font encoding.
 Accent makro 
 \backslash
 k not available in the OT1 font encoding.
+\end_layout
+
+\begin_layout Standard
+See the user preamble for workarounds.
 \end_layout
 
 \begin_layout Labeling

@@ -30,6 +30,10 @@ export/doc/(ja/|)MergedManuals_(xhtml|lyx2[2-9])
 #  see https://www.gnu.org/software/libiconv/)
 export/export/latex/inputenc-cp858_pdf2
 
+# Korean legacy encoding fails (missing fonts)
+# 2019-05-17: This is a minor issue since we default to utf8 now. 
+export/export/latex/CJK/ko_default_pdf2
+
 
 # ===========================================
 Sublabel: special
@@ -174,12 +178,18 @@ lyx2lyx/export/latex/.*
 export/export/latex/.*(lyx..|xhtml)
 
 # don't test with non-TeX fonts:
+export/export/latex/inputenc-.*_systemF # 11522 still open but already tested
 export/export/latex/languages/supported-languages_babel_(pdf|dvi)._systemF
 export/export/latex/languages/supported-languages_babel_auto-legacy_.*_systemF
+export/export/latex/lyxbugs/3059-language-in-tables_pdf4_systemF
+export/export/latex/lyxbugs/6197-polish-amssymb_pdf5_systemF
 
 # don't test with TeX fonts:
 export/export/latex/languages/supported-languages_babel_non-tex_.*(dvi|pdf.?|texF)
 export/export/latex/languages/supported-languages_polyglossia_.*(dvi|pdf.?|texF)
+export/export/latex/lyxbugs-resolved/9633-.*(dvi|pdf.?|texF)
+export/export/latex/lyxbugs/11522-systemfonts-Math-missingchars_pdf5_texF
+export/export/latex/lyxbugs/wrong_output_3059-rtl-tables-xetex_pdf4_texF
 
 # HTML
 # don't check loading, lyx2lyx, or export to other LyX versions or DVI/PDF

@@ -4,18 +4,15 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass scrartcl
+\textclass article
 \use_default_options false
-\begin_modules
-enumitem
-\end_modules
 \maintain_unincluded_children false
 \language english
-\language_package auto
-\inputencoding auto-legacy
-\fontencoding HE8,T1
-\font_roman "libertine" "FreeSerif"
-\font_sans "biolinum" "FreeSans"
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "FreeSerif"
+\font_sans "default" "FreeSans"
 \font_typewriter "default" "FreeMono"
 \font_math "auto" "auto"
 \font_default_family default
@@ -24,11 +21,10 @@ enumitem
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\font_cjk gbsn
 \use_microtype false
 \use_dash_ligatures true
 \graphics default
-\default_output_format default
+\default_output_format pdf4
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -36,7 +32,7 @@ enumitem
 \float_alignment class
 \paperfontsize default
 \spacing single
-\use_hyperref true
+\use_hyperref false
 \pdf_bookmarks false
 \pdf_bookmarksnumbered false
 \pdf_bookmarksopen false
@@ -68,61 +64,6 @@ enumitem
 \justification false
 \use_refstyle 0
 \use_minted 0
-\branch only-as-document-language
-\selected 0
-\filename_suffix 0
-\color #faf0e6
-\end_branch
-\branch babel-only
-\selected 1
-\filename_suffix 0
-\color #faf0e6
-\end_branch
-\branch non-TeX-fonts-only
-\selected 1
-\filename_suffix 0
-\color #faf0e6
-\end_branch
-\branch polyglossia-only
-\selected 0
-\filename_suffix 0
-\color #faf0e6
-\end_branch
-\branch CJK
-\selected 0
-\filename_suffix 0
-\color #faf0e6
-\end_branch
-\branch debug
-\selected 0
-\filename_suffix 0
-\color #faf0e6
-\end_branch
-\branch conflict-rus-belarus
-\selected 1
-\filename_suffix 0
-\color #faf0e6
-\end_branch
-\branch conflict-es-gl
-\selected 0
-\filename_suffix 0
-\color #faf0e6
-\end_branch
-\branch conflict-bg-mk
-\selected 1
-\filename_suffix 0
-\color #faf0e6
-\end_branch
-\branch conflict-babel-non-TeX-fonts
-\selected 0
-\filename_suffix 0
-\color #faf0e6
-\end_branch
-\branch standalone
-\selected 0
-\filename_suffix 0
-\color #faf0e6
-\end_branch
 \index Stichwortverzeichnis
 \shortcut idx
 \color #008000
@@ -148,19 +89,20 @@ enumitem
 
 \begin_body
 
-\begin_layout Title
-Languages supported by LyX.
+\begin_layout Standard
+Language change in a tipa-inset must not use an environment (error with
+ Polyglossia).
 \end_layout
 
 \begin_layout Standard
-With language examples that work with Babel and non-TeX fonts.
-\end_layout
+language 
+\lang french
+switch: 
+\begin_inset IPA
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "supported-languages.lyx"
-literal "false"
+[a]
+\end_layout
 
 \end_inset
 

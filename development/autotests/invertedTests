@@ -20,9 +20,6 @@ Sublabel: todo
 # XeTeX artifact? works with LuaTeX, explore:
 export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_systemF
 
-# iconv fails, if a nomenclature inset contains an uncodable character
-export/export/latex/iconv-error-nomenclature_pdf2
-
 # `acmart` document class:
 # (see also lyxbugs below and ignoredTests)
 # issues with listsof, reported to the maintainer
@@ -54,9 +51,6 @@ export/examples/(|es/)Curricula_Vitae/Europe_CV_(dvi|dvi3.*F|pdf|pdf3)
 # back-conversion fails for rotated float inset in a list
 export/export/lyx2lyx/lyx_2_3_test_lyx(16|20|21|22)
 
-# Korean legacy encoding fails (missing fonts)
-export/export/latex/CJK/ko_default_pdf2
-
 # New problem with TL18: endless loop?
 #    ! TeX capacity exceeded, sorry [input stack +size=5000].
 export/export/latex/luainputenc-utf8_pdf5_texF
@@ -66,11 +60,6 @@ export/templates/Obsolete/ACM_SIGGGRAPH.*_pdf5_(texF|systemF)
 export/templates/Articles/International_Union_of_Crystallography.*_pdf4_systemF
 export/templates/Articles/R_Journal_(dvi3|pdf[45])_systemF
 #export/templates/Articles/Kluwer_.*_systemF
-
-# Babel with non-TeX fonts fails for some supported languages
-# Lithuanian: L7x font encoding also set with LuaTeX and non-TeX fonts
-# (error but output OK)
-export/export/latex/languages/supported-languages_babel_non-tex_(dvi3|pdf5)_systemF
 
 # Thai with CJK package requires the babel option "thaicjk" instead of "thai".
 # (see thaifont.txt in the CJK documentation for setup details).
@@ -94,10 +83,11 @@ Sublabel: lyxbugs
 # LyX bugs with a Trac number.
 # ================================================
 
-#6197: „amssymb” with Polish babel name clash \lll ("<<<" vs. "ł")
-# Wrong output with pdflatex (-> unreliableTests),
-# missing glyph with XeTeX/LuaTeX and Babel (OK with Polyglossia)
-export/export/latex/6197-polish-amssymb_pdf._texF
+# Dedicated tests in export/latex/lyxbugs start with the ticket number
+# (move to export/latex/lyxbugs-resolved when the problem is fixed).
+# catchall:
+export/export/latex/lyxbugs/[0-9].*
+
 
 #8035 work around a Polyglossia bug:
 # An error is reported if the document font does not announce support for a
@@ -111,30 +101,12 @@ export/export/latex/6197-polish-amssymb_pdf._texF
 # The document "sr/Braille.lyx" is an example of case b).
 # (For some reason, the false positive error is not thrown with PDF (luatex).)
 export/examples/sr/Modules/Braille_(dvi3|pdf4)_systemF
-export/export/latex/language-in-tables_.*_systemF
-
-#9633 Nested language handling causes compilation failures with polyglossia
-export/export/latex/languagenesting-quote-branch_.*_systemF
-
-#9871 LyX sends invalid Unicode to iconv when converting to ASCII
-# most probably due to BabelPreamble code (language specific headings for
-# theorems, problems , ... are written in the language's default encoding
-# if they contain non-ASCII characters)
-# Error 84 returned from iconv when converting from UCS-4LE to ascii:
-# Invalid or incomplete multibyte or wide character.
-# see also the discussion at:
-# https://www.mail-archive.com/search?l=mid&q=20170228190738.cgs3tl3ny2bxiegk%40steph
-export/export/latex/bug9871-slovak-ascii-preambleencoding_pdf2
 
 #10355 xmllint detects failures
 export/doc/attic/eu_UserGuide_xhtml
 export/doc/(es|ja)/UserGuide_xhtml
 export/examples/External_Material/Spreadsheet_xhtml
 export/export/WrongDfnTagHandling_xhtml
-
-#10371 Compilation error if longest label marker in labeling style
-# contains underscores etc.
-export/export/latex/LongestLabelWithUnderscore.*
 
 #11455 "Unable to process argument!" with multiple 1.6.x roundtrips
 export/templates/Articles/IEEE_Transactions_Journal_lyx16
@@ -145,20 +117,15 @@ export/templates/Articles/IEEE_Transactions_Journal_lyx16
 # Find out why and whether the script could be improved.
 export/examples/Modules/Noweb_Listerrors_(pdf[245]).*
 
-#11521 Font encoding "LAE" required with farsi.
-# The Farsi font encoding LAE must be added also to a custom font encoding
-# (similar to the Greek and Cyrillic font encodings LGR and T2A).
-export/export/latex/languages/fa-OT1_pdf2
-
 #11522 Support specification of complementing non-TeX fonts
 #
 # More than one non-TeX font required for the character set in many documents
 # to prevent "missing glyph" errors with non-TeX fonts
 #
-export/export/latex/.*inputenc-.*_systemF
+#export/export/latex/inputenc-.*_systemF # problem remains but test now ignored
 export/doc/(|de/|es/|fr/)Math.*systemF
-# minimal example for Math.lyx:
-export/export/latex/systemfonts-Math-missingchars.*systemF
+# a minimal example for Math.lyx is in 
+#export/export/latex/lyxbugs/11522-systemfonts-Math-missingchars.*systemF
 #
 # Farsi: missing glyphs (em space and "English" quotes)
 export/examples/fa/Welcome_pdf4_systemF
@@ -174,17 +141,6 @@ export/examples/ja/Modules/Linguistics.*systemF
 # (the lyx2lyx test also tests compilation after round-trip)
 export/doc/ar/UserGuide_pdf4_systemF
 export/doc/ar/UserGuide_lyx(22|23)
-#
-# Juergen Spitzmueller: They do not have problems with xunicode, but without.
-# The reason is that the asterisk glyph is not included in the arabic font
-# (Scheherazade), but apparently, xunicode defines an extra asterisk
-# glyph (for a different purpose) that is being used here. Clearly the
-# problem should be fixed somewhere else.
-# Günter Milde: works in TeXLive17 (Debian/stretch)
-# export/doc/ar/Intro_pdf4_systemF
-
-#11532 inputencoding desynchronisation
-export/export/latex/11532-misplaced-inputenc-switch_pdf2
 
 
 # ==============================================================
@@ -203,13 +159,14 @@ Sublabel: texissues
 # e.g. non-ASCII in verbatim or listings, incompatible packages, ...
 # "Wontfix" if documents demonstrate correct use in the default output format.
 
-# Problem with Czech and Slovak Babel support.
-# (reported per mail to Petr Tesa\v{r}\'ik, 2016-09-06)
-# All exports using babel fail.
-# Without the Czech or Slovak text it compiles
-# No problem with inserted German (or other foreign language) text
-# No problem if the table is Slovak, too
-export/export/latex/TableErrorIfSlovakTextInserted_(dvi|pdf[23]?|.*_texF)
+# Compilation error with Chech or Slovak text i a table cell.
+# All exports using babel fail (problem in Czech and Slovak Babel support, 
+# reported per mail to Petr Tesa\v{r}\'ik, 2016-09-06)
+# Without the Czech or Slovak text it compiles.
+# No problem with inserted German (or other foreign language) text.
+# No problem if the complete table is Slovak, too.
+export/export/latex/languages/en-sk-cz-babel-table-error_(dvi|pdf[23]?|.*_texF)
+
 
 # Xe/LuaTeX
 ###########
@@ -230,6 +187,35 @@ export/export/latex/languages/uk-babel-date-missing-chars-with-ascii_(pdf4|dvi3)
 export/doc/uk/Intro_pdf4_texF
 export/examples/uk/Welcome_pdf4_texF
 
+# Babel with non-TeX fonts fails for some supported languages
+# Lithuanian: L7x font encoding also set with LuaTeX and non-TeX fonts
+# (error but output OK)
+export/export/latex/languages/supported-languages_babel_non-tex_(dvi3|pdf5)_systemF
+
+# Babel-French fails with Xe/LuaTeX and TeX fonts
+#   LaTeX Error: Command \at already defined. (and a lot more)
+export/export/latex/languages/supported-languages_(dvi|pdf).*_texF
+export/export/latex/languages/supported-languages_babel_(dvi|pdf).*_texF
+
+# Babel-Spanish fails sometimes with XeTeX and TeX fonts
+export/doc/es/(Math|UserGuide|EmbeddedObjects|Customization)_pdf4_texF
+
+# Polyglossia + LuaTeX issue
+# Reported upstream here:
+# https://github.com/reutenauer/polyglossia/issues/163
+# These tests were broken at 3374b854
+# See discussion here:
+# https://www.mail-archive.com/search?l=mid&q=1478004223.2367.5.camel%40lyx.org
+export/doc/(sk|nb)/Intro_(dvi3|pdf5)_systemF
+# some Polyglossia languages work only with XeTeX and fail with LuaTeX:
+# * The font "NotoSansEthiopic" cannot be found.
+# * sanskrit: ! Undefined control sequence.
+#             l.53 \newXeTeXintercharclass
+# * RTL-languages: ! Undefined control sequence.
+#             \setLR ->\@RTLfalse \luatexpardir 
+export/export/latex/languages/supported-languages_polyglossia_(dvi3|pdf5)_systemF
+
+
 # Some packages fail with XeTeX/LuaTeX
 # Reported upstream (https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg184435.html)
 # Is there a new version fixing the problem?
@@ -249,34 +235,16 @@ export/examples/Modules/Hazard_and_Precautionary_Statements_.*_systemF
 # xy package:
 export/examples/(|fr/)Graphics_and_Insets/XY-(Pic|Figure)_pdf5.*
 
-# Polyglossia + LuaTeX issue
-# Reported upstream here:
-# https://github.com/reutenauer/polyglossia/issues/163
-# These tests were broken at 3374b854
-# See discussion here:
-# https://www.mail-archive.com/search?l=mid&q=1478004223.2367.5.camel%40lyx.org
-export/doc/(sk|nb)/Intro_(dvi3|pdf5)_systemF
-# some Polyglossia languages work only with XeTeX and fail with LuaTeX:
-# * The font "NotoSansEthiopic" cannot be found.
-# * sanskrit: ! Undefined control sequence.
-#             l.53 \newXeTeXintercharclass
-# * RTL-languages: ! Undefined control sequence.
-#             \setLR ->\@RTLfalse \luatexpardir 
-export/export/latex/languages/supported-languages_polyglossia_(dvi3|pdf5)_systemF
-
 # fontspec errors with `slides` class:
 # LaTeX error: "kernel/command-already-defined"
 # Lines 2684 ... 2690 in fontspec-xetex.sty
 # Lines 2608 ... 2614 in fontspec-luatex.sty
 export/templates/Presentations/Slides_.*_systemF
 
-# Babel-French fails with Xe/LuaTeX and TeX fonts
-#   LaTeX Error: Command \at already defined. (and a lot more)
-export/export/latex/languages/supported-languages_(dvi|pdf).*_texF
-export/export/latex/languages/supported-languages_babel_(dvi|pdf).*_texF
+# expl3.sty: Compilation errors with XeTeX, TeX-fonts, inputenc utf8
+# (TL 17 works).
+export/export/latex/inputenc-xetex-utf8-expl3-bug_pdf4_texF
 
-# Babel-Spanish fails sometimes with XeTeX and TeX fonts
-export/doc/es/(Math|UserGuide|EmbeddedObjects|Customization)_pdf4_texF
 
 # Arabic
 #
