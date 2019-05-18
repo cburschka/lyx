@@ -1604,7 +1604,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				docstring const halign = parse_verbatim_item();
 				cell->push_back(MathAtom(new InsetMathArray(buf, name,
 					InsetMathGrid::guessColumns(halign), 1, (char)valign[0], halign)));
-				parse2(cell->back(), FLAG_END, mode, false);
+				parse2(cell->back(), FLAG_END, InsetMath::MATH_MODE, false);
 			}
 
 			else if (name == "tabular") {
