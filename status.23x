@@ -48,6 +48,8 @@ The "Rows & Columns" optional submenu has been added to the math context menu.
 
 - Fix toprule with booktabs/longtable and captions (bug 11589).
 
+- Avoid adding spaces when parsing an array in a macro template (bug 10499).
+
 
 * USER INTERFACE
 
