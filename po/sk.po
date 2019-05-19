@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-04-21 11:37+0200\n"
-"PO-Revision-Date: 2019-04-21 10:22+0000\n"
+"POT-Creation-Date: 2019-05-19 19:06+0200\n"
+"PO-Revision-Date: 2019-05-19 17:51+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2412,6 +2412,14 @@ msgstr "&Typ úvodzoviek:"
 msgid "Language pa&ckage:"
 msgstr "Jazykový balí&k:"
 
+#: src/frontends/qt4/ui/LanguageUi.ui:112
+msgid "&Encoding:"
+msgstr "Kó&dovanie:"
+
+#: src/frontends/qt4/ui/LanguageUi.ui:125
+msgid "Here you might adjust the output encoding (used for LaTeX files)"
+msgstr "To môžte spresniť východné kódovanie (použité pre LaTeX súbory)"
+
 #: src/frontends/qt4/ui/LanguageUi.ui:94
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:52
 msgid "Select which language package LyX should use"
@@ -2424,17 +2432,13 @@ msgid ""
 msgstr ""
 "Zadajte príkaz na nahranie jazykového balíku (štandard: \\usepackage{babel})"
 
-#: src/frontends/qt4/ui/LanguageUi.ui:123
-msgid "Encoding"
-msgstr "Kódovanie"
+#: src/frontends/qt4/ui/LanguageUi.ui:142
+msgid "If this is checked, LyX does not load the inputenc LaTeX package"
+msgstr "Keď zaškrtnuté, LyX nezahŕňa LaTeX-balík inputenc"
 
-#: src/frontends/qt4/ui/LanguageUi.ui:147
-msgid "Lan&guage default"
-msgstr "Štan&dardné pre daný jazyk"
-
-#: src/frontends/qt4/ui/LanguageUi.ui:170
-msgid "Othe&r:"
-msgstr "&Iné:"
+#: src/frontends/qt4/ui/LanguageUi.ui:145
+msgid "Do not load &inputenc"
+msgstr "Nezahrnúť &inputenc"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:190
 msgid ""
@@ -2448,6 +2452,11 @@ msgstr ""
 #: src/frontends/qt4/ui/LanguageUi.ui:193
 msgid "Use d&ynamic quotation marks"
 msgstr "Použiť d&ynamické úvodzovky"
+
+#: src/frontends/qt4/ui/LanguageUi.ui:88
+msgid ""
+"If you selected a custom output encoding to the left, yo can specifiy it here"
+msgstr "Keď ste si vybrali vlastné kódovanie vľavo, môžte to tu určiť"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
 msgid "Of&fset:"
@@ -15200,6 +15209,36 @@ msgstr "Argument pre príkazy ktoré vyžadujú špecifikáciu prídavnej inform
 msgid "S phrase:"
 msgstr "P zvrat:"
 
+#: lib/layouts/ruby.module:2
+msgid "Ruby (Furigana)"
+msgstr "Ruby (Furigana)"
+
+#: lib/layouts/ruby.module:8
+msgid ""
+"Defines an inset to typeset reading aids (ruby, furigana) to Chinese "
+"characters. Uses the okumakro, luatexja-ruby, or ruby package (depending on "
+"the TeX engine) or a fallback definition."
+msgstr ""
+"Definuje vložku na písmenovú sadu pre reading aids (ruby, furigana) do "
+"čínskych písmen. Používa okumakro, luatexja-ruby, alebo balík ruby (závislé "
+"od používaného TeX-u) alebo záložnej definície."
+
+#: lib/layouts/ruby.module:26 lib/layouts/ruby.module:35
+msgid "Ruby"
+msgstr "Ruby"
+
+#: lib/layouts/ruby.module:49
+msgid "ruby text"
+msgstr "ruby text"
+
+#: lib/layouts/ruby.module:50
+msgid "Ruby Text|R"
+msgstr "Ruby Text|R"
+
+#: lib/layouts/ruby.module:51
+msgid "Reading aid (ruby, furigana) for Chinese characters."
+msgstr "Reading aid (ruby, furigana) pre čínske písmená."
+
 #: lib/layouts/sciposter.layout:3
 msgid "SciPoster"
 msgstr "Sci-plagát"
@@ -18535,6 +18574,10 @@ msgstr "Rozdeliť bunku|d"
 #: lib/ui/stdcontext.inc:63
 msgid "Insert|s"
 msgstr "Vložiť|V"
+
+#: lib/ui/stdcontext.inc:65
+msgid "Rows & Columns| "
+msgstr "Riadky & stĺpce| "
 
 #: lib/ui/stdcontext.inc:65
 msgid "Add Line Above|o"
@@ -26029,14 +26072,16 @@ msgstr "Uloženie zlyhalo! Skúšam zatiaľ ešte raz…\n"
 msgid "Iconv software exception Detected"
 msgstr "Iconv detegoval softvérovú výnimku"
 
-#: src/Buffer.cpp:1712
+#: src/Buffer.cpp:1730
 #, c-format
 msgid ""
-"Please verify that the support software for your encoding (%1$s) is properly "
-"installed"
+"Please verify that the `iconv' support software is properly installed and "
+"supports the selected encoding (%1$s), or change the encoding in "
+"Document>Settings>Language."
 msgstr ""
-"Skontrolujte prosím či softvér pre podporu vášho kódovania (%1$s) je správne "
-"inštalovaná"
+"Overite prosím že podpora pre 'iconv'-je poriadne inštalovaná a podporuje "
+"vybrané kódovanie (%1$s), alebo zmeňte kódovanie v Dokument->Nastavenia…-"
+">Jazyk."
 
 #: src/Buffer.cpp:1743
 #, c-format
@@ -30389,9 +30434,13 @@ msgstr "Dokument potomka"
 msgid "Include to Output"
 msgstr "Zahrnúť do výstupu"
 
-#: src/frontends/qt4/GuiDocument.cpp:943
-msgid "Language Default (no inputenc)"
-msgstr "Štandardné pre daný jazyk (bez inputenc)"
+#: src/frontends/qt4/GuiDocument.cpp:962
+msgid "Unicode (utf8) [default]"
+msgstr "Unicode (utf8) [štandard]"
+
+#: src/frontends/qt4/GuiDocument.cpp:963
+msgid "Traditional (auto-selected)"
+msgstr "Tradicionálne (automaticky vybrané)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1023
 msgid "10"
