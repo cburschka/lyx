@@ -1762,8 +1762,7 @@ bool Cursor::macroModeClose(bool cancel)
 		// we have to resolve the macro here manually and check its arity
 		// to put the selection behind it if arity > 0.
 		MacroData const * data = buffer()->getMacro(atomAsMacro->name());
-		if (!selection.empty() && data && data->numargs()
-		    && data->numargs() - data->optionals() >= 0) {
+		if (!selection.empty() && data && data->numargs() {
 			macroArg = true;
 			atomAsMacro->setDisplayMode(InsetMathMacro::DISPLAY_INTERACTIVE_INIT, 1);
 		} else
