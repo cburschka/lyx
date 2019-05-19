@@ -62,6 +62,8 @@ Menuset
 		Separator
 		Submenu "Insert|s" "insert_math_context"
 		Separator
+		OptSubmenu "Rows & Columns| " "edit_tabular_features"
+		Separator
 		OptItem "Add Line Above|o" "tabular-feature add-hline-above"
 		OptItem "Add Line Below|B" "tabular-feature add-hline-below"
 		OptItem "Delete Line Above|v" "tabular-feature delete-hline-above"
