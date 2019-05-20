@@ -6,11 +6,7 @@ TEST_FILES = \
 	export/xhtml/IncludeMissingEndTagDiv.lyx \
 	export/xhtml/MissingEndTagDiv.lyx \
 	export/latex/languages/ja-listings-uncodable-error.lyx \
-	export/latex/languagenesting1.lyx \
-	export/latex/languagenesting2.lyx \
-	export/latex/LongestLabelWithUnderscore.lyx \
 	export/MissingEndLayoutBetweenTables.lyx \
-	export/latex/TableErrorIfSlovakTextInserted.lyx \
 	export/latex/inputenc-utf8-plain.lyx \
 	export/WrongDfnTagHandling.lyx \
 	mathmacros/architecture.lyx \
