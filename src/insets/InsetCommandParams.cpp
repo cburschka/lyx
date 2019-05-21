@@ -519,8 +519,8 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 		if (!uncodable.empty() && !runparams.silent) {
 			// issue a warning about omitted characters
 			// FIXME: should be passed to the error dialog
-			frontend::Alert::warning(_("Uncodable characters in nomenclature inset"),
-				bformat(_("The following characters in one of the nomenclature listings are\n"
+			frontend::Alert::warning(_("Uncodable characters in inset"),
+				bformat(_("The following characters in one of the insets are\n"
 					  "not representable in the current encoding and have been omitted:\n%1$s."),
 				uncodable));
 		}
