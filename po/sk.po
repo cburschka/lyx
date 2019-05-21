@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-05-21 07:01+0200\n"
-"PO-Revision-Date: 2019-05-21 05:12+0000\n"
+"POT-Creation-Date: 2019-05-21 13:44+0200\n"
+"PO-Revision-Date: 2019-05-21 12:15+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -33681,6 +33681,21 @@ msgstr ""
 "Nasledujúce znaky použité vo vložke %1$s sú nereprezentovateľné\n"
 "v aktuálnom kódovaní a boli vynechané:\n"
 "%2$s."
+
+#: src/insets/InsetCommandParams.cpp:522
+msgid "Uncodable characters in inset"
+msgstr "Nekódovateľné znaky vo vložke"
+
+#: src/insets/InsetCommandParams.cpp:523
+#, c-format
+msgid ""
+"The following characters in one of the insets are\n"
+"not representable in the current encoding and have been omitted: %1$s.\n"
+"Unchecking 'Literal' in the respective inset dialog might help."
+msgstr ""
+"Nasledujúce znaky v jednej z vložiek sú ne-zobraziteľné\n"
+"v aktuálnom kódovaní a boli vynechané: %1$s.\n"
+"Od-štrknúť 'Doslovne' v príslušnom dialógu by mohlo pomôcť."
 
 #: src/insets/InsetExternal.cpp:404
 #, c-format
