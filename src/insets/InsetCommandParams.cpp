@@ -490,8 +490,41 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 	}
 	else if (handling & ParamInfo::HANDLING_ESCAPE)
 		result = escape(command);
-	else if (handling & ParamInfo::HANDLING_NONE)
-		result = command;
+	else if (handling & ParamInfo::HANDLING_NONE) {
+		// we can only output characters covered by the current
+		// encoding!
+		docstring uncodable;
+		for (size_type i = 0 ; i < command.size() ; ++i) {
+			char_type c = command[i];
+			try {
+				if (runparams.encoding->encodable(c))
+					result += c;
+				else if (runparams.dryrun) {
+					result += "<" + _("LyX Warning: ")
+					   + _("uncodable character") + " '";
+					result += docstring(1, c);
+					result += "'>";
+				} else
+					uncodable += c;
+			} catch (EncodingException & /* e */) {
+				if (runparams.dryrun) {
+					result += "<" + _("LyX Warning: ")
+					   + _("uncodable character") + " '";
+					result += docstring(1, c);
+					result += "'>";
+				} else
+					uncodable += c;
+			}
+		}
+		if (!uncodable.empty() && !runparams.silent) {
+			// issue a warning about omitted characters
+			// FIXME: should be passed to the error dialog
+			frontend::Alert::warning(_("Uncodable characters in nomenclature inset"),
+				bformat(_("The following characters in one of the nomenclature listings are\n"
+					  "not representable in the current encoding and have been omitted:\n%1$s."),
+				uncodable));
+		}
+	}
 	// INDEX_ESCAPE is independent of the others
 	if (handling & ParamInfo::HANDLING_INDEX_ESCAPE) {
 		// Now escape special commands
