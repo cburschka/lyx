@@ -521,7 +521,8 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 			// FIXME: should be passed to the error dialog
 			frontend::Alert::warning(_("Uncodable characters in inset"),
 				bformat(_("The following characters in one of the insets are\n"
-					  "not representable in the current encoding and have been omitted:\n%1$s."),
+					  "not representable in the current encoding and have been omitted: %1$s.\n"
+					  "Unchecking 'Literal' in the respective inset dialog might help."),
 				uncodable));
 		}
 	}
