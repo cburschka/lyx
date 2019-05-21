@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-05-19 19:06+0200\n"
-"PO-Revision-Date: 2019-05-19 17:51+0000\n"
+"POT-Creation-Date: 2019-05-21 07:01+0200\n"
+"PO-Revision-Date: 2019-05-21 05:12+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -26350,20 +26350,20 @@ msgstr "Dokument exportovaný ako %1$s do súboru `%2$s'"
 msgid "Document exported as %1$s"
 msgstr "Dokument exportovaný ako %1$s"
 
-#: src/Buffer.cpp:4605
+#: src/Buffer.cpp:4734
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
 "\n"
 "Recover emergency save?"
 msgstr ""
-"Existuje núdzovú kópia dokumentu %1$s.\n"
+"Existuje havarijná kópia dokumentu %1$s.\n"
 "\n"
-"Získať núdzovú kópiu späť?"
+"Získať havarijnú kópiu späť?"
 
-#: src/Buffer.cpp:4608
+#: src/Buffer.cpp:4737
 msgid "Load emergency save?"
-msgstr "Nahrať núdzovú kópiu ?"
+msgstr "Nahrať havarijnú kópiu ?"
 
 #: src/Buffer.cpp:4609
 msgid "&Recover"
@@ -26373,13 +26373,13 @@ msgstr "&Obnoviť"
 msgid "&Load Original"
 msgstr "&Nahrať Pôvodné"
 
-#: src/Buffer.cpp:4620
+#: src/Buffer.cpp:4749
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
-"Bezpečnostný súbor úspešne načítaný, ale originálny súbor %1$s je označený "
+"Havarijný súbor úspešne načítaný, ale originálny súbor %1$s je označený "
 "len na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
 #: src/Buffer.cpp:4627
@@ -26390,48 +26390,62 @@ msgstr "Dokument bol úspešne obnovený."
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument NEBOL úspešne obnovený."
 
-#: src/Buffer.cpp:4630
+#: src/Buffer.cpp:4759
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr ""
-"Zmazať núdzovú kópiu teraz?\n"
+"Zmazať havarijnú kópiu teraz?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:4634 src/Buffer.cpp:4646
+#: src/Buffer.cpp:4763 src/Buffer.cpp:4775
 msgid "Delete emergency file?"
-msgstr "Zmazať núdzový súbor?"
+msgstr "Zmazať havarijný súbor?"
 
 #: src/Buffer.cpp:4635 src/Buffer.cpp:4648
 msgid "&Keep"
 msgstr "&Držať"
 
-#: src/Buffer.cpp:4639
+#: src/Buffer.cpp:4768
 msgid "Emergency file deleted"
-msgstr "Núdzový súbor vymazaný"
+msgstr "Havarijný súbor vymazaný"
 
 #: src/Buffer.cpp:4640
 msgid "Do not forget to save your file now!"
 msgstr "Teraz nezabudnite uložiť váš súbor!"
 
-#: src/Buffer.cpp:4647
+#: src/Buffer.cpp:4776
 msgid "Remove emergency file now?"
-msgstr "Zmazať núdzovú kópiu teraz?"
+msgstr "Zmazať havarijnú kópiu teraz?"
 
-#: src/Buffer.cpp:4792
+#: src/Buffer.cpp:4799
 msgid "Can't rename emergency file!"
-msgstr "Nemôžem premenovať núdzový súbor!"
+msgstr "Nemôžem premenovať havarijný súbor!"
 
-#: src/Buffer.cpp:4793
+#: src/Buffer.cpp:4800
 msgid ""
 "LyX was unable to rename the emergency file. You should do so manually. "
 "Otherwise, you will be asked about it again the next time you try to load "
 "this file, and may over-write your own work."
 msgstr ""
-"LyX nebol schopný premenovať núdzový súbor. Mali by ste ho premenovať ručne. "
+"LyX nebol schopný premenovať havarijný súbor. Mali by ste ho premenovať"
+" ručne. "
 "Ináč, v prípade že chcete tento súbor nabudúce čítať, budete opýtaný ešte "
 "raz a tak by ste mohli prepísať vlastnú prácu."
+
+#: src/Buffer.cpp:4805
+msgid "Emergency File Renames"
+msgstr "Havarijný súbor premenovaný"
+
+#: src/Buffer.cpp:4806
+#, c-format
+msgid ""
+"Emergency file renamed as:\n"
+" %1$s"
+msgstr ""
+"Havarijný súbor premenovaný na:\n"
+" %1$s"
 
 #: src/Buffer.cpp:4670
 #, c-format
