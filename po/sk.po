@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-04-25 23:30-0400\n"
-"PO-Revision-Date: 2019-04-21 11:21+0000\n"
+"POT-Creation-Date: 2019-05-21 06:59+0200\n"
+"PO-Revision-Date: 2019-05-21 05:14+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -25569,13 +25569,13 @@ msgid ""
 "\n"
 "Recover emergency save?"
 msgstr ""
-"Existuje núdzovú kópia dokumentu %1$s.\n"
+"Existuje havarijná kópia dokumentu %1$s.\n"
 "\n"
-"Získať núdzovú kópiu späť?"
+"Získať havarijnú kópiu späť?"
 
 #: src/Buffer.cpp:4730
 msgid "Load emergency save?"
-msgstr "Nahrať núdzovú kópiu ?"
+msgstr "Nahrať havarijnú kópiu ?"
 
 #: src/Buffer.cpp:4731
 msgid "&Recover"
@@ -25591,8 +25591,8 @@ msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
-"Bezpečnostný súbor úspešne načítaný, ale originálny súbor %1$s je označený "
-"len na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
+"Havarijný súbor úspešne načítaný, ale originálny súbor %1$s je označený len "
+"na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
 #: src/Buffer.cpp:4749
 msgid "Document was successfully recovered."
@@ -25608,12 +25608,12 @@ msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr ""
-"Zmazať núdzovú kópiu teraz?\n"
+"Zmazať havarijnú kópiu teraz?\n"
 "(%1$s)"
 
 #: src/Buffer.cpp:4756 src/Buffer.cpp:4768
 msgid "Delete emergency file?"
-msgstr "Zmazať núdzový súbor?"
+msgstr "Zmazať havarijný súbor?"
 
 #: src/Buffer.cpp:4757 src/Buffer.cpp:4770
 msgid "&Keep"
@@ -25621,7 +25621,7 @@ msgstr "&Držať"
 
 #: src/Buffer.cpp:4761
 msgid "Emergency file deleted"
-msgstr "Núdzový súbor vymazaný"
+msgstr "Havarijný súbor vymazaný"
 
 #: src/Buffer.cpp:4762
 msgid "Do not forget to save your file now!"
@@ -25629,11 +25629,11 @@ msgstr "Teraz nezabudnite uložiť váš súbor!"
 
 #: src/Buffer.cpp:4769
 msgid "Remove emergency file now?"
-msgstr "Zmazať núdzovú kópiu teraz?"
+msgstr "Zmazať havarijnú kópiu teraz?"
 
 #: src/Buffer.cpp:4792
 msgid "Can't rename emergency file!"
-msgstr "Nemôžem premenovať núdzový súbor!"
+msgstr "Nemôžem premenovať havarijný súbor!"
 
 #: src/Buffer.cpp:4793
 msgid ""
