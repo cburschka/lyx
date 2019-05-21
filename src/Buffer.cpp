@@ -4801,6 +4801,10 @@ Buffer::ReadStatus Buffer::loadEmergency()
 					  "You should do so manually. Otherwise, you will be "
 					  "asked about it again the next time you try to load "
 					  "this file, and may over-write your own work."));
+			} else {
+				Alert::warning(_("Emergency File Renames"),
+					bformat(_("Emergency file renamed as:\n %1$s"),
+					from_utf8(newname.onlyFileName())));
 			}
 		}
 		return ReadOriginal;
