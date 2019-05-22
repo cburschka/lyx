@@ -262,7 +262,7 @@ public:
 	/// remove last element
 	void pop_back();
 	/// remove all row elements
-	void clear() { elements_.clear(); }
+	void clear() { *this = Row(); }
 	/**
 	 * if row width is too large, remove all elements after last
 	 * separator and update endpos if necessary. If all that
