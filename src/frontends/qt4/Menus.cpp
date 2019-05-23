@@ -1437,42 +1437,42 @@ void MenuDefinition::expandBranches(Buffer const * buf)
 	if (!buf || buf->hasReadonlyFlag())
 		return;
 
-	BufferParams const & master_params = buf->masterBuffer()->params();
-	BufferParams const & params = buf->params();
-	if (params.branchlist().empty() && master_params.branchlist().empty() ) {
+	BranchList const & master_list =
+		buf->masterBuffer()->params().branchlist();
+	BranchList const & child_list = buf->params().branchlist();
+	if (child_list.empty() && master_list.empty() ) {
 		add(MenuItem(MenuItem::Help, qt_("No Branches Set for Document!")));
 		return;
 	}
 
-	BranchList::const_iterator cit = master_params.branchlist().begin();
-	BranchList::const_iterator end = master_params.branchlist().end();
-
-	for (int ii = 1; cit != end; ++cit, ++ii) {
-		docstring label = cit->branch();
+	BranchList::const_iterator mit = master_list.begin();
+	BranchList::const_iterator const mend = master_list.end();
+	for (int ii = 1; mit != mend; ++mit, ++ii) {
+		// NUM. Branch Name + "|", which triggers an empty shortcut in
+		// case that character should be in the branch name
+		docstring label = convert<docstring>(ii) + ". " +
+			mit->branch() + char_type('|');
 		if (ii < 10) {
-			label = convert<docstring>(ii) + ". " + label
-				+ char_type('|') + convert<docstring>(ii);
+			// Add NUM as a keyboard shortcut
+			label += convert<docstring>(ii);
 		}
 		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
 				    FuncRequest(LFUN_BRANCH_INSERT,
-						cit->branch())));
+						mit->branch())));
 	}
 
 	if (buf == buf->masterBuffer())
 		return;
 
 	MenuDefinition child_branches;
-
-	BranchList::const_iterator ccit = params.branchlist().begin();
-	BranchList::const_iterator cend = params.branchlist().end();
-
+	BranchList::const_iterator ccit = child_list.begin();
+	BranchList::const_iterator cend = child_list.end();
 	for (int ii = 1; ccit != cend; ++ccit, ++ii) {
-		docstring label = ccit->branch();
+		docstring label = convert<docstring>(ii) + ". " +
+			ccit->branch() + char_type('|');
 		if (ii < 10) {
-			label = convert<docstring>(ii) + ". " + label
-				+ char_type('|') + convert<docstring>(ii);
-		} else
-			label += char_type('|');
+			label += convert<docstring>(ii);
+		}
 		child_branches.addWithStatusCheck(MenuItem(MenuItem::Command,
 				    toqstr(label),
 				    FuncRequest(LFUN_BRANCH_INSERT,
