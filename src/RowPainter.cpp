@@ -119,6 +119,7 @@ void RowPainter::paintInset(Row::Element const & e) const
 	e.inset->drawBackground(pi_, x1, yo_);
 	e.inset->drawSelection(pi_, x1, yo_);
 	e.inset->draw(pi_, x1, yo_);
+	paintTextDecoration(e);
 
 	// Restore full_repaint status.
 	pi_.full_repaint = pi_full_repaint;
@@ -551,7 +552,6 @@ void RowPainter::paintText()
 
 		case Row::INSET:
 			paintInset(e);
-			paintTextDecoration(e);
 			break;
 
 		case Row::SPACE:
