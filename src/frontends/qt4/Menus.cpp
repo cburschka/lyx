@@ -1445,38 +1445,35 @@ void MenuDefinition::expandBranches(Buffer const * buf)
 		return;
 	}
 
-	BranchList::const_iterator mit = master_list.begin();
-	BranchList::const_iterator const mend = master_list.end();
-	for (int ii = 1; mit != mend; ++mit, ++ii) {
+	int ii = 1;
+	for (auto const & b : master_list) {
+		docstring const & bname = b.branch();
 		// NUM. Branch Name + "|", which triggers an empty shortcut in
 		// case that character should be in the branch name
-		docstring label = convert<docstring>(ii) + ". " +
-			mit->branch() + char_type('|');
+		docstring label = convert<docstring>(ii) + ". " + bname + char_type('|');
 		if (ii < 10) {
 			// Add NUM as a keyboard shortcut
 			label += convert<docstring>(ii);
 		}
 		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
-				    FuncRequest(LFUN_BRANCH_INSERT,
-						mit->branch())));
+			FuncRequest(LFUN_BRANCH_INSERT, bname)));
+		++ii;
 	}
 
 	if (buf == buf->masterBuffer())
 		return;
 
 	MenuDefinition child_branches;
-	BranchList::const_iterator ccit = child_list.begin();
-	BranchList::const_iterator cend = child_list.end();
-	for (int ii = 1; ccit != cend; ++ccit, ++ii) {
-		docstring label = convert<docstring>(ii) + ". " +
-			ccit->branch() + char_type('|');
+	ii = 1;
+	for (auto const & b : child_list) {
+		docstring const & bname = b.branch();
+		docstring label = convert<docstring>(ii) + ". " + bname + char_type('|');
 		if (ii < 10) {
 			label += convert<docstring>(ii);
 		}
 		child_branches.addWithStatusCheck(MenuItem(MenuItem::Command,
-				    toqstr(label),
-				    FuncRequest(LFUN_BRANCH_INSERT,
-						ccit->branch())));
+			toqstr(label), FuncRequest(LFUN_BRANCH_INSERT, bname)));
+		++ii;
 	}
 
 	if (!child_branches.empty()) {
