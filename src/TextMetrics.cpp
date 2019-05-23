@@ -836,6 +836,7 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 	row.clear();
 	row.left_margin = leftMargin(row.pit(), pos);
 	row.right_margin = right_margin;
+	row.needsChangeBar(false);
 	if (is_rtl)
 		swap(row.left_margin, row.right_margin);
 	// Remember that the row width takes into account the left_margin

@@ -213,6 +213,10 @@ What's new
 - Get rid of spurious empty entry in list of equations when creating new
   formula (bug 11423).
 
+- Handle some cases where the change bar in the margin did not get updated 
+  (bug 11396).
+
+
 
 * INTERNALS
 
