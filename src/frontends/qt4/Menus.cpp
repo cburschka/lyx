@@ -1437,55 +1437,58 @@ void MenuDefinition::expandBranches(Buffer const * buf)
 	if (!buf || buf->hasReadonlyFlag())
 		return;
 
-	BranchList const & master_list =
-		buf->masterBuffer()->params().branchlist();
 	BranchList const & child_list = buf->params().branchlist();
-	if (child_list.empty() && master_list.empty() ) {
-		add(MenuItem(MenuItem::Help, qt_("No Branches Set for Document!")));
-		return;
-	}
-
+	set<docstring> brset;
 	int ii = 1;
 	for (auto const & b : child_list) {
 		docstring const & bname = b.branch();
 		// NUM. Branch Name + "|", which triggers an empty shortcut in
-		// case that character should be in the branch name
+		// case that character should be in the branch name.
 		docstring label = convert<docstring>(ii) + ". " + bname + char_type('|');
-		if (ii < 10) {
-			// Add NUM as a keyboard shortcut
+		// Add NUM as a keyboard shortcut if it's a single digit
+		if (ii < 10)
 			label += convert<docstring>(ii);
-		}
+
 		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
 			FuncRequest(LFUN_BRANCH_INSERT, bname)));
+
+		brset.insert(bname);
 		++ii;
 	}
 
-	if (buf == buf->masterBuffer())
-		return;
-
-	// FIXME
-	// We should probably consider all parent branches, up the line.
-	// I.e., parents, grandparents, etc.
+	set<Buffer const *> bufset;
+	Buffer const * nextbuf = buf->parent();
 	MenuDefinition master_branches;
 	ii = 1;
-	for (auto const & b : master_list) {
-		docstring const & bname = b.branch();
-		// do not add to child list if the branch already exists
-		// in the child document.
-		if (child_list.find(bname))
-			continue;
+	while (nextbuf) {
+		// recursive includes are a bad idea, but let's not crash
+		// if we find one.
+		if (bufset.count(nextbuf))
+			break;
 
-		docstring label = convert<docstring>(ii) + ". " + bname + char_type('|');
-		if (ii < 10) {
-			label += convert<docstring>(ii);
+		for (auto const & b : nextbuf->params().branchlist()) {
+			docstring const & bname = b.branch();
+			// do not add it if we've already seen it
+			if (brset.count(bname))
+				continue;
+
+			docstring label = convert<docstring>(ii) + ". " + bname + char_type('|');
+			if (ii < 10)
+				label += convert<docstring>(ii);
+
+			master_branches.addWithStatusCheck(MenuItem(MenuItem::Command,
+				toqstr(label), FuncRequest(LFUN_BRANCH_INSERT, bname)));
+
+			bufset.insert(nextbuf);
+			brset.insert(bname);
+			++ii;
 		}
-		master_branches.addWithStatusCheck(MenuItem(MenuItem::Command,
-			toqstr(label), FuncRequest(LFUN_BRANCH_INSERT, bname)));
-		++ii;
+
+		nextbuf = nextbuf->parent();
 	}
 
 	if (!master_branches.empty()) {
-		MenuItem item(MenuItem::Submenu, qt_("Master Document"));
+		MenuItem item(MenuItem::Submenu, qt_("Master Documents"));
 		item.setSubmenu(master_branches);
 		add(item);
 	}
