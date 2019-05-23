@@ -1,16 +1,19 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 542
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 574
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass article
+\begin_preamble
+\usepackage{textalpha}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -28,6 +31,8 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -52,6 +57,7 @@
 \suppress_date false
 \justification false
 \use_refstyle 1
+\use_minted 0
 \branch mfe
 \selected 0
 \filename_suffix 0
@@ -66,12 +72,13 @@
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
-\math_number_before 0
+\math_numbering_side default
 \quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -100,8 +107,9 @@ inputenc
 \begin_inset Quotes erd
 \end_inset
 
-.
- 
+, e.g.
+ a Greek α.
+  
 \end_layout
 
 \begin_layout Standard
@@ -113,7 +121,7 @@ Examples:
 LatexCommand nomenclature
 symbol "α"
 description "Greek letter alpha."
-literal "true"
+literal "false"
 
 \end_inset
 
@@ -125,7 +133,7 @@ literal "true"
 LatexCommand nomenclature
 symbol "s"
 description "Latin σ"
-literal "true"
+literal "false"
 
 \end_inset
 
@@ -138,11 +146,21 @@ LatexCommand nomenclature
 prefix "σ"
 symbol "s"
 description "Latin s"
-literal "true"
+literal "false"
 
 \end_inset
 
  (uncodable sortkey).
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomencl_print
+LatexCommand printnomenclature
+set_width "auto"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
