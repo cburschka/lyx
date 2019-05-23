@@ -1446,7 +1446,7 @@ void MenuDefinition::expandBranches(Buffer const * buf)
 	}
 
 	int ii = 1;
-	for (auto const & b : master_list) {
+	for (auto const & b : child_list) {
 		docstring const & bname = b.branch();
 		// NUM. Branch Name + "|", which triggers an empty shortcut in
 		// case that character should be in the branch name
@@ -1463,22 +1463,30 @@ void MenuDefinition::expandBranches(Buffer const * buf)
 	if (buf == buf->masterBuffer())
 		return;
 
-	MenuDefinition child_branches;
+	// FIXME
+	// We should probably consider all parent branches, up the line.
+	// I.e., parents, grandparents, etc.
+	MenuDefinition master_branches;
 	ii = 1;
-	for (auto const & b : child_list) {
+	for (auto const & b : master_list) {
 		docstring const & bname = b.branch();
+		// do not add to child list if the branch already exists
+		// in the child document.
+		if (child_list.find(bname))
+			continue;
+
 		docstring label = convert<docstring>(ii) + ". " + bname + char_type('|');
 		if (ii < 10) {
 			label += convert<docstring>(ii);
 		}
-		child_branches.addWithStatusCheck(MenuItem(MenuItem::Command,
+		master_branches.addWithStatusCheck(MenuItem(MenuItem::Command,
 			toqstr(label), FuncRequest(LFUN_BRANCH_INSERT, bname)));
 		++ii;
 	}
 
-	if (!child_branches.empty()) {
-		MenuItem item(MenuItem::Submenu, qt_("Child Document"));
-		item.setSubmenu(child_branches);
+	if (!master_branches.empty()) {
+		MenuItem item(MenuItem::Submenu, qt_("Master Document"));
+		item.setSubmenu(master_branches);
 		add(item);
 	}
 }
