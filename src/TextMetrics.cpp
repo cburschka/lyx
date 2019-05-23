@@ -524,10 +524,11 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 	do {
 		if (row_index == pm.rows().size())
 			pm.rows().push_back(Row());
+		else
+			pm.rows()[row_index] = Row();
 		Row & row = pm.rows()[row_index];
 		row.pit(pit);
 		row.pos(first);
-		row.pit(pit);
 		need_new_row = breakRow(row, right_margin);
 		setRowHeight(row);
 		row.changed(true);
@@ -881,6 +882,7 @@ private:
  */
 bool TextMetrics::breakRow(Row & row, int const right_margin) const
 {
+	LATTEST(row.empty());
 	Paragraph const & par = text_->getPar(row.pit());
 	pos_type const end = par.size();
 	pos_type const pos = row.pos();
@@ -888,7 +890,6 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 	bool const is_rtl = text_->isRTL(row.pit());
 	bool need_new_row = false;
 
-	row.clear();
 	row.left_margin = leftMargin(row.pit(), pos);
 	row.right_margin = right_margin;
 	if (is_rtl)

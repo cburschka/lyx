@@ -261,8 +261,6 @@ public:
 	Element const & back() const { return elements_.back(); }
 	/// remove last element
 	void pop_back();
-	/// remove all row elements
-	void clear() { *this = Row(); }
 	/**
 	 * if row width is too large, remove all elements after last
 	 * separator and update endpos if necessary. If all that
