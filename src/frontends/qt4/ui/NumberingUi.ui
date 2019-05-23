@@ -90,6 +90,44 @@
      </property>
     </widget>
    </item>
+   <item row="5" column="0">
+    <widget class="QGroupBox" name="linenoGB">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="title">
+      <string>L&amp;ines numbering</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Additional O&amp;ptions:</string>
+        </property>
+        <property name="buddy">
+         <cstring>linenoLE</cstring>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="linenoLE">
+        <property name="toolTip">
+         <string>lineno package options (e.g. right, modulo, switch, displaymath, mathlines,...)</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
   </layout>
  </widget>
  <tabstops>

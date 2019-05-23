@@ -475,6 +475,7 @@ BufferParams::BufferParams()
 	output_sync = false;
 	use_refstyle = true;
 	use_minted = false;
+	use_lineno = false;
 
 	// map current author
 	author_map_[pimpl_->authorlist.get(0).bufferId()] = 0;
@@ -1118,6 +1119,11 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex >> use_refstyle;
 	} else if (token == "\\use_minted") {
 		lex >> use_minted;
+	} else if (token == "\\use_lineno") {
+		lex >> use_lineno;
+	} else if (token == "\\lineno_options") {
+		lex.eatLine();
+		lineno_opts = trim(lex.getString());
 	} else {
 		lyxerr << "BufferParams::readToken(): Unknown token: " <<
 			token << endl;
@@ -1321,6 +1327,12 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	   << "\n\\use_refstyle " << use_refstyle
 	   << "\n\\use_minted " << use_minted
 	   << '\n';
+
+	if (use_lineno)
+		os << "\\use_lineno " << use_lineno << '\n';
+	if (!lineno_opts.empty())
+		 os << "\\lineno_options " << lineno_opts << '\n';
+
 	if (isbackgroundcolor == true)
 		os << "\\backgroundcolor " << lyx::X11hexname(backgroundcolor) << '\n';
 	if (isfontcolor == true)
@@ -2131,6 +2143,14 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	} else if (features.isRequired("nameref"))
 		// hyperref loads this automatically
 		os << "\\usepackage{nameref}\n";
+
+	if (use_lineno){
+		os << "\\usepackage";
+		if (!lineno_opts.empty())
+			os << "[" << lineno_opts << "]";
+		os << "{lineno}\n";
+		os << "\\linenumbers\n";
+	}
 
 	// bibtopic needs to be loaded after hyperref.
 	// the dot provides the aux file naming which LyX can detect.

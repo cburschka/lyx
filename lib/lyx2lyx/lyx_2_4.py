@@ -1694,6 +1694,15 @@ def revert_utf8_japanese(document):
     if lang == "japanese-cjk":
         document.set_parameter("inputencoding", "utf8-cjk")
 
+def revert_lineno(document):
+    " Remove lineno package use."
+    i = find_token(document.header, "\\use_lineno", 0)
+    if i != -1:
+        del document.header[i]
+    i = find_token(document.header, "\\lineno_options", 0)
+    if i != -1:
+        del document.header[i]
+
 
 ##
 # Conversion hub
@@ -1731,9 +1740,11 @@ convert = [
            [572, [convert_notoFonts]],  # Added options thin, light, extralight for Noto
            [573, [convert_inputencoding_namechange]],
            [574, [convert_ruby_module, convert_utf8_japanese]],
+           [575, []],
           ]
 
-revert =  [[573, [revert_ruby_module, revert_utf8_japanese]],
+revert =  [[574, [revert_lineno]],
+           [573, [revert_ruby_module, revert_utf8_japanese]],
            [572, [revert_inputencoding_namechange]],
            [571, [revert_notoFonts]],
            [570, [revert_cmidruletrimming]],

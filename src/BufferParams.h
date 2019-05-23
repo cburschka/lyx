@@ -550,6 +550,10 @@ public:
 	bool use_refstyle;
 	/// use minted? or listings?
 	bool use_minted;
+	//output line numbering
+	bool use_lineno;
+	//optional params for lineno package
+	std::string lineno_opts;
 
 	/// Return true if language could be set to lang,
 	/// otherwise return false and do not change language

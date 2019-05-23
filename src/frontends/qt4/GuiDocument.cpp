@@ -1253,6 +1253,11 @@ GuiDocument::GuiDocument(GuiView & lv)
 	numberingModule->tocTW->headerItem()->setText(1, qt_("Numbered"));
 	numberingModule->tocTW->headerItem()->setText(2, qt_("Appears in TOC"));
 	setSectionResizeMode(numberingModule->tocTW->header(), QHeaderView::ResizeToContents);
+	connect(numberingModule->linenoGB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(numberingModule->linenoLE, SIGNAL(textChanged(QString)),
+		this, SLOT(change_adaptor()));
+
 
 	// biblio
 	biblioModule = new UiWidget<Ui::BiblioUi>(this);
@@ -3282,6 +3287,8 @@ void GuiDocument::applyView()
 		bp_.tocdepth = numberingModule->tocSL->value();
 		bp_.secnumdepth = numberingModule->depthSL->value();
 	}
+	bp_.use_lineno = numberingModule->linenoGB->isChecked();
+	bp_.lineno_opts = fromqstr(numberingModule->linenoLE->text());
 
 	// bullets
 	bp_.user_defined_bullet(0) = bulletsModule->bullet(0);
@@ -3805,6 +3812,9 @@ void GuiDocument::paramsToDialog()
 		numberingModule->setEnabled(false);
 		numberingModule->tocTW->clear();
 	}
+
+	numberingModule->linenoGB->setChecked(bp_.use_lineno);
+	numberingModule->linenoLE->setText(toqstr(bp_.lineno_opts));
 
 	// bullets
 	bulletsModule->setBullet(0, bp_.user_defined_bullet(0));
