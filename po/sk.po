@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-05-21 13:44+0200\n"
-"PO-Revision-Date: 2019-05-21 12:15+0000\n"
+"POT-Creation-Date: 2019-05-23 18:04+0200\n"
+"PO-Revision-Date: 2019-05-23 16:12+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2980,6 +2980,22 @@ msgstr "Uviesť v O&bsahu"
 #: src/frontends/qt4/ui/NumberingUi.ui:70
 msgid "&Numbering"
 msgstr "Čís&lovanie"
+
+#: src/frontends/qt4/ui/NumberingUi.ui:99
+msgid "L&ines numbering"
+msgstr "Čí&slovanie riadkov"
+
+#: src/frontends/qt4/ui/NumberingUi.ui:114
+msgid "Additional O&ptions:"
+msgstr "&Dodatočné možnosti:"
+
+#: src/frontends/qt4/ui/NumberingUi.ui:124
+msgid ""
+"lineno package options (e.g. right, modulo, switch, displaymath, "
+"mathlines,...)"
+msgstr ""
+"voľby balíka lineno (napr. -right, modulo, switch, displaymath, "
+"mathlines,...)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:20
 msgid "Output Format"
@@ -33241,9 +33257,9 @@ msgstr "Otvoriť prehľad…"
 msgid "Other Toolbars"
 msgstr "Iné lišty nástrojov"
 
-#: src/frontends/qt4/Menus.cpp:1440
-msgid "No Branches Set for Document!"
-msgstr "Dokument neobsahuje vetvenie!"
+#: src/frontends/qt4/Menus.cpp:1491
+msgid "Master Documents"
+msgstr "Nadriadené dokumenty"
 
 #: src/frontends/qt4/Menus.cpp:1496
 msgid "Index List|I"
@@ -35461,6 +35477,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "No Branches Set for Document!"
+#~ msgstr "Dokument neobsahuje vetvenie!"
 
 #~ msgid "Theorems"
 #~ msgstr "Teorémy"
