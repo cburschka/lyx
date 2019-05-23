@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 573
+\lyxformat 575
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -148,6 +148,7 @@ logicalmkup
 \html_css_as_file 0
 \html_be_strict true
 \author -712698321 "Jürgen Spitzmüller"
+\author 5863208 "ab"
 \end_header
 
 \begin_body
@@ -46777,6 +46778,55 @@ reference "subsec:Numbering-depth"
 \end_inset
 
 .
+\change_inserted 5863208 1558620045
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1558620379
+You can typeset lines numbering in the output file by enabling the checkbox
+ at the bottom.
+ The functionality is handled by package lineno and and additional options
+ of this package can be used as well.
+ The most common one are:
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 5863208 1558620630
+right Line numbers to the right margin
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 5863208 1558620589
+switch Line number to the outer margin (left – even pages, right – odd pages)
+ 
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 5863208 1558620637
+switch* Line numbers to the inner margin 
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 5863208 1558620780
+modulo Print numbers only on multiples of five lines
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 5863208 1558620792
+displaymath,
+\begin_inset space ~
+\end_inset
+
+mathlines Line numbers for math environments (both options needed).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
