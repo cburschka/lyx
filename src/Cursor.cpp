@@ -121,19 +121,19 @@ DocIterator bruteFind(Cursor const & c, int x, int y)
 
 CursorData::CursorData()
 	: DocIterator(), anchor_(), selection_(false), mark_(false),
-	  word_selection_(false), autocorrect_(false), current_font(inherit_font)
+	  word_selection_(false), current_font(inherit_font)
 {}
 
 
 CursorData::CursorData(Buffer * buffer)
 	: DocIterator(buffer), anchor_(), selection_(false), mark_(false),
-	  word_selection_(false), autocorrect_(false), current_font(inherit_font)
+	  word_selection_(false), current_font(inherit_font)
 {}
 
 
 CursorData::CursorData(DocIterator const & dit)
 	: DocIterator(dit), anchor_(), selection_(false), mark_(false),
-	  word_selection_(false), autocorrect_(false), current_font(inherit_font)
+	  word_selection_(false), current_font(inherit_font)
 {}
 
 

@@ -706,12 +706,6 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 			|| act == LFUN_PARAGRAPH_UP_SELECT;
 		cur.selHandle(select);
 
-		// handle autocorrect:
-		if (lyxrc.autocorrection_math && cur.autocorrect()) {
-			cur.autocorrect() = false;
-			cur.message(_("Autocorrect Off ('!' to enter)"));
-		}
-
 		// go up/down
 		bool up = act == LFUN_UP || act == LFUN_UP_SELECT
 			|| act == LFUN_PARAGRAPH_UP || act == LFUN_PARAGRAPH_UP_SELECT;
@@ -1729,18 +1723,6 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 	}
 
 
-	// leave autocorrect mode if necessary
-	if (lyxrc.autocorrection_math && c == ' ' && cur.autocorrect()) {
-		cur.autocorrect() = false;
-		cur.message(_("Autocorrect Off ('!' to enter)"));
-		return true;
-	}
-	if (lyxrc.autocorrection_math && c == '!' && !cur.autocorrect()) {
-		cur.autocorrect() = true;
-		cur.message(_("Autocorrect On (<space> to exit)"));
-		return true;
-	}
-
 	// just clear selection on pressing the space bar
 	if (cur.selection() && c == ' ') {
 		cur.selection(false);
@@ -1867,18 +1849,12 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 
 
 	// try auto-correction
-	if (lyxrc.autocorrection_math && cur.autocorrect() && cur.pos() != 0
+	if (lyxrc.autocorrection_math && cur.pos() != 0
 		  && math_autocorrect(cur, c))
 		return true;
 
 	// no special circumstances, so insert the character without any fuss
 	cur.insert(c);
-	if (lyxrc.autocorrection_math) {
-		if (!cur.autocorrect())
-			cur.message(_("Autocorrect Off ('!' to enter)"));
-		else
-			cur.message(_("Autocorrect On (<space> to exit)"));
-	}
 	return true;
 }
 

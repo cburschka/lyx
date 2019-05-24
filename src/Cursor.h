@@ -160,11 +160,6 @@ public:
 	///
 	docstring currentState(bool devel_mode) const;
 
-	/// auto-correct mode
-	bool autocorrect() const { return autocorrect_; }
-	/// auto-correct mode
-	bool & autocorrect() { return autocorrect_; }
-
 	/// fix cursor in circumstances that should never happen.
 	/// \retval true if a fix occurred.
 	bool fixIfBroken();
@@ -238,8 +233,6 @@ private:
 	//
 	// math specific stuff that could be promoted to "global" later
 	//
-	/// do we allow autocorrection
-	bool autocorrect_;
 
 	// FIXME: make them private
 public:
