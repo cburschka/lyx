@@ -67,16 +67,15 @@ export/export/latex/unicodesymbols/031-thai_th_(euc-|gbk|jis|utf8-cjk).*
 
 # Package clashes when Japanese documents are compiled with non-TeX fonts,
 #
-# The textclass-loaded jsclasses/okumacro.sty needs format `pLaTeX2e'
-# (okumacro provides \ruby support).
 export/doc/ja/(Additional|LaTeXConfig|Math|UserGuide).*_systemF
 export/doc/ja/(Formula-numbering|Customization|EmbeddedObjects|Intro)_pdf4_systemF
-export/doc/ja/Tutorial_(dvi3|pdf5)_systemF
+
 # Test for command \pdfsave fails:
 # ! Package xypdf Error: pdfTeX version 1.40.0 or higher is needed for the xypdf
 export/examples/ja/Graphics_and_Insets/XY-Pic.*_systemF
-# Document class js*.cls requires platex <-> Xe/LuaTeX, fixed with "bxjs*.cls"
-
+#
+# Document class js*.cls requires platex <-> Xe/LuaTeX,
+# fixed with "bxjs*.cls"
 
 # ================================================
 Sublabel: lyxbugs
@@ -124,7 +123,7 @@ export/examples/Modules/Noweb_Listerrors_(pdf[245]).*
 #
 #export/export/latex/inputenc-.*_systemF # problem remains but test now ignored
 export/doc/(|de/|es/|fr/)Math.*systemF
-# a minimal example for Math.lyx is in 
+# a minimal example for Math.lyx is in
 #export/export/latex/lyxbugs/11522-systemfonts-Math-missingchars.*systemF
 #
 # Farsi: missing glyphs (em space and "English" quotes)
@@ -160,7 +159,7 @@ Sublabel: texissues
 # "Wontfix" if documents demonstrate correct use in the default output format.
 
 # Compilation error with Chech or Slovak text i a table cell.
-# All exports using babel fail (problem in Czech and Slovak Babel support, 
+# All exports using babel fail (problem in Czech and Slovak Babel support,
 # reported per mail to Petr Tesa\v{r}\'ik, 2016-09-06)
 # Without the Czech or Slovak text it compiles.
 # No problem with inserted German (or other foreign language) text.
@@ -212,7 +211,7 @@ export/doc/(sk|nb)/Intro_(dvi3|pdf5)_systemF
 # * sanskrit: ! Undefined control sequence.
 #             l.53 \newXeTeXintercharclass
 # * RTL-languages: ! Undefined control sequence.
-#             \setLR ->\@RTLfalse \luatexpardir 
+#             \setLR ->\@RTLfalse \luatexpardir
 export/export/latex/languages/supported-languages_polyglossia_(dvi3|pdf5)_systemF
 
 
@@ -249,7 +248,8 @@ export/export/latex/inputenc-xetex-utf8-expl3-bug_pdf4_texF
 # Arabic
 #
 # Larger Arabic documents currently have non-TeX fonts and XeTeX
-# as default output. To fix pdfTeX export:
+# as default output (examples/ar/Welcome_pdf4_texF works).
+# To fix pdfTeX export:
 # - set all non-Arab text parts to a different language (e.g. English)
 # - define alternatives for hyperref (e.g. with textorpdfstring)
 #   for correct handling of hyperref.
@@ -260,14 +260,18 @@ export/export/latex/inputenc-xetex-utf8-expl3-bug_pdf4_texF
 #      l.62 \tableofcontents
 #                           {}
 #      I'm broken. Please show this to someone who can fix can fix
-#
 # see discussion at https://www.mail-archive.com/search?l=mid&q=20161114035123.s5lt4ib4x4obtptp%40steph
 #
+# Arab chars in hyperlink name fail and missing characters
+# 8-bit TeX exports are ignored (\output_format xetex).
+export/doc/ar/*._pdf4_texF
+
 # Babel-Arabic loads "inputenc" which fails with LuaTeX
 export/.*/ar/.*_(dvi3|pdf5)_texF
 # no Arab charaters with luainputenc
 export/export/latex/languages/supported-languages_(dvi3|pdf5)_texF
 export/export/latex/languages/supported-languages_babel_auto-legacy_(dvi3|pdf5)_texF
+
 
 # Farsi
 # "invalid utf-8 sequence" with Babel-Farsi, LuaTeX, and TeX fonts.

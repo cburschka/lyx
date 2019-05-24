@@ -147,6 +147,11 @@ export/export/latex/inputenc-luatex-utf8_pdf5_texF
 # and expl3.sty (TL 17 works).
 export/export/latex/inputenc-xetex-utf8-expl3-bug_pdf4_texF
 
+# Error with LuaTeX for Japanese documents using graphicx.sty with TL17:
+#   ! Package pdftex.def Error: Option `pdftex' requires pdfTeX,
+#   (pdftex.def)                but pdfTeX features are missing.
+export/doc/ja/Tutorial_(dvi3|pdf5)_systemF
+
 # aastex: hard-coded version in class name:
 # 2018-05-12 aastex6.cls -> aastex62.cls
 export/examples/Articles/American_Astronomical_Society_.*
@@ -157,6 +162,9 @@ export/templates/Articles/American_Astronomical_Society_.*
 # PDF (luatex) and PDF (xetex) (compilation error or wrong fonts).
 # See also #9744 allow parallel configuration of TeX and non-TeX fonts.
 export/templates/Articles/Association_for_Computing_Machinery_pdf[45]_texF
+
+# Arabic Beamer example fails with TL17
+export/examples/ar/Presentations/Beamer_pdf4_.*
 
 
 Sublabel: wrong_output
