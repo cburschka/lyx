@@ -1326,12 +1326,10 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	   << "\n\\justification " << convert<string>(justification)
 	   << "\n\\use_refstyle " << use_refstyle
 	   << "\n\\use_minted " << use_minted
+	   << "\n\\use_lineno " << use_lineno
 	   << '\n';
 
-	if (use_lineno)
-		os << "\\use_lineno " << use_lineno << '\n';
-	if (!lineno_opts.empty())
-		 os << "\\lineno_options " << lineno_opts << '\n';
+	 os << "\\lineno_options " << lineno_opts << '\n';
 
 	if (isbackgroundcolor == true)
 		os << "\\backgroundcolor " << lyx::X11hexname(backgroundcolor) << '\n';
