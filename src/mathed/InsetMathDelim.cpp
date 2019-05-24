@@ -93,7 +93,7 @@ void InsetMathDelim::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy = mi.base.changeEnsureMath();
 	Dimension dim0;
-	cell(0).metrics(mi, dim0);
+	cell(0).metrics(mi, dim0, false);
 	Dimension t = theFontMetrics(mi.base.font).dimension('I');
 	int h0 = (t.asc + t.des) / 2;
 	int a0 = max(dim0.asc, t.asc)   - h0;
