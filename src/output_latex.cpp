@@ -1034,12 +1034,7 @@ void TeXOnePar(Buffer const & buf,
 				if (runparams.encoding->package() == Encoding::CJK
 				    && par_lang != openLanguageName(state)
 				    && !par_lang.empty()) {
-				    	string bc = use_polyglossia ?
-						    getPolyglossiaBegin(lang_begin_command, par_lang,
-						    			par_language->polyglossiaOpts(),
-						    			localswitch)
-						    : subst(lang_begin_command, "$$lang", par_lang);
-					os << bc
+					os << subst(lang_begin_command, "$$lang", par_lang)
 					   << lang_command_termination;
 					if (using_begin_end)
 						pushLanguageName(par_lang, localswitch);
