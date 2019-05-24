@@ -1607,6 +1607,11 @@ void InsetMathNest::lfunMouseRelease(Cursor & cur, FuncRequest & cmd)
 
 bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 {
+        // try auto-correction
+        if (lyxrc.autocorrection_math && cur.pos() != 0
+                  && math_autocorrect(cur, c))
+                return true;
+
 	//lyxerr << "interpret 2: '" << c << "'" << endl;
 	docstring save_selection;
 	if (c == '^' || c == '_')
@@ -1846,12 +1851,6 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 		cur.niceInsert(createInsetMath(docstring(1, c), buf));
 		return true;
 	}
-
-
-	// try auto-correction
-	if (lyxrc.autocorrection_math && cur.pos() != 0
-		  && math_autocorrect(cur, c))
-		return true;
 
 	// no special circumstances, so insert the character without any fuss
 	cur.insert(c);
