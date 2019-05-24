@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-05-23 18:04+0200\n"
-"PO-Revision-Date: 2019-05-23 16:12+0000\n"
+"POT-Creation-Date: 2019-05-24 11:46+0200\n"
+"PO-Revision-Date: 2019-05-24 09:53+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2982,20 +2982,24 @@ msgid "&Numbering"
 msgstr "Čís&lovanie"
 
 #: src/frontends/qt4/ui/NumberingUi.ui:99
-msgid "L&ines numbering"
+msgid "Add line numbers to the document"
+msgstr "Pridať očíslenie riadkov do dokumentu"
+
+#: src/frontends/qt4/ui/NumberingUi.ui:102
+msgid "L&ine numbering"
 msgstr "Čí&slovanie riadkov"
 
-#: src/frontends/qt4/ui/NumberingUi.ui:114
-msgid "Additional O&ptions:"
+#: src/frontends/qt4/ui/NumberingUi.ui:117
+msgid "Additional o&ptions:"
 msgstr "&Dodatočné možnosti:"
 
-#: src/frontends/qt4/ui/NumberingUi.ui:124
+#: src/frontends/qt4/ui/NumberingUi.ui:127
 msgid ""
-"lineno package options (e.g. right, modulo, switch, displaymath, "
-"mathlines,...)"
+"Line numbering (lineno package) options. Please refer to the lineno package "
+"manual for details."
 msgstr ""
-"voľby balíka lineno (napr. -right, modulo, switch, displaymath, "
-"mathlines,...)"
+"Voľby pre číslovanie riadkov (balík lineno). Pre detaily viď manuál balíka "
+"lineno."
 
 #: src/frontends/qt4/ui/OutputUi.ui:20
 msgid "Output Format"
