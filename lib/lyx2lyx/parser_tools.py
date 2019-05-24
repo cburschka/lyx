@@ -87,6 +87,9 @@ set_bool_value(lines, token, value[, start[, end]]):
 del_token(lines, token[, start[, end]]):
   Like find_token, but deletes the line if it finds one.
   Returns True if a line got deleted, otherwise False.
+  
+  Use get_* with the optional argument "delete=True", if you want to
+  get and delete a token.
 
 find_beginning_of(lines, i, start_token, end_token):
   Here, start_token and end_token are meant to be a matching

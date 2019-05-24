@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 566
+\lyxformat 575
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -9,7 +9,7 @@
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding auto
 \font_roman "IBMPlexSerif" "Century Schoolbook L"
 \font_sans "DejaVuSans" "DejaVu Sans"
@@ -55,6 +55,8 @@
 \justification true
 \use_refstyle 1
 \use_minted 0
+\use_lineno 1
+\lineno_options left
 \index Index
 \shortcut idx
 \color #008000
@@ -70,6 +72,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -175,5 +178,14 @@ leading to a corrupt file.
 \end_layout
 
 \end_deeper
+\begin_layout Description
+Lineno
+\begin_inset space ~
+\end_inset
+
+support: this file uses the native line numbering support introduced in
+ 2.4.
+\end_layout
+
 \end_body
 \end_document

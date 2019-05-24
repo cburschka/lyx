@@ -26,10 +26,10 @@ from datetime import (datetime, date, time)
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import (count_pars_in_inset, find_end_of_inset, find_end_of_layout,
-                          find_token, find_re, get_bool_value, get_containing_layout,
-                          get_option_value, get_value, get_quoted_value)
-#    del_token, del_value, del_complete_lines,
+from parser_tools import (count_pars_in_inset, del_token, find_end_of_inset,
+    find_end_of_layout, find_token, find_re, get_bool_value,
+    get_containing_layout, get_option_value, get_value, get_quoted_value)
+#    del_value, del_complete_lines,
 #    find_complete_lines, find_end_of,
 #    find_re, find_substring, find_token_backwards,
 #    get_containing_inset,
@@ -1694,14 +1694,38 @@ def revert_utf8_japanese(document):
     if lang == "japanese-cjk":
         document.set_parameter("inputencoding", "utf8-cjk")
 
+
 def revert_lineno(document):
-    " Remove lineno package use."
-    i = find_token(document.header, "\\use_lineno", 0)
-    if i != -1:
-        del document.header[i]
-    i = find_token(document.header, "\\lineno_options", 0)
-    if i != -1:
-        del document.header[i]
+    " Replace lineno setting with user-preamble code."
+
+    if not get_bool_value(document.header, "\\use_lineno", delete=True):
+        return
+    lineno_options = get_quoted_value(document.header, "\\lineno_options",
+                                      delete=True)
+    if lineno_options:
+        usepkg = "\\usepackage[%s]{lineno}"%lineno_options
+    else:
+        usepkg = "\\usepackage{lineno}"
+    add_to_preamble(document, [usepkg, "\\linenumbers"])
+
+def convert_lineno(document):
+    " Replace user-preamble code with native lineno support."
+    j = find_token(document.preamble, "\\linenumbers", 1)
+    if j == -1:
+        return
+    usepkg = re.match(r"\\usepackage(.*){lineno}", document.preamble[j-1])
+    if usepkg is None:
+        return
+    options = usepkg.group(1).strip("[]")
+    
+    del(document.preamble[j-1:j+1])
+    print (j, document.preamble[j-2])
+    del_token(document.preamble, "% Added by lyx2lyx", j-2, j-1)
+    
+    k = find_token(document.header, "\\index ")
+    document.header.insert(k, "\\use_lineno 1")
+    if options:
+        document.header.insert(k+1 or -1, '\\lineno_options %s'%options)
 
 
 ##
@@ -1740,7 +1764,7 @@ convert = [
            [572, [convert_notoFonts]],  # Added options thin, light, extralight for Noto
            [573, [convert_inputencoding_namechange]],
            [574, [convert_ruby_module, convert_utf8_japanese]],
-           [575, []],
+           [575, [convert_lineno]],
           ]
 
 revert =  [[574, [revert_lineno]],
