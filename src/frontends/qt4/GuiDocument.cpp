@@ -1253,7 +1253,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	numberingModule->tocTW->headerItem()->setText(1, qt_("Numbered"));
 	numberingModule->tocTW->headerItem()->setText(2, qt_("Appears in TOC"));
 	setSectionResizeMode(numberingModule->tocTW->header(), QHeaderView::ResizeToContents);
-	connect(numberingModule->linenoGB, SIGNAL(clicked()),
+	connect(numberingModule->linenoCB, SIGNAL(toggled(bool)),
+		this, SLOT(linenoToggled()));
+	connect(numberingModule->linenoCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(numberingModule->linenoLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
@@ -2302,7 +2304,6 @@ void GuiDocument::mathFontChanged(int)
 	updateFontOptions();
 }
 
-
 void GuiDocument::fontOsfToggled(bool state)
 {
 	if (fontModule->osFontsCB->isChecked())
@@ -3287,7 +3288,7 @@ void GuiDocument::applyView()
 		bp_.tocdepth = numberingModule->tocSL->value();
 		bp_.secnumdepth = numberingModule->depthSL->value();
 	}
-	bp_.use_lineno = numberingModule->linenoGB->isChecked();
+	bp_.use_lineno = numberingModule->linenoCB->isChecked();
 	bp_.lineno_opts = fromqstr(numberingModule->linenoLE->text());
 
 	// bullets
@@ -3813,7 +3814,8 @@ void GuiDocument::paramsToDialog()
 		numberingModule->tocTW->clear();
 	}
 
-	numberingModule->linenoGB->setChecked(bp_.use_lineno);
+	numberingModule->linenoCB->setChecked(bp_.use_lineno);
+	numberingModule->linenoLE->setEnabled(bp_.use_lineno);
 	numberingModule->linenoLE->setText(toqstr(bp_.lineno_opts));
 
 	// bullets
@@ -4941,6 +4943,13 @@ void GuiDocument::allPackages(int col)
 		rb->setChecked(true);
 	}
 }
+
+
+void GuiDocument::linenoToggled()
+{
+	numberingModule->linenoLE->setEnabled(numberingModule->linenoCB->isChecked());
+}
+
 
 
 Dialog * createGuiDocument(GuiView & lv) { return new GuiDocument(lv); }
