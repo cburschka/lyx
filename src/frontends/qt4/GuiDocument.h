@@ -161,7 +161,7 @@ private Q_SLOTS:
 	void moduleFilterPressed();
 	void moduleFilterChanged(const QString & text);
 	void resetModuleFilter();
-	void linenoToggled();
+	void linenoToggled(bool);
 private:
 	/// validate listings parameters and return an error message, if any
 	QString validateListingsParameters();

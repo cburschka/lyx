@@ -1254,7 +1254,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	numberingModule->tocTW->headerItem()->setText(2, qt_("Appears in TOC"));
 	setSectionResizeMode(numberingModule->tocTW->header(), QHeaderView::ResizeToContents);
 	connect(numberingModule->linenoCB, SIGNAL(toggled(bool)),
-		this, SLOT(linenoToggled()));
+		this, SLOT(linenoToggled(bool)));
 	connect(numberingModule->linenoCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(numberingModule->linenoLE, SIGNAL(textChanged(QString)),
@@ -3816,6 +3816,7 @@ void GuiDocument::paramsToDialog()
 
 	numberingModule->linenoCB->setChecked(bp_.use_lineno);
 	numberingModule->linenoLE->setEnabled(bp_.use_lineno);
+	numberingModule->linenoLA->setEnabled(bp_.use_lineno);
 	numberingModule->linenoLE->setText(toqstr(bp_.lineno_opts));
 
 	// bullets
@@ -4945,9 +4946,10 @@ void GuiDocument::allPackages(int col)
 }
 
 
-void GuiDocument::linenoToggled()
+void GuiDocument::linenoToggled(bool on)
 {
-	numberingModule->linenoLE->setEnabled(numberingModule->linenoCB->isChecked());
+	numberingModule->linenoLE->setEnabled(on);
+	numberingModule->linenoLA->setEnabled(on);
 }
 
 
