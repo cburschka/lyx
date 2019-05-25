@@ -959,10 +959,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 	langModule->languageCO->setModel(language_model);
 	langModule->languageCO->setModelColumn(0);
 
-	langModule->encodingCO->addItem(qt_("Unicode (utf8) [default]"), toqstr("utf8"));
+	langModule->encodingCO->addItem(qt_("Unicode (utf8)"), toqstr("utf8"));
 	langModule->encodingCO->addItem(qt_("Traditional (auto-selected)"),
 					toqstr("auto-legacy"));
-	langModule->encodingCO->addItem(qt_("ASCII"), toqstr("ascii"));
+	// langModule->encodingCO->addItem(qt_("ASCII"), toqstr("ascii"));
 	langModule->encodingCO->addItem(qt_("Custom"), toqstr("custom"));
 
 	QMap<QString,QString> encodingmap;
@@ -2190,7 +2190,8 @@ void GuiDocument::languageChanged(int i)
 	// some languages only work with Polyglossia
 	Language const * lang = lyx::languages.getLanguage(
 		fromqstr(langModule->languageCO->itemData(i).toString()));
-	if (lang->babel().empty() && !lang->polyglossia().empty()) {
+	if (lang->babel().empty() && !lang->polyglossia().empty()
+		&& lang->requires() != "CJK" && lang->requires() != "japanese") {
 			// If we force to switch fontspec on, store
 			// current state (#8717)
 			if (fontModule->osFontsCB->isEnabled())
@@ -4031,7 +4032,8 @@ void GuiDocument::paramsToDialog()
 		fromqstr(langModule->languageCO->itemData(
 			langModule->languageCO->currentIndex()).toString()));
 	bool const need_fontspec =
-		lang->babel().empty() && !lang->polyglossia().empty();
+		lang->babel().empty() && !lang->polyglossia().empty()
+		&& lang->requires() != "CJK" && lang->requires() != "japanese";
 	bool const os_fonts_available =
 		bp_.baseClass()->outputType() == lyx::LATEX
 		&& LaTeXFeatures::isAvailable("fontspec");

@@ -307,7 +307,7 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 	data.cjk_nested = false;
 	if (!bparams.useNonTeXFonts
 	    && (bparams.inputenc == "auto-legacy"
-		|| bparams.inputenc == "auto-legacy-plain")
+			|| bparams.inputenc == "auto-legacy-plain")
 	    && data.par_language->encoding()->package() == Encoding::CJK
 	    && state->open_encoding_ != CJK && pit->isMultiLingual(bparams)) {
 		if (prev_par_language->encoding()->package() == Encoding::CJK) {
@@ -967,7 +967,9 @@ void TeXOnePar(Buffer const & buf,
 					os << "\\L{";
 			}
 			// With CJK, the CJK tag has to be closed first (see below)
-			if ((runparams.encoding->package() != Encoding::CJK || runparams.for_search)
+			if ((runparams.encoding->package() != Encoding::CJK
+				 || bparams.useNonTeXFonts
+				 || runparams.for_search)
 			    && (par_lang != openLanguageName(state) || localswitch)
 			    && !par_lang.empty()) {
 				string bc = use_polyglossia ?
@@ -1202,7 +1204,9 @@ void TeXOnePar(Buffer const & buf,
 			os << '\n';
 
 		// when the paragraph uses CJK, the language has to be closed earlier
-		if ((font.language()->encoding()->package() != Encoding::CJK) || runparams_in.for_search) {
+		if ((font.language()->encoding()->package() != Encoding::CJK)
+			|| bparams.useNonTeXFonts
+			|| runparams_in.for_search) {
 			if (lang_end_command.empty()) {
 				// If this is a child, we should restore the
 				// master language after the last paragraph.
@@ -1294,11 +1298,11 @@ void TeXOnePar(Buffer const & buf,
 
 	// if this is a CJK-paragraph and the next isn't, close CJK
 	// also if the next paragraph is a multilingual environment (because of nesting)
-	if (nextpar
-		&& (state->open_encoding_ == CJK && bparams.encoding().iconvName() != "UTF-8"
-			&& bparams.encoding().package() != Encoding::CJK )
+	if (nextpar && state->open_encoding_ == CJK
+		&& bparams.encoding().iconvName() != "UTF-8"
+		&& bparams.encoding().package() != Encoding::CJK
 		&& (nextpar_language->encoding()->package() != Encoding::CJK
-		   || (nextpar->layout().isEnvironment() && nextpar->isMultiLingual(bparams)))
+			|| (nextpar->layout().isEnvironment() && nextpar->isMultiLingual(bparams)))
 		// inbetween environments, CJK has to be closed later (nesting!)
 		&& (!style.isEnvironment() || !nextpar->layout().isEnvironment())) {
 		os << "\\end{CJK}\n";
@@ -1572,6 +1576,7 @@ void latexParagraphs(Buffer const & buf,
 		finishEnvironment(os, runparams, data);
 	}
 
+	// FIXME: uncomment the content or remove this block
 	if (pit == runparams.par_end) {
 			// Make sure that the last paragraph is
 			// correctly terminated (because TeXOnePar does

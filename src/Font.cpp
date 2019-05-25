@@ -526,7 +526,8 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 
 	if (closeLanguage
 	    && language() != base.language() && language() != next.language()
-	    && language()->encoding()->package() != Encoding::CJK) {
+	    && (language()->encoding()->package() != Encoding::CJK
+			|| bparams.useNonTeXFonts)) {
 		os << '}';
 		++count;
 		bool const using_begin_end =

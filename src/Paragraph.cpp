@@ -2542,23 +2542,17 @@ void Paragraph::latex(BufferParams const & bparams,
 			open_font = false;
 		}
 
-		string const running_lang = runparams.use_polyglossia ?
-			running_font.language()->polyglossia() : running_font.language()->babel();
-		// close babel's font environment before opening CJK.
-		string const lang_end_command = runparams.use_polyglossia ?
-			"\\end{$$lang}" : lyxrc.language_command_end;
-		bool const using_begin_end = runparams.use_polyglossia ||
-						!lang_end_command.empty();
-		if (!running_lang.empty() &&
-		    (!using_begin_end || running_lang == openLanguageName()) &&
-		    current_font.language()->encoding()->package() == Encoding::CJK) {
-				string end_tag = subst(lang_end_command,
-							"$$lang",
-							running_lang);
-				os << from_ascii(end_tag);
-				column += end_tag.length();
-				if (using_begin_end)
-					popLanguageName();
+		// if necessary, close language environment before opening CJK
+		string const running_lang = running_font.language()->babel();
+		string const lang_end_command = lyxrc.language_command_end;
+		if (!lang_end_command.empty() && !bparams.useNonTeXFonts
+			&& !running_lang.empty()
+			&& running_lang == openLanguageName()
+			&& current_font.language()->encoding()->package() == Encoding::CJK) {
+			string end_tag = subst(lang_end_command, "$$lang", running_lang);
+			os << from_ascii(end_tag);
+			column += end_tag.length();
+			popLanguageName();
 		}
 
 		// Switch file encoding if necessary (and allowed)
@@ -2706,7 +2700,7 @@ void Paragraph::latex(BufferParams const & bparams,
 				}
 			}
 			try {
-				d->latexSpecialChar(os, bparams, rp, running_font, 
+				d->latexSpecialChar(os, bparams, rp, running_font,
 									alien_script, style, i, end_pos, column);
 			} catch (EncodingException & e) {
 				if (runparams.dryrun) {
@@ -2740,7 +2734,7 @@ void Paragraph::latex(BufferParams const & bparams,
 	if (!alien_script.empty()) {
 		os << "}";
 		alien_script.clear();
-	}	
+	}
 
 	// If we have an open font definition, we have to close it
 	if (open_font) {
