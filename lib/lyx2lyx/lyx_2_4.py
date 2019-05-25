@@ -1698,34 +1698,31 @@ def revert_utf8_japanese(document):
 def revert_lineno(document):
     " Replace lineno setting with user-preamble code."
 
+    options = get_quoted_value(document.header, "\\lineno_options",
+                               delete=True)
     if not get_bool_value(document.header, "\\use_lineno", delete=True):
         return
-    lineno_options = get_quoted_value(document.header, "\\lineno_options",
-                                      delete=True)
-    if lineno_options:
-        usepkg = "\\usepackage[%s]{lineno}"%lineno_options
-    else:
-        usepkg = "\\usepackage{lineno}"
-    add_to_preamble(document, [usepkg, "\\linenumbers"])
+    if options:
+        options = "[" + options + "]"
+    add_to_preamble(document, ["\\usepackage%s{lineno}" % options,
+                               "\\linenumbers"])
 
 def convert_lineno(document):
     " Replace user-preamble code with native lineno support."
+    use_lineno = 0
+    options = ""
     j = find_token(document.preamble, "\\linenumbers", 1)
-    if j == -1:
-        return
-    usepkg = re.match(r"\\usepackage(.*){lineno}", document.preamble[j-1])
-    if usepkg is None:
-        return
-    options = usepkg.group(1).strip("[]")
-    
-    del(document.preamble[j-1:j+1])
-    print (j, document.preamble[j-2])
-    del_token(document.preamble, "% Added by lyx2lyx", j-2, j-1)
-    
+    if j > -1:
+        usepkg = re.match(r"\\usepackage(.*){lineno}", document.preamble[j-1])
+        if usepkg:
+            use_lineno = 1
+            options = usepkg.group(1).strip("[]")
+            del(document.preamble[j-1:j+1])
+            del_token(document.preamble, "% Added by lyx2lyx", j-2, j-1)
+
     k = find_token(document.header, "\\index ")
-    document.header.insert(k, "\\use_lineno 1")
-    if options:
-        document.header.insert(k+1 or -1, '\\lineno_options %s'%options)
+    document.header[k:k] = ["\\use_lineno %d" % use_lineno,
+                            "\\lineno_options %s" % options]
 
 
 ##
