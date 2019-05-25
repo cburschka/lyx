@@ -60,8 +60,8 @@ logicalmkup
 \inputencoding utf8
 \fontencoding auto
 \font_roman "lmodern" "default"
-\font_sans "lmss" "default"
-\font_typewriter "lmtt" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -72,10 +72,12 @@ logicalmkup
 \use_microtype false
 \use_dash_ligatures false
 \graphics default
-\default_output_format pdf2
+\default_output_format default
 \output_sync 0
 \bibtex_command bibtex
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -115,6 +117,8 @@ logicalmkup
 \justification true
 \use_refstyle 1
 \use_minted 0
+\use_lineno 0
+\lineno_options 
 \notefontcolor #0000ff
 \branch Question
 \selected 1
@@ -147,6 +151,7 @@ logicalmkup
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -1402925745 "Günter Milde"
 \author -712698321 "Jürgen Spitzmüller"
 \author 5863208 "ab"
 \end_header
@@ -17913,7 +17918,13 @@ ligature dashes
 
  (-- and ---).
  \SpecialChar LaTeX
- allows line breaks after hyphens, en-dashes and em-dashes.
+ allows line breaks after hyphens
+\change_deleted -1402925745 1558782973
+,
+\change_inserted -1402925745 1558782983
+ and these
+\change_unchanged
+ en-dashes and em-dashes.
 \end_layout
 
 \begin_layout Enumerate
@@ -17933,7 +17944,17 @@ The Elements of Typographic Style
 \end_layout
 
 \begin_layout Enumerate
-Unwanted line breaks after dashes can be prevented by wrapping in a makebox
+Unwanted line breaks 
+\series bold
+after
+\series default
+ dashes 
+\change_inserted -1402925745 1558782702
+must
+\change_deleted -1402925745 1558782715
+can
+\change_unchanged
+ be prevented by wrapping in a makebox
 \begin_inset Foot
 status collapsed
 
@@ -17962,8 +17983,33 @@ Objects
 nobreakdash
 \series default
  in \SpecialChar TeX
- code.
- Examples:
+ code
+\change_inserted -1402925745 1558782753
+, a protected space does not suffice
+\change_unchanged
+.
+ Examples
+\change_inserted -1402925745 1558782332
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -1402925745 1558782431
+It is generally recommended to set the correct language for text parts not
+ in the document language.
+ We don't do this here to prevent a dependency on LaTeX support for French
+ and Spanish.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+:
 \end_layout
 
 \begin_deeper
@@ -18001,8 +18047,6 @@ status open
 \end_layout
 
 \begin_layout Itemize
-
-\lang french
 Les incises 
 \begin_inset Box Frameless
 position "t"
@@ -18023,8 +18067,6 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-
-\lang french
 –
 \begin_inset space ~
 \end_inset
@@ -18042,8 +18084,6 @@ même
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 En una frase 
 \begin_inset ERT
 status collapsed
@@ -18096,8 +18136,6 @@ Line breaks are still allowed after spaced dashes.
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang french
 Les incises –
 \begin_inset space ~
 \end_inset
