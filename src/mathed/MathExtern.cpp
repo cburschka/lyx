@@ -1431,7 +1431,7 @@ void writeString(docstring const & s, WriteStream & os)
 		docstring cmd;
 		for (char_type c : s) {
 			try {
-				Encodings::latexMathChar(c, false, os.encoding(), cmd, space);
+				Encodings::latexMathChar(c, true, os.encoding(), cmd, space);
 				os << cmd;
 				os.pendingSpace(space);
 			} catch (EncodingException const & e) {
