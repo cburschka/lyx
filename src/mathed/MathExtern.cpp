@@ -1461,18 +1461,14 @@ void writeString(docstring const & s, WriteStream & os)
 		return;
 	}
 
-	docstring::const_iterator cit = s.begin();
-	docstring::const_iterator end = s.end();
-
 	// We may already be inside an \ensuremath command.
 	bool in_forced_mode = os.pendingBrace();
 
 	// We will take care of matching braces.
 	os.pendingBrace(false);
 
-	while (cit != end) {
+	for (char_type const c : s) {
 		bool mathmode = in_forced_mode ? os.textMode() : !os.textMode();
-		char_type const c = *cit;
 		docstring command(1, c);
 		try {
 			bool termination = false;
@@ -1535,7 +1531,6 @@ void writeString(docstring const & s, WriteStream & os)
 				throw(e);
 			}
 		}
-		++cit;
 	}
 
 	if (in_forced_mode && os.textMode()) {
