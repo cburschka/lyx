@@ -1421,8 +1421,43 @@ void write(MathData const & dat, WriteStream & wi)
 
 void writeString(docstring const & s, WriteStream & os)
 {
-	if (!os.latex() || os.lockedMode()) {
+	if (!os.latex()) {
 		os << (os.asciiOnly() ? escape(s) : s);
+		return;
+	}
+
+	if (os.lockedMode()) {
+		bool space;
+		docstring cmd;
+		for (char_type c : s) {
+			try {
+				Encodings::latexMathChar(c, false, os.encoding(), cmd, space);
+				os << cmd;
+				os.pendingSpace(space);
+			} catch (EncodingException const & e) {
+				switch (os.output()) {
+				case WriteStream::wsDryrun: {
+					os << "<" << _("LyX Warning: ")
+					   << _("uncodable character") << " '";
+					os << docstring(1, e.failed_char);
+					os << "'>";
+					break;
+				}
+				case WriteStream::wsPreview: {
+					// indicate the encoding error by a boxed '?'
+					os << "{\\fboxsep=1pt\\fbox{?}}";
+					LYXERR0("Uncodable character" << " '"
+						<< docstring(1, e.failed_char)
+						<< "'");
+					break;
+				}
+				case WriteStream::wsDefault:
+				default:
+					// throw again
+					throw(e);
+				}
+			}
+		}
 		return;
 	}
 
