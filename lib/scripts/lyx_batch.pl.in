@@ -35,6 +35,16 @@ my $comparepdf = "@COMPAREPDF_EXECUTABLE@";
 # precondition: system commands to be executed prior to the test
 # command_line: List of parameters to be used on the lyx-command-line
 my %Tests = (
+  save_as_test => {
+    src_files => ["save_as.lyx"],
+    check => [["save_as_saved.lyx"],
+              ["save_as_saved2.lyx"]],
+    commands => ["file-open beamer_test.lyx",
+                 "buffer-write-as save_as_saved.lyx",
+                 "buffer-reload dump",
+                 "buffer-write-as save_as_saved2.lyx",
+                 "lyx-quit"],
+  },
   beamer_test => {
     src_files => ["beamer_test.lyx"],
     check => [["beamer_test.tex", "beamer_test.tex.orig"]],
@@ -58,7 +68,7 @@ my %Tests = (
   "ams-import" => {
     src_files => ["ams-import.tex"],
     check => [["ams-import.pdf", "ams-import.pdf", $comparepdf],
-	      ["ams-import.lyx"]],
+              ["ams-import.lyx"]],
     commands => ["buffer-new",
                  "buffer-import latex ams-import.tex",
                  "buffer-write",
