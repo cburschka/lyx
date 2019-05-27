@@ -4980,6 +4980,10 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 	setChangesPresent(false);
 
 	Buffer & cbuf = const_cast<Buffer &>(*this);
+	// if we are reloading, then we could have a dangling TOC,
+	// in effect. so we need to go ahead and reset, even though
+	// we will do so again when we rebuild the TOC later.
+	cbuf.tocBackend().reset();
 
 	// do the real work
 	ParIterator parit = cbuf.par_iterator_begin();

@@ -113,6 +113,8 @@ public:
 	void setBuffer(Buffer const * buffer) { buffer_ = buffer; }
 	///
 	void update(bool output_active, UpdateType utype);
+	///
+	void reset();
 	/// \return true if the item was updated.
 	bool updateItem(DocIterator const & pit);
 	///

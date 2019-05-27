@@ -204,17 +204,24 @@ bool TocBackend::updateItem(DocIterator const & dit_in)
 }
 
 
-void TocBackend::update(bool output_active, UpdateType utype)
+void TocBackend::reset()
 {
-	for (TocList::iterator it = tocs_.begin(); it != tocs_.end(); ++it)
-		it->second->clear();
+	for (auto const & t: tocs_)
+		t.second->clear();
 	tocs_.clear();
 	builders_.clear();
 	resetOutlinerNames();
-	if (!buffer_->isInternal()) {
-		DocIterator dit;
-		buffer_->inset().addToToc(dit, output_active, utype, *this);
-	}
+}
+
+
+void TocBackend::update(bool output_active, UpdateType utype)
+{
+	reset();
+	if (buffer_->isInternal())
+		return;
+
+	DocIterator dit;
+	buffer_->inset().addToToc(dit, output_active, utype, *this);
 }
 
 
