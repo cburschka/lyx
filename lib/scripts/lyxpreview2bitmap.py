@@ -373,6 +373,7 @@ def main(argv):
     dir, latex_file = os.path.split(input_path)
 
     # Echo the settings
+    progress("Running Python %s" % str(sys.version_info[:3]))
     progress("Starting %s..." % script_name)
     progress("Output format: %s" % output_format)
     progress("Foreground color: %s" % fg_color)
@@ -393,6 +394,11 @@ def main(argv):
 
     fg_color_dvipng = make_texcolor(fg_color, False)
     bg_color_dvipng = make_texcolor(bg_color, False)
+
+    # For python > 2 convert bytes to string
+    if not PY2:
+        fg_color_dvipng = fg_color_dvipng.decode('ascii')
+        bg_color_dvipng = bg_color_dvipng.decode('ascii')
 
     # External programs used by the script.
     latex = find_exe_or_terminate(latex or latex_commands)
