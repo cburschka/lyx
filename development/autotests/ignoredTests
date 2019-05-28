@@ -15,10 +15,6 @@ Sublabel: problematic
 export/examples/Modules/Noweb_lyx16
 export/examples/Modules/Noweb2LyX_lyx16
 
-# Tests created for lyx2lyx-tests only
-!export/export/lyx2lyx/lyx_.*_test_lyx[12][1236]
-.*/export/lyx2lyx/lyx_.*_test.*
-
 # Ignore MergedManuals_xhtml because the test is very time-consuming
 # and the underlying subdocuments are already tested
 # Ignore MergedManuals_lyx2[2-9] too
@@ -109,7 +105,7 @@ export/examples/ja/Modules/Sweave.*
 # CJK fails (sometimes) with Xe/LuaTeX and 8-bit fonts:
 #####
 export/examples/ja/Multilingual_Typesetting_.*CJK.(dvi3|pdf5)_texF
-export/.*/zh_CN/.*(dvi3|pdf[45])_texF
+export/.*/(ko|zh_CN)/.*(dvi3|pdf[45])_texF
 export/export/latex/CJK/zh_CN-toc_*.(dvi3|pdf[45])_texF
 
 
@@ -187,9 +183,16 @@ export/export/latex/lyxbugs/6197-polish-amssymb_pdf5_systemF
 # don't test with TeX fonts:
 export/export/latex/languages/supported-languages_babel_non-tex_.*(dvi|pdf.?|texF)
 export/export/latex/languages/supported-languages_polyglossia_.*(dvi|pdf.?|texF)
+export/export/latex/languages/supported-languages_luatex_.*(dvi|pdf.?|texF)
 export/export/latex/lyxbugs-resolved/9633-.*(dvi|pdf.?|texF)
 export/export/latex/lyxbugs/11522-systemfonts-Math-missingchars_pdf5_texF
 export/export/latex/lyxbugs/wrong_output_3059-rtl-tables-xetex_pdf4_texF
+
+# lyx2lyx
+# dedicated lyx2lyx tests
+!export/export/lyx2lyx/.*lyx..
+export/export/lyx2lyx/.*
+
 
 # HTML
 # don't check loading, lyx2lyx, or export to other LyX versions or DVI/PDF

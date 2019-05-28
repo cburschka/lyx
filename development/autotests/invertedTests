@@ -77,6 +77,13 @@ export/examples/ja/Graphics_and_Insets/XY-Pic.*_systemF
 # Document class js*.cls requires platex <-> Xe/LuaTeX,
 # fixed with "bxjs*.cls"
 
+# lyx2lyx: revert_language() compilation errors (cf. #9633)
+# ! LaTeX Error: \begin{otherlanguage} on input line 36 ended by \end{quote}.
+# with friulan, occitan, and piedmontese also:
+#   ! LaTeX Error: Can be used only in preamble.
+#   l.42 \AtEndPreamble  
+export/export/lyx2lyx/revert-languages-.*_lyx(16|2[012])
+
 # ================================================
 Sublabel: lyxbugs
 # LyX bugs with a Trac number.
@@ -214,6 +221,10 @@ export/doc/(sk|nb)/Intro_(dvi3|pdf5)_systemF
 #             \setLR ->\@RTLfalse \luatexpardir
 export/export/latex/languages/supported-languages_polyglossia_(dvi3|pdf5)_systemF
 
+# Systemcall: 'lualatex "supported-languages.tex"' finished with exit code 1
+# but no error in log and PDF is fine
+export/export/latex/languages/supported-languages_luatex_(dvi3|pdf5)_systemF
+
 
 # Some packages fail with XeTeX/LuaTeX
 # Reported upstream (https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg184435.html)
@@ -244,6 +255,9 @@ export/templates/Presentations/Slides_.*_systemF
 # (TL 17 works).
 export/export/latex/inputenc-xetex-utf8-expl3-bug_pdf4_texF
 
+# Korean with LuaTeX:
+# Language korean not found in language.dat.lua
+export/examples/ko/Welcome_(dvi3|pdf5)_systemF
 
 # Arabic
 #
