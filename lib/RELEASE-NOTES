@@ -5,7 +5,14 @@
 
 * It is now possible to cancel background export processes. A menu entry
   to do so will appear on the Document menu when such a process is underway.
-  The LFUN for this is export-cancel.
+  The LFUN for this is export-cancel. One can also click on the 'spinner'
+  to cancel export.
+
+* The items on the Edit menu have been reordered, and many of the shortcuts
+  have been changed so that they are more intuitive in the case of often
+  used items. We understand that this may frustrate some users and apologize,
+  while noting that menu shortcuts can always be customized by copying the
+  stdmenus.inc file to the user directory and editing it.
 
 
 !!Documents compilation process and images conversion
