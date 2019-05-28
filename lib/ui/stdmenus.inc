@@ -558,6 +558,7 @@ Menuset
 #
 
 	Menu "document"
+		OptItem "Cancel Background Process|P" "export-cancel"
 		Submenu "Change Tracking|C" "document_change"
 		OptItem "Build Program|B" "build-program"
 		Item "LaTeX Log|L" "dialog-show latexlog"
@@ -567,7 +568,6 @@ Menuset
 		UpdateFormats
 		OptItem "View Master Document|M" "master-buffer-view"
 		OptItem "Update Master Document|a" "master-buffer-update"
-		OptItem "Cancel Background Process|P" "export-cancel"
 		Separator
 		Item "Compressed|o" "buffer-toggle-compression"
 		Item "Disable Editing|E" "buffer-toggle-read-only"
