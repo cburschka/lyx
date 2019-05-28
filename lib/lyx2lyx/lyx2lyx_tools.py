@@ -84,13 +84,13 @@ insert_document_option(document, option):
 remove_document_option(document, option):
   Remove _option_ as a document option.
 
-revert_language(document, lyxname, babelname, polyglossianame):
+revert_language(document, lyxname, babelname="", polyglossianame=""):
   Reverts native language support to ERT
   If babelname or polyglossianame is empty, it is assumed
   this language package is not supported for the given language.
 '''
 
-import re
+import re, sys
 from parser_tools import find_token, find_end_of_inset, get_containing_layout, get_value, get_bool_value
 from unicode_symbols import unicode_reps
 
@@ -145,24 +145,38 @@ def insert_to_preamble(document, text, index = 0):
 # Created from the reversed list to keep the first of alternative definitions.
 licr_table = dict((ord(ch), cmd) for cmd, ch in unicode_reps[::-1])
 
-def put_cmd_in_ert(cmd):
+def put_cmd_in_ert(cmd, is_open=False, as_paragraph=False):
     """
     Return ERT inset wrapping `cmd` as a list of strings.
 
     `cmd` can be a string or list of lines. Non-ASCII characters are converted
-    to the respective LICR macros if defined in unicodesymbols.
+    to the respective LICR macros if defined in unicodesymbols,
+    `is_open` is a boolean setting the inset status to "open",
+    `as_paragraph` wraps the ERT inset in a Standard paragraph.
     """
-    ret = ["\\begin_inset ERT", "status collapsed", "", "\\begin_layout Plain Layout", ""]
-    # It will be faster to work with a single string internally.
+    
+    status = {False:"collapsed", True:"open"}
+    ert_inset = ["\\begin_inset ERT", "status %s"%status[is_open], "",
+                 "\\begin_layout Plain Layout", "",
+                 # content here ([5:5])
+                 "\\end_layout", "", "\\end_inset"]
+
+    paragraph = ["\\begin_layout Standard", 
+                 # content here ([1:1])
+                 "", "", "\\end_layout", ""]
+    # ensure cmd is an unicode instance and make it "LyX safe".
     if isinstance(cmd, list):
         cmd = u"\n".join(cmd)
-    else:
-        cmd = u"%s" % cmd # ensure it is an unicode instance
+    elif sys.version_info[0] == 2 and isinstance(cmd, str):
+        cmd = cmd.decode('utf8')
     cmd = cmd.translate(licr_table)
     cmd = cmd.replace("\\", "\n\\backslash\n")
-    ret += cmd.splitlines()
-    ret += ["\\end_layout", "", "\\end_inset"]
-    return ret
+    
+    ert_inset[5:5] = cmd.splitlines()
+    if not as_paragraph:
+        return ert_inset
+    paragraph[1:1] = ert_inset
+    return paragraph
 
 
 def get_ert(lines, i, verbatim = False):
@@ -620,11 +634,10 @@ def is_document_option(document, option):
 
     return True
 
-
-def revert_language(document, lyxname, babelname, polyglossianame):
+def revert_language(document, lyxname, babelname="", polyglossianame=""):
     " Revert native language support "
 
-    # Are we using polyglossia?
+    # Does the document use polyglossia?
     use_polyglossia = False
     if get_bool_value(document.header, "\\use_non_tex_fonts"):
         i = find_token(document.header, "\\language_package")
@@ -652,18 +665,10 @@ def revert_language(document, lyxname, babelname, polyglossianame):
         i = find_token(document.header, "\\language %s" % lyxname, 0)
         if i != -1:
             document.header[i] = "\\language english"
-        j = find_token(document.header, "\\language_package default", 0)
-        if j != -1:
-            document.header[j] = "\\language_package default"
         if with_polyglossia:
             add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{%s}}" % polyglossianame])
-            document.body[2 : 2] = ["\\begin_layout Standard",
-                                    "\\begin_inset ERT", "status open", "",
-                                    "\\begin_layout Plain Layout", "", "",
-                                    "\\backslash",
-                                    "resetdefaultlanguage{%s}" % polyglossianame,
-                                    "\\end_layout", "", "\\end_inset", "", "",
-                                    "\\end_layout", ""]
+            document.body[2 : 2] = put_cmd_in_ert("\\resetdefaultlanguage{%s}"%polyglossianame,
+                                                  is_open=True, as_paragraph=True)
 
     # Now secondary languages
     i = 0
@@ -675,87 +680,51 @@ def revert_language(document, lyxname, babelname, polyglossianame):
             secondary = True
             endlang = get_containing_layout(document.body, i)[2]
             langswitch = find_token(document.body, '\\lang', i + 1, endlang)
-            startlayout = "\\begin_layout Standard"
-            endlayout = "\\end_layout"
+            as_paragraph = True
             if langswitch != -1:
                 endlang = langswitch
-                startlayout = ""
-                endlayout = ""
+                as_paragraph = False
             if with_polyglossia:
-                add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{%s}}" % polyglossianame])     
-                document.body[endlang : endlang] = [startlayout,
-                                        "\\begin_inset ERT", "status open", "",
-                                        "\\begin_layout Plain Layout", "", "",
-                                        "\\backslash",
-                                        "end{%s}" % polyglossianame,
-                                        "\\end_layout", "", "\\end_inset", "", "",
-                                        endlayout, ""]
+                add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{%s}}" % polyglossianame])
+                document.body[endlang:endlang] = put_cmd_in_ert("\\end{%s}"%polyglossianame,
+                                                                is_open=True,
+                                                                as_paragraph=as_paragraph)
             elif with_babel:
-                document.body[endlang : endlang] = [startlayout,
-                                        "\\begin_inset ERT", "status open", "",
-                                        "\\begin_layout Plain Layout", "", "",
-                                        "\\backslash",
-                                        "end{otherlanguage}",
-                                        "\\end_layout", "", "\\end_inset", "", "",
-                                        endlayout, ""]
+                document.body[endlang:endlang] = put_cmd_in_ert("\\end{otherlanguage}",
+                                                                is_open=True,
+                                                                as_paragraph=as_paragraph)
             del document.body[i]
             if with_polyglossia:
-                document.body[i : i] = ["\\begin_inset ERT", "status open", "",
-                                        "\\begin_layout Plain Layout", "", "",
-                                        "\\backslash",
-                                        "begin{%s}" % polyglossianame,
-                                        "\\end_layout", "", "\\end_inset", "", "",
-                                        ""]
+                document.body[i:i] = put_cmd_in_ert("\\begin{%s}"%polyglossianame,
+                                                    is_open=True)
             elif with_babel:
-                document.body[i : i] = ["\\begin_inset ERT", "status open", "",
-                                        "\\begin_layout Plain Layout", "", "",
-                                        "\\backslash",
-                                        "begin{otherlanguage}{%s}" % babelname,
-                                        "\\end_layout", "", "\\end_inset", "", "",
-                                        ""]
+                document.body[i:i] = put_cmd_in_ert("\\begin{otherlanguage}{%s}" % babelname,
+                                                    is_open=True)
         elif primary and document.body[i].startswith('\\lang english'):
             # Since we switched the main language manually, English parts need to be marked
             endlang = get_containing_layout(document.body, i)[2]
             langswitch = find_token(document.body, '\\lang', i + 1, endlang)
-            startlayout = "\\begin_layout Standard"
-            endlayout = "\\end_layout"
+            as_paragraph = True
             if langswitch != -1:
                 endlang = langswitch
-                startlayout = ""
-                endlayout = ""
+                as_paragraph = False
             if with_polyglossia:
                 parent = get_containing_layout(document.body, i)
-                document.body[endlang : endlang] = [startlayout,
-                                        "\\begin_inset ERT", "status open", "",
-                                        "\\begin_layout Plain Layout", "", "",
-                                        "\\backslash",
-                                        "end{english}",
-                                        "\\end_layout", "", "\\end_inset", "", "",
-                                        endlayout, ""]
+                document.body[endlang:endlang] = put_cmd_in_ert("\\end{english}",
+                                                                is_open=True,
+                                                                as_paragraph=as_paragraph)
             elif with_babel:
                 parent = get_containing_layout(document.body, i)
-                document.body[endlang : endlang] = [startlayout,
-                                        "\\begin_inset ERT", "status open", "",
-                                        "\\begin_layout Plain Layout", "", "",
-                                        "\\backslash",
-                                        "end{otherlanguage}",
-                                        "\\end_layout", "", "\\end_inset", "", "",
-                                        endlayout, ""]
+                document.body[endlang:endlang] = put_cmd_in_ert("\\end{otherlanguage}",
+                                                                is_open=True,
+                                                                as_paragraph=as_paragraph)
             del document.body[i]
             if with_polyglossia:
-                document.body[i : i] = ["\\begin_inset ERT", "status open", "",
-                                        "\\begin_layout Plain Layout", "", "",
-                                        "\\backslash",
-                                        "begin{english}",
-                                        "\\end_layout", "", "\\end_inset", "", "",
-                                        ""]
+                document.body[i:i] = put_cmd_in_ert("\\begin{english}",
+                                                    is_open=True)
             elif with_babel:
-                document.body[i : i] = ["\\begin_inset ERT", "status open", "",
-                                        "\\begin_layout Plain Layout", "", "",
-                                        "\\backslash",
-                                        "begin{otherlanguage}{english}",
-                                        "\\end_layout", "", "\\end_inset", "", "",
-                                        ""]
+                document.body[i:i] = put_cmd_in_ert("\\begin{otherlanguage}{english}",
+                                                    is_open=True)
         else:
             i += 1
 
@@ -765,11 +734,5 @@ def revert_language(document, lyxname, babelname, polyglossianame):
         if secondary and document.body[10] != "selectlanguage{%s}" % orig_doc_language:
             # Since the user options are always placed after the babel options,
             # we need to reset the main language
-            document.body[2 : 2] = ["\\begin_layout Standard",
-                                    "\\begin_inset ERT", "status open", "",
-                                    "\\begin_layout Plain Layout", "", "",
-                                    "\\backslash",
-                                    "selectlanguage{%s}" % orig_doc_language,
-                                    "\\end_layout", "", "\\end_inset", "", "",
-                                    "\\end_layout", ""]
-
+            document.body[2:2] = put_cmd_in_ert("\\selectlanguage{%s}" % orig_doc_language,
+                                                is_open=True, as_paragraph=True)

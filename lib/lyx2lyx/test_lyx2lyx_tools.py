@@ -40,8 +40,32 @@ class TestParserTools(unittest.TestCase):
                 u'\\end_layout',
                 u'',
                 u'\\end_inset']
-        self.assertEqual(put_cmd_in_ert(u"\\texttt{Grüße}"), ert)
+        ert_open = ert[:]
+        ert_open[1] = u'status open'
+        ert_paragraph = ["\\begin_layout Standard",
+                         u'\\begin_inset ERT',
+                         u'status collapsed',
+                         u'',
+                         u'\\begin_layout Plain Layout',
+                         u'',
+                         u'',
+                         u'\\backslash',
+                         u'texttt{Gr',
+                         u'\\backslash',
+                         u'"{u}',
+                         u'\\backslash',
+                         u'ss{}e}',
+                         u'\\end_layout',
+                         u'',
+                         u'\\end_inset',
+                         u'',
+                         u'',
+                         u'\\end_layout',
+                         u'']
+        self.assertEqual(put_cmd_in_ert("\\texttt{Grüße}"), ert)
         self.assertEqual(put_cmd_in_ert([u"\\texttt{Grüße}"]), ert)
+        self.assertEqual(put_cmd_in_ert(u"\\texttt{Grüße}", is_open=True), ert_open)
+        self.assertEqual(put_cmd_in_ert(u"\\texttt{Grüße}", as_paragraph=True), ert_paragraph)
 
     def test_latex_length(self):
         self.assertEqual(latex_length("-30.5col%"), (True, "-0.305\\columnwidth"))
