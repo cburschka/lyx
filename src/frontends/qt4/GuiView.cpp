@@ -19,6 +19,7 @@
 #include "FileDialog.h"
 #include "FontLoader.h"
 #include "GuiApplication.h"
+#include "GuiClickableLabel.h"
 #include "GuiCommandBuffer.h"
 #include "GuiCompleter.h"
 #include "GuiKeySymbol.h"
@@ -610,7 +611,7 @@ GuiView::GuiView(int id)
 	setAcceptDrops(true);
 
 	// add busy indicator to statusbar
-	QLabel * busylabel = new QLabel(statusBar());
+	GuiClickableLabel * busylabel = new GuiClickableLabel(statusBar());
 	statusBar()->addPermanentWidget(busylabel);
 	search_mode mode = theGuiApp()->imageSearchMode();
 	QString fn = toqstr(lyx::libFileSearch("images", "busy", "gif", mode).absFileName());
@@ -623,6 +624,7 @@ GuiView::GuiView(int id)
 		busylabel, SLOT(show()));
 	connect(&d.processing_thread_watcher_, SIGNAL(finished()),
 		busylabel, SLOT(hide()));
+	connect(busylabel, SIGNAL(clicked()), this, SLOT(checkCancelBackground()));
 
 	QFontMetrics const fm(statusBar()->fontMetrics());
 	int const iconheight = max(int(d.normalIconSize), fm.height());
@@ -710,6 +712,18 @@ void GuiView::disableShellEscape()
 	theSession().shellescapeFiles().remove(bv->buffer().absFileName());
 	bv->buffer().params().shell_escape = false;
 	bv->processUpdateFlags(Update::Force);
+}
+
+
+void GuiView::checkCancelBackground()
+{
+	docstring const ttl = _("Cancel Export?");
+	docstring const msg = _("Do you want to cancel the background export process?");
+	int const ret =
+		Alert::prompt(ttl, msg, 1, 1,
+			_("&Cancel export"), _("Co&ntinue"));
+	if (ret == 0)
+		Systemcall::killscript();
 }
 
 

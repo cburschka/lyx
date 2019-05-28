@@ -80,6 +80,7 @@ SOURCEFILES = \
 	GuiChanges.cpp \
 	GuiCharacter.cpp \
 	GuiCitation.cpp \
+	GuiClickableLabel.cpp \
 	GuiClipboard.cpp \
 	GuiCommandBuffer.cpp \
 	GuiCommandEdit.cpp \
@@ -197,6 +198,7 @@ MOCHEADER = \
 	GuiChanges.h \
 	GuiCharacter.h \
 	GuiCitation.h \
+	GuiClickableLabel.h \
 	GuiClipboard.h \
 	GuiCommandBuffer.h \
 	GuiCommandEdit.h \

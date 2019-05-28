@@ -237,6 +237,8 @@ private Q_SLOTS:
 	void resetWindowTitle();
 
 	///
+	void checkCancelBackground();
+	///
 	void on_currentWorkAreaChanged(GuiWorkArea *);
 	///
 	void onBufferViewChanged();
