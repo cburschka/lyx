@@ -336,21 +336,21 @@ Menuset
 #
 
 	Menu "view"
-		Item "Open All Insets|O" "inset-forall * inset-toggle open"
-		Item "Close All Insets|C" "inset-forall * inset-toggle close"
-		Separator
-		Item "Unfold Math Macro|n" "math-macro-unfold"
-		Item "Fold Math Macro|d" "math-macro-fold"
-		Separator
-		Item "Outline Pane|u" "dialog-toggle toc"
+		Item "Outline Pane|O" "dialog-toggle toc"
 		Item "Code Preview Pane|P" "dialog-toggle view-source"
 		Item "Messages Pane|g" "dialog-toggle progress"
-		Submenu "Toolbars|b" "toolbars"
+		Submenu "Toolbars|T" "toolbars"
 		Separator
-		Item "Split View Into Left and Right Half|i" "view-split horizontal"
-		Item "Split View Into Upper and Lower Half|e" "view-split vertical"
+		OptItem "Unfold Math Macro|n" "math-macro-unfold"
+		OptItem "Fold Math Macro|d" "math-macro-fold"
+		Separator
+		Item "Split View Into Left and Right Half|L" "view-split horizontal"
+		Item "Split View Into Upper and Lower Half|U" "view-split vertical"
 		OptItem "Close Current View|w" "tab-group-close"
-		Item "Fullscreen|l" "ui-toggle fullscreen"
+		Item "Fullscreen|F" "ui-toggle fullscreen"
+		Separator
+		Item "Open All Insets|I" "inset-forall * inset-toggle open"
+		Item "Close All Insets|C" "inset-forall * inset-toggle close"
 		Separator
 		Documents
 	End
