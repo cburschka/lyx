@@ -90,8 +90,10 @@ revert_language(document, lyxname, babelname="", polyglossianame=""):
   this language package is not supported for the given language.
 '''
 
+from __future__ import print_function
 import re, sys
-from parser_tools import find_token, find_end_of_inset, get_containing_layout, get_value, get_bool_value
+from parser_tools import (find_token, find_end_of_inset, get_containing_layout,
+                          get_containing_inset, get_value, get_bool_value)
 from unicode_symbols import unicode_reps
 
 # This will accept either a list of lines or a single line.
@@ -154,14 +156,14 @@ def put_cmd_in_ert(cmd, is_open=False, as_paragraph=False):
     `is_open` is a boolean setting the inset status to "open",
     `as_paragraph` wraps the ERT inset in a Standard paragraph.
     """
-    
+
     status = {False:"collapsed", True:"open"}
     ert_inset = ["\\begin_inset ERT", "status %s"%status[is_open], "",
                  "\\begin_layout Plain Layout", "",
                  # content here ([5:5])
                  "\\end_layout", "", "\\end_inset"]
 
-    paragraph = ["\\begin_layout Standard", 
+    paragraph = ["\\begin_layout Standard",
                  # content here ([1:1])
                  "", "", "\\end_layout", ""]
     # ensure cmd is an unicode instance and make it "LyX safe".
@@ -171,7 +173,7 @@ def put_cmd_in_ert(cmd, is_open=False, as_paragraph=False):
         cmd = cmd.decode('utf8')
     cmd = cmd.translate(licr_table)
     cmd = cmd.replace("\\", "\n\\backslash\n")
-    
+
     ert_inset[5:5] = cmd.splitlines()
     if not as_paragraph:
         return ert_inset
@@ -634,6 +636,16 @@ def is_document_option(document, option):
 
     return True
 
+singlepar_insets = [s.strip() for s in
+    u"Argument, Caption Above, Caption Below, Caption Bicaption,"
+    u"Caption Centered, Caption FigCaption, Caption Standard, Caption Table,"
+    u"Flex Chemistry, Flex Fixme_Note, Flex Latin, Flex ListOfSlides,"
+    u"Flex Missing_Figure, Flex PDF-Annotation, Flex PDF-Comment-Setup,"
+    u"Flex Reflectbox, Flex S/R expression, Flex Sweave Input File,"
+    u"Flex Sweave Options, Flex Thanks_Reference, Flex URL, Foot InTitle,"
+    u"IPADeco, Index, Info, Phantom, Script".split(',')]
+# print(singlepar_insets)
+
 def revert_language(document, lyxname, babelname="", polyglossianame=""):
     " Revert native language support "
 
@@ -654,85 +666,134 @@ def revert_language(document, lyxname, babelname="", polyglossianame=""):
     with_babel = with_polyglossia == False and babelname != ""
 
     # Are we dealing with a primary or secondary language?
-    primary = False
+    primary = document.language == lyxname
     secondary = False
 
-    orig_doc_language = document.language
     # Main language first
-    if document.language == lyxname:
-        primary = True
+    orig_doc_language = document.language
+    if primary:
+        # Change LyX document language to English (we will tell LaTeX
+        # to use the original language at the end of this function):
         document.language = "english"
         i = find_token(document.header, "\\language %s" % lyxname, 0)
         if i != -1:
             document.header[i] = "\\language english"
-        if with_polyglossia:
-            add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{%s}}" % polyglossianame])
-            document.body[2 : 2] = put_cmd_in_ert("\\resetdefaultlanguage{%s}"%polyglossianame,
-                                                  is_open=True, as_paragraph=True)
 
-    # Now secondary languages
+    # Now look for occurences in the body
     i = 0
     while True:
-        i = find_token(document.body, '\\lang', i)
+        i = find_token(document.body, "\\lang", i+1)
         if i == -1:
             break
-        if document.body[i].startswith('\\lang %s' % lyxname):
+        if document.body[i].startswith("\\lang %s" % lyxname):
             secondary = True
-            endlang = get_containing_layout(document.body, i)[2]
-            langswitch = find_token(document.body, '\\lang', i + 1, endlang)
-            as_paragraph = True
-            if langswitch != -1:
-                endlang = langswitch
-                as_paragraph = False
-            if with_polyglossia:
-                add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{%s}}" % polyglossianame])
-                document.body[endlang:endlang] = put_cmd_in_ert("\\end{%s}"%polyglossianame,
-                                                                is_open=True,
-                                                                as_paragraph=as_paragraph)
-            elif with_babel:
-                document.body[endlang:endlang] = put_cmd_in_ert("\\end{otherlanguage}",
-                                                                is_open=True,
-                                                                as_paragraph=as_paragraph)
-            del document.body[i]
-            if with_polyglossia:
-                document.body[i:i] = put_cmd_in_ert("\\begin{%s}"%polyglossianame,
-                                                    is_open=True)
-            elif with_babel:
-                document.body[i:i] = put_cmd_in_ert("\\begin{otherlanguage}{%s}" % babelname,
-                                                    is_open=True)
-        elif primary and document.body[i].startswith('\\lang english'):
+            texname = use_polyglossia and polyglossianame or babelname
+        elif primary and document.body[i].startswith("\\lang english"):
             # Since we switched the main language manually, English parts need to be marked
-            endlang = get_containing_layout(document.body, i)[2]
-            langswitch = find_token(document.body, '\\lang', i + 1, endlang)
-            as_paragraph = True
-            if langswitch != -1:
-                endlang = langswitch
-                as_paragraph = False
-            if with_polyglossia:
-                parent = get_containing_layout(document.body, i)
-                document.body[endlang:endlang] = put_cmd_in_ert("\\end{english}",
-                                                                is_open=True,
-                                                                as_paragraph=as_paragraph)
-            elif with_babel:
-                parent = get_containing_layout(document.body, i)
-                document.body[endlang:endlang] = put_cmd_in_ert("\\end{otherlanguage}",
-                                                                is_open=True,
-                                                                as_paragraph=as_paragraph)
-            del document.body[i]
-            if with_polyglossia:
-                document.body[i:i] = put_cmd_in_ert("\\begin{english}",
-                                                    is_open=True)
-            elif with_babel:
-                document.body[i:i] = put_cmd_in_ert("\\begin{otherlanguage}{english}",
-                                                    is_open=True)
+            texname = "english"
         else:
-            i += 1
+            continue
 
-    # With babel, we need to add the language options
-    if with_babel and (primary or secondary):
+        parent = get_containing_layout(document.body, i)
+        i_e = parent[2] # end line no,
+        # print(i, texname, parent, document.body[i+1], file=sys.stderr)
+        
+        # Move leading space to the previous line:
+        if document.body[i+1].startswith(" "):
+            document.body[i+1] = document.body[i+1][1:]
+            document.body.insert(i, " ")
+            continue
+        
+        # Ensure correct handling of list labels
+        if (parent[0] in ["Labeling", "Description"]
+            and not " " in "\n".join(document.body[parent[3]:i])):
+            # line `i+1` is first line of a list item,
+            # part before a space character is the label
+            # TODO: insets or language change before first space character
+            labelline = document.body[i+1].split(' ', 1)
+            if len(labelline) > 1:
+                # Insert a space in the (original) document language
+                # between label and remainder.
+                # print("  Label:", labelline, file=sys.stderr)
+                lines = [labelline[0],
+                    "\\lang %s" % orig_doc_language,
+                    " ",
+                    "\\lang %s" % (primary and "english" or lyxname),
+                    labelline[1]]
+                document.body[i+1:i+2] = lines
+                i_e += 4
+  
+        # Find out where to end the language change.
+        langswitch = i
+        while True:
+            langswitch = find_token(document.body, "\\lang", langswitch+1, i_e)
+            if langswitch == -1:
+                break
+            # print("  ", langswitch, document.body[langswitch], file=sys.stderr)
+            # skip insets
+            i_a = parent[3] # paragraph start line
+            container = get_containing_inset(document.body[i_a:i_e], langswitch-i_a)
+            if container and container[1] < langswitch-i_a and container[2] > langswitch-i_a:
+                # print("  inset", container, file=sys.stderr)
+                continue
+            i_e = langswitch
+            break
+        
+        # use function or environment?
+        singlepar = i_e - i < 3
+        if not singlepar and parent[0] == "Plain Layout":
+            # environment not allowed in some insets
+            container = get_containing_inset(document.body, i)
+            singlepar = container[0] in singlepar_insets
+            
+        # Delete empty language switches:
+        if not "".join(document.body[i+1:i_e]):
+            del document.body[i:i_e]
+            i -= 1
+            continue
+
+        if singlepar:
+            if with_polyglossia:
+                begin_cmd = "\\text%s{"%texname
+            elif with_babel:
+                begin_cmd = "\\foreignlanguage{%s}{" % texname
+            end_cmd = "}"
+        else:
+            if with_polyglossia:
+                begin_cmd = "\\begin{%s}"%texname
+                end_cmd = "\\end{%s}"%texname
+            elif with_babel:
+                begin_cmd = "\\begin{otherlanguage}{%s}" % texname
+                end_cmd = "\\end{otherlanguage}"
+
+        if (not primary or texname == "english"):
+            document.body[i_e:i_e] = put_cmd_in_ert(end_cmd)
+            document.body[i+1:i+1] = put_cmd_in_ert(begin_cmd)
+        del document.body[i]
+
+    if not (primary or secondary):
+        return
+
+    # Make the language known to Babel/Polyglossia and ensure the correct
+    # document language:
+    doc_lang_switch = ""
+    if with_babel:
+        # add as global option
         insert_document_option(document, babelname)
-        if secondary and document.body[10] != "selectlanguage{%s}" % orig_doc_language:
-            # Since the user options are always placed after the babel options,
-            # we need to reset the main language
-            document.body[2:2] = put_cmd_in_ert("\\selectlanguage{%s}" % orig_doc_language,
-                                                is_open=True, as_paragraph=True)
+        # Since user options are appended to the document options,
+        # Babel will treat `babelname` as primary language.
+        if not primary:
+            doc_lang_switch = "\\selectlanguage{%s}" % orig_doc_language
+    if with_polyglossia:
+        # Define language in the user preamble
+        # (don't use \AtBeginDocument, this fails with some languages).
+        add_to_preamble(document, ["\\usepackage{polyglossia}",
+                                   "\\setotherlanguage{%s}" % polyglossianame])
+        if primary:
+            # Changing the main language must be done in the document body.
+            doc_lang_switch = "\\resetdefaultlanguage{%s}" % polyglossianame
+
+    # Reset LaTeX main language if required and not already done
+    if doc_lang_switch and doc_lang_switch not in document.body[8:20] != doc_lang_switch:
+        document.body[2:2] = put_cmd_in_ert(doc_lang_switch,
+                                            is_open=True, as_paragraph=True)

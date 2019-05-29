@@ -6,13 +6,14 @@
 \origin unavailable
 \textclass article
 \begin_preamble
-\@ifpackageloaded{fontspec}{%
-  \newfontfamily\friulanfont{FreeSans}}{%
-  \AtBeginDocument{\addto\extrasfrilulan{\sffamily}}}
+\@ifpackageloaded{fontspec}%
+  {\newfontfamily\friulanfont{FreeSans}}%
+  {\usepackage{babel}
+   \addto\extrasfrilulan{\sffamily}}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language friulan
 \language_package default
 \inputencoding utf8
 \fontencoding auto
@@ -27,7 +28,7 @@
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
-\use_dash_ligatures false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -72,7 +73,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style french
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -88,16 +89,18 @@
 \begin_body
 
 \begin_layout Standard
-English document mixing English and Friulan text.
+
+\lang english
+Friulan Document mixing English and Friulan text.
 \end_layout
 
 \begin_layout Standard
-
-\lang friulan
 This is a Friulan paragraph.
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 English paragraph with one 
 \lang friulan
 Friulan
@@ -106,13 +109,13 @@ Friulan
 \end_layout
 
 \begin_layout Standard
-
-\lang friulan
 Friulan paragraph
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
+
+\lang english
 English footnote
 \end_layout
 
@@ -126,20 +129,20 @@ English
 \end_layout
 
 \begin_layout Quote
-
-\lang friulan
 This is a Friulan quote.
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 Followed by an English
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-
-\lang friulan
 Friulan footnote
+\lang english
+ not recognized by the lyx2lyx emulation.
 \end_layout
 
 \end_inset
@@ -148,38 +151,40 @@ Friulan footnote
 \end_layout
 
 \begin_layout Enumerate
+
+\lang english
 List with
 \end_layout
 
 \begin_layout Enumerate
-
-\lang friulan
-Friulan paragraph
+Friulan paragraphs
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
+
+\lang english
 with nested item list with English item
 \end_layout
 
 \begin_layout Itemize
-
-\lang friulan
 and Friulan list item.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-
-\lang friulan
 in the middle
 \end_layout
 
 \begin_layout Enumerate
+
+\lang english
 of it.
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Float table
 placement document
 alignment document
@@ -188,12 +193,12 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang friulan
-Friulan caption
+Friulan text in English caption inset
 \end_layout
 
 \end_inset
@@ -202,6 +207,8 @@ Friulan caption
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features tabularvalignment="middle">
@@ -212,6 +219,8 @@ Friulan caption
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 table
 \end_layout
 
@@ -221,8 +230,6 @@ table
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang friulan
 with
 \end_layout
 
@@ -234,8 +241,6 @@ with
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang friulan
 Friulan
 \end_layout
 
@@ -245,6 +250,8 @@ Friulan
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 cells
 \end_layout
 
@@ -264,25 +271,25 @@ cells
 \end_layout
 
 \begin_layout Standard
-English standard paragraph.
+
+\lang english
+Friulan table cells not recognised if the table has outer language English.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\lang english
 Lyxlist with
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\lang friulan
 Friulan item
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\lang friulan
 label
 \lang english
  and
@@ -290,6 +297,8 @@ label
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\lang english
 also 
 \lang friulan
 content
@@ -297,34 +306,38 @@ content
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\lang english
 inside it.
 \end_layout
 
 \begin_layout Description
+
+\lang english
 Description with
 \end_layout
 
 \begin_layout Description
-
-\lang friulan
 Friulan item
 \end_layout
 
 \begin_layout Description
-
-\lang friulan
 label 
 \lang english
 and
 \end_layout
 
 \begin_layout Description
+
+\lang english
 also
 \lang friulan
  content
 \end_layout
 
 \begin_layout Description
+
+\lang english
 inside it.
 \end_layout
 
