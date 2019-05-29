@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-05-24 11:46+0200\n"
-"PO-Revision-Date: 2019-05-24 09:53+0000\n"
+"POT-Creation-Date: 2019-05-29 10:29+0200\n"
+"PO-Revision-Date: 2019-05-29 08:52+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2989,9 +2989,9 @@ msgstr "Pridať očíslenie riadkov do dokumentu"
 msgid "L&ine numbering"
 msgstr "Čí&slovanie riadkov"
 
-#: src/frontends/qt4/ui/NumberingUi.ui:117
-msgid "Additional o&ptions:"
-msgstr "&Dodatočné možnosti:"
+#: src/frontends/qt4/ui/NumberingUi.ui:63
+msgid "O&ptions:"
+msgstr "&Možnosti:"
 
 #: src/frontends/qt4/ui/NumberingUi.ui:127
 msgid ""
@@ -3152,13 +3152,13 @@ msgstr ""
 msgid "Automatically fi&ll header"
 msgstr "Automat&icky vyplniť hlavičku"
 
-#: src/frontends/qt4/ui/PDFSupportUi.ui:176
+#: src/frontends/qt4/ui/PDFSupportUi.ui:216
 msgid "Enable fullscreen PDF presentation"
-msgstr "Povoliť celoobrazovkovú prezentáciu PDF súboru"
+msgstr "Povoliť celo-obrazovkovú prezentáciu PDF súboru"
 
-#: src/frontends/qt4/ui/PDFSupportUi.ui:179
+#: src/frontends/qt4/ui/PDFSupportUi.ui:219
 msgid "Load in &fullscreen mode"
-msgstr "Nahrať v &celoobrazovkovom režime"
+msgstr "Nahrať v &celo-obrazovkovom režime"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:189
 msgid "H&yperlinks"
@@ -3788,7 +3788,7 @@ msgstr "Editácia mat. makrov s prehľadom parametrov (ako v LyXe < 1.6)"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:156
 msgid "Fullscreen"
-msgstr "Celoobrazovkový mód"
+msgstr "Celo-obrazovkový mód"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:174
 msgid "&Hide toolbars"
@@ -19065,9 +19065,9 @@ msgstr "Nastavenia odstavca…|o"
 msgid "Unify Graphics Groups|U"
 msgstr "Zjednotiť skupinu obrázkov|b"
 
-#: lib/ui/stdcontext.inc:368
+#: lib/ui/stdcontext.inc:373
 msgid "Fullscreen Mode"
-msgstr "Celoobrazovkový mód"
+msgstr "Celo-obrazovkový mód"
 
 #: lib/ui/stdcontext.inc:369
 msgid "Close Current View"
@@ -19866,9 +19866,9 @@ msgstr "Maple, Evalm (vyhodnotiť)|E"
 msgid "Maple, Evalf|v"
 msgstr "Maple, Evalf (plávajúca čiarka)|v"
 
-#: lib/ui/stdmenus.inc:337
-msgid "Open All Insets|O"
-msgstr "Otvoriť všetky vložky|O"
+#: lib/ui/stdmenus.inc:339
+msgid "Outline Pane|O"
+msgstr "Osnova|s"
 
 #: lib/ui/stdmenus.inc:338
 msgid "Close All Insets|C"
@@ -19882,9 +19882,13 @@ msgstr "Rozbaliť matematické makro|m"
 msgid "Fold Math Macro|d"
 msgstr "Zabaliť matematické makro|r"
 
-#: lib/ui/stdmenus.inc:343
-msgid "Outline Pane|u"
-msgstr "Osnova|s"
+#: lib/ui/stdmenus.inc:347
+msgid "Split View Into Left and Right Half|L"
+msgstr "Rozdeliť náhľad na ľavú a pravú polovičku|p"
+
+#: lib/ui/stdmenus.inc:348
+msgid "Split View Into Upper and Lower Half|U"
+msgstr "Rozdeliť náhľad na vrchnú a spodnú polovičku|v"
 
 #: lib/ui/stdmenus.inc:344
 msgid "Code Preview Pane|P"
@@ -19894,25 +19898,21 @@ msgstr "Náhľady kódu|k"
 msgid "Messages Pane|g"
 msgstr "Ladiace výpisy|L"
 
-#: lib/ui/stdmenus.inc:346
-msgid "Toolbars|b"
+#: lib/ui/stdmenus.inc:342
+msgid "Toolbars|T"
 msgstr "Lišty nástrojov|j"
-
-#: lib/ui/stdmenus.inc:348
-msgid "Split View Into Left and Right Half|i"
-msgstr "Horizontálne rozdelenie|H"
-
-#: lib/ui/stdmenus.inc:349
-msgid "Split View Into Upper and Lower Half|e"
-msgstr "Vertikálne rozdelenie|V"
 
 #: lib/ui/stdmenus.inc:350
 msgid "Close Current View|w"
 msgstr "Zavri aktuálny náhľad|n"
 
-#: lib/ui/stdmenus.inc:351
-msgid "Fullscreen|l"
-msgstr "Celoobrazovkový mód|C"
+#: lib/ui/stdmenus.inc:350
+msgid "Fullscreen|F"
+msgstr "Celo-obrazovkový mód|C"
+
+#: lib/ui/stdmenus.inc:352
+msgid "Open All Insets|I"
+msgstr "Otvoriť všetky vložky|O"
 
 #: lib/ui/stdmenus.inc:374
 msgid "Math|h"
@@ -30468,10 +30468,6 @@ msgstr "Dokument potomka"
 msgid "Include to Output"
 msgstr "Zahrnúť do výstupu"
 
-#: src/frontends/qt4/GuiDocument.cpp:962
-msgid "Unicode (utf8) [default]"
-msgstr "Unicode (utf8) [štandard]"
-
 #: src/frontends/qt4/GuiDocument.cpp:963
 msgid "Traditional (auto-selected)"
 msgstr "Tradicionálne (automaticky vybrané)"
@@ -32544,6 +32540,18 @@ msgid ""
 msgstr ""
 "VAROVANIE: LaTeX má povolené spúšťať externé príkazy pre tento dokument. "
 "Kliknite pravým tlačidlom na zmenu."
+
+#: src/frontends/qt4/GuiView.cpp:720
+msgid "Cancel Export?"
+msgstr "Zrušiť export?"
+
+#: src/frontends/qt4/GuiView.cpp:721
+msgid "Do you want to cancel the background export process?"
+msgstr "Chcete zrušiť export v pozadí?"
+
+#: src/frontends/qt4/GuiView.cpp:724
+msgid "Co&ntinue"
+msgstr "&Pokračovať"
 
 #: src/frontends/qt4/GuiView.cpp:734
 #, c-format
@@ -35482,6 +35490,12 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "Unicode (utf8) [default]"
+#~ msgstr "Unicode (utf8) [štandard]"
+
+#~ msgid "Additional o&ptions:"
+#~ msgstr "&Dodatočné možnosti:"
+
 #~ msgid "No Branches Set for Document!"
 #~ msgstr "Dokument neobsahuje vetvenie!"
 
@@ -35720,9 +35734,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Da&tabases"
 #~ msgstr "Databáz&y"
-
-#~ msgid "O&ptions:"
-#~ msgstr "&Možnosti:"
 
 #~ msgid "Class default"
 #~ msgstr "Triedny štandard"
