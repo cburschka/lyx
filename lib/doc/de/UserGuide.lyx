@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 573
+\lyxformat 575
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -122,6 +122,8 @@ logicalmkup
 \justification true
 \use_refstyle 1
 \use_minted 0
+\use_lineno 0
+\lineno_options 
 \notefontcolor #0000ff
 \branch Frage
 \selected 1
@@ -1860,7 +1862,7 @@ Navigieren
 \family sans
 Inhaltsverzeichnis
 \family default
- auch andere Listen auswählen, z.
+ auch andere Verzeichnisse auswählen, z.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1888,7 +1890,7 @@ reference "sec:Literaturverzeichnis"
 \end_inset
 
 ).
- Es hängt vom Dokumenttyp ab, welche Listen vorhanden sind.
+ Es hängt vom Dokumenttyp ab, welche Verzeichnisse vorhanden sind.
 \end_layout
 
 \begin_layout Standard
@@ -1904,7 +1906,7 @@ Das Feld
 Filter
 \family default
  erlaubt es, die angezeigten Einträge einzugrenzen.
- Wenn zum Beispiel die Liste der 
+ Wenn zum Beispiel das Verzeichnis der 
 \emph on
 Marken und Querverweise
 \emph default
@@ -1920,7 +1922,7 @@ Unten in der Gliederung gibt es verschiedene Knöpfe und Optionen zur Kontrolle
 \family sans
 Sortieren
 \family default
- sortiert die aktuelle Liste alphabetisch.
+ sortiert das aktuelle Verzeichnis alphabetisch.
  Ansonsten erscheinen die Elemente in der Reihenfolge, in der sie im Dokument
  erscheinen.
  Die Option 
@@ -8633,12 +8635,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8651,7 +8651,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8675,7 +8674,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 
@@ -21220,7 +21218,7 @@ Kopfzeile
 \begin_layout Plain Layout
 
 \series bold
-Telefonliste (ignoriere die Namen)
+Telefonverzeichnis (ignoriere die Namen)
 \end_layout
 
 \end_inset
@@ -21284,7 +21282,7 @@ TEL.
 \begin_layout Plain Layout
 
 \series bold
-Telefonliste
+Telefonverzeichnis
 \end_layout
 
 \end_inset
@@ -23851,7 +23849,7 @@ Normalerweise wird nur ein Bild in ein Abbildungs-Gleitobjekt eingefügt
  Dies wird erreicht, indem man ein Abbildungs-Gleitobjekt in ein existierendes
  Abbildungs-Gleitobjekt einfügt.
  Dabei ist zu beachten, dass nur die Hauptbeschriftung des Gleitobjekts
- in die Liste der Abbildungen, wie in Abschnitt
+ in das Abbildungsverzeichnis, wie in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -28081,7 +28079,7 @@ Inhaltsverzeichnis
 
 \end_inset
 
- und andere Listen
+ und andere Verzeichnisse
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Inhaltsverzeichnis"
@@ -28119,15 +28117,7 @@ Inhaltsverzeichnis
 Das Inhaltsverzeichnis wird über 
 \family sans
 Einfügen\SpecialChar menuseparator
-Liste
-\begin_inset space \space{}
-\end_inset
-
-/
-\begin_inset space \space{}
-\end_inset
-
-Inhaltsverzeichnis\SpecialChar menuseparator
+Verzeichnis\SpecialChar menuseparator
 Inhaltsverzeichnis
 \family default
  eingefügt.
@@ -28224,15 +28214,7 @@ Tabellen-, Abbildungs-, Listings- und Algorithmenverzeichnisse sind sehr
  Sie können über das Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
-Liste
-\begin_inset space \space{}
-\end_inset
-
-/
-\begin_inset space \space{}
-\end_inset
-
-Inhaltsverzeichnis
+Verzeichnis
 \family default
  eingefügt werden.
  Die Verzeichniseinträge sind die Beschriftung der Gleitobjekte und deren
@@ -29183,15 +29165,7 @@ Um auf eine Datenbank mit Bib\SpecialChar TeX
  zuzugreifen, verwenden Sie das Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
-Liste
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-Inhaltsverzeichnis\SpecialChar menuseparator
+Verzeichnis\SpecialChar menuseparator
 Bib(la)TeX-Literaturverzeichnis
 \family default
 .
@@ -29312,15 +29286,7 @@ biblatex
 : Wählen Sie 
 \family sans
 Einfügen\SpecialChar menuseparator
-Liste
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-Inhaltsverzeichnis\SpecialChar menuseparator
+Verzeichnis\SpecialChar menuseparator
 Bib(la)TeX-Literaturverzeichnis
 \family default
 .
@@ -30266,15 +30232,7 @@ arg   "index-insert"
 Das Stichwortverzeichnis wird in das Dokument mit dem Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
-Liste
-\begin_inset space ~
-\end_inset
-
-/
-\begin_inset space ~
-\end_inset
-
-Inhaltsverzeichnis\SpecialChar menuseparator
+Verzeichnis\SpecialChar menuseparator
 Stichwortverzeichnis
 \family default
  eingefügt.
@@ -31137,15 +31095,7 @@ Sobald die Änderungen übernommen wurden, findet man den neuen Index im Menü
  
 \family sans
 Einfügen\SpecialChar menuseparator
-Liste
-\begin_inset space ~
-\end_inset
-
-/
-\begin_inset space ~
-\end_inset
-
-Inhaltsverzeichnis
+Verzeichnis
 \family default
  und das Menü 
 \family sans
@@ -31242,7 +31192,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Manchmal benötigen Sie vielleicht eine Liste von Symbolen oder Begriffen
+Manchmal benötigen Sie vielleicht ein Verzeichnis von Symbolen oder Begriffen
  mit deren Bedeutung – eine sogenannte Nomenklatur bzw.
 \begin_inset space ~
 \end_inset
@@ -31809,7 +31759,7 @@ Seite
  automatisch übersetzt.
  Wenn Sie diese Übersetzungen ändern wollen, fügen Sie diese Zeilen als
  \SpecialChar TeX
--Code vor der Nomenklaturliste ein:
+-Code vor dem Nomenklatueverzeichnis ein:
 \end_layout
 
 \begin_layout Standard
@@ -31967,15 +31917,7 @@ Nomenklatur ! drucken
 Mit 
 \family sans
 Einfügen\SpecialChar menuseparator
-Liste
-\begin_inset space ~
-\end_inset
-
-/
-\begin_inset space ~
-\end_inset
-
-Inhaltsverzeichnis\SpecialChar menuseparator
+Verzeichnis\SpecialChar menuseparator
 Nomenklatur
 \family default
  können Sie ein Nomenklatur
@@ -39074,14 +39016,13 @@ Anderes\SpecialChar ldots
 \end_layout
 
 \begin_layout Subsection
-Liste / Inhaltsverzeichnis
+Verzeichnis
 \end_layout
 
 \begin_layout Standard
-Über dieses Menü können verschiedene Listen und Verzeichnisse eingefügt
- werden.
- Das Inhaltsverzeichnis, die Liste der Algorithmen, Abbildungen, Listings
- und Tabellen sind in Abschnitt
+Über dieses Menü können verschiedene Verzeichnisse eingefügt werden.
+ Das Inhaltsverzeichnis, Algorithmen-, Abbildungs-, Listings- und Tabellenverzei
+chnis sind in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -39115,7 +39056,7 @@ reference "sec:Nomenklatur/Glossar"
 
 \end_inset
 
- und das Bib\SpecialChar TeX
+ und das Bib(la)\SpecialChar TeX
 -Literaturverzeichnis in Abschnitt
 \begin_inset space ~
 \end_inset
