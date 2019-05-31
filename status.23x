@@ -65,6 +65,9 @@ Avoid using text mode for unicode symbols representable in math mode (bug 9616).
 
 - Fix problem on Windows with saving files in Dropbox folders (bug 10091).
 
+- Find local bib files when they exist in the same directory as the LyX
+  file (bug 11588).
+
 
 * USER INTERFACE
 
