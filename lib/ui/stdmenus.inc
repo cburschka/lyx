@@ -381,7 +381,7 @@ Menuset
 		Submenu "Float|a" "insert_float"
 		Submenu "Note|N" "insert_note"
 		Submenu "Branch|B" "insert_branches"
-		Submenu "Custom Insets" "insert_custom"
+		Submenu "Custom Inset" "insert_custom"
 		Submenu "File|e" "insert_file"
 		Submenu "Box[[Menu]]|x" "insert_box"
 		OptSubmenu "Regular Expression" "context-edit-regexp"
