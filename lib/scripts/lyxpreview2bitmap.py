@@ -372,6 +372,17 @@ def main(argv):
     input_path = args[0]
     dir, latex_file = os.path.split(input_path)
 
+    # Check for the input file
+    if not os.path.exists(input_path):
+        error('File "%s" not found.' % input_path)
+    if len(dir) != 0:
+        os.chdir(dir)
+
+    if lyxpreview_tools.verbose:
+        f_out = open('debug.txt', 'a')
+        sys.stdout = f_out
+        sys.stderr = f_out
+
     # Echo the settings
     progress("Running Python %s" % str(sys.version_info[:3]))
     progress("Starting %s..." % script_name)
@@ -380,12 +391,6 @@ def main(argv):
     progress("Background color: %s" % bg_color)
     progress("Resolution (dpi): %s" % dpi)
     progress("File to process: %s" % input_path)
-
-    # Check for the input file
-    if not os.path.exists(input_path):
-        error('File "%s" not found.' % input_path)
-    if len(dir) != 0:
-        os.chdir(dir)
 
     # For python > 2 convert strings to bytes
     if not PY2:
