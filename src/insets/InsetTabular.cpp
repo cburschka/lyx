@@ -1107,7 +1107,7 @@ bool Tabular::updateColumnWidths(MetricsInfo & mi)
 	// (minus the fixed widths) to the variable-width columns
 	int vcolwidth = -1;
 	int restcols = ncols() - max_pwidth.size();
-	if (restwidth > 0)
+	if ((restwidth > 0) && (restcols != 0))
 		vcolwidth = restwidth / restcols;
 
 	// Now consider that some variable width columns exceed the vcolwidth
