@@ -2203,14 +2203,18 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, string const & lang,
 	if ((row == 0 && nset == 0) || (row > 0 && nset != ncols()))
 		return;
 
+	// Is this the actual first row (excluding longtable caption row)?
+	bool const realfirstrow = (row == 0
+				   || (is_long_tabular && row == 1 && ltCaption(0)));
+
 	// only output complete row lines and the 1st row's clines
 	if (nset == ncols()) {
 		if (use_booktabs) {
-			os << (row == 0 ? "\\toprule " : "\\midrule ");
+			os << (realfirstrow ? "\\toprule " : "\\midrule ");
 		} else {
 			os << "\\hline ";
 		}
-	} else if (row == 0) {
+	} else if (realfirstrow) {
 		for (auto & c : columns) {
 			if (topline.find(c)->second) {
 				col_type offset = 0;
@@ -4014,7 +4018,9 @@ void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 	// Top
 	bool drawline = tabular.topLine(cell)
 		|| (row > 0 && tabular.bottomLine(tabular.cellAbove(cell)));
-	bool heavy = tabular.use_booktabs && row == 0 && tabular.rowTopLine(row);
+	bool heavy = tabular.use_booktabs
+			&& (row == 0 || (tabular.is_long_tabular && row == 1 && tabular.ltCaption(0)))
+			&& tabular.rowTopLine(row);
 	tabline(pi, x, y, x + w, y, drawline, heavy);
 
 	// Bottom
