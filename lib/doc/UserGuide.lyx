@@ -29445,7 +29445,7 @@ name "subsec:Table-of-Contents"
 The Table of Contents (TOC) is inserted with the menu 
 \family sans
 Insert\SpecialChar menuseparator
-List/TOC\SpecialChar menuseparator
+List/Contents/References\SpecialChar menuseparator
 Table
 \begin_inset space ~
 \end_inset
@@ -29536,7 +29536,7 @@ Table, figure, listings and algorithm lists are very much like the table
  You can insert them via the 
 \family sans
 Insert\SpecialChar menuseparator
-List/TOC
+List/Contents/References
 \family default
  submenus.
  The list entries are the float captions and the float number.
@@ -30493,11 +30493,7 @@ To access a database via Bib\SpecialChar TeX
 , use the menu 
 \family sans
 Insert\SpecialChar menuseparator
-List
-\family default
-/
-\family sans
-TOC\SpecialChar menuseparator
+List/Contents/References\SpecialChar menuseparator
 Bib(la)TeX
 \begin_inset space ~
 \end_inset
@@ -30624,11 +30620,7 @@ biblatex
 : Use the menu 
 \family sans
 Insert\SpecialChar menuseparator
-List
-\family default
-/
-\family sans
-TOC\SpecialChar menuseparator
+List/Contents/References\SpecialChar menuseparator
 Bib(la)TeX
 \begin_inset space ~
 \end_inset
@@ -31542,7 +31534,7 @@ arg   "index-insert"
 The index list is inserted in the document with the menu 
 \family sans
 Insert\SpecialChar menuseparator
-List/TOC\SpecialChar menuseparator
+List/Contents/References\SpecialChar menuseparator
 Index
 \begin_inset space ~
 \end_inset
@@ -32422,7 +32414,7 @@ Once the document changes have been applied, you can find the new index
  list in 
 \family sans
 Insert\SpecialChar menuseparator
-List/TOC
+List/Contents/References
 \family default
  and the 
 \family sans
@@ -33377,7 +33369,7 @@ Nomenclature ! Printing
 To print the nomenclature, use the menu 
 \family sans
 Insert\SpecialChar menuseparator
-Lists/TOC\SpecialChar menuseparator
+List/Contents/References\SpecialChar menuseparator
 Nomenclature
 \family default
 .
@@ -40918,7 +40910,9 @@ Other\SpecialChar ldots
 \end_layout
 
 \begin_layout Subsection
-List/TOC
+
+\family sans
+List/Contents/References
 \end_layout
 
 \begin_layout Standard
