@@ -386,6 +386,8 @@ def main(argv):
     # Echo the settings
     progress("Running Python %s" % str(sys.version_info[:3]))
     progress("Starting %s..." % script_name)
+    if os.name == "nt":
+        progress("Use win32_modules: %d" % lyxpreview_tools.use_win32_modules)
     progress("Output format: %s" % output_format)
     progress("Foreground color: %s" % fg_color)
     progress("Background color: %s" % bg_color)
