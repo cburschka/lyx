@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-05-29 10:29+0200\n"
-"PO-Revision-Date: 2019-05-29 08:52+0000\n"
+"POT-Creation-Date: 2019-05-31 20:03+0200\n"
+"PO-Revision-Date: 2019-05-31 18:09+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -19930,9 +19930,9 @@ msgstr "Formátovanie|F"
 msgid "Field|i"
 msgstr "Pole|P"
 
-#: lib/ui/stdmenus.inc:378
-msgid "List / TOC|s"
-msgstr "Listiny / Obsah|L"
+#: lib/ui/stdmenus.inc:380
+msgid "List/Contents/References|/"
+msgstr "Zoznam/obsah/referencie|/"
 
 #: lib/ui/stdmenus.inc:379
 msgid "Float|a"
@@ -19946,9 +19946,9 @@ msgstr "Poznámka|á"
 msgid "Branch|B"
 msgstr "Vetva|V"
 
-#: lib/ui/stdmenus.inc:382
-msgid "Custom Insets"
-msgstr "Vlastné vložky"
+#: lib/ui/stdmenus.inc:384
+msgid "Custom Inset"
+msgstr "Vlastnú vložku"
 
 #: lib/ui/stdmenus.inc:383
 msgid "File|e"
@@ -19957,6 +19957,10 @@ msgstr "Súbor|S"
 #: lib/ui/stdmenus.inc:384
 msgid "Box[[Menu]]|x"
 msgstr "Rámik|k"
+
+#: lib/ui/stdmenus.inc:387
+msgid "Regular Expression"
+msgstr "Regulárny výraz"
 
 #: lib/ui/stdmenus.inc:387
 msgid "Citation...|C"
@@ -35489,6 +35493,13 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#, fuzzy
+#~ msgid "List/TOC|/"
+#~ msgstr "Listina/Obsah"
+
+#~ msgid "List / TOC|s"
+#~ msgstr "Listiny / Obsah|L"
 
 #~ msgid "Unicode (utf8) [default]"
 #~ msgstr "Unicode (utf8) [štandard]"
