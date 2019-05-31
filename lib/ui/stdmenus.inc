@@ -384,7 +384,7 @@ Menuset
 		Submenu "Custom Insets" "insert_custom"
 		Submenu "File|e" "insert_file"
 		Submenu "Box[[Menu]]|x" "insert_box"
-		OptSubmenu "Insert Regular Expression" "context-edit-regexp"
+		OptSubmenu "Regular Expression" "context-edit-regexp"
 		Separator
 		Item "Citation...|C" "dialog-show-new-inset citation"
 		Item "Cross-Reference...|R" "dialog-show-new-inset ref"
