@@ -377,7 +377,7 @@ Menuset
 		Submenu "Special Character|p" "insert_special"
 		Submenu "Formatting|o" "insert_formatting"
 		Submenu "Field|i" "insert_fields"
-		Submenu "List / TOC|/" "insert_toc"
+		Submenu "List/TOC|/" "insert_toc"
 		Submenu "Float|a" "insert_float"
 		Submenu "Note|N" "insert_note"
 		Submenu "Branch|B" "insert_branches"
