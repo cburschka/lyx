@@ -2484,7 +2484,7 @@ FileName Buffer::getBibfilePath(docstring const & bibid) const
 		// locally
 		file = findtexfile(texfile, "bib", true);
 		if (file.empty())
-			file = FileName(makeAbsPath(texfile, filePath()));
+			file = local_file;
 	}
 	LYXERR(Debug::FILES, "Found at: " << file);
 
