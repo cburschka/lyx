@@ -2467,17 +2467,25 @@ FileName Buffer::getBibfilePath(docstring const & bibid) const
 	map<docstring, FileName>::const_iterator it =
 		bibfileCache.find(bibid);
 	if (it != bibfileCache.end()) {
-		// i.e., bibfileCache[bibid]
+		// i.e., return bibfileCache[bibid];
 		return it->second;
 	}
 
 	LYXERR(Debug::FILES, "Reading file location for " << bibid);
-	string texfile = changeExtension(to_utf8(bibid), "bib");
-	// note that, if the filename can be found directly from the path,
-	// findtexfile will just return a FileName object for that path.
-	FileName file(findtexfile(texfile, "bib"));
-	if (file.empty())
-		file = FileName(makeAbsPath(texfile, filePath()));
+	string const texfile = changeExtension(to_utf8(bibid), "bib");
+	// we need to check first if this file exists where it's said to be.
+	// there's a weird bug that occurs otherwise: if the file is in the
+	// Buffer's directory but has the same name as some file that would be
+	// found by kpsewhich, then we find the latter, not the former.
+	FileName const local_file = makeAbsPath(texfile, filePath());
+	FileName file = local_file;
+	if (!file.exists()) {
+		// there's no need now to check whether the file can be found
+		// locally
+		file = findtexfile(texfile, "bib", true);
+		if (file.empty())
+			file = FileName(makeAbsPath(texfile, filePath()));
+	}
 	LYXERR(Debug::FILES, "Found at: " << file);
 
 	bibfileCache[bibid] = file;
