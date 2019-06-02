@@ -1721,8 +1721,11 @@ def convert_lineno(document):
             del_token(document.preamble, "% Added by lyx2lyx", j-2, j-1)
 
     k = find_token(document.header, "\\index ")
-    document.header[k:k] = ["\\use_lineno %d" % use_lineno,
-                            "\\lineno_options %s" % options]
+    if options == "":
+        document.header[k:k] = ["\\use_lineno %d" % use_lineno]
+    else:
+        document.header[k:k] = ["\\use_lineno %d" % use_lineno,
+                                "\\lineno_options %s" % options]
 
 
 ##
