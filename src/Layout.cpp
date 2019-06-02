@@ -1172,6 +1172,8 @@ void writeArgument(ostream & os, string const & id, Layout::latexarg const & arg
 	}
 	if (!arg.pass_thru_chars.empty())
 		os << "\t\tPassThruChars \"" << to_utf8(arg.pass_thru_chars) << "\"\n";
+	if (arg.free_spacing)
+		os << "\t\tFreeSpacing " << arg.free_spacing << "\n";
 	os << "\tEndArgument\n";
 }
 
