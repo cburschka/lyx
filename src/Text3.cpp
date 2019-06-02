@@ -2078,6 +2078,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		Layout::LaTeXArgMap::const_iterator const laend = args.end();
 		for (; lait != laend; ++lait) {
 			Layout::latexarg arg = (*lait).second;
+			if (!inautoarg && arg.insertonnewline && cur.pos() > 0) {
+				FuncRequest cmd2(LFUN_PARAGRAPH_BREAK);
+				lyx::dispatch(cmd2);
+			}
 			if (arg.autoinsert) {
 				// The cursor might have been invalidated by the replaceSelection.
 				cur.buffer()->changed(true);
@@ -2087,6 +2091,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 					cur.leaveInset(cur.inset());
 					cur.posForward();
 					inautoarg = false;
+					if (arg.insertonnewline && cur.pos() > 0) {
+						FuncRequest cmd2(LFUN_PARAGRAPH_BREAK);
+						lyx::dispatch(cmd2);
+					}
 				}
 				FuncRequest cmd2(LFUN_ARGUMENT_INSERT, (*lait).first);
 				lyx::dispatch(cmd2);

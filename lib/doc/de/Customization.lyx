@@ -10589,6 +10589,49 @@ e Absatzstil ausgewählt wird.
 status collapsed
 
 \begin_layout Plain Layout
+InsertOnNewline
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[int=0]
+\end_layout
+
+\end_inset
+
+ Wenn dies auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ gesetzt ist, wird dieses Argument mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AutoInsert
+\end_layout
+
+\end_inset
+
+ auf eine neue Zeile gesetzt (nur mit Flex-Einfügungen verfügbar).
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 InsertCotext
 \end_layout
 

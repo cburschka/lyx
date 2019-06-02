@@ -249,7 +249,7 @@ currentFormat = 75
 # New InsetLayout and Argument tag NewlineCmd
 
 # Incremented to format 75, 2 June 2019 by spitz
-# New Argument tag FreeSpacing
+# New Argument tags FreeSpacing, InsertOnNewline
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").

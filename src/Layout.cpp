@@ -1016,6 +1016,7 @@ void Layout::readArgument(Lexer & lex)
 	arg.nodelims = false;
 	arg.autoinsert = false;
 	arg.insertcotext = false;
+	arg.insertonnewline = false;
 	bool error = false;
 	bool finished = false;
 	arg.font = inherit_font;
