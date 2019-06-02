@@ -79,6 +79,8 @@ from __future__ import print_function
 
 import getopt, glob, os, re, shutil, sys, tempfile
 
+import lyxpreview_tools
+
 from legacy_lyxpreview2ppm import extract_resolution, legacy_conversion_step1
 
 from lyxpreview_tools import bibtex_commands, check_latex_log, copyfileobj, \
@@ -343,7 +345,6 @@ def main(argv):
         elif opt == "--bg":
             bg_color = val
         elif opt in ("-d", "--debug"):
-            import lyxpreview_tools
             lyxpreview_tools.debug = True
         elif opt == "--dpi":
             try:
@@ -361,7 +362,6 @@ def main(argv):
         elif opt in ("--png", "--ppm"):
             output_format = opt[2:]
         elif opt in ("-v", "--verbose"):
-            import lyxpreview_tools
             lyxpreview_tools.verbose = True
 
     # Determine input file
@@ -378,7 +378,7 @@ def main(argv):
     if len(dir) != 0:
         os.chdir(dir)
 
-    if lyxpreview_tools.verbose:
+    if lyxpreview_tools.debug:
         f_out = open('debug.txt', 'a')
         sys.stdout = f_out
         sys.stderr = f_out
