@@ -250,6 +250,7 @@ currentFormat = 75
 
 # Incremented to format 75, 2 June 2019 by spitz
 # New Argument tags FreeSpacing, InsertOnNewline
+# New InsetLayout tag ParbreakIgnored
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").

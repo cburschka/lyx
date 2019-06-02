@@ -763,7 +763,7 @@ void TeXOnePar(Buffer const & buf,
 		Font const outerfont = text.outerFont(pit);
 
 		// No newline before first paragraph in this lyxtext
-		if (pit > 0) {
+		if (pit > 0 && !text.inset().getLayout().parbreakIgnored()) {
 			os << '\n';
 			if (!text.inset().getLayout().parbreakIsNewline())
 				os << '\n';
@@ -1135,7 +1135,7 @@ void TeXOnePar(Buffer const & buf,
 			    && nextpar->getDepth() < par.getDepth()))
 			close_lang_switch = using_begin_end;
 		if (nextpar && par.params().depth() < nextpar->params().depth())
-			pending_newline = true;
+			pending_newline = !text.inset().getLayout().parbreakIgnored();
 		break;
 	case LATEX_ENVIRONMENT: {
 		// if it's the last paragraph of the current environment
@@ -1154,7 +1154,7 @@ void TeXOnePar(Buffer const & buf,
 	default:
 		// we don't need it for the last paragraph and in InTitle commands!!!
 		if (nextpar && !intitle_command)
-			pending_newline = true;
+			pending_newline = !text.inset().getLayout().parbreakIgnored();
 	}
 
 	// InTitle commands use switches (not environments) for space settings
@@ -1225,7 +1225,8 @@ void TeXOnePar(Buffer const & buf,
 									localswitch)
 						  : subst(lang_begin_command, "$$lang", current_lang);
 					os << bc;
-					pending_newline = !localswitch;
+					pending_newline = !localswitch
+							&& !text.inset().getLayout().parbreakIgnored();
 					unskip_newline = !localswitch;
 					if (using_begin_end)
 						pushLanguageName(current_lang, localswitch);
@@ -1255,7 +1256,8 @@ void TeXOnePar(Buffer const & buf,
 						lang_end_command,
 						"$$lang",
 						par_lang));
-					pending_newline = !localswitch;
+					pending_newline = !localswitch
+							&& !text.inset().getLayout().parbreakIgnored();
 					unskip_newline = !localswitch;
 					if (using_begin_end)
 						popLanguageName();
@@ -1370,9 +1372,10 @@ void TeXOnePar(Buffer const & buf,
 	// Note from JMarc: we will re-add a \n explicitly in
 	// TeXEnvironment, because it is needed in this case
 	if (nextpar && !os.afterParbreak() && !last_was_separator) {
-		// Make sure to start a new line
-		os << breakln;
 		Layout const & next_layout = nextpar->layout();
+		if (!text.inset().getLayout().parbreakIgnored())
+			// Make sure to start a new line
+			os << breakln;
 		// A newline '\n' is always output before a command,
 		// so avoid doubling it.
 		if (!next_layout.isCommand()) {
@@ -1396,6 +1399,7 @@ void TeXOnePar(Buffer const & buf,
 			if ((style == next_layout
 			     && !style.parbreak_is_newline
 			     && !text.inset().getLayout().parbreakIsNewline()
+			     && !text.inset().getLayout().parbreakIgnored()
 			     && style.latextype != LATEX_ITEM_ENVIRONMENT
 			     && style.latextype != LATEX_LIST_ENVIRONMENT
 			     && style.align == par.getAlign()

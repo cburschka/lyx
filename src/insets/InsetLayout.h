@@ -164,6 +164,8 @@ public:
 	///
 	bool parbreakIsNewline() const { return parbreakisnewline_; }
 	///
+	bool parbreakIgnored() const { return parbreakignored_; }
+	///
 	bool isNeedProtect() const { return needprotect_; }
 	///
 	bool needsCProtect() const { return needcprotect_; }
@@ -288,6 +290,8 @@ private:
 	std::string newline_cmd_;
 	///
 	bool parbreakisnewline_;
+	///
+	bool parbreakignored_;
 	///
 	bool freespacing_;
 	///

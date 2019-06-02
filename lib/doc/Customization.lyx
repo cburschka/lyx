@@ -20936,6 +20936,74 @@ InsetLayout
 \end_inset
 
 , while keeping backward compatibility.
+\change_inserted -712698321 1559491850
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1559492002
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559491854
+ParbreakIgnored
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559491850
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559491850
+1
+\end_layout
+
+\end_inset
+
+] If this is set to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559491881
+1
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, paragraph breaks will be ignored in the output.
+ This might be useful for insets where the content should be alignable on
+ different lines only in the \SpecialChar LyX
+ workarea, without any effect in the output.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

@@ -18949,6 +18949,55 @@ InsetLayout
 status collapsed
 
 \begin_layout Plain Layout
+ParbreakIgnored
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Wenn dies auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ gesetzt wird, werden Absatzwechsel in der Ausgabe ignoriert.
+ Das kann dann sinnvoll sein, wenn der Inhalt von Einfügungen im \SpecialChar LyX
+-Arbeitsbereich
+ auf verschiedenen Zeilen angeordnet werden soll, ohne dass dies eine Wirkung
+ in der Ausgabe hat.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 ParbreakIsNewline
 \end_layout
 

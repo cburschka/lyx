@@ -330,6 +330,8 @@ namespace {
 
 docstring parbreak(CursorData const * cur)
 {
+	if (cur->inset().getLayout().parbreakIgnored())
+		return docstring();
 	odocstringstream os;
 	os << '\n';
 	// only add blank line if we're not in a ParbreakIsNewline situation

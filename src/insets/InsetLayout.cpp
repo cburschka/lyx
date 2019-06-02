@@ -41,7 +41,7 @@ InsetLayout::InsetLayout() :
 	fixedwidthpreambleencoding_(false), htmlforcecss_ (false),
 	htmlisblock_(true), multipar_(true), custompars_(true),
 	forceplain_(false), passthru_(false), parbreakisnewline_(false),
-	freespacing_(false), keepempty_(false), forceltr_(false),
+	parbreakignored_(false), freespacing_(false), keepempty_(false), forceltr_(false),
 	forceownlines_(false), needprotect_(false), needcprotect_(false),
 	needmboxprotect_(false), intoc_(false), spellcheck_(true),
 	resetsfont_(false), display_(true), forcelocalfontswitch_(false),
@@ -128,6 +128,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_NEWLINE_CMD,
 		IL_PASSTHRU,
 		IL_PASSTHRU_CHARS,
+		IL_PARBREAKIGNORED,
 		IL_PARBREAKISNEWLINE,
 		IL_PREAMBLE,
 		IL_REQUIRES,
@@ -187,6 +188,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "needprotect", IL_NEEDPROTECT },
 		{ "newlinecmd", IL_NEWLINE_CMD },
 		{ "obsoletedby", IL_OBSOLETEDBY },
+		{ "parbreakignored", IL_PARBREAKIGNORED },
 		{ "parbreakisnewline", IL_PARBREAKISNEWLINE },
 		{ "passthru", IL_PASSTHRU },
 		{ "passthruchars", IL_PASSTHRU_CHARS },
@@ -326,6 +328,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_NEWLINE_CMD:
 			lex >> newline_cmd_;
+			break;
+		case IL_PARBREAKIGNORED:
+			lex >> parbreakignored_;
 			break;
 		case IL_PARBREAKISNEWLINE:
 			lex >> parbreakisnewline_;
