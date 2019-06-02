@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 573
+\lyxformat 575
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -110,6 +110,8 @@ logicalmkup
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
+\lineno_options 
 \notefontcolor #0000ff
 \branch OutDated
 \selected 0
@@ -10460,6 +10462,52 @@ reference "subsec:Beschreibung-des-Zeichensatzes"
 status collapsed
 
 \begin_layout Plain Layout
+FreeSpacing
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Wie bei Absatz-Layouts, siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Einzelne-Absatz-Layouts"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 LabelFont
 \end_layout
 
@@ -10534,8 +10582,6 @@ status collapsed
 
  gesetzt wird, wird dieses Argument automatisch eingefügt, sobald der betreffend
 e Absatzstil ausgewählt wird.
- Momentan ist es nur möglich, ein Argument pro Stil\SpecialChar breakableslash
-Format automatisch einzufügen.
 \end_layout
 
 \begin_layout Itemize

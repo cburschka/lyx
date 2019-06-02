@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 573
+\lyxformat 575
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -102,6 +102,8 @@ logicalmkup
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
+\lineno_options 
 \notefontcolor #0000ff
 \branch OutDated
 \selected 0
@@ -12296,6 +12298,64 @@ reference "subsec:Font-description"
 \end_inset
 
 .
+\change_inserted -712698321 1559484228
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1559484228
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559484228
+FreeSpacing
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559484228
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559484228
+1
+\end_layout
+
+\end_inset
+
+] As with paragraph styles, see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Paragraph-Styles"
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
@@ -12376,8 +12436,12 @@ status collapsed
 \end_inset
 
 , this argument is automatically inserted when the respective style is selected.
+
+\change_deleted -712698321 1559484200
  Currently, only one argument per style\SpecialChar breakableslash
 layout can be automatically inserted.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize

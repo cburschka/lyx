@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 74
+currentFormat = 75
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -247,6 +247,9 @@ currentFormat = 74
 
 # Incremented to format 74, 18 April 2019 by spitz
 # New InsetLayout and Argument tag NewlineCmd
+
+# Incremented to format 75, 2 June 2019 by spitz
+# New Argument tag FreeSpacing
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
@@ -497,7 +500,7 @@ def convert(lines, end_format):
                 i += 1
             continue
 
-        if format >= 65 and format <= 73:
+        if format >= 65 and format <= 74:
             # nothing to do.
             i += 1
             continue

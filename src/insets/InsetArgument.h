@@ -69,6 +69,8 @@ public:
 	///
 	bool isPassThru() const { return pass_thru_; }
 	///
+	bool isFreeSpacing() const { return free_spacing_; }
+	///
 	bool isTocCaption() const { return is_toc_caption_; }
 	///
 	bool resetFontEdit() const { return false; }
@@ -113,6 +115,8 @@ private:
 	bool pass_thru_local_;
 	/// Effective pass-thru setting (inherited or local)
 	bool pass_thru_;
+	///
+	bool free_spacing_;
 	///
 	docstring pass_thru_chars_;
 	/// Does this argument provide content for the TOC?

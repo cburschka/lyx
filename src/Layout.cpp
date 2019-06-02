@@ -1022,6 +1022,7 @@ void Layout::readArgument(Lexer & lex)
 	arg.labelfont = inherit_font;
 	arg.is_toc_caption = false;
 	arg.passthru = PT_INHERITED;
+	arg.free_spacing = false;
 	string id;
 	lex >> id;
 	bool const itemarg = prefixIs(id, "item:");
@@ -1098,6 +1099,9 @@ void Layout::readArgument(Lexer & lex)
 		} else if (tok == "istoccaption") {
 			lex.next();
 			arg.is_toc_caption = lex.getBool();
+		} else if (tok == "freespacing") {
+			lex.next();
+			arg.free_spacing = lex.getBool();
 		} else {
 			lex.printError("Unknown tag");
 			error = true;

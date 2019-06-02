@@ -109,6 +109,7 @@ public:
 		ArgPassThru passthru;
 		docstring pass_thru_chars;
 		bool is_toc_caption;
+		bool free_spacing;
 		std::string newlinecmd;
 	};
 	///
