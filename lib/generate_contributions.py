@@ -1415,6 +1415,14 @@ contributors = [
                  "30 March 2005",
                  u"Support for two-column figure (figure*) and table (table*) environments.  Fixed minibuffer entry of floats."),
 
+     contributor(u"Isaac Oscar Gariano",
+                 "isaacOscar () hotmail ! com",
+                 "GPL",
+                 "Re: [PATCH] Make math autocorrrect work with more than 2 chars",
+                 "m=155874284418501",
+                 "25 May 2019",
+                 u"Improvements to math autocorrect"),
+
      contributor(u"Gilad Orr",
                  "giladorr () gmail ! com",
                  "GPL",
