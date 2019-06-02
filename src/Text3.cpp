@@ -1595,11 +1595,20 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 
 		DocumentClass const & tclass = bv->buffer().params().documentClass();
+		bool inautoarg = false;
 		for (auto const & la_pair : tclass[layout].args()) {
 			Layout::latexarg const & arg = la_pair.second;
 			if (arg.autoinsert) {
+				// If we had already inserted an arg automatically,
+				// leave this now in order to insert the next one.
+				if (inautoarg) {
+					cur.leaveInset(cur.inset());
+					cur.posForward();
+					inautoarg = false;
+				}
 				FuncRequest const cmd2(LFUN_ARGUMENT_INSERT, la_pair.first);
 				lyx::dispatch(cmd2);
+				inautoarg = true;
 			}
 		}
 
@@ -2063,7 +2072,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		bool const sel = cur.selection();
 		doInsertInset(cur, this, cmd, true, true);
 		// Insert auto-insert arguments
-		bool autoargs = false;
+		bool autoargs, inautoarg = false;
 		Layout::LaTeXArgMap args = cur.inset().getLayout().args();
 		Layout::LaTeXArgMap::const_iterator lait = args.begin();
 		Layout::LaTeXArgMap::const_iterator const laend = args.end();
@@ -2072,9 +2081,17 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			if (arg.autoinsert) {
 				// The cursor might have been invalidated by the replaceSelection.
 				cur.buffer()->changed(true);
+				// If we had already inserted an arg automatically,
+				// leave this now in order to insert the next one.
+				if (inautoarg) {
+					cur.leaveInset(cur.inset());
+					cur.posForward();
+					inautoarg = false;
+				}
 				FuncRequest cmd2(LFUN_ARGUMENT_INSERT, (*lait).first);
 				lyx::dispatch(cmd2);
 				autoargs = true;
+				inautoarg = true;
 			}
 		}
 		if (!autoargs) {
