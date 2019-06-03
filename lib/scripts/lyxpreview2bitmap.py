@@ -378,8 +378,8 @@ def main(argv):
     if len(dir) != 0:
         os.chdir(dir)
 
-    if lyxpreview_tools.debug:
-        f_out = open('debug.txt', 'a')
+    if lyxpreview_tools.verbose:
+        f_out = open('verbose.txt', 'a')
         sys.stdout = f_out
         sys.stderr = f_out
 
