@@ -267,18 +267,6 @@ bool isInside(DocIterator const & it, MathData const & ar,
 #endif
 
 
-int MathData::caretAscent(BufferView const * bv) const
-{
-	return mrow_cache_[bv].caret_ascent;
-}
-
-
-int MathData::caretDescent(BufferView const * bv) const
-{
-	return mrow_cache_[bv].caret_descent;
-}
-
-
 void MathData::metrics(MetricsInfo & mi, Dimension & dim, bool tight) const
 {
 	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
@@ -310,9 +298,14 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim, bool tight) const
 	// so that we can set the caret vertical dimensions.
 	mrow.caret_ascent = min(dim.asc, fm.maxAscent());
 	mrow.caret_descent = min(dim.des, fm.maxDescent());
+	/// do the same for math cells linearized in the row
+	MathRow caret_row = MathRow(mrow.caret_ascent, mrow.caret_descent);
+	for (auto const & e : mrow)
+		if (e.type == MathRow::BEGIN && e.ar)
+			bv->setMathRow(e.ar, caret_row);
 
 	// Cache row and dimension.
-	mrow_cache_[bv] = mrow;
+	bv->setMathRow(this, mrow);
 	bv->coordCache().arrays().add(this, dim);
 }
 
@@ -357,7 +350,7 @@ void MathData::draw(PainterInfo & pi, int const x, int const y) const
 	setXY(*pi.base.bv, x, y);
 
 	drawSelection(pi, x, y);
-	MathRow const & mrow = mrow_cache_[pi.base.bv];
+	MathRow const & mrow = pi.base.bv->mathRow(this);
 	mrow.draw(pi, x, y);
 }
 

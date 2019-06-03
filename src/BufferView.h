@@ -42,6 +42,8 @@ class FuncStatus;
 class Intl;
 class Inset;
 class Length;
+class MathData;
+class MathRow;
 class ParIterator;
 class ParagraphMetrics;
 class Point;
@@ -295,6 +297,11 @@ public:
 	CoordCache & coordCache();
 	///
 	CoordCache const & coordCache() const;
+
+	///
+	MathRow const & mathRow(MathData const * cell) const;
+	///
+	void setMathRow(MathData const * cell, MathRow const & mrow);
 
 	///
 	Point getPos(DocIterator const & dit) const;

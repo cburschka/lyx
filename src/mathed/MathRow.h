@@ -86,7 +86,7 @@ public:
 	};
 
 	///
-	MathRow() : caret_ascent(0), caret_descent(0) {};
+	MathRow(int asc = 0, int des = 0) : caret_ascent(asc), caret_descent(des) {};
 	///
 	typedef std::vector<Element> Elements;
 	///

@@ -26,7 +26,6 @@
 
 #include <cstddef>
 #include <vector>
-#include <map>
 
 
 namespace lyx {
@@ -124,11 +123,6 @@ public:
 	/// Add this array to a math row. Return true if contents got added
 	bool addToMathRow(MathRow &, MetricsInfo & mi) const;
 
-	// ascent of caret in this cell
-	int caretAscent(BufferView const * bv) const;
-	/// descent of caret in this cell
-	int caretDescent(BufferView const * bv) const;
-
 	/// rebuild cached metrics information
 	/** When \c tight is true, the height of the cell will be at least
 	 *  the x height of the font. Otherwise, it will be the max height
@@ -196,9 +190,6 @@ protected:
 	mutable int sshift_;
 	mutable int kerning_;
 	Buffer * buffer_;
-
-	/// cached object that describes typeset data
-	mutable std::map<BufferView const *, MathRow> mrow_cache_;
 
 private:
 	/// is this an exact match at this position?

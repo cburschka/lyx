@@ -252,6 +252,9 @@ struct BufferView::Private
 	Update::flags update_flags_;
 	///
 	CoordCache coord_cache_;
+	///
+	typedef map<MathData const *, MathRow> MathRows;
+	MathRows math_rows_;
 
 	/// Estimated average par height for scrollbar.
 	int wh_;
@@ -427,6 +430,20 @@ CoordCache & BufferView::coordCache()
 CoordCache const & BufferView::coordCache() const
 {
 	return d->coord_cache_;
+}
+
+
+MathRow const & BufferView::mathRow(MathData const * cell) const
+{
+	auto it = d->math_rows_.find(cell);
+	LATTEST(it != d->math_rows_.end());
+	return it->second;
+}
+
+
+void BufferView::setMathRow(MathData const * cell, MathRow const & mrow)
+{
+	d->math_rows_[cell] = mrow;
 }
 
 
@@ -2771,6 +2788,7 @@ void BufferView::updateMetrics(Update::flags & update_flags)
 
 	// Clear out the position cache in case of full screen redraw,
 	d->coord_cache_.clear();
+	d->math_rows_.clear();
 
 	// Clear out paragraph metrics to avoid having invalid metrics
 	// in the cache from paragraphs not relayouted below
@@ -3011,8 +3029,9 @@ void BufferView::caretPosAndHeight(Point & p, int & h) const
 	int asc, des;
 	Cursor const & cur = cursor();
 	if (cur.inMathed()) {
-		asc = cur.cell().caretAscent(this);
-		des = cur.cell().caretDescent(this);
+		MathRow const & mrow = mathRow(&cur.cell());
+		asc = mrow.caret_ascent;
+		des = mrow.caret_descent;
 	} else {
 		Font const font = cur.real_current_font;
 		frontend::FontMetrics const & fm = theFontMetrics(font);
