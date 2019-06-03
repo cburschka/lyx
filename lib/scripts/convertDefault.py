@@ -72,7 +72,7 @@ if sys.argv[1] == 'pdf' and (version >= 0x060206 or gm):
     sopts = '-define pdf:use-cropbox=true ' + sopts
 
 # If supported, add the -flatten option for ppm target formats (see bug 4749)
-if sys.argv[3] == 'ppm' and (im and version >= 0x060305 or gm):
+if sys.argv[3] == 'ppm' and (im and version >= "0x060305" or gm):
     topts = '-flatten'
 
 # print (command, sys.argv[2], sys.argv[4], file= sys.stdout)
