@@ -291,7 +291,6 @@ Language australian
 End
 
 # In polyglossia, this is supported since release 1.33.4 (May 2014)
-# We introduce it with LyX 2.2 to give the support time to settle.
 # Due to the variety, we use no country code.
 Language austrian
 	GuiName          "German (Austria, old spelling)"
@@ -307,7 +306,6 @@ Language austrian
 End
 
 # In polyglossia, this is supported since release 1.33.4 (May 2014)
-# We introduce it with LyX 2.2 to give the support time to settle.
 Language naustrian
 	GuiName          "German (Austria)"
 	BabelName        naustrian
@@ -318,6 +316,22 @@ Language naustrian
 	FontEncoding	 T1|OT1
 	DateFormats      "dd. MMMM yyyy|dd. MMM yyyy|dd.MM.yyyy"
 	LangCode         de_AT
+End
+
+Language azerbaijani
+	GuiName          "Azerbaijani"
+	BabelName        azerbaijani
+	QuoteStyle       russian
+	Encoding         iso8859-9
+	FontEncoding	 T2A,T1
+	DateFormats      "d MMMM yyyy|dd.MMM.yyyy|dd.MM.yyyy"
+	LangCode         az_AZ
+	Requires         textschwa
+        # use \cyrschwa in T1, allow hyphenation in remainder of word
+	PostBabelPreamble
+          \DeclareTextCommand{\textschwa}{T1}{\cyrschwa\bbl@allowhyphens}
+          \DeclareTextCommand{\textSchwa}{T1}{\CYRSCHWA\bbl@allowhyphens}
+	EndPostBabelPreamble
 End
 
 Language bahasa
@@ -371,8 +385,13 @@ Language belarusian
 End
 
 # supported by polyglossia but not LyX:
-# Language bengali
-# 	PolyglossiaName  bengali
+Language bengali
+ 	PolyglossiaName  bengali
+	QuoteStyle       english
+	Encoding         utf8
+	LangCode	 be_IN
+End
+
 
 # not yet supported by polyglossia
 # The (rarely used) Cyrillic script is not supported (try serbian).
@@ -499,8 +518,16 @@ Language chinese-traditional
 End
 
 # supported by polyglossia but not LyX:
-# Language churchslavonic
-# 	PolyglossiaName  churchslavonic
+Language churchslavonic
+	GuiName         "Church Slavonic"
+ 	PolyglossiaName  churchslavonic
+	QuoteStyle       swiss
+	Encoding         utf8
+	FontEncoding     T2A
+	DateFormats      "d MMMM yyyy 'л'.|d MMM yyyy 'л'.|dd.MM.yyyy"
+	LangCode         cu
+	Provides         textcyrillic
+End
 
 # not supported by babel
 # FIXME DateFormats
@@ -790,7 +817,7 @@ Language hebrew
 	QuoteStyle       english
 	InternalEncoding true
 	# babel-hebrew expects the encoding for *other* languages last:
-	# FontEncoding    HE8|LHE
+	FontEncoding    HE8,T1|LHE,T1
 	## Use font encoding HE8 if the Culmus fonts are installed and
 	# work around too simple test for article-like classes in rlbabel.def.
 	PreBabelPreamble
@@ -927,16 +954,24 @@ Language khmer
 	LangCode         km_KH
 End
 
-# Fixme: activate Polyglossia support (file format change)
 Language korean
 	GuiName         "Korean"
-	#PolyglossiaName  korean
+	PolyglossiaName korean
 	Encoding        euc-kr
 	QuoteStyle      cjkangle
 	DateFormats     "yyyy년 M월 d일|yyyy. M. d.|yy. M. d."
 	LangCode        ko_KR
 	Requires        CJK
 End
+
+# Language korean-kotex
+# 	GuiName         "Korean (koTeX)"
+# 	Encoding        utf8
+# 	QuoteStyle      cjkangle
+# 	DateFormats     "yyyy년 M월 d일|yyyy. M. d.|yy. M. d."
+# 	LangCode        ko_KR
+# 	Requires        kotex
+# End
 
 # not yet supported by polyglossia
 Language kurmanji
@@ -1092,14 +1127,25 @@ Language norsk
 	QuoteStyle       swiss
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
-	DateFormats      "d. MMMM yyyy|d. MMM yyyy|dd.MM.yyyy"
+	DateFormats      "d. MMMM yyyy|d. MMM yyyy|dd./MM./yyyy"
 	LangCode         nb_NO
 End
 
 # supported by polyglossia but not LyX:
 # Language nko
-#	GuiName		"N’Ko"            
-# 	PolyglossiaName	nko
+# 	GuiName		 "N’Ko"
+# 	PolyglossiaName	 nko
+# 	QuoteStyle       swiss
+# 	Encoding         utf8
+#       FIXME: DateFormats      "d MMMM، yyyy|dd/MM/yyyy|d/M/yyyy"
+#       gloss-nko.ldf says:
+#	In n'ko, this is an example of date :
+#	  ߂߀߁߃ ߞߏ߲ߞߏߜߍ ߕߟߋ߬ ߁߈ (RTL)
+#	  ( 18 February 2013 )
+#       The word "ߕߟߋ߬" is mandatory between month name and day number.
+# 	RTL              true
+# 	LangCode	 nqo
+# End
 
 Language nynorsk
 	GuiName          "Norwegian (Nynorsk)"
@@ -1126,15 +1172,13 @@ End
 # Currently not supported (file format change!)
 # Russian orthography from the Petrine orthographic reforms of
 # 1708 to the 1917 orthographic reform
-# Note: If this is enabled, russian needs to get
-#       PolyglossiaOpts  "spelling=modern"
-# Language oldrussian
-# 	GuiName          "Russian (Petrine orthography)"
-# 	PolyglossiaName  russian
-# 	PolyglossiaOpts  "spelling=old"
-# 	LangCode         ru_petr1708
-#       QuoteStyle       russian
-# End
+Language oldrussian
+	GuiName          "Russian (Petrine orthography)"
+	PolyglossiaName  russian
+	PolyglossiaOpts  "spelling=old"
+	QuoteStyle       russian
+	LangCode         ru_petr1708
+End
 
 # FIXME DateFormats
 Language piedmontese
@@ -1202,6 +1246,7 @@ Language russian
 	HasGuiSupport    true
 	BabelName        russian
 	PolyglossiaName  russian
+	PolyglossiaOpts  "spelling=modern"
 	QuoteStyle       russian
 	Encoding         koi8-r
 	FontEncoding     T2A
@@ -1389,7 +1434,7 @@ Language thai
 	  \@whilenum\@tempcnta<252\do{%
 	    \catcode\@tempcnta=13
 	    \advance\@tempcnta\@ne
-	  }%	  
+	  }%
 	  % Restore \coyright definition corrupted by lthenc.def
 	  \DeclareRobustCommand{\copyright}{%
 	    \ifmmode{\nfss@text{\textcopyright}}\else\textcopyright\fi}

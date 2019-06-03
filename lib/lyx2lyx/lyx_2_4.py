@@ -1728,6 +1728,30 @@ def convert_lineno(document):
                                 "\\lineno_options %s" % options]
 
 
+def revert_new_languages(document):
+    """Emulate support for Azerbaijani, Bengali, Church Slavonic, Korean,
+    and Russian (Petrine orthography)."""
+    
+    #revert_language(document, lyxname, babelname="", polyglossianame="")
+    revert_language(document, "azerbaijani", "azerbaijani", "")
+    revert_language(document, "bengali", "", "bengali")
+    revert_language(document, "churchslavonic", "", "churchslavonic")
+    revert_language(document, "oldrussian", "", "russian")
+    
+    # Korean is already supported via CJK, so leave as-is for Babel
+    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
+        return
+    langpack = get_value(document.header, "\\language_package")
+    if langpack not in ("default", "auto"):
+        return
+    if document.language == "korean":
+        add_to_preamble(document, ["\\usepackage{polyglossia}",
+                                   "\\setdefaultlanguage{korean}"])
+    elif find_token(document.body, "\\lang korean") != -1:
+        revert_language(document, "korean", "", "korean")
+
+
+
 ##
 # Conversion hub
 #
@@ -1765,9 +1789,11 @@ convert = [
            [573, [convert_inputencoding_namechange]],
            [574, [convert_ruby_module, convert_utf8_japanese]],
            [575, [convert_lineno]],
+           [576, []],
           ]
 
-revert =  [[574, [revert_lineno]],
+revert =  [[575, [revert_new_languages]],
+           [574, [revert_lineno]],
            [573, [revert_ruby_module, revert_utf8_japanese]],
            [572, [revert_inputencoding_namechange]],
            [571, [revert_notoFonts]],

@@ -51,7 +51,7 @@ namespace {
  * please keep this in sync with known_coded_languages line by line!
  */
 const char * const known_languages[] = {"acadian", "afrikaans", "albanian",
-"american", "arabic", "arabtex", "australian", "austrian", "bahasa", "bahasai",
+"american", "arabic", "arabtex", "australian", "austrian", "azerbaijani", "bahasa", "bahasai",
 "bahasam", "basque", "belarusian", "bosnian", "brazil", "brazilian", "breton", "british",
 "bulgarian", "canadian", "canadien", "catalan", "croatian", "czech", "danish",
 "dutch", "english", "esperanto", "estonian", "farsi", "finnish", "francais",
@@ -72,7 +72,7 @@ const char * const known_languages[] = {"acadian", "afrikaans", "albanian",
  * please keep this in sync with known_languages line by line!
  */
 const char * const known_coded_languages[] = {"french", "afrikaans", "albanian",
-"american", "arabic_arabi", "arabic_arabtex", "australian", "austrian", "bahasa", "bahasa",
+"american", "arabic_arabi", "arabic_arabtex", "australian", "austrian", "azerbaijani", "bahasa", "bahasa",
 "bahasam", "basque", "belarusian", "bosnian", "brazilian", "brazilian", "breton", "british",
 "bulgarian", "canadian", "canadien", "catalan", "croatian", "czech", "danish",
 "dutch", "english", "esperanto", "estonian", "farsi", "finnish", "french",
@@ -103,7 +103,7 @@ const char * const known_danish_quotes_languages[] = {"danish", 0};
 
 /// languages with english quotes (.lyx names)
 const char * const known_english_quotes_languages[] = {"american", "australian",
-"bahasa", "bahasam", "brazilian", "canadian", "chinese-simplified", "english",
+"bahasa", "bahasam", "bengali", "brazilian", "canadian", "chinese-simplified", "english",
 "esperanto", "farsi", "interlingua", "irish", "newzealand", "scottish",
 "thai", "turkish", "vietnamese", 0};
 
@@ -124,14 +124,15 @@ const char * const known_polish_quotes_languages[] = {"afrikaans", "bosnian", "c
 "dutch", "magyar", "polish", "romanian", "serbian", "serbian-latin", 0};
 
 /// languages with russian quotes (.lyx names)
-const char * const known_russian_quotes_languages[] = {"russian", "ukrainian", 0};
+const char * const known_russian_quotes_languages[] = {"azerbaijani", "oldrussian",
+"russian", "ukrainian", 0};
 
 /// languages with swedish quotes (.lyx names)
 const char * const known_swedish_quotes_languages[] = {"finnish", "swedish", 0};
 
 /// languages with swiss quotes (.lyx names)
 const char * const known_swiss_quotes_languages[] = {"albanian",
-"armenian", "basque", "german-ch", "german-ch-old",
+"armenian", "basque", "churchslavonic", "german-ch", "german-ch-old",
 "norsk", "nynorsk", "turkmen", "ukrainian", "vietnamese", 0};
 
 /// known language packages from the times before babel
@@ -323,12 +324,12 @@ string process_keyval_opt(vector<string> & options, string name)
 const char * const Preamble::polyglossia_languages[] = {
 "albanian", "american", "amharic", "ancient", "arabic", "armenian", "asturian", "australian",
 "bahasai", "bahasam", "basque", "bengali", "brazil", "brazilian", "breton", "british", "bulgarian",
-"catalan", "coptic", "croatian", "czech", "danish", "divehi", "dutch",
+"catalan", "churchslavonic", "coptic", "croatian", "czech", "danish", "divehi", "dutch",
 "english", "esperanto", "estonian", "farsi", "finnish", "french", "friulan",
 "galician", "greek", "monotonic", "hebrew", "hindi",
-"icelandic", "interlingua", "irish", "italian", "kannada", "khmer",
+"icelandic", "interlingua", "irish", "italian", "kannada", "khmer", "korean",
 "lao", "latin", "latvian", "lithuanian", "lsorbian", "magyar", "malayalam", "marathi",
-"austrian", "newzealand", "german", "norsk", "nynorsk", "occitan",
+"austrian", "newzealand", "german", "norsk", "nynorsk", "occitan", "oldrussian",
 "piedmontese", "polish", "polytonic", "portuges", "romanian", "romansh", "russian",
 "samin", "sanskrit", "scottish", "serbian", "slovak", "slovenian", "spanish", "swedish", "syriac",
 "tamil", "telugu", "thai", "tibetan", "turkish", "turkmen",
@@ -342,12 +343,12 @@ const char * const Preamble::polyglossia_languages[] = {
 const char * const Preamble::coded_polyglossia_languages[] = {
 "albanian", "american", "amharic", "ancientgreek", "arabic_arabi", "armenian", "asturian", "australian",
 "bahasa", "bahasam", "basque", "bengali", "brazilian", "brazilian", "breton", "british", "bulgarian",
-"catalan", "coptic", "croatian", "czech", "danish", "divehi", "dutch",
+"catalan", "churchslavonic", "coptic", "croatian", "czech", "danish", "divehi", "dutch",
 "english", "esperanto", "estonian", "farsi", "finnish", "french", "friulan",
 "galician", "greek", "greek", "hebrew", "hindi",
-"icelandic", "interlingua", "irish", "italian", "kannada", "khmer",
+"icelandic", "interlingua", "irish", "italian", "kannada", "khmer", "korean",
 "lao", "latin", "latvian", "lithuanian", "lowersorbian", "magyar", "malayalam", "marathi",
-"naustrian","newzealand", "ngerman", "norsk", "nynorsk", "occitan",
+"naustrian","newzealand", "ngerman", "norsk", "nynorsk", "occitan", "oldrussian",
 "piedmontese", "polish", "polutonikogreek", "portuges", "romanian", "romansh", "russian",
 "samin", "sanskrit", "scottish", "serbian", "slovak", "slovene", "spanish", "swedish", "syriac",
 "tamil", "telugu", "thai", "tibetan", "turkish", "turkmen",
@@ -399,7 +400,7 @@ void Preamble::addModule(string const & module)
 	for (auto const & m : used_modules) {
 		if (m == module)
 			return;
-	}		
+	}
 	used_modules.push_back(module);
 }
 

@@ -1,25 +1,29 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 571
+\lyxformat 575
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin /systemlyxdir/examples/ko/
 \textclass article
 \begin_preamble
-\usepackage[cjk,hangul]{kotex}
+\@ifpackageloaded{fontspec}{
+  \newfontfamily\hangulfont{UnJamoBatang}
+  \newfontfamily\hangulfontsf{UnJamoDotum}
+  \newfontfamily\hangulfonttt{UnTaza}
+}{}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
 \language korean
-\language_package default
+\language_package auto
 \inputencoding utf8
 \fontencoding auto
-\font_roman "lmodern" "UnJamoBatang"
-\font_sans "default" "UnJamoNovel"
-\font_typewriter "default" "UnTaza"
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
-\use_non_tex_fonts false
+\use_non_tex_fonts true
 \font_sc false
 \font_osf false
 \font_sf_scale 100 100
@@ -59,6 +63,7 @@
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -69,7 +74,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style cjkangle
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1

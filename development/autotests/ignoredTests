@@ -107,7 +107,7 @@ export/examples/ja/Modules/Sweave.*
 export/examples/ja/Multilingual_Typesetting_.*CJK.(dvi3|pdf5)_texF
 export/.*/(ko|zh_CN)/.*(dvi3|pdf[45])_texF
 export/export/latex/CJK/zh_CN-toc_*.(dvi3|pdf[45])_texF
-
+export/export/latex/CJK/en-de-el-ru-ko_utf8_.*_texF
 
 # export of minted documents to 2.2.x is not guaranteed to work (and currently
 # fails for our two minted example files), as explained here:

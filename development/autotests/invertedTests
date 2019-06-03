@@ -48,8 +48,11 @@ export/templates/(|de/|es/|fr/|ja/)Presentations/Beamer_lyx(16|20)
 export/examples/(|es/)Curricula_Vitae/Modern_CV_(lyx(16|20)|dvi|dvi3.*F|pdf|pdf3)
 export/examples/(|es/)Curricula_Vitae/Europe_CV_(dvi|dvi3.*F|pdf|pdf3)
 #
-# back-conversion fails for rotated float inset in a list
+# Back-conversion fails for rotated float inset in a list:
 export/export/lyx2lyx/lyx_2_3_test_lyx(16|20|21|22)
+# Additional empty lines (vs. Separator latexpar) with every round-trip
+# before an ERT nested in a Description list:
+export/export/lyx2lyx/lyx_2_3_test2_lyx(16|20)
 
 # New problem with TL18: endless loop?
 #    ! TeX capacity exceeded, sorry [input stack +size=5000].
@@ -252,6 +255,7 @@ export/export/latex/inputenc-xetex-utf8-expl3-bug_pdf4_texF
 # Korean with LuaTeX:
 # Language korean not found in language.dat.lua
 export/examples/ko/Welcome_(dvi3|pdf5)_systemF
+export/export/latex/CJK/en-de-el-ru-ko_utf8_(dvi3|pdf5)_systemF
 
 # Arabic
 #

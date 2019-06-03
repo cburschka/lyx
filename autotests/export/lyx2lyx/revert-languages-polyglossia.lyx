@@ -27,7 +27,7 @@
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
-\use_dash_ligatures true
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -88,7 +88,7 @@
 \begin_body
 
 \begin_layout Standard
-Document mixing English and Friulan text.
+English document mixing English and Friulan text.
 \end_layout
 
 \begin_layout Standard
@@ -98,10 +98,30 @@ This is a Friulan paragraph.
 \end_layout
 
 \begin_layout Standard
-Followed by an English paragraph with one 
+English paragraph with one 
 \lang friulan
 Friulan
 \lang english
+ word.
+\end_layout
+
+\begin_layout Standard
+
+\lang friulan
+Friulan paragraph
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+English footnote
+\end_layout
+
+\end_inset
+
+ with one 
+\lang english
+English
+\lang friulan
  word.
 \end_layout
 
@@ -134,9 +154,21 @@ List with
 \begin_layout Enumerate
 
 \lang friulan
-Friulan paragraphs
+Friulan paragraph
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+with nested item list with English item
+\end_layout
+
+\begin_layout Itemize
+
+\lang friulan
+and Friulan list item.
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 
 \lang friulan
@@ -226,10 +258,6 @@ cells
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -248,20 +276,55 @@ Lyxlist with
 \labelwidthstring 00.00.0000
 
 \lang friulan
-Friulan
-\lang english
- label and
+Friulan item
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Friulan 
+
+\lang friulan
+label
+\lang english
+ and
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+also 
 \lang friulan
 content
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+inside it.
+\end_layout
+
+\begin_layout Description
+Description with
+\end_layout
+
+\begin_layout Description
+
+\lang friulan
+Friulan item
+\end_layout
+
+\begin_layout Description
+
+\lang friulan
+label 
+\lang english
+and
+\end_layout
+
+\begin_layout Description
+also
+\lang friulan
+ content
+\end_layout
+
+\begin_layout Description
 inside it.
 \end_layout
 

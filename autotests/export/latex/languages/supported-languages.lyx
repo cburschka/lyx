@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 574
+\lyxformat 576
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -7,9 +7,12 @@
 \textclass scrartcl
 \begin_preamble
 \@ifpackageloaded{fontspec}{
-\newfontfamily\amharicfont[Script=Ethiopic]{Noto Sans Ethiopic}
-\newfontfamily\thaanafont[Script=Thaana]{Noto Sans Thaana}
+\ifdefined\luatexversion\else
+  \newfontfamily\amharicfont[Script=Ethiopic]{Noto Sans Ethiopic}
+\fi
+\newfontfamily\churchslavonicfont[Script=Cyrillic]{MonomakhUnicode}
 \newfontfamily\devanagarifont[Script=Devanagari]{Noto Serif Devanagari}
+\newfontfamily\hangulfont[Script=Hangul]{Baekmuk Batang}
 \newfontfamily\kannadafont[Script=Kannada]{Noto Serif Kannada}
 \newfontfamily\khmerfont[Script=Khmer]{Noto Serif Khmer}
 \newfontfamily\laofont[Script=Lao]{Noto Serif Lao}
@@ -18,6 +21,7 @@
 \newfontfamily\syriacfont[Script=Syriac]{FreeSans}
 \newfontfamily\tamilfont[Script=Tamil]{Noto Serif Tamil}
 \newfontfamily\telugufont[Script=Telugu]{Noto Serif Telugu}
+\newfontfamily\thaanafont[Script=Thaana]{Noto Sans Thaana}
 \newfontfamily\tibetanfont[Script=Tibetan]{Noto Sans Tibetan}
 
 % Font setup for Japanese (not supported by Polyglossia)
@@ -32,9 +36,9 @@
 % see https://tex.stackexchange.com/questions/222980/how-to-use-chinese-with-lualatex
 \usepackage{ifluatex}
 \ifluatex
-  \usepackage{luatexja-fontspec}
+  %\usepackage{luatexja-fontspec}
   % use Mainfont (DejaVu) for Greek and Cyrillic:
-  \ltjsetparameter{jacharrange={-2}}
+  %\ltjsetparameter{jacharrange={-2}}
   %\usepackage[match]{luatexja-fontspec}
   %\setmainjfont[Mapping=tex-text]{WenQuanYi Micro Hei}
   %\setsansjfont[Mapping=tex-text]{WenQuanYi Micro Hei}
@@ -50,7 +54,7 @@ enumitem
 \language english
 \language_package auto
 \inputencoding utf8
-\fontencoding HE8,T1
+\fontencoding auto
 \font_roman "DejaVuSerif" "FreeSerif"
 \font_sans "DejaVuSans" "FreeSans"
 \font_typewriter "default" "FreeMono"
@@ -105,11 +109,8 @@ enumitem
 \justification false
 \use_refstyle 0
 \use_minted 0
-\branch only-as-document-language
-\selected 0
-\filename_suffix 0
-\color #faf0e6
-\end_branch
+\use_lineno 0
+\lineno_options \branch only-as-document-language
 \branch babel-only
 \selected 0
 \filename_suffix 0
@@ -157,6 +158,16 @@ enumitem
 \end_branch
 \branch CJK
 \selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch conflict-ko
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch conflict-luatex
+\selected 1
 \filename_suffix 0
 \color #faf0e6
 \end_branch
@@ -422,6 +433,11 @@ Amharic
 inverted 0
 status open
 
+\begin_layout Standard
+\begin_inset Branch conflict-luatex
+inverted 0
+status open
+
 \begin_layout Quote
 
 \lang amharic
@@ -432,6 +448,11 @@ status open
 3
 \lang amharic
 ኛውን ፡ ቦታ ፡ የያዘ ፡ ነው።
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -464,6 +485,11 @@ inverted 1
 status open
 
 \begin_layout Standard
+\begin_inset Branch conflict-luatex
+inverted 0
+status open
+
+\begin_layout Standard
 \begin_inset Branch conflict-babel-non-TeX-fonts
 inverted 0
 status open
@@ -483,7 +509,7 @@ status open
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dummy paragraph to reset input-encoding with 
@@ -495,6 +521,11 @@ auto-legacy
 \end_inset
 
 .
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -684,12 +715,18 @@ LangCode ast_ES
 \end_layout
 
 \begin_layout Subsection*
-Azerbaijani (Azeri, Azeri Turkish)
+Azerbaijani
 \end_layout
+
+\begin_layout Standard
+\begin_inset Branch babel-only
+inverted 0
+status open
 
 \begin_layout Quote
 
 \emph on
+\lang azerbaijani
 Azərbaycan dili
 \emph default
  (
@@ -718,9 +755,14 @@ sının rəsmi dövlət dilidir.
  daxildir.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Babel azerbaijani (not supported by LyX)
+Babel azerbaijani
 \end_layout
 
 \begin_layout Labeling
@@ -744,35 +786,7 @@ Cyrillic script was used 1938-1991 (still used in Dagestan).
 
 \begin_layout Itemize
 Requires font encodings T1 and T2A (for the letter schwa).
- Use preamble code
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-DeclareTextCommand{
-\backslash
-textSchwa}{T1}{
-\backslash
-CYRSCHWA
-\backslash
-bbl@allowhyphens}
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-DeclareTextCommand{
-\backslash
-textschwa}{T1}{
-\backslash
-cyrschwa
-\backslash
-bbl@allowhyphens}
-\end_layout
-
-\begin_layout Subsection*
-Basq
+ 
 \end_layout
 
 \begin_layout Subsection*
@@ -874,14 +888,35 @@ Package babel Error: if@uni@ode already defined.
 Bengali
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-LyX (LyX support missing)
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
+বাংলা ভাষা একটি ইন্দো-আর্য ভাষা, যা দক্ষিণ এশিয়ার বাঙালি জাতির প্রধান কথ্য
+ ও লেখ্য ভাষা। মাতৃভাষীর সংখ্যায় বাংলা ইন্দো-আর্য ভাষা পরিবারের দ্বিতীয়,
+ ইন্দো-ইউরোপীয় ভাষা পরিবারের চতুর্থ ও বিশ্বের ষষ্ঠ বৃহত্তম ভাষা।
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Polyglossia bengali
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Skript Bengali
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode bn_IN
 \end_layout
 
 \begin_layout Subsection*
@@ -1287,16 +1322,18 @@ The different CJK languages (simplified and traditional Chinese, Japanese,
 \end_layout
 
 \begin_layout Subsection*
-Churchslavonic
+Church Slavonic
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Branch polyglossia-only
+inverted 0
 status open
 
 \begin_layout Quote
 
 \emph on
+\lang churchslavonic
 Црькъвьнословѣ́ньскъ ѩꙁꙑ́къ
 \emph default
  и 
@@ -1311,11 +1348,6 @@ status open
 \end_inset
 
 
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-LyX (LyX support missing)
 \end_layout
 
 \begin_layout Labeling
@@ -1480,12 +1512,22 @@ Divehi
 inverted 0
 status open
 
+\begin_layout Standard
+\begin_inset Branch conflict-luatex
+inverted 0
+status open
+
 \begin_layout Quote
 
 \lang divehi
 ދިވެހިބަހަކީ ދިވެހިރާއްޖޭގެ ރަސްމީ ބަހެވެ.
  މި ބަހުން ވާހަކަ ދައްކައި އުޅެނީ ދިވެހިރާއްޖޭގެ އަހުލުވެރިންގެ އިތުރުން
  ހިންދުސްތާނުގެ މަލިކު ގެ އަހުލުވެރިންނެވެ.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1609,7 +1651,7 @@ Babel canadian
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Polyglossia english [variant=canadian] # support still missing
+Polyglossia english [variant=canadian] # Polyglossia support still missing
 \end_layout
 
 \begin_layout Labeling
@@ -1757,9 +1799,14 @@ LangCode et_EE
 Farsi
 \end_layout
 
-\begin_layout Quote
+\begin_layout Standard
 \begin_inset Branch CJK
 inverted 1
+status open
+
+\begin_layout Standard
+\begin_inset Branch conflict-luatex
+inverted 0
 status open
 
 \begin_layout Standard
@@ -1767,12 +1814,30 @@ status open
 inverted 0
 status open
 
-\begin_layout Standard
+\begin_layout Quote
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Dummy paragraph to set language inside quote
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quote
 
 \lang farsi
 «فارسی» و «پارسی» به اینجا تغییر مسیر دارند.
  برای دیگر کاربردهای این دو، فارسی (ابهامزدایی) و پارسی (ابهامزدایی) را
  ببینید.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1913,6 +1978,29 @@ E0 à á â ã ä å æ ç è é ê ë ì í î ï
 
 \begin_layout Standard
 F0 ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang czech
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Czech dummy paragraph to reset input-encoding with 
+\begin_inset Quotes eld
+\end_inset
+
+auto-legacy
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -2081,7 +2169,7 @@ LangCode fr_CA
 \end_layout
 
 \begin_layout Subsection*
-Friulian
+Friulan
 \end_layout
 
 \begin_layout Quote
@@ -2678,12 +2766,30 @@ Provides textgreek
 Hebrew
 \end_layout
 
-\begin_layout Quote
-\begin_inset Branch conflict-babel-non-TeX-fonts
+\begin_layout Standard
+\begin_inset Branch conflict-luatex
 inverted 0
 status open
 
 \begin_layout Standard
+\begin_inset Branch conflict-babel-non-TeX-fonts
+inverted 0
+status open
+
+\begin_layout Quote
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Dummy paragraph to set language inside quote
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quote
 
 \lang hebrew
 עִבְרִית היא שפה שמית, ממשפחת השפות האפרו-אסיאתיות, הידועה כשפתם של היהודים
@@ -2725,50 +2831,6 @@ status open
 \end_inset
 
 
-\end_layout
-
-\begin_layout Quote
-\begin_inset Branch polyglossia-only
-inverted 0
-status open
-
-\begin_layout Standard
-
-\lang hebrew
-עִבְרִית היא שפה שמית, ממשפחת השפות האפרו-אסיאתיות, הידועה כשפתם של היהודים
- ושל השומרונים, אשר ניב מודרני שלה (עברית ישראלית) הוא שפתה הרשמית של מדינת
- ישראל, מעמד שעוגן בשנת
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\nospellcheck off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\numeric on
-\nospellcheck default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-2018
-\numeric off
- בחוק יסוד: ישראל – מדינת הלאום של העם היהודי.
 \end_layout
 
 \end_inset
@@ -3338,6 +3400,11 @@ status open
 \end_inset
 
 
+\begin_inset Branch conflict-ko
+inverted 1
+status open
+
+\begin_layout Standard
 \begin_inset Branch polyglossia-only
 inverted 0
 status open
@@ -3349,6 +3416,11 @@ status open
 日本語
 \series default
 （にほんご、にっぽんご[注 1]）は、主に日本国内や日本人同士の間で使用されている言語である。
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3413,6 +3485,11 @@ utf8-cjk
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Itemize
+XeTeX and LuaTeX work only with non-TeX fonts.
+ Font setup with XeCJK conflicts with Polyglossia-Korean.
 \end_layout
 
 \begin_layout Subsection*
@@ -3546,6 +3623,11 @@ Khmer
 inverted 0
 status open
 
+\begin_layout Standard
+\begin_inset Branch conflict-luatex
+inverted 0
+status open
+
 \begin_layout Quote
 
 \lang khmer
@@ -3559,6 +3641,11 @@ khmer
 \lang khmer
  ខេមរភាសាខ្មែរ គឺជាភាសារបស់ ប្រជាជាតិខ្មែរ ។ ភាសាសំស្ក្រឹត និងភាសាបាលីបានជួយបង្ក
 ើ ភាសា ព្រោះភាសាខ្មែរបានខ្ចីពាក្យច្រើនពីភាសាអស់នោះ ។
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3586,12 +3673,19 @@ Korean
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Branch conflict-ko
+inverted 0
 status open
 
-\begin_layout Plain Layout
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Quote
 
 \emph on
+\lang korean
 한국어
 \emph default
 (韓國語)또는 
@@ -3612,6 +3706,11 @@ status open
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 LyX korean
@@ -3619,7 +3718,7 @@ LyX korean
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Polyglossia korean (LyX support missing)
+Polyglossia korean
 \end_layout
 
 \begin_layout Labeling
@@ -3654,6 +3753,11 @@ Requires CJK
 The different CJK languages (simplified and traditional Chinese, Japanese,
  and Korean) require different fonts but only one CJK-font can be set in
  the preamble.
+\end_layout
+
+\begin_layout Itemize
+XeTeX and LuaTeX work only with non-TeX fonts.
+ Font setup with XeCJK conflicts with Polyglossia-Korean.
 \end_layout
 
 \begin_layout Subsection*
@@ -3999,43 +4103,6 @@ selectfont
 \end_layout
 
 \begin_layout Subsection*
-Lower
-\begin_inset space ~
-\end_inset
-
-Sorbian
-\end_layout
-
-\begin_layout Quote
-
-\emph on
-\lang lowersorbian
-Dolnoserbšćina
-\emph default
-, 
-\emph on
-dolnoserbska rěc
-\emph default
- jo jadna z dweju rěcowu Serbow, kotaraž se wužywa w Dolnej Łužycy, w pódpołdnjo
-wej Bramborskej, na pódzajtšu Nimskej.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Babel lowersorbian
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Polyglossia lsorbian
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-LangCode dsb_DE
-\end_layout
-
-\begin_layout Subsection*
 Macedonian
 \end_layout
 
@@ -4270,12 +4337,12 @@ Babel mongolian
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-LangCode mn_MN
+Script Cyrillic
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Script Cyrillic
+LangCode mn_MN
 \end_layout
 
 \begin_layout Subsection*
@@ -4290,6 +4357,56 @@ LyX (LyX support missing)
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Polyglossia nko
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Script N'ko
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode nqo
+\end_layout
+
+\begin_layout Subsection*
+North Sami
+\end_layout
+
+\begin_layout Quote
+
+\emph on
+\lang samin
+Davvisámegiella
+\emph default
+ gullá sámegielaid oarjesámegielaid davvejovkui ovttas julev- ja bihtánsámegiela
+in.
+ Eará oarjesámegielat leat ubmisámegiella ja lullisámegiella.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel samin
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia samin
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode se_NO 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(why country code Norway? Also spoken in Sweden and Finland)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
@@ -4684,19 +4801,53 @@ Russian
 orthography)
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-LyX oldrussian (currently not supported by LyX)
+\begin_layout Standard
+\begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Verse
+Бѣлый, блѣдный, бѣдный бѣсъ
+\end_layout
+
+\begin_layout Verse
+Убѣжалъ голодный въ лѣсъ.
+\end_layout
+
+\begin_layout Verse
+Лѣшимъ по лѣсу онъ бѣгалъ,
+\end_layout
+
+\begin_layout Verse
+Рѣдькой съ хрѣномъ пообѣдалъ
+\end_layout
+
+\begin_layout Verse
+И за горькій тотъ обѣдъ
+\end_layout
+
+\begin_layout Verse
+Далъ обѣтъ надѣлать бѣдъ.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Polyglossia russian 
+LyX oldrussian
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-PolyglossiaOpts spelling=old
+Polyglossia russian [spelling=old]
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Skript Cyrillic
 \end_layout
 
 \begin_layout Labeling
@@ -4705,51 +4856,16 @@ LangCode ru_petr1708
 \end_layout
 
 \begin_layout Subsection*
-North Sami
-\end_layout
-
-\begin_layout Quote
-
-\emph on
-\lang samin
-Davvisámegiella
-\emph default
- gullá sámegielaid oarjesámegielaid davvejovkui ovttas julev- ja bihtánsámegiela
-in.
- Eará oarjesámegielat leat ubmisámegiella ja lullisámegiella.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Babel samin
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Polyglossia samin
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-LangCode se_NO 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-(why country code Norway? Also spoken in Sweden and Finland)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection*
 Sanskrit
 \end_layout
 
 \begin_layout Standard
 \begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Standard
+\begin_inset Branch conflict-luatex
 inverted 0
 status open
 
@@ -4762,7 +4878,12 @@ status open
  जगतः एकतमा अतिप्राचीना समृद्धा शास्त्रीया च भाषा वर्तते। संस्कृतं भारतस्य
  जगत: वा भाषास्वेकतमा प्राचीनतमा। भारती सुरभारती अमरभारती अमरवाणी सुरवाणी
  गीर्वाणवाणी गीर्वाणी देववाणी देवभाषा संस्कृता वाक् दैवीवाक् इत्यादिभिः
- नामभिः एतद्भाषा प्रसिद्धा। 
+ नामभिः एतद्भाषा प्रसिद्धा।
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4783,6 +4904,10 @@ Script Devanagari
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 LangCode sa_IN
+\end_layout
+
+\begin_layout Itemize
+Works only with XeTeX
 \end_layout
 
 \begin_layout Subsection*
@@ -5097,6 +5222,74 @@ LangCode sl_SI
 \end_layout
 
 \begin_layout Subsection*
+Sorbian
+\end_layout
+
+\begin_layout Subsubsection*
+Lower
+\begin_inset space ~
+\end_inset
+
+Sorbian
+\end_layout
+
+\begin_layout Quote
+
+\emph on
+\lang lowersorbian
+Dolnoserbšćina
+\emph default
+, 
+\emph on
+dolnoserbska rěc
+\emph default
+ jo jadna z dweju rěcowu Serbow, kotaraž se wužywa w Dolnej Łužycy, w pódpołdnjo
+wej Bramborskej, na pódzajtšu Nimskej.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel lowersorbian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia lsorbian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode dsb_DE
+\end_layout
+
+\begin_layout Subsubsection*
+Upper Sorbian
+\end_layout
+
+\begin_layout Quote
+
+\lang uppersorbian
+Hornjoserbšćina je zapadosłowjanska rěč, kotraž so w Hornjej Łužicy wokoło
+ městow Budyšin, Kamjenc a Wojerecy rěči.
+ Jako słowjanska rěč hornjoserbšćina k indoeuropskim rěčam słuša.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel uppersorbian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Polyglossia usorbian
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LangCode hsb_DE
+\end_layout
+
+\begin_layout Subsection*
 Spanish
 \end_layout
 
@@ -5235,6 +5428,11 @@ Syriac
 inverted 0
 status open
 
+\begin_layout Standard
+\begin_inset Branch conflict-luatex
+inverted 0
+status open
+
 \begin_layout Quote
 Variants of the Syriac alphabet: Esṭrangelā (
 \lang syriac
@@ -5249,6 +5447,11 @@ Variants of the Syriac alphabet: Esṭrangelā (
 ܡܕܢܚܝܐ
 \lang english
 ).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5504,6 +5707,19 @@ package
 \end_layout
 
 \end_deeper
+\begin_layout Subsubsection*
+Thai (CJK)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Babel thaicjk (not supported by LyX)
+\end_layout
+
+\begin_layout Itemize
+Babel support for Thai based on the CJK package and fonts.
+\end_layout
+
 \begin_layout Subsection*
 Tibetan
 \end_layout
@@ -5643,38 +5859,16 @@ LangCode uk_UA
 \end_layout
 
 \begin_layout Subsection*
-Upper Sorbian
-\end_layout
-
-\begin_layout Quote
-
-\lang uppersorbian
-Hornjoserbšćina je zapadosłowjanska rěč, kotraž so w Hornjej Łužicy wokoło
- městow Budyšin, Kamjenc a Wojerecy rěči.
- Jako słowjanska rěč hornjoserbšćina k indoeuropskim rěčam słuša.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Babel uppersorbian
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Polyglossia usorbian
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-LangCode hsb_DE
-\end_layout
-
-\begin_layout Subsection*
 Urdu
 \end_layout
 
 \begin_layout Standard
 \begin_inset Branch polyglossia-only
+inverted 0
+status open
+
+\begin_layout Standard
+\begin_inset Branch conflict-luatex
 inverted 0
 status open
 
@@ -5684,7 +5878,12 @@ status open
 اُردُو لشکری زبان (یا جدید معیاری اردو) ہندوستانی زبان کی معیاری قسم ہے۔
  یہ پاکستان کی قومی اور رابطہ عامہ کی زبان ہے، جبکہ بھارت کی چھے ریاستوں
  کی دفتری زبان کا درجہ رکھتی ہے۔ آئین ہند کے مطابق اسے 22 دفتری شناخت زبانوں
- میں شامل کیا جاچکا ہے۔ 
+ میں شامل کیا جاچکا ہے۔
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
