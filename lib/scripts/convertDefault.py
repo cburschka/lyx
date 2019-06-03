@@ -50,7 +50,7 @@ if version != None:
     major = int(version.group(1))
     minor = int(version.group(2))
     patch = int(version.group(3))
-    version = hex(major * 65536 + minor * 256 + patch)
+    version = (major, minor, patch)
     im = True
 else:
     # Try GraphicsMagick
@@ -58,6 +58,8 @@ else:
     version = re_version.match(output)
     if version != None:
         gm = True
+        # we need version to be a valid integer 3-tuple
+        version = (1,0,0)
 
 # IM >= 5.5.8 separates options for source and target files
 # See http://www.imagemagick.org/Usage/basics/#why
@@ -68,11 +70,11 @@ elif sys.platform == 'darwin':
     command = 'lyxconvert'
 
 # If supported, add the -define option for pdf source formats
-if sys.argv[1] == 'pdf' and (version >= 0x060206 or gm):
+if sys.argv[1] == 'pdf' and (version >= (6,2,6) or gm):
     sopts = '-define pdf:use-cropbox=true ' + sopts
 
 # If supported, add the -flatten option for ppm target formats (see bug 4749)
-if sys.argv[3] == 'ppm' and (im and version >= "0x060305" or gm):
+if sys.argv[3] == 'ppm' and (im and version >= (6,3,5) or gm):
     topts = '-flatten'
 
 # print (command, sys.argv[2], sys.argv[4], file= sys.stdout)
