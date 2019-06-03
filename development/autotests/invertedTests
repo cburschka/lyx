@@ -76,9 +76,6 @@ export/doc/ja/(Formula-numbering|Customization|EmbeddedObjects|Intro)_pdf4_syste
 # Test for command \pdfsave fails:
 # ! Package xypdf Error: pdfTeX version 1.40.0 or higher is needed for the xypdf
 export/examples/ja/Graphics_and_Insets/XY-Pic.*_systemF
-#
-# Document class js*.cls requires platex <-> Xe/LuaTeX,
-# fixed with "bxjs*.cls"
 
 
 # ================================================
@@ -271,12 +268,12 @@ export/export/latex/CJK/en-de-el-ru-ko_utf8_(dvi3|pdf5)_systemF
 #                                                        \fi \fi
 #      l.62 \tableofcontents
 #                           {}
-#      I'm broken. Please show this to someone who can fix can fix
+#      I'm broken. Please show this to someone who can fix
 # see discussion at https://www.mail-archive.com/search?l=mid&q=20161114035123.s5lt4ib4x4obtptp%40steph
 #
-# Arab chars in hyperlink name fail and missing characters
+# Arabic letters in hyperlink name fail with TeX fonts because of wrong font encoding
 # 8-bit TeX exports are ignored (\output_format xetex).
-export/doc/ar/*._pdf4_texF
+export/doc/ar/.*_pdf4_texF
 
 # Babel-Arabic loads "inputenc" which fails with LuaTeX
 export/.*/ar/.*_(dvi3|pdf5)_texF

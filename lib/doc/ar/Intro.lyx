@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 544
+\lyxformat 575
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -30,7 +30,7 @@
 \language arabic_arabi
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "Scheherazade"
 \font_sans "default" "Scheherazade"
 \font_typewriter "default" "Scheherazade"
@@ -102,6 +102,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -951,13 +952,16 @@ Alt+
 \lang arabic_arabi
  يدل على مفتاح التبديل 
 \family sans
+\lang english
 Alt
 \family default
  (
 \family sans
 Meta
 \family default
-) .
+)
+\lang arabic_arabi
+ .
 \end_layout
 
 \begin_layout Itemize
@@ -1292,6 +1296,8 @@ reference "tab:الوحدات"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
