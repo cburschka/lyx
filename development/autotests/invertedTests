@@ -77,12 +77,6 @@ export/examples/ja/Graphics_and_Insets/XY-Pic.*_systemF
 # Document class js*.cls requires platex <-> Xe/LuaTeX,
 # fixed with "bxjs*.cls"
 
-# lyx2lyx: revert_language() compilation errors (cf. #9633)
-# ! LaTeX Error: \begin{otherlanguage} on input line 36 ended by \end{quote}.
-# with friulan, occitan, and piedmontese also:
-#   ! LaTeX Error: Can be used only in preamble.
-#   l.42 \AtEndPreamble  
-export/export/lyx2lyx/revert-languages-.*_lyx(16|2[012])
 
 # ================================================
 Sublabel: lyxbugs

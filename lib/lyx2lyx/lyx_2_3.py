@@ -221,12 +221,12 @@ def revert_new_babel_languages(document):
             # These are supported by babel and polyglossia
             revert_language(document, lang, lang, lang)
 
-
 # TODO:
 # def convert_new_babel_languages(document)
 # set to native support if get_value(document.header, "\\options") in
 # ["bosnian", "friulan", "macedonian", "piedmontese", "romansh"]
-# and "\\language_package babel".
+# and Babel is used.
+
 
 def revert_amharic(document):
     "Set the document language to English but assure Amharic output"

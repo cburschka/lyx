@@ -657,7 +657,7 @@ def revert_language(document, lyxname, babelname="", polyglossianame=""):
             document.warning("Malformed document! Missing \\language_package")
         else:
             pack = get_value(document.header, "\\language_package", i)
-            if pack == "default" or pack == "auto":
+            if pack in ("default", "auto"):
                 use_polyglossia = True
 
     # Do we use this language with polyglossia?
@@ -703,6 +703,18 @@ def revert_language(document, lyxname, babelname="", polyglossianame=""):
             document.body[i+1] = document.body[i+1][1:]
             document.body.insert(i, " ")
             continue
+        
+        # TODO: handle nesting issues with font attributes, e.g.
+        # \begin_layout Standard
+        # 
+        # \emph on
+        # \lang macedonian
+        # Македонски јазик
+        # \emph default
+        #  — јужнословенски јазик, дел од групата на словенски јазици од јазичното
+        #  семејство на индоевропски јазици.
+        #  Македонскиот е службен и национален јазик во Македонија.
+        # \end_layout
         
         # Ensure correct handling of list labels
         if (parent[0] in ["Labeling", "Description"]
@@ -767,8 +779,11 @@ def revert_language(document, lyxname, babelname="", polyglossianame=""):
                 end_cmd = "\\end{otherlanguage}"
 
         if (not primary or texname == "english"):
-            document.body[i_e:i_e] = put_cmd_in_ert(end_cmd)
-            document.body[i+1:i+1] = put_cmd_in_ert(begin_cmd)
+            try:
+                document.body[i_e:i_e] = put_cmd_in_ert(end_cmd)
+                document.body[i+1:i+1] = put_cmd_in_ert(begin_cmd)
+            except UnboundLocalError:
+                pass
         del document.body[i]
 
     if not (primary or secondary):
@@ -794,6 +809,6 @@ def revert_language(document, lyxname, babelname="", polyglossianame=""):
             doc_lang_switch = "\\resetdefaultlanguage{%s}" % polyglossianame
 
     # Reset LaTeX main language if required and not already done
-    if doc_lang_switch and doc_lang_switch not in document.body[8:20] != doc_lang_switch:
+    if doc_lang_switch and doc_lang_switch[1:] not in document.body[8:20]:
         document.body[2:2] = put_cmd_in_ert(doc_lang_switch,
                                             is_open=True, as_paragraph=True)
