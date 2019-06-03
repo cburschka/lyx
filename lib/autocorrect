@@ -227,17 +227,16 @@
 \ast              *    \times
 \times            *    \cdot
 
-<                 *    \subset
+\prec             *    \langle
+\langle           *    \subset
 \subset           *    \in
 \in               *    \sqsubset
 \subset           =    \subseteq
 \subseteq         /    \nsubseteq
 \subseteq         *    \subseteqq
-\sqsubset         *    \langle
-\langle           *    \leftslice
-\leftslice        *    \subset
+\sqsubset         *    \leftslice
+\leftslice        *    <
 
-\subseteq         /    \nsubseteq
 \subseteqq        /    \nsubseteqq
 \nsubseteqq       *    \subsetneq
 \subsetneq        *    \varsubsetneq
@@ -247,20 +246,23 @@
 \subsetplus       =    \subsetpluseq
 \subseteq         +    \subsetpluseq
 \in               /    \nin
->                 *    \supset
-\supset           /    \nsupset
+
+\succ             *    \rangle
+\rangle           *    \supset
+\supset           *    \ni
+\ni               *    \sqsupset
 \supset           =    \supseteq
 \supseteq         /    \nsupseteq
 \supseteq         *    \supseteqq
-\supseteq         /    \nsupseteq
-
+\sqsupset         *    \rightslice
+\rightslice       *    >
 
 \supseteqq        /    \nsupseteqq
 \supseteq         /    \supsetneq
+\supsetneq        *    \nsupseteq
 \supset           +    \supsetplus
 \supsetplus       =    \supsetpluseq
 \supseteq         +    \supsetpluseq
-\supset           *    \ni
 \ni               /    \nni
 
 #
@@ -342,10 +344,6 @@ EE                x    \times
 # >***/    \nsqsupset
 # >***=    \sqsupseteq
 # >***=/    \nsqsupseteq
-
-\succ             *    \rangle
-\rangle           *    \rightslice
-\rightslice       *    >
 
 (                 *    \bigl(
 \bigl(            *    \Bigl(
