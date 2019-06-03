@@ -32,7 +32,8 @@ from parser_tools import (del_token, del_value, del_complete_lines,
 #  find_tokens, find_token_exact, check_token, get_option_value
 
 from lyx2lyx_tools import (add_to_preamble, put_cmd_in_ert, revert_font_attrs,
-                           insert_to_preamble, latex_length, revert_language)
+    insert_to_preamble, latex_length, is_document_option, 
+    insert_document_option, remove_document_option, revert_language)
 
 ####################################################################
 # Private helper functions
@@ -149,9 +150,8 @@ def revert_ibranches(document):
         if j == -1:
             document.warning("Malformed LyX document! Can't find end of branch " + old)
             continue
-        # ourbranches[old] - 1 inverts the selection status of the old branch
         lines = ["\\branch " + new,
-                 "\\selected " + str(ourbranches[old] - 1)]
+                 "\\selected %d" % (not ourbranches[old])]
         # these are the old lines telling us color, etc.
         lines += document.header[i+2 : j+1]
         document.header[i:i] = lines
@@ -1873,35 +1873,23 @@ def revert_allowbreak(document):
 
 def convert_mathnumberpos(document):
     " add the \\math_number_before tag "
+    i = find_token(document.header, "\\quotes_style")
     # check if the document uses the class option "leqno"
-    i = find_token(document.header, "\\options")
-    k = find_token(document.header, "\\quotes_style")
-    if 'leqno' in document.header[i]:
-        document.header.insert(k, "\\math_number_before 1")
-        # delete the found option
-        document.header[i] = document.header[i].replace(",leqno", "")
-        document.header[i] = document.header[i].replace(", leqno", "")
-        document.header[i] = document.header[i].replace("leqno,", "")
-        if 'leqno' in document.header[i]:
-            # then we have leqno as the only option
-            del document.header[i]
+    if is_document_option(document, "leqno"):
+        remove_document_option(document, "leqno")
+        document.header.insert(i, "\\math_number_before 1")
     else:
-        document.header.insert(k, "\\math_number_before 0")
+        document.header.insert(i, "\\math_number_before 0")
 
 
 def revert_mathnumberpos(document):
     """Remove \\math_number_before tag,
     add the document class option leqno if required.
     """
-    math_number_before = get_bool_value(document.header,
-                                        '\\math_number_before', delete=True)
+    math_number_before = get_bool_value(document.header, '\\math_number_before',
+                                        delete=True)
     if math_number_before:
-        i = find_token(document.header, "\\options")
-        if i != -1 and 'leqno' not in document.header[i]:
-            document.header[i] = document.header[i].replace("\\options", "\\options leqno,")
-        else:
-            i = find_token(document.header, "\\use_default_options")
-            document.header.insert(i, "\\options leqno")
+        insert_document_option(document, "leqno")
 
 
 def convert_mathnumberingname(document):

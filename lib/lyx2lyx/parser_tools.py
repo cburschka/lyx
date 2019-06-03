@@ -428,25 +428,21 @@ def get_quoted_value(lines, token, start=0, end=0, default="", delete=False):
       return default
     return val.strip('"')
 
-bool_values = {True:  ("true", "1"), 
-               False: ("false", "0")}
+
+bool_values = {"true": True, "1": True, 
+               "false": False, "0": False}
 
 def get_bool_value(lines, token, start=0, end=0, default=None, delete=False):
     """ get_bool_value(lines, token, start[[, end], default]) -> string
 
     Find the next line that looks like:
-      token <bool_value>
+      `token` <bool_value>
 
-    Return True if <bool_value> is 1 or "true", False if bool_value
+    Return True if <bool_value> is 1 or "true", False if <bool_value>
     is 0 or "false", else `default`.
     """
-
     val = get_quoted_value(lines, token, start, end, default, delete)
-    if val in bool_values[True]:
-        return True
-    if val in bool_values[False]:
-        return False
-    return default
+    return bool_values.get(val, default)
 
 
 def set_bool_value(lines, token, value, start=0, end=0):
@@ -462,13 +458,11 @@ def set_bool_value(lines, token, value, start=0, end=0):
     oldvalue = get_bool_value(lines, token, i, i+1)
     if oldvalue is value:
         return oldvalue
-    # Use 0/1 or true/false?
-    if get_quoted_value(lines, token, i, i+1) in ('0', '1'):
-        value_string = bool_values[value][1]
-    else:
-        value_string = bool_values[value][0]
     # set to new value
-    lines[i] = "%s %s" % (token, value_string)
+    if get_quoted_value(lines, token, i, i+1) in ('0', '1'):
+        lines[i] = "%s %d" % (token, value)
+    else:
+        lines[i] = "%s %s" % (token, str(value).lower())
 
     return oldvalue
 

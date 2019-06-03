@@ -578,63 +578,40 @@ def insert_document_option(document, option):
     "Insert _option_ as a document option."
 
     # Find \options in the header
-    options_line = find_token(document.header, "\\options", 0)
-
+    i = find_token(document.header, "\\options", 0)
     # if the options does not exists add it after the textclass
-    if options_line == -1:
-        textclass_line = find_token(document.header, "\\textclass", 0)
-        document.header.insert(textclass_line +1,
-                               r"\options %s" % option)
+    if i == -1:
+        i = find_token(document.header, "\\textclass", 0) + 1
+        document.header.insert(i, r"\options %s" % option)
         return
-
-    # add it to the end of the options
-    document.header[options_line] += ",%s" % option
+    # otherwise append to options
+    if not is_document_option(document, option):
+        document.header[i] += ",%s" % option
 
 
 def remove_document_option(document, option):
-    """ Remove _option_ as a document option.
+    """ Remove _option_ as a document option."""
 
-    It is assumed that option belongs to the \options.
-    That can be done running is_document_option(document, option)."""
+    i = find_token(document.header, "\\options")
+    options = get_value(document.header, "\\options", i)
+    options = [op.strip() for op in options.split(',')]
 
-    options_line = find_token(document.header, "\\options", 0)
-    option_pos = document.header[options_line].find(option)
+    # Remove `option` from \options
+    options = [op for op in options if op != option]
 
-    # Remove option from \options
-    comma_before_pos = document.header[options_line].rfind(',', 0, option_pos)
-    comma_after_pos  = document.header[options_line].find(',', option_pos)
-
-    # if there are no commas then it is the single option
-    # and the options line should be removed since it will be empty
-    if comma_before_pos == comma_after_pos == -1:
-        del document.header[options_line]
-        return
-
-    # last option
-    options = document.header[options_line]
-    if comma_after_pos == -1:
-        document.header[options_line] = options[:comma_before_pos].rsplit()
-        return
-
-    document.header[options_line] = options[comma_before_pos: comma_after_pos]
+    if options:
+        document.header[i] = "\\options " + ','.join(options)
+    else:
+        del document.header[i]
 
 
 def is_document_option(document, option):
     "Find if _option_ is a document option"
 
-    # Find \options in the header
-    options_line = find_token(document.header, "\\options", 0)
+    options = get_value(document.header, "\\options")
+    options = [op.strip() for op in options.split(',')]
+    return option in options
 
-    # \options is not present in the header
-    if options_line == -1:
-        return False
-
-    option_pos = document.header[options_line].find(option)
-    # option is not present in the \options
-    if option_pos == -1:
-        return False
-
-    return True
 
 singlepar_insets = [s.strip() for s in
     u"Argument, Caption Above, Caption Below, Caption Bicaption,"
