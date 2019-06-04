@@ -7,7 +7,12 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
-2019-04-16  Günter Milde <milde@lyx.org>
+2019-06-04  Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 577: Rework linguistic gloss support.
+          This now uses the covington 2.0 gloss macros (\digloss, \trigloss)
+          rather than self-baked ones.
+
+2019-06-03  Günter Milde <milde@lyx.org>
         * Format incremented to 576:
 	  Support for the document languages azerbaijani, bengali,
 	  churchslavonic, and oldrussian.

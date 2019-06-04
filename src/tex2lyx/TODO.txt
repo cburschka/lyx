@@ -35,6 +35,9 @@ Format LaTeX feature                        LyX feature
 453    automatic stmaryrd loading           \use_package stmaryrd
 457    automatic stackrel loading           \use_package stackrel
 575    numbering of lines (lineno)          \use_lineno, \lineno_options
+577    new covington gloss macros
+       \digloss[opt]{one}{two}{three}       \begin_inset Flex Interlinear Gloss (2 Lines) (Argument 1, Argument post:1, Argument:post 2)
+       \trigloss[opt]{one}{two}{three}      \begin_inset Flex Interlinear Gloss (3 Lines) (Argument 1, Argument post:1, Argument:post 2, Argument:post 3)
 
 
 

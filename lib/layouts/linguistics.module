@@ -1,4 +1,4 @@
-#\DeclareLyXModule[covington.sty,enumitem.sty,forest.sty]{Linguistics}
+#\DeclareLyXModule[covington.sty,forest.sty]{Linguistics}
 #\DeclareCategory{Academic Field Specifics}
 #DescriptionBegin
 #Defines some special environments useful for linguistics (numbered examples,
@@ -93,11 +93,11 @@ End
 
 
 # glosse (2 lines) with covington.sty
-InsetLayout Flex:Glosse
+InsetLayout Flex:Interlinear_Gloss_(2_Lines)
 	LyXType               custom
-	LabelString           Glosse
-	LatexType             environment
-	LatexName             linggloss
+	LabelString           Gloss
+	LatexType             command
+	LatexName             digloss
 	Decoration            minimalistic
 	LabelFont
 	  Size                Small
@@ -105,34 +105,45 @@ InsetLayout Flex:Glosse
 	MultiPar              true
 	CustomPars            false
 	ForcePlain            true
-	ParbreakIsNewline     true
+	ParbreakIgnored       true
 	FreeSpacing           true
-	Requires	      covington
-	Preamble
-		\def\glosstr{}
-		\@ifundefined{linggloss}{%
-		\newenvironment{linggloss}[2][]{
-			\def\glosstr{\glt #1}%
-			\gll #2}
-		{\glosstr\glend}}{}
-	EndPreamble
+	Requires	      covington,csquotes
 	InToc                 true
 	ResetsFont            true
 	Argument 1
+		LabelString   "Gloss options"
+		MenuString    "Gloss Options|s"
+		Tooltip       "Add digloss options here"
+	EndArgument
+	Argument post:1
+		Decoration    conglomerate
+		LabelString   "Interlinear Gloss"
+		MenuString    "Interlinear Gloss"
+		Tooltip       "Add the inter-linear gloss here"
+		AutoInsert    true
+		Mandatory     true
+		FreeSpacing   true
+		InsertOnNewline true
+	EndArgument
+	Argument post:2
 		Decoration    conglomerate
 		LabelString   "Translation"
-		MenuString    "Glosse Translation|s"
-		Tooltip       "Add a translation for the glosse"
+		MenuString    "Gloss Translation"
+		Tooltip       "Add a free translation for the gloss"
+		AutoInsert    true
+		Mandatory     true
+		FreeSpacing   true
+		InsertOnNewline true
 	EndArgument
 End
 
 
 # glosse (3 lines) with covington.sty
-InsetLayout Flex:Tri-Glosse
+InsetLayout Flex:Interlinear_Gloss_(3_Lines)
 	LyXType               custom
-	LabelString           Tri-Glosse
-	LatexType             environment
-	LatexName             lingglosss
+	LabelString           Tri-Gloss
+	LatexType             command
+	LatexName             trigloss
 	Decoration            minimalistic
 	LabelFont
 	  Size                Small
@@ -140,24 +151,44 @@ InsetLayout Flex:Tri-Glosse
 	MultiPar              true
 	CustomPars            false
 	ForcePlain            true
-	ParbreakIsNewline     true
+	ParbreakIgnored       true
 	FreeSpacing           true
 	InToc                 true
-	Requires	      covington
-	Preamble
-		\def\glosstr{}
-		\@ifundefined{lingglosss}{%
-		\newenvironment{lingglosss}[2][]{
-			\def\glosstr{\glt #1}%
-			\glll #2}
-		{\glosstr\glend}}{}
-	EndPreamble
+	Requires	      covington,csquotes
 	ResetsFont            true
 	Argument 1
+		LabelString   "Gloss options"
+		MenuString    "Gloss Options|s"
+		Tooltip       "Add trigloss options here"
+	EndArgument
+	Argument post:1
+		Decoration    conglomerate
+		LabelString   "Interlinear Gloss (1)"
+		MenuString    "Interlinear Gloss (Line 1)|1"
+		Tooltip       "Add the first inter-linear gloss line here"
+		Mandatory     true
+		AutoInsert    true
+		FreeSpacing   true
+		InsertOnNewline true
+	EndArgument
+	Argument post:2
+		Decoration    conglomerate
+		LabelString   "Interlinear Gloss (2)"
+		MenuString    "Interlinear Gloss (Line 2)|2"
+		Tooltip       "Add the first inter-linear gloss line here"
+		Mandatory     true
+		AutoInsert    true
+		FreeSpacing   true
+		InsertOnNewline true
+	EndArgument
+	Argument post:3
 		Decoration    conglomerate
 		LabelString   "Translation"
-		MenuString    "Glosse Translation|s"
+		MenuString    "Gloss Translation"
 		Tooltip       "Add a translation for the glosse"
+		Mandatory     true
+		AutoInsert    true
+		InsertOnNewline true
 	EndArgument
 End
 

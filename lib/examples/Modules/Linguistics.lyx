@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 577
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -39,7 +39,7 @@ linguistics
 \language english
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "FreeSerif"
 \font_sans "default" "FreeSans"
 \font_typewriter "default" "FreeMono"
@@ -57,6 +57,8 @@ linguistics
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref true
@@ -91,6 +93,7 @@ linguistics
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -106,11 +109,13 @@ linguistics
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tablestyle default
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -218,6 +223,12 @@ literal "true"
 \end_inset
 
 : This is the base package used for numbered examples and glosses.
+
+\change_inserted -712698321 1559635690
+ Note that at least version 2.0 of the covington package is required to use
+ all features.
+\change_unchanged
+
 \end_layout
 
 \begin_deeper
@@ -233,6 +244,8 @@ arg   "covington"
 
 \end_deeper
 \begin_layout Enumerate
+
+\change_deleted -712698321 1559635693
 
 \emph on
 enumitem.sty
@@ -263,6 +276,8 @@ description
 
 \begin_deeper
 \begin_layout Itemize
+
+\change_deleted -712698321 1559635693
 Installed on your system: 
 \begin_inset Info
 type  "package"
@@ -270,6 +285,8 @@ arg   "enumitem"
 \end_inset
 
 .
+\change_unchanged
+
 \end_layout
 
 \end_deeper
@@ -290,7 +307,11 @@ literal "true"
 \emph on
 Meaning
 \emph default
- character style.
+ character style
+\change_inserted -712698321 1559635744
+ and for glosses
+\change_unchanged
+.
  The package provides context sensitive quotation marks, depending on the
  language in use.
 \end_layout
@@ -468,44 +489,298 @@ The Linguistics module provides two kinds of glosses, which can be inserted
  via 
 \family sans
 Insert\SpecialChar menuseparator
-Custom Insets
+Custom Inset
+\change_deleted -712698321 1559635796
+s
+\change_unchanged
+
 \family default
-: The standard 
+: 
+\change_deleted -712698321 1559635812
+The standard 
 \emph on
 Glosse
+\change_inserted -712698321 1559635861
+Interlinear Gloss (2
+\begin_inset space ~
+\end_inset
+
+Lines)
+\change_unchanged
+
 \emph default
- provides a gloss that consists of two lines (a gloss pair) and a translation,
- the 
+ provides a gloss that consists of two lines (a gloss pair
+\change_inserted -712698321 1559635998
+ consisting of the original language representation and and interlinear,
+ i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+ word-to-word translation
+\change_unchanged
+) 
+\change_deleted -712698321 1559636571
+and a
+\change_inserted -712698321 1559636571
+plus
+\change_unchanged
+ 
+\change_inserted -712698321 1559635981
+free 
+\change_unchanged
+translation, the 
+\change_deleted -712698321 1559635825
+
 \emph on
 Tri-Glosse
+\change_inserted -712698321 1559635858
+Interlinear Gloss (3
+\begin_inset space ~
+\end_inset
+
+Lines)
+\change_unchanged
+
 \emph default
- insets consists of three lines and a translation (the third line is usually
- needed to give morphological or phonological information next to the gloss
- pair).
+ insets consists of three lines
+\change_deleted -712698321 1559636589
+ and a
+\change_inserted -712698321 1559636589
+ plus
+\change_unchanged
+ translation (the third line is usually needed to give morphological or
+ phonological information next to the gloss pair).
  Each translation line might span multiple lines in the output, i.
 \begin_inset space \thinspace{}
 \end_inset
 
 e., the paragraphs are automatically broken if they exceed the text width.
- The translation line is inserted by means of 
+ 
+\change_inserted -712698321 1559636240
+The original language representation (first line in the gloss) is input
+ in the Gloss inset directly, the other information in specific sub-insets
+ (
+\family sans
+Interlinear Gloss
+\family default
+ or with the 3-line-gloss 
+\family sans
+Interlinear Gloss (Line 1)
+\family default
+ and 
+\family sans
+Interlinear Gloss (Line 2)
+\family default
+, respectively, and 
+\family sans
+Gloss Translation
+\family default
+).
+ \SpecialChar LyX
+ automatically inserts these sub-insets if you insert a new gloss.
+ 
+\change_unchanged
+The
+\change_inserted -712698321 1559636247
+y
+\change_unchanged
+ 
+\change_inserted -712698321 1559636252
+can also be 
+\change_deleted -712698321 1559636256
+translation line is 
+\change_unchanged
+inserted 
+\change_inserted -712698321 1559636649
+manually 
+\change_unchanged
+by means of 
 \family sans
 Insert\SpecialChar menuseparator
-Glosse Translation
+Gloss
+\change_deleted -712698321 1559635897
+e
+\change_unchanged
+ Translation
+\change_inserted -712698321 1559636277
+
+\family default
+ and 
+\family sans
+Insert\SpecialChar menuseparator
+Interlinear Gloss
+\change_unchanged
+
 \family default
 .
- It does not matter where you insert the translation, it is always printed
- as the last line.
+ It does not matter where you insert the
+\change_inserted -712698321 1559636292
+se sub-insets
+\change_deleted -712698321 1559636298
+ translation
+\change_unchanged
+, 
+\change_deleted -712698321 1559636300
+it is
+\change_inserted -712698321 1559636302
+they are
+\change_unchanged
+ always printed 
+\change_deleted -712698321 1559636305
+as the last line
+\change_inserted -712698321 1559636308
+in the right order
+\change_unchanged
+.
+
+\change_inserted -712698321 1559636755
+ Finally, you can also insert gloss options via 
+\family sans
+Insert\SpecialChar menuseparator
+Gloss Options
+\family default
+.
+ These options let you customize the line appearance, add example numbers
+ or preceding text.
+ Please refer to the 
+\emph on
+covington
+\emph default
+ manual 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covington"
+literal "false"
+
+\end_inset
+
+ for details.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559636976
+Note that the gloss support has been completely rewritten for \SpecialChar LyX
+ 2.4.
+ It now uses the new and enhanced 
+\emph on
+covington
+\emph default
+ (2.0) gloss macros.
+ Due to the major changes, old glosses cannot be converted to the new style.
+ Instead, the old insets are imported (and saved in the document as a 
+\family sans
+Local Layout
+\family default
+).
+ Likewise, new gloss insets are converted to \SpecialChar TeX
+ code if you export to a previous
+ \SpecialChar LyX
+ version.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 Here is a simple example for a 
+\change_inserted -712698321 1559636502
+
 \emph on
-Glosse
+two-line 
+\change_unchanged
+Gloss
+\change_deleted -712698321 1559636506
+e
+\change_unchanged
+
 \emph default
 :
+\change_inserted -712698321 1559637042
+
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -712698321 1559637046
+\begin_inset Flex Interlinear Gloss (2 Lines)
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637057
+C'est     un exemple simple
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637046
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637065
+\begin_inset Flex GroupGlossedWords
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637065
+This is
+\end_layout
+
+\end_inset
+
+ an example simple
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637046
+\begin_inset Argument post:2
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637069
+This is a simple example
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -712698321 1559637072
 \begin_inset Flex Glosse
 status open
 
@@ -549,6 +824,8 @@ This is a simple example
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -589,14 +866,122 @@ status open
 \end_layout
 
 \begin_layout Standard
-Here is a three-line gloss (
+Here is a three-line gloss
+\change_deleted -712698321 1559637102
+ (
 \emph on
 Tri-Glosse
 \emph default
-); the procedure is the same:
+)
+\change_unchanged
+; the procedure is the same:
+\change_inserted -712698321 1559637107
+
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -712698321 1559637110
+\begin_inset Flex Interlinear Gloss (3 Lines)
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637135
+C'est      un exemple simple
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637110
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637118
+\begin_inset Flex GroupGlossedWords
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637118
+Das ist
+\end_layout
+
+\end_inset
+
+ ein Beispiel einfach
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637111
+\begin_inset Argument post:2
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637125
+\begin_inset Flex GroupGlossedWords
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637125
+This is
+\end_layout
+
+\end_inset
+
+ an  example simple
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637111
+\begin_inset Argument post:3
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637130
+This is a simple example
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -712698321 1559637137
 \begin_inset Flex Tri-Glosse
 status open
 
@@ -653,15 +1038,109 @@ This is a simple example
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 \noindent
-If you want to have numbered glosses, simply insert the gloss inset to a
- numbered examples paragraph, as follows:
+If you want to have numbered glosses, 
+\change_inserted -712698321 1559637163
+either
+\change_deleted -712698321 1559637165
+simply
+\change_unchanged
+ insert the gloss inset to a numbered examples paragraph, as follows:
 \end_layout
 
 \begin_layout Numbered Examples (consecutive)
+
+\change_inserted -712698321 1559637185
+\begin_inset Flex Interlinear Gloss (3 Lines)
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637191
+Mein Luftkissenfahrzeug ist voller  Aale
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637185
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637197
+My    skeertuig                   is  vol       palings
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637185
+\begin_inset Argument post:2
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637201
+My    hovercraft                 is 
+\begin_inset Flex GroupGlossedWords
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637201
+full of
+\end_layout
+
+\end_inset
+
+ eels
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637185
+\begin_inset Argument post:3
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637206
+Do you have matches?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted -712698321 1559637208
+
 \begin_inset Flex Tri-Glosse
 status open
 
@@ -710,6 +1189,119 @@ Do you have matches?
 \end_inset
 
 
+\change_inserted -712698321 1559637228
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1559637243
+or use the 
+\emph on
+ex
+\emph default
+ gloss option:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1559637243
+\begin_inset Flex Interlinear Gloss (3 Lines)
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637251
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637252
+ex
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637243
+Mein Luftkissenfahrzeug ist voller  Aale
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637243
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637243
+My    skeertuig                   is  vol       palings
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637243
+\begin_inset Argument post:2
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637243
+My    hovercraft                 is 
+\begin_inset Flex GroupGlossedWords
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637243
+full of
+\end_layout
+
+\end_inset
+
+ eels
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637243
+\begin_inset Argument post:3
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559637243
+Do you have matches?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection*
@@ -721,14 +1313,60 @@ Avoiding Page Breaks within Glosses
 \end_layout
 
 \begin_layout Standard
-Page breaks might occur within glosses, which is not desirable.
- A workaround is to wrap glosses into boxes (via 
+
+\change_inserted -712698321 1559637546
+By default, 
+\change_deleted -712698321 1559637546
+P
+\change_inserted -712698321 1559637547
+p
+\change_unchanged
+age breaks might occur within glosses, which is not desirable.
+ 
+\change_inserted -712698321 1559637701
+You can avoid most of them by entering 
+\emph on
+noglossbreaks
+\emph default
+ to 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar ldots
+\SpecialChar menuseparator
+Document Class\SpecialChar menuseparator
+Class Options\SpecialChar menuseparator
+Custom
+\family default
+.
+ If page breaks still occur, you can
+\change_deleted -712698321 1559637705
+A workaround is to
+\change_unchanged
+ wrap
+\change_inserted -712698321 1559637709
+ the whole
+\change_unchanged
+ gloss
+\change_deleted -712698321 1559637710
+es
+\change_unchanged
+ into 
+\change_inserted -712698321 1559637714
+a 
+\change_unchanged
+box
+\change_deleted -712698321 1559637716
+es
+\change_unchanged
+ (via 
 \family sans
 Insert\SpecialChar menuseparator
 Box\SpecialChar menuseparator
 Frameless
 \family default
 ).
+
+\change_deleted -712698321 1559637727
  If you want to automate this for all glosses, you can copy the following
  code to 
 \family sans
@@ -740,6 +1378,8 @@ LaTeX Preamble
 \end_layout
 
 \begin_layout Quote
+
+\change_deleted -712698321 1559637727
 \begin_inset listings
 lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
 inline false
@@ -808,6 +1448,8 @@ end{minipage}}
 \end_layout
 
 \begin_layout Quote
+
+\change_deleted -712698321 1559637727
 \begin_inset listings
 lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
 inline false
@@ -876,6 +1518,8 @@ end{minipage}}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1559637727
 You might have to adapt the minipage width (
 \family typewriter
 .7
@@ -883,6 +1527,8 @@ You might have to adapt the minipage width (
 textwidth
 \family default
  in the example code) to fit the glosses to your actual page width.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -910,7 +1556,11 @@ footnotetext{Actual footnote ...}
 \family default
 , also in TeX mode, right behind the 
 \emph on
-Glosse
+Gloss
+\change_deleted -712698321 1559637777
+e
+\change_unchanged
+
 \emph default
  inset.
  If you need several footnotes, just insert multiple of these constructs.
@@ -1166,6 +1816,7 @@ Floats
 \begin_layout Standard
 \begin_inset Float tableau
 placement h
+alignment document
 wide false
 sideways false
 status open

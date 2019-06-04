@@ -27,11 +27,11 @@ from datetime import (datetime, date, time)
 # Uncomment only what you need to import, please.
 
 from parser_tools import (count_pars_in_inset, del_token, find_end_of_inset,
-    find_end_of_layout, find_token, find_re, get_bool_value,
+    find_end_of_layout, find_token, find_token_backwards, find_re, get_bool_value,
     get_containing_layout, get_option_value, get_value, get_quoted_value)
 #    del_value, del_complete_lines,
 #    find_complete_lines, find_end_of,
-#    find_re, find_substring, find_token_backwards,
+#    find_re, find_substring,
 #    get_containing_inset,
 #    is_in_inset, set_bool_value
 #    find_tokens, find_token_exact, check_token
@@ -1751,6 +1751,206 @@ def revert_new_languages(document):
         revert_language(document, "korean", "", "korean")
 
 
+gloss_inset_def = [
+    r'### Inserted by lyx2lyx (deprecated ling glosses) ###',
+    r'InsetLayout Flex:Glosse',
+    r'  LyXType               custom',
+    r'  LabelString           "Gloss (old version)"',
+    r'  MenuString            "Gloss (old version)"',
+    r'  LatexType             environment',
+    r'  LatexName             linggloss',
+    r'  Decoration            minimalistic',
+    r'  LabelFont',
+    r'    Size                Small',
+    r'  EndFont',
+    r'  MultiPar              true',
+    r'  CustomPars            false',
+    r'  ForcePlain            true',
+    r'  ParbreakIsNewline     true',
+    r'  FreeSpacing           true',
+    r'  Requires	      covington',
+    r'  Preamble',
+    r'          \def\glosstr{}',
+    r'          \@ifundefined{linggloss}{%',
+    r'          \newenvironment{linggloss}[2][]{',
+    r'             \def\glosstr{\glt #1}%',
+    r'             \gll #2}',
+    r'          {\glosstr\glend}}{}',
+    r'  EndPreamble',
+    r'  InToc                 true',
+    r'  ResetsFont            true',
+    r'  Argument 1',
+    r'  	Decoration    conglomerate',
+    r'  	LabelString   "Translation"',
+    r'  	MenuString    "Glosse Translation|s"',
+    r'  	Tooltip       "Add a translation for the glosse"',
+    r'  EndArgument',
+    r'End'
+]
+
+glosss_inset_def = [
+    r'### Inserted by lyx2lyx (deprecated ling glosses) ###',
+    r'InsetLayout Flex:Tri-Glosse',
+    r'  LyXType               custom',
+    r'  LabelString           "Tri-Gloss (old version)"',
+    r'  MenuString            "Tri-Gloss (old version)"',
+    r'  LatexType             environment',
+    r'  LatexName             lingglosss',
+    r'  Decoration            minimalistic',
+    r'  LabelFont',
+    r'    Size                Small',
+    r'  EndFont',
+    r'  MultiPar              true',
+    r'  CustomPars            false',
+    r'  ForcePlain            true',
+    r'  ParbreakIsNewline     true',
+    r'  FreeSpacing           true',
+    r'  InToc                 true',
+    r'  Requires	      covington',
+    r'  Preamble',
+    r'          \def\glosstr{}',
+    r'          \@ifundefined{lingglosss}{%',
+    r'          \newenvironment{lingglosss}[2][]{',
+    r'              \def\glosstr{\glt #1}%',
+    r'              \glll #2}',
+    r'          {\glosstr\glend}}{}',
+    r'  EndPreamble',
+    r'  ResetsFont            true',
+    r'  Argument 1',
+    r'  	Decoration    conglomerate',
+    r'  	LabelString   "Translation"',
+    r'  	MenuString    "Glosse Translation|s"',
+    r'  	Tooltip       "Add a translation for the glosse"',
+    r'  EndArgument',
+    r'End'
+]
+
+def convert_linggloss(document):
+    " Move old ling glosses to local layout "
+    if find_token(document.body, '\\begin_inset Flex Glosse', 0) != -1:
+        document.append_local_layout(gloss_inset_def)
+    if find_token(document.body, '\\begin_inset Flex Tri-Glosse', 0) != -1:
+        document.append_local_layout(glosss_inset_def)
+
+def revert_linggloss(document):
+    " Revert to old ling gloss definitions "
+    document.del_local_layout(gloss_inset_def)
+    document.del_local_layout(glosss_inset_def)
+
+    if not "linguistics" in document.get_module_list():
+        return
+
+    cov_req = False
+    glosses = ("\\begin_inset Flex Interlinear Gloss (2 Lines)", "\\begin_inset Flex Interlinear Gloss (3 Lines)")
+    for glosse in glosses:
+        i = 0
+        while True:
+            i = find_token(document.body, glosse, i)
+            if i == -1:
+                break
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of Gloss inset")
+                i += 1
+                continue
+
+            arg = find_token(document.body, "\\begin_inset Argument 1", i, j)
+            endarg = find_end_of_inset(document.body, arg)
+            optargcontent = []
+            if arg != -1:
+                argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
+                if argbeginPlain == -1:
+                    document.warning("Malformed LyX document: Can't find optarg plain Layout")
+                    i += 1
+                    continue
+                argendPlain = find_end_of_inset(document.body, argbeginPlain)
+                optargcontent = document.body[argbeginPlain + 1 : argendPlain - 2]
+
+                # remove Arg insets and paragraph, if it only contains this inset
+                if document.body[arg - 1] == "\\begin_layout Plain Layout" and find_end_of_layout(document.body, arg - 1) == endarg + 3:
+                    del document.body[arg - 1 : endarg + 4]
+                else:
+                    del document.body[arg : endarg + 1]
+
+            arg = find_token(document.body, "\\begin_inset Argument post:1", i, j)
+            endarg = find_end_of_inset(document.body, arg)
+            marg1content = []
+            if arg != -1:
+                argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
+                if argbeginPlain == -1:
+                    document.warning("Malformed LyX document: Can't find arg 1 plain Layout")
+                    i += 1
+                    continue
+                argendPlain = find_end_of_inset(document.body, argbeginPlain)
+                marg1content = document.body[argbeginPlain + 1 : argendPlain - 2]
+
+                # remove Arg insets and paragraph, if it only contains this inset
+                if document.body[arg - 1] == "\\begin_layout Plain Layout" and find_end_of_layout(document.body, arg - 1) == endarg + 3:
+                    del document.body[arg - 1 : endarg + 4]
+                else:
+                    del document.body[arg : endarg + 1]
+
+            arg = find_token(document.body, "\\begin_inset Argument post:2", i, j)
+            endarg = find_end_of_inset(document.body, arg)
+            marg2content = []
+            if arg != -1:
+                argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
+                if argbeginPlain == -1:
+                    document.warning("Malformed LyX document: Can't find arg 2 plain Layout")
+                    i += 1
+                    continue
+                argendPlain = find_end_of_inset(document.body, argbeginPlain)
+                marg2content = document.body[argbeginPlain + 1 : argendPlain - 2]
+
+                # remove Arg insets and paragraph, if it only contains this inset
+                if document.body[arg - 1] == "\\begin_layout Plain Layout" and find_end_of_layout(document.body, arg - 1) == endarg + 3:
+                    del document.body[arg - 1 : endarg + 4]
+                else:
+                    del document.body[arg : endarg + 1]
+
+            arg = find_token(document.body, "\\begin_inset Argument post:3", i, j)
+            endarg = find_end_of_inset(document.body, arg)
+            marg3content = []
+            if arg != -1:
+                argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
+                if argbeginPlain == -1:
+                    document.warning("Malformed LyX document: Can't find arg 3 plain Layout")
+                    i += 1
+                    continue
+                argendPlain = find_end_of_inset(document.body, argbeginPlain)
+                marg3content = document.body[argbeginPlain + 1 : argendPlain - 2]
+
+                # remove Arg insets and paragraph, if it only contains this inset
+                if document.body[arg - 1] == "\\begin_layout Plain Layout" and find_end_of_layout(document.body, arg - 1) == endarg + 3:
+                    del document.body[arg - 1 : endarg + 4]
+                else:
+                    del document.body[arg : endarg + 1]
+
+            cmd = "\\digloss"
+            if glosse == "\\begin_inset Flex Interlinear Gloss (3 Lines)":
+                cmd = "\\trigloss"
+
+            beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
+            endInset = find_end_of_inset(document.body, i)
+            endPlain = find_token_backwards(document.body, "\\end_layout", endInset)
+            precontent = put_cmd_in_ert(cmd)
+            if len(optargcontent) > 0:
+                precontent += put_cmd_in_ert("[") + optargcontent + put_cmd_in_ert("]")
+            precontent += put_cmd_in_ert("{")
+
+            postcontent = put_cmd_in_ert("}{") + marg1content + put_cmd_in_ert("}{") + marg2content
+            if cmd == "\\trigloss":
+                postcontent += put_cmd_in_ert("}{") + marg3content
+            postcontent += put_cmd_in_ert("}")
+
+            document.body[endPlain:endInset + 1] = postcontent
+            document.body[beginPlain + 1:beginPlain] = precontent
+            del document.body[i : beginPlain + 1]
+            if not cov_req:
+                document.append_local_layout("Requires covington")
+                cov_req = True
+            i = beginPlain + 1
+
 
 ##
 # Conversion hub
@@ -1790,9 +1990,11 @@ convert = [
            [574, [convert_ruby_module, convert_utf8_japanese]],
            [575, [convert_lineno]],
            [576, []],
+           [577, [convert_linggloss]]
           ]
 
-revert =  [[575, [revert_new_languages]],
+revert =  [[576, [revert_linggloss]],
+           [575, [revert_new_languages]],
            [574, [revert_lineno]],
            [573, [revert_ruby_module, revert_utf8_japanese]],
            [572, [revert_inputencoding_namechange]],
