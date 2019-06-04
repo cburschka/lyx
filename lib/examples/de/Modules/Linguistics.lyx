@@ -445,7 +445,7 @@ Das Linguistikmodul stellt zwei Arten von Glossen zur Verfügung.
  Beide sind über 
 \family sans
 Einfügen\SpecialChar menuseparator
-Benutzerdefinierte Einfügung
+Spezifische Einfügung
 \family default
  zugänglich.
  Die 
@@ -466,9 +466,8 @@ Interlinear-Glosse (3
 
 Zeilen)
 \emph default
- besteht aus drei Zeilen und einer Zeile für die freie Übersetzung (die
- dritte Zeile wird zumeist für morphologische oder phonologische Angaben
- verwendet).
+ bietet eine zusätzliche Zeile für Interlinear-Glossierung (diese dritte
+ Zeile wird zumeist für morphologische oder phonologische Angaben verwendet).
  Die freie Übersetzung kann länger sein als eine Zeile, sie wird dann einfach
  automatisch und korrekt umbrochen.
  Die Version in der zu beschreibenden Sprache (erste Zeile der Glosse) wird
@@ -1683,7 +1682,7 @@ forest
  Das Linguistik-Modul enthält eine Strukturbaum-Einfügung, die unter 
 \family sans
 Einfügen\SpecialChar menuseparator
-Benutzerdefinierte Einfügungen
+Spezifische Einfügung
 \family default
  zu finden ist.
  Innerhalb dieser Einfügung können Sie die Klammernotation verwenden, die
