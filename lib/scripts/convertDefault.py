@@ -19,8 +19,6 @@
 from __future__ import print_function
 import os, re, sys
 
-PY2 = sys.version_info[0] == 2
-
 # We may need some extra options only supported by recent convert versions
 re_version = re.compile(r'^Version:.*ImageMagick\s*(\d*)\.(\d*)\.(\d*).*$')
 # imagemagick 7
@@ -34,11 +32,6 @@ if fout.close() != None:
     fout = os.popen('convert -version 2>&1')
     output = fout.readline()
     fout.close()
-if not PY2:
-    # Ensure we have a (unicode) string object in Python3
-    # (not required for version >= 3.5).
-    # FIXME: Check whether this is required with any supported 3.x version!
-    output = str(output)
 
 version = re_version.match(output)
 
