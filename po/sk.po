@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-05-31 20:03+0200\n"
-"PO-Revision-Date: 2019-05-31 18:09+0000\n"
+"POT-Creation-Date: 2019-06-04 12:19+0200\n"
+"PO-Revision-Date: 2019-06-04 10:38+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -13685,25 +13685,83 @@ msgstr "Prispôsobiť číslovanie"
 msgid "Subexample"
 msgstr "Podpríklad"
 
-#: lib/layouts/linguistics.module:117 lib/layouts/linguistics.module:119
-msgid "Glosse"
+#: lib/layouts/linguistics.module:96
+msgid "Interlinear Gloss (2 Lines)"
+msgstr "Medziriadková glosa (2 riadky)"
+
+# Glosa
+#: lib/layouts/linguistics.module:98
+msgid "Gloss"
 msgstr "Glosa"
+
+#: lib/layouts/linguistics.module:114 lib/layouts/linguistics.module:160
+msgid "Gloss options"
+msgstr "Voľby glosy"
+
+#: lib/layouts/linguistics.module:115 lib/layouts/linguistics.module:161
+msgid "Gloss Options|s"
+msgstr "Voľby glosy|s"
+
+#: lib/layouts/linguistics.module:116
+msgid "Add digloss options here"
+msgstr "Pridajte sem voľby pre digloss"
+
+# Med
+#: lib/layouts/linguistics.module:120 lib/layouts/linguistics.module:121
+msgid "Interlinear Gloss"
+msgstr "Medziriadková glosa"
+
+#: lib/layouts/linguistics.module:122
+msgid "Add the inter-linear gloss here"
+msgstr "Vložte sem medzi-riadkovú glosu"
 
 #: lib/layouts/linguistics.module:144 lib/layouts/linguistics.module:179
 msgid "Translation"
 msgstr "Preklad"
 
-#: lib/layouts/linguistics.module:145 lib/layouts/linguistics.module:180
-msgid "Glosse Translation|s"
+#: lib/layouts/linguistics.module:131 lib/layouts/linguistics.module:187
+msgid "Gloss Translation"
 msgstr "Preklad glosy|k"
+
+#: lib/layouts/linguistics.module:132
+msgid "Add a free translation for the gloss"
+msgstr "Pridajte voľný preklad pre túto glosu"
+
+#: lib/layouts/linguistics.module:142
+msgid "Interlinear Gloss (3 Lines)"
+msgstr "Medziriadková glosa (3 riadky)"
+
+#: lib/layouts/linguistics.module:144
+msgid "Tri-Gloss"
+msgstr "Tri-Glosa"
+
+#: lib/layouts/linguistics.module:162
+msgid "Add trigloss options here"
+msgstr "Pridajte sem voľby pre trigloss"
+
+#: lib/layouts/linguistics.module:166
+msgid "Interlinear Gloss (1)"
+msgstr "Medziriadková glosa (1)"
+
+#: lib/layouts/linguistics.module:167
+msgid "Interlinear Gloss (Line 1)|1"
+msgstr "Medziriadková glosa (riadok 1)|1"
+
+#: lib/layouts/linguistics.module:168 lib/layouts/linguistics.module:178
+msgid "Add the first inter-linear gloss line here"
+msgstr "Vložte sem prvý riadok medzi-riadkovej glosy"
+
+#: lib/layouts/linguistics.module:176
+msgid "Interlinear Gloss (2)"
+msgstr "Medziriadková glosa (2)"
+
+#: lib/layouts/linguistics.module:177
+msgid "Interlinear Gloss (Line 2)|2"
+msgstr "Medziriadková glosa (riadok 2)|2"
 
 #: lib/layouts/linguistics.module:146 lib/layouts/linguistics.module:181
 msgid "Add a translation for the glosse"
 msgstr "Pridajte preklad pre túto glosu"
-
-#: lib/layouts/linguistics.module:152 lib/layouts/linguistics.module:154
-msgid "Tri-Glosse"
-msgstr "Tri-Glosy"
 
 #: lib/layouts/linguistics.module:187
 msgid "Structure Tree"
@@ -17533,6 +17591,10 @@ msgstr "Nemecky (Rakúsko, starý pravopis)"
 msgid "German (Austria)"
 msgstr "Nemecky (Rakúsko)"
 
+#: lib/languages:322
+msgid "Azerbaijani"
+msgstr "Azerbajdžánsky"
+
 #: lib/languages:303
 msgid "Indonesian"
 msgstr "Indonézsky"
@@ -17588,6 +17650,10 @@ msgstr "Čínsky (zjednodušená)"
 #: lib/languages:464
 msgid "Chinese (traditional)"
 msgstr "Čínsky (tradičná)"
+
+#: lib/languages:522
+msgid "Church Slavonic"
+msgstr "Cirkevne Slovansky"
 
 #: lib/languages:476
 msgid "Coptic"
@@ -17773,6 +17839,10 @@ msgstr "Nórsky (Nynorsk)"
 #: lib/languages:1067
 msgid "Occitan"
 msgstr "Okcitánčinsky"
+
+#: lib/languages:1176
+msgid "Russian (Petrine orthography)"
+msgstr "Rusky (Petrinský pravopis)"
 
 # Nenašiel som v slovníku, pravdepodobne 'Piemont' na severozápade Talianska.
 #: lib/languages:1090
@@ -35112,11 +35182,6 @@ msgstr "Mat. makro: \\%1$s"
 msgid "Invalid macro! \\%1$s"
 msgstr "Neplatné makro! \\%1$s"
 
-#: src/mathed/InsetMathNest.cpp:715 src/mathed/InsetMathNest.cpp:1730
-#: src/mathed/InsetMathNest.cpp:1873
-msgid "Autocorrect Off ('!' to enter)"
-msgstr "Automatická korektúra vypnutá ('!' na zapnutie)"
-
 #: src/mathed/InsetMathNest.cpp:1022
 msgid "create new math text environment ($...$)"
 msgstr "vytvoriť nové matematické textové prostredie ($…$)"
@@ -35128,10 +35193,6 @@ msgstr "vstup do text. prostredia vnútri matem. (textrm)"
 #: src/mathed/InsetMathNest.cpp:1047
 msgid "Regular expression editor mode"
 msgstr "Modus pre editáciu regulárnych výrazov"
-
-#: src/mathed/InsetMathNest.cpp:1735 src/mathed/InsetMathNest.cpp:1875
-msgid "Autocorrect On (<space> to exit)"
-msgstr "Automatická korektúra zapnutá (<medzerník> na vypnutie)"
 
 #: src/mathed/InsetMathRef.cpp:240
 msgid "Standard[[mathref]]"
@@ -35493,6 +35554,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Autocorrect Off ('!' to enter)"
+#~ msgstr "Automatická korektúra vypnutá ('!' na zapnutie)"
+
+#~ msgid "Autocorrect On (<space> to exit)"
+#~ msgstr "Automatická korektúra zapnutá (<medzerník> na vypnutie)"
 
 #, fuzzy
 #~ msgid "List/TOC|/"
