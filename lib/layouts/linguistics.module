@@ -53,15 +53,6 @@ Style Numbered_Example_(multiline)
 		Color         Blue
 	EndFont
 	Requires	      covington
-	Preamble
-	% Backwards compatibility with covington < 1.1
-	% This code can be removed eventually
-	\AtBeginDocument{%
-		\@ifundefined{covexample}{%
-		    \newenvironment{covexample}{\begin{example}}{\end{example}}%
-		}{}
-	}
-	EndPreamble
 	Category              Linguistics
 End
 
@@ -88,15 +79,6 @@ Style Numbered_Examples_(consecutive)
 		LabelString   "Custom Numbering|s"
 		Tooltip       "Customize the numeration"
 	EndArgument
-	Preamble
-	% Backwards compatibility with covington < 1.1
-	% This code can be removed eventually
-	\AtBeginDocument{%
-		\@ifundefined{covexamples}{%
-		    \newenvironment{covexamples}{\begin{examples}}{\end{examples}}%
-		}{}
-	}
-	EndPreamble
 End
 
 
@@ -107,22 +89,6 @@ Style Subexample
 	LabelCounter          "subexample"
 	StepMasterCounter     true
 	Requires	      covington
-	Preamble
-		% Backwards compatibility with covington < 1.6
-		% This code can be removed eventually
-		\AtBeginDocument{%
-			\@ifundefined{covsubexamples}{%
-				\newenvironment{covsubexamples}{%
-					\addtolength{\examplenumbersep}{-0.5em}%
-					\begin{covexample}%
-					\begin{enumerate}
-					\renewcommand\theenumi{\alph{enumi}}
-					\renewcommand\labelenumi{(\theenumi)}
-					\renewcommand\p@enumi{\theequation\,}}%
-				{\end{enumerate}\end{covexample}}
-			}{}
-		}
-	EndPreamble
 End
 
 
