@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 577
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -40,7 +40,7 @@ linguistics
 \language ngerman
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "FreeSerif"
 \font_sans "default" "FreeSans"
 \font_typewriter "default" "FreeMono"
@@ -58,6 +58,8 @@ linguistics
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref true
@@ -92,6 +94,7 @@ linguistics
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \index Stichwortverzeichnis
 \shortcut idx
 \color #008000
@@ -107,6 +110,7 @@ linguistics
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -223,6 +227,8 @@ literal "true"
 \end_inset
 
 : Dieses Paket wird benötigt, um nummerierte Beispiele und Glossen zu erzeugen.
+ Beachten Sie, dass mindestens Version 2.0 des Pakets erforderlich ist, um
+ alle Funktionen zu nutzen.
 \end_layout
 
 \begin_deeper
@@ -231,40 +237,6 @@ Auf Ihrem System installiert:
 \begin_inset Info
 type  "package"
 arg   "covington"
-\end_inset
-
-.
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-
-\emph on
-enumitem.sty
-\emph default
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "enumitem"
-literal "true"
-
-\end_inset
-
-: Mithilfe dieses Pakets werden Unterbeispiele erzeugt (die 
-\emph on
-convington
-\emph default
- selbst nicht unterstützt).
- Das Paket ist darüber hinaus aber auch generell nützlich, um das Aussehen
- von Listen (Aufzählungen, Auflistungen, Beschreibungen) anzupassen.
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Auf Ihrem System installiert: 
-\begin_inset Info
-type  "package"
-arg   "enumitem"
 \end_inset
 
 .
@@ -288,7 +260,7 @@ literal "true"
 \emph on
 Bedeutung
 \emph default
-.
+ und für Glossen.
  Das Paket erlaubt es, kontextsensible Anführungszeichen zu generieren (bspw.
  je nach aktuell verwendeter Sprache).
 \end_layout
@@ -473,47 +445,143 @@ Das Linguistikmodul stellt zwei Arten von Glossen zur Verfügung.
  Beide sind über 
 \family sans
 Einfügen\SpecialChar menuseparator
-Benutzerdefinierte Einfügungen
+Benutzerdefinierte Einfügung
 \family default
  zugänglich.
- Die einfache 
+ Die 
 \emph on
-Glosse
+Interlinear-Glosse (2
+\begin_inset space ~
+\end_inset
+
+Zeilen)
 \emph default
- besteht aus zwei Zeilen für das Glossenpaar und einer weiteren Zeile für
- die Paraphrase, die 
+ besteht aus zwei Zeilen für das Glossenpaar (bestehend aus der Darstellung
+ in der zu beschreibenden Sprache und einer interlinearen Wort-zu-Wort-Übersetzu
+ng) sowie einer weiteren Zeile für die freie Übersetzung, die 
 \emph on
-Tri-Glosse
+Interlinear-Glosse (3
+\begin_inset space ~
+\end_inset
+
+Zeilen)
 \emph default
- besteht aus drei Zeilen und einer Zeile für die Paraphrase (die dritte
- Zeile wird zumeist für morphologische oder phonologische Angaben verwendet).
- Die einzelnen Zeilen können länger sein als die Textbreite, sie werden
- dann einfach automatisch und korrekt umbrochen.
- Die Paraphrase wird über 
+ besteht aus drei Zeilen und einer Zeile für die freie Übersetzung (die
+ dritte Zeile wird zumeist für morphologische oder phonologische Angaben
+ verwendet).
+ Die freie Übersetzung kann länger sein als eine Zeile, sie wird dann einfach
+ automatisch und korrekt umbrochen.
+ Die Version in der zu beschreibenden Sprache (erste Zeile der Glosse) wird
+ direkt in die Glosse-Einfügung geschrieben, alle anderen Teile der Glosse
+ in spezifische Unter-Einfügungen (
+\family sans
+Interlinear-Glosse
+\family default
+, bzw.
+ mit dreizeiligen Glossen: 
+\family sans
+Interlinear-Glosse (Zeile
+\begin_inset space ~
+\end_inset
+
+1)
+\family default
+ und 
+\family sans
+Interlinear-Glosse (Zeile
+\begin_inset space ~
+\end_inset
+
+2)
+\family default
+, sowie 
+\family sans
+Glossen-Übersetzung
+\family default
+).
+ \SpecialChar LyX
+ fügt diese Unter-Einfügungen automatisch ein, wenn Sie eine neue Glosse
+ einfügen.
+ Sie können aber auch manuell eingefügt werden, und zwar über 
 \family sans
 Einfügen\SpecialChar menuseparator
 Glossen-Übersetzung
 \family default
- eingegeben.
- Ungeachtet wo Sie diese innerhalb der Glosse einfügen, wird die Paraphrase
- immer als letzte Zeile ausgegeben.
-\end_layout
-
-\begin_layout Standard
-Hier ist ein einfaches Beispiel für eine 
+ und 
+\family sans
+Einfügen\SpecialChar menuseparator
+Interlinear-Glosse
+\family default
+.
+ Ungeachtet wo Sie diese Untereinfügungen innerhalb der Glosse einfügen,
+ wird alles in der richtigen Reihenfolge ausgegeben.
+ Schließlich können Sie über 
+\family sans
+Einfügen\SpecialChar menuseparator
+Glossen-Optionen
+\family default
+ auch Glossen-Optionen eingeben.
+ Diese Optionen erlauben es Ihnen, die Darstellung der einzelnen Zeilen
+ zu verändern, eine Nummerierung oder vorangestellten Text hinzuzufügen.
+ Bitte konsultieren Sie das Handbuch des Pakets 
 \emph on
-Glosse
+covington 
 \emph default
-:
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covington"
+literal "false"
+
+\end_inset
+
+ für Einzelheiten.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Bitte beachten Sie, dass die Unterstützung für Glossen für \SpecialChar LyX
+ 2.4 komplett
+ überarbeitet wurde.
+ Nun werden die neuen und verbesserten Glossen-Makros verwendet, die 
+\emph on
+covington
+\emph default
+ seit der Version 2.0 anbietet.
+ Wegen der erheblichen Veränderungen können alte Glossen leider nicht in
+ die neuen konvertiert werden.
+ Statt dessen werden sie in ihrer ursprünglichen Form importiert (und als
+ 
+\family sans
+Lokales Format
+\family default
+ im Dokument gespeichert).
+ Umgekehrt werden neue Glossen in \SpecialChar TeX
+-Code exportier, wenn Sie in eine ältere
+ \SpecialChar LyX
+-Version exportieren.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Glosse
+Hier ist ein einfaches Beispiel für eine zweizeilige Glosse:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Interlinear Gloss (2 Lines)
 status open
 
 \begin_layout Plain Layout
 C'est       un exemple simple
 \end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:1
+status open
 
 \begin_layout Plain Layout
 \begin_inset Flex GroupGlossedWords
@@ -528,8 +596,13 @@ Dies ist
  ein Beispiel einfach
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Plain Layout
-\begin_inset Argument 1
+\begin_inset Argument post:2
 status open
 
 \begin_layout Plain Layout
@@ -585,21 +658,21 @@ status open
 \end_layout
 
 \begin_layout Standard
-Hier ist eine dreizeilige Glosse (
-\emph on
-Tri-Glosse
-\emph default
-).
+Hier ist eine dreizeilige Glosse.
  Sie wird analog erzeugt:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Tri-Glosse
+\begin_inset Flex Interlinear Gloss (3 Lines)
 status open
 
 \begin_layout Plain Layout
 C'est      un   exemple simple
 \end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:1
+status open
 
 \begin_layout Plain Layout
 \begin_inset Flex GroupGlossedWords
@@ -614,6 +687,15 @@ This is
   an   example simple
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:2
+status open
+
 \begin_layout Plain Layout
 \begin_inset Flex GroupGlossedWords
 status open
@@ -627,8 +709,13 @@ Dies ist
  ein Beispiel  einfach
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Plain Layout
-\begin_inset Argument 1
+\begin_inset Argument post:3
 status open
 
 \begin_layout Plain Layout
@@ -647,8 +734,8 @@ Dies ist ein einfaches Beispiel
 
 \begin_layout Standard
 \noindent
-Wenn Sie nummerierte Glossen benötigen, fügen Sie die Glosse einfach in
- einen Absatz mit dem Format 
+Wenn Sie nummerierte Glossen benötigen, fügen Sie die Glosse entweder einfach
+ in einen Absatz mit dem Format 
 \emph on
 Nummeriertes Beispiel
 \emph default
@@ -656,7 +743,7 @@ Nummeriertes Beispiel
 \end_layout
 
 \begin_layout Numbered Examples (consecutive)
-\begin_inset Flex Tri-Glosse
+\begin_inset Flex Interlinear Gloss (3 Lines)
 status open
 
 \begin_layout Plain Layout
@@ -664,8 +751,21 @@ Mein Luftkissenfahrzeug ist voller  Aale
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
 My    skeertuig                   is   vol      palings
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:2
+status open
 
 \begin_layout Plain Layout
 My    hovercraft                 is 
@@ -681,8 +781,96 @@ full of
   eels
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:3
+status open
+
+\begin_layout Plain Layout
+Do you have matches?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+oder verwenden Sie die Glossen-Option 
+\emph on
+ex
+\emph default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Interlinear Gloss (3 Lines)
+status open
+
 \begin_layout Plain Layout
 \begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+ex
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Mein Luftkissenfahrzeug ist voller  Aale
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+My    skeertuig                   is   vol      palings
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:2
+status open
+
+\begin_layout Plain Layout
+My    hovercraft                 is 
+\begin_inset Flex GroupGlossedWords
+status open
+
+\begin_layout Plain Layout
+full of
+\end_layout
+
+\end_inset
+
+  eels
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:3
 status open
 
 \begin_layout Plain Layout
@@ -708,172 +896,30 @@ Seitenumbrüche innerhalb von Glossen vermeiden
 \end_layout
 
 \begin_layout Standard
-Innerhalb von Glossen können Seiten umbrochen werden, was natürlich nicht
- erwünscht ist.
- Um dies zu umgehen, können Sie Glossen in Boxen packen (über 
+In der Standardeinstellung können innerhalb von Glossen Seiten umbrochen
+ werden, was natürlich nicht erwünscht ist.
+ Um dies zu umgehen, können Sie in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar ldots
+\SpecialChar menuseparator
+Dokumentklasse\SpecialChar menuseparator
+Klassenoptionen\SpecialChar menuseparator
+Benutzerdefiniert
+\family default
+ die Option 
+\emph on
+noglossbreaks
+\emph default
+ eingeben; dies wird die meisten Umbrüche verhindern.
+ Wenn totzdem welche vorkommen, können Sie Glossen in Boxen packen (über
+ 
 \family sans
 Einfügen\SpecialChar menuseparator
 Box\SpecialChar menuseparator
 Rahmenlos
 \family default
 ).
- Wenn Sie dies automatisch für alle Glossen im Dokument tun wollen, können
- Sie den folgenden \SpecialChar LaTeX
--Code nach 
-\family sans
-Dokument\SpecialChar menuseparator
-Einstellungen\SpecialChar ldots
-\SpecialChar menuseparator
-\SpecialChar LaTeX
--Vorspann
-\family default
- kopieren:
-\end_layout
-
-\begin_layout Quote
-\begin_inset listings
-lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-% Kein Seitenumbruch bei zweizeiligen Glossen
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-AtBeginDocument{%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewenvironment{linggloss}[2][]{%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-def
-\backslash
-glosstr{
-\backslash
-glt #1}%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{minipage}{.7
-\backslash
-textwidth}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-gll #2}{
-\backslash
-glosstr
-\backslash
-glend
-\backslash
-end{minipage}}
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Quote
-\begin_inset listings
-lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-% Kein Seitenumbruch bei dreizeiligen Glossen
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-AtBeginDocument{%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewenvironment{lingglosss}[2][]{%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-def
-\backslash
-glosstr{
-\backslash
-glt #1}%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{minipage}{.7
-\backslash
-textwidth}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-glll #2}{
-\backslash
-glosstr
-\backslash
-glend
-\backslash
-end{minipage}}
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Möglicherweise müssen Sie die Breite der Minipage (
-\family typewriter
-.7
-\backslash
-textwidth
-\family default
- im Beispielcode) ändern, damit sie zur Seitenbreite Ihres Dokuments passt.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1114,6 +1160,7 @@ reference "tab:Beispiel-Tableau"
 \begin_layout Standard
 \begin_inset Float tableau
 placement h
+alignment document
 wide false
 sideways false
 status open
