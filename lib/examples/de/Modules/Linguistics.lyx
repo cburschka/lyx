@@ -150,9 +150,9 @@ literal "false"
 In diesem Text werden einige Funktionen von \SpecialChar LyX
  vorgestellt, die spezifisch
  auf die Bedürfnisse von Linguistinnen und Linguisten ausgerichtet sind.
- Es wird gezeigt, wie nummerierte Beispiele, Glossen, OT-Tableaux, semantische
- Auszeichnung, Strukturbäume und phonetische Notation (IPA) erzeugt werden
- können.
+ Es wird gezeigt, wie nummerierte Beispiele, Interlinear-Glossierung, OT-Tableau
+x, semantische Auszeichnung, Strukturbäume und phonetische Notation (IPA)
+ erzeugt werden können.
 \end_layout
 
 \begin_layout Section
@@ -437,7 +437,7 @@ Benutzerdef.
 \end_layout
 
 \begin_layout Section
-Glossen
+Interlinear-Glossierung
 \end_layout
 
 \begin_layout Standard
@@ -666,7 +666,7 @@ Hier ist eine dreizeilige Glosse.
 status open
 
 \begin_layout Plain Layout
-C'est      un   exemple simple
+Hoc est aliud exemplum
 \end_layout
 
 \begin_layout Plain Layout
@@ -674,16 +674,7 @@ C'est      un   exemple simple
 status open
 
 \begin_layout Plain Layout
-\begin_inset Flex GroupGlossedWords
-status open
-
-\begin_layout Plain Layout
-This is
-\end_layout
-
-\end_inset
-
-  an   example simple
+n.sg.nom 3sg n.sg.nom n.sg.nom
 \end_layout
 
 \end_inset
@@ -696,16 +687,7 @@ This is
 status open
 
 \begin_layout Plain Layout
-\begin_inset Flex GroupGlossedWords
-status open
-
-\begin_layout Plain Layout
-Dies ist
-\end_layout
-
-\end_inset
-
- ein Beispiel  einfach
+Dies ist anderes Beispiel 
 \end_layout
 
 \end_inset
@@ -718,7 +700,26 @@ Dies ist
 status open
 
 \begin_layout Plain Layout
-Dies ist ein einfaches Beispiel
+Dies ist ein anderes Beispiel
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+fsii={
+\backslash
+normalfont
+\backslash
+scshape}
 \end_layout
 
 \end_inset
@@ -729,6 +730,16 @@ Dies ist ein einfaches Beispiel
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Beachten Sie, wie wir hier mit Hilfe der Glossen-Optionen die zweite Zeile
+ in Kapitälchen ausgeben lassen.
 \end_layout
 
 \begin_layout Standard

@@ -150,12 +150,22 @@ literal "false"
 This paper describes some features that \SpecialChar LyX
  provides to linguists.
  It demonstrates how to use some native support in order to produce numbered
- examples, glosses, OT tableaux, semantic markup, structure trees, and phonetic
- symbols (IPA).
+ examples, 
+\change_inserted -712698321 1559649291
+interlinear 
+\change_unchanged
+glosses, OT tableaux, semantic markup, structure trees, and phonetic symbols
+ (IPA).
 \end_layout
 
 \begin_layout Section
-Aims and prerequisites
+Aims and 
+\change_deleted -712698321 1559649283
+p
+\change_inserted -712698321 1559649283
+P
+\change_unchanged
+rerequisites
 \end_layout
 
 \begin_layout Standard
@@ -387,7 +397,13 @@ arg   "forest"
 
 \end_deeper
 \begin_layout Section
-Numbered examples
+Numbered 
+\change_deleted -712698321 1559649278
+e
+\change_inserted -712698321 1559649278
+E
+\change_unchanged
+xamples
 \end_layout
 
 \begin_layout Standard
@@ -481,6 +497,10 @@ Custom Numbering
 \end_layout
 
 \begin_layout Section
+
+\change_inserted -712698321 1559649210
+Interlinear 
+\change_unchanged
 Glosses
 \end_layout
 
@@ -543,14 +563,20 @@ Lines)
 \change_unchanged
 
 \emph default
- insets consists of three lines
-\change_deleted -712698321 1559636589
- and a
-\change_inserted -712698321 1559636589
- plus
+ 
+\change_deleted -712698321 1559648850
+insets consists of three lines and a translation
+\change_inserted -712698321 1559648856
+provides an additional gloss line
 \change_unchanged
- translation (the third line is usually needed to give morphological or
- phonological information next to the gloss pair).
+ (th
+\change_deleted -712698321 1559648859
+e
+\change_inserted -712698321 1559648859
+is
+\change_unchanged
+ third line is usually needed to give morphological or phonological information
+ next to the gloss pair).
  Each translation line might span multiple lines in the output, i.
 \begin_inset space \thinspace{}
 \end_inset
@@ -874,7 +900,11 @@ Tri-Glosse
 \emph default
 )
 \change_unchanged
-; the procedure is the same:
+; the procedure is 
+\change_inserted -712698321 1559649192
+basically 
+\change_unchanged
+the same:
 \change_inserted -712698321 1559637107
 
 \end_layout
@@ -887,8 +917,8 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1559637135
-C'est      un exemple simple
+\change_inserted -712698321 1559648912
+Hoc est aliud exemplum
 \end_layout
 
 \begin_layout Plain Layout
@@ -899,19 +929,8 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1559637118
-\begin_inset Flex GroupGlossedWords
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1559637118
-Das ist
-\end_layout
-
-\end_inset
-
- ein Beispiel einfach
+\change_inserted -712698321 1559648946
+n.sg.nom 3sg n.sg.nom n.sg.nom
 \change_unchanged
 
 \end_layout
@@ -929,19 +948,8 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1559637125
-\begin_inset Flex GroupGlossedWords
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1559637125
-This is
-\end_layout
-
-\end_inset
-
- an  example simple
+\change_inserted -712698321 1559648933
+This is another  example
 \change_unchanged
 
 \end_layout
@@ -953,14 +961,46 @@ This is
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1559637111
+\change_inserted -712698321 1559649011
 \begin_inset Argument post:3
 status open
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1559637130
-This is a simple example
+\change_inserted -712698321 1559648952
+This is another example
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559649033
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1559649033
+
+fsii={
+\backslash
+normalfont
+\backslash
+scshape}
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
 \change_unchanged
 
 \end_layout
@@ -1044,8 +1084,16 @@ This is a simple example
 
 \begin_layout Standard
 \noindent
+
+\change_inserted -712698321 1559649169
+Note how we have used the gloss options here to make the second line be
+ typeset in small caps.
+\end_layout
+
+\begin_layout Standard
+\noindent
 If you want to have numbered glosses, 
-\change_inserted -712698321 1559637163
+\change_inserted -712698321 1559649116
 either
 \change_deleted -712698321 1559637165
 simply
