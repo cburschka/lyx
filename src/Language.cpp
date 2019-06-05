@@ -288,11 +288,10 @@ bool Language::read(Lexer & lex)
 
 void Language::readLayoutTranslations(Language::TranslationMap const & trans, bool replace)
 {
-	TranslationMap::const_iterator const end = trans.end();
-	for (TranslationMap::const_iterator it = trans.begin(); it != end; ++it) {
+	for (auto const & t : trans) {
 		if (replace
-			|| layoutTranslations_.find(it->first) == layoutTranslations_.end())
-			layoutTranslations_[it->first] = it->second;
+		    || layoutTranslations_.find(t.first) == layoutTranslations_.end())
+			layoutTranslations_[t.first] = t.second;
 	}
 }
 
@@ -330,13 +329,13 @@ void Languages::read(FileName const & filename)
 			static const Language ignore_lang = l;
 			ignore_language = &ignore_lang;
 		} else
-			languagelist[l.lang()] = l;
+			languagelist_[l.lang()] = l;
 	}
 
 	default_language = getLanguage("english");
 	if (!default_language) {
 		LYXERR0("Default language \"english\" not found!");
-		default_language = &(*languagelist.begin()).second;
+		default_language = &(*languagelist_.begin()).second;
 		LYXERR0("Using \"" << default_language->lang() << "\" instead!");
 	}
 
@@ -399,17 +398,15 @@ Match match(string const & code, Language const & lang)
 
 Language const * Languages::getFromCode(string const & code) const
 {
-	LanguageList::const_iterator const lbeg = languagelist.begin();
-	LanguageList::const_iterator const lend = languagelist.end();
 	// Try for exact match first
-	for (LanguageList::const_iterator lit = lbeg; lit != lend; ++lit) {
-		if (match(code, lit->second) == ExactMatch)
-			return &lit->second;
+	for (auto const & l : languagelist_) {
+		if (match(code, l.second) == ExactMatch)
+			return &l.second;
 	}
 	// If not found, look for lang prefix (without country) instead
-	for (LanguageList::const_iterator lit = lbeg; lit != lend; ++lit) {
-		if (match(code, lit->second) == ApproximateMatch)
-			return &lit->second;
+	for (auto const & l : languagelist_) {
+		if (match(code, l.second) == ApproximateMatch)
+			return &l.second;
 	}
 	LYXERR0("Unknown language `" + code + "'");
 	return 0;
@@ -423,10 +420,7 @@ void Languages::readLayoutTranslations(support::FileName const & filename)
 	lex.setContext("Languages::read");
 
 	// 1) read all translations (exact and approximate matches) into trans
-	typedef std::map<string, Language::TranslationMap> TransMap;
-	TransMap trans;
-	LanguageList::iterator const lbeg = languagelist.begin();
-	LanguageList::iterator const lend = languagelist.end();
+	std::map<string, Language::TranslationMap> trans;
 	while (lex.isOK()) {
 		if (!lex.checkFor("Translation")) {
 			if (lex.isOK())
@@ -450,15 +444,12 @@ void Languages::readLayoutTranslations(support::FileName const & filename)
 
 	// 2) merge all translations into the languages
 	// exact translations overwrite approximate ones
-	TransMap::const_iterator const tbeg = trans.begin();
-	TransMap::const_iterator const tend = trans.end();
-	for (TransMap::const_iterator tit = tbeg; tit != tend; ++tit) {
-		for (LanguageList::iterator lit = lbeg; lit != lend; ++lit) {
-			Match const m = match(tit->first, lit->second);
+	for (auto & tr : trans) {
+		for (auto & lang : languagelist_) {
+			Match const m = match(tr.first, lang.second);
 			if (m == NoMatch)
 				continue;
-			lit->second.readLayoutTranslations(tit->second,
-			                                   m == ExactMatch);
+			lang.second.readLayoutTranslations(tr.second, m == ExactMatch);
 		}
 	}
 
@@ -471,8 +462,8 @@ Language const * Languages::getLanguage(string const & language) const
 		return reset_language;
 	if (language == "ignore")
 		return ignore_language;
-	const_iterator it = languagelist.find(language);
-	return it == languagelist.end() ? reset_language : &it->second;
+	const_iterator it = languagelist_.find(language);
+	return it == languagelist_.end() ? reset_language : &it->second;
 }
 
 

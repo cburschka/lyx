@@ -174,15 +174,15 @@ public:
 	///
 	Language const * getLanguage(std::string const & language) const;
 	///
-	size_type size() const { return languagelist.size(); }
+	size_type size() const { return languagelist_.size(); }
 	///
-	const_iterator begin() const { return languagelist.begin(); }
+	const_iterator begin() const { return languagelist_.begin(); }
 	///
-	const_iterator end() const { return languagelist.end(); }
+	const_iterator end() const { return languagelist_.end(); }
 
 private:
 	///
-	LanguageList languagelist;
+	LanguageList languagelist_;
 };
 
 /// Global singleton instance.
