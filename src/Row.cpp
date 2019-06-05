@@ -492,13 +492,10 @@ bool Row::shortenIfNeeded(pos_type const keep, int const w, int const next_width
 		 * FIXME: hardcoding languages is bad. Put this information in
 		 * `languages' file.
 		*/
-		string const lang = brk.font.language()->lang();
-		bool force = lang == "chinese-simplified"
-		             || lang == "chinese-traditional"
-		             || lang == "japanese"
-		             || lang == "korean";
-		// FIXME: is it important to check for separators?
-		if ((!force && brk.countSeparators() == 0) || brk.pos < keep)
+		bool const word_wrap = brk.font.language()->wordWrap();
+		// When there is text before the body part (think description
+		// environment), do not try to break.
+		if (brk.pos < keep)
 			continue;
 		/* We have found a suitable separable element. This is the common case.
 		 * Try to break it cleanly (at word boundary) at a length that is both
@@ -506,7 +503,7 @@ bool Row::shortenIfNeeded(pos_type const keep, int const w, int const next_width
 		 * - shorter than the natural width of the element, in order to enforce
 		 *   break-up.
 		 */
-		if (brk.breakAt(min(w - wid_brk, brk.dim.wid - 2), force)) {
+		if (brk.breakAt(min(w - wid_brk, brk.dim.wid - 2), !word_wrap)) {
 			/* if this element originally did not cause a row overflow
 			 * in itself, and the remainder of the row would still be
 			 * too large after breaking, then we will have issues in

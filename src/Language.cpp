@@ -131,7 +131,8 @@ bool Language::readLanguage(Lexer & lex)
 		LA_PROVIDES,
 		LA_REQUIRES,
 		LA_QUOTESTYLE,
-		LA_RTL
+		LA_RTL,
+		LA_WORDWRAP
 	};
 
 	// Keep these sorted alphabetically!
@@ -153,7 +154,8 @@ bool Language::readLanguage(Lexer & lex)
 		{ "provides",             LA_PROVIDES },
 		{ "quotestyle",           LA_QUOTESTYLE },
 		{ "requires",             LA_REQUIRES },
-		{ "rtl",                  LA_RTL }
+		{ "rtl",                  LA_RTL },
+		{"wordwrap",              LA_WORDWRAP }
 	};
 
 	bool error = false;
@@ -239,6 +241,9 @@ bool Language::readLanguage(Lexer & lex)
 			break;
 		case LA_RTL:
 			lex >> rightToLeft_;
+			break;
+		case LA_WORDWRAP:
+			lex >> word_wrap_;
 			break;
 		}
 	}

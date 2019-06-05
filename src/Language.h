@@ -36,7 +36,7 @@ class Language {
 public:
 	///
 	Language() : rightToLeft_(false), encoding_(0), internal_enc_(false),
-				 has_gui_support_(false) {}
+				 has_gui_support_(false), word_wrap_(true) {}
 	/// LyX language name
 	std::string const lang() const { return lang_; }
 	/// Babel language name
@@ -59,6 +59,8 @@ public:
 	std::string const display() const { return display_; }
 	/// is this a RTL language?
 	bool rightToLeft() const { return rightToLeft_; }
+	/// shall text be wrapped at word boundary ?
+	bool wordWrap() const { return word_wrap_; }
 	/**
 	 * Translate a string from the layout files that appears in the output.
 	 * It takes the translations from lib/layouttranslations instead of
@@ -141,6 +143,8 @@ private:
 	bool as_babel_options_;
 	///
 	bool has_gui_support_;
+	///
+	bool word_wrap_;
 	///
 	TranslationMap layoutTranslations_;
 };

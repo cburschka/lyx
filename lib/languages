@@ -17,6 +17,7 @@
 #	FontEncoding       <font encoding|font encoding|...>
 #	InternalEncoding   <true|false>
 #	RTL                <true|false>
+#	WordWrap	   <true|false>
 #	LangCode           <language_code>
 #	LangVariety        <language_variety>
 #	PreBabelPreamble
@@ -100,6 +101,9 @@
 #   If True, LyX takes care for characters/macros that do not exist in
 #   some font encodings ("<", ">", "|" and straight quote).
 #   It is not required for standard encodings like T2A. See bug #5091.
+# * WordWrap is only used for on-screen display: when is is true (the default), rows are broken
+#   at word boundary; otherwise, they can be ended at arbitrary position. This
+#   setting is useful for CJK languages.
 # * LangCode is also used for spellchecking and thesaurus, where the
 #   dictionaries are named accordingly. Thus, check this when introducing/
 #   changing language codes (especially aspell, thesaurus).
@@ -501,6 +505,7 @@ Language chinese-simplified
 	HasGuiSupport    true
 	Encoding         euc-cn
 	QuoteStyle       english
+	WordWrap         false
 	LangCode         zh_CN
 	DateFormats      "yyyy年M月d日|yyyy-M-d|yy-M-d"
 	Requires         CJK
@@ -512,6 +517,7 @@ Language chinese-traditional
 	HasGuiSupport    true
 	QuoteStyle       cjk
 	Encoding         utf8-cjk
+	WordWrap         false
 	LangCode         zh_TW
 	DateFormats      "yyyy年M月d日|yyyy年M月d日|yy年M月d日"
 	Requires         CJK
@@ -909,6 +915,7 @@ Language japanese
 	HasGuiSupport    true
 	BabelName        japanese
 	Encoding         jis-platex
+	WordWrap         false
 	LangCode         ja_JP
 	Requires         japanese
 	FontEncoding     ASCII
@@ -920,7 +927,8 @@ End
 Language japanese-cjk
 	GuiName         "Japanese (CJK)"
 	Encoding        euc-jp
-	DateFormats      "yyyy年M月d日|yyyy/MM/dd|yy/MM/dd"
+	DateFormats     "yyyy年M月d日|yyyy/MM/dd|yy/MM/dd"
+	WordWrap        false
 	LangCode        ja_JP
 	Requires        CJK
 	QuoteStyle      cjk
@@ -960,6 +968,7 @@ Language korean
 	Encoding        euc-kr
 	QuoteStyle      cjkangle
 	DateFormats     "yyyy년 M월 d일|yyyy. M. d.|yy. M. d."
+	WordWrap        false
 	LangCode        ko_KR
 	Requires        CJK
 End
