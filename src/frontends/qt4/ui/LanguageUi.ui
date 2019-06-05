@@ -44,7 +44,11 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QComboBox" name="quoteStyleCO"/>
+      <widget class="QComboBox" name="quoteStyleCO">
+       <property name="toolTip">
+        <string>Select the default style of Quote insets.</string>
+       </property>
+      </widget>
      </item>
      <item row="2" column="0">
       <layout class="QHBoxLayout" name="horizontalLayout"/>
@@ -80,23 +84,44 @@
    <item row="1" column="0" colspan="2">
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="2">
+      <widget class="QComboBox" name="unicodeEncodingCO">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="toolTip">
+        <string>Select Unicode (utf8) variant.</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QComboBox" name="autoEncodingCO">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="toolTip">
+        <string>Specify whether to load the 'inputenc' package
+	  and write input encoding switch commands to the source.</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
       <widget class="QComboBox" name="customEncodingCO">
        <property name="enabled">
         <bool>false</bool>
        </property>
        <property name="toolTip">
-        <string>If you selected a custom output encoding to the left, yo can specifiy it here</string>
+        <string>Select encoding</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
+     <item row="3" column="1">
       <widget class="QComboBox" name="languagePackageCO">
        <property name="toolTip">
         <string>Select which language package LyX should use</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
+     <item row="3" column="0">
       <widget class="QLabel" name="languagePackageLA">
        <property name="text">
         <string>Language pa&amp;ckage:</string>
@@ -111,38 +136,58 @@
        <property name="text">
         <string>&amp;Encoding:</string>
        </property>
+       <property name="toolTip">
+        <string>Encoding of the generated LaTeX source
+	  (LaTeX input encoding).</string>
+       </property>
        <property name="buddy">
-        <cstring>encodingCO</cstring>
+        <cstring>unicodeEncodingRB</cstring>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QComboBox" name="encodingCO">
+      <widget class="QRadioButton" name="unicodeEncodingRB">
        <property name="enabled">
         <bool>true</bool>
        </property>
-       <property name="toolTip">
-        <string>Here you might adjust the output encoding (used for LaTeX files)</string>
+       <property name="text">
+        <string>Unicode</string>
        </property>
-       <property name="duplicatesEnabled">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="2">
-      <widget class="QLineEdit" name="languagePackageLE">
        <property name="toolTip">
-        <string>Enter the command to load the language package (default: \usepackage{babel})</string>
+        <string>Set input encoding to Unicode (utf8).</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QCheckBox" name="noInputencCB">
-       <property name="toolTip">
-        <string>If this is checked, LyX does not load the inputenc LaTeX package</string>
+      <widget class="QRadioButton" name="autoEncodingRB">
+       <property name="enabled">
+        <bool>true</bool>
        </property>
        <property name="text">
-        <string>Do not load &amp;inputenc</string>
+        <string>Automatic</string>
+       </property>
+       <property name="toolTip">
+        <string>Use language specific legacy encodings.</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QRadioButton" name="customEncodingRB">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>Custom</string>
+       </property>
+       <property name="toolTip">
+        <string>Use custom document-wide encoding.</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="QLineEdit" name="languagePackageLE">
+       <property name="toolTip">
+        <string>Enter the command to load the language package (default: \usepackage{babel})</string>
        </property>
       </widget>
      </item>
