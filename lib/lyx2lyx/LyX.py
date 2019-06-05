@@ -71,8 +71,8 @@ def minor_versions(major, last_minor_version):
 # Regular expressions used
 format_re = re.compile(r"(\d)[\.,]?(\d\d)")
 fileformat = re.compile(r"\\lyxformat\s*(\S*)")
-original_version = re.compile(r".*?LyX ([\d.]*)")
-original_tex2lyx_version = re.compile(r".*?tex2lyx ([\d.]*)")
+original_version = re.compile(b".*?LyX ([\\d.]*)")
+original_tex2lyx_version = re.compile(b".*?tex2lyx ([\\d.]*)")
 
 ##
 # file format information:
@@ -519,10 +519,10 @@ class LyX_base:
         file, returns the most likely value, or None otherwise."""
 
         for line in self.header:
-            if line[0] != "#":
+            if line[0:1] != b"#":
                 return None
 
-            line = line.replace("fix",".")
+            line = line.replace(b"fix",b".")
             # need to test original_tex2lyx_version first because tex2lyx
             # writes "#LyX file created by tex2lyx 2.2"
             result = original_tex2lyx_version.match(line)
@@ -530,14 +530,14 @@ class LyX_base:
                 result = original_version.match(line)
                 if result:
                     # Special know cases: reLyX and KLyX
-                    if line.find("reLyX") != -1 or line.find("KLyX") != -1:
+                    if line.find(b"reLyX") != -1 or line.find(b"KLyX") != -1:
                         return "0.12"
             if result:
                 res = result.group(1)
                 if not res:
                     self.warning(line)
                 #self.warning("Version %s" % result.group(1))
-                return res
+                return res.decode('ascii') if not PY2 else res
         self.warning(str(self.header[:2]))
         return None
 
@@ -642,7 +642,7 @@ class LyX_base:
           self.warning("Malformed LyX document: No \\textclass!!")
           return
         i = j = tclass + 1
-      else: 
+      else:
         j = find_token(self.header, "\\end_modules", i)
         if j == -1:
             self.warning("(set_module_list) Malformed LyX document: No \\end_modules.")
