@@ -74,7 +74,7 @@ Changer MetricsBase::changeFontSet(string const & name)
 	    && ((isTextFont(oldname) && oldcolor != Color_foreground)
 	        || (isMathFont(oldname) && oldcolor != Color_math)))
 		font.setColor(oldcolor);
-	return move(rc);
+	return rc;
 }
 
 
