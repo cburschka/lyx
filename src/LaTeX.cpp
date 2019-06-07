@@ -73,6 +73,15 @@ void TeXErrors::insertError(int line, docstring const & error_desc,
 }
 
 
+void TeXErrors::insertRef(int line, docstring const & error_desc,
+			    docstring const & error_text,
+			    string const & child_name)
+{
+	Error newerr(line, error_desc, error_text, child_name);
+	undef_ref.push_back(newerr);
+}
+
+
 bool operator==(AuxInfo const & a, AuxInfo const & o)
 {
 	return a.aux_file == o.aux_file
@@ -682,6 +691,14 @@ bool LaTeX::runBibTeX(vector<AuxInfo> const & bibtex_info,
 }
 
 
+//helper func for scanLogFile; gets line number X from strings "... on input line X ..."
+//returns 0 if none is found
+int getLineNumber(const string &token){
+	string l = support::token(token, ' ', tokenPos(token,' ',"line") + 1);
+	return l.empty() ? 0 : convert<int>(l);
+}
+
+
 int LaTeX::scanLogFile(TeXErrors & terr)
 {
 	int last_line = -1;
@@ -705,6 +722,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	int pnest = 0;
 	stack <pair<string, int> > child;
 	children.clear();
+
+	terr.clearRefs();
 
 	string token;
 	while (getline(ifs, token)) {
@@ -752,6 +771,12 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 		if (contains(token, "file:line:error style messages enabled"))
 			fle_style = true;
 
+		//Handles both "LaTeX Warning:" & "Package natbib Warning:"
+		//Various handlers for missing citations below won't catch the problem if citation
+		//key is long (>~25chars), because pdflatex splits output at line length 80.
+		if (contains(token, "There were undefined citations."))
+			retval |= UNDEF_CIT;
+
 		if (prefixIs(token, "LaTeX Warning:") ||
 		    prefixIs(token, "! pdfTeX warning")) {
 			// Here shall we handle different
@@ -771,15 +796,28 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 			} else if (contains(token, "Etaremune labels have changed")) {
 				retval |= ERROR_RERUN;
 				LYXERR(Debug::LATEX, "Force rerun.");
+			//"Citation `cit' on page X undefined on input line X."
 			} else if (contains(token, "Citation")
-				   && contains(token, "on page")
+				   //&& contains(token, "on input line") //often split to newline
 				   && contains(token, "undefined")) {
 				retval |= UNDEF_CIT;
-			} else if (contains(token, "Citation")
-				   && contains(token, "on input line")
+				terr.insertRef(getLineNumber(token), from_ascii("Citation undefined"),
+					from_utf8(token), child_name);
+			//"Reference `X' on page Y undefined on input line Z."
+			} else if (contains(token, "Reference")
+				   //&& contains(token, "on input line")) //often split to new line
 				   && contains(token, "undefined")) {
-				retval |= UNDEF_CIT;
+				retval |= UNDEF_REF;
+				terr.insertRef(getLineNumber(token), from_ascii("Reference undefined"),
+					from_utf8(token), child_name);
+
+			//If label is too long pdlaftex log line splitting will make the above fail
+			//so we catch at least this generic statement occuring for both CIT & REF.
+			} else if (contains(token, "There were undefined references.")) {
+				if (!(retval & UNDEF_CIT)) //if not handled already
+					 retval |= UNDEF_REF;
 			}
+
 		} else if (prefixIs(token, "Package")) {
 			// Package warnings
 			retval |= PACKAGE_WARNING;
@@ -789,6 +827,9 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				    && contains(token, "on page")
 				    && contains(token, "undefined")) {
 					retval |= UNDEF_CIT;
+					//Unf only keys up to ~6 chars will make it due to line splits
+					terr.insertRef(getLineNumber(token), from_ascii("Citation undefined"),
+						from_utf8(token), child_name);
 				}
 			} else if (contains(token, "run BibTeX")) {
 				retval |= UNDEF_CIT;

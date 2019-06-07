@@ -60,14 +60,26 @@ public:
 	///
 	Errors::const_iterator end() const { return errors.end(); }
 	///
+	Errors::const_iterator begin_ref() const { return undef_ref.begin(); }
+	///
+	Errors::const_iterator end_ref() const { return undef_ref.end(); }
+	///
 	void insertError(int line, docstring const & error_desc,
 			 docstring const & error_text,
 			 std::string const & child_name = empty_string());
 	///
 	void clearErrors() { errors.clear(); }
+	///
+	void insertRef(int line, docstring const & error_desc,
+			 docstring const & error_text,
+			 std::string const & child_name = empty_string());
+	///
+	void clearRefs() { undef_ref.clear(); }
 private:
 	///
 	Errors errors;
+	/// For missing Citation and references
+	Errors undef_ref;
 };
 
 

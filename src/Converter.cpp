@@ -881,6 +881,14 @@ Converters::RetVal Converters::runLaTeX(Buffer const & buffer, string const & co
 	if (result & LaTeX::ERRORS)
 		buffer.bufferErrors(terr, errorList);
 
+	if ((result & LaTeX::UNDEF_CIT) || (result & LaTeX::UNDEF_REF)) {
+		buffer.bufferRefs(terr, errorList);
+		if (errorList.empty())
+			errorList.push_back(ErrorItem(_("Undefined reference"),
+				_("Undefined reference or citation was found during the build, please check the Log."),
+				&buffer));
+	}
+
 	if (!errorList.empty()) {
 	  // We will show the LaTeX Errors GUI later which contains
 	  // specific error messages so it would be repetitive to give
@@ -909,6 +917,8 @@ Converters::RetVal Converters::runLaTeX(Buffer const & buffer, string const & co
 	int const ERROR_MASK =
 			LaTeX::NO_LOGFILE |
 			LaTeX::ERRORS |
+			LaTeX::UNDEF_CIT |
+			LaTeX::UNDEF_REF |
 			LaTeX::NO_OUTPUT;
 
 	return (result & ERROR_MASK) == 0 ? SUCCESS : FAILURE;

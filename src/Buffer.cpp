@@ -403,6 +403,12 @@ public:
 	/// has been externally modified? Can be reset by the user.
 	mutable bool externally_modified_;
 
+	///Binding LaTeX lines with buffer positions.
+	//Common routine for LaTeX and Reference errors listing.
+        void traverseErrors(TeXErrors::Errors::const_iterator err,
+		TeXErrors::Errors::const_iterator end,
+		ErrorList & errorList) const;
+
 private:
 	/// So we can force access via the accessors.
 	mutable Buffer const * parent_buffer;
@@ -4897,26 +4903,26 @@ Buffer::ReadStatus Buffer::loadThisLyXFile(FileName const & fn)
 }
 
 
-void Buffer::bufferErrors(TeXErrors const & terr, ErrorList & errorList) const
+void Buffer::Impl::traverseErrors(TeXErrors::Errors::const_iterator err, TeXErrors::Errors::const_iterator end, ErrorList & errorList) const
 {
-	for (auto const & err : terr) {
+	for (; err != end; ++err) {
 		TexRow::TextEntry start = TexRow::text_none, end = TexRow::text_none;
-		int errorRow = err.error_in_line;
+		int errorRow = err->error_in_line;
 		Buffer const * buf = 0;
-		Impl const * p = d;
-		if (err.child_name.empty())
+		Impl const * p = this;
+		if (err->child_name.empty())
 			tie(start, end) = p->texrow.getEntriesFromRow(errorRow);
 		else {
 			// The error occurred in a child
-			for (Buffer const * child : getDescendents()) {
+			for (Buffer const * child : owner_->getDescendents()) {
 				string const child_name =
 					DocFileName(changeExtension(child->absFileName(), "tex")).
 					mangledFileName();
-				if (err.child_name != child_name)
+				if (err->child_name != child_name)
 					continue;
 				tie(start, end) = child->d->texrow.getEntriesFromRow(errorRow);
 				if (!TexRow::isNone(start)) {
-					buf = d->cloned_buffer_
+					buf = this->cloned_buffer_
 						? child->d->cloned_buffer_->d->owner_
 						: child->d->owner_;
 					p = child->d;
@@ -4924,9 +4930,27 @@ void Buffer::bufferErrors(TeXErrors const & terr, ErrorList & errorList) const
 				}
 			}
 		}
-		errorList.push_back(ErrorItem(err.error_desc, err.error_text,
+		errorList.push_back(ErrorItem(err->error_desc, err->error_text,
 		                              start, end, buf));
 	}
+}
+
+
+void Buffer::bufferErrors(TeXErrors const & terr, ErrorList & errorList) const
+{
+	TeXErrors::Errors::const_iterator err = terr.begin();
+	TeXErrors::Errors::const_iterator end = terr.end();
+
+	d->traverseErrors(err, end, errorList);
+}
+
+
+void Buffer::bufferRefs(TeXErrors const & terr, ErrorList & errorList) const
+{
+	TeXErrors::Errors::const_iterator err = terr.begin_ref();
+	TeXErrors::Errors::const_iterator end = terr.end_ref();
+
+	d->traverseErrors(err, end, errorList);
 }
 
 

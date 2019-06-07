@@ -287,6 +287,8 @@ private:
 public:
 	/// Fill in the ErrorList with the TeXErrors
 	void bufferErrors(TeXErrors const &, ErrorList &) const;
+	/// Fill in the Citation/Reference ErrorList from the TeXErrors
+	void bufferRefs(TeXErrors const &, ErrorList &) const;
 
 	enum OutputWhat {
 		FullSource,
