@@ -46,13 +46,16 @@ int timeout_min()
 }
 
 
-static string const python23(string const & binary, bool verbose = false)
+static string const python23_call(string const & binary, bool verbose = false)
 {
 	const string version_info = " -c 'from __future__ import print_function;import sys; print(sys.version_info[:2], end=\"\")'";
 	static regex const python_reg("\\((\\d*), (\\d*)\\)");
+	// Default to "python" if no binary is given.
+	if (binary.empty())
+		return "python -tt";
+
 	if (verbose)
 		lyxerr << "Examining " << binary << "\n";
-
 	// Check whether this is a python 2 or 3 binary.
 	cmd_ret const out = runCommand(binary + version_info);
 
@@ -67,11 +70,13 @@ static string const python23(string const & binary, bool verbose = false)
 
 	if (verbose)
 		lyxerr << "Found Python " << out.second << "\n";
-	return binary;
+	// Add the -tt switch so that mixed tab/whitespace
+	// indentation is an error
+	return binary + " -tt";
 }
 
 
-string const python(bool reset)
+static string const find_python_binary()
 {
 	// This function takes inspiration from PEP 394 and PEP 397
 	// PEP 394 -- The "python" Command on Unix-Like Systems
@@ -80,67 +85,67 @@ string const python(bool reset)
 	// https://www.python.org/dev/peps/pep-0397/
 
 	// Check whether python3 in PATH is the right one.
-	static string command = python23("python3");
-	// FIXME THREAD
-	if (reset) {
-		command = python23("python3");
-	}
+	string command = python23_call("python3");
+	if (!command.empty())
+		return command;
 
 	// python3 does not exists, let us try to find python3.x in PATH
 	// the search is probably broader than required
 	// but we are trying hard to find a valid python binary
-	if (command.empty()) {
-		vector<string> const path = getEnvPath("PATH");
-		lyxerr << "Looking for python 3.x ...\n";
-		for (auto bin: path) {
-			QString const dir = toqstr(bin);
-			string const localdir = dir.toLocal8Bit().constData();
-			QDir qdir(dir);
-			qdir.setFilter(QDir::Files | QDir::Executable);
-			QStringList list = qdir.entryList(QStringList("python3*"));
-			for (int i = 0; i < list.size() && command.empty(); ++i) {
-				string const binary = addName(localdir,
-					list.at(i).toLocal8Bit().constData());
-				command = python23(binary, true);
-			}
+	vector<string> const path = getEnvPath("PATH");
+	lyxerr << "Looking for python 3.x ...\n";
+	for (auto bin: path) {
+		QString const dir = toqstr(bin);
+		string const localdir = dir.toLocal8Bit().constData();
+		QDir qdir(dir);
+		qdir.setFilter(QDir::Files | QDir::Executable);
+		QStringList list = qdir.entryList(QStringList("python3*"));
+		for (auto bin: list) {
+			string const binary = addName(localdir,
+				bin.toLocal8Bit().constData());
+			command = python23_call(binary, true);
+			if (!command.empty())
+				return command;
 		}
-
 	}
+
 	// python 3 was not found let us look for python 2
-	if (command.empty())
-		command = python23("python2");
+	command = python23_call("python2");
+	if (!command.empty())
+		return command;
 
 	// python2 does not exists, let us try to find python2.x in PATH
 	// the search is probably broader than required
 	// but we are trying hard to find a valid python binary
-	if (command.empty()) {
-		vector<string> const path = getEnvPath("PATH");
-		lyxerr << "Looking for python 2.x ...\n";
-		for (auto bin: path) {
-			QString const dir = toqstr(bin);
-			string const localdir = dir.toLocal8Bit().constData();
-			QDir qdir(dir);
-			qdir.setFilter(QDir::Files | QDir::Executable);
-			QStringList list = qdir.entryList(QStringList("python2*"));
-			for (int i = 0; i < list.size() && command.empty(); ++i) {
-				string const binary = addName(localdir,
-					list.at(i).toLocal8Bit().constData());
-				command = python23(binary, true);
-			}
+	lyxerr << "Looking for python 2.x ...\n";
+	for (auto bin: path) {
+		QString const dir = toqstr(bin);
+		string const localdir = dir.toLocal8Bit().constData();
+		QDir qdir(dir);
+		qdir.setFilter(QDir::Files | QDir::Executable);
+		QStringList list = qdir.entryList(QStringList("python2*"));
+		for (auto bin: list) {
+			string const binary = addName(localdir,
+				bin.toLocal8Bit().constData());
+			command = python23_call(binary, true);
+			if (!command.empty())
+				return command;
 		}
-
 	}
 
-	// Default to "python" if no usable binary was found.
 	// If this happens all hope is lost that this is a sane system
-	if (command.empty()) {
-		lyxerr << "Warning: No python v2.x or 3.x binary found.\n";
-		command = "python";
-	}
+	lyxerr << "Warning: No python v2.x or 3.x binary found.\n";
+	return python23_call("");
+}
 
-	// Add the -tt switch so that mixed tab/whitespace
-	// indentation is an error
-	command += " -tt";
+
+string const python(bool reset)
+{
+	static string command = find_python_binary();
+	// FIXME THREAD
+	if (reset) {
+		command = find_python_binary();
+	}
 	return command;
 }
 
