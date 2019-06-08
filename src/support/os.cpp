@@ -56,7 +56,7 @@ static string const python23(string const & binary, bool verbose = false)
 
 	int major = convert<int>(sm.str(1));
 	int minor = convert<int>(sm.str(2));
-	if((major == 2 and minor < 7) or (major == 3 and minor < 4))
+	if((major == 2 && minor < 7) || (major == 3 && minor < 4))
 		return string();
 
 	if (verbose)
@@ -73,6 +73,12 @@ int timeout_min()
 
 string const python(bool reset)
 {
+	// This function takes inspiration from PEP 394 and PEP 397
+	// PEP 394 -- The "python" Command on Unix-Like Systems
+	// https://www.python.org/dev/peps/pep-0394/
+	// PEP 397 -- Python launcher for Windows
+	// https://www.python.org/dev/peps/pep-0397/
+
 	// Check whether python3 in PATH is the right one.
 	static string command = python23("python3");
 	// FIXME THREAD
@@ -80,10 +86,10 @@ string const python(bool reset)
 		command = python23("python3");
 	}
 
-	// python3 does not exists, let us try python3.x
+	// python3 does not exists, let us try to find python3.x in PATH
+	// the search is probably broader than required
+	// but we are trying hard to find a valid python binary
 	if (command.empty()) {
-		// It was not, so check whether we can find it elsewhere in
-		// PATH, maybe with some suffix appended.
 		vector<string> const path = getEnvPath("PATH");
 		lyxerr << "Looking for python 3.x ...\n";
 		for (auto bin: path) {
@@ -100,16 +106,16 @@ string const python(bool reset)
 		}
 
 	}
-	// python 3 not found let us look for python 2
+	// python 3 was not found let us look for python 2
 	if (command.empty())
 		command = python23("python2");
 
-	// python2 does not exists, let us try python2.x
+	// python2 does not exists, let us try to find python2.x in PATH
+	// the search is probably broader than required
+	// but we are trying hard to find a valid python binary
 	if (command.empty()) {
-		// It was not, so check whether we can find it elsewhere in
-		// PATH, maybe with some suffix appended.
 		vector<string> const path = getEnvPath("PATH");
-		lyxerr << "Looking for python 3.x ...\n";
+		lyxerr << "Looking for python 2.x ...\n";
 		for (auto bin: path) {
 			QString const dir = toqstr(bin);
 			string const localdir = dir.toLocal8Bit().constData();
@@ -126,7 +132,7 @@ string const python(bool reset)
 	}
 
 	// Default to "python" if no usable binary was found.
-	// If this happens all hope is lost that there is a sane system
+	// If this happens all hope is lost that this is a sane system
 	if (command.empty()) {
 		lyxerr << "Warning: No python v2.x or 3.x binary found.\n";
 		command = "python";
