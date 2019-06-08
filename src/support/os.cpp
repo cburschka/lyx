@@ -40,6 +40,12 @@ namespace lyx {
 namespace support {
 namespace os {
 
+int timeout_min()
+{
+	return 3;
+}
+
+
 static string const python23(string const & binary, bool verbose = false)
 {
 	const string version_info = " -c 'from __future__ import print_function;import sys; print(sys.version_info[:2], end=\"\")'";
@@ -62,12 +68,6 @@ static string const python23(string const & binary, bool verbose = false)
 	if (verbose)
 		lyxerr << "Found Python " << out.second << "\n";
 	return binary;
-}
-
-
-int timeout_min()
-{
-	return 3;
 }
 
 
