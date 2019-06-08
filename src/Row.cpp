@@ -490,6 +490,7 @@ bool Row::shortenIfNeeded(pos_type const keep, int const w, int const next_width
 		bool force = lang == "chinese-simplified"
 		             || lang == "chinese-traditional"
 		             || lang == "japanese"
+		             || lang == "japanese-cjk"
 		             || lang == "korean";
 		// FIXME: is it important to check for separators?
 		if ((!force && brk.countSeparators() == 0) || brk.pos < keep)
