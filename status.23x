@@ -54,6 +54,8 @@ What's new
 
 - Deal properly with orphaned bibitems (bug 7160).
 
+- Fix endless loop when a macro definition references itself (bug 11595).
+
 
 * INTERNALS
 

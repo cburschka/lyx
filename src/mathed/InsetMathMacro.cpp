@@ -661,17 +661,20 @@ void InsetMathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
 		values[i].insert(0, MathAtom(proxy));
 	}
 	// expanding macro with the values
-	// Only update the argument macros if anything was expanded, otherwise
-	// we would get an endless loop (bug 9140). UpdateLocker does not work
-	// in this case, since MacroData::expand() creates new InsetMathMacro
-	// objects, so this would be a different recursion path than the one
-	// protected by UpdateLocker.
-	if (d->macro_->expand(values, d->expanded_)) {
+	// Only update the argument macros if anything was expanded or the LyX
+	// representation part does not contain the macro itself, otherwise we
+	// would get an endless loop (bugs 9140 and 11595). UpdateLocker does
+	// not work in this case, since MacroData::expand() creates new
+	// InsetMathMacro objects, so this would be a different recursion path
+	// than the one protected by UpdateLocker.
+	docstring const & display = d->macro_->display();
+	docstring const latexname = from_ascii("\\") + macroName();
+	if (d->macro_->expand(values, d->expanded_)
+	    && !support::contains(display, latexname)) {
 		if (utype == OutputUpdate && !d->expanded_.empty())
 			d->expanded_.updateMacros(cur, mc, utype, nesting);
 	}
 	// get definition for list edit mode
-	docstring const & display = d->macro_->display();
 	asArray(display.empty() ? d->macro_->definition() : display,
 		d->definition_, Parse::QUIET | Parse::MACRODEF);
 }
