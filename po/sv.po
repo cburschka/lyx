@@ -214,7 +214,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-05-12 15:15+0200\n"
+"POT-Creation-Date: 2019-06-10 15:11-0400\n"
 "PO-Revision-Date: 2019-05-12 21:12+0200\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
@@ -251,15 +251,14 @@ msgstr "Utgåvenoter"
 #: src/frontends/qt4/ui/AboutUi.ui:159 src/frontends/qt4/ui/CompareUi.ui:163
 #: src/frontends/qt4/ui/DelimiterUi.ui:83
 #: src/frontends/qt4/ui/ErrorListUi.ui:60
-#: src/frontends/qt4/ui/ExternalUi.ui:620
-#: src/frontends/qt4/ui/IncludeUi.ui:250
+#: src/frontends/qt4/ui/ExternalUi.ui:620 src/frontends/qt4/ui/IncludeUi.ui:250
 #: src/frontends/qt4/ui/InsetParamsUi.ui:138 src/frontends/qt4/ui/LogUi.ui:88
 #: src/frontends/qt4/ui/ParagraphUi.ui:261 src/frontends/qt4/ui/PrefsUi.ui:117
 #: src/frontends/qt4/ui/RefUi.ui:381 src/frontends/qt4/ui/SearchUi.ui:203
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
-#: src/frontends/qt4/ui/TexinfoUi.ui:77
-#: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:163 src/frontends/qt4/GuiView.cpp:2887
+#: src/frontends/qt4/ui/TexinfoUi.ui:77 src/frontends/qt4/ui/ThesaurusUi.ui:138
+#: src/frontends/qt4/ui/WrapUi.ui:173 src/frontends/qt4/GuiParagraph.cpp:163
+#: src/frontends/qt4/GuiView.cpp:2887
 msgid "&Close"
 msgstr "&Stäng"
 
@@ -432,8 +431,7 @@ msgstr "&Behandlare:"
 msgid "Select a processor"
 msgstr "Välj en behandlare"
 
-#: src/frontends/qt4/ui/BiblioUi.ui:424
-#: src/frontends/qt4/ui/PrefLatexUi.ui:120
+#: src/frontends/qt4/ui/BiblioUi.ui:424 src/frontends/qt4/ui/PrefLatexUi.ui:120
 #: src/frontends/qt4/ui/PrefLatexUi.ui:222 src/frontends/qt4/GuiPrefs.cpp:851
 #: src/frontends/qt4/GuiPrefs.cpp:986
 msgid "Op&tions:"
@@ -480,24 +478,23 @@ msgstr "Här kan du ange ett lokalt BibTeX-databasnamn"
 msgid "Browse your local directory"
 msgstr "Bläddra i din lokala katalog"
 
-#: src/frontends/qt4/ui/BibtexAddUi.ui:112
-#: src/frontends/qt4/ui/BibtexUi.ui:152 src/frontends/qt4/ui/CompareUi.ui:50
-#: src/frontends/qt4/ui/ExternalUi.ui:70 src/frontends/qt4/ui/GraphicsUi.ui:75
-#: src/frontends/qt4/ui/IncludeUi.ui:335 src/frontends/qt4/ui/LaTeXUi.ui:161
-#: src/frontends/qt4/ui/PrefInputUi.ui:111
+#: src/frontends/qt4/ui/BibtexAddUi.ui:112 src/frontends/qt4/ui/BibtexUi.ui:152
+#: src/frontends/qt4/ui/CompareUi.ui:50 src/frontends/qt4/ui/ExternalUi.ui:70
+#: src/frontends/qt4/ui/GraphicsUi.ui:75 src/frontends/qt4/ui/IncludeUi.ui:335
+#: src/frontends/qt4/ui/LaTeXUi.ui:161 src/frontends/qt4/ui/PrefInputUi.ui:111
 msgid "&Browse..."
 msgstr "&Bläddra..."
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:162
 #: src/frontends/qt4/ui/BranchesUi.ui:113
-#: src/frontends/qt4/ui/CitationUi.ui:146
-#: src/frontends/qt4/ui/IndicesUi.ui:134 src/CutAndPaste.cpp:431
+#: src/frontends/qt4/ui/CitationUi.ui:146 src/frontends/qt4/ui/IndicesUi.ui:134
+#: src/CutAndPaste.cpp:431
 msgid "&Add"
 msgstr "Lä&gg till"
 
-#: src/frontends/qt4/ui/BibtexAddUi.ui:175
-#: src/frontends/qt4/ui/BibtexUi.ui:296 src/frontends/qt4/ui/ChangesUi.ui:91
-#: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
+#: src/frontends/qt4/ui/BibtexAddUi.ui:175 src/frontends/qt4/ui/BibtexUi.ui:296
+#: src/frontends/qt4/ui/ChangesUi.ui:91 src/frontends/qt4/ui/SendtoUi.ui:92
+#: src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/frontends/qt4/ButtonController.cpp:238
 #: src/frontends/qt4/GuiApplication.cpp:1810
 #: src/frontends/qt4/GuiCompare.cpp:192
@@ -605,22 +602,19 @@ msgstr ""
 "Alternativ till kommandot för biblatex-bibliografi. Se biblatex-manualen för "
 "detaljer."
 
-#: src/frontends/qt4/ui/BibtexUi.ui:283
-#: src/frontends/qt4/ui/CharacterUi.ui:393
+#: src/frontends/qt4/ui/BibtexUi.ui:283 src/frontends/qt4/ui/CharacterUi.ui:393
 #: src/frontends/qt4/ui/CitationUi.ui:460
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:183
 #: src/frontends/qt4/ui/CompareUi.ui:153 src/frontends/qt4/ui/DocumentUi.ui:67
 #: src/frontends/qt4/ui/ExternalUi.ui:600
-#: src/frontends/qt4/ui/GraphicsUi.ui:773
-#: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/IndexUi.ui:41
-#: src/frontends/qt4/ui/InsetParamsUi.ui:118
+#: src/frontends/qt4/ui/GraphicsUi.ui:773 src/frontends/qt4/ui/IncludeUi.ui:237
+#: src/frontends/qt4/ui/IndexUi.ui:41 src/frontends/qt4/ui/InsetParamsUi.ui:118
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 #: src/frontends/qt4/ui/MathMatrixUi.ui:263 src/frontends/qt4/ui/NoteUi.ui:38
-#: src/frontends/qt4/ui/ParagraphUi.ui:241
-#: src/frontends/qt4/ui/PhantomUi.ui:38 src/frontends/qt4/ui/PrefsUi.ui:97
-#: src/frontends/qt4/ui/PrintindexUi.ui:98 src/frontends/qt4/ui/RefUi.ui:355
-#: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:52
-#: src/frontends/qt4/ui/SymbolsUi.ui:49
+#: src/frontends/qt4/ui/ParagraphUi.ui:241 src/frontends/qt4/ui/PhantomUi.ui:38
+#: src/frontends/qt4/ui/PrefsUi.ui:97 src/frontends/qt4/ui/PrintindexUi.ui:98
+#: src/frontends/qt4/ui/RefUi.ui:355 src/frontends/qt4/ui/SendtoUi.ui:72
+#: src/frontends/qt4/ui/ShortcutUi.ui:52 src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:127
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
 #: src/frontends/qt4/ui/WrapUi.ui:150
@@ -655,14 +649,12 @@ msgid "Inner box type"
 msgstr "Inre ruttyp"
 
 #: src/frontends/qt4/ui/BoxUi.ui:91 src/frontends/qt4/ui/HSpaceUi.ui:32
-#: src/frontends/qt4/ui/ListingsUi.ui:98
-#: src/frontends/qt4/ui/TabularUi.ui:1199
+#: src/frontends/qt4/ui/ListingsUi.ui:98 src/frontends/qt4/ui/TabularUi.ui:1199
 #: src/frontends/qt4/ui/TabularUi.ui:1218
 #: src/frontends/qt4/ui/TabularUi.ui:1266 src/frontends/qt4/GuiBox.cpp:424
 #: src/frontends/qt4/GuiBox.cpp:634 src/frontends/qt4/GuiDocument.cpp:126
-#: src/frontends/qt4/GuiGraphics.cpp:582
-#: src/frontends/qt4/GuiMathMatrix.cpp:33 src/frontends/qt4/GuiPrefs.cpp:2399
-#: src/frontends/qt4/GuiPrefs.cpp:2422
+#: src/frontends/qt4/GuiGraphics.cpp:582 src/frontends/qt4/GuiMathMatrix.cpp:33
+#: src/frontends/qt4/GuiPrefs.cpp:2399 src/frontends/qt4/GuiPrefs.cpp:2422
 msgid "None"
 msgstr "Ingen"
 
@@ -762,9 +754,8 @@ msgid "Stretch"
 msgstr "Sträck"
 
 #: src/frontends/qt4/ui/BoxUi.ui:265 src/frontends/qt4/ui/ListingsUi.ui:103
-#: src/frontends/qt4/ui/TabularUi.ui:391
-#: src/frontends/qt4/ui/TabularUi.ui:1549 src/frontends/qt4/ui/WrapUi.ui:209
-#: src/frontends/qt4/GuiDocument.cpp:1421
+#: src/frontends/qt4/ui/TabularUi.ui:391 src/frontends/qt4/ui/TabularUi.ui:1549
+#: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiDocument.cpp:1421
 #: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:928
 msgid "Left"
 msgstr "Vänster"
@@ -777,9 +768,8 @@ msgid "Center"
 msgstr "Centrerad"
 
 #: src/frontends/qt4/ui/BoxUi.ui:275 src/frontends/qt4/ui/ListingsUi.ui:108
-#: src/frontends/qt4/ui/TabularUi.ui:401
-#: src/frontends/qt4/ui/TabularUi.ui:1566 src/frontends/qt4/ui/WrapUi.ui:214
-#: src/frontends/qt4/GuiDocument.cpp:1423
+#: src/frontends/qt4/ui/TabularUi.ui:401 src/frontends/qt4/ui/TabularUi.ui:1566
+#: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiDocument.cpp:1423
 #: src/frontends/qt4/GuiParagraph.cpp:112 src/frontends/qt4/GuiTabular.cpp:930
 msgid "Right"
 msgstr "Höger"
@@ -889,8 +879,7 @@ msgstr "Lägg till en ny gren till listan"
 msgid "Define or change background color"
 msgstr "Definiera eller ändra bakgrundsfärg"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:126
-#: src/frontends/qt4/ui/IndicesUi.ui:185
+#: src/frontends/qt4/ui/BranchesUi.ui:126 src/frontends/qt4/ui/IndicesUi.ui:185
 msgid "Alter Co&lor..."
 msgstr "Ändra &färg..."
 
@@ -898,9 +887,8 @@ msgstr "Ändra &färg..."
 msgid "Remove the selected branch"
 msgstr "Ta bort vald gren"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:136
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:4757
-#: src/Buffer.cpp:4770
+#: src/frontends/qt4/ui/BranchesUi.ui:136 src/frontends/qt4/ui/IndicesUi.ui:165
+#: src/Buffer.cpp:4757 src/Buffer.cpp:4770
 msgid "&Remove"
 msgstr "Ta bo&rt"
 
@@ -937,8 +925,7 @@ msgstr "Lägg till a&lla"
 #: src/Buffer.cpp:4731 src/Buffer.cpp:4821 src/LyXVC.cpp:114 src/LyXVC.cpp:304
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:247
-#: src/frontends/qt4/GuiDocument.cpp:2452
-#: src/frontends/qt4/GuiParagraph.cpp:69
+#: src/frontends/qt4/GuiDocument.cpp:2452 src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/GuiPrefs.cpp:3413
 #: src/frontends/qt4/GuiView.cpp:2500 src/frontends/qt4/GuiView.cpp:2648
 #: src/frontends/qt4/GuiView.cpp:2672 src/frontends/qt4/GuiView.cpp:2686
@@ -963,27 +950,23 @@ msgstr "&Odefinierade grenar:"
 msgid "&Font:"
 msgstr "&Typsnitt:"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:44
-#: src/frontends/qt4/ui/CharacterUi.ui:114
+#: src/frontends/qt4/ui/BulletsUi.ui:44 src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/DelimiterUi.ui:100
 msgid "Si&ze:"
 msgstr "&Storlek:"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:66
-#: src/frontends/qt4/ui/ParagraphUi.ui:116
+#: src/frontends/qt4/ui/BulletsUi.ui:66 src/frontends/qt4/ui/ParagraphUi.ui:116
 #: src/frontends/qt4/ui/TabularUi.ui:1204
 #: src/frontends/qt4/ui/TabularUi.ui:1223
 #: src/frontends/qt4/ui/TabularUi.ui:1271 lib/ui/stdtoolbars.inc:113
 #: src/Font.cpp:184 src/frontends/qt4/GuiCharacter.cpp:52
 #: src/frontends/qt4/GuiCharacter.cpp:65 src/frontends/qt4/GuiCharacter.cpp:86
-#: src/frontends/qt4/GuiCharacter.cpp:99
-#: src/frontends/qt4/GuiCharacter.cpp:137
+#: src/frontends/qt4/GuiCharacter.cpp:99 src/frontends/qt4/GuiCharacter.cpp:137
 #: src/frontends/qt4/GuiCharacter.cpp:148
 #: src/frontends/qt4/GuiCharacter.cpp:191
-#: src/frontends/qt4/GuiCharacter.cpp:240
-#: src/frontends/qt4/GuiDocument.cpp:122 src/frontends/qt4/GuiDocument.cpp:840
-#: src/frontends/qt4/GuiDocument.cpp:970 src/frontends/qt4/GuiDocument.cpp:975
-#: src/frontends/qt4/GuiDocument.cpp:1016
+#: src/frontends/qt4/GuiCharacter.cpp:240 src/frontends/qt4/GuiDocument.cpp:122
+#: src/frontends/qt4/GuiDocument.cpp:840 src/frontends/qt4/GuiDocument.cpp:970
+#: src/frontends/qt4/GuiDocument.cpp:975 src/frontends/qt4/GuiDocument.cpp:1016
 #: src/frontends/qt4/GuiDocument.cpp:1027
 #: src/frontends/qt4/GuiDocument.cpp:1185
 #: src/frontends/qt4/GuiDocument.cpp:1294
@@ -1215,8 +1198,7 @@ msgid "Restore Defaults"
 msgstr "Återställ standardvärden"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:403
-#: src/frontends/qt4/ui/DocumentUi.ui:77
-#: src/frontends/qt4/ui/ExternalUi.ui:610
+#: src/frontends/qt4/ui/DocumentUi.ui:77 src/frontends/qt4/ui/ExternalUi.ui:610
 #: src/frontends/qt4/ui/GraphicsUi.ui:792
 #: src/frontends/qt4/ui/InsetParamsUi.ui:128
 #: src/frontends/qt4/ui/ListingsUi.ui:549
@@ -1299,8 +1281,7 @@ msgstr "Formatering"
 msgid "Citation st&yle:"
 msgstr "Citatst&il:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:296
-#: src/frontends/qt4/GuiCitation.cpp:306
+#: src/frontends/qt4/ui/CitationUi.ui:296 src/frontends/qt4/GuiCitation.cpp:306
 msgid "Text befo&re:"
 msgstr "Text fö&re:"
 
@@ -1308,8 +1289,7 @@ msgstr "Text fö&re:"
 msgid "Citation style to use, if different styles are provided"
 msgstr "Citatstil att använda, om olika stilar förses"
 
-#: src/frontends/qt4/ui/CitationUi.ui:325
-#: src/frontends/qt4/GuiCitation.cpp:310
+#: src/frontends/qt4/ui/CitationUi.ui:325 src/frontends/qt4/GuiCitation.cpp:310
 msgid ""
 "Text that precedes the reference (e.g., \"cf.\"), if the current citation "
 "style supports this."
@@ -1317,13 +1297,11 @@ msgstr ""
 "Text som föregår referensen (t.ex., \"cf.\"), om den aktuella citatstilen "
 "stöder detta."
 
-#: src/frontends/qt4/ui/CitationUi.ui:332
-#: src/frontends/qt4/GuiCitation.cpp:312
+#: src/frontends/qt4/ui/CitationUi.ui:332 src/frontends/qt4/GuiCitation.cpp:312
 msgid "&Text after:"
 msgstr "&Text efter:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:342
-#: src/frontends/qt4/GuiCitation.cpp:316
+#: src/frontends/qt4/ui/CitationUi.ui:342 src/frontends/qt4/GuiCitation.cpp:316
 msgid ""
 "Text that follows the reference (e.g., pages), if the current citation style "
 "supports this."
@@ -1339,8 +1317,7 @@ msgstr ""
 "Skicka innehållet av `Text före'- och `Text efter'-fälten bokstavligen till "
 "LaTeX. Markera detta om du vill ange LaTeX-kod."
 
-#: src/frontends/qt4/ui/CitationUi.ui:395
-#: src/frontends/qt4/GuiCitation.cpp:324
+#: src/frontends/qt4/ui/CitationUi.ui:395 src/frontends/qt4/GuiCitation.cpp:324
 msgid ""
 "Force upper case in names (\"Del Piero\", not \"del Piero\"), if the current "
 "citation style supports this."
@@ -1352,8 +1329,7 @@ msgstr ""
 msgid "Force upcas&ing"
 msgstr "Tvinga versaler"
 
-#: src/frontends/qt4/ui/CitationUi.ui:405
-#: src/frontends/qt4/GuiCitation.cpp:359
+#: src/frontends/qt4/ui/CitationUi.ui:405 src/frontends/qt4/GuiCitation.cpp:359
 msgid ""
 "Always list all authors (rather than using \"et al.\"), if the current "
 "citation style supports this."
@@ -1361,13 +1337,11 @@ msgstr ""
 "Lista alltid alla författare (hellre än att använda \"et al.\"), om den "
 "aktuella citatstilen stöder detta."
 
-#: src/frontends/qt4/ui/CitationUi.ui:408
-#: src/frontends/qt4/GuiCitation.cpp:355
+#: src/frontends/qt4/ui/CitationUi.ui:408 src/frontends/qt4/GuiCitation.cpp:355
 msgid "All aut&hors"
 msgstr "Alla författare"
 
-#: src/frontends/qt4/ui/CitationUi.ui:437
-#: src/frontends/qt4/ui/DocumentUi.ui:44
+#: src/frontends/qt4/ui/CitationUi.ui:437 src/frontends/qt4/ui/DocumentUi.ui:44
 #: src/frontends/qt4/ui/GraphicsUi.ui:744
 #: src/frontends/qt4/ui/InsetParamsUi.ui:82
 #: src/frontends/qt4/ui/ParagraphUi.ui:218 src/frontends/qt4/ui/PrefsUi.ui:61
@@ -1595,8 +1569,7 @@ msgstr "F&il"
 msgid "Filename"
 msgstr "Filnamn"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:57
-#: src/frontends/qt4/ui/GraphicsUi.ui:295
+#: src/frontends/qt4/ui/ExternalUi.ui:57 src/frontends/qt4/ui/GraphicsUi.ui:295
 #: src/frontends/qt4/ui/IncludeUi.ui:265
 msgid "&File:"
 msgstr "&Fil:"
@@ -1662,8 +1635,7 @@ msgstr "Ska&la på skärm (%):"
 msgid "Si&ze and Rotation"
 msgstr "Storle&k och rotation"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:283
-#: src/frontends/qt4/ui/TabularUi.ui:175
+#: src/frontends/qt4/ui/ExternalUi.ui:283 src/frontends/qt4/ui/TabularUi.ui:175
 msgid "Rotate"
 msgstr "Rotera"
 
@@ -1694,14 +1666,12 @@ msgid "Scale"
 msgstr "Skala"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:400
-#: src/frontends/qt4/ui/GraphicsUi.ui:153
-#: src/frontends/qt4/GuiGraphics.cpp:483
+#: src/frontends/qt4/ui/GraphicsUi.ui:153 src/frontends/qt4/GuiGraphics.cpp:483
 msgid "Height of image in output"
 msgstr "Bildens höjd i utmatning"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:410
-#: src/frontends/qt4/ui/GraphicsUi.ui:121
-#: src/frontends/qt4/GuiGraphics.cpp:482
+#: src/frontends/qt4/ui/GraphicsUi.ui:121 src/frontends/qt4/GuiGraphics.cpp:482
 msgid "Width of image in output"
 msgstr "Bildens bredd i utmatning"
 
@@ -1761,8 +1731,8 @@ msgstr "Flikmanick"
 msgid "Sear&ch"
 msgstr "Sök"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:29
-#: src/frontends/qt4/ui/LogUi.ui:29 src/frontends/qt4/ui/SearchUi.ui:28
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:29 src/frontends/qt4/ui/LogUi.ui:29
+#: src/frontends/qt4/ui/SearchUi.ui:28
 msgid "&Find:"
 msgstr "H&itta:"
 
@@ -2102,8 +2072,7 @@ msgstr "Utmatningsstorlek"
 msgid "Sets height of graphic. Leave unchecked to set automatically."
 msgstr "Sätter grafikens höjd. Lämna omarkerad för att sätta automatiskt."
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:166
-#: src/frontends/qt4/GuiGraphics.cpp:481
+#: src/frontends/qt4/ui/GraphicsUi.ui:166 src/frontends/qt4/GuiGraphics.cpp:481
 msgid "Set &height:"
 msgstr "Sätt &höjd:"
 
@@ -2115,8 +2084,7 @@ msgstr "&Skala grafik (%):"
 msgid "Sets width of graphic. Leave unchecked to set automatically."
 msgstr "Sätter grafikens bredd. Lämna omarkerad för att sätta automatiskt."
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:186
-#: src/frontends/qt4/GuiGraphics.cpp:480
+#: src/frontends/qt4/ui/GraphicsUi.ui:186 src/frontends/qt4/GuiGraphics.cpp:480
 msgid "Set &width:"
 msgstr "Sätt &bredd:"
 
@@ -2454,8 +2422,7 @@ msgstr ""
 "Här kan du definiera en annan indexbehandlare och specificera dess "
 "alternativ."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:22
-#: src/frontends/qt4/ui/PrefLatexUi.ui:198
+#: src/frontends/qt4/ui/IndicesUi.ui:22 src/frontends/qt4/ui/PrefLatexUi.ui:198
 msgid "Index Generation"
 msgstr "Indexgenerering"
 
@@ -3272,9 +3239,8 @@ msgstr "Bilder"
 
 #: src/frontends/qt4/ui/OutputUi.ui:226 lib/layouts/aapaper.layout:63
 #: lib/layouts/egs.layout:641 lib/languages:110
-#: src/frontends/qt4/GuiDocument.cpp:1478
-#: src/frontends/qt4/GuiErrorList.cpp:51 src/frontends/qt4/GuiLog.cpp:245
-#: src/frontends/qt4/GuiPrefs.cpp:724
+#: src/frontends/qt4/GuiDocument.cpp:1478 src/frontends/qt4/GuiErrorList.cpp:51
+#: src/frontends/qt4/GuiLog.cpp:245 src/frontends/qt4/GuiPrefs.cpp:724
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -3477,8 +3443,7 @@ msgstr "Dubbel"
 #: src/frontends/qt4/ui/TabularUi.ui:1276 src/frontends/qt4/ui/VSpaceUi.ui:107
 #: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:841
 #: src/frontends/qt4/GuiDocument.cpp:845 src/frontends/qt4/GuiDocument.cpp:853
-#: src/frontends/qt4/GuiDocument.cpp:976
-#: src/frontends/qt4/GuiDocument.cpp:1028
+#: src/frontends/qt4/GuiDocument.cpp:976 src/frontends/qt4/GuiDocument.cpp:1028
 #: src/frontends/qt4/GuiDocument.cpp:1191
 #: src/frontends/qt4/GuiDocument.cpp:1416 src/frontends/qt4/GuiHSpace.cpp:56
 #: src/frontends/qt4/GuiHSpace.cpp:67 src/frontends/qt4/GuiPrefs.cpp:913
@@ -4786,8 +4751,7 @@ msgstr ""
 "Skicka indexnamn bokstavligen till LaTeX. Markera detta om du vill använda "
 "LaTeX-kod i indexnamn."
 
-#: src/frontends/qt4/ui/ProgressViewUi.ui:90
-#: src/frontends/qt4/GuiPrefs.cpp:254
+#: src/frontends/qt4/ui/ProgressViewUi.ui:90 src/frontends/qt4/GuiPrefs.cpp:254
 msgid "Output"
 msgstr "Utmatning"
 
@@ -5205,8 +5169,8 @@ msgstr "&Horisontell justering:"
 msgid "Horizontal alignment in column"
 msgstr "Horisontell justering i spalt"
 
-#: src/frontends/qt4/ui/TabularUi.ui:386
-#: src/frontends/qt4/GuiParagraph.cpp:110 src/frontends/qt4/GuiTabular.cpp:932
+#: src/frontends/qt4/ui/TabularUi.ui:386 src/frontends/qt4/GuiParagraph.cpp:110
+#: src/frontends/qt4/GuiTabular.cpp:932
 msgid "Justified"
 msgstr "Justerad"
 
@@ -5776,32 +5740,28 @@ msgstr ""
 #: lib/citeengines/basic.citeengine:52
 #: lib/citeengines/biblatex-natbib.citeengine:138
 #: lib/citeengines/biblatex.citeengine:129
-#: lib/citeengines/jurabib.citeengine:121
-#: lib/citeengines/natbib.citeengine:119
+#: lib/citeengines/jurabib.citeengine:121 lib/citeengines/natbib.citeengine:119
 msgid "not cited"
 msgstr "inte citerad"
 
 #: lib/citeengines/basic.citeengine:53
 #: lib/citeengines/biblatex-natbib.citeengine:139
 #: lib/citeengines/biblatex.citeengine:130
-#: lib/citeengines/jurabib.citeengine:122
-#: lib/citeengines/natbib.citeengine:120
+#: lib/citeengines/jurabib.citeengine:122 lib/citeengines/natbib.citeengine:120
 msgid "Add to bibliography only."
 msgstr "Lägg endast till bibliografin."
 
 #: lib/citeengines/basic.citeengine:54
 #: lib/citeengines/biblatex-natbib.citeengine:140
 #: lib/citeengines/biblatex.citeengine:131
-#: lib/citeengines/jurabib.citeengine:123
-#: lib/citeengines/natbib.citeengine:121
+#: lib/citeengines/jurabib.citeengine:123 lib/citeengines/natbib.citeengine:121
 msgid "Key only."
 msgstr "Endast nyckel."
 
 #: lib/citeengines/basic.citeengine:55
 #: lib/citeengines/biblatex-natbib.citeengine:141
 #: lib/citeengines/biblatex.citeengine:132
-#: lib/citeengines/jurabib.citeengine:124
-#: lib/citeengines/natbib.citeengine:122
+#: lib/citeengines/jurabib.citeengine:124 lib/citeengines/natbib.citeengine:122
 msgid "Key"
 msgstr "Nyckel"
 
@@ -5991,18 +5951,18 @@ msgstr "Kort titel"
 #: lib/layouts/IEEEtran.layout:262 lib/layouts/IEEEtran.layout:326
 #: lib/layouts/InStar.module:18 lib/layouts/InStar.module:25
 #: lib/layouts/RJournal.layout:64 lib/layouts/aa.layout:73
-#: lib/layouts/aa.layout:96 lib/layouts/aa.layout:111
-#: lib/layouts/aa.layout:135 lib/layouts/aa.layout:265
-#: lib/layouts/aa.layout:325 lib/layouts/aastex.layout:163
-#: lib/layouts/aastex.layout:180 lib/layouts/aastex.layout:203
-#: lib/layouts/aastex.layout:222 lib/layouts/aastex.layout:296
-#: lib/layouts/aastex62.layout:127 lib/layouts/aastex62.layout:178
-#: lib/layouts/aastex62.layout:194 lib/layouts/achemso.layout:56
-#: lib/layouts/achemso.layout:83 lib/layouts/acm-sigs.inc:11
-#: lib/layouts/acm-sigs.inc:32 lib/layouts/acmart.layout:87
-#: lib/layouts/acmart.layout:157 lib/layouts/acmart.layout:172
-#: lib/layouts/acmart.layout:405 lib/layouts/acmart.layout:457
-#: lib/layouts/acmart.layout:480 lib/layouts/acmsiggraph-0-92.layout:78
+#: lib/layouts/aa.layout:96 lib/layouts/aa.layout:111 lib/layouts/aa.layout:135
+#: lib/layouts/aa.layout:265 lib/layouts/aa.layout:325
+#: lib/layouts/aastex.layout:163 lib/layouts/aastex.layout:180
+#: lib/layouts/aastex.layout:203 lib/layouts/aastex.layout:222
+#: lib/layouts/aastex.layout:296 lib/layouts/aastex62.layout:127
+#: lib/layouts/aastex62.layout:178 lib/layouts/aastex62.layout:194
+#: lib/layouts/achemso.layout:56 lib/layouts/achemso.layout:83
+#: lib/layouts/acm-sigs.inc:11 lib/layouts/acm-sigs.inc:32
+#: lib/layouts/acmart.layout:87 lib/layouts/acmart.layout:157
+#: lib/layouts/acmart.layout:172 lib/layouts/acmart.layout:405
+#: lib/layouts/acmart.layout:457 lib/layouts/acmart.layout:480
+#: lib/layouts/acmsiggraph-0-92.layout:78
 #: lib/layouts/acmsiggraph-0-92.layout:222
 #: lib/layouts/acmsiggraph-0-92.layout:242 lib/layouts/acmsiggraph.layout:70
 #: lib/layouts/acmsiggraph.layout:179 lib/layouts/acmsiggraph.layout:198
@@ -6304,15 +6264,14 @@ msgstr "Text av en not i en tabell"
 #: lib/layouts/theorems-ams-bytype.inc:97
 #: lib/layouts/theorems-ams-chap-bytype.inc:57
 #: lib/layouts/theorems-ams-chap-bytype.inc:100
-#: lib/layouts/theorems-ams-chap-bytype.inc:103
-#: lib/layouts/theorems-ams.inc:27 lib/layouts/theorems-ams.inc:66
-#: lib/layouts/theorems-ams.inc:69 lib/layouts/theorems-bytype.inc:27
-#: lib/layouts/theorems-bytype.inc:63 lib/layouts/theorems-bytype.inc:66
+#: lib/layouts/theorems-ams-chap-bytype.inc:103 lib/layouts/theorems-ams.inc:27
+#: lib/layouts/theorems-ams.inc:66 lib/layouts/theorems-ams.inc:69
+#: lib/layouts/theorems-bytype.inc:27 lib/layouts/theorems-bytype.inc:63
+#: lib/layouts/theorems-bytype.inc:66
 #: lib/layouts/theorems-chap-bytype.module:54
 #: lib/layouts/theorems-chap.module:19 lib/layouts/theorems-named.module:46
 #: lib/layouts/theorems-named.module:49 lib/layouts/theorems-order.inc:7
-#: lib/layouts/theorems-sec-bytype.module:54
-#: lib/layouts/theorems-sec.module:18
+#: lib/layouts/theorems-sec-bytype.module:54 lib/layouts/theorems-sec.module:18
 #: lib/layouts/theorems-starred-equivalents.inc:6
 #: lib/layouts/theorems-starred.inc:64 lib/layouts/theorems-starred.inc:67
 #: lib/layouts/theorems-without-preamble.inc:35
@@ -6391,8 +6350,7 @@ msgstr "Fall \\thecase."
 #: lib/layouts/theorems-ams.inc:296 lib/layouts/theorems-bytype.inc:289
 #: lib/layouts/theorems-bytype.inc:299 lib/layouts/theorems-bytype.inc:302
 #: lib/layouts/theorems-chap-bytype.module:186
-#: lib/layouts/theorems-order.inc:73
-#: lib/layouts/theorems-sec-bytype.module:142
+#: lib/layouts/theorems-order.inc:73 lib/layouts/theorems-sec-bytype.module:142
 #: lib/layouts/theorems-starred-equivalents.inc:83
 #: lib/layouts/theorems-starred.inc:285 lib/layouts/theorems-starred.inc:288
 #: lib/layouts/theorems-without-preamble.inc:336
@@ -6474,12 +6432,12 @@ msgstr "Förmodan"
 #: lib/layouts/theorems-ams-bytype.inc:116
 #: lib/layouts/theorems-ams-chap-bytype.inc:109
 #: lib/layouts/theorems-ams-chap-bytype.inc:123
-#: lib/layouts/theorems-ams-chap-bytype.inc:126
-#: lib/layouts/theorems-ams.inc:75 lib/layouts/theorems-ams.inc:85
-#: lib/layouts/theorems-ams.inc:88 lib/layouts/theorems-bytype.inc:72
-#: lib/layouts/theorems-bytype.inc:81 lib/layouts/theorems-bytype.inc:84
-#: lib/layouts/theorems-chap-bytype.module:66
-#: lib/layouts/theorems-order.inc:13 lib/layouts/theorems-sec-bytype.module:62
+#: lib/layouts/theorems-ams-chap-bytype.inc:126 lib/layouts/theorems-ams.inc:75
+#: lib/layouts/theorems-ams.inc:85 lib/layouts/theorems-ams.inc:88
+#: lib/layouts/theorems-bytype.inc:72 lib/layouts/theorems-bytype.inc:81
+#: lib/layouts/theorems-bytype.inc:84
+#: lib/layouts/theorems-chap-bytype.module:66 lib/layouts/theorems-order.inc:13
+#: lib/layouts/theorems-sec-bytype.module:62
 #: lib/layouts/theorems-starred-equivalents.inc:13
 #: lib/layouts/theorems-starred.inc:82 lib/layouts/theorems-starred.inc:85
 #: lib/layouts/theorems-without-preamble.inc:79
@@ -6522,8 +6480,7 @@ msgstr "Kriterium"
 #: lib/layouts/theorems-ams.inc:185 lib/layouts/theorems-bytype.inc:162
 #: lib/layouts/theorems-bytype.inc:178 lib/layouts/theorems-bytype.inc:181
 #: lib/layouts/theorems-chap-bytype.module:126
-#: lib/layouts/theorems-order.inc:37
-#: lib/layouts/theorems-sec-bytype.module:102
+#: lib/layouts/theorems-order.inc:37 lib/layouts/theorems-sec-bytype.module:102
 #: lib/layouts/theorems-starred-equivalents.inc:41
 #: lib/layouts/theorems-starred.inc:175 lib/layouts/theorems-starred.inc:178
 #: lib/layouts/theorems-without-preamble.inc:182
@@ -6545,8 +6502,7 @@ msgstr "Definition"
 #: lib/layouts/theorems-ams.inc:202 lib/layouts/theorems-bytype.inc:187
 #: lib/layouts/theorems-bytype.inc:197 lib/layouts/theorems-bytype.inc:200
 #: lib/layouts/theorems-chap-bytype.module:138
-#: lib/layouts/theorems-order.inc:43
-#: lib/layouts/theorems-sec-bytype.module:110
+#: lib/layouts/theorems-order.inc:43 lib/layouts/theorems-sec-bytype.module:110
 #: lib/layouts/theorems-starred-equivalents.inc:48
 #: lib/layouts/theorems-starred.inc:192 lib/layouts/theorems-starred.inc:195
 #: lib/layouts/theorems-without-preamble.inc:206
@@ -6568,8 +6524,7 @@ msgstr "Exempel"
 #: lib/layouts/theorems-ams.inc:236 lib/layouts/theorems-bytype.inc:225
 #: lib/layouts/theorems-bytype.inc:235 lib/layouts/theorems-bytype.inc:238
 #: lib/layouts/theorems-chap-bytype.module:162
-#: lib/layouts/theorems-order.inc:55
-#: lib/layouts/theorems-sec-bytype.module:126
+#: lib/layouts/theorems-order.inc:55 lib/layouts/theorems-sec-bytype.module:126
 #: lib/layouts/theorems-starred-equivalents.inc:69
 #: lib/layouts/theorems-starred.inc:226 lib/layouts/theorems-starred.inc:229
 #: lib/layouts/theorems-without-preamble.inc:225
@@ -6591,12 +6546,12 @@ msgstr "Övning"
 #: lib/layouts/theorems-ams-bytype.inc:133
 #: lib/layouts/theorems-ams-chap-bytype.inc:131
 #: lib/layouts/theorems-ams-chap-bytype.inc:144
-#: lib/layouts/theorems-ams-chap-bytype.inc:147
-#: lib/layouts/theorems-ams.inc:93 lib/layouts/theorems-ams.inc:103
-#: lib/layouts/theorems-ams.inc:106 lib/layouts/theorems-bytype.inc:90
-#: lib/layouts/theorems-bytype.inc:99 lib/layouts/theorems-bytype.inc:102
-#: lib/layouts/theorems-chap-bytype.module:78
-#: lib/layouts/theorems-order.inc:19 lib/layouts/theorems-sec-bytype.module:70
+#: lib/layouts/theorems-ams-chap-bytype.inc:147 lib/layouts/theorems-ams.inc:93
+#: lib/layouts/theorems-ams.inc:103 lib/layouts/theorems-ams.inc:106
+#: lib/layouts/theorems-bytype.inc:90 lib/layouts/theorems-bytype.inc:99
+#: lib/layouts/theorems-bytype.inc:102
+#: lib/layouts/theorems-chap-bytype.module:78 lib/layouts/theorems-order.inc:19
+#: lib/layouts/theorems-sec-bytype.module:70
 #: lib/layouts/theorems-starred-equivalents.inc:20
 #: lib/layouts/theorems-starred.inc:99 lib/layouts/theorems-starred.inc:102
 #: lib/layouts/theorems-without-preamble.inc:95
@@ -6637,8 +6592,7 @@ msgstr "Notation"
 #: lib/layouts/theorems-ams.inc:219 lib/layouts/theorems-bytype.inc:206
 #: lib/layouts/theorems-bytype.inc:216 lib/layouts/theorems-bytype.inc:219
 #: lib/layouts/theorems-chap-bytype.module:150
-#: lib/layouts/theorems-order.inc:49
-#: lib/layouts/theorems-sec-bytype.module:118
+#: lib/layouts/theorems-order.inc:49 lib/layouts/theorems-sec-bytype.module:118
 #: lib/layouts/theorems-starred-equivalents.inc:62
 #: lib/layouts/theorems-starred.inc:209 lib/layouts/theorems-starred.inc:212
 #: lib/layouts/theorems-without-preamble.inc:223
@@ -6661,8 +6615,8 @@ msgstr "Problem"
 #: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems-ams.inc:121
 #: lib/layouts/theorems-ams.inc:124 lib/layouts/theorems-bytype.inc:108
 #: lib/layouts/theorems-bytype.inc:117 lib/layouts/theorems-bytype.inc:120
-#: lib/layouts/theorems-chap-bytype.module:90
-#: lib/layouts/theorems-order.inc:25 lib/layouts/theorems-sec-bytype.module:78
+#: lib/layouts/theorems-chap-bytype.module:90 lib/layouts/theorems-order.inc:25
+#: lib/layouts/theorems-sec-bytype.module:78
 #: lib/layouts/theorems-starred-equivalents.inc:27
 #: lib/layouts/theorems-starred.inc:116 lib/layouts/theorems-starred.inc:119
 #: lib/layouts/theorems-without-preamble.inc:111
@@ -6684,8 +6638,7 @@ msgstr "Proposition"
 #: lib/layouts/theorems-ams.inc:279 lib/layouts/theorems-bytype.inc:263
 #: lib/layouts/theorems-bytype.inc:280 lib/layouts/theorems-bytype.inc:283
 #: lib/layouts/theorems-chap-bytype.module:174
-#: lib/layouts/theorems-order.inc:67
-#: lib/layouts/theorems-sec-bytype.module:134
+#: lib/layouts/theorems-order.inc:67 lib/layouts/theorems-sec-bytype.module:134
 #: lib/layouts/theorems-starred-equivalents.inc:76
 #: lib/layouts/theorems-starred.inc:268 lib/layouts/theorems-starred.inc:271
 #: lib/layouts/theorems-without-preamble.inc:321
@@ -7038,7 +6991,7 @@ msgstr "Rerefentgranskningstitel"
 #: lib/layouts/aastex62.layout:247 lib/layouts/aastex62.layout:262
 #: lib/layouts/ijmpc.layout:425 lib/layouts/ijmpd.layout:438
 #: lib/layouts/kluwer.layout:326 lib/layouts/kluwer.layout:339
-#: src/RowPainter.cpp:342
+#: src/RowPainter.cpp:343
 msgid "Appendix"
 msgstr "Bilaga"
 
@@ -27080,20 +27033,17 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "Kopiera %1$s till %2$s misslyckades."
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:149
-#: src/frontends/qt4/GuiDocument.cpp:4367
-#: src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4367 src/frontends/qt4/GuiListings.cpp:161
 msgid "Roman"
 msgstr "Antikva"
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:150
-#: src/frontends/qt4/GuiDocument.cpp:4367
-#: src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4367 src/frontends/qt4/GuiListings.cpp:161
 msgid "Sans Serif"
 msgstr "Linjär"
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:151
-#: src/frontends/qt4/GuiDocument.cpp:4367
-#: src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4367 src/frontends/qt4/GuiListings.cpp:161
 msgid "Typewriter"
 msgstr "Skrivmaskin"
 
@@ -28732,16 +28682,14 @@ msgstr ""
 "Fortsätt?"
 
 #: src/VCBackend.cpp:1528 src/VCBackend.cpp:1532
-#: src/frontends/qt4/FindAndReplace.cpp:383
-#: src/frontends/qt4/GuiPrefs.cpp:1976 src/lyxfind.cpp:164 src/lyxfind.cpp:432
-#: src/lyxfind.cpp:460
+#: src/frontends/qt4/FindAndReplace.cpp:383 src/frontends/qt4/GuiPrefs.cpp:1976
+#: src/lyxfind.cpp:164 src/lyxfind.cpp:432 src/lyxfind.cpp:460
 msgid "&Yes"
 msgstr "&Ja"
 
 #: src/VCBackend.cpp:1528 src/VCBackend.cpp:1532
-#: src/frontends/qt4/FindAndReplace.cpp:383
-#: src/frontends/qt4/GuiPrefs.cpp:1976 src/lyxfind.cpp:164 src/lyxfind.cpp:432
-#: src/lyxfind.cpp:460
+#: src/frontends/qt4/FindAndReplace.cpp:383 src/frontends/qt4/GuiPrefs.cpp:1976
+#: src/lyxfind.cpp:164 src/lyxfind.cpp:432 src/lyxfind.cpp:460
 msgid "&No"
 msgstr "&Nej"
 
@@ -29080,8 +29028,7 @@ msgstr "LyX: %1$s"
 msgid "About %1"
 msgstr "Om %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:695
-#: src/frontends/qt4/GuiPrefs.cpp:3521
+#: src/frontends/qt4/GuiApplication.cpp:695 src/frontends/qt4/GuiPrefs.cpp:3521
 msgid "Preferences"
 msgstr "Inställningar"
 
@@ -29301,12 +29248,11 @@ msgstr "alla referensenheter"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
-#: src/frontends/qt4/GuiDocument.cpp:2503
-#: src/frontends/qt4/GuiExternal.cpp:678 src/frontends/qt4/GuiGraphics.cpp:793
-#: src/frontends/qt4/GuiInclude.cpp:330 src/frontends/qt4/GuiView.cpp:2242
-#: src/frontends/qt4/GuiView.cpp:2301 src/frontends/qt4/GuiView.cpp:2439
-#: src/frontends/qt4/GuiView.cpp:2572 src/frontends/qt4/GuiView.cpp:2612
-#: src/frontends/qt4/GuiView.cpp:2730
+#: src/frontends/qt4/GuiDocument.cpp:2503 src/frontends/qt4/GuiExternal.cpp:678
+#: src/frontends/qt4/GuiGraphics.cpp:793 src/frontends/qt4/GuiInclude.cpp:330
+#: src/frontends/qt4/GuiView.cpp:2242 src/frontends/qt4/GuiView.cpp:2301
+#: src/frontends/qt4/GuiView.cpp:2439 src/frontends/qt4/GuiView.cpp:2572
+#: src/frontends/qt4/GuiView.cpp:2612 src/frontends/qt4/GuiView.cpp:2730
 msgid "Documents|#o#O"
 msgstr "Dokument|#o#O"
 

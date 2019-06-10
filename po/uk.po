@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-04-25 23:30-0400\n"
+"POT-Creation-Date: 2019-06-10 15:11-0400\n"
 "PO-Revision-Date: 2019-05-06 10:24+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 19.04.0\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
-"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:33
 msgid "Version"
@@ -6824,7 +6824,7 @@ msgstr "Заголовок рецензії"
 #: lib/layouts/aastex62.layout:247 lib/layouts/aastex62.layout:262
 #: lib/layouts/ijmpc.layout:425 lib/layouts/ijmpd.layout:438
 #: lib/layouts/kluwer.layout:326 lib/layouts/kluwer.layout:339
-#: src/RowPainter.cpp:342
+#: src/RowPainter.cpp:343
 msgid "Appendix"
 msgstr "Додаток"
 
@@ -25736,10 +25736,10 @@ msgid ""
 "Otherwise, you will beasked about it again the next time you try to loadthis "
 "file, and may over-write your own work."
 msgstr ""
-"LyX не вдалося перейменувати файл аварійної копії. Вам слід зробити це"
-" вручну. Якщо ви цього не зробите, програма попросить вас зробити це під час"
-" наступного завантаження цього файла і може перезаписати результати вашої"
-" роботи."
+"LyX не вдалося перейменувати файл аварійної копії. Вам слід зробити це "
+"вручну. Якщо ви цього не зробите, програма попросить вас зробити це під час "
+"наступного завантаження цього файла і може перезаписати результати вашої "
+"роботи."
 
 #: src/Buffer.cpp:4818
 #, c-format

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-04-25 23:30-0400\n"
+"POT-Creation-Date: 2019-06-10 15:11-0400\n"
 "PO-Revision-Date: 2019-03-19 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -6755,7 +6755,7 @@ msgstr "PeerReviewTitle"
 #: lib/layouts/aastex62.layout:247 lib/layouts/aastex62.layout:262
 #: lib/layouts/ijmpc.layout:425 lib/layouts/ijmpd.layout:438
 #: lib/layouts/kluwer.layout:326 lib/layouts/kluwer.layout:339
-#: src/RowPainter.cpp:342
+#: src/RowPainter.cpp:343
 msgid "Appendix"
 msgstr "Příloha"
 
@@ -25614,7 +25614,10 @@ msgid ""
 "LyX was unable to rename the emergency file. You should do so manually. "
 "Otherwise, you will beasked about it again the next time you try to loadthis "
 "file, and may over-write your own work."
-msgstr "Nebylo možné přejmenovat soubor nouzového uložení, zkuste tak učinit manuálně. V opačném případě se při příštím spuštění znovu zobrazí tento dialog a může dojít k přepsání novější verze vašeho dokumentu. "
+msgstr ""
+"Nebylo možné přejmenovat soubor nouzového uložení, zkuste tak učinit "
+"manuálně. V opačném případě se při příštím spuštění znovu zobrazí tento "
+"dialog a může dojít k přepsání novější verze vašeho dokumentu. "
 
 #: src/Buffer.cpp:4818
 #, c-format
