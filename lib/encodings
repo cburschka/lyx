@@ -47,12 +47,12 @@
 # and pt254.
 
 # inputenc's standard utf8 support:
-Encoding utf8 utf8 "utf8 (default)" UTF-8 variable inputenc
+Encoding utf8 utf8 "Default" UTF-8 variable inputenc
 End
 
 # extended utf8 support from the "ucs" package:
 # Larger set of supported characters but conflicts with some packages.
-Encoding utf8x utf8x "utf8 (extended) [ucs] (utf8x)" UTF-8 variable inputenc
+Encoding utf8x utf8x "Extended [ucs] (utf8x)" UTF-8 variable inputenc
 End
 
 # from http://www.ctan.org/pkg/armtex
@@ -212,7 +212,7 @@ Encoding euc-kr KS "Korean (EUC-KR)" EUC-KR variable CJK
 End
 
 # The CJK package has yet another name for utf8...
-Encoding utf8-cjk UTF8 "utf8 [CJK] (Chinese/Japanese/Korean)" UTF-8 variable CJK
+Encoding utf8-cjk UTF8 "Extended [CJK] (Chinese/Japanese/Korean)" UTF-8 variable CJK
 End
 
 # For traditional chinese
@@ -233,13 +233,13 @@ Encoding jis-platex jis "Japanese (pLaTeX) (JIS)" ISO-2022-JP variable japanese
 End
 Encoding shift-jis-platex sjis "Japanese (pLaTeX) (SJIS)" CP932 variable japanese
 End
-Encoding utf8-platex utf8 "utf8 [pLaTeX] (Japanese)" UTF-8 variable japanese
+Encoding utf8-platex utf8 "Extended [pLaTeX] (Japanese)" UTF-8 variable japanese
 End
 
 # A plain utf8 encoding that does not use the inputenc package
 # nor the LyX-added conversions in lib/unicodesymbols.
 # Such an encoding is required for XeTeX and LuaTeX.
-Encoding utf8-plain utf8-plain "utf8 (pass-through)" UTF-8 variable none
+Encoding utf8-plain utf8-plain "Pass-Through" UTF-8 variable none
 End
 
 # Pure 7bit ASCII encoding (partially hardcoded in LyX)

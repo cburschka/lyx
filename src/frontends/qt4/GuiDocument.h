@@ -101,7 +101,6 @@ public Q_SLOTS:
 private Q_SLOTS:
 	void updateNumbering();
 	void change_adaptor();
-	void change_encoding();
 	void shellescapeChanged();
 	void includeonlyClicked(QTreeWidgetItem * item, int);
 	void setListingsMessage();
@@ -153,7 +152,8 @@ private Q_SLOTS:
 	void deleteBoxBackgroundColor();
 	void languageChanged(int);
 	void osFontsChanged(bool);
-	void encodingSwitched();
+	void encodingSwitched(int);
+	void inputencodingToDialog();
 	void mathFontChanged(int);
 	void branchesRename(docstring const &, docstring const &);
 	void allPackagesAuto();
