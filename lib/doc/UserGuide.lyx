@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 575
+\lyxformat 577
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -152,6 +152,7 @@ logicalmkup
 \html_be_strict true
 \author -1402925745 "Günter Milde"
 \author -712698321 "Jürgen Spitzmüller"
+\author -563046850 "Jean-Marc LASGOUTTES"
 \author 5863208 "ab"
 \end_header
 
@@ -2341,7 +2342,15 @@ Return
 \begin_layout Standard
 The completion options for math in the preferences do the same as the correspond
 ing options for text.
- The special math option 
+ 
+\change_inserted -563046850 1560340017
+Additionally, 
+\change_deleted -563046850 1560340019
+T
+\change_inserted -563046850 1560340019
+t
+\change_unchanged
+he special math option 
 \family sans
 Autocorrection
 \family default
@@ -2371,13 +2380,56 @@ autocorrect
 \family default
  that is in \SpecialChar LyX
 's installation folder.
- Math autocorrection can at any time be turned on by pressing the exclamation
+ 
+\change_deleted -563046850 1560340086
+Math autocorrection can at any time be turned on by pressing the exclamation
  mark key “!”.
  Pressing 
 \family sans
 Space
 \family default
  turns it off.
+\change_inserted -563046850 1560340324
+Note that using 
+\family sans
+Undo
+\family default
+ after autocorrection has done its magic leaves the un-corrected sequence.
+ In the example above, 
+\family sans
+Undo
+\family default
+ leads to 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+=>
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+, and a second 
+\family sans
+Undo
+\family default
+ yields 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+=
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
