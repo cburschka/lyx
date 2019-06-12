@@ -15,8 +15,6 @@ man_MANS = tex2lyx.1
 
 bin_PROGRAMS = tex2lyx
 
-DEFAULT_INCLUDES =
-
 AM_CPPFLAGS += -I$(top_srcdir)/src/tex2lyx \
 	-I$(top_srcdir)/src -I$(top_builddir) -I$(top_builddir)/src \
 	$(BOOST_INCLUDES) $(ICONV_INCLUDES) $(ZLIB_INCLUDES)

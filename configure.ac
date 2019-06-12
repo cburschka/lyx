@@ -31,7 +31,7 @@ AM_SILENT_RULES([yes])
 # file names only up to 99 characters. tar-ustar selects the ustar format defined
 # by POSIX 1003.1-1988. This format is believed to be old enough to be portable.
 save_PACKAGE=$PACKAGE
-AM_INIT_AUTOMAKE([foreign dist-bzip2 no-define 1.8 tar-ustar subdir-objects])
+AM_INIT_AUTOMAKE([foreign dist-bzip2 no-define 1.14 tar-ustar subdir-objects])
 PACKAGE=$save_PACKAGE
 
 ### Set the execute permissions of the various scripts correctly
@@ -191,7 +191,6 @@ LYX_CHECK_SPELL_ENGINES
 LYX_USE_INCLUDED_MYTHES
 
 lyx_client_subdir=true
-dnl AC_LANG_PUSH(C)
 dnl LIBS already contains some X extra libs that may interfere.
 save_LIBS="$LIBS"
 LIBS=
@@ -204,7 +203,6 @@ AC_CHECK_FUNCS(fcntl,
 AC_SUBST(SOCKET_LIBS,$LIBS)
 LIBS="$save_LIBS"
 AM_CONDITIONAL(BUILD_CLIENT_SUBDIR, $lyx_client_subdir)
-dnl AC_LANG_POP(C)
 
 lyx_win_res=false;
 case ${host} in
@@ -214,7 +212,7 @@ esac
 if test "x$lyx_win_res" = "xtrue"; then
     AC_CHECK_TOOL(RC, windres,)
     if test -z "$RC"; then
-      AC_ERROR([Could not find a resource compiler])
+      AC_MSG_ERROR([Could not find a resource compiler])
     fi
 fi
 AM_CONDITIONAL(LYX_WIN_RESOURCE, $lyx_win_res)

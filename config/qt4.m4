@@ -25,7 +25,6 @@ AC_DEFUN([QT_CHECK_COMPILE],
 
 	AC_CACHE_VAL(qt_cv_libname,
 	[
-		AC_LANG_CPLUSPLUS
 		SAVE_CXXFLAGS=$CXXFLAGS
 		CXXFLAGS="$CXXFLAGS $QT_INCLUDES $QT_LDFLAGS"
 		qt_corelibs="-lQtCore -lQtCore4"
@@ -101,7 +100,6 @@ AC_DEFUN([QT_GET_VERSION],
 [
 	AC_CACHE_CHECK([Qt version],lyx_cv_qtversion,
 	[
-		AC_LANG_CPLUSPLUS
 		SAVE_CPPFLAGS=$CPPFLAGS
 		CPPFLAGS="$CPPFLAGS $QT_INCLUDES"
 
@@ -128,13 +126,13 @@ AC_DEFUN([QT_DO_IT_ALL],
 	dnl this variable is precious
 	AC_ARG_VAR(QTDIR, [the place where the Qt files are, e.g. /usr/lib/qt4])
 
-	AC_ARG_WITH(qt-dir, [AC_HELP_STRING([--with-qt-dir], [where the root of Qt is installed])],
+	AC_ARG_WITH(qt-dir, [AS_HELP_STRING([--with-qt-dir], [where the root of Qt is installed])],
 		[ qt_cv_dir=`eval echo "$withval"/` ])
 
-	AC_ARG_WITH(qt-includes, [AC_HELP_STRING([--with-qt-includes], [where the Qt includes are])],
+	AC_ARG_WITH(qt-includes, [AS_HELP_STRING([--with-qt-includes], [where the Qt includes are])],
 		[ qt_cv_includes=`eval echo "$withval"` ])
 
-	AC_ARG_WITH(qt-libraries, [AC_HELP_STRING([--with-qt-libraries], [where the Qt library is installed])],
+	AC_ARG_WITH(qt-libraries, [AS_HELP_STRING([--with-qt-libraries], [where the Qt library is installed])],
 		[  qt_cv_libraries=`eval echo "$withval"` ])
 
 	dnl pay attention to $QTDIR unless overridden

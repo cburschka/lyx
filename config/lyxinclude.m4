@@ -19,14 +19,14 @@ AC_MSG_CHECKING([for build type])
 lyx_devel_version=no
 lyx_prerelease=no
 AC_ARG_ENABLE(build-type,
-  AC_HELP_STRING([--enable-build-type=STR],[set build type to rel(ease), pre(release), dev(elopment), prof(iling), or gprof (default: LYX_BUILD_TYPE)]),
+  AS_HELP_STRING([--enable-build-type=STR],[set build type to rel(ease), pre(release), dev(elopment), prof(iling), or gprof (default: LYX_BUILD_TYPE)]),
   [case $enableval in
     dev*) build_type=development;;
     pre*) build_type=prerelease;;
     prof*)  build_type=profiling;;
     gprof*) build_type=gprof;;
     rel*) build_type=release;;
-    *) AC_MSG_ERROR([bad build type specification \"$enableval\". Please use one of rel(ease), pre(release), dev(elopment), prof(iling), or gprof]);;
+    *) AC_MSG_ERROR([bad build type specification '$enableval'. Please use one of rel(ease), pre(release), dev(elopment), prof(iling), or gprof]);;
    esac],
   [build_type=LYX_BUILD_TYPE])
 AC_MSG_RESULT([$build_type])
@@ -49,7 +49,7 @@ AC_MSG_CHECKING([for version suffix])
 dnl We need the literal double quotes in the rpm spec file
 RPM_VERSION_SUFFIX='""'
 AC_ARG_WITH(version-suffix,
-  [AC_HELP_STRING([--with-version-suffix@<:@=STR@:>@], install lyx files as lyxSTR (default STR: -AC_PACKAGE_VERSION))],
+  [AS_HELP_STRING([--with-version-suffix@<:@=STR@:>@], install lyx files as lyxSTR (default STR: -AC_PACKAGE_VERSION))],
   [if test "x$withval" = "xyes";
    then
      withval="-"AC_PACKAGE_VERSION
@@ -68,7 +68,7 @@ dnl
 AC_DEFUN([LYX_CHECK_QT5],[
 AC_MSG_CHECKING([whether Qt5 is disabled])
 AC_ARG_ENABLE([qt5],
-  [AC_HELP_STRING([--disable-qt5],[do not use Qt5 for building])],
+  [AS_HELP_STRING([--disable-qt5],[do not use Qt5 for building])],
   USE_QT5=$enableval, USE_QT5=yes)
 if test x$USE_QT5 != xno ; then
   AC_MSG_RESULT([no])
@@ -205,7 +205,7 @@ AC_DEFUN([LYX_CXX_CXX11_FLAGS],
    CPPFLAGS=$save_CPPFLAGS
   done])
   if test $lyx_cv_cxx11_flags = none ; then
-    AC_ERROR([Cannot find suitable C++11 mode for compiler $CXX])
+    AC_MSG_ERROR([Cannot find suitable C++11 mode for compiler $CXX])
   fi
   AM_CXXFLAGS="$lyx_cv_cxx11_flags $AM_CXXFLAGS"
 ])
@@ -216,7 +216,7 @@ dnl decide whether we want to use std::regex and set the
 dnl LYX_USE_STD_REGEX macro and conditional accordingly.
 AC_DEFUN([LYX_CXX_USE_REGEX],
 [AC_ARG_ENABLE(std-regex,
-  AC_HELP_STRING([--enable-std-regex],[use std::regex instead of boost::regex (default is autodetected)]),
+  AS_HELP_STRING([--enable-std-regex],[use std::regex instead of boost::regex (default is autodetected)]),
   [lyx_std_regex=$enableval],
   [AC_MSG_CHECKING([for correct regex implementation])
    save_CPPFLAGS=$CPPFLAGS
@@ -333,8 +333,8 @@ fi
 
 ### We might want to get or shut warnings.
 AC_ARG_ENABLE(warnings,
-  AC_HELP_STRING([--enable-warnings],[tell the compiler to display more warnings]),,
-  [ if test $lyx_devel_version = yes -o $lyx_prerelease = yes && test $ac_cv_prog_gxx = yes ; then
+  AS_HELP_STRING([--enable-warnings],[tell the compiler to display more warnings]),,
+  [ if test $lyx_devel_version = yes -o $lyx_prerelease = yes && test $GXX = yes ; then
 	enable_warnings=yes;
     else
 	enable_warnings=no;
@@ -345,19 +345,19 @@ fi
 
 ### We might want to disable debug
 AC_ARG_ENABLE(debug,
-  AC_HELP_STRING([--enable-debug],[enable debug information]),,
+  AS_HELP_STRING([--enable-debug],[enable debug information]),,
   [AS_CASE([$build_type], [rel*], [enable_debug=no], [enable_debug=yes])]
 )
 
 AC_ARG_ENABLE(stdlib-debug,
-  AC_HELP_STRING([--enable-stdlib-debug],[enable debug mode in the standard library]),,
+  AS_HELP_STRING([--enable-stdlib-debug],[enable debug mode in the standard library]),,
   [AS_CASE([$build_type], [dev*], [enable_stdlib_debug=yes], 
 	  [enable_stdlib_debug=no])]
 )
 
 ### set up optimization
 AC_ARG_ENABLE(optimization,
-    AC_HELP_STRING([--enable-optimization@<:@=ARG@:>@],[enable compiler optimisation]),,
+    AS_HELP_STRING([--enable-optimization@<:@=ARG@:>@],[enable compiler optimisation]),,
     enable_optimization=yes;)
 case $enable_optimization in
     yes)
@@ -371,7 +371,7 @@ case $enable_optimization in
 esac
 
 AC_ARG_ENABLE(assertions,
-  AC_HELP_STRING([--enable-assertions],[add runtime sanity checks in the program]),,
+  AS_HELP_STRING([--enable-assertions],[add runtime sanity checks in the program]),,
   [AS_CASE([$build_type], [dev*|pre*], [enable_assertions=yes],
 	  [enable_assertions=no])]
 )
@@ -413,7 +413,7 @@ if test x$GXX = xyes; then
       AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra"
   fi
   case $gxx_version in
-      2.*|3.*|4.@<:@0-6@:>@) AC_ERROR([gcc >= 4.7 is required]);;
+      2.*|3.*|4.@<:@0-6@:>@) AC_MSG_ERROR([gcc >= 4.7 is required]);;
   esac
   if test x$enable_stdlib_debug = xyes ; then
     dnl FIXME: for clang/libc++, one should define _LIBCPP_DEBUG2=0
@@ -448,7 +448,7 @@ dnl        be used.
 AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 	AC_MSG_CHECKING([whether to use included boost library])
 	AC_ARG_WITH(included-boost,
-	    [AC_HELP_STRING([--without-included-boost], [do not use the boost lib supplied with LyX, try to find one in the system directories - compilation will abort if nothing suitable is found])],
+	    [AS_HELP_STRING([--without-included-boost], [do not use the boost lib supplied with LyX, try to find one in the system directories - compilation will abort if nothing suitable is found])],
 	    [lyx_cv_with_included_boost=$withval],
 	    [lyx_cv_with_included_boost=yes])
 	AM_CONDITIONAL(USE_INCLUDED_BOOST, test x$lyx_cv_with_included_boost = xyes)
@@ -513,7 +513,7 @@ dnl        be used.
 AC_DEFUN([LYX_USE_INCLUDED_ICONV],[
   AC_MSG_CHECKING([whether to use included iconv library])
   AC_ARG_WITH(included-iconv,
-    [AC_HELP_STRING([--with-included-iconv], [use the iconv lib supplied with LyX instead of the system one])],
+    [AS_HELP_STRING([--with-included-iconv], [use the iconv lib supplied with LyX instead of the system one])],
     [lyx_cv_with_included_iconv=$withval],
     [lyx_cv_with_included_iconv=no])
   AM_CONDITIONAL(USE_INCLUDED_ICONV, test x$lyx_cv_with_included_iconv = xyes)
@@ -579,7 +579,7 @@ dnl        be used.
 AC_DEFUN([LYX_USE_INCLUDED_ZLIB],[
   AC_MSG_CHECKING([whether to use included zlib library])
   AC_ARG_WITH(included-zlib,
-    [AC_HELP_STRING([--with-included-zlib], [use the zlib lib supplied with LyX instead of the system one])],
+    [AS_HELP_STRING([--with-included-zlib], [use the zlib lib supplied with LyX instead of the system one])],
     [lyx_cv_with_included_zlib=$withval],
     [lyx_cv_with_included_zlib=no])
   AM_CONDITIONAL(USE_INCLUDED_ZLIB, test x$lyx_cv_with_included_zlib = xyes)
@@ -609,7 +609,7 @@ dnl Usage: LYX_CHECK_CALLSTACK_PRINTING: define LYX_CALLSTACK_PRINTING if the
 dnl        necessary APIs are available to print callstacks.
 AC_DEFUN([LYX_CHECK_CALLSTACK_PRINTING],
 [AC_ARG_ENABLE([callstack-printing],
-               [AC_HELP_STRING([--disable-callstack-printing],[do not print a callstack when crashing])],
+               [AS_HELP_STRING([--disable-callstack-printing],[do not print a callstack when crashing])],
                lyx_cv_callstack_printing=$enableval, lyx_cv_callstack_printing=yes)
 
 if test x"$lyx_cv_callstack_printing" = xyes; then
@@ -639,7 +639,7 @@ dnl Usage: LYX_USE_INCLUDED_MYTHES : select if the included MyThes should
 dnl        be used.
 AC_DEFUN([LYX_USE_INCLUDED_MYTHES],[
   AC_ARG_WITH(included-mythes,
-    [AC_HELP_STRING([--with-included-mythes], [force to use the MyThes lib supplied with LyX])],
+    [AS_HELP_STRING([--with-included-mythes], [force to use the MyThes lib supplied with LyX])],
     [use_included_mythes=$withval],
     [use_included_mythes=no])
   if test x$use_included_mythes != xyes ; then
@@ -684,7 +684,7 @@ dnl                       [default-yes-value])
 dnl  Adds a --with-'dir-name' option (described by 'desc') and puts the
 dnl  resulting directory name in 'dir-var-name'.
 AC_DEFUN([LYX_WITH_DIR],[
-  AC_ARG_WITH($1,[AC_HELP_STRING([--with-$1],[specify $2])])
+  AC_ARG_WITH($1,[AS_HELP_STRING([--with-$1],[specify $2])])
   AC_MSG_CHECKING([for $2])
   if test -z "$with_$3"; then
      AC_CACHE_VAL(lyx_cv_$3, lyx_cv_$3=$4)
@@ -703,7 +703,7 @@ AC_DEFUN([LYX_LOOP_DIR],[
 IFS="${IFS=	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
 for dir in `eval "echo $1"`; do
   if test ! "$dir" = NONE; then
-    test ! -d "$dir" && AC_MSG_ERROR([\"$dir\" is not a directory])
+    test ! -d "$dir" && AC_MSG_ERROR(['$dir' is not a directory])
     $2
   fi
 done
@@ -717,7 +717,7 @@ AC_DEFUN([LYX_ADD_LIB_DIR],[
 $1="${$1} -L$2"
 if test "`(uname) 2>/dev/null`" = SunOS &&
     uname -r | grep '^5' >/dev/null; then
-  if test $ac_cv_prog_gxx = yes ; then
+  if test $GXX = yes ; then
     $1="${$1} -Wl[,]-R$2"
   else
     $1="${$1} -R$2"
@@ -767,7 +767,7 @@ rm -f conftest*])
 AC_DEFUN([LYX_USE_PACKAGING],
 [AC_MSG_CHECKING([what packaging should be used])
 AC_ARG_WITH(packaging,
-  [AC_HELP_STRING([--with-packaging=STR], [set packaging for installation among:
+  [AS_HELP_STRING([--with-packaging=STR], [set packaging for installation among:
 			    posix, windows, macosx, haiku (default is autodetected)])],
   [lyx_use_packaging="$withval"], [
   case $host in
