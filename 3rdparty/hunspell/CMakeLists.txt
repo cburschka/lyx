@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8)
 
 project(hunspell)
 
-set(HUNSPELL_VERSION 1.6.2)
+set(HUNSPELL_VERSION 1.7.0)
 
 set(SRCDIR ${CMAKE_CURRENT_SOURCE_DIR}/${HUNSPELL_VERSION}/src)
 
