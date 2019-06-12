@@ -671,7 +671,6 @@ Language finnish
 	LangCode         fi_FI
 End
 
-# We redefine \og and \fg (guillemets) for older french language definitions
 Language french
 	GuiName          "French"
 	HasGuiSupport    true
@@ -682,12 +681,6 @@ Language french
 	FontEncoding	 T1|OT1
 	DateFormats      "d MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
 	LangCode         fr_FR
-	PostBabelPreamble
-	\addto\extrasfrench{%
-	   \providecommand{\og}{\leavevmode\flqq~}%
-	   \providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}%
-	}
-	EndPostBabelPreamble
 End
 
 Language friulan
