@@ -121,7 +121,7 @@ AC_DEFUN([LYX_USE_INCLUDED_HUNSPELL],[
 	AC_MSG_RESULT([$lyx_cv_with_included_hunspell])
 	if test x$lyx_cv_with_included_hunspell = xyes ; then
 		lyx_included_libs="$lyx_included_libs hunspell"
-		HUNSPELL_CFLAGS='-I$(top_srcdir)/3rdparty/hunspell/1.6.2/src'
+		HUNSPELL_CFLAGS='-I$(top_srcdir)/3rdparty/hunspell/1.7.0/src'
 		HUNSPELL_LIBS='$(top_builddir)/3rdparty/hunspell/liblyxhunspell.a'
 		AC_SUBST(HUNSPELL_CFLAGS)
 		AC_SUBST(HUNSPELL_LIBS)
