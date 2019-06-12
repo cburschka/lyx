@@ -142,12 +142,11 @@ dnl Usage: LYX_PROG_CLANG: set CLANG to yes if the compiler is clang.
 AC_DEFUN([LYX_PROG_CLANG],
 [AC_CACHE_CHECK([whether the compiler is clang],
                [lyx_cv_prog_clang],
-[AC_TRY_COMPILE([], [
+[AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[
 #ifndef __clang__
 	    this is not clang
 #endif
-],
-[lyx_cv_prog_clang=yes ; CLANG=yes], [lyx_cv_prog_clang=no ; CLANG=no])])
+]])],[lyx_cv_prog_clang=yes ; CLANG=yes],[lyx_cv_prog_clang=no ; CLANG=no])])
 if test $CLANG = yes ; then
   AC_CACHE_CHECK([for clang version],
     [lyx_cv_clang_version],
@@ -176,7 +175,7 @@ AC_DEFUN([LYX_CXX_CXX11_FLAGS],
     save_CXXFLAGS=$CXXFLAGS
     CXXFLAGS="$flag $AM_CXXFLAGS $CXXFLAGS"
     dnl sample openmp source code to test
-    AC_TRY_COMPILE([
+    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
        template <typename T>
        struct check
        {
@@ -199,8 +198,7 @@ AC_DEFUN([LYX_CXX_CXX11_FLAGS],
        check_type c;
        check_type&& cr = static_cast<check_type&&>(c);
 
-       auto d = a;], [],
-    [lyx_cv_cxx11_flags=$flag; break])
+       auto d = a;]], [[]])],[lyx_cv_cxx11_flags=$flag; break],[])
    CXXFLAGS=$save_CXXFLAGS
    CPPFLAGS=$save_CPPFLAGS
   done])
@@ -225,20 +223,19 @@ AC_DEFUN([LYX_CXX_USE_REGEX],
    CXXFLAGS="$AM_CXXFLAGS $CXXFLAGS"
    # The following code snippet has been taken taken from example in
    #   http://stackoverflow.com/questions/8561850/compile-stdregex-iterator-with-gcc
-   AC_TRY_LINK(
-     [
+   AC_LINK_IFELSE([AC_LANG_PROGRAM([[
 	#include <regex>
 	#include <iostream>
 
 	#include <string.h>
 
 	typedef std::regex_iterator<const char *> Myiter;
-     ], [
+     ]], [[
 	const char *pat = "axayaz";
 	Myiter::regex_type rx("a");
 	Myiter next(pat, pat + strlen(pat), rx);
 	Myiter end;
-   ], [lyx_std_regex=yes], [lyx_std_regex=no])
+   ]])],[lyx_std_regex=yes],[lyx_std_regex=no])
    CXXFLAGS=$save_CXXFLAGS
    CPPFLAGS=$save_CPPFLAGS
    AC_MSG_RESULT([$lyx_std_regex])
@@ -261,13 +258,12 @@ AC_DEFUN([LYX_CXX_USE_CALL_ONCE],
    CPPFLAGS="$AM_CPPFLAGS $CPPFLAGS"
    save_CXXFLAGS=$CXXFLAGS
    CXXFLAGS="$AM_CXXFLAGS $CXXFLAGS"
-   AC_TRY_LINK(
-     [
+   AC_LINK_IFELSE([AC_LANG_PROGRAM([[
 	#include <mutex>
 	static std::once_flag flag;
-     ], [
+     ]], [[
 	std::call_once(flag, [](){ return; });
-   ], [lyx_std_call_once=yes], [lyx_std_call_once=no])
+   ]])],[lyx_std_call_once=yes],[lyx_std_call_once=no])
    CXXFLAGS=$save_CXXFLAGS
    CPPFLAGS=$save_CPPFLAGS
    AC_MSG_RESULT([$lyx_std_call_once])
@@ -283,12 +279,11 @@ dnl Usage: LYX_LIB_STDCXX: set lyx_cv_lib_stdcxx to yes if the STL library is li
 AC_DEFUN([LYX_LIB_STDCXX],
 [AC_CACHE_CHECK([whether STL is libstdc++],
                [lyx_cv_lib_stdcxx],
-[AC_TRY_COMPILE([#include<vector>], [
+[AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include<vector>]], [[
 #if ! defined(__GLIBCXX__) && ! defined(__GLIBCPP__)
 	    this is not libstdc++
 #endif
-],
-[lyx_cv_lib_stdcxx=yes], [lyx_cv_lib_stdcxx=no])])
+]])],[lyx_cv_lib_stdcxx=yes],[lyx_cv_lib_stdcxx=no])])
 ])
 
 
@@ -297,12 +292,11 @@ dnl        if the STL library is GNU libstdc++ and the C++11 ABI is used.
 AC_DEFUN([LYX_LIB_STDCXX_CXX11_ABI],
 [AC_CACHE_CHECK([whether STL is libstdc++ using the C++11 ABI],
                [lyx_cv_lib_stdcxx_cxx11_abi],
-[AC_TRY_COMPILE([#include<vector>], [
+[AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include<vector>]], [[
 #if ! defined(_GLIBCXX_USE_CXX11_ABI) || ! _GLIBCXX_USE_CXX11_ABI
 	    this is not libstdc++ using the C++11 ABI
 #endif
-],
-[lyx_cv_lib_stdcxx_cxx11_abi=yes], [lyx_cv_lib_stdcxx_cxx11_abi=no])])
+]])],[lyx_cv_lib_stdcxx_cxx11_abi=yes],[lyx_cv_lib_stdcxx_cxx11_abi=no])])
 ])
 
 
@@ -615,16 +609,16 @@ AC_DEFUN([LYX_CHECK_CALLSTACK_PRINTING],
 if test x"$lyx_cv_callstack_printing" = xyes; then
   AC_CACHE_CHECK([whether printing callstack is possible],
 		 [lyx_cv_callstack_printing],
-  [AC_TRY_COMPILE([
+  [AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
   #include <execinfo.h>
   #include <cxxabi.h>
-  ], [
+  ]], [[
 	  void* array[200];
 	  size_t size = backtrace(array, 200);
 	  backtrace_symbols(array, size);
 	  int status = 0;
 	  abi::__cxa_demangle("abcd", 0, 0, &status);
-  ],, [lyx_cv_callstack_printing=no])])
+  ]])],[],[lyx_cv_callstack_printing=no])])
 fi
 if test x"$lyx_cv_callstack_printing" = xyes; then
   AC_DEFINE([LYX_CALLSTACK_PRINTING], 1,
@@ -840,13 +834,12 @@ AC_DEFUN([AC_FUNC_MKDIR],
 [AC_CHECK_FUNCS([mkdir _mkdir])
 AC_CACHE_CHECK([whether mkdir takes one argument],
                [ac_cv_mkdir_takes_one_arg],
-[AC_TRY_COMPILE([
+[AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
 #include <sys/stat.h>
 #if HAVE_UNISTD_H
 #  include <unistd.h>
 #endif
-], [mkdir (".");],
-[ac_cv_mkdir_takes_one_arg=yes], [ac_cv_mkdir_takes_one_arg=no])])
+]], [[mkdir (".");]])],[ac_cv_mkdir_takes_one_arg=yes],[ac_cv_mkdir_takes_one_arg=no])])
 if test x"$ac_cv_mkdir_takes_one_arg" = xyes; then
   AC_DEFINE([MKDIR_TAKES_ONE_ARG], 1,
             [Define if mkdir takes only one argument.])
@@ -914,9 +907,7 @@ AC_DEFUN([LYX_CHECK_DEF],
  save_CXXFLAGS=$CXXFLAGS
  CXXFLAGS="$AM_CXXFLAGS $CXXFLAGS"
  AC_LANG_PUSH(C++)
- AC_TRY_COMPILE([#include <$2>], [$3],
-     lyx_have_def_name=yes,
-     lyx_have_def_name=no)
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <$2>]], [[$3]])],[lyx_have_def_name=yes],[lyx_have_def_name=no])
  AC_LANG_POP(C++)
  CXXFLAGS=$save_CXXFLAGS
  CPPFLAGS=$save_CPPFLAGS

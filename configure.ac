@@ -1,10 +1,10 @@
 dnl Process with autoconf to generate configure script   -*- sh -*-
 
-AC_INIT(LyX,2.4.0dev,[lyx-devel@lists.lyx.org],[lyx])
+AC_INIT([LyX],[2.4.0dev],[lyx-devel@lists.lyx.org],[lyx])
 AC_PRESERVE_HELP_ORDER
 # Use ISO format only. The frontend needs to parse this
 AC_SUBST(LYX_DATE, ["2018-02-24"])
-AC_PREREQ(2.65)
+AC_PREREQ([2.65])
 AC_CONFIG_SRCDIR(src/main.cpp)
 AC_CONFIG_HEADERS([config.h])
 
@@ -110,9 +110,8 @@ AC_CHECK_SIZEOF(wchar_t)
 
 # Taken from gettext, needed for libiconv
 AC_CACHE_CHECK([for wchar_t], [gt_cv_c_wchar_t],
-   [AC_TRY_COMPILE([#include <stddef.h>
-      wchar_t foo = (wchar_t)'\0';], ,
-      [gt_cv_c_wchar_t=yes], [gt_cv_c_wchar_t=no])])
+   [AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <stddef.h>
+      wchar_t foo = (wchar_t)'\0';]], [[]])],[gt_cv_c_wchar_t=yes],[gt_cv_c_wchar_t=no])])
 if test $gt_cv_c_wchar_t = yes; then
   AC_DEFINE([HAVE_WCHAR_T], [1], [Define if you have the 'wchar_t' type.])
   HAVE_WCHAR_T=1

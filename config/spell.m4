@@ -29,12 +29,9 @@ AC_DEFUN([LYX_HAVE_ENCHANT2],
   save_CXXFLAGS=$CXXFLAGS
   CXXFLAGS="$ENCHANT_CFLAGS $AM_CXXFLAGS $CXXFLAGS"
 
-  AC_TRY_COMPILE([#include <enchant++.h>],
-      [enchant::Broker broker;],
-      [AC_MSG_RESULT(yes)
+  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <enchant++.h>]], [[enchant::Broker broker;]])],[AC_MSG_RESULT(yes)
        AC_DEFINE(HAVE_ENCHANT2, 1, [Define to 1 if enchant 2.x is detected])
-      ],
-      [AC_MSG_RESULT(no)])
+      ],[AC_MSG_RESULT(no)])
   CXXFLAGS=$save_CXXFLAGS
 ])
 
@@ -67,14 +64,11 @@ AC_DEFUN([LYX_HAVE_HUNSPELL_CXXABI],
   CXXFLAGS="$ENCHANT_CFLAGS $AM_CXXFLAGS $CXXFLAGS"
 
 # in the C++ ABI, stem() returns a vector, in the C ABI, it returns an int
-  AC_TRY_COMPILE([#include <hunspell/hunspell.hxx>],
-      [Hunspell sp("foo", "bar");
-       int i = sp.stem("test").size();],
-      [AC_MSG_RESULT(yes)
+  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <hunspell/hunspell.hxx>]], [[Hunspell sp("foo", "bar");
+       int i = sp.stem("test").size();]])],[AC_MSG_RESULT(yes)
        AC_DEFINE(HAVE_HUNSPELL_CXXABI, 1, [Define to 1 if hunspell C++ (rather than C) ABI is detected])
        have_hunspell_cxx_abi=yes
-      ],
-      [AC_MSG_RESULT(no)])
+      ],[AC_MSG_RESULT(no)])
   CXXFLAGS=$save_CXXFLAGS
 ])
 

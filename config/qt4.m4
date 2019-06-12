@@ -3,18 +3,15 @@ AC_DEFUN([QT_TRY_LINK],
 [
 	SAVE_LIBS="$LIBS"
 	LIBS="$LIBS $1"
-	AC_TRY_LINK([
+	AC_LINK_IFELSE([AC_LANG_PROGRAM([[
 	#include <qglobal.h>
 	#include <qstring.h>
-		],
-	[
+		]], [[
 	QString s("mangle_failure");
 	#if (QT_VERSION < 400)
 	break_me_(\\\);
 	#endif
-	],
-	qt_cv_libname=$1,
-	)
+	]])],[qt_cv_libname=$1],[])
 	LIBS="$SAVE_LIBS"
 ])
 
