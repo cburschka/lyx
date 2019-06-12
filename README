@@ -40,16 +40,16 @@ How does the LyX version scheme work?
 
     LyX uses a contiguous numbering scheme for versions, where a
     number "2.x.y" indicates a stable release '2.x', maintenance
-    release 'y'.  In other words, LyX 2.2.0 was the first stable
-    release in the 2.2-series of LyX. At the time of writing, the
-    latest maintenance release in the 2.2-series is LyX 2.2.4.
+    release 'y'.  In other words, LyX 2.3.0 was the first stable
+    release in the 2.3-series of LyX. At the time of writing, the
+    latest maintenance release in the 2.3-series is LyX 2.3.4.
 
     Please note that maintenance releases are designed primarily to
     fix bugs, and that the file format will _never_ change due to a
     maintenance release.
 
     In addition to the stable releases and maintenance releases, some
-    users may want to give a ''release candidate'' a try. This is a
+    users may want to give a ``release candidate'' a try. This is a
     release that should be stable enough for daily work, but yet may
     be potentially unstable. If no major bugs are found, the release
     candidate is soon released as the first stable release in a new
@@ -86,12 +86,13 @@ How do I upgrade from an earlier LyX version?
 
 What do I need to compile LyX from the source distribution?
 
-    * A good C++ compiler.  Development is being done mainly with
-      gcc/g++, but some others work also. As of LyX 2.3.0, you need
-      at least gcc 4.6.x.
+    * A C++11 compiler. Development is being done mainly with gcc/g++,
+      but clang and MSVC are known to work too. As of LyX 2.4.0, you
+      need at least gcc 4.7.
 
-    * The Qt library, at least version 4.8.0. For all features
-      newer versions (e.g. Qt 5.6) are recommended.
+    * The Qt library, at least version 5.2 (5.6 recommended). It is
+      still possible to compile with Qt 4.8, but this is not
+      recommended.
 
     Read the file "INSTALL" for more information on compiling.
 
