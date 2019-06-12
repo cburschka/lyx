@@ -406,8 +406,11 @@ if test x$GXX = xyes; then
   fi
   dnl Warnings are for preprocessor too
   if test x$enable_warnings = xyes ; then
-      AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra"
-  fi
+      case $gxx_version in
+	  9.*) AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra -Wno-deprecated-copy";;
+	  *) AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra";;
+      esac
+    fi
   case $gxx_version in
       2.*|3.*) AC_ERROR([gcc >= 4.6 is required]);;
       4.0*|4.1*|4.2*|4.3*|4.4*|4.5*) AC_ERROR([gcc >= 4.6 is required]);;
@@ -871,7 +874,7 @@ AC_DEFUN([MSYS_AC_CANONICAL_PATH],
 dnl this is used by the macro blow to general a proper config.h.in entry
 m4_define([LYX_AH_CHECK_DECL],
 [AH_TEMPLATE(AS_TR_CPP(HAVE_DECL_$1),
-  [Define if you have the prototype for function `$1'])])
+  [Define if you have the prototype for function `$1'])])dnl`
 
 dnl Check things are declared in headers to avoid errors or warnings.
 dnl Called like LYX_CHECK_DECL(function, header1 header2...)
@@ -891,7 +894,7 @@ done])
 dnl this is used by the macro below to generate a proper config.h.in entry
 m4_define([LYX_AH_CHECK_DEF],
 [AH_TEMPLATE(AS_TR_CPP(HAVE_DEF_$1),
-  [Define to 1 if `$1' is defined in `$2'])])
+  [Define to 1 if `$1' is defined in `$2'])])dnl'
 
 dnl Check whether name is defined in header by using it in codesnippet.
 dnl Called like LYX_CHECK_DEF(name, header, codesnippet)
