@@ -170,7 +170,7 @@ selects C++11 mode; gives an error when C++11 mode is not found.
 AC_DEFUN([LYX_CXX_CXX11_FLAGS],
 [AC_CACHE_CHECK([for at least C++11 mode], [lyx_cv_cxx11_flags],
  [lyx_cv_cxx11_flags=none
-  for flag in -std=c++14 -std=c++11 "" -std=c++0x -std=gnu++14 -std=gnu++11 -std=gnu++0x ; do
+  for flag in -std=c++14 -std=c++11 "" -std=gnu++14 -std=gnu++11 ; do
     save_CPPFLAGS=$CPPFLAGS
     CPPFLAGS="$AM_CPPFLAGS $CPPFLAGS"
     save_CXXFLAGS=$CXXFLAGS
@@ -413,8 +413,7 @@ if test x$GXX = xyes; then
       AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra"
   fi
   case $gxx_version in
-      2.*|3.*) AC_ERROR([gcc >= 4.6 is required]);;
-      4.0*|4.1*|4.2*|4.3*|4.4*|4.5*) AC_ERROR([gcc >= 4.6 is required]);;
+      2.*|3.*|4.@<:@0-6@:>@) AC_ERROR([gcc >= 4.7 is required]);;
   esac
   if test x$enable_stdlib_debug = xyes ; then
     dnl FIXME: for clang/libc++, one should define _LIBCPP_DEBUG2=0

@@ -24,9 +24,7 @@ struct Revertible {
 	virtual void keep() {}
 };
 
-//for gcc 4.6
-//using Changer = unique_ptr<Revertible>;
-typedef unique_ptr<Revertible> Changer;
+using Changer = unique_ptr<Revertible>;
 
 
 } // namespace lyx

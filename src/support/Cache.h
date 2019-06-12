@@ -33,15 +33,11 @@ namespace lyx {
  */
 template <class Key, class Val>
 class Cache : private QCache<Key, Val> {
-#if !(defined(__GNUC__) && (__GNUC__ == 4) && (__GNUC_MINOR__ == 6))
 	static_assert(std::is_copy_constructible<Val>::value,
 	              "lyx::Cache only stores copyable objects!");
 	static_assert(std::is_default_constructible<Val>::value,
 	              "lyx::Cache only stores default-constructible objects!");
 	using Q = QCache<Key, Val>;
-#else
-	typedef QCache<Key, Val> Q;
-#endif
 
 public:
 	///
