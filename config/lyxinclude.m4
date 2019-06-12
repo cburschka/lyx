@@ -383,6 +383,10 @@ if test x$GXX = xyes; then
   if test x$CLANG = xno; then
     dnl Useful for global version info
     gxx_version=`${CXX} -dumpversion`
+    case $gxx_version in
+	*.*) ;;
+	*) gxx_version=`${CXX} -dumpfullversion` ;;
+    esac
     CXX_VERSION="($gxx_version)"
   else
     gxx_version=clang-$clang_version
