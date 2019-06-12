@@ -195,10 +195,9 @@ set CXXFLAGS variable to other values as follows:
 Similarly, if you want to force the use of a specific compiler, you can
 give a value to the CXX variable.
 
-If you encounter problems, please read the section 'Problems' at the end of
-this file.
-
-The following options allow you to tweak the generated code more precisely (see the description of --enable-build-type for the default values):
+The following options allow you to tweak the generated code more
+precisely (see the description of --enable-build-type for the default
+values):
 
   o --enable-optimization=VALUE enables you to set optimization to a
     higher level than the default, for example --enable-optimization=-O3.
@@ -207,9 +206,10 @@ The following options allow you to tweak the generated code more precisely (see 
     optimization of LyX. The compile may be much quicker with some
     compilers, but LyX will run more slowly.
 
-  o --disable-std-regex forces the compiler to use boost::regex. The default is
-    to use std::regex for known good C++ libraries, but the test is not robust for clang.
-    --enable-std-regex will force the use of std::regex.
+  o --disable-std-regex forces the compiler to use boost::regex. The
+    default is to use std::regex for known good C++ libraries, but the
+    test is not robust for clang. --enable-std-regex will force the
+    use of std::regex.
 
   o --enable-debug will add debug information to your binary. This
     requires a lot more disk space, but is a must if you want to try
@@ -278,57 +278,3 @@ the source code directory.  After you have installed LyX for one
 architecture, use `make distclean' before reconfiguring for another
 architecture.
 
-Problems
---------
-
-This section provides several hints that have been submitted by LyX
-team members or users to help compiling on some particular
-architectures. If you find that some of these hints are wrong, please
-notify us.
-
-  o On SUN Sparc Solaris, you need gnumake. The LyX makefiles do not
-    work with Solaris make.
-
-    The Solaris 8 ar seg-faults trying to build the insets library. You
-    will need to use the ar from the GNU binutils for this subdirectory.
-    There is no problem with the Solaris 9 and 10 ar.
-
-    Qt4 uses the Xrender X11 extension for antialiased fonts. This
-    extension was added to Xsun starting from the Solaris 10 8/07
-    release, but it is not activated by default. To activate it, you
-    must issue (as root) the following command:
-    svccfg -s svc:/application/x11/x11-server setprop options/server_args=+xrender
-    and then restart the X server.
-
-    There is a problem with the fontconfig library shipped with
-    Solaris 10 8/07 causing a seg-fault when it is used by Qt4.
-    Until this is fixed, a workaround is replacing the shared library
-    /usr/lib/libfontconfig.so.1 with a copy from a previous release or
-    installing a new version of fontconfig from http://www.sunfreeware.com/
-
-    On Solaris, the default fontconfig configuration gives preference
-    to bitmap fonts at (not so small) sizes. As bitmapped fonts are not
-    antialiased, you may prefer changing this configuration. This may be
-    done by adding the following stanza
-
-          <match target="pattern">
-              <edit name="prefer_bitmap">
-                  <bool>false</bool>
-              </edit>
-          </match>
-
-    to either ~/.fonts.conf (for a per-user change) or /etc/fonts/local.conf
-    (for a global system change). The stanza should be added between the
-    <fontconfig> and </fontconfig> tags. If neither ~/.fonts.conf nor
-    /etc/fonts/local.conf exists, you can create them with the following
-    content:
-
-      <?xml version="1.0"?>
-      <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-      <fontconfig>
-          <match target="pattern">
-              <edit name="prefer_bitmap">
-                  <bool>false</bool>
-              </edit>
-          </match>
-      </fontconfig>
