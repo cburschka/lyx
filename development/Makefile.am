@@ -106,6 +106,14 @@ autotests/export.cmake \
 autotests/ExportTests.cmake \
 autotests/keytest.py \
 autotests/lyx2lyxtest.cmake \
+autotests/ignoredTests \
+autotests/ignoreLatexErrorsTests \
+autotests/invertedTests \
+autotests/suspendedTests \
+autotests/unreliableTests \
+autotests/lyxStatus.pm \
+autotests/getTempDir.pl \
+autotests/useSystemFonts.pl \
 autotests/single-test.cmake \
 autotests/xvkbd/CMakeLists.txt \
 autotests/xvkbd/findwidget.c \
