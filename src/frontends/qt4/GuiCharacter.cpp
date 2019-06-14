@@ -62,20 +62,20 @@ static QList<ShapePair> shapeData()
 static QList<SizePair> sizeData()
 {
 	QList<SizePair> sizes;
-	sizes << SizePair(qt_("No change"), FONT_SIZE_IGNORE);
-	sizes << SizePair(qt_("Default"), FONT_SIZE_INHERIT);
-	sizes << SizePair(qt_("Tiny"), FONT_SIZE_TINY);
-	sizes << SizePair(qt_("Smallest"), FONT_SIZE_SCRIPT);
-	sizes << SizePair(qt_("Smaller"), FONT_SIZE_FOOTNOTE);
-	sizes << SizePair(qt_("Small"), FONT_SIZE_SMALL);
-	sizes << SizePair(qt_("Normal"), FONT_SIZE_NORMAL);
-	sizes << SizePair(qt_("Large"), FONT_SIZE_LARGE);
-	sizes << SizePair(qt_("Larger"), FONT_SIZE_LARGER);
-	sizes << SizePair(qt_("Largest"), FONT_SIZE_LARGEST);
-	sizes << SizePair(qt_("Huge"), FONT_SIZE_HUGE);
-	sizes << SizePair(qt_("Huger"), FONT_SIZE_HUGER);
-	sizes << SizePair(qt_("Increase"), FONT_SIZE_INCREASE);
-	sizes << SizePair(qt_("Decrease"), FONT_SIZE_DECREASE);
+	sizes << SizePair(qt_("No change"), IGNORE_SIZE);
+	sizes << SizePair(qt_("Default"), INHERIT_SIZE);
+	sizes << SizePair(qt_("Tiny"), TINY_SIZE);
+	sizes << SizePair(qt_("Smallest"), SCRIPT_SIZE);
+	sizes << SizePair(qt_("Smaller"), FOOTNOTE_SIZE);
+	sizes << SizePair(qt_("Small"), SMALL_SIZE);
+	sizes << SizePair(qt_("Normal"), NORMAL_SIZE);
+	sizes << SizePair(qt_("Large"), LARGE_SIZE);
+	sizes << SizePair(qt_("Larger"), LARGER_SIZE);
+	sizes << SizePair(qt_("Largest"), LARGEST_SIZE);
+	sizes << SizePair(qt_("Huge"), HUGE_SIZE);
+	sizes << SizePair(qt_("Huger"), HUGER_SIZE);
+	sizes << SizePair(qt_("Increase"), INCREASE_SIZE);
+	sizes << SizePair(qt_("Decrease"), DECREASE_SIZE);
 	return sizes;
 }
 
@@ -455,7 +455,7 @@ void GuiCharacter::checkRestoreDefaults()
 		family[familyCO->currentIndex()].second != INHERIT_FAMILY
 		|| series[seriesCO->currentIndex()].second != INHERIT_SERIES
 		|| shape[shapeCO->currentIndex()].second != INHERIT_SHAPE
-		|| size[sizeCO->currentIndex()].second != FONT_SIZE_INHERIT
+		|| size[sizeCO->currentIndex()].second != INHERIT_SIZE
 		|| setMarkupState(emphCB->checkState()) != FONT_OFF
 		|| setMarkupState(nounCB->checkState()) != FONT_OFF
 		|| setMarkupState(nospellcheckCB->checkState()) != FONT_OFF
@@ -468,7 +468,7 @@ void GuiCharacter::checkRestoreDefaults()
 		family[familyCO->currentIndex()].second != IGNORE_FAMILY
 		|| series[seriesCO->currentIndex()].second != IGNORE_SERIES
 		|| shape[shapeCO->currentIndex()].second != IGNORE_SHAPE
-		|| size[sizeCO->currentIndex()].second != FONT_SIZE_IGNORE
+		|| size[sizeCO->currentIndex()].second != IGNORE_SIZE
 		|| setMarkupState(emphCB->checkState()) != FONT_IGNORE
 		|| setMarkupState(nounCB->checkState()) != FONT_IGNORE
 		|| setMarkupState(nospellcheckCB->checkState()) != FONT_IGNORE
@@ -506,7 +506,7 @@ void GuiCharacter::updateContents()
 			if (fi.shape() != tmp.fontInfo().shape())
 				font.fontInfo().setShape(IGNORE_SHAPE);
 			if (fi.size() != tmp.fontInfo().size())
-				font.fontInfo().setSize(FONT_SIZE_IGNORE);
+				font.fontInfo().setSize(IGNORE_SIZE);
 			if (fi.emph() != tmp.fontInfo().emph())
 				font.fontInfo().setEmph(FONT_IGNORE);
 			if (fi.noun() != tmp.fontInfo().noun())
@@ -662,7 +662,7 @@ bool GuiCharacter::initialiseParams(string const &)
 	if (fi.family()    != IGNORE_FAMILY
 	    || fi.series() != IGNORE_SERIES
 	    || fi.shape()  != IGNORE_SHAPE
-	    || fi.size()   != FONT_SIZE_IGNORE
+	    || fi.size()   != IGNORE_SIZE
 	    || getBar(fi)  != IGNORE
 	    || fi.color()  != Color_ignore
 	    || font_.language() != ignore_language)

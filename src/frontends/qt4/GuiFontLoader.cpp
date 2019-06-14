@@ -94,7 +94,7 @@ fontinfo_[NUM_FAMILIES][NUM_SERIES][NUM_SHAPE][NUM_SIZE][NUM_STYLE];
 GuiFontInfo * & fontinfo_ptr(FontInfo const & f)
 {
 	// The display font and the text font are the same
-	size_t const style = (f.style() == LM_ST_DISPLAY) ? LM_ST_TEXT : f.style();
+	size_t const style = (f.style() == DISPLAY_STYLE) ? TEXT_STYLE : f.style();
 	return fontinfo_[f.family()][f.series()][f.realShape()][f.size()][style];
 }
 

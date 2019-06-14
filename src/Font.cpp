@@ -361,7 +361,7 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 		count += 6;
 		env = true; //We have opened a new environment
 	}
-	if (f.size() != FONT_SIZE_INHERIT) {
+	if (f.size() != INHERIT_SIZE) {
 		// If we didn't open an environment above, we open one here
 		if (!env) {
 			os << '{';
@@ -459,7 +459,7 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 		++count;
 		env = true; // Size change need not bother about closing env.
 	}
-	if (f.size() != FONT_SIZE_INHERIT) {
+	if (f.size() != INHERIT_SIZE) {
 		// We only have to close if only size changed
 		if (!env) {
 			if (needPar && !closeLanguage) {

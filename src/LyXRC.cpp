@@ -477,16 +477,16 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			break;
 
 		case RC_SCREEN_FONT_SIZES:
-			lexrc >> font_sizes[FONT_SIZE_TINY];
-			lexrc >> font_sizes[FONT_SIZE_SCRIPT];
-			lexrc >> font_sizes[FONT_SIZE_FOOTNOTE];
-			lexrc >> font_sizes[FONT_SIZE_SMALL];
-			lexrc >> font_sizes[FONT_SIZE_NORMAL];
-			lexrc >> font_sizes[FONT_SIZE_LARGE];
-			lexrc >> font_sizes[FONT_SIZE_LARGER];
-			lexrc >> font_sizes[FONT_SIZE_LARGEST];
-			lexrc >> font_sizes[FONT_SIZE_HUGE];
-			lexrc >> font_sizes[FONT_SIZE_HUGER];
+			lexrc >> font_sizes[TINY_SIZE];
+			lexrc >> font_sizes[SCRIPT_SIZE];
+			lexrc >> font_sizes[FOOTNOTE_SIZE];
+			lexrc >> font_sizes[SMALL_SIZE];
+			lexrc >> font_sizes[NORMAL_SIZE];
+			lexrc >> font_sizes[LARGE_SIZE];
+			lexrc >> font_sizes[LARGER_SIZE];
+			lexrc >> font_sizes[LARGEST_SIZE];
+			lexrc >> font_sizes[HUGE_SIZE];
+			lexrc >> font_sizes[HUGER_SIZE];
 			break;
 
 		case RC_SCREEN_FONT_SCALABLE:
@@ -1721,40 +1721,40 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		// fall through
 	case RC_SCREEN_FONT_SIZES:
 		if (ignore_system_lyxrc ||
-		    font_sizes[FONT_SIZE_TINY]
-		    != system_lyxrc.font_sizes[FONT_SIZE_TINY] ||
-		    font_sizes[FONT_SIZE_SCRIPT]
-		    != system_lyxrc.font_sizes[FONT_SIZE_SCRIPT] ||
-		    font_sizes[FONT_SIZE_FOOTNOTE]
-		    != system_lyxrc.font_sizes[FONT_SIZE_FOOTNOTE] ||
-		    font_sizes[FONT_SIZE_SMALL]
-		    != system_lyxrc.font_sizes[FONT_SIZE_SMALL] ||
-		    font_sizes[FONT_SIZE_NORMAL]
-		    != system_lyxrc.font_sizes[FONT_SIZE_NORMAL] ||
-		    font_sizes[FONT_SIZE_LARGE]
-		    != system_lyxrc.font_sizes[FONT_SIZE_LARGE] ||
-		    font_sizes[FONT_SIZE_LARGER]
-		    != system_lyxrc.font_sizes[FONT_SIZE_LARGER] ||
-		    font_sizes[FONT_SIZE_LARGEST]
-		    != system_lyxrc.font_sizes[FONT_SIZE_LARGEST] ||
-		    font_sizes[FONT_SIZE_HUGE]
-		    != system_lyxrc.font_sizes[FONT_SIZE_HUGE] ||
-		    font_sizes[FONT_SIZE_HUGER]
-		    != system_lyxrc.font_sizes[FONT_SIZE_HUGER]) {
+		    font_sizes[TINY_SIZE]
+		    != system_lyxrc.font_sizes[TINY_SIZE] ||
+		    font_sizes[SCRIPT_SIZE]
+		    != system_lyxrc.font_sizes[SCRIPT_SIZE] ||
+		    font_sizes[FOOTNOTE_SIZE]
+		    != system_lyxrc.font_sizes[FOOTNOTE_SIZE] ||
+		    font_sizes[SMALL_SIZE]
+		    != system_lyxrc.font_sizes[SMALL_SIZE] ||
+		    font_sizes[NORMAL_SIZE]
+		    != system_lyxrc.font_sizes[NORMAL_SIZE] ||
+		    font_sizes[LARGE_SIZE]
+		    != system_lyxrc.font_sizes[LARGE_SIZE] ||
+		    font_sizes[LARGER_SIZE]
+		    != system_lyxrc.font_sizes[LARGER_SIZE] ||
+		    font_sizes[LARGEST_SIZE]
+		    != system_lyxrc.font_sizes[LARGEST_SIZE] ||
+		    font_sizes[HUGE_SIZE]
+		    != system_lyxrc.font_sizes[HUGE_SIZE] ||
+		    font_sizes[HUGER_SIZE]
+		    != system_lyxrc.font_sizes[HUGER_SIZE]) {
 			streamsize old_prec = os.precision();
 			os.setf(ios::fixed);
 			os.precision(2);
 			os << "\\screen_font_sizes"
-			   << ' ' << font_sizes[FONT_SIZE_TINY]
-			   << ' ' << font_sizes[FONT_SIZE_SCRIPT]
-			   << ' ' << font_sizes[FONT_SIZE_FOOTNOTE]
-			   << ' ' << font_sizes[FONT_SIZE_SMALL]
-			   << ' ' << font_sizes[FONT_SIZE_NORMAL]
-			   << ' ' << font_sizes[FONT_SIZE_LARGE]
-			   << ' ' << font_sizes[FONT_SIZE_LARGER]
-			   << ' ' << font_sizes[FONT_SIZE_LARGEST]
-			   << ' ' << font_sizes[FONT_SIZE_HUGE]
-			   << ' ' << font_sizes[FONT_SIZE_HUGER]
+			   << ' ' << font_sizes[TINY_SIZE]
+			   << ' ' << font_sizes[SCRIPT_SIZE]
+			   << ' ' << font_sizes[FOOTNOTE_SIZE]
+			   << ' ' << font_sizes[SMALL_SIZE]
+			   << ' ' << font_sizes[NORMAL_SIZE]
+			   << ' ' << font_sizes[LARGE_SIZE]
+			   << ' ' << font_sizes[LARGER_SIZE]
+			   << ' ' << font_sizes[LARGEST_SIZE]
+			   << ' ' << font_sizes[HUGE_SIZE]
+			   << ' ' << font_sizes[HUGER_SIZE]
 			   << '\n';
 			os.precision(old_prec);
 			os.unsetf(ios::fixed);

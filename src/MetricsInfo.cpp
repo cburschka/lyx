@@ -107,7 +107,7 @@ int MetricsBase::inPixels(Length const & len) const
 		fi.setFamily(SYMBOL_FAMILY);
 	else
 		// Math style is only taken into account in the case of mu
-		fi.setStyle(LM_ST_TEXT);
+		fi.setStyle(TEXT_STYLE);
 	return len.inPixels(textwidth, theFontMetrics(fi).em());
 }
 
@@ -186,14 +186,14 @@ Color PainterInfo::textColor(Color const & color) const
 Changer MetricsBase::changeScript()
 {
 	switch (font.style()) {
-	case LM_ST_DISPLAY:
-	case LM_ST_TEXT:
-		return font.changeStyle(LM_ST_SCRIPT);
-	case LM_ST_SCRIPT:
-	case LM_ST_SCRIPTSCRIPT:
-		return font.changeStyle(LM_ST_SCRIPTSCRIPT);
-	case LM_ST_INHERIT:
-	case LM_ST_IGNORE:
+	case DISPLAY_STYLE:
+	case TEXT_STYLE:
+		return font.changeStyle(SCRIPT_STYLE);
+	case SCRIPT_STYLE:
+	case SCRIPTSCRIPT_STYLE:
+		return font.changeStyle(SCRIPTSCRIPT_STYLE);
+	case INHERIT_STYLE:
+	case IGNORE_STYLE:
 		return Changer();
 	}
 	//remove Warning
@@ -204,15 +204,15 @@ Changer MetricsBase::changeScript()
 Changer MetricsBase::changeFrac()
 {
 	switch (font.style()) {
-	case LM_ST_DISPLAY:
-		return font.changeStyle(LM_ST_TEXT);
-	case LM_ST_TEXT:
-		return font.changeStyle(LM_ST_SCRIPT);
-	case LM_ST_SCRIPT:
-	case LM_ST_SCRIPTSCRIPT:
-		return font.changeStyle(LM_ST_SCRIPTSCRIPT);
-	case LM_ST_INHERIT:
-	case LM_ST_IGNORE:
+	case DISPLAY_STYLE:
+		return font.changeStyle(TEXT_STYLE);
+	case TEXT_STYLE:
+		return font.changeStyle(SCRIPT_STYLE);
+	case SCRIPT_STYLE:
+	case SCRIPTSCRIPT_STYLE:
+		return font.changeStyle(SCRIPTSCRIPT_STYLE);
+	case INHERIT_STYLE:
+	case IGNORE_STYLE:
 		return Changer();
 	}
 	//remove Warning
@@ -222,7 +222,7 @@ Changer MetricsBase::changeFrac()
 
 Changer MetricsBase::changeArray()
 {
-	return (font.style() == LM_ST_DISPLAY) ? font.changeStyle(LM_ST_TEXT)
+	return (font.style() == DISPLAY_STYLE) ? font.changeStyle(TEXT_STYLE)
 		: Changer();
 }
 

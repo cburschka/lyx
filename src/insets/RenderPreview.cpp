@@ -145,7 +145,7 @@ void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 
 		FontInfo font(mi.base.font);
 		font.setFamily(SANS_FAMILY);
-		font.setSize(FONT_SIZE_FOOTNOTE);
+		font.setSize(FOOTNOTE_SIZE);
 		docstring const stat = statusMessage(mi.base.bv, snippet_);
 		dim.wid = 15 + theFontMetrics(font).width(stat);
 	}
@@ -176,7 +176,7 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 
 		FontInfo font(pi.base.font);
 		font.setFamily(SANS_FAMILY);
-		font.setSize(FONT_SIZE_FOOTNOTE);
+		font.setSize(FOOTNOTE_SIZE);
 
 		docstring const stat = statusMessage(pi.base.bv, snippet_);
 		pi.pain.text(x + offset + 6,

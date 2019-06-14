@@ -276,7 +276,7 @@ private:
 	}
 
 	qreal fontSize() const {
-		return toqstr(lyxrc.font_sizes[FONT_SIZE_NORMAL]).toDouble();
+		return toqstr(lyxrc.font_sizes[NORMAL_SIZE]).toDouble();
 	}
 
 	QPointF textPosition(bool const heading) const {

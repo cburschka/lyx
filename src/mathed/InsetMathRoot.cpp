@@ -47,7 +47,7 @@ void mathed_root_metrics(MetricsInfo & mi, MathData const & nucleus,
 	Changer dummy = mi.base.changeEnsureMath();
 	Dimension dimr;
 	if (root) {
-		Changer script = mi.base.font.changeStyle(LM_ST_SCRIPTSCRIPT);
+		Changer script = mi.base.font.changeStyle(SCRIPTSCRIPT_STYLE);
 		// make sure that the dim is high enough for any character
 		root->metrics(mi, dimr, false);
 	}
@@ -70,7 +70,7 @@ void mathed_root_metrics(MetricsInfo & mi, MathData const & nucleus,
 	 */
 	int const t = mi.base.solidLineThickness();
 	int const x_height = mathed_font_x_height(mi.base.font);
-	int const phi = (mi.base.font.style() == LM_ST_DISPLAY) ? x_height : t;
+	int const phi = (mi.base.font.style() == DISPLAY_STYLE) ? x_height : t;
 	// first part is the spacing, second part is the line width
 	// itself, and last one is the spacing above.
 	int const space_above = (t + phi / 4) + t + t;
@@ -105,7 +105,7 @@ void mathed_draw_root(PainterInfo & pi, int x, int y, MathData const & nucleus,
 	int const wl = dim.width() - dimn.width();
 	// the "exponent"
 	if (root) {
-		Changer script = pi.base.font.changeStyle(LM_ST_SCRIPTSCRIPT);
+		Changer script = pi.base.font.changeStyle(SCRIPTSCRIPT_STYLE);
 		Dimension const dimr = root->dimension(*pi.base.bv);
 		int const root_offset = wl - 3 * w / 8 - dimr.width();
 		root->draw(pi, x + root_offset, y + (d - a)/2);

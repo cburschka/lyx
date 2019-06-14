@@ -97,35 +97,35 @@ enum FontShape {
 ///
 enum FontSize {
 	///
-	FONT_SIZE_TINY = 0,
+	TINY_SIZE = 0,
 	///
-	FONT_SIZE_SCRIPT,
+	SCRIPT_SIZE,
 	///
-	FONT_SIZE_FOOTNOTE,
+	FOOTNOTE_SIZE,
 	///
-	FONT_SIZE_SMALL,
+	SMALL_SIZE,
 	///
-	FONT_SIZE_NORMAL,
+	NORMAL_SIZE,
 	///
-	FONT_SIZE_LARGE,
+	LARGE_SIZE,
 	///
-	FONT_SIZE_LARGER,
+	LARGER_SIZE,
 	///
-	FONT_SIZE_LARGEST,
+	LARGEST_SIZE,
 	///
-	FONT_SIZE_HUGE,
+	HUGE_SIZE,
 	///
-	FONT_SIZE_HUGER,
+	HUGER_SIZE,
 	///
-	FONT_SIZE_INCREASE,
+	INCREASE_SIZE,
 	///
-	FONT_SIZE_DECREASE,
+	DECREASE_SIZE,
 	///
-	FONT_SIZE_INHERIT,
+	INHERIT_SIZE,
 	///
-	FONT_SIZE_IGNORE,
+	IGNORE_SIZE,
 	///
-	NUM_SIZE = FONT_SIZE_INCREASE
+	NUM_SIZE = INCREASE_SIZE
 };
 
 /// Used for emph, underbar, noun and latex toggles
@@ -146,19 +146,19 @@ enum FontState {
 /// Math styles
 enum MathStyle {
 	///
-	LM_ST_SCRIPTSCRIPT = 0,
+	SCRIPTSCRIPT_STYLE = 0,
 	///
-	LM_ST_SCRIPT,
+	SCRIPT_STYLE,
 	///
-	LM_ST_TEXT,
+	TEXT_STYLE,
 	///
-	LM_ST_DISPLAY,
+	DISPLAY_STYLE,
 	///
-	LM_ST_INHERIT,
+	INHERIT_STYLE,
 	///
-	LM_ST_IGNORE,
+	IGNORE_STYLE,
 	/// the text and display fonts are the same
-	NUM_STYLE = LM_ST_DISPLAY
+	NUM_STYLE = DISPLAY_STYLE
 };
 
 

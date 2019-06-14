@@ -87,8 +87,8 @@ FontInfo const sane_font(
 	ROMAN_FAMILY,
 	MEDIUM_SERIES,
 	UP_SHAPE,
-	FONT_SIZE_NORMAL,
-	LM_ST_TEXT,
+	NORMAL_SIZE,
+	TEXT_STYLE,
 	Color_none,
 	Color_background,
 	FONT_OFF,
@@ -105,8 +105,8 @@ FontInfo const inherit_font(
 	INHERIT_FAMILY,
 	INHERIT_SERIES,
 	INHERIT_SHAPE,
-	FONT_SIZE_INHERIT,
-	LM_ST_INHERIT,
+	INHERIT_SIZE,
+	INHERIT_STYLE,
 	Color_inherit,
 	Color_inherit,
 	FONT_INHERIT,
@@ -123,8 +123,8 @@ FontInfo const ignore_font(
 	IGNORE_FAMILY,
 	IGNORE_SERIES,
 	IGNORE_SHAPE,
-	FONT_SIZE_IGNORE,
-	LM_ST_IGNORE,
+	IGNORE_SIZE,
+	IGNORE_STYLE,
 	Color_ignore,
 	Color_ignore,
 	FONT_IGNORE,
@@ -148,27 +148,27 @@ FontInfo::FontInfo()
 FontInfo & FontInfo::decSize()
 {
 	switch (size_) {
-	case FONT_SIZE_HUGER:        size_ = FONT_SIZE_HUGE;     break;
-	case FONT_SIZE_HUGE:         size_ = FONT_SIZE_LARGEST;  break;
-	case FONT_SIZE_LARGEST:      size_ = FONT_SIZE_LARGER;   break;
-	case FONT_SIZE_LARGER:       size_ = FONT_SIZE_LARGE;    break;
-	case FONT_SIZE_LARGE:        size_ = FONT_SIZE_NORMAL;   break;
-	case FONT_SIZE_NORMAL:       size_ = FONT_SIZE_SMALL;    break;
-	case FONT_SIZE_SMALL:        size_ = FONT_SIZE_FOOTNOTE; break;
-	case FONT_SIZE_FOOTNOTE:     size_ = FONT_SIZE_SCRIPT;   break;
-	case FONT_SIZE_SCRIPT:       size_ = FONT_SIZE_TINY;     break;
-	case FONT_SIZE_TINY:         break;
-	case FONT_SIZE_INCREASE:
-		LYXERR0("Can't FontInfo::decSize on FONT_SIZE_INCREASE");
+	case HUGER_SIZE:        size_ = HUGE_SIZE;     break;
+	case HUGE_SIZE:         size_ = LARGEST_SIZE;  break;
+	case LARGEST_SIZE:      size_ = LARGER_SIZE;   break;
+	case LARGER_SIZE:       size_ = LARGE_SIZE;    break;
+	case LARGE_SIZE:        size_ = NORMAL_SIZE;   break;
+	case NORMAL_SIZE:       size_ = SMALL_SIZE;    break;
+	case SMALL_SIZE:        size_ = FOOTNOTE_SIZE; break;
+	case FOOTNOTE_SIZE:     size_ = SCRIPT_SIZE;   break;
+	case SCRIPT_SIZE:       size_ = TINY_SIZE;     break;
+	case TINY_SIZE:         break;
+	case INCREASE_SIZE:
+		LYXERR0("Can't FontInfo::decSize on INCREASE_SIZE");
 		break;
-	case FONT_SIZE_DECREASE:
-		LYXERR0("Can't FontInfo::decSize on FONT_SIZE_DECREASE");
+	case DECREASE_SIZE:
+		LYXERR0("Can't FontInfo::decSize on DECREASE_SIZE");
 		break;
-	case FONT_SIZE_INHERIT:
-		LYXERR0("Can't FontInfo::decSize on FONT_SIZE_INHERIT");
+	case INHERIT_SIZE:
+		LYXERR0("Can't FontInfo::decSize on INHERIT_SIZE");
 		break;
-	case FONT_SIZE_IGNORE:
-		LYXERR0("Can't FontInfo::decSize on FONT_SIZE_IGNORE");
+	case IGNORE_SIZE:
+		LYXERR0("Can't FontInfo::decSize on IGNORE_SIZE");
 		break;
 	}
 	return *this;
@@ -179,27 +179,27 @@ FontInfo & FontInfo::decSize()
 FontInfo & FontInfo::incSize()
 {
 	switch (size_) {
-	case FONT_SIZE_HUGER:	break;
-	case FONT_SIZE_HUGE:         size_ = FONT_SIZE_HUGER;    break;
-	case FONT_SIZE_LARGEST:      size_ = FONT_SIZE_HUGE;     break;
-	case FONT_SIZE_LARGER:       size_ = FONT_SIZE_LARGEST;  break;
-	case FONT_SIZE_LARGE:        size_ = FONT_SIZE_LARGER;   break;
-	case FONT_SIZE_NORMAL:       size_ = FONT_SIZE_LARGE;    break;
-	case FONT_SIZE_SMALL:        size_ = FONT_SIZE_NORMAL;   break;
-	case FONT_SIZE_FOOTNOTE:     size_ = FONT_SIZE_SMALL;    break;
-	case FONT_SIZE_SCRIPT:       size_ = FONT_SIZE_FOOTNOTE; break;
-	case FONT_SIZE_TINY:         size_ = FONT_SIZE_SCRIPT;   break;
-	case FONT_SIZE_INCREASE:
-		LYXERR0("Can't FontInfo::incSize on FONT_SIZE_INCREASE");
+	case HUGER_SIZE:	break;
+	case HUGE_SIZE:         size_ = HUGER_SIZE;    break;
+	case LARGEST_SIZE:      size_ = HUGE_SIZE;     break;
+	case LARGER_SIZE:       size_ = LARGEST_SIZE;  break;
+	case LARGE_SIZE:        size_ = LARGER_SIZE;   break;
+	case NORMAL_SIZE:       size_ = LARGE_SIZE;    break;
+	case SMALL_SIZE:        size_ = NORMAL_SIZE;   break;
+	case FOOTNOTE_SIZE:     size_ = SMALL_SIZE;    break;
+	case SCRIPT_SIZE:       size_ = FOOTNOTE_SIZE; break;
+	case TINY_SIZE:         size_ = SCRIPT_SIZE;   break;
+	case INCREASE_SIZE:
+		LYXERR0("Can't FontInfo::incSize on INCREASE_SIZE");
 		break;
-	case FONT_SIZE_DECREASE:
-		LYXERR0("Can't FontInfo::incSize on FONT_SIZE_DECREASE");
+	case DECREASE_SIZE:
+		LYXERR0("Can't FontInfo::incSize on DECREASE_SIZE");
 		break;
-	case FONT_SIZE_INHERIT:
-		LYXERR0("Can't FontInfo::incSize on FONT_SIZE_INHERIT");
+	case INHERIT_SIZE:
+		LYXERR0("Can't FontInfo::incSize on INHERIT_SIZE");
 		break;
-	case FONT_SIZE_IGNORE:
-		LYXERR0("Can't FontInfo::incSize on FONT_SIZE_IGNORE");
+	case IGNORE_SIZE:
+		LYXERR0("Can't FontInfo::incSize on IGNORE_SIZE");
 		break;
 	}
 	return *this;
@@ -214,20 +214,20 @@ double FontInfo::realSize() const
 	// font packages. No attempt is made to implement the actual values from
 	// \DefineMathSizes.
 	switch (style()) {
-	case LM_ST_DISPLAY:
-	case LM_ST_TEXT:
-	case LM_ST_INHERIT:
-	case LM_ST_IGNORE:
+	case DISPLAY_STYLE:
+	case TEXT_STYLE:
+	case INHERIT_STYLE:
+	case IGNORE_STYLE:
 		break;
-	case LM_ST_SCRIPT:
+	case SCRIPT_STYLE:
 		d *= .73;
 		break;
-	case LM_ST_SCRIPTSCRIPT:
+	case SCRIPTSCRIPT_STYLE:
 		d *= .55;
 		break;
 	}
 	// Never go below the smallest size
-	return max(d, convert<double>(lyxrc.font_sizes[FONT_SIZE_TINY]));
+	return max(d, convert<double>(lyxrc.font_sizes[TINY_SIZE]));
 }
 
 
@@ -241,9 +241,9 @@ void FontInfo::reduce(FontInfo const & tmplt)
 	if (shape_ == tmplt.shape_)
 		shape_ = INHERIT_SHAPE;
 	if (size_ == tmplt.size_)
-		size_ = FONT_SIZE_INHERIT;
+		size_ = INHERIT_SIZE;
 	if (style_ == tmplt.style_)
-		style_ = LM_ST_INHERIT;
+		style_ = INHERIT_STYLE;
 	if (emph_ == tmplt.emph_)
 		emph_ = FONT_INHERIT;
 	if (underbar_ == tmplt.underbar_)
@@ -284,10 +284,10 @@ FontInfo & FontInfo::realize(FontInfo const & tmplt)
 	if (shape_ == INHERIT_SHAPE)
 		shape_ = tmplt.shape_;
 
-	if (size_ == FONT_SIZE_INHERIT)
+	if (size_ == INHERIT_SIZE)
 		size_ = tmplt.size_;
 
-	if (style_ == LM_ST_INHERIT)
+	if (style_ == INHERIT_STYLE)
 		style_ = tmplt.style_;
 
 	if (emph_ == FONT_INHERIT)
@@ -402,16 +402,16 @@ void FontInfo::update(FontInfo const & newfont, bool toggleall)
 		shape_ = newfont.shape_;
 	// else it's IGNORE_SHAPE
 
-	if (newfont.size_ != FONT_SIZE_IGNORE) {
-		if (newfont.size_ == FONT_SIZE_INCREASE)
+	if (newfont.size_ != IGNORE_SIZE) {
+		if (newfont.size_ == INCREASE_SIZE)
 			incSize();
-		else if (newfont.size_ == FONT_SIZE_DECREASE)
+		else if (newfont.size_ == DECREASE_SIZE)
 			decSize();
 		else
 			size_ = newfont.size_;
 	}
 
-	if (newfont.style_ != LM_ST_IGNORE) {
+	if (newfont.style_ != IGNORE_STYLE) {
 			style_ = newfont.style_;
 	}
 
@@ -440,8 +440,8 @@ void FontInfo::update(FontInfo const & newfont, bool toggleall)
 bool FontInfo::resolved() const
 {
 	return (family_ != INHERIT_FAMILY && series_ != INHERIT_SERIES
-		&& shape_ != INHERIT_SHAPE && size_ != FONT_SIZE_INHERIT
-		&& style_ != LM_ST_INHERIT
+		&& shape_ != INHERIT_SHAPE && size_ != INHERIT_SIZE
+		&& style_ != INHERIT_STYLE
 		&& emph_ != FONT_INHERIT && underbar_ != FONT_INHERIT
 		&& uuline_ != FONT_INHERIT && uwave_ != FONT_INHERIT
 		&& strikeout_ != FONT_INHERIT && xout_ != FONT_INHERIT
@@ -546,29 +546,29 @@ string getShapeCSS(FontShape const & s)
 string getSizeCSS(FontSize const & s)
 {
 	switch (s) {
-	case FONT_SIZE_TINY:
+	case TINY_SIZE:
 		return "xx-small";
-	case FONT_SIZE_SCRIPT:
+	case SCRIPT_SIZE:
 		return "x-small";
-	case FONT_SIZE_FOOTNOTE:
-	case FONT_SIZE_SMALL:
+	case FOOTNOTE_SIZE:
+	case SMALL_SIZE:
 		return "small";
-	case FONT_SIZE_NORMAL:
+	case NORMAL_SIZE:
 		return "medium";
-	case FONT_SIZE_LARGE:
+	case LARGE_SIZE:
 		return "large";
-	case FONT_SIZE_LARGER:
-	case FONT_SIZE_LARGEST:
+	case LARGER_SIZE:
+	case LARGEST_SIZE:
 		return "x-large";
-	case FONT_SIZE_HUGE:
-	case FONT_SIZE_HUGER:
+	case HUGE_SIZE:
+	case HUGER_SIZE:
 		return "xx-large";
-	case FONT_SIZE_INCREASE:
+	case INCREASE_SIZE:
 		return "larger";
-	case FONT_SIZE_DECREASE:
+	case DECREASE_SIZE:
 		return "smaller";
-	case FONT_SIZE_IGNORE:
-	case FONT_SIZE_INHERIT:
+	case IGNORE_SIZE:
+	case INHERIT_SIZE:
 		break;
 	}
 	return "";
@@ -604,7 +604,7 @@ docstring const FontInfo::stateText(bool const terse) const
 		os << _(GUISeriesNames[series()]) << ", ";
 	if (shape() != INHERIT_SHAPE && (!terse || shape() != IGNORE_SHAPE))
 		os << _(GUIShapeNames[shape()]) << ", ";
-	if (size() != FONT_SIZE_INHERIT && (!terse || size() != FONT_SIZE_IGNORE))
+	if (size() != INHERIT_SIZE && (!terse || size() != IGNORE_SIZE))
 		os << _(GUISizeNames[size()]) << ", ";
 	// FIXME: shall style be handled there? Probably not.
 	if (color() != Color_inherit && (!terse || color() != Color_ignore))
@@ -819,7 +819,7 @@ void lyxWrite(ostream & os, FontInfo const & f, string const & start, int level)
 	if (f.shape() != INHERIT_SHAPE)
 		oss << indent << "\tShape " << LyXShapeNames[f.shape()]
 		    << '\n';
-	if (f.size() != FONT_SIZE_INHERIT)
+	if (f.size() != INHERIT_SIZE)
 		oss << indent << "\tSize " << LyXSizeNames[f.size()]
 		    << '\n';
 	//FIXME: shall style be handled here? Probably not.

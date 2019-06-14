@@ -1971,7 +1971,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		static int count = 0;
 		++count;
 		FontInfo fi(sane_font);
-		fi.setSize(FONT_SIZE_TINY);
+		fi.setSize(TINY_SIZE);
 		fi.setColor(Color_red);
 		pi.pain.text(row_x, y, convert<docstring>(count), fi);
 #endif

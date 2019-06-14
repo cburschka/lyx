@@ -72,7 +72,7 @@ void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 	// set scriptable_
 	scriptable_ = false;
-	if (mi.base.font.style() == LM_ST_DISPLAY)
+	if (mi.base.font.style() == DISPLAY_STYLE)
 		if (sym_->inset == "cmex" || sym_->inset == "esint" ||
 		    sym_->extra == "funclim" ||
 		    (sym_->inset == "stmry" && sym_->extra == "mathop"))

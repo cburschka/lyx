@@ -79,7 +79,7 @@ void afterMetricsMarkers(MetricsInfo const & , MathRow::Element & e,
 		break;
 	case InsetMath::BOX_MARKER:
 		FontInfo font;
-		font.setSize(FONT_SIZE_TINY);
+		font.setSize(TINY_SIZE);
 		Dimension namedim;
 		mathed_string_dim(font, e.inset->name(), namedim);
 		int const namewid = 1 + namedim.wid + 1;
@@ -109,7 +109,7 @@ void drawMarkers(PainterInfo const & pi, MathRow::Element const & e,
 	if (e.marker == InsetMath::BOX_MARKER) {
 		// draw header and rectangle around
 		FontInfo font;
-		font.setSize(FONT_SIZE_TINY);
+		font.setSize(TINY_SIZE);
 		font.setColor(Color_mathmacrolabel);
 		Dimension namedim;
 		mathed_string_dim(font, e.inset->name(), namedim);

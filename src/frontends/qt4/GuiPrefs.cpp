@@ -982,16 +982,16 @@ void PrefScreenFonts::applyRC(LyXRC & rc) const
 		rc.typewriter_font_name, rc.typewriter_font_foundry);
 
 	rc.defaultZoom = screenZoomSB->value();
-	rc.font_sizes[FONT_SIZE_TINY] = widgetToDoubleStr(screenTinyED);
-	rc.font_sizes[FONT_SIZE_SCRIPT] = widgetToDoubleStr(screenSmallestED);
-	rc.font_sizes[FONT_SIZE_FOOTNOTE] = widgetToDoubleStr(screenSmallerED);
-	rc.font_sizes[FONT_SIZE_SMALL] = widgetToDoubleStr(screenSmallED);
-	rc.font_sizes[FONT_SIZE_NORMAL] = widgetToDoubleStr(screenNormalED);
-	rc.font_sizes[FONT_SIZE_LARGE] = widgetToDoubleStr(screenLargeED);
-	rc.font_sizes[FONT_SIZE_LARGER] = widgetToDoubleStr(screenLargerED);
-	rc.font_sizes[FONT_SIZE_LARGEST] = widgetToDoubleStr(screenLargestED);
-	rc.font_sizes[FONT_SIZE_HUGE] = widgetToDoubleStr(screenHugeED);
-	rc.font_sizes[FONT_SIZE_HUGER] = widgetToDoubleStr(screenHugerED);
+	rc.font_sizes[TINY_SIZE] = widgetToDoubleStr(screenTinyED);
+	rc.font_sizes[SCRIPT_SIZE] = widgetToDoubleStr(screenSmallestED);
+	rc.font_sizes[FOOTNOTE_SIZE] = widgetToDoubleStr(screenSmallerED);
+	rc.font_sizes[SMALL_SIZE] = widgetToDoubleStr(screenSmallED);
+	rc.font_sizes[NORMAL_SIZE] = widgetToDoubleStr(screenNormalED);
+	rc.font_sizes[LARGE_SIZE] = widgetToDoubleStr(screenLargeED);
+	rc.font_sizes[LARGER_SIZE] = widgetToDoubleStr(screenLargerED);
+	rc.font_sizes[LARGEST_SIZE] = widgetToDoubleStr(screenLargestED);
+	rc.font_sizes[HUGE_SIZE] = widgetToDoubleStr(screenHugeED);
+	rc.font_sizes[HUGER_SIZE] = widgetToDoubleStr(screenHugerED);
 }
 
 
@@ -1015,16 +1015,16 @@ void PrefScreenFonts::updateRC(LyXRC const & rc)
 
 void PrefScreenFonts::updateScreenFontSizes(LyXRC const & rc)
 {
-	doubleToWidget(screenTinyED, rc.font_sizes[FONT_SIZE_TINY]);
-	doubleToWidget(screenSmallestED, rc.font_sizes[FONT_SIZE_SCRIPT]);
-	doubleToWidget(screenSmallerED, rc.font_sizes[FONT_SIZE_FOOTNOTE]);
-	doubleToWidget(screenSmallED, rc.font_sizes[FONT_SIZE_SMALL]);
-	doubleToWidget(screenNormalED, rc.font_sizes[FONT_SIZE_NORMAL]);
-	doubleToWidget(screenLargeED, rc.font_sizes[FONT_SIZE_LARGE]);
-	doubleToWidget(screenLargerED, rc.font_sizes[FONT_SIZE_LARGER]);
-	doubleToWidget(screenLargestED, rc.font_sizes[FONT_SIZE_LARGEST]);
-	doubleToWidget(screenHugeED, rc.font_sizes[FONT_SIZE_HUGE]);
-	doubleToWidget(screenHugerED, rc.font_sizes[FONT_SIZE_HUGER]);
+	doubleToWidget(screenTinyED, rc.font_sizes[TINY_SIZE]);
+	doubleToWidget(screenSmallestED, rc.font_sizes[SCRIPT_SIZE]);
+	doubleToWidget(screenSmallerED, rc.font_sizes[FOOTNOTE_SIZE]);
+	doubleToWidget(screenSmallED, rc.font_sizes[SMALL_SIZE]);
+	doubleToWidget(screenNormalED, rc.font_sizes[NORMAL_SIZE]);
+	doubleToWidget(screenLargeED, rc.font_sizes[LARGE_SIZE]);
+	doubleToWidget(screenLargerED, rc.font_sizes[LARGER_SIZE]);
+	doubleToWidget(screenLargestED, rc.font_sizes[LARGEST_SIZE]);
+	doubleToWidget(screenHugeED, rc.font_sizes[HUGE_SIZE]);
+	doubleToWidget(screenHugerED, rc.font_sizes[HUGER_SIZE]);
 }
 
 

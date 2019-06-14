@@ -165,14 +165,14 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 	// FIXME UNICODE
 	docstring const justname = from_utf8(params_.filename.onlyFileName());
 	if (!justname.empty()) {
-		msgFont.setSize(FONT_SIZE_FOOTNOTE);
+		msgFont.setSize(FOOTNOTE_SIZE);
 		font_width = theFontMetrics(msgFont).width(justname);
 		font_height = theFontMetrics(msgFont).maxHeight();
 	}
 
 	docstring const msg = statusMessage(params_, loader_.status());
 	if (!msg.empty()) {
-		msgFont.setSize(FONT_SIZE_TINY);
+		msgFont.setSize(TINY_SIZE);
 		font_width = max(font_width,
 			theFontMetrics(msgFont).width(msg));
 		font_height += theFontMetrics(msgFont).maxAscent();
@@ -209,7 +209,7 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 		string const justname = params_.filename.onlyFileName();
 
 		if (!justname.empty()) {
-			msgFont.setSize(FONT_SIZE_FOOTNOTE);
+			msgFont.setSize(FOOTNOTE_SIZE);
 			pi.pain.text(x1 + 6, y - theFontMetrics(msgFont).maxAscent() - 4,
 			             from_utf8(justname), msgFont);
 		}
@@ -217,7 +217,7 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 		// Print the message.
 		docstring const msg = statusMessage(params_, loader_.status());
 		if (!msg.empty()) {
-			msgFont.setSize(FONT_SIZE_TINY);
+			msgFont.setSize(TINY_SIZE);
 			pi.pain.text(x1 + 6, y - 4, msg, msgFont);
 		}
 	}

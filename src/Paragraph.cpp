@@ -3020,7 +3020,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 
 	FontShape  curr_fs   = INHERIT_SHAPE;
 	FontFamily curr_fam  = INHERIT_FAMILY;
-	FontSize   curr_size = FONT_SIZE_INHERIT;
+	FontSize   curr_size = INHERIT_SIZE;
 
 	string const default_family =
 		buf.masterBuffer()->params().fonts_default_family;
@@ -3185,41 +3185,41 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 		if (old_size != curr_size) {
 			if (size_flag) {
 				switch (old_size) {
-				case FONT_SIZE_TINY:
+				case TINY_SIZE:
 					tagsToClose.push_back(html::EndFontTag(html::FT_SIZE_TINY));
 					break;
-				case FONT_SIZE_SCRIPT:
+				case SCRIPT_SIZE:
 					tagsToClose.push_back(html::EndFontTag(html::FT_SIZE_SCRIPT));
 					break;
-				case FONT_SIZE_FOOTNOTE:
+				case FOOTNOTE_SIZE:
 					tagsToClose.push_back(html::EndFontTag(html::FT_SIZE_FOOTNOTE));
 					break;
-				case FONT_SIZE_SMALL:
+				case SMALL_SIZE:
 					tagsToClose.push_back(html::EndFontTag(html::FT_SIZE_SMALL));
 					break;
-				case FONT_SIZE_LARGE:
+				case LARGE_SIZE:
 					tagsToClose.push_back(html::EndFontTag(html::FT_SIZE_LARGE));
 					break;
-				case FONT_SIZE_LARGER:
+				case LARGER_SIZE:
 					tagsToClose.push_back(html::EndFontTag(html::FT_SIZE_LARGER));
 					break;
-				case FONT_SIZE_LARGEST:
+				case LARGEST_SIZE:
 					tagsToClose.push_back(html::EndFontTag(html::FT_SIZE_LARGEST));
 					break;
-				case FONT_SIZE_HUGE:
+				case HUGE_SIZE:
 					tagsToClose.push_back(html::EndFontTag(html::FT_SIZE_HUGE));
 					break;
-				case FONT_SIZE_HUGER:
+				case HUGER_SIZE:
 					tagsToClose.push_back(html::EndFontTag(html::FT_SIZE_HUGER));
 					break;
-				case FONT_SIZE_INCREASE:
+				case INCREASE_SIZE:
 					tagsToClose.push_back(html::EndFontTag(html::FT_SIZE_INCREASE));
 					break;
-				case FONT_SIZE_DECREASE:
+				case DECREASE_SIZE:
 					tagsToClose.push_back(html::EndFontTag(html::FT_SIZE_DECREASE));
 					break;
-				case FONT_SIZE_INHERIT:
-				case FONT_SIZE_NORMAL:
+				case INHERIT_SIZE:
+				case NORMAL_SIZE:
 					break;
 				default:
 					// the other tags are for internal use
@@ -3229,52 +3229,52 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 				size_flag = false;
 			}
 			switch (curr_size) {
-			case FONT_SIZE_TINY:
+			case TINY_SIZE:
 				tagsToOpen.push_back(html::FontTag(html::FT_SIZE_TINY));
 				size_flag = true;
 				break;
-			case FONT_SIZE_SCRIPT:
+			case SCRIPT_SIZE:
 				tagsToOpen.push_back(html::FontTag(html::FT_SIZE_SCRIPT));
 				size_flag = true;
 				break;
-			case FONT_SIZE_FOOTNOTE:
+			case FOOTNOTE_SIZE:
 				tagsToOpen.push_back(html::FontTag(html::FT_SIZE_FOOTNOTE));
 				size_flag = true;
 				break;
-			case FONT_SIZE_SMALL:
+			case SMALL_SIZE:
 				tagsToOpen.push_back(html::FontTag(html::FT_SIZE_SMALL));
 				size_flag = true;
 				break;
-			case FONT_SIZE_LARGE:
+			case LARGE_SIZE:
 				tagsToOpen.push_back(html::FontTag(html::FT_SIZE_LARGE));
 				size_flag = true;
 				break;
-			case FONT_SIZE_LARGER:
+			case LARGER_SIZE:
 				tagsToOpen.push_back(html::FontTag(html::FT_SIZE_LARGER));
 				size_flag = true;
 				break;
-			case FONT_SIZE_LARGEST:
+			case LARGEST_SIZE:
 				tagsToOpen.push_back(html::FontTag(html::FT_SIZE_LARGEST));
 				size_flag = true;
 				break;
-			case FONT_SIZE_HUGE:
+			case HUGE_SIZE:
 				tagsToOpen.push_back(html::FontTag(html::FT_SIZE_HUGE));
 				size_flag = true;
 				break;
-			case FONT_SIZE_HUGER:
+			case HUGER_SIZE:
 				tagsToOpen.push_back(html::FontTag(html::FT_SIZE_HUGER));
 				size_flag = true;
 				break;
-			case FONT_SIZE_INCREASE:
+			case INCREASE_SIZE:
 				tagsToOpen.push_back(html::FontTag(html::FT_SIZE_INCREASE));
 				size_flag = true;
 				break;
-			case FONT_SIZE_DECREASE:
+			case DECREASE_SIZE:
 				tagsToOpen.push_back(html::FontTag(html::FT_SIZE_DECREASE));
 				size_flag = true;
 				break;
-			case FONT_SIZE_NORMAL:
-			case FONT_SIZE_INHERIT:
+			case NORMAL_SIZE:
+			case INHERIT_SIZE:
 				break;
 			default:
 				// the other tags are for internal use

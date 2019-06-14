@@ -126,7 +126,7 @@ void InsetLabelBox::metrics(MetricsInfo & mi, Dimension & dim) const
 	if (parent_.editing(mi.base.bv) && label_.length() > 0) {
 		// grey
 		FontInfo font = sane_font;
-		font.setSize(FONT_SIZE_TINY);
+		font.setSize(TINY_SIZE);
 		font.setColor(Color_mathmacrolabel);
 
 		// make space for label and box
@@ -156,7 +156,7 @@ void InsetLabelBox::draw(PainterInfo & pi, int x, int y) const
 	if (parent_.editing(pi.base.bv) && label_.length() > 0) {
 		// grey
 		FontInfo font = sane_font;
-		font.setSize(FONT_SIZE_TINY);
+		font.setSize(TINY_SIZE);
 		font.setColor(Color_mathmacrolabel);
 
 		// make space for label and box
@@ -545,7 +545,7 @@ void InsetMathMacroTemplate::createLook(int args) const
 void InsetMathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy1 = mi.base.changeFontSet("mathnormal");
-	Changer dummy2 = mi.base.font.changeStyle(LM_ST_TEXT);
+	Changer dummy2 = mi.base.font.changeStyle(TEXT_STYLE);
 
 	// valid macro?
 	MacroData const * macro = 0;
@@ -587,7 +587,7 @@ void InsetMathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 	// FIXME: Calling Changer on the same object repeatedly is inefficient.
 	Changer dummy0 = pi.base.font.changeColor(Color_math);
 	Changer dummy1 = pi.base.changeFontSet("mathnormal");
-	Changer dummy2 = pi.base.font.changeStyle(LM_ST_TEXT);
+	Changer dummy2 = pi.base.font.changeStyle(TEXT_STYLE);
 
 	Dimension const dim = dimension(*pi.base.bv);
 
