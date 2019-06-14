@@ -549,8 +549,8 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 
 	Changer dummy1 = mi.base.changeFontSet(standardFont());
-	Changer dummy2 = mi.base.font.changeStyle(display() ? FONT_STYLE_DISPLAY
-	                                                    : FONT_STYLE_TEXT);
+	Changer dummy2 = mi.base.font.changeStyle(display() ? LM_ST_DISPLAY
+	                                                    : LM_ST_TEXT);
 
 	// let the cells adjust themselves
 	InsetMathGrid::metrics(mi, dim);
@@ -653,8 +653,8 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	Changer dummy0 = really_change_color ? pi.base.font.changeColor(color)
 		: Changer();
 	Changer dummy1 = pi.base.changeFontSet(standardFont());
-	Changer dummy2 = pi.base.font.changeStyle(display() ? FONT_STYLE_DISPLAY
-	                                                    : FONT_STYLE_TEXT);
+	Changer dummy2 = pi.base.font.changeStyle(display() ? LM_ST_DISPLAY
+	                                                    : LM_ST_TEXT);
 
 	int xmath = x;
 	BufferParams::MathNumber const math_number = buffer().params().getMathNumber();

@@ -243,12 +243,12 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 		int const dy = axis_height(mi.base);
 		Changer dummy =
 			// \tfrac is always in text size
-			(kind_ == TFRAC) ? mi.base.font.changeStyle(FONT_STYLE_SCRIPT) :
+			(kind_ == TFRAC) ? mi.base.font.changeStyle(LM_ST_SCRIPT) :
 			// \cfrac and \dfrac are always in display size
 			(kind_ == CFRAC
 			 || kind_ == CFRACLEFT
 			 || kind_ == CFRACRIGHT
-			 || kind_ == DFRAC) ? mi.base.font.changeStyle(FONT_STYLE_DISPLAY) :
+			 || kind_ == DFRAC) ? mi.base.font.changeStyle(LM_ST_DISPLAY) :
 			// all others
 			                      mi.base.changeFrac();
 		Changer dummy2 = mi.base.changeEnsureMath();
@@ -325,12 +325,12 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 		int const dy = axis_height(pi.base);
 		Changer dummy =
 			// \tfrac is always in text size
-			(kind_ == TFRAC) ? pi.base.font.changeStyle(FONT_STYLE_SCRIPT) :
+			(kind_ == TFRAC) ? pi.base.font.changeStyle(LM_ST_SCRIPT) :
 			// \cfrac and \dfrac are always in display size
 			(kind_ == CFRAC
 			 || kind_ == CFRACLEFT
 			 || kind_ == CFRACRIGHT
-			 || kind_ == DFRAC) ? pi.base.font.changeStyle(FONT_STYLE_DISPLAY) :
+			 || kind_ == DFRAC) ? pi.base.font.changeStyle(LM_ST_DISPLAY) :
 			// all others
 			                      pi.base.changeFrac();
 		Dimension const dim1 = cell(1).dimension(*pi.base.bv);
@@ -649,8 +649,8 @@ void InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 	Dimension dim0, dim1;
 	int const dy = axis_height(mi.base);
 	Changer dummy =
-		(kind_ == DBINOM) ? mi.base.font.changeStyle(FONT_STYLE_DISPLAY) :
-		(kind_ == TBINOM) ? mi.base.font.changeStyle(FONT_STYLE_SCRIPT) :
+		(kind_ == DBINOM) ? mi.base.font.changeStyle(LM_ST_DISPLAY) :
+		(kind_ == TBINOM) ? mi.base.font.changeStyle(LM_ST_SCRIPT) :
 		                    mi.base.changeFrac();
 	cell(0).metrics(mi, dim0);
 	cell(1).metrics(mi, dim1);
@@ -676,8 +676,8 @@ void InsetMathBinom::draw(PainterInfo & pi, int x, int y) const
 	int m = x + dim.width() / 2;
 	{
 		Changer dummy =
-			(kind_ == DBINOM) ? pi.base.font.changeStyle(FONT_STYLE_DISPLAY) :
-			(kind_ == TBINOM) ? pi.base.font.changeStyle(FONT_STYLE_SCRIPT) :
+			(kind_ == DBINOM) ? pi.base.font.changeStyle(LM_ST_DISPLAY) :
+			(kind_ == TBINOM) ? pi.base.font.changeStyle(LM_ST_SCRIPT) :
 			                    pi.base.changeFrac();
 		// take dy both for the vertical alignment and for the spacing between
 		// cells
