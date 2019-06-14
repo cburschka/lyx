@@ -147,14 +147,14 @@ int class_spacing(MathClass const mc1, MathClass const mc2,
 	//	   << "=" << spc_code << " @" << mb.style << endl;
 	if (spc_code < 0) {
 		switch (mb.font.style()) {
-		case LM_ST_DISPLAY:
-		case LM_ST_TEXT:
-		case LM_ST_IGNORE:
-		case LM_ST_INHERIT:
+		case FONT_STYLE_DISPLAY:
+		case FONT_STYLE_TEXT:
+		case FONT_STYLE_IGNORE:
+		case FONT_STYLE_INHERIT:
 			spc_code = abs(spc_code);
 			break;
-		case LM_ST_SCRIPT:
-		case LM_ST_SCRIPTSCRIPT:
+		case FONT_STYLE_SCRIPT:
+		case FONT_STYLE_SCRIPTSCRIPT:
 			spc_code = 0;
 		}
 	}

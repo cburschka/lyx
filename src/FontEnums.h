@@ -146,19 +146,19 @@ enum FontState {
 /// Math styles
 enum MathStyle {
 	///
-	LM_ST_SCRIPTSCRIPT = 0,
+	FONT_STYLE_SCRIPTSCRIPT = 0,
 	///
-	LM_ST_SCRIPT,
+	FONT_STYLE_SCRIPT,
 	///
-	LM_ST_TEXT,
+	FONT_STYLE_TEXT,
 	///
-	LM_ST_DISPLAY,
+	FONT_STYLE_DISPLAY,
 	///
-	LM_ST_INHERIT,
+	FONT_STYLE_INHERIT,
 	///
-	LM_ST_IGNORE,
+	FONT_STYLE_IGNORE,
 	/// the text and display fonts are the same
-	NUM_STYLE = LM_ST_DISPLAY
+	NUM_STYLE = FONT_STYLE_DISPLAY
 };
 
 
