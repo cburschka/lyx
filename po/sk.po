@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-06-09 14:56+0200\n"
-"PO-Revision-Date: 2019-06-09 13:11+0000\n"
+"POT-Creation-Date: 2019-06-14 17:36+0200\n"
+"PO-Revision-Date: 2019-06-15 10:36+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2420,14 +2420,6 @@ msgstr "Jazykový balí&k:"
 msgid "&Encoding:"
 msgstr "Kó&dovanie:"
 
-#: src/frontends/qt4/ui/LanguageUi.ui:154
-msgid "Unicode"
-msgstr "Unicode"
-
-#: src/frontends/qt4/ui/LanguageUi.ui:157
-msgid "Set input encoding to Unicode (utf8)."
-msgstr "Nastaviť vstupné kódovanie na unicode (utf8)."
-
 #: src/frontends/qt4/ui/LanguageUi.ui:94
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:52
 msgid "Select which language package LyX should use"
@@ -2456,6 +2448,10 @@ msgstr "Použiť d&ynamické úvodzovky"
 #: src/frontends/qt4/ui/LanguageUi.ui:92
 msgid "Select Unicode (utf8) variant."
 msgstr "Vyberte variant unicode (utf8)."
+
+#: src/frontends/qt4/ui/LanguageUi.ui:129
+msgid "Do not load inputenc"
+msgstr "Nezahrnúť inputenc"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:113
 msgid "Select encoding"
@@ -3305,10 +3301,6 @@ msgstr "Dvojitý"
 msgid "Custom"
 msgstr "Vlastný"
 
-#: src/frontends/qt4/ui/LanguageUi.ui:183
-msgid "Use custom document-wide encoding."
-msgstr "Použiť vlastné kódovanie tohto dokumentu."
-
 #: src/frontends/qt4/ui/ParagraphUi.ui:110
 msgid "&Justified"
 msgstr "&Do bloku"
@@ -4024,10 +4016,6 @@ msgstr "Jazykový &balík:"
 #: src/frontends/qt4/GuiPrefs.cpp:925
 msgid "Automatic"
 msgstr "Automaticky"
-
-#: src/frontends/qt4/ui/LanguageUi.ui:170
-msgid "Use language specific legacy encodings."
-msgstr "Použiť kódovanie špecificky odkázané jazykom."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:61
 #: src/frontends/qt4/GuiDocument.cpp:957
@@ -15308,9 +15296,9 @@ msgid ""
 "characters. Uses the okumakro, luatexja-ruby, or ruby package (depending on "
 "the TeX engine) or a fallback definition."
 msgstr ""
-"Definuje vložku na písmenovú sadu pre reading aids (ruby, furigana) do "
-"čínskych písmen. Používa okumakro, luatexja-ruby, alebo balík ruby (závislé "
-"od používaného TeX-u) alebo záložnej definície."
+"Definuje vložku na vklad čínskych/japonských písmen. Vkladá pomôcky na "
+"čítanie (ruby, furigana). Použije okumakro, luatexja-ruby, alebo balík ruby "
+"(závislé od používaného TeX-u) alebo záložnej definície."
 
 #: lib/layouts/ruby.module:26 lib/layouts/ruby.module:35
 msgid "Ruby"
@@ -15322,11 +15310,11 @@ msgstr "ruby text"
 
 #: lib/layouts/ruby.module:50
 msgid "Ruby Text|R"
-msgstr "Ruby Text|R"
+msgstr "Ruby text|R"
 
 #: lib/layouts/ruby.module:51
 msgid "Reading aid (ruby, furigana) for Chinese characters."
-msgstr "Reading aid (ruby, furigana) pre čínske písmená."
+msgstr "Pomôcka na čítanie (ruby, furigana) pre čínske/japonské písmená."
 
 #: lib/layouts/sciposter.layout:3
 msgid "SciPoster"
@@ -18380,13 +18368,9 @@ msgstr "Minion Pro (New TX)"
 msgid "Times Roman (New TX)"
 msgstr "Times Roman (New TX)"
 
-#: lib/encodings:50
-msgid "utf8 (default)"
-msgstr "utf8 (štandard)"
-
 #: lib/encodings:55
-msgid "utf8 (extended) [ucs] (utf8x)"
-msgstr "Unicode (ucs-rozšírenie) [ucs] (utf8x)"
+msgid "Extended [ucs] (utf8x)"
+msgstr "Rozšírené [ucs] (utf8x)"
 
 #: lib/encodings:59
 msgid "Armenian (ArmSCII8)"
@@ -18541,8 +18525,8 @@ msgid "Korean (EUC-KR)"
 msgstr "Kórejské (EUC-KR)"
 
 #: lib/encodings:215
-msgid "utf8 [CJK] (Chinese/Japanese/Korean)"
-msgstr "utf8 [CJK] (Čínske/Japonské/Korejské)"
+msgid "Extended [CJK] (Chinese/Japanese/Korean)"
+msgstr "Rozšírené [CJK] (Čínske/Japonské/Kórejské)"
 
 #: lib/encodings:219
 msgid "Chinese (traditional) (EUC-TW)"
@@ -18565,12 +18549,12 @@ msgid "Japanese (pLaTeX) (SJIS)"
 msgstr "Japonské (pLaTeX) (SJIS)"
 
 #: lib/encodings:236
-msgid "utf8 [pLaTeX] (Japanese)"
-msgstr "Sweave [pLaTeX] (japonské)"
+msgid "Extended [pLaTeX] (Japanese)"
+msgstr "Rozšírené [pLaTeX] (Japonské)"
 
 #: lib/encodings:242
-msgid "utf8 (pass-through)"
-msgstr "utf8 (prechádzajúce)"
+msgid "Pass-Through"
+msgstr "Prechádzajúce"
 
 #: lib/encodings:170
 msgid "Thai (TIS 620-0)"
@@ -25551,11 +25535,11 @@ msgstr "NoWeb|N"
 
 #: lib/configure.py:664
 msgid "Sweave (Japanese)"
-msgstr "Sweave (japonský)"
+msgstr "Sweave (Japonský)"
 
 #: lib/configure.py:664
 msgid "Sweave (Japanese)|S"
-msgstr "Sweave (japonský)|e"
+msgstr "Sweave (Japonský)|e"
 
 #: lib/configure.py:665
 msgid "R/S code"
@@ -30565,13 +30549,13 @@ msgstr "Dokument potomka"
 msgid "Include to Output"
 msgstr "Zahrnúť do výstupu"
 
-#: src/frontends/qt4/GuiDocument.cpp:978
-msgid "legacy language default"
-msgstr "Štandardný odkaz pre daný jazyk"
+#: src/frontends/qt4/GuiDocument.cpp:969
+msgid "Unicode (utf8)"
+msgstr "Unicode (utf8)"
 
-#: src/frontends/qt4/GuiDocument.cpp:979
-msgid "legacy language default (no inputenc)"
-msgstr "Štandardný odkaz pre daný jazyk (bez inputenc)"
+#: src/frontends/qt4/GuiDocument.cpp:970
+msgid "Traditional (auto-selected)"
+msgstr "Tradicionálne (automaticky vybrané)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1023
 msgid "10"
@@ -35582,6 +35566,24 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "utf8 (default)"
+#~ msgstr "utf8 (štandard)"
+
+#~ msgid "Set input encoding to Unicode (utf8)."
+#~ msgstr "Nastaviť vstupné kódovanie na unicode (utf8)."
+
+#~ msgid "Use language specific legacy encodings."
+#~ msgstr "Použiť kódovanie špecificky odkázané jazykom."
+
+#~ msgid "Use custom document-wide encoding."
+#~ msgstr "Použiť vlastné kódovanie tohto dokumentu."
+
+#~ msgid "legacy language default"
+#~ msgstr "Štandardný odkaz pre daný jazyk"
+
+#~ msgid "legacy language default (no inputenc)"
+#~ msgstr "Štandardný odkaz pre daný jazyk (bez inputenc)"
+
 #~ msgid ""
 #~ "If you selected a custom output encoding to the left, yo can specifiy it "
 #~ "here"
@@ -35598,12 +35600,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Unicode (ucs-extended) (utf8x)"
 #~ msgstr "Unicode (ucs-rozšírenie) (utf8x)"
-
-#~ msgid "Japanese (pLaTeX) (UTF8)"
-#~ msgstr "Japonsky (pLaTeX) (UTF8)"
-
-#~ msgid "Traditional (auto-selected)"
-#~ msgstr "Tradicionálne (automaticky vybrané)"
 
 #~ msgid "Autocorrect Off ('!' to enter)"
 #~ msgstr "Automatická korektúra vypnutá ('!' na zapnutie)"
@@ -37232,15 +37228,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Use undertilde pac&kage"
 #~ msgstr "Použiť balí&k undertilde"
 
-#~ msgid "Japanese (non-CJK) (EUC-JP)"
-#~ msgstr "Japonsky (non-CJK) (EUC-JP)"
-
-#~ msgid "Japanese (non-CJK) (JIS)"
-#~ msgstr "Japonsky (non-CJK) (JIS)"
-
-#~ msgid "Japanese (non-CJK) (SJIS)"
-#~ msgstr "Japonsky (non-CJK) (SJIS)"
-
 #~ msgid "Close Section"
 #~ msgstr "Zavri Sekciu"
 
@@ -37269,30 +37256,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Settings...|g"
 #~ msgstr "Nastavenia...|a"
-
-#~ msgid "Japanese (non-CJK) (utf8)"
-#~ msgstr "Japonsky (non-CJK) (utf8)"
-
-#~ msgid "Japanese Article (Vertical Writing)"
-#~ msgstr "Japonský Článok (Vertikálne Písanie)"
-
-#~ msgid "Japanese Article (jarticle)"
-#~ msgstr "Japonský Článok (jarticle)"
-
-#~ msgid "Japanese Article (jsarticle)"
-#~ msgstr "Japonský Článok (jsarticle)"
-
-#~ msgid "Japanese Book (Vertical Writing)"
-#~ msgstr "Japonská Kniha (Vertikálne Písanie)"
-
-#~ msgid "Japanese Book (jbook)"
-#~ msgstr "Japonská Kniha (jbook)"
-
-#~ msgid "Japanese Book (jsbook)"
-#~ msgstr "Japonská Kniha (jsbook)"
-
-#~ msgid "Japanese Report (jreport)"
-#~ msgstr "Japonský referát (jreport)"
 
 #~ msgid "AMS arrows"
 #~ msgstr "AMS šípky"
@@ -40561,3 +40524,15 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Definuje štýli na zvýraznenie, odstúpenie, preškrtnutie, podčiarknutie a "
 #~ "zmenu na veľké písmená spôsobom balíka soul."
+
+#~ msgid "utf8 (extended) [ucs] (utf8x)"
+#~ msgstr "Unicode (ucs-rozšírenie) [ucs] (utf8x)"
+
+#~ msgid "utf8 [CJK] (Chinese/Japanese/Korean)"
+#~ msgstr "utf8 [CJK] (Čínske/Japonské/Kórejské)"
+
+#~ msgid "utf8 [pLaTeX] (Japanese)"
+#~ msgstr "Sweave [pLaTeX] (japonské)"
+
+#~ msgid "utf8 (pass-through)"
+#~ msgstr "utf8 (prechádzajúce)"
