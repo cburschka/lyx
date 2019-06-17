@@ -20,7 +20,7 @@
 #include <QObject>
 #include <QStringList>
 
-#include <boost/cstdint.hpp>
+#include <cstdint>
 
 namespace lyx {
 namespace frontend {
@@ -94,7 +94,7 @@ private:
 	/// that can be stored in the clipboard
 	CacheMimeData cache_;
 	/// checksum for internal clipboard data (used on Mac)
-	boost::uint32_t checksum;
+	std::uint32_t checksum;
 };
 
 QString const lyxMimeType();

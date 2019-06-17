@@ -19,9 +19,8 @@
 
 #include <iconv.h>
 
-#include <boost/cstdint.hpp>
-
 #include <cerrno>
+#include <cstdint>
 #include <map>
 #include <ostream>
 //Needed in MSVC
@@ -136,7 +135,7 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 			for (size_t i = 0; i < buflen; ++i) {
 				// char may be signed, avoid output of
 				// something like 0xffffffc2
-				boost::uint32_t const b =
+				uint32_t const b =
 					*reinterpret_cast<unsigned char const *>(buf + i);
 				lyxerr << " 0x" << (unsigned int)b;
 			}

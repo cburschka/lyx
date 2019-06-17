@@ -83,9 +83,8 @@
 
 #include "support/lassert.h"
 
-#include <boost/cstdint.hpp>
-
 #include <cerrno>
+#include <cstdint>
 #include <fstream>
 #include <utility>
 
@@ -94,7 +93,6 @@
 #endif
 
 using namespace std;
-using boost::uint32_t;
 
 namespace lyx {
 

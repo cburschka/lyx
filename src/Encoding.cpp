@@ -23,10 +23,9 @@
 #include "support/textutils.h"
 #include "support/unicode.h"
 
-#include <boost/cstdint.hpp>
-
-#include <iterator>
 #include <algorithm>
+#include <cstdint>
+#include <iterator>
 #include <sstream>
 
 using namespace std;
@@ -703,7 +702,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 		istringstream is(symbolslex.getString());
 		// reading symbol directly does not work if
 		// char_type == wchar_t.
-		boost::uint32_t tmp;
+		uint32_t tmp;
 		if(!(is >> hex >> tmp))
 			break;
 		symbol = tmp;

@@ -23,13 +23,13 @@ namespace lyx { typedef wchar_t char_type; }
 
 #else
 
-#if defined(_MSC_VER) && (_MSC_VER >= 1600)
 #include <cstdint>
+
+#if defined(_MSC_VER) && (_MSC_VER >= 1600)
 namespace lyx { typedef uint32_t char_type; }
 #include "support/numpunct_lyx_char_type.h" // implementation for our char_type needed
 #else
-#include <boost/cstdint.hpp>
-namespace lyx { typedef boost::uint32_t char_type; }
+namespace lyx { typedef std::uint32_t char_type; }
 #endif
 
 #endif
