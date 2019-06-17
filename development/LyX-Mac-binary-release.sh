@@ -327,7 +327,7 @@ DocumentationDir=$(dirname "${LyxSourceDir}")/Documents
 DmgBackground="${LyxSourceDir}"/development/MacOSX/dmg-background.png
 
 if [ -z "${LyXVersion}" ]; then
-	LyXVersion=$(grep AC_INIT "${LyxSourceDir}"/configure.ac | cut -d, -f2 | tr -d " ()")
+	LyXVersion=$(grep AC_INIT "${LyxSourceDir}"/configure.ac | cut -d, -f2 | tr -d " []()")
 fi
 LyXVersionSuffix=${LyXVersionSuffix:-$(echo "${LyXVersion}" | cut -d. -f1-2)}
 case "${LyXVersion}" in
