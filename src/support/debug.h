@@ -217,9 +217,8 @@ extern LyXErr lyxerr;
 
 } // namespace lyx
 
-#if USE_BOOST_CURRENT_FUNCTION
-#	include <boost/current_function.hpp>
-#	define CURRENT_POSITION BOOST_CURRENT_FUNCTION ": "
+#if USE__func__
+#	define CURRENT_POSITION __func__ ": "
 #else
 # define CURRENT_POSITION lyx::LyXErr::stripName(__FILE__) << " (" << __LINE__ << "): "
 #endif
