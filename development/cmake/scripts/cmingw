@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# This file configures for cross-compilation for Windows 32 bit on 
+# Fedora. Confirmed working on F29, at this point.
+
+# mkdir winbuild
+# cd winbuild
+# bash ../development/cmake/scripts/cmingw
+# make
+# make package
+
+# You should end up with something akin to 
+# LyX23-2.3.3-win32.zip
+# in the winbuild directory.
+
 CMAKE="mingw32-cmake";
 MINGW="i686-w64-mingw32";
 LYXSRC="";
@@ -21,7 +34,6 @@ while getopts ":dDh" opt; do
               exit 1;;
   esac
 done
-
 
 $CMAKE $LYXSRC \
     -DLYX_PROGRAM_SUFFIX=0 \
