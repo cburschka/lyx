@@ -942,9 +942,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(encodingSwitched(int)));
 	connect(langModule->unicodeEncodingCO, SIGNAL(activated(int)),
  		this, SLOT(change_adaptor()));
+	connect(langModule->autoEncodingCO, SIGNAL(activated(int)),
+ 		this, SLOT(change_adaptor()));
 	connect(langModule->customEncodingCO, SIGNAL(activated(int)),
-		this, SLOT(change_adaptor()));
-	connect(langModule->noInputencCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(langModule->quoteStyleCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
@@ -967,15 +967,15 @@ GuiDocument::GuiDocument(GuiView & lv)
 	langModule->languageCO->setModelColumn(0);
 
 	langModule->encodingCO->addItem(qt_("Unicode (utf8)"));
-	langModule->encodingCO->addItem(qt_("Traditional (auto-selected)"));
+	langModule->encodingCO->addItem(qt_("Legacy (auto-selected)"));
 	langModule->encodingCO->addItem(qt_("Custom"));
 	langModule->encodingCO->setItemData(EncodingSets::unicode,
-		"Use Unicode (utf8) for the latex source.", Qt::ToolTipRole);
+		"Select Unicode (utf8) encoding.", Qt::ToolTipRole);
 	langModule->encodingCO->setItemData(EncodingSets::legacy,
-		"Use legacy default encodings depending on text language.", Qt::ToolTipRole);
+		"Use language-dependent legacy encodings.", Qt::ToolTipRole);
 	langModule->encodingCO->setItemData(EncodingSets::custom,
 		"Select a custom, document-wide encoding.", Qt::ToolTipRole);
-	
+
 	QMap<QString,QString> encodingmap_utf8;
 	for (auto const & encvar : encodings) {
 		if (!encvar.unsafe() && !encvar.guiName().empty()
@@ -987,6 +987,17 @@ GuiDocument::GuiDocument(GuiView & lv)
 		langModule->unicodeEncodingCO->addItem(it8.key(), it8.value());
 		++it8;
 	}
+
+	langModule->autoEncodingCO->addItem(qt_("Language Default"), toqstr("auto-legacy"));
+	langModule->autoEncodingCO->addItem(qt_("Language Default (no inputenc)"), toqstr("auto-legacy-plain"));
+	langModule->autoEncodingCO->setItemData(0,
+		"Use the legacy default encoding of the text language. "
+		"Switch encoding if a text part has a different default.",
+		Qt::ToolTipRole);
+	langModule->autoEncodingCO->setItemData(1,
+		"Do not load the 'inputenc' package "
+		"nor write input encoding switch commands to the source.",
+		Qt::ToolTipRole);
 
 	QMap<QString,QString> encodingmap;
 	for (auto const & encvar : encodings) {
@@ -1000,10 +1011,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 		++it;
 	}
 	// equalise the width of encoding selectors
-	langModule->unicodeEncodingCO->setMinimumSize(
-		langModule->customEncodingCO->minimumSizeHint());
-	langModule->noInputencCB->setMinimumSize(
-		langModule->customEncodingCO->minimumSizeHint());
+	langModule->autoEncodingCO->setMinimumSize(
+		langModule->unicodeEncodingCO->minimumSizeHint());
+	langModule->customEncodingCO->setMinimumSize(
+		langModule->unicodeEncodingCO->minimumSizeHint());
 
 	langModule->languagePackageCO->addItem(
 		qt_("Default"), toqstr("default"));
@@ -2316,9 +2327,9 @@ void GuiDocument::encodingSwitched(int i)
 	bool const tex_fonts = !fontModule->osFontsCB->isChecked();
 	langModule->unicodeEncodingCO->setEnabled(tex_fonts);
 	langModule->customEncodingCO->setEnabled(tex_fonts);
-	langModule->noInputencCB->setEnabled(tex_fonts);
+	langModule->autoEncodingCO->setEnabled(tex_fonts);
 	langModule->unicodeEncodingCO->setVisible(i == EncodingSets::unicode);
-	langModule->noInputencCB->setVisible(i == EncodingSets::legacy);
+	langModule->autoEncodingCO->setVisible(i == EncodingSets::legacy);
 	langModule->customEncodingCO->setVisible(i == EncodingSets::custom);
 }
 
@@ -2330,21 +2341,34 @@ void GuiDocument::inputencodingToDialog()
 		langModule->encodingCO->setCurrentIndex(EncodingSets::unicode);
 		langModule->unicodeEncodingCO->setCurrentIndex(
 			langModule->unicodeEncodingCO->findData("utf8-plain"));
+		langModule->autoEncodingCO->setCurrentIndex(0);
+		langModule->customEncodingCO->setCurrentIndex(0);
 	} else if (inputenc.startsWith("utf8")) {
 		langModule->encodingCO->setCurrentIndex(EncodingSets::unicode);
 		p = langModule->unicodeEncodingCO->findData(inputenc);
-		if (p != -1)
-			langModule->unicodeEncodingCO->setCurrentIndex(p);
+		if (p == -1)
+			p = 0;
+		langModule->unicodeEncodingCO->setCurrentIndex(p);
+		langModule->autoEncodingCO->setCurrentIndex(0);
+		langModule->customEncodingCO->setCurrentIndex(0);
 	} else if (inputenc.startsWith("auto")) {
 		langModule->encodingCO->setCurrentIndex(EncodingSets::legacy);
-		langModule->noInputencCB->setChecked(inputenc == "auto-legacy-plain");
+		p = langModule->autoEncodingCO->findData(inputenc);
+		if (p == -1)
+			p = 0;
+		langModule->unicodeEncodingCO->setCurrentIndex(0);
+		langModule->autoEncodingCO->setCurrentIndex(p);
+		langModule->customEncodingCO->setCurrentIndex(0);
 	} else {
 		langModule->encodingCO->setCurrentIndex(EncodingSets::custom);
 		p = langModule->customEncodingCO->findData(inputenc);
-		if (p != -1)
-			langModule->customEncodingCO->setCurrentIndex(p);
-		else
+		if (p == -1) {
+			p = 0;
 			langModule->encodingCO->setCurrentIndex(EncodingSets::unicode);
+		}
+		langModule->unicodeEncodingCO->setCurrentIndex(0);
+		langModule->autoEncodingCO->setCurrentIndex(0);
+		langModule->customEncodingCO->setCurrentIndex(p);
 	}
 	encodingSwitched(langModule->encodingCO->currentIndex());
 }
@@ -3300,8 +3324,8 @@ void GuiDocument::applyView()
 		}
 		case EncodingSets::legacy: {
 			bp_.inputenc = "auto-legacy";
-			if (langModule->noInputencCB->isChecked())
-				bp_.inputenc = "auto-legacy-plain";
+			bp_.inputenc = fromqstr(langModule->autoEncodingCO->itemData(
+				langModule->autoEncodingCO->currentIndex()).toString());
 			break;
 		}
 		case EncodingSets::custom: {

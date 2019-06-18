@@ -113,24 +113,17 @@
         <bool>true</bool>
        </property>
        <property name="toolTip">
-        <string>Select Unicode (utf8) variant.</string>
+        <string>Select Unicode encoding variant.</string>
        </property>
       </widget>
      </item>
      <item row="0" column="2">
-      <widget class="QCheckBox" name="noInputencCB">
-       <property name="Checked">
+      <widget class="QComboBox" name="autoEncodingCO">
+       <property name="enabled">
         <bool>false</bool>
-       </property>
-       <property name="visible">
-        <bool>false</bool>
-       </property>
-       <property name="text">
-        <string>Do not load inputenc</string>
        </property>
        <property name="toolTip">
-        <string>Do not to load the 'inputenc' package
-	  nor write input encoding switch commands to the source.</string>
+        <string>Specify whether to load the 'inputenc' package.</string>
        </property>
       </widget>
      </item>
@@ -140,7 +133,7 @@
         <bool>false</bool>
        </property>
        <property name="toolTip">
-        <string>Select encoding</string>
+        <string>Select custom encoding.</string>
        </property>
       </widget>
      </item>
