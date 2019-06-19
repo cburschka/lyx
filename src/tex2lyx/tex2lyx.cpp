@@ -361,29 +361,29 @@ bool checkModule(string const & name, bool command)
 		Layout const * layout = findLayoutWithoutModule(*c, name, command);
 		InsetLayout const * insetlayout = layout ? 0 :
 			findInsetLayoutWithoutModule(*c, name, command);
-		docstring preamble;
+		docstring dpre;
 		if (layout)
-			preamble = layout->preamble();
+			dpre = layout->preamble();
 		else if (insetlayout)
-			preamble = insetlayout->preamble();
-		if (preamble.empty())
+			dpre = insetlayout->preamble();
+		if (dpre.empty())
 			continue;
 		bool add = false;
 		if (command) {
 			FullCommand const & cmd =
 				possible_textclass_commands['\\' + name];
-			if (preamble.find(cmd.def) != docstring::npos)
+			if (dpre.find(cmd.def) != docstring::npos)
 				add = true;
 		} else if (theorem) {
 			FullCommand const & thm =
 				possible_textclass_theorems[name];
-			if (preamble.find(thm.def) != docstring::npos)
+			if (dpre.find(thm.def) != docstring::npos)
 				add = true;
 		} else {
 			FullEnvironment const & env =
 				possible_textclass_environments[name];
-			if (preamble.find(env.beg) != docstring::npos &&
-			    preamble.find(env.end) != docstring::npos)
+			if (dpre.find(env.beg) != docstring::npos &&
+			    dpre.find(env.end) != docstring::npos)
 				add = true;
 		}
 		if (add) {
