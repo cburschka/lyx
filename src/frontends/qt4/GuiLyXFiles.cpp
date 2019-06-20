@@ -43,7 +43,7 @@ namespace {
 QString const guiString(QString in)
 {
 	// recode specially encoded chars in file names (URL encoding and underbar)
-	return QString(QByteArray::fromPercentEncoding(in.toUtf8())).replace('_', ' ');
+	return QString::fromUtf8(QByteArray::fromPercentEncoding(in.toUtf8())).replace('_', ' ');
 }
 
 } // namespace anon

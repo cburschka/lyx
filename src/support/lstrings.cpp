@@ -1453,16 +1453,15 @@ std::string formatFPNumber(double x)
 
 docstring to_percent_encoding(docstring const & in, docstring const & ex)
 {
-	QByteArray input = toqstr(in).toUtf8();
-	QByteArray excludes = toqstr(ex).toUtf8();
-	return qstring_to_ucs4(QString(input.toPercentEncoding(excludes)));
+	QByteArray input = to_utf8(in).c_str();
+	QByteArray excludes = to_utf8(ex).c_str();
+	return from_utf8(string(input.toPercentEncoding(excludes).data()));
 }
 
 
 string from_percent_encoding(string const & in)
 {
-	QByteArray input = toqstr(in).toUtf8();
-	return fromqstr(QString(QByteArray::fromPercentEncoding(input)));
+	return QByteArray::fromPercentEncoding(in.c_str()).data();
 }
 
 

@@ -1872,11 +1872,9 @@ public:
 		: tab_(tab)
 	{
 		// Recode URL encoded chars via fromPercentEncoding()
-		filename_ = (filename.extension() == "lyx") ?
-			QString(QByteArray::fromPercentEncoding(
-					toqstr(filename.onlyFileNameWithoutExt()).toUtf8()))
-			: QString(QByteArray::fromPercentEncoding(
-					  toqstr(filename.onlyFileName()).toUtf8()));
+		string const fn = (filename.extension() == "lyx")
+			? filename.onlyFileNameWithoutExt() : filename.onlyFileName();
+		filename_ = QString::fromUtf8(QByteArray::fromPercentEncoding(fn.c_str()));
 		postfix_ = toqstr(filename.absoluteFilePath()).
 			split("/", QString::SkipEmptyParts);
 		postfix_.pop_back();
