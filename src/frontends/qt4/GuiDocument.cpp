@@ -980,7 +980,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	const QStringList utf8_base_encodings = {"utf8", "utf8-plain", "utf8x"};
     for (auto const & i : utf8_base_encodings) {
         langModule->unicodeEncodingCO->addItem(
-			toqstr(encodings.fromLyXName(i.toStdString())->guiName()), i);
+			toqstr(encodings.fromLyXName(fromqstr(i))->guiName()), i);
 	}
 	langModule->unicodeEncodingCO->setItemData(0,
 		"Standard Unicode support by the ``inputenc'' package.",
