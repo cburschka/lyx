@@ -1855,6 +1855,14 @@ contributors = [
                  "9 June 2005",
                  u"Current documentation maintainer, Windows installer, bug fixes"),
 
+     contributor(u"Niko Strijbol",
+                 "strijbol ! niko () gmail ! com",
+                 "GPL",
+                 "License agreement (cf. Dutch translations)",
+                 "m=156107304318577",
+                 "20 June 2019",
+                 u"Dutch translation of the user interface"),
+
      contributor(u"David Suárez de Lis",
                  "excalibor () iname ! com",
                  "",
