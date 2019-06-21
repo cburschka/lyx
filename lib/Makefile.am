@@ -260,7 +260,8 @@ dist_japresentationexamples_DATA = \
 
 koexamplesdir = $(pkgdatadir)/examples/ko
 dist_koexamples_DATA = \
-	examples/ko/Welcome.lyx
+	examples/ko/Welcome.lyx \
+	examples/ko/cjk-ko-doc.lyx
 
 nbexamplesdir = $(pkgdatadir)/examples/nb
 dist_nbexamples_DATA = \
