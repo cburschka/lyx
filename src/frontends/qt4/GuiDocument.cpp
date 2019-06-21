@@ -967,7 +967,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	langModule->languageCO->setModelColumn(0);
 
 	langModule->encodingCO->addItem(qt_("Unicode (utf8)"));
-	langModule->encodingCO->addItem(qt_("Legacy (auto-selected)"));
+	langModule->encodingCO->addItem(qt_("Traditional (auto-selected)"));
 	langModule->encodingCO->addItem(qt_("Custom"));
 	langModule->encodingCO->setItemData(EncodingSets::unicode,
 		"Select Unicode (utf8) encoding.", Qt::ToolTipRole);
@@ -3328,8 +3328,9 @@ void GuiDocument::applyView()
 	// language & quotes
 	switch (langModule->encodingCO->currentIndex()) {
 		case EncodingSets::unicode: {
-			bp_.inputenc = fromqstr(langModule->unicodeEncodingCO->itemData(
-				langModule->unicodeEncodingCO->currentIndex()).toString());
+			if (!fontModule->osFontsCB->isChecked())
+				bp_.inputenc = fromqstr(langModule->unicodeEncodingCO->itemData(
+					langModule->unicodeEncodingCO->currentIndex()).toString());
 			break;
 		}
 		case EncodingSets::legacy: {
