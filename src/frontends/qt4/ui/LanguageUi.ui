@@ -46,7 +46,7 @@
      <item row="1" column="1">
       <widget class="QComboBox" name="quoteStyleCO">
        <property name="toolTip">
-        <string>Select the default style of Quote insets.</string>
+        <string>Select the default quotation marks style</string>
        </property>
       </widget>
      </item>
@@ -98,12 +98,12 @@
        <property name="enabled">
         <bool>true</bool>
        </property>
-       <property name="duplicatesEnabled">
-        <bool>false</bool>
-       </property>
        <property name="toolTip">
         <string>Select encoding of the generated LaTeX source
 	  (LaTeX input encoding).</string>
+       </property>
+       <property name="duplicatesEnabled">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
