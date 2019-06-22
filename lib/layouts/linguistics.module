@@ -89,6 +89,12 @@ Style Subexample
 	LabelCounter          "subexample"
 	StepMasterCounter     true
 	Requires	      covington
+	Argument 1
+		LabelString   "Subexamples options"
+		MenuString    "Subexamples options|s"
+		Tooltip       "Add subexamples options here"
+		PassThru       1
+	EndArgument
 End
 
 

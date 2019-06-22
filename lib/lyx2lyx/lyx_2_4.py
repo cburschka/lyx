@@ -36,9 +36,9 @@ from parser_tools import (count_pars_in_inset, del_token, find_end_of_inset,
 #    is_in_inset, set_bool_value
 #    find_tokens, find_token_exact, check_token
 
-from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble, revert_language, revert_flex_inset)
+from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble, lyx2latex, revert_language, revert_flex_inset)
 #  revert_font_attrs, insert_to_preamble, latex_length
-#  get_ert, lyx2latex, lyx2verbatim, length_in_bp, convert_info_insets
+#  get_ert, lyx2verbatim, length_in_bp, convert_info_insets
 #  revert_flex_inset, hex2ratio, str2bool
 
 ####################################################################
@@ -1952,6 +1952,86 @@ def revert_linggloss(document):
             i = beginPlain + 1
 
 
+def revert_subexarg(document):
+    " Revert linguistic subexamples with argument to ERT "
+
+    if not "linguistics" in document.get_module_list():
+        return
+
+    cov_req = False
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_layout Subexample", i)
+        if i == -1:
+            break
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of Subexample layout")
+            i += 1
+            continue
+        while True:
+            # check for consecutive layouts
+            k = find_token(document.body, "\\begin_layout", j)
+            if k == -1 or document.body[k] != "\\begin_layout Subexample":
+                break
+            j = find_end_of_layout(document.body, k)
+            if j == -1:
+                 document.warning("Malformed LyX document: Can't find end of Subexample layout")
+                 i += 1
+                 continue
+
+        arg = find_token(document.body, "\\begin_inset Argument 1", i, j)
+        if arg == -1:
+            i += 1
+            continue
+
+        endarg = find_end_of_inset(document.body, arg)
+        optargcontent = ""
+        argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
+        if argbeginPlain == -1:
+            document.warning("Malformed LyX document: Can't find optarg plain Layout")
+            i += 1
+            continue
+        argendPlain = find_end_of_inset(document.body, argbeginPlain)
+        optargcontent = lyx2latex(document, document.body[argbeginPlain + 1 : argendPlain - 2])
+
+        # remove Arg insets and paragraph, if it only contains this inset
+        if document.body[arg - 1] == "\\begin_layout Plain Layout" and find_end_of_layout(document.body, arg - 1) == endarg + 3:
+            del document.body[arg - 1 : endarg + 4]
+        else:
+            del document.body[arg : endarg + 1]
+
+        cmd = put_cmd_in_ert("\\begin{subexamples}[" + optargcontent + "]")
+
+        # re-find end of layout
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of Subexample layout")
+            i += 1
+            continue
+        while True:
+            # check for consecutive layouts
+            k = find_token(document.body, "\\begin_layout", j)
+            if k == -1 or document.body[k] != "\\begin_layout Subexample":
+                break
+            document.body[k : k + 1] = ["\\begin_layout Standard"] + put_cmd_in_ert("\\item ")
+            j = find_end_of_layout(document.body, k)
+            if j == -1:
+                 document.warning("Malformed LyX document: Can't find end of Subexample layout")
+                 i += 1
+                 continue
+
+        endev = put_cmd_in_ert("\\end{subexamples}")
+
+        document.body[j : j] = ["\\end_layout", "", "\\begin_layout Standard"] + endev
+        document.body[i : i + 1] = ["\\begin_layout Standard"] + cmd \
+                + ["\\end_layout", "", "\\begin_layout Standard"] + put_cmd_in_ert("\\item ")
+        if not cov_req:
+            document.append_local_layout("Requires covington")
+            cov_req = True
+        i += 1
+
+
 ##
 # Conversion hub
 #
@@ -1993,7 +2073,7 @@ convert = [
            [577, [convert_linggloss]]
           ]
 
-revert =  [[576, [revert_linggloss]],
+revert =  [[576, [revert_linggloss, revert_subexarg]],
            [575, [revert_new_languages]],
            [574, [revert_lineno]],
            [573, [revert_ruby_module, revert_utf8_japanese]],
