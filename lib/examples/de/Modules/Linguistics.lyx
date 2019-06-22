@@ -434,6 +434,44 @@ Benutzerdef.
  Nummerierung
 \family default
 .
+ Für globale Anpassungen bietet 
+\emph on
+covington
+\emph default
+ selbst Möglichkeiten.
+ Bitte konsultieren Sie das Handbuch des Pakets 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covington"
+literal "false"
+
+\end_inset
+
+ für Einzelheiten.
+\end_layout
+
+\begin_layout Standard
+Ab Version 2.3 bietet 
+\emph on
+covingtons
+\emph default
+ subexamples-Umgebung ein optionales Argument (mit dem man Text zwischen
+ der Hauptnummer und dem ersten Unterbeispiel einfügen kann).
+ Dieses können Sie über 
+\family sans
+Einfügen\SpecialChar menuseparator
+Optionen für Unterbeispiele
+\family default
+ eingeben.
+ Bitte konsultieren Sie auch hier das Handbuch des Pakets 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covington"
+literal "false"
+
+\end_inset
+
+ für Einzelheiten.
 \end_layout
 
 \begin_layout Section

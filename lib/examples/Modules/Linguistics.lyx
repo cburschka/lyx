@@ -234,8 +234,8 @@ literal "true"
 
 : This is the base package used for numbered examples and glosses.
 
-\change_inserted -712698321 1559635690
- Note that at least version 2.0 of the covington package is required to use
+\change_inserted -712698321 1561204748
+ Note that at least version 2.3 of the covington package is required to use
  all features.
 \change_unchanged
 
@@ -491,9 +491,67 @@ If you want to modify the numbering of an individual example, you can use
  
 \family sans
 Insert\SpecialChar menuseparator
-Custom Numbering 
+Custom Numbering
+\change_deleted -712698321 1561204890
+ 
+\change_unchanged
+
 \family default
 .
+
+\change_inserted -712698321 1561205104
+ For global adjustments, 
+\emph on
+covington
+\emph default
+ provides means for customization.
+ Please refer to the 
+\emph on
+covington
+\emph default
+ manual 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covington"
+literal "false"
+
+\end_inset
+
+ for details.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1561205365
+As of version 2.3, 
+\emph on
+covington
+\emph default
+'s subexamples features optional arguments (to insert text between the main
+ number and the first sub-example).
+ These can be inserted via 
+\family sans
+Insert\SpecialChar menuseparator
+Subexamples options
+\family default
+.
+ Please, again, refer to the 
+\emph on
+covington
+\emph default
+ manual 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covington"
+literal "false"
+
+\end_inset
+
+ for details.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
