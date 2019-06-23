@@ -88,21 +88,21 @@
 #   type                 -> Art
 #   view(er)             -> ansehen / Ansicht / Betrachter
 #   wrap                 -> umflossenes Gleitobjekt
-# Jürgen Spitzmüller <spitz@lyx.org>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019.
+# Jürgen Spitzmüller <spitz@lyx.org>, 2009-2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-06-22 08:33+0200\n"
-"PO-Revision-Date: 2019-06-22 08:34+0200\n"
+"POT-Creation-Date: 2019-06-23 13:05+0200\n"
+"PO-Revision-Date: 2019-06-23 13:20+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Gtranslator 3.32.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:42
@@ -9303,7 +9303,7 @@ msgstr "Kapitel-Aufgaben"
 #: lib/layouts/foils.layout:104 lib/layouts/foils.layout:134
 #: lib/layouts/ijmpc.layout:289 lib/layouts/ijmpc.layout:325
 #: lib/layouts/ijmpd.layout:292 lib/layouts/ijmpd.layout:328
-#: lib/layouts/iucr.layout:256 lib/layouts/linguistics.module:69
+#: lib/layouts/iucr.layout:256 lib/layouts/linguistics.module:76
 #: lib/layouts/powerdot.layout:280 lib/layouts/powerdot.layout:342
 #: lib/layouts/simplecv.layout:72 lib/layouts/simplecv.layout:104
 #: lib/layouts/stdlists.inc:37 lib/layouts/stdlists.inc:76
@@ -9323,7 +9323,7 @@ msgstr "Listenvorspann"
 #: lib/layouts/foils.layout:105 lib/layouts/foils.layout:135
 #: lib/layouts/ijmpc.layout:290 lib/layouts/ijmpc.layout:326
 #: lib/layouts/ijmpd.layout:293 lib/layouts/ijmpd.layout:329
-#: lib/layouts/iucr.layout:257 lib/layouts/linguistics.module:70
+#: lib/layouts/iucr.layout:257 lib/layouts/linguistics.module:77
 #: lib/layouts/powerdot.layout:281 lib/layouts/powerdot.layout:343
 #: lib/layouts/simplecv.layout:73 lib/layouts/simplecv.layout:105
 #: lib/layouts/stdlists.inc:38 lib/layouts/stdlists.inc:77
@@ -9343,7 +9343,7 @@ msgstr "Listenvorspann"
 #: lib/layouts/foils.layout:106 lib/layouts/foils.layout:136
 #: lib/layouts/ijmpc.layout:291 lib/layouts/ijmpc.layout:327
 #: lib/layouts/ijmpd.layout:294 lib/layouts/ijmpd.layout:330
-#: lib/layouts/iucr.layout:258 lib/layouts/linguistics.module:71
+#: lib/layouts/iucr.layout:258 lib/layouts/linguistics.module:78
 #: lib/layouts/powerdot.layout:282 lib/layouts/powerdot.layout:344
 #: lib/layouts/simplecv.layout:74 lib/layouts/simplecv.layout:106
 #: lib/layouts/stdlists.inc:39 lib/layouts/stdlists.inc:78
@@ -13884,7 +13884,7 @@ msgstr ""
 "Kommaseparierte Liste von Optionen (vgl. die LilyPond-Dokumentation für "
 "mögliche Optionen)."
 
-#: lib/layouts/linguistics.module:2 lib/layouts/linguistics.module:56
+#: lib/layouts/linguistics.module:2 lib/layouts/linguistics.module:63
 #: lib/examples/Articles:0
 msgid "Linguistics"
 msgstr "Linguistik"
@@ -13899,167 +13899,337 @@ msgstr ""
 "(nummerierte Beispiele, Glossen, semantische Auszeichnungen, Gleitumgebungen "
 "für OT-Tableaus)."
 
-#: lib/layouts/linguistics.module:15
+#: lib/layouts/linguistics.module:19
 msgid "(\\arabic{example})"
 msgstr "(\\arabic{example})"
 
-#: lib/layouts/linguistics.module:20
+#: lib/layouts/linguistics.module:24
 msgid "(\\arabic{examplei})"
 msgstr "(\\arabic{examplei})"
 
-#: lib/layouts/linguistics.module:25
+#: lib/layouts/linguistics.module:29
 msgid "\\theexamplei (\\alph{subexample})"
 msgstr "\\theexamplei (\\alph{subexample})"
 
-#: lib/layouts/linguistics.module:30
+#: lib/layouts/linguistics.module:34
 msgid "\\theexamplei (\\alph{subexamplei})"
 msgstr "\\theexamplei (\\alph{subexamplei})"
 
-#: lib/layouts/linguistics.module:33 lib/layouts/linguistics.module:280
-msgid "Tableaux"
-msgstr "Tableaus"
-
-#: lib/layouts/linguistics.module:36
+#: lib/layouts/linguistics.module:43
 msgid "Numbered Example (multiline)"
 msgstr "Nummeriertes Beispiel (mehrere Zeilen)"
 
-#: lib/layouts/linguistics.module:61
+#: lib/layouts/linguistics.module:68
 msgid "Numbered Examples (consecutive)"
 msgstr "Nummeriertes Beispiel (konsekutiv)"
 
-#: lib/layouts/linguistics.module:79
+#: lib/layouts/linguistics.module:86
 msgid "Custom Numbering|s"
 msgstr "Benutzerdef. Nummerierung"
 
-#: lib/layouts/linguistics.module:80
+#: lib/layouts/linguistics.module:87
 msgid "Customize the numeration"
 msgstr "Die Nummerierung anpassen"
 
-#: lib/layouts/linguistics.module:86
+#: lib/layouts/linguistics.module:93
 msgid "Subexample"
 msgstr "Unterbeispiel"
 
-#: lib/layouts/linguistics.module:96
+#: lib/layouts/linguistics.module:100
+msgid "Subexamples options"
+msgstr "Optionen für Unterbeispiele"
+
+#: lib/layouts/linguistics.module:101
+msgid "Subexamples options|s"
+msgstr "Optionen für Unterbeispiele"
+
+#: lib/layouts/linguistics.module:102
+msgid "Add subexamples options here"
+msgstr "Fügen Sie hier Optionen für Unterbeispiele ein."
+
+#: lib/layouts/linguistics.module:113
 msgid "Interlinear Gloss (2 Lines)"
 msgstr "Interlinear-Glosse (2 Zeilen)"
 
-#: lib/layouts/linguistics.module:98
+#: lib/layouts/linguistics.module:115
 msgid "Gloss"
 msgstr "Glosse"
 
-#: lib/layouts/linguistics.module:114 lib/layouts/linguistics.module:160
+#: lib/layouts/linguistics.module:131 lib/layouts/linguistics.module:177
 msgid "Gloss options"
 msgstr "Glossen-Optionen"
 
-#: lib/layouts/linguistics.module:115 lib/layouts/linguistics.module:161
+#: lib/layouts/linguistics.module:132 lib/layouts/linguistics.module:178
 msgid "Gloss Options|s"
 msgstr "Glossen-Optionen"
 
-#: lib/layouts/linguistics.module:116
+#: lib/layouts/linguistics.module:133
 msgid "Add digloss options here"
 msgstr "Fügen Sie hier digloss-Optionen ein."
 
-#: lib/layouts/linguistics.module:120 lib/layouts/linguistics.module:121
+#: lib/layouts/linguistics.module:137 lib/layouts/linguistics.module:138
 msgid "Interlinear Gloss"
 msgstr "Interlinear-Glosse"
 
-#: lib/layouts/linguistics.module:122
+#: lib/layouts/linguistics.module:139
 msgid "Add the inter-linear gloss here"
 msgstr "Geben Sie hier die Interlinear-Glossierung ein"
 
-#: lib/layouts/linguistics.module:130 lib/layouts/linguistics.module:186
+#: lib/layouts/linguistics.module:147 lib/layouts/linguistics.module:203
 msgid "Translation"
 msgstr "Übersetzung"
 
-#: lib/layouts/linguistics.module:131 lib/layouts/linguistics.module:187
+#: lib/layouts/linguistics.module:148 lib/layouts/linguistics.module:204
 msgid "Gloss Translation"
 msgstr "Glossen-Übersetzung"
 
-#: lib/layouts/linguistics.module:132
+#: lib/layouts/linguistics.module:149
 msgid "Add a free translation for the gloss"
 msgstr "Fügt der Glosse eine freie Übersetzung (Paraphrase) hinzu"
 
-#: lib/layouts/linguistics.module:142
+#: lib/layouts/linguistics.module:159
 msgid "Interlinear Gloss (3 Lines)"
 msgstr "Interlinear-Glosse (3 Zeilen)"
 
-#: lib/layouts/linguistics.module:144
+#: lib/layouts/linguistics.module:161
 msgid "Tri-Gloss"
 msgstr "Tri-Glosse"
 
-#: lib/layouts/linguistics.module:162
+#: lib/layouts/linguistics.module:179
 msgid "Add trigloss options here"
 msgstr "Geben Sie hier trigloss-Optionen ein"
 
-#: lib/layouts/linguistics.module:166
+#: lib/layouts/linguistics.module:183
 msgid "Interlinear Gloss (1)"
 msgstr "Interlinear-Glosse (1)"
 
-#: lib/layouts/linguistics.module:167
+#: lib/layouts/linguistics.module:184
 msgid "Interlinear Gloss (Line 1)|1"
 msgstr "Interlinear-Glosse (Zeile 1)|1"
 
-#: lib/layouts/linguistics.module:168 lib/layouts/linguistics.module:178
+#: lib/layouts/linguistics.module:185 lib/layouts/linguistics.module:195
 msgid "Add the first inter-linear gloss line here"
 msgstr "Geben Sie hier die erste Interlinear-Glossierung ein"
 
-#: lib/layouts/linguistics.module:176
+#: lib/layouts/linguistics.module:193
 msgid "Interlinear Gloss (2)"
 msgstr "Interlinear-Glosse (2)"
 
-#: lib/layouts/linguistics.module:177
+#: lib/layouts/linguistics.module:194
 msgid "Interlinear Gloss (Line 2)|2"
 msgstr "Interlinear-Glosse (Zeile 2)|2"
 
-#: lib/layouts/linguistics.module:188
+#: lib/layouts/linguistics.module:205
 msgid "Add a translation for the glosse"
 msgstr "Fügt der Glosse eine Übersetzung (Paraphrase) hinzu"
 
-#: lib/layouts/linguistics.module:197
-msgid "Structure Tree"
-msgstr "Strukturbaum"
-
-#: lib/layouts/linguistics.module:199
-msgid "Tree"
-msgstr "Baum"
-
-#: lib/layouts/linguistics.module:223
-msgid "Expression"
-msgstr "Ausdruck"
-
-#: lib/layouts/linguistics.module:225
-msgid "expr."
-msgstr "Ausdr."
-
-#: lib/layouts/linguistics.module:239
-msgid "Concepts"
-msgstr "Konzept"
-
-#: lib/layouts/linguistics.module:241
-msgid "concept"
-msgstr "Konzept"
-
-#: lib/layouts/linguistics.module:255
-msgid "Meaning"
-msgstr "Bedeutung"
-
-#: lib/layouts/linguistics.module:257
-msgid "meaning"
-msgstr "Bedeutung"
-
-#: lib/layouts/linguistics.module:270
+#: lib/layouts/linguistics.module:214
 msgid "GroupGlossedWords"
 msgstr "Glossierte Wortgruppen"
 
-#: lib/layouts/linguistics.module:272
+#: lib/layouts/linguistics.module:216
 msgid "Group"
 msgstr "Gruppe"
 
+#: lib/layouts/linguistics.module:228
+msgid "Structure Tree"
+msgstr "Strukturbaum"
+
+#: lib/layouts/linguistics.module:230
+msgid "Tree"
+msgstr "Baum"
+
+#: lib/layouts/linguistics.module:257 lib/layouts/linguistics.module:259
+msgid "DRS"
+msgstr "DRS"
+
+#: lib/layouts/linguistics.module:260
+msgid "Discourse Representation Structure|D"
+msgstr "Diskursrepräsentationsstruktur|D"
+
+#: lib/layouts/linguistics.module:272 lib/layouts/linguistics.module:419
+msgid "Referents"
+msgstr "Referenten"
+
+#: lib/layouts/linguistics.module:273 lib/layouts/linguistics.module:420
+msgid "DRS Referents"
+msgstr "DRS-Referenten"
+
+#: lib/layouts/linguistics.module:274 lib/layouts/linguistics.module:421
+msgid "Add the DRS referents (universe) here"
+msgstr "Fügen Sie hier die Diskursreferenten (Universum) ein."
+
+#: lib/layouts/linguistics.module:281 lib/layouts/linguistics.module:283
+msgid "DRS*"
+msgstr "DRS*"
+
 #: lib/layouts/linguistics.module:284
+msgid "Discourse Representation Structure (unspaced)|u"
+msgstr "Diskursrepräsentationsstruktur (einfach)"
+
+#: lib/layouts/linguistics.module:289
+msgid "IfThen-DRS"
+msgstr "Implikative DRS"
+
+#: lib/layouts/linguistics.module:291 lib/layouts/linguistics.module:292
+msgid "If-Then DRS"
+msgstr "Implikative DRS"
+
+#: lib/layouts/linguistics.module:296 lib/layouts/linguistics.module:331
+#: lib/layouts/linguistics.module:375
+msgid "Then-Referents"
+msgstr "Dann-Referenten"
+
+#: lib/layouts/linguistics.module:297 lib/layouts/linguistics.module:306
+#: lib/layouts/linguistics.module:332 lib/layouts/linguistics.module:341
+#: lib/layouts/linguistics.module:376 lib/layouts/linguistics.module:385
+msgid "DRS Then-Referents"
+msgstr "DRS-Dann-Referenten"
+
+#: lib/layouts/linguistics.module:298 lib/layouts/linguistics.module:333
+#: lib/layouts/linguistics.module:377
+msgid "Add the DRS then-referents (universe) here"
+msgstr "Geben Sie hier die implizierten (\"dann\") Referenten ein."
+
+#: lib/layouts/linguistics.module:305 lib/layouts/linguistics.module:340
+#: lib/layouts/linguistics.module:384
+msgid "Then-Conditions"
+msgstr "Dann-Bedingungen"
+
+#: lib/layouts/linguistics.module:307 lib/layouts/linguistics.module:342
+#: lib/layouts/linguistics.module:386
+msgid "Add the DRS then-conditions here"
+msgstr "Geben Sie hier die DRS-Dann-Bedingungen ein"
+
+#: lib/layouts/linguistics.module:315
+msgid "Cond-DRS"
+msgstr "Kond.-DRS"
+
+#: lib/layouts/linguistics.module:317
+msgid "Cond. DRS"
+msgstr "Kond. DRS"
+
+#: lib/layouts/linguistics.module:318
+msgid "Conditional DRS"
+msgstr "Konditionale DRS"
+
+#: lib/layouts/linguistics.module:322
+msgid "Cond."
+msgstr "Bed."
+
+#: lib/layouts/linguistics.module:323
+msgid "DRS Condition"
+msgstr "DRS-Bedingung"
+
+#: lib/layouts/linguistics.module:324
+msgid "Add the DRS condition here"
+msgstr "Geben Sie hier DRS-Bedingung ein"
+
+#: lib/layouts/linguistics.module:350
+msgid "QDRS"
+msgstr "QDRS"
+
+#: lib/layouts/linguistics.module:352
+msgid "Dupl. Cond. DRS"
+msgstr "Dupl.-Bed.-DRS"
+
+#: lib/layouts/linguistics.module:353
+msgid "Duplex Condition DRS"
+msgstr "Duplex-Bedingungs-DRS"
+
+#: lib/layouts/linguistics.module:357
+msgid "Quant."
+msgstr "Quant."
+
+#: lib/layouts/linguistics.module:358
+msgid "DRS Quantifier"
+msgstr "DRS-Quantifizierer"
+
+#: lib/layouts/linguistics.module:359
+msgid "Add the DRS duplex quantifier here"
+msgstr "Geben Sie hier den DRS-Duplex-Quantifizierer ein"
+
+#: lib/layouts/linguistics.module:366
+msgid "Quant. Var."
+msgstr "Quant.-Var."
+
+#: lib/layouts/linguistics.module:367
+msgid "DRS Quantifier Variable"
+msgstr "Quantifizierer-Variablen"
+
+#: lib/layouts/linguistics.module:368
+msgid "Add the DRS duplex quantifier variables here"
+msgstr "Geben Sie hier die DRS-Quantifizierer-Variablen ein"
+
+#: lib/layouts/linguistics.module:395
+msgid "NegDRS"
+msgstr "NegDRS"
+
+#: lib/layouts/linguistics.module:397
+msgid "Neg. DRS"
+msgstr "Neg. DRS"
+
+#: lib/layouts/linguistics.module:398
+msgid "Negated DRS"
+msgstr "Negierte DRS"
+
+#: lib/layouts/linguistics.module:403
+msgid "SDRS"
+msgstr "SDRS"
+
+#: lib/layouts/linguistics.module:405
+msgid "Sent. DRS"
+msgstr "Satz-DRS"
+
+#: lib/layouts/linguistics.module:406
+msgid "DRS with Sentence above"
+msgstr "DRS mit Satz oberhalb"
+
+#: lib/layouts/linguistics.module:410
+msgid "Sentence"
+msgstr "Satz"
+
+#: lib/layouts/linguistics.module:411
+msgid "DRS Sentence"
+msgstr "DRS-Satz"
+
+#: lib/layouts/linguistics.module:412
+msgid "Add the sentence here"
+msgstr "Geben Sie hier den Satz ein."
+
+#: lib/layouts/linguistics.module:433
+msgid "Expression"
+msgstr "Ausdruck"
+
+#: lib/layouts/linguistics.module:435
+msgid "expr."
+msgstr "Ausdr."
+
+#: lib/layouts/linguistics.module:447
+msgid "Concepts"
+msgstr "Konzept"
+
+#: lib/layouts/linguistics.module:449
+msgid "concept"
+msgstr "Konzept"
+
+#: lib/layouts/linguistics.module:461
+msgid "Meaning"
+msgstr "Bedeutung"
+
+#: lib/layouts/linguistics.module:463
+msgid "meaning"
+msgstr "Bedeutung"
+
+#: lib/layouts/linguistics.module:476
+msgid "Tableaux"
+msgstr "Tableaus"
+
+#: lib/layouts/linguistics.module:480
 msgid "Tableau"
 msgstr "Tableau"
 
-#: lib/layouts/linguistics.module:289
+#: lib/layouts/linguistics.module:485
 msgid "List of Tableaux"
 msgstr "Tableaux-Verzeichnis"
 
@@ -38227,9 +38397,6 @@ msgstr "Unbekannter Benutzer"
 #~ msgid "Ligature Break"
 #~ msgstr "Ligaturtrenner"
 
-#~ msgid "End of Sentence"
-#~ msgstr "Satzendepunkt"
-
 #~ msgid "Ellipsis"
 #~ msgstr "Fortsetzungspunkte"
 
@@ -39285,9 +39452,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "Example #:"
 #~ msgstr "Beispiel #:"
-
-#~ msgid "Condition #:"
-#~ msgstr "Bedingung #:"
 
 #~ msgid "Problem #:"
 #~ msgstr "Problem #:"
