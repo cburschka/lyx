@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 577
+\lyxformat 578
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -2558,7 +2558,7 @@ forest
  via 
 \family sans
 Insert\SpecialChar menuseparator
-Custom Insets
+Custom Inset
 \family default
 .
  Within this inset, you can insert the bracket notation used by 
@@ -2786,14 +2786,14 @@ Discourse Representation Theory
  These insets can be found in 
 \family sans
 Insert\SpecialChar menuseparator
-Custom Insets
+Custom Inset
 \family default
 .
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted -712698321 1561282371
+\change_inserted -712698321 1561300882
 A simple DRS is produced by 
 \family sans
 Discourse Representation Structure
@@ -2803,7 +2803,7 @@ Discourse Representation Structure
 \emph on
 conditions
 \emph default
-, which have to be inserted into the inset directly and the (possibly empty)
+, which have to be inserted into the inset directly, and the (possibly empty)
  
 \emph on
 referents
