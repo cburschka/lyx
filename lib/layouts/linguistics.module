@@ -10,6 +10,10 @@
 
 Format 74
 
+#
+# Counters
+#
+
 Counter example
 	Within               chapter
 	LabelString          "(\arabic{example})"
@@ -30,9 +34,12 @@ Counter subexamplei
 	LabelString          "\theexamplei (\alph{subexamplei})"
 End
 
-OutlinerName tableau    "Tableaux" #no AddToToc (built-in)
 
-# single numbered example with covington.sty
+#
+# Numbered Examples
+#
+
+# Single numbered example with covington.sty
 Style Numbered_Example_(multiline)
 	LatexType             Environment
 	LatexName             covexample
@@ -57,7 +64,7 @@ Style Numbered_Example_(multiline)
 End
 
 
-# multiple numbered examples with covington.sty
+# Multiple numbered examples with covington.sty
 Style Numbered_Examples_(consecutive)
 	CopyStyle	      Numbered_Example_(multiline)
 	LatexType             Item_Environment
@@ -82,7 +89,7 @@ Style Numbered_Examples_(consecutive)
 End
 
 
-# multiple numbered examples with covington.sty
+# Sub-examples with covington.sty
 Style Subexample
 	CopyStyle	      Numbered_Examples_(consecutive)
 	LatexName             covsubexamples
@@ -98,7 +105,11 @@ Style Subexample
 End
 
 
-# glosse (2 lines) with covington.sty
+#
+# Interlinear Glosses
+#
+
+# Two-Line gloss with covington.sty
 InsetLayout Flex:Interlinear_Gloss_(2_Lines)
 	LyXType               custom
 	LabelString           Gloss
@@ -144,7 +155,7 @@ InsetLayout Flex:Interlinear_Gloss_(2_Lines)
 End
 
 
-# glosse (3 lines) with covington.sty
+# Three-Line gloss with covington.sty
 InsetLayout Flex:Interlinear_Gloss_(3_Lines)
 	LyXType               custom
 	LabelString           Tri-Gloss
@@ -199,6 +210,20 @@ InsetLayout Flex:Interlinear_Gloss_(3_Lines)
 End
 
 
+# A helper to group words in glosses
+InsetLayout Flex:GroupGlossedWords
+	LyxType               charstyle
+	LabelString           Group
+	LeftDelim             {
+	RightDelim            }
+	ResetsFont            true
+End
+
+
+#
+# Trees
+#
+
 # Structure trees via the forest package
 InsetLayout Flex:Structure_Tree
 	LyXType               custom
@@ -225,7 +250,10 @@ InsetLayout Flex:Structure_Tree
 End
 
 
-# Some semantik markup for Semantics
+#
+# Semantic Markup
+#
+
 InsetLayout Flex:Expression
 	LyxType               charstyle
 	LabelString           expr.
@@ -265,17 +293,10 @@ InsetLayout Flex:Meaning
 End
 
 
-# A helper to group words in Glosses
-InsetLayout Flex:GroupGlossedWords
-	LyxType               charstyle
-	LabelString           Group
-	LeftDelim             {
-	RightDelim            }
-	ResetsFont            true
-End
+#
+# OT Tableaux
+#
 
-
-# Tableaux for Optimality Theory
 OutlinerName tableau        "Tableaux" #no AddToToc
 
 Float
