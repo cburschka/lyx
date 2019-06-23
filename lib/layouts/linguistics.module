@@ -230,13 +230,11 @@ InsetLayout Flex:Expression
 	LyxType               charstyle
 	LabelString           expr.
 	LatexType             command
-	LatexName             lingexpr
+	LatexName             lexp
+	Requires	      covington
 	Font
 	  Shape               Italic
 	EndFont
-	Preamble
-		\newcommand{\lingexpr}[1]{\emph{#1}}
-	EndPreamble
 	InToc                 true
 	ResetsFont            true
 End
@@ -246,13 +244,11 @@ InsetLayout Flex:Concepts
 	LyxType               charstyle
 	LabelString           concept
 	LatexType             command
-	LatexName             lingconcept
+	LatexName             lcon
+	Requires	      covington
 	Font
 	  Shape               Smallcaps
 	EndFont
-	Preamble
-		\newcommand{\lingconcept}[1]{\textsc{#1}}
-	EndPreamble
 	InToc                 true
 	ResetsFont            true
 End
@@ -262,11 +258,8 @@ InsetLayout Flex:Meaning
 	LyxType               charstyle
 	LabelString           meaning
 	LatexType             command
-	LatexName             lingmeaning
-	Requires              csquotes
-	Preamble
-		\newcommand{\lingmeaning}[1]{\enquote*{#1}}
-	EndPreamble
+	LatexName             lmean
+	Requires	      covington,csquotes
 	InToc                 true
 	ResetsFont            true
 End
