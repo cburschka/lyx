@@ -35,10 +35,17 @@ Format LaTeX feature                        LyX feature
 453    automatic stmaryrd loading           \use_package stmaryrd
 457    automatic stackrel loading           \use_package stackrel
 575    numbering of lines (lineno)          \use_lineno, \lineno_options
-577    new covington gloss macros
-       \digloss[opt]{one}{two}{three}        \begin_inset Flex Interlinear Gloss (2 Lines) (Argument 1, Argument post:1, Argument:post 2)
-       \trigloss[opt]{one}{two}{three}{four} \begin_inset Flex Interlinear Gloss (3 Lines) (Argument 1, Argument post:1, Argument:post 2, Argument:post 3)
-
+577    new covington gloss macros (Linguistics module)
+       \digloss[opt]{one}{two}{three}        \begin_inset Flex Interlinear Gloss (2 Lines) (Argument 1, Argument post:1, Argument post:2)
+       \trigloss[opt]{one}{two}{three}{four} \begin_inset Flex Interlinear Gloss (3 Lines) (Argument 1, Argument post:1, Argument post:2, Argument post:3)
+578    Discourse Representation Structures (Linguistics module)
+       \drs{arg1}{content}                   \begin_inset Flex DRS (Argument 1)
+       \drs*{arg1}{content}                  \begin_inset Flex DRS* (Argument 1)
+       \ifdrs{arg1}{content}{post1}{post2}   \begin_inset Flex IfThen-DRS (Argument 1, Argument post:1, Argument post:2)
+       \condrs{arg1}{content}{post1}{post2}{post3}  \begin_inset Flex Cond-DRS (Argument 1, Argument post:1, Argument post:2, Argument post:3)
+       \qdrs{arg1}{content}{post1}{post2}{post3}{post4} \begin_inset Flex QDRS (Argument 1, Argument post:1, Argument post:2, Argument post:3, Argument post:4)
+       \negdrs{arg1}{content}                \begin_inset Flex NegDRS (Argument 1)
+       \sdrs{arg1}[arg2}{content}            \begin_inset Flex SDRS (Argument 1, Argument 2)
 
 
 General

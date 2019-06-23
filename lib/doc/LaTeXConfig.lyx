@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 566
+\lyxformat 578
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -53,6 +53,7 @@
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -68,6 +69,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
+\tablestyle default
 \tracking_changes true
 \output_changes false
 \html_math_output 0
@@ -76,6 +78,7 @@
 \html_latex_start <span class='latex'>
 \html_latex_end </span>
 \author -1402925745 "Günter Milde"
+\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -6477,6 +6480,50 @@ csquotes
  provides context-sensitive quotation marks that adapt to the conventions
  of the actual document language.
  It is used by the Linguistics module for the character style Meaning.
+\change_inserted -712698321 1561287288
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted -712698321 1561287293
+drs
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1561287288
+Found: 
+\begin_inset Info
+type  "package"
+arg   "drs"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1561287316
+CTAN: 
+\family typewriter
+macros/latex/contrib/drs/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1561287342
+Notes: The package 
+\family sans
+drs
+\family default
+ provides some commands for 
+\emph on
+Discourse Representation Structures
+\emph default
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -6538,6 +6585,54 @@ Notes: The package
 forest
 \family default
  provides support for generating linguistic structure trees.
+\change_inserted -712698321 1561287358
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted -712698321 1561287365
+pict2e
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1561287358
+Found: 
+\begin_inset Info
+type  "package"
+arg   "pict2e"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1561287390
+CTAN: 
+\family typewriter
+macros/latex/contrib/
+\family default
+pict2e
+\family typewriter
+/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1561287426
+Notes: The package 
+\family sans
+pict2e
+\family default
+ is used for 
+\emph on
+Duplex Condition DRS
+\emph default
+es.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection

@@ -1841,7 +1841,7 @@ def revert_linggloss(document):
         return
 
     cov_req = False
-    glosses = ("\\begin_inset Flex Interlinear Gloss (2 Lines)", "\\begin_inset Flex Interlinear Gloss (3 Lines)")
+    glosses = ["\\begin_inset Flex Interlinear Gloss (2 Lines)", "\\begin_inset Flex Interlinear Gloss (3 Lines)"]
     for glosse in glosses:
         i = 0
         while True:
@@ -2032,6 +2032,217 @@ def revert_subexarg(document):
         i += 1
 
 
+def revert_drs(document):
+    " Revert DRS insets (linguistics) to ERT "
+
+    if not "linguistics" in document.get_module_list():
+        return
+
+    cov_req = False
+    drses = ["\\begin_inset Flex DRS", "\\begin_inset Flex DRS*",
+             "\\begin_inset Flex IfThen-DRS", "\\begin_inset Flex Cond-DRS",
+             "\\begin_inset Flex QDRS", "\\begin_inset Flex NegDRS",
+             "\\begin_inset Flex SDRS"]
+    for drs in drses:
+        i = 0
+        while True:
+            i = find_token(document.body, drs, i)
+            if i == -1:
+                break
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of DRS inset")
+                i += 1
+                continue
+
+            # Check for arguments
+            arg = find_token(document.body, "\\begin_inset Argument 1", i, j)
+            endarg = find_end_of_inset(document.body, arg)
+            prearg1content = []
+            if arg != -1:
+                argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
+                if argbeginPlain == -1:
+                    document.warning("Malformed LyX document: Can't find Argument 1 plain Layout")
+                    i += 1
+                    continue
+                argendPlain = find_end_of_inset(document.body, argbeginPlain)
+                prearg1content = document.body[argbeginPlain + 1 : argendPlain - 2]
+
+                # remove Arg insets and paragraph, if it only contains this inset
+                if document.body[arg - 1] == "\\begin_layout Plain Layout" and find_end_of_layout(document.body, arg - 1) == endarg + 3:
+                    del document.body[arg - 1 : endarg + 4]
+                else:
+                    del document.body[arg : endarg + 1]
+
+            # re-find inset end
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of DRS inset")
+                i += 1
+                continue
+
+            arg = find_token(document.body, "\\begin_inset Argument 2", i, j)
+            endarg = find_end_of_inset(document.body, arg)
+            prearg2content = []
+            if arg != -1:
+                argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
+                if argbeginPlain == -1:
+                    document.warning("Malformed LyX document: Can't find Argument 2 plain Layout")
+                    i += 1
+                    continue
+                argendPlain = find_end_of_inset(document.body, argbeginPlain)
+                prearg2content = document.body[argbeginPlain + 1 : argendPlain - 2]
+
+                # remove Arg insets and paragraph, if it only contains this inset
+                if document.body[arg - 1] == "\\begin_layout Plain Layout" and find_end_of_layout(document.body, arg - 1) == endarg + 3:
+                    del document.body[arg - 1 : endarg + 4]
+                else:
+                    del document.body[arg : endarg + 1]
+
+            # re-find inset end
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of DRS inset")
+                i += 1
+                continue
+
+            arg = find_token(document.body, "\\begin_inset Argument post:1", i, j)
+            endarg = find_end_of_inset(document.body, arg)
+            postarg1content = []
+            if arg != -1:
+                argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
+                if argbeginPlain == -1:
+                    document.warning("Malformed LyX document: Can't find Argument post:1 plain Layout")
+                    i += 1
+                    continue
+                argendPlain = find_end_of_inset(document.body, argbeginPlain)
+                postarg1content = document.body[argbeginPlain + 1 : argendPlain - 2]
+
+                # remove Arg insets and paragraph, if it only contains this inset
+                if document.body[arg - 1] == "\\begin_layout Plain Layout" and find_end_of_layout(document.body, arg - 1) == endarg + 3:
+                    del document.body[arg - 1 : endarg + 4]
+                else:
+                    del document.body[arg : endarg + 1]
+
+            # re-find inset end
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of DRS inset")
+                i += 1
+                continue
+
+            arg = find_token(document.body, "\\begin_inset Argument post:2", i, j)
+            endarg = find_end_of_inset(document.body, arg)
+            postarg2content = []
+            if arg != -1:
+                argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
+                if argbeginPlain == -1:
+                    document.warning("Malformed LyX document: Can't find Argument post:2 plain Layout")
+                    i += 1
+                    continue
+                argendPlain = find_end_of_inset(document.body, argbeginPlain)
+                postarg2content = document.body[argbeginPlain + 1 : argendPlain - 2]
+
+                # remove Arg insets and paragraph, if it only contains this inset
+                if document.body[arg - 1] == "\\begin_layout Plain Layout" and find_end_of_layout(document.body, arg - 1) == endarg + 3:
+                    del document.body[arg - 1 : endarg + 4]
+                else:
+                    del document.body[arg : endarg + 1]
+
+            # re-find inset end
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of DRS inset")
+                i += 1
+                continue
+
+            arg = find_token(document.body, "\\begin_inset Argument post:3", i, j)
+            endarg = find_end_of_inset(document.body, arg)
+            postarg3content = []
+            if arg != -1:
+                argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
+                if argbeginPlain == -1:
+                    document.warning("Malformed LyX document: Can't find Argument post:3 plain Layout")
+                    i += 1
+                    continue
+                argendPlain = find_end_of_inset(document.body, argbeginPlain)
+                postarg3content = document.body[argbeginPlain + 1 : argendPlain - 2]
+
+                # remove Arg insets and paragraph, if it only contains this inset
+                if document.body[arg - 1] == "\\begin_layout Plain Layout" and find_end_of_layout(document.body, arg - 1) == endarg + 3:
+                    del document.body[arg - 1 : endarg + 4]
+                else:
+                    del document.body[arg : endarg + 1]
+
+            # re-find inset end
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of DRS inset")
+                i += 1
+                continue
+
+            arg = find_token(document.body, "\\begin_inset Argument post:4", i, j)
+            endarg = find_end_of_inset(document.body, arg)
+            postarg4content = []
+            if arg != -1:
+                argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
+                if argbeginPlain == -1:
+                    document.warning("Malformed LyX document: Can't find Argument post:4 plain Layout")
+                    i += 1
+                    continue
+                argendPlain = find_end_of_inset(document.body, argbeginPlain)
+                postarg4content = document.body[argbeginPlain + 1 : argendPlain - 2]
+
+                # remove Arg insets and paragraph, if it only contains this inset
+                if document.body[arg - 1] == "\\begin_layout Plain Layout" and find_end_of_layout(document.body, arg - 1) == endarg + 3:
+                    del document.body[arg - 1 : endarg + 4]
+                else:
+                    del document.body[arg : endarg + 1]
+
+            # The respective LaTeX command
+            cmd = "\\drs"
+            if drs == "\\begin_inset Flex DRS*":
+                cmd = "\\drs*"
+            elif drs == "\\begin_inset Flex IfThen-DRS":
+                cmd = "\\ifdrs"
+            elif drs == "\\begin_inset Flex Cond-DRS":
+                cmd = "\\condrs"
+            elif drs == "\\begin_inset Flex QDRS":
+                cmd = "\\qdrs"
+            elif drs == "\\begin_inset Flex NegDRS":
+                cmd = "\\negdrs"
+            elif drs == "\\begin_inset Flex SDRS":
+                cmd = "\\sdrs"
+
+            beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
+            endInset = find_end_of_inset(document.body, i)
+            endPlain = find_token_backwards(document.body, "\\end_layout", endInset)
+            precontent = put_cmd_in_ert(cmd)
+            precontent += put_cmd_in_ert("{") + prearg1content + put_cmd_in_ert("}")
+            if drs == "\\begin_inset Flex SDRS":
+                precontent += put_cmd_in_ert("{") + prearg2content + put_cmd_in_ert("}")
+            precontent += put_cmd_in_ert("{")
+
+            postcontent = []
+            if cmd == "\\qdrs" or cmd == "\\condrs" or cmd == "\\ifdrs":
+                postcontent = put_cmd_in_ert("}{") + postarg1content + put_cmd_in_ert("}{") + postarg2content + put_cmd_in_ert("}")
+                if cmd == "\\condrs" or cmd == "\\qdrs":
+                    postcontent += put_cmd_in_ert("{") + postarg3content + put_cmd_in_ert("}")
+                if cmd == "\\qdrs":
+                    postcontent += put_cmd_in_ert("{") + postarg4content + put_cmd_in_ert("}")
+            else:
+                postcontent = put_cmd_in_ert("}")
+
+            document.body[endPlain:endInset + 1] = postcontent
+            document.body[beginPlain + 1:beginPlain] = precontent
+            del document.body[i : beginPlain + 1]
+            if not cov_req:
+                document.append_local_layout("Provides covington")
+                add_to_preamble(document, ["\\usepackage{drs,covington}"])
+                cov_req = True
+            i = beginPlain + 1
+
+
 ##
 # Conversion hub
 #
@@ -2070,10 +2281,12 @@ convert = [
            [574, [convert_ruby_module, convert_utf8_japanese]],
            [575, [convert_lineno]],
            [576, []],
-           [577, [convert_linggloss]]
+           [577, [convert_linggloss]],
+           [578, []]
           ]
 
-revert =  [[576, [revert_linggloss, revert_subexarg]],
+revert =  [[576, [revert_drs]],
+           [576, [revert_linggloss, revert_subexarg]],
            [575, [revert_new_languages]],
            [574, [revert_lineno]],
            [573, [revert_ruby_module, revert_utf8_japanese]],

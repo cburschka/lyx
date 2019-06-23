@@ -998,7 +998,9 @@ char const * simplefeatures[] = {
 	"tabularx",
 	"xltabular",
 	"chessboard",
-	"xskak"
+	"xskak",
+	"pict2e",
+	"drs"
 };
 
 char const * bibliofeatures[] = {

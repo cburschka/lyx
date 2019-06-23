@@ -154,8 +154,11 @@ This paper describes some features that \SpecialChar LyX
 \change_inserted -712698321 1559649291
 interlinear 
 \change_unchanged
-glosses, OT tableaux, semantic markup, structure trees, and phonetic symbols
- (IPA).
+glosses, OT tableaux, semantic markup, structure trees, 
+\change_inserted -712698321 1561275938
+Discourse Representation Structures, 
+\change_unchanged
+and phonetic symbols (IPA).
 \end_layout
 
 \begin_layout Section
@@ -262,6 +265,8 @@ arg   "covington"
 \end_inset
 
 .
+\change_inserted -712698321 1561275950
+
 \end_layout
 
 \end_deeper
@@ -347,6 +352,48 @@ arg   "csquotes"
 \end_inset
 
 .
+\change_inserted -712698321 1561276155
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\change_inserted -712698321 1561276156
+
+\emph on
+drs.sty
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "drs"
+literal "true"
+
+\end_inset
+
+: Needed for 
+\emph on
+Discourse Representation Structures
+\emph default
+.
+ Note that at least version 2.3 of the covington package is required if you
+ use DRS with covington features.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\change_inserted -712698321 1561276156
+Installed on your system: 
+\begin_inset Info
+type  "package"
+arg   "drs"
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \end_deeper
@@ -405,6 +452,46 @@ arg   "forest"
 \end_inset
 
 .
+\change_inserted -712698321 1561276162
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\change_inserted -712698321 1561276195
+
+\emph on
+pict2e.sty
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pict2e"
+literal "true"
+
+\end_inset
+
+: Needed for 
+\emph on
+Duplex Condition DRS
+\emph default
+es.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\change_inserted -712698321 1561276163
+Installed on your system: 
+\begin_inset Info
+type  "package"
+arg   "pict2e"
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \end_deeper
@@ -2675,6 +2762,727 @@ literal "true"
 \end_layout
 
 \begin_layout Section
+
+\change_inserted -712698321 1561276366
+Discourse Representation Structures
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1561276535
+The linguistics module provides some insets to draw 
+\emph on
+Discourse Representation Structures
+\emph default
+ (DRSes) in the box notation introduced in 
+\noun on
+Hans Kamp
+\noun default
+'s 
+\emph on
+Discourse Representation Theory
+\emph default
+.
+ These insets can be found in 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Insets
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1561282371
+A simple DRS is produced by 
+\family sans
+Discourse Representation Structure
+\family default
+.
+ A DRS consists of the 
+\emph on
+conditions
+\emph default
+, which have to be inserted into the inset directly and the (possibly empty)
+ 
+\emph on
+referents
+\emph default
+ (or 
+\emph on
+universe
+\emph default
+ in DRTese), which have to be input in the (automatically inserted) 
+\emph on
+Referents
+\emph default
+ sub-inset.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561276845
+If it is not inserted, you can also insert it via 
+\family sans
+Insert\SpecialChar menuseparator
+DRS Referents
+\family default
+.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ Line breaks in conditions need to be done via 
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
+.
+ Here is a simple example:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1561277426
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Flex DRS
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561276618
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561276576
+x
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561277217
+donkey(x)
+\begin_inset Newline newline
+\end_inset
+
+green(x)
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1561278779
+\begin_inset VSpace defskip
+\end_inset
+
+DRSes get some extra spacing for better positioning on the page.
+ The 
+\family sans
+unspaced
+\family default
+ variant comes without this extra spacing.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1561282534
+In addition to this simple DRS, the following conditional DRSes are provided
+ (mainly for nesting into simple DRSes):
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -712698321 1561282617
+The 
+\family sans
+If-Then DRS
+\family default
+ represents a conditional (implicational) sentence constructions of the
+ form 
+\emph on
+if S
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561279387
+
+\emph off
+1
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ then S
+\emph default
+
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561279395
+2
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\change_inserted -712698321 1561279897
+\begin_inset Flex IfThen-DRS
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561279544
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561280450
+x
+\begin_inset space ~
+\end_inset
+
+y
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561280496
+John(x)
+\begin_inset Newline newline
+\end_inset
+
+donkey(y)
+\begin_inset Newline newline
+\end_inset
+
+own(x,y)
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561279603
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561279599
+z
+\begin_inset space ~
+\end_inset
+
+w
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561279579
+\begin_inset Argument post:2
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561280579
+z = x
+\begin_inset Newline newline
+\end_inset
+
+w = y
+\begin_inset Newline newline
+\end_inset
+
+feed(z,w)
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\change_inserted -712698321 1561282668
+The 
+\family sans
+Conditional DRS
+\family default
+ is a more general case where you can specify an arbitrary condition (rather
+ than using the implicational condition).
+ You can insert any symbol in the condition sub-inset:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\change_inserted -712698321 1561281161
+\begin_inset Flex Cond-DRS
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561280361
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561280351
+x
+\begin_inset space ~
+\end_inset
+
+y
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561280787
+John(x)
+\begin_inset Newline newline
+\end_inset
+
+donkey(y)
+\begin_inset Newline newline
+\end_inset
+
+own(x,y)
+\change_unchanged
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561279982
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561280653
+\begin_inset Formula $\wedge\!\,$
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561279982
+\begin_inset Argument post:2
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561280702
+z
+\begin_inset space ~
+\end_inset
+
+w
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561279982
+\begin_inset Argument post:3
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561280703
+z = x
+\begin_inset Newline newline
+\end_inset
+
+w = y
+\begin_inset Newline newline
+\end_inset
+
+love(w,z)
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\change_inserted -712698321 1561281199
+The 
+\family sans
+Duplex Condition DRS
+\family default
+ can be used to insert duplex conditions:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\change_inserted -712698321 1561281613
+\begin_inset Flex QDRS
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561281297
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561281237
+x
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561281305
+x 
+\begin_inset Formula $\in$
+\end_inset
+
+ X
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561281209
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561281317
+every
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561281209
+\begin_inset Argument post:2
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561281320
+x
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561281209
+\begin_inset Argument post:3
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561281327
+y
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561281209
+\begin_inset Argument post:4
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561282714
+secretary(y)
+\begin_inset Newline newline
+\end_inset
+
+hire(x,y)
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\change_inserted -712698321 1561281636
+The 
+\family sans
+Negated DRS
+\family default
+ adds a DRS preceded by a negation symbol:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\change_inserted -712698321 1561281719
+\begin_inset Flex NegDRS
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561281667
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561281667
+x
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561281697
+donkey(x)
+\begin_inset Newline newline
+\end_inset
+
+green(x)
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\change_inserted -712698321 1561281800
+Finally, 
+\family sans
+DRS with Sentence above
+\family default
+ lets you do what it promises: adding a sentence above the box representation:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1561282183
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Flex SDRS
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561281911
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561281859
+A donkey is green
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561281886
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561281888
+x
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561281854
+donkey(x)
+\begin_inset Newline newline
+\end_inset
+
+green(x)
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1561282246
+The 
+\emph on
+drs
+\emph default
+ package provides some means to customize the layout and appearance of the
+ DRS boxes.
+ Please refer to the package manual 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "drs"
+literal "false"
+
+\end_inset
+
+ for details.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Section
 Phonetic Symbols (IPA)
 \end_layout
 
@@ -3096,6 +3904,40 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/csquotes/
 \end_inset
 
 .
+\change_inserted -712698321 1561276082
+
+\end_layout
+
+\begin_layout Bibliography
+
+\change_inserted -712698321 1561276305
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "drs"
+literal "false"
+
+\end_inset
+
+ The drs
+\emph on
+ 
+\emph default
+package: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561282286
+
+https://ctan.org/tex-archive/macros/latex/contrib/drs
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Bibliography
@@ -3187,6 +4029,38 @@ https://wiki.lyx.org/LyX/LinguistLyX
 \end_inset
 
 .
+\change_inserted -712698321 1561276282
+
+\end_layout
+
+\begin_layout Bibliography
+
+\change_inserted -712698321 1561276302
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "pict2e"
+literal "false"
+
+\end_inset
+
+The pict2e package: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1561276288
+
+https://ctan.org/tex-archive/macros/latex/contrib/pict2e
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Bibliography

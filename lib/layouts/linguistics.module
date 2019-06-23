@@ -1,4 +1,4 @@
-#\DeclareLyXModule[covington.sty,forest.sty]{Linguistics}
+#\DeclareLyXModule[covington.sty,drs.sty,forest.sty,pict2e.sty]{Linguistics}
 #\DeclareCategory{Academic Field Specifics}
 #DescriptionBegin
 #Defines some special environments useful for linguistics (numbered examples,
@@ -247,6 +247,182 @@ InsetLayout Flex:Structure_Tree
 	\useforestlibrary*{linguistics}
 	}{}
 	EndPreamble
+End
+
+
+#
+# Discourse Representation Structures
+#
+
+InsetLayout Flex:DRS
+	LyXType               custom
+	LabelString           DRS
+	MenuString            "Discourse Representation Structure|D"
+	LatexType             command
+	LatexName             drs
+	Decoration            classic
+	MultiPar              true
+	CustomPars            false
+	ParbreakIsNewline     true
+	FreeSpacing           true
+	Requires              drs
+	ResetsFont            true
+	Argument 1
+		Decoration    conglomerate
+		LabelString   "Referents"
+		MenuString    "DRS Referents"
+		Tooltip       "Add the DRS referents (universe) here"
+		Mandatory     true
+		AutoInsert    true
+	EndArgument
+End
+
+
+InsetLayout Flex:DRS*
+	CopyStyle             Flex:DRS
+	LabelString           DRS*
+	MenuString            "Discourse Representation Structure (unspaced)|u"
+	LatexName             drs*
+End
+
+
+InsetLayout Flex:IfThen-DRS
+	CopyStyle             Flex:DRS
+	LabelString           "If-Then DRS"
+	MenuString            "If-Then DRS"
+	LatexName             ifdrs
+	Argument post:1
+		Decoration    classic
+		LabelString   "Then-Referents"
+		MenuString    "DRS Then-Referents"
+		Tooltip       "Add the DRS then-referents (universe) here"
+		Mandatory     true
+		AutoInsert    true
+		InsertOnNewline true
+	EndArgument
+	Argument post:2
+		Decoration    classic
+		LabelString   "Then-Conditions"
+		MenuString    "DRS Then-Referents"
+		Tooltip       "Add the DRS then-conditions here"
+		Mandatory     true
+		AutoInsert    true
+		InsertOnNewline true
+	EndArgument
+End
+
+
+InsetLayout Flex:Cond-DRS
+	CopyStyle             Flex:DRS
+	LabelString           "Cond. DRS"
+	MenuString            "Conditional DRS"
+	LatexName             condrs
+	Argument post:1
+		Decoration    classic
+		LabelString   "Cond."
+		MenuString    "DRS Condition"
+		Tooltip       "Add the DRS condition here"
+		Mandatory     true
+		AutoInsert    true
+		InsertOnNewline true
+	EndArgument
+	Argument post:2
+		Decoration    classic
+		LabelString   "Then-Referents"
+		MenuString    "DRS Then-Referents"
+		Tooltip       "Add the DRS then-referents (universe) here"
+		Mandatory     true
+		AutoInsert    true
+		InsertOnNewline true
+	EndArgument
+	Argument post:3
+		Decoration    classic
+		LabelString   "Then-Conditions"
+		MenuString    "DRS Then-Referents"
+		Tooltip       "Add the DRS then-conditions here"
+		Mandatory     true
+		AutoInsert    true
+		InsertOnNewline true
+	EndArgument
+End
+
+
+InsetLayout Flex:QDRS
+	CopyStyle             Flex:DRS
+	LabelString           "Dupl. Cond. DRS"
+	MenuString            "Duplex Condition DRS"
+	LatexName             qdrs
+	Argument post:1
+		Decoration    classic
+		LabelString   "Quant."
+		MenuString    "DRS Quantifier"
+		Tooltip       "Add the DRS duplex quantifier here"
+		Mandatory     true
+		AutoInsert    true
+		InsertOnNewline true
+	EndArgument
+	Argument post:2
+		Decoration    classic
+		LabelString   "Quant. Var."
+		MenuString    "DRS Quantifier Variable"
+		Tooltip       "Add the DRS duplex quantifier variables here"
+		Mandatory     true
+		AutoInsert    true
+		InsertOnNewline true
+	EndArgument
+	Argument post:3
+		Decoration    classic
+		LabelString   "Then-Referents"
+		MenuString    "DRS Then-Referents"
+		Tooltip       "Add the DRS then-referents (universe) here"
+		Mandatory     true
+		AutoInsert    true
+		InsertOnNewline true
+	EndArgument
+	Argument post:4
+		Decoration    classic
+		LabelString   "Then-Conditions"
+		MenuString    "DRS Then-Referents"
+		Tooltip       "Add the DRS then-conditions here"
+		Mandatory     true
+		AutoInsert    true
+		InsertOnNewline true
+	EndArgument
+	Requires              drs,pict2e
+End
+
+
+InsetLayout Flex:NegDRS
+	CopyStyle             Flex:DRS
+	LabelString           "Neg. DRS"
+	MenuString            "Negated DRS"
+	LatexName             negdrs
+End
+
+
+InsetLayout Flex:SDRS
+	CopyStyle             Flex:DRS
+	LabelString           "Sent. DRS"
+	MenuString            "DRS with Sentence above"
+	LatexName             sdrs
+	Argument 1
+		Decoration    conglomerate
+		LabelString   "Sentence"
+		MenuString    "DRS Sentence"
+		Tooltip       "Add the sentence here"
+		Mandatory     true
+		AutoInsert    true
+		InsertOnNewline true
+	EndArgument
+	Argument 2
+		Decoration    conglomerate
+		LabelString   "Referents"
+		MenuString    "DRS Referents"
+		Tooltip       "Add the DRS referents (universe) here"
+		Mandatory     true
+		AutoInsert    true
+		InsertOnNewline true
+	EndArgument
 End
 
 
