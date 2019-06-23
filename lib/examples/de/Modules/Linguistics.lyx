@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 577
+\lyxformat 578
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -31,6 +31,9 @@
     }
   }
 }{}
+
+% Trennausnahmen
+\hyphenation{Dis-kurs-reprä-sen-ta-tions-struk-tur}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -151,8 +154,8 @@ In diesem Text werden einige Funktionen von \SpecialChar LyX
  vorgestellt, die spezifisch
  auf die Bedürfnisse von Linguistinnen und Linguisten ausgerichtet sind.
  Es wird gezeigt, wie nummerierte Beispiele, Interlinear-Glossierung, OT-Tableau
-x, semantische Auszeichnung, Strukturbäume und phonetische Notation (IPA)
- erzeugt werden können.
+x, semantische Auszeichnung, Strukturbäume, Diskursrepräsentationsstrukturen
+ und phonetische Notation (IPA) erzeugt werden können.
 \end_layout
 
 \begin_layout Section
@@ -228,7 +231,7 @@ literal "true"
 
 : Dieses Paket wird benötigt, um nummerierte Beispiele, Glossen und semantische
  Auszeichnungen zu erzeugen.
- Beachten Sie, dass mindestens Version 2.0 des Pakets erforderlich ist, um
+ Beachten Sie, dass mindestens Version 2.3 des Pakets erforderlich ist, um
  alle Funktionen zu nutzen.
 \end_layout
 
@@ -272,6 +275,39 @@ Auf Ihrem System installiert:
 \begin_inset Info
 type  "package"
 arg   "csquotes"
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\emph on
+drs.sty
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "drs"
+literal "true"
+
+\end_inset
+
+: Voraussetzung für Diskursrepräsentationsstrukturen.
+ Beachten Sie, dass mindestens Version 2.3 des Pakets 
+\emph on
+covington
+\emph default
+ erforderlich ist, um dies mit anderen Funktionen gemeinsam zu nutzen.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Auf Ihrem System installiert: 
+\begin_inset Info
+type  "package"
+arg   "drs"
 \end_inset
 
 .
@@ -330,6 +366,38 @@ Auf Ihrem System installiert:
 \begin_inset Info
 type  "package"
 arg   "forest"
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\emph on
+pict2e.sty
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pict2e"
+literal "true"
+
+\end_inset
+
+: Voraussetzung für 
+\emph on
+Duplex Condition DRS
+\emph default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Auf Ihrem System installiert: 
+\begin_inset Info
+type  "package"
+arg   "pict2e"
 \end_inset
 
 .
@@ -1996,6 +2064,578 @@ literal "true"
 \end_layout
 
 \begin_layout Section
+Diskursrepräsentationsstrukturen
+\end_layout
+
+\begin_layout Standard
+Das Linguistik-Modul stellt auch Einfügungen zur Erzeugung von Diskursrepräsenta
+tionsstrukturen (DRSen) in der Box-Notation von 
+\noun on
+Hans Kamps
+\noun default
+ 
+\emph on
+Diskursrepräsentationstheorie
+\emph default
+ zur Verfügung.
+ Diese Einfügungen finden Sie unter 
+\family sans
+Einfügen\SpecialChar menuseparator
+Spezifische Einfügung
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Eine einfache DRS erzeugen Sie mit der Einfügung 
+\family sans
+Diskursrepräsentationsstruktur
+\family default
+.
+ Eine DRS besteht aus (Diskurs-)
+\emph on
+Bedingungen
+\emph default
+, die direkt in die Einfügung geschrieben werden, uns den (u.
+\begin_inset space \thinspace{}
+\end_inset
+
+U.
+ leeren) (Diskurs-)
+\emph on
+Referenten
+\emph default
+ (bzw., im DRT-Jargon, dem 
+\emph on
+Universum
+\emph default
+), welche in die (automatisch eingefügte) Untereinfügung 
+\emph on
+Referenten
+\emph default
+ geschrieben werden.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Sollte diese nicht eingefügt werden, finden Sie sie unter 
+\family sans
+Einfügen\SpecialChar menuseparator
+DRS-Referenten
+\family default
+.
+ 
+\end_layout
+
+\end_inset
+
+ Zeilenwechsel müssen mittels 
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
+ eingefügt werden.
+ Hier ist ein einfaches Beispiel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Flex DRS
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Esel(x)
+\begin_inset Newline newline
+\end_inset
+
+grün(x)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+DRSen sind durch spezifische Layout-Anpassungen so gestaltet, dass Sie gut
+ auf der Seite platziert werden.
+ Die Variante 
+\family sans
+Diskursrepräsentationsstruktur (einfach)
+\family default
+ unterdrückt diese Anpassungen.
+ 
+\end_layout
+
+\begin_layout Standard
+Zusätzlich zu diesen einfachen DRSen werden die folgenden konditionalen
+ DRSen unterstützt (sie werden in der Regel in einfache eingebettet):
+\end_layout
+
+\begin_layout Enumerate
+Die 
+\family sans
+Implikative DRS
+\family default
+ repräsentiert eine konditionalen (implikative) Satzkonstruktion der Form
+ 
+\emph on
+wenn S
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\emph off
+1
+\end_layout
+
+\end_inset
+
+, dann S
+\emph default
+
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex IfThen-DRS
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+x
+\begin_inset space ~
+\end_inset
+
+y
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Joseph(x)
+\begin_inset Newline newline
+\end_inset
+
+Esel(y)
+\begin_inset Newline newline
+\end_inset
+
+besitzen(x,y)
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+z
+\begin_inset space ~
+\end_inset
+
+w
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:2
+status open
+
+\begin_layout Plain Layout
+z = x
+\begin_inset Newline newline
+\end_inset
+
+w = y
+\begin_inset Newline newline
+\end_inset
+
+füttern(z,w)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Die 
+\family sans
+Konditionale DRS
+\family default
+ ist eine allgemeinere Variante, bei der Sie selbst eine beliebige Bedingung
+ (statt der implikativen) spezifizieren können.
+ In die Untereinfügung 
+\family sans
+Bedingung
+\family default
+ können Sie ein beliebiges Symbol eingeben:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex Cond-DRS
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+x
+\begin_inset space ~
+\end_inset
+
+y
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Joseph(x)
+\begin_inset Newline newline
+\end_inset
+
+Esel(y)
+\begin_inset Newline newline
+\end_inset
+
+besitzen(x,y)
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\wedge\!\,$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:2
+status open
+
+\begin_layout Plain Layout
+z
+\begin_inset space ~
+\end_inset
+
+w
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:3
+status open
+
+\begin_layout Plain Layout
+z = x
+\begin_inset Newline newline
+\end_inset
+
+w = y
+\begin_inset Newline newline
+\end_inset
+
+lieben(w,z)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Die 
+\family sans
+Duplex-Bedingungs-DRS
+\family default
+ können Sie für sog.
+ 
+\emph on
+Duplex-Bedingungen
+\emph default
+ verwenden:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex QDRS
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+x
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+x 
+\begin_inset Formula $\in$
+\end_inset
+
+ X
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+alle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:2
+status open
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:3
+status open
+
+\begin_layout Plain Layout
+y
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:4
+status open
+
+\begin_layout Plain Layout
+Sekretärin(y)
+\begin_inset Newline newline
+\end_inset
+
+anstellen(x,y)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Die 
+\family sans
+Negierte DRS
+\family default
+ fügt eine DRS ein, der ein Negationszeichen vorangestellt ist:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex NegDRS
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Esel(x)
+\begin_inset Newline newline
+\end_inset
+
+grün(x)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\family sans
+DRS mit Satz oberhalb
+\family default
+ schließlich tut, was es verspricht: Es setzt einen Satz über die Box-Repräsenta
+tion:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Flex SDRS
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Ein Esel ist grün
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Esel(x)
+\begin_inset Newline newline
+\end_inset
+
+grün(x)
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das Paket 
+\emph on
+drs
+\emph default
+ bietet einige Möglichkeiten, um das Erscheinungsbild der DRS-Modelle anzupassen.
+ Bitte konsultieren Sie das Handbuch des Pakets 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "drs"
+literal "false"
+
+\end_inset
+
+ für Einzelheiten.
+\end_layout
+
+\begin_layout Section
 Phonetische Notation (IPA)
 \end_layout
 
@@ -2386,6 +3026,28 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/csquotes/
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "drs"
+literal "false"
+
+\end_inset
+
+ Das drs-Paket: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://ctan.org/tex-archive/macros/latex/contrib/drs
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "enumitem"
 literal "true"
 
@@ -2472,6 +3134,28 @@ https://wiki.lyx.org/LyX/LinguistLyX
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "pict2e"
+literal "false"
+
+\end_inset
+
+Das pict2e-Paket: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://ctan.org/tex-archive/macros/latex/contrib/pict2e
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
