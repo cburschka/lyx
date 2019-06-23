@@ -232,7 +232,19 @@ literal "true"
 
 \end_inset
 
-: This is the base package used for numbered examples and glosses.
+: This is the base package used for numbered examples
+\change_inserted -712698321 1561270568
+,
+\change_unchanged
+ 
+\change_deleted -712698321 1561270570
+and 
+\change_unchanged
+glosses
+\change_inserted -712698321 1561270580
+ and semantic markup
+\change_unchanged
+.
 
 \change_inserted -712698321 1561204748
  Note that at least version 2.3 of the covington package is required to use
@@ -2374,7 +2386,15 @@ status open
 \backslash
 renewcommand
 \backslash
-lingexpr[1]{
+l
+\change_deleted -712698321 1561270831
+ing
+\change_unchanged
+exp
+\change_deleted -712698321 1561270833
+r
+\change_unchanged
+[1]{
 \backslash
 textbf{#1}}
 \end_layout
@@ -2389,15 +2409,48 @@ Similarly, concept (
 \family typewriter
 
 \backslash
-lingconcept
+l
+\change_deleted -712698321 1561270840
+ing
+\change_unchanged
+con
+\change_deleted -712698321 1561270844
+cept
+\change_unchanged
+
 \family default
 ) and meaning (
 \family typewriter
 
 \backslash
-lingmeaning
+l
+\change_deleted -712698321 1561270846
+ing
+\change_unchanged
+mean
+\change_deleted -712698321 1561270848
+ing
+\change_unchanged
+
 \family default
 ) can be modified.
+
+\change_inserted -712698321 1561270898
+ Please refer to the 
+\emph on
+covington
+\emph default
+ manual 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covington"
+literal "false"
+
+\end_inset
+
+ for details.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section

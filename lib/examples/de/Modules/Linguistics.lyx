@@ -226,7 +226,8 @@ literal "true"
 
 \end_inset
 
-: Dieses Paket wird benötigt, um nummerierte Beispiele und Glossen zu erzeugen.
+: Dieses Paket wird benötigt, um nummerierte Beispiele, Glossen und semantische
+ Auszeichnungen zu erzeugen.
  Beachten Sie, dass mindestens Version 2.0 des Pakets erforderlich ist, um
  alle Funktionen zu nutzen.
 \end_layout
@@ -1679,7 +1680,7 @@ status open
 \backslash
 renewcommand
 \backslash
-lingexpr[1]{
+lexp[1]{
 \backslash
 textbf{#1}}
 \end_layout
@@ -1698,7 +1699,7 @@ Konzept
 \family typewriter
 
 \backslash
-lingconcept
+lcon
 \family default
 ) und 
 \emph on
@@ -1708,9 +1709,22 @@ Bedeutung
 \family typewriter
 
 \backslash
-lingmeaning
+lmean
 \family default
 ) verändert werden.
+ Bitte konsultieren Sie das Handbuch des Pakets 
+\emph on
+covington
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covington"
+literal "false"
+
+\end_inset
+
+ für Einzelheiten.
 \end_layout
 
 \begin_layout Section
