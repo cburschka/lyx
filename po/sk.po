@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-06-14 17:36+0200\n"
-"PO-Revision-Date: 2019-06-15 10:36+0000\n"
+"POT-Creation-Date: 2019-06-23 14:40+0200\n"
+"PO-Revision-Date: 2019-06-23 18:14+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2409,8 +2409,8 @@ msgid "&Quote style:"
 msgstr "&Typ úvodzoviek:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:49
-msgid "Select the default style of Quote insets."
-msgstr "Vyberte štandardný štýl pre vložky úvodzoviek."
+msgid "Select the default quotation marks style"
+msgstr "Vyberte štandardný štýl úvodzoviek"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:84
 msgid "Language pa&ckage:"
@@ -2419,6 +2419,18 @@ msgstr "Jazykový balí&k:"
 #: src/frontends/qt4/ui/LanguageUi.ui:112
 msgid "&Encoding:"
 msgstr "Kó&dovanie:"
+
+#: src/frontends/qt4/ui/LanguageUi.ui:116
+msgid "Select Unicode encoding variant."
+msgstr "Vyberte variant kódovania unicode (utf8)."
+
+#: src/frontends/qt4/ui/LanguageUi.ui:126
+msgid "Specify whether to load the 'inputenc' package."
+msgstr "Nastaviť, či načítať balík 'inputenc'."
+
+#: src/frontends/qt4/ui/LanguageUi.ui:136
+msgid "Select custom encoding."
+msgstr "Vyberte vlastné kódovanie."
 
 #: src/frontends/qt4/ui/LanguageUi.ui:94
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:52
@@ -2444,18 +2456,6 @@ msgstr ""
 #: src/frontends/qt4/ui/LanguageUi.ui:193
 msgid "Use d&ynamic quotation marks"
 msgstr "Použiť d&ynamické úvodzovky"
-
-#: src/frontends/qt4/ui/LanguageUi.ui:92
-msgid "Select Unicode (utf8) variant."
-msgstr "Vyberte variant unicode (utf8)."
-
-#: src/frontends/qt4/ui/LanguageUi.ui:129
-msgid "Do not load inputenc"
-msgstr "Nezahrnúť inputenc"
-
-#: src/frontends/qt4/ui/LanguageUi.ui:113
-msgid "Select encoding"
-msgstr "Vyberte kódovanie"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
 msgid "Of&fset:"
@@ -13684,6 +13684,18 @@ msgstr "Prispôsobiť číslovanie"
 msgid "Subexample"
 msgstr "Podpríklad"
 
+#: lib/layouts/linguistics.module:100
+msgid "Subexamples options"
+msgstr "Podpríkladné voľby"
+
+#: lib/layouts/linguistics.module:101
+msgid "Subexamples options|s"
+msgstr "Podpríkladné voľby|v"
+
+#: lib/layouts/linguistics.module:102
+msgid "Add subexamples options here"
+msgstr "Pridajte sem voľby pre podpríklad"
+
 #: lib/layouts/linguistics.module:96
 msgid "Interlinear Gloss (2 Lines)"
 msgstr "Medziriadková glosa (2 riadky)"
@@ -13769,6 +13781,165 @@ msgstr "Stromová štruktúra"
 #: lib/layouts/linguistics.module:189
 msgid "Tree"
 msgstr "Strom"
+
+#: lib/layouts/linguistics.module:257 lib/layouts/linguistics.module:259
+msgid "DRS"
+msgstr "DRS"
+
+#: lib/layouts/linguistics.module:260
+msgid "Discourse Representation Structure|D"
+msgstr "Prednášková reprezentačná štruktúra|d"
+
+#: lib/layouts/linguistics.module:272 lib/layouts/linguistics.module:419
+msgid "Referents"
+msgstr "Referenti"
+
+#: lib/layouts/linguistics.module:273 lib/layouts/linguistics.module:420
+msgid "DRS Referents"
+msgstr "DRS-referenti"
+
+#: lib/layouts/linguistics.module:274 lib/layouts/linguistics.module:421
+msgid "Add the DRS referents (universe) here"
+msgstr "Pridajte sem mená DRS-referentov"
+
+#: lib/layouts/linguistics.module:281 lib/layouts/linguistics.module:283
+msgid "DRS*"
+msgstr "DRS*"
+
+#: lib/layouts/linguistics.module:284
+msgid "Discourse Representation Structure (unspaced)|u"
+msgstr "Prednášková reprezentačná štruktúra (jednoduchá)|u"
+
+#: lib/layouts/linguistics.module:289
+msgid "IfThen-DRS"
+msgstr "Implikačná DRS"
+
+#: lib/layouts/linguistics.module:291 lib/layouts/linguistics.module:292
+msgid "If-Then DRS"
+msgstr "Implikačná DRS"
+
+#: lib/layouts/linguistics.module:296 lib/layouts/linguistics.module:331
+#: lib/layouts/linguistics.module:375
+msgid "Then-Referents"
+msgstr "Tak-referenti"
+
+# Implikácia Keď -> tak
+#: lib/layouts/linguistics.module:297 lib/layouts/linguistics.module:306
+#: lib/layouts/linguistics.module:332 lib/layouts/linguistics.module:341
+#: lib/layouts/linguistics.module:376 lib/layouts/linguistics.module:385
+msgid "DRS Then-Referents"
+msgstr "DRS-\"tak\"-referenti"
+
+#: lib/layouts/linguistics.module:298 lib/layouts/linguistics.module:333
+#: lib/layouts/linguistics.module:377
+msgid "Add the DRS then-referents (universe) here"
+msgstr "Dajte sem mená DRS-\"tak\"-referentov"
+
+#: lib/layouts/linguistics.module:305 lib/layouts/linguistics.module:340
+#: lib/layouts/linguistics.module:384
+msgid "Then-Conditions"
+msgstr "Tak podmienky"
+
+#: lib/layouts/linguistics.module:307 lib/layouts/linguistics.module:342
+#: lib/layouts/linguistics.module:386
+msgid "Add the DRS then-conditions here"
+msgstr "Dajte sem DRS-tak podmienky"
+
+#: lib/layouts/linguistics.module:315
+msgid "Cond-DRS"
+msgstr "Kond.-DRS"
+
+#: lib/layouts/linguistics.module:317
+msgid "Cond. DRS"
+msgstr "Kond. DRS"
+
+#: lib/layouts/linguistics.module:318
+msgid "Conditional DRS"
+msgstr "Podmienená DRS"
+
+#: lib/layouts/linguistics.module:322
+msgid "Cond."
+msgstr "Podmienka."
+
+#: lib/layouts/linguistics.module:323
+msgid "DRS Condition"
+msgstr "DRS podmienka"
+
+#: lib/layouts/linguistics.module:324
+msgid "Add the DRS condition here"
+msgstr "Pridajte sem DRS podmienky"
+
+#: lib/layouts/linguistics.module:350
+msgid "QDRS"
+msgstr "QDRS"
+
+#: lib/layouts/linguistics.module:352
+msgid "Dupl. Cond. DRS"
+msgstr "Dupl. podmienená DRS"
+
+#: lib/layouts/linguistics.module:353
+msgid "Duplex Condition DRS"
+msgstr "Duplexná podmienka DRS"
+
+#: lib/layouts/linguistics.module:357
+msgid "Quant."
+msgstr "Quant."
+
+#: lib/layouts/linguistics.module:358
+msgid "DRS Quantifier"
+msgstr "DRS kvantifikátor"
+
+#: lib/layouts/linguistics.module:359
+msgid "Add the DRS duplex quantifier here"
+msgstr "Dajte sem DRS duplexný kvantifikátor"
+
+#: lib/layouts/linguistics.module:366
+msgid "Quant. Var."
+msgstr "Quant. Var."
+
+#: lib/layouts/linguistics.module:367
+msgid "DRS Quantifier Variable"
+msgstr "Premenná pre DRS kvantifikátor"
+
+#: lib/layouts/linguistics.module:368
+msgid "Add the DRS duplex quantifier variables here"
+msgstr "Dajte sem DRS-premenné pre duplexné kvantifikátory"
+
+#: lib/layouts/linguistics.module:395
+msgid "NegDRS"
+msgstr "NegDRS"
+
+#: lib/layouts/linguistics.module:397
+msgid "Neg. DRS"
+msgstr "Neg. DRS"
+
+#: lib/layouts/linguistics.module:398
+msgid "Negated DRS"
+msgstr "Negovaná DRS"
+
+#: lib/layouts/linguistics.module:403
+msgid "SDRS"
+msgstr "SDRS"
+
+#: lib/layouts/linguistics.module:405
+msgid "Sent. DRS"
+msgstr "Veta DRS"
+
+#: lib/layouts/linguistics.module:406
+msgid "DRS with Sentence above"
+msgstr "DRS s vetou ponad"
+
+#: lib/layouts/linguistics.module:410
+msgid "Sentence"
+msgstr "Veta"
+
+#: lib/layouts/linguistics.module:411
+msgid "DRS Sentence"
+msgstr "DRS veta"
+
+#: lib/layouts/linguistics.module:412
+msgid "Add the sentence here"
+msgstr "Vložte vetu sem"
 
 #: lib/layouts/linguistics.module:213
 msgid "Expression"
@@ -30555,7 +30726,7 @@ msgstr "Unicode (utf8)"
 
 #: src/frontends/qt4/GuiDocument.cpp:970
 msgid "Traditional (auto-selected)"
-msgstr "Tradicionálne (automaticky vybrané)"
+msgstr "Pôvodné (automaticky vybrané)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1023
 msgid "10"
@@ -33142,14 +33313,14 @@ msgstr ""
 "Bude to strata aktuálnej verzie. Naozaj sa chcete vrátiť ku uloženej verzii "
 "dokumentu %1$s?"
 
-#: src/frontends/qt4/GuiView.cpp:3995
+#: src/frontends/qt4/GuiView.cpp:4122
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
-"Všetky zmeny sa stratia. Naozaj sa chcete vrátiť k pôvodnej verzii dokumentu "
-"%1$s ?"
+"Všetky zmeny sa stratia. Naozaj sa chcete vrátiť ku pôvodnej verzii "
+"dokumentu %1$s ?"
 
 #: src/frontends/qt4/GuiView.cpp:3998
 msgid "Revert to saved document?"
@@ -35565,6 +35736,15 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Language Default"
+#~ msgstr "Štandardné pre daný jazyk"
+
+#~ msgid "Language Default (no inputenc)"
+#~ msgstr "Štandardné pre daný jazyk (bez inputenc)"
+
+#~ msgid "Do not load inputenc"
+#~ msgstr "Nezahrnúť inputenc"
 
 #~ msgid "utf8 (default)"
 #~ msgstr "utf8 (štandard)"
@@ -40536,3 +40716,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "utf8 (pass-through)"
 #~ msgstr "utf8 (prechádzajúce)"
+
+#~ msgid "Legacy (auto-selected)"
+#~ msgstr "Pôvodné (automaticky vybrané)"
