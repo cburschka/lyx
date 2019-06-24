@@ -10873,11 +10873,11 @@ msgstr "Naše číslo:"
 
 #: lib/layouts/dinbrief.layout:114
 msgid "Writer"
-msgstr "Referenta"
+msgstr "Pisár"
 
 #: lib/layouts/dinbrief.layout:116
 msgid "Writer:"
-msgstr "Referent:"
+msgstr "Pisár:"
 
 #: lib/layouts/dinbrief.layout:120 lib/layouts/frletter.layout:41
 #: lib/layouts/g-brief.layout:60 lib/layouts/g-brief2.layout:954
@@ -13788,19 +13788,19 @@ msgstr "DRS"
 
 #: lib/layouts/linguistics.module:260
 msgid "Discourse Representation Structure|D"
-msgstr "Prednášková reprezentačná štruktúra|d"
+msgstr "Diskursová reprezentujúca štruktúra|d"
 
 #: lib/layouts/linguistics.module:272 lib/layouts/linguistics.module:419
 msgid "Referents"
-msgstr "Referenti"
+msgstr "Referenty"
 
 #: lib/layouts/linguistics.module:273 lib/layouts/linguistics.module:420
 msgid "DRS Referents"
-msgstr "DRS-referenti"
+msgstr "DRS-referenty"
 
 #: lib/layouts/linguistics.module:274 lib/layouts/linguistics.module:421
 msgid "Add the DRS referents (universe) here"
-msgstr "Pridajte sem mená DRS-referentov"
+msgstr "Pridajte sem DRS-referentov (universum)"
 
 #: lib/layouts/linguistics.module:281 lib/layouts/linguistics.module:283
 msgid "DRS*"
@@ -13808,7 +13808,7 @@ msgstr "DRS*"
 
 #: lib/layouts/linguistics.module:284
 msgid "Discourse Representation Structure (unspaced)|u"
-msgstr "Prednášková reprezentačná štruktúra (jednoduchá)|u"
+msgstr "Diskursová reprezentujúca štruktúra (jednoduchá)|u"
 
 #: lib/layouts/linguistics.module:289
 msgid "IfThen-DRS"
@@ -13821,41 +13821,41 @@ msgstr "Implikačná DRS"
 #: lib/layouts/linguistics.module:296 lib/layouts/linguistics.module:331
 #: lib/layouts/linguistics.module:375
 msgid "Then-Referents"
-msgstr "Tak-referenti"
+msgstr "Konsekvent-referenty"
 
 # Implikácia Keď -> tak
 #: lib/layouts/linguistics.module:297 lib/layouts/linguistics.module:306
 #: lib/layouts/linguistics.module:332 lib/layouts/linguistics.module:341
 #: lib/layouts/linguistics.module:376 lib/layouts/linguistics.module:385
 msgid "DRS Then-Referents"
-msgstr "DRS-\"tak\"-referenti"
+msgstr "DRS-konsekvent-referenty"
 
 #: lib/layouts/linguistics.module:298 lib/layouts/linguistics.module:333
 #: lib/layouts/linguistics.module:377
 msgid "Add the DRS then-referents (universe) here"
-msgstr "Dajte sem mená DRS-\"tak\"-referentov"
+msgstr "Dajte sem DRS-konsekvent-referenty (universum)"
 
 #: lib/layouts/linguistics.module:305 lib/layouts/linguistics.module:340
 #: lib/layouts/linguistics.module:384
 msgid "Then-Conditions"
-msgstr "Tak podmienky"
+msgstr "Podmienky konsekventu"
 
 #: lib/layouts/linguistics.module:307 lib/layouts/linguistics.module:342
 #: lib/layouts/linguistics.module:386
 msgid "Add the DRS then-conditions here"
-msgstr "Dajte sem DRS-tak podmienky"
+msgstr "Dajte sem DRS-podmienky konsekventu"
 
 #: lib/layouts/linguistics.module:315
 msgid "Cond-DRS"
-msgstr "Kond.-DRS"
+msgstr "Podmienková-DRS"
 
 #: lib/layouts/linguistics.module:317
 msgid "Cond. DRS"
-msgstr "Kond. DRS"
+msgstr "Podmienková DRS"
 
 #: lib/layouts/linguistics.module:318
 msgid "Conditional DRS"
-msgstr "Podmienená DRS"
+msgstr "Podmienková DRS"
 
 #: lib/layouts/linguistics.module:322
 msgid "Cond."
@@ -13875,11 +13875,11 @@ msgstr "QDRS"
 
 #: lib/layouts/linguistics.module:352
 msgid "Dupl. Cond. DRS"
-msgstr "Dupl. podmienená DRS"
+msgstr "Dupl. podmienková DRS"
 
 #: lib/layouts/linguistics.module:353
 msgid "Duplex Condition DRS"
-msgstr "Duplexná podmienka DRS"
+msgstr "Duplexná podmienková DRS"
 
 #: lib/layouts/linguistics.module:357
 msgid "Quant."
@@ -13899,11 +13899,11 @@ msgstr "Quant. Var."
 
 #: lib/layouts/linguistics.module:367
 msgid "DRS Quantifier Variable"
-msgstr "Premenná pre DRS kvantifikátor"
+msgstr "Premenná DRS kvantifikátora"
 
 #: lib/layouts/linguistics.module:368
 msgid "Add the DRS duplex quantifier variables here"
-msgstr "Dajte sem DRS-premenné pre duplexné kvantifikátory"
+msgstr "Dajte sem DRS-premenné duplexných kvantifikátorov"
 
 #: lib/layouts/linguistics.module:395
 msgid "NegDRS"
