@@ -275,7 +275,7 @@ if(LYX_USE_QT MATCHES "QT5")
     set(lyx_qt5_config "QtCore/qconfig.h")
   endif()
   if(WIN32)
-    set(QT_USES_X11 OFF BOOL CACHE "Win32 compiled without X11")
+    set(QT_USES_X11 OFF CACHE BOOL "Win32 compiled without X11")
     # The try_run for minngw would not work here anyway
   else()
     check_cxx_source_runs(
