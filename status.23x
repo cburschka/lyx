@@ -57,6 +57,9 @@ The "Rows & Columns" optional submenu has been added to the math context menu.
 
 - Fix endless loop when a macro definition references itself (bug 11595).
 
+- Use the selection as the argument of a macro also when the macro has only
+  optional arguments (bug 10498).
+
 
 * INTERNALS
 
