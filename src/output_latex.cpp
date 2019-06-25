@@ -1142,7 +1142,7 @@ void TeXOnePar(Buffer const & buf,
 	if (localswitch_needed
 	    || (intitle_command && using_begin_end)
 	    || closing_rtl_ltr_environment
-	    || ((runparams.isLastPar || close_lang_switch)
+	    || (((runparams.isLastPar && !runparams.inbranch) || close_lang_switch)
 	        && (par_lang != outer_lang || (using_begin_end
 						&& style.isEnvironment()
 						&& par_lang != nextpar_lang)))) {
@@ -1546,14 +1546,23 @@ void latexParagraphs(Buffer const & buf,
 		state->open_encoding_ = none;
 	}
 	// Likewise for polyglossia or when using begin/end commands
+	// or after an active branch inset with a language switch
+	Language const * const outer_language = (runparams.local_font != 0)
+			? runparams.local_font->language() : bparams.language;
+	string const & prev_lang = runparams.use_polyglossia
+			? getPolyglossiaEnvName(outer_language)
+			: outer_language->babel();
 	string const & cur_lang = openLanguageName(state);
-	if (maintext && !is_child && !cur_lang.empty()) {
+	if (((runparams.inbranch && langOpenedAtThisLevel(state) && prev_lang != cur_lang)
+	     || (maintext && !is_child)) && !cur_lang.empty()) {
 		os << from_utf8(subst(lang_end_command,
 					"$$lang",
 					cur_lang))
 		   << '\n';
 		if (using_begin_end)
 			popLanguageName();
+	} else if (runparams.inbranch && !using_begin_end && prev_lang != cur_lang) {
+		os << subst(lang_begin_command, "$$lang", prev_lang) << '\n';
 	}
 
 	// reset inherited encoding
