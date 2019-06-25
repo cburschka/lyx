@@ -2077,7 +2077,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 							Encodings::MATH_CMD | Encodings::TEXT_CMD,
 							is_combining, termination);
 					}
-					if (c) {
+					if (c && buf->params().encoding().encodable(c)) {
 						if (termination) {
 							if (nextToken().cat() == catBegin) {
 								getToken();

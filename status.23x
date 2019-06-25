@@ -54,6 +54,10 @@ Avoid using text mode for unicode symbols representable in math mode (bug 9616).
 
 - Avoid superfluous braces in the optional argument of a macro (bug 11552).
 
+- Do not replace a latex command with the corresponding symbol in the
+  unicodesymbols file, unless it can be encoded in the document encoding
+  (bug 11586).
+
 
 * USER INTERFACE
 
