@@ -20,6 +20,14 @@
 #include <QMouseEvent>
 #include <QTimer>
 
+#ifdef Q_OS_MAC
+/* Qt on macOS does not respect the Qt::WA_OpaquePaintEvent attribute
+ * and resets the widget backing store at each update. Therefore, we
+ * use our own backing store in this case */
+#define LYX_BACKINGSTORE 1
+#include <QPainter>
+#endif
+
 namespace lyx {
 
 class Buffer;
@@ -99,12 +107,37 @@ struct GuiWorkArea::Private
 
 	void paintPreeditText(GuiPainter & pain);
 
-	/// Prepare screen for next painting
-	void resetScreen();
-	/// Where painting takes place
-	QPaintDevice * screenDevice();
-	/// Put backingstore to screen if necessary
-	void updateScreen(QRectF const & rc);
+	void resetScreen() {
+#ifdef LYX_BACKINGSTORE
+		int const pr = p->pixelRatio();
+		screen_ = QImage(static_cast<int>(pr * p->viewport()->width()),
+		                 static_cast<int>(pr * p->viewport()->height()),
+		                 QImage::Format_ARGB32_Premultiplied);
+#  if QT_VERSION >= 0x050000
+		screen_.setDevicePixelRatio(pr);
+#  endif
+#endif
+	}
+
+	QPaintDevice * screenDevice() {
+#ifdef LYX_BACKINGSTORE
+		return &screen_;
+#else
+		return p->viewport();
+#endif
+	}
+
+#ifdef LYX_BACKINGSTORE
+	void updateScreen(QRectF const & rc) {
+		QPainter qpain(p->viewport());
+		double const pr = p->pixelRatio();
+		QRectF const rcs = QRectF(rc.x() * pr, rc.y() * pr,
+		                          rc.width() * pr, rc.height() * pr);
+		qpain.drawImage(rc, screen_, rcs);
+	}
+#else
+	void updateScreen(QRectF const & ) {}
+#endif
 
 	///
 	GuiWorkArea * p;
@@ -113,11 +146,10 @@ struct GuiWorkArea::Private
 	///
 	GuiView * lyx_view_;
 
-	/// Do we need an intermediate image when painting (for now macOS and Wayland)
-	bool use_backingstore_;
+#ifdef LYX_BACKINGSTORE
 	///
 	QImage screen_;
-
+#endif
 	///
 	CaretWidget * caret_;
 	/// is the caret currently displayed

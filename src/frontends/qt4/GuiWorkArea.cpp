@@ -235,27 +235,13 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 
 
 GuiWorkArea::Private::Private(GuiWorkArea * parent)
-: p(parent), buffer_view_(0), lyx_view_(0), caret_(0),
-  caret_visible_(false), need_resize_(false), preedit_lines_(1),
-  last_pixel_ratio_(1.0), completer_(new GuiCompleter(p, p)),
-  dialog_mode_(false), shell_escape_(false), read_only_(false),
-  clean_(true), externally_modified_(false)
+: p(parent), buffer_view_(0), lyx_view_(0),
+  caret_(0), caret_visible_(false),
+  need_resize_(false), preedit_lines_(1),
+  last_pixel_ratio_(1.0),
+  completer_(new GuiCompleter(p, p)), dialog_mode_(false), shell_escape_(false),
+  read_only_(false), clean_(true), externally_modified_(false)
 {
-/* Qt on macOS and Wayland does not respect the
- * Qt::WA_OpaquePaintEvent attribute and resets the widget backing
- * store at each update. Therefore, we use our own backing store in
- * these two cases. */
-#if QT_VERSION >= 0x050000
-	use_backingstore_ = guiApp->platformName() == "cocoa"
-	                    || guiApp->platformName() == "wayland";
-#else
-#  ifdef Q_OS_MAC
-	use_backingstore_ = true;
-#  else
-	use_backingstore_ = false;
-#  endif
-#endif
-
 	int const time = QApplication::cursorFlashTime() / 2;
 	if (time > 0) {
 		caret_timeout_.setInterval(time);
@@ -1271,41 +1257,6 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 
 		// draw one character and update cur_x.
 		cur_x += pain.preeditText(cur_x, cur_y, typed_char, font, ps);
-	}
-}
-
-
-void GuiWorkArea::Private::resetScreen()
-{
-	if (use_backingstore_) {
-		int const pr = p->pixelRatio();
-		screen_ = QImage(static_cast<int>(pr * p->viewport()->width()),
-		                 static_cast<int>(pr * p->viewport()->height()),
-		                 QImage::Format_ARGB32_Premultiplied);
-#  if QT_VERSION >= 0x050000
-		screen_.setDevicePixelRatio(pr);
-#  endif
-	}
-}
-
-
-QPaintDevice * GuiWorkArea::Private::screenDevice()
-{
-	if (use_backingstore_)
-		return &screen_;
-	else
-		return p->viewport();
-}
-
-
-void GuiWorkArea::Private::updateScreen(QRectF const & rc)
-{
-	if (use_backingstore_) {
-		QPainter qpain(p->viewport());
-		double const pr = p->pixelRatio();
-		QRectF const rcs = QRectF(rc.x() * pr, rc.y() * pr,
-		                          rc.width() * pr, rc.height() * pr);
-		qpain.drawImage(rc, screen_, rcs);
 	}
 }
 
