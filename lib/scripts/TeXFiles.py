@@ -116,7 +116,17 @@ for type in types:
         if not os.path.isdir(dir):
             continue
         # walk down the file hierarchy
-        for root,path,files in os.walk(dir):
+        visited = set()
+        for root,dirs,files in os.walk(dir, followlinks=True):
+            # prevent inifinite recursion
+            recurse = []
+            for dir in dirs:
+                st = os.stat(os.path.join(root, dir))
+                key = st.st_dev, st.st_ino
+                if key not in visited:
+                    visited.add(key)
+                    recurse.append(dir)
+            dirs[:] = recurse
             # check file type
             for file in files:
                 if len(file) > 4 and file[-4:] == file_ext:
