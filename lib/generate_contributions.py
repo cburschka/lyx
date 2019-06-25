@@ -1679,6 +1679,14 @@ contributors = [
                  "29 January 2007",
                  u"Various bug fixes"),
 
+     contributor(u"Michael Roitzsch",
+                 "reactorcontrol () icloud ! com",
+                 "GPL",
+                 "Re: TeXFiles.py compatibility with Nix on macOS",
+                 "m=156146891826580",
+                 "25 June 2019",
+                 u"Fixes for the Nix package manager"),
+
      contributor(u"Jim Rotmalm",
                  "jim.rotmalm () gmail ! com",
                  "GPL",
