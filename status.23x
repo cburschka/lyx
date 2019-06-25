@@ -52,6 +52,8 @@ Avoid using text mode for unicode symbols representable in math mode (bug 9616).
 
 - Avoid adding spaces when parsing an array in a macro template (bug 10499).
 
+- Avoid superfluous braces in the optional argument of a macro (bug 11552).
+
 
 * USER INTERFACE
 
