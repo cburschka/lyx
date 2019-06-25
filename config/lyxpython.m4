@@ -18,7 +18,7 @@ AC_DEFUN([LYX_PATH_PYTHON23],
   m4_define(py2_ver, [patsubst($1,[\.],[,])])
   m4_define(py3_ver, [patsubst($2,[\.],[,])])
 
-  m4_define_default([_AM_PYTHON_INTERPRETER_LIST], [python3 python2])
+  m4_define_default([_AM_PYTHON_INTERPRETER_LIST], [python3 python2 python])
 
     if test -n "$PYTHON"; then
       # If the user set $PYTHON, use it and don't search something else.
