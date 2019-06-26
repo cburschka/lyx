@@ -970,39 +970,39 @@ GuiDocument::GuiDocument(GuiView & lv)
 	langModule->encodingCO->addItem(qt_("Traditional (auto-selected)"));
 	langModule->encodingCO->addItem(qt_("Custom"));
 	langModule->encodingCO->setItemData(EncodingSets::unicode,
-		"Select Unicode (utf8) encoding.", Qt::ToolTipRole);
+		qt_("Select Unicode (utf8) encoding."), Qt::ToolTipRole);
 	langModule->encodingCO->setItemData(EncodingSets::legacy,
-		"Use language-dependent legacy encodings.", Qt::ToolTipRole);
+		qt_("Use language-dependent legacy encodings."), Qt::ToolTipRole);
 	langModule->encodingCO->setItemData(EncodingSets::custom,
-		"Select a custom, document-wide encoding.", Qt::ToolTipRole);
+		qt_("Select a custom, document-wide encoding."), Qt::ToolTipRole);
 
 	// basic Unicode encodings: keep order
 	const QStringList utf8_base_encodings = {"utf8", "utf8-plain", "utf8x"};
 	for (auto const & i : utf8_base_encodings) {
 		langModule->unicodeEncodingCO->addItem(
-				toqstr(encodings.fromLyXName(fromqstr(i))->guiName()), i);
+					qt_(encodings.fromLyXName(fromqstr(i))->guiName()), i);
 	}
 	langModule->unicodeEncodingCO->setItemData(0,
-		"Standard Unicode support by the ``inputenc'' package.",
+		qt_("Standard Unicode support by the ``inputenc'' package."),
 		Qt::ToolTipRole);
 	langModule->unicodeEncodingCO->setItemData(1,
-		"Use UTF-8 'as-is': do not load any supporting packages, "
-		"do not convert any characters to LaTeX macros. "
-		"For use with non-TeX fonts (XeTeX/LuaTeX) or custom preamble code.",
+		qt_("Use UTF-8 'as-is': do not load any supporting packages, "
+			"do not convert any characters to LaTeX macros. "
+			"For use with non-TeX fonts (XeTeX/LuaTeX) or custom preamble code."),
 		Qt::ToolTipRole);
 	langModule->unicodeEncodingCO->setItemData(2,
-		"Load ``inputenc'' with option 'utf8x' "
-		"for extended Unicode support by the ``ucs'' package.",
+		qt_("Load ``inputenc'' with option 'utf8x' "
+			"for extended Unicode support by the ``ucs'' package."),
 		Qt::ToolTipRole);
-	langModule->autoEncodingCO->addItem(toqstr("Language Default"), toqstr("auto-legacy"));
-	langModule->autoEncodingCO->addItem(toqstr("Language Default (no inputenc)"), toqstr("auto-legacy-plain"));
+	langModule->autoEncodingCO->addItem(qt_("Language Default"), toqstr("auto-legacy"));
+	langModule->autoEncodingCO->addItem(qt_("Language Default (no inputenc)"), toqstr("auto-legacy-plain"));
 	langModule->autoEncodingCO->setItemData(0,
-		"Use the legacy default encoding of the text language. Switch encoding "
-		"if a text part is set to a language with different default.",
+		qt_("Use the legacy default encoding of the text language. Switch encoding "
+			"if a text part is set to a language with different default."),
 		Qt::ToolTipRole);
 	langModule->autoEncodingCO->setItemData(1,
-		"Do not load the 'inputenc' package. Switch encoding if required "
-		"but do not write input encoding switch commands to the source.",
+		qt_("Do not load the 'inputenc' package. Switch encoding if required "
+			"but do not write input encoding switch commands to the source."),
 		Qt::ToolTipRole);
 	// sort encodings
 	QMap<QString,QString> encodingmap;
@@ -1029,15 +1029,15 @@ GuiDocument::GuiDocument(GuiView & lv)
 		langModule->unicodeEncodingCO->minimumSizeHint());
 
 	langModule->languagePackageCO->addItem(
-		toqstr("Default"), toqstr("default"));
+		qt_("Default"), toqstr("default"));
 	langModule->languagePackageCO->addItem(
-		toqstr("Automatic"), toqstr("auto"));
+		qt_("Automatic"), toqstr("auto"));
 	langModule->languagePackageCO->addItem(
-		toqstr("Always Babel"), toqstr("babel"));
+		qt_("Always Babel"), toqstr("babel"));
 	langModule->languagePackageCO->addItem(
-		toqstr("Custom"), toqstr("custom"));
+		qt_("Custom"), toqstr("custom"));
 	langModule->languagePackageCO->addItem(
-		toqstr("None[[language package]]"), toqstr("none"));
+		qt_("None[[language package]]"), toqstr("none"));
 
 
 	// fonts
