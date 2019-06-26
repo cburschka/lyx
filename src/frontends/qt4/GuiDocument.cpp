@@ -978,9 +978,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	// basic Unicode encodings: keep order
 	const QStringList utf8_base_encodings = {"utf8", "utf8-plain", "utf8x"};
-    for (auto const & i : utf8_base_encodings) {
-        langModule->unicodeEncodingCO->addItem(
-			toqstr(encodings.fromLyXName(fromqstr(i))->guiName()), i);
+	for (auto const & i : utf8_base_encodings) {
+		langModule->unicodeEncodingCO->addItem(
+				toqstr(encodings.fromLyXName(fromqstr(i))->guiName()), i);
 	}
 	langModule->unicodeEncodingCO->setItemData(0,
 		"Standard Unicode support by the ``inputenc'' package.",
@@ -1012,8 +1012,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		    || utf8_base_encodings.contains(toqstr(encvar.name())))
 			continue;
 		if (std::string(encvar.name()).find("utf8") == 0)
-		    encodingmap_utf8.insert(toqstr(encvar.guiName()), toqstr(encvar.name()));
-        else
+			encodingmap_utf8.insert(toqstr(encvar.guiName()), toqstr(encvar.name()));
+		else
 			encodingmap.insert(toqstr(encvar.guiName()), toqstr(encvar.name()));
 	}
 	for (auto const & i : encodingmap_utf8.keys()) {
@@ -2343,6 +2343,10 @@ void GuiDocument::encodingSwitched(int i)
 	langModule->unicodeEncodingCO->setVisible(i == EncodingSets::unicode);
 	langModule->autoEncodingCO->setVisible(i == EncodingSets::legacy);
 	langModule->customEncodingCO->setVisible(i == EncodingSets::custom);
+	if (tex_fonts)
+		langModule->unicodeEncodingCO->setItemText(1, qt_("Direct (No inputenc)"));
+	else
+		langModule->unicodeEncodingCO->setItemText(1, qt_("Direct (XeTeX/LuaTeX)"));
 }
 
 void GuiDocument::inputencodingToDialog()

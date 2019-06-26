@@ -239,7 +239,7 @@ End
 # A plain utf8 encoding that does not use the inputenc package
 # nor the LyX-added conversions in lib/unicodesymbols.
 # Such an encoding is required for XeTeX and LuaTeX.
-Encoding utf8-plain utf8-plain "Pass-Through" UTF-8 variable none
+Encoding utf8-plain utf8-plain "Direct" UTF-8 variable none
 End
 
 # Pure 7bit ASCII encoding (partially hardcoded in LyX)
