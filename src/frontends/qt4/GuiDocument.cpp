@@ -972,7 +972,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	langModule->encodingCO->setItemData(EncodingSets::unicode,
 		qt_("Select Unicode (utf8) encoding."), Qt::ToolTipRole);
 	langModule->encodingCO->setItemData(EncodingSets::legacy,
-		qt_("Use language-dependent legacy encodings."), Qt::ToolTipRole);
+		qt_("Use language-dependent traditional encodings."), Qt::ToolTipRole);
 	langModule->encodingCO->setItemData(EncodingSets::custom,
 		qt_("Select a custom, document-wide encoding."), Qt::ToolTipRole);
 
@@ -997,7 +997,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	langModule->autoEncodingCO->addItem(qt_("Language Default"), toqstr("auto-legacy"));
 	langModule->autoEncodingCO->addItem(qt_("Language Default (no inputenc)"), toqstr("auto-legacy-plain"));
 	langModule->autoEncodingCO->setItemData(0,
-		qt_("Use the legacy default encoding of the text language. Switch encoding "
+		qt_("Use the traditional default encoding of the text language. Switch encoding "
 			"if a text part is set to a language with different default."),
 		Qt::ToolTipRole);
 	langModule->autoEncodingCO->setItemData(1,
