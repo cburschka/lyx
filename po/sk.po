@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-06-23 14:40+0200\n"
-"PO-Revision-Date: 2019-06-23 18:14+0000\n"
+"POT-Creation-Date: 2019-06-26 10:54+0200\n"
+"PO-Revision-Date: 2019-06-26 08:56+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -18724,8 +18724,8 @@ msgid "Extended [pLaTeX] (Japanese)"
 msgstr "Rozšírené [pLaTeX] (Japonské)"
 
 #: lib/encodings:242
-msgid "Pass-Through"
-msgstr "Prechádzajúce"
+msgid "Direct"
+msgstr "Priamo"
 
 #: lib/encodings:170
 msgid "Thai (TIS 620-0)"
@@ -31009,6 +31009,14 @@ msgstr "Preambula LaTeX-u"
 #: src/frontends/qt4/GuiDocument.cpp:1980
 msgid "&Default..."
 msgstr "Štan&dard…"
+
+#: src/frontends/qt4/GuiDocument.cpp:2347
+msgid "Direct (No inputenc)"
+msgstr "Priamo (bez inputenc)"
+
+#: src/frontends/qt4/GuiDocument.cpp:2349
+msgid "Direct (XeTeX/LuaTeX)"
+msgstr "Priamo (XeTeX/LuaTeX)"
 
 #: src/frontends/qt4/GuiDocument.cpp:2284
 #: src/frontends/qt4/GuiDocument.cpp:3871
