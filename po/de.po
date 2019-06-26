@@ -94,16 +94,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-06-26 10:21+0200\n"
-"PO-Revision-Date: 2019-06-26 10:35+0200\n"
+"POT-Creation-Date: 2019-06-26 11:56+0200\n"
+"PO-Revision-Date: 2019-06-26 12:12+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
-"Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
+"Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Gtranslator 3.32.1\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:42
 msgid "Version"
@@ -852,6 +852,7 @@ msgstr "&Größe:"
 #: src/frontends/qt4/GuiCharacter.cpp:192
 #: src/frontends/qt4/GuiCharacter.cpp:243 src/frontends/qt4/GuiDocument.cpp:125
 #: src/frontends/qt4/GuiDocument.cpp:856 src/frontends/qt4/GuiDocument.cpp:874
+#: src/frontends/qt4/GuiDocument.cpp:1032
 #: src/frontends/qt4/GuiDocument.cpp:1101
 #: src/frontends/qt4/GuiDocument.cpp:1147
 #: src/frontends/qt4/GuiDocument.cpp:1158
@@ -3442,6 +3443,7 @@ msgstr "Doppelt"
 #: lib/layouts/stdcustom.inc:8 src/frontends/qt4/FloatPlacement.cpp:185
 #: src/frontends/qt4/GuiDocument.cpp:857 src/frontends/qt4/GuiDocument.cpp:861
 #: src/frontends/qt4/GuiDocument.cpp:869 src/frontends/qt4/GuiDocument.cpp:971
+#: src/frontends/qt4/GuiDocument.cpp:1038
 #: src/frontends/qt4/GuiDocument.cpp:1108
 #: src/frontends/qt4/GuiDocument.cpp:1159
 #: src/frontends/qt4/GuiDocument.cpp:1497 src/frontends/qt4/GuiHSpace.cpp:56
@@ -4191,6 +4193,7 @@ msgid "Language &package:"
 msgstr "Sprach&paket:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:56
+#: src/frontends/qt4/GuiDocument.cpp:1034
 #: src/frontends/qt4/GuiDocument.cpp:1106
 #: src/frontends/qt4/GuiDocument.cpp:2572 src/frontends/qt4/GuiPrefs.cpp:814
 #: src/frontends/qt4/GuiPrefs.cpp:842
@@ -4198,10 +4201,12 @@ msgid "Automatic"
 msgstr "Automatisch"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:61
+#: src/frontends/qt4/GuiDocument.cpp:1036
 msgid "Always Babel"
 msgstr "Immer Babel"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:71
+#: src/frontends/qt4/GuiDocument.cpp:1040
 msgid "None[[language package]]"
 msgstr "Keines"
 
@@ -16635,6 +16640,34 @@ msgstr "Kapitel \\thechapter"
 msgid "Appendix \\thechapter"
 msgstr "Anhang \\thechapter"
 
+#: lib/layouts/stdspecialchars.inc:8 lib/ui/stdmenus.inc:463
+msgid "Ligature Break|k"
+msgstr "Ligaturtrenner|r"
+
+#: lib/layouts/stdspecialchars.inc:17 lib/ui/stdmenus.inc:415
+msgid "End of Sentence|E"
+msgstr "Satzendepunkt|S"
+
+#: lib/layouts/stdspecialchars.inc:26 lib/ui/stdmenus.inc:414
+msgid "Ellipsis|i"
+msgstr "Fortsetzungspunkte|F"
+
+#: lib/layouts/stdspecialchars.inc:36 lib/ui/stdmenus.inc:421
+msgid "Menu Separator|M"
+msgstr "Menütrenner|M"
+
+#: lib/layouts/stdspecialchars.inc:49 lib/ui/stdmenus.inc:462
+msgid "Hyphenation Point|H"
+msgstr "Trennmöglichkeit|ö"
+
+#: lib/layouts/stdspecialchars.inc:56 lib/ui/stdmenus.inc:419
+msgid "Breakable Slash|a"
+msgstr "Umbruchfähiger Schrägstrich|ä"
+
+#: lib/layouts/stdspecialchars.inc:65 lib/ui/stdmenus.inc:418
+msgid "Protected Hyphen|y"
+msgstr "Geschützter Trennstrich|T"
+
 #: lib/layouts/subequations.module:2 lib/layouts/subequations.module:11
 #: lib/layouts/subequations.module:14
 msgid "Subequations"
@@ -20544,14 +20577,6 @@ msgstr "Eingebettete Vorschau|i"
 msgid "Symbols...|b"
 msgstr "Symbole...|b"
 
-#: lib/ui/stdmenus.inc:414
-msgid "Ellipsis|i"
-msgstr "Fortsetzungspunkte|F"
-
-#: lib/ui/stdmenus.inc:415
-msgid "End of Sentence|E"
-msgstr "Satzendepunkt|S"
-
 #: lib/ui/stdmenus.inc:416
 msgid "Plain Quotation Mark|Q"
 msgstr "Nicht-typographisches Anführungszeichen|N"
@@ -20560,21 +20585,9 @@ msgstr "Nicht-typographisches Anführungszeichen|N"
 msgid "Inner Quotation Mark|n"
 msgstr "Inneres Anführungszeichen|I"
 
-#: lib/ui/stdmenus.inc:418
-msgid "Protected Hyphen|y"
-msgstr "Geschützter Trennstrich|T"
-
-#: lib/ui/stdmenus.inc:419
-msgid "Breakable Slash|a"
-msgstr "Umbruchfähiger Schrägstrich|ä"
-
 #: lib/ui/stdmenus.inc:420
 msgid "Visible Space|V"
 msgstr "Sichtbares Leerzeichen|L"
-
-#: lib/ui/stdmenus.inc:421
-msgid "Menu Separator|M"
-msgstr "Menütrenner|M"
 
 #: lib/ui/stdmenus.inc:422
 msgid "Phonetic Symbols|P"
@@ -20671,14 +20684,6 @@ msgstr "Vertikaler Abstand...|V"
 #: lib/ui/stdmenus.inc:460
 msgid "Phantom|m"
 msgstr "Phantom|m"
-
-#: lib/ui/stdmenus.inc:462
-msgid "Hyphenation Point|H"
-msgstr "Trennmöglichkeit|ö"
-
-#: lib/ui/stdmenus.inc:463
-msgid "Ligature Break|k"
-msgstr "Ligaturtrenner|r"
 
 #: lib/ui/stdmenus.inc:464
 msgid "Optional Line Break|B"
@@ -26369,32 +26374,32 @@ msgid "External Material"
 msgstr "Externes Material"
 
 #: lib/examples/Articles:0
-msgid "XY-Pic"
-msgstr "XY-Pic"
-
-#: lib/examples/Articles:0
-msgid "Minted Listings"
-msgstr "Minted-Programmlistings"
+msgid "Instant Preview"
+msgstr "Sofortige Vorschau"
 
 #: lib/examples/Articles:0
 msgid "XY-Figure"
 msgstr "XY-Figure"
 
 #: lib/examples/Articles:0
-msgid "Feynman Diagrams"
-msgstr "Feynman-Diagramme"
-
-#: lib/examples/Articles:0
 msgid "Minted File Listing"
 msgstr "Minted-Programmlistings (Dateien)"
 
 #: lib/examples/Articles:0
-msgid "Instant Preview"
-msgstr "Sofortige Vorschau"
+msgid "Feynman Diagrams"
+msgstr "Feynman-Diagramme"
 
 #: lib/examples/Articles:0
 msgid "Itemize Bullets"
 msgstr "Auflistungszeichen"
+
+#: lib/examples/Articles:0
+msgid "XY-Pic"
+msgstr "XY-Pic"
+
+#: lib/examples/Articles:0
+msgid "Minted Listings"
+msgstr "Minted-Programmlistings"
 
 #: lib/examples/Articles:0
 msgid "Graphics and Insets"
@@ -26405,36 +26410,36 @@ msgid "Serial Letter 1"
 msgstr "Serienbrief 1"
 
 #: lib/examples/Articles:0
-msgid "Serial Letter 2"
-msgstr "Serienbrief 2"
-
-#: lib/examples/Articles:0
 msgid "Serial Letter 3"
 msgstr "Serienbrief 3"
+
+#: lib/examples/Articles:0
+msgid "Serial Letter 2"
+msgstr "Serienbrief 2"
 
 #: lib/examples/Articles:0
 msgid "Localization Test"
 msgstr "Übersetzungstest"
 
 #: lib/examples/Articles:0
-msgid "Noweb Listerrors"
-msgstr "Noweb-Fehlerbericht"
-
-#: lib/examples/Articles:0
-msgid "Hazard and Precautionary Statements"
-msgstr "H- und P-Sätze"
-
-#: lib/examples/Articles:0
-msgid "Noweb2LyX"
-msgstr "Noweb2LyX"
+msgid "Multilingual Captions"
+msgstr "Mehrsprachige Legenden"
 
 #: lib/examples/Articles:0
 msgid "LilyPond Book"
 msgstr "LilyPond-Buch"
 
 #: lib/examples/Articles:0
-msgid "Multilingual Captions"
-msgstr "Mehrsprachige Legenden"
+msgid "Noweb Listerrors"
+msgstr "Noweb-Fehlerbericht"
+
+#: lib/examples/Articles:0
+msgid "Noweb2LyX"
+msgstr "Noweb2LyX"
+
+#: lib/examples/Articles:0
+msgid "Hazard and Precautionary Statements"
+msgstr "H- und P-Sätze"
 
 #: lib/examples/Articles:0 src/frontends/qt4/GuiDocument.cpp:1722
 msgid "Modules"
@@ -26465,92 +26470,92 @@ msgid "Multilingual Typesetting with platex"
 msgstr "Mehrsprachige Dokumente mit platex"
 
 #: lib/examples/Articles:0
-msgid "Springers Global Journal Template (V. 3)"
-msgstr "Springers globale Vorlage für Zeitschriften (V. 3)"
-
-#: lib/examples/Articles:0
 msgid "IEEE Transactions Journal"
 msgstr "IEEE Transactions Journal"
-
-#: lib/examples/Articles:0
-msgid "IEEE Transactions Conference"
-msgstr "IEEE Transactions Conference"
 
 #: lib/examples/Articles:0
 msgid "Mathematical Monthly"
 msgstr "Mathematical Monthly"
 
 #: lib/examples/Articles:0
-msgid "04 Acknowledgements"
-msgstr "04 Danksagungen"
+msgid "Springers Global Journal Template (V. 3)"
+msgstr "Springers globale Vorlage für Zeitschriften (V. 3)"
 
 #: lib/examples/Articles:0
-msgid "07 Part"
-msgstr "07 Teil"
-
-#: lib/examples/Articles:0
-msgid "08 Author"
-msgstr "08 Autor"
-
-#: lib/examples/Articles:0
-msgid "03 Preface"
-msgstr "03 Vorwort"
-
-#: lib/examples/Articles:0
-msgid "09 Appendix"
-msgstr "09 Anhang"
-
-#: lib/examples/Articles:0
-msgid "02 Foreword"
-msgstr "02 Vorwort"
+msgid "IEEE Transactions Conference"
+msgstr "IEEE Transactions Conference"
 
 #: lib/examples/Articles:0
 msgid "01 Dedication"
 msgstr "01 Widmung"
 
 #: lib/examples/Articles:0
-msgid "06 Acronym"
-msgstr "06 Akronyme"
-
-#: lib/examples/Articles:0
-msgid "05 Contributor List"
-msgstr "05 Liste der Mitwirkenden"
-
-#: lib/examples/Articles:0
-msgid "10 Glossary"
-msgstr "10 Glossar"
-
-#: lib/examples/Articles:0
 msgid "00 Main File"
 msgstr "00 Hauptdatei"
-
-#: lib/examples/Articles:0
-msgid "11 References"
-msgstr "11 Literaturverzeichnis"
 
 #: lib/examples/Articles:0
 msgid "08 Appendix"
 msgstr "08 Anhang"
 
 #: lib/examples/Articles:0
-msgid "10 Solutions"
-msgstr "10 Lösungen"
-
-#: lib/examples/Articles:0
-msgid "06 Part"
-msgstr "06 Teil"
+msgid "02 Foreword"
+msgstr "02 Vorwort"
 
 #: lib/examples/Articles:0
 msgid "07 Chapter"
 msgstr "07 Kapitel"
 
 #: lib/examples/Articles:0
-msgid "09 Glossary"
-msgstr "09 Glossar"
+msgid "11 References"
+msgstr "11 Literaturverzeichnis"
+
+#: lib/examples/Articles:0
+msgid "03 Preface"
+msgstr "03 Vorwort"
 
 #: lib/examples/Articles:0
 msgid "05 Acronym"
 msgstr "05 Akronyme"
+
+#: lib/examples/Articles:0
+msgid "09 Glossary"
+msgstr "09 Glossar"
+
+#: lib/examples/Articles:0
+msgid "06 Part"
+msgstr "06 Teil"
+
+#: lib/examples/Articles:0
+msgid "10 Solutions"
+msgstr "10 Lösungen"
+
+#: lib/examples/Articles:0
+msgid "04 Acknowledgements"
+msgstr "04 Danksagungen"
+
+#: lib/examples/Articles:0
+msgid "10 Glossary"
+msgstr "10 Glossar"
+
+#: lib/examples/Articles:0
+msgid "08 Author"
+msgstr "08 Autor"
+
+#: lib/examples/Articles:0
+msgid "06 Acronym"
+msgstr "06 Akronyme"
+
+#: lib/examples/Articles:0
+msgid "07 Part"
+msgstr "07 Teil"
+
+#: lib/examples/Articles:0
+msgid "09 Appendix"
+msgstr "09 Anhang"
+
+#: lib/examples/Articles:0
+msgid "05 Contributor List"
+msgstr "05 Liste der Mitwirkenden"
 
 #: lib/examples/Articles:0
 msgid "Simple"
@@ -31388,6 +31393,67 @@ msgstr "Unicode (utf8)"
 #: src/frontends/qt4/GuiDocument.cpp:970
 msgid "Traditional (auto-selected)"
 msgstr "Traditionell (automatisch gewählt)"
+
+#: src/frontends/qt4/GuiDocument.cpp:973
+msgid "Select Unicode (utf8) encoding."
+msgstr "Wählen Sie die passende Unicode-Kodierung"
+
+#: src/frontends/qt4/GuiDocument.cpp:975
+msgid "Use language-dependent traditional encodings."
+msgstr "Verwendet sprachspezifische traditionelle Kodierungen."
+
+#: src/frontends/qt4/GuiDocument.cpp:977
+msgid "Select a custom, document-wide encoding."
+msgstr ""
+"Hiermit können Sie eine benutzerdefinierte dokumentweite Kodierung wählen"
+
+#: src/frontends/qt4/GuiDocument.cpp:986
+msgid "Standard Unicode support by the ``inputenc'' package."
+msgstr "Standard-Unicode-Unterstützung durch das Paket ,,inputenc``."
+
+#: src/frontends/qt4/GuiDocument.cpp:989
+msgid ""
+"Use UTF-8 'as-is': do not load any supporting packages, do not convert any "
+"characters to LaTeX macros. For use with non-TeX fonts (XeTeX/LuaTeX) or "
+"custom preamble code."
+msgstr ""
+"Verwendet Unicode direkt, ohne spezifische Pakete zur Unterstützung. Es "
+"werden auch keine Zeichen in LaTeX-Makros konvertiert. Dieser Modus wird mit "
+"Nicht-TeX-Schriften (XeTeX/LuaTeX) verwendet. Er kann auch bei manuellen "
+"Konfigurationen nützlich sein."
+
+#: src/frontends/qt4/GuiDocument.cpp:994
+msgid ""
+"Load ``inputenc'' with option 'utf8x' for extended Unicode support by the "
+"``ucs'' package."
+msgstr ""
+"Lade ,,inputenc`` mit der Option ,utf8x` für erweiterte Unicode-"
+"Unterstützung (über das Paket ,,ucs``)."
+
+#: src/frontends/qt4/GuiDocument.cpp:997
+msgid "Language Default"
+msgstr "Sprachvoreinstellung"
+
+#: src/frontends/qt4/GuiDocument.cpp:998
+msgid "Language Default (no inputenc)"
+msgstr "Sprachvoreinstellung (ohne inputenc)"
+
+#: src/frontends/qt4/GuiDocument.cpp:1000
+msgid ""
+"Use the traditional default encoding of the text language. Switch encoding "
+"if a text part is set to a language with different default."
+msgstr ""
+"Verwende die traditionelle Standardkodierung der jeweiligen Sprache des "
+"Textes. Die Kodierung wird der jeweiligen Sprache angepasst, auch bei "
+"Sprachwechseln im Dokument."
+
+#: src/frontends/qt4/GuiDocument.cpp:1004
+msgid ""
+"Do not load the 'inputenc' package. Switch encoding if required but do not "
+"write input encoding switch commands to the source."
+msgstr ""
+"Lädt das Paket ,,inputenc`` nicht. Die Kodierung wird zwar, falls nötig, "
+"angepasst, aber es werden keine entsprechenden LaTeX-Makros ausgegeben."
 
 #: src/frontends/qt4/GuiDocument.cpp:1102
 msgid "10"
@@ -36513,9 +36579,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "Traditional (inputenc not loaded)"
 #~ msgstr "Traditionell, lade inputenc nicht"
-
-#~ msgid "Lan&guage default"
-#~ msgstr "&Voreinstellung der gewählten Sprache"
 
 #~ msgid "Othe&r:"
 #~ msgstr "&Andere:"
