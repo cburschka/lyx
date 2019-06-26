@@ -1012,9 +1012,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 		    || utf8_base_encodings.contains(toqstr(encvar.name())))
 			continue;
 		if (std::string(encvar.name()).find("utf8") == 0)
-			encodingmap_utf8.insert(toqstr(encvar.guiName()), toqstr(encvar.name()));
+			encodingmap_utf8.insert(qt_(encvar.guiName()), toqstr(encvar.name()));
 		else
-			encodingmap.insert(toqstr(encvar.guiName()), toqstr(encvar.name()));
+			encodingmap.insert(qt_(encvar.guiName()), toqstr(encvar.name()));
 	}
 	for (auto const & i : encodingmap_utf8.keys()) {
 		langModule->unicodeEncodingCO->addItem(i, encodingmap_utf8.value(i));
