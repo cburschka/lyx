@@ -65,7 +65,7 @@ static string const python23_call(string const & binary, bool verbose = false)
 
 	int major = convert<int>(sm.str(1));
 	int minor = convert<int>(sm.str(2));
-	if((major == 2 && minor < 7) || (major == 3 && minor < 4))
+	if((major == 2 && minor < 7) || (major == 3 && minor < 5))
 		return string();
 
 	if (verbose)
