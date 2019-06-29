@@ -288,17 +288,21 @@ if(UNIX OR MINGW)
 	    #message(STATUS "dumpversion: error = ${_error}, result = ${_err}")
 	  endif()
 	  message(STATUS "Using GCC version ${GCC_VERSION}")
-	  if(GCC_VERSION VERSION_LESS 4.9)
-		  # Drop support for gcc versions prior to 4.9
-		  message(FATAL_ERROR "gcc >= 4.9 is required.")
+	  if(GCC_VERSION VERSION_LESS 4.6)
+		message(FATAL_ERROR "gcc >= 4.6 is required.")
+	  elseif(GCC_VERSION VERSION_LESS 4.9)
+		# <regex> in gcc is unusable in versions less than 4.9.0
+		# see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
+		set(LYX_USE_STD_REGEX 0)
 	  else()
-		  set(LYX_USE_STD_REGEX 1)
+		set(LYX_USE_STD_REGEX 1)
 	  endif()
 	endif()
 	set(LYX_GCC11_MODE "${CXX11_FLAG}")
 else()
-		# Drop support for msvc versions prior to 1915
-		message(FATAL_ERROR "msvc >= 1915 is required.")
+	if(MSVC_VERSION LESS 1900)
+		# Drop support for msvc versions prior to 1900 (Visual Studio 2015)
+		message(FATAL_ERROR "Visual Studio >= 2015 is required.")
 	set(LYX_USE_STD_REGEX 0)
 #	if(MSVC10)
 #		set(LYX_USE_STD_REGEX 1) #TODO should we use it in ECMAScript mode?
