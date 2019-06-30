@@ -42,6 +42,8 @@ General
 * Use the language information provided by Language.cpp and the languages file (for babel/lyx/polyglossia name, quote style etc.)
   instead of hardcoding this information in Preamble.cpp.
 
+* Read unicodesymbols file for LaTeX macros in mathed.
+
 * Store alias commands for characters in a file with
   "lib/unicodesymbols"-format, e.g.
 
