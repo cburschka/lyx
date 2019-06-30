@@ -3741,13 +3741,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		if (t.cs() == "listof") {
 			p.skip_spaces(true);
-			string const name = p.get_token().cs();
+			string const name = p.verbatim_item();
 			if (context.textclass.floats().typeExist(name)) {
 				context.check_layout(os);
 				begin_inset(os, "FloatList ");
 				os << name << "\n";
 				end_inset(os);
-				p.get_token(); // swallow second arg
+				p.verbatim_item(); // swallow second arg
 			} else
 				output_ert_inset(os, "\\listof{" + name + "}", context);
 			continue;
