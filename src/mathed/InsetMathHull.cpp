@@ -213,7 +213,7 @@ InsetMathHull::InsetMathHull(Buffer * buf)
 
 
 InsetMathHull::InsetMathHull(Buffer * buf, HullType type)
-	: InsetMathGrid(buf, getCols(type), 1), type_(type), numbered_(1, NUMBER),
+	: InsetMathGrid(buf, getCols(type), 1), type_(type), numbered_(1, NONUMBER),
 	  numbers_(1, empty_docstring()), label_(1, dummy_pointer),
 	  preview_(new RenderPreview(this))
 {

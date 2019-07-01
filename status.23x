@@ -79,6 +79,9 @@ Avoid using text mode for unicode symbols representable in math mode (bug 9616).
 
 - Correctly close a language opened in a branch inset (bug 9633).
 
+- Fix additional problem with display of inline equations in outliner
+  (bug 11423).
+
 
 * INTERNALS
 
