@@ -32,7 +32,7 @@ from parser_tools import (del_token, del_value, del_complete_lines,
 #  find_tokens, find_token_exact, check_token, get_option_value
 
 from lyx2lyx_tools import (add_to_preamble, put_cmd_in_ert, revert_font_attrs,
-    insert_to_preamble, latex_length, is_document_option, 
+    insert_to_preamble, latex_length, is_document_option,
     insert_document_option, remove_document_option, revert_language)
 
 ####################################################################
@@ -1308,9 +1308,9 @@ def convert_literalparam(document):
             i += 1
         # href is already fully latexified. Here we can switch off literal.
         if inset == "href":
-            document.body.insert(i, "literal \"false\"")
+            document.body.insert(i, 'literal "false"')
         else:
-            document.body.insert(i, "literal \"true\"")
+            document.body.insert(i, 'literal "true"')
         i = j + 1
 
 
@@ -1320,19 +1320,14 @@ def revert_literalparam(document):
     for inset in command_insets:
         i = 0
         while True:
-            i = find_token(document.body, '\\begin_inset CommandInset %s' % inset, i)
+            i = find_token(document.body, '\\begin_inset CommandInset %s' % inset, i+1)
             if i == -1:
                 break
             j = find_end_of_inset(document.body, i)
             if j == -1:
                 document.warning("Malformed LyX document: Can't find end of %s inset at line %d" % (inset, i))
-                i += 1
                 continue
-            k = find_token(document.body, 'literal', i, j)
-            if k == -1:
-                i += 1
-                continue
-            del document.body[k]
+            del_token(document.body, 'literal', i, j)
 
 
 def revert_multibib(document):

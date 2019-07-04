@@ -27,14 +27,15 @@ from datetime import (datetime, date, time)
 # Uncomment only what you need to import, please.
 
 from parser_tools import (count_pars_in_inset, del_token, find_end_of_inset,
-    find_end_of_layout, find_token, find_token_backwards, find_re, get_bool_value,
+    find_end_of_layout, find_token, find_token_backwards, find_token_exact,
+    find_re, get_bool_value,
     get_containing_layout, get_option_value, get_value, get_quoted_value)
 #    del_value, del_complete_lines,
 #    find_complete_lines, find_end_of,
 #    find_re, find_substring,
 #    get_containing_inset,
 #    is_in_inset, set_bool_value
-#    find_tokens, find_token_exact, check_token
+#    find_tokens, check_token
 
 from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble, lyx2latex, revert_language, revert_flex_inset)
 #  revert_font_attrs, insert_to_preamble, latex_length
@@ -52,7 +53,7 @@ def add_preamble_fonts(document, fontmap):
             xoption = "[" + ",".join(fontmap[pkg]) + "]"
         else:
             xoption = ""
-        preamble = "\\usepackage" + xoption + "{%s}" % pkg
+        preamble = "\\usepackage%s{%s}" % (xoption, pkg)
         add_to_preamble(document, [preamble])
 
 
@@ -351,25 +352,30 @@ def removeFrontMatterStyles(document):
     " Remove styles Begin/EndFrontmatter"
 
     layouts = ['BeginFrontmatter', 'EndFrontmatter']
-    for layout in layouts:
-        i = 0
-        while True:
-            i = find_token(document.body, '\\begin_layout ' + layout, i)
-            if i == -1:
-                break
-            j = find_end_of_layout(document.body, i)
-            if j == -1:
-                document.warning("Malformed LyX document: Can't find end of layout at line %d" % i)
-                i += 1
-                continue
-            while i > 0 and document.body[i-1].strip() == '':
-                i -= 1
-            while document.body[j+1].strip() == '':
-                j = j + 1
-            document.body[i:j+1] = ['']
+    tokenend = len('\\begin_layout ')
+    i = 0
+    while True:
+        i = find_token_exact(document.body, '\\begin_layout ', i)
+        if i == -1:
+            return
+        layout = document.body[i][tokenend:].strip()
+        if layout not in layouts:
+            i += 1
+            continue
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of layout at line %d" % i)
+            i += 1
+            continue
+        while document.body[j+1].strip() == '':
+            j += 1
+        document.body[i:j+1] = []
 
 def addFrontMatterStyles(document):
     " Use styles Begin/EndFrontmatter for elsarticle"
+
+    if document.textclass != "elsarticle":
+        return
 
     def insertFrontmatter(prefix, line):
         above = line
@@ -387,31 +393,32 @@ def addFrontMatterStyles(document):
                                     '\\end_inset', '', '',
                                     '\\end_layout', '']
 
-    if document.textclass == "elsarticle":
-        layouts = ['Title', 'Title footnote', 'Author', 'Author footnote',
-                   'Corresponding author', 'Address', 'Email', 'Abstract', 'Keywords']
-        first = -1
-        last = -1
-        for layout in layouts:
-            i = 0
-            while True:
-                i = find_token(document.body, '\\begin_layout ' + layout, i)
-                if i == -1:
-                    break
-                k = find_end_of_layout(document.body, i)
-                if k == -1:
-                    document.warning("Malformed LyX document: Can't find end of layout at line %d" % i)
-                    i += 1;
-                    continue
-                if first == -1 or i < first:
-                    first = i
-                if last == -1 or last <= k:
-                    last = k+1
-                i = k+1
+    layouts = ['Title', 'Title footnote', 'Author', 'Author footnote',
+                'Corresponding author', 'Address', 'Email', 'Abstract', 'Keywords']
+    tokenend = len('\\begin_layout ')
+    first = -1
+    i = 0
+    while True:
+        i = find_token_exact(document.body, '\\begin_layout ', i)
+        if i == -1:
+            break
+        layout = document.body[i][tokenend:].strip()
+        if layout not in layouts:
+            i += 1
+            continue
+        k = find_end_of_layout(document.body, i)
+        if k == -1:
+            document.warning("Malformed LyX document: Can't find end of layout at line %d" % i)
+            i += 1;
+            continue
         if first == -1:
-            return
-        insertFrontmatter('End', last)
-        insertFrontmatter('Begin', first)
+            first = i
+        i = k+1
+    if first == -1:
+        return
+    insertFrontmatter('End', k+1)
+    insertFrontmatter('Begin', first)
+
 
 def convert_lst_literalparam(document):
     " Add param literal to include inset "
@@ -428,7 +435,7 @@ def convert_lst_literalparam(document):
             continue
         while i < j and document.body[i].strip() != '':
             i += 1
-        document.body.insert(i, "literal \"true\"")
+        document.body.insert(i, 'literal "true"')
 
 
 def revert_lst_literalparam(document):
@@ -436,19 +443,14 @@ def revert_lst_literalparam(document):
 
     i = 0
     while True:
-        i = find_token(document.body, '\\begin_inset CommandInset include', i)
+        i = find_token(document.body, '\\begin_inset CommandInset include', i+1)
         if i == -1:
             break
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Can't find end of include inset at line %d" % i)
-            i += 1
             continue
-        k = find_token(document.body, 'literal', i, j)
-        if k == -1:
-            i += 1
-            continue
-        del document.body[k]
+        del_token(document.body, 'literal', i, j)
 
 
 def revert_paratype(document):
@@ -1731,24 +1733,34 @@ def convert_lineno(document):
 def revert_new_languages(document):
     """Emulate support for Azerbaijani, Bengali, Church Slavonic, Korean,
     and Russian (Petrine orthography)."""
-    
-    #revert_language(document, lyxname, babelname="", polyglossianame="")
-    revert_language(document, "azerbaijani", "azerbaijani", "")
-    revert_language(document, "bengali", "", "bengali")
-    revert_language(document, "churchslavonic", "", "churchslavonic")
-    revert_language(document, "oldrussian", "", "russian")
-    
+
+    #                lyxname:          (babelname, polyglossianame)
+    new_languages = {"azerbaijani":    ("azerbaijani", ""),
+                     "bengali":        ("", "bengali"),
+                     "churchslavonic": ("", "churchslavonic"),
+                     "oldrussian":     ("", "russian"),
+                     "korean":         ("", "korean"),
+                    }
+    used_languages = set()
+    if document.language in new_languages:
+        used_languages.add(document.language)
+    i = 0
+    while True:
+        i = find_token(document.body, "\\lang", i+1)
+        if i == -1:
+            break
+        if document.body[i][6:].strip() in new_languages:
+            used_languages.add(document.language)
+
     # Korean is already supported via CJK, so leave as-is for Babel
-    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
-        return
-    langpack = get_value(document.header, "\\language_package")
-    if langpack not in ("default", "auto"):
-        return
-    if document.language == "korean":
-        add_to_preamble(document, ["\\usepackage{polyglossia}",
-                                   "\\setdefaultlanguage{korean}"])
-    elif find_token(document.body, "\\lang korean") != -1:
+    if ("korean" in used_languages
+        and get_bool_value(document.header, "\\use_non_tex_fonts")
+        and get_value(document.header, "\\language_package") in ("default", "auto")):
         revert_language(document, "korean", "", "korean")
+    used_languages.discard("korean")
+
+    for lang in used_languages:
+        revert(lang, *new_languages[lang])
 
 
 gloss_inset_def = [
