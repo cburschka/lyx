@@ -207,8 +207,8 @@
 0x012f "\\k{i}"                   "" "mathalpha,force=euc-jp" "\\ogonek{i}" "accents,tipasymb,ogonek" # LATIN SMALL LETTER I WITH OGONEK
 0x0130 "\\.{I}"                   "" "mathalpha,force=euc-jp" "\\dot{I}" # LATIN CAPITAL LETTER I WITH DOT ABOVE
 0x0131 "\\i"                      "" "mathalpha,force=euc-jp;euc-kr" "\\imath" # LATIN SMALL LETTER DOTLESS I
-0x0132 "\IJ"                      "" "mathalpha,force=utf8x;euc-jp;euc-kr,notermination=math" "IJ" "" # LATIN CAPITAL LIGATURE IJ
-0x0133 "\ij"                      "" "mathalpha,force=utf8x;euc-jp;euc-kr,notermination=math" "ij" "" # LATIN SMALL LIGATURE IJ
+0x0132 "\\IJ"                     "" "mathalpha,force=utf8x;euc-jp;euc-kr,notermination=math" "IJ" "" # LATIN CAPITAL LIGATURE IJ
+0x0133 "\\ij"                     "" "mathalpha,force=utf8x;euc-jp;euc-kr,notermination=math" "ij" "" # LATIN SMALL LIGATURE IJ
 0x0134 "\\^{J}"                   "" "mathalpha,force=euc-jp" "\\hat{J}" # LATIN CAPITAL LETTER J WITH CIRCUMFLEX
 0x0135 "\\^{\\j}"                 "" "mathalpha,force=euc-jp" "\\hat{\\jmath}" "" # LATIN SMALL LETTER J WITH CIRCUMFLEX
 0x0136 "\\c{K}"                   "textbaltic!=L7x" "mathalpha,force=utf8;euc-jp" "\\cedilla{K}" "accents,cedilla" # LATIN CAPITAL LETTER K WITH CEDILLA  (actually a comma accent, Latvian)
