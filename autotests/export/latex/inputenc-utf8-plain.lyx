@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 572
+\lyxformat 577
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -8,10 +8,12 @@
 \begin_preamble
 \@ifpackageloaded{fontspec}{%
   % Unicode fonts, nothing to do
-}{% setup Unicode with 8-bit LaTeX fonts:
+}{% setup for utf-8 with 8-bit LaTeX fonts:
+
   % character-providing packages are not auto-loaded with "utf8-plain"
   \usepackage{textcomp}
 
+  % load "inpuentc":
   \ifdefined\XeTeXinputencoding
     % XeTeX in legacy mode
     \XeTeXinputencoding "bytes" % current file
@@ -20,14 +22,13 @@
     \let\Umathchar\@undefined
     \usepackage[utf8]{inputenc}
     \let\Umathchar\origUmathchar
-  \fi
-  \ifdefined\directlua
-    \usepackage[utf8]{luainputenc} % must come after textcomp!
   \else
-    \usepackage[utf8]{inputenc} % default since TeXLive 2018
+    \usepackage[utf8]{luainputenc} % must come after textcomp!
   \fi
-  % set up macro for INFINITY Character '∞'
-  \DeclareUnicodeCharacter{221E}{\ensuremath{\infty}}
+  % set up LICR macros, e.g. for INFINITY Character '∞'
+  \DeclareUnicodeCharacter{221E}{\ensuremath{\infty}
+  % ...
+}
 }
 \end_preamble
 \use_default_options true
@@ -83,6 +84,7 @@ logicalmkup
 \justification true
 \use_refstyle 1
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -113,8 +115,8 @@ With LaTeX input encoding
 \family typewriter
 utf8-plain
 \family default
- (UTF-8 (XeTeX)), the author must ensure non-standard characters are defined
- in the user preamble (see Document>Settings>LaTeX
+ (UTF-8 Pass-Through), the author must ensure non-standard characters are
+ defined in the user preamble (see Document>Settings>LaTeX
 \begin_inset space ~
 \end_inset
 
@@ -134,7 +136,7 @@ Textcomp characters: ¹²³¼½¬¸@ł€¶←→
 \end_layout
 
 \begin_layout Itemize
-INFINITY Character defined in the user preamble: ∞
+INFINITY Character (defined in the user preamble): ∞
 \end_layout
 
 \end_body

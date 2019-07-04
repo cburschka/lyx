@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 566
+\lyxformat 577
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -55,6 +55,7 @@
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \index Індекс
 \shortcut idx
 \color #008000
@@ -70,6 +71,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -105,9 +107,21 @@ year
 \end_layout
 
 \begin_layout Enumerate
-While this is a bug in Babel-Ukrainian, we can work around it by explicitely
- setting the date (e.g.
- with Insert>Field>Date).
+This is a bug in Babel-Ukrainian.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Workaround: explicitely set the date (paragraph with style 
+\begin_inset Quotes eld
+\end_inset
+
+date
+\begin_inset Quotes erd
+\end_inset
+
+).
+ Variable/automatic content is possible with Insert>Field>Date).
 \end_layout
 
 \end_body
