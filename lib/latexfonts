@@ -366,6 +366,16 @@ Font NotoSerifRegular
 	PackageOption   regular
 	OsfDefault	0
 	OsfOption	osf
+	AltFonts	NotoSerifRegular1
+EndFont
+
+AltFont NotoSerifRegular1
+	GuiName         "Noto Serif Regular"
+	Family          rm
+	Package         noto-serif
+	PackageOption   regular
+	OsfDefault	1
+	OsfOption	osf
 EndFont
 
 Font NotoSerifMedium
@@ -861,6 +871,17 @@ Font beramono
 	Requires         bera
 EndFont
 
+Font cantarellMS
+	GuiName		"Cantarell Monospace"
+	Family		tt
+	OsfOption	oldstyle
+	OsfDefault	0
+	Package		cantarell
+	PackageOption	"defaultsans,tabular"
+	FontEncoding	T2A,T1,OT1
+	ScaleOption	scale=$$val
+EndFont
+
 Font cmtl
 	GuiName          "CM Typewriter Light"
 	Family           tt
@@ -969,6 +990,7 @@ Font NotoMonoRegular
 	Family          tt
 	ScaleOption     scaled=$$val
 	Package         noto-mono
+	OsfOption	osf
 	PackageOption	regular
 EndFont
 
