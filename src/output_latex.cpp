@@ -64,7 +64,7 @@ enum OpenEncoding {
 struct OutputState
 {
 	OutputState() : open_encoding_(none), cjk_inherited_(0),
-	prev_env_language_(nullptr), nest_level_(0)
+		prev_env_language_(nullptr), nest_level_(0)
 	{
 	}
 	OpenEncoding open_encoding_;
@@ -821,7 +821,7 @@ void TeXOnePar(Buffer const & buf,
 	// inside of was opened
 	Language const * const outer_language =
 		(runparams.local_font != nullptr) ?
-		runparams.local_font->language() : doc_language;
+			runparams.local_font->language() : doc_language;
 
 	Paragraph const * priorpar = (pit == 0) ? nullptr : &paragraphs.at(pit - 1);
 
@@ -1183,7 +1183,7 @@ void TeXOnePar(Buffer const & buf,
 		&& (par_language->lang() != "arabic_arabtex"
 		    && outer_language->lang() != "arabic_arabtex")
 		// have we opened an \L or \R environment?
-	&& runparams.local_font != nullptr
+		&& runparams.local_font != nullptr
 		&& runparams.local_font->isRightToLeft() != par_language->rightToLeft()
 		// are we about to close the language?
 		&&((nextpar && par_lang != nextpar_lang)
