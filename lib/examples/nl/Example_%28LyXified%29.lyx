@@ -63,7 +63,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style polish
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -87,7 +87,7 @@ door Fee \SpecialChar LyX
 \end_layout
 
 \begin_layout Date
-June 12, 1972
+12 juni 1972
 \end_layout
 
 \begin_layout Standard
@@ -105,13 +105,13 @@ Uitgangspunten
 
 \begin_layout Standard
 Het uitgangspunt van \SpecialChar LyX
- is dat je je niet bezig houdt met de vormgeving, maar
- met de inhoud van je tekst.
+ is dat u zich niet bezig houdt met de vormgeving,
+ maar met de inhoud van uw tekst.
 \end_layout
 
 \begin_layout Subsection
 Hoe \SpecialChar LyX
- het fikst
+ het oplost
 \end_layout
 
 \begin_layout Standard
@@ -145,9 +145,9 @@ De functie van typografisch ontwerp is om de lezer te helpen de ideeën van
  van elkaar verschillen, zouden onderling visueel van elkaar te onderscheiden
  moeten zijn....
  Omdat \SpecialChar LaTeX
- niet kan begrijpen wat je schrijft, zul je expliciet de logische
- structuur moeten aangeven door bepaalde commando's te typen....
- Als je je document aan het schrijven bent, zou je je bezig moeten houden
+ niet kan begrijpen wat u schrijft, zal u expliciet de logische structuur
+ moeten aangeven door bepaalde commando's te typen....
+ Als u uw document aan het schrijven bent, zou u zich bezig moeten houden
  met de logische structuur, niet met het zichtbare uiterlijk.
 \end_layout
 
@@ -166,24 +166,24 @@ name "sec:lyxbeter"
 \SpecialChar LyX
  kan voor meer mensen handig zijn dan \SpecialChar LaTeX
 .
- Het is aanzienlijk eenvoudiger te leren, omdat je \SpecialChar LaTeX
- niet hoeft te leren
- (wat eigenlijk een programmeertaal is).
+ Het is aanzienlijk eenvoudiger te leren, omdat u \SpecialChar LaTeX
+ niet hoeft te leren (wat
+ eigenlijk een programmeertaal is).
  \SpecialChar LyX
  is in feite net als andere 
-\begin_inset Quotes eld
+\begin_inset Quotes pld
 \end_inset
 
-Wat je ziet is wat je krijgt
+Wat u ziet is wat u krijgt
 \begin_inset Quotes erd
 \end_inset
 
- tekstverwerkers, behalve dat \SpecialChar LyX
+-tekstverwerkers, behalve dat \SpecialChar LyX
  
-\begin_inset Quotes eld
+\begin_inset Quotes pld
 \end_inset
 
-Wat je ziet is wat je bedoelt
+Wat u ziet is wat u bedoelt
 \begin_inset Quotes erd
 \end_inset
 
@@ -193,7 +193,7 @@ Wat je ziet is wat je bedoelt
 .
  Dit is Goed.
  Ook is het bestandsformaat niet afhankelijk van het platform.
- En als beste: het is VRIJ!
+ En als beste: het is VRIJ en GRATIS!
 \end_layout
 
 \begin_layout Section
@@ -208,7 +208,7 @@ De mogelijkheden van \SpecialChar LyX
 status collapsed
 
 \begin_layout Plain Layout
-Waarom zou je het anders willen gebruiken?
+Per slot van rekening: waarom zou u het anders willen gebruiken?
 \end_layout
 
 \end_inset
@@ -218,12 +218,12 @@ Waarom zou je het anders willen gebruiken?
 geweldig
 \emph default
  om er over te vertellen.
- Hier volgt een lijst van slechts een deel van deze mogelijkhedeb.
+ Hier volgt een lijst van slechts een deel van deze mogelijkheden.
 \end_layout
 
 \begin_layout Itemize
 \SpecialChar LyX
- regelt marges, en het nummeren van voetnoten voor je
+ regelt marges, en het nummeren van voetnoten in uw plaats
 \end_layout
 
 \begin_layout Itemize
@@ -234,14 +234,14 @@ geweldig
 \begin_layout Standard
 Voor een meer filosofische verhandeling waarom \SpecialChar LyX
  beter is dan andere tekstverwerk
-ers, zie Sectie 
+ers, zie paragraaf 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:lyxbeter"
 
 \end_inset
 
-, welke te vinden is op pagina 
+, die te vinden is op pagina 
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "sec:lyxbeter"
@@ -252,7 +252,7 @@ reference "sec:lyxbeter"
 \end_layout
 
 \begin_layout Section
-Slappe pogingen om andere dingen in \SpecialChar LyX
+Zwakke pogingen om andere dingen in \SpecialChar LyX
  te gebruiken
 \end_layout
 
@@ -296,7 +296,7 @@ Tekstzettende tekstverwerker
 \begin_inset Newline newline
 \end_inset
 
-Hij bespaart zo veel tijd
+Het bespaart zo veel tijd
 \end_layout
 
 \begin_layout Section
@@ -346,20 +346,20 @@ Ik kon de lijnen die met streepjes gemaakt waren verwijderen.
 \end_layout
 
 \begin_layout Itemize
-Ik heb niet de moeite genomen de wiskudige vergelijkingen in display-modus
+Ik heb niet de moeite genomen de wiskundige vergelijkingen in weergavemodus
  te zetten.
  Ik gebruikte ook niet de mogelijkheid van \SpecialChar LyX
  om de vergelijkingen automatisch
  te nummeren, omdat dit niet in de 
 \emph on
-Turorial
+Tutorial
 \emph default
  wordt beschreven.
 \end_layout
 
 \begin_layout Itemize
-Ik hoefde het woord 
-\begin_inset Quotes eld
+Ik moest het woord 
+\begin_inset Quotes pld
 \end_inset
 
 Referenties
@@ -369,18 +369,18 @@ Referenties
  niet te typen.
  \SpecialChar LyX
  schrijft dit automatisch (of het woord 
-\begin_inset Quotes eld
+\begin_inset Quotes pld
 \end_inset
 
 Bibliografie
 \begin_inset Quotes erd
 \end_inset
 
-, afhankelijk van de tekstklasse) wanneer je 
+, afhankelijk van de tekstklasse) wanneer u de omgeving 
 \family sans
-Bibliography
+Bibliografie
 \family default
- stijl kiest.
+ kiest.
 \end_layout
 
 \begin_layout Bibliography
