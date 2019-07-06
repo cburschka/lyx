@@ -64,7 +64,7 @@ enum OpenEncoding {
 struct OutputState
 {
 	OutputState() : open_encoding_(none), cjk_inherited_(0),
-		        prev_env_language_(0), nest_level_(0)
+	prev_env_language_(nullptr), nest_level_(0)
 	{
 	}
 	OpenEncoding open_encoding_;
@@ -192,7 +192,7 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 		pit == paragraphs.begin() ? pit : prev(pit, 1);
 
 	OutputState * state = getOutputState();
-	bool const use_prev_env_language = state->prev_env_language_ != 0
+	bool const use_prev_env_language = state->prev_env_language_ != nullptr
 			&& priorpit->layout().isEnvironment()
 			&& (priorpit->getDepth() > pit->getDepth()
 			    || (priorpit->getDepth() == pit->getDepth()
@@ -774,7 +774,7 @@ void TeXOnePar(Buffer const & buf,
 	}
 
 	Paragraph const * nextpar = runparams.isLastPar
-		? 0 : &paragraphs.at(pit + 1);
+		? nullptr : &paragraphs.at(pit + 1);
 
 	bool const intitle_command = style.intitle && style.latextype == LATEX_COMMAND;
 
@@ -814,16 +814,16 @@ void TeXOnePar(Buffer const & buf,
 	// This paragraph's language
 	Language const * const par_language = par.getParLanguage(bparams);
 	Language const * const nextpar_language = nextpar ?
-		nextpar->getParLanguage(bparams) : 0;
+		nextpar->getParLanguage(bparams) : nullptr;
 	// The document's language
 	Language const * const doc_language = bparams.language;
 	// The language that was in effect when the environment this paragraph is
 	// inside of was opened
 	Language const * const outer_language =
-		(runparams.local_font != 0) ?
-			runparams.local_font->language() : doc_language;
+		(runparams.local_font != nullptr) ?
+		runparams.local_font->language() : doc_language;
 
-	Paragraph const * priorpar = (pit == 0) ? 0 : &paragraphs.at(pit - 1);
+	Paragraph const * priorpar = (pit == 0) ? nullptr : &paragraphs.at(pit - 1);
 
 	// The previous language that was in effect is the language of the
 	// previous paragraph, unless the previous paragraph is inside an
@@ -833,7 +833,7 @@ void TeXOnePar(Buffer const & buf,
 	// Note further that we take the outer language also if the prior par
 	// is PassThru, since in that case it has latex_language, and all secondary
 	// languages have been closed (#10793).
-	bool const use_prev_env_language = state->prev_env_language_ != 0
+	bool const use_prev_env_language = state->prev_env_language_ != nullptr
 			&& priorpar
 			&& priorpar->layout().isEnvironment()
 			&& (priorpar->getDepth() > par.getDepth()
@@ -884,7 +884,7 @@ void TeXOnePar(Buffer const & buf,
 	// languages (see # 10111).
 	bool const in_polyglossia_rtl_env =
 		use_polyglossia
-		&& runparams.local_font != 0
+		&& runparams.local_font != nullptr
 		&& outer_language->rightToLeft()
 		&& !par_language->rightToLeft();
 	bool const localswitch = runparams_in.for_search
@@ -940,7 +940,7 @@ void TeXOnePar(Buffer const & buf,
 			    && par_language->lang() != "arabic_arabtex"
 			    && outer_language->lang() != "arabic_arabtex"
 			    // are we in an inset?
-			    && runparams.local_font != 0
+			    && runparams.local_font != nullptr
 			    // is the inset within an \L or \R?
 			    //
 			    // FIXME: currently, we don't check this; this means that
@@ -1183,7 +1183,7 @@ void TeXOnePar(Buffer const & buf,
 		&& (par_language->lang() != "arabic_arabtex"
 		    && outer_language->lang() != "arabic_arabtex")
 		// have we opened an \L or \R environment?
-		&& runparams.local_font != 0
+	&& runparams.local_font != nullptr
 		&& runparams.local_font->isRightToLeft() != par_language->rightToLeft()
 		// are we about to close the language?
 		&&((nextpar && par_lang != nextpar_lang)
@@ -1352,7 +1352,7 @@ void TeXOnePar(Buffer const & buf,
 	// If this is the last paragraph of the inset and a local_font was set upon entering
 	// and we are mixing encodings ("auto-legacy" or "auto-legacy-plain" and no XeTeX or LuaTeX),
 	// ensure the encoding is set back to the default encoding of the local language.
-	if (runparams.isLastPar && runparams_in.local_font != 0
+	if (runparams.isLastPar && runparams_in.local_font != nullptr
 	    && runparams_in.encoding != runparams_in.local_font->language()->encoding()
 	    && (bparams.inputenc == "auto-legacy" || bparams.inputenc == "auto-legacy-plain")
 		&& !runparams.isFullUnicode()
@@ -1622,7 +1622,7 @@ void latexParagraphs(Buffer const & buf,
 	}
 	// Likewise for polyglossia or when using begin/end commands
 	// or after an active branch inset with a language switch
-	Language const * const outer_language = (runparams.local_font != 0)
+	Language const * const outer_language = (runparams.local_font != nullptr)
 			? runparams.local_font->language() : bparams.language;
 	string const & prev_lang = runparams.use_polyglossia
 			? getPolyglossiaEnvName(outer_language)
@@ -1718,7 +1718,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 				state->open_encoding_ = none;
 				count += 7;
 			}
-			if (runparams.local_font != 0
+			if (runparams.local_font != nullptr
 			    && 	oldEnc.package() == Encoding::CJK) {
 				// within insets, \inputenc switches need
 				// to be embraced within \bgroup...\egroup;
