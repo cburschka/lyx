@@ -63,7 +63,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style polish
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -98,7 +98,7 @@ door Fee \SpecialChar LyX
 status collapsed
 
 \begin_layout Plain Layout
-Hint: Fee is de auteur (AUTHOR)
+Hint: Fee is de AUTEUR
 \end_layout
 
 \end_inset
@@ -107,12 +107,12 @@ Hint: Fee is de auteur (AUTHOR)
 \end_layout
 
 \begin_layout Standard
-June 12, 1972
+12 juni 1972
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-Hint: Dit is een datum (DATE)
+Hint: Dit is een DATUM
 \end_layout
 
 \end_inset
@@ -126,11 +126,7 @@ Inhoudsopgave
 status collapsed
 
 \begin_layout Plain Layout
-Hint: Het zou leuk zijn als we de inhoudsopgave
-\end_layout
-
-\begin_layout Plain Layout
-(Table of Contents) niet zelf hoefden te tikken
+Hint: Het zou leuk zijn als we de inhoudsopgave niet zelf hoefden te tikken
 \end_layout
 
 \end_inset
@@ -145,7 +141,7 @@ Hint: Het zou leuk zijn als we de inhoudsopgave
 
 \begin_layout Standard
 1.1 Hoe \SpecialChar LyX
- het doet...............1
+ het oplost...............1
 \end_layout
 
 \begin_layout Standard
@@ -161,13 +157,13 @@ Hint: Het zou leuk zijn als we de inhoudsopgave
 
 \begin_layout Standard
 3.
- Slappe pogingen om meer \SpecialChar LyX
- dingen te gebruiken
+ Zwakke pogingen om meer \SpecialChar LyX
+-dingen te gebruiken
 \end_layout
 
 \begin_layout Standard
 4.
- Wiskunde dingen
+ Wiskundige dingen
 \end_layout
 
 \begin_layout Standard
@@ -181,7 +177,7 @@ Hint: Het zou leuk zijn als we de inhoudsopgave
 status collapsed
 
 \begin_layout Plain Layout
-Hint: Sectie titels mogen er meer uitspringen
+Hint: paragraafkoppen mogen er meer uitspringen
 \end_layout
 
 \end_inset
@@ -191,13 +187,13 @@ Hint: Sectie titels mogen er meer uitspringen
 
 \begin_layout Standard
 Het uitgangspunt van \SpecialChar LyX
- is dat je je niet bezig houdt met de vormgeving, maar
- met de inhoud van je tekst.
+ is dat u zich niet bezig houdt met de vormgeving,
+ maar met de inhoud van uw tekst.
 \end_layout
 
 \begin_layout Standard
 1.1 Hoe \SpecialChar LyX
- het fikst
+ het oplost
 \end_layout
 
 \begin_layout Standard
@@ -216,16 +212,16 @@ Het uitgangspunt van \SpecialChar LyX
 status collapsed
 
 \begin_layout Plain Layout
-Hint: Waarschijnlijk zou de referente naar dit citaat (CITATION
+Hint: Waarschijnlijk zou deze CITATIE naar de referentie niet
 \end_layout
 
 \begin_layout Plain Layout
-REFERENCE) niet "hard gecodeerd" moeten zijn.
- Wat nu als
+manueel getypt moeten worden.
+ Wat nu als we Lamports boek
 \end_layout
 
 \begin_layout Plain Layout
-we Lamports boek het tweede item in de bibliografie maken?
+het tweede item in de bibliografie maken?
 \end_layout
 
 \end_inset
@@ -245,9 +241,9 @@ De functie van typografisch ontwerp is om de lezer te helpen de ideeën van
  van elkaar verschillen, zouden onderling visueel van elkaar te onderscheiden
  moeten zijn....
  Omdat \SpecialChar LaTeX
- niet kan begrijpen wat je schrijft, zul je expliciet de logische
- structuur moeten aangeven door bepaalde commando's te typen....
- Als je je document aan het schrijven bent, zou je je bezig moeten houden
+ niet kan begrijpen wat u schrijft, zal u expliciet de logische structuur
+ moeten aangeven door bepaalde commando's te typen....
+ Als u uw document aan het schrijven bent, zou u zich bezig moeten houden
  met de logische structuur, niet met het zichtbare uiterlijk.
 \begin_inset Quotes erd
 \end_inset
@@ -257,7 +253,7 @@ De functie van typografisch ontwerp is om de lezer te helpen de ideeën van
 status collapsed
 
 \begin_layout Plain Layout
-Hint: dit is een citaat (QUOTE)
+Hint: dit is een CITAAT
 \end_layout
 
 \end_inset
@@ -274,24 +270,24 @@ Hint: dit is een citaat (QUOTE)
 \SpecialChar LyX
  kan voor meer mensen handig zijn dan \SpecialChar LaTeX
 .
- Het is aanzienlijk eenvoudiger te leren, omdat je \SpecialChar LaTeX
- niet hoeft te leren
- (wat eigenlijk een programmeertaal is).
+ Het is aanzienlijk eenvoudiger te leren, omdat u \SpecialChar LaTeX
+ niet hoeft te leren (wat
+ eigenlijk een programmeertaal is).
  \SpecialChar LyX
  is in feite net als andere 
-\begin_inset Quotes eld
+\begin_inset Quotes pld
 \end_inset
 
-Wat je ziet is wat je krijgt
-\begin_inset Quotes erd
+Wat u ziet is wat u krijgt
+\begin_inset Quotes prd
 \end_inset
 
- tekstverwerkers, behalve dat \SpecialChar LyX
+-tekstverwerkers, behalve dat \SpecialChar LyX
  
-\begin_inset Quotes eld
+\begin_inset Quotes pld
 \end_inset
 
-Wat je ziet is wat je bedoelt
+Wat u ziet is wat u bedoelt
 \begin_inset Quotes erd
 \end_inset
 
@@ -301,7 +297,7 @@ Wat je ziet is wat je bedoelt
 .
  Dit is Goed.
  Ook is het bestandsformaat niet afhankelijk van het platform.
- En als beste: het is VRIJ!
+ En als beste: het is VRIJ en GRATIS!
 \end_layout
 
 \begin_layout Standard
@@ -313,7 +309,7 @@ Wat je ziet is wat je bedoelt
 \begin_layout Standard
 \SpecialChar LyX
  heeft vele mogelijkheden die het schrijven van documenten vergemakkelijken.
- (Per slot van rekening: Waarom zou je het anders willen gebruiken?)
+ (Per slot van rekening: waarom zou u het anders willen gebruiken?)
 \begin_inset Note Note
 status collapsed
 
@@ -332,7 +328,7 @@ een voetnoot.
 status collapsed
 
 \begin_layout Plain Layout
-Hint: Nadruk (Emphasize)
+Hint: NADRUK
 \end_layout
 
 \end_inset
@@ -343,7 +339,7 @@ Hint: Nadruk (Emphasize)
 
 \begin_layout Standard
 * \SpecialChar LyX
- regelt marges, en het nummeren van voetnoten voor je
+ regelt marges, en het nummeren van voetnoten in uw plaats
 \end_layout
 
 \begin_layout Standard
@@ -354,20 +350,17 @@ Hint: Nadruk (Emphasize)
 \begin_layout Standard
 Voor een meer filosofische verhandeling waarom \SpecialChar LyX
  beter is dan andere tekstverwerk
-ers, zie Sectie 1.2, welke te vinden is op pagina 1.
+ers, zie paragraaf 1.2, die te vinden is op pagina 1.
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-Hint: Waarschijnlijk zouden deze kruisverwijzingen
+Hint: Waarschijnlijk zouden deze kruisverwijzingen niet manueel
 \end_layout
 
 \begin_layout Plain Layout
-(CROSS-REFERENCES) niet "Hard gecodeerd" moeten zijn.
-\end_layout
-
-\begin_layout Plain Layout
-Wat nu als we de sectienummers veranderen?
+getypt moeten zijn.
+ Wat als we de paragraafnummers veranderen?
 \end_layout
 
 \end_inset
@@ -377,7 +370,7 @@ Wat nu als we de sectienummers veranderen?
 
 \begin_layout Standard
 3.
- Slappe pogingen om andere dingen in \SpecialChar LyX
+ Zwakke pogingen om andere dingen in \SpecialChar LyX
  te gebruiken
 \end_layout
 
@@ -408,7 +401,7 @@ IK BEN GEWELDIG!
 status collapsed
 
 \begin_layout Plain Layout
-Hint: Dit is computer CODE
+Hint: Dit is computer-CODE
 \end_layout
 
 \end_inset
@@ -431,16 +424,16 @@ Tekstzettende tekstverwerker
 \end_layout
 
 \begin_layout Standard
-Hij bespaart zo veel tijd 
+Het bespaart zo veel tijd 
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-Hint: Het is niet erg goed, maar het is poezie,
+Hint: Het is niet erg goed, maar het is poëzie,
 \end_layout
 
 \begin_layout Plain Layout
-ook bekend als gedicht (VERSE)
+ook bekend als gedicht en bestaat uit VERZEN.
 \end_layout
 
 \end_inset
@@ -450,12 +443,12 @@ ook bekend als gedicht (VERSE)
 
 \begin_layout Standard
 4.
- Wiskunde dingen
+ Wiskundige dingen
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-Hint: de wiskunde dingen moeten in math modus gezet worden
+Hint: de wiskundige dingen moeten in wiskundemodus gezet worden
 \end_layout
 
 \end_inset

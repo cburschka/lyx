@@ -248,7 +248,13 @@ dist_jaclipartdoc_DATA = \
 nldocdir = $(docdir)/nl
 dist_nldoc_DATA = \
 	nl/Intro.lyx \
+	nl/Shortcuts.lyx \
 	nl/Tutorial.lyx
+
+nlclipartdocdir = $(nldocdir)/clipart
+dist_nlclipartdoc_DATA = \
+	nl/clipart/verwijzing.png \
+	nl/clipart/voetnoot.png
 
 nbdocdir = $(docdir)/nb
 dist_nbdoc_DATA = \

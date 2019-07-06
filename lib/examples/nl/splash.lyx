@@ -63,7 +63,7 @@
 \defskip medskip
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style polish
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -83,21 +83,21 @@ Welkom bij \SpecialChar LyX
 \end_layout
 
 \begin_layout Section*
-De Belangrijkste Dingen die je moet weten als je \SpecialChar LyX
+De belangrijkste dingen die u moet weten als u \SpecialChar LyX
  gebruikt
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
- komt met zeer goede documentatie—gebruik die! De documentatie is momenteel
- nog niet volledig in het Nederlands vertaald maar wordt tevens in het Engels
- meegeleverd.
+ komt met zeer goede documentatie — gebruik die! De documentatie is momenteel
+ nog niet volledig in het Nederlands vertaald, maar wordt tevens in het
+ Engels meegeleverd.
  Begin met 
 \family sans
 Help\SpecialChar menuseparator
-Introduction
+Introductie
 \family default
-, wat je een korte inleiding tot de documentatie zal geven.
+, wat u een korte inleiding tot de documentatie zal geven.
  Leer daarna \SpecialChar LyX
  te gebruiken met 
 \family sans
@@ -110,15 +110,15 @@ Tutorial
 \begin_layout Enumerate
 \SpecialChar LyX
  noemen we een 
-\begin_inset Quotes eld
+\begin_inset Quotes pld
 \end_inset
 
-document verwerker.
+documentverwerker.
 \begin_inset Quotes erd
 \end_inset
 
  \SpecialChar LyX
- is bewust anders ontworpen dan normale tekstverwerkers—met \SpecialChar LyX
+ is bewust anders ontworpen dan normale tekstverwerkers — met \SpecialChar LyX
  wordt het
  schrijven van teksten makkelijker.
  Een beetje anders maar geen reden om bang te zijn.
@@ -127,7 +127,7 @@ document verwerker.
 status collapsed
 
 \begin_layout Plain Layout
-Hebben we al verteld dat je de documentatie moet lezen?
+Hebben we al verteld dat u de documentatie moet lezen?
 \end_layout
 
 \end_inset
@@ -136,16 +136,11 @@ Hebben we al verteld dat je de documentatie moet lezen?
 \end_layout
 
 \begin_layout Enumerate
-Het resultaat van \SpecialChar LyX
- ziet er prachtig uit! Doe 
+De uitvoer van \SpecialChar LyX
+ ziet er prachtig uit! Gebruik nu 
 \family sans
-nu
-\family default
- 
-\family sans
-\lang english
 Document\SpecialChar menuseparator
-View
+Weergeven
 \begin_inset space ~
 \end_inset
 
@@ -155,34 +150,39 @@ View
 
 (pdflatex)]
 \family default
-\lang dutch
- om het zelf te zien.
+ of de knop 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+ op de werkbalk om het zelf te zien.
 \end_layout
 
 \begin_layout Enumerate
 Jazeker, \SpecialChar LyX
  kan (bijna) alle \SpecialChar LaTeX
- functionaliteit nabootsen.
+-functionaliteit nabootsen.
  En ja, \SpecialChar LyX
  kan \SpecialChar LaTeX
- bestanden importeren.
+-bestanden importeren.
  Ervaren \SpecialChar LaTeX
- gebruikers kunnen de rest van de 
+-gebruikers kunnen snel door de rest van de 
 \emph on
 Tutorial
 \emph default
- overslaan en daarna het hoofdstuk 
-\begin_inset Quotes eld
+ gaan en daarna het hoofdstuk 
+\begin_inset Quotes pld
 \end_inset
 
 \SpecialChar LyX
- for \SpecialChar LaTeX
- Users
+ voor \SpecialChar LaTeX
+-gebruikers
 \begin_inset Quotes erd
 \end_inset
 
  lezen.
- (Alle anderen: maak je niet druk: je hoeft \SpecialChar LaTeX
+ (Alle anderen: maak u geen zorgen, u hoeft \SpecialChar LaTeX
  niet te kennen om \SpecialChar LyX
  te gebruiken.)
  
@@ -190,26 +190,21 @@ Tutorial
 
 \begin_layout Enumerate
 \SpecialChar LyX
- heeft veel extras voor mensen die in een andere taal lezen of schrijven
+ heeft veel extra's voor mensen die in een andere taal lezen of schrijven
  dan het Engels.
- Daarnaast zijn de sneltoetsen, de knoppenbalk en veel andere zaken uiterst
- configureerbaar.
- (Meestal door je 
-\family typewriter
-lyxrc
-\family default
- bestand te bewerken).
+ Daarnaast zijn de sneltoetsen, de werkbalk en veel andere zaken uiterst
+ aanpasbaar.
  Zie 
 \family sans
 Help\SpecialChar menuseparator
-Customization
+Aanpassingen
 \family default
  voor de details.
 \end_layout
 
 \begin_layout Enumerate
 De \SpecialChar LyX
- home page is 
+-startpagina is 
 \begin_inset Flex URL
 status collapsed
 
@@ -222,10 +217,10 @@ https://www.lyx.org
 
 .
  Haal informatie over \SpecialChar LyX
-, abonneer je op \SpecialChar LyX
- email lijst(en), doe de \SpecialChar LyX
- Graphical
- Tour: 
+, abonneer u op \SpecialChar LyX
+-mailinglijst(en), volg de Grafische
+ Rondleiding van \SpecialChar LyX
+: 
 \begin_inset Flex URL
 status collapsed
 
@@ -242,35 +237,23 @@ https://www.lyx.org/Walkthrough
 \begin_layout Enumerate
 
 \series bold
-\lang english
-Note for Linux users:
+Opmerking voor Linux-gebruikers:
 \series default
- Please check that the language packages for the \SpecialChar LaTeX
- distribution 
-\family sans
-\SpecialChar TeX
+ controleer dat de taalpakketten voor de \SpecialChar LaTeX
+-distributie \SpecialChar TeX
 
 \begin_inset space ~
 \end_inset
 
-Live
-\family default
- are installed.
- Otherwise you will get \SpecialChar LaTeX
- errors.
+Live geïnstalleerd zijn.
+ Anders zal u \SpecialChar LaTeX
+-fouten tegenkomen.
 \begin_inset Newline newline
 \end_inset
 
-For example on the Linux distributions 
-\family sans
-(K,X)Ubuntu
-\family default
- and 
-\family sans
-Debian
-\family default
- the package name for the German language is 
-\begin_inset Quotes eld
+Op bijvoorbeeld de Linux-distributies (K,X)Ubuntu en Debian is de naam voor
+ Duits 
+\begin_inset Quotes pld
 \end_inset
 
 
@@ -278,24 +261,23 @@ Debian
 texlive-lang-german
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes prd
 \end_inset
 
 .
 \begin_inset Newline newline
 \end_inset
 
-After the installation of the language packages you must use the \SpecialChar LyX
- menu 
+Na de installatie van de taalpakketten moet u het menu 
 \family sans
-Tools
-\family default
-\SpecialChar menuseparator
+Extra\SpecialChar menuseparator
+Opnieuw
+\begin_inset space ~
+\end_inset
 
-\family sans
-Reconfigure
+configureren
 \family default
-.
+ gebruiken.
 \end_layout
 
 \end_body
