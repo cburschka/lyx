@@ -1166,14 +1166,16 @@ void LaTeX::deplog(DepTable & head)
 
 	static regex const reg1("File: (.+).*");
 	static regex const reg2("No file (.+)(.).*");
-	static regex const reg3("\\\\openout[0-9]+.*=.*`(.+)(..).*");
+	static regex const reg3a("\\\\openout[0-9]+.*=.*`(.+)(..).*");
+	// LuaTeX has a slightly different output
+	static regex const reg3b("\\\\openout[0-9]+.*=\\s*(.+)");
 	// If an index should be created, MikTex does not write a line like
 	//    \openout# = 'sample.idx'.
 	// but instead only a line like this into the log:
 	//   Writing index file sample.idx
 	static regex const reg4("Writing index file (.+).*");
 	static regex const regoldnomencl("Writing glossary file (.+).*");
-	static regex const regnomencl("Writing nomenclature file (.+).*");
+	static regex const regnomencl(".*Writing nomenclature file (.+).*");
 	// If a toc should be created, MikTex does not write a line like
 	//    \openout# = `sample.toc'.
 	// but only a line like this into the log:
@@ -1259,10 +1261,18 @@ void LaTeX::deplog(DepTable & head)
 			else
 				// we suspect a line break
 				fragment = true;
-		// (3) "\openout<nr> = `file.ext'."
-		} else if (regex_match(token, sub, reg3)) {
+		// (3)(a) "\openout<nr> = `file.ext'."
+		} else if (regex_match(token, sub, reg3a)) {
 			// search for closing '. at the end of the line
 			if (sub.str(2) == "\'.")
+				fragment = !handleFoundFile(sub.str(1), head);
+			else
+				// potential fragment
+				fragment = true;
+		// (3)(b) "\openout<nr> = file.ext" (LuaTeX)
+		} else if (regex_match(token, sub, reg3b)) {
+			// file names must contains a dot
+			if (contains(sub.str(1), '.'))
 				fragment = !handleFoundFile(sub.str(1), head);
 			else
 				// potential fragment
