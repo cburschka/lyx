@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2019-06-21 11:51+0200\n"
-"PO-Revision-Date: 2019-06-10 21:17+0200\n"
+"PO-Revision-Date: 2019-07-06 12:37+0200\n"
 "Last-Translator: Niko Strijbol <strijbol.niko@gmail.com>\n"
 "Language-Team: Dutch <lyx-docs@lists.lyx.org>\n"
 "Language: nl\n"
@@ -101,7 +101,7 @@ msgid ""
 "Expand to get more information."
 msgstr ""
 "Een selectie van verschillenden stijlformaten (zoals natbib), die elk een "
-"specifieke citaat- en bibliografiestijl ondersteunen. Klap uit voor meer "
+"specifieke citatie- en bibliografiestijl ondersteunen. Klap uit voor meer "
 "informatie."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:75
@@ -1053,21 +1053,21 @@ msgstr "&Beschikbare citaten:"
 #: src/frontends/qt4/ui/CitationUi.ui:143
 msgid "Click or press Enter to add the selected citation to the list"
 msgstr ""
-"Klik of druk op Enter om het geselecteerde citaat aan de lijst toe te voegen"
+"Klik of druk op Enter om de geselecteerde citatie aan de lijst toe te voegen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:156
 msgid "Click or press Delete to delete the selected citation from the list"
 msgstr ""
-"Klik of druk op Delete om het geselecteerde citaat van de lijst te "
+"Klik of druk op Delete om de geselecteerde citatie van de lijst te "
 "verwijderen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:188
 msgid "Move the selected citation up (Ctrl-Up)"
-msgstr "Verplaats het geselecteerde citaat omhoog (Ctrl-Up)"
+msgstr "Verplaats de geselecteerde citatie omhoog (Ctrl-Up)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:211
 msgid "Move the selected citation down (Ctrl-Down)"
-msgstr "Verplaats het geselecteerde citaat omlaag (Ctrl-Down)"
+msgstr "Verplaats de geselecteerde citatie omlaag (Ctrl-Down)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:232
 msgid "Selected &Citations:"
@@ -1764,7 +1764,7 @@ msgstr "&Schreef:"
 
 #: src/frontends/qt4/ui/FontUi.ui:115
 msgid "Select the roman (serif) typeface"
-msgstr "Selecteer het lettertype voor romein (schreef)"
+msgstr "Selecteer de letterfamilie voor romein (schreef)"
 
 #: src/frontends/qt4/ui/FontUi.ui:122
 msgid "&Sans Serif:"
@@ -1772,7 +1772,7 @@ msgstr "&Schreefloos:"
 
 #: src/frontends/qt4/ui/FontUi.ui:134
 msgid "Select the Sans Serif (grotesque) typeface"
-msgstr "Selecteer het lettertype voor schreefloos"
+msgstr "Selecteer de letterfamilie voor schreefloos"
 
 #: src/frontends/qt4/ui/FontUi.ui:154
 msgid "S&cale (%):"
@@ -1790,7 +1790,7 @@ msgstr "&Monospace:"
 
 #: src/frontends/qt4/ui/FontUi.ui:191
 msgid "Select the typewriter (monospaced) typeface"
-msgstr "Selecteer het lettertype voor typemachine (monospace)"
+msgstr "Selecteer de letterfamilie voor typemachine (monospace)"
 
 #: src/frontends/qt4/ui/FontUi.ui:211
 msgid "Sc&ale (%):"
@@ -1807,7 +1807,7 @@ msgstr "&Wiskunde:"
 
 #: src/frontends/qt4/ui/FontUi.ui:246
 msgid "Select the math typeface"
-msgstr "Selecteer het lettertype voor wiskunde"
+msgstr "Selecteer de letterfamilie voor wiskunde"
 
 #: src/frontends/qt4/ui/FontUi.ui:253
 msgid "C&JK:"
@@ -3131,11 +3131,11 @@ msgstr "Gek&leurde snelkoppelingen"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:249
 msgid "Bibliographical backreferences"
-msgstr "Bibliografische terugverwijzingen"
+msgstr "Bibliografische terugverwijzing"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:252
 msgid "B&ackreferences:"
-msgstr "T&erugreferenties:"
+msgstr "Teru&gverwijzingen:"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:281
 msgid "&Bookmarks"
@@ -4686,11 +4686,11 @@ msgstr "Pas de stijl van de kruisverwijzing aan"
 
 #: src/frontends/qt4/ui/RefUi.ui:261 src/frontends/qt4/GuiRef.cpp:307
 msgid "<reference>"
-msgstr "<referentie>"
+msgstr "<verwijzing>"
 
 #: src/frontends/qt4/ui/RefUi.ui:266 src/frontends/qt4/GuiRef.cpp:308
 msgid "(<reference>)"
-msgstr "(<referentie>)"
+msgstr "(<verwijzing>)"
 
 #: src/frontends/qt4/ui/RefUi.ui:271 src/frontends/qt4/GuiRef.cpp:309
 msgid "<page>"
@@ -4702,16 +4702,16 @@ msgstr "op pagina <pagina>"
 
 #: src/frontends/qt4/ui/RefUi.ui:281 src/frontends/qt4/GuiRef.cpp:311
 msgid "<reference> on page <page>"
-msgstr "<referentie> op pagina <pagina>"
+msgstr "<verwijzing> op pagina <pagina>"
 
 #: src/frontends/qt4/ui/RefUi.ui:286 src/frontends/qt4/GuiRef.cpp:314
 #: src/frontends/qt4/GuiRef.cpp:317
 msgid "Formatted reference"
-msgstr "Opgemaakte referentie"
+msgstr "Opgemaakte verwijzing"
 
 #: src/frontends/qt4/ui/RefUi.ui:291 src/frontends/qt4/GuiRef.cpp:312
 msgid "Textual reference"
-msgstr "Tekstreferentie"
+msgstr "Tekstuele verwijzing"
 
 #: src/frontends/qt4/ui/RefUi.ui:296 src/frontends/qt4/GuiRef.cpp:315
 msgid "Label only"
@@ -4726,8 +4726,8 @@ msgid ""
 "Use plural form of formatted reference. (Works only for formatted "
 "references, and only if you are using refstyle.)"
 msgstr ""
-"Gebruik het meervoud van de opgemaakte referentie. (Werkt enkel voor "
-"opgemaakte referenties en enkel als u refstyle gebruikt.)"
+"Gebruik het meervoud van de opgemaakte verwijzing. (Werkt enkel voor "
+"opgemaakte verwijzingen en enkel als u refstyle gebruikt.)"
 
 #: src/frontends/qt4/ui/RefUi.ui:398
 msgid "Plural"
@@ -4738,8 +4738,8 @@ msgid ""
 "Use capitalized form of formatted reference. (Works only for formatted "
 "references, and only if you are using refstyle.)"
 msgstr ""
-"Gebruik hoofdletters bij de opgemaakte referentie. (Werkt enkel voor "
-"opgemaakte referenties en enkel als u refstyle gebruikt)."
+"Gebruik hoofdletters bij de opgemaakte verwijzing. (Werkt enkel voor "
+"opgemaakte verwijzingen en enkel als u refstyle gebruikt)."
 
 #: src/frontends/qt4/ui/RefUi.ui:408
 msgid "Capitalized"
@@ -5256,7 +5256,7 @@ msgstr "Biblatex-bibiografiestijlen"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:190
 msgid "Biblatex citation styles"
-msgstr "Biblatex-citaatstijlen"
+msgstr "Biblatex-citatiestijlen"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:214
 msgid "Toggles view of the file list"
@@ -5552,7 +5552,7 @@ msgid ""
 "The basic citation capabilities provided by BibTeX. Mainly simple numeric "
 "styles primarily suitable for science and maths."
 msgstr ""
-"De basis citaatmogelijkheden van BibTeX. Vooral eenvoudige numerieke "
+"De basis citatiemogelijkheden van BibTeX. Vooral eenvoudige numerieke "
 "stijlen, geschikt voor wetenschap en wiskunde."
 
 #: lib/citeengines/basic.citeengine:52
@@ -8455,7 +8455,7 @@ msgstr "Afkorting"
 #: lib/layouts/agu_stdclass.inc:143 lib/layouts/agu_stdclass.inc:145
 #: lib/layouts/agu_stdtitle.inc:56
 msgid "Citation-number"
-msgstr "Citaatnummer"
+msgstr "Citatienummer"
 
 #: lib/layouts/agu_stdclass.inc:155 lib/layouts/agu_stdclass.inc:157
 #: lib/layouts/apa6.layout:332
@@ -8557,7 +8557,7 @@ msgstr "AGU-journaal:"
 
 #: lib/layouts/agu_stdtitle.inc:59
 msgid "Citation-number:"
-msgstr "Citaatnummer:"
+msgstr "Citatienummer:"
 
 #: lib/layouts/agu_stdtitle.inc:65
 msgid "AGU-volume"
@@ -8680,11 +8680,11 @@ msgstr "Online gepubliceerd:"
 
 #: lib/layouts/agu_stdtitle.inc:264 src/frontends/qt4/GuiCitation.cpp:95
 msgid "Citation"
-msgstr "Citaat"
+msgstr "Citatie"
 
 #: lib/layouts/agu_stdtitle.inc:267
 msgid "Citation:"
-msgstr "Citaat:"
+msgstr "Citatie:"
 
 #: lib/layouts/agu_stdtitle.inc:272
 msgid "Posting-order"
@@ -12945,7 +12945,7 @@ msgstr "Preprintnummer:"
 
 #: lib/layouts/jasatex.layout:247 lib/layouts/jasatex.layout:251
 msgid "Online citation"
-msgstr "Online citaat"
+msgstr "Online citatie"
 
 #: lib/layouts/jbook.layout:3
 msgid "Japanese Book (Standard Class)"
@@ -14748,11 +14748,11 @@ msgstr "kleine letters"
 
 #: lib/layouts/revtex4-1.layout:320
 msgid "Online cite"
-msgstr "Online citaat"
+msgstr "Online citatie"
 
 #: lib/layouts/revtex4-1.layout:324
 msgid "online cite"
-msgstr "online citaat"
+msgstr "online citatie"
 
 #: lib/layouts/revtex4-1.layout:326
 msgid "Text behind"
@@ -14760,7 +14760,7 @@ msgstr "Tekst erachter"
 
 #: lib/layouts/revtex4-1.layout:327
 msgid "text behind the cite"
-msgstr "tekst achter het citaat"
+msgstr "tekst achter de citatie"
 
 #: lib/layouts/revtex4.layout:3
 msgid "REVTeX (V. 4)"
@@ -17930,7 +17930,7 @@ msgstr "Label voor vergelijking|L"
 
 #: lib/ui/stdcontext.inc:59
 msgid "Copy as Reference|R"
-msgstr "Kopiëren als referentie|R"
+msgstr "Kopiëren als verwijzing|r"
 
 #: lib/ui/stdcontext.inc:61 lib/ui/stdmenus.inc:247
 msgid "Split Cell|C"
@@ -17998,11 +17998,11 @@ msgstr "Naar label gaan|g"
 
 #: lib/ui/stdcontext.inc:90
 msgid "<Reference>|R"
-msgstr "<Referentie>|R"
+msgstr "<Verwijzing>|R"
 
 #: lib/ui/stdcontext.inc:91
 msgid "(<Reference>)|e"
-msgstr "(<Referentie>)|e"
+msgstr "(<Verwijzing>)|e"
 
 #: lib/ui/stdcontext.inc:92
 msgid "<Page>|P"
@@ -18014,15 +18014,15 @@ msgstr "Op pagina <pagina>|O"
 
 #: lib/ui/stdcontext.inc:94
 msgid "<Reference> on Page <Page>|f"
-msgstr "<Referentie> op pagina <Pagina>|f"
+msgstr "<Verwijzing> op pagina <Pagina>|f"
 
 #: lib/ui/stdcontext.inc:95
 msgid "Formatted Reference|t"
-msgstr "Opgemaakte referentie|t"
+msgstr "Opgemaakte verwijzing|t"
 
 #: lib/ui/stdcontext.inc:96
 msgid "Textual Reference|x"
-msgstr "Tekstreferentie|k"
+msgstr "Tekstuele verwijzing|k"
 
 #: lib/ui/stdcontext.inc:97
 msgid "Label Only|L"
@@ -18058,7 +18058,7 @@ msgstr "Teruggaan|G"
 
 #: lib/ui/stdcontext.inc:113 lib/ui/stdcontext.inc:519
 msgid "Copy as Reference|C"
-msgstr "Kopiëren als referentie|C"
+msgstr "Kopiëren als verwijzing|K"
 
 #: lib/ui/stdcontext.inc:135
 msgid "Edit Database(s) Externally...|x"
@@ -18335,7 +18335,7 @@ msgstr "Plakken"
 
 #: lib/ui/stdcontext.inc:342 lib/ui/stdmenus.inc:109
 msgid "Paste Recent|e"
-msgstr "Recente plakopdracht|e"
+msgstr "Recente plakopdracht|c"
 
 #: lib/ui/stdcontext.inc:344
 msgid "Jump Back to Saved Bookmark|B"
@@ -18359,11 +18359,11 @@ msgstr "Paragraaf promoveren|r"
 
 #: lib/ui/stdcontext.inc:353
 msgid "Demote Section|m"
-msgstr "Paragraaf degraderen|m"
+msgstr "Paragraaf degraderen|d"
 
 #: lib/ui/stdcontext.inc:354
 msgid "Move Section Down|D"
-msgstr "Paragraaf omlaag verplaatsen|a"
+msgstr "Paragraaf omlaag verplaatsen|f"
 
 #: lib/ui/stdcontext.inc:355 lib/ui/stdcontext.inc:655
 msgid "Move Section Up|U"
@@ -18387,7 +18387,7 @@ msgstr "Vorige tekstopmaak toepassen|o"
 
 #: lib/ui/stdcontext.inc:363
 msgid "Text Style|x"
-msgstr "Tekstopmaak|s"
+msgstr "Tekstopmaak|e"
 
 #: lib/ui/stdcontext.inc:364 lib/ui/stdmenus.inc:123
 msgid "Paragraph Settings...|P"
@@ -18640,7 +18640,7 @@ msgstr "Onbekende vertakking toevoegen|w"
 
 #: lib/ui/stdcontext.inc:520
 msgid "Insert Reference at Cursor Position|I"
-msgstr "Referentie toevoegen bij aanwijzer|I"
+msgstr "Verwijzing toevoegen bij aanwijzer|I"
 
 #: lib/ui/stdcontext.inc:614
 msgid "All Indexes|A"
@@ -18676,7 +18676,7 @@ msgstr "Omhullen met voorbeeld|h"
 
 #: lib/ui/stdcontext.inc:669
 msgid "End Editing Externally...|e"
-msgstr "Extern bewerken beëindigen...|e"
+msgstr "Extern bewerken beëindigen...|w"
 
 #: lib/ui/stdcontext.inc:685 lib/ui/stdmenus.inc:355
 msgid "Lock Toolbars|L"
@@ -19016,7 +19016,7 @@ msgstr "Hoofdletters|s"
 
 #: lib/ui/stdmenus.inc:190
 msgid "Lowercase|L"
-msgstr "Kleine letters|k"
+msgstr "Kleine letters|K"
 
 #: lib/ui/stdmenus.inc:196
 msgid "Formal Style|F"
@@ -19312,7 +19312,7 @@ msgstr "Kader|K"
 
 #: lib/ui/stdmenus.inc:382
 msgid "Citation...|C"
-msgstr "Citaat...|C"
+msgstr "Citatie...|C"
 
 #: lib/ui/stdmenus.inc:383
 msgid "Cross-Reference...|R"
@@ -19360,7 +19360,7 @@ msgstr "TeX-code"
 
 #: lib/ui/stdmenus.inc:403
 msgid "Preview|w"
-msgstr "Voorbeeld|d"
+msgstr "Voorbeeld"
 
 #: lib/ui/stdmenus.inc:407
 msgid "Symbols...|b"
@@ -19492,7 +19492,7 @@ msgstr "Begrippenlijst|g"
 
 #: lib/ui/stdmenus.inc:489
 msgid "Bib(la)TeX Bibliography...|B"
-msgstr "Bib(la)TeX bibliografie...|B"
+msgstr "Bib(la)TeX-bibliografie...|B"
 
 #: lib/ui/stdmenus.inc:493
 msgid "LyX Document...|X"
@@ -19908,7 +19908,7 @@ msgstr "Kruisverwijzing invoegen"
 
 #: lib/ui/stdtoolbars.inc:125
 msgid "Insert citation"
-msgstr "Citaat invoegen"
+msgstr "Citatie invoegen"
 
 #: lib/ui/stdtoolbars.inc:126
 msgid "Insert index entry"
@@ -28284,7 +28284,7 @@ msgid ""
 "available engines. If you recently installed it, you\n"
 "probably need to reconfigure LyX.\n"
 msgstr ""
-"De citaatverwerker %1$s werd gevraagd door\n"
+"De citatieverwerker %1$s werd gevraagd door\n"
 "dit document maar is niet gevonden in de lijst\n"
 "van beschikbare verwerkers. Als u het recent\n"
 "geïnstalleerd hebt moet u LyX opnieuw\n"
@@ -28292,7 +28292,7 @@ msgstr ""
 
 #: src/TextClass.cpp:1720
 msgid "Cite Engine not available"
-msgstr "Citaatverwerker niet beschikbaar"
+msgstr "Citatieverwerker niet beschikbaar"
 
 #: src/TextClass.cpp:1726
 #, c-format
@@ -28304,7 +28304,7 @@ msgid ""
 "\t%2$s\n"
 "See section 3.1.2.3 (Modules) of the User's Guide for more information."
 msgstr ""
-"De citaatverwerker %1$s heeft een pakket nodig dat\n"
+"De citatieverwerker %1$s heeft een pakket nodig dat\n"
 "niet beschikbaar is in uw LaTeX-installatie, of een\n"
 "conversieprogramma dat niet geïnstalleerd is.\n"
 "LaTeX-uitvoer is niet mogelijk.\n"
@@ -28315,7 +28315,7 @@ msgstr ""
 #: src/TextClass.cpp:1738
 #, c-format
 msgid "Error reading cite engine %1$s\n"
-msgstr "Fout bij lezen van citaatbewerker %1$s\n"
+msgstr "Fout bij lezen van citatiebewerker %1$s\n"
 
 #: src/TocBackend.cpp:260 src/insets/InsetIndex.cpp:281
 #: src/insets/InsetIndex.cpp:302
@@ -28341,11 +28341,11 @@ msgstr "Zinloos"
 
 #: src/TocBackend.cpp:282
 msgid "Citations"
-msgstr "Citaten"
+msgstr "Citaties"
 
 #: src/TocBackend.cpp:283
 msgid "Labels and References"
-msgstr "Labels en referenties"
+msgstr "Labels en verwijzingen"
 
 #: src/TocBackend.cpp:285 src/frontends/qt4/GuiDocument.cpp:1616
 msgid "Child Documents"
@@ -29376,8 +29376,8 @@ msgid ""
 "Ordered list of all cited references.\n"
 "You can reorder, add and remove references with the buttons on the left."
 msgstr ""
-"Gesorteerde lijst van alle geciteerde referenties.\n"
-"U kan referenties van plaats veranderen, toevoegen en verwijderen met de "
+"Gesorteerde lijst van alle aangehaalde referenties.\n"
+"U kan verwijzingen van plaats veranderen, toevoegen en verwijderen met de "
 "knoppen links."
 
 #: src/frontends/qt4/GuiCitation.cpp:296
@@ -29441,11 +29441,11 @@ msgstr "Sleutels"
 
 #: src/frontends/qt4/GuiCitation.cpp:476
 msgid "Displays a sketchy preview if a citation is selected above"
-msgstr "Toont een vaag voorbeeld als hierboven een citaat geselecteerd is"
+msgstr "Toont een vaag voorbeeld als hierboven een citatie geselecteerd is"
 
 #: src/frontends/qt4/GuiCitation.cpp:480
 msgid "Sketchy preview of the selected citation"
-msgstr "Vaag voorbeeld van het geselecteerde citaat"
+msgstr "Vaag voorbeeld van de geselecteerde citatie"
 
 #: src/frontends/qt4/GuiCitation.cpp:591
 msgid "Enter string to filter the list of available citations"
@@ -29472,7 +29472,7 @@ msgstr "Tekst ervoor"
 
 #: src/frontends/qt4/GuiCitation.cpp:658
 msgid "Cite key"
-msgstr "Citaatsleutel"
+msgstr "Citatiesleutel"
 
 #: src/frontends/qt4/GuiCitation.cpp:659
 msgid "Text after"
@@ -32086,12 +32086,12 @@ msgstr "Indexlemma (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:1556
 msgid "No Citation in Scope!"
-msgstr "Geen citaat in bereik!"
+msgstr "Geen citatie in bereik!"
 
 #: src/frontends/qt4/Menus.cpp:1570 src/insets/InsetCitation.cpp:250
 #: src/insets/InsetCitation.cpp:371
 msgid "No citations selected!"
-msgstr "Geen citaat geselecteerd!"
+msgstr "Geen citatie geselecteerd!"
 
 #: src/frontends/qt4/Menus.cpp:1620
 msgid "All authors|h"
@@ -33204,7 +33204,7 @@ msgstr "KAPOT: "
 
 #: src/insets/InsetRef.cpp:484 src/mathed/InsetMathRef.cpp:242
 msgid "Ref: "
-msgstr "Ref: "
+msgstr "Verw: "
 
 #: src/insets/InsetRef.cpp:485 src/mathed/InsetMathRef.cpp:243
 msgid "Equation"
@@ -33212,7 +33212,7 @@ msgstr "Vergelijking"
 
 #: src/insets/InsetRef.cpp:485 src/mathed/InsetMathRef.cpp:243
 msgid "EqRef: "
-msgstr "VglRef: "
+msgstr "VglVerw: "
 
 #: src/insets/InsetRef.cpp:486 src/mathed/InsetMathRef.cpp:244
 msgid "Page Number"
@@ -33244,7 +33244,7 @@ msgstr "Referentie naar naam"
 
 #: src/insets/InsetRef.cpp:489 src/mathed/InsetMathRef.cpp:248
 msgid "NameRef: "
-msgstr "NaamRef: "
+msgstr "NaamVerw: "
 
 #: src/insets/InsetRef.cpp:490
 msgid "Formatted"
