@@ -2249,7 +2249,7 @@ def revert_drs(document):
             document.body[beginPlain + 1:beginPlain] = precontent
             del document.body[i : beginPlain + 1]
             if not cov_req:
-                document.append_local_layout("Provides covington")
+                document.append_local_layout("Provides covington 1")
                 add_to_preamble(document, ["\\usepackage{drs,covington}"])
                 cov_req = True
             i = beginPlain + 1
@@ -2297,7 +2297,7 @@ convert = [
            [578, []]
           ]
 
-revert =  [[576, [revert_drs]],
+revert =  [[577, [revert_drs]],
            [576, [revert_linggloss, revert_subexarg]],
            [575, [revert_new_languages]],
            [574, [revert_lineno]],
