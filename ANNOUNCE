@@ -1,23 +1,22 @@
-Public release of LyX version 2.3.3
+Public release of LyX version 2.3.4
 ===================================
 
-We are proud to announce the release of LyX 2.3.3. This is the third
+We are proud to announce the release of LyX 2.3.4. This is the third
 maintenance release in the 2.3.x series. 
 
-You can download LyX 2.3.3 from http://www.lyx.org/Download/.
+You can download LyX 2.3.4 from http://www.lyx.org/Download/.
 
 LyX is a document processor that encourages an approach to writing based 
 on the structure of your documents and not simply their appearance. It is
 released under a Free and Open Source Software license.
 
-LyX 2.3.3 is the result of on-going efforts to make our stable version more 
-reliable and more stable. One important change is that emergency files are
-now renamed when users wish to save them. As a result, older emergency files
-are not over-written. One major update allows for the editing of the contents
-of the user-provided premable, and the contents of ERT insets, in external
-editors, a request that goes back to 2003 and bug #991.
+LyX 2.3.4 is the result of on-going efforts to make our stable version more 
+reliable and more stable. One important change is that we have finally fixed
+a large number of bugs related to bibitems (see bug #7548). We have also (we
+hope) fixed a long-standing bug involving the saving of files on Windows to
+Dropbox folders.
 
-If you think you have found a bug in LyX 2.3.3, please open a bug report at
+If you think you have found a bug in LyX 2.3.4, please open a bug report at
 http://www.lyx.org/trac/wiki/BugTrackerHome. If you're not sure whether it
 really is a bug, you can e-mail the LyX developers' mailing list (lyx-devel 
 <at> lists.lyx.org) and ask. 
@@ -28,7 +27,7 @@ is at http://wiki.lyx.org/. If you can't find the answer there, e-mail the
 LyX users' list (lyx-users <at> lists.lyx.org), where you will find an 
 active community of people who are ready to help.
 
-We hope you enjoy using LyX 2.3.3.
+We hope you enjoy using LyX 2.3.4.
 
 The LyX team.
 http://www.lyx.org
