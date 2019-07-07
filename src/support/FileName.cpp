@@ -30,6 +30,10 @@
 #include <QTemporaryFile>
 #include <QTime>
 
+#ifdef _WIN32
+#include <QThread>
+#endif
+
 #include <boost/crc.hpp>
 
 #include <algorithm>
@@ -256,9 +260,22 @@ bool FileName::renameTo(FileName const & name) const
 bool FileName::moveTo(FileName const & name) const
 {
 	LYXERR(Debug::FILES, "Moving " << *this << " to " << name);
+#ifdef _WIN32
+	// there's a locking problem on Windows sometimes, so
+	// we will keep trying for five seconds, in the hope
+	// that clears.
+	bool removed = QFile::remove(name.d->fi.absoluteFilePath());
+	int tries = 1;
+	while (!removed && tries < 6)	{
+		QThread::sleep(1);
+		removed = QFile::remove(name.d->fi.absoluteFilePath());
+		tries++;
+	}
+#else
 	QFile::remove(name.d->fi.absoluteFilePath());
+#endif
 
-	bool success = QFile::rename(d->fi.absoluteFilePath(),
+	bool const success = QFile::rename(d->fi.absoluteFilePath(),
 		name.d->fi.absoluteFilePath());
 	if (!success)
 		LYXERR0("Could not move file " << *this << " to " << name);
