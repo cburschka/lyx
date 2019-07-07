@@ -808,12 +808,12 @@ class LyX_base:
 
         self.header[i+1 : i+1] = new_layout
 
-    def del_local_layout(self, old_layout):
-        " Delete `old_layout` from local layouts, return success."
-        i = find_complete_lines(self.header, old_layout)
+    def del_local_layout(self, layout_def):
+        " Delete `layout_def` from local layouts, return success."
+        i = find_complete_lines(self.header, layout_def)
         if i == -1:
             return False
-        j = i+len(old_layout)
+        j = i+len(layout_def)
         if (self.header[i-1] == "\\begin_local_layout" and
             self.header[j] == "\\end_local_layout"):
             i -=1

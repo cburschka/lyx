@@ -87,7 +87,7 @@ set_bool_value(lines, token, value[, start[, end]]):
 del_token(lines, token[, start[, end]]):
   Like find_token, but deletes the line if it finds one.
   Returns True if a line got deleted, otherwise False.
-  
+
   Use get_* with the optional argument "delete=True", if you want to
   get and delete a token.
 
@@ -229,6 +229,7 @@ def find_tokens(lines, tokens, start=0, end=0, ignorews=False):
     the first element, in lines[start, end].
 
     Return -1 on failure."""
+
     if end == 0 or end > len(lines):
         end = len(lines)
 
@@ -429,7 +430,7 @@ def get_quoted_value(lines, token, start=0, end=0, default="", delete=False):
     return val.strip('"')
 
 
-bool_values = {"true": True, "1": True, 
+bool_values = {"true": True, "1": True,
                "false": False, "0": False}
 
 def get_bool_value(lines, token, start=0, end=0, default=None, delete=False):

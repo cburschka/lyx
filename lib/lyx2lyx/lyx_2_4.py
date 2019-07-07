@@ -37,7 +37,8 @@ from parser_tools import (count_pars_in_inset, del_token, find_end_of_inset,
 #    is_in_inset, set_bool_value
 #    find_tokens, check_token
 
-from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble, lyx2latex, revert_language, revert_flex_inset)
+from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble, lyx2latex,
+                           revert_language, revert_flex_inset)
 #  revert_font_attrs, insert_to_preamble, latex_length
 #  get_ert, lyx2verbatim, length_in_bp, convert_info_insets
 #  revert_flex_inset, hex2ratio, str2bool
@@ -172,14 +173,14 @@ def createFontMapping(fontlist):
     return fm
 
 def convert_fonts(document, fm):
-    " Handle font definition to LaTeX "
+    " Handle font definition (LaTeX preamble -> native) "
 
     rpkg = re.compile(r'^\\usepackage(\[([^\]]*)\])?\{([^\}]+)\}')
     rscaleopt = re.compile(r'^scaled?=(.*)')
 
     i = 0
     while i < len(document.preamble):
-        i = find_re(document.preamble, rpkg, i)
+        i = find_re(document.preamble, rpkg, i+1)
         if i == -1:
             return
         mo = rpkg.search(document.preamble[i])
@@ -200,12 +201,10 @@ def convert_fonts(document, fm):
             break
 
         if not pkg in fm.pkginmap:
-            i += 1
             continue
         # determine fontname
         fn = fm.getfontname(pkg, options)
         if fn == None:
-            i += 1
             continue
         del document.preamble[i]
         fontinfo = fm.font2pkgmap[fn]
@@ -217,6 +216,7 @@ def convert_fonts(document, fm):
 
         if i > 0 and document.preamble[i-1] == "% Added by lyx2lyx":
             del document.preamble[i-1]
+            i -= 1
         if fontscale != None:
             j = find_token(document.header, fontscale, 0)
             if j != -1:
@@ -245,19 +245,17 @@ def revert_fonts(document, fm, fontmap):
     rscales = re.compile(r'^\s*(\d+)\s+(\d+)')
     i = 0
     while i < len(document.header):
-        i = find_re(document.header, rfontscale, i)
+        i = find_re(document.header, rfontscale, i+1)
         if (i == -1):
             break
         mo = rfontscale.search(document.header[i])
         if mo == None:
-            i += 1
             continue
         ft = mo.group(1)    # 'roman', 'sans', 'typewriter', 'math'
         val = get_value(document.header, ft, i)
         words = val.split(' ')     # ! splits also values like '"DejaVu Sans"'
         font = words[0].strip('"') # TeX font name has no whitespace
         if not font in fm.font2pkgmap:
-            i += 1
             continue
         fontinfo = fm.font2pkgmap[font]
         val = fontinfo.package
@@ -276,7 +274,6 @@ def revert_fonts(document, fm, fontmap):
                     fontmap[val].extend([fontinfo.scaleopt + "=" + format(float(xval1) / 100, '.2f')])
         if len(fontinfo.options) > 0:
             fontmap[val].extend(fontinfo.options)
-        i += 1
 
 ###############################################################################
 ###
@@ -355,17 +352,15 @@ def removeFrontMatterStyles(document):
     tokenend = len('\\begin_layout ')
     i = 0
     while True:
-        i = find_token_exact(document.body, '\\begin_layout ', i)
+        i = find_token_exact(document.body, '\\begin_layout ', i+1)
         if i == -1:
             return
         layout = document.body[i][tokenend:].strip()
         if layout not in layouts:
-            i += 1
             continue
         j = find_end_of_layout(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Can't find end of layout at line %d" % i)
-            i += 1
             continue
         while document.body[j+1].strip() == '':
             j += 1
@@ -399,21 +394,19 @@ def addFrontMatterStyles(document):
     first = -1
     i = 0
     while True:
-        i = find_token_exact(document.body, '\\begin_layout ', i)
+        i = find_token_exact(document.body, '\\begin_layout ', i+1)
         if i == -1:
             break
         layout = document.body[i][tokenend:].strip()
         if layout not in layouts:
-            i += 1
             continue
         k = find_end_of_layout(document.body, i)
         if k == -1:
             document.warning("Malformed LyX document: Can't find end of layout at line %d" % i)
-            i += 1;
             continue
         if first == -1:
             first = i
-        i = k+1
+        i = k
     if first == -1:
         return
     insertFrontmatter('End', k+1)
@@ -425,13 +418,12 @@ def convert_lst_literalparam(document):
 
     i = 0
     while True:
-        i = find_token(document.body, '\\begin_inset CommandInset include', i)
+        i = find_token(document.body, '\\begin_inset CommandInset include', i+1)
         if i == -1:
             break
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Can't find end of command inset at line %d" % i)
-            i += 1
             continue
         while i < j and document.body[i].strip() != '':
             i += 1
@@ -527,13 +519,12 @@ def revert_lscape(document):
 
     i = 0
     while True:
-        i = find_token(document.body, "\\begin_inset Flex Landscape", i)
+        i = find_token(document.body, "\\begin_inset Flex Landscape", i+1)
         if i == -1:
             return
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Can't find end of Landscape inset")
-            i += 1
             continue
 
         if document.body[i] == "\\begin_inset Flex Landscape (Floating)":
@@ -545,7 +536,6 @@ def revert_lscape(document):
             document.body[i : i + 4] = put_cmd_in_ert("\\begin{landscape}")
 
         add_to_preamble(document, ["\\usepackage{pdflscape}"])
-        # no need to reset i
 
 
 def convert_fontenc(document):
@@ -582,14 +572,11 @@ def revert_nospellcheck(document):
 def revert_floatpclass(document):
     " Remove float placement params 'document' and 'class' "
 
-    i = 0
-    i = find_token(document.header, "\\float_placement class", 0)
-    if i != -1:
-        del document.header[i]
+    del_token(document.header, "\\float_placement class")
 
     i = 0
     while True:
-        i = find_token(document.body, '\\begin_inset Float', i)
+        i = find_token(document.body, '\\begin_inset Float', i+1)
         if i == -1:
             break
         j = find_end_of_inset(document.body, i)
@@ -598,7 +585,6 @@ def revert_floatpclass(document):
             k = find_token(document.body, 'placement document', i, i + 2)
             if k != -1:
                 del document.body[k]
-            i += 1
             continue
         del document.body[k]
 
@@ -606,23 +592,18 @@ def revert_floatpclass(document):
 def revert_floatalignment(document):
     " Remove float alignment params "
 
-    i = 0
-    i = find_token(document.header, "\\float_alignment", 0)
-    galignment = ""
-    if i != -1:
-        galignment = get_value(document.header, "\\float_alignment", i)
-        del document.header[i]
+    galignment = get_value(document.header, "\\float_alignment", delete=True)
 
     i = 0
     while True:
-        i = find_token(document.body, '\\begin_inset Float', i)
+        i = find_token(document.body, '\\begin_inset Float', i+1)
         if i == -1:
             break
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Can't find end of inset at line " + str(i))
-            i += 1
-        k = find_token(document.body, 'alignment', i, i + 4)
+            continue
+        k = find_token(document.body, 'alignment', i, i+4)
         if k == -1:
             i = j
             continue
@@ -633,7 +614,6 @@ def revert_floatalignment(document):
         l = find_token(document.body, "\\begin_layout Plain Layout", i, j)
         if l == -1:
             document.warning("Can't find float layout!")
-            i += 1
             continue
         alcmd = []
         if alignment == "left":
@@ -644,8 +624,7 @@ def revert_floatalignment(document):
             alcmd = put_cmd_in_ert("\\raggedleft{}")
         if len(alcmd) > 0:
             document.body[l+1:l+1] = alcmd
-        i += 1
-
+        i = j
 
 def revert_tuftecite(document):
     " Revert \cite commands in tufte classes "
@@ -656,22 +635,21 @@ def revert_tuftecite(document):
 
     i = 0
     while (True):
-        i = find_token(document.body, "\\begin_inset CommandInset citation", i)
+        i = find_token(document.body, "\\begin_inset CommandInset citation", i+1)
         if i == -1:
             break
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Can't find end of citation inset at line %d!!" %(i))
-            i += 1
             continue
         k = find_token(document.body, "LatexCommand", i, j)
         if k == -1:
             document.warning("Can't find LatexCommand for citation inset at line %d!" %(i))
-            i = j + 1
+            i = j
             continue
         cmd = get_value(document.body, "LatexCommand", k)
         if cmd != "cite":
-            i = j + 1
+            i = j
             continue
         pre = get_quoted_value(document.body, "before", i, j)
         post = get_quoted_value(document.body, "after", i, j)
@@ -689,17 +667,17 @@ def revert_tuftecite(document):
             res += "[]"
         res += "{" + key + "}"
         document.body[i:j+1] = put_cmd_in_ert([res])
-        i = j + 1
+        i = j
 
 
 def revert_stretchcolumn(document):
     " We remove the column varwidth flags or everything else will become a mess. "
     i = 0
     while True:
-        i = find_token(document.body, "\\begin_inset Tabular", i)
+        i = find_token(document.body, "\\begin_inset Tabular", i+1)
         if i == -1:
             return
-        j = find_end_of_inset(document.body, i + 1)
+        j = find_end_of_inset(document.body, i+1)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of tabular.")
             continue
@@ -707,7 +685,6 @@ def revert_stretchcolumn(document):
             if re.search('^<column.*varwidth="[^"]+".*>$', document.body[k]):
                 document.warning("Converting 'tabularx'/'xltabular' table to normal table.")
                 document.body[k] = document.body[k].replace(' varwidth="true"', '')
-        i = i + 1
 
 
 def revert_vcolumns(document):
@@ -717,13 +694,12 @@ def revert_vcolumns(document):
     needarray = False
     try:
         while True:
-            i = find_token(document.body, "\\begin_inset Tabular", i)
+            i = find_token(document.body, "\\begin_inset Tabular", i+1)
             if i == -1:
                 return
             j = find_end_of_inset(document.body, i)
             if j == -1:
                 document.warning("Malformed LyX document: Could not find end of tabular.")
-                i += 1
                 continue
 
             # Collect necessary column information
@@ -795,7 +771,7 @@ def revert_vcolumns(document):
                                     document.body[nl:nl+1] = put_cmd_in_ert("\\\\")
                     m += 1
 
-            i = j + 1
+            i = j
 
     finally:
         if needarray == True:
@@ -863,24 +839,21 @@ def revert_bibencoding(document):
     i = 0
     bibresources = []
     while (True):
-        i = find_token(document.body, "\\begin_inset CommandInset bibtex", i)
+        i = find_token(document.body, "\\begin_inset CommandInset bibtex", i+1)
         if i == -1:
             break
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Can't find end of bibtex inset at line %d!!" %(i))
-            i += 1
             continue
         encoding = get_quoted_value(document.body, "encoding", i, j)
         if not encoding:
-            i += 1
             continue
         # remove encoding line
         k = find_token(document.body, "encoding", i, j)
         if k != -1:
             del document.body[k]
         if encoding == "default":
-            i += 1
             continue
         # Re-find inset end line
         j = find_end_of_inset(document.body, i)
@@ -902,7 +875,7 @@ def revert_bibencoding(document):
             document.body[j+1:j+1] = put_cmd_in_ert("\\egroup")
             document.body[i:i] = put_cmd_in_ert("\\bgroup\\inputencoding{" + encodings[encoding] + "}")
 
-        i = j + 1
+        i = j
 
 
 
@@ -918,27 +891,23 @@ def convert_vcsinfo(document):
     }
     i = 0
     while True:
-        i = find_token(document.body, "\\begin_inset Info", i)
+        i = find_token(document.body, "\\begin_inset Info", i+1)
         if i == -1:
             return
-        j = find_end_of_inset(document.body, i + 1)
+        j = find_end_of_inset(document.body, i+1)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of Info inset.")
-            i = i + 1
             continue
         tp = find_token(document.body, 'type', i, j)
         tpv = get_quoted_value(document.body, "type", tp)
         if tpv != "buffer":
-            i = i + 1
             continue
         arg = find_token(document.body, 'arg', i, j)
         argv = get_quoted_value(document.body, "arg", arg)
         if argv not in list(types.keys()):
-            i = i + 1
             continue
         document.body[tp] = "type \"vcs\""
         document.body[arg] = "arg \"" + types[argv] + "\""
-        i = i + 1
 
 
 def revert_vcsinfo(document):
@@ -947,28 +916,24 @@ def revert_vcsinfo(document):
     args = ["revision", "tree-revision", "author", "time", "date" ]
     i = 0
     while True:
-        i = find_token(document.body, "\\begin_inset Info", i)
+        i = find_token(document.body, "\\begin_inset Info", i+1)
         if i == -1:
             return
-        j = find_end_of_inset(document.body, i + 1)
+        j = find_end_of_inset(document.body, i+1)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of Info inset.")
-            i = i + 1
             continue
         tp = find_token(document.body, 'type', i, j)
         tpv = get_quoted_value(document.body, "type", tp)
         if tpv != "vcs":
-            i = i + 1
             continue
         arg = find_token(document.body, 'arg', i, j)
         argv = get_quoted_value(document.body, "arg", arg)
         if argv not in args:
             document.warning("Malformed Info inset. Invalid vcs arg.")
-            i = i + 1
             continue
         document.body[tp] = "type \"buffer\""
         document.body[arg] = "arg \"vcs-" + argv + "\""
-        i = i + 1
 
 
 def revert_dateinfo(document):
@@ -1092,18 +1057,16 @@ def revert_dateinfo(document):
 
     i = 0
     while True:
-        i = find_token(document.body, "\\begin_inset Info", i)
+        i = find_token(document.body, "\\begin_inset Info", i+1)
         if i == -1:
             return
-        j = find_end_of_inset(document.body, i + 1)
+        j = find_end_of_inset(document.body, i+1)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of Info inset.")
-            i = i + 1
             continue
         tp = find_token(document.body, 'type', i, j)
         tpv = get_quoted_value(document.body, "type", tp)
         if tpv not in types:
-            i = i + 1
             continue
         arg = find_token(document.body, 'arg', i, j)
         argv = get_quoted_value(document.body, "arg", arg)
@@ -1146,7 +1109,6 @@ def revert_dateinfo(document):
             # our dateformat strings are utf8-encoded:
             result = result.decode('utf-8')
         document.body[i : j+1] = [result]
-        i = i + 1
 
 
 def revert_timeinfo(document):
@@ -1275,18 +1237,16 @@ def revert_timeinfo(document):
 
     i = 0
     while True:
-        i = find_token(document.body, "\\begin_inset Info", i)
+        i = find_token(document.body, "\\begin_inset Info", i+1)
         if i == -1:
             return
-        j = find_end_of_inset(document.body, i + 1)
+        j = find_end_of_inset(document.body, i+1)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of Info inset.")
-            i = i + 1
             continue
         tp = find_token(document.body, 'type', i, j)
         tpv = get_quoted_value(document.body, "type", tp)
         if tpv not in types:
-            i = i + 1
             continue
         arg = find_token(document.body, 'arg', i, j)
         argv = get_quoted_value(document.body, "arg", arg)
@@ -1324,7 +1284,6 @@ def revert_timeinfo(document):
             fmt = fmt.replace("'", "")
             result = dte.strftime(fmt)
         document.body[i : j+1] = result
-        i = i + 1
 
 
 def revert_namenoextinfo(document):
@@ -1332,26 +1291,22 @@ def revert_namenoextinfo(document):
 
     i = 0
     while True:
-        i = find_token(document.body, "\\begin_inset Info", i)
+        i = find_token(document.body, "\\begin_inset Info", i+1)
         if i == -1:
             return
-        j = find_end_of_inset(document.body, i + 1)
+        j = find_end_of_inset(document.body, i+1)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of Info inset.")
-            i = i + 1
             continue
         tp = find_token(document.body, 'type', i, j)
         tpv = get_quoted_value(document.body, "type", tp)
         if tpv != "buffer":
-            i = i + 1
             continue
         arg = find_token(document.body, 'arg', i, j)
         argv = get_quoted_value(document.body, "arg", arg)
         if argv != "name-noext":
-            i = i + 1
             continue
         document.body[arg] = "arg \"name\""
-        i = i + 1
 
 
 def revert_l7ninfo(document):
@@ -1359,32 +1314,29 @@ def revert_l7ninfo(document):
 
     i = 0
     while True:
-        i = find_token(document.body, "\\begin_inset Info", i)
+        i = find_token(document.body, "\\begin_inset Info", i+1)
         if i == -1:
             return
-        j = find_end_of_inset(document.body, i + 1)
+        j = find_end_of_inset(document.body, i+1)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of Info inset.")
-            i = i + 1
             continue
         tp = find_token(document.body, 'type', i, j)
         tpv = get_quoted_value(document.body, "type", tp)
         if tpv != "l7n":
-            i = i + 1
             continue
         arg = find_token(document.body, 'arg', i, j)
         argv = get_quoted_value(document.body, "arg", arg)
         # remove trailing colons, menu accelerator (|...) and qt accelerator (&), while keeping literal " & "
         argv = argv.rstrip(':').split('|')[0].replace(" & ", "</amp;>").replace("&", "").replace("</amp;>", " & ")
         document.body[i : j+1] = argv
-        i = i + 1
 
 
 def revert_listpargs(document):
     " Reverts listpreamble arguments to TeX-code "
     i = 0
     while True:
-        i = find_token(document.body, "\\begin_inset Argument listpreamble:", i)
+        i = find_token(document.body, "\\begin_inset Argument listpreamble:", i+1)
         if i == -1:
             return
         j = find_end_of_inset(document.body, i)
@@ -1392,7 +1344,6 @@ def revert_listpargs(document):
         parent = get_containing_layout(document.body, i)
         if parent == False:
             document.warning("Malformed LyX document: Can't find parent paragraph layout")
-            i += 1
             continue
         parbeg = parent[3]
         beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
@@ -1402,7 +1353,6 @@ def revert_listpargs(document):
         subst = ["\\begin_inset ERT", "status collapsed", "", "\\begin_layout Plain Layout",
                  "{"] + content + ["}", "\\end_layout", "", "\\end_inset", ""]
         document.body[parbeg : parbeg] = subst
-        i += 1
 
 
 def revert_lformatinfo(document):
@@ -1410,27 +1360,23 @@ def revert_lformatinfo(document):
 
     i = 0
     while True:
-        i = find_token(document.body, "\\begin_inset Info", i)
+        i = find_token(document.body, "\\begin_inset Info", i+1)
         if i == -1:
             return
-        j = find_end_of_inset(document.body, i + 1)
+        j = find_end_of_inset(document.body, i+1)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of Info inset.")
-            i = i + 1
             continue
         tp = find_token(document.body, 'type', i, j)
         tpv = get_quoted_value(document.body, "type", tp)
         if tpv != "lyxinfo":
-            i = i + 1
             continue
         arg = find_token(document.body, 'arg', i, j)
         argv = get_quoted_value(document.body, "arg", arg)
         if argv != "layoutformat":
-            i = i + 1
             continue
         # hardcoded for now
         document.body[i : j+1] = "69"
-        i = i + 1
 
 
 def convert_hebrew_parentheses(document):
@@ -1490,7 +1436,7 @@ def revert_tablestyle(document):
     " Remove tablestyle params "
 
     i = 0
-    i = find_token(document.header, "\\tablestyle", 0)
+    i = find_token(document.header, "\\tablestyle")
     if i != -1:
         del document.header[i]
 
@@ -1554,17 +1500,16 @@ def revert_bibfileencodings(document):
     i = 0
     bibresources = []
     while (True):
-        i = find_token(document.body, "\\begin_inset CommandInset bibtex", i)
+        i = find_token(document.body, "\\begin_inset CommandInset bibtex", i+1)
         if i == -1:
             break
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Can't find end of bibtex inset at line %d!!" %(i))
-            i += 1
             continue
         encodings = get_quoted_value(document.body, "file_encodings", i, j)
         if not encodings:
-            i += 1
+            i = j
             continue
         bibfiles = get_quoted_value(document.body, "bibfiles", i, j).split(",")
         opts = get_quoted_value(document.body, "biblatexopts", i, j)
@@ -1601,7 +1546,7 @@ def revert_bibfileencodings(document):
             document.body[i:j+1] = repl
             j += 27
 
-        i = j + 1
+        i = j
 
 
 def revert_cmidruletrimming(document):
@@ -1611,18 +1556,15 @@ def revert_cmidruletrimming(document):
     i = 0
     while True:
         # first, let's find out if we need to do anything
-        i = find_token(document.body, '<cell ', i)
+        i = find_token(document.body, '<cell ', i+1)
         if i == -1:
             return
         j = document.body[i].find('trim="')
         if j == -1:
-             i += 1
              continue
         rgx = re.compile(r' (bottom|top)line[lr]trim="true"')
         # remove trim option
         document.body[i] = rgx.sub('', document.body[i])
-
-        i += 1
 
 
 ruby_inset_def = [
@@ -1713,14 +1655,14 @@ def convert_lineno(document):
     " Replace user-preamble code with native lineno support."
     use_lineno = 0
     options = ""
-    j = find_token(document.preamble, "\\linenumbers", 1)
-    if j > -1:
-        usepkg = re.match(r"\\usepackage(.*){lineno}", document.preamble[j-1])
+    i = find_token(document.preamble, "\\linenumbers", 1)
+    if i > -1:
+        usepkg = re.match(r"\\usepackage(.*){lineno}", document.preamble[i-1])
         if usepkg:
             use_lineno = 1
             options = usepkg.group(1).strip("[]")
-            del(document.preamble[j-1:j+1])
-            del_token(document.preamble, "% Added by lyx2lyx", j-2, j-1)
+            del(document.preamble[i-1:i+1])
+            del_token(document.preamble, "% Added by lyx2lyx", i-2, i-1)
 
     k = find_token(document.header, "\\index ")
     if options == "":
@@ -1780,7 +1722,7 @@ gloss_inset_def = [
     r'  ForcePlain            true',
     r'  ParbreakIsNewline     true',
     r'  FreeSpacing           true',
-    r'  Requires	      covington',
+    r'  Requires              covington',
     r'  Preamble',
     r'          \def\glosstr{}',
     r'          \@ifundefined{linggloss}{%',
@@ -1792,10 +1734,10 @@ gloss_inset_def = [
     r'  InToc                 true',
     r'  ResetsFont            true',
     r'  Argument 1',
-    r'  	Decoration    conglomerate',
-    r'  	LabelString   "Translation"',
-    r'  	MenuString    "Glosse Translation|s"',
-    r'  	Tooltip       "Add a translation for the glosse"',
+    r'          Decoration    conglomerate',
+    r'          LabelString   "Translation"',
+    r'          MenuString    "Glosse Translation|s"',
+    r'          Tooltip       "Add a translation for the glosse"',
     r'  EndArgument',
     r'End'
 ]
@@ -1818,7 +1760,7 @@ glosss_inset_def = [
     r'  ParbreakIsNewline     true',
     r'  FreeSpacing           true',
     r'  InToc                 true',
-    r'  Requires	      covington',
+    r'  Requires              covington',
     r'  Preamble',
     r'          \def\glosstr{}',
     r'          \@ifundefined{lingglosss}{%',
@@ -1829,10 +1771,10 @@ glosss_inset_def = [
     r'  EndPreamble',
     r'  ResetsFont            true',
     r'  Argument 1',
-    r'  	Decoration    conglomerate',
-    r'  	LabelString   "Translation"',
-    r'  	MenuString    "Glosse Translation|s"',
-    r'  	Tooltip       "Add a translation for the glosse"',
+    r'          Decoration    conglomerate',
+    r'          LabelString   "Translation"',
+    r'          MenuString    "Glosse Translation|s"',
+    r'          Tooltip       "Add a translation for the glosse"',
     r'  EndArgument',
     r'End'
 ]
@@ -1846,24 +1788,22 @@ def convert_linggloss(document):
 
 def revert_linggloss(document):
     " Revert to old ling gloss definitions "
-    document.del_local_layout(gloss_inset_def)
-    document.del_local_layout(glosss_inset_def)
-
     if not "linguistics" in document.get_module_list():
         return
+    document.del_local_layout(gloss_inset_def)
+    document.del_local_layout(glosss_inset_def)
 
     cov_req = False
     glosses = ["\\begin_inset Flex Interlinear Gloss (2 Lines)", "\\begin_inset Flex Interlinear Gloss (3 Lines)"]
     for glosse in glosses:
         i = 0
         while True:
-            i = find_token(document.body, glosse, i)
+            i = find_token(document.body, glosse, i+1)
             if i == -1:
                 break
             j = find_end_of_inset(document.body, i)
             if j == -1:
                 document.warning("Malformed LyX document: Can't find end of Gloss inset")
-                i += 1
                 continue
 
             arg = find_token(document.body, "\\begin_inset Argument 1", i, j)
@@ -1873,7 +1813,6 @@ def revert_linggloss(document):
                 argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
                 if argbeginPlain == -1:
                     document.warning("Malformed LyX document: Can't find optarg plain Layout")
-                    i += 1
                     continue
                 argendPlain = find_end_of_inset(document.body, argbeginPlain)
                 optargcontent = document.body[argbeginPlain + 1 : argendPlain - 2]
@@ -1891,7 +1830,6 @@ def revert_linggloss(document):
                 argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
                 if argbeginPlain == -1:
                     document.warning("Malformed LyX document: Can't find arg 1 plain Layout")
-                    i += 1
                     continue
                 argendPlain = find_end_of_inset(document.body, argbeginPlain)
                 marg1content = document.body[argbeginPlain + 1 : argendPlain - 2]
@@ -1909,7 +1847,6 @@ def revert_linggloss(document):
                 argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
                 if argbeginPlain == -1:
                     document.warning("Malformed LyX document: Can't find arg 2 plain Layout")
-                    i += 1
                     continue
                 argendPlain = find_end_of_inset(document.body, argbeginPlain)
                 marg2content = document.body[argbeginPlain + 1 : argendPlain - 2]
@@ -1927,7 +1864,6 @@ def revert_linggloss(document):
                 argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
                 if argbeginPlain == -1:
                     document.warning("Malformed LyX document: Can't find arg 3 plain Layout")
-                    i += 1
                     continue
                 argendPlain = find_end_of_inset(document.body, argbeginPlain)
                 marg3content = document.body[argbeginPlain + 1 : argendPlain - 2]
@@ -1961,7 +1897,7 @@ def revert_linggloss(document):
             if not cov_req:
                 document.append_local_layout("Requires covington")
                 cov_req = True
-            i = beginPlain + 1
+            i = beginPlain
 
 
 def revert_subexarg(document):
@@ -1973,13 +1909,12 @@ def revert_subexarg(document):
     cov_req = False
     i = 0
     while True:
-        i = find_token(document.body, "\\begin_layout Subexample", i)
+        i = find_token(document.body, "\\begin_layout Subexample", i+1)
         if i == -1:
             break
         j = find_end_of_layout(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Can't find end of Subexample layout")
-            i += 1
             continue
         while True:
             # check for consecutive layouts
@@ -1989,12 +1924,10 @@ def revert_subexarg(document):
             j = find_end_of_layout(document.body, k)
             if j == -1:
                  document.warning("Malformed LyX document: Can't find end of Subexample layout")
-                 i += 1
                  continue
 
         arg = find_token(document.body, "\\begin_inset Argument 1", i, j)
         if arg == -1:
-            i += 1
             continue
 
         endarg = find_end_of_inset(document.body, arg)
@@ -2002,7 +1935,6 @@ def revert_subexarg(document):
         argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
         if argbeginPlain == -1:
             document.warning("Malformed LyX document: Can't find optarg plain Layout")
-            i += 1
             continue
         argendPlain = find_end_of_inset(document.body, argbeginPlain)
         optargcontent = lyx2latex(document, document.body[argbeginPlain + 1 : argendPlain - 2])
@@ -2019,7 +1951,6 @@ def revert_subexarg(document):
         j = find_end_of_layout(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Can't find end of Subexample layout")
-            i += 1
             continue
         while True:
             # check for consecutive layouts
@@ -2030,7 +1961,6 @@ def revert_subexarg(document):
             j = find_end_of_layout(document.body, k)
             if j == -1:
                  document.warning("Malformed LyX document: Can't find end of Subexample layout")
-                 i += 1
                  continue
 
         endev = put_cmd_in_ert("\\end{subexamples}")
@@ -2041,7 +1971,6 @@ def revert_subexarg(document):
         if not cov_req:
             document.append_local_layout("Requires covington")
             cov_req = True
-        i += 1
 
 
 def revert_drs(document):
@@ -2058,13 +1987,12 @@ def revert_drs(document):
     for drs in drses:
         i = 0
         while True:
-            i = find_token(document.body, drs, i)
+            i = find_token(document.body, drs, i+1)
             if i == -1:
                 break
             j = find_end_of_inset(document.body, i)
             if j == -1:
                 document.warning("Malformed LyX document: Can't find end of DRS inset")
-                i += 1
                 continue
 
             # Check for arguments
@@ -2075,7 +2003,6 @@ def revert_drs(document):
                 argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
                 if argbeginPlain == -1:
                     document.warning("Malformed LyX document: Can't find Argument 1 plain Layout")
-                    i += 1
                     continue
                 argendPlain = find_end_of_inset(document.body, argbeginPlain)
                 prearg1content = document.body[argbeginPlain + 1 : argendPlain - 2]
@@ -2090,7 +2017,6 @@ def revert_drs(document):
             j = find_end_of_inset(document.body, i)
             if j == -1:
                 document.warning("Malformed LyX document: Can't find end of DRS inset")
-                i += 1
                 continue
 
             arg = find_token(document.body, "\\begin_inset Argument 2", i, j)
@@ -2100,7 +2026,6 @@ def revert_drs(document):
                 argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
                 if argbeginPlain == -1:
                     document.warning("Malformed LyX document: Can't find Argument 2 plain Layout")
-                    i += 1
                     continue
                 argendPlain = find_end_of_inset(document.body, argbeginPlain)
                 prearg2content = document.body[argbeginPlain + 1 : argendPlain - 2]
@@ -2115,7 +2040,6 @@ def revert_drs(document):
             j = find_end_of_inset(document.body, i)
             if j == -1:
                 document.warning("Malformed LyX document: Can't find end of DRS inset")
-                i += 1
                 continue
 
             arg = find_token(document.body, "\\begin_inset Argument post:1", i, j)
@@ -2125,7 +2049,6 @@ def revert_drs(document):
                 argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
                 if argbeginPlain == -1:
                     document.warning("Malformed LyX document: Can't find Argument post:1 plain Layout")
-                    i += 1
                     continue
                 argendPlain = find_end_of_inset(document.body, argbeginPlain)
                 postarg1content = document.body[argbeginPlain + 1 : argendPlain - 2]
@@ -2140,7 +2063,6 @@ def revert_drs(document):
             j = find_end_of_inset(document.body, i)
             if j == -1:
                 document.warning("Malformed LyX document: Can't find end of DRS inset")
-                i += 1
                 continue
 
             arg = find_token(document.body, "\\begin_inset Argument post:2", i, j)
@@ -2150,7 +2072,6 @@ def revert_drs(document):
                 argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
                 if argbeginPlain == -1:
                     document.warning("Malformed LyX document: Can't find Argument post:2 plain Layout")
-                    i += 1
                     continue
                 argendPlain = find_end_of_inset(document.body, argbeginPlain)
                 postarg2content = document.body[argbeginPlain + 1 : argendPlain - 2]
@@ -2165,7 +2086,6 @@ def revert_drs(document):
             j = find_end_of_inset(document.body, i)
             if j == -1:
                 document.warning("Malformed LyX document: Can't find end of DRS inset")
-                i += 1
                 continue
 
             arg = find_token(document.body, "\\begin_inset Argument post:3", i, j)
@@ -2175,7 +2095,6 @@ def revert_drs(document):
                 argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
                 if argbeginPlain == -1:
                     document.warning("Malformed LyX document: Can't find Argument post:3 plain Layout")
-                    i += 1
                     continue
                 argendPlain = find_end_of_inset(document.body, argbeginPlain)
                 postarg3content = document.body[argbeginPlain + 1 : argendPlain - 2]
@@ -2190,7 +2109,6 @@ def revert_drs(document):
             j = find_end_of_inset(document.body, i)
             if j == -1:
                 document.warning("Malformed LyX document: Can't find end of DRS inset")
-                i += 1
                 continue
 
             arg = find_token(document.body, "\\begin_inset Argument post:4", i, j)
@@ -2200,7 +2118,6 @@ def revert_drs(document):
                 argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
                 if argbeginPlain == -1:
                     document.warning("Malformed LyX document: Can't find Argument post:4 plain Layout")
-                    i += 1
                     continue
                 argendPlain = find_end_of_inset(document.body, argbeginPlain)
                 postarg4content = document.body[argbeginPlain + 1 : argendPlain - 2]
@@ -2252,7 +2169,7 @@ def revert_drs(document):
                 document.append_local_layout("Provides covington 1")
                 add_to_preamble(document, ["\\usepackage{drs,covington}"])
                 cov_req = True
-            i = beginPlain + 1
+            i = beginPlain
 
 
 ##
