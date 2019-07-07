@@ -1254,13 +1254,17 @@ def main(argv):
     # Open files
     if options.input_file:
         source = open(options.input_file, 'rb')
-    else:
+    elif PY2:
         source = sys.stdin
+    else:
+        source = sys.stdin.buffer
 
     if options.output_file:
         output = open(options.output_file, 'wb')
-    else:
+    elif PY2:
         output = sys.stdout
+    else:
+        output = sys.stdout.buffer
 
     if options.format > currentFormat:
         error("Format %i does not exist" % options.format);
