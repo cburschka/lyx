@@ -35,7 +35,8 @@ Avoid using text mode for unicode symbols representable in math mode (bug 9616).
 
 * DOCUMENTATION AND LOCALIZATION
 
-- The Dutch user interface localization has been revived.
+- The Dutch user interface localization has been revived, and the Dutch docs
+  revised.
 
 
 * BUILD/INSTALLATION
@@ -57,6 +58,8 @@ Avoid using text mode for unicode symbols representable in math mode (bug 9616).
 - Do not replace a latex command with the corresponding symbol in the
   unicodesymbols file, unless it can be encoded in the document encoding
   (bug 11586).
+
+- Fix problems with paths that contain the tilde (~) character.
 
 
 * USER INTERFACE
