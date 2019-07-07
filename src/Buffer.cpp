@@ -1931,7 +1931,8 @@ Buffer::ExportStatus Buffer::writeLaTeXSource(otexstream & os,
 					os << "\\catcode`\\%=11"
 					      "\\def\\%{%}\\catcode`\\%=14\n";
 				}
-				bool const detokenize = !isAscii(from_utf8(docdir));
+				bool const detokenize = !isAscii(from_utf8(docdir))
+						|| contains(docdir, '~');
 				bool const quote = contains(docdir, ' ');
 				os << "\\makeatletter\n"
 				   << "\\def\\input@path{{";
