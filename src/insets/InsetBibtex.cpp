@@ -363,7 +363,8 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 			   << "\\end{btSect}\n";
 		}
 		// bibtotoc option
-		if (!bibtotoc.empty() && !buffer().masterParams().useBibtopic()) {
+		if (!bibtotoc.empty() && !buffer().masterParams().useBibtopic()
+		    && !buffer().masterParams().documentClass().bibInToc()) {
 			// set label for hyperref, see http://www.lyx.org/trac/ticket/6470
 			if (buffer().masterParams().pdfoptions().use_hyperref)
 					os << "\\phantomsection";

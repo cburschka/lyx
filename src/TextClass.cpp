@@ -62,7 +62,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 75; // spitz: FreeSpacing (Argument)
+int const LAYOUT_FORMAT = 76; // spitz: BibInToc
 
 
 // Layout format for the current lyx file format. Controls which format is
@@ -156,7 +156,7 @@ TextClass::TextClass()
 	  has_output_format_(false), defaultfont_(sane_font), 
 	  titletype_(TITLE_COMMAND_AFTER), titlename_("maketitle"),
 	  min_toclevel_(0), max_toclevel_(0), maxcitenames_(2),
-	  cite_full_author_list_(true)
+	  cite_full_author_list_(true), bibintoc_(false)
 {
 }
 
@@ -227,7 +227,8 @@ enum TextClassTags {
 	TC_DEFAULTBIBLIO,
 	TC_FULLAUTHORLIST,
 	TC_OUTLINERNAME,
-	TC_TABLESTYLE
+	TC_TABLESTYLE,
+	TC_BIBINTOC
 };
 
 
@@ -238,6 +239,7 @@ LexerKeyword textClassTags[] = {
 	{ "addtohtmlpreamble", TC_ADDTOHTMLPREAMBLE },
 	{ "addtohtmlstyles",   TC_ADDTOHTMLSTYLES },
 	{ "addtopreamble",     TC_ADDTOPREAMBLE },
+	{ "bibintoc",          TC_BIBINTOC },
 	{ "citeengine",        TC_CITEENGINE },
 	{ "citeenginetype",    TC_CITEENGINETYPE },
 	{ "citeformat",        TC_CITEFORMAT },
@@ -808,6 +810,11 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 					}
 				}
 			}
+			break;
+
+		case TC_BIBINTOC:
+			if (lexrc.next())
+				bibintoc_ = lexrc.getBool();
 			break;
 
 		case TC_FULLAUTHORLIST:

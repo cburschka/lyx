@@ -357,6 +357,8 @@ protected:
 	std::map<CiteEngineType, std::vector<CitationStyle> > class_cite_styles_;
 	///
 	std::map<std::string, docstring> outliner_names_;
+	/// Does this class put the bibliography to toc by itself?
+	bool bibintoc_;
 private:
 	///////////////////////////////////////////////////////////////////
 	// helper routines for reading layout files
@@ -523,6 +525,8 @@ public:
 	size_t max_citenames() const { return maxcitenames_; }
 	///
 	bool const & fullAuthorList() const { return cite_full_author_list_; }
+	///
+	bool const & bibInToc() const { return bibintoc_; }
 protected:
 	/// Constructs a DocumentClass based upon a LayoutFile.
 	DocumentClass(LayoutFile const & tc);

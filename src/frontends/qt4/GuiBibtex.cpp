@@ -23,6 +23,7 @@
 #include "GuiApplication.h"
 #include "LyXRC.h"
 #include "qt_helpers.h"
+#include "TextClass.h"
 #include "Validator.h"
 
 #include "ButtonPolicy.h"
@@ -336,8 +337,8 @@ void GuiBibtex::databaseChanged()
 
 void GuiBibtex::updateContents()
 {
-	bool bibtopic = usingBibtopic();
-	bool biblatex = usingBiblatex();
+	bool const bibtopic = usingBibtopic();
+	bool const biblatex = usingBiblatex();
 
 	if (biblatex)
 		setTitle(qt_("Biblatex Bibliography"));
@@ -346,8 +347,11 @@ void GuiBibtex::updateContents()
 
 	QString const bibstyle = styleFile();
 
-	bibtocCB->setChecked(bibtotoc() && !bibtopic);
-	bibtocCB->setEnabled(!bibtopic);
+	bool const hasbibintoc = buffer().params().documentClass().bibInToc()
+			&& !biblatex;
+
+	bibtocCB->setChecked((bibtotoc() && !bibtopic) || hasbibintoc);
+	bibtocCB->setEnabled(!bibtopic && !hasbibintoc);
 
 	btPrintCO->clear();
 	btPrintCO->addItem(qt_("all cited references"), toqstr("btPrintCited"));
