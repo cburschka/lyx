@@ -1594,9 +1594,8 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 		return;
 	}
 
-	size_t const n = cmd.size();
 	bool const force = isUpperCase(cmd[0]);
-	bool const star = cmd[n] == '*';
+	bool const star = suffixIs(cmd, '*');
 
 	vector<docstring> const keys = getVectorFromString(key);
 
