@@ -1326,9 +1326,15 @@ docstring const BiblioInfo::getLabel(vector<docstring> keys,
 	LASSERT(max_size >= 16, max_size = 16);
 
 	// we can't display more than 10 of these, anyway
+	// but since we truncate in the middle,
+	// we need to split into two halfs.
 	bool const too_many_keys = keys.size() > 10;
-	if (too_many_keys)
-		keys.resize(10);
+	vector<docstring> lkeys;
+	if (too_many_keys) {
+		lkeys.insert(lkeys.end(), keys.end() - 5, keys.end());
+		keys.resize(5);
+		keys.insert(keys.end(), lkeys.begin(), lkeys.end());
+	}
 
 	CiteEngineType const engine_type = buf.params().citeEngineType();
 	DocumentClass const & dc = buf.params().documentClass();
@@ -1353,9 +1359,8 @@ docstring const BiblioInfo::getLabel(vector<docstring> keys,
 		ret = data.getLabel(xrefptrs, buf, ret, ci, key + 1 != ken, i == 1);
 	}
 
-	if (too_many_keys)
-		ret.push_back(0x2026);//HORIZONTAL ELLIPSIS
-	support::truncateWithEllipsis(ret, max_size);
+	support::truncateWithEllipsis(ret, max_size, true);
+
 	return ret;
 }
 

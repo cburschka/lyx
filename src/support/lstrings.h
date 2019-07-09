@@ -276,6 +276,8 @@ docstring const protectArgument(docstring & arg, char const l = '[',
 /// Truncates a string with an ellipsis at the end.  Leaves str unchanged and
 /// returns false if it is shorter than len. Otherwise resizes str to len, with
 /// U+2026 HORIZONTAL ELLIPSIS at the end, and returns true.
+/// If mid is true, the ellipsis will be put to the mid of the string, and the first
+/// and last half is appended/prepended. 
 ///
 /// Warning (Unicode): The cases where we want to truncate the text and it does
 /// not end up converted into a QString for UI display must be really
@@ -294,7 +296,8 @@ docstring const protectArgument(docstring & arg, char const l = '[',
 ///
 /// FIXME: apply those principles in the current code.
 ///
-bool truncateWithEllipsis(docstring & str, size_t const len);
+bool truncateWithEllipsis(docstring & str, size_t const len,
+			  bool const mid = false);
 
 /// Word-wraps the provided docstring, returning a line-broken string
 /// of width no wider than width, with the string broken at spaces.

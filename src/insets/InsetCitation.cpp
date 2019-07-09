@@ -458,8 +458,8 @@ void InsetCitation::updateBuffer(ParIterator const &, UpdateType)
 	cache.recalculate = false;
 	cache.generated_label = glabel;
 	unsigned int const maxLabelChars = 45;
-	cache.screen_label = glabel.substr(0, maxLabelChars + 1);
-	support::truncateWithEllipsis(cache.screen_label, maxLabelChars);
+	cache.screen_label = glabel;
+	support::truncateWithEllipsis(cache.screen_label, maxLabelChars, true);
 }
 
 

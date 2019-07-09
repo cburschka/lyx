@@ -1233,13 +1233,21 @@ docstring const protectArgument(docstring & arg, char const l,
 }
 
 
-bool truncateWithEllipsis(docstring & str, size_t const len)
+bool truncateWithEllipsis(docstring & str, size_t const len, bool const mid)
 {
 	if (str.size() <= len)
 		return false;
-	str.resize(len);
-	if (len > 0)
-		str[len - 1] = 0x2026;// HORIZONTAL ELLIPSIS
+	if (mid && len > 0) {
+		size_t const hlen = len / 2;
+		docstring suffix = str.substr(str.size() - hlen);
+		str.resize(hlen);
+		str[hlen - 1] = 0x2026;// HORIZONTAL ELLIPSIS
+		str += suffix;
+	} else {
+		str.resize(len);
+		if (len > 0)
+			str[len - 1] = 0x2026;// HORIZONTAL ELLIPSIS
+	}
 	return true;
 }
 
