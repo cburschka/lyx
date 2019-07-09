@@ -140,8 +140,6 @@ private:
 	///
 	bool internal_enc_;
 	///
-	bool as_babel_options_;
-	///
 	bool has_gui_support_;
 	///
 	bool word_wrap_;
