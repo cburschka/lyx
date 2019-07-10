@@ -2930,10 +2930,11 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 	bool ismulticol = false;
 	bool ismultirow = false;
 
-	// The bidi package (loaded by polyglossia) reverses RTL table columns
+	// The bidi package (loaded by polyglossia with XeTeX) reverses RTL table columns
+	// Luabibdi (used by LuaTeX) behaves like classic
 	bool const bidi_rtl =
 		runparams.local_font->isRightToLeft()
-		&& runparams.use_polyglossia;
+		&& runparams.use_polyglossia && runparams.flavor == OutputParams::XETEX;
 	idx_type lastcell =
 		bidi_rtl ? getFirstCellInRow(row) : getLastCellInRow(row);
 
@@ -3149,11 +3150,11 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 	if (is_tabular_star)
 		os << "@{\\extracolsep{\\fill}}";
 
-	// The bidi package (loaded by polyglossia) swaps the column
+	// The bidi package (loaded by polyglossia with XeTeX) swaps the column
 	// order for RTL (#9686). Thus we use this list.
 	bool const bidi_rtl =
 		runparams.local_font->isRightToLeft()
-		&& runparams.use_polyglossia;
+		&& runparams.use_polyglossia && runparams.flavor == OutputParams::XETEX;
 	list<col_type> columns;
 	for (col_type cl = 0; cl < ncols(); ++cl) {
 		if (bidi_rtl)
