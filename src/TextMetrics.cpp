@@ -537,7 +537,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 
 LyXAlignment TextMetrics::getAlign(Paragraph const & par, Row const & row) const
 {
-	LyXAlignment align = par.getAlign();
+	LyXAlignment align = par.getAlign(bv_->buffer().params());
 
 	// handle alignment inside tabular cells
 	Inset const & owner = text_->inset();
@@ -1749,7 +1749,7 @@ int TextMetrics::leftMargin(pit_type const pit, pos_type const pos) const
 	if (!par.params().leftIndent().zero())
 		l_margin += par.params().leftIndent().inPixels(max_width_, lfm.em());
 
-	LyXAlignment align = par.getAlign();
+	LyXAlignment align = par.getAlign(bv_->buffer().params());
 
 	// set the correct parindent
 	if (pos == 0

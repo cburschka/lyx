@@ -60,8 +60,6 @@ private:
 	bool hasLabelwidth() const;
 	///
 	LyXAlignment alignPossible() const;
-	///
-	LyXAlignment alignDefault() const;
 
 private Q_SLOTS:
 	///
