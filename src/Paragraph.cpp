@@ -1983,12 +1983,26 @@ depth_type Paragraph::getMaxDepthAfter() const
 }
 
 
-LyXAlignment Paragraph::getAlign() const
+LyXAlignment Paragraph::getAlign(BufferParams const & bparams) const
 {
 	if (d->params_.align() == LYX_ALIGN_LAYOUT)
-		return d->layout_->align;
+		return getDefaultAlign(bparams);
 	else
 		return d->params_.align();
+}
+
+
+LyXAlignment Paragraph::getDefaultAlign(BufferParams const & bparams) const
+{
+	LyXAlignment res = layout().align;
+	if (isRTL(bparams)) {
+		// Swap sides
+		if (res == LYX_ALIGN_LEFT)
+			res = LYX_ALIGN_RIGHT;
+		else if  (res == LYX_ALIGN_RIGHT)
+			res = LYX_ALIGN_LEFT;
+	}
+	return res;
 }
 
 

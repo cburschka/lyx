@@ -1402,20 +1402,20 @@ void TeXOnePar(Buffer const & buf,
 			     && !text.inset().getLayout().parbreakIgnored()
 			     && style.latextype != LATEX_ITEM_ENVIRONMENT
 			     && style.latextype != LATEX_LIST_ENVIRONMENT
-			     && style.align == par.getAlign()
+			     && style.align == par.getAlign(bparams)
 			     && nextpar->getDepth() == par.getDepth()
-			     && nextpar->getAlign() == par.getAlign())
+			     && nextpar->getAlign(bparams) == par.getAlign(bparams))
 			    || (!next_layout.isEnvironment()
 				&& nextpar->getDepth() > par.getDepth()
-				&& nextpar->getAlign() == next_layout.align)
+				&& nextpar->getAlign(bparams) == next_layout.align)
 			    || (!style.isEnvironment()
 				&& next_layout.latextype == LATEX_ENVIRONMENT
 				&& nextpar->getDepth() < par.getDepth())
 			    || (style.isCommand()
 				&& !next_layout.isEnvironment()
-				&& style.align == par.getAlign()
-				&& next_layout.align == nextpar->getAlign())
-			    || (style.align != par.getAlign()
+				&& style.align == par.getAlign(bparams)
+				&& next_layout.align == nextpar->getAlign(bparams))
+			    || (style.align != par.getAlign(bparams)
 				&& tclass.isDefaultLayout(next_layout))) {
 				os << '\n';
 			}

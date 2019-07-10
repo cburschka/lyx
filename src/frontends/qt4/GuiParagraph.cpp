@@ -125,7 +125,7 @@ void GuiParagraph::checkAlignmentRadioButtons()
 		alignDefaultRB->setText(alignDefaultLabel_);
 	else
 		alignDefaultRB->setText(alignDefaultLabel_ + " ("
-			+ labelMap_[alignDefault()] + ")");
+			+ labelMap_[bufferview()->cursor().innerParagraph().getDefaultAlign(buffer().params())] + ")");
 }
 
 
@@ -369,12 +369,6 @@ bool GuiParagraph::canIndent() const
 LyXAlignment GuiParagraph::alignPossible() const
 {
 	return bufferview()->cursor().innerParagraph().layout().alignpossible;
-}
-
-
-LyXAlignment GuiParagraph::alignDefault() const
-{
-	return bufferview()->cursor().innerParagraph().layout().align;
 }
 
 

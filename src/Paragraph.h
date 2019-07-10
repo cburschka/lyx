@@ -312,7 +312,9 @@ public:
 	/// Set label width string.
 	void setLabelWidthString(docstring const & s);
 	/// Actual paragraph alignment used
-	LyXAlignment getAlign() const;
+	LyXAlignment getAlign(BufferParams const &) const;
+	/// Default paragraph alignment as determined by layout
+	LyXAlignment getDefaultAlign(BufferParams const &) const;
 	/// The nesting depth of a paragraph
 	depth_type getDepth() const;
 	/// The maximal possible depth of a paragraph after this one
