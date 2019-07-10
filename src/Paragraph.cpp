@@ -2293,9 +2293,10 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 	string const begin_tag = "\\begin";
 	InsetCode code = ownerCode();
 	bool const lastpar = runparams.isLastPar;
-	// RTL without the Bidi package switches the left/right logic
+	// RTL in classic (PDF)LaTeX (without the Bidi package)
+	// Luabibdi (used by LuaTeX) behaves like classic
 	bool const rtl_classic = owner_->getParLanguage(bparams)->rightToLeft()
-		&& !runparams.use_polyglossia;
+		&& (!runparams.use_polyglossia || runparams.flavor != OutputParams::XETEX);
 
 	switch (curAlign) {
 	case LYX_ALIGN_NONE:
@@ -2354,9 +2355,10 @@ bool Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 	string const end_tag = "\\par\\end";
 	InsetCode code = ownerCode();
 	bool const lastpar = runparams.isLastPar;
-	// RTL without the Bidi package switches the left/right logic
+	// RTL in classic (PDF)LaTeX (without the Bidi package)
+	// Luabibdi (used by LuaTeX) behaves like classic
 	bool const rtl_classic = owner_->getParLanguage(bparams)->rightToLeft()
-		&& !runparams.use_polyglossia;
+		&& (!runparams.use_polyglossia || runparams.flavor != OutputParams::XETEX);
 
 	switch (curAlign) {
 	case LYX_ALIGN_NONE:

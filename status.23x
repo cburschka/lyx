@@ -70,7 +70,9 @@ What's new
 - Find local bib files when they exist in the same directory as the LyX
   file (bug 11588).
 
-- Fix column order with RTL documents and LuaTeX (part of bug 9686).
+- Fix table column order with RTL documents and LuaTeX (part of bug 9686).
+
+- Fix paragraph alignment with RTL documents and LuaTeX (part of bug 11399).
 
 
 * USER INTERFACE
