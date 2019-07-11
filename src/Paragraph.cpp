@@ -1920,11 +1920,12 @@ char_type Paragraph::getUChar(BufferParams const & bparams,
 	// Most likely, we should simply rely on Qt's unicode handling here.
 	string const & lang = getFontSettings(bparams, pos).language()->lang();
 
-	// With polyglossia, brackets and stuff need not be reversed in RTL scripts
+	// With polyglossia and XeTeX (bidi), brackets and stuff need not be 
+	// reversed in RTL scripts
 	// FIXME: The special casing for Hebrew parens is due to the special
 	// handling on input (for Hebrew in e5f42f67d/lyxgit); see #8251.
 	char_type uc = c;
-	if (rp.use_polyglossia) {
+	if (rp.use_polyglossia && rp.flavor == OutputParams::XETEX) {
 		switch (c) {
 		case '(':
 			if (lang == "hebrew")
@@ -1936,6 +1937,19 @@ char_type Paragraph::getUChar(BufferParams const & bparams,
 			break;
 		}
 		return uc;
+	}
+	// LuaTeX (luabidi) is different
+	if (rp.use_polyglossia && rp.flavor != OutputParams::XETEX) {
+		switch (c) {
+		case '(':
+			if (lang != "hebrew")
+				uc = ')';
+			break;
+		case ')':
+			if (lang != "hebrew")
+				uc = '(';
+			break;
+		}
 	}
 
 	// In the following languages, brackets don't need to be reversed.
