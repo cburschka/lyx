@@ -1816,7 +1816,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// (In documents containing text in Thai language, 
 	// we must load inputenc after babel, see lib/languages).
 	if (!contains(features.getBabelPostsettings(), from_ascii("thai.ldf")))
-	  writeEncodingPreamble(os, features);
+		writeEncodingPreamble(os, features);
 
 	// includeonly
 	if (!features.runparams().includeall && !included_children_.empty()) {
@@ -2311,7 +2311,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// In documents containing text in Thai language, 
 	// we must load inputenc after babel (see lib/languages).
 	if (contains(features.getBabelPostsettings(), from_ascii("thai.ldf")))
-	  writeEncodingPreamble(os, features);
+		writeEncodingPreamble(os, features);
 
 	if (features.isRequired("bicaption"))
 		os << "\\usepackage{bicaption}\n";
