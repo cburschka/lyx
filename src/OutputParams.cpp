@@ -57,7 +57,13 @@ bool OutputParams::isLaTeX() const
 
 bool OutputParams::isFullUnicode() const
 {
-	return flavor == LUATEX|| flavor == DVILUATEX || flavor == XETEX;
+	return flavor == LUATEX || flavor == DVILUATEX || flavor == XETEX;
+}
+
+
+bool OutputParams::useBidiPackage() const
+{
+	return use_polyglossia && flavor == XETEX;
 }
 
 } // namespace lyx

@@ -71,6 +71,8 @@ public:
 	bool isLaTeX() const;
 	/// does this flavour support full unicode?
 	bool isFullUnicode() const;
+	/// Do we use the bidi package (which does some reordering and stuff)?
+	bool useBidiPackage() const;
 
 	/// Same, but for math output, which only matter is XHTML output.
 	MathFlavor math_flavor;
