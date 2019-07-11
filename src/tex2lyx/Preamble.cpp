@@ -535,6 +535,9 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_font_sf_scale[1]        = "100";
 	h_font_tt_scale[0]        = "100";
 	h_font_tt_scale[1]        = "100";
+	// h_font_roman_opts;
+	// h_font_sans_opts;
+	// h_font_typewriter_opts;
 	//h_font_cjk
 	h_is_mathindent           = "0";
 	h_math_numbering_side     = "default";
@@ -782,14 +785,26 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	if (name == "MinionPro") {
 		h_font_roman[0] = "minionpro";
-		if (opts.find("lf") != string::npos)
-			h_font_osf = "false";
-		else
-			h_font_osf = "true";
-		if (opts.find("onlytext") != string::npos)
-			h_font_math[0] = "default";
-		else
-			h_font_math[0] = "auto";
+		vector<string> allopts = getVectorFromString(opts);
+		string xopts;
+		h_font_osf = "true";
+		h_font_math[0] = "auto";
+		for (auto const & opt : allopts) {
+			if (opt == "lf") {
+				h_font_osf = "false";
+				continue;
+			}
+			if (opt == "onlytext") {
+				h_font_math[0] = "default";
+				continue;
+			}
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_roman_opts = xopts;
+		options.clear();
 	}
 
 	if (name == "mathdesign") {
@@ -1423,13 +1438,19 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 	   << "\\font_default_family " << h_font_default_family << "\n"
 	   << "\\use_non_tex_fonts " << (h_use_non_tex_fonts ? "true" : "false") << '\n'
 	   << "\\font_sc " << h_font_sc << "\n"
-	   << "\\font_osf " << h_font_osf << "\n"
-	   << "\\font_sf_scale " << h_font_sf_scale[0]
-	   << ' ' << h_font_sf_scale[1] << '\n'
-	   << "\\font_tt_scale " << h_font_tt_scale[0]
+	   << "\\font_osf " << h_font_osf << "\n";
+	if (!h_font_roman_opts.empty())
+		os << "\\font_roman_opts \"" << h_font_roman_opts << "\"" << '\n';
+	os << "\\font_sf_scale " << h_font_sf_scale[0]
+	   << ' ' << h_font_sf_scale[1] << '\n';
+	if (!h_font_sans_opts.empty())
+		os << "\\font_sans_opts \"" << h_font_sans_opts << "\"" << '\n';
+	os << "\\font_tt_scale " << h_font_tt_scale[0]
 	   << ' ' << h_font_tt_scale[1] << '\n';
 	if (!h_font_cjk.empty())
 		os << "\\font_cjk " << h_font_cjk << '\n';
+	if (!h_font_typewriter_opts.empty())
+		os << "\\font_typewriter_opts \"" << h_font_typewriter_opts << "\"" << '\n';
 	os << "\\use_microtype " << h_use_microtype << '\n'
 	   << "\\use_dash_ligatures " << h_use_dash_ligatures << '\n'
 	   << "\\graphics " << h_graphics << '\n'
@@ -1683,35 +1704,58 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		}
 
 		if (t.cs() == "setmainfont") {
-			// we don't care about the option
-			p.hasOpt() ? p.getOpt() : string();
+			string fontopts = p.hasOpt() ? p.getArg('[', ']') : string();
 			h_font_roman[1] = p.getArg('{', '}');
+			if (!fontopts.empty()) {
+				vector<string> opts = getVectorFromString(fontopts);
+				fontopts.clear();
+				for (auto const & opt : opts) {
+					if (opt == "Mapping=tex-text" || opt == "Ligatures=TeX")
+						// ignore
+						continue;
+					if (!fontopts.empty())
+						fontopts += ", ";
+					fontopts += opt;
+				}
+				h_font_roman_opts = fontopts;
+			}
 			continue;
 		}
 
 		if (t.cs() == "setsansfont" || t.cs() == "setmonofont") {
 			// LyX currently only supports the scale option
-			string scale;
+			string scale, fontopts;
 			if (p.hasOpt()) {
-				string fontopts = p.getArg('[', ']');
-				// check if the option contains a scaling, if yes, extract it
-				string::size_type pos = fontopts.find("Scale");
-				if (pos != string::npos) {
-					string::size_type i = fontopts.find(',', pos);
-					if (i == string::npos)
-						scale_as_percentage(fontopts.substr(pos + 1), scale);
-					else
-						scale_as_percentage(fontopts.substr(pos, i - pos), scale);
+				fontopts = p.getArg('[', ']');
+				if (!fontopts.empty()) {
+					vector<string> opts = getVectorFromString(fontopts);
+					fontopts.clear();
+					for (auto const & opt : opts) {
+						if (opt == "Mapping=tex-text" || opt == "Ligatures=TeX")
+							// ignore
+							continue;
+						if (prefixIs(opt, "Scale=")) {
+							scale_as_percentage(opt, scale);
+							continue;
+						}
+						if (!fontopts.empty())
+							fontopts += ", ";
+						fontopts += opt;
+					}
 				}
 			}
 			if (t.cs() == "setsansfont") {
 				if (!scale.empty())
 					h_font_sf_scale[1] = scale;
 				h_font_sans[1] = p.getArg('{', '}');
+				if (!fontopts.empty())
+					h_font_sans_opts = fontopts;
 			} else {
 				if (!scale.empty())
 					h_font_tt_scale[1] = scale;
 				h_font_typewriter[1] = p.getArg('{', '}');
+				if (!fontopts.empty())
+					h_font_typewriter_opts = fontopts;
 			}
 			continue;
 		}
@@ -1725,33 +1769,55 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			// we don't care about the lang option
 			string const lang = p.hasOpt() ? p.getArg('[', ']') : string();
                         string const family = p.getArg('{', '}');
-			string const fontopts = p.hasOpt() ? p.getArg('[', ']') : string();
+			string fontopts = p.hasOpt() ? p.getArg('[', ']') : string();
 			string const fontname = p.getArg('{', '}');
                         if (lang.empty() && family == "rm") {
 				h_font_roman[1] = fontname;
+				if (!fontopts.empty()) {
+					vector<string> opts = getVectorFromString(fontopts);
+					fontopts.clear();
+					for (auto const & opt : opts) {
+						if (opt == "Mapping=tex-text" || opt == "Ligatures=TeX")
+							// ignore
+							continue;
+						if (!fontopts.empty())
+							fontopts += ", ";
+						fontopts += opt;
+					}
+					h_font_roman_opts = fontopts;
+				}
  				continue;
 			} else if (lang.empty() && (family == "sf" || family == "tt")) {
 				// LyX currently only supports the scale option
 				string scale;
 				if (!fontopts.empty()) {
-					// check if the option contains a scaling, if yes, extract it
-					string::size_type pos = fontopts.find("Scale");
-					if (pos != string::npos) {
-						string::size_type i = fontopts.find(',', pos);
-						if (i == string::npos)
-							scale_as_percentage(fontopts.substr(pos + 1), scale);
-						else
-							scale_as_percentage(fontopts.substr(pos, i - pos), scale);
+					vector<string> opts = getVectorFromString(fontopts);
+					fontopts.clear();
+					for (auto const & opt : opts) {
+						if (opt == "Mapping=tex-text" || opt == "Ligatures=TeX")
+							// ignore
+							continue;
+						if (prefixIs(opt, "Scale=")) {
+							scale_as_percentage(opt, scale);
+							continue;
+						}
+						if (!fontopts.empty())
+							fontopts += ", ";
+						fontopts += opt;
 					}
 				}
 				if (family == "sf") {
 					if (!scale.empty())
 						h_font_sf_scale[1] = scale;
 					h_font_sans[1] = fontname;
+					if (!fontopts.empty())
+						h_font_sans_opts = fontopts;
 				} else {
 					if (!scale.empty())
 						h_font_tt_scale[1] = scale;
 					h_font_typewriter[1] = fontname;
+					if (!fontopts.empty())
+						h_font_typewriter_opts = fontopts;
 				}
 				continue;
 			} else {

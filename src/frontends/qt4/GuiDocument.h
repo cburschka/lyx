@@ -289,6 +289,8 @@ private:
 	bool hasMonolithicExpertSet(QString const & font) const;
 	/// does this font provide size adjustment?
 	bool providesScale(QString const & font) const;
+	/// does this font provide extra options?
+	bool providesExtraOpts(QString const & font) const;
 	/// does this font provide an alternative without math?
 	bool providesNoMath(QString const & font) const;
 	///

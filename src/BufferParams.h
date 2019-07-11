@@ -285,14 +285,20 @@ public:
 	bool fonts_expert_sc;
 	/// use Old Style Figures
 	bool fonts_old_figures;
+	/// the options for the roman font
+	std::string font_roman_opts;
 	/// the scale factor of the sf font: [0] for TeX fonts, [1] for non-TeX fonts
 	int fonts_sans_scale[2];
 	/// the scale factor of the sf font
 	int fontsSansScale() const { return fonts_sans_scale[useNonTeXFonts]; }
+	// the options for the sans font
+	std::string font_sans_opts;
 	/// the scale factor of the tt font: [0] for TeX fonts, [1] for non-TeX fonts
 	int fonts_typewriter_scale[2];
 	/// the scale factor of the tt font
 	int fontsTypewriterScale() const { return fonts_typewriter_scale[useNonTeXFonts]; }
+	// the options for the typewriter font
+	std::string font_typewriter_opts;
 	/// the font used by the CJK command
 	std::string fonts_cjk;
 	/// use LaTeX microtype package

@@ -1090,11 +1090,23 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(fontModule->fontOsfCB, SIGNAL(toggled(bool)),
 		this, SLOT(fontOsfToggled(bool)));
+	connect(fontModule->fontspecRomanLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(fontModule->fontspecSansLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(fontModule->fontspecTypewriterLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
 
 	fontModule->fontencLE->setValidator(new NoNewLineValidator(
 		fontModule->fontencLE));
 	fontModule->cjkFontLE->setValidator(new NoNewLineValidator(
 		fontModule->cjkFontLE));
+	fontModule->fontspecRomanLE->setValidator(new NoNewLineValidator(
+		fontModule->fontspecRomanLE));
+	fontModule->fontspecSansLE->setValidator(new NoNewLineValidator(
+		fontModule->fontspecSansLE));
+	fontModule->fontspecTypewriterLE->setValidator(new NoNewLineValidator(
+		fontModule->fontspecTypewriterLE));
 
 	updateFontlist();
 
@@ -2420,15 +2432,21 @@ void GuiDocument::updateFontOptions()
 	bool const tex_fonts = !fontModule->osFontsCB->isChecked();
 	QString font;
 	if (tex_fonts)
+		font = fontModule->fontsRomanCO->itemData(
+				fontModule->fontsRomanCO->currentIndex()).toString();
+	bool const rm_opts = providesExtraOpts(font);
+	if (tex_fonts)
 		font = fontModule->fontsSansCO->itemData(
 				fontModule->fontsSansCO->currentIndex()).toString();
 	bool scaleable = providesScale(font);
+	bool const sf_opts = providesExtraOpts(font);
 	fontModule->scaleSansSB->setEnabled(scaleable);
 	fontModule->scaleSansLA->setEnabled(scaleable);
 	if (tex_fonts)
 		font = fontModule->fontsTypewriterCO->itemData(
 				fontModule->fontsTypewriterCO->currentIndex()).toString();
 	scaleable = providesScale(font);
+	bool const tt_opts = providesExtraOpts(font);
 	fontModule->scaleTypewriterSB->setEnabled(scaleable);
 	fontModule->scaleTypewriterLA->setEnabled(scaleable);
 	if (tex_fonts)
@@ -2436,6 +2454,12 @@ void GuiDocument::updateFontOptions()
 				fontModule->fontsRomanCO->currentIndex()).toString();
 	fontModule->fontScCB->setEnabled(providesSC(font));
 	fontModule->fontOsfCB->setEnabled(providesOSF(font));
+	fontModule->fontspecRomanLA->setEnabled(!tex_fonts || rm_opts);
+	fontModule->fontspecRomanLE->setEnabled(!tex_fonts || rm_opts);
+	fontModule->fontspecSansLA->setEnabled(!tex_fonts || sf_opts);
+	fontModule->fontspecSansLE->setEnabled(!tex_fonts || sf_opts);
+	fontModule->fontspecTypewriterLA->setEnabled(!tex_fonts || tt_opts);
+	fontModule->fontspecTypewriterLE->setEnabled(!tex_fonts || tt_opts);
 	updateMathFonts(font);
 }
 
@@ -2613,8 +2637,11 @@ void GuiDocument::romanChanged(int item)
 		return;
 	QString const font =
 		fontModule->fontsRomanCO->itemData(item).toString();
+	bool const opts = providesExtraOpts(font);
 	fontModule->fontScCB->setEnabled(providesSC(font));
 	fontModule->fontOsfCB->setEnabled(providesOSF(font));
+	fontModule->fontspecRomanLA->setEnabled(opts);
+	fontModule->fontspecRomanLE->setEnabled(opts);
 	updateMathFonts(font);
 }
 
@@ -2625,9 +2652,12 @@ void GuiDocument::sansChanged(int item)
 		return;
 	QString const font =
 		fontModule->fontsSansCO->itemData(item).toString();
-	bool scaleable = providesScale(font);
+	bool const scaleable = providesScale(font);
+	bool const opts = providesExtraOpts(font);
 	fontModule->scaleSansSB->setEnabled(scaleable);
 	fontModule->scaleSansLA->setEnabled(scaleable);
+	fontModule->fontspecSansLA->setEnabled(opts);
+	fontModule->fontspecSansLE->setEnabled(opts);
 }
 
 
@@ -2638,8 +2668,11 @@ void GuiDocument::ttChanged(int item)
 	QString const font =
 		fontModule->fontsTypewriterCO->itemData(item).toString();
 	bool scaleable = providesScale(font);
+	bool const opts = providesExtraOpts(font);
 	fontModule->scaleTypewriterSB->setEnabled(scaleable);
 	fontModule->scaleTypewriterLA->setEnabled(scaleable);
+	fontModule->fontspecTypewriterLA->setEnabled(opts);
+	fontModule->fontspecTypewriterLE->setEnabled(opts);
 }
 
 
@@ -3630,16 +3663,19 @@ void GuiDocument::applyView()
 		fromqstr(fontModule->fontsRomanCO->
 			itemData(fontModule->fontsRomanCO->currentIndex()).toString());
 	bp_.fonts_roman[!nontexfonts] = fromqstr(fontModule->font_roman);
+	bp_.font_roman_opts = fromqstr(fontModule->fontspecRomanLE->text());
 
 	bp_.fonts_sans[nontexfonts] =
 		fromqstr(fontModule->fontsSansCO->
 			itemData(fontModule->fontsSansCO->currentIndex()).toString());
 	bp_.fonts_sans[!nontexfonts] = fromqstr(fontModule->font_sans);
+	bp_.font_sans_opts = fromqstr(fontModule->fontspecSansLE->text());
 
 	bp_.fonts_typewriter[nontexfonts] =
 		fromqstr(fontModule->fontsTypewriterCO->
 			itemData(fontModule->fontsTypewriterCO->currentIndex()).toString());
 	bp_.fonts_typewriter[!nontexfonts] = fromqstr(fontModule->font_typewriter);
+	bp_.font_typewriter_opts = fromqstr(fontModule->fontspecTypewriterLE->text());
 
 	bp_.fonts_math[nontexfonts] =
 		fromqstr(fontModule->fontsMathCO->
@@ -4188,6 +4224,21 @@ void GuiDocument::paramsToDialog()
 	fontModule->font_sf_scale = bp_.fonts_sans_scale[!bp_.useNonTeXFonts];
 	fontModule->scaleTypewriterSB->setValue(bp_.fontsTypewriterScale());
 	fontModule->font_tt_scale = bp_.fonts_typewriter_scale[!bp_.useNonTeXFonts];
+	if (!bp_.font_roman_opts.empty())
+		fontModule->fontspecRomanLE->setText(
+			toqstr(bp_.font_roman_opts));
+	else
+		fontModule->fontspecRomanLE->setText(QString());
+	if (!bp_.font_sans_opts.empty())
+		fontModule->fontspecSansLE->setText(
+			toqstr(bp_.font_sans_opts));
+	else
+		fontModule->fontspecSansLE->setText(QString());
+	if (!bp_.font_typewriter_opts.empty())
+		fontModule->fontspecTypewriterLE->setText(
+			toqstr(bp_.font_typewriter_opts));
+	else
+		fontModule->fontspecTypewriterLE->setText(QString());
 
 	nn = findToken(GuiDocument::fontfamilies, bp_.fonts_default_family);
 	if (nn >= 0)
@@ -4898,6 +4949,15 @@ bool GuiDocument::providesScale(QString const & font) const
 				qstring_to_ucs4(font)).providesScale(ot1(),
 								     completeFontset(),
 								     noMathFont());
+}
+
+
+bool GuiDocument::providesExtraOpts(QString const & font) const
+{
+	if (fontModule->osFontsCB->isChecked())
+		return true;
+	return theLaTeXFonts().getLaTeXFont(
+				qstring_to_ucs4(font)).moreoptions();
 }
 
 

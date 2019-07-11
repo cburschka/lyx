@@ -166,6 +166,9 @@ private:
 	std::string h_font_roman[2];
 	std::string h_font_sans[2];
 	std::string h_font_typewriter[2];
+	std::string h_font_roman_opts;
+	std::string h_font_sans_opts;
+	std::string h_font_typewriter_opts;
 	std::string h_font_default_family;
 	bool h_use_non_tex_fonts;
 	std::string h_font_sc;

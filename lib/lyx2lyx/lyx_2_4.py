@@ -2282,6 +2282,169 @@ def revert_babelfont(document):
     insert_to_preamble(document, pretext)
 
 
+def revert_minionpro(document):
+    " Revert native MinionPro font definition (with extra options) to LaTeX "
+
+    i = find_token(document.header, '\\use_non_tex_fonts', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
+        return
+    if str2bool(get_value(document.header, "\\use_non_tex_fonts", i)):
+        return
+
+    regexp = re.compile(r'(\\font_roman_opts)')
+    i = find_re(document.header, regexp, 0)
+    if i == -1:
+        return
+
+    # We need to use this regex since split() does not handle quote protection
+    romanopts = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+    opts = romanopts[1].strip('"')
+    del document.header[i]
+
+    i = find_token(document.header, "\\font_roman", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_roman.")
+        return
+    else:
+        # We need to use this regex since split() does not handle quote protection
+        romanfont = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+        roman = romanfont[1].strip('"')
+        if roman != "minionpro":
+            return
+        romanfont[1] = '"default"'
+        document.header[i] = " ".join(romanfont)
+        osf = False
+        j = find_token(document.header, "\\font_osf true", 0)
+        if j != -1:
+            osf = True
+        preamble = "\\usepackage["
+        if osf:
+            document.header[j] = "\\font_osf false"
+        else:
+            preamble += "lf,"
+        preamble += opts
+        preamble += "]{MinionPro}"
+        add_to_preamble(document, [preamble])
+
+
+def revert_font_opts(document):
+    " revert font options by outputting \\setxxxfont or \\babelfont to the preamble "
+
+    i = find_token(document.header, '\\use_non_tex_fonts', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
+        return
+    if not str2bool(get_value(document.header, "\\use_non_tex_fonts", i)):
+        return
+    i = find_token(document.header, '\\language_package', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\language_package.")
+        return
+    Babel = (get_value(document.header, "\\language_package", 0) == "babel")
+
+    # 1. Roman
+    regexp = re.compile(r'(\\font_roman_opts)')
+    i = find_re(document.header, regexp, 0)
+    if i != -1:
+        # We need to use this regex since split() does not handle quote protection
+        romanopts = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+        opts = romanopts[1].strip('"')
+        del document.header[i]
+        regexp = re.compile(r'(\\font_roman)')
+        i = find_re(document.header, regexp, 0)
+        if i != -1:
+            # We need to use this regex since split() does not handle quote protection
+            romanfont = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+            font = romanfont[2].strip('"')
+            romanfont[2] = '"default"'
+            document.header[i] = " ".join(romanfont)
+            if font != "default":
+                if Babel:
+                    preamble = "\\babelfont{rm}["
+                else:
+                    preamble = "\\setmainfont["
+                preamble += opts
+                preamble += ","
+                preamble += "Mapping=tex-text]{"
+                preamble += font
+                preamble += "}"
+                add_to_preamble(document, [preamble])
+
+    # 2. Sans
+    regexp = re.compile(r'(\\font_sans_opts)')
+    i = find_re(document.header, regexp, 0)
+    if i != -1:
+        scaleval = 100
+        # We need to use this regex since split() does not handle quote protection
+        sfopts = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+        opts = sfopts[1].strip('"')
+        del document.header[i]
+        regexp = re.compile(r'(\\font_sf_scale)')
+        i = find_re(document.header, regexp, 0)
+        if i != -1:
+            scaleval = get_value(document.header, "\\font_sf_scale" , i).split()[1]
+        regexp = re.compile(r'(\\font_sans)')
+        i = find_re(document.header, regexp, 0)
+        if i != -1:
+            # We need to use this regex since split() does not handle quote protection
+            sffont = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+            font = sffont[2].strip('"')
+            sffont[2] = '"default"'
+            document.header[i] = " ".join(sffont)
+            if font != "default":
+                if Babel:
+                    preamble = "\\babelfont{sf}["
+                else:
+                    preamble = "\\setsansfont["
+                preamble += opts
+                preamble += ","
+                if scaleval != 100:
+                    preamble += "Scale=0."
+                    preamble += scaleval
+                    preamble += ","
+                preamble += "Mapping=tex-text]{"
+                preamble += font
+                preamble += "}"
+                add_to_preamble(document, [preamble])
+
+    # 3. Typewriter
+    regexp = re.compile(r'(\\font_typewriter_opts)')
+    i = find_re(document.header, regexp, 0)
+    if i != -1:
+        scaleval = 100
+        # We need to use this regex since split() does not handle quote protection
+        ttopts = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+        opts = ttopts[1].strip('"')
+        del document.header[i]
+        regexp = re.compile(r'(\\font_tt_scale)')
+        i = find_re(document.header, regexp, 0)
+        if i != -1:
+            scaleval = get_value(document.header, "\\font_tt_scale" , i).split()[1]
+        regexp = re.compile(r'(\\font_typewriter)')
+        i = find_re(document.header, regexp, 0)
+        if i != -1:
+            # We need to use this regex since split() does not handle quote protection
+            ttfont = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+            font = ttfont[2].strip('"')
+            ttfont[2] = '"default"'
+            document.header[i] = " ".join(ttfont)
+            if font != "default":
+                if Babel:
+                    preamble = "\\babelfont{tt}["
+                else:
+                    preamble = "\\setmonofont["
+                preamble += opts
+                preamble += ","
+                if scaleval != 100:
+                    preamble += "Scale=0."
+                    preamble += scaleval
+                    preamble += ","
+                preamble += "Mapping=tex-text]{"
+                preamble += font
+                preamble += "}"
+                add_to_preamble(document, [preamble])
+
 
 ##
 # Conversion hub
@@ -2323,10 +2486,12 @@ convert = [
            [576, []],
            [577, [convert_linggloss]],
            [578, []],
-           [579, []]
+           [579, []],
+           [580, []]
           ]
 
-revert =  [[578, [revert_babelfont]],
+revert =  [[579, [revert_font_opts, revert_minionpro]],
+           [578, [revert_babelfont]],
            [577, [revert_drs]],
            [576, [revert_linggloss, revert_subexarg]],
            [575, [revert_new_languages]],

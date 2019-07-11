@@ -228,7 +228,7 @@ string const LaTeXFont::getAvailablePackage(bool dryrun)
 
 
 string const LaTeXFont::getPackageOptions(bool ot1, bool complete, bool sc, bool osf,
-					  int scale, bool nomath)
+					  int scale, string const extraopts, bool nomath)
 {
 	ostringstream os;
 	bool const needosfopt = (osf != osfdefault_);
@@ -263,12 +263,19 @@ string const LaTeXFont::getPackageOptions(bool ot1, bool complete, bool sc, bool
 		os << subst(to_ascii(scaleoption_), "$$val",
 			    convert<std::string>(float(scale) / 100));
 	}
+
+	if (moreopts_ && !extraopts.empty()) {
+		if (!os.str().empty())
+			os << ',';
+		os << extraopts;
+	}
 	return os.str();
 }
 
 
 string const LaTeXFont::getLaTeXCode(bool dryrun, bool ot1, bool complete, bool sc,
-				     bool osf, bool nomath, int const & scale)
+				     bool osf, bool nomath, string const extraopts,
+				     int const & scale)
 {
 	ostringstream os;
 
@@ -276,7 +283,8 @@ string const LaTeXFont::getLaTeXCode(bool dryrun, bool ot1, bool complete, bool 
 	if (usedfont.empty())
 		return string();
 	else if (usedfont != name_)
-		return altFont(usedfont).getLaTeXCode(dryrun, ot1, complete, sc, osf, nomath, scale);
+		return altFont(usedfont).getLaTeXCode(dryrun, ot1, complete, sc,
+						      osf, nomath, extraopts, scale);
 
 	if (switchdefault_) {
 		if (family_.empty()) {
@@ -294,14 +302,15 @@ string const LaTeXFont::getLaTeXCode(bool dryrun, bool ot1, bool complete, bool 
 	} else {
 		string const package =
 			getAvailablePackage(dryrun);
-		string const packageopts = getPackageOptions(ot1, complete, sc, osf, scale, nomath);
+		string const packageopts = getPackageOptions(ot1, complete, sc, osf, scale, extraopts, nomath);
 		if (packageopts.empty() && !package.empty())
 			os << "\\usepackage{" << package << "}\n";
 		else if (!packageopts.empty() && !package.empty())
 			os << "\\usepackage[" << packageopts << "]{" << package << "}\n";
 	}
 	if (osf && providesOSF(ot1, complete, nomath) && !osffont_.empty())
-		os << altFont(osffont_).getLaTeXCode(dryrun, ot1, complete, sc, osf, nomath, scale);
+		os << altFont(osffont_).getLaTeXCode(dryrun, ot1, complete, sc, osf,
+						     nomath, extraopts, scale);
 
 	if (!preamble_.empty())
 		os << to_utf8(preamble_);
@@ -335,6 +344,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		LF_OSFOPTION,
 		LF_OSFSCOPTION,
 		LF_OT1_FONT,
+		LF_MOREOPTS,
 		LF_PACKAGE,
 		LF_PACKAGEOPTION,
 		LF_PREAMBLE,
@@ -353,6 +363,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		{ "family",               LF_FAMILY },
 		{ "fontencoding",         LF_FONTENC },
 		{ "guiname",              LF_GUINAME },
+		{ "moreoptions",          LF_MOREOPTS },
 		{ "nomathfont",           LF_NOMATHFONT },
 		{ "osfdefault",           LF_OSFDEFAULT },
 		{ "osffont",              LF_OSFFONT },
@@ -455,6 +466,9 @@ bool LaTeXFont::readFont(Lexer & lex)
 		case LF_SCOPTION:
 			lex >> scoption_;
 			break;
+		case LF_MOREOPTS:
+			lex >> moreopts_;
+			break;
 		case LF_SWITCHDEFAULT:
 			lex >> switchdefault_;
 			break;
@@ -473,6 +487,7 @@ bool LaTeXFont::read(Lexer & lex)
 {
 	switchdefault_ = 0;
 	osfdefault_ = 0;
+	moreopts_ = 0;
 
 	if (!lex.next()) {
 		lex.printError("No name given for LaTeX font: `$$Token'.");

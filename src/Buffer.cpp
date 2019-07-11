@@ -926,6 +926,9 @@ int Buffer::readHeader(Lexer & lex)
 	params().headsep.erase();
 	params().footskip.erase();
 	params().columnsep.erase();
+	params().font_roman_opts.erase();
+	params().font_sans_opts.erase();
+	params().font_typewriter_opts.erase();
 	params().fonts_cjk.erase();
 	params().listings_params.clear();
 	params().clearLayoutModules();

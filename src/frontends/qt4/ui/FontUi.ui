@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>533</width>
-    <height>447</height>
+    <width>534</width>
+    <height>632</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>FontUi</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" colspan="2">
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
     <widget class="QCheckBox" name="osFontsCB">
      <property name="toolTip">
       <string>Use OpenType and TrueType fonts with the fontspec package (requires XeTeX or LuaTeX)</string>
@@ -24,287 +24,354 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="fontsDefaultLA">
-     <property name="text">
-      <string>&amp;Default family:</string>
-     </property>
-     <property name="buddy">
-      <cstring>fontsDefaultCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QComboBox" name="fontsDefaultCO">
-       <property name="toolTip">
-        <string>Select the default family for the document</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="BaseSizeLA">
+   <item row="1" column="0" colspan="2">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="fontsDefaultLA">
        <property name="text">
-        <string>&amp;Base size:</string>
+        <string>&amp;Default family:</string>
        </property>
        <property name="buddy">
-        <cstring>fontsizeCO</cstring>
+        <cstring>fontsDefaultCO</cstring>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QComboBox" name="fontsizeCO">
+     <item row="0" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QComboBox" name="fontsDefaultCO">
+         <property name="toolTip">
+          <string>Select the default family for the document</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="BaseSizeLA">
+         <property name="text">
+          <string>&amp;Base size:</string>
+         </property>
+         <property name="buddy">
+          <cstring>fontsizeCO</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="fontsizeCO">
+         <property name="toolTip">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>59</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="fontencLA">
+       <property name="text">
+        <string>&amp;LaTeX font encoding:</string>
+       </property>
+       <property name="buddy">
+        <cstring>fontencCO</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QComboBox" name="fontencCO"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="fontencLE">
+         <property name="toolTip">
+          <string>Specify the font encoding (e.g., T1).</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="fontsRomanLA">
+       <property name="text">
+        <string>&amp;Roman:</string>
+       </property>
+       <property name="buddy">
+        <cstring>fontsRomanCO</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="fontsRomanCO">
        <property name="toolTip">
-        <string/>
+        <string>Select the roman (serif) typeface</string>
        </property>
       </widget>
      </item>
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+     <item row="3" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QLabel" name="fontspecRomanLA">
+         <property name="text">
+          <string>Options:</string>
+         </property>
+         <property name="buddy">
+          <cstring>fontspecRomanLE</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="fontspecRomanLE">
+         <property name="toolTip">
+          <string>Here you can insert additional options (as provided by the font package)</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="fontsSansLA">
+       <property name="text">
+        <string>&amp;Sans Serif:</string>
        </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>59</width>
-         <height>20</height>
-        </size>
+       <property name="buddy">
+        <cstring>fontsSansCO</cstring>
        </property>
-      </spacer>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QComboBox" name="fontsSansCO">
+         <property name="toolTip">
+          <string>Select the Sans Serif (grotesque) typeface</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="scaleSansLA">
+         <property name="text">
+          <string>S&amp;cale (%):</string>
+         </property>
+         <property name="buddy">
+          <cstring>scaleSansSB</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="scaleSansSB">
+         <property name="toolTip">
+          <string>Scale the Sans Serif font to match the base font's dimensions</string>
+         </property>
+         <property name="minimum">
+          <number>10</number>
+         </property>
+         <property name="maximum">
+          <number>200</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="5" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="fontspecSansLA">
+         <property name="text">
+          <string>Options:</string>
+         </property>
+         <property name="buddy">
+          <cstring>fontspecSansLE</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="fontspecSansLE">
+         <property name="toolTip">
+          <string>Here you can insert additional options (as provided by the font package)</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="fontsTypewriterLA">
+       <property name="text">
+        <string>&amp;Typewriter:</string>
+       </property>
+       <property name="buddy">
+        <cstring>fontsTypewriterCO</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <item>
+        <widget class="QComboBox" name="fontsTypewriterCO">
+         <property name="toolTip">
+          <string>Select the typewriter (monospaced) typeface</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="scaleTypewriterLA">
+         <property name="text">
+          <string>Sc&amp;ale (%):</string>
+         </property>
+         <property name="buddy">
+          <cstring>scaleTypewriterSB</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="scaleTypewriterSB">
+         <property name="toolTip">
+          <string>Scale the Typewriter font to match the base font's dimensions</string>
+         </property>
+         <property name="minimum">
+          <number>10</number>
+         </property>
+         <property name="maximum">
+          <number>200</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="7" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QLabel" name="fontspecTypewriterLA">
+         <property name="text">
+          <string>Options:</string>
+         </property>
+         <property name="buddy">
+          <cstring>fontspecTypewriterLE</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="fontspecTypewriterLE">
+         <property name="toolTip">
+          <string>Here you can insert additional options (as provided by the font package)</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="fontsMathLA">
+       <property name="text">
+        <string>&amp;Math:</string>
+       </property>
+       <property name="buddy">
+        <cstring>fontsMathCO</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QComboBox" name="fontsMathCO">
+       <property name="toolTip">
+        <string>Select the math typeface</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="cjkFontLA">
+       <property name="text">
+        <string>C&amp;JK:</string>
+       </property>
+       <property name="buddy">
+        <cstring>cjkFontLE</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QLineEdit" name="cjkFontLE">
+       <property name="toolTip">
+        <string>Input the font to be used for Chinese, Japanese or Korean (CJK) script</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="1">
+      <widget class="QCheckBox" name="fontScCB">
+       <property name="toolTip">
+        <string>Use a real small caps shape, if the font provides one</string>
+       </property>
+       <property name="text">
+        <string>Use true s&amp;mall caps</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="1">
+      <widget class="QCheckBox" name="fontOsfCB">
+       <property name="toolTip">
+        <string>Use old style instead of lining figures</string>
+       </property>
+       <property name="text">
+        <string>Use &amp;old style figures</string>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="1">
+      <widget class="QCheckBox" name="microtypeCB">
+       <property name="toolTip">
+        <string>Activate extensions such as character protrusion and font expansion via the microtype package</string>
+       </property>
+       <property name="text">
+        <string>Enable micr&amp;o-typographic extensions</string>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="1">
+      <widget class="QCheckBox" name="dashesCB">
+       <property name="toolTip">
+        <string>By default, a line break can occur after en- and em-dashes. Checking this box prevents that.</string>
+       </property>
+       <property name="text">
+        <string>Disallow l&amp;ine breaks after dashes</string>
+       </property>
+      </widget>
      </item>
     </layout>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="fontencLA">
-     <property name="text">
-      <string>&amp;LaTeX font encoding:</string>
-     </property>
-     <property name="buddy">
-      <cstring>fontencCO</cstring>
-     </property>
-    </widget>
    </item>
    <item row="2" column="1">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QComboBox" name="fontencCO"/>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="fontencLE">
-       <property name="toolTip">
-        <string>Specify the font encoding (e.g., T1).</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="fontsRomanLA">
-     <property name="text">
-      <string>&amp;Roman:</string>
-     </property>
-     <property name="buddy">
-      <cstring>fontsRomanCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QComboBox" name="fontsRomanCO">
-     <property name="toolTip">
-      <string>Select the roman (serif) typeface</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="fontsSansLA">
-     <property name="text">
-      <string>&amp;Sans Serif:</string>
-     </property>
-     <property name="buddy">
-      <cstring>fontsSansCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <item>
-      <widget class="QComboBox" name="fontsSansCO">
-       <property name="toolTip">
-        <string>Select the Sans Serif (grotesque) typeface</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QLabel" name="scaleSansLA">
-       <property name="text">
-        <string>S&amp;cale (%):</string>
-       </property>
-       <property name="buddy">
-        <cstring>scaleSansSB</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSpinBox" name="scaleSansSB">
-       <property name="toolTip">
-        <string>Scale the Sans Serif font to match the base font's dimensions</string>
-       </property>
-       <property name="minimum">
-        <number>10</number>
-       </property>
-       <property name="maximum">
-        <number>200</number>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="fontsTypewriterLA">
-     <property name="text">
-      <string>&amp;Typewriter:</string>
-     </property>
-     <property name="buddy">
-      <cstring>fontsTypewriterCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <layout class="QHBoxLayout" name="horizontalLayout_4">
-     <item>
-      <widget class="QComboBox" name="fontsTypewriterCO">
-       <property name="toolTip">
-        <string>Select the typewriter (monospaced) typeface</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QLabel" name="scaleTypewriterLA">
-       <property name="text">
-        <string>Sc&amp;ale (%):</string>
-       </property>
-       <property name="buddy">
-        <cstring>scaleTypewriterSB</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSpinBox" name="scaleTypewriterSB">
-       <property name="toolTip">
-        <string>Scale the Typewriter font to match the base font's dimensions</string>
-       </property>
-       <property name="minimum">
-        <number>10</number>
-       </property>
-       <property name="maximum">
-        <number>200</number>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="fontsMathLA">
-     <property name="text">
-      <string>&amp;Math:</string>
-     </property>
-     <property name="buddy">
-      <cstring>fontsMathCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1">
-    <widget class="QComboBox" name="fontsMathCO">
-     <property name="toolTip">
-      <string>Select the math typeface</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="cjkFontLA">
-     <property name="text">
-      <string>C&amp;JK:</string>
-     </property>
-     <property name="buddy">
-      <cstring>cjkFontLE</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="1">
-    <widget class="QLineEdit" name="cjkFontLE">
-     <property name="toolTip">
-      <string>Input the font to be used for Chinese, Japanese or Korean (CJK) script</string>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="1">
-    <widget class="QCheckBox" name="fontScCB">
-     <property name="toolTip">
-      <string>Use a real small caps shape, if the font provides one</string>
-     </property>
-     <property name="text">
-      <string>Use true s&amp;mall caps</string>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="1">
-    <widget class="QCheckBox" name="fontOsfCB">
-     <property name="toolTip">
-      <string>Use old style instead of lining figures</string>
-     </property>
-     <property name="text">
-      <string>Use &amp;old style figures</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="1">
-    <widget class="QCheckBox" name="microtypeCB">
-     <property name="toolTip">
-      <string>Activate extensions such as character protrusion and font expansion via the microtype package</string>
-     </property>
-     <property name="text">
-      <string>Enable micr&amp;o-typographic extensions</string>
-     </property>
-    </widget>
-   </item>
-   <item row="11" column="1">
-    <widget class="QCheckBox" name="dashesCB">
-     <property name="toolTip">
-      <string>By default, a line break can occur after en- and em-dashes. Checking this box prevents that.</string>
-     </property>
-     <property name="text">
-      <string>Disallow l&amp;ine breaks after dashes</string>
-     </property>
-    </widget>
-   </item>
-   <item row="12" column="1">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>

@@ -7,6 +7,14 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2019-07-11 Uwe Stöhr <uwestoehr@web.de>
+           Jürgen Spitzmüller <spitz@lyx.org>
+ 	* Format incremented to 580: support for document font options
+ 	  New buffer parameters
+ 	  - \fonts_roman_opts
+ 	  - \fonts_sans_opts
+ 	  - \fonts_typewriter_opts
+
 2019-07-11  Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 579: Add support for \babelfont.
 
