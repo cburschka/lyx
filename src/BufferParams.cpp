@@ -1763,7 +1763,8 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		os << from_ascii(ams);
 
 	if (useNonTeXFonts) {
-		if (!features.isProvided("fontspec"))
+		// Babel loads fontspec itself
+		if (!features.isProvided("fontspec") && !features.useBabel())
 			os << "\\usepackage{fontspec}\n";
 		if (features.mustProvide("unicode-math")
 		    && features.isAvailable("unicode-math"))
@@ -1781,8 +1782,9 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	}
 
 	// font selection must be done before loading fontenc.sty
+	// but after babel with non-TeX fonts
 	string const fonts = loadFonts(features);
-	if (!fonts.empty())
+	if (!fonts.empty() && (!features.useBabel() || !useNonTeXFonts))
 		os << from_utf8(fonts);
 
 	if (fonts_default_family != "default")
@@ -2312,6 +2314,10 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// we must load inputenc after babel (see lib/languages).
 	if (contains(features.getBabelPostsettings(), from_ascii("thai.ldf")))
 		writeEncodingPreamble(os, features);
+
+	// font selection must be done after babel with non-TeX fonts
+	if (!fonts.empty() && features.useBabel() && useNonTeXFonts)
+		os << from_utf8(fonts);
 
 	if (features.isRequired("bicaption"))
 		os << "\\usepackage{bicaption}\n";
@@ -3391,36 +3397,60 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 		// variants are understood by both engines. However,
 		// we want to provide support for at least TeXLive 2009
 		// (for XeTeX; LuaTeX is only supported as of v.2)
+		// Babel has its own higher-level interface on top of
+		// fontspec that is to be used.
+		bool const babel = features.useBabel();
 		string const texmapping =
 			(features.runparams().flavor == OutputParams::XETEX) ?
 			"Mapping=tex-text" : "Ligatures=TeX";
 		if (fontsRoman() != "default") {
-			os << "\\setmainfont[" << texmapping;
+			if (babel)
+				os << "\\babelfont{rm}[";
+			else
+				os << "\\setmainfont[";
+			os << texmapping;
 			if (fonts_old_figures)
 				os << ",Numbers=OldStyle";
 			os << "]{" << parseFontName(fontsRoman()) << "}\n";
 		}
 		if (fontsSans() != "default") {
 			string const sans = parseFontName(fontsSans());
-			if (fontsSansScale() != 100)
-				os << "\\setsansfont[Scale="
+			if (fontsSansScale() != 100) {
+				if (babel)
+					os << "\\babelfont{sf}";
+				else
+					os << "\\setsansfont";
+				os << "[Scale="
 				   << float(fontsSansScale()) / 100
 				   << "," << texmapping << "]{"
 				   << sans << "}\n";
-			else
-				os << "\\setsansfont[" << texmapping << "]{"
+			} else {
+				if (babel)
+					os << "\\babelfont{sf}[";
+				else
+					os << "\\setsansfont[";
+				os << texmapping << "]{"
 				   << sans << "}\n";
+			}
 		}
 		if (fontsTypewriter() != "default") {
 			string const mono = parseFontName(fontsTypewriter());
-			if (fontsTypewriterScale() != 100)
-				os << "\\setmonofont[Scale="
+			if (fontsTypewriterScale() != 100) {
+				if (babel)
+					os << "\\babelfont{tt}";
+				else
+					os << "\\setmonofont";
+				os << "[Scale="
 				   << float(fontsTypewriterScale()) / 100
 				   << "]{"
 				   << mono << "}\n";
-			else
-				os << "\\setmonofont{"
-				   << mono << "}\n";
+			} else {
+				if (babel)
+					os << "\\babelfont{tt}{";
+				else
+					os << "\\setmonofont{";
+				os << mono << "}\n";
+			}
 		}
 		return os.str();
 	}

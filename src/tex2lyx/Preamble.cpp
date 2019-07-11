@@ -1716,6 +1716,57 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			continue;
 		}
 
+		if (t.cs() == "babelfont") {
+			xetex = true;
+			h_use_non_tex_fonts = true;
+                        h_language_package = "babel";
+			if (h_inputencoding == "auto-legacy")
+			p.setEncoding("UTF-8");
+			// we don't care about the lang option
+			string const lang = p.hasOpt() ? p.getArg('[', ']') : string();
+                        string const family = p.getArg('{', '}');
+			string const fontopts = p.hasOpt() ? p.getArg('[', ']') : string();
+			string const fontname = p.getArg('{', '}');
+                        if (lang.empty() && family == "rm") {
+				h_font_roman[1] = fontname;
+ 				continue;
+			} else if (lang.empty() && (family == "sf" || family == "tt")) {
+				// LyX currently only supports the scale option
+				string scale;
+				if (!fontopts.empty()) {
+					// check if the option contains a scaling, if yes, extract it
+					string::size_type pos = fontopts.find("Scale");
+					if (pos != string::npos) {
+						string::size_type i = fontopts.find(',', pos);
+						if (i == string::npos)
+							scale_as_percentage(fontopts.substr(pos + 1), scale);
+						else
+							scale_as_percentage(fontopts.substr(pos, i - pos), scale);
+					}
+				}
+				if (family == "sf") {
+					if (!scale.empty())
+						h_font_sf_scale[1] = scale;
+					h_font_sans[1] = fontname;
+				} else {
+					if (!scale.empty())
+						h_font_tt_scale[1] = scale;
+					h_font_typewriter[1] = fontname;
+				}
+				continue;
+			} else {
+				// not rm, sf or tt or lang specific
+				h_preamble << '\\' << t.cs();
+				if (!lang.empty())
+					h_preamble << '[' << lang << ']';
+				h_preamble << '{' << family << '}';
+				if (!fontopts.empty())
+					h_preamble << '[' << fontopts << ']';
+				h_preamble << '{' << fontname << '}' << '\n';
+				continue;
+			}
+		}
+
 		if (t.cs() == "date") {
 			string argument = p.getArg('{', '}');
 			if (argument.empty())

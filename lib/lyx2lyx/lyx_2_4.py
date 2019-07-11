@@ -37,11 +37,11 @@ from parser_tools import (count_pars_in_inset, del_token, find_end_of_inset,
 #    is_in_inset, set_bool_value
 #    find_tokens, check_token
 
-from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble, lyx2latex,
-                           revert_language, revert_flex_inset)
-#  revert_font_attrs, insert_to_preamble, latex_length
+from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble, insert_to_preamble, lyx2latex,
+                           revert_language, revert_flex_inset, str2bool)
+#  revert_font_attrs, latex_length
 #  get_ert, lyx2verbatim, length_in_bp, convert_info_insets
-#  revert_flex_inset, hex2ratio, str2bool
+#  revert_flex_inset, hex2ratio
 
 ####################################################################
 # Private helper functions
@@ -2172,6 +2172,117 @@ def revert_drs(document):
             i = beginPlain
 
 
+
+def revert_babelfont(document):
+    " Reverts the use of \\babelfont to user preamble "
+
+    i = find_token(document.header, '\\use_non_tex_fonts', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
+        return
+    if not str2bool(get_value(document.header, "\\use_non_tex_fonts", i)):
+        return
+    i = find_token(document.header, '\\language_package', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\language_package.")
+        return
+    if get_value(document.header, "\\language_package", 0) != "babel":
+        return
+
+    # check font settings
+    # defaults
+    roman = sans = typew = "default"
+    osf = False
+    sf_scale = tt_scale = 100.0
+
+    j = find_token(document.header, "\\font_roman", 0)
+    if j == -1:
+        document.warning("Malformed LyX document: Missing \\font_roman.")
+    else:
+        # We need to use this regex since split() does not handle quote protection
+        romanfont = re.findall(r'[^"\s]\S*|".+?"', document.header[j])
+        roman = romanfont[2].strip('"')
+        romanfont[2] = '"default"'
+        document.header[j] = " ".join(romanfont)
+
+    j = find_token(document.header, "\\font_sans", 0)
+    if j == -1:
+        document.warning("Malformed LyX document: Missing \\font_sans.")
+    else:
+        # We need to use this regex since split() does not handle quote protection
+        sansfont = re.findall(r'[^"\s]\S*|".+?"', document.header[j])
+        sans = sansfont[2].strip('"')
+        sansfont[2] = '"default"'
+        document.header[j] = " ".join(sansfont)
+
+    j = find_token(document.header, "\\font_typewriter", 0)
+    if j == -1:
+        document.warning("Malformed LyX document: Missing \\font_typewriter.")
+    else:
+        # We need to use this regex since split() does not handle quote protection
+        ttfont = re.findall(r'[^"\s]\S*|".+?"', document.header[j])
+        typew = ttfont[2].strip('"')
+        ttfont[2] = '"default"'
+        document.header[j] = " ".join(ttfont)
+
+    i = find_token(document.header, "\\font_osf", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_osf.")
+    else:
+        osf = str2bool(get_value(document.header, "\\font_osf", i))
+
+    j = find_token(document.header, "\\font_sf_scale", 0)
+    if j == -1:
+        document.warning("Malformed LyX document: Missing \\font_sf_scale.")
+    else:
+        sfscale = document.header[j].split()
+        val = sfscale[2]
+        sfscale[2] = "100"
+        document.header[j] = " ".join(sfscale)
+        try:
+            # float() can throw
+            sf_scale = float(val)
+        except:
+            document.warning("Invalid font_sf_scale value: " + val)
+
+    j = find_token(document.header, "\\font_tt_scale", 0)
+    if j == -1:
+        document.warning("Malformed LyX document: Missing \\font_tt_scale.")
+    else:
+        ttscale = document.header[j].split()
+        val = ttscale[2]
+        ttscale[2] = "100"
+        document.header[j] = " ".join(ttscale)
+        try:
+            # float() can throw
+            tt_scale = float(val)
+        except:
+            document.warning("Invalid font_tt_scale value: " + val)
+
+    # set preamble stuff
+    pretext = ['%% This document must be processed with xelatex or lualatex!']
+    pretext.append('\\AtBeginDocument{%')
+    if roman != "default":
+        pretext.append('\\babelfont{rm}[Mapping=tex-text]{' + roman + '}')
+    if sans != "default":
+        sf = '\\babelfont{sf}['
+        if sf_scale != 100.0:
+            sf += 'Scale=' + str(sf_scale / 100.0) + ','
+        sf += 'Mapping=tex-text]{' + sans + '}'
+        pretext.append(sf)
+    if typew != "default":
+        tw = '\\babelfont{tt}'
+        if tt_scale != 100.0:
+            tw += '[Scale=' + str(tt_scale / 100.0) + ']'
+        tw += '{' + typew + '}'
+        pretext.append(tw)
+    if osf:
+        pretext.append('\\defaultfontfeatures{Numbers=OldStyle}')
+    pretext.append('}')
+    insert_to_preamble(document, pretext)
+
+
+
 ##
 # Conversion hub
 #
@@ -2211,10 +2322,12 @@ convert = [
            [575, [convert_lineno]],
            [576, []],
            [577, [convert_linggloss]],
-           [578, []]
+           [578, []],
+           [579, []]
           ]
 
-revert =  [[577, [revert_drs]],
+revert =  [[578, [revert_babelfont]],
+           [577, [revert_drs]],
            [576, [revert_linggloss, revert_subexarg]],
            [575, [revert_new_languages]],
            [574, [revert_lineno]],
