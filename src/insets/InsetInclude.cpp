@@ -410,10 +410,10 @@ docstring InsetInclude::screenLabel() const
 			temp = buffer().B_("Input");
 			break;
 		case VERB:
-			temp = buffer().B_("Verbatim Input");
+            temp = buffer().B_("Verbatim");
 			break;
 		case VERBAST:
-			temp = buffer().B_("Verbatim Input*");
+            temp = buffer().B_("Verbatim*");
 			break;
 		case INCLUDE:
 			if (isChildIncluded())
