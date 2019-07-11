@@ -338,17 +338,23 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 	*/
 	// If the current language is Hebrew, Arabic, or Farsi
 	// the numbers are written Left-to-Right. ArabTeX package
-	// and bidi (polyglossia) reorder the number automatically
+	// and bidi (polyglossia with XeTeX) reorder the number automatically
 	// but the packages used for Hebrew and Farsi (Arabi) do not.
-	if (!runparams.use_polyglossia
+	if (!(runparams.use_polyglossia && runparams.flavor == OutputParams::XETEX)
 	    && !runparams.pass_thru
 	    && bits_.number() == FONT_ON
 	    && prev.fontInfo().number() != FONT_ON
 	    && (language()->lang() == "hebrew"
 		|| language()->lang() == "farsi"
 		|| language()->lang() == "arabic_arabi")) {
-		os << "{\\beginL ";
-		count += 9;
+		if (runparams.use_polyglossia) {
+			// LuaTeX/luabidi
+			os << "\\LR{";
+			count += 5;
+		} else {
+			os << "{\\beginL ";
+			count += 9;
+		}
 	}
 	if (f.emph() == FONT_ON) {
 		os << "\\emph{";
@@ -499,17 +505,23 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 
 	// If the current language is Hebrew, Arabic, or Farsi
 	// the numbers are written Left-to-Right. ArabTeX package
-	// and bidi (polyglossia) reorder the number automatically
+	// and bidi (polyglossia with XeTeX) reorder the number automatically
 	// but the packages used for Hebrew and Farsi (Arabi) do not.
-	if (!runparams.use_polyglossia
+	if (!(runparams.use_polyglossia && runparams.flavor == OutputParams::XETEX)
 	    && !runparams.pass_thru
 	    && bits_.number() == FONT_ON
 	    && next.fontInfo().number() != FONT_ON
 	    && (language()->lang() == "hebrew"
 		|| language()->lang() == "farsi"
 		|| language()->lang() == "arabic_arabi")) {
-		os << "\\endL}";
-		count += 6;
+		if (runparams.use_polyglossia) {
+			// LuaTeX/luabidi
+			os << "}";
+			count += 1;
+		} else {
+			os << "\\endL}";
+			count += 6;
+		}
 	}
 
 	if (open_encoding_) {
