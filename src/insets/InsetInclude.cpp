@@ -1314,8 +1314,12 @@ void InsetInclude::addToToc(DocIterator const & cpit, bool output_active,
 		b.pushItem(cpit, screenLabel(), output_active);
 		InsetListingsParams p(to_utf8(params()["lstparams"]));
 		b.argumentItem(from_utf8(p.getParamValue("caption")));
-		b.pop();
-	} else {
+        b.pop();
+    } else if (isVerbatim(params())) {
+        TocBuilder & b = backend.builder("child");
+        b.pushItem(cpit, screenLabel(), output_active);
+        b.pop();
+    } else {
 		Buffer const * const childbuffer = getChildBuffer();
 
 		TocBuilder & b = backend.builder("child");
