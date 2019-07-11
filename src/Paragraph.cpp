@@ -1860,8 +1860,9 @@ char_type Paragraph::getUChar(BufferParams const & bparams,
 	char_type c = d->text_[pos];
 
 	// Return unchanged character in LTR languages
-	// or if we use poylglossia/bidi.
-	if (rp.use_polyglossia || !getFontSettings(bparams, pos).isRightToLeft())
+	// or if we use poylglossia/bidi (XeTeX).
+	if ((rp.use_polyglossia && rp.flavor == OutputParams::XETEX)
+	    || !getFontSettings(bparams, pos).isRightToLeft())
 		return c;
 
 	// Without polyglossia/bidi, we need to account for some special cases.
@@ -1880,7 +1881,8 @@ char_type Paragraph::getUChar(BufferParams const & bparams,
 	char_type uc = c;
 
 	// 1. In the following languages, parentheses need to be reversed.
-	bool const reverseparens = lang == "hebrew";
+	//    Also with polyglodia/luabidi
+	bool const reverseparens = (lang == "hebrew" || rp.use_polyglossia);
 
 	// 2. In the following languages, brackets don't need to be reversed.
 	bool const reversebrackets = lang != "arabic_arabtex"
