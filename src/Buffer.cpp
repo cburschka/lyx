@@ -4482,9 +4482,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 				if (format == "pdf4")
 					s += "\n"
 					  + bformat(_("Hint: use non-TeX fonts or set input encoding "
-						      " to '%1$s' or '%2$s'"),
-						    from_utf8(encodings.fromLyXName("utf8")->guiName()),
-						    from_utf8(encodings.fromLyXName("ascii")->guiName()));
+						  " to '%1$s'"), from_utf8(encodings.fromLyXName("ascii")->guiName()));
 				Alert::error(_("Couldn't export file"), s);
 			}
 			return ExportNoPathToFormat;

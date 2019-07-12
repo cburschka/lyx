@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 574
+\lyxformat 580
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -58,6 +58,7 @@
 \justification true
 \use_refstyle 1
 \use_minted 0
+\use_lineno 0
 \branch na
 \selected 0
 \filename_suffix 0
@@ -148,68 +149,16 @@ LyXen ist schön.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset CommandInset include
-LatexCommand input
-filename "unicodesymbols/012-hebrew_he.lyx"
-literal "false"
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-Hebrew does not work with XeTeX and TeX-fonts:
-\end_layout
-
-\begin_layout Plain Layout
-Error 256 (driver return code) generating output; file 012-hebrew_he_HE8.pdf
- may not be valid.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Compilation errors under TeXLive-19 with XeTeX, TeX-fonts, inputenc utf8,
  and expl3.sty (TL 17 works).
 \end_layout
 
 \begin_layout Standard
-required by xfrac.sty:
+required by xfrac.sty (autoloaded for some fraction characters): ⅕
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "unicodesymbols/074-76-letterlike-numberforms-arrows.lyx"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-required by menukeys.sty:
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "unicodesymbols/078-79-misc-technical-control-pics.lyx"
-literal "false"
-
-\end_inset
-
-
+required by menukeys.sty (autoloaded for some technical symbols): ⌦
 \end_layout
 
 \end_body

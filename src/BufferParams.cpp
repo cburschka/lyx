@@ -104,18 +104,6 @@ static char const * const tex_graphics[] = {
 
 namespace lyx {
 
-// XeTeX with TeX fonts:
-// run in 8-bit emulation mode and trick `inputenc` into working with XeTeX
-static docstring const xetex_pre_inputenc = from_ascii(
-	"\\XeTeXinputencoding \"bytes\" % current file\n"
-	"\\XeTeXdefaultencoding \"bytes\" % included files\n"
-	"\\makeatletter\n"
-	"\\let\\origUmathchar\\Umathchar\n"
-	"\\let\\Umathchar\\@undefined\n");
-static docstring const xetex_post_inputenc = from_ascii(
-	"\\let\\Umathchar\\origUmathchar\n"
-	"\\makeatother\n");
-
 // Local translators
 namespace {
 
@@ -2687,10 +2675,8 @@ FormatList const & BufferParams::exportableFormats(bool only_viewable) const
 	if (useNonTeXFonts) {
 		excludes.insert("latex");
 		excludes.insert("pdflatex");
-	} else if (inputenc != "ascii" && inputenc != "utf8"
-			   && inputenc != "utf8x" && inputenc != "utf8-plain")
-		  // XeTeX with TeX fonts requires input encoding ascii or utf8
-		  // (https://www.tug.org/pipermail/xetex/2010-April/016452.html).
+	} else if (inputenc != "ascii" && inputenc != "utf8-plain")
+		  // XeTeX with TeX fonts requires input encoding ascii (#10600).
 		  excludes.insert("xetex");
 	FormatList result = theConverters().getReachable(backs[0], only_viewable,
 													 true, excludes);
@@ -2721,8 +2707,8 @@ vector<string> BufferParams::backends() const
 				v.push_back("pdflatex");
 				v.push_back("latex");
 			}
-			if (useNonTeXFonts || inputenc == "ascii" || inputenc == "utf8"
-			    || inputenc == "utf8x" || inputenc == "utf8-plain")
+			if (useNonTeXFonts 
+				|| inputenc == "ascii" || inputenc == "utf8-plain")
 				v.push_back("xetex");
 			v.push_back("luatex");
 			v.push_back("dviluatex");
@@ -3346,16 +3332,12 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			if (features.isRequired("japanese")
 			    || features.isProvided("inputenc"))
 				break;
-			if (features.runparams().flavor == OutputParams::XETEX)
-				os << xetex_pre_inputenc;
 			os << "\\usepackage[" << from_ascii(encoding().latexName());
 		   	if (features.runparams().flavor == OutputParams::LUATEX
 			    || features.runparams().flavor == OutputParams::DVILUATEX)
 				os << "]{luainputenc}\n";
 			else
 				os << "]{inputenc}\n";
-			if (features.runparams().flavor == OutputParams::XETEX)
-				os << xetex_post_inputenc;
 			break;
 		}
 	}

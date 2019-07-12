@@ -65,14 +65,20 @@ export/examples/Graphics_and_Insets/Instant_Preview_(dvi3|pdf4)_systemF
 
 export/examples/Articles/Chess/Game_2_pdf[25].*
 export/examples/(|fr/)Presentations/Powerdot_pdf[25].*
-export/examples/Modules/Chessboard_(lyx(16|20|21|22|23)|(pdf3|pdf5|dvi3)_texF)
+export/examples/Modules/Chessboard_(lyx(16|20|21|22|23)|(pdf5|dvi3)_texF)
 
 # XeTeX with TeX fonts
 ######################
-# XeTeX with TeX-fonts works only for input encodings "UTF-8" and "ASCII".
+# XeTeX with TeX-fonts works only for input encodings "utf8-plain" and "ascii".
 # Ignore documents with other inputencoding values:
-export/export/latex/languages/supported-languages_babel_auto-legacy_pdf4_texF
-export/examples/fr/Example_%28raw%29_pdf4_texF
+export/doc/(|ar|ca|cs|da|de|en|el|es|eu|fa|fr|gl|he|hu|id|it|nb||nl|pl|pt|pt_BR|pt_PT|ro|ru|sk|sl|sr|sv|uk).*_pdf4_texF
+export/examples/(|ar|ca|cs|da|de|en|el|es|eu|fa|fr|gl|he|hu|id|it|nb||nl|pl|pt|pt_BR|pt_PT|ro|ru|sk|sl|sr|sv|uk).*_pdf4_texF
+export/mathmacros/.*_pdf4_texF
+export/templates/(|ar|ca|cs|da|de|en|el|es|eu|fa|fr|gl|he|hu|id|it|nb||nl|pl|pt|pt_BR|pt_PT|ro|ru|sk|sl|sr|sv|uk).*_pdf4_texF
+export/tabletemplates/.*_pdf4_texF
+# allow dedicated XeTeX tests:
+!export/export/.*xetex.*_pdf4_texF
+export/export/.*_pdf4_texF
 
 # pLaTeX
 ########
@@ -141,7 +147,7 @@ export/templates/Articles/Copernicus_Publications_.*_lyx(16|20|21|22)
 #! Missing number, treated as zero.
 # in copernicus.cls:199
 # \ifnum\pdfoutput=\z@
-export/templates/Articles/Copernicus_.*(dvi3|pdf4|pdf5)_(texF|systemF)
+export/templates/Articles/Copernicus_.*_(texF|systemF)
 
 
 

@@ -1658,14 +1658,10 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 		   OutputParams const & runparams, Encoding const & newEnc,
 		   bool force, bool noswitchmacro)
 {
-	// Never switch encoding with non-TeX fonts (always "utf8plain"),
-	// with LuaTeX and TeX fonts (only one encoding accepted by luainputenc),
+	// Never switch encoding with XeTeX/LuaTeX
 	// or if we're in a moving argument or inherit the outer encoding.
-	if (bparams.useNonTeXFonts
-		|| runparams.flavor == OutputParams::LUATEX
-		|| runparams.flavor == OutputParams::DVILUATEX
-		|| newEnc.name() == "inherit")
-	  return make_pair(false, 0);
+	if (runparams.isFullUnicode() || newEnc.name() == "inherit")
+		return make_pair(false, 0);	
 
 	// Only switch for auto-selected legacy encodings (inputenc setting
 	// "auto-legacy" or "auto-legacy-plain").

@@ -182,10 +182,7 @@ export/export/latex/languages/ru_auto-legacy-luatex.*_texF
 # New in TL18 -> cf. unreliableTests.varying_versions.
 # Workaround: suppressing auto-date, setting inputenc to "utf8", or using
 #             date inset (new in LyX 2.4) in the source documents.
-export/export/latex/languages/uk-babel-date-missing-chars-with-ascii_(pdf4|dvi3)_texF
-# the "dvi3" tests for these pass, but have wrong output.
-export/doc/uk/Intro_pdf4_texF
-export/examples/uk/Welcome_pdf4_texF
+export/export/latex/languages/uk-babel-date-missing-chars-with-ascii_dvi3_texF
 
 # Babel with non-TeX fonts fails for some supported languages
 # Lithuanian: L7x font encoding also set with LuaTeX and non-TeX fonts
@@ -196,9 +193,6 @@ export/export/latex/languages/supported-languages_babel_non-tex_(dvi3|pdf5)_syst
 #   LaTeX Error: Command \at already defined. (and a lot more)
 export/export/latex/languages/supported-languages_(dvi|pdf).*_texF
 export/export/latex/languages/supported-languages_babel_(dvi|pdf).*_texF
-
-# Babel-Spanish fails sometimes with XeTeX and TeX fonts
-export/doc/es/(Math|UserGuide|EmbeddedObjects|Customization)_pdf4_texF
 
 # Polyglossia + LuaTeX issue
 # Reported upstream here:
@@ -257,8 +251,7 @@ export/export/latex/CJK/en-de-el-ru-ko_utf8_(dvi3|pdf5)_systemF
 # Arabic
 #
 # Larger Arabic documents currently have non-TeX fonts and XeTeX
-# as default output (examples/ar/Welcome_pdf4_texF works).
-# To fix pdfTeX export:
+# as default output. To fix pdfTeX export:
 # - set all non-Arab text parts to a different language (e.g. English)
 # - define alternatives for hyperref (e.g. with textorpdfstring)
 #   for correct handling of hyperref.
@@ -270,10 +263,6 @@ export/export/latex/CJK/en-de-el-ru-ko_utf8_(dvi3|pdf5)_systemF
 #                           {}
 #      I'm broken. Please show this to someone who can fix
 # see discussion at https://www.mail-archive.com/search?l=mid&q=20161114035123.s5lt4ib4x4obtptp%40steph
-#
-# Arabic letters in hyperlink name fail with TeX fonts because of wrong font encoding
-# 8-bit TeX exports are ignored (\output_format xetex).
-export/doc/ar/.*_pdf4_texF
 
 # Babel-Arabic loads "inputenc" which fails with LuaTeX
 export/.*/ar/.*_(dvi3|pdf5)_texF
@@ -339,5 +328,4 @@ Sublabel: attic
 # Files in the attic with non-default output
 # (i.e. could be ERT, package incompatiblity, ...)
 export/doc/attic/it_(UserGuide_dvi3|UserGuide_pdf4)_systemF
-export/doc/attic/sk_UserGuide_pdf4_texF
 export/doc/attic/id_UserGuide_.*systemF
