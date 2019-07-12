@@ -49,7 +49,6 @@ int timeout_min()
 static string const python23_call(string const & binary, bool verbose = false)
 {
 	const string version_info = " -c 'from __future__ import print_function;import sys; print(sys.version_info[:2], end=\"\")'";
-	static regex const python_reg("\\((\\d*), (\\d*)\\)");
 	// Default to "python" if no binary is given.
 	if (binary.empty())
 		return "python -tt";
@@ -60,8 +59,14 @@ static string const python23_call(string const & binary, bool verbose = false)
 	cmd_ret const out = runCommand(binary + version_info);
 
 	smatch sm;
-	if (out.first < 0 || !regex_match(out.second, sm, python_reg))
+	try {
+		static regex const python_reg("\\((\\d*), (\\d*)\\)");
+		if (out.first < 0 || !regex_match(out.second, sm, python_reg))
+			return string();
+	} catch(regex_error const & /*e*/) {
+		LYXERR0("Regex error! This should not happen.");
 		return string();
+	}
 
 	int major = convert<int>(sm.str(1));
 	int minor = convert<int>(sm.str(2));
