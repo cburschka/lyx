@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-06-26 10:54+0200\n"
-"PO-Revision-Date: 2019-06-26 08:56+0000\n"
+"POT-Creation-Date: 2019-07-12 13:55+0200\n"
+"PO-Revision-Date: 2019-07-12 11:56+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -4136,6 +4136,12 @@ msgstr "Generátor pre &Japončinu:"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:133
 msgid "Options:"
 msgstr "Možnosti:"
+
+#: src/frontends/qt4/ui/FontUi.ui:136 src/frontends/qt4/ui/FontUi.ui:214
+#: src/frontends/qt4/ui/FontUi.ui:292
+msgid ""
+"Here you can insert additional options (as provided by the font package)"
+msgstr "Tu môžte vložiť ďalšie voľby (poskytnuté balíkom fontu)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:143
 msgid "Specific BibTeX command and options for pLaTeX (Japanese)"
@@ -13672,9 +13678,9 @@ msgstr "Číslovaný príklad (viac-riadkový)"
 msgid "Numbered Examples (consecutive)"
 msgstr "Číslované príklady (postupne)"
 
-#: lib/layouts/linguistics.module:85
+#: lib/layouts/linguistics.module:86
 msgid "Custom Numbering|s"
-msgstr "Vlastné číslovanie|V"
+msgstr "Vlastné číslovanie|é"
 
 #: lib/layouts/linguistics.module:86
 msgid "Customize the numeration"
@@ -13690,7 +13696,7 @@ msgstr "Podpríkladné voľby"
 
 #: lib/layouts/linguistics.module:101
 msgid "Subexamples options|s"
-msgstr "Podpríkladné voľby|v"
+msgstr "Podpríkladné voľby|P"
 
 #: lib/layouts/linguistics.module:102
 msgid "Add subexamples options here"
@@ -18305,6 +18311,10 @@ msgstr "Bera Sans"
 msgid "Biolinum"
 msgstr "Biolinum"
 
+#: lib/latexfonts:625 lib/latexfonts:636 lib/latexfonts:646
+msgid "Cantarell Sans Serif"
+msgstr "Cantarell Sans Serif"
+
 #: lib/latexfonts:530
 msgid "CM Bright"
 msgstr "CM Bright"
@@ -18432,6 +18442,10 @@ msgstr "URW Classico (Optima)"
 #: lib/latexfonts:667
 msgid "Bera Mono"
 msgstr "Bera Mono"
+
+#: lib/latexfonts:906
+msgid "Cantarell Monospace"
+msgstr "Cantarell Monospace"
 
 #: lib/latexfonts:675
 msgid "CM Typewriter Light"
@@ -18963,14 +18977,14 @@ msgstr "Externe upraviť databázu(y)…|x"
 msgid "Open Inset|O"
 msgstr "Otvoriť vložku|i"
 
-#: lib/ui/stdcontext.inc:150
+#: lib/ui/stdcontext.inc:152
 msgid "Close Inset|C"
-msgstr "Zavrieť vložku|Z"
+msgstr "Zavrieť vložku|ť"
 
-#: lib/ui/stdcontext.inc:152 lib/ui/stdcontext.inc:158
-#: lib/ui/stdcontext.inc:174 lib/ui/stdcontext.inc:622
+#: lib/ui/stdcontext.inc:154 lib/ui/stdcontext.inc:160
+#: lib/ui/stdcontext.inc:176 lib/ui/stdcontext.inc:628
 msgid "Dissolve Inset|D"
-msgstr "Rozpustiť vložku|k"
+msgstr "Rozpustiť vložku|ž"
 
 #: lib/ui/stdcontext.inc:157 lib/ui/stdcontext.inc:173
 msgid "Show Label|L"
@@ -19036,9 +19050,9 @@ msgstr "Fantóm|F"
 msgid "Horizontal Phantom|H"
 msgstr "Horizontálny fantóm|H"
 
-#: lib/ui/stdcontext.inc:223 lib/ui/stdmenus.inc:546
+#: lib/ui/stdcontext.inc:225 lib/ui/stdmenus.inc:549
 msgid "Vertical Phantom|V"
-msgstr "Vertikálny fantóm|á"
+msgstr "Vertikálny fantóm|ó"
 
 #: lib/ui/stdcontext.inc:238 lib/ui/stdmenus.inc:452
 msgid "Interword Space|w"
@@ -19297,9 +19311,9 @@ msgstr "Vlastné štýly textu|x"
 msgid "Paragraph Settings...|P"
 msgstr "Nastavenia odstavca…|o"
 
-#: lib/ui/stdcontext.inc:365
+#: lib/ui/stdcontext.inc:370
 msgid "Unify Graphics Groups|U"
-msgstr "Zjednotiť skupinu obrázkov|b"
+msgstr "Zjednotiť skupinu obrázkov|á"
 
 #: lib/ui/stdcontext.inc:373
 msgid "Fullscreen Mode"
@@ -19466,9 +19480,9 @@ msgstr "Viac-stranná tabuľka|V"
 msgid "Formal Style|m"
 msgstr "Formálny štýl|F"
 
-#: lib/ui/stdcontext.inc:469
+#: lib/ui/stdcontext.inc:475
 msgid "Borders|d"
-msgstr "Okraje|j"
+msgstr "Okraje|k"
 
 #: lib/ui/stdcontext.inc:470
 msgid "Alignment|i"
@@ -19542,9 +19556,9 @@ msgstr "Presunúť sekciu nadol|P"
 msgid "Select Section|S"
 msgstr "Vybrať sekciu|V"
 
-#: lib/ui/stdcontext.inc:653
+#: lib/ui/stdcontext.inc:659
 msgid "Wrap by Preview|y"
-msgstr "Obtekať pri náhľade|b"
+msgstr "Obtekať pri náhľade|ľ"
 
 #: lib/ui/stdcontext.inc:672 lib/ui/stdmenus.inc:359
 msgid "Lock Toolbars|L"
@@ -26573,11 +26587,10 @@ msgstr "Nemôžem exportovať súbor"
 msgid "No information for exporting the format %1$s."
 msgstr "Žiadne informácie pre export formátu %1$s."
 
-#: src/Buffer.cpp:4463
+#: src/Buffer.cpp:4484
 #, c-format
-msgid "Hint: use non-TeX fonts or set input encoding  to '%1$s' or '%2$s'"
-msgstr ""
-"Tip:Použite fonty mimo TeXu alebo nastavte kódovanie na '%1$s' alebo '%2$s'"
+msgid "Hint: use non-TeX fonts or set input encoding  to '%1$s'"
+msgstr "Tip:Použite fonty mimo TeXu alebo nastavte kódovanie na '%1$s'"
 
 #: src/Buffer.cpp:4407 src/frontends/qt4/GuiView.cpp:2524
 msgid "File name error"
@@ -30728,6 +30741,64 @@ msgstr "Unicode (utf8)"
 msgid "Traditional (auto-selected)"
 msgstr "Pôvodné (automaticky vybrané)"
 
+#: src/frontends/qt4/GuiDocument.cpp:973
+msgid "Select Unicode (utf8) encoding."
+msgstr "Vyberte Unicode (utf8) kódovanie."
+
+#: src/frontends/qt4/GuiDocument.cpp:975
+msgid "Use language-dependent traditional encodings."
+msgstr "Použiť kódovanie ako pôvodne špecificky odkázané jazykom."
+
+#: src/frontends/qt4/GuiDocument.cpp:977
+msgid "Select a custom, document-wide encoding."
+msgstr "Vyberte vlastné kódovanie tohto dokumentu."
+
+#: src/frontends/qt4/GuiDocument.cpp:986
+msgid "Standard Unicode support by the ``inputenc'' package."
+msgstr "Nastaviť, či treba načítať balík 'inputenc' pre Unicode podporu."
+
+#: src/frontends/qt4/GuiDocument.cpp:989
+msgid ""
+"Use UTF-8 'as-is': do not load any supporting packages, do not convert any "
+"characters to LaTeX macros. For use with non-TeX fonts (XeTeX/LuaTeX) or "
+"custom preamble code."
+msgstr ""
+"Použiť UTF-8 'ako je': nenačítať nijaké podporujúce balíky, nekonvertovať "
+"nijaké znaky na LaTeX-makrá. Na použitie pre fonty mimo TeXu (XeTeX/LuaTeX) "
+"alebo vlastný kód v preambule."
+
+#: src/frontends/qt4/GuiDocument.cpp:994
+msgid ""
+"Load ``inputenc'' with option 'utf8x' for extended Unicode support by the "
+"``ucs'' package."
+msgstr ""
+"Načítať 'inputenc' voľbou 'utf8x' pre rozšírenú Unicode-podporu balíkom "
+"'ucs'."
+
+#: src/frontends/qt4/GuiDocument.cpp:997
+msgid "Language Default"
+msgstr "Štandardné pre daný jazyk"
+
+#: src/frontends/qt4/GuiDocument.cpp:998
+msgid "Language Default (no inputenc)"
+msgstr "Štandardné pre daný jazyk (bez inputenc)"
+
+#: src/frontends/qt4/GuiDocument.cpp:1000
+msgid ""
+"Use the traditional default encoding of the text language. Switch encoding "
+"if a text part is set to a language with different default."
+msgstr ""
+"Použiť pôvodné štandardné kódovanie jazyka v texte. Prepnúť kódovanie pre tú "
+"časť textu ktorá má iné kódovanie."
+
+#: src/frontends/qt4/GuiDocument.cpp:1004
+msgid ""
+"Do not load the 'inputenc' package. Switch encoding if required but do not "
+"write input encoding switch commands to the source."
+msgstr ""
+"Nenačítať 'inputenc' balík. Prepnúť kódovanie keď treba, ale nepísať príkazy "
+"na zmenu kódovania do zdroja."
+
 #: src/frontends/qt4/GuiDocument.cpp:1023
 msgid "10"
 msgstr "10"
@@ -33457,7 +33528,7 @@ msgstr "Viacej pravopisných návrhov"
 
 #: src/frontends/qt4/Menus.cpp:869
 msgid "Add to personal dictionary|n"
-msgstr "Pridať do osobného slovníka|P"
+msgstr "Pridať do osobného slovníka|b"
 
 #: src/frontends/qt4/Menus.cpp:871
 msgid "Ignore all|I"
@@ -33473,7 +33544,7 @@ msgstr "Jazyk|J"
 
 #: src/frontends/qt4/Menus.cpp:922
 msgid "More Languages ...|M"
-msgstr "Viac jazykov …|V"
+msgstr "Viac jazykov …|z"
 
 #: src/frontends/qt4/Menus.cpp:992 src/frontends/qt4/Menus.cpp:993
 msgid "Hidden|H"
@@ -34073,14 +34144,6 @@ msgstr "Hyperlinka (%1$s) na %2$s"
 #: src/insets/InsetInclude.cpp:395
 msgid "FILE MISSING:"
 msgstr "SÚBOR CHÝBA:"
-
-#: src/insets/InsetInclude.cpp:384
-msgid "Verbatim Input"
-msgstr "Doslovný vstup"
-
-#: src/insets/InsetInclude.cpp:387
-msgid "Verbatim Input*"
-msgstr "Doslovný vstup*"
 
 #: src/insets/InsetInclude.cpp:393
 msgid "Include (excluded)"
@@ -35745,11 +35808,11 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
-#~ msgid "Language Default"
-#~ msgstr "Štandardné pre daný jazyk"
+#~ msgid "Verbatim Input"
+#~ msgstr "Doslovný vstup"
 
-#~ msgid "Language Default (no inputenc)"
-#~ msgstr "Štandardné pre daný jazyk (bez inputenc)"
+#~ msgid "Verbatim Input*"
+#~ msgstr "Doslovný vstup*"
 
 #~ msgid "Do not load inputenc"
 #~ msgstr "Nezahrnúť inputenc"
@@ -40727,3 +40790,7 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Legacy (auto-selected)"
 #~ msgstr "Pôvodné (automaticky vybrané)"
+
+#~ msgid "Hint: use non-TeX fonts or set input encoding  to '%1$s' or '%2$s'"
+#~ msgstr ""
+#~ "Tip:Použite fonty mimo TeXu alebo nastavte kódovanie na '%1$s' alebo '%2$s'"
