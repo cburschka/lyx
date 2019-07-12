@@ -25,7 +25,10 @@
   if desired.
 
 * LyX defaults to the "HE8" LaTeX font encoding with Hebrew if the
-  "Culmus" LaTeX fonts are installed. 
+  "Culmus" LaTeX fonts are installed.
+
+* Documents that use TeX fonts can only be compiled with XeTeX if the input
+  encoding is set to "utf8-plain" or "ascii".
 
 !!!The following pref variables were added in 2.4:
 
