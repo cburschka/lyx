@@ -734,12 +734,14 @@ void CVS::getRevisionInfo()
 		LYXERR(Debug::LYXVC, line << '\n');
 		if (prefixIs(line, "date:")) {
 			smatch sm;
-			regex_match(line, sm, reg);
-			//sm[0]; // whole matched string
-			rev_date_cache_ = sm[1];
-			rev_time_cache_ = sm[2];
-			//sm[3]; // GMT offset
-			rev_author_cache_ = sm[4];
+			if (regex_match(line, sm, reg)) {
+			  //sm[0]; // whole matched string
+			  rev_date_cache_ = sm[1];
+			  rev_time_cache_ = sm[2];
+			  //sm[3]; // GMT offset
+			  rev_author_cache_ = sm[4];
+			} else
+			  LYXERR(Debug::LYXVC, "\tCannot parse line. Skipping."); 
 			break;
 		}
 	}
