@@ -36,6 +36,14 @@ Sublabel: special
 # Documents that do not work with all exports
 # ===========================================
 
+# XeTeX with TeX fonts
+######################
+# XeTeX with TeX-fonts works only for input encodings "utf8-plain" and "ascii".
+# Ignore documents with other inputencoding values
+# but still allow dedicated XeTeX tests:
+!export/export/.*xetex.*_pdf4_texF
+export/.*/(|ar|ca|cs|da|de|en|el|es|eu|fa|fr|gl|he|hu|id|it|nb||nl|pl|pt|pt_BR|pt_PT|ro|ru|sk|sl|sr|sv|uk).*_pdf4_texF
+
 # Only PDFLaTeX
 ###############
 # Inside these two files, we state that they should only be expected
@@ -66,19 +74,6 @@ export/examples/Graphics_and_Insets/Instant_Preview_(dvi3|pdf4)_systemF
 export/examples/Articles/Chess/Game_2_pdf[25].*
 export/examples/(|fr/)Presentations/Powerdot_pdf[25].*
 export/examples/Modules/Chessboard_(lyx(16|20|21|22|23)|(pdf5|dvi3)_texF)
-
-# XeTeX with TeX fonts
-######################
-# XeTeX with TeX-fonts works only for input encodings "utf8-plain" and "ascii".
-# Ignore documents with other inputencoding values:
-export/doc/(|ar|ca|cs|da|de|en|el|es|eu|fa|fr|gl|he|hu|id|it|nb||nl|pl|pt|pt_BR|pt_PT|ro|ru|sk|sl|sr|sv|uk).*_pdf4_texF
-export/examples/(|ar|ca|cs|da|de|en|el|es|eu|fa|fr|gl|he|hu|id|it|nb||nl|pl|pt|pt_BR|pt_PT|ro|ru|sk|sl|sr|sv|uk).*_pdf4_texF
-export/mathmacros/.*_pdf4_texF
-export/templates/(|ar|ca|cs|da|de|en|el|es|eu|fa|fr|gl|he|hu|id|it|nb||nl|pl|pt|pt_BR|pt_PT|ro|ru|sk|sl|sr|sv|uk).*_pdf4_texF
-export/tabletemplates/.*_pdf4_texF
-# allow dedicated XeTeX tests:
-!export/export/.*xetex.*_pdf4_texF
-export/export/.*_pdf4_texF
 
 # pLaTeX
 ########
