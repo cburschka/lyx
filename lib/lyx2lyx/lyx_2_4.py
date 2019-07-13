@@ -234,7 +234,7 @@ def convert_fonts(document, fm):
             words[0] = '"' + fn + '"'
             document.header[j] = ft + ' ' + ' '.join(words)
 
-def revert_fonts(document, fm, fontmap):
+def revert_fonts(document, fm, fontmap, OnlyWithXOpts = False):
     " Revert native font definition to LaTeX "
     # fonlist := list of fonts created from the same package
     # Empty package means that the font-name is the same as the package-name
@@ -261,6 +261,24 @@ def revert_fonts(document, fm, fontmap):
         val = fontinfo.package
         if not val in fontmap:
             fontmap[val] = []
+        x = -1
+        if OnlyWithXOpts:
+            if ft == "\\font_math":
+                return
+            regexp = re.compile(r'^\s*(\\font_roman_opts)\s+')
+            if ft == "\\font_sans":
+                regexp = re.compile(r'^\s*(\\font_sans_opts)\s+')
+            elif ft == "\\font_typewriter":
+                regexp = re.compile(r'^\s*(\\font_typewriter_opts)\s+')
+            x = find_re(document.header, regexp, 0)
+            if x == -1:
+                return
+
+            # We need to use this regex since split() does not handle quote protection
+            xopts = re.findall(r'[^"\s]\S*|".+?"', document.header[x])
+            opts = xopts[1].strip('"').split(",")
+            fontmap[val].extend(opts)
+            del document.header[x]
         words[0] = '"default"'
         document.header[i] = ft + ' ' + ' '.join(words)
         if fontinfo.scaleopt != None:
@@ -2293,14 +2311,13 @@ def revert_minionpro(document):
         return
 
     regexp = re.compile(r'(\\font_roman_opts)')
-    i = find_re(document.header, regexp, 0)
-    if i == -1:
+    x = find_re(document.header, regexp, 0)
+    if x == -1:
         return
 
     # We need to use this regex since split() does not handle quote protection
-    romanopts = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+    romanopts = re.findall(r'[^"\s]\S*|".+?"', document.header[x])
     opts = romanopts[1].strip('"')
-    del document.header[i]
 
     i = find_token(document.header, "\\font_roman", 0)
     if i == -1:
@@ -2326,6 +2343,7 @@ def revert_minionpro(document):
         preamble += opts
         preamble += "]{MinionPro}"
         add_to_preamble(document, [preamble])
+        del document.header[x]
 
 
 def revert_font_opts(document):
@@ -2335,8 +2353,7 @@ def revert_font_opts(document):
     if i == -1:
         document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
         return
-    if not str2bool(get_value(document.header, "\\use_non_tex_fonts", i)):
-        return
+    NonTeXFonts = str2bool(get_value(document.header, "\\use_non_tex_fonts", i))
     i = find_token(document.header, '\\language_package', 0)
     if i == -1:
         document.warning("Malformed LyX document: Missing \\language_package.")
@@ -2351,25 +2368,26 @@ def revert_font_opts(document):
         romanopts = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
         opts = romanopts[1].strip('"')
         del document.header[i]
-        regexp = re.compile(r'(\\font_roman)')
-        i = find_re(document.header, regexp, 0)
-        if i != -1:
-            # We need to use this regex since split() does not handle quote protection
-            romanfont = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
-            font = romanfont[2].strip('"')
-            romanfont[2] = '"default"'
-            document.header[i] = " ".join(romanfont)
-            if font != "default":
-                if Babel:
-                    preamble = "\\babelfont{rm}["
-                else:
-                    preamble = "\\setmainfont["
-                preamble += opts
-                preamble += ","
-                preamble += "Mapping=tex-text]{"
-                preamble += font
-                preamble += "}"
-                add_to_preamble(document, [preamble])
+        if NonTeXFonts:
+            regexp = re.compile(r'(\\font_roman)')
+            i = find_re(document.header, regexp, 0)
+            if i != -1:
+                # We need to use this regex since split() does not handle quote protection
+                romanfont = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+                font = romanfont[2].strip('"')
+                romanfont[2] = '"default"'
+                document.header[i] = " ".join(romanfont)
+                if font != "default":
+                    if Babel:
+                        preamble = "\\babelfont{rm}["
+                    else:
+                        preamble = "\\setmainfont["
+                    preamble += opts
+                    preamble += ","
+                    preamble += "Mapping=tex-text]{"
+                    preamble += font
+                    preamble += "}"
+                    add_to_preamble(document, [preamble])
 
     # 2. Sans
     regexp = re.compile(r'(\\font_sans_opts)')
@@ -2380,33 +2398,34 @@ def revert_font_opts(document):
         sfopts = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
         opts = sfopts[1].strip('"')
         del document.header[i]
-        regexp = re.compile(r'(\\font_sf_scale)')
-        i = find_re(document.header, regexp, 0)
-        if i != -1:
-            scaleval = get_value(document.header, "\\font_sf_scale" , i).split()[1]
-        regexp = re.compile(r'(\\font_sans)')
-        i = find_re(document.header, regexp, 0)
-        if i != -1:
-            # We need to use this regex since split() does not handle quote protection
-            sffont = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
-            font = sffont[2].strip('"')
-            sffont[2] = '"default"'
-            document.header[i] = " ".join(sffont)
-            if font != "default":
-                if Babel:
-                    preamble = "\\babelfont{sf}["
-                else:
-                    preamble = "\\setsansfont["
-                preamble += opts
-                preamble += ","
-                if scaleval != 100:
-                    preamble += "Scale=0."
-                    preamble += scaleval
+        if NonTeXFonts:
+            regexp = re.compile(r'(\\font_sf_scale)')
+            i = find_re(document.header, regexp, 0)
+            if i != -1:
+                scaleval = get_value(document.header, "\\font_sf_scale" , i).split()[1]
+            regexp = re.compile(r'(\\font_sans)')
+            i = find_re(document.header, regexp, 0)
+            if i != -1:
+                # We need to use this regex since split() does not handle quote protection
+                sffont = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+                font = sffont[2].strip('"')
+                sffont[2] = '"default"'
+                document.header[i] = " ".join(sffont)
+                if font != "default":
+                    if Babel:
+                        preamble = "\\babelfont{sf}["
+                    else:
+                        preamble = "\\setsansfont["
+                    preamble += opts
                     preamble += ","
-                preamble += "Mapping=tex-text]{"
-                preamble += font
-                preamble += "}"
-                add_to_preamble(document, [preamble])
+                    if scaleval != 100:
+                        preamble += "Scale=0."
+                        preamble += scaleval
+                        preamble += ","
+                    preamble += "Mapping=tex-text]{"
+                    preamble += font
+                    preamble += "}"
+                    add_to_preamble(document, [preamble])
 
     # 3. Typewriter
     regexp = re.compile(r'(\\font_typewriter_opts)')
@@ -2417,33 +2436,145 @@ def revert_font_opts(document):
         ttopts = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
         opts = ttopts[1].strip('"')
         del document.header[i]
-        regexp = re.compile(r'(\\font_tt_scale)')
-        i = find_re(document.header, regexp, 0)
-        if i != -1:
-            scaleval = get_value(document.header, "\\font_tt_scale" , i).split()[1]
-        regexp = re.compile(r'(\\font_typewriter)')
-        i = find_re(document.header, regexp, 0)
-        if i != -1:
-            # We need to use this regex since split() does not handle quote protection
-            ttfont = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
-            font = ttfont[2].strip('"')
-            ttfont[2] = '"default"'
-            document.header[i] = " ".join(ttfont)
-            if font != "default":
-                if Babel:
-                    preamble = "\\babelfont{tt}["
-                else:
-                    preamble = "\\setmonofont["
-                preamble += opts
-                preamble += ","
-                if scaleval != 100:
-                    preamble += "Scale=0."
-                    preamble += scaleval
+        if NonTeXFonts:
+            regexp = re.compile(r'(\\font_tt_scale)')
+            i = find_re(document.header, regexp, 0)
+            if i != -1:
+                scaleval = get_value(document.header, "\\font_tt_scale" , i).split()[1]
+            regexp = re.compile(r'(\\font_typewriter)')
+            i = find_re(document.header, regexp, 0)
+            if i != -1:
+                # We need to use this regex since split() does not handle quote protection
+                ttfont = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+                font = ttfont[2].strip('"')
+                ttfont[2] = '"default"'
+                document.header[i] = " ".join(ttfont)
+                if font != "default":
+                    if Babel:
+                        preamble = "\\babelfont{tt}["
+                    else:
+                        preamble = "\\setmonofont["
+                    preamble += opts
                     preamble += ","
-                preamble += "Mapping=tex-text]{"
-                preamble += font
-                preamble += "}"
-                add_to_preamble(document, [preamble])
+                    if scaleval != 100:
+                        preamble += "Scale=0."
+                        preamble += scaleval
+                        preamble += ","
+                    preamble += "Mapping=tex-text]{"
+                    preamble += font
+                    preamble += "}"
+                    add_to_preamble(document, [preamble])
+
+
+def revert_plainNotoFonts_xopts(document):
+    " Revert native (straight) Noto font definition (with extra options) to LaTeX "
+
+    i = find_token(document.header, '\\use_non_tex_fonts', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
+        return
+    if str2bool(get_value(document.header, "\\use_non_tex_fonts", i)):
+        return
+
+    regexp = re.compile(r'(\\font_roman_opts)')
+    x = find_re(document.header, regexp, 0)
+    if x == -1:
+        return
+
+    # We need to use this regex since split() does not handle quote protection
+    romanopts = re.findall(r'[^"\s]\S*|".+?"', document.header[x])
+    opts = romanopts[1].strip('"')
+
+    i = find_token(document.header, "\\font_roman", 0)
+    if i == -1:
+        return
+
+    # We need to use this regex since split() does not handle quote protection
+    romanfont = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+    roman = romanfont[1].strip('"')
+    if roman != "NotoSerif-TLF":
+        return
+
+    j = find_token(document.header, "\\font_sans", 0)
+    if j == -1:
+        return
+
+    # We need to use this regex since split() does not handle quote protection
+    sffont = re.findall(r'[^"\s]\S*|".+?"', document.header[j])
+    sf = sffont[1].strip('"')
+    if sf != "default":
+        return
+
+    j = find_token(document.header, "\\font_typewriter", 0)
+    if j == -1:
+        return
+
+    # We need to use this regex since split() does not handle quote protection
+    ttfont = re.findall(r'[^"\s]\S*|".+?"', document.header[j])
+    tt = ttfont[1].strip('"')
+    if tt != "default":
+        return
+
+    # So we have noto as "complete font"
+    romanfont[1] = '"default"'
+    document.header[i] = " ".join(romanfont)
+
+    preamble = "\\usepackage["
+    preamble += opts
+    preamble += "]{noto}"
+    add_to_preamble(document, [preamble])
+    del document.header[x]
+
+
+def revert_notoFonts_xopts(document):
+    " Revert native (extended) Noto font definition (with extra options) to LaTeX "
+
+    i = find_token(document.header, '\\use_non_tex_fonts', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
+        return
+    if str2bool(get_value(document.header, "\\use_non_tex_fonts", i)):
+        return
+
+    fontmap = dict()
+    fm = createFontMapping(['Noto'])
+    revert_fonts(document, fm, fontmap, True)
+    add_preamble_fonts(document, fontmap)
+
+
+def revert_IBMFonts_xopts(document):
+    " Revert native IBM font definition (with extra options) to LaTeX "
+
+
+    i = find_token(document.header, '\\use_non_tex_fonts', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
+        return
+    if str2bool(get_value(document.header, "\\use_non_tex_fonts", i)):
+        return
+
+    fontmap = dict()
+    fm = createFontMapping(['IBM'])
+    ft = ""
+    revert_fonts(document, fm, fontmap, True)
+    add_preamble_fonts(document, fontmap)
+
+
+def revert_AdobeFonts_xopts(document):
+    " Revert native Adobe font definition (with extra options) to LaTeX "
+
+    i = find_token(document.header, '\\use_non_tex_fonts', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
+        return
+    if str2bool(get_value(document.header, "\\use_non_tex_fonts", i)):
+        return
+
+    fontmap = dict()
+    fm = createFontMapping(['Adobe'])
+    ft = ""
+    revert_fonts(document, fm, fontmap, True)
+    add_preamble_fonts(document, fontmap)
 
 
 ##
@@ -2490,7 +2621,7 @@ convert = [
            [580, []]
           ]
 
-revert =  [[579, [revert_font_opts, revert_minionpro]],
+revert =  [[579, [revert_minionpro, revert_plainNotoFonts_xopts, revert_notoFonts_xopts, revert_IBMFonts_xopts, revert_AdobeFonts_xopts, revert_font_opts]], # keep revert_font_opts last!
            [578, [revert_babelfont]],
            [577, [revert_drs]],
            [576, [revert_linggloss, revert_subexarg]],
