@@ -883,6 +883,24 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_font_roman[0] = "IBMPlexSerifLight";
 		else if (opts.find("semibold") != string::npos)
 			h_font_roman[0] = "IBMPlexSerifSemibold";
+		vector<string> allopts = getVectorFromString(opts);
+		string xopts;
+		for (auto const & opt : allopts) {
+			if (opt == "thin")
+				continue;
+			if (opt == "extralight")
+				continue;
+			if (opt == "light")
+				continue;
+			if (opt == "semibold")
+				continue;
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_roman_opts = xopts;
+		options.clear();
 	}
 	if (name == "noto-serif") {
 		h_font_roman[0] = "NotoSerifRegular";
@@ -896,6 +914,40 @@ void Preamble::handle_package(Parser &p, string const & name,
 			else if (opts.find("light") != string::npos)
 				h_font_roman[0] = "NotoSerifLight";
 		}
+		vector<string> allopts = getVectorFromString(opts);
+		string xopts;
+		for (auto const & opt : allopts) {
+			if (opt == "regular")
+				continue;
+			if (opt == "thin")
+				continue;
+			if (opt == "extralight")
+				continue;
+			if (opt == "light")
+				continue;
+			if (opt == "semibold")
+				continue;
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_roman_opts = xopts;
+		options.clear();
+	}
+
+	if (name == "sourceserifpro") {
+		h_font_roman[0] = "ADOBESourceSerifPro";
+		vector<string> allopts = getVectorFromString(opts);
+		string xopts;
+		for (auto const & opt : allopts) {
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_roman_opts = xopts;
+		options.clear();
 	}
 
 	// sansserif fonts
@@ -936,18 +988,28 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_font_sans[0] = "IBMPlexSansSemibold";
 		else
 			h_font_sans[0] = "IBMPlexSans";
-		// check if the option contains scaling, if yes, extract it
-		string::size_type pos = opts.find("scale");
-		if (pos != string::npos) {
-			string scale;
-			string::size_type i = opts.find(',', pos);
-			if (i == string::npos)
-				scale_as_percentage(opts.substr(pos + 1), scale);
-			else
-				scale_as_percentage(opts.substr(pos, i - pos), scale);
-			if (!scale.empty())
-				h_font_sf_scale[1] = scale;
+		vector<string> allopts = getVectorFromString(opts);
+		string xopts;
+		for (auto const & opt : allopts) {
+			if (opt == "thin")
+				continue;
+			if (opt == "extralight")
+				continue;
+			if (opt == "light")
+				continue;
+			if (opt == "semibold")
+				continue;
+			if (prefixIs(opt, "scale=")) {
+				scale_as_percentage(opt, h_font_sf_scale[0]);
+				continue;
+			}
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
 		}
+		if (!xopts.empty())
+			h_font_sans_opts = xopts;
+		options.clear();
 	}
 	if (name == "noto-sans") {
 		h_font_sans[0] = "NotoSansRegular";
@@ -961,7 +1023,44 @@ void Preamble::handle_package(Parser &p, string const & name,
 			else if (opts.find("light") != string::npos)
 				h_font_sans[0] = "NotoSansLight";
 		}
+		vector<string> allopts = getVectorFromString(opts);
+		string xopts;
+		for (auto const & opt : allopts) {
+			if (opt == "regular")
+				continue;
+			if (opt == "thin")
+				continue;
+			if (opt == "extralight")
+				continue;
+			if (opt == "light")
+				continue;
+			if (opt == "semibold")
+				continue;
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_sans_opts = xopts;
+		options.clear();
+	}
 
+	if (name == "sourcesanspro") {
+		h_font_sans[0] = "ADOBESourceSansPro";
+		vector<string> allopts = getVectorFromString(opts);
+		string xopts;
+		for (auto const & opt : allopts) {
+			if (prefixIs(opt, "scaled=")) {
+				scale_as_percentage(opt, h_font_sf_scale[0]);
+				continue;
+			}
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_sans_opts = xopts;
+		options.clear();
 	}
 
 	// typewriter fonts
@@ -999,22 +1098,62 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_font_typewriter[0] = "IBMPlexMonoSemibold";
 		else
 			h_font_typewriter[0] = "IBMPlexMono";
-		// check if the option contains scaling, if yes, extract it
-		string::size_type pos = opts.find("scale");
-		if (pos != string::npos) {
-			string scale;
-			string::size_type i = opts.find(',', pos);
-			if (i == string::npos)
-				scale_as_percentage(opts.substr(pos + 1), scale);
-			else
-				scale_as_percentage(opts.substr(pos, i - pos), scale);
-			if (!scale.empty())
-				h_font_tt_scale[1] = scale;
+		vector<string> allopts = getVectorFromString(opts);
+		string xopts;
+		for (auto const & opt : allopts) {
+			if (opt == "thin")
+				continue;
+			if (opt == "extralight")
+				continue;
+			if (opt == "light")
+				continue;
+			if (opt == "semibold")
+				continue;
+			if (prefixIs(opt, "scale=")) {
+				scale_as_percentage(opt, h_font_tt_scale[0]);
+				continue;
+			}
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
 		}
+		if (!xopts.empty())
+			h_font_typewriter_opts = xopts;
+		options.clear();
 	}
 
 	if (name == "noto-mono") {
 		h_font_typewriter[0] = "NotoMonoRegular";
+		vector<string> allopts = getVectorFromString(opts);
+		string xopts;
+		for (auto const & opt : allopts) {
+			if (opt == "regular")
+				continue;
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_typewriter_opts = xopts;
+		options.clear();
+	}
+
+	if (name == "sourcecodepro") {
+		h_font_typewriter[0] = "ADOBESourceCodePro";
+		vector<string> allopts = getVectorFromString(opts);
+		string xopts;
+		for (auto const & opt : allopts) {
+			if (prefixIs(opt, "scaled=")) {
+				scale_as_percentage(opt, h_font_tt_scale[0]);
+				continue;
+			}
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_typewriter_opts = xopts;
+		options.clear();
 	}
 
 	// font uses old-style figure
