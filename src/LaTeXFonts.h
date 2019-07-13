@@ -59,7 +59,7 @@ public:
 	/// A package option for font scaling
 	docstring const & scaleoption() { return scaleoption_; }
 	/// Does this provide additional options?
-	bool moreoptions() const { return moreopts_; }
+	bool providesMoreOptions(bool ot1, bool complete, bool nomath);
 	/// Alternative requirement to test for
 	docstring const & requires() { return requires_; }
 	/// Does this font provide a given \p feature

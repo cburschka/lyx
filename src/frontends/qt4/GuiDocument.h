@@ -307,6 +307,8 @@ private:
 	///
 	void updateMathFonts(QString const & rm);
 	///
+	void updateExtraOpts();
+	///
 	void updateFontOptions();
 	///
 	bool ot1() const;

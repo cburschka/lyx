@@ -137,6 +137,21 @@ bool LaTeXFont::providesScale(bool ot1, bool complete, bool nomath)
 	return (!scaleoption_.empty());
 }
 
+
+bool LaTeXFont::providesMoreOptions(bool ot1, bool complete, bool nomath)
+{
+	docstring const usedfont = getUsedFont(ot1, complete, nomath);
+
+	if (usedfont.empty())
+		return false;
+	else if (usedfont != name_)
+		return altFont(usedfont).providesMoreOptions(ot1, complete, nomath);
+	else if (!available(ot1, nomath))
+		return false;
+
+	return (moreopts_);
+}
+
 bool LaTeXFont::provides(std::string const & name, bool ot1, bool complete, bool nomath)
 {
 	docstring const usedfont = getUsedFont(ot1, complete, nomath);
