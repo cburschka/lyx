@@ -854,6 +854,23 @@ void Preamble::handle_package(Parser &p, string const & name,
 		}
 		// noto as typewriter is handled in handling of \ttdefault
 		// special cases are handled in handling of \rmdefault and \sfdefault
+		vector<string> allopts = getVectorFromString(opts);
+		string xopts;
+		for (auto const & opt : allopts) {
+			if (opt == "rm")
+				continue;
+			if (opt == "sf")
+				continue;
+			if (opt == "nott")
+				continue;
+			if (opt == "osf") {
+				h_font_osf = "true";
+				continue;
+			}
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
 	}
 
 	if (name == "paratype") {
@@ -941,6 +958,10 @@ void Preamble::handle_package(Parser &p, string const & name,
 		vector<string> allopts = getVectorFromString(opts);
 		string xopts;
 		for (auto const & opt : allopts) {
+			if (opt == "osf") {
+				h_font_osf = "true";
+				continue;
+			}
 			if (!xopts.empty())
 				xopts += ", ";
 			xopts += opt;
