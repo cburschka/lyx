@@ -1,5 +1,13 @@
-How do I upgrade my existing LyX system to version 2.3.x?
+How do I upgrade my existing LyX system to version 2.4.x?
 ---------------------------------------------------------
+
+* Upgrading from LyX 2.3.x
+
+The format of preference and session files has changed. LyX 2.4.x is able to
+read old files but will save them in the new format.
+
+The format of layout files has changed but, as before, layout2layout.py will
+convert older versions to the new format automatically.
 
 * Upgrading from LyX 2.2.x:
 

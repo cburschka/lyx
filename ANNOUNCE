@@ -1,40 +1,40 @@
-Public release of LyX version 2.3.0rc2
-========================================
+Public release of LyX version 2.4.0alpha1
+=========================================
 
-We are proud to announce the second public release candidate of the new LyX 2.3
-series. This pre-release is meant for testing and should not be used for
+We are proud to announce the first preview release of the new LyX 2.4
+series. This preview release is meant for testing and should not be used for
 serious work. For curious users who would like to test in order to help catch
-bugs before the 2.3.0 release, please back up all of your documents and be
+bugs before the 2.4.0 release, please back up all of your documents and be
 prepared for the worst to happen. Most users (who desire a stable LyX version)
 should not use this pre-release.
 
-The 2.3 series has a rich set of new features compared to the current stable
+The 2.4 series has a rich set of new features compared to the current stable
 series. An overview of the new features can be found here:
 
-  https://wiki.lyx.org/LyX/NewInLyX23
+  https://wiki.lyx.org/LyX/NewInLyX24
 
-You can download LyX 2.3.0rc2 from ftp://ftp.lyx.org/pub/lyx/devel/ or
+You can download LyX 2.4.0alpha1 from ftp://ftp.lyx.org/pub/lyx/devel/ or
 from a mirror listed at https://www.lyx.org/Download#toc11.
 
 We appreciate your help in testing this pre-release!
 
 If a file from an earlier version of LyX is opened *and saved* with
-any version of 2.3.x, then the original file will automatically be
+any version of 2.4.x, then the original file will automatically be
 backed up. The backup file will be found in the backup directory, if one
 is set under Tools> Preferences> Paths, or else in the same folder as
 the original file, if no backup directory is set. The filename of the
 backup file will be:
     ORIGNAME-lyxformat-NUM.lyx~
 where NUM is the LyX format number of the original file. In the case of
-2.2.x file, this will be 508, but in the case of older files it will be
+2.3.x file, this will be 544, but in the case of older files it will be
 different.
 
 The file lib/RELEASE-NOTES lists some known issues and problems compared
-to the current stable releases (LyX 2.2.x). We strongly recommend that
+to the current stable releases (LyX 2.3.x). We strongly recommend that
 packagers of LyX on various platforms and distributions read this file.
 
 As with any major release, this one comes with a lot of new features but
-also some bugs. If you think you have found a bug in LyX 2.3.0rc2, either
+also some bugs. If you think you have found a bug in LyX 2.4.0alpha1, either
 email the LyX developers' mailing list (lyx-devel at lists.lyx.org),
 or open a bug report at https://www.lyx.org/trac/wiki/BugTrackerHome.
 Please specify if the behavior you are reporting is different from behavior
