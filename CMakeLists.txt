@@ -162,13 +162,12 @@ LYX_OPTION(EXTERNAL_HUNSPELL "OFF := Build 3rdparty lib hunspelllib" ON ALL)
 LYX_COMBO(EXTERNAL_MYTHES   "OFF := Build 3rdparty lib mytheslib" AUTO OFF ON)
 
 # GCC specific
-LYX_OPTION(PROFILE              "Build profile version" OFF GCC)
+LYX_OPTION(PROFILE              "Build with options for gprof" OFF GCC)
 LYX_OPTION(EXTERNAL_BOOST       "Use external boost" OFF GCC)
 LYX_OPTION(PROGRAM_SUFFIX       "Append version suffix to binaries" ON GCC)
 LYX_OPTION(DEBUG_GLIBC          "Enable libstdc++ debug mode" OFF GCC)
 LYX_OPTION(DEBUG_GLIBC_PEDANTIC "Enable libstdc++ pedantic debug mode" OFF GCC)
 LYX_OPTION(STDLIB_DEBUG         "Use debug stdlib" OFF GCC)
-LYX_OPTION(PROFILE              "Build with options for gprof" OFF GCC)
 
 # MSVC specific
 LYX_OPTION(CONSOLE               "Show console on Windows" ON MSVC)
