@@ -31,7 +31,7 @@ AM_SILENT_RULES([yes])
 # file names only up to 99 characters. tar-ustar selects the ustar format defined
 # by POSIX 1003.1-1988. This format is believed to be old enough to be portable.
 save_PACKAGE=$PACKAGE
-AM_INIT_AUTOMAKE([foreign dist-bzip2 no-define 1.14 tar-ustar subdir-objects])
+AM_INIT_AUTOMAKE([foreign dist-xz no-define 1.14 tar-ustar subdir-objects])
 PACKAGE=$save_PACKAGE
 
 ### Set the execute permissions of the various scripts correctly
