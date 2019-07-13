@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 575
+\lyxformat 580
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -8634,10 +8634,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8650,6 +8652,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8673,6 +8676,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -12994,10 +12998,10 @@ Schreibmaschine
 \begin_layout Standard
 Wenn Sie die Option 
 \family sans
-Nicht-TeX-Schriften verwenden
+Nicht-TeX-Schriften 
 \family default
- benutzen, haben Sie Zugriff auf die in Ihrem Betriebssystem installierten
- Schriften.
+verwenden benutzen, haben Sie Zugriff auf die in Ihrem Betriebssystem installier
+ten Schriften.
  Dies setzt voraus, dass Sie 
 \family sans
 PDF (XeTeX)
@@ -13493,6 +13497,23 @@ Echte Kapitälchen verwenden
  die skaliert werden.
  Echte Kapitälchen sind Teil von hochwertigen Schriften und sehen besser
  aus als skalierte, müssen jedoch oft extra gekauft werden.
+\end_layout
+
+\begin_layout Standard
+Weiterhin können Sie bei einigen Schriften zusätzliche (kommaseparierte)
+ Optionen in das Feld 
+\family sans
+Optionen
+\family default
+ eingeben, die vom Schriftpaket (oder bei Nicht-TeX-Schriften: dem Paket
+ 
+\family sans
+fontspec
+\family default
+) bereitgestellt werden.
+ Das setzt natürlich voraus, dass Sie mit dem jeweiligen \SpecialChar LaTeX
+-Schriftpaket vertraut
+ sind.
 \end_layout
 
 \begin_layout Standard

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 577
+\lyxformat 580
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -8481,14 +8481,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8501,7 +8499,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8525,7 +8522,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -13507,6 +13503,27 @@ Use True Small Caps
  of scaled capitals.
  Real small caps are often part of expert font sets; they generally look
  better than faked small caps but might have to be purchased separately.
+\change_inserted -712698321 1563000270
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1563000448
+Furthermore, with some fonts, you can add additional (comma-separated) options
+ provided by the font package (or the 
+\family sans
+fontspec
+\family default
+ package, if you use non-TeX fonts), into the 
+\family sans
+Options
+\family default
+ field.
+ This presupposes that you are familiar with the respective \SpecialChar LaTeX
+ font package.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
