@@ -3474,12 +3474,12 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 	// SANS SERIF
 	os << theLaTeXFonts().getLaTeXFont(from_ascii(fontsSans())).getLaTeXCode(
 		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures,
-		nomath, font_roman_opts, fontsSansScale());
+		nomath, font_sans_opts, fontsSansScale());
 
 	// MONOSPACED/TYPEWRITER
 	os << theLaTeXFonts().getLaTeXFont(from_ascii(fontsTypewriter())).getLaTeXCode(
 		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures,
-		nomath, font_roman_opts, fontsTypewriterScale());
+		nomath, font_typewriter_opts, fontsTypewriterScale());
 
 	// MATH
 	os << theLaTeXFonts().getLaTeXFont(from_ascii(fontsMath())).getLaTeXCode(

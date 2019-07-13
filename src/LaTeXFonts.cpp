@@ -249,6 +249,7 @@ string const LaTeXFont::getPackageOptions(bool ot1, bool complete, bool sc, bool
 	bool const needosfopt = (osf != osfdefault_);
 	bool const has_osf = providesOSF(ot1, complete, nomath);
 	bool const has_sc = providesSC(ot1, complete, nomath);
+	bool const moreopts = providesMoreOptions(ot1, complete, nomath);
 
 	if (!packageoption_.empty())
 		os << to_ascii(packageoption_);
@@ -279,7 +280,7 @@ string const LaTeXFont::getPackageOptions(bool ot1, bool complete, bool sc, bool
 			    convert<std::string>(float(scale) / 100));
 	}
 
-	if (moreopts_ && !extraopts.empty()) {
+	if (moreopts && !extraopts.empty()) {
 		if (!os.str().empty())
 			os << ',';
 		os << extraopts;
