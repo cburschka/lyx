@@ -18,22 +18,22 @@ Building LyX with CMake
         If you use Qt 5, use -DLYX_USE_QT=QT5, otherwise Qt 4 will be searched.
 
     When you want to run LyX without installing from an out-of-source
-    build directory you have to set the environment variable LYX_DIR_22x
+    build directory you have to set the environment variable LYX_DIR_24x
     and it must point to the lib dir in the source tree.
-        Linux/Unix: export LYX_DIR_22x=<lyx-source>/lib
-        Windows   : set LYX_DIR_22x=<lyx-source>\lib
+        Linux/Unix: export LYX_DIR_24x=<lyx-source>/lib
+        Windows   : set LYX_DIR_24x=<lyx-source>\lib
 
     Windows specific
 
         On Windows install the supplementary modules:
-        * Visual Studio 2010: ftp://ftp.lyx.org/pub/lyx/devel/win_deps/lyx20-deps-msvc2010.zip
+        * Visual Studio 2015: ftp://ftp.lyx.org/pub/lyx/devel/win_deps/lyx-windows-deps-msvc2015.zip
                 or use the option LYX_DEPENDENCIES_DOWNLOAD, then you have to add
                 these paths to your PATH variable:
-                  <build-dir>\msvc2010-deps\deps20\bin
-                  <build-dir>\msvc2010-deps\deps20\python
-                  <build-dir>\msvc2010-deps\deps20\imagemagick
-                  <build-dir>\msvc2010-deps\deps20\ghostscript
-                  <build-dir>\msvc2010-deps\deps20\gettext-tools
+                  <build-dir>\lyx-windows-deps-msvc2015\bin
+                  <build-dir>\lyx-windows-deps-msvc2015\Python
+                  <build-dir>\lyx-windows-deps-msvc2015\imagemagick
+                  <build-dir>\lyx-windows-deps-msvc2015\ghostscript
+                  <build-dir>\lyx-windows-deps-msvc2015\gettext-tools
 
         If cmake couldn't find these modules set GNUWIN32_DIR, e.g.
         -DGNUWIN32_DIR=c:\gnuwin32. By default cmake searches in your 
@@ -132,25 +132,41 @@ Build options
 
     Options could be passed by the -D prefix when running cmake.
     Available options will be listed on each cmake run.
-    -Dhelp=1 lists all available options:
+    "cmake . -Dhelp=1" lists all available options:
 
     # Available on all systems/compilers
     -- LYX_CPACK                = OFF    : Use the CPack management (Implies LYX_INSTALL option)
+    -- LYX_LOCALVERSIONING      = ON     : Add version info to created package name (only used if LYX_CPACK option set)
     -- LYX_INSTALL              = OFF    : Build install projects/rules (implies a bunch of other options)
     -- LYX_NLS                  = ON     : Use nls
+    -- LYX_REQUIRE_SPELLCHECK   = OFF    : Abort if no spellchecker available
     -- LYX_ASPELL               = OFF    : Require aspell
     -- LYX_ENCHANT              = OFF    : Require Enchant
     -- LYX_HUNSPELL             = OFF    : Require Hunspell
     -- LYX_RELEASE              = OFF    : Build release version, build debug when disabled
+    -- LYX_DEBUG                = ON     : Enforce debug build
+    -- LYX_NO_OPTIMIZE          = OFF    : Don't use any optimization/debug flags
     -- LYX_PACKAGE_SUFFIX       = ON     : Use version suffix for packaging
     -- LYX_PCH                  = OFF    : Use precompiled headers
     -- LYX_MERGE_FILES          = OFF    : Merge source files into one compilation unit
     -- LYX_MERGE_REBUILD        = OFF    : Rebuild generated files from merged files build
     -- LYX_QUIET                = OFF    : Don't generate verbose makefiles
     -- LYX_INSTALL_PREFIX       = OFF    : Install path for LyX
+    -- LYX_BUNDLE               = OFF    : Build bundle  (experimental) 
+    -- LYX_ENABLE_URLTESTS      = OFF    : Enable for URL tests
+    -- LYX_ENABLE_EXPORT_TESTS  = ON     : Enable for export tests
+    -- LYX_ENABLE_KEYTESTS      = ON     : Enable for keytests
+    -- LYX_ASAN                 = OFF    : Use address sanitizer
+    -- LYX_USE_FILEDIALOG       = NATI   : Use native or QT file dialog (QT NATIVE)
+    -- LYX_USE_QT               = QT5    : Use Qt version as frontend (AUTO QT4 QT5)
+    -- LYX_DISABLE_CALLSTACK_PRI= OFF    : do not print a callstack when crashing
+    -- LYX_EXTERNAL_Z           = ON     : OFF := Build 3rdparty lib zlib
+    -- LYX_EXTERNAL_ICONV       = ON     : OFF := Build 3rdparty lib iconvlib
+    -- LYX_EXTERNAL_HUNSPELL    = OFF    : OFF := Build 3rdparty lib hunspelllib
+    -- LYX_EXTERNAL_MYTHES      = OFF    : OFF := Build 3rdparty lib mytheslib (AUTO OFF ON)
 
     # GCC specific 
-    -- LYX_PROFILE              = OFF    : Build profile version
+    -- LYX_PROFILE              = OFF    : Build with options for gprof
     -- LYX_EXTERNAL_BOOST       = OFF    : Use external boost
     -- LYX_PROGRAM_SUFFIX       = ON     : Append version suffix to binaries
     -- LYX_DEBUG_GLIBC          = OFF    : Enable libstdc++ debug mode
@@ -163,9 +179,12 @@ Build options
     -- LYX_WALL                 = OFF    : Enable all warnings
     -- LYX_DEPENDENCIES_DOWNLOAD= OFF    : Download precompiled 3rd party libraries for MSVC 10
 
+    # APPLE specific
+    -- LYX_DMG                  = OFF    : Build as Mac bundle, needed for .dmg  (experimental)
+    -- LYX_COCOA                = OFF    : Use Cocoa on Mac
 
 
-Using the merged files build
+Using the merged files build (Deprecated)
 -----------------------------
 
     When the option 'LYX_MERGE_FILES' is used then for each library a file
@@ -239,7 +258,7 @@ Ubuntu/Kubuntu
     You need additionally these packages:
       * g++
       * cmake
-      * qt4-dev-tools
+      * qt4-dev-tools + qt4-qmake or qttools5-dev-tools + qt5-qmake
 
 
 
@@ -299,12 +318,18 @@ Packaging
         make package
 
     - Binary .deb:
-        create : cpack -G DEB --config CPackConfig.cmake
+	Configure with "cmake -DCPACK_BINARY_DEB:BOOL=ON"
+	  make package
+	-- or --
+	  create : cpack -G DEB --config CPackConfig.cmake
         list   : dpkg-deb -c lyx-*.deb
         install: dpkg -i lyx-*.deb
 
     - Binary .rpm:
-        create : cpack -G RPM --config CPackConfig.cmake
+	Configure with "cmake -DCPACK_BINARY_RPM:BOOL=ON"
+	  make package
+	-- or --
+	  create : cpack -G RPM --config CPackConfig.cmake
         list   : rpm -qlp lyx-*.rpm
         install: rpm -U lyx-*.rpm
 
