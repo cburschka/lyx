@@ -250,6 +250,11 @@
 \fi
 
 % (3) handle the result
+% FIXME: As of 2016, babel does not print out the loaded hyphenation patterns to
+%        the log anymore, so this discontinues to work. For possible workarounds
+%        (with babel), see https://tex.stackexchange.com/questions/330085/
+%        Leaving this activated for the time being, since it probably still
+%        works with older distributions.
 \message{^^J\prefix checking for available hyphenation patterns... \langs}
 \AddVariable{languages}{\langs}
 
