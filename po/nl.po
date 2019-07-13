@@ -1,10 +1,10 @@
 # Niko Strijbol <strijbol.niko@gmail.com>, 2017.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 2.3git\n"
+"Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-06-21 12:08+0200\n"
-"PO-Revision-Date: 2019-06-10 21:17+0200\n"
+"POT-Creation-Date: 2019-07-12 16:32+0200\n"
+"PO-Revision-Date: 2019-07-12 16:36+0200\n"
 "Last-Translator: Niko Strijbol <strijbol.niko@gmail.com>\n"
 "Language-Team: Dutch <lyx-docs@lists.lyx.org>\n"
 "Language: nl\n"
@@ -112,7 +112,7 @@ msgid ""
 "Expand to get more information."
 msgstr ""
 "Een selectie van verschillenden stijlformaten (zoals natbib), die elk een "
-"specifieke citaat- en bibliografiestijl ondersteunen. Klap uit voor meer "
+"specifieke citatie- en bibliografiestijl ondersteunen. Klap uit voor meer "
 "informatie."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:75
@@ -251,7 +251,6 @@ msgstr ""
 "Definieer opties zoals --min-crossrefs (zie de documentatie van BibTeX)"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:23
-#, fuzzy
 msgid "BibTeX database(s) to use"
 msgstr "Te gebruiken BibTeX-databank"
 
@@ -260,9 +259,8 @@ msgid "&Databases"
 msgstr "&Databanken"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:37
-#, fuzzy
 msgid "Found b&y LaTeX:"
-msgstr "&Databanken gevonden door LaTeX:"
+msgstr "&Gevonden door LaTeX:"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:65
 msgid "Add the selected BibTeX database from the list on the left"
@@ -323,11 +321,11 @@ msgstr "Gesele&cteerd:"
 msgid "&Filter:"
 msgstr "&Filter:"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:238 src/frontends/qt4/GuiBibtex.cpp:289
+#: src/frontends/qt4/ui/BibtexUi.ui:238 src/frontends/qt4/GuiBibtex.cpp:290
 msgid "E&ncoding:"
 msgstr "Co&dering:"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:248 src/frontends/qt4/GuiBibtex.cpp:290
+#: src/frontends/qt4/ui/BibtexUi.ui:248 src/frontends/qt4/GuiBibtex.cpp:291
 msgid ""
 "If your bibliography databases use a different encoding than the LyX "
 "document, specify it here"
@@ -376,17 +374,17 @@ msgstr "Deze bibliografie-sectie bevat..."
 msgid "&Content:"
 msgstr "&Inhoud:"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:341 src/frontends/qt4/GuiBibtex.cpp:353
+#: src/frontends/qt4/ui/BibtexUi.ui:341 src/frontends/qt4/GuiBibtex.cpp:357
 #: src/insets/InsetBibtex.cpp:214 src/insets/InsetBibtex.cpp:232
 msgid "all cited references"
 msgstr "alle geciteerde referenties"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:346 src/frontends/qt4/GuiBibtex.cpp:355
+#: src/frontends/qt4/ui/BibtexUi.ui:346 src/frontends/qt4/GuiBibtex.cpp:359
 #: src/insets/InsetBibtex.cpp:212
 msgid "all uncited references"
 msgstr "alle niet-geciteerde referenties"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:351 src/frontends/qt4/GuiBibtex.cpp:356
+#: src/frontends/qt4/ui/BibtexUi.ui:351 src/frontends/qt4/GuiBibtex.cpp:360
 #: src/insets/InsetBibtex.cpp:210 src/insets/InsetBibtex.cpp:230
 msgid "all references"
 msgstr "alle referenties"
@@ -554,7 +552,7 @@ msgstr "Vullen"
 
 #: src/frontends/qt4/ui/BoxUi.ui:265 src/frontends/qt4/ui/ListingsUi.ui:110
 #: src/frontends/qt4/ui/TabularUi.ui:344 src/frontends/qt4/ui/TabularUi.ui:1553
-#: src/frontends/qt4/ui/WrapUi.ui:47 src/frontends/qt4/GuiDocument.cpp:1502
+#: src/frontends/qt4/ui/WrapUi.ui:47 src/frontends/qt4/GuiDocument.cpp:1514
 #: src/frontends/qt4/GuiParagraph.cpp:114 src/frontends/qt4/GuiTabular.cpp:1018
 msgid "Left"
 msgstr "Links"
@@ -567,7 +565,7 @@ msgstr "Centreren"
 
 #: src/frontends/qt4/ui/BoxUi.ui:275 src/frontends/qt4/ui/ListingsUi.ui:115
 #: src/frontends/qt4/ui/TabularUi.ui:354 src/frontends/qt4/ui/WrapUi.ui:52
-#: src/frontends/qt4/GuiDocument.cpp:1504
+#: src/frontends/qt4/GuiDocument.cpp:1516
 #: src/frontends/qt4/GuiParagraph.cpp:115 src/frontends/qt4/GuiTabular.cpp:1020
 msgid "Right"
 msgstr "Rechts"
@@ -693,7 +691,7 @@ msgid "Remove the selected branch"
 msgstr "Verwijder de geselecteerde vertakking"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136 src/frontends/qt4/ui/IndicesUi.ui:165
-#: src/Buffer.cpp:4779 src/Buffer.cpp:4792
+#: src/Buffer.cpp:4781 src/Buffer.cpp:4794
 msgid "&Remove"
 msgstr "&Verwijderen"
 
@@ -721,11 +719,11 @@ msgstr "Voeg alle onbekende vertakkingen toe aan de lijst."
 msgid "Add A&ll"
 msgstr "A&llemaal toevoegen"
 
-#: src/frontends/qt4/ui/BranchesUnknownUi.ui:58 src/Buffer.cpp:1445
-#: src/Buffer.cpp:4753 src/Buffer.cpp:4847 src/LyXVC.cpp:114 src/LyXVC.cpp:304
+#: src/frontends/qt4/ui/BranchesUnknownUi.ui:58 src/Buffer.cpp:1448
+#: src/Buffer.cpp:4755 src/Buffer.cpp:4849 src/LyXVC.cpp:114 src/LyXVC.cpp:304
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:247
-#: src/frontends/qt4/GuiDocument.cpp:2691
+#: src/frontends/qt4/GuiDocument.cpp:2728
 #: src/frontends/qt4/GuiParagraph.cpp:164 src/frontends/qt4/GuiPrefs.cpp:3298
 #: src/frontends/qt4/GuiView.cpp:2568 src/frontends/qt4/GuiView.cpp:2799
 #: src/frontends/qt4/GuiView.cpp:2823 src/frontends/qt4/GuiView.cpp:2837
@@ -767,22 +765,23 @@ msgstr "&Grootte:"
 #: src/frontends/qt4/GuiCharacter.cpp:192
 #: src/frontends/qt4/GuiCharacter.cpp:243 src/frontends/qt4/GuiDocument.cpp:125
 #: src/frontends/qt4/GuiDocument.cpp:856 src/frontends/qt4/GuiDocument.cpp:874
-#: src/frontends/qt4/GuiDocument.cpp:1101
-#: src/frontends/qt4/GuiDocument.cpp:1147
-#: src/frontends/qt4/GuiDocument.cpp:1158
-#: src/frontends/qt4/GuiDocument.cpp:1378
-#: src/frontends/qt4/GuiDocument.cpp:1496
-#: src/frontends/qt4/GuiDocument.cpp:1503
-#: src/frontends/qt4/GuiDocument.cpp:2442
-#: src/frontends/qt4/GuiDocument.cpp:2525
-#: src/frontends/qt4/GuiDocument.cpp:2526
-#: src/frontends/qt4/GuiDocument.cpp:2527
-#: src/frontends/qt4/GuiDocument.cpp:2547
+#: src/frontends/qt4/GuiDocument.cpp:1032
+#: src/frontends/qt4/GuiDocument.cpp:1113
+#: src/frontends/qt4/GuiDocument.cpp:1159
+#: src/frontends/qt4/GuiDocument.cpp:1170
+#: src/frontends/qt4/GuiDocument.cpp:1390
+#: src/frontends/qt4/GuiDocument.cpp:1508
+#: src/frontends/qt4/GuiDocument.cpp:1515
+#: src/frontends/qt4/GuiDocument.cpp:2470
+#: src/frontends/qt4/GuiDocument.cpp:2553
 #: src/frontends/qt4/GuiDocument.cpp:2554
-#: src/frontends/qt4/GuiDocument.cpp:2561
-#: src/frontends/qt4/GuiDocument.cpp:2646
-#: src/frontends/qt4/GuiDocument.cpp:3255
-#: src/frontends/qt4/GuiDocument.cpp:4675 src/frontends/qt4/GuiExternal.cpp:77
+#: src/frontends/qt4/GuiDocument.cpp:2555
+#: src/frontends/qt4/GuiDocument.cpp:2575
+#: src/frontends/qt4/GuiDocument.cpp:2582
+#: src/frontends/qt4/GuiDocument.cpp:2589
+#: src/frontends/qt4/GuiDocument.cpp:2683
+#: src/frontends/qt4/GuiDocument.cpp:3292
+#: src/frontends/qt4/GuiDocument.cpp:4731 src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiIndices.cpp:58
 #: src/frontends/qt4/GuiListings.cpp:156 src/frontends/qt4/GuiListings.cpp:163
 #: src/frontends/qt4/GuiPrefs.cpp:2432 src/frontends/qt4/GuiPrefs.cpp:2545
@@ -964,7 +963,7 @@ msgstr "&Taal:"
 #: lib/layouts/europasscv.layout:350 lib/layouts/europasscv.layout:383
 #: lib/layouts/europasscv.layout:390 lib/layouts/europecv.layout:247
 #: lib/layouts/europecv.layout:253 lib/layouts/moderncv.layout:477
-#: src/frontends/qt4/GuiDocument.cpp:1728 src/frontends/qt4/GuiPrefs.cpp:2387
+#: src/frontends/qt4/GuiDocument.cpp:1740 src/frontends/qt4/GuiPrefs.cpp:2387
 #: src/frontends/qt4/Menus.cpp:921
 msgid "Language"
 msgstr "Taal"
@@ -1040,12 +1039,12 @@ msgstr "&Beschikbare citaten:"
 #: src/frontends/qt4/ui/CitationUi.ui:143
 msgid "Click or press Enter to add the selected citation to the list"
 msgstr ""
-"Klik of druk op Enter om het geselecteerde citaat aan de lijst toe te voegen"
+"Klik of druk op Enter om de geselecteerde citatie aan de lijst toe te voegen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:156
 msgid "Click or press Delete to delete the selected citation from the list"
 msgstr ""
-"Klik of druk op Delete om het geselecteerde citaat van de lijst te "
+"Klik of druk op Delete om de geselecteerde citatie van de lijst te "
 "verwijderen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:232
@@ -1147,8 +1146,8 @@ msgid "Greyed-out notes:"
 msgstr "Grijze notities:"
 
 #: src/frontends/qt4/ui/ColorUi.ui:118 src/frontends/qt4/ui/ColorUi.ui:256
-#: src/frontends/qt4/GuiDocument.cpp:2107
-#: src/frontends/qt4/GuiDocument.cpp:2137
+#: src/frontends/qt4/GuiDocument.cpp:2119
+#: src/frontends/qt4/GuiDocument.cpp:2149
 msgid "&Change..."
 msgstr "&Wijzigen..."
 
@@ -1169,9 +1168,8 @@ msgid "Compare Revisions"
 msgstr "Revisies vergelijken"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:34
-#, fuzzy
 msgid "Revisions ba&ck"
-msgstr "&Revisies terug"
+msgstr "Revisies teru&g"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:87
 msgid "&Between revisions"
@@ -1186,9 +1184,8 @@ msgid "New:"
 msgstr "Nieuw:"
 
 #: src/frontends/qt4/ui/CompareUi.ui:35
-#, fuzzy
 msgid "Old Documen&t:"
-msgstr "&Oud document:"
+msgstr "Oud documen&t:"
 
 #: src/frontends/qt4/ui/CompareUi.ui:51
 msgid "Specify the original version of the document here (comparation source)"
@@ -1225,14 +1222,12 @@ msgid "Document Settings"
 msgstr "Documentinstellingen"
 
 #: src/frontends/qt4/ui/CompareUi.ui:129
-#, fuzzy
 msgid "O&ld Document"
 msgstr "Ou&d document"
 
 #: src/frontends/qt4/ui/CompareUi.ui:136
-#, fuzzy
 msgid "New Docu&ment"
-msgstr "Ni&euw document"
+msgstr "Nieuw docu&ment"
 
 #: src/frontends/qt4/ui/CompareUi.ui:183
 msgid ""
@@ -1243,9 +1238,8 @@ msgstr ""
 "resulterende document"
 
 #: src/frontends/qt4/ui/CompareUi.ui:186
-#, fuzzy
 msgid "&Enable change tracking features in the output"
-msgstr "Wij&zigingen tonen in de uitvoer inschakelen"
+msgstr "Bijhouden van wijzigingen in de uitvoer &inschakelen"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:122
 #: src/frontends/qt4/GuiDelimiter.cpp:326
@@ -1485,7 +1479,6 @@ msgstr "&Bijsnijden tot kader"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:587
 #: src/frontends/qt4/ui/GraphicsUi.ui:390
-#, fuzzy
 msgid "Left botto&m:"
 msgstr "&Linksonder:"
 
@@ -1665,9 +1658,8 @@ msgid "Form"
 msgstr "Formulier"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:22
-#, fuzzy
 msgid "Float T&ype:"
-msgstr "Soort float:"
+msgstr "Floatt&ype:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:70
 msgid "Alignment of Contents"
@@ -1730,7 +1722,6 @@ msgid "&Span columns"
 msgstr "Kolommen o&verschrijden"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:163
-#, fuzzy
 msgid "Rotate side&ways"
 msgstr "&Zijdelings draaien"
 
@@ -1782,102 +1773,115 @@ msgstr ""
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
 msgstr "&Gebruik niet-TeX-lettertypes (via XeTeX/LuaTeX)"
 
-#: src/frontends/qt4/ui/FontUi.ui:30
+#: src/frontends/qt4/ui/FontUi.ui:32
 msgid "&Default family:"
 msgstr "&Standaardfamilie:"
 
-#: src/frontends/qt4/ui/FontUi.ui:42
+#: src/frontends/qt4/ui/FontUi.ui:44
 msgid "Select the default family for the document"
 msgstr "Kies de standaardfamilie voor het document"
 
-#: src/frontends/qt4/ui/FontUi.ui:49
+#: src/frontends/qt4/ui/FontUi.ui:51
 msgid "&Base size:"
 msgstr "&Basisgrootte:"
 
-#: src/frontends/qt4/ui/FontUi.ui:81
+#: src/frontends/qt4/ui/FontUi.ui:83
 msgid "&LaTeX font encoding:"
 msgstr "LaTe&X-lettertypecodering:"
 
-#: src/frontends/qt4/ui/FontUi.ui:96
+#: src/frontends/qt4/ui/FontUi.ui:98
 msgid "Specify the font encoding (e.g., T1)."
 msgstr "Specifieer de lettertypecodering (bv. T1)."
 
-#: src/frontends/qt4/ui/FontUi.ui:105
+#: src/frontends/qt4/ui/FontUi.ui:107
 msgid "&Roman:"
 msgstr "&Schreef:"
 
-#: src/frontends/qt4/ui/FontUi.ui:115
+#: src/frontends/qt4/ui/FontUi.ui:117
 msgid "Select the roman (serif) typeface"
-msgstr "Selecteer het lettertype voor romein (schreef)"
+msgstr "Selecteer de letterfamilie voor romein (schreef)"
 
-#: src/frontends/qt4/ui/FontUi.ui:122
+#: src/frontends/qt4/ui/FontUi.ui:126 src/frontends/qt4/ui/FontUi.ui:204
+#: src/frontends/qt4/ui/FontUi.ui:282 src/frontends/qt4/ui/PrefLatexUi.ui:133
+msgid "Options:"
+msgstr "Opties:"
+
+#: src/frontends/qt4/ui/FontUi.ui:136 src/frontends/qt4/ui/FontUi.ui:214
+#: src/frontends/qt4/ui/FontUi.ui:292
+msgid ""
+"Here you can insert additional options (as provided by the font package)"
+msgstr ""
+"Hier kan u aanvullende opties ingeven (zoals voorzien door het "
+"lettertypepakket)"
+
+#: src/frontends/qt4/ui/FontUi.ui:145
 msgid "&Sans Serif:"
 msgstr "&Schreefloos:"
 
-#: src/frontends/qt4/ui/FontUi.ui:134
+#: src/frontends/qt4/ui/FontUi.ui:157
 msgid "Select the Sans Serif (grotesque) typeface"
-msgstr "Selecteer het lettertype voor schreefloos"
+msgstr "Selecteer de letterfamilie voor schreefloos"
 
-#: src/frontends/qt4/ui/FontUi.ui:154
+#: src/frontends/qt4/ui/FontUi.ui:177
 msgid "S&cale (%):"
 msgstr "S&chaal (%):"
 
-#: src/frontends/qt4/ui/FontUi.ui:164
+#: src/frontends/qt4/ui/FontUi.ui:187
 msgid "Scale the Sans Serif font to match the base font's dimensions"
 msgstr ""
 "Schaal het schreefloze lettertype om bij het standaardlettertype aan te "
 "sluiten"
 
-#: src/frontends/qt4/ui/FontUi.ui:179
+#: src/frontends/qt4/ui/FontUi.ui:223
 msgid "&Typewriter:"
 msgstr "&Monospace:"
 
-#: src/frontends/qt4/ui/FontUi.ui:191
+#: src/frontends/qt4/ui/FontUi.ui:235
 msgid "Select the typewriter (monospaced) typeface"
-msgstr "Selecteer het lettertype voor typemachine (monospace)"
+msgstr "Selecteer de letterfamilie voor typemachine (monospace)"
 
-#: src/frontends/qt4/ui/FontUi.ui:211
+#: src/frontends/qt4/ui/FontUi.ui:255
 msgid "Sc&ale (%):"
 msgstr "Sch&aal (%):"
 
-#: src/frontends/qt4/ui/FontUi.ui:221
+#: src/frontends/qt4/ui/FontUi.ui:265
 msgid "Scale the Typewriter font to match the base font's dimensions"
 msgstr ""
 "Schaal het monospace-lettertype om bij het standaardlettertype aan te sluiten"
 
-#: src/frontends/qt4/ui/FontUi.ui:236
+#: src/frontends/qt4/ui/FontUi.ui:301
 msgid "&Math:"
 msgstr "&Wiskunde:"
 
-#: src/frontends/qt4/ui/FontUi.ui:246
+#: src/frontends/qt4/ui/FontUi.ui:311
 msgid "Select the math typeface"
-msgstr "Selecteer het lettertype voor wiskunde"
+msgstr "Selecteer de letterfamilie voor wiskunde"
 
-#: src/frontends/qt4/ui/FontUi.ui:253
+#: src/frontends/qt4/ui/FontUi.ui:318
 msgid "C&JK:"
 msgstr "C&JK:"
 
-#: src/frontends/qt4/ui/FontUi.ui:263
+#: src/frontends/qt4/ui/FontUi.ui:328
 msgid "Input the font to be used for Chinese, Japanese or Korean (CJK) script"
 msgstr "Kies het lettertype voor Chinees, Japans en Koreaans (CJK)"
 
-#: src/frontends/qt4/ui/FontUi.ui:270
+#: src/frontends/qt4/ui/FontUi.ui:335
 msgid "Use a real small caps shape, if the font provides one"
 msgstr "Gebruik echt kleinkapitaal, als het lettertype dit ondersteunt"
 
-#: src/frontends/qt4/ui/FontUi.ui:273
+#: src/frontends/qt4/ui/FontUi.ui:338
 msgid "Use true s&mall caps"
 msgstr "Echt &kleinkapitaal gebruiken"
 
-#: src/frontends/qt4/ui/FontUi.ui:280
+#: src/frontends/qt4/ui/FontUi.ui:345
 msgid "Use old style instead of lining figures"
 msgstr "Gebruik uithangende cijfers voor figuren in plaats van tabelcijfers"
 
-#: src/frontends/qt4/ui/FontUi.ui:283
+#: src/frontends/qt4/ui/FontUi.ui:348
 msgid "Use &old style figures"
 msgstr "&Uithangende cijfers gebruiken"
 
-#: src/frontends/qt4/ui/FontUi.ui:290
+#: src/frontends/qt4/ui/FontUi.ui:355
 msgid ""
 "Activate extensions such as character protrusion and font expansion via the "
 "microtype package"
@@ -1885,11 +1889,11 @@ msgstr ""
 "Activeer uitbreidingen zoals hangende interpunctie en letterexpansie met het "
 "pakket microtype"
 
-#: src/frontends/qt4/ui/FontUi.ui:293
+#: src/frontends/qt4/ui/FontUi.ui:358
 msgid "Enable micr&o-typographic extensions"
 msgstr "E&xtensies voor microtypografie inschakelen"
 
-#: src/frontends/qt4/ui/FontUi.ui:300
+#: src/frontends/qt4/ui/FontUi.ui:365
 msgid ""
 "By default, a line break can occur after en- and em-dashes. Checking this "
 "box prevents that."
@@ -1897,7 +1901,7 @@ msgstr ""
 "Standaard kan een regeleinde na (half-)kastelijntjes voorkomen. Dit "
 "aanvinken verhindert dat."
 
-#: src/frontends/qt4/ui/FontUi.ui:303
+#: src/frontends/qt4/ui/FontUi.ui:368
 msgid "Disallow l&ine breaks after dashes"
 msgstr "Regeleindes na &kastelijntjes verbieden"
 
@@ -2177,9 +2181,8 @@ msgid "Fi&le"
 msgstr "&Bestand"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:35
-#, fuzzy
 msgid "I&nclude Type:"
-msgstr "&Insluittype:"
+msgstr "I&nsluittype:"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:46 src/insets/InsetInclude.cpp:420
 msgid "Include"
@@ -2190,11 +2193,12 @@ msgid "Input"
 msgstr "Input"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:56 lib/layouts/stdlayouts.inc:76
+#: src/insets/InsetInclude.cpp:413
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:61 src/insets/InsetInclude.cpp:1387
-#: src/insets/InsetInclude.cpp:1393
+#: src/frontends/qt4/ui/IncludeUi.ui:61 src/insets/InsetInclude.cpp:1391
+#: src/insets/InsetInclude.cpp:1397
 msgid "Program Listing"
 msgstr "Codefragment"
 
@@ -2250,9 +2254,8 @@ msgid "&Bypass validation"
 msgstr "&Geen validatie"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:289
-#, fuzzy
 msgid "&More parameters"
-msgstr "Mee&r parameters"
+msgstr "&Meer parameters"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:299
 msgid ""
@@ -2337,9 +2340,8 @@ msgid "Define or change button color"
 msgstr "Definieer of verander de kleur van de knop"
 
 #: src/frontends/qt4/ui/InfoUi.ui:25
-#, fuzzy
 msgid "Infor&mation Type:"
-msgstr "Informatiesoort:"
+msgstr "Infor&matietype:"
 
 #: src/frontends/qt4/ui/InfoUi.ui:35
 msgid ""
@@ -2452,8 +2454,8 @@ msgid "&Quote style:"
 msgstr "&Stijl aanhalingstekens:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:49
-msgid "Select the default style of Quote insets."
-msgstr "Kies de standaardstijl voor Aanhalingstekensinsets."
+msgid "Select the default quotation marks style"
+msgstr "Kies de standaardstijl voor aanhalingstekens"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:59
 msgid ""
@@ -2470,23 +2472,20 @@ msgid "Use d&ynamic quotation marks"
 msgstr "D&ynamische aanhalingstekens gebruiken"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:89
-#, fuzzy
 msgid "&Encoding:"
-msgstr "Co&dering:"
+msgstr "&Codering:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:116
-#, fuzzy
 msgid "Select Unicode encoding variant."
-msgstr "Selecteer de Unicode (utf8)-variant."
+msgstr "Selecteer de Unicode-variant."
 
 #: src/frontends/qt4/ui/LanguageUi.ui:126
 msgid "Specify whether to load the 'inputenc' package."
-msgstr ""
+msgstr "Specifieer of het pakket 'inputenc' geladen moet worden."
 
 #: src/frontends/qt4/ui/LanguageUi.ui:136
-#, fuzzy
 msgid "Select custom encoding."
-msgstr "Selecteer codering"
+msgstr "Selecteer aangepaste codering."
 
 #: src/frontends/qt4/ui/LanguageUi.ui:143
 msgid "Language pa&ckage:"
@@ -2573,7 +2572,6 @@ msgid "&Float"
 msgstr "&Float"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:23
-#, fuzzy
 msgid "Pla&cement:"
 msgstr "&Positie:"
 
@@ -2921,9 +2919,8 @@ msgid "Horizontal alignment per column (l,c,r)"
 msgstr "Horizontale uitlijning per kolom (l,c,r)"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:218
-#, fuzzy
 msgid "Hori&zontal:"
-msgstr "&Horizontaal:"
+msgstr "Hori&zontaal:"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:253
 msgid "decoration type / matrix border"
@@ -3036,9 +3033,8 @@ msgid "&Greyed out"
 msgstr "Ver&grijsd"
 
 #: src/frontends/qt4/ui/NumberingUi.ui:37
-#, fuzzy
 msgid "Add line numbers to the document"
-msgstr "Nieuwe inset in het document duwen"
+msgstr "Voeg regelnummers toe aan het document"
 
 #: src/frontends/qt4/ui/NumberingUi.ui:40
 msgid "L&ine numbering"
@@ -3161,7 +3157,7 @@ msgstr "Afbeeldingen"
 
 #: src/frontends/qt4/ui/OutputUi.ui:226 lib/layouts/aapaper.layout:63
 #: lib/layouts/egs.layout:691 lib/languages:138
-#: src/frontends/qt4/GuiDocument.cpp:1557 src/frontends/qt4/GuiErrorList.cpp:51
+#: src/frontends/qt4/GuiDocument.cpp:1569 src/frontends/qt4/GuiErrorList.cpp:51
 #: src/frontends/qt4/GuiLog.cpp:246 src/frontends/qt4/GuiPrefs.cpp:641
 msgid "LaTeX"
 msgstr "LaTeX"
@@ -3248,11 +3244,11 @@ msgstr "Gek&leurde snelkoppelingen"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:307
 msgid "Bibliographical backreferences"
-msgstr "Bibliografische terugverwijzingen"
+msgstr "Bibliografische terugverwijzing"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:310
 msgid "B&ackreferences:"
-msgstr "T&erugreferenties:"
+msgstr "Teru&gverwijzingen:"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:339
 msgid "&Bookmarks"
@@ -3310,7 +3306,7 @@ msgstr "&Liggend"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:162
 #: lib/layouts/customHeadersFooters.module:3 lib/layouts/landscape.module:3
-#: lib/layouts/multicol.module:3 src/frontends/qt4/GuiDocument.cpp:1726
+#: lib/layouts/multicol.module:3 src/frontends/qt4/GuiDocument.cpp:1738
 msgid "Page Layout"
 msgstr "Paginaopmaak"
 
@@ -3356,9 +3352,10 @@ msgstr "Dubbel"
 #: lib/layouts/stdcustom.inc:8 src/frontends/qt4/FloatPlacement.cpp:185
 #: src/frontends/qt4/GuiDocument.cpp:857 src/frontends/qt4/GuiDocument.cpp:861
 #: src/frontends/qt4/GuiDocument.cpp:869 src/frontends/qt4/GuiDocument.cpp:971
-#: src/frontends/qt4/GuiDocument.cpp:1108
-#: src/frontends/qt4/GuiDocument.cpp:1159
-#: src/frontends/qt4/GuiDocument.cpp:1497 src/frontends/qt4/GuiHSpace.cpp:56
+#: src/frontends/qt4/GuiDocument.cpp:1038
+#: src/frontends/qt4/GuiDocument.cpp:1120
+#: src/frontends/qt4/GuiDocument.cpp:1171
+#: src/frontends/qt4/GuiDocument.cpp:1509 src/frontends/qt4/GuiHSpace.cpp:56
 #: src/frontends/qt4/GuiHSpace.cpp:67 src/frontends/qt4/GuiPrefs.cpp:815
 #: src/frontends/qt4/GuiPrefs.cpp:843 src/frontends/qt4/GuiPrefs.cpp:870
 #: src/frontends/qt4/GuiPrefs.cpp:2286 src/frontends/qt4/GuiPrefs.cpp:2309
@@ -3425,9 +3422,8 @@ msgid "Vertical space of the phantom content"
 msgstr "Verticale ruimte van de spookinhoud"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:70
-#, fuzzy
 msgid "Verti&cal Phantom"
-msgstr "&Verticaal spook"
+msgstr "Verti&caal spook"
 
 #: src/frontends/qt4/ui/PreambleUi.ui:38
 msgid "&Find"
@@ -3454,7 +3450,6 @@ msgid "Reset all colors to their original value"
 msgstr "Stel alle kleuren terug in op hun originele waarde"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:83
-#, fuzzy
 msgid "Restore A&ll"
 msgstr "A&lles resetten"
 
@@ -3597,18 +3592,16 @@ msgid "Converter Defi&nitions"
 msgstr "Conversiedefi&nities"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:128
-#, fuzzy
 msgid "&Converter:"
-msgstr "C&onversieprogramma:"
+msgstr "&Conversieprogramma:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:138
 msgid "E&xtra flag:"
 msgstr "E&xtra vlag:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:186
-#, fuzzy
 msgid "Fro&m format:"
-msgstr "Van &formaat:"
+msgstr "Van for&maat:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:225
 msgid "&To format:"
@@ -4094,17 +4087,20 @@ msgid "Language &package:"
 msgstr "Taalpa&kket:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:56
-#: src/frontends/qt4/GuiDocument.cpp:1106
-#: src/frontends/qt4/GuiDocument.cpp:2568 src/frontends/qt4/GuiPrefs.cpp:814
+#: src/frontends/qt4/GuiDocument.cpp:1034
+#: src/frontends/qt4/GuiDocument.cpp:1118
+#: src/frontends/qt4/GuiDocument.cpp:2596 src/frontends/qt4/GuiPrefs.cpp:814
 #: src/frontends/qt4/GuiPrefs.cpp:842
 msgid "Automatic"
 msgstr "Automatisch"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:61
+#: src/frontends/qt4/GuiDocument.cpp:1036
 msgid "Always Babel"
 msgstr "Altijd Babel"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:71
+#: src/frontends/qt4/GuiDocument.cpp:1040
 msgid "None[[language package]]"
 msgstr "Geen"
 
@@ -4214,10 +4210,6 @@ msgstr "BibTeX-commando en -opties"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:222
 msgid "Processor for &Japanese:"
 msgstr "Verwerker voor &Japans:"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:133
-msgid "Options:"
-msgstr "Opties:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:143
 msgid "Specific BibTeX command and options for pLaTeX (Japanese)"
@@ -4627,7 +4619,6 @@ msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
 msgstr "Eigen waarde. De \"Lijstinsprong\" moet op \"Aangepast\" staan."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:40
-#, fuzzy
 msgid "Available i&ndexes:"
 msgstr "Beschikbare i&ndices:"
 
@@ -4766,11 +4757,11 @@ msgstr "Pas de stijl van de kruisverwijzing aan"
 
 #: src/frontends/qt4/ui/RefUi.ui:261 src/frontends/qt4/GuiRef.cpp:326
 msgid "<reference>"
-msgstr "<referentie>"
+msgstr "<verwijzing>"
 
 #: src/frontends/qt4/ui/RefUi.ui:266 src/frontends/qt4/GuiRef.cpp:327
 msgid "(<reference>)"
-msgstr "(<referentie>)"
+msgstr "(<verwijzing>)"
 
 #: src/frontends/qt4/ui/RefUi.ui:271 src/frontends/qt4/GuiRef.cpp:328
 msgid "<page>"
@@ -4782,16 +4773,16 @@ msgstr "op pagina <pagina>"
 
 #: src/frontends/qt4/ui/RefUi.ui:281 src/frontends/qt4/GuiRef.cpp:330
 msgid "<reference> on page <page>"
-msgstr "<referentie> op pagina <pagina>"
+msgstr "<verwijzing> op pagina <pagina>"
 
 #: src/frontends/qt4/ui/RefUi.ui:286 src/frontends/qt4/GuiRef.cpp:333
 #: src/frontends/qt4/GuiRef.cpp:336
 msgid "Formatted reference"
-msgstr "Opgemaakte referentie"
+msgstr "Opgemaakte verwijzing"
 
 #: src/frontends/qt4/ui/RefUi.ui:291 src/frontends/qt4/GuiRef.cpp:331
 msgid "Textual reference"
-msgstr "Tekstreferentie"
+msgstr "Tekstuele verwijzing"
 
 #: src/frontends/qt4/ui/RefUi.ui:296 src/frontends/qt4/GuiRef.cpp:334
 msgid "Label only"
@@ -4802,8 +4793,8 @@ msgid ""
 "Use plural form of formatted reference. (Works only for formatted "
 "references, and only if you are using refstyle.)"
 msgstr ""
-"Gebruik het meervoud van de opgemaakte referentie. (Werkt enkel voor "
-"opgemaakte referenties en enkel als u refstyle gebruikt.)"
+"Gebruik het meervoud van de opgemaakte verwijzing. (Werkt enkel voor "
+"opgemaakte verwijzingen en enkel als u refstyle gebruikt.)"
 
 #: src/frontends/qt4/ui/RefUi.ui:337
 msgid "Plural"
@@ -4814,8 +4805,8 @@ msgid ""
 "Use capitalized form of formatted reference. (Works only for formatted "
 "references, and only if you are using refstyle.)"
 msgstr ""
-"Gebruik hoofdletters bij de opgemaakte referentie. (Werkt enkel voor "
-"opgemaakte referenties en enkel als u refstyle gebruikt)."
+"Gebruik hoofdletters bij de opgemaakte verwijzing. (Werkt enkel voor "
+"opgemaakte verwijzingen en enkel als u refstyle gebruikt)."
 
 #: src/frontends/qt4/ui/RefUi.ui:347
 msgid "Capitalized"
@@ -4848,23 +4839,20 @@ msgstr ""
 "bestandsnaam)"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:98
-#, fuzzy
 msgid "Export for&mats:"
-msgstr "&Exportformaten:"
+msgstr "Exportfor&maten:"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:108
-#, fuzzy
 msgid "Send exported file to &command:"
-msgstr "&Verstuur geëxporteerde bestanden naar commando:"
+msgstr "Verstuur geëxporteerde bestanden naar &commando:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:14
 msgid "Edit shortcut"
 msgstr "Sneltoets bewerken"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:23
-#, fuzzy
 msgid "Fu&nction:"
-msgstr "&Functie:"
+msgstr "Fu&nctie:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:33
 msgid "Enter LyX function or command sequence"
@@ -5093,9 +5081,8 @@ msgid "At Decimal Separator"
 msgstr "Op decimaal scheidingsteken"
 
 #: src/frontends/qt4/ui/TabularUi.ui:390
-#, fuzzy
 msgid "Hori&zontal alignment:"
-msgstr "&Horizontale uitlijning:"
+msgstr "Hori&zontale uitlijning:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:400
 msgid ""
@@ -5110,9 +5097,8 @@ msgid "&Vertical alignment in row:"
 msgstr "&Verticale uitlijning in rij:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:437
-#, fuzzy
 msgid "Custom width of the column"
-msgstr "Vaste breedte van de kolom"
+msgstr "Aangepaste breedte van de kolom"
 
 #: src/frontends/qt4/ui/TabularUi.ui:457
 msgid "&Decimal separator:"
@@ -5207,7 +5193,6 @@ msgid "Bet&ween rows:"
 msgstr "T&ussen rijen:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1305
-#, fuzzy
 msgid "&Multi-Page Table"
 msgstr "&Multipaginatabel"
 
@@ -5364,7 +5349,7 @@ msgstr "Biblatex-bibiografiestijlen"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:69
 msgid "Biblatex citation styles"
-msgstr "Biblatex-citaatstijlen"
+msgstr "Biblatex-citatiestijlen"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:93
 msgid "Toggles view of the file list"
@@ -5474,9 +5459,8 @@ msgid "The selected entry"
 msgstr "Het geselecteerde lemma"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:66
-#, fuzzy
 msgid "Sele&ction:"
-msgstr "&Selectie:"
+msgstr "Sele&ctie:"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:83
 msgid "Replace the entry with the selection"
@@ -5688,7 +5672,7 @@ msgid ""
 "The basic citation capabilities provided by BibTeX. Mainly simple numeric "
 "styles primarily suitable for science and maths."
 msgstr ""
-"De basis citaatmogelijkheden van BibTeX. Vooral eenvoudige numerieke "
+"De basis citatiemogelijkheden van BibTeX. Vooral eenvoudige numerieke "
 "stijlen, geschikt voor wetenschap en wiskunde."
 
 #: lib/citeengines/basic.citeengine:52
@@ -5856,7 +5840,7 @@ msgstr ""
 "en samenvoegen van numerieke citaten, annotaties, hoofdletters in het `van'-"
 "gedeelte van auteursnamen, verkorte en volledige auteurslijsten en meer."
 
-#: lib/layouts/AEA.layout:3 lib/examples/Articles:0
+#: lib/layouts/AEA.layout:3
 msgid "American Economic Association (AEA)"
 msgstr "American Economic Association (AEA)"
 
@@ -5888,7 +5872,7 @@ msgstr "American Economic Association (AEA)"
 #: lib/layouts/siamltex.layout:4 lib/layouts/singlecol-new.layout:4
 #: lib/layouts/spie.layout:4 lib/layouts/svglobal3.layout:4
 #: lib/layouts/svjog.layout:4 lib/layouts/svprobth.layout:4
-#: lib/layouts/tarticle.layout:4 lib/examples/Articles:0
+#: lib/layouts/tarticle.layout:4
 msgid "Articles"
 msgstr "Artikels"
 
@@ -6128,14 +6112,14 @@ msgstr "Abstract"
 #: lib/layouts/theorems-ams-extended.module:302
 #: lib/layouts/theorems-ams-extended.module:305
 msgid "Acknowledgement"
-msgstr "Erkenning"
+msgstr "Dankbetuiging"
 
 #: lib/layouts/AEA.layout:107 lib/layouts/egs.layout:606
 #: lib/layouts/theorems-ams-extended-bytype.module:329
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:366
 #: lib/layouts/theorems-ams-extended.module:296
 msgid "Acknowledgement."
-msgstr "Erkenning."
+msgstr "Dankbetuiging."
 
 #: lib/layouts/AEA.layout:112
 msgid "Figure Notes"
@@ -6147,7 +6131,7 @@ msgstr "Figuuraantekeningen"
 #: lib/layouts/achemso.layout:32 lib/layouts/acmart.layout:64
 #: lib/layouts/acmsiggraph-0-92.layout:44 lib/layouts/acmsiggraph.layout:36
 #: lib/layouts/agu_stdclass.inc:23 lib/layouts/agutex.layout:33
-#: lib/layouts/amsart.layout:32 lib/layouts/amsbook.layout:33
+#: lib/layouts/amsart.layout:33 lib/layouts/amsbook.layout:33
 #: lib/layouts/apa.layout:26 lib/layouts/apa6.layout:23
 #: lib/layouts/beamer.layout:64 lib/layouts/beamer.layout:1188
 #: lib/layouts/beamer.layout:1215 lib/layouts/beamer.layout:1242
@@ -6464,7 +6448,7 @@ msgstr "Definitie"
 #: lib/layouts/theorems-without-preamble.inc:213
 #: lib/layouts/theorems-without-preamble.inc:216 lib/layouts/theorems.inc:190
 #: lib/layouts/theorems.inc:199 lib/layouts/theorems.inc:202
-#: src/frontends/qt4/GuiDocument.cpp:1304
+#: src/frontends/qt4/GuiDocument.cpp:1316
 msgid "Example"
 msgstr "Voorbeeld"
 
@@ -6656,12 +6640,12 @@ msgstr "Oplossing \\thesolution."
 #: lib/layouts/theorems-ams-extended.module:251
 #: lib/layouts/theorems-ams-extended.module:254
 #: lib/layouts/theorems-ams-extended.module:268
-#: lib/layouts/theorems-ams-extended.module:271 lib/examples/Articles:0
+#: lib/layouts/theorems-ams-extended.module:271
 msgid "Summary"
 msgstr "Samenvatting"
 
-#: lib/layouts/AEA.layout:300 src/frontends/qt4/Menus.cpp:1774
-#: src/frontends/qt4/Menus.cpp:1789
+#: lib/layouts/AEA.layout:300 src/frontends/qt4/Menus.cpp:1773
+#: src/frontends/qt4/Menus.cpp:1788
 msgid "Caption"
 msgstr "Bijschrift"
 
@@ -6677,7 +6661,7 @@ msgstr "Bijschrift"
 msgid "Proof"
 msgstr "Bewijs"
 
-#: lib/layouts/IEEEtran-CompSoc.layout:3 lib/examples/Articles:0
+#: lib/layouts/IEEEtran-CompSoc.layout:3
 msgid "IEEE Transactions Computer Society"
 msgstr "IEEE Transactions Computer Society"
 
@@ -6705,7 +6689,7 @@ msgstr "Nontitle Abstract Index Text"
 msgid "NontitleAbstractIndexText"
 msgstr "NontitleAbstractIndexText"
 
-#: lib/layouts/IEEEtran-TransMag.layout:3 lib/examples/Articles:0
+#: lib/layouts/IEEEtran-TransMag.layout:3
 msgid "IEEE Transactions on Magnetics"
 msgstr "IEEE Transactions on Magnetics"
 
@@ -6718,7 +6702,7 @@ msgstr "IEEE Transactions"
 #: lib/layouts/achemso.layout:31 lib/layouts/acmart.layout:63
 #: lib/layouts/acmsiggraph-0-92.layout:43 lib/layouts/acmsiggraph.layout:35
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/agutex.layout:32
-#: lib/layouts/amsart.layout:31 lib/layouts/amsbook.layout:32
+#: lib/layouts/amsart.layout:32 lib/layouts/amsbook.layout:32
 #: lib/layouts/apa.layout:25 lib/layouts/apa6.layout:22
 #: lib/layouts/beamer.layout:63 lib/layouts/broadway.layout:176
 #: lib/layouts/chess.layout:30 lib/layouts/cl2emult.layout:143
@@ -6950,7 +6934,7 @@ msgstr "Titel peerreview"
 #: lib/layouts/copernicus.layout:271 lib/layouts/copernicus.layout:276
 #: lib/layouts/ijmpc.layout:445 lib/layouts/ijmpd.layout:458
 #: lib/layouts/kluwer.layout:326 lib/layouts/kluwer.layout:339
-#: lib/examples/Articles:0 src/RowPainter.cpp:373
+#: src/RowPainter.cpp:373
 msgid "Appendix"
 msgstr "Appendix"
 
@@ -6986,8 +6970,8 @@ msgstr "Korte titel voor appendix"
 #: lib/layouts/siamltex.layout:326 lib/layouts/simplecv.layout:176
 #: lib/layouts/stdstruct.inc:54 lib/layouts/svcommon.inc:575
 #: lib/layouts/tufte-book.layout:277 lib/layouts/tufte-book.layout:279
-#: lib/layouts/tufte-handout.layout:77 lib/examples/Articles:0
-#: src/frontends/qt4/GuiDocument.cpp:1731 src/insets/InsetBibtex.cpp:942
+#: lib/layouts/tufte-handout.layout:77 src/frontends/qt4/GuiDocument.cpp:1743
+#: src/insets/InsetBibtex.cpp:943
 msgid "Bibliography"
 msgstr "Bibliografie"
 
@@ -7003,7 +6987,7 @@ msgstr "Bibliografie"
 #: lib/layouts/kluwer.layout:360 lib/layouts/llncs.layout:285
 #: lib/layouts/moderncv.layout:525 lib/layouts/siamltex.layout:342
 #: lib/layouts/stdstruct.inc:70 lib/layouts/svcommon.inc:591
-#: src/insets/InsetBibtex.cpp:943 src/insets/InsetBibtex.cpp:1016
+#: src/insets/InsetBibtex.cpp:944 src/insets/InsetBibtex.cpp:1017
 #: src/output_plaintext.cpp:153
 msgid "References"
 msgstr "Referenties"
@@ -7158,7 +7142,7 @@ msgstr "In preambule"
 msgid "In Title"
 msgstr "In titel"
 
-#: lib/layouts/RJournal.layout:3 lib/examples/Articles:0
+#: lib/layouts/RJournal.layout:3
 msgid "R Journal"
 msgstr "R Journal"
 
@@ -7213,12 +7197,12 @@ msgstr "Adres"
 msgid "Email"
 msgstr "E-mail"
 
-#: lib/layouts/a0poster.layout:3 lib/examples/Articles:0
+#: lib/layouts/a0poster.layout:3
 msgid "A0 Poster"
 msgstr "A0-affiche"
 
 #: lib/layouts/a0poster.layout:4 lib/layouts/beamerposter.layout:4
-#: lib/layouts/sciposter.layout:4 lib/examples/Articles:0
+#: lib/layouts/sciposter.layout:4
 msgid "Posters"
 msgstr "Affiches"
 
@@ -7261,7 +7245,7 @@ msgstr "Reusachtiger fragment"
 msgid "Most Giant Snippet"
 msgstr "Reusachtigst fragment"
 
-#: lib/layouts/aa.layout:3 lib/examples/Articles:0
+#: lib/layouts/aa.layout:3
 msgid "Astronomy & Astrophysics"
 msgstr "Astronomie & astrofysica"
 
@@ -7297,12 +7281,12 @@ msgstr "Briefwisseling met:"
 #: lib/layouts/aa.layout:166 lib/layouts/copernicus.layout:349
 #: lib/layouts/egs.layout:581
 msgid "Acknowledgements."
-msgstr "Erkenningen."
+msgstr "Dankbetuigingen."
 
 #: lib/layouts/aa.layout:178 lib/layouts/aapaper.layout:66
 #: lib/layouts/aapaper.layout:139 lib/layouts/aastex.layout:96
 #: lib/layouts/agu_stdsections.inc:30 lib/layouts/aguplus.inc:29
-#: lib/layouts/amsart.layout:64 lib/layouts/amsbook.layout:55
+#: lib/layouts/amsart.layout:65 lib/layouts/amsbook.layout:55
 #: lib/layouts/apa.layout:305 lib/layouts/apa6.layout:405
 #: lib/layouts/beamer.layout:274 lib/layouts/db_stdsections.inc:28
 #: lib/layouts/egs.layout:32 lib/layouts/europasscv.layout:187
@@ -7324,7 +7308,7 @@ msgstr "Paragraaf"
 #: lib/layouts/aa.layout:186 lib/layouts/aapaper.layout:70
 #: lib/layouts/aapaper.layout:149 lib/layouts/aastex.layout:109
 #: lib/layouts/agu_stdsections.inc:40 lib/layouts/aguplus.inc:44
-#: lib/layouts/amsart.layout:105 lib/layouts/amsbook.layout:65
+#: lib/layouts/amsart.layout:106 lib/layouts/amsbook.layout:65
 #: lib/layouts/apa.layout:316 lib/layouts/apa6.layout:416
 #: lib/layouts/beamer.layout:336 lib/layouts/db_stdsections.inc:36
 #: lib/layouts/egs.layout:55 lib/layouts/isprs.layout:160
@@ -7342,7 +7326,7 @@ msgstr "Subparagraaf"
 
 #: lib/layouts/aa.layout:196 lib/layouts/aapaper.layout:74
 #: lib/layouts/aapaper.layout:161 lib/layouts/aastex.layout:122
-#: lib/layouts/agu_stdsections.inc:50 lib/layouts/amsart.layout:128
+#: lib/layouts/agu_stdsections.inc:50 lib/layouts/amsart.layout:129
 #: lib/layouts/amsbook.layout:74 lib/layouts/apa.layout:326
 #: lib/layouts/apa6.layout:426 lib/layouts/beamer.layout:398
 #: lib/layouts/db_stdsections.inc:44 lib/layouts/isprs.layout:170
@@ -7457,7 +7441,7 @@ msgstr "e-mail:"
 #: lib/layouts/kluwer.layout:317 lib/layouts/svcommon.inc:559
 #: lib/layouts/svcommon.inc:570
 msgid "Acknowledgements"
-msgstr "Erkenningen"
+msgstr "Dankbetuigingen"
 
 #: lib/layouts/aapaper.inc:103 lib/layouts/aapaper.layout:96
 #: lib/ui/stdtoolbars.inc:143 src/frontends/qt4/GuiThesaurus.cpp:48
@@ -7479,7 +7463,6 @@ msgstr "Astronomie & astrofysica (V. 4, verouderd)"
 #: lib/layouts/latex8.layout:4 lib/layouts/revtex.layout:4
 #: lib/layouts/scrlettr.layout:4 lib/layouts/sigplanconf.layout:4
 #: lib/layouts/singlecol.layout:4 lib/layouts/svglobal.layout:4
-#: lib/examples/Articles:0
 msgid "Obsolete"
 msgstr "Verouderd"
 
@@ -7566,10 +7549,10 @@ msgstr "Alternatieve affiliatie:"
 msgid "And"
 msgstr "En"
 
-#: lib/layouts/aastex.layout:229 src/frontends/qt4/GuiDocument.cpp:2994
-#: src/frontends/qt4/GuiDocument.cpp:3006
-#: src/frontends/qt4/GuiDocument.cpp:3132
-#: src/frontends/qt4/GuiDocument.cpp:3151
+#: lib/layouts/aastex.layout:229 src/frontends/qt4/GuiDocument.cpp:3031
+#: src/frontends/qt4/GuiDocument.cpp:3043
+#: src/frontends/qt4/GuiDocument.cpp:3169
+#: src/frontends/qt4/GuiDocument.cpp:3188
 msgid "and"
 msgstr "en"
 
@@ -7587,7 +7570,7 @@ msgstr "Hoofding onderwerp:"
 
 #: lib/layouts/aastex.layout:329
 msgid "[Acknowledgements]"
-msgstr "[Erkenningen]"
+msgstr "[Dankbetuigingen]"
 
 #: lib/layouts/aastex.layout:339
 msgid "PlaceFigure"
@@ -7703,7 +7686,7 @@ msgstr "Dataset:"
 msgid "Separate the dataset ID from text"
 msgstr "Splits de dataset-ID van de tekst"
 
-#: lib/layouts/aastex6.layout:3 lib/examples/Articles:0
+#: lib/layouts/aastex6.layout:3
 msgid "American Astronomical Society (AASTeX v. 6)"
 msgstr "American Astronomical Society (AASTeX v. 6)"
 
@@ -7727,7 +7710,7 @@ msgstr "Referenties-"
 msgid "Note-"
 msgstr "Aantekening-"
 
-#: lib/layouts/aastex62.layout:3 lib/examples/Articles:0
+#: lib/layouts/aastex62.layout:3
 msgid "American Astronomical Society (AASTeX v. 6.2)"
 msgstr "American Astronomical Society (AASTeX v. 6.2)"
 
@@ -7803,7 +7786,7 @@ msgstr "Subsubparagraafappendix"
 msgid "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}."
 msgstr "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}."
 
-#: lib/layouts/achemso.layout:3 lib/examples/Articles:0
+#: lib/layouts/achemso.layout:3
 msgid "American Chemical Society (ACS)"
 msgstr "American Chemical Society (ACS)"
 
@@ -7961,14 +7944,13 @@ msgstr "Termen"
 msgid "General terms:"
 msgstr "Algemene termen:"
 
-#: lib/layouts/acm-sigs.layout:3 lib/examples/Articles:0
+#: lib/layouts/acm-sigs.layout:3
 msgid "ACM SIG Proceedings (SP, Obsolete)"
 msgstr "ACM SIG Proceedings (SP, verouderd)"
 
-#: lib/layouts/acmart.layout:3 lib/examples/Articles:0
-#, fuzzy
+#: lib/layouts/acmart.layout:3
 msgid "Association for Computing Machinery (ACM)"
-msgstr "Artikel voor Association for Computing Machinery (ACM)"
+msgstr "Association for Computing Machinery (ACM)"
 
 #: lib/layouts/acmart.layout:86 lib/layouts/acmsiggraph-0-92.layout:332
 #: lib/layouts/acmsiggraph.layout:288 lib/layouts/amsdefs.inc:175
@@ -8399,9 +8381,8 @@ msgstr "Enkel niet-anoniem"
 #: lib/layouts/revtex4-1.layout:215 lib/layouts/revtex4.layout:243
 #: lib/layouts/revtex4.layout:253 lib/layouts/sigplanconf.layout:223
 #: lib/layouts/sigplanconf.layout:230 lib/layouts/spie.layout:91
-#: lib/examples/Articles:0
 msgid "Acknowledgments"
-msgstr "Erkenningen"
+msgstr "Dankbetuigingen"
 
 #: lib/layouts/acmart.layout:665 lib/layouts/acmart.layout:669
 msgid "Grant Sponsor"
@@ -8415,7 +8396,7 @@ msgstr "Sponsor-ID"
 msgid "Grant Number"
 msgstr "Beursnummer"
 
-#: lib/layouts/acmsiggraph-0-92.layout:3 lib/examples/Articles:0
+#: lib/layouts/acmsiggraph-0-92.layout:3
 msgid "ACM SIGGGRAPH 0.92 (obsolete)"
 msgstr "ACM SIGGGRAPH 0.92 (verouderd)"
 
@@ -8654,7 +8635,7 @@ msgstr "Afkorting"
 #: lib/layouts/agu_stdclass.inc:143 lib/layouts/agu_stdclass.inc:145
 #: lib/layouts/agu_stdtitle.inc:56
 msgid "Citation-number"
-msgstr "Citaatnummer"
+msgstr "Citatienummer"
 
 #: lib/layouts/agu_stdclass.inc:155 lib/layouts/agu_stdclass.inc:157
 #: lib/layouts/apa6.layout:332
@@ -8756,7 +8737,7 @@ msgstr "AGU-journaal:"
 
 #: lib/layouts/agu_stdtitle.inc:59
 msgid "Citation-number:"
-msgstr "Citaatnummer:"
+msgstr "Citatienummer:"
 
 #: lib/layouts/agu_stdtitle.inc:65
 msgid "AGU-volume"
@@ -8881,11 +8862,11 @@ msgstr "Online gepubliceerd:"
 
 #: lib/layouts/agu_stdtitle.inc:264 src/frontends/qt4/GuiCitation.cpp:95
 msgid "Citation"
-msgstr "Citaat"
+msgstr "Citatie"
 
 #: lib/layouts/agu_stdtitle.inc:267
 msgid "Citation:"
-msgstr "Citaat:"
+msgstr "Citatie:"
 
 #: lib/layouts/agu_stdtitle.inc:272
 msgid "Posting-order"
@@ -8996,7 +8977,7 @@ msgstr "Postcode"
 msgid "American Geophysical Union (AGUPLUS Manuscript)"
 msgstr "American Geophysical Union (AGUPLUS-manuscript)"
 
-#: lib/layouts/aguplus.inc:37 lib/layouts/amsart.layout:75
+#: lib/layouts/aguplus.inc:37 lib/layouts/amsart.layout:76
 #: lib/layouts/amsbook.layout:84 lib/layouts/beamer.layout:318
 #: lib/layouts/db_stdstarsections.inc:36 lib/layouts/egs.layout:655
 #: lib/layouts/isprs.layout:180 lib/layouts/spie.layout:32
@@ -9004,7 +8985,7 @@ msgstr "American Geophysical Union (AGUPLUS-manuscript)"
 msgid "Section*"
 msgstr "Paragraaf*"
 
-#: lib/layouts/aguplus.inc:52 lib/layouts/amsart.layout:117
+#: lib/layouts/aguplus.inc:52 lib/layouts/amsart.layout:118
 #: lib/layouts/amsbook.layout:93 lib/layouts/beamer.layout:380
 #: lib/layouts/db_stdstarsections.inc:48 lib/layouts/egs.layout:675
 #: lib/layouts/isprs.layout:191 lib/layouts/stdstarsections.inc:46
@@ -9096,7 +9077,7 @@ msgstr "Tabel"
 msgid "table"
 msgstr "tabel"
 
-#: lib/layouts/agutex.layout:3 lib/examples/Articles:0
+#: lib/layouts/agutex.layout:3
 msgid "American Geophysical Union (AGUTeX)"
 msgstr "American Geophysical Union (AGUTeX)"
 
@@ -9119,7 +9100,7 @@ msgstr "Affiliatie auteur:"
 
 #: lib/layouts/agutex.layout:197
 msgid "Acknowledgments."
-msgstr "Erkenningen."
+msgstr "Dankbetuigingen."
 
 #: lib/layouts/algorithm2e.module:2
 msgid "Algorithm2e Float"
@@ -9147,20 +9128,18 @@ msgid "List of Algorithms"
 msgstr "Lijst van algoritmen"
 
 #: lib/layouts/amsart.layout:3 lib/layouts/amsbook.layout:3
-#: lib/examples/Articles:0
-#, fuzzy
 msgid "American Mathematical Society (AMS)"
-msgstr "Boek voor American Mathematical Society (AMS)"
+msgstr "American Mathematical Society (AMS)"
 
-#: lib/layouts/amsart.layout:85
+#: lib/layouts/amsart.layout:86
 msgid "SpecialSection"
 msgstr "Speciale paragraaf"
 
-#: lib/layouts/amsart.layout:94
+#: lib/layouts/amsart.layout:95
 msgid "SpecialSection*"
 msgstr "Speciale paragraaf*"
 
-#: lib/layouts/amsart.layout:96 lib/layouts/beamer.layout:320
+#: lib/layouts/amsart.layout:97 lib/layouts/beamer.layout:320
 #: lib/layouts/beamer.layout:382 lib/layouts/beamer.layout:444
 #: lib/layouts/memoir.layout:242 lib/layouts/stdinsets.inc:667
 #: lib/layouts/stdstarsections.inc:15 lib/layouts/stdstarsections.inc:26
@@ -9170,7 +9149,7 @@ msgstr "Speciale paragraaf*"
 msgid "Unnumbered"
 msgstr "Ongenummerd"
 
-#: lib/layouts/amsart.layout:138 lib/layouts/amsbook.layout:101
+#: lib/layouts/amsart.layout:139 lib/layouts/amsbook.layout:101
 #: lib/layouts/beamer.layout:442 lib/layouts/db_stdstarsections.inc:60
 #: lib/layouts/isprs.layout:200 lib/layouts/stdstarsections.inc:57
 #: lib/layouts/svcommon.inc:271
@@ -9184,7 +9163,7 @@ msgstr "Subsubparagraaf*"
 #: lib/layouts/mwbk.layout:4 lib/layouts/recipebook.layout:4
 #: lib/layouts/scrbook.layout:4 lib/layouts/svmono.layout:4
 #: lib/layouts/svmult.layout:4 lib/layouts/tbook.layout:4
-#: lib/layouts/tufte-book.layout:4 lib/examples/Articles:0
+#: lib/layouts/tufte-book.layout:4
 msgid "Books"
 msgstr "Boeken"
 
@@ -9203,7 +9182,7 @@ msgstr "Oefeningen hoofdstuk"
 #: lib/layouts/foils.layout:104 lib/layouts/foils.layout:134
 #: lib/layouts/ijmpc.layout:289 lib/layouts/ijmpc.layout:325
 #: lib/layouts/ijmpd.layout:292 lib/layouts/ijmpd.layout:328
-#: lib/layouts/iucr.layout:256 lib/layouts/linguistics.module:69
+#: lib/layouts/iucr.layout:256 lib/layouts/linguistics.module:76
 #: lib/layouts/powerdot.layout:280 lib/layouts/powerdot.layout:342
 #: lib/layouts/simplecv.layout:72 lib/layouts/simplecv.layout:104
 #: lib/layouts/stdlists.inc:37 lib/layouts/stdlists.inc:76
@@ -9223,7 +9202,7 @@ msgstr "Lijstpreambule"
 #: lib/layouts/foils.layout:105 lib/layouts/foils.layout:135
 #: lib/layouts/ijmpc.layout:290 lib/layouts/ijmpc.layout:326
 #: lib/layouts/ijmpd.layout:293 lib/layouts/ijmpd.layout:329
-#: lib/layouts/iucr.layout:257 lib/layouts/linguistics.module:70
+#: lib/layouts/iucr.layout:257 lib/layouts/linguistics.module:77
 #: lib/layouts/powerdot.layout:281 lib/layouts/powerdot.layout:343
 #: lib/layouts/simplecv.layout:73 lib/layouts/simplecv.layout:105
 #: lib/layouts/stdlists.inc:38 lib/layouts/stdlists.inc:77
@@ -9243,7 +9222,7 @@ msgstr "Lijstpreambule"
 #: lib/layouts/foils.layout:106 lib/layouts/foils.layout:136
 #: lib/layouts/ijmpc.layout:291 lib/layouts/ijmpc.layout:327
 #: lib/layouts/ijmpd.layout:294 lib/layouts/ijmpd.layout:330
-#: lib/layouts/iucr.layout:258 lib/layouts/linguistics.module:71
+#: lib/layouts/iucr.layout:258 lib/layouts/linguistics.module:78
 #: lib/layouts/powerdot.layout:282 lib/layouts/powerdot.layout:344
 #: lib/layouts/simplecv.layout:74 lib/layouts/simplecv.layout:106
 #: lib/layouts/stdlists.inc:39 lib/layouts/stdlists.inc:78
@@ -9326,7 +9305,7 @@ msgstr "Onderwerpklasse"
 msgid "2000 Mathematics Subject Classification:"
 msgstr "2000 Mathematics Subject Classification:"
 
-#: lib/layouts/apa.layout:3 lib/examples/Articles:0
+#: lib/layouts/apa.layout:3
 msgid "American Psychological Association (APA)"
 msgstr "American Psychological Association (APA)"
 
@@ -9373,7 +9352,7 @@ msgstr "Vier affiliaties"
 
 #: lib/layouts/apa.layout:225 lib/layouts/iucr.layout:234
 msgid "Acknowledgements:"
-msgstr "Erkenningen:"
+msgstr "Dankbetuigingen:"
 
 #: lib/layouts/apa.layout:239 lib/layouts/apa6.layout:339
 msgid "ThickLine"
@@ -9432,7 +9411,7 @@ msgstr "Seriate"
 msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
-#: lib/layouts/apa6.layout:3 lib/examples/Articles:0
+#: lib/layouts/apa6.layout:3
 msgid "American Psychological Association (APA), v. 6"
 msgstr "American Psychological Association (APA), v. 6"
 
@@ -9506,7 +9485,7 @@ msgstr "*"
 msgid "Arabic Article"
 msgstr "Arabisch artikel"
 
-#: lib/layouts/article-beamer.layout:3 lib/examples/Articles:0
+#: lib/layouts/article-beamer.layout:3
 msgid "Beamer Article (Standard Class)"
 msgstr "Beamerartikel (standaardklasse)"
 
@@ -9520,14 +9499,13 @@ msgstr "Artikel (standaardklasse)"
 msgid "Part*"
 msgstr "Deel*"
 
-#: lib/layouts/beamer.layout:3 lib/examples/Articles:0
+#: lib/layouts/beamer.layout:3
 msgid "Beamer"
 msgstr "Beamer"
 
 #: lib/layouts/beamer.layout:4 lib/layouts/bxjsslide.layout:4
 #: lib/layouts/foils.layout:4 lib/layouts/powerdot.layout:4
 #: lib/layouts/seminar.layout:4 lib/layouts/slides.layout:4
-#: lib/examples/Articles:0
 msgid "Presentations"
 msgstr "Presentaties"
 
@@ -10182,7 +10160,7 @@ msgstr "Presentatie"
 msgid "Figure"
 msgstr "Figuur"
 
-#: lib/layouts/beamerposter.layout:3 lib/examples/Articles:0
+#: lib/layouts/beamerposter.layout:3
 msgid "Beamerposter"
 msgstr "Beameraffiche"
 
@@ -10191,12 +10169,11 @@ msgid "Bilingual Captions"
 msgstr "Meertalige bijschriften"
 
 #: lib/layouts/bicaption.module:7
-#, fuzzy
 msgid ""
 "Provides two styles to typeset bilingual captions. For a description see the "
 "file MultilingualCaptions.lyx in LyX's examples folder."
 msgstr ""
-"Voorziet twee stijlen om meertalige bijschriften te gebruiken. Bekijk het "
+"Voorziet twee stijlen om meertalige bijschriften te zetten. Bekijk het "
 "bestand MultilingualCaptions.lyx in de voorbeeldenmap van LyX voor een "
 "beschrijving."
 
@@ -10251,7 +10228,7 @@ msgstr "Korte titel voor de tweede taal"
 msgid "Book (Standard Class)"
 msgstr "Boek (standaardklasse)"
 
-#: lib/layouts/braille.module:2 lib/examples/Articles:0
+#: lib/layouts/braille.module:2
 msgid "Braille"
 msgstr "Braille"
 
@@ -10324,7 +10301,6 @@ msgid "Broadway"
 msgstr "Broadway"
 
 #: lib/layouts/broadway.layout:4 lib/layouts/hollywood.layout:4
-#: lib/examples/Articles:0
 msgid "Scripts"
 msgstr "Scripts"
 
@@ -10421,7 +10397,7 @@ msgstr ""
 "te plaatsen als het bijhouden van wijzigingen aan staat en pdflatex het "
 "uitvoerformaat is."
 
-#: lib/layouts/chess.layout:3 lib/examples/Articles:0
+#: lib/layouts/chess.layout:3
 msgid "Chess"
 msgstr "Schaken"
 
@@ -10608,7 +10584,7 @@ msgstr ""
 "Hier kan u schaakbordinstellingen opslaan onder een stijlnaam om ze later "
 "opnieuw te gebruiken. Zie de chessboard-handleiding voor details."
 
-#: lib/layouts/chessboard.module:127 lib/examples/Articles:0
+#: lib/layouts/chessboard.module:127
 msgid "Chessboard"
 msgstr "Schaakbord"
 
@@ -10625,14 +10601,13 @@ msgstr ""
 msgid "Springer Contributed Books (cl2emult, Obsolete!)"
 msgstr "Springer Contributed Books (cl2emult, verouderd!)"
 
-#: lib/layouts/copernicus.layout:3 lib/examples/Articles:0
+#: lib/layouts/copernicus.layout:3
 msgid "Copernicus Publications Manuscript Preparation"
 msgstr "Copernicus Publications Manuscript Preparation"
 
 #: lib/layouts/copernicus.layout:42
-#, fuzzy
 msgid "InFrontmatter"
-msgstr "EindeVoorwerk"
+msgstr "InVoorwerk"
 
 #: lib/layouts/copernicus.layout:65
 msgid "Insert the affiliation number"
@@ -10804,7 +10779,7 @@ msgstr "Disclaimer"
 msgid "Disclaimer."
 msgstr "Disclaimer."
 
-#: lib/layouts/ctex-article.layout:3 lib/examples/Articles:0
+#: lib/layouts/ctex-article.layout:3
 msgid "Chinese Article (CTeX)"
 msgstr "Chinees artikel (CTeX)"
 
@@ -10817,9 +10792,8 @@ msgid "Chinese Report (CTeX)"
 msgstr "Chinees rapport (CTeX)"
 
 #: lib/layouts/customHeadersFooters.module:2
-#, fuzzy
 msgid "Custom Header/Footer Text"
-msgstr "Aangepaste kop- en voetlijnen"
+msgstr "Aangepaste kop- en voettekst"
 
 #: lib/layouts/customHeadersFooters.module:8
 msgid ""
@@ -10940,7 +10914,7 @@ msgstr "Revisie-opmerking"
 msgid "FirstName"
 msgstr "Voornaam"
 
-#: lib/layouts/dinbrief.layout:3 lib/examples/Articles:0
+#: lib/layouts/dinbrief.layout:3
 msgid "DIN-Brief"
 msgstr "DIN-brief"
 
@@ -10948,7 +10922,6 @@ msgstr "DIN-brief"
 #: lib/layouts/frletter.layout:4 lib/layouts/g-brief2.layout:4
 #: lib/layouts/heb-letter.layout:4 lib/layouts/letter.layout:4
 #: lib/layouts/lettre.layout:4 lib/layouts/scrlttr2.layout:4
-#: lib/examples/Articles:0
 msgid "Letters"
 msgstr "Brieven"
 
@@ -11329,7 +11302,7 @@ msgstr "DocBook-hoofdstuk (SGML)"
 msgid "DocBook Section (SGML)"
 msgstr "DocBook-paragraaf (SGML)"
 
-#: lib/layouts/docbook.layout:3 lib/examples/Articles:0
+#: lib/layouts/docbook.layout:3
 msgid "DocBook Article (SGML)"
 msgstr "DocBook-artikel (SGML)"
 
@@ -11341,7 +11314,7 @@ msgstr "Inderscience A4 Journals"
 msgid "Die TeXnische Komoedie"
 msgstr "Die TeXnische Komoedie"
 
-#: lib/layouts/ectaart.layout:3 lib/examples/Articles:0
+#: lib/layouts/ectaart.layout:3
 msgid "Econometrica"
 msgstr "Econometrica"
 
@@ -11585,7 +11558,7 @@ msgstr "Samenvatting \\arabic{summ}"
 msgid "Case \\arabic{case}"
 msgstr "Geval \\arabic{case}"
 
-#: lib/layouts/elsarticle.layout:3 lib/examples/Articles:0
+#: lib/layouts/elsarticle.layout:3
 msgid "Elsevier"
 msgstr "Elsevier"
 
@@ -11678,9 +11651,8 @@ msgid "Endnotes"
 msgstr "Eindnoot"
 
 #: lib/layouts/endnotes.module:3 lib/layouts/foottoend.module:3
-#, fuzzy
 msgid "Foot- and Endnotes"
-msgstr "Voetnoten als eindnoten"
+msgstr "Voet- en eindnoten"
 
 #: lib/layouts/endnotes.module:7
 msgid ""
@@ -11788,13 +11760,12 @@ msgstr ""
 msgid "\\thesection.\\arabic{equation}"
 msgstr "\\thesection.\\arabic{equation}"
 
-#: lib/layouts/europasscv.layout:3 lib/examples/Articles:0
+#: lib/layouts/europasscv.layout:3
 msgid "Europass CV (2013)"
 msgstr "Europass CV (2013)"
 
 #: lib/layouts/europasscv.layout:4 lib/layouts/europecv.layout:4
 #: lib/layouts/moderncv.layout:4 lib/layouts/simplecv.layout:4
-#: lib/examples/Articles:0
 msgid "Curricula Vitae"
 msgstr "Curricula Vitae"
 
@@ -12059,7 +12030,7 @@ msgstr "Einde van de cv"
 msgid "Highlight"
 msgstr "Uitgelicht"
 
-#: lib/layouts/europecv.layout:3 lib/examples/Articles:0
+#: lib/layouts/europecv.layout:3
 msgid "Europe CV"
 msgstr "Europese cv"
 
@@ -12250,9 +12221,9 @@ msgid "Fixme Error"
 msgstr "Fixme-fout"
 
 #: lib/layouts/fixme.module:83 src/frontends/qt4/GuiCompare.cpp:199
-#: src/frontends/qt4/GuiDocument.cpp:2704
-#: src/frontends/qt4/GuiDocument.cpp:2778
-#: src/frontends/qt4/GuiDocument.cpp:4618
+#: src/frontends/qt4/GuiDocument.cpp:2741
+#: src/frontends/qt4/GuiDocument.cpp:2815
+#: src/frontends/qt4/GuiDocument.cpp:4674
 msgid "Error"
 msgstr "Fout"
 
@@ -12537,11 +12508,11 @@ msgstr ""
 "Stelt alle voetnoten in als eindnoten. U zal \\theendnotes moeten toevoegen "
 "in TeX-code waar u wilt dat dat eindnoten verschijnen."
 
-#: lib/layouts/frletter.layout:3 lib/examples/Articles:0
+#: lib/layouts/frletter.layout:3
 msgid "French Letter (frletter)"
 msgstr "Franse brief (frletter)"
 
-#: lib/layouts/g-brief.layout:3 lib/examples/Articles:0
+#: lib/layouts/g-brief.layout:3
 msgid "G-Brief (V. 1, Obsolete)"
 msgstr "G-Brief (V. 1, verouderd)"
 
@@ -12664,7 +12635,7 @@ msgstr "Referentie:"
 msgid "Encl.:"
 msgstr "Bijlage:"
 
-#: lib/layouts/g-brief2.layout:3 lib/examples/Articles:0
+#: lib/layouts/g-brief2.layout:3
 msgid "G-Brief (V. 2)"
 msgstr "G-Brief (V. 2)"
 
@@ -13034,7 +13005,7 @@ msgstr "Bewijs:"
 msgid "Hebrew Letter"
 msgstr "Hebreeuwse brief"
 
-#: lib/layouts/hollywood.layout:3 lib/examples/Articles:0
+#: lib/layouts/hollywood.layout:3
 msgid "Hollywood"
 msgstr "Hollywood"
 
@@ -13106,8 +13077,8 @@ msgid ""
 "in LyX's examples folder."
 msgstr ""
 "Levert twee insets om nummers en zinnen van chemische gevaar- en "
-"waarschuwingsberichten te zetten. Bekijk het bestand H-P-statements.lyx in "
-"de voorbeeldenmap van LyX voor een beschrijving."
+"waarschuwingsaanduidingen te zetten. Bekijk het bestand H-P-statements.lyx "
+"in de voorbeeldenmap van LyX voor een beschrijving."
 
 #: lib/layouts/hpstatement.module:12 lib/layouts/hpstatement.module:17
 msgid "H-P number"
@@ -13125,7 +13096,7 @@ msgstr "Mededelingstekst"
 msgid "Text for statements that require some information"
 msgstr "Tekst voor mededelingen die wat informatie vereisen"
 
-#: lib/layouts/ijmpc.layout:3 lib/examples/Articles:0
+#: lib/layouts/ijmpc.layout:3
 msgid "Int. Journal of Modern Physics C"
 msgstr "Int. Journal of Modern Physics C"
 
@@ -13253,7 +13224,7 @@ msgstr "Prop"
 msgid "Appendix \\Alph{appendix}."
 msgstr "Appendix \\Alph{appendix}."
 
-#: lib/layouts/ijmpd.layout:3 lib/examples/Articles:0
+#: lib/layouts/ijmpd.layout:3
 msgid "Int. Journal of Modern Physics D"
 msgstr "Int. Journal of Modern Physics D"
 
@@ -13266,13 +13237,12 @@ msgid "Initials (Drop Caps)"
 msgstr "Initialen"
 
 #: lib/layouts/initials.module:7
-#, fuzzy
 msgid ""
 "Defines a style for paragraphs with an enlarged initial letter (drop cap). "
 "See the EmbeddedObjects manual for a detailed description."
 msgstr ""
-"Definieert een stijl voor alinea's met een initiaal. Zie de handleiding "
-"'Ingesloten Objecten' voor een gedetailleerde beschrijving."
+"Definieert een stijl voor alinea's met een grotere eerste letter (initiaal). "
+"Zie de handleiding IngeslotenObjecten voor een gedetailleerde beschrijving."
 
 #: lib/layouts/initials.module:15 lib/layouts/initials.module:17
 #: lib/layouts/initials.module:27 lib/layouts/initials.module:33
@@ -13296,7 +13266,7 @@ msgstr "Rest van de initiaal"
 msgid "Rest of initial word or text"
 msgstr "Rest van het initiaalwoord of de initiaaltekst"
 
-#: lib/layouts/iopart.layout:3 lib/examples/Articles:0
+#: lib/layouts/iopart.layout:3
 msgid "Institute of Physics (IOP)"
 msgstr "Institute of Physics (IOP)"
 
@@ -13376,9 +13346,9 @@ msgstr "Commissie"
 
 #: lib/layouts/isprs.layout:220
 msgid "ACKNOWLEDGEMENTS"
-msgstr "ERKENNINGEN"
+msgstr "DANKBETUIGINGEN"
 
-#: lib/layouts/iucr.layout:3 lib/examples/Articles:0
+#: lib/layouts/iucr.layout:3
 msgid "International Union of Crystallography (IUCr)"
 msgstr "International Union of Crystallography (IUCr)"
 
@@ -13480,7 +13450,7 @@ msgstr "Synopsis"
 msgid "Japanese Article (Standard Class)"
 msgstr "Japans artikel (standaardklasse)"
 
-#: lib/layouts/jasatex.layout:3 lib/examples/Articles:0
+#: lib/layouts/jasatex.layout:3
 msgid "Journal of the Acoustical Society of America (JASA)"
 msgstr "Journal of the Acoustical Society of America (JASA)"
 
@@ -13510,7 +13480,7 @@ msgstr "Preprintnummer:"
 
 #: lib/layouts/jasatex.layout:247 lib/layouts/jasatex.layout:251
 msgid "Online citation"
-msgstr "Online citaat"
+msgstr "Online citatie"
 
 #: lib/layouts/jbook.layout:3
 msgid "Japanese Book (Standard Class)"
@@ -13532,7 +13502,7 @@ msgstr "Japans artikel (klasse JS)"
 msgid "Japanese Book (JS Class)"
 msgstr "Japans boek (klasse JS)"
 
-#: lib/layouts/jss.layout:3 lib/examples/Articles:0
+#: lib/layouts/jss.layout:3
 msgid "Journal of Statistical Software (JSS) version 2"
 msgstr "Journal of Statistical Software (JSS) versie 2"
 
@@ -13596,7 +13566,7 @@ msgstr "Code-invoer"
 msgid "Code Output"
 msgstr "Code-uitvoer"
 
-#: lib/layouts/kluwer.layout:3 lib/examples/Articles:0
+#: lib/layouts/kluwer.layout:3
 msgid "Kluwer"
 msgstr "Kluwer"
 
@@ -13612,7 +13582,7 @@ msgstr "Adres voor overdrukken:"
 msgid "RunningTitle"
 msgstr "Lopende titel"
 
-#: lib/layouts/knitr.module:2 lib/configure.py:666 lib/examples/Articles:0
+#: lib/layouts/knitr.module:2 lib/configure.py:666
 msgid "Rnw (knitr)"
 msgstr "Rnw (knitr)"
 
@@ -13668,15 +13638,15 @@ msgstr "Liggend (met floats)"
 msgid "Landscape (floating)"
 msgstr "Liggend (met floats)"
 
-#: lib/layouts/latex8.layout:3 lib/examples/Articles:0
+#: lib/layouts/latex8.layout:3
 msgid "Latex8 Article (Obsolete)"
 msgstr "Latex8-artikel (verouderd)"
 
-#: lib/layouts/letter.layout:3 lib/examples/Articles:0
+#: lib/layouts/letter.layout:3
 msgid "Letter (Standard Class)"
 msgstr "Brief (standaardklasse)"
 
-#: lib/layouts/lettre.layout:3 lib/examples/Articles:0
+#: lib/layouts/lettre.layout:3
 msgid "French Letter (lettre)"
 msgstr "Franse brief (lettre)"
 
@@ -13777,8 +13747,7 @@ msgstr ""
 "Een door komma's gescheiden lijst van opties (zie de LilyPond-documentatie "
 "voor beschikbare opties)."
 
-#: lib/layouts/linguistics.module:2 lib/layouts/linguistics.module:56
-#: lib/examples/Articles:0
+#: lib/layouts/linguistics.module:2 lib/layouts/linguistics.module:63
 msgid "Linguistics"
 msgstr "Taalkunde"
 
@@ -13792,170 +13761,337 @@ msgstr ""
 "voorbeelden, glosses, semantische opmaak, tableau floats). Zie het bestand "
 "linguistics.lyx in de voorbeelden."
 
-#: lib/layouts/linguistics.module:15
+#: lib/layouts/linguistics.module:19
 msgid "(\\arabic{example})"
 msgstr "(\\arabic{example})"
 
-#: lib/layouts/linguistics.module:20
+#: lib/layouts/linguistics.module:24
 msgid "(\\arabic{examplei})"
 msgstr "(\\arabic{examplei})"
 
-#: lib/layouts/linguistics.module:25
+#: lib/layouts/linguistics.module:29
 msgid "\\theexamplei (\\alph{subexample})"
 msgstr "\\theexamplei (\\alph{subexample})"
 
-#: lib/layouts/linguistics.module:30
+#: lib/layouts/linguistics.module:34
 msgid "\\theexamplei (\\alph{subexamplei})"
 msgstr "\\theexamplei (\\alph{subexamplei})"
 
-#: lib/layouts/linguistics.module:33 lib/layouts/linguistics.module:280
-msgid "Tableaux"
-msgstr "Tableaux"
-
-#: lib/layouts/linguistics.module:36
+#: lib/layouts/linguistics.module:43
 msgid "Numbered Example (multiline)"
 msgstr "Genummerd voorbeeld (meerdere regels)"
 
-#: lib/layouts/linguistics.module:61
+#: lib/layouts/linguistics.module:68
 msgid "Numbered Examples (consecutive)"
 msgstr "Genummerd voorbeeld (opeenvolgend)"
 
-#: lib/layouts/linguistics.module:79
+#: lib/layouts/linguistics.module:86
 msgid "Custom Numbering|s"
 msgstr "Aangepaste nummering|s"
 
-#: lib/layouts/linguistics.module:80
+#: lib/layouts/linguistics.module:87
 msgid "Customize the numeration"
 msgstr "Pas de nummering aan"
 
-#: lib/layouts/linguistics.module:86
+#: lib/layouts/linguistics.module:93
 msgid "Subexample"
 msgstr "Subvoorbeeld"
 
-#: lib/layouts/linguistics.module:96
+#: lib/layouts/linguistics.module:100
+msgid "Subexamples options"
+msgstr "Opties voor subvoorbeeld"
+
+#: lib/layouts/linguistics.module:101
+msgid "Subexamples options|s"
+msgstr "Opties voor subvoorbeeld|s"
+
+#: lib/layouts/linguistics.module:102
+msgid "Add subexamples options here"
+msgstr "Voeg opties voor subvoorbeeld hier toe"
+
+#: lib/layouts/linguistics.module:113
 msgid "Interlinear Gloss (2 Lines)"
 msgstr "Interlineaire glos (2 regels)"
 
-#: lib/layouts/linguistics.module:98
-#, fuzzy
+#: lib/layouts/linguistics.module:115
 msgid "Gloss"
 msgstr "Glos"
 
-#: lib/layouts/linguistics.module:114 lib/layouts/linguistics.module:160
+#: lib/layouts/linguistics.module:131 lib/layouts/linguistics.module:177
 msgid "Gloss options"
 msgstr "Glosopties"
 
-#: lib/layouts/linguistics.module:115 lib/layouts/linguistics.module:161
+#: lib/layouts/linguistics.module:132 lib/layouts/linguistics.module:178
 msgid "Gloss Options|s"
 msgstr "Glosopties|s"
 
-#: lib/layouts/linguistics.module:116
+#: lib/layouts/linguistics.module:133
 msgid "Add digloss options here"
 msgstr "Voeg opties voor digloss hier toe"
 
-#: lib/layouts/linguistics.module:120 lib/layouts/linguistics.module:121
+#: lib/layouts/linguistics.module:137 lib/layouts/linguistics.module:138
 msgid "Interlinear Gloss"
 msgstr "Interlineaire glos"
 
-#: lib/layouts/linguistics.module:122
+#: lib/layouts/linguistics.module:139
 msgid "Add the inter-linear gloss here"
 msgstr "Voeg de interlineaire glos hier toe"
 
-#: lib/layouts/linguistics.module:130 lib/layouts/linguistics.module:186
+#: lib/layouts/linguistics.module:147 lib/layouts/linguistics.module:203
 msgid "Translation"
 msgstr "Vertaling"
 
-#: lib/layouts/linguistics.module:131 lib/layouts/linguistics.module:187
-#, fuzzy
+#: lib/layouts/linguistics.module:148 lib/layouts/linguistics.module:204
 msgid "Gloss Translation"
-msgstr "Glosvertaling|s"
+msgstr "Glosvertaling"
 
-#: lib/layouts/linguistics.module:132
+#: lib/layouts/linguistics.module:149
 msgid "Add a free translation for the gloss"
 msgstr "Voeg een vrije vertaling voor de glos toe"
 
-#: lib/layouts/linguistics.module:142
+#: lib/layouts/linguistics.module:159
 msgid "Interlinear Gloss (3 Lines)"
 msgstr "Interlineaire glos (3 regels)"
 
-#: lib/layouts/linguistics.module:144
-#, fuzzy
+#: lib/layouts/linguistics.module:161
 msgid "Tri-Gloss"
 msgstr "Tri-glos"
 
-#: lib/layouts/linguistics.module:162
+#: lib/layouts/linguistics.module:179
 msgid "Add trigloss options here"
 msgstr "Voeg de triglos-opties hier in"
 
-#: lib/layouts/linguistics.module:166
+#: lib/layouts/linguistics.module:183
 msgid "Interlinear Gloss (1)"
 msgstr "Interlineaire glos (1)"
 
-#: lib/layouts/linguistics.module:167
+#: lib/layouts/linguistics.module:184
 msgid "Interlinear Gloss (Line 1)|1"
 msgstr "Interlineaire glos (regel 1)|1"
 
-#: lib/layouts/linguistics.module:168 lib/layouts/linguistics.module:178
+#: lib/layouts/linguistics.module:185 lib/layouts/linguistics.module:195
 msgid "Add the first inter-linear gloss line here"
 msgstr "Voeg de eerste regel voor de interlineaire glos hier toe"
 
-#: lib/layouts/linguistics.module:176
+#: lib/layouts/linguistics.module:193
 msgid "Interlinear Gloss (2)"
 msgstr "Interlineaire glos (2)"
 
-#: lib/layouts/linguistics.module:177
+#: lib/layouts/linguistics.module:194
 msgid "Interlinear Gloss (Line 2)|2"
 msgstr "Interlineaire glos (regel 2)|2"
 
-#: lib/layouts/linguistics.module:188
+#: lib/layouts/linguistics.module:205
 msgid "Add a translation for the glosse"
 msgstr "Voeg een vertaling toe voor de glos"
 
-#: lib/layouts/linguistics.module:197
-msgid "Structure Tree"
-msgstr "Structuurboom"
-
-#: lib/layouts/linguistics.module:199
-msgid "Tree"
-msgstr "Boom"
-
-#: lib/layouts/linguistics.module:223
-msgid "Expression"
-msgstr "Expressie"
-
-#: lib/layouts/linguistics.module:225
-msgid "expr."
-msgstr "expr."
-
-#: lib/layouts/linguistics.module:239
-msgid "Concepts"
-msgstr "Concepten"
-
-#: lib/layouts/linguistics.module:241
-msgid "concept"
-msgstr "concept"
-
-#: lib/layouts/linguistics.module:255
-msgid "Meaning"
-msgstr "Betekenis"
-
-#: lib/layouts/linguistics.module:257
-msgid "meaning"
-msgstr "betekenis"
-
-#: lib/layouts/linguistics.module:270
+#: lib/layouts/linguistics.module:214
 msgid "GroupGlossedWords"
 msgstr "GlossedWoordengroep"
 
-#: lib/layouts/linguistics.module:272
+#: lib/layouts/linguistics.module:216
 msgid "Group"
 msgstr "Groeperen"
 
+#: lib/layouts/linguistics.module:228
+msgid "Structure Tree"
+msgstr "Structuurboom"
+
+#: lib/layouts/linguistics.module:230
+msgid "Tree"
+msgstr "Boom"
+
+#: lib/layouts/linguistics.module:257 lib/layouts/linguistics.module:259
+msgid "DRS"
+msgstr "DRS"
+
+#: lib/layouts/linguistics.module:260
+msgid "Discourse Representation Structure|D"
+msgstr "Discourse representation structure|D"
+
+#: lib/layouts/linguistics.module:272 lib/layouts/linguistics.module:419
+msgid "Referents"
+msgstr "Referents"
+
+#: lib/layouts/linguistics.module:273 lib/layouts/linguistics.module:420
+msgid "DRS Referents"
+msgstr "DRS Referents"
+
+#: lib/layouts/linguistics.module:274 lib/layouts/linguistics.module:421
+msgid "Add the DRS referents (universe) here"
+msgstr "Voeg de DRS referents (universum) hier toe"
+
+#: lib/layouts/linguistics.module:281 lib/layouts/linguistics.module:283
+msgid "DRS*"
+msgstr "DRS*"
+
 #: lib/layouts/linguistics.module:284
+msgid "Discourse Representation Structure (unspaced)|u"
+msgstr "Discourse representation structure (zonder spatie)|u"
+
+#: lib/layouts/linguistics.module:289
+msgid "IfThen-DRS"
+msgstr "IfThen-DRS"
+
+#: lib/layouts/linguistics.module:291 lib/layouts/linguistics.module:292
+msgid "If-Then DRS"
+msgstr "If-Then DRS"
+
+#: lib/layouts/linguistics.module:296 lib/layouts/linguistics.module:331
+#: lib/layouts/linguistics.module:375
+msgid "Then-Referents"
+msgstr "Then-Referents"
+
+#: lib/layouts/linguistics.module:297 lib/layouts/linguistics.module:306
+#: lib/layouts/linguistics.module:332 lib/layouts/linguistics.module:341
+#: lib/layouts/linguistics.module:376 lib/layouts/linguistics.module:385
+msgid "DRS Then-Referents"
+msgstr "DRS Then-Referents"
+
+#: lib/layouts/linguistics.module:298 lib/layouts/linguistics.module:333
+#: lib/layouts/linguistics.module:377
+msgid "Add the DRS then-referents (universe) here"
+msgstr "Voeg de DRS then-referents (universum) hier toe"
+
+#: lib/layouts/linguistics.module:305 lib/layouts/linguistics.module:340
+#: lib/layouts/linguistics.module:384
+msgid "Then-Conditions"
+msgstr "Then-Conditions"
+
+#: lib/layouts/linguistics.module:307 lib/layouts/linguistics.module:342
+#: lib/layouts/linguistics.module:386
+msgid "Add the DRS then-conditions here"
+msgstr "Voeg de DRS then-conditions hier toe"
+
+#: lib/layouts/linguistics.module:315
+msgid "Cond-DRS"
+msgstr "Cond-DRS"
+
+#: lib/layouts/linguistics.module:317
+msgid "Cond. DRS"
+msgstr "Cond. DRS"
+
+#: lib/layouts/linguistics.module:318
+msgid "Conditional DRS"
+msgstr "Conditional DRS"
+
+#: lib/layouts/linguistics.module:322
+msgid "Cond."
+msgstr "Cond."
+
+#: lib/layouts/linguistics.module:323
+msgid "DRS Condition"
+msgstr "DRS Condition"
+
+#: lib/layouts/linguistics.module:324
+msgid "Add the DRS condition here"
+msgstr "Voeg de DRS condition hier toe"
+
+#: lib/layouts/linguistics.module:350
+msgid "QDRS"
+msgstr "QDRS"
+
+#: lib/layouts/linguistics.module:352
+msgid "Dupl. Cond. DRS"
+msgstr "Dupl. Cond. DRS"
+
+#: lib/layouts/linguistics.module:353
+msgid "Duplex Condition DRS"
+msgstr "Duplex Condition DRS"
+
+#: lib/layouts/linguistics.module:357
+msgid "Quant."
+msgstr "Quant."
+
+#: lib/layouts/linguistics.module:358
+msgid "DRS Quantifier"
+msgstr "DRS Quantifier"
+
+#: lib/layouts/linguistics.module:359
+msgid "Add the DRS duplex quantifier here"
+msgstr "Voeg de DRS duplex quantifier hier toe"
+
+#: lib/layouts/linguistics.module:366
+msgid "Quant. Var."
+msgstr "Quant. Var."
+
+#: lib/layouts/linguistics.module:367
+msgid "DRS Quantifier Variable"
+msgstr "DRS Quantifier Variable"
+
+#: lib/layouts/linguistics.module:368
+msgid "Add the DRS duplex quantifier variables here"
+msgstr "Voeg de DRS duplex quantifier variables hier toe"
+
+#: lib/layouts/linguistics.module:395
+msgid "NegDRS"
+msgstr "NegDRS"
+
+#: lib/layouts/linguistics.module:397
+msgid "Neg. DRS"
+msgstr "Neg. DRS"
+
+#: lib/layouts/linguistics.module:398
+msgid "Negated DRS"
+msgstr "Negated DRS"
+
+#: lib/layouts/linguistics.module:403
+msgid "SDRS"
+msgstr "SDRS"
+
+#: lib/layouts/linguistics.module:405
+msgid "Sent. DRS"
+msgstr "Sent. DRS"
+
+#: lib/layouts/linguistics.module:406
+msgid "DRS with Sentence above"
+msgstr "DRS with Sentence above"
+
+#: lib/layouts/linguistics.module:410
+msgid "Sentence"
+msgstr "Sentence"
+
+#: lib/layouts/linguistics.module:411
+msgid "DRS Sentence"
+msgstr "DRS Sentence"
+
+#: lib/layouts/linguistics.module:412
+msgid "Add the sentence here"
+msgstr "Voeg de sentence hier toe"
+
+#: lib/layouts/linguistics.module:433
+msgid "Expression"
+msgstr "Expressie"
+
+#: lib/layouts/linguistics.module:435
+msgid "expr."
+msgstr "expr."
+
+#: lib/layouts/linguistics.module:447
+msgid "Concepts"
+msgstr "Concepten"
+
+#: lib/layouts/linguistics.module:449
+msgid "concept"
+msgstr "concept"
+
+#: lib/layouts/linguistics.module:461
+msgid "Meaning"
+msgstr "Betekenis"
+
+#: lib/layouts/linguistics.module:463
+msgid "meaning"
+msgstr "betekenis"
+
+#: lib/layouts/linguistics.module:476
+msgid "Tableaux"
+msgstr "Tableaux"
+
+#: lib/layouts/linguistics.module:480
 msgid "Tableau"
 msgstr "Tableau"
 
-#: lib/layouts/linguistics.module:289
+#: lib/layouts/linguistics.module:485
 msgid "List of Tableaux"
 msgstr "Lijst van Tableaux"
 
@@ -14116,7 +14252,7 @@ msgstr "Affiliatie (inclusief e-mail):"
 
 #: lib/layouts/maa-monthly.layout:128
 msgid "Title of acknowledgment"
-msgstr "Titel van erkenning"
+msgstr "Titel van dankbetuiging"
 
 #: lib/layouts/maa-monthly.layout:159 lib/layouts/theorems-order.inc:70
 #: lib/layouts/theorems-starred.inc:251
@@ -14231,16 +14367,15 @@ msgid "Legend"
 msgstr "Legende"
 
 #: lib/layouts/minimalistic.module:2
-#, fuzzy
 msgid "Minimalistic Insets"
-msgstr "Minimalistisch"
+msgstr "Minimalistische insets"
 
 #: lib/layouts/minimalistic.module:6
 msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
 msgstr ""
 "Maakt een aantal insets (index, vertakking, URL) minimalistisch van opmaak."
 
-#: lib/layouts/moderncv.layout:3 lib/examples/Articles:0
+#: lib/layouts/moderncv.layout:3
 msgid "Modern CV"
 msgstr "Moderne cv"
 
@@ -14593,7 +14728,7 @@ msgstr ""
 "(de bibliografiestijl moet niet apacite zijn -- het kan apacite, apacitex of "
 "elke andere bibliografiestijl zijn die werkt met natbib en apacite.)"
 
-#: lib/layouts/noweb.module:2 lib/examples/Articles:0
+#: lib/layouts/noweb.module:2
 msgid "Noweb"
 msgstr "Noweb"
 
@@ -14653,12 +14788,11 @@ msgstr "Paper (standaardklasse)"
 msgid "SubTitle"
 msgstr "Ondertitel"
 
-#: lib/layouts/paralist.module:2 lib/examples/Articles:0
+#: lib/layouts/paralist.module:2
 msgid "Paragraph Lists (paralist)"
 msgstr "Alinealijst (paralist)"
 
 #: lib/layouts/paralist.module:11
-#, fuzzy
 msgid ""
 "The package paralist provides some new list environments. Itemized and "
 "enumerated lists can be typeset within paragraphs, as paragraphs and in a "
@@ -14671,7 +14805,8 @@ msgstr ""
 "genummerde lijsten kunnen in alinea's, als alinea of in compacte vorm "
 "gebruikt worden. De meeste omgevingen hebben optionele opties om de labels "
 "aan te passen. Bovendien worden de LaTeX-omgevingen itemize en enumerate "
-"uitgebreid met ondersteuning voor een gelijkaardige optionele ondersteuning."
+"uitgebreid met ondersteuning voor een gelijkaardige optionele ondersteuning. "
+"Bekijk Paralist in de Specifieke handleidingen voor details."
 
 #: lib/layouts/paralist.module:32 lib/layouts/paralist.module:39
 #: lib/layouts/paralist.module:54 lib/layouts/paralist.module:63
@@ -14754,7 +14889,7 @@ msgstr "Compacte beschrijving"
 msgid "Compact Description Options"
 msgstr "Opties voor compacte beschrijving"
 
-#: lib/layouts/pdfcomment.module:2 lib/examples/Articles:0
+#: lib/layouts/pdfcomment.module:2
 msgid "PDF Comments"
 msgstr "Pdf-opmerkingen"
 
@@ -14963,7 +15098,7 @@ msgstr "Lijstopties|s"
 msgid "Insert list options here (see pdfcomment manual)"
 msgstr "Voer lijstopties hier in (zie pdfcomment-handleiding)"
 
-#: lib/layouts/pdfform.module:2 lib/examples/Articles:0
+#: lib/layouts/pdfform.module:2
 msgid "PDF Form"
 msgstr "Pdf-formulier"
 
@@ -15121,7 +15256,7 @@ msgstr "Stijl keuzerondje"
 msgid "Default radio box style"
 msgstr "Standaardstijl keuzerondje"
 
-#: lib/layouts/powerdot.layout:3 lib/examples/Articles:0
+#: lib/layouts/powerdot.layout:3
 msgid "Powerdot"
 msgstr "Powerdot"
 
@@ -15132,7 +15267,7 @@ msgstr "Titeldia"
 
 #: lib/layouts/powerdot.layout:127 lib/layouts/powerdot.layout:153
 #: lib/layouts/powerdot.layout:207 lib/layouts/seminar.layout:90
-#: lib/layouts/slides.layout:3 lib/examples/Articles:0
+#: lib/layouts/slides.layout:3
 msgid "Slides"
 msgstr "Dia's"
 
@@ -15241,7 +15376,7 @@ msgstr "Op dia+"
 msgid "Onslide*"
 msgstr "Op dia*"
 
-#: lib/layouts/recipebook.layout:3 lib/examples/Articles:0
+#: lib/layouts/recipebook.layout:3
 msgid "Recipe Book"
 msgstr "Receptenboek"
 
@@ -15281,7 +15416,7 @@ msgstr "Rapport (standaardklasse)"
 msgid "REVTeX (Obsolete Version)"
 msgstr "REVTeX (verouderde versie)"
 
-#: lib/layouts/revtex4-1.layout:3 lib/examples/Articles:0
+#: lib/layouts/revtex4-1.layout:3
 msgid "REVTeX (V. 4.1)"
 msgstr "REVTeX (V. 4.1)"
 
@@ -15339,7 +15474,7 @@ msgstr "Korte titel zoals hij in de lopende koppen verschijnt"
 
 #: lib/layouts/revtex4-1.layout:221
 msgid "acknowledgments"
-msgstr "erkenningen"
+msgstr "dankbetuigingen"
 
 #: lib/layouts/revtex4-1.layout:234
 msgid "Ruled Table"
@@ -15384,11 +15519,11 @@ msgstr "kleine letters"
 
 #: lib/layouts/revtex4-1.layout:320
 msgid "Online cite"
-msgstr "Online citaat"
+msgstr "Online citatie"
 
 #: lib/layouts/revtex4-1.layout:324
 msgid "online cite"
-msgstr "online citaat"
+msgstr "online citatie"
 
 #: lib/layouts/revtex4-1.layout:326
 msgid "Text behind"
@@ -15396,9 +15531,9 @@ msgstr "Tekst erachter"
 
 #: lib/layouts/revtex4-1.layout:327
 msgid "text behind the cite"
-msgstr "tekst achter het citaat"
+msgstr "tekst achter de citatie"
 
-#: lib/layouts/revtex4.layout:3 lib/examples/Articles:0
+#: lib/layouts/revtex4.layout:3
 msgid "REVTeX (V. 4)"
 msgstr "REVTeX (V. 4)"
 
@@ -15411,9 +15546,8 @@ msgid "PACS number:"
 msgstr "PACS-nummer:"
 
 #: lib/layouts/rsphrase.module:2
-#, fuzzy
 msgid "Chemistry: Risk and Safety Statements"
-msgstr "Risico- en veiligheidsaanduidingen"
+msgstr "Chemie: risico- en veiligheidsaanduidingen"
 
 #: lib/layouts/rsphrase.module:8
 msgid ""
@@ -15422,8 +15556,8 @@ msgid ""
 "statements.lyx in LyX's examples folder."
 msgstr ""
 "Geeft twee insets en een omgeving om nummers en zinnen van chemische risico- "
-"en veiligheidsberichten te plaatsen. Zie het bestand R-S-statements.lyx in "
-"de voorbeeldmap van LyX voor een beschrijving."
+"en veiligheidsaanduidingen te plaatsen. Zie het bestand R-S-statements.lyx "
+"in de voorbeeldmap van LyX voor een beschrijving."
 
 #: lib/layouts/rsphrase.module:12 lib/layouts/rsphrase.module:17
 msgid "R-S number"
@@ -15479,7 +15613,7 @@ msgstr "Ruby-tekst|R"
 msgid "Reading aid (ruby, furigana) for Chinese characters."
 msgstr "Leeshulp (ruby, furigana) voor Chinese tekens."
 
-#: lib/layouts/sciposter.layout:3 lib/examples/Articles:0
+#: lib/layouts/sciposter.layout:3
 msgid "SciPoster"
 msgstr "SciPoster"
 
@@ -15686,7 +15820,7 @@ msgstr "Factuur"
 msgid "Invoice no.:"
 msgstr "Factuurnummer:"
 
-#: lib/layouts/scrlttr2.layout:3 lib/examples/Articles:0
+#: lib/layouts/scrlttr2.layout:3
 msgid "KOMA-Script Letter (V. 2)"
 msgstr "KOMA-Script-brief (V. 2)"
 
@@ -15793,7 +15927,7 @@ msgstr "Subsubparagraafkader"
 msgid "Subsubsection Box"
 msgstr "Subsubparagraafkader"
 
-#: lib/layouts/seminar.layout:3 lib/examples/Articles:0
+#: lib/layouts/seminar.layout:3
 msgid "Seminar"
 msgstr "Lezing"
 
@@ -16003,7 +16137,7 @@ msgstr "De titel zoals hij in de lopende hoofding verschijnt"
 msgid "AMS subject classifications:"
 msgstr "AMS subject classifications:"
 
-#: lib/layouts/sigplanconf.layout:3 lib/examples/Articles:0
+#: lib/layouts/sigplanconf.layout:3
 msgid "ACM SIGPLAN (Obsolete)"
 msgstr "ACM SIGPLAN (Verouderd)"
 
@@ -16059,7 +16193,7 @@ msgstr "Affiliatie en/of het adres van de auteur"
 msgid "Terms:"
 msgstr "Termen:"
 
-#: lib/layouts/simplecv.layout:3 lib/examples/Articles:0
+#: lib/layouts/simplecv.layout:3
 msgid "Simple CV"
 msgstr "Simpele cv"
 
@@ -16198,7 +16332,7 @@ msgstr "Auteurinfo:"
 
 #: lib/layouts/spie.layout:96
 msgid "ACKNOWLEDGMENTS"
-msgstr "ERKENNINGEN"
+msgstr "DANKBETUIGINGEN"
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
 msgid "UNDEFINED"
@@ -16273,7 +16407,7 @@ msgstr "Voetnoten"
 msgid "Notes"
 msgstr "Aantekeningen"
 
-#: lib/layouts/stdinsets.inc:14 src/frontends/qt4/GuiDocument.cpp:1738
+#: lib/layouts/stdinsets.inc:14 src/frontends/qt4/GuiDocument.cpp:1750
 msgid "Branches"
 msgstr "Vertakkingen"
 
@@ -16311,7 +16445,7 @@ msgstr "Codefragmenten"
 msgid "List of Listings"
 msgstr "Lijst van codefragmenten"
 
-#: lib/layouts/stdinsets.inc:347 src/frontends/qt4/GuiDocument.cpp:1736
+#: lib/layouts/stdinsets.inc:347 src/frontends/qt4/GuiDocument.cpp:1748
 msgid "Listings[[inset]]"
 msgstr "Codefragmenten"
 
@@ -16343,7 +16477,7 @@ msgstr "pagina"
 msgid "Nomenclature[[output]]"
 msgstr "Begrippenlijst"
 
-#: lib/layouts/stdlayouts.inc:100
+#: lib/layouts/stdlayouts.inc:100 src/insets/InsetInclude.cpp:416
 msgid "Verbatim*"
 msgstr "Verbatim*"
 
@@ -16582,11 +16716,11 @@ msgstr "Oplossing \\thesolution"
 msgid "Journal of Geodesy (Springer)"
 msgstr "Journal of Geodesy (Springer)"
 
-#: lib/layouts/svmono.layout:3 lib/examples/Articles:0
+#: lib/layouts/svmono.layout:3
 msgid "Springer Monographs (svmono)"
 msgstr "Springer Monographs (svmono)"
 
-#: lib/layouts/svmult.layout:3 lib/examples/Articles:0
+#: lib/layouts/svmult.layout:3
 msgid "Springer Contributed Books (svmult)"
 msgstr "Springer Contributed Books (svmult)"
 
@@ -16624,7 +16758,7 @@ msgstr "Voor redacteurs"
 msgid "Probability Theory and Related Fields (Springer svprobth)"
 msgstr "Probability Theory and Related Fields (Springer svprobth)"
 
-#: lib/layouts/sweave.module:2 lib/configure.py:663 lib/examples/Articles:0
+#: lib/layouts/sweave.module:2 lib/configure.py:663
 msgid "Sweave"
 msgstr "Sweave"
 
@@ -16661,7 +16795,7 @@ msgstr "Japans artikel (standaardklasse: verticaal schrift)"
 msgid "Japanese Book (Standard Class: Vertical Writing)"
 msgstr "Japans boek (standaardklasse: verticaal schrift)"
 
-#: lib/layouts/tcolorbox.module:2 lib/examples/Articles:0
+#: lib/layouts/tcolorbox.module:2
 msgid "Fancy Colored Boxes"
 msgstr "Luxueuze gekleurde kaders"
 
@@ -16821,9 +16955,8 @@ msgid "Exercise \\theexercise."
 msgstr "Oefening \\theexercise."
 
 #: lib/layouts/theorems-ams-bytype.module:2
-#, fuzzy
 msgid "AMS Theorems (Numbered by Type)"
-msgstr "Stellingen (genummerd naar soort)"
+msgstr "AMS-stellingen (genummerd per soort)"
 
 #: lib/layouts/theorems-ams-bytype.module:12
 msgid ""
@@ -16898,9 +17031,8 @@ msgid "Claim \\thechapter.\\theclaim."
 msgstr "Bewering \\thechapter.\\theclaim."
 
 #: lib/layouts/theorems-ams-chap-bytype.module:2
-#, fuzzy
 msgid "AMS Theorems (Numbered by Type within Chapters)"
-msgstr "Stellingen (genummerd naar soort binnen hoofdstuk)"
+msgstr "AMS-stellingen (genummerd naar per binnen hoofdstuk)"
 
 #: lib/layouts/theorems-ams-chap-bytype.module:12
 msgid ""
@@ -16922,9 +17054,8 @@ msgstr ""
 "de modules 'binnen paragraaf'/'binnen hoofdstuk' gebruiken."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
-#, fuzzy
 msgid "AMS Theorems (Extended, Numbered by Type)"
-msgstr "Stellingen (AMS-uitgebreid, genummerd naar soort)"
+msgstr "AMS-stellingen (uitgebreid, genummerd per soort)"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:13
 msgid ""
@@ -16938,11 +17069,12 @@ msgid ""
 msgstr ""
 "Enkele extra stelling-omgevingen om samen met AMS-stellingen te gebruiken. "
 "Omvat Criterium, Algoritme, Axioma, Voorwaarde, Aantekening, Notatie, "
-"Samenvatting, Dankwoord, Conclusie, Feit, Aanname en Geval, zowel genummerd "
-"als ongenummerd. In tegenstelling tot de normale module voor AMS-stellingen, "
-"hebben deze verschillende stelling-omgevingen elk een eigen telling (bijv. "
-"stelling 1, stelling 2, lemma 1, propositie 1, stelling 3, lemma 2, ..., in "
-"plaats van stelling 1, stelling 2, lemma 3, propositie 3, ...)."
+"Samenvatting, Dankbetuiging, Conclusie, Feit, Aanname en Geval, zowel "
+"genummerd als ongenummerd. In tegenstelling tot de normale module voor AMS-"
+"stellingen, hebben deze verschillende stelling-omgevingen elk een eigen "
+"telling (bijv. stelling 1, stelling 2, lemma 1, propositie 1, stelling 3, "
+"lemma 2, ..., in plaats van stelling 1, stelling 2, lemma 3, propositie "
+"3, ...)."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:67
 msgid "Criterion \\thecriterion."
@@ -17053,13 +17185,13 @@ msgstr "Samenvatting."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:311
 msgid "Acknowledgement \\theacknowledgement."
-msgstr "Erkenning \\theacknowledgement."
+msgstr "Dankbetuiging \\theacknowledgement."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:326
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:363
 #: lib/layouts/theorems-ams-extended.module:293
 msgid "Acknowledgement*"
-msgstr "Erkenning*"
+msgstr "Dankbetuiging*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:346
 msgid "Conclusion \\theconclusion."
@@ -17124,9 +17256,8 @@ msgid "Question."
 msgstr "Vraag."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:2
-#, fuzzy
 msgid "AMS Theorems (Extended, Numbered by Type within Chapters)"
-msgstr "Stellingen (AMS-uitgebreid, genummerd naar soort binnen hoofdstuk)"
+msgstr "AMS-stellingen (uitgebreid, genummerd per soort binnen hoofdstuk)"
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:13
 msgid ""
@@ -17141,11 +17272,12 @@ msgid ""
 msgstr ""
 "Enkele extra stelling-omgevingen om samen met AMS-stellingen te gebruiken. "
 "Omvat Criterium, Algoritme, Axioma, Voorwaarde, Aantekening, Notatie, "
-"Samenvatting, Dankwoord, Conclusie, Feit, Aanname en Geval, zowel genummerd "
-"als ongenummerd. In tegenstelling tot de normale module voor AMS-stellingen, "
-"hebben deze verschillende stelling-omgevingen elk een eigen telling (bijv. "
-"stelling 1, stelling 2, lemma 1, propositie 1, stelling 3, lemma 2, ..., in "
-"plaats van stelling 1, stelling 2, lemma 3, propositie 3, ...)."
+"Samenvatting, Dankbetuiging, Conclusie, Feit, Aanname en Geval, zowel "
+"genummerd als ongenummerd. In tegenstelling tot de normale module voor AMS-"
+"stellingen, hebben deze verschillende stelling-omgevingen elk een eigen "
+"telling (bijv. stelling 1, stelling 2, lemma 1, propositie 1, stelling 3, "
+"lemma 2, ..., in plaats van stelling 1, stelling 2, lemma 3, propositie "
+"3, ...)."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:70
 msgid "Criterion \\thechapter.\\thecriterion."
@@ -17177,7 +17309,7 @@ msgstr "Samenvatting \\thechapter.\\thesummary."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:344
 msgid "Acknowledgement \\thechapter.\\theacknowledgement."
-msgstr "Erkenning \\thechapter.\\theacknowledgement."
+msgstr "Dankbetuiging \\thechapter.\\theacknowledgement."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:383
 msgid "Conclusion \\thechapter.\\theconclusion."
@@ -17192,9 +17324,8 @@ msgid "Question \\thechapter.\\thequestion."
 msgstr "Vraag \\thechapter.\\thequestion."
 
 #: lib/layouts/theorems-ams-extended.module:2
-#, fuzzy
 msgid "AMS Theorems (Extended)"
-msgstr "Stellingen (AMS-uitgebreid)"
+msgstr "AMS-stellingen (uitgebreid)"
 
 #: lib/layouts/theorems-ams-extended.module:10
 msgid ""
@@ -17205,7 +17336,7 @@ msgid ""
 msgstr ""
 "Definieert enkele extra omgevingen voor stellingen, voor gebruikt met de AMS-"
 "pakketten theorems. Bevat Criterium, Algoritme, Axioma, Voorwaarde, "
-"Aantekening, Notatie, Samenvatting, Erkenning, Conclusie, Feit, Aanname, "
+"Aantekening, Notatie, Samenvatting, Dankbetuiging, Conclusie, Feit, Aanname, "
 "Geval en Vraag. Het bevat zowel genummerde als ongenummerde varianten."
 
 #: lib/layouts/theorems-ams-extended.module:40
@@ -17238,7 +17369,7 @@ msgstr "Samenvatting \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:279
 msgid "Acknowledgement \\thetheorem."
-msgstr "Erkenning \\thetheorem."
+msgstr "Dankbetuiging \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:313
 msgid "Conclusion \\thetheorem."
@@ -17351,9 +17482,8 @@ msgstr ""
 "bij aanvang van een nieuw hoofdstuk."
 
 #: lib/layouts/theorems-chap.module:2
-#, fuzzy
 msgid "Standard Theorems (Numbered by Chapter)"
-msgstr "Standaardstellingen (genummerd per type)"
+msgstr "Standaardstellingen (genummerd per hoofdstuk)"
 
 #: lib/layouts/theorems-chap.module:8
 msgid ""
@@ -17410,9 +17540,8 @@ msgid "Alternative proof string"
 msgstr "Tekst alternatief bewijs"
 
 #: lib/layouts/theorems-sec-bytype.module:2
-#, fuzzy
 msgid "Standard Theorems (Numbered by Type within Sections)"
-msgstr "Stellingen (genummerd naar soort binnen paragraaf)"
+msgstr "Standaardstellingen (genummerd per soort binnen paragraaf)"
 
 #: lib/layouts/theorems-sec-bytype.module:10
 msgid ""
@@ -17430,9 +17559,8 @@ msgstr ""
 "bij aanvang van een nieuwe paragraaf."
 
 #: lib/layouts/theorems-sec.module:2
-#, fuzzy
 msgid "Standard Theorems (Numbered by Section)"
-msgstr "Standaardstellingen (genummerd per type)"
+msgstr "Standaardstellingen (genummerd per paragraaf)"
 
 #: lib/layouts/theorems-sec.module:7
 msgid ""
@@ -17467,9 +17595,8 @@ msgid "Remark."
 msgstr "Opmerking."
 
 #: lib/layouts/theorems-starred.module:2
-#, fuzzy
 msgid "Standard Theorems (Unnumbered)"
-msgstr "Stellingen (ongenummerd)"
+msgstr "Standaardstellingen (ongenummerd)"
 
 #: lib/layouts/theorems-starred.module:7
 msgid ""
@@ -17619,7 +17746,7 @@ msgstr "OntbrekendeFiguur"
 msgid "Japanese Report (Vertical Writing)"
 msgstr "Japans rapport (verticaal schrift)"
 
-#: lib/layouts/tufte-book.layout:3 lib/examples/Articles:0
+#: lib/layouts/tufte-book.layout:3
 msgid "Tufte Book"
 msgstr "Tufte-boek"
 
@@ -17679,20 +17806,19 @@ msgstr "Kantlijntabel"
 msgid "MarginFigure"
 msgstr "Kantlijnfiguur"
 
-#: lib/layouts/tufte-handout.layout:3 lib/examples/Articles:0
+#: lib/layouts/tufte-handout.layout:3
 msgid "Tufte Handout"
 msgstr "Tufte-hand-out"
 
-#: lib/layouts/tufte-handout.layout:4 lib/examples/Articles:0
+#: lib/layouts/tufte-handout.layout:4
 msgid "Handouts"
 msgstr "Hand-outs"
 
-#: lib/layouts/varwidth.module:2 lib/examples/Articles:0
+#: lib/layouts/varwidth.module:2
 msgid "Variable-width Minipages"
 msgstr "Minipagina's met variabele breedte"
 
 #: lib/layouts/varwidth.module:14
-#, fuzzy
 msgid ""
 "Adds a 'Minipage (Var. Width)' inset using the varwidth LaTeX package. The "
 "varwidth package provides a variable-width minipage, whose resulting width "
@@ -17706,7 +17832,7 @@ msgstr ""
 "breedte, wier resulterende breedte de breedte van haar inhoud is (als het "
 "niet meer is dan de maximale breedte).  De inset heeft twee optionele "
 "argumenten: verticale aanpassingen (c|t|b) en maximale breedte (standaard "
-"\\linewidth)."
+"\\linewidth).  Zie het voorbeeld in varwidth-floats-side-by-side.lyx."
 
 #: lib/layouts/varwidth.module:20
 msgid "Minipage (Var. Width)"
@@ -17873,8 +17999,7 @@ msgstr "Dhivehi (Maldivisch)"
 msgid "Dutch"
 msgstr "Nederlands"
 
-#: lib/languages:605 lib/examples/Articles:0
-#: src/frontends/qt4/GuiLyXFiles.cpp:70
+#: lib/languages:605 src/frontends/qt4/GuiLyXFiles.cpp:70
 msgid "English"
 msgstr "Engels"
 
@@ -17914,7 +18039,7 @@ msgstr "Georgisch"
 msgid "German (old spelling)"
 msgstr "Duits (oude spelling)"
 
-#: lib/languages:738 lib/examples/Articles:0
+#: lib/languages:738
 msgid "German"
 msgstr "Duits"
 
@@ -18155,420 +18280,423 @@ msgstr "Vietnamees"
 msgid "Welsh"
 msgstr "Wels"
 
-#: lib/latexfonts:84
+#: lib/latexfonts:87
 msgid "AE (Almost European)"
 msgstr "AE (Almost European)"
 
-#: lib/latexfonts:92 lib/latexfonts:100
+#: lib/latexfonts:95 lib/latexfonts:103
 msgid "Bera Serif"
 msgstr "Bera Serif"
 
-#: lib/latexfonts:106
+#: lib/latexfonts:109
 msgid "Bookman"
 msgstr "Bookman"
 
-#: lib/latexfonts:112
+#: lib/latexfonts:115
 msgid "Concrete Roman"
 msgstr "Concrete Roman"
 
-#: lib/latexfonts:118
+#: lib/latexfonts:121
 msgid "Zapf Chancery"
 msgstr "Zapf Chancery"
 
-#: lib/latexfonts:124
+#: lib/latexfonts:127
 msgid "Bitstream Charter (PSNFSS)"
 msgstr "Bitstream Charter (PSNFSS)"
 
-#: lib/latexfonts:130
+#: lib/latexfonts:133
 msgid "Crimson (Cochineal)"
 msgstr "Crimson (Cochineal)"
 
-#: lib/latexfonts:138
+#: lib/latexfonts:141
 msgid "Crimson"
 msgstr "Crimson"
 
-#: lib/latexfonts:144
+#: lib/latexfonts:147
 msgid "Computer Modern Roman"
 msgstr "Computer Modern Roman"
 
-#: lib/latexfonts:152
+#: lib/latexfonts:155
 msgid "DejaVu Serif"
 msgstr "DejaVu Serif"
 
-#: lib/latexfonts:158
+#: lib/latexfonts:161
 msgid "DejaVu Serif Condensed"
 msgstr "DejaVu Serif Condensed"
 
-#: lib/latexfonts:169
+#: lib/latexfonts:172
 msgid "IBM Plex Serif"
 msgstr "IBM Plex Serif"
 
-#: lib/latexfonts:175
+#: lib/latexfonts:178
 msgid "IBM Plex Serif Thin"
 msgstr "IBM Plex Serif Thin"
 
-#: lib/latexfonts:182
+#: lib/latexfonts:185
 msgid "IBM Plex Serif Extra Light"
 msgstr "IBM Plex Serif Extra Light"
 
-#: lib/latexfonts:189
+#: lib/latexfonts:192
 msgid "IBM Plex Serif Light"
 msgstr "IBM Plex Serif Light"
 
-#: lib/latexfonts:196
+#: lib/latexfonts:199
 msgid "IBM Plex Serif Semibold"
 msgstr "IBM Plex Serif Semibold"
 
-#: lib/latexfonts:203
+#: lib/latexfonts:206
 msgid "Adobe Source Serif Pro"
 msgstr "Adobe Source Serif Pro"
 
-#: lib/latexfonts:209 lib/latexfonts:218
+#: lib/latexfonts:212 lib/latexfonts:221
 msgid "URW Garamond"
 msgstr "URW Garamond"
 
-#: lib/latexfonts:225 lib/latexfonts:234 lib/latexfonts:241 lib/latexfonts:249
-#: lib/latexfonts:257
+#: lib/latexfonts:228 lib/latexfonts:237 lib/latexfonts:244 lib/latexfonts:252
+#: lib/latexfonts:260
 msgid "Libertine"
 msgstr "Libertine"
 
-#: lib/latexfonts:264 lib/latexfonts:271
+#: lib/latexfonts:267 lib/latexfonts:274
 msgid "Latin Modern Roman"
 msgstr "Latin Modern Roman"
 
-#: lib/latexfonts:278 lib/latexfonts:291
+#: lib/latexfonts:281 lib/latexfonts:294
 msgid "Bitstream Charter (Mathdesign)"
 msgstr "Bitstream Charter (Mathdesign)"
 
-#: lib/latexfonts:298 lib/latexfonts:311
+#: lib/latexfonts:301 lib/latexfonts:314
 msgid "Utopia (Mathdesign)"
 msgstr "Utopia (Mathdesign)"
 
-#: lib/latexfonts:318 lib/latexfonts:331
+#: lib/latexfonts:321 lib/latexfonts:334
 msgid "URW Garamond (Mathdesign)"
 msgstr "URW Garamond (Mathdesign)"
 
-#: lib/latexfonts:338 lib/latexfonts:348
+#: lib/latexfonts:341 lib/latexfonts:352
 msgid "Minion Pro"
 msgstr "Minion Pro"
 
-#: lib/latexfonts:357
+#: lib/latexfonts:361
 msgid "New Century Schoolbook"
 msgstr "New Century Schoolbook"
 
-#: lib/latexfonts:363
+#: lib/latexfonts:367 lib/latexfonts:377
 msgid "Noto Serif Regular"
 msgstr "Noto Serif Regular"
 
-#: lib/latexfonts:372
+#: lib/latexfonts:386
 msgid "Noto Serif Medium"
 msgstr "Noto Serif Medium"
 
-#: lib/latexfonts:381
+#: lib/latexfonts:395
 msgid "Noto Serif Thin"
 msgstr "Noto Serif Thin"
 
-#: lib/latexfonts:390
+#: lib/latexfonts:404
 msgid "Noto Serif Light"
 msgstr "Noto Serif Light"
 
-#: lib/latexfonts:399
+#: lib/latexfonts:413
 msgid "Noto Serif Extralight"
 msgstr "Noto Serif Extralight"
 
-#: lib/latexfonts:408 lib/latexfonts:416
+#: lib/latexfonts:422 lib/latexfonts:430
 msgid "Noto Serif"
 msgstr "Noto Serif"
 
-#: lib/latexfonts:422 lib/latexfonts:434 lib/latexfonts:441 lib/latexfonts:447
-#: lib/latexfonts:454
+#: lib/latexfonts:436 lib/latexfonts:448 lib/latexfonts:455 lib/latexfonts:461
+#: lib/latexfonts:468
 msgid "Palatino"
 msgstr "Palatino"
 
-#: lib/latexfonts:460 lib/latexfonts:468
+#: lib/latexfonts:474 lib/latexfonts:482
 msgid "ParaType Serif"
 msgstr "ParaType Serif"
 
-#: lib/latexfonts:474 lib/latexfonts:483 lib/latexfonts:490 lib/latexfonts:496
+#: lib/latexfonts:488 lib/latexfonts:497 lib/latexfonts:504 lib/latexfonts:510
 msgid "Times Roman"
 msgstr "Times Roman"
 
-#: lib/latexfonts:502
+#: lib/latexfonts:516
 msgid "TeX Gyre Bonum"
 msgstr "TeX Gyre Bonum"
 
-#: lib/latexfonts:508
+#: lib/latexfonts:522
 msgid "TeX Gyre Chorus"
 msgstr "TeX Gyre Chorus"
 
-#: lib/latexfonts:514
+#: lib/latexfonts:528
 msgid "TeX Gyre Pagella"
 msgstr "TeX Gyre Pagella"
 
-#: lib/latexfonts:520
+#: lib/latexfonts:534
 msgid "TeX Gyre Schola"
 msgstr "TeX Gyre Schola"
 
-#: lib/latexfonts:526
+#: lib/latexfonts:540
 msgid "TeX Gyre Termes"
 msgstr "TeX Gyre Termes"
 
-#: lib/latexfonts:534 lib/latexfonts:545 lib/latexfonts:551 lib/latexfonts:558
+#: lib/latexfonts:548 lib/latexfonts:559 lib/latexfonts:565 lib/latexfonts:572
 msgid "Utopia (Fourier)"
 msgstr "Utopia (Fourier)"
 
-#: lib/latexfonts:564
+#: lib/latexfonts:578
 msgid "Bitstream Charter (XCharter)"
 msgstr "Bitstream Charter (XCharter)"
 
-#: lib/latexfonts:575
+#: lib/latexfonts:589
 msgid "Avant Garde"
 msgstr "Avant Garde"
 
-#: lib/latexfonts:581
+#: lib/latexfonts:595
 msgid "Bera Sans"
 msgstr "Bera Sans"
 
-#: lib/latexfonts:589 lib/latexfonts:598 lib/latexfonts:607
+#: lib/latexfonts:603 lib/latexfonts:612 lib/latexfonts:621
 msgid "Biolinum"
 msgstr "Biolinum"
 
-#: lib/latexfonts:615
+#: lib/latexfonts:629
 msgid "CM Bright"
 msgstr "CM Bright"
 
-#: lib/latexfonts:622
+#: lib/latexfonts:636
 msgid "Computer Modern Sans"
 msgstr "Computer Modern Sans"
 
-#: lib/latexfonts:629
+#: lib/latexfonts:643
 msgid "DejaVu Sans"
 msgstr "DejaVu Sans"
 
-#: lib/latexfonts:636
+#: lib/latexfonts:650
 msgid "DejaVu Sans Condensed"
 msgstr "DejaVu Sans Condensed"
 
-#: lib/latexfonts:643
+#: lib/latexfonts:657
 msgid "IBM Plex Sans"
 msgstr "IBM Plex Sans"
 
-#: lib/latexfonts:650
+#: lib/latexfonts:664
 msgid "IBM Plex Sans Condensed"
 msgstr "IBM Plex Sans Condensed"
 
-#: lib/latexfonts:658
+#: lib/latexfonts:672
 msgid "IBM Plex Sans Thin"
 msgstr "IBM Plex Sans Thin"
 
-#: lib/latexfonts:666
+#: lib/latexfonts:680
 msgid "IBM Plex Sans Extra Light"
 msgstr "IBM Plex Sans Extra Light"
 
-#: lib/latexfonts:674
+#: lib/latexfonts:688
 msgid "IBM Plex Sans Light"
 msgstr "IBM Plex Sans Light"
 
-#: lib/latexfonts:682
+#: lib/latexfonts:696
 msgid "IBM Plex Sans Semibold"
 msgstr "IBM Plex Sans Semibold"
 
-#: lib/latexfonts:690
+#: lib/latexfonts:704
 msgid "Adobe Source Sans Pro"
 msgstr "Adobe Source Sans Pro"
 
-#: lib/latexfonts:698
+#: lib/latexfonts:712
 msgid "Helvetica"
 msgstr "Helvetica"
 
-#: lib/latexfonts:706
+#: lib/latexfonts:720
 msgid "Iwona"
 msgstr "Iwona"
 
-#: lib/latexfonts:713
+#: lib/latexfonts:727
 msgid "Iwona (Light)"
 msgstr "Iwona (Light)"
 
-#: lib/latexfonts:720
+#: lib/latexfonts:734
 msgid "Iwona (Condensed)"
 msgstr "Iwona (Condensed)"
 
-#: lib/latexfonts:727
+#: lib/latexfonts:741
 msgid "Iwona (Light Condensed)"
 msgstr "Iwona (Light Condensed)"
 
-#: lib/latexfonts:734
+#: lib/latexfonts:748
 msgid "Kurier"
 msgstr "Kurier"
 
-#: lib/latexfonts:741
+#: lib/latexfonts:755
 msgid "Kurier (Light)"
 msgstr "Kurier (Light)"
 
-#: lib/latexfonts:748
+#: lib/latexfonts:762
 msgid "Kurier (Condensed)"
 msgstr "Kurier (Condensed)"
 
-#: lib/latexfonts:755
+#: lib/latexfonts:769
 msgid "Kurier (Light Condensed)"
 msgstr "Kurier (Light Condensed)"
 
-#: lib/latexfonts:762
+#: lib/latexfonts:776
 msgid "Latin Modern Sans"
 msgstr "Latin Modern Sans"
 
-#: lib/latexfonts:769
+#: lib/latexfonts:783
 msgid "Noto Sans Regular"
 msgstr "Noto Sans Regular"
 
-#: lib/latexfonts:779
+#: lib/latexfonts:793
 msgid "Noto Sans Medium"
 msgstr "Noto Sans Medium"
 
-#: lib/latexfonts:789
+#: lib/latexfonts:803
 msgid "Noto Sans Thin"
 msgstr "Noto Sans Thin"
 
-#: lib/latexfonts:799
+#: lib/latexfonts:813
 msgid "Noto Sans Light"
 msgstr "Noto Sans Light"
 
-#: lib/latexfonts:809
+#: lib/latexfonts:823
 msgid "Noto Sans Extralight"
 msgstr "Noto Sans Extralight"
 
-#: lib/latexfonts:819
+#: lib/latexfonts:833
 msgid "Noto Sans"
 msgstr "Noto Sans"
 
-#: lib/latexfonts:826
+#: lib/latexfonts:840
 msgid "ParaType Sans"
 msgstr "ParaType Sans"
 
-#: lib/latexfonts:834
+#: lib/latexfonts:848
 msgid "TeX Gyre Adventor"
 msgstr "TeX Gyre Adventor"
 
-#: lib/latexfonts:840
+#: lib/latexfonts:854
 msgid "TeX Gyre Heros"
 msgstr "TeX Gyre Heros"
 
-#: lib/latexfonts:846
+#: lib/latexfonts:860
 msgid "URW Classico (Optima)"
 msgstr "URW Classico (Optima)"
 
-#: lib/latexfonts:857
+#: lib/latexfonts:871
 msgid "Bera Mono"
 msgstr "Bera Mono"
 
-#: lib/latexfonts:865
+#: lib/latexfonts:879
+msgid "Cantarell Monospace"
+msgstr "Cantarell Monospace"
+
+#: lib/latexfonts:890
 msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
-#: lib/latexfonts:872
+#: lib/latexfonts:897
 msgid "Computer Modern Typewriter"
 msgstr "Computer Modern Typewriter"
 
-#: lib/latexfonts:879
+#: lib/latexfonts:904
 msgid "Courier"
 msgstr "Courier"
 
-#: lib/latexfonts:886
+#: lib/latexfonts:911
 msgid "DejaVu Sans Mono"
 msgstr "DejaVu Sans Mono"
 
-#: lib/latexfonts:893
+#: lib/latexfonts:918
 msgid "IBM Plex Mono"
 msgstr "IBM Plex Mono"
 
-#: lib/latexfonts:900
+#: lib/latexfonts:925
 msgid "IBM Plex Mono Thin"
 msgstr "IBM Plex Mono Thin"
 
-#: lib/latexfonts:908
+#: lib/latexfonts:933
 msgid "IBM Plex Mono Extra Light"
 msgstr "IBM Plex Mono Extra Light"
 
-#: lib/latexfonts:916
+#: lib/latexfonts:941
 msgid "IBM Plex Mono Light"
 msgstr "IBM Plex Mono Light"
 
-#: lib/latexfonts:924
+#: lib/latexfonts:949
 msgid "IBM Plex Mono Semibold"
 msgstr "IBM Plex Mono Semibold"
 
-#: lib/latexfonts:932
+#: lib/latexfonts:957
 msgid "Adobe Source Code Pro"
 msgstr "Adobe Source Code Pro"
 
-#: lib/latexfonts:939 lib/latexfonts:947
+#: lib/latexfonts:964 lib/latexfonts:972
 msgid "Libertine Mono"
 msgstr "Libertine Mono"
 
-#: lib/latexfonts:954
+#: lib/latexfonts:979
 msgid "Latin Modern Typewriter"
 msgstr "Latin Modern Typewriter"
 
-#: lib/latexfonts:961
+#: lib/latexfonts:986
 msgid "LuxiMono"
 msgstr "LuxiMono"
 
-#: lib/latexfonts:968
+#: lib/latexfonts:993
 msgid "Noto Mono Regular"
 msgstr "Noto Mono Regular"
 
-#: lib/latexfonts:976
+#: lib/latexfonts:1002
 msgid "Noto Mono"
 msgstr "Noto Mono"
 
-#: lib/latexfonts:983
+#: lib/latexfonts:1009
 msgid "ParaType Mono"
 msgstr "ParaType Mono"
 
-#: lib/latexfonts:991
+#: lib/latexfonts:1017
 msgid "TeX Gyre Cursor"
 msgstr "TeX Gyre Cursor"
 
-#: lib/latexfonts:997
+#: lib/latexfonts:1023
 msgid "TX Typewriter"
 msgstr "TX Typewriter"
 
-#: lib/latexfonts:1009
+#: lib/latexfonts:1035
 msgid "Crimson (New TX)"
 msgstr "Crimson (New TX)"
 
-#: lib/latexfonts:1017
+#: lib/latexfonts:1043
 msgid "Euler VM"
 msgstr "Euler VM"
 
-#: lib/latexfonts:1023
+#: lib/latexfonts:1049
 msgid "URW Garamond (New TX)"
 msgstr "URW Garamond (New TX)"
 
-#: lib/latexfonts:1031
+#: lib/latexfonts:1057
 msgid "Iwona (Math)"
 msgstr "Iwona (Math)"
 
-#: lib/latexfonts:1044
+#: lib/latexfonts:1070
 msgid "Kurier (Math)"
 msgstr "Kurier (Math)"
 
-#: lib/latexfonts:1057
+#: lib/latexfonts:1083
 msgid "Libertine (New TX)"
 msgstr "Libertine (New TX)"
 
-#: lib/latexfonts:1065
+#: lib/latexfonts:1091
 msgid "Minion Pro (New TX)"
 msgstr "Minion Pro (New TX)"
 
-#: lib/latexfonts:1074
+#: lib/latexfonts:1100
 msgid "Times Roman (New TX)"
 msgstr "Times Roman (New TX)"
 
 #: lib/encodings:55
-#, fuzzy
 msgid "Extended [ucs] (utf8x)"
-msgstr "utf8 (uitgebreid) [ucs] (utf8x)"
+msgstr "Uitgebreid [ucs] (utf8x)"
 
 #: lib/encodings:59
 msgid "Armenian (ArmSCII8)"
@@ -18727,9 +18855,8 @@ msgid "Korean (EUC-KR)"
 msgstr "Koreaans (EUC-KR)"
 
 #: lib/encodings:215
-#, fuzzy
 msgid "Extended [CJK] (Chinese/Japanese/Korean)"
-msgstr "utf8 [CJK] (Chinees/Japans/Koreaans)"
+msgstr "Uitgebreid [CJK] (Chinees/Japans/Koreaans)"
 
 #: lib/encodings:219
 msgid "Chinese (traditional) (EUC-TW)"
@@ -18752,14 +18879,12 @@ msgid "Japanese (pLaTeX) (SJIS)"
 msgstr "Japans (pLaTeX) (SJIS)"
 
 #: lib/encodings:236
-#, fuzzy
 msgid "Extended [pLaTeX] (Japanese)"
-msgstr "utf8 [pLaTeX] (Japans)"
+msgstr "Uitgebreid [pLaTeX] (Japans)"
 
 #: lib/encodings:242
-#, fuzzy
-msgid "Pass-Through"
-msgstr "utf8 (doorgeven)"
+msgid "Direct"
+msgstr "Direct"
 
 #: lib/encodings:246
 msgid "ASCII"
@@ -18851,7 +18976,7 @@ msgstr "Label voor vergelijking|L"
 
 #: lib/ui/stdcontext.inc:59
 msgid "Copy as Reference|R"
-msgstr "Kopiëren als referentie|R"
+msgstr "Kopiëren als verwijzing|r"
 
 #: lib/ui/stdcontext.inc:61 lib/ui/stdmenus.inc:253
 msgid "Split Cell|C"
@@ -18923,11 +19048,11 @@ msgstr "Naar label gaan|g"
 
 #: lib/ui/stdcontext.inc:92
 msgid "<Reference>|R"
-msgstr "<Referentie>|R"
+msgstr "<Verwijzing>|R"
 
 #: lib/ui/stdcontext.inc:93
 msgid "(<Reference>)|e"
-msgstr "(<Referentie>)|e"
+msgstr "(<Verwijzing>)|e"
 
 #: lib/ui/stdcontext.inc:94
 msgid "<Page>|P"
@@ -18939,15 +19064,15 @@ msgstr "Op pagina <pagina>|O"
 
 #: lib/ui/stdcontext.inc:96
 msgid "<Reference> on Page <Page>|f"
-msgstr "<Referentie> op pagina <Pagina>|f"
+msgstr "<Verwijzing> op pagina <Pagina>|f"
 
 #: lib/ui/stdcontext.inc:97
 msgid "Formatted Reference|t"
-msgstr "Opgemaakte referentie|t"
+msgstr "Opgemaakte verwijzing|t"
 
 #: lib/ui/stdcontext.inc:98
 msgid "Textual Reference|x"
-msgstr "Tekstreferentie|k"
+msgstr "Tekstuele verwijzing|k"
 
 #: lib/ui/stdcontext.inc:99
 msgid "Label Only|L"
@@ -18983,7 +19108,7 @@ msgstr "Teruggaan|G"
 
 #: lib/ui/stdcontext.inc:115 lib/ui/stdcontext.inc:512
 msgid "Copy as Reference|C"
-msgstr "Kopiëren als referentie|C"
+msgstr "Kopiëren als verwijzing|K"
 
 #: lib/ui/stdcontext.inc:137
 msgid "Edit Database(s) Externally...|x"
@@ -19247,9 +19372,8 @@ msgid "Edit Externally..."
 msgstr "Extern bewerken..."
 
 #: lib/ui/stdcontext.inc:342
-#, fuzzy
 msgid "End Editing Externally..."
-msgstr "Extern bewerken beëindigen...|e"
+msgstr "Extern bewerken beëindigen..."
 
 #: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:108 lib/ui/stdtoolbars.inc:80
 #: src/Text3.cpp:1532 src/mathed/InsetMathNest.cpp:561
@@ -19269,7 +19393,7 @@ msgstr "Plakken"
 
 #: lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:111
 msgid "Paste Recent|e"
-msgstr "Recente plakopdracht|e"
+msgstr "Recente plakopdracht|c"
 
 #: lib/ui/stdcontext.inc:349
 msgid "Jump Back to Saved Bookmark|B"
@@ -19293,11 +19417,11 @@ msgstr "Paragraaf promoveren|r"
 
 #: lib/ui/stdcontext.inc:358
 msgid "Demote Section|m"
-msgstr "Paragraaf degraderen|m"
+msgstr "Paragraaf degraderen|d"
 
 #: lib/ui/stdcontext.inc:359
 msgid "Move Section Down|D"
-msgstr "Paragraaf omlaag verplaatsen|a"
+msgstr "Paragraaf omlaag verplaatsen|f"
 
 #: lib/ui/stdcontext.inc:360 lib/ui/stdcontext.inc:648
 msgid "Move Section Up|U"
@@ -19542,7 +19666,7 @@ msgstr "Onbekende vertakking toevoegen|w"
 
 #: lib/ui/stdcontext.inc:513
 msgid "Insert Reference at Cursor Position|I"
-msgstr "Referentie toevoegen bij aanwijzer|I"
+msgstr "Verwijzing toevoegen bij aanwijzer|I"
 
 #: lib/ui/stdcontext.inc:607
 msgid "All Indexes|A"
@@ -19837,16 +19961,14 @@ msgid "Branch Settings...|B"
 msgstr "Vertakkingsinstellingen...|B"
 
 #: lib/ui/stdmenus.inc:148
-#, fuzzy
 msgid "Box Settings...|S"
-msgstr "Kaderinstellingen...|r"
+msgstr "Kaderinstellingen...|I"
 
 #: lib/ui/stdmenus.inc:149
 msgid "Index Entry Settings...|y"
 msgstr "Indexlemma-instellingen...|y"
 
 #: lib/ui/stdmenus.inc:150
-#, fuzzy
 msgid "Index Settings...|S"
 msgstr "Indexinstellingen...|x"
 
@@ -19907,14 +20029,12 @@ msgid "Selection, Join Lines|i"
 msgstr "Selectie, regels samenvoegen|i"
 
 #: lib/ui/stdmenus.inc:185
-#, fuzzy
 msgid "Customize...|C"
-msgstr "Aangepast...|A"
+msgstr "Aanpassen...|A"
 
 #: lib/ui/stdmenus.inc:186
-#, fuzzy
 msgid "Apply Last Settings|A"
-msgstr "Vorige tekstopmaak toepassen|o"
+msgstr "Vorige opties toepassen|o"
 
 #: lib/ui/stdmenus.inc:188
 msgid "Capitalize|p"
@@ -19926,7 +20046,7 @@ msgstr "Hoofdletters|s"
 
 #: lib/ui/stdmenus.inc:190
 msgid "Lowercase|L"
-msgstr "Kleine letters|k"
+msgstr "Kleine letters|K"
 
 #: lib/ui/stdmenus.inc:194
 msgid "Dissolve Text Style"
@@ -20137,9 +20257,8 @@ msgid "Maple, Evalf|v"
 msgstr "Maple, Evalf|v"
 
 #: lib/ui/stdmenus.inc:339
-#, fuzzy
 msgid "Outline Pane|O"
-msgstr "Overzichtspaneel|r"
+msgstr "Overzichtspaneel|O"
 
 #: lib/ui/stdmenus.inc:340
 msgid "Code Preview Pane|P"
@@ -20150,9 +20269,8 @@ msgid "Messages Pane|g"
 msgstr "Berichtenpaneel|t"
 
 #: lib/ui/stdmenus.inc:342
-#, fuzzy
 msgid "Toolbars|T"
-msgstr "Werkbalken|b"
+msgstr "Werkbalken|W"
 
 #: lib/ui/stdmenus.inc:344
 msgid "Unfold Math Macro|n"
@@ -20163,28 +20281,24 @@ msgid "Fold Math Macro|d"
 msgstr "Formule-macro inklappen|l"
 
 #: lib/ui/stdmenus.inc:347
-#, fuzzy
 msgid "Split View Into Left and Right Half|L"
-msgstr "Beeld splitsen in linker- en rechterhelft|i"
+msgstr "Beeld splitsen in linker- en rechterhelft|l"
 
 #: lib/ui/stdmenus.inc:348
-#, fuzzy
 msgid "Split View Into Upper and Lower Half|U"
-msgstr "Beeld splitsen in bovenste en onderste helft|e"
+msgstr "Beeld splitsen in bovenste en onderste helft|b"
 
 #: lib/ui/stdmenus.inc:349
 msgid "Close Current View|w"
 msgstr "Huidige weergave sluiten|H"
 
 #: lib/ui/stdmenus.inc:350
-#, fuzzy
 msgid "Fullscreen|F"
-msgstr "Volledig scherm|s"
+msgstr "Volledig scherm|V"
 
 #: lib/ui/stdmenus.inc:352
-#, fuzzy
 msgid "Open All Insets|I"
-msgstr "Alle insets openen|o"
+msgstr "Alle insets openen|i"
 
 #: lib/ui/stdmenus.inc:353
 msgid "Close All Insets|C"
@@ -20223,9 +20337,8 @@ msgid "Branch|B"
 msgstr "Vertakking|a"
 
 #: lib/ui/stdmenus.inc:384
-#, fuzzy
 msgid "Custom Inset"
-msgstr "Aangepaste insets"
+msgstr "Aangepaste inset"
 
 #: lib/ui/stdmenus.inc:385
 msgid "File|e"
@@ -20241,7 +20354,7 @@ msgstr "Reguliere expressie"
 
 #: lib/ui/stdmenus.inc:389
 msgid "Citation...|C"
-msgstr "Citaat...|C"
+msgstr "Citatie...|C"
 
 #: lib/ui/stdmenus.inc:390
 msgid "Cross-Reference...|R"
@@ -20289,7 +20402,7 @@ msgstr "TeX-code"
 
 #: lib/ui/stdmenus.inc:409
 msgid "Preview|w"
-msgstr "Voorbeeld|d"
+msgstr "Voorbeeld"
 
 #: lib/ui/stdmenus.inc:413
 msgid "Symbols...|b"
@@ -20465,7 +20578,7 @@ msgstr "Begrippenlijst|g"
 
 #: lib/ui/stdmenus.inc:512
 msgid "Bib(la)TeX Bibliography...|B"
-msgstr "Bib(la)TeX bibliografie...|B"
+msgstr "Bib(la)TeX-bibliografie...|B"
 
 #: lib/ui/stdmenus.inc:516
 msgid "LyX Document...|X"
@@ -20725,7 +20838,7 @@ msgstr "PDF-formulieren|o"
 
 #: lib/ui/stdmenus.inc:664
 msgid "Hazard and Precautionary Statements|H"
-msgstr "Gevaar- en waarschuwingsberichten|G"
+msgstr "Gevaar- en waarschuwingsaanduidingen|G"
 
 #: lib/ui/stdmenus.inc:665 lib/configure.py:663
 msgid "Sweave|S"
@@ -20889,7 +21002,7 @@ msgstr "Kruisverwijzing invoegen"
 
 #: lib/ui/stdtoolbars.inc:127
 msgid "Insert citation"
-msgstr "Citaat invoegen"
+msgstr "Citatie invoegen"
 
 #: lib/ui/stdtoolbars.inc:128
 msgid "Insert index entry"
@@ -20988,9 +21101,8 @@ msgid "Toggle left line"
 msgstr "Linker lijn aan/uit"
 
 #: lib/ui/stdtoolbars.inc:159
-#, fuzzy
 msgid "Toggle right line"
-msgstr "Bovenste lijn aan/uit"
+msgstr "Rechter lijn aan/uit"
 
 #: lib/ui/stdtoolbars.inc:160
 msgid "Set border lines"
@@ -21337,7 +21449,7 @@ msgid "Fractions"
 msgstr "Breuken"
 
 #: lib/ui/stdtoolbars.inc:306 lib/ui/stdtoolbars.inc:411
-#: src/frontends/qt4/GuiDocument.cpp:1724
+#: src/frontends/qt4/GuiDocument.cpp:1736
 msgid "Fonts"
 msgstr "Lettertypes"
 
@@ -21354,7 +21466,7 @@ msgid "Big operators"
 msgstr "Grote operatoren"
 
 #: lib/ui/stdtoolbars.inc:310 lib/ui/stdtoolbars.inc:658
-#: src/frontends/qt4/GuiDocument.cpp:4933
+#: src/frontends/qt4/GuiDocument.cpp:4998
 msgid "Miscellaneous"
 msgstr "Overig"
 
@@ -25466,7 +25578,6 @@ msgid "GnumericSpreadsheet"
 msgstr "GnumericRekenblad"
 
 #: lib/xtemplates/gnumeric.xtemplate:14 lib/xtemplates/gnumeric.xtemplate:21
-#: lib/examples/Articles:0
 msgid "Spreadsheet"
 msgstr "Rekenblad"
 
@@ -25700,7 +25811,7 @@ msgstr "XPM"
 msgid "Plain text (chess output)"
 msgstr "Tekst zonder opmaak (schaakuitvoer)"
 
-#: lib/configure.py:657 src/frontends/qt4/GuiDocument.cpp:1557
+#: lib/configure.py:657 src/frontends/qt4/GuiDocument.cpp:1569
 #: src/frontends/qt4/GuiErrorList.cpp:45
 msgid "DocBook"
 msgstr "DocBook"
@@ -25854,7 +25965,7 @@ msgstr "EPS"
 msgid "EPS (uncropped)"
 msgstr "EPS (niet-bijgesneden)"
 
-#: lib/configure.py:710 lib/examples/Articles:0
+#: lib/configure.py:710
 msgid "EPS (cropped)"
 msgstr "EPS (bijgesneden)"
 
@@ -25910,7 +26021,7 @@ msgstr "PDF (LuaTeX)|u"
 msgid "PDF (graphics)"
 msgstr "PDF (afbeeldingen)"
 
-#: lib/configure.py:726 lib/examples/Articles:0
+#: lib/configure.py:726
 msgid "PDF (cropped)"
 msgstr "PDF (bijgesneden)"
 
@@ -26091,301 +26202,6 @@ msgstr "LyX-archief (zip)"
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX-archief (tar.gz)"
 
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Game 1"
-msgstr "Game"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Game 2"
-msgstr "Game"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Example (LyXified)"
-msgstr "Voorb&eeldbestanden:"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Example (raw)"
-msgstr "Voorbeeld"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Gnuplot"
-msgstr "gnuplot"
-
-#: lib/examples/Articles:0 src/TocBackend.cpp:295
-#: src/frontends/qt4/GuiExternal.cpp:87
-msgid "External Material"
-msgstr "Extern materiaal"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Feynman Diagrams"
-msgstr "Feynman-diagrammen|F"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Instant Preview"
-msgstr "Onmiddellijk &voorbeeld:"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Itemize Bullets"
-msgstr "Ongenummerde opsomming"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Minted File Listing"
-msgstr "&Op dezelfde regel"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Minted Listings"
-msgstr "Lijst van Listings"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "XY-Figure"
-msgstr "Figuur"
-
-#: lib/examples/Articles:0
-msgid "XY-Pic"
-msgstr ""
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Graphics and Insets"
-msgstr "&Grafisch stuurprogramma:"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Serial Letter 1"
-msgstr "Hebreeuwse brief"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Serial Letter 2"
-msgstr "Hebreeuwse brief"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Serial Letter 3"
-msgstr "Hebreeuwse brief"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Localization Test"
-msgstr "Locatie"
-
-#: lib/examples/Articles:0
-msgid "Hazard and Precautionary Statements"
-msgstr "Gevaar- en waarschuwingsberichten"
-
-#: lib/examples/Articles:0
-msgid "LilyPond Book"
-msgstr "LilyPond-boek"
-
-#: lib/examples/Articles:0
-msgid "Multilingual Captions"
-msgstr "Meertalige bijschriften"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Noweb2LyX"
-msgstr "NoWeb"
-
-#: lib/examples/Articles:0
-msgid "Noweb Listerrors"
-msgstr ""
-
-#: lib/examples/Articles:0 src/frontends/qt4/GuiDocument.cpp:1722
-msgid "Modules"
-msgstr "Modules"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Foils"
-msgstr "FoilTeX"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Foils Landslide"
-msgstr "&Liggend"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Beamer (Complex)"
-msgstr "Notities beamer"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Welcome"
-msgstr "Welkomsvenster weergeven..."
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Multilingual Typesetting with platex"
-msgstr "Overige o&pties"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Multilingual Typesetting with CJKutf8"
-msgstr "Overige o&pties"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "IEEE Transactions Conference"
-msgstr "IEEE Transactions Computer Society"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "IEEE Transactions Journal"
-msgstr "IEEE Transactions"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Mathematical Monthly"
-msgstr "Wiskundige symbolen"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Springers Global Journal Template (V. 3)"
-msgstr "Springer's Global Journal Template (V. 3)"
-
-#: lib/examples/Articles:0
-msgid "00 Main File"
-msgstr "00 Hoofdbestand"
-
-#: lib/examples/Articles:0
-msgid "01 Dedication"
-msgstr "01 Toewijding"
-
-#: lib/examples/Articles:0
-msgid "02 Foreword"
-msgstr "02 Voorwoord"
-
-#: lib/examples/Articles:0
-msgid "03 Preface"
-msgstr "03 Woord vooraf"
-
-#: lib/examples/Articles:0
-msgid "04 Acknowledgements"
-msgstr "04 Erkenningen"
-
-#: lib/examples/Articles:0
-msgid "05 Contributor List"
-msgstr "05 Lijst van bijdragers"
-
-#: lib/examples/Articles:0
-msgid "06 Acronym"
-msgstr "06 Acroniem"
-
-#: lib/examples/Articles:0
-msgid "07 Part"
-msgstr "07 Deel"
-
-#: lib/examples/Articles:0
-msgid "08 Author"
-msgstr "08 Auteur"
-
-#: lib/examples/Articles:0
-msgid "09 Appendix"
-msgstr "09 Appendix"
-
-#: lib/examples/Articles:0
-msgid "10 Glossary"
-msgstr "10 Woordenlijst"
-
-#: lib/examples/Articles:0
-msgid "11 References"
-msgstr "11 Referenties"
-
-#: lib/examples/Articles:0
-msgid "05 Acronym"
-msgstr "05 Acroniem"
-
-#: lib/examples/Articles:0
-msgid "06 Part"
-msgstr "06 Deel"
-
-#: lib/examples/Articles:0
-msgid "07 Chapter"
-msgstr "07 Hoofdstuk"
-
-#: lib/examples/Articles:0
-msgid "08 Appendix"
-msgstr "08 Appendix"
-
-#: lib/examples/Articles:0
-msgid "09 Glossary"
-msgstr "09 Woordenlijst"
-
-#: lib/examples/Articles:0
-msgid "10 Solutions"
-msgstr "10 Oplossingen"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Colored"
-msgstr "Kleur"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Simple"
-msgstr "Simpel, rechthoekig kader"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Chapter 1"
-msgstr "Hoofdstuk"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Chapter 2"
-msgstr "Hoofdstuk"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Main File"
-msgstr "Alleen hoofdbestand"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "PhD Thesis"
-msgstr "Thesaurus"
-
-#: lib/examples/Articles:0
-#, fuzzy
-msgid "Theses"
-msgstr "Thesaurus"
-
-#: lib/tabletemplates/Formal_with_Footline.lyx:0
-#, fuzzy
-msgid "Formal with Footline"
-msgstr "regel wiskunde"
-
-#: lib/tabletemplates/Formal_with_Footline.lyx:0
-#, fuzzy
-msgid "Formal without Footline"
-msgstr "Biografie zonder foto"
-
-#: lib/tabletemplates/Formal_with_Footline.lyx:0
-msgid "Grid with Head"
-msgstr ""
-
-#: lib/tabletemplates/Formal_with_Footline.lyx:0
-#, fuzzy
-msgid "No Borders"
-msgstr "&Randen"
-
-#: lib/tabletemplates/Formal_with_Footline.lyx:0
-#, fuzzy
-msgid "Simple Grid"
-msgstr "Eenvoudig kader|v"
-
 #: src/Author.cpp:57
 #, c-format
 msgid "%1$s[[name]] (%2$s[[email]])"
@@ -26421,7 +26237,7 @@ msgstr ""
 "LyX heeft geprobeerd een document met niet-opgeslagen wijzigingen te "
 "sluiten!\n"
 
-#: src/Buffer.cpp:572 src/Buffer.cpp:1654
+#: src/Buffer.cpp:572 src/Buffer.cpp:1657
 msgid "Save failed! Document is lost."
 msgstr "Opslaan mislukt! Document is weg."
 
@@ -26434,29 +26250,29 @@ msgstr "Proberen om het gewijzigde document te sluiten!"
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Kon de tijdelijke map %1$s niet verwijderen"
 
-#: src/Buffer.cpp:987 src/Text.cpp:583
+#: src/Buffer.cpp:990 src/Text.cpp:583
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Onbekend teken: %1$s %2$s\n"
 
-#: src/Buffer.cpp:991 src/Buffer.cpp:997 src/Buffer.cpp:1021
+#: src/Buffer.cpp:994 src/Buffer.cpp:1000 src/Buffer.cpp:1024
 msgid "Document header error"
 msgstr "Fout in document-hoofding"
 
-#: src/Buffer.cpp:996
+#: src/Buffer.cpp:999
 msgid "\\begin_header is missing"
 msgstr "\\begin_header ontbreekt"
 
-#: src/Buffer.cpp:1020
+#: src/Buffer.cpp:1023
 msgid "\\begin_document is missing"
 msgstr "\\begin_document ontbreekt"
 
-#: src/Buffer.cpp:1032 src/Buffer.cpp:1038 src/Buffer.cpp:3026
-#: src/Buffer.cpp:3032
+#: src/Buffer.cpp:1035 src/Buffer.cpp:1041 src/Buffer.cpp:3030
+#: src/Buffer.cpp:3036
 msgid "Changes not shown in LaTeX output"
 msgstr "Wijzigingen niet zichtbaar in LaTeX-uitvoer"
 
-#: src/Buffer.cpp:1033 src/Buffer.cpp:3027
+#: src/Buffer.cpp:1036 src/Buffer.cpp:3031
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -26468,7 +26284,7 @@ msgstr ""
 "Gelieve deze pakketten te installeren of de commando's \\lyxadded en "
 "\\lyxdeleted opnieuw te definiëren in de LaTeX-preambule."
 
-#: src/Buffer.cpp:1039 src/Buffer.cpp:3033
+#: src/Buffer.cpp:1042 src/Buffer.cpp:3037
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -26480,40 +26296,40 @@ msgstr ""
 "Gelieve deze pakketten te installeren of de commando's \\lyxadded en "
 "\\lyxdeleted opnieuw te definiëren in de LaTeX-preambule."
 
-#: src/Buffer.cpp:1081 src/BufferParams.cpp:467
+#: src/Buffer.cpp:1084 src/BufferParams.cpp:455
 #: src/frontends/qt4/GuiLog.cpp:257 src/insets/InsetIndex.cpp:469
 msgid "Index"
 msgstr "Index"
 
-#: src/Buffer.cpp:1184
+#: src/Buffer.cpp:1187
 msgid "File Not Found"
 msgstr "Bestand niet gevonden"
 
-#: src/Buffer.cpp:1185
+#: src/Buffer.cpp:1188
 #, c-format
 msgid "Unable to open file `%1$s'."
 msgstr "Kan bestand `%1$s' niet openen."
 
-#: src/Buffer.cpp:1213 src/Buffer.cpp:1282
+#: src/Buffer.cpp:1216 src/Buffer.cpp:1285
 msgid "Document format failure"
 msgstr "Fout in documentformaat"
 
-#: src/Buffer.cpp:1214
+#: src/Buffer.cpp:1217
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 "%1$s is onverwacht gestopt, wat betekent dat het waarschijnlijk corrupt is."
 
-#: src/Buffer.cpp:1283
+#: src/Buffer.cpp:1286
 #, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "%1$s is geen leesbaar LyX-document."
 
-#: src/Buffer.cpp:1310
+#: src/Buffer.cpp:1313
 msgid "Conversion failed"
 msgstr "Omzetting mislukt"
 
-#: src/Buffer.cpp:1311
+#: src/Buffer.cpp:1314
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -26522,11 +26338,11 @@ msgstr ""
 "%1$s is van een andere versie van LyX, maar een tijdelijk bestand ter "
 "omzetting kon niet gemaakt worden."
 
-#: src/Buffer.cpp:1321
+#: src/Buffer.cpp:1324
 msgid "Conversion script not found"
 msgstr "Omzettingsscript niet gevonden"
 
-#: src/Buffer.cpp:1322
+#: src/Buffer.cpp:1325
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -26535,11 +26351,11 @@ msgstr ""
 "%1$s is van een andere versie van LyX, maar het conversiescript lyx2lyx kon "
 "niet gevonden worden."
 
-#: src/Buffer.cpp:1345 src/Buffer.cpp:1352
+#: src/Buffer.cpp:1348 src/Buffer.cpp:1355
 msgid "Conversion script failed"
 msgstr "Omzettingsscript mislukt"
 
-#: src/Buffer.cpp:1346
+#: src/Buffer.cpp:1349
 #, c-format
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
@@ -26548,7 +26364,7 @@ msgstr ""
 "%1$s is van een oudere versie van LyX en het script lyx2lyx kon het niet "
 "omzetten."
 
-#: src/Buffer.cpp:1353
+#: src/Buffer.cpp:1356
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
@@ -26557,16 +26373,16 @@ msgstr ""
 "%1$s is van een nieuwere versie van LyX en het script lyx2lyx kon het niet "
 "omzetten."
 
-#: src/Buffer.cpp:1432 src/Buffer.cpp:4763 src/Buffer.cpp:4856
+#: src/Buffer.cpp:1435 src/Buffer.cpp:4765 src/Buffer.cpp:4858
 msgid "File is read-only"
 msgstr "Bestand is alleen-lezen"
 
-#: src/Buffer.cpp:1433
+#: src/Buffer.cpp:1436
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
 msgstr "Het bestand %1$s kan niet geschreven worden omdat het alleen-lezen is."
 
-#: src/Buffer.cpp:1442
+#: src/Buffer.cpp:1445
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
@@ -26575,21 +26391,21 @@ msgstr ""
 "Document %1$s is extern gewijzigd. Bent u zeker dat u dit bestand wilt "
 "overschrijven?"
 
-#: src/Buffer.cpp:1444
+#: src/Buffer.cpp:1447
 msgid "Overwrite modified file?"
 msgstr "Gewijzigd bestand overschrijven?"
 
-#: src/Buffer.cpp:1445 src/Exporter.cpp:50
+#: src/Buffer.cpp:1448 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:247 src/frontends/qt4/GuiView.cpp:2568
 #: src/frontends/qt4/GuiView.cpp:2836 src/frontends/qt4/GuiView.cpp:2939
 msgid "&Overwrite"
 msgstr "&Overschrijven"
 
-#: src/Buffer.cpp:1510
+#: src/Buffer.cpp:1513
 msgid "Backup failure"
 msgstr "Back-upfout"
 
-#: src/Buffer.cpp:1511
+#: src/Buffer.cpp:1514
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -26598,11 +26414,11 @@ msgstr ""
 "Kan back-upbestand %1$s niet maken.\n"
 "Gelieve te controleren of de map bestaat en schrijfbaar is."
 
-#: src/Buffer.cpp:1547 src/Buffer.cpp:1558
+#: src/Buffer.cpp:1550 src/Buffer.cpp:1561
 msgid "Write failure"
 msgstr "Schrijffout"
 
-#: src/Buffer.cpp:1548
+#: src/Buffer.cpp:1551
 #, c-format
 msgid ""
 "The file has successfully been saved as:\n"
@@ -26619,7 +26435,7 @@ msgstr ""
 "Er is van uw originele bestand een back-up gemaakt op:\n"
 " %3$s"
 
-#: src/Buffer.cpp:1559
+#: src/Buffer.cpp:1562
 #, c-format
 msgid ""
 "Cannot move saved file to:\n"
@@ -26632,42 +26448,42 @@ msgstr ""
 "Het bestand is echter succesvol opgeslagen als:\n"
 " %2$s."
 
-#: src/Buffer.cpp:1575
+#: src/Buffer.cpp:1578
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Document %1$s opslaan..."
 
-#: src/Buffer.cpp:1590
+#: src/Buffer.cpp:1593
 msgid " could not write file!"
 msgstr " kon bestand niet schrijven!"
 
-#: src/Buffer.cpp:1598
+#: src/Buffer.cpp:1601
 msgid " done."
 msgstr " is voltooid."
 
-#: src/Buffer.cpp:1613
+#: src/Buffer.cpp:1616
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Proberen om document %1$s op te slaan\n"
 
-#: src/Buffer.cpp:1623 src/Buffer.cpp:1636 src/Buffer.cpp:1650
+#: src/Buffer.cpp:1626 src/Buffer.cpp:1639 src/Buffer.cpp:1653
 #, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr "Opgeslagen op %1$s. Oef.\n"
 
-#: src/Buffer.cpp:1626
+#: src/Buffer.cpp:1629
 msgid "Save failed! Trying again...\n"
 msgstr "Opslaan mislukt! Opnieuw proberen...\n"
 
-#: src/Buffer.cpp:1640
+#: src/Buffer.cpp:1643
 msgid "Save failed! Trying yet again...\n"
 msgstr "Opslaan mislukt! Nogmaals opnieuw proberen...\n"
 
-#: src/Buffer.cpp:1736
+#: src/Buffer.cpp:1739
 msgid "Iconv software exception Detected"
 msgstr "Fout bij iconv-programma gedetecteerd"
 
-#: src/Buffer.cpp:1737
+#: src/Buffer.cpp:1740
 #, c-format
 msgid ""
 "Please verify that the `iconv' support software is properly installed and "
@@ -26678,12 +26494,12 @@ msgstr ""
 "geselecteerde tekencodering (%1$s) ondersteunt, of verander de tekencodering "
 "in Document>Instellingen>Taal."
 
-#: src/Buffer.cpp:1769
+#: src/Buffer.cpp:1772
 #, c-format
 msgid "Uncodable character '%1$s' (code point %2$s)"
 msgstr "Niet-codeerbaar teken '%1$s' (codepunt %2$s)"
 
-#: src/Buffer.cpp:1772
+#: src/Buffer.cpp:1775
 msgid ""
 "Some characters of your document are not representable in specific verbatim "
 "contexts.\n"
@@ -26693,12 +26509,12 @@ msgstr ""
 "verbatim-contexten.\n"
 "Het document aanpassen naar utf8 kan helpen."
 
-#: src/Buffer.cpp:1777
+#: src/Buffer.cpp:1780
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr "Kon geen LaTeX-commando vinden voor teken '%1$s' (codepunt %2$s)"
 
-#: src/Buffer.cpp:1780
+#: src/Buffer.cpp:1783
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -26708,19 +26524,19 @@ msgstr ""
 "tekencodering.\n"
 "Het document aanpassen naar utf8 kan helpen."
 
-#: src/Buffer.cpp:1788
+#: src/Buffer.cpp:1791
 msgid "iconv conversion failed"
 msgstr "iconv-omzetting mislukt"
 
-#: src/Buffer.cpp:1793
+#: src/Buffer.cpp:1796
 msgid "conversion failed"
 msgstr "omzetting mislukt"
 
-#: src/Buffer.cpp:1904
+#: src/Buffer.cpp:1907
 msgid "Uncodable character in file path"
 msgstr "Niet-codeerbaar teken in pad naar bestand"
 
-#: src/Buffer.cpp:1906
+#: src/Buffer.cpp:1909
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -26744,31 +26560,31 @@ msgstr ""
 "Bij problemen dient u een gepaste tekencodering te kiezen\n"
 " (zoals utf8) of het pad van het bestand aan te passen."
 
-#: src/Buffer.cpp:1987
+#: src/Buffer.cpp:1991
 #, c-format
 msgid "The languages %1$s are only supported by Babel."
 msgstr "De talen %1$s worden enkel ondersteund door Babel."
 
-#: src/Buffer.cpp:1988
+#: src/Buffer.cpp:1992
 #, c-format
 msgid "The language %1$s is only supported by Babel."
 msgstr "De taal %1$s wordt enkel ondersteund door Babel."
 
-#: src/Buffer.cpp:1998
+#: src/Buffer.cpp:2002
 #, c-format
 msgid "The languages %1$s are only supported by Polyglossia."
 msgstr "De talen %1$s worden enkel ondersteund door Polyglossia."
 
-#: src/Buffer.cpp:1999
+#: src/Buffer.cpp:2003
 #, c-format
 msgid "The language %1$s is only supported by Polyglossia."
 msgstr "De taal %1$s wordt enkel ondersteund door Polyglossia."
 
-#: src/Buffer.cpp:2005
+#: src/Buffer.cpp:2009
 msgid "Incompatible Languages!"
 msgstr "Niet-compatibele talen!"
 
-#: src/Buffer.cpp:2007
+#: src/Buffer.cpp:2011
 #, c-format
 msgid ""
 "You cannot use the following languages together in one LaTeX document "
@@ -26779,53 +26595,53 @@ msgstr ""
 "conflicterende taalpakketten nodig hebben:\n"
 "%1$s%2$s"
 
-#: src/Buffer.cpp:2335
+#: src/Buffer.cpp:2339
 msgid "Running chktex..."
 msgstr "chktex uitvoeren..."
 
-#: src/Buffer.cpp:2354
+#: src/Buffer.cpp:2358
 msgid "chktex failure"
 msgstr "chktex-fout"
 
-#: src/Buffer.cpp:2355
+#: src/Buffer.cpp:2359
 msgid "Could not run chktex successfully."
 msgstr "Kon chktex niet succesvol uitvoeren."
 
-#: src/Buffer.cpp:2726
+#: src/Buffer.cpp:2730
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Weet niet hoe formaat te exporteren: %1$s"
 
-#: src/Buffer.cpp:2830
+#: src/Buffer.cpp:2834
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Fout bij het exporteren naar formaat: %1$s."
 
-#: src/Buffer.cpp:2839
+#: src/Buffer.cpp:2843
 msgid "Error generating literate programming code."
 msgstr "Fout bij het genereren van code voor literate programming."
 
-#: src/Buffer.cpp:2915
+#: src/Buffer.cpp:2919
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "Vertakking \"%1$s\" bestaat niet."
 
-#: src/Buffer.cpp:2948
+#: src/Buffer.cpp:2952
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Vertakking \"%1$s\" bestaat al."
 
-#: src/Buffer.cpp:3005
+#: src/Buffer.cpp:3009
 msgid "Error viewing the output file."
 msgstr "Fout bij het weergeven van het uitvoerbestand."
 
-#: src/Buffer.cpp:3370 src/frontends/qt4/GuiView.cpp:2397
+#: src/Buffer.cpp:3374 src/frontends/qt4/GuiView.cpp:2397
 #: src/frontends/qt4/Validator.cpp:222 src/insets/ExternalSupport.cpp:395
 #: src/insets/InsetGraphics.cpp:690 src/insets/InsetInclude.cpp:596
 msgid "Invalid filename"
 msgstr "Ongeldige bestandsnaam"
 
-#: src/Buffer.cpp:3371 src/insets/ExternalSupport.cpp:396
+#: src/Buffer.cpp:3375 src/insets/ExternalSupport.cpp:396
 #: src/insets/InsetGraphics.cpp:691 src/insets/InsetInclude.cpp:597
 msgid ""
 "The following filename will cause troubles when running the exported file "
@@ -26834,12 +26650,12 @@ msgstr ""
 "De volgende bestandsnaam zal waarschijnlijk problemen veroorzaken wanneer "
 "het geëxporteerde bestand door LaTeX wordt verwerkt: "
 
-#: src/Buffer.cpp:3376 src/insets/ExternalSupport.cpp:401
+#: src/Buffer.cpp:3380 src/insets/ExternalSupport.cpp:401
 #: src/insets/InsetGraphics.cpp:698 src/insets/InsetInclude.cpp:601
 msgid "Problematic filename for DVI"
 msgstr "Problematische bestandsnaam voor DVI"
 
-#: src/Buffer.cpp:3377 src/insets/ExternalSupport.cpp:402
+#: src/Buffer.cpp:3381 src/insets/ExternalSupport.cpp:402
 #: src/insets/InsetGraphics.cpp:699 src/insets/InsetInclude.cpp:602
 msgid ""
 "The following filename can cause troubles when running the exported file "
@@ -26849,11 +26665,11 @@ msgstr ""
 "geëxporteerde bestand door LaTeX verwerkt wordt en het resulterende DVI-"
 "bestand wordt geopend: "
 
-#: src/Buffer.cpp:3416 src/insets/InsetBibtex.cpp:335
+#: src/Buffer.cpp:3420 src/insets/InsetBibtex.cpp:335
 msgid "Export Warning!"
 msgstr "Exportwaarschuwing!"
 
-#: src/Buffer.cpp:3417
+#: src/Buffer.cpp:3421
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -26861,66 +26677,64 @@ msgstr ""
 "Er zijn spaties in de paden naar uw BibTeX-databanken.\n"
 "BibTeX zal ze niet kunnen vinden."
 
-#: src/Buffer.cpp:4057
+#: src/Buffer.cpp:4061
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Voorbeeld van broncode voor alinea %1$d"
 
-#: src/Buffer.cpp:4061
+#: src/Buffer.cpp:4065
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Voorbeeld van broncode voor alinea %1$s tot %2$s"
 
-#: src/Buffer.cpp:4113
+#: src/Buffer.cpp:4117
 msgid "Preview source code"
 msgstr "Voorbeeld van broncode"
 
-#: src/Buffer.cpp:4115
+#: src/Buffer.cpp:4119
 msgid "Preview preamble"
 msgstr "Voorbeeld van preambule"
 
-#: src/Buffer.cpp:4117
+#: src/Buffer.cpp:4121
 msgid "Preview body"
 msgstr "Voorbeeld van broodtekst"
 
-#: src/Buffer.cpp:4132
+#: src/Buffer.cpp:4136
 msgid "Plain text does not have a preamble."
 msgstr "Tekst zonder opmaak heeft geen preambule."
 
-#: src/Buffer.cpp:4237
+#: src/Buffer.cpp:4241
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatisch opslaan van %1$s"
 
-#: src/Buffer.cpp:4293
+#: src/Buffer.cpp:4297
 msgid "Autosave failed!"
 msgstr "Automatisch opslaan mislukt!"
 
-#: src/Buffer.cpp:4354
+#: src/Buffer.cpp:4358
 msgid "Autosaving current document..."
 msgstr "Huidige document automatisch opslaan..."
 
-#: src/Buffer.cpp:4476
+#: src/Buffer.cpp:4480
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Geen informatie voor het exporteren van formaat %1$s."
 
-#: src/Buffer.cpp:4480
-#, c-format
-msgid "Hint: use non-TeX fonts or set input encoding  to '%1$s' or '%2$s'"
-msgstr ""
-"Hint: gebruik niet-TeX lettertypes of stel de invoercodering in op '%1$s' of "
-"'%2$s'"
-
 #: src/Buffer.cpp:4484
+#, c-format
+msgid "Hint: use non-TeX fonts or set input encoding  to '%1$s'"
+msgstr "Hint: gebruik niet-TeX lettertypes of zet de invoercodering  op '%1$s'"
+
+#: src/Buffer.cpp:4486
 msgid "Couldn't export file"
 msgstr "Kon bestand niet exporteren"
 
-#: src/Buffer.cpp:4551 src/frontends/qt4/GuiView.cpp:2541
+#: src/Buffer.cpp:4553 src/frontends/qt4/GuiView.cpp:2541
 msgid "File name error"
 msgstr "Bestandsnaamfout"
 
-#: src/Buffer.cpp:4552
+#: src/Buffer.cpp:4554
 #, c-format
 msgid ""
 "The directory path to the document\n"
@@ -26933,21 +26747,21 @@ msgstr ""
 "bevat spaties, maar uw TeX-installatie laat dit niet toe. Sla het bestand op "
 "in een map wier naam geen spaties bevat."
 
-#: src/Buffer.cpp:4640 src/Buffer.cpp:4670 src/frontends/qt4/GuiView.cpp:752
+#: src/Buffer.cpp:4642 src/Buffer.cpp:4672 src/frontends/qt4/GuiView.cpp:752
 msgid "Document export cancelled."
 msgstr "Exporten van document geannuleerd."
 
-#: src/Buffer.cpp:4673
+#: src/Buffer.cpp:4675
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Document geëxporteerd als %1$s naar bestand `%2$s'"
 
-#: src/Buffer.cpp:4680
+#: src/Buffer.cpp:4682
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Document geëxporteerd als %1$s"
 
-#: src/Buffer.cpp:4749
+#: src/Buffer.cpp:4751
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -26958,19 +26772,19 @@ msgstr ""
 "\n"
 "Noodversie herstellen?"
 
-#: src/Buffer.cpp:4752
+#: src/Buffer.cpp:4754
 msgid "Load emergency save?"
 msgstr "Noodversie openen?"
 
-#: src/Buffer.cpp:4753
+#: src/Buffer.cpp:4755
 msgid "&Recover"
 msgstr "He&rstellen"
 
-#: src/Buffer.cpp:4753
+#: src/Buffer.cpp:4755
 msgid "&Load Original"
 msgstr "Origineel &laden"
 
-#: src/Buffer.cpp:4764
+#: src/Buffer.cpp:4766
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -26980,15 +26794,15 @@ msgstr ""
 "gemarkeerd als alleen-lezen. Gelieve het document op te slaan als een ander "
 "bestand."
 
-#: src/Buffer.cpp:4771
+#: src/Buffer.cpp:4773
 msgid "Document was successfully recovered."
 msgstr "Document succesvol hersteld."
 
-#: src/Buffer.cpp:4773
+#: src/Buffer.cpp:4775
 msgid "Document was NOT successfully recovered."
 msgstr "Document was NIET succesvol hersteld."
 
-#: src/Buffer.cpp:4774
+#: src/Buffer.cpp:4776
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -26997,46 +26811,45 @@ msgstr ""
 "Noodversie nu verwijderen?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:4778 src/Buffer.cpp:4790
+#: src/Buffer.cpp:4780 src/Buffer.cpp:4792
 msgid "Delete emergency file?"
 msgstr "Noodversie verwijderen?"
 
-#: src/Buffer.cpp:4779 src/Buffer.cpp:4792
+#: src/Buffer.cpp:4781 src/Buffer.cpp:4794
 msgid "&Keep"
 msgstr "&Behouden"
 
-#: src/Buffer.cpp:4783
+#: src/Buffer.cpp:4785
 msgid "Emergency file deleted"
 msgstr "Noodversie verwijderd"
 
-#: src/Buffer.cpp:4784
+#: src/Buffer.cpp:4786
 msgid "Do not forget to save your file now!"
 msgstr "Vergeet uw bestand nu niet op te slaan!"
 
-#: src/Buffer.cpp:4791
+#: src/Buffer.cpp:4793
 msgid "Remove emergency file now?"
 msgstr "Noodversie nu verwijderen?"
 
-#: src/Buffer.cpp:4814
+#: src/Buffer.cpp:4816
 msgid "Can't rename emergency file!"
 msgstr "Kan noodversie niet hernoemen!"
 
-#: src/Buffer.cpp:4815
-#, fuzzy
+#: src/Buffer.cpp:4817
 msgid ""
 "LyX was unable to rename the emergency file. You should do so manually. "
 "Otherwise, you will be asked about it again the next time you try to load "
 "this file, and may over-write your own work."
 msgstr ""
-"LyX kon de noodversie niet hernoemen. U doet dit best manueel. Anders zal "
+"LyX kon het noodbestand niet hernoemen. U doet dit best manueel. Anders zal "
 "dit opnieuw gevraagd worden de volgende keer dat u dit bestand probeert te "
 "laden, en overschrijft u mogelijk uw werk."
 
-#: src/Buffer.cpp:4820
+#: src/Buffer.cpp:4822
 msgid "Emergency File Renames"
 msgstr "Noodversie hernoemen"
 
-#: src/Buffer.cpp:4821
+#: src/Buffer.cpp:4823
 #, c-format
 msgid ""
 "Emergency file renamed as:\n"
@@ -27045,7 +26858,7 @@ msgstr ""
 "Noodversie hernoemd naar:\n"
 " %1$s"
 
-#: src/Buffer.cpp:4844
+#: src/Buffer.cpp:4846
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -27056,19 +26869,19 @@ msgstr ""
 "\n"
 "Back-up gebruiken?"
 
-#: src/Buffer.cpp:4846
+#: src/Buffer.cpp:4848
 msgid "Load backup?"
 msgstr "Back-up gebruiken?"
 
-#: src/Buffer.cpp:4847
+#: src/Buffer.cpp:4849
 msgid "&Load backup"
 msgstr "Back-up &laden"
 
-#: src/Buffer.cpp:4847
+#: src/Buffer.cpp:4849
 msgid "Load &original"
 msgstr "&Origineel laden"
 
-#: src/Buffer.cpp:4857
+#: src/Buffer.cpp:4859
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -27078,21 +26891,21 @@ msgstr ""
 "gemarkeerd als alleen-lezen. Gelieve het document op te slaan als een ander "
 "bestand."
 
-#: src/Buffer.cpp:5249 src/insets/InsetCaption.cpp:392
+#: src/Buffer.cpp:5251 src/insets/InsetCaption.cpp:392
 msgid "Senseless!!! "
 msgstr "Zinloos!!! "
 
-#: src/Buffer.cpp:5474
+#: src/Buffer.cpp:5476
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Document %1$s opnieuw geladen."
 
-#: src/Buffer.cpp:5477
+#: src/Buffer.cpp:5479
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Kon document %1$s niet opnieuw laden."
 
-#: src/BufferParams.cpp:521
+#: src/BufferParams.cpp:509
 msgid ""
 "The LaTeX package amsmath is only used if AMS formula types or symbols from "
 "the AMS math toolbars are inserted into formulas"
@@ -27100,7 +26913,7 @@ msgstr ""
 "Het LaTeX-pakket amsmath wordt enkel gebruikt als AMS-formules of symbolen "
 "van de AMS-werkbalk gebruikt worden"
 
-#: src/BufferParams.cpp:523
+#: src/BufferParams.cpp:511
 msgid ""
 "The LaTeX package amssymb is only used if symbols from the AMS math toolbars "
 "are inserted into formulas"
@@ -27108,7 +26921,7 @@ msgstr ""
 "Het LaTeX-pakket amssymb wordt enkel gebruikt als er symbolen van de AMS-"
 "werkbalk gebruikt worden"
 
-#: src/BufferParams.cpp:525
+#: src/BufferParams.cpp:513
 msgid ""
 "The LaTeX package cancel is only used if \\cancel commands are used in "
 "formulas"
@@ -27116,7 +26929,7 @@ msgstr ""
 "Het LaTeX-pakket cancel wordt enkel gebruikt als er \\cancel-commando's "
 "gebruikt worden in formules"
 
-#: src/BufferParams.cpp:527
+#: src/BufferParams.cpp:515
 msgid ""
 "The LaTeX package esint is only used if special integral symbols are "
 "inserted into formulas"
@@ -27124,7 +26937,7 @@ msgstr ""
 "Het LaTeX-pakket esint wordt alleen gebruikt als er speciale "
 "integraalsymbolen in formules voorkomen"
 
-#: src/BufferParams.cpp:529
+#: src/BufferParams.cpp:517
 msgid ""
 "The LaTeX package mathdots is only used if the command \\iddots is inserted "
 "into formulas"
@@ -27132,7 +26945,7 @@ msgstr ""
 "Het LaTeX-pakket mathdots wordt alleen gebruikt als het commando \\iddots in "
 "formules voorkomt"
 
-#: src/BufferParams.cpp:531
+#: src/BufferParams.cpp:519
 msgid ""
 "The LaTeX package mathtools is only used if some mathematical relations are "
 "inserted into formulas"
@@ -27140,7 +26953,7 @@ msgstr ""
 "Het LaTeX-pakket mathtools wordt alleen gebruikt als sommige wiskunde "
 "relaties in formules gebruikt worden"
 
-#: src/BufferParams.cpp:533
+#: src/BufferParams.cpp:521
 msgid ""
 "The LaTeX package mhchem is only used if either the command \\ce or \\cf is "
 "inserted into formulas"
@@ -27148,7 +26961,7 @@ msgstr ""
 "Het LaTeX-pakket mhchem wordt alleen gebruikt als het commando \\ce of \\cf "
 "gebruikt wordt in formules"
 
-#: src/BufferParams.cpp:535
+#: src/BufferParams.cpp:523
 msgid ""
 "The LaTeX package stackrel is only used if the command \\stackrel with "
 "subscript is inserted into formulas"
@@ -27156,7 +26969,7 @@ msgstr ""
 "Het LaTeX-pakket stackrel wordt alleen gebruikt als het commando \\stackrel "
 "middels subscript in formules voorkomt"
 
-#: src/BufferParams.cpp:537
+#: src/BufferParams.cpp:525
 msgid ""
 "The LaTeX package stmaryrd is only used if symbols from the St Mary's Road "
 "symbol font for theoretical computer science are inserted into formulas"
@@ -27165,7 +26978,7 @@ msgstr ""
 "symbolisch lettertype St Mary's Road voor theoretische computerwetenschappen "
 "gebruikt worden in formules"
 
-#: src/BufferParams.cpp:539
+#: src/BufferParams.cpp:527
 msgid ""
 "The LaTeX package undertilde is only used if you use the math frame "
 "decoration 'utilde'"
@@ -27173,7 +26986,7 @@ msgstr ""
 "Het LaTeX-pakket undertilde wordt enkel gebruikt als u de decoratie 'utilde' "
 "gebruikt bij wiskundige kader"
 
-#: src/BufferParams.cpp:744
+#: src/BufferParams.cpp:732
 #, c-format
 msgid ""
 "The selected document class\n"
@@ -27196,11 +27009,11 @@ msgstr ""
 "Bekijk paragraaf 3.1.2.2 (Beschikbaarheid van klassen\n"
 "van de Gebruikersgids voor meer informatie."
 
-#: src/BufferParams.cpp:753
+#: src/BufferParams.cpp:741
 msgid "Document class not available"
 msgstr "Documentklasse niet beschikbaar"
 
-#: src/BufferParams.cpp:2206 src/Encoding.cpp:253 src/Paragraph.cpp:2707
+#: src/BufferParams.cpp:2207 src/Encoding.cpp:253 src/Paragraph.cpp:2725
 #: src/frontends/qt4/LaTeXHighlighter.cpp:122
 #: src/insets/InsetCommandParams.cpp:503 src/insets/InsetCommandParams.cpp:511
 #: src/insets/InsetListings.cpp:300 src/insets/InsetListings.cpp:308
@@ -27209,18 +27022,18 @@ msgstr "Documentklasse niet beschikbaar"
 msgid "LyX Warning: "
 msgstr "LyX-waarschuwing: "
 
-#: src/BufferParams.cpp:2207 src/Encoding.cpp:254 src/Paragraph.cpp:2708
+#: src/BufferParams.cpp:2208 src/Encoding.cpp:254 src/Paragraph.cpp:2726
 #: src/insets/InsetCommandParams.cpp:504 src/insets/InsetCommandParams.cpp:512
 #: src/insets/InsetListings.cpp:301 src/insets/InsetListings.cpp:309
 #: src/mathed/MathExtern.cpp:1441 src/mathed/MathExtern.cpp:1515
 msgid "uncodable character"
 msgstr "niet-codeerbaar teken"
 
-#: src/BufferParams.cpp:2220
+#: src/BufferParams.cpp:2221
 msgid "Uncodable character in user preamble"
 msgstr "Niet-codeerbaar teken in gebruikerspreambule"
 
-#: src/BufferParams.cpp:2222
+#: src/BufferParams.cpp:2223
 #, c-format
 msgid ""
 "The user preamble of your document contains glyphs that are unknown in the "
@@ -27239,7 +27052,7 @@ msgstr ""
 "Gelieve een gepaste tekencodering voor het document te kiezen\n"
 "(zoals utf8) of de preambule aan te passen."
 
-#: src/BufferParams.cpp:2532
+#: src/BufferParams.cpp:2537
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -27254,11 +27067,11 @@ msgstr ""
 "met standaardlay-outs zal gebruikt worden. LyX zal geen\n"
 "correcte uitvoer kunnen produceren."
 
-#: src/BufferParams.cpp:2538
+#: src/BufferParams.cpp:2543
 msgid "Document class not found"
 msgstr "Documentklasse niet gevonden"
 
-#: src/BufferParams.cpp:2545
+#: src/BufferParams.cpp:2550
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -27273,15 +27086,15 @@ msgstr ""
 "standaarlay-outs zal gebruikt worden. LyX zal geen correcte\n"
 "uitvoer kunnen produceren."
 
-#: src/BufferParams.cpp:2551 src/BufferView.cpp:1357 src/BufferView.cpp:1389
+#: src/BufferParams.cpp:2556 src/BufferView.cpp:1357 src/BufferView.cpp:1389
 msgid "Could not load class"
 msgstr "Kon klasse niet laden"
 
-#: src/BufferParams.cpp:2598
+#: src/BufferParams.cpp:2603
 msgid "Error reading internal layout information"
 msgstr "Fout bij het lezen van interne lay-outinformatie"
 
-#: src/BufferParams.cpp:2599 src/TextClass.cpp:1844 src/TextClass.cpp:1876
+#: src/BufferParams.cpp:2604 src/TextClass.cpp:1851 src/TextClass.cpp:1883
 msgid "Read Error"
 msgstr "Leesfout"
 
@@ -28011,11 +27824,11 @@ msgstr ""
 "Geen informatie voor het converteren van %1$s-bestanden naar %2$s.\n"
 "Definieer een conversie in de instellingen."
 
-#: src/Converter.cpp:571 src/frontends/qt4/GuiDocument.cpp:1943
+#: src/Converter.cpp:571 src/frontends/qt4/GuiDocument.cpp:1955
 msgid "Pygments driver command not found!"
 msgstr "Het commando voor het pygments-stuurprogramma is niet gevonden!"
 
-#: src/Converter.cpp:572 src/frontends/qt4/GuiDocument.cpp:1944
+#: src/Converter.cpp:572 src/frontends/qt4/GuiDocument.cpp:1956
 msgid ""
 "The driver command necessary to use the minted package\n"
 "(pygmentize) has not been found. Make sure you have\n"
@@ -28288,17 +28101,17 @@ msgid "Number %1$s"
 msgstr "Getal %1$s"
 
 #: src/FontInfo.cpp:43 src/frontends/qt4/GuiCharacter.cpp:150
-#: src/frontends/qt4/GuiDocument.cpp:4675 src/frontends/qt4/GuiListings.cpp:163
+#: src/frontends/qt4/GuiDocument.cpp:4731 src/frontends/qt4/GuiListings.cpp:163
 msgid "Roman"
 msgstr "Romein"
 
 #: src/FontInfo.cpp:43 src/frontends/qt4/GuiCharacter.cpp:151
-#: src/frontends/qt4/GuiDocument.cpp:4675 src/frontends/qt4/GuiListings.cpp:163
+#: src/frontends/qt4/GuiDocument.cpp:4731 src/frontends/qt4/GuiListings.cpp:163
 msgid "Sans Serif"
 msgstr "Schreefloos"
 
 #: src/FontInfo.cpp:43 src/frontends/qt4/GuiCharacter.cpp:152
-#: src/frontends/qt4/GuiDocument.cpp:4675 src/frontends/qt4/GuiListings.cpp:163
+#: src/frontends/qt4/GuiDocument.cpp:4731 src/frontends/qt4/GuiListings.cpp:163
 msgid "Typewriter"
 msgstr "Monospace"
 
@@ -28474,19 +28287,19 @@ msgstr "Uitvoeren van BibTeX."
 msgid "Running MakeIndex for nomencl."
 msgstr "Uitvoeren van MakeIndex voor nomencl."
 
-#: src/LaTeX.cpp:1441 src/LaTeX.cpp:1447 src/LaTeX.cpp:1456
+#: src/LaTeX.cpp:1451 src/LaTeX.cpp:1457 src/LaTeX.cpp:1466
 msgid "BibTeX error: "
 msgstr "BibTeX-fout: "
 
-#: src/LaTeX.cpp:1463
+#: src/LaTeX.cpp:1473
 msgid "Biber error: "
 msgstr "Biber-fout: "
 
-#: src/LaTeXFonts.cpp:221 src/LaTeXFonts.cpp:290
+#: src/LaTeXFonts.cpp:221 src/LaTeXFonts.cpp:298
 msgid "Font not available"
 msgstr "Lettertype niet beschikbaar"
 
-#: src/LaTeXFonts.cpp:222 src/LaTeXFonts.cpp:291
+#: src/LaTeXFonts.cpp:222 src/LaTeXFonts.cpp:299
 #, c-format
 msgid ""
 "The LaTeX package `%1$s' needed for the font `%2$s'\n"
@@ -29404,15 +29217,15 @@ msgstr "Terug naar opgeslagen versie van document?"
 msgid "&Revert"
 msgstr "&Teruggaan"
 
-#: src/Paragraph.cpp:2008
+#: src/Paragraph.cpp:2024
 msgid "Senseless with this layout!"
 msgstr "Zinloos met deze lay-out!"
 
-#: src/Paragraph.cpp:2069
+#: src/Paragraph.cpp:2085
 msgid "Alignment not permitted"
 msgstr "Uitlijnen is niet toegestaan"
 
-#: src/Paragraph.cpp:2070
+#: src/Paragraph.cpp:2086
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -29585,25 +29398,25 @@ msgstr "Alinealay-out ingesteld"
 msgid "Plain Layout"
 msgstr "Eenvoudige lay-out"
 
-#: src/TextClass.cpp:905
+#: src/TextClass.cpp:912
 msgid "Missing File"
 msgstr "Ontbrekend bestand"
 
-#: src/TextClass.cpp:906
+#: src/TextClass.cpp:913
 msgid "Could not find stdinsets.inc! This may lead to data loss!"
 msgstr ""
 "Kon bestand stdinsets.inc niet vinden! Dit kan leiden tot verlies van data!"
 
-#: src/TextClass.cpp:909
+#: src/TextClass.cpp:916
 msgid "Corrupt File"
 msgstr "Corrupt bestand"
 
-#: src/TextClass.cpp:910
+#: src/TextClass.cpp:917
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
 msgstr ""
 "Kon bestand stdinsets.inc niet lezen! Dit kan leiden tot verlies van data!"
 
-#: src/TextClass.cpp:1820
+#: src/TextClass.cpp:1827
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -29617,11 +29430,11 @@ msgstr ""
 "geïnstalleerd hebt, moet u waarschijnlijk\n"
 "opnieuw configureren.\n"
 
-#: src/TextClass.cpp:1825
+#: src/TextClass.cpp:1832
 msgid "Module not available"
 msgstr "Module niet beschikbaar"
 
-#: src/TextClass.cpp:1831
+#: src/TextClass.cpp:1838
 #, c-format
 msgid ""
 "The module %1$s requires a package that is not\n"
@@ -29639,16 +29452,16 @@ msgstr ""
 "\t%2$s\n"
 "Zie paragraaf 3.1.2.3 (Modules) van de Gebruikersgids voor meer info."
 
-#: src/TextClass.cpp:1838 src/TextClass.cpp:1870
+#: src/TextClass.cpp:1845 src/TextClass.cpp:1877
 msgid "Package not available"
 msgstr "Pakket niet beschikbaar"
 
-#: src/TextClass.cpp:1843
+#: src/TextClass.cpp:1850
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr "Fout bij lezen van module %1$s\n"
 
-#: src/TextClass.cpp:1854
+#: src/TextClass.cpp:1861
 #, c-format
 msgid ""
 "The cite engine %1$s has been requested by\n"
@@ -29656,17 +29469,17 @@ msgid ""
 "available engines. If you recently installed it, you\n"
 "probably need to reconfigure LyX.\n"
 msgstr ""
-"De citaatverwerker %1$s werd gevraagd door\n"
+"De citatieverwerker %1$s werd gevraagd door\n"
 "dit document maar is niet gevonden in de lijst\n"
 "van beschikbare verwerkers. Als u het recent\n"
 "geïnstalleerd hebt moet u LyX opnieuw\n"
 "configureren.\n"
 
-#: src/TextClass.cpp:1859
+#: src/TextClass.cpp:1866
 msgid "Cite Engine not available"
-msgstr "Citaatverwerker niet beschikbaar"
+msgstr "Citatieverwerker niet beschikbaar"
 
-#: src/TextClass.cpp:1863
+#: src/TextClass.cpp:1870
 #, c-format
 msgid ""
 "The cite engine %1$s requires a package that is not\n"
@@ -29676,7 +29489,7 @@ msgid ""
 "\t%2$s\n"
 "See section 3.1.2.3 (Modules) of the User's Guide for more information."
 msgstr ""
-"De citaatverwerker %1$s heeft een pakket nodig dat\n"
+"De citatieverwerker %1$s heeft een pakket nodig dat\n"
 "niet beschikbaar is in uw LaTeX-installatie, of een\n"
 "conversieprogramma dat niet geïnstalleerd is.\n"
 "LaTeX-uitvoer is niet mogelijk.\n"
@@ -29684,10 +29497,10 @@ msgstr ""
 "\t%2$s\n"
 "Zie paragraaf 3.1.2.3 (Modules) van de Gebruikersgids voor meer info."
 
-#: src/TextClass.cpp:1875
+#: src/TextClass.cpp:1882
 #, c-format
 msgid "Error reading cite engine %1$s\n"
-msgstr "Fout bij lezen van citaatbewerker %1$s\n"
+msgstr "Fout bij lezen van citatiebewerker %1$s\n"
 
 #: src/TocBackend.cpp:267 src/insets/InsetIndex.cpp:295
 #: src/insets/InsetIndex.cpp:316
@@ -29713,13 +29526,13 @@ msgstr "Zinloos"
 
 #: src/TocBackend.cpp:289
 msgid "Citations"
-msgstr "Citaten"
+msgstr "Citaties"
 
 #: src/TocBackend.cpp:290
 msgid "Labels and References"
-msgstr "Labels en referenties"
+msgstr "Labels en verwijzingen"
 
-#: src/TocBackend.cpp:292 src/frontends/qt4/GuiDocument.cpp:1721
+#: src/TocBackend.cpp:292 src/frontends/qt4/GuiDocument.cpp:1733
 msgid "Child Documents"
 msgstr "Subdocumenten"
 
@@ -29730,6 +29543,10 @@ msgstr "Afbeeldingen"
 #: src/TocBackend.cpp:294
 msgid "Equations"
 msgstr "Vergelijkingen"
+
+#: src/TocBackend.cpp:295 src/frontends/qt4/GuiExternal.cpp:87
+msgid "External Material"
+msgstr "Extern materiaal"
 
 #: src/TocBackend.cpp:297
 msgid "Nomenclature Entries"
@@ -30170,9 +29987,9 @@ msgid "Advanced Find and Replace"
 msgstr "Geavanceerd zoeken en vervangen"
 
 #: src/frontends/qt4/FloatPlacement.cpp:182
-#: src/frontends/qt4/GuiDocument.cpp:1107
-#: src/frontends/qt4/GuiDocument.cpp:2569
-#: src/frontends/qt4/GuiDocument.cpp:2596
+#: src/frontends/qt4/GuiDocument.cpp:1119
+#: src/frontends/qt4/GuiDocument.cpp:2597
+#: src/frontends/qt4/GuiDocument.cpp:2624
 msgid "Class Default"
 msgstr "Standaard van klasse"
 
@@ -30180,7 +29997,7 @@ msgstr "Standaard van klasse"
 msgid "Document Default"
 msgstr "Standaard van document"
 
-#: src/frontends/qt4/FloatPlacement.h:38 src/frontends/qt4/GuiDocument.cpp:1735
+#: src/frontends/qt4/FloatPlacement.h:38 src/frontends/qt4/GuiDocument.cpp:1747
 msgid "Float Settings"
 msgstr "Float-instellingen"
 
@@ -30189,13 +30006,12 @@ msgid "ERROR: LyX wasn't able to find the CREDITS file\n"
 msgstr "FOUT: LyX kan het bestand CREDITS niet vinden\n"
 
 #: src/frontends/qt4/GuiAbout.cpp:52 src/frontends/qt4/GuiAbout.cpp:57
-#, fuzzy
 msgid ""
 "Please install correctly to estimate the great\n"
 "amount of work other people have done for the LyX project."
 msgstr ""
-"hoeveelheid werk in te schatten die mensen gedaan hebben voor het LyX-"
-"project."
+"Gelieve juist te installeren om een idee te krijgen van de grote\n"
+"hoeveelheid werk die mensen gedaan hebben voor het LyX-project."
 
 #: src/frontends/qt4/GuiAbout.cpp:56
 msgid "ERROR: LyX wasn't able to read the CREDITS file\n"
@@ -30206,11 +30022,12 @@ msgid "ERROR: LyX wasn't able to find the RELEASE-NOTES file\n"
 msgstr "FOUT: LyX kan het bestand RELEASE-NOTES niet vinden\n"
 
 #: src/frontends/qt4/GuiAbout.cpp:92 src/frontends/qt4/GuiAbout.cpp:97
-#, fuzzy
 msgid ""
 "Please install correctly to see what has changed\n"
 "for this version of LyX."
-msgstr "Gelieve juist te installeren om te zien wat er\n"
+msgstr ""
+"Gelieve juist te installeren om te zien wat er gewijzigd\n"
+"is in deze versie van LyX."
 
 #: src/frontends/qt4/GuiAbout.cpp:96
 msgid "ERROR: LyX wasn't able to read the RELEASE-NOTES file\n"
@@ -30548,21 +30365,21 @@ msgstr ""
 msgid "Bibliography Item Settings"
 msgstr "Instellingen bibliografie-item"
 
-#: src/frontends/qt4/GuiBibtex.cpp:55 src/frontends/qt4/GuiBibtex.cpp:345
+#: src/frontends/qt4/GuiBibtex.cpp:56 src/frontends/qt4/GuiBibtex.cpp:346
 msgid "BibTeX Bibliography"
 msgstr "BibTeX-bibliografie"
 
-#: src/frontends/qt4/GuiBibtex.cpp:67 src/frontends/qt4/GuiCitation.cpp:104
-#: src/frontends/qt4/GuiDocument.cpp:1621 src/frontends/qt4/GuiLyXFiles.cpp:194
+#: src/frontends/qt4/GuiBibtex.cpp:68 src/frontends/qt4/GuiCitation.cpp:104
+#: src/frontends/qt4/GuiDocument.cpp:1633 src/frontends/qt4/GuiLyXFiles.cpp:194
 #: src/frontends/qt4/GuiRef.cpp:60 src/frontends/qt4/PanelStack.cpp:77
 msgid "Clear text"
 msgstr "Cleartext"
 
-#: src/frontends/qt4/GuiBibtex.cpp:69
+#: src/frontends/qt4/GuiBibtex.cpp:70
 msgid "All avail. databases"
 msgstr "Alle besch. databanken"
 
-#: src/frontends/qt4/GuiBibtex.cpp:117
+#: src/frontends/qt4/GuiBibtex.cpp:118
 msgid ""
 "This list consists of all databases that are indexed by LaTeX and thus are "
 "found without a file path. This is usually everything in the bib/ "
@@ -30574,23 +30391,23 @@ msgstr ""
 "de texmf-boom van LaTeX. Als u uw eigen databank wilt hergebruiken is dit de "
 "plaats om ze op te slaan."
 
-#: src/frontends/qt4/GuiBibtex.cpp:137 src/frontends/qt4/GuiBibtex.cpp:304
+#: src/frontends/qt4/GuiBibtex.cpp:138 src/frontends/qt4/GuiBibtex.cpp:305
 msgid "Document Encoding"
 msgstr "Documentcodering"
 
-#: src/frontends/qt4/GuiBibtex.cpp:275
+#: src/frontends/qt4/GuiBibtex.cpp:276
 msgid "Database"
 msgstr "Databank"
 
-#: src/frontends/qt4/GuiBibtex.cpp:276
+#: src/frontends/qt4/GuiBibtex.cpp:277
 msgid "File Encoding"
 msgstr "Bestandscodering"
 
-#: src/frontends/qt4/GuiBibtex.cpp:283
+#: src/frontends/qt4/GuiBibtex.cpp:284
 msgid "General E&ncoding:"
 msgstr "Algemene &codering:"
 
-#: src/frontends/qt4/GuiBibtex.cpp:284
+#: src/frontends/qt4/GuiBibtex.cpp:285
 msgid ""
 "If your bibliography databases use a different encoding than the LyX "
 "document, specify it here. If indivivual databases have different encodings, "
@@ -30600,11 +30417,11 @@ msgstr ""
 "document, voer het dan hier in. Als individuele databanken verschillende "
 "coderingen hebben, kan u ze in de lijst hierboven instellen."
 
-#: src/frontends/qt4/GuiBibtex.cpp:303
+#: src/frontends/qt4/GuiBibtex.cpp:304
 msgid "General Encoding"
 msgstr "Algemene codering"
 
-#: src/frontends/qt4/GuiBibtex.cpp:310
+#: src/frontends/qt4/GuiBibtex.cpp:311
 msgid ""
 "If this bibliography database uses a different encoding than specified "
 "below, set it here"
@@ -30612,17 +30429,17 @@ msgstr ""
 "Als deze bibliografische databank een andere codering gebruikt dan die "
 "hieronder opgegeven, stel het dan hier in"
 
-#: src/frontends/qt4/GuiBibtex.cpp:343
+#: src/frontends/qt4/GuiBibtex.cpp:344
 msgid "Biblatex Bibliography"
 msgstr "Biblatex-bibliografie"
 
-#: src/frontends/qt4/GuiBibtex.cpp:358 src/insets/InsetBibtex.cpp:228
+#: src/frontends/qt4/GuiBibtex.cpp:362 src/insets/InsetBibtex.cpp:228
 msgid "all reference units"
 msgstr "alle referentie-eenheden"
 
-#: src/frontends/qt4/GuiBibtex.cpp:454 src/frontends/qt4/GuiBibtex.cpp:464
+#: src/frontends/qt4/GuiBibtex.cpp:458 src/frontends/qt4/GuiBibtex.cpp:468
 #: src/frontends/qt4/GuiCompare.cpp:163 src/frontends/qt4/GuiCompare.cpp:167
-#: src/frontends/qt4/GuiDocument.cpp:2742 src/frontends/qt4/GuiExternal.cpp:677
+#: src/frontends/qt4/GuiDocument.cpp:2779 src/frontends/qt4/GuiExternal.cpp:677
 #: src/frontends/qt4/GuiGraphics.cpp:791 src/frontends/qt4/GuiInclude.cpp:330
 #: src/frontends/qt4/GuiLyXFiles.cpp:353 src/frontends/qt4/GuiLyXFiles.cpp:359
 #: src/frontends/qt4/GuiView.cpp:2310 src/frontends/qt4/GuiView.cpp:2369
@@ -30631,19 +30448,19 @@ msgstr "alle referentie-eenheden"
 msgid "D&ocuments"
 msgstr "D&ocumenten"
 
-#: src/frontends/qt4/GuiBibtex.cpp:456
+#: src/frontends/qt4/GuiBibtex.cpp:460
 msgid "BibTeX Databases (*.bib)"
 msgstr "BibTeX-databanken (*.bib)"
 
-#: src/frontends/qt4/GuiBibtex.cpp:458
+#: src/frontends/qt4/GuiBibtex.cpp:462
 msgid "Select a BibTeX database to add"
 msgstr "Kies een BibTeX-databank om toe te voegen"
 
-#: src/frontends/qt4/GuiBibtex.cpp:466
+#: src/frontends/qt4/GuiBibtex.cpp:470
 msgid "BibTeX Styles (*.bst)"
 msgstr "BibTeX-stijlen (*.bst)"
 
-#: src/frontends/qt4/GuiBibtex.cpp:468
+#: src/frontends/qt4/GuiBibtex.cpp:472
 msgid "Select a BibTeX style"
 msgstr "Kies een BibTeX-stijl"
 
@@ -30709,8 +30526,8 @@ msgid "Filename Suffix"
 msgstr "Achtervoegsel bestandsnaam"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
-#: src/frontends/qt4/GuiDocument.cpp:3181
-#: src/frontends/qt4/GuiDocument.cpp:4400
+#: src/frontends/qt4/GuiDocument.cpp:3218
+#: src/frontends/qt4/GuiDocument.cpp:4456
 #: src/frontends/qt4/GuiProgressView.cpp:144
 #: src/frontends/qt4/GuiProgressView.cpp:158
 #: src/frontends/qt4/GuiProgressView.cpp:179
@@ -30718,9 +30535,9 @@ msgid "Yes"
 msgstr "Ja"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
-#: src/frontends/qt4/GuiDocument.cpp:3180
-#: src/frontends/qt4/GuiDocument.cpp:3778
-#: src/frontends/qt4/GuiDocument.cpp:4399
+#: src/frontends/qt4/GuiDocument.cpp:3217
+#: src/frontends/qt4/GuiDocument.cpp:3819
+#: src/frontends/qt4/GuiDocument.cpp:4455
 #: src/frontends/qt4/GuiProgressView.cpp:110
 #: src/frontends/qt4/GuiProgressView.cpp:143
 #: src/frontends/qt4/GuiProgressView.cpp:179
@@ -30850,8 +30667,8 @@ msgid ""
 "Ordered list of all cited references.\n"
 "You can reorder, add and remove references with the buttons on the left."
 msgstr ""
-"Gesorteerde lijst van alle geciteerde referenties.\n"
-"U kan referenties van plaats veranderen, toevoegen en verwijderen met de "
+"Gesorteerde lijst van alle aangehaalde referenties.\n"
+"U kan verwijzingen van plaats veranderen, toevoegen en verwijderen met de "
 "knoppen links."
 
 #: src/frontends/qt4/GuiCitation.cpp:299
@@ -30915,11 +30732,11 @@ msgstr "Sleutels"
 
 #: src/frontends/qt4/GuiCitation.cpp:479
 msgid "Displays a sketchy preview if a citation is selected above"
-msgstr "Toont een vaag voorbeeld als hierboven een citaat geselecteerd is"
+msgstr "Toont een vaag voorbeeld als hierboven een citatie geselecteerd is"
 
 #: src/frontends/qt4/GuiCitation.cpp:483
 msgid "Sketchy preview of the selected citation"
-msgstr "Vaag voorbeeld van het geselecteerde citaat"
+msgstr "Vaag voorbeeld van de geselecteerde citatie"
 
 #: src/frontends/qt4/GuiCitation.cpp:594
 msgid "Enter string to filter the list of available citations"
@@ -30946,7 +30763,7 @@ msgstr "Tekst ervoor"
 
 #: src/frontends/qt4/GuiCitation.cpp:661
 msgid "Cite key"
-msgstr "Citaatsleutel"
+msgstr "Citatiesleutel"
 
 #: src/frontends/qt4/GuiCitation.cpp:662
 msgid "Text after"
@@ -31111,23 +30928,81 @@ msgid "Unicode (utf8)"
 msgstr "Unicode (utf8)"
 
 #: src/frontends/qt4/GuiDocument.cpp:970
-#, fuzzy
-msgid "Legacy (auto-selected)"
-msgstr "Traditioneel (automatisch gekozen)"
+msgid "Traditional (auto-selected)"
+msgstr "Traditioneel (autom. gekozen)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1102
+#: src/frontends/qt4/GuiDocument.cpp:973
+msgid "Select Unicode (utf8) encoding."
+msgstr "Selecteer Unicode (utf8)-codering."
+
+#: src/frontends/qt4/GuiDocument.cpp:975
+msgid "Use language-dependent traditional encodings."
+msgstr "Gebruik taalafhankelijke, traditionele coderingen."
+
+#: src/frontends/qt4/GuiDocument.cpp:977
+msgid "Select a custom, document-wide encoding."
+msgstr "Selecteer een aangepaste, documentbrede codering."
+
+#: src/frontends/qt4/GuiDocument.cpp:986
+msgid "Standard Unicode support by the ``inputenc'' package."
+msgstr "Standaardondersteuning voor Unicode door het pakket ``inputenc''."
+
+#: src/frontends/qt4/GuiDocument.cpp:989
+msgid ""
+"Use UTF-8 'as-is': do not load any supporting packages, do not convert any "
+"characters to LaTeX macros. For use with non-TeX fonts (XeTeX/LuaTeX) or "
+"custom preamble code."
+msgstr ""
+"Gebruik UTF-8 'zoals het is': laadt geen ondersteunende pakketten, zet geen "
+"tekens om naar LaTeX-macro's. Voor gebruikt met niet-TeX lettertypes (XeTeX/"
+"LuaTeX) of aangepaste code in de preambule."
+
+#: src/frontends/qt4/GuiDocument.cpp:994
+msgid ""
+"Load ``inputenc'' with option 'utf8x' for extended Unicode support by the "
+"``ucs'' package."
+msgstr ""
+"Laad ``inputenc'' met optie 'utf8x' voor uitgebreide Unicode-ondersteuning "
+"door het pakket ``ucs''."
+
+#: src/frontends/qt4/GuiDocument.cpp:997
+msgid "Language Default"
+msgstr "Standaard voor taal"
+
+#: src/frontends/qt4/GuiDocument.cpp:998
+msgid "Language Default (no inputenc)"
+msgstr "Standaard van taal (geen inputenc)"
+
+#: src/frontends/qt4/GuiDocument.cpp:1000
+msgid ""
+"Use the traditional default encoding of the text language. Switch encoding "
+"if a text part is set to a language with different default."
+msgstr ""
+"Gebruik de traditionele standaardcodering voor de taal van de tekst. "
+"Verandert de codering als een deel van de tekst in een taal met een andere "
+"codering is."
+
+#: src/frontends/qt4/GuiDocument.cpp:1004
+msgid ""
+"Do not load the 'inputenc' package. Switch encoding if required but do not "
+"write input encoding switch commands to the source."
+msgstr ""
+"Laadt het pakket 'inputenc' niet. Verandert de codering indien nodig, maar "
+"schrijft geen commando's om de invoercodering te veranderen."
+
+#: src/frontends/qt4/GuiDocument.cpp:1114
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt4/GuiDocument.cpp:1103
+#: src/frontends/qt4/GuiDocument.cpp:1115
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt4/GuiDocument.cpp:1104
+#: src/frontends/qt4/GuiDocument.cpp:1116
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt4/GuiDocument.cpp:1116
+#: src/frontends/qt4/GuiDocument.cpp:1128
 msgid ""
 "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)\n"
 "You need to install the package \"fontspec\" to use this feature"
@@ -31136,195 +31011,195 @@ msgstr ""
 "LuaTex)\n"
 "U moet het pakket \"fontspec\" installeren om deze functie te gebruiken"
 
-#: src/frontends/qt4/GuiDocument.cpp:1148
+#: src/frontends/qt4/GuiDocument.cpp:1160
 msgid "empty"
 msgstr "leeg"
 
-#: src/frontends/qt4/GuiDocument.cpp:1149
+#: src/frontends/qt4/GuiDocument.cpp:1161
 msgid "plain"
 msgstr "eenvoudig"
 
-#: src/frontends/qt4/GuiDocument.cpp:1150
+#: src/frontends/qt4/GuiDocument.cpp:1162
 msgid "headings"
 msgstr "hoofdingen"
 
-#: src/frontends/qt4/GuiDocument.cpp:1151
+#: src/frontends/qt4/GuiDocument.cpp:1163
 msgid "fancy"
 msgstr "fancy"
 
-#: src/frontends/qt4/GuiDocument.cpp:1160
+#: src/frontends/qt4/GuiDocument.cpp:1172
 msgid "US letter"
 msgstr "US letter"
 
-#: src/frontends/qt4/GuiDocument.cpp:1161
+#: src/frontends/qt4/GuiDocument.cpp:1173
 msgid "US legal"
 msgstr "US legal"
 
-#: src/frontends/qt4/GuiDocument.cpp:1162
+#: src/frontends/qt4/GuiDocument.cpp:1174
 msgid "US executive"
 msgstr "US executive"
 
-#: src/frontends/qt4/GuiDocument.cpp:1163
+#: src/frontends/qt4/GuiDocument.cpp:1175
 msgid "A0"
 msgstr "A0"
 
-#: src/frontends/qt4/GuiDocument.cpp:1164
+#: src/frontends/qt4/GuiDocument.cpp:1176
 msgid "A1"
 msgstr "A1"
 
-#: src/frontends/qt4/GuiDocument.cpp:1165
+#: src/frontends/qt4/GuiDocument.cpp:1177
 msgid "A2"
 msgstr "A2"
 
-#: src/frontends/qt4/GuiDocument.cpp:1166
+#: src/frontends/qt4/GuiDocument.cpp:1178
 msgid "A3"
 msgstr "A3"
 
-#: src/frontends/qt4/GuiDocument.cpp:1167
+#: src/frontends/qt4/GuiDocument.cpp:1179
 msgid "A4"
 msgstr "A4"
 
-#: src/frontends/qt4/GuiDocument.cpp:1168
+#: src/frontends/qt4/GuiDocument.cpp:1180
 msgid "A5"
 msgstr "A5"
 
-#: src/frontends/qt4/GuiDocument.cpp:1169
+#: src/frontends/qt4/GuiDocument.cpp:1181
 msgid "A6"
 msgstr "A6"
 
-#: src/frontends/qt4/GuiDocument.cpp:1170
+#: src/frontends/qt4/GuiDocument.cpp:1182
 msgid "B0"
 msgstr "B0"
 
-#: src/frontends/qt4/GuiDocument.cpp:1171
+#: src/frontends/qt4/GuiDocument.cpp:1183
 msgid "B1"
 msgstr "B1"
 
-#: src/frontends/qt4/GuiDocument.cpp:1172
+#: src/frontends/qt4/GuiDocument.cpp:1184
 msgid "B2"
 msgstr "B2"
 
-#: src/frontends/qt4/GuiDocument.cpp:1173
+#: src/frontends/qt4/GuiDocument.cpp:1185
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt4/GuiDocument.cpp:1174
+#: src/frontends/qt4/GuiDocument.cpp:1186
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt4/GuiDocument.cpp:1175
+#: src/frontends/qt4/GuiDocument.cpp:1187
 msgid "B5"
 msgstr "B5"
 
-#: src/frontends/qt4/GuiDocument.cpp:1176
+#: src/frontends/qt4/GuiDocument.cpp:1188
 msgid "B6"
 msgstr "B6"
 
-#: src/frontends/qt4/GuiDocument.cpp:1177
+#: src/frontends/qt4/GuiDocument.cpp:1189
 msgid "C0"
 msgstr "C0"
 
-#: src/frontends/qt4/GuiDocument.cpp:1178
+#: src/frontends/qt4/GuiDocument.cpp:1190
 msgid "C1"
 msgstr "C1"
 
-#: src/frontends/qt4/GuiDocument.cpp:1179
+#: src/frontends/qt4/GuiDocument.cpp:1191
 msgid "C2"
 msgstr "C2"
 
-#: src/frontends/qt4/GuiDocument.cpp:1180
+#: src/frontends/qt4/GuiDocument.cpp:1192
 msgid "C3"
 msgstr "C3"
 
-#: src/frontends/qt4/GuiDocument.cpp:1181
+#: src/frontends/qt4/GuiDocument.cpp:1193
 msgid "C4"
 msgstr "C4"
 
-#: src/frontends/qt4/GuiDocument.cpp:1182
+#: src/frontends/qt4/GuiDocument.cpp:1194
 msgid "C5"
 msgstr "C5"
 
-#: src/frontends/qt4/GuiDocument.cpp:1183
+#: src/frontends/qt4/GuiDocument.cpp:1195
 msgid "C6"
 msgstr "C6"
 
-#: src/frontends/qt4/GuiDocument.cpp:1184
+#: src/frontends/qt4/GuiDocument.cpp:1196
 msgid "JIS B0"
 msgstr "JIS B0"
 
-#: src/frontends/qt4/GuiDocument.cpp:1185
+#: src/frontends/qt4/GuiDocument.cpp:1197
 msgid "JIS B1"
 msgstr "JIS B1"
 
-#: src/frontends/qt4/GuiDocument.cpp:1186
+#: src/frontends/qt4/GuiDocument.cpp:1198
 msgid "JIS B2"
 msgstr "JIS B2"
 
-#: src/frontends/qt4/GuiDocument.cpp:1187
+#: src/frontends/qt4/GuiDocument.cpp:1199
 msgid "JIS B3"
 msgstr "JIS B3"
 
-#: src/frontends/qt4/GuiDocument.cpp:1188
+#: src/frontends/qt4/GuiDocument.cpp:1200
 msgid "JIS B4"
 msgstr "JIS B4"
 
-#: src/frontends/qt4/GuiDocument.cpp:1189
+#: src/frontends/qt4/GuiDocument.cpp:1201
 msgid "JIS B5"
 msgstr "JIS B5"
 
-#: src/frontends/qt4/GuiDocument.cpp:1190
+#: src/frontends/qt4/GuiDocument.cpp:1202
 msgid "JIS B6"
 msgstr "JIS B6"
 
-#: src/frontends/qt4/GuiDocument.cpp:1305
+#: src/frontends/qt4/GuiDocument.cpp:1317
 msgid "Numbered"
 msgstr "Genummerd"
 
-#: src/frontends/qt4/GuiDocument.cpp:1306
+#: src/frontends/qt4/GuiDocument.cpp:1318
 msgid "Appears in TOC"
 msgstr "Komt voor in inhoudsopgave"
 
-#: src/frontends/qt4/GuiDocument.cpp:1394
+#: src/frontends/qt4/GuiDocument.cpp:1406
 msgid "Package"
 msgstr "Pakket"
 
-#: src/frontends/qt4/GuiDocument.cpp:1394
+#: src/frontends/qt4/GuiDocument.cpp:1406
 msgid "Load automatically"
 msgstr "Automatisch laden"
 
-#: src/frontends/qt4/GuiDocument.cpp:1395
+#: src/frontends/qt4/GuiDocument.cpp:1407
 msgid "Load always"
 msgstr "Altijd laden"
 
-#: src/frontends/qt4/GuiDocument.cpp:1395
+#: src/frontends/qt4/GuiDocument.cpp:1407
 msgid "Do not load"
 msgstr "Niet laden"
 
-#: src/frontends/qt4/GuiDocument.cpp:1407
+#: src/frontends/qt4/GuiDocument.cpp:1419
 msgid "The AMS LaTeX packages are always used"
 msgstr "De AMS-pakketten worden altijd gebruikt"
 
-#: src/frontends/qt4/GuiDocument.cpp:1410
+#: src/frontends/qt4/GuiDocument.cpp:1422
 #, c-format
 msgid "The LaTeX package %1$s is always used"
 msgstr "Het LaTeX-pakket %1$s wordt altijd gebruikt"
 
-#: src/frontends/qt4/GuiDocument.cpp:1415
+#: src/frontends/qt4/GuiDocument.cpp:1427
 msgid "The AMS LaTeX packages are never used"
 msgstr "De AMS-pakketten worden nooit gebruikt"
 
-#: src/frontends/qt4/GuiDocument.cpp:1418
+#: src/frontends/qt4/GuiDocument.cpp:1430
 #, c-format
 msgid "The LaTeX package %1$s is never used"
 msgstr "Het LaTeX-pakket %1$s wordt nooit gebruikt"
 
-#: src/frontends/qt4/GuiDocument.cpp:1555
-#: src/frontends/qt4/GuiDocument.cpp:2721
+#: src/frontends/qt4/GuiDocument.cpp:1567
+#: src/frontends/qt4/GuiDocument.cpp:2758
 #, c-format
 msgid "%1$s [Class '%2$s']"
 msgstr "%1$s [Klasse '%2$s']"
 
-#: src/frontends/qt4/GuiDocument.cpp:1558
+#: src/frontends/qt4/GuiDocument.cpp:1570
 #, c-format
 msgid ""
 "Class not found by LyX. Please check if you have the matching %1$s class and "
@@ -31333,105 +31208,116 @@ msgstr ""
 "Klasse niet gevonden door LyX. Controleer of de overeenkomstige klasse %1$s "
 "en alle vereiste pakketten (%2$s) geïnstalleerd zijn."
 
-#: src/frontends/qt4/GuiDocument.cpp:1623
+#: src/frontends/qt4/GuiDocument.cpp:1635
 msgid "All avail. modules"
 msgstr "Alle besch. modules"
 
-#: src/frontends/qt4/GuiDocument.cpp:1713
-#: src/frontends/qt4/GuiDocument.cpp:1929
+#: src/frontends/qt4/GuiDocument.cpp:1725
+#: src/frontends/qt4/GuiDocument.cpp:1941
 msgid "Input listings parameters below. Enter ? for a list of parameters."
 msgstr ""
 "Geef hieronder parameters voor codefragmenten op. Gebruik ? voor een lijst "
 "van alle parameters."
 
-#: src/frontends/qt4/GuiDocument.cpp:1720
+#: src/frontends/qt4/GuiDocument.cpp:1732
 msgid "Document Class"
 msgstr "Documentklasse"
 
-#: src/frontends/qt4/GuiDocument.cpp:1723
+#: src/frontends/qt4/GuiDocument.cpp:1734
+msgid "Modules"
+msgstr "Modules"
+
+#: src/frontends/qt4/GuiDocument.cpp:1735
 msgid "Local Layout"
 msgstr "Lokale lay-out"
 
-#: src/frontends/qt4/GuiDocument.cpp:1725
+#: src/frontends/qt4/GuiDocument.cpp:1737
 msgid "Text Layout"
 msgstr "Tekstlay-out"
 
-#: src/frontends/qt4/GuiDocument.cpp:1727
+#: src/frontends/qt4/GuiDocument.cpp:1739
 msgid "Page Margins"
 msgstr "Paginamarges"
 
-#: src/frontends/qt4/GuiDocument.cpp:1729 src/frontends/qt4/GuiPrefs.cpp:1057
+#: src/frontends/qt4/GuiDocument.cpp:1741 src/frontends/qt4/GuiPrefs.cpp:1057
 msgid "Colors"
 msgstr "Kleuren"
 
-#: src/frontends/qt4/GuiDocument.cpp:1730
+#: src/frontends/qt4/GuiDocument.cpp:1742
 msgid "Numbering & TOC"
 msgstr "Nummering en inhoudsopgave"
 
-#: src/frontends/qt4/GuiDocument.cpp:1732
+#: src/frontends/qt4/GuiDocument.cpp:1744
 msgid "Indexes"
 msgstr "Indices"
 
-#: src/frontends/qt4/GuiDocument.cpp:1733
+#: src/frontends/qt4/GuiDocument.cpp:1745
 msgid "PDF Properties"
 msgstr "PDF-eigenschappen"
 
-#: src/frontends/qt4/GuiDocument.cpp:1734
+#: src/frontends/qt4/GuiDocument.cpp:1746
 msgid "Math Options"
 msgstr "Wiskunde-opties"
 
-#: src/frontends/qt4/GuiDocument.cpp:1737
+#: src/frontends/qt4/GuiDocument.cpp:1749
 msgid "Bullets"
 msgstr "Opsommingstekens"
 
-#: src/frontends/qt4/GuiDocument.cpp:1739
+#: src/frontends/qt4/GuiDocument.cpp:1751
 msgid "Formats[[output]]"
 msgstr "Formaten"
 
-#: src/frontends/qt4/GuiDocument.cpp:1740
+#: src/frontends/qt4/GuiDocument.cpp:1752
 msgid "LaTeX Preamble"
 msgstr "LaTeX-preambule"
 
-#: src/frontends/qt4/GuiDocument.cpp:2120
-#: src/frontends/qt4/GuiDocument.cpp:2150
+#: src/frontends/qt4/GuiDocument.cpp:2132
+#: src/frontends/qt4/GuiDocument.cpp:2162
 msgid "&Default..."
 msgstr "Stan&daard..."
 
-#: src/frontends/qt4/GuiDocument.cpp:2503
-#: src/frontends/qt4/GuiDocument.cpp:4126
-#: src/frontends/qt4/GuiDocument.cpp:4135
-#: src/frontends/qt4/GuiDocument.cpp:4144
-#: src/frontends/qt4/GuiDocument.cpp:4153
+#: src/frontends/qt4/GuiDocument.cpp:2359
+msgid "Direct (No inputenc)"
+msgstr "Direct (geen inputenc)"
+
+#: src/frontends/qt4/GuiDocument.cpp:2361
+msgid "Direct (XeTeX/LuaTeX)"
+msgstr "Direct (XeTeX/LuaTeX)"
+
+#: src/frontends/qt4/GuiDocument.cpp:2531
+#: src/frontends/qt4/GuiDocument.cpp:4167
+#: src/frontends/qt4/GuiDocument.cpp:4176
+#: src/frontends/qt4/GuiDocument.cpp:4185
+#: src/frontends/qt4/GuiDocument.cpp:4194
 msgid " (not installed)"
 msgstr " (niet geïnstalleerd)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2528
+#: src/frontends/qt4/GuiDocument.cpp:2556
 msgid "Non-TeX Fonts Default"
 msgstr "Niet-TeX lettertypes standaard"
 
-#: src/frontends/qt4/GuiDocument.cpp:2530
+#: src/frontends/qt4/GuiDocument.cpp:2558
 msgid " (not available)"
 msgstr " (niet beschikbaar)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2531
+#: src/frontends/qt4/GuiDocument.cpp:2559
 msgid "Class Default (TeX Fonts)"
 msgstr "Standaard van klasse (TeX lettertypes)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2673
-#, fuzzy
+#: src/frontends/qt4/GuiDocument.cpp:2710
 msgid "Lay&outs"
-msgstr "Lay-outs|#o#O"
+msgstr "Lay-&outs"
 
-#: src/frontends/qt4/GuiDocument.cpp:2675
+#: src/frontends/qt4/GuiDocument.cpp:2712
 msgid "LyX Layout (*.layout)"
 msgstr "LyX-lay-out (*.layout)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2677
-#: src/frontends/qt4/GuiDocument.cpp:2686
+#: src/frontends/qt4/GuiDocument.cpp:2714
+#: src/frontends/qt4/GuiDocument.cpp:2723
 msgid "Local layout file"
 msgstr "Lokaal lay-outbestand"
 
-#: src/frontends/qt4/GuiDocument.cpp:2687
+#: src/frontends/qt4/GuiDocument.cpp:2724
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory.\n"
@@ -31444,35 +31330,35 @@ msgstr ""
 "deze lay-out als u het lay-outbestand verplaatst\n"
 "naar een andere map."
 
-#: src/frontends/qt4/GuiDocument.cpp:2691
+#: src/frontends/qt4/GuiDocument.cpp:2728
 msgid "&Set Layout"
 msgstr "Lay-out &instellen"
 
-#: src/frontends/qt4/GuiDocument.cpp:2705
+#: src/frontends/qt4/GuiDocument.cpp:2742
 msgid "Unable to read local layout file."
 msgstr "Kon lokaal lay-outbestand niet lezen."
 
-#: src/frontends/qt4/GuiDocument.cpp:2722
+#: src/frontends/qt4/GuiDocument.cpp:2759
 msgid "This is a local layout file."
 msgstr "Dit is een lokaal lay-outbestand."
 
-#: src/frontends/qt4/GuiDocument.cpp:2736
+#: src/frontends/qt4/GuiDocument.cpp:2773
 msgid "Select master document"
 msgstr "Hoofddocument selecteren"
 
-#: src/frontends/qt4/GuiDocument.cpp:2740
+#: src/frontends/qt4/GuiDocument.cpp:2777
 msgid "LyX Files (*.lyx)"
 msgstr "LyX-bestanden (*.lyx)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2764
-#: src/frontends/qt4/GuiDocument.cpp:3068
-#: src/frontends/qt4/GuiDocument.cpp:4607
+#: src/frontends/qt4/GuiDocument.cpp:2801
+#: src/frontends/qt4/GuiDocument.cpp:3105
+#: src/frontends/qt4/GuiDocument.cpp:4663
 msgid "Unapplied changes"
 msgstr "Niett-toegepaste wijzigingen"
 
-#: src/frontends/qt4/GuiDocument.cpp:2765
-#: src/frontends/qt4/GuiDocument.cpp:3069
-#: src/frontends/qt4/GuiDocument.cpp:4608
+#: src/frontends/qt4/GuiDocument.cpp:2802
+#: src/frontends/qt4/GuiDocument.cpp:3106
+#: src/frontends/qt4/GuiDocument.cpp:4664
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -31480,145 +31366,146 @@ msgstr ""
 "Sommige wijzigingen in dit dialoogvenster zijn nog niet toegepast.\n"
 "Als u ze nu niet toepast, zullen ze verloren gaan na deze actie."
 
-#: src/frontends/qt4/GuiDocument.cpp:2767
-#: src/frontends/qt4/GuiDocument.cpp:3071
-#: src/frontends/qt4/GuiDocument.cpp:4610
+#: src/frontends/qt4/GuiDocument.cpp:2804
+#: src/frontends/qt4/GuiDocument.cpp:3108
+#: src/frontends/qt4/GuiDocument.cpp:4666
 msgid "&Apply"
 msgstr "&Toepassen"
 
-#: src/frontends/qt4/GuiDocument.cpp:2767
-#: src/frontends/qt4/GuiDocument.cpp:3071
-#: src/frontends/qt4/GuiDocument.cpp:4610
+#: src/frontends/qt4/GuiDocument.cpp:2804
+#: src/frontends/qt4/GuiDocument.cpp:3108
+#: src/frontends/qt4/GuiDocument.cpp:4666
 msgid "&Dismiss"
 msgstr "&Negeren"
 
-#: src/frontends/qt4/GuiDocument.cpp:2778
-#: src/frontends/qt4/GuiDocument.cpp:4618
+#: src/frontends/qt4/GuiDocument.cpp:2815
+#: src/frontends/qt4/GuiDocument.cpp:4674
 msgid "Unable to set document class."
 msgstr "Kan documentklasse niet instellen."
 
-#: src/frontends/qt4/GuiDocument.cpp:2944
+#: src/frontends/qt4/GuiDocument.cpp:2981
 msgid "Basic numerical"
 msgstr "Basisch numeriek"
 
-#: src/frontends/qt4/GuiDocument.cpp:2947
+#: src/frontends/qt4/GuiDocument.cpp:2984
 msgid "Author-year"
 msgstr "Auteur-jaar"
 
-#: src/frontends/qt4/GuiDocument.cpp:2950
+#: src/frontends/qt4/GuiDocument.cpp:2987
 msgid "Author-number"
 msgstr "Auteur-nummer"
 
-#: src/frontends/qt4/GuiDocument.cpp:2993
+#: src/frontends/qt4/GuiDocument.cpp:3030
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s en %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:3000
+#: src/frontends/qt4/GuiDocument.cpp:3037
 #, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:3005
+#: src/frontends/qt4/GuiDocument.cpp:3042
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s, %2$s en %3$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:3019
+#: src/frontends/qt4/GuiDocument.cpp:3056
 #, c-format
 msgid "%1$s (unavailable)"
 msgstr "%1$s (niet beschikbaar)"
 
-#: src/frontends/qt4/GuiDocument.cpp:3118
+#: src/frontends/qt4/GuiDocument.cpp:3155
 msgid "Module provided by document class."
 msgstr "Module voorzien door documentklasse."
 
-#: src/frontends/qt4/GuiDocument.cpp:3126
+#: src/frontends/qt4/GuiDocument.cpp:3163
 #, c-format
 msgid "<p><b>Category:</b> %1$s.</p>"
 msgstr "<p><b>Categorie:</b> %1$s.</p>"
 
-#: src/frontends/qt4/GuiDocument.cpp:3136
-#, fuzzy, c-format
+#: src/frontends/qt4/GuiDocument.cpp:3173
+#, c-format
 msgid "<p><b>Package(s) required:</b> %1$s.</p>"
-msgstr "Vereiste pakketten: %1$s."
+msgstr "<p><b>Vereist(e) pakket(ten):</b> %1$s.</p>"
 
-#: src/frontends/qt4/GuiDocument.cpp:3142
+#: src/frontends/qt4/GuiDocument.cpp:3179
 msgid "or"
 msgstr "of"
 
-#: src/frontends/qt4/GuiDocument.cpp:3145
-#, fuzzy, c-format
+#: src/frontends/qt4/GuiDocument.cpp:3182
+#, c-format
 msgid "<p><b>Modules required:</b> %1$s.</p>"
-msgstr "Vereiste modules: %1$s."
+msgstr "<p><b>Vereiste modules:</b> %1$s.</p>"
 
-#: src/frontends/qt4/GuiDocument.cpp:3154
-#, fuzzy, c-format
+#: src/frontends/qt4/GuiDocument.cpp:3191
+#, c-format
 msgid "<p><b>Modules excluded:</b> %1$s.</p>"
-msgstr "Uitgesloten modules: %1$s."
+msgstr "<p><b>Uitgesloten modules:</b> %1$s.</p>"
 
-#: src/frontends/qt4/GuiDocument.cpp:3159
-#, fuzzy, c-format
+#: src/frontends/qt4/GuiDocument.cpp:3196
+#, c-format
 msgid "<p><b>Filename:</b> <tt>%1$s.module</tt>.</p>"
-msgstr "Bestandsnaam: %1$s.module."
+msgstr "<p><b>Bestandsnaam:</b> <tt>%1$s.module</tt>.</p>"
 
-#: src/frontends/qt4/GuiDocument.cpp:3164
-#, fuzzy
+#: src/frontends/qt4/GuiDocument.cpp:3201
 msgid ""
 "<p><font color=red><b>WARNING: Some required packages are unavailable!</b></"
 "font></p>"
-msgstr "WAARSCHUWING: sommige vereiste pakketten zijn niet beschikbaar!"
+msgstr ""
+"<p><font color=red><b>WAARSCHUWING: sommige vereiste pakketten zijn niet "
+"beschikbaar!</b></font></p>"
 
-#: src/frontends/qt4/GuiDocument.cpp:3780
+#: src/frontends/qt4/GuiDocument.cpp:3821
 msgid "per part"
 msgstr "per deel"
 
-#: src/frontends/qt4/GuiDocument.cpp:3782
+#: src/frontends/qt4/GuiDocument.cpp:3823
 msgid "per chapter"
 msgstr "per hoofdstuk"
 
-#: src/frontends/qt4/GuiDocument.cpp:3784
+#: src/frontends/qt4/GuiDocument.cpp:3825
 msgid "per section"
 msgstr "per paragraaf"
 
-#: src/frontends/qt4/GuiDocument.cpp:3786
+#: src/frontends/qt4/GuiDocument.cpp:3827
 msgid "per subsection"
 msgstr "per subparagraaf"
 
-#: src/frontends/qt4/GuiDocument.cpp:3787
+#: src/frontends/qt4/GuiDocument.cpp:3828
 msgid "per child document"
 msgstr "per subdocument"
 
-#: src/frontends/qt4/GuiDocument.cpp:4057
+#: src/frontends/qt4/GuiDocument.cpp:4098
 msgid "[No options predefined]"
 msgstr "[Geen vooraf gedefinieerde opties]"
 
-#: src/frontends/qt4/GuiDocument.cpp:4289
+#: src/frontends/qt4/GuiDocument.cpp:4345
 msgid "C&ustomize Hyperref Options"
 msgstr "A&angepaste opties voor hyperref"
 
-#: src/frontends/qt4/GuiDocument.cpp:4291
+#: src/frontends/qt4/GuiDocument.cpp:4347
 msgid "&Use Hyperref Support"
 msgstr "&Hyperref gebruiken"
 
-#: src/frontends/qt4/GuiDocument.cpp:4630
+#: src/frontends/qt4/GuiDocument.cpp:4686
 msgid "Can't set layout!"
 msgstr "Kan lay-out niet instellen!"
 
-#: src/frontends/qt4/GuiDocument.cpp:4631
+#: src/frontends/qt4/GuiDocument.cpp:4687
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Kan ly-out niet instellen voor ID: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:4729
+#: src/frontends/qt4/GuiDocument.cpp:4785
 msgid "Not Found"
 msgstr "Niet gevonden"
 
-#: src/frontends/qt4/GuiDocument.cpp:4791
+#: src/frontends/qt4/GuiDocument.cpp:4847
 msgid "Assigned master does not include this file"
 msgstr "Aangeduid hoofddocument bevat dit document niet"
 
-#: src/frontends/qt4/GuiDocument.cpp:4792
+#: src/frontends/qt4/GuiDocument.cpp:4848
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -31628,11 +31515,11 @@ msgstr ""
 "U moet dit bestand insluiten in het document\n"
 "'%1$s' om het als hoofddocument te gebruiken."
 
-#: src/frontends/qt4/GuiDocument.cpp:4796
+#: src/frontends/qt4/GuiDocument.cpp:4852
 msgid "Could not load master"
 msgstr "Kon hoofddocument niet laden"
 
-#: src/frontends/qt4/GuiDocument.cpp:4797
+#: src/frontends/qt4/GuiDocument.cpp:4853
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -31641,24 +31528,23 @@ msgstr ""
 "Het hoofddocument '%1$s'\n"
 "kon niet geladen worden."
 
-#: src/frontends/qt4/GuiDocument.cpp:4930
+#: src/frontends/qt4/GuiDocument.cpp:4995
 msgid "%1 (missing req.)"
 msgstr "%1 (ontbrekende vereisten)"
 
-#: src/frontends/qt4/GuiDocument.cpp:4942
+#: src/frontends/qt4/GuiDocument.cpp:5007
 msgid "personal module"
 msgstr "persoonlijke module"
 
-#: src/frontends/qt4/GuiDocument.cpp:4942
+#: src/frontends/qt4/GuiDocument.cpp:5007
 msgid "distributed module"
 msgstr "verdeelde module"
 
-#: src/frontends/qt4/GuiDocument.cpp:4943
-#, fuzzy
+#: src/frontends/qt4/GuiDocument.cpp:5008
 msgid "<b>Module name:</b> <i>%1</i> (%2)"
-msgstr "(Modulenaam: %1)"
+msgstr "<b>Modulenaam:</b> <i>%1</i> (%2)"
 
-#: src/frontends/qt4/GuiDocument.cpp:4949
+#: src/frontends/qt4/GuiDocument.cpp:5014
 msgid "<b>Note:</b> Some requirements for this module are missing!"
 msgstr "<b>Opmerking:</b> Sommige vereisten voor deze module ontbreken!"
 
@@ -31822,9 +31708,8 @@ msgid "Select graphics file"
 msgstr "Afbeeldingsbestand kiezen"
 
 #: src/frontends/qt4/GuiGraphics.cpp:790
-#, fuzzy
 msgid "&Clipart"
-msgstr "Clipart|#C#c"
+msgstr "&Clipart"
 
 #: src/frontends/qt4/GuiHSpace.cpp:45 src/frontends/qt4/GuiHSpace.cpp:58
 #: src/insets/InsetSpace.cpp:69
@@ -32198,7 +32083,6 @@ msgid "Here you can enter a fix time (in ISO format: hh:mm:ss)"
 msgstr "Hier kan u een vaste tijd opgeven (in ISO-formaat: hh:mm:ss)"
 
 #: src/frontends/qt4/GuiInfo.cpp:366
-#, fuzzy
 msgid "&Fix Time:"
 msgstr "&Vaste datum:"
 
@@ -32341,42 +32225,34 @@ msgid "&Templates"
 msgstr "&Sjablonen"
 
 #: src/frontends/qt4/GuiLyXFiles.cpp:365
-#, fuzzy
 msgid "&User files"
-msgstr "Gebruikersbestanden|#G#g"
+msgstr "&Gebruikersbestanden"
 
 #: src/frontends/qt4/GuiLyXFiles.cpp:366
-#, fuzzy
 msgid "&System files"
-msgstr "Systeembestanden|#S#s"
+msgstr "&Systeembestanden"
 
 #: src/frontends/qt4/GuiLyXFiles.cpp:369
-#, fuzzy
 msgid "Chose UI file"
 msgstr "Kies UI-bestand"
 
 #: src/frontends/qt4/GuiLyXFiles.cpp:370
-#, fuzzy
 msgid "LyX UI Files (*.ui)"
 msgstr "LyX-UI-bestanden (*.ui)"
 
 #: src/frontends/qt4/GuiLyXFiles.cpp:373
-#, fuzzy
 msgid "Chose bind file"
 msgstr "Kies bind-bestand"
 
 #: src/frontends/qt4/GuiLyXFiles.cpp:374
-#, fuzzy
 msgid "LyX Bind Files (*.bind)"
 msgstr "LyX-bind-bestanden (*.bind)"
 
 #: src/frontends/qt4/GuiLyXFiles.cpp:377
-#, fuzzy
 msgid "Chose keyboard map"
 msgstr "Kies toetsenbordindeling"
 
 #: src/frontends/qt4/GuiLyXFiles.cpp:378
-#, fuzzy
 msgid "LyX Keymap Files (*.kmap)"
 msgstr "LyX-toetsenbordindelingen (*.kmap)"
 
@@ -32804,7 +32680,8 @@ msgid ""
 "We reached the end of the document, would you like to continue from the "
 "beginning?"
 msgstr ""
-"We hebben het einde der document bereikt, wilt u verdergaan vanaf het begin?"
+"We hebben het einde van het document bereikt, wilt u verdergaan vanaf het "
+"begin?"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:542
 msgid "Spell checker has no dictionaries."
@@ -33163,9 +33040,8 @@ msgid "Outline"
 msgstr "Overzicht"
 
 #: src/frontends/qt4/GuiToolbar.cpp:394
-#, fuzzy
 msgid "&Reset to default"
-msgstr "Resetten naar &standaarden"
+msgstr "&Resetten naar standaard"
 
 #: src/frontends/qt4/GuiToolbar.cpp:395
 msgid "Reset all font settings to their defaults"
@@ -33831,9 +33707,8 @@ msgid "Click to detach"
 msgstr "Klik om los te maken"
 
 #: src/frontends/qt4/InsetParamsDialog.cpp:87
-#, fuzzy
 msgid "Ne&w Inset"
-msgstr "Nieuwe inset"
+msgstr "Nieu&we inset"
 
 #: src/frontends/qt4/LayoutBox.cpp:337
 #, c-format
@@ -33963,114 +33838,114 @@ msgstr "Indexlemma (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:1578
 msgid "No Citation in Scope!"
-msgstr "Geen citaat in bereik!"
+msgstr "Geen citatie in bereik!"
 
 #: src/frontends/qt4/Menus.cpp:1592 src/insets/InsetCitation.cpp:250
 #: src/insets/InsetCitation.cpp:371
 msgid "No citations selected!"
-msgstr "Geen citaat geselecteerd!"
+msgstr "Geen citatie geselecteerd!"
 
-#: src/frontends/qt4/Menus.cpp:1642
+#: src/frontends/qt4/Menus.cpp:1641
 msgid "All authors|h"
 msgstr "Alle auteurs|h"
 
-#: src/frontends/qt4/Menus.cpp:1673
+#: src/frontends/qt4/Menus.cpp:1672
 msgid "Force upper case|u"
 msgstr "Hoofdletters forceren|u"
 
-#: src/frontends/qt4/Menus.cpp:1687
+#: src/frontends/qt4/Menus.cpp:1686
 msgid "No Text Field in Scope!"
 msgstr "Geen tekstveld in bereik!"
 
-#: src/frontends/qt4/Menus.cpp:1706
+#: src/frontends/qt4/Menus.cpp:1705
 msgid "Custom..."
 msgstr "Aangepast..."
 
-#: src/frontends/qt4/Menus.cpp:1782
+#: src/frontends/qt4/Menus.cpp:1781
 #, c-format
 msgid "Caption (%1$s)"
 msgstr "Bijschrift (%1$s)"
 
-#: src/frontends/qt4/Menus.cpp:1807
+#: src/frontends/qt4/Menus.cpp:1806
 msgid "No Quote in Scope!"
 msgstr "Geen aanhalingstekens in bereik!"
 
-#: src/frontends/qt4/Menus.cpp:1843 src/frontends/qt4/Menus.cpp:1847
-#: src/frontends/qt4/Menus.cpp:1851 src/frontends/qt4/Menus.cpp:1855
+#: src/frontends/qt4/Menus.cpp:1842 src/frontends/qt4/Menus.cpp:1846
+#: src/frontends/qt4/Menus.cpp:1850 src/frontends/qt4/Menus.cpp:1854
 #, c-format
 msgid "%1$s (dynamic)"
 msgstr "%1$s (dynamisch)"
 
-#: src/frontends/qt4/Menus.cpp:1887
+#: src/frontends/qt4/Menus.cpp:1886
 #, c-format
 msgid "Use dynamic quotes (%1$s)|d"
 msgstr "Gebruik dynamische aanhalingstekens (%1$s)|d"
 
-#: src/frontends/qt4/Menus.cpp:1893
+#: src/frontends/qt4/Menus.cpp:1892
 msgid "dynamic[[Quotes]]"
 msgstr "dynamisch"
 
-#: src/frontends/qt4/Menus.cpp:1893 src/frontends/qt4/Menus.cpp:1903
+#: src/frontends/qt4/Menus.cpp:1892 src/frontends/qt4/Menus.cpp:1902
 msgid "static[[Quotes]]"
 msgstr "statisch"
 
-#: src/frontends/qt4/Menus.cpp:1895
+#: src/frontends/qt4/Menus.cpp:1894
 #, c-format
 msgid "Reset to document default (%1$s, %2$s)|o"
 msgstr "Resetten naar standaarden van document (%1$s, %2$s)|o"
 
-#: src/frontends/qt4/Menus.cpp:1902
+#: src/frontends/qt4/Menus.cpp:1901
 #, c-format
 msgid "Reset to language default (%1$s, %2$s)|l"
 msgstr "Resetten naar standaarden van taal (%1$s, %2$s)|l"
 
-#: src/frontends/qt4/Menus.cpp:1904
+#: src/frontends/qt4/Menus.cpp:1903
 #, c-format
 msgid "Reset to language default (%1$s)|l"
 msgstr "Resetten naar standaarden van taal (%1$s)|l"
 
-#: src/frontends/qt4/Menus.cpp:1912
+#: src/frontends/qt4/Menus.cpp:1911
 msgid "Change Style|y"
 msgstr "Stijl wijzigen|y"
 
-#: src/frontends/qt4/Menus.cpp:1954
+#: src/frontends/qt4/Menus.cpp:1953
 #, c-format
 msgid "Insert Separated %1$s Above"
 msgstr "Onafhankelijke %1$s erboven invoegen"
 
-#: src/frontends/qt4/Menus.cpp:1956
+#: src/frontends/qt4/Menus.cpp:1955
 #, c-format
 msgid "Separated %1$s Above"
 msgstr "Onafhankelijke %1$s erboven"
 
-#: src/frontends/qt4/Menus.cpp:1962 src/frontends/qt4/Menus.cpp:1975
-#: src/frontends/qt4/Menus.cpp:1992
+#: src/frontends/qt4/Menus.cpp:1961 src/frontends/qt4/Menus.cpp:1974
+#: src/frontends/qt4/Menus.cpp:1991
 #, c-format
 msgid "Insert Separated %1$s Below"
 msgstr "Onafhankelijke %1$s eronder invoegen"
 
-#: src/frontends/qt4/Menus.cpp:1964 src/frontends/qt4/Menus.cpp:1977
-#: src/frontends/qt4/Menus.cpp:1998
+#: src/frontends/qt4/Menus.cpp:1963 src/frontends/qt4/Menus.cpp:1976
+#: src/frontends/qt4/Menus.cpp:1997
 #, c-format
 msgid "Separated %1$s Below"
 msgstr "Onafhankelijke %1$s eronder"
 
-#: src/frontends/qt4/Menus.cpp:1990
+#: src/frontends/qt4/Menus.cpp:1989
 #, c-format
 msgid "Insert Separated Outer %1$s Below"
 msgstr "Onafhankelijke buitenste %1$s eronder invoegen"
 
-#: src/frontends/qt4/Menus.cpp:1996
+#: src/frontends/qt4/Menus.cpp:1995
 #, c-format
 msgid "Separated Outer %1$s Below"
 msgstr "Onafhankelijke buitenste %1$s eronder"
 
-#: src/frontends/qt4/Menus.cpp:2311
+#: src/frontends/qt4/Menus.cpp:2310
 #, c-format
 msgid "Export [%1$s]|E"
 msgstr "[%1$s] exporteren|e"
 
-#: src/frontends/qt4/Menus.cpp:2665
+#: src/frontends/qt4/Menus.cpp:2664
 msgid "No Action Defined!"
 msgstr "Geen actie gedefinieerd!"
 
@@ -34481,14 +34356,6 @@ msgstr "Hyperlink (%1$s) naar %2$s"
 msgid "FILE MISSING:"
 msgstr "ONTBREKEND BESTAND:"
 
-#: src/insets/InsetInclude.cpp:413
-msgid "Verbatim Input"
-msgstr "Verbatim invoer"
-
-#: src/insets/InsetInclude.cpp:416
-msgid "Verbatim Input*"
-msgstr "Verbatim invoer*"
-
 #: src/insets/InsetInclude.cpp:422
 msgid "Include (excluded)"
 msgstr "Insluiten (uigesloten)"
@@ -34694,32 +34561,28 @@ msgid "File path"
 msgstr "Bestandspad"
 
 #: src/insets/InsetInfo.cpp:272
-#, fuzzy
 msgid "Used text class"
-msgstr "tekstklasse"
+msgstr "Gebruikte tekstklasse"
 
 #: src/insets/InsetInfo.cpp:277 src/insets/InsetInfo.cpp:1095
-#, fuzzy
 msgid "No version control!"
-msgstr "Geen versiebeheer"
+msgstr "Geen versiebeheer!"
 
 #: src/insets/InsetInfo.cpp:280
 msgid "Revision[[Version Control]]"
 msgstr "Revisie"
 
 #: src/insets/InsetInfo.cpp:281
-#, fuzzy
 msgid "Tree revision"
-msgstr "Boomrevisie|B"
+msgstr "Boomrevisie"
 
 #: src/insets/InsetInfo.cpp:284
 msgid "Time[[of day]]"
 msgstr "Tijd"
 
 #: src/insets/InsetInfo.cpp:289
-#, fuzzy
 msgid "LyX version"
-msgstr "LyX-versie|X"
+msgstr "LyX-versie"
 
 #: src/insets/InsetInfo.cpp:290
 msgid "LyX layout format"
@@ -35337,7 +35200,7 @@ msgstr "KAPOT: "
 
 #: src/insets/InsetRef.cpp:484 src/mathed/InsetMathRef.cpp:242
 msgid "Ref: "
-msgstr "Ref: "
+msgstr "Verw: "
 
 #: src/insets/InsetRef.cpp:485 src/mathed/InsetMathRef.cpp:243
 msgid "Equation"
@@ -35345,7 +35208,7 @@ msgstr "Vergelijking"
 
 #: src/insets/InsetRef.cpp:485 src/mathed/InsetMathRef.cpp:243
 msgid "EqRef: "
-msgstr "VglRef: "
+msgstr "VglVerw: "
 
 #: src/insets/InsetRef.cpp:486 src/mathed/InsetMathRef.cpp:244
 msgid "Page Number"
@@ -35377,7 +35240,7 @@ msgstr "Referentie naar naam"
 
 #: src/insets/InsetRef.cpp:489 src/mathed/InsetMathRef.cpp:248
 msgid "NameRef: "
-msgstr "NaamRef: "
+msgstr "NaamVerw: "
 
 #: src/insets/InsetRef.cpp:490
 msgid "Formatted"
@@ -35465,19 +35328,19 @@ msgstr "Niet-afbreekbare horizontale ruimte (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Onbekend type inhoudsopgave"
 
-#: src/insets/InsetTabular.cpp:5131
+#: src/insets/InsetTabular.cpp:5132
 msgid "Selections not supported."
 msgstr "Selecties niet ondersteund."
 
-#: src/insets/InsetTabular.cpp:5153
+#: src/insets/InsetTabular.cpp:5154
 msgid "Multi-column in current or destination column."
 msgstr "Multikolom in huidige of doelkolom."
 
-#: src/insets/InsetTabular.cpp:5165
+#: src/insets/InsetTabular.cpp:5166
 msgid "Multi-row in current or destination row."
 msgstr "Multirij in huidige of doelrij."
 
-#: src/insets/InsetTabular.cpp:5649
+#: src/insets/InsetTabular.cpp:5650
 msgid "Selection size should match clipboard content."
 msgstr "Selectiegrootte moet overeenkomen met inhoud klembord."
 
@@ -35664,18 +35527,16 @@ msgid "%1$d matches have been replaced."
 msgstr "%1$d overeenkomsten zijn vervangen."
 
 #: src/lyxfind.cpp:3692
-#, fuzzy
 msgid "Match not found."
-msgstr "Overeenkomst niet gevonden!"
+msgstr "Overeenkomst niet gevonden."
 
 #: src/lyxfind.cpp:3698
 msgid "Match has been replaced."
 msgstr "Overeenkomst is vervangen."
 
 #: src/lyxfind.cpp:3700
-#, fuzzy
 msgid "Match found."
-msgstr "Overeenkomst gevonden!"
+msgstr "Overeenkomst gevonden."
 
 #: src/mathed/InsetMathAMSArray.cpp:115 src/mathed/InsetMathHull.cpp:2148
 #: src/mathed/InsetMathSplit.cpp:121 src/mathed/InsetMathSubstack.cpp:70
@@ -36169,6 +36030,201 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Onbekende gebruiker"
 
+#~ msgid "Pass-Through"
+#~ msgstr "Doorgeven"
+
+#~ msgid "Game 1"
+#~ msgstr "Spel 1"
+
+#~ msgid "Game 2"
+#~ msgstr "Spel 2"
+
+#~ msgid "Example (LyXified)"
+#~ msgstr "Voorbeeld (VerLyXt)"
+
+#~ msgid "Example (raw)"
+#~ msgstr "Voorbeeld (ruw)"
+
+#~ msgid "Gnuplot"
+#~ msgstr "Gnuplot"
+
+#~ msgid "Feynman Diagrams"
+#~ msgstr "Feynmandiagrammen"
+
+#~ msgid "Instant Preview"
+#~ msgstr "Onmiddellijk voorbeeld"
+
+#~ msgid "Itemize Bullets"
+#~ msgstr "Opsommingstekens"
+
+#~ msgid "Minted File Listing"
+#~ msgstr "Codebestand met minted"
+
+#~ msgid "Minted Listings"
+#~ msgstr "Codefragment met minted"
+
+#~ msgid "XY-Figure"
+#~ msgstr "XY-Figure"
+
+#~ msgid "XY-Pic"
+#~ msgstr "XY-Pic"
+
+#~ msgid "Graphics and Insets"
+#~ msgstr "Grafieken en insets"
+
+#~ msgid "Serial Letter 1"
+#~ msgstr "Brievenreeks 1"
+
+#~ msgid "Serial Letter 2"
+#~ msgstr "Brievenreeks 2"
+
+#~ msgid "Serial Letter 3"
+#~ msgstr "Brievenreeks 3"
+
+#~ msgid "Localization Test"
+#~ msgstr "Gelokaliseerde test"
+
+#~ msgid "Hazard and Precautionary Statements"
+#~ msgstr "Gevaar- en waarschuwingsaanduidingen"
+
+#~ msgid "LilyPond Book"
+#~ msgstr "LilyPond-boek"
+
+#~ msgid "Multilingual Captions"
+#~ msgstr "Meertalige bijschriften"
+
+#~ msgid "Noweb2LyX"
+#~ msgstr "Noweb2LyX"
+
+#~ msgid "Noweb Listerrors"
+#~ msgstr "Noweb Listerrors"
+
+#~ msgid "Foils"
+#~ msgstr "Foils"
+
+#~ msgid "Foils Landslide"
+#~ msgstr "Foils Landslide"
+
+#~ msgid "Beamer (Complex)"
+#~ msgstr "Beamer (complex)"
+
+#~ msgid "Welcome"
+#~ msgstr "Welkom"
+
+#~ msgid "Multilingual Typesetting with platex"
+#~ msgstr "Zetwerk in meerdere talen met platex"
+
+#~ msgid "Multilingual Typesetting with CJKutf8"
+#~ msgstr "Zetwerk in meerdere talen met CJKutf8"
+
+#~ msgid "IEEE Transactions Conference"
+#~ msgstr "IEEE Transactions Conference"
+
+#~ msgid "IEEE Transactions Journal"
+#~ msgstr "IEEE Transactions Journal"
+
+#~ msgid "Mathematical Monthly"
+#~ msgstr "Mathematical Monthly"
+
+#~ msgid "Springers Global Journal Template (V. 3)"
+#~ msgstr "Springers Global Journal Template (V. 3)"
+
+#~ msgid "00 Main File"
+#~ msgstr "00 Hoofdbestand"
+
+#~ msgid "01 Dedication"
+#~ msgstr "01 Toewijding"
+
+#~ msgid "02 Foreword"
+#~ msgstr "02 Voorwoord"
+
+#~ msgid "03 Preface"
+#~ msgstr "03 Woord vooraf"
+
+#~ msgid "04 Acknowledgements"
+#~ msgstr "04 Dankbetuigingen"
+
+#~ msgid "05 Contributor List"
+#~ msgstr "05 Lijst van bijdragers"
+
+#~ msgid "06 Acronym"
+#~ msgstr "06 Acroniem"
+
+#~ msgid "07 Part"
+#~ msgstr "07 Deel"
+
+#~ msgid "08 Author"
+#~ msgstr "08 Auteur"
+
+#~ msgid "09 Appendix"
+#~ msgstr "09 Appendix"
+
+#~ msgid "10 Glossary"
+#~ msgstr "10 Woordenlijst"
+
+#~ msgid "11 References"
+#~ msgstr "11 Referenties"
+
+#~ msgid "05 Acronym"
+#~ msgstr "05 Acroniem"
+
+#~ msgid "06 Part"
+#~ msgstr "06 Deel"
+
+#~ msgid "07 Chapter"
+#~ msgstr "07 Hoofdstuk"
+
+#~ msgid "08 Appendix"
+#~ msgstr "08 Appendix"
+
+#~ msgid "09 Glossary"
+#~ msgstr "09 Woordenlijst"
+
+#~ msgid "10 Solutions"
+#~ msgstr "10 Oplossingen"
+
+#~ msgid "Colored"
+#~ msgstr "Gekleurd"
+
+#~ msgid "Simple"
+#~ msgstr "Eenvoudig"
+
+#~ msgid "Chapter 1"
+#~ msgstr "Hoofdstuk 1"
+
+#~ msgid "Chapter 2"
+#~ msgstr "Hoofdstuk 2"
+
+#~ msgid "Main File"
+#~ msgstr "Hoofdbestand"
+
+#~ msgid "PhD Thesis"
+#~ msgstr "PhD-thesis"
+
+#~ msgid "Theses"
+#~ msgstr "Theses"
+
+#~ msgid "Formal with Footline"
+#~ msgstr "Formeel met voetregel"
+
+#~ msgid "Formal without Footline"
+#~ msgstr "Formeel zonder voetregel"
+
+#~ msgid "Grid with Head"
+#~ msgstr "Grid met hoofd"
+
+#~ msgid "No Borders"
+#~ msgstr "Geen randen"
+
+#~ msgid "Simple Grid"
+#~ msgstr "Eenvoudig grid"
+
+#~ msgid "Verbatim Input"
+#~ msgstr "Verbatim invoer"
+
+#~ msgid "Verbatim Input*"
+#~ msgstr "Verbatim invoer*"
+
 #~ msgid "LyX: Add BibTeX Database"
 #~ msgstr "LyX: BibTeX-databank toevoegen"
 
@@ -36245,9 +36301,6 @@ msgstr "Onbekende gebruiker"
 
 #~ msgid "Encoding"
 #~ msgstr "Codering"
-
-#~ msgid "Lan&guage default"
-#~ msgstr "Standaard voor t&aal"
 
 #~ msgid "Othe&r:"
 #~ msgstr "Ande&re:"
@@ -36485,9 +36538,6 @@ msgstr "Onbekende gebruiker"
 #~ msgid "None (no fontenc)"
 #~ msgstr "Geen (geen fontenc)"
 
-#~ msgid "Language Default (no inputenc)"
-#~ msgstr "Standaard van taal (geen inputenc)"
-
 #~ msgid "Float Placement"
 #~ msgstr "Positie van float"
 
@@ -36547,12 +36597,6 @@ msgstr "Onbekende gebruiker"
 
 #~ msgid "Set input encoding to Unicode (utf8)."
 #~ msgstr "Stel de inputcodering in op Unicode (utf8)."
-
-#~ msgid "Use language specific legacy encodings."
-#~ msgstr "Verouderde taalspecifieke coderingen gebruiken."
-
-#~ msgid "Use custom document-wide encoding."
-#~ msgstr "De huidige codering voor heel het document."
 
 #~ msgid "utf8 (default)"
 #~ msgstr "utf8 (standaard)"
