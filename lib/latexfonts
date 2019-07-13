@@ -208,9 +208,10 @@ Font IBMPlexSerifSemibold
 EndFont
 
 Font ADOBESourceSerifPro
-	GuiName		"Adobe Source Serif Pro"
-	Family		rm
-	Package		sourceserifpro
+	GuiName		 "Adobe Source Serif Pro"
+	Family		 rm
+	Package		 sourceserifpro
+	OsfOption        osf
 	MoreOptions      1
 EndFont
 
@@ -442,6 +443,7 @@ AltFont noto
 	GuiName          "Noto Serif"
 	Family           rm
 	Package          noto
+	OsfOption	 osf
 	MoreOptions      1
 EndFont
 
@@ -723,7 +725,6 @@ Font	ADOBESourceSansPro
 	GuiName		"Adobe Source Sans Pro"
 	Family		sf
 	Package		sourcesanspro
-	PackageOption	osf
 	ScaleOption	scaled=$$val
 	MoreOptions      1
 EndFont
@@ -1025,7 +1026,6 @@ Font NotoMonoRegular
 	Family          tt
 	ScaleOption     scaled=$$val
 	Package         noto-mono
-	OsfOption	osf
 	PackageOption	regular
 	MoreOptions     1
 EndFont

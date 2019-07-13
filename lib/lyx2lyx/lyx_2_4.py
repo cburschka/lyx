@@ -72,6 +72,7 @@ class fontinfo:
         self.package = None
         self.options = []
         self.pkgkey = None      # key into pkg2fontmap
+        self.osfopt = None    # None, string
 
     def addkey(self):
         self.pkgkey = createkey(self.package, self.options)
@@ -82,7 +83,7 @@ class fontmapping:
         self.pkg2fontmap = dict()
         self.pkginmap = dict()  # defines, if a map for package exists
 
-    def expandFontMapping(self, font_list, font_type, scale_type, pkg, scaleopt = None):
+    def expandFontMapping(self, font_list, font_type, scale_type, pkg, scaleopt = None, osfopt = None):
         " Expand fontinfo mapping"
         #
         # fontlist:    list of fontnames, each element
@@ -93,6 +94,7 @@ class fontmapping:
         # pkg:         package defining the font. Defaults to fontname if None
         # scaleopt:    one of None, 'scale', 'scaled', or some other string
         #              to be used in scale option (e.g. scaled=0.7)
+        # osfopt:      None or some other string to be used in osf option
         for fl in font_list:
             fe = fontinfo()
             fe.fonttype = font_type
@@ -102,6 +104,7 @@ class fontmapping:
             fe.fontname = font_name
             fe.options = flt[1:]
             fe.scaleopt = scaleopt
+            fe.osfopt = osfopt
             if pkg == None:
                 fe.package = font_name
             else:
@@ -157,19 +160,19 @@ def createFontMapping(fontlist):
                                   'IBMPlexMonoSemibold,semibold'],
                                  "typewriter", "tt", "plex-mono", "scale")
         elif font == 'Adobe':
-            fm.expandFontMapping(['ADOBESourceSerifPro'], "roman", None, "sourceserifpro")
+            fm.expandFontMapping(['ADOBESourceSerifPro'], "roman", None, "sourceserifpro", None, "osf")
             fm.expandFontMapping(['ADOBESourceSansPro'], "sans", "sf", "sourcesanspro", "scaled")
             fm.expandFontMapping(['ADOBESourceCodePro'], "typewriter", "tt", "sourcecodepro", "scaled")
         elif font == 'Noto':
             fm.expandFontMapping(['NotoSerifRegular,regular', 'NotoSerifMedium,medium',
                                   'NotoSerifThin,thin', 'NotoSerifLight,light',
                                   'NotoSerifExtralight,extralight'],
-                                  "roman", None, "noto-serif")
+                                  "roman", None, "noto-serif", None, "osf")
             fm.expandFontMapping(['NotoSansRegular,regular', 'NotoSansMedium,medium',
                                   'NotoSansThin,thin', 'NotoSansLight,light',
                                   'NotoSansExtralight,extralight'],
                                   "sans", "sf", "noto-sans", "scaled")
-            fm.expandFontMapping(['NotoMonoRegular'], "typewriter", "tt", "noto-mono", "scaled")
+            fm.expandFontMapping(['NotoMonoRegular,regular'], "typewriter", "tt", "noto-mono", "scaled")
     return fm
 
 def convert_fonts(document, fm):
@@ -191,14 +194,20 @@ def convert_fonts(document, fm):
         pkg = mo.group(3)
         o = 0
         oscale = 1
+        osfoption = "osf"
+        has_osf = False
         while o < len(options):
+            if options[o] == osfoption:
+                has_osf = True
+                del options[o]
+                continue
             mo = rscaleopt.search(options[o])
             if mo == None:
                 o += 1
                 continue
             oscale = mo.group(1)
             del options[o]
-            break
+            continue
 
         if not pkg in fm.pkginmap:
             continue
@@ -213,7 +222,13 @@ def convert_fonts(document, fm):
         else:
             fontscale = "\\font_" + fontinfo.scaletype + "_scale"
             fontinfo.scaleval = oscale
-
+        if has_osf:
+             if fontinfo.osfopt == None:
+                 options.extend("osf")
+                 continue
+             osf = find_token(document.header, "\\font_osf false")
+             if osf != -1:
+                 document.header[osf] = "\\font_osf true"
         if i > 0 and document.preamble[i-1] == "% Added by lyx2lyx":
             del document.preamble[i-1]
             i -= 1
@@ -247,7 +262,7 @@ def revert_fonts(document, fm, fontmap, OnlyWithXOpts = False):
     while i < len(document.header):
         i = find_re(document.header, rfontscale, i+1)
         if (i == -1):
-            break
+            return True
         mo = rfontscale.search(document.header[i])
         if mo == None:
             continue
@@ -264,7 +279,7 @@ def revert_fonts(document, fm, fontmap, OnlyWithXOpts = False):
         x = -1
         if OnlyWithXOpts:
             if ft == "\\font_math":
-                return
+                return False
             regexp = re.compile(r'^\s*(\\font_roman_opts)\s+')
             if ft == "\\font_sans":
                 regexp = re.compile(r'^\s*(\\font_sans_opts)\s+')
@@ -272,7 +287,7 @@ def revert_fonts(document, fm, fontmap, OnlyWithXOpts = False):
                 regexp = re.compile(r'^\s*(\\font_typewriter_opts)\s+')
             x = find_re(document.header, regexp, 0)
             if x == -1:
-                return
+                return False
 
             # We need to use this regex since split() does not handle quote protection
             xopts = re.findall(r'[^"\s]\S*|".+?"', document.header[x])
@@ -290,8 +305,14 @@ def revert_fonts(document, fm, fontmap, OnlyWithXOpts = False):
                 if xval1 != "100":
                     # set correct scale option
                     fontmap[val].extend([fontinfo.scaleopt + "=" + format(float(xval1) / 100, '.2f')])
+        if fontinfo.osfopt != None and fontinfo.fonttype == "roman":
+            osf = find_token(document.header, "\\font_osf true")
+            if osf != -1:
+                document.header[osf] = "\\font_osf false"
+                fontmap[val].extend([fontinfo.osfopt])
         if len(fontinfo.options) > 0:
             fontmap[val].extend(fontinfo.options)
+    return True
 
 ###############################################################################
 ###
@@ -328,8 +349,8 @@ def revert_notoFonts(document):
     if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         fontmap = dict()
         fm = createFontMapping(['Noto'])
-        revert_fonts(document, fm, fontmap)
-        add_preamble_fonts(document, fontmap)
+        if revert_fonts(document, fm, fontmap):
+            add_preamble_fonts(document, fontmap)
 
 def convert_latexFonts(document):
     " Handle DejaVu and IBMPlex fonts definition to LaTeX "
@@ -344,24 +365,24 @@ def revert_latexFonts(document):
     if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         fontmap = dict()
         fm = createFontMapping(['DejaVu', 'IBM'])
-        revert_fonts(document, fm, fontmap)
-        add_preamble_fonts(document, fontmap)
+        if revert_fonts(document, fm, fontmap):
+            add_preamble_fonts(document, fontmap)
 
 def convert_AdobeFonts(document):
-    " Handle DejaVu and IBMPlex fonts definition to LaTeX "
+    " Handle Adobe Source fonts definition to LaTeX "
 
     if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         fm = createFontMapping(['Adobe'])
         convert_fonts(document, fm)
 
 def revert_AdobeFonts(document):
-    " Revert native DejaVu font definition to LaTeX "
+    " Revert Adobe Source font definition to LaTeX "
 
     if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         fontmap = dict()
         fm = createFontMapping(['Adobe'])
-        revert_fonts(document, fm, fontmap)
-        add_preamble_fonts(document, fontmap)
+        if revert_fonts(document, fm, fontmap):
+            add_preamble_fonts(document, fontmap)
 
 def removeFrontMatterStyles(document):
     " Remove styles Begin/EndFrontmatter"
@@ -2476,14 +2497,25 @@ def revert_plainNotoFonts_xopts(document):
     if str2bool(get_value(document.header, "\\use_non_tex_fonts", i)):
         return
 
+    osf = False
+    y = find_token(document.header, "\\font_osf true", 0)
+    if y != -1:
+        osf = True
+
     regexp = re.compile(r'(\\font_roman_opts)')
     x = find_re(document.header, regexp, 0)
-    if x == -1:
+    if x == -1 and not osf:
         return
 
-    # We need to use this regex since split() does not handle quote protection
-    romanopts = re.findall(r'[^"\s]\S*|".+?"', document.header[x])
-    opts = romanopts[1].strip('"')
+    opts = ""
+    if x != -1:
+        # We need to use this regex since split() does not handle quote protection
+        romanopts = re.findall(r'[^"\s]\S*|".+?"', document.header[x])
+        opts = romanopts[1].strip('"')
+    if osf:
+        if opts != "":
+            opts += ", "
+        opts += "osf"
 
     i = find_token(document.header, "\\font_roman", 0)
     if i == -1:
@@ -2523,7 +2555,10 @@ def revert_plainNotoFonts_xopts(document):
     preamble += opts
     preamble += "]{noto}"
     add_to_preamble(document, [preamble])
-    del document.header[x]
+    if osf:
+        document.header[y] = "\\font_osf false"
+    if x != -1:
+        del document.header[x]
 
 
 def revert_notoFonts_xopts(document):
@@ -2538,8 +2573,8 @@ def revert_notoFonts_xopts(document):
 
     fontmap = dict()
     fm = createFontMapping(['Noto'])
-    revert_fonts(document, fm, fontmap, True)
-    add_preamble_fonts(document, fontmap)
+    if revert_fonts(document, fm, fontmap, True):
+        add_preamble_fonts(document, fontmap)
 
 
 def revert_IBMFonts_xopts(document):
@@ -2556,8 +2591,8 @@ def revert_IBMFonts_xopts(document):
     fontmap = dict()
     fm = createFontMapping(['IBM'])
     ft = ""
-    revert_fonts(document, fm, fontmap, True)
-    add_preamble_fonts(document, fontmap)
+    if revert_fonts(document, fm, fontmap, True):
+        add_preamble_fonts(document, fontmap)
 
 
 def revert_AdobeFonts_xopts(document):
@@ -2573,8 +2608,8 @@ def revert_AdobeFonts_xopts(document):
     fontmap = dict()
     fm = createFontMapping(['Adobe'])
     ft = ""
-    revert_fonts(document, fm, fontmap, True)
-    add_preamble_fonts(document, fontmap)
+    if revert_fonts(document, fm, fontmap, True):
+        add_preamble_fonts(document, fontmap)
 
 
 ##
