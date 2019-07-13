@@ -1762,8 +1762,9 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		os << from_ascii(ams);
 
 	if (useNonTeXFonts) {
-		// Babel loads fontspec itself
-		if (!features.isProvided("fontspec") && !features.useBabel())
+		// Babel (as of 2017/11/03) loads fontspec itself
+		if (!features.isProvided("fontspec")
+		    && !(features.useBabel() && features.isAvailable("babel-2017/11/03")))
 			os << "\\usepackage{fontspec}\n";
 		if (features.mustProvide("unicode-math")
 		    && features.isAvailable("unicode-math"))
@@ -3390,14 +3391,15 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 		// variants are understood by both engines. However,
 		// we want to provide support for at least TeXLive 2009
 		// (for XeTeX; LuaTeX is only supported as of v.2)
-		// Babel has its own higher-level interface on top of
-		// fontspec that is to be used.
-		bool const babel = features.useBabel();
+		// As of 2017/11/03, Babel has its own higher-level
+		// interface on top of fontspec that is to be used.
+		bool const babelfonts = features.useBabel()
+				&& features.isAvailable("babel-2017/11/03");
 		string const texmapping =
 			(features.runparams().flavor == OutputParams::XETEX) ?
 			"Mapping=tex-text" : "Ligatures=TeX";
 		if (fontsRoman() != "default") {
-			if (babel)
+			if (babelfonts)
 				os << "\\babelfont{rm}[";
 			else
 				os << "\\setmainfont[";
@@ -3411,7 +3413,7 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 		if (fontsSans() != "default") {
 			string const sans = parseFontName(fontsSans());
 			if (fontsSansScale() != 100) {
-				if (babel)
+				if (babelfonts)
 					os << "\\babelfont{sf}";
 				else
 					os << "\\setsansfont";
@@ -3422,7 +3424,7 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 				os << texmapping << "]{"
 				   << sans << "}\n";
 			} else {
-				if (babel)
+				if (babelfonts)
 					os << "\\babelfont{sf}[";
 				else
 					os << "\\setsansfont[";
@@ -3435,7 +3437,7 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 		if (fontsTypewriter() != "default") {
 			string const mono = parseFontName(fontsTypewriter());
 			if (fontsTypewriterScale() != 100) {
-				if (babel)
+				if (babelfonts)
 					os << "\\babelfont{tt}";
 				else
 					os << "\\setmonofont";
@@ -3446,7 +3448,7 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 				os << "]{"
 				   << mono << "}\n";
 			} else {
-				if (babel)
+				if (babelfonts)
 					os << "\\babelfont{tt}";
 				else
 					os << "\\setmonofont";

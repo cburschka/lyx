@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 578
+\lyxformat 580
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -4940,6 +4940,31 @@ Table of contents
 \end_layout
 
 \begin_deeper
+\begin_layout Standard
+
+\change_inserted -712698321 1563000039
+As of version 3.15 (2017/11/03), 
+\family sans
+babel
+\family default
+ also provides specific commands to select OpenType, TrueType and PostScript
+ fonts from the Operating System (with XeTeX or LuaTeX).
+ If this version (or a newer one) is installed (on your system: 
+\begin_inset Info
+type  "package"
+arg   "babel-2017/11/03"
+\end_inset
+
+), \SpecialChar LyX
+ will use this rather than 
+\family sans
+fontspec
+\family default
+'s commands.
+\change_unchanged
+
+\end_layout
+
 \begin_layout Standard
 Your \SpecialChar LaTeX
  installation has hyphenation patterns for the following languages:
