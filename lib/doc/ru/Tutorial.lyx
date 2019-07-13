@@ -189,7 +189,7 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-Чем является самоучитель и чем не является
+Чем является Самоучитель и чем не является
 \end_layout
 
 \begin_layout Standard
@@ -661,7 +661,7 @@ arg   "buffer-view"
  на панели инструментов\SpecialChar endofsentence
  \SpecialChar LyX
  запустит просмотрщик PDF-файлов, который откроется
- в новом окне и отобразит как будет выглядеть ваш документ при печати
+ в новом окне и отобразит, как будет выглядеть ваш документ при печати
 \begin_inset Foot
 status collapsed
 
@@ -702,8 +702,7 @@ arg   "buffer-update"
 \begin_layout Standard
 Наши поздравления! Вы написали ваш первый документ \SpecialChar LyX
 .
- Всё остальное — просто детали, которые раскрываются в оставшейся части
- Самоучителя, Руководстве пользователя и Дополнительных возможностях.
+ Всё остальное — просто детали.
 \end_layout
 
 \begin_layout Subsection
@@ -1397,7 +1396,7 @@ Enter
 \family sans
 Enter
 \family default
- чтобы вернуться к окружению 
+, чтобы вернуться к окружению 
 \family sans
 Обычный
 \family default
@@ -1659,7 +1658,7 @@ status collapsed
  Где-нибудь в вашем документе наберите:
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 
 \family typewriter
 Lyx лучше любого текстового процессора потому, что: 
@@ -4771,7 +4770,7 @@ Alt+Ф
 \family sans
 О
 \family default
- или используя комбинацию клавиш, которая указаны в пункте меню (
+ или используя комбинацию клавиш, которая указана в пункте меню (
 \begin_inset Info
 type  "shortcut"
 arg   "file-open"
@@ -5336,6 +5335,11 @@ bib
 \end_inset
 
 символ
+\family default
+ и 
+\family sans
+Вставка\SpecialChar menuseparator
+Форматирование
 \family default
 .
 \end_layout
