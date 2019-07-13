@@ -119,6 +119,27 @@
 \begin_layout Author
 автор: команда разработки \SpecialChar LyX
 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Если у вас возникли комментарии или исправления к этой документации, пожалуйста,
+ отправьте их в список рассылки документации \SpecialChar LyX
+: 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -746,7 +767,7 @@ status collapsed
 
 \begin_layout Subsection
 Что такое \SpecialChar LaTeX
-? (И почему я должен быть осторожен?)
+?
 \end_layout
 
 \begin_layout Standard
@@ -854,10 +875,8 @@ Donald Knuth
  \SpecialChar TeX
  берет последовательность команд полиграфического оформления, записанных
  в простом текстовом файле, и выполняет их.
- Это устроено немного сложнее, чем простая пишущая машинка, но и не особенно
- близко к настоящему печатному станку.
- Однако, многие приёмы печатного дела смоделированы Кнутом в виде компьютерных
- алгоритмов и встроены в \SpecialChar TeX
+ Многие приёмы печатного дела смоделированы Кнутом в виде компьютерных алгоритмо
+в и встроены в \SpecialChar TeX
 , отсюда и великолепное качество печати.
  Так или иначе, \SpecialChar TeX
  выдаёт формат 
@@ -889,8 +908,12 @@ dvi
 \emph on
  
 \emph default
-Формат часто используется для предпросмотра, позже его можно преобразовать
- в другие форматы, такие как PostScript.
+Формат 
+\emph on
+dvi
+\emph default
+ часто используется для предпросмотра, позже его можно преобразовать в другие
+ форматы, такие как PostScript.
  
 \end_layout
 
@@ -932,7 +955,10 @@ status collapsed
  с \SpecialChar TeX
 , который представляет из себя просто набор команд для полиграфического
  оформления, это делают люди, создающие новые пакеты макросов.
- И тут в нашей истории появляется Лесли Лэмпорт.
+\end_layout
+
+\begin_layout Standard
+И тут в нашей истории появляется Лесли Лэмпорт.
  Ему был нужен пакет макросов, который был бы ориентирован на пользователя,
  а не на методы оформления, набор команд, который единообразно оформляет
  разделы, таблицы и математические формулы последовательно и с наименьшими
@@ -1019,13 +1045,13 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-классы: описания типов документов, используемых \SpecialChar LaTeX
+Классы: описания типов документов, используемых \SpecialChar LaTeX
 \SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Description
-стили: описания поведения по умолчанию для отдельных элементов \SpecialChar LaTeX
+Стили: описания поведения по умолчанию для отдельных элементов \SpecialChar LaTeX
 .
 \end_layout
 
@@ -1183,6 +1209,9 @@ status collapsed
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Contrib"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
@@ -1190,18 +1219,9 @@ reference "sec:Contrib"
  (Вместо этого в печатной версии печатается число.) Если вы нажмёте на этот
  прямоугольник левой кнопкой мыши, появится диалоговое окно со списком всех
  перекрёстных ссылок документа.
- Данное введение содержит только одну ссылку с именем 
-\begin_inset Quotes cld
-\end_inset
-
-sec:Contrib
-\begin_inset Quotes crd
-\end_inset
-
-.
- Вы можете перейти к указанному разделу, нажав на кнопку 
+ Вы можете перейти к выбранному разделу, нажав на кнопку 
 \family sans
-Перейти к ссылке
+Перейти к метке
 \family default
 .
  Вернуться назад очень просто.
@@ -1285,29 +1305,7 @@ C-<
 \end_layout
 
 \begin_layout Standard
-Чтобы больше узнать о клавишах акселераторов меню и других более загадочных
- комбинаций клавиш, вам следует перейти к разделу 
-\emph on
-Комбинации клавиш
-\emph default
- в руководстве 
-\begin_inset Quotes cld
-\end_inset
-
-
-\emph on
-Дополнительные возможности
-\emph default
-
-\begin_inset Quotes crd
-\end_inset
-
- (файл 
-\family typewriter
-Additional.lyx
-\family default
-).
- Когда нам нужно указать комбинацию клавиш, мы используем следующее соглашение
+Когда нам нужно указать комбинацию клавиш, мы используем следующее соглашение
  о префиксах:
 \end_layout
 
@@ -1536,58 +1534,9 @@ PageDown
 \begin_inset Quotes crd
 \end_inset
 
-: эти 6 клавиш на большинстве PC-клавиатур расположены выше клавиш управления
- курсором.
- На некоторых клавиатурах 
-\begin_inset Quotes cld
-\end_inset
-
-
-\family sans
-PageUp
-\family default
-
-\begin_inset Quotes crd
-\end_inset
-
- и 
-\begin_inset Quotes cld
-\end_inset
-
-
-\family sans
-Pa\SpecialChar softhyphen
-geDown
-\family default
-
-\begin_inset Quotes crd
-\end_inset
-
- называются 
-\begin_inset Quotes cld
-\end_inset
-
-
-\family sans
-Prior
-\family default
-
-\begin_inset Quotes crd
-\end_inset
-
- и 
-\begin_inset Quotes cld
-\end_inset
-
-
-\family sans
-Next
-\family default
-
-\begin_inset Quotes crd
-\end_inset
-
-;
+: эти 6 клавиш на большинстве PC-клавиатур расположены выше клавиш уп\SpecialChar softhyphen
+равления
+ курсором;
 \end_layout
 
 \begin_layout Itemize
@@ -2206,7 +2155,7 @@ em)
 
 \begin_deeper
 \begin_layout Standard
-Этот файл, который вы уже почти прочитали :).
+Этот файл, который вы уже почти прочитали :)
 \end_layout
 
 \end_deeper
@@ -2327,9 +2276,10 @@ status collapsed
 \emph default
 .
  В нём описывается непосредственное использование команд \SpecialChar LaTeX
-, классов документов,
- и особых возможностей по редактированию, также там содержатся некоторые
- из (довольно затейливых, но остроумных) приёмов знатоков \SpecialChar LaTeX
+, классов документов
+ и особых возможностей по редактированию.
+ Также там содержатся некоторые из (довольно затейливых, но остроумных)
+ приёмов знатоков \SpecialChar LaTeX
 .
 \end_layout
 
@@ -2634,15 +2584,19 @@ literal "false"
 
 \begin_layout Enumerate
 Получите исходный код последней версии \SpecialChar LyX
- с 
+ по адресу
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset CommandInset href
 LatexCommand href
-target "https://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master "
+target "https://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master"
 literal "false"
 
 \end_inset
 
- .
+
 \end_layout
 
 \begin_layout Enumerate
@@ -2674,12 +2628,12 @@ literal "false"
 
 \end_deeper
 \begin_layout Enumerate
-Свяжитесь с командой документаторов \SpecialChar LyX
- по адресу: 
-\end_layout
+Свяжитесь с командой документирования \SpecialChar LyX
+ по адресу
+\begin_inset Newline newline
+\end_inset
 
-\begin_deeper
-\begin_layout Standard
+
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -2688,14 +2642,9 @@ literal "false"
 
 \end_inset
 
-,
+, чтобы обсудить намеченные изменения и послушать мнение команды о них.
 \end_layout
 
-\begin_layout Standard
-чтобы обсудить намеченные изменения и послушать мнение команды о них.
-\end_layout
-
-\end_deeper
 \begin_layout Standard
 Вы можете выполнять любые изменения — от усовершенствования доходчивости
  текста до выполнения значительной реструктуризации документации.
