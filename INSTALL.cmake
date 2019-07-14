@@ -132,7 +132,11 @@ Build options
 
     Options could be passed by the -D prefix when running cmake.
     Available options will be listed on each cmake run.
-    "cmake . -Dhelp=1" lists all available options:
+    "cmake -Dhelp=1 -S <lyx-source-dir> -B /tmp" lists all available options:
+    !!! Mark, that using this command creates CMakeCache.txt and CMakeFiles
+    !!! which have to be removed afterwards. Therefore it is better to explicitly
+    !!! specify a temporary build directory (/tmp in this example)
+    
 
     # Available on all systems/compilers
     -- LYX_CPACK                = OFF    : Use the CPack management (Implies LYX_INSTALL option)
