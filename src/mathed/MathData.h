@@ -69,7 +69,7 @@ public:
 public:
 	///
 	MathData(Buffer * buf = 0) : minasc_(0), mindes_(0), slevel_(0),
-				     sshift_(0), kerning_(0), buffer_(buf) {}
+				     sshift_(0), buffer_(buf) {}
 	///
 	MathData(Buffer * buf, const_iterator from, const_iterator to);
 	///
@@ -170,7 +170,7 @@ public:
 	/// additional super/subscript shift
 	int sshift() const { return sshift_; }
 	/// Italic correction as described in InsetMathScript.h
-	int kerning(BufferView const *) const { return kerning_; }
+	int kerning(BufferView const *) const;
 	///
 	void swap(MathData & ar) { base_type::swap(ar); }
 
@@ -188,7 +188,6 @@ protected:
 	mutable int mindes_;
 	mutable int slevel_;
 	mutable int sshift_;
-	mutable int kerning_;
 	Buffer * buffer_;
 
 private:

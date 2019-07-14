@@ -48,7 +48,7 @@ namespace lyx {
 
 MathData::MathData(Buffer * buf, const_iterator from, const_iterator to)
 	: base_type(from, to), minasc_(0), mindes_(0), slevel_(0),
-	  sshift_(0), kerning_(0), buffer_(buf)
+	  sshift_(0), buffer_(buf)
 {}
 
 
@@ -282,7 +282,6 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim, bool tight) const
 
 	MathRow mrow(mi, this);
 	mrow.metrics(mi, dim);
-	kerning_ = mrow.kerning(bv);
 
 	// Set a minimal ascent/descent for the cell
 	if (tight)
@@ -378,6 +377,12 @@ void MathData::drawT(TextPainter & pain, int x, int y) const
 		//x += (*it)->width_;
 		x += 2;
 	}
+}
+
+
+int MathData::kerning(BufferView const * bv) const
+{
+	return 	bv->mathRow(this).kerning(bv);
 }
 
 
