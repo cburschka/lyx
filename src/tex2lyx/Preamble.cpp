@@ -749,17 +749,66 @@ void Preamble::handle_package(Parser &p, string const & name,
 	if (is_known(name, known_roman_font_packages))
 		h_font_roman[0] = name;
 
+	vector<string> allopts = getVectorFromString(opts);
+	string xopts;
+
+	if (name == "ccfonts") {
+		for (auto const & opt : allopts) {
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_roman_opts = xopts;
+		options.clear();
+	}
+
+	if (name == "lmodern") {
+		for (auto const & opt : allopts) {
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_roman_opts = xopts;
+		options.clear();
+	}
+
 	if (name == "fourier") {
 		h_font_roman[0] = "utopia";
 		// when font uses real small capitals
-		if (opts == "expert")
-			h_font_sc = "true";
+		for (auto const & opt : allopts) {
+			if (opt == "osf") {
+				h_font_roman_osf = "true";
+				continue;
+			}
+			if (opt == "expert") {
+				h_font_sc = "true";
+				continue;
+			}
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_roman_opts = xopts;
+		options.clear();
 	}
 
 	if (name == "garamondx") {
 		h_font_roman[0] = "garamondx";
-		if (opts == "osfI")
-			h_font_roman_osf = "true";
+		for (auto const & opt : allopts) {
+			if (opt == "osfI") {
+				h_font_roman_osf = "true";
+				continue;
+			}
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_roman_opts = xopts;
+		options.clear();
 	}
 
 	if (name == "libertine") {
@@ -768,10 +817,22 @@ void Preamble::handle_package(Parser &p, string const & name,
 		h_font_sans[0] = "biolinum";
 		// as well as libertineMono
 		h_font_typewriter[0] = "libertine-mono";
-		if (opts == "osf")
-			h_font_roman_osf = "true";
-		else if (opts == "lining")
-			h_font_roman_osf = "false";
+		for (auto const & opt : allopts) {
+			if (opt == "osf") {
+				h_font_roman_osf = "true";
+				continue;
+			}
+			if (opt == "lining") {
+				h_font_roman_osf = "false";
+				continue;
+			}
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_roman_opts = xopts;
+		options.clear();
 	}
 
 	if (name == "libertineRoman" || name == "libertine-type1") {
@@ -787,8 +848,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	if (name == "MinionPro") {
 		h_font_roman[0] = "minionpro";
-		vector<string> allopts = getVectorFromString(opts);
-		string xopts;
 		h_font_roman_osf = "true";
 		h_font_math[0] = "auto";
 		for (auto const & opt : allopts) {
@@ -822,11 +881,37 @@ void Preamble::handle_package(Parser &p, string const & name,
 		}
 	}
 
-	else if (name == "mathpazo")
+	else if (name == "mathpazo") {
 		h_font_roman[0] = "palatino";
+		for (auto const & opt : allopts) {
+			if (opt == "osf") {
+				h_font_roman_osf = "true";
+				continue;
+			}
+			if (opt == "sc") {
+				h_font_sc = "true";
+				continue;
+			}
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_roman_opts = xopts;
+		options.clear();
+	}
 
-	else if (name == "mathptmx")
+	else if (name == "mathptmx") {
 		h_font_roman[0] = "times";
+		for (auto const & opt : allopts) {
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_roman_opts = xopts;
+		options.clear();
+	}
 
 	if (name == "crimson")
 		h_font_roman[0] = "cochineal";
@@ -834,9 +919,20 @@ void Preamble::handle_package(Parser &p, string const & name,
 	if (name == "cochineal") {
 		h_font_roman[0] = "cochineal";
 		// cochineal can have several options, e.g. [proportional,osf]
-		string::size_type pos = opts.find("osf");
-		if (pos != string::npos)
-			h_font_roman_osf = "true";
+		for (auto const & opt : allopts) {
+			if (opt == "osf") {
+				h_font_roman_osf = "true";
+				continue;
+			}
+			if (opt == "proportional")
+				continue;
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_roman_opts = xopts;
+		options.clear();
 	}
 
 	if (name == "noto") {
@@ -856,8 +952,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 		}
 		// noto as typewriter is handled in handling of \ttdefault
 		// special cases are handled in handling of \rmdefault and \sfdefault
-		vector<string> allopts = getVectorFromString(opts);
-		string xopts;
 		for (auto const & opt : allopts) {
 			if (opt == "rm")
 				continue;
@@ -887,8 +981,18 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	if (name == "XCharter") {
 		h_font_roman[0] = "xcharter";
-		if (opts == "osf")
-			h_font_roman_osf = "true";
+		for (auto const & opt : allopts) {
+			if (opt == "osf") {
+				h_font_roman_osf = "true";
+				continue;
+			}
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_roman_opts = xopts;
+		options.clear();
 	}
 
 	if (name == "plex-serif") {
@@ -902,8 +1006,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_font_roman[0] = "IBMPlexSerifLight";
 		else if (opts.find("semibold") != string::npos)
 			h_font_roman[0] = "IBMPlexSerifSemibold";
-		vector<string> allopts = getVectorFromString(opts);
-		string xopts;
 		for (auto const & opt : allopts) {
 			if (opt == "thin")
 				continue;
@@ -933,8 +1035,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 			else if (opts.find("light") != string::npos)
 				h_font_roman[0] = "NotoSerifLight";
 		}
-		vector<string> allopts = getVectorFromString(opts);
-		string xopts;
 		for (auto const & opt : allopts) {
 			if (opt == "regular")
 				continue;
@@ -957,8 +1057,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	if (name == "sourceserifpro") {
 		h_font_roman[0] = "ADOBESourceSerifPro";
-		vector<string> allopts = getVectorFromString(opts);
-		string xopts;
 		for (auto const & opt : allopts) {
 			if (opt == "osf") {
 				h_font_roman_osf = "true";
@@ -1011,8 +1109,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_font_sans[0] = "IBMPlexSansSemibold";
 		else
 			h_font_sans[0] = "IBMPlexSans";
-		vector<string> allopts = getVectorFromString(opts);
-		string xopts;
 		for (auto const & opt : allopts) {
 			if (opt == "thin")
 				continue;
@@ -1046,8 +1142,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 			else if (opts.find("light") != string::npos)
 				h_font_sans[0] = "NotoSansLight";
 		}
-		vector<string> allopts = getVectorFromString(opts);
-		string xopts;
 		for (auto const & opt : allopts) {
 			if (opt == "regular")
 				continue;
@@ -1074,8 +1168,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	if (name == "sourcesanspro") {
 		h_font_sans[0] = "ADOBESourceSansPro";
-		vector<string> allopts = getVectorFromString(opts);
-		string xopts;
 		for (auto const & opt : allopts) {
 			if (prefixIs(opt, "scaled=")) {
 				scale_as_percentage(opt, h_font_sf_scale[0]);
@@ -1129,8 +1221,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_font_typewriter[0] = "IBMPlexMonoSemibold";
 		else
 			h_font_typewriter[0] = "IBMPlexMono";
-		vector<string> allopts = getVectorFromString(opts);
-		string xopts;
 		for (auto const & opt : allopts) {
 			if (opt == "thin")
 				continue;
@@ -1155,8 +1245,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	if (name == "noto-mono") {
 		h_font_typewriter[0] = "NotoMonoRegular";
-		vector<string> allopts = getVectorFromString(opts);
-		string xopts;
 		for (auto const & opt : allopts) {
 			if (opt == "regular")
 				continue;
@@ -1171,8 +1259,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	if (name == "sourcecodepro") {
 		h_font_typewriter[0] = "ADOBESourceCodePro";
-		vector<string> allopts = getVectorFromString(opts);
-		string xopts;
 		for (auto const & opt : allopts) {
 			if (prefixIs(opt, "scaled=")) {
 				scale_as_percentage(opt, h_font_tt_scale[0]);
