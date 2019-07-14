@@ -675,7 +675,7 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	if (numberedType()) {
 		Changer dummy = pi.base.changeFontSet("mathrm");
 		for (row_type row = 0; row < nrows(); ++row) {
-			int const yy = y + rowinfo_[row].offset_;
+			int const yy = y + rowinfo(row).offset;
 			docstring const nl = nicelabel(row);
 			if (math_number == BufferParams::LEFT)
 				pi.draw(x, yy, nl);

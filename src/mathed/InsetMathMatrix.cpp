@@ -102,7 +102,7 @@ void InsetMathMatrix::mathmlize(MathStream & os) const
 		os << MTag("mtr");
 		for (col_type col = 0; col < ncols(); ++col) {
 			idx_type const i = index(row, col);
-			if (cellinfo_[i].multi_ != CELL_PART_OF_MULTICOLUMN) {
+			if (cellinfo(i).multi != CELL_PART_OF_MULTICOLUMN) {
 				col_type const cellcols = ncellcols(i);
 				ostringstream attr;
 				if (cellcols > 1)
@@ -136,7 +136,7 @@ void InsetMathMatrix::htmlize(HtmlStream & os) const
 			os << MTag("td", lattrib) << ETag("td") << '\n';
 		for (col_type col = 0; col < ncols(); ++col) {
 			idx_type const i = index(row, col);
-			if (cellinfo_[i].multi_ != CELL_PART_OF_MULTICOLUMN) {
+			if (cellinfo(i).multi != CELL_PART_OF_MULTICOLUMN) {
 				col_type const cellcols = ncellcols(i);
 				ostringstream attr;
 				if (cellcols > 1)

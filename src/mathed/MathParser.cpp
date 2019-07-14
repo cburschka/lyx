@@ -162,7 +162,7 @@ docstring escapeSpecialChars(docstring const & str, bool textmode)
  * environments like "equation" that have a fixed number of rows.
  */
 bool addRow(InsetMathGrid & grid, InsetMathGrid::row_type & cellrow,
-	    docstring const & vskip, bool allow_newpage_ = true)
+	    docstring const & vskip, bool allow_newpage = true)
 {
 	++cellrow;
 	if (cellrow == grid.nrows()) {
@@ -179,14 +179,14 @@ bool addRow(InsetMathGrid & grid, InsetMathGrid::row_type & cellrow,
 			lyxerr << "ignoring extra row";
 			if (!vskip.empty())
 				lyxerr << " with extra space " << to_utf8(vskip);
-			if (!allow_newpage_)
+			if (!allow_newpage)
 				lyxerr << " with no page break allowed";
 			lyxerr << '.' << endl;
 			return false;
 		}
 	}
 	grid.vcrskip(Length(to_utf8(vskip)), cellrow - 1);
-	grid.rowinfo(cellrow - 1).allow_newpage_ = allow_newpage_;
+	grid.rowinfo(cellrow - 1).allow_newpage = allow_newpage;
 	return true;
 }
 
@@ -241,7 +241,7 @@ void delEmptyLastRow(InsetMathGrid & grid)
 	for (InsetMathGrid::col_type col = 0; col < grid.ncols(); ++col) {
 		InsetMathGrid::idx_type const idx = grid.index(row, col);
 		if (!grid.cell(idx).empty() ||
-		    grid.cellinfo(idx).multi_ != InsetMathGrid::CELL_NORMAL)
+		    grid.cellinfo(idx).multi != InsetMathGrid::CELL_NORMAL)
 			return;
 	}
 	// Copy the row information of the empty row (which would contain the
@@ -1381,20 +1381,20 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				for (int i = 1; i < cols; ++i) {
 					if (addCol(grid, cellcol)) {
 						size_t const idx = grid.index(cellrow, cellcol);
-						grid.cellinfo(idx).multi_ =
+						grid.cellinfo(idx).multi =
 							InsetMathGrid::CELL_PART_OF_MULTICOLUMN;
 					}
 				}
 
 				// the first cell is the real thing, not a dummy
 				cell = &grid.cell(first);
-				grid.cellinfo(first).multi_ =
+				grid.cellinfo(first).multi =
 					InsetMathGrid::CELL_BEGIN_OF_MULTICOLUMN;
 
 				// read special alignment
 				MathData align;
 				parse(align, FLAG_ITEM, mode);
-				grid.cellinfo(first).align_ = asString(align);
+				grid.cellinfo(first).align = asString(align);
 
 				// parse the remaining contents into the "real" cell
 				parse(*cell, FLAG_ITEM, mode);
@@ -1424,7 +1424,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			grid.asHullInset()->numbered(cellrow, true);
 
 		else if (t.cs() == "hline") {
-			grid.rowinfo(cellrow).lines_ ++;
+			grid.rowinfo(cellrow).lines++;
 		}
 
 		else if (t.cs() == "sqrt") {

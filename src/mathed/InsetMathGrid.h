@@ -43,9 +43,9 @@ public:
 		///
 		CellInfo();
 		/// multicolumn flag
-		Multicolumn multi_;
+		Multicolumn multi;
 		/// special multi colums alignment
-		docstring align_;
+		docstring align;
 	};
 
 	/// additional per-row information
@@ -56,19 +56,19 @@ public:
 		///
 		int skipPixels(MetricsInfo const & mi) const;
 		/// cached descent
-		mutable int descent_;
+		mutable int descent;
 		/// cached ascent
-		mutable int ascent_;
+		mutable int ascent;
 		/// cached offset
-		mutable int offset_;
+		mutable int offset;
 		/// how many hlines above this row?
-		unsigned int lines_;
+		unsigned int lines;
 		/// parameter to the line break
-		Length crskip_;
+		Length crskip;
 		/// extra distance between lines
-		int skip_;
+		int skip;
 		/// Is a page break allowed after this row?
-		bool allow_newpage_;
+		bool allow_newpage;
 	};
 
 	// additional per-row information
@@ -77,20 +77,20 @@ public:
 		///
 		ColInfo();
 		/// currently possible: 'l', 'c', 'r'
-		char align_;
+		char align;
 		/// cached width
-		mutable int width_;
+		mutable int width;
 		/// cached offset
-		mutable int offset_;
+		mutable int offset;
 		/// how many lines to the left of this column?
-		unsigned int lines_;
+		unsigned int lines;
 		/// additional amount to the right to be skipped when drawing
-		int skip_;
+		int skip;
 		/// Special alignment.
 		/// This does also contain align_ and lines_ if it is nonempty.
 		/// It needs to be in sync with align_ and lines_ because some
 		/// code only uses align_ and lines_.
-		docstring special_;
+		docstring special;
 	};
 
 public:
@@ -279,6 +279,10 @@ protected:
 	int vLineHOffset(col_type col, unsigned int line) const;
 	int hLineVOffset(row_type row, unsigned int line) const;
 
+	///
+	InsetCode lyxCode() const { return MATH_GRID_CODE; }
+
+private:
 	/// row info.
 	/// rowinfo_[nrows()] is a dummy row used only for hlines.
 	std::vector<RowInfo> rowinfo_;
@@ -287,10 +291,6 @@ protected:
 	std::vector<ColInfo> colinfo_;
 	/// cell info
 	std::vector<CellInfo> cellinfo_;
-	///
-	InsetCode lyxCode() const { return MATH_GRID_CODE; }
-
-private:
 	///
 	char v_align_; // FIXME: add approp. type
 	///
