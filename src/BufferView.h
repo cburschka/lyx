@@ -303,8 +303,8 @@ public:
 	Point getPos(DocIterator const & dit) const;
 	/// is the paragraph of the cursor visible ?
 	bool paragraphVisible(DocIterator const & dit) const;
-	/// is the cursor currently visible in the view
-	bool cursorInView(Point const & p, int h) const;
+	/// is the caret currently visible in the view
+	bool caretInView() const;
 	/// set the ascent and descent of the caret
 	void setCaretAscentDescent(int asc, int des);
 	/// get the position and height of the caret
