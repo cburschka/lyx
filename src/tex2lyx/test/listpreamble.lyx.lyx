@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.4
-\lyxformat 580
+\lyxformat 581
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -32,7 +32,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -67,6 +69,7 @@
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno false
 \index Index
 \shortcut idx
 \color #008000
