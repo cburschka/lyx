@@ -439,11 +439,8 @@ void GuiWorkArea::startBlinkingCaret()
 	if (view().busy())
 		return;
 
-	Point p;
-	int h = 0;
-	d->buffer_view_->caretPosAndHeight(p, h);
 	// Don't start blinking if the cursor isn't on screen.
-	if (!d->buffer_view_->cursorInView(p, h))
+	if (!d->buffer_view_->caretInView())
 		return;
 
 	d->showCaret();
@@ -583,10 +580,7 @@ void GuiWorkArea::Private::resizeBufferView()
 	// Warn our container (GuiView).
 	p->busy(true);
 
-	Point point;
-	int h = 0;
-	buffer_view_->caretPosAndHeight(point, h);
-	bool const caret_in_view = buffer_view_->cursorInView(point, h);
+	bool const caret_in_view = buffer_view_->caretInView();
 	buffer_view_->resize(p->viewport()->width(), p->viewport()->height());
 	if (caret_in_view)
 		buffer_view_->scrollToCursor();
@@ -610,11 +604,12 @@ void GuiWorkArea::Private::resizeBufferView()
 
 void GuiWorkArea::Private::updateCaretGeometry()
 {
+	if (!buffer_view_->caretInView())
+		return;
+
 	Point point;
 	int h = 0;
 	buffer_view_->caretPosAndHeight(point, h);
-	if (!buffer_view_->cursorInView(point, h))
-		return;
 
 	// RTL or not RTL
 	bool l_shape = false;

@@ -3044,11 +3044,16 @@ void BufferView::caretPosAndHeight(Point & p, int & h) const
 }
 
 
-bool BufferView::cursorInView(Point const & p, int h) const
+bool BufferView::caretInView() const
 {
-	Cursor const & cur = cursor();
+	if (!paragraphVisible(cursor()))
+		return false;
+	Point p;
+	int h;
+	caretPosAndHeight(p, h);
+
 	// does the cursor touch the screen ?
-	if (p.y_ + h < 0 || p.y_ >= workHeight() || !paragraphVisible(cur))
+	if (p.y_ + h < 0 || p.y_ >= workHeight())
 		return false;
 	return true;
 }
