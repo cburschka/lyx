@@ -15,11 +15,12 @@
 #include "InsetMathNest.h"
 #include "Length.h"
 
+#include <map>
 
 namespace lyx {
 
 class BufferParams;
-
+class BufferView;
 
 /** Gridded math inset base class.
  *  This is the base to all grid-like editable math objects
@@ -59,8 +60,8 @@ public:
 		mutable int descent;
 		/// cached ascent
 		mutable int ascent;
-		/// cached offset
-		mutable int offset;
+		/// cached offset for each bufferview
+		mutable std::map<BufferView const *, int> offset;
 		/// how many hlines above this row?
 		unsigned int lines;
 		/// parameter to the line break
@@ -245,7 +246,7 @@ protected:
 	/// returns x offset of cell compared to inset
 	int cellXOffset(BufferView const &, idx_type idx) const;
 	/// returns y offset of cell compared to inset
-	int cellYOffset(idx_type idx) const;
+	int cellYOffset(BufferView const &, idx_type idx) const;
 	/// Width of cell, taking combined columns into account
 	int cellWidth(idx_type idx) const;
 	///
@@ -277,7 +278,7 @@ protected:
 
 	/// positions of vertical and horizontal lines
 	int vLineHOffset(col_type col, unsigned int line) const;
-	int hLineVOffset(row_type row, unsigned int line) const;
+	int hLineVOffset(BufferView const &, row_type row, unsigned int line) const;
 
 	///
 	InsetCode lyxCode() const { return MATH_GRID_CODE; }

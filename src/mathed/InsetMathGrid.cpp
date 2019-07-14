@@ -92,7 +92,7 @@ InsetMathGrid::CellInfo::CellInfo()
 
 
 InsetMathGrid::RowInfo::RowInfo()
-	: descent(0), ascent(0), offset(0), lines(0), skip(0),
+	: descent(0), ascent(0), lines(0), skip(0),
 	  allow_newpage(true)
 {}
 
@@ -424,10 +424,10 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 	rowinfo_[nrows()].descent = 0;
 
 	// compute vertical offsets
-	rowinfo_[0].offset = 0;
+	rowinfo_[0].offset[&bv] = 0;
 	for (row_type row = 1; row <= nrows(); ++row) {
-		rowinfo_[row].offset =
-			rowinfo_[row - 1].offset +
+		rowinfo_[row].offset[&bv] =
+			rowinfo_[row - 1].offset[&bv] +
 			rowinfo_[row - 1].descent +
 			rowinfo_[row - 1].skipPixels(mi) +
 			rowsep() +
@@ -442,13 +442,13 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 			h = 0;
 			break;
 		case 'b':
-			h = rowinfo_[nrows() - 1].offset;
+			h = rowinfo_[nrows() - 1].offset[&bv];
 			break;
 		default:
-			h = rowinfo_[nrows() - 1].offset / 2;
+			h = rowinfo_[nrows() - 1].offset[&bv] / 2;
 	}
 	for (row_type row = 0; row <= nrows(); ++row)
-		rowinfo_[row].offset -= h;
+		rowinfo_[row].offset[&bv] -= h;
 
 
 	// multicolumn cell widths, as a map from first column to width in a
@@ -528,12 +528,12 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 		+ vlinesep() * colinfo_[ncols()].lines
 		+ border();
 
-	dim.asc = - rowinfo_[0].offset
+	dim.asc = - rowinfo_[0].offset[&bv]
 		+ rowinfo_[0].ascent
 		+ hlinesep() * rowinfo_[0].lines
 		+ border();
 
-	dim.des = rowinfo_[nrows() - 1].offset
+	dim.des = rowinfo_[nrows() - 1].offset[&bv]
 		+ rowinfo_[nrows() - 1].descent
 		+ hlinesep() * rowinfo_[nrows()].lines
 		+ border() + 1;
@@ -608,9 +608,10 @@ int InsetMathGrid::vLineHOffset(col_type col, unsigned int line) const
 }
 
 
-int InsetMathGrid::hLineVOffset(row_type row, unsigned int line) const
+int InsetMathGrid::hLineVOffset(BufferView const & bv, row_type row,
+                                unsigned int line) const
 {
-	return rowinfo_[row].offset
+	return rowinfo_[row].offset[&bv]
 		- rowinfo_[row].ascent
 		- line * hlinesep()
 		- hlinesep()/2 - rowsep()/2;
@@ -625,11 +626,11 @@ void InsetMathGrid::draw(PainterInfo & pi, int x, int y) const
 		if (cellinfo_[idx].multi != CELL_PART_OF_MULTICOLUMN) {
 			cell(idx).draw(pi,
 			               x + leftMargin() + cellXOffset(bv, idx),
-			               y + cellYOffset(idx));
+			               y + cellYOffset(bv, idx));
 
 			row_type r = row(idx);
-			int const yy1 = y + hLineVOffset(r, 0);
-			int const yy2 = y + hLineVOffset(r + 1, rowinfo_[r + 1].lines - 1);
+			int const yy1 = y + hLineVOffset(bv, r, 0);
+			int const yy2 = y + hLineVOffset(bv, r + 1, rowinfo_[r + 1].lines - 1);
 			auto draw_left_borders = [&](col_type c) {
 				for (unsigned int i = 0; i < colinfo_[c].lines; ++i) {
 					int const xx = x + vLineHOffset(c, i);
@@ -650,15 +651,18 @@ void InsetMathGrid::draw(PainterInfo & pi, int x, int y) const
 		int const xx1 = x + vLineHOffset(0, 0);
 		int const xx2 = x + vLineHOffset(ncols(), colinfo_[ncols()].lines - 1);
 		for (unsigned int i = 0; i < rowinfo_[r].lines; ++i) {
-			int const yy = y + hLineVOffset(r, i);
+			int const yy = y + hLineVOffset(bv, r, i);
 			pi.pain.line(xx1, yy, xx2, yy, Color_foreground);
 		}
 	}
 }
 
 
-void InsetMathGrid::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
+void InsetMathGrid::metricsT(TextMetricsInfo const & /*mi*/, Dimension & /*dim*/) const
 {
+// FIXME: this does not compile anymore with offset being a map
+// It is not worth fixing it at this point since the code is basically dead.
+#if 0
 	// let the cells adjust themselves
 	for (idx_type i = 0; i < nargs(); ++i)
 		if (cellinfo_[i].multi != CELL_PART_OF_MULTICOLUMN)
@@ -685,9 +689,9 @@ void InsetMathGrid::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 	rowinfo_[nrows()].descent = 0;
 
 	// compute vertical offsets
-	rowinfo_[0].offset = 0;
+	rowinfo_[0].offset[&bv] = 0;
 	for (row_type row = 1; row <= nrows(); ++row) {
-		rowinfo_[row].offset  =
+		rowinfo_[row].offset[&bv]  =
 			rowinfo_[row - 1].offset  +
 			rowinfo_[row - 1].descent +
 			//rowinfo_[row - 1].skipPixels(mi) +
@@ -751,6 +755,7 @@ void InsetMathGrid::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 		       + rowinfo_[nrows() - 1].descent
 		 //+ hlinesep() * rowinfo_[nrows()].lines
 		       + 1;
+#endif
 }
 
 
@@ -935,9 +940,9 @@ int InsetMathGrid::cellXOffset(BufferView const & bv, idx_type idx) const
 }
 
 
-int InsetMathGrid::cellYOffset(idx_type idx) const
+int InsetMathGrid::cellYOffset(BufferView const & bv, idx_type idx) const
 {
-	return rowinfo_[row(idx)].offset;
+	return rowinfo_[row(idx)].offset[&bv];
 }
 
 

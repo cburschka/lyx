@@ -548,12 +548,39 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 		return;
 	}
 
-	Changer dummy1 = mi.base.changeFontSet(standardFont());
-	Changer dummy2 = mi.base.font.changeStyle(display() ? DISPLAY_STYLE
-	                                                    : TEXT_STYLE);
+	{
+		Changer dummy1 = mi.base.changeFontSet(standardFont());
+		Changer dummy2 = mi.base.font.changeStyle(display() ? DISPLAY_STYLE
+												  : TEXT_STYLE);
 
-	// let the cells adjust themselves
-	InsetMathGrid::metrics(mi, dim);
+		// let the cells adjust themselves
+		InsetMathGrid::metrics(mi, dim);
+	}
+
+	// Check whether the numbering interferes with the equations
+	if (numberedType()) {
+		BufferParams::MathNumber const math_number = buffer().params().getMathNumber();
+		int extra_offset = 0;
+		for (row_type row = 0; row < nrows(); ++row) {
+			rowinfo(row).offset[mi.base.bv] += extra_offset;
+			if (!numbered(row))
+				continue;
+			docstring const nl = nicelabel(row);
+			Dimension dimnl;
+			mathed_string_dim(mi.base.font, nl, dimnl);
+			int const ind = indent(*mi.base.bv);
+			int const x = ind ? ind : (mi.base.textwidth - dim.wid) / 2;
+			// for some reason metrics does not trigger at the
+			// same point as draw, and therefore we use >= instead of >
+			if ((math_number == BufferParams::LEFT && dimnl.wid >= x)
+			    || (math_number == BufferParams::RIGHT
+			        && dimnl.wid >= mi.base.textwidth - x - dim.wid)) {
+				extra_offset += dimnl.height();
+			}
+		}
+		dim.des += extra_offset;
+	}
+
 
 	if (display()) {
 		dim.asc += display_margin;
@@ -637,21 +664,32 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	}
 
 	// First draw the numbers
+	if (!pi.full_repaint)
+		pi.pain.fillRectangle(pi.leftx, y - dim.asc,
+							  pi.rightx - pi.leftx, dim.height(),
+							  pi.background_color);
+
 	ColorCode color = pi.selected && lyxrc.use_system_colors
 				? Color_selectiontext : standardColor();
 	bool const really_change_color = pi.base.font.color() == Color_none;
 	Changer dummy0 = really_change_color ? pi.base.font.changeColor(color)
 		: Changer();
-	if (pi.full_repaint && numberedType()) {
+	if (numberedType()) {
+		LATTEST(pi.leftx <pi.rightx);
 		BufferParams::MathNumber const math_number = buffer().params().getMathNumber();
 		for (row_type row = 0; row < nrows(); ++row) {
-			int const yy = y + rowinfo(row).offset;
+			int yy = y + rowinfo(row).offset[bv];
 			docstring const nl = nicelabel(row);
+			Dimension dimnl;
+			mathed_string_dim(pi.base.font, nl, dimnl);
 			if (math_number == BufferParams::LEFT) {
+				if (dimnl.wid > x - pi.leftx)
+					yy += rowinfo(row).descent + dimnl.asc;
 				pi.draw(pi.leftx, yy, nl);
 			} else {
-				int const l = mathed_string_width(pi.base.font, nl);
-				pi.draw(pi.rightx - l, yy, nl);
+				if (dimnl.wid > pi.rightx - x - dim.wid)
+					yy += rowinfo(row).descent + dimnl.asc;
+				pi.draw(pi.rightx - dimnl.wid, yy, nl);
 			}
 		}
 	}
