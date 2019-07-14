@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-07-12 13:55+0200\n"
-"PO-Revision-Date: 2019-07-12 11:56+0000\n"
+"POT-Creation-Date: 2019-07-14 12:30+0200\n"
+"PO-Revision-Date: 2019-07-14 11:53+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1791,6 +1791,10 @@ msgstr ""
 "Zmente mierku bezserifového fontu tak, aby pasoval k rozmerom základného "
 "fontu"
 
+#: src/frontends/qt4/ui/FontUi.ui:267
+msgid "Use old st&yle figures"
+msgstr "Použiť mi&nuskové číslice"
+
 #: src/frontends/qt4/ui/FontUi.ui:179
 msgid "&Typewriter:"
 msgstr "S&trojopisné:"
@@ -1808,6 +1812,10 @@ msgid "Scale the Typewriter font to match the base font's dimensions"
 msgstr ""
 "Zmente mierku strojopisného fontu tak, aby pasoval k rozmerom základného "
 "fontu"
+
+#: src/frontends/qt4/ui/FontUi.ui:375
+msgid "Use old style &figures"
+msgstr "Použiť minuskové čísli&ce"
 
 #: src/frontends/qt4/ui/FontUi.ui:236
 msgid "&Math:"
@@ -1829,17 +1837,18 @@ msgstr "Vložte font na použitie pre CJK skript"
 msgid "Use a real small caps shape, if the font provides one"
 msgstr "Použiť reálne kapitálky v prípade, že sú fontom poskytované"
 
-#: src/frontends/qt4/ui/FontUi.ui:273
+#: src/frontends/qt4/ui/FontUi.ui:145
 msgid "Use true s&mall caps"
-msgstr "Použiť pravé malé &kapitálky"
+msgstr "&Použiť pravé malé kapitálky"
 
-#: src/frontends/qt4/ui/FontUi.ui:280
+#: src/frontends/qt4/ui/FontUi.ui:156 src/frontends/qt4/ui/FontUi.ui:264
+#: src/frontends/qt4/ui/FontUi.ui:372
 msgid "Use old style instead of lining figures"
-msgstr "Použiť číslice minuskové, nie verzálové"
+msgstr "Použiť číslice minuskové, nie verzálové (old style figures)"
 
-#: src/frontends/qt4/ui/FontUi.ui:283
+#: src/frontends/qt4/ui/FontUi.ui:159
 msgid "Use &old style figures"
-msgstr "Použiť min&uskové číslice (old style figures)"
+msgstr "Použiť min&uskové číslice"
 
 #: src/frontends/qt4/ui/FontUi.ui:290
 msgid ""
