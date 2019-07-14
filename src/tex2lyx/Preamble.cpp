@@ -504,8 +504,7 @@ string remove_braces(string const & value)
 
 
 Preamble::Preamble() : one_language(true), explicit_babel(false),
-	title_layout_found(false), index_number(0), h_font_cjk_set(false),
-	h_use_microtype("false")
+	title_layout_found(false), index_number(0), h_font_cjk_set(false)
 {
 	//h_backgroundcolor;
 	//h_boxbgcolor;
@@ -599,6 +598,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_use_default_options     = "false";
 	h_use_hyperref            = "false";
 	h_use_microtype           = "false";
+	h_use_lineno              = "false";
 	h_use_refstyle            = false;
 	h_use_minted              = false;
 	h_use_packages["amsmath"]    = "1";
@@ -1486,6 +1486,14 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_preamble << "\\usepackage[" << opts << "]{microtype}";
 	}
 
+	else if (name == "lineno") {
+		h_use_lineno = "true";
+		if (!options.empty()) {
+			h_lineno_options = join(options, ",");
+			options.clear();
+		}
+	}
+
 	else if (!in_lyx_preamble) {
 		if (options.empty())
 			h_preamble << "\\usepackage{" << name << '}';
@@ -1678,7 +1686,10 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 	   << "\\suppress_date " << h_suppress_date << '\n'
 	   << "\\justification " << h_justification << '\n'
 	   << "\\use_refstyle " << h_use_refstyle << '\n'
-	   << "\\use_minted " << h_use_minted << '\n';
+	   << "\\use_minted " << h_use_minted << '\n'
+	   << "\\use_lineno " << h_use_lineno << '\n';
+	if (!h_lineno_options.empty())
+		os << "\\lineno_options " << h_lineno_options << '\n';
 	if (!h_fontcolor.empty())
 		os << "\\fontcolor " << h_fontcolor << '\n';
 	if (!h_notefontcolor.empty())

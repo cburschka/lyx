@@ -178,6 +178,8 @@ private:
 	bool h_font_cjk_set;
 	std::string h_font_cjk;
 	std::string h_use_microtype;
+	std::string h_use_lineno;
+	std::string h_lineno_options;
 	std::string h_is_mathindent;
 	std::string h_math_numbering_side;
 	std::string h_mathindentation;
