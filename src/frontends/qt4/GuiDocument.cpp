@@ -4943,7 +4943,6 @@ bool GuiDocument::providesOSF(QString const & font) const
 		// FIXME: we should check if the fonts really
 		// have OSF support. But how?
 		return true;
-	LYXERR0("osf font: " << font);
 	return theLaTeXFonts().getLaTeXFont(
 				qstring_to_ucs4(font)).providesOSF(ot1(),
 								   completeFontset(),
