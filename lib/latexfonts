@@ -902,17 +902,6 @@ Font beramono
 	Requires         bera
 EndFont
 
-Font cantarellMS
-	GuiName		"Cantarell Monospace"
-	Family		tt
-	OsfOption	oldstyle
-	OsfDefault	0
-	Package		cantarell
-	PackageOption	"defaultsans,tabular"
-	FontEncoding	T2A,T1,OT1
-	ScaleOption	scale=$$val
-EndFont
-
 Font cmtl
 	GuiName          "CM Typewriter Light"
 	Family           tt
