@@ -1629,7 +1629,8 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			for (row_type r = 0; r < numrows; ++r) {
 				for (col_type c = 0; c < numcols; ++c) {
 					idx_type i = index(r + cur.row(), c + col(cur.idx()));
-					cell(i).insert(0, grid.cell(grid.index(r, c)));
+					cell(i).insert(c == 0 ? cur.pos() : 0,
+					               grid.cell(grid.index(r, c)));
 				}
 				if (hline_enabled)
 					rowinfo_[r].lines += grid.rowinfo_[r].lines;
