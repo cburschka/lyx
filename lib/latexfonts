@@ -116,6 +116,7 @@ Font ccfonts
 	GuiName          "Concrete Roman"
 	Family           rm
 	Package          ccfonts
+	MoreOptions      1
 EndFont
 
 Font chancery
@@ -136,6 +137,7 @@ Font cochineal
 	OsfOption        "proportional,osf"
 	Package          cochineal
 	AltFonts         crimson
+	MoreOptions      1
 EndFont
 
 AltFont crimson
@@ -223,6 +225,7 @@ Font garamondx
 	Package          garamondx
 	Requires         garamondx-fonts
 	AltFonts         ugm
+	MoreOptions      1
 EndFont
 
 AltFont ugm
@@ -239,6 +242,7 @@ Font libertine
 	Package          libertineRoman
 	CompleteFont     libertine-full
 	AltFonts         libertine-type1,libertine-2012,libertine-legacy
+	MoreOptions      1
 EndFont
 
 AltFont libertine-full
@@ -246,6 +250,7 @@ AltFont libertine-full
 	Family           rm
 	Package          libertine
 	Requires         libertineRoman
+	MoreOptions      1
 EndFont
 
 AltFont libertine-type1
@@ -276,6 +281,7 @@ Font lmodern
 	Family           rm
 	Package          lmodern
 	NoMathFont       lmr
+	MoreOptions      1
 EndFont
 
 AltFont lmr
@@ -458,6 +464,7 @@ Font palatino
 	AltFonts         mathpple,palatino-sty
 	NoMathFont       ppl
 	Requires         psnfss
+	MoreOptions      1
 EndFont
 
 AltFont mathpple
@@ -507,6 +514,7 @@ Font times
 	AltFonts         mathptm,times-sty
 	NoMathFont       ptm
 	Requires         psnfss
+	MoreOptions      1
 EndFont
 
 AltFont mathptm
@@ -569,6 +577,7 @@ Font utopia
 	AltFonts         utopia-sty
 	OT1Font          utopia-sty
 	NoMathFont       futs
+	MoreOptions      1
 EndFont
 
 AltFont utopia-sty
@@ -595,6 +604,7 @@ Font xcharter
 	Family          rm
 	Package         XCharter
 	OsfOption       osf
+	MoreOptions      1
 EndFont
 
 #
@@ -622,6 +632,7 @@ Font biolinum
 	ScaleOption      scaled=$$val
 	Package          biolinum
 	AltFonts         biolinum-type1,biolinum-2012
+	MoreOptions      1
 EndFont
 
 AltFont biolinum-type1
@@ -631,6 +642,7 @@ AltFont biolinum-type1
 	ScaleOption      scaled=$$val
 	Package          biolinum-type1
 	Requires         libertineMono-type1
+	MoreOptions      1
 EndFont
 
 AltFont biolinum-2012
@@ -639,6 +651,7 @@ AltFont biolinum-2012
 	OsfOption        lining
 	OsfDefault       1
 	Package          biolinum-type1
+	MoreOptions      1
 EndFont
 
 Font cmbr

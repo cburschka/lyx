@@ -492,12 +492,25 @@ def revert_paratype(document):
         i2 = find_token(document.header, "\\font_sans \"default\"", 0)
         i3 = find_token(document.header, "\\font_typewriter \"default\"", 0)
         j = find_token(document.header, "\\font_sans \"PTSans-TLF\"", 0)
-        sfval = get_value(document.header, "\\font_sf_scale", 0)
-        # cutoff " 100"
-        sfval = sfval[:-4]
+
+        sf_scale = 100.0
+        sfval = find_token(document.header, "\\font_sf_scale", 0)
+        if sfval == -1:
+            document.warning("Malformed LyX document: Missing \\font_sf_scale.")
+        else:
+            sfscale = document.header[sfval].split()
+            val = sfscale[1]
+            sfscale[1] = "100"
+            document.header[sfval] = " ".join(sfscale)
+            try:
+                # float() can throw
+                sf_scale = float(val)
+            except:
+                document.warning("Invalid font_sf_scale value: " + val)
+
         sfoption = ""
-        if sfval != "100":
-            sfoption = "scaled=" + format(float(sfval) / 100, '.2f')
+        if sf_scale != "100.0":
+            sfoption = "scaled=" + str(sf_scale / 100.0)
         k = find_token(document.header, "\\font_typewriter \"PTMono-TLF\"", 0)
         ttval = get_value(document.header, "\\font_tt_scale", 0)
         # cutoff " 100"
@@ -2708,6 +2721,125 @@ def revert_osf(document):
         document.header[i] = "\\font_osf true"
 
 
+def revert_texfontopts(document):
+    " Revert native TeX font definitions (with extra options) to LaTeX "
+
+    i = find_token(document.header, '\\use_non_tex_fonts', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
+        return
+    if str2bool(get_value(document.header, "\\use_non_tex_fonts", i)):
+        return
+
+    rmfonts = ["ccfonts", "cochineal", "utopia", "garamondx", "libertine", "lmodern", "palatino", "times", "xcharter" ]
+
+    # First the sf (biolinum only)
+    regexp = re.compile(r'(\\font_sans_opts)')
+    x = find_re(document.header, regexp, 0)
+    if x != -1:
+        # We need to use this regex since split() does not handle quote protection
+        sfopts = re.findall(r'[^"\s]\S*|".+?"', document.header[x])
+        opts = sfopts[1].strip('"')
+        i = find_token(document.header, "\\font_sans", 0)
+        if i == -1:
+            document.warning("Malformed LyX document: Missing \\font_sans.")
+        else:
+            # We need to use this regex since split() does not handle quote protection
+            sffont = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+            sans = sffont[1].strip('"')
+            if sans == "biolinum":
+                sf_scale = 100.0
+                sffont[1] = '"default"'
+                document.header[i] = " ".join(sffont)
+                osf = False
+                j = find_token(document.header, "\\font_sans_osf true", 0)
+                if j != -1:
+                    osf = True
+                k = find_token(document.header, "\\font_sf_scale", 0)
+                if k == -1:
+                    document.warning("Malformed LyX document: Missing \\font_sf_scale.")
+                else:
+                    sfscale = document.header[k].split()
+                    val = sfscale[1]
+                    sfscale[1] = "100"
+                    document.header[k] = " ".join(sfscale)
+                    try:
+                        # float() can throw
+                        sf_scale = float(val)
+                    except:
+                        document.warning("Invalid font_sf_scale value: " + val)
+                preamble = "\\usepackage["
+                if osf:
+                    document.header[j] = "\\font_sans_osf false"
+                    preamble += "osf,"
+                if sf_scale != 100.0:
+                    preamble += 'scaled=' + str(sf_scale / 100.0) + ','
+                preamble += opts
+                preamble += "]{biolinum}"
+                add_to_preamble(document, [preamble])
+                del document.header[x]
+
+    regexp = re.compile(r'(\\font_roman_opts)')
+    x = find_re(document.header, regexp, 0)
+    if x == -1:
+        return
+
+    # We need to use this regex since split() does not handle quote protection
+    romanopts = re.findall(r'[^"\s]\S*|".+?"', document.header[x])
+    opts = romanopts[1].strip('"')
+
+    i = find_token(document.header, "\\font_roman", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_roman.")
+        return
+    else:
+        # We need to use this regex since split() does not handle quote protection
+        romanfont = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+        roman = romanfont[1].strip('"')
+        if not roman in rmfonts:
+            return
+        romanfont[1] = '"default"'
+        document.header[i] = " ".join(romanfont)
+        package = roman
+        if roman == "utopia":
+            package = "fourier"
+        elif roman == "palatino":
+            package = "mathpazo"
+        elif roman == "times":
+            package = "mathptmx"
+        elif roman == "xcharter":
+            package = "XCharter"
+        osf = ""
+        j = find_token(document.header, "\\font_roman_osf true", 0)
+        if j != -1:
+            if roman == "cochineal":
+                osf = "proportional,osf,"
+            elif roman == "utopia":
+                osf = "oldstyle,"
+            elif roman == "garamondx":
+                osf = "osfI,"
+            elif roman == "libertine":
+                osf = "osf,"
+            elif roman == "palatino":
+                osf = "osf,"
+            elif roman == "xcharter":
+                osf = "osf,"
+            document.header[j] = "\\font_roman_osf false"
+        k = find_token(document.header, "\\font_sc true", 0)
+        if k != -1:
+            if roman == "utopia":
+                osf += "expert,"
+            if roman == "palatino" and osf == "":
+                osf = "sc,"
+            document.header[k] = "\\font_sc false"
+        preamble = "\\usepackage["
+        preamble += osf
+        preamble += opts
+        preamble += "]{" + package + "}"
+        add_to_preamble(document, [preamble])
+        del document.header[x]
+
+
 ##
 # Conversion hub
 #
@@ -2753,7 +2885,7 @@ convert = [
            [581, [convert_osf]]
           ]
 
-revert =  [[580, [revert_osf]],
+revert =  [[580, [revert_texfontopts,revert_osf]],
            [579, [revert_minionpro, revert_plainNotoFonts_xopts, revert_notoFonts_xopts, revert_IBMFonts_xopts, revert_AdobeFonts_xopts, revert_font_opts]], # keep revert_font_opts last!
            [578, [revert_babelfont]],
            [577, [revert_drs]],
