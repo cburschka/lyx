@@ -172,7 +172,9 @@ private:
 	std::string h_font_default_family;
 	bool h_use_non_tex_fonts;
 	std::string h_font_sc;
-	std::string h_font_osf;
+	std::string h_font_roman_osf;
+	std::string h_font_sans_osf;
+	std::string h_font_typewriter_osf;
 	std::string h_font_sf_scale[2];
 	std::string h_font_tt_scale[2];
 	bool h_font_cjk_set;

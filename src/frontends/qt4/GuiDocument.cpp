@@ -1090,6 +1090,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(fontModule->fontOsfCB, SIGNAL(toggled(bool)),
 		this, SLOT(fontOsfToggled(bool)));
+	connect(fontModule->fontSansOsfCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(fontModule->fontTypewriterOsfCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 	connect(fontModule->fontspecRomanLE, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(fontModule->fontspecSansLE, SIGNAL(textChanged(const QString &)),
@@ -2462,12 +2466,14 @@ void GuiDocument::updateFontOptions()
 	bool scaleable = providesScale(font);
 	fontModule->scaleSansSB->setEnabled(scaleable);
 	fontModule->scaleSansLA->setEnabled(scaleable);
+	fontModule->fontSansOsfCB->setEnabled(providesOSF(font));
 	if (tex_fonts)
 		font = fontModule->fontsTypewriterCO->itemData(
 				fontModule->fontsTypewriterCO->currentIndex()).toString();
 	scaleable = providesScale(font);
 	fontModule->scaleTypewriterSB->setEnabled(scaleable);
 	fontModule->scaleTypewriterLA->setEnabled(scaleable);
+	fontModule->fontTypewriterOsfCB->setEnabled(providesOSF(font));
 	if (tex_fonts)
 		font = fontModule->fontsRomanCO->itemData(
 				fontModule->fontsRomanCO->currentIndex()).toString();
@@ -2667,6 +2673,7 @@ void GuiDocument::sansChanged(int item)
 	bool const scaleable = providesScale(font);
 	fontModule->scaleSansSB->setEnabled(scaleable);
 	fontModule->scaleSansLA->setEnabled(scaleable);
+	fontModule->fontSansOsfCB->setEnabled(providesOSF(font));
 	updateExtraOpts();
 }
 
@@ -2680,6 +2687,7 @@ void GuiDocument::ttChanged(int item)
 	bool scaleable = providesScale(font);
 	fontModule->scaleTypewriterSB->setEnabled(scaleable);
 	fontModule->scaleTypewriterLA->setEnabled(scaleable);
+	fontModule->fontTypewriterOsfCB->setEnabled(providesOSF(font));
 	updateExtraOpts();
 }
 
@@ -3711,7 +3719,9 @@ void GuiDocument::applyView()
 
 	bp_.fonts_expert_sc = fontModule->fontScCB->isChecked();
 
-	bp_.fonts_old_figures = fontModule->fontOsfCB->isChecked();
+	bp_.fonts_roman_osf = fontModule->fontOsfCB->isChecked();
+	bp_.fonts_sans_osf = fontModule->fontSansOsfCB->isChecked();
+	bp_.fonts_typewriter_osf = fontModule->fontTypewriterOsfCB->isChecked();
 
 	if (nontexfonts)
 		bp_.fonts_default_family = "default";
@@ -4227,7 +4237,9 @@ void GuiDocument::paramsToDialog()
 	fontModule->dashesCB->setChecked(!bp_.use_dash_ligatures);
 
 	fontModule->fontScCB->setChecked(bp_.fonts_expert_sc);
-	fontModule->fontOsfCB->setChecked(bp_.fonts_old_figures);
+	fontModule->fontOsfCB->setChecked(bp_.fonts_roman_osf);
+	fontModule->fontSansOsfCB->setChecked(bp_.fonts_sans_osf);
+	fontModule->fontTypewriterOsfCB->setChecked(bp_.fonts_typewriter_osf);
 	fontModule->scaleSansSB->setValue(bp_.fontsSansScale());
 	fontModule->font_sf_scale = bp_.fonts_sans_scale[!bp_.useNonTeXFonts];
 	fontModule->scaleTypewriterSB->setValue(bp_.fontsTypewriterScale());
@@ -4931,6 +4943,7 @@ bool GuiDocument::providesOSF(QString const & font) const
 		// FIXME: we should check if the fonts really
 		// have OSF support. But how?
 		return true;
+	LYXERR0("osf font: " << font);
 	return theLaTeXFonts().getLaTeXFont(
 				qstring_to_ucs4(font)).providesOSF(ot1(),
 								   completeFontset(),

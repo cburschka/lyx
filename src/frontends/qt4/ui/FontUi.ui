@@ -6,26 +6,29 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>534</width>
-    <height>632</height>
+    <width>568</width>
+    <height>557</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>FontUi</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
-   <item row="0" column="0">
-    <widget class="QCheckBox" name="osFontsCB">
-     <property name="toolTip">
-      <string>Use OpenType and TrueType fonts with the fontspec package (requires XeTeX or LuaTeX)</string>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="4" column="0">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
      </property>
-     <property name="text">
-      <string>&amp;Use non-TeX fonts (via XeTeX/LuaTeX)</string>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>126</height>
+      </size>
      </property>
-    </widget>
+    </spacer>
    </item>
-   <item row="1" column="0" colspan="2">
-    <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="0">
+    <layout class="QGridLayout" name="gridLayout_2">
      <item row="0" column="0">
       <widget class="QLabel" name="fontsDefaultLA">
        <property name="text">
@@ -112,30 +115,87 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QComboBox" name="fontsRomanCO">
-       <property name="toolTip">
-        <string>Select the roman (serif) typeface</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <layout class="QHBoxLayout" name="horizontalLayout_8">
        <item>
-        <widget class="QLabel" name="fontspecRomanLA">
-         <property name="text">
-          <string>Options:</string>
-         </property>
-         <property name="buddy">
-          <cstring>fontspecRomanLE</cstring>
+        <widget class="QComboBox" name="fontsRomanCO">
+         <property name="toolTip">
+          <string>Select the roman (serif) typeface</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="fontspecRomanLE">
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="fontScCB">
          <property name="toolTip">
-          <string>Here you can insert additional options (as provided by the font package)</string>
+          <string>Use a real small caps shape, if the font provides one</string>
+         </property>
+         <property name="text">
+          <string>Use true s&amp;mall caps</string>
          </property>
         </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="3" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_9">
+       <item>
+        <widget class="QCheckBox" name="fontOsfCB">
+         <property name="toolTip">
+          <string>Use old style instead of lining figures</string>
+         </property>
+         <property name="text">
+          <string>Use &amp;old style figures</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_7">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QLabel" name="fontspecRomanLA">
+           <property name="text">
+            <string>Options:</string>
+           </property>
+           <property name="buddy">
+            <cstring>fontspecRomanLE</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="fontspecRomanLE">
+           <property name="toolTip">
+            <string>Here you can insert additional options (as provided by the font package)</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </item>
@@ -197,23 +257,53 @@
       </layout>
      </item>
      <item row="5" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <layout class="QHBoxLayout" name="horizontalLayout_10">
        <item>
-        <widget class="QLabel" name="fontspecSansLA">
-         <property name="text">
-          <string>Options:</string>
+        <widget class="QCheckBox" name="fontSansOsfCB">
+         <property name="toolTip">
+          <string>Use old style instead of lining figures</string>
          </property>
-         <property name="buddy">
-          <cstring>fontspecSansLE</cstring>
+         <property name="text">
+          <string>Use old st&amp;yle figures</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="fontspecSansLE">
-         <property name="toolTip">
-          <string>Here you can insert additional options (as provided by the font package)</string>
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
          </property>
-        </widget>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="fontspecSansLA">
+           <property name="text">
+            <string>Options:</string>
+           </property>
+           <property name="buddy">
+            <cstring>fontspecSansLE</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="fontspecSansLE">
+           <property name="toolTip">
+            <string>Here you can insert additional options (as provided by the font package)</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </item>
@@ -275,23 +365,53 @@
       </layout>
      </item>
      <item row="7" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <layout class="QHBoxLayout" name="horizontalLayout_11">
        <item>
-        <widget class="QLabel" name="fontspecTypewriterLA">
-         <property name="text">
-          <string>Options:</string>
+        <widget class="QCheckBox" name="fontTypewriterOsfCB">
+         <property name="toolTip">
+          <string>Use old style instead of lining figures</string>
          </property>
-         <property name="buddy">
-          <cstring>fontspecTypewriterLE</cstring>
+         <property name="text">
+          <string>Use old style &amp;figures</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="fontspecTypewriterLE">
-         <property name="toolTip">
-          <string>Here you can insert additional options (as provided by the font package)</string>
+        <spacer name="horizontalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
          </property>
-        </widget>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QLabel" name="fontspecTypewriterLA">
+           <property name="text">
+            <string>Options:</string>
+           </property>
+           <property name="buddy">
+            <cstring>fontspecTypewriterLE</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="fontspecTypewriterLE">
+           <property name="toolTip">
+            <string>Here you can insert additional options (as provided by the font package)</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </item>
@@ -329,60 +449,37 @@
        </property>
       </widget>
      </item>
-     <item row="10" column="1">
-      <widget class="QCheckBox" name="fontScCB">
-       <property name="toolTip">
-        <string>Use a real small caps shape, if the font provides one</string>
-       </property>
-       <property name="text">
-        <string>Use true s&amp;mall caps</string>
-       </property>
-      </widget>
-     </item>
-     <item row="11" column="1">
-      <widget class="QCheckBox" name="fontOsfCB">
-       <property name="toolTip">
-        <string>Use old style instead of lining figures</string>
-       </property>
-       <property name="text">
-        <string>Use &amp;old style figures</string>
-       </property>
-      </widget>
-     </item>
-     <item row="12" column="1">
-      <widget class="QCheckBox" name="microtypeCB">
-       <property name="toolTip">
-        <string>Activate extensions such as character protrusion and font expansion via the microtype package</string>
-       </property>
-       <property name="text">
-        <string>Enable micr&amp;o-typographic extensions</string>
-       </property>
-      </widget>
-     </item>
-     <item row="13" column="1">
-      <widget class="QCheckBox" name="dashesCB">
-       <property name="toolTip">
-        <string>By default, a line break can occur after en- and em-dashes. Checking this box prevents that.</string>
-       </property>
-       <property name="text">
-        <string>Disallow l&amp;ine breaks after dashes</string>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
-   <item row="2" column="1">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
+   <item row="2" column="0">
+    <widget class="QCheckBox" name="microtypeCB">
+     <property name="toolTip">
+      <string>Activate extensions such as character protrusion and font expansion via the microtype package</string>
      </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>126</height>
-      </size>
+     <property name="text">
+      <string>Enable micr&amp;o-typographic extensions</string>
      </property>
-    </spacer>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QCheckBox" name="osFontsCB">
+     <property name="toolTip">
+      <string>Use OpenType and TrueType fonts with the fontspec package (requires XeTeX or LuaTeX)</string>
+     </property>
+     <property name="text">
+      <string>&amp;Use non-TeX fonts (via XeTeX/LuaTeX)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QCheckBox" name="dashesCB">
+     <property name="toolTip">
+      <string>By default, a line break can occur after en- and em-dashes. Checking this box prevents that.</string>
+     </property>
+     <property name="text">
+      <string>Disallow l&amp;ine breaks after dashes</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
@@ -399,8 +496,6 @@
   <tabstop>fontsTypewriterCO</tabstop>
   <tabstop>scaleTypewriterSB</tabstop>
   <tabstop>cjkFontLE</tabstop>
-  <tabstop>fontScCB</tabstop>
-  <tabstop>fontOsfCB</tabstop>
  </tabstops>
  <includes>
   <include location="local">qt_i18n.h</include>

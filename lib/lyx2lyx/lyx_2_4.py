@@ -2579,7 +2579,6 @@ def revert_notoFonts_xopts(document):
 def revert_IBMFonts_xopts(document):
     " Revert native IBM font definition (with extra options) to LaTeX "
 
-
     i = find_token(document.header, '\\use_non_tex_fonts', 0)
     if i == -1:
         document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
@@ -2609,6 +2608,104 @@ def revert_AdobeFonts_xopts(document):
     ft = ""
     if revert_fonts(document, fm, fontmap, True):
         add_preamble_fonts(document, fontmap)
+
+
+def convert_osf(document):
+    " Convert \\font_osf param to new format "
+
+    NonTeXFonts = False
+    i = find_token(document.header, '\\use_non_tex_fonts', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
+    else:
+        NonTeXFonts = str2bool(get_value(document.header, "\\use_non_tex_fonts", i))
+
+    i = find_token(document.header, '\\font_osf', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_osf.")
+        return
+
+    osfsf = ["biolinum", "ADOBESourceSansPro", "NotoSansRegular", "NotoSansMedium", "NotoSansThin", "NotoSansLight", "NotoSansExtralight" ]
+    osftt = ["ADOBESourceCodePro", "NotoMonoRegular" ]
+
+    osfval = str2bool(get_value(document.header, "\\font_osf", i))
+    document.header[i] = document.header[i].replace("\\font_osf", "\\font_roman_osf")
+
+    if NonTeXFonts:
+        document.header.insert(i, "\\font_sans_osf false")
+        document.header.insert(i + 1, "\\font_typewriter_osf false")
+        return
+
+    if osfval:
+        x = find_token(document.header, "\\font_sans", 0)
+        if x == -1:
+            document.warning("Malformed LyX document: Missing \\font_sans.")
+        else:
+            # We need to use this regex since split() does not handle quote protection
+            sffont = re.findall(r'[^"\s]\S*|".+?"', document.header[x])
+            sf = sffont[1].strip('"')
+            if sf in osfsf:
+                document.header.insert(i, "\\font_sans_osf true")
+            else:
+                document.header.insert(i, "\\font_sans_osf false")
+
+        x = find_token(document.header, "\\font_typewriter", 0)
+        if x == -1:
+            document.warning("Malformed LyX document: Missing \\font_typewriter.")
+        else:
+            # We need to use this regex since split() does not handle quote protection
+            ttfont = re.findall(r'[^"\s]\S*|".+?"', document.header[x])
+            tt = ttfont[1].strip('"')
+            if tt in osftt:
+                document.header.insert(i + 1, "\\font_sans_osf true")
+            else:
+                document.header.insert(i + 1, "\\font_sans_osf false")
+
+    else:
+        document.header.insert(i, "\\font_sans_osf false")
+        document.header.insert(i + 1, "\\font_typewriter_osf false")
+
+
+def revert_osf(document):
+    " Revert \\font_*_osf params "
+
+    NonTeXFonts = False
+    i = find_token(document.header, '\\use_non_tex_fonts', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
+    else:
+        NonTeXFonts = str2bool(get_value(document.header, "\\use_non_tex_fonts", i))
+
+    i = find_token(document.header, '\\font_roman_osf', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_roman_osf.")
+        return
+
+    osfval = str2bool(get_value(document.header, "\\font_roman_osf", i))
+    document.header[i] = document.header[i].replace("\\font_roman_osf", "\\font_osf")
+
+    i = find_token(document.header, '\\font_sans_osf', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_sans_osf.")
+        return
+
+    osfval = str2bool(get_value(document.header, "\\font_sans_osf", i))
+    del document.header[i]
+
+    i = find_token(document.header, '\\font_typewriter_osf', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_typewriter_osf.")
+        return
+
+    osfval |= str2bool(get_value(document.header, "\\font_typewriter_osf", i))
+    del document.header[i]
+
+    if osfval:
+        i = find_token(document.header, '\\font_osf', 0)
+        if i == -1:
+            document.warning("Malformed LyX document: Missing \\font_osf.")
+            return
+        document.header[i] = "\\font_osf true"
 
 
 ##
@@ -2652,10 +2749,12 @@ convert = [
            [577, [convert_linggloss]],
            [578, []],
            [579, []],
-           [580, []]
+           [580, []],
+           [581, [convert_osf]]
           ]
 
-revert =  [[579, [revert_minionpro, revert_plainNotoFonts_xopts, revert_notoFonts_xopts, revert_IBMFonts_xopts, revert_AdobeFonts_xopts, revert_font_opts]], # keep revert_font_opts last!
+revert =  [[580, [revert_osf]],
+           [579, [revert_minionpro, revert_plainNotoFonts_xopts, revert_notoFonts_xopts, revert_IBMFonts_xopts, revert_AdobeFonts_xopts, revert_font_opts]], # keep revert_font_opts last!
            [578, [revert_babelfont]],
            [577, [revert_drs]],
            [576, [revert_linggloss, revert_subexarg]],

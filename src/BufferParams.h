@@ -283,8 +283,12 @@ public:
 	bool useNonTeXFonts;
 	/// use expert Small Caps
 	bool fonts_expert_sc;
-	/// use Old Style Figures
-	bool fonts_old_figures;
+	/// use Old Style Figures (rm)
+	bool fonts_roman_osf;
+	/// use Old Style Figures (sf)
+	bool fonts_sans_osf;
+	/// use Old Style Figures (tt)
+	bool fonts_typewriter_osf;
 	/// the options for the roman font
 	std::string font_roman_opts;
 	/// the scale factor of the sf font: [0] for TeX fonts, [1] for non-TeX fonts

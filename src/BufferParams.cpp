@@ -419,7 +419,9 @@ BufferParams::BufferParams()
 	use_microtype = false;
 	use_dash_ligatures = true;
 	fonts_expert_sc = false;
-	fonts_old_figures = false;
+	fonts_roman_osf = false;
+	fonts_sans_osf = false;
+	fonts_typewriter_osf = false;
 	fonts_sans_scale[0] = 100;
 	fonts_sans_scale[1] = 100;
 	fonts_typewriter_scale[0] = 100;
@@ -832,8 +834,12 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex >> useNonTeXFonts;
 	} else if (token == "\\font_sc") {
 		lex >> fonts_expert_sc;
-	} else if (token == "\\font_osf") {
-		lex >> fonts_old_figures;
+	} else if (token == "\\font_roman_osf") {
+		lex >> fonts_roman_osf;
+	} else if (token == "\\font_sans_osf") {
+		lex >> fonts_sans_osf;
+	} else if (token == "\\font_typewriter_osf") {
+		lex >> fonts_typewriter_osf;
 	} else if (token == "\\font_roman_opts") {
 		lex >> font_roman_opts;
 	} else if (token == "\\font_sf_scale") {
@@ -1257,7 +1263,9 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	   << "\n\\font_default_family " << fonts_default_family
 	   << "\n\\use_non_tex_fonts " << convert<string>(useNonTeXFonts)
 	   << "\n\\font_sc " << convert<string>(fonts_expert_sc)
-	   << "\n\\font_osf " << convert<string>(fonts_old_figures);
+	   << "\n\\font_roman_osf " << convert<string>(fonts_roman_osf)
+	   << "\n\\font_sans_osf " << convert<string>(fonts_sans_osf)
+	   << "\n\\font_typewriter_osf " << convert<string>(fonts_typewriter_osf);
 	if (!font_roman_opts.empty())
 		os << "\n\\font_roman_opts \"" << font_roman_opts << "\"";
 	os << "\n\\font_sf_scale " << fonts_sans_scale[0]
@@ -3406,7 +3414,7 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 			if (!font_roman_opts.empty())
 				os << font_roman_opts << ',';
 			os << texmapping;
-			if (fonts_old_figures)
+			if (fonts_roman_osf)
 				os << ",Numbers=OldStyle";
 			os << "]{" << parseFontName(fontsRoman()) << "}\n";
 		}
@@ -3419,6 +3427,8 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 					os << "\\setsansfont";
 				os << "[Scale="
 				   << float(fontsSansScale()) / 100 << ',';
+				if (fonts_sans_osf)
+					os << "Numbers=OldStyle,";
 				if (!font_sans_opts.empty())
 					os << font_sans_opts << ',';
 				os << texmapping << "]{"
@@ -3428,6 +3438,8 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 					os << "\\babelfont{sf}[";
 				else
 					os << "\\setsansfont[";
+				if (fonts_sans_osf)
+					os << "Numbers=OldStyle,";
 				if (!font_sans_opts.empty())
 					os << font_sans_opts << ',';
 				os << texmapping << "]{"
@@ -3443,6 +3455,8 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 					os << "\\setmonofont";
 				os << "[Scale="
 				   << float(fontsTypewriterScale()) / 100;
+				if (fonts_typewriter_osf)
+					os << ",Numbers=OldStyle";
 				if (!font_typewriter_opts.empty())
 					os << ',' << font_typewriter_opts;
 				os << "]{"
@@ -3452,8 +3466,17 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 					os << "\\babelfont{tt}";
 				else
 					os << "\\setmonofont";
-				if (!font_typewriter_opts.empty())
-					os << '[' << font_typewriter_opts << ']';
+				if (!font_typewriter_opts.empty() || fonts_typewriter_osf) {
+					os << '[';
+					if (fonts_typewriter_osf)
+						os << "Numbers=OldStyle";
+					if (!font_typewriter_opts.empty()) {
+						if (fonts_typewriter_osf)
+							os << ',';
+						os << font_typewriter_opts;
+					}
+					os << ']';
+				}
 				os << '{' << mono << "}\n";
 			}
 		}
@@ -3468,22 +3491,22 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 
 	// ROMAN FONTS
 	os << theLaTeXFonts().getLaTeXFont(from_ascii(fontsRoman())).getLaTeXCode(
-		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures,
+		dryrun, ot1, complete, fonts_expert_sc, fonts_roman_osf,
 		nomath, font_roman_opts);
 
 	// SANS SERIF
 	os << theLaTeXFonts().getLaTeXFont(from_ascii(fontsSans())).getLaTeXCode(
-		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures,
+		dryrun, ot1, complete, fonts_expert_sc, fonts_sans_osf,
 		nomath, font_sans_opts, fontsSansScale());
 
 	// MONOSPACED/TYPEWRITER
 	os << theLaTeXFonts().getLaTeXFont(from_ascii(fontsTypewriter())).getLaTeXCode(
-		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures,
+		dryrun, ot1, complete, fonts_expert_sc, fonts_typewriter_osf,
 		nomath, font_typewriter_opts, fontsTypewriterScale());
 
 	// MATH
 	os << theLaTeXFonts().getLaTeXFont(from_ascii(fontsMath())).getLaTeXCode(
-		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures,
+		dryrun, ot1, complete, fonts_expert_sc, fonts_roman_osf,
 		nomath);
 
 	return os.str();

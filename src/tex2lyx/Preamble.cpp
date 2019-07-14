@@ -529,7 +529,9 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_font_default_family     = "default";
 	h_use_non_tex_fonts       = false;
 	h_font_sc                 = "false";
-	h_font_osf                = "false";
+	h_font_roman_osf          = "false";
+	h_font_sans_osf           = "false";
+	h_font_typewriter_osf     = "false";
 	h_font_sf_scale[0]        = "100";
 	h_font_sf_scale[1]        = "100";
 	h_font_tt_scale[0]        = "100";
@@ -757,7 +759,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	if (name == "garamondx") {
 		h_font_roman[0] = "garamondx";
 		if (opts == "osfI")
-			h_font_osf = "true";
+			h_font_roman_osf = "true";
 	}
 
 	if (name == "libertine") {
@@ -767,9 +769,9 @@ void Preamble::handle_package(Parser &p, string const & name,
 		// as well as libertineMono
 		h_font_typewriter[0] = "libertine-mono";
 		if (opts == "osf")
-			h_font_osf = "true";
+			h_font_roman_osf = "true";
 		else if (opts == "lining")
-			h_font_osf = "false";
+			h_font_roman_osf = "false";
 	}
 
 	if (name == "libertineRoman" || name == "libertine-type1") {
@@ -778,20 +780,20 @@ void Preamble::handle_package(Parser &p, string const & name,
 		// and libertine-type1 do not automatically invoke
 		// biolinum and libertineMono
 		if (opts == "lining")
-			h_font_osf = "false";
+			h_font_roman_osf = "false";
 		else if (opts == "osf")
-			h_font_osf = "true";
+			h_font_roman_osf = "true";
 	}
 
 	if (name == "MinionPro") {
 		h_font_roman[0] = "minionpro";
 		vector<string> allopts = getVectorFromString(opts);
 		string xopts;
-		h_font_osf = "true";
+		h_font_roman_osf = "true";
 		h_font_math[0] = "auto";
 		for (auto const & opt : allopts) {
 			if (opt == "lf") {
-				h_font_osf = "false";
+				h_font_roman_osf = "false";
 				continue;
 			}
 			if (opt == "onlytext") {
@@ -816,7 +818,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_font_roman[0] = "md-utopia";
 		if (opts.find("expert") != string::npos) {
 			h_font_sc = "true";
-			h_font_osf = "true";
+			h_font_roman_osf = "true";
 		}
 	}
 
@@ -834,7 +836,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 		// cochineal can have several options, e.g. [proportional,osf]
 		string::size_type pos = opts.find("osf");
 		if (pos != string::npos)
-			h_font_osf = "true";
+			h_font_roman_osf = "true";
 	}
 
 	if (name == "noto") {
@@ -864,7 +866,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 			if (opt == "nott")
 				continue;
 			if (opt == "osf") {
-				h_font_osf = "true";
+				h_font_roman_osf = "true";
 				continue;
 			}
 			if (!xopts.empty())
@@ -886,7 +888,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	if (name == "XCharter") {
 		h_font_roman[0] = "xcharter";
 		if (opts == "osf")
-			h_font_osf = "true";
+			h_font_roman_osf = "true";
 	}
 
 	if (name == "plex-serif") {
@@ -959,7 +961,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 		string xopts;
 		for (auto const & opt : allopts) {
 			if (opt == "osf") {
-				h_font_osf = "true";
+				h_font_roman_osf = "true";
 				continue;
 			}
 			if (!xopts.empty())
@@ -985,7 +987,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 		// biolinum can have several options, e.g. [osf,scaled=0.97]
 		string::size_type pos = opts.find("osf");
 		if (pos != string::npos)
-			h_font_osf = "true";
+			h_font_sans_osf = "true";
 	}
 
 	if (name == "PTSans") {
@@ -1057,6 +1059,10 @@ void Preamble::handle_package(Parser &p, string const & name,
 				continue;
 			if (opt == "semibold")
 				continue;
+			if (opt == "osf") {
+				h_font_sans_osf = "true";
+				continue;
+			}
 			if (!xopts.empty())
 				xopts += ", ";
 			xopts += opt;
@@ -1076,7 +1082,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 				continue;
 			}
 			if (opt == "osf") {
-				h_font_osf = "true";
+				h_font_sans_osf = "true";
 				continue;
 			}
 			if (!xopts.empty())
@@ -1173,7 +1179,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 				continue;
 			}
 			if (opt == "osf") {
-				h_font_osf = "true";
+				h_font_typewriter_osf = "true";
 				continue;
 			}
 			if (!xopts.empty())
@@ -1187,7 +1193,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	// font uses old-style figure
 	if (name == "eco")
-		h_font_osf = "true";
+		h_font_roman_osf = "true";
 
 	// math fonts
 	if (is_known(name, known_math_font_packages))
@@ -1614,7 +1620,9 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 	   << "\\font_default_family " << h_font_default_family << "\n"
 	   << "\\use_non_tex_fonts " << (h_use_non_tex_fonts ? "true" : "false") << '\n'
 	   << "\\font_sc " << h_font_sc << "\n"
-	   << "\\font_osf " << h_font_osf << "\n";
+	   << "\\font_roman_osf " << h_font_roman_osf << "\n"
+	   << "\\font_sans_osf " << h_font_sans_osf << "\n"
+	   << "\\font_typewriter_osf " << h_font_typewriter_osf << "\n";
 	if (!h_font_roman_opts.empty())
 		os << "\\font_roman_opts \"" << h_font_roman_opts << "\"" << '\n';
 	os << "\\font_sf_scale " << h_font_sf_scale[0]
