@@ -654,6 +654,28 @@ AltFont biolinum-2012
 	MoreOptions      1
 EndFont
 
+Font cantarell
+	GuiName		"Cantarell Sans Serif"
+	Family		sf
+	OsfOption	oldstyle
+	Package		cantarell
+	PackageOption	"defaultsans"
+	MoreOptions      1
+	FontEncoding	T2A,T1,OT1
+	ScaleOption	scale=$$val
+	AltFonts	cantarell1
+EndFont
+
+AltFont cantarell1
+	GuiName		"Cantarell Sans Serif"
+	Family		sf
+	OsfOption	oldstyle
+	OsfDefault	0
+	Package		cantarell
+	ScaleOption	scale=$$val
+	FontEncoding	T2A,T1,OT1
+EndFont
+
 Font cmbr
 	GuiName          "CM Bright"
 	Family           sf

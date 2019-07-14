@@ -173,6 +173,9 @@ def createFontMapping(fontlist):
                                   'NotoSansExtralight,extralight'],
                                   "sans", "sf", "noto-sans", "scaled")
             fm.expandFontMapping(['NotoMonoRegular,regular'], "typewriter", "tt", "noto-mono", "scaled")
+        elif font == 'Cantarell':
+            fm.expandFontMapping(['cantarell,defaultsans'],
+                                  "sans", "sf", "cantarell", "scaled", "oldstyle")
     return fm
 
 def convert_fonts(document, fm):
@@ -381,6 +384,22 @@ def revert_AdobeFonts(document):
         fontmap = dict()
         fm = createFontMapping(['Adobe'])
         if revert_fonts(document, fm, fontmap):
+            add_preamble_fonts(document, fontmap)
+
+def convert_CantarellFont(document):
+    " Handle Cantarell font definition to LaTeX "
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        fm = createFontMapping(['Cantarell'])
+        convert_fonts(document, fm)
+
+def revert_CantarellFont(document):
+    " Revert native Cantarell font definition to LaTeX "
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        fontmap = dict()
+        fm = createFontMapping(['Cantarell'])
+        if revert_fonts(document, fm, fontmap, True):
             add_preamble_fonts(document, fontmap)
 
 def removeFrontMatterStyles(document):
@@ -2623,6 +2642,22 @@ def revert_AdobeFonts_xopts(document):
         add_preamble_fonts(document, fontmap)
 
 
+def revert_CantarellFont_xopts(document):
+    " Revert native (extended) Cantarell font definition (with extra options) to LaTeX "
+
+    i = find_token(document.header, '\\use_non_tex_fonts', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
+        return
+    if str2bool(get_value(document.header, "\\use_non_tex_fonts", i)):
+        return
+
+    fontmap = dict()
+    fm = createFontMapping(['Cantarell'])
+    if revert_fonts(document, fm, fontmap, True):
+        add_preamble_fonts(document, fontmap)
+
+
 def convert_osf(document):
     " Convert \\font_osf param to new format "
 
@@ -2882,10 +2917,12 @@ convert = [
            [578, []],
            [579, []],
            [580, []],
-           [581, [convert_osf]]
+           [581, [convert_osf]],
+           [582, [convert_CantarellFont]],
           ]
 
-revert =  [[580, [revert_texfontopts,revert_osf]],
+revert =  [[581, [revert_CantarellFont, revert_CantarellFont_xopts]],
+           [580, [revert_texfontopts,revert_osf]],
            [579, [revert_minionpro, revert_plainNotoFonts_xopts, revert_notoFonts_xopts, revert_IBMFonts_xopts, revert_AdobeFonts_xopts, revert_font_opts]], # keep revert_font_opts last!
            [578, [revert_babelfont]],
            [577, [revert_drs]],
