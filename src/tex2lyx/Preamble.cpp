@@ -1075,6 +1075,10 @@ void Preamble::handle_package(Parser &p, string const & name,
 				scale_as_percentage(opt, h_font_sf_scale[0]);
 				continue;
 			}
+			if (opt == "osf") {
+				h_font_osf = "true";
+				continue;
+			}
 			if (!xopts.empty())
 				xopts += ", ";
 			xopts += opt;
@@ -1166,6 +1170,10 @@ void Preamble::handle_package(Parser &p, string const & name,
 		for (auto const & opt : allopts) {
 			if (prefixIs(opt, "scaled=")) {
 				scale_as_percentage(opt, h_font_tt_scale[0]);
+				continue;
+			}
+			if (opt == "osf") {
+				h_font_osf = "true";
 				continue;
 			}
 			if (!xopts.empty())

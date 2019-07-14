@@ -721,11 +721,12 @@ Font IBMPlexSansSemibold
 	MoreOptions      1
 EndFont
 
-Font	ADOBESourceSansPro
-	GuiName		"Adobe Source Sans Pro"
-	Family		sf
-	Package		sourcesanspro
-	ScaleOption	scaled=$$val
+Font ADOBESourceSansPro
+	GuiName		 "Adobe Source Sans Pro"
+	Family		 sf
+	Package		 sourcesanspro
+	ScaleOption	 scaled=$$val
+	OsfOption        osf
 	MoreOptions      1
 EndFont
 
@@ -984,11 +985,12 @@ Font IBMPlexMonoSemibold
 	MoreOptions      1
 EndFont
 
-Font	ADOBESourceCodePro
-	GuiName		"Adobe Source Code Pro"
-	Family		tt
-	Package		sourcecodepro
-	ScaleOption	scaled=$$val
+Font ADOBESourceCodePro
+	GuiName		 "Adobe Source Code Pro"
+	Family		 tt
+	Package		 sourcecodepro
+	ScaleOption	 scaled=$$val
+	OsfOption        osf
 	MoreOptions      1
 EndFont
 

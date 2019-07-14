@@ -161,8 +161,8 @@ def createFontMapping(fontlist):
                                  "typewriter", "tt", "plex-mono", "scale")
         elif font == 'Adobe':
             fm.expandFontMapping(['ADOBESourceSerifPro'], "roman", None, "sourceserifpro", None, "osf")
-            fm.expandFontMapping(['ADOBESourceSansPro'], "sans", "sf", "sourcesanspro", "scaled")
-            fm.expandFontMapping(['ADOBESourceCodePro'], "typewriter", "tt", "sourcecodepro", "scaled")
+            fm.expandFontMapping(['ADOBESourceSansPro'], "sans", "sf", "sourcesanspro", "scaled", "osf")
+            fm.expandFontMapping(['ADOBESourceCodePro'], "typewriter", "tt", "sourcecodepro", "scaled", "osf")
         elif font == 'Noto':
             fm.expandFontMapping(['NotoSerifRegular,regular', 'NotoSerifMedium,medium',
                                   'NotoSerifThin,thin', 'NotoSerifLight,light',
@@ -305,10 +305,9 @@ def revert_fonts(document, fm, fontmap, OnlyWithXOpts = False):
                 if xval1 != "100":
                     # set correct scale option
                     fontmap[val].extend([fontinfo.scaleopt + "=" + format(float(xval1) / 100, '.2f')])
-        if fontinfo.osfopt != None and fontinfo.fonttype == "roman":
+        if fontinfo.osfopt != None:
             osf = find_token(document.header, "\\font_osf true")
             if osf != -1:
-                document.header[osf] = "\\font_osf false"
                 fontmap[val].extend([fontinfo.osfopt])
         if len(fontinfo.options) > 0:
             fontmap[val].extend(fontinfo.options)
