@@ -67,6 +67,7 @@
 #   Old Style Figures for a given font (e.g. eco).
 # * OsfScOption overrides any OsfOption and ScOption if both features
 #   are selected.
+# * ScOption and OsfScOption are currently only supported for rm fonts.
 # * Set OsfDefault to true for fonts which have Old Style Figures by
 #   default and provide an option for lining figures. Pass this option
 #   to OsfOption.
