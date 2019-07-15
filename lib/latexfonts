@@ -681,6 +681,77 @@ Font DejaVuSansCondensed
 	ScaleOption      scaled=$$val
 EndFont
 
+Font FiraSans
+	GuiName         "Fira Sans"
+	Family          sf
+	ScaleOption     scaled=$$val
+	Package         FiraSans
+	OsfDefault	1
+	OsfOption	lf
+	MoreOptions     1
+	FontEncoding    OT1,T1,TS1,LY1,LGR
+EndFont
+
+Font FiraSansBook
+	GuiName         "Fira Sans (Book)"
+	Family          sf
+	ScaleOption     scaled=$$val
+	Package         FiraSans
+        PackageOption   book
+	OsfDefault	1
+	OsfOption	lf
+	MoreOptions     1
+	FontEncoding    OT1,T1,TS1,LY1,LGR
+EndFont
+
+Font FiraSansLight
+	GuiName         "Fira Sans (Light)"
+	Family          sf
+	ScaleOption     scaled=$$val
+	Package         FiraSans
+	PackageOption   light
+	OsfDefault	1
+	OsfOption	lf
+	MoreOptions     1
+	FontEncoding    OT1,T1,TS1,LY1,LGR
+EndFont
+
+Font FiraSansExtralight
+	GuiName         "Fira Sans (Extralight)"
+	Family          sf
+	ScaleOption     scaled=$$val
+	Package         FiraSans
+	PackageOption   extralight
+	OsfDefault	1
+	OsfOption	lf
+	MoreOptions     1
+	FontEncoding    OT1,T1,TS1,LY1,LGR
+EndFont
+
+Font FiraSansUltralight
+	GuiName         "Fira Sans (Ultralight)"
+	Family          sf
+	ScaleOption     scaled=$$val
+	Package         FiraSans
+	PackageOption   ultralight
+	OsfDefault	1
+	OsfOption	lf
+	MoreOptions     1
+	FontEncoding    OT1,T1,TS1,LY1,LGR
+EndFont
+
+Font FiraSansThin
+	GuiName         "Fira Sans (Thin)"
+	Family          sf
+	ScaleOption     scaled=$$val
+	Package         FiraSans
+	PackageOption   thin
+	OsfDefault	1
+	OsfOption	lf
+	MoreOptions     1
+	FontEncoding    OT1,T1,TS1,LY1,LGR
+EndFont
+
 Font IBMPlexSans
 	GuiName          "IBM Plex Sans"
 	Family           sf
@@ -941,6 +1012,17 @@ Font DejaVuSansMono
 	Family           tt
 	Package          DejaVuSansMono
 	ScaleOption      scaled=$$val
+EndFont
+
+Font FiraMono
+	GuiName         "Fira Mono"
+	Family          tt
+	ScaleOption     scaled=$$val
+	Package         FiraMono
+	OsfDefault	1
+	OsfOption	lf
+	MoreOptions     1
+	FontEncoding    OT1,T1,TS1,LY1,LGR
 EndFont
 
 Font IBMPlexMono

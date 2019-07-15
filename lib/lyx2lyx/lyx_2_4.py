@@ -72,7 +72,8 @@ class fontinfo:
         self.package = None
         self.options = []
         self.pkgkey = None      # key into pkg2fontmap
-        self.osfopt = None    # None, string
+        self.osfopt = None      # None, string
+        self.osfdef = "false"   # "false" or "true"
 
     def addkey(self):
         self.pkgkey = createkey(self.package, self.options)
@@ -83,7 +84,7 @@ class fontmapping:
         self.pkg2fontmap = dict()
         self.pkginmap = dict()  # defines, if a map for package exists
 
-    def expandFontMapping(self, font_list, font_type, scale_type, pkg, scaleopt = None, osfopt = None):
+    def expandFontMapping(self, font_list, font_type, scale_type, pkg, scaleopt = None, osfopt = None, osfdef = "false"):
         " Expand fontinfo mapping"
         #
         # fontlist:    list of fontnames, each element
@@ -95,6 +96,7 @@ class fontmapping:
         # scaleopt:    one of None, 'scale', 'scaled', or some other string
         #              to be used in scale option (e.g. scaled=0.7)
         # osfopt:      None or some other string to be used in osf option
+        # osfdef:      "true" if osf is default
         for fl in font_list:
             fe = fontinfo()
             fe.fonttype = font_type
@@ -105,6 +107,7 @@ class fontmapping:
             fe.options = flt[1:]
             fe.scaleopt = scaleopt
             fe.osfopt = osfopt
+            fe.osfdef = osfdef
             if pkg == None:
                 fe.package = font_name
             else:
@@ -176,6 +179,13 @@ def createFontMapping(fontlist):
         elif font == 'Cantarell':
             fm.expandFontMapping(['cantarell,defaultsans'],
                                   "sans", "sf", "cantarell", "scaled", "oldstyle")
+        elif font == 'Fira':
+            fm.expandFontMapping(['FiraSans', 'FiraSansBook,book',
+                                  'FiraSansThin,thin', 'FiraSansLight,light',
+                                  'FiraSansExtralight,extralight',
+                                  'FiraSansUltralight,ultralight'],
+                                  "sans", "sf", "FiraSans", "scaled", "lf", "true")
+            fm.expandFontMapping(['FiraMono'], "typewriter", "tt", "FiraMono", "scaled", "lf", "true")
     return fm
 
 def convert_fonts(document, fm, osfoption = "osf"):
@@ -243,7 +253,7 @@ def convert_fonts(document, fm, osfoption = "osf"):
         else:
             fontscale = "\\font_" + fontinfo.scaletype + "_scale"
             fontinfo.scaleval = oscale
-        if has_osf:
+        if (has_osf and fontinfo.osfdef == "false") or (not has_osf and fontinfo.osfdef == "true"):
             if fontinfo.osfopt == None:
                 options.extend(osfoption)
                 continue
@@ -347,14 +357,17 @@ def revert_fonts(document, fm, fontmap, OnlyWithXOpts = False, WithXOpts = False
                     # set correct scale option
                     fontmap[val].extend([fontinfo.scaleopt + "=" + format(float(xval1) / 100, '.2f')])
         if fontinfo.osfopt != None:
-            osf = find_token(document.header, "\\font_osf true")
+            oldval = "true"
+            if fontinfo.osfdef == "true":
+                oldval = "false"
+            osf = find_token(document.header, "\\font_osf " + oldval)
             if osf == -1 and ft != "\\font_math":
                 # Try with newer format
-                osftag = "\\font_roman_osf true"
+                osftag = "\\font_roman_osf " + oldval
                 if ft == "\\font_sans":
-                    osftag = "\\font_sans_osf true"
+                    osftag = "\\font_sans_osf " + oldval
                 elif ft == "\\font_typewriter":
-                    osftag = "\\font_typewriter_osf true"
+                    osftag = "\\font_typewriter_osf " + oldval
                 osf = find_token(document.header, osftag)
             if osf != -1:
                 fontmap[val].extend([fontinfo.osfopt])
@@ -2906,6 +2919,23 @@ def revert_CantarellFont(document):
             add_preamble_fonts(document, fontmap)
 
 
+def convert_FiraFont(document):
+    " Handle Fira font definition to LaTeX "
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        fm = createFontMapping(['Fira'])
+        convert_fonts(document, fm, "lf")
+
+def revert_FiraFont(document):
+    " Revert native Fira font definition to LaTeX "
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        fontmap = dict()
+        fm = createFontMapping(['Fira'])
+        if revert_fonts(document, fm, fontmap, False, True):
+            add_preamble_fonts(document, fontmap)
+
+
 ##
 # Conversion hub
 #
@@ -2949,10 +2979,10 @@ convert = [
            [579, []],
            [580, []],
            [581, [convert_osf]],
-           [582, [convert_AdobeFonts,convert_latexFonts,convert_notoFonts,convert_CantarellFont]],# old font re-converterted due to extra options
+           [582, [convert_AdobeFonts,convert_latexFonts,convert_notoFonts,convert_CantarellFont,convert_FiraFont]],# old font re-converterted due to extra options
           ]
 
-revert =  [[581, [revert_CantarellFont]],
+revert =  [[581, [revert_CantarellFont,revert_FiraFont]],
            [580, [revert_texfontopts,revert_osf]],
            [579, [revert_minionpro, revert_plainNotoFonts_xopts, revert_notoFonts_xopts, revert_IBMFonts_xopts, revert_AdobeFonts_xopts, revert_font_opts]], # keep revert_font_opts last!
            [578, [revert_babelfont]],
