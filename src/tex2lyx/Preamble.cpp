@@ -148,12 +148,12 @@ const char * const known_roman_font_packages[] = { "ae", "beraserif", "bookman",
 "tgpagella", "tgschola", "tgtermes", "utopia", "xcharter", 0 };
 
 const char * const known_sans_font_packages[] = { "avant", "berasans", "biolinum",
-"biolinum-type1", "cantarell", "cmbr", "cmss", "DejaVuSans", "DejaVuSansCondensed", "helvet", "iwona", "iwonac", "iwonal", "iwonalc",
-"kurier", "kurierc", "kurierl", "kurierlc", "lmss", "noto", "noto-sans", "PTSans",
+"biolinum-type1", "cantarell", "cmbr", "cmss", "DejaVuSans", "DejaVuSansCondensed", "FiraSans", "helvet", "iwona",
+"iwonac", "iwonal", "iwonalc", "kurier", "kurierc", "kurierl", "kurierlc", "lmss", "noto", "noto-sans", "PTSans",
 "tgadventor", "tgheros", "uop", 0 };
 
-const char * const known_typewriter_font_packages[] = { "beramono", "cmtl", "cmtt",
-"courier", "DejaVuSansMono", "lmtt", "luximono", "fourier", "libertineMono", "libertineMono-type1", "lmodern",
+const char * const known_typewriter_font_packages[] = { "beramono", "cmtl", "cmtt", "courier", "DejaVuSansMono",
+"FiraMono", "lmtt", "luximono", "fourier", "libertineMono", "libertineMono-type1", "lmodern",
 "mathpazo", "mathptmx", "newcent", "noto", "noto-mono", "PTMono", "tgcursor", "txtt", 0 };
 
 const char * const known_math_font_packages[] = { "eulervm", "newtxmath", 0};
@@ -1117,6 +1117,50 @@ void Preamble::handle_package(Parser &p, string const & name,
 		}
 	}
 
+	if (name == "FiraSans") {
+		h_font_sans[0] = "FiraSans";
+		h_font_sans_osf = "true";
+		for (auto const & opt : allopts) {
+			if (opt == "book") {
+				h_font_sans[0] = "FiraSansBook";
+				continue;
+			}
+			if (opt == "thin") {
+				continue;
+			}
+			if (opt == "extralight") {
+				h_font_sans[0] = "FiraSansExtralight";
+				continue;
+			}
+			if (opt == "light") {
+				h_font_sans[0] = "FiraSansLight";
+				continue;
+			}
+			if (opt == "ultralight") {
+				h_font_sans[0] = "FiraSansUltralight";
+				continue;
+			}
+			if (opt == "thin") {
+				h_font_sans[0] = "FiraSansThin";
+				continue;
+			}
+			if (opt == "lf" || opt == "lining") {
+				h_font_sans_osf = "false";
+				continue;
+			}
+			if (prefixIs(opt, "scale=") || prefixIs(opt, "scaled=")) {
+				scale_as_percentage(opt, h_font_sf_scale[0]);
+				continue;
+			}
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_sans_opts = xopts;
+		options.clear();
+	}
+
 	if (name == "plex-sans") {
 		if (opts.find("condensed") != string::npos)
 			h_font_sans[0] = "IBMPlexSansCondensed";
@@ -1151,6 +1195,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_font_sans_opts = xopts;
 		options.clear();
 	}
+
 	if (name == "noto-sans") {
 		h_font_sans[0] = "NotoSansRegular";
 		if (!opts.empty()) {
@@ -1222,6 +1267,26 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	if (name == "libertineMono" || name == "libertineMono-type1")
 		h_font_typewriter[0] = "libertine-mono";
+
+	if (name == "FiraMono") {
+		h_font_typewriter_osf = "true";
+		for (auto const & opt : allopts) {
+			if (opt == "lf" || opt == "lining") {
+				h_font_typewriter_osf = "false";
+				continue;
+			}
+			if (prefixIs(opt, "scale=") || prefixIs(opt, "scaled=")) {
+				scale_as_percentage(opt, h_font_tt_scale[0]);
+				continue;
+			}
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_typewriter_opts = xopts;
+		options.clear();
+	}
 
 	if (name == "PTMono") {
 		h_font_typewriter[0] = "PTMono-TLF";
