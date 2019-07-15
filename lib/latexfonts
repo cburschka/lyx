@@ -161,7 +161,7 @@ Font DejaVuSerif
 EndFont
 
 Font DejaVuSerifCondensed
-	GuiName          "DejaVu Serif Condensed"
+	GuiName          "DejaVu Serif (Condensed)"
 	Family           rm
 	Package          DejaVuSerifCondensed
 EndFont
@@ -179,7 +179,7 @@ Font IBMPlexSerif
 EndFont
 
 Font IBMPlexSerifThin
-	GuiName          "IBM Plex Serif Thin"
+	GuiName          "IBM Plex Serif (Thin)"
 	Family           rm
 	Package          plex-serif
 	PackageOption    thin
@@ -187,7 +187,7 @@ Font IBMPlexSerifThin
 EndFont
 
 Font IBMPlexSerifExtraLight
-	GuiName          "IBM Plex Serif Extra Light"
+	GuiName          "IBM Plex Serif (Extra Light)"
 	Family           rm
 	Package          plex-serif
 	PackageOption    extralight
@@ -195,7 +195,7 @@ Font IBMPlexSerifExtraLight
 EndFont
 
 Font IBMPlexSerifLight
-	GuiName          "IBM Plex Serif Light"
+	GuiName          "IBM Plex Serif (Light)"
 	Family           rm
 	Package          plex-serif
 	PackageOption    light
@@ -203,7 +203,7 @@ Font IBMPlexSerifLight
 EndFont
 
 Font IBMPlexSerifSemibold
-	GuiName          "IBM Plex Serif Semibold"
+	GuiName          "IBM Plex Serif (Semibold)"
 	Family           rm
 	Package          plex-serif
 	PackageOption    semibold
@@ -399,7 +399,7 @@ AltFont NotoSerifRegular1
 EndFont
 
 Font NotoSerifMedium
-	GuiName         "Noto Serif Medium"
+	GuiName         "Noto Serif (Medium)"
 	Family          rm
 	Package         noto-serif
 	PackageOption   medium
@@ -409,7 +409,7 @@ Font NotoSerifMedium
 EndFont
 
 Font NotoSerifThin
-	GuiName         "Noto Serif Thin"
+	GuiName         "Noto Serif (Thin)"
 	Family          rm
 	Package         noto-serif
 	PackageOption   thin
@@ -419,7 +419,7 @@ Font NotoSerifThin
 EndFont
 
 Font NotoSerifLight
-	GuiName         "Noto Serif Light"
+	GuiName         "Noto Serif (Light)"
 	Family          rm
 	Package         noto-serif
 	PackageOption   light
@@ -429,7 +429,7 @@ Font NotoSerifLight
 EndFont
 
 Font NotoSerifExtralight
-	GuiName         "Noto Serif Extralight"
+	GuiName         "Noto Serif (Extralight)"
 	Family          rm
 	Package         noto-serif
 	PackageOption   extralight
@@ -702,7 +702,7 @@ Font IBMPlexSans
 EndFont
 
 Font IBMPlexSansCondensed
-	GuiName          "IBM Plex Sans Condensed"
+	GuiName          "IBM Plex Sans (Condensed)"
 	Family           sf
 	Package          plex-sans
 	PackageOption    condensed
@@ -711,7 +711,7 @@ Font IBMPlexSansCondensed
 EndFont
 
 Font IBMPlexSansThin
-	GuiName          "IBM Plex Sans Thin"
+	GuiName          "IBM Plex Sans (Thin)"
 	Family           sf
 	Package          plex-sans
 	PackageOption    thin
@@ -720,7 +720,7 @@ Font IBMPlexSansThin
 EndFont
 
 Font IBMPlexSansExtraLight
-	GuiName          "IBM Plex Sans Extra Light"
+	GuiName          "IBM Plex Sans (Extra Light)"
 	Family           sf
 	Package          plex-sans
 	PackageOption    extralight
@@ -729,7 +729,7 @@ Font IBMPlexSansExtraLight
 EndFont
 
 Font IBMPlexSansLight
-	GuiName          "IBM Plex Sans Light"
+	GuiName          "IBM Plex Sans (Light)"
 	Family           sf
 	Package          plex-sans
 	PackageOption    light
@@ -738,7 +738,7 @@ Font IBMPlexSansLight
 EndFont
 
 Font IBMPlexSansSemibold
-	GuiName          "IBM Plex Sans Semibold"
+	GuiName          "IBM Plex Sans (Semibold)"
 	Family           sf
 	Package          plex-sans
 	PackageOption    semibold
@@ -827,7 +827,7 @@ Font lmss
 EndFont
 
 Font NotoSansRegular
-	GuiName         "Noto Sans Regular"
+	GuiName         "Noto Sans (Regular)"
 	Family          sf
 	ScaleOption     scaled=$$val
 	Package         noto-sans
@@ -838,7 +838,7 @@ Font NotoSansRegular
 EndFont
 
 Font NotoSansMedium
-	GuiName         "Noto Sans Medium"
+	GuiName         "Noto Sans (Medium)"
 	Family          sf
 	ScaleOption     scaled=$$val
 	Package         noto-sans
@@ -849,7 +849,7 @@ Font NotoSansMedium
 EndFont
 
 Font NotoSansThin
-	GuiName         "Noto Sans Thin"
+	GuiName         "Noto Sans (Thin)"
 	Family          sf
 	ScaleOption     scaled=$$val
 	Package         noto-sans
@@ -860,7 +860,7 @@ Font NotoSansThin
 EndFont
 
 Font NotoSansLight
-	GuiName         "Noto Sans Light"
+	GuiName         "Noto Sans (Light)"
 	Family          sf
 	ScaleOption     scaled=$$val
 	Package         noto-sans
@@ -871,7 +871,7 @@ Font NotoSansLight
 EndFont
 
 Font NotoSansExtralight
-	GuiName         "Noto Sans Extralight"
+	GuiName         "Noto Sans (Extralight)"
 	Family          sf
 	ScaleOption     scaled=$$val
 	Package         noto-sans
@@ -964,7 +964,7 @@ Font IBMPlexMono
 EndFont
 
 Font IBMPlexMonoThin
-	GuiName          "IBM Plex Mono Thin"
+	GuiName          "IBM Plex Mono (Thin)"
 	Family           tt
 	Package          plex-mono
 	ScaleOption      scale=$$val
@@ -973,7 +973,7 @@ Font IBMPlexMonoThin
 EndFont
 
 Font IBMPlexMonoExtraLight
-	GuiName          "IBM Plex Mono Extra Light"
+	GuiName          "IBM Plex Mono (Extra Light)"
 	Family           tt
 	Package          plex-mono
 	ScaleOption      scale=$$val
@@ -982,7 +982,7 @@ Font IBMPlexMonoExtraLight
 EndFont
 
 Font IBMPlexMonoLight
-	GuiName          "IBM Plex Mono Light"
+	GuiName          "IBM Plex Mono (Light)"
 	Family           tt
 	Package          plex-mono
 	ScaleOption      scale=$$val
@@ -991,7 +991,7 @@ Font IBMPlexMonoLight
 EndFont
 
 Font IBMPlexMonoSemibold
-	GuiName          "IBM Plex Mono Semibold"
+	GuiName          "IBM Plex Mono (Semibold)"
 	Family           tt
 	Package          plex-mono
 	ScaleOption      scale=$$val
