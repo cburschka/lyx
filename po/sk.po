@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-07-14 12:30+0200\n"
-"PO-Revision-Date: 2019-07-14 11:53+0000\n"
+"POT-Creation-Date: 2019-07-15 13:09+0200\n"
+"PO-Revision-Date: 2019-07-15 11:14+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -18182,29 +18182,29 @@ msgstr "Computer Modern Roman"
 msgid "DejaVu Serif"
 msgstr "DejaVu serifové"
 
-#: lib/latexfonts:158
-msgid "DejaVu Serif Condensed"
-msgstr "DejaVu serifové zhustené"
+#: lib/latexfonts:164
+msgid "DejaVu Serif (Condensed)"
+msgstr "DejaVu serifové (zhustené)"
 
 #: lib/latexfonts:169
 msgid "IBM Plex Serif"
 msgstr "IBM Plex serifové"
 
-#: lib/latexfonts:175
-msgid "IBM Plex Serif Thin"
-msgstr "IBM Plex serifové tenké"
-
 #: lib/latexfonts:182
-msgid "IBM Plex Serif Extra Light"
-msgstr "IBM Plex serifové extra svetlé"
+msgid "IBM Plex Serif (Thin)"
+msgstr "IBM Plex serifové (tenké)"
 
-#: lib/latexfonts:189
-msgid "IBM Plex Serif Light"
-msgstr "IBM Plex serifové svetlé"
+#: lib/latexfonts:190
+msgid "IBM Plex Serif (Extra Light)"
+msgstr "IBM Plex serifové (extra svetlé)"
 
-#: lib/latexfonts:196
-msgid "IBM Plex Serif Semibold"
-msgstr "IBM Plex serifové polotučné"
+#: lib/latexfonts:198
+msgid "IBM Plex Serif (Light)"
+msgstr "IBM Plex serifové (svetlé)"
+
+#: lib/latexfonts:206
+msgid "IBM Plex Serif (Semibold)"
+msgstr "IBM Plex serifové (polotučné)"
 
 #: lib/latexfonts:203
 msgid "Adobe Source Serif Pro"
@@ -18243,25 +18243,25 @@ msgstr "Minion Pro"
 msgid "New Century Schoolbook"
 msgstr "New Century Schoolbook"
 
-#: lib/latexfonts:363
-msgid "Noto Serif Regular"
-msgstr "Noto serifové regulárne"
-
-#: lib/latexfonts:372
-msgid "Noto Serif Medium"
-msgstr "Noto serifové stredné"
-
 #: lib/latexfonts:381
-msgid "Noto Serif Thin"
-msgstr "Noto serifové tenké"
+msgid "Noto Serif (Regular)"
+msgstr "Noto serifové (regulárne)"
 
 #: lib/latexfonts:390
-msgid "Noto Serif Light"
-msgstr "Noto serifové svetlé"
+msgid "Noto Serif (Medium)"
+msgstr "Noto serifové (stredné)"
 
-#: lib/latexfonts:399
-msgid "Noto Serif Extralight"
-msgstr "Noto serifové extra svetlé"
+#: lib/latexfonts:400
+msgid "Noto Serif (Thin)"
+msgstr "Noto serifové (tenké)"
+
+#: lib/latexfonts:410
+msgid "Noto Serif (Light)"
+msgstr "Noto serifové (svetlé)"
+
+#: lib/latexfonts:420
+msgid "Noto Serif (Extralight)"
+msgstr "Noto serifové (extra svetlé)"
 
 #: lib/latexfonts:408 lib/latexfonts:416
 msgid "Noto Serif"
@@ -18320,9 +18320,9 @@ msgstr "Bera Sans"
 msgid "Biolinum"
 msgstr "Biolinum"
 
-#: lib/latexfonts:625 lib/latexfonts:636 lib/latexfonts:646
-msgid "Cantarell Sans Serif"
-msgstr "Cantarell Sans Serif"
+#: lib/latexfonts:646
+msgid "Cantarell"
+msgstr "Cantarell"
 
 #: lib/latexfonts:530
 msgid "CM Bright"
@@ -18344,25 +18344,25 @@ msgstr "DejaVu bezserifové zhustené"
 msgid "IBM Plex Sans"
 msgstr "IBM Plex bezserifové"
 
-#: lib/latexfonts:599
-msgid "IBM Plex Sans Condensed"
-msgstr "IBM Plex bezserifové zhustené"
+#: lib/latexfonts:693
+msgid "IBM Plex Sans (Condensed)"
+msgstr "IBM Plex bezserifové (zhustené)"
 
-#: lib/latexfonts:607
-msgid "IBM Plex Sans Thin"
-msgstr "IBM Plex bezserifové tenké"
+#: lib/latexfonts:702
+msgid "IBM Plex Sans (Thin)"
+msgstr "IBM Plex bezserifové (tenké)"
 
-#: lib/latexfonts:615
-msgid "IBM Plex Sans Extra Light"
-msgstr "IBM Plex bezserifové extra svetlé"
+#: lib/latexfonts:711
+msgid "IBM Plex Sans (Extra Light)"
+msgstr "IBM Plex bezserifové (extra svetlé)"
 
-#: lib/latexfonts:623
-msgid "IBM Plex Sans Light"
-msgstr "IBM Plex bezserifové svetlé"
+#: lib/latexfonts:720
+msgid "IBM Plex Sans (Light)"
+msgstr "IBM Plex bezserifové (svetlé)"
 
-#: lib/latexfonts:631
-msgid "IBM Plex Sans Semibold"
-msgstr "IBM Plex bezserifové polotučné"
+#: lib/latexfonts:729
+msgid "IBM Plex Sans (Semibold)"
+msgstr "IBM Plex bezserifové (polotučné)"
 
 #: lib/latexfonts:645
 msgid "Adobe Source Sans Pro"
@@ -18408,25 +18408,25 @@ msgstr "Kurier (Svetlé zhustené)"
 msgid "Latin Modern Sans"
 msgstr "Latin Modern Sans"
 
-#: lib/latexfonts:769
-msgid "Noto Sans Regular"
-msgstr "Noto bezserifové regulárne"
+#: lib/latexfonts:818
+msgid "Noto Sans (Regular)"
+msgstr "Noto bezserifové (regulárne)"
 
-#: lib/latexfonts:778
-msgid "Noto Sans Medium"
-msgstr "Noto bezserifové stredné"
+#: lib/latexfonts:829
+msgid "Noto Sans (Medium)"
+msgstr "Noto bezserifové (stredné)"
 
-#: lib/latexfonts:787
-msgid "Noto Sans Thin"
-msgstr "Noto bezserifové tenké"
+#: lib/latexfonts:840
+msgid "Noto Sans (Thin)"
+msgstr "Noto bezserifové (tenké)"
 
-#: lib/latexfonts:797
-msgid "Noto Sans Light"
-msgstr "Noto bezserifové svetlé"
+#: lib/latexfonts:851
+msgid "Noto Sans (Light)"
+msgstr "Noto bezserifové (svetlé)"
 
-#: lib/latexfonts:807
-msgid "Noto Sans Extralight"
-msgstr "Noto bezserifové extra svetlé"
+#: lib/latexfonts:862
+msgid "Noto Sans (Extralight)"
+msgstr "Noto bezserifové (extra svetlé)"
 
 #: lib/latexfonts:817
 msgid "Noto Sans"
@@ -18452,10 +18452,6 @@ msgstr "URW Classico (Optima)"
 msgid "Bera Mono"
 msgstr "Bera Mono"
 
-#: lib/latexfonts:906
-msgid "Cantarell Monospace"
-msgstr "Cantarell Monospace"
-
 #: lib/latexfonts:675
 msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
@@ -18476,21 +18472,21 @@ msgstr "DejaVu bezserifové strojopisné"
 msgid "IBM Plex Mono"
 msgstr "IBM Plex strojopisné"
 
-#: lib/latexfonts:791
-msgid "IBM Plex Mono Thin"
-msgstr "IBM Plex strojopisné tenké"
+#: lib/latexfonts:955
+msgid "IBM Plex Mono (Thin)"
+msgstr "IBM Plex strojopisné (tenké)"
 
-#: lib/latexfonts:799
-msgid "IBM Plex Mono Extra Light"
-msgstr "IBM Plex strojopisné extra svetlé"
+#: lib/latexfonts:964
+msgid "IBM Plex Mono (Extra Light)"
+msgstr "IBM Plex strojopisné (extra svetlé)"
 
-#: lib/latexfonts:807
-msgid "IBM Plex Mono Light"
-msgstr "IBM Plex strojopisné svetlé"
+#: lib/latexfonts:973
+msgid "IBM Plex Mono (Light)"
+msgstr "IBM Plex strojopisné (svetlé)"
 
-#: lib/latexfonts:815
-msgid "IBM Plex Mono Semibold"
-msgstr "IBM Plex strojopisné polotučné"
+#: lib/latexfonts:982
+msgid "IBM Plex Mono (Semibold)"
+msgstr "IBM Plex strojopisné (polotučné)"
 
 #: lib/latexfonts:837
 msgid "Adobe Source Code Pro"
