@@ -184,6 +184,9 @@ def convert_fonts(document, fm, osfoption = "osf"):
     rpkg = re.compile(r'^\\usepackage(\[([^\]]*)\])?\{([^\}]+)\}')
     rscaleopt = re.compile(r'^scaled?=(.*)')
 
+    # Check whether we go beyond font option feature introduction
+    haveFontOpts = document.end_format > 580
+
     i = 0
     while i < len(document.preamble):
         i = find_re(document.preamble, rpkg, i+1)
@@ -214,7 +217,23 @@ def convert_fonts(document, fm, osfoption = "osf"):
         if not pkg in fm.pkginmap:
             continue
         # determine fontname
-        fn = fm.getfontname(pkg, options)
+        fn = None
+        if haveFontOpts:
+            # Try with name-option combination first
+            # (only one default option supported currently)
+            o = 0
+            while o < len(options):
+                opt = options[o]
+                fn = fm.getfontname(pkg, [opt])
+                if fn != None:
+                    del options[o]
+                    break
+                o += 1
+                continue
+            if fn == None:
+                fn = fm.getfontname(pkg, [])
+        else:
+            fn = fm.getfontname(pkg, options)
         if fn == None:
             continue
         del document.preamble[i]
@@ -255,6 +274,20 @@ def convert_fonts(document, fm, osfoption = "osf"):
             words = val.split() # ! splits also values like '"DejaVu Sans"'
             words[0] = '"' + fn + '"'
             document.header[j] = ft + ' ' + ' '.join(words)
+        if haveFontOpts and fontinfo.fonttype != "math":
+            fotag = "\\font_" + fontinfo.fonttype + "_opts"
+            fo = find_token(document.header, fotag)
+            if fo != -1:
+                document.header[fo] = fotag + " \"" + ",".join(options) + "\""
+            else:
+                # Sensible place to insert tag
+                fo = find_token(document.header, "\\font_sf_scale")
+                if fo == -1:
+                    document.warning("Malformed LyX document! Missing \\font_sf_scale")
+                else:
+                    document.header.insert(fo, fotag + " \"" + ",".join(options) + "\"")
+
+
 
 def revert_fonts(document, fm, fontmap, OnlyWithXOpts = False, WithXOpts = False):
     " Revert native font definition to LaTeX "
@@ -2916,7 +2949,7 @@ convert = [
            [579, []],
            [580, []],
            [581, [convert_osf]],
-           [582, [convert_CantarellFont]],
+           [582, [convert_AdobeFonts,convert_latexFonts,convert_notoFonts,convert_CantarellFont]],# old font re-converterted due to extra options
           ]
 
 revert =  [[581, [revert_CantarellFont]],
