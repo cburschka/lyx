@@ -10,17 +10,14 @@ Building LyX on Cygwin
 
 To build lyx, you will need to install the following cygwin packages
 
-    aspell        gzip             libpng           libQtGui4-devel
-    aspell-dev    gettext          libQtCore4       pkg-config
-    gcc           gettext-devel    libQtCore4-devel python
-    gcc4          libiconv         libQtGui4
+    gcc-core             libhunspell-devel      libQt5X11Extras-devel
+    gcc-g++              libiconv-devel         pkg-config
+    gzip                 libQt5Core-devel       python2
+    gettext-devel        libQt5Gui-devel        python3
+    libaspell-devel      libQt5Svg-devel
 
-Currently only the traditional autotools (autoconf, automake, make etc)
-build system is recommended to build LyX on cygwin. It does not differ
-from building lyx on any typical posix system, so you are referred to the
-INSTALL file.
-Note that it is not advisable using the cmake build system on cygwin for
-the reasons explained here: http://www.cmake.org/Bug/view.php?id=10122
+Building LyX on cygwin does not differ from building lyx on any typical
+posix system, so you are referred to the INSTALL file.
 
 When lyx is built as outlined above, it will be a X-Window application,
 so you will need a X-server for running it. It is possible to build lyx
