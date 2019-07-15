@@ -37,6 +37,8 @@ ommitted = ('en.po')
 
 import os
 import sys
+import codecs
+from subprocess import Popen, PIPE
 
 # Reset the locale
 import locale
@@ -69,7 +71,7 @@ def read_pofile(pofile):
     """ Read the header of the pofile and return it as a dictionary"""
     header = {}
     read_header = False
-    for line in open(pofile):
+    for line in codecs.open(pofile, encoding='utf8'):
         line = line[:-1]
         if line[:5] == 'msgid':
             if read_header:
@@ -112,12 +114,13 @@ def run_msgfmt(pofile):
     prop["email"] = prop["email"].replace(".", " ! ")
     translator = header['Last-Translator'].split('<')[0].strip()
     try:
-        prop["translator"] = translator.decode(charset).encode('ascii','xmlcharrefreplace')
+        prop["translator"] = translator.encode('ascii','xmlcharrefreplace')
     except LookupError:
         prop["translator"] = translator
 
-    p_in, p_out = os.popen4("msgfmt --statistics -o %s %s" % (gmofile, pofile))
-    extract_number(p_out.readline(),
+    P = Popen("msgfmt --statistics -o %s %s" % (gmofile, pofile),
+              shell=True, stdin=PIPE, stdout=PIPE, close_fds=True)
+    extract_number(P.stdout.readline().decode(),
                    ('translated', 'fuzzy', 'untranslated'),
                    prop)
     return """
