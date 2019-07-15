@@ -178,7 +178,7 @@ def createFontMapping(fontlist):
                                   "sans", "sf", "cantarell", "scaled", "oldstyle")
     return fm
 
-def convert_fonts(document, fm):
+def convert_fonts(document, fm, osfoption = "osf"):
     " Handle font definition (LaTeX preamble -> native) "
 
     rpkg = re.compile(r'^\\usepackage(\[([^\]]*)\])?\{([^\}]+)\}')
@@ -197,7 +197,6 @@ def convert_fonts(document, fm):
         pkg = mo.group(3)
         o = 0
         oscale = 1
-        osfoption = "osf"
         has_osf = False
         while o < len(options):
             if options[o] == osfoption:
@@ -226,12 +225,17 @@ def convert_fonts(document, fm):
             fontscale = "\\font_" + fontinfo.scaletype + "_scale"
             fontinfo.scaleval = oscale
         if has_osf:
-             if fontinfo.osfopt == None:
-                 options.extend("osf")
-                 continue
-             osf = find_token(document.header, "\\font_osf false")
-             if osf != -1:
-                 document.header[osf] = "\\font_osf true"
+            if fontinfo.osfopt == None:
+                options.extend(osfoption)
+                continue
+            osf = find_token(document.header, "\\font_osf false")
+            osftag = "\\font_osf"
+            if osf == -1 and fontinfo.fonttype != "math":
+                # Try with newer format
+                osftag = "\\font_" + fontinfo.fonttype + "_osf"
+                osf = find_token(document.header, osftag + " false")
+            if osf != -1:
+                document.header[osf] = osftag + " true"
         if i > 0 and document.preamble[i-1] == "% Added by lyx2lyx":
             del document.preamble[i-1]
             i -= 1
@@ -2857,7 +2861,7 @@ def convert_CantarellFont(document):
 
     if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         fm = createFontMapping(['Cantarell'])
-        convert_fonts(document, fm)
+        convert_fonts(document, fm, "oldstyle")
 
 def revert_CantarellFont(document):
     " Revert native Cantarell font definition to LaTeX "
