@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-07-14 11:58+0200\n"
-"PO-Revision-Date: 2019-07-14 12:02+0200\n"
+"POT-Creation-Date: 2019-07-15 15:51+0200\n"
+"PO-Revision-Date: 2019-07-15 15:55+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -600,13 +600,13 @@ msgstr "Bo&x:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:204 src/frontends/qt4/ui/BoxUi.ui:234
 #: src/frontends/qt4/ui/TabularUi.ui:213 src/frontends/qt4/ui/TabularUi.ui:404
-#: lib/ui/stdcontext.inc:449 src/frontends/qt4/GuiMathMatrix.cpp:52
+#: lib/ui/stdcontext.inc:449 src/frontends/qt4/GuiMathMatrix.cpp:54
 msgid "Top"
 msgstr "Oben"
 
 #: src/frontends/qt4/ui/BoxUi.ui:209 src/frontends/qt4/ui/BoxUi.ui:239
 #: src/frontends/qt4/ui/TabularUi.ui:218 src/frontends/qt4/ui/TabularUi.ui:409
-#: lib/ui/stdcontext.inc:450 src/frontends/qt4/GuiMathMatrix.cpp:53
+#: lib/ui/stdcontext.inc:450 src/frontends/qt4/GuiMathMatrix.cpp:55
 #: src/frontends/qt4/GuiTabular.cpp:250
 msgid "Middle"
 msgstr "Mitte"
@@ -629,7 +629,7 @@ msgstr "Mitte"
 #: lib/layouts/g-brief2.layout:630 lib/layouts/g-brief2.layout:650
 #: lib/layouts/g-brief2.layout:670 lib/layouts/g-brief2.layout:690
 #: lib/layouts/g-brief2.layout:710 lib/ui/stdcontext.inc:451
-#: src/frontends/qt4/GuiMathMatrix.cpp:54
+#: src/frontends/qt4/GuiMathMatrix.cpp:56
 msgid "Bottom"
 msgstr "Unten"
 
@@ -659,7 +659,6 @@ msgid "Right"
 msgstr "Rechts"
 
 #: src/frontends/qt4/ui/BoxUi.ui:299 src/frontends/qt4/ui/CharacterUi.ui:145
-#: src/frontends/qt4/ui/MathMatrixUi.ui:231
 msgid "Decoration"
 msgstr "Verzierung"
 
@@ -3034,6 +3033,10 @@ msgstr "Horizontale Ausrichtung pro Spalte (l,c,r)"
 #: src/frontends/qt4/ui/MathMatrixUi.ui:218
 msgid "Hori&zontal:"
 msgstr "&Horizontal:"
+
+#: src/frontends/qt4/ui/MathMatrixUi.ui:231
+msgid "Appearance"
+msgstr "Erscheinungsbild"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:253
 msgid "decoration type / matrix border"
@@ -7674,7 +7677,7 @@ msgid "Altaffilation"
 msgstr "Alt. Zugehörigkeit"
 
 #: lib/layouts/aastex.layout:186 lib/layouts/agutex.layout:124
-#: src/mathed/InsetMathHull.cpp:1851 src/mathed/InsetMathHull.cpp:1860
+#: src/mathed/InsetMathHull.cpp:1865 src/mathed/InsetMathHull.cpp:1874
 msgid "Number"
 msgstr "Nummer"
 
@@ -18443,413 +18446,445 @@ msgstr "Vietnamesisch"
 msgid "Welsh"
 msgstr "Walisisch"
 
-#: lib/latexfonts:87
+#: lib/latexfonts:88
 msgid "AE (Almost European)"
 msgstr "AE (Almost European)"
 
-#: lib/latexfonts:95 lib/latexfonts:103
+#: lib/latexfonts:96 lib/latexfonts:104
 msgid "Bera Serif"
 msgstr "Bera Serif"
 
-#: lib/latexfonts:109
+#: lib/latexfonts:110
 msgid "Bookman"
 msgstr "Bookman"
 
-#: lib/latexfonts:115
+#: lib/latexfonts:116
 msgid "Concrete Roman"
 msgstr "Concrete Roman"
 
-#: lib/latexfonts:121
+#: lib/latexfonts:123
 msgid "Zapf Chancery"
 msgstr "Zapf Chancery"
 
-#: lib/latexfonts:127
+#: lib/latexfonts:129
 msgid "Bitstream Charter (PSNFSS)"
 msgstr "Bitstream Charter (PSNFSS)"
 
-#: lib/latexfonts:133
+#: lib/latexfonts:135
 msgid "Crimson (Cochineal)"
 msgstr "Crimson (Cochineal)"
 
-#: lib/latexfonts:141
+#: lib/latexfonts:144
 msgid "Crimson"
 msgstr "Crimson"
 
-#: lib/latexfonts:147
+#: lib/latexfonts:150
 msgid "Computer Modern Roman"
 msgstr "Computer Modern Roman"
 
-#: lib/latexfonts:155
+#: lib/latexfonts:158
 msgid "DejaVu Serif"
 msgstr "DejaVu Serif"
 
-#: lib/latexfonts:161
-msgid "DejaVu Serif Condensed"
+#: lib/latexfonts:164
+msgid "DejaVu Serif (Condensed)"
 msgstr "DejaVu Serif (Condensed)"
 
-#: lib/latexfonts:172
+#: lib/latexfonts:175
 msgid "IBM Plex Serif"
 msgstr "IBM Plex Serif"
 
-#: lib/latexfonts:179
-msgid "IBM Plex Serif Thin"
+#: lib/latexfonts:182
+msgid "IBM Plex Serif (Thin)"
 msgstr "IBM Plex Serif (Thin)"
 
-#: lib/latexfonts:187
-msgid "IBM Plex Serif Extra Light"
+#: lib/latexfonts:190
+msgid "IBM Plex Serif (Extra Light)"
 msgstr "IBM Plex Serif (Extra Light)"
 
-#: lib/latexfonts:195
-msgid "IBM Plex Serif Light"
+#: lib/latexfonts:198
+msgid "IBM Plex Serif (Light)"
 msgstr "IBM Plex Serif (Light)"
 
-#: lib/latexfonts:203
-msgid "IBM Plex Serif Semibold"
+#: lib/latexfonts:206
+msgid "IBM Plex Serif (Semibold)"
 msgstr "IBM Plex Serif (Semibold)"
 
-#: lib/latexfonts:211
+#: lib/latexfonts:214
 msgid "Adobe Source Serif Pro"
 msgstr "Adobe Source Serif Pro"
 
-#: lib/latexfonts:219 lib/latexfonts:228
+#: lib/latexfonts:222 lib/latexfonts:232
 msgid "URW Garamond"
 msgstr "URW Garamond"
 
-#: lib/latexfonts:235 lib/latexfonts:244 lib/latexfonts:251 lib/latexfonts:259
-#: lib/latexfonts:267
+#: lib/latexfonts:239 lib/latexfonts:249 lib/latexfonts:257 lib/latexfonts:265
+#: lib/latexfonts:273
 msgid "Libertine"
 msgstr "Libertine"
 
-#: lib/latexfonts:274 lib/latexfonts:281
+#: lib/latexfonts:280 lib/latexfonts:288
 msgid "Latin Modern Roman"
 msgstr "Latin Modern Roman"
 
-#: lib/latexfonts:288 lib/latexfonts:301
+#: lib/latexfonts:295 lib/latexfonts:308
 msgid "Bitstream Charter (Mathdesign)"
 msgstr "Bitstream Charter (Mathdesign)"
 
-#: lib/latexfonts:308 lib/latexfonts:321
+#: lib/latexfonts:315 lib/latexfonts:328
 msgid "Utopia (Mathdesign)"
 msgstr "Utopia (Mathdesign)"
 
-#: lib/latexfonts:328 lib/latexfonts:341
+#: lib/latexfonts:335 lib/latexfonts:348
 msgid "URW Garamond (Mathdesign)"
 msgstr "URW Garamond (Mathdesign)"
 
-#: lib/latexfonts:348 lib/latexfonts:359
+#: lib/latexfonts:355 lib/latexfonts:366
 msgid "Minion Pro"
 msgstr "Minion Pro"
 
-#: lib/latexfonts:368
+#: lib/latexfonts:375
 msgid "New Century Schoolbook"
 msgstr "New Century Schoolbook"
 
-#: lib/latexfonts:374 lib/latexfonts:385
-msgid "Noto Serif Regular"
+#: lib/latexfonts:381
+msgid "Noto Serif (Regular)"
 msgstr "Noto Serif (Regular)"
 
-#: lib/latexfonts:395
-msgid "Noto Serif Medium"
+#: lib/latexfonts:390
+msgid "Noto Serif (Medium)"
 msgstr "Noto Serif (Medium)"
 
-#: lib/latexfonts:405
-msgid "Noto Serif Thin"
+#: lib/latexfonts:400
+msgid "Noto Serif (Thin)"
 msgstr "Noto Serif (Thin)"
 
-#: lib/latexfonts:415
-msgid "Noto Serif Light"
+#: lib/latexfonts:410
+msgid "Noto Serif (Light)"
 msgstr "Noto Serif (Light)"
 
-#: lib/latexfonts:425
-msgid "Noto Serif Extralight"
+#: lib/latexfonts:420
+msgid "Noto Serif (Extralight)"
 msgstr "Noto Serif (Extra Light)"
 
-#: lib/latexfonts:435 lib/latexfonts:443
+#: lib/latexfonts:430 lib/latexfonts:438
 msgid "Noto Serif"
 msgstr "Noto Serif"
 
-#: lib/latexfonts:451 lib/latexfonts:463 lib/latexfonts:470 lib/latexfonts:476
-#: lib/latexfonts:483
+#: lib/latexfonts:446 lib/latexfonts:459 lib/latexfonts:466 lib/latexfonts:472
+#: lib/latexfonts:479
 msgid "Palatino"
 msgstr "Palatino"
 
-#: lib/latexfonts:489 lib/latexfonts:497
+#: lib/latexfonts:485 lib/latexfonts:493
 msgid "ParaType Serif"
 msgstr "ParaType Serif"
 
-#: lib/latexfonts:503 lib/latexfonts:512 lib/latexfonts:519 lib/latexfonts:525
+#: lib/latexfonts:499 lib/latexfonts:509 lib/latexfonts:516 lib/latexfonts:522
 msgid "Times Roman"
 msgstr "Times Roman"
 
-#: lib/latexfonts:531
+#: lib/latexfonts:528
 msgid "TeX Gyre Bonum"
 msgstr "TeX Gyre Bonum"
 
-#: lib/latexfonts:537
+#: lib/latexfonts:534
 msgid "TeX Gyre Chorus"
 msgstr "TeX Gyre Chorus"
 
-#: lib/latexfonts:543
+#: lib/latexfonts:540
 msgid "TeX Gyre Pagella"
 msgstr "TeX Gyre Pagella"
 
-#: lib/latexfonts:549
+#: lib/latexfonts:546
 msgid "TeX Gyre Schola"
 msgstr "TeX Gyre Schola"
 
-#: lib/latexfonts:555
+#: lib/latexfonts:552
 msgid "TeX Gyre Termes"
 msgstr "TeX Gyre Termes"
 
-#: lib/latexfonts:563 lib/latexfonts:574 lib/latexfonts:580 lib/latexfonts:587
+#: lib/latexfonts:560 lib/latexfonts:572 lib/latexfonts:578 lib/latexfonts:585
 msgid "Utopia (Fourier)"
 msgstr "Utopia (Fourier)"
 
-#: lib/latexfonts:593
+#: lib/latexfonts:591
 msgid "Bitstream Charter (XCharter)"
 msgstr "Bitstream Charter (XCharter)"
 
-#: lib/latexfonts:604
+#: lib/latexfonts:603
 msgid "Avant Garde"
 msgstr "Avant Garde"
 
-#: lib/latexfonts:610
+#: lib/latexfonts:609
 msgid "Bera Sans"
 msgstr "Bera Sans"
 
-#: lib/latexfonts:618 lib/latexfonts:627 lib/latexfonts:636
+#: lib/latexfonts:617 lib/latexfonts:627 lib/latexfonts:637
 msgid "Biolinum"
 msgstr "Biolinum"
 
-#: lib/latexfonts:644
+#: lib/latexfonts:646
+msgid "Cantarell"
+msgstr "Cantarell"
+
+#: lib/latexfonts:657
 msgid "CM Bright"
 msgstr "CM Bright"
 
-#: lib/latexfonts:651
+#: lib/latexfonts:664
 msgid "Computer Modern Sans"
 msgstr "Computer Modern Sans"
 
-#: lib/latexfonts:658
+#: lib/latexfonts:671
 msgid "DejaVu Sans"
 msgstr "DejaVu Sans"
 
-#: lib/latexfonts:665
+#: lib/latexfonts:678
 msgid "DejaVu Sans Condensed"
 msgstr "DejaVu Sans (Condensed)"
 
-#: lib/latexfonts:672
+#: lib/latexfonts:685
+msgid "Fira Sans"
+msgstr "Fira Sans"
+
+#: lib/latexfonts:696
+msgid "Fira Sans (Book)"
+msgstr "Fira Sans (Book)"
+
+#: lib/latexfonts:708
+msgid "Fira Sans (Light)"
+msgstr "Fira Sans (Light)"
+
+#: lib/latexfonts:720
+msgid "Fira Sans (Extralight)"
+msgstr "Fira Sans (Extralight)"
+
+#: lib/latexfonts:732
+msgid "Fira Sans (Ultralight)"
+msgstr "Fira Sans (Ultralight)"
+
+#: lib/latexfonts:744
+msgid "Fira Sans (Thin)"
+msgstr "Fira Sans (Thin)"
+
+#: lib/latexfonts:756
 msgid "IBM Plex Sans"
 msgstr "IBM Plex Sans"
 
-#: lib/latexfonts:680
-msgid "IBM Plex Sans Condensed"
+#: lib/latexfonts:764
+msgid "IBM Plex Sans (Condensed)"
 msgstr "IBM Plex Sans (Condensed)"
 
-#: lib/latexfonts:689
-msgid "IBM Plex Sans Thin"
+#: lib/latexfonts:773
+msgid "IBM Plex Sans (Thin)"
 msgstr "IBM Plex Sans (Thin)"
 
-#: lib/latexfonts:698
-msgid "IBM Plex Sans Extra Light"
+#: lib/latexfonts:782
+msgid "IBM Plex Sans (Extra Light)"
 msgstr "IBM Plex Sans (Extra Light)"
 
-#: lib/latexfonts:707
-msgid "IBM Plex Sans Light"
+#: lib/latexfonts:791
+msgid "IBM Plex Sans (Light)"
 msgstr "IBM Plex Sans (Light)"
 
-#: lib/latexfonts:716
-msgid "IBM Plex Sans Semibold"
+#: lib/latexfonts:800
+msgid "IBM Plex Sans (Semibold)"
 msgstr "IBM Plex Sans (Semibold)"
 
-#: lib/latexfonts:725
+#: lib/latexfonts:809
 msgid "Adobe Source Sans Pro"
 msgstr "Adobe Source Sans Pro"
 
-#: lib/latexfonts:734
+#: lib/latexfonts:818
 msgid "Helvetica"
 msgstr "Helvetica"
 
-#: lib/latexfonts:742
+#: lib/latexfonts:826
 msgid "Iwona"
 msgstr "Iwona"
 
-#: lib/latexfonts:749
+#: lib/latexfonts:833
 msgid "Iwona (Light)"
 msgstr "Iwona (Light)"
 
-#: lib/latexfonts:756
+#: lib/latexfonts:840
 msgid "Iwona (Condensed)"
 msgstr "Iwona (Condensed)"
 
-#: lib/latexfonts:763
+#: lib/latexfonts:847
 msgid "Iwona (Light Condensed)"
 msgstr "Iwona (Light Condensed)"
 
-#: lib/latexfonts:770
+#: lib/latexfonts:854
 msgid "Kurier"
 msgstr "Kurier"
 
-#: lib/latexfonts:777
+#: lib/latexfonts:861
 msgid "Kurier (Light)"
 msgstr "Kurier (Light)"
 
-#: lib/latexfonts:784
+#: lib/latexfonts:868
 msgid "Kurier (Condensed)"
 msgstr "Kurier (Condensed)"
 
-#: lib/latexfonts:791
+#: lib/latexfonts:875
 msgid "Kurier (Light Condensed)"
 msgstr "Kurier (Light Condensed)"
 
-#: lib/latexfonts:798
+#: lib/latexfonts:882
 msgid "Latin Modern Sans"
 msgstr "Latin Modern Sans"
 
-#: lib/latexfonts:805
-msgid "Noto Sans Regular"
+#: lib/latexfonts:889
+msgid "Noto Sans (Regular)"
 msgstr "Noto Sans (Regular)"
 
-#: lib/latexfonts:816
-msgid "Noto Sans Medium"
+#: lib/latexfonts:900
+msgid "Noto Sans (Medium)"
 msgstr "Noto Sans (Medium)"
 
-#: lib/latexfonts:827
-msgid "Noto Sans Thin"
+#: lib/latexfonts:911
+msgid "Noto Sans (Thin)"
 msgstr "Noto Sans (Thin)"
 
-#: lib/latexfonts:838
-msgid "Noto Sans Light"
+#: lib/latexfonts:922
+msgid "Noto Sans (Light)"
 msgstr "Noto Sans (Light)"
 
-#: lib/latexfonts:849
-msgid "Noto Sans Extralight"
+#: lib/latexfonts:933
+msgid "Noto Sans (Extralight)"
 msgstr "Noto Sans (Extra Light)"
 
-#: lib/latexfonts:860
+#: lib/latexfonts:944
 msgid "Noto Sans"
 msgstr "Noto Sans"
 
-#: lib/latexfonts:867
+#: lib/latexfonts:951
 msgid "ParaType Sans"
 msgstr "ParaType Sans"
 
-#: lib/latexfonts:875
+#: lib/latexfonts:959
 msgid "TeX Gyre Adventor"
 msgstr "TeX Gyre Adventor"
 
-#: lib/latexfonts:881
+#: lib/latexfonts:965
 msgid "TeX Gyre Heros"
 msgstr "TeX Gyre Heros"
 
-#: lib/latexfonts:887
+#: lib/latexfonts:971
 msgid "URW Classico (Optima)"
 msgstr "URW Classico (Optima)"
 
-#: lib/latexfonts:898
+#: lib/latexfonts:982
 msgid "Bera Mono"
 msgstr "Bera Mono"
 
-#: lib/latexfonts:906
+#: lib/latexfonts:990
 msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
-#: lib/latexfonts:913
+#: lib/latexfonts:997
 msgid "Computer Modern Typewriter"
 msgstr "Computer Modern Typewriter"
 
-#: lib/latexfonts:920
+#: lib/latexfonts:1004
 msgid "Courier"
 msgstr "Courier"
 
-#: lib/latexfonts:927
+#: lib/latexfonts:1011
 msgid "DejaVu Sans Mono"
 msgstr "DejaVu Sans Mono"
 
-#: lib/latexfonts:934
+#: lib/latexfonts:1018
+msgid "Fira Mono"
+msgstr "Fira Mono"
+
+#: lib/latexfonts:1029
 msgid "IBM Plex Mono"
 msgstr "IBM Plex Mono"
 
-#: lib/latexfonts:942
-msgid "IBM Plex Mono Thin"
+#: lib/latexfonts:1037
+msgid "IBM Plex Mono (Thin)"
 msgstr "IBM Plex Mono (Thin)"
 
-#: lib/latexfonts:951
-msgid "IBM Plex Mono Extra Light"
+#: lib/latexfonts:1046
+msgid "IBM Plex Mono (Extra Light)"
 msgstr "IBM Plex Mono (Extra Light)"
 
-#: lib/latexfonts:960
-msgid "IBM Plex Mono Light"
+#: lib/latexfonts:1055
+msgid "IBM Plex Mono (Light)"
 msgstr "IBM Plex Mono (Light)"
 
-#: lib/latexfonts:969
-msgid "IBM Plex Mono Semibold"
+#: lib/latexfonts:1064
+msgid "IBM Plex Mono (Semibold)"
 msgstr "IBM Plex Mono (Semibold)"
 
-#: lib/latexfonts:978
+#: lib/latexfonts:1073
 msgid "Adobe Source Code Pro"
 msgstr "Adobe Source Code Pro"
 
-#: lib/latexfonts:987 lib/latexfonts:995
+#: lib/latexfonts:1082 lib/latexfonts:1090
 msgid "Libertine Mono"
 msgstr "Libertine Mono"
 
-#: lib/latexfonts:1002
+#: lib/latexfonts:1097
 msgid "Latin Modern Typewriter"
 msgstr "Latin Modern Typewriter"
 
-#: lib/latexfonts:1009
+#: lib/latexfonts:1104
 msgid "LuxiMono"
 msgstr "LuxiMono"
 
-#: lib/latexfonts:1016
+#: lib/latexfonts:1111
 msgid "Noto Mono Regular"
 msgstr "Noto Mono (Regular)"
 
-#: lib/latexfonts:1026
+#: lib/latexfonts:1121
 msgid "Noto Mono"
 msgstr "Noto Mono"
 
-#: lib/latexfonts:1033
+#: lib/latexfonts:1128
 msgid "ParaType Mono"
 msgstr "ParaType Mono"
 
-#: lib/latexfonts:1041
+#: lib/latexfonts:1136
 msgid "TeX Gyre Cursor"
 msgstr "TeX Gyre Cursor"
 
-#: lib/latexfonts:1047
+#: lib/latexfonts:1142
 msgid "TX Typewriter"
 msgstr "TX Typewriter"
 
-#: lib/latexfonts:1059
+#: lib/latexfonts:1154
 msgid "Crimson (New TX)"
 msgstr "Crimson (New TX)"
 
-#: lib/latexfonts:1067
+#: lib/latexfonts:1162
 msgid "Euler VM"
 msgstr "Euler VM"
 
-#: lib/latexfonts:1073
+#: lib/latexfonts:1168
 msgid "URW Garamond (New TX)"
 msgstr "URW Garamond (New TX)"
 
-#: lib/latexfonts:1081
+#: lib/latexfonts:1176
 msgid "Iwona (Math)"
 msgstr "Iwona (Mathe)"
 
-#: lib/latexfonts:1094
+#: lib/latexfonts:1189
 msgid "Kurier (Math)"
 msgstr "Kurier (Mathe)"
 
-#: lib/latexfonts:1107
+#: lib/latexfonts:1202
 msgid "Libertine (New TX)"
 msgstr "Libertine (New TX)"
 
-#: lib/latexfonts:1115
+#: lib/latexfonts:1210
 msgid "Minion Pro (New TX)"
 msgstr "Minion Pro (New TX)"
 
-#: lib/latexfonts:1124
+#: lib/latexfonts:1219
 msgid "Times Roman (New TX)"
 msgstr "Times Roman (New TX)"
 
@@ -19546,7 +19581,7 @@ msgstr "Kopieren"
 
 #: lib/ui/stdcontext.inc:346 lib/ui/stdmenus.inc:110 lib/ui/stdtoolbars.inc:82
 #: src/Text3.cpp:1478 src/frontends/qt4/GuiToolbar.cpp:407
-#: src/mathed/InsetMathGrid.cpp:1579 src/mathed/InsetMathNest.cpp:540
+#: src/mathed/InsetMathGrid.cpp:1584 src/mathed/InsetMathNest.cpp:540
 msgid "Paste"
 msgstr "Einfügen"
 
@@ -21629,7 +21664,7 @@ msgid "Big operators"
 msgstr "Große Operatoren"
 
 #: lib/ui/stdtoolbars.inc:310 lib/ui/stdtoolbars.inc:658
-#: src/frontends/qt4/GuiDocument.cpp:5021
+#: src/frontends/qt4/GuiDocument.cpp:5020
 msgid "Miscellaneous"
 msgstr "Verschiedenes"
 
@@ -27655,7 +27690,7 @@ msgstr "Dokument %1$s ist eingefügt."
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
 
-#: src/BufferView.cpp:3314
+#: src/BufferView.cpp:3319
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -27666,11 +27701,11 @@ msgstr ""
 "konnte aufgrund des folgenden Fehlers\n"
 "nicht gelesen werden: %2$s"
 
-#: src/BufferView.cpp:3316
+#: src/BufferView.cpp:3321
 msgid "Could not read file"
 msgstr "Die Datei konnte nicht gelesen werden"
 
-#: src/BufferView.cpp:3323
+#: src/BufferView.cpp:3328
 #, c-format
 msgid ""
 "%1$s\n"
@@ -27679,15 +27714,15 @@ msgstr ""
 "%1$s\n"
 "ist nicht lesbar."
 
-#: src/BufferView.cpp:3324 src/output.cpp:39
+#: src/BufferView.cpp:3329 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Die Datei konnte nicht geöffnet werden"
 
-#: src/BufferView.cpp:3331
+#: src/BufferView.cpp:3336
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lese nicht-UTF-8-kodierte Datei"
 
-#: src/BufferView.cpp:3332
+#: src/BufferView.cpp:3337
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -32011,23 +32046,23 @@ msgstr ""
 "Das Hauptdokument '%1$s'\n"
 "konnte nicht geladen werden."
 
-#: src/frontends/qt4/GuiDocument.cpp:5018
+#: src/frontends/qt4/GuiDocument.cpp:5017
 msgid "%1 (missing req.)"
 msgstr "%1 (fehlende Vor.)"
 
-#: src/frontends/qt4/GuiDocument.cpp:5030
+#: src/frontends/qt4/GuiDocument.cpp:5029
 msgid "personal module"
 msgstr "persönliches Modul"
 
-#: src/frontends/qt4/GuiDocument.cpp:5030
+#: src/frontends/qt4/GuiDocument.cpp:5029
 msgid "distributed module"
 msgstr "mitgeliefertes Modul"
 
-#: src/frontends/qt4/GuiDocument.cpp:5031
+#: src/frontends/qt4/GuiDocument.cpp:5030
 msgid "<b>Module name:</b> <i>%1</i> (%2)"
 msgstr "<b>Modulname:</b> <i>%1</i> (%2)"
 
-#: src/frontends/qt4/GuiDocument.cpp:5037
+#: src/frontends/qt4/GuiDocument.cpp:5036
 msgid "<b>Note:</b> Some requirements for this module are missing!"
 msgstr ""
 "<b>Achtung:</b> Einige Voraussetzungen für dieses Modul sind nicht gegeben!"
@@ -32777,27 +32812,35 @@ msgstr "|x|"
 msgid "||x||"
 msgstr "||x||"
 
-#: src/frontends/qt4/GuiMathMatrix.cpp:43
+#: src/frontends/qt4/GuiMathMatrix.cpp:39
+msgid "small"
+msgstr "small"
+
+#: src/frontends/qt4/GuiMathMatrix.cpp:44
 msgid "bmatrix"
 msgstr "bmatrix"
 
-#: src/frontends/qt4/GuiMathMatrix.cpp:44
+#: src/frontends/qt4/GuiMathMatrix.cpp:45
 msgid "pmatrix"
 msgstr "pmatrix"
 
-#: src/frontends/qt4/GuiMathMatrix.cpp:45
+#: src/frontends/qt4/GuiMathMatrix.cpp:46
 msgid "Bmatrix"
 msgstr "Bmatrix"
 
-#: src/frontends/qt4/GuiMathMatrix.cpp:46
+#: src/frontends/qt4/GuiMathMatrix.cpp:47
 msgid "vmatrix"
 msgstr "vmatrix"
 
-#: src/frontends/qt4/GuiMathMatrix.cpp:47
+#: src/frontends/qt4/GuiMathMatrix.cpp:48
 msgid "Vmatrix"
 msgstr "Vmatrix"
 
-#: src/frontends/qt4/GuiMathMatrix.cpp:62
+#: src/frontends/qt4/GuiMathMatrix.cpp:49
+msgid "smallmatrix"
+msgstr "smallmatrix"
+
+#: src/frontends/qt4/GuiMathMatrix.cpp:64
 msgid "Math Matrix"
 msgstr "Mathe-Matrix"
 
@@ -34169,27 +34212,27 @@ msgstr "Quelltext-Vorschau"
 msgid "%1[[preview format name]] Preview"
 msgstr "%1-Vorschau"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1602
+#: src/frontends/qt4/GuiWorkArea.cpp:1597
 msgid "Close File"
 msgstr "Datei schließen"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2119
+#: src/frontends/qt4/GuiWorkArea.cpp:2114
 msgid "%1 (read only)"
 msgstr "%1 (schreibgeschützt)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2123
+#: src/frontends/qt4/GuiWorkArea.cpp:2118
 msgid "%1 (modified externally)"
 msgstr "%1 (extern bearbeitet)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2146
+#: src/frontends/qt4/GuiWorkArea.cpp:2141
 msgid "Hide tab"
 msgstr "Unterfenster verstecken"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2152
+#: src/frontends/qt4/GuiWorkArea.cpp:2147
 msgid "Close tab"
 msgstr "Unterfenster schließen"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2191
+#: src/frontends/qt4/GuiWorkArea.cpp:2186
 msgid "<b>The file %1 changed on disk.</b>"
 msgstr "<b>Die Datei %1 wurde auf der Festplatte verändert.</b>"
 
@@ -36048,7 +36091,7 @@ msgstr "Die Zeichenkette wurde ersetzt."
 msgid "Match found."
 msgstr "Die Zeichenkette wurde gefunden!"
 
-#: src/mathed/InsetMathAMSArray.cpp:115 src/mathed/InsetMathHull.cpp:2148
+#: src/mathed/InsetMathAMSArray.cpp:135 src/mathed/InsetMathHull.cpp:2162
 #: src/mathed/InsetMathSplit.cpp:121 src/mathed/InsetMathSubstack.cpp:70
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -36086,41 +36129,41 @@ msgstr "Verzierung: %1$s"
 msgid "Environment: %1$s"
 msgstr "Umgebung: %1$s"
 
-#: src/mathed/InsetMathGrid.cpp:1727
+#: src/mathed/InsetMathGrid.cpp:1733
 msgid "Cursor not in table"
 msgstr "Cursor nicht in Tabelle"
 
-#: src/mathed/InsetMathGrid.cpp:1732
+#: src/mathed/InsetMathGrid.cpp:1738
 msgid "Only one row"
 msgstr "Nur eine Zeile"
 
-#: src/mathed/InsetMathGrid.cpp:1738
+#: src/mathed/InsetMathGrid.cpp:1744
 msgid "Only one column"
 msgstr "Nur eine Spalte"
 
-#: src/mathed/InsetMathGrid.cpp:1746
+#: src/mathed/InsetMathGrid.cpp:1752
 msgid "No hline to delete"
 msgstr "Keine horizontale Linie zu löschen"
 
-#: src/mathed/InsetMathGrid.cpp:1755
+#: src/mathed/InsetMathGrid.cpp:1761
 msgid "No vline to delete"
 msgstr "Keine vertikale Linie zu löschen"
 
-#: src/mathed/InsetMathGrid.cpp:1784
+#: src/mathed/InsetMathGrid.cpp:1790
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Unbekanntes Tabellenmerkmal '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1711
+#: src/mathed/InsetMathHull.cpp:1725
 #, c-format
 msgid "Type: %1$s"
 msgstr "Typ: %1$s"
 
-#: src/mathed/InsetMathHull.cpp:1747
+#: src/mathed/InsetMathHull.cpp:1761
 msgid "Bad math environment"
 msgstr "Ungeeignete Matheumgebung"
 
-#: src/mathed/InsetMathHull.cpp:1748
+#: src/mathed/InsetMathHull.cpp:1762
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
@@ -36128,16 +36171,16 @@ msgstr ""
 "In AMS-Matheumgebungen kann keine Berechnung durchgeführt werden.\n"
 "Bitte ändern Sie die Formelart und versuchen Sie es noch einmal."
 
-#: src/mathed/InsetMathHull.cpp:1851 src/mathed/InsetMathHull.cpp:1860
+#: src/mathed/InsetMathHull.cpp:1865 src/mathed/InsetMathHull.cpp:1874
 msgid "No number"
 msgstr "Keine Nummer"
 
-#: src/mathed/InsetMathHull.cpp:2131
+#: src/mathed/InsetMathHull.cpp:2145
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Die Anzahl der Zeilen in '%1$s' kann nicht geändert werden."
 
-#: src/mathed/InsetMathHull.cpp:2141
+#: src/mathed/InsetMathHull.cpp:2155
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Die Anzahl der Spalten in '%1$s' kann nicht geändert werden."
@@ -36540,9 +36583,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
-
-#~ msgid "Cantarell Monospace"
-#~ msgstr "Cantarell Monospace"
 
 #~ msgid "Verbatim Input"
 #~ msgstr "Unformatiert"
