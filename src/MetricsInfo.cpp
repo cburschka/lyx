@@ -221,8 +221,10 @@ Changer MetricsBase::changeFrac()
 }
 
 
-Changer MetricsBase::changeArray()
+Changer MetricsBase::changeArray(bool small)
 {
+	if (small)
+		return font.changeStyle(SCRIPT_STYLE);
 	return (font.style() == DISPLAY_STYLE) ? font.changeStyle(TEXT_STYLE)
 		: Changer();
 }

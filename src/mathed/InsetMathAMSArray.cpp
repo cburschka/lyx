@@ -83,10 +83,28 @@ char const * InsetMathAMSArray::name_right() const
 }
 
 
+int InsetMathAMSArray::rowsep() const
+{
+	return small() ? 0 : InsetMathGrid::rowsep();
+}
+
+
+int InsetMathAMSArray::colsep() const
+{
+	return small() ? InsetMathGrid::colsep() / 2 : InsetMathGrid::colsep();
+}
+
+
+int InsetMathAMSArray::border() const
+{
+	return small() ? 0 : InsetMathGrid::border();
+}
+
+
 void InsetMathAMSArray::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy2 = mi.base.changeEnsureMath();
-	Changer dummy = mi.base.changeArray();
+	Changer dummy = mi.base.changeArray(small());
 	InsetMathGrid::metrics(mi, dim);
 }
 
@@ -94,12 +112,14 @@ void InsetMathAMSArray::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetMathAMSArray::draw(PainterInfo & pi, int x, int y) const
 {
 	Changer dummy2 = pi.base.changeEnsureMath();
-	Dimension const dim = dimension(*pi.base.bv);
-	int const yy = y - dim.ascent();
-	// Drawing the deco after changeStyle does not work
-	mathed_draw_deco(pi, x + 1, yy, 5, dim.height(), from_ascii(name_left()));
-	mathed_draw_deco(pi, x + dim.width() - 8, yy, 5, dim.height(), from_ascii(name_right()));
-	Changer dummy = pi.base.changeArray();
+	if (name_ != "smallmatrix") {
+		Dimension const dim = dimension(*pi.base.bv);
+		int const yy = y - dim.ascent();
+		// Drawing the deco after changeStyle does not work
+		mathed_draw_deco(pi, x + 1, yy, 5, dim.height(), from_ascii(name_left()));
+		mathed_draw_deco(pi, x + dim.width() - 8, yy, 5, dim.height(), from_ascii(name_right()));
+	}
+	Changer dummy = pi.base.changeArray(small());
 	InsetMathGrid::draw(pi, x, y);
 }
 

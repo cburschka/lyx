@@ -36,6 +36,7 @@ static char const * const DecoChars[] = {
 	N_("{x}"),
 	N_("|x|"),
 	N_("||x||"),
+	N_("small"),
 	""
 };
 
@@ -45,6 +46,7 @@ static char const * const DecoNames[] = {
 	N_("Bmatrix"),
 	N_("vmatrix"),
 	N_("Vmatrix"),
+	N_("smallmatrix"),
 	""
 };
 

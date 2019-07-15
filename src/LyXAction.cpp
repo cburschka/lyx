@@ -2602,7 +2602,7 @@ void LyXAction::init()
  * \li Syntax: math-matrix <COLS> <ROWS> [<DECORATION>]
  * \li Params: <DECORATION>: Decoration determines the LaTeX name of the matrix
                              that should be created. Possible values include
-                             pmatrix, bmatrix, Bmatrix, vmatrix, Vmatrix and
+                             pmatrix, bmatrix, Bmatrix, vmatrix, Vmatrix, smallmatrix, and
                              matrix. The default is 'matrix'.
  * \li Sample: math-ams-matrix 3 3 bmatrix
  * \endvar

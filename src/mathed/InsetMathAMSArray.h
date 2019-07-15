@@ -23,7 +23,14 @@ public:
 	///
 	InsetMathAMSArray(Buffer * buf, docstring const &, int m, int n);
 	///
-	InsetMathAMSArray(Buffer * buf, docstring const &);
+	InsetMathAMSArray(Buffer * buf, docstring const &);	///
+
+	///
+	int rowsep() const;
+	///
+	int colsep() const;
+	///
+	int border() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -55,14 +62,16 @@ public:
 	///
 	char const * name_right() const;
 	///
-	int leftMargin() const { return 6; } //override
+	int leftMargin() const { return small() ? 3 : 6; } //override
 	///
-	int rightMargin() const { return 8; } //override
+	int rightMargin() const { return small() ? 3: 6; } //override
 	///
 	bool handlesMulticolumn() const { return true; } //override
 
 private:
 	virtual Inset * clone() const;
+	///
+	bool small() const { return name_ == "smallmatrix"; }
 	///
 	docstring name_;
 };

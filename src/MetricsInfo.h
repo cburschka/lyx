@@ -61,7 +61,8 @@ public:
 	// Temporarily change to the style suitable for use in fractions
 	Changer changeFrac();
 	// Temporarily change to the style suitable for use in arrays
-	Changer changeArray();
+	// or to style suitable for smallmatrix when \c small is true.
+	Changer changeArray(bool small = false);
 	// Temporarily change the style to (script)script style
 	Changer changeScript();
 	///

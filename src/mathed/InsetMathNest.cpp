@@ -1091,7 +1091,8 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// check if we have a valid decoration
 		if (name != "pmatrix" && name != "bmatrix"
 			&& name != "Bmatrix" && name != "vmatrix"
-			&& name != "Vmatrix" && name != "matrix")
+			&& name != "Vmatrix" && name != "matrix"
+			&& name != "smallmatrix")
 			name = from_ascii("matrix");
 
 		cur.niceInsert(
