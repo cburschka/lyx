@@ -2682,9 +2682,9 @@ def convert_osf(document):
             ttfont = re.findall(r'[^"\s]\S*|".+?"', document.header[x])
             tt = ttfont[1].strip('"')
             if tt in osftt:
-                document.header.insert(i + 1, "\\font_sans_osf true")
+                document.header.insert(i + 1, "\\font_typewriter_osf true")
             else:
-                document.header.insert(i + 1, "\\font_sans_osf false")
+                document.header.insert(i + 1, "\\font_typewriter_osf false")
 
     else:
         document.header.insert(i, "\\font_sans_osf false")
