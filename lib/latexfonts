@@ -378,22 +378,10 @@ Font newcent
 EndFont
 
 Font NotoSerifRegular
-	GuiName         "Noto Serif Regular"
+	GuiName         "Noto Serif (Regular)"
 	Family          rm
 	Package         noto-serif
 	PackageOption   regular
-	OsfDefault	0
-	OsfOption	osf
-	AltFonts	NotoSerifRegular1
-	MoreOptions      1
-EndFont
-
-AltFont NotoSerifRegular1
-	GuiName         "Noto Serif Regular"
-	Family          rm
-	Package         noto-serif
-	PackageOption   regular
-	OsfDefault	1
 	OsfOption	osf
 	MoreOptions      1
 EndFont
