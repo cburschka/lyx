@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 582
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -142,7 +142,7 @@ subequations
 \language english
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
 \font_typewriter "lmtt" "default"
@@ -150,7 +150,9 @@ subequations
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -199,6 +201,7 @@ subequations
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \notefontcolor #0000ff
 \index Index
 \shortcut idx
@@ -215,14 +218,16 @@ subequations
 \papercolumns 1
 \papersides 2
 \paperpagestyle plain
+\tablestyle default
 \bullet 1 0 6 -1
 \bullet 2 2 35 -1
 \bullet 3 2 7 -1
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author -563046850 "Jean-Marc LASGOUTTES"
 \end_header
 
 \begin_body
@@ -978,6 +983,7 @@ Available units
 \align center
 \begin_inset Float table
 placement H
+alignment document
 wide false
 sideways false
 status open
@@ -4799,12 +4805,61 @@ arg   "newline-insert newline"
 \end_inset
 
 The 
+\change_deleted -563046850 1563190969
+
 \family sans
 Decoration
+\change_inserted -563046850 1563190971
+Appearance
+\change_unchanged
+
 \family default
- adds parentheses in the selected style around the matrix.
- Alternatively, parentheses can can either be created with the commands
  
+\change_deleted -563046850 1563192602
+adds
+\change_inserted -563046850 1563192607
+can be used to add
+\change_unchanged
+ parentheses in the selected style around the matrix
+\change_inserted -563046850 1563192780
+ or to select the 
+\family sans
+small
+\family default
+ style, suitable for an inline matrix like this one 
+\begin_inset Formula $\bigl(\begin{smallmatrix}0 & \textrm{-}\mathrm{i}\\
+\mathrm{i} & 0
+\end{smallmatrix}\bigr)$
+\end_inset
+
+
+\change_unchanged
+.
+
+\change_inserted -563046850 1563192943
+ Here the parentheses have been added manually using commands 
+\series bold
+
+\backslash
+bigl(
+\series default
+ and 
+\series bold
+
+\backslash
+bigr).
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -563046850 1563192735
+ 
+\change_unchanged
+Alternatively, parentheses can can 
+\change_deleted -563046850 1563192971
+either 
+\change_unchanged
+be created with the commands 
 \series bold
 
 \backslash
