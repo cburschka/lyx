@@ -148,7 +148,7 @@ const char * const known_roman_font_packages[] = { "ae", "beraserif", "bookman",
 "tgpagella", "tgschola", "tgtermes", "utopia", "xcharter", 0 };
 
 const char * const known_sans_font_packages[] = { "avant", "berasans", "biolinum",
-"biolinum-type1", "cmbr", "cmss", "DejaVuSans", "DejaVuSansCondensed", "helvet", "iwona", "iwonac", "iwonal", "iwonalc",
+"biolinum-type1", "cantarell", "cmbr", "cmss", "DejaVuSans", "DejaVuSansCondensed", "helvet", "iwona", "iwonac", "iwonal", "iwonalc",
 "kurier", "kurierc", "kurierl", "kurierlc", "lmss", "noto", "noto-sans", "PTSans",
 "tgadventor", "tgheros", "uop", 0 };
 
@@ -1086,6 +1086,27 @@ void Preamble::handle_package(Parser &p, string const & name,
 		string::size_type pos = opts.find("osf");
 		if (pos != string::npos)
 			h_font_sans_osf = "true";
+	}
+
+	if (name == "cantarell") {
+		for (auto const & opt : allopts) {
+			if (opt == "defaultsans")
+				continue;
+			if (prefixIs(opt, "oldstyle")) {
+				h_font_sans_osf = "true";
+				continue;
+			}
+			if (prefixIs(opt, "scale=")) {
+				scale_as_percentage(opt, h_font_sf_scale[0]);
+				continue;
+			}
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_sans_opts = xopts;
+		options.clear();
 	}
 
 	if (name == "PTSans") {
