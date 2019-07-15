@@ -632,6 +632,11 @@ void InsetMathHull::drawBackground(PainterInfo & pi, int x, int y) const
 		    dim.wid, dim.asc + dim.des, backgroundColor(pi));
 		return;
 	}
+	// If there are numbers, the margins around the (displayed)
+	// equation have to be cleared.
+	if (numberedType())
+		pi.pain.fillRectangle(pi.leftx, y - dim.asc,
+				pi.rightx - pi.leftx, dim.height(), pi.background_color);
 	pi.pain.fillRectangle(x + 1, y - dim.asc + 1, dim.wid - 2,
 			dim.asc + dim.des - 1, pi.backgroundColor(this));
 }
@@ -664,18 +669,12 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	}
 
 	// First draw the numbers
-	if (!pi.full_repaint)
-		pi.pain.fillRectangle(pi.leftx, y - dim.asc,
-							  pi.rightx - pi.leftx, dim.height(),
-							  pi.background_color);
-
 	ColorCode color = pi.selected && lyxrc.use_system_colors
 				? Color_selectiontext : standardColor();
 	bool const really_change_color = pi.base.font.color() == Color_none;
 	Changer dummy0 = really_change_color ? pi.base.font.changeColor(color)
 		: Changer();
 	if (numberedType()) {
-		LATTEST(pi.leftx <pi.rightx);
 		BufferParams::MathNumber const math_number = buffer().params().getMathNumber();
 		for (row_type row = 0; row < nrows(); ++row) {
 			int yy = y + rowinfo(row).offset[bv];
