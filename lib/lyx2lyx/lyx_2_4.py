@@ -252,7 +252,7 @@ def convert_fonts(document, fm):
             words[0] = '"' + fn + '"'
             document.header[j] = ft + ' ' + ' '.join(words)
 
-def revert_fonts(document, fm, fontmap, OnlyWithXOpts = False):
+def revert_fonts(document, fm, fontmap, OnlyWithXOpts = False, WithXOpts = False):
     " Revert native font definition to LaTeX "
     # fonlist := list of fonts created from the same package
     # Empty package means that the font-name is the same as the package-name
@@ -280,7 +280,7 @@ def revert_fonts(document, fm, fontmap, OnlyWithXOpts = False):
         if not val in fontmap:
             fontmap[val] = []
         x = -1
-        if OnlyWithXOpts:
+        if OnlyWithXOpts or WithXOpts:
             if ft == "\\font_math":
                 return False
             regexp = re.compile(r'^\s*(\\font_roman_opts)\s+')
@@ -289,14 +289,15 @@ def revert_fonts(document, fm, fontmap, OnlyWithXOpts = False):
             elif ft == "\\font_typewriter":
                 regexp = re.compile(r'^\s*(\\font_typewriter_opts)\s+')
             x = find_re(document.header, regexp, 0)
-            if x == -1:
+            if x == -1 and OnlyWithXOpts:
                 return False
 
-            # We need to use this regex since split() does not handle quote protection
-            xopts = re.findall(r'[^"\s]\S*|".+?"', document.header[x])
-            opts = xopts[1].strip('"').split(",")
-            fontmap[val].extend(opts)
-            del document.header[x]
+            if x != -1:
+                # We need to use this regex since split() does not handle quote protection
+                xopts = re.findall(r'[^"\s]\S*|".+?"', document.header[x])
+                opts = xopts[1].strip('"').split(",")
+                fontmap[val].extend(opts)
+                del document.header[x]
         words[0] = '"default"'
         document.header[i] = ft + ' ' + ' '.join(words)
         if fontinfo.scaleopt != None:
@@ -310,6 +311,14 @@ def revert_fonts(document, fm, fontmap, OnlyWithXOpts = False):
                     fontmap[val].extend([fontinfo.scaleopt + "=" + format(float(xval1) / 100, '.2f')])
         if fontinfo.osfopt != None:
             osf = find_token(document.header, "\\font_osf true")
+            if osf == -1 and ft != "\\font_math":
+                # Try with newer format
+                osftag = "\\font_roman_osf true"
+                if ft == "\\font_sans":
+                    osftag = "\\font_sans_osf true"
+                elif ft == "\\font_typewriter":
+                    osftag = "\\font_typewriter_osf true"
+                osf = find_token(document.header, osftag)
             if osf != -1:
                 fontmap[val].extend([fontinfo.osfopt])
         if len(fontinfo.options) > 0:
@@ -384,22 +393,6 @@ def revert_AdobeFonts(document):
         fontmap = dict()
         fm = createFontMapping(['Adobe'])
         if revert_fonts(document, fm, fontmap):
-            add_preamble_fonts(document, fontmap)
-
-def convert_CantarellFont(document):
-    " Handle Cantarell font definition to LaTeX "
-
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
-        fm = createFontMapping(['Cantarell'])
-        convert_fonts(document, fm)
-
-def revert_CantarellFont(document):
-    " Revert native Cantarell font definition to LaTeX "
-
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
-        fontmap = dict()
-        fm = createFontMapping(['Cantarell'])
-        if revert_fonts(document, fm, fontmap, True):
             add_preamble_fonts(document, fontmap)
 
 def removeFrontMatterStyles(document):
@@ -2642,22 +2635,6 @@ def revert_AdobeFonts_xopts(document):
         add_preamble_fonts(document, fontmap)
 
 
-def revert_CantarellFont_xopts(document):
-    " Revert native (extended) Cantarell font definition (with extra options) to LaTeX "
-
-    i = find_token(document.header, '\\use_non_tex_fonts', 0)
-    if i == -1:
-        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
-        return
-    if str2bool(get_value(document.header, "\\use_non_tex_fonts", i)):
-        return
-
-    fontmap = dict()
-    fm = createFontMapping(['Cantarell'])
-    if revert_fonts(document, fm, fontmap, True):
-        add_preamble_fonts(document, fontmap)
-
-
 def convert_osf(document):
     " Convert \\font_osf param to new format "
 
@@ -2875,6 +2852,23 @@ def revert_texfontopts(document):
         del document.header[x]
 
 
+def convert_CantarellFont(document):
+    " Handle Cantarell font definition to LaTeX "
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        fm = createFontMapping(['Cantarell'])
+        convert_fonts(document, fm)
+
+def revert_CantarellFont(document):
+    " Revert native Cantarell font definition to LaTeX "
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        fontmap = dict()
+        fm = createFontMapping(['Cantarell'])
+        if revert_fonts(document, fm, fontmap, False, True):
+            add_preamble_fonts(document, fontmap)
+
+
 ##
 # Conversion hub
 #
@@ -2921,7 +2915,7 @@ convert = [
            [582, [convert_CantarellFont]],
           ]
 
-revert =  [[581, [revert_CantarellFont, revert_CantarellFont_xopts]],
+revert =  [[581, [revert_CantarellFont]],
            [580, [revert_texfontopts,revert_osf]],
            [579, [revert_minionpro, revert_plainNotoFonts_xopts, revert_notoFonts_xopts, revert_IBMFonts_xopts, revert_AdobeFonts_xopts, revert_font_opts]], # keep revert_font_opts last!
            [578, [revert_babelfont]],
