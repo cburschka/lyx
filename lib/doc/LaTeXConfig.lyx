@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 580
+\lyxformat 582
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,7 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -78,6 +80,7 @@
 \html_latex_start <span class='latex'>
 \html_latex_end </span>
 \author -1402925745 "Günter Milde"
+\author -1174727462 "Kornel Benko" Kornel.Benko@berlin.de
 \author -712698321 "Jürgen Spitzmüller"
 \end_header
 
@@ -403,6 +406,43 @@ Libertine
 Standard
 \emph default
  in order to get Biolinum.
+\change_inserted -1174727462 1563187171
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -1174727462 1563187183
+cantarell
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1174727462 1563187173
+Found: 
+\begin_inset Info
+type  "package"
+arg   "cantarell"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1174727462 1563187321
+CTAN: 
+\family sans
+fonts/cantarell
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1174727462 1563187337
+Notes: Cantarell is a contemporary humanist sans serif, and is used by the
+ GNOME project for its user interface.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
