@@ -475,12 +475,11 @@ void Preamble::add_package(string const & name, vector<string> & options)
 
 namespace {
 
-// Given is a string like "scaled=0.9" or "Scale=0.9", return 0.9 * 100
+// Given is a string like "scaled=0.9" or "scale=0.9", return 0.9 * 100
 bool scale_as_percentage(string const & scale, string & percentage)
 {
-	string::size_type pos = scale.find('=');
-	if (pos != string::npos) {
-		string value = scale.substr(pos + 1);
+	if (contains(scale, '=')) {
+		string const value = support::split(scale, '=');
 		if (isStrDbl(value)) {
 			percentage = convert<string>(
 				static_cast<int>(100 * convert<double>(value)));
@@ -745,12 +744,20 @@ void Preamble::handle_package(Parser &p, string const & name,
 			p.setEncoding("UTF-8");
 	}
 
+	// vector of all options for easier pasing and
+	// skipping
+	vector<string> allopts = getVectorFromString(opts);
+	// this stored the potential extra options
+	string xopts;
+
+	//
 	// roman fonts
+	//
+
+	// By default, we use the package name as LyX font name,
+	// so this only needs to be reset if these names differ
 	if (is_known(name, known_roman_font_packages))
 		h_font_roman[0] = name;
-
-	vector<string> allopts = getVectorFromString(opts);
-	string xopts;
 
 	if (name == "ccfonts") {
 		for (auto const & opt : allopts) {
@@ -776,7 +783,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	if (name == "fourier") {
 		h_font_roman[0] = "utopia";
-		// when font uses real small capitals
 		for (auto const & opt : allopts) {
 			if (opt == "osf") {
 				h_font_roman_osf = "true";
@@ -796,7 +802,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	if (name == "garamondx") {
-		h_font_roman[0] = "garamondx";
 		for (auto const & opt : allopts) {
 			if (opt == "osfI") {
 				h_font_roman_osf = "true";
@@ -812,7 +817,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	if (name == "libertine") {
-		h_font_roman[0] = "libertine";
 		// this automatically invokes biolinum
 		h_font_sans[0] = "biolinum";
 		// as well as libertineMono
@@ -869,15 +873,24 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	if (name == "mathdesign") {
-		if (opts.find("charter") != string::npos)
-			h_font_roman[0] = "md-charter";
-		if (opts.find("garamond") != string::npos)
-			h_font_roman[0] = "md-garamond";
-		if (opts.find("utopia") != string::npos)
-			h_font_roman[0] = "md-utopia";
-		if (opts.find("expert") != string::npos) {
-			h_font_sc = "true";
-			h_font_roman_osf = "true";
+		for (auto const & opt : allopts) {
+			if (opt == "charter") {
+				h_font_roman[0] = "md-charter";
+				continue;
+			}
+			if (opt == "garamond") {
+				h_font_roman[0] = "md-garamond";
+				continue;
+			}
+			if (opt == "utopia") {
+				h_font_roman[0] = "md-utopia";
+				continue;
+			}
+			if (opt == "expert") {
+				h_font_sc = "true";
+				h_font_roman_osf = "true";
+				continue;
+			}
 		}
 	}
 
@@ -917,14 +930,12 @@ void Preamble::handle_package(Parser &p, string const & name,
 		h_font_roman[0] = "cochineal";
 
 	if (name == "cochineal") {
-		h_font_roman[0] = "cochineal";
-		// cochineal can have several options, e.g. [proportional,osf]
 		for (auto const & opt : allopts) {
-			if (opt == "osf") {
+			if (opt == "osf" || opt == "oldstyle") {
 				h_font_roman_osf = "true";
 				continue;
 			}
-			if (opt == "proportional")
+			if (opt == "proportional" || opt == "p")
 				continue;
 			if (!xopts.empty())
 				xopts += ", ";
@@ -935,30 +946,28 @@ void Preamble::handle_package(Parser &p, string const & name,
 		options.clear();
 	}
 
+	if (name == "eco")
+		// font uses old-style figure
+		h_font_roman_osf = "true";
+
 	if (name == "noto") {
-		// noto can have several options
-		if (opts.empty())
-			h_font_roman[0] = "NotoSerif-TLF";
-		string::size_type pos = opts.find("rm");
-		if (pos != string::npos)
-			h_font_roman[0] = "NotoSerif-TLF";
-		pos = opts.find("sf");
-		if (pos != string::npos)
-			h_font_sans[0] = "NotoSans-TLF";
-		pos = opts.find("nott");
-		if (pos != string::npos) {
-			h_font_roman[0] = "NotoSerif-TLF";
-			h_font_sans[0] = "NotoSans-TLF";
-		}
+		h_font_roman[0] = "NotoSerif-TLF";
 		// noto as typewriter is handled in handling of \ttdefault
 		// special cases are handled in handling of \rmdefault and \sfdefault
 		for (auto const & opt : allopts) {
-			if (opt == "rm")
+			if (opt == "rm") {
+				h_font_roman[0] = "NotoSerif-TLF";
 				continue;
-			if (opt == "sf")
+			}
+			if (opt == "sf") {
+				h_font_sans[0] = "NotoSans-TLF";
 				continue;
-			if (opt == "nott")
+			}
+			if (opt == "nott") {
+				h_font_roman[0] = "NotoSerif-TLF";
+				h_font_sans[0] = "NotoSans-TLF";
 				continue;
+			}
 			if (opt == "osf") {
 				h_font_roman_osf = "true";
 				continue;
@@ -996,25 +1005,24 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	if (name == "plex-serif") {
-		if (opts.empty())
-			h_font_roman[0] = "IBMPlexSerif";
-		else if (opts.find("thin") != string::npos)
-			h_font_roman[0] = "IBMPlexSerifThin";
-		else if (opts.find("extralight") != string::npos)
-			h_font_roman[0] = "IBMPlexSerifExtraLight";
-		else if (opts.find("light") != string::npos)
-			h_font_roman[0] = "IBMPlexSerifLight";
-		else if (opts.find("semibold") != string::npos)
-			h_font_roman[0] = "IBMPlexSerifSemibold";
+		h_font_roman[0] = "IBMPlexSerif";
 		for (auto const & opt : allopts) {
-			if (opt == "thin")
+			if (opt == "thin") {
+				h_font_roman[0] = "IBMPlexSerifThin";
 				continue;
-			if (opt == "extralight")
+			}
+			if (opt == "extralight") {
+				h_font_roman[0] = "IBMPlexSerifExtraLight";
 				continue;
-			if (opt == "light")
+			}
+			if (opt == "light") {
+				h_font_roman[0] = "IBMPlexSerifLight";
 				continue;
-			if (opt == "semibold")
+			}
+			if (opt == "semibold") {
+				h_font_roman[0] = "IBMPlexSerifSemibold";
 				continue;
+			}
 			if (!xopts.empty())
 				xopts += ", ";
 			xopts += opt;
@@ -1023,29 +1031,29 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_font_roman_opts = xopts;
 		options.clear();
 	}
+
 	if (name == "noto-serif") {
 		h_font_roman[0] = "NotoSerifRegular";
-		if (!opts.empty()) {
-			if (opts.find("thin") != string::npos)
-				h_font_roman[0] = "NotoSerifThin";
-			else if (opts.find("medium") != string::npos)
-				h_font_roman[0] = "NotoSerifMedium";
-			else if (opts.find("extralight") != string::npos)
-				h_font_roman[0] = "NotoSerifExtralight";
-			else if (opts.find("light") != string::npos)
-				h_font_roman[0] = "NotoSerifLight";
-		}
 		for (auto const & opt : allopts) {
 			if (opt == "regular")
+				// skip
 				continue;
-			if (opt == "thin")
+			if (opt == "thin") {
+				h_font_roman[0] = "NotoSerifThin";
 				continue;
-			if (opt == "extralight")
+			}
+			if (opt == "extralight") {
+				h_font_roman[0] = "NotoSerifExtralight";
 				continue;
-			if (opt == "light")
+			}
+			if (opt == "light") {
+				h_font_roman[0] = "NotoSerifLight";
 				continue;
-			if (opt == "semibold")
+			}
+			if (opt == "medium") {
+				h_font_roman[0] = "NotoSerifMedium";
 				continue;
+			}
 			if (!xopts.empty())
 				xopts += ", ";
 			xopts += opt;
@@ -1071,21 +1079,43 @@ void Preamble::handle_package(Parser &p, string const & name,
 		options.clear();
 	}
 
+	//
 	// sansserif fonts
+	//
+
+	// By default, we use the package name as LyX font name,
+	// so this only needs to be reset if these names differ.
+	// Also, we handle the scaling option here generally.
 	if (is_known(name, known_sans_font_packages)) {
 		h_font_sans[0] = name;
-		if (options.size() >= 1) {
-			if (scale_as_percentage(opts, h_font_sf_scale[0]))
-				options.clear();
+		if (contains(opts, "scale")) {
+			vector<string>::const_iterator it = allopts.begin();
+			for (; it != allopts.end() ; ++it) {
+				string const opt = *it;
+				if (prefixIs(opt, "scaled=") || prefixIs(opt, "scale=")) {
+					if (scale_as_percentage(opt, h_font_sf_scale[0])) {
+						allopts.erase(it);
+						break;
+					}
+				}
+			}
 		}
 	}
 
 	if (name == "biolinum" || name == "biolinum-type1") {
 		h_font_sans[0] = "biolinum";
-		// biolinum can have several options, e.g. [osf,scaled=0.97]
-		string::size_type pos = opts.find("osf");
-		if (pos != string::npos)
-			h_font_sans_osf = "true";
+		for (auto const & opt : allopts) {
+			if (prefixIs(opt, "osf")) {
+				h_font_sans_osf = "true";
+				continue;
+			}
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_sans_opts = xopts;
+		options.clear();
 	}
 
 	if (name == "cantarell") {
@@ -1094,10 +1124,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 				continue;
 			if (prefixIs(opt, "oldstyle")) {
 				h_font_sans_osf = "true";
-				continue;
-			}
-			if (prefixIs(opt, "scale=")) {
-				scale_as_percentage(opt, h_font_sf_scale[0]);
 				continue;
 			}
 			if (!xopts.empty())
@@ -1111,14 +1137,9 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	if (name == "PTSans") {
 		h_font_sans[0] = "PTSans-TLF";
-		if (options.size() >= 1) {
-			if (scale_as_percentage(opts, h_font_sf_scale[0]))
-				options.clear();
-		}
 	}
 
 	if (name == "FiraSans") {
-		h_font_sans[0] = "FiraSans";
 		h_font_sans_osf = "true";
 		for (auto const & opt : allopts) {
 			if (opt == "book") {
@@ -1148,10 +1169,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 				h_font_sans_osf = "false";
 				continue;
 			}
-			if (prefixIs(opt, "scale=") || prefixIs(opt, "scaled=")) {
-				scale_as_percentage(opt, h_font_sf_scale[0]);
-				continue;
-			}
 			if (!xopts.empty())
 				xopts += ", ";
 			xopts += opt;
@@ -1162,29 +1179,26 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	if (name == "plex-sans") {
-		if (opts.find("condensed") != string::npos)
-			h_font_sans[0] = "IBMPlexSansCondensed";
-		else if (opts.find("thin") != string::npos)
-			h_font_sans[0] = "IBMPlexSansThin";
-		else if (opts.find("extralight") != string::npos)
-			h_font_sans[0] = "IBMPlexSansExtraLight";
-		else if (opts.find("light") != string::npos)
-			h_font_sans[0] = "IBMPlexSansLight";
-		else if (opts.find("semibold") != string::npos)
-			h_font_sans[0] = "IBMPlexSansSemibold";
-		else
-			h_font_sans[0] = "IBMPlexSans";
+		h_font_sans[0] = "IBMPlexSans";
 		for (auto const & opt : allopts) {
-			if (opt == "thin")
+			if (opt == "condensed") {
+				h_font_sans[0] = "IBMPlexSansCondensed";
 				continue;
-			if (opt == "extralight")
+			}
+			if (opt == "thin") {
+				h_font_sans[0] = "IBMPlexSansThin";
 				continue;
-			if (opt == "light")
+			}
+			if (opt == "extralight") {
+				h_font_sans[0] = "IBMPlexSansExtraLight";
 				continue;
-			if (opt == "semibold")
+			}
+			if (opt == "light") {
+				h_font_sans[0] = "IBMPlexSansLight";
 				continue;
-			if (prefixIs(opt, "scale=")) {
-				scale_as_percentage(opt, h_font_sf_scale[0]);
+			}
+			if (opt == "semibold") {
+				h_font_sans[0] = "IBMPlexSansSemibold";
 				continue;
 			}
 			if (!xopts.empty())
@@ -1198,27 +1212,25 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	if (name == "noto-sans") {
 		h_font_sans[0] = "NotoSansRegular";
-		if (!opts.empty()) {
-			if (opts.find("medium") != string::npos)
-				h_font_sans[0] = "NotoSansMedium";
-			else if (opts.find("thin") != string::npos)
-				h_font_sans[0] = "NotoSansThin";
-			else if (opts.find("extralight") != string::npos)
-				h_font_sans[0] = "NotoSansExtralight";
-			else if (opts.find("light") != string::npos)
-				h_font_sans[0] = "NotoSansLight";
-		}
 		for (auto const & opt : allopts) {
 			if (opt == "regular")
 				continue;
-			if (opt == "thin")
+			if (opt == "medium") {
+				h_font_sans[0] = "NotoSansMedium";
 				continue;
-			if (opt == "extralight")
+			}
+			if (opt == "thin") {
+				h_font_sans[0] = "NotoSansThin";
 				continue;
-			if (opt == "light")
+			}
+			if (opt == "extralight") {
+				h_font_sans[0] = "NotoSansExtralight";
 				continue;
-			if (opt == "semibold")
+			}
+			if (opt == "light") {
+				h_font_sans[0] = "NotoSansLight";
 				continue;
+			}
 			if (opt == "osf") {
 				h_font_sans_osf = "true";
 				continue;
@@ -1235,10 +1247,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 	if (name == "sourcesanspro") {
 		h_font_sans[0] = "ADOBESourceSansPro";
 		for (auto const & opt : allopts) {
-			if (prefixIs(opt, "scaled=")) {
-				scale_as_percentage(opt, h_font_sf_scale[0]);
-				continue;
-			}
 			if (opt == "osf") {
 				h_font_sans_osf = "true";
 				continue;
@@ -1252,15 +1260,27 @@ void Preamble::handle_package(Parser &p, string const & name,
 		options.clear();
 	}
 
+	//
 	// typewriter fonts
-	if (is_known(name, known_typewriter_font_packages)) {
-		// fourier can be set as roman font _only_
-		// fourier as typewriter is handled in handling of \ttdefault
-		if (name != "fourier") {
-			h_font_typewriter[0] = name;
-			if (options.size() >= 1) {
-				if (scale_as_percentage(opts, h_font_tt_scale[0]))
-					options.clear();
+	//
+
+	// By default, we use the package name as LyX font name,
+	// so this only needs to be reset if these names differ.
+	// Also, we handle the scaling option here generally.
+	// Note: fourier can be set as roman font _only_
+	// fourier as typewriter is handled in handling of \ttdefault
+	if (is_known(name, known_typewriter_font_packages) && name != "fourier") {
+		h_font_typewriter[0] = name;
+		if (contains(opts, "scale")) {
+			vector<string>::const_iterator it = allopts.begin();
+			for (; it != allopts.end() ; ++it) {
+				string const opt = *it;
+				if (prefixIs(opt, "scaled=") || prefixIs(opt, "scale=")) {
+					if (scale_as_percentage(opt, h_font_tt_scale[0])) {
+						allopts.erase(it);
+						break;
+					}
+				}
 			}
 		}
 	}
@@ -1273,10 +1293,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 		for (auto const & opt : allopts) {
 			if (opt == "lf" || opt == "lining") {
 				h_font_typewriter_osf = "false";
-				continue;
-			}
-			if (prefixIs(opt, "scale=") || prefixIs(opt, "scaled=")) {
-				scale_as_percentage(opt, h_font_tt_scale[0]);
 				continue;
 			}
 			if (!xopts.empty())
@@ -1297,27 +1313,22 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	if (name == "plex-mono") {
-		if (opts.find("thin") != string::npos)
-			h_font_typewriter[0] = "IBMPlexMonoThin";
-		else if (opts.find("extralight") != string::npos)
-			h_font_typewriter[0] = "IBMPlexMonoExtraLight";
-		else if (opts.find("light") != string::npos)
-			h_font_typewriter[0] = "IBMPlexMonoLight";
-		else if (opts.find("semibold") != string::npos)
-			h_font_typewriter[0] = "IBMPlexMonoSemibold";
-		else
-			h_font_typewriter[0] = "IBMPlexMono";
+		h_font_typewriter[0] = "IBMPlexMono";
 		for (auto const & opt : allopts) {
-			if (opt == "thin")
+			if (opt == "thin") {
+				h_font_typewriter[0] = "IBMPlexMonoThin";
 				continue;
-			if (opt == "extralight")
+			}
+			if (opt == "extralight") {
+				h_font_typewriter[0] = "IBMPlexMonoExtraLight";
 				continue;
-			if (opt == "light")
+			}
+			if (opt == "light") {
+				h_font_typewriter[0] = "IBMPlexMonoLight";
 				continue;
-			if (opt == "semibold")
-				continue;
-			if (prefixIs(opt, "scale=")) {
-				scale_as_percentage(opt, h_font_tt_scale[0]);
+			}
+			if (opt == "semibold"){
+				h_font_typewriter[0] = "IBMPlexMonoSemibold";
 				continue;
 			}
 			if (!xopts.empty())
@@ -1346,10 +1357,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 	if (name == "sourcecodepro") {
 		h_font_typewriter[0] = "ADOBESourceCodePro";
 		for (auto const & opt : allopts) {
-			if (prefixIs(opt, "scaled=")) {
-				scale_as_percentage(opt, h_font_tt_scale[0]);
-				continue;
-			}
 			if (opt == "osf") {
 				h_font_typewriter_osf = "true";
 				continue;
@@ -1363,11 +1370,12 @@ void Preamble::handle_package(Parser &p, string const & name,
 		options.clear();
 	}
 
-	// font uses old-style figure
-	if (name == "eco")
-		h_font_roman_osf = "true";
-
+	//
 	// math fonts
+	//
+
+	// By default, we use the package name as LyX font name,
+	// so this only needs to be reset if these names differ.
 	if (is_known(name, known_math_font_packages))
 		h_font_math[0] = name;
 
