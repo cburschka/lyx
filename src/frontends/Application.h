@@ -240,6 +240,8 @@ public:
 	/// \return the math icon name for the given command.
 	static docstring mathIcon(docstring const & c);
 
+	/// The language associated to current keyboard
+	virtual std::string inputLanguageCode() const = 0;
 	/// Handle a accented char key sequence
 	/// FIXME: this is only needed for LFUN_ACCENT_* in Text::dispatch()
 	virtual void handleKeyFunc(FuncCode action) = 0;

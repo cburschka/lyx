@@ -77,6 +77,7 @@ public:
 	void unregisterSocketCallback(int fd) override;
 	bool searchMenu(FuncRequest const & func, docstring_list & names) const override;
 	bool hasBufferView() const override;
+	std::string inputLanguageCode() const override;
 	void handleKeyFunc(FuncCode action) override;
 	bool unhide(Buffer * buf) override;
 	//@}
@@ -213,6 +214,8 @@ private Q_SLOTS:
 	void handleRegularEvents();
 	///
 	void onLastWindowClosed();
+	///
+	void onLocaleChanged();
 	///
 	void slotProcessFuncRequestQueue() { processFuncRequestQueue(); }
 

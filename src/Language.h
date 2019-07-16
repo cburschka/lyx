@@ -21,6 +21,7 @@
 #include "support/trivstring.h"
 
 #include <map>
+#include <set>
 #include <vector>
 
 
@@ -167,6 +168,9 @@ public:
 	void read(support::FileName const & filename);
 	///
 	Language const * getFromCode(std::string const & code) const;
+	///
+	Language const * getFromCode(std::string const & code,
+			std::set<Language const *> const & tryfirst) const;
 	///
 	void readLayoutTranslations(support::FileName const & filename);
 	///

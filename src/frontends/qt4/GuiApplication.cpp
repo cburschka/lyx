@@ -1089,6 +1089,12 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	if (lyxrc.typewriter_font_name.empty())
 		lyxrc.typewriter_font_name = fromqstr(typewriterFontName());
 
+#if (QT_VERSION >= 0x050000)
+	// Qt4 does this in event(), see below.
+	// Track change of keyboard
+	connect(inputMethod(), SIGNAL(localeChanged()), this, SLOT(onLocaleChanged()));
+#endif
+
 	d->general_timer_.setInterval(500);
 	connect(&d->general_timer_, SIGNAL(timeout()),
 		this, SLOT(handleRegularEvents()));
@@ -2115,6 +2121,26 @@ docstring GuiApplication::viewStatusMessage()
 }
 
 
+string GuiApplication::inputLanguageCode() const
+{
+#if (QT_VERSION < 0x050000)
+	QLocale loc = keyboardInputLocale();
+#else
+	QLocale loc = inputMethod()->locale();
+#endif
+	//LYXERR0("input lang = " << fromqstr(loc.name()));
+	return fromqstr(loc.name());
+}
+
+
+void GuiApplication::onLocaleChanged()
+{
+	//LYXERR0("Change language to " << inputLanguage()->lang());
+	if (currentView() && currentView()->currentBufferView())
+		currentView()->currentBufferView()->setCursorLanguage(inputLanguageCode());
+}
+
+
 void GuiApplication::handleKeyFunc(FuncCode action)
 {
 	char_type c = 0;
@@ -2718,6 +2744,15 @@ bool GuiApplication::event(QEvent * e)
 		e->accept();
 		return true;
 	}
+#if (QT_VERSION < 0x050000)
+	// Qt5 uses a signal for that, see above.
+	case QEvent::KeyboardLayoutChange:
+		//LYXERR0("keyboard change");
+		if (currentView() && currentView()->currentBufferView())
+			currentView()->currentBufferView()->setCursorLanguage(inputLanguageCode());
+		e->accept();
+		return true;
+#endif
 	default:
 		return QApplication::event(e);
 	}

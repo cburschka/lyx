@@ -267,6 +267,12 @@ public:
 	/// sets cursor.
 	/// This is used when handling LFUN_MOUSE_PRESS.
 	bool mouseSetCursor(Cursor & cur, bool select = false);
+	/// Set the cursor language from language code.
+	/* Considers first exact math with the codes used in the document,
+	 * then approximate match among the same list, and finally exact
+	 * or partial match with the whole list of languages.
+	 */
+	void setCursorLanguage(std::string const & code);
 
 	/// sets the selection.
 	/* When \c backwards == false, set anchor

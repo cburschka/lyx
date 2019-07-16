@@ -83,6 +83,7 @@
 #include "graphics/GraphicsCache.h"
 #include "graphics/PreviewLoader.h"
 
+#include "frontends/Application.h"
 #include "frontends/alert.h"
 #include "frontends/Delegates.h"
 #include "frontends/WorkAreaManager.h"
@@ -465,6 +466,9 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	if (!cloned_buffer_) {
 		temppath = createBufferTmpDir();
 		lyxvc.setBuffer(owner_);
+		Language const * inplang = languages.getFromCode(theApp()->inputLanguageCode());
+		if (inplang)
+			params.language = inplang;
 		if (use_gui)
 			wa_ = new frontend::WorkAreaManager;
 		return;

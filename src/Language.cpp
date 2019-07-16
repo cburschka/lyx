@@ -367,6 +367,7 @@ bool readTranslations(Lexer & lex, Language::TranslationMap & trans)
 enum Match {
 	NoMatch,
 	ApproximateMatch,
+	VeryApproximateMatch,
 	ExactMatch
 };
 
@@ -389,6 +390,8 @@ Match match(string const & code, Language const & lang)
 	if ((code.size() == 2) && (langcode.size() > 2)
 		&& (code + '_' == langcode.substr(0, 3)))
 		return ApproximateMatch;
+ 	if (code.substr(0,2) == langcode.substr(0,2))
+		return VeryApproximateMatch;
 	return NoMatch;
 }
 
@@ -398,17 +401,41 @@ Match match(string const & code, Language const & lang)
 
 Language const * Languages::getFromCode(string const & code) const
 {
-	// Try for exact match first
+	// 1/ exact match with any known language
 	for (auto const & l : languagelist_) {
 		if (match(code, l.second) == ExactMatch)
 			return &l.second;
 	}
-	// If not found, look for lang prefix (without country) instead
+
+	// 2/ approximate with any known language
 	for (auto const & l : languagelist_) {
 		if (match(code, l.second) == ApproximateMatch)
 			return &l.second;
 	}
-	LYXERR0("Unknown language `" + code + "'");
+	return 0;
+}
+
+
+Language const * Languages::getFromCode(string const & code,
+			set<Language const *> const & tryfirst) const
+{
+	// 1/ exact match with tryfirst list
+	for (auto const * lptr : tryfirst) {
+		if (match(code, *lptr) == ExactMatch)
+			return lptr;
+	}
+
+	// 2/ approximate match with tryfirst list
+	for (auto const * lptr : tryfirst) {
+		Match const m = match(code, *lptr);
+		if (m == ApproximateMatch || m == VeryApproximateMatch)
+			return lptr;
+	}
+
+	// 3/ stricter match in all languages
+	return getFromCode(code);
+
+	LYXERR0("Unknown language `" << code << "'");
 	return 0;
 }
 
