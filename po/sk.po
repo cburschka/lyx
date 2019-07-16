@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-06-10 15:11-0400\n"
-"PO-Revision-Date: 2019-05-21 05:14+0000\n"
+"POT-Creation-Date: 2019-07-13 10:07+0200\n"
+"PO-Revision-Date: 2019-07-16 22:36+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1820,15 +1820,15 @@ msgstr "Použiť reálne kapitálky v prípade, že sú fontom poskytované"
 
 #: src/frontends/qt4/ui/FontUi.ui:273
 msgid "Use true s&mall caps"
-msgstr "Použiť pravé malé &kapitálky"
+msgstr "&Použiť pravé malé kapitálky"
 
 #: src/frontends/qt4/ui/FontUi.ui:280
 msgid "Use old style instead of lining figures"
-msgstr "Použiť číslice minuskové, nie verzálové"
+msgstr "Použiť číslice minuskové, nie verzálové (old style figures)"
 
 #: src/frontends/qt4/ui/FontUi.ui:283
 msgid "Use &old style figures"
-msgstr "Použiť min&uskové číslice (old style figures)"
+msgstr "Použiť min&uskové číslice"
 
 #: src/frontends/qt4/ui/FontUi.ui:290
 msgid ""
@@ -3099,11 +3099,11 @@ msgstr "Automat&icky vyplniť hlavičku"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:176
 msgid "Enable fullscreen PDF presentation"
-msgstr "Povoliť celoobrazovkovú prezentáciu PDF súboru"
+msgstr "Povoliť celo-obrazovkovú prezentáciu PDF súboru"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:179
 msgid "Load in &fullscreen mode"
-msgstr "Nahrať v &celoobrazovkovom režime"
+msgstr "Nahrať v &celo-obrazovkovom režime"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:189
 msgid "H&yperlinks"
@@ -3737,7 +3737,7 @@ msgstr "Editácia mat. makrov s prehľadom parametrov (ako v LyXe < 1.6)"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:156
 msgid "Fullscreen"
-msgstr "Celoobrazovkový mód"
+msgstr "Celo-obrazovkový mód"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:174
 msgid "&Hide toolbars"
@@ -6539,7 +6539,7 @@ msgstr "IEEE Transakcie Magnetizmu"
 
 #: lib/layouts/IEEEtran.layout:3
 msgid "IEEE Transactions"
-msgstr "IEEE Transackcie"
+msgstr "IEEE Transakcie"
 
 #: lib/layouts/IEEEtran.layout:35 lib/layouts/aa.layout:36
 #: lib/layouts/aapaper.layout:35 lib/layouts/aastex.layout:61
@@ -10462,11 +10462,11 @@ msgstr "Naše číslo:"
 
 #: lib/layouts/dinbrief.layout:114
 msgid "Writer"
-msgstr "Referenta"
+msgstr "Pisár"
 
 #: lib/layouts/dinbrief.layout:116
 msgid "Writer:"
-msgstr "Referent:"
+msgstr "Pisár:"
 
 #: lib/layouts/dinbrief.layout:120 lib/layouts/frletter.layout:41
 #: lib/layouts/g-brief.layout:60 lib/layouts/g-brief2.layout:954
@@ -13132,7 +13132,7 @@ msgstr "P.S.:"
 
 #: lib/layouts/lilypond.module:2
 msgid "LilyPond Book"
-msgstr "LilyPond Kniha"
+msgstr "LilyPond kniha"
 
 #: lib/layouts/lilypond.module:6
 msgid ""
@@ -13203,7 +13203,7 @@ msgstr "Číslované príklady (postupne)"
 
 #: lib/layouts/linguistics.module:77
 msgid "Custom Numbering|s"
-msgstr "Vlastné číslovanie|V"
+msgstr "Vlastné číslovanie|é"
 
 #: lib/layouts/linguistics.module:78
 msgid "Customize the numeration"
@@ -17439,7 +17439,7 @@ msgstr "Avant Garde"
 
 #: lib/latexfonts:461
 msgid "Bera Sans"
-msgstr "Bera Sans"
+msgstr "Bera bezserifové"
 
 #: lib/latexfonts:469 lib/latexfonts:478 lib/latexfonts:487
 msgid "Biolinum"
@@ -17451,7 +17451,7 @@ msgstr "CM Bright"
 
 #: lib/latexfonts:502
 msgid "Computer Modern Sans"
-msgstr "Computer Modern Sans"
+msgstr "Computer Modern bezserifové"
 
 #: lib/latexfonts:508
 msgid "Helvetica"
@@ -17491,7 +17491,7 @@ msgstr "Kurier (Svetlé zhustené)"
 
 #: lib/latexfonts:572
 msgid "Latin Modern Sans"
-msgstr "Latin Modern Sans"
+msgstr "Latin Modern bezserifové"
 
 #: lib/latexfonts:579
 msgid "Noto Sans"
@@ -17596,43 +17596,43 @@ msgstr "Arménsky (ArmSCII8)"
 
 #: lib/encodings:62
 msgid "Western European (ISO 8859-1)"
-msgstr "Západoeurópske j. (ISO 8859-1)"
+msgstr "Západoeurópske (ISO 8859-1)"
 
 #: lib/encodings:65
 msgid "Central European (ISO 8859-2)"
-msgstr "Stredoeurópske j. (ISO 8859-2)"
+msgstr "Stredoeurópske (ISO 8859-2)"
 
 #: lib/encodings:68
 msgid "South European (ISO 8859-3)"
-msgstr "Juhoeurópske j. (ISO 8859-3)"
+msgstr "Juhoeurópske (ISO 8859-3)"
 
 #: lib/encodings:71
 msgid "Baltic (ISO 8859-4)"
-msgstr "Baltik (ISO 8859-4)"
+msgstr "Baltické (ISO 8859-4)"
 
 #: lib/encodings:75
 msgid "Cyrillic (ISO 8859-5)"
-msgstr "Cyrilika (ISO 8859-5)"
+msgstr "Cyrilské (ISO 8859-5)"
 
 #: lib/encodings:79
 msgid "Arabic (ISO 8859-6)"
-msgstr "Arabsky (ISO 8859-6)"
+msgstr "Arabské (ISO 8859-6)"
 
 #: lib/encodings:83
 msgid "Greek (ISO 8859-7)"
-msgstr "Grécky (ISO 8859-7)"
+msgstr "Grécke (ISO 8859-7)"
 
 #: lib/encodings:86
 msgid "Hebrew (ISO 8859-8)"
-msgstr "Hebrejsky (ISO 8859-8)"
+msgstr "Hebrejské (ISO 8859-8)"
 
 #: lib/encodings:89
 msgid "Turkish (ISO 8859-9)"
-msgstr "Turecky (ISO 8859-9)"
+msgstr "Turecké (ISO 8859-9)"
 
 #: lib/encodings:92
 msgid "Baltic (ISO 8859-13)"
-msgstr "Baltik (ISO 8859-13)"
+msgstr "Baltické (ISO 8859-13)"
 
 #: lib/encodings:95
 msgid "Western European (ISO 8859-15)"
@@ -17664,7 +17664,7 @@ msgstr "Stredoeurópske (CP 852)"
 
 #: lib/encodings:118
 msgid "Cyrillic (CP 855)"
-msgstr "Cyrilika (CP 855)"
+msgstr "Cyrilské (CP 855)"
 
 #: lib/encodings:123
 msgid "Western European (CP 858)"
@@ -17672,15 +17672,15 @@ msgstr "Západoeurópske (CP 858)"
 
 #: lib/encodings:126
 msgid "Hebrew (CP 862)"
-msgstr "Hebrejsky (CP 862)"
+msgstr "Hebrejské (CP 862)"
 
 #: lib/encodings:129
 msgid "Nordic languages (CP 865)"
-msgstr "Severské jazyky (CP 865)"
+msgstr "Severských jazykov (CP 865)"
 
 #: lib/encodings:133
 msgid "Cyrillic (CP 866)"
-msgstr "Cyrilika (CP 866)"
+msgstr "Cyrilské (CP 866)"
 
 #: lib/encodings:136
 msgid "Central European (CP 1250)"
@@ -17688,7 +17688,7 @@ msgstr "Stredoeurópske (CP 1250)"
 
 #: lib/encodings:140
 msgid "Cyrillic (CP 1251)"
-msgstr "Cyrilika (CP 1251)"
+msgstr "Cyrilské (CP 1251)"
 
 #: lib/encodings:144
 msgid "Western European (CP 1252)"
@@ -17696,51 +17696,51 @@ msgstr "Západoeurópske (CP 1252)"
 
 #: lib/encodings:147
 msgid "Hebrew (CP 1255)"
-msgstr "Hebrejsky (CP 1255)"
+msgstr "Hebrejské (CP 1255)"
 
 #: lib/encodings:151
 msgid "Arabic (CP 1256)"
-msgstr "Arabsky (CP 1256)"
+msgstr "Arabské (CP 1256)"
 
 #: lib/encodings:154
 msgid "Baltic (CP 1257)"
-msgstr "Baltik (CP 1257)"
+msgstr "Baltické (CP 1257)"
 
 #: lib/encodings:158
 msgid "Cyrillic (KOI8-R)"
-msgstr "Cyrilika (KOI8-R)"
+msgstr "Cyrilské (KOI8-R)"
 
 #: lib/encodings:162
 msgid "Cyrillic (KOI8-U)"
-msgstr "Cyrilika (KOI8-U)"
+msgstr "Cyrilské (KOI8-U)"
 
 #: lib/encodings:166
 msgid "Cyrillic (pt 154)"
-msgstr "Cyrilika (pt 154)"
+msgstr "Cyrilské (pt 154)"
 
 #: lib/encodings:177
 msgid "Chinese (traditional) (Big5)"
-msgstr "Čínsky (tradičná) (Big5)"
+msgstr "Čínske (tradičné) (Big5)"
 
 #: lib/encodings:187
 msgid "Japanese (CJK) (SJIS)"
-msgstr "Japonsky (CJK) (SJIS)"
+msgstr "Japonské (CJK) (SJIS)"
 
 #: lib/encodings:194
 msgid "Chinese (simplified) (EUC-CN)"
-msgstr "Čínsky (zjednodušená) (EUC-CN)"
+msgstr "Čínske (zjednodušené) (EUC-CN)"
 
 #: lib/encodings:198
 msgid "Chinese (simplified) (GBK)"
-msgstr "Čínsky (zjednodušená) (GBK)"
+msgstr "Čínske (zjednodušené) (GBK)"
 
 #: lib/encodings:202
 msgid "Japanese (CJK) (JIS)"
-msgstr "Japonsky (CJK) (JIS)"
+msgstr "Japonské (CJK) (JIS)"
 
 #: lib/encodings:206
 msgid "Korean (EUC-KR)"
-msgstr "Kórejsky (EUC-KR)"
+msgstr "Kórejské (EUC-KR)"
 
 #: lib/encodings:210
 msgid "Unicode (CJK) (utf8)"
@@ -17748,23 +17748,23 @@ msgstr "Unicode (CJK) (utf8)"
 
 #: lib/encodings:214
 msgid "Chinese (traditional) (EUC-TW)"
-msgstr "Čínsky (tradičná) (EUC-TW)"
+msgstr "Čínské (tradičné) (EUC-TW)"
 
 #: lib/encodings:218
 msgid "Japanese (CJK) (EUC-JP)"
-msgstr "Japonsky (non-CJK) (EUC-JP)"
+msgstr "Japonské (CJK) (EUC-JP)"
 
 #: lib/encodings:225
 msgid "Japanese (pLaTeX) (EUC-JP)"
-msgstr "Japonsky (pLaTeX) (EUC-JP)"
+msgstr "Japonské (pLaTeX) (EUC-JP)"
 
 #: lib/encodings:227
 msgid "Japanese (pLaTeX) (JIS)"
-msgstr "Japonsky (pLaTeX) (JIS)"
+msgstr "Japonské (pLaTeX) (JIS)"
 
 #: lib/encodings:229
 msgid "Japanese (pLaTeX) (SJIS)"
-msgstr "Japonsky (pLaTeX) (SJIS)"
+msgstr "Japonské (pLaTeX) (SJIS)"
 
 #: lib/encodings:231
 msgid "Japanese (pLaTeX) (UTF8)"
@@ -17772,7 +17772,7 @@ msgstr "Japonsky (pLaTeX) (UTF8)"
 
 #: lib/encodings:238
 msgid "Thai (TIS 620-0)"
-msgstr "Thajsky (TIS 620-0)"
+msgstr "Thajské (TIS 620-0)"
 
 #: lib/encodings:243
 msgid "Unicode (XeTeX) (utf8)"
@@ -17877,6 +17877,10 @@ msgstr "Rozdeliť bunku|d"
 #: lib/ui/stdcontext.inc:63
 msgid "Insert|s"
 msgstr "Vložiť|V"
+
+#: lib/ui/stdcontext.inc:65
+msgid "Rows & Columns| "
+msgstr "Riadky & stĺpce| "
 
 #: lib/ui/stdcontext.inc:65
 msgid "Add Line Above|o"
@@ -18006,14 +18010,14 @@ msgstr "Externe upraviť databázu(y)…|x"
 msgid "Open Inset|O"
 msgstr "Otvoriť vložku|i"
 
-#: lib/ui/stdcontext.inc:150
+#: lib/ui/stdcontext.inc:152
 msgid "Close Inset|C"
-msgstr "Zavrieť vložku|Z"
+msgstr "Zavrieť vložku|ť"
 
-#: lib/ui/stdcontext.inc:152 lib/ui/stdcontext.inc:158
-#: lib/ui/stdcontext.inc:174 lib/ui/stdcontext.inc:635
+#: lib/ui/stdcontext.inc:154 lib/ui/stdcontext.inc:160
+#: lib/ui/stdcontext.inc:176 lib/ui/stdcontext.inc:637
 msgid "Dissolve Inset|D"
-msgstr "Rozpustiť vložku|k"
+msgstr "Rozpustiť vložku|ž"
 
 #: lib/ui/stdcontext.inc:157 lib/ui/stdcontext.inc:173
 msgid "Show Label|L"
@@ -18079,9 +18083,9 @@ msgstr "Fantóm|F"
 msgid "Horizontal Phantom|H"
 msgstr "Horizontálny fantóm|H"
 
-#: lib/ui/stdcontext.inc:223 lib/ui/stdmenus.inc:526
+#: lib/ui/stdcontext.inc:225 lib/ui/stdmenus.inc:526
 msgid "Vertical Phantom|V"
-msgstr "Vertikálny fantóm|á"
+msgstr "Vertikálny fantóm|ó"
 
 #: lib/ui/stdcontext.inc:238 lib/ui/stdmenus.inc:432
 msgid "Interword Space|w"
@@ -18332,13 +18336,13 @@ msgstr "Štýl Textu|T"
 msgid "Paragraph Settings...|P"
 msgstr "Nastavenia odstavca…|o"
 
-#: lib/ui/stdcontext.inc:365
+#: lib/ui/stdcontext.inc:367
 msgid "Unify Graphics Groups|U"
-msgstr "Zjednotiť skupinu obrázkov|b"
+msgstr "Zjednotiť skupinu obrázkov|á"
 
 #: lib/ui/stdcontext.inc:368
 msgid "Fullscreen Mode"
-msgstr "Celoobrazovkový mód"
+msgstr "Celo-obrazovkový mód"
 
 #: lib/ui/stdcontext.inc:369
 msgid "Close Current View"
@@ -18497,9 +18501,9 @@ msgstr "Viac-stranná tabuľka|V"
 msgid "Formal Style|m"
 msgstr "Formálny štýl|F"
 
-#: lib/ui/stdcontext.inc:469
+#: lib/ui/stdcontext.inc:471
 msgid "Borders|d"
-msgstr "Okraje|j"
+msgstr "Okraje|k"
 
 #: lib/ui/stdcontext.inc:470
 msgid "Alignment|i"
@@ -18609,9 +18613,9 @@ msgstr "Presunúť sekciu nadol|P"
 msgid "Select Section|S"
 msgstr "Vybrať sekciu|V"
 
-#: lib/ui/stdcontext.inc:666
+#: lib/ui/stdcontext.inc:668
 msgid "Wrap by Preview|y"
-msgstr "Obtekať pri náhľade|b"
+msgstr "Obtekať pri náhľade|ľ"
 
 #: lib/ui/stdcontext.inc:669
 msgid "End Editing Externally...|e"
@@ -24685,11 +24689,11 @@ msgstr "NoWeb|N"
 
 #: lib/configure.py:674
 msgid "Sweave (Japanese)"
-msgstr "Sweave (japonský)"
+msgstr "Sweave (Japonský)"
 
 #: lib/configure.py:674
 msgid "Sweave (Japanese)|S"
-msgstr "Sweave (japonský)|e"
+msgstr "Sweave (Japonský)|e"
 
 #: lib/configure.py:675
 msgid "R/S code"
@@ -31709,8 +31713,8 @@ msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
-"Všetky zmeny sa stratia. Naozaj sa chcete vrátiť k pôvodnej verzii dokumentu "
-"%1$s ?"
+"Všetky zmeny sa stratia. Naozaj sa chcete vrátiť ku pôvodnej verzii "
+"dokumentu %1$s ?"
 
 #: src/frontends/qt4/GuiView.cpp:3954
 msgid "Revert to saved document?"
@@ -31835,7 +31839,7 @@ msgstr "Viacej pravopisných návrhov"
 
 #: src/frontends/qt4/Menus.cpp:858
 msgid "Add to personal dictionary|n"
-msgstr "Pridať do osobného slovníka|P"
+msgstr "Pridať do osobného slovníka|b"
 
 #: src/frontends/qt4/Menus.cpp:860
 msgid "Ignore all|I"
@@ -31851,7 +31855,7 @@ msgstr "Jazyk|J"
 
 #: src/frontends/qt4/Menus.cpp:911
 msgid "More Languages ...|M"
-msgstr "Viac jazykov …|V"
+msgstr "Viac jazykov …|z"
 
 #: src/frontends/qt4/Menus.cpp:981 src/frontends/qt4/Menus.cpp:982
 msgid "Hidden|H"
