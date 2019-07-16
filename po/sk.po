@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-07-15 13:09+0200\n"
-"PO-Revision-Date: 2019-07-15 11:14+0000\n"
+"POT-Creation-Date: 2019-07-16 13:21+0200\n"
+"PO-Revision-Date: 2019-07-16 12:07+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2856,6 +2856,10 @@ msgstr "Horizontálne zarovnanie v stĺpcoch (l,c,r)"
 #: src/frontends/qt4/ui/MathMatrixUi.ui:215
 msgid "Hori&zontal:"
 msgstr "&Horizontálne:"
+
+#: src/frontends/qt4/ui/MathMatrixUi.ui:231
+msgid "Appearance"
+msgstr "Vzhľad"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:234
 msgid "&Type:"
@@ -6627,7 +6631,7 @@ msgstr "IEEE Transakcie Magnetizmu"
 
 #: lib/layouts/IEEEtran.layout:3
 msgid "IEEE Transactions"
-msgstr "IEEE Transackcie"
+msgstr "IEEE Transakcie"
 
 #: lib/layouts/IEEEtran.layout:35 lib/layouts/aa.layout:36
 #: lib/layouts/aapaper.layout:35 lib/layouts/aastex.layout:61
@@ -18312,9 +18316,9 @@ msgstr "Bitstream Charter (XCharter)"
 msgid "Avant Garde"
 msgstr "Avant Garde"
 
-#: lib/latexfonts:496
+#: lib/latexfonts:609
 msgid "Bera Sans"
-msgstr "Bera Sans"
+msgstr "Bera bezserifové"
 
 #: lib/latexfonts:504 lib/latexfonts:513 lib/latexfonts:522
 msgid "Biolinum"
@@ -18328,9 +18332,9 @@ msgstr "Cantarell"
 msgid "CM Bright"
 msgstr "CM Bright"
 
-#: lib/latexfonts:537
+#: lib/latexfonts:664
 msgid "Computer Modern Sans"
-msgstr "Computer Modern Sans"
+msgstr "Computer Modern bezserifové"
 
 #: lib/latexfonts:544
 msgid "DejaVu Sans"
@@ -18339,6 +18343,30 @@ msgstr "DejaVu bezserifové"
 #: lib/latexfonts:551
 msgid "DejaVu Sans Condensed"
 msgstr "DejaVu bezserifové zhustené"
+
+#: lib/latexfonts:685
+msgid "Fira Sans"
+msgstr "Fira bezserifové"
+
+#: lib/latexfonts:696
+msgid "Fira Sans (Book)"
+msgstr "Fira bezserifové (kniha)"
+
+#: lib/latexfonts:708
+msgid "Fira Sans (Light)"
+msgstr "Fira bezserifové (svetlé)"
+
+#: lib/latexfonts:720
+msgid "Fira Sans (Extralight)"
+msgstr "Fira bezserifové (extra svetlé)"
+
+#: lib/latexfonts:732
+msgid "Fira Sans (Ultralight)"
+msgstr "Fira bezserifové (ultra svetlé)"
+
+#: lib/latexfonts:744
+msgid "Fira Sans (Thin)"
+msgstr "Fira bezserifové (tenké)"
 
 #: lib/latexfonts:592
 msgid "IBM Plex Sans"
@@ -18404,9 +18432,9 @@ msgstr "Kurier (Zhustené)"
 msgid "Kurier (Light Condensed)"
 msgstr "Kurier (Svetlé zhustené)"
 
-#: lib/latexfonts:622
+#: lib/latexfonts:882
 msgid "Latin Modern Sans"
-msgstr "Latin Modern Sans"
+msgstr "Latin Modern bezserifové"
 
 #: lib/latexfonts:818
 msgid "Noto Sans (Regular)"
@@ -18432,9 +18460,9 @@ msgstr "Noto bezserifové (extra svetlé)"
 msgid "Noto Sans"
 msgstr "Noto bezserifové"
 
-#: lib/latexfonts:636
+#: lib/latexfonts:951
 msgid "ParaType Sans"
-msgstr "ParaType Sans"
+msgstr "ParaType bezserifové"
 
 #: lib/latexfonts:644
 msgid "TeX Gyre Adventor"
@@ -18467,6 +18495,10 @@ msgstr "Courier"
 #: lib/latexfonts:696
 msgid "DejaVu Sans Mono"
 msgstr "DejaVu bezserifové strojopisné"
+
+#: lib/latexfonts:1018
+msgid "Fira Mono"
+msgstr "Fira strojopisné"
 
 #: lib/latexfonts:784
 msgid "IBM Plex Mono"
@@ -26081,6 +26113,26 @@ msgstr "LyX archív (zip)"
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX archív (tar.gz)"
 
+#: lib/examples/Articles:0
+msgid "Game 2"
+msgstr "Hra 2"
+
+#: lib/examples/Articles:0
+msgid "Game 1"
+msgstr "Hra 1"
+
+#: lib/examples/Articles:0
+msgid "Example (LyXified)"
+msgstr "Príklad (zlyxovaný)"
+
+#: lib/examples/Articles:0
+msgid "Example (raw)"
+msgstr "Príklad (surový)"
+
+#: lib/examples/Articles:0
+msgid "Gnuplot"
+msgstr "Gnuplot"
+
 #: src/Author.cpp:57
 #, c-format
 msgid "%1$s[[name]] (%2$s[[email]])"
@@ -29366,6 +29418,74 @@ msgstr "Rovnice"
 msgid "External Material"
 msgstr "Externý materiál"
 
+#: lib/examples/Articles:0
+msgid "XY-Figure"
+msgstr "XY-obrázok"
+
+#: lib/examples/Articles:0
+msgid "Minted File Listing"
+msgstr "Minted výpis (súbor)"
+
+#: lib/examples/Articles:0
+msgid "Feynman Diagrams"
+msgstr "Feynman-diagramy"
+
+#: lib/examples/Articles:0
+msgid "XY-Pic"
+msgstr "XY-Pic"
+
+#: lib/examples/Articles:0
+msgid "Instant Preview"
+msgstr "Okamžitý náhľad"
+
+#: lib/examples/Articles:0
+msgid "Itemize Bullets"
+msgstr "Znaky pre položky"
+
+#: lib/examples/Articles:0
+msgid "Minted Listings"
+msgstr "Minted výpisy"
+
+#: lib/examples/Articles:0
+msgid "Graphics and Insets"
+msgstr "Grafiky a vložky"
+
+#: lib/examples/Articles:0
+msgid "Serial Letter 1"
+msgstr "Sekvenčný list 1"
+
+#: lib/examples/Articles:0
+msgid "Serial Letter 3"
+msgstr "Sekvenčný list 3"
+
+#: lib/examples/Articles:0
+msgid "Serial Letter 2"
+msgstr "Sekvenčný list 2"
+
+#: lib/examples/Articles:0
+msgid "Localization Test"
+msgstr "Test lokalizácie"
+
+#: lib/examples/Articles:0
+msgid "LilyPond Book"
+msgstr "LilyPond kniha"
+
+#: lib/examples/Articles:0
+msgid "Hazard and Precautionary Statements"
+msgstr "Rizikové a Bezpečnostné Inštrukcie"
+
+#: lib/examples/Articles:0
+msgid "Noweb2LyX"
+msgstr "Noweb2LyX"
+
+#: lib/examples/Articles:0
+msgid "Noweb Listerrors"
+msgstr "Noweb referát chýb"
+
+#: lib/examples/Articles:0
+msgid "Multilingual Captions"
+msgstr "Viac-jazykové popisy"
+
 #: src/TocBackend.cpp:290
 msgid "Nomenclature Entries"
 msgstr "Zoznam nomenklatúr"
@@ -31037,6 +31157,166 @@ msgstr "Trieda dokumentu"
 msgid "Modules"
 msgstr "Moduly"
 
+#: lib/examples/Articles:0
+msgid "Beamer (Complex)"
+msgstr "Beamer (komplex)"
+
+#: lib/examples/Articles:0
+msgid "Foils"
+msgstr "Fólie"
+
+#: lib/examples/Articles:0
+msgid "Foils Landslide"
+msgstr "Fólie na šírku"
+
+#: lib/examples/Articles:0
+msgid "Welcome"
+msgstr "Vitajte"
+
+#: lib/examples/Articles:0
+msgid "Multilingual Typesetting with CJKutf8"
+msgstr "Viac-jazykové popisy pomocou CJKutf8"
+
+#: lib/examples/Articles:0
+msgid "Multilingual Typesetting with platex"
+msgstr "Viac-jazykové popisy pomocou platex"
+
+#: lib/examples/Articles:0
+msgid "IEEE Transactions Conference"
+msgstr "IEEE Transakcie (Konferencia)"
+
+#: lib/examples/Articles:0
+msgid "IEEE Transactions Journal"
+msgstr "IEEE Transakcie Časopis"
+
+#: lib/examples/Articles:0
+msgid "Mathematical Monthly"
+msgstr "Mesačník Matematiky"
+
+#: lib/examples/Articles:0
+msgid "Springers Global Journal Template (V. 3)"
+msgstr "Springer, Globálna šablóna pre časopisy (V. 3)"
+
+#: lib/examples/Articles:0
+msgid "00 Main File"
+msgstr "00 Hlavný súbor"
+
+#: lib/examples/Articles:0
+msgid "11 References"
+msgstr "11 Referencie"
+
+#: lib/examples/Articles:0
+msgid "02 Foreword"
+msgstr "02 Predhovor"
+
+#: lib/examples/Articles:0
+msgid "08 Appendix"
+msgstr "08 Príloha"
+
+#: lib/examples/Articles:0
+msgid "10 Solutions"
+msgstr "10 Riešenia"
+
+#: lib/examples/Articles:0
+msgid "05 Acronym"
+msgstr "05 Akronymy"
+
+#: lib/examples/Articles:0
+msgid "09 Glossary"
+msgstr "09 Glosár"
+
+#: lib/examples/Articles:0
+msgid "06 Part"
+msgstr "06 Časť"
+
+#: lib/examples/Articles:0
+msgid "07 Chapter"
+msgstr "07 Kapitola"
+
+#: lib/examples/Articles:0
+msgid "03 Preface"
+msgstr "03 Predslov"
+
+#: lib/examples/Articles:0
+msgid "01 Dedication"
+msgstr "01 Venovanie"
+
+#: lib/examples/Articles:0
+msgid "04 Acknowledgements"
+msgstr "04 Poďakovania"
+
+#: lib/examples/Articles:0
+msgid "07 Part"
+msgstr "07 Časť"
+
+#: lib/examples/Articles:0
+msgid "09 Appendix"
+msgstr "09 Príloha"
+
+#: lib/examples/Articles:0
+msgid "08 Author"
+msgstr "08 Autor"
+
+#: lib/examples/Articles:0
+msgid "06 Acronym"
+msgstr "06 Akronymy"
+
+#: lib/examples/Articles:0
+msgid "10 Glossary"
+msgstr "10 Glosár"
+
+#: lib/examples/Articles:0
+msgid "05 Contributor List"
+msgstr "05 Zoznam prispievateľov"
+
+#: lib/examples/Articles:0
+msgid "Simple"
+msgstr "Jednoducho"
+
+#: lib/examples/Articles:0
+msgid "Colored"
+msgstr "Farebne"
+
+#: lib/examples/Articles:0
+msgid "Main File"
+msgstr "Hlavný súbor"
+
+#: lib/examples/Articles:0
+msgid "Chapter 2"
+msgstr "Kapitola 2"
+
+#: lib/examples/Articles:0
+msgid "Chapter 1"
+msgstr "Kapitola 1"
+
+#: lib/examples/Articles:0
+msgid "PhD Thesis"
+msgstr "Doktorská práca"
+
+#: lib/examples/Articles:0
+msgid "Theses"
+msgstr "Tézy"
+
+#: lib/tabletemplates/Formal_with_Footline.lyx:0
+msgid "Formal with Footline"
+msgstr "Formálne so spodným riadkom"
+
+#: lib/tabletemplates/Formal_with_Footline.lyx:0
+msgid "Formal without Footline"
+msgstr "Formálne bez spodného riadku"
+
+#: lib/tabletemplates/Formal_with_Footline.lyx:0
+msgid "Grid with Head"
+msgstr "Mriežka s hlavou"
+
+#: lib/tabletemplates/Formal_with_Footline.lyx:0
+msgid "No Borders"
+msgstr "Bez okrajov"
+
+#: lib/tabletemplates/Formal_with_Footline.lyx:0
+msgid "Simple Grid"
+msgstr "Jednoduchá mriežka"
+
 #: src/frontends/qt4/GuiDocument.cpp:1611
 msgid "Local Layout"
 msgstr "Lokálny formát"
@@ -32034,6 +32314,10 @@ msgstr "|x|"
 msgid "||x||"
 msgstr "||x||"
 
+#: src/frontends/qt4/GuiMathMatrix.cpp:39
+msgid "small"
+msgstr "malé"
+
 #: src/frontends/qt4/GuiMathMatrix.cpp:43
 msgid "bmatrix"
 msgstr "bmatrix"
@@ -32053,6 +32337,10 @@ msgstr "vmatrix"
 #: src/frontends/qt4/GuiMathMatrix.cpp:47
 msgid "Vmatrix"
 msgstr "Vmatrix"
+
+#: src/frontends/qt4/GuiMathMatrix.cpp:49
+msgid "smallmatrix"
+msgstr "smallmatrix"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:62
 msgid "Math Matrix"
@@ -35862,10 +36150,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Autocorrect On (<space> to exit)"
 #~ msgstr "Automatická korektúra zapnutá (<medzerník> na vypnutie)"
-
-#, fuzzy
-#~ msgid "List/TOC|/"
-#~ msgstr "Listina/Obsah"
 
 #~ msgid "List / TOC|s"
 #~ msgstr "Listiny / Obsah|L"
