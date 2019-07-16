@@ -609,13 +609,6 @@ dist_images_DATA1X = \
 	images/layout.svgz \
 	images/layout-document.svgz \
 	images/layout-paragraph.svgz \
-	images/layout_Description.svgz \
-	images/layout_Enumerate.svgz  \
-	images/layout_Itemize.svgz \
-	images/layout_List.svgz \
-	images/layout_LyX-Code.svgz \
-	images/layout_Chunk.svgz \
-	images/layout_Section.svgz \
 	images/layout-toggle_Description.svgz \
 	images/layout-toggle_Enumerate.svgz  \
 	images/layout-toggle_Itemize.svgz \
@@ -1897,13 +1890,6 @@ dist_imagesoxygen_DATA1X = \
 	images/oxygen/layout-document.svgz \
 	images/oxygen/layout-paragraph.svgz \
 	images/oxygen/layout.svgz \
-	images/oxygen/layout_Chunk.svgz \
-	images/oxygen/layout_Description.svgz \
-	images/oxygen/layout_Enumerate.svgz \
-	images/oxygen/layout_Itemize.svgz \
-	images/oxygen/layout_List.svgz \
-	images/oxygen/layout_LyX-Code.svgz \
-	images/oxygen/layout_Section.svgz \
 	images/oxygen/layout-toggle_Chunk.svgz \
 	images/oxygen/layout-toggle_Description.svgz \
 	images/oxygen/layout-toggle_Enumerate.svgz \
@@ -2104,13 +2090,6 @@ dist_imagesclassic_DATA = \
 	images/classic/layout-document.png  \
 	images/classic/layout-paragraph.png  \
 	images/classic/layout.png  \
-	images/classic/layout_Description.png  \
-	images/classic/layout_Enumerate.png  \
-	images/classic/layout_Itemize.png  \
-	images/classic/layout_List.png  \
-	images/classic/layout_LyX-Code.png  \
-	images/classic/layout_Chunk.png  \
-	images/classic/layout_Section.png  \
 	images/classic/layout-toggle_Description.png  \
 	images/classic/layout-toggle_Enumerate.png  \
 	images/classic/layout-toggle_Itemize.png  \

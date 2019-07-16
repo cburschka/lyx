@@ -38,6 +38,7 @@ ommitted = ('en.po')
 import os
 import sys
 import codecs
+import subprocess
 from subprocess import Popen, PIPE
 
 # Reset the locale
@@ -112,17 +113,14 @@ def run_msgfmt(pofile):
     prop["email"] = header['Last-Translator'].split('<')[1][:-1]
     prop["email"] = prop["email"].replace("@", " () ")
     prop["email"] = prop["email"].replace(".", " ! ")
-    translator = header['Last-Translator'].split('<')[0].strip()
-    try:
-        prop["translator"] = translator.encode('ascii','xmlcharrefreplace')
-    except LookupError:
-        prop["translator"] = translator
+    prop["translator"] = header['Last-Translator'].split('<')[0].strip()
 
-    P = Popen("msgfmt --statistics -o %s %s" % (gmofile, pofile),
-              shell=True, stdin=PIPE, stdout=PIPE, close_fds=True)
-    extract_number(P.stdout.readline().decode(),
-                   ('translated', 'fuzzy', 'untranslated'),
-                   prop)
+    msg = subprocess.check_output(["msgfmt", "--statistics",
+            "-o", gmofile, # FIXME: do we really want a gmofile as side-effect?
+            pofile], stderr=subprocess.STDOUT)
+    if sys.version_info[0] > 2:
+        msg = msg.decode('utf8')
+    extract_number(msg, ('translated', 'fuzzy', 'untranslated'), prop)
     return """
 array ( 'langcode' => '%(langcode)s', "date" => "%(date)s",
 "msg_tr" => %(translated)d, "msg_fu" => %(fuzzy)d, "msg_nt" => %(untranslated)d,
@@ -144,4 +142,6 @@ $branch_tag = "%s";
 
 // The data itself
 $podata = array (%s
-)?>""" % (sys.argv[1], branch_tag, ",".join([run_msgfmt(po) for po in sys.argv[2:] if po not in ommitted])))
+)?>""" % (sys.argv[1], branch_tag, 
+          ",".join([run_msgfmt(po) for po in sys.argv[2:] 
+                                   if po not in ommitted])))
