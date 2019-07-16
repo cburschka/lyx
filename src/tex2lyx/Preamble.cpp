@@ -744,10 +744,10 @@ void Preamble::handle_package(Parser &p, string const & name,
 			p.setEncoding("UTF-8");
 	}
 
-	// vector of all options for easier pasing and
+	// vector of all options for easier parsing and
 	// skipping
 	vector<string> allopts = getVectorFromString(opts);
-	// this stored the potential extra options
+	// this stores the potential extra options
 	string xopts;
 
 	//
@@ -1304,13 +1304,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 		options.clear();
 	}
 
-	if (name == "PTMono") {
+	if (name == "PTMono")
 		h_font_typewriter[0] = "PTMono-TLF";
-		if (options.size() >= 1) {
-			if (scale_as_percentage(opts, h_font_tt_scale[0]))
-				options.clear();
-		}
-	}
 
 	if (name == "plex-mono") {
 		h_font_typewriter[0] = "IBMPlexMono";
@@ -2155,7 +2150,6 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				}
  				continue;
 			} else if (lang.empty() && (family == "sf" || family == "tt")) {
-				// LyX currently only supports the scale option
 				string scale;
 				if (!fontopts.empty()) {
 					vector<string> opts = getVectorFromString(fontopts);
