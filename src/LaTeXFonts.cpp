@@ -362,7 +362,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		LF_OT1_FONT,
 		LF_MOREOPTS,
 		LF_PACKAGE,
-		LF_PACKAGEOPTION,
+		LF_PACKAGEOPTIONS,
 		LF_PREAMBLE,
 		LF_PROVIDES,
 		LF_REQUIRES,
@@ -387,8 +387,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		{ "osfscoption",          LF_OSFSCOPTION },
 		{ "ot1font",              LF_OT1_FONT },
 		{ "package",              LF_PACKAGE },
-		{ "packageoption",        LF_PACKAGEOPTION },
-		{ "packageoptions",       LF_PACKAGEOPTION },
+		{ "packageoptions",       LF_PACKAGEOPTIONS },
 		{ "preamble",             LF_PREAMBLE },
 		{ "provides",             LF_PROVIDES },
 		{ "requires",             LF_REQUIRES },
@@ -462,7 +461,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		case LF_PACKAGE:
 			lex >> package_;
 			break;
-		case LF_PACKAGEOPTION:
+		case LF_PACKAGEOPTIONS:
 			lex >> packageoption_;
 			break;
 		case LF_PREAMBLE:

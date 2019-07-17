@@ -182,7 +182,7 @@ Font IBMPlexSerifThin
 	GuiName          "IBM Plex Serif (Thin)"
 	Family           rm
 	Package          plex-serif
-	PackageOption    thin
+	PackageOptions   thin
 	MoreOptions      1
 EndFont
 
@@ -190,7 +190,7 @@ Font IBMPlexSerifExtraLight
 	GuiName          "IBM Plex Serif (Extra Light)"
 	Family           rm
 	Package          plex-serif
-	PackageOption    extralight
+	PackageOptions   extralight
 	MoreOptions      1
 EndFont
 
@@ -198,7 +198,7 @@ Font IBMPlexSerifLight
 	GuiName          "IBM Plex Serif (Light)"
 	Family           rm
 	Package          plex-serif
-	PackageOption    light
+	PackageOptions   light
 	MoreOptions      1
 EndFont
 
@@ -206,7 +206,7 @@ Font IBMPlexSerifSemibold
 	GuiName          "IBM Plex Serif (Semibold)"
 	Family           rm
 	Package          plex-serif
-	PackageOption    semibold
+	PackageOptions   semibold
 	MoreOptions      1
 EndFont
 
@@ -298,7 +298,7 @@ Font md-charter
 	ScOption         expert
 	OsfScOption      expert
 	Package          mathdesign
-	PackageOption    charter
+	PackageOptions   charter
 	Requires         mdbch
 	Provides         amssymb,amsfonts
 	NoMathFont       mdbch
@@ -318,7 +318,7 @@ Font md-utopia
 	ScOption         expert
 	OsfScOption      expert
 	Package          mathdesign
-	PackageOption    utopia
+	PackageOptions   utopia
 	Requires         mdput
 	Provides         amssymb,amsfonts
 	NoMathFont       mdput
@@ -338,7 +338,7 @@ Font md-garamond
 	ScOption         expert
 	OsfScOption      expert
 	Package          mathdesign
-	PackageOption    garamond
+	PackageOptions   garamond
 	Requires         mdugm
 	Provides         amssymb,amsfonts
 	NoMathFont       mdugm
@@ -368,7 +368,7 @@ AltFont minionpro-nomath
 	OsfOption        lf
 	OsfDefault       1
 	Package          MinionPro
-	PackageOption    onlytext
+	PackageOptions   onlytext
 EndFont
 
 Font newcent
@@ -381,7 +381,7 @@ Font NotoSerifRegular
 	GuiName         "Noto Serif (Regular)"
 	Family          rm
 	Package         noto-serif
-	PackageOption   regular
+	PackageOptions  regular
 	OsfOption	osf
 	MoreOptions      1
 EndFont
@@ -390,7 +390,7 @@ Font NotoSerifMedium
 	GuiName         "Noto Serif (Medium)"
 	Family          rm
 	Package         noto-serif
-	PackageOption   medium
+	PackageOptions  medium
 	OsfDefault	0
 	OsfOption	osf
 	MoreOptions      1
@@ -400,7 +400,7 @@ Font NotoSerifThin
 	GuiName         "Noto Serif (Thin)"
 	Family          rm
 	Package         noto-serif
-	PackageOption   thin
+	PackageOptions  thin
 	OsfDefault	0
 	OsfOption	osf
 	MoreOptions      1
@@ -410,7 +410,7 @@ Font NotoSerifLight
 	GuiName         "Noto Serif (Light)"
 	Family          rm
 	Package         noto-serif
-	PackageOption   light
+	PackageOptions  light
 	OsfDefault	0
 	OsfOption	osf
 	MoreOptions      1
@@ -420,7 +420,7 @@ Font NotoSerifExtralight
 	GuiName         "Noto Serif (Extralight)"
 	Family          rm
 	Package         noto-serif
-	PackageOption   extralight
+	PackageOptions  extralight
 	OsfDefault	0
 	OsfOption	osf
 	MoreOptions     1
@@ -658,7 +658,7 @@ Font ChivoThin
 	Family           sf
 	OsfOption       oldstyle
 	Package          Chivo
-	PackageOption    "thin"
+	PackageOptions   "thin"
 	MoreOptions      1
 	FontEncoding     OT1,LY1,T1,TS1
 	ScaleOption      scale=$$val
@@ -669,7 +669,7 @@ Font ChivoLight
 	Family           sf
 	OsfOption       oldstyle
 	Package          Chivo
-	PackageOption    "light"
+	PackageOptions   "light"
 	MoreOptions      1
 	FontEncoding     OT1,LY1,T1,TS1
 	ScaleOption      scale=$$val
@@ -690,7 +690,7 @@ Font ChivoMedium
 	Family           sf
 	OsfOption       oldstyle
 	Package          Chivo
-	PackageOption    "medium"
+	PackageOptions   "medium"
 	MoreOptions      1
 	FontEncoding     OT1,LY1,T1,TS1
 	ScaleOption      scale=$$val
@@ -740,7 +740,7 @@ Font FiraSansBook
 	Family          sf
 	ScaleOption     scaled=$$val
 	Package         FiraSans
-        PackageOption   book
+        PackageOptions  book
 	OsfDefault	1
 	OsfOption	lf
 	MoreOptions     1
@@ -752,7 +752,7 @@ Font FiraSansLight
 	Family          sf
 	ScaleOption     scaled=$$val
 	Package         FiraSans
-	PackageOption   light
+	PackageOptions  light
 	OsfDefault	1
 	OsfOption	lf
 	MoreOptions     1
@@ -764,7 +764,7 @@ Font FiraSansExtralight
 	Family          sf
 	ScaleOption     scaled=$$val
 	Package         FiraSans
-	PackageOption   extralight
+	PackageOptions  extralight
 	OsfDefault	1
 	OsfOption	lf
 	MoreOptions     1
@@ -776,7 +776,7 @@ Font FiraSansUltralight
 	Family          sf
 	ScaleOption     scaled=$$val
 	Package         FiraSans
-	PackageOption   ultralight
+	PackageOptions  ultralight
 	OsfDefault	1
 	OsfOption	lf
 	MoreOptions     1
@@ -788,7 +788,7 @@ Font FiraSansThin
 	Family          sf
 	ScaleOption     scaled=$$val
 	Package         FiraSans
-	PackageOption   thin
+	PackageOptions  thin
 	OsfDefault	1
 	OsfOption	lf
 	MoreOptions     1
@@ -807,7 +807,7 @@ Font IBMPlexSansCondensed
 	GuiName          "IBM Plex Sans (Condensed)"
 	Family           sf
 	Package          plex-sans
-	PackageOption    condensed
+	PackageOptions   condensed
 	ScaleOption      scale=$$val
 	MoreOptions      1
 EndFont
@@ -816,7 +816,7 @@ Font IBMPlexSansThin
 	GuiName          "IBM Plex Sans (Thin)"
 	Family           sf
 	Package          plex-sans
-	PackageOption    thin
+	PackageOptions   thin
 	ScaleOption      scale=$$val
 	MoreOptions      1
 EndFont
@@ -825,7 +825,7 @@ Font IBMPlexSansExtraLight
 	GuiName          "IBM Plex Sans (Extra Light)"
 	Family           sf
 	Package          plex-sans
-	PackageOption    extralight
+	PackageOptions   extralight
 	ScaleOption      scale=$$val
 	MoreOptions      1
 EndFont
@@ -834,7 +834,7 @@ Font IBMPlexSansLight
 	GuiName          "IBM Plex Sans (Light)"
 	Family           sf
 	Package          plex-sans
-	PackageOption    light
+	PackageOptions   light
 	ScaleOption      scale=$$val
 	MoreOptions      1
 EndFont
@@ -843,7 +843,7 @@ Font IBMPlexSansSemibold
 	GuiName          "IBM Plex Sans (Semibold)"
 	Family           sf
 	Package          plex-sans
-	PackageOption    semibold
+	PackageOptions   semibold
 	ScaleOption      scale=$$val
 	MoreOptions      1
 EndFont
@@ -933,7 +933,7 @@ Font NotoSansRegular
 	Family          sf
 	ScaleOption     scaled=$$val
 	Package         noto-sans
-        PackageOption   regular
+        PackageOptions  regular
 	OsfDefault	0
 	OsfOption	osf
 	MoreOptions      1
@@ -944,7 +944,7 @@ Font NotoSansMedium
 	Family          sf
 	ScaleOption     scaled=$$val
 	Package         noto-sans
-        PackageOption   medium
+        PackageOptions  medium
 	OsfDefault	0
 	OsfOption	osf
 	MoreOptions      1
@@ -955,7 +955,7 @@ Font NotoSansThin
 	Family          sf
 	ScaleOption     scaled=$$val
 	Package         noto-sans
-	PackageOption   thin
+	PackageOptions  thin
 	OsfDefault	0
 	OsfOption	osf
 	MoreOptions      1
@@ -966,7 +966,7 @@ Font NotoSansLight
 	Family          sf
 	ScaleOption     scaled=$$val
 	Package         noto-sans
-	PackageOption   light
+	PackageOptions  light
 	OsfDefault	0
 	OsfOption	osf
 	MoreOptions      1
@@ -977,7 +977,7 @@ Font NotoSansExtralight
 	Family          sf
 	ScaleOption     scaled=$$val
 	Package         noto-sans
-	PackageOption   extralight
+	PackageOptions  extralight
 	OsfDefault	0
 	OsfOption	osf
 	MoreOptions      1
@@ -1081,7 +1081,7 @@ Font IBMPlexMonoThin
 	Family           tt
 	Package          plex-mono
 	ScaleOption      scale=$$val
-	PackageOption    thin
+	PackageOptions   thin
 	MoreOptions      1
 EndFont
 
@@ -1090,7 +1090,7 @@ Font IBMPlexMonoExtraLight
 	Family           tt
 	Package          plex-mono
 	ScaleOption      scale=$$val
-	PackageOption    extralight
+	PackageOptions   extralight
 	MoreOptions      1
 EndFont
 
@@ -1099,7 +1099,7 @@ Font IBMPlexMonoLight
 	Family           tt
 	Package          plex-mono
 	ScaleOption      scale=$$val
-	PackageOption    light
+	PackageOptions   light
 	MoreOptions      1
 EndFont
 
@@ -1108,7 +1108,7 @@ Font IBMPlexMonoSemibold
 	Family           tt
 	Package          plex-mono
 	ScaleOption      scale=$$val
-	PackageOption    semibold
+	PackageOptions   semibold
 	MoreOptions      1
 EndFont
 
@@ -1197,7 +1197,7 @@ Font cochineal-ntxm
 	GuiName          "Crimson (New TX)"
 	Family           math
 	Package          newtxmath
-	PackageOption    cochineal
+	PackageOptions   cochineal
 	Provides         amssymb,amsfonts
 EndFont
 
@@ -1211,7 +1211,7 @@ Font garamondx-ntxm
 	GuiName          "URW Garamond (New TX)"
 	Family           math
 	Package          newtxmath
-	PackageOption    garamondx
+	PackageOptions   garamondx
 	Provides         amssymb,amsfonts
 EndFont
 
@@ -1245,7 +1245,7 @@ Font libertine-ntxm
 	GuiName          "Libertine (New TX)"
 	Family           math
 	Package          newtxmath
-	PackageOption    libertine
+	PackageOptions   libertine
 	Provides         amssymb,amsfonts
 EndFont
 
@@ -1253,7 +1253,7 @@ Font minion-ntxm
 	GuiName          "Minion Pro (New TX)"
 	Family           math
 	Package          newtxmath
-	PackageOption    minion
+	PackageOptions   minion
 	Requires         minion2newtx
 	Provides         amssymb,amsfonts
 EndFont
