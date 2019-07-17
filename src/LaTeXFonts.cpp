@@ -388,6 +388,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		{ "ot1font",              LF_OT1_FONT },
 		{ "package",              LF_PACKAGE },
 		{ "packageoption",        LF_PACKAGEOPTION },
+		{ "packageoptions",       LF_PACKAGEOPTION },
 		{ "preamble",             LF_PREAMBLE },
 		{ "provides",             LF_PROVIDES },
 		{ "requires",             LF_REQUIRES },

@@ -653,6 +653,50 @@ Font cantarell
 	ScaleOption	scale=$$val
 EndFont
 
+Font ChivoThin
+	GuiName          "Chivo (Thin)"
+	Family           sf
+	OsfOption       oldstyle
+	Package          Chivo
+	PackageOption    "thin"
+	MoreOptions      1
+	FontEncoding     OT1,LY1,T1,TS1
+	ScaleOption      scale=$$val
+EndFont
+
+Font ChivoLight
+	GuiName          "Chivo (Light)"
+	Family           sf
+	OsfOption       oldstyle
+	Package          Chivo
+	PackageOption    "light"
+	MoreOptions      1
+	FontEncoding     OT1,LY1,T1,TS1
+	ScaleOption      scale=$$val
+EndFont
+
+Font Chivo
+	GuiName          "Chivo"
+	Family           sf
+	OsfOption       oldstyle
+	Package          Chivo
+	PackageOption    "regular"
+	MoreOptions      1
+	FontEncoding     OT1,LY1,T1,TS1
+	ScaleOption      scale=$$val
+EndFont
+
+Font ChivoMedium
+	GuiName          "Chivo (Medium)"
+	Family           sf
+	OsfOption       oldstyle
+	Package          Chivo
+	PackageOption    "medium"
+	MoreOptions      1
+	FontEncoding     OT1,LY1,T1,TS1
+	ScaleOption      scale=$$val
+EndFont
+
 Font cmbr
 	GuiName          "CM Bright"
 	Family           sf

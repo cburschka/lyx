@@ -148,7 +148,7 @@ const char * const known_roman_font_packages[] = { "ae", "beraserif", "bookman",
 "tgpagella", "tgschola", "tgtermes", "utopia", "xcharter", 0 };
 
 const char * const known_sans_font_packages[] = { "avant", "berasans", "biolinum",
-"biolinum-type1", "cantarell", "cmbr", "cmss", "DejaVuSans", "DejaVuSansCondensed", "FiraSans", "helvet", "iwona",
+"biolinum-type1", "cantarell", "Chivo", "cmbr", "cmss", "DejaVuSans", "DejaVuSansCondensed", "FiraSans", "helvet", "iwona",
 "iwonac", "iwonal", "iwonalc", "kurier", "kurierc", "kurierl", "kurierlc", "lmss", "noto", "noto-sans", "PTSans",
 "tgadventor", "tgheros", "uop", 0 };
 
@@ -1122,6 +1122,38 @@ void Preamble::handle_package(Parser &p, string const & name,
 		for (auto const & opt : allopts) {
 			if (opt == "defaultsans")
 				continue;
+			if (prefixIs(opt, "oldstyle")) {
+				h_font_sans_osf = "true";
+				continue;
+			}
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_sans_opts = xopts;
+		options.clear();
+	}
+
+	if (name == "Chivo") {
+		h_font_roman[0] = "Chivo";
+		for (auto const & opt : allopts) {
+			if (opt == "thin") {
+				h_font_roman[0] = "ChivoThin";
+				continue;
+			}
+			if (opt == "light") {
+				h_font_roman[0] = "ChivoLight";
+				continue;
+			}
+			if (opt == "regular") {
+				h_font_roman[0] = "Chivo";
+				continue;
+			}
+			if (opt == "medium") {
+				h_font_roman[0] = "ChivoMedium";
+				continue;
+			}
 			if (prefixIs(opt, "oldstyle")) {
 				h_font_sans_osf = "true";
 				continue;
