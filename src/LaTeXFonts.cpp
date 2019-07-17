@@ -251,8 +251,8 @@ string const LaTeXFont::getPackageOptions(bool ot1, bool complete, bool sc, bool
 	bool const has_sc = providesSC(ot1, complete, nomath);
 	bool const moreopts = providesMoreOptions(ot1, complete, nomath);
 
-	if (!packageoption_.empty())
-		os << to_ascii(packageoption_);
+	if (!packageoptions_.empty())
+		os << to_ascii(packageoptions_);
 
 	if (sc && needosfopt && has_osf && has_sc) {
 		if (!os.str().empty())
@@ -462,7 +462,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 			lex >> package_;
 			break;
 		case LF_PACKAGEOPTIONS:
-			lex >> packageoption_;
+			lex >> packageoptions_;
 			break;
 		case LF_PREAMBLE:
 			preamble_ = lex.getLongString(from_ascii("EndPreamble"));

@@ -49,7 +49,7 @@ public:
 	/// A font that provides Old Style Figures for this type face
 	docstring const & osffont() { return osffont_; }
 	/// A package option needed to load this font
-	docstring const & packageoption() { return packageoption_; }
+	docstring const & packageoptions() { return packageoptions_; }
 	/// A package option for Old Style Figures
 	docstring const & osfoption() { return osfoption_; }
 	/// A package option for true SmallCaps
@@ -130,7 +130,7 @@ private:
 	///
 	docstring osffont_;
 	///
-	docstring packageoption_;
+	docstring packageoptions_;
 	///
 	docstring osfoption_;
 	///
