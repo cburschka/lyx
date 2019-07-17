@@ -1136,7 +1136,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	if (name == "Chivo") {
-		h_font_roman[0] = "Chivo";
 		for (auto const & opt : allopts) {
 			if (opt == "thin") {
 				h_font_roman[0] = "ChivoThin";
