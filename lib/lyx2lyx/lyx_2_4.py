@@ -179,6 +179,10 @@ def createFontMapping(fontlist):
         elif font == 'Cantarell':
             fm.expandFontMapping(['cantarell,defaultsans'],
                                   "sans", "sf", "cantarell", "scaled", "oldstyle")
+        elif font == 'Chivo':
+            fm.expandFontMapping(['ChivoThin,thin', 'ChivoLight,light',
+                                  'Chivo,regular', 'ChivoMedium,medium'],
+                                  "sans", "sf", "Chivo", "scale", "oldstyle")
         elif font == 'Fira':
             fm.expandFontMapping(['FiraSans', 'FiraSansBook,book',
                                   'FiraSansThin,thin', 'FiraSansLight,light',
@@ -2918,6 +2922,22 @@ def revert_CantarellFont(document):
         if revert_fonts(document, fm, fontmap, False, True):
             add_preamble_fonts(document, fontmap)
 
+def convert_ChivoFont(document):
+    " Handle Chivo font definition to LaTeX "
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        fm = createFontMapping(['Chivo'])
+        convert_fonts(document, fm, "oldstyle")
+
+def revert_ChivoFont(document):
+    " Revert native Chivo font definition to LaTeX "
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        fontmap = dict()
+        fm = createFontMapping(['Chivo'])
+        if revert_fonts(document, fm, fontmap, False, True):
+            add_preamble_fonts(document, fontmap)
+
 
 def convert_FiraFont(document):
     " Handle Fira font definition to LaTeX "
@@ -2980,9 +3000,11 @@ convert = [
            [580, []],
            [581, [convert_osf]],
            [582, [convert_AdobeFonts,convert_latexFonts,convert_notoFonts,convert_CantarellFont,convert_FiraFont]],# old font re-converterted due to extra options
+           [583, [convert_ChivoFont]],
           ]
 
-revert =  [[581, [revert_CantarellFont,revert_FiraFont]],
+revert =  [[582, [revert_ChivoFont]],
+           [581, [revert_CantarellFont,revert_FiraFont]],
            [580, [revert_texfontopts,revert_osf]],
            [579, [revert_minionpro, revert_plainNotoFonts_xopts, revert_notoFonts_xopts, revert_IBMFonts_xopts, revert_AdobeFonts_xopts, revert_font_opts]], # keep revert_font_opts last!
            [578, [revert_babelfont]],
