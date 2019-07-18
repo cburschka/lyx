@@ -1019,10 +1019,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 				h_font_roman[0] = "IBMPlexSerifLight";
 				continue;
 			}
-			if (opt == "semibold") {
-				h_font_roman[0] = "IBMPlexSerifSemibold";
-				continue;
-			}
 			if (!xopts.empty())
 				xopts += ", ";
 			xopts += opt;
@@ -1228,10 +1224,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 				h_font_sans[0] = "IBMPlexSansLight";
 				continue;
 			}
-			if (opt == "semibold") {
-				h_font_sans[0] = "IBMPlexSansSemibold";
-				continue;
-			}
 			if (!xopts.empty())
 				xopts += ", ";
 			xopts += opt;
@@ -1351,10 +1343,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 			}
 			if (opt == "light") {
 				h_font_typewriter[0] = "IBMPlexMonoLight";
-				continue;
-			}
-			if (opt == "semibold"){
-				h_font_typewriter[0] = "IBMPlexMonoSemibold";
 				continue;
 			}
 			if (!xopts.empty())

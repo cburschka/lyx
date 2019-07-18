@@ -202,14 +202,6 @@ Font IBMPlexSerifLight
 	MoreOptions      1
 EndFont
 
-Font IBMPlexSerifSemibold
-	GuiName          "IBM Plex Serif (Semibold)"
-	Family           rm
-	Package          plex-serif
-	PackageOptions   semibold
-	MoreOptions      1
-EndFont
-
 Font ADOBESourceSerifPro
 	GuiName		 "Adobe Source Serif Pro"
 	Family		 rm
@@ -839,15 +831,6 @@ Font IBMPlexSansLight
 	MoreOptions      1
 EndFont
 
-Font IBMPlexSansSemibold
-	GuiName          "IBM Plex Sans (Semibold)"
-	Family           sf
-	Package          plex-sans
-	PackageOptions   semibold
-	ScaleOption      scale=$$val
-	MoreOptions      1
-EndFont
-
 Font ADOBESourceSansPro
 	GuiName		 "Adobe Source Sans Pro"
 	Family		 sf
@@ -1100,15 +1083,6 @@ Font IBMPlexMonoLight
 	Package          plex-mono
 	ScaleOption      scale=$$val
 	PackageOptions   light
-	MoreOptions      1
-EndFont
-
-Font IBMPlexMonoSemibold
-	GuiName          "IBM Plex Mono (Semibold)"
-	Family           tt
-	Package          plex-mono
-	ScaleOption      scale=$$val
-	PackageOptions   semibold
 	MoreOptions      1
 EndFont
 

@@ -2956,6 +2956,97 @@ def revert_FiraFont(document):
             add_preamble_fonts(document, fontmap)
 
 
+def convert_Semibolds(document):
+    " Move semibold options to extraopts "
+
+    NonTeXFonts = False
+    i = find_token(document.header, '\\use_non_tex_fonts', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
+    else:
+        NonTeXFonts = str2bool(get_value(document.header, "\\use_non_tex_fonts", i))
+
+    sbfonts = ["IBMPlexSerifSemibold", "IBMPlexSansSemibold", "IBMPlexMonoSemibold" ]
+
+    i = find_token(document.header, "\\font_roman", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_roman.")
+    else:
+        # We need to use this regex since split() does not handle quote protection
+        romanfont = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+        roman = romanfont[1].strip('"')
+        if roman == "IBMPlexSerifSemibold":
+            romanfont[1] = '"IBMPlexSerif"'
+            document.header[i] = " ".join(romanfont)
+
+            if NonTeXFonts == False:
+                regexp = re.compile(r'(\\font_roman_opts)')
+                x = find_re(document.header, regexp, 0)
+                if x == -1:
+                    # Sensible place to insert tag
+                    fo = find_token(document.header, "\\font_sf_scale")
+                    if fo == -1:
+                        document.warning("Malformed LyX document! Missing \\font_sf_scale")
+                    else:
+                        document.header.insert(fo, "\\font_roman_opts \"semibold\"")
+                else:
+                    # We need to use this regex since split() does not handle quote protection
+                    romanopts = re.findall(r'[^"\s]\S*|".+?"', document.header[x])
+                    document.header[x] = "\\font_roman_opts \"semibold, " + romanopts[1].strip('"') + "\""
+
+    i = find_token(document.header, "\\font_sans", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_sans.")
+    else:
+        # We need to use this regex since split() does not handle quote protection
+        sffont = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+        sf = sffont[1].strip('"')
+        if sf == "IBMPlexSansSemibold":
+            sffont[1] = '"IBMPlexSans"'
+            document.header[i] = " ".join(sffont)
+
+            if NonTeXFonts == False:
+                regexp = re.compile(r'(\\font_sans_opts)')
+                x = find_re(document.header, regexp, 0)
+                if x == -1:
+                    # Sensible place to insert tag
+                    fo = find_token(document.header, "\\font_sf_scale")
+                    if fo == -1:
+                        document.warning("Malformed LyX document! Missing \\font_sf_scale")
+                    else:
+                        document.header.insert(fo, "\\font_sans_opts \"semibold\"")
+                else:
+                    # We need to use this regex since split() does not handle quote protection
+                    sfopts = re.findall(r'[^"\s]\S*|".+?"', document.header[x])
+                    document.header[x] = "\\font_sans_opts \"semibold, " + sfopts[1].strip('"') + "\""
+
+    i = find_token(document.header, "\\font_typewriter", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_typewriter.")
+    else:
+        # We need to use this regex since split() does not handle quote protection
+        ttfont = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+        tt = ttfont[1].strip('"')
+        if tt == "IBMPlexMonoSemibold":
+            ttfont[1] = '"IBMPlexMono"'
+            document.header[i] = " ".join(ttfont)
+
+            if NonTeXFonts == False:
+                regexp = re.compile(r'(\\font_typewriter_opts)')
+                x = find_re(document.header, regexp, 0)
+                if x == -1:
+                    # Sensible place to insert tag
+                    fo = find_token(document.header, "\\font_tt_scale")
+                    if fo == -1:
+                        document.warning("Malformed LyX document! Missing \\font_tt_scale")
+                    else:
+                        document.header.insert(fo, "\\font_typewriter_opts \"semibold\"")
+                else:
+                    # We need to use this regex since split() does not handle quote protection
+                    ttopts = re.findall(r'[^"\s]\S*|".+?"', document.header[x])
+                    document.header[x] = "\\font_typewriter_opts \"semibold, " + sfopts[1].strip('"') + "\""
+
+
 ##
 # Conversion hub
 #
@@ -3000,7 +3091,7 @@ convert = [
            [580, []],
            [581, [convert_osf]],
            [582, [convert_AdobeFonts,convert_latexFonts,convert_notoFonts,convert_CantarellFont,convert_FiraFont]],# old font re-converterted due to extra options
-           [583, [convert_ChivoFont]],
+           [583, [convert_ChivoFont,convert_Semibolds]],
           ]
 
 revert =  [[582, [revert_ChivoFont]],
