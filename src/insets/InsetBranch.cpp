@@ -294,7 +294,7 @@ void InsetBranch::latex(otexstream & os, OutputParams const & runparams) const
 {
 	if (producesOutput()) {
 		OutputParams rp = runparams;
-		rp.inbranch = rp.use_babel || rp.use_polyglossia;
+		rp.inbranch = true;
 		InsetText::latex(os, rp);
 	}
 }
