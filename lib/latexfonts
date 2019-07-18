@@ -370,10 +370,9 @@ Font newcent
 EndFont
 
 Font NotoSerifRegular
-	GuiName         "Noto Serif (Regular)"
+	GuiName         "Noto Serif"
 	Family          rm
 	Package         noto-serif
-	PackageOptions  regular
 	OsfOption	osf
 	MoreOptions      1
 EndFont
@@ -912,11 +911,10 @@ Font lmss
 EndFont
 
 Font NotoSansRegular
-	GuiName         "Noto Sans (Regular)"
+	GuiName         "Noto Sans"
 	Family          sf
 	ScaleOption     scaled=$$val
 	Package         noto-sans
-        PackageOptions  regular
 	OsfDefault	0
 	OsfOption	osf
 	MoreOptions      1
@@ -1125,11 +1123,10 @@ Font luximono
 EndFont
 
 Font NotoMonoRegular
-	GuiName         "Noto Mono Regular"
+	GuiName         "Noto Mono"
 	Family          tt
 	ScaleOption     scaled=$$val
 	Package         noto-mono
-	PackageOptions	regular
 	OsfOption       osf
 	MoreOptions     1
 EndFont
