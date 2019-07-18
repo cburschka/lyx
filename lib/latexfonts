@@ -647,7 +647,7 @@ Font cantarell
 	Family		sf
 	OsfOption	oldstyle
 	Package		cantarell
-	PackageOption	"defaultsans"
+	PackageOptions	"defaultsans"
 	MoreOptions      1
 	FontEncoding	T2A,T1,OT1
 	ScaleOption	scale=$$val
@@ -1155,7 +1155,7 @@ Font NotoMonoRegular
 	Family          tt
 	ScaleOption     scaled=$$val
 	Package         noto-mono
-	PackageOption	regular
+	PackageOptions	regular
 	OsfOption       osf
 	MoreOptions     1
 EndFont
