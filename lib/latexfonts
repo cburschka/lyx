@@ -154,6 +154,50 @@ Font cmr
 	OsfFont          eco
 EndFont
 
+Font CrimsonPro
+	GuiName          "Crimson Pro"
+	Family           rm
+	OsfOption        lf
+	OsfDefault       1
+	Package          CrimsonPro
+	AltFonts         crimson
+	MoreOptions      1
+	FontEncoding     OT1,T1,LY1,TS1
+EndFont
+
+Font CrimsonProMedium
+	GuiName          "Crimson Pro (Medium)"
+	Family           rm
+	OsfOption        lf
+	OsfDefault       1
+	Package          CrimsonPro
+	PackageOptions   medium
+	MoreOptions      1
+	FontEncoding     OT1,T1,LY1,TS1
+EndFont
+
+Font CrimsonProLight
+	GuiName          "Crimson Pro (Light)"
+	Family           rm
+	OsfOption        lf
+	OsfDefault       1
+	Package          CrimsonPro
+	PackageOptions   light
+	MoreOptions      1
+	FontEncoding     OT1,T1,LY1,TS1
+EndFont
+
+Font CrimsonProExtraLight
+	GuiName          "Crimson Pro (Extralight)"
+	Family           rm
+	OsfOption        lf
+	OsfDefault       1
+	Package          CrimsonPro
+	PackageOptions   extralight
+	MoreOptions      1
+	FontEncoding     OT1,T1,LY1,TS1
+EndFont
+
 Font DejaVuSerif
 	GuiName          "DejaVu Serif"
 	Family           rm

@@ -183,6 +183,10 @@ def createFontMapping(fontlist):
             fm.expandFontMapping(['ChivoThin,thin', 'ChivoLight,light',
                                   'Chivo,regular', 'ChivoMedium,medium'],
                                   "sans", "sf", "Chivo", "scale", "oldstyle")
+        elif font == 'CrimsonPro':
+            fm.expandFontMapping(['CrimsonPro', 'CrimsonProExtraLight,extralight', 'CrimsonProLight,light',
+                                  'CrimsonProMedium,medium'],
+                                  "roman", None, "CrimsonPro", None, "lf", "true")
         elif font == 'Fira':
             fm.expandFontMapping(['FiraSans', 'FiraSansBook,book',
                                   'FiraSansThin,thin', 'FiraSansLight,light',
@@ -3082,6 +3086,22 @@ def convert_NotoRegulars(document):
             document.header[i] = " ".join(ttfont)
 
 
+def convert_CrimsonProFont(document):
+    " Handle CrimsonPro font definition to LaTeX "
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        fm = createFontMapping(['CrimsonPro'])
+        convert_fonts(document, fm, "lf")
+
+def revert_CrimsonProFont(document):
+    " Revert native CrimsonPro font definition to LaTeX "
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        fontmap = dict()
+        fm = createFontMapping(['CrimsonPro'])
+        if revert_fonts(document, fm, fontmap, False, True):
+            add_preamble_fonts(document, fontmap)
+
 ##
 # Conversion hub
 #
@@ -3126,10 +3146,10 @@ convert = [
            [580, []],
            [581, [convert_osf]],
            [582, [convert_AdobeFonts,convert_latexFonts,convert_notoFonts,convert_CantarellFont,convert_FiraFont]],# old font re-converterted due to extra options
-           [583, [convert_ChivoFont,convert_Semibolds,convert_NotoRegulars]],
+           [583, [convert_ChivoFont,convert_Semibolds,convert_NotoRegulars,convert_CrimsonProFont]],
           ]
 
-revert =  [[582, [revert_ChivoFont]],
+revert =  [[582, [revert_ChivoFont,revert_CrimsonProFont]],
            [581, [revert_CantarellFont,revert_FiraFont]],
            [580, [revert_texfontopts,revert_osf]],
            [579, [revert_minionpro, revert_plainNotoFonts_xopts, revert_notoFonts_xopts, revert_IBMFonts_xopts, revert_AdobeFonts_xopts, revert_font_opts]], # keep revert_font_opts last!

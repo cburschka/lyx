@@ -142,10 +142,10 @@ const char * const known_old_language_packages[] = {"french", "frenchle",
 char const * const known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
 const char * const known_roman_font_packages[] = { "ae", "beraserif", "bookman",
-"ccfonts", "chancery", "charter", "cmr", "cochineal", "crimson", "DejaVuSerif", "DejaVuSerifCondensed", "fourier",
-"garamondx", "libertine", "libertineRoman", "libertine-type1", "lmodern", "mathdesign", "mathpazo",
-"mathptmx", "MinionPro", "newcent", "noto", "noto-serif", "PTSerif", "tgbonum", "tgchorus",
-"tgpagella", "tgschola", "tgtermes", "utopia", "xcharter", 0 };
+"ccfonts", "chancery", "charter", "cmr", "cochineal", "crimson", "CrimsonPro", "DejaVuSerif",
+"DejaVuSerifCondensed", "fourier", "garamondx", "libertine", "libertineRoman", "libertine-type1",
+"lmodern", "mathdesign", "mathpazo", "mathptmx", "MinionPro", "newcent", "noto", "noto-serif",
+"PTSerif", "tgbonum", "tgchorus", "tgpagella", "tgschola", "tgtermes", "utopia", "xcharter", 0 };
 
 const char * const known_sans_font_packages[] = { "avant", "berasans", "biolinum",
 "biolinum-type1", "cantarell", "Chivo", "cmbr", "cmss", "DejaVuSans", "DejaVuSansCondensed", "FiraSans", "helvet", "iwona",
@@ -946,6 +946,37 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_font_roman_opts = xopts;
 		options.clear();
 	}
+
+	if (name == "CrimsonPro") {
+		h_font_roman_osf = "true";
+		for (auto const & opt : allopts) {
+			if (opt == "lf" || opt == "lining") {
+				h_font_roman_osf = "false";
+				continue;
+			}
+			if (opt == "proportional" || opt == "p")
+				continue;
+			if (opt == "medium") {
+				h_font_roman[0] = "CrimsonProMedium";
+				continue;
+			}
+			if (opt == "extralight") {
+				h_font_roman[0] = "CrimsonProExtraLight";
+				continue;
+			}
+			if (opt == "light") {
+				h_font_roman[0] = "CrimsonProLight";
+				continue;
+			}
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (!xopts.empty())
+			h_font_roman_opts = xopts;
+		options.clear();
+	}
+
 
 	if (name == "eco")
 		// font uses old-style figure
