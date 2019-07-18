@@ -48,8 +48,6 @@ public:
 	docstring const & ot1font() { return ot1font_; }
 	/// A font that provides Old Style Figures for this type face
 	docstring const & osffont() { return osffont_; }
-	/// A package option needed to load this font
-	docstring const & packageoptions() { return packageoptions_; }
 	/// A package option for Old Style Figures
 	docstring const & osfoption() { return osfoption_; }
 	/// A package option for true SmallCaps
