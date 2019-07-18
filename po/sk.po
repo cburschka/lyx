@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-07-17 18:51+0200\n"
-"PO-Revision-Date: 2019-07-17 17:12+0000\n"
+"POT-Creation-Date: 2019-07-18 19:46+0200\n"
+"PO-Revision-Date: 2019-07-18 17:49+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -18182,6 +18182,22 @@ msgstr "Crimson"
 msgid "Computer Modern Roman"
 msgstr "Computer Modern Roman"
 
+#: lib/latexfonts:158
+msgid "Crimson Pro"
+msgstr "Crimson Pro"
+
+#: lib/latexfonts:169
+msgid "Crimson Pro (Medium)"
+msgstr "Crimson Pro (stredné)"
+
+#: lib/latexfonts:180
+msgid "Crimson Pro (Light)"
+msgstr "Crimson Pro (svetlé)"
+
+#: lib/latexfonts:191
+msgid "Crimson Pro (Extralight)"
+msgstr "Crimson Pro (extra svetlé)"
+
 #: lib/latexfonts:152
 msgid "DejaVu Serif"
 msgstr "DejaVu serifové"
@@ -18206,13 +18222,9 @@ msgstr "IBM Plex serifové (extra svetlé)"
 msgid "IBM Plex Serif (Light)"
 msgstr "IBM Plex serifové (svetlé)"
 
-#: lib/latexfonts:206
-msgid "IBM Plex Serif (Semibold)"
-msgstr "IBM Plex serifové (polotučné)"
-
-#: lib/latexfonts:203
-msgid "Adobe Source Serif Pro"
-msgstr "Adobe Source Serif Pro"
+#: lib/latexfonts:250
+msgid "Source Serif Pro"
+msgstr "Source Serif Pro"
 
 #: lib/latexfonts:169 lib/latexfonts:178
 msgid "URW Garamond"
@@ -18247,10 +18259,6 @@ msgstr "Minion Pro"
 msgid "New Century Schoolbook"
 msgstr "New Century Schoolbook"
 
-#: lib/latexfonts:381
-msgid "Noto Serif (Regular)"
-msgstr "Noto serifové (regulárne)"
-
 #: lib/latexfonts:390
 msgid "Noto Serif (Medium)"
 msgstr "Noto serifové (stredné)"
@@ -18276,9 +18284,9 @@ msgstr "Noto serifové"
 msgid "Palatino"
 msgstr "Palatino"
 
-#: lib/latexfonts:485 lib/latexfonts:493
-msgid "ParaType Serif"
-msgstr "ParaType serifové"
+#: lib/latexfonts:513
+msgid "PT Serif"
+msgstr "PT serifové"
 
 #: lib/latexfonts:389 lib/latexfonts:398 lib/latexfonts:405 lib/latexfonts:411
 msgid "Times Roman"
@@ -18356,9 +18364,9 @@ msgstr "Computer Modern bezserifové"
 msgid "DejaVu Sans"
 msgstr "DejaVu bezserifové"
 
-#: lib/latexfonts:551
-msgid "DejaVu Sans Condensed"
-msgstr "DejaVu bezserifové zhustené"
+#: lib/latexfonts:742
+msgid "DejaVu Sans (Condensed)"
+msgstr "DejaVu bezserifové (zhustené)"
 
 #: lib/latexfonts:685
 msgid "Fira Sans"
@@ -18404,13 +18412,9 @@ msgstr "IBM Plex bezserifové (extra svetlé)"
 msgid "IBM Plex Sans (Light)"
 msgstr "IBM Plex bezserifové (svetlé)"
 
-#: lib/latexfonts:729
-msgid "IBM Plex Sans (Semibold)"
-msgstr "IBM Plex bezserifové (polotučné)"
-
-#: lib/latexfonts:645
-msgid "Adobe Source Sans Pro"
-msgstr "Adobe Source Sans Pro"
+#: lib/latexfonts:864
+msgid "Source Sans Pro"
+msgstr "Source Sans Pro"
 
 #: lib/latexfonts:558
 msgid "Helvetica"
@@ -18452,10 +18456,6 @@ msgstr "Kurier (Svetlé zhustené)"
 msgid "Latin Modern Sans"
 msgstr "Latin Modern bezserifové"
 
-#: lib/latexfonts:818
-msgid "Noto Sans (Regular)"
-msgstr "Noto bezserifové (regulárne)"
-
 #: lib/latexfonts:829
 msgid "Noto Sans (Medium)"
 msgstr "Noto bezserifové (stredné)"
@@ -18472,13 +18472,13 @@ msgstr "Noto bezserifové (svetlé)"
 msgid "Noto Sans (Extralight)"
 msgstr "Noto bezserifové (extra svetlé)"
 
+#: lib/latexfonts:998
+msgid "PT Sans"
+msgstr "PT bezserifové"
+
 #: lib/latexfonts:817
 msgid "Noto Sans"
 msgstr "Noto bezserifové"
-
-#: lib/latexfonts:951
-msgid "ParaType Sans"
-msgstr "ParaType bezserifové"
 
 #: lib/latexfonts:644
 msgid "TeX Gyre Adventor"
@@ -18532,13 +18532,9 @@ msgstr "IBM Plex strojopisné (extra svetlé)"
 msgid "IBM Plex Mono (Light)"
 msgstr "IBM Plex strojopisné (svetlé)"
 
-#: lib/latexfonts:982
-msgid "IBM Plex Mono (Semibold)"
-msgstr "IBM Plex strojopisné (polotučné)"
-
-#: lib/latexfonts:837
-msgid "Adobe Source Code Pro"
-msgstr "Adobe Source Code Pro"
+#: lib/latexfonts:1111
+msgid "Source Code Pro"
+msgstr "Source Code Pro"
 
 #: lib/latexfonts:1125 lib/latexfonts:1133
 msgid "Libertine Mono"
@@ -18552,17 +18548,13 @@ msgstr "Latin Modern strojopisné"
 msgid "LuxiMono"
 msgstr "Luxi strojopisné"
 
-#: lib/latexfonts:966
-msgid "Noto Mono Regular"
-msgstr "Noto strojopisné regulárne"
-
 #: lib/latexfonts:974
 msgid "Noto Mono"
 msgstr "Noto strojopisné"
 
-#: lib/latexfonts:1171
-msgid "ParaType Mono"
-msgstr "ParaType strojopisné"
+#: lib/latexfonts:1158
+msgid "PT Mono"
+msgstr "PT strojopisné"
 
 #: lib/latexfonts:747
 msgid "TeX Gyre Cursor"
