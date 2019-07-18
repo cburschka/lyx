@@ -370,58 +370,11 @@ Font newcent
 EndFont
 
 Font NotoSerifRegular
-	GuiName         "Noto Serif"
-	Family          rm
-	Package         noto-serif
-	OsfOption	osf
-	MoreOptions      1
-EndFont
-
-Font NotoSerifMedium
-	GuiName         "Noto Serif (Medium)"
-	Family          rm
-	Package         noto-serif
-	PackageOptions  medium
-	OsfDefault	0
-	OsfOption	osf
-	MoreOptions      1
-EndFont
-
-Font NotoSerifThin
-	GuiName         "Noto Serif (Thin)"
-	Family          rm
-	Package         noto-serif
-	PackageOptions  thin
-	OsfDefault	0
-	OsfOption	osf
-	MoreOptions      1
-EndFont
-
-Font NotoSerifLight
-	GuiName         "Noto Serif (Light)"
-	Family          rm
-	Package         noto-serif
-	PackageOptions  light
-	OsfDefault	0
-	OsfOption	osf
-	MoreOptions      1
-EndFont
-
-Font NotoSerifExtralight
-	GuiName         "Noto Serif (Extralight)"
-	Family          rm
-	Package         noto-serif
-	PackageOptions  extralight
-	OsfDefault	0
-	OsfOption	osf
-	MoreOptions     1
-EndFont
-
-Font NotoSerif-TLF
 	GuiName          "Noto Serif"
 	Family           rm
-	SwitchDefault    1
-	Requires         noto
+	Package          noto-serif
+	OsfOption	 osf
+	MoreOptions      1
 	CompleteFont     noto
 EndFont
 
@@ -429,6 +382,46 @@ AltFont noto
 	GuiName          "Noto Serif"
 	Family           rm
 	Package          noto
+	OsfOption	 osf
+	MoreOptions      1
+EndFont
+
+Font NotoSerifMedium
+	GuiName          "Noto Serif (Medium)"
+	Family           rm
+	Package          noto-serif
+	PackageOptions   medium
+	OsfDefault	 0
+	OsfOption	 osf
+	MoreOptions      1
+EndFont
+
+Font NotoSerifThin
+	GuiName          "Noto Serif (Thin)"
+	Family           rm
+	Package          noto-serif
+	PackageOptions   thin
+	OsfDefault	 0
+	OsfOption	 osf
+	MoreOptions      1
+EndFont
+
+Font NotoSerifLight
+	GuiName          "Noto Serif (Light)"
+	Family           rm
+	Package          noto-serif
+	PackageOptions   light
+	OsfDefault	 0
+	OsfOption	 osf
+	MoreOptions      1
+EndFont
+
+Font NotoSerifExtralight
+	GuiName          "Noto Serif (Extralight)"
+	Family           rm
+	Package          noto-serif
+	PackageOptions   extralight
+	OsfDefault	 0
 	OsfOption	 osf
 	MoreOptions      1
 EndFont
@@ -917,7 +910,7 @@ Font NotoSansRegular
 	Package         noto-sans
 	OsfDefault	0
 	OsfOption	osf
-	MoreOptions      1
+	MoreOptions	1
 EndFont
 
 Font NotoSansMedium
@@ -928,7 +921,7 @@ Font NotoSansMedium
         PackageOptions  medium
 	OsfDefault	0
 	OsfOption	osf
-	MoreOptions      1
+	MoreOptions	1
 EndFont
 
 Font NotoSansThin
@@ -939,7 +932,7 @@ Font NotoSansThin
 	PackageOptions  thin
 	OsfDefault	0
 	OsfOption	osf
-	MoreOptions      1
+	MoreOptions	1
 EndFont
 
 Font NotoSansLight
@@ -950,7 +943,7 @@ Font NotoSansLight
 	PackageOptions  light
 	OsfDefault	0
 	OsfOption	osf
-	MoreOptions      1
+	MoreOptions	1
 EndFont
 
 Font NotoSansExtralight
@@ -961,14 +954,7 @@ Font NotoSansExtralight
 	PackageOptions  extralight
 	OsfDefault	0
 	OsfOption	osf
-	MoreOptions      1
-EndFont
-
-Font NotoSans-TLF
-	GuiName          "Noto Sans"
-	Family           sf
-	SwitchDefault    1
-	Requires         noto
+	MoreOptions	1
 EndFont
 
 Font PTSans-TLF

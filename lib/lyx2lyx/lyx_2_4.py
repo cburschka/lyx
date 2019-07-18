@@ -2966,8 +2966,6 @@ def convert_Semibolds(document):
     else:
         NonTeXFonts = str2bool(get_value(document.header, "\\use_non_tex_fonts", i))
 
-    sbfonts = ["IBMPlexSerifSemibold", "IBMPlexSansSemibold", "IBMPlexMonoSemibold" ]
-
     i = find_token(document.header, "\\font_roman", 0)
     if i == -1:
         document.warning("Malformed LyX document: Missing \\font_roman.")
@@ -3047,6 +3045,43 @@ def convert_Semibolds(document):
                     document.header[x] = "\\font_typewriter_opts \"semibold, " + sfopts[1].strip('"') + "\""
 
 
+def convert_NotoRegulars(document):
+    " Merge diverse noto reagular fonts "
+
+    i = find_token(document.header, "\\font_roman", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_roman.")
+    else:
+        # We need to use this regex since split() does not handle quote protection
+        romanfont = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+        roman = romanfont[1].strip('"')
+        if roman == "NotoSerif-TLF":
+            romanfont[1] = '"NotoSerifRegular"'
+            document.header[i] = " ".join(romanfont)
+
+    i = find_token(document.header, "\\font_sans", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_sans.")
+    else:
+        # We need to use this regex since split() does not handle quote protection
+        sffont = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+        sf = sffont[1].strip('"')
+        if sf == "NotoSans-TLF":
+            sffont[1] = '"NotoSansRegular"'
+            document.header[i] = " ".join(sffont)
+
+    i = find_token(document.header, "\\font_typewriter", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_typewriter.")
+    else:
+        # We need to use this regex since split() does not handle quote protection
+        ttfont = re.findall(r'[^"\s]\S*|".+?"', document.header[i])
+        tt = ttfont[1].strip('"')
+        if tt == "NotoMono-TLF":
+            ttfont[1] = '"NotoMonoRegular"'
+            document.header[i] = " ".join(ttfont)
+
+
 ##
 # Conversion hub
 #
@@ -3091,7 +3126,7 @@ convert = [
            [580, []],
            [581, [convert_osf]],
            [582, [convert_AdobeFonts,convert_latexFonts,convert_notoFonts,convert_CantarellFont,convert_FiraFont]],# old font re-converterted due to extra options
-           [583, [convert_ChivoFont,convert_Semibolds]],
+           [583, [convert_ChivoFont,convert_Semibolds,convert_NotoRegulars]],
           ]
 
 revert =  [[582, [revert_ChivoFont]],
