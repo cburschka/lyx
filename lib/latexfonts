@@ -510,17 +510,10 @@ AltFont pplj
 EndFont
 
 Font PTSerif-TLF
-	GuiName         "ParaType Serif"
+	GuiName         "PT Serif"
 	Family          rm
 	Requires        paratype
 	Package         PTSerif
-	CompleteFont    paratype
-EndFont
-
-AltFont paratype
-	GuiName          "ParaType Serif"
-	Family           rm
-	Package          paratype
 EndFont
 
 Font times
@@ -746,7 +739,7 @@ Font DejaVuSans
 EndFont
 
 Font DejaVuSansCondensed
-	GuiName          "DejaVu Sans Condensed"
+	GuiName          "DejaVu Sans (Condensed)"
 	Family           sf
 	Package          DejaVuSansCondensed
 	ScaleOption      scaled=$$val
@@ -1002,7 +995,7 @@ Font NotoSansExtralight
 EndFont
 
 Font PTSans-TLF
-	GuiName         "ParaType Sans"
+	GuiName         "PT Sans"
 	Family          sf
 	ScaleOption     scaled=$$val
 	Requires        paratype
@@ -1162,7 +1155,7 @@ Font NotoMonoRegular
 EndFont
 
 Font PTMono-TLF
-	GuiName         "ParaType Mono"
+	GuiName         "PT Mono"
 	Family          tt
 	ScaleOption     scaled=$$val
 	Requires        paratype
