@@ -756,7 +756,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	// By default, we use the package name as LyX font name,
 	// so this only needs to be reset if these names differ
-	if (is_known(name, known_roman_font_packages))
+	// Exception: noto
+	if (is_known(name, known_roman_font_packages) && name != "noto")
 		h_font_roman[0] = name;
 
 	if (name == "ccfonts") {
@@ -950,34 +951,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 		// font uses old-style figure
 		h_font_roman_osf = "true";
 
-	if (name == "noto") {
-		h_font_roman[0] = "NotoSerif-TLF";
-		// noto as typewriter is handled in handling of \ttdefault
-		// special cases are handled in handling of \rmdefault and \sfdefault
-		for (auto const & opt : allopts) {
-			if (opt == "rm") {
-				h_font_roman[0] = "NotoSerif-TLF";
-				continue;
-			}
-			if (opt == "sf") {
-				h_font_sans[0] = "NotoSans-TLF";
-				continue;
-			}
-			if (opt == "nott") {
-				h_font_roman[0] = "NotoSerif-TLF";
-				h_font_sans[0] = "NotoSans-TLF";
-				continue;
-			}
-			if (opt == "osf") {
-				h_font_roman_osf = "true";
-				continue;
-			}
-			if (!xopts.empty())
-				xopts += ", ";
-			xopts += opt;
-		}
-	}
-
 	if (name == "paratype") {
 		// in this case all fonts are ParaType
 		h_font_roman[0] = "PTSerif-TLF";
@@ -1028,35 +1001,120 @@ void Preamble::handle_package(Parser &p, string const & name,
 		options.clear();
 	}
 
-	if (name == "noto-serif") {
-		h_font_roman[0] = "NotoSerifRegular";
+	if (name == "noto-serif" || name == "noto") {
+		bool rm = false;
+		bool rmx = false;
+		bool sf = false;
+		bool sfx = false;
+		bool tt = false;
+		bool thin = false;
+		bool extralight = false;
+		bool light = false;
+		bool medium = false;
+		bool osf = false;
+		string scl;
+		if (name == "noto") {
+			rm = true;
+			sf = true;
+			tt = true;
+		}
+		// Since the options might apply to different shapes,
+		// we need to parse all options first and then handle them.
 		for (auto const & opt : allopts) {
 			if (opt == "regular")
 				// skip
 				continue;
+			if (opt == "rm") {
+				rm = true;
+				rmx = true;
+				sf = sfx;
+				tt = false;
+				continue;
+			}
 			if (opt == "thin") {
-				h_font_roman[0] = "NotoSerifThin";
+				thin = true;
 				continue;
 			}
 			if (opt == "extralight") {
-				h_font_roman[0] = "NotoSerifExtralight";
+				extralight = true;
 				continue;
 			}
 			if (opt == "light") {
-				h_font_roman[0] = "NotoSerifLight";
+				light = true;
 				continue;
 			}
 			if (opt == "medium") {
-				h_font_roman[0] = "NotoSerifMedium";
+				medium = true;
+				continue;
+			}
+			if (opt == "sf") {
+				sfx = true;
+				sf = true;
+				rm = rmx;
+				tt = false;
+				continue;
+			}
+			if (opt == "nott") {
+				tt = false;
+				continue;
+			}
+			if (opt == "osf") {
+				osf = true;
+				continue;
+			}
+			if (prefixIs(opt, "scaled=")) {
+				scl = opt;
 				continue;
 			}
 			if (!xopts.empty())
 				xopts += ", ";
 			xopts += opt;
 		}
-		if (!xopts.empty())
-			h_font_roman_opts = xopts;
 		options.clear();
+		// handle options that might affect different shapes
+		if (name == "noto-serif" || rm) {
+			if (thin)
+				h_font_roman[0] = "NotoSerifThin";
+			else if (extralight)
+				h_font_roman[0] = "NotoSerifExtralight";
+			else if (light)
+				h_font_roman[0] = "NotoSerifLight";
+			else if (medium)
+				h_font_roman[0] = "NotoSerifMedium";
+			else
+				h_font_roman[0] = "NotoSerifRegular";
+			if (osf)
+				h_font_roman_osf = "true";
+			if (!xopts.empty())
+				h_font_roman_opts = xopts;
+		}
+		if (name == "noto" && sf) {
+			if (thin)
+				h_font_sans[0] = "NotoSansThin";
+			else if (extralight)
+				h_font_sans[0] = "NotoSansExtralight";
+			else if (light)
+				h_font_sans[0] = "NotoSansLight";
+			else if (medium)
+				h_font_sans[0] = "NotoSansMedium";
+			else
+				h_font_sans[0] = "NotoSansRegular";
+			if (osf)
+				h_font_sans_osf = "true";
+			if (!scl.empty())
+				scale_as_percentage(scl, h_font_sf_scale[0]);
+			if (!xopts.empty())
+				h_font_sans_opts = xopts;
+		}
+		if (name == "noto" && tt) {
+			h_font_typewriter[0] = "NotoMonoRegular";
+			if (osf)
+				h_font_typewriter_osf = "true";
+			if (!scl.empty())
+				scale_as_percentage(scl, h_font_tt_scale[0]);
+			if (!xopts.empty())
+				h_font_typewriter_opts = xopts;
+		}
 	}
 
 	if (name == "sourceserifpro") {
@@ -1082,7 +1140,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 	// By default, we use the package name as LyX font name,
 	// so this only needs to be reset if these names differ.
 	// Also, we handle the scaling option here generally.
-	if (is_known(name, known_sans_font_packages)) {
+	// Exception: noto
+	if (is_known(name, known_sans_font_packages) && name != "noto") {
 		h_font_sans[0] = name;
 		if (contains(opts, "scale")) {
 			vector<string>::const_iterator it = allopts.begin();
@@ -1290,9 +1349,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 	// By default, we use the package name as LyX font name,
 	// so this only needs to be reset if these names differ.
 	// Also, we handle the scaling option here generally.
-	// Note: fourier can be set as roman font _only_
-	// fourier as typewriter is handled in handling of \ttdefault
-	if (is_known(name, known_typewriter_font_packages) && name != "fourier") {
+	// Exceptions: fourier, noto
+	if (is_known(name, known_typewriter_font_packages) && name != "fourier" && name != "noto") {
 		h_font_typewriter[0] = name;
 		if (contains(opts, "scale")) {
 			vector<string>::const_iterator it = allopts.begin();
