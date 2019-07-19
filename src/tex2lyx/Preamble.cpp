@@ -149,12 +149,12 @@ const char * const known_roman_font_packages[] = { "ae", "beraserif", "bookman",
 
 const char * const known_sans_font_packages[] = { "avant", "berasans", "biolinum",
 "biolinum-type1", "cantarell", "Chivo", "cmbr", "cmss", "DejaVuSans", "DejaVuSansCondensed", "FiraSans", "helvet", "iwona",
-"iwonac", "iwonal", "iwonalc", "kurier", "kurierc", "kurierl", "kurierlc", "lmss", "noto", "noto-sans", "PTSans",
+"iwonac", "iwonal", "iwonalc", "kurier", "kurierc", "kurierl", "kurierlc", "lmss", "noto-sans", "PTSans",
 "tgadventor", "tgheros", "uop", 0 };
 
 const char * const known_typewriter_font_packages[] = { "beramono", "cmtl", "cmtt", "courier", "DejaVuSansMono",
-"FiraMono", "lmtt", "luximono", "fourier", "libertineMono", "libertineMono-type1", "lmodern",
-"mathpazo", "mathptmx", "newcent", "noto", "noto-mono", "PTMono", "tgcursor", "txtt", 0 };
+"FiraMono", "lmtt", "luximono", "libertineMono", "libertineMono-type1", "lmodern",
+"mathpazo", "mathptmx", "newcent", "noto-mono", "PTMono", "tgcursor", "txtt", 0 };
 
 const char * const known_math_font_packages[] = { "eulervm", "newtxmath", 0};
 
@@ -756,8 +756,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	// By default, we use the package name as LyX font name,
 	// so this only needs to be reset if these names differ
-	// Exception: noto
-	if (is_known(name, known_roman_font_packages) && name != "noto")
+	if (is_known(name, known_roman_font_packages))
 		h_font_roman[0] = name;
 
 	if (name == "ccfonts") {
@@ -1171,8 +1170,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	// By default, we use the package name as LyX font name,
 	// so this only needs to be reset if these names differ.
 	// Also, we handle the scaling option here generally.
-	// Exception: noto
-	if (is_known(name, known_sans_font_packages) && name != "noto") {
+	if (is_known(name, known_sans_font_packages)) {
 		h_font_sans[0] = name;
 		if (contains(opts, "scale")) {
 			vector<string>::const_iterator it = allopts.begin();
@@ -1380,8 +1378,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	// By default, we use the package name as LyX font name,
 	// so this only needs to be reset if these names differ.
 	// Also, we handle the scaling option here generally.
-	// Exceptions: fourier, noto
-	if (is_known(name, known_typewriter_font_packages) && name != "fourier" && name != "noto") {
+	if (is_known(name, known_typewriter_font_packages)) {
 		h_font_typewriter[0] = name;
 		if (contains(opts, "scale")) {
 			vector<string>::const_iterator it = allopts.begin();
