@@ -22,6 +22,7 @@
 #include "DispatchResult.h"
 #include "FuncCode.h"
 #include "FuncRequest.h"
+#include "Language.h"
 #include "Layout.h"
 #include "LyXAction.h"
 #include "LyXRC.h"
@@ -50,6 +51,8 @@
 #include "mathed/MathData.h"
 #include "mathed/MathFactory.h"
 #include "mathed/InsetMathMacro.h"
+
+#include "frontends/Application.h"
 
 #include <sstream>
 #include <limits>
@@ -2396,6 +2399,18 @@ bool notifyCursorLeavesOrEnters(Cursor const & old, Cursor & cur)
 }
 
 
+void Cursor::setLanguageFromInput()
+{
+	string const & code = theApp()->inputLanguageCode();
+	Language const * lang = languages.getFromCode(code, buffer()->getLanguages());
+	if (lang) {
+		current_font.setLanguage(lang);
+		real_current_font.setLanguage(lang);
+	} else
+		LYXERR0("setLanguageFromCode: unknown language code " << code);
+}
+
+
 void Cursor::setCurrentFont()
 {
 	CursorSlice const & cs = innerTextSlice();
@@ -2428,6 +2443,9 @@ void Cursor::setCurrentFont()
 	BufferParams const & bufparams = buffer()->params();
 	current_font = par.getFontSettings(bufparams, cpos);
 	real_current_font = tm.displayFont(cpit, cpos);
+
+	// set language to input language
+	setLanguageFromInput();
 
 	// special case for paragraph end
 	if (cs.pos() == lastpos()

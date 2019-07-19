@@ -2739,17 +2739,6 @@ Cursor const & BufferView::cursor() const
 }
 
 
-void BufferView::setCursorLanguage(std::string const & code)
-{
-	Language const * lang = languages.getFromCode(code, buffer_.getLanguages());
-	if (lang) {
-		d->cursor_.current_font.setLanguage(lang);
-		d->cursor_.real_current_font.setLanguage(lang);
-	} else
-		LYXERR0("setCursorLanguage: unknown language code " << code);
-}
-
-
 bool BufferView::singleParUpdate()
 {
 	Text & buftext = buffer_.text();

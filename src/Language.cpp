@@ -390,7 +390,7 @@ Match match(string const & code, Language const & lang)
 	if ((code.size() == 2) && (langcode.size() > 2)
 		&& (code + '_' == langcode.substr(0, 3)))
 		return ApproximateMatch;
- 	if (code.substr(0,2) == langcode.substr(0,2))
+	if (code.substr(0,2) == langcode.substr(0,2))
 		return VeryApproximateMatch;
 	return NoMatch;
 }

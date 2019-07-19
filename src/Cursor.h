@@ -279,7 +279,13 @@ public:
 	/// get the resut of the last dispatch
 	DispatchResult const & result() const;
 
-	///
+	/// Set the cursor language from current input method language
+	/* Considers first exact math with the codes used in the document,
+	 * then approximate match among the same list, and finally exact
+	 * or partial match with the whole list of languages.
+	 */
+	void setLanguageFromInput();
+	/// Set the current font of the cursor from its location. 
 	void setCurrentFont();
 
 	/**

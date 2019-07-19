@@ -2129,7 +2129,7 @@ string GuiApplication::inputLanguageCode() const
 	QLocale loc = inputMethod()->locale();
 #endif
 	//LYXERR0("input lang = " << fromqstr(loc.name()));
-	return fromqstr(loc.name());
+	return loc.name() == "C" ? "en_US" : fromqstr(loc.name());
 }
 
 
@@ -2137,7 +2137,7 @@ void GuiApplication::onLocaleChanged()
 {
 	//LYXERR0("Change language to " << inputLanguage()->lang());
 	if (currentView() && currentView()->currentBufferView())
-		currentView()->currentBufferView()->setCursorLanguage(inputLanguageCode());
+		currentView()->currentBufferView()->cursor().setLanguageFromInput();
 }
 
 
@@ -2749,7 +2749,7 @@ bool GuiApplication::event(QEvent * e)
 	case QEvent::KeyboardLayoutChange:
 		//LYXERR0("keyboard change");
 		if (currentView() && currentView()->currentBufferView())
-			currentView()->currentBufferView()->setCursorLanguage(inputLanguageCode());
+			currentView()->currentBufferView()->cursor().setLanguageFromInput();
 		e->accept();
 		return true;
 #endif
