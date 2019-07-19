@@ -1529,8 +1529,10 @@ void latexParagraphs(Buffer const & buf,
 
 	// if "auto end" is switched off, explicitly close the language at the end
 	// but only if the last par is in a babel or polyglossia language
+	Language const * const lastpar_language =
+			paragraphs.at(lastpit).getParLanguage(bparams);
 	if (maintext && !lyxrc.language_auto_end && !mainlang.empty() &&
-		paragraphs.at(lastpit).getParLanguage(bparams)->encoding()->package() != Encoding::CJK) {
+		lastpar_language->encoding()->package() != Encoding::CJK) {
 		os << from_utf8(subst(lang_end_command,
 					"$$lang",
 					mainlang))
@@ -1546,12 +1548,14 @@ void latexParagraphs(Buffer const & buf,
 		state->open_encoding_ = none;
 	}
 	// Likewise for polyglossia or when using begin/end commands
-	// or after an active branch inset with a language switch
+	// or at the very end of an active branch inset with a language switch
 	Language const * const outer_language = (runparams.local_font != 0)
 			? runparams.local_font->language() : bparams.language;
 	string const & prev_lang = runparams.use_polyglossia
 			? getPolyglossiaEnvName(outer_language)
 			: outer_language->babel();
+	string const lastpar_lang = runparams.use_polyglossia ?
+		getPolyglossiaEnvName(lastpar_language): lastpar_language->babel();
 	string const & cur_lang = openLanguageName(state);
 	if (((runparams.inbranch && langOpenedAtThisLevel(state) && prev_lang != cur_lang)
 	     || (maintext && !is_child)) && !cur_lang.empty()) {
@@ -1561,7 +1565,11 @@ void latexParagraphs(Buffer const & buf,
 		   << '\n';
 		if (using_begin_end)
 			popLanguageName();
-	} else if (runparams.inbranch && !using_begin_end && prev_lang != cur_lang) {
+	} else if (runparams.inbranch && !using_begin_end
+		   && prev_lang != lastpar_lang && !lastpar_lang.empty()) {
+		// with !using_begin_end, cur_lang is empty, so we need to
+		// compare against the paragraph language (and we are in the
+		// last paragraph at this point)
 		os << subst(lang_begin_command, "$$lang", prev_lang) << '\n';
 	}
 
