@@ -61,7 +61,7 @@ namespace {
 
 // The format should also be updated in configure.py, and conversion code
 // should be added to prefs2prefs_prefs.py.
-static unsigned int const LYXRC_FILEFORMAT = 29; // spitz: remove \\date_insert_format
+static unsigned int const LYXRC_FILEFORMAT = 30; // lasgouttes: add \respect_os_kbd_language
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
 	{ "\\accept_compound", LyXRC::RC_ACCEPT_COMPOUND },
@@ -159,6 +159,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\print_paper_dimension_flag", LyXRC::RC_PRINTPAPERDIMENSIONFLAG },
 	{ "\\print_paper_flag", LyXRC::RC_PRINTPAPERFLAG },
 	{ "\\pygmentize_command", LyXRC::RC_PYGMENTIZE_COMMAND },
+	{ "\\respect_os_kbd_language", LyXRC::RC_RESPECT_OS_KBD_LANGUAGE },
 	{ "\\save_compressed", LyXRC::RC_SAVE_COMPRESSED },
 	{ "\\save_origin", LyXRC::RC_SAVE_ORIGIN },
 	{ "\\screen_dpi", LyXRC::RC_SCREEN_DPI },
@@ -796,6 +797,9 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			break;
 		case RC_LANGUAGE_COMMAND_LOCAL:
 			lexrc >> language_command_local;
+			break;
+		case RC_RESPECT_OS_KBD_LANGUAGE:
+			lexrc >> respect_os_kbd_language;
 			break;
 		case RC_VISUAL_CURSOR:
 			lexrc >> visual_cursor;
@@ -2421,6 +2425,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			os << "\\mark_foreign_language " <<
 				convert<string>(mark_foreign_language) << '\n';
 		}
+		// fall through
+	case RC_RESPECT_OS_KBD_LANGUAGE:
+		if (ignore_system_lyxrc ||
+		    respect_os_kbd_language
+		    != system_lyxrc.respect_os_kbd_language) {
+			os << "\\respect_os_kbd_language " <<
+				convert<string>(respect_os_kbd_language) << '\n';
+		}
+		//fall through
 		if (tag != RC_LAST)
 			break;
 
@@ -2778,6 +2791,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_MACRO_EDIT_STYLE:
 	case LyXRC::RC_MAKE_BACKUP:
 	case LyXRC::RC_MARK_FOREIGN_LANGUAGE:
+	case LyXRC::RC_RESPECT_OS_KBD_LANGUAGE:
 	case LyXRC::RC_MOUSE_WHEEL_SPEED:
 	case LyXRC::RC_MOUSE_MIDDLEBUTTON_PASTE:
 	case LyXRC::RC_NUMLASTFILES:
@@ -3097,6 +3111,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_MARK_FOREIGN_LANGUAGE:
 		str = _("Select to control the highlighting of words with a language foreign to that of the document.");
+		break;
+
+	case RC_RESPECT_OS_KBD_LANGUAGE:
+		str = _("Select to use the current keyboard language, as set from the operating system, as default input language.");
 		break;
 
 	case RC_MOUSE_WHEEL_SPEED:

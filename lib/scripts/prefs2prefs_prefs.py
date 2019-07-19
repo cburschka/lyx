@@ -10,9 +10,9 @@
 
 # This file houses conversion information for the preferences file.
 
-# The converter functions take a line as argument and return a list: 
-# 	(Bool, NewLine), 
-# where the Bool says if  we've modified anything and the NewLine is 
+# The converter functions take a line as argument and return a list:
+# 	(Bool, NewLine),
+# where the Bool says if  we've modified anything and the NewLine is
 # the new line, if so, which will be used to replace the old line.
 
 # Incremented to format 2, r39670 by jrioux
@@ -116,6 +116,10 @@
 
 # Incremented to format 29, by lasgouttes
 #   Remove use_pixmap_cache
+
+# Incremented to format 30, by lasgouttes
+#   Add respect_os_kbd_language.
+#   No convergence necessary.
 
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py.
@@ -464,5 +468,6 @@ conversions = [
 	[ 26, [remove_font_encoding]],
 	[ 27, []],
 	[ 28, [remove_date_insert_format]],
-	[ 29, [remove_use_pixmap_cache]]
+	[ 29, [remove_use_pixmap_cache]],
+	[ 30, []]
 ]

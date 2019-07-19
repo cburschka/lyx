@@ -208,7 +208,17 @@
      </property>
     </widget>
    </item>
-   <item row="10" column="0" colspan="3">
+   <item row="10" column="0" colspan="2">
+    <widget class="QCheckBox" name="respectOSkbdCB">
+     <property name="toolTip">
+      <string>Select to use the current keyboard language, as set from the operating system, as default input language.</string>
+     </property>
+     <property name="text">
+      <string>Respect &amp;OS keyboard language</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="0" colspan="3">
     <widget class="QGroupBox" name="rtlGB2">
      <property name="toolTip">
       <string/>
@@ -276,7 +286,7 @@
      </layout>
     </widget>
    </item>
-   <item row="11" column="0">
+   <item row="12" column="0">
     <spacer>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -301,10 +311,12 @@
   <tabstop>startCommandED</tabstop>
   <tabstop>endCommandED</tabstop>
   <tabstop>defaultDecimalPointLE</tabstop>
+  <tabstop>defaultLengthUnitCO</tabstop>
   <tabstop>globalCB</tabstop>
   <tabstop>autoBeginCB</tabstop>
   <tabstop>autoEndCB</tabstop>
   <tabstop>markForeignCB</tabstop>
+  <tabstop>respectOSkbdCB</tabstop>
   <tabstop>logicalCursorRB</tabstop>
   <tabstop>visualCursorRB</tabstop>
  </tabstops>

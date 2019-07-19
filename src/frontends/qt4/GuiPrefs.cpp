@@ -2394,6 +2394,8 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(markForeignCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
+	connect(respectOSkbdCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
 	connect(autoBeginCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(autoEndCB, SIGNAL(clicked()),
@@ -2469,6 +2471,7 @@ void PrefLanguage::applyRC(LyXRC & rc) const
 {
 	rc.visual_cursor = visualCursorRB->isChecked();
 	rc.mark_foreign_language = markForeignCB->isChecked();
+	rc.respect_os_kbd_language = respectOSkbdCB->isChecked();
 	rc.language_auto_begin = autoBeginCB->isChecked();
 	rc.language_auto_end = autoEndCB->isChecked();
 	int const p = languagePackageCO->currentIndex();
@@ -2498,6 +2501,7 @@ void PrefLanguage::updateRC(LyXRC const & rc)
 	else
 		logicalCursorRB->setChecked(true);
 	markForeignCB->setChecked(rc.mark_foreign_language);
+	respectOSkbdCB->setChecked(rc.respect_os_kbd_language);
 	autoBeginCB->setChecked(rc.language_auto_begin);
 	autoEndCB->setChecked(rc.language_auto_end);
 	languagePackageCO->setCurrentIndex(rc.language_package_selection);

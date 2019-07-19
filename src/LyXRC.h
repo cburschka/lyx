@@ -135,6 +135,7 @@ public:
 		RC_PRINTPAPERDIMENSIONFLAG,
 		RC_PRINTPAPERFLAG,
 		RC_PYGMENTIZE_COMMAND,
+		RC_RESPECT_OS_KBD_LANGUAGE,
 		RC_SAVE_COMPRESSED,
 		RC_SAVE_ORIGIN,
 		RC_SCREEN_DPI,
@@ -398,6 +399,8 @@ public:
 	bool mark_foreign_language = true;
 	///
 	std::string gui_language = "auto";
+	///
+	bool respect_os_kbd_language = false;
 	///
 	std::string default_otf_view_format = "pdf4";
 	///
