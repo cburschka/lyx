@@ -78,7 +78,7 @@ make -j${NCORES} 2>&1 >/dev/null || exit
 echo "BUILD_FN exited without error after removing the following include statements invididually:" > "${LOG_FILE}" \
 || { echo "ERROR: could not create log file, ${LOG_FILE}"; exit 1; }
 
-find -regex ".*\(cpp\|h\)$" |  grep -vE "frontends/qt4/ui_|frontends/qt4/moc_" | sort |
+find -regex ".*\(cpp\|h\)$" |  grep -vE "frontends/qt/ui_|frontends/qt/moc_" | sort |
 while read FILE_
 do
 	FILE_COPY=$( tempfile )

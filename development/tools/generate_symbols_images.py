@@ -193,7 +193,7 @@ def main(argv):
     if len(argv) == 4:
         (base, ext) = os.path.splitext(argv[0])
         (mathsymbols, textsymbols) = getlist(argv[2], base)
-        cppfile = os.path.join(os.path.dirname(base), '../../src/frontends/qt4/GuiApplication.cpp')
+        cppfile = os.path.join(os.path.dirname(base), '../../src/frontends/qt/GuiApplication.cpp')
         replacements = getreplacements(cppfile)
         uifile = os.path.join(os.path.dirname(base), '../../lib/ui/stdtoolbars.inc')
         toolbaritems = gettoolbaritems(uifile)

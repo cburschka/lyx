@@ -10,7 +10,7 @@ using namespace std;
 // Escape special chars.
 // All characters are literals except: '.|*?+(){}[]^$\'
 // These characters are literals when preceded by a "\", which is done here
-// This function is unfortunately copied from ../qt4/GuiCitation.cpp, so we
+// This function is unfortunately copied from ../qt/GuiCitation.cpp, so we
 // should try to make sure to keep the two in sync.
 string const escape_special_chars(string const & expr)
 {

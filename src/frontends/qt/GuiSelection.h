@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file qt4/GuiSelection.h
+ * \file qt/GuiSelection.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -22,7 +22,7 @@ namespace lyx {
 namespace frontend {
 
 /**
- * The Qt4 version of the Selection.
+ * The Qt version of the Selection.
  */
 class GuiSelection : public QObject, public Selection
 {

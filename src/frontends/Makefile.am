@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 SUBDIRS = $(FRONTENDS_SUBDIRS) .
 
-DIST_SUBDIRS = qt4 .
+DIST_SUBDIRS = qt .
 
 noinst_LIBRARIES = liblyxfrontends.a
 

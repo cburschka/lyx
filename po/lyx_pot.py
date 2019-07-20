@@ -445,8 +445,8 @@ def layouts_l10n(input_files, output, base, layouttranslations):
     out.close()
 
 
-def qt4_l10n(input_files, output, base):
-    '''Generate pot file from src/frontends/qt4/ui/*.ui'''
+def qt_l10n(input_files, output, base):
+    '''Generate pot file from src/frontends/qt/ui/*.ui'''
     output = io.open(output, 'w', encoding='utf_8', newline='\n')
     pat = re.compile(r'\s*<string>(.*)</string>')
     prop = re.compile(r'\s*<property.*name.*=.*shortcut')
@@ -691,7 +691,7 @@ where
         ui: lib/ui/*
         layouts: lib/layouts/*
         layouttranslations: create lib/layouttranslations from po/*.po and lib/layouts/*
-        qt4: qt4 ui files
+        qt: qt ui files
         languages: file lib/languages
         latexfonts: file lib/latexfonts
         encodings: file lib/encodings
@@ -722,7 +722,7 @@ if __name__ == '__main__':
         elif opt in ['-s', '--src_file']:
             input_files = [f.strip() for f in io.open(value, encoding='utf_8')]
 
-    if input_type not in ['ui', 'layouts', 'layouttranslations', 'qt4', 'languages', 'latexfonts', 'encodings', 'external', 'formats', 'examples_templates', 'tabletemplates'] or output is None:
+    if input_type not in ['ui', 'layouts', 'layouttranslations', 'qt', 'languages', 'latexfonts', 'encodings', 'external', 'formats', 'examples_templates', 'tabletemplates'] or output is None:
         print('Wrong input type or output filename.')
         sys.exit(1)
 
@@ -743,8 +743,8 @@ if __name__ == '__main__':
         layouts_l10n(input_files, output, base, False)
     elif input_type == 'layouttranslations':
         layouts_l10n(input_files, output, base, True)
-    elif input_type == 'qt4':
-        qt4_l10n(input_files, output, base)
+    elif input_type == 'qt':
+        qt_l10n(input_files, output, base)
     elif input_type == 'external':
         external_l10n(input_files, output, base)
     elif input_type == 'formats':

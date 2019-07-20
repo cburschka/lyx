@@ -106,7 +106,7 @@ void setSectionResizeMode(QHeaderView * view,
 /**
  * qt_ - i18nize string and convert to QString
  *
- * Use this in qt4/ instead of _()
+ * Use this in qt/ instead of _()
  */
 QString const qt_(std::string const & str);
 QString const qt_(QString const & qstr);

@@ -62,7 +62,7 @@ static InsetName insetnames[INSET_CODE_SIZE];
 
 
 // This list should be kept in sync with the list of dialogs in
-// src/frontends/qt4/GuiView.cpp, I.e., if a dialog goes with an
+// src/frontends/qt/GuiView.cpp, I.e., if a dialog goes with an
 // inset, the dialog should have the same name as the inset.
 // Changes should be also recorded in LFUN_DIALOG_SHOW doxygen
 // docs in LyXAction.cpp.

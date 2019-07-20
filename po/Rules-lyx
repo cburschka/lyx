@@ -7,7 +7,7 @@ POTFILE_IN_DEPS = $(shell find $(top_srcdir)/src -name Makefile.am)
 
 $(DOMAIN).pot-update: l10n_pots
 
-# The ui_*.h and moc_*.cpp filters must match the patterns in src/frontends/qt4/Makefile.am
+# The ui_*.h and moc_*.cpp filters must match the patterns in src/frontends/qt/Makefile.am
 ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 	LC_ALL=C ; export LC_ALL ; \
 	rm -f $@-t \
@@ -16,15 +16,15 @@ ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 	     sort | uniq ) > $@-t \
 	&& mv $@-t $@
 
-l10n_pots: qt4_l10n.pot layouts_l10n.pot languages_l10n.pot latexfonts_l10n.pot encodings_l10n.pot ui_l10n.pot external_l10n.pot formats_l10n.pot examples_templates_l10n.pot tabletemplates_l10n.pot
+l10n_pots: qt_l10n.pot layouts_l10n.pot languages_l10n.pot latexfonts_l10n.pot encodings_l10n.pot ui_l10n.pot external_l10n.pot formats_l10n.pot examples_templates_l10n.pot tabletemplates_l10n.pot
 	cat $^ | msguniq -o $(DOMAIN).po
 	rm $^
 
 LYX_POT = LC_ALL=C ; export LC_ALL ; \
   $(PYTHON) $(srcdir)/lyx_pot.py -b $(top_srcdir)
 
-qt4_l10n.pot: $(top_srcdir)/src/frontends/qt4/ui/*.ui
-	$(LYX_POT) -o $@ -t qt4 $^
+qt_l10n.pot: $(top_srcdir)/src/frontends/qt/ui/*.ui
+	$(LYX_POT) -o $@ -t qt $^
 
 layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout \
                 $(top_srcdir)/lib/layouts/*.inc \

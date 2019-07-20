@@ -20,7 +20,7 @@ namespace lyx {
 /**
 * qt_ - i18nize string and convert to QString
  *
- * Use this in qt4/ instead of _()
+ * Use this in qt/ instead of _()
  */
 QString const qt_(char const * str, const char * comment = 0);
 

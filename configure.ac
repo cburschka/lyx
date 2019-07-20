@@ -123,7 +123,7 @@ AC_SUBST([HAVE_WCHAR_T])
 # Needed for Mingw-w64
 AC_TYPE_LONG_LONG_INT
 
-### We need iconv for unicode support (Qt4 frontend requires it too)
+### We need iconv for unicode support (Qt frontend requires it too)
 LYX_USE_INCLUDED_ICONV
 
 ### check for compression support
@@ -143,7 +143,7 @@ AC_CHECK_HEADERS(magic.h,
 dnl The code below is not in a macro, because this would cause big
 dnl problems with the AC_REQUIRE contained in QT_DO_IT_ALL.
 QT_DO_IT_ALL([4.5.0])
-AC_SUBST([FRONTENDS_SUBDIRS], [qt4])
+AC_SUBST([FRONTENDS_SUBDIRS], [qt])
 FRONTEND_INFO="${FRONTEND_INFO}\
   Qt Frontend:\n\
       Qt version:\t   ${QTLIB_VERSION}\n"
@@ -363,7 +363,7 @@ AC_CONFIG_FILES([Makefile \
       src/convert/Makefile \
       src/support/Makefile \
       src/frontends/Makefile \
-      src/frontends/qt4/Makefile
+      src/frontends/qt/Makefile
 ])
 
 

@@ -1517,8 +1517,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_DROP_LAYOUTS_CHOICE
  * \li Action: Displays list of layout choices.
- * \li Notion: In the current (as of 2007) Qt4 frontend, this LFUN opens the
-               dropbox allowing for choice of layout.
+ * \li Notion: This LFUN opens the dropbox allowing for choice of layout.
  * \li Syntax: drop-layouts-choice
  * \endvar
  */

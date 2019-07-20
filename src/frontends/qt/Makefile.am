@@ -37,9 +37,9 @@ Resources.cpp: Resources.qrc
 
 #########################  LIBRARIES  #############################
 
-noinst_LIBRARIES = liblyxqt4.a
+noinst_LIBRARIES = liblyxqt.a
 
-liblyxqt4_a_DEPENDENCIES = $(MOCEDFILES)
+liblyxqt_a_DEPENDENCIES = $(MOCEDFILES)
 
 AM_CPPFLAGS += \
 	$(QT_CPPFLAGS) \
@@ -363,9 +363,9 @@ UIFILES = \
 	WorkAreaUi.ui \
 	WrapUi.ui
 
-nodist_liblyxqt4_a_SOURCES = Resources.cpp
+nodist_liblyxqt_a_SOURCES = Resources.cpp
 
-liblyxqt4_a_SOURCES = \
+liblyxqt_a_SOURCES = \
 	$(SOURCEFILES) \
 	$(MOCHEADER) \
 	$(NOMOCHEADER)

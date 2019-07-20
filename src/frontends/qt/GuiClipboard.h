@@ -56,7 +56,7 @@ private:
 
 
 /**
- * The Qt4 version of the Clipboard.
+ * The Qt version of the Clipboard.
  */
 class GuiClipboard: public QObject, public Clipboard
 {

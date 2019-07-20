@@ -230,7 +230,7 @@ vector<string> loadableImageFormats()
 		"\nThe image loader can load the following directly:\n");
 
 	if (qt_formats.empty())
-		LYXERR(Debug::GRAPHICS, "\nQt4 Problem: No Format available!");
+		LYXERR(Debug::GRAPHICS, "\nQt Problem: No Format available!");
 
 	bool jpeg_found = false;
 	bool jpg_found = false;

@@ -34,7 +34,7 @@ lyx_LDADD = \
 	liblyxmathed.a \
 	liblyxinsets.a \
 	frontends/liblyxfrontends.a \
-	frontends/qt4/liblyxqt4.a \
+	frontends/qt/liblyxqt.a \
 	liblyxgraphics.a \
 	support/liblyxsupport.a \
 	$(OTHERLIBS) \

@@ -46,7 +46,7 @@ class Selection;
 There should be only one instance of this class. No Qt object
 initialisation should be done before the instanciation of this class.
 
- Model/View/Controller separation at frontend level in LyX-qt4:
+ Model/View/Controller separation at frontend level in qt frontend:
 
  BufferList (N Buffers)
    |
@@ -117,7 +117,7 @@ initialisation should be done before the instanciation of this class.
  where the next Buffer insertion/deletion is going to take place.
 
 
- 3) The View: \c WorkArea (and it's qt4 specialisation GuiWorkArea)
+ 3) The View: \c WorkArea (and its qt specialisation GuiWorkArea)
 
  This contains the real screen area where the drawing is done by the
  Painter. One WorkArea holds one unique \c BufferView. While it could
@@ -139,9 +139,9 @@ initialisation should be done before the instanciation of this class.
  This is a full window containing a menubar, toolbars and a central
  widget. A GuiView is in charge of creating and closing a View for a
  given Buffer.
- In the qt4 specialisation, \c GuiView, the central widget is a tab
+ In the qt specialisation, \c GuiView, the central widget is a tab
  widget. Each tab is reverved to the visualisation of one Buffer and
- contains one WorkArea. In the qt4 frontend, one GuiView thus contains
+ contains one WorkArea. In the qt frontend, one GuiView thus contains
  multiple WorkAreas but this number can limited to one for another
  frontend. The idea is that the kernel should not know how a Buffer
  is displayed on screen; it's the frontend business.
