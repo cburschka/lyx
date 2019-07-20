@@ -388,8 +388,9 @@ Language belarusian
 	LangCode         be_BY
 End
 
-# supported by polyglossia but not LyX:
+# supported by polyglossia but not babel:
 Language bengali
+	GuiName          "Bengali"
  	PolyglossiaName  bengali
 	QuoteStyle       english
 	Encoding         utf8
