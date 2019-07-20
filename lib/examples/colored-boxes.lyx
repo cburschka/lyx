@@ -128,6 +128,15 @@ Uwe Stöhr
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 With the module 
 \emph on
 Fancy
@@ -1787,6 +1796,102 @@ beamer
 \end_layout
 
 \begin_layout Subsection
+References
+\end_layout
+
+\begin_layout Standard
+You cannot use \SpecialChar LyX
+'s label/reference mechanisms for fancy colored boxes.
+ Numbered boxes can be referenced by adding
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+, label={name}
+\end_layout
+
+\begin_layout Standard
+to the the 
+\family sans
+Color Box Options
+\family default
+ inset, whereby 
+\series bold
+name
+\series default
+ is the label name used to reference the box.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 2
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Mass–energy equivalence, label={Einstein}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+E=mc^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To reference the box, insert the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+ref{name}
+\end_layout
+
+\begin_layout Standard
+as \SpecialChar TeX
+ code to the text where the reference should appear.
+\end_layout
+
+\begin_layout Standard
+This is the reference to Example
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{Einstein}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
 Skins
 \end_layout
 
@@ -1819,6 +1924,13 @@ literal "true"
 
 .
  Only the most important skins are listed in the following.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
