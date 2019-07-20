@@ -8,7 +8,7 @@ project(frontends)
 
 include_directories(${TOP_SRC_DIR}/src/frontends)
 
-add_subdirectory(qt4)
+add_subdirectory(qt)
 
 file(GLOB frontends_sources ${TOP_SRC_DIR}/src/frontends/${LYX_CPP_FILES})
 file(GLOB frontends_headers ${TOP_SRC_DIR}/src/frontends/${LYX_HPP_FILES})

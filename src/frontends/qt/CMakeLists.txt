@@ -6,20 +6,20 @@
 
 project(frontend_qt)
 
-file(GLOB frontends_qt_sources ${TOP_SRC_DIR}/src/frontends/qt4/${LYX_CPP_FILES})
+file(GLOB frontends_qt_sources ${TOP_SRC_DIR}/src/frontends/qt/${LYX_CPP_FILES})
 if (LYX_USE_FILEDIALOG MATCHES "NATIVE")
-  set_property(SOURCE "${TOP_SRC_DIR}/src/frontends/qt4/FileDialog.cpp" PROPERTY COMPILE_FLAGS -DUSE_NATIVE_FILEDIALOG=1)
+  set_property(SOURCE "${TOP_SRC_DIR}/src/frontends/qt/FileDialog.cpp" PROPERTY COMPILE_FLAGS -DUSE_NATIVE_FILEDIALOG=1)
 endif()
-file(GLOB moc_files ${TOP_SRC_DIR}/src/frontends/qt4/${LYX_MOC_FILES})
+file(GLOB moc_files ${TOP_SRC_DIR}/src/frontends/qt/${LYX_MOC_FILES})
 
 list(REMOVE_ITEM frontends_qt_sources ${moc_files} .)
-list(REMOVE_ITEM frontends_qt_sources ${TOP_SRC_DIR}/src/frontends/qt4/liblyxqt4.cpp)
-list(REMOVE_ITEM frontends_qt_sources ${TOP_SRC_DIR}/src/frontends/qt4/Resources.cpp)
+list(REMOVE_ITEM frontends_qt_sources ${TOP_SRC_DIR}/src/frontends/qt/liblyxqt4.cpp)
+list(REMOVE_ITEM frontends_qt_sources ${TOP_SRC_DIR}/src/frontends/qt/Resources.cpp)
 
-file(GLOB frontends_qt_headers ${TOP_SRC_DIR}/src/frontends/qt4/${LYX_HPP_FILES})
-file(GLOB frontend_qt_UI ${TOP_SRC_DIR}/src/frontends/qt4/ui/*.ui)
+file(GLOB frontends_qt_headers ${TOP_SRC_DIR}/src/frontends/qt/${LYX_HPP_FILES})
+file(GLOB frontend_qt_UI ${TOP_SRC_DIR}/src/frontends/qt/ui/*.ui)
 
-lyx_add_msvc_pch(frontends_qt4)
+lyx_add_msvc_pch(frontends_qt)
 
 lyx_automoc(${frontends_qt_sources})
 
@@ -42,7 +42,7 @@ qt_add_resources(resource_files ${resource_name})
 add_definitions(-DQT_GENUINE_STR -DLYX_BUILD_QT_FRONTEND)
 
 include_directories(
-	${TOP_SRC_DIR}/src/frontends/qt4
+	${TOP_SRC_DIR}/src/frontends/qt
 	${QT_INCLUDES}
 	${CMAKE_CURRENT_BINARY_DIR})
 

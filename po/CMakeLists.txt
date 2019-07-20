@@ -106,7 +106,7 @@ add_gettext_python(external lib/xtemplates *.xtemplate)
 add_gettext_python(formats lib configure.py)
 add_gettext_python(examples_templates lib examples/[a-zA-Z]* templates/[a-zA-Z]*)
 add_gettext_python(tabletemplates lib tabletemplates/*.lyx)
-add_gettext_python(qt4 src/frontends/qt4/ui *.ui)
+add_gettext_python(qt src/frontends/qt/ui *.ui)
 
 ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
