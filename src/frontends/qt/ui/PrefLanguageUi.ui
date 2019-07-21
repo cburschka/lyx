@@ -222,6 +222,9 @@
         </property>
         <item>
          <widget class="QLabel" name="cursorMovementLA">
+          <property name="toolTip">
+           <string>Specify here how the arrow keys behave within scripts with right-to-left direction</string>
+          </property>
           <property name="text">
            <string>Right-to-left cursor movement:</string>
           </property>
@@ -232,6 +235,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="logicalCursorRB">
+          <property name="toolTip">
+           <string> Right arrow key is interpreted as &quot;move backwards&quot;, left arrow key as &quot;move forward&quot;</string>
+          </property>
           <property name="text">
            <string>&amp;Logical</string>
           </property>
@@ -242,6 +248,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="visualCursorRB">
+          <property name="toolTip">
+           <string> Right arrow key is interpreted as &quot;move right&quot;, left arrow key as &quot;move left&quot;</string>
+          </property>
           <property name="text">
            <string>&amp;Visual</string>
           </property>
