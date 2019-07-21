@@ -333,6 +333,20 @@ void LyXAction::init()
 
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_BIDI
+ * \li Action: Helper function for bidirectional toolbar icons
+ * \li Notion: In a text, the function is marked as `unknown' when the
+               current direction does not correspond to DIRECTION (ltr
+               or rtl). Otherwise the function behaves exactly as
+               ACTION. The result is that ACTION will be associated to
+               a different icon depending on text direction.
+ * \li Syntax: bidi <DIRECTION> <ACTION>
+ * \li Origin: JMarc, 21 July 2019
+ * \endvar
+ */
+		{ LFUN_BIDI, "bidi", Noop, System },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_BOOKMARK_CLEAR
  * \li Action: Clears the list of saved bookmarks.
  * \li Syntax: bookmark-clear
