@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 580
+\lyxformat 583
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -66,7 +66,9 @@ logicalmkup
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -49727,6 +49729,16 @@ literal "false"
 \end_inset
 
 
+\change_inserted -712698321 1563708959
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted -712698321 1563708986
+LaTeX Language Support
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -49815,14 +49827,63 @@ Command
 \begin_inset space ~
 \end_inset
 
-start If a special \SpecialChar LaTeX
+start 
+\change_deleted -712698321 1563708374
+If a special \SpecialChar LaTeX
 -package is needed to write in a certain document language,
- you can here specify the command to start the package.
- An example is the start command 
+ you can h
+\change_inserted -712698321 1563708374
+H
+\change_unchanged
+ere
+\change_inserted -712698321 1563708377
+ you
+\change_unchanged
+ 
+\change_deleted -712698321 1563708382
+specify
+\change_inserted -712698321 1563708384
+customize
+\change_unchanged
+ the command 
+\change_inserted -712698321 1563708639
+that is used to switch to a different language
+\change_deleted -712698321 1563708410
+to start the package
+\change_unchanged
+.
+ 
+\change_inserted -712698321 1563708611
+This might be useful if you want to use a different command with 
+\series bold
+babel
+\series default
+ (which provides several alternative commands with different behavior),
+ or if you use a custom language package with specific commands, such as
+ 
+\series bold
+Arab\SpecialChar TeX
+
+\series default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Arabic"
+literal "true"
+
+\end_inset
+
+, which needs 
+\change_deleted -712698321 1563708616
+An example is 
+\change_unchanged
+the start command 
 \family sans
 
 \backslash
 begin{arabtext}
+\change_deleted -712698321 1563708621
+
 \family default
  that is needed to write Arabic using the package 
 \series bold
@@ -49837,18 +49898,39 @@ literal "true"
 
 \end_inset
 
+
+\change_unchanged
 .
  The default is the 
 \series bold
 babel
 \series default
  command 
-\family sans
+\family typewriter
 
 \backslash
 selectlanguage{$$lang}
+\change_inserted -712698321 1563708571
+
 \family default
+, whereby 
+\family sans
+$$lang
+\family default
+ is a placeholder that is substituted with the respective language name
+ in the \SpecialChar LaTeX
+ output
+\change_unchanged
 .
+
+\change_inserted -712698321 1563708571
+ Note that with 
+\series bold
+polyglossia
+\series default
+, this setting is ignored.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -49861,11 +49943,56 @@ end Counterpart to
 Command start
 \family default
 .
- Some packages, like the default, don't have an end command since the start
- command toggles the package on and off.
+ 
+\change_inserted -712698321 1563708846
+Use this if the language switch needs to be explicitly ended, as in 
+\series bold
+babel
+\series default
+'s alternative command 
+\family typewriter
+
+\backslash
+begin{otherlanguage*}\SpecialChar ldots
+
+\backslash
+end{otherlanguage*}
+\family default
+.
+ 
+\change_deleted -712698321 1563708866
+Some packages, like the default, don't have an end command since the start
+ command toggles the package on and off
+\change_inserted -712698321 1563711115
+Empty by default, as 
+\family typewriter
+
+\backslash
+selectlanguage{$$lang}
+\family default
+ does not need to be explicitly ended (it is valid until the next 
+\family typewriter
+
+\backslash
+selectlanguage{$$lang}
+\family default
+)
+\change_unchanged
+.
+
+\change_inserted -712698321 1563708925
+ Note that with 
+\series bold
+polyglossia
+\series default
+, this setting is ignored.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -712698321 1563708996
 Default
 \begin_inset space ~
 \end_inset
@@ -49879,6 +50006,8 @@ separator Defines the default decimal point for use in tables (decimal point
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -712698321 1563708996
 Default
 \begin_inset space ~
 \end_inset
@@ -49889,6 +50018,8 @@ length
 
 unit Defines the unit that is used as default for lengths in \SpecialChar LyX
 's dialogs.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -49900,24 +50031,99 @@ languages
 \begin_inset space ~
 \end_inset
 
-globally When this option is set, the languages used in the document will
- be added as options to the document class options, so that they can be
- used by all \SpecialChar LaTeX
--packages.
- Otherwise they will only be used as options for the 
+globally 
+\change_deleted -712698321 1563709051
+When
+\change_inserted -712698321 1563709052
+If
+\change_unchanged
+ this option is set, the languages used in the document will be added 
+\change_deleted -712698321 1563709127
+as options 
+\change_unchanged
+to the document class options
+\change_inserted -712698321 1563709259
+ rather than the language package options.
+\change_deleted -712698321 1563709186
+,
+\change_unchanged
+ 
+\change_deleted -712698321 1563709191
+so that they can be used by all \SpecialChar LaTeX
+-packages
+\change_inserted -712698321 1563709305
+Since the document class passes all options in gets to all loaded \SpecialChar LaTeX
+-packages,
+ all language-aware packages will be informed about the used languages this
+ way
+\change_unchanged
+.
+ 
+\change_deleted -712698321 1563709264
+Otherwise they will only be used as options for the 
 \series bold
 babel
 \series default
  package.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -712698321 1563709314
 Auto
 \begin_inset space ~
 \end_inset
 
-begin When this option is set, documents start with the chosen document
- language.
+begin
+\change_inserted -712698321 1563709328
+Set
+\begin_inset space ~
+\end_inset
+
+document
+\begin_inset space ~
+\end_inset
+
+language
+\begin_inset space ~
+\end_inset
+
+explicitly
+\change_unchanged
+ 
+\change_deleted -712698321 1563709331
+When
+\change_inserted -712698321 1563709331
+If
+\change_unchanged
+ this option is set, 
+\change_inserted -712698321 1563709808
+the language switch defined in 
+\family sans
+Command
+\begin_inset space ~
+\end_inset
+
+start
+\family default
+ is output at the beginning of the document, thereby explicitly switching
+ to the document language.
+ This assures that the correct language is used in any case.
+ This might be needed if you use a non-default 
+\family sans
+Command
+\begin_inset space ~
+\end_inset
+
+start
+\family default
+ or if a package resets the document language.
+ If not set, the language that is active at document start is used (this
+ usually should be the document language).
+\change_deleted -712698321 1563709548
+documents start with the chosen document language.
  When this option is not set, the 
 \family sans
 Command
@@ -49937,23 +50143,55 @@ Command
 start
 \family default
  than the default.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -712698321 1563709354
 Auto
 \begin_inset space ~
 \end_inset
 
-end Counterpart to 
+end
+\change_inserted -712698321 1563709358
+Unset
+\begin_inset space ~
+\end_inset
+
+document
+\begin_inset space ~
+\end_inset
+
+language
+\begin_inset space ~
+\end_inset
+
+explicitly
+\change_unchanged
+ Counterpart to 
+\change_deleted -712698321 1563709361
+
 \family sans
 Auto
 \begin_inset space ~
 \end_inset
 
 begin
+\change_inserted -712698321 1563709392
+Set document language explicitly
+\change_unchanged
+
 \family default
 .
- When it is not set, the 
+ 
+\change_deleted -712698321 1563709618
+When it is not
+\change_inserted -712698321 1563709618
+If
+\change_unchanged
+ set, the 
 \family sans
 Command
 \begin_inset space ~
@@ -49961,7 +50199,30 @@ Command
 
 end
 \family default
- is set to the end of the document.
+ is 
+\change_deleted -712698321 1563709625
+set
+\change_inserted -712698321 1563709626
+output
+\change_unchanged
+ 
+\change_inserted -712698321 1563709628
+at
+\change_deleted -712698321 1563709628
+to
+\change_unchanged
+ the end of the document.
+\change_inserted -712698321 1563709816
+
+\end_layout
+
+\begin_layout Subsubsection
+\paragraph_spacing single
+
+\change_inserted -712698321 1563709833
+Editor Settings
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -49969,15 +50230,81 @@ Mark
 \begin_inset space ~
 \end_inset
 
+
+\change_inserted -712698321 1563709847
+additional
+\change_deleted -712698321 1563709845
 foreign
+\change_unchanged
+
 \begin_inset space ~
 \end_inset
 
-languages Text marked formatted in a language different from the document
- language will be underlined in blue.
+languages 
+\change_inserted -712698321 1563709877
+If set, all 
+\change_deleted -712698321 1563709877
+T
+\change_inserted -712698321 1563709878
+t
+\change_unchanged
+ext 
+\change_deleted -712698321 1563709882
+marked formatted 
+\change_unchanged
+in a language different 
+\change_deleted -712698321 1563709886
+from
+\change_inserted -712698321 1563709886
+to
+\change_unchanged
+ the document language will be 
+\change_inserted -712698321 1563709907
+marked (by default with a blue 
+\change_unchanged
+underline
+\change_deleted -712698321 1563709911
+d in blue
+\change_inserted -712698321 1563709911
+)
+\change_unchanged
+.
+\change_inserted -712698321 1563709927
+
 \end_layout
 
 \begin_layout Description
+
+\change_inserted -712698321 1563711969
+Respect
+\begin_inset space ~
+\end_inset
+
+OS
+\begin_inset space ~
+\end_inset
+
+keyboard
+\begin_inset space ~
+\end_inset
+
+language If set, \SpecialChar LyX
+ will switch the input language if the keyboard map is
+ switched via the operating system.
+ This is particularly useful if you switch between languages with different
+ scripts (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., English and Hebrew: in this case, switching the keyboard to Hebrew will
+ automatically switch the input language to Hebrew as well, and vice versa).
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
+
+\change_deleted -712698321 1563709926
 Enable
 \begin_inset space ~
 \end_inset
@@ -49988,17 +50315,117 @@ RTL
 
 support Enables the use of languages, written from right to left (RTL),
  like Arabic, Hebrew or Farsi.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
-Cursor
+
+\change_inserted -712698321 1563710132
+Right-to-left
 \begin_inset space ~
 \end_inset
 
-movement When writing RTL, you can define if the left and right arrow keys
- move the cursor visually to the left or right, respectively, or logically.
- Logical means that the cursor is moved to the left when pressing the right
- arrow key and the cursor is inside text in an RTL language.
+
+\change_deleted -712698321 1563710132
+C
+\change_inserted -712698321 1563710132
+c
+\change_unchanged
+ursor
+\begin_inset space ~
+\end_inset
+
+movement 
+\change_inserted -712698321 1563710265
+Here you can define how cursor movement (with the arrow keys) behaves 
+\change_deleted -712698321 1563710266
+W
+\change_inserted -712698321 1563710267
+w
+\change_unchanged
+hen writing 
+\change_deleted -712698321 1563710171
+RTL
+\change_inserted -712698321 1563710286
+scripts with right-to-left direction (e.g., Arabic, Hebrew or Farsi).
+ 
+\change_deleted -712698321 1563710294
+, you can define if the left and right arrow keys move the cursor visually
+ to the left or right, respectively, or logically.
+ 
+\change_unchanged
+
+\family sans
+Logical
+\family default
+ means that the cursor is moved to the left 
+\change_deleted -712698321 1563710342
+when
+\change_inserted -712698321 1563710342
+if
+\change_unchanged
+ pressing the right arrow key 
+\change_inserted -712698321 1563712351
+(so right arrow key means: move forward), and to the right if pressing the
+ left arrow key (which then means: move backward).
+ This setting might be useful in texts that mix left-to-right and right-to-left
+ scripts, since the cursor then follows a coherent 
+\begin_inset Quotes eld
+\end_inset
+
+text logic
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\family sans
+Visual
+\family default
+ means: always move to the direction towards which the arrows really point.
+\change_deleted -712698321 1563710407
+and the cursor is inside text in an RTL language.
+\change_inserted -712698321 1563710219
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted -712698321 1563710235
+Local Preferences
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1563709001
+Default
+\begin_inset space ~
+\end_inset
+
+decimal
+\begin_inset space ~
+\end_inset
+
+separator Defines the default decimal point for use in tables (decimal point
+ alignment).
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1563709001
+Default
+\begin_inset space ~
+\end_inset
+
+length
+\begin_inset space ~
+\end_inset
+
+unit Defines the unit that is used as default for lengths in \SpecialChar LyX
+'s dialogs.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection

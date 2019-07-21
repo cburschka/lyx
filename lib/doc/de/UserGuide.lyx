@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 580
+\lyxformat 583
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -73,7 +73,9 @@ logicalmkup
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -46834,6 +46836,10 @@ literal "false"
 
 \end_layout
 
+\begin_layout Subsubsection
+LaTeX-Sprachunterstützung
+\end_layout
+
 \begin_layout Description
 Sprachpaket legt fest, welches \SpecialChar LaTeX
 -Paket für die Sprachunterstützung geladen
@@ -46903,21 +46909,25 @@ Befehl
 \begin_inset space ~
 \end_inset
 
-Anfang Wenn ein besonderes \SpecialChar LaTeX
--Paket benötigt wird, um in einer gewissen Dokumentsp
-rache zu schreiben, können Sie hier den Befehl zum Start des Paketes eingeben.
- Ein Beispiel ist der Befehl 
+Anfang Hier können Sie den Befehl anpassen, der verwendet wird, um zu einer
+ anderen Sprache umzuschalten.
+ Das kann nützlich sein, wenn Sie mit 
 \series bold
-
-\backslash
-begin{arabtext}
+babel
 \series default
-, der gebraucht wird, um mithilfe des Paketes 
+ einen alternativen Befehl verwenden möchten (
+\series bold
+babel
+\series default
+ bietet verschiedene Alternativen mit jeweiligen Spezifika) oder wenn Sie
+ ein besonderes \SpecialChar LaTeX
+-Paket benötigen, um in einer bestimmten Dokumentsprache
+ schreiben zu können, etwa 
 \series bold
 Arab\SpecialChar TeX
 
 \series default
- Arabisch zu schreiben, siehe 
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Arabic"
@@ -46925,18 +46935,35 @@ literal "true"
 
 \end_inset
 
-.
+, welches den Befehl 
+\family typewriter
+
+\backslash
+begin{arabtext}
+\family default
+ zur Sprachumschaltung nutzt.
  Standard ist der 
 \series bold
 babel
 \series default
 -Befehl 
-\series bold
+\family typewriter
 
 \backslash
 selectlanguage{$$lang}
+\family default
+, wobei 
+\family typewriter
+$$lang
+\family default
+ ein Platzhalter ist, der in der \SpecialChar LaTeX
+-Ausgabe mit der eigentlichen Sprache ersetzt
+ wird.
+ Bitte beachten Sie, dass diese Einstellung mit 
+\series bold
+polyglossia
 \series default
-.
+ ignoriert wird..
 \end_layout
 
 \begin_layout Description
@@ -46953,8 +46980,188 @@ Befehl
 Anfang
 \family default
 .
- Einige Pakete wie das Standardpaket haben keinen Endbefehl, weil der Startbefeh
-l das Paket an- und abschaltet.
+ Verwenden Sie dies, wenn eine Sprachumschaltung explizit beendet werden
+ muss, wie das beispielsweise im alternativen Babel-Befehl 
+\family typewriter
+
+\backslash
+begin{otherlanguage*}\SpecialChar ldots
+
+\backslash
+end{otherlanguage*}
+\family default
+ der Fall ist.
+ Standardmäßig ist dieses Feld leer, da 
+\family typewriter
+
+\backslash
+selectlanguage{$$lang}
+\family default
+ nicht explizit beendet werden muss (es ist aktiv bis zum nächsten 
+\family typewriter
+
+\backslash
+selectlanguage{$$lang}
+\family default
+).
+ Bitte beachten Sie, dass diese Einstellung mit 
+\series bold
+polyglossia
+\series default
+ ignoriert wird.
+\end_layout
+
+\begin_layout Description
+Sprachen
+\begin_inset space ~
+\end_inset
+
+global
+\begin_inset space ~
+\end_inset
+
+definieren Wenn diese Option ausgewählt wird, werden die im Dokument benutzten
+ Sprachen zu den Klassenoptionen des Dokuments hinzugefügt, sonst werden
+ sie nur als Optionen zum Sprachpaket hinzugefügt.
+ Da die Dokumentklasse alle Optionen an die Pakete weitergibt, können Sie
+ so sicherstellen, dass \SpecialChar LaTeX
+-Pakete, die sich je nach Sprache unterschiedlich
+ verhalten, wissen, welche Sprache aktiv ist.
+\end_layout
+
+\begin_layout Description
+Dokumentsprache
+\begin_inset space ~
+\end_inset
+
+explizit
+\begin_inset space ~
+\end_inset
+
+aktivieren Wenn diese Option ausgewählt ist, wird am Anfang des Dokuments
+ die Dokumentsprache dadurch noch einmal explizit aktiviert, dass der in
+ 
+\family sans
+\series bold
+Befehl
+\begin_inset space ~
+\end_inset
+
+Anfang
+\family default
+\series default
+ festgelegte Befehl explizit ausgegeben wird.
+ Dadurch können Sie sicherstellen, dass die Dokumentsprache in jedem Fall
+ aktiv ist.
+ Das kann nötig werden, wenn Sie in 
+\family sans
+\series bold
+Befehl
+\begin_inset space ~
+\end_inset
+
+Anfang 
+\family default
+\series default
+nicht die Standardeinstellung benutzen oder aber wenn die Sprache durch
+ ein Paket umgeschaltet wird.
+ Wenn dies nicht gesetzt wird, ist am Dokumentbeginn die Sprache aktiv,
+ die zuletzt aktiviert wurde (im Normalfall ist das die Dokumentsprache).
+\end_layout
+
+\begin_layout Description
+Dokumentsprache
+\begin_inset space ~
+\end_inset
+
+explizit
+\begin_inset space ~
+\end_inset
+
+deaktivieren ist das Gegenstück zu 
+\family sans
+Dokumentsprache explizit aktivieren
+\family default
+.
+ Wenn dies ausgewählt ist, wird der 
+\family sans
+\series bold
+Befehl
+\begin_inset space ~
+\end_inset
+
+Ende
+\family default
+\series default
+ am Ende des Dokuments ausgegeben.
+\end_layout
+
+\begin_layout Subsubsection
+Editor-Einstellungen
+\end_layout
+
+\begin_layout Description
+Zusätzliche
+\begin_inset space ~
+\end_inset
+
+Sprachen
+\begin_inset space ~
+\end_inset
+
+markieren Wenn Sie dies ankreuzen, werden Texte in einer anderen Sprache
+ als der Standard-Sprache unterstrichen, standardmäßig blau.
+\end_layout
+
+\begin_layout Description
+Tastatursprache
+\begin_inset space ~
+\end_inset
+
+des
+\begin_inset space ~
+\end_inset
+
+Betriebssystems
+\begin_inset space ~
+\end_inset
+
+respektieren Wenn dies aktiviert ist, schaltet \SpecialChar LyX
+ die Eingabesprache um, wenn
+ die Tastaturtabelle über das Betriebssystem umgeschaltet wurde.
+ Das ist besonders dann nützlich, wenn Sie zwischen Sprachen mit verschiedenen
+ Schriftsystemen oder Alphabeten umschalten (beispielsweise zwischen Deutsch
+ und Hebräisch: In diesem Fall wird, sobald Sie die Tastatur auf Hebräisch
+ umschalten, automatisch die Eingabesprache ebenfalls nach Hebräisch umgeschalte
+t, und umgekehrt).
+\end_layout
+
+\begin_layout Description
+Rechts-nach-links-Cursor-Navigation legt fest, wie sich der Cursor beim
+ Schreiben von Sprachen mit rechtslaufenden Schriften (bspw.
+ Hebräisch, Arabisch oder Farsi) verhält, wenn sie die Pfeil-rechts- oder
+ Pfeil-links-Taste drücken.
+ 
+\family sans
+Logisch
+\family default
+ bedeutet, dass der Cursor nach links bewegt wird, wenn Sie die Pfeil-rechts-Tas
+te drücken (diese bedeutet dann also immer: bewege den Cursor vorwärts),
+ und nach rechts, wenn Sie die Pfeil-links-Taste drücken (die dann immer
+ bedeutet: bewege den Cursor rückwärts).
+ Diese Einstellung ist vor allem in sinnvoll, die rechts- und linkslaufende
+ Schriften mischen, da die Cursorbewegung dann einer einheitlichen Textlogik
+ folgt.
+ 
+\family sans
+Visuell
+\family default
+ bedeutet, dass sich der Cursor in die Richtung bewegt, in die auch die
+ Pfeile zeigen
+\end_layout
+
+\begin_layout Subsubsection
+Lokale Einstellungen
 \end_layout
 
 \begin_layout Description
@@ -46968,122 +47175,6 @@ Standard-Dezimaltrenner Legen Sie hier den Standard-Dezimaltrenner fest,
 Standard-Längeneinheit Legt die Einheit fest, die als Voreinstellung für
  Längen in \SpecialChar LyX
 ’ Dialogen verwendet wird.
-\end_layout
-
-\begin_layout Description
-Sprachen
-\begin_inset space ~
-\end_inset
-
-global
-\begin_inset space ~
-\end_inset
-
-definieren Wenn diese Option gesetzt wird, werden die im Dokument benutzten
- Sprachen zu den Klassenoptionen des Dokuments hinzugefügt, sodass sie von
- allen \SpecialChar LaTeX
--Paketen benutzt werden können.
- Sonst werden sie nur als Optionen von 
-\family typewriter
-babel
-\family default
- benutzt.
-\end_layout
-
-\begin_layout Description
-Auto-Beginn Wenn diese Option gesetzt wird, starten die Dokumente mit der
- gewählten Dokumentsprache.
- Wenn nicht, wird der Befehl 
-\family sans
-\series bold
-Befehl
-\begin_inset space ~
-\end_inset
-
-Anfang
-\family default
-\series default
- explizit an den Anfang der \SpecialChar LaTeX
--Ausgabe des Dokuments geschrieben.
- Damit wird sichergestellt, dass die richtige Sprache benutzt wird, wenn
- Sie in 
-\family sans
-\series bold
-Befehl
-\begin_inset space ~
-\end_inset
-
-Anfang 
-\family default
-\series default
-nicht die Standardeinstellung benutzen.
-\end_layout
-
-\begin_layout Description
-Auto-Ende ist das Gegenstück zu 
-\family sans
-\series bold
-Auto
-\begin_inset space ~
-\end_inset
-
-Beginn
-\family default
-\series default
-.
- Wenn es nicht gesetzt ist, wird der 
-\family sans
-\series bold
-Befehl
-\begin_inset space ~
-\end_inset
-
-Ende
-\family default
-\series default
- ans Ende des Dokuments geschrieben.
-\end_layout
-
-\begin_layout Description
-Fremdsprachen
-\begin_inset space ~
-\end_inset
-
-markieren Wenn Sie dies ankreuzen, werden Texte in einer anderen Sprache
- als der Standard-Sprache unterstrichen, standardmäßig blau.
-\end_layout
-
-\begin_layout Description
-Rechts-nach-links-Sprachunterstützung für die entsprechenden Sprachen wie
- Arabisch, Hebräisch, Persisch.
-\end_layout
-
-\begin_layout Description
-RNL-Unterstützung
-\begin_inset space ~
-\end_inset
-
-aktivieren aktiviert Unterstützung für Sprachen, die von rechts nach links
- geschrieben werden.
-\end_layout
-
-\begin_layout Description
-Cursorbewegung legt fest, wie der Cursor sich bei RNL-Sprachen verhält,
- wenn sie die Pfeil-rechts- oder Pfeil-links-Taste drücken.
- 
-\family sans
-Logisch
-\family default
- bedeutet, dass der Cursor nach links bewegt wird, wenn Sie die Pfeil-rechts-Tas
-te drücken, während sich der Cursor in einer RNL-Passage befindet.
- Diese Einstellung ist vor allem in gemischten Texten (RNL und LNR) sinnvoll,
- da die Cursorbewegung dann einer einheitlichen Textlogik folgt.
- 
-\family sans
-Visuell
-\family default
- bedeutet, dass sich der Cursor in die Richtung bewegt, in die auch die
- Pfeile zeigen
 \end_layout
 
 \begin_layout Subsection
