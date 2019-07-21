@@ -2463,7 +2463,13 @@ void PrefLanguage::on_uiLanguageCO_currentIndexChanged(int)
 
 void PrefLanguage::on_languagePackageCO_currentIndexChanged(int i)
 {
-	 languagePackageED->setEnabled(i == 2);
+	if (i == 2)
+		languagePackageED->setText(save_langpack_);
+	else if (!languagePackageED->text().isEmpty()) {
+		save_langpack_ = languagePackageED->text();
+		languagePackageED->clear();
+	}
+	languagePackageED->setEnabled(i == 2);
 }
 
 
@@ -2505,8 +2511,14 @@ void PrefLanguage::updateRC(LyXRC const & rc)
 	explicitDocLangBeginCB->setChecked(!rc.language_auto_begin);
 	explicitDocLangEndCB->setChecked(!rc.language_auto_end);
 	languagePackageCO->setCurrentIndex(rc.language_package_selection);
-	languagePackageED->setText(toqstr(rc.language_custom_package));
-	languagePackageED->setEnabled(languagePackageCO->currentIndex() == 2);
+	if (languagePackageCO->currentIndex() == 2) {
+		languagePackageED->setText(toqstr(rc.language_custom_package));
+		languagePackageED->setEnabled(true);
+	} else {
+		languagePackageED->clear();
+		save_langpack_ = toqstr(rc.language_custom_package);
+		languagePackageED->setEnabled(false);
+	}
 	globalCB->setChecked(rc.language_global_options);
 	startCommandED->setText(toqstr(rc.language_command_begin));
 	endCommandED->setText(toqstr(rc.language_command_end));
