@@ -905,8 +905,11 @@ void MenuDefinition::expandLanguageSelector(Buffer const * buf)
 	std::set<Language const *> languages_buffer =
 		buf->masterBuffer()->getLanguages();
 
-	if (languages_buffer.size() < 2)
+	if (languages_buffer.size() < 2) {
+		add(MenuItem(MenuItem::Command, qt_("Switch Language...|L"),
+			     FuncRequest(LFUN_DIALOG_SHOW, "character")));
 		return;
+	}
 
 	std::set<Language const *, sortLanguageByName> langs;
 
