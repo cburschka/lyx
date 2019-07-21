@@ -466,7 +466,9 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	if (!cloned_buffer_) {
 		temppath = createBufferTmpDir();
 		lyxvc.setBuffer(owner_);
-		Language const * inplang = languages.getFromCode(theApp()->inputLanguageCode());
+		Language const * inplang = theApp() ?
+					languages.getFromCode(theApp()->inputLanguageCode())
+				      : nullptr;
 		if (inplang)
 			params.language = inplang;
 		if (use_gui)
