@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-07-21 13:24+0200\n"
-"PO-Revision-Date: 2019-07-21 12:28+0000\n"
+"POT-Creation-Date: 2019-07-22 12:25+0200\n"
+"PO-Revision-Date: 2019-07-22 10:37+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -4099,6 +4099,15 @@ msgstr ""
 msgid "Default decimal &separator:"
 msgstr "Št&andardný decimálny oddeľovač:"
 
+#: src/frontends/qt/ui/PrefLanguageUi.ui:318
+msgid "Insert a custom decimal separator here"
+msgstr "Vložte sem vlastný decimálny oddeľovač"
+
+#: src/frontends/qt/ui/PrefLanguageUi.ui:331
+#: src/frontends/qt/ui/PrefLanguageUi.ui:361
+msgid "Select the default length unit for LyX dialogs"
+msgstr "Vyberte štandardnú jednotku dĺžky pre LyX dialógy"
+
 #: src/frontends/qt/ui/PrefLanguageUi.ui:161
 msgid "Default length &unit:"
 msgstr "Štandardná jednotka &dĺžky:"
@@ -4160,12 +4169,36 @@ msgid "Respect &OS keyboard language"
 msgstr "Dbať na jaz&ykové nastavenie klávesnice"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:226
+msgid ""
+"Specify here how the arrow keys behave within scripts with right-to-left "
+"direction"
+msgstr ""
+"Špecifikuj ako sa šípkové klávesy majú v skripte správať ohľadom na smer "
+"doprava doľava"
+
+#: src/frontends/qt/ui/PrefLanguageUi.ui:229
 msgid "Right-to-left cursor movement:"
-msgstr "Pohyb kurzoru sprava doľava:"
+msgstr "Pohyb kurzoru doprava/doľava:"
+
+#: src/frontends/qt/ui/PrefLanguageUi.ui:239
+msgid ""
+"Right arrow key is interpreted as \"move forwards\", left arrow key as "
+"\"move backwards\""
+msgstr ""
+"Klávesu 'šípka doprava' interpretovať ak \"pohyb dopredu', a klávesu 'šípka "
+"doľava' ako \"pohyb dozadu\""
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:257
 msgid "&Logical"
 msgstr "&Logický"
+
+#: src/frontends/qt/ui/PrefLanguageUi.ui:252
+msgid ""
+"Right arrow key is interpreted as \"move right\", left arrow key as \"move "
+"left\""
+msgstr ""
+"Klávesu 'šípka doprava' interpretovať ak \"pohyb doprava', a klávesu 'šípka "
+"doľava' ako \"pohyb doľava\""
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:267
 msgid "&Visual"
@@ -4174,6 +4207,17 @@ msgstr "&Vizuálny"
 #: src/frontends/qt/ui/PrefLanguageUi.ui:271
 msgid "Local Preferences"
 msgstr "Lokálne nastavenia"
+
+#: src/frontends/qt/ui/PrefLanguageUi.ui:286
+#: src/frontends/qt/ui/PrefLanguageUi.ui:344
+msgid ""
+"Here you can specify the decimal separator that is used in the tabular "
+"dialog by default. \"Language default\" selects the appropriate separator "
+"for the current language."
+msgstr ""
+"To môžte špecifikovať decimálny oddeľovač štandardne použitý v dialógu pre "
+"tabuľku. \"Štandardné pre daný jazyk\" vyberie vhodný oddeľovač pre aktuálny "
+"jazyk."
 
 #: src/frontends/qt/ui/PrefLatexUi.ui:34
 msgid "&DVI viewer paper size options:"
