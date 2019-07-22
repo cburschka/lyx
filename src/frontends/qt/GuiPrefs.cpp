@@ -2423,7 +2423,7 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 	startCommandED->setValidator(new NoNewLineValidator(startCommandED));
 	endCommandED->setValidator(new NoNewLineValidator(endCommandED));
 
-	defaultDecimalSepED->setInputMask("X; ");
+	defaultDecimalSepED->setValidator(new QRegExpValidator(QRegExp("\\S"), this));
 	defaultDecimalSepED->setMaxLength(1);
 
 	defaultLengthUnitCO->addItem(lyx::qt_(unit_name_gui[Length::CM]), Length::CM);
