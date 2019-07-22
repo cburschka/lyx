@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-07-21 17:35+0200\n"
-"PO-Revision-Date: 2019-07-21 17:57+0200\n"
+"POT-Creation-Date: 2019-07-22 08:36+0200\n"
+"PO-Revision-Date: 2019-07-22 08:40+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -606,7 +606,7 @@ msgstr "Oben"
 #: src/frontends/qt/ui/BoxUi.ui:209 src/frontends/qt/ui/BoxUi.ui:239
 #: src/frontends/qt/ui/TabularUi.ui:218 src/frontends/qt/ui/TabularUi.ui:409
 #: lib/ui/stdcontext.inc:450 src/frontends/qt/GuiMathMatrix.cpp:55
-#: src/frontends/qt/GuiTabular.cpp:250
+#: src/frontends/qt/GuiTabular.cpp:252
 msgid "Middle"
 msgstr "Mitte"
 
@@ -640,20 +640,20 @@ msgstr "Dehnen"
 #: src/frontends/qt/ui/BoxUi.ui:265 src/frontends/qt/ui/ListingsUi.ui:110
 #: src/frontends/qt/ui/TabularUi.ui:344 src/frontends/qt/ui/TabularUi.ui:1553
 #: src/frontends/qt/ui/WrapUi.ui:47 src/frontends/qt/GuiDocument.cpp:1518
-#: src/frontends/qt/GuiParagraph.cpp:114 src/frontends/qt/GuiTabular.cpp:1018
+#: src/frontends/qt/GuiParagraph.cpp:114 src/frontends/qt/GuiTabular.cpp:1020
 msgid "Left"
 msgstr "Links"
 
 #: src/frontends/qt/ui/BoxUi.ui:270 src/frontends/qt/ui/TabularUi.ui:349
 #: src/frontends/qt/GuiExternal.cpp:79 src/frontends/qt/GuiGraphics.cpp:73
-#: src/frontends/qt/GuiParagraph.cpp:116 src/frontends/qt/GuiTabular.cpp:1019
+#: src/frontends/qt/GuiParagraph.cpp:116 src/frontends/qt/GuiTabular.cpp:1021
 msgid "Center"
 msgstr "Zentriert"
 
 #: src/frontends/qt/ui/BoxUi.ui:275 src/frontends/qt/ui/ListingsUi.ui:115
 #: src/frontends/qt/ui/TabularUi.ui:354 src/frontends/qt/ui/WrapUi.ui:52
 #: src/frontends/qt/GuiDocument.cpp:1520 src/frontends/qt/GuiParagraph.cpp:115
-#: src/frontends/qt/GuiTabular.cpp:1020
+#: src/frontends/qt/GuiTabular.cpp:1022
 msgid "Right"
 msgstr "Rechts"
 
@@ -807,7 +807,7 @@ msgstr "A&lle hinzufügen"
 #: src/Buffer.cpp:4761 src/Buffer.cpp:4855 src/LyXVC.cpp:114 src/LyXVC.cpp:304
 #: src/buffer_funcs.cpp:78 src/frontends/qt/GuiBranches.cpp:219
 #: src/frontends/qt/GuiClipboard.cpp:247 src/frontends/qt/GuiDocument.cpp:2744
-#: src/frontends/qt/GuiParagraph.cpp:164 src/frontends/qt/GuiPrefs.cpp:3314
+#: src/frontends/qt/GuiParagraph.cpp:164 src/frontends/qt/GuiPrefs.cpp:3332
 #: src/frontends/qt/GuiView.cpp:2568 src/frontends/qt/GuiView.cpp:2799
 #: src/frontends/qt/GuiView.cpp:2823 src/frontends/qt/GuiView.cpp:2837
 #: src/frontends/qt/GuiView.cpp:2939 src/frontends/qt/GuiView.cpp:2984
@@ -856,8 +856,8 @@ msgstr "&Größe:"
 #: src/frontends/qt/GuiDocument.cpp:3308 src/frontends/qt/GuiDocument.cpp:4751
 #: src/frontends/qt/GuiExternal.cpp:77 src/frontends/qt/GuiGraphics.cpp:71
 #: src/frontends/qt/GuiIndices.cpp:58 src/frontends/qt/GuiListings.cpp:156
-#: src/frontends/qt/GuiListings.cpp:163 src/frontends/qt/GuiPrefs.cpp:2434
-#: src/frontends/qt/GuiPrefs.cpp:2561 src/frontends/qt/GuiPrintNomencl.cpp:47
+#: src/frontends/qt/GuiListings.cpp:163 src/frontends/qt/GuiPrefs.cpp:2436
+#: src/frontends/qt/GuiPrefs.cpp:2579 src/frontends/qt/GuiPrintNomencl.cpp:47
 #: src/frontends/qt/GuiTabularCreate.cpp:107
 #: src/frontends/qt/GuiViewSource.cpp:338
 msgid "Default"
@@ -3418,6 +3418,7 @@ msgstr "Doppelt"
 
 #: src/frontends/qt/ui/ParagraphUi.ui:75
 #: src/frontends/qt/ui/PrefLanguageUi.ui:87
+#: src/frontends/qt/ui/PrefLanguageUi.ui:353
 #: src/frontends/qt/ui/TabularUi.ui:1210 src/frontends/qt/ui/TabularUi.ui:1229
 #: src/frontends/qt/ui/TabularUi.ui:1277 src/frontends/qt/ui/VSpaceUi.ui:107
 #: lib/layouts/stdcustom.inc:8 src/frontends/qt/FloatPlacement.cpp:185
@@ -3683,8 +3684,8 @@ msgid "&Modify"
 msgstr "&Ändern"
 
 #: src/frontends/qt/ui/PrefConvertersUi.ui:286
-#: src/frontends/qt/ui/PrefShortcutsUi.ui:61 src/frontends/qt/GuiPrefs.cpp:3050
-#: src/frontends/qt/GuiPrefs.cpp:3137
+#: src/frontends/qt/ui/PrefShortcutsUi.ui:61 src/frontends/qt/GuiPrefs.cpp:3068
+#: src/frontends/qt/GuiPrefs.cpp:3155
 msgid "Remo&ve"
 msgstr "&Entfernen"
 
@@ -4335,12 +4336,37 @@ msgid "Local Preferences"
 msgstr "Lokale Einstellungen"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:286
+#: src/frontends/qt/ui/PrefLanguageUi.ui:344
+msgid ""
+"Here you can specify the decimal separator that is used in the tabular "
+"dialog by default. \"Language default\" selects the appropriate separator "
+"for the current language."
+msgstr ""
+"Hier können Sie das Dezimaltrennzeichen festlegen, das im Tabellendialog "
+"standardmäßig verwendet wird. \"Sprachvoreinstellung\" wählt automatisch das "
+"passende Zeichen für die aktuelle Sprache."
+
+#: src/frontends/qt/ui/PrefLanguageUi.ui:289
 msgid "Default decimal &separator:"
 msgstr "Standard-Dezimal&trenner:"
 
-#: src/frontends/qt/ui/PrefLanguageUi.ui:296
+#: src/frontends/qt/ui/PrefLanguageUi.ui:318
+msgid "Insert a custom decimal separator here"
+msgstr "Geben Sie hier das benutzerdefinierte Dezimaltrennzeichen ein"
+
+#: src/frontends/qt/ui/PrefLanguageUi.ui:331
+#: src/frontends/qt/ui/PrefLanguageUi.ui:361
+msgid "Select the default length unit for LyX dialogs"
+msgstr "Wählen Sie hier die Standardlängeneinheit für LyX-Dialoge"
+
+#: src/frontends/qt/ui/PrefLanguageUi.ui:334
 msgid "Default length &unit:"
 msgstr "Standard-Längene&inheit:"
+
+#: src/frontends/qt/ui/PrefLanguageUi.ui:348
+#: src/frontends/qt/GuiDocument.cpp:997
+msgid "Language Default"
+msgstr "Sprachvoreinstellung"
 
 #: src/frontends/qt/ui/PrefLatexUi.ui:34
 msgid "&DVI viewer paper size options:"
@@ -5223,12 +5249,12 @@ msgid "Horizontal alignment in column"
 msgstr "Horizontale Ausrichtung in der Spalte"
 
 #: src/frontends/qt/ui/TabularUi.ui:339 src/frontends/qt/GuiParagraph.cpp:113
-#: src/frontends/qt/GuiTabular.cpp:1022
+#: src/frontends/qt/GuiTabular.cpp:1024
 msgid "Justified"
 msgstr "Blocksatz"
 
-#: src/frontends/qt/ui/TabularUi.ui:359 src/frontends/qt/GuiTabular.cpp:243
-#: src/frontends/qt/GuiTabular.cpp:1024
+#: src/frontends/qt/ui/TabularUi.ui:359 src/frontends/qt/GuiTabular.cpp:245
+#: src/frontends/qt/GuiTabular.cpp:1026
 msgid "At Decimal Separator"
 msgstr "Am Dezimaltrenner"
 
@@ -19592,17 +19618,17 @@ msgid "End Editing Externally..."
 msgstr "Externe Bearbeitung beenden..."
 
 #: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:108 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1532 src/mathed/InsetMathNest.cpp:561
+#: src/Text3.cpp:1512 src/mathed/InsetMathNest.cpp:561
 msgid "Cut"
 msgstr "Ausschneiden"
 
 #: lib/ui/stdcontext.inc:345 lib/ui/stdmenus.inc:109 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1537 src/mathed/InsetMathNest.cpp:570
+#: src/Text3.cpp:1517 src/mathed/InsetMathNest.cpp:570
 msgid "Copy"
 msgstr "Kopieren"
 
 #: lib/ui/stdcontext.inc:346 lib/ui/stdmenus.inc:110 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1478 src/frontends/qt/GuiToolbar.cpp:407
+#: src/Text3.cpp:1458 src/frontends/qt/GuiToolbar.cpp:407
 #: src/mathed/InsetMathGrid.cpp:1584 src/mathed/InsetMathNest.cpp:540
 msgid "Paste"
 msgstr "Einfügen"
@@ -29872,40 +29898,40 @@ msgstr "Bereits im Regexp-Modus"
 msgid "Regexp editor mode"
 msgstr "Regexp-Editor-Modus"
 
-#: src/Text3.cpp:1571
+#: src/Text3.cpp:1551
 msgid "Layout "
 msgstr "Format "
 
-#: src/Text3.cpp:1572 src/Text3.cpp:2134
+#: src/Text3.cpp:1552 src/Text3.cpp:2114
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text3.cpp:2133
+#: src/Text3.cpp:2113
 msgid "Table Style "
 msgstr "Tabellenstil"
 
-#: src/Text3.cpp:2327 src/frontends/qt/GuiApplication.cpp:1733
+#: src/Text3.cpp:2307 src/frontends/qt/GuiApplication.cpp:1733
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/Text3.cpp:2489
+#: src/Text3.cpp:2469
 msgid "Invalid argument (number exceeds stack size)!"
 msgstr "Ungültiges Argument (Zahl größer als Zwischenspeicher)!"
 
-#: src/Text3.cpp:2493
+#: src/Text3.cpp:2473
 msgid "Invalid argument (must be a non-negative number)!"
 msgstr "Ungültiges Argument (muss eine nicht-negative Zahl sein)!"
 
-#: src/Text3.cpp:2498 src/Text3.cpp:2516
+#: src/Text3.cpp:2478 src/Text3.cpp:2496
 #, c-format
 msgid "Text properties applied: %1$s"
 msgstr "Angewendete Texteigenschaften: %1$s"
 
-#: src/Text3.cpp:2668
+#: src/Text3.cpp:2648
 msgid "Path to thesaurus directory not set!"
 msgstr "Pfad zum Thesaurus-Wörterbuch nicht festlegt!"
 
-#: src/Text3.cpp:2669
+#: src/Text3.cpp:2649
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -29917,7 +29943,7 @@ msgstr ""
 "Im Benutzerhandbuch, Abschnitt 6.15.11, finden Sie Hinweise,\n"
 "um den Thesaurus einzurichten."
 
-#: src/Text3.cpp:2736 src/Text3.cpp:2747
+#: src/Text3.cpp:2716 src/Text3.cpp:2727
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
@@ -30650,7 +30676,7 @@ msgstr "LyX: %1$s"
 msgid "About %1"
 msgstr "Über %1"
 
-#: src/frontends/qt/GuiApplication.cpp:684 src/frontends/qt/GuiPrefs.cpp:3422
+#: src/frontends/qt/GuiApplication.cpp:684 src/frontends/qt/GuiPrefs.cpp:3440
 msgid "Preferences"
 msgstr "Einstellungen"
 
@@ -31497,10 +31523,6 @@ msgid ""
 msgstr ""
 "Lade ,,inputenc`` mit der Option ,utf8x` für erweiterte Unicode-"
 "Unterstützung (über das Paket ,,ucs``)."
-
-#: src/frontends/qt/GuiDocument.cpp:997
-msgid "Language Default"
-msgstr "Sprachvoreinstellung"
 
 #: src/frontends/qt/GuiDocument.cpp:998
 msgid "Language Default (no inputenc)"
@@ -33011,11 +33033,11 @@ msgstr ""
 "Ein Format, das von einem Konverter verwendet wird, kann nicht entfernt "
 "werden. Bitte entfernen Sie zunächst den Konverter."
 
-#: src/frontends/qt/GuiPrefs.cpp:2458
+#: src/frontends/qt/GuiPrefs.cpp:2460
 msgid "LyX needs to be restarted!"
 msgstr "LyX muss neu gestartet werden!"
 
-#: src/frontends/qt/GuiPrefs.cpp:2459
+#: src/frontends/qt/GuiPrefs.cpp:2461
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
@@ -33023,82 +33045,82 @@ msgstr ""
 "Die Änderung der Sprache der Benutzeroberfläche wird erst nach einem "
 "Neustart von LyX wirksam."
 
-#: src/frontends/qt/GuiPrefs.cpp:2543
+#: src/frontends/qt/GuiPrefs.cpp:2561
 msgid "User Interface"
 msgstr "Benutzeroberfläche"
 
-#: src/frontends/qt/GuiPrefs.cpp:2562
+#: src/frontends/qt/GuiPrefs.cpp:2580
 msgid "Classic"
 msgstr "Klassisch"
 
-#: src/frontends/qt/GuiPrefs.cpp:2563
+#: src/frontends/qt/GuiPrefs.cpp:2581
 msgid "Oxygen"
 msgstr "Oxygen"
 
-#: src/frontends/qt/GuiPrefs.cpp:2611
+#: src/frontends/qt/GuiPrefs.cpp:2629
 msgid "Document Handling"
 msgstr "Dokument-Handhabung"
 
-#: src/frontends/qt/GuiPrefs.cpp:2718
+#: src/frontends/qt/GuiPrefs.cpp:2736
 msgid "Control"
 msgstr "Kontrolle"
 
-#: src/frontends/qt/GuiPrefs.cpp:2810
+#: src/frontends/qt/GuiPrefs.cpp:2828
 msgid "Shortcuts"
 msgstr "Tastenkürzel"
 
-#: src/frontends/qt/GuiPrefs.cpp:2817
+#: src/frontends/qt/GuiPrefs.cpp:2835
 msgid "Function"
 msgstr "Funktion"
 
-#: src/frontends/qt/GuiPrefs.cpp:2818
+#: src/frontends/qt/GuiPrefs.cpp:2836
 msgid "Shortcut"
 msgstr "Tastenkürzel"
 
-#: src/frontends/qt/GuiPrefs.cpp:2895
+#: src/frontends/qt/GuiPrefs.cpp:2913
 msgid "Cursor, Mouse and Editing Functions"
 msgstr "Cursor-, Maus- und Bearbeitungsfunktionen"
 
-#: src/frontends/qt/GuiPrefs.cpp:2899
+#: src/frontends/qt/GuiPrefs.cpp:2917
 msgid "Mathematical Symbols"
 msgstr "Mathematische Symbole"
 
-#: src/frontends/qt/GuiPrefs.cpp:2903
+#: src/frontends/qt/GuiPrefs.cpp:2921
 msgid "Document and Window"
 msgstr "Dokument und Arbeitsbereich"
 
-#: src/frontends/qt/GuiPrefs.cpp:2907
+#: src/frontends/qt/GuiPrefs.cpp:2925
 msgid "Font, Layouts and Textclasses"
 msgstr "Schriften, Absatzformate und Textklassen"
 
-#: src/frontends/qt/GuiPrefs.cpp:2911
+#: src/frontends/qt/GuiPrefs.cpp:2929
 msgid "System and Miscellaneous"
 msgstr "System und Verschiedenes"
 
-#: src/frontends/qt/GuiPrefs.cpp:3048 src/frontends/qt/GuiPrefs.cpp:3109
+#: src/frontends/qt/GuiPrefs.cpp:3066 src/frontends/qt/GuiPrefs.cpp:3127
 msgid "Res&tore"
 msgstr "Zurüc&ksetzen"
 
-#: src/frontends/qt/GuiPrefs.cpp:3276 src/frontends/qt/GuiPrefs.cpp:3285
-#: src/frontends/qt/GuiPrefs.cpp:3291 src/frontends/qt/GuiPrefs.cpp:3354
+#: src/frontends/qt/GuiPrefs.cpp:3294 src/frontends/qt/GuiPrefs.cpp:3303
+#: src/frontends/qt/GuiPrefs.cpp:3309 src/frontends/qt/GuiPrefs.cpp:3372
 msgid "Failed to create shortcut"
 msgstr "Erstellen des Tastenkürzels fehlgeschlagen"
 
-#: src/frontends/qt/GuiPrefs.cpp:3277
+#: src/frontends/qt/GuiPrefs.cpp:3295
 msgid "Unknown or invalid LyX function"
 msgstr "Unbekannte oder ungültige LyX-Funktion"
 
-#: src/frontends/qt/GuiPrefs.cpp:3286
+#: src/frontends/qt/GuiPrefs.cpp:3304
 msgid "This LyX function is hidden and cannot be bound."
 msgstr ""
 "Dies ist eine versteckte LyX-Funktion. Sie kann nicht mit einer "
 "Tastenkombination belegt werden."
 
-#: src/frontends/qt/GuiPrefs.cpp:3292
+#: src/frontends/qt/GuiPrefs.cpp:3310
 msgid "Invalid or empty key sequence"
 msgstr "Ungültige oder leere Tastensequenz"
 
-#: src/frontends/qt/GuiPrefs.cpp:3307
+#: src/frontends/qt/GuiPrefs.cpp:3325
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to %2$s.\n"
@@ -33108,19 +33130,19 @@ msgstr ""
 "Sind Sie sicher, dass Sie dies aufheben und das\n"
 "Tastenkürzel mit %3$s belegen wollen?"
 
-#: src/frontends/qt/GuiPrefs.cpp:3313
+#: src/frontends/qt/GuiPrefs.cpp:3331
 msgid "Redefine shortcut?"
 msgstr "Tastenkürzel neu definieren?"
 
-#: src/frontends/qt/GuiPrefs.cpp:3314
+#: src/frontends/qt/GuiPrefs.cpp:3332
 msgid "&Redefine"
 msgstr "&Neu Definieren"
 
-#: src/frontends/qt/GuiPrefs.cpp:3355
+#: src/frontends/qt/GuiPrefs.cpp:3373
 msgid "Can not insert shortcut to the list"
 msgstr "Kann Tastenkürzel nicht in Liste einfügen"
 
-#: src/frontends/qt/GuiPrefs.cpp:3386
+#: src/frontends/qt/GuiPrefs.cpp:3404
 msgid "Identity"
 msgstr "Identität"
 
@@ -35879,22 +35901,22 @@ msgstr "Geschützter horizontaler Abstand (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Unbekannter Inhaltsverzeichnis-Typ"
 
-#: src/insets/InsetTabular.cpp:5132
+#: src/insets/InsetTabular.cpp:5134
 msgid "Selections not supported."
 msgstr ""
 "Gleichzeitiges Verschieben mehrerer Zeilen/Spalten ist leider nicht möglich."
 
-#: src/insets/InsetTabular.cpp:5154
+#: src/insets/InsetTabular.cpp:5156
 msgid "Multi-column in current or destination column."
 msgstr ""
 "Diese oder die Zielspalte ist eine Mehrfachspalte. Verschieben nicht möglich."
 
-#: src/insets/InsetTabular.cpp:5166
+#: src/insets/InsetTabular.cpp:5168
 msgid "Multi-row in current or destination row."
 msgstr ""
 "Diese oder die Zielzeile ist eine Mehrfachzeile. Verschieben nicht möglich."
 
-#: src/insets/InsetTabular.cpp:5650
+#: src/insets/InsetTabular.cpp:5652
 msgid "Selection size should match clipboard content."
 msgstr ""
 "Die Anzahl der ausgewählten Zellen stimmt nicht mit dem Inhalt der "
