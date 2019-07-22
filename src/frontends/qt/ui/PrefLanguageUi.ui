@@ -282,44 +282,18 @@
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="0" column="0">
        <widget class="QLabel" name="decimalPointL">
+        <property name="toolTip">
+         <string>Here you can specify the decimal separator that is used in the tabular dialog by default. &quot;Language default&quot; selects the appropriate separator for the current language.</string>
+        </property>
         <property name="text">
          <string>Default decimal &amp;separator:</string>
         </property>
         <property name="buddy">
-         <cstring>defaultDecimalPointLE</cstring>
+         <cstring>defaultDecimalSepED</cstring>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="defaultLengthUnitLA">
-        <property name="text">
-         <string>Default length &amp;unit:</string>
-        </property>
-        <property name="buddy">
-         <cstring>defaultLengthUnitCO</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="defaultDecimalPointLE">
-        <property name="maximumSize">
-         <size>
-          <width>20</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="inputMask">
-         <string/>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QComboBox" name="defaultLengthUnitCO"/>
-      </item>
-      <item row="1" column="2">
+      <item row="1" column="6">
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -331,6 +305,62 @@
          </size>
         </property>
        </spacer>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLineEdit" name="defaultDecimalSepED">
+        <property name="maximumSize">
+         <size>
+          <width>40</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>Insert a custom decimal separator here</string>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="defaultLengthUnitLA">
+        <property name="toolTip">
+         <string>Select the default length unit for LyX dialogs</string>
+        </property>
+        <property name="text">
+         <string>Default length &amp;unit:</string>
+        </property>
+        <property name="buddy">
+         <cstring>defaultLengthUnitCO</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="defaultDecimalSepCO">
+        <property name="toolTip">
+         <string>Here you can specify the decimal separator that is used in the tabular dialog by default. &quot;Language default&quot; selects the appropriate separator for the current language.</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Language Default</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Custom</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="defaultLengthUnitCO">
+        <property name="toolTip">
+         <string>Select the default length unit for LyX dialogs</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -359,8 +389,7 @@
   <tabstop>languagePackageED</tabstop>
   <tabstop>startCommandED</tabstop>
   <tabstop>endCommandED</tabstop>
-  <tabstop>defaultDecimalPointLE</tabstop>
-  <tabstop>defaultLengthUnitCO</tabstop>
+  <tabstop>defaultDecimalSepED</tabstop>
   <tabstop>globalCB</tabstop>
   <tabstop>explicitDocLangBeginCB</tabstop>
   <tabstop>markForeignCB</tabstop>

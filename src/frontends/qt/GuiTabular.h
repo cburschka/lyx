@@ -76,6 +76,8 @@ private:
 	GuiSetBorder::BorderState orig_rightborder_;
 	///
 	int lastrow_;
+	///
+	docstring decimal_sep_;
 };
 
 } // namespace frontend

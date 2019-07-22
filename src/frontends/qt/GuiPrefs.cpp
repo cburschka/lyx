@@ -2412,7 +2412,9 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(uiLanguageCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
-	connect(defaultDecimalPointLE, SIGNAL(textChanged(QString)),
+	connect(defaultDecimalSepED, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
+	connect(defaultDecimalSepCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
 	connect(defaultLengthUnitCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
@@ -2421,8 +2423,8 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 	startCommandED->setValidator(new NoNewLineValidator(startCommandED));
 	endCommandED->setValidator(new NoNewLineValidator(endCommandED));
 
-	defaultDecimalPointLE->setInputMask("X; ");
-	defaultDecimalPointLE->setMaxLength(1);
+	defaultDecimalSepED->setInputMask("X; ");
+	defaultDecimalSepED->setMaxLength(1);
 
 	defaultLengthUnitCO->addItem(lyx::qt_(unit_name_gui[Length::CM]), Length::CM);
 	defaultLengthUnitCO->addItem(lyx::qt_(unit_name_gui[Length::IN]), Length::IN);
@@ -2473,6 +2475,12 @@ void PrefLanguage::on_languagePackageCO_currentIndexChanged(int i)
 }
 
 
+void PrefLanguage::on_defaultDecimalSepCO_currentIndexChanged(int i)
+{
+	defaultDecimalSepED->setEnabled(i == 1);
+}
+
+
 void PrefLanguage::applyRC(LyXRC & rc) const
 {
 	rc.visual_cursor = visualCursorRB->isChecked();
@@ -2495,7 +2503,10 @@ void PrefLanguage::applyRC(LyXRC & rc) const
 	rc.language_command_end = fromqstr(endCommandED->text());
 	rc.gui_language = fromqstr(
 		uiLanguageCO->itemData(uiLanguageCO->currentIndex()).toString());
-	rc.default_decimal_point = fromqstr(defaultDecimalPointLE->text());
+	if (defaultDecimalSepCO->currentIndex() == 0)
+		rc.default_decimal_sep = "locale";
+	else
+		rc.default_decimal_sep = fromqstr(defaultDecimalSepED->text());
 	rc.default_length_unit = (Length::UNIT) defaultLengthUnitCO->itemData(defaultLengthUnitCO->currentIndex()).toInt();
 }
 
@@ -2519,10 +2530,17 @@ void PrefLanguage::updateRC(LyXRC const & rc)
 		save_langpack_ = toqstr(rc.language_custom_package);
 		languagePackageED->setEnabled(false);
 	}
+	defaultDecimalSepED->setEnabled(defaultDecimalSepCO->currentIndex() == 1);
 	globalCB->setChecked(rc.language_global_options);
 	startCommandED->setText(toqstr(rc.language_command_begin));
 	endCommandED->setText(toqstr(rc.language_command_end));
-	defaultDecimalPointLE->setText(toqstr(rc.default_decimal_point));
+	if (rc.default_decimal_sep == "locale") {
+		defaultDecimalSepCO->setCurrentIndex(0);
+		defaultDecimalSepED->clear();
+	} else {
+		defaultDecimalSepCO->setCurrentIndex(1);
+		defaultDecimalSepED->setText(toqstr(rc.default_decimal_sep));
+	}
 	int pos = defaultLengthUnitCO->findData(int(rc.default_length_unit));
 	defaultLengthUnitCO->setCurrentIndex(pos);
 

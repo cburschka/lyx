@@ -68,7 +68,7 @@ public:
 		RC_COPIER,
 		RC_CURSOR_FOLLOWS_SCROLLBAR,
 		RC_CURSOR_WIDTH,
-		RC_DEFAULT_DECIMAL_POINT,
+		RC_DEFAULT_DECIMAL_SEP,
 		RC_DEFAULT_LENGTH_UNIT,
 		RC_DEFAULT_OTF_VIEW_FORMAT,
 		RC_DEFAULT_PLATEX_VIEW_FORMAT,
@@ -525,7 +525,7 @@ public:
 	///
 	int export_overwrite = NO_FILES;
 	/// Default decimal point when aligning table columns on decimal
-	std::string default_decimal_point = ".";
+	std::string default_decimal_sep = "locale";
 	///
 	Length::UNIT default_length_unit = Length::CM;
 	///

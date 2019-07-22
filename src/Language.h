@@ -91,6 +91,8 @@ public:
 	std::string fontenc(BufferParams const &) const;
 	/// Return the localized date formats (long, medium, short format)
 	std::string dateFormat(size_t i) const;
+	/// Return the localized decimal separator
+	docstring decimalSeparator() const;
 	/// This language corresponds to a translation of the GUI
 	bool hasGuiSupport() const { return has_gui_support_; }
 	///

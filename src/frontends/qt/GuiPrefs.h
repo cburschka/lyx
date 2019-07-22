@@ -408,6 +408,7 @@ public:
 private Q_SLOTS:
 	void on_uiLanguageCO_currentIndexChanged(int);
 	void on_languagePackageCO_currentIndexChanged(int);
+	void on_defaultDecimalSepCO_currentIndexChanged(int);
 private:
 	///
 	QString save_langpack_;

@@ -1210,8 +1210,10 @@ void Tabular::setAlignment(idx_type cell, LyXAlignment align,
 		}
 		column_info[col].alignment = align;
 		docstring & dpoint = column_info[col].decimal_point;
-		if (align == LYX_ALIGN_DECIMAL && dpoint.empty())
-			dpoint = from_utf8(lyxrc.default_decimal_point);
+		if (align == LYX_ALIGN_DECIMAL && dpoint.empty()) {
+			Language const * tlang = buffer().paragraphs().front().getParLanguage(buffer().params());
+			dpoint = tlang->decimalSeparator();
+		}
 	} else {
 		cellInfo(cell).alignment = align;
 		cellInset(cell)->setContentAlignment(align);

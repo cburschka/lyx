@@ -25,7 +25,11 @@
 #include "support/filetools.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
+#include "support/qstring_helpers.h"
 #include "support/Messages.h"
+
+#include <QLocale>
+#include <QString>
 
 using namespace std;
 using namespace lyx::support;
@@ -108,6 +112,16 @@ string Language::dateFormat(size_t i) const
 	if (i > dateformats_.size())
 		return string();
 	return dateformats_.at(i);
+}
+
+
+docstring Language::decimalSeparator() const
+{
+	if (lyxrc.default_decimal_sep == "locale") {
+		QLocale loc = QLocale(toqstr(code()));
+		return qstring_to_ucs4(QString(loc.decimalPoint()));
+	}
+	return from_utf8(lyxrc.default_decimal_sep);
 }
 
 

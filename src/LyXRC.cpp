@@ -95,7 +95,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\cursor_follows_scrollbar", LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR },
 	{ "\\cursor_width", LyXRC::RC_CURSOR_WIDTH },
 	{ "\\def_file", LyXRC::RC_DEFFILE },
-	{ "\\default_decimal_point", LyXRC::RC_DEFAULT_DECIMAL_POINT },
+	{ "\\default_decimal_point", LyXRC::RC_DEFAULT_DECIMAL_SEP },
 	{ "\\default_length_unit", LyXRC::RC_DEFAULT_LENGTH_UNIT },
 	{ "\\default_otf_view_format", LyXRC::RC_DEFAULT_OTF_VIEW_FORMAT },
 	{ "\\default_platex_view_format", LyXRC::RC_DEFAULT_PLATEX_VIEW_FORMAT },
@@ -752,8 +752,8 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			if (lexrc.next())
 				backupdir_path = os::internal_path(lexrc.getString());
 			break;
-		case RC_DEFAULT_DECIMAL_POINT:
-			lexrc >> default_decimal_point;
+		case RC_DEFAULT_DECIMAL_SEP:
+			lexrc >> default_decimal_sep;
 			break;
 		case RC_DEFAULT_LENGTH_UNIT:
 			if (lexrc.next())
@@ -2267,10 +2267,10 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		   << "#\n\n";
 
 	// fall through
-	case RC_DEFAULT_DECIMAL_POINT:
+	case RC_DEFAULT_DECIMAL_SEP:
 		if (ignore_system_lyxrc ||
-		    default_decimal_point != system_lyxrc.default_decimal_point) {
-			os << "\\default_decimal_point " << default_decimal_point << '\n';
+		    default_decimal_sep != system_lyxrc.default_decimal_sep) {
+			os << "\\default_decimal_point \"" << default_decimal_sep << "\"" << '\n';
 		}
 		if (tag != RC_LAST)
 			break;
@@ -2892,7 +2892,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_FORWARD_SEARCH_DVI:
 	case LyXRC::RC_FORWARD_SEARCH_PDF:
 	case LyXRC::RC_EXPORT_OVERWRITE:
-	case LyXRC::RC_DEFAULT_DECIMAL_POINT:
+	case LyXRC::RC_DEFAULT_DECIMAL_SEP:
 	case LyXRC::RC_DEFAULT_LENGTH_UNIT:
 	case LyXRC::RC_SCROLL_WHEEL_ZOOM:
 	case LyXRC::RC_CURSOR_WIDTH:

@@ -22,10 +22,12 @@
 #include "qt_helpers.h"
 #include "Validator.h"
 
+#include "Buffer.h"
 #include "BufferView.h"
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "Language.h"
 #include "LyX.h"
 #include "LyXRC.h"
 
@@ -550,10 +552,10 @@ docstring GuiTabular::dialogToParams() const
 		setHAlign(param_str);
 
 	// SET_DECIMAL_POINT must come after setHAlign() (ALIGN_DECIMAL)
-	string decimal_point = fromqstr(decimalPointED->text());
-	if (decimal_point.empty())
-		decimal_point = lyxrc.default_decimal_point;
-	setParam(param_str, Tabular::SET_DECIMAL_POINT, decimal_point);
+	string decimal_sep = fromqstr(decimalPointED->text());
+	if (decimal_sep.empty())
+		decimal_sep = to_utf8(decimal_sep_);
+	setParam(param_str, Tabular::SET_DECIMAL_POINT, decimal_sep);
 
 	setVAlign(param_str);
 	setTableAlignment(param_str);
@@ -1053,10 +1055,12 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	hAlignCO->setCurrentIndex(hAlignCO->findData(toqstr(align)));
 
 	//
-	QString decimal_point = toqstr(tabular.column_info[col].decimal_point);
-	if (decimal_point.isEmpty())
-		decimal_point = toqstr(from_utf8(lyxrc.default_decimal_point));
-	decimalPointED->setText(decimal_point);
+	decimal_sep_ = tabular.column_info[col].decimal_point;
+	if (decimal_sep_.empty()) {
+		Language const * lang = itab->buffer().paragraphs().front().getParLanguage(itab->buffer().params());
+		decimal_sep_ = lang->decimalSeparator();
+	}
+	decimalPointED->setText(toqstr(decimal_sep_));
 
 	int valign = 0;
 	switch (tabular.getVAlignment(cell)) {
