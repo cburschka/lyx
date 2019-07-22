@@ -6712,6 +6712,26 @@ System Functions (Preferences, LyX Server etc.)
 \end_layout
 
 \begin_layout Subsection*
+bidi
+\end_layout
+
+\begin_layout Description
+Action Helper function for bidirectional toolbar icons
+\end_layout
+
+\begin_layout Description
+Notion In a text, the function is marked as `unknown' when the current direction does not correspond to DIRECTION (ltr or rtl). Otherwise the function behaves exactly as ACTION. The result is that ACTION will be associated to a different icon depending on text direction.
+\end_layout
+
+\begin_layout Description
+Syntax bidi <DIRECTION> <ACTION>
+\end_layout
+
+\begin_layout Description
+Origin JMarc, 21 July 2019
+\end_layout
+
+\begin_layout Subsection*
 buffer-toggle-output-sync
 \end_layout
 
