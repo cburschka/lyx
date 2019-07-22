@@ -50398,7 +50398,7 @@ Local Preferences
 
 \begin_layout Description
 
-\change_inserted -712698321 1563709001
+\change_inserted -712698321 1563776004
 Default
 \begin_inset space ~
 \end_inset
@@ -50407,8 +50407,15 @@ decimal
 \begin_inset space ~
 \end_inset
 
-separator Defines the default decimal point for use in tables (decimal point
- alignment).
+separator Defines the default decimal separator for use in tables (decimal
+ separator alignment).
+ By default, the appropriate character for the current language is selected
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., dot for English, comma for German), but you can also specify a specific
+ (static) custom character here.
 \end_layout
 
 \begin_layout Description

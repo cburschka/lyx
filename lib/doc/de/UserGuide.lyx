@@ -8636,12 +8636,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8654,7 +8652,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8678,7 +8675,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 
@@ -47165,10 +47161,13 @@ Lokale Einstellungen
 \end_layout
 
 \begin_layout Description
-Standard-Dezimaltrenner Legen Sie hier den Standard-Dezimaltrenner fest,
- welcher für die Ausrichtung am Dezimalzeichen in Tabellen verwendet wird.
- Voreingestellt ist der Punkt, im Deutschen wird in der Regel aber ein Komma
- verwendet.
+Standard-Dezimaltrenner Hier können Sie hier den Standard-Dezimaltrenner
+ festlegen, welcher für die Ausrichtung am Dezimalzeichen in Tabellen verwendet
+ wird.
+ Voreingestellt ist, dass automatisch das für die aktuelle Sprache passende
+ Zeichen (bspw.
+ für Deutsch ein Komma, für Englisch ein Punkt) ausgewählt wird.
+ Sie können aber auch ein globales benutzerdefiniertes Zeichen festlegen.
 \end_layout
 
 \begin_layout Description
