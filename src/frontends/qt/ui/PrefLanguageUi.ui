@@ -236,7 +236,7 @@
         <item>
          <widget class="QRadioButton" name="logicalCursorRB">
           <property name="toolTip">
-           <string>Right arrow key is interpreted as &quot;move forwards&quot;, left arrow key as &quot;move backwards&quot;</string>
+           <string>The cursor follows the logic of the text direction (e.g., in embedded right-to-left text in a left-to-right paragraph, the cursor starts at the right when coming from the left)</string>
           </property>
           <property name="text">
            <string>&amp;Logical</string>
@@ -249,7 +249,7 @@
         <item>
          <widget class="QRadioButton" name="visualCursorRB">
           <property name="toolTip">
-           <string>Right arrow key is interpreted as &quot;move right&quot;, left arrow key as &quot;move left&quot;</string>
+           <string>The cursor follows the visual direction (e.g., in embedded right-to-left text in a left-to-right paragraph, the cursor starts at the left when coming from the left)</string>
           </property>
           <property name="text">
            <string>&amp;Visual</string>

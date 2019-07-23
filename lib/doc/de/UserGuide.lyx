@@ -8636,10 +8636,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8652,6 +8654,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8675,6 +8678,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -46967,7 +46971,7 @@ Befehl
 \begin_inset space ~
 \end_inset
 
-Ende ist das Gegenstück zu 
+Ende Verwenden Sie dies, wenn eine Sprachumschaltung, die Sie mit 
 \family sans
 Befehl
 \begin_inset space ~
@@ -46975,19 +46979,19 @@ Befehl
 
 Anfang
 \family default
-.
- Verwenden Sie dies, wenn eine Sprachumschaltung explizit beendet werden
- muss, wie das beispielsweise im alternativen Babel-Befehl 
+ vorgenommen haben, explizit beendet werden muss, so wie das beispielsweise
+ im Fall des alternativen Babel-Befehls 
 \family typewriter
 
 \backslash
 begin{otherlanguage*}\SpecialChar ldots
+\SpecialChar allowbreak
 
 \backslash
 end{otherlanguage*}
 \family default
- der Fall ist.
- Standardmäßig ist dieses Feld leer, da 
+ nötig ist.
+ In der Voreinstellung ist dieses Feld leer, da 
 \family typewriter
 
 \backslash
@@ -47138,24 +47142,70 @@ Rechts-nach-links-Cursor-Navigation legt fest, wie sich der Cursor beim
  Hebräisch, Arabisch oder Farsi) verhält, wenn sie die Pfeil-rechts- oder
  Pfeil-links-Taste drücken.
  
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
 \family sans
 Logisch
 \family default
- bedeutet, dass der Cursor nach links bewegt wird, wenn Sie die Pfeil-rechts-Tas
-te drücken (diese bedeutet dann also immer: bewege den Cursor vorwärts),
- und nach rechts, wenn Sie die Pfeil-links-Taste drücken (die dann immer
- bedeutet: bewege den Cursor rückwärts).
- Diese Einstellung ist vor allem in sinnvoll, die rechts- und linksläufige
- Schriften mischen, da die Cursorbewegung dann einer einheitlichen Textlogik
- folgt.
+ bedeutet, dass der Cursor der Logik der Textrichtung folgt; die Pfeiltasten
+ richten sich dabei nach der Textrichtung der Hauptsprache des Absatzes.
+ Beispielsweise startet der Cursor in hebräischen Textpassagen, die in einen
+ deutschsprachigen Absatz eingebettet sind, wenn Sie von links her kommen,
+ rechts (also am Anfang der hebräischen Passage nach der linksläufigen Textlogik
+).
+ Somit wird die Bedeutung der Pfeiltaste temporär vertauscht: 
+\emph on
+rechts
+\emph default
+ heißt nicht 
+\begin_inset Quotes gls
+\end_inset
+
+rechts
+\begin_inset Quotes grs
+\end_inset
+
+, sondern (in diesem speziellen Fall) 
+\begin_inset Quotes gls
+\end_inset
+
+vorwärts
+\begin_inset Quotes grs
+\end_inset
+
+.
+ Diese Einstellung ist vor allem in Dokumenten sinnvoll, die rechts- und
+ linksläufige Schriften mischen, da die Cursorbewegung dann einer einheitlichen
+ Textlogik folgt.
  
+\end_layout
+
+\begin_layout Standard
+
 \family sans
 Visuell
 \family default
- bedeutet, dass sich der Cursor in die Richtung bewegt, in die auch die
- Pfeile zeigen
+ bedeutet, dass sich der Cursor immer in die Richtung bewegt, in die auch
+ die Pfeile zeigen.
+ In diesem Fall würde bei einer eingebettetem hebräischen Passage in einem
+ deutschsprachigen Absatz der Cursor links (in der linksläufigen Logik:
+ von 
+\begin_inset Quotes gls
+\end_inset
+
+hinten
+\begin_inset Quotes grs
+\end_inset
+
+) anfangen, wenn Sie von links kommen.
+ Somit wird die visuelle Bedeutung der Tasten stets eingehalten, zu Lasten
+ der Textlogik.
 \end_layout
 
+\end_deeper
 \begin_layout Subsubsection
 Lokale Einstellungen
 \end_layout

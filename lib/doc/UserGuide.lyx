@@ -8483,12 +8483,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8501,6 +8503,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8524,6 +8527,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -29894,7 +29898,10 @@ Appendix
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:Credits"
+reference "chap:Units-available-in"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
@@ -49938,14 +49945,20 @@ Command
 \begin_inset space ~
 \end_inset
 
-end Counterpart to 
+end 
+\change_deleted -712698321 1563857836
+Counterpart to 
 \family sans
 Command start
 \family default
 .
  
-\change_inserted -712698321 1563708846
-Use this if the language switch needs to be explicitly ended, as in 
+\change_inserted -712698321 1563857869
+Use this if the language switch set in 
+\family sans
+Command start
+\family default
+ needs to be explicitly ended, as in 
 \series bold
 babel
 \series default
@@ -49954,6 +49967,7 @@ babel
 
 \backslash
 begin{otherlanguage*}\SpecialChar ldots
+\SpecialChar allowbreak
 
 \backslash
 end{otherlanguage*}
@@ -49963,14 +49977,15 @@ end{otherlanguage*}
 \change_deleted -712698321 1563708866
 Some packages, like the default, don't have an end command since the start
  command toggles the package on and off
-\change_inserted -712698321 1563711115
+\change_inserted -712698321 1563858041
 Empty by default, as 
 \family typewriter
 
 \backslash
 selectlanguage{$$lang}
 \family default
- does not need to be explicitly ended (it is valid until the next 
+ does not need to be explicitly ended (the switch remains valid until the
+ next 
 \family typewriter
 
 \backslash
@@ -49980,7 +49995,7 @@ selectlanguage{$$lang}
 \change_unchanged
 .
 
-\change_inserted -712698321 1563708925
+\change_inserted -712698321 1563857868
  Note that with 
 \series bold
 polyglossia
@@ -50350,26 +50365,50 @@ RTL
 \change_inserted -712698321 1563710286
 scripts with right-to-left direction (e.g., Arabic, Hebrew or Farsi).
  
-\change_deleted -712698321 1563710294
+\change_deleted -712698321 1563857456
 , you can define if the left and right arrow keys move the cursor visually
  to the left or right, respectively, or logically.
  
-\change_unchanged
+\change_inserted -712698321 1563859701
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 \family sans
 Logical
 \family default
- means that the cursor is moved to the left 
-\change_deleted -712698321 1563710342
-when
-\change_inserted -712698321 1563710342
-if
-\change_unchanged
- pressing the right arrow key 
-\change_inserted -712698321 1563712351
-(so right arrow key means: move forward), and to the right if pressing the
- left arrow key (which then means: move backward).
- This setting might be useful in texts that mix left-to-right and right-to-left
+ means that the cursor 
+\change_inserted -712698321 1563859940
+follows the logic of the text direction, and the arrows' direction relates
+ to the directionality of the main paragraph language.
+ E.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in embedded right-to-left text in a left-to-right paragraph (say, Hebrew
+ embedded in English), the cursor starts at the right (that is, at the 
+\emph on
+beginning
+\emph default
+ of the embedded passage in the right-to-left logic) when coming from the
+ left.
+ The meaning of the key is thus swapped for that part; right arrow in this
+ specific case always means: move 
+\emph on
+forward
+\emph default
+ in text (even if this means: 
+\emph on
+move left
+\emph default
+).
+ 
+\change_deleted -712698321 1563857456
+is moved to the left when pressing the right arrow key 
+\change_inserted -712698321 1563859705
+This setting might be useful in texts that mix left-to-right and right-to-left
  scripts, since the cursor then follows a coherent 
 \begin_inset Quotes eld
 \end_inset
@@ -50380,16 +50419,31 @@ text logic
 
 .
  
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1563860084
+
 \family sans
 Visual
 \family default
  means: always move to the direction towards which the arrows really point.
-\change_deleted -712698321 1563710407
+ In this case, in embedded right-to-left text in a left-to-right paragraph,
+ the cursor starts at the left (in the text logic: 
+\emph on
+from the end
+\emph default
+) when coming from the left.
+ The visual meaning of the key is thus maintained in all cases, at the expense
+ of the text logic.
+\change_deleted -712698321 1563857456
 and the cursor is inside text in an RTL language.
-\change_inserted -712698321 1563710219
+\change_inserted -712698321 1563858627
 
 \end_layout
 
+\end_deeper
 \begin_layout Subsubsection
 
 \change_inserted -712698321 1563710235
