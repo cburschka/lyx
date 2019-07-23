@@ -55,7 +55,8 @@ GuiSelectionManager::GuiSelectionManager(QObject * parent,
 : QObject(parent), availableLV(avail), selectedLV(sel),
   addPB(add), deletePB(del), upPB(up), downPB(down),
   availableModel(amod), selectedModel(smod),
-  selectedHasFocus_(false), main_sel_col_(main_sel_col)
+  selectedHasFocus_(false), main_sel_col_(main_sel_col),
+  allow_multi_selection_(false)
 {
 	selectedLV->setModel(smod);
 	availableLV->setModel(amod);
@@ -144,7 +145,7 @@ void GuiSelectionManager::updateAddPB()
 		availableLV->selectionModel()->selectedIndexes();
 	addPB->setEnabled(arows > 0 &&
 		!availSels.isEmpty() &&
-		!isSelected(availSels.first()));
+		(allow_multi_selection_ || !isSelected(availSels.first())));
 }
 
 

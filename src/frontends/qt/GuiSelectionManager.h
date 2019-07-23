@@ -67,6 +67,8 @@ public:
 	/// Returns the selected index. Note that this will depend upon
 	/// selectedFocused().
 	QModelIndex getSelectedIndex(int const c = 0) const;
+	///
+	void allowMultiSelection(bool b) { allow_multi_selection_ = b; }
 
 Q_SIGNALS:
 	/// Emitted when the list of selected items has changed.
@@ -148,6 +150,8 @@ private:
 	bool selectedHasFocus_;
 	///
 	int main_sel_col_;
+	///
+	bool allow_multi_selection_;
 };
 
 } // namespace frontend

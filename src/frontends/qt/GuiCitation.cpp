@@ -368,6 +368,8 @@ void GuiCitation::updateFormatting(CitationStyle const & currentStyle)
 		availableLV->setToolTip(qt_("All references available for citing.\n"
 					    "To add the selected one, hit Add, press Enter or double-click.\n"
 					    "Hit Ctrl-Enter to add and close the dialog."));
+	// With qualified citation lists, it makes sense to add the same key multiple times
+	selectionManager->allowMultiSelection(currentStyle.hasQualifiedList);
 }
 
 
