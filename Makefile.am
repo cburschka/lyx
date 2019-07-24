@@ -24,7 +24,7 @@ EXTRA_DIST = ANNOUNCE INSTALL.autoconf RELEASE-NOTES UPGRADING \
 man_MANS = lyx.1
 
 # Set high compression level for xz distribution
-XZ_OPT=-9ev
+export XZ_OPT=-9ev
 
 rpmdist: dist
 	$(LN_S) $(srcdir)/lib/images/lyx.png . ; \
