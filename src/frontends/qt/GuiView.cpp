@@ -4496,7 +4496,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			command = subst(command, "$$t", texname);
 			command = subst(command, "$$o", outname);
 
-			PathChanger p(path);
+			volatile PathChanger p(path);
 			Systemcall one;
 			one.startscript(Systemcall::DontWait, command);
 			break;
