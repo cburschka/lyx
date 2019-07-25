@@ -1144,7 +1144,7 @@ contributors = [
                  u"Initial version of the koma-script textclasses"),
 
      contributor(u"Joel Kulesza",
-                 "jkulesza () gmail ! com>",
+                 "jkulesza () gmail ! com",
                  "GPL",
                  "License to Publish Work",
                  "m=147735429207382",
