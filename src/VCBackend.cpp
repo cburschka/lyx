@@ -2190,7 +2190,8 @@ bool GIT::getTreeRevisionInfo()
 	}
 
 	doVCCommand("git describe --abbrev --dirty --long > " + quoteName(tmpf.toFilesystemEncoding()),
-		    FileName(owner_->filePath()));
+		    FileName(owner_->filePath()),
+		    false); //git describe returns $?=128 when no tag found (but git repo still exists)
 
 	if (tmpf.empty())
 		return false;
