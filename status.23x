@@ -31,6 +31,9 @@ What's new
 
 - Avoid using text mode for unicode symbols representable in math mode (bug 9616).
 
+- Do not issue error dialog when no tag is found in git repository for
+  tree-revision info inset.
+
 
 
 * DOCUMENTATION AND LOCALIZATION
