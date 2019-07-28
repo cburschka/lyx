@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-07-22 12:25+0200\n"
-"PO-Revision-Date: 2019-07-22 10:37+0000\n"
+"POT-Creation-Date: 2019-07-28 22:53+0200\n"
+"PO-Revision-Date: 2019-07-28 20:59+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -246,7 +246,7 @@ msgstr "&Možnosti:"
 #: src/frontends/qt/ui/BiblioUi.ui:440
 msgid ""
 "Define options such as --min-crossrefs (see the documentation of BibTeX)"
-msgstr "Definujte možnosti ako napr. --min-crossrefs (viď dokumentáciu BibTeX)"
+msgstr "Definujte možnosti ako napr. --min-crossrefs (viďte dokumentáciu BibTeX)"
 
 #: src/frontends/qt/ui/BibtexUi.ui:23
 msgid "BibTeX database(s) to use"
@@ -404,7 +404,7 @@ msgid ""
 "Options to the biblatex bibliography command. See the biblatex manual for "
 "details."
 msgstr ""
-"Voľby pre príkaz na biblatex-bibliografie. Pre detaily viď biblatex manuál."
+"Voľby pre príkaz na biblatex-bibliografie. Pre detaily viďte biblatex manuál."
 
 #: src/frontends/qt/ui/BibtexUi.ui:425
 msgid "Scan for new databases and styles"
@@ -1277,7 +1277,7 @@ msgstr ""
 
 #: src/frontends/qt/ui/ErrorListUi.ui:51
 msgid "For more information, refer to the complete log."
-msgstr "Pre viac informácie, pozri na kompletný protokol."
+msgstr "Pre viac informácie, pozrite na kompletný protokol."
 
 #: src/frontends/qt/ui/ErrorListUi.ui:58
 msgid "Description:"
@@ -1357,7 +1357,7 @@ msgid ""
 "disabled at application level (see Preference dialog)."
 msgstr ""
 "Umožniť náhľad tohoto materiálu len v prípade že náhľad obrázkov je v "
-"Nastaveniach povolený (viď dialóg Preferencie)."
+"Nastaveniach povolený (viďte dialóg Preferencie)."
 
 #: src/frontends/qt/ui/ExternalUi.ui:243
 msgid "&Show in LyX"
@@ -1679,7 +1679,7 @@ msgstr "Umiestnenie na strane"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:184
 msgid "Place&ment Settings:"
-msgstr "N&astavenia umiestnenia:"
+msgstr "Sp&ôsob umiestnenia:"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:199
 msgid "&Top of page"
@@ -1977,7 +1977,7 @@ msgid ""
 "at application level (see Preferences dialog)."
 msgstr ""
 "Umožniť náhľad tohoto obrázku len v prípade že náhľad obrázkov je v "
-"Nastaveniach povolený (viď dialóg Preferencie)."
+"Nastaveniach povolený (viďte dialóg Preferencie)."
 
 #: src/frontends/qt/ui/GraphicsUi.ui:559
 msgid "Sho&w in LyX"
@@ -3005,7 +3005,7 @@ msgid ""
 "Line numbering (lineno package) options. Please refer to the lineno package "
 "manual for details."
 msgstr ""
-"Voľby pre číslovanie riadkov (balík lineno). Pre detaily viď manuál balíka "
+"Voľby pre číslovanie riadkov (balík lineno). Pre detaily viďte manuál balíka "
 "lineno."
 
 #: src/frontends/qt/ui/NumberingUi.ui:82
@@ -4182,11 +4182,13 @@ msgstr "Pohyb kurzoru doprava/doľava:"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:239
 msgid ""
-"Right arrow key is interpreted as \"move forwards\", left arrow key as "
-"\"move backwards\""
+"The cursor follows the logic of the text direction (e.g., in embedded right-"
+"to-left text in a left-to-right paragraph, the cursor starts at the right "
+"when coming from the left)"
 msgstr ""
-"Klávesu 'šípka doprava' interpretovať ak \"pohyb dopredu', a klávesu 'šípka "
-"doľava' ako \"pohyb dozadu\""
+"Kurzor sprevádza logiku smeru textu (napr. vo vloženom sprava-doľava texte "
+"ktorý je vnútri zľava-doprava odstavca. Kurzor začína vpravo keď prichádza "
+"zľava)"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:257
 msgid "&Logical"
@@ -4194,11 +4196,12 @@ msgstr "&Logický"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:252
 msgid ""
-"Right arrow key is interpreted as \"move right\", left arrow key as \"move "
-"left\""
+"The cursor follows the visual direction (e.g., in embedded right-to-left "
+"text in a left-to-right paragraph, the cursor starts at the left when coming "
+"from the left)"
 msgstr ""
-"Klávesu 'šípka doprava' interpretovať ak \"pohyb doprava', a klávesu 'šípka "
-"doľava' ako \"pohyb doľava\""
+"Kurzor sprevádza vizuálny smer (napr. vo vloženom sprava-doľava texte ktorý "
+"je vnútri zľava-doprava odstavca. Kurzor začína vľavo keď prichádza zľava)"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:267
 msgid "&Visual"
@@ -5667,7 +5670,7 @@ msgstr "Počet potrebných riadkov"
 
 #: lib/citeengines/basic.citeengine:2
 msgid "Basic (BibTeX)"
-msgstr "Základné (BibTeX)"
+msgstr "Základný (BibTeX)"
 
 #: lib/citeengines/basic.citeengine:6
 msgid ""
@@ -9558,7 +9561,7 @@ msgstr "Mini-Šablóna"
 
 #: lib/layouts/beamer.layout:140
 msgid "Mini template for this list (see beamer manual for details)"
-msgstr "Mini šablóna pre túto listinu (viď enumitem manuál)"
+msgstr "Mini šablóna pre túto listinu (viďte enumitem manuál)"
 
 #: lib/layouts/beamer.layout:191
 msgid "Longest label|s"
@@ -9694,7 +9697,7 @@ msgstr "Voľby rámu"
 #: lib/layouts/beamer.layout:505 lib/layouts/beamer.layout:534
 #: lib/layouts/beamer.layout:545 lib/layouts/beamer.layout:573
 msgid "Frame options (see beamer manual)"
-msgstr "Voľby rámu (viď beamer manuál)"
+msgstr "Voľby rámu (viďte beamer manuál)"
 
 #: lib/layouts/beamer.layout:508
 msgid "Frame Title"
@@ -9749,7 +9752,7 @@ msgstr "Titul rámu"
 #: lib/layouts/beamer.layout:1571 lib/layouts/beamer.layout:1592
 #: lib/layouts/beamer.layout:1613 lib/layouts/beamer.layout:1639
 msgid "Specify the overlay settings (see beamer manual)"
-msgstr "Špecifikovať voľby prekrytia (viď beamer manuál)"
+msgstr "Špecifikovať voľby prekrytia (viďte beamer manuál)"
 
 #: lib/layouts/beamer.layout:622
 msgid "Short Frame Title|S"
@@ -9784,7 +9787,7 @@ msgstr "Voľby stĺpec"
 
 #: lib/layouts/beamer.layout:676
 msgid "Column options (see beamer manual)"
-msgstr "Voľby stĺpca (viď beamer manuál)"
+msgstr "Voľby stĺpca (viďte beamer manuál)"
 
 #: lib/layouts/beamer.layout:699
 msgid "Column Placement Options"
@@ -10139,7 +10142,7 @@ msgstr "Voľby poznámky"
 
 #: lib/layouts/beamer.layout:1646
 msgid "Specifiy note options (see beamer manual)"
-msgstr "Špecifikovať voľby poznámky (viď beamer manuál)"
+msgstr "Špecifikovať voľby poznámky (viďte beamer manuál)"
 
 #: lib/layouts/beamer.layout:1651
 msgid "ArticleMode"
@@ -10176,7 +10179,7 @@ msgid ""
 "file MultilingualCaptions.lyx in LyX's examples folder."
 msgstr ""
 "Poskytuje dva štýly na sádzanie dvoj-jazykových popisov. Pre vysvetlenie "
-"pozri súbor MultilingualCaptions.lyx v adresári príkladov."
+"pozrite súbor MultilingualCaptions.lyx v adresári príkladov."
 
 #: lib/layouts/bicaption.module:11
 msgid "Caption setup"
@@ -10520,7 +10523,7 @@ msgid ""
 "Support for the chessboard package to print chess games See chessboard-"
 "article.lyx example file."
 msgstr ""
-"Podpora balíka chessboard na tlač šachových hier. Viď príkladný súbor "
+"Podpora balíka chessboard na tlač šachových hier. Viďte príkladný súbor "
 "chessboard-article.lyx."
 
 #: lib/layouts/chessboard.module:16
@@ -10537,7 +10540,7 @@ msgstr "Voľby partie"
 
 #: lib/layouts/chessboard.module:33
 msgid "See xskak manual for a comprehensive list of keys and values"
-msgstr "Viď manuál balíka xskak pre podrobný zoznam kľúčov a ich hodnôt"
+msgstr "Viďte manuál balíka xskak pre podrobný zoznam kľúčov a ich hodnôt"
 
 #: lib/layouts/chessboard.module:60
 msgid "Mainline Options"
@@ -10545,7 +10548,7 @@ msgstr "Voľby hlavnej variácie"
 
 #: lib/layouts/chessboard.module:61
 msgid "See xskak manual for possible options"
-msgstr "Viď manuál balíka xskak pre možné voľby"
+msgstr "Viďte manuál balíka xskak pre možné voľby"
 
 #: lib/layouts/chessboard.module:68 lib/layouts/chessboard.module:69
 #: lib/layouts/iopart.layout:96 lib/layouts/pdfcomment.module:131
@@ -10583,7 +10586,7 @@ msgid ""
 "See chessboard manual for details."
 msgstr ""
 "Tu môžte uložiť nastavenia šachovnice pod menom štýlu na neskoršie použitie. "
-"Pre detaily viď manuál chessboard."
+"Pre detaily viďte manuál chessboard."
 
 #: lib/layouts/chessboard.module:127 lib/examples/Articles:0
 msgid "Chessboard"
@@ -10595,7 +10598,7 @@ msgstr "Možnosti šachovnice"
 
 #: lib/layouts/chessboard.module:131
 msgid "See chessboard manual for a comprehensive list of keys and values"
-msgstr "Viď manuál balíka chessboard pre podrobný zoznam kľúčov a ich hodnôt"
+msgstr "Viďte manuál balíka chessboard pre podrobný zoznam kľúčov a ich hodnôt"
 
 #: lib/layouts/cl2emult.layout:3
 msgid "Springer Contributed Books (cl2emult, Obsolete!)"
@@ -11709,7 +11712,7 @@ msgstr "Parametre pre položky"
 #: lib/layouts/enumitem.module:76 lib/layouts/enumitem.module:113
 #: lib/layouts/powerdot.layout:277 lib/layouts/powerdot.layout:338
 msgid "Optional arguments for this list (see enumitem manual)"
-msgstr "Voliteľné argumenty pre túto listinu (viď enumitem manuál)"
+msgstr "Voliteľné argumenty pre túto listinu (viďte enumitem manuál)"
 
 #: lib/layouts/enumitem.module:67 lib/layouts/enumitem.module:112
 #: lib/layouts/paralist.module:38 lib/layouts/powerdot.layout:337
@@ -12175,7 +12178,7 @@ msgid ""
 msgstr ""
 "Poskytuje 'FiXme' (okrajové) vysvetlivky pre revízne zámery v dokumente. "
 "Súpis vysvetliviek sa dá vytvoriť použitím odstavcového štýlu 'Súpis "
-"FIXMEs'. Vysvetlivky sú upraviteľné v LaTeXovej preambule. Viď dokumentáciu "
+"FIXMEs'. Vysvetlivky sú upraviteľné v LaTeXovej preambule. Viďte dokumentáciu "
 "FiXme. NOTA: Štandardne sú poznámky viditeľné len v režime 'draft' (keď "
 "voľbu 'draft' vložíte pomocou Dokument -> Nastavenia… -> Trieda dokumentu -> "
 "Nastavenie triedy -> Vlastné). Chcete to vidieť vždy, vložte "
@@ -12206,7 +12209,7 @@ msgstr "Voľby poznámky Fixme|k"
 #: lib/layouts/fixme.module:70 lib/layouts/fixme.module:105
 #: lib/layouts/fixme.module:148 lib/layouts/fixme.module:190
 msgid "Consult the fixme package documentation for options"
-msgstr "Viď dokumentáciu balíka fixme pre možné voľby"
+msgstr "Viďte dokumentáciu balíka fixme pre možné voľby"
 
 #: lib/layouts/fixme.module:75
 msgid "Fixme Warning"
@@ -13075,7 +13078,7 @@ msgid ""
 "in LyX's examples folder."
 msgstr ""
 "Poskytuje dve vložky na sádzanie čísiel a zvratov pre chemické rizikové a "
-"bezpečnostné inštrukcie. Pre vysvetlenie pozri súbor H-P-statements.lyx v "
+"bezpečnostné inštrukcie. Pre vysvetlenie pozrite súbor H-P-statements.lyx v "
 "adresári príkladov."
 
 #: lib/layouts/hpstatement.module:12 lib/layouts/hpstatement.module:17
@@ -13239,7 +13242,7 @@ msgid ""
 "Defines a style for paragraphs with an enlarged initial letter (drop cap). "
 "See the EmbeddedObjects manual for a detailed description."
 msgstr ""
-"Definuje štýl pre odstavce s zväčšenou iniciálkou. Pozri manuál 'Vložené "
+"Definuje štýl pre odstavce s zväčšenou iniciálkou. Pozrite manuál 'Vložené "
 "Objekty' pre detailné vysvetlenie."
 
 #: lib/layouts/initials.module:15 lib/layouts/initials.module:17
@@ -13597,7 +13600,7 @@ msgid ""
 msgstr ""
 "Používa balík knitr v R pre generáciu dynamickej reportáže. Aby tento modul "
 "pracoval musí byť balík R inštalovaný: install.packages('knitr'). "
-"Zaznamenajte si že závisí na R >= 2.14.1. Pre viac informácie pozri na "
+"Zaznamenajte si že závisí na R >= 2.14.1. Pre viac informácie pozrite na "
 "http://yihui.name/knitr"
 
 #: lib/layouts/knitr.module:20 lib/layouts/sweave.module:30
@@ -13741,7 +13744,7 @@ msgid ""
 "A comma-separated option list (see the LilyPond documentation for available "
 "options)."
 msgstr ""
-"Čiarkami oddelená listina volieb (pozri dokumentáciu LilyPond-u pre dostupné "
+"Čiarkami oddelená listina volieb (pozrite dokumentáciu LilyPond-u pre dostupné "
 "voľby)."
 
 #: lib/layouts/linguistics.module:2 lib/layouts/linguistics.module:63
@@ -13756,7 +13759,7 @@ msgid ""
 "examples."
 msgstr ""
 "Definuje špeciálne prostredie užitočné pre lingvistiku (číslované príklady, "
-"glosy, sémantické štýly znakov (markup), plávajúce tabuľky). Pozri na súbor "
+"glosy, sémantické štýly znakov (markup), plávajúce tabuľky). Pozrite na súbor "
 "linguistics.lyx v príkladoch."
 
 #: lib/layouts/linguistics.module:19
@@ -14671,7 +14674,7 @@ msgid ""
 "detailed description of multiple columns."
 msgstr ""
 "Pridáva vlastnú vložku, ktorej obsah je postavený z viacerých stĺpcov (2 .sú "
-"prednastavené). Pozri prídavný manuál, sekcia 'Viac stĺpcový text', pre "
+"prednastavené). Pozrite prídavný manuál, sekcia 'Viac stĺpcový text', pre "
 "detailné vysvetlenie viac-stĺpcového prostredia."
 
 #: lib/layouts/multicol.module:20
@@ -14806,7 +14809,7 @@ msgstr ""
 "číslované listiny môžu byť vysádzané vnútri odstavcov, ako odstavce a aj v "
 "kompaktnej verzii. Väčšina prostredí má voliteľné argumenty na formátovanie "
 "návestia. Dodatočne, LaTeX-ové prostredia itemize a enumerate sú rozšírené "
-"na použitie obdobného voliteľného argumentu. Pre detaily viď Paralist v "
+"na použitie obdobného voliteľného argumentu. Pre detaily viďte Paralist v "
 "Špecifické manuály."
 
 #: lib/layouts/paralist.module:32 lib/layouts/paralist.module:39
@@ -14816,7 +14819,7 @@ msgstr ""
 #: lib/layouts/paralist.module:114 lib/layouts/paralist.module:123
 #: lib/layouts/paralist.module:135
 msgid "Optional arguments for this list (see paralist manual)"
-msgstr "Voliteľné argumenty pre túto listinu (viď paralist manuál)"
+msgstr "Voliteľné argumenty pre túto listinu (viďte paralist manuál)"
 
 #: lib/layouts/paralist.module:49
 msgid "AsParagraphItem"
@@ -14971,7 +14974,7 @@ msgstr "Voľby"
 
 #: lib/layouts/pdfcomment.module:85
 msgid "Insert PDF-Comment setup options here (see the pdfcomment manual)"
-msgstr "Tu sa vložia voľby pre PDF-komentár (viď pdfcomment manuál)"
+msgstr "Tu sa vložia voľby pre PDF-komentár (viďte pdfcomment manuál)"
 
 #: lib/layouts/pdfcomment.module:94
 msgid "PDF-Annotation"
@@ -14987,7 +14990,7 @@ msgstr "Voľby pre PDF-komentár"
 
 #: lib/layouts/pdfcomment.module:109
 msgid "Insert PDFComment options here (see pdfcomment manual)"
-msgstr "Tu sa vložia voľby pre PDF-komentár (viď pdfcomment manuál)"
+msgstr "Tu sa vložia voľby pre PDF-komentár (viďte pdfcomment manuál)"
 
 #: lib/layouts/pdfcomment.module:114
 msgid "PDF-Margin"
@@ -15095,7 +15098,7 @@ msgstr "Voľby pre listinu komentárov|k"
 
 #: lib/layouts/pdfcomment.module:237
 msgid "Insert list options here (see pdfcomment manual)"
-msgstr "Vložte sem voľby listiny (viď pdfcomment manuál)"
+msgstr "Vložte sem voľby listiny (viďte pdfcomment manuál)"
 
 #: lib/layouts/pdfform.module:2 lib/examples/Articles:0
 msgid "PDF Form"
@@ -15276,7 +15279,7 @@ msgstr "Voľba fólia"
 
 #: lib/layouts/powerdot.layout:143
 msgid "Optional arguments to the slide command (see powerdot manual)"
-msgstr "Voliteľný argument pre príkaz fólia (viď powerdot manuál)"
+msgstr "Voliteľný argument pre príkaz fólia (viďte powerdot manuál)"
 
 #: lib/layouts/powerdot.layout:152
 msgid "EndSlide"
@@ -15304,7 +15307,7 @@ msgstr "Voľby pre sekciu"
 
 #: lib/layouts/powerdot.layout:248
 msgid "Optional arguments to the section command (see powerdot manual)"
-msgstr "Voliteľné argumenty pre príkaz sekcia (viď powerdot manuál)"
+msgstr "Voliteľné argumenty pre príkaz sekcia (viďte powerdot manuál)"
 
 #: lib/layouts/powerdot.layout:272 lib/layouts/powerdot.layout:305
 msgid "Itemize Type"
@@ -15312,7 +15315,7 @@ msgstr "Typ položky"
 
 #: lib/layouts/powerdot.layout:273 lib/layouts/powerdot.layout:306
 msgid "Itemize type specification (see powerdot manual)"
-msgstr "Špecifikácia pre typ položky (viď powerdot manuál)"
+msgstr "Špecifikácia pre typ položky (viďte powerdot manuál)"
 
 #: lib/layouts/powerdot.layout:302
 msgid "ItemizeType1"
@@ -15324,7 +15327,7 @@ msgstr "Typ číslovania"
 
 #: lib/layouts/powerdot.layout:334 lib/layouts/powerdot.layout:368
 msgid "Enumerate type specification (see powerdot manual)"
-msgstr "Špecifikácia pre typ číslovania (viď powerdot manuál)"
+msgstr "Špecifikácia pre typ číslovania (viďte powerdot manuál)"
 
 #: lib/layouts/powerdot.layout:364
 msgid "EnumerateType1"
@@ -15336,7 +15339,7 @@ msgstr "Dva stĺpce"
 
 #: lib/layouts/powerdot.layout:490
 msgid "Twocolumn options (see powerdot manual)"
-msgstr "Voľby pre dva stĺpce (viď powerdot manuál)"
+msgstr "Voľby pre dva stĺpce (viďte powerdot manuál)"
 
 #: lib/layouts/powerdot.layout:493
 msgid "Left Column"
@@ -15360,7 +15363,7 @@ msgstr "Špecifikácie prekrytia|p"
 
 #: lib/layouts/powerdot.layout:627
 msgid "Specify the overlay settings (see powerdot manual)"
-msgstr "Špecifikovať voľby prekrytia (viď powerdot manuál)"
+msgstr "Špecifikovať voľby prekrytia (viďte powerdot manuál)"
 
 #: lib/layouts/powerdot.layout:634
 msgid "Onslide+"
@@ -15550,7 +15553,7 @@ msgid ""
 "statements.lyx in LyX's examples folder."
 msgstr ""
 "Poskytuje dve vložky a jedno prostredie na sádzanie čísiel a zvratov pre "
-"poistné a rizikové uzávierky v chémii. Pre vysvetlenie pozri súbor R-S-"
+"poistné a rizikové uzávierky v chémii. Pre vysvetlenie pozrite súbor R-S-"
 "statements.lyx v adresári príkladov."
 
 #: lib/layouts/rsphrase.module:12 lib/layouts/rsphrase.module:17
@@ -16011,7 +16014,7 @@ msgid ""
 "standard Paragraph Shapes'."
 msgstr ""
 "Poskytuje niekoľko tvarov odstavca ako aj príkazy na definovanie vlastných "
-"tvarov. Pre vysvetlenie pozri LyXov manuál 'Prídavné vlastnosti', sekcia "
+"tvarov. Pre vysvetlenie pozrite LyXov manuál 'Prídavné vlastnosti', sekcia "
 "'Nie štandardné tvary odstavca'."
 
 #: lib/layouts/shapepar.module:27
@@ -16496,7 +16499,7 @@ msgid ""
 "Provide a straightforward way to segregate subequations in LyX. See the "
 "subequations.lyx example file."
 msgstr ""
-"Umožniť priamy spôsob na oddelenie pod-rovníc v LyXe. Viď príkladný súbor "
+"Umožniť priamy spôsob na oddelenie pod-rovníc v LyXe. Viďte príkladný súbor "
 "subequations.lyx."
 
 #: lib/layouts/svcommon.inc:68
@@ -16761,7 +16764,7 @@ msgid ""
 "via the Sweave() function. For more info see the LyX example file sweave.lyx."
 msgstr ""
 "Umožňuje použiť štatistický jazyk S/R ako nástroj pre dokumentačné "
-"programovanie cez funkciu z balíka Sweave(). Pre viac informácie pozri "
+"programovanie cez funkciu z balíka Sweave(). Pre viac informácie pozrite "
 "príkladný súbor sweave.lyx."
 
 #: lib/layouts/sweave.module:76 lib/layouts/sweave.module:77
@@ -16798,7 +16801,7 @@ msgid ""
 "the tcolorbox documentation for details."
 msgstr ""
 "Pridáva vlastné vložky podporujúce farebné rámiky pomocou balíka tcolorbox. "
-"Viď dokumentáciu tcolorbox."
+"Viďte dokumentáciu tcolorbox."
 
 #: lib/layouts/tcolorbox.module:12 lib/layouts/tcolorbox.module:15
 msgid "Color Box"
@@ -16810,7 +16813,7 @@ msgstr "Voľby pre farebný rámik"
 
 #: lib/layouts/tcolorbox.module:21
 msgid "Insert the color box options here (see tcolorbox manual)"
-msgstr "Tu sa vložia voľby pre farebný rámik (viď tcolorbox manuál)"
+msgstr "Tu sa vložia voľby pre farebný rámik (viďte tcolorbox manuál)"
 
 #: lib/layouts/tcolorbox.module:27
 msgid "Dynamic Color Box"
@@ -17694,7 +17697,7 @@ msgstr "Voľby poznámky TODO|k"
 
 #: lib/layouts/todonotes.module:81 lib/layouts/todonotes.module:110
 msgid "See the todonotes manual for possible options"
-msgstr "Viď manuál balíka todonotes pre možné voľby"
+msgstr "Viďte manuál balíka todonotes pre možné voľby"
 
 #: lib/layouts/todonotes.module:87
 msgid "TODO Note (inline)"
@@ -17813,7 +17816,7 @@ msgstr ""
 "varwidth poskytuje minipage s variabilnou šírkou, rezultuje v šírke jej "
 "obsahu (kým to nepresahuje stanovenú maximálnu šírku).  Vložka má dva "
 "voliteľné argumenty: vertikálna úprava (c [stred],t [hore],b [dole]) a "
-"maximálna šírka (štandardne \\linewidth). Viď príklad v varwidth-floats-side-"
+"maximálna šírka (štandardne \\linewidth). Viďte príklad v varwidth-floats-side-"
 "by-side.lyx."
 
 #: lib/layouts/varwidth.module:20
@@ -19384,7 +19387,7 @@ msgstr "Normálne zalomenie riadku|r"
 
 #: lib/ui/stdcontext.inc:324 lib/ui/stdmenus.inc:466
 msgid "Justified Line Break|J"
-msgstr "Zarovnané zalomenie riadku zprava|p"
+msgstr "Zarovnané zalomenie riadku sprava|p"
 
 #: lib/ui/stdcontext.inc:331
 msgid "Plain Separator|P"
@@ -19536,15 +19539,15 @@ msgstr "Zmazať voliteľný argument"
 
 #: lib/ui/stdcontext.inc:403 lib/ui/stdmenus.inc:275
 msgid "Append Argument Eating From the Right"
-msgstr "Pridať argument zprava"
+msgstr "Pridať argument sprava"
 
 #: lib/ui/stdcontext.inc:404 lib/ui/stdmenus.inc:276
 msgid "Append Optional Argument Eating From the Right"
-msgstr "Pridať voliteľný argument zprava"
+msgstr "Pridať voliteľný argument sprava"
 
 #: lib/ui/stdcontext.inc:405 lib/ui/stdmenus.inc:277
 msgid "Remove Last Argument Spitting Out to the Right"
-msgstr "Odstráň posledný argument zprava"
+msgstr "Odstráň posledný argument sprava"
 
 #: lib/ui/stdcontext.inc:414
 msgid "Reload|R"
@@ -21287,17 +21290,17 @@ msgstr "Zmazať voliteľný argument"
 msgid "Insert optional argument"
 msgstr "Vložiť voliteľný argument"
 
-#: lib/ui/stdtoolbars.inc:218
+#: lib/ui/stdtoolbars.inc:226
 msgid "Remove last argument spitting out to the right"
-msgstr "Odstráň posledný argument zprava"
+msgstr "Odstráň posledný argument sprava"
 
-#: lib/ui/stdtoolbars.inc:219
+#: lib/ui/stdtoolbars.inc:227
 msgid "Append argument eating from the right"
-msgstr "Pridať argument zprava"
+msgstr "Pridať argument sprava"
 
-#: lib/ui/stdtoolbars.inc:220
+#: lib/ui/stdtoolbars.inc:228
 msgid "Append optional argument eating from the right"
-msgstr "Pridať voliteľný argument zprava"
+msgstr "Pridať voliteľný argument sprava"
 
 #: lib/ui/stdtoolbars.inc:223
 msgid "Phonetic Symbols"
@@ -27275,7 +27278,7 @@ msgstr ""
 "nebude schopný zrobiť výstup pokiaľ sú\n"
 "nasledujúce predpoklady neinštalované:\n"
 "\t%2$s\n"
-"Pozri na sekciu 3.1.2.2 (Dostupné triedy) Užívateľskej príručky pre\n"
+"Pozrite na sekciu 3.1.2.2 (Dostupné triedy) Užívateľskej príručky pre\n"
 "viac informácií."
 
 #: src/BufferParams.cpp:743
@@ -29618,7 +29621,7 @@ msgid ""
 msgstr ""
 "Cesta ku slovníkom tezauru nebola stanovená.\n"
 "Tezaurus nie je funkčný.\n"
-"Pozri sekciu 6.15.1 Užívateľskej príručky pre inštrukcie\n"
+"Pozrite sekciu 6.15.1 Užívateľskej príručky pre inštrukcie\n"
 "nastavenia."
 
 #: src/Text3.cpp:2736 src/Text3.cpp:2747
@@ -29677,7 +29680,7 @@ msgstr ""
 "ktorý nemáte inštalovaný. Nezaistený výstup z LaTeX-a.\n"
 "Chýbajúce predpoklady:\n"
 "\t%2$s\n"
-"Pozri sekciu 3.1.2.3 (Moduly) Užívateľskej príručky pre viac informácií."
+"Pozrite sekciu 3.1.2.3 (Moduly) Užívateľskej príručky pre viac informácií."
 
 #: src/TextClass.cpp:1845 src/TextClass.cpp:1877
 msgid "Package not available"
@@ -29720,7 +29723,7 @@ msgstr ""
 "ktorý nemáte inštalovaný. Nezaistený výstup z LaTeX-a.\n"
 "Chýbajúce predpoklady:\n"
 "\t%2$s\n"
-"Pozri sekciu 3.1.2.3 (Moduly) Užívateľskej príručky pre viac informácií."
+"Pozrite sekciu 3.1.2.3 (Moduly) Užívateľskej príručky pre viac informácií."
 
 #: src/TextClass.cpp:1882
 #, c-format
@@ -31564,7 +31567,7 @@ msgstr "Nedá sa uložiť štandardné rozloženie triedy dokumentov."
 
 #: src/frontends/qt/GuiDocument.cpp:2997
 msgid "Basic numerical"
-msgstr "Základný číselný"
+msgstr "Základná číselná"
 
 #: src/frontends/qt/GuiDocument.cpp:3000
 msgid "Author-year"
@@ -32240,7 +32243,7 @@ msgid ""
 "Enter a LyX preferences key such as 'bind_file'. See the proposed list for "
 "available entries. The output is the current setting of this preference."
 msgstr ""
-"Vložte kľúč LyX-preferencie ako napr. 'bind_file'. Viď navrhnutý súpis na "
+"Vložte kľúč LyX-preferencie ako napr. 'bind_file'. Viďte navrhnutý súpis na "
 "možné záznamy. Výstup je aktuálna hodnota tejto preferencie."
 
 #: src/frontends/qt/GuiInfo.cpp:256 src/insets/InsetInclude.cpp:428
@@ -34740,6 +34743,10 @@ msgid "Revision[[Version Control]]"
 msgstr "Revízia"
 
 #: src/insets/InsetInfo.cpp:281
+msgid "Abbreviated revision[[Version Control]]"
+msgstr "Skrátená revízia"
+
+#: src/insets/InsetInfo.cpp:281
 msgid "Tree revision"
 msgstr "Revízia stromu"
 
@@ -34818,6 +34825,10 @@ msgstr "Trieda, ktorá sa v dokumente používa"
 #: src/insets/InsetInfo.cpp:531
 msgid "Version control revision"
 msgstr "Revízia správy verzií"
+
+#: src/insets/InsetInfo.cpp:534
+msgid "Version control abbreviated revision"
+msgstr "Skrátená revízia správy verzií"
 
 #: src/insets/InsetInfo.cpp:533
 msgid "Version control tree revision"
@@ -36187,6 +36198,20 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid ""
+#~ "Right arrow key is interpreted as \"move forwards\", left arrow key as "
+#~ "\"move backwards\""
+#~ msgstr ""
+#~ "Klávesu 'šípka doprava' interpretovať ak \"pohyb dopredu', a klávesu "
+#~ "'šípka doľava' ako \"pohyb dozadu\""
+
+#~ msgid ""
+#~ "Right arrow key is interpreted as \"move right\", left arrow key as "
+#~ "\"move left\""
+#~ msgstr ""
+#~ "Klávesu 'šípka doprava' interpretovať ak \"pohyb doprava', a klávesu "
+#~ "'šípka doľava' ako \"pohyb doľava\""
+
 #~ msgid "Auto &begin"
 #~ msgstr "Automatický &začiatok"
 
@@ -36700,7 +36725,7 @@ msgstr "Neznámy používateľ"
 #~ "Obrázok inkscapu.\n"
 #~ "Táto šablóna by mala pracovať bezchybne s inkscape 0.48. \n"
 #~ "Pre inkscape 0.91 je (reportovaná) vada vo výstupoch pre LaTeX + PDF\n"
-#~ "ktoré nútia robiť obchvaty, viď manuál Vložené Objekty.\n"
+#~ "ktoré nútia robiť obchvaty, viďte manuál Vložené Objekty.\n"
 #~ "Všimnite si, že používaním tejto šablóny sa automaticky používa\n"
 #~ "text dokumentu v obrázku (podobne ako s Xfig šablónou).\n"
 
@@ -36777,7 +36802,7 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Poskytuje 'FiXme' (okrajové) vysvetlivky pre revízne zámery v dokumente. "
 #~ "Súpis vysvetliviek sa dá vytvoriť použitím odstavcového štýlu 'Súpis "
-#~ "FIXMEs'. Vysvetlivky sú upraviteľné v LaTeXovej preambule. Viď "
+#~ "FIXMEs'. Vysvetlivky sú upraviteľné v LaTeXovej preambule. Viďte "
 #~ "dokumentáciu FiXme. NOTA: Štandardne sú poznámky viditeľné len v režime "
 #~ "'draft' (keď voľbu 'draft' vložíte pomocou Dokument -> Nastavenia… -> "
 #~ "Trieda dokumentu -> Nastavenie triedy -> Vlastné). Chcete to vidieť vždy, "
@@ -36905,7 +36930,7 @@ msgstr "Neznámy používateľ"
 #~ "Font encodings for Greek and Cyrillic are automatically added if required."
 #~ msgstr ""
 #~ "Vyberte LaTeX-ove kódovanie fontu.\n"
-#~ "Štandardne [Globálny Štandard] je to \"T1 cez balík 'fontenc'\" (viď "
+#~ "Štandardne [Globálny Štandard] je to \"T1 cez balík 'fontenc'\" (viďte "
 #~ "Nástroje -> Preferencie… -> Výstup -> LaTeX).\n"
 #~ "Poznámky:\n"
 #~ "Štandardné fonty TeX-u (Computer Modern) nie sú dostupné v kódovaní T1. "
@@ -37575,11 +37600,11 @@ msgstr "Neznámy používateľ"
 #~ msgid ""
 #~ "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 #~ msgstr ""
-#~ "Vyberte pre zapnutie podpory písania zprava doľava (napr. pre Hebrejčinu, "
+#~ "Vyberte pre zapnutie podpory písania sprava-doľava (napr. pre Hebrejčinu, "
 #~ "Arabčinu)."
 
 #~ msgid "Enable &RTL support"
-#~ msgstr "Z&apnúť podporu písania zprava-doľava"
+#~ msgstr "Z&apnúť podporu písania sprava-doľava"
 
 #~ msgid "Disable any kerning and ligatures for text drawing on screen."
 #~ msgstr ""
@@ -37887,7 +37912,7 @@ msgstr "Neznámy používateľ"
 #~ msgstr "Voľba Iniciálka"
 
 #~ msgid "Optional argument for initial (see lettrine manual)"
-#~ msgstr "Nepovinný argument pre iniciálku (viď lettrine manuál)"
+#~ msgstr "Nepovinný argument pre iniciálku (viďte lettrine manuál)"
 
 #~ msgid "Settings...|g"
 #~ msgstr "Nastavenia...|a"
@@ -37923,7 +37948,7 @@ msgstr "Neznámy používateľ"
 #~ msgstr "Popis: "
 
 #~ msgid "Options for the caption setup command (see bicaption manual)"
-#~ msgstr "Voľby pre príkaz na nastavenie popisu (viď bicaption manuál)"
+#~ msgstr "Voľby pre príkaz na nastavenie popisu (viďte bicaption manuál)"
 
 #~ msgid "A short title (for list of figures/tables) in the document language"
 #~ msgstr "Krátky titul (pre zoznam obrázkov/tabuliek) v jazyku dokumentu"
@@ -38016,7 +38041,7 @@ msgstr "Neznámy používateľ"
 #~ msgstr "Voľby Stĺpce"
 
 #~ msgid "Columns options (see beamer manual)"
-#~ msgstr "Voľby stĺpcov (viď beamer manuál)"
+#~ msgstr "Voľby stĺpcov (viďte beamer manuál)"
 
 #~ msgid "Institute mark"
 #~ msgstr "Inštitútna značka"
@@ -40087,7 +40112,7 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Pridáva 2 štýly pre začiatok a koniec viac-stĺpcového prostredia. "
 #~ "Začiatočný štýl obsahuje počet stĺpcov, konečný štýl musí byť prázdny. "
-#~ "Pozri Prídavný manuál, sekcia 'Viac Stĺpcový Text', pre detailné "
+#~ "Pozrite Prídavný manuál, sekcia 'Viac Stĺpcový Text', pre detailné "
 #~ "vysvetlenie viac-stĺpcového prostredia."
 
 #~ msgid "&Icon Set:"
@@ -40100,10 +40125,10 @@ msgstr "Neznámy používateľ"
 #~ msgstr "článok (ACM SIGS 'alternate' štýl)"
 
 #~ msgid "Itemize type spezification (see powerdot manual)"
-#~ msgstr "Špecifikácia pre typ položky (viď powerdot manuál)"
+#~ msgstr "Špecifikácia pre typ položky (viďte powerdot manuál)"
 
 #~ msgid "Enumerate type spezification (see powerdot manual)"
-#~ msgstr "Špecifikácia pre typ číslovania (viď powerdot manuál)"
+#~ msgstr "Špecifikácia pre typ číslovania (viďte powerdot manuál)"
 
 #~ msgid "Custom paragraph shapes"
 #~ msgstr "Vlastné tvary odstavca"
@@ -40267,7 +40292,7 @@ msgstr "Neznámy používateľ"
 #~ msgstr "Lupa pomocou rolovacieho tlačítka"
 
 #~ msgid "Right-to-left language support"
-#~ msgstr "Podpora písania zprava-doľava"
+#~ msgstr "Podpora písania sprava-doľava"
 
 #~ msgid "Context help"
 #~ msgstr "Kontextovo závislá pomoc"
@@ -41077,7 +41102,7 @@ msgstr "Neznámy používateľ"
 #~ "LyXRC.h for available entries. The output is the current setting of this "
 #~ "preference."
 #~ msgstr ""
-#~ "Vložte kľúč LyX-preferencie ako napr. 'bind_file'. Viď src/LyXRC.h na "
+#~ "Vložte kľúč LyX-preferencie ako napr. 'bind_file'. Viďte src/LyXRC.h na "
 #~ "možné záznamy. Výstup je aktuálna hodnota tejto preferencie."
 
 #~ msgid "No version control"
@@ -41214,4 +41239,4 @@ msgstr "Neznámy používateľ"
 #~ msgstr "Označiť &cudzie jazyky"
 
 #~ msgid "Right-to-Left Language Support"
-#~ msgstr "Podpora písania zprava-doľava"
+#~ msgstr "Podpora písania sprava-doľava"
