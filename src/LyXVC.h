@@ -176,7 +176,8 @@ public:
 		Tree = 2,
 		Author = 3,
 		Date = 4,
-		Time = 5
+		Time = 5,
+		FileAbbrev = 6
 	};
 
 	/**

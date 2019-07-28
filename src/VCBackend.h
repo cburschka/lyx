@@ -560,6 +560,8 @@ private:
 	bool getFileRevisionInfo();
 	/// cache for file revision number, "?" if already unsuccessful, isNumber==true
 	std::string rev_file_cache_;
+	/// cache for abbreviated file revision number, "?" if already unsuccessful, isNumber==true
+	std::string rev_file_abbrev_cache_;
 	/// cache for author of last commit
 	std::string rev_author_cache_;
 	/// cache for date of last commit

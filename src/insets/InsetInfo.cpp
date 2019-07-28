@@ -278,6 +278,7 @@ vector<pair<string,docstring>> InsetInfoParams::getArguments(Buffer const * buf,
 			break;
 		}
 		result.push_back(make_pair("revision", _("Revision[[Version Control]]")));
+		result.push_back(make_pair("revision-abbrev", _("Abbreviated revision[[Version Control]]")));
 		result.push_back(make_pair("tree-revision", _("Tree revision")));
 		result.push_back(make_pair("author", _("Author")));
 		result.push_back(make_pair("date", _("Date")));
@@ -385,7 +386,7 @@ bool InsetInfoParams::validateArgument(Buffer const * buf, docstring const & arg
 			|| name == "path" || name == "class");
 
 	case VCS_INFO:
-		if (name == "revision" || name == "tree-revision"
+		if (name == "revision" || name == "revision-abbrev" || name == "tree-revision"
 		    || name == "author" || name == "date" || name == "time")
 			return buf->lyxvc().inUse();
 		return false;
@@ -529,6 +530,8 @@ docstring InsetInfo::toolTip(BufferView const &, int, int) const
 	case InsetInfoParams::VCS_INFO:
 		if (params_.name == "revision")
 			result = _("Version control revision");
+		else if (params_.name == "revision-abbrev")
+			result = _("Version control abbreviated revision");
 		else if (params_.name == "tree-revision")
 			result = _("Version control tree revision");
 		else if (params_.name == "author")
@@ -1099,6 +1102,8 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		LyXVC::RevisionInfo itype = LyXVC::Unknown;
 		if (params_.name == "revision")
 			itype = LyXVC::File;
+		else if (params_.name == "revision-abbrev")
+			itype = LyXVC::FileAbbrev;
 		else if (params_.name == "tree-revision")
 			itype = LyXVC::Tree;
 		else if (params_.name == "author")

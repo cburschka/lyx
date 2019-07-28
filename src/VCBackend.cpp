@@ -2125,14 +2125,20 @@ string GIT::revisionInfo(LyXVC::RevisionInfo const info)
 
 	// fill the rest of the attributes for a single file
 	if (rev_file_cache_.empty())
-		if (!getFileRevisionInfo())
+		if (!getFileRevisionInfo()) {
 			rev_file_cache_ = "?";
+			rev_file_abbrev_cache_ = "?";
+    }
 
 	switch (info) {
 		case LyXVC::File:
 			if (rev_file_cache_ == "?")
 				return string();
 			return rev_file_cache_;
+		case LyXVC::FileAbbrev:
+			if (rev_file_abbrev_cache_ == "?")
+				return string();
+			return rev_file_abbrev_cache_;
 		case LyXVC::Author:
 			return rev_author_cache_;
 		case LyXVC::Date:
@@ -2156,7 +2162,7 @@ bool GIT::getFileRevisionInfo()
 		return false;
 	}
 
-	doVCCommand("git log -n 1 --pretty=format:%H%n%an%n%ai " + quoteName(onlyFileName(owner_->absFileName()))
+	doVCCommand("git log -n 1 --pretty=format:%H%n%h%n%an%n%ai " + quoteName(onlyFileName(owner_->absFileName()))
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 
@@ -2167,6 +2173,8 @@ bool GIT::getFileRevisionInfo()
 
 	if (ifs)
 		getline(ifs, rev_file_cache_);
+	if (ifs)
+		getline(ifs, rev_file_abbrev_cache_);
 	if (ifs)
 		getline(ifs, rev_author_cache_);
 	if (ifs) {

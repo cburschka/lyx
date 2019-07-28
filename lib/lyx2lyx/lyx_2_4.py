@@ -1056,6 +1056,26 @@ def revert_vcsinfo(document):
         document.body[tp] = "type \"buffer\""
         document.body[arg] = "arg \"vcs-" + argv + "\""
 
+def revert_vcsinfo_rev_abbrev(document):
+    " Convert abbreviated revisions to regular revisions. "
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Info", i+1)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i+1)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of Info inset.")
+            continue
+        tp = find_token(document.body, 'type', i, j)
+        tpv = get_quoted_value(document.body, "type", tp)
+        if tpv != "vcs":
+            continue
+        arg = find_token(document.body, 'arg', i, j)
+        argv = get_quoted_value(document.body, "arg", arg)
+        if( argv == "revision-abbrev" ):
+            document.body[arg] = "arg \"revision\""
 
 def revert_dateinfo(document):
     " Revert date info insets to static text. "
@@ -3147,9 +3167,11 @@ convert = [
            [581, [convert_osf]],
            [582, [convert_AdobeFonts,convert_latexFonts,convert_notoFonts,convert_CantarellFont,convert_FiraFont]],# old font re-converterted due to extra options
            [583, [convert_ChivoFont,convert_Semibolds,convert_NotoRegulars,convert_CrimsonProFont]],
+           [584, []],
           ]
 
-revert =  [[582, [revert_ChivoFont,revert_CrimsonProFont]],
+revert =  [[583, [revert_vcsinfo_rev_abbrev]],
+           [582, [revert_ChivoFont,revert_CrimsonProFont]],
            [581, [revert_CantarellFont,revert_FiraFont]],
            [580, [revert_texfontopts,revert_osf]],
            [579, [revert_minionpro, revert_plainNotoFonts_xopts, revert_notoFonts_xopts, revert_IBMFonts_xopts, revert_AdobeFonts_xopts, revert_font_opts]], # keep revert_font_opts last!
