@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 584
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -41,7 +41,7 @@ shapepar
 \language english
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
 \font_typewriter "lmtt" "default"
@@ -49,7 +49,9 @@ shapepar
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -98,6 +100,7 @@ shapepar
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \notefontcolor #0000ff
 \index Index
 \shortcut idx
@@ -115,11 +118,14 @@ shapepar
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tablestyle default
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author 5863208 "ab"
+\author 1119979965 "Joel A. Kulesza"
 \end_header
 
 \begin_body
@@ -153,7 +159,6 @@ on mailing list,
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 <lyx-docs@lists.lyx.org>
 \end_layout
 
@@ -4408,7 +4413,6 @@ includegraphics{logo.eps}}}
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 
 \backslash
 usepackage{graphics}
@@ -21905,7 +21909,17 @@ vcs-time
 
 \end_deeper
 \begin_layout Standard
-You can obtain this info via InsetInfo (e.g.
+You can obtain this info via InsetInfo (
+\change_inserted 5863208 1564400022
+
+\lang american
+Insert\SpecialChar menuseparator
+Field\SpecialChar menuseparator
+Version Control Revision
+\change_deleted 5863208 1564399852
+
+\lang english
+e.g.
  
 \begin_inset Flex Code
 status collapsed
@@ -21916,6 +21930,8 @@ info-insert buffer vcs-date
 
 \end_inset
 
+
+\change_unchanged
 ).
  The information will be available only when you have the file stored under
  svn managment (i.e.
@@ -22772,11 +22788,18 @@ Version Info
 
 \begin_layout Standard
 \SpecialChar LyX
- supports GIT hash number of the last commit to the file, author name, date
- and time of last commit.
+ supports GIT hash number of the last commit to the file, 
+\change_inserted 1119979965 1564297456
+its abbreviated form, 
+\change_unchanged
+author name, date and time of last commit.
  All those are extracted from 
 \family typewriter
-git log -n 1 --pretty=format:%H%n%an%n%ai
+git log -n 1 --pretty=format:%H%n
+\change_inserted 1119979965 1564297427
+%h%n
+\change_unchanged
+%an%n%ai
 \family default
 .
  Tree version information is obtained via 
@@ -25738,7 +25761,6 @@ Non-standard Paragraph Shapes
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 shapepar
 \end_layout
 
@@ -26681,6 +26703,7 @@ Here is an example:
 \begin_inset CommandInset include
 LatexCommand input
 filename "SpecialParagraphShape.tex"
+literal "true"
 
 \end_inset
 
