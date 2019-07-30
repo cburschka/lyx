@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 3.1)
 
 if (POLICY CMP0069)
-  cmake_policy(SET CMP0069 NEW)
+  if (LYX_DEBUG)
+    cmake_policy(SET CMP0069 OLD)
+  else()
+    cmake_policy(SET CMP0069 NEW)
+  endif()
 endif()
 
 set(VERSION "1.2.5")
