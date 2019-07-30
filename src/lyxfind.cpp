@@ -1323,13 +1323,13 @@ static void buildAccentsMap()
   accents["lyxmathsym{ß}"] = "ß";
   accents["text{ß}"] = "ß";
   accents["ddot{\\imath}"] = "ï";
-  buildaccent("ddot", "aAeEiIioOuUyY",
-                      "äÄëËïÏïöÖüÜÿŸ");	// umlaut
-  buildaccent("dot|.", "cCeEGgIizZaAoObBdDfFyY",
-                       "ċĊėĖĠġİİżŻȧȦȯȮḃḂḋḊḟḞẏẎ");	// dot{i} can only happen if ignoring case, but there is no lowercase of 'İ'
+  buildaccent("ddot", "aAeEhHiIioOtuUwWxXyY",
+                      "äÄëËḧḦïÏïöÖẗüÜẅẄẍẌÿŸ");	// umlaut
+  buildaccent("dot|.", "aAbBcCdDeEfFGghHIimMnNoOpPrRsStTwWxXyYzZ",
+                       "ȧȦḃḂċĊḋḊėĖḟḞĠġḣḢİİṁṀṅṄȯȮṗṖṙṘṡṠṫṪẇẆẋẊẏẎżŻ");	// dot{i} can only happen if ignoring case, but there is no lowercase of 'İ'
   accents["acute{\\imath}"] = "í";
-  buildaccent("acute", "aAcCeElLoOnNrRsSuUyYzZiI",
-                       "áÁćĆéÉĺĹóÓńŃŕŔśŚúÚýÝźŹíÍ");
+  buildaccent("acute", "aAcCeEgGkKlLmMoOnNpPrRsSuUwWyYzZiI",
+                       "áÁćĆéÉǵǴḱḰĺĹḿḾóÓńŃṕṔŕŔśŚúÚẃẂýÝźŹíÍ");
   buildaccent("dacute|H|h", "oOuU", "őŐűŰ");	// double acute
   buildaccent("mathring|r", "aAuUwy",
                             "åÅůŮẘẙ");	// ring
@@ -1339,14 +1339,14 @@ static void buildAccentsMap()
                          "čČďĎǎǍěĚǐǏǒǑǔǓǧǦǩǨȟȞľĽňŇřŘšŠŤťžŽ");	// caron
   accents["hat{\\imath}"] = "î";
   accents["hat{\\jmath}"] = "ĵ";
-  buildaccent("hat|^", "aAeEiIcCgGhHjJsSwWyYzZoOuU",
-                       "âÂêÊîÎĉĈĝĜĥĤĵĴŝŜŵŴŷŶẑẐôÔûÛ");	// circ
+  buildaccent("hat|^", "aAcCeEgGhHiIjJoOsSuUwWyYzZ",
+                       "âÂĉĈêÊĝĜĥĤîÎĵĴôÔŝŜûÛŵŴŷŶẑẐ");	// circ
   accents["bar{\\imath}"] = "ī";
   buildaccent("bar|=", "aAeEiIoOuUyY",
                        "āĀēĒīĪōŌūŪȳȲ");	// macron
   accents["tilde{\\imath}"] = "ĩ";
-  buildaccent("tilde", "aAnNoOiIuU",
-                       "ãÃñÑõÕĩĨũŨ");	// tilde
+  buildaccent("tilde", "aAeEiInNoOuUvVyY",
+                       "ãÃẽẼĩĨñÑõÕũŨṽṼỹỸ");	// tilde
   accents["breve{\\imath}"] = "ĭ";
   buildaccent("breve|u", "aAeEgGiIoOuU",
                          "ăĂĕĔğĞĭĬŏŎŭŬ");	// breve
@@ -1373,6 +1373,8 @@ static void buildAccentsMap()
   accents["textroundcap{\\i}"] = "ȉ";
   buildaccent("rcap|textroundcap", "AaEeIiOoRrUu",
                                    "ȂȃȆȇȊȋȎȏȒȓȖȗ"); // inverted breve
+  buildaccent("slashed", "oO",
+                         "øØ"); // slashed
 }
 
 /*
@@ -1383,7 +1385,7 @@ void Intervall::removeAccents()
 {
   if (accents.empty())
     buildAccentsMap();
-  static regex const accre("\\\\(([\\S]|grave|breve|lyxmathsym|text|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde|dgrave|textdoublegrave|rcap|textroundcap)\\{[^\\{\\}]+\\}|(i|imath|jmath)(?![a-zA-Z]))");
+  static regex const accre("\\\\(([\\S]|grave|breve|lyxmathsym|text|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde|dgrave|textdoublegrave|rcap|textroundcap|slashed)\\{[^\\{\\}]+\\}|(i|imath|jmath)(?![a-zA-Z]))");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
