@@ -1630,7 +1630,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		&& papersize != PAPER_A5
 		&& papersize != PAPER_B5;
 
-	if (!use_geometry) {
+	if (!use_geometry || features.isProvided("geometry-light")) {
 		switch (papersize) {
 		case PAPER_A4:
 			clsoptions << "a4paper,";
@@ -1854,8 +1854,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		os << "}\n";
 	}
 
-	if (!features.isProvided("geometry")
-	    && (use_geometry || nonstandard_papersize)) {
+	if (use_geometry || nonstandard_papersize) {
 		odocstringstream ods;
 		if (!getGraphicsDriver("geometry").empty())
 			ods << getGraphicsDriver("geometry");
@@ -1966,31 +1965,45 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		case PAPER_DEFAULT:
 			break;
 		}
-		docstring const g_options = trim(ods.str(), ",");
-		os << "\\usepackage";
-		if (!g_options.empty())
-			os << '[' << g_options << ']';
-		os << "{geometry}\n";
-		// output this only if use_geometry is true
-		if (use_geometry) {
+		docstring g_options = trim(ods.str(), ",");
+		// geometry-light means that the class works with geometry, but overwrites
+		// the package options and paper sizes (memoir does this).
+		// In this case, all options need to go to \geometry
+		// and the standard paper sizes need to go to the class options.
+		if (!features.isProvided("geometry")) {
+			os << "\\usepackage";
+			if (!g_options.empty() && !features.isProvided("geometry-light")) {
+				os << '[' << g_options << ']';
+				g_options.clear();
+			}
+			os << "{geometry}\n";
+		}
+		if (use_geometry || features.isProvided("geometry")
+		    || features.isProvided("geometry-light")) {
 			os << "\\geometry{verbose";
-			if (!topmargin.empty())
-				os << ",tmargin=" << from_ascii(Length(topmargin).asLatexString());
-			if (!bottommargin.empty())
-				os << ",bmargin=" << from_ascii(Length(bottommargin).asLatexString());
-			if (!leftmargin.empty())
-				os << ",lmargin=" << from_ascii(Length(leftmargin).asLatexString());
-			if (!rightmargin.empty())
-				os << ",rmargin=" << from_ascii(Length(rightmargin).asLatexString());
-			if (!headheight.empty())
-				os << ",headheight=" << from_ascii(Length(headheight).asLatexString());
-			if (!headsep.empty())
-				os << ",headsep=" << from_ascii(Length(headsep).asLatexString());
-			if (!footskip.empty())
-				os << ",footskip=" << from_ascii(Length(footskip).asLatexString());
-			if (!columnsep.empty())
-				os << ",columnsep=" << from_ascii(Length(columnsep).asLatexString());
-			os << "}\n";
+			if (!g_options.empty())
+				// Output general options here with "geometry light".
+				os << "," << g_options;
+			// output this only if use_geometry is true
+			if (use_geometry) {
+				if (!topmargin.empty())
+					os << ",tmargin=" << from_ascii(Length(topmargin).asLatexString());
+				if (!bottommargin.empty())
+					os << ",bmargin=" << from_ascii(Length(bottommargin).asLatexString());
+				if (!leftmargin.empty())
+					os << ",lmargin=" << from_ascii(Length(leftmargin).asLatexString());
+				if (!rightmargin.empty())
+					os << ",rmargin=" << from_ascii(Length(rightmargin).asLatexString());
+				if (!headheight.empty())
+					os << ",headheight=" << from_ascii(Length(headheight).asLatexString());
+				if (!headsep.empty())
+					os << ",headsep=" << from_ascii(Length(headsep).asLatexString());
+				if (!footskip.empty())
+					os << ",footskip=" << from_ascii(Length(footskip).asLatexString());
+				if (!columnsep.empty())
+					os << ",columnsep=" << from_ascii(Length(columnsep).asLatexString());
+			}
+		os << "}\n";
 		}
 	} else if (orientation == ORIENTATION_LANDSCAPE
 		   || papersize != PAPER_DEFAULT) {
