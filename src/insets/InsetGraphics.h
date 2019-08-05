@@ -110,7 +110,7 @@ private:
 	///
 	std::string contextMenuName() const;
 	/// Force inset into LTR environment if surroundings are RTL
-	bool forceLTR() const { return true; }
+	bool forceLTR(OutputParams const &) const { return true; }
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///

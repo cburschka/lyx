@@ -743,7 +743,7 @@ void InsetInfo::setText(docstring const & str, Language const * lang)
 }
 
 
-bool InsetInfo::forceLTR() const
+bool InsetInfo::forceLTR(OutputParams const &) const
 {
 	return params_.force_ltr;
 }

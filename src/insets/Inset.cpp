@@ -246,7 +246,7 @@ bool Inset::allowEmpty() const
 }
 
 
-bool Inset::forceLTR() const
+bool Inset::forceLTR(OutputParams const &) const
 {
 	return getLayout().forceLTR();
 }

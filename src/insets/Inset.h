@@ -242,7 +242,7 @@ public:
 	/// Don't eliminate empty paragraphs
 	virtual bool allowEmpty() const;
 	/// Force inset into LTR environment if surroundings are RTL
-	virtual bool forceLTR() const;
+	virtual bool forceLTR(OutputParams const &) const;
 	/// whether to include this inset in the strings generated for the TOC
 	virtual bool isInToc() const;
 

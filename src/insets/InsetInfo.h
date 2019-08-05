@@ -196,7 +196,7 @@ public:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	/// Force inset into LTR environment if surroundings are RTL
-	bool forceLTR() const;
+	bool forceLTR(OutputParams const &) const;
 	///
 	void setInfo(std::string const & info);
 	///
