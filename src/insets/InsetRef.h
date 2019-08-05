@@ -73,7 +73,7 @@ public:
 	void addToToc(DocIterator const & di, bool output_active,
 				  UpdateType utype, TocBackend & backend) const;
 	///
-	bool forceLTR() const;
+	bool forceLTR(OutputParams const &) const;
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes

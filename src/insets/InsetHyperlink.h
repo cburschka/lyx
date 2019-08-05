@@ -32,7 +32,7 @@ public:
 	///
 	bool hasSettings() const { return true; }
 	///
-	bool forceLTR() const { return true; }
+	bool forceLTR(OutputParams const &) const { return true; }
 	///
 	bool isInToc() const { return true; }
 	///

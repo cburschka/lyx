@@ -297,7 +297,7 @@ void InsetInfo::setText(docstring const & str)
 }
 
 
-bool InsetInfo::forceLTR() const
+bool InsetInfo::forceLTR(OutputParams const &) const
 {
 	return !buffer().params().language->rightToLeft() || force_ltr_;
 }

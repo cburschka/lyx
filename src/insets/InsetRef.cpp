@@ -471,11 +471,16 @@ void InsetRef::validate(LaTeXFeatures & features) const
 		features.require("nameref");
 }
 
-bool InsetRef::forceLTR() const
+bool InsetRef::forceLTR(OutputParams const & rp) const
 {
-	// We force LTR for references. Namerefs are output in the scripts direction
-	// at least with fontspec/bidi, though (see #11518).
+	// We force LTR for references. However,
+	// * Namerefs are output in the scripts direction
+	//   at least with fontspec/bidi and luabidi, though (see #11518).
+	// * Parentheses are automatically swapped with XeTeX/bidi 
+	//   [not with LuaTeX/luabidi] (see #11626).
 	// FIXME: Re-Audit all other RTL cases.
+	if (rp.use_polyglossia && rp.flavor == OutputParams::XETEX)
+		return false;
 	return (getCmdName() != "nameref" || !buffer().masterParams().useNonTeXFonts);
 }
 

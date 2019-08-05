@@ -1089,7 +1089,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	bool close = false;
 	odocstream::pos_type const len = os.os().tellp();
 
-	if (inset->forceLTR()
+	if (inset->forceLTR(runparams)
 	    && running_font.isRightToLeft()
 	    // ERT is an exception, it should be output with no
 	    // decorations at all

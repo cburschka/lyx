@@ -179,7 +179,7 @@ public:
 	static int displayMargin() { return 12; }
 
 	/// Force inset into LTR environment if surroundings are RTL
-	virtual bool forceLTR() const { return true; }
+	virtual bool forceLTR(OutputParams const &) const { return true; }
 	///
 	void recordLocation(DocIterator const & di);
 
