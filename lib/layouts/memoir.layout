@@ -17,6 +17,9 @@ PageStyle          Headings
 Provides makeidx   1
 Provides framed    1
 Provides subscript 1
+# Geometry is supported, but the package options and paper sizes
+# are ignored
+Provides geometry-light  1
 # Memoir has support for line spacing, but uses different names from
 # what setspace.sty does.  
 Provides SetSpace  1
