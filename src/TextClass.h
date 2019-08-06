@@ -276,6 +276,8 @@ protected:
 	std::string opt_pagestyle_;
 	/// Specific class options
 	std::string options_;
+	/// Format of the fontsize option
+	std::string fontsize_format_;
 	/// Default page size
 	std::string pagesize_;
 	///
@@ -460,6 +462,8 @@ public:
 	std::string const & options() const { return options_; }
 	///
 	std::string const & class_header() const { return class_header_; }
+	///
+	std::string const & fontsizeformat() const { return fontsize_format_; }
 	///
 	std::string const & pagesize() const { return pagesize_; }
 	///

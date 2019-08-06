@@ -1617,7 +1617,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	if (tokenPos(tclass.opt_fontsize(),
 		     '|', fontsize) >= 0) {
 		// only write if existing in list (and not default)
-		clsoptions << fontsize << "pt,";
+		clsoptions << subst(tclass.fontsizeformat(), "$$s", fontsize) << ",";
 	}
 
 	// paper sizes not supported by the class itself need the

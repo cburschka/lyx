@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 584
+\lyxformat 585
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -11536,8 +11536,65 @@ status collapsed
 
 .
 
-\change_inserted -712698321 1565102054
+\change_inserted -712698321 1565110196
  Any number is possible.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1565110259
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1565110199
+FontSizeFormat
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1565110196
+string
+\end_layout
+
+\end_inset
+
+] The format for the font size option.
+ Default: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1565110238
+$$spt
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1565110248
+$$s
+\end_layout
+
+\end_inset
+
+ is a placeholder for the font size.
 \change_unchanged
 
 \end_layout

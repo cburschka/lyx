@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 584
+\lyxformat 585
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -9671,6 +9671,51 @@ status collapsed
 
  getrennt.
  Neben den genannten sind auch andere Größen möglich.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+FontSizeFormat
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Das Format der Schriftgrößen-Option.
+ Voreinstellung: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$spt
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$s
+\end_layout
+
+\end_inset
+
+ ist ein Platzhalter für die Schriftgröße.
 \end_layout
 
 \begin_layout Description

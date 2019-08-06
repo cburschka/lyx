@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 77
+currentFormat = 78
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -258,6 +258,9 @@ currentFormat = 77
 # Incremented to format 77, 6 August 2019 by spitz
 # New textclass tag PageSize (= default page size) 
 # and textclass option PageSize (= list of available page sizes)
+
+# Incremented to format 78, 6 August 2019 by spitz
+# New textclass tag FontsizeFormat
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
@@ -508,7 +511,7 @@ def convert(lines, end_format):
                 i += 1
             continue
 
-        if format >= 65 and format <= 76:
+        if format >= 65 and format <= 77:
             # nothing to do.
             i += 1
             continue

@@ -62,7 +62,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 77; // spitz: pagesize
+int const LAYOUT_FORMAT = 78; // spitz: FontsizeFormat
 
 
 // Layout format for the current lyx file format. Controls which format is
@@ -151,8 +151,8 @@ TextClass::TextClass()
 	: loaded_(false), tex_class_avail_(false),
 	  opt_enginetype_("authoryear|numerical"), opt_fontsize_("10|11|12"),
 	  opt_pagesize_("default|a4paper|a5paper|b5paper|letterpaper|legalpaper|executivepaper"),
-	  opt_pagestyle_("empty|plain|headings|fancy"), pagesize_("default"), pagestyle_("default"),
-	  tablestyle_("default"), columns_(1), sides_(OneSide), secnumdepth_(3),
+	  opt_pagestyle_("empty|plain|headings|fancy"), fontsize_format_("$$spt"), pagesize_("default"),
+	  pagestyle_("default"), tablestyle_("default"), columns_(1), sides_(OneSide), secnumdepth_(3),
 	  tocdepth_(3), outputType_(LATEX), outputFormat_("latex"),
 	  has_output_format_(false), defaultfont_(sane_font), 
 	  titletype_(TITLE_COMMAND_AFTER), titlename_("maketitle"),
@@ -1004,6 +1004,7 @@ void TextClass::readClassOptions(Lexer & lexrc)
 {
 	enum {
 		CO_FONTSIZE = 1,
+		CO_FONTSIZE_FORMAT,
 		CO_PAGESIZE,
 		CO_PAGESTYLE,
 		CO_OTHER,
@@ -1014,6 +1015,7 @@ void TextClass::readClassOptions(Lexer & lexrc)
 	LexerKeyword classOptionsTags[] = {
 		{"end",       CO_END },
 		{"fontsize",  CO_FONTSIZE },
+		{"fontsizeformat", CO_FONTSIZE_FORMAT },
 		{"header",    CO_HEADER },
 		{"other",     CO_OTHER },
 		{"pagesize",  CO_PAGESIZE },
@@ -1035,6 +1037,10 @@ void TextClass::readClassOptions(Lexer & lexrc)
 		case CO_FONTSIZE:
 			lexrc.next();
 			opt_fontsize_ = rtrim(lexrc.getString());
+			break;
+		case CO_FONTSIZE_FORMAT:
+			lexrc.next();
+			fontsize_format_ = rtrim(lexrc.getString());
 			break;
 		case CO_PAGESIZE:
 			lexrc.next();
