@@ -12,6 +12,7 @@ Format 78
 SecNumDepth             2
 TocDepth                2
 DefaultStyle            Standard
+PageSize                a4paper
 Provides                subscript 1
 
 ClassOptions
