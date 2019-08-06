@@ -80,8 +80,8 @@ static char const * const string_quotes_style[] = {
 
 static char const * const string_papersize[] = {
 	"default", "custom", "letterpaper", "legalpaper", "executivepaper",
-	"a0paper", "a1paper", "a2paper", "a3paper",	"a4paper", "a5paper",
-	"a6paper", "b0paper", "b1paper", "b2paper","b3paper", "b4paper",
+	"a0paper", "a1paper", "a2paper", "a3paper", "a4paper", "a5paper",
+	"a6paper", "b0paper", "b1paper", "b2paper", "b3paper", "b4paper",
 	"b5paper", "b6paper", "c0paper", "c1paper", "c2paper", "c3paper",
 	"c4paper", "c5paper", "c6paper", "b0j", "b1j", "b2j", "b3j", "b4j", "b5j",
 	"b6j", ""
@@ -1620,66 +1620,15 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		clsoptions << fontsize << "pt,";
 	}
 
-	// all paper sizes except of A4, A5, B5 and the US sizes need the
+	// paper sizes not supported by the class itself need the
 	// geometry package
-	bool nonstandard_papersize = papersize != PAPER_DEFAULT
-		&& papersize != PAPER_USLETTER
-		&& papersize != PAPER_USLEGAL
-		&& papersize != PAPER_USEXECUTIVE
-		&& papersize != PAPER_A4
-		&& papersize != PAPER_A5
-		&& papersize != PAPER_B5;
+	vector<string> classpsizes = getVectorFromString(tclass.opt_pagesize(), "|");
+	bool class_supported_papersize = papersize == PAPER_DEFAULT
+		|| find(classpsizes.begin(), classpsizes.end(), string_papersize[papersize]) != classpsizes.end();
 
-	if (!use_geometry || features.isProvided("geometry-light")) {
-		switch (papersize) {
-		case PAPER_A4:
-			clsoptions << "a4paper,";
-			break;
-		case PAPER_USLETTER:
-			clsoptions << "letterpaper,";
-			break;
-		case PAPER_A5:
-			clsoptions << "a5paper,";
-			break;
-		case PAPER_B5:
-			clsoptions << "b5paper,";
-			break;
-		case PAPER_USEXECUTIVE:
-			clsoptions << "executivepaper,";
-			break;
-		case PAPER_USLEGAL:
-			clsoptions << "legalpaper,";
-			break;
-		case PAPER_DEFAULT:
-		case PAPER_A0:
-		case PAPER_A1:
-		case PAPER_A2:
-		case PAPER_A3:
-		case PAPER_A6:
-		case PAPER_B0:
-		case PAPER_B1:
-		case PAPER_B2:
-		case PAPER_B3:
-		case PAPER_B4:
-		case PAPER_B6:
-		case PAPER_C0:
-		case PAPER_C1:
-		case PAPER_C2:
-		case PAPER_C3:
-		case PAPER_C4:
-		case PAPER_C5:
-		case PAPER_C6:
-		case PAPER_JISB0:
-		case PAPER_JISB1:
-		case PAPER_JISB2:
-		case PAPER_JISB3:
-		case PAPER_JISB4:
-		case PAPER_JISB5:
-		case PAPER_JISB6:
-		case PAPER_CUSTOM:
-			break;
-		}
-	}
+	if ((!use_geometry || features.isProvided("geometry-light"))
+	    && class_supported_papersize)
+		clsoptions << string_papersize[papersize] << ",";
 
 	// if needed
 	if (sides != tclass.sides()) {
@@ -1854,7 +1803,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		os << "}\n";
 	}
 
-	if (use_geometry || nonstandard_papersize) {
+	if (use_geometry || !class_supported_papersize) {
 		odocstringstream ods;
 		if (!getGraphicsDriver("geometry").empty())
 			ods << getGraphicsDriver("geometry");
@@ -1870,97 +1819,37 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 				   << from_ascii(paperheight);
 			break;
 		case PAPER_USLETTER:
-			ods << ",letterpaper";
-			break;
 		case PAPER_USLEGAL:
-			ods << ",legalpaper";
-			break;
 		case PAPER_USEXECUTIVE:
-			ods << ",executivepaper";
-			break;
 		case PAPER_A0:
-			ods << ",a0paper";
-			break;
 		case PAPER_A1:
-			ods << ",a1paper";
-			break;
 		case PAPER_A2:
-			ods << ",a2paper";
-			break;
 		case PAPER_A3:
-			ods << ",a3paper";
-			break;
 		case PAPER_A4:
-			ods << ",a4paper";
-			break;
 		case PAPER_A5:
-			ods << ",a5paper";
-			break;
 		case PAPER_A6:
-			ods << ",a6paper";
-			break;
 		case PAPER_B0:
-			ods << ",b0paper";
-			break;
 		case PAPER_B1:
-			ods << ",b1paper";
-			break;
 		case PAPER_B2:
-			ods << ",b2paper";
-			break;
 		case PAPER_B3:
-			ods << ",b3paper";
-			break;
 		case PAPER_B4:
-			ods << ",b4paper";
-			break;
 		case PAPER_B5:
-			ods << ",b5paper";
-			break;
 		case PAPER_B6:
-			ods << ",b6paper";
-			break;
 		case PAPER_C0:
-			ods << ",c0paper";
-			break;
 		case PAPER_C1:
-			ods << ",c1paper";
-			break;
 		case PAPER_C2:
-			ods << ",c2paper";
-			break;
 		case PAPER_C3:
-			ods << ",c3paper";
-			break;
 		case PAPER_C4:
-			ods << ",c4paper";
-			break;
 		case PAPER_C5:
-			ods << ",c5paper";
-			break;
 		case PAPER_C6:
-			ods << ",c6paper";
-			break;
 		case PAPER_JISB0:
-			ods << ",b0j";
-			break;
 		case PAPER_JISB1:
-			ods << ",b1j";
-			break;
 		case PAPER_JISB2:
-			ods << ",b2j";
-			break;
 		case PAPER_JISB3:
-			ods << ",b3j";
-			break;
 		case PAPER_JISB4:
-			ods << ",b4j";
-			break;
 		case PAPER_JISB5:
-			ods << ",b5j";
-			break;
 		case PAPER_JISB6:
-			ods << ",b6j";
+			ods << "," << from_ascii(string_papersize[papersize]);
 			break;
 		case PAPER_DEFAULT:
 			break;
@@ -3038,12 +2927,15 @@ void BufferParams::readIncludeonly(Lexer & lex)
 }
 
 
-string BufferParams::paperSizeName(PapersizePurpose purpose) const
+string BufferParams::paperSizeName(PapersizePurpose purpose, string const psize) const
 {
-	switch (papersize) {
+	PAPER_SIZE ppsize = psize.empty() ? papersize : papersizetranslator().find(psize);
+	switch (ppsize) {
 	case PAPER_DEFAULT:
-		// could be anything, so don't guess
-		return string();
+		if (documentClass().pagesize() == "custom")
+			// could be anything, so don't guess
+			return string();
+		return paperSizeName(purpose, documentClass().pagesize());
 	case PAPER_CUSTOM: {
 		if (purpose == XDVI && !paperwidth.empty() &&
 		    !paperheight.empty()) {

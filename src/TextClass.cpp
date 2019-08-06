@@ -62,7 +62,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 76; // spitz: BibInToc
+int const LAYOUT_FORMAT = 77; // spitz: pagesize
 
 
 // Layout format for the current lyx file format. Controls which format is
@@ -150,7 +150,8 @@ docstring const TextClass::plain_layout_ = from_ascii(N_("Plain Layout"));
 TextClass::TextClass()
 	: loaded_(false), tex_class_avail_(false),
 	  opt_enginetype_("authoryear|numerical"), opt_fontsize_("10|11|12"),
-	  opt_pagestyle_("empty|plain|headings|fancy"), pagestyle_("default"),
+	  opt_pagesize_("default|a4paper|a5paper|b5paper|letterpaper|legalpaper|executivepaper"),
+	  opt_pagestyle_("empty|plain|headings|fancy"), pagesize_("default"), pagestyle_("default"),
 	  tablestyle_("default"), columns_(1), sides_(OneSide), secnumdepth_(3),
 	  tocdepth_(3), outputType_(LATEX), outputFormat_("latex"),
 	  has_output_format_(false), defaultfont_(sane_font), 
@@ -191,6 +192,7 @@ enum TextClassTags {
 	TC_COLUMNS,
 	TC_SIDES,
 	TC_PAGESTYLE,
+	TC_PAGESIZE,
 	TC_DEFAULTFONT,
 	TC_SECNUMDEPTH,
 	TC_TOCDEPTH,
@@ -272,6 +274,7 @@ LexerKeyword textClassTags[] = {
 	{ "outputformat",      TC_OUTPUTFORMAT },
 	{ "outputtype",        TC_OUTPUTTYPE },
 	{ "packageoptions",    TC_PKGOPTS },
+	{ "pagesize",          TC_PAGESIZE },
 	{ "pagestyle",         TC_PAGESTYLE },
 	{ "preamble",          TC_PREAMBLE },
 	{ "provides",          TC_PROVIDES },
@@ -604,6 +607,11 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 					break;
 				}
 			}
+			break;
+
+		case TC_PAGESIZE:
+			lexrc.next();
+			pagesize_ = rtrim(lexrc.getString());
 			break;
 
 		case TC_PAGESTYLE:
@@ -996,6 +1004,7 @@ void TextClass::readClassOptions(Lexer & lexrc)
 {
 	enum {
 		CO_FONTSIZE = 1,
+		CO_PAGESIZE,
 		CO_PAGESTYLE,
 		CO_OTHER,
 		CO_HEADER,
@@ -1007,6 +1016,7 @@ void TextClass::readClassOptions(Lexer & lexrc)
 		{"fontsize",  CO_FONTSIZE },
 		{"header",    CO_HEADER },
 		{"other",     CO_OTHER },
+		{"pagesize",  CO_PAGESIZE },
 		{"pagestyle", CO_PAGESTYLE }
 	};
 
@@ -1025,6 +1035,10 @@ void TextClass::readClassOptions(Lexer & lexrc)
 		case CO_FONTSIZE:
 			lexrc.next();
 			opt_fontsize_ = rtrim(lexrc.getString());
+			break;
+		case CO_PAGESIZE:
+			lexrc.next();
+			opt_pagesize_ = rtrim(lexrc.getString());
 			break;
 		case CO_PAGESTYLE:
 			lexrc.next();

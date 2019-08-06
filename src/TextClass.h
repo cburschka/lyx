@@ -271,9 +271,13 @@ protected:
 	///
 	std::string opt_fontsize_;
 	///
+	std::string opt_pagesize_;
+	///
 	std::string opt_pagestyle_;
 	/// Specific class options
 	std::string options_;
+	/// Default page size
+	std::string pagesize_;
 	///
 	std::string pagestyle_;
 	///
@@ -449,11 +453,15 @@ public:
 	///
 	std::string const & opt_fontsize() const { return opt_fontsize_; }
 	///
+	std::string const & opt_pagesize() const { return opt_pagesize_; }
+	///
 	std::string const & opt_pagestyle() const { return opt_pagestyle_; }
 	///
 	std::string const & options() const { return options_; }
 	///
 	std::string const & class_header() const { return class_header_; }
+	///
+	std::string const & pagesize() const { return pagesize_; }
 	///
 	std::string const & pagestyle() const { return pagestyle_; }
 	///
