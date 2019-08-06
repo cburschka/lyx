@@ -22,7 +22,7 @@
 # - Case (by inclusion)
 
 # We need separate counters for each theorem-like style.
-Format 76
+Format 78
 Counter theorem
 End
 Counter corollary

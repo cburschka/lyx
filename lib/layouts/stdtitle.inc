@@ -8,7 +8,7 @@
 # a document, like title, author and such.
 
 
-Format 76
+Format 78
 
 
 Style Title
