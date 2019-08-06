@@ -32,8 +32,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 584 // Kornel: Add Chivo sans serif font
-#define LYX_FORMAT_TEX2LYX 584
+#define LYX_FORMAT_LYX 585 // spitz: add more page sizes to KOMA and memoir
+#define LYX_FORMAT_TEX2LYX 585
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
 #ifndef _MSC_VER

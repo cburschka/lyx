@@ -8,11 +8,15 @@
 # Labeling is now used also in non-KOMA classes
 
 
-Format 76
+Format 77
 SecNumDepth             2
 TocDepth                2
 DefaultStyle            Standard
 Provides                subscript 1
+
+ClassOptions
+	PageSize       a0paper|a1paper|a2paper|a3paper|a4paper|a5paper|a6paper|b0paper|b1paper|b2paper|b3paper|b4paper|b5paper|b6paper|c0paper|c1paper|c2paper|c3paper|c4paper|c5paper|c6paper|executivepaper|legalpaper|letterpaper
+End
 
 Style Standard
 	Category              MainText

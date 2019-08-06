@@ -3122,6 +3122,69 @@ def revert_CrimsonProFont(document):
         if revert_fonts(document, fm, fontmap, False, True):
             add_preamble_fonts(document, fontmap)
 
+
+def revert_pagesizes(document):
+    " Revert new page sizes in memoir and KOMA to options "
+
+    if document.textclass != "memoir" and document.textclass[:2] != "scr":
+        return
+
+    i = find_token(document.header, "\\use_geometry true", 0)
+    if i != -1:
+        return
+
+    defsizes = ["default", "custom", "letterpaper", "legalpaper", "executivepaper", "a4paper", "a5paper", "b5paper"]
+
+    i = find_token(document.header, "\\papersize", 0)
+    if i == -1:
+        document.warning("Malformed LyX document! Missing \\papersize header.")
+        return
+    val = get_value(document.header, "\\papersize", i)
+    if val in defsizes:
+        # nothing to do
+        return
+
+    document.header[i] = "\\papersize default"
+
+    i = find_token(document.header, "\\options", 0)
+    if i == -1:
+        i = find_token(document.header, "\\textclass", 0)
+        if i == -1:
+            document.warning("Malformed LyX document! Missing \\textclass header.")
+            return
+        document.header.insert(i, "\\options " + val)
+        return
+    document.header[i] = document.header[i] + "," + val
+
+
+def convert_pagesizes(document):
+    " Convert to new page sizes in memoir and KOMA to options "
+
+    if document.textclass != "memoir" and document.textclass[:2] != "scr":
+        return
+
+    i = find_token(document.header, "\\use_geometry true", 0)
+    if i != -1:
+        return
+
+    defsizes = ["default", "custom", "letterpaper", "legalpaper", "executivepaper", "a4paper", "a5paper", "b5paper"]
+
+    i = find_token(document.header, "\\papersize", 0)
+    if i == -1:
+        document.warning("Malformed LyX document! Missing \\papersize header.")
+        return
+    val = get_value(document.header, "\\papersize", i)
+    if val in defsizes:
+        # nothing to do
+        return
+
+    i = find_token(document.header, "\\use_geometry false", 0)
+    if i != -1:
+        # Maintain use of geometry
+        document.header[1] = "\\use_geometry true"
+
+    
+
 ##
 # Conversion hub
 #
@@ -3168,9 +3231,11 @@ convert = [
            [582, [convert_AdobeFonts,convert_latexFonts,convert_notoFonts,convert_CantarellFont,convert_FiraFont]],# old font re-converterted due to extra options
            [583, [convert_ChivoFont,convert_Semibolds,convert_NotoRegulars,convert_CrimsonProFont]],
            [584, []],
+           [585, [convert_pagesizes]]
           ]
 
-revert =  [[583, [revert_vcsinfo_rev_abbrev]],
+revert =  [[584, [revert_pagesizes]],
+           [583, [revert_vcsinfo_rev_abbrev]],
            [582, [revert_ChivoFont,revert_CrimsonProFont]],
            [581, [revert_CantarellFont,revert_FiraFont]],
            [580, [revert_texfontopts,revert_osf]],
