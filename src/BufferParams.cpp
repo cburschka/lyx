@@ -2940,7 +2940,7 @@ string BufferParams::paperSizeName(PapersizePurpose purpose, string const psize)
 	PAPER_SIZE ppsize = psize.empty() ? papersize : papersizetranslator().find(psize);
 	switch (ppsize) {
 	case PAPER_DEFAULT:
-		if (documentClass().pagesize() == "custom")
+		if (documentClass().pagesize() == "default")
 			// could be anything, so don't guess
 			return string();
 		return paperSizeName(purpose, documentClass().pagesize());
