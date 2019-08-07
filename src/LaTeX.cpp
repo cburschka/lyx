@@ -774,6 +774,9 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 		//Handles both "LaTeX Warning:" & "Package natbib Warning:"
 		//Various handlers for missing citations below won't catch the problem if citation
 		//key is long (>~25chars), because pdflatex splits output at line length 80.
+		//TODO: TL 2020 engines will contain new commandline switch --cnf-line which we  
+		//can use to set max_print_line variable for appropriate length and detect all
+		//errors correctly.
 		if (contains(token, "There were undefined citations."))
 			retval |= UNDEF_CIT;
 
