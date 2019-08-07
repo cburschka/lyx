@@ -5,7 +5,7 @@
 # It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
-Format 78
+Format 79
 Input stdstruct.inc
 
 Style Abstract

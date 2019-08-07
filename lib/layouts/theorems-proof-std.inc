@@ -1,6 +1,6 @@
 # Moved here by rgheck. Original author cloudy.
 
-Format 78
+Format 79
 
 #This is just a hacked version of the AMS proof environment
 Style Proof

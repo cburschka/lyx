@@ -514,7 +514,7 @@ def convert(lines, end_format):
                 i += 1
             continue
 
-        if format >= 65 and format <= 77:
+        if format >= 65 and format <= 78:
             # nothing to do.
             i += 1
             continue
