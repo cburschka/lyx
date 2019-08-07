@@ -4461,13 +4461,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 			string keys, pretextlist, posttextlist;
 			if (qualified) {
-				map<string, string> pres, posts, preslit, postslit;
+				vector<pair<string, string>> pres, posts, preslit, postslit;
 				vector<string> lkeys;
 				// text before the citation
 				string lbefore, lbeforelit;
 				// text after the citation
 				string lafter, lafterlit;
-				string lkey;	
+				string lkey;
 				pair<bool, string> laft, lbef;
 				while (true) {
 					get_cite_arguments(p, true, lbefore, lafter);
@@ -4478,7 +4478,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						laft = convert_latexed_command_inset_arg(lafter);
 						literal |= !laft.first;
 						lafter = laft.second;
-						lafterlit = subst(lbefore, "\n", " ");
+						lafterlit = subst(lafter, "\n", " ");
 					}
 					if (!lbefore.empty()) {
 						lbefore.erase(0, 1);
@@ -4503,14 +4503,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					lkey = p.getArg('{', '}');
 					if (lkey.empty())
 						break;
-					if (!lbefore.empty()) {
-						pres.insert(make_pair(lkey, lbefore));
-						preslit.insert(make_pair(lkey, lbeforelit));
-					}
-					if (!lafter.empty()) {
-						posts.insert(make_pair(lkey, lafter));
-						postslit.insert(make_pair(lkey, lafterlit));
-					}
+					pres.push_back(make_pair(lkey, lbefore));
+					preslit.push_back(make_pair(lkey, lbeforelit));
+					posts.push_back(make_pair(lkey, lafter));
+					postslit.push_back(make_pair(lkey, lafterlit));
 					lkeys.push_back(lkey);
 				}
 				keys = convert_literate_command_inset_arg(getStringFromVector(lkeys));
@@ -4521,12 +4517,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				for (auto const & ptl : pres) {
 					if (!pretextlist.empty())
 						pretextlist += '\t';
-					pretextlist += ptl.first + " " + ptl.second;
+					pretextlist += ptl.first;
+					if (!ptl.second.empty())
+						pretextlist += " " + ptl.second;
 				}
 				for (auto const & potl : posts) {
 					if (!posttextlist.empty())
 						posttextlist += '\t';
-					posttextlist += potl.first + " " + potl.second;
+					posttextlist += potl.first;
+					if (!potl.second.empty())
+						posttextlist += " " + potl.second;
 				}
 			} else
 				keys = convert_literate_command_inset_arg(p.verbatim_item());

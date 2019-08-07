@@ -13,8 +13,8 @@
 #define CITATION_H
 
 #include "support/docstring.h"
-#include <map>
 #include <string>
+#include <vector>
 
 namespace lyx {
 
@@ -87,14 +87,16 @@ public:
 	docstring textAfter;
 	/// text before the citation
 	docstring textBefore;
+	///
+	typedef std::vector<std::pair<docstring, docstring>> QualifiedList;
 	/// Qualified lists's pre texts
-	std::map<docstring, docstring> pretexts;
+	QualifiedList pretexts;
 	///
-	std::map<docstring, docstring> getPretexts() const { return pretexts; }
+	QualifiedList getPretexts() const { return pretexts; }
 	/// Qualified lists's post texts
-	std::map<docstring, docstring> posttexts;
+	QualifiedList posttexts;
 	///
-	std::map<docstring, docstring> getPosttexts() const { return posttexts; }
+	QualifiedList getPosttexts() const { return posttexts; }
 	/// the maximum display size as a label
 	size_t max_size;
 	/// the maximum size of the processed keys

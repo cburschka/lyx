@@ -488,7 +488,7 @@ docstring processRichtext(docstring const & str, bool richtext)
 //////////////////////////////////////////////////////////////////////
 
 BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
-	: is_bibtex_(true), bib_key_(key), entry_type_(type), info_(),
+	: is_bibtex_(true), bib_key_(key), num_bib_key_(0), entry_type_(type), info_(),
 	  modifier_(0)
 {}
 
@@ -1129,11 +1129,33 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			ret = ci.textBefore;
 		else if (key == "textafter")
 			ret = ci.textAfter;
-		else if (key == "curpretext")
-			ret = ci.getPretexts()[bib_key_];
-		else if (key == "curposttext")
-			ret = ci.getPosttexts()[bib_key_];
-		else if (key == "year")
+		else if (key == "curpretext") {
+			vector<pair<docstring, docstring>> pres = ci.getPretexts();
+			vector<pair<docstring, docstring>>::iterator it = pres.begin();
+			int numkey = 1;
+			for (; it != pres.end() ; ++it) {
+				if ((*it).first == bib_key_ && numkey == num_bib_key_) {
+					ret = (*it).second;
+					pres.erase(it);
+					break;
+				}
+				if ((*it).first == bib_key_)
+					++numkey;
+			}
+		} else if (key == "curposttext") {
+			vector<pair<docstring, docstring>> posts = ci.getPosttexts();
+			vector<pair<docstring, docstring>>::iterator it = posts.begin();
+			int numkey = 1;
+			for (; it != posts.end() ; ++it) {
+				if ((*it).first == bib_key_ && numkey == num_bib_key_) {
+					ret = (*it).second;
+					posts.erase(it);
+					break;
+				}
+				if ((*it).first == bib_key_)
+					++numkey;
+			}
+		} else if (key == "year")
 			ret = getYear();
 	}
 
@@ -1342,7 +1364,14 @@ docstring const BiblioInfo::getLabel(vector<docstring> keys,
 	docstring ret = format;
 	vector<docstring>::const_iterator key = keys.begin();
 	vector<docstring>::const_iterator ken = keys.end();
+	vector<docstring> handled_keys;
 	for (int i = 0; key != ken; ++key, ++i) {
+		handled_keys.push_back(*key);
+		int n = 0;
+		for (auto const k : handled_keys) {
+			if (k == *key)
+				++n;
+		}
 		BiblioInfo::const_iterator it = find(*key);
 		BibTeXInfo empty_data;
 		empty_data.key(*key);
@@ -1356,6 +1385,7 @@ docstring const BiblioInfo::getLabel(vector<docstring> keys,
 					xrefptrs.push_back(&(xrefit->second));
 			}
 		}
+		data.numKey(n);
 		ret = data.getLabel(xrefptrs, buf, ret, ci, key + 1 != ken, i == 1);
 	}
 

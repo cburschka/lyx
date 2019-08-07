@@ -1609,9 +1609,9 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 		&& (keys.size() > 1
 		    || !citinset->getParam("pretextlist").empty()
 		    || !citinset->getParam("posttextlist").empty());
-	std::map<docstring, docstring> pres =
+	vector<pair<docstring, docstring>> pres =
 		citinset->getQualifiedLists(citinset->getParam("pretextlist"));
-	std::map<docstring, docstring> posts =
+	vector<pair<docstring, docstring>> posts =
 		citinset->getQualifiedLists(citinset->getParam("posttextlist"));
 
 	CiteItem ci;

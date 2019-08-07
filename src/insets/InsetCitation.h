@@ -82,12 +82,14 @@ public:
 	static bool isCompatibleCommand(std::string const &);
 	//@}
 	///
+	typedef std::vector<std::pair<docstring, docstring>> QualifiedList;
+	///
 	void redoLabel() { cache.recalculate = true; }
 	///
 	CitationStyle getCitationStyle(BufferParams const & bp, std::string const & input,
 				       std::vector<CitationStyle> const & valid_styles) const;
 	///
-	std::map<docstring, docstring> getQualifiedLists(docstring const p) const;
+	QualifiedList getQualifiedLists(docstring const p) const;
 	///
 	static bool last_literal;
 

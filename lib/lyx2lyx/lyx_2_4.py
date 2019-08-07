@@ -3215,6 +3215,148 @@ def revert_komafontsizes(document):
         return
     document.header[i] = document.header[i] + "," + fsize
 
+
+def revert_dupqualicites(document):
+    " Revert qualified citation list commands with duplicate keys to ERT "
+
+    # LyX 2.3 only supports qualified citation lists with unique keys. Thus,
+    # we need to revert those with multiple uses of the same key.
+
+    # Get cite engine
+    engine = "basic"
+    i = find_token(document.header, "\\cite_engine", 0)
+    if i == -1:
+        document.warning("Malformed document! Missing \\cite_engine")
+    else:
+        engine = get_value(document.header, "\\cite_engine", i)
+
+    if not engine in ["biblatex", "biblatex-natbib"]:
+        return
+
+    # Citation insets that support qualified lists, with their LaTeX code
+    ql_citations = {
+        "cite" : "cites",
+        "Cite" : "Cites",
+        "citet" : "textcites",
+        "Citet" : "Textcites",
+        "citep" : "parencites",
+        "Citep" : "Parencites",
+        "Footcite" : "Smartcites",
+        "footcite" : "smartcites",
+        "Autocite" : "Autocites",
+        "autocite" : "autocites",
+        }
+
+    i = 0
+    while (True):
+        i = find_token(document.body, "\\begin_inset CommandInset citation", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of citation inset at line %d!!" %(i))
+            i += 1
+            continue
+
+        k = find_token(document.body, "LatexCommand", i, j)
+        if k == -1:
+            document.warning("Can't find LatexCommand for citation inset at line %d!" %(i))
+            i = j + 1
+            continue
+
+        cmd = get_value(document.body, "LatexCommand", k)
+        if not cmd in list(ql_citations.keys()):
+            i = j + 1
+            continue
+
+        pres = find_token(document.body, "pretextlist", i, j)
+        posts = find_token(document.body, "posttextlist", i, j)
+        if pres == -1 and posts == -1:
+            # nothing to do.
+            i = j + 1
+            continue
+
+        key = get_quoted_value(document.body, "key", i, j)
+        if not key:
+            document.warning("Citation inset at line %d does not have a key!" %(i))
+            i = j + 1
+            continue
+
+        keys = key.split(",")
+        ukeys = list(set(keys))
+        if len(keys) == len(ukeys):
+            # no duplicates.
+            i = j + 1
+            continue
+
+        pretexts = get_quoted_value(document.body, "pretextlist", pres)
+        posttexts = get_quoted_value(document.body, "posttextlist", posts)
+
+        pre = get_quoted_value(document.body, "before", i, j)
+        post = get_quoted_value(document.body, "after", i, j)
+        prelist = pretexts.split("\t")
+        premap = dict()
+        for pp in prelist:
+            ppp = pp.split(" ", 1)
+            val = ""
+            if len(ppp) > 1:
+                val = ppp[1]
+            else:
+                val = ""
+            if ppp[0] in premap:
+                premap[ppp[0]] = premap[ppp[0]] + "\t" + val
+            else:
+                premap[ppp[0]] = val
+        postlist = posttexts.split("\t")
+        postmap = dict()
+        num = 1
+        for pp in postlist:
+            ppp = pp.split(" ", 1)
+            val = ""
+            if len(ppp) > 1:
+                val = ppp[1]
+            else:
+                val = ""
+            if ppp[0] in postmap:
+                postmap[ppp[0]] = postmap[ppp[0]] + "\t" + val
+            else:
+                postmap[ppp[0]] = val
+        # Replace known new commands with ERT
+        if "(" in pre or ")" in pre:
+            pre = "{" + pre + "}"
+        if "(" in post or ")" in post:
+            post = "{" + post + "}"
+        res = "\\" + ql_citations[cmd]
+        if pre:
+            res += "(" + pre + ")"
+        if post:
+            res += "(" + post + ")"
+        elif pre:
+            res += "()"
+        for kk in keys:
+            if premap.get(kk, "") != "":
+                akeys = premap[kk].split("\t", 1)
+                akey = akeys[0]
+                if akey != "":
+                    res += "[" + akey + "]"
+                if len(akeys) > 1:
+                    premap[kk] = "\t".join(akeys[1:])
+                else:
+                    premap[kk] = ""
+            if postmap.get(kk, "") != "":
+                akeys = postmap[kk].split("\t", 1)
+                akey = akeys[0]
+                if akey != "":
+                    res += "[" + akey + "]"
+                if len(akeys) > 1:
+                    postmap[kk] = "\t".join(akeys[1:])
+                else:
+                    postmap[kk] = ""
+            elif premap.get(kk, "") != "":
+                res += "[]"
+            res += "{" + kk + "}"
+        document.body[i:j+1] = put_cmd_in_ert([res])
+
     
 
 ##
@@ -3263,10 +3405,12 @@ convert = [
            [582, [convert_AdobeFonts,convert_latexFonts,convert_notoFonts,convert_CantarellFont,convert_FiraFont]],# old font re-converterted due to extra options
            [583, [convert_ChivoFont,convert_Semibolds,convert_NotoRegulars,convert_CrimsonProFont]],
            [584, []],
-           [585, [convert_pagesizes]]
+           [585, [convert_pagesizes]],
+           [586, []]
           ]
 
-revert =  [[584, [revert_pagesizes,revert_komafontsizes]],
+revert =  [[585, [revert_dupqualicites]],
+           [584, [revert_pagesizes,revert_komafontsizes]],
            [583, [revert_vcsinfo_rev_abbrev]],
            [582, [revert_ChivoFont,revert_CrimsonProFont]],
            [581, [revert_CantarellFont,revert_FiraFont]],

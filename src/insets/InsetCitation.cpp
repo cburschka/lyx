@@ -329,15 +329,17 @@ inline docstring wrapCitation(docstring const & key,
 } // anonymous namespace
 
 
-map<docstring, docstring> InsetCitation::getQualifiedLists(docstring const p) const
+vector<pair<docstring, docstring>> InsetCitation::getQualifiedLists(docstring const p) const
 {
 	vector<docstring> ps =
 		getVectorFromString(p, from_ascii("\t"));
-	std::map<docstring, docstring> res;
+	QualifiedList res;
 	for (docstring const & s: ps) {
-		docstring key;
-		docstring val = split(s, key, ' ');
-		res[key] = val;
+		docstring key = s;
+		docstring val;
+		if (contains(s, ' '))
+			val = split(s, key, ' ');
+		res.push_back(make_pair(key, val));
 	}
 	return res;
 }
@@ -399,8 +401,8 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 		&& (keys.size() > 1
 		    || !getParam("pretextlist").empty()
 		    || !getParam("posttextlist").empty());
-	map<docstring, docstring> pres = getQualifiedLists(getParam("pretextlist"));
-	map<docstring, docstring> posts = getQualifiedLists(getParam("posttextlist"));
+	QualifiedList pres = getQualifiedLists(getParam("pretextlist"));
+	QualifiedList posts = getQualifiedLists(getParam("posttextlist"));
 
 	CiteItem ci;
 	ci.textBefore = getParam("before");
@@ -611,12 +613,30 @@ void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 		os << '{' << escape(cleanupWhitespace(key)) << '}';
 	else {
 		if (qualified) {
-			map<docstring, docstring> pres = getQualifiedLists(getParam("pretextlist"));
-			map<docstring, docstring> posts = getQualifiedLists(getParam("posttextlist"));
-			for (docstring const & k: keys) {
-				docstring bef = params().prepareCommand(runparams, pres[k],
+			QualifiedList pres = getQualifiedLists(getParam("pretextlist"));
+			QualifiedList posts = getQualifiedLists(getParam("posttextlist"));
+			for (docstring const & k : keys) {
+				docstring prenote;
+				QualifiedList::iterator it = pres.begin();
+				for (; it != pres.end() ; ++it) {
+					if ((*it).first == k) {
+						prenote = (*it).second;
+						pres.erase(it);
+						break;
+					}
+				}
+				docstring bef = params().prepareCommand(runparams, prenote,
 				                   pinfo["pretextlist"].handling());
-				docstring aft = params().prepareCommand(runparams, posts[k],
+				docstring postnote;
+				QualifiedList::iterator pit = posts.begin();
+				for (; pit != posts.end() ; ++pit) {
+					if ((*pit).first == k) {
+						postnote = (*pit).second;
+						posts.erase(pit);
+						break;
+					}
+				}
+				docstring aft = params().prepareCommand(runparams, postnote,
 				                   pinfo["posttextlist"].handling());
 				if (!bef.empty())
 					os << '[' << protectArgument(bef)

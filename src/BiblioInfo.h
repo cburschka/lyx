@@ -97,6 +97,9 @@ public:
 	void label(docstring const & d) { label_= d; }
 	///
 	void key(docstring const & d) { bib_key_= d; }
+	/// Record the number of occurences of the same key
+	/// (duplicates are allowed with qualified citation lists)
+	void numKey(int const i) { num_bib_key_ = i; }
 	///
 	docstring const & label() const { return label_; }
 	///
@@ -145,6 +148,8 @@ private:
 	bool is_bibtex_;
 	/// the BibTeX key for this entry
 	docstring bib_key_;
+	/// Number of occurences of the same key
+	int num_bib_key_;
 	/// the label that will appear in citations
 	/// this is easily set from bibliography environments, but has
 	/// to be calculated for entries we get from BibTeX

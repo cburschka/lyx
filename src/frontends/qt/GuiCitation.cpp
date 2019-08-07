@@ -694,6 +694,8 @@ QStringList GuiCitation::selectedKeys()
 
 void GuiCitation::setPreTexts(vector<docstring> const m)
 {
+	// account for multiple use of the same keys
+	QList<QModelIndex> handled;
 	for (docstring const & s: m) {
 		QStandardItem * si = new QStandardItem();
 		docstring key;
@@ -701,11 +703,17 @@ void GuiCitation::setPreTexts(vector<docstring> const m)
 		si->setData(toqstr(pre));
 		si->setText(toqstr(pre));
 		QModelIndexList qmil =
-				selected_model_.match(selected_model_.index(0, 1),
-						     Qt::DisplayRole, toqstr(key), 1,
-						     Qt::MatchFlags(Qt::MatchExactly | Qt::MatchWrap));
-		if (!qmil.empty())
-			selected_model_.setItem(qmil.front().row(), 0, si);
+			selected_model_.match(selected_model_.index(0, 1),
+					     Qt::DisplayRole, toqstr(key), -1,
+					     Qt::MatchFlags(Qt::MatchExactly | Qt::MatchWrap));
+		for (int i = 0; i < qmil.size(); ++i){
+			QModelIndex idx = qmil[i];
+			if (!handled.contains(idx)) {
+				selected_model_.setItem(idx.row(), 0, si);
+				handled.append(idx);
+				break;
+			}
+		}
 	}
 }
 
@@ -716,7 +724,7 @@ vector<docstring> GuiCitation::getPreTexts()
 	for (int i = 0; i != selected_model_.rowCount(); ++i) {
 		QStandardItem const * key = selected_model_.item(i, 1);
 		QStandardItem const * pre = selected_model_.item(i, 0);
-		if (key && pre && !key->text().isEmpty() && !pre->text().isEmpty())
+		if (key && pre && !key->text().isEmpty())
 			res.push_back(qstring_to_ucs4(key->text()) + " " + qstring_to_ucs4(pre->text()));
 	}
 	return res;
@@ -725,6 +733,8 @@ vector<docstring> GuiCitation::getPreTexts()
 
 void GuiCitation::setPostTexts(vector<docstring> const m)
 {
+	// account for multiple use of the same keys
+	QList<QModelIndex> handled;
 	for (docstring const & s: m) {
 		QStandardItem * si = new QStandardItem();
 		docstring key;
@@ -732,11 +742,17 @@ void GuiCitation::setPostTexts(vector<docstring> const m)
 		si->setData(toqstr(post));
 		si->setText(toqstr(post));
 		QModelIndexList qmil =
-				selected_model_.match(selected_model_.index(0, 1),
-						     Qt::DisplayRole, toqstr(key), 1,
-						     Qt::MatchFlags(Qt::MatchExactly | Qt::MatchWrap));
-		if (!qmil.empty())
-			selected_model_.setItem(qmil.front().row(), 2, si);
+			selected_model_.match(selected_model_.index(0, 1),
+					     Qt::DisplayRole, toqstr(key), -1,
+					     Qt::MatchFlags(Qt::MatchExactly | Qt::MatchWrap));
+		for (int i = 0; i < qmil.size(); ++i){
+			QModelIndex idx = qmil[i];
+			if (!handled.contains(idx)) {
+				selected_model_.setItem(idx.row(), 2, si);
+				handled.append(idx);
+				break;
+			}
+		}
 	}
 }
 
@@ -747,7 +763,7 @@ vector<docstring> GuiCitation::getPostTexts()
 	for (int i = 0; i != selected_model_.rowCount(); ++i) {
 		QStandardItem const * key = selected_model_.item(i, 1);
 		QStandardItem const * post = selected_model_.item(i, 2);
-		if (key && post && !key->text().isEmpty() && !post->text().isEmpty())
+		if (key && post && !key->text().isEmpty())
 			res.push_back(qstring_to_ucs4(key->text()) + " " + qstring_to_ucs4(post->text()));
 	}
 	return res;
@@ -894,17 +910,17 @@ BiblioInfo::CiteStringMap GuiCitation::citationStyles(BiblioInfo const & bi, siz
 		&& (selectedLV->model()->rowCount() > 1
 		    || !pretexts.empty()
 		    || !posttexts.empty());
-	std::map<docstring, docstring> pres;
+	vector<pair<docstring, docstring>> pres;
 	for (docstring const & s: pretexts) {
 		docstring key;
 		docstring val = split(s, key, ' ');
-		pres[key] = val;
+		pres.push_back(make_pair(key, val));
 	}
-	std::map<docstring, docstring> posts;
+	vector<pair<docstring, docstring>> posts;
 	for (docstring const & s: posttexts) {
 		docstring key;
 		docstring val = split(s, key, ' ');
-		posts[key] = val;
+		posts.push_back(make_pair(key, val));
 	}
 	CiteItem ci;
 	ci.textBefore = qstring_to_ucs4(textBeforeED->text());
