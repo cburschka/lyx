@@ -280,6 +280,8 @@ protected:
 	std::string fontsize_format_;
 	/// Default page size
 	std::string pagesize_;
+	/// Format of the papersize option
+	std::string pagesize_format_;
 	///
 	std::string pagestyle_;
 	///
@@ -466,6 +468,8 @@ public:
 	std::string const & fontsizeformat() const { return fontsize_format_; }
 	///
 	std::string const & pagesize() const { return pagesize_; }
+	///
+	std::string const & pagesizeformat() const { return pagesize_format_; }
 	///
 	std::string const & pagestyle() const { return pagestyle_; }
 	///

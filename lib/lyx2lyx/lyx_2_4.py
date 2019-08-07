@@ -3357,6 +3357,38 @@ def revert_dupqualicites(document):
             res += "{" + kk + "}"
         document.body[i:j+1] = put_cmd_in_ert([res])
 
+
+def convert_pagesizenames(document):
+    " Convert LyX page sizes names "
+
+    i = find_token(document.header, "\\papersize", 0)
+    if i == -1:
+        document.warning("Malformed LyX document! Missing \\papersize header.")
+        return
+    oldnames = ["letterpaper", "legalpaper", "executivepaper", \
+                "a0paper", "a1paper", "a2paper", "a3paper", "a4paper", "a5paper", "a6paper", \
+	        "b0paper", "b1paper", "b2paper", "b3paper", "b4paper", "b5paper", "b6paper", \
+	        "c0paper", "c1paper", "c2paper", "c3paper", "c4paper", "c5paper", "c6paper"]
+    val = get_value(document.header, "\\papersize", i)
+    if val in oldnames:
+        newval = val.replace("paper", "")
+        document.header[i] = "\\papersize " + newval
+
+def revert_pagesizenames(document):
+    " Convert LyX page sizes names "
+
+    i = find_token(document.header, "\\papersize", 0)
+    if i == -1:
+        document.warning("Malformed LyX document! Missing \\papersize header.")
+        return
+    newnames = ["letter", "legal", "executive", \
+                "a0", "a1", "a2", "a3", "a4", "a5", "a6", \
+	        "b0", "b1", "b2", "b3", "b4", "b5", "b6", \
+	        "c0", "c1", "c2", "c3", "c4", "c5", "c6"]
+    val = get_value(document.header, "\\papersize", i)
+    if val in newnames:
+        newval = val + "paper"
+        document.header[i] = "\\papersize " + newval
     
 
 ##
@@ -3406,10 +3438,12 @@ convert = [
            [583, [convert_ChivoFont,convert_Semibolds,convert_NotoRegulars,convert_CrimsonProFont]],
            [584, []],
            [585, [convert_pagesizes]],
-           [586, []]
+           [586, []],
+           [587, [convert_pagesizenames]]
           ]
 
-revert =  [[585, [revert_dupqualicites]],
+revert =  [[586, [revert_pagesizenames]],
+           [585, [revert_dupqualicites]],
            [584, [revert_pagesizes,revert_komafontsizes]],
            [583, [revert_vcsinfo_rev_abbrev]],
            [582, [revert_ChivoFont,revert_CrimsonProFont]],

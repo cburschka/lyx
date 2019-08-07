@@ -79,12 +79,20 @@ static char const * const string_quotes_style[] = {
 
 
 static char const * const string_papersize[] = {
+	"default", "custom", "letter", "legal", "executive",
+	"a0", "a1", "a2", "a3", "a4", "a5", "a6",
+	"b0", "b1", "b2", "b3", "b4", "b5", "b6",
+	"c0", "c1", "c2", "c3", "c4", "c5", "c6",
+	"b0j", "b1j", "b2j", "b3j", "b4j", "b5j", "b6j", ""
+};
+
+
+static char const * const string_papersize_geometry[] = {
 	"default", "custom", "letterpaper", "legalpaper", "executivepaper",
-	"a0paper", "a1paper", "a2paper", "a3paper", "a4paper", "a5paper",
-	"a6paper", "b0paper", "b1paper", "b2paper", "b3paper", "b4paper",
-	"b5paper", "b6paper", "c0paper", "c1paper", "c2paper", "c3paper",
-	"c4paper", "c5paper", "c6paper", "b0j", "b1j", "b2j", "b3j", "b4j", "b5j",
-	"b6j", ""
+	"a0paper", "a1paper", "a2paper", "a3paper", "a4paper", "a5paper", "a6paper",
+	"b0paper", "b1paper", "b2paper", "b3paper", "b4paper", "b5paper", "b6paper",
+	"c0paper", "c1paper", "c2paper", "c3paper", "c4paper", "c5paper", "c6paper",
+	"b0j", "b1j", "b2j", "b3j", "b4j", "b5j", "b6j", ""
 };
 
 
@@ -1628,7 +1636,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 
 	if ((!use_geometry || features.isProvided("geometry-light"))
 	    && class_supported_papersize)
-		clsoptions << string_papersize[papersize] << ",";
+		clsoptions << subst(tclass.pagesizeformat(), "$$s", string_papersize[papersize]) << ",";
 
 	// if needed
 	if (sides != tclass.sides()) {
@@ -1849,7 +1857,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		case PAPER_JISB4:
 		case PAPER_JISB5:
 		case PAPER_JISB6:
-			ods << "," << from_ascii(string_papersize[papersize]);
+			ods << "," << from_ascii(string_papersize_geometry[papersize]);
 			break;
 		case PAPER_DEFAULT:
 			break;

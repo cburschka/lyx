@@ -158,14 +158,11 @@ const char * const known_typewriter_font_packages[] = { "beramono", "cmtl", "cmt
 
 const char * const known_math_font_packages[] = { "eulervm", "newtxmath", 0};
 
-const char * const known_paper_sizes[] = { "a0paper", "b0paper", "c0paper",
+const char * const known_latex_paper_sizes[] = { "a0paper", "b0paper", "c0paper",
 "a1paper", "b1paper", "c1paper", "a2paper", "b2paper", "c2paper", "a3paper",
 "b3paper", "c3paper", "a4paper", "b4paper", "c4paper", "a5paper", "b5paper",
 "c5paper", "a6paper", "b6paper", "c6paper", "executivepaper", "legalpaper",
 "letterpaper", "b0j", "b1j", "b2j", "b3j", "b4j", "b5j", "b6j", 0};
-
-const char * const known_class_paper_sizes[] = { "a4paper", "a5paper",
-"executivepaper", "legalpaper", "letterpaper", 0};
 
 const char * const known_paper_margins[] = { "lmargin", "tmargin", "rmargin",
 "bmargin", "headheight", "headsep", "footskip", "columnsep", 0};
@@ -709,13 +706,18 @@ void Preamble::handle_geometry(vector<string> & options)
 		options.erase(it);
 	}
 	// paper size
-	// keyval version: "paper=letter"
+	// keyval version: "paper=letter" or "paper=letterpaper"
 	string paper = process_keyval_opt(options, "paper");
 	if (!paper.empty())
-		h_papersize = paper + "paper";
+		if (suffixIs(paper, "paper"))
+			paper = subst(paper, "paper", "");
 	// alternative version: "letterpaper"
-	handle_opt(options, known_paper_sizes, h_papersize);
-	delete_opt(options, known_paper_sizes);
+	handle_opt(options, known_latex_paper_sizes, paper);
+	if (suffixIs(paper, "paper"))
+		paper = subst(paper, "paper", "");
+	delete_opt(options, known_latex_paper_sizes);
+	if (!paper.empty())
+		h_papersize = paper;
 	// page margins
 	char const * const * margin = known_paper_margins;
 	for (; *margin; ++margin) {
@@ -2543,12 +2545,41 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		if (t.cs() == "documentclass") {
 			vector<string>::iterator it;
 			vector<string> opts = split_options(p.getArg('[', ']'));
+			// FIXME This does not work for classes that have a
+			//       different name in LyX than in LaTeX
+			h_textclass = p.getArg('{', '}');
+			p.skip_spaces();
+			// Force textclass if the user wanted it
+			if (!forceclass.empty())
+				h_textclass = forceclass;
+			tc.setName(h_textclass);
+			if (!LayoutFileList::get().haveClass(h_textclass) || !tc.load()) {
+				cerr << "Error: Could not read layout file for textclass \"" << h_textclass << "\"." << endl;
+				exit(EXIT_FAILURE);
+			}
+
+			// Font sizes.
+			// Try those who are (most likely) known to all packages first
 			handle_opt(opts, known_fontsizes, h_paperfontsize);
 			delete_opt(opts, known_fontsizes);
 			// delete "pt" at the end
 			string::size_type i = h_paperfontsize.find("pt");
 			if (i != string::npos)
 				h_paperfontsize.erase(i);
+			// Now those known specifically to the class
+			string fsize;
+			vector<string> class_fsizes = getVectorFromString(tc.opt_fontsize(), "|");
+			string const fsize_format = tc.fontsizeformat();
+			for (auto const fsize : class_fsizes) {
+				string latexsize = subst(fsize_format, "$$s", fsize);
+				vector<string>::iterator it = find(opts.begin(), opts.end(), latexsize);
+				if (it != opts.end()) {
+					h_paperfontsize = fsize;
+					opts.erase(it);
+					break;
+				}
+			}
+
 			// The documentclass options are always parsed before the options
 			// of the babel call so that a language cannot overwrite the babel
 			// options.
@@ -2601,16 +2632,33 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				opts.erase(it);
 			}
 			// paper sizes
-			// some size options are known to any document classes, other sizes
+			// some size options are known by the document class, other sizes
 			// are handled by the \geometry command of the geometry package
-			handle_opt(opts, known_class_paper_sizes, h_papersize);
-			delete_opt(opts, known_class_paper_sizes);
+			string paper;
+			vector<string> class_psizes = getVectorFromString(tc.opt_pagesize(), "|");
+			string const psize_format = tc.pagesizeformat();
+			for (auto const psize : class_psizes) {
+				string latexsize = subst(psize_format, "$$s", psize);
+				vector<string>::iterator it = find(opts.begin(), opts.end(), latexsize);
+				if (it != opts.end()) {
+					h_papersize = psize;
+					opts.erase(it);
+					break;
+				}
+				if (psize_format == "$$spaper")
+					continue;
+				// Also try with the default format since this is understood by
+				// most classes
+				latexsize = psize + "paper";
+				it = find(opts.begin(), opts.end(), latexsize);
+				if (it != opts.end()) {
+					h_papersize = psize;
+					opts.erase(it);
+					break;
+				}
+			}
 			// the remaining options
 			h_options = join(opts, ",");
-			// FIXME This does not work for classes that have a
-			//       different name in LyX than in LaTeX
-			h_textclass = p.getArg('{', '}');
-			p.skip_spaces();
 			continue;
 		}
 
@@ -2935,14 +2983,6 @@ void Preamble::parse(Parser & p, string const & forceclass,
 	// remove the whitespace
 	p.skip_spaces();
 
-	// Force textclass if the user wanted it
-	if (!forceclass.empty())
-		h_textclass = forceclass;
-	tc.setName(h_textclass);
-	if (!LayoutFileList::get().haveClass(h_textclass) || !tc.load()) {
-		cerr << "Error: Could not read layout file for textclass \"" << h_textclass << "\"." << endl;
-		exit(EXIT_FAILURE);
-	}
 	if (h_papersides.empty()) {
 		ostringstream ss;
 		ss << tc.sides();

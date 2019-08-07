@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 585
+\lyxformat 587
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -8750,10 +8750,8 @@ status collapsed
 \emph on
 custom
 \emph default
-, letterpaper, legalpaper, executivepaper, a0paper, a1paper, a2paper, a3paper,
- a4paper, a5paper, a6paper, b0paper, b1paper, b2paper, b3paper, b4paper,
- b5paper, b6paper, c0paper, c1paper, c2paper, c3paper, c4paper, c5paper,
- c6paper, b0j, b1j, b2j, b3j, b4j, b5j, b6j
+, letter, legal, executive, a0, a1, a2, a3, a4, a5, a6, b0, b1, b2, b3,
+ b4, b5, b6, c0, c1, c2, c3, c4, c5, c6, b0j, b1j, b2j, b3j, b4j, b5j, b6j
 \end_layout
 
 \end_inset
@@ -9795,40 +9793,38 @@ PageSize
 status collapsed
 
 \begin_layout Plain Layout
-string="letterpaper|\SpecialChar allowbreak
-legalpaper|\SpecialChar allowbreak
-executivepaper|\SpecialChar allowbreak
-a0paper|\SpecialChar allowbreak
-a1paper|\SpecialChar allowbreak
-a2paper|\SpecialChar allowbreak
-a3paper|\SpecialChar allowbreak
-a4
-paper|\SpecialChar allowbreak
-a5paper|\SpecialChar allowbreak
-a6paper|\SpecialChar allowbreak
-b0paper|\SpecialChar allowbreak
-b1paper|\SpecialChar allowbreak
-b2paper|\SpecialChar allowbreak
-b3paper|\SpecialChar allowbreak
-b4paper|\SpecialChar allowbreak
-b5paper|\SpecialChar allowbreak
-b6paper|\SpecialChar allowbreak
-c0
-paper|\SpecialChar allowbreak
-c1paper|\SpecialChar allowbreak
-c2paper|\SpecialChar allowbreak
-c3paper|\SpecialChar allowbreak
-c4paper|\SpecialChar allowbreak
-c5paper|\SpecialChar allowbreak
-c6paper|\SpecialChar allowbreak
+string="letter|\SpecialChar allowbreak
+legal|\SpecialChar allowbreak
+executive|\SpecialChar allowbreak
+a0|\SpecialChar allowbreak
+a1|\SpecialChar allowbreak
+a2|\SpecialChar allowbreak
+a3|\SpecialChar allowbreak
+a4|\SpecialChar allowbreak
+a5|\SpecialChar allowbreak
+a6|\SpecialChar allowbreak
+b0|\SpecialChar allowbreak
+b1|\SpecialChar allowbreak
+b2|\SpecialChar allowbreak
+b3|\SpecialChar allowbreak
+b4|\SpecialChar allowbreak
+b5|\SpecialChar allowbreak
+b6|\SpecialChar allowbreak
+c0|\SpecialChar allowbreak
+c1|\SpecialChar allowbreak
+c
+2|\SpecialChar allowbreak
+c3|\SpecialChar allowbreak
+c4|\SpecialChar allowbreak
+c5|\SpecialChar allowbreak
+c6|\SpecialChar allowbreak
 b0j|\SpecialChar allowbreak
 b1j|\SpecialChar allowbreak
 b2j|\SpecialChar allowbreak
 b3j|\SpecialChar allowbreak
 b4j|\SpecialChar allowbreak
 b5j|\SpecialChar allowbreak
-b6
-j"
+b6j"
 \end_layout
 
 \end_inset
@@ -9855,6 +9851,51 @@ status collapsed
  Nur die aufgeführten Größen werden zurzeit unterstützt.
  Weitere Größen können ggf.
  über die benutzerdefinierten Klassenoptionen eingegeben werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+PageSizeFormat
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Das Format der Seitengrößen-Option.
+ Voreinstellung: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$spaper
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$s
+\end_layout
+
+\end_inset
+
+ ist ein Platzhalter für die Papiergröße.
 \end_layout
 
 \begin_layout Description

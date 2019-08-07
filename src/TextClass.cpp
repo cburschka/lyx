@@ -62,7 +62,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 78; // spitz: FontsizeFormat
+int const LAYOUT_FORMAT = 79; // spitz: PagesizeFormat
 
 
 // Layout format for the current lyx file format. Controls which format is
@@ -150,11 +150,11 @@ docstring const TextClass::plain_layout_ = from_ascii(N_("Plain Layout"));
 TextClass::TextClass()
 	: loaded_(false), tex_class_avail_(false),
 	  opt_enginetype_("authoryear|numerical"), opt_fontsize_("10|11|12"),
-	  opt_pagesize_("default|a4paper|a5paper|b5paper|letterpaper|legalpaper|executivepaper"),
+	  opt_pagesize_("default|a4|a5|b5|letter|legal|executive"),
 	  opt_pagestyle_("empty|plain|headings|fancy"), fontsize_format_("$$spt"), pagesize_("default"),
-	  pagestyle_("default"), tablestyle_("default"), columns_(1), sides_(OneSide), secnumdepth_(3),
-	  tocdepth_(3), outputType_(LATEX), outputFormat_("latex"),
-	  has_output_format_(false), defaultfont_(sane_font), 
+	  pagesize_format_("$$spaper"), pagestyle_("default"), tablestyle_("default"),
+	  columns_(1), sides_(OneSide), secnumdepth_(3), tocdepth_(3), outputType_(LATEX),
+	  outputFormat_("latex"), has_output_format_(false), defaultfont_(sane_font), 
 	  titletype_(TITLE_COMMAND_AFTER), titlename_("maketitle"),
 	  min_toclevel_(0), max_toclevel_(0), maxcitenames_(2),
 	  cite_full_author_list_(true), bibintoc_(false)
@@ -1006,6 +1006,7 @@ void TextClass::readClassOptions(Lexer & lexrc)
 		CO_FONTSIZE = 1,
 		CO_FONTSIZE_FORMAT,
 		CO_PAGESIZE,
+		CO_PAGESIZE_FORMAT,
 		CO_PAGESTYLE,
 		CO_OTHER,
 		CO_HEADER,
@@ -1019,6 +1020,7 @@ void TextClass::readClassOptions(Lexer & lexrc)
 		{"header",    CO_HEADER },
 		{"other",     CO_OTHER },
 		{"pagesize",  CO_PAGESIZE },
+		{"pagesizeformat", CO_PAGESIZE_FORMAT },
 		{"pagestyle", CO_PAGESTYLE }
 	};
 
@@ -1045,6 +1047,10 @@ void TextClass::readClassOptions(Lexer & lexrc)
 		case CO_PAGESIZE:
 			lexrc.next();
 			opt_pagesize_ = rtrim(lexrc.getString());
+			break;
+		case CO_PAGESIZE_FORMAT:
+			lexrc.next();
+			pagesize_format_ = rtrim(lexrc.getString());
 			break;
 		case CO_PAGESTYLE:
 			lexrc.next();

@@ -14,7 +14,7 @@ SecNumDepth        1
 TocDepth           1
 DefaultStyle       Standard
 PageStyle          Headings
-PageSize           letterpaper
+PageSize           letter
 Provides makeidx   1
 Provides framed    1
 Provides subscript 1
@@ -28,7 +28,7 @@ Provides SetSpace  1
 
 ClassOptions
 	FontSize             9|10|11|12|14|17
-	PageSize             a3paper|a4paper|a5paper|a6paper|b3paper|b4paper|b5paper|b6paper|executivepaper|legalpaper|letterpaper
+	PageSize             a3|a4|a5|a6|b3|b4|b5|b6|executive|legal|letter
 	PageStyle            empty|plain|headings|myheadings|ruled|Ruled|companion
 	Other                oldfontcommands
 End

@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 78
+currentFormat = 79
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -261,6 +261,9 @@ currentFormat = 78
 
 # Incremented to format 78, 6 August 2019 by spitz
 # New textclass tag FontsizeFormat
+
+# Incremented to format 79, 7 August 2019 by spitz
+# New textclass tag PagesizeFormat
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").

@@ -12,13 +12,14 @@ Format 78
 SecNumDepth             2
 TocDepth                2
 DefaultStyle            Standard
-PageSize                a4paper
+PageSize                a4
 Provides                subscript 1
 
 ClassOptions
 	FontSize             9|10|11|12|13|14|15|16|17|18|19|20
 	FontSizeFormat       fontsize=$$s
-	PageSize       a0paper|a1paper|a2paper|a3paper|a4paper|a5paper|a6paper|b0paper|b1paper|b2paper|b3paper|b4paper|b5paper|b6paper|c0paper|c1paper|c2paper|c3paper|c4paper|c5paper|c6paper|executivepaper|legalpaper|letterpaper
+	PageSize             a0|a1|a2|a3|a4|a5|a6|b0|b1|b2|b3|b4|b5|b6|c0|c1|c2|c3|c4|c5|c6|executive|legal|letter
+	PageSizeFormat       paper=$$s
 End
 
 Style Standard
