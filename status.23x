@@ -90,6 +90,8 @@ What's new
 
 - Fix direction of roman numbers with RTL documents and LuaTeX.
 
+- Fix direction of numbered citations outside XeTeX/bidi (bug 3005).
+
 - Fix direction of references with XeTeX/bidi (bug 11626).
 
 - Fix interplay of the memoir class and custom page size/geometry (bug 10970).

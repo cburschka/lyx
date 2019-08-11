@@ -70,6 +70,8 @@ public:
 				  UpdateType utype, TocBackend & backend) const;
 	///
 	std::string contextMenuName() const;
+	///
+	bool forceLTR(OutputParams const &) const;
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes

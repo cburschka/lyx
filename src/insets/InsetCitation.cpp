@@ -19,6 +19,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "DispatchResult.h"
+#include "Font.h"
 #include "FuncCode.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -441,6 +442,20 @@ docstring InsetCitation::basicLabel(bool for_xhtml) const
 		label += ", " + after;
 
 	return '[' + label + ']';
+}
+
+
+bool InsetCitation::forceLTR(OutputParams const & rp) const
+{
+	// We have to force LTR for numeric references
+	// [= plain BibTeX, numeric natbib and biblatex].
+	// Except for XeTeX/bidi . See #3005.
+	if (rp.local_font->isRightToLeft()
+	    && rp.use_polyglossia
+	    && rp.flavor == OutputParams::XETEX)
+		return false;
+	return (buffer().masterParams().citeEngine().list().front() == "basic"
+		|| buffer().masterParams().citeEngineType() == ENGINE_TYPE_NUMERICAL);
 }
 
 docstring InsetCitation::screenLabel() const
