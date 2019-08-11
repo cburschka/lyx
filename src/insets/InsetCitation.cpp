@@ -445,6 +445,18 @@ docstring InsetCitation::basicLabel(bool for_xhtml) const
 	return '[' + label + ']';
 }
 
+
+bool InsetCitation::forceLTR(OutputParams const & rp) const
+{
+	// We have to force LTR for numeric references
+	// [= plain BibTeX, numeric natbib and biblatex].
+	// Except for XeTeX/bidi . See #3005.
+	if (rp.useBidiPackage())
+		return false;
+	return (buffer().masterParams().citeEngine() == "basic"
+		|| buffer().masterParams().citeEngineType() == ENGINE_TYPE_NUMERICAL);
+}
+
 docstring InsetCitation::screenLabel() const
 {
 	return cache.screen_label;
