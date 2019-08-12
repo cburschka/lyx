@@ -1211,6 +1211,8 @@ void MenuDefinition::expandFloatInsert(Buffer const * buf)
 	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {
 		// normal float
+		if (cit->second.name().empty())
+			continue;
 		QString const label = qt_(cit->second.name());
 		addWithStatusCheck(MenuItem(MenuItem::Command, label,
 				    FuncRequest(LFUN_FLOAT_INSERT,

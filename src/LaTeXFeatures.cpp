@@ -736,8 +736,14 @@ void LaTeXFeatures::useFloat(string const & name, bool subfloat)
 	// use the "H" modifier. This includes modified table and
 	// figure floats. (Lgb)
 	Floating const & fl = params_.documentClass().floats().getType(name);
-	if (!fl.floattype().empty() && fl.usesFloatPkg()) {
-		require("float");
+	if (!fl.floattype().empty()) {
+		if (fl.usesFloatPkg())
+			require("float");
+		if (!fl.requires().empty()) {
+			vector<string> reqs = getVectorFromString(fl.requires());
+			for (auto const req : reqs)
+				require(req);
+		}
 	}
 }
 

@@ -62,7 +62,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 79; // spitz: PagesizeFormat
+int const LAYOUT_FORMAT = 80; // spitz: Requires for floats
 
 
 // Layout format for the current lyx file format. Controls which format is
@@ -1392,7 +1392,8 @@ bool TextClass::readFloat(Lexer & lexrc)
 		FT_REFPREFIX,
 		FT_ALLOWED_PLACEMENT,
 		FT_ALLOWS_SIDEWAYS,
-	    	FT_ALLOWS_WIDE,
+		FT_ALLOWS_WIDE,
+		FT_REQUIRES,
 		FT_END
 	};
 
@@ -1412,6 +1413,7 @@ bool TextClass::readFloat(Lexer & lexrc)
 		{ "numberwithin", FT_WITHIN },
 		{ "placement", FT_PLACEMENT },
 		{ "refprefix", FT_REFPREFIX },
+		{ "requires", FT_REQUIRES },
 		{ "style", FT_STYLE },
 		{ "type", FT_TYPE },
 		{ "usesfloatpkg", FT_USESFLOAT }
@@ -1432,6 +1434,7 @@ bool TextClass::readFloat(Lexer & lexrc)
 	string style;
 	string type;
 	string within;
+	string requires;
 	bool usesfloat = true;
 	bool ispredefined = false;
 	bool allowswide = true;
@@ -1507,6 +1510,10 @@ bool TextClass::readFloat(Lexer & lexrc)
 			lexrc.next();
 			usesfloat = lexrc.getBool();
 			break;
+		case FT_REQUIRES:
+			lexrc.next();
+			requires = lexrc.getString();
+			break;
 		case FT_PREDEFINED:
 			lexrc.next();
 			ispredefined = lexrc.getBool();
@@ -1560,8 +1567,8 @@ bool TextClass::readFloat(Lexer & lexrc)
 		}
 		Floating fl(type, placement, ext, within, style, name,
 			    listname, listcommand, refprefix, allowed_placement,
-			    htmltag, htmlattr, htmlstyle, usesfloat, ispredefined,
-			    allowswide, allowssideways);
+			    htmltag, htmlattr, htmlstyle, requires, usesfloat,
+			    ispredefined, allowswide, allowssideways);
 		floatlist_.newFloat(fl);
 		// each float has its own counter
 		counters_.newCounter(from_ascii(type), from_ascii(within),
