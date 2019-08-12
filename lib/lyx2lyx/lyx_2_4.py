@@ -3389,6 +3389,25 @@ def revert_pagesizenames(document):
     if val in newnames:
         newval = val + "paper"
         document.header[i] = "\\papersize " + newval
+
+
+def revert_theendnotes(document):
+    " Reverts native support of \\theendnotes to TeX-code "
+
+    if not "endnotes" in document.get_module_list() and not "foottoend" in document.get_module_list():
+        return
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset FloatList endnote", i + 1)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of FloatList inset")
+            continue
+
+        document.body[i : j + 1] = put_cmd_in_ert("\\theendnotes")
     
 
 ##
@@ -3439,10 +3458,12 @@ convert = [
            [584, []],
            [585, [convert_pagesizes]],
            [586, []],
-           [587, [convert_pagesizenames]]
+           [587, [convert_pagesizenames]],
+           [588, []]
           ]
 
-revert =  [[586, [revert_pagesizenames]],
+revert =  [[587, [revert_theendnotes]],
+           [586, [revert_pagesizenames]],
            [585, [revert_dupqualicites]],
            [584, [revert_pagesizes,revert_komafontsizes]],
            [583, [revert_vcsinfo_rev_abbrev]],

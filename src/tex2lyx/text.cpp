@@ -3931,6 +3931,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			continue;
 		}
 
+		if (t.cs() == "theendnotes") {
+			context.check_layout(os);
+			begin_inset(os, "FloatList endnote\n");
+			end_inset(os);
+			skip_spaces_braces(p);
+			continue;
+		}
+
 		if ((where = is_known(t.cs(), known_text_font_families))) {
 			parse_text_attributes(p, os, FLAG_ITEM, outer,
 				context, "\\family", context.font.family,

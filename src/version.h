@@ -32,8 +32,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 587 // spitz: generic paper size names
-#define LYX_FORMAT_TEX2LYX 587
+#define LYX_FORMAT_LYX 588 // spitz: support \theendnotes
+#define LYX_FORMAT_TEX2LYX 588
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
 #ifndef _MSC_VER
