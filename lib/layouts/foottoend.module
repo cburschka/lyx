@@ -8,11 +8,12 @@
 
 Format 79
 
-Requires	endnotes
 
-AddToPreamble
-  \let\footnote=\endnote
-EndPreamble
+InsetLayout Foot
+	LabelString     Endnote
+	LatexName       endnote
+	Requires        endnotes
+End
 
 # We are only interested in the list
 Float
