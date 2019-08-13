@@ -3931,7 +3931,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			continue;
 		}
 
-		if (t.cs() == "theendnotes") {
+		if (t.cs() == "theendnotes"
+		   || (t.cs() == "printendnotes"
+		       && p.next_token().asInput() != "*"
+		       && !p.hasOpt())) {
 			context.check_layout(os);
 			begin_inset(os, "FloatList endnote\n");
 			end_inset(os);

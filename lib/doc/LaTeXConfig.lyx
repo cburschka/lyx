@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 583
+\lyxformat 588
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -6480,10 +6480,14 @@ Packages required by modules
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted -712698321 1565673310
 endnotes
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -712698321 1565673310
 Found: 
 \begin_inset Info
 type  "package"
@@ -6494,18 +6498,24 @@ arg   "endnotes"
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -712698321 1565673310
 CTAN: 
 \family typewriter
 macros/latex/contrib/misc/endnotes.sty
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -712698321 1565673310
 Notes: The package 
 \family sans
 endnotes 
 \family default
 is needed by several modules to place footnotes at the end of sections,
  that are then so called endnotes.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -6538,6 +6548,150 @@ Notes: The package
 braille 
 \family default
 makes it possible to typeset Braille, a character system for blind people.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1565673326
+Endnotes (Basic) module
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted -712698321 1565673326
+endnotes
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1565673326
+Found: 
+\begin_inset Info
+type  "package"
+arg   "endnotes"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1565673326
+CTAN: 
+\family typewriter
+macros/latex/contrib/endnotes/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1565673631
+Notes: The package 
+\family sans
+endnotes 
+\family default
+is needed by the 
+\emph on
+Endnotes (Basic)
+\emph default
+ and 
+\emph on
+Footnotes as Endnotes (Basic)
+\emph default
+ modules to place footnotes at the end of sections, that are then so called
+ endnotes.
+ It is more limited, but also more established, than 
+\family sans
+enotez
+\family default
+ [cf.
+ Endnotes (Extended) module].
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1565673348
+Endnotes (Extended) module
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted -712698321 1565673326
+enotez
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1565673326
+Found: 
+\begin_inset Info
+type  "package"
+arg   "enotez"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1565673326
+CTAN: 
+\family typewriter
+macros/latex/contrib/enotez/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1565673326
+Notes: The package 
+\family sans
+enotez 
+\family default
+is needed by the 
+\emph on
+Endnotes (Extended)
+\emph default
+ and 
+\emph on
+Footnotes as Endnotes (Extended)
+\emph default
+ modules to produce endnotes; 
+\family sans
+enotez
+\family default
+ is a new implementation of endnotes for \SpecialChar LaTeX2e
+ since the 
+\family sans
+endnotes
+\family default
+ package (used by the 
+\emph on
+Basic
+\emph default
+ endnotes modules) has some deficiencies.
+ As opposed to the latter, 
+\family sans
+enotez
+\family default
+ supports nested endnotes, hyper- and backlinks (
+\family sans
+hyperref
+\family default
+) and a split list of endnotes in which the notes are automatically separated
+ by the sections or chapters they were set in.
+ Several languages are supported, and the output is easier customizable
+ than that of the 
+\family sans
+endnotes
+\family default
+ package.
+ However, 
+\family sans
+enotez
+\family default
+ requires a fairly modern \SpecialChar LaTeX
+ distribution.
 \end_layout
 
 \begin_layout Subsection
@@ -6579,6 +6733,38 @@ FIXME
 \end_inset
 
  notes into documents.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1565673411
+Footnotes as Endnotes (Basic)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1565673436
+See 
+\emph on
+Endnotes (Basic)
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1565673439
+Footnotes as Endnotes (Extended)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1565673442
+See 
+\emph on
+Endnotes (Extended)
+\emph default
+.
 \end_layout
 
 \begin_layout Subsection

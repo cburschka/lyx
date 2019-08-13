@@ -8,8 +8,9 @@ changes happened in particular if possible. A good example would be
 -----------------------
 
 2019-08-12 Jürgen Spitzmüller <spitz@lyx.org>
- 	* Format incremented to 588: Support \theendnotes of endnotes package via a faked
-          float list.
+ 	* Format incremented to 588: 
+        - Support \theendnotes of endnotes package via a faked float list.
+        - Support enotez package via enotez and foottoenotez modules.
 
 2019-08-07 Jürgen Spitzmüller <spitz@lyx.org>
  	* Format incremented to 587: Use more generic paper names as LyX names

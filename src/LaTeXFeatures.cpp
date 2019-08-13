@@ -978,6 +978,7 @@ char const * simplefeatures[] = {
 	"csquotes",
 	"enumitem",
 	"endnotes",
+	"enotez",
 	"hhline",
 	"ifthen",
 	// listings is handled in BufferParams.cpp

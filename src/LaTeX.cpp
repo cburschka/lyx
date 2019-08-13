@@ -799,6 +799,10 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 			} else if (contains(token, "Etaremune labels have changed")) {
 				retval |= ERROR_RERUN;
 				LYXERR(Debug::LATEX, "Force rerun.");
+			// package enotez
+			} else if (contains(token, "Endnotes may have changed. Rerun")) {
+				retval |= RERUN;
+				LYXERR(Debug::LATEX, "We should rerun.");
 			//"Citation `cit' on page X undefined on input line X."
 			} else if (contains(token, "Citation")
 				   //&& contains(token, "on input line") //often split to newline

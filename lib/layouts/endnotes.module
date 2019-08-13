@@ -1,10 +1,13 @@
-#\DeclareLyXModule[endnotes.sty]{Endnotes}
+#\DeclareLyXModule[endnotes.sty]{Endnotes (Basic)}
 #\DeclareCategory{Foot- and Endnotes}
 #DescriptionBegin
-#Adds an endnote inset, in addition to footnotes. You will need to add an
-#endnotes list (Insert > List/Contents/References > Endnotes) where you
+#Adds an endnote inset, in addition to footnotes. This uses the endnotes
+#package, which has some limitations but works with older LaTeX distributions
+#as well. You will need to add an endnotes list
+#(Insert > List/Contents/References > Endnotes) where you
 #want the endnotes to appear.
 #DescriptionEnd
+#Excludes: enotez | foottoenotez
 
 Format 80
 

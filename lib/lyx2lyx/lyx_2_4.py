@@ -3409,6 +3409,37 @@ def revert_theendnotes(document):
             continue
 
         document.body[i : j + 1] = put_cmd_in_ert("\\theendnotes")
+
+
+def revert_enotez(document):
+    " Reverts native support of enotez package to TeX-code "
+
+    if not "enotez" in document.get_module_list() and not "foottoenotez" in document.get_module_list():
+        return
+
+    use = False
+    if find_token(document.body, "\\begin_inset Flex Endnote", 0) != -1:
+        use = True
+
+    revert_flex_inset(document.body, "Endnote", "\\endnote")
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset FloatList endnote", i + 1)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of FloatList inset")
+            continue
+
+        use = True
+        document.body[i : j + 1] = put_cmd_in_ert("\\printendnotes")
+
+    if use:
+        add_to_preamble(document, ["\\usepackage{enotez}"])
+    document.del_module("enotez")
+    document.del_module("foottoenotez")
     
 
 ##
@@ -3463,7 +3494,7 @@ convert = [
            [588, []]
           ]
 
-revert =  [[587, [revert_theendnotes]],
+revert =  [[587, [revert_enotez,revert_theendnotes]],
            [586, [revert_pagesizenames]],
            [585, [revert_dupqualicites]],
            [584, [revert_pagesizes,revert_komafontsizes]],

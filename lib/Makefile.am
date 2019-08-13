@@ -2341,6 +2341,7 @@ dist_layouts_DATA =\
 	layouts/elsart.layout \
 	layouts/elsarticle.layout \
 	layouts/endnotes.module \
+	layouts/enotez.module \
 	layouts/entcs.layout \
 	layouts/enumitem.module \
 	layouts/eqs-within-sections.module \
@@ -2356,6 +2357,7 @@ dist_layouts_DATA =\
 	layouts/fix-cm.module \
 	layouts/foils.layout \
 	layouts/foottoend.module \
+	layouts/foottoenotez.module \
 	layouts/frletter.layout \
 	layouts/g-brief.layout \
 	layouts/g-brief2.layout \
