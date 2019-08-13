@@ -642,7 +642,7 @@ def revert_lscape(document):
     while True:
         i = find_token(document.body, "\\begin_inset Flex Landscape", i+1)
         if i == -1:
-            return
+            break
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Can't find end of Landscape inset")
@@ -657,6 +657,7 @@ def revert_lscape(document):
             document.body[i : i + 4] = put_cmd_in_ert("\\begin{landscape}")
 
         add_to_preamble(document, ["\\usepackage{pdflscape}"])
+    document.del_module("landscape")
 
 
 def convert_fontenc(document):
