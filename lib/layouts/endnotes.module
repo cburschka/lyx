@@ -27,6 +27,12 @@ InsetLayout Flex:Endnote
    MultiPar    true
    LabelString endnote
    Requires    endnotes
+   LangPreamble
+     \providecommand{\notesname}{_(Notes[[Endnotes]])}
+   EndLangPreamble
+   BabelPreamble
+     \addto\captions$$lang{\renewcommand{\notesname}{_(Notes[[Endnotes]])}}
+   EndBabelPreamble
 End
 
 # We are only interested in the list

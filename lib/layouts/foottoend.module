@@ -13,9 +13,15 @@ Format 80
 
 
 InsetLayout Foot
-	LabelString     Endnote
-	LatexName       endnote
-	Requires        endnotes
+   LabelString     Endnote
+   LatexName       endnote
+   Requires        endnotes
+   LangPreamble
+     \providecommand{\notesname}{_(Notes)}
+   EndLangPreamble
+   BabelPreamble
+     \addto\captions$$lang{\renewcommand{\notesname}{_(Notes)}}
+   EndBabelPreamble
 End
 
 # We are only interested in the list
