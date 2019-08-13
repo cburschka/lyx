@@ -213,14 +213,18 @@ void GuiSetBorder::drawTop(BorderState draw)
 }
 
 
-void GuiSetBorder::undrawWideTopLine()
+void GuiSetBorder::undrawWideTopLine(bool const right)
 {
-	if (!top_drawn_wide_)
+	if (!top_drawn_wide_ && !right)
 		return;
 
 	// Overpaint previous lines white
-	drawLine(Qt::white, margin + corner_length + 2, margin + corner_length,
-		 bwidth - margin - corner_length - 1, margin + corner_length);
+	if (right)
+	        drawLine(Qt::white, margin + 2 * (corner_length + 2), margin + corner_length,
+			bwidth - margin - corner_length - 1, margin + corner_length);
+	else
+		drawLine(Qt::white, margin + corner_length + 2, margin + corner_length,
+			 bwidth - margin - corner_length - 1, margin + corner_length);
 	top_drawn_wide_ = false;
 }
 
@@ -300,14 +304,18 @@ void GuiSetBorder::drawBottom(BorderState draw)
 }
 
 
-void GuiSetBorder::undrawWideBottomLine()
+void GuiSetBorder::undrawWideBottomLine(bool const right)
 {
-	if (!bottom_drawn_wide_)
+	if (!bottom_drawn_wide_ && !right)
 		return;
 
-	//Overpaint previous lines white
-	drawLine(Qt::white, margin + corner_length + 2, bwidth - margin - corner_length + 1,
-		 bwidth - margin - corner_length - 1, bwidth - margin - corner_length + 1);
+	// Overpaint previous lines white
+	if (right)
+		drawLine(Qt::white, margin + 2 * (corner_length + 2), bwidth - margin - corner_length + 1,
+			bwidth - margin - corner_length - 1, bwidth - margin - corner_length + 1);
+	else
+		drawLine(Qt::white, margin + corner_length + 2, bwidth - margin - corner_length + 1,
+			 bwidth - margin - corner_length - 1, bwidth - margin - corner_length + 1);
 	bottom_drawn_wide_ = false;
 }
 
@@ -401,10 +409,10 @@ void GuiSetBorder::setTopLeftTrimEnabled(bool enabled)
 void GuiSetBorder::setTopRightTrimEnabled(bool enabled)
 {
 	top_trim_right_.enabled = enabled;
-	undrawWideTopLine();
+	undrawWideTopLine(enabled);
 	drawTopRightTrim(top_trim_right_.set);
 	drawTop(top_.set);
-	top_drawn_wide_ = !enabled;;
+	top_drawn_wide_ = !enabled;
 }
 
 
@@ -414,17 +422,17 @@ void GuiSetBorder::setBottomLeftTrimEnabled(bool enabled)
 	undrawWideBottomLine();
 	drawBottomLeftTrim(bottom_trim_left_.set);
 	drawBottom(bottom_.set);
-	bottom_drawn_wide_ = !enabled;;
+	bottom_drawn_wide_ = !enabled;
 }
 
 
 void GuiSetBorder::setBottomRightTrimEnabled(bool enabled)
 {
 	bottom_trim_right_.enabled = enabled;
-	undrawWideBottomLine();
+	undrawWideBottomLine(enabled);
 	drawBottomRightTrim(bottom_trim_right_.set);
 	drawBottom(bottom_.set);
-	bottom_drawn_wide_ = !enabled;;
+	bottom_drawn_wide_ = !enabled;
 }
 
 

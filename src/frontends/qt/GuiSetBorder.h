@@ -108,9 +108,9 @@ private:
 	void drawLeft(BorderState);
 	void drawRight(BorderState);
 	void drawTop(BorderState);
-	void undrawWideTopLine();
+	void undrawWideTopLine(bool const right = false);
 	void drawBottom(BorderState);
-	void undrawWideBottomLine();
+	void undrawWideBottomLine(bool const right = false);
 	void drawTopLeftTrim(BorderState);
 	void drawTopRightTrim(BorderState);
 	void drawBottomLeftTrim(BorderState);
