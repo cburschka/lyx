@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 574
+\lyxformat 588
 \begin_document
 \begin_header
 \save_transient_properties false
@@ -67,7 +67,9 @@ ruby
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -94,7 +96,7 @@ ruby
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "unicode=false, linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize a4paper
+\papersize a4
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -116,6 +118,7 @@ ruby
 \justification false
 \use_refstyle 1
 \use_minted 0
+\use_lineno 0
 \notefontcolor #0000ff
 \branch 質問
 \selected 1
@@ -7150,12 +7153,14 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 これは原文儘(verbatim)環境です．
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 この下の2行は空白行です．
 \end_layout
 
@@ -7168,6 +7173,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 右記の各文字を始め，ほぼすべての文字が使えます．例："%&$§#~'`
 \backslash
 }][{|
@@ -7190,6 +7196,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -24317,7 +24324,7 @@ name "sec:付録"
 (例)付録
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:謝辞"
+reference "cha:LyXで使用できる単位"
 
 \end_inset
 
