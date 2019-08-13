@@ -1635,7 +1635,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		|| find(classpsizes.begin(), classpsizes.end(), string_papersize[papersize]) != classpsizes.end();
 
 	if ((!use_geometry || features.isProvided("geometry-light"))
-	    && class_supported_papersize)
+	    && class_supported_papersize && papersize != PAPER_DEFAULT)
 		clsoptions << subst(tclass.pagesizeformat(), "$$s", string_papersize[papersize]) << ",";
 
 	// if needed
