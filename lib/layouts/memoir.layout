@@ -290,3 +290,50 @@ Style Legend
 	ParSkip             0.4
 	Align               Center
 End
+
+#
+# Endnotes (called "pagenotes" in memoir)
+#
+
+Counter endnotes
+    PrettyFormat "Endnote ##"
+End
+
+InsetLayout Flex:Endnote
+   LyXType     custom
+   LatexName   pagenote
+   LatexType   command
+   Counter     endnotes
+   Decoration  classic
+   Font
+     Size Small
+   EndFont
+   MultiPar    true
+   LabelString endnote
+   Preamble
+      \makepagenote
+   EndPreamble
+   LangPreamble
+     \providecommand{\notesname}{_(Notes[[Endnotes]])}
+   EndLangPreamble
+   BabelPreamble
+     \addto\captions$$lang{\renewcommand{\notesname}{_(Notes[[Endnotes]])}}
+   EndBabelPreamble
+End
+
+# We are only interested in the list
+Float
+   Type          pagenote
+   ListName      "Endnotes (all)"
+   IsPredefined  true
+   UsesFloatPkg  false
+   ListCommand   printpagenotes
+End
+
+Float
+   Type          pagenote*
+   ListName      "Endnotes (sectioned)"
+   IsPredefined  true
+   UsesFloatPkg  false
+   ListCommand   printpagenotes*
+End

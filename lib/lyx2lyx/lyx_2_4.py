@@ -3440,6 +3440,36 @@ def revert_enotez(document):
         add_to_preamble(document, ["\\usepackage{enotez}"])
     document.del_module("enotez")
     document.del_module("foottoenotez")
+
+
+def revert_memoir_endnotes(document):
+    " Reverts native support of memoir endnotes to TeX-code "
+
+    if document.textclass != "memoir":
+        return
+
+    encommand = "\\pagenote"
+    modules = document.get_module_list()
+    if "enotez" in modules or "foottoenotez" in modules or "endnotes" in modules or "foottoend" in modules:
+        encommand = "\\endnote"
+
+    revert_flex_inset(document.body, "Endnote", encommand)
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset FloatList pagenote", i + 1)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of FloatList inset")
+            continue
+
+        if document.body[i] == "\\begin_inset FloatList pagenote*":
+            document.body[i : j + 1] = put_cmd_in_ert("\\printpagenotes*")
+        else:
+            document.body[i : j + 1] = put_cmd_in_ert("\\printpagenotes")
+        add_to_preamble(document, ["\\makepagenote"])
     
 
 ##
@@ -3494,7 +3524,7 @@ convert = [
            [588, []]
           ]
 
-revert =  [[587, [revert_enotez,revert_theendnotes]],
+revert =  [[587, [revert_memoir_endnotes,revert_enotez,revert_theendnotes]],
            [586, [revert_pagesizenames]],
            [585, [revert_dupqualicites]],
            [584, [revert_pagesizes,revert_komafontsizes]],
