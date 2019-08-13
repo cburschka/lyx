@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-07-28 22:53+0200\n"
-"PO-Revision-Date: 2019-07-28 20:59+0000\n"
+"POT-Creation-Date: 2019-08-13 10:24+0200\n"
+"PO-Revision-Date: 2019-08-13 09:04+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -11651,20 +11651,46 @@ msgid "If content is 'url', email becomes an Internet address"
 msgstr "Keď obsah je 'url', e-mail sa zmení na internetovú adresu"
 
 #: lib/layouts/endnotes.module:2
+msgid "Endnotes (Basic)"
+msgstr "Koncové poznámky (jednoduché)"
+
+#: lib/layouts/endnotes.module:2
 msgid "Endnotes"
 msgstr "Koncové poznámky"
+
+#: lib/layouts/enotez.module:2
+msgid "Endnotes (Extended)"
+msgstr "Koncové poznámky (rozšírenie)"
+
+#: lib/layouts/enotez.module:10
+msgid ""
+"Adds an endnote inset, in addition to footnotes. This uses the enotez "
+"package which is more powerful and customizable than then endnotes package "
+"(module 'Endnotes (Basic)'), but requires a fairly modern LaTeX distribution "
+"(with LaTeX3). You will need to add an endnotes list (Insert > List/Contents/"
+"References > Endnotes) where you want the endnotes to appear."
+msgstr ""
+"Pridáva vložku pre koncové poznámky. Používa balík enotez, ktorý je mocnejší "
+"a prispôsobivejší ako balík endnotes (modul 'Koncové poznámky "
+"(jednoduché)'), ale požaduje dosť modernú LaTeX distribúciu (a LaTeX3). "
+"Nutné je pridať súpis koncových poznámok (Vložiť->Zoznam/obsah/referencie-"
+">Koncové poznámky) tam, kde sa koncové poznámky majú objaviť."
 
 #: lib/layouts/endnotes.module:3 lib/layouts/foottoend.module:3
 msgid "Foot- and Endnotes"
 msgstr "Poznámky pod čiarou a na konci"
 
-#: lib/layouts/endnotes.module:7
+#: lib/layouts/endnotes.module:10
 msgid ""
-"Adds an endnote inset, in addition to footnotes. You will need to add "
-"\\theendnotes in TeX-code where you want the endnotes to appear."
+"Adds an endnote inset, in addition to footnotes. This uses the endnotes "
+"package, which has some limitations but works with older LaTeX distributions "
+"as well. You will need to add an endnotes list (Insert > List/Contents/"
+"References > Endnotes) where you want the endnotes to appear."
 msgstr ""
-"Pridáva vložku pre koncové poznámky (Endnote). Nutné je pridať \\theendnotes "
-"do vložky TeX-ového kódu tam, kde sa koncové poznámky majú objaviť."
+"Pridáva vložku pre koncové poznámky. Používa balík endnotes, ktorý má svoje "
+"nedostatky, ale funguje dobre aj so staršou LaTeX distribúciou. Nutné je "
+"pridať súpis koncových poznámok (Vložiť->Zoznam/obsah/referencie->Koncové "
+"poznámky) tam, kde sa koncové poznámky majú objaviť."
 
 #: lib/layouts/endnotes.module:11
 msgid "Endnote ##"
@@ -11677,6 +11703,10 @@ msgstr "Koncová poznámka"
 #: lib/layouts/endnotes.module:24
 msgid "endnote"
 msgstr "koncová poznámka"
+
+#: lib/layouts/endnotes.module:31 lib/layouts/endnotes.module:34
+msgid "Notes[[Endnotes]]"
+msgstr "Poznámky"
 
 #: lib/layouts/entcs.layout:3
 msgid "Electronic Notes in Theor. Comp. Sc. (ENTCS)"
@@ -12499,17 +12529,20 @@ msgid "Definition*"
 msgstr "Definícia*"
 
 #: lib/layouts/foottoend.module:2
-msgid "Footnotes as Endnotes"
-msgstr "Poznámky pod čiarou ako koncové"
+msgid "Footnotes as Endnotes (Basic)"
+msgstr "Poznámky pod čiarou ako koncové (jednoduché)"
 
-#: lib/layouts/foottoend.module:7
+#: lib/layouts/foottoend.module:10
 msgid ""
-"Sets all footnotes as endnotes. You will need to add \\theendnotes in TeX-"
-"code where you want the endnotes to appear."
+"Sets all footnotes as endnotes. This uses the endnotes package, which has "
+"some limitations but works with older LaTeX distributions as well. You will "
+"need to add an endnotes list (Insert > List/Contents/References > Endnotes) "
+"where you want the endnotes to appear."
 msgstr ""
-"Nastaviť všetky poznámky pod čiarou ako koncové poznámky. Nutné je pridať "
-"\\theendnotes do vložky TeX-ového kódu tam, kde sa koncové poznámky majú "
-"objaviť."
+"Nastaviť všetky poznámky pod čiarou ako koncové poznámky. Používa balík "
+"endnotes, ktorý má svoje nedostatky, ale funguje dobre aj so staršou LaTeX "
+"distribúciou. Nutné je pridať súpis koncových poznámok (Vložiť->Zoznam/obsah/"
+"referencie->Koncové poznámky) tam, kde sa koncové poznámky majú objaviť."
 
 #: lib/layouts/frletter.layout:3 lib/examples/Articles:0
 msgid "French Letter (frletter)"
@@ -16402,6 +16435,25 @@ msgstr "Poznámky pod čiarou"
 #: lib/layouts/stdinsets.inc:13
 msgid "Notes"
 msgstr "Poznámky"
+
+#: lib/layouts/foottoenotez.module:2
+msgid "Footnotes as Endnotes (Extended)"
+msgstr "Poznámky pod čiarou ako koncové (rozšírenie)"
+
+#: lib/layouts/foottoenotez.module:11
+msgid ""
+"Sets all footnotes as endnotes. This uses the enotez package which is more "
+"powerful and customizable than then endnotes package (module 'Footnotes as "
+"Endnotes (Basic)'), but requires a fairly modern LaTeX distribution (with "
+"LaTeX3).You will need to add an endnotes list (Insert > List/Contents/"
+"References > Endnotes) where you want the endnotes to appear."
+msgstr ""
+"Nastaviť všetky poznámky pod čiarou ako koncové poznámky. Používa balík "
+"enotez, ktorý je mocnejší a prispôsobivejší ako balík endnotes (modul "
+"'Koncové poznámky (jednoduché)'), ale požaduje dosť modernú LaTeX "
+"distribúciu (a LaTeX3). Nutné je pridať súpis koncových poznámok (Vložiť-"
+">Zoznam/obsah/referencie->Koncové poznámky) tam, kde sa koncové poznámky "
+"majú objaviť."
 
 #: lib/layouts/stdinsets.inc:14 src/frontends/qt/GuiDocument.cpp:1754
 msgid "Branches"
@@ -41240,3 +41292,21 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Right-to-Left Language Support"
 #~ msgstr "Podpora písania sprava-doľava"
+
+#~ msgid ""
+#~ "Adds an endnote inset, in addition to footnotes. You will need to add "
+#~ "\\theendnotes in TeX-code where you want the endnotes to appear."
+#~ msgstr ""
+#~ "Pridáva vložku pre koncové poznámky (Endnote). Nutné je pridať \\theendnotes "
+#~ "do vložky TeX-ového kódu tam, kde sa koncové poznámky majú objaviť."
+
+#~ msgid "Footnotes as Endnotes"
+#~ msgstr "Poznámky pod čiarou ako koncové"
+
+#~ msgid ""
+#~ "Sets all footnotes as endnotes. You will need to add \\theendnotes in TeX-"
+#~ "code where you want the endnotes to appear."
+#~ msgstr ""
+#~ "Nastaviť všetky poznámky pod čiarou ako koncové poznámky. Nutné je pridať "
+#~ "\\theendnotes do vložky TeX-ového kódu tam, kde sa koncové poznámky majú "
+#~ "objaviť."
