@@ -621,7 +621,7 @@ class LyX_base:
         modlist = self.get_module_list()
         if module not in modlist:
             return False
-        self.set_module_list([line for line in modlist if line != "ruby"])
+        self.set_module_list([line for line in modlist if line != module])
         return True
 
     def get_module_list(self):
