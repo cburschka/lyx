@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 588
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -30,7 +30,7 @@
 \language russian
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "default" "DejaVu Serif"
 \font_sans "default" "DejaVu Sans"
 \font_typewriter "default" "DejaVu Sans Mono"
@@ -38,7 +38,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -65,7 +67,7 @@
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize a4paper
+\papersize a4
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -87,6 +89,7 @@
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \index Предметный указатель
 \shortcut idx
 \color #008000
@@ -102,6 +105,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -447,21 +451,8 @@ status collapsed
 
 \begin_layout Standard
 Вот и всё.
- Вы можете вырез
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-'
-\end_layout
-
-\end_inset
-
-ать и вставлять разделы, при этом все разделы документа будут автоматически
- перенумерованы.
+ Вы можете вырезàть и вставлять разделы, при этом все разделы документа
+ будут автоматически перенумерованы.
  И если вы правильно (путём вставки 
 \emph on
 перекрёстных
@@ -782,20 +773,7 @@ status collapsed
 \begin_inset Quotes cld
 \end_inset
 
-лат
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-'
-\end_layout
-
-\end_inset
-
-ех
+латéх
 \begin_inset Quotes crd
 \end_inset
 
@@ -1617,6 +1595,8 @@ reference "tab:Units"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -2181,20 +2161,7 @@ em)
  что \SpecialChar LaTeX
  какое-то тянущееся вещество,— но вы 
 \emph on
-узн
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-'
-\end_layout
-
-\end_inset
-
-аете
+узнáете
 \emph default
 , как использовать \SpecialChar LyX
 .
