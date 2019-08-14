@@ -399,7 +399,7 @@ string InsetGraphics::createLatexOptions(bool const ps) const
 		if (!params().width.zero())
 			size << "width=" << params().width.asLatexString() << ',';
 		if (!params().height.zero())
-			size << "height=" << params().height.asLatexString() << ',';
+			size << "totalheight=" << params().height.asLatexString() << ',';
 		if (params().keepAspectRatio)
 			size << "keepaspectratio,";
 	}

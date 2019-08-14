@@ -3733,9 +3733,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (opts.find("width") != opts.end())
 				os << "\twidth "
 				   << translate_len(opts["width"]) << '\n';
-			if (opts.find("height") != opts.end())
+			if (opts.find("totalheight") != opts.end())
 				os << "\theight "
-				   << translate_len(opts["height"]) << '\n';
+				   << translate_len(opts["totalheight"]) << '\n';
 			if (opts.find("scale") != opts.end()) {
 				istringstream iss(opts["scale"]);
 				double val;
@@ -3751,7 +3751,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				vector<string>::const_iterator s =
 					find(keys.begin(), keys.end(), "width");
 				if (s == keys.end())
-					s = find(keys.begin(), keys.end(), "height");
+					s = find(keys.begin(), keys.end(), "totalheight");
 				if (s == keys.end())
 					s = find(keys.begin(), keys.end(), "scale");
 				if (s != keys.end() && distance(s, a) > 0)
@@ -3812,8 +3812,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				special << "trim,";
 			if (opts.find("viewport") != opts.end())
 				special << "viewport=" << opts["viewport"] << ',';
-			if (opts.find("totalheight") != opts.end())
-				special << "totalheight=" << opts["totalheight"] << ',';
+			if (opts.find("height") != opts.end())
+				special << "height=" << opts["height"] << ',';
 			if (opts.find("type") != opts.end())
 				special << "type=" << opts["type"] << ',';
 			if (opts.find("ext") != opts.end())

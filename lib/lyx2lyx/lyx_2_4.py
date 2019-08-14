@@ -3470,7 +3470,116 @@ def revert_memoir_endnotes(document):
         else:
             document.body[i : j + 1] = put_cmd_in_ert("\\printpagenotes")
         add_to_preamble(document, ["\\makepagenote"])
-    
+
+
+def revert_totalheight(document):
+    " Reverts graphics height parameter from totalheight to height "
+
+    i = 0
+    while (True):
+        i = find_token(document.body, "\\begin_inset Graphics", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of graphics inset at line %d!!" %(i))
+            i += 1
+            continue
+
+        rx = re.compile(r'\s*special\s*(\S+)$')
+        k = find_re(document.body, rx, i, j)
+        special = ""
+        oldheight = ""
+        if k != -1:
+            m = rx.match(document.body[k])
+            if m:
+                special = m.group(1)
+            mspecial = special.split(',')
+            for spc in mspecial:
+                if spc[:7] == "height=":
+                    oldheight = spc.split('=')[1]
+                    mspecial.remove(spc)
+                    break
+            if len(mspecial) > 0:
+                special = ",".join(mspecial)
+            else:
+                special = ""
+
+        rx = re.compile(r'(\s*height\s*)(\S+)$')
+        kk = find_re(document.body, rx, i, j)
+        if kk != -1:
+            m = rx.match(document.body[kk])
+            val = ""
+            if m:
+                val = m.group(2)
+                if k != -1:
+                    if special != "":
+                        val = val + "," + special
+                    document.body[k] = "\tspecial " + "totalheight=" + val
+                else:
+                    document.body.insert(kk, "\tspecial totalheight=" + val) 
+                if oldheight != "":
+                    document.body[kk] = m.group(1) + oldheight
+                else:
+                    del document.body[kk]
+        elif oldheight != "":
+            document.body.insert(k, "\theight " + oldheight) 
+        i = j + 1
+
+
+def convert_totalheight(document):
+    " Converts graphics height parameter from totalheight to height "
+
+    i = 0
+    while (True):
+        i = find_token(document.body, "\\begin_inset Graphics", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of graphics inset at line %d!!" %(i))
+            i += 1
+            continue
+
+        rx = re.compile(r'\s*special\s*(\S+)$')
+        k = find_re(document.body, rx, i, j)
+        special = ""
+        newheight = ""
+        if k != -1:
+            m = rx.match(document.body[k])
+            if m:
+                special = m.group(1)
+            mspecial = special.split(',')
+            for spc in mspecial:
+                if spc[:12] == "totalheight=":
+                    newheight = spc.split('=')[1]
+                    mspecial.remove(spc)
+                    break
+            if len(mspecial) > 0:
+                special = ",".join(mspecial)
+            else:
+                special = ""
+
+        rx = re.compile(r'(\s*height\s*)(\S+)$')
+        kk = find_re(document.body, rx, i, j)
+        if kk != -1:
+            m = rx.match(document.body[kk])
+            val = ""
+            if m:
+                val = m.group(2)
+                if k != -1:
+                    if special != "":
+                        val = val + "," + special
+                    document.body[k] = "\tspecial " + "height=" + val
+                else:
+                    document.body.insert(kk + 1, "\tspecial height=" + val) 
+                if newheight != "":
+                    document.body[kk] = m.group(1) + newheight
+                else:
+                    del document.body[kk]
+        elif newheight != "":
+            document.body.insert(k, "\theight " + newheight) 
+        i = j + 1
 
 ##
 # Conversion hub
@@ -3521,10 +3630,12 @@ convert = [
            [585, [convert_pagesizes]],
            [586, []],
            [587, [convert_pagesizenames]],
-           [588, []]
+           [588, []],
+           [589, [convert_totalheight]]
           ]
 
-revert =  [[587, [revert_memoir_endnotes,revert_enotez,revert_theendnotes]],
+revert =  [[588, [revert_totalheight]],
+           [587, [revert_memoir_endnotes,revert_enotez,revert_theendnotes]],
            [586, [revert_pagesizenames]],
            [585, [revert_dupqualicites]],
            [584, [revert_pagesizes,revert_komafontsizes]],
