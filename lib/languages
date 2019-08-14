@@ -1007,6 +1007,7 @@ Language latin
 	GuiName          "Latin"
 	BabelName        latin
 	PolyglossiaName  latin
+	ActiveChars      ^=
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
 	LangCode         la_LA
@@ -1471,13 +1472,11 @@ Language turkish
 	BabelName        turkish
 	PolyglossiaName  turkish
 	QuoteStyle       english
+	ActiveChars      =
 	Encoding         iso8859-9
 	FontEncoding	 T1|OT1
 	LangCode         tr_TR
 	DateFormats      "d MMMM yyyy|dd.MMM.yyyy|dd.MM.yyyy"
-	PostBabelPreamble
-	\usepackage{xkeyval}
-	EndPostBabelPreamble
 End
 
 # turkmen must be loaded locally with babel options,

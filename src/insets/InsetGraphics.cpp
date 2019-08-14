@@ -841,17 +841,24 @@ void InsetGraphics::latex(otexstream & os,
 	string before;
 	string after;
 
-	if (runparams.moving_arg)
-		before += "\\protect";
-
-	// We never use the starred form, we use the "clip" option instead.
-	before += "\\includegraphics";
-
 	// Write the options if there are any.
 	bool const ps = runparams.flavor == OutputParams::LATEX
 		|| runparams.flavor == OutputParams::DVILUATEX;
 	string const opts = createLatexOptions(ps);
 	LYXERR(Debug::GRAPHICS, "\tOpts = " << opts);
+
+	if (contains(opts, '=') && contains(runparams.active_chars, '=')) {
+		// We have a language that makes = active. Deactivate locally
+		// for keyval option parsing (#2005).
+		before = "\\begingroup\\catcode`\\=12";
+		after = "\\endgroup";
+	}
+
+	if (runparams.moving_arg)
+		before += "\\protect";
+
+	// We never use the starred form, we use the "clip" option instead.
+	before += "\\includegraphics";
 
 	if (!opts.empty() && !message.empty())
 		before += ('[' + opts + ',' + message + ']');
