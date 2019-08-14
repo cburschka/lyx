@@ -14,8 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 "X-Generator: Poedit 2.2.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
@@ -47,14 +46,15 @@ msgstr "ملاحظات الجدول"
 #: src/frontends/qt4/ui/AboutUi.ui:159 src/frontends/qt4/ui/CompareUi.ui:163
 #: src/frontends/qt4/ui/DelimiterUi.ui:83
 #: src/frontends/qt4/ui/ErrorListUi.ui:60
-#: src/frontends/qt4/ui/ExternalUi.ui:620 src/frontends/qt4/ui/IncludeUi.ui:250
+#: src/frontends/qt4/ui/ExternalUi.ui:620
+#: src/frontends/qt4/ui/IncludeUi.ui:250
 #: src/frontends/qt4/ui/InsetParamsUi.ui:138 src/frontends/qt4/ui/LogUi.ui:88
 #: src/frontends/qt4/ui/ParagraphUi.ui:261 src/frontends/qt4/ui/PrefsUi.ui:117
 #: src/frontends/qt4/ui/RefUi.ui:381 src/frontends/qt4/ui/SearchUi.ui:203
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
-#: src/frontends/qt4/ui/TexinfoUi.ui:77 src/frontends/qt4/ui/ThesaurusUi.ui:138
-#: src/frontends/qt4/ui/WrapUi.ui:173 src/frontends/qt4/GuiParagraph.cpp:163
-#: src/frontends/qt4/GuiView.cpp:2887
+#: src/frontends/qt4/ui/TexinfoUi.ui:77
+#: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
+#: src/frontends/qt4/GuiParagraph.cpp:163 src/frontends/qt4/GuiView.cpp:2887
 msgid "&Close"
 msgstr "&اغلاق"
 
@@ -76,8 +76,8 @@ msgstr "الملص&ق:"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:85
 msgid ""
-"Pass content of the `Label' field literally to LaTeX. Check this if you want "
-"to enter LaTeX code."
+"Pass content of the `Label' field literally to LaTeX. Check this if you want"
+" to enter LaTeX code."
 msgstr ""
 "تمرير محتوى الملصقات `Label' حرفيا إلى لتيك. قم باختياره إذا كنت ترغب في "
 "إدخال كود لتيك."
@@ -222,7 +222,8 @@ msgstr "المعالج&:"
 msgid "Select a processor"
 msgstr "اختر المعالج"
 
-#: src/frontends/qt4/ui/BiblioUi.ui:424 src/frontends/qt4/ui/PrefLatexUi.ui:120
+#: src/frontends/qt4/ui/BiblioUi.ui:424
+#: src/frontends/qt4/ui/PrefLatexUi.ui:120
 #: src/frontends/qt4/ui/PrefLatexUi.ui:222 src/frontends/qt4/GuiPrefs.cpp:851
 #: src/frontends/qt4/GuiPrefs.cpp:986
 msgid "Op&tions:"
@@ -267,23 +268,24 @@ msgstr "هنا يمكنك إدخال اسم قاعدة بيانات BibTeX"
 msgid "Browse your local directory"
 msgstr "استعراض مسارك"
 
-#: src/frontends/qt4/ui/BibtexAddUi.ui:112 src/frontends/qt4/ui/BibtexUi.ui:152
-#: src/frontends/qt4/ui/CompareUi.ui:50 src/frontends/qt4/ui/ExternalUi.ui:70
-#: src/frontends/qt4/ui/GraphicsUi.ui:75 src/frontends/qt4/ui/IncludeUi.ui:335
-#: src/frontends/qt4/ui/LaTeXUi.ui:161 src/frontends/qt4/ui/PrefInputUi.ui:111
+#: src/frontends/qt4/ui/BibtexAddUi.ui:112
+#: src/frontends/qt4/ui/BibtexUi.ui:152 src/frontends/qt4/ui/CompareUi.ui:50
+#: src/frontends/qt4/ui/ExternalUi.ui:70 src/frontends/qt4/ui/GraphicsUi.ui:75
+#: src/frontends/qt4/ui/IncludeUi.ui:335 src/frontends/qt4/ui/LaTeXUi.ui:161
+#: src/frontends/qt4/ui/PrefInputUi.ui:111
 msgid "&Browse..."
 msgstr "&استعراض..."
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:162
 #: src/frontends/qt4/ui/BranchesUi.ui:113
-#: src/frontends/qt4/ui/CitationUi.ui:146 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:431
+#: src/frontends/qt4/ui/CitationUi.ui:146
+#: src/frontends/qt4/ui/IndicesUi.ui:134 src/CutAndPaste.cpp:431
 msgid "&Add"
 msgstr "&اضافة"
 
-#: src/frontends/qt4/ui/BibtexAddUi.ui:175 src/frontends/qt4/ui/BibtexUi.ui:296
-#: src/frontends/qt4/ui/ChangesUi.ui:91 src/frontends/qt4/ui/SendtoUi.ui:92
-#: src/frontends/qt4/ui/ShortcutUi.ui:65
+#: src/frontends/qt4/ui/BibtexAddUi.ui:175
+#: src/frontends/qt4/ui/BibtexUi.ui:296 src/frontends/qt4/ui/ChangesUi.ui:91
+#: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/frontends/qt4/ButtonController.cpp:238
 #: src/frontends/qt4/GuiApplication.cpp:1810
 #: src/frontends/qt4/GuiCompare.cpp:192
@@ -390,19 +392,22 @@ msgid ""
 msgstr ""
 "خيارات لأوامر ثبت مراجع biblatex . انظر دليل biblatex للحصول على التفاصيل."
 
-#: src/frontends/qt4/ui/BibtexUi.ui:283 src/frontends/qt4/ui/CharacterUi.ui:393
+#: src/frontends/qt4/ui/BibtexUi.ui:283
+#: src/frontends/qt4/ui/CharacterUi.ui:393
 #: src/frontends/qt4/ui/CitationUi.ui:460
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:183
 #: src/frontends/qt4/ui/CompareUi.ui:153 src/frontends/qt4/ui/DocumentUi.ui:67
 #: src/frontends/qt4/ui/ExternalUi.ui:600
-#: src/frontends/qt4/ui/GraphicsUi.ui:773 src/frontends/qt4/ui/IncludeUi.ui:237
-#: src/frontends/qt4/ui/IndexUi.ui:41 src/frontends/qt4/ui/InsetParamsUi.ui:118
+#: src/frontends/qt4/ui/GraphicsUi.ui:773
+#: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/IndexUi.ui:41
+#: src/frontends/qt4/ui/InsetParamsUi.ui:118
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 #: src/frontends/qt4/ui/MathMatrixUi.ui:263 src/frontends/qt4/ui/NoteUi.ui:38
-#: src/frontends/qt4/ui/ParagraphUi.ui:241 src/frontends/qt4/ui/PhantomUi.ui:38
-#: src/frontends/qt4/ui/PrefsUi.ui:97 src/frontends/qt4/ui/PrintindexUi.ui:98
-#: src/frontends/qt4/ui/RefUi.ui:355 src/frontends/qt4/ui/SendtoUi.ui:72
-#: src/frontends/qt4/ui/ShortcutUi.ui:52 src/frontends/qt4/ui/SymbolsUi.ui:49
+#: src/frontends/qt4/ui/ParagraphUi.ui:241
+#: src/frontends/qt4/ui/PhantomUi.ui:38 src/frontends/qt4/ui/PrefsUi.ui:97
+#: src/frontends/qt4/ui/PrintindexUi.ui:98 src/frontends/qt4/ui/RefUi.ui:355
+#: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:52
+#: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:127
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
 #: src/frontends/qt4/ui/WrapUi.ui:150
@@ -437,12 +442,14 @@ msgid "Inner box type"
 msgstr "فئة صندوق داخلي"
 
 #: src/frontends/qt4/ui/BoxUi.ui:91 src/frontends/qt4/ui/HSpaceUi.ui:32
-#: src/frontends/qt4/ui/ListingsUi.ui:98 src/frontends/qt4/ui/TabularUi.ui:1199
+#: src/frontends/qt4/ui/ListingsUi.ui:98
+#: src/frontends/qt4/ui/TabularUi.ui:1199
 #: src/frontends/qt4/ui/TabularUi.ui:1218
 #: src/frontends/qt4/ui/TabularUi.ui:1266 src/frontends/qt4/GuiBox.cpp:424
 #: src/frontends/qt4/GuiBox.cpp:634 src/frontends/qt4/GuiDocument.cpp:126
-#: src/frontends/qt4/GuiGraphics.cpp:582 src/frontends/qt4/GuiMathMatrix.cpp:33
-#: src/frontends/qt4/GuiPrefs.cpp:2399 src/frontends/qt4/GuiPrefs.cpp:2422
+#: src/frontends/qt4/GuiGraphics.cpp:582
+#: src/frontends/qt4/GuiMathMatrix.cpp:33 src/frontends/qt4/GuiPrefs.cpp:2399
+#: src/frontends/qt4/GuiPrefs.cpp:2422
 msgid "None"
 msgstr "بلا"
 
@@ -542,8 +549,9 @@ msgid "Stretch"
 msgstr "تمدد"
 
 #: src/frontends/qt4/ui/BoxUi.ui:265 src/frontends/qt4/ui/ListingsUi.ui:103
-#: src/frontends/qt4/ui/TabularUi.ui:391 src/frontends/qt4/ui/TabularUi.ui:1549
-#: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiDocument.cpp:1421
+#: src/frontends/qt4/ui/TabularUi.ui:391
+#: src/frontends/qt4/ui/TabularUi.ui:1549 src/frontends/qt4/ui/WrapUi.ui:209
+#: src/frontends/qt4/GuiDocument.cpp:1421
 #: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:928
 msgid "Left"
 msgstr "يسار"
@@ -556,8 +564,9 @@ msgid "Center"
 msgstr "توسيط"
 
 #: src/frontends/qt4/ui/BoxUi.ui:275 src/frontends/qt4/ui/ListingsUi.ui:108
-#: src/frontends/qt4/ui/TabularUi.ui:401 src/frontends/qt4/ui/TabularUi.ui:1566
-#: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiDocument.cpp:1423
+#: src/frontends/qt4/ui/TabularUi.ui:401
+#: src/frontends/qt4/ui/TabularUi.ui:1566 src/frontends/qt4/ui/WrapUi.ui:214
+#: src/frontends/qt4/GuiDocument.cpp:1423
 #: src/frontends/qt4/GuiParagraph.cpp:112 src/frontends/qt4/GuiTabular.cpp:930
 msgid "Right"
 msgstr "يمين"
@@ -665,7 +674,8 @@ msgstr "اضافة فرع جديد للقائمة"
 msgid "Define or change background color"
 msgstr "تحديد أو تغيير لون الخلفية"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:126 src/frontends/qt4/ui/IndicesUi.ui:185
+#: src/frontends/qt4/ui/BranchesUi.ui:126
+#: src/frontends/qt4/ui/IndicesUi.ui:185
 msgid "Alter Co&lor..."
 msgstr "&تغيير لون..."
 
@@ -673,8 +683,9 @@ msgstr "&تغيير لون..."
 msgid "Remove the selected branch"
 msgstr "حذف الفرع المحدد"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:136 src/frontends/qt4/ui/IndicesUi.ui:165
-#: src/Buffer.cpp:4757 src/Buffer.cpp:4770
+#: src/frontends/qt4/ui/BranchesUi.ui:136
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:4757
+#: src/Buffer.cpp:4770
 msgid "&Remove"
 msgstr "&إزالة"
 
@@ -711,7 +722,8 @@ msgstr "إضافة الك&ل"
 #: src/Buffer.cpp:4731 src/Buffer.cpp:4821 src/LyXVC.cpp:114 src/LyXVC.cpp:304
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:247
-#: src/frontends/qt4/GuiDocument.cpp:2452 src/frontends/qt4/GuiParagraph.cpp:69
+#: src/frontends/qt4/GuiDocument.cpp:2452
+#: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/GuiPrefs.cpp:3413
 #: src/frontends/qt4/GuiView.cpp:2500 src/frontends/qt4/GuiView.cpp:2648
 #: src/frontends/qt4/GuiView.cpp:2672 src/frontends/qt4/GuiView.cpp:2686
@@ -736,23 +748,27 @@ msgstr "الفروع غير المح&ددة:"
 msgid "&Font:"
 msgstr "&الخط:"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:44 src/frontends/qt4/ui/CharacterUi.ui:114
+#: src/frontends/qt4/ui/BulletsUi.ui:44
+#: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/DelimiterUi.ui:100
 msgid "Si&ze:"
 msgstr "&الحجم:"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:66 src/frontends/qt4/ui/ParagraphUi.ui:116
+#: src/frontends/qt4/ui/BulletsUi.ui:66
+#: src/frontends/qt4/ui/ParagraphUi.ui:116
 #: src/frontends/qt4/ui/TabularUi.ui:1204
 #: src/frontends/qt4/ui/TabularUi.ui:1223
 #: src/frontends/qt4/ui/TabularUi.ui:1271 lib/ui/stdtoolbars.inc:113
 #: src/Font.cpp:184 src/frontends/qt4/GuiCharacter.cpp:52
 #: src/frontends/qt4/GuiCharacter.cpp:65 src/frontends/qt4/GuiCharacter.cpp:86
-#: src/frontends/qt4/GuiCharacter.cpp:99 src/frontends/qt4/GuiCharacter.cpp:137
+#: src/frontends/qt4/GuiCharacter.cpp:99
+#: src/frontends/qt4/GuiCharacter.cpp:137
 #: src/frontends/qt4/GuiCharacter.cpp:148
 #: src/frontends/qt4/GuiCharacter.cpp:191
-#: src/frontends/qt4/GuiCharacter.cpp:240 src/frontends/qt4/GuiDocument.cpp:122
-#: src/frontends/qt4/GuiDocument.cpp:840 src/frontends/qt4/GuiDocument.cpp:970
-#: src/frontends/qt4/GuiDocument.cpp:975 src/frontends/qt4/GuiDocument.cpp:1016
+#: src/frontends/qt4/GuiCharacter.cpp:240
+#: src/frontends/qt4/GuiDocument.cpp:122 src/frontends/qt4/GuiDocument.cpp:840
+#: src/frontends/qt4/GuiDocument.cpp:970 src/frontends/qt4/GuiDocument.cpp:975
+#: src/frontends/qt4/GuiDocument.cpp:1016
 #: src/frontends/qt4/GuiDocument.cpp:1027
 #: src/frontends/qt4/GuiDocument.cpp:1185
 #: src/frontends/qt4/GuiDocument.cpp:1294
@@ -993,7 +1009,8 @@ msgid "Restore Defaults"
 msgstr "استخدام افتراضي"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:403
-#: src/frontends/qt4/ui/DocumentUi.ui:77 src/frontends/qt4/ui/ExternalUi.ui:610
+#: src/frontends/qt4/ui/DocumentUi.ui:77
+#: src/frontends/qt4/ui/ExternalUi.ui:610
 #: src/frontends/qt4/ui/GraphicsUi.ui:792
 #: src/frontends/qt4/ui/InsetParamsUi.ui:128
 #: src/frontends/qt4/ui/ListingsUi.ui:549
@@ -1076,7 +1093,8 @@ msgstr "التنسيق"
 msgid "Citation st&yle:"
 msgstr "نمط الاس&تشهاد:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:296 src/frontends/qt4/GuiCitation.cpp:306
+#: src/frontends/qt4/ui/CitationUi.ui:296
+#: src/frontends/qt4/GuiCitation.cpp:306
 msgid "Text befo&re:"
 msgstr "قبل &النص:"
 
@@ -1084,7 +1102,8 @@ msgstr "قبل &النص:"
 msgid "Citation style to use, if different styles are provided"
 msgstr "نمط استشهاد يستخدم ، إذا تم توفير أنماط مختلفة"
 
-#: src/frontends/qt4/ui/CitationUi.ui:325 src/frontends/qt4/GuiCitation.cpp:310
+#: src/frontends/qt4/ui/CitationUi.ui:325
+#: src/frontends/qt4/GuiCitation.cpp:310
 msgid ""
 "Text that precedes the reference (e.g., \"cf.\"), if the current citation "
 "style supports this."
@@ -1092,14 +1111,16 @@ msgstr ""
 "النص الذي يسبق المرجع (على سبيل المثال، \"cf.\")، إذا كان نمط الاقتباس "
 "الحالي يدعم هذا."
 
-#: src/frontends/qt4/ui/CitationUi.ui:332 src/frontends/qt4/GuiCitation.cpp:312
+#: src/frontends/qt4/ui/CitationUi.ui:332
+#: src/frontends/qt4/GuiCitation.cpp:312
 msgid "&Text after:"
 msgstr "&نص بعد:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:342 src/frontends/qt4/GuiCitation.cpp:316
+#: src/frontends/qt4/ui/CitationUi.ui:342
+#: src/frontends/qt4/GuiCitation.cpp:316
 msgid ""
-"Text that follows the reference (e.g., pages), if the current citation style "
-"supports this."
+"Text that follows the reference (e.g., pages), if the current citation style"
+" supports this."
 msgstr ""
 "النص الذي يتبع المرجع (على سبيل المثال، الصفحات)، إذا كان نمط الاقتباس "
 "الحالي يدعم هذا."
@@ -1112,10 +1133,11 @@ msgstr ""
 "تمرير محتوى الحقل الحرفي `قبل النص ' أو 'بعد النص' إلى للتيك. اختره إذا كنت "
 "ترغب في إدخال كود لتيك."
 
-#: src/frontends/qt4/ui/CitationUi.ui:395 src/frontends/qt4/GuiCitation.cpp:324
+#: src/frontends/qt4/ui/CitationUi.ui:395
+#: src/frontends/qt4/GuiCitation.cpp:324
 msgid ""
-"Force upper case in names (\"Del Piero\", not \"del Piero\"), if the current "
-"citation style supports this."
+"Force upper case in names (\"Del Piero\", not \"del Piero\"), if the current"
+" citation style supports this."
 msgstr ""
 "فرض الحالة العلوية في الأسماء (\"Del Piero\"، وليس \"del Piero\")، إذا كان "
 "نمط الاقتباس الحالي يدعم هذا."
@@ -1124,7 +1146,8 @@ msgstr ""
 msgid "Force upcas&ing"
 msgstr "احرف &كبيرة اجباري"
 
-#: src/frontends/qt4/ui/CitationUi.ui:405 src/frontends/qt4/GuiCitation.cpp:359
+#: src/frontends/qt4/ui/CitationUi.ui:405
+#: src/frontends/qt4/GuiCitation.cpp:359
 msgid ""
 "Always list all authors (rather than using \"et al.\"), if the current "
 "citation style supports this."
@@ -1132,11 +1155,13 @@ msgstr ""
 "دوماً سرد كافة المؤلفين (بدلاً من استخدام \"et al.\")، إذا كان نمط الاقتباس "
 "الحالي يدعم هذا."
 
-#: src/frontends/qt4/ui/CitationUi.ui:408 src/frontends/qt4/GuiCitation.cpp:355
+#: src/frontends/qt4/ui/CitationUi.ui:408
+#: src/frontends/qt4/GuiCitation.cpp:355
 msgid "All aut&hors"
 msgstr "كل &المؤلفين"
 
-#: src/frontends/qt4/ui/CitationUi.ui:437 src/frontends/qt4/ui/DocumentUi.ui:44
+#: src/frontends/qt4/ui/CitationUi.ui:437
+#: src/frontends/qt4/ui/DocumentUi.ui:44
 #: src/frontends/qt4/ui/GraphicsUi.ui:744
 #: src/frontends/qt4/ui/InsetParamsUi.ui:82
 #: src/frontends/qt4/ui/ParagraphUi.ui:218 src/frontends/qt4/ui/PrefsUi.ui:61
@@ -1360,7 +1385,8 @@ msgstr "&ملف"
 msgid "Filename"
 msgstr "اسم الملف"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:57 src/frontends/qt4/ui/GraphicsUi.ui:295
+#: src/frontends/qt4/ui/ExternalUi.ui:57
+#: src/frontends/qt4/ui/GraphicsUi.ui:295
 #: src/frontends/qt4/ui/IncludeUi.ui:265
 msgid "&File:"
 msgstr "&ملف:"
@@ -1425,7 +1451,8 @@ msgstr "مقياس على الشاشة (%):"
 msgid "Si&ze and Rotation"
 msgstr "الحجم والتدوير"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:283 src/frontends/qt4/ui/TabularUi.ui:175
+#: src/frontends/qt4/ui/ExternalUi.ui:283
+#: src/frontends/qt4/ui/TabularUi.ui:175
 msgid "Rotate"
 msgstr "تدوير"
 
@@ -1456,12 +1483,14 @@ msgid "Scale"
 msgstr "المقياس"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:400
-#: src/frontends/qt4/ui/GraphicsUi.ui:153 src/frontends/qt4/GuiGraphics.cpp:483
+#: src/frontends/qt4/ui/GraphicsUi.ui:153
+#: src/frontends/qt4/GuiGraphics.cpp:483
 msgid "Height of image in output"
 msgstr "ارتفاع الصورة في الخرج"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:410
-#: src/frontends/qt4/ui/GraphicsUi.ui:121 src/frontends/qt4/GuiGraphics.cpp:482
+#: src/frontends/qt4/ui/GraphicsUi.ui:121
+#: src/frontends/qt4/GuiGraphics.cpp:482
 msgid "Width of image in output"
 msgstr "عرض الصورة في الخرج"
 
@@ -1521,8 +1550,8 @@ msgstr "TabWidget"
 msgid "Sear&ch"
 msgstr "بح&ث"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:29 src/frontends/qt4/ui/LogUi.ui:29
-#: src/frontends/qt4/ui/SearchUi.ui:28
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:29
+#: src/frontends/qt4/ui/LogUi.ui:29 src/frontends/qt4/ui/SearchUi.ui:28
 msgid "&Find:"
 msgstr "&بحث:"
 
@@ -1626,8 +1655,8 @@ msgstr "&كل التدريبات"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:269
 msgid ""
-"If unchecked, the search will be limited to occurrences of the selected text "
-"and paragraph style"
+"If unchecked, the search will be limited to occurrences of the selected text"
+" and paragraph style"
 msgstr "إذا لم يتم تحديدها، سيقتصر البحث على تكرارات النص المحدد ونمط الفقرة"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:272
@@ -1712,8 +1741,8 @@ msgstr "خط الشاشة"
 
 #: src/frontends/qt4/ui/FontUi.ui:20
 msgid ""
-"Use OpenType and TrueType fonts with the fontspec package (requires XeTeX or "
-"LuaTeX)"
+"Use OpenType and TrueType fonts with the fontspec package (requires XeTeX or"
+" LuaTeX)"
 msgstr ""
 "استخدام خطوط OpenType و TrueType مع حزمة fontspec (يتطلب XeTeX أو LuaTeX)"
 
@@ -1853,7 +1882,8 @@ msgstr "حجم الخرج"
 msgid "Sets height of graphic. Leave unchecked to set automatically."
 msgstr "ضبط ارتفاع الصورة آلياً. اتركه فارغاً للضبط آلياً."
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:166 src/frontends/qt4/GuiGraphics.cpp:481
+#: src/frontends/qt4/ui/GraphicsUi.ui:166
+#: src/frontends/qt4/GuiGraphics.cpp:481
 msgid "Set &height:"
 msgstr "&ضبط الارتفاع:"
 
@@ -1865,7 +1895,8 @@ msgstr "&مقياس الصورة (%):"
 msgid "Sets width of graphic. Leave unchecked to set automatically."
 msgstr "ضبط عرض الصورة آلياً. اتركه فارغاً للضبط آلياً."
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:186 src/frontends/qt4/GuiGraphics.cpp:480
+#: src/frontends/qt4/ui/GraphicsUi.ui:186
+#: src/frontends/qt4/GuiGraphics.cpp:480
 msgid "Set &width:"
 msgstr "&ضبط العرض:"
 
@@ -2202,7 +2233,8 @@ msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr "هنا يمكن تعيين معالج فهرس بديل وإدخال الخيارات."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:22 src/frontends/qt4/ui/PrefLatexUi.ui:198
+#: src/frontends/qt4/ui/IndicesUi.ui:22
+#: src/frontends/qt4/ui/PrefLatexUi.ui:198
 msgid "Index Generation"
 msgstr "إنتاج الفهرس"
 
@@ -2228,8 +2260,7 @@ msgid "&New:[[index]]"
 msgstr "&جديد:[[فهرس]]"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124
-msgid ""
-"Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
+msgid "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr "ادخل اسم الفهرس المرغوب (الخ \"اسم الفهرس\") وانقر \"إضافة\""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:131
@@ -2377,7 +2408,8 @@ msgstr "اختر حزمة اللغة التي يجب أن يستخدمها لي�
 #: src/frontends/qt4/ui/LanguageUi.ui:101
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:79
 msgid ""
-"Enter the command to load the language package (default: \\usepackage{babel})"
+"Enter the command to load the language package (default: "
+"\\usepackage{babel})"
 msgstr "أدخل أمر تحميل حزم اللغة (الإفتراضي: \\usepackage{babel})"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:113
@@ -2400,9 +2432,9 @@ msgstr "&أخرى:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:190
 msgid ""
-"Output quotation marks that automatically adapt to the style selected above. "
-"If this is not selected, the quotation marks will stick with the style they "
-"have been inserted with."
+"Output quotation marks that automatically adapt to the style selected above."
+" If this is not selected, the quotation marks will stick with the style they"
+" have been inserted with."
 msgstr ""
 "علامات الاقتباس في الخرج ستتكيف مع النمط المحدد أعلاه تلقائياً. إذا لم يتم "
 "تحديد هذا، فإن علامات الاقتباس سوف تتمسك بالنمط الذي تم إدراجها به."
@@ -2936,9 +2968,9 @@ msgstr "هيئة ليك"
 #: src/frontends/qt4/ui/OutputUi.ui:98
 msgid ""
 "Save all parameters in the LyX file, including ones that are frequently "
-"switched or that are specific to the user (such as the output of the tracked "
-"changes, or the document directory path). Disabling this option plays nicer "
-"in collaborative settings and with version control systems."
+"switched or that are specific to the user (such as the output of the tracked"
+" changes, or the document directory path). Disabling this option plays nicer"
+" in collaborative settings and with version control systems."
 msgstr ""
 
 #: src/frontends/qt4/ui/OutputUi.ui:101
@@ -2947,8 +2979,8 @@ msgstr "حفظ خصائص &الانتقال"
 
 #: src/frontends/qt4/ui/OutputUi.ui:111
 msgid ""
-"Runs the LaTeX backend with the -shell-escape option (Warning: use only when "
-"really necessary)"
+"Runs the LaTeX backend with the -shell-escape option (Warning: use only when"
+" really necessary)"
 msgstr ""
 
 #: src/frontends/qt4/ui/OutputUi.ui:114
@@ -2956,7 +2988,8 @@ msgid "&Allow running external programs"
 msgstr "السماح بتشغيل برامج &خارجية"
 
 #: src/frontends/qt4/ui/OutputUi.ui:121
-msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
+msgid ""
+"Enable forward/reverse search between editor and output (e.g., SyncTeX)"
 msgstr "تفعيل البحث السابق/التالي بين المحرر والخرج (مثل, SyncTeX)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:124
@@ -3005,8 +3038,9 @@ msgstr "الصور"
 
 #: src/frontends/qt4/ui/OutputUi.ui:226 lib/layouts/aapaper.layout:63
 #: lib/layouts/egs.layout:641 lib/languages:110
-#: src/frontends/qt4/GuiDocument.cpp:1478 src/frontends/qt4/GuiErrorList.cpp:51
-#: src/frontends/qt4/GuiLog.cpp:245 src/frontends/qt4/GuiPrefs.cpp:724
+#: src/frontends/qt4/GuiDocument.cpp:1478
+#: src/frontends/qt4/GuiErrorList.cpp:51 src/frontends/qt4/GuiLog.cpp:245
+#: src/frontends/qt4/GuiPrefs.cpp:724
 msgid "LaTeX"
 msgstr "لتيك"
 
@@ -3053,7 +3087,8 @@ msgstr "&كلمات مفتاحية:"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:166
 msgid ""
-"If not stated explicitly, fill title and author from appropriate environments"
+"If not stated explicitly, fill title and author from appropriate "
+"environments"
 msgstr "املأ بيانات العنوان و المؤلف من بيئات مناسبة. إن لم يذكر غير ذلك"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:169
@@ -3208,7 +3243,8 @@ msgstr "مزدوج"
 #: src/frontends/qt4/ui/TabularUi.ui:1276 src/frontends/qt4/ui/VSpaceUi.ui:107
 #: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:841
 #: src/frontends/qt4/GuiDocument.cpp:845 src/frontends/qt4/GuiDocument.cpp:853
-#: src/frontends/qt4/GuiDocument.cpp:976 src/frontends/qt4/GuiDocument.cpp:1028
+#: src/frontends/qt4/GuiDocument.cpp:976
+#: src/frontends/qt4/GuiDocument.cpp:1028
 #: src/frontends/qt4/GuiDocument.cpp:1191
 #: src/frontends/qt4/GuiDocument.cpp:1416 src/frontends/qt4/GuiHSpace.cpp:56
 #: src/frontends/qt4/GuiHSpace.cpp:67 src/frontends/qt4/GuiPrefs.cpp:913
@@ -3375,8 +3411,8 @@ msgstr "عام"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:142
 msgid ""
-"After the cursor has not moved for this time, the inline completion is shown "
-"if it is available."
+"After the cursor has not moved for this time, the inline completion is shown"
+" if it is available."
 msgstr ""
 "إذا لم يتحرك المؤشر بعد تلك المهلة، سيظهر الإكمال التلقائي إذا كان متاحاً."
 
@@ -3615,7 +3651,8 @@ msgstr "استخدام &مثيل مفرد"
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:194
 msgid "Whether to place close button on each tab or only one in the top left."
 msgstr ""
-"تحديد ما اذا كان يجب وضع زر اغلاق لكل لسان أو وضع زر واحد فقط في أعلى اليسار."
+"تحديد ما اذا كان يجب وضع زر اغلاق لكل لسان أو وضع زر واحد فقط في أعلى "
+"اليسار."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:197
 msgid "Displa&y single close-tab button"
@@ -3686,7 +3723,8 @@ msgstr "تحرير ماكرو المعادلات الرياضية الداخلي
 #: src/frontends/qt4/ui/PrefEditUi.ui:132
 msgid "Edit Math Macros with a parameter list (like in LyX < 1.6)"
 msgstr ""
-"تحرير ماكرو المعادلات الرياضية الداخلية مع قائمة المعطيات (مثل ما في ليك 1.6)"
+"تحرير ماكرو المعادلات الرياضية الداخلية مع قائمة المعطيات (مثل ما في ليك "
+"1.6)"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:156
 msgid "Fullscreen"
@@ -3864,8 +3902,8 @@ msgstr "سرعة عجلة الفارة:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:172
 msgid ""
-"1.0 is the standard scrolling speed with the mouse wheel. Higher values will "
-"speed it up, low values slow it down."
+"1.0 is the standard scrolling speed with the mouse wheel. Higher values will"
+" speed it up, low values slow it down."
 msgstr ""
 "1.0 هي سرعة التحريك النموذجية باستخدام عجلة الفأرة.القيم الأعلى ستزيد سرعة "
 "التحريك،والقيم الأقل ستقلل سرعة التحريك."
@@ -3954,8 +3992,8 @@ msgstr "وحدة الط&ول الافتراضية:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:174
 msgid ""
-"Check to pass the language globally (to the document class), not locally (to "
-"the language package)"
+"Check to pass the language globally (to the document class), not locally (to"
+" the language package)"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:177
@@ -3964,8 +4002,8 @@ msgstr "تعيين اللغة الع&المية"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:184
 msgid ""
-"If checked, the document language is not explicitly set by a language switch "
-"command"
+"If checked, the document language is not explicitly set by a language switch"
+" command"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:187
@@ -4181,8 +4219,8 @@ msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
 msgstr ""
-"حدد تلك المسارات التي يجب أن تكون مهيئة لمتغير بيئة PATH. استخدام تنسيق نظام "
-"التشغيل الأصلي."
+"حدد تلك المسارات التي يجب أن تكون مهيئة لمتغير بيئة PATH. استخدام تنسيق نظام"
+" التشغيل الأصلي."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:52
 msgid "TEX&INPUTS prefix:"
@@ -4301,9 +4339,10 @@ msgstr "&بالغ الصغر:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:413
 msgid ""
-"Checking this improves performance, but might decrease the on-screen quality "
-"of fonts"
-msgstr "عند الاختيار تزيد جودة الأداء، و لكن قد تقل جودة عرض الخطوط على الشاشة"
+"Checking this improves performance, but might decrease the on-screen quality"
+" of fonts"
+msgstr ""
+"عند الاختيار تزيد جودة الأداء، و لكن قد تقل جودة عرض الخطوط على الشاشة"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:416
 msgid "&Use pixmap cache to speed up font rendering"
@@ -4393,8 +4432,8 @@ msgstr "تعليمات السياق"
 
 #: src/frontends/qt4/ui/PrefUi.ui:138
 msgid ""
-"Checking this allows the automatic display of helpful comments for insets in "
-"the main work area of an edited document"
+"Checking this allows the automatic display of helpful comments for insets in"
+" the main work area of an edited document"
 msgstr ""
 "التأشير على هذا الخيار يسمح بعرض التعليقات المساعدة للأدوات في منطقة العمل "
 "الرئيسية أثناء تعديل مستند"
@@ -4452,7 +4491,8 @@ msgid "Select the index that shall be printed at this place of the document."
 msgstr "اختر الفهرس الذي يجب طباعته في هذا الموضع من المستند."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:61
-msgid "Check if this index should be part (e.g., a section) of the former one."
+msgid ""
+"Check if this index should be part (e.g., a section) of the former one."
 msgstr ""
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:64
@@ -4465,7 +4505,8 @@ msgid ""
 "code in index names."
 msgstr ""
 
-#: src/frontends/qt4/ui/ProgressViewUi.ui:90 src/frontends/qt4/GuiPrefs.cpp:254
+#: src/frontends/qt4/ui/ProgressViewUi.ui:90
+#: src/frontends/qt4/GuiPrefs.cpp:254
 msgid "Output"
 msgstr "خرج"
 
@@ -4705,8 +4746,8 @@ msgid ""
 "Type shortcut after clicking on this field. You can reset the content with "
 "the 'Clear' button"
 msgstr ""
-"اكتب اختصاراً بعد الضغط على هذا الحقل. يمكنك أعادة ضبط المحتويات باستخدام زر "
-"'مسح'"
+"اكتب اختصاراً بعد الضغط على هذا الحقل. يمكنك أعادة ضبط المحتويات باستخدام زر"
+" 'مسح'"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:19
 #: src/frontends/qt4/GuiSpellchecker.cpp:251
@@ -4717,7 +4758,8 @@ msgstr "التدقيق الإملائي"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:43
 msgid ""
-"The checked language. Switching this alters the language of the checked word."
+"The checked language. Switching this alters the language of the checked "
+"word."
 msgstr ""
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:59
@@ -4875,8 +4917,8 @@ msgstr "&محاذاة افقية:"
 msgid "Horizontal alignment in column"
 msgstr "محاذاة افقية داخل العمود"
 
-#: src/frontends/qt4/ui/TabularUi.ui:386 src/frontends/qt4/GuiParagraph.cpp:110
-#: src/frontends/qt4/GuiTabular.cpp:932
+#: src/frontends/qt4/ui/TabularUi.ui:386
+#: src/frontends/qt4/GuiParagraph.cpp:110 src/frontends/qt4/GuiTabular.cpp:932
 msgid "Justified"
 msgstr "تمدد"
 
@@ -4899,8 +4941,8 @@ msgstr "&محاذاة رأسية:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:528
 msgid ""
-"Specifies the vertical alignment of this cell in relation to the baseline of "
-"the row."
+"Specifies the vertical alignment of this cell in relation to the baseline of"
+" the row."
 msgstr "محاذاة رأسية للخلية فيما يتعلق بالخط القاعدي للصف."
 
 #: src/frontends/qt4/ui/TabularUi.ui:550
@@ -5108,7 +5150,8 @@ msgstr "اعادة بناء قوائم الملف"
 #: src/frontends/qt4/ui/TexinfoUi.ui:132
 msgid ""
 "Show contents of marked file. Only possible when files are shown with path"
-msgstr "أظهر محتويات الملف المحدد. ممكن فقط عندما تكون الملفات ظاهرة مع مسارها"
+msgstr ""
+"أظهر محتويات الملف المحدد. ممكن فقط عندما تكون الملفات ظاهرة مع مسارها"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:135
 msgid "&View"
@@ -5441,28 +5484,32 @@ msgstr ""
 #: lib/citeengines/basic.citeengine:52
 #: lib/citeengines/biblatex-natbib.citeengine:138
 #: lib/citeengines/biblatex.citeengine:129
-#: lib/citeengines/jurabib.citeengine:121 lib/citeengines/natbib.citeengine:119
+#: lib/citeengines/jurabib.citeengine:121
+#: lib/citeengines/natbib.citeengine:119
 msgid "not cited"
 msgstr "ليس استشهاد"
 
 #: lib/citeengines/basic.citeengine:53
 #: lib/citeengines/biblatex-natbib.citeengine:139
 #: lib/citeengines/biblatex.citeengine:130
-#: lib/citeengines/jurabib.citeengine:122 lib/citeengines/natbib.citeengine:120
+#: lib/citeengines/jurabib.citeengine:122
+#: lib/citeengines/natbib.citeengine:120
 msgid "Add to bibliography only."
 msgstr "إضافة لثبت المراجع فقط."
 
 #: lib/citeengines/basic.citeengine:54
 #: lib/citeengines/biblatex-natbib.citeengine:140
 #: lib/citeengines/biblatex.citeengine:131
-#: lib/citeengines/jurabib.citeengine:123 lib/citeengines/natbib.citeengine:121
+#: lib/citeengines/jurabib.citeengine:123
+#: lib/citeengines/natbib.citeengine:121
 msgid "Key only."
 msgstr "مفتاح فقط."
 
 #: lib/citeengines/basic.citeengine:55
 #: lib/citeengines/biblatex-natbib.citeengine:141
 #: lib/citeengines/biblatex.citeengine:132
-#: lib/citeengines/jurabib.citeengine:124 lib/citeengines/natbib.citeengine:122
+#: lib/citeengines/jurabib.citeengine:124
+#: lib/citeengines/natbib.citeengine:122
 msgid "Key"
 msgstr "مفتاح"
 
@@ -5472,10 +5519,10 @@ msgstr ""
 
 #: lib/citeengines/biblatex-natbib.citeengine:10
 msgid ""
-"This Biblatex variety emulates the Natbib citation commands and thus is best "
-"suited for switching from Natbib (or the pre-LyX 2.3 Biblatex workaround) to "
-"Biblatex. The natbib mode supports slightly different and a few more styles "
-"than normal Biblatex. As with normal Biblatex, the use of 'biber' as "
+"This Biblatex variety emulates the Natbib citation commands and thus is best"
+" suited for switching from Natbib (or the pre-LyX 2.3 Biblatex workaround) "
+"to Biblatex. The natbib mode supports slightly different and a few more "
+"styles than normal Biblatex. As with normal Biblatex, the use of 'biber' as "
 "Bibliography processor is advised."
 msgstr ""
 
@@ -5582,8 +5629,8 @@ msgstr "Natbib (BibTeX)"
 msgid ""
 "Natbib supports a range of both author-year and numerical styles mainly "
 "aimed at the Humanities. It features automatic sorting and merging of "
-"numerical citations, annotations, capitalization of the `van' part of author "
-"names, shortened and full author lists, and more."
+"numerical citations, annotations, capitalization of the `van' part of author"
+" names, shortened and full author lists, and more."
 msgstr ""
 
 #: lib/layouts/AEA.layout:3
@@ -5635,18 +5682,18 @@ msgstr "عنوان قصير"
 #: lib/layouts/IEEEtran.layout:262 lib/layouts/IEEEtran.layout:326
 #: lib/layouts/InStar.module:18 lib/layouts/InStar.module:25
 #: lib/layouts/RJournal.layout:64 lib/layouts/aa.layout:73
-#: lib/layouts/aa.layout:96 lib/layouts/aa.layout:111 lib/layouts/aa.layout:135
-#: lib/layouts/aa.layout:265 lib/layouts/aa.layout:325
-#: lib/layouts/aastex.layout:163 lib/layouts/aastex.layout:180
-#: lib/layouts/aastex.layout:203 lib/layouts/aastex.layout:222
-#: lib/layouts/aastex.layout:296 lib/layouts/aastex62.layout:127
-#: lib/layouts/aastex62.layout:178 lib/layouts/aastex62.layout:194
-#: lib/layouts/achemso.layout:56 lib/layouts/achemso.layout:83
-#: lib/layouts/acm-sigs.inc:11 lib/layouts/acm-sigs.inc:32
-#: lib/layouts/acmart.layout:87 lib/layouts/acmart.layout:157
-#: lib/layouts/acmart.layout:172 lib/layouts/acmart.layout:405
-#: lib/layouts/acmart.layout:457 lib/layouts/acmart.layout:480
-#: lib/layouts/acmsiggraph-0-92.layout:78
+#: lib/layouts/aa.layout:96 lib/layouts/aa.layout:111
+#: lib/layouts/aa.layout:135 lib/layouts/aa.layout:265
+#: lib/layouts/aa.layout:325 lib/layouts/aastex.layout:163
+#: lib/layouts/aastex.layout:180 lib/layouts/aastex.layout:203
+#: lib/layouts/aastex.layout:222 lib/layouts/aastex.layout:296
+#: lib/layouts/aastex62.layout:127 lib/layouts/aastex62.layout:178
+#: lib/layouts/aastex62.layout:194 lib/layouts/achemso.layout:56
+#: lib/layouts/achemso.layout:83 lib/layouts/acm-sigs.inc:11
+#: lib/layouts/acm-sigs.inc:32 lib/layouts/acmart.layout:87
+#: lib/layouts/acmart.layout:157 lib/layouts/acmart.layout:172
+#: lib/layouts/acmart.layout:405 lib/layouts/acmart.layout:457
+#: lib/layouts/acmart.layout:480 lib/layouts/acmsiggraph-0-92.layout:78
 #: lib/layouts/acmsiggraph-0-92.layout:222
 #: lib/layouts/acmsiggraph-0-92.layout:242 lib/layouts/acmsiggraph.layout:70
 #: lib/layouts/acmsiggraph.layout:179 lib/layouts/acmsiggraph.layout:198
@@ -5948,14 +5995,15 @@ msgstr "نص الملاحظة في الجدول"
 #: lib/layouts/theorems-ams-bytype.inc:97
 #: lib/layouts/theorems-ams-chap-bytype.inc:57
 #: lib/layouts/theorems-ams-chap-bytype.inc:100
-#: lib/layouts/theorems-ams-chap-bytype.inc:103 lib/layouts/theorems-ams.inc:27
-#: lib/layouts/theorems-ams.inc:66 lib/layouts/theorems-ams.inc:69
-#: lib/layouts/theorems-bytype.inc:27 lib/layouts/theorems-bytype.inc:63
-#: lib/layouts/theorems-bytype.inc:66
+#: lib/layouts/theorems-ams-chap-bytype.inc:103
+#: lib/layouts/theorems-ams.inc:27 lib/layouts/theorems-ams.inc:66
+#: lib/layouts/theorems-ams.inc:69 lib/layouts/theorems-bytype.inc:27
+#: lib/layouts/theorems-bytype.inc:63 lib/layouts/theorems-bytype.inc:66
 #: lib/layouts/theorems-chap-bytype.module:54
 #: lib/layouts/theorems-chap.module:19 lib/layouts/theorems-named.module:46
 #: lib/layouts/theorems-named.module:49 lib/layouts/theorems-order.inc:7
-#: lib/layouts/theorems-sec-bytype.module:54 lib/layouts/theorems-sec.module:18
+#: lib/layouts/theorems-sec-bytype.module:54
+#: lib/layouts/theorems-sec.module:18
 #: lib/layouts/theorems-starred-equivalents.inc:6
 #: lib/layouts/theorems-starred.inc:64 lib/layouts/theorems-starred.inc:67
 #: lib/layouts/theorems-without-preamble.inc:35
@@ -6034,7 +6082,8 @@ msgstr "حالة \\thecase."
 #: lib/layouts/theorems-ams.inc:296 lib/layouts/theorems-bytype.inc:289
 #: lib/layouts/theorems-bytype.inc:299 lib/layouts/theorems-bytype.inc:302
 #: lib/layouts/theorems-chap-bytype.module:186
-#: lib/layouts/theorems-order.inc:73 lib/layouts/theorems-sec-bytype.module:142
+#: lib/layouts/theorems-order.inc:73
+#: lib/layouts/theorems-sec-bytype.module:142
 #: lib/layouts/theorems-starred-equivalents.inc:83
 #: lib/layouts/theorems-starred.inc:285 lib/layouts/theorems-starred.inc:288
 #: lib/layouts/theorems-without-preamble.inc:336
@@ -6116,12 +6165,12 @@ msgstr "حدس"
 #: lib/layouts/theorems-ams-bytype.inc:116
 #: lib/layouts/theorems-ams-chap-bytype.inc:109
 #: lib/layouts/theorems-ams-chap-bytype.inc:123
-#: lib/layouts/theorems-ams-chap-bytype.inc:126 lib/layouts/theorems-ams.inc:75
-#: lib/layouts/theorems-ams.inc:85 lib/layouts/theorems-ams.inc:88
-#: lib/layouts/theorems-bytype.inc:72 lib/layouts/theorems-bytype.inc:81
-#: lib/layouts/theorems-bytype.inc:84
-#: lib/layouts/theorems-chap-bytype.module:66 lib/layouts/theorems-order.inc:13
-#: lib/layouts/theorems-sec-bytype.module:62
+#: lib/layouts/theorems-ams-chap-bytype.inc:126
+#: lib/layouts/theorems-ams.inc:75 lib/layouts/theorems-ams.inc:85
+#: lib/layouts/theorems-ams.inc:88 lib/layouts/theorems-bytype.inc:72
+#: lib/layouts/theorems-bytype.inc:81 lib/layouts/theorems-bytype.inc:84
+#: lib/layouts/theorems-chap-bytype.module:66
+#: lib/layouts/theorems-order.inc:13 lib/layouts/theorems-sec-bytype.module:62
 #: lib/layouts/theorems-starred-equivalents.inc:13
 #: lib/layouts/theorems-starred.inc:82 lib/layouts/theorems-starred.inc:85
 #: lib/layouts/theorems-without-preamble.inc:79
@@ -6164,7 +6213,8 @@ msgstr "معيار"
 #: lib/layouts/theorems-ams.inc:185 lib/layouts/theorems-bytype.inc:162
 #: lib/layouts/theorems-bytype.inc:178 lib/layouts/theorems-bytype.inc:181
 #: lib/layouts/theorems-chap-bytype.module:126
-#: lib/layouts/theorems-order.inc:37 lib/layouts/theorems-sec-bytype.module:102
+#: lib/layouts/theorems-order.inc:37
+#: lib/layouts/theorems-sec-bytype.module:102
 #: lib/layouts/theorems-starred-equivalents.inc:41
 #: lib/layouts/theorems-starred.inc:175 lib/layouts/theorems-starred.inc:178
 #: lib/layouts/theorems-without-preamble.inc:182
@@ -6186,7 +6236,8 @@ msgstr "تعريف"
 #: lib/layouts/theorems-ams.inc:202 lib/layouts/theorems-bytype.inc:187
 #: lib/layouts/theorems-bytype.inc:197 lib/layouts/theorems-bytype.inc:200
 #: lib/layouts/theorems-chap-bytype.module:138
-#: lib/layouts/theorems-order.inc:43 lib/layouts/theorems-sec-bytype.module:110
+#: lib/layouts/theorems-order.inc:43
+#: lib/layouts/theorems-sec-bytype.module:110
 #: lib/layouts/theorems-starred-equivalents.inc:48
 #: lib/layouts/theorems-starred.inc:192 lib/layouts/theorems-starred.inc:195
 #: lib/layouts/theorems-without-preamble.inc:206
@@ -6208,7 +6259,8 @@ msgstr "مثال"
 #: lib/layouts/theorems-ams.inc:236 lib/layouts/theorems-bytype.inc:225
 #: lib/layouts/theorems-bytype.inc:235 lib/layouts/theorems-bytype.inc:238
 #: lib/layouts/theorems-chap-bytype.module:162
-#: lib/layouts/theorems-order.inc:55 lib/layouts/theorems-sec-bytype.module:126
+#: lib/layouts/theorems-order.inc:55
+#: lib/layouts/theorems-sec-bytype.module:126
 #: lib/layouts/theorems-starred-equivalents.inc:69
 #: lib/layouts/theorems-starred.inc:226 lib/layouts/theorems-starred.inc:229
 #: lib/layouts/theorems-without-preamble.inc:225
@@ -6230,12 +6282,12 @@ msgstr "تمرين"
 #: lib/layouts/theorems-ams-bytype.inc:133
 #: lib/layouts/theorems-ams-chap-bytype.inc:131
 #: lib/layouts/theorems-ams-chap-bytype.inc:144
-#: lib/layouts/theorems-ams-chap-bytype.inc:147 lib/layouts/theorems-ams.inc:93
-#: lib/layouts/theorems-ams.inc:103 lib/layouts/theorems-ams.inc:106
-#: lib/layouts/theorems-bytype.inc:90 lib/layouts/theorems-bytype.inc:99
-#: lib/layouts/theorems-bytype.inc:102
-#: lib/layouts/theorems-chap-bytype.module:78 lib/layouts/theorems-order.inc:19
-#: lib/layouts/theorems-sec-bytype.module:70
+#: lib/layouts/theorems-ams-chap-bytype.inc:147
+#: lib/layouts/theorems-ams.inc:93 lib/layouts/theorems-ams.inc:103
+#: lib/layouts/theorems-ams.inc:106 lib/layouts/theorems-bytype.inc:90
+#: lib/layouts/theorems-bytype.inc:99 lib/layouts/theorems-bytype.inc:102
+#: lib/layouts/theorems-chap-bytype.module:78
+#: lib/layouts/theorems-order.inc:19 lib/layouts/theorems-sec-bytype.module:70
 #: lib/layouts/theorems-starred-equivalents.inc:20
 #: lib/layouts/theorems-starred.inc:99 lib/layouts/theorems-starred.inc:102
 #: lib/layouts/theorems-without-preamble.inc:95
@@ -6276,7 +6328,8 @@ msgstr "تدوين"
 #: lib/layouts/theorems-ams.inc:219 lib/layouts/theorems-bytype.inc:206
 #: lib/layouts/theorems-bytype.inc:216 lib/layouts/theorems-bytype.inc:219
 #: lib/layouts/theorems-chap-bytype.module:150
-#: lib/layouts/theorems-order.inc:49 lib/layouts/theorems-sec-bytype.module:118
+#: lib/layouts/theorems-order.inc:49
+#: lib/layouts/theorems-sec-bytype.module:118
 #: lib/layouts/theorems-starred-equivalents.inc:62
 #: lib/layouts/theorems-starred.inc:209 lib/layouts/theorems-starred.inc:212
 #: lib/layouts/theorems-without-preamble.inc:223
@@ -6299,8 +6352,8 @@ msgstr "مشكلة"
 #: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems-ams.inc:121
 #: lib/layouts/theorems-ams.inc:124 lib/layouts/theorems-bytype.inc:108
 #: lib/layouts/theorems-bytype.inc:117 lib/layouts/theorems-bytype.inc:120
-#: lib/layouts/theorems-chap-bytype.module:90 lib/layouts/theorems-order.inc:25
-#: lib/layouts/theorems-sec-bytype.module:78
+#: lib/layouts/theorems-chap-bytype.module:90
+#: lib/layouts/theorems-order.inc:25 lib/layouts/theorems-sec-bytype.module:78
 #: lib/layouts/theorems-starred-equivalents.inc:27
 #: lib/layouts/theorems-starred.inc:116 lib/layouts/theorems-starred.inc:119
 #: lib/layouts/theorems-without-preamble.inc:111
@@ -6322,7 +6375,8 @@ msgstr "اقتراح"
 #: lib/layouts/theorems-ams.inc:279 lib/layouts/theorems-bytype.inc:263
 #: lib/layouts/theorems-bytype.inc:280 lib/layouts/theorems-bytype.inc:283
 #: lib/layouts/theorems-chap-bytype.module:174
-#: lib/layouts/theorems-order.inc:67 lib/layouts/theorems-sec-bytype.module:134
+#: lib/layouts/theorems-order.inc:67
+#: lib/layouts/theorems-sec-bytype.module:134
 #: lib/layouts/theorems-starred-equivalents.inc:76
 #: lib/layouts/theorems-starred.inc:268 lib/layouts/theorems-starred.inc:271
 #: lib/layouts/theorems-without-preamble.inc:321
@@ -9261,10 +9315,8 @@ msgid "\\arabic{section}.\\arabic{subsection}"
 msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:384
-msgid ""
-"Subsubsection \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
-msgstr ""
-"قسم تحت فرعي \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
+msgid "Subsubsection \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
+msgstr "قسم تحت فرعي \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 
 #: lib/layouts/beamer.layout:396
 msgid ""
@@ -9813,7 +9865,8 @@ msgstr "إعداد الشرح"
 
 #: lib/layouts/bicaption.module:16
 msgid ""
-"Language that should be affected, can be 'bi-first', 'bi-second' or 'bi-both'"
+"Language that should be affected, can be 'bi-first', 'bi-second' or 'bi-"
+"both'"
 msgstr ""
 
 #: lib/layouts/bicaption.module:29
@@ -10880,7 +10933,7 @@ msgstr "حدس \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:389
 msgid "Example \\arabic{theorem}"
-msgstr "مثال \arabic{theorem}"
+msgstr "مثال \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:396
 msgid "Problem \\arabic{theorem}"
@@ -11087,8 +11140,8 @@ msgid ""
 "Resets the equation number at section start and prepends the section number "
 "to the equation number, as in '(2.1)'."
 msgstr ""
-"يعيد ضبط رقم المعادلة عند بداية القسم ويسبق رقم المعادلة برقم القسم، كما في  "
-"'(2.1)'."
+"يعيد ضبط رقم المعادلة عند بداية القسم ويسبق رقم المعادلة برقم القسم، كما في"
+"  '(2.1)'."
 
 #: lib/layouts/eqs-within-sections.module:17
 msgid "\\thesection.\\arabic{equation}"
@@ -11450,8 +11503,8 @@ msgstr "رقم الرسم التوضيحي تبعاً للقسم"
 
 #: lib/layouts/figs-within-sections.module:6
 msgid ""
-"Resets the figure number at section start and prepends the section number to "
-"the figure number, as in 'fig. 2.1'."
+"Resets the figure number at section start and prepends the section number to"
+" the figure number, as in 'fig. 2.1'."
 msgstr ""
 "يعيد ضبط رقم الرسم التوضيحي عند بداية القسم ويسبق رقم الرسم التوضيحي برقم "
 "القسم، كما في  'شكل توضيحي. 2.1'."
@@ -11463,8 +11516,8 @@ msgstr ""
 #: lib/layouts/fix-cm.module:8
 msgid ""
 "Fix-cm improves the appearance of Computer Modern fonts and makes them "
-"available with arbitrary sizes. For details see the documentation of the fix-"
-"cm.sty package: http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
+"available with arbitrary sizes. For details see the documentation of the "
+"fix-cm.sty package: http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
 msgstr ""
 
 #: lib/layouts/fixltx2e.module:2
@@ -11476,8 +11529,8 @@ msgid ""
 "Loads the LaTeX package fixltx2e which contains some bug fixes for LaTeX. "
 "Those fixes were not part of older LaTeX kernels because of backward "
 "compatibility. If you use this module your typeset document may look "
-"different with different LaTeX versions, depending on the respective version "
-"of fixltx2e. NOTE: recent LaTeX kernels (as of 2015/01/01) include the "
+"different with different LaTeX versions, depending on the respective version"
+" of fixltx2e. NOTE: recent LaTeX kernels (as of 2015/01/01) include the "
 "functionality of fixltx2e, so the fixltx2e module becomes obsolete with "
 "newer LaTeX distributions."
 msgstr ""
@@ -11494,8 +11547,9 @@ msgid ""
 "FiXme documentation for details. NOTE: By default, the notes are only "
 "displayed in 'draft' mode (if the option 'draft' has been inserted to "
 "Document > Settings > Document Class > Class Options > Custom). To display "
-"them always, insert \\fxsetup{draft} to Document > Settings > Preamble. NOTE "
-"also that you need version 4 or later of the FiXme package for some features."
+"them always, insert \\fxsetup{draft} to Document > Settings > Preamble. NOTE"
+" also that you need version 4 or later of the FiXme package for some "
+"features."
 msgstr ""
 
 #: lib/layouts/fixme.module:17 lib/layouts/fixme.module:55
@@ -12274,9 +12328,9 @@ msgstr "تعليق"
 
 #: lib/layouts/hanging.module:6
 msgid ""
-"Adds an environment for hanging paragraphs. Hanging paragraph is a paragraph "
-"in which the first line is set to the left margin, but all subsequent lines "
-"are indented."
+"Adds an environment for hanging paragraphs. Hanging paragraph is a paragraph"
+" in which the first line is set to the left margin, but all subsequent lines"
+" are indented."
 msgstr ""
 "اضف وحدة للفقرات المعلقة. الفقرات المعلقة هي فقرة يكون فيها السطر الأول "
 "مضبوط ناحية الهامش الأيسر، وتكون باقي الأسطر مشتتة."
@@ -12896,8 +12950,8 @@ msgstr ""
 #: lib/layouts/knitr.module:6
 msgid ""
 "Uses the knitr package in R for dynamic report generation. This R package "
-"has to be installed for this module to work: install.packages('knitr'). Note "
-"it depends on R >= 2.14.1. For more info see http://yihui.name/knitr"
+"has to be installed for this module to work: install.packages('knitr'). Note"
+" it depends on R >= 2.14.1. For more info see http://yihui.name/knitr"
 msgstr ""
 
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
@@ -13031,8 +13085,8 @@ msgstr "لغوي"
 
 #: lib/layouts/linguistics.module:7
 msgid ""
-"Defines some special environments useful for linguistics (numbered examples, "
-"glosses, semantic markup, tableau floats). See linguistics.lyx file in "
+"Defines some special environments useful for linguistics (numbered examples,"
+" glosses, semantic markup, tableau floats). See linguistics.lyx file in "
 "examples."
 msgstr ""
 "حدد بعض الوحدات الخاصة الخاصة باللغويات(أمثلة مرقمة،glosses، semantic "
@@ -14147,8 +14201,8 @@ msgstr "نموذج PDF"
 
 #: lib/layouts/pdfform.module:7
 msgid ""
-"Provides fields and buttons for PDF forms. The module uses the LaTeX package "
-"hyperref. Please consult the LyX example file PDF-form.lyx and the "
+"Provides fields and buttons for PDF forms. The module uses the LaTeX package"
+" hyperref. Please consult the LyX example file PDF-form.lyx and the "
 "documentation of hyperref for details."
 msgstr ""
 
@@ -14384,7 +14438,8 @@ msgid "Left Column"
 msgstr "عمود ايسر"
 
 #: lib/layouts/powerdot.layout:464
-msgid "Enter the text of the left column here (right column in main paragraph)"
+msgid ""
+"Enter the text of the left column here (right column in main paragraph)"
 msgstr "ادخل نص العمود الأيسر هنا (العمود الأيمن في الفقرة الرئيسية)"
 
 #: lib/layouts/powerdot.layout:589
@@ -14608,7 +14663,8 @@ msgid "Phrase Text"
 msgstr "نص عبارة"
 
 #: lib/layouts/rsphrase.module:47
-msgid "Argument for statements that requires to specify additional information"
+msgid ""
+"Argument for statements that requires to specify additional information"
 msgstr ""
 
 #: lib/layouts/rsphrase.module:60
@@ -15014,8 +15070,8 @@ msgstr "شكل مقطع مخصص"
 #: lib/layouts/shapepar.module:7
 msgid ""
 "Provides several paragraph shapes as well as commands to define custom "
-"shapes. For a description see LyX's Additional features manual, section 'Non-"
-"standard Paragraph Shapes'."
+"shapes. For a description see LyX's Additional features manual, section "
+"'Non-standard Paragraph Shapes'."
 msgstr ""
 
 #: lib/layouts/shapepar.module:26
@@ -15688,7 +15744,8 @@ msgstr "Sweave"
 #: lib/layouts/sweave.module:6
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
-"via the Sweave() function. For more info see the LyX example file sweave.lyx."
+"via the Sweave() function. For more info see the LyX example file "
+"sweave.lyx."
 msgstr ""
 
 #: lib/layouts/sweave.module:76 lib/layouts/sweave.module:77
@@ -15721,8 +15778,8 @@ msgstr "صناديق ملونة فاخرة"
 
 #: lib/layouts/tcolorbox.module:6
 msgid ""
-"Adds custom insets that support colored boxes via the tcolorbox package. See "
-"the tcolorbox documentation for details."
+"Adds custom insets that support colored boxes via the tcolorbox package. See"
+" the tcolorbox documentation for details."
 msgstr ""
 
 #: lib/layouts/tcolorbox.module:11 lib/layouts/tcolorbox.module:14
@@ -15878,19 +15935,19 @@ msgstr "نظريات (AMS،مرقمة تبعاً للفئة)"
 msgid ""
 "Defines theorem environments and the proof environment using the extended "
 "AMS machinery. Both numbered and unnumbered types are provided. Contrary to "
-"the plain AMS Theorem module, the different theorem types provided here each "
-"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
-"theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
+"the plain AMS Theorem module, the different theorem types provided here each"
+" have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition "
+"1, theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
 "proposition 4, ...). The numbering's scope is the whole document. For "
 "chapter- and section-wide numbering, use one of the 'within "
 "Sections'/'within Chapters' modules, respectively."
 msgstr ""
 "تعريف وحدات نظرية ووحدات الأثبات باستخدام آلة ممتدة AMS. كلاً من الفئةين "
 "المرقم و الغير المرقم متوفر. على العكس من نماذج نظرية AMS البسيطة، النظريات "
-"المختلفة في الفئة المتوفرة هنا كلٍ منها يملك عداداً منفصلاً(مثلاً.نظرية 1, نظرية "
-"2, قضية مساعدة 1, اقتراح 1, نظرية 3, قضية مساعدة 2, ..., على النقيض من نظرية "
-"1, نظرية 2, قضية مساعدة 3, اقتراح 4, ...). وضع الترقيم يشمل المستند كله."
-"لترقيم أبعاد عرض الفصل و أبعاد عرض القسم، استخدم واحدا من نماذج 'within "
+"المختلفة في الفئة المتوفرة هنا كلٍ منها يملك عداداً منفصلاً(مثلاً.نظرية 1, "
+"نظرية 2, قضية مساعدة 1, اقتراح 1, نظرية 3, قضية مساعدة 2, ..., على النقيض من"
+" نظرية 1, نظرية 2, قضية مساعدة 3, اقتراح 4, ...). وضع الترقيم يشمل المستند "
+"كله.لترقيم أبعاد عرض الفصل و أبعاد عرض القسم، استخدم واحدا من نماذج 'within "
 "Sections'/'within Chapters'، على الترتيب."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:82
@@ -15954,18 +16011,18 @@ msgstr "نظريات (AMS ، مرقمة تبعاً للفئة في الفصول)
 msgid ""
 "Defines theorem environments and the proof environment using the extended "
 "AMS machinery. Both numbered and unnumbered types are provided. Contrary to "
-"the plain AMS Theorem module, the different theorem types provided here each "
-"have a separate counter (e.g., theorem 1.1, theorem 1.2, lemma 1.1, "
+"the plain AMS Theorem module, the different theorem types provided here each"
+" have a separate counter (e.g., theorem 1.1, theorem 1.2, lemma 1.1, "
 "proposition 1.1, theorem 1.3, lemma 1.2, ..., as opposed to theorem 1, "
 "theorem 2, lemma 3, proposition 4, ...). The numbering restarts for each "
 "chapter: theorem 1.1, theorem 2.1, ..."
 msgstr ""
 "تعريف وحدات نظرية ووحدات الأثبات باستخدام آلة ممتدة AMS. كلاً من الفئةين "
 "المرقم و الغير المرقم متوفر. على العكس من نماذج نظرية AMS البسيطة، النظريات "
-"المختلفة في الفئة المتوفرة هنا كلٍ منها يملك عداداً منفصلاً(مثلاً.نظرية 1, نظرية "
-"2, قضية مساعدة 1, اقتراح 1, نظرية 3, قضية مساعدة 2, ..., على النقيض من نظرية "
-"1, نظرية 2, قضية مساعدة 3, اقتراح 4, ...). وضع الترقيم يشمل المستند كله."
-"لترقيم أبعاد عرض الفصل و أبعاد عرض القسم، استخدم واحدا من نماذج 'within "
+"المختلفة في الفئة المتوفرة هنا كلٍ منها يملك عداداً منفصلاً(مثلاً.نظرية 1, "
+"نظرية 2, قضية مساعدة 1, اقتراح 1, نظرية 3, قضية مساعدة 2, ..., على النقيض من"
+" نظرية 1, نظرية 2, قضية مساعدة 3, اقتراح 4, ...). وضع الترقيم يشمل المستند "
+"كله.لترقيم أبعاد عرض الفصل و أبعاد عرض القسم، استخدم واحدا من نماذج 'within "
 "Sections'/'within Chapters'، على الترتيب."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
@@ -15976,18 +16033,18 @@ msgstr "نظريات (AMS ممتدة،مرقمة تبعاً للفئة)"
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
-"Summary, Acknowledgement, Conclusion, Assumption, and Case, in both numbered "
-"and non-numbered forms. Contrary to the plain AMS-Extended module, the "
+"Summary, Acknowledgement, Conclusion, Assumption, and Case, in both numbered"
+" and non-numbered forms. Contrary to the plain AMS-Extended module, the "
 "different theorem types provided here each have a separate counter (e.g., "
 "criterion 1, criterion 2, axiom 1, assumption 1, criterion 3, ..., as "
 "opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
 msgstr ""
-"عرف بعض وحدات النظريات الإضافية لتستخدم مع حزم نظريات الـAMS. تشمل المعايير ،"
-"الخوارزم،المسلمات،الشروط، الملاحظة،الترقيم،الموجز،الاعتراف بالجميل،استنتاج،"
-"الفرض،و الحالات،في الصيغ المرقمة و الغير مرقمة. على النقيض من نموذج  AMS-"
-"الممتد البسيط، النظريات المختلفة في الفئة المتوفرة هنا تملك عداداً "
-"منفصلاً(مثلا. معيار 1, معيار 2, مُسلّمة 1, فرضية 1, معيار 3, ..., في مقابل "
-"معيار 1, معيار 2, مُسلّمة 3, فرضية 4, ...)."
+"عرف بعض وحدات النظريات الإضافية لتستخدم مع حزم نظريات الـAMS. تشمل المعايير "
+"،الخوارزم،المسلمات،الشروط، الملاحظة،الترقيم،الموجز،الاعتراف "
+"بالجميل،استنتاج،الفرض،و الحالات،في الصيغ المرقمة و الغير مرقمة. على النقيض "
+"من نموذج  AMS-الممتد البسيط، النظريات المختلفة في الفئة المتوفرة هنا تملك "
+"عداداً منفصلاً(مثلا. معيار 1, معيار 2, مُسلّمة 1, فرضية 1, معيار 3, ..., في "
+"مقابل معيار 1, معيار 2, مُسلّمة 3, فرضية 4, ...)."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:66
 msgid "Criterion \\thecriterion."
@@ -16177,19 +16234,19 @@ msgstr "نظريات (AMS-Extended ، مرقمة تبعاً للفئة في ال
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
-"Summary, Acknowledgement, Conclusion, Assumption, and Case, in both numbered "
-"and non-numbered forms. Contrary to the plain AMS-Extended module, the "
+"Summary, Acknowledgement, Conclusion, Assumption, and Case, in both numbered"
+" and non-numbered forms. Contrary to the plain AMS-Extended module, the "
 "different theorem types provided here each have a separate counter, "
 "restarted with each new chapter (e.g., criterion 1.1, criterion 1.2, axiom "
-"1.1, assumption 1.1, #criterion 2.1, criterion 2.2, axiom 2.1..., as opposed "
-"to criterion 1, criterion 2, axiom 3, assumption 4...)"
+"1.1, assumption 1.1, #criterion 2.1, criterion 2.2, axiom 2.1..., as opposed"
+" to criterion 1, criterion 2, axiom 3, assumption 4...)"
 msgstr ""
-"عرف بعض وحدات النظريات الإضافية لتستخدم مع حزم نظريات الـAMS. تشمل المعايير ،"
-"الخوارزم،المسلمات،الشروط، الملاحظة،الترقيم،الموجز،الاعتراف بالجميل،استنتاج،"
-"الفرض،و الحالات،في الصيغ المرقمة و الغير مرقمة. على النقيض من نموذج  AMS-"
-"الممتد البسيط، النظريات المختلفة في الفئة المتوفرة هنا تملك عداداً "
-"منفصلاً(مثلا. معيار 1, معيار 2, مُسلّمة 1, فرضية 1, معيار 3, ..., في مقابل "
-"معيار 1, معيار 2, مُسلّمة 3, فرضية 4, ...)."
+"عرف بعض وحدات النظريات الإضافية لتستخدم مع حزم نظريات الـAMS. تشمل المعايير "
+"،الخوارزم،المسلمات،الشروط، الملاحظة،الترقيم،الموجز،الاعتراف "
+"بالجميل،استنتاج،الفرض،و الحالات،في الصيغ المرقمة و الغير مرقمة. على النقيض "
+"من نموذج  AMS-الممتد البسيط، النظريات المختلفة في الفئة المتوفرة هنا تملك "
+"عداداً منفصلاً(مثلا. معيار 1, معيار 2, مُسلّمة 1, فرضية 1, معيار 3, ..., في "
+"مقابل معيار 1, معيار 2, مُسلّمة 3, فرضية 4, ...)."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:69
 msgid "Criterion \\thechapter.\\thecriterion."
@@ -16246,9 +16303,9 @@ msgid ""
 "Summary, Acknowledgement, Conclusion, Fact, Assumption, Case, and Question, "
 "in both numbered and non-numbered forms."
 msgstr ""
-"عرف بعض وحدات النظريات الإضافية لتستخدم مع حزم نظريات الـAMS. تشمل المعايير ،"
-"الخوارزم،المسلمات،الشروط، الملاحظة،الترقيم،الموجز،الاعتراف بالجميل،استنتاج،"
-"الحقيقة،الفرض،و الحالات،في الصيغ المرقمة و الغير مرقمة."
+"عرف بعض وحدات النظريات الإضافية لتستخدم مع حزم نظريات الـAMS. تشمل المعايير "
+"،الخوارزم،المسلمات،الشروط، الملاحظة،الترقيم،الموجز،الاعتراف "
+"بالجميل،استنتاج،الحقيقة،الفرض،و الحالات،في الصيغ المرقمة و الغير مرقمة."
 
 #: lib/layouts/theorems-ams-extended.module:10
 #: lib/layouts/theorems-ams.module:9 lib/layouts/theorems-chap.module:9
@@ -16333,12 +16390,13 @@ msgstr "نظريات (AMS)"
 msgid ""
 "Defines theorem environments and the proof environment using the extended "
 "AMS machinery. Both numbered and unnumbered types are provided. By default, "
-"the theorems are numbered consecutively throughout the document. This can be "
-"changed by loading one of the 'Theorems (Numbered by ...)' modules."
+"the theorems are numbered consecutively throughout the document. This can be"
+" changed by loading one of the 'Theorems (Numbered by ...)' modules."
 msgstr ""
 "تعريف وحدات نظرية ووحدات الإثبات باستخدام آلية AMS الممتدة. كلا من الأنواع "
 "المرقمة و الغير مرقمة متوفر. افتراضياً، النظريات تكون مرقمة تتابعياً خلال "
-"المستند. يمكن تغيير ذلك الوضع باستخدام احد نماذج النظريات (مرقم تبعاً لـ ...)."
+"المستند. يمكن تغيير ذلك الوضع باستخدام احد نماذج النظريات (مرقم تبعاً لـ "
+"...)."
 
 #: lib/layouts/theorems-bytype.module:2
 msgid "Theorems (Numbered by Type)"
@@ -16348,17 +16406,17 @@ msgstr "نظريات(مرقمة تبعاً للفئة)"
 msgid ""
 "Defines some theorem environments for use with non-AMS classes. Contrary to "
 "the plain Theorem module, the different theorem types provided here each "
-"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
-"theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
+"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1,"
+" theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
 "proposition 4, ...). The numbering's scope is the whole document. For "
 "chapter- and section-wide numbering, use one of the 'within "
 "Sections'/'within Chapters' modules, respectively."
 msgstr ""
 "عرف بعض وحدات النظريات لتستخدم مع غير أصناف AMS. على النقيض من نماذج "
 "النظريات البسيطة، كلا من الأنواع المختلفة من النظريات المتوفرة هنا تملك "
-"عداداً منفصلاً(مثلاً. نظرية 1, نظرية 2, قضية مساعدة 1, اقتراح 1, نظرية 3, قضية "
-"مساعدة 2, ...,  على العكس من نظرية 1, نظرية 2, قضية مساعدة 3, اقتراح "
-"4, ...). وضع الترقيم يشمل كل المستند. لترقيم أبعاد عرض الفصول و أبعاد عرض "
+"عداداً منفصلاً(مثلاً. نظرية 1, نظرية 2, قضية مساعدة 1, اقتراح 1, نظرية 3, "
+"قضية مساعدة 2, ...,  على العكس من نظرية 1, نظرية 2, قضية مساعدة 3, اقتراح 4,"
+" ...). وضع الترقيم يشمل كل المستند. لترقيم أبعاد عرض الفصول و أبعاد عرض "
 "القسم، استخدم واحداً من النماذج  'within Sections'/'within Chapters' ،على "
 "الترتيب."
 
@@ -16386,15 +16444,15 @@ msgstr "نظريات (مرقمة تبعاً للفئة في الفصول)"
 msgid ""
 "Defines some theorem environments for use with non-AMS classes. Contrary to "
 "the plain Theorem module, the different theorem types provided here each "
-"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
-"theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
+"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1,"
+" theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
 "proposition 4, ...). The numbering is reset at each chapter start."
 msgstr ""
 "عرف بعض وحدات النظريات لتستخدم مع غير أصناف AMS. على النقيض من نماذج "
 "النظريات البسيطة، كلا من الأنواع المختلفة من النظريات المتوفرة هنا تملك "
-"عداداً منفصلاً(مثلاً. نظرية 1, نظرية 2, قضية مساعدة 1, اقتراح 1, نظرية 3, قضية "
-"مساعدة 2, ...,  على العكس من نظرية 1, نظرية 2, قضية مساعدة 3, اقتراح "
-"4, ...). يعاد ضبط الترقيم مع بداية كل فصل."
+"عداداً منفصلاً(مثلاً. نظرية 1, نظرية 2, قضية مساعدة 1, اقتراح 1, نظرية 3, "
+"قضية مساعدة 2, ...,  على العكس من نظرية 1, نظرية 2, قضية مساعدة 3, اقتراح 4,"
+" ...). يعاد ضبط الترقيم مع بداية كل فصل."
 
 #: lib/layouts/theorems-chap.module:2
 msgid "Theorems (Numbered by Chapter)"
@@ -16402,8 +16460,8 @@ msgstr "نظريات )(مرقمة تبعاً للفصل)"
 
 #: lib/layouts/theorems-chap.module:7
 msgid ""
-"Numbers theorems and the like by chapter (i.e., the counter is reset at each "
-"chapter start). Use this module only with document classes that provide a "
+"Numbers theorems and the like by chapter (i.e., the counter is reset at each"
+" chapter start). Use this module only with document classes that provide a "
 "chapter environment."
 msgstr ""
 "رقم النظريات وما يشبهها بالفصل (اي ان  العداد سيعاد ضبطه عند بداية كل فصل). "
@@ -16415,8 +16473,8 @@ msgstr "تسمية النظرية"
 
 #: lib/layouts/theorems-named.module:7
 msgid ""
-"Facilitates the use of named theorems. The name of the theorem goes into the "
-"'Additional Theorem Text' argument."
+"Facilitates the use of named theorems. The name of the theorem goes into the"
+" 'Additional Theorem Text' argument."
 msgstr ""
 
 #: lib/layouts/theorems-named.module:55
@@ -16459,14 +16517,14 @@ msgstr "نظريات (مرقمة تبعاًللفئة داخل الأقسام)"
 msgid ""
 "Defines some theorem environments for use with non-AMS classes. Contrary to "
 "the plain Theorem module, the different theorem types provided here each "
-"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
-"theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
+"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1,"
+" theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
 "proposition 4, ...). The numbering is reset at each section start."
 msgstr ""
 "عرف بعض وحدات النظريات لتستخدم مع غير أصناف AMS. على النقيض من نماذج "
 "النظريات البسيطة،الأنواع المختلفة المتوفرة هنا كلا منها يملك عداداً "
-"منفصلاً(مثلا.نظرية 1, نظرية 2, قضية مساعدة 1, اقتراح 1, نظرية 3, قضية مساعدة "
-"2, ..., as opposed to theorem 1, نظرية 2, قضية مساعدة 3, اقتراح 4, ...). "
+"منفصلاً(مثلا.نظرية 1, نظرية 2, قضية مساعدة 1, اقتراح 1, نظرية 3, قضية مساعدة"
+" 2, ..., as opposed to theorem 1, نظرية 2, قضية مساعدة 3, اقتراح 4, ...). "
 "يعاد ضبط الترقيم عند بداية كل قسم."
 
 #: lib/layouts/theorems-sec.module:2
@@ -16475,10 +16533,11 @@ msgstr "نظريات (مرقمة تبعاً للقسم)"
 
 #: lib/layouts/theorems-sec.module:6
 msgid ""
-"Numbers theorems and the like by section (i.e., the counter is reset at each "
-"section start)."
+"Numbers theorems and the like by section (i.e., the counter is reset at each"
+" section start)."
 msgstr ""
-"ترقيم النظريات وما يشبهها تبعاً للفصل(أي أن العداد يعاد ضبطه مع بداية كل قسم)."
+"ترقيم النظريات وما يشبهها تبعاً للفصل(أي أن العداد يعاد ضبطه مع بداية كل "
+"قسم)."
 
 #: lib/layouts/theorems-starred.inc:127
 msgid "Conjecture."
@@ -16523,12 +16582,12 @@ msgstr "نظريات"
 #: lib/layouts/theorems-std.module:7
 msgid ""
 "Defines some theorem environments for use with non-AMS classes. By default, "
-"the theorems are numbered consecutively throughout the document. This can be "
-"changed by loading one of the 'Theorems (Numbered by ...)' modules."
+"the theorems are numbered consecutively throughout the document. This can be"
+" changed by loading one of the 'Theorems (Numbered by ...)' modules."
 msgstr ""
 "عرف بعض وحدات النظريات لتستخدم مع غير أصناف AMS.افتراضياً، تكون النظريات "
-"مرقمة تتابعياً خلال المستند.يمكن تغيير ذلك الوضع باستخدام احد نماذج النظريات "
-"(مرقم تبعاًلـ ...)."
+"مرقمة تتابعياً خلال المستند.يمكن تغيير ذلك الوضع باستخدام احد نماذج النظريات"
+" (مرقم تبعاًلـ ...)."
 
 #: lib/layouts/theorems-without-preamble.inc:44
 msgid "Name/Title"
@@ -24901,18 +24960,14 @@ msgstr "تغييرات لا تظهر في مخرجات لتيك"
 
 #: src/Buffer.cpp:1037 src/Buffer.cpp:3010
 msgid ""
-"Changes will not be highlighted in LaTeX output, because neither dvipost nor "
-"xcolor/ulem are installed.\n"
-"Please install these packages or redefine \\lyxadded and \\lyxdeleted in the "
-"LaTeX preamble."
+"Changes will not be highlighted in LaTeX output, because neither dvipost nor xcolor/ulem are installed.\n"
+"Please install these packages or redefine \\lyxadded and \\lyxdeleted in the LaTeX preamble."
 msgstr ""
 
 #: src/Buffer.cpp:1043 src/Buffer.cpp:3016
 msgid ""
-"Changes will not be highlighted in LaTeX output when using pdflatex, because "
-"xcolor and ulem are not installed.\n"
-"Please install both packages or redefine \\lyxadded and \\lyxdeleted in the "
-"LaTeX preamble."
+"Changes will not be highlighted in LaTeX output when using pdflatex, because xcolor and ulem are not installed.\n"
+"Please install both packages or redefine \\lyxadded and \\lyxdeleted in the LaTeX preamble."
 msgstr ""
 
 #: src/Buffer.cpp:1085 src/BufferParams.cpp:455
@@ -24950,8 +25005,8 @@ msgstr "فشل التحويل"
 #: src/Buffer.cpp:1315
 #, c-format
 msgid ""
-"%1$s is from a different version of LyX, but a temporary file for converting "
-"it could not be created."
+"%1$s is from a different version of LyX, but a temporary file for converting"
+" it could not be created."
 msgstr ""
 "الملف %1$s ناتج من اصدار مختلف من برنامج LyX، ولكن تعذر انشاءالملف المؤقت "
 "اللازم لعملية تحويله."
@@ -24983,8 +25038,8 @@ msgstr "%1$s ناتج من اصدار قديم من برنامج LyX والسك�
 #: src/Buffer.cpp:1357
 #, c-format
 msgid ""
-"%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
-"it."
+"%1$s is from a newer version of LyX and the lyx2lyx script failed to convert"
+" it."
 msgstr "%1$s ناتج من اصدار جديد من برنامج LyX والسكربت lyx2lyx فشل في تحويله."
 
 #: src/Buffer.cpp:1413 src/Buffer.cpp:4741 src/Buffer.cpp:4830
@@ -25099,8 +25154,8 @@ msgstr ""
 #: src/Buffer.cpp:1726
 #, c-format
 msgid ""
-"Please verify that the support software for your encoding (%1$s) is properly "
-"installed"
+"Please verify that the support software for your encoding (%1$s) is properly"
+" installed"
 msgstr ""
 "من فضلك تحقق من أن البرنامج الداعم للترميز الخاص بك (%1$s) مثبت بشكل صحيح"
 
@@ -25111,12 +25166,10 @@ msgstr "تعذر العثور على أمر لتيك للحرف  '%1$s' (code po
 
 #: src/Buffer.cpp:1756
 msgid ""
-"Some characters of your document are probably not representable in the "
-"chosen encoding.\n"
+"Some characters of your document are probably not representable in the chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
-"بعض الحروف المستخدمة في هذا المستند ربما تكون غير قابلة للتمثيل في الترميز "
-"المختار.\n"
+"بعض الحروف المستخدمة في هذا المستند ربما تكون غير قابلة للتمثيل في الترميز المختار.\n"
 "ربما يساعدك تغيير ترميز المستند الى utf8."
 
 #: src/Buffer.cpp:1763
@@ -25136,10 +25189,7 @@ msgstr "حرف غير قابل للتشغيل في مسار الملف"
 msgid ""
 "The path of your document\n"
 "(%1$s)\n"
-"contains glyphs that are unknown in the current document encoding (namely "
-"%2$s). This may result in incomplete output, unless TEXINPUTS contains the "
-"document directory and you don't use explicitly relative paths (i.e., paths "
-"starting with './' or '../') in the preamble or in ERT.\n"
+"contains glyphs that are unknown in the current document encoding (namely %2$s). This may result in incomplete output, unless TEXINPUTS contains the document directory and you don't use explicitly relative paths (i.e., paths starting with './' or '../') in the preamble or in ERT.\n"
 "\n"
 "In case of problems, choose an appropriate document encoding\n"
 "(such as utf8) or change the file path name."
@@ -25172,12 +25222,10 @@ msgstr "لغات غير متوافقة!"
 #: src/Buffer.cpp:1983
 #, c-format
 msgid ""
-"You cannot use the following languages together in one LaTeX document "
-"because they require conflicting language packages:\n"
+"You cannot use the following languages together in one LaTeX document because they require conflicting language packages:\n"
 "%1$s%2$s"
 msgstr ""
-"لا يمكنك استخدام اللغات التالية معاً في مستند لتيك واحد لأنها تتطلب حزم لغات "
-"متعارضة:\n"
+"لا يمكنك استخدام اللغات التالية معاً في مستند لتيك واحد لأنها تتطلب حزم لغات متعارضة:\n"
 "%1$s%2$s"
 
 #: src/Buffer.cpp:2293
@@ -25314,8 +25362,7 @@ msgstr "اسم الملف خاطئ"
 msgid ""
 "The directory path to the document\n"
 "%1$s\n"
-"contains spaces, but your TeX installation does not allow them. You should "
-"save the file to a directory whose name does not contain spaces."
+"contains spaces, but your TeX installation does not allow them. You should save the file to a directory whose name does not contain spaces."
 msgstr ""
 
 #: src/Buffer.cpp:4634 src/Buffer.cpp:4648 src/frontends/qt4/GuiView.cpp:692
@@ -25407,8 +25454,8 @@ msgstr "حف ملف الطوارئ؟"
 #: src/Buffer.cpp:4793
 msgid ""
 "LyX was unable to rename the emergency file. You should do so manually. "
-"Otherwise, you will beasked about it again the next time you try to loadthis "
-"file, and may over-write your own work."
+"Otherwise, you will beasked about it again the next time you try to loadthis"
+" file, and may over-write your own work."
 msgstr ""
 
 #: src/Buffer.cpp:4818
@@ -25462,8 +25509,8 @@ msgstr ""
 
 #: src/BufferParams.cpp:510
 msgid ""
-"The LaTeX package amssymb is only used if symbols from the AMS math toolbars "
-"are inserted into formulas"
+"The LaTeX package amssymb is only used if symbols from the AMS math toolbars"
+" are inserted into formulas"
 msgstr ""
 "حزمة  amssymb الخاصة بـ لتيك تستخدم فقط في حالة إضافة رموز من أشرطة أدوات "
 "AMS  داخل المعادلات"
@@ -25565,10 +25612,8 @@ msgstr "حرف غير قابل للتشغيل في ديباجة المستخدم
 #: src/BufferParams.cpp:2173
 #, c-format
 msgid ""
-"The user preamble of your document contains glyphs that are unknown in the "
-"current document encoding (namely %1$s).\n"
-"These glyphs are omitted  from the output, which may result in incomplete "
-"output.\n"
+"The user preamble of your document contains glyphs that are unknown in the current document encoding (namely %1$s).\n"
+"These glyphs are omitted  from the output, which may result in incomplete output.\n"
 "\n"
 "Please select an appropriate document encoding\n"
 "(such as utf8) or change the preamble code accordingly."
@@ -26203,10 +26248,11 @@ msgstr "تجاهل"
 #, c-format
 msgid ""
 "<p>The following LaTeX backend has been configured to allow execution of "
-"external programs for any document:</p><center><p><tt>%1$s</tt></p></"
-"center><p>This is a dangerous configuration. Please, consider using the "
-"support offered by LyX for allowing this privilege only to documents that "
-"actually need it, instead.</p>"
+"external programs for any "
+"document:</p><center><p><tt>%1$s</tt></p></center><p>This is a dangerous "
+"configuration. Please, consider using the support offered by LyX for "
+"allowing this privilege only to documents that actually need it, "
+"instead.</p>"
 msgstr ""
 
 #: src/Converter.cpp:317
@@ -26225,10 +26271,10 @@ msgstr ""
 #: src/Converter.cpp:337
 #, c-format
 msgid ""
-"<p>The requested operation requires the use of a converter from %2$s to %3$s:"
-"</p><blockquote><p><tt>%1$s</tt></p></blockquote><p>This external program "
-"can execute arbitrary commands on your system, including dangerous ones, if "
-"instructed to do so by a maliciously crafted LyX document.</p>"
+"<p>The requested operation requires the use of a converter from %2$s to "
+"%3$s:</p><blockquote><p><tt>%1$s</tt></p></blockquote><p>This external "
+"program can execute arbitrary commands on your system, including dangerous "
+"ones, if instructed to do so by a maliciously crafted LyX document.</p>"
 msgstr ""
 
 #: src/Converter.cpp:347
@@ -26239,8 +26285,8 @@ msgstr "محول خارجي معطل لأسباب أمنية"
 msgid ""
 "<p><b>Your current preference settings forbid its execution.</b></p><p>(To "
 "change this setting, go to <i>Preferences &#x25b9; File Handling &#x25b9; "
-"Converters</i> and uncheck <i>Security &#x25b9; Forbid needauth converters</"
-"i>.)"
+"Converters</i> and uncheck <i>Security &#x25b9; Forbid needauth "
+"converters</i>.)"
 msgstr ""
 
 #: src/Converter.cpp:358
@@ -26253,8 +26299,8 @@ msgstr "محول خارجي يتطلب تصريحك"
 
 #: src/Converter.cpp:362
 msgid ""
-"<p>Should LaTeX backends be allowed to run external programs?</p><p><b>Allow "
-"them only if you trust the origin/sender of the LyX document!</b></p>"
+"<p>Should LaTeX backends be allowed to run external programs?</p><p><b>Allow"
+" them only if you trust the origin/sender of the LyX document!</b></p>"
 msgstr ""
 
 #: src/Converter.cpp:365
@@ -26262,8 +26308,8 @@ msgid ""
 "<p>Would you like to run this converter?</p><p><b>Only run if you trust the "
 "origin/sender of the LyX document!</b></p>"
 msgstr ""
-"<p>هل ترغب بتشغيل هذا المحول؟</p><p><b>شغله فقط إذا كنت تثق بمصدر/مرسل مستند "
-"ليك</b></p>"
+"<p>هل ترغب بتشغيل هذا المحول؟</p><p><b>شغله فقط إذا كنت تثق بمصدر/مرسل مستند"
+" ليك</b></p>"
 
 #: src/Converter.cpp:369
 msgid "Do &not allow"
@@ -26368,8 +26414,8 @@ msgstr "تشغيل لتيك..."
 #: src/Converter.cpp:833
 #, c-format
 msgid ""
-"LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
-"log %1$s."
+"LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX"
+" log %1$s."
 msgstr ""
 
 #: src/Converter.cpp:836 src/Converter.cpp:843
@@ -26381,8 +26427,7 @@ msgstr "فشل لتيك"
 msgid ""
 "The external program\n"
 "%1$s\n"
-"finished with an error. It is recommended you fix the cause of the external "
-"program's error (check the logs). "
+"finished with an error. It is recommended you fix the cause of the external program's error (check the logs). "
 msgstr ""
 
 #: src/Converter.cpp:845
@@ -26415,8 +26460,8 @@ msgstr ""
 #: src/CutAndPaste.cpp:200
 #, c-format
 msgid ""
-"The characters \"%1$s\" are uncodable in this verbatim context and thus have "
-"not been pasted."
+"The characters \"%1$s\" are uncodable in this verbatim context and thus have"
+" not been pasted."
 msgstr ""
 
 #: src/CutAndPaste.cpp:243
@@ -26457,8 +26502,8 @@ msgstr ""
 #: src/CutAndPaste.cpp:849
 #, c-format
 msgid ""
-"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
-"%3$s'."
+"Flex inset %1$s is undefined because of conversion from `%2$s' layout to "
+"`%3$s'."
 msgstr ""
 
 #: src/CutAndPaste.cpp:854
@@ -26502,17 +26547,20 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "فشل نسخ %1$s الى  %2$s ."
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:149
-#: src/frontends/qt4/GuiDocument.cpp:4367 src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4367
+#: src/frontends/qt4/GuiListings.cpp:161
 msgid "Roman"
 msgstr "روماني"
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:150
-#: src/frontends/qt4/GuiDocument.cpp:4367 src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4367
+#: src/frontends/qt4/GuiListings.cpp:161
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:151
-#: src/frontends/qt4/GuiDocument.cpp:4367 src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4367
+#: src/frontends/qt4/GuiListings.cpp:161
 msgid "Typewriter"
 msgstr "المحرر"
 
@@ -26805,8 +26853,7 @@ msgstr ""
 msgid ""
 "SIGSEGV signal caught!\n"
 "Sorry, you have found a bug in LyX, hope you have not lost any data.\n"
-"Please read the bug-reporting instructions in 'Help->Introduction' and send "
-"us a bug report, if necessary. Thanks!\n"
+"Please read the bug-reporting instructions in 'Help->Introduction' and send us a bug report, if necessary. Thanks!\n"
 "Bye."
 msgstr ""
 
@@ -26889,10 +26936,8 @@ msgid ""
 "                  where command is a lyx command.\n"
 "\t-e [--export] fmt\n"
 "                  where fmt is the export format of choice. Look in\n"
-"                  Tools->Preferences->File Handling->File Formats->Short "
-"Name\n"
-"                  to see which parameter (which differs from the format "
-"name\n"
+"                  Tools->Preferences->File Handling->File Formats->Short Name\n"
+"                  to see which parameter (which differs from the format name\n"
 "                  in the File->Export menu) should be passed. To export to\n"
 "                  the document's default output format, use 'default'.\n"
 "                  Note that the order of -e and -x switches matters.\n"
@@ -26904,16 +26949,12 @@ msgid ""
 "                  and file.xxx is the file to be imported.\n"
 "\t-f [--force-overwrite] what\n"
 "                  where what is either `all', `main' or `none',\n"
-"                  specifying whether all files, main file only, or no "
-"files,\n"
-"                  respectively, are to be overwritten during a batch "
-"export.\n"
-"                  Anything else is equivalent to `all', but is not "
-"consumed.\n"
+"                  specifying whether all files, main file only, or no files,\n"
+"                  respectively, are to be overwritten during a batch export.\n"
+"                  Anything else is equivalent to `all', but is not consumed.\n"
 "\t--ignore-error-message which\n"
 "                  allows you to ignore specific LaTeX error messages.\n"
-"                  Do not use for final documents! Currently supported "
-"values:\n"
+"                  Do not use for final documents! Currently supported values:\n"
 "                  * missing_glyphs: Fontspec `missing glyphs' error.\n"
 "\t-n [--no-remote]\n"
 "                  open documents in a new instance\n"
@@ -27039,8 +27080,8 @@ msgstr "اختر للتأكد من وجود الملفات الأخيرة."
 
 #: src/LyXRC.cpp:3161
 msgid ""
-"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
-"n38\" Refer to the ChkTeX documentation."
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
+"-n38\" Refer to the ChkTeX documentation."
 msgstr ""
 
 #: src/LyXRC.cpp:3168
@@ -27063,9 +27104,9 @@ msgstr ""
 
 #: src/LyXRC.cpp:3187
 msgid ""
-"LyX normally doesn't allow the user to scroll further than the bottom of the "
-"document. Set to true if you prefer to scroll the bottom of the document to "
-"the top of the screen"
+"LyX normally doesn't allow the user to scroll further than the bottom of the"
+" document. Set to true if you prefer to scroll the bottom of the document to"
+" the top of the screen"
 msgstr ""
 
 #: src/LyXRC.cpp:3191
@@ -27086,8 +27127,8 @@ msgstr ""
 #: src/LyXRC.cpp:3204
 #, no-c-format
 msgid ""
-"This accepts the normal strftime formats; see man strftime for full details. "
-"E.g.\"%A, %e. %B %Y\"."
+"This accepts the normal strftime formats; see man strftime for full details."
+" E.g.\"%A, %e. %B %Y\"."
 msgstr ""
 
 #: src/LyXRC.cpp:3208
@@ -27107,8 +27148,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:3220
 msgid ""
-"Iconify the dialogs when the main window is iconified. (Affects only dialogs "
-"shown after the change has been made.)"
+"Iconify the dialogs when the main window is iconified. (Affects only dialogs"
+" shown after the change has been made.)"
 msgstr ""
 
 #: src/LyXRC.cpp:3224
@@ -27141,8 +27182,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:3247
 msgid ""
-"Define the options of makeindex (cf. man makeindex) or select an alternative "
-"compiler. E.g., using xindy/make-rules, the command string would be "
+"Define the options of makeindex (cf. man makeindex) or select an alternative"
+" compiler. E.g., using xindy/make-rules, the command string would be "
 "\"makeindex.sh -m $$lang\"."
 msgstr ""
 
@@ -27164,8 +27205,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:3268
 msgid ""
-"Use this to set the correct mapping file for your keyboard. You'll need this "
-"if you for instance want to type German documents on an American keyboard."
+"Use this to set the correct mapping file for your keyboard. You'll need this"
+" if you for instance want to type German documents on an American keyboard."
 msgstr ""
 "استخدم هذا لضبط ملف الخريطة الصحيحة للوحة مفاتيحك. وسوف تحتجها إذا كنت تريد "
 "كتابة مستند ألماني على لوحة مفاتيح أمريكية."
@@ -27202,16 +27243,14 @@ msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
 msgstr ""
-"الغي التحديد اذا لم تكن ترغب في اعادة ضبط خيارات التصنيف للوضع الافتراضي بعد "
-"تغيير التصنيف."
+"الغي التحديد اذا لم تكن ترغب في اعادة ضبط خيارات التصنيف للوضع الافتراضي بعد"
+" تغيير التصنيف."
 
 #: src/LyXRC.cpp:3296
 msgid ""
 "The LaTeX command for loading the language package. E.g. "
 "\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
-msgstr ""
-"أمر LaTeX لتحميل حزمة اللغة مثل \"\\usepackage{babel}\", "
-"\"\\usepackage{omega}\"."
+msgstr "أمر LaTeX لتحميل حزمة اللغة مثل \"\\usepackage{babel}\", \"\\usepackage{omega}\"."
 
 #: src/LyXRC.cpp:3300
 #, fuzzy
@@ -27219,8 +27258,8 @@ msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
 msgstr ""
-"الغي التحديد اذا لم تكن ترغب في اعادة ضبط خيارات التصنيف للوضع الافتراضي بعد "
-"تغيير التصنيف."
+"الغي التحديد اذا لم تكن ترغب في اعادة ضبط خيارات التصنيف للوضع الافتراضي بعد"
+" تغيير التصنيف."
 
 #: src/LyXRC.cpp:3304
 #, fuzzy
@@ -27295,8 +27334,7 @@ msgstr "العدد الأقصى من الملفات الأخيرة. بصل إل�
 
 #: src/LyXRC.cpp:3369
 msgid ""
-"Specify those directories which should be prepended to the PATH environment "
-"variable.\n"
+"Specify those directories which should be prepended to the PATH environment variable.\n"
 "Use the OS native format."
 msgstr ""
 "حدد هذه المجلدات التي لابد من إضافتها قبل مسار الوحدات المتغيرة. استخدم "
@@ -27333,8 +27371,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:3403
 msgid ""
-"Specify whether, closing the last view of an open document, LyX should close "
-"the document (yes), hide it (no), or ask the user (ask)."
+"Specify whether, closing the last view of an open document, LyX should close"
+" the document (yes), hide it (no), or ask the user (ask)."
 msgstr ""
 
 #: src/LyXRC.cpp:3407
@@ -27375,8 +27413,8 @@ msgstr "السماح لمدير الجلسة أن يحفظ ويستعيد شكل
 
 #: src/LyXRC.cpp:3439
 msgid ""
-"This starts the lyxserver. The pipes get an additional extension \".in\" and "
-"\".out\". Only for advanced users."
+"This starts the lyxserver. The pipes get an additional extension \".in\" and"
+" \".out\". Only for advanced users."
 msgstr ""
 
 #: src/LyXRC.cpp:3446
@@ -27405,8 +27443,7 @@ msgstr ""
 #: src/LyXRC.cpp:3468
 #, fuzzy
 msgid ""
-"Specify those directories which should be prepended to the TEXINPUTS "
-"environment variable.\n"
+"Specify those directories which should be prepended to the TEXINPUTS environment variable.\n"
 "A '.' represents the current document directory. Use the OS native format."
 msgstr ""
 "حدد هذه المجلدات التي لابد من اضافتها قبل مسار الوحدات المتغيرة. استخدم "
@@ -27420,8 +27457,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:3485
 msgid ""
-"Enable use the system colors for some things like main window background and "
-"selection."
+"Enable use the system colors for some things like main window background and"
+" selection."
 msgstr ""
 "تفعيل استخدام ألوان النظام لبعض الأشياء مثل خلفية النافذة الرئيسية والتحديد."
 
@@ -27489,8 +27526,7 @@ msgstr "LyX VC: رسالة سجل الأحداث"
 #: src/LyXVC.cpp:298
 #, c-format
 msgid ""
-"Reverting to the stored version of the document %1$s will lose all current "
-"changes.\n"
+"Reverting to the stored version of the document %1$s will lose all current changes.\n"
 "\n"
 "Do you want to revert to the older version?"
 msgstr ""
@@ -27532,8 +27568,8 @@ msgstr ""
 #, c-format
 msgid ""
 "A change tracking author information for index %1$d is missing. This can "
-"happen after a wrong merge by a version control system. In this case, either "
-"fix the merge, or have this information missing until the corresponding "
+"happen after a wrong merge by a version control system. In this case, either"
+" fix the merge, or have this information missing until the corresponding "
 "tracked changes are merged or this user edits the file again.\n"
 msgstr ""
 
@@ -27876,14 +27912,12 @@ msgid ""
 "There were detected changes in the working directory:\n"
 "%1$s\n"
 "\n"
-"Possible file conflicts must be then resolved manually or you will need to "
-"revert back to the repository version."
+"Possible file conflicts must be then resolved manually or you will need to revert back to the repository version."
 msgstr ""
 "تم رصد تغييرات في مجلد العمل :\n"
 "%1$s\n"
 "\n"
-"يمكن حل التعارضات المحتملة في الملف يدوياً أو ستحتاج إلى العودة إلى إصدار "
-"المستودع."
+"يمكن حل التعارضات المحتملة في الملف يدوياً أو ستحتاج إلى العودة إلى إصدار المستودع."
 
 #: src/VCBackend.cpp:966 src/VCBackend.cpp:970 src/VCBackend.cpp:1527
 #: src/VCBackend.cpp:1531
@@ -27962,8 +27996,7 @@ msgid ""
 "There were detected changes in the working directory:\n"
 "%1$s\n"
 "\n"
-"In case of file conflict version of the local directory files will be "
-"preferred.\n"
+"In case of file conflict version of the local directory files will be preferred.\n"
 "\n"
 "Continue?"
 msgstr ""
@@ -27975,14 +28008,16 @@ msgstr ""
 "استمرار؟"
 
 #: src/VCBackend.cpp:1528 src/VCBackend.cpp:1532
-#: src/frontends/qt4/FindAndReplace.cpp:383 src/frontends/qt4/GuiPrefs.cpp:1976
-#: src/lyxfind.cpp:164 src/lyxfind.cpp:432 src/lyxfind.cpp:460
+#: src/frontends/qt4/FindAndReplace.cpp:383
+#: src/frontends/qt4/GuiPrefs.cpp:1976 src/lyxfind.cpp:164 src/lyxfind.cpp:432
+#: src/lyxfind.cpp:460
 msgid "&Yes"
 msgstr "&نعم"
 
 #: src/VCBackend.cpp:1528 src/VCBackend.cpp:1532
-#: src/frontends/qt4/FindAndReplace.cpp:383 src/frontends/qt4/GuiPrefs.cpp:1976
-#: src/lyxfind.cpp:164 src/lyxfind.cpp:432 src/lyxfind.cpp:460
+#: src/frontends/qt4/FindAndReplace.cpp:383
+#: src/frontends/qt4/GuiPrefs.cpp:1976 src/lyxfind.cpp:164 src/lyxfind.cpp:432
+#: src/lyxfind.cpp:460
 msgid "&No"
 msgstr "&لا"
 
@@ -28248,13 +28283,9 @@ msgstr ""
 
 #: src/frontends/qt4/GuiAbout.cpp:197
 msgid ""
-"LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE.\n"
+"LyX is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
 "See the GNU General Public License for more details.\n"
-"You should have received a copy of the GNU General Public License along with "
-"this program; if not, write to the Free Software Foundation, Inc., 51 "
-"Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
+"You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 msgstr ""
 
 #: src/frontends/qt4/GuiAbout.cpp:210
@@ -28307,7 +28338,8 @@ msgstr "ليك: %1$s"
 msgid "About %1"
 msgstr "حول %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:695 src/frontends/qt4/GuiPrefs.cpp:3521
+#: src/frontends/qt4/GuiApplication.cpp:695
+#: src/frontends/qt4/GuiPrefs.cpp:3521
 msgid "Preferences"
 msgstr "تفضيلات"
 
@@ -28364,8 +28396,7 @@ msgid ""
 "Please reconfigure again if needed."
 msgstr ""
 "فشل إعادة ضبط النظام.\n"
-"سيتم استخدام القسم النصي الافتراضي ولكن ليك قد يكون غير قادر على العمل "
-"بكفاءة.\n"
+"سيتم استخدام القسم النصي الافتراضي ولكن ليك قد يكون غير قادر على العمل بكفاءة.\n"
 "من فضلك أعد الضبط مرة أخرى عند الحاجة."
 
 #: src/frontends/qt4/GuiApplication.cpp:1547
@@ -28430,8 +28461,7 @@ msgstr "تم إغلاق المستند الحالي."
 
 #: src/frontends/qt4/GuiApplication.cpp:2746
 msgid ""
-"LyX has caught an exception, it will now attempt to save all unsaved "
-"documents and exit.\n"
+"LyX has caught an exception, it will now attempt to save all unsaved documents and exit.\n"
 "\n"
 "Exception: "
 msgstr ""
@@ -28516,11 +28546,12 @@ msgstr "وحدات كل المراجع"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
-#: src/frontends/qt4/GuiDocument.cpp:2503 src/frontends/qt4/GuiExternal.cpp:678
-#: src/frontends/qt4/GuiGraphics.cpp:793 src/frontends/qt4/GuiInclude.cpp:330
-#: src/frontends/qt4/GuiView.cpp:2242 src/frontends/qt4/GuiView.cpp:2301
-#: src/frontends/qt4/GuiView.cpp:2439 src/frontends/qt4/GuiView.cpp:2572
-#: src/frontends/qt4/GuiView.cpp:2612 src/frontends/qt4/GuiView.cpp:2730
+#: src/frontends/qt4/GuiDocument.cpp:2503
+#: src/frontends/qt4/GuiExternal.cpp:678 src/frontends/qt4/GuiGraphics.cpp:793
+#: src/frontends/qt4/GuiInclude.cpp:330 src/frontends/qt4/GuiView.cpp:2242
+#: src/frontends/qt4/GuiView.cpp:2301 src/frontends/qt4/GuiView.cpp:2439
+#: src/frontends/qt4/GuiView.cpp:2572 src/frontends/qt4/GuiView.cpp:2612
+#: src/frontends/qt4/GuiView.cpp:2730
 msgid "Documents|#o#O"
 msgstr "المستندات|#o#O"
 
@@ -28772,8 +28803,8 @@ msgstr ""
 
 #: src/frontends/qt4/GuiCitation.cpp:302
 msgid ""
-"Text that follows the whole reference list. For text that follows individual "
-"items, double-click on the respective entry above."
+"Text that follows the whole reference list. For text that follows individual"
+" items, double-click on the respective entry above."
 msgstr ""
 
 #: src/frontends/qt4/GuiCitation.cpp:308
@@ -29219,8 +29250,8 @@ msgstr "%1$s [فئة '%2$s']"
 #: src/frontends/qt4/GuiDocument.cpp:1479
 #, c-format
 msgid ""
-"Class not found by LyX. Please check if you have the matching %1$s class and "
-"all required packages (%2$s) installed."
+"Class not found by LyX. Please check if you have the matching %1$s class and"
+" all required packages (%2$s) installed."
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1608
@@ -29510,7 +29541,8 @@ msgid ""
 "'%1$s' in order to use the master document\n"
 "feature."
 msgstr ""
-"يجب أن تدرج هذا الملف في المستند n'%1$s'  لكي تستخدم مميزات المستند الرئيسية."
+"يجب أن تدرج هذا الملف في المستند n'%1$s'  لكي تستخدم مميزات المستند "
+"الرئيسية."
 
 #: src/frontends/qt4/GuiDocument.cpp:4486
 msgid "Could not load master"
@@ -29970,11 +30002,9 @@ msgstr "إعدادات الفقرة"
 
 #: src/frontends/qt4/GuiParagraph.cpp:80
 msgid ""
-"As described in the User Guide, the width of this text determines the width "
-"of the label part of each item in environments like List and Description.\n"
+"As described in the User Guide, the width of this text determines the width of the label part of each item in environments like List and Description.\n"
 "\n"
-" Normally, you won't need to set this, since the largest label width of all "
-"the items is used."
+" Normally, you won't need to set this, since the largest label width of all the items is used."
 msgstr ""
 
 #: src/frontends/qt4/GuiPhantom.cpp:25
@@ -30093,8 +30123,8 @@ msgstr "تحذير أمان!"
 msgid ""
 "Unchecking this option has the effect that potentially harmful converters "
 "would be run without asking your permission first. This is UNSAFE and NOT "
-"recommended, unless you know what you are doing. Are you sure you would like "
-"to proceed ? The recommended and safe answer is NO!"
+"recommended, unless you know what you are doing. Are you sure you would like"
+" to proceed ? The recommended and safe answer is NO!"
 msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:2095
@@ -30112,7 +30142,8 @@ msgid ""
 msgstr "لا يمكنك حذف التنسيق المستخدم من المحول. فضلا احذف المحول أولاً."
 
 #: src/frontends/qt4/GuiPrefs.cpp:2482
-msgid "Cannot remove a Format used by a Converter. Remove the converter first."
+msgid ""
+"Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr "تعذر حذف التنسيق الذي يستخدمه المحول. احذف المحول أولاً."
 
 #: src/frontends/qt4/GuiPrefs.cpp:2571
@@ -30123,7 +30154,8 @@ msgstr "يجب إعادة تشغيل LyX!"
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
-msgstr "تغيير لغة واجهة المستخدم ستكون مفعلة بالكامل بعد إعادة تشغيل البرنامج."
+msgstr ""
+"تغيير لغة واجهة المستخدم ستكون مفعلة بالكامل بعد إعادة تشغيل البرنامج."
 
 #: src/frontends/qt4/GuiPrefs.cpp:2642
 msgid "User Interface"
@@ -31962,8 +31994,7 @@ msgstr "تضمين غير معتمد"
 #: src/insets/InsetInclude.cpp:903
 #, c-format
 msgid ""
-"LyX does not know how to include non-LyX files when generating HTML output. "
-"Offending file:\n"
+"LyX does not know how to include non-LyX files when generating HTML output. Offending file:\n"
 "%1$s"
 msgstr ""
 
@@ -32216,8 +32247,7 @@ msgid "Should be composed of one or more of %1$s."
 msgstr "لابد أن يتكون من واحد أو أكثر من %1$s."
 
 #: src/insets/InsetListingsParams.cpp:325
-msgid ""
-"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgid "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr "استخدم \\footnotesize, \\small, \\itshape, \\ttfamily أو شيئا مثل هذا"
 
 #: src/insets/InsetListingsParams.cpp:328
@@ -32235,8 +32265,8 @@ msgid ""
 "Enter four letters (either t = round or f = square) for top right, bottom "
 "right, bottom left and top left corner."
 msgstr ""
-"ادخل أربعة حروف (إما t = دائرة أو f = مربع) للأعلى يمين, أسفل يمين,أسفل يسار "
-"أو أعلى يسار الركن."
+"ادخل أربعة حروف (إما t = دائرة أو f = مربع) للأعلى يمين, أسفل يمين,أسفل يسار"
+" أو أعلى يسار الركن."
 
 #: src/insets/InsetListingsParams.cpp:336
 msgid "Previously defined color name as a string"
@@ -32301,13 +32331,13 @@ msgstr "نطاق من الأسطر مثل {1,3-4}"
 
 #: src/insets/InsetListingsParams.cpp:815
 msgid ""
-"Enter one of the supported languages. However, if you are defining a listing "
-"inset, it is better using the  language combo box, unless you need to enter "
-"a language not offered there, otherwise the combo box will be disabled."
+"Enter one of the supported languages. However, if you are defining a listing"
+" inset, it is better using the  language combo box, unless you need to enter"
+" a language not offered there, otherwise the combo box will be disabled."
 msgstr ""
 "أدخل إحدى اللغات المعتمدة. ومع ذلك، إذا كنت تقوم بتعريف إدراج قائمة، فمن "
-"الأفضل استخدام مربع التحرير والسرد للغة، إلا إذا كنت تحتاج إلى إدخال لغة غير "
-"موجودة هناك، وإلا سيتم تعطيل مربع التحرير والسرد."
+"الأفضل استخدام مربع التحرير والسرد للغة، إلا إذا كنت تحتاج إلى إدخال لغة غير"
+" موجودة هناك، وإلا سيتم تعطيل مربع التحرير والسرد."
 
 #: src/insets/InsetListingsParams.cpp:838
 msgid "File encoding used by Pygments for highlighting"
@@ -32948,11 +32978,11 @@ msgstr "خطأ في latexParagraphs"
 #: src/output_latex.cpp:1458
 #, c-format
 msgid ""
-"You are using at least one layout (%1$s) intended for the title, after using "
-"non-title layouts. This could lead to missing or incorrect output."
+"You are using at least one layout (%1$s) intended for the title, after using"
+" non-title layouts. This could lead to missing or incorrect output."
 msgstr ""
-"إنك تستخدم تخطيطاً واحداً على الأقل (%1$s) مخصص للعنوان، بعد استخدام التخطيطات "
-"غير الخاصة بالعنوان. قد يؤدي هذا إلى إخراج مفقود أو غير صحيح."
+"إنك تستخدم تخطيطاً واحداً على الأقل (%1$s) مخصص للعنوان، بعد استخدام "
+"التخطيطات غير الخاصة بالعنوان. قد يؤدي هذا إلى إخراج مفقود أو غير صحيح."
 
 #: src/output_plaintext.cpp:144
 msgid "Abstract: "
@@ -33284,8 +33314,8 @@ msgstr "مستخدم مجهول"
 #~ "Pass content of the `Caption' field literally to LaTeX. Check this if you "
 #~ "want to enter LaTeX code."
 #~ msgstr ""
-#~ "تمرير محتوى الحقل الحرفي `تعليق' إلى لتيك. اختره إذا كنت ترغب في إدخال "
-#~ "كود لتيك."
+#~ "تمرير محتوى الحقل الحرفي `تعليق' إلى لتيك. اختره إذا كنت ترغب في إدخال كود "
+#~ "لتيك."
 
 #, fuzzy
 #~ msgid "ParaType Serif"
@@ -33307,12 +33337,10 @@ msgstr "مستخدم مجهول"
 #~ msgstr "الحرف '%1$s' غير قابل للتشغيل (نقطة الرمز %2$s)"
 
 #~ msgid ""
-#~ "Some characters of your document are not representable in specific "
-#~ "verbatim contexts.\n"
+#~ "Some characters of your document are not representable in specific verbatim contexts.\n"
 #~ "Changing the document encoding to utf8 could help."
 #~ msgstr ""
-#~ "بعض الحروف المستخدمة في هذا المستند ربما تكون غير قابلة للتمثيل في "
-#~ "الترميز المختار.\n"
+#~ "بعض الحروف المستخدمة في هذا المستند ربما تكون غير قابلة للتمثيل في الترميز المختار.\n"
 #~ "غير ترميز المستند الى utf8 فربما يساعد."
 
 #~ msgid "The directory path to the document cannot contain spaces."
@@ -33450,8 +33478,8 @@ msgstr "مستخدم مجهول"
 #~ "Use the natbib styles for natural sciences and arts. Set additional "
 #~ "parameters in document class options."
 #~ msgstr ""
-#~ "استخدام أساليب natbib للعلوم الطبيعية والفنون. ضبط قيم إضافية في خيارات "
-#~ "نوع المستند."
+#~ "استخدام أساليب natbib للعلوم الطبيعية والفنون. ضبط قيم إضافية في خيارات نوع "
+#~ "المستند."
 
 #~ msgid "&Natbib"
 #~ msgstr "&Natbib"
@@ -33825,11 +33853,11 @@ msgstr "مستخدم مجهول"
 
 #~ msgid ""
 #~ "Normally, this needs to be checked only if you are using dvips as your "
-#~ "printer command and you have config.<printer> files installed for all "
-#~ "your printers."
+#~ "printer command and you have config.<printer> files installed for all your "
+#~ "printers."
 #~ msgstr ""
-#~ "عادة، هذا يحتاج إلى تعليم فقط كنت تستخدم dvips كأمر طابعة ولديك ملف تكوين."
-#~ "<printer> تم تثبيته لكل الطابعات."
+#~ "عادة، هذا يحتاج إلى تعليم فقط كنت تستخدم dvips كأمر طابعة ولديك ملف "
+#~ "تكوين.<printer> تم تثبيته لكل الطابعات."
 
 #~ msgid "Adapt &output to printer"
 #~ msgstr "&هيئ المخرجات للطابعة"
@@ -33905,11 +33933,11 @@ msgstr "مستخدم مجهول"
 #~ msgstr "خيار لطباعة الصفحات الزوجية فقط"
 
 #~ msgid ""
-#~ "Extra options to pass to printing program after everything else, but "
-#~ "before the filename of the DVI file to be printed."
+#~ "Extra options to pass to printing program after everything else, but before "
+#~ "the filename of the DVI file to be printed."
 #~ msgstr ""
-#~ "خيارات إضافية يمكن تمريرها لبرنامج الطباعة بعد كل شئ أخر، لكن قبل اسم "
-#~ "الملف من النوع DVI الجاري طباعته."
+#~ "خيارات إضافية يمكن تمريرها لبرنامج الطباعة بعد كل شئ أخر، لكن قبل اسم الملف "
+#~ "من النوع DVI الجاري طباعته."
 
 #~ msgid "Extension of printer program output file. Usually \".ps\"."
 #~ msgstr "لاحقة ملف خرج طباعة البرنامج. عادة \".ps\"."
@@ -34933,18 +34961,17 @@ msgstr "مستخدم مجهول"
 #~ msgstr "غير قادر على الاتصال بعملية التدقيق الاملائي ispell ."
 
 #~ msgid ""
-#~ "Could not insert word `%1$s' because it could not be converted to "
-#~ "encoding `%2$s'."
+#~ "Could not insert word `%1$s' because it could not be converted to encoding "
+#~ "`%2$s'."
 #~ msgstr "تعذر ادراج كلمة `%1$s' بسبب عدم امكانية تحويلها للترميز `%2$s'."
 
 #~ msgid ""
-#~ "Could not accept word `%1$s' because it could not be converted to "
-#~ "encoding `%2$s'."
+#~ "Could not accept word `%1$s' because it could not be converted to encoding "
+#~ "`%2$s'."
 #~ msgstr "تعذر قبول كلمة `%1$s' بسبب عدم امكانية تحويلها للترميز `%2$s'."
 
 #, fuzzy
-#~ msgid ""
-#~ "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+#~ msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 #~ msgstr "حدد ملف قاموس شخصي بدلاً من الأفتراضي"
 
 #~ msgid "What command runs the spellchecker?"
