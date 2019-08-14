@@ -396,6 +396,7 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 	if (stdwidth && !(buffer().params().paragraph_separation))
 		os << "\\noindent";
 
+	bool needendgroup = false;
 	switch (btype) {
 	case Frameless:
 		break;
@@ -439,8 +440,14 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		} else {
 			if (params_.framecolor != "black" || params_.backgroundcolor != "none")
 				os << "\\fcolorbox{" << params_.framecolor << "}{" << params_.backgroundcolor << "}";
-			else
+			else {
+				if (!cprotect.empty() && contains(runparams.active_chars, '^')) {
+					// cprotect relies on ^ being ignored
+					os << "\\begingroup\\catcode`\\^=9";
+					needendgroup = true;
+				}
 				os << cprotect << "\\fbox";
+			}
 		}
 		os << "{";
 		break;
@@ -590,8 +597,10 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		if (!params_.inner_box && !width_string.empty()
 			&& (params_.framecolor != "black" || params_.backgroundcolor != "none"))
 			os << "}";
-		if (separation_string != defaultSep	|| thickness_string != defaultThick)
+		if (separation_string != defaultSep || thickness_string != defaultThick)
 			os << "}";
+		if (needendgroup)
+			os << "\\endgroup";
 		break;
 	case ovalbox:
 		os << "}";

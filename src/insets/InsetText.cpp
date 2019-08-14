@@ -454,14 +454,20 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 	InsetLayout const & il = getLayout();
 	if (il.forceOwnlines())
 		os << breakln;
+	bool needendgroup = false;
 	if (!il.latexname().empty()) {
 		if (il.latextype() == InsetLayout::COMMAND) {
 			// FIXME UNICODE
 			// FIXME \protect should only be used for fragile
 			//    commands, but we do not provide this information yet.
-			if (hasCProtectContent(runparams.moving_arg))
+			if (hasCProtectContent(runparams.moving_arg)) {
+				if (contains(runparams.active_chars, '^')) {
+					// cprotect relies on ^ being ignored
+					os << "\\begingroup\\catcode`\\^=9";
+					needendgroup = true;
+				}
 				os << "\\cprotect";
-			else if (runparams.moving_arg)
+			} else if (runparams.moving_arg)
 				os << "\\protect";
 			os << '\\' << from_utf8(il.latexname());
 			if (!il.latexargs().empty())
@@ -522,6 +528,8 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 			os << "}";
 			if (!il.postcommandargs().empty())
 				getArgs(os, runparams, true);
+			if (needendgroup)
+				os << "\\endgroup";
 		} else if (il.latextype() == InsetLayout::ENVIRONMENT) {
 			// A comment environment doesn't need a % before \n\end
 			if (il.isDisplay() || runparams.inComment)

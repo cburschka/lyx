@@ -679,8 +679,12 @@ void parStartCommand(Paragraph const & par, otexstream & os,
 {
 	switch (style.latextype) {
 	case LATEX_COMMAND:
-		if (par.needsCProtection(runparams.moving_arg))
+		if (par.needsCProtection(runparams.moving_arg)) {
+			if (contains(runparams.active_chars, '^'))
+				// cprotect relies on ^ being ignored
+				os << "\\begingroup\\catcode`\\^=9";
 			os << "\\cprotect";
+		}
 		os << '\\' << from_ascii(style.latexname());
 
 		// Command arguments
@@ -794,8 +798,13 @@ void TeXOnePar(Buffer const & buf,
 		// I did not create a parEndCommand for this minuscule
 		// task because in the other user of parStartCommand
 		// the code is different (JMarc)
-		if (style.isCommand())
-			os << "}\n";
+		if (style.isCommand()) {
+			os << "}";
+			if (par.needsCProtection(runparams.moving_arg)
+			    && contains(runparams.active_chars, '^'))
+				os << "\\endgroup";
+			os << "\n";
+		}
 		else
 			os << '\n';
 		if (!style.parbreak_is_newline) {
@@ -1116,6 +1125,9 @@ void TeXOnePar(Buffer const & buf,
 				os << runparams.post_macro;
 				runparams.post_macro.clear();
 			}
+			if (par.needsCProtection(runparams.moving_arg)
+			    && contains(runparams.active_chars, '^'))
+				os << "\\endgroup";
 			if (runparams.encoding != prev_encoding) {
 				runparams.encoding = prev_encoding;
 				os << setEncoding(prev_encoding->iconvName());
@@ -1280,6 +1292,9 @@ void TeXOnePar(Buffer const & buf,
 				os << runparams.post_macro;
 				runparams.post_macro.clear();
 			}
+			if (par.needsCProtection(runparams.moving_arg)
+			    && contains(runparams.active_chars, '^'))
+				os << "\\endgroup";
 			if (runparams.encoding != prev_encoding) {
 				runparams.encoding = prev_encoding;
 				os << setEncoding(prev_encoding->iconvName());
