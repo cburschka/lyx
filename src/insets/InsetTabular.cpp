@@ -2382,8 +2382,7 @@ bool Tabular::isPartOfMultiRow(row_type row, col_type column) const
 }
 
 
-void Tabular::TeXTopHLine(otexstream & os, row_type row, string const & lang,
-			  list<col_type> columns) const
+void Tabular::TeXTopHLine(otexstream & os, row_type row, list<col_type> columns) const
 {
 	// we only output complete row lines and the 1st row here, the rest
 	// is done in Tabular::TeXBottomHLine(...)
@@ -2474,20 +2473,10 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, string const & lang,
 				    && toprtrims.find(c)->second)
 					trim += "r";
 
-				//babel makes the "-" character an active one, so we have to suppress this here
-				//see http://groups.google.com/group/comp.text.tex/browse_thread/thread/af769424a4a0f289#
-				if (lang == "slovak" || lang == "czech") {
-					os << "\\expandafter" << cline;
-					if (!trim.empty())
-						os << "(" << trim << ")";
-					os << "\\expandafter{\\expandafter" << firstcol << "\\string-";
-				} else {
-					os << cline;
-					if (!trim.empty())
-						os << "(" << trim << ")";
-					os << "{" << firstcol << '-';
-				}
-				os << lastcol << "}";
+				os << cline;
+				if (!trim.empty())
+					os << "(" << trim << ")";
+				os << "{" << firstcol << '-' << lastcol << "}";
 				if (c == ncols() - 1)
 					break;
 				++c;
@@ -2498,8 +2487,7 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, string const & lang,
 }
 
 
-void Tabular::TeXBottomHLine(otexstream & os, row_type row, string const & lang,
-			     list<col_type> columns) const
+void Tabular::TeXBottomHLine(otexstream & os, row_type row, list<col_type> columns) const
 {
 	// we output bottomlines of row r and the toplines of row r+1
 	// if the latter do not span the whole tabular
@@ -2610,20 +2598,10 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, string const & lang,
 				    && bottomrtrims.find(c)->second)
 					trim += "r";
 
-				//babel makes the "-" character an active one, so we have to suppress this here
-				//see http://groups.google.com/group/comp.text.tex/browse_thread/thread/af769424a4a0f289#
-				if (lang == "slovak" || lang == "czech") {
-					os << "\\expandafter" << cline;
-					if (!trim.empty())
-						os << "(" << trim << ")";
-					os << "\\expandafter{\\expandafter" << firstcol << "\\string-";
-				} else {
-					os << cline;
-					if (!trim.empty())
-						os << "(" << trim << ")";
-					os << "{" << firstcol << '-';
-				}
-				os << lastcol << "}";
+				os << cline;
+				if (!trim.empty())
+					os << "(" << trim << ")";
+				os << "{" << firstcol << '-' << lastcol << "}";
 				if (c == ncols() - 1)
 					break;
 				++c;
@@ -2917,12 +2895,9 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 		     list<col_type> columns) const
 {
 	idx_type cell = cellIndex(row, 0);
-	InsetTableCell const * cinset = cellInset(cell);
-	Paragraph const & cpar = cinset->paragraphs().front();
-	string const clang = cpar.getParLanguage(buffer().params())->lang();
 
 	//output the top line
-	TeXTopHLine(os, row, clang, columns);
+	TeXTopHLine(os, row, columns);
 
 	if (row_info[row].top_space_default) {
 		if (use_booktabs)
@@ -3070,7 +3045,7 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 	os << '\n';
 
 	//output the bottom line
-	TeXBottomHLine(os, row, clang, columns);
+	TeXBottomHLine(os, row, columns);
 
 	if (row_info[row].interline_space_default) {
 		if (use_booktabs)
@@ -3111,6 +3086,52 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 			os << "\\begin{landscape}\n";
 		else
 			os << "\\begin{turn}{" << convert<string>(rotate) << "}\n";
+	}
+
+	// The bidi package (loaded by polyglossia with XeTeX) swaps the column
+	// order for RTL (#9686). Thus we use this list.
+	bool const bidi_rtl =
+		runparams.local_font->isRightToLeft()
+		&& runparams.useBidiPackage();
+	list<col_type> columns;
+	for (col_type cl = 0; cl < ncols(); ++cl) {
+		if (bidi_rtl)
+			columns.push_front(cl);
+		else
+			columns.push_back(cl);
+	}
+
+	// If we use \cline or \cmidrule, we need to locally de-activate
+	// the - character when using languages that activate it (e.g., Czech, Slovak).
+	bool deactivate_chars = false;
+	if ((runparams.use_babel || runparams.use_polyglossia)
+	    && contains(runparams.active_chars, '-')) {
+		bool have_clines = false;
+		// Check if we use \cline or \cmidrule
+		for (row_type row = 0; row < nrows(); ++row) {
+			col_type bset = 0, tset = 0;
+			for (auto const & c : columns) {
+				idx_type const idx = cellIndex(row, c);
+				if (bottomLineTrim(idx).first || bottomLineTrim(idx).second
+				    || topLineTrim(idx).first || topLineTrim(idx).second) {
+					have_clines = true;
+					break;
+				}
+				if (bottomLine(cellIndex(row, c)))
+					++bset;
+				if (topLine(cellIndex(row, c)))
+					++tset;
+			}
+			if ((bset > 0 && bset < ncols()) || (tset > 0 && tset < ncols())) {
+				have_clines = true;
+				break;
+			}
+		}
+		if (have_clines) {
+			deactivate_chars = true;
+			os << "\\begingroup\n"
+			   << "\\catcode`\\-=12\n";
+		}
 	}
 
 	if (is_long_tabular) {
@@ -3162,19 +3183,6 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 
 	if (is_tabular_star)
 		os << "@{\\extracolsep{\\fill}}";
-
-	// The bidi package (loaded by polyglossia with XeTeX) swaps the column
-	// order for RTL (#9686). Thus we use this list.
-	bool const bidi_rtl =
-		runparams.local_font->isRightToLeft()
-		&& runparams.useBidiPackage();
-	list<col_type> columns;
-	for (col_type cl = 0; cl < ncols(); ++cl) {
-		if (bidi_rtl)
-			columns.push_front(cl);
-		else
-			columns.push_back(cl);
-	}
 
 	for (auto const & c : columns) {
 		if ((bidi_rtl && columnRightLine(c)) || (!bidi_rtl && columnLeftLine(c)))
@@ -3336,6 +3344,10 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 		else
 			os << "\\end{tabular}";
 	}
+
+	if (deactivate_chars)
+		// close the group
+		os << "\n\\endgroup\n";
 
 	if (rotate != 0) {
 		if (is_long_tabular)

@@ -134,6 +134,8 @@ public:
 	///
 	std::set<std::string> getPolyglossiaLanguages() const;
 	///
+	std::string getActiveChars() const;
+	///
 	std::set<std::string> getEncodingSet(std::string const & doc_encoding) const;
 	///
 	void getFontEncodings(std::vector<std::string> & encodings,

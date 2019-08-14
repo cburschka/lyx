@@ -1968,6 +1968,9 @@ Buffer::ExportStatus Buffer::writeLaTeXSource(otexstream & os,
 		runparams.use_babel = params().writeLaTeX(os, features,
 							  d->filename.onlyPath());
 
+		// Active characters
+		runparams.active_chars = features.getActiveChars();
+
 		// Biblatex bibliographies are loaded here
 		if (params().useBiblatex()) {
 			vector<pair<docstring, string>> const bibfiles =

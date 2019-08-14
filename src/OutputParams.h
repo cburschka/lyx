@@ -134,6 +134,9 @@ public:
 	 */
 	mutable Language const * master_language;
 
+	/// Active characters
+	std::string active_chars;
+
 	/** Current stream encoding. Only used for LaTeX.
 	    This must be set to the document encoding (via the constructor)
 	    before output starts. Afterwards it must be kept up to date for

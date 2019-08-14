@@ -10,6 +10,7 @@
 #	BabelName          <babelname>
 #	PolyglossiaName    <polyglossianame>
 #	PolyglossiaOpts    "<language-specific options>"
+#	ActiveChars        <activated characters>
 #	QuoteStyle         <british|danish|english|french|frenchin|
 #                           german|polish|russian|swedish|swedishg|swiss|plain>
 #     	DateFormats        "<long>|<medium>|<short>"
@@ -119,6 +120,9 @@
 # * Provides lists features that are provided by specific Babel languages,
 #   but are available globally if this language is used (not only for this
 #   language. Examples are \textgreek (Greek) and \textcyrillic (Russian).
+# * ActiveChars provides a string of the characters that are made active
+#   by the language. We record particularly those characters that have to 
+#   be de-activated in some contexts (such as - or =).
 #
 ##########################################################################
 
@@ -562,6 +566,7 @@ Language czech
 	BabelName        czech
 	PolyglossiaName  czech
 	QuoteStyle       german
+	ActiveChars      -
 	Encoding         iso8859-2
 	FontEncoding	 T1|OT1
 	DateFormats      "d. MMMM yyyy|d. MMM. yyyy|d.M.yyyy"
@@ -1331,6 +1336,7 @@ Language slovak
 	BabelName        slovak
 	PolyglossiaName  slovak
 	QuoteStyle       german
+	ActiveChars      -
 	Encoding         iso8859-2
 	FontEncoding	 T1|OT1
 	DateFormats      "d. MMMM yyyy|d. MMM yyyy|d.M.yyyy"

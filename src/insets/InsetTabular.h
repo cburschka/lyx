@@ -865,11 +865,9 @@ public:
 	///
 	// helper function for Latex
 	///
-	void TeXTopHLine(otexstream &, row_type row, std::string const & lang,
-			 std::list<col_type>) const;
+	void TeXTopHLine(otexstream &, row_type row, std::list<col_type>) const;
 	///
-	void TeXBottomHLine(otexstream &, row_type row, std::string const & lang,
-			    std::list<col_type>) const;
+	void TeXBottomHLine(otexstream &, row_type row, std::list<col_type>) const;
 	///
 	void TeXCellPreamble(otexstream &, idx_type cell, bool & ismulticol, bool & ismultirow,
 			     bool const bidi) const;

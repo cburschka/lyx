@@ -146,11 +146,13 @@ bool Language::readLanguage(Lexer & lex)
 		LA_REQUIRES,
 		LA_QUOTESTYLE,
 		LA_RTL,
-		LA_WORDWRAP
+		LA_WORDWRAP,
+		LA_ACTIVECHARS
 	};
 
 	// Keep these sorted alphabetically!
 	LexerKeyword languageTags[] = {
+		{ "activechars",          LA_ACTIVECHARS },
 		{ "babelname",            LA_BABELNAME },
 		{ "dateformats",          LA_DATEFORMATS },
 		{ "encoding",             LA_ENCODING },
@@ -206,6 +208,9 @@ bool Language::readLanguage(Lexer & lex)
 			break;
 		case LA_QUOTESTYLE:
 			lex >> quote_style_;
+			break;
+		case LA_ACTIVECHARS:
+			lex >> active_chars_;
 			break;
 		case LA_ENCODING:
 			lex >> encodingStr_;

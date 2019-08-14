@@ -52,6 +52,8 @@ public:
 	bool isBabelExclusive() const;
 	/// quotation marks style
 	std::string const quoteStyle() const { return quote_style_; }
+	/// active characters
+	std::string const activeChars() const { return active_chars_; }
 	/// requirement (package, function)
 	std::string const requires() const { return requires_; }
 	/// provides feature
@@ -116,6 +118,8 @@ private:
 	trivstring polyglossia_opts_;
 	///
 	trivstring quote_style_;
+	///
+	trivstring active_chars_;
 	///
 	trivstring requires_;
 	///

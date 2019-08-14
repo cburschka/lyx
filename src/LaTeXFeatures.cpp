@@ -885,6 +885,20 @@ set<string> LaTeXFeatures::getPolyglossiaLanguages() const
 }
 
 
+string LaTeXFeatures::getActiveChars() const
+{
+	string res;
+	// first the main language
+	res += params_.language->activeChars();
+	// now the secondary languages
+	LanguageList::const_iterator const begin = UsedLanguages_.begin();
+	for (LanguageList::const_iterator cit = begin;
+	     cit != UsedLanguages_.end(); ++cit)
+		res += ((*cit)->activeChars());
+	return res;
+}
+
+
 set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding) const
 {
 	// This does only find encodings of languages supported by babel, but
