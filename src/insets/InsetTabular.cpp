@@ -2434,21 +2434,25 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, string const & lang,
 		}
 	} else if (realfirstrow || have_trims) {
 		string const cline = use_booktabs ? "\\cmidrule" : "\\cline";
-		for (auto & c : columns) {
+		col_type c = 0;
+		for (auto & cl : columns) {
+			if (cl < c)
+				continue;
+			c = cl;
 			if (topline.find(c)->second) {
 				col_type offset = 0;
 				for (col_type j = 0 ; j < c; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
 						++offset;
+				string const firstcol = convert<string>(c + 1 + offset);
 				while (isPartOfMultiColumn(row, c))
 					++c;
 				string trim;
 				if (topltrims.find(c) != topltrims.end()
 				     && topltrims.find(c)->second)
 					trim = "l";
-				string const firstcol = convert<string>(c + 1 + offset);
 				col_type cstart = c;
-				for ( ; c < ncols() && topline.find(c)->second ; ++c) {
+				for ( ; c < ncols() - 1 && topline.find(c + 1)->second ; ++c) {
 					if (isMultiColumn(cellIndex(row, c))
 					    && c < ncols() - 1 && isPartOfMultiColumn(row, c + 1))
 						continue;
@@ -2465,7 +2469,7 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, string const & lang,
 				for (col_type j = cstart ; j < c ; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
 						++offset;
-				col_type const lastcol = c + offset;
+				col_type const lastcol = c + 1 + offset;
 				if (toprtrims.find(c) != toprtrims.end()
 				    && toprtrims.find(c)->second)
 					trim += "r";
@@ -2486,6 +2490,7 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, string const & lang,
 				os << lastcol << "}";
 				if (c == ncols() - 1)
 					break;
+				++c;
 			}
 		}
 	}
@@ -2563,26 +2568,31 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, string const & lang,
 			os << "\\hline ";
 	} else {
 		string const cline = use_booktabs ? "\\cmidrule" : "\\cline";
-		for (auto & c : columns) {
+		col_type c = 0;
+		for (auto & cl : columns) {
+			if (cl < c)
+				continue;
+			c = cl;
 			if (bottomline.find(c)->second) {
 				col_type offset = 0;
 				for (col_type j = 0 ; j < c; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
 						++offset;
+				string const firstcol = convert<string>(c + 1 + offset);
 				while (isPartOfMultiColumn(row, c))
 					++c;
 				string trim;
 				if (bottomltrims.find(c) != bottomltrims.end()
 				     && bottomltrims.find(c)->second)
 					trim = "l";
-				string const firstcol = convert<string>(c + 1 + offset);
 				col_type cstart = c;
-				for ( ; c < ncols() && bottomline.find(c)->second ; ++c) {
+				for ( ; c < ncols() - 1 && bottomline.find(c + 1)->second ; ++c) {
 					if (isMultiColumn(cellIndex(row, c))
 					    && c < ncols() - 1
 					    && isPartOfMultiColumn(row, c + 1))
 						continue;
-					if (c > cstart && bottomltrims.find(c) != bottomltrims.end()
+					if (c > cstart
+					    && bottomltrims.find(c) != bottomltrims.end()
 					    && bottomltrims.find(c)->second) {
 						if (!isPartOfMultiColumn(row, c))
 							--c;
@@ -2595,7 +2605,7 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, string const & lang,
 				for (col_type j = cstart ; j < c ; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
 						++offset;
-				col_type const lastcol = c + offset;
+				col_type const lastcol = c + 1 + offset;
 				if (bottomrtrims.find(c) != bottomrtrims.end()
 				    && bottomrtrims.find(c)->second)
 					trim += "r";
@@ -2616,6 +2626,7 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, string const & lang,
 				os << lastcol << "}";
 				if (c == ncols() - 1)
 					break;
+				++c;
 			}
 		}
 	}
