@@ -442,8 +442,8 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 				os << "\\fcolorbox{" << params_.framecolor << "}{" << params_.backgroundcolor << "}";
 			else {
 				if (!cprotect.empty() && contains(runparams.active_chars, '^')) {
-					// cprotect relies on ^ being ignored
-					os << "\\begingroup\\catcode`\\^=9";
+					// cprotect relies on ^ being on catcode 7
+					os << "\\begingroup\\catcode`\\^=7";
 					needendgroup = true;
 				}
 				os << cprotect << "\\fbox";

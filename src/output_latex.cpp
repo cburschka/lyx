@@ -681,8 +681,8 @@ void parStartCommand(Paragraph const & par, otexstream & os,
 	case LATEX_COMMAND:
 		if (par.needsCProtection(runparams.moving_arg)) {
 			if (contains(runparams.active_chars, '^'))
-				// cprotect relies on ^ being ignored
-				os << "\\begingroup\\catcode`\\^=9";
+				// cprotect relies on ^ being on catcode 7
+				os << "\\begingroup\\catcode`\\^=7";
 			os << "\\cprotect";
 		}
 		os << '\\' << from_ascii(style.latexname());

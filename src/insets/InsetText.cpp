@@ -462,8 +462,8 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 			//    commands, but we do not provide this information yet.
 			if (hasCProtectContent(runparams.moving_arg)) {
 				if (contains(runparams.active_chars, '^')) {
-					// cprotect relies on ^ being ignored
-					os << "\\begingroup\\catcode`\\^=9";
+					// cprotect relies on ^ being on catcode 7
+					os << "\\begingroup\\catcode`\\^=7";
 					needendgroup = true;
 				}
 				os << "\\cprotect";
