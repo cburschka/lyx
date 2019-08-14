@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.4
-\lyxformat 588
+\lyxformat 589
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -1387,9 +1387,9 @@ There is also some basic support for graphics, in the form
 \begin_inset Graphics 
 	filename foo.eps
 	width 1cm
-	height 1cm
 	clip
 	BoundingBox 10bp 0bp 96bp 96bp
+	special height=1cm
 
 \end_inset
 
