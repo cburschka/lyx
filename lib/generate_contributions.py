@@ -1240,7 +1240,7 @@ contributors = [
                  u"Bugfixes"),
 
      contributor(u"Mohamed Magdy",
-                 "physicist2010 () gmail ! com>",
+                 "physicist2010 () gmail ! com",
                  "GPL",
                  "A permission to use my Arabic-Translation for LyX?",
                  "m=126877445318267",
@@ -1392,7 +1392,7 @@ contributors = [
                  u"Mac OS X enhancements"),
 
      contributor(u"Rob Oakes",
-                 "lyx-devel () oak-tree ! us>",
+                 "lyx-devel () oak-tree ! us",
                  "GPL",
                  "Outline Contributions",
                  "m=124615188102843",
