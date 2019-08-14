@@ -963,7 +963,6 @@ char const * simplefeatures[] = {
 	"array",
 	"verbatim",
 	"longtable",
-	"rotating",
 	"latexsym",
 	"pifont",
 	// subfig is handled in BufferParams.cpp
@@ -975,7 +974,6 @@ char const * simplefeatures[] = {
 	  the `float' package. See the caption package documentation
 	  for explanation.*/
 	"float",
-	"rotfloat",
 	"wrapfig",
 	"booktabs",
 	"dvipost",
@@ -1245,6 +1243,13 @@ string const LaTeXFeatures::getPackages() const
 				 << params_.graphics_driver
 				 << "]{graphicx}\n";
 	}
+
+	// These must be loaded after graphicx, since they try
+	// to load graphicx without options
+	if (mustProvide("rotating"))
+		packages << "\\usepackage{rotating}\n";
+	if (mustProvide("rotfloat"))
+		packages << "\\usepackage{rotfloat}\n";
 
 	// lyxskak.sty --- newer chess support based on skak.sty
 	if (mustProvide("chess"))
