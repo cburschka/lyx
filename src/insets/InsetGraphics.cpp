@@ -60,6 +60,7 @@ TODO
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetIterator.h"
+#include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Length.h"
 #include "Lexer.h"
@@ -835,17 +836,30 @@ void InsetGraphics::latex(otexstream & os,
 	string before;
 	string after;
 
-	if (runparams.moving_arg)
-		before += "\\protect";
-
-	// We never use the starred form, we use the "clip" option instead.
-	before += "\\includegraphics";
-
 	// Write the options if there are any.
 	bool const ps = runparams.flavor == OutputParams::LATEX
 		|| runparams.flavor == OutputParams::DVILUATEX;
 	string const opts = createLatexOptions(ps);
 	LYXERR(Debug::GRAPHICS, "\tOpts = " << opts);
+
+	if (contains(opts, '=')) {
+		std::set<Language const *> langs = buffer().masterBuffer()->getLanguages();
+		for (auto const lang : langs) {
+			if (lang->lang() == "turkish" || lang->lang() == "latin") {
+				// Turkish and Latin activate = (#2005).
+				// Deactivate locally for keyval option parsing
+				before = "\\begingroup\\catcode`\\=12";
+				after = "\\endgroup";
+				break;
+			}
+		}
+	}
+
+	if (runparams.moving_arg)
+		before += "\\protect";
+
+	// We never use the starred form, we use the "clip" option instead.
+	before += "\\includegraphics";
 
 	if (!opts.empty() && !message.empty())
 		before += ('[' + opts + ',' + message + ']');
