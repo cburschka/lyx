@@ -195,6 +195,39 @@ static docstring const lyxgreyedout_def = from_ascii(
 	"  {\\textcolor{note_fontcolor}\\bgroup\\ignorespaces}\n"
 	"  {\\ignorespacesafterend\\egroup}\n");
 
+static docstring const lyxgreyedout_rtl_def = from_ascii(
+	"%% The greyedout annotation environment (with RTL support)\n"
+	"\\NewEnviron{lyxgreyedout}{%\n"
+	"\\if@rl%\n"
+	"\\everypar{\\textcolor{note_fontcolor}\\beginL\\ignorespaces}%\n"
+	"\\BODY\\everypar{\\ignorespacesafterend\\endL}\n"
+	"\\else%\n"
+	"\\textcolor{note_fontcolor}\\bgroup\\ignorespaces%\n"
+	"\\BODY\\ignorespacesafterend\\egroup\n"
+	"\\fi}\n");
+
+static docstring const lyxgreyedout_luartl_def = from_ascii(
+	"%% The greyedout annotation environment (with RTL support)\n"
+	"\\NewEnviron{lyxgreyedout}{%\n"
+	"\\if@RTL%\n"
+	"\\everypar{\\color{note_fontcolor}\\pardir TRT \\textdir TRT\\ignorespaces}%\n"
+	"\\BODY\\everypar{\\ignorespacesafterend}\n"
+	"\\else%\n"
+	"\\textcolor{note_fontcolor}\\bgroup\\ignorespaces%\n"
+	"\\BODY\\ignorespacesafterend\\egroup\n"
+	"\\fi}\n");
+
+static docstring const lyxgreyedout_luartl_babel_def = from_ascii(
+	"%% The greyedout annotation environment (with RTL support)\n"
+	"\\NewEnviron{lyxgreyedout}{%\n"
+	"\\if@rl%\n"
+	"\\everypar{\\color{note_fontcolor}\\pardir TRT \\textdir TRT\\ignorespaces}%\n"
+	"\\BODY\\everypar{\\ignorespacesafterend}\n"
+	"\\else%\n"
+	"\\textcolor{note_fontcolor}\\bgroup\\ignorespaces%\n"
+	"\\BODY\\ignorespacesafterend\\egroup\n"
+	"\\fi}\n");
+
 // We want to omit the file extension for includegraphics, but this does not
 // work when the filename contains other dots.
 // Idea from http://www.tex.ac.uk/cgi-bin/texfaq2html?label=unkgrfextn
@@ -1019,7 +1052,8 @@ char const * simplefeatures[] = {
 	"chessboard",
 	"xskak",
 	"pict2e",
-	"drs"
+	"drs",
+	"environ"
 };
 
 char const * bibliofeatures[] = {
@@ -1557,8 +1591,19 @@ TexString LaTeXFeatures::getMacros() const
 	// greyed-out environment (note inset)
 	// the color is specified in the routine
 	// getColorOptions() to avoid LaTeX-package clashes
-	if (mustProvide("lyxgreyedout"))
-		macros << lyxgreyedout_def;
+	if (mustProvide("lyxgreyedout")) {
+		// We need different version for RTL (#8647)
+		if (hasRTLLanguage()) {
+			if (runparams_.flavor == OutputParams::LUATEX)
+				if (useBabel())
+					macros << lyxgreyedout_luartl_babel_def;
+				else
+					macros << lyxgreyedout_luartl_def;
+			else
+				macros << lyxgreyedout_rtl_def;
+		} else
+			macros << lyxgreyedout_def;
+	}
 
 	if (mustProvide("lyxdot"))
 		macros << lyxdot_def << '\n';

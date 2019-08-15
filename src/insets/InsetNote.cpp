@@ -312,6 +312,8 @@ void InsetNote::validate(LaTeXFeatures & features) const
 			features.useInsetLayout(getLayout());
 		break;
 	case InsetNoteParams::Greyedout:
+		if (features.hasRTLLanguage())
+			features.require("environ");
 		InsetCollapsible::validate(features);
 		break;
 	case InsetNoteParams::Note:
