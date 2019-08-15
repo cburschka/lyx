@@ -9,20 +9,19 @@ Format 66
 Input article
 
 Preamble
-	\usepackage{theorem}
-	\theorembodyfont{\upshape}
-	\newtheorem{theorem}{\R{משפט}}[section]
-	\AtBeginDocument{\make@lr\thetheorem}
-
-	% The following chunk fixes export with XeTeX.
-	% It is needed because polyglossia is used by default
-	% and \make@lr is only defined by babel.
-	\@ifundefined{make@lr}
-	{\def\make@lr#1{\begingroup
-	    \toks@=\expandafter{#1}%
-	    \edef\x{\endgroup
-	  \def\noexpand#1{\noexpand\@number{\the\toks@}}}%
-	  \x}}{\relax}
+\usepackage{theorem}
+\theorembodyfont{\upshape}
+% LuaTeX/luabidi does not know \beginR
+% FIXME LuaTeX/luabidi does not get the order right
+\AtBeginDocument{
+\@ifundefined{setRTL}{}{\providecommand\beginR{\setRTL}}
+}
+\newtheorem{theorem}{{\beginR משפט}}[section]
+% Only needed by babel, not polyglossia (which does
+% not have \make@lr defined)
+\@ifundefined{make@lr}{}{%
+   \AtBeginDocument{\make@lr\thetheorem}
+}
 EndPreamble
 
 
@@ -59,7 +58,7 @@ Style Lemma
 	LatexName             lemma
 	LabelString           "Lemma #."
 	Preamble
-		\newtheorem{lemma}[theorem]{\R{למה}}
+		\newtheorem{lemma}[theorem]{{\beginR למה}}
 	EndPreamble
 End
 
@@ -69,7 +68,7 @@ Style Corollary
 	LatexName             corollary
 	LabelString           "Corollary #."
 	Preamble
-		\newtheorem{corollary}[theorem]{\R{מסקנה}}
+		\newtheorem{corollary}[theorem]{{\beginR מסקנה}}
 	EndPreamble
 End
 
@@ -79,7 +78,7 @@ Style Claim
 	LatexName             claim
 	LabelString           "Claim #."
 	Preamble
-		\newtheorem{claim}[theorem]{\R{טענה}}
+		\newtheorem{claim}[theorem]{{\beginR טענה}}
 	EndPreamble
 End
 
@@ -89,7 +88,7 @@ Style Definition
 	LatexName             definition
 	LabelString           "Definition #."
 	Preamble
-		\newtheorem{definition}[theorem]{\R{הגדרה}}
+		\newtheorem{definition}[theorem]{{\beginR הגדרה}}
 	EndPreamble
 End
 
@@ -99,7 +98,7 @@ Style Remarks
 	LatexName             remark
 	LabelString           "Remarks #."
 	Preamble
-		\newtheorem{remark}[theorem]{\R{הערה}}
+            \newtheorem{remark}[theorem]{{\beginR הערה}}
 	EndPreamble
 End
 
@@ -132,7 +131,7 @@ Style Proof
 	EndFont
 	Preamble
 		\newenvironment{proof}%
-			{\R{\textbf{הוכחה:}}}%
+			{{\beginR \textbf{הוכחה:}}}%
 			{\hfill\rule{2mm}{2mm}\par\vspace{2mm}}
 	EndPreamble
 End
