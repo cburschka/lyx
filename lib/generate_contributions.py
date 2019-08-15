@@ -603,7 +603,7 @@ contributors = [
                  u"Ukrainian translation"),
 
      contributor(u"Tommaso Cucinotta",
-                 "cucinotta () sssup !it",
+                 "cucinotta () sssup ! it",
                  "GPL",
                  "Re: View Menu proposal",
                  "m=119030065212621",
@@ -1387,7 +1387,7 @@ contributors = [
                  u"config. handling enhancements, bugfixes, printer enhancements path mingling"),
 
      contributor(u"Jens Nöckel",
-                 "noeckel () uoregon !edu",
+                 "noeckel () uoregon ! edu",
                  "GPL",
                  "GPL statement",
                  "m=128485749516885",
