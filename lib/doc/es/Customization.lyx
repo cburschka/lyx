@@ -918,12 +918,19 @@ status collapsed
  which define the templates for the insertion of external material to a
  \SpecialChar LyX
  document; see 
+\lang spanish
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:Including-External-Material"
+reference "cap:Inserción-de-material"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
+
+\lang english
 .
 \end_layout
 
