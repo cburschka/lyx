@@ -61,6 +61,8 @@ static QString credits()
 			QString line;
 			do {
 				line = ts.readLine();
+				if (line.startsWith("#"))
+					continue;
 				if (line.startsWith("@b"))
 					out << "<b>" << line.mid(2) << "</b>";
 				else if (line.startsWith("@i")) {
