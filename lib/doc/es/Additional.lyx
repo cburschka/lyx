@@ -153,7 +153,6 @@ Richard Heck
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 <lyx-docs@lists.lyx.org>
 \end_layout
 
@@ -26200,31 +26199,20 @@ Los ejemplos de esta sección muestran algunas características más avanzadas
 \end_layout
 
 \begin_layout Standard
-Para ver más opciones de columnas echa un vistazo a la documentación del
- paquete \SpecialChar LaTeX
+Para ver más opciones de columnas echa un vistazo a la 
+\begin_inset CommandInset href
+LatexCommand href
+name "documentación"
+target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
+literal "false"
+
+\end_inset
+
+ del paquete \SpecialChar LaTeX
  
 \family typewriter
 multicol
 \family default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-\SpecialChar LaTeX
--paquetes ! multicol
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "multicol"
-literal "true"
-
-\end_inset
-
 .
 \end_layout
 
