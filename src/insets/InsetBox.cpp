@@ -350,6 +350,14 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 	string shadowsize_string = params_.shadowsize.asLatexString();
 	bool stdwidth = false;
 	string const cprotect = hasCProtectContent(runparams.moving_arg) ? "\\cprotect" : string();
+	// Colored boxes in RTL need to be wrapped into \beginL...\endL
+	string maybeBeginL;
+	string maybeEndL;
+	bool needEndL = false;
+	if (!runparams.isFullUnicode() && runparams.local_font->isRightToLeft()) {
+		maybeBeginL = "\\beginL";
+		maybeEndL = "\\endL";
+	}
 	// in general the overall width of some decorated boxes is wider thean the inner box
 	// we could therefore calculate the real width for all sizes so that if the user wants
 	// e.g. 0.1\columnwidth or 2cm he gets exactly this size
@@ -421,8 +429,9 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 			os << "{\\fboxsep " << from_ascii(separation_string);
 		if (!params_.inner_box && !width_string.empty()) {
 			if (params_.framecolor != "black" || params_.backgroundcolor != "none") {
-				os << "\\fcolorbox{" << params_.framecolor << "}{" << params_.backgroundcolor << "}{";
+				os << maybeBeginL << "\\fcolorbox{" << params_.framecolor << "}{" << params_.backgroundcolor << "}{";
 				os << "\\makebox";
+				needEndL = !maybeBeginL.empty();
 			} else
 				os << "\\framebox";
 			// Special widths, see usrguide sec. 3.5
@@ -438,9 +447,10 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 			if (params_.hor_pos != 'c')
 				os << "[" << params_.hor_pos << "]";
 		} else {
-			if (params_.framecolor != "black" || params_.backgroundcolor != "none")
-				os << "\\fcolorbox{" << params_.framecolor << "}{" << params_.backgroundcolor << "}";
-			else {
+			if (params_.framecolor != "black" || params_.backgroundcolor != "none") {
+				os << maybeBeginL << "\\fcolorbox{" << params_.framecolor << "}{" << params_.backgroundcolor << "}";
+				needEndL = !maybeBeginL.empty();
+			} else {
 				if (!cprotect.empty() && contains(runparams.active_chars, '^')) {
 					// cprotect relies on ^ being on catcode 7
 					os << "\\begingroup\\catcode`\\^=7";
@@ -486,6 +496,8 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 	case Shaded:
 		// must be set later because e.g. the width settings only work when
 		// it is inside a minipage or parbox
+		os << maybeBeginL;
+		needEndL = !maybeBeginL.empty();
 		break;
 	case Doublebox:
 		if (thickness_string != defaultThick) {
@@ -501,13 +513,17 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 
 	if (params_.inner_box) {
 		if (params_.use_parbox) {
-			if (params_.backgroundcolor != "none" && btype == Frameless)
-				os << "\\colorbox{" << params_.backgroundcolor << "}{";
+			if (params_.backgroundcolor != "none" && btype == Frameless) {
+				os << maybeBeginL << "\\colorbox{" << params_.backgroundcolor << "}{";
+				needEndL = !maybeBeginL.empty();
+			}
 			os << "\\parbox";
 		} else if (params_.use_makebox) {
 			if (!width_string.empty()) {
-				if (params_.backgroundcolor != "none")
-					os << "\\colorbox{" << params_.backgroundcolor << "}{";
+				if (params_.backgroundcolor != "none") {
+					os << maybeBeginL << "\\colorbox{" << params_.backgroundcolor << "}{";
+					needEndL = !maybeBeginL.empty();
+				}
 				os << "\\makebox";
 				// FIXME UNICODE
 				// output the width and horizontal position
@@ -521,16 +537,20 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 				if (params_.hor_pos != 'c')
 					os << "[" << params_.hor_pos << "]";
 			} else {
-				if (params_.backgroundcolor != "none")
-					os << "\\colorbox{" << params_.backgroundcolor << "}";
+				if (params_.backgroundcolor != "none") {
+					os << maybeBeginL << "\\colorbox{" << params_.backgroundcolor << "}";
+					needEndL = !maybeBeginL.empty();
+				}
 				else
 					os << "\\mbox";
 			}
 			os << "{";
 		}
 		else {
-			if (params_.backgroundcolor != "none" && btype == Frameless)
-				os << "\\colorbox{" << params_.backgroundcolor << "}{";
+			if (params_.backgroundcolor != "none" && btype == Frameless) {
+				os << maybeBeginL << "\\colorbox{" << params_.backgroundcolor << "}{";
+				needEndL = !maybeBeginL.empty();
+			}
 			os << "\\begin{minipage}";
 		}
 
@@ -589,7 +609,7 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		break;
 	case Framed:
 		os << "\\end{framed}";
-		if (separation_string != defaultSep	|| thickness_string != defaultThick)
+		if (separation_string != defaultSep || thickness_string != defaultThick)
 			os << "}";
 		break;
 	case Boxed:
@@ -628,6 +648,8 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		// already done
 		break;
 	}
+	if (needEndL)
+		os << maybeEndL;
 }
 
 
