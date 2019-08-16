@@ -61,6 +61,8 @@ What's new
 - (Re-)fix problems with activated equal sign and graphic options in Turkish
   and Latin documents (bug 2005).
 
+- Correctly set language after intitle paragraphs (bug 11514).
+
 - Fix toprule with booktabs/longtable and captions (bug 11589).
 
 - Avoid adding spaces when parsing an array in a macro template (bug 10499).
