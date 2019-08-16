@@ -848,13 +848,30 @@ void TeXOnePar(Buffer const & buf,
 			&& (priorpar->getDepth() > par.getDepth()
 			    || (priorpar->getDepth() == par.getDepth()
 				&& priorpar->layout() != par.layout()));
+
+	// We need to ignore previous intitle commands since languages
+	// are switched locally there (# 11514)
+	// There might be paragraphs before the title, so we check this.
+	Paragraph * prior_nontitle_par = nullptr;
+	if (!intitle_command) {
+		pit_type ppit = pit;
+		while (ppit > 0) {
+			--ppit;
+			Paragraph const * tmppar = &paragraphs.at(ppit);
+			if (tmppar->layout().intitle && tmppar->layout().isCommand())
+				continue;
+			prior_nontitle_par = const_cast<Paragraph*>(tmppar);
+			break;
+		}
+	}
 	Language const * const prev_language =
-		runparams_in.for_search ?
-			languages.getLanguage("ignore")
-		:(priorpar && !priorpar->isPassThru())
-			? (use_prev_env_language ? state->prev_env_language_
-					 	: priorpar->getParLanguage(bparams))
-			: outer_language;
+		runparams_in.for_search 
+			? languages.getLanguage("ignore")
+			: (prior_nontitle_par && !prior_nontitle_par->isPassThru())
+				? (use_prev_env_language 
+					? state->prev_env_language_
+					: prior_nontitle_par->getParLanguage(bparams))
+				: outer_language;
 
 	bool const use_polyglossia = runparams.use_polyglossia;
 	string const par_lang = use_polyglossia ?
@@ -979,7 +996,7 @@ void TeXOnePar(Buffer const & buf,
 			if ((runparams.encoding->package() != Encoding::CJK
 				 || bparams.useNonTeXFonts
 				 || runparams.for_search)
-			    && (par_lang != openLanguageName(state) || localswitch)
+			    && (par_lang != openLanguageName(state) || localswitch || intitle_command)
 			    && !par_lang.empty()) {
 				string bc = use_polyglossia ?
 					  getPolyglossiaBegin(lang_begin_command, par_lang,
