@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 589
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -13,7 +13,7 @@ logicalmkup
 \language russian
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "default" "DejaVu Serif"
 \font_sans "default" "DejaVu Sans"
 \font_typewriter "default" "DejaVu Sans Mono"
@@ -21,7 +21,9 @@ logicalmkup
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype true
@@ -48,7 +50,7 @@ logicalmkup
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize a4paper
+\papersize a4
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -70,6 +72,7 @@ logicalmkup
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \index Предметный указатель
 \shortcut idx
 \color #008000
@@ -85,6 +88,7 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -1170,21 +1174,8 @@ Tab
 \end_inset
 
 , что является окружением по умолчанию для текста.
- Теперь вы пом
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-'
-\end_layout
-
-\end_inset
-
-естите некоторые окружения в ваш новый документ, чтобы посмотреть, как они
- работают.
+ Теперь вы помéстите некоторые окружения в ваш новый документ, чтобы посмотреть,
+ как они работают.
 \end_layout
 
 \begin_layout Subsection
@@ -2219,20 +2210,7 @@ report
 \begin_inset Text
 
 \begin_layout Plain Layout
-для документов, б
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-'
-\end_layout
-
-\end_inset
-
-ольших чем article, печать с двух сторон
+для документов, бóольших чем article, печать с двух сторон
 \end_layout
 
 \end_inset
