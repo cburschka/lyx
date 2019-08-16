@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 589
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -13,7 +13,7 @@ logicalmkup
 \language russian
 \language_package default
 \inputencoding utf8
-\fontencoding auto
+\fontencoding global
 \font_roman "default" "DejaVu Serif"
 \font_sans "default" "DejaVu Sans"
 \font_typewriter "default" "DejaVu Sans Mono"
@@ -21,9 +21,7 @@ logicalmkup
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_roman_osf false
-\font_sans_osf false
-\font_typewriter_osf false
+\font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype true
@@ -50,7 +48,7 @@ logicalmkup
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize a4
+\papersize a4paper
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -72,7 +70,6 @@ logicalmkup
 \justification true
 \use_refstyle 0
 \use_minted 0
-\use_lineno 0
 \index Предметный указатель
 \shortcut idx
 \color #008000
@@ -88,7 +85,6 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
