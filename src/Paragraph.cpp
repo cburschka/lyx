@@ -2748,7 +2748,7 @@ void Paragraph::latex(BufferParams const & bparams,
 		runparams.post_macro = rp.post_macro;
 	}
 
-    // Close wrapper for alien script
+	// Close wrapper for alien script
 	if (!alien_script.empty()) {
 		os << "}";
 		alien_script.clear();

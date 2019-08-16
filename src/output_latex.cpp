@@ -780,7 +780,7 @@ void TeXOnePar(Buffer const & buf,
 	Paragraph const * nextpar = runparams.isLastPar
 		? nullptr : &paragraphs.at(pit + 1);
 
-	bool const intitle_command = style.intitle && style.latextype == LATEX_COMMAND;
+	bool const intitle_command = style.intitle && style.isCommand();
 
 	if (style.pass_thru) {
 		Font const outerfont = text.outerFont(pit);
@@ -847,7 +847,7 @@ void TeXOnePar(Buffer const & buf,
 			&& priorpar->layout().isEnvironment()
 			&& (priorpar->getDepth() > par.getDepth()
 			    || (priorpar->getDepth() == par.getDepth()
-				    && priorpar->layout() != par.layout()));
+				&& priorpar->layout() != par.layout()));
 	Language const * const prev_language =
 		runparams_in.for_search ?
 			languages.getLanguage("ignore")
@@ -1282,23 +1282,21 @@ void TeXOnePar(Buffer const & buf,
 
 	// InTitle commands need to be closed after the language has been closed.
 	if (intitle_command) {
-		if (is_command) {
-			os << '}';
-			if (!style.postcommandargs().empty())
-				latexArgInsets(par, os, runparams, style.postcommandargs(), "post:");
-			if (!runparams.post_macro.empty()) {
-				// Output the stored fragile commands (labels, indices etc.)
-				// that need to be output after the command with moving argument.
-				os << runparams.post_macro;
-				runparams.post_macro.clear();
-			}
-			if (par.needsCProtection(runparams.moving_arg)
-			    && contains(runparams.active_chars, '^'))
-				os << "\\endgroup";
-			if (runparams.encoding != prev_encoding) {
-				runparams.encoding = prev_encoding;
-				os << setEncoding(prev_encoding->iconvName());
-			}
+		os << '}';
+		if (!style.postcommandargs().empty())
+			latexArgInsets(par, os, runparams, style.postcommandargs(), "post:");
+		if (!runparams.post_macro.empty()) {
+			// Output the stored fragile commands (labels, indices etc.)
+			// that need to be output after the command with moving argument.
+			os << runparams.post_macro;
+			runparams.post_macro.clear();
+		}
+		if (par.needsCProtection(runparams.moving_arg)
+		    && contains(runparams.active_chars, '^'))
+			os << "\\endgroup";
+		if (runparams.encoding != prev_encoding) {
+			runparams.encoding = prev_encoding;
+			os << setEncoding(prev_encoding->iconvName());
 		}
 	}
 
