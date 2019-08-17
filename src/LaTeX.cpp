@@ -161,6 +161,10 @@ void LaTeX::removeAuxiliaryFiles() const
 	FileName const gls(changeExtension(file.absFileName(), ".gls"));
 	gls.removeFile();
 
+	// endnotes file
+	FileName const ent(changeExtension(file.absFileName(), ".ent"));
+	ent.removeFile();
+
 	// Also remove the aux file
 	FileName const aux(changeExtension(file.absFileName(), ".aux"));
 	aux.removeFile();
