@@ -3353,7 +3353,9 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 				if (in_last_par)
 					end = cur.selectionEnd().pos();
 				else
-					end = it.lastpos();
+					// the +1 is needed for cases, e.g., where there is a
+					// paragraph break. See #11629.
+					end = it.lastpos() + 1;
 				if (beg != end && it.paragraph().isChanged(beg, end)) {
 					enable = true;
 					break;
