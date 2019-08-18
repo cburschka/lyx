@@ -38,6 +38,7 @@ Sublabel: special
 
 # XeTeX with TeX fonts
 ######################
+export/export/latex/lyxbugs/wrong_output_3059-rtl-tables-xetex_pdf4_texF
 # XeTeX with TeX-fonts works only for input encodings "utf8-plain" and "ascii".
 # Ignore all (excect dedicated XeTeX tests):
 !export/export/.*xetex.*_pdf4_texF
@@ -186,7 +187,6 @@ export/export/latex/languages/supported-languages_polyglossia_.*(dvi|pdf.?|texF)
 export/export/latex/languages/supported-languages_luatex_.*(dvi|pdf.?|texF)
 export/export/latex/lyxbugs-resolved/9633-.*(dvi|pdf.?|texF)
 export/export/latex/lyxbugs/11522-systemfonts-Math-missingchars_pdf5_texF
-export/export/latex/lyxbugs/wrong_output_3059-rtl-tables-xetex_pdf4_texF
 
 # lyx2lyx
 # dedicated lyx2lyx tests
