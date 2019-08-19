@@ -851,7 +851,7 @@ void InsetGraphics::latex(otexstream & os,
 		// We have a language that makes = active. Deactivate locally
 		// for keyval option parsing (#2005).
 		before = "\\begingroup\\catcode`\\=12";
-		after = "\\endgroup";
+		after = "\\endgroup ";
 	}
 
 	if (runparams.moving_arg)
