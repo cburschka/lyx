@@ -849,7 +849,7 @@ void InsetGraphics::latex(otexstream & os,
 				// Turkish and Latin activate = (#2005).
 				// Deactivate locally for keyval option parsing
 				before = "\\begingroup\\catcode`\\=12";
-				after = "\\endgroup";
+				after = "\\endgroup ";
 				break;
 			}
 		}
