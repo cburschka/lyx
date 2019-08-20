@@ -159,15 +159,6 @@ Sublabel: texissues
 # e.g. non-ASCII in verbatim or listings, incompatible packages, ...
 # "Wontfix" if documents demonstrate correct use in the default output format.
 
-# Compilation error with Chech or Slovak text i a table cell.
-# All exports using babel fail (problem in Czech and Slovak Babel support,
-# reported per mail to Petr Tesa\v{r}\'ik, 2016-09-06)
-# Without the Czech or Slovak text it compiles.
-# No problem with inserted German (or other foreign language) text.
-# No problem if the complete table is Slovak, too.
-export/export/latex/languages/en-sk-cz-babel-table-error_(dvi|pdf[23]?|.*_texF)
-
-
 # Xe/LuaTeX
 ###########
 

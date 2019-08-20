@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 574
+\lyxformat 589
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,7 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -47,7 +49,7 @@
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize a4paper
+\papersize a4
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -69,6 +71,7 @@
 \justification false
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \notefontcolor #0000ff
 \branch slovak
 \selected 1
@@ -104,6 +107,54 @@
 \end_header
 
 \begin_body
+
+\begin_layout Section*
+Compilation error with Czech or Slovak text in a table cell.
+\end_layout
+
+\begin_layout Standard
+Encoding switches are not to blame.
+ Rather an incompatibility of 
+\emph on
+array
+\emph default
+ or 
+\emph on
+multirow
+\emph default
+ packages with Babel's 
+\family typewriter
+slovak.ldf
+\family default
+ and 
+\family typewriter
+czech.ldf
+\family default
+.
+ The problem is that these language definition files make the hyphen character
+ (-) active for the 
+\begin_inset Quotes eld
+\end_inset
+
+split
+\begin_inset Quotes erd
+\end_inset
+
+ attribute (cf.
+ the Babel-Czech documentation 
+\begin_inset Quotes eld
+\end_inset
+
+czech.pdf
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection*
+Test
+\end_layout
 
 \begin_layout Standard
 Remove this inserted Slovak text 
@@ -207,10 +258,12 @@ This is the minimal table example.
  Also setting the language of the table to Slovak helps.
 \end_layout
 
-\begin_layout Standard
-Encoding switches are not to blame.
- Rather an incompatibility of array or multirow packages with Babels slovak.ldf
- and czech.ldf.
+\begin_layout Subsection*
+Update
+\end_layout
+
+\begin_layout Quotation
+Fixed in revision ce447e176 (14.08.2019).
 \end_layout
 
 \end_body
