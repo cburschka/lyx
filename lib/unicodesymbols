@@ -303,7 +303,7 @@
 #0x018c ""                         "" "" # LATIN SMALL LETTER D WITH TOPBAR
 #0x018d ""                         "" "" # LATIN SMALL LETTER TURNED DELTA
 #0x018e ""                         "" "" # LATIN CAPITAL LETTER REVERSED E
-0x018f "\\textSchwa"               "textschwa" "force=utf8;utf8-cjk" # LATIN CAPITAL LETTER SCHWA
+0x018f "\\textSchwa"               "textschwa" "force=utf8;utf8x;utf8-cjk" # LATIN CAPITAL LETTER SCHWA
 #0x0190 ""                         "" "" # LATIN CAPITAL LETTER OPEN E
 #0x0191 ""                         "" "" # LATIN CAPITAL LETTER F WITH HOOK
 0x0192 "\\textflorin"             "textcomp" "force=cp862;cp1255;cp1256" # LATIN SMALL LETTER F WITH HOOK
