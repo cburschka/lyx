@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/python
 # -*- coding: utf-8 -*-
 #
 # file configure.py
@@ -10,6 +10,11 @@
 
 from __future__ import print_function
 import glob, logging, os, re, shutil, subprocess, sys, stat
+
+if sys.version_info[0] < 3:
+    import codecs
+    open = codecs.open
+
 
 # set up logging
 logging.basicConfig(level = logging.DEBUG,
@@ -46,7 +51,7 @@ def addToRC(lines):
     ''' utility function: shortcut for appending lines to outfile
         add newline at the end of lines.
     '''
-    if lines.strip() != '':
+    if lines.strip():
         writeToFile(outfile, lines + '\n', append = True)
         logger.debug('Add to RC:\n' + lines + '\n\n')
 
@@ -552,7 +557,7 @@ def checkLatex(dtl_tools):
     path, PPLATEX = checkProg('a DVI postprocessing program', ['pplatex $$i'])
     #-----------------------------------------------------------------
     path, PLATEX = checkProg('pLaTeX, the Japanese LaTeX', ['platex $$i'])
-    if PLATEX != '':
+    if PLATEX:
         # check if PLATEX is pLaTeX2e
         writeToFile('chklatex.ltx', r'\nonstopmode\makeatletter\@@end')
         # run platex on chklatex.ltx and check result
@@ -573,7 +578,7 @@ def checkLatex(dtl_tools):
     else:
         addToRC(r'\converter latex      dvi        "%s"	"latex,hyperref-driver=dvips"' % PPLATEX)
     # no latex
-    if LATEX != '':
+    if LATEX:
         # Check if latex is usable
         writeToFile('chklatex.ltx', r'''
 \nonstopmode
@@ -598,9 +603,9 @@ def checkLuatex():
     ''' Check if luatex is there '''
     path, LUATEX = checkProg('LuaTeX', ['lualatex $$i'])
     path, DVILUATEX = checkProg('LuaTeX (DVI)', ['dvilualatex $$i'])
-    if LUATEX != '':
+    if LUATEX:
         addToRC(r'\converter luatex      pdf5       "%s"	"latex=lualatex"' % LUATEX)
-    if DVILUATEX != '':
+    if DVILUATEX:
         addToRC(r'\converter dviluatex   dvi3        "%s"	"latex=dvilualatex"' % DVILUATEX)
 
 
@@ -1121,7 +1126,7 @@ def checkConverterEntries():
 '''])
 
     path, lilypond = checkProg('a LilyPond -> EPS/PDF/PNG converter', ['lilypond'])
-    if (lilypond != ''):
+    if (lilypond):
         version_string = cmdOutput("lilypond --version")
         match = re.match('GNU LilyPond (\S+)', version_string)
         if match:
@@ -1144,7 +1149,7 @@ def checkConverterEntries():
             logger.info('+  found LilyPond, but could not extract version number.')
     #
     path, lilypond_book = checkProg('a LilyPond book (LaTeX) -> LaTeX converter', ['lilypond-book'])
-    if (lilypond_book != ''):
+    if (lilypond_book):
         version_string = cmdOutput("lilypond-book --version")
         match = re.match('^(\S+)$', version_string)
         if match:
@@ -1225,7 +1230,7 @@ def checkDocBook():
             r'''\converter docbook    dvi        ""	""
 \converter docbook    html       ""	""'''])
     #
-    if DOCBOOK != '':
+    if DOCBOOK:
         return ('yes', 'true', '\\def\\hasdocbook{yes}')
     else:
         return ('no', 'false', '')
@@ -1267,6 +1272,13 @@ def checkOtherEntries():
 \copier    program    "python -tt $$s/scripts/ext_copy.py $$i $$o"
 ''')
 
+def _checkForClassExtension(x):
+    '''if the extension for a latex class is not
+        provided, add .cls to the classname'''
+    if not '.' in x:
+        return x.strip() + '.cls'
+    else:
+        return x.strip()
 
 def processLayoutFile(file, bool_docbook):
     ''' process layout file and get a line of result
@@ -1295,46 +1307,39 @@ def processLayoutFile(file, bool_docbook):
         "scrbook" "scrbook" "book (koma-script)" "false" "scrbook.cls" "Books"
         "svjog" "svjour" "article (Springer - svjour/jog)" "false" "svjour.cls,svjog.clo" ""
     '''
-    def checkForClassExtension(x):
-        '''if the extension for a latex class is not
-           provided, add .cls to the classname'''
-        if not b'.' in x:
-            return x.strip() + b'.cls'
-        else:
-            return x.strip()
     classname = file.split(os.sep)[-1].split('.')[0]
     # return ('LaTeX', '[a,b]', 'a', ',b,c', 'article') for \DeclareLaTeXClass[a,b,c]{article}
-    p = re.compile(b'^\s*#\s*\\\\Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}\s*$')
-    q = re.compile(b'^\s*#\s*\\\\DeclareCategory{(.*)}\s*$')
-    classdeclaration = b""
-    categorydeclaration = b'""'
-    for line in open(file, 'rb').readlines():
-        res = p.search(line)
-        qres = q.search(line)
+    p = re.compile('\s*#\s*\\\\Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}\s*$')
+    q = re.compile('\s*#\s*\\\\DeclareCategory{(.*)}\s*$')
+    classdeclaration = ""
+    categorydeclaration = '""'
+    for line in open(file, 'r', encoding='utf8').readlines():
+        res = p.match(line)
+        qres = q.match(line)
         if res != None:
             (classtype, optAll, opt, opt1, desc) = res.groups()
-            avai = {b'LaTeX':b'false', b'DocBook':bool_docbook.encode('ascii')}[classtype]
+            avai = {'LaTeX': 'false', 'DocBook': bool_docbook}[classtype]
             if opt == None:
-                opt = classname.encode('ascii')
-                prereq_latex = checkForClassExtension(classname.encode('ascii'))
+                opt = classname
+                prereq_latex = _checkForClassExtension(classname)
             else:
-                prereq_list = optAll[1:-1].split(b',')
-                prereq_list = list(map(checkForClassExtension, prereq_list))
-                prereq_latex = b','.join(prereq_list)
-            prereq_docbook = {'true':b'', 'false':b'docbook'}[bool_docbook]
-            prereq = {b'LaTeX':prereq_latex, b'DocBook':prereq_docbook}[classtype]
-            classdeclaration = (b'"%s" "%s" "%s" "%s" "%s"'
+                prereq_list = optAll[1:-1].split(',')
+                prereq_list = list(map(_checkForClassExtension, prereq_list))
+                prereq_latex = ','.join(prereq_list)
+            prereq_docbook = {'true':'', 'false':'docbook'}[bool_docbook]
+            prereq = {'LaTeX':prereq_latex, 'DocBook':prereq_docbook}[classtype]
+            classdeclaration = ('"%s" "%s" "%s" "%s" "%s"'
                                % (classname, opt, desc, avai, prereq))
-            if categorydeclaration != b'""':
-                return classdeclaration + b" " + categorydeclaration
+            if categorydeclaration != '""':
+                return classdeclaration + " " + categorydeclaration
         if qres != None:
-             categorydeclaration = b'"%s"' % (qres.groups()[0])
-             if classdeclaration != b"":
-                 return classdeclaration + b" " + categorydeclaration
-    if classdeclaration != b"":
-        return classdeclaration + b" " + categorydeclaration
+             categorydeclaration = '"%s"' % (qres.groups()[0])
+             if classdeclaration:
+                 return classdeclaration + " " + categorydeclaration
+    if classdeclaration:
+        return classdeclaration + " " + categorydeclaration
     logger.warning("Layout file " + file + " has no \DeclareXXClass line. ")
-    return b""
+    return ""
 
 
 def checkLatexConfig(check_config, bool_docbook):
@@ -1352,8 +1357,8 @@ def checkLatexConfig(check_config, bool_docbook):
         # fails, we still have something to start lyx.
         logger.info(msg + ' default values')
         logger.info('+checking list of textclasses... ')
-        tx = open('textclass.lst', 'wb')
-        tx.write(b'''
+        tx = open('textclass.lst', 'w', encoding='utf8')
+        tx.write('''
 # This file declares layouts and their associated definition files
 # (include dir. relative to the place where this file is).
 # It contains only default values, since chkconfig.ltx could not be run
@@ -1371,20 +1376,19 @@ def checkLatexConfig(check_config, bool_docbook):
             # get stuff between /xxxx.layout .
             classname = file.split(os.sep)[-1].split('.')[0]
             #  tr ' -' '__'`
-            cleanclass = classname.replace(' ', '_')
-            cleanclass = cleanclass.replace('-', '_')
+            cleanclass = classname.replace(' ', '_').replace('-', '_')
             # make sure the same class is not considered twice
             if foundClasses.count(cleanclass) == 0: # not found before
                 foundClasses.append(cleanclass)
                 retval = processLayoutFile(file, bool_docbook)
-                if retval != b"":
+                if retval:
                     tx.write(retval + os.linesep)
         tx.close()
         logger.info('\tdone')
     if not os.path.isfile('packages.lst') or not check_config:
         logger.info('+generating default list of packages... ')
         removeFiles(['packages.lst'])
-        tx = open('packages.lst', 'w')
+        tx = open('packages.lst', 'w', encoding='utf8')
         tx.close()
         logger.info('\tdone')
     if not check_config:
@@ -1401,9 +1405,9 @@ def checkLatexConfig(check_config, bool_docbook):
     # Construct the list of classes to test for.
     # build the list of available layout files and convert it to commands
     # for chkconfig.ltx
-    declare = re.compile(b'^\\s*#\\s*\\\\Declare(LaTeX|DocBook)Class\\s*(\[([^,]*)(,.*)*\])*\\s*{(.*)}\\s*$')
-    category = re.compile(b'^\\s*#\\s*\\\\DeclareCategory{(.*)}\\s*$')
-    empty = re.compile(b'^\\s*$')
+    declare = re.compile('\\s*#\\s*\\\\Declare(LaTeX|DocBook)Class\\s*(\[([^,]*)(,.*)*\])*\\s*{(.*)}\\s*$')
+    category = re.compile('\\s*#\\s*\\\\DeclareCategory{(.*)}\\s*$')
+    empty = re.compile('\\s*$')
     testclasses = list()
     for file in (glob.glob( os.path.join('layouts', '*.layout') )
                  + glob.glob( os.path.join(srcdir, 'layouts', '*.layout' ) ) ):
@@ -1411,34 +1415,32 @@ def checkLatexConfig(check_config, bool_docbook):
         if not os.path.isfile(file):
             continue
         classname = file.split(os.sep)[-1].split('.')[0]
-        decline = b""
-        catline = b""
-        for line in open(file, 'rb').readlines():
-            if not empty.match(line) and line[0] != b'#'[0]:
-                if decline == b"":
+        decline = ""
+        catline = ""
+        for line in open(file, 'r', encoding='utf8').readlines():
+            if not empty.match(line) and line[0] != '#'[0]:
+                if decline == "":
                     logger.warning("Failed to find valid \Declare line "
                         "for layout file `%s'.\n\t=> Skipping this file!" % file)
                     nodeclaration = True
                 # A class, but no category declaration. Just break.
                 break
-            if declare.search(line) != None:
-                decline = b"\\TestDocClass{%s}{%s}" \
-                           % (classname.encode('ascii'), line[1:].strip())
+            if declare.match(line) != None:
+                decline = "\\TestDocClass{%s}{%s}" % (classname, line[1:].strip())
                 testclasses.append(decline)
-            elif category.search(line) != None:
-                catline = (b"\\DeclareCategory{%s}{%s}"
-                           % (classname.encode('ascii'),
-                              category.search(line).groups()[0]))
+            elif category.match(line) != None:
+                catline = ("\\DeclareCategory{%s}{%s}"
+                           % (classname, category.match(line).groups()[0]))
                 testclasses.append(catline)
-            if catline == b"" or decline == b"":
+            if catline == "" or decline == "":
                 continue
             break
         if nodeclaration:
             continue
     testclasses.sort()
-    cl = open('chklayouts.tex', 'wb')
+    cl = open('chklayouts.tex', 'w', encoding='utf8')
     for line in testclasses:
-        cl.write(line + b'\n')
+        cl.write(line + '\n')
     cl.close()
     #
     # we have chklayouts.tex, then process it
@@ -1471,9 +1473,9 @@ def checkLatexConfig(check_config, bool_docbook):
     # if configure successed, move textclass.lst.tmp to textclass.lst
     # and packages.lst.tmp to packages.lst
     if (os.path.isfile('textclass.lst.tmp')
-          and len(open('textclass.lst.tmp').read()) > 0
+          and len(open('textclass.lst.tmp', encoding='utf8').read()) > 0
         and os.path.isfile('packages.lst.tmp')
-          and len(open('packages.lst.tmp').read()) > 0):
+          and len(open('packages.lst.tmp', encoding='utf8').read()) > 0):
         shutil.move('textclass.lst.tmp', 'textclass.lst')
         shutil.move('packages.lst.tmp', 'packages.lst')
     return ret
@@ -1483,8 +1485,8 @@ def checkModulesConfig():
   removeFiles(['lyxmodules.lst', 'chkmodules.tex'])
 
   logger.info('+checking list of modules... ')
-  tx = open('lyxmodules.lst', 'wb')
-  tx.write(b'''## This file declares modules and their associated definition files.
+  tx = open('lyxmodules.lst', 'w', encoding='utf8')
+  tx.write('''## This file declares modules and their associated definition files.
 ## It has been automatically generated by configure
 ## Use "Options/Reconfigure" if you need to update it after a
 ## configuration change.
@@ -1508,8 +1510,8 @@ def checkModulesConfig():
           continue
 
       seen.append(filename)
-      retval = processModuleFile(file, filename.encode('ascii'), bool_docbook)
-      if retval != b"":
+      retval = processModuleFile(file, filename, bool_docbook)
+      if retval:
           tx.write(retval)
   tx.close()
   logger.info('\tdone')
@@ -1530,25 +1532,25 @@ def processModuleFile(file, filename, bool_docbook):
         We expect output:
           "ModuleName" "filename" "Description" "Packages" "Requires" "Excludes" "Category"
     '''
-    remods = re.compile(b'\\\\DeclareLyXModule\s*(?:\[([^]]*?)\])?{(.*)}')
-    rereqs = re.compile(b'#+\s*Requires: (.*)')
-    reexcs = re.compile(b'#+\s*Excludes: (.*)')
-    recaty = re.compile(b'#+\s*Category: (.*)')
-    redbeg = re.compile(b'#+\s*DescriptionBegin\s*$')
-    redend = re.compile(b'#+\s*DescriptionEnd\s*$')
+    remods = re.compile('\s*#\s*\\\\DeclareLyXModule\s*(?:\[([^]]*?)\])?{(.*)}')
+    rereqs = re.compile('\s*#+\s*Requires: (.*)')
+    reexcs = re.compile('\s*#+\s*Excludes: (.*)')
+    recaty = re.compile('\\s*#\\s*\\\\DeclareCategory{(.*)}\\s*$')
+    redbeg = re.compile('\s*#+\s*DescriptionBegin\s*$')
+    redend = re.compile('\s*#+\s*DescriptionEnd\s*$')
 
-    modname = desc = pkgs = req = excl = catgy = b""
+    modname = desc = pkgs = req = excl = catgy = ""
     readingDescription = False
     descLines = []
 
-    for line in open(file, 'rb').readlines():
+    for line in open(file, 'r', encoding='utf8').readlines():
       if readingDescription:
         res = redend.search(line)
         if res != None:
           readingDescription = False
-          desc = b" ".join(descLines)
+          desc = " ".join(descLines)
           # Escape quotes.
-          desc = desc.replace(b'"', b'\\"')
+          desc = desc.replace('"', '\\"')
           continue
         descLines.append(line[1:].strip())
         continue
@@ -1560,59 +1562,62 @@ def processModuleFile(file, filename, bool_docbook):
       if res != None:
           (pkgs, modname) = res.groups()
           if pkgs == None:
-            pkgs = b""
+            pkgs = ""
           else:
-            tmp = [s.strip() for s in pkgs.split(b",")]
-            pkgs = b",".join(tmp)
+            tmp = [s.strip() for s in pkgs.split(",")]
+            pkgs = ",".join(tmp)
           continue
       res = rereqs.search(line)
       if res != None:
         req = res.group(1)
-        tmp = [s.strip() for s in req.split(b"|")]
-        req = b"|".join(tmp)
+        tmp = [s.strip() for s in req.split("|")]
+        req = "|".join(tmp)
         continue
       res = reexcs.search(line)
       if res != None:
         excl = res.group(1)
-        tmp = [s.strip() for s in excl.split(b"|")]
-        excl = b"|".join(tmp)
+        tmp = [s.strip() for s in excl.split("|")]
+        excl = "|".join(tmp)
         continue
       res = recaty.search(line)
       if res != None:
         catgy = res.group(1)
         continue
 
-    if modname == b"":
+    if modname == "":
       logger.warning("Module file without \DeclareLyXModule line. ")
-      return b""
+      return ""
 
-    if pkgs != b"":
+    if pkgs:
         # this module has some latex dependencies:
         # append the dependencies to chkmodules.tex,
         # which is \input'ed by chkconfig.ltx
         testpackages = list()
-        for pkg in pkgs.split(b","):
-            if b"->" in pkg:
+        for pkg in pkgs.split(","):
+            if "->" in pkg:
                 # this is a converter dependency: skip
                 continue
-            if pkg.endswith(b".sty"):
+            if pkg.endswith(".sty"):
                 pkg = pkg[:-4]
-            testpackages.append("\\TestPackage{%s}" % (pkg.decode('ascii'),))
-        cm = open('chkmodules.tex', 'a')
+            testpackages.append("\\TestPackage{%s}" % pkg)
+        cm = open('chkmodules.tex', 'a', encoding='utf8')
         for line in testpackages:
             cm.write(line + '\n')
         cm.close()
 
-    return (b'"%s" "%s" "%s" "%s" "%s" "%s" "%s"\n'
-            % (modname, filename, desc, pkgs, req, excl, catgy))
+    local = "true"
+    if (file.startswith(srcdir)):
+        local = "false"
+    return ('"%s" "%s" "%s" "%s" "%s" "%s" "%s" "%s"\n'
+            % (modname, filename, desc, pkgs, req, excl, catgy, local))
 
 
 def checkCiteEnginesConfig():
   removeFiles(['lyxciteengines.lst', 'chkciteengines.tex'])
 
   logger.info('+checking list of cite engines... ')
-  tx = open('lyxciteengines.lst', 'wb')
-  tx.write(b'''## This file declares cite engines and their associated definition files.
+  tx = open('lyxciteengines.lst', 'w', encoding='utf8')
+  tx.write('''## This file declares cite engines and their associated definition files.
 ## It has been automatically generated by configure
 ## Use "Options/Reconfigure" if you need to update it after a
 ## configuration change.
@@ -1636,8 +1641,8 @@ def checkCiteEnginesConfig():
           continue
 
       seen.append(filename)
-      retval = processCiteEngineFile(file, filename.encode('ascii'), bool_docbook)
-      if retval != b"":
+      retval = processCiteEngineFile(file, filename, bool_docbook)
+      if retval:
           tx.write(retval)
   tx.close()
   logger.info('\tdone')
@@ -1654,25 +1659,25 @@ def processCiteEngineFile(file, filename, bool_docbook):
         We expect output:
           "CiteEngineName" "filename" "CiteEngineType" "CiteFramework" "DefaultBiblio" "Description" "Packages"
     '''
-    remods = re.compile(b'\\\\DeclareLyXCiteEngine\s*(?:\[([^]]*?)\])?{(.*)}')
-    redbeg = re.compile(b'#+\s*DescriptionBegin\s*$')
-    redend = re.compile(b'#+\s*DescriptionEnd\s*$')
-    recet = re.compile(b'\s*CiteEngineType\s*(.*)')
-    redb = re.compile(b'\s*DefaultBiblio\s*(.*)')
-    resfm = re.compile(b'\s*CiteFramework\s*(.*)')
+    remods = re.compile('\s*#\s*\\\\DeclareLyXCiteEngine\s*(?:\[([^]]*?)\])?{(.*)}')
+    redbeg = re.compile('\s*#+\s*DescriptionBegin\s*$')
+    redend = re.compile('\s*#+\s*DescriptionEnd\s*$')
+    recet = re.compile('\s*CiteEngineType\s*(.*)')
+    redb = re.compile('\s*DefaultBiblio\s*(.*)')
+    resfm = re.compile('\s*CiteFramework\s*(.*)')
 
     modname = desc = pkgs = cet = db = cfm = ""
     readingDescription = False
     descLines = []
 
-    for line in open(file, 'rb').readlines():
+    for line in open(file, 'r', encoding='utf8').readlines():
       if readingDescription:
         res = redend.search(line)
         if res != None:
           readingDescription = False
-          desc = b" ".join(descLines)
+          desc = " ".join(descLines)
           # Escape quotes.
-          desc = desc.replace(b'"', b'\\"')
+          desc = desc.replace('"', '\\"')
           continue
         descLines.append(line[1:].strip())
         continue
@@ -1684,10 +1689,10 @@ def processCiteEngineFile(file, filename, bool_docbook):
       if res != None:
           (pkgs, modname) = res.groups()
           if pkgs == None:
-            pkgs = b""
+            pkgs = ""
           else:
-            tmp = [s.strip() for s in pkgs.split(b",")]
-            pkgs = b",".join(tmp)
+            tmp = [s.strip() for s in pkgs.split(",")]
+            pkgs = ",".join(tmp)
           continue
       res = recet.search(line)
       if res != None:
@@ -1702,35 +1707,36 @@ def processCiteEngineFile(file, filename, bool_docbook):
         cfm = res.group(1)
         continue
 
-    if modname == b"":
+    if modname == "":
       logger.warning("Cite Engine File file without \DeclareLyXCiteEngine line. ")
-      return b""
+      return ""
 
-    if pkgs != b"":
+    if pkgs:
         # this cite engine has some latex dependencies:
         # append the dependencies to chkciteengines.tex,
         # which is \input'ed by chkconfig.ltx
         testpackages = list()
-        for pkg in pkgs.split(b","):
-            if b"->" in pkg:
+        for pkg in pkgs.split(","):
+            if "->" in pkg:
                 # this is a converter dependency: skip
                 continue
-            if pkg.endswith(b".sty"):
+            if pkg.endswith(".sty"):
                 pkg = pkg[:-4]
-            testpackages.append("\\TestPackage{%s}" % (pkg.decode('ascii'),))
-        cm = open('chkciteengines.tex', 'a')
+            testpackages.append("\\TestPackage{%s}" % pkg)
+        cm = open('chkciteengines.tex', 'a', encoding='utf8')
         for line in testpackages:
             cm.write(line + '\n')
         cm.close()
 
-    return (b'"%s" "%s" "%s" "%s" "%s" "%s" "%s"\n' % (modname, filename, cet, cfm, db, desc, pkgs))
+    return ('"%s" "%s" "%s" "%s" "%s" "%s" "%s"\n'
+            % (modname, filename, cet, cfm, db, desc, pkgs))
 
 
 def checkXTemplates():
   removeFiles(['xtemplates.lst'])
 
   logger.info('+checking list of external templates... ')
-  tx = open('xtemplates.lst', 'w')
+  tx = open('xtemplates.lst', 'w', encoding='utf8')
   tx.write('''## This file lists external templates.
 ## It has been automatically generated by configure
 ## Use "Options/Reconfigure" if you need to update it after a
@@ -1753,7 +1759,7 @@ def checkXTemplates():
           continue
 
       seen.append(filename)
-      if filename != "":
+      if filename:
           tx.write(filename + "\n")
   tx.close()
   logger.info('\tdone')
@@ -1765,7 +1771,7 @@ def checkTeXAllowSpaces():
     if lyx_check_config:
         msg = "Checking whether TeX allows spaces in file names... "
         writeToFile('a b.tex', r'\message{working^^J}' )
-        if LATEX != '':
+        if LATEX:
             if os.name == 'nt' or sys.platform == 'cygwin':
                 latex_out = cmdOutput(LATEX + r""" "\nonstopmode\input{\"a b\"}\makeatletter\@@end" """)
             else:
@@ -1884,7 +1890,7 @@ Format %i
     (chk_docbook, bool_docbook, docbook_cmd) = checkDocBook()
     checkTeXAllowSpaces()
     windows_style_tex_paths = checkTeXPaths()
-    if windows_style_tex_paths != '':
+    if windows_style_tex_paths:
         addToRC(r'\tex_expects_windows_paths %s' % windows_style_tex_paths)
     checkOtherEntries()
     if lyx_kpsewhich:
@@ -1893,7 +1899,7 @@ Format %i
     checkCiteEnginesConfig()
     checkXTemplates()
     # --without-latex-config can disable lyx_check_config
-    ret = checkLatexConfig(lyx_check_config and LATEX != '', bool_docbook)
+    ret = checkLatexConfig(lyx_check_config and LATEX, bool_docbook)
     removeTempFiles()
     # The return error code can be 256. Because most systems expect an error code
     # in the range 0-127, 256 can be interpretted as 'success'. Because we expect
