@@ -2022,7 +2022,7 @@ def revert_linggloss(document):
 
             beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
             endInset = find_end_of_inset(document.body, i)
-            endPlain = find_token_backwards(document.body, "\\end_layout", endInset)
+            endPlain = find_end_of_layout(document.body, beginPlain)
             precontent = put_cmd_in_ert(cmd)
             if len(optargcontent) > 0:
                 precontent += put_cmd_in_ert("[") + optargcontent + put_cmd_in_ert("]")
