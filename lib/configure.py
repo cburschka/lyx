@@ -1605,11 +1605,8 @@ def processModuleFile(file, filename, bool_docbook):
             cm.write(line + '\n')
         cm.close()
 
-    local = "true"
-    if (file.startswith(srcdir)):
-        local = "false"
-    return ('"%s" "%s" "%s" "%s" "%s" "%s" "%s" "%s"\n'
-            % (modname, filename, desc, pkgs, req, excl, catgy, local))
+    return ('"%s" "%s" "%s" "%s" "%s" "%s" "%s"\n'
+            % (modname, filename, desc, pkgs, req, excl, catgy))
 
 
 def checkCiteEnginesConfig():
