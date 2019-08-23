@@ -1804,6 +1804,7 @@ if __name__ == '__main__':
     lyx_keep_temps = False
     version_suffix = ''
     lyx_binary_dir = ''
+    logger.info("+Running LyX configure with Python %s.%s.%s", sys.version_info[0], sys.version_info[1], sys.version_info[2])
     ## Parse the command line
     for op in sys.argv[1:]:   # default shell/for list is $*, the options
         if op in [ '-help', '--help', '-h' ]:
