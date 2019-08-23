@@ -797,7 +797,7 @@ class LyX_base:
                 # this should not happen
                 self.warning("Malformed LyX document! No \\language header found!")
                 return
-            self.header[k-1 : k-1] = ["\\begin_local_layout", "\\end_local_layout"]
+            self.header[k : k] = ["\\begin_local_layout", "\\end_local_layout"]
             i = k - 1
 
         j = find_end_of(self.header, i, "\\begin_local_layout", "\\end_local_layout")
