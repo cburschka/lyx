@@ -128,8 +128,19 @@ Sublabel: varying_versions
 # (see https://www.gnu.org/software/libiconv/)
 export/export/latex/inputenc-cp858_pdf2
 
-# Seminar export with LaTeX fails in latest TeXLive:
+# aastex: hard-coded version in class name:
+# 2018-05-12 aastex6.cls -> aastex62.cls
+export/examples/Articles/American_Astronomical_Society_.*
+export/templates/Articles/American_Astronomical_Society_.*
+
+
+# New failures with current TexLive (works with TL16/17 from Debian/stable)
+# -------------------------------------------------------------------------
+# (see "invertedTests" for description)
+
 export/examples/(|fr/)seminar_(dvi|pdf).*
+
+export/export/latex/inputenc-luatex-utf8_pdf5_texF
 
 # since TL18, Babel-Ukrainean uses UTF-8 if it detects Xe/LuaTeX (for "\date").
 # * garbled output with LuaTeX + TeX fonts (since TL18)
@@ -137,31 +148,31 @@ export/examples/(|fr/)seminar_(dvi|pdf).*
 export/export/latex/languages/uk-babel-date-missing-chars-with-ascii_.*_texF
 export/(doc|examples)/uk/(Intro|Welcome)_.*_texF
 
-# new problem with TL18 (see invertedTests)
-export/export/latex/inputenc-luatex-utf8_pdf5_texF
-
 # Compilation errors under TeXLive-19 with XeTeX, TeX-fonts, inputenc utf8,
 # and expl3.sty (TL 17 works).
 export/export/latex/inputenc-xetex-utf8-expl3-bug_pdf4_texF
 
-# Error with LuaTeX for Japanese documents using graphicx.sty with TL17:
+# Fails with TL16/17 from Debian/stable (resolved with new TexLive)
+# -------------------------------------------------------------------------
+
+# LuaTeX for Japanese documents using graphicx.sty
 #   ! Package pdftex.def Error: Option `pdftex' requires pdfTeX,
 #   (pdftex.def)                but pdfTeX features are missing.
 export/doc/ja/Tutorial_(dvi3|pdf5)_systemF
 
-# aastex: hard-coded version in class name:
-# 2018-05-12 aastex6.cls -> aastex62.cls
-export/examples/Articles/American_Astronomical_Society_.*
-export/templates/Articles/American_Astronomical_Society_.*
+# Korean with LuaTeX:
+# Language korean not found in language.dat.lua
+export/examples/ko/Welcome_(dvi3|pdf5)_systemF
+export/export/latex/CJK/en-de-el-ru-ko_utf8_(dvi3|pdf5)_systemF
+
+# Arabic Beamer example
+export/examples/ar/Presentations/Beamer_pdf4_.*
 
 # `acmart` calls "libertine" as default font.
 # With TeXLive < 18, this clashes with LyX setting up 8-bit TeX fonts
 # PDF (luatex) and PDF (xetex) (compilation error or wrong fonts).
 # See also #9744 allow parallel configuration of TeX and non-TeX fonts.
 export/templates/Articles/Association_for_Computing_Machinery_pdf[45]_texF
-
-# Arabic Beamer example fails with TL17
-export/examples/ar/Presentations/Beamer_pdf4_.*
 
 
 Sublabel: wrong_output
