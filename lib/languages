@@ -463,11 +463,13 @@ Language bulgarian
 	Provides         textcyrillic
 End
 
-# not yet supported by polyglossia
+# Unless polyglossia supports variant=canadian,
+# we can use american, as canadian \eq. american also in babel
 Language canadian
 	GuiName          "English (Canada)"
 	BabelName        canadian
-#	PolyglossiaName  english
+	PolyglossiaName  english
+	PolyglossiaOpts  "variant=american"
 #	PolyglossiaOpts  "variant=canadian"
 	QuoteStyle       english
 	Encoding         iso8859-15
@@ -476,14 +478,16 @@ Language canadian
 	LangCode         en_CA
 End
 
-# not yet supported by polyglossia
-# Note: If polyglossia support gets implemented, french needs
-#       PolyglossiaOpts  "variant=french"
+# Unless polyglossia supports variant=canadian,
+# we can use french, as canadien \eq. french also in babel
+# TODO: 'canadien' has been declared obsolete in babel
+#       in favor of 'acadien'. Change the babel name once
+#       this has settled
 Language canadien
 	GuiName          "French (Canada)"
 	BabelName        canadien
-#	PolyglossiaName  french
-#	PolyglossiaOpts  "variant=canadien"
+	PolyglossiaName  french
+#	PolyglossiaOpts  "variant=canadian"
 	QuoteStyle       french
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
