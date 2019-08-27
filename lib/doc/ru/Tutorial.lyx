@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 544
+\lyxformat 589
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -13,7 +13,7 @@ logicalmkup
 \language russian
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "default" "DejaVu Serif"
 \font_sans "default" "DejaVu Sans"
 \font_typewriter "default" "DejaVu Sans Mono"
@@ -21,7 +21,9 @@ logicalmkup
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype true
@@ -31,6 +33,8 @@ logicalmkup
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -48,12 +52,12 @@ logicalmkup
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize a4paper
+\papersize a4
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 1
-\use_package esint 1
+\use_package esint 0
 \use_package mathdots 1
 \use_package mathtools 1
 \use_package mhchem 1
@@ -70,6 +74,7 @@ logicalmkup
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \index Предметный указатель
 \shortcut idx
 \color #008000
@@ -85,6 +90,7 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
+\tablestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -2072,7 +2078,7 @@ Book
 \end_layout
 
 \begin_layout Standard
-Размеры шрифтов, печать в одну или две колонки, оформление заголовков станиц
+Размеры шрифтов, печать в одну или две колонки, оформление заголовков страниц
  — вот некоторые отличия типографского оформления одного журнала от другого.
  Так как Компьютерный Век продолжает развиваться, журналы начали принимать
  документы в электронном виде, создавая 
@@ -2206,7 +2212,7 @@ report
 \begin_inset Text
 
 \begin_layout Plain Layout
-для документов, бóольших чем article, печать с двух сторон
+для документов, бóльших чем article, печать с двух сторон
 \end_layout
 
 \end_inset
@@ -4884,7 +4890,7 @@ arg   "ert-insert"
  Войдите в режим \SpecialChar TeX
 , нажав на обратный слэш.
  Всё, что вы введёте, отобразится в красном цвете.
- Выход из режима \SpecialChar LaTeX
+ Выход из режима \SpecialChar TeX
  производится нажатием клавиши 
 \family sans
 Пробел
@@ -4899,7 +4905,7 @@ arg   "ert-insert"
 \end_inset
 
  или круглых скобок.
- Как только вы вышли из режима \SpecialChar LaTeX
+ Как только вы вышли из режима \SpecialChar TeX
 , если \SpecialChar LyX
  знает набранную вами команду \SpecialChar LaTeX
 , он
