@@ -480,12 +480,9 @@ End
 
 # Unless polyglossia supports variant=canadian,
 # we can use french, as canadien \eq. french also in babel
-# TODO: 'canadien' has been declared obsolete in babel
-#       in favor of 'acadien'. Change the babel name once
-#       this has settled
 Language canadien
 	GuiName          "French (Canada)"
-	BabelName        canadien
+	BabelName        acadian
 	PolyglossiaName  french
 #	PolyglossiaOpts  "variant=canadian"
 	QuoteStyle       french
