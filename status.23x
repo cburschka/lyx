@@ -102,6 +102,9 @@ What's new
 
 - Fix loading order problem with rotfloat/rotating and graphicx (bug 11502).
 
+- Fix LaTeX error with Canadian French as second language. LyX now uses
+  the (recommended) babel option "acadian" rather than "canadien".
+
 
 * USER INTERFACE
 
