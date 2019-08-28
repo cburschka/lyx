@@ -3523,7 +3523,11 @@ def revert_totalheight(document):
                 else:
                     del document.body[kk]
         elif oldheight != "":
-            document.body.insert(k, "\theight " + oldheight) 
+            if special != "":
+                document.body[k] = "\tspecial " + special
+                document.body.insert(k, "\theight " + oldheight)
+            else:
+                document.body[k] = "\theight " + oldheight
         i = j + 1
 
 
