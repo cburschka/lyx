@@ -49,10 +49,10 @@ public:
 	///
 	typedef std::vector<BibTeXInfo const *> const BibTeXInfoList;
 	///
-	BibTeXInfo() : is_bibtex_(true), modifier_(0) {}
+	BibTeXInfo() : is_bibtex_(true), num_bib_key_(0), modifier_(0) {}
 	/// argument sets isBibTeX_, so should be false only if it's coming
 	/// from a bibliography environment
-	BibTeXInfo(bool ib) : is_bibtex_(ib), modifier_(0) {}
+	BibTeXInfo(bool ib) : is_bibtex_(ib), num_bib_key_(0), modifier_(0) {}
 	/// constructor that sets the entryType
 	BibTeXInfo(docstring const & key, docstring const & type);
 	/// \return an author or editor list (short form by default),
