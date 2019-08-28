@@ -1,4 +1,4 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
 \lyxformat 544
 \begin_document
 \begin_header
@@ -91,6 +91,7 @@ logicalmkup
 \html_css_as_file 0
 \html_be_strict false
 \author -712698321 "Jürgen Spitzmüller"
+\author -131811572 "Yuriy Skalko"
 \end_header
 
 \begin_body
@@ -3363,12 +3364,8 @@ Using Math
 , then the 
 \family sans
 Math
-\begin_inset space ~
-\end_inset
-
-Panel
 \family default
- will allow you to write professional-looking math quickly and easily.
+ toolbar will allow you to write professional-looking math quickly and easily.
 \end_layout
 
 \begin_layout Section
@@ -3640,12 +3637,9 @@ Exponents and Indices
 An exponent can be entered from the 
 \family sans
 Math
-\begin_inset space ~
-\end_inset
-
-Toolbar
 \family default
- (see below), but it is actually simpler just to type the caret key, 
+ toolbar (see below), but it is actually simpler just to type the caret
+ key, 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3722,13 +3716,9 @@ The Math toolbar
 The 
 \family sans
 Math
-\begin_inset space ~
-\end_inset
-
-toolbar
 \family default
- is a convenient way to enter symbols and/or to perform complicated formula
- operations.
+ toolbar is a convenient way to enter symbols and/or to perform complicated
+ formula operations.
  Many of these operations can be accomplished from the keyboard or the 
 \family sans
 Insert\SpecialChar menuseparator
@@ -3743,13 +3733,9 @@ Math
  However, we are going to concentrate on using the 
 \family sans
 Math
-\begin_inset space ~
-\end_inset
-
-toolbar
 \family default
-, just to let you know what is out there; you can learn keyboard shortcuts
- and commands later from the 
+ toolbar, just to let you know what is out there; you can learn keyboard
+ shortcuts and commands later from the 
 \emph on
 Math
 \emph default
@@ -3760,13 +3746,9 @@ Math
 The 
 \family sans
 Math
-\begin_inset space ~
-\end_inset
-
-toolbar
 \family default
- is shown when the cursor is in a formula and can also be turned on manually
- in the menu 
+ toolbar is shown when the cursor is in a formula and can also be turned
+ on manually in the menu 
 \family sans
 View\SpecialChar menuseparator
 Toolbars
@@ -3807,13 +3789,9 @@ Toolbars
  menu, the 
 \family sans
 Math
-\begin_inset space ~
-\end_inset
-
-toolbar
 \family default
- is only shown when the cursor is within a formula; this state is visualized
- by the renaming of the menu entry from 
+ toolbar is only shown when the cursor is within a formula; this state is
+ visualized by the renaming of the menu entry from 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3844,13 +3822,10 @@ Greek and symbols
 The 
 \family sans
 Math
-\begin_inset space ~
-\end_inset
-
-toolbar
 \family default
- allows you to choose from a large array of symbols used in math: operators,
- arrows, relationships, delimiters, special characters, sums and integrals.
+ toolbar allows you to choose from a large array of symbols used in math:
+ operators, arrows, relationships, delimiters, special characters, sums
+ and integrals.
  Note that subscripting and superscripting allow you to put lower and upper
  limits on sums and integrals.
 \end_layout
@@ -3921,6 +3896,10 @@ arg   "dialog-show mathdelimiter"
 
  to pop up the 
 \family sans
+Math
+\begin_inset space ~
+\end_inset
+
 Delimiter
 \family default
  dialog.
@@ -3948,6 +3927,10 @@ Delimiter
 If you are lazy, you can type actual parentheses in math mode, rather than
  using the 
 \family sans
+Math
+\begin_inset space ~
+\end_inset
+
 Delimiter
 \family default
  dialog.
@@ -3970,12 +3953,8 @@ You can also put delimiters or a square root sign or a decoration on already
  on the button you want from the 
 \family sans
 Math
-\begin_inset space ~
-\end_inset
-
-Toolbar
 \family default
-.
+ toolbar.
  Try using this to change Newton's second law from scalar to vector form
  (
 \begin_inset Formula $f=ma$
@@ -3986,7 +3965,7 @@ Toolbar
 \end_inset
 
 ).
- Once you have  learned about matrices, this is how you will put parentheses
+ Once you have learned about matrices, this is how you will put parentheses
  or brackets around them.
 \end_layout
 
@@ -3996,20 +3975,28 @@ Fractions
 
 \begin_layout Standard
 To create a fraction, click on the fraction button 
+\change_deleted -131811572 1566935165
+
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\frac-square"
 \end_inset
 
+
+\change_inserted -131811572 1566935147
+
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac"
+\end_inset
+
+
+\change_unchanged
  in the 
 \family sans
 Math
-\begin_inset space ~
-\end_inset
-
-Toolbar
 \family default
-.
+ toolbar.
  \SpecialChar LyX
  writes two insertion points in a fraction.
  As you would expect, you can use arrow keys or the mouse to move around
@@ -4039,7 +4026,6 @@ Down
  You have made a fraction! Of course you can type anything within each of
  the two boxes: variables with exponents, square roots, other fractions,
  whatever.
- 
 \end_layout
 
 \begin_layout Labeling
@@ -4160,12 +4146,8 @@ Space
 Click on the 
 \family sans
 Math
-\begin_inset space ~
-\end_inset
-
-Toolbar
 \family default
- button 
+ toolbar button 
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\functions"
@@ -4279,11 +4261,11 @@ arg   "dialog-show mathmatrix"
  in the 
 \family sans
 Math
-\begin_inset space ~
-\end_inset
+\change_inserted -131811572 1566934540
 
-Toolbar
 \family default
+ toolbar
+\change_unchanged
 .
  A pop-up dialog allows you to choose how many rows and columns you want
  in your matrix.
@@ -4401,14 +4383,13 @@ arg   "math-display"
 
  in the 
 \family sans
-Math Toolbar
+Math
 \family default
-.
+ toolbar.
  This centers the formula and adds a blank line before and after it.
  Now type in an expression and compile your file to see how it looks.
  The display button is actually a toggle; use it now to change a couple
  of your expressions to display mode and back.
- 
 \end_layout
 
 \begin_layout Standard
