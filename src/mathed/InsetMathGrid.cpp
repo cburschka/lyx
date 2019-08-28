@@ -891,6 +891,8 @@ void InsetMathGrid::delCol(col_type col)
 			tmpcellinfo.push_back(cellinfo_[i]);
 		}
 	swap(cells_, tmpcells);
+	// copying cells loses the buffer reference
+	setBuffer(*buffer_);
 	swap(cellinfo_, tmpcellinfo);
 
 	colinfo_.erase(colinfo_.begin() + col);
