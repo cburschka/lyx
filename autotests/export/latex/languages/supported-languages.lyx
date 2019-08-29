@@ -10,14 +10,14 @@
 \ifdefined\luatexversion\else
   \newfontfamily\amharicfont[Script=Ethiopic]{Noto Sans Ethiopic}
 \fi
-\newfontfamily\churchslavonicfont[Script=Cyrillic]{MonomakhUnicode}
-\newfontfamily\devanagarifont[Script=Devanagari]{Noto Serif Devanagari}
+%\newfontfamily\churchslavonicfont[Script=Cyrillic]{MonomakhUnicode}
+\newfontfamily\devanagarifont[Script=Devanagari]{Noto Sans Devanagari}
 \newfontfamily\hangulfont[Script=Hangul]{Baekmuk Batang}
 \newfontfamily\kannadafont[Script=Kannada]{Noto Serif Kannada}
 \newfontfamily\khmerfont[Script=Khmer]{Noto Serif Khmer}
 \newfontfamily\laofont[Script=Lao]{Noto Serif Lao}
 % gloss-marathi.ldf has a spelling error: "script=Devaganari"
-\newfontfamily\marathifont[Script=Devanagari]{Noto Serif Devanagari}
+\newfontfamily\marathifont[Script=Devanagari]{Noto Sans Devanagari}
 \newfontfamily\syriacfont[Script=Syriac]{FreeSans}
 \newfontfamily\tamilfont[Script=Tamil]{Noto Serif Tamil}
 \newfontfamily\telugufont[Script=Telugu]{Noto Serif Telugu}
