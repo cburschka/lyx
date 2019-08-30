@@ -11,7 +11,7 @@ if (len(argv) != 3):
 
 with open(argv[1], 'rb') as fsrc:
     subproc = Popen("gnuplot", shell=True, stdin=PIPE)
-    subproc.stdin.write("set terminal pdf\nset output '%s'\n" % argv[2])
+    subproc.stdin.write(b"set terminal pdf\nset output '%s'\n" % argv[2].encode())
     shutil.copyfileobj(fsrc, subproc.stdin)
-    subproc.stdin.write("exit\n")
-    subproc.wait()
+    subproc.stdin.write(b"exit\n")
+    subproc.communicate()
