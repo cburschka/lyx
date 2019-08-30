@@ -88,9 +88,9 @@ export/templates/examples/Books/Springer_Contributed_Books.*
 #   dvipdfmx:warning: >> Please check if kpathsea library can find this font: DavidCLM-Medium.pfa
 # but: `kpsewhich DavidCLM-Medium.pfa` finds the font!
 # Converting with `t1binary` (from t1utils) helps.
+export/.*/he/.*((dvi|pdf.?)|_texF)
 export/export/latex/unicodesymbols/.*_he.*pdf2
 export/export/latex/(supported-languages|he-scrarticle).*
-export/.*/he/.*((dvi|pdf.?)|_texF)
 export/export/latex/languages/supported-languages_.*_pdf3
 
 
@@ -103,6 +103,10 @@ export/export/latex/languages/supported-languages_.*_pdf3
 # * as a consequence, `ps2pdf` fails for some documents:
 export/.*/ja/.*_pdf
 
+# "exotic" languages require "exotic" fonts, e.g.
+# MonomakhUnicode (from Debian package "texlive-fonts-extra") or sci.ponomar.net/fonts.html
+# Noto Serif Devanagari (from Debian package "fonts-noto-hinted")
+export/export/latex/languages/supported-languages_polyglossia_.*_systemF
 
 Sublabel: needauth
 ##################
