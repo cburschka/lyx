@@ -211,8 +211,7 @@ export/export/latex/languages/supported-languages_luatex_(dvi3|pdf5)_systemF
 # Some packages fail with XeTeX/LuaTeX
 # Reported upstream (https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg184435.html)
 # Is there a new version fixing the problem?
-export/examples/Articles/Astronomy_%26_Astrophysics_(dvi3|pdf[45])_.*
-export/templates/Articles/Astronomy_%26_Astrophysics_(dvi3|pdf[45])_.*
+export/examples/Articles/Astronomy_%26_Astrophysics_(dvi3|pdf5)_texF
 
 # Gives the following error:
 # # ! Package hpstatement Error: H or P statement "H251"
