@@ -10,7 +10,7 @@
 \ifdefined\luatexversion\else
   \newfontfamily\amharicfont[Script=Ethiopic]{Noto Sans Ethiopic}
 \fi
-%\newfontfamily\churchslavonicfont[Script=Cyrillic]{MonomakhUnicode}
+\newfontfamily\churchslavonicfont[Script=Cyrillic]{MonomakhUnicode}
 \newfontfamily\devanagarifont[Script=Devanagari]{Noto Sans Devanagari}
 \newfontfamily\hangulfont[Script=Hangul]{Baekmuk Batang}
 \newfontfamily\kannadafont[Script=Kannada]{Noto Serif Kannada}
