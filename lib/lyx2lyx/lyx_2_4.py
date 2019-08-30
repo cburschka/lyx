@@ -792,56 +792,6 @@ def revert_tuftecite(document):
         i = j
 
 
-def convert_aaencoding(document):
-    " Convert default document option due to encoding change in aa class. "
-
-    if document.textclass != "aa":
-        return
-
-    i = 0
-
-    i = find_token(document.header, "\\use_default_options true", i)
-    if i == -1:
-        return
-    j = find_token(document.header, "\\inputencoding", 0)
-    if j == -1:
-        document.warning("Malformed LyX Document! Missing \\inputencoding header.")
-        return
-    val = get_value(document.header, "\\inputencoding", j)
-    if val == "auto" or val == "latin9":
-        document.header[i] = "\\use_default_options false"
-        k = find_token(document.header, "\\options", 0)
-        if k == -1:
-            document.header.insert(i, "\\options latin9")
-        else:
-            document.header[k] = document.header[k] + ",latin9"
-
-
-def revert_aaencoding(document):
-    " Revert default document option due to encoding change in aa class. "
-
-    if document.textclass != "aa":
-        return
-
-    i = 0
-
-    i = find_token(document.header, "\\use_default_options true", i)
-    if i == -1:
-        return
-    j = find_token(document.header, "\\inputencoding", 0)
-    if j == -1:
-        document.warning("Malformed LyX Document! Missing \\inputencoding header.")
-        return
-    val = get_value(document.header, "\\inputencoding", j)
-    if val == "utf8":
-        document.header[i] = "\\use_default_options false"
-        k = find_token(document.header, "\\options", 0)
-        if k == -1:
-            document.header.insert(i, "\\options utf8")
-        else:
-            document.header[k] = document.header[k] + ",utf8"
-            
-
 
 def revert_stretchcolumn(document):
     " We remove the column varwidth flags or everything else will become a mess. "
@@ -1863,6 +1813,54 @@ def convert_lineno(document):
     else:
         document.header[k:k] = ["\\use_lineno %d" % use_lineno,
                                 "\\lineno_options %s" % options]
+
+
+def convert_aaencoding(document):
+    " Convert default document option due to encoding change in aa class. "
+
+    if document.textclass != "aa":
+        return
+
+    i = 0
+    i = find_token(document.header, "\\use_default_options true", i)
+    if i == -1:
+        return
+    j = find_token(document.header, "\\inputencoding", 0)
+    if j == -1:
+        document.warning("Malformed LyX Document! Missing \\inputencoding header.")
+        return
+    val = get_value(document.header, "\\inputencoding", j)
+    if val == "auto-legacy" or val == "latin9":
+        document.header[i] = "\\use_default_options false"
+        k = find_token(document.header, "\\options", 0)
+        if k == -1:
+            document.header.insert(i, "\\options latin9")
+        else:
+            document.header[k] = document.header[k] + ",latin9"
+
+
+def revert_aaencoding(document):
+    " Revert default document option due to encoding change in aa class. "
+
+    if document.textclass != "aa":
+        return
+
+    i = 0
+    i = find_token(document.header, "\\use_default_options true", i)
+    if i == -1:
+        return
+    j = find_token(document.header, "\\inputencoding", 0)
+    if j == -1:
+        document.warning("Malformed LyX Document! Missing \\inputencoding header.")
+        return
+    val = get_value(document.header, "\\inputencoding", j)
+    if val == "utf8":
+        document.header[i] = "\\use_default_options false"
+        k = find_token(document.header, "\\options", 0)
+        if k == -1:
+            document.header.insert(i, "\\options utf8")
+        else:
+            document.header[k] = document.header[k] + ",utf8"
 
 
 def revert_new_languages(document):
@@ -3649,7 +3647,7 @@ convert = [
            [549, []],
            [550, [convert_fontenc]],
            [551, []],
-           [552, [convert_aaencoding]],
+           [552, []],
            [553, []],
            [554, []],
            [555, []],
@@ -3672,7 +3670,7 @@ convert = [
            [572, [convert_notoFonts]],  # Added options thin, light, extralight for Noto
            [573, [convert_inputencoding_namechange]],
            [574, [convert_ruby_module, convert_utf8_japanese]],
-           [575, [convert_lineno]],
+           [575, [convert_lineno, convert_aaencoding]],
            [576, []],
            [577, [convert_linggloss]],
            [578, []],
@@ -3703,7 +3701,7 @@ revert =  [[588, [revert_totalheight]],
            [577, [revert_drs]],
            [576, [revert_linggloss, revert_subexarg]],
            [575, [revert_new_languages]],
-           [574, [revert_lineno]],
+           [574, [revert_lineno, revert_aaencoding]],
            [573, [revert_ruby_module, revert_utf8_japanese]],
            [572, [revert_inputencoding_namechange]],
            [571, [revert_notoFonts]],
@@ -3726,7 +3724,7 @@ revert =  [[588, [revert_totalheight]],
            [554, [revert_vcolumns]],
            [553, [revert_stretchcolumn]],
            [552, [revert_tuftecite]],
-           [551, [revert_floatpclass, revert_floatalignment, revert_aaencoding]],
+           [551, [revert_floatpclass, revert_floatalignment]],
            [550, [revert_nospellcheck]],
            [549, [revert_fontenc]],
            [548, []],# dummy format change

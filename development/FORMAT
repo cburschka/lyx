@@ -70,7 +70,10 @@ changes happened in particular if possible. A good example would be
 	  churchslavonic, and oldrussian.
 
 2019-05-21 Pavel Sanda <sanda@lyx.org>
-	* Format incremented to 575: add line numbering via lineno package
+	* Format incremented to 575: 
+          - add line numbering via lineno package
+ 	  - adapt class options in aa class documents to latin9 > utf8 default
+            encoding change.
 
 2019-04-16  Günter Milde <milde@lyx.org>
         * Format incremented to 574: Ruby inset, fixes for Japanese.
@@ -160,15 +163,12 @@ changes happened in particular if possible. A good example would be
 	  This builds on an extension of the natbib CiteEngine by tufte.
 
 2018-05-10  Jürgen Spitzmüller <spitz@lyx.org>
-	Format incremented to 552: 
-	* support for float alignment
+	* Format incremented to 552: support for float alignment
 	  - add buffer param \float_alignment [class|left|center|right]
 	  - add buffer param \float_placement class
 	  - add float param alignment [class|document|left|center|right]
 	  - add float param placement class (=> new param)
 	  - add float param placement document(=> like formerly empty param)
-	* adapt class options in aa class documents to latin9 > utf8 default
-          encoding change.
 
 2018-05-06  Jürgen Spitzmüller <spitz@lyx.org>
 	* format incremented to 551: add font info param \nospellcheck that prevents
