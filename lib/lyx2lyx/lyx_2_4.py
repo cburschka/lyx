@@ -1882,8 +1882,9 @@ def revert_new_languages(document):
         i = find_token(document.body, "\\lang", i+1)
         if i == -1:
             break
-        if document.body[i][6:].strip() in new_languages:
-            used_languages.add(document.language)
+        val = get_value(document.body, "\\lang", i)
+        if val in new_languages:
+            used_languages.add(val)
 
     # Korean is already supported via CJK, so leave as-is for Babel
     if ("korean" in used_languages
@@ -1893,7 +1894,7 @@ def revert_new_languages(document):
     used_languages.discard("korean")
 
     for lang in used_languages:
-        revert(lang, *new_languages[lang])
+        revert_language(document, lang, new_languages[lang][0], new_languages[lang][1])
 
 
 gloss_inset_def = [
