@@ -6,15 +6,16 @@
 \origin unavailable
 \textclass scrartcl
 \begin_preamble
-\newfontfamily\amharicfont{NotoSansEthiopic}
+\newfontfamily\amharicfont{Noto Sans Ethiopic}
 \newfontfamily\churchslavonicfont[Script=Cyrillic]{MonomakhUnicode}
-\newfontfamily\devanagarifont[Script=Devanagari]{Noto Sans Devanagari}
+\newfontfamily\devanagarifont[Script=Devanagari]{Noto Serif Devanagari}
 \newfontfamily\hangulfont[Script=Hangul]{Baekmuk Batang}
 \newfontfamily\kannadafont[Script=Kannada]{Noto Serif Kannada}
 \newfontfamily\khmerfont[Script=Khmer]{Noto Serif Khmer}
 \newfontfamily\laofont[Script=Lao]{Noto Serif Lao}
 % gloss-marathi.ldf has a spelling error: "script=Devaganari"
-\newfontfamily\marathifont[Script=Devanagari]{Noto Sans Devanagari}
+\newfontfamily\marathifont[Script=Devanagari]{Noto Serif Devanagari}
+% prevent spurious polyglossia error (missing script tag):
 \newfontfamily\syriacfont[Script=Syriac]{FreeSans}
 \newfontfamily\tamilfont[Script=Tamil]{Noto Serif Tamil}
 \newfontfamily\telugufont[Script=Telugu]{Noto Serif Telugu}
@@ -30,7 +31,6 @@
   \setCJKmainfont{IPAexMincho}
   \setCJKsansfont{IPAexGothic}
 \fi
-
 % with LuaTeX, https://www.ctan.org/pkg/luatexja
 % see https://tex.stackexchange.com/questions/222980/how-to-use-chinese-with-lualatex
 \usepackage{ifluatex}
@@ -110,8 +110,11 @@ enumitem
 \use_refstyle 0
 \use_minted 0
 \use_lineno 0
-\lineno_options
 \branch only-as-document-language
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
 \branch babel-only
 \selected 0
 \filename_suffix 0

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 576
+\lyxformat 589
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,6 +18,7 @@
 \newfontfamily\laofont[Script=Lao]{Noto Serif Lao}
 % gloss-marathi.ldf has a spelling error: "script=Devaganari"
 \newfontfamily\marathifont[Script=Devanagari]{Noto Sans Devanagari}
+% prevent spurious polyglossia error (missing script tag):
 \newfontfamily\syriacfont[Script=Syriac]{FreeSans}
 \newfontfamily\tamilfont[Script=Tamil]{Noto Serif Tamil}
 \newfontfamily\telugufont[Script=Telugu]{Noto Serif Telugu}
@@ -62,7 +63,9 @@ enumitem
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \font_cjk gbsn
@@ -87,7 +90,7 @@ enumitem
 \pdf_colorlinks true
 \pdf_backref section
 \pdf_pdfusetitle true
-\papersize a4paper
+\papersize a4
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -110,7 +113,11 @@ enumitem
 \use_refstyle 0
 \use_minted 0
 \use_lineno 0
-\lineno_options \branch only-as-document-language
+\branch only-as-document-language
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
 \branch babel-only
 \selected 0
 \filename_suffix 0
