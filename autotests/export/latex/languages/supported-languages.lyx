@@ -5,48 +5,6 @@
 \save_transient_properties true
 \origin unavailable
 \textclass scrartcl
-\begin_preamble
-\@ifpackageloaded{fontspec}{
-\ifdefined\luatexversion\else
-  \newfontfamily\amharicfont[Script=Ethiopic]{Noto Sans Ethiopic}
-\fi
-\newfontfamily\churchslavonicfont[Script=Cyrillic]{MonomakhUnicode}
-\newfontfamily\devanagarifont[Script=Devanagari]{Noto Sans Devanagari}
-\newfontfamily\hangulfont[Script=Hangul]{Baekmuk Batang}
-\newfontfamily\kannadafont[Script=Kannada]{Noto Serif Kannada}
-\newfontfamily\khmerfont[Script=Khmer]{Noto Serif Khmer}
-\newfontfamily\laofont[Script=Lao]{Noto Serif Lao}
-% gloss-marathi.ldf has a spelling error: "script=Devaganari"
-\newfontfamily\marathifont[Script=Devanagari]{Noto Sans Devanagari}
-% prevent spurious polyglossia error (missing script tag):
-\newfontfamily\syriacfont[Script=Syriac]{FreeSans}
-\newfontfamily\tamilfont[Script=Tamil]{Noto Serif Tamil}
-\newfontfamily\telugufont[Script=Telugu]{Noto Serif Telugu}
-\newfontfamily\thaanafont[Script=Thaana]{Noto Sans Thaana}
-\newfontfamily\tibetanfont[Script=Tibetan]{Noto Sans Tibetan}
-
-% Font setup for Japanese (not supported by Polyglossia)
-% with XeTeX, https://ctan.org/pkg/xecjk
-\usepackage{ifxetex}
-\ifxetex
-  \usepackage{xeCJK}
-  \setCJKmainfont{IPAexMincho}
-  \setCJKsansfont{IPAexGothic}
-\fi
-% with LuaTeX, https://www.ctan.org/pkg/luatexja
-% see https://tex.stackexchange.com/questions/222980/how-to-use-chinese-with-lualatex
-\usepackage{ifluatex}
-\ifluatex
-  %\usepackage{luatexja-fontspec}
-  % use Mainfont (DejaVu) for Greek and Cyrillic:
-  %\ltjsetparameter{jacharrange={-2}}
-  %\usepackage[match]{luatexja-fontspec}
-  %\setmainjfont[Mapping=tex-text]{WenQuanYi Micro Hei}
-  %\setsansjfont[Mapping=tex-text]{WenQuanYi Micro Hei}
-  %\setmonojfont{WenQuanYi Micro Hei Mono}
-\fi
-}{}
-\end_preamble
 \use_default_options false
 \begin_modules
 enumitem
@@ -3407,12 +3365,17 @@ status open
 \end_inset
 
 
-\begin_inset Branch conflict-ko
-inverted 1
+\begin_inset Branch polyglossia-only
+inverted 0
 status open
 
 \begin_layout Standard
-\begin_inset Branch polyglossia-only
+\begin_inset Branch conflict-ko
+inverted 0
+status open
+
+\begin_layout Standard
+\begin_inset Branch conflict-luatex
 inverted 0
 status open
 
@@ -3423,6 +3386,11 @@ status open
 日本語
 \series default
 （にほんご、にっぽんご[注 1]）は、主に日本国内や日本人同士の間で使用されている言語である。
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3496,9 +3464,32 @@ utf8-cjk
 
 \begin_layout Itemize
 XeTeX and LuaTeX work only with non-TeX fonts.
- Font setup with XeCJK conflicts with Polyglossia-Korean.
+ 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Font setup with 
+\emph on
+XeCJK
+\emph default
+ is ignored with 
+\emph on
+Polyglossia
+\emph default
+ if the document contains text marked up as Korean.
+\end_layout
+
+\begin_layout Itemize
+Font setup with 
+\emph on
+luatexja-fontspec
+\emph default
+ affects some non-Japanese characters (here, missing U+2059 FIVE DOT PUNCTUATION
+ (Church Slavonic) and some typographical quotes).
+\end_layout
+
+\end_deeper
 \begin_layout Subsection*
 Kannada
 \end_layout
@@ -3680,13 +3671,13 @@ Korean
 \end_layout
 
 \begin_layout Standard
-\begin_inset Branch conflict-ko
+\begin_inset Branch polyglossia-only
 inverted 0
 status open
 
 \begin_layout Standard
-\begin_inset Branch polyglossia-only
-inverted 0
+\begin_inset Branch conflict-ko
+inverted 1
 status open
 
 \begin_layout Quote
@@ -3753,7 +3744,7 @@ LangCode ko_KR
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Requires CJK
+Requires CJK or Polyglossia
 \end_layout
 
 \begin_layout Itemize
@@ -3764,9 +3755,70 @@ The different CJK languages (simplified and traditional Chinese, Japanese,
 
 \begin_layout Itemize
 XeTeX and LuaTeX work only with non-TeX fonts.
- Font setup with XeCJK conflicts with Polyglossia-Korean.
+ 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Font setup with 
+\emph on
+XeCJK
+\emph default
+ is ignored when using
+\emph on
+ Polyglossia
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+LuaTeX finishes with exit value 1
+\emph on
+ 
+\emph default
+and error message 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+[
+\backslash
+directlua]:1: You cannot set field spec in a node of type glue 
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing single
+It seems that 
+\emph on
+gloss-korean.ldf
+\emph default
+ (unnumbered Version from Debian/stable, Mar
+\begin_inset space ~
+\end_inset
+
+25 2016) has an error somewhere in the directlua definitions.
+ This leads to LyX reporting a LaTeX error.
+ The generated PDF can be viewed via 
+\family sans
+Document>LaTeX
+\begin_inset space ~
+\end_inset
+
+log>Open
+\begin_inset space ~
+\end_inset
+
+containing
+\begin_inset space ~
+\end_inset
+
+directory
+\family default
+.
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Subsection*
 Kurmanji
 \end_layout

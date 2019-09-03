@@ -184,7 +184,7 @@ export/export/latex/lyxbugs/6197-polish-amssymb_pdf5_systemF
 # don't test with TeX fonts:
 export/export/latex/languages/supported-languages_babel_non-tex_.*(dvi|pdf.?|texF)
 export/export/latex/languages/supported-languages_polyglossia_.*(dvi|pdf.?|texF)
-export/export/latex/languages/supported-languages_luatex_.*(dvi|pdf.?|texF)
+export/export/latex/languages/supported-languages_XeTeX_.*(dvi|pdf.?|texF)
 export/export/latex/lyxbugs-resolved/9633-.*(dvi|pdf.?|texF)
 export/export/latex/lyxbugs/11522-systemfonts-Math-missingchars_pdf5_texF
 

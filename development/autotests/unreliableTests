@@ -103,8 +103,8 @@ export/export/latex/languages/supported-languages_.*_pdf3
 # * as a consequence, `ps2pdf` fails for some documents:
 export/.*/ja/.*_pdf
 
-# "exotic" languages require "exotic" fonts, e.g.
-# MonomakhUnicode (from Debian package "texlive-fonts-extra") or sci.ponomar.net/fonts.html
+# "exotic" languages require "exotic" *system* fonts, e.g.
+# Monomakh Unicode (from Debian package "texlive-fonts-extra" or sci.ponomar.net/fonts.html)
 # Noto Serif Devanagari (from Debian package "fonts-noto-hinted")
 export/export/latex/languages/supported-languages_polyglossia_.*_systemF
 
@@ -123,22 +123,15 @@ Sublabel: erratic
 
 Sublabel: varying_versions
 ##########################
-# Test depending on e.g. OS or version of a non-TeX-Live dependency.
-# Note that a full, up-to-date TeX Live installation is required so this
-# sublabel is about versions of other dependencies.
+# If a test with this tag fails, this may be due to, e.g., the OS
+# or the version of a dependency.
 
 # Encoding cp858 only supported by some iconv variants
 # Gnu iconv only supports it, if configured with "--enable-extra-encodings"
 # (see https://www.gnu.org/software/libiconv/)
 export/export/latex/inputenc-cp858_pdf2
 
-# aastex: hard-coded version in class name:
-# 2018-05-12 aastex6.cls -> aastex62.cls
-export/examples/Articles/American_Astronomical_Society_.*
-export/templates/Articles/American_Astronomical_Society_.*
-
-
-# New failures with current TexLive (works with TL16/17 from Debian/stable)
+# Fails with current TexLive (works with TL16/17 from Debian/stable)
 # -------------------------------------------------------------------------
 # (see "invertedTests" for description)
 
@@ -163,15 +156,24 @@ export/export/latex/languages/supported-languages_babel_non-tex_pdf4_systemF
 # Fails with TL16/17 from Debian/stable (resolved with new TexLive)
 # -------------------------------------------------------------------------
 
+# aastex: hard-coded version in class name:
+# 2018-05-12 aastex6.cls -> aastex62.cls
+export/examples/Articles/American_Astronomical_Society_.*
+export/templates/Articles/American_Astronomical_Society_.*
+
 # LuaTeX for Japanese documents using graphicx.sty
 #   ! Package pdftex.def Error: Option `pdftex' requires pdfTeX,
 #   (pdftex.def)                but pdfTeX features are missing.
 export/doc/ja/Tutorial_(dvi3|pdf5)_systemF
 
 # Korean with LuaTeX:
-# Language korean not found in language.dat.lua
+# pop-up: "external command lualatex finished with an error"
+# terminal message:
+#   Language korean not found in language.dat.lua
+#   [\directlua]:1: You cannot set field spec in a node of type glue
 export/examples/ko/Welcome_(dvi3|pdf5)_systemF
 export/export/latex/CJK/en-de-el-ru-ko_utf8_(dvi3|pdf5)_systemF
+export/export/latex/languages/supported-languages_polyglossia_(dvi3|pdf5)_systemF
 
 # Arabic Beamer example
 export/examples/ar/Presentations/Beamer_pdf4_.*

@@ -214,11 +214,7 @@ export/doc/(sk|nb)/Intro_(dvi3|pdf5)_systemF
 #             l.53 \newXeTeXintercharclass
 # * RTL-languages: ! Undefined control sequence.
 #             \setLR ->\@RTLfalse \luatexpardir
-export/export/latex/languages/supported-languages_polyglossia_(dvi3|pdf5)_systemF
-
-# Systemcall: 'lualatex "supported-languages.tex"' finished with exit code 1
-# but no error in log and PDF is fine
-export/export/latex/languages/supported-languages_luatex_(dvi3|pdf5)_systemF
+export/export/latex/languages/supported-languages_polyglossia_XeTeX_(dvi3|pdf5)_systemF
 
 
 # Some packages fail with XeTeX/LuaTeX

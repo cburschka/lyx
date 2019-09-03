@@ -6,42 +6,45 @@
 \origin unavailable
 \textclass scrartcl
 \begin_preamble
-\newfontfamily\amharicfont{Noto Sans Ethiopic}
-\newfontfamily\churchslavonicfont[Script=Cyrillic]{MonomakhUnicode}
-\newfontfamily\devanagarifont[Script=Devanagari]{Noto Serif Devanagari}
-\newfontfamily\hangulfont[Script=Hangul]{Baekmuk Batang}
-\newfontfamily\kannadafont[Script=Kannada]{Noto Serif Kannada}
-\newfontfamily\khmerfont[Script=Khmer]{Noto Serif Khmer}
-\newfontfamily\laofont[Script=Lao]{Noto Serif Lao}
-% gloss-marathi.ldf has a spelling error: "script=Devaganari"
-\newfontfamily\marathifont[Script=Devanagari]{Noto Serif Devanagari}
-% prevent spurious polyglossia error (missing script tag):
-\newfontfamily\syriacfont[Script=Syriac]{FreeSans}
-\newfontfamily\tamilfont[Script=Tamil]{Noto Serif Tamil}
-\newfontfamily\telugufont[Script=Telugu]{Noto Serif Telugu}
-\newfontfamily\thaanafont[Script=Thaana]{Noto Sans Thaana}
-\newfontfamily\tibetanfont[Script=Tibetan]{Noto Sans Tibetan}
+% Setup complementing fonts with Polyglossia:
 
+% \newfontfamily\amharicfont{Noto Sans Ethiopic} % LuaTeX does not find it
+\newfontfamily\churchslavonicfont{Monomakh Unicode}
+\newfontfamily\devanagarifont{Noto Serif Devanagari}
+\newfontfamily\hangulfont{Baekmuk Batang}
+\newfontfamily\kannadafont{Noto Serif Kannada}
+\newfontfamily\khmerfont{Noto Serif Khmer}
+%\newfontfamily\laofont{Noto Serif Lao} % misses punctuation in current versions.
+\newfontfamily\laofont{DejaVu Sans}
+\newfontfamily\marathifont{FreeSerif} % gloss-marathi.ldf has a spelling error: "script=Devaganari"
+%\newfontfamily\marathifont{Noto Serif Devanagari} % works, too
+\newfontfamily\syriacfont{FreeSans}
+\newfontfamily\tamilfont{Noto Serif Tamil}
+\newfontfamily\telugufont{Noto Serif Telugu}
+\newfontfamily\thaanafont{FreeSerif}  % missing script tag in FreeSerif
+%\newfontfamily\thaanafont{Noto Sans Thaana} % works, too
+\newfontfamily\tibetanfont{Noto Sans Tibetan}
 
 % Font setup for Japanese (not supported by Polyglossia)
-% with XeTeX, https://ctan.org/pkg/xecjk
 \usepackage{ifxetex}
 \ifxetex
-  \usepackage{xeCJK}
+  \usepackage{xeCJK} % https://ctan.org/pkg/xecjk
   \setCJKmainfont{IPAexMincho}
   \setCJKsansfont{IPAexGothic}
-\fi
+\else
 % with LuaTeX, https://www.ctan.org/pkg/luatexja
 % see https://tex.stackexchange.com/questions/222980/how-to-use-chinese-with-lualatex
-\usepackage{ifluatex}
-\ifluatex
-  \usepackage{luatexja-fontspec}
-  % use Mainfont (DejaVu) for Greek and Cyrillic:
-  \ltjsetparameter{jacharrange={-2}}
-  %\usepackage[match]{luatexja-fontspec}
-  %\setmainjfont[Mapping=tex-text]{WenQuanYi Micro Hei}
-  %\setsansjfont[Mapping=tex-text]{WenQuanYi Micro Hei}
-  %\setmonojfont{WenQuanYi Micro Hei Mono}
+% Unfortunately, this conflicts with Korean font setup via Polyglossia
+% and leads to missing glyphs: (church slavonic ⁙ (U+2059)) and
+% typographical quotes).
+% \ifdefined\luatexversion
+%   %\usepackage{luatexja-fontspec}
+%   \usepackage[match]{luatexja-fontspec}
+%   % use Mainfont for Greek and Cyrillic:
+%   \ltjsetparameter{jacharrange={-2}}
+%   \setmainjfont{IPAexMincho}
+%   \setsansjfont{IPAexGothic}
+%   %\setmonojfont{WenQuanYi Micro Hei Mono}
 \fi
 \end_preamble
 \use_default_options false
@@ -166,7 +169,12 @@ enumitem
 \color #faf0e6
 \end_branch
 \branch conflict-luatex
-\selected 1
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch conflict-ko
+\selected 0
 \filename_suffix 0
 \color #faf0e6
 \end_branch
@@ -202,9 +210,31 @@ Languages supported by LyX
 \begin_layout Standard
 With language examples that work with 
 \emph on
-Polyglossia
+Polyglossia,
 \emph default
- and non-TeX fonts.
+ XeTeX or LuaTeX, and 
+\begin_inset Quotes eld
+\end_inset
+
+non-TeX fonts
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Some languages require set up of a complementary font in the 
+\emph on
+user preamble
+\emph default
+ (
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+LaTeX preamble
+\family default
+).
 \end_layout
 
 \begin_layout Standard
