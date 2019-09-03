@@ -156,6 +156,10 @@ export/(doc|examples)/uk/(Intro|Welcome)_.*_texF
 # and expl3.sty (TL 17 works).
 export/export/latex/inputenc-xetex-utf8-expl3-bug_pdf4_texF
 
+# Babel bug (see entry in invertedTests for more information)
+export/export/latex/languages/supported-languages_babel_non-tex_pdf4_systemF
+
+
 # Fails with TL16/17 from Debian/stable (resolved with new TexLive)
 # -------------------------------------------------------------------------
 

@@ -188,6 +188,19 @@ export/export/latex/languages/supported-languages_babel_non-tex_(dvi3|pdf5)_syst
 export/export/latex/languages/supported-languages_(dvi|pdf).*_texF
 export/export/latex/languages/supported-languages_babel_(dvi|pdf).*_texF
 
+# Babel + XeTeX and system fonts fails due to a babel bug:
+# https://www.mail-archive.com/search?l=mid&q=20190831012945.zl76dbstyijfqgdh%40boogie
+# The error is the following, although remoing the referenced language just leads
+# to a different error:
+#
+#  ! File ended while scanning use of \bbl@inireader.
+#  <inserted text>
+#                  \par
+#  l.3 \input{babel-german-switzerland}
+#  I suspect you have forgotten a `}', causing me
+export/export/latex/languages/supported-languages_babel_non-tex_pdf4_systemF
+
+
 # Polyglossia + LuaTeX issue
 # Reported upstream here:
 # https://github.com/reutenauer/polyglossia/issues/163
