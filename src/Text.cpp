@@ -1820,6 +1820,16 @@ bool Text::dissolveInset(Cursor & cur)
 		for (; it != it_end; ++it)
 			it->changeLanguage(b.params(), latex_language, b.language());
 
+		/* the inset is the only thing in paragraph, then the layout
+		 * of the first paragraph of inset should be remembered.
+		 * FIXME: this does not work as expected when change tracking
+		 *   is on However, we do not really know what to do in this
+		 *   case.
+		 */
+		if (inset_it.lastpos() == 1
+		    && inset_it.nextInset() && !inset_it.nextInset()->forcePlainLayout())
+			cur.paragraph().makeSameLayout(plist[0]);
+
 		pasteParagraphList(cur, plist, b.params().documentClassPtr(),
 				   b.errorList("Paste"));
 	}

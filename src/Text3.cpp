@@ -296,8 +296,16 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	if (cur.selection()) {
 		if (cmd.action() == LFUN_INDEX_INSERT)
 			copySelectionToTemp(cur);
-		else
+		else {
 			cutSelectionToTemp(cur, pastesel);
+			/* Move layout information inside the inset if the whole
+			 * paragraph and the inset allows setting layout
+			 * FIXME: this does not work as expected when change tracking is on
+			 *   However, we do not really know what to do in this case.
+			 */
+			if (cur.paragraph().empty() && !inset->forcePlainLayout())
+				cur.paragraph().setPlainOrDefaultLayout(bparams.documentClass());
+		}
 		cur.clearSelection();
 		gotsel = true;
 	} else if (cmd.action() == LFUN_INDEX_INSERT) {
@@ -320,24 +328,17 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	InsetText * inset_text = inset->asInsetText();
 	if (inset_text) {
 		inset_text->fixParagraphsFont();
-		if (!inset_text->allowMultiPar() || cur.lastpit() == 0) {
-			// reset first par to default
-			cur.text()->paragraphs().begin()
-				->setPlainOrDefaultLayout(bparams.documentClass());
-			cur.pos() = 0;
-			cur.pit() = 0;
-			// Merge multiple paragraphs -- hack
-			while (cur.lastpit() > 0)
-				mergeParagraph(bparams, cur.text()->paragraphs(), 0);
-			if (cmd.action() == LFUN_FLEX_INSERT)
-				return true;
-			Cursor old = cur;
-			cur.leaveInset(*inset);
-			if (cmd.action() == LFUN_PREVIEW_INSERT
-			    || cmd.action() == LFUN_IPA_INSERT)
-				// trigger preview
-				notifyCursorLeavesOrEnters(old, cur);
-		}
+		cur.pos() = 0;
+		cur.pit() = 0;
+		// FIXME: what does this do?
+		if (cmd.action() == LFUN_FLEX_INSERT)
+			return true;
+		Cursor old = cur;
+		cur.leaveInset(*inset);
+		if (cmd.action() == LFUN_PREVIEW_INSERT
+			|| cmd.action() == LFUN_IPA_INSERT)
+			// trigger preview
+			notifyCursorLeavesOrEnters(old, cur);
 	} else {
 		cur.leaveInset(*inset);
 		// reset surrounding par to default
