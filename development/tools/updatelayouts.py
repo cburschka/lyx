@@ -25,6 +25,7 @@ def main(argv):
     dirs.append(os.path.join(toolsdir, '../../lib/layouts'))
     dirs.append(os.path.join(toolsdir, '../../lib/citeengines'))
     for directory in dirs:
+        oldcwd = os.getcwd()
         os.chdir(directory)
         for i in os.listdir("."):
             (base, ext) = os.path.splitext(i)
@@ -33,6 +34,7 @@ def main(argv):
             args = ["layout2layout", i + ".old", i]
             shutil.copy(args[2], args[1])
             layout2layout(args)
+        os.chdir(oldcwd)
 
     return 0
 
