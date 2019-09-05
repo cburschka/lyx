@@ -12,15 +12,16 @@
 \newfontfamily\hangulfont{Baekmuk Batang}
 \newfontfamily\kannadafont{Noto Serif Kannada}
 \newfontfamily\khmerfont{Noto Serif Khmer}
-\newfontfamily\laofont{Noto Serif Lao}
+%\newfontfamily\laofont{Noto Serif Lao} % misses punctuation in current versions.
+\newfontfamily\laofont{DejaVu Sans} % wrong family but DejaVu Serif has no Lao characters
 \newfontfamily\marathifont{FreeSerif} % gloss-marathi.ldf has a spelling error: "script=Devaganari"
 %\newfontfamily\marathifont{Noto Serif Devanagari} % works, too
 \newfontfamily\syriacfont{FreeSans}
 \newfontfamily\tamilfont{Noto Serif Tamil}
 \newfontfamily\telugufont{Noto Serif Telugu}
-\newfontfamily\thaanafont{FreeSerif} % missing script tag
+\newfontfamily\thaanafont{FreeSerif} % prevent "missing script tag" error
 %\newfontfamily\thaanafont{Noto Sans Thaana} % works, too
-\newfontfamily\tibetanfont{Noto Sans Tibetan}
+\newfontfamily\tibetanfont{Noto Sans Tibetan}  % wrong family
 
 % Font setup for Japanese (not supported by Polyglossia)
 \usepackage{ifxetex}
