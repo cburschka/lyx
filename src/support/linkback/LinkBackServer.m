@@ -154,7 +154,6 @@ NSString* FindLinkBackServer(NSString* bundleIdentifier, NSString* serverName, N
 
 void LinkBackRunAppNotFoundPanel(NSString* appName, NSURL* url)
 {
-	int result ;
 
 	// strings for panel
 	NSBundle* b = [NSBundle bundleForClass: [LinkBack class]] ;
@@ -172,10 +171,16 @@ void LinkBackRunAppNotFoundPanel(NSString* appName, NSURL* url)
 
 	title = [NSString stringWithFormat: title, appName] ;
 
-	result = NSRunCriticalAlertPanel(title, @"%@", ok, urlstr, nil, msg) ;
-	if (NSAlertAlternateReturn == result) {
-		[[NSWorkspace sharedWorkspace] openURL: url] ;
-	}
+	NSAlert* alert = [[NSAlert alloc] init];
+	[alert setAlertStyle:NSAlertStyleCritical];
+	[alert setMessageText:title];
+	[alert setInformativeText:[NSString stringWithFormat:@"%@", msg]];
+	[alert addButtonWithTitle:ok];
+	[alert addButtonWithTitle:urlstr];
+	[alert beginSheetModalForWindow:[NSApp mainWindow] completionHandler:^(NSModalResponse returnCode) {
+		if (returnCode == NSAlertSecondButtonReturn)
+				[[NSWorkspace sharedWorkspace] openURL: url] ;
+	}];
 }
 
 + (LinkBackServer*)LinkBackServerWithName:(NSString*)aName inApplication:(NSString*)bundleIdentifier launchIfNeeded:(BOOL)flag fallbackURL:(NSURL*)url appName:(NSString*)appName
