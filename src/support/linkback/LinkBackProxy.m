@@ -65,7 +65,7 @@
 		// The pdf data length are the last 4 bytes.
 		UInt32 pdfLen = 0;
 		pdfLen = *(UInt32 const *)(((UInt8 const *)[data bytes]) + [data length] - 4);
-		pdfLen = NSSwapBigLongToHost(pdfLen); // make it big endian
+		pdfLen = NSSwapBigIntToHost(pdfLen); // make it big endian
 		if (pdfLen >= [data length] - 4) {
 			NSLog(@"Invalid file %@ for LinkBack", fileName);
 			return NO;
@@ -154,7 +154,7 @@
 		[file writeData:pdfData];
 		[file writeData:linkBackData];
 
-		UInt32 pdfLen = NSSwapHostLongToBig([pdfData length]); // big endian
+		UInt32 pdfLen = NSSwapHostIntToBig([pdfData length]); // big endian
 		NSData * lenData = [NSData dataWithBytes:&pdfLen length:4];
 		[file writeData:lenData];
 		[file closeFile];
