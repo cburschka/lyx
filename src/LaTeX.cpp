@@ -781,7 +781,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 		//TODO: TL 2020 engines will contain new commandline switch --cnf-line which we  
 		//can use to set max_print_line variable for appropriate length and detect all
 		//errors correctly.
-		if (contains(token, "There were undefined citations."))
+		if (contains(token, "There were undefined citations.") ||
+		    prefixIs(token, "Package biblatex Warning: The following entry could not be found"))
 			retval |= UNDEF_CIT;
 
 		if (prefixIs(token, "LaTeX Warning:") ||
