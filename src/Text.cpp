@@ -1370,7 +1370,7 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 	pos_type endPos = cur.selectionEnd().pos();
 
 	// keep selection info, because endPos becomes invalid after the first loop
-	bool endsBeforeEndOfPar = (endPos < pars_[endPit].size());
+	bool const endsBeforeEndOfPar = (endPos < pars_[endPit].size());
 
 	// first, accept/reject changes within each individual paragraph (do not consider end-of-par)
 	for (pit_type pit = begPit; pit <= endPit; ++pit) {
@@ -1389,8 +1389,8 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 		if (pit == endPit && endPos == 0)
 			break; // last iteration anyway
 
-		pos_type left  = (pit == begPit ? begPos : 0);
-		pos_type right = (pit == endPit ? endPos : parSize);
+		pos_type const left  = (pit == begPit ? begPos : 0);
+		pos_type const right = (pit == endPit ? endPos : parSize);
 
 		if (left == right)
 			// there is no change here
