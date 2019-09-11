@@ -99,7 +99,9 @@ bool InsetFlex::getStatus(Cursor & cur, FuncRequest const & cmd,
 			InsetLayout const & il = getLayout();
 			InsetLayout::InsetLyXType const type =
 				translateLyXType(to_utf8(cmd.argument()));
-			if (il.lyxtype() == type) {
+			if (il.lyxtype() == type
+			    || (il.name() == DocumentClass::plainInsetLayout().name()
+				    && type == InsetLayout::CHARSTYLE)) {
 				FuncRequest temp_cmd(LFUN_INSET_DISSOLVE);
 				return InsetCollapsible::getStatus(cur, temp_cmd, flag);
 			} else
@@ -121,7 +123,9 @@ void InsetFlex::doDispatch(Cursor & cur, FuncRequest & cmd)
 			InsetLayout::InsetLyXType const type =
 				translateLyXType(to_utf8(cmd.argument()));
 
-			if (il.lyxtype() == type) {
+			if (il.lyxtype() == type
+			    || (il.name() == DocumentClass::plainInsetLayout().name()
+				    && type == InsetLayout::CHARSTYLE)) {
 				FuncRequest temp_cmd(LFUN_INSET_DISSOLVE);
 				InsetCollapsible::doDispatch(cur, temp_cmd);
 			} else
