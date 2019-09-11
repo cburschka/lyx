@@ -496,19 +496,27 @@ status collapsed
  \SpecialChar LyX
 .
  Он называется 
-\family typewriter
-example_raw.lyx
-\family default
+\emph on
+Пример
+\begin_inset space ~
+\end_inset
+
+(неформатированный)
+\emph default
 .
  Представьте, что он набран кем-то, кто не очень хорошо знаком с великолепными
  возможностями \SpecialChar LyX
 .
  По мере изучения новых способностей \SpecialChar LyX
 , мы будем предлагать вам исправить
- соответствующие части 
-\family typewriter
-example_raw.lyx
-\family default
+ соответствующие части в 
+\emph on
+Пример
+\begin_inset space ~
+\end_inset
+
+(неформатированный)
+\emph default
 .
  Также он содержит 
 \begin_inset Quotes cld
@@ -540,25 +548,45 @@ status collapsed
 .
  Если вы желаете схитрить (или проверить, что вы всё выполнили), есть также
  файл 
-\family typewriter
-example_lyxified.lyx,
-\family default
- содержащий тот же текст, написанный и оформленный знатоком \SpecialChar LyX
+\emph on
+Пример
+\begin_inset space ~
+\end_inset
+
+(форматированный)
+\emph default
+, содержащий тот же текст, написанный и оформленный знатоком \SpecialChar LyX
 .
 \end_layout
 
 \begin_layout Standard
-Файлы примеров находятся в подкаталоге 
-\family typewriter
-[Resources/]examples/ru
+Файлы примеров находятся в разделе 
+\begin_inset Quotes rld
+\end_inset
+
+Общие
+\begin_inset Quotes rrd
+\end_inset
+
+ в 
+\family sans
+Файл\SpecialChar menuseparator
+Открыть
+\begin_inset space ~
+\end_inset
+
+пример
 \family default
- каталога установки \SpecialChar LyX
 .
  Откройте документ 
-\family typewriter
-example_raw.lyx
-\family default
-, и используя 
+\emph on
+Пример
+\begin_inset space ~
+\end_inset
+
+(неформатированный)
+\emph default
+ и, используя 
 \family sans
 Файл\SpecialChar menuseparator
 Сохранить
@@ -577,15 +605,18 @@ pdf
 \end_layout
 
 \begin_layout Standard
-Кстати, каталог 
-\family typewriter
-examples[/ru]
+Кстати, 
+\family sans
+Файл\SpecialChar menuseparator
+Открыть
+\begin_inset space ~
+\end_inset
+
+пример
 \family default
  содержит и другие файлы с примерами.
  Они продемонстрируют вам различные примечательные возможности \SpecialChar LyX
 .
- Эти примеры также демонстрируют некоторые возможности, которые не были
- помещены в документации (из-за размеров или по другим соображениям).
  После прочтения Самоучителя, или если вы запутаетесь при выполнении чего-либо
  необычного в \SpecialChar LyX
 , взгляните на эти файлы.
@@ -1569,9 +1600,13 @@ reference "sec:textclasses"
 \end_inset
 
 в 
-\family typewriter
-example_raw.lyx
-\family default
+\emph on
+Пример
+\begin_inset space ~
+\end_inset
+
+(неформатированный)
+\emph default
 .
  
 \end_layout
@@ -1855,8 +1890,14 @@ status collapsed
 Упражнение
 \series default
 : Оформите список в 
-\family typewriter
-example_raw.lyx
+\emph on
+Пример
+\begin_inset space ~
+\end_inset
+
+(неформатированный)
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -1965,8 +2006,14 @@ Ctrl+Enter
 Стихи
 \family default
  в 
-\family typewriter
-example_raw.lyx
+\emph on
+Пример
+\begin_inset space ~
+\end_inset
+
+(неформатированный)
+\emph default
+.
 \end_layout
 
 \begin_layout Chapter
@@ -2339,9 +2386,17 @@ Letter
 \family default
 .
  Выберите 
-\family typewriter
-letter.lyx
-\family default
+\emph on
+Letter
+\begin_inset space ~
+\end_inset
+
+(стандартный
+\begin_inset space ~
+\end_inset
+
+класс)
+\emph default
  в качестве шаблона.
  Посмотреть, как оформлены различные окружения можно сохранив и напечатав
  файл.
@@ -2530,8 +2585,14 @@ Letter
 \end_inset
 
 в 
-\family typewriter
-example_raw.lyx
+\emph on
+Пример
+\begin_inset space ~
+\end_inset
+
+(неформатированный)
+\emph default
+.
 \end_layout
 
 \begin_layout Section
@@ -2887,8 +2948,14 @@ reference "sec:textclasses"
 Упражнение
 \series default
 : Исправьте ссылки в 
-\family typewriter
-example_raw.lyx
+\emph on
+Пример
+\begin_inset space ~
+\end_inset
+
+(неформатированный)
+\emph default
+.
 \end_layout
 
 \begin_layout Section
@@ -3087,8 +3154,14 @@ arg   "marginalnote-insert"
 Упражнение
 \series default
 : Исправьте сноску в 
-\family typewriter
-example_raw.lyx
+\emph on
+Пример
+\begin_inset space ~
+\end_inset
+
+(неформатированный)
+\emph default
+.
 \end_layout
 
 \begin_layout Section
@@ -3300,8 +3373,14 @@ lyxtutorial
 \end_inset
 
 в 
-\family typewriter
-example_raw.lyx
+\emph on
+Пример
+\begin_inset space ~
+\end_inset
+
+(неформатированный)
+\emph default
+.
 \end_layout
 
 \begin_layout Section
@@ -3422,8 +3501,14 @@ arg   "dialog-toggle toc"
 Упражнение
 \series default
 : Исправьте содержание в 
-\family typewriter
-example_raw.lyx
+\emph on
+Пример
+\begin_inset space ~
+\end_inset
+
+(неформатированный)
+\emph default
+.
 \end_layout
 
 \begin_layout Chapter
@@ -3855,10 +3940,14 @@ _
 \series bold
 Упражнение
 \series default
-: Введите формулу 1 из 
-\family typewriter
-example_raw.lyx
-\family default
+: Наберите формулу 1 из 
+\emph on
+Пример
+\begin_inset space ~
+\end_inset
+
+(неформатированный)
+\emph default
  в математическом режиме.
 \end_layout
 
@@ -4127,9 +4216,13 @@ arg   "math-insert \\frac"
 Упражнение
 \series default
 : Наберите формулу 2 из 
-\family typewriter
-example_raw.lyx
-\family default
+\emph on
+Пример
+\begin_inset space ~
+\end_inset
+
+(неформатированный)
+\emph default
  в математическом режиме.
 \end_layout
 
@@ -4308,10 +4401,14 @@ pdf
 \series bold
 Упражнение
 \series default
-: Введите формулу 3 из 
-\family typewriter
-example_raw.lyx
-\family default
+: Наберите формулу 3 из 
+\emph on
+Пример
+\begin_inset space ~
+\end_inset
+
+(неформатированный)
+\emph default
  в математическом режиме.
 \end_layout
 
@@ -4517,9 +4614,13 @@ Enter
 Упражнение
 \series default
 : Вставьте различные формулы в 
-\family typewriter
-example_raw.lyx
-\family default
+\emph on
+Пример
+\begin_inset space ~
+\end_inset
+
+(неформатированный)
+\emph default
  в режиме отображения, и посмотрите, как отличается их оформление.
 \end_layout
 
