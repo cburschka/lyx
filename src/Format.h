@@ -39,7 +39,9 @@ public:
 		/// This format should  appear in the File > Export menu
 		export_menu = 4,
 		/// This may be a compressed file but doesn't need decompression
-		zipped_native = 8
+		zipped_native = 8,
+		/// This format should not appear in a menu at all
+		no_menu = 16
 	};
 	///
 	Format(std::string const & n, std::string const & e, docstring const & p,
@@ -95,6 +97,8 @@ public:
 	void setFlags(int v) { flags_ = v; }
 	///
 	bool inExportMenu() const { return flags_ & export_menu; }
+	///
+	bool noMenu() const { return flags_ & no_menu; }
 	///
 	bool zippedNative() const { return flags_ & zipped_native; }
 	///
