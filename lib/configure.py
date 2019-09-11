@@ -686,7 +686,7 @@ def checkFormatEntries(dtl_tools):
 \Format luatex     tex    "LaTeX (LuaTeX)"        "" ""	"%%"	"document,menu=export"	""
 \Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"	"document,menu=export"	""
 \Format xetex      tex    "LaTeX (XeTeX)"         "" ""	"%%"	"document,menu=export"	""
-\Format latexclipboard tex "LaTeX (clipboard)"    "" ""	"%%"	""	""
+\Format latexclipboard tex "LaTeX (clipboard)"    "" ""	"%%"	"menu=none"	""
 \Format text       txt    "Plain text"            a  ""	"%%"	"document,menu=export"	"text/plain"
 \Format text2      txt    "Plain text (pstotext)" "" ""	"%%"	"document"	""
 \Format text3      txt    "Plain text (ps2ascii)" "" ""	"%%"	"document"	""

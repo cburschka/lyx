@@ -1056,6 +1056,8 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 					flgs |= Format::zipped_native;
 				else if (flag == "menu=export")
 					flgs |= Format::export_menu;
+				else if (flag == "menu=none")
+					flgs |= Format::no_menu;
 				else
 					LYXERR0("Ignoring unknown flag `"
 					       << flag << "' for format `"
@@ -2721,6 +2723,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			    format->documentFormat() != cit->documentFormat() ||
 			    format->vectorFormat() != cit->vectorFormat() ||
 			    format->inExportMenu() != cit->inExportMenu() ||
+			    format->noMenu() != cit->noMenu() ||
 			    format->mime() != cit->mime()) {
 				os << "\\format \"" << cit->name() << "\" \""
 				   << cit->extensions() << "\" \""

@@ -1112,6 +1112,8 @@ void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf
 
 		switch (kind) {
 		case MenuItem::ImportFormats:
+			if (f->noMenu())
+				continue;
 			label += from_ascii("...");
 			break;
 		case MenuItem::ViewFormats:
