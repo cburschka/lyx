@@ -1523,6 +1523,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 
 		bv->buffer().errors("Paste");
+		bv->buffer().updatePreviews(); // bug 11619
 		cur.clearSelection(); // bug 393
 		cur.finishUndo();
 		break;
