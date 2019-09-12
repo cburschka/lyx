@@ -105,6 +105,9 @@ What's new
 - Fix LaTeX error with Canadian French as second language. LyX now uses
   the (recommended) babel option "acadian" rather than "canadien".
 
+- Do not create unnecessary directories when exporting from the command
+  line (bug 11636).
+
 
 * USER INTERFACE
 
