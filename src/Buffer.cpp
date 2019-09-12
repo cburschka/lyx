@@ -4638,7 +4638,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 		result_file = dest_filename;
 	// We need to copy referenced files (e. g. included graphics
 	// if format == "dvi") to the result dir.
-	vector<ExportedFile> const files =
+	vector<ExportedFile> const extfiles =
 		runparams.exportdata->externalFiles(format);
 	string const dest = runparams.export_folder.empty() ?
 		onlyPath(result_file) : runparams.export_folder;
@@ -4646,7 +4646,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 				 : force_overwrite == ALL_FILES;
 	CopyStatus status = use_force ? FORCE : SUCCESS;
 
-	for (ExportedFile const & exp : files) {
+	for (ExportedFile const & exp : extfiles) {
 		if (status == CANCEL) {
 			message(_("Document export cancelled."));
 			return ExportCancel;
