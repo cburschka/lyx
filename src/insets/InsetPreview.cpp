@@ -99,7 +99,7 @@ void InsetPreview::preparePreview(DocIterator const & pos) const
 		dit.forwardInset();
 	for (; dit != dend; dit.forwardInset()) {
 		InsetMath * im = dit.nextInset()->asInsetMath();
-		InsetMathHull * hull = im ? im->asHullInset() : 0;
+		InsetMathHull * hull = im ? im->asHullInset() : nullptr;
 		if (!hull)
 			continue;
 		for (idx_type idx = 0; idx < hull->nargs(); ++idx)

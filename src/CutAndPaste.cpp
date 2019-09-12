@@ -141,7 +141,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 	InsetText * target_inset = cur.inset().asInsetText();
 	if (!target_inset) {
 		InsetTabular * it = cur.inset().asInsetTabular();
-		target_inset = it ? it->cell(cur.idx())->asInsetText() : 0;
+		target_inset = it ? it->cell(cur.idx())->asInsetText() : nullptr;
 	}
 	LASSERT(target_inset, return PasteReturnValue(pit, pos, need_update));
 
@@ -304,8 +304,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 	InsetIterator const i_end = inset_iterator_end(in);
 	for (InsetIterator it = inset_iterator_begin(in); it != i_end; ++it) {
 		// Even though this will also be done later, it has to be done here
-		// since some inset might going to try to access
-		// the buffer() member.
+		// since some inset might try to access the buffer() member.
 		it->setBuffer(const_cast<Buffer &>(buffer));
 		switch (it->lyxCode()) {
 
@@ -580,7 +579,7 @@ Buffer * copyToTempBuffer(ParagraphList const & paragraphs, DocumentClassConstPt
 	// Use a clone for the complicated stuff so that we do not need to clean
 	// up in order to avoid a crash.
 	Buffer * buffer = staticbuffer->cloneBufferOnly();
-	LASSERT(buffer, return 0);
+	LASSERT(buffer, return nullptr);
 
 	// This needs doing every time.
 	// Since setDocumentClass() causes deletion of the old document class
@@ -723,7 +722,7 @@ void copySelectionHelper(Buffer const & buf, Text const & text,
 	it = copy_pars.begin();
 	for (; it != it_end; ++it) {
 		it->resetBuffer();
-		it->setInsetOwner(0);
+		it->setInsetOwner(nullptr);
 	}
 
 	cutstack.push(make_pair(copy_pars, dc));
