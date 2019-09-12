@@ -572,7 +572,6 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 	string exppath = incfile;
 	if (!runparams.export_folder.empty()) {
 		exppath = makeAbsPath(exppath, runparams.export_folder).realPath();
-		FileName(exppath).onlyPath().createPath();
 	}
 
 	// write it to a file (so far the complete file)
