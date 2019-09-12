@@ -569,10 +569,11 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 					      from_utf8(masterBuffer->filePath())));
 	}
 
-	string const exppath = runparams.export_folder.empty() ?
-			incfile :
-			makeAbsPath(exppath, runparams.export_folder).realPath();
-	FileName(exppath).onlyPath().createPath();
+	string exppath = incfile;
+	if (!runparams.export_folder.empty()) {
+		exppath = makeAbsPath(exppath, runparams.export_folder).realPath();
+		FileName(exppath).onlyPath().createPath();
+	}
 
 	// write it to a file (so far the complete file)
 	string exportfile;
