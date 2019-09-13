@@ -776,7 +776,7 @@ I can tell, but it still feels like a hack. Fixing this would require quite a
 bit of work, however.
 */
 docstring BibTeXInfo::expandFormat(docstring const & format,
-		BibTeXInfoList const xrefs, int & counter, Buffer const & buf,
+		BibTeXInfoList const & xrefs, int & counter, Buffer const & buf,
 		CiteItem const & ci, bool next, bool second) const
 {
 	// incorrect use of macros could put us in an infinite loop
@@ -926,7 +926,7 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 }
 
 
-docstring const & BibTeXInfo::getInfo(BibTeXInfoList const xrefs,
+docstring const & BibTeXInfo::getInfo(BibTeXInfoList const & xrefs,
 	Buffer const & buf, CiteItem const & ci) const
 {
 	bool const richtext = ci.richtext;
@@ -1000,7 +1000,7 @@ docstring const & BibTeXInfo::operator[](string const & field) const
 
 
 docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
-	CiteItem const & ci, BibTeXInfoList const xrefs, size_t maxsize) const
+	CiteItem const & ci, BibTeXInfoList const & xrefs, size_t maxsize) const
 {
 	// anything less is pointless
 	LASSERT(maxsize >= 16, maxsize = 16);

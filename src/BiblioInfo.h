@@ -69,7 +69,7 @@ public:
 	docstring const getYear() const;
 	/// \return formatted BibTeX data suitable for framing.
 	/// \param vector of pointers to crossref/xdata information
-	docstring const & getInfo(BibTeXInfoList const xrefs,
+	docstring const & getInfo(BibTeXInfoList const & xrefs,
 			Buffer const & buf, CiteItem const & ci) const;
 	/// \return formatted BibTeX data for a citation label
 	docstring const getLabel(BibTeXInfoList const xrefs,
@@ -123,7 +123,7 @@ private:
 	/// to get the data from xref BibTeXInfo objects, which would normally
 	/// be the one referenced in the crossref or xdata field.
 	docstring getValueForKey(std::string const & key, Buffer const & buf,
-		CiteItem const & ci, BibTeXInfoList const xrefs, size_t maxsize = 4096) const;
+		CiteItem const & ci, BibTeXInfoList const & xrefs, size_t maxsize = 4096) const;
 	/// replace %keys% in a format string with their values
 	/// called from getInfo()
 	/// format strings may contain:
@@ -141,7 +141,7 @@ private:
 	/// moreover, keys that look like "%_key%" are treated as translatable
 	/// so that things like "pp." and "vol." can be translated.
 	docstring expandFormat(docstring const & fmt,
-		BibTeXInfoList const xrefs, int & counter,
+		BibTeXInfoList const & xrefs, int & counter,
 		Buffer const & buf, CiteItem const & ci,
 		bool next = false, bool second = false) const;
 	/// true if from BibTeX; false if from bibliography environment
