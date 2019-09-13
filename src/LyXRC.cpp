@@ -3045,7 +3045,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 		|| lyxrc_orig.defaultZoom != lyxrc_new.defaultZoom) {
 		dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
 	}
-
+		// fall through
 	case LyXRC::RC_GEOMETRY_SESSION:
 	case LyXRC::RC_SERVERPIPE:
 	case LyXRC::RC_SET_COLOR:
