@@ -53,7 +53,7 @@ bool isHexChar(char_type);
 
 bool isHex(docstring const & str);
 
-int hexToInt(docstring const & str);
+unsigned int hexToInt(docstring const & str);
 
 /// is \p str pure ascii?
 bool isAscii(docstring const & str);

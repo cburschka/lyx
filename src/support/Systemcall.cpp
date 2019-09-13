@@ -205,7 +205,7 @@ string const parsecmd(string const & incmd, string & infile, string & outfile,
 				in_double_quote = !in_double_quote;
 			}
 		} else if (c == '\\' && !escaped) {
-			escaped = !escaped;
+			escaped = true;
 		} else if (c == '>' && !(in_double_quote || escaped)) {
 			if (suffixIs(outcmd[o], " 2")) {
 				outcmd[o] = rtrim(outcmd[o], "2");

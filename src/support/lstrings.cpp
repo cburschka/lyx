@@ -422,10 +422,10 @@ bool isHex(docstring const & str)
 }
 
 
-int hexToInt(docstring const & str)
+unsigned int hexToInt(docstring const & str)
 {
 	string s = to_ascii(str);
-	int h;
+	unsigned int h;
 	sscanf(s.c_str(), "%x", &h);
 	return h;
 }

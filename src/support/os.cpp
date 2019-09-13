@@ -99,15 +99,15 @@ static string const find_python_binary()
 	// but we are trying hard to find a valid python binary
 	vector<string> const path = getEnvPath("PATH");
 	lyxerr << "Looking for python 3.x ...\n";
-	for (auto bin: path) {
+	for (auto bin : path) {
 		QString const dir = toqstr(bin);
 		string const localdir = dir.toLocal8Bit().constData();
 		QDir qdir(dir);
 		qdir.setFilter(QDir::Files | QDir::Executable);
 		QStringList list = qdir.entryList(QStringList("python3*"));
-		for (auto bin: list) {
+		for (auto bin2 : list) {
 			string const binary = addName(localdir,
-				bin.toLocal8Bit().constData());
+				bin2.toLocal8Bit().constData());
 			command = python23_call(binary, true);
 			if (!command.empty())
 				return command;
@@ -123,15 +123,15 @@ static string const find_python_binary()
 	// the search is probably broader than required
 	// but we are trying hard to find a valid python binary
 	lyxerr << "Looking for python 2.x ...\n";
-	for (auto bin: path) {
+	for (auto bin : path) {
 		QString const dir = toqstr(bin);
 		string const localdir = dir.toLocal8Bit().constData();
 		QDir qdir(dir);
 		qdir.setFilter(QDir::Files | QDir::Executable);
 		QStringList list = qdir.entryList(QStringList("python2*"));
-		for (auto bin: list) {
+		for (auto bin2 : list) {
 			string const binary = addName(localdir,
-				bin.toLocal8Bit().constData());
+				bin2.toLocal8Bit().constData());
 			command = python23_call(binary, true);
 			if (!command.empty())
 				return command;

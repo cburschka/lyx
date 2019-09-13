@@ -548,22 +548,22 @@ unsigned long checksum_ifstream_fallback(char const * file)
 
 unsigned long FileName::checksum() const
 {
-	unsigned long result = 0;
-
 	if (!exists()) {
 		//LYXERR0("File \"" << absFileName() << "\" does not exist!");
-		return result;
+		return 0;
 	}
 	// a directory may be passed here so we need to test it. (bug 3622)
 	if (isDirectory()) {
 		LYXERR0('"' << absFileName() << "\" is a directory!");
-		return result;
+		return 0;
 	}
 
 	// This is used in the debug output at the end of the method.
 	static QTime t;
 	if (lyxerr.debugging(Debug::FILES))
 		t.restart();
+
+	unsigned long result = 0;
 
 #if QT_VERSION >= 0x999999
 	// First version of checksum uses Qt4.4 mmap support.
@@ -574,7 +574,7 @@ unsigned long FileName::checksum() const
 	// QAbstractFileEngine::MapExtension)
 	QFile qf(fi.filePath());
 	if (!qf.open(QIODevice::ReadOnly))
-		return result;
+		return 0;
 	qint64 size = fi.size();
 	uchar * ubeg = qf.map(0, size);
 	uchar * uend = ubeg + size;
@@ -594,7 +594,7 @@ unsigned long FileName::checksum() const
 
 	int fd = open(file, O_RDONLY);
 	if (!fd)
-		return result;
+		return 0;
 
 	struct stat info;
 	if (fstat(fd, &info)){
@@ -608,7 +608,7 @@ unsigned long FileName::checksum() const
 	// Some platforms have the wrong type for MAP_FAILED (compaq cxx).
 	if (mm == reinterpret_cast<void*>(MAP_FAILED)) {
 		close(fd);
-		return result;
+		return 0;
 	}
 
 	char * beg = static_cast<char*>(mm);

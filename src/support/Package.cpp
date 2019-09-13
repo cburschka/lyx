@@ -508,9 +508,9 @@ FileName const get_binary_path(string const & exe)
 		// This will do nothing if *it is already absolute.
 		string const exe_dir = makeAbsPath(*it).absFileName();
 
-		FileName const exe_path(addName(exe_dir, exe_name));
-		if (exe_path.exists())
-			return exe_path;
+		FileName const exe_path2(addName(exe_dir, exe_name));
+		if (exe_path2.exists())
+			return exe_path2;
 	}
 
 	// Didn't find anything.
