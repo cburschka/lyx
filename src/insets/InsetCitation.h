@@ -91,7 +91,7 @@ public:
 	CitationStyle getCitationStyle(BufferParams const & bp, std::string const & input,
 				       std::vector<CitationStyle> const & valid_styles) const;
 	///
-	QualifiedList getQualifiedLists(docstring const p) const;
+	QualifiedList getQualifiedLists(docstring const & p) const;
 	///
 	static bool last_literal;
 

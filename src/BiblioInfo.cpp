@@ -223,7 +223,7 @@ name_parts nameParts(docstring const & iname)
 }
 
 
-docstring constructName(docstring const & name, string const scheme)
+docstring constructName(docstring const & name, string const & scheme)
 {
 	// re-constructs a name from name parts according
 	// to a given scheme
@@ -313,7 +313,7 @@ vector<docstring> const getAuthors(docstring const & author)
 }
 
 
-bool multipleAuthors(docstring const author)
+bool multipleAuthors(docstring const & author)
 {
 	return getAuthors(author).size() > 1;
 }

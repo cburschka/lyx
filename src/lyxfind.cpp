@@ -93,7 +93,7 @@ class IgnoreFormats {
 	///
 	bool getLanguage() { return ignoreLanguage_; };
 	///
-	void setIgnoreFormat(string type, bool value);
+	void setIgnoreFormat(string const & type, bool value);
 
 private:
 	///
@@ -119,7 +119,7 @@ private:
 };
 
 
-void IgnoreFormats::setIgnoreFormat(string type, bool value)
+void IgnoreFormats::setIgnoreFormat(string const & type, bool value)
 {
 	if (type == "color") {
 		ignoreColor_ = value;
@@ -160,7 +160,7 @@ void IgnoreFormats::setIgnoreFormat(string type, bool value)
 IgnoreFormats ignoreFormats;
 
 
-void setIgnoreFormat(string type, bool value)
+void setIgnoreFormat(string const & type, bool value)
 {
   ignoreFormats.setIgnoreFormat(type, value);
 }
@@ -1478,7 +1478,8 @@ class LatexInfo {
   void removeHead(KeyInfo&, int count=0);
 
  public:
- LatexInfo(string par, bool isPatternString) : entidx_(-1), interval_(isPatternString, par)
+ LatexInfo(string const & par, bool isPatternString)
+	 : entidx_(-1), interval_(isPatternString, par)
   {
     buildKeys(isPatternString);
     entries_ = vector<KeyInfo>();
@@ -1588,7 +1589,7 @@ class MathInfo {
   MathInfo() {
     actualIdx_ = 0;
   }
-  void insert(string wait, size_t start, size_t end) {
+  void insert(string const & wait, size_t start, size_t end) {
     MathEntry m = MathEntry();
     m.wait = wait;
     m.mathStart = start;

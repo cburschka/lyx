@@ -2935,7 +2935,7 @@ void BufferParams::readIncludeonly(Lexer & lex)
 }
 
 
-string BufferParams::paperSizeName(PapersizePurpose purpose, string const psize) const
+string BufferParams::paperSizeName(PapersizePurpose purpose, string const & psize) const
 {
 	PAPER_SIZE ppsize = psize.empty() ? papersize : papersizetranslator().find(psize);
 	switch (ppsize) {

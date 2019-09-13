@@ -75,7 +75,7 @@ struct StartTag
 struct EndTag
 {
 	///
-	explicit EndTag(std::string tag) : tag_(tag) {}
+	explicit EndTag(std::string const & tag) : tag_(tag) {}
 	///
 	virtual ~EndTag() {}
 	/// </tag_>

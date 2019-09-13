@@ -24,7 +24,7 @@ namespace lyx {
 class PersonalWordList {
 public:
 	/// the word list has an associated language
-	PersonalWordList(std::string lang) : lang_(lang), dirty_(false) {}
+	PersonalWordList(std::string & lang) : lang_(lang), dirty_(false) {}
 	/// the location of the file to hold to word list
 	lyx::support::FileName dictfile() const;
 	/// (re)load the word list from file

@@ -329,7 +329,7 @@ inline docstring wrapCitation(docstring const & key,
 } // anonymous namespace
 
 
-vector<pair<docstring, docstring>> InsetCitation::getQualifiedLists(docstring const p) const
+vector<pair<docstring, docstring>> InsetCitation::getQualifiedLists(docstring const & p) const
 {
 	vector<docstring> ps =
 		getVectorFromString(p, from_ascii("\t"));

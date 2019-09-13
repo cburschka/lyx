@@ -132,7 +132,7 @@ bool InsetBibtex::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetBibtex::editDatabases(docstring const db) const
+void InsetBibtex::editDatabases(docstring const & db) const
 {
 	vector<docstring> bibfilelist = getVectorFromString(getParam("bibfiles"));
 

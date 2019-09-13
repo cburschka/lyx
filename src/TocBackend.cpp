@@ -43,7 +43,7 @@ namespace lyx {
 ///////////////////////////////////////////////////////////////////////////
 
 TocItem::TocItem(DocIterator const & dit, int d, docstring const & s,
-                 bool output_active, FuncRequest action)
+                 bool output_active, FuncRequest const & action)
 	: dit_(dit), depth_(d), str_(s), output_(output_active),
 	  action_(action)
 {

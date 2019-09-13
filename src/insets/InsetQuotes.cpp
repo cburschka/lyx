@@ -588,9 +588,9 @@ docstring const InsetQuotesParams::getGuiLabel(QuoteStyle const & qs, bool langd
 }
 
 
-docstring const InsetQuotesParams::getShortGuiLabel(docstring const string)
+docstring const InsetQuotesParams::getShortGuiLabel(docstring const & str)
 {
-	std::string const s = to_ascii(string);
+	string const s = to_ascii(str);
 	QuoteStyle const style = getQuoteStyle(s);
 	QuoteSide const side = getQuoteSide(s);
 	QuoteLevel const level = getQuoteLevel(s);

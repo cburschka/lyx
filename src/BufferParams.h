@@ -467,7 +467,7 @@ public:
 	};
 	///
 	std::string paperSizeName(PapersizePurpose purpose,
-				  std::string const psize = std::string()) const;
+				  std::string const & psize = std::string()) const;
 	/// set up if and how babel is called
 	std::string babelCall(std::string const & lang_opts, bool const langoptions) const;
 	/// return supported drivers for specific packages

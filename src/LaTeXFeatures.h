@@ -169,7 +169,7 @@ public:
 	/// set savenote environment (footnote package)
 	std::string saveNoteEnv() const { return savenote_env_; }
 	/// return savenote environment
-	void saveNoteEnv(std::string const s) { savenote_env_ = s; }
+	void saveNoteEnv(std::string const & s) { savenote_env_ = s; }
 	/// Runparams that will be used for exporting this file.
 	OutputParams const & runparams() const { return runparams_; }
 	/// Resolve alternatives like "esint|amsmath|wasysym"

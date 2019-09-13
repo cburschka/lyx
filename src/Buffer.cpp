@@ -3583,7 +3583,7 @@ typename M::const_iterator greatest_below(M & m, typename M::key_type const & x)
 	if (it == m.begin())
 		return m.end();
 
-	it--;
+	--it;
 	return it;
 }
 

@@ -243,7 +243,7 @@ string const LaTeXFont::getAvailablePackage(bool dryrun)
 
 
 string const LaTeXFont::getPackageOptions(bool ot1, bool complete, bool sc, bool osf,
-					  int scale, string const extraopts, bool nomath)
+					  int scale, string const & extraopts, bool nomath)
 {
 	ostringstream os;
 	bool const needosfopt = (osf != osfdefault_);
@@ -290,7 +290,7 @@ string const LaTeXFont::getPackageOptions(bool ot1, bool complete, bool sc, bool
 
 
 string const LaTeXFont::getLaTeXCode(bool dryrun, bool ot1, bool complete, bool sc,
-				     bool osf, bool nomath, string const extraopts,
+				     bool osf, bool nomath, string const & extraopts,
 				     int const & scale)
 {
 	ostringstream os;

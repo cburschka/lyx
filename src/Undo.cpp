@@ -90,21 +90,15 @@ struct UndoElement
 	{
 	}
 	///
-	UndoElement(UndoElement const & ue) : time(current_time())
-	{
-		kind = ue.kind;
-		cur_before = ue.cur_before;
-		cur_after = ue.cur_after;
-		cell = ue.cell;
-		from = ue.from;
-		end = ue.end;
-		pars = ue.pars;
-		array = ue.array;
-		bparams = ue.bparams
-			? new BufferParams(*ue.bparams) : 0;
-		lyx_clean = ue.lyx_clean;
-		group_id = ue.group_id;
-	}
+	UndoElement(UndoElement const & ue) :
+		kind(ue.kind),
+		cur_before(ue.cur_before), cur_after(ue.cur_after),
+		cell(ue.cell), from(ue.from), end(ue.end),
+		pars(ue.pars), array(ue.array),
+		bparams(ue.bparams ? new BufferParams(*ue.bparams) : 0),
+		lyx_clean(ue.lyx_clean), group_id(ue.group_id),
+		time(current_time())
+		{}
 	///
 	~UndoElement()
 	{

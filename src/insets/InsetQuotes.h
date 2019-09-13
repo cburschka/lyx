@@ -86,7 +86,7 @@ public:
 	docstring const getGuiLabel(QuoteStyle const & qs,
 				    bool langdef = false);
 	/// Returns a descriptive label of a given char
-	docstring const getShortGuiLabel(docstring const string);
+	docstring const getShortGuiLabel(docstring const & str);
 	///
 	int stylescount() const;
 	/// Returns the matching style shortcut char

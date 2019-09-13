@@ -61,7 +61,7 @@ public:
 		int depth,
 		docstring const & s,
 		bool output_active,
-		FuncRequest action = FuncRequest(LFUN_UNKNOWN_ACTION)
+		FuncRequest const & action = FuncRequest(LFUN_UNKNOWN_ACTION)
 		);
 	///
 	DocIterator const & dit() const { return dit_; }
@@ -74,7 +74,7 @@ public:
 	///
 	bool isOutput() const { return output_; }
 	///
-	void setAction(FuncRequest a) { action_ = a; }
+	void setAction(FuncRequest const & a) { action_ = a; }
 
 	/// custom action, or the default one (paragraph-goto) if not customised
 	FuncRequest action() const;

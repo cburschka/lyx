@@ -32,9 +32,7 @@ public:
 	typedef typename container_type::const_iterator const_iterator;
 
 	/// limit is the maximum size of the stack
-	limited_stack(size_type limit = 100) {
-		limit_ = limit;
-	}
+	limited_stack(size_type limit = 100) : limit_(limit) {}
 
 	/// Return the top element.
 	value_type & top() {

@@ -84,7 +84,7 @@ public:
 	/// Return the LaTeX Code
 	std::string const getLaTeXCode(bool dryrun, bool ot1, bool complete,
 				       bool sc, bool osf, bool nomath,
-				       std::string const extraopts = std::string(),
+				       std::string const & extraopts = std::string(),
 				       int const & scale = 100);
 	/// Return the actually used font
 	docstring const getUsedFont(bool ot1, bool complete, bool nomath);
@@ -103,7 +103,7 @@ private:
 					    bool sc,
 					    bool osf,
 					    int scale,
-					    std::string const extraopts,
+					    std::string const & extraopts,
 					    bool nomath);
 	/// Return an alternative font
 	LaTeXFont altFont(docstring const & name);
