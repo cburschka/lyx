@@ -307,7 +307,7 @@ public:
 class ETag {
 public:
 	///
-	ETag(char const * const tag) : tag_(tag) {}
+	explicit ETag(char const * const tag) : tag_(tag) {}
 	///
 	char const * const tag_;
 };

@@ -23,11 +23,11 @@ class latexkeys;
 class InsetMathComment : public InsetMathNest {
 public:
 	///
-	InsetMathComment(Buffer * buf);
+	explicit InsetMathComment(Buffer * buf);
 	///
-	InsetMathComment(MathData const & ar);
+	explicit InsetMathComment(MathData const & ar);
 	///
-	explicit InsetMathComment(Buffer * buf, docstring const &);
+	InsetMathComment(Buffer * buf, docstring const &);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

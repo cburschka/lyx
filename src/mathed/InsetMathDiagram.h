@@ -22,7 +22,7 @@ namespace lyx {
 class InsetMathDiagram : public InsetMathGrid {
 public:
 	///
-	InsetMathDiagram(Buffer * buf);
+	explicit InsetMathDiagram(Buffer * buf);
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///

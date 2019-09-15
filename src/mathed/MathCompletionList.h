@@ -24,7 +24,7 @@ namespace lyx {
 class MathCompletionList : public CompletionList {
 public:
 	///
-	MathCompletionList(Cursor const & cur);
+	explicit MathCompletionList(Cursor const & cur);
 	///
 	virtual ~MathCompletionList();
 

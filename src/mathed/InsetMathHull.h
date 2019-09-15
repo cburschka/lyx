@@ -41,7 +41,7 @@ public:
 		NOTAG
 	};
 	///
-	InsetMathHull(Buffer * buf);
+	explicit InsetMathHull(Buffer * buf);
 	///
 	InsetMathHull(Buffer * buf, HullType type);
 	///

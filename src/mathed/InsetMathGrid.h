@@ -96,7 +96,7 @@ public:
 
 public:
 	/// sets nrows and ncols to 1, vertical alingment to 'c'
-	InsetMathGrid(Buffer * buf);
+	explicit InsetMathGrid(Buffer * buf);
 	/// Note: columns first!
 	InsetMathGrid(Buffer * buf, col_type m, row_type n);
 	///

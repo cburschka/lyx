@@ -39,7 +39,7 @@ enum MacroType {
 class MacroData {
 public:
 	/// Constructor to make STL containers happy
-	MacroData(Buffer * buf = 0);
+	explicit MacroData(Buffer * buf = 0);
 	/// Create lazy MacroData which only queries the macro template when needed
 	MacroData(Buffer * buf, DocIterator const & pos);
 	/// Create non-lazy MacroData which directly queries the macro template

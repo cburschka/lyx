@@ -23,7 +23,7 @@ namespace lyx {
 class InsetMathLefteqn : public InsetMathNest {
 public:
 	///
-	InsetMathLefteqn(Buffer * buf);
+	explicit InsetMathLefteqn(Buffer * buf);
 	///
 	docstring name() const;
 	///

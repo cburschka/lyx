@@ -21,7 +21,7 @@ namespace lyx {
 class InsetMathPar : public InsetMathHull {
 public:
 	///
-	InsetMathPar(Buffer * buf) : InsetMathHull(buf) {}
+	explicit InsetMathPar(Buffer * buf) : InsetMathHull(buf) {}
 	///
 	InsetMathPar(Buffer * buf, MathData const & ar);
 	///

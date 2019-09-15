@@ -25,7 +25,7 @@ namespace lyx {
 class InsetMathScript : public InsetMathNest {
 public:
 	/// create inset without scripts
-	InsetMathScript(Buffer * buf);
+	explicit InsetMathScript(Buffer * buf);
 	/// create inset with single script
 	explicit InsetMathScript(Buffer * buf, bool up);
 	/// create inset with single script and given nucleus

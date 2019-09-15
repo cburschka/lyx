@@ -250,7 +250,7 @@ void InsetDisplayLabelBox::draw(PainterInfo & pi, int x, int y) const
 class InsetMathWrapper : public InsetMath {
 public:
 	///
-	InsetMathWrapper(MathData const * value) : value_(value) {}
+	explicit InsetMathWrapper(MathData const * value) : value_(value) {}
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -755,7 +755,7 @@ class OptionalsMacroInstanceFix
 {
 public:
 	///
-	OptionalsMacroInstanceFix(int optionals) : optionals_(optionals) {}
+	explicit OptionalsMacroInstanceFix(int optionals) : optionals_(optionals) {}
 	///
 	void operator()(InsetMathMacro * macro)
 	{

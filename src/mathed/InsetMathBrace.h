@@ -22,9 +22,9 @@ namespace lyx {
 class InsetMathBrace : public InsetMathNest {
 public:
 	///
-	InsetMathBrace(Buffer * buf);
+	explicit InsetMathBrace(Buffer * buf);
 	///
-	InsetMathBrace(MathData const & ar);
+	explicit InsetMathBrace(MathData const & ar);
 	/// identifies brace insets
 	InsetMathBrace * asBraceInset() { return this; }
 	/// identifies brace insets

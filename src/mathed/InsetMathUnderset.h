@@ -22,7 +22,7 @@ namespace lyx {
 class InsetMathUnderset : public InsetMathFracBase {
 public:
 	///
-	InsetMathUnderset(Buffer * buf) : InsetMathFracBase(buf) {}
+	explicit InsetMathUnderset(Buffer * buf) : InsetMathFracBase(buf) {}
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

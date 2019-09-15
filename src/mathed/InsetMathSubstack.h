@@ -23,7 +23,7 @@ namespace lyx {
 class InsetMathSubstack : public InsetMathGrid {
 public:
 	///
-	InsetMathSubstack(Buffer * buf);
+	explicit InsetMathSubstack(Buffer * buf);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

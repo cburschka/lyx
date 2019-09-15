@@ -54,7 +54,7 @@ private:
 class InsetMathFBox : public InsetMathNest {
 public:
 	///
-	InsetMathFBox(Buffer * buf);
+	explicit InsetMathFBox(Buffer * buf);
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///
@@ -116,7 +116,7 @@ private:
 class InsetMathBoxed : public InsetMathNest {
 public:
 	///
-	InsetMathBoxed(Buffer * buf);
+	explicit InsetMathBoxed(Buffer * buf);
 	///
 	marker_type marker(BufferView const *) const { return NO_MARKER; }
 	///

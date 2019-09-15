@@ -27,7 +27,7 @@ class XHTMLStream;
 class InsetMathMacroTemplate : public InsetMathNest {
 public:
 	///
-	InsetMathMacroTemplate(Buffer * buf);
+	explicit InsetMathMacroTemplate(Buffer * buf);
 	///
 	InsetMathMacroTemplate(Buffer * buf, docstring const & name, int nargs,
 		int optional, MacroType type,

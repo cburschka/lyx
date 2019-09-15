@@ -23,7 +23,7 @@ class Buffer;
 class InsetMathRef : public InsetMathCommand {
 public:
 	///
-	InsetMathRef(Buffer * buf);
+	explicit InsetMathRef(Buffer * buf);
 	///
 	explicit InsetMathRef(Buffer * buf, docstring const & data);
 	///

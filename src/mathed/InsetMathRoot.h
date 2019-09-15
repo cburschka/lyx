@@ -23,7 +23,7 @@ namespace lyx {
 class InsetMathRoot : public InsetMathNest {
 public:
 	///
-	InsetMathRoot(Buffer * buf);
+	explicit InsetMathRoot(Buffer * buf);
 	///
 	bool idxUpDown(Cursor & cur, bool up) const;
 	///
