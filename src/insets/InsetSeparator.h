@@ -66,8 +66,6 @@ public:
 	}
 private:
 	///
-	InsetSeparatorParams params() const { return params_; }
-	///
 	InsetCode lyxCode() const { return SEPARATOR_CODE; }
 	///
 	void metrics(MetricsInfo &, Dimension &) const;

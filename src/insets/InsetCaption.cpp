@@ -86,12 +86,6 @@ void InsetCaption::cursorPos(BufferView const & bv,
 }
 
 
-void InsetCaption::setCustomLabel(docstring const & label)
-{
-	custom_label_ = translateIfPossible(label);
-}
-
-
 void InsetCaption::addToToc(DocIterator const & cpit, bool output_active,
 							UpdateType utype, TocBackend & backend) const
 {

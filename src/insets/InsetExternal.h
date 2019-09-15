@@ -155,10 +155,6 @@ private:
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	Inset * clone() const { return new InsetExternal(*this); }
-	/** This method is connected to the graphics loader, so we are
-	 *  informed when the image has been loaded.
-	 */
-	void statusChanged() const;
 	/** Slot receiving a signal that the external file has changed
 	 *  and the preview should be regenerated.
 	 */

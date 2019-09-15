@@ -52,8 +52,6 @@ public:
 	static std::string params2string(InsetNewlineParams const &);
 private:
 	///
-	InsetNewlineParams params() const { return params_; }
-	///
 	InsetCode lyxCode() const { return NEWLINE_CODE; }
 	///
 	void metrics(MetricsInfo &, Dimension &) const;

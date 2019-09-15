@@ -451,12 +451,6 @@ bool InsetExternal::setMouseHover(BufferView const * bv, bool mouse_hover) const
 }
 
 
-void InsetExternal::statusChanged() const
-{
-	updateFrontend();
-}
-
-
 void InsetExternal::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action()) {

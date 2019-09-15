@@ -80,8 +80,6 @@ private:
 	///
 	docstring xhtml(XHTMLStream & os, OutputParams const & runparams) const;
 	///
-	void setCustomLabel(docstring const & label);
-	///
 	void addToToc(DocIterator const & di, bool output_active, UpdateType utype,
 	              TocBackend & backend) const;
 	///
@@ -101,8 +99,6 @@ private:
 	bool is_subfloat_;
 	///
 	std::string type_;
-	///
-	docstring custom_label_;
 };
 
 

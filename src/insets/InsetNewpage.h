@@ -55,8 +55,6 @@ public:
 	static std::string params2string(InsetNewpageParams const &);
 private:
 	///
-	InsetNewpageParams params() const { return params_; }
-	///
 	InsetCode lyxCode() const { return NEWPAGE_CODE; }
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
