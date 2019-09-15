@@ -39,7 +39,7 @@ public:
 	///
 	InsetCollapsible(InsetCollapsible const & rhs);
 	///
-	InsetCollapsible const & operator=(InsetCollapsible const &);
+	InsetCollapsible & operator=(InsetCollapsible const &);
 	///
 	virtual ~InsetCollapsible();
 	///

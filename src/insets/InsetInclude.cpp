@@ -883,15 +883,15 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		// If needed, use converters to produce a latex file from the child
 		if (tmpwritefile != writefile) {
 			ErrorList el;
-			Converters::RetVal const retval =
+			Converters::RetVal const conv_retval =
 				theConverters().convert(tmp, tmpwritefile, writefile,
 				    included_file, inc_format, tex_format, el);
-			if (retval == Converters::KILLED && buffer().isClone() &&
+			if (conv_retval == Converters::KILLED && buffer().isClone() &&
 			    buffer().isExporting()) {
 				// We really shouldn't get here, I don't think.
 				LYXERR0("No conversion exception?");
 				throw ConversionException();
-			} else if (retval != Converters::SUCCESS && !runparams.silent) {
+			} else if (conv_retval != Converters::SUCCESS && !runparams.silent) {
 				docstring msg = bformat(_("Included file `%1$s' "
 						"was not exported correctly.\n "
 						"LaTeX export is probably incomplete."),

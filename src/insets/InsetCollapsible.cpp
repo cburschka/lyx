@@ -65,7 +65,7 @@ InsetCollapsible::InsetCollapsible(InsetCollapsible const & rhs)
 }
 
 
-InsetCollapsible const & InsetCollapsible::operator=(InsetCollapsible const & that)
+InsetCollapsible & InsetCollapsible::operator=(InsetCollapsible const & that)
 {
 	if (&that == this)
 		return *this;

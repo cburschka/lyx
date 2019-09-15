@@ -139,9 +139,9 @@ public:
 		UNKNOWN_INFO,    // Invalid type
 	};
 	///
-	docstring getDate(std::string const, QDate const date = QDate::currentDate()) const;
+	docstring getDate(std::string const &, QDate const date = QDate::currentDate()) const;
 	///
-	docstring getTime(std::string const, QTime const time = QTime::currentTime()) const;
+	docstring getTime(std::string const &, QTime const time = QTime::currentTime()) const;
 	///
 	std::vector<std::pair<std::string,docstring>> getArguments(Buffer const * buf,
 								   std::string const &) const;

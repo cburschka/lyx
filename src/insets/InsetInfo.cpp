@@ -168,7 +168,7 @@ set<string> getTexFileList(string const & filename)
 	return list;
 }
 
-bool translateString(docstring const in, docstring & out, string const lcode)
+bool translateString(docstring const & in, docstring & out, string const & lcode)
 {
 	out = translateIfPossible(in, lcode);
 	return in != out;
@@ -176,7 +176,7 @@ bool translateString(docstring const in, docstring & out, string const lcode)
 } // namespace anon
 
 
-docstring InsetInfoParams::getDate(string const iname, QDate const date) const
+docstring InsetInfoParams::getDate(string const & iname, QDate const date) const
 {
 	QLocale loc;
 	if (lang)
@@ -201,7 +201,7 @@ docstring InsetInfoParams::getDate(string const iname, QDate const date) const
 }
 
 
-docstring InsetInfoParams::getTime(string const iname, QTime const time) const
+docstring InsetInfoParams::getTime(string const & iname, QTime const time) const
 {
 	QLocale loc;
 	if (lang)

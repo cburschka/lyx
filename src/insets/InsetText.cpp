@@ -86,10 +86,9 @@ InsetText::InsetText(Buffer * buf, UsePlain type)
 
 
 InsetText::InsetText(InsetText const & in)
-	: Inset(in), text_(this, in.text_)
+	: Inset(in), drawFrame_(in.drawFrame_), frame_color_(in.frame_color_),
+	  text_(this, in.text_)
 {
-	drawFrame_ = in.drawFrame_;
-	frame_color_ = in.frame_color_;
 }
 
 
@@ -1142,9 +1141,9 @@ bool InsetText::needsCProtection(bool const maintext, bool const fragile) const
 		Paragraph const & par = pars[size_type(pit)];
 		if (par.needsCProtection(fragile))
 			return true;
-		docstring const pars = par.asString();
+		docstring const par_str = par.asString();
 		for (int k = 0; k < nchars_escape; k++) {
-			if (contains(pars, chars_escape[k]))
+			if (contains(par_str, chars_escape[k]))
 				return true;
 		}
 	}

@@ -111,10 +111,9 @@ InsetQuotesParams::QuoteStyle InsetQuotesParams::getQuoteStyle(string const & s,
 		str = "eld";
 	}
 
-	int i;
-
 	// '.' wildcard means: keep current style
 	if (!allow_wildcards || str[0] != '.') {
+		int i;
 		for (i = 0; i < stylescount(); ++i) {
 			if (str[0] == style_char[i]) {
 				res = QuoteStyle(i);
@@ -144,10 +143,9 @@ InsetQuotesParams::QuoteSide InsetQuotesParams::getQuoteSide(string const & s,
 		str = "eld";
 	}
 
-	int i;
-
 	// '.' wildcard means: keep current side
 	if (!allow_wildcards || str[1] != '.') {
+		int i;
 		for (i = 0; i < 2; ++i) {
 			if (str[1] == side_char[i]) {
 				res = InsetQuotesParams::QuoteSide(i);
@@ -177,10 +175,9 @@ InsetQuotesParams::QuoteLevel InsetQuotesParams::getQuoteLevel(string const & s,
 		str = "eld";
 	}
 
-	int i;
-
 	// '.' wildcard means: keep current level
 	if (!allow_wildcards || str[2] != '.') {
+		int i;
 		for (i = 0; i < 2; ++i) {
 			if (str[2] == level_char[i]) {
 				res = InsetQuotesParams::QuoteLevel(i);

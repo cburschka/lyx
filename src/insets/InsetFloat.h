@@ -57,7 +57,7 @@ public:
 class InsetFloat : public InsetCaptionable
 {
 public:
-	InsetFloat(Buffer * buffer, std::string params_str);
+	InsetFloat(Buffer * buffer, std::string const & params_str);
 	///
 	static void string2params(std::string const &, InsetFloatParams &);
 	///

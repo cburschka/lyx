@@ -114,7 +114,7 @@ namespace lyx {
 // Lgb
 
 //FIXME: why do we set in stone the type here?
-InsetFloat::InsetFloat(Buffer * buf, string params_str)
+InsetFloat::InsetFloat(Buffer * buf, string const & params_str)
 	: InsetCaptionable(buf)
 {
 	string2params(params_str, params_);
@@ -431,7 +431,7 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 	// sidewaysfloats always use their own page,
 	// therefore don't output the p option that is always set
 	if (!placement.empty()
-	    && (!params_.sideways || (params_.sideways && from_ascii(placement) != "p")))
+	    && (!params_.sideways || from_ascii(placement) != "p"))
 		os << '[' << from_ascii(placement) << ']';
 	os << '\n';
 
