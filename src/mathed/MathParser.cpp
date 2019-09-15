@@ -2166,7 +2166,7 @@ bool mathed_parse_cell(MathData & ar, docstring const & str, Parse::flags f)
 
 bool mathed_parse_cell(MathData & ar, istream & is, Parse::flags f)
 {
-	return Parser(is, f, ar.buffer()).parse(ar, 0, f & Parse::TEXTMODE ?
+	return Parser(is, f, ar.buffer()).parse(ar, 0, (f & Parse::TEXTMODE) ?
 				InsetMath::TEXT_MODE : InsetMath::MATH_MODE);
 }
 
