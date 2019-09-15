@@ -1233,7 +1233,6 @@ bool InsetMathMacro::completionSupported(Cursor const & cur) const
 		return InsetMathNest::completionSupported(cur);
 
 	return lyxrc.completion_popup_math
-		&& displayMode() == DISPLAY_UNFOLDED
 		&& cur.bv().cursor().pos() == int(name().size());
 }
 
@@ -1244,7 +1243,6 @@ bool InsetMathMacro::inlineCompletionSupported(Cursor const & cur) const
 		return InsetMathNest::inlineCompletionSupported(cur);
 
 	return lyxrc.completion_inline_math
-		&& displayMode() == DISPLAY_UNFOLDED
 		&& cur.bv().cursor().pos() == int(name().size());
 }
 
