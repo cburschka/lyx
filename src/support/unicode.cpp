@@ -51,7 +51,7 @@ namespace lyx {
 
 struct IconvProcessor::Handler {
 	// assumes cd is valid
-	Handler(iconv_t const cd) : cd(cd) {}
+	explicit Handler(iconv_t const cd) : cd(cd) {}
 	~Handler() {
 		if (iconv_close(cd) == -1)
 			LYXERR0("Error returned from iconv_close(" << errno << ')');

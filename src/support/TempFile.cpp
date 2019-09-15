@@ -30,7 +30,7 @@ namespace support {
 struct TempFile::Private
 {
 	///
-	Private(QString const & mask) : f(mask)
+	explicit Private(QString const & mask) : f(mask)
 	{
 		LYXERR(Debug::FILES, "Temporary file in " << fromqstr(mask));
 		if (f.open())
