@@ -967,10 +967,8 @@ string DocFileName::mangledFileName(string const & dir) const
 		return (*it).second;
 
 	string const name = absFileName();
-	// Now the real work
-	string mname = os::internal_path(name);
-	// Remove the extension.
-	mname = support::changeExtension(name, string());
+	// Now the real work. Remove the extension.
+	string mname = support::changeExtension(name, string());
 	// The mangled name must be a valid LaTeX name.
 	// The list of characters to keep is probably over-restrictive,
 	// but it is not really a problem.
