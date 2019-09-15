@@ -622,7 +622,7 @@ void Parser::tokenize(istream & is)
 
 void Parser::tokenize(docstring const & buffer)
 {
-	idocstringstream is(mode_ & Parse::VERBATIM
+	idocstringstream is((mode_ & Parse::VERBATIM)
 			? escapeSpecialChars(buffer, mode_ & Parse::TEXTMODE)
 			: buffer, ios::in | ios::binary);
 
@@ -744,8 +744,9 @@ docstring Parser::parse_verbatim_option()
 	skipSpaces();
 	docstring res;
 	if (nextToken().character() == '[') {
-		Token t = getToken();
-		for (t = getToken(); t.character() != ']' && good(); t = getToken()) {
+		// eat [
+		getToken();
+		for (Token t = getToken(); t.character() != ']' && good(); t = getToken()) {
 			if (t.cat() == catBegin) {
 				putback();
 				res += '{' + parse_verbatim_item() + '}';
@@ -762,8 +763,9 @@ docstring Parser::parse_verbatim_item()
 	skipSpaces();
 	docstring res;
 	if (nextToken().cat() == catBegin) {
-		Token t = getToken();
-		for (t = getToken(); t.cat() != catEnd && good(); t = getToken()) {
+		// eat catBegin
+		getToken();
+		for (Token t = getToken(); t.cat() != catEnd && good(); t = getToken()) {
 			if (t.cat() == catBegin) {
 				putback();
 				res += '{' + parse_verbatim_item() + '}';
@@ -1985,7 +1987,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 						BufferParams::package_off;
 
 			bool const is_user_macro = no_mhchem ||
-				(buf && (mode_ & Parse::TRACKMACRO
+				(buf && ((mode_ & Parse::TRACKMACRO)
 					 ? buf->usermacros.count(t.cs()) != 0
 					 : buf->getMacro(t.cs(), false) != 0));
 
@@ -2157,7 +2159,7 @@ char const * latexkeys::MathMLtype() const
 
 bool mathed_parse_cell(MathData & ar, docstring const & str, Parse::flags f)
 {
-	return Parser(str, f, ar.buffer()).parse(ar, 0, f & Parse::TEXTMODE ?
+	return Parser(str, f, ar.buffer()).parse(ar, 0, (f & Parse::TEXTMODE) ?
 				InsetMath::TEXT_MODE : InsetMath::MATH_MODE);
 }
 
@@ -2186,7 +2188,7 @@ bool mathed_parse_normal(Buffer * buf, MathAtom & t, Lexer & lex,
 bool mathed_parse_normal(InsetMathGrid & grid, docstring const & str,
 			 Parse::flags f)
 {
-	return Parser(str, f, &grid.buffer()).parse1(grid, 0, f & Parse::TEXTMODE ?
+	return Parser(str, f, &grid.buffer()).parse1(grid, 0, (f & Parse::TEXTMODE) ?
 			InsetMath::TEXT_MODE : InsetMath::MATH_MODE, false);
 }
 
