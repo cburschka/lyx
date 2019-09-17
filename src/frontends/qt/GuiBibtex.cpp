@@ -520,7 +520,7 @@ vector<docstring> GuiBibtex::getFileEncodings()
 }
 
 
-void GuiBibtex::setFileEncodings(vector<docstring> const m)
+void GuiBibtex::setFileEncodings(vector<docstring> const & m)
 {
 	for (docstring const & s: m) {
 		docstring key;

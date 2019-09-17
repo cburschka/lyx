@@ -88,7 +88,7 @@ private:
 	///
 	std::vector<docstring> getFileEncodings();
 	///
-	void setFileEncodings(std::vector<docstring> const m);
+	void setFileEncodings(std::vector<docstring> const & m);
 
 	///
 	bool initialiseParams(std::string const & data);

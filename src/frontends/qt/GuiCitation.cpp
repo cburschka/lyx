@@ -692,7 +692,7 @@ QStringList GuiCitation::selectedKeys()
 }
 
 
-void GuiCitation::setPreTexts(vector<docstring> const m)
+void GuiCitation::setPreTexts(vector<docstring> const & m)
 {
 	// account for multiple use of the same keys
 	QList<QModelIndex> handled;
@@ -731,7 +731,7 @@ vector<docstring> GuiCitation::getPreTexts()
 }
 
 
-void GuiCitation::setPostTexts(vector<docstring> const m)
+void GuiCitation::setPostTexts(vector<docstring> const & m)
 {
 	// account for multiple use of the same keys
 	QList<QModelIndex> handled;

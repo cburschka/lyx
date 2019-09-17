@@ -121,11 +121,11 @@ private:
 	/// Get selected keys
 	QStringList selectedKeys();
 	/// Set pre texts of qualified lists
-	void setPreTexts(std::vector<docstring> const m);
+	void setPreTexts(std::vector<docstring> const & m);
 	/// Get pre texts of qualified lists
 	std::vector<docstring> getPreTexts();
 	/// Set post texts of qualified lists
-	void setPostTexts(std::vector<docstring> const m);
+	void setPostTexts(std::vector<docstring> const & m);
 	/// Get post texts of qualified lists
 	std::vector<docstring> getPostTexts();
 
