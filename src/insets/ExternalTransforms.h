@@ -149,7 +149,7 @@ private:
 class ResizeCommand : public TransformCommand {
 protected:
 	ResizeData data;
-	ResizeCommand(ResizeData const & data_) : data(data_) {}
+	explicit ResizeCommand(ResizeData const & data_) : data(data_) {}
 
 private:
 	virtual std::string const front_placeholder_impl() const
@@ -165,7 +165,7 @@ public:
 		{ return ptr_type(new ResizeLatexCommand(data)); }
 
 private:
-	ResizeLatexCommand(ResizeData const & data_)
+	explicit ResizeLatexCommand(ResizeData const & data_)
 		: ResizeCommand(data_) {}
 	virtual std::string const front_impl() const;
 	virtual std::string const back_impl() const;
@@ -175,7 +175,7 @@ private:
 class RotationCommand : public TransformCommand {
 protected:
 	RotationData data;
-	RotationCommand(RotationData const & data_) : data(data_) {}
+	explicit RotationCommand(RotationData const & data_) : data(data_) {}
 
 private:
 	virtual std::string const front_placeholder_impl() const
@@ -191,7 +191,7 @@ public:
 		{ return ptr_type(new RotationLatexCommand(data)); }
 
 private:
-	RotationLatexCommand(RotationData const & data_)
+	explicit RotationLatexCommand(RotationData const & data_)
 		: RotationCommand(data_) {}
 	virtual std::string const front_impl() const;
 	virtual std::string const back_impl() const;
@@ -221,7 +221,7 @@ private:
 class ClipOption : public TransformOption {
 protected:
 	ClipData data;
-	ClipOption(ClipData const & data_) : data(data_) {}
+	explicit ClipOption(ClipData const & data_) : data(data_) {}
 
 private:
 	virtual std::string const placeholder_impl() const
@@ -235,7 +235,7 @@ public:
 		{ return ptr_type(new ClipLatexOption(data)); }
 
 private:
-	ClipLatexOption(ClipData const & data_)
+	explicit ClipLatexOption(ClipData const & data_)
 		: ClipOption(data_) {}
 	virtual std::string const option_impl() const;
 };
@@ -247,7 +247,7 @@ public:
 		{ return ptr_type(new ExtraOption(data)); }
 
 private:
-	ExtraOption(std::string const & data_) : data(data_) {}
+	explicit ExtraOption(std::string const & data_) : data(data_) {}
 
 	virtual std::string const placeholder_impl() const
 		{ return "$$Extra"; }
@@ -260,7 +260,7 @@ private:
 class ResizeOption : public TransformOption {
 protected:
 	ResizeData data;
-	ResizeOption(ResizeData const & data_) : data(data_) {}
+	explicit ResizeOption(ResizeData const & data_) : data(data_) {}
 
 private:
 	virtual std::string const placeholder_impl() const
@@ -274,7 +274,7 @@ public:
 		{ return ptr_type(new ResizeLatexOption(data)); }
 
 private:
-	ResizeLatexOption(ResizeData const & data_)
+	explicit ResizeLatexOption(ResizeData const & data_)
 		: ResizeOption(data_) {}
 	virtual std::string const option_impl() const;
 };
@@ -283,7 +283,7 @@ private:
 class RotationOption : public TransformOption {
 protected:
 	RotationData data;
-	RotationOption(RotationData const & data_) : data(data_) {}
+	explicit RotationOption(RotationData const & data_) : data(data_) {}
 
 private:
 	virtual std::string const placeholder_impl() const
@@ -297,7 +297,7 @@ public:
 		{ return ptr_type(new RotationLatexOption(data)); }
 
 private:
-	RotationLatexOption(RotationData const & data_)
+	explicit RotationLatexOption(RotationData const & data_)
 		: RotationOption(data_) {}
 	virtual std::string const option_impl() const;
 };

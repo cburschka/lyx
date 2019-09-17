@@ -74,7 +74,7 @@ class DumpPreambleDef {
 public:
 	typedef TemplateManager::PreambleDefs::value_type value_type;
 
-	DumpPreambleDef(ostream & os) : os_(os) {}
+	explicit DumpPreambleDef(ostream & os) : os_(os) {}
 
 	void operator()(value_type const & vt) {
 		os_ << "PreambleDef " << vt.first << '\n'
@@ -91,7 +91,7 @@ class DumpTemplate {
 public:
 	typedef TemplateManager::Templates::value_type value_type;
 
-	DumpTemplate(ostream & os) : os_(os) {}
+	explicit DumpTemplate(ostream & os) : os_(os) {}
 
 	void operator()(value_type const & vt) {
 		Template const & et = vt.second;
@@ -137,7 +137,7 @@ class DumpFormat {
 public:
 	typedef Template::Formats::value_type value_type;
 
-	DumpFormat(ostream & o) : os_(o) {}
+	explicit DumpFormat(ostream & o) : os_(o) {}
 
 	void operator()(value_type const & vt) const {
 		Template::Format const & ft = vt.second;

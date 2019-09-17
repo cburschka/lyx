@@ -24,7 +24,7 @@ public:
 	///
 	InsetVSpace() : Inset(0) {}
 	///
-	InsetVSpace(VSpace const &);
+	explicit InsetVSpace(VSpace const &);
 	/// How much?
 	VSpace const & space() const { return space_; }
 	///

@@ -94,7 +94,7 @@ class InsetExternal : public Inset
 	// complicated to implement it consistently with the copy constructor
 	InsetExternal & operator=(InsetExternal const &);
 public:
-	InsetExternal(Buffer *);
+	explicit InsetExternal(Buffer *);
 	///
 	~InsetExternal();
 	///

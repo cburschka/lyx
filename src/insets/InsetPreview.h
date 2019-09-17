@@ -32,7 +32,7 @@ class InsetPreview : public InsetText {
 
 public:
 	///
-	InsetPreview(Buffer *);
+	explicit InsetPreview(Buffer *);
 	///
 	~InsetPreview();
 	///

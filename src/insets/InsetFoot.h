@@ -25,7 +25,7 @@ class InsetFoot : public InsetFootlike
 {
 public:
 	///
-	InsetFoot(Buffer *);
+	explicit InsetFoot(Buffer *);
 private:
 	///
 	InsetCode lyxCode() const { return FOOT_CODE; }

@@ -34,7 +34,7 @@ class InsetGraphics : public Inset
 {
 public:
 	///
-	InsetGraphics(Buffer * buf);
+	explicit InsetGraphics(Buffer * buf);
 	///
 	~InsetGraphics();
 

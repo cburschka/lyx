@@ -24,7 +24,7 @@ class InsetBoxParams
 {
 public:
 	///
-	InsetBoxParams(std::string const &);
+	explicit InsetBoxParams(std::string const &);
 	///
 	void write(std::ostream & os) const;
 	///

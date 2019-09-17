@@ -32,7 +32,7 @@ class InsetIPA : public InsetText {
 
 public:
 	///
-	InsetIPA(Buffer *);
+	explicit InsetIPA(Buffer *);
 	///
 	~InsetIPA();
 	///

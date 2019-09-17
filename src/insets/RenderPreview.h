@@ -45,7 +45,7 @@ public:
 	/// Return true if preview is enabled in mathed (from LyXRC::preview)
 	static bool previewMath();
 
-	RenderPreview(Inset const *);
+	explicit RenderPreview(Inset const *);
 	RenderPreview(RenderPreview const &, Inset const *);
 	RenderBase * clone(Inset const *) const;
 
@@ -110,7 +110,7 @@ private:
 
 class RenderMonitoredPreview : public RenderPreview {
 public:
-	RenderMonitoredPreview(Inset const *);
+	explicit RenderMonitoredPreview(Inset const *);
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

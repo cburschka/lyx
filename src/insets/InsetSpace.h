@@ -74,7 +74,7 @@ struct InsetSpaceParams {
 		CUSTOM_PROTECTED
 	};
 	///
-	InsetSpaceParams(bool m = false) : kind(NORMAL), math(m) {}
+	explicit InsetSpaceParams(bool m = false) : kind(NORMAL), math(m) {}
 	///
 	void write(std::ostream & os) const;
 	///

@@ -52,7 +52,7 @@ class InsetTableCell : public InsetText
 {
 public:
 	///
-	InsetTableCell(Buffer * buf);
+	explicit InsetTableCell(Buffer * buf);
 	///
 	InsetCode lyxCode() const { return CELL_CODE; }
 	///
@@ -690,7 +690,7 @@ public:
 	class CellData {
 	public:
 		///
-		CellData(Buffer *);
+		explicit CellData(Buffer *);
 		///
 		CellData(CellData const &);
 		///

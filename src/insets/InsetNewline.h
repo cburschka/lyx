@@ -44,7 +44,7 @@ public:
 	///
 	InsetNewline();
 	///
-	InsetNewline(InsetNewlineParams par) : Inset(0)
+	explicit InsetNewline(InsetNewlineParams par) : Inset(0)
 	{ params_.kind = par.kind; }
 	///
 	static void string2params(std::string const &, InsetNewlineParams &);

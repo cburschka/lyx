@@ -23,7 +23,7 @@ namespace lyx {
 class InsetFloatList : public InsetCommand {
 public:
 	///
-	InsetFloatList(Buffer *);
+	explicit InsetFloatList(Buffer *);
 	///
 	InsetFloatList(Buffer *, std::string const & type);
 

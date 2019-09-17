@@ -24,7 +24,7 @@ namespace lyx {
 class RenderGraphic : public RenderBase
 {
 public:
-	RenderGraphic(Inset const *);
+	explicit RenderGraphic(Inset const *);
 	RenderGraphic(RenderGraphic const &, Inset const *);
 	RenderBase * clone(Inset const *) const;
 
