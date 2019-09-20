@@ -221,32 +221,46 @@ char path_separator(path_type)
 void windows_style_tex_paths(bool)
 {}
 
+
+#ifdef __APPLE__
+bool canAutoOpenFile(CFStringRef cfs_uti, LSRolesMask role)
+{
+	// Reference:
+	// https://developer.apple.com/reference/coreservices/1447734-lscopydefaultapplicationurlforco
+	CFURLRef outAppRef = LSCopyDefaultApplicationURLForContentType(cfs_uti, role, NULL);
+
+	if (outAppRef == NULL) return false;
+	CFRelease(outAppRef);
+	return true;
+}
+#endif
+
 bool canAutoOpenFile(string const & ext, auto_open_mode const mode)
 {
 #ifdef __APPLE__
-// Reference: http://developer.apple.com/documentation/Carbon/Reference/LaunchServicesReference/
+	// References:
+	// https://developer.apple.com/reference/coreservices/1447734-lscopydefaultapplicationurlforco
 	CFStringRef cfs_ext = CFStringCreateWithBytes(kCFAllocatorDefault,
 					(UInt8 *) ext.c_str(), ext.length(),
 					kCFStringEncodingISOLatin1, false);
-	// this is what we would like to do but it seems that the
-	// viewer for PDF is often quicktime...
-	//LSRolesMask role = (mode == VIEW) ? kLSRolesViewer :  kLSRolesEditor;
-	(void)mode;
-	LSRolesMask role = kLSRolesAll;
-	FSRef outAppRef;
-	OSStatus status =
-		LSGetApplicationForInfo(kLSUnknownType, kLSUnknownCreator,
-					cfs_ext, role, &outAppRef, NULL);
+	CFStringRef cfs_uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, cfs_ext, NULL);
 	CFRelease(cfs_ext);
+	if (cfs_uti == NULL) return false;
 
-	return status != kLSApplicationNotFoundErr;
+	LSRolesMask role = (mode == VIEW) ? kLSRolesViewer :  kLSRolesEditor;
+	bool result = canAutoOpenFile(cfs_uti, role);
+	if (!result && mode == VIEW)
+		result = canAutoOpenFile(cfs_uti, kLSRolesEditor);
+
+	CFRelease(cfs_uti);
+	return result;
 #else
 	// silence compiler warnings
 	(void)ext;
 	(void)mode;
 
-	// currently, no default viewer is tried for non-windows system
-	// support for KDE/Gnome/Macintosh may be added later
+	// currently, no default viewer is tried for non-apple system
+	// support for KDE/Gnome may be added later
 	return false;
 #endif
 }
@@ -261,14 +275,11 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode,
 	// viewer for PDF is often quicktime...
 	//LSRolesMask role = (mode == VIEW) ? kLSRolesViewer :  kLSRolesEditor;
 	(void)mode;
-	LSRolesMask role = kLSRolesAll;
+	LSRolesMask role = (mode == VIEW) ? kLSRolesAll :  kLSRolesEditor;
 
 	CFURLRef docURL = CFURLCreateFromFileSystemRepresentation(
 		NULL, (UInt8 *) filename.c_str(), filename.size(), false);
-	CFURLRef appURL;
-	OSStatus status = LSGetApplicationForURL(docURL, role, NULL, &appURL);
-	if (status == kLSApplicationNotFoundErr)
-		return false;
+	CFURLRef appURL = LSCopyDefaultApplicationURLForURL(docURL, role, NULL);
 
 	CFURLRef docURLs[] = { docURL };
 	CFArrayRef launchItems = CFArrayCreate(
@@ -296,7 +307,7 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode,
 		setEnv("BSTINPUTS", newbstinputs);
 		setEnv("TEXFONTS", newtexfonts);
 	}
-	status = LSOpenFromURLSpec (&launchUrlSpec, NULL);
+	OSStatus const status = LSOpenFromURLSpec (&launchUrlSpec, NULL);
 	CFRelease(launchItems);
 	if (!path.empty() && !lyxrc.texinputs_prefix.empty()) {
 		setEnv("TEXINPUTS", oldtexinputs);
@@ -311,8 +322,8 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode,
 	(void)mode;
 	(void)path;
 
-	// currently, no default viewer is tried for non-windows system
-	// support for KDE/Gnome/Macintosh may be added later
+	// currently, no default viewer is tried for non-apple system
+	// support for KDE/Gnome may be added later
 	return false;
 #endif
 }
