@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2019-08-24 00:08+0300\n"
-"PO-Revision-Date: 2019-08-30 23:47+0300\n"
+"PO-Revision-Date: 2019-09-25 16:44+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -1991,7 +1991,7 @@ msgstr "Размещение изображения"
 
 #: lib/layouts/aastex.layout:350
 msgid "Place Figure here:"
-msgstr "Поместите рисунок здесь:"
+msgstr "Поместите здесь рисунок:"
 
 #: lib/layouts/aastex.layout:359
 msgid "PlaceTable"
@@ -1999,7 +1999,7 @@ msgstr "Размещение таблицы"
 
 #: lib/layouts/aastex.layout:370
 msgid "Place Table here:"
-msgstr "Поместите таблицу здесь:"
+msgstr "Поместите здесь таблицу:"
 
 #: lib/layouts/aastex.layout:389
 msgid "[Appendix]"
@@ -4072,7 +4072,7 @@ msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
 #: lib/layouts/beamer.layout:766
 msgid "Overprint"
-msgstr "Наложить"
+msgstr "Наложение overprint"
 
 #: lib/layouts/beamer.layout:773
 msgid "Overprint Area Width"
@@ -4428,11 +4428,11 @@ msgstr "Краткое заглавие на основном языке"
 
 #: lib/layouts/bicaption.module:46
 msgid "Short title for the main(document) language"
-msgstr "Краткое название основного языка (документа)"
+msgstr "Краткое заглавие на основном языке"
 
 #: lib/layouts/bicaption.module:50
 msgid "Main Language Text"
-msgstr "Основной язык текста"
+msgstr "Текст на основном языке"
 
 #: lib/layouts/bicaption.module:51
 msgid "Text in the main(document) language"
@@ -4440,11 +4440,11 @@ msgstr "Текст на основном языке"
 
 #: lib/layouts/bicaption.module:54
 msgid "Second Language Short Title"
-msgstr "Краткое заглавие для второго языка"
+msgstr "Краткое заглавие на втором языке"
 
 #: lib/layouts/bicaption.module:55
 msgid "Short title for the second language"
-msgstr "Краткое заглавие для второго языка"
+msgstr "Краткое заглавие на втором языке"
 
 #: lib/layouts/book.layout:3
 msgid "Book (Standard Class)"
@@ -6438,7 +6438,7 @@ msgstr "Заметка Fixme"
 
 #: lib/layouts/fixme.module:112
 msgid "Insert the FIXME note here"
-msgstr "Вставить заметку FIXME здесь"
+msgstr "Вставьте здесь заметку FIXME"
 
 #: lib/layouts/fixme.module:117
 msgid "Fixme Warning (Targeted)"
@@ -6478,7 +6478,7 @@ msgstr "Сводка Fixme"
 
 #: lib/layouts/fixme.module:155
 msgid "Insert a summary of the FIXME note here"
-msgstr "Вставьте сводку заметки FIXME здесь"
+msgstr "Вставьте здесь сводку заметки FIXME"
 
 #: lib/layouts/fixme.module:160
 msgid "Fixme Warning (Multipar)"
@@ -6522,7 +6522,7 @@ msgstr "Аннотированный текст|к"
 
 #: lib/layouts/fixme.module:204
 msgid "Insert the text to annotate here"
-msgstr "Вставьте сюда текст для аннотации"
+msgstr "Вставьте здесь текст для аннотации"
 
 #: lib/layouts/fixme.module:209
 msgid "Fixme Warning (Multipar Targeted)"
@@ -7106,19 +7106,19 @@ msgstr "Блок масштабирования"
 
 #: lib/layouts/graphicboxes.module:32
 msgid "H-Factor"
-msgstr "H-Factor"
+msgstr "Коэффициент гориз. масштаба"
 
 #: lib/layouts/graphicboxes.module:33
 msgid "Insert horizontal scale factor (1 = 100%)"
-msgstr "Вставить горизонтальный масштаб (1 = 100%)"
+msgstr "Горизонтальный масштаб (1 = 100%)"
 
 #: lib/layouts/graphicboxes.module:39
 msgid "V-Factor"
-msgstr "V-Factor"
+msgstr "Коэффициент верт. масштаба"
 
 #: lib/layouts/graphicboxes.module:40
 msgid "Insert vertical scale factor (1 = 100%)"
-msgstr "Вставить вертикальный масштаб (1 = 100%)"
+msgstr "Вертикальный масштаб (1 = 100%)"
 
 #: lib/layouts/graphicboxes.module:44
 msgid "Resizebox"
@@ -7139,7 +7139,7 @@ msgstr "Блок вращения"
 # ?
 #: lib/layouts/graphicboxes.module:69
 msgid "Origin"
-msgstr "Начало"
+msgstr "Центр"
 
 #: lib/layouts/graphicboxes.module:70
 msgid "Rotation origin; syntax: 'origin=lt' (for top left corner)"
@@ -7457,7 +7457,7 @@ msgstr "Остальная часть начального слова"
 
 #: lib/layouts/initials.module:46
 msgid "Rest of initial word or text"
-msgstr "Остальная часть исходного слова или текста"
+msgstr "Остальная часть начального слова или текста"
 
 #: lib/layouts/iopart.layout:3
 msgid "Institute of Physics (IOP)"
@@ -7991,11 +7991,11 @@ msgstr "Параметры подпримеров"
 
 #: lib/layouts/linguistics.module:102
 msgid "Add subexamples options here"
-msgstr "Вставьте настройки подпримеров здесь"
+msgstr "Вставьте здесь настройки подпримеров"
 
 #: lib/layouts/linguistics.module:113
 msgid "Interlinear Gloss (2 Lines)"
-msgstr "Interlinear Gloss (2 Lines)"
+msgstr "Глоссирование (2 строки)"
 
 #: lib/layouts/linguistics.module:115
 msgid "Gloss"
@@ -8019,7 +8019,7 @@ msgstr "Add digloss options here"
 #: lib/layouts/linguistics.module:137
 #| msgid "Interlingua"
 msgid "Interlinear Gloss"
-msgstr "Interlinear Gloss"
+msgstr "Глоссирование"
 
 #: lib/layouts/linguistics.module:139
 msgid "Add the inter-linear gloss here"
@@ -8041,7 +8041,7 @@ msgstr "Add a free translation for the gloss"
 
 #: lib/layouts/linguistics.module:159
 msgid "Interlinear Gloss (3 Lines)"
-msgstr "Interlinear Gloss (3 Lines)"
+msgstr "Глоссирование (3 строки)"
 
 #: lib/layouts/linguistics.module:161
 #| msgid "Tri-Glosse"
@@ -8055,11 +8055,11 @@ msgstr "Add trigloss options here"
 
 #: lib/layouts/linguistics.module:183
 msgid "Interlinear Gloss (1)"
-msgstr "Interlinear Gloss (1)"
+msgstr "Глоссирование (1)"
 
 #: lib/layouts/linguistics.module:184
 msgid "Interlinear Gloss (Line 1)|1"
-msgstr "Interlinear Gloss (Line 1)|1"
+msgstr "Глоссирование (строка 1)|1"
 
 #: lib/layouts/linguistics.module:185
 msgid "Add the first inter-linear gloss line here"
@@ -8067,11 +8067,11 @@ msgstr "Add the first inter-linear gloss line here"
 
 #: lib/layouts/linguistics.module:193
 msgid "Interlinear Gloss (2)"
-msgstr "Interlinear Gloss (2)"
+msgstr "Глоссирование (2)"
 
 #: lib/layouts/linguistics.module:194
 msgid "Interlinear Gloss (Line 2)|2"
-msgstr "Interlinear Gloss (Line 2)|2"
+msgstr "Глоссирование (строка 2)|2"
 
 #: lib/layouts/linguistics.module:205
 msgid "Add a translation for the glosse"
@@ -8883,7 +8883,7 @@ msgstr "Количество столбцов"
 
 #: lib/layouts/multicol.module:21
 msgid "Insert the number of columns here"
-msgstr "Введите число столбцов здесь"
+msgstr "Введите здесь число столбцов"
 
 #: lib/layouts/multicol.module:27 lib/layouts/svcommon.inc:539
 msgid "Preface"
@@ -8995,7 +8995,7 @@ msgstr "Подзаголовок"
 
 #: lib/layouts/paralist.module:2
 msgid "Paragraph Lists (paralist)"
-msgstr "Список абзацев (paralist)"
+msgstr "Абзацные списки (paralist)"
 
 #: lib/layouts/paralist.module:11
 msgid ""
@@ -9108,7 +9108,7 @@ msgstr ""
 
 #: lib/layouts/pdfcomment.module:20
 msgid "Define Avatar"
-msgstr "Определить аватар"
+msgstr "Аватар PDF-комментариев"
 
 #: lib/layouts/pdfcomment.module:21
 msgid "PDF-comment"
@@ -9124,7 +9124,7 @@ msgstr "Имя аватара"
 
 #: lib/layouts/pdfcomment.module:42
 msgid "Define PDF-Comment Style"
-msgstr "Определить стиль PDF-комментариев"
+msgstr "Стиль PDF-комментариев"
 
 #: lib/layouts/pdfcomment.module:45
 msgid "PDF-comment style:"
@@ -9136,7 +9136,7 @@ msgstr "Название стиля"
 
 #: lib/layouts/pdfcomment.module:53
 msgid "Define PDF-Comment List Style"
-msgstr "Определить стиль списка PDF-комментариев"
+msgstr "Стиль списка PDF-комментариев"
 
 #: lib/layouts/pdfcomment.module:56
 msgid "Definition of PDF-comment list style:"
@@ -9148,7 +9148,7 @@ msgstr "Название стиля списка"
 
 #: lib/layouts/pdfcomment.module:64
 msgid "Set PDF-Comment List Style"
-msgstr "Установить стиль списка PDF-комментариев"
+msgstr "Стиль списка PDF-комментариев"
 
 #: lib/layouts/pdfcomment.module:67
 msgid "PDF-comment list style:"
@@ -9173,7 +9173,7 @@ msgstr "Настройки"
 #: lib/layouts/pdfcomment.module:85
 msgid "Insert PDF-Comment setup options here (see the pdfcomment manual)"
 msgstr ""
-"Вставьте параметры настройки PDF-комментариев здесь (см. руководство "
+"Вставьте здесь параметры настройки PDF-комментариев (см. руководство "
 "pdfcomment)"
 
 #: lib/layouts/pdfcomment.module:94
@@ -9190,7 +9190,7 @@ msgstr "Настройки PDFComment"
 
 #: lib/layouts/pdfcomment.module:109
 msgid "Insert PDFComment options here (see pdfcomment manual)"
-msgstr "Вставьте параметры PDFComment здесь (см. руководство pdfcomment)"
+msgstr "Вставьте здесь параметры PDFComment (см. руководство pdfcomment)"
 
 #: lib/layouts/pdfcomment.module:114
 msgid "PDF-Margin"
@@ -9254,7 +9254,7 @@ msgstr "PDF (Боковая линия)"
 
 #: lib/layouts/pdfcomment.module:176
 msgid "Insert the comment here"
-msgstr "Вставьте комментарий здесь"
+msgstr "Вставьте здесь комментарий"
 
 #: lib/layouts/pdfcomment.module:181
 msgid "PDF-Reply"
@@ -9282,7 +9282,7 @@ msgstr "Всплывающая подсказка"
 
 #: lib/layouts/pdfcomment.module:205
 msgid "Insert the tooltip text here"
-msgstr "Вставьте сюда текст подсказки"
+msgstr "Вставьте здесь текст подсказки"
 
 #: lib/layouts/pdfcomment.module:213
 msgid "List of PDF Comments"
@@ -9298,7 +9298,7 @@ msgstr "Параметры списка"
 
 #: lib/layouts/pdfcomment.module:237
 msgid "Insert list options here (see pdfcomment manual)"
-msgstr "Вставьте сюда настройки списка (см. инструкцию pdfcomment)"
+msgstr "Вставьте здесь настройки списка (см. инструкцию pdfcomment)"
 
 #: lib/layouts/pdfform.module:2
 msgid "PDF Form"
@@ -9332,7 +9332,7 @@ msgstr "Параметры"
 
 #: lib/layouts/pdfform.module:31
 msgid "Insert PDF form parameters here"
-msgstr "Вставить параметры формы PDF здесь"
+msgstr "Вставьте здесь параметры формы PDF"
 
 #: lib/layouts/pdfform.module:41
 msgid "End PDF Form"
@@ -9348,7 +9348,7 @@ msgstr "Настройки ссылок PDF"
 
 #: lib/layouts/pdfform.module:59
 msgid "TextField"
-msgstr "Поле текста"
+msgstr "Текстовое поле"
 
 #: lib/layouts/pdfform.module:79
 msgid "CheckBox"
@@ -9364,7 +9364,7 @@ msgstr "Метка"
 
 #: lib/layouts/pdfform.module:93
 msgid "Insert the label here"
-msgstr "Вставить метку здесь"
+msgstr "Вставьте здесь метку"
 
 #: lib/layouts/pdfform.module:97
 msgid "PushButton"
@@ -9380,7 +9380,7 @@ msgstr "Кнопка сброса"
 
 #: lib/layouts/pdfform.module:119
 msgid "PDFAction"
-msgstr "PDFAction"
+msgstr "Действие PDF"
 
 #: lib/layouts/pdfform.module:127
 msgid "The name of the PDF action"
@@ -9464,7 +9464,7 @@ msgstr "Powerdot"
 
 #: lib/layouts/powerdot.layout:45 lib/layouts/powerdot.layout:91
 msgid "TitleSlide"
-msgstr "ЗаглавиеСлайда"
+msgstr "Заглавие слайда"
 
 #: lib/layouts/powerdot.layout:127 lib/layouts/powerdot.layout:207
 #: lib/layouts/slides.layout:3
@@ -9545,7 +9545,7 @@ msgstr "Левая колонка"
 
 #: lib/layouts/powerdot.layout:494
 msgid "Enter the text of the left column here (right column in main paragraph)"
-msgstr "Введите текст левого столбца здесь (правый столбец в главном абзаце)"
+msgstr "Введите здесь текст левого столбца (правый столбец в главном абзаце)"
 
 #: lib/layouts/powerdot.layout:619
 msgid "Onslide"
@@ -10101,7 +10101,7 @@ msgstr "Заголовок блока раздела"
 
 #: lib/layouts/sectionbox.module:32
 msgid "Insert the section box header here"
-msgstr "Вставьте заголовок блока раздела здесь"
+msgstr "Вставьте здесь заголовок блока раздела"
 
 #: lib/layouts/sectionbox.module:41
 msgid "SubsectionBox"
@@ -11017,7 +11017,7 @@ msgstr "Настройки цветного блока"
 
 #: lib/layouts/tcolorbox.module:21
 msgid "Insert the color box options here (see tcolorbox manual)"
-msgstr "Вставьте параметры цветного блока здесь (см. руководство tcolorbox)"
+msgstr "Вставьте здесь параметры цветного блока (см. руководство tcolorbox)"
 
 #: lib/layouts/tcolorbox.module:27
 msgid "Dynamic Color Box"
@@ -11045,7 +11045,7 @@ msgstr "Параметры подзаголовка"
 
 #: lib/layouts/tcolorbox.module:52
 msgid "Insert the options here"
-msgstr "Вставьте настройки здесь"
+msgstr "Вставьте здесь настройки"
 
 #: lib/layouts/tcolorbox.module:57
 msgid "Color Box Separator"
@@ -11109,7 +11109,7 @@ msgstr "Больше настроек цветных блоков"
 
 #: lib/layouts/tcolorbox.module:161
 msgid "Insert more color box options here"
-msgstr "Вставьте больше настроек цветных блоков здесь"
+msgstr "Вставьте здесь дополнительные настройки цветных блоков"
 
 #: lib/layouts/tcolorbox.module:166
 msgid "Custom Color Box 2"
@@ -11890,7 +11890,7 @@ msgstr "Список заголовков TODO"
 
 #: lib/layouts/todonotes.module:49
 msgid "Enter a custom header for the List of TODOs here"
-msgstr "Введите пользовательский заголовок для списка TODO здесь"
+msgstr "Введите здесь пользовательский заголовок для списка TODO"
 
 #: lib/layouts/todonotes.module:59
 msgid "TODO Note (Margin)"
@@ -12981,11 +12981,11 @@ msgstr "Открыть вставку|О"
 
 #: lib/ui/stdcontext.inc:152
 msgid "Close Inset|C"
-msgstr "Закрыть вставку|З"
+msgstr "Закрыть вставку|ы"
 
 #: lib/ui/stdcontext.inc:154 lib/ui/stdcontext.inc:176
 msgid "Dissolve Inset|D"
-msgstr "Разложить вставку|Р"
+msgstr "Разложить вставку|ж"
 
 #: lib/ui/stdcontext.inc:159
 msgid "Show Label|L"
@@ -12997,7 +12997,7 @@ msgstr "Без рамки|Б"
 
 #: lib/ui/stdcontext.inc:187
 msgid "Simple Frame|F"
-msgstr "Простая рамка|р"
+msgstr "Простая рамка|П"
 
 #: lib/ui/stdcontext.inc:188
 msgid "Simple Frame, Page Breaks|P"
@@ -13819,15 +13819,15 @@ msgstr "Разложить вставку|Р"
 
 #: lib/ui/stdmenus.inc:141
 msgid "TeX Code Settings...|C"
-msgstr "Параметры кода TeX...|C"
+msgstr "Настройки кода TeX...|T"
 
 #: lib/ui/stdmenus.inc:143
 msgid "Float Settings...|a"
-msgstr "Настройки плавающих объектов...|п"
+msgstr "Настройки плавающего объекта...|п"
 
 #: lib/ui/stdmenus.inc:144
 msgid "Text Wrap Settings...|W"
-msgstr "Настройки переноса по словам...|W"
+msgstr "Настройки обтекаемого объекта...|о"
 
 #: lib/ui/stdmenus.inc:145
 msgid "Note Settings...|N"
@@ -13851,11 +13851,11 @@ msgstr "Настройки рубрики указателя...|у"
 
 #: lib/ui/stdmenus.inc:150
 msgid "Index Settings...|S"
-msgstr "Настройки предметного указателя..."
+msgstr "Настройки предметного указателя...|у"
 
 #: lib/ui/stdmenus.inc:151
 msgid "Info Settings...|n"
-msgstr "Настройки информации...|с"
+msgstr "Настройки поля...|п"
 
 #: lib/ui/stdmenus.inc:152
 msgid "Listings Settings...|g"
@@ -14507,7 +14507,7 @@ msgstr "Журнал сообщений LaTeX|L"
 
 #: lib/ui/stdmenus.inc:566
 msgid "Start Appendix Here|x"
-msgstr "Начать приложение здесь|п"
+msgstr "Начать здесь приложение|п"
 
 #: lib/ui/stdmenus.inc:570
 msgid "View Master Document|M"
@@ -14667,7 +14667,7 @@ msgstr "Конфигурация LaTeX|L"
 
 #: lib/ui/stdmenus.inc:647
 msgid "Specific Manuals|p"
-msgstr "Специальные руководства"
+msgstr "Специальные руководства|ц"
 
 #: lib/ui/stdmenus.inc:649
 msgid "About LyX|X"
@@ -14675,51 +14675,51 @@ msgstr "О программе LyX...|X"
 
 #: lib/ui/stdmenus.inc:653
 msgid "Beamer Presentations|B"
-msgstr "Презентации Beamer"
+msgstr "Презентации Beamer|П"
 
 #: lib/ui/stdmenus.inc:654
 msgid "Braille|a"
-msgstr "Брайлевская печать"
+msgstr "Брайлевская печать|Б"
 
 #: lib/ui/stdmenus.inc:655
 msgid "Colored boxes|r"
-msgstr "Цветные блоки"
+msgstr "Цветные блоки|Ц"
 
 #: lib/ui/stdmenus.inc:656
 msgid "Feynman-diagram|F"
-msgstr "Диаграммы Фейнмана"
+msgstr "Диаграммы Фейнмана|Ф"
 
 #: lib/ui/stdmenus.inc:657
 msgid "Knitr|K"
-msgstr "Knitr"
+msgstr "Knitr|K"
 
 #: lib/ui/stdmenus.inc:658
 msgid "LilyPond|P"
-msgstr "LilyPond|P"
+msgstr "LilyPond|L"
 
 #: lib/ui/stdmenus.inc:659
 msgid "Linguistics|L"
-msgstr "Лингвистика"
+msgstr "Лингвистика|Л"
 
 #: lib/ui/stdmenus.inc:660
 msgid "Multilingual Captions|C"
-msgstr "Многоязычные подписи"
+msgstr "Многоязычные подписи|М"
 
 #: lib/ui/stdmenus.inc:661
 msgid "Paralist|t"
-msgstr "Список абзацев Paralist|t"
+msgstr "Абзацные списки|А"
 
 #: lib/ui/stdmenus.inc:662
 msgid "PDF comments|D"
-msgstr "Комментарии PDF"
+msgstr "Комментарии PDF|P"
 
 #: lib/ui/stdmenus.inc:663
 msgid "PDF forms|o"
-msgstr "Формы PDF"
+msgstr "Формы PDF|D"
 
 #: lib/ui/stdmenus.inc:664
 msgid "Hazard and Precautionary Statements|H"
-msgstr "Химическая опасность"
+msgstr "Химическая опасность|Х"
 
 #: lib/ui/stdmenus.inc:665
 msgid "Sweave|S"
@@ -20331,7 +20331,7 @@ msgstr "Версия"
 
 #: src/frontends/qt/ui/AboutUi.ui:69
 msgid "Version goes here"
-msgstr "Версия указывается здесь"
+msgstr "Здесь указывается версия"
 
 #: src/frontends/qt/ui/AboutUi.ui:86
 msgid "Credits"
@@ -24733,7 +24733,7 @@ msgstr "Применить только для текущей сессии"
 
 #: src/frontends/qt/ui/PrintNomenclUi.ui:13
 msgid "Nomenclature settings"
-msgstr "Настройки списка обозначений"
+msgstr "Список обозначений"
 
 #: src/frontends/qt/ui/PrintNomenclUi.ui:19
 #: src/frontends/qt/ui/PrintNomenclUi.ui:32
@@ -25483,7 +25483,7 @@ msgstr "Просмотреть"
 
 #: src/frontends/qt/ui/TextLayoutUi.ui:26
 msgid "Spacing"
-msgstr "Отступ"
+msgstr "Интервал"
 
 #: src/frontends/qt/ui/TextLayoutUi.ui:44
 msgid "&Line spacing:"
@@ -25507,7 +25507,7 @@ msgstr "&Стиль по умолчанию:"
 
 #: src/frontends/qt/ui/TextLayoutUi.ui:155
 msgid "Paragraph Separation"
-msgstr "Настройки абзаца"
+msgstr "Разделение абзацев"
 
 #: src/frontends/qt/ui/TextLayoutUi.ui:170
 msgid "Indent consecutive paragraphs"
@@ -28581,8 +28581,8 @@ msgid ""
 "wrong, override the setting here."
 msgstr ""
 "DPI (количество точек на дюйм) вашего монитора определяется LyX "
-"автоматически. Если LyX сделал это неправильно, вы можете указать правильное "
-"значение здесь."
+"автоматически. Если LyX сделал это неправильно, вы можете указать здесь "
+"правильное значение."
 
 #: src/LyXRC.cpp:3214
 msgid "The screen fonts used to display the text while editing."
@@ -29524,7 +29524,7 @@ msgstr "По умолчанию для документа"
 
 #: src/frontends/qt/FloatPlacement.h:38 src/frontends/qt/GuiDocument.cpp:1751
 msgid "Float Settings"
-msgstr "Настройки плавающих объектов"
+msgstr "Плавающий объект"
 
 #: src/frontends/qt/GuiAbout.cpp:51
 msgid "ERROR: LyX wasn't able to find the CREDITS file\n"
@@ -29564,8 +29564,8 @@ msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995--%1$s LyX Team"
 msgstr ""
-"LyX -- Copyright (C) 1995 Matthias Ettrich,\n"
-"1995--%1$s команда разработки LyX"
+"LyX\n"
+"Copyright (C) 1995 Matthias Ettrich, 1995–%1$s команда разработки LyX"
 
 #: src/frontends/qt/GuiAbout.cpp:189
 msgid ""
@@ -29884,7 +29884,7 @@ msgstr ""
 
 #: src/frontends/qt/GuiBibitem.h:36
 msgid "Bibliography Item Settings"
-msgstr "Настройки элемента библиографии"
+msgstr "Элемент библиографии"
 
 #: src/frontends/qt/GuiBibtex.cpp:56 src/frontends/qt/GuiBibtex.cpp:346
 msgid "BibTeX Bibliography"
@@ -30023,11 +30023,11 @@ msgstr "Makebox"
 
 #: src/frontends/qt/GuiBox.h:44
 msgid "Box Settings"
-msgstr "Настройки блока"
+msgstr "Блок"
 
 #: src/frontends/qt/GuiBranch.h:35
 msgid "Branch Settings"
-msgstr "Настройки ветки"
+msgstr "Ветка"
 
 #: src/frontends/qt/GuiBranches.cpp:53 src/insets/Inset.cpp:112
 msgid "Branch"
@@ -30739,7 +30739,7 @@ msgstr "Нумерация и содержание"
 
 #: src/frontends/qt/GuiDocument.cpp:1748
 msgid "Indexes"
-msgstr "Предметный указатель"
+msgstr "Предметные указатели"
 
 #: src/frontends/qt/GuiDocument.cpp:1749
 msgid "PDF Properties"
@@ -30747,7 +30747,7 @@ msgstr "Свойства PDF"
 
 #: src/frontends/qt/GuiDocument.cpp:1750
 msgid "Math Options"
-msgstr "Параметры математики"
+msgstr "Математика"
 
 #: src/frontends/qt/GuiDocument.cpp:1753
 msgid "Bullets"
@@ -31040,7 +31040,7 @@ msgstr ""
 
 #: src/frontends/qt/GuiERT.h:33
 msgid "TeX Mode Inset Settings"
-msgstr "Настройки вставки кода TeX"
+msgstr "Код TeX"
 
 #: src/frontends/qt/GuiErrorList.cpp:47 src/frontends/qt/GuiLog.cpp:261
 msgid "Literate"
@@ -31269,11 +31269,11 @@ msgstr ""
 
 #: src/frontends/qt/GuiHSpace.h:39
 msgid "Horizontal Space Settings"
-msgstr "Настройки горизонтального отступа"
+msgstr "Горизонтальный отступ"
 
 #: src/frontends/qt/GuiHyperlink.h:35
 msgid "Hyperlink Settings"
-msgstr "Настройки гиперссылки"
+msgstr "Гиперссылка"
 
 #: src/frontends/qt/GuiInclude.cpp:115 src/frontends/qt/GuiInclude.cpp:173
 #: src/frontends/qt/GuiListings.cpp:242 src/frontends/qt/GuiListings.cpp:398
@@ -31292,7 +31292,7 @@ msgstr "Документы LaTeX/LyX (*.tex *.lyx)"
 
 #: src/frontends/qt/GuiIndex.cpp:34
 msgid "Index Entry Settings"
-msgstr "Настройки рубрики указателя"
+msgstr "Рубрика указателя"
 
 #: src/frontends/qt/GuiIndices.cpp:53
 msgid "Label Color"
@@ -31529,7 +31529,7 @@ msgstr "Заданное время:"
 
 #: src/frontends/qt/GuiInfo.h:40
 msgid "Field Settings"
-msgstr "Настройки поля"
+msgstr "Поле"
 
 #: src/frontends/qt/GuiKeySymbol.cpp:713
 msgid "Shift-"
@@ -31549,11 +31549,11 @@ msgstr "Command-"
 
 #: src/frontends/qt/GuiLabel.h:35
 msgid "Label Settings"
-msgstr "Настройки метки"
+msgstr "Метка"
 
 #: src/frontends/qt/GuiLine.h:34
 msgid "Line Settings"
-msgstr "Настройки линии"
+msgstr "Линия"
 
 #: src/frontends/qt/GuiListings.cpp:63
 msgid "No language"
@@ -31561,7 +31561,7 @@ msgstr "Нет языка"
 
 #: src/frontends/qt/GuiListings.cpp:168
 msgid "Program Listing Settings"
-msgstr "Настройки листинга программы"
+msgstr "Листинг программы"
 
 #: src/frontends/qt/GuiListings.cpp:437
 msgid "No dialect"
@@ -31701,7 +31701,7 @@ msgstr "Шаблон по умолчанию"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:570
 msgid "Open Example File"
-msgstr "Открыть файл примера"
+msgstr "Открыть пример"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:574
 msgid "Open File"
@@ -31763,15 +31763,15 @@ msgstr "Матрица"
 
 #: src/frontends/qt/GuiNomenclature.h:36
 msgid "Nomenclature Settings"
-msgstr "Настройки обозначения"
+msgstr "Обозначение"
 
 #: src/frontends/qt/GuiNote.cpp:26
 msgid "Note Settings"
-msgstr "Настройки заметки"
+msgstr "Заметка"
 
 #: src/frontends/qt/GuiParagraph.cpp:49
 msgid "Paragraph Settings"
-msgstr "Свойства абзаца"
+msgstr "Абзац"
 
 #: src/frontends/qt/GuiParagraph.cpp:83
 msgid ""
@@ -31792,7 +31792,7 @@ msgstr "&Закрыть"
 
 #: src/frontends/qt/GuiPhantom.cpp:25
 msgid "Phantom Settings"
-msgstr "Настройки фантома"
+msgstr "Фантом"
 
 #: src/frontends/qt/GuiPrefs.cpp:212
 msgid "Look & Feel"
@@ -32038,11 +32038,11 @@ msgstr "Ширина самой длинной метки"
 
 #: src/frontends/qt/GuiPrintNomencl.h:40
 msgid "Nomenclature List Settings"
-msgstr "Настройки списка обозначений"
+msgstr "Список обозначений"
 
 #: src/frontends/qt/GuiPrintindex.cpp:37
 msgid "Index Settings"
-msgstr "Настройки указателя"
+msgstr "Предметный указатель"
 
 #: src/frontends/qt/GuiPrintindex.cpp:70
 msgid "<All indexes>"
@@ -32460,7 +32460,7 @@ msgstr "Символы"
 
 #: src/frontends/qt/GuiTabular.h:48
 msgid "Tabular Settings"
-msgstr "Настройки таблицы"
+msgstr "Таблица"
 
 #: src/frontends/qt/GuiTabularCreate.cpp:75
 msgid "Insert Table"
@@ -32510,7 +32510,7 @@ msgstr "неподвижный"
 
 #: src/frontends/qt/GuiVSpace.h:40
 msgid "Vertical Space Settings"
-msgstr "Настройки вертикального отступа"
+msgstr "Вертикальный отступ"
 
 #: src/frontends/qt/GuiView.cpp:162
 msgid ""
@@ -33129,7 +33129,7 @@ msgstr "<b>Файл %1 изменён на диске.</b>"
 
 #: src/frontends/qt/GuiWrap.cpp:32
 msgid "Wrap Float Settings"
-msgstr "Настройки обтекаемых объектов"
+msgstr "Обтекаемый объект"
 
 #: src/frontends/qt/IconPalette.cpp:39
 msgid "Click to detach"
@@ -34431,9 +34431,9 @@ msgid ""
 "(when using the child document dialog) or menu Insert->Caption (when "
 "defining a listing inset)"
 msgstr ""
-"Этот параметр не вводится здесь. Используйте диалог правки подписи (при "
-"использовании диалога дочернего документа) или меню Вставка->Подпись (при "
-"определении вставки листинга)"
+"Этот параметр не должен вводиться здесь. Используйте диалог правки подписи "
+"(при использовании диалога дочернего документа) или меню Вставка->Подпись "
+"(при определении вставки листинга)"
 
 # ?
 #: src/insets/InsetListingsParams.cpp:469
@@ -34443,9 +34443,9 @@ msgid ""
 "(when using the child document dialog) or menu Insert->Label (when defining "
 "a listing inset)"
 msgstr ""
-"Этот параметр не вводится здесь. Используйте диалог правки метки (при "
-"использовании диалога дочернего документа) или пункт меню Вставка->Метка "
-"(при определении вставки листинга)"
+"Этот параметр не должен вводиться здесь. Используйте диалог правки метки "
+"(при использовании диалога дочернего документа) или пункт меню Вставка-"
+">Метка (при определении вставки листинга)"
 
 #: src/insets/InsetListingsParams.cpp:690
 msgid "default: _minted-<jobname>"
