@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2019-08-24 00:08+0300\n"
-"PO-Revision-Date: 2019-09-25 16:44+0300\n"
+"PO-Revision-Date: 2019-09-26 14:46+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -483,14 +483,14 @@ msgstr "не цитировался"
 #: lib/citeengines/biblatex.citeengine:130
 #: lib/citeengines/jurabib.citeengine:122 lib/citeengines/natbib.citeengine:120
 msgid "Add to bibliography only."
-msgstr "Помещать только в библиографию."
+msgstr "Помещать только в библиографию"
 
 #: lib/citeengines/basic.citeengine:54
 #: lib/citeengines/biblatex-natbib.citeengine:140
 #: lib/citeengines/biblatex.citeengine:131
 #: lib/citeengines/jurabib.citeengine:123 lib/citeengines/natbib.citeengine:121
 msgid "Key only."
-msgstr "Только ключ."
+msgstr "Только ключ"
 
 #: lib/citeengines/basic.citeengine:55
 #: lib/citeengines/biblatex-natbib.citeengine:141
@@ -531,12 +531,12 @@ msgstr "Сноска"
 #: lib/citeengines/biblatex.citeengine:135
 #: lib/citeengines/jurabib.citeengine:125
 msgid "bibliography entry"
-msgstr "элемент библиографии"
+msgstr "источник"
 
 #: lib/citeengines/biblatex-natbib.citeengine:146
 #: lib/citeengines/biblatex.citeengine:136
 msgid "Full bibliography entry."
-msgstr "Полный элемент библиографии."
+msgstr "Полный источник."
 
 #: lib/citeengines/biblatex-natbib.citeengine:147
 #: lib/citeengines/biblatex.citeengine:137
@@ -611,7 +611,7 @@ msgstr ""
 
 #: lib/citeengines/jurabib.citeengine:126
 msgid "Bibliography entry."
-msgstr "Элемент библиографии."
+msgstr "Источник."
 
 #: lib/citeengines/jurabib.citeengine:127
 msgid "before"
@@ -3673,7 +3673,7 @@ msgstr "FitBitmap"
 #: lib/layouts/europasscv.layout:341 lib/layouts/powerdot.layout:352
 #: lib/layouts/stdlists.inc:72
 msgid "Custom Item|s"
-msgstr "Пользовательская вставка"
+msgstr "Настраиваемый элемент"
 
 #: lib/layouts/apa.layout:375 lib/layouts/apa6.layout:476
 #: lib/layouts/beamer.layout:94 lib/layouts/egs.layout:184
@@ -11954,7 +11954,7 @@ msgstr "заметка на полях"
 
 #: lib/layouts/tufte-book.layout:28
 msgid "bibl. entry"
-msgstr "элемент библиографии"
+msgstr "библ. источник"
 
 #: lib/layouts/tufte-book.layout:171
 msgid "Marginnote"
@@ -12977,11 +12977,11 @@ msgstr "Изменить базы внешне...|x"
 
 #: lib/ui/stdcontext.inc:151
 msgid "Open Inset|O"
-msgstr "Открыть вставку|О"
+msgstr "Развернуть вставку|Р"
 
 #: lib/ui/stdcontext.inc:152
 msgid "Close Inset|C"
-msgstr "Закрыть вставку|ы"
+msgstr "Свернуть вставку|С"
 
 #: lib/ui/stdcontext.inc:154 lib/ui/stdcontext.inc:176
 msgid "Dissolve Inset|D"
@@ -13038,11 +13038,11 @@ msgstr "Серый текст|С"
 
 #: lib/ui/stdcontext.inc:214
 msgid "Open All Notes|A"
-msgstr "Открыть все заметки|в"
+msgstr "Развернуть все заметки|в"
 
 #: lib/ui/stdcontext.inc:215
 msgid "Close All Notes|l"
-msgstr "Закрыть все заметки|З"
+msgstr "Свернуть все заметки|З"
 
 #: lib/ui/stdcontext.inc:223
 msgid "Phantom|P"
@@ -14179,11 +14179,11 @@ msgstr "Полный экран|э"
 
 #: lib/ui/stdmenus.inc:352
 msgid "Open All Insets|I"
-msgstr "Открыть все вставки"
+msgstr "Развернуть все вставки"
 
 #: lib/ui/stdmenus.inc:353
 msgid "Close All Insets|C"
-msgstr "Закрыть все вставки"
+msgstr "Свернуть все вставки"
 
 #: lib/ui/stdmenus.inc:376
 msgid "Math|h"
@@ -20577,7 +20577,7 @@ msgstr "&Удалить"
 
 #: src/frontends/qt/ui/BibtexUi.ui:107
 msgid "Move the selected citation up (Ctrl-Up)"
-msgstr "Переместить выбранную ссылку выше (Ctrl-Up)"
+msgstr "Переместить выбранный источник выше (Ctrl-Up)"
 
 #: src/frontends/qt/ui/BibtexUi.ui:110 src/frontends/qt/ui/ModulesUi.ui:140
 msgid "&Up"
@@ -20585,7 +20585,7 @@ msgstr "&Вверх"
 
 #: src/frontends/qt/ui/BibtexUi.ui:130
 msgid "Move the selected citation down (Ctrl-Down)"
-msgstr "Переместить выбранную ссылку ниже (Ctrl-Down)"
+msgstr "Переместить выбранный источник ниже (Ctrl-Down)"
 
 #: src/frontends/qt/ui/BibtexUi.ui:133 src/frontends/qt/ui/ModulesUi.ui:147
 msgid "Do&wn"
@@ -21194,19 +21194,20 @@ msgstr "&Параметры"
 
 #: src/frontends/qt/ui/CitationUi.ui:116
 msgid "A&vailable Citations:"
-msgstr "Доступные ссылки:"
+msgstr "&Доступные источники:"
 
 #: src/frontends/qt/ui/CitationUi.ui:143
 msgid "Click or press Enter to add the selected citation to the list"
-msgstr "Кликните или нажмите Enter, чтобы добавить выбранную ссылку в список"
+msgstr "Кликните или нажмите Enter, чтобы добавить выбранный источник в список"
 
 #: src/frontends/qt/ui/CitationUi.ui:156
 msgid "Click or press Delete to delete the selected citation from the list"
-msgstr "Кликните или нажмите Delete, чтобы удалить выбранную ссылку из списка"
+msgstr ""
+"Кликните или нажмите Delete, чтобы удалить выбранный источник из списка"
 
 #: src/frontends/qt/ui/CitationUi.ui:232
 msgid "Selected &Citations:"
-msgstr "&Выбранные ссылки:"
+msgstr "&Выбранные источники:"
 
 #: src/frontends/qt/ui/CitationUi.ui:276
 msgid "Formatting"
@@ -21214,7 +21215,7 @@ msgstr "Форматирование"
 
 #: src/frontends/qt/ui/CitationUi.ui:289
 msgid "Citation st&yle:"
-msgstr "Стиль ссылок:"
+msgstr "Стиль ссылки:"
 
 #: src/frontends/qt/ui/CitationUi.ui:299
 msgid "Text befo&re:"
@@ -21222,7 +21223,7 @@ msgstr "Текст &до:"
 
 #: src/frontends/qt/ui/CitationUi.ui:319
 msgid "Citation style to use, if different styles are provided"
-msgstr "Стиль ссылок для использования, если имеются разные стили"
+msgstr "Стиль ссылки для использования, если имеются разные стили"
 
 #: src/frontends/qt/ui/CitationUi.ui:328
 msgid ""
@@ -29884,7 +29885,7 @@ msgstr ""
 
 #: src/frontends/qt/GuiBibitem.h:36
 msgid "Bibliography Item Settings"
-msgstr "Элемент библиографии"
+msgstr "Источник"
 
 #: src/frontends/qt/GuiBibtex.cpp:56 src/frontends/qt/GuiBibtex.cpp:346
 msgid "BibTeX Bibliography"
@@ -30160,7 +30161,7 @@ msgstr "Сбросить все поля"
 
 #: src/frontends/qt/GuiCitation.cpp:106
 msgid "All avail. citations"
-msgstr "Доступные ссылки"
+msgstr "Доступные источники"
 
 #: src/frontends/qt/GuiCitation.cpp:112
 msgid "Regular e&xpression"
@@ -30179,8 +30180,8 @@ msgid ""
 "Ordered list of all cited references.\n"
 "You can reorder, add and remove references with the buttons on the left."
 msgstr ""
-"Упорядоченный список всех процитированных ссылок.\n"
-"Вы можете изменить порядок, добавить или удалить ссылки, используя кнопки "
+"Упорядоченный список всех процитированных источников.\n"
+"Вы можете изменить порядок, добавить или удалить источники, используя кнопки "
 "слева."
 
 #: src/frontends/qt/GuiCitation.cpp:299
@@ -30197,7 +30198,7 @@ msgid ""
 "individual items, double-click on the respective entry above."
 msgstr ""
 "Текст, предшествующий всему списку ссылок. Для текста, предшествующего "
-"отдельным элементам, дважды щёлкните соответствующую запись выше."
+"отдельным пунктам, дважды щёлкните соответствующую запись выше."
 
 #: src/frontends/qt/GuiCitation.cpp:305
 msgid ""
@@ -30205,7 +30206,7 @@ msgid ""
 "items, double-click on the respective entry above."
 msgstr ""
 "Текст, который следует за всем списком ссылок. Для текста, следующего за "
-"отдельными элементами, дважды щёлкните соответствующую запись выше."
+"отдельными пунктами, дважды щёлкните соответствующую запись выше."
 
 #: src/frontends/qt/GuiCitation.cpp:311
 msgid "Text that precedes the reference (e.g., \"cf.\")"
@@ -30227,7 +30228,7 @@ msgstr "Всегда показывать всех авторов (вместо 
 
 #: src/frontends/qt/GuiCitation.cpp:366
 msgid "All references available for citing."
-msgstr "Все ссылки, доступные для цитирования."
+msgstr "Все источники, доступные для цитирования."
 
 #: src/frontends/qt/GuiCitation.cpp:368
 msgid ""
@@ -30235,10 +30236,10 @@ msgid ""
 "To add the selected one, hit Add, press Enter or double-click.\n"
 "Hit Ctrl-Enter to add and close the dialog."
 msgstr ""
-"Все ссылки, доступные для цитирования.\n"
-"Чтобы добавить выбранную, нажмите кнопку Добавить, клавишу Enter или "
+"Все источники, доступные для цитирования.\n"
+"Чтобы добавить выделенный, нажмите кнопку Добавить, клавишу Enter или "
 "используйте двойной щелчок мышью.\n"
-"Нажмите Ctrl-Enter, чтобы добавить ссылку и закрыть это окно."
+"Нажмите Ctrl-Enter, чтобы добавить источник и закрыть это окно."
 
 #: src/frontends/qt/GuiCitation.cpp:440
 msgid "Keys"
@@ -30246,21 +30247,21 @@ msgstr "Ключи"
 
 #: src/frontends/qt/GuiCitation.cpp:481
 msgid "Displays a sketchy preview if a citation is selected above"
-msgstr "Отображает примерный печатный вид для выделенной ссылки"
+msgstr "Отображает примерный печатный вид для выделенного источника"
 
 #: src/frontends/qt/GuiCitation.cpp:485
 msgid "Sketchy preview of the selected citation"
-msgstr "Предварительный просмотр библиографической ссылки"
+msgstr "Предварительный просмотр источника в библиографии"
 
 #: src/frontends/qt/GuiCitation.cpp:596
 msgid "Enter string to filter the list of available citations"
-msgstr "Введите строку для фильтрации списка доступных ссылок"
+msgstr "Введите строку для фильтрации списка доступных источников"
 
 #: src/frontends/qt/GuiCitation.cpp:597
 msgid ""
 "Enter string to filter the list of available citations and press <Enter>"
 msgstr ""
-"Введите строку для фильтрации списка доступных ссылок и нажмите <Enter>"
+"Введите строку для фильтрации списка доступных источников и нажмите <Enter>"
 
 #: src/frontends/qt/GuiCitation.cpp:598
 msgid ""
@@ -30268,7 +30269,7 @@ msgid ""
 "The down arrow key will get you into the list of filtered citations."
 msgstr ""
 "\n"
-"Клавиша 'Стрелка вниз' переведёт вас в список отфильтрованных ссылок."
+"Клавиша 'Стрелка вниз' переведёт вас в список отфильтрованных источников."
 
 #: src/frontends/qt/GuiCitation.cpp:662
 msgid "Text before"
@@ -30276,7 +30277,7 @@ msgstr "Текст до"
 
 #: src/frontends/qt/GuiCitation.cpp:663
 msgid "Cite key"
-msgstr "Ключ цитаты"
+msgstr "Ключ источника"
 
 #: src/frontends/qt/GuiCitation.cpp:664
 msgid "Text after"
@@ -32066,7 +32067,7 @@ msgstr "Перекрёстная ссылка"
 
 #: src/frontends/qt/GuiRef.cpp:62
 msgid "All available labels"
-msgstr "Все доступные метки"
+msgstr "Доступные метки"
 
 #: src/frontends/qt/GuiRef.cpp:63
 msgid "Enter string to filter the list of available labels"
@@ -33436,7 +33437,7 @@ msgstr "Все файлы "
 
 #: src/insets/Inset.cpp:89
 msgid "Bibliography Entry"
-msgstr "Элемент библиографии"
+msgstr "Источник"
 
 #: src/insets/Inset.cpp:95
 msgid "Float"

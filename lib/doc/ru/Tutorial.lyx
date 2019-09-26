@@ -266,7 +266,7 @@ status collapsed
 
 , которые вам предстоит изучить.
  Даже если вы не чувствуете необходимым читать оставшуюся часть Самоучителя,
- вы определённо должны просмотреть раздел
+ вы определённо должны просмотреть Раздел
 \begin_inset space ~
 \end_inset
 
@@ -322,9 +322,9 @@ John Weiss
 \end_layout
 
 \begin_layout Standard
-С другой стороны, мы понимаем, что большинство пользователей читают руководства,
- особенно учебники, только тогда, когда они не знают, что же делать дальше.
- Так что хотя мы сознаем что вы – пользователь – не глупы, мы понимаем,
+С другой стороны мы понимаем, что большинство пользователей читают руководства,
+ особенно учебники, только тогда, когда они не знают что же делать дальше.
+ Так что, хотя мы сознаем что вы — пользователь — не глупы, мы понимаем,
  что вы можете быть несведущи или сбиты с толку.
 \end_layout
 
@@ -630,7 +630,9 @@ pdf
 Создайте новый файл с помощью меню 
 \family sans
 Файл\SpecialChar menuseparator
-Создать.
+Создать
+\family default
+.
 \end_layout
 
 \begin_layout Itemize
@@ -675,8 +677,9 @@ status collapsed
 \begin_inset space ~
 \end_inset
 
-как\SpecialChar endofsentence
-
+как
+\family default
+.
 \end_layout
 
 \begin_layout Itemize
@@ -695,10 +698,10 @@ type  "icon"
 arg   "buffer-view"
 \end_inset
 
- на панели инструментов\SpecialChar endofsentence
+ на панели инструментов.
  \SpecialChar LyX
- запустит просмотрщик PDF-файлов, который откроется
- в новом окне и отобразит, как будет выглядеть ваш документ при печати
+ запустит просмотрщик PDF-файлов, который откроется в новом окне и отобразит,
+ как будет выглядеть ваш документ при печати
 \begin_inset Foot
 status collapsed
 
@@ -732,8 +735,7 @@ arg   "buffer-update"
 Файл\SpecialChar menuseparator
 Экспортировать
 \family default
- в нужный вам формат\SpecialChar endofsentence
-
+ в нужный вам формат.
 \end_layout
 
 \begin_layout Standard
@@ -828,7 +830,8 @@ arg   "copy"
 \end_inset
 
 ).
- Или автоматически вставляйте выбранный текст с помощью средней кнопки мыши.
+ Или автоматически вставляйте выделенный текст с помощью средней кнопки
+ мыши.
 \end_layout
 
 \begin_layout Description
@@ -970,7 +973,11 @@ arg   "dialog-show character"
 \begin_layout Standard
 Конечно, вы ещё недостаточно много написали для использования большинства
  этих функций, но когда вы напишете больше, всё-таки попробуйте отмену,
- вставку и т.п.
+ вставку и т.
+\begin_inset space ~
+\end_inset
+
+п.
 \end_layout
 
 \begin_layout Subsection
@@ -979,12 +986,6 @@ WYSIWYM: Пробельное пространство в \SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:whitespace"
-
-\end_inset
-
 Одно из самого сложного для новичков — это привыкнуть к способу обращения
  \SpecialChar LyX
  с пробельным пространством.
@@ -1224,7 +1225,7 @@ status collapsed
 \family sans
 Enter
 \family default
-\SpecialChar endofsentence
+.
  Заметьте, что текст списка 
 \family sans
 Окружение
@@ -1496,7 +1497,7 @@ Enter
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:textclasses"
+reference "sec:docclasses"
 
 \end_inset
 
@@ -1875,7 +1876,7 @@ status collapsed
  Код программ (окружение 
 \family sans
 Код
-\begin_inset space \thinspace{}
+\begin_inset space ~
 \end_inset
 
 LyX
@@ -1981,15 +1982,16 @@ Ctrl+Enter
 
 \begin_layout Section
 Классы документа
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:textclasses"
+name "sec:docclasses"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Разные типы документов требуют различного полиграфического оформления.
  Например, книги обычно печатаются с двух сторон листа, в то время как статьи
  — с одной стороны.
@@ -2646,9 +2648,9 @@ pdf
 \begin_inset space ~
 \end_inset
 
-ссылк
+ссылка
 \family default
-а (кнопка 
+ (кнопка 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
@@ -2742,9 +2744,9 @@ Ctrl+Пробел
 
 \begin_layout Standard
 \SpecialChar LyX
- вставляет ссылки в виде серого прямоугольника прямо в то место, где находился
+ вставляет ссылки в виде серого прямоугольника прямо в то место, где находится
  курсор.
- В печатном документе, этот маркер ссылки будет заменён либо на номер страницы,
+ В печатном документе этот маркер ссылки будет заменён либо на номер страницы,
  либо на номер раздела (в зависимости от того, что вы выбрали диалоговом
  окне 
 \family sans
@@ -2865,7 +2867,7 @@ Article
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:textclasses"
+reference "sec:docclasses"
 
 \end_inset
 
@@ -2914,9 +2916,9 @@ arg   "footnote-insert"
  на панели инструментов или через меню 
 \family sans
 Вставка\SpecialChar menuseparator
-Сноск
+Сноска
 \family default
-а\SpecialChar endofsentence
+.
  Нажмите мышью в конце слова 
 \begin_inset Quotes cld
 \end_inset
@@ -2948,7 +2950,7 @@ arg   "footnote-insert"
 \end_inset
 
 .
- Сноска исчезнет, останется только кнопка 
+ Текст сноски исчезнет, останется только маркер — кнопка 
 \begin_inset Quotes cld
 \end_inset
 
@@ -2956,17 +2958,9 @@ arg   "footnote-insert"
 \begin_inset Quotes crd
 \end_inset
 
-, она показывает место, где будет напечатан маркер сноски в тексте; это
- называется 
-\begin_inset Quotes cld
-\end_inset
-
-свёртыванием
-\begin_inset Quotes crd
-\end_inset
-
- сноски.
- Нажав на этой кнопке, вы можете развернуть сноску в любой момент, и при
+, она показывает место, где будет напечатан знак сноски в тексте; это называется
+ свёртыванием сноски.
+ Нажав на этой кнопке, вы можете развернуть сноску в любой момент и при
  желании отредактировать её текст.
 \end_layout
 
@@ -3024,7 +3018,7 @@ arg   "marginalnote-insert"
 
 полях
 \family default
-\SpecialChar endofsentence
+.
  Примечания на полях подобны сноскам, за исключением: 
 \end_layout
 
@@ -3082,15 +3076,16 @@ arg   "marginalnote-insert"
 
 \begin_layout Section
 Библиографии
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:bibliographies"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Библиографии подобны перекрёстным ссылкам
 \begin_inset Foot
 status collapsed
@@ -3103,13 +3098,12 @@ status collapsed
 \end_inset
 
 .
- Библиография состоит из списка ссылок в конце документа, на которые можно
- ссылаться в документе.
+ Библиография состоит из списка источников в конце документа, на которые
+ можно ссылаться в самом документе.
  Как в случае с заголовками разделов, \SpecialChar LyX
  и \SpecialChar LaTeX
  упрощают вашу работу, автоматически
- нумеруя элементы библиографии и изменяя ссылки на них при изменении их
- нумерации.
+ нумеруя источники и изменяя ссылки на них при изменении их нумерации.
 \end_layout
 
 \begin_layout Standard
@@ -3118,8 +3112,8 @@ status collapsed
 Библиография
 \family default
 .
- Теперь каждый набираемый вами абзац будет ссылкой на источник.
- Наберите вашу первую ссылку 
+ Теперь каждый набираемый вами абзац будет библиографическим источником.
+ Наберите ваш первый источник 
 \begin_inset Quotes rld
 \end_inset
 
@@ -3133,19 +3127,14 @@ status collapsed
 
 .
  Заметьте, что \SpecialChar LyX
- автоматически вставит число в прямоугольнике перед каждой
- ссылкой.
- Нажмите на прямоугольнике с номером ссылки, и появится диалоговое окно
- 
+ автоматически вставит число в прямоугольнике перед каждым
+ источником.
+ Нажмите на прямоугольнике с номером, появится диалоговое окно 
 \family sans
-Элемент
-\begin_inset space ~
-\end_inset
-
-библиографии
+Источник
 \family default
 .
- Для ссылки на элемент в документе \SpecialChar LyX
+ Для ссылки на источник в документе \SpecialChar LyX
  вы используете первое поле 
 \family sans
 Ключ
@@ -3168,7 +3157,7 @@ lyxtutorial
 \begin_inset Quotes crd
 \end_inset
 
-, чтобы её проще было запомнить.
+, чтобы его проще было запомнить.
 \end_layout
 
 \begin_layout Standard
@@ -3195,9 +3184,8 @@ arg   "dialog-show-new-inset citation"
 Библиографическая ссылка
 \family default
 .
- Левая панель этого окна будет содержать полный список элементов библиографии,
- и это поле позволит вам выбрать элемент библиографии, на который вы хотите
- сослаться
+ Левая панель этого окна будет содержать полный список источников, и это
+ поле позволит вам выбрать источник, на который вы хотите сослаться
 \begin_inset Foot
 status collapsed
 
@@ -3220,21 +3208,21 @@ lyxtutorial
 \begin_inset Quotes crd
 \end_inset
 
- (сейчас это единственный элемент библиографии), затем, используйте кнопку
+ (сейчас это единственный источник в библиографии), затем используйте кнопку
  
 \family sans
 Добавить
 \family default
- в центре, чтобы вставить её.
+ в центре, чтобы вставить его.
  (У вас может быть несколько ссылок в одном и том же месте, если вы добавите
- несколько элементов подобным образом.) Нажмите кнопку 
+ несколько источников подобным образом.) Нажмите кнопку 
 \family sans
 OK
 \family default
 .
  Теперь запустите \SpecialChar LaTeX
 , и вы увидите, что ссылки появляются в тексте в квадратных
- скобках, согласно нумерации элементов библиографии в конце документа.
+ скобках согласно нумерации источников в конце документа.
 \end_layout
 
 \begin_layout Standard
@@ -3245,7 +3233,7 @@ OK
  в диалоговом окне вставляет в скобках после ссылки заметку (например, ссылку
  на страницу или главу в книге или статье, на которую ссылаются).
  Если вы хотите, чтобы ссылки в печатном документе были метками, а не числами
- (например, некоторые журналы хотели бы использовать 
+ (например, некоторые журналы требуют использовать 
 \begin_inset Quotes cld
 \end_inset
 
@@ -3260,11 +3248,7 @@ OK
 \family default
  в диалоговом окне 
 \family sans
-Элемент
-\begin_inset space ~
-\end_inset
-
-библиографии
+Источник
 \family default
 .
  Как обычно, более подробную информацию можно найти в 
@@ -3280,11 +3264,7 @@ OK
 \series bold
 Упражнение:
 \series default
- Исправьте библиографию и ссылки на её элементы
-\begin_inset Newline newline
-\end_inset
-
-в 
+ Исправьте библиографию и ссылки в 
 \emph on
 Пример
 \begin_inset space ~
@@ -3560,7 +3540,7 @@ pdf
 \begin_layout Standard
 Математический редактор — ещё один пример философии WYSIWYM.
  В \SpecialChar LaTeX
-, вы набираете математическое выражение, используя текст и такие команды
+ вы набираете математическое выражение, используя текст и такие команды,
  как 
 \family typewriter
 
@@ -4109,8 +4089,11 @@ arg   "math-insert \\frac"
 .
  Вы создали дробь! Конечно, вы можете вставлять всё, что угодно, в каждой
  части дроби: переменные со степенями, квадратные корни, другие дроби, и
- т.д.
- 
+ т.
+\begin_inset space ~
+\end_inset
+
+д.
 \end_layout
 
 \begin_layout Labeling
@@ -4224,11 +4207,7 @@ type  "icon"
 arg   "math-insert \\functions"
 \end_inset
 
- на
-\family sans
- панели
-\family default
- и потом на 
+ на панели и потом на 
 \begin_inset Quotes cld
 \end_inset
 
@@ -4264,7 +4243,7 @@ x
 \family typewriter
 pdf
 \family default
-, выражение будет оформлено правильно.
+ выражение будет оформлено правильно.
  Попробуйте.
 \end_layout
 
@@ -4321,12 +4300,6 @@ pdf
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:matrices"
-
-\end_inset
-
 Нажмите на кнопке 
 \begin_inset Info
 type  "icon"
@@ -4359,7 +4332,11 @@ OK
 
 .
  Как обычно, вы можете вводить в каждой точке ввода математические выражения
- любого типа (квадратные корни, другие матрицы и т.д.).
+ любого типа (квадратные корни, другие матрицы и т.
+\begin_inset space ~
+\end_inset
+
+д.).
  Если пожелаете, можете оставить несколько точек ввода пустыми.
 \end_layout
 
@@ -4378,7 +4355,11 @@ Tab
 \family sans
 Вниз
 \family default
- перемещает на строку вниз, и т.п.
+ перемещает на строку вниз, и т.
+\begin_inset space ~
+\end_inset
+
+п.
 \end_layout
 
 \begin_layout Standard
@@ -4612,7 +4593,7 @@ f(x)=\left\{ \begin{array}{cc}
 \end_layout
 
 \begin_layout Itemize
-написания макросов, это очень мощный инструмент, так как вы просто определяете
+применения макросов; это очень мощный инструмент, так как вы просто определяете
  макрос единожды в начале вашего документа и можете его использовать на
  протяжении всего документа;
 \end_layout
@@ -4652,9 +4633,9 @@ f(x)=\left\{ \begin{array}{cc}
  Для вставки таблицы используйте 
 \family sans
 Вставка\SpecialChar menuseparator
-Таблиц
+Таблица
 \family default
-а (кнопка 
+ (кнопка 
 \begin_inset Info
 type  "icon"
 arg   "tabular-insert"
@@ -4664,9 +4645,9 @@ arg   "tabular-insert"
  Нажатие на таблице правой кнопкой мыши позволяет открыть диалоговое окно
  
 \family sans
-Таблица,
+Таблица
 \family default
- в котором выполняется всестороннее редактирование таблицы.
+, в котором выполняется всестороннее редактирование таблицы.
 \end_layout
 
 \begin_layout Itemize
@@ -4718,8 +4699,9 @@ arg   "dialog-show-new-inset graphics"
 \begin_inset space ~
 \end_inset
 
-настройке\SpecialChar endofsentence
-
+настройке
+\family default
+.
 \end_layout
 
 \begin_layout Itemize
@@ -4771,8 +4753,9 @@ arg   "file-open"
 \begin_inset space ~
 \end_inset
 
-настройке\SpecialChar endofsentence
-
+настройке
+\family default
+.
 \end_layout
 
 \begin_layout Itemize
@@ -4786,7 +4769,7 @@ arg   "file-open"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:tex2lyx"
+reference "sec:tex2lyx"
 
 \end_inset
 
@@ -4806,15 +4789,16 @@ reference "subsec:tex2lyx"
 \SpecialChar LyX
  для пользователей \SpecialChar LaTeX
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:latexusers"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Если вы ничего не знаете о \SpecialChar LaTeX
 , вам не нужно читать этот раздел.
  Конечно, вы можете захотеть изучить \SpecialChar LaTeX
@@ -4910,9 +4894,8 @@ arg   "ert-insert"
 , если \SpecialChar LyX
  знает набранную вами команду \SpecialChar LaTeX
 , он
- преобразует её к WYSIWYM\SpecialChar endofsentence
- Так, если в математическом редакторе вы набрали
- 
+ преобразует её к WYSIWYM.
+ Так, если в математическом редакторе вы набрали 
 \family typewriter
 
 \backslash
@@ -5007,7 +4990,7 @@ reference "sec:preamble"
 tex2lyx
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:tex2lyx"
+name "sec:tex2lyx"
 
 \end_inset
 
@@ -5163,15 +5146,16 @@ documentclass
 
 \begin_layout Subsubsection
 Другие вопросы относительно преамбулы
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:preamble"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Если у вас есть специальные команды в преамбуле файла \SpecialChar LaTeX
 , вы также можете
  использовать их в документе \SpecialChar LyX
