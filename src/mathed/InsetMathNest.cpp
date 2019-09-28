@@ -373,9 +373,10 @@ void InsetMathNest::latex(otexstream & os, OutputParams const & runparams) const
 	Changer dummy = wi.changeRowEntry(TexRow::textEntry(runparams.lastid,
 	                                                    runparams.lastpos));
 	write(wi);
-	// Reset parbreak status after a math inset.
+	// Reset parbreak and command termination status after a math inset.
 	os.lastChar(0);
 	os.canBreakLine(wi.canBreakLine());
+	os.terminateCommand(false);
 }
 
 
