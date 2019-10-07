@@ -133,7 +133,7 @@ public:
 		x_(0), caret_width_(0)
 	{}
 
-	/* Draw he caret. Parameter \c horiz_offset is not 0 when there
+	/* Draw the caret. Parameter \c horiz_offset is not 0 when there
 	 * has been horizontal scrolling in current row
 	 */
 	void draw(QPainter & painter, int horiz_offset)
