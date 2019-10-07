@@ -133,26 +133,30 @@ public:
 		x_(0), caret_width_(0)
 	{}
 
-	void draw(QPainter & painter)
+	/* Draw he caret. Parameter \c horiz_offset is not 0 when there
+	 * has been horizontal scrolling in current row
+	 */
+	void draw(QPainter & painter, int horiz_offset)
 	{
 		if (!rect_.isValid())
 			return;
 
-		int y = rect_.top();
-		int l = x_ - rect_.left();
-		int r = rect_.right() - x_;
-		int bot = rect_.bottom();
+		int const x = x_ - horiz_offset;
+		int const y = rect_.top();
+		int const l = x_ - rect_.left();
+		int const r = rect_.right() - x_;
+		int const bot = rect_.bottom();
 
 		// draw vertical line
-		painter.fillRect(x_, y, caret_width_, rect_.height(), color_);
+		painter.fillRect(x, y, caret_width_, rect_.height(), color_);
 
 		// draw RTL/LTR indication
 		painter.setPen(color_);
 		if (l_shape_) {
 			if (rtl_)
-				painter.drawLine(x_, bot, x_ - l + 1, bot);
+				painter.drawLine(x, bot, x - l + 1, bot);
 			else
-				painter.drawLine(x_, bot, x_ + caret_width_ + r - 1, bot);
+				painter.drawLine(x, bot, x + caret_width_ + r - 1, bot);
 		}
 
 		// draw completion triangle
@@ -160,11 +164,11 @@ public:
 			int m = y + rect_.height() / 2;
 			int d = TabIndicatorWidth - 1;
 			if (rtl_) {
-				painter.drawLine(x_ - 1, m - d, x_ - 1 - d, m);
-				painter.drawLine(x_ - 1, m + d, x_ - 1 - d, m);
+				painter.drawLine(x - 1, m - d, x - 1 - d, m);
+				painter.drawLine(x - 1, m + d, x - 1 - d, m);
 			} else {
-				painter.drawLine(x_ + caret_width_, m - d, x_ + caret_width_ + d, m);
-				painter.drawLine(x_ + caret_width_, m + d, x_ + caret_width_ + d, m);
+				painter.drawLine(x + caret_width_, m - d, x + caret_width_ + d, m);
+				painter.drawLine(x + caret_width_, m + d, x + caret_width_ + d, m);
 			}
 		}
 	}
@@ -632,11 +636,6 @@ void GuiWorkArea::Private::updateCaretGeometry()
 		&& !completer_->popupVisible()
 		&& !completer_->inlineVisible();
 	caret_visible_ = true;
-
-	//int cur_x = buffer_view_->getPos(cur).x_;
-	// We may have decided to slide the cursor row so that caret
-	// is visible.
-	point.x_ -= buffer_view_->horizScrollOffset();
 
 	caret_->update(point.x_, point.y_, h, l_shape, isrtl, completable);
 }
@@ -1340,7 +1339,7 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 
 	// and the caret
 	if (d->caret_visible_)
-		d->caret_->draw(pain);
+		d->caret_->draw(pain, d->buffer_view_->horizScrollOffset());
 
 	d->updateScreen(ev->rect());
 
