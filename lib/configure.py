@@ -692,7 +692,7 @@ def checkFormatEntries(dtl_tools):
       rc_entry = [r'''\Format gnumeric gnumeric "Gnumeric spreadsheet" "" ""    "%%"   "document"	"application/x-gnumeric"
 \Format excel      xls    "Excel spreadsheet"      "" "" "%%"    "document"	"application/vnd.ms-excel"
 \Format excel2     xlsx   "MS Excel Office Open XML" "" "" "%%" "document"	"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-\Format html_table html   "HTML Table (for spreadsheets)"      "" "" "%%"    "document"	"text/html"
+\Format html_table html   "HTML Table (for spreadsheets)"      "" "" "%%"    "document"	""
 \Format oocalc     ods    "OpenDocument spreadsheet" "" "" "%%"    "document"	"application/vnd.oasis.opendocument.spreadsheet"'''])
  #
     checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
