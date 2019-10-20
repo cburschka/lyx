@@ -1831,8 +1831,7 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-// static
-char InsetMathGrid::colAlign(HullType type, col_type col, BufferParams const & bp)
+char InsetMathGrid::colAlign(HullType type, col_type col) const
 {
 	switch (type) {
 	case hullEqnArray:
@@ -1841,10 +1840,13 @@ char InsetMathGrid::colAlign(HullType type, col_type col, BufferParams const & b
 	case hullMultline:
 		return 'c';
 	case hullGather:
-		if (!bp.is_math_indent)
-			return 'c';
-		else
+		LASSERT(isBufferValid(),
+				LYXERR0("Buffer not set correctly. Please report!");
+				return 'c';);
+		if (buffer().params().is_math_indent)
 			return 'l';
+		else
+			return 'c';
 
 	case hullAlign:
 	case hullAlignAt:

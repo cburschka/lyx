@@ -430,7 +430,7 @@ InsetMath::mode_type InsetMathHull::currentMode() const
 // alignment is not implemented in the LyXHTML output.
 char InsetMathHull::defaultColAlign(col_type col)
 {
-	return colAlign(type_, col, buffer().params());
+	return colAlign(type_, col);
 }
 
 
@@ -452,7 +452,7 @@ char InsetMathHull::displayColAlign(idx_type idx) const
 	case hullXAlignAt:
 	case hullXXAlignAt:
 	case hullFlAlign:
-		return colAlign(type_, col(idx), buffer().params());
+		return colAlign(type_, col(idx));
 	default:
 		break;
 	}
