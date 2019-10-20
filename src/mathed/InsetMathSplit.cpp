@@ -62,7 +62,7 @@ char InsetMathSplit::defaultColAlign(col_type col)
 	    || name_ == "aligned"
 	    || name_ == "align"
 	    || name_ == "alignedat")
-		return colAlign(hullAlign, col, buffer().params());
+		return colAlign(hullAlign, col);
 	return 'l';
 }
 
@@ -79,7 +79,7 @@ char InsetMathSplit::displayColAlign(idx_type idx) const
 	    || name_ == "aligned"
 	    || name_ == "align"
 	    || name_ == "alignedat")
-		return colAlign(hullAlign, col(idx), buffer().params());
+		return colAlign(hullAlign, col(idx));
 	return InsetMathGrid::displayColAlign(idx);
 }
 

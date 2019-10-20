@@ -271,7 +271,7 @@ protected:
 	// InsetMathSplit.
 	/// The value of a fixed col align for a certain hull type (can
 	/// depend on the "indent math" setting).
-	static char colAlign(HullType type, col_type col,  BufferParams const &);
+	char colAlign(HullType type, col_type col) const;
 	/// The value of a fixed col spacing for a certain hull type
 	static int colSpace(HullType type, col_type col);
 
