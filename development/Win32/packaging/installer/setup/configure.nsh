@@ -46,7 +46,7 @@ Section -InstallData
   
   WriteRegStr SHCTX ${APP_UNINST_KEY} "UninstallString" '"$INSTDIR\${SETUP_UNINSTALLER}"'
   WriteRegStr SHCTX ${APP_UNINST_KEY} "DisplayVersion" "${APP_VERSION}"
-  WriteRegStr SHCTX ${APP_UNINST_KEY} "DisplayIcon" "$INSTDIR\bin\lyx.exe"
+  WriteRegStr SHCTX ${APP_UNINST_KEY} "DisplayIcon" "$INSTDIR\bin\${APP_NAME_SMALL}.exe"
   WriteRegStr SHCTX ${APP_UNINST_KEY} "URLUpdateInfo" "${APP_WEBPAGE}"
   WriteRegStr SHCTX ${APP_UNINST_KEY} "URLInfoAbout" "https://www.lyx.org/AboutLyX"
   WriteRegStr SHCTX ${APP_UNINST_KEY} "Publisher" "${APP_NAME} Team"
@@ -58,8 +58,10 @@ Section -InstallData
   # if we install over an older existing version, remove the old uninstaller information
   ${if} $OldVersionNumber < ${APP_SERIES_KEY}
    DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}$OldVersionNumber"
+   DeleteRegKey SHCTX "SOFTWARE\${APP_NAME}$OldVersionNumber"
    # also delete in the case of an emergency release
    DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}$OldVersionNumber1"
+   DeleteRegKey SHCTX "SOFTWARE\${APP_NAME}$OldVersionNumber1"
   ${endif}
   
 SectionEnd

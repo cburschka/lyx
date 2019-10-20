@@ -18,7 +18,7 @@ Section -ProgramFiles SecProgramFiles
   # be installed directly to C:\programs - the uninstaller will then delete the whole
   # C:\programs directory
   StrCpy $String $INSTDIR
-  StrCpy $Search "LyX"
+  StrCpy $Search "${APP_NAME}"
   Call StrPoint # function from LyXUtils.nsh
   ${if} $Pointer == "-1"
    StrCpy $INSTDIR "$INSTDIR\${APP_DIR}"
