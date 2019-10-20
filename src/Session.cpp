@@ -196,10 +196,10 @@ void LastFilePosSection::read(istream & is)
 			getline(itmp, fname);
 			if (!FileName::isAbsolute(fname))
 				continue;
-			FileName const file(fname);
-			if (file.exists() && !file.isDirectory()
+			filepos.file = FileName(fname);
+			if (filepos.file.exists() && !filepos.file.isDirectory()
 			    && lastfilepos.size() < num_lastfilepos)
-				lastfilepos[file] = filepos;
+				lastfilepos.push_back(filepos);
 			else
 				LYXERR(Debug::INIT, "LyX: Warning: Ignore pos of last file: " << fname);
 		} catch (...) {
@@ -212,26 +212,34 @@ void LastFilePosSection::read(istream & is)
 void LastFilePosSection::write(ostream & os) const
 {
 	os << '\n' << sec_lastfilepos << '\n';
-	for (FilePosMap::const_iterator file = lastfilepos.begin();
-		file != lastfilepos.end(); ++file) {
-		os << file->second.pit << ", " << file->second.pos << ", "
-		   << file->first << '\n';
-	}
+	for (auto const & file_p : lastfilepos)
+		os << file_p.pit << ", " << file_p.pos << ", " << file_p.file << '\n';
 }
 
 
-void LastFilePosSection::save(FileName const & fname, FilePos const & pos)
+void LastFilePosSection::save(FilePos const & pos)
 {
-	lastfilepos[fname] = pos;
+	// Remove element if it was already present. Iterating should
+	// not be a problem since the list is small (<100 elements).
+	for (FilePosList::const_iterator it = lastfilepos.begin();
+	     it != lastfilepos.end(); ++it)
+		if (it->file == pos.file) {
+			lastfilepos.erase(it);
+			break;
+		}
+
+	// insert new element at front.
+	lastfilepos.push_front(pos);
 }
 
 
 LastFilePosSection::FilePos LastFilePosSection::load(FileName const & fname) const
 {
-	FilePosMap::const_iterator entry = lastfilepos.find(fname);
-	// Has position information, return it.
-	if (entry != lastfilepos.end())
-		return entry->second;
+	for (auto & fp : lastfilepos)
+		if (fp.file == fname)
+			// Has position information, return it.
+			return fp;
+
 	// Not found, return the first paragraph
 	return FilePos();
 }

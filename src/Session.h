@@ -16,7 +16,7 @@
 #include "support/FileName.h"
 #include "support/types.h"
 
-#include <map>
+#include <list>
 #include <string>
 #include <vector>
 
@@ -148,12 +148,13 @@ public:
 	///
 	struct FilePos {
 		FilePos() : pit(0), pos(0) {}
+		support::FileName file;
 		pit_type pit;
 		pos_type pos;
 	};
 
 	///
-	typedef std::map<support::FileName, FilePos> FilePosMap;
+	typedef std::list<FilePos> FilePosList;
 
 public:
 	///
@@ -165,13 +166,12 @@ public:
 	///
 	void write(std::ostream & os) const;
 
-	/** add cursor position to the fname entry in the filepos map
-	    @param fname file entry for which to save position information
-	    @param pos position of the cursor when the BufferView is closed.
+	/** add cursor position to the fname entry in the filepos list
+	    @param pos file name and position of the cursor when the BufferView is closed.
 	*/
-	void save(support::FileName const & fname, FilePos const & pos);
+	void save(FilePos const & pos);
 
-	/** load saved cursor position from the fname entry in the filepos map
+	/** load saved cursor position from the fname entry in the filepos list
 	    @param fname file entry for which to load position information
 	*/
 	FilePos load(support::FileName const & fname) const;
@@ -181,8 +181,8 @@ private:
 	unsigned int const num_lastfilepos;
 
 
-	/// a map of file positions
-	FilePosMap lastfilepos;
+	/// a list of file positions
+	FilePosList lastfilepos;
 };
 
 

@@ -154,6 +154,9 @@ What's new
 
 - Avoid future crashes with math split insets by adding an extra test.
 
+- Properly remember cursor posoiton when many files have been opened
+  (bug 10310).
+
 
 * INTERNALS
 
