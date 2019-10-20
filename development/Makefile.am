@@ -128,6 +128,7 @@ checkurls/CheckURL.pm \
 checkurls/search_url.pl \
 cmake/ConfigureChecks.cmake \
 cmake/Install.cmake \
+cmake/lyx.ico \
 cmake/LyxPackaging.cmake \
 cmake/LyX_description.txt \
 cmake/LyX_license.txt \
