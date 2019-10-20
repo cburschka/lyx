@@ -345,9 +345,10 @@ BufferView::~BufferView()
 	// That is to say, if a cursor is in a nested inset, it will be
 	// restore to the left of the top level inset.
 	LastFilePosSection::FilePos fp;
+	fp.file = buffer_.fileName();
 	fp.pit = d->cursor_.bottom().pit();
 	fp.pos = d->cursor_.bottom().pos();
-	theSession().lastFilePos().save(buffer_.fileName(), fp);
+	theSession().lastFilePos().save(fp);
 
 	if (d->last_inset_)
 		d->last_inset_->setMouseHover(this, false);
