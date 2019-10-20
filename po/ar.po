@@ -7033,7 +7033,7 @@ msgstr "ملحق القسم الفرعي"
 
 #: lib/layouts/aastex62.layout:249
 msgid "\\Alph{appendix}\\arabic{subappendix}."
-msgstr "\\Alph{appendix}\arabic{subappendix}."
+msgstr "\\Alph{appendix}\\arabic{subappendix}."
 
 #: lib/layouts/aastex62.layout:260 lib/layouts/copernicus.layout:269
 msgid "Subsubsection Appendix"
@@ -7041,7 +7041,7 @@ msgstr "ملحق قسم تحت فرعي"
 
 #: lib/layouts/aastex62.layout:264
 msgid "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}."
-msgstr "\\Alph{appendix}\arabic{subappendix}.\arabic{subsubappendix}."
+msgstr "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}."
 
 #: lib/layouts/achemso.layout:3 lib/examples/Articles:0
 msgid "American Chemical Society (ACS)"
@@ -9794,7 +9794,7 @@ msgstr "\\Alph{appendix}\arabic{subappendix}"
 
 #: lib/layouts/copernicus.layout:273
 msgid "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}"
-msgstr "\\Alph{appendix}\arabic{subappendix}.\arabic{subsubappendix}"
+msgstr "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}"
 
 #: lib/layouts/copernicus.layout:296
 msgid "CodeAvailability"
@@ -10558,7 +10558,7 @@ msgstr "معيار \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:361
 msgid "Algorithm \\arabic{theorem}"
-msgstr "لوغرتم \arabic{theorem}"
+msgstr "لوغرتم \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:368
 msgid "Definition \\arabic{theorem}"
@@ -10570,7 +10570,7 @@ msgstr "حدس \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:389
 msgid "Example \\arabic{theorem}"
-msgstr "مثال \arabic{theorem}"
+msgstr "مثال \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:396
 msgid "Problem \\arabic{theorem}"
