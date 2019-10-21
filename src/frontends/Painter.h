@@ -49,7 +49,8 @@ namespace frontend {
  */
 class Painter {
 public:
-	Painter(double pixel_ratio) : pixel_ratio_(pixel_ratio) {}
+	Painter(double pixel_ratio, bool devel_mode)
+		: pixel_ratio_(pixel_ratio), devel_mode_(devel_mode) {}
 
 	static const int thin_line;
 
@@ -152,6 +153,8 @@ public:
 
 	double pixelRatio() const { return pixel_ratio_; }
 
+	double develMode() const { return devel_mode_; }
+
 	/// draw the underbar, strikeout, xout, uuline and uwave font attributes
 	virtual void textDecoration(FontInfo const & f, int x, int y, int width) = 0;
 
@@ -182,6 +185,8 @@ public:
 private:
 	/// Ratio between physical pixels and device-independent pixels
 	double pixel_ratio_;
+	/// True when developer more is on at application-level.
+	bool devel_mode_;
 };
 
 } // namespace frontend

@@ -326,6 +326,9 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 			Dimension d2 = d;
 			d2.wid -= e.before + e.after;
 			coords.insets().add(e.inset, d2);
+			if (pi.pain.develMode() && !e.inset->isBufferValid())
+				pi.pain.fillRectangle(x + e.before, y - d2.ascent(),
+				                      d2.width(), d2.height(), Color_error);
 			e.inset->draw(pi, x + e.before, y);
 			coords.insets().add(e.inset, x, y);
 			coords.insets().add(e.inset, d);

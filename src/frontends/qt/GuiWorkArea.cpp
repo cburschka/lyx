@@ -1330,7 +1330,7 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 
 	d->last_pixel_ratio_ = pixelRatio();
 
-	GuiPainter pain(d->screenDevice(), pixelRatio());
+	GuiPainter pain(d->screenDevice(), pixelRatio(), d->lyx_view_->develMode());
 
 	d->buffer_view_->draw(pain, d->caret_visible_);
 

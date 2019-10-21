@@ -34,7 +34,7 @@ namespace frontend {
  */
 class GuiPainter : public QPainter, public Painter {
 public:
-	GuiPainter(QPaintDevice *, double pixel_ratio);
+	GuiPainter(QPaintDevice *, double pixel_ratio, bool devel_mode);
 	virtual ~GuiPainter();
 
 	/// This painter paints

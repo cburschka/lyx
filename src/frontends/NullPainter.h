@@ -25,7 +25,7 @@ namespace frontend {
  */
 class NullPainter : public Painter {
 public:
-	NullPainter() : Painter(1) {}
+	NullPainter() : Painter(1, false) {}
 
 	~NullPainter() {}
 

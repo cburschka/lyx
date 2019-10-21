@@ -39,8 +39,8 @@ namespace frontend {
 
 const int Painter::thin_line = 1;
 
-GuiPainter::GuiPainter(QPaintDevice * device, double pixel_ratio)
-	: QPainter(device), Painter(pixel_ratio)
+GuiPainter::GuiPainter(QPaintDevice * device, double pixel_ratio, bool devel_mode)
+	: QPainter(device), Painter(pixel_ratio, devel_mode)
 {
 	// set cache correctly
 	current_color_ = pen().color();

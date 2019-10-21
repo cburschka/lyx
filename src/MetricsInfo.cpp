@@ -158,19 +158,21 @@ ColorCode PainterInfo::backgroundColor(Inset const * inset, bool sel) const
 	if (selected && sel)
 		// This inset is in a selection
 		return Color_selection;
-	else {
-		if (color_bg != Color_none)
-			// This inset has its own color
-			return color_bg;
-		else {
-			if (background_color == Color_none)
-				// This inset has no own color and does not inherit a color
-				return Color_background;
-			else
-				// This inset has no own color, but inherits a color
-				return background_color;
-		}
-	}
+
+	if (pain.develMode() && !inset->isBufferValid())
+		// This inset is in error
+		return Color_error;
+
+	if (color_bg != Color_none)
+		// This inset has its own color
+		return color_bg;
+
+	if (background_color == Color_none)
+		// This inset has no own color and does not inherit a color
+		return Color_background;
+
+	// This inset has no own color, but inherits a color
+	return background_color;
 }
 
 
