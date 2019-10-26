@@ -93,9 +93,9 @@ public:
 	/// TIPA shortcut
 	std::string const tipashortcut() const { return tipashortcut_; }
 	/// \c textcommand needs no termination (such as {} or space).
-	bool textnotermination() const { return flags_ & CharInfoTextNoTermination ? true : false; }
+	bool textnotermination() const { return flags_ & CharInfoTextNoTermination; }
 	/// \c mathcommand needs no termination (such as {} or space).
-	bool mathnotermination() const { return flags_ & CharInfoMathNoTermination ? true : false; }
+	bool mathnotermination() const { return flags_ & CharInfoMathNoTermination; }
 	///
 private:
 	/// LaTeX command (text mode) for this character
