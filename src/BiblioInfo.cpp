@@ -1330,7 +1330,6 @@ docstring const BiblioInfo::getInfo(docstring const & key,
 		return docstring(_("Bibliography entry not found!"));
 	BibTeXInfo const & data = it->second;
 	BibTeXInfoList xrefptrs;
-	vector<docstring> const xrefs = getXRefs(data);
 	for (docstring const & xref : getXRefs(data)) {
 		BiblioInfo::const_iterator const xrefit = find(xref);
 		if (xrefit != end())

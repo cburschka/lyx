@@ -1996,7 +1996,6 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			break;
 		}
 		return doc_buffer->getStatus(cmd, flag);
-		break;
 	}
 
 	case LFUN_BUFFER_EXPORT_AS:

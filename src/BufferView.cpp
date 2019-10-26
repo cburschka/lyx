@@ -3185,7 +3185,6 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 		// however, the different coordinates of insets and paragraphs
 		// needs to be updated.
 		LYXERR(Debug::PAINTING, "Strategy: NoScreenUpdate");
-		pi.full_repaint = false;
 		if (pain.isNull()) {
 			pi.full_repaint = true;
 			tm.draw(pi, 0, y);

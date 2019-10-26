@@ -581,7 +581,6 @@ Language const * getLanguage(Cursor const & cur, string const & lang)
 docstring resolveLayout(docstring layout, DocIterator const & dit)
 {
 	Paragraph const & par = dit.paragraph();
-	docstring const old_layout = par.layout().name();
 	DocumentClass const & tclass = dit.buffer()->params().documentClass();
 
 	if (layout.empty())
