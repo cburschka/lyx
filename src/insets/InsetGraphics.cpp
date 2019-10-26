@@ -54,6 +54,7 @@ TODO
 #include "Converter.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
+#include "Encoding.h"
 #include "ErrorList.h"
 #include "Exporter.h"
 #include "Format.h"
@@ -871,8 +872,43 @@ void InsetGraphics::latex(otexstream & os,
 	// Convert the file if necessary.
 	// Remove the extension so LaTeX will use whatever is appropriate
 	// (when there are several versions in different formats)
-	string file_path = prepareFile(runparams);
-	latex_str += file_path;
+	docstring file_path = from_utf8(prepareFile(runparams));
+	// we can only output characters covered by the current
+	// encoding!
+	docstring uncodable;
+	docstring encodable_file_path;
+	for (size_type i = 0 ; i < file_path.size() ; ++i) {
+		char_type c = file_path[i];
+		try {
+			if (runparams.encoding->encodable(c))
+				encodable_file_path += c;
+			else if (runparams.dryrun) {
+				encodable_file_path += "<" + _("LyX Warning: ")
+						+ _("uncodable character") + " '";
+				encodable_file_path += docstring(1, c);
+				encodable_file_path += "'>";
+			} else
+				uncodable += c;
+		} catch (EncodingException & /* e */) {
+			if (runparams.dryrun) {
+				encodable_file_path += "<" + _("LyX Warning: ")
+						+ _("uncodable character") + " '";
+				encodable_file_path += docstring(1, c);
+				encodable_file_path += "'>";
+			} else
+				uncodable += c;
+		}
+	}
+	if (!uncodable.empty() && !runparams.silent) {
+		// issue a warning about omitted characters
+		// FIXME: should be passed to the error dialog
+		frontend::Alert::warning(_("Uncodable characters in path"),
+			bformat(_("The following characters in one of the graphic paths are\n"
+				  "not representable in the current encoding and have been omitted: %1$s."
+				  "You need to adapt either the encoding or the path."),
+			uncodable));
+	}
+	latex_str += to_utf8(encodable_file_path);
 	latex_str += '}' + after;
 	// FIXME UNICODE
 	os << from_utf8(latex_str);
