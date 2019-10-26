@@ -58,6 +58,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Prevent crash due to unencodable path (bug 11688).
+
 - (Re-)fix problems with activated equal sign and graphic options in Turkish
   and Latin documents (bug 2005).
 
