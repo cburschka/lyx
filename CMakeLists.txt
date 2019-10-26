@@ -303,10 +303,10 @@ else()
 	if(MSVC_VERSION LESS 1900)
 		# Drop support for msvc versions prior to 1900 (Visual Studio 2015)
 		message(FATAL_ERROR "Visual Studio >= 2015 is required.")
-	set(LYX_USE_STD_REGEX 0)
-#	if(MSVC10)
-#		set(LYX_USE_STD_REGEX 1) #TODO should we use it in ECMAScript mode?
-#	endif()
+		set(LYX_USE_STD_REGEX 0)
+	else()
+		set(LYX_USE_STD_REGEX 1)
+	endif()
 endif()
 
 
