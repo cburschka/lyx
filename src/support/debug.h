@@ -41,69 +41,69 @@ namespace Debug {
 		///
 		NONE = 0,
 		///
-		INFO       = (1 << 0),   // 1
+		INFO       = (1u << 0),   // 1
 		///
-		INIT       = (1 << 1),   // 2
+		INIT       = (1u << 1),   // 2
 		///
-		KEY        = (1 << 2),   // 4
+		KEY        = (1u << 2),   // 4
 		///
-		GUI        = (1 << 3),   // 8
+		GUI        = (1u << 3),   // 8
 		///
-		PARSER     = (1 << 4),   // 16
+		PARSER     = (1u << 4),   // 16
 		///
-		LYXRC      = (1 << 5),   // 32
+		LYXRC      = (1u << 5),   // 32
 		///
-		KBMAP      = (1 << 6),   // 64
+		KBMAP      = (1u << 6),   // 64
 		///
-		LATEX      = (1 << 7),   // 128
+		LATEX      = (1u << 7),   // 128
 		///
-		MATHED     = (1 << 8),   // 256 // Alejandro, please use this.
+		MATHED     = (1u << 8),   // 256 // Alejandro, please use this.
 		///
-		FONT       = (1 << 9),   // 512
+		FONT       = (1u << 9),   // 512
 		///
-		TCLASS     = (1 << 10),  // 1024
+		TCLASS     = (1u << 10),  // 1024
 		///
-		LYXVC      = (1 << 11),  // 2048
+		LYXVC      = (1u << 11),  // 2048
 		///
-		LYXSERVER  = (1 << 12),  // 4096
+		LYXSERVER  = (1u << 12),  // 4096
 		///
-		UNDO       = (1 << 13),  // 8192
+		UNDO       = (1u << 13),  // 8192
 		///
-		ACTION     = (1 << 14),   // 16384
+		ACTION     = (1u << 14),   // 16384
 		///
-		LYXLEX     = (1 << 15),
+		LYXLEX     = (1u << 15),
 		///
-		DEPEND     = (1 << 16),
+		DEPEND     = (1u << 16),
 		///
-		INSETS     = (1 << 17),
+		INSETS     = (1u << 17),
 		///
-		FILES      = (1 << 18),
+		FILES      = (1u << 18),
 		///
-		WORKAREA   = (1 << 19),
+		WORKAREA   = (1u << 19),
 		///
-		CLIPBOARD  = (1 << 20),
+		CLIPBOARD  = (1u << 20),
 		///
-		GRAPHICS   = (1 << 21),
+		GRAPHICS   = (1u << 21),
 		/// change tracking
-		CHANGES    = (1 << 22),
+		CHANGES    = (1u << 22),
 		///
-		EXTERNAL   = (1 << 23),
+		EXTERNAL   = (1u << 23),
 		///
-		PAINTING   = (1 << 24),
+		PAINTING   = (1u << 24),
 		///
-		SCROLLING  = (1 << 25),
+		SCROLLING  = (1u << 25),
 		///
-		MACROS     = (1 << 26),
+		MACROS     = (1u << 26),
 		///	rtl-related
-		RTL        = (1 << 27),
+		RTL        = (1u << 27),
 		///	locale related
-		LOCALE     = (1 << 28),
+		LOCALE     = (1u << 28),
 		///	selection
-		SELECTION  = (1 << 29),
+		SELECTION  = (1u << 29),
 		/// Find and Replace
-		FIND       = (1 << 30),
+		FIND       = (1u << 30),
 		///
-		DEBUG      = (1 << 31),
+		DEBUG      = (1u << 31),
 		///
 		ANY = 0xffffffff
 	};
