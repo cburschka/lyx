@@ -76,20 +76,20 @@ public:
 	/// Needed LaTeX preamble (or feature) for math mode
 	std::string mathpreamble() const { return mathpreamble_; }
 	/// Is this a combining character?
-	bool combining() const { return flags_ & CharInfoCombining ? true : false; }
+	bool combining() const { return flags_ & CharInfoCombining; }
 	/// Is \c textpreamble a feature known by LaTeXFeatures, or a raw LaTeX
 	/// command?
-	bool textfeature() const { return flags_ & CharInfoTextFeature ? true : false; }
+	bool textfeature() const { return flags_ & CharInfoTextFeature; }
 	/// Is \c mathpreamble a feature known by LaTeXFeatures, or a raw LaTeX
 	/// command?
-	bool mathfeature() const { return flags_ & CharInfoMathFeature ? true : false; }
+	bool mathfeature() const { return flags_ & CharInfoMathFeature; }
 	/// Always force the LaTeX command, even if the encoding contains
 	/// this character?
-	bool force() const { return flags_ & CharInfoForce ? true : false; }
+	bool force() const { return flags_ & CharInfoForce; }
 	/// Force the LaTeX command for some encodings?
-	bool forceselected() const { return flags_ & CharInfoForceSelected ? true : false; }
+	bool forceselected() const { return flags_ & CharInfoForceSelected; }
 	/// Disable LaTeX command => char_type conversion for this deprecated symbol?
-	bool deprecated() const { return flags_ & CharInfoDeprecated ? true : false; }
+	bool deprecated() const { return flags_ & CharInfoDeprecated; }
 	/// TIPA shortcut
 	std::string const tipashortcut() const { return tipashortcut_; }
 	/// \c textcommand needs no termination (such as {} or space).
