@@ -181,8 +181,8 @@ bool parse_bool(docstring & howto)
 class MatchString : public binary_function<Paragraph, pos_type, int>
 {
 public:
-	MatchString(docstring const & str, bool cs, bool mw)
-		: str(str), case_sens(cs), whole_words(mw)
+	MatchString(docstring const & s, bool cs, bool mw)
+		: str(s), case_sens(cs), whole_words(mw)
 	{}
 
 	// returns true if the specified string is at the specified position
@@ -3491,13 +3491,13 @@ docstring stringifyFromForSearch(FindAndReplaceOptions const & opt,
 
 
 FindAndReplaceOptions::FindAndReplaceOptions(
-	docstring const & find_buf_name, bool casesensitive,
-	bool matchword, bool forward, bool expandmacros, bool ignoreformat,
-	docstring const & repl_buf_name, bool keep_case,
-	SearchScope scope, SearchRestriction restr, bool replace_all)
-	: find_buf_name(find_buf_name), casesensitive(casesensitive), matchword(matchword),
-	  forward(forward), expandmacros(expandmacros), ignoreformat(ignoreformat),
-	  repl_buf_name(repl_buf_name), keep_case(keep_case), scope(scope), restr(restr), replace_all(replace_all)
+	docstring const & _find_buf_name, bool _casesensitive,
+	bool _matchword, bool _forward, bool _expandmacros, bool _ignoreformat,
+	docstring const & _repl_buf_name, bool _keep_case,
+	SearchScope _scope, SearchRestriction _restr, bool _replace_all)
+	: find_buf_name(_find_buf_name), casesensitive(_casesensitive), matchword(_matchword),
+	  forward(_forward), expandmacros(_expandmacros), ignoreformat(_ignoreformat),
+	  repl_buf_name(_repl_buf_name), keep_case(_keep_case), scope(_scope), restr(_restr), replace_all(_replace_all)
 {
 }
 
