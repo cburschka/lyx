@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2019-06-10 15:11-0400\n"
-"PO-Revision-Date: 2019-07-16 09:43+0000\n"
+"PO-Revision-Date: 2019-10-29 20:30+0200\n"
 "Last-Translator: Guy Rutenberg <guyrutenberg@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
 "Language: he\n"
@@ -8279,46 +8279,43 @@ msgstr ""
 #: lib/layouts/ijmpd.layout:360 lib/layouts/theorems-ams-bytype.inc:80
 #: lib/layouts/theorems-ams.inc:52 lib/layouts/theorems-bytype.inc:49
 #: lib/layouts/theorems-without-preamble.inc:59 lib/layouts/theorems.inc:52
-#, fuzzy
 msgid "Theorem \\thetheorem."
-msgstr "משפט #."
+msgstr "‫משפט \\thetheorem."
 
 #: lib/layouts/acmart.layout:584 lib/layouts/theorems-ams.inc:79
 #: lib/layouts/theorems.inc:79
 msgid "Corollary \\thetheorem."
-msgstr "מסקנה \\thetheorem."
+msgstr "‫מסקנה \\thetheorem."
 
 #: lib/layouts/acmart.layout:591 lib/layouts/theorems-ams.inc:97
 #: lib/layouts/theorems.inc:97
 msgid "Lemma \\thetheorem."
-msgstr "למה \\thetheorem."
+msgstr "‫למה \\thetheorem."
 
 # לבדוק מה זה
 #: lib/layouts/acmart.layout:598 lib/layouts/theorems-ams.inc:115
 #: lib/layouts/theorems.inc:115
-#, fuzzy
 msgid "Proposition \\thetheorem."
-msgstr "הצעה #:"
+msgstr "‫הצעה \\thetheorem."
 
 #: lib/layouts/acmart.layout:605 lib/layouts/theorems-ams.inc:133
 #: lib/layouts/theorems.inc:133
 msgid "Conjecture \\thetheorem."
-msgstr "השערה \\thetheorem."
+msgstr "‫השערה \\thetheorem."
 
 #: lib/layouts/acmart.layout:612 lib/layouts/theorems-ams.inc:169
 #: lib/layouts/theorems.inc:169
 msgid "Definition \\thetheorem."
-msgstr "הגדרה \\thetheorem."
+msgstr "‫הגדרה \\thetheorem."
 
 #: lib/layouts/acmart.layout:625 lib/layouts/theorems-ams.inc:193
 #: lib/layouts/theorems.inc:193
 msgid "Example \\thetheorem."
-msgstr "דוגמה \\thetheorem."
+msgstr "‫דוגמה \\thetheorem."
 
 #: lib/layouts/acmart.layout:628
-#, fuzzy
 msgid "Print Only"
-msgstr "הדפס"
+msgstr "הדפסה בלבד"
 
 #: lib/layouts/acmart.layout:635
 #, fuzzy
@@ -13010,21 +13007,20 @@ msgstr ""
 #: lib/layouts/ijmpc.layout:372 lib/layouts/ijmpd.layout:384
 #: lib/layouts/theorems-ams-bytype.inc:106 lib/layouts/theorems-bytype.inc:75
 #: lib/layouts/theorems-without-preamble.inc:83
-#, fuzzy
 msgid "Corollary \\thecorollary."
-msgstr "מסקנה #."
+msgstr "‫מסקנה #."
 
 #: lib/layouts/ijmpc.layout:376 lib/layouts/ijmpd.layout:391
 #: lib/layouts/theorems-ams-bytype.inc:124 lib/layouts/theorems-bytype.inc:93
 #: lib/layouts/theorems-without-preamble.inc:99
 msgid "Lemma \\thelemma."
-msgstr "למה \\thelemma."
+msgstr "‫למה \\thelemma."
 
 #: lib/layouts/ijmpc.layout:380 lib/layouts/ijmpd.layout:398
 #: lib/layouts/theorems-ams-bytype.inc:142 lib/layouts/theorems-bytype.inc:111
 #: lib/layouts/theorems-without-preamble.inc:115
 msgid "Proposition \\theproposition."
-msgstr "הצעה \\theproposition."
+msgstr "‫הצעה \\theproposition."
 
 #: lib/layouts/ijmpc.layout:383 lib/layouts/ijmpd.layout:404
 #: lib/layouts/llncs.layout:407
