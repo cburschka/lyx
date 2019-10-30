@@ -13,16 +13,16 @@ msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2019-07-20 23:32+0200\n"
-"PO-Revision-Date: 2019-07-16 09:43+0000\n"
+"PO-Revision-Date: 2019-10-29 20:30+0200\n"
 "Last-Translator: Guy Rutenberg <guyrutenberg@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Basepath: ../\n"
+"X-Poedit-Basepath: ..\n"
 "X-Poedit-Bookmarks: -1,2453,-1,-1,-1,-1,-1,-1,-1,-1\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/frontends/qt/ui/AboutUi.ui:42
@@ -71,9 +71,8 @@ msgid "&Label:"
 msgstr "תווית:"
 
 #: src/frontends/qt/ui/BibitemUi.ui:83
-#, fuzzy
 msgid "&Year:"
-msgstr "&נקה"
+msgstr "&שנה:"
 
 #: src/frontends/qt/ui/BibitemUi.ui:96
 msgid "The year with \"Author (Year)\" citations (without parentheses)."
@@ -130,7 +129,6 @@ msgstr ""
 
 #: src/frontends/qt/ui/BiblioUi.ui:118 src/frontends/qt/GuiPrefs.cpp:732
 #: src/frontends/qt/GuiPrefs.cpp:861
-#, fuzzy
 msgid "Opt&ions:"
 msgstr "&אפשרויות:"
 
@@ -345,9 +343,8 @@ msgid "&Filter:"
 msgstr "מסנן:"
 
 #: src/frontends/qt/ui/BibtexUi.ui:238 src/frontends/qt/GuiBibtex.cpp:290
-#, fuzzy
 msgid "E&ncoding:"
-msgstr "קידוד"
+msgstr "קידוד:"
 
 #: src/frontends/qt/ui/BibtexUi.ui:248 src/frontends/qt/GuiBibtex.cpp:291
 msgid ""
@@ -8464,19 +8461,18 @@ msgstr ""
 #: lib/layouts/ijmpd.layout:380 lib/layouts/theorems-ams-bytype.inc:80
 #: lib/layouts/theorems-ams.inc:52 lib/layouts/theorems-bytype.inc:49
 #: lib/layouts/theorems-without-preamble.inc:59 lib/layouts/theorems.inc:52
-#, fuzzy
 msgid "Theorem \\thetheorem."
-msgstr "משפט #."
+msgstr "‫משפט \\thetheorem."
 
 #: lib/layouts/acmart.layout:584 lib/layouts/theorems-ams.inc:79
 #: lib/layouts/theorems.inc:79
 msgid "Corollary \\thetheorem."
-msgstr "מסקנה \\thetheorem."
+msgstr "‫מסקנה \\thetheorem."
 
 #: lib/layouts/acmart.layout:591 lib/layouts/theorems-ams.inc:97
 #: lib/layouts/theorems.inc:97
 msgid "Lemma \\thetheorem."
-msgstr "למה \\thetheorem."
+msgstr "‫למה \\thetheorem."
 
 # לבדוק מה זה
 #: lib/layouts/acmart.layout:598 lib/layouts/theorems-ams.inc:115
@@ -8488,22 +8484,21 @@ msgstr "הצעה #:"
 #: lib/layouts/acmart.layout:605 lib/layouts/theorems-ams.inc:133
 #: lib/layouts/theorems.inc:133
 msgid "Conjecture \\thetheorem."
-msgstr "השערה \\thetheorem."
+msgstr "‫השערה \\thetheorem."
 
 #: lib/layouts/acmart.layout:612 lib/layouts/theorems-ams.inc:169
 #: lib/layouts/theorems.inc:169
 msgid "Definition \\thetheorem."
-msgstr "הגדרה \\thetheorem."
+msgstr "‫הגדרה \\thetheorem."
 
 #: lib/layouts/acmart.layout:625 lib/layouts/theorems-ams.inc:193
 #: lib/layouts/theorems.inc:193
 msgid "Example \\thetheorem."
-msgstr "דוגמה \\thetheorem."
+msgstr "‫דוגמה \\thetheorem."
 
 #: lib/layouts/acmart.layout:628
-#, fuzzy
 msgid "Print Only"
-msgstr "הדפס"
+msgstr "הדפסה בלבד"
 
 #: lib/layouts/acmart.layout:635
 #, fuzzy
@@ -13597,13 +13592,13 @@ msgstr ""
 #: lib/layouts/theorems-without-preamble.inc:83
 #, fuzzy
 msgid "Corollary \\thecorollary."
-msgstr "מסקנה #."
+msgstr "‫מסקנה \\thecorollary."
 
 #: lib/layouts/ijmpc.layout:396 lib/layouts/ijmpd.layout:411
 #: lib/layouts/theorems-ams-bytype.inc:124 lib/layouts/theorems-bytype.inc:93
 #: lib/layouts/theorems-without-preamble.inc:99
 msgid "Lemma \\thelemma."
-msgstr "למה \\thelemma."
+msgstr "‫למה \\thelemma."
 
 #: lib/layouts/ijmpc.layout:400 lib/layouts/ijmpd.layout:418
 #: lib/layouts/theorems-ams-bytype.inc:142 lib/layouts/theorems-bytype.inc:111
@@ -13639,18 +13634,18 @@ msgstr "שאלה"
 #: lib/layouts/theorems-without-preamble.inc:389
 #, fuzzy
 msgid "Question \\thequestion."
-msgstr "שאלה #."
+msgstr "‫שאלה \\thequestion."
 
 #: lib/layouts/ijmpc.layout:416 lib/layouts/ijmpd.layout:436
 #: lib/layouts/theorems-ams-bytype.inc:323 lib/layouts/theorems-bytype.inc:292
 msgid "Claim \\theclaim."
-msgstr "טענה \\theclaim."
+msgstr "‫טענה \\theclaim."
 
 #: lib/layouts/ijmpc.layout:427 lib/layouts/ijmpd.layout:446
 #: lib/layouts/theorems-ams-bytype.inc:160 lib/layouts/theorems-bytype.inc:129
 #: lib/layouts/theorems-without-preamble.inc:147
 msgid "Conjecture \\theconjecture."
-msgstr "השערה \\theconjecture."
+msgstr "‫השערה \\theconjecture."
 
 #: lib/layouts/ijmpc.layout:437 lib/layouts/theorems-without-preamble.inc:127
 msgid "Prop"
