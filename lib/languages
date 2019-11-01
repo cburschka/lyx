@@ -721,9 +721,11 @@ Language galician
 End
 
 # FIXME DateFormats
+# will be supported by polyglossia 1.46
 Language georgian
 	GuiName          "Georgian"
 	BabelName        georgian
+#	PolyglossiaName  georgian
 	QuoteStyle       german
 	Encoding         utf8
 	FontEncoding     T8M
