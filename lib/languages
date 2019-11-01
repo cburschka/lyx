@@ -982,10 +982,11 @@ End
 # 	Requires        kotex
 # End
 
-# not yet supported by polyglossia
 Language kurmanji
-	GuiName          "Kurmanji"
+	GuiName          "Kurdish (Kurmanji)"
 	BabelName        kurmanji
+	PolyglossiaName  kurdish
+	PolyglossiaOpts  "variant=kurmanji"
 	Encoding         utf8
 	FontEncoding	 T1|OT1
 	DateFormats      "d. MMMM yyyy|d. M. yyyy|yyyy-MM-dd"
@@ -1073,10 +1074,10 @@ Language magyar
 	LangCode         hu_HU
 End
 
-# not yet supported by polyglossia
 Language macedonian
 	GuiName          "Macedonian"
 	BabelName        macedonian
+	PolyglossiaName  macedonian
 	QuoteStyle       german
 	Encoding         cp1251
 	FontEncoding     T2A
@@ -1106,10 +1107,10 @@ End
 
 # mongolian must be loaded locally with babel options,
 # not globally via class options
-# not yet supported by polyglossia
 Language mongolian
 	GuiName          "Mongolian"
 	BabelName        mongolian
+	PolyglossiaName  mongolian
 	Encoding         utf8
 	FontEncoding     T2A
 	DateFormats      "yyyy оны M сарын d|d-M-yyyy|dd-MM-yyyy"
