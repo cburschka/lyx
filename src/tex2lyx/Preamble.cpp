@@ -1175,7 +1175,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	if (is_known(name, known_sans_font_packages)) {
 		h_font_sans[0] = name;
 		if (contains(opts, "scale")) {
-			vector<string>::const_iterator it = allopts.begin();
+			vector<string>::iterator it = allopts.begin();
 			for (; it != allopts.end() ; ++it) {
 				string const opt = *it;
 				if (prefixIs(opt, "scaled=") || prefixIs(opt, "scale=")) {
@@ -1383,7 +1383,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	if (is_known(name, known_typewriter_font_packages)) {
 		h_font_typewriter[0] = name;
 		if (contains(opts, "scale")) {
-			vector<string>::const_iterator it = allopts.begin();
+			vector<string>::iterator it = allopts.begin();
 			for (; it != allopts.end() ; ++it) {
 				string const opt = *it;
 				if (prefixIs(opt, "scaled=") || prefixIs(opt, "scale=")) {
