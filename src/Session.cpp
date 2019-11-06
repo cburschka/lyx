@@ -221,7 +221,7 @@ void LastFilePosSection::save(FilePos const & pos)
 {
 	// Remove element if it was already present. Iterating should
 	// not be a problem since the list is small (<100 elements).
-	for (FilePosList::const_iterator it = lastfilepos.begin();
+	for (FilePosList::iterator it = lastfilepos.begin();
 	     it != lastfilepos.end(); ++it)
 		if (it->file == pos.file) {
 			lastfilepos.erase(it);
@@ -235,7 +235,7 @@ void LastFilePosSection::save(FilePos const & pos)
 
 LastFilePosSection::FilePos LastFilePosSection::load(FileName const & fname) const
 {
-	for (auto & fp : lastfilepos)
+	for (auto const & fp : lastfilepos)
 		if (fp.file == fname)
 			// Has position information, return it.
 			return fp;
