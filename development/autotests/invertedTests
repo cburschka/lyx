@@ -89,6 +89,7 @@ Sublabel: lyxbugs
 # Dedicated tests in export/latex/lyxbugs start with the ticket number
 # (move to export/latex/lyxbugs-resolved when the problem is fixed).
 # catchall:
+!export/export/latex/lyxbugs/3059.*(dvi3|pdf5)_systemF
 export/export/latex/lyxbugs/[0-9].*
 
 
@@ -103,7 +104,7 @@ export/export/latex/lyxbugs/[0-9].*
 #    the Cyrillic script is not required yet Polyglossia tests for support.
 # The document "sr/Braille.lyx" is an example of case b).
 # (For some reason, the false positive error is not thrown with PDF (luatex).)
-export/examples/sr/Modules/Braille_(dvi3|pdf4)_systemF
+#export/examples/sr/Modules/Braille_(dvi3|pdf4)_systemF
 
 #10355 xmllint detects failures
 export/doc/attic/eu_UserGuide_xhtml
@@ -207,7 +208,7 @@ export/export/latex/languages/supported-languages_babel_non-tex_pdf4_systemF
 # These tests were broken at 3374b854
 # See discussion here:
 # https://www.mail-archive.com/search?l=mid&q=1478004223.2367.5.camel%40lyx.org
-export/doc/(sk|nb)/Intro_(dvi3|pdf5)_systemF
+#export/doc/(sk|nb)/Intro_(dvi3|pdf5)_systemF
 # some Polyglossia languages work only with XeTeX and fail with LuaTeX:
 # * The font "NotoSansEthiopic" cannot be found.
 # * sanskrit: ! Undefined control sequence.
@@ -286,11 +287,12 @@ export/export/latex/languages/supported-languages_babel_(dvi3|pdf5)_texF
 # Polyglossia bug with LuaTeX and LTR languages (Arab, Hebrew and Farsi):
 # Undefined control sequences "\luatexpardir" and "\luatextextdir".
 # https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
-export/.*/ar/.*(dvi3|pdf5)_systemF
+#export/.*/ar/.*(dvi3|pdf5)_systemF
 export/.*/fa/Welcome_(dvi3|pdf5)_systemF
 # terminal message: "Language hebrew not found in language.dat.lua"
-export/.*/he/.*(dvi3|pdf5)_systemF
-export/export/latex/languages/supported-languages_(dvi3|pdf5)_systemF
+export/doc/he/.*pdf5_systemF
+#export/.*/he/.*(dvi3|pdf5)_systemF
+#export/export/latex/languages/supported-languages_(dvi3|pdf5)_systemF
 
 # Ukrainian
 # See comment in unreliableTests
