@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 3.1)
 
+set(LYX_IPO_SUPPORTED FALSE)
 if (POLICY CMP0069)
-  if (LYX_DEBUG)
-    cmake_policy(SET CMP0069 OLD)
-  else()
+  if (NOT LYX_DEBUG)
     cmake_policy(SET CMP0069 NEW)
+    include(CheckIPOSupported)
+    check_ipo_supported(RESULT LYX_IPO_SUPPORTED)
   endif()
 endif()
 
@@ -27,4 +28,6 @@ set(MYTHESLIB_LIBRARY mytheslibstatic CACHE STRING "Mytheslib library" FORCE)
 set(MYTHESLIB_INCLUDE_DIR  ${SRCDIR} CACHE STRING "Mytheslib include dir" FORCE)
 set(MYTHESLIB_FOUND CACHE STRING "Mytheslib found" FORCE )
 
-set_target_properties(mytheslibstatic PROPERTIES FOLDER "3rd_party")
+set_target_properties(mytheslibstatic PROPERTIES
+	FOLDER "3rd_party"
+	INTERPROCEDURAL_OPTIMIZATION ${LYX_IPO_SUPPORTED})

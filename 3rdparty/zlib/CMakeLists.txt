@@ -1,7 +1,12 @@
 cmake_minimum_required(VERSION 3.1)
 
+set(LYX_IPO_SUPPORTED FALSE)
 if (POLICY CMP0069)
-  cmake_policy(SET CMP0069 NEW)
+  if (NOT LYX_DEBUG)
+    cmake_policy(SET CMP0069 NEW)
+    include(CheckIPOSupported)
+    check_ipo_supported(RESULT LYX_IPO_SUPPORTED)
+  endif()
 endif()
 
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)
@@ -163,4 +168,6 @@ set(ZLIB_LIBRARY zlibstatic CACHE STRING "Zlib library" FORCE)
 set(ZLIB_INCLUDE_DIR  ${SRCDIR} CACHE STRING "Zlib include dir" FORCE)
 set(ZLIB_FOUND CACHE STRING "Zlib found" FORCE )
 
-set_target_properties(zlibstatic PROPERTIES FOLDER "3rd_party")
+set_target_properties(zlibstatic PROPERTIES
+	FOLDER "3rd_party"
+	INTERPROCEDURAL_OPTIMIZATION ${LYX_IPO_SUPPORTED})

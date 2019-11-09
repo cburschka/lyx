@@ -1,11 +1,12 @@
 
 cmake_minimum_required(VERSION 3.1)
 
+set(LYX_IPO_SUPPORTED FALSE)
 if (POLICY CMP0069)
-  if (LYX_DEBUG)
-    cmake_policy(SET CMP0069 OLD)
-  else()
+  if (NOT LYX_DEBUG)
     cmake_policy(SET CMP0069 NEW)
+    include(CheckIPOSupported)
+    check_ipo_supported(RESULT LYX_IPO_SUPPORTED)
   endif()
 endif()
 
@@ -61,4 +62,6 @@ set(HUNSPELL_LIBRARY hunspell CACHE STRING "Hunspell library" FORCE)
 set(HUNSPELL_INCLUDE_DIR ${SRCDIR} CACHE STRING "Hunspell include dir" FORCE)
 set(HUNSPELL_FOUND CACHE STRING "Hunspell found" FORCE)
 
-set_target_properties(hunspell PROPERTIES FOLDER "3rd_party")
+set_target_properties(hunspell PROPERTIES
+	FOLDER "3rd_party"
+	INTERPROCEDURAL_OPTIMIZATION ${LYX_IPO_SUPPORTED})

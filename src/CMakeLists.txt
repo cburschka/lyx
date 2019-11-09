@@ -122,8 +122,9 @@ add_executable(${_lyx}
 
 add_dependencies(${_lyx} lyx_version)
 
-set_target_properties(${_lyx} PROPERTIES FOLDER "applications/LyX")
-
+set_target_properties(${_lyx} PROPERTIES
+	FOLDER "applications/LyX"
+	INTERPROCEDURAL_OPTIMIZATION ${LYX_IPO_SUPPORTED})
 lyx_add_gcc_pch(${_lyx})
 
 target_link_libraries(${_lyx}

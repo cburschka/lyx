@@ -7,8 +7,13 @@
 project ( libiconv C )
 cmake_minimum_required(VERSION 3.1)
 
+set(LYX_IPO_SUPPORTED FALSE)
 if (POLICY CMP0069)
-  cmake_policy(SET CMP0069 NEW)
+  if (NOT LYX_DEBUG)
+    cmake_policy(SET CMP0069 NEW)
+    include(CheckIPOSupported)
+    check_ipo_supported(RESULT LYX_IPO_SUPPORTED)
+  endif()
 endif()
 
 set(CMAKE_MODULE_PATH .)
@@ -59,4 +64,6 @@ set(ICONV_INCLUDE_DIR ${BINDIR}/include CACHE STRING "libiconv include  dir" FOR
 set(ICONV_LIBRARY iconv CACHE STRING "libiconv library" FORCE)
 set(ICONV_FOUND iconv CACHE STRING "libiconv found" FORCE)
 
-set_target_properties(iconv PROPERTIES FOLDER "3rd_party")
+set_target_properties(iconv PROPERTIES
+	FOLDER "3rd_party"
+	INTERPROCEDURAL_OPTIMIZATION ${LYX_IPO_SUPPORTED})
