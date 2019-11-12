@@ -192,6 +192,8 @@ CiteFormat default
 	!makeyear {%year%[[%year%]][[??]]}{%modifier%[[%modifier%]]}
 	# Add a year if it exists (else "??") and indicate a possible modifier (as in 2017[a])
 	!myear {%year%[[%year%]][[??]]}{%modifier%[[%modifier%]][[{%export%[[]][[%!dummymod%]]}]]}
+	# Add a shorthand if it exists else myear (see above)
+	!shmyear {%shorthand%[[%shorthand%]][[%!myear%]]}
 	# Add a year if it exists (else "??") without any modifier at all
 	!byear {%year%[[%year%]][[??]]}
 	# Add a shorttitle or title if it exists (else "??")
@@ -208,7 +210,7 @@ CiteFormat default
 	# ".., Year..." (including extra label, as in 2017a)
 	!nextyear {%next%[[%!sep% %!startlink%%!makeyear%%!endlink%%!nextyear%]]}
 	# "...; Nextyear ..." (including emulated extra label, as in 2017[a])
-	!nextmyear {%next%[[%!sep% %!startlink%%!myear%%!endlink%%!nextmyear%]]}
+	!nextshmyear {%next%[[%!sep% %!startlink%%!shmyear%%!endlink%%!nextshmyear%]]}
 	# "...; Nextyear ..." (without any extra label)
 	!nextbyear {%next%[[%!sep% %!startlink%%!byear%%!endlink%%!nextbyear%]]}
 	# "...; Nexttitle ..." 
@@ -225,7 +227,7 @@ CiteFormat default
 	# "cf. Author; NextAuthor, p. xx"
 	citeauthor %!textbefore%%!startlink%%!makeauthor%%!endlink%%!nextauthor%%!textafter%
 	# "cf. Year; NextYear, S. xx" [Authoryear] / "cf. Year, NextYear, S. xx" [Numerical]
-	citeyear %!textbefore%%!startlink%%!myear%%!endlink%%!nextmyear%%!textafter%
+	citeyear %!textbefore%%!startlink%%!shmyear%%!endlink%%!nextshmyear%%!textafter%
 	# "cf. Year; Nextyear, p. xx" (without any extra label)
 	citebyear %!textbefore%%!startlink%%!byear%%!endlink%%!nextbyear%%!textafter%
 	# "(cf. Year; NextYear, p. xx)" [Authoryear] / "(cf. Year, NextYear, p. xx)" [Numerical]
