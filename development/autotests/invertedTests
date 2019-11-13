@@ -80,6 +80,10 @@ export/doc/ja/(Formula-numbering|Customization|EmbeddedObjects|Intro)_pdf4_syste
 # ! Package xypdf Error: pdfTeX version 1.40.0 or higher is needed for the xypdf
 export/examples/ja/Graphics_and_Insets/XY-Pic.*_systemF
 
+# Does this still fail in TL19? What is the error?
+export/doc/he/.*pdf5_systemF
+export/.*/fa/Welcome_(dvi3|pdf5)_systemF
+
 
 # ================================================
 Sublabel: lyxbugs
@@ -89,7 +93,6 @@ Sublabel: lyxbugs
 # Dedicated tests in export/latex/lyxbugs start with the ticket number
 # (move to export/latex/lyxbugs-resolved when the problem is fixed).
 # catchall:
-!export/export/latex/lyxbugs/3059.*(dvi3|pdf5)_systemF
 export/export/latex/lyxbugs/[0-9].*
 
 
@@ -283,16 +286,6 @@ export/.*/he/.*(dvi3|pdf5)_texF
 export/export/latex/languages/he-.*(dvi3|pdf5)_texF
 export/export/latex/languages/supported-languages_(dvi3|pdf5)_texF
 export/export/latex/languages/supported-languages_babel_(dvi3|pdf5)_texF
-
-# Polyglossia bug with LuaTeX and LTR languages (Arab, Hebrew and Farsi):
-# Undefined control sequences "\luatexpardir" and "\luatextextdir".
-# https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
-#export/.*/ar/.*(dvi3|pdf5)_systemF
-export/.*/fa/Welcome_(dvi3|pdf5)_systemF
-# terminal message: "Language hebrew not found in language.dat.lua"
-export/doc/he/.*pdf5_systemF
-#export/.*/he/.*(dvi3|pdf5)_systemF
-#export/export/latex/languages/supported-languages_(dvi3|pdf5)_systemF
 
 # Ukrainian
 # See comment in unreliableTests

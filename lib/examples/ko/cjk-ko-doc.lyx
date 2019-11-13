@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 577
+\lyxformat 589
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -23,13 +23,13 @@
 \@ifpackageloaded{fontspec}{
   \usepackage[cjk,hangul]{kotex}
   % itemize bullet character missing in Korean non-TeX font "Un Jamo Batang":
-  \newfontfamily\lmodern{Latin Modern Roman}
-  \newcommand{\lmtextbullet}{\lmodern\textbullet}
+  \newfontfamily\dejavusans{DejaVu Sans}
+  \newcommand{\mytextbullet}{\dejavusans\textbullet}
   % Hanja numerals missing in "Un Jamo Batang"
   \newfontfamily\hanjafamily{IPAexMincho}
 }{
   \usepackage[cjk,hangul,usedotemph]{kotex}
-  \newcommand{\lmtextbullet}{\textbullet}
+  \newcommand{\mytextbullet}{\textbullet}
   \newcommand{\hanjafamily}{} % dummy definition
 }
 \end_preamble
@@ -47,7 +47,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \font_cjk mj
@@ -115,7 +117,7 @@
 \papersides 1
 \paperpagestyle default
 \tablestyle default
-\bulletLaTeX 0 "\lmtextbullet"
+\bulletLaTeX 0 "\mytextbullet"
 \tracking_changes false
 \output_changes false
 \html_math_output 0

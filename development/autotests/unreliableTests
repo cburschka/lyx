@@ -131,58 +131,26 @@ Sublabel: varying_versions
 # (see https://www.gnu.org/software/libiconv/)
 export/export/latex/inputenc-cp858_pdf2
 
-# Fails with current TexLive (works with TL16/17 from Debian/stable)
-# -------------------------------------------------------------------------
-# (see "invertedTests" for description)
-
-export/examples/(|fr/)seminar_(dvi|pdf).*
-
-export/export/latex/inputenc-luatex-utf8_pdf5_texF
+# Fails with TL18 from Debian/stable (resolved with TexLive 19)
+# -------------------------------------------------------------
 
 # since TL18, Babel-Ukrainean uses UTF-8 if it detects Xe/LuaTeX (for "\date").
 # * garbled output with LuaTeX + TeX fonts (since TL18)
 # * missing chars with XeTeX + TeX fonts (see invertedTests)
-export/export/latex/languages/uk-babel-date-missing-chars-with-ascii_.*_texF
 export/(doc|examples)/uk/(Intro|Welcome)_.*_texF
 
-# Compilation errors under TeXLive-19 with XeTeX, TeX-fonts, inputenc utf8,
-# and expl3.sty (TL 17 works).
-export/export/latex/inputenc-xetex-utf8-expl3-bug_pdf4_texF
+# Polyglossia bug with LuaTeX and LTR languages (Arab, Hebrew and Farsi):
+# Undefined control sequences "\luatexpardir" and "\luatextextdir".
+# https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
+export/.*/ar/.*(dvi3|pdf5)_systemF
+export/.*/fa/Welcome_(dvi3|pdf5)_systemF
 
-# Babel bug (see entry in invertedTests for more information)
-export/export/latex/languages/supported-languages_babel_non-tex_pdf4_systemF
+# Beamer fails also with XeTeX
+export/examples/ar/Presentations/Beamer_.*_systemF
 
-
-# Fails with TL16/17 from Debian/stable (resolved with new TexLive)
-# -------------------------------------------------------------------------
-
-# aastex: hard-coded version in class name:
-# 2018-05-12 aastex6.cls -> aastex62.cls
-export/examples/Articles/American_Astronomical_Society_.*
-export/templates/Articles/American_Astronomical_Society_.*
-
-# LuaTeX for Japanese documents using graphicx.sty
-#   ! Package pdftex.def Error: Option `pdftex' requires pdfTeX,
-#   (pdftex.def)                but pdfTeX features are missing.
-export/doc/ja/Tutorial_(dvi3|pdf5)_systemF
-
-# Korean with LuaTeX:
-# pop-up: "external command lualatex finished with an error"
-# terminal message:
-#   Language korean not found in language.dat.lua
-#   [\directlua]:1: You cannot set field spec in a node of type glue
-export/examples/ko/Welcome_(dvi3|pdf5)_systemF
-export/export/latex/CJK/en-de-el-ru-ko_utf8_(dvi3|pdf5)_systemF
-export/export/latex/languages/supported-languages_polyglossia_(dvi3|pdf5)_systemF
-
-# Arabic Beamer example
-export/examples/ar/Presentations/Beamer_pdf4_.*
-
-# `acmart` calls "libertine" as default font.
-# With TeXLive < 18, this clashes with LyX setting up 8-bit TeX fonts
-# PDF (luatex) and PDF (xetex) (compilation error or wrong fonts).
-# See also #9744 allow parallel configuration of TeX and non-TeX fonts.
-export/templates/Articles/Association_for_Computing_Machinery_pdf[45]_texF
+# terminal message: "Language hebrew not found in language.dat.lua"
+export/.*/he/.*(dvi3|pdf5)_systemF
+export/export/latex/languages/supported-languages_(dvi3|pdf5)_systemF
 
 
 Sublabel: wrong_output
@@ -254,3 +222,8 @@ export/doc/zh_CN/(Intro|Tutorial)_dvi3_systemF
 # In a Greek document, Latin letters in a text part set to "Chinese"
 # come out as Greek letters:
 export/export/latex/CJK/el-zh_CN_utf8-cjk.*
+
+# Bug 3059: document language instead of "outer language" in table cells
+# This document fails with "fontencoding=auto-legacy" 
+# and has wrong output (RTL in table cells) with all export formats.
+export/export/latex/lyxbugs-resolved/3059.*
