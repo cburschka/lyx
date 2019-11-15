@@ -64,6 +64,12 @@ public:
 			asArray(def, def_);
 	}
 	///
+	void setBuffer(Buffer & buffer)
+	{
+		Inset::setBuffer(buffer);
+		def_.setBuffer(buffer);
+	}
+	///
 	void setOwner(InsetMathMacro * mathMacro) { mathMacro_ = mathMacro; }
 	///
 	InsetMathMacro const * owner() { return mathMacro_; }
