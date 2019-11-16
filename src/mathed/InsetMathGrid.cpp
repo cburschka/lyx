@@ -1853,9 +1853,10 @@ char InsetMathGrid::colAlign(HullType type, col_type col) const
 	case hullMultline:
 		return 'c';
 	case hullGather:
-		LASSERT(isBufferValid(),
-				LYXERR0("Buffer not set correctly. Please report!");
-				return 'c';);
+		if (!isBufferValid()) {
+			LYXERR0("Buffer not set correctly. Please report!");
+			return 'c';
+		}
 		if (buffer().params().is_math_indent)
 			return 'l';
 		else

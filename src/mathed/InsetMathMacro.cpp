@@ -669,9 +669,8 @@ void InsetMathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
 	// than the one protected by UpdateLocker.
 	docstring const & display = d->macro_->display();
 	docstring const latexname = from_ascii("\\") + macroName();
-	bool const ret = d->macro_->expand(values, d->expanded_);
-	d->expanded_.setBuffer(buffer());
-	if (ret && !support::contains(display, latexname)) {
+	if (d->macro_->expand(values, d->expanded_)
+	    && !support::contains(display, latexname)) {
 		if (utype == OutputUpdate && !d->expanded_.empty())
 			d->expanded_.updateMacros(cur, mc, utype, nesting);
 	}
