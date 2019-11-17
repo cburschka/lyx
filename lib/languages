@@ -148,11 +148,10 @@ End
 # Real languages
 #
 
-# will be supported by polyglossia 1.46
 Language afrikaans
 	GuiName          "Afrikaans"
 	BabelName        afrikaans
-#	PolyglossiaName  afrikaans
+	PolyglossiaName  afrikaans
 	QuoteStyle       polish
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -380,13 +379,12 @@ Language basque
 	EndPostBabelPreamble
 End
 
-# will be supported by polyglossia 1.46
 # Up to 2018-08-25 (babel-belarusian 1.4), the babel option is "belarusianb"
 # but the language name "belarusian" (without trailing "b").
 Language belarusian
 	GuiName          "Belarusian"
 	BabelName        belarusian
-#	PolyglossiaName  belarusian
+	PolyglossiaName  belarusian
 	QuoteStyle       french
 	Encoding         cp1251
 	FontEncoding	 T2A
@@ -404,12 +402,11 @@ Language bengali
 End
 
 
-# will be supported by polyglossia 1.46
 # The (rarely used) Cyrillic script is not supported (try serbian).
 Language bosnian
 	GuiName          "Bosnian"
 	BabelName        bosnian
-#	PolyglossiaName  bosnian
+	PolyglossiaName  bosnian
 	QuoteStyle       polish
 	Encoding         iso8859-2
 	FontEncoding	 T1|OT1
@@ -721,11 +718,10 @@ Language galician
 End
 
 # FIXME DateFormats
-# will be supported by polyglossia 1.46
 Language georgian
 	GuiName          "Georgian"
 	BabelName        georgian
-#	PolyglossiaName  georgian
+	PolyglossiaName  georgian
 	QuoteStyle       german
 	Encoding         utf8
 	FontEncoding     T8M
