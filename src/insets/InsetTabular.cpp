@@ -3980,7 +3980,7 @@ bool InsetTableCell::allowParagraphCustomization(idx_type) const
 
 bool InsetTableCell::forceLocalFontSwitch() const
 {
-	return isFixedWidth;
+	return true;
 }
 
 
