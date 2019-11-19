@@ -285,14 +285,14 @@ void GuiSelectionManager::addPB_clicked()
 		return;
 
 	QModelIndex const idxToAdd = selIdx.first();
-	QModelIndex const idx = selectedLV->currentIndex();
 	int const srows = selectedModel->rowCount();
 
 	QMap<int, QVariant> qm = availableModel->itemData(idxToAdd);
 	insertRowToSelected(srows, qm);
 
 	selectionChanged(); //signal
-
+	
+	QModelIndex const idx = selectedLV->currentIndex();
 	if (idx.isValid())
 		selectedLV->setCurrentIndex(idx);
 
@@ -344,8 +344,7 @@ void GuiSelectionManager::upPB_clicked()
 	selectedModel->removeRow(pos);
 	insertRowToSelected(pos - 1, qms);
 
-	selectionChanged(); //signal
-
+	idx = selIdx.first();
 	selectedLV->setCurrentIndex(idx.sibling(idx.row() - 1, idx.column()));
 	selectedHasFocus_ = true;
 	updateHook();
@@ -372,8 +371,7 @@ void GuiSelectionManager::downPB_clicked()
 	selectedModel->removeRow(pos);
 	insertRowToSelected(pos + 1, qms);
 
-	selectionChanged(); //signal
-
+	idx = selIdx.first();
 	selectedLV->setCurrentIndex(idx.sibling(idx.row() + 1, idx.column()));
 	selectedHasFocus_ = true;
 	updateHook();
