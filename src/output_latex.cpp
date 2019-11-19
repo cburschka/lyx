@@ -913,10 +913,12 @@ void TeXOnePar(Buffer const & buf,
 		&& runparams.local_font != nullptr
 		&& outer_language->rightToLeft()
 		&& !par_language->rightToLeft();
-	bool const localswitch = runparams_in.for_search
+	bool const localswitch =
+			(runparams_in.for_search
 			|| text.inset().forceLocalFontSwitch()
 			|| (using_begin_end && text.inset().forcePlainLayout())
-			|| in_polyglossia_rtl_env;
+			|| in_polyglossia_rtl_env)
+			&& !text.inset().forceParDirectionSwitch();
 	if (localswitch) {
 		lang_begin_command = use_polyglossia ?
 			    "\\text$$lang$$opts{" : lyxrc.language_command_local;

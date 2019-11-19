@@ -76,6 +76,8 @@ public:
 	bool allowsCaptionVariation(std::string const &) const;
 	///
 	LyXAlignment contentAlignment() const;
+	///
+	bool forceParDirectionSwitch() const { return true; }
 private:
 	///
 	void setCaptionType(std::string const & type);

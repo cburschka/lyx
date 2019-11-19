@@ -423,6 +423,10 @@ public:
 	/// if this inset has paragraphs should they be forced to use a
 	/// local font language switch?
 	virtual bool forceLocalFontSwitch() const { return false; }
+	/// if this inset has paragraphs should they be forced to use a
+	/// font language switch that switches paragraph directions
+	/// (relevant with polyglossia only)?
+	virtual bool forceParDirectionSwitch() const { return false; }
 	/// Does the inset force a specific encoding?
 	virtual Encoding const * forcedEncoding(Encoding const *, Encoding const *) const
 	{ return 0; }
