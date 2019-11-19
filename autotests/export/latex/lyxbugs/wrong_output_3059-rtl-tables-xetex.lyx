@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 574
+\lyxformat 589
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -51,7 +51,9 @@
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -97,6 +99,7 @@
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \index אינדקס
 \shortcut idx
 \color #008000
@@ -134,14 +137,10 @@ In an right-to-left language document, tables should be output in the same
 \begin_layout Standard
 \begin_inset Float table
 placement t
-alignment document
+alignment center
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -170,7 +169,6 @@ name "tab:יחידות-מדידה"
 \end_layout
 
 \begin_layout Plain Layout
-\align center
 
 \lang english
 \begin_inset Tabular
