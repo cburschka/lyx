@@ -120,6 +120,20 @@
     #6
   \fi}
 
+% Test for the LaTeX version
+\newcommand{\TestLaTeXVersion}[1]{
+  \message{^^J\prefix checking for LaTeX version at least as of #1...}
+  \@ifl@t@r\fmtversion{#1}{\existstrue}{\existsfalse}
+  \ifexists
+    \message{yes^^J}
+    \AddVariable{#1}{yes}
+    \AddPackage{LaTeX-#1}
+  \else
+    \message{no^^J}
+    \AddVariable{#1}{no}
+  \fi}
+
+
 % Adapted from ltxcheck.tex
 \newcommand{\TestFont}[2][\default]{
   \def\default{#2}
@@ -203,6 +217,10 @@
 %%% Then, the version of LaTeX we are using
 \message{^^J\prefix checking for LaTeX version... \fmtversion}
 \AddVariable{fmtversion}{\fmtversion}
+
+%%% Crucial versions
+% This one introduces path encoding changes
+\TestLaTeXVersion{2019/10/01}
 
 %%% And now, the list of available languages
 % The trick is to know that \the\everyjob contains something like
