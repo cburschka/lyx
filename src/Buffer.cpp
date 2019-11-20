@@ -1911,11 +1911,12 @@ void Buffer::writeLaTeXSource(otexstream & os,
 					os << "\\catcode`\\%=11"
 					      "\\def\\%{%}\\catcode`\\%=14\n";
 				}
+				if (contains(docdir, '~'))
+					docdir = subst(docdir, "~", "\\string~");
 				bool const nonascii = !isAscii(from_utf8(docdir));
 				// LaTeX 2019/10/01 handles non-ascii path without detokenize
 				bool const utfpathlatex = features.isAvailable("LaTeX-2019/10/01");
-				bool const detokenize = !utfpathlatex
-						&& (nonascii || contains(docdir, '~'));
+				bool const detokenize = !utfpathlatex && nonascii;
 				bool const quote = contains(docdir, ' ');
 				if (utfpathlatex && nonascii)
 					os << "\\UseRawInputEncoding\n";

@@ -44,6 +44,9 @@ What's new
 - Fix problems with non-ASCII characters in file path with recent LaTeX
   (bug 11146).
 
+- Fix problems with recent LaTeX when \input@path contains tilde and space
+  (bug 11699).
+
 
 * USER INTERFACE
 
