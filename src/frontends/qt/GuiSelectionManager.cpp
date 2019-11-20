@@ -117,7 +117,7 @@ void GuiSelectionManager::updateButtons()
 
 QModelIndex GuiSelectionManager::getSelectedIndex(int const c) const
 {
-	QModelIndexList avail = availableLV->selectionModel()->selectedRows(c);
+	QModelIndexList avail = availableLV->selectionModel()->selectedIndexes();
 	QModelIndexList sel   = selectedLV->selectionModel()->selectedRows(c);
 	bool const have_avl = !avail.isEmpty();
 	bool const have_sel = !sel.isEmpty();
@@ -126,11 +126,11 @@ QModelIndex GuiSelectionManager::getSelectedIndex(int const c) const
 		if (have_sel)
 			return sel.front();
 		if (have_avl)
-			return avail.front();
+			return avail.first();
 	}
 	else { // available has focus
 		if (have_avl)
-			return avail.front();
+			return avail.first();
 		if (have_sel)
 			return sel.front();
 	}
