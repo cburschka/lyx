@@ -781,6 +781,10 @@ void TeXOnePar(Buffer const & buf,
 		? nullptr : &paragraphs.at(pit + 1);
 
 	bool const intitle_command = style.intitle && style.isCommand();
+	// Intitle commands switch languages locally, thus increase
+	// language nesting level
+	if (intitle_command)
+		state->nest_level_ += 1;
 
 	if (style.pass_thru) {
 		Font const outerfont = text.outerFont(pit);
@@ -1454,6 +1458,10 @@ void TeXOnePar(Buffer const & buf,
 		}
 	}
 
+	// Reset language nesting level after intitle command
+	if (intitle_command)
+		state->nest_level_ -= 1;
+
 	LYXERR(Debug::LATEX, "TeXOnePar for paragraph " << pit << " done; ptr "
 		<< &par << " next " << nextpar);
 
@@ -1645,7 +1653,9 @@ void latexParagraphs(Buffer const & buf,
 					"$$lang",
 					mainlang))
 			<< '\n';
-		if (using_begin_end)
+		// If we have language_auto_begin, the stack will
+		// already be empty, nothing to pop()
+		if (using_begin_end && !lyxrc.language_auto_begin)
 			popLanguageName();
 	}
 
