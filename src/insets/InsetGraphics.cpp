@@ -902,7 +902,7 @@ void InsetGraphics::latex(otexstream & os,
 	if (!uncodable.empty() && !runparams.silent) {
 		// issue a warning about omitted characters
 		// FIXME: should be passed to the error dialog
-		frontend::Alert::warning(_("Uncodable characters in file path"),
+		frontend::Alert::warning(_("Uncodable character in file path"),
 			bformat(_("The following characters in one of the graphic paths are\n"
 				  "not representable in the current encoding and have been omitted: %1$s.\n"
 				  "You need to adapt either the encoding or the path."),
