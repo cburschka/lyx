@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-11-21 15:37+0100\n"
+"POT-Creation-Date: 2019-11-22 11:43-0500\n"
 "PO-Revision-Date: 2019-11-21 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -32372,7 +32372,8 @@ msgid "No conversion of %1$s is needed after all"
 msgstr "Konverze %1$s není vůbec potřeba"
 
 #: src/insets/InsetGraphics.cpp:906
-msgid "Uncodable character in path"
+#, fuzzy
+msgid "Uncodable characters in path"
 msgstr "Nekódovatelné znaky v cestě k souboru"
 
 #: src/insets/InsetGraphics.cpp:907
@@ -32383,8 +32384,8 @@ msgid ""
 "You need to adapt either the encoding or the path."
 msgstr ""
 "Následující znaky v jedné z cest k obrázkům nejsou reprezentovatelné\n"
-"ve zvoleném kódování a byly vynechány: "
-"%1$s.\nMusíte změnit kódování nebo cestu."
+"ve zvoleném kódování a byly vynechány: %1$s.\n"
+"Musíte změnit kódování nebo cestu."
 
 #: src/insets/InsetGraphics.cpp:932
 #, c-format
