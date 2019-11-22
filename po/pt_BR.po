@@ -9,10 +9,10 @@
 # Georger Araujo <georger_br@yahoo.com.br> 2015 - 2017 "
 msgid ""
 msgstr ""
-"Project-Id-Version: pt_BR 2.3.3\n"
+"Project-Id-Version: pt_BR 2.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-12-08 11:25-0500\n"
-"PO-Revision-Date: 2019-05-14 18:02-0300\n"
+"PO-Revision-Date: 2019-11-20 12:22-0300\n"
 "Last-Translator: Georger Araujo <georger underline br pound yahoo dot com "
 "dot br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br at yahoo dot com "
@@ -10043,13 +10043,12 @@ msgid "Change bars"
 msgstr "Barras de modificação"
 
 #: lib/layouts/changebars.module:7
-#, fuzzy
 msgid ""
 "Enables LyX to add vertical change bars in the margin of PDF output when "
 "change tracking is turned on and pdflatex output format is chosen."
 msgstr ""
 "Permite ao LyX adicionar barras de modificação verticais na margem da saída "
-"PDF quando Mostrar Alterações na Saída estiver ativado e o formato de saída "
+"PDF quando o controle de alterações estiver ativado e o formato de saída "
 "pdflatex for escolhido."
 
 #: lib/layouts/chess.layout:3
@@ -26915,7 +26914,7 @@ msgstr ""
 
 #: src/KeyMap.cpp:237
 msgid "Could not find `cua.bind' file"
-msgstr "Não foi possível encontrar arquivo `cua.bind'"
+msgstr "O arquivo `cua.bind' não foi encontrado"
 
 #: src/KeyMap.cpp:238
 msgid ""
