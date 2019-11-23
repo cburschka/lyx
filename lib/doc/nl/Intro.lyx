@@ -174,16 +174,18 @@ Wat is \SpecialChar LyX
 \SpecialChar LyX
  is een systeem om documenten mee voor te bereiden.
  Het is zeer sterk in het maken van complexe, technische en wetenschappelijke
- artikelen met wiskunde, kruisverwijzingen, bibliografieën, indices, enz.
- Het werkt zeer goed met documenten van elke grootte waarbij de gewone verwerkin
-gstechnieken vereist zijn: automatische paragrafen en paginering, spellingscontr
-ole, enzovoort.
- Het kan ook gebruikt worden voor een brief naar uw moeder, al zijn er daarvoor
- toegegeven wel eenvoudigere programma's.
+ artikelen met wiskundige elementen, kruisverwijzingen, bibliografieën,
+ indices, enz.
+ Het werkt zeer goed met documenten van alle lengtes, waarbij de standaardverwer
+kingstechnieken vereist zijn: automatische paragrafen en paginering, spellingsco
+ntrole, enzovoort.
+ Het kan ook gebruikt worden voor een brief naar uw moeder, al moeten we
+ toegeven dat er daarvoor ook eenvoudigere programma's zijn.
  Het is zeker niet het beste programma voor het maken van banners, flyers
  of advertenties (we leggen later uit waarom), al kunnen al deze dingen
  met wat moeite ook.
- Hier zijn enkele voorbeelden waarvoor het gebruikt wordt: memo's, brieven,
+ Hier zijn enkele voorbeelden waarvoor \SpecialChar LyX
+ gebruikt wordt: memo's, brieven,
  proefschriften en thesissen, lesnota's, lesmateriaal, conferentieverslagen,
  softwaredocumentatie, boeken, artikels in wetenschappelijke tijdschriften,
  scenario's voor toneel en film, zakelijke voorstellen, presentaties, \SpecialChar ldots
@@ -193,10 +195,10 @@ ole, enzovoort.
 \begin_layout Standard
 \SpecialChar LyX
  is een programma dat een moderne aanpak biedt voor het schrijven van documenten
- met een computer door het gebruik van opmaaktalen, een aanpak die breekt
- met de verouderde traditie van het typemachine.
- Het is ontworpen voor auteurs die professionele uitvoer willen met minimale
- moeite en zonder typografisch specialist te zijn.
+ met een computer, door het gebruik van opmaaktalen.
+ Deze aanpak breekt met de verouderde traditie van de typemachine.
+ Het is ontworpen voor auteurs die professionele resultaten willen zonder
+ veel inspanningen en zonder een specialist in typografie te zijn.
  Het typografische werk wordt grotendeels gedaan door de computer, niet
  de auteur.
  Met \SpecialChar LyX
@@ -207,9 +209,9 @@ ole, enzovoort.
 De initiële uitdaging bij het gebruik van \SpecialChar LyX
  is deels te wijten aan de mentaliteit
 sverandering die u, de gebruiker, moet maken.
- In vervlogen tijden was het enige wat we hadden voor het maken van documenten
- een typemachine, dus leerden we allemaal trucjes om rond hun beperkingen
- te werken.
+ In vervlogen tijden was het enige dat we tot onzer beschikking hadden voor
+ het maken van documenten een typemachine.
+ Dus leerden we allemaal trucjes om rond hun beperkingen te werken.
  Onderstrepen, wat niet veel meer is dan de letters te overschrijven met
  het teken 
 \begin_inset Quotes pld
@@ -219,8 +221,8 @@ _
 \begin_inset Quotes prd
 \end_inset
 
-, werd de standaardmanier om nadrukken te leggen.
- U werd verplicht om kolom- en tabgroottes te kennen en in te stellen voor
+, werd de gebruikelijke manier om een nadruk te leggen.
+ U was verplicht om kolom- en tabgroottes te kennen en in te stellen voor
  het maken van een tabel.
  Hetzelfde was van toepassing op brieven en andere rechts uitgelijnde tekst.
  Woordafbreking op het einde van een regel vereiste een scherp oog en veel
@@ -267,7 +269,7 @@ What You See Is All You Get
 \begin_layout Standard
 Dit is waar \SpecialChar LyX
  afwijkt van een gewone tekstverwerker.
- U moet zich niet bezighouden met waar welk teken gaat.
+ U moet zich niet bezighouden met waar welke letter gaat.
  U vertelt \SpecialChar LyX
  
 \emph on
@@ -325,8 +327,8 @@ Introductie
 \end_inset
 
 .
- Uiteraard betekent dit dat als u later beslist deze paragraaf ergens anders
- in het document te plaatsen of u voegt een paragraaf ervoor toe, u de nummering
+ Dit betekent wel dat als u later beslist deze paragraaf ergens anders in
+ het document te plaatsen, of u voegt een paragraaf ervoor toe, u de nummering
  voor deze en alle volgende paragrafen moet aanpassen, alsook de inhoudstafel.
 \end_layout
 
@@ -349,7 +351,7 @@ Introductie
 \end_layout
 
 \begin_layout Standard
-Inderdaad, dat is alles.
+Inderdaad, dat is het.
  Als u de paragraaf kopieert en plakt, zal deze automatisch opnieuw genummerd
  worden — en dit gebeurt overal.
  Als u bovendien juist refereert naar de paragraaf (middels kruisverwijzingen
@@ -360,7 +362,7 @@ Inderdaad, dat is alles.
 
 \begin_layout Standard
 Laten we nu eens kijken naar het probleem van consistentie.
- Vijf dagen later opent u uw verslag opnieuw en begint aan paragraaf
+ Vijf dagen later opent u uw verslag opnieuw en begint u aan paragraaf
 \begin_inset space ~
 \end_inset
 
@@ -385,7 +387,8 @@ pt, dus typt u de kop voor paragraaf
  Dit probleem bestaat zelfs niet in \SpecialChar LyX
 .
  De computer neemt al deze administratieve taken, zoals wat welke grootte
- en welk lettertype heeft, op zich, zodat u dat niet hoeft te doen.
+ en welk lettertype heeft, op zich.
+ Zo hoeft u dat niet te doen.
  Dit is ten slotte waar een computer goed in is.
 \end_layout
 
@@ -393,11 +396,11 @@ pt, dus typt u de kop voor paragraaf
 Hier is nog een voorbeeld.
  Stel dat u een lijst maakt.
  In andere tekstverwerkers is een lijst een hoop tabs en regeleindes.
- U moet uitvogelen waar het label voor elke item in de lijst moet komen,
+ U moet uitvogelen waar het label voor elk item in de lijst moet komen,
  welk label dat moet zijn, hoeveel witregels er tussen elk item moet, enzovoort.
  Met \SpecialChar LyX
  moet u slechts twee dingen weten: welke soort lijst is het en wat
- wil ik in mijn lijst? Dat volstaat.
+ wilt u in uw lijst? Dat volstaat.
 \end_layout
 
 \begin_layout Standard
