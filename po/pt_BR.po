@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pt_BR 2.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2019-11-22 11:43-0500\n"
-"PO-Revision-Date: 2019-11-20 12:22-0300\n"
+"PO-Revision-Date: 2019-11-22 17:38-0300\n"
 "Last-Translator: Georger Araujo <georger underline br pound yahoo dot com "
 "dot br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br at yahoo dot com "
@@ -10163,13 +10163,12 @@ msgid "Change bars"
 msgstr "Barras de modificação"
 
 #: lib/layouts/changebars.module:7
-#, fuzzy
 msgid ""
 "Enables LyX to add vertical change bars in the margin of PDF output when "
 "Show Changes in Output is turned on and pdflatex output format is chosen."
 msgstr ""
 "Permite ao LyX adicionar barras de modificação verticais na margem da saída "
-"PDF quando o controle de alterações estiver ativado e o formato de saída "
+"PDF quando Mostrar Alterações na Saída estiver ativado e o formato de saída "
 "pdflatex for escolhido."
 
 #: lib/layouts/chess.layout:3
@@ -17967,7 +17966,6 @@ msgid "Insert|s"
 msgstr "Inserir|I"
 
 #: lib/ui/stdcontext.inc:65
-#, fuzzy
 msgid "Rows & Columns| "
 msgstr "Linhas e Colunas|i"
 
@@ -26188,7 +26186,7 @@ msgid ""
 "or change the spelling of the author name."
 msgstr ""
 "O nome de autor '%1$s',\n"
-"usado para controlar alterações, contém os seguinte glifos que\n"
+"usado para controlar alterações, contém os glifos a seguir que\n"
 "não podem ser representados na codificação atual: %2$s.\n"
 "Esses glifos serão omitidos do arquivo LaTeX exportado.\n"
 "\n"
@@ -32575,20 +32573,19 @@ msgid "No conversion of %1$s is needed after all"
 msgstr "No fim das contas, não foi necessário converter %1$s"
 
 #: src/insets/InsetGraphics.cpp:906
-#, fuzzy
 msgid "Uncodable characters in path"
-msgstr "Caractere não-codificável no caminho do arquivo"
+msgstr "Caminho contém caracteres não-codificáveis"
 
 #: src/insets/InsetGraphics.cpp:907
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters in one of the graphic paths are\n"
 "not representable in the current encoding and have been omitted: %1$s.\n"
 "You need to adapt either the encoding or the path."
 msgstr ""
-"Os seguintes caracteres num dos items bibliográficos não\n"
-" são representáveis na codificação actual e foram omitidos: \n"
-"%1$s."
+"Os caracteres a seguir em um dos caminhos de gráficos\n"
+"não são representáveis na codificação atual e foram omitidos: %1$s.\n"
+"Você deve alterar ou a codificação ou o caminho."
 
 #: src/insets/InsetGraphics.cpp:932
 #, c-format
