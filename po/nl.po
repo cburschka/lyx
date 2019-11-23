@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2019-11-22 11:43-0500\n"
-"PO-Revision-Date: 2019-07-06 12:37+0200\n"
+"PO-Revision-Date: 2019-11-22 23:32+0100\n"
 "Last-Translator: Niko Strijbol <strijbol.niko@gmail.com>\n"
 "Language-Team: Dutch <lyx-docs@lists.lyx.org>\n"
 "Language: nl\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-Basepath: ../src\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -18339,7 +18339,7 @@ msgstr "Plakken"
 
 #: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:109
 msgid "Paste Recent|e"
-msgstr "Recente plakopdracht|c"
+msgstr "Plakken recent|e"
 
 #: lib/ui/stdcontext.inc:346
 msgid "Jump Back to Saved Bookmark|B"
@@ -32558,20 +32558,19 @@ msgid "No conversion of %1$s is needed after all"
 msgstr "Er is toch geen omzetting van %1$s nodig"
 
 #: src/insets/InsetGraphics.cpp:906
-#, fuzzy
 msgid "Uncodable characters in path"
-msgstr "Niet-codeerbaar teken in pad naar bestand"
+msgstr "Niet-codeerbare tekens in pad naar bestand"
 
 #: src/insets/InsetGraphics.cpp:907
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters in one of the graphic paths are\n"
 "not representable in the current encoding and have been omitted: %1$s.\n"
 "You need to adapt either the encoding or the path."
 msgstr ""
-"De volgende tekens in een van de insets kunnen\n"
+"De volgende tekens in een van de afbeeldingspaden kunnen\n"
 "niet voorgesteld worden in de huidige codering en zijn weggelaten: %1$s.\n"
-"'Letterlijk' uitvinken in het dialoogvenster van de inset kan helpen."
+"U moet of de codering of het pad aanpassen."
 
 #: src/insets/InsetGraphics.cpp:932
 #, c-format
