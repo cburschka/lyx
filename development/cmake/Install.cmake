@@ -136,7 +136,7 @@ if(APPLE)
   endif()
 
   foreach(_i lyxeditor maxima inkscape)
-    install(FILES "${TOP_SRC_DIR}/development/MacOSX/${_i}" DESTINATION "${LYX_UTILITIES_INSTALL_PATH}")
+    install(PROGRAMS "${TOP_SRC_DIR}/development/MacOSX/${_i}" DESTINATION "${LYX_UTILITIES_INSTALL_PATH}")
   endforeach()
   install(FILES "${TOP_SRC_DIR}/development/MacOSX/LyX.icns" DESTINATION "${LYX_DATA_SUBDIR}")
   set(program_suffix ${PROGRAM_SUFFIX})
