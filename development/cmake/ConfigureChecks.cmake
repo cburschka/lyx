@@ -77,7 +77,7 @@ if(HUNSPELL_FOUND)
   set(HunspellTestFile "${CMAKE_BINARY_DIR}/hunspelltest.cpp")
   file(WRITE "${HunspellTestFile}"
   "
-  #include <hunspell/hunspell.hxx>
+  #include <hunspell.hxx>
 
   int main()
   {
