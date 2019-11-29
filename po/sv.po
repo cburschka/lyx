@@ -4,11 +4,12 @@
 # Joacim Persson <sp2joap@ida.his.se> 1997, 1998.
 # Jim Rotmalm <jim.rotmalm@gmail.com>, 2010-2019.
 #
-# Information 2019-05-12:
+# Information 2019-11-28:
 #   Bad menu shortcuts: 171
 #   Bad Qt shortcuts: 149
+#   Bad spaces: 1
 #   Inconsistent translations: 23
-#   Total warnings: 343
+#   Total warnings: 344
 #
 # Behöver förbättras:
 #   Alla genvägar (snabbkommandon, kortkommandon)
@@ -212,10 +213,10 @@
 # Jim Rotmalm <jim.rotmalm@gmail.com>, 2010-2019.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 2.3.3\n"
+"Project-Id-Version: LyX 2.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-11-22 11:43-0500\n"
-"PO-Revision-Date: 2019-05-12 21:12+0200\n"
+"POT-Creation-Date: 2019-11-28 12:21+0100\n"
+"PO-Revision-Date: 2019-11-28 21:12+0200\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
 "Language: sv\n"
@@ -10325,7 +10326,6 @@ msgid "Change bars"
 msgstr "Ändringsrader"
 
 #: lib/layouts/changebars.module:7
-#, fuzzy
 msgid ""
 "Enables LyX to add vertical change bars in the margin of PDF output when "
 "Show Changes in Output is turned on and pdflatex output format is chosen."
@@ -18102,7 +18102,6 @@ msgid "Insert|s"
 msgstr "Infoga"
 
 #: lib/ui/stdcontext.inc:65
-#, fuzzy
 msgid "Rows & Columns| "
 msgstr "Rader & spalter"
 
@@ -32653,20 +32652,19 @@ msgid "No conversion of %1$s is needed after all"
 msgstr "En omvandling av %1$s behövs ändå inte"
 
 #: src/insets/InsetGraphics.cpp:906
-#, fuzzy
 msgid "Uncodable characters in path"
-msgstr "Okodbart tecken i filsökväg"
+msgstr "Okodbara tecken i filsökväg"
 
 #: src/insets/InsetGraphics.cpp:907
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters in one of the graphic paths are\n"
 "not representable in the current encoding and have been omitted: %1$s.\n"
 "You need to adapt either the encoding or the path."
 msgstr ""
-"Följande tecken i en av programlistningarna kan inte\n"
-"visas i aktuell kodning och har blivit utelämnade:\n"
-"%1$s."
+"Följande tecken i en av grafiksökvägarna kan inte\n"
+"visas i aktuell kodning och har blivit utelämnade: %1$s.\n"
+"Du behöver anpassa antingen kodningen eller sökvägen."
 
 #: src/insets/InsetGraphics.cpp:932
 #, c-format
