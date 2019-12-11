@@ -190,6 +190,21 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// cur.forceBufferUpdate() is not enough
 			buf->updateBuffer();
 		}
+
+		// if branch exists in a descendant, update previews.
+		// TODO: only needed if "Show preview" is enabled in the included inset.
+		bool exists_in_desc = false;
+		for (auto const & it : buf->getDescendents()) {
+			if (it->params().branchlist().find(params_.branch))
+				exists_in_desc = true;
+		}
+		if (exists_in_desc) {
+			// TODO: ideally we would only update the previews of the
+			// specific children that have this branch directly or
+			// in one of their descendants
+			buf->removePreviews();
+			buf->updatePreviews();
+		}
 		break;
 	}
 	case LFUN_BRANCH_INVERT:
