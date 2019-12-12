@@ -5,6 +5,15 @@
 \save_transient_properties true
 \origin unavailable
 \textclass scrartcl
+\begin_preamble
+% If fontspec (Polyglossia + XeTeX/LuaTeX) is used, 
+% we need a proper Arabic font
+\AtBeginDocument{%
+   \@ifpackageloaded{fontspec}{%
+     \newfontfamily\arabicfont[Script=Arabic]{Amiri}%
+  }{}%
+}
+\end_preamble
 \use_default_options false
 \begin_modules
 enumitem
