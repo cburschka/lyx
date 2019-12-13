@@ -13,14 +13,20 @@
 %évite les caractères actifs en français - JPC 17/09/2009
 \let\braillenormalorig\braillenormal
 \renewcommand{\braillenormal}[1]{%
-   \begin{otherlanguage}{english}\braillenormalorig{#1}\end{otherlanguage}%
+  % temporarily disable shorthands
+  \bgroup%
+   \catcode`\;=12%
+   \catcode`\:=12%
+   \catcode`\!=12%
+   \catcode`\?=12%
+   \braillenormalorig{#1}%
+  \egroup%
 }
 %\let\brailletextorig\brailletext
 %\renewcommand{\brailletext[1]{%
 %   \begin{otherlanguage{english}\brailletext{#1}\end{otherlanguage}%
 %}
 \end_preamble
-\options english
 \use_default_options false
 \begin_modules
 braille
