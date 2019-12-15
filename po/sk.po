@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-10-27 09:38+0100\n"
-"PO-Revision-Date: 2019-10-27 08:42+0000\n"
+"POT-Creation-Date: 2019-12-15 14:01+0100\n"
+"PO-Revision-Date: 2019-12-15 13:05+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -18162,9 +18162,9 @@ msgstr "Khmérsky"
 msgid "Korean"
 msgstr "Kórejsky"
 
-#: lib/languages:981
-msgid "Kurmanji"
-msgstr "Kurdsky (Kurmancî)"
+#: lib/languages:986
+msgid "Kurdish (Kurmanji)"
+msgstr "Kurdsky (Kurmanji)"
 
 #: lib/languages:991 src/frontends/qt/GuiSymbols.cpp:77
 msgid "Lao"
@@ -28622,6 +28622,14 @@ msgstr "BibTeX chyba: "
 msgid "Biber error: "
 msgstr "Biber chyba: "
 
+#: src/LaTeX.cpp:1545
+msgid "Makeindex error: "
+msgstr "Makeindex chyba: "
+
+#: src/LaTeX.cpp:1554
+msgid "Xindy error: "
+msgstr "Xindy chyba: "
+
 #: src/LaTeXFonts.cpp:236 src/LaTeXFonts.cpp:314
 msgid "Font not available"
 msgstr "Font nie je dostupný"
@@ -34561,10 +34569,6 @@ msgstr ""
 msgid "No conversion of %1$s is needed after all"
 msgstr "Konverziu %1$s netreba"
 
-#: src/insets/InsetGraphics.cpp:905
-msgid "Uncodable characters in path"
-msgstr "Nekódovateľné znaky v ceste"
-
 #: src/insets/InsetGraphics.cpp:906
 #, c-format
 msgid ""
@@ -36276,6 +36280,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Uncodable characters in path"
+#~ msgstr "Nekódovateľné znaky v ceste"
 
 #~ msgid ""
 #~ "Right arrow key is interpreted as \"move forwards\", left arrow key as "
