@@ -53,7 +53,7 @@ macro(getoutputformats filepath varname format_set)
   # What should we test, if default_output_format is not defined?
   # For now we test everything ...
   set(out_formats "xhtml" ${DVI_FORMATS} ${PDF_FORMATS})
-  foreach(_l ${lines})
+  foreach(_l IN LISTS lines)
     if(_l MATCHES "^\\\\default_output_format +\([^ ]+\)")
       set(_format ${CMAKE_MATCH_1})
       if(_format STREQUAL "default")
