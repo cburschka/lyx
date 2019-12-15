@@ -140,6 +140,7 @@ bool Language::readLanguage(Lexer & lex)
 		LA_LANG_VARIETY,
 		LA_POLYGLOSSIANAME,
 		LA_POLYGLOSSIAOPTS,
+		LA_XINDYNAME,
 		LA_POSTBABELPREAMBLE,
 		LA_PREBABELPREAMBLE,
 		LA_PROVIDES,
@@ -171,7 +172,8 @@ bool Language::readLanguage(Lexer & lex)
 		{ "quotestyle",           LA_QUOTESTYLE },
 		{ "requires",             LA_REQUIRES },
 		{ "rtl",                  LA_RTL },
-		{"wordwrap",              LA_WORDWRAP }
+		{ "wordwrap",             LA_WORDWRAP },
+		{ "xindyname",            LA_XINDYNAME }
 	};
 
 	bool error = false;
@@ -205,6 +207,9 @@ bool Language::readLanguage(Lexer & lex)
 			break;
 		case LA_POLYGLOSSIAOPTS:
 			lex >> polyglossia_opts_;
+			break;
+		case LA_XINDYNAME:
+			lex >> xindy_;
 			break;
 		case LA_QUOTESTYLE:
 			lex >> quote_style_;

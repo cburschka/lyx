@@ -10,6 +10,7 @@
 #	BabelName          <babelname>
 #	PolyglossiaName    <polyglossianame>
 #	PolyglossiaOpts    "<language-specific options>"
+#	XindyName          <xindyname>
 #	ActiveChars        <activated characters>
 #	QuoteStyle         <british|danish|english|french|frenchin|
 #                           german|polish|russian|swedish|swedishg|swiss|plain>
@@ -123,6 +124,8 @@
 # * ActiveChars provides a string of the characters that are made active
 #   by the language. We record particularly those characters that have to 
 #   be de-activated in some contexts (such as - or =).
+# * XindyName holds the value to the (te)xindy -L option. We only give it
+#   if a corresponding language module exists.
 #
 ##########################################################################
 
@@ -172,6 +175,7 @@ Language albanian
 	  \@ifl@aded{def}{t1enc}{\DeclareTextSymbol{\th}{T1}{254}}{}
 	EndPostBabelPreamble
 	PolyglossiaName  albanian
+	XindyName        albanian
 	QuoteStyle       swiss
 	Encoding         iso8859-2
 	FontEncoding     T1|OT1
@@ -184,6 +188,7 @@ Language american
 	BabelName        american
 	PolyglossiaName  english
 	PolyglossiaOpts  "variant=american"
+	XindyName        english
 	QuoteStyle       english
 	Encoding         iso8859-15
 	FontEncoding	 ASCII
@@ -210,6 +215,7 @@ Language ancientgreek
 	EndPostBabelPreamble
 	PolyglossiaName  greek
 	PolyglossiaOpts  "variant=ancient"
+	XindyName        greek
 	QuoteStyle       french
 	Encoding         iso8859-7
 	InternalEncoding true
@@ -291,6 +297,7 @@ Language australian
 	BabelName        australian
 	PolyglossiaName  english
 	PolyglossiaOpts  "variant=australian"
+	XindyName        english
 	Encoding         iso8859-15
 	FontEncoding	 ASCII
 	DateFormats      "d MMMM yyyy|d MMM yyyy|dd/MM/yyyy"
@@ -305,6 +312,7 @@ Language austrian
 	BabelName        austrian
 	PolyglossiaName  german
 	PolyglossiaOpts  "variant=austrian,spelling=old,babelshorthands=true"
+	XindyName        german-duden
 	QuoteStyle       german
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -319,6 +327,7 @@ Language naustrian
 	BabelName        naustrian
 	PolyglossiaName  german
 	PolyglossiaOpts  "variant=austrian,spelling=new,babelshorthands=true"
+	XindyName        german-duden
 	QuoteStyle       german
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -385,6 +394,7 @@ Language belarusian
 	GuiName          "Belarusian"
 	BabelName        belarusian
 	PolyglossiaName  belarusian
+	XindyName        belarusian
 	QuoteStyle       french
 	Encoding         cp1251
 	FontEncoding	 T2A
@@ -419,6 +429,7 @@ Language brazilian
 	HasGuiSupport    true
 	BabelName        brazil
 	PolyglossiaName  brazil
+	XindyName        portuguese
 	QuoteStyle       english
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -443,6 +454,7 @@ Language british
 	BabelName        british
 	PolyglossiaName  english
 	PolyglossiaOpts  "variant=british"
+	XindyName        english
 	QuoteStyle       british
 	Encoding         iso8859-15
 	FontEncoding	 ASCII
@@ -455,6 +467,7 @@ Language bulgarian
 	HasGuiSupport    true
 	BabelName        bulgarian
 	PolyglossiaName  bulgarian
+	XindyName        bulgarian
 	QuoteStyle       german
 	Encoding         cp1251
 	FontEncoding     T2A
@@ -463,28 +476,25 @@ Language bulgarian
 	Provides         textcyrillic
 End
 
-# Unless polyglossia supports variant=canadian,
-# we can use american, as canadian \eq. american also in babel
 Language canadian
 	GuiName          "English (Canada)"
 	BabelName        canadian
 	PolyglossiaName  english
-	PolyglossiaOpts  "variant=american"
-#	PolyglossiaOpts  "variant=canadian"
+	PolyglossiaOpts  "variant=canadian"
+	XindyName        english
 	QuoteStyle       english
 	Encoding         iso8859-15
-	FontEncoding	 ASCII
+	FontEncoding     ASCII
 	DateFormats      "MMMM d, yyyy|d MMM yyyy|yyyy-MM-dd"
 	LangCode         en_CA
 End
 
-# Unless polyglossia supports variant=canadian,
-# we can use french, as canadien \eq. french also in babel
 Language canadien
 	GuiName          "French (Canada)"
 	BabelName        acadian
 	PolyglossiaName  french
-#	PolyglossiaOpts  "variant=canadian"
+	PolyglossiaOpts  "variant=canadian"
+	XindyName        french
 	QuoteStyle       french
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -554,6 +564,7 @@ Language croatian
 	GuiName          "Croatian"
 	BabelName        croatian
 	PolyglossiaName  croatian
+	XindyName        croatian
 	QuoteStyle       polish
 	Encoding         iso8859-2
 	FontEncoding	 T1|OT1
@@ -566,6 +577,7 @@ Language czech
 	HasGuiSupport    true
 	BabelName        czech
 	PolyglossiaName  czech
+	XindyName        czech
 	QuoteStyle       german
 	ActiveChars      -
 	Encoding         iso8859-2
@@ -579,6 +591,7 @@ Language danish
 	HasGuiSupport    true
 	BabelName        danish
 	PolyglossiaName  danish
+	XindyName        danish
 	QuoteStyle       danish
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -601,6 +614,7 @@ Language dutch
 	BabelName        dutch
 	PolyglossiaName  dutch
 	PolyglossiaOpts  "babelshorthands=true"
+	XindyName        dutch
 	QuoteStyle       polish
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -614,6 +628,7 @@ Language english
 	BabelName        english
 	PolyglossiaName  english
 	PolyglossiaOpts  "variant=american"
+	XindyName        english
 	QuoteStyle       english
 	DateFormats      "MMMM dd, yyyy|MMM dd, yyyy|M/d/yyyy"
 	Encoding         iso8859-15
@@ -627,6 +642,7 @@ Language esperanto
 	GuiName          "Esperanto"
 	BabelName        esperanto
 	PolyglossiaName  esperanto
+	XindyName        esperanto
 	QuoteStyle       english
 	Encoding         iso8859-3
 	FontEncoding	 IL3|T1|OT1
@@ -638,6 +654,7 @@ Language estonian
 	GuiName          "Estonian"
 	BabelName        estonian
 	PolyglossiaName  estonian
+	XindyName        estonian
 	QuoteStyle       german
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -654,6 +671,7 @@ Language farsi
 	GuiName          "Farsi"
 	BabelName        farsi
 	PolyglossiaName  farsi
+	XindyName        persian
 	Encoding         utf8
 	FontEncoding     LAE,LFE
 	DateFormats      "d MMMM yyyy|d MMM yyyy|yyyy/M/d"
@@ -671,6 +689,7 @@ Language finnish
 	HasGuiSupport    true
 	BabelName        finnish
 	PolyglossiaName  finnish
+	XindyName        finnish
 	QuoteStyle       swedish
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -683,6 +702,7 @@ Language french
 	HasGuiSupport    true
 	BabelName        french
 	PolyglossiaName  french
+	XindyName        french
 	QuoteStyle       french
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -722,6 +742,7 @@ Language georgian
 	GuiName          "Georgian"
 	BabelName        georgian
 	PolyglossiaName  georgian
+	XindyName        georgian
 	QuoteStyle       german
 	Encoding         utf8
 	FontEncoding     T8M
@@ -734,6 +755,7 @@ Language german
 	BabelName        german
 	PolyglossiaName  german
 	PolyglossiaOpts  "variant=german,spelling=old,babelshorthands=true"
+	XindyName        german-duden
 	QuoteStyle       german
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -748,6 +770,7 @@ Language ngerman
 	BabelName        ngerman
 	PolyglossiaName  german
 	PolyglossiaOpts  "variant=german,spelling=new,babelshorthands=true"
+	XindyName        german-duden
 	QuoteStyle       german
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -764,6 +787,7 @@ Language german-ch
 	BabelName        nswissgerman
 	PolyglossiaName  german
 	PolyglossiaOpts  "variant=swiss,spelling=new,babelshorthands=true"
+	XindyName        german-duden
 	QuoteStyle       swiss
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -779,6 +803,7 @@ Language german-ch-old
  	BabelName        swissgerman
  	PolyglossiaName  german
  	PolyglossiaOpts  "variant=swiss,spelling=old,babelshorthands=true"
+	XindyName        german-duden
  	QuoteStyle       swiss
  	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -792,6 +817,7 @@ Language greek
 	BabelName        greek
 	PolyglossiaName  greek
 	PolyglossiaOpts  "variant=monotonic"
+	XindyName        greek
 	QuoteStyle       french
 	Encoding         iso8859-7
 	InternalEncoding true
@@ -806,6 +832,7 @@ Language polutonikogreek
 	BabelName        polutonikogreek
 	PolyglossiaName  greek
 	PolyglossiaOpts  "variant=polytonic"
+	XindyName        greek
 	QuoteStyle       french
 	Encoding         iso8859-7
 	InternalEncoding true
@@ -820,6 +847,7 @@ Language hebrew
 	HasGuiSupport    true
 	BabelName        hebrew
 	PolyglossiaName  hebrew
+	XindyName        hebrew
 	Encoding         cp1255
 	QuoteStyle       english
 	InternalEncoding true
@@ -865,6 +893,7 @@ Language icelandic
 	GuiName          "Icelandic"
 	BabelName        icelandic
 	PolyglossiaName  icelandic
+	XindyName        icelandic
 	QuoteStyle       german
 	Encoding         iso8859-15
 	FontEncoding	 T1
@@ -902,6 +931,7 @@ Language italian
 	HasGuiSupport    true
 	BabelName        italian
 	PolyglossiaName  italian
+	XindyName        italian
 	QuoteStyle       french
 	Encoding         iso8859-15
 	FontEncoding	 ASCII
@@ -966,6 +996,7 @@ End
 Language korean
 	GuiName         "Korean"
 	PolyglossiaName korean
+	XindyName       korean
 	Encoding        euc-kr
 	QuoteStyle      cjkangle
 	DateFormats     "yyyy년 M월 d일|yyyy. M. d.|yy. M. d."
@@ -987,6 +1018,7 @@ Language kurmanji
 	GuiName          "Kurdish (Kurmanji)"
 	BabelName        kurmanji
 	PolyglossiaName  kurdish
+	XindyName        kurdish-bedirxan
 	PolyglossiaOpts  "variant=kurmanji"
 	Encoding         utf8
 	FontEncoding	 T1|OT1
@@ -1010,6 +1042,7 @@ Language latin
 	GuiName          "Latin"
 	BabelName        latin
 	PolyglossiaName  latin
+	XindyName        latin
 	ActiveChars      ^=
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -1023,6 +1056,7 @@ Language latvian
 	GuiName          "Latvian"
 	BabelName        latvian
 	PolyglossiaName  latvian
+	XindyName        latvian
 	QuoteStyle       german
 	Encoding         iso8859-4
 	FontEncoding     L7x|T1|OT1
@@ -1037,6 +1071,7 @@ Language lithuanian
 	GuiName          "Lithuanian"
 	BabelName        lithuanian
 	PolyglossiaName  lithuanian
+	XindyName        lithunian
 	QuoteStyle       german
 	Encoding         iso8859-13
 	FontEncoding     L7x
@@ -1056,6 +1091,7 @@ Language lowersorbian
 	GuiName          "Lower Sorbian"
 	BabelName        lowersorbian
 	PolyglossiaName  lsorbian
+	XindyName        lower-sorbian
 	QuoteStyle       german
 	Encoding         iso8859-2
 	FontEncoding	 T1|OT1
@@ -1068,6 +1104,7 @@ Language magyar
 	HasGuiSupport    true
 	BabelName        magyar
 	PolyglossiaName  magyar
+	XindyName        hungarian
 	QuoteStyle       polish
 	Encoding         iso8859-2
 	FontEncoding	 T1|OT1
@@ -1079,6 +1116,7 @@ Language macedonian
 	GuiName          "Macedonian"
 	BabelName        macedonian
 	PolyglossiaName  macedonian
+	XindyName        macedonian
 	QuoteStyle       german
 	Encoding         cp1251
 	FontEncoding     T2A
@@ -1112,6 +1150,7 @@ Language mongolian
 	GuiName          "Mongolian"
 	BabelName        mongolian
 	PolyglossiaName  mongolian
+	XindyName        mongolian
 	Encoding         utf8
 	FontEncoding     T2A
 	DateFormats      "yyyy оны M сарын d|d-M-yyyy|dd-MM-yyyy"
@@ -1124,6 +1163,7 @@ Language newzealand
 	BabelName        newzealand
 	PolyglossiaName  english
 	PolyglossiaOpts  "variant=newzealand"
+	XindyName        english
 	QuoteStyle       english
 	Encoding         iso8859-15
 	FontEncoding	 ASCII
@@ -1136,6 +1176,7 @@ Language norsk
 	HasGuiSupport    true
 	BabelName        norsk
 	PolyglossiaName  norsk
+	XindyName        norwegian
 	QuoteStyle       swiss
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -1164,6 +1205,7 @@ Language nynorsk
 	HasGuiSupport    true
 	BabelName        nynorsk
 	PolyglossiaName  nynorsk
+	XindyName        norwegian
 	QuoteStyle       swiss
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -1188,6 +1230,7 @@ Language oldrussian
 	GuiName          "Russian (Petrine orthography)"
 	PolyglossiaName  russian
 	PolyglossiaOpts  "spelling=old"
+	XindyName        russian
 	QuoteStyle       russian
 	LangCode         ru_petr1708
 End
@@ -1210,6 +1253,7 @@ Language polish
 	HasGuiSupport    true
 	BabelName        polish
 	PolyglossiaName  polish
+	XindyName        polish
 	QuoteStyle       polish
 	Encoding         iso8859-2
 	FontEncoding     QX|T1|OT1
@@ -1222,6 +1266,7 @@ Language portuguese
 	HasGuiSupport    true
 	BabelName        portuges
 	PolyglossiaName  portuges
+	XindyName        portuguese
 	QuoteStyle       french
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -1234,6 +1279,7 @@ Language romanian
 	HasGuiSupport    true
 	BabelName        romanian
 	PolyglossiaName  romanian
+	XindyName        romanian
 	QuoteStyle       polish
 	Encoding         iso8859-16
 	FontEncoding	 T1|OT1
@@ -1259,6 +1305,7 @@ Language russian
 	BabelName        russian
 	PolyglossiaName  russian
 	PolyglossiaOpts  "spelling=modern"
+	XindyName        russian
 	QuoteStyle       russian
 	Encoding         koi8-r
 	FontEncoding     T2A
@@ -1311,6 +1358,7 @@ Language serbian
 	BabelName        serbianc
 	PolyglossiaName  serbian
 	PolyglossiaOpts  "script=Cyrillic"
+	XindyName        serbian
 	# Note: script option is uppercase, even if the polyglossia
 	#       manual states otherwise.
 	QuoteStyle       polish
@@ -1320,13 +1368,13 @@ Language serbian
 	LangCode         sr_RS
 End
 
-# Note: script option is uppercase, even if the polyglossia
-#       manual states otherwise.
+# We use croatian for Latin Serbian index ordering
 Language serbian-latin
 	GuiName          "Serbian (Latin)"
 	BabelName        serbian
 	PolyglossiaName  serbian
 	PolyglossiaOpts  "script=Latin"
+	XindyName        croatian
 	QuoteStyle       polish
 	Encoding         iso8859-2
 	FontEncoding	 T1|OT1
@@ -1339,6 +1387,7 @@ Language slovak
 	HasGuiSupport    true
 	BabelName        slovak
 	PolyglossiaName  slovak
+	XindyName        slovak-large
 	QuoteStyle       german
 	ActiveChars      -^
 	Encoding         iso8859-2
@@ -1351,6 +1400,7 @@ Language slovene
 	GuiName          "Slovene"
 	BabelName        slovene
 	PolyglossiaName  slovenian
+	XindyName        slovenian
 	QuoteStyle       german
 	Encoding         iso8859-2
 	FontEncoding	 T1|OT1
@@ -1363,6 +1413,7 @@ Language spanish
 	HasGuiSupport    true
 	BabelName        spanish
 	PolyglossiaName  spanish
+	XindyName        spanish-modern
 	QuoteStyle       french
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -1378,6 +1429,7 @@ Language spanish-mexico
 	GuiName          "Spanish (Mexico)"
 	BabelName        spanish
 	PolyglossiaName  spanish
+	XindyName        spanish-modern
 	QuoteStyle       french
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -1393,6 +1445,7 @@ Language swedish
 	HasGuiSupport    true
 	BabelName        swedish
 	PolyglossiaName  swedish
+	XindyName        swedish
 	QuoteStyle       swedish
 	Encoding         iso8859-15
 	FontEncoding	 T1|OT1
@@ -1474,6 +1527,7 @@ Language turkish
 	HasGuiSupport    true
 	BabelName        turkish
 	PolyglossiaName  turkish
+	XindyName        turkish
 	QuoteStyle       english
 	ActiveChars      =
 	Encoding         iso8859-9
@@ -1500,6 +1554,7 @@ Language ukrainian
 	HasGuiSupport    true
 	BabelName        ukrainian
 	PolyglossiaName  ukrainian
+	XindyName        ukrainian
 	QuoteStyle       russian
 	Encoding         koi8-u
 	FontEncoding     T2A
@@ -1512,6 +1567,7 @@ Language uppersorbian
 	GuiName          "Upper Sorbian"
 	BabelName        uppersorbian
 	PolyglossiaName  usorbian
+	XindyName        upper-sorbian
 	QuoteStyle       german
 	Encoding         iso8859-2
 	FontEncoding	 T1|OT1
@@ -1533,6 +1589,7 @@ Language vietnamese
 	GuiName          "Vietnamese"
 	BabelName        vietnamese
 	PolyglossiaName  vietnamese
+	XindyName        vietnamese
 	QuoteStyle       english
 	Encoding         utf8
 	DateFormats      "dd 'tháng' MMMM yyyy|dd-MM-yyyy|dd/MM/yyyy"

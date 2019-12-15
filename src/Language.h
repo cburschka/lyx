@@ -46,6 +46,8 @@ public:
 	std::string const polyglossia() const { return polyglossia_name_; }
 	/// polyglossia language options
 	std::string const polyglossiaOpts() const { return polyglossia_opts_; }
+	/// polyglossia language options
+	std::string const xindy() const { return xindy_; }
 	/// Is this language only supported by polyglossia?
 	bool isPolyglossiaExclusive() const;
 	/// Is this language only supported by babel?
@@ -116,6 +118,8 @@ private:
 	trivstring polyglossia_name_;
 	///
 	trivstring polyglossia_opts_;
+	///
+	trivstring xindy_;
 	///
 	trivstring quote_style_;
 	///

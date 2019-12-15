@@ -188,6 +188,9 @@ public:
 	*/
 	std::string index_command;
 
+	/// The Xindy language module
+	std::string xindy_language;
+
 	/** Hyperref driver
 	*/
 	std::string hyperref_driver;

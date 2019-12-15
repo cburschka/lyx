@@ -20,6 +20,7 @@
 #include "LyXRC.h"
 #include "LyX.h"
 #include "DepTable.h"
+#include "Encoding.h"
 
 #include "support/debug.h"
 #include "support/convert.h"
@@ -105,7 +106,7 @@ LaTeX::LaTeX(string const & latex, OutputParams const & rp,
 	     FileName const & f, string const & p, string const & lp, 
 	     bool allow_cancellation, bool const clean_start)
 	: cmd(latex), file(f), path(p), lpath(lp), runparams(rp), biber(false),
-       allow_cancel(allow_cancellation)
+	  allow_cancel(allow_cancellation)
 {
 	num_errors = 0;
 	// lualatex can still produce a DVI with --output-format=dvi. However,
@@ -499,6 +500,21 @@ int LaTeX::runMakeIndex(string const & f, OutputParams const & rp,
 
 	if (!rp.index_command.empty())
 		tmp = rp.index_command;
+	
+	if (contains(tmp, "$$x")) {
+		// This adds appropriate [te]xindy options
+		// such as language and codepage (for the
+		// main document language/encoding)
+		string xdyopts = rp.xindy_language;
+		if (!xdyopts.empty())
+			xdyopts = "-L " + xdyopts;
+		if (rp.encoding->iconvName() == "UTF-8") {
+			if (!xdyopts.empty())
+				xdyopts += " ";
+			xdyopts += "-C utf8";
+		}
+		tmp = subst(tmp, "$$x", xdyopts);
+	}
 
 	LYXERR(Debug::LATEX,
 		"idx file has been made, running index processor ("
