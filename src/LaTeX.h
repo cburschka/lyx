@@ -153,7 +153,9 @@ public:
 		///
 		NONZERO_ERROR = 32768, // the command exited with nonzero status
 		///
-		ERRORS = TEX_ERROR + LATEX_ERROR + NONZERO_ERROR + BIBTEX_ERROR,
+		INDEX_ERROR = 65536,
+		///
+		ERRORS = TEX_ERROR + LATEX_ERROR + NONZERO_ERROR + BIBTEX_ERROR + INDEX_ERROR,
 		///
 		WARNINGS = TEX_WARNING + LATEX_WARNING + PACKAGE_WARNING
 	};
@@ -224,6 +226,9 @@ private:
 
 	///
 	int scanBlgFile(DepTable & head, TeXErrors & terr);
+
+	///
+	int scanIlgFile(TeXErrors & terr);
 
 	///
 	bool runBibTeX(std::vector<AuxInfo> const &,

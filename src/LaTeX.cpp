@@ -188,6 +188,7 @@ int LaTeX::run(TeXErrors & terr)
 {
 	int scanres = NO_ERRORS;
 	int bscanres = NO_ERRORS;
+	int iscanres = NO_ERRORS;
 	unsigned int count = 0; // number of times run
 	num_errors = 0; // just to make sure.
 	unsigned int const MAX_RUN = 6;
@@ -302,6 +303,9 @@ int LaTeX::run(TeXErrors & terr)
 				runMakeIndex(onlyFileName(idxfile.absFileName()), runparams);
 		if (ret == Systemcall::KILLED)
 			return Systemcall::KILLED;
+		FileName const ilgfile(changeExtension(file.absFileName(), ".ilg"));
+		if (ilgfile.exists())
+			iscanres = scanIlgFile(terr);
 		rerun = true;
 	}
 
@@ -426,7 +430,10 @@ int LaTeX::run(TeXErrors & terr)
 				file.absFileName(), ".idx")), runparams);
 		if (ret == Systemcall::KILLED)
 			return Systemcall::KILLED;
-		rerun =	true;
+		FileName const ilgfile(changeExtension(file.absFileName(), ".ilg"));
+		if (ilgfile.exists())
+			iscanres = scanIlgFile(terr);
+		rerun = true;
 	}
 
 	// MSVC complains that bool |= int is unsafe. Not sure why.
@@ -475,6 +482,9 @@ int LaTeX::run(TeXErrors & terr)
 	if (bscanres & ERRORS)
 		return bscanres; // return on error
 
+	if (iscanres & ERRORS)
+		return iscanres; // return on error
+
 	return scanres;
 }
 
@@ -514,6 +524,11 @@ int LaTeX::runMakeIndex(string const & f, OutputParams const & rp,
 			xdyopts += "-C utf8";
 		}
 		tmp = subst(tmp, "$$x", xdyopts);
+	}
+
+	if (contains(tmp, "$$b")) {
+		// advise xindy to write a log file
+		tmp = subst(tmp, "$$b", removeExtension(f));
 	}
 
 	LYXERR(Debug::LATEX,
@@ -1508,6 +1523,44 @@ int LaTeX::scanBlgFile(DepTable & dep, TeXErrors & terr)
 	}
 	return retval;
 }
+
+
+int LaTeX::scanIlgFile(TeXErrors & terr)
+{
+	FileName const ilg_file(changeExtension(file.absFileName(), "ilg"));
+	LYXERR(Debug::LATEX, "Scanning ilg file: " << ilg_file);
+
+	ifstream ifs(ilg_file.toFilesystemEncoding().c_str());
+	string token;
+	int retval = NO_ERRORS;
+
+	string prevtoken;
+	while (getline(ifs, token)) {
+		token = rtrim(token, "\r");
+		smatch sub;
+		if (prefixIs(token, "!! "))
+			prevtoken = token;
+		else if (!prevtoken.empty()) {
+			retval |= INDEX_ERROR;
+			string errstr = N_("Makeindex error: ") + prevtoken;
+			string msg = prevtoken + '\n';
+			msg += token;
+			terr.insertError(0,
+					 from_local8bit(errstr),
+					 from_local8bit(msg));
+			prevtoken.clear();
+		} else if (prefixIs(token, "ERROR: ")) {
+			retval |= BIBTEX_ERROR;
+			string errstr = N_("Xindy error: ") + token.substr(6);
+			string msg = token;
+			terr.insertError(0,
+					 from_local8bit(errstr),
+					 from_local8bit(msg));
+		}
+	}
+	return retval;
+}
+
 
 
 } // namespace lyx
