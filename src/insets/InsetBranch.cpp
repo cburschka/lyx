@@ -194,7 +194,7 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// if branch exists in a descendant, update previews.
 		// TODO: only needed if "Show preview" is enabled in the included inset.
 		bool exists_in_desc = false;
-		for (auto const & it : buf->getDescendents()) {
+		for (auto const & it : buf->getDescendants()) {
 			if (it->params().branchlist().find(params_.branch))
 				exists_in_desc = true;
 		}

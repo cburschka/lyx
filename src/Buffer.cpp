@@ -3125,7 +3125,7 @@ void Buffer::getLanguages(std::set<Language const *> & langs) const
 	for (ParConstIterator it = par_iterator_begin(); it != end; ++it)
 		it->getLanguages(langs);
 	// also children
-	ListOfBuffers clist = getDescendents();
+	ListOfBuffers clist = getDescendants();
 	for (auto const & cit : clist)
 		cit->getLanguages(langs);
 }
@@ -3494,7 +3494,7 @@ Buffer const * Buffer::parent() const
 
 ListOfBuffers Buffer::allRelatives() const
 {
-	ListOfBuffers lb = masterBuffer()->getDescendents();
+	ListOfBuffers lb = masterBuffer()->getDescendants();
 	lb.push_front(const_cast<Buffer *>(masterBuffer()));
 	return lb;
 }
@@ -3565,7 +3565,7 @@ ListOfBuffers Buffer::getChildren() const
 }
 
 
-ListOfBuffers Buffer::getDescendents() const
+ListOfBuffers Buffer::getDescendants() const
 {
 	ListOfBuffers v;
 	collectChildren(v, true);
@@ -4395,7 +4395,7 @@ bool Buffer::autoSave() const
 void Buffer::setExportStatus(bool e) const
 {
 	d->doing_export = e;
-	ListOfBuffers clist = getDescendents();
+	ListOfBuffers clist = getDescendants();
 	for (auto const & bit : clist)
 		bit->d->doing_export = e;
 }
@@ -4606,7 +4606,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 		else
 			errors(error_type);
 		// also to the children, in case of master-buffer-view
-		ListOfBuffers clist = getDescendents();
+		ListOfBuffers clist = getDescendants();
 		for (auto const & bit : clist) {
 			if (runparams.silent)
 				bit->d->errorLists[error_type].clear();
@@ -4931,7 +4931,7 @@ void Buffer::Impl::traverseErrors(TeXErrors::Errors::const_iterator err, TeXErro
 			tie(start, end) = p->texrow.getEntriesFromRow(errorRow);
 		else {
 			// The error occurred in a child
-			for (Buffer const * child : owner_->getDescendents()) {
+			for (Buffer const * child : owner_->getDescendants()) {
 				string const child_name =
 					DocFileName(changeExtension(child->absFileName(), "tex")).
 					mangledFileName();

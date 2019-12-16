@@ -327,7 +327,7 @@ Buffer * BufferList::getBufferFromTmp(string const & s)
 			if (suffixIs(s, master_name))
 				return buf;
 			// if not, try with the children
-			for (Buffer * child : buf->getDescendents()) {
+			for (Buffer * child : buf->getDescendants()) {
 				string const mangled_child_name = DocFileName(
 					changeExtension(child->absFileName(),
 						".tex")).mangledFileName();

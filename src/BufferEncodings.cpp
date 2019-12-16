@@ -45,7 +45,7 @@ void BufferEncodings::initUnicodeMath(Buffer const & buffer, bool for_master)
 		return;
 
 	// Check children
-	ListOfBuffers blist = buffer.getDescendents();
+	ListOfBuffers blist = buffer.getDescendants();
 	ListOfBuffers::const_iterator bit = blist.begin();
 	ListOfBuffers::const_iterator const bend = blist.end();
 	for (; bit != bend; ++bit)

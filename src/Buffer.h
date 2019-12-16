@@ -461,10 +461,10 @@ public:
 	/// the children appear.
 	ListOfBuffers getChildren() const;
 
-	/// \return a list of all descendents of this Buffer (children,
+	/// \return a list of all descendants of this Buffer (children,
 	/// grandchildren, etc). this list has no duplicates and is in
 	/// the order in which the children appear.
-	ListOfBuffers getDescendents() const;
+	ListOfBuffers getDescendants() const;
 
 	/// Collect all relative buffers, in the order in which they appear.
 	/// I.e., the "root" Buffer is first, then its first child, then any
