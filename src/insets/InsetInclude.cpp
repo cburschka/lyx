@@ -460,8 +460,10 @@ Buffer * InsetInclude::loadIfNeeded() const
 	Buffer * child = theBufferList().getBuffer(included_file);
 	if (!child) {
 		// the readonly flag can/will be wrong, not anymore I think.
-		if (!included_file.exists())
+		if (!included_file.exists()) {
+			failedtoload_ = true;
 			return 0;
+		}
 
 		child = theBufferList().newBuffer(included_file.absFileName());
 		if (!child)
