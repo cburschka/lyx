@@ -16,6 +16,10 @@
 # supported by many packages. -> Failures are mostly due to LaTeX problems.
 .*(|de|es|fr|he|hu|id|ko|ru|uk|zh_CN)/.*(dvi3|pdf4|pdf5)_texF
 
+# The document requests the dvips graphics driver, and of course
+# this fails with any other backend.
+export/examples/(|fr/)Presentations/Foils_pdf[45]_systemF
+
 # Files in the attic are kept for reference and conversion tests.
 # Failures are usually due to new package versions and "wontfix".
 .*/attic/(eu|id|it|pl|sk)_.*
