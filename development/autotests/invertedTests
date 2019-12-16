@@ -325,10 +325,11 @@ export/doc/attic/id_UserGuide_.*systemF
 
 # ================================================
 Sublabel: dvips
+# Comment by Jürgen Spitzmüller
 # The document requests the dvips graphics driver,
 # and of course this fails with any other backend.
 #
-# The document compiles if you set the graphics driver to "Automatic"
+# The document compiles if one sets the graphics driver to "Automatic"
 # and remove the dvips class option. But then, the output is not correct
 # (rotation of foils does not work).
 export/examples/(|fr/)Presentations/Foils_pdf[45]_systemF
