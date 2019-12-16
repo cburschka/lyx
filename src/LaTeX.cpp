@@ -514,14 +514,28 @@ int LaTeX::runMakeIndex(string const & f, OutputParams const & rp,
 	if (contains(tmp, "$$x")) {
 		// This adds appropriate [te]xindy options
 		// such as language and codepage (for the
-		// main document language/encoding)
+		// main document language/encoding) as well
+		// as input markup (latex or xelatex)
 		string xdyopts = rp.xindy_language;
 		if (!xdyopts.empty())
 			xdyopts = "-L " + xdyopts;
-		if (rp.encoding->iconvName() == "UTF-8") {
+		if (rp.isFullUnicode() && rp.encoding->package() == Encoding::none) {
 			if (!xdyopts.empty())
 				xdyopts += " ";
-			xdyopts += "-C utf8";
+			// xelatex includes lualatex
+			xdyopts += "-I xelatex";
+		}
+		else if (rp.encoding->iconvName() == "UTF-8") {
+			if (!xdyopts.empty())
+				xdyopts += " ";
+			// -I not really needed for texindy, but for xindy
+			xdyopts += "-C utf8 -I latex";
+		}
+		else {
+			if (!xdyopts.empty())
+				xdyopts += " ";
+			// not really needed for texindy, but for xindy
+			xdyopts += "-I latex";
 		}
 		tmp = subst(tmp, "$$x", xdyopts);
 	}
