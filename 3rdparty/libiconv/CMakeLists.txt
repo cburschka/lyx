@@ -9,10 +9,9 @@ cmake_minimum_required(VERSION 3.1)
 
 set(LYX_IPO_SUPPORTED FALSE)
 if (POLICY CMP0069)
-  if (NOT LYX_DEBUG)
-    cmake_policy(SET CMP0069 NEW)
-    include(CheckIPOSupported)
-    check_ipo_supported(RESULT LYX_IPO_SUPPORTED)
+  cmake_policy(SET CMP0069 NEW)
+  if (LYX_USE_IPO MATCHES "ON")
+    set(LYX_IPO_SUPPORTED YES)
   endif()
 endif()
 
