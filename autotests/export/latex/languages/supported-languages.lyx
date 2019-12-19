@@ -106,7 +106,7 @@ enumitem
 \color #faf0e6
 \end_branch
 \branch conflict-rus-belarus
-\selected 1
+\selected 0
 \filename_suffix 0
 \color #faf0e6
 \end_branch
@@ -849,15 +849,9 @@ Until 2018-08-25 (babel-belarusian 1.4), the babel option was "belarusianb"
 \end_layout
 
 \begin_layout Itemize
-Option clash with Russian: 
+Conflict with Russian and Macedonian.
 \end_layout
 
-\begin_deeper
-\begin_layout LyX-Code
-Package babel Error: if@uni@ode already defined.
-\end_layout
-
-\end_deeper
 \begin_layout Subsection*
 Bengali
 \end_layout
@@ -4184,6 +4178,11 @@ status open
 inverted 0
 status open
 
+\begin_layout Standard
+\begin_inset Branch conflict-rus-belarus
+inverted 1
+status open
+
 \begin_layout Quote
 
 \emph on
@@ -4193,6 +4192,11 @@ status open
  — јужнословенски јазик, дел од групата на словенски јазици од јазичното
  семејство на индоевропски јазици.
  Македонскиот е службен и национален јазик во Македонија.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4218,6 +4222,10 @@ Script Cyrillic
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 LangCode mk_MK
+\end_layout
+
+\begin_layout Itemize
+Conflict with Babel-Belarussian.
 \end_layout
 
 \begin_layout Subsection*
