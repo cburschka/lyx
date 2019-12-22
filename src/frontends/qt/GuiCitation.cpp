@@ -284,12 +284,7 @@ void GuiCitation::updateFormatting(CitationStyle const & currentStyle)
 
 	int const rows = selectedLV->model()->rowCount();
 
-	bool const qualified = currentStyle.hasQualifiedList
-		&& (rows > 1
-		    || !params_["pretextlist"].empty()
-		    || !params_["posttextlist"].empty()
-		    || !getPreTexts().empty()
-		    || !getPostTexts().empty());
+	bool const qualified = currentStyle.hasQualifiedList && rows > 0;
 
 	selectedLV->horizontalHeader()->setVisible(qualified);
 	selectedLV->setColumnHidden(0, !qualified);
