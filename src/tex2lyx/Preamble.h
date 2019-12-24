@@ -92,7 +92,7 @@ public:
 	///
 	void titleLayoutFound(bool found) { title_layout_found = found; }
 	/// Register an author named \p name in the author list
-	void registerAuthor(std::string const & name);
+	void registerAuthor(std::string const & name, std::string const & initials);
 	/// Get author named \p name (must be registered first)
 	Author const & getAuthor(std::string const & name) const;
 	/// Get number of arguments of special table column type \c or -1

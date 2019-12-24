@@ -365,7 +365,9 @@ BufferParams::Impl::Impl()
 {
 	// set initial author
 	// FIXME UNICODE
-	authorlist.record(Author(from_utf8(lyxrc.user_name), from_utf8(lyxrc.user_email)));
+	authorlist.record(Author(from_utf8(lyxrc.user_name),
+				 from_utf8(lyxrc.user_email),
+				 from_utf8(lyxrc.user_initials)));
 }
 
 

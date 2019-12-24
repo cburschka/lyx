@@ -169,6 +169,7 @@ public:
 		RC_UIFILE,
 		RC_USELASTFILEPOS,
 		RC_USER_EMAIL,
+		RC_USER_INITIALS,
 		RC_USER_NAME,
 		RC_USE_CONVERTER_CACHE,
 		RC_USE_CONVERTER_NEEDAUTH_FORBIDDEN,
@@ -449,6 +450,8 @@ public:
 	std::string user_name; // set in constructor
 	/// user email
 	std::string user_email; // set in constructor (empty for now)
+	/// user initials
+	std::string user_initials;
 	/// icon set name
 	std::string icon_set;
 	/// whether to use the icons from the theme

@@ -4053,9 +4053,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		if (t.cs() == "lyxadded" || t.cs() == "lyxdeleted") {
 			context.check_layout(os);
+			string initials;
+			if (p.hasOpt()) {
+				initials = p.getArg('[', ']');
+			}
 			string name = p.getArg('{', '}');
 			string localtime = p.getArg('{', '}');
-			preamble.registerAuthor(name);
+			preamble.registerAuthor(name, initials);
 			Author const & author = preamble.getAuthor(name);
 			// from_asctime_utc() will fail if LyX decides to output the
 			// time in the text language.

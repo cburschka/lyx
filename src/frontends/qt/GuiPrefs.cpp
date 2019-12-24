@@ -3409,9 +3409,12 @@ PrefIdentity::PrefIdentity(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(emailED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+	connect(initialsED, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
 
 	nameED->setValidator(new NoNewLineValidator(nameED));
 	emailED->setValidator(new NoNewLineValidator(emailED));
+	initialsED->setValidator(new NoNewLineValidator(initialsED));
 }
 
 
@@ -3419,6 +3422,7 @@ void PrefIdentity::applyRC(LyXRC & rc) const
 {
 	rc.user_name = fromqstr(nameED->text());
 	rc.user_email = fromqstr(emailED->text());
+	rc.user_initials = fromqstr(initialsED->text());
 }
 
 
@@ -3426,6 +3430,7 @@ void PrefIdentity::updateRC(LyXRC const & rc)
 {
 	nameED->setText(toqstr(rc.user_name));
 	emailED->setText(toqstr(rc.user_email));
+	initialsED->setText(toqstr(rc.user_initials));
 }
 
 
@@ -3565,7 +3570,8 @@ void GuiPreferences::dispatchParams()
 	// FIXME: these need lfuns
 	// FIXME UNICODE
 	Author const & author =
-		Author(from_utf8(rc_.user_name), from_utf8(rc_.user_email));
+		Author(from_utf8(rc_.user_name), from_utf8(rc_.user_email),
+		       from_utf8(rc_.user_initials));
 	theBufferList().recordCurrentAuthor(author);
 
 	theFormats() = formats_;

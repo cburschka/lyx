@@ -19,12 +19,12 @@ Format 80
 
 AddToPreamble
   \usepackage{changebar}
-  \providecommand{\lyxadded}[3]{}
+  \providecommand{\lyxadded}[4][]{}
   \providecommand{\lyxdeleted}{}
-  \renewcommand{\lyxadded}[3]{
-    {\protect\cbstart\color{lyxadded}{}#3\protect\cbend}
+  \renewcommand{\lyxadded}[4][]{
+    {\protect\cbstart\color{lyxadded}{}#4\protect\cbend}
   }
-  \renewcommand{\lyxdeleted}[3]{%
-    {\protect\cbstart\color{lyxdeleted}\sout{#3}\protect\cbend}
+  \renewcommand{\lyxdeleted}[4][]{%
+    {\protect\cbstart\color{lyxdeleted}\sout{#4}\protect\cbend}
   }
 EndPreamble

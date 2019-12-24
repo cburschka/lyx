@@ -338,7 +338,7 @@ void Changes::merge()
 
 namespace {
 
-docstring getLaTeXMarkup(docstring const & macro, docstring const & author,
+docstring getLaTeXMarkup(docstring const & macro, Author const & author,
 			 docstring const & chgTime,
 			 OutputParams const & runparams)
 {
@@ -348,18 +348,52 @@ docstring getLaTeXMarkup(docstring const & macro, docstring const & author,
 	docstring uncodable_author;
 	odocstringstream ods;
 
+	docstring const author_name = author.name();
+	docstring const author_initials = author.initials();
+	
 	ods << macro;
+	if (!author_initials.empty()) {
+		docstring uncodable_initials;
+		// convert utf8 author initials to something representable
+		// in the current encoding
+		pair<docstring, docstring> author_initials_latexed =
+			runparams.encoding->latexString(author_initials, runparams.dryrun);
+		if (!author_initials_latexed.second.empty()) {
+			LYXERR0("Omitting uncodable characters '"
+				<< author_initials_latexed.second
+				<< "' in change author initials!");
+			uncodable_initials = author_initials;
+		}
+		ods << "[" << author_initials_latexed.first << "]";
+		// warn user (once) if we found uncodable glyphs.
+		if (!uncodable_initials.empty()) {
+			static std::set<docstring> warned_author_initials;
+			static Mutex warned_mutex;
+			Mutex::Locker locker(&warned_mutex);
+			if (warned_author_initials.find(uncodable_initials) == warned_author_initials.end()) {
+				frontend::Alert::warning(_("Uncodable character in author initials"),
+					support::bformat(_("The author initials '%1$s',\n"
+					  "used for change tracking, contain the following glyphs that\n"
+					  "cannot be represented in the current encoding: %2$s.\n"
+					  "These glyphs will be omitted in the exported LaTeX file.\n\n"
+					  "Choose an appropriate document encoding (such as utf8)\n"
+					  "or change the author initials."),
+					uncodable_initials, author_initials_latexed.second));
+				warned_author_initials.insert(uncodable_author);
+			}
+		}
+	}
 	// convert utf8 author name to something representable
 	// in the current encoding
 	pair<docstring, docstring> author_latexed =
-		runparams.encoding->latexString(author, runparams.dryrun);
+		runparams.encoding->latexString(author_name, runparams.dryrun);
 	if (!author_latexed.second.empty()) {
 		LYXERR0("Omitting uncodable characters '"
 			<< author_latexed.second
 			<< "' in change author name!");
-		uncodable_author = author;
+		uncodable_author = author_name;
 	}
-	ods << author_latexed.first << "}{" << chgTime << "}{";
+	ods << "{" << author_latexed.first << "}{" << chgTime << "}{";
 
 	// warn user (once) if we found uncodable glyphs.
 	if (!uncodable_author.empty()) {
@@ -414,15 +448,15 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 
 	docstring macro_beg;
 	if (change.type == Change::DELETED) {
-		macro_beg = from_ascii("\\lyxdeleted{");
+		macro_beg = from_ascii("\\lyxdeleted");
 		if (!runparams.inDisplayMath && !dvipost)
 			++runparams.inulemcmd;
 	}
 	else if (change.type == Change::INSERTED)
-		macro_beg = from_ascii("\\lyxadded{");
+		macro_beg = from_ascii("\\lyxadded");
 
 	docstring str = getLaTeXMarkup(macro_beg,
-				       bparams.authors().get(change.author).name(),
+				       bparams.authors().get(change.author),
 				       chgTime, runparams);
 
 	// signature needed by \lyxsout to correctly strike out display math

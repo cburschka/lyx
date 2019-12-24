@@ -201,6 +201,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\use_system_theme_icons", LyXRC::RC_USE_SYSTEM_THEME_ICONS },
 	{ "\\use_tooltip", LyXRC::RC_USE_TOOLTIP },
 	{ "\\user_email", LyXRC::RC_USER_EMAIL },
+	{ "\\user_initials", LyXRC::RC_USER_INITIALS },
 	{ "\\user_name", LyXRC::RC_USER_NAME },
 	{ "\\view_dvi_paper_option", LyXRC::RC_VIEWDVI_PAPEROPTION },
 	// compatibility with versions older than 1.4.0 only
@@ -971,6 +972,9 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 		case RC_USER_EMAIL:
 			lexrc >> user_email;
 			break;
+		case RC_USER_INITIALS:
+			lexrc >> user_initials;
+			break;
 
 		case RC_PATH_PREFIX:
 			lexrc >> path_prefix;
@@ -1443,6 +1447,11 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		// fall through
 	case RC_USER_EMAIL:
 		os << "\\user_email \"" << user_email << "\"\n";
+		if (tag != RC_LAST)
+			break;
+		// fall through
+	case RC_USER_INITIALS:
+		os << "\\user_initials \"" << user_initials << "\"\n";
 		if (tag != RC_LAST)
 			break;
 		// fall through
@@ -2869,6 +2878,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_THESAURUSDIRPATH:
 	case LyXRC::RC_UIFILE:
 	case LyXRC::RC_USER_EMAIL:
+	case LyXRC::RC_USER_INITIALS:
 	case LyXRC::RC_USER_NAME:
 	case LyXRC::RC_USE_CONVERTER_CACHE:
 	case LyXRC::RC_USE_CONVERTER_NEEDAUTH_FORBIDDEN:

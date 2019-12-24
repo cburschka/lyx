@@ -24,13 +24,16 @@ public:
 	///
 	Author() : used_(false), buffer_id_(0) {};
 	///
-	Author(docstring const & name, docstring const & email);
+	Author(docstring const & name, docstring const & email,
+	       docstring const & initials);
 	/// For when the \author line is missing (#9854)
 	Author(int buffer_id);
 	///
 	docstring name() const { return name_; }
 	///
 	docstring email() const { return email_; }
+	///
+	docstring initials() const { return initials_; }
 	///
 	docstring nameAndEmail() const;
 	///
@@ -53,6 +56,8 @@ private:
 	docstring name_;
 	/// The author's email address
 	docstring email_;
+	/// The author's initials
+	docstring initials_;
 	///
 	mutable bool used_;
 	/// The id of the author in the lyx-file

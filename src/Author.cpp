@@ -37,14 +37,14 @@ static int computeHash(docstring const & name,
 }
 
 
-Author::Author(docstring const & name, docstring const & email)
-	: name_(name), email_(email), used_(true),
+Author::Author(docstring const & name, docstring const & email, docstring const & initials)
+	: name_(name), email_(email), initials_(initials), used_(true),
 	  buffer_id_(computeHash(name, email))
 {}
 
 
 Author::Author(int buffer_id)
-	: name_(convert<docstring>(buffer_id)), email_(docstring()), used_(false),
+	: name_(convert<docstring>(buffer_id)), email_(docstring()), initials_(docstring()), used_(false),
 	  buffer_id_(buffer_id)
 {}
 
@@ -67,7 +67,7 @@ bool Author::valid() const
 
 bool operator==(Author const & l, Author const & r)
 {
-	return l.name() == r.name() && l.email() == r.email();
+	return l.name() == r.name() && l.email() == r.email() && l.initials() == r.initials();
 }
 
 

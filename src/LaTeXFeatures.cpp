@@ -242,20 +242,20 @@ static docstring const changetracking_dvipost_def = from_ascii(
 	"\\dvipost{osend color pop}\n"
 	"\\dvipost{cbstart color push Blue}\n"
 	"\\dvipost{cbend color pop}\n"
-	"\\DeclareRobustCommand{\\lyxadded}[3]{\\changestart#3\\changeend}\n"
-	"\\DeclareRobustCommand{\\lyxdeleted}[3]{%\n"
-	"\\changestart\\overstrikeon#3\\overstrikeoff\\changeend}\n");
+	"\\DeclareRobustCommand{\\lyxadded}[4][]{\\changestart#4\\changeend}\n"
+	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{%\n"
+	"\\changestart\\overstrikeon#4\\overstrikeoff\\changeend}\n");
 
 static docstring const changetracking_xcolor_ulem_def = from_ascii(
 	"%% Change tracking with ulem\n"
-	"\\DeclareRobustCommand{\\lyxadded}[3]{{\\color{lyxadded}{}#3}}\n"
-	"\\DeclareRobustCommand{\\lyxdeleted}[3]{{\\color{lyxdeleted}\\lyxsout{#3}}}\n"
+	"\\DeclareRobustCommand{\\lyxadded}[4][]{{\\color{lyxadded}{}#4}}\n"
+	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{{\\color{lyxdeleted}\\lyxsout{#4}}}\n"
 	"\\DeclareRobustCommand{\\lyxsout}[1]{\\ifx\\\\#1\\else\\sout{#1}\\fi}\n");
 
 static docstring const changetracking_xcolor_ulem_hyperref_def = from_ascii(
 	"%% Change tracking with ulem\n"
-	"\\DeclareRobustCommand{\\lyxadded}[3]{{\\texorpdfstring{\\color{lyxadded}{}}{}#3}}\n"
-	"\\DeclareRobustCommand{\\lyxdeleted}[3]{{\\texorpdfstring{\\color{lyxdeleted}\\lyxsout{#3}}{}}}\n"
+	"\\DeclareRobustCommand{\\lyxadded}[4][]{{\\texorpdfstring{\\color{lyxadded}{}}{}#4}}\n"
+	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{{\\texorpdfstring{\\color{lyxdeleted}\\lyxsout{#4}}{}}}\n"
 	"\\DeclareRobustCommand{\\lyxsout}[1]{\\ifx\\\\#1\\else\\sout{#1}\\fi}\n");
 
 static docstring const changetracking_tikz_math_sout_def = from_ascii(

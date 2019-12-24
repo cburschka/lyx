@@ -411,9 +411,9 @@ void Preamble::suppressDate(bool suppress)
 }
 
 
-void Preamble::registerAuthor(std::string const & name)
+void Preamble::registerAuthor(std::string const & name, string const & initials)
 {
-	Author author(from_utf8(name), empty_docstring());
+	Author author(from_utf8(name), empty_docstring(), from_utf8(initials));
 	author.setUsed(true);
 	authors_.record(author);
 	h_tracking_changes = "true";
@@ -423,7 +423,7 @@ void Preamble::registerAuthor(std::string const & name)
 
 Author const & Preamble::getAuthor(std::string const & name) const
 {
-	Author author(from_utf8(name), empty_docstring());
+	Author author(from_utf8(name), empty_docstring(), empty_docstring());
 	for (AuthorList::Authors::const_iterator it = authors_.begin();
 	     it != authors_.end(); ++it)
 		if (*it == author)
