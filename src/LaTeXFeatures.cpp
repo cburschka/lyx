@@ -241,6 +241,18 @@ static docstring const changetracking_dvipost_def = from_ascii(
 	"\\dvipost{osstart color push Red}\n"
 	"\\dvipost{osend color pop}\n"
 	"\\dvipost{cbstart color push Blue}\n"
+	"\\dvipost{cbrule 0pt}\n"
+	"\\dvipost{cbend color pop}\n"
+	"\\DeclareRobustCommand{\\lyxadded}[4][]{\\changestart#4\\changeend}\n"
+	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{%\n"
+	"\\changestart\\overstrikeon#4\\overstrikeoff\\changeend}\n");
+
+static docstring const changetracking_dvipost_cb_def = from_ascii(
+	"%% Change tracking with dvipost\n"
+	"\\dvipostlayout\n"
+	"\\dvipost{osstart color push Red}\n"
+	"\\dvipost{osend color pop}\n"
+	"\\dvipost{cbstart color push Blue}\n"
 	"\\dvipost{cbend color pop}\n"
 	"\\DeclareRobustCommand{\\lyxadded}[4][]{\\changestart#4\\changeend}\n"
 	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{%\n"
@@ -252,10 +264,34 @@ static docstring const changetracking_xcolor_ulem_def = from_ascii(
 	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{{\\color{lyxdeleted}\\lyxsout{#4}}}\n"
 	"\\DeclareRobustCommand{\\lyxsout}[1]{\\ifx\\\\#1\\else\\sout{#1}\\fi}\n");
 
+static docstring const changetracking_xcolor_ulem_cb_def = from_ascii(
+	"%% Change tracking with ulem and changebars\n"
+	"\\DeclareRobustCommand{\\lyxadded}[4][]{{%\n"
+	"    \\protect\\cbstart\\color{lyxadded}{}#4%\n"
+	"    \\protect\\cbend%\n"
+	"}}\n"
+	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{{%\n"
+	"    \\protect\\cbstart\\color{lyxdeleted}\\lyxsout{#4}%\n"
+	"    \\protect\\cbend%\n"
+	"}}\n"
+	"\\DeclareRobustCommand{\\lyxsout}[1]{\\ifx\\\\#1\\else\\sout{#1}\\fi}\n");
+
 static docstring const changetracking_xcolor_ulem_hyperref_def = from_ascii(
-	"%% Change tracking with ulem\n"
+	"%% Change tracking with ulem and hyperref\n"
 	"\\DeclareRobustCommand{\\lyxadded}[4][]{{\\texorpdfstring{\\color{lyxadded}{}}{}#4}}\n"
 	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{{\\texorpdfstring{\\color{lyxdeleted}\\lyxsout{#4}}{}}}\n"
+	"\\DeclareRobustCommand{\\lyxsout}[1]{\\ifx\\\\#1\\else\\sout{#1}\\fi}\n");
+
+static docstring const changetracking_xcolor_ulem_hyperref_cb_def = from_ascii(
+	"%% Change tracking with ulem, hyperref and changebars\n"
+	"\\DeclareRobustCommand{\\lyxadded}[4][]{{%\n"
+	"    \\texorpdfstring{\\protect\\cbstart\\color{lyxadded}{}}{}#4%\n"
+	"    \\texorpdfstring{\\protect\\cbend}{}%/n"
+	"}}\n"
+	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{{%\n"
+	"    \\texorpdfstring{\\protect\\cbstart\\color{lyxdeleted}\\lyxsout{#4}%\n"
+	"    \\protect\\cbend}{}%\n"
+	"}}\n"
 	"\\DeclareRobustCommand{\\lyxsout}[1]{\\ifx\\\\#1\\else\\sout{#1}\\fi}\n");
 
 static docstring const changetracking_tikz_math_sout_def = from_ascii(
@@ -1176,6 +1212,10 @@ string const LaTeXFeatures::getPackages() const
 	// The rest of these packages are somewhat more complicated
 	// than those above.
 
+	if (mustProvide("changebar") && !mustProvide("ct-dvipost")) {
+		packages << "\\usepackage{changebar}\n";
+	}
+
 	if (mustProvide("footnote")) {
 		if (isRequired("hyperref"))
 			packages << "\\usepackage{footnotehyper}\n";
@@ -1615,8 +1655,12 @@ TexString LaTeXFeatures::getMacros() const
 		macros << lyxref_def << '\n';
 
 	// change tracking
-	if (mustProvide("ct-dvipost"))
-		macros << changetracking_dvipost_def;
+	if (mustProvide("ct-dvipost")) {
+		if (isRequired("changebar"))
+			macros << changetracking_dvipost_cb_def;
+		else
+			macros << changetracking_dvipost_def;
+	}
 
 	if (mustProvide("ct-xcolor-ulem")) {
 		streamsize const prec = macros.os().precision(2);
@@ -1631,14 +1675,21 @@ TexString LaTeXFeatures::getMacros() const
 
 		macros.os().precision(prec);
 
-		if (isRequired("hyperref"))
-			macros << changetracking_xcolor_ulem_hyperref_def;
-		else
-			macros << changetracking_xcolor_ulem_def;
+		if (isRequired("changebar")) {
+			if (isRequired("hyperref"))
+				macros << changetracking_xcolor_ulem_hyperref_cb_def;
+			else
+				macros << changetracking_xcolor_ulem_cb_def;
+		} else {
+			if (isRequired("hyperref"))
+				macros << changetracking_xcolor_ulem_hyperref_def;
+			else
+				macros << changetracking_xcolor_ulem_def;
+		}
 	}
 
 	if (mustProvide("ct-tikz-math-sout"))
-			macros << changetracking_tikz_math_sout_def;
+		macros << changetracking_tikz_math_sout_def;
 
 	if (mustProvide("ct-none"))
 		macros << changetracking_none_def;

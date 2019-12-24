@@ -555,6 +555,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	//h_notefontcolor;
 	//h_options;
 	h_output_changes          = "false";
+	h_change_bars             = "false";
 	h_output_sync             = "0";
 	//h_output_sync_macro
 	h_papercolumns            = "1";
@@ -1782,6 +1783,9 @@ void Preamble::handle_package(Parser &p, string const & name,
 		}
 	}
 
+	else if (name == "changebar")
+		h_output_changes = "true";
+
 	else if (!in_lyx_preamble) {
 		if (options.empty())
 			h_preamble << "\\usepackage{" << name << '}';
@@ -2022,6 +2026,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 		os << "\\listings_params " << h_listings_params << "\n";
 	os << "\\tracking_changes " << h_tracking_changes << "\n"
 	   << "\\output_changes " << h_output_changes << "\n"
+	   << "\\change_bars " << h_change_bars << "\n"
 	   << "\\html_math_output " << h_html_math_output << "\n"
 	   << "\\html_css_as_file " << h_html_css_as_file << "\n"
 	   << "\\html_be_strict " << h_html_be_strict << "\n"

@@ -3635,6 +3635,39 @@ def convert_totalheight(document):
             document.body.insert(k, "\theight " + newheight) 
         i = j + 1
 
+
+def convert_changebars(document):
+    " Converts the changebars module to native solution "
+
+    if not "changebars" in document.get_module_list():
+        return
+
+    i = find_token(document.header, "\\output_changes", 0)
+    if i == -1:
+        document.warning("Malformed LyX document! Missing \\output_changes header.")
+        document.del_module("changebars")
+        return
+
+    document.header.insert(i, "\\change_bars true")
+    document.del_module("changebars")
+
+
+def revert_changebars(document):
+    " Converts native changebar param to module "
+
+    i = find_token(document.header, "\\change_bars", 0)
+    if i == -1:
+        document.warning("Malformed LyX document! Missing \\change_bars header.")
+        return
+
+    val = get_value(document.header, "\\change_bars", i)
+
+    if val == "true":
+        document.add_module("changebars")
+
+    del document.header[i]
+
+
 ##
 # Conversion hub
 #
@@ -3685,10 +3718,12 @@ convert = [
            [586, []],
            [587, [convert_pagesizenames]],
            [588, []],
-           [589, [convert_totalheight]]
+           [589, [convert_totalheight]],
+           [590, [convert_changebars]]
           ]
 
-revert =  [[588, [revert_totalheight]],
+revert =  [[589, [revert_changebars]],
+           [588, [revert_totalheight]],
            [587, [revert_memoir_endnotes,revert_enotez,revert_theendnotes]],
            [586, [revert_pagesizenames]],
            [585, [revert_dupqualicites]],

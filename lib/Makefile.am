@@ -2310,7 +2310,6 @@ dist_layouts_DATA =\
 	layouts/bxjsbook.layout \
 	layouts/bxjsreport.layout \
 	layouts/bxjsslide.layout \
-	layouts/changebars.module \
 	layouts/chess.layout \
 	layouts/chessboard.module \
 	layouts/cl2emult.layout \

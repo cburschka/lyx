@@ -410,6 +410,7 @@ BufferParams::BufferParams()
 	save_transient_properties = true;
 	track_changes = false;
 	output_changes = false;
+	change_bars = false;
 	use_default_options = true;
 	maintain_unincluded_children = false;
 	secnumdepth = 3;
@@ -951,6 +952,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex >> track_changes;
 	} else if (token == "\\output_changes") {
 		lex >> output_changes;
+	} else if (token == "\\change_bars") {
+		lex >> change_bars;
 	} else if (token == "\\branch") {
 		lex.eatLine();
 		docstring branch = lex.getDocString();
@@ -1468,6 +1471,10 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	   << (save_transient_properties ? convert<string>(output_changes) : "false")
 	   << '\n';
 
+	os << "\\change_bars "
+	   << (save_transient_properties ? convert<string>(change_bars) : "false")
+	   << '\n';
+
 	os << "\\html_math_output " << html_math_output << '\n'
 	   << "\\html_css_as_file " << html_css_as_file << '\n'
 	   << "\\html_be_strict " << convert<string>(html_be_strict) << '\n';
@@ -1525,6 +1532,8 @@ void BufferParams::validate(LaTeXFeatures & features) const
 		default:
 			break;
 		}
+		if (change_bars)
+			features.require("changebar");
 	}
 
 	// Floats with 'Here definitely' as default setting.

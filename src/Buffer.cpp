@@ -321,7 +321,7 @@ public:
 	/// If there was an error when previewing, on the next preview we do
 	/// a fresh compile (e.g. in case the user installed a package that
 	/// was missing).
-	bool preview_error_;
+	bool require_fresh_start_;
 
 	/// Cache the references associated to a label and their positions
 	/// in the buffer.
@@ -456,7 +456,7 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	  file_fully_loaded(false), file_format(LYX_FORMAT), need_format_backup(false),
 	  ignore_parent(false),  toc_backend(owner), macro_lock(false),
 	  checksum_(0), wa_(0),  gui_(0), undo_(*owner), bibinfo_cache_valid_(false),
-	  cite_labels_valid_(false), have_bibitems_(false), preview_error_(false),
+	  cite_labels_valid_(false), have_bibitems_(false), require_fresh_start_(false),
 	  inset(0), preview_loader_(0), cloned_buffer_(cloned_buffer),
 	  clone_list_(0), doing_export(false),
 	  tracked_changes_present_(0), externally_modified_(false), parent_buffer(0),
@@ -489,7 +489,7 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	layout_position = cloned_buffer_->d->layout_position;
 	preview_file_ = cloned_buffer_->d->preview_file_;
 	preview_format_ = cloned_buffer_->d->preview_format_;
-	preview_error_ = cloned_buffer_->d->preview_error_;
+	require_fresh_start_ = cloned_buffer_->d->require_fresh_start_;
 	tracked_changes_present_ = cloned_buffer_->d->tracked_changes_present_;
 }
 
@@ -1246,9 +1246,14 @@ void Buffer::setFullyLoaded(bool value)
 }
 
 
-bool Buffer::lastPreviewError() const
+bool Buffer::freshStartRequired() const
 {
-	return d->preview_error_;
+	return d->require_fresh_start_;
+}
+
+void Buffer::requireFreshStart(bool const b) const
+{
+	d->require_fresh_start_ = b;
 }
 
 
@@ -4728,7 +4733,7 @@ Buffer::ExportStatus Buffer::preview(string const & format, bool includeall) con
 	Impl * theimpl = isClone() ? d->cloned_buffer_->d : d;
 	theimpl->preview_file_ = previewFile;
 	theimpl->preview_format_ = format;
-	theimpl->preview_error_ = (status != ExportSuccess);
+	theimpl->require_fresh_start_ = (status != ExportSuccess);
 
 	if (status != ExportSuccess)
 		return status;

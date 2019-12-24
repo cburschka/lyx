@@ -1305,6 +1305,14 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(colorModule->delBoxBackgroundTB, SIGNAL(clicked()),
 		this, SLOT(deleteBoxBackgroundColor()));
 
+	// change tracking
+	changesModule = new UiWidget<Ui::ChangeTrackingUi>(this);
+	connect(changesModule->trackChangesCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(changesModule->outputChangesCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(changesModule->changeBarsCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 
 	// numbering
 	numberingModule = new UiWidget<Ui::NumberingUi>(this);
@@ -1743,6 +1751,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	docPS->addPanel(marginsModule, N_("Page Margins"));
 	docPS->addPanel(langModule, N_("Language"));
 	docPS->addPanel(colorModule, N_("Colors"));
+	docPS->addPanel(changesModule, N_("Change Tracking"));
 	docPS->addPanel(numberingModule, N_("Numbering & TOC"));
 	docPS->addPanel(biblioModule, N_("Bibliography"));
 	docPS->addPanel(indicesModule, N_("Indexes"));
@@ -3798,6 +3807,17 @@ void GuiDocument::applyView()
 	pdf.quoted_options = pdf.quoted_options_check(
 				fromqstr(pdfSupportModule->optionsLE->text()));
 
+	// change tracking
+	bp_.track_changes = changesModule->trackChangesCB->isChecked();
+	bp_.output_changes = changesModule->outputChangesCB->isChecked();
+	bool const cb_switched_off = (bp_.change_bars
+				      && !changesModule->changeBarsCB->isChecked());
+	bp_.change_bars = changesModule->changeBarsCB->isChecked();
+	if (cb_switched_off)
+		// if change bars have been switched off,
+		// we need to ditch the aux file
+		buffer().requireFreshStart(true);
+
 	// reset trackers
 	nonModuleChanged_ = false;
 	shellescapeChanged_ = false;
@@ -4390,6 +4410,11 @@ void GuiDocument::paramsToDialog()
 
 	pdfSupportModule->optionsLE->setText(
 		toqstr(pdf.quoted_options));
+
+	// change tracking
+	changesModule->trackChangesCB->setChecked(bp_.track_changes);
+	changesModule->outputChangesCB->setChecked(bp_.output_changes);
+	changesModule->changeBarsCB->setChecked(bp_.change_bars);
 
 	// Make sure that the bc is in the INITIAL state
 	if (bc().policy().buttonStatus(ButtonPolicy::RESTORE))

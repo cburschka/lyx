@@ -20,6 +20,7 @@
 
 #include "ui_BiblioUi.h"
 #include "ui_ColorUi.h"
+#include "ui_ChangeTrackingUi.h"
 #include "ui_DocumentUi.h"
 #include "ui_FontUi.h"
 #include "ui_LanguageUi.h"
@@ -174,6 +175,7 @@ private:
 	UiWidget<Ui::MarginsUi> *marginsModule;
 	UiWidget<Ui::LanguageUi> *langModule;
 	UiWidget<Ui::ColorUi> *colorModule;
+	UiWidget<Ui::ChangeTrackingUi> *changesModule;
 	UiWidget<Ui::NumberingUi> *numberingModule;
 	UiWidget<Ui::BiblioUi> *biblioModule;
 	UiWidget<Ui::MathsUi> *mathsModule;

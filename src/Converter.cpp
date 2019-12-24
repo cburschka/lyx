@@ -863,7 +863,7 @@ Converters::RetVal Converters::runLaTeX(Buffer const & buffer, string const & co
 	string const name = buffer.latexName();
 	LaTeX latex(command, runparams, FileName(makeAbsPath(name)),
 	            buffer.filePath(), buffer.layoutPos(),
-	            buffer.isClone(), buffer.lastPreviewError());
+	            buffer.isClone(), buffer.freshStartRequired());
 	TeXErrors terr;
 	// The connection closes itself at the end of the scope when latex is
 	// destroyed. One cannot close (and destroy) buffer while the converter is

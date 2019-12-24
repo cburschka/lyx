@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 583
+\lyxformat 590
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -149,6 +149,7 @@ logicalmkup
 \tablestyle default
 \tracking_changes true
 \output_changes false
+\change_bars false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
@@ -38204,6 +38205,8 @@ The toolbar has two buttons to handle notes because notes are often important
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1577206802
 To show the changes made in the output you need the \SpecialChar LaTeX
  package 
 \series bold
@@ -38232,6 +38235,8 @@ literal "true"
 
  or in the package manager of your \SpecialChar LaTeX
 -system.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -46860,6 +46865,42 @@ Embedded
 Objects
 \emph default
  manual.
+\end_layout
+
+\begin_layout Section
+
+\change_inserted -712698321 1577206827
+Change Tracking
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1577206929
+Here you can do some settings related to change tracking (see sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Change-Tracking"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Alternatively to the menu or toolbar, you can set here whether changes
+ are being tracked and whether they are shown in the output.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1577207214
+Additionally, you can advise LyX to place a change bar in the margin of
+ the output.
+ This might be useful to make changed passages more salient.
 \end_layout
 
 \begin_layout Section

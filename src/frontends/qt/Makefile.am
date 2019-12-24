@@ -279,6 +279,7 @@ UIFILES = \
 	BranchUi.ui \
 	BulletsUi.ui \
 	ChangesUi.ui \
+	ChangeTrackingUi.ui \
 	CharacterUi.ui \
 	CitationUi.ui \
 	ColorUi.ui \

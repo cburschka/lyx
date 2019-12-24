@@ -434,6 +434,8 @@ public:
 	 */
 	bool output_changes;
 	///
+	bool change_bars;
+	///
 	bool compressed;
 
 	/// the author list for the document
