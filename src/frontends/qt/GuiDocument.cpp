@@ -1309,8 +1309,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 	changesModule = new UiWidget<Ui::ChangeTrackingUi>(this);
 	connect(changesModule->trackChangesCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
-	connect(changesModule->outputChangesCB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
+	connect(changesModule->outputChangesCB, SIGNAL(toggled(bool)),
+		this, SLOT(outputChangesToggled(bool)));
 	connect(changesModule->changeBarsCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 
@@ -4415,6 +4415,7 @@ void GuiDocument::paramsToDialog()
 	changesModule->trackChangesCB->setChecked(bp_.track_changes);
 	changesModule->outputChangesCB->setChecked(bp_.output_changes);
 	changesModule->changeBarsCB->setChecked(bp_.change_bars);
+	changesModule->changeBarsCB->setEnabled(bp_.output_changes);
 
 	// Make sure that the bc is in the INITIAL state
 	if (bc().policy().buttonStatus(ButtonPolicy::RESTORE))
@@ -5144,6 +5145,13 @@ void GuiDocument::linenoToggled(bool on)
 {
 	numberingModule->linenoLE->setEnabled(on);
 	numberingModule->linenoLA->setEnabled(on);
+}
+
+
+void GuiDocument::outputChangesToggled(bool on)
+{
+	changesModule->changeBarsCB->setEnabled(on);
+	change_adaptor();
 }
 
 
