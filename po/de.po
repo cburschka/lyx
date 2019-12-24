@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-12-15 18:49+0100\n"
-"PO-Revision-Date: 2019-12-15 18:55+0100\n"
+"POT-Creation-Date: 2019-12-24 11:17+0100\n"
+"PO-Revision-Date: 2019-12-24 11:21+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -1081,7 +1081,7 @@ msgstr "Änderungen &sofort anwenden"
 msgid "Select the fields on which the filter applies"
 msgstr "Wählen Sie hier die Felder, auf die der Filter angewendet werden soll."
 
-#: src/frontends/qt/ui/CitationUi.ui:61 src/frontends/qt/GuiCitation.cpp:439
+#: src/frontends/qt/ui/CitationUi.ui:61 src/frontends/qt/GuiCitation.cpp:434
 msgid "All fields"
 msgstr "Alle Felder"
 
@@ -1090,7 +1090,7 @@ msgid "Select the entry types on which the filter applies"
 msgstr ""
 "Wählen Sie hier die Eintragstypen, auf die der Filter angewendet werden soll."
 
-#: src/frontends/qt/ui/CitationUi.ui:85 src/frontends/qt/GuiCitation.cpp:454
+#: src/frontends/qt/ui/CitationUi.ui:85 src/frontends/qt/GuiCitation.cpp:449
 msgid "All entry types"
 msgstr "Alle Eintragstypen"
 
@@ -1129,7 +1129,7 @@ msgstr "Formatierung"
 msgid "Citation st&yle:"
 msgstr "Zitier&stil:"
 
-#: src/frontends/qt/ui/CitationUi.ui:299 src/frontends/qt/GuiCitation.cpp:309
+#: src/frontends/qt/ui/CitationUi.ui:299 src/frontends/qt/GuiCitation.cpp:304
 msgid "Text befo&re:"
 msgstr "Text &davor:"
 
@@ -1137,7 +1137,7 @@ msgstr "Text &davor:"
 msgid "Citation style to use, if different styles are provided"
 msgstr "Verwendeter Zitierstil, falls mehrere Stile verfügbar sind"
 
-#: src/frontends/qt/ui/CitationUi.ui:328 src/frontends/qt/GuiCitation.cpp:313
+#: src/frontends/qt/ui/CitationUi.ui:328 src/frontends/qt/GuiCitation.cpp:308
 msgid ""
 "Text that precedes the reference (e.g., \"cf.\"), if the current citation "
 "style supports this."
@@ -1145,11 +1145,11 @@ msgstr ""
 "Text, der dem Verweis vorausgeht (z.B. \"vgl.\"), falls der ausgewählte "
 "Zitierstil dies unterstützt."
 
-#: src/frontends/qt/ui/CitationUi.ui:335 src/frontends/qt/GuiCitation.cpp:315
+#: src/frontends/qt/ui/CitationUi.ui:335 src/frontends/qt/GuiCitation.cpp:310
 msgid "&Text after:"
 msgstr "&Text danach:"
 
-#: src/frontends/qt/ui/CitationUi.ui:345 src/frontends/qt/GuiCitation.cpp:319
+#: src/frontends/qt/ui/CitationUi.ui:345 src/frontends/qt/GuiCitation.cpp:314
 msgid ""
 "Text that follows the reference (e.g., pages), if the current citation style "
 "supports this."
@@ -1165,7 +1165,7 @@ msgstr ""
 "Übergebe den Inhalt der Felder ,Text davor` und ,Text danach` unformatiert "
 "an LaTeX. Aktivieren Sie dies, wenn Sie LaTeX-Code eingeben wollen."
 
-#: src/frontends/qt/ui/CitationUi.ui:398 src/frontends/qt/GuiCitation.cpp:327
+#: src/frontends/qt/ui/CitationUi.ui:398 src/frontends/qt/GuiCitation.cpp:322
 msgid ""
 "Force upper case in names (\"Del Piero\", not \"del Piero\"), if the current "
 "citation style supports this."
@@ -1177,7 +1177,7 @@ msgstr ""
 msgid "Force upcas&ing"
 msgstr "A&nfangsgroßschreibung erzwingen"
 
-#: src/frontends/qt/ui/CitationUi.ui:408 src/frontends/qt/GuiCitation.cpp:362
+#: src/frontends/qt/ui/CitationUi.ui:408 src/frontends/qt/GuiCitation.cpp:357
 msgid ""
 "Always list all authors (rather than using \"et al.\"), if the current "
 "citation style supports this."
@@ -1185,7 +1185,7 @@ msgstr ""
 "Erzwingt eine vollständige Autorenliste (statt der Verwendung von \"et al.\" "
 "oder \"u.a.\"), falls der ausgewählte Zitierstil dies unterstützt."
 
-#: src/frontends/qt/ui/CitationUi.ui:411 src/frontends/qt/GuiCitation.cpp:358
+#: src/frontends/qt/ui/CitationUi.ui:411 src/frontends/qt/GuiCitation.cpp:353
 msgid "All aut&hors"
 msgstr "Alle A&utoren"
 
@@ -14112,11 +14112,11 @@ msgstr "Interlinear-Glosse"
 msgid "Add the inter-linear gloss here"
 msgstr "Geben Sie hier die Interlinear-Glossierung ein"
 
-#: lib/layouts/linguistics.module:147 lib/layouts/linguistics.module:203
+#: lib/layouts/linguistics.module:147 lib/layouts/linguistics.module:204
 msgid "Translation"
 msgstr "Übersetzung"
 
-#: lib/layouts/linguistics.module:148 lib/layouts/linguistics.module:204
+#: lib/layouts/linguistics.module:148 lib/layouts/linguistics.module:205
 msgid "Gloss Translation"
 msgstr "Glossen-Übersetzung"
 
@@ -14136,237 +14136,237 @@ msgstr "Tri-Glosse"
 msgid "Add trigloss options here"
 msgstr "Geben Sie hier trigloss-Optionen ein"
 
-#: lib/layouts/linguistics.module:183
+#: lib/layouts/linguistics.module:184
 msgid "Interlinear Gloss (1)"
 msgstr "Interlinear-Glosse (1)"
 
-#: lib/layouts/linguistics.module:184
+#: lib/layouts/linguistics.module:185
 msgid "Interlinear Gloss (Line 1)|1"
 msgstr "Interlinear-Glosse (Zeile 1)|1"
 
-#: lib/layouts/linguistics.module:185 lib/layouts/linguistics.module:195
+#: lib/layouts/linguistics.module:186 lib/layouts/linguistics.module:196
 msgid "Add the first inter-linear gloss line here"
 msgstr "Geben Sie hier die erste Interlinear-Glossierung ein"
 
-#: lib/layouts/linguistics.module:193
+#: lib/layouts/linguistics.module:194
 msgid "Interlinear Gloss (2)"
 msgstr "Interlinear-Glosse (2)"
 
-#: lib/layouts/linguistics.module:194
+#: lib/layouts/linguistics.module:195
 msgid "Interlinear Gloss (Line 2)|2"
 msgstr "Interlinear-Glosse (Zeile 2)|2"
 
-#: lib/layouts/linguistics.module:205
+#: lib/layouts/linguistics.module:206
 msgid "Add a translation for the glosse"
 msgstr "Fügt der Glosse eine Übersetzung (Paraphrase) hinzu"
 
-#: lib/layouts/linguistics.module:214
+#: lib/layouts/linguistics.module:215
 msgid "GroupGlossedWords"
 msgstr "Glossierte Wortgruppen"
 
-#: lib/layouts/linguistics.module:216
+#: lib/layouts/linguistics.module:217
 msgid "Group"
 msgstr "Gruppe"
 
-#: lib/layouts/linguistics.module:228
+#: lib/layouts/linguistics.module:229
 msgid "Structure Tree"
 msgstr "Strukturbaum"
 
-#: lib/layouts/linguistics.module:230
+#: lib/layouts/linguistics.module:231
 msgid "Tree"
 msgstr "Baum"
 
-#: lib/layouts/linguistics.module:257 lib/layouts/linguistics.module:259
+#: lib/layouts/linguistics.module:258 lib/layouts/linguistics.module:260
 msgid "DRS"
 msgstr "DRS"
 
-#: lib/layouts/linguistics.module:260
+#: lib/layouts/linguistics.module:261
 msgid "Discourse Representation Structure|D"
 msgstr "Diskursrepräsentationsstruktur|D"
 
-#: lib/layouts/linguistics.module:272 lib/layouts/linguistics.module:419
+#: lib/layouts/linguistics.module:273 lib/layouts/linguistics.module:420
 msgid "Referents"
 msgstr "Referenten"
 
-#: lib/layouts/linguistics.module:273 lib/layouts/linguistics.module:420
+#: lib/layouts/linguistics.module:274 lib/layouts/linguistics.module:421
 msgid "DRS Referents"
 msgstr "DRS-Referenten"
 
-#: lib/layouts/linguistics.module:274 lib/layouts/linguistics.module:421
+#: lib/layouts/linguistics.module:275 lib/layouts/linguistics.module:422
 msgid "Add the DRS referents (universe) here"
 msgstr "Fügen Sie hier die Diskursreferenten (Universum) ein."
 
-#: lib/layouts/linguistics.module:281 lib/layouts/linguistics.module:283
+#: lib/layouts/linguistics.module:282 lib/layouts/linguistics.module:284
 msgid "DRS*"
 msgstr "DRS*"
 
-#: lib/layouts/linguistics.module:284
+#: lib/layouts/linguistics.module:285
 msgid "Discourse Representation Structure (unspaced)|u"
 msgstr "Diskursrepräsentationsstruktur (einfach)"
 
-#: lib/layouts/linguistics.module:289
+#: lib/layouts/linguistics.module:290
 msgid "IfThen-DRS"
 msgstr "Implikative DRS"
 
-#: lib/layouts/linguistics.module:291 lib/layouts/linguistics.module:292
+#: lib/layouts/linguistics.module:292 lib/layouts/linguistics.module:293
 msgid "If-Then DRS"
 msgstr "Implikative DRS"
 
-#: lib/layouts/linguistics.module:296 lib/layouts/linguistics.module:331
-#: lib/layouts/linguistics.module:375
+#: lib/layouts/linguistics.module:297 lib/layouts/linguistics.module:332
+#: lib/layouts/linguistics.module:376
 msgid "Then-Referents"
 msgstr "Dann-Referenten"
 
-#: lib/layouts/linguistics.module:297 lib/layouts/linguistics.module:306
-#: lib/layouts/linguistics.module:332 lib/layouts/linguistics.module:341
-#: lib/layouts/linguistics.module:376 lib/layouts/linguistics.module:385
+#: lib/layouts/linguistics.module:298 lib/layouts/linguistics.module:307
+#: lib/layouts/linguistics.module:333 lib/layouts/linguistics.module:342
+#: lib/layouts/linguistics.module:377 lib/layouts/linguistics.module:386
 msgid "DRS Then-Referents"
 msgstr "DRS-Dann-Referenten"
 
-#: lib/layouts/linguistics.module:298 lib/layouts/linguistics.module:333
-#: lib/layouts/linguistics.module:377
+#: lib/layouts/linguistics.module:299 lib/layouts/linguistics.module:334
+#: lib/layouts/linguistics.module:378
 msgid "Add the DRS then-referents (universe) here"
 msgstr "Geben Sie hier die implizierten (\"dann\") Referenten ein."
 
-#: lib/layouts/linguistics.module:305 lib/layouts/linguistics.module:340
-#: lib/layouts/linguistics.module:384
+#: lib/layouts/linguistics.module:306 lib/layouts/linguistics.module:341
+#: lib/layouts/linguistics.module:385
 msgid "Then-Conditions"
 msgstr "Dann-Bedingungen"
 
-#: lib/layouts/linguistics.module:307 lib/layouts/linguistics.module:342
-#: lib/layouts/linguistics.module:386
+#: lib/layouts/linguistics.module:308 lib/layouts/linguistics.module:343
+#: lib/layouts/linguistics.module:387
 msgid "Add the DRS then-conditions here"
 msgstr "Geben Sie hier die DRS-Dann-Bedingungen ein"
 
-#: lib/layouts/linguistics.module:315
+#: lib/layouts/linguistics.module:316
 msgid "Cond-DRS"
 msgstr "Kond.-DRS"
 
-#: lib/layouts/linguistics.module:317
+#: lib/layouts/linguistics.module:318
 msgid "Cond. DRS"
 msgstr "Kond. DRS"
 
-#: lib/layouts/linguistics.module:318
+#: lib/layouts/linguistics.module:319
 msgid "Conditional DRS"
 msgstr "Konditionale DRS"
 
-#: lib/layouts/linguistics.module:322
+#: lib/layouts/linguistics.module:323
 msgid "Cond."
 msgstr "Bed."
 
-#: lib/layouts/linguistics.module:323
+#: lib/layouts/linguistics.module:324
 msgid "DRS Condition"
 msgstr "DRS-Bedingung"
 
-#: lib/layouts/linguistics.module:324
+#: lib/layouts/linguistics.module:325
 msgid "Add the DRS condition here"
 msgstr "Geben Sie hier DRS-Bedingung ein"
 
-#: lib/layouts/linguistics.module:350
+#: lib/layouts/linguistics.module:351
 msgid "QDRS"
 msgstr "QDRS"
 
-#: lib/layouts/linguistics.module:352
+#: lib/layouts/linguistics.module:353
 msgid "Dupl. Cond. DRS"
 msgstr "Dupl.-Bed.-DRS"
 
-#: lib/layouts/linguistics.module:353
+#: lib/layouts/linguistics.module:354
 msgid "Duplex Condition DRS"
 msgstr "Duplex-Bedingungs-DRS"
 
-#: lib/layouts/linguistics.module:357
+#: lib/layouts/linguistics.module:358
 msgid "Quant."
 msgstr "Quant."
 
-#: lib/layouts/linguistics.module:358
+#: lib/layouts/linguistics.module:359
 msgid "DRS Quantifier"
 msgstr "DRS-Quantifizierer"
 
-#: lib/layouts/linguistics.module:359
+#: lib/layouts/linguistics.module:360
 msgid "Add the DRS duplex quantifier here"
 msgstr "Geben Sie hier den DRS-Duplex-Quantifizierer ein"
 
-#: lib/layouts/linguistics.module:366
+#: lib/layouts/linguistics.module:367
 msgid "Quant. Var."
 msgstr "Quant.-Var."
 
-#: lib/layouts/linguistics.module:367
+#: lib/layouts/linguistics.module:368
 msgid "DRS Quantifier Variable"
 msgstr "Quantifizierer-Variablen"
 
-#: lib/layouts/linguistics.module:368
+#: lib/layouts/linguistics.module:369
 msgid "Add the DRS duplex quantifier variables here"
 msgstr "Geben Sie hier die DRS-Quantifizierer-Variablen ein"
 
-#: lib/layouts/linguistics.module:395
+#: lib/layouts/linguistics.module:396
 msgid "NegDRS"
 msgstr "NegDRS"
 
-#: lib/layouts/linguistics.module:397
+#: lib/layouts/linguistics.module:398
 msgid "Neg. DRS"
 msgstr "Neg. DRS"
 
-#: lib/layouts/linguistics.module:398
+#: lib/layouts/linguistics.module:399
 msgid "Negated DRS"
 msgstr "Negierte DRS"
 
-#: lib/layouts/linguistics.module:403
+#: lib/layouts/linguistics.module:404
 msgid "SDRS"
 msgstr "SDRS"
 
-#: lib/layouts/linguistics.module:405
+#: lib/layouts/linguistics.module:406
 msgid "Sent. DRS"
 msgstr "Satz-DRS"
 
-#: lib/layouts/linguistics.module:406
+#: lib/layouts/linguistics.module:407
 msgid "DRS with Sentence above"
 msgstr "DRS mit Satz oberhalb"
 
-#: lib/layouts/linguistics.module:410
+#: lib/layouts/linguistics.module:411
 msgid "Sentence"
 msgstr "Satz"
 
-#: lib/layouts/linguistics.module:411
+#: lib/layouts/linguistics.module:412
 msgid "DRS Sentence"
 msgstr "DRS-Satz"
 
-#: lib/layouts/linguistics.module:412
+#: lib/layouts/linguistics.module:413
 msgid "Add the sentence here"
 msgstr "Geben Sie hier den Satz ein."
 
-#: lib/layouts/linguistics.module:433
+#: lib/layouts/linguistics.module:434
 msgid "Expression"
 msgstr "Ausdruck"
 
-#: lib/layouts/linguistics.module:435
+#: lib/layouts/linguistics.module:436
 msgid "expr."
 msgstr "Ausdr."
 
-#: lib/layouts/linguistics.module:447
+#: lib/layouts/linguistics.module:448
 msgid "Concepts"
 msgstr "Konzept"
 
-#: lib/layouts/linguistics.module:449
+#: lib/layouts/linguistics.module:450
 msgid "concept"
 msgstr "Konzept"
 
-#: lib/layouts/linguistics.module:461
+#: lib/layouts/linguistics.module:462
 msgid "Meaning"
 msgstr "Bedeutung"
 
-#: lib/layouts/linguistics.module:463
+#: lib/layouts/linguistics.module:464
 msgid "meaning"
 msgstr "Bedeutung"
 
-#: lib/layouts/linguistics.module:476
+#: lib/layouts/linguistics.module:477
 msgid "Tableaux"
 msgstr "Tableaus"
 
-#: lib/layouts/linguistics.module:480
+#: lib/layouts/linguistics.module:481
 msgid "Tableau"
 msgstr "Tableau"
 
-#: lib/layouts/linguistics.module:485
+#: lib/layouts/linguistics.module:486
 msgid "List of Tableaux"
 msgstr "Tableaux-Verzeichnis"
 
@@ -26626,10 +26626,6 @@ msgid "Modules"
 msgstr "Module"
 
 #: lib/examples/Articles:0
-msgid "Beamer (Complex)"
-msgstr "Beamer (komplex)"
-
-#: lib/examples/Articles:0
 msgid "Foils"
 msgstr "Foils"
 
@@ -26638,16 +26634,20 @@ msgid "Foils Landslide"
 msgstr "Foils (Querformat)"
 
 #: lib/examples/Articles:0
+msgid "Beamer (Complex)"
+msgstr "Beamer (komplex)"
+
+#: lib/examples/Articles:0
 msgid "Welcome"
 msgstr "Willkommen"
 
 #: lib/examples/Articles:0
-msgid "Multilingual Typesetting with CJKutf8"
-msgstr "Mehrsprachige Dokumente mit CJKutf8"
-
-#: lib/examples/Articles:0
 msgid "Multilingual Typesetting with platex"
 msgstr "Mehrsprachige Dokumente mit platex"
+
+#: lib/examples/Articles:0
+msgid "Multilingual Typesetting with CJKutf8"
+msgstr "Mehrsprachige Dokumente mit CJKutf8"
 
 #: lib/examples/Articles:0
 msgid "IEEE Transactions Conference"
@@ -28187,36 +28187,36 @@ msgid "change bar"
 msgstr "Balken für Änderung"
 
 #: src/Color.cpp:280
-msgid "deleted text"
-msgstr "Gelöschter Text"
+msgid "deleted text (output)"
+msgstr "Gelöschter Text (Ausgabe)"
 
 #: src/Color.cpp:281
-msgid "added text"
-msgstr "Hinzugefügter Text"
+msgid "added text (output)"
+msgstr "Hinzugefügter Text (Ausgabe)"
 
 #: src/Color.cpp:282
-msgid "changed text 1st author"
-msgstr "Geänderter Text (1. Autor)"
+msgid "added text (workarea, 1st author)"
+msgstr "Hinzugefügter Text (Arbeitsbereich, 1. Autor)"
 
 #: src/Color.cpp:283
-msgid "changed text 2nd author"
-msgstr "Geänderter Text (2. Autor)"
+msgid "added text (workarea, 2nd author)"
+msgstr "Hinzugefügter Text (Arbeitsbereich, 2. Autor)"
 
 #: src/Color.cpp:284
-msgid "changed text 3rd author"
-msgstr "Geänderter Text (3. Autor)"
+msgid "added text (workarea, 3rd author)"
+msgstr "Hinzugefügter Text (Arbeitsbereich, 3. Autor)"
 
 #: src/Color.cpp:285
-msgid "changed text 4th author"
-msgstr "Geänderter Text (4. Autor)"
+msgid "added text (workarea, 4th author)"
+msgstr "Hinzugefügter Text (Arbeitsbereich, 4. Autor)"
 
 #: src/Color.cpp:286
-msgid "changed text 5th author"
-msgstr "Geänderter Text (5. Autor)"
+msgid "added text (workarea, 5th author)"
+msgstr "Hinzugefügter Text (Arbeitsbereich, 5. Autor)"
 
 #: src/Color.cpp:287
-msgid "deleted text modifier"
-msgstr "Modifizierer f. gelöschten Text"
+msgid "deleted text modifier (workarea)"
+msgstr "Gelöschter Text, Modifizierer (Arbeitsbereich)"
 
 #: src/Color.cpp:288
 msgid "added space markers"
@@ -28230,47 +28230,47 @@ msgstr "Tabelle (Linie)"
 msgid "table on/off line"
 msgstr "Tabelle an/aus Linie"
 
-#: src/Color.cpp:292
+#: src/Color.cpp:291
 msgid "bottom area"
 msgstr "Unterer Bereich"
 
-#: src/Color.cpp:293
+#: src/Color.cpp:292
 msgid "new page"
 msgstr "Neue Seite"
 
-#: src/Color.cpp:294
+#: src/Color.cpp:293
 msgid "page break / line break"
 msgstr "Seitenumbruch / Zeilenumbruch"
 
-#: src/Color.cpp:295
+#: src/Color.cpp:294
 msgid "button frame"
 msgstr "Knopf (Rahmen)"
 
-#: src/Color.cpp:296
+#: src/Color.cpp:295
 msgid "button background"
 msgstr "Knopf (Hintergrund)"
 
-#: src/Color.cpp:297
+#: src/Color.cpp:296
 msgid "button background under focus"
 msgstr "Knopf (Hintergrund bei Fokus)"
 
-#: src/Color.cpp:298
+#: src/Color.cpp:297
 msgid "paragraph marker"
 msgstr "Absatzmarkierung"
 
-#: src/Color.cpp:299
+#: src/Color.cpp:298
 msgid "preview frame"
 msgstr "Vorschaurahmen"
 
-#: src/Color.cpp:300
+#: src/Color.cpp:299
 msgid "inherit"
 msgstr "übernehmen"
 
-#: src/Color.cpp:301
+#: src/Color.cpp:300
 msgid "regexp frame"
 msgstr "Regulärer Ausdruck (Rahmen)"
 
-#: src/Color.cpp:302
+#: src/Color.cpp:301
 msgid "ignore"
 msgstr "ignorieren"
 
@@ -28876,23 +28876,23 @@ msgstr "Indexprozessor wird ausgeführt."
 msgid "Running BibTeX."
 msgstr "BibTeX wird ausgeführt."
 
-#: src/LaTeX.cpp:558
+#: src/LaTeX.cpp:572
 msgid "Running MakeIndex for nomencl."
 msgstr "MakeIndex wird für nomencl ausgeführt."
 
-#: src/LaTeX.cpp:1494 src/LaTeX.cpp:1500 src/LaTeX.cpp:1509
+#: src/LaTeX.cpp:1508 src/LaTeX.cpp:1514 src/LaTeX.cpp:1523
 msgid "BibTeX error: "
 msgstr "BibTeX-Fehler: "
 
-#: src/LaTeX.cpp:1516
+#: src/LaTeX.cpp:1530
 msgid "Biber error: "
 msgstr "Biber-Fehler: "
 
-#: src/LaTeX.cpp:1545
+#: src/LaTeX.cpp:1559
 msgid "Makeindex error: "
 msgstr "Makeindex-Fehler: "
 
-#: src/LaTeX.cpp:1554
+#: src/LaTeX.cpp:1568
 msgid "Xindy error: "
 msgstr "Xindy-Fehler: "
 
@@ -31312,15 +31312,15 @@ msgstr ""
 "Mit den Knöpfen links können Sie umsortieren und Verweise entfernen oder "
 "hinzufügen."
 
-#: src/frontends/qt/GuiCitation.cpp:299
+#: src/frontends/qt/GuiCitation.cpp:294
 msgid "General text befo&re:"
 msgstr "Allgemeiner Text &davor:"
 
-#: src/frontends/qt/GuiCitation.cpp:300 src/frontends/qt/GuiCitation.cpp:304
+#: src/frontends/qt/GuiCitation.cpp:295 src/frontends/qt/GuiCitation.cpp:299
 msgid "General &text after:"
 msgstr "Allgemeiner &Text danach:"
 
-#: src/frontends/qt/GuiCitation.cpp:301
+#: src/frontends/qt/GuiCitation.cpp:296
 msgid ""
 "Text that precedes the whole reference list. For text that precedes "
 "individual items, double-click on the respective entry above."
@@ -31329,7 +31329,7 @@ msgstr ""
 "bestimmten Einträgen vorausgeht, doppelklicken Sie bitte auf den "
 "entsprechenden Eintrag oben."
 
-#: src/frontends/qt/GuiCitation.cpp:305
+#: src/frontends/qt/GuiCitation.cpp:300
 msgid ""
 "Text that follows the whole reference list. For text that follows individual "
 "items, double-click on the respective entry above."
@@ -31338,31 +31338,31 @@ msgstr ""
 "bestimmten Einträgen folgt, doppelklicken Sie bitte auf den entsprechenden "
 "Eintrag oben."
 
-#: src/frontends/qt/GuiCitation.cpp:311
+#: src/frontends/qt/GuiCitation.cpp:306
 msgid "Text that precedes the reference (e.g., \"cf.\")"
 msgstr "Text, der dem Verweis vorausgeht (z.B. \"vgl.\")."
 
-#: src/frontends/qt/GuiCitation.cpp:317
+#: src/frontends/qt/GuiCitation.cpp:312
 msgid "Text that follows the reference (e.g., pages)"
 msgstr "Text, der dem Verweis folgt (z.B. die Seitenzahlen)."
 
-#: src/frontends/qt/GuiCitation.cpp:325
+#: src/frontends/qt/GuiCitation.cpp:320
 msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")."
 msgstr ""
 "Erzwingt Anfangsgroßschreibung in Namen (\"Von Humboldt\" statt \"von "
 "Humboldt\")."
 
-#: src/frontends/qt/GuiCitation.cpp:360
+#: src/frontends/qt/GuiCitation.cpp:355
 msgid "Always list all authors (rather than using \"et al.\")"
 msgstr ""
 "Erzwingt eine vollständige Autorenliste (statt der Verwendung von \"et al.\" "
 "oder \"u.a.\")."
 
-#: src/frontends/qt/GuiCitation.cpp:366
+#: src/frontends/qt/GuiCitation.cpp:361
 msgid "All references available for citing."
 msgstr "Alle Verweise, die zitiert werden können."
 
-#: src/frontends/qt/GuiCitation.cpp:368
+#: src/frontends/qt/GuiCitation.cpp:363
 msgid ""
 "All references available for citing.\n"
 "To add the selected one, hit Add, press Enter or double-click.\n"
@@ -31373,31 +31373,31 @@ msgstr ""
 "die Enter-Taste oder Doppelklick.\n"
 "Strg+Enter schließt zusätzlich dieses Fenster."
 
-#: src/frontends/qt/GuiCitation.cpp:440
+#: src/frontends/qt/GuiCitation.cpp:435
 msgid "Keys"
 msgstr "Schlüssel"
 
-#: src/frontends/qt/GuiCitation.cpp:481
+#: src/frontends/qt/GuiCitation.cpp:476
 msgid "Displays a sketchy preview if a citation is selected above"
 msgstr ""
 "Zeigt eine ungefähre Vorschau an, wenn oben ein Verweis ausgewählt wurde"
 
-#: src/frontends/qt/GuiCitation.cpp:485
+#: src/frontends/qt/GuiCitation.cpp:480
 msgid "Sketchy preview of the selected citation"
 msgstr "Ungefähre Vorschau des ausgewählten Verweises"
 
-#: src/frontends/qt/GuiCitation.cpp:596
+#: src/frontends/qt/GuiCitation.cpp:591
 msgid "Enter string to filter the list of available citations"
 msgstr "Geben Sie eine Zeichenkette zum Filtern der verfügbaren Verweise ein."
 
-#: src/frontends/qt/GuiCitation.cpp:597
+#: src/frontends/qt/GuiCitation.cpp:592
 msgid ""
 "Enter string to filter the list of available citations and press <Enter>"
 msgstr ""
 "Geben Sie eine Zeichenkette zum Filtern der verfügbaren Verweise ein und "
 "drücken Sie <Enter>."
 
-#: src/frontends/qt/GuiCitation.cpp:598
+#: src/frontends/qt/GuiCitation.cpp:593
 msgid ""
 "\n"
 "The down arrow key will get you into the list of filtered citations."
@@ -31405,15 +31405,15 @@ msgstr ""
 "\n"
 "Die Taste 'Pfeil runter' führt Sie in die Liste der gefilterten Verweise."
 
-#: src/frontends/qt/GuiCitation.cpp:662
+#: src/frontends/qt/GuiCitation.cpp:657
 msgid "Text before"
 msgstr "Text davor"
 
-#: src/frontends/qt/GuiCitation.cpp:663
+#: src/frontends/qt/GuiCitation.cpp:658
 msgid "Cite key"
 msgstr "Zitierschlüssel"
 
-#: src/frontends/qt/GuiCitation.cpp:664
+#: src/frontends/qt/GuiCitation.cpp:659
 msgid "Text after"
 msgstr "Text danach"
 
@@ -36718,6 +36718,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
 
+#~ msgid "added text"
+#~ msgstr "Hinzugefügter Text"
+
 #~ msgid "Uncodable characters in path"
 #~ msgstr "Unkodierbare Zeichen im Dateipfad"
 
@@ -37932,9 +37935,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "Plain text (Xfig output)"
 #~ msgstr "Einfacher Text (XFig-Ausgabe)"
-
-#~ msgid "date (output)"
-#~ msgstr "Datum (Ausgabe)"
 
 #~ msgid "date command"
 #~ msgstr "date-Befehl"
