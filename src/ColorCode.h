@@ -179,16 +179,16 @@ enum ColorCode {
 	Color_deletedtext,
 	/// Added text color
 	Color_addedtext,
-	/// Changed text color author 1
-	Color_changedtextauthor1,
-	/// Changed text color author 2
-	Color_changedtextauthor2,
-	/// Changed text color author 3
-	Color_changedtextauthor3,
-	/// Changed text color author 4
-	Color_changedtextauthor4,
-	/// Changed text color author 5
-	Color_changedtextauthor5,
+	/// Added text color author 1
+	Color_addedtextauthor1,
+	/// Added text color author 2
+	Color_addedtextauthor2,
+	/// Added text color author 3
+	Color_addedtextauthor3,
+	/// Added text color author 4
+	Color_addedtextauthor4,
+	/// Added text color author 5
+	Color_addedtextauthor5,
 	/// Deleted text modifying color
 	Color_deletedtextmodifier,
 	/// Table line color

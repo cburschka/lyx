@@ -72,19 +72,19 @@ Color Change::color() const
 	Color color = Color_none;
 	switch (author % 5) {
 		case 0:
-			color = Color_changedtextauthor1;
+			color = Color_addedtextauthor1;
 			break;
 		case 1:
-			color = Color_changedtextauthor2;
+			color = Color_addedtextauthor2;
 			break;
 		case 2:
-			color = Color_changedtextauthor3;
+			color = Color_addedtextauthor3;
 			break;
 		case 3:
-			color = Color_changedtextauthor4;
+			color = Color_addedtextauthor4;
 			break;
 		case 4:
-			color = Color_changedtextauthor5;
+			color = Color_addedtextauthor5;
 			break;
 	}
 
