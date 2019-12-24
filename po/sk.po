@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-12-15 14:01+0100\n"
-"PO-Revision-Date: 2019-12-15 13:05+0000\n"
+"POT-Creation-Date: 2019-12-24 10:06+0100\n"
+"PO-Revision-Date: 2019-12-24 09:16+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -27933,36 +27933,36 @@ msgid "change bar"
 msgstr "revízne označenie"
 
 #: src/Color.cpp:280
-msgid "deleted text"
-msgstr "zmazaný text"
+msgid "deleted text (output)"
+msgstr "zmazaný text (výstup)"
 
 #: src/Color.cpp:281
-msgid "added text"
-msgstr "pridaný text"
+msgid "added text (output)"
+msgstr "pridaný tex (výstup)"
 
 #: src/Color.cpp:282
-msgid "changed text 1st author"
-msgstr "revíza - 1. autor"
+msgid "added text (workarea, 1st author)"
+msgstr "pridaný text (pracovná plocha, 1. autor)"
 
 #: src/Color.cpp:283
-msgid "changed text 2nd author"
-msgstr "revíza - 2. autor"
+msgid "added text (workarea, 2nd author)"
+msgstr "pridaný text (pracovná plocha, 2. autor)"
 
 #: src/Color.cpp:284
-msgid "changed text 3rd author"
-msgstr "revíza - 3. autor"
+msgid "added text (workarea, 3rd author)"
+msgstr "pridaný text (pracovná plocha, tretí. autor)"
 
 #: src/Color.cpp:285
-msgid "changed text 4th author"
-msgstr "revíza - 4. autor"
+msgid "added text (workarea, 4th author)"
+msgstr "pridaný text (pracovná plocha, štvrtý. autor)"
 
 #: src/Color.cpp:286
-msgid "changed text 5th author"
-msgstr "revíza - 5. autor"
+msgid "added text (workarea, 5th author)"
+msgstr "pridaný text (pracovná plocha, piaty. autor)"
 
 #: src/Color.cpp:287
-msgid "deleted text modifier"
-msgstr "zmazaný text: modifikátor"
+msgid "deleted text modifier (workarea)"
+msgstr "zmazaný text: modifikátor (pracovná plocha)"
 
 #: src/Color.cpp:288
 msgid "added space markers"
@@ -41344,3 +41344,24 @@ msgstr "Neznámy používateľ"
 #~ "Nastaviť všetky poznámky pod čiarou ako koncové poznámky. Nutné je pridať "
 #~ "\\theendnotes do vložky TeX-ového kódu tam, kde sa koncové poznámky majú "
 #~ "objaviť."
+
+#~ msgid "deleted text"
+#~ msgstr "zmazaný text"
+
+#~ msgid "changed text 1st author"
+#~ msgstr "revíza - 1. autor"
+
+#~ msgid "changed text 2nd author"
+#~ msgstr "revíza - 2. autor"
+
+#~ msgid "changed text 3rd author"
+#~ msgstr "revíza - 3. autor"
+
+#~ msgid "changed text 4th author"
+#~ msgstr "revíza - 4. autor"
+
+#~ msgid "changed text 5th author"
+#~ msgstr "revíza - 5. autor"
+
+#~ msgid "deleted text modifier"
+#~ msgstr "zmazaný text: modifikátor"
