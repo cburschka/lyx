@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ChangeTrackingUi</class>
+ <widget class="QWidget" name="ChangeTrackingUi">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>401</width>
+    <height>140</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string/>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QCheckBox" name="trackChangesCB">
+     <property name="toolTip">
+      <string>If checked, additions and deletions will be tracked in the document</string>
+     </property>
+     <property name="text">
+      <string>&amp;Track changes</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QCheckBox" name="outputChangesCB">
+     <property name="toolTip">
+      <string>If checked, changes will be shown in the PDF/DVI/PS output</string>
+     </property>
+     <property name="text">
+      <string>&amp;Show changes in output</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QCheckBox" name="changeBarsCB">
+     <property name="toolTip">
+      <string>Use change bars in addition to change tracking markup</string>
+     </property>
+     <property name="text">
+      <string>Use change &amp;bars in output</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>32</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <includes>
+  <include location="local">qt_i18n.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>
