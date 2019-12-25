@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-12-24 10:06+0100\n"
-"PO-Revision-Date: 2019-12-24 09:16+0000\n"
+"POT-Creation-Date: 2019-12-25 11:34+0100\n"
+"PO-Revision-Date: 2019-12-25 10:55+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -829,6 +829,30 @@ msgstr "V&lastná odrážka:"
 #: src/frontends/qt/ui/BulletsUi.ui:174 src/frontends/qt/ui/PDFSupportUi.ui:421
 msgid "&Level:"
 msgstr "Ú&roveň:"
+
+#: src/frontends/qt/ui/ChangeTrackingUi.ui:20
+msgid "If checked, additions and deletions will be tracked in the document"
+msgstr "Keď zaškrtnuté, adície a odstránenia sú v dokumente stopovateľné"
+
+#: src/frontends/qt/ui/ChangeTrackingUi.ui:23
+msgid "&Track changes"
+msgstr "&Sledovať zmeny"
+
+#: src/frontends/qt/ui/ChangeTrackingUi.ui:30
+msgid "If checked, changes will be shown in the PDF/DVI/PS output"
+msgstr "Keď zaškrtnuté, zmeny budú zobrazené v PDF/DVI/PS výstupe"
+
+#: src/frontends/qt/ui/ChangeTrackingUi.ui:33
+msgid "&Show changes in output"
+msgstr "&Zobraziť zmeny vo výstupe"
+
+#: src/frontends/qt/ui/ChangeTrackingUi.ui:40
+msgid "Use change bars in addition to change tracking markup"
+msgstr "Použiť pruhy zmien spolu so značkovaním sledovania zmien"
+
+#: src/frontends/qt/ui/ChangeTrackingUi.ui:43
+msgid "Use change &bars in output"
+msgstr "&Použiť pruhy zmien vo výstupe"
 
 #: src/frontends/qt/ui/ChangesUi.ui:38
 msgid "Change:"
@@ -3935,6 +3959,14 @@ msgstr "&E-mail:"
 #: src/frontends/qt/ui/PrefIdentityUi.ui:43
 msgid "Your name"
 msgstr "Vaše meno"
+
+#: src/frontends/qt/ui/PrefIdentityUi.ui:41
+msgid "&Initials:"
+msgstr "&Iniciály:"
+
+#: src/frontends/qt/ui/PrefIdentityUi.ui:63
+msgid "Initials of your name"
+msgstr "Iniciály vášho mena"
 
 #: src/frontends/qt/ui/PrefIdentityUi.ui:60
 msgid "Your E-mail address"
@@ -10387,23 +10419,11 @@ msgstr "Japonský referát (Trieda BXJS)"
 msgid "Japanese Slide (BXJS Class)"
 msgstr "Japonská fólia (Trieda BXJS)"
 
-#: lib/layouts/changebars.module:2
-msgid "Change Tracking Bars"
-msgstr "Pásy na sledovanie zmien"
-
 #: lib/layouts/changebars.module:3 lib/layouts/fixme.module:3
 #: lib/layouts/pdfcomment.module:3 lib/layouts/pdfform.module:3
 #: lib/layouts/ruby.module:3 lib/layouts/todonotes.module:3
 msgid "Annotation & Revision"
 msgstr "Anotácia a revízia"
-
-#: lib/layouts/changebars.module:8
-msgid ""
-"Enables LyX to add vertical change bars in the margin of PDF output when "
-"Show Changes in Output is turned on and pdflatex output format is chosen."
-msgstr ""
-"Umožní LyX pridať vertikálne značky zmien na okraji PDF-výstupu. Treba na to "
-"zapnúť sledovanie zmien vo výstupe a zvoliť pdflatex ako výstupný formát."
 
 #: lib/layouts/chess.layout:3 lib/examples/Articles:0
 msgid "Chess"
@@ -27611,6 +27631,29 @@ msgstr ""
 "zmeňte prosím kódovanie súboru na\n"
 "UTF-8 iným programom.\n"
 
+#: src/Changes.cpp:374
+msgid "Uncodable character in author initials"
+msgstr "Nekódovateľný znak v iniciáloch autora"
+
+#: src/Changes.cpp:375
+#, c-format
+msgid ""
+"The author initials '%1$s',\n"
+"used for change tracking, contain the following glyphs that\n"
+"cannot be represented in the current encoding: %2$s.\n"
+"These glyphs will be omitted in the exported LaTeX file.\n"
+"\n"
+"Choose an appropriate document encoding (such as utf8)\n"
+"or change the author initials."
+msgstr ""
+"Iniciály autora '%1$s',\n"
+"použité na sledovanie zmien, obsahuje glyfy,\n"
+"ktoré sa v aktuálnom kódovaní %2$s nedajú reprezentovať.\n"
+"Príslušné glyfy budú pri exporte do LaTeX-u vynechané.\n"
+"\n"
+"Vyberte vhodné kódovanie dokumentu (napr. utf8)\n"
+"alebo zmeňte písanie iniciál autora."
+
 #: src/Changes.cpp:370
 msgid "Uncodable character in author name"
 msgstr "Nekódovateľný znak v mene autora"
@@ -31506,6 +31549,10 @@ msgstr "Okraje stránky"
 #: src/frontends/qt/GuiDocument.cpp:1745 src/frontends/qt/GuiPrefs.cpp:1057
 msgid "Colors"
 msgstr "Farby"
+
+#: src/frontends/qt/GuiDocument.cpp:1754
+msgid "Change Tracking"
+msgstr "Sledovanie zmien"
 
 #: src/frontends/qt/GuiDocument.cpp:1746
 msgid "Numbering & TOC"
@@ -36280,6 +36327,17 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Change Tracking Bars"
+#~ msgstr "Pásy na sledovanie zmien"
+
+#~ msgid ""
+#~ "Enables LyX to add vertical change bars in the margin of PDF output when "
+#~ "Show Changes in Output is turned on and pdflatex output format is chosen."
+#~ msgstr ""
+#~ "Umožní LyX pridať vertikálne značky zmien na okraji PDF-výstupu. Treba na "
+#~ "to zapnúť sledovanie zmien vo výstupe a zvoliť pdflatex ako výstupný "
+#~ "formát."
 
 #~ msgid "Uncodable characters in path"
 #~ msgstr "Nekódovateľné znaky v ceste"
