@@ -745,7 +745,7 @@ void TeXOnePar(Buffer const & buf,
 	// Do not output empty commands if the whole paragraph has
 	// been deleted with ct and changes are not output.
 	if (!runparams_in.for_search && style.latextype != LATEX_ENVIRONMENT
-	    && par.isDeleted(0, par.size()) && !bparams.output_changes)
+	    && par.size() > 0 && par.isDeleted(0, par.size()) && !bparams.output_changes)
 		return;
 
 	LYXERR(Debug::LATEX, "TeXOnePar for paragraph " << pit << " ptr " << &par << " '"
