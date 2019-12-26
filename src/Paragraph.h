@@ -279,6 +279,8 @@ public:
 	/// will the paragraph be physically merged with the next
 	/// one if the imaginary end-of-par character is logically deleted?
 	bool isMergedOnEndOfParDeletion(bool trackChanges) const;
+	/// Return Change form of paragraph break
+	Change parEndChange() const;
 
 	/// set change for the entire par
 	void setChange(Change const & change);

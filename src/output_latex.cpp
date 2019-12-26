@@ -769,11 +769,14 @@ void TeXOnePar(Buffer const & buf,
 		state->open_encoding_ = none;
 	}
 
+	// This paragraph is merged and we do not show changes in the output
+	bool const merged_par = !bparams.output_changes && par.parEndChange().deleted();
+
 	if (text.inset().isPassThru()) {
 		Font const outerfont = text.outerFont(pit);
 
 		// No newline before first paragraph in this lyxtext
-		if (pit > 0 && !text.inset().getLayout().parbreakIgnored()) {
+		if (pit > 0 && !text.inset().getLayout().parbreakIgnored() && !merged_par) {
 			os << '\n';
 			if (!text.inset().getLayout().parbreakIsNewline())
 				os << '\n';
@@ -813,17 +816,20 @@ void TeXOnePar(Buffer const & buf,
 			if (par.needsCProtection(runparams.moving_arg)
 			    && contains(runparams.active_chars, '^'))
 				os << "\\endgroup";
-			os << "\n";
+			if (merged_par)
+				os << "{}";
+			else
+				os << "\n";
 		}
-		else
+		else if (!merged_par)
 			os << '\n';
-		if (!style.parbreak_is_newline) {
+		if (!style.parbreak_is_newline && !merged_par) {
 			os << '\n';
 		} else if (nextpar && !style.isEnvironment()) {
 			Layout const nextstyle = text.inset().forcePlainLayout()
 				? bparams.documentClass().plainLayout()
 				: nextpar->layout();
-			if (nextstyle.name() != style.name())
+			if (nextstyle.name() != style.name() && !merged_par)
 				os << '\n';
 		}
 
@@ -1176,7 +1182,7 @@ void TeXOnePar(Buffer const & buf,
 			    && nextpar->getDepth() < par.getDepth()))
 			close_lang_switch = using_begin_end;
 		if (nextpar && par.params().depth() < nextpar->params().depth())
-			pending_newline = !text.inset().getLayout().parbreakIgnored();
+			pending_newline = !text.inset().getLayout().parbreakIgnored() && !merged_par;
 		break;
 	case LATEX_ENVIRONMENT: {
 		// if it's the last paragraph of the current environment
@@ -1195,7 +1201,7 @@ void TeXOnePar(Buffer const & buf,
 	default:
 		// we don't need it for the last paragraph and in InTitle commands!!!
 		if (nextpar && !intitle_command)
-			pending_newline = !text.inset().getLayout().parbreakIgnored();
+			pending_newline = !text.inset().getLayout().parbreakIgnored() && !merged_par;
 	}
 
 	// InTitle commands use switches (not environments) for space settings
@@ -1415,7 +1421,7 @@ void TeXOnePar(Buffer const & buf,
 	// TeXEnvironment, because it is needed in this case
 	if (nextpar && !os.afterParbreak() && !last_was_separator) {
 		Layout const & next_layout = nextpar->layout();
-		if (!text.inset().getLayout().parbreakIgnored())
+		if (!text.inset().getLayout().parbreakIgnored() && !merged_par)
 			// Make sure to start a new line
 			os << breakln;
 		// A newline '\n' is always output before a command,
@@ -1459,7 +1465,10 @@ void TeXOnePar(Buffer const & buf,
 				&& next_layout.align == nextpar->getAlign(bparams))
 			    || (style.align != par.getAlign(bparams)
 				&& tclass.isDefaultLayout(next_layout))) {
-				os << '\n';
+				// and omit paragraph break if it has been deleted with ct
+				// and changes are not shown in output
+				if (!merged_par)
+					os << '\n';
 			}
 		}
 	}

@@ -621,6 +621,11 @@ bool Paragraph::isMergedOnEndOfParDeletion(bool trackChanges) const
 	return change.inserted() && change.currentAuthor();
 }
 
+Change Paragraph::parEndChange() const
+{
+	return d->changes_.lookup(size());
+}
+
 
 void Paragraph::setChange(Change const & change)
 {
