@@ -1629,6 +1629,22 @@ void latexParagraphs(Buffer const & buf,
 			continue;
 		}
 
+		// Do not output empty environments if the whole paragraph has
+		// been deleted with ct and changes are not output.
+		if (pit < runparams.par_end) {
+			ParagraphList::const_iterator nextpar = paragraphs.constIterator(pit + 1);
+			Paragraph const & cpar = paragraphs.at(pit);
+			if ((par->layout() != nextpar->layout()
+			     || par->params().depth() == nextpar->params().depth()
+			     || par->params().leftIndent() == nextpar->params().leftIndent())
+			    && !runparams.for_search && cpar.size() > 0
+			    && cpar.isDeleted(0, cpar.size()) && !bparams.output_changes) {
+				if (!bparams.output_changes && !cpar.parEndChange().deleted())
+					os << '\n' << '\n';
+				continue;
+			}
+		}
+
 		TeXEnvironmentData const data =
 			prepareEnvironment(buf, text, par, os, runparams);
 		// pit can be changed in TeXEnvironment.
