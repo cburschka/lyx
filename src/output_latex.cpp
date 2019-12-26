@@ -1338,6 +1338,14 @@ void TeXOnePar(Buffer const & buf,
 	bool const last_was_separator =
 		par.size() > 0 && par.isEnvSeparator(par.size() - 1);
 
+	// Signify added/deleted par break in output if show changes in output
+	if (nextpar && !os.afterParbreak() && !last_was_separator
+	    && bparams.output_changes && par.parEndChange().changed()) {
+		Changes::latexMarkChange(os, bparams, Change(Change::UNCHANGED),
+					 par.parEndChange(), runparams);
+		os << bparams.encoding().latexString(docstring(1, 0x00b6)).first << "}";
+	}
+
 	if (pending_newline) {
 		if (unskip_newline)
 			// prevent unwanted whitespace
