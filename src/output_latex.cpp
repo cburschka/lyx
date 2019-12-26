@@ -1639,7 +1639,7 @@ void latexParagraphs(Buffer const & buf,
 
 		// Do not output empty environments if the whole paragraph has
 		// been deleted with ct and changes are not output.
-		if (pit < runparams.par_end) {
+		if (size_t(pit + 1) < paragraphs.size()) {
 			ParagraphList::const_iterator nextpar = paragraphs.constIterator(pit + 1);
 			Paragraph const & cpar = paragraphs.at(pit);
 			if ((par->layout() != nextpar->layout()
