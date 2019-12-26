@@ -286,7 +286,7 @@ static docstring const changetracking_xcolor_ulem_hyperref_cb_def = from_ascii(
 	"%% Change tracking with ulem, hyperref and changebars\n"
 	"\\DeclareRobustCommand{\\lyxadded}[4][]{{%\n"
 	"    \\texorpdfstring{\\protect\\cbstart\\color{lyxadded}{}}{}#4%\n"
-	"    \\texorpdfstring{\\protect\\cbend}{}%/n"
+	"    \\texorpdfstring{\\protect\\cbend}{}%\n"
 	"}}\n"
 	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{{%\n"
 	"    \\texorpdfstring{\\protect\\cbstart\\color{lyxdeleted}\\lyxsout{#4}%\n"
