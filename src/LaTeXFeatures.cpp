@@ -294,14 +294,14 @@ static docstring const changetracking_xcolor_ulem_hyperref_cb_def = from_ascii(
 	"}}\n"
 	"\\DeclareRobustCommand{\\lyxsout}[1]{\\ifx\\\\#1\\else\\sout{#1}\\fi}\n");
 
-static docstring const changetracking_tikz_math_sout_def = from_ascii(
-	"%% Strike out display math with tikz\n"
+static docstring const changetracking_tikz_object_sout_def = from_ascii(
+	"%% Strike out display math and text objects with tikz\n"
 	"\\usepackage{tikz}\n"
 	"\\usetikzlibrary{calc}\n"
-	"\\newcommand{\\lyxmathsout}[1]{%\n"
-	"  \\tikz[baseline=(math.base)]{\n"
-	"    \\node[inner sep=0pt,outer sep=0pt](math){#1};\n"
-	"    \\draw($(math.south west)+(2em,.5em)$)--($(math.north east)-(2em,.5em)$);\n"
+	"\\newcommand{\\lyxobjectsout}[1]{%\n"
+	"  \\tikz[baseline=(obj.base)]{\n"
+	"    \\node[inner sep=0pt,outer sep=0pt](obj){#1};\n"
+	"    \\draw($(obj.south west)+(2em,.5em)$)--($(obj.north east)-(2em,.5em)$);\n"
 	"  }\n"
 	"}\n");
 
@@ -1688,8 +1688,8 @@ TexString LaTeXFeatures::getMacros() const
 		}
 	}
 
-	if (mustProvide("ct-tikz-math-sout"))
-		macros << changetracking_tikz_math_sout_def;
+	if (mustProvide("ct-tikz-object-sout"))
+		macros << changetracking_tikz_object_sout_def;
 
 	if (mustProvide("ct-none"))
 		macros << changetracking_none_def;

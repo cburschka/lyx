@@ -126,9 +126,9 @@ namespace {
 		if (os.strikeoutMath()) {
 			if (os.ulemCmd() == WriteStream::UNDERLINE)
 				os << "\\raisebox{-\\belowdisplayshortskip}{"
-				      "\\lyxmathsout{\\parbox[b]{\\linewidth}{";
+				      "\\lyxobjectsout{\\parbox[b]{\\linewidth}{";
 			else
-				os << "\\lyxmathsout{\\parbox{\\linewidth}{";
+				os << "\\lyxobjectsout{\\parbox{\\linewidth}{";
 		} else if (os.ulemCmd() == WriteStream::UNDERLINE)
 			os << "\\raisebox{-\\belowdisplayshortskip}{"
 			      "\\parbox[b]{\\linewidth}{";
@@ -1104,7 +1104,7 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 				from_ascii("\\newcommand{\\endregexp}{}"));
 		} else if (outerDisplay() && features.inDeletedInset()
 			   && !features.mustProvide("ct-dvipost")) {
-				features.require("ct-tikz-math-sout");
+				features.require("ct-tikz-object-sout");
 		}
 
 		// Validation is necessary only if not using AMS math.
