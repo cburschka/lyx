@@ -24,8 +24,10 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Changes.h"
+#include "Cursor.h"
 #include "FuncRequest.h"
 #include "LyXRC.h"
+#include "Text.h"
 
 #include <QDateTime>
 #include <QTextBrowser>
@@ -65,26 +67,40 @@ void GuiChanges::updateContents()
 	bool const changePresent = c.type != Change::UNCHANGED;
 	rejectPB->setEnabled(changePresent);
 	acceptPB->setEnabled(changePresent);
+	bool const inserted = c.type == Change::INSERTED;
 
 	QString text;
 	if (changePresent) {
 		QString const author =
 			toqstr(buffer().params().authors().get(c.author).nameAndEmail());
 		if (!author.isEmpty())
-			text += (c.type == Change::INSERTED) ? qt_("Inserted by %1").arg(author)
-							     : qt_("Deleted by %1").arg(author);
+			text += inserted ? qt_("Inserted by %1").arg(author)
+					 : qt_("Deleted by %1").arg(author);
 
 		QString const date = QDateTime::fromTime_t(c.changetime)
 			                 .toString(Qt::DefaultLocaleLongDate);
 		if (!date.isEmpty()) {
 			if (!author.isEmpty())
-				text += qt_(" on[[date]] %1\n").arg(date);
+				text += qt_(" on[[date]] %1").arg(date);
 			else
-				text += (c.type == Change::INSERTED) ? qt_("Inserted on %1\n").arg(date)
-								     : qt_("Deleted on %1\n").arg(date);
+				text += inserted ? qt_("Inserted on %1").arg(date)
+						 : qt_("Deleted on %1").arg(date);
+		}
+		QString changedcontent = toqstr(bufferview()->cursor().selectionAsString(false));
+		if (!changedcontent.isEmpty()) {
+			text += ":<br><br><b>";
+			if (inserted)
+				text += "<u><span style=\"color:blue\">";
+			else
+				text += "<s><span style=\"color:red\">";
+			text += changedcontent;
+			if (inserted)
+				text += "</u></span></b>";
+			else
+				text += "</s></span></b>";
 		}
 	}
-	changeTB->setPlainText(text);
+	changeTB->setHtml(text);
 }
 
 
