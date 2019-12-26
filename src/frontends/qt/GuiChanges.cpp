@@ -71,12 +71,18 @@ void GuiChanges::updateContents()
 		QString const author =
 			toqstr(buffer().params().authors().get(c.author).nameAndEmail());
 		if (!author.isEmpty())
-			text += qt_("Changed by %1\n\n").arg(author);
+			text += (c.type == Change::INSERTED) ? qt_("Inserted by %1").arg(author)
+							     : qt_("Deleted by %1").arg(author);
 
 		QString const date = QDateTime::fromTime_t(c.changetime)
 			                 .toString(Qt::DefaultLocaleLongDate);
-		if (!date.isEmpty())
-			text += qt_("Change made on %1\n").arg(date);
+		if (!date.isEmpty()) {
+			if (!author.isEmpty())
+				text += qt_(" on[[date]] %1\n").arg(date);
+			else
+				text += (c.type == Change::INSERTED) ? qt_("Inserted on %1\n").arg(date)
+								     : qt_("Deleted on %1\n").arg(date);
+		}
 	}
 	changeTB->setPlainText(text);
 }
