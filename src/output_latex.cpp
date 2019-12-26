@@ -742,6 +742,12 @@ void TeXOnePar(Buffer const & buf,
 	if (style.inpreamble && !force)
 		return;
 
+	// Do not output empty commands if the whole paragraph has
+	// been deleted with ct and changes are not output.
+	if (!runparams_in.for_search && style.latextype != LATEX_ENVIRONMENT
+	    && par.isDeleted(0, par.size()) && !bparams.output_changes)
+		return;
+
 	LYXERR(Debug::LATEX, "TeXOnePar for paragraph " << pit << " ptr " << &par << " '"
 		<< everypar << "'");
 
