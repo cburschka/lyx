@@ -19,6 +19,7 @@
 #include "BufferParams.h"
 #include "Encoding.h"
 #include "LaTeXFeatures.h"
+#include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
@@ -568,7 +569,7 @@ void Changes::updateBuffer(Buffer const & buf)
 void Change::paintCue(PainterInfo & pi, double const x1, double const y,
                       double const x2, FontInfo const & font) const
 {
-	if (!changed())
+	if (!changed() || (!lyxrc.ct_additions_underlined && inserted()))
 		return;
 	// Calculate 1/3 height of font
 	FontMetrics const & fm = theFontMetrics(font);
@@ -594,11 +595,14 @@ void Change::paintCue(PainterInfo & pi, double const x1, double const y1,
 	switch(type) {
 	case UNCHANGED:
 		return;
-	case INSERTED:
+	case INSERTED: {
+		if (!lyxrc.ct_additions_underlined)
+			break;
 		pi.pain.line(int(x1), int(y2) + 1, int(x2), int(y2) + 1,
 		             color(), Painter::line_solid,
 		             pi.base.solidLineThickness());
 		return;
+	}
 	case DELETED:
 		// FIXME: we cannot use antialias since we keep drawing on the same
 		// background with the current painting mechanism.

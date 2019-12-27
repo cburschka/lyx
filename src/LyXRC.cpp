@@ -92,6 +92,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\converter", LyXRC::RC_CONVERTER },
 	{ "\\converter_cache_maxage", LyXRC::RC_CONVERTER_CACHE_MAXAGE },
 	{ "\\copier", LyXRC::RC_COPIER },
+	{ "\\ct_additions_underlined", LyXRC::RC_CT_ADDITIONS_UNDERLINED },
 	{ "\\cursor_follows_scrollbar", LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR },
 	{ "\\cursor_width", LyXRC::RC_CURSOR_WIDTH },
 	{ "\\def_file", LyXRC::RC_DEFFILE },
@@ -669,6 +670,10 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 		case RC_SERVERPIPE:
 			if (lexrc.next())
 				lyxpipes = os::internal_path(lexrc.getString());
+			break;
+
+		case RC_CT_ADDITIONS_UNDERLINED:
+			lexrc >> ct_additions_underlined;
 			break;
 
 		case RC_CURSOR_FOLLOWS_SCROLLBAR:
@@ -1582,6 +1587,16 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    allow_geometry_session != system_lyxrc.allow_geometry_session) {
 			os << "\\allow_geometry_session " << convert<string>(allow_geometry_session)
 			   << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+		// fall through
+	case RC_CT_ADDITIONS_UNDERLINED:
+		if (ignore_system_lyxrc ||
+		    ct_additions_underlined
+		    != system_lyxrc.ct_additions_underlined) {
+			os << "\\ct_additions_underlined "
+			   << convert<string>(ct_additions_underlined) << '\n';
 		}
 		if (tag != RC_LAST)
 			break;
@@ -2755,6 +2770,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_CONVERTER:
 	case LyXRC::RC_CONVERTER_CACHE_MAXAGE:
 	case LyXRC::RC_COPIER:
+	case LyXRC::RC_CT_ADDITIONS_UNDERLINED:
 	case LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR:
 	case LyXRC::RC_SCROLL_BELOW_DOCUMENT:
 	case LyXRC::RC_GUI_LANGUAGE:

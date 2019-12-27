@@ -121,6 +121,10 @@
 #   Add respect_os_kbd_language.
 #   No convergence necessary.
 
+# Incremented to format 31, by spitz
+#   Add ct_additions_underlined.
+#   No convergence necessary.
+
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py.
 
@@ -469,5 +473,6 @@ conversions = [
 	[ 27, []],
 	[ 28, [remove_date_insert_format]],
 	[ 29, [remove_use_pixmap_cache]],
-	[ 30, []]
+	[ 30, []],
+	[ 31, []]
 ]

@@ -66,6 +66,7 @@ public:
 		RC_CONVERTER,
 		RC_CONVERTER_CACHE_MAXAGE,
 		RC_COPIER,
+		RC_CT_ADDITIONS_UNDERLINED,
 		RC_CURSOR_FOLLOWS_SCROLLBAR,
 		RC_CURSOR_WIDTH,
 		RC_DEFAULT_DECIMAL_SEP,
@@ -418,6 +419,8 @@ public:
 	bool mac_like_cursor_movement = false;
 	///
 	bool cursor_follows_scrollbar = false;
+	///
+	bool ct_additions_underlined = true;
 	///
 	bool scroll_below_document = false;
 	///
