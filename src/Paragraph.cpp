@@ -2613,6 +2613,21 @@ void Paragraph::latex(BufferParams const & bparams,
 		     current_font.language() != running_font.language()) &&
 			i != body_pos - 1)
 		{
+			bool const in_ct_deletion = (bparams.output_changes
+						     && runningChange == change
+						     && change.type == Change::DELETED
+						     && !os.afterParbreak());
+			if (in_ct_deletion) {
+				// We have to close and then reopen \lyxdeleted,
+				// as strikeout needs to be on lowest level.
+				bool needPar = false;
+				OutputParams rp = runparams;
+				column += running_font.latexWriteEndChanges(
+					os, bparams, rp, basefont,
+					basefont, needPar);
+				os << '}';
+				column += 1;
+			}
 			odocstringstream ods;
 			column += current_font.latexWriteStartChanges(ods, bparams,
 							      runparams, basefont,
@@ -2641,6 +2656,13 @@ void Paragraph::latex(BufferParams const & bparams,
 				   << from_ascii("{}");
 			else
 				os << fontchange;
+			if (in_ct_deletion) {
+				// We have to close and then reopen \lyxdeleted,
+				// as strikeout needs to be on lowest level.
+				OutputParams rp = runparams;
+				column += Changes::latexMarkChange(os, bparams,
+					Change(Change::UNCHANGED), change, rp);
+			}
 		}
 
 		// FIXME: think about end_pos implementation...
