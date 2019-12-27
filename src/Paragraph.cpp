@@ -2505,7 +2505,8 @@ void Paragraph::latex(BufferParams const & bparams,
 						basefont, needPar);
 					open_font = false;
 				}
-				basefont = getLayoutFont(bparams, outerfont);
+				basefont = (body_pos > i) ? getLabelFont(bparams, outerfont)
+							  : getLayoutFont(bparams, outerfont);
 				running_font = basefont;
 				column += Changes::latexMarkChange(os, bparams,
 					Change(Change::INSERTED), change, rp);
@@ -2525,7 +2526,8 @@ void Paragraph::latex(BufferParams const & bparams,
 						basefont, basefont, needPar);
 				open_font = false;
 			}
-			basefont = getLayoutFont(bparams, outerfont);
+			basefont = (body_pos > i) ? getLabelFont(bparams, outerfont)
+						  : getLayoutFont(bparams, outerfont);
 			running_font = basefont;
 			column += Changes::latexMarkChange(os, bparams, runningChange,
 							   change, runparams);
