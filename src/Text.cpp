@@ -1812,6 +1812,9 @@ bool Text::dissolveInset(Cursor & cur)
 		// but we'll try the cheaper solution here.
 		cur.buffer()->clearReferenceCache();
 
+		// Do not revive deleted text
+		lyx::acceptChanges(plist, b.params());
+
 		// ERT paragraphs have the Language latex_language.
 		// This is invalid outside of ERT, so we need to
 		// change it to the buffer language.
