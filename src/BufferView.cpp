@@ -1551,32 +1551,43 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 		break;
 
-	case LFUN_ALL_CHANGES_ACCEPT:
+	case LFUN_ALL_CHANGES_ACCEPT: {
 		// select complete document
 		cur.reset();
 		cur.selHandle(true);
 		buffer_.text().cursorBottom(cur);
 		// accept everything in a single step to support atomic undo
+		// temporarily disable track changes in order to end with really
+		// no new (e.g., DPSM-caused) changes (see #7487)
+		bool const track = buffer_.params().track_changes;
+		buffer_.params().track_changes = false;
 		buffer_.text().acceptOrRejectChanges(cur, Text::ACCEPT);
+		buffer_.params().track_changes = track;
 		cur.resetAnchor();
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
 		dr.screenUpdate(Update::Force | Update::FitCursor);
 		dr.forceBufferUpdate();
 		break;
+	}
 
-	case LFUN_ALL_CHANGES_REJECT:
+	case LFUN_ALL_CHANGES_REJECT: {
 		// select complete document
 		cur.reset();
 		cur.selHandle(true);
 		buffer_.text().cursorBottom(cur);
 		// reject everything in a single step to support atomic undo
-		// Note: reject does not work recursively; the user may have to repeat the operation
+		// temporarily disable track changes in order to end with really
+		// no new (e.g., DPSM-caused) changes (see #7487)
+		bool const track = buffer_.params().track_changes;
+		buffer_.params().track_changes = false;
 		buffer_.text().acceptOrRejectChanges(cur, Text::REJECT);
+		buffer_.params().track_changes = track;
 		cur.resetAnchor();
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
 		dr.screenUpdate(Update::Force | Update::FitCursor);
 		dr.forceBufferUpdate();
 		break;
+	}
 
 	case LFUN_WORD_FIND_FORWARD:
 	case LFUN_WORD_FIND_BACKWARD: {
