@@ -1959,6 +1959,10 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			&& (!doc_buffer->isClean() || doc_buffer->notifiesExternalModification());
 		break;
 
+	case LFUN_BUFFER_RESET_EXPORT:
+		enable = doc_buffer != 0;
+		break;
+
 	case LFUN_BUFFER_CHILD_OPEN:
 		enable = doc_buffer != 0;
 		break;
@@ -4134,6 +4138,12 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			}
 			break;
 		}
+
+		case LFUN_BUFFER_RESET_EXPORT:
+			LASSERT(doc_buffer, break);
+			doc_buffer->requireFreshStart(true);
+			dr.setMessage(_("Buffer export reset."));
+			break;
 
 		case LFUN_BUFFER_WRITE:
 			LASSERT(doc_buffer, break);

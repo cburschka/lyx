@@ -486,6 +486,8 @@ enum FuncCode
 	LFUN_TABULAR_STYLE_INSERT,	// spitz, 20190325
 	LFUN_PARAGRAPH_SELECT,          // Kornel, 20190416
 	LFUN_BIDI,
+	// 380
+	LFUN_BUFFER_RESET_EXPORT,       // spitz 20191226
 	LFUN_LASTACTION                 // end of the table
 };
 

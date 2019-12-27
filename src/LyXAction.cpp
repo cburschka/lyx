@@ -778,6 +778,15 @@ void LyXAction::init()
 		{ LFUN_BUFFER_RELOAD, "buffer-reload", ReadOnly, Buffer },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_RESET_EXPORT
+ * \li Action: Removes the auxiliary file before next export to assure export is done afresh.
+ * \li Syntax: buffer-reset-export
+ * \li Origin: spitz, 27 Dec 2019
+ * \endvar
+ */
+		{ LFUN_BUFFER_RESET_EXPORT, "buffer-reset-export", ReadOnly, Buffer },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_SAVE_AS_DEFAULT
  * \li Action: Save the current document settings as default.
  * \li Notion: The file will will be saved into ~/.lyx/templates/defaults.lyx .
