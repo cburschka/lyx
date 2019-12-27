@@ -56,9 +56,11 @@ void writePlaintextFile(Buffer const & buf, odocstream & os,
 	ParagraphList::const_iterator end = par.end();
 	ParagraphList::const_iterator it = beg;
 	for (; it != end; ++it) {
+		bool const merged_par = (*it).parEndChange().deleted();
 		writePlaintextParagraph(buf, *it, os, runparams, ref_printed);
-		os << "\n";
-		if (runparams.linelen > 0)
+		if (!merged_par)
+			os << "\n";
+		if (runparams.linelen > 0 && !merged_par)
 			os << "\n";
 	}
 }
