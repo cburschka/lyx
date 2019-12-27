@@ -61,7 +61,7 @@ namespace {
 
 // The format should also be updated in configure.py, and conversion code
 // should be added to prefs2prefs_prefs.py.
-static unsigned int const LYXRC_FILEFORMAT = 30; // lasgouttes: add \respect_os_kbd_language
+static unsigned int const LYXRC_FILEFORMAT = 31; // lasgouttes: add \ct_additions_underlined
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
 	{ "\\accept_compound", LyXRC::RC_ACCEPT_COMPOUND },
