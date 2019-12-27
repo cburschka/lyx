@@ -5039,6 +5039,8 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
+	case LFUN_CHANGE_ACCEPT:
+	case LFUN_CHANGE_REJECT:
 	case LFUN_FONT_EMPH:
 	case LFUN_FONT_BOLD:
 	case LFUN_FONT_BOLDSYMBOL:
@@ -5082,6 +5084,10 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 					tmpcur.setSelection();
 					cell(tmpcur.idx())->dispatch(tmpcur, cmd);
 				}
+			}
+			if (act == LFUN_CHANGE_ACCEPT || act == LFUN_CHANGE_REJECT) {
+				// cursor might be invalid
+				cur.fixIfBroken();
 			}
 			break;
 		} else {
