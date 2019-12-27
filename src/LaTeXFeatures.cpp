@@ -299,10 +299,13 @@ static docstring const changetracking_tikz_object_sout_def = from_ascii(
 	"\\usepackage{tikz}\n"
 	"\\usetikzlibrary{calc}\n"
 	"\\newcommand{\\lyxobjectsout}[1]{%\n"
+	"  \\bgroup%\n"
+	"  \\color{lyxdeleted}%\n"
 	"  \\tikz[baseline=(obj.base)]{\n"
 	"    \\node[inner sep=0pt,outer sep=0pt](obj){#1};\n"
 	"    \\draw($(obj.south west)+(2em,.5em)$)--($(obj.north east)-(2em,.5em)$);\n"
 	"  }\n"
+	"  \\egroup%\n"
 	"}\n");
 
 static docstring const changetracking_none_def = from_ascii(

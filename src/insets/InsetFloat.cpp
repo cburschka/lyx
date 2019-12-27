@@ -322,6 +322,9 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 	if (features.inFloat())
 		features.require("subfig");
 
+	if (features.inDeletedInset())
+		features.require("ct-tikz-object-sout");
+
 	features.useFloat(params_.type, features.inFloat());
 	features.inFloat(true);
 	InsetCaptionable::validate(features);
@@ -435,6 +438,11 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 		os << '[' << from_ascii(placement) << ']';
 	os << '\n';
 
+	if (runparams.inDeletedInset) {
+		os << "\\lyxobjectsout{%" << breakln;
+		os << "\\parbox{\\linewidth}{%" << breakln;
+	}
+
 	string alignment = getAlignment();
 	if (alignment == "left")
 		os << "\\raggedright" << breakln;
@@ -444,6 +452,9 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 		os << "\\raggedleft" << breakln;
 
 	InsetText::latex(os, runparams);
+
+	if (runparams.inDeletedInset)
+		os << "}}";
 
 	// Force \end{<floatname>} to appear in a new line.
 	os << breakln << "\\end{" << from_ascii(tmptype) << "}\n";
