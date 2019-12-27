@@ -423,7 +423,7 @@ public:
 	bool isLineSeparator(pos_type pos) const;
 	/// True if the character/inset at this point is a word separator.
 	/// Note that digits in particular are not considered as word separator.
-	bool isWordSeparator(pos_type pos) const;
+	bool isWordSeparator(pos_type pos, bool const ignore_deleted = false) const;
 	/// True if the element at this point is a character that is not a letter.
 	bool isChar(pos_type pos) const;
 	/// True if the element at this point is a space
@@ -480,7 +480,7 @@ public:
 		bool del = true) const;
 
 	void locateWord(pos_type & from, pos_type & to,
-		word_location const loc) const;
+		word_location const loc, bool const ignore_deleted = false) const;
 	///
 	void updateWords();
 

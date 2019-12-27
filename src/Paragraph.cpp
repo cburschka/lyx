@@ -445,10 +445,10 @@ public:
 			return;
 		}
 		pos_type endpos = last;
-		owner_->locateWord(first, endpos, WHOLE_WORD);
+		owner_->locateWord(first, endpos, WHOLE_WORD, true);
 		if (endpos < last) {
 			endpos = last;
-			owner_->locateWord(last, endpos, WHOLE_WORD);
+			owner_->locateWord(last, endpos, WHOLE_WORD, true);
 		}
 		last = endpos;
 	}
@@ -3393,10 +3393,12 @@ bool Paragraph::isLineSeparator(pos_type pos) const
 }
 
 
-bool Paragraph::isWordSeparator(pos_type pos) const
+bool Paragraph::isWordSeparator(pos_type pos, bool const ignore_deleted) const
 {
 	if (pos == size())
 		return true;
+	if (ignore_deleted && isDeleted(pos))
+		return false;
 	if (Inset const * inset = getInset(pos))
 		return !inset->isLetter();
 	// if we have a hard hyphen (no en- or emdash) or apostrophe
@@ -4000,13 +4002,13 @@ void Paragraph::deregisterWords()
 
 
 void Paragraph::locateWord(pos_type & from, pos_type & to,
-	word_location const loc) const
+	word_location const loc, bool const ignore_deleted) const
 {
 	switch (loc) {
 	case WHOLE_WORD_STRICT:
 		if (from == 0 || from == size()
-		    || isWordSeparator(from)
-		    || isWordSeparator(from - 1)) {
+		    || isWordSeparator(from, ignore_deleted)
+		    || isWordSeparator(from - 1, ignore_deleted)) {
 			to = from;
 			return;
 		}
@@ -4014,13 +4016,13 @@ void Paragraph::locateWord(pos_type & from, pos_type & to,
 
 	case WHOLE_WORD:
 		// If we are already at the beginning of a word, do nothing
-		if (!from || isWordSeparator(from - 1))
+		if (!from || isWordSeparator(from - 1, ignore_deleted))
 			break;
 		// fall through
 
 	case PREVIOUS_WORD:
 		// always move the cursor to the beginning of previous word
-		while (from && !isWordSeparator(from - 1))
+		while (from && !isWordSeparator(from - 1, ignore_deleted))
 			--from;
 		break;
 	case NEXT_WORD:
@@ -4031,7 +4033,7 @@ void Paragraph::locateWord(pos_type & from, pos_type & to,
 		break;
 	}
 	to = from;
-	while (to < size() && !isWordSeparator(to))
+	while (to < size() && !isWordSeparator(to, ignore_deleted))
 		++to;
 }
 
@@ -4211,7 +4213,7 @@ SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
 	if (!d->layout_->spellcheck || !inInset().allowSpellCheck())
 		return result;
 
-	locateWord(from, to, WHOLE_WORD);
+	locateWord(from, to, WHOLE_WORD, true);
 	if (from == to || from >= size())
 		return result;
 
