@@ -258,41 +258,43 @@ static docstring const changetracking_dvipost_cb_def = from_ascii(
 	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{%\n"
 	"\\changestart\\overstrikeon#4\\overstrikeoff\\changeend}\n");
 
+static docstring const changetracking_xcolor_ulem_base_def = from_ascii(
+	"%% Change tracking with ulem and xcolor: base macros\n"
+	"\\DeclareRobustCommand{\\mklyxadded}[1]{\\bgroup\\color{lyxadded}{}#1\\egroup}\n"
+	"\\DeclareRobustCommand{\\mklyxdeleted}[1]{\\bgroup\\color{lyxdeleted}\\mklyxsout{#1}\\egroup}\n"
+	"\\DeclareRobustCommand{\\mklyxsout}[1]{\\ifx\\\\#1\\else\\sout{#1}\\fi}\n");
+
 static docstring const changetracking_xcolor_ulem_def = from_ascii(
-	"%% Change tracking with ulem\n"
-	"\\DeclareRobustCommand{\\lyxadded}[4][]{{\\color{lyxadded}{}#4}}\n"
-	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{{\\color{lyxdeleted}\\lyxsout{#4}}}\n"
-	"\\DeclareRobustCommand{\\lyxsout}[1]{\\ifx\\\\#1\\else\\sout{#1}\\fi}\n");
+	"%% Change tracking with ulem and xcolor: ct markup\n"
+	"\\DeclareRobustCommand{\\lyxadded}[4][]{\\mklyxadded{#4}}\n"
+	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{\\mklyxdeleted{#4}}\n");
 
 static docstring const changetracking_xcolor_ulem_cb_def = from_ascii(
-	"%% Change tracking with ulem and changebars\n"
-	"\\DeclareRobustCommand{\\lyxadded}[4][]{{%\n"
-	"    \\protect\\cbstart\\color{lyxadded}{}#4%\n"
+	"%% Change tracking with ulem, xcolor and changebars: ct markup\n"
+	"\\DeclareRobustCommand{\\lyxadded}[4][]{%\n"
+	"    \\protect\\cbstart\\mklyxadded{#4}%\n"
 	"    \\protect\\cbend%\n"
-	"}}\n"
-	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{{%\n"
-	"    \\protect\\cbstart\\color{lyxdeleted}\\lyxsout{#4}%\n"
+	"}\n"
+	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{%\n"
+	"    \\protect\\cbstart\\mklyxdeleted{#4}%\n"
 	"    \\protect\\cbend%\n"
-	"}}\n"
-	"\\DeclareRobustCommand{\\lyxsout}[1]{\\ifx\\\\#1\\else\\sout{#1}\\fi}\n");
+	"}\n");
 
 static docstring const changetracking_xcolor_ulem_hyperref_def = from_ascii(
-	"%% Change tracking with ulem and hyperref\n"
-	"\\DeclareRobustCommand{\\lyxadded}[4][]{{\\texorpdfstring{\\color{lyxadded}{}}{}#4}}\n"
-	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{{\\texorpdfstring{\\color{lyxdeleted}\\lyxsout{#4}}{}}}\n"
-	"\\DeclareRobustCommand{\\lyxsout}[1]{\\ifx\\\\#1\\else\\sout{#1}\\fi}\n");
+	"%% Change tracking with ulem, xcolor, and hyperref: ct markup\n"
+	"\\DeclareRobustCommand{\\lyxadded}[4][]{\\texorpdfstring{\\mklyxadded{#4}}{#4}}\n"
+	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{\\texorpdfstring{\\mklyxdeleted{#4}}{}}\n");
 
 static docstring const changetracking_xcolor_ulem_hyperref_cb_def = from_ascii(
-	"%% Change tracking with ulem, hyperref and changebars\n"
-	"\\DeclareRobustCommand{\\lyxadded}[4][]{{%\n"
-	"    \\texorpdfstring{\\protect\\cbstart\\color{lyxadded}{}}{}#4%\n"
-	"    \\texorpdfstring{\\protect\\cbend}{}%\n"
-	"}}\n"
-	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{{%\n"
-	"    \\texorpdfstring{\\protect\\cbstart\\color{lyxdeleted}\\lyxsout{#4}%\n"
+	"%% Change tracking with ulem, xcolor, hyperref and changebars: ct markup\n"
+	"\\DeclareRobustCommand{\\lyxadded}[4][]{%\n"
+	"    \\texorpdfstring{\\protect\\cbstart\\mklyxadded{#4}%\n"
+	"    \\protect\\cbend}{#4}%\n"
+	"}\n"
+	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{%\n"
+	"    \\texorpdfstring{\\protect\\cbstart\\mklyxdeleted{#4}%\n"
 	"    \\protect\\cbend}{}%\n"
-	"}}\n"
-	"\\DeclareRobustCommand{\\lyxsout}[1]{\\ifx\\\\#1\\else\\sout{#1}\\fi}\n");
+	"}\n");
 
 static docstring const changetracking_tikz_object_sout_def = from_ascii(
 	"%% Strike out display math and text objects with tikz\n"
@@ -1677,6 +1679,8 @@ TexString LaTeXFeatures::getMacros() const
 		       << cdel.r / 255.0 << ',' << cdel.g / 255.0 << ',' << cdel.b / 255.0 << "}\n";
 
 		macros.os().precision(prec);
+
+		macros << changetracking_xcolor_ulem_base_def;
 
 		if (isRequired("changebar")) {
 			if (isRequired("hyperref"))
