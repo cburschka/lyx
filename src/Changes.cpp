@@ -434,9 +434,11 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 			 || runparams.flavor == OutputParams::DVILUATEX);
 
 	if (oldChange.type != Change::UNCHANGED) {
-		// close \lyxadded or \lyxdeleted
-		os << '}';
-		column++;
+		if (oldChange.type != Change::DELETED || runparams.ctObject != OutputParams::CT_OMITOBJECT) {
+			// close \lyxadded or \lyxdeleted
+			os << '}';
+			column++;
+		}
 		if (oldChange.type == Change::DELETED
 		    && !runparams.wasDisplayMath && !dvipost)
 			--runparams.inulemcmd;
@@ -449,9 +451,19 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 
 	docstring macro_beg;
 	if (change.type == Change::DELETED) {
-		macro_beg = from_ascii("\\lyxdeleted");
-		if (!runparams.inDisplayMath && !dvipost)
-			++runparams.inulemcmd;
+		if (runparams.ctObject == OutputParams::CT_OMITOBJECT)
+			return 0;
+		else if (runparams.ctObject == OutputParams::CT_OBJECT)
+			macro_beg = from_ascii("\\lyxobjdeleted");
+		else if (runparams.ctObject == OutputParams::CT_DISPLAYOBJECT)
+			macro_beg = from_ascii("\\lyxdisplayobjdeleted");
+		else if (runparams.ctObject == OutputParams::CT_UDISPLAYOBJECT)
+			macro_beg = from_ascii("\\lyxudisplayobjdeleted");
+		else {
+			macro_beg = from_ascii("\\lyxdeleted");
+			if (!runparams.inDisplayMath && !dvipost)
+				++runparams.inulemcmd;
+		}
 	}
 	else if (change.type == Change::INSERTED)
 		macro_beg = from_ascii("\\lyxadded");
@@ -459,15 +471,6 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 	docstring str = getLaTeXMarkup(macro_beg,
 				       bparams.authors().get(change.author),
 				       chgTime, runparams);
-
-	// signature needed by \lyxsout to correctly strike out display math
-	if (change.type == Change::DELETED && runparams.inDisplayMath
-	    && !dvipost) {
-		if (os.blankLine())
-			str += from_ascii("\\\\\\noindent\n");
-		else
-			str += from_ascii("\\\\\\\\\n");
-	}
 
 	os << str;
 	column += str.size();

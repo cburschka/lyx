@@ -28,7 +28,7 @@ OutputParams::OutputParams(Encoding const * enc)
 	  wasDisplayMath(false), inComment(false), openbtUnit(false), only_childbibs(false),
 	  inTableCell(NO), inFloat(NONFLOAT),
 	  inIndexEntry(false), inIPA(false), inDeletedInset(0),
-	  changeOfDeletedInset(Change::UNCHANGED),
+	  changeOfDeletedInset(Change::UNCHANGED), ctObject(CT_NORMAL),
 	  par_begin(0), par_end(0), lastid(-1), lastpos(0), isLastPar(false),
 	  dryrun(false), silent(false), pass_thru(false),
 	  html_disable_captions(false), html_in_par(false),

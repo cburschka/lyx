@@ -298,21 +298,83 @@ static docstring const changetracking_xcolor_ulem_hyperref_cb_def = from_ascii(
 
 static docstring const changetracking_tikz_object_sout_def = from_ascii(
 	"%% Strike out display math and text objects with tikz\n"
-	"\\usepackage{tikz}\n"
 	"\\usetikzlibrary{calc}\n"
 	"\\newcommand{\\lyxobjectsout}[1]{%\n"
 	"  \\bgroup%\n"
 	"  \\color{lyxdeleted}%\n"
-	"  \\tikz[baseline=(obj.base)]{\n"
-	"    \\node[inner sep=0pt,outer sep=0pt](obj){#1};\n"
-	"    \\draw($(obj.south west)+(2em,.5em)$)--($(obj.north east)-(2em,.5em)$);\n"
+	"  \\tikz{\n"
+	"    \\node[inner sep=0pt,outer sep=0pt](lyxdelobj){#1};\n"
+	"    \\draw($(lyxdelobj.south west)+(2em,.5em)$)--($(lyxdelobj.north east)-(2em,.5em)$);\n"
 	"  }\n"
 	"  \\egroup%\n"
 	"}\n");
 
+static docstring const changetracking_xcolor_ulem_object_def = from_ascii(
+	"%% Change tracking with ulem and xcolor: ct markup for complex objects\n"
+	"\\DeclareRobustCommand{\\lyxobjdeleted}[4][]{\\lyxobjectsout{#4}}\n"
+	"\\DeclareRobustCommand{\\lyxdisplayobjdeleted}[4][]{\\lyxobjectsout{\\parbox{\\linewidth}{#4}}}\n"
+	"\\DeclareRobustCommand{\\lyxudisplayobjdeleted}[4][]{%\n"
+	"     \\raisebox{-\\belowdisplayshortskip}{%\n"
+	"                \\lyxobjectsout{\\parbox[b]{\\linewidth}{#4}}}%\n"
+	"}\n");
+
+static docstring const changetracking_xcolor_ulem_cb_object_def = from_ascii(
+	"%% Change tracking with ulem, xcolor and changebars:ct markup for complex objects\n"
+	"\\DeclareRobustCommand{\\lyxobjdeleted}[4][]{%\n"
+	"    \\protect\\cbstart\\lyxobjectsout{#4}%\n"
+	"    \\protect\\cbend%\n"
+	"}\n"
+	"\\DeclareRobustCommand{\\lyxdisplayobjdeleted}[4][]{%\n"
+	"    \\protect\\cbstart%\n"
+	"    \\lyxobjectsout{\\parbox{\\linewidth}{#4}}%\n"
+	"    \\protect\\cbend%\n"
+	"}\n"
+	"\\DeclareRobustCommand{\\lyxudisplayobjdeleted}[4][]{%\n"
+	"    \\raisebox{-\\belowdisplayshortskip}{%\n"
+	"               \\protect\\cbstart%\n"
+	"               \\lyxobjectsout{\\parbox[b]{\\linewidth}{#4}}}%\n"
+	"               \\protect\\cbend%\n"
+	"}\n");
+
+static docstring const changetracking_xcolor_ulem_hyperref_object_def = from_ascii(
+	"%% Change tracking with ulem, xcolor, and hyperref: ct markup for complex objects\n"
+	"\\DeclareRobustCommand{\\lyxobjdeleted}[4][]{\\texorpdfstring{\\lyxobjectsout{#4}}{}}\n"
+	"\\DeclareRobustCommand{\\lyxdisplayobjdeleted}[4][]{%\n"
+	"     \\texorpdfstring{\\lyxobjectsout{\\parbox{\\linewidth}{#4}}}{}%\n"
+	"}\n"
+	"\\DeclareRobustCommand{\\lyxudisplayobjdeleted}[4][]{%\n"
+	"     \\texorpdfstring{\\raisebox{-\\belowdisplayshortskip}{%\n"
+	"                \\lyxobjectsout{\\parbox[b]{\\linewidth}{#4}}}}{}%\n"
+	"}\n");
+
+static docstring const changetracking_xcolor_ulem_hyperref_cb_object_def = from_ascii(
+	"%% Change tracking with ulem, xcolor, hyperref and changebars:\n"
+	"%% ct markup for complex objects\n"
+	"\\DeclareRobustCommand{\\lyxobjdeleted}[4][]{%\n"
+	"    \\texorpdfstring{\\protect\\cbstart\\lyxobjectsout{#4}%\n"
+	"    \\protect\\cbend}{}%\n"
+	"}\n"
+	"\\DeclareRobustCommand{\\lyxdisplayobjdeleted}[4][]{%\n"
+	"     \\texorpdfstring{\\protect\\cbstart%\n"
+	"        \\lyxobjectsout{\\parbox{\\linewidth}{#4}}%\n"
+	"        \\protect\\cbend%\n"
+	"      }{}%\n"
+	"}\n"
+	"\\DeclareRobustCommand{\\lyxudisplayobjdeleted}[4][]{%\n"
+	"     \\texorpdfstring{\\protect\\cbstart%\n"
+	"        \\raisebox{-\\belowdisplayshortskip}{%\n"
+	"                   \\lyxobjectsout{\\parbox[b]{\\linewidth}{#4}}%\n"
+	"        }%\n"
+	"     }{}%\n"
+	"}\n");
+
 static docstring const changetracking_none_def = from_ascii(
+	"%% Change tracking: Disable markup in output\n"
 	"\\newcommand{\\lyxadded}[3]{#3}\n"
-	"\\newcommand{\\lyxdeleted}[3]{}\n");
+	"\\newcommand{\\lyxdeleted}[3]{}\n"
+	"\\newcommand{\\lyxobjdeleted}[3]{}\n"
+	"\\newcommand{\\lyxdisplayobjdeleted}[3]{}\n"
+	"\\newcommand{\\lyxudisplayobjdeleted}[3]{}\n");
 
 static docstring const textgreek_LGR_def = from_ascii(
 	"\\DeclareFontEncoding{LGR}{}{}\n");
@@ -1089,6 +1151,7 @@ char const * simplefeatures[] = {
 	"tablefootnote",
 	"afterpage",
 	"tabularx",
+	"tikz",
 	"xltabular",
 	"chessboard",
 	"xskak",
@@ -1695,8 +1758,35 @@ TexString LaTeXFeatures::getMacros() const
 		}
 	}
 
-	if (mustProvide("ct-tikz-object-sout"))
+	if (mustProvide("ct-tikz-object-sout")) {
+		if (!mustProvide("ct-xcolor-ulem")) {
+			streamsize const prec = macros.os().precision(2);
+
+			RGBColor cadd = rgbFromHexName(lcolor.getX11Name(Color_addedtext));
+			macros << "\\providecolor{lyxadded}{rgb}{"
+			       << cadd.r / 255.0 << ',' << cadd.g / 255.0 << ',' << cadd.b / 255.0 << "}\n";
+	
+			RGBColor cdel = rgbFromHexName(lcolor.getX11Name(Color_deletedtext));
+			macros << "\\providecolor{lyxdeleted}{rgb}{"
+			       << cdel.r / 255.0 << ',' << cdel.g / 255.0 << ',' << cdel.b / 255.0 << "}\n";
+	
+			macros.os().precision(prec);
+		}
+		
 		macros << changetracking_tikz_object_sout_def;
+		
+		if (isRequired("changebar")) {
+			if (isRequired("hyperref"))
+				macros << changetracking_xcolor_ulem_hyperref_cb_object_def;
+			else
+				macros << changetracking_xcolor_ulem_cb_object_def;
+		} else {
+			if (isRequired("hyperref"))
+				macros << changetracking_xcolor_ulem_hyperref_object_def;
+			else
+				macros << changetracking_xcolor_ulem_object_def;
+		}
+	}
 
 	if (mustProvide("ct-none"))
 		macros << changetracking_none_def;

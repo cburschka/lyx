@@ -88,6 +88,8 @@ public:
 	///
 	bool outerDisplay() const;
 	///
+	OutputParams::CtObject CtObject(OutputParams const &) const;
+	///
 	void validate(LaTeXFeatures & features) const;
 	/// identifies HullInset
 	InsetMathHull const * asHullInset() const { return this; }

@@ -4051,7 +4051,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			continue;
 		}
 
-		if (t.cs() == "lyxadded" || t.cs() == "lyxdeleted") {
+		if (t.cs() == "lyxadded" || t.cs() == "lyxdeleted" || t.cs() == "lyxobjdeleted"
+		    || t.cs() == "lyxdisplayobjdeleted" || t.cs() == "lyxudisplayobjdeleted") {
 			context.check_layout(os);
 			string initials;
 			if (p.hasOpt()) {

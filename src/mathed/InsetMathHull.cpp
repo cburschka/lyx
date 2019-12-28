@@ -123,13 +123,10 @@ namespace {
 	// writes a preamble for underlined or struck out math display
 	void writeMathdisplayPreamble(WriteStream & os)
 	{
-		if (os.strikeoutMath()) {
-			if (os.ulemCmd() == WriteStream::UNDERLINE)
-				os << "\\raisebox{-\\belowdisplayshortskip}{"
-				      "\\lyxobjectsout{\\parbox[b]{\\linewidth}{";
-			else
-				os << "\\lyxobjectsout{\\parbox{\\linewidth}{";
-		} else if (os.ulemCmd() == WriteStream::UNDERLINE)
+		if (os.strikeoutMath())
+			return;
+
+		if (os.ulemCmd() == WriteStream::UNDERLINE)
 			os << "\\raisebox{-\\belowdisplayshortskip}{"
 			      "\\parbox[b]{\\linewidth}{";
 		else if (os.ulemCmd() == WriteStream::STRIKEOUT)
@@ -140,11 +137,10 @@ namespace {
 	// writes a postamble for underlined or struck out math display
 	void writeMathdisplayPostamble(WriteStream & os)
 	{
-		if (os.strikeoutMath()) {
-			if (os.ulemCmd() == WriteStream::UNDERLINE)
-				os << "}";
-			os << "}}\\\\\n";
-		} else if (os.ulemCmd() == WriteStream::UNDERLINE)
+		if (os.strikeoutMath())
+			return;
+
+		if (os.ulemCmd() == WriteStream::UNDERLINE)
 			os << "}}\\\\\n";
 		else if (os.ulemCmd() == WriteStream::STRIKEOUT)
 			os << "}\\\\\n";
@@ -1104,6 +1100,7 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 				from_ascii("\\newcommand{\\endregexp}{}"));
 		} else if (outerDisplay() && features.inDeletedInset()
 			   && !features.mustProvide("ct-dvipost")) {
+				features.require("tikz");
 				features.require("ct-tikz-object-sout");
 		}
 
@@ -1124,6 +1121,37 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 					"td.rdelim{width: 0.5ex; border: thin solid black; border-left: none;}");
 	}
 	InsetMathGrid::validate(features);
+}
+
+
+OutputParams::CtObject InsetMathHull::CtObject(OutputParams const & runparams) const
+{
+	OutputParams::CtObject res = OutputParams::CT_NORMAL;
+	switch(type_) {
+	case hullNone:
+	case hullSimple:
+	case hullAlignAt:
+	case hullXAlignAt:
+	case hullXXAlignAt:
+	case hullRegexp:
+	case hullUnknown:
+		break;
+
+	case hullEquation:
+	case hullEqnArray:
+	case hullAlign:
+	case hullFlAlign:
+	case hullGather:
+	case hullMultline: {
+		if (runparams.inulemcmd
+		    && (!runparams.local_font || runparams.local_font->fontInfo().strikeout() != FONT_ON))
+			res = OutputParams::CT_UDISPLAYOBJECT;
+		else
+			res = OutputParams::CT_DISPLAYOBJECT;
+		break;
+		}
+	}
+	return res;
 }
 
 

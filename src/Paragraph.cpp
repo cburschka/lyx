@@ -2477,9 +2477,14 @@ void Paragraph::latex(BufferParams const & bparams,
 		Change const & change = runparams.inDeletedInset
 			? runparams.changeOfDeletedInset : lookupChange(i);
 
+		char_type const c = d->text_[i];
+
 		// Check whether a display math inset follows
-		if (d->text_[i] == META_INSET
+		if (c == META_INSET
 		    && i >= start_pos && (end_pos == -1 || i < end_pos)) {
+			if (isDeleted(i))
+				runparams.ctObject = getInset(i)->CtObject(runparams);
+	
 			InsetMath const * im = getInset(i)->asInsetMath();
 			if (im && im->asHullInset()
 			    && im->asHullInset()->outerDisplay()) {
@@ -2592,8 +2597,6 @@ void Paragraph::latex(BufferParams const & bparams,
 				runparams.encoding = current_font.language()->encoding();
 			}
 		}
-
-		char_type const c = d->text_[i];
 
 		// A display math inset inside an ulem command will be output
 		// as a box of width \linewidth, so we have to either disable

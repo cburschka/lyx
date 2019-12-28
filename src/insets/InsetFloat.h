@@ -122,6 +122,8 @@ private:
 	TexString getCaption(OutputParams const &) const;
 	///
 	std::string getAlignment() const;
+	///
+	OutputParams::CtObject CtObject(OutputParams const &) const { return OutputParams::CT_OMITOBJECT; }
 
 	InsetFloatParams params_;
 };

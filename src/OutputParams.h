@@ -60,6 +60,14 @@ public:
 		SUBFLOAT
 	};
 
+	enum CtObject {
+		CT_NORMAL,
+		CT_OBJECT,
+		CT_DISPLAYOBJECT,
+		CT_UDISPLAYOBJECT,
+		CT_OMITOBJECT
+	};
+
 	OutputParams(Encoding const *);
 	~OutputParams();
 
@@ -272,13 +280,18 @@ public:
 
 	/** Whether we are inside an inset that is logically deleted.
 	 *  A value > 0 indicates a deleted inset.
-         */
+	*/
 	int inDeletedInset;
 
 	/** The change information of the outermost logically deleted inset.
 	 *  changeOfDeletedInset shall only be evaluated if inDeletedInset > 0.
-         */
+	*/
 	Change changeOfDeletedInset;
+
+	/** What kind of change tracking object is this?
+	 * Relevant for strikeout method in output
+	 */
+	mutable CtObject ctObject;
 
 	/** allow output of only part of the top-level paragraphs
 	 *  par_begin: beginning paragraph

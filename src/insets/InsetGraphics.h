@@ -133,6 +133,8 @@ private:
 	/// \return the new filename, relative to the location of the HTML file,
 	/// or an empty string on error.
 	std::string prepareHTMLFile(OutputParams const & runparams) const;
+	///
+	OutputParams::CtObject CtObject(OutputParams const &) const { return OutputParams::CT_OBJECT; }
 
 	///
 	InsetGraphicsParams params_;

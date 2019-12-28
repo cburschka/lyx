@@ -858,11 +858,6 @@ void InsetGraphics::latex(otexstream & os,
 	if (runparams.moving_arg)
 		before += "\\protect";
 
-	if (runparams.inDeletedInset) {
-		before += "\\lyxobjectsout{";
-		after += "}";
-	}
-
 	// We never use the starred form, we use the "clip" option instead.
 	before += "\\includegraphics";
 
@@ -1141,8 +1136,10 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 		if (contains(rel_file, "."))
 			features.require("lyxdot");
 	}
-	if (features.inDeletedInset())
+	if (features.inDeletedInset()) {
+		features.require("tikz");
 		features.require("ct-tikz-object-sout");
+	}
 }
 
 

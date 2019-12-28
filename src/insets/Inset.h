@@ -20,6 +20,7 @@
 #include "InsetLayout.h"
 #include "LayoutEnums.h"
 #include "OutputEnums.h"
+#include "OutputParams.h"
 
 #include "support/strfwd.h"
 #include "support/types.h"
@@ -470,6 +471,8 @@ public:
 	virtual bool isSpace() const { return false; }
 	/// does this inset try to use all available space (like \\hfill does)?
 	virtual bool isHfill() const { return false; }
+
+	virtual OutputParams::CtObject CtObject(OutputParams const &) const { return OutputParams::CT_NORMAL; }
 
 	enum DisplayType {
 		Inline = 0,
