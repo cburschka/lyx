@@ -105,7 +105,16 @@ void InsetLabel::updateLabelAndRefs(docstring const & new_label,
 	UndoGroupHelper ugh(&buffer());
 	if (cursor)
 		cursor->recordUndo();
-	setParam("name", label);
+	if (buffer().params().track_changes) {
+		// With change tracking, we insert a new label and
+		// delete the old one
+		InsetCommandParams p(LABEL_CODE, "label");
+		p["name"] = label;
+		string const data = InsetCommand::params2string(p);
+		lyx::dispatch(FuncRequest(LFUN_INSET_INSERT, data));
+		lyx::dispatch(FuncRequest(LFUN_CHAR_DELETE_FORWARD));
+	} else
+		setParam("name", label);
 	updateReferences(old_label, label);
 }
 
