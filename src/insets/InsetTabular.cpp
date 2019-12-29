@@ -745,6 +745,9 @@ void Tabular::deleteRow(row_type const row)
 		return;
 
 	for (col_type c = 0; c < ncols(); ++c) {
+		// mark track changes
+		if (buffer().params().track_changes)
+			cell_info[row][c].inset->setChange(Change(Change::DELETED));
 		// Care about multirow cells
 		if (row + 1 < nrows() &&
 		    cell_info[row][c].multirow == CELL_BEGIN_OF_MULTIROW &&
@@ -752,8 +755,10 @@ void Tabular::deleteRow(row_type const row)
 				cell_info[row + 1][c].multirow = CELL_BEGIN_OF_MULTIROW;
 		}
 	}
-	row_info.erase(row_info.begin() + row);
-	cell_info.erase(cell_info.begin() + row);
+	if (!buffer().params().track_changes) {
+		row_info.erase(row_info.begin() + row);
+		cell_info.erase(cell_info.begin() + row);
+	}
 	updateIndexes();
 }
 
@@ -859,15 +864,20 @@ void Tabular::deleteColumn(col_type const col)
 		return;
 
 	for (row_type r = 0; r < nrows(); ++r) {
+		// mark track changes
+		if (buffer().params().track_changes)
+			cell_info[r][col].inset->setChange(Change(Change::DELETED));
 		// Care about multicolumn cells
 		if (col + 1 < ncols() &&
 		    cell_info[r][col].multicolumn == CELL_BEGIN_OF_MULTICOLUMN &&
 		    cell_info[r][col + 1].multicolumn == CELL_PART_OF_MULTICOLUMN) {
 				cell_info[r][col + 1].multicolumn = CELL_BEGIN_OF_MULTICOLUMN;
 		}
-		cell_info[r].erase(cell_info[r].begin() + col);
+		if (!buffer().params().track_changes)
+			cell_info[r].erase(cell_info[r].begin() + col);
 	}
-	column_info.erase(column_info.begin() + col);
+	if (!buffer().params().track_changes)
+		column_info.erase(column_info.begin() + col);
 	updateIndexes();
 }
 
