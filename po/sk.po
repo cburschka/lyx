@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-12-25 11:34+0100\n"
-"PO-Revision-Date: 2019-12-25 10:55+0000\n"
+"POT-Creation-Date: 2019-12-29 09:05+0100\n"
+"PO-Revision-Date: 2019-12-29 08:35+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3652,6 +3652,17 @@ msgstr "Zapnuté"
 #: src/frontends/qt/ui/PrefDisplayUi.ui:80
 msgid "Preview si&ze:"
 msgstr "Mie&rka náhľadu:"
+
+#: src/frontends/qt/ui/PrefDisplayUi.ui:154
+msgid ""
+"If this is checked, additions in change tracking are underlined in the "
+"workarea"
+msgstr ""
+"Keď zaškrtnuté, adície sledovaných zmien sú na pracovnej ploche podčiarknuté"
+
+#: src/frontends/qt/ui/PrefDisplayUi.ui:157
+msgid "&Underline change tracking additions"
+msgstr "&Podčiarknuť adície sledovaných zmien"
 
 #: src/frontends/qt/ui/PrefDisplayUi.ui:96
 msgid "Factor for the preview size"
@@ -30500,9 +30511,9 @@ msgstr "Príkaz bez spracovávania"
 msgid "Command disabled"
 msgstr "Príkaz blokovaný"
 
-#: src/frontends/qt/GuiApplication.cpp:1327
+#: src/frontends/qt/GuiApplication.cpp:1345
 msgid "Command not allowed without a buffer open"
-msgstr "Príkaz nie je povolený pokiaľ nie je otvorený aspoň jeden zásobník"
+msgstr "Príkaz nie je povolený pokiaľ nie je otvorený aspoň jeden dokument"
 
 #: src/frontends/qt/GuiApplication.cpp:1334
 msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
@@ -30575,10 +30586,10 @@ msgstr ""
 msgid "Cannot iterate more than %1$d times"
 msgstr "Nemôžem iterovať viac ako %1$d krát"
 
-#: src/frontends/qt/GuiApplication.cpp:1980
+#: src/frontends/qt/GuiApplication.cpp:1999
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
-msgstr "Aplikované \"%1$s\" na %2$d zásobníkoch"
+msgstr "\"%1$s\" uplatnené pre %2$d dokument(y)"
 
 #: src/frontends/qt/GuiApplication.cpp:2055
 #, c-format
@@ -30897,16 +30908,24 @@ msgid "Merge Changes"
 msgstr "Zlúčiť zmeny"
 
 #: src/frontends/qt/GuiChanges.cpp:74
-msgid ""
-"Changed by %1\n"
-"\n"
-msgstr ""
-"Zmenené od %1\n"
-"\n"
+msgid "Inserted by %1"
+msgstr "Vložil %1"
 
-#: src/frontends/qt/GuiChanges.cpp:79
-msgid "Change made on %1\n"
-msgstr "Zmeny zrobené %1\n"
+#: src/frontends/qt/GuiChanges.cpp:75
+msgid "Deleted by %1"
+msgstr "Zmazal %1"
+
+#: src/frontends/qt/GuiChanges.cpp:84
+msgid " on[[date]] %1"
+msgstr "dňa %1"
+
+#: src/frontends/qt/GuiChanges.cpp:86
+msgid "Inserted on %1"
+msgstr "Vložené dňa %1"
+
+#: src/frontends/qt/GuiChanges.cpp:87
+msgid "Deleted on %1"
+msgstr "Zmazané dňa %1"
 
 #: src/frontends/qt/GuiCharacter.cpp:52 src/frontends/qt/GuiCharacter.cpp:65
 #: src/frontends/qt/GuiCharacter.cpp:86 src/frontends/qt/GuiCharacter.cpp:99
@@ -33835,10 +33854,10 @@ msgstr "Adresár je neprístupný."
 msgid "Opening child document %1$s..."
 msgstr "Otváram dokument potomka %1$s…"
 
-#: src/frontends/qt/GuiView.cpp:3686
+#: src/frontends/qt/GuiView.cpp:3689
 #, c-format
 msgid "No buffer for file: %1$s."
-msgstr "Žiadny zásobník pre súbor: %1$s."
+msgstr "Žiadny dokument pre súbor: %1$s."
 
 #: src/frontends/qt/GuiView.cpp:3696
 msgid "Inverse Search Failed"
@@ -33856,9 +33875,9 @@ msgstr ""
 msgid "Export Error"
 msgstr "Chyba pri exporte"
 
-#: src/frontends/qt/GuiView.cpp:3779
+#: src/frontends/qt/GuiView.cpp:3782
 msgid "Error cloning the Buffer."
-msgstr "Chyba pri klonovaní zásobníka."
+msgstr "Chyba pri klonovaní pamäte dokumentu."
 
 #: src/frontends/qt/GuiView.cpp:3931 src/frontends/qt/GuiView.cpp:3951
 msgid "Exporting ..."
@@ -33901,6 +33920,10 @@ msgstr ""
 #: src/frontends/qt/GuiView.cpp:4125
 msgid "Revert to saved document?"
 msgstr "Vrátiť na uložený dokument?"
+
+#: src/frontends/qt/GuiView.cpp:4145
+msgid "Buffer export reset."
+msgstr "Nulovať pamäť pre export."
 
 #: src/frontends/qt/GuiView.cpp:4159
 msgid "Saving all documents..."
@@ -36286,7 +36309,7 @@ msgstr ""
 
 #: src/support/lassert.cpp:83
 msgid "Buffer Error!"
-msgstr "Chyba zásobníka!"
+msgstr "Chyba v pamäti dokumentu!"
 
 #: src/support/lassert.cpp:90
 msgid ""
