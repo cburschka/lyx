@@ -1114,8 +1114,8 @@ class Intervall {
   bool isPatternString_;
 public:
   explicit Intervall(bool isPattern, string const & p) :
-  	isPatternString_(isPattern), par(p), ignoreidx(-1), actualdeptindex(0),
-  	hasTitle(false)
+        isPatternString_(isPattern), par(p), ignoreidx(-1), actualdeptindex(0),
+        hasTitle(false), langcount(0)
   {
     depts[0] = 0;
     closes[0] = 0;
@@ -1139,6 +1139,7 @@ public:
   int findclosing(int start, int end, char up, char down, int repeat);
   void handleParentheses(int lastpos, bool closingAllowed);
   bool hasTitle;
+  int langcount;	// Number of disabled language specs up to current position in actual interval
   int isOpeningPar(int pos);
   string titleValue;
   void output(ostringstream &os, int lastpos);
@@ -1555,7 +1556,6 @@ int Intervall::findclosing(int start, int end, char up = '{', char down = '}', i
 {
   int skip = 0;
   int depth = 0;
-  repeat--;
   for (int i = start; i < end; i += 1 + skip) {
     char c;
     c = par[i];
@@ -1565,6 +1565,7 @@ int Intervall::findclosing(int start, int end, char up = '{', char down = '}', i
       depth++;
     }
     else if (c == down) {
+      repeat--;
       if (depth == 0) {
         if ((repeat <= 0) || (par[i+1] != up))
           return i;
@@ -1906,6 +1907,12 @@ void LatexInfo::buildEntries(bool isPatternString)
         }
         found._tokensize = found.head.length();
         found._dataStart = found._tokenstart + found.head.length();
+        if (found.keytype == KeyInfo::doRemove) {
+          int endpar = 2 + interval_.findclosing(found._dataStart, interval_.par.length(), '{', '}', closings);
+          found._dataStart = endpar;
+          found._tokensize = found._dataStart - found._tokenstart;
+          closings = 1;
+        }
         if (interval_.par.substr(found._dataStart-1, 15).compare("\\endarguments{}") == 0) {
           found._dataStart += 15;
         }
@@ -2032,6 +2039,11 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("addtocounter|setlength",                 KeyInfo(KeyInfo::noContent, 2, true), isPatternString);
   // handle like standard keys with 1 parameter.
   makeKey("url|href|vref|thanks", KeyInfo(KeyInfo::isStandard, 1, false), isPatternString);
+
+  // Ignore deleted text
+  makeKey("lyxdeleted", KeyInfo(KeyInfo::doRemove, 2, false), isPatternString);
+  // but preserve added text
+  makeKey("lyxadded", KeyInfo(KeyInfo::doRemove, 1, false), isPatternString);
 
   // Macros to remove, but let the parameter survive
   // No split
@@ -2174,7 +2186,12 @@ void Intervall::output(ostringstream &os, int lastpos)
     printed += lastpos-i;
   }
   handleParentheses(lastpos, false);
-  for (int i = actualdeptindex; i > 0; --i) {
+  int startindex;
+  if (keys["foreignlanguage"].disabled)
+    startindex = actualdeptindex-langcount;
+  else
+    startindex = actualdeptindex;
+  for (int i = startindex; i > 0; --i) {
     os << "}";
   }
   if (hasTitle && (printed > 0))
@@ -2329,7 +2346,23 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
         if ((interval_.par[pos] != ' ') && (interval_.par[pos] != '%'))
           break;
       }
-      interval_.addIntervall(actual._tokenstart, pos);
+      // Remove also enclosing parentheses [] and {}
+      int numpars = 0;
+      int spaces = 0;
+      while (actual._tokenstart > numpars) {
+        if (interval_.par[pos+numpars] == ']' && interval_.par[actual._tokenstart-numpars-1] == '[')
+          numpars++;
+        else if (interval_.par[pos+numpars] == '}' && interval_.par[actual._tokenstart-numpars-1] == '{')
+          numpars++;
+        else
+          break;
+      }
+      if (numpars > 0) {
+        if (interval_.par[pos+numpars] == ' ')
+          spaces++;
+      }
+
+      interval_.addIntervall(actual._tokenstart-numpars, pos+numpars+spaces);
       nextKeyIdx = getNextKey();
       break;
     }
@@ -2436,6 +2469,7 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       }
       if (actual.disabled) {
         removeHead(actual);
+        interval_.langcount++;
         if ((interval_.par.substr(actual._dataStart, 3) == " \\[") ||
             (interval_.par.substr(actual._dataStart, 8) == " \\begin{")) {
           // Discard also the space before math-equation
@@ -2925,9 +2959,9 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		if (m.size() > 1)
 			leadingsize = m[1].second - m[1].first;
 		int result;
-                for (size_t i = 0; i < m.size(); i++) {
-                  LYXERR(Debug::FIND, "Match " << i << " is " << m[i].second - m[i].first << " long");
-                }
+		for (size_t i = 0; i < m.size(); i++) {
+			LYXERR(Debug::FIND, "Match " << i << " is " << m[i].second - m[i].first << " long");
+		}
 		if (close_wildcards == 0)
 			result = m[0].second - m[0].first;
 
