@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 574
+\lyxformat 589
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -24,7 +24,9 @@ enumitem
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \font_cjk gbsn
@@ -49,7 +51,7 @@ enumitem
 \pdf_colorlinks true
 \pdf_backref section
 \pdf_pdfusetitle true
-\papersize a4paper
+\papersize a4
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -71,6 +73,7 @@ enumitem
 \justification false
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \branch only-as-document-language
 \selected 0
 \filename_suffix 0
@@ -101,18 +104,13 @@ enumitem
 \filename_suffix 0
 \color #faf0e6
 \end_branch
-\branch conflict-rus-belarus
-\selected 1
-\filename_suffix 0
-\color #faf0e6
-\end_branch
 \branch conflict-es-gl
 \selected 0
 \filename_suffix 0
 \color #faf0e6
 \end_branch
-\branch conflict-bg-mk
-\selected 1
+\branch conflict-mk
+\selected 0
 \filename_suffix 0
 \color #faf0e6
 \end_branch

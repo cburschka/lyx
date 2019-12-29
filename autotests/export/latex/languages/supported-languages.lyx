@@ -105,18 +105,13 @@ enumitem
 \filename_suffix 0
 \color #faf0e6
 \end_branch
-\branch conflict-rus-belarus
-\selected 0
-\filename_suffix 0
-\color #faf0e6
-\end_branch
 \branch conflict-es-gl
 \selected 0
 \filename_suffix 0
 \color #faf0e6
 \end_branch
-\branch conflict-bg-mk
-\selected 1
+\branch conflict-mk
+\selected 0
 \filename_suffix 0
 \color #faf0e6
 \end_branch
@@ -803,8 +798,8 @@ inverted 0
 status open
 
 \begin_layout Standard
-\begin_inset Branch conflict-rus-belarus
-inverted 0
+\begin_inset Branch conflict-mk
+inverted 1
 status open
 
 \begin_layout Quote
@@ -849,7 +844,7 @@ Until 2018-08-25 (babel-belarusian 1.4), the babel option was "belarusianb"
 \end_layout
 
 \begin_layout Itemize
-Conflict with Russian and Macedonian.
+Conflict with Macedonian.
 \end_layout
 
 \begin_layout Subsection*
@@ -956,6 +951,11 @@ LangCode br_FR
 Bulgarian
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch conflict-mk
+inverted 1
+status open
+
 \begin_layout Quote
 
 \emph off
@@ -963,6 +963,11 @@ Bulgarian
 Бъ̀лгарският езѝк е индоевропейски език от групата на южнославянските езици.
  Той е официалният език на Република България и един от 23-те официални
  езика на Европейския съюз.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -983,6 +988,10 @@ LangCode bg_BG
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Script Cyrillic
+\end_layout
+
+\begin_layout Itemize
+Conflict with Macedonian.
 \end_layout
 
 \begin_layout Standard
@@ -4179,8 +4188,8 @@ inverted 0
 status open
 
 \begin_layout Standard
-\begin_inset Branch conflict-rus-belarus
-inverted 1
+\begin_inset Branch conflict-mk
+inverted 0
 status open
 
 \begin_layout Quote
@@ -4225,7 +4234,7 @@ LangCode mk_MK
 \end_layout
 
 \begin_layout Itemize
-Conflict with Babel-Belarussian.
+Conflict with Belarusian, Bulgarian, Mongolian, Russian, and Ukrainian.
 \end_layout
 
 \begin_layout Subsection*
@@ -4347,6 +4356,11 @@ Mongolian
 inverted 0
 status open
 
+\begin_layout Standard
+\begin_inset Branch conflict-mk
+inverted 1
+status open
+
 \begin_layout Quote
 
 \lang mongolian
@@ -4355,6 +4369,11 @@ status open
 Монгол хэл
 \emph default
  бичиг гэнэ.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4419,6 +4438,10 @@ Script Cyrillic
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 LangCode mn_MN
+\end_layout
+
+\begin_layout Itemize
+Conflict with Macedonian.
 \end_layout
 
 \begin_layout Subsection*
@@ -4805,7 +4828,7 @@ Russian
 \end_layout
 
 \begin_layout Standard
-\begin_inset Branch conflict-rus-belarus
+\begin_inset Branch conflict-mk
 inverted 1
 status open
 
@@ -4856,15 +4879,9 @@ LangCode ru_RU
 \end_layout
 
 \begin_layout Itemize
-Option clash with Belarusian: 
+Conflict with Macedonian.
 \end_layout
 
-\begin_deeper
-\begin_layout LyX-Code
-Package babel Error: if@uni@ode already defined.
-\end_layout
-
-\end_deeper
 \begin_layout Subsubsection*
 Russian
 \begin_inset space ~
@@ -5049,8 +5066,8 @@ Serbian (Cyrillic)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Branch polyglossia-only
-inverted 0
+\begin_inset Branch conflict-mk
+inverted 1
 status open
 
 \begin_layout Quote
@@ -5903,6 +5920,11 @@ LangCode tk_TM
 Ukrainian
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch conflict-mk
+inverted 1
+status open
+
 \begin_layout Quote
 
 \emph on
@@ -5912,6 +5934,11 @@ Ukrainian
  (історичні назви — ру́ська, руси́нська) — національна мова українців.
  Належить до слов'янської групи індоєвропейської мовної сім'ї.
  Число мовців — близько 45 млн, більшість яких живе в Україні.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -5932,6 +5959,10 @@ Script Cyrillic
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 LangCode uk_UA
+\end_layout
+
+\begin_layout Itemize
+Conflict with Macedonian.
 \end_layout
 
 \begin_layout Subsection*
