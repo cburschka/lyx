@@ -818,7 +818,6 @@ void Tabular::moveColumn(col_type col, ColDirection direction)
 		std::swap(cell_info[r][col].left_line, cell_info[r][col + 1].left_line);
 		std::swap(cell_info[r][col].right_line, cell_info[r][col + 1].right_line);
 
-		// FIXME track changes is broken for tabular features (#8469)
 		idx_type const i = cellIndex(r, col);
 		idx_type const j = cellIndex(r, col + 1);
 		if (buffer().params().track_changes) {
@@ -842,7 +841,6 @@ void Tabular::moveRow(row_type row, RowDirection direction)
 		std::swap(cell_info[row][c].top_line, cell_info[row + 1][c].top_line);
 		std::swap(cell_info[row][c].bottom_line, cell_info[row + 1][c].bottom_line);
 
-		// FIXME track changes is broken for tabular features (#8469)
 		idx_type const i = cellIndex(row, c);
 		idx_type const j = cellIndex(row + 1, c);
 		if (buffer().params().track_changes) {
