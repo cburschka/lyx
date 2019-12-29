@@ -445,9 +445,13 @@ docstring const InsetCollapsible::getNewLabel(docstring const & l) const
 	pos_type const n = min(max_length, p_siz);
 	pos_type i = 0;
 	pos_type j = 0;
+	bool changed_content = false;
 	for (; i < n && j < p_siz; ++j) {
-		if (paragraphs().begin()->isDeleted(j))
-			continue;
+		if (paragraphs().begin()->isChanged(j)) {
+			changed_content = true;
+			if (paragraphs().begin()->isDeleted(j))
+				continue;
+		}
 		if (paragraphs().begin()->isInset(j)) {
 			if (!paragraphs().begin()->getInset(j)->isChar())
 				continue;
@@ -459,7 +463,11 @@ docstring const InsetCollapsible::getNewLabel(docstring const & l) const
 	if (paragraphs().size() > 1 || (i > 0 && j < p_siz)) {
 		label << "...";
 	}
-	docstring const lbl = label.str();
+	docstring lbl;
+	// indicate changed content in label (#8645)
+	if (changed_content)
+		lbl = char_type(0x270E);// ✎ U+270E LOWER RIGHT PENCIL
+	lbl += label.str();
 	return lbl.empty() ? l : lbl;
 }
 

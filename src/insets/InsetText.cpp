@@ -1077,6 +1077,7 @@ docstring InsetText::toolTipText(docstring prefix, size_t const len) const
 	ParagraphList::const_iterator end = paragraphs().end();
 	ParagraphList::const_iterator it = beg;
 	bool ref_printed = false;
+	bool changed_content = false;
 
 	for (; it != end; ++it) {
 		if (it != beg)
@@ -1084,12 +1085,14 @@ docstring InsetText::toolTipText(docstring prefix, size_t const len) const
 		if ((*it).isRTL(buffer().params()))
 			oss << "<div dir=\"rtl\">";
 		writePlaintextParagraph(buffer(), *it, oss, rp, ref_printed, len);
-		if ((*it).isRTL(buffer().params()))
-			oss << "</div>";
+		if ((*it).isChanged(0, (*it).size()))
+			changed_content = true;
 		if (oss.tellp() >= 0 && size_t(oss.tellp()) > len)
 			break;
 	}
 	docstring str = oss.str();
+	if (changed_content)
+		str += from_ascii("\n\n") + _("[contains tracked changes]");
 	support::truncateWithEllipsis(str, len);
 	return str;
 }
