@@ -434,6 +434,22 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 			continue;
 		}
 
+		// Do not output empty environments if the whole paragraph has
+		// been deleted with ct and changes are not output.
+		if (size_t(pit + 1) < paragraphs.size()) {
+			ParagraphList::const_iterator nextpar = paragraphs.constIterator(pit + 1);
+			Paragraph const & cpar = paragraphs.at(pit);
+			if ((par->layout() != nextpar->layout()
+			     || par->params().depth() == nextpar->params().depth()
+			     || par->params().leftIndent() == nextpar->params().leftIndent())
+			    && !runparams.for_search && cpar.size() > 0
+			    && cpar.isDeleted(0, cpar.size()) && !buf.params().output_changes) {
+				if (!buf.params().output_changes && !cpar.parEndChange().deleted())
+					os << '\n' << '\n';
+				continue;
+			}
+		}
+
 		// This is a new environment.
 		TeXEnvironmentData const data =
 			prepareEnvironment(buf, text, par, os, runparams);
