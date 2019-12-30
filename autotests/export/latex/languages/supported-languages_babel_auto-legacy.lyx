@@ -169,9 +169,42 @@ auto-legacy
 
 , i.e.
  each language uses its own default legacy input encoding.
+\end_layout
 
-\emph on
- 
+\begin_layout Quote
+
+\series bold
+Bug
+\series default
+ (in LyX or LaTeX?): If a language change happens in an environment (e.g.
+ a Quote), the input encoding 
+\begin_inset Quotes eld
+\end_inset
+
+utf8
+\begin_inset Quotes erd
+\end_inset
+
+ is not properly switched back after leaving the environment: the 
+\backslash
+inputencodingname is back to the encoding used before, but charcters in
+ the 
+\begin_inset Quotes eld
+\end_inset
+
+high-bit
+\begin_inset Quotes erd
+\end_inset
+
+ range produce utf8-errors (see 
+\begin_inset Quotes eld
+\end_inset
+
+nested-inputenc_auto-legacy.lyx
+\begin_inset Quotes erd
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard

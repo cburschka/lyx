@@ -1828,6 +1828,21 @@ Dummy paragraph to set language inside quote
 \end_layout
 
 \begin_layout Standard
+
+\lang czech
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Dummy paragraph to reset input encoding
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Branch debug
 inverted 0
 status collapsed
@@ -1955,29 +1970,6 @@ E0 à á â ã ä å æ ç è é ê ë ì í î ï
 
 \begin_layout Standard
 F0 ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang czech
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Czech dummy paragraph to reset input-encoding with 
-\begin_inset Quotes eld
-\end_inset
-
-auto-legacy
-\begin_inset Quotes erd
-\end_inset
-
-.
 \end_layout
 
 \end_inset
@@ -3082,29 +3074,6 @@ magyar nyelv
  a komi, a mari és a mordvin nyelvek.
 \end_layout
 
-\begin_layout Standard
-
-\lang czech
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Czech dummy paragraph to reset input-encoding with 
-\begin_inset Quotes eld
-\end_inset
-
-auto-legacy
-\begin_inset Quotes erd
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Babel magyar
@@ -3852,6 +3821,20 @@ Kurmancî an kurmanciya jorîn yek ji zaravayên zimanê kurdî ye.
 \end_layout
 
 \begin_layout Standard
+
+\lang czech
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Dummy paragraph to reset input encoding with inputenc=auto-legacy
+\end_layout
+
+\end_inset
+
+
+\lang english
+
 \begin_inset Branch debug
 inverted 0
 status collapsed
@@ -5087,6 +5070,155 @@ status open
 
 \end_layout
 
+\begin_layout Standard
+
+\lang czech
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Dummy paragraph to reset input encoding with inputenc=auto-legacy
+\end_layout
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Branch debug
+inverted 0
+status collapsed
+
+\begin_layout Standard
+The language is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+languagename
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, the input encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+inputencodingname
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ and the font encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+makeatletter
+\backslash
+f@encoding
+\backslash
+makeatother
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A0   ¡ ¢ £ ¤ ¥ ¦ § 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¨
+\end_layout
+
+\end_inset
+
+ © ª « ¬ ® 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¯
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+B0 ° ± ² ³ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+´
+\end_layout
+
+\end_inset
+
+ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿
+\end_layout
+
+\begin_layout Standard
+C0 À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï
+\end_layout
+
+\begin_layout Standard
+D0 Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß
+\end_layout
+
+\begin_layout Standard
+E0 à á â ã ä å æ ç è é ê ë ì í î ï
+\end_layout
+
+\begin_layout Standard
+F0 ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 LyX serbian
@@ -5901,6 +6033,155 @@ Türkmen dili
  Türkmen dili - türki dilleriň oguz dilleri toparyna degişlidir.
 \end_layout
 
+\begin_layout Standard
+
+\lang czech
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Dummy paragraph to reset input encoding with inputenc=auto-legacy
+\end_layout
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Branch debug
+inverted 0
+status collapsed
+
+\begin_layout Standard
+The language is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+languagename
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, the input encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+inputencodingname
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ and the font encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+makeatletter
+\backslash
+f@encoding
+\backslash
+makeatother
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A0   ¡ ¢ £ ¤ ¥ ¦ § 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¨
+\end_layout
+
+\end_inset
+
+ © ª « ¬ ® 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¯
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+B0 ° ± ² ³ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+´
+\end_layout
+
+\end_inset
+
+ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿
+\end_layout
+
+\begin_layout Standard
+C0 À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï
+\end_layout
+
+\begin_layout Standard
+D0 Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß
+\end_layout
+
+\begin_layout Standard
+E0 à á â ã ä å æ ç è é ê ë ì í î ï
+\end_layout
+
+\begin_layout Standard
+F0 ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Babel turkmen
@@ -6038,6 +6319,155 @@ Việt ngữ
 \emph default
 , là ngôn ngữ của người Việt (người Kinh) và là ngôn ngữ chính thức tại
  Việt Nam
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang czech
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Dummy paragraph to reset input encoding with inputenc=auto-legacy
+\end_layout
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Branch debug
+inverted 0
+status collapsed
+
+\begin_layout Standard
+The language is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+languagename
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, the input encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+inputencodingname
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ and the font encoding 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+makeatletter
+\backslash
+f@encoding
+\backslash
+makeatother
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A0   ¡ ¢ £ ¤ ¥ ¦ § 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¨
+\end_layout
+
+\end_inset
+
+ © ª « ¬ ® 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¯
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+B0 ° ± ² ³ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+´
+\end_layout
+
+\end_inset
+
+ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿
+\end_layout
+
+\begin_layout Standard
+C0 À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï
+\end_layout
+
+\begin_layout Standard
+D0 Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß
+\end_layout
+
+\begin_layout Standard
+E0 à á â ã ä å æ ç è é ê ë ì í î ï
+\end_layout
+
+\begin_layout Standard
+F0 ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
 \end_layout
 
 \end_inset

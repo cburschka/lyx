@@ -84,6 +84,14 @@ export/examples/ja/Graphics_and_Insets/XY-Pic.*_systemF
 export/doc/he/.*pdf5_systemF
 export/.*/fa/Welcome_(dvi3|pdf5)_systemF
 
+Bug (in LyX or LaTeX?): 
+If a language change happens in an environment, LyX does not write an
+explicit \inputencoding{<new-default>} when switching back to the "outer"
+language. However, without explicit \inputencoding, the input encoding
+“utf8” is not properly switched back and high-bit characters like "ä" produce
+an "inputenc Error: Invalid UTF-8 byte "A0"".
+export/export/latex/languages/nested-inputenc_auto-legacy_pdf2
+
 
 # ================================================
 Sublabel: lyxbugs
