@@ -45,7 +45,7 @@ public:
 	docstring toolTip(BufferView const &, int, int) const
 		{ return tooltip_; }
 	///
-  docstring getTOCString() const;
+	docstring getTOCString() const;
 	///
 	bool hasSettings() const { return true; }
 	///
