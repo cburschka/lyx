@@ -64,6 +64,15 @@ void InsetMathRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "ref") {
+			if (cmd.getArg(1) == "changetarget") {
+				string const oldtarget = cmd.getArg(2);
+				string const newtarget = cmd.getArg(3);
+				if (!oldtarget.empty() && !newtarget.empty()
+				    && asString(cell(0)) == from_utf8(oldtarget))
+					changeTarget(from_utf8(newtarget));
+				cur.forceBufferUpdate();
+				break;
+			}
 			MathData ar;
 			if (createInsetMath_fromDialogStr(cmd.argument(), ar)) {
 				cur.recordUndo();

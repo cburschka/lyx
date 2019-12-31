@@ -105,7 +105,7 @@ void InsetLabel::updateLabelAndRefs(docstring const & new_label,
 	UndoGroupHelper ugh(&buffer());
 	if (cursor)
 		cursor->recordUndo();
-	if (buffer().params().track_changes) {
+	if (buffer().masterParams().track_changes) {
 		// With change tracking, we insert a new label and
 		// delete the old one
 		InsetCommandParams p(LABEL_CODE, "label");
@@ -123,15 +123,23 @@ void InsetLabel::updateReferences(docstring const & old_label,
 		docstring const & new_label)
 {
 	UndoGroupHelper ugh;
-	for (auto const & p: buffer().references(old_label)) {
-		ugh.resetBuffer(p.second.buffer());
-		CursorData(p.second).recordUndo();
-		if (p.first->lyxCode() == MATH_REF_CODE) {
-			InsetMathRef * mi = p.first->asInsetMath()->asRefInset();
-			mi->changeTarget(new_label);
-		} else {
-			InsetCommand * ref = p.first->asInsetCommand();
-			ref->setParam("reference", new_label);
+	if (buffer().masterParams().track_changes) {
+		// With change tracking, we insert a new ref and
+		// delete the old one
+		lyx::dispatch(FuncRequest(LFUN_MASTER_BUFFER_FORALL,
+					  "inset-forall Ref inset-modify ref changetarget "
+					  + old_label + " " + new_label));
+	} else {
+		for (auto const & p: buffer().references(old_label)) {
+			ugh.resetBuffer(p.second.buffer());
+			CursorData(p.second).recordUndo();
+			if (p.first->lyxCode() == MATH_REF_CODE) {
+				InsetMathRef * mi = p.first->asInsetMath()->asRefInset();
+				mi->changeTarget(new_label);
+			} else {
+				InsetCommand * ref = p.first->asInsetCommand();
+				ref->setParam("reference", new_label);
+			}
 		}
 	}
 }

@@ -33,8 +33,13 @@ public:
 	///
 	InsetRef(Buffer * buffer, InsetCommandParams const &);
 
+	///
+	void changeTarget(docstring const & new_label);
+
 	/// \name Public functions inherited from Inset class
 	//@{
+	///
+	docstring layoutName() const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///

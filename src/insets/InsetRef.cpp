@@ -79,6 +79,28 @@ ParamInfo const & InsetRef::findInfo(string const & /* cmdName */)
 }
 
 
+docstring InsetRef::layoutName() const
+{
+	return from_ascii("Ref");
+}
+
+
+void InsetRef::changeTarget(docstring const & new_label)
+{
+	// With change tracking, we insert a new ref
+	// and delete the old one
+	if (buffer().masterParams().track_changes) {
+		InsetCommandParams icp(REF_CODE, "ref");
+		icp["reference"] = new_label;
+		string const data = InsetCommand::params2string(icp);
+		lyx::dispatch(FuncRequest(LFUN_INSET_INSERT, data));
+		lyx::dispatch(FuncRequest(LFUN_CHAR_DELETE_FORWARD));
+	} else
+		setParam("reference", new_label);
+}
+
+
+
 void InsetRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	string const inset = cmd.getArg(0);
@@ -91,6 +113,15 @@ void InsetRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 			pstring = "caps";
 		else if (arg == "toggle-noprefix")
 			pstring = "noprefix";
+		else if (arg == "changetarget") {
+			string const oldtarget = cmd.getArg(2);
+			string const newtarget = cmd.getArg(3);
+			if (!oldtarget.empty() && !newtarget.empty()
+			    && getParam("reference") == from_utf8(oldtarget))
+				changeTarget(from_utf8(newtarget));
+			cur.forceBufferUpdate();
+			return;
+		}
 	}
 	// otherwise not for us
 	if (pstring.empty())
@@ -111,6 +142,8 @@ bool InsetRef::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	string const arg = cmd.getArg(1);
 	string pstring;
+	if (arg == "changetarget")
+		return true;
 	if (arg == "toggle-plural")
 		pstring = "plural";
 	else if (arg == "toggle-caps")
