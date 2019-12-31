@@ -22,6 +22,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "Lexer.h"
+#include "LyX.h"
 #include "MetricsInfo.h"
 #include "texstream.h"
 
@@ -186,13 +187,33 @@ void InsetCommand::validate(LaTeXFeatures & features) const
 }
 
 
+void InsetCommand::changeCmdName(string const & new_name)
+{
+	string const old_name = getCmdName();
+	if (old_name == new_name)
+		return;
+
+	if (buffer().masterParams().track_changes) {
+		// With change tracking, we insert a new inset and
+		// delete the old one
+		InsetCommandParams p(p_.code());
+		p = p_;
+		p.setCmdName(new_name);
+		string const data = InsetCommand::params2string(p);
+		lyx::dispatch(FuncRequest(LFUN_INSET_INSERT, data));
+		lyx::dispatch(FuncRequest(LFUN_CHAR_DELETE_FORWARD));
+	} else
+		p_.setCmdName(new_name);
+}
+
+
 void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY: {
 		if (cmd.getArg(0) == "changetype") {
 			cur.recordUndo();
-			p_.setCmdName(cmd.getArg(1));
+			changeCmdName(cmd.getArg(1));
 			cur.forceBufferUpdate();
 			initView();
 			break;
@@ -203,7 +224,14 @@ void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.noScreenUpdate();
 		else {
 			cur.recordUndo();
-			setParams(p);
+			if (buffer().masterParams().track_changes) {
+				// With change tracking, we insert a new inset and
+				// delete the old one
+				string const data = InsetCommand::params2string(p);
+				lyx::dispatch(FuncRequest(LFUN_INSET_INSERT, data));
+				lyx::dispatch(FuncRequest(LFUN_CHAR_DELETE_FORWARD));
+			} else
+				setParams(p);
 		}
 		// FIXME We might also want to check here if this one is in the TOC.
 		// But I think most of those are labeled.

@@ -118,6 +118,8 @@ protected:
 	/// What matters here is the parameter name, not position.
 	/// \see InsetCommandParams::setCmdName
 	void setCmdName(std::string const & n) { p_.setCmdName(n); }
+	///
+	void changeCmdName(std::string const & new_name);
 	//@}
 
 private:
