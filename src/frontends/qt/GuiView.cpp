@@ -1967,6 +1967,10 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		enable = doc_buffer != 0;
 		break;
 
+	case LFUN_MASTER_BUFFER_FORALL:
+		enable = doc_buffer != 0;
+		break;
+
 	case LFUN_BUFFER_WRITE:
 		enable = doc_buffer && (doc_buffer->isUnnamed() || !doc_buffer->isClean());
 		break;
@@ -4176,6 +4180,25 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				b = theBufferList().next(b);
 			} while (b != first);
 			dr.setMessage(_("All documents saved."));
+			break;
+		}
+
+		case LFUN_MASTER_BUFFER_FORALL: {
+			if (!doc_buffer)
+				break;
+
+			FuncRequest funcToRun = lyxaction.lookupFunc(cmd.getLongArg(0));
+			funcToRun.allowAsync(false);
+
+			for (Buffer const * buf : doc_buffer->allRelatives()) {
+				// Switch to other buffer view and resend cmd
+				lyx::dispatch(FuncRequest(
+					LFUN_BUFFER_SWITCH, buf->absFileName()));
+				lyx::dispatch(funcToRun);
+			}
+			// switch back
+			lyx::dispatch(FuncRequest(
+				LFUN_BUFFER_SWITCH, doc_buffer->absFileName()));
 			break;
 		}
 

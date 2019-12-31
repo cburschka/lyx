@@ -69,6 +69,8 @@
 
 * export-cancel: Used to cancel background export processes.
 
+* master-buffer-forall executes an lfun in the master and all children of a document.
+
 * paragraph-select is a new convenience function to select the paragraph
   surrounding the actual cursor position.
 

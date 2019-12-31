@@ -488,6 +488,7 @@ enum FuncCode
 	LFUN_BIDI,
 	// 380
 	LFUN_BUFFER_RESET_EXPORT,       // spitz 20191226
+	LFUN_MASTER_BUFFER_FORALL,      // spitz 20191231
 	LFUN_LASTACTION                 // end of the table
 };
 

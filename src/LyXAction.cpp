@@ -2587,6 +2587,26 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_MASTER_BUFFER_EXPORT, "master-buffer-export", ReadOnly, Buffer },
+		
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MASTER_BUFFER_FORALL
+ * \li Action: Applies a command to a buffer and all it children, starting from the master.
+ * \li Syntax: master-buffer-forall <LFUN-COMMAND>
+ * \li Params: <LFUN-COMMAND>: The command to be applied to the buffers.
+ * \li Sample: Close all Notes in buffers: \n
+	       master-buffer-forall inset-forall Note inset-toggle close \n
+	       Toggle change tracking on buffers: \n
+	       master-buffer-forall changes-track \n
+	       Toggle read-only for buffers: \n
+	       master-buffer-forall buffer-toggle-read-only \n
+	       Show statistics for individual buffers: \n
+	       master-buffer-forall statistics \n
+	       Activate the branch named "Solutions" in buffers: \n
+	       master-buffer-forall branch-activate Solutions \n
+ * \li Origin: spitz, 31 Dec 2019
+ * \endvar
+ */
+		{ LFUN_MASTER_BUFFER_FORALL, "master-buffer-forall", ReadOnly | Argument, Buffer },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_MASTER_BUFFER_UPDATE
