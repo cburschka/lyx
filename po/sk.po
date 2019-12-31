@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-12-29 09:05+0100\n"
-"PO-Revision-Date: 2019-12-29 08:35+0000\n"
+"POT-Creation-Date: 2019-12-30 16:55+0100\n"
+"PO-Revision-Date: 2019-12-30 15:55+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -35668,6 +35668,10 @@ msgstr "Viac-riadkové v aktuálnom alebo cieľovom riadku."
 #: src/insets/InsetTabular.cpp:5650
 msgid "Selection size should match clipboard content."
 msgstr "Veľkosť výberu by mala zodpovedať obsahu klipovej dosky."
+
+#: src/insets/InsetText.cpp:1095
+msgid "[contains tracked changes]"
+msgstr "[obsahuje sledované zmeny]"
 
 #: src/insets/InsetWrap.cpp:68
 msgid "wrap: "
