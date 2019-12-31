@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-11-22 11:43-0500\n"
-"PO-Revision-Date: 2019-10-31 10:10+0000\n"
+"POT-Creation-Date: 2019-12-31 11:37+0100\n"
+"PO-Revision-Date: 2019-12-31 10:40+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -28828,7 +28828,7 @@ msgstr "Príkaz blokovaný"
 
 #: src/frontends/qt4/GuiApplication.cpp:1317
 msgid "Command not allowed without a buffer open"
-msgstr "Príkaz nie je povolený pokiaľ nie je otvorený aspoň jeden zásobník"
+msgstr "Príkaz nie je povolený pokiaľ nie je otvorený aspoň jeden dokument"
 
 #: src/frontends/qt4/GuiApplication.cpp:1324
 msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
@@ -28900,7 +28900,7 @@ msgstr "Nemôžem iterovať viac ako %1$d krát"
 #: src/frontends/qt4/GuiApplication.cpp:1956
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
-msgstr "Aplikované \"%1$s\" na %2$d zásobníkoch"
+msgstr "\"%1$s\" uplatnené pre %2$d dokument(y)"
 
 #: src/frontends/qt4/GuiApplication.cpp:2031
 #, c-format
@@ -31659,7 +31659,7 @@ msgstr "Otváram dokument potomka %1$s…"
 #: src/frontends/qt4/GuiView.cpp:3534
 #, c-format
 msgid "No buffer for file: %1$s."
-msgstr "Žiadny zásobník pre súbor: %1$s."
+msgstr "Žiadny dokument pre súbor: %1$s."
 
 #: src/frontends/qt4/GuiView.cpp:3544
 msgid "Inverse Search Failed"
@@ -31679,7 +31679,7 @@ msgstr "Chyba pri exporte"
 
 #: src/frontends/qt4/GuiView.cpp:3620
 msgid "Error cloning the Buffer."
-msgstr "Chyba pri klonovaní zásobníka."
+msgstr "Chyba pri klonovaní pamäte dokumentu."
 
 #: src/frontends/qt4/GuiView.cpp:3771 src/frontends/qt4/GuiView.cpp:3791
 msgid "Exporting ..."
@@ -33843,7 +33843,7 @@ msgstr ""
 
 #: src/support/lassert.cpp:83
 msgid "Buffer Error!"
-msgstr "Chyba zásobníka!"
+msgstr "Chyba v pamäti dokumentu!"
 
 #: src/support/lassert.cpp:90
 msgid ""
