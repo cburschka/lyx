@@ -154,7 +154,8 @@ public:
 	DocIterator selectionEnd() const;
 
 	///
-	docstring selectionAsString(bool with_label) const;
+	docstring selectionAsString(bool const with_label,
+				    bool const skipdelete = false) const;
 	/// get some interesting description of top position
 	void info(odocstream & os, bool devel_mode) const;
 	///

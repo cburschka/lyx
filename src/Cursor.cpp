@@ -347,7 +347,7 @@ docstring parbreak(CursorData const * cur)
 }
 
 
-docstring CursorData::selectionAsString(bool with_label) const
+docstring CursorData::selectionAsString(bool const with_label, bool const skipdelete) const
 {
 	if (!selection())
 		return docstring();
@@ -355,8 +355,12 @@ docstring CursorData::selectionAsString(bool with_label) const
 	if (inMathed())
 		return cap::grabSelection(*this);
 
-	int const label = with_label
+	int label = with_label
 		? AS_STR_LABEL | AS_STR_INSETS : AS_STR_INSETS;
+	if (skipdelete)
+		label = with_label
+				? AS_STR_LABEL | AS_STR_INSETS | AS_STR_SKIPDELETE
+				: AS_STR_INSETS | AS_STR_SKIPDELETE;
 
 	idx_type const startidx = selBegin().idx();
 	idx_type const endidx = selEnd().idx();

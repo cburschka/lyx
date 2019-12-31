@@ -950,7 +950,7 @@ void cutSelectionHelper(Cursor & cur, CutStack & cuts, bool realcut, bool putcli
 			// Even if there is no selection.
 			if (putclip)
 				putClipboard(cuts[0].first, cuts[0].second,
-				             cur.selectionAsString(true));
+				             cur.selectionAsString(true, true));
 		}
 
 		if (begpit != endpit)
@@ -1011,7 +1011,7 @@ void cutSelectionToTemp(Cursor & cur, bool realcut)
 
 void copySelection(Cursor const & cur)
 {
-	copySelection(cur, cur.selectionAsString(true));
+	copySelection(cur, cur.selectionAsString(true, true));
 }
 
 
@@ -1122,7 +1122,7 @@ void saveSelection(Cursor const & cur)
 	if (cur.selection()
 	    && cur.selBegin() == cur.bv().cursor().selBegin()
 	    && cur.selEnd() == cur.bv().cursor().selEnd()) {
-		LYXERR(Debug::SELECTION, "saveSelection: '" << cur.selectionAsString(true) << "'");
+		LYXERR(Debug::SELECTION, "saveSelection: '" << cur.selectionAsString(true, true) << "'");
 		copySelectionToStack(cur, selectionBuffer);
 	}
 }
