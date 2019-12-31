@@ -32,6 +32,8 @@
 
 !!!The following pref variables were added in 2.4:
 
+* \ct_additions_underlined true|false: determines whether additions in change tracking
+  are underlined in the workarea (default: true).
 
 
 !!!The following pref variables were changed in 2.4:
@@ -57,13 +59,18 @@
 
 !!!The following new LyX functions have been introduced in 2.4:
 
-* paragraph-select is a new convenience function to select the paragraph
-  surrounding the actual cursor position.
+* bidi is a helper function to implement icons that are different between LTR and RTL text. 
+
+* buffer-reset-export advises LyX to remove the auxiliary files before doing the next
+  export.
 
 * buffer-write-as-template is a new convenience function to ease saving a document
   in the (personal) templates folder.
 
 * export-cancel: Used to cancel background export processes.
+
+* paragraph-select is a new convenience function to select the paragraph
+  surrounding the actual cursor position.
 
 * tabular-style-insert: Insert a table in a specified style.
 
