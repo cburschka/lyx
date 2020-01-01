@@ -1911,12 +1911,16 @@ void LatexInfo::buildEntries(bool isPatternString)
           int endpar = 2 + interval_.findclosing(found._dataStart, interval_.par.length(), '{', '}', closings);
           found._dataStart = endpar;
           found._tokensize = found._dataStart - found._tokenstart;
-          closings = 1;
+          closings = 0;
         }
         if (interval_.par.substr(found._dataStart-1, 15).compare("\\endarguments{}") == 0) {
           found._dataStart += 15;
         }
-        size_t endpos = interval_.findclosing(found._dataStart, interval_.par.length(), '{', '}', closings);
+        size_t endpos;
+        if (closings < 1)
+          endpos = found._dataStart - 1;
+        else
+          endpos = interval_.findclosing(found._dataStart, interval_.par.length(), '{', '}', closings);
         if (found.keytype == KeyInfo::isList) {
           // Check if it really is list env
           static regex const listre("^([a-z]+)$");
@@ -2041,9 +2045,9 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("url|href|vref|thanks", KeyInfo(KeyInfo::isStandard, 1, false), isPatternString);
 
   // Ignore deleted text
-  makeKey("lyxdeleted", KeyInfo(KeyInfo::doRemove, 2, false), isPatternString);
+  makeKey("lyxdeleted", KeyInfo(KeyInfo::doRemove, 3, false), isPatternString);
   // but preserve added text
-  makeKey("lyxadded", KeyInfo(KeyInfo::doRemove, 1, false), isPatternString);
+  makeKey("lyxadded", KeyInfo(KeyInfo::doRemove, 2, false), isPatternString);
 
   // Macros to remove, but let the parameter survive
   // No split
