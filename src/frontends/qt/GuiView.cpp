@@ -1971,13 +1971,23 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		if (doc_buffer == 0) {
 			flag.message(from_utf8(N_("Command not allowed without a buffer open")));
 			enable = false;
+			break;
 		}
 		FuncRequest const cmdToPass = lyxaction.lookupFunc(cmd.getLongArg(0));
 		if (cmdToPass.action() == LFUN_UNKNOWN_ACTION) {
-			flag.message(from_utf8(N_("the <LFUN-COMMAND> argument of master-buffer-forall is not valid")));
+			flag.message(from_utf8(N_("Invalid argument of master-buffer-forall")));
 			enable = false;
-		} else {
-			enable = true;
+			break;
+		}
+		enable = false;
+		for (Buffer * buf : doc_buffer->allRelatives()) {
+			GuiWorkArea * wa = workArea(*buf);
+			if (!wa)
+				continue;
+			if (wa->bufferView().getStatus(cmdToPass, flag)) {
+				enable = flag.enabled();
+				break;
+			}
 		}
 		break;
 	}
