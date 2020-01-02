@@ -582,6 +582,8 @@ Menuset
 		Item "Reject Change|R" "change-reject"
 		Item "Accept All Changes|c" "all-changes-accept"
 		Item "Reject All Changes|e" "all-changes-reject"
+		Item "Accept All Changes (incl. Master/Children/Siblings)|p" "ifrelatives master-buffer-forall all-changes-accept"
+		Item "Reject All Changes (incl. Master/Children/Siblings)|j" "ifrelatives master-buffer-forall all-changes-reject"
 		Item "Show Changes in Output|S" "changes-output"
 	End
 
