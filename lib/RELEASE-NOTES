@@ -69,6 +69,8 @@
 
 * export-cancel: Used to cancel background export processes.
 
+* ifrelatives is a helper function to check whether a buffer has a master or children.
+
 * master-buffer-forall executes an lfun in the master and all children of a document.
 
 * paragraph-select is a new convenience function to select the paragraph

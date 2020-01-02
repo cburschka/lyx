@@ -1923,6 +1923,19 @@ void LyXAction::init()
  */
 		{ LFUN_ICON_SIZE, "icon-size", NoBuffer, Buffer },
 
+
+/*!
+ * \var lyx::FuncCode lyx::LFUN_IF_RELATIVES
+ * \li Action: Helper function for master-related actions
+ * \li Notion: In a buffer, the function will be disabled if the buffer
+ *             has no master or children. It thus allows to enable
+ *             actions only in documents with master/children
+ * \li Syntax: ifrelatives <ACTION>
+ * \li Origin: spitz, 2 January 2020
+ * \endvar
+ */
+		{ LFUN_IF_RELATIVES, "ifrelatives", Noop, Buffer },
+
 /*!
  * \var lyx::FuncCode lyx::LFUN_INDEX_INSERT
  * \li Action: Inserts Index entry.

@@ -1310,6 +1310,20 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 		break;
 	}
 
+	case LFUN_IF_RELATIVES: {
+		string const lfun = to_utf8(cmd.argument());
+		BufferView const * bv =
+			current_view_ ? current_view_->currentBufferView() : nullptr;
+		if (!bv || (bv->buffer().parent() == nullptr && !bv->buffer().hasChildren())) {
+			enable = false;
+			break;
+		}
+		FuncRequest func(lyxaction.lookupFunc(lfun));
+		func.setOrigin(cmd.origin());
+		flag = getStatus(func);
+		break;
+	}
+
 	case LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE:
 	case LFUN_REPEAT:
 	case LFUN_PREFERENCES_SAVE:
@@ -2042,6 +2056,18 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_BIDI: {
 		string const lfun = cmd.getLongArg(1);
 		FuncRequest func(lyxaction.lookupFunc(cmd.getLongArg(1)));
+		func.setOrigin(cmd.origin());
+		FuncStatus const stat = getStatus(func);
+		if (stat.enabled()) {
+			dispatch(func);
+			break;
+		}
+		break;
+	}
+
+	case LFUN_IF_RELATIVES: {
+		string const lfun = to_utf8(cmd.argument());
+		FuncRequest func(lyxaction.lookupFunc(lfun));
 		func.setOrigin(cmd.origin());
 		FuncStatus const stat = getStatus(func);
 		if (stat.enabled()) {
