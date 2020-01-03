@@ -1565,8 +1565,8 @@ int Intervall::findclosing(int start, int end, char up = '{', char down = '}', i
       depth++;
     }
     else if (c == down) {
-      repeat--;
       if (depth == 0) {
+        repeat--;
         if ((repeat <= 0) || (par[i+1] != up))
           return i;
       }
