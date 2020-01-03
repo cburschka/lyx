@@ -3,13 +3,13 @@
 #
 # Zdenko Podobný <zdpo@mailbox.sk>, 2003, 2006.
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
-# Kornel Benko <kornel@lyx.org>, 2009-2019.
+# Kornel Benko <kornel@lyx.org>, 2009-2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2019-12-30 16:55+0100\n"
-"PO-Revision-Date: 2019-12-30 15:55+0000\n"
+"POT-Creation-Date: 2020-01-02 14:34+0100\n"
+"PO-Revision-Date: 2020-01-02 13:57+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -20790,6 +20790,18 @@ msgid "Reject All Changes|e"
 msgstr "Odhodiť všetky zmeny|O"
 
 #: lib/ui/stdmenus.inc:585
+msgid "Accept All Changes (incl. Master/Children/Siblings)|p"
+msgstr ""
+"Akceptovať všetky zmeny (vrátane pre hlavný súbor, potomky a rovnocenné "
+"súbory)|r"
+
+#: lib/ui/stdmenus.inc:586
+msgid "Reject All Changes (incl. Master/Children/Siblings)|j"
+msgstr ""
+"Odmietnuť všetky zmeny (vrátane pre hlavný súbor, potomky a rovnocenné "
+"súbory)|m"
+
+#: lib/ui/stdmenus.inc:585
 msgid "Show Changes in Output|S"
 msgstr "Zobraziť zmeny vo výstupe|i"
 
@@ -30515,9 +30527,9 @@ msgstr "Príkaz blokovaný"
 msgid "Command not allowed without a buffer open"
 msgstr "Príkaz nie je povolený pokiaľ nie je otvorený aspoň jeden dokument"
 
-#: src/frontends/qt/GuiApplication.cpp:1334
+#: src/frontends/qt/GuiApplication.cpp:1352
 msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
-msgstr "argument pre <LFUN-COMMAND> buffer-forall je neplatný"
+msgstr "neplatný <LFUN-COMMAND>-argument pre funkciu 'buffer-forall'"
 
 #: src/frontends/qt/GuiApplication.cpp:1411
 msgid "Wrong focus!"
@@ -33478,6 +33490,10 @@ msgstr "Automatické ukladanie zlyhalo!"
 #: src/frontends/qt/GuiView.cpp:1909
 msgid "Command not allowed without any document open"
 msgstr "Príkaz nie je povolený pokiaľ nie je otvorený aspoň jeden dokument"
+
+#: src/frontends/qt/GuiView.cpp:1978
+msgid "Invalid argument of master-buffer-forall"
+msgstr "neplatný-argument pre funkciu 'master-buffer-forall'"
 
 #: src/frontends/qt/GuiView.cpp:2067 src/frontends/qt/GuiView.cpp:2084
 #, c-format
