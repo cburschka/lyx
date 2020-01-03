@@ -380,7 +380,7 @@ docstring getLaTeXMarkup(docstring const & macro, Author const & author,
 					  "Choose an appropriate document encoding (such as utf8)\n"
 					  "or change the author initials."),
 					uncodable_initials, author_initials_latexed.second));
-				warned_author_initials.insert(uncodable_author);
+				warned_author_initials.insert(uncodable_initials);
 			}
 		}
 	}
