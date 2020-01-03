@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-01-02 16:44+0100\n"
-"PO-Revision-Date: 2020-01-02 16:51+0100\n"
+"POT-Creation-Date: 2020-01-03 14:59+0100\n"
+"PO-Revision-Date: 2020-01-03 15:00+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -36118,6 +36118,12 @@ msgid "Selection size should match clipboard content."
 msgstr ""
 "Die Anzahl der ausgewählten Zellen stimmt nicht mit dem Inhalt der "
 "Zwischenablage überein."
+
+# , c-format
+# , c-format
+#: src/insets/InsetText.cpp:1095
+msgid "[contains tracked changes]"
+msgstr "[enthält verfolgte Änderungen]"
 
 #: src/insets/InsetWrap.cpp:68
 msgid "wrap: "
