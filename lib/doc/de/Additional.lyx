@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 590
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -46,7 +46,7 @@ shapepar
 \language ngerman
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
 \font_typewriter "lmtt" "default"
@@ -54,7 +54,9 @@ shapepar
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -81,7 +83,7 @@ shapepar
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize a4paper
+\papersize a4
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -103,6 +105,7 @@ shapepar
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \notefontcolor #0000ff
 \index Stichwortverzeichnis
 \shortcut idx
@@ -120,8 +123,10 @@ shapepar
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
@@ -3941,7 +3946,6 @@ Falls Sie im restlichen Dokument keine Grafiken verwenden, müssen Sie zusätzli
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 
 \backslash
 usepackage{graphics}
@@ -7011,6 +7015,19 @@ Rückwärtssuche wird mit
 Shift-Klick
 \family default
  initiiert.
+ Das funktioniert allerdings nur, wenn Okular im Modus 
+\begin_inset Quotes gld
+\end_inset
+
+Durchsuchen
+\begin_inset Quotes grd
+\end_inset
+
+ ist (d.
+\begin_inset space \thinspace{}
+\end_inset
+
+h., das Hand-Symbol muss ausgewählt sein).
 \end_layout
 
 \begin_layout Subsubsection*
@@ -7626,7 +7643,6 @@ $$t
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 .tex
 \end_layout
 
@@ -7651,7 +7667,6 @@ $$f
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 .tex
 \end_layout
 
@@ -26300,7 +26315,6 @@ Ungewöhnliche Absatzformen
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 shapepar
 \end_layout
 
@@ -27262,6 +27276,7 @@ Hier ist ein Beispiel:
 \begin_inset CommandInset include
 LatexCommand input
 filename "../SpecialParagraphShape.tex"
+literal "true"
 
 \end_inset
 

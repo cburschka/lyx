@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 584
+\lyxformat 590
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -78,7 +78,7 @@ shapepar
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize a4paper
+\papersize a4
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -121,9 +121,11 @@ shapepar
 \tablestyle default
 \tracking_changes true
 \output_changes false
+\change_bars false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller"
 \author 5863208 "ab"
 \author 1119979965 "Joel A. Kulesza"
 \end_header
@@ -7522,6 +7524,23 @@ lyxclient -g %f %l
 
 \begin_layout Standard
 Reverse search is triggered by SHIFT-click.
+
+\change_inserted -712698321 1578211026
+ Note that this only works if Okular is in 
+\begin_inset Quotes eld
+\end_inset
+
+Browse
+\begin_inset Quotes erd
+\end_inset
+
+ mode (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., the hand symbol is clicked).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection*
