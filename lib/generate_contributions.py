@@ -234,7 +234,11 @@ $output=$output. "
 
 if (isset($msg_ref) && $msg_ref != "") {
         $msg_ref = htmlspecialchars("$msg_ref");
-        $output=$output. "[[https://marc.info/?l=lyx-devel&amp;" . ${msg_ref} . "|" . ${msg_title} . "]]";
+        if (substr($msg_ref, 0, 2) == "m=") {
+                $output=$output. "[[https://marc.info/?l=lyx-devel&amp;" . ${msg_ref} . "|" . ${msg_title} . "]]";
+        } else {
+                $output=$output. "[[https://www.mail-archive.com/lyx-devel@lists.lyx.org/" . ${msg_ref} . ".html |" . ${msg_title} . "]]";
+        }
 } else {
         $output=$output. "${msg_title}";
 }
@@ -328,6 +332,20 @@ def main(argv, contributors):
 
 
 # Store the raw data.
+#
+# NOTE: syntax is
+#      contributor(u"Name",
+#                 "Email [address () domain ! tld]",
+#                 "GPL",
+#                 "Message title",
+#                 "Message ID",
+#                 "Date of Message",
+#                 u"Type of contribution"),
+#
+# Message ID can be either MARC [e.g., "m=1234567891011"]
+#                or mail-archive.com [e.g., "msg75510"]
+# (note that MARC was used exclusively until 2019-10, when MARC stopped
+#  archieving lyx-devel)
 contributors = [
 
      contributor(u"Ronen Abravanel",
