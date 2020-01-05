@@ -2060,6 +2060,14 @@ contributors = [
                  "17 February 2014",
                  u"Support for g++ on 4.8 Mac"),
 
+     contributor(u"Patrick De Visschere",
+                 "pdvisschere () edpnet ! be>",
+                 "GPL",
+                 "Re: Blanket permission",
+                 "msg209960",
+                 "2 December 2019",
+                 u"Improvement to the CMake build scripts"),
+
      contributor(u"Herbert Voß",
                  "herbert.voss () alumni ! tu-berlin ! de",
                  "GPL",
