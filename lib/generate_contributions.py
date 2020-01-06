@@ -596,6 +596,14 @@ contributors = [
                  "30 March 2005",
                  u"Bug fixes"),
 
+     contributor(u"Eugene Chornyi",
+                 "technikmagma () gmail ! com",
+                 "GPL",
+                 "Contribution license",
+                 "msg210143",
+                 "5 January 2020",
+                 u"Windows installation improvements"),
+
      contributor(u"Jean-Pierre Chrétien",
                  "jeanpierre.chretien () free ! fr",
                  "GPL",
