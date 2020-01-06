@@ -596,6 +596,14 @@ contributors = [
                  "30 March 2005",
                  u"Bug fixes"),
 
+     contributor(u"Yuri Chornoivan",
+                 "yurchor () ukr ! net",
+                 "GPL",
+                 "Permission grant",
+                 "m=121681339315810",
+                 "23 July 2008",
+                 u"Ukrainian translation"),
+
      contributor(u"Eugene Chornyi",
                  "technikmagma () gmail ! com",
                  "GPL",
@@ -619,14 +627,6 @@ contributors = [
                  "m=113749629514591",
                  "17 January 2006",
                  u"Italian translation"),
-
-     contributor(u"Yuri Chornoivan",
-                 "yurchor () ukr ! net",
-                 "GPL",
-                 "Permission grant",
-                 "m=121681339315810",
-                 "23 July 2008",
-                 u"Ukrainian translation"),
 
      contributor(u"Tommaso Cucinotta",
                  "cucinotta () sssup ! it",
