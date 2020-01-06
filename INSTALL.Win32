@@ -15,28 +15,39 @@ Compiling with Microsoft Visual C++ (MSVC)
 	
 ----------------------------------------------------------------------------
 	
-	The following instructions assume the LyX source code is in C:\LyX\lyx-24
+	The following instructions assume the LyX source code is in C:\LyX\repo
 	You can also use another directory if you prefer.
+	For repository cloning and version control you can use Git https://git-scm.com/download/win
+	or the Team Explorer in Visual Studio 2019
 
-1	Install MSVC 2017
+1	Install MSVC 2019
 
-	If you don't have Visual C++ 2017 installed, get the free Community edition
-	from https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&rel=15
+	If you don't have Visual C++ 2019 installed, get the free Community edition
+	from https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&rel=16
+	You will need the Workload "Desktopdevelopment with C++" and you can also install Python 3
+	(either selecting Python-Development workload or just Python 3 in the individual components tab)
+	in the Visual Studio installer, so that you don't have to install it separately
 
 2	Install Qt
 
-	Download the latest Qt for Open Source C++ development on Windows (VS2017)
+	Download the latest Qt online installer for Open Source development on Windows
 	from https://qt.io/download-open-source/
 	Qt 5.12.x is recommended, but 5.9.x or later versions should work as well.
-	If you want to build LyX as 32bit application, you need Qt x86.
-	If you want to build LyX as 64bit application, you need Qt x64.
-	Make sure that the bin subfolder of the Qt installation (e.g.
+	The newest Qt is 5.12.6, in the installer you will need to expand that category and mark MSVC 2017 32-bit and/or
+	MSVC 2017 64-bit, depending on which versions of LyX you want to build.
+	Note, you dont need to Install the "old" 2017 build tools in Visual Studio installer,
+	the 2019 ones are compatible with MSVC 2017 kits installed with Qt.
+	Qt should install in C:\Qt.
 
 3	Install Python
 
 	Install the latest Python 3.x version from
 	https://www.python.org/downloads/
 	Assure that you use the installer option "Add Python 3.x to PATH"
+	If you install Python through Visual Studio installer, just find it under Settings > Apps,
+	select "Change" and enable the "Add to PATH" option; or add the path, in which the python.exe
+	is located manually to the PATH environment variable, should be something like:
+	C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64
 
 4	Install CMake
 
@@ -47,18 +58,19 @@ Compiling with Microsoft Visual C++ (MSVC)
 	Download the LyX for Windows build dependencies from
 	ftp.lyx.de/LyXWinInstaller/lyx-windows-deps-msvc2017.zip
 	and extract it e.g. to 
-	C:\LyX\lyx-24\lyx-windows-deps-msvc2017
+	C:\LyX\lyx-windows-deps-msvc2017
+	This is the later needed GNUWIN32 directory
 
 6	Configure
 
 	- Open the CMake GUI
 	
-	- Set the source code path to C:\LyX\lyx-24
-	  Set the build path to C:\LyX\lyx-24-build
-	  Click Configure and set the generator to "Visual Studio 15 2017" to
-	  build a 32bit LyX or add the x64 option to build a 64bit LyX.
+	- Set the source code path to C:\LyX\repo
+	  Set the build path to e.g. C:\LyX\build
+	  Click Configure and set the generator to "Visual Studio 16 2019".
+	  Select the platform (Win32 or x64) you wish to compile for.
 
-	- Set LYX_USE_QT to QT5 and click Configure.
+	- Click on finish
 	
 	- You will now get an error about missing GNUWIN32 directory.
 
@@ -66,9 +78,12 @@ Compiling with Microsoft Visual C++ (MSVC)
 	  (This alternative does currently not work:
 	   Enable LYX_DEPENDENCIES_DOWNLOAD and click Configure.
 	   Pre-compiled dependencies will automatically be downloaded.)
+
+	- Set LYX_USE_QT to QT5.
 	
-	- set CMAKE_PREFIX_PATH to the path of Qt
-	  e.g. to C:/Qt/Qt5.12.5/5.12.5/msvc2017
+	- set CMAKE_PREFIX_PATH to the path of a Qt-kit
+	  e.g. to C:\Qt\5.12.6\msvc2017_64 or C:\Qt\5.12.6\msvc2017 depending on which platform you have chosen
+	  If you cant find this option, simply add a new entry of type "path" manually
 
 	- Enable the LYX_INSTALL option and click Configure.
 
@@ -77,22 +92,30 @@ Compiling with Microsoft Visual C++ (MSVC)
 7	Compile
 
 	A Microsoft Visual C++ solution should has been generated at
-	C:\LyX\lyx-23-build\lyx.sln
+	C:\LyX\build\lyx.sln
 	- Open the lyx.sln by double-clicking on it
-	- Use the menu BUILD -> Build Solution
+	- This solution file contains multiple projects in different folders.
+	- In solution explorer find the project "INSTALL" in the "CMakeTargets" folder, rightlick > Build
+	- If you get an error, that something has failed, try going Build > Build solution at the top menu bar
+	  and then rebuild the INSTALL project
+	  
 
 8	Copy dependencies
 
+	- Compiling the INSTALL project creates the folder C:\LyX\build\LYX_INSTALLED containing the files 
+	  needed to run LyX
+
 	- Copy these folders:
-	C:\LyX\lyx-24\lyx-windows-deps-msvc2017\bin
-	C:\LyX\lyx-24\lyx-windows-deps-msvc2017\imagemagick
-	C:\LyX\lyx-24\lyx-windows-deps-msvc2017\Python
-	C:\LyX\lyx-24\lyx-windows-deps-msvc2017\ghostscript
-	C:\LyX\lyx-24\lyx-windows-deps-msvc2017\Resources
-	to C:\LyX\lyx-24-build\LYX_INSTALLED
+	C:\LyX\lyx-windows-deps-msvc2017\bin
+	C:\LyX\lyx-windows-deps-msvc2017\imagemagick
+	C:\LyX\lyx-windows-deps-msvc2017\Python
+	C:\LyX\lyx-windows-deps-msvc2017\ghostscript
+	C:\LyX\lyx-windows-deps-msvc2017\Resources
+	to C:\LyX\build\LYX_INSTALLED
 	(allow the request to overwrite)
 
-	- Copy from the Qt bin directory (see section 2 "Install Qt" above) these files:
+	- Go to the Qt-kit directory, which you have specified as CMAKE_PREFIX_PATH, enter the bin folder
+	  Copy these files:
 	Qt5Core.dll
 	Qt5Gui.dll
 	Qt5Svg.dll
@@ -103,20 +126,19 @@ Compiling with Microsoft Visual C++ (MSVC)
 	Qt5Svgd.dll (if compiling Debug version)
 	Qt5Widgetsd.dll (if compiling Debug version)
 	Qt5WinExtrasd.dll (if compiling Debug version)
-	to C:\LyX\lyx-24-build\LYX_INSTALLED\bin
+	to C:\LyX\build\LYX_INSTALLED\bin
 	
-	- Copy from this Qt directory
-	C:\Qt\Qt5.12.5\5.12.5\msvc2017\plugins
-	these subdirectories: 
+	- Go to the Qt-kit directory, which you have specified as CMAKE_PREFIX_PATH, enter the plugins folder
+	  Copy these subdirectories: 
 	iconengines
 	imageformats
 	platforms
 	styles
-	to C:\LyX\lyx-24-build\LYX_INSTALLED\bin
+	to C:\LyX\build\LYX_INSTALLED\bin
 
 9	Start LyX
 
-	C:\LyX\lyx-24-build\LYX_INSTALLED\bin\lyx.exe
+	C:\LyX\build\LYX_INSTALLED\bin\lyx.exe
 
 10	Define path prefix
 
@@ -127,6 +149,42 @@ Compiling with Microsoft Visual C++ (MSVC)
 
 	You may also add the location of your LaTeX installation if it's not on the
 	system PATH, and the location of JabRef.
+
+
+Debugging
+=========
+
+	- Open LyX.sln
+
+	- In Solution Explorer open applications\LyX\LyX\main.cpp, the main function is the entry point,
+	  you can e.g. place breakpoints in there.
+
+	- On the menu bar in Solution Explorer there is a button "Switch Views", click on that and choose "Folder view"
+	  (to go back to normal view, click Switch Views again and choose "LyX.sln")
+
+	- In folder view find "LyX.exe" in "LYX_INSTALLED\bin" folder, rightclick > Set as Startup Item
+
+	- Start debugging with F5, clicking the Debug button (it shows now "LyX.exe") or rigchtlicking on LyX.exe in 
+	  Solution Explorer - Folder View and choosing "Debug".
+	  (Starting debugging will have to be always with active Folder View. Attempting to start debugging with 
+	  normal view active will start LyX.exe located in e.g. C:\LyX\build\bin\Debug, it won't find the dependencies
+	  and will therefore fail. Once debugging has started you can switch back to normal view of the Solution Explorer)
+
+
+Creating a patch file containing a bugfix
+=========================================
+
+	If you managed to fix a bug but dont have the rights to push your commits, you will want to create a patch file
+	and share it with other developers. To do so you will have to do following:
+
+	- Make sure you are working on the newest versions, pull from git before you start bugfixing.
+
+	- After fixing a bug create a commit (it will be on your local repo and not on server), if there is a bugreport for it
+	  put the Ticket nr. as description.
+
+	- Use this command in git bash:
+	git format-patch -1 HEAD
+	it will create a patch file in your repository folder, this is what you share.
 
 
 Creating the Installer
