@@ -527,7 +527,13 @@ void BufferView::processUpdateFlags(Update::flags flags)
 	// Then make sure that the screen contains the cursor if needed
 	if (flags & Update::FitCursor) {
 		if (needsFitCursor()) {
-			scrollToCursor(d->cursor_, false);
+			// First try to make the selection start visible
+			// (which is just the cursor when there is no selection)
+			scrollToCursor(d->cursor_.selectionBegin(), false);
+			// Is the cursor visible? (only useful if cursor is at end of selection)
+			if (needsFitCursor())
+				// then try to make cursor visible instead
+				scrollToCursor(d->cursor_, false);
 			// Metrics have to be recomputed (maybe again)
 			updateMetrics(flags);
 		}
