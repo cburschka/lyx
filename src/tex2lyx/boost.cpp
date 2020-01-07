@@ -20,20 +20,32 @@ using namespace std;
 
 namespace boost {
 
-void throw_exception(std::exception const & e)
+#ifndef BOOST_NO_EXCEPTIONS
+void throw_exception(exception const & e)
 {
-	cerr << "Exception caught:\n"
-	       << e.what() << endl;
+	cerr << "Exception caught:\n" << e.what() << endl;
 	BOOST_ASSERT(false);
 }
+#endif
 
 
 void assertion_failed(char const * expr, char const * function,
-		      char const * file, long line)
+		char const * file, long line)
 {
 	cerr << "Assertion triggered in " << function
 	    << " by failing check \"" << expr << "\""
 	    << " in file " << file << ":" << line << endl;
+	::abort();
+}
+
+void assertion_failed_msg(char const * expr, char const * msg,
+		char const * function, char const * file, long line)
+{
+	cerr << "Assertion triggered in " << function
+	       << " by failing check \"" << expr << "\""
+	       << " with message \"" << msg << "\""
+	       << " in file " << file << ":" << line << endl;
+
 	::abort();
 }
 

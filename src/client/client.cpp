@@ -724,13 +724,3 @@ int main(int argc, char * argv[])
 	return app.exec();
 }
 
-
-namespace boost {
-
-void assertion_failed(char const* a, char const* b, char const* c, long d)
-{
-	lyx::lyxerr << "Assertion failed: " << a << ' ' << b << ' ' << c << ' '
-		<< d << '\n';
-}
-
-} // namespace boost
