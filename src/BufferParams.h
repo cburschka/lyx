@@ -437,6 +437,8 @@ public:
 	bool change_bars;
 	///
 	bool compressed;
+	///
+	bool postpone_fragile_content;
 
 	/// the author list for the document
 	AuthorList & authors();

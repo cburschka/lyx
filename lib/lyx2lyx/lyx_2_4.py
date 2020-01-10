@@ -3668,6 +3668,28 @@ def revert_changebars(document):
     del document.header[i]
 
 
+def convert_postpone_fragile(document):
+    " Adds false \\postpone_fragile_content buffer param "
+
+    i = find_token(document.header, "\\output_changes", 0)
+    if i == -1:
+        document.warning("Malformed LyX document! Missing \\output_changes header.")
+        return
+    # Set this to false for old documents (see #2154)
+    document.header.insert(i, "\\postpone_fragile_content false")
+
+
+def revert_postpone_fragile(document):
+    " Remove \\postpone_fragile_content buffer param "
+
+    i = find_token(document.header, "\\postpone_fragile_content", 0)
+    if i == -1:
+        document.warning("Malformed LyX document! Missing \\postpone_fragile_content.")
+        return
+
+    del document.header[i]
+
+
 ##
 # Conversion hub
 #
@@ -3719,10 +3741,12 @@ convert = [
            [587, [convert_pagesizenames]],
            [588, []],
            [589, [convert_totalheight]],
-           [590, [convert_changebars]]
+           [590, [convert_changebars]],
+           [591, [convert_postpone_fragile]]
           ]
 
-revert =  [[589, [revert_changebars]],
+revert =  [[590, [revert_postpone_fragile]],
+           [589, [revert_changebars]],
            [588, [revert_totalheight]],
            [587, [revert_memoir_endnotes,revert_enotez,revert_theendnotes]],
            [586, [revert_pagesizenames]],

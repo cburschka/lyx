@@ -913,8 +913,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	connect(outputModule->shellescapeCB, SIGNAL(stateChanged(int)),
 		this, SLOT(shellescapeChanged()));
-	connect(outputModule->outputsyncCB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
+	connect(outputModule->outputsyncCB, SIGNAL(toggled(bool)),
+		this, SLOT(setOutputSync(bool)));
 	connect(outputModule->synccustomCB, SIGNAL(editTextChanged(QString)),
 		this, SLOT(change_adaptor()));
 	outputModule->synccustomCB->addItem("");
@@ -926,7 +926,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 		outputModule->synccustomCB));
 
 	connect(outputModule->saveTransientPropertiesCB, SIGNAL(clicked()),
-	        this, SLOT(change_adaptor()));
+		this, SLOT(change_adaptor()));
+	connect(outputModule->postponeFragileCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 
 
 	// language & quote
@@ -3682,6 +3684,8 @@ void GuiDocument::applyView()
 
 	bp_.save_transient_properties =
 		outputModule->saveTransientPropertiesCB->isChecked();
+	bp_.postpone_fragile_content =
+		outputModule->postponeFragileCB->isChecked();
 
 	// fonts
 	bp_.fonts_roman[nontexfonts] =
@@ -4313,6 +4317,8 @@ void GuiDocument::paramsToDialog()
 	outputModule->shellescapeCB->setChecked(bp_.shell_escape);
 	outputModule->outputsyncCB->setChecked(bp_.output_sync);
 	outputModule->synccustomCB->setEditText(toqstr(bp_.output_sync_macro));
+	outputModule->synccustomCB->setEnabled(bp_.output_sync);
+	outputModule->synccustomLA->setEnabled(bp_.output_sync);
 
 	outputModule->mathimgSB->setValue(bp_.html_math_img_scale);
 	outputModule->mathoutCB->setCurrentIndex(bp_.html_math_output);
@@ -4321,6 +4327,8 @@ void GuiDocument::paramsToDialog()
 
 	outputModule->saveTransientPropertiesCB
 		->setChecked(bp_.save_transient_properties);
+	outputModule->postponeFragileCB
+		->setChecked(bp_.postpone_fragile_content);
 
 	// paper
 	bool const extern_geometry =
@@ -5151,6 +5159,13 @@ void GuiDocument::linenoToggled(bool on)
 void GuiDocument::outputChangesToggled(bool on)
 {
 	changesModule->changeBarsCB->setEnabled(on);
+	change_adaptor();
+}
+
+void GuiDocument::setOutputSync(bool on)
+{
+	outputModule->synccustomCB->setEnabled(on);
+	outputModule->synccustomLA->setEnabled(on);
 	change_adaptor();
 }
 

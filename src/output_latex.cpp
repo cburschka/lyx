@@ -818,7 +818,8 @@ void TeXOnePar(Buffer const & buf,
 			// Due to the moving argument, some fragile
 			// commands (labels, index entries)
 			// are output after this command (#2154)
-			runparams.postpone_fragile_stuff = true;
+			runparams.postpone_fragile_stuff =
+				bparams.postpone_fragile_content;
 		if (intitle_command)
 			os << '{';
 
@@ -932,7 +933,8 @@ void TeXOnePar(Buffer const & buf,
 			// Due to the moving argument, some fragile
 			// commands (labels, index entries)
 			// are output after this command (#2154)
-			runparams.postpone_fragile_stuff = true;
+			runparams.postpone_fragile_stuff =
+				bparams.postpone_fragile_content;
 		os << '{';
 	}
 
@@ -1149,7 +1151,8 @@ void TeXOnePar(Buffer const & buf,
 			// Due to the moving argument, some fragile
 			// commands (labels, index entries)
 			// are output after this command (#2154)
-			runparams.postpone_fragile_stuff = true;
+			runparams.postpone_fragile_stuff =
+				bparams.postpone_fragile_content;
 	}
 
 	Font const outerfont = text.outerFont(pit);

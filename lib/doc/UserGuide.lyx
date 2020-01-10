@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 590
+\lyxformat 591
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -150,6 +150,7 @@ logicalmkup
 \tracking_changes true
 \output_changes false
 \change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
@@ -47725,25 +47726,105 @@ reference "sec:File-Formats"
 \end_layout
 
 \begin_layout Description
+
+\change_inserted -712698321 1578647276
+Allow
+\begin_inset space ~
+\end_inset
+
+running
+\begin_inset space ~
+\end_inset
+
+external
+\begin_inset space ~
+\end_inset
+
+programs If this is switched on, \SpecialChar LaTeX
+ is run with the 
+\family typewriter
+-shell-escape
+\family default
+ option which is needed with some packages.
+ Note that this comes with security risks, so please use this only when
+ really necessary and if you know what you are doing.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1578647006
+LaTeX
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Options offers settings for the 
+\family sans
+LaTeX
+\family default
+ export.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family sans
 Synchronize
+\change_inserted -712698321 1578646679
+ 
+\change_deleted -712698321 1578646679
+
 \begin_inset space ~
 \end_inset
 
+
+\change_unchanged
 with
+\change_deleted -712698321 1578646686
+
 \begin_inset space ~
 \end_inset
 
-Output settings for the menu 
+
+\change_inserted -712698321 1578646686
+ 
+\change_unchanged
+Output
+\family default
+ 
+\change_inserted -712698321 1578646719
+enables 
+\change_deleted -712698321 1578646729
+settings for the menu 
 \family sans
 Navigate\SpecialChar menuseparator
+
+\change_unchanged
 Forward
 \begin_inset space ~
 \end_inset
 
 search
+\change_inserted -712698321 1578646752
+
 \family default
+ and allows to customize the macro used in this process
+\change_deleted -712698321 1578646757
 .
- For a detailed description see section 
+
+\change_unchanged
+ 
+\change_inserted -712698321 1578646759
+(
+\change_deleted -712698321 1578646759
+F
+\change_inserted -712698321 1578646759
+f
+\change_unchanged
+or a detailed description see section 
 \emph on
 Reverse DVI/PDF search
 \emph default
@@ -47755,9 +47836,55 @@ Additional
 
 Features
 \emph default
- manual.
+ manual
+\change_inserted -712698321 1578646762
+)
+\change_unchanged
+.
+\change_inserted -712698321 1578647009
+
 \end_layout
 
+\begin_layout Itemize
+
+\change_inserted -712698321 1578647929
+
+\family sans
+Put fragile content out of moving arguments
+\family default
+ determines whether so-called 
+\begin_inset Quotes els
+\end_inset
+
+fragile
+\begin_inset Quotes ers
+\end_inset
+
+ \SpecialChar LaTeX
+ constructs (such as labels or index entries) are placed outside of so-called
+ 
+\begin_inset Quotes els
+\end_inset
+
+moving arguments
+\begin_inset Quotes ers
+\end_inset
+
+ in \SpecialChar LaTeX
+ (such as sections or captions), even if the corresponding insets are
+ placed in such context in \SpecialChar LyX
+.
+ This setting is on by default, since it prevents nasty \SpecialChar LaTeX
+ errors.
+ If you rely on labels or index entries being kept inside the problematic
+ macros, you can uncheck this.
+ If you don't know what we are talking about here, worry not: just leave
+ it checked.
+\change_unchanged
+
+\end_layout
+
+\end_deeper
 \begin_layout Description
 XHTML
 \begin_inset space ~

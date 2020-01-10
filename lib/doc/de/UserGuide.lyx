@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 590
+\lyxformat 591
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -155,6 +155,7 @@ logicalmkup
 \tracking_changes false
 \output_changes false
 \change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
@@ -45050,6 +45051,106 @@ reference "sec:Dateiformate"
 .
 \end_layout
 
+\begin_layout Description
+Erlaube
+\begin_inset space ~
+\end_inset
+
+den
+\begin_inset space ~
+\end_inset
+
+Aufruf
+\begin_inset space ~
+\end_inset
+
+externer
+\begin_inset space ~
+\end_inset
+
+Programme Wenn dies aktiviert ist, wird \SpecialChar LaTeX
+ mit der Option 
+\family typewriter
+-shell-escape
+\family default
+ ausgeführt.
+ Dies ist zur Nutzung mancher Pakete nötig.
+ Beachten Sie, dass dies Sicherheitsrisiken birgt! Aktivieren Sie dies also
+ nur wenn unbedingt nötig und Sie absolut sicher sind, was Sie tun.
+\end_layout
+
+\begin_layout Description
+LaTeX-Ausgabe-Optionen bietet Einstellmöglichkeiten für den 
+\family sans
+LaTeX
+\family default
+-Export.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family sans
+Mit der Ausgabe synchronisieren
+\family default
+ aktiviert die 
+\family sans
+Vorwärtssuche
+\family default
+ und ermöglicht die Anpassung der dabei verwendeten Makros.
+ Siehe Abschnitt 
+\emph on
+DVI/PDF Rückwärtssuche
+\emph default
+ der 
+\emph on
+Handbuchergänzungen
+\emph default
+ für eine detaillierte Beschreibung.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Zerbrechlichen Inhalt aus beweglichen Argumenten verschieben
+\family default
+ bestimmt, ob so genannte 
+\begin_inset Quotes gls
+\end_inset
+
+zerbrechliche
+\begin_inset Quotes grs
+\end_inset
+
+ \SpecialChar LaTeX
+-Konstrukte (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ Marken oder Stichworteinträge) in der \SpecialChar LaTeX
+-Ausgabe außerhalb von so genannten
+ 
+\begin_inset Quotes gls
+\end_inset
+
+beweglichen Argumenten
+\begin_inset Quotes grs
+\end_inset
+
+ (wie Legenden oder Überschriften) gesetzt werden, auch wenn die entsprechenden
+ Einfügungen in \SpecialChar LyX
+ in dieses Umfeld platziert werden.
+ Diese Einstellung ist per Voreinstellung aktiviert, da sie unangenehme
+ \SpecialChar LaTeX
+-Fehler verhindert.
+ Falls Sie darauf angewiesen sind, dass Marken oder Stichworteinträge innerhalb
+ der problematischen Umgebungen verbleiben, können Sie dies deaktivieren.
+ Falls Sie keine Ahnung haben, wovon wir hier überhaupt reden, kein Problem:
+ Lassen Sie es einfach aktiviert.
+\end_layout
+
+\end_deeper
 \begin_layout Description
 Mit
 \begin_inset space ~

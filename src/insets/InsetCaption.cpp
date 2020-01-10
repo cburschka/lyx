@@ -260,7 +260,7 @@ void InsetCaption::latex(otexstream & os,
 	OutputParams runparams = runparams_in;
 	// Some fragile commands (labels, index entries)
 	// are output after the caption (#2154)
-	runparams.postpone_fragile_stuff = true;
+	runparams.postpone_fragile_stuff = buffer().masterParams().postpone_fragile_content;
 	InsetText::latex(os, runparams);
 	if (!runparams.post_macro.empty()) {
 		// Output the stored fragile commands (labels, indices etc.)

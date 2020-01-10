@@ -411,6 +411,7 @@ BufferParams::BufferParams()
 	track_changes = false;
 	output_changes = false;
 	change_bars = false;
+	postpone_fragile_content = true;
 	use_default_options = true;
 	maintain_unincluded_children = false;
 	secnumdepth = 3;
@@ -954,6 +955,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex >> output_changes;
 	} else if (token == "\\change_bars") {
 		lex >> change_bars;
+	} else if (token == "\\postpone_fragile_content") {
+		lex >> postpone_fragile_content;
 	} else if (token == "\\branch") {
 		lex.eatLine();
 		docstring branch = lex.getDocString();
@@ -1474,6 +1477,8 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	os << "\\change_bars "
 	   << (save_transient_properties ? convert<string>(change_bars) : "false")
 	   << '\n';
+
+	os << "\\postpone_fragile_content " << convert<string>(postpone_fragile_content) << '\n';
 
 	os << "\\html_math_output " << html_math_output << '\n'
 	   << "\\html_css_as_file " << html_css_as_file << '\n'
