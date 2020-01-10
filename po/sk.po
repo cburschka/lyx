@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-01-02 14:34+0100\n"
-"PO-Revision-Date: 2020-01-02 13:57+0000\n"
+"POT-Creation-Date: 2020-01-10 10:48+0100\n"
+"PO-Revision-Date: 2020-01-10 10:12+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3076,6 +3076,10 @@ msgstr ""
 msgid "Save &transient properties"
 msgstr "Ulož &prechodné vlastnosti"
 
+#: src/frontends/qt/ui/OutputUi.ui:279
+msgid "LaTeX Output Options"
+msgstr "Výstupné LaTeX-voľby"
+
 #: src/frontends/qt/ui/OutputUi.ui:111
 msgid ""
 "Runs the LaTeX backend with the -shell-escape option (Warning: use only when "
@@ -3104,6 +3108,20 @@ msgstr "V&lastné makro:"
 #: src/frontends/qt/ui/OutputUi.ui:151
 msgid "Custom LaTeX preamble macro"
 msgstr "Vlastné makro do preambuly LaTeX-u"
+
+#: src/frontends/qt/ui/OutputUi.ui:352
+msgid ""
+"If this is checked, fragile items such as labels and index entries are moved "
+"out of moving arguments such as sections and captions. This prevents LaTeX "
+"errors that can happen in such cases. It is recommended to keep this on."
+msgstr ""
+"Vysunúť lámavé prvky ako návestia a indexové záznamy z pohyblivých "
+"argumentov (napr. pre sekcie alebo popisy). Zamedzuje niektorým chybám "
+"LaTeXu v takých pádoch. Lepšie nechať to zaškrtnuté."
+
+#: src/frontends/qt/ui/OutputUi.ui:355
+msgid "Put fra&gile content out of moving arguments"
+msgstr "Vys&unúť lámavý obsah z pohyblivých argumentov"
 
 #: src/frontends/qt/ui/OutputUi.ui:166
 msgid "XHTML Output Options"
