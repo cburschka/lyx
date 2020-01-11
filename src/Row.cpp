@@ -392,6 +392,7 @@ void Row::add(pos_type const pos, Inset const * ins, Dimension const & dim,
 	e.dim = dim;
 	elements_.push_back(e);
 	dim_.wid += dim.wid;
+	changebar_ |= ins->isChanged();
 }
 
 

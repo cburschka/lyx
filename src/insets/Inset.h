@@ -594,6 +594,8 @@ public:
 	 */
 	virtual bool resetFontEdit() const;
 
+	/// does the inset contain changes ?
+	virtual bool isChanged() const { return false; }
 	/// set the change for the entire inset
 	virtual void setChange(Change const &) {}
 	/// accept the changes within the inset

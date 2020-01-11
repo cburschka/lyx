@@ -268,6 +268,8 @@ public:
 	bool isChanged(pos_type start, pos_type end) const;
 	/// is there an unchanged char at the given pos ?
 	bool isChanged(pos_type pos) const;
+	/// is there a change in the paragraph ?
+	bool isChanged() const;
 
 	/// is there an insertion at the given pos ?
 	bool isInserted(pos_type pos) const;

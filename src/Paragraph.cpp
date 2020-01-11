@@ -611,6 +611,12 @@ bool Paragraph::isChanged(pos_type start, pos_type end) const
 }
 
 
+bool Paragraph::isChanged() const
+{
+	return d->changes_.isChanged();
+}
+
+
 bool Paragraph::isMergedOnEndOfParDeletion(bool trackChanges) const
 {
 	// keep the logic here in sync with the logic of eraseChars()

@@ -410,6 +410,18 @@ void InsetText::fixParagraphsFont()
 }
 
 
+bool InsetText::isChanged() const
+{
+	ParagraphList::const_iterator pit = paragraphs().begin();
+	ParagraphList::const_iterator end = paragraphs().end();
+	for (; pit != end; ++pit) {
+		if (pit->isChanged())
+			return true;
+	}
+	return false;
+}
+
+
 void InsetText::setChange(Change const & change)
 {
 	ParagraphList::iterator pit = paragraphs().begin();
@@ -1077,7 +1089,6 @@ docstring InsetText::toolTipText(docstring prefix, size_t const len) const
 	ParagraphList::const_iterator end = paragraphs().end();
 	ParagraphList::const_iterator it = beg;
 	bool ref_printed = false;
-	bool changed_content = false;
 
 	for (; it != end; ++it) {
 		if (it != beg)
@@ -1085,13 +1096,11 @@ docstring InsetText::toolTipText(docstring prefix, size_t const len) const
 		if ((*it).isRTL(buffer().params()))
 			oss << "<div dir=\"rtl\">";
 		writePlaintextParagraph(buffer(), *it, oss, rp, ref_printed, len);
-		if ((*it).isChanged(0, (*it).size()))
-			changed_content = true;
 		if (oss.tellp() >= 0 && size_t(oss.tellp()) > len)
 			break;
 	}
 	docstring str = oss.str();
-	if (changed_content)
+	if (isChanged())
 		str += from_ascii("\n\n") + _("[contains tracked changes]");
 	support::truncateWithEllipsis(str, len);
 	return str;
