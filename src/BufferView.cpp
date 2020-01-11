@@ -1539,12 +1539,18 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_CHANGE_NEXT:
 		findNextChange(this);
+		if (cur.inset().isTable())
+			// In tables, there might be whole changed rows or columns
+			cur.dispatch(cmd);
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
 		dr.screenUpdate(Update::Force | Update::FitCursor);
 		break;
 
 	case LFUN_CHANGE_PREVIOUS:
 		findPreviousChange(this);
+		if (cur.inset().isTable())
+			// In tables, there might be whole changed rows or columns
+			cur.dispatch(cmd);
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
 		dr.screenUpdate(Update::Force | Update::FitCursor);
 		break;

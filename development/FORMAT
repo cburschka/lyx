@@ -7,6 +7,10 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2020-01-11 Jürgen Spitzmüller <spitz@lyx.org>
+ 	* Format incremented to 592: Add tabular column/row tag changed=[added|deleted]
+          which tracks whether a whole row/column has been inserted/deleted in ct.
+
 2020-01-10 Jürgen Spitzmüller <spitz@lyx.org>
  	* Format incremented to 591: Add buffer param \postpone_fragile_content
          (option to toggle the movement of labels and stuff of moving arguments).

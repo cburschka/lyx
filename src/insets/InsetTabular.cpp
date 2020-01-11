@@ -451,6 +451,25 @@ bool getTokenValue(string const & str, char const * token, Length & len)
 }
 
 
+bool getTokenValue(string const & str, char const * token, Change::Type & change)
+{
+	// set the length to be zero() as default as this it should be if not
+	// in the file format.
+	change = Change::UNCHANGED;
+	string tmp;
+	if (getTokenValue(str, token, tmp)) {
+		if (tmp == "inserted") {
+			change = Change::INSERTED;
+			return true;
+		} else if (tmp == "deleted") {
+			change = Change::DELETED;
+			return true;
+		}
+	}
+	return false;
+}
+
+
 bool getTokenValue(string const & str, char const * token, Length & len, bool & flag)
 {
 	len = Length();
@@ -529,6 +548,16 @@ string const write_attribute(string const & name, Length const & value)
 {
 	// we write only the value if we really have one same reson as above.
 	return value.zero() ? string() : write_attribute(name, value.asString());
+}
+
+template <>
+string const write_attribute(string const & name, Change::Type const & type)
+{
+	if (type == Change::INSERTED)
+		return write_attribute(name, from_ascii("inserted"));
+	else if (type == Change::DELETED)
+		return write_attribute(name, from_ascii("deleted"));
+	return string();
 }
 
 } // namespace
@@ -673,7 +702,8 @@ Tabular::RowData::RowData()
 	  endfoot(false),
 	  endlastfoot(false),
 	  newpage(false),
-	  caption(false)
+	  caption(false),
+	  change(Change::UNCHANGED)
 {}
 
 
@@ -681,7 +711,8 @@ Tabular::ColumnData::ColumnData()
 	: alignment(LYX_ALIGN_CENTER),
 	  valignment(LYX_VALIGN_TOP),
 	  width(0),
-	  varwidth(false)
+	  varwidth(false),
+	  change(Change::UNCHANGED)
 {
 }
 
@@ -738,15 +769,17 @@ void Tabular::init(Buffer * buf, row_type rows_arg,
 }
 
 
-void Tabular::deleteRow(row_type const row)
+void Tabular::deleteRow(row_type const row, bool const force)
 {
 	// Not allowed to delete last row
 	if (nrows() == 1)
 		return;
 
+	bool const ct = force ? false : buffer().params().track_changes;
+
 	for (col_type c = 0; c < ncols(); ++c) {
 		// mark track changes
-		if (buffer().params().track_changes)
+		if (ct)
 			cell_info[row][c].inset->setChange(Change(Change::DELETED));
 		// Care about multirow cells
 		if (row + 1 < nrows() &&
@@ -755,7 +788,9 @@ void Tabular::deleteRow(row_type const row)
 				cell_info[row + 1][c].multirow = CELL_BEGIN_OF_MULTIROW;
 		}
 	}
-	if (!buffer().params().track_changes) {
+	if (ct)
+		row_info[row].change = Change::DELETED;
+	else {
 		row_info.erase(row_info.begin() + row);
 		cell_info.erase(cell_info.begin() + row);
 	}
@@ -808,6 +843,8 @@ void Tabular::insertRow(row_type const row, bool copy)
 		if (buffer().params().track_changes)
 			cellInfo(i).inset->setChange(Change(Change::INSERTED));
 	}
+	if (buffer().params().track_changes)
+		row_info[row + 1].change = Change::INSERTED;
 }
 
 
@@ -857,15 +894,17 @@ void Tabular::moveRow(row_type row, RowDirection direction)
 }
 
 
-void Tabular::deleteColumn(col_type const col)
+void Tabular::deleteColumn(col_type const col, bool const force)
 {
 	// Not allowed to delete last column
 	if (ncols() == 1)
 		return;
 
+	bool const ct = force ? false : buffer().params().track_changes;
+
 	for (row_type r = 0; r < nrows(); ++r) {
 		// mark track changes
-		if (buffer().params().track_changes)
+		if (ct)
 			cell_info[r][col].inset->setChange(Change(Change::DELETED));
 		// Care about multicolumn cells
 		if (col + 1 < ncols() &&
@@ -873,10 +912,12 @@ void Tabular::deleteColumn(col_type const col)
 		    cell_info[r][col + 1].multicolumn == CELL_PART_OF_MULTICOLUMN) {
 				cell_info[r][col + 1].multicolumn = CELL_BEGIN_OF_MULTICOLUMN;
 		}
-		if (!buffer().params().track_changes)
+		if (!ct)
 			cell_info[r].erase(cell_info[r].begin() + col);
 	}
-	if (!buffer().params().track_changes)
+	if (ct)
+		column_info[col].change = Change::DELETED;
+	else
 		column_info.erase(column_info.begin() + col);
 	updateIndexes();
 }
@@ -922,6 +963,8 @@ void Tabular::insertColumn(col_type const col, bool copy)
 		if (buffer().params().track_changes)
 			cellInfo(i).inset->setChange(Change(Change::INSERTED));
 	}
+	if (buffer().params().track_changes)
+		column_info[col + 1].change = Change::INSERTED;
 }
 
 
@@ -1662,8 +1705,9 @@ void Tabular::write(ostream & os) const
 		os << "<column"
 		   << write_attribute("alignment", column_info[c].alignment);
 		if (column_info[c].alignment == LYX_ALIGN_DECIMAL)
-		   os << write_attribute("decimal_point", column_info[c].decimal_point);
-		os << write_attribute("valignment", column_info[c].valignment)
+			os << write_attribute("decimal_point", column_info[c].decimal_point);
+		os << write_attribute("change", column_info[c].change)
+		   << write_attribute("valignment", column_info[c].valignment)
 		   << write_attribute("width", column_info[c].p_width.asString())
 		   << write_attribute("varwidth", column_info[c].varwidth)
 		   << write_attribute("special", column_info[c].align_special)
@@ -1684,7 +1728,8 @@ void Tabular::write(ostream & os) const
 			os << write_attribute("interlinespace", def);
 		else
 			os << write_attribute("interlinespace", row_info[r].interline_space);
-		os << write_attribute("endhead", row_info[r].endhead)
+		os << write_attribute("change", row_info[r].change)
+		   << write_attribute("endhead", row_info[r].endhead)
 		   << write_attribute("endfirsthead", row_info[r].endfirsthead)
 		   << write_attribute("endfoot", row_info[r].endfoot)
 		   << write_attribute("endlastfoot", row_info[r].endlastfoot)
@@ -1783,6 +1828,7 @@ void Tabular::read(Lexer & lex)
 		getTokenValue(line, "width", column_info[c].p_width);
 		getTokenValue(line, "special", column_info[c].align_special);
 		getTokenValue(line, "varwidth", column_info[c].varwidth);
+		getTokenValue(line, "change", column_info[c].change);
 	}
 
 	for (row_type i = 0; i < nrows(); ++i) {
@@ -1804,6 +1850,7 @@ void Tabular::read(Lexer & lex)
 		getTokenValue(line, "endlastfoot", row_info[i].endlastfoot);
 		getTokenValue(line, "newpage", row_info[i].newpage);
 		getTokenValue(line, "caption", row_info[i].caption);
+		getTokenValue(line, "change", row_info[i].change);
 		for (col_type j = 0; j < ncols(); ++j) {
 			l_getline(is, line);
 			if (!prefixIs(line, "<cell")) {
@@ -5072,14 +5119,55 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_CAPITALIZE:
 	case LFUN_WORD_UPCASE:
 	case LFUN_WORD_LOWCASE:
-	case LFUN_CHARS_TRANSPOSE:
+	case LFUN_CHARS_TRANSPOSE: {
+		bool const ct = (act == LFUN_CHANGE_ACCEPT || act == LFUN_CHANGE_REJECT);
 		if (cur.selIsMultiCell()) {
 			row_type rs, re;
 			col_type cs, ce;
 			getSelection(cur, rs, re, cs, ce);
 			Cursor tmpcur = cur;
 			for (row_type r = rs; r <= re; ++r) {
+				if (ct && cs == 0 && ce == tabular.ncols() - 1) {
+					// whole row selected
+					if (act == LFUN_CHANGE_ACCEPT) {
+						if (tabular.row_info[r].change == Change::INSERTED)
+							tabular.row_info[r].change = Change::UNCHANGED;
+						else if (tabular.row_info[r].change == Change::DELETED) {
+							tabular.deleteRow(r, true);
+							--re;
+							continue;
+						}
+					} else {
+						if (tabular.row_info[r].change == Change::DELETED)
+							tabular.row_info[r].change = Change::UNCHANGED;
+						else if (tabular.row_info[r].change == Change::INSERTED) {
+							tabular.deleteRow(r, true);
+							--re;
+							continue;
+						}
+					}
+				}
 				for (col_type c = cs; c <= ce; ++c) {
+					if (ct && rs == 0 && re == tabular.nrows() - 1) {
+						// whole col selected
+						if (act == LFUN_CHANGE_ACCEPT) {
+							if (tabular.column_info[c].change == Change::INSERTED)
+								tabular.column_info[c].change = Change::UNCHANGED;
+							else if (tabular.column_info[c].change == Change::DELETED) {
+								tabular.deleteColumn(c, true);
+								--ce;
+								continue;
+							}
+						} else {
+							if (tabular.column_info[c].change == Change::DELETED)
+								tabular.column_info[c].change = Change::UNCHANGED;
+							else if (tabular.column_info[c].change == Change::INSERTED) {
+								tabular.deleteColumn(c, true);
+								--ce;
+								continue;
+							}
+						}
+					}
 					// cursor follows cell:
 					tmpcur.idx() = tabular.cellIndex(r, c);
 					// select this cell only:
@@ -5093,7 +5181,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 					cell(tmpcur.idx())->dispatch(tmpcur, cmd);
 				}
 			}
-			if (act == LFUN_CHANGE_ACCEPT || act == LFUN_CHANGE_REJECT) {
+			if (ct) {
 				// cursor might be invalid
 				cur.fixIfBroken();
 			}
@@ -5102,6 +5190,40 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cell(cur.idx())->dispatch(cur, cmd);
 			break;
 		}
+	}
+
+	case LFUN_CHANGE_NEXT:
+	case LFUN_CHANGE_PREVIOUS: {
+		// BufferView::dispatch has already moved the cursor, we just
+		// need to select here if we have a changed row or column
+		if (tabular.row_info[tabular.cellRow(cur.idx())].change != Change::UNCHANGED) {
+			// select row
+			cur.idx() = tabular.getFirstCellInRow(tabular.cellRow(cur.idx()));
+			cur.pit() = 0;
+			cur.pos() = 0;
+			cur.resetAnchor();
+			cur.idx() = tabular.getLastCellInRow(tabular.cellRow(cur.idx()));
+			cur.pit() = cur.lastpit();
+			cur.pos() = cur.lastpos();
+			cur.selection(true);
+			bvcur = cur;
+			rowselect_ = true;
+		}
+		else if (tabular.column_info[tabular.cellColumn(cur.idx())].change != Change::UNCHANGED) {
+			// select column
+			cur.idx() = tabular.cellIndex(0, tabular.cellColumn(cur.idx()));
+			cur.pit() = 0;
+			cur.pos() = 0;
+			cur.resetAnchor();
+			cur.idx() = tabular.cellIndex(tabular.nrows() - 1, tabular.cellColumn(cur.idx()));
+			cur.pit() = cur.lastpit();
+			cur.pos() = cur.lastpos();
+			cur.selection(true);
+			bvcur = cur;
+			colselect_ = true;
+		}
+		break;
+	}
 
 	case LFUN_INSET_SETTINGS:
 		// relay this lfun to Inset, not to the cell.
@@ -5656,6 +5778,37 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			return true;
 		} else
 			return cell(cur.idx())->getStatus(cur, cmd, status);
+	}
+
+	case LFUN_CHANGE_ACCEPT:
+	case LFUN_CHANGE_REJECT: {
+		if (cur.selIsMultiCell()) {
+			row_type rs, re;
+			col_type cs, ce;
+			getSelection(cur, rs, re, cs, ce);
+			for (row_type r = rs; r <= re; ++r) {
+				if (tabular.row_info[r].change != Change::UNCHANGED) {
+					status.setEnabled(true);
+					return true;
+				}
+				for (col_type c = cs; c <= ce; ++c) {
+					if (tabular.column_info[c].change != Change::UNCHANGED) {
+						status.setEnabled(true);
+						return true;
+					}
+				}
+			}
+		} else {
+			if (tabular.row_info[tabular.cellRow(cur.idx())].change != Change::UNCHANGED) {
+				status.setEnabled(true);
+				return true;
+			}
+			else if (tabular.column_info[tabular.cellColumn(cur.idx())].change != Change::UNCHANGED) {
+				status.setEnabled(true);
+				return true;
+			}
+		}
+		return cell(cur.idx())->getStatus(cur, cmd, status);
 	}
 
 	// disable in non-fixed-width cells
@@ -6980,6 +7133,18 @@ void InsetTabular::acceptChanges()
 {
 	for (idx_type idx = 0; idx < nargs(); ++idx)
 		cell(idx)->acceptChanges();
+	for (row_type row = 0; row < tabular.nrows(); ++row) {
+		if (tabular.row_info[row].change == Change::INSERTED)
+			tabular.row_info[row].change = Change::UNCHANGED;
+		else if (tabular.row_info[row].change == Change::DELETED)
+			tabular.deleteRow(row, true);
+	}
+	for (col_type col = 0; col < tabular.ncols(); ++col) {
+		if (tabular.column_info[col].change == Change::INSERTED)
+			tabular.column_info[col].change = Change::UNCHANGED;
+		else if (tabular.column_info[col].change == Change::DELETED)
+			tabular.deleteColumn(col, true);
+	}
 }
 
 
@@ -6987,6 +7152,18 @@ void InsetTabular::rejectChanges()
 {
 	for (idx_type idx = 0; idx < nargs(); ++idx)
 		cell(idx)->rejectChanges();
+	for (row_type row = 0; row < tabular.nrows(); ++row) {
+		if (tabular.row_info[row].change == Change::DELETED)
+			tabular.row_info[row].change = Change::UNCHANGED;
+		else if (tabular.row_info[row].change == Change::INSERTED)
+			tabular.deleteRow(row, true);
+	}
+	for (col_type col = 0; col < tabular.ncols(); ++col) {
+		if (tabular.column_info[col].change == Change::DELETED)
+			tabular.column_info[col].change = Change::UNCHANGED;
+		else if (tabular.column_info[col].change == Change::INSERTED)
+			tabular.deleteColumn(col, true);
+	}
 }
 
 

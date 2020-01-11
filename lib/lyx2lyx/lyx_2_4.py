@@ -3689,6 +3689,24 @@ def revert_postpone_fragile(document):
 
     del document.header[i]
 
+def revert_colrow_tracking(document):
+    " Remove change tag from tabular columns/rows "
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Tabular", i+1)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i+1)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of tabular.")
+            continue
+        for k in range(i, j):
+            m = re.search('^<column.*change="([^"]+)".*>$', document.body[k])
+            if m:
+                document.body[k] = document.body[k].replace(' change="' + m.group(1) + '"', '')
+            m = re.search('^<row.*change="([^"]+)".*>$', document.body[k])
+            if m:
+                document.body[k] = document.body[k].replace(' change="' + m.group(1) + '"', '')
 
 ##
 # Conversion hub
@@ -3742,10 +3760,12 @@ convert = [
            [588, []],
            [589, [convert_totalheight]],
            [590, [convert_changebars]],
-           [591, [convert_postpone_fragile]]
+           [591, [convert_postpone_fragile]],
+           [592, []]
           ]
 
-revert =  [[590, [revert_postpone_fragile]],
+revert =  [[591, [revert_colrow_tracking]],
+           [590, [revert_postpone_fragile]],
            [589, [revert_changebars]],
            [588, [revert_totalheight]],
            [587, [revert_memoir_endnotes,revert_enotez,revert_theendnotes]],

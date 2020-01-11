@@ -537,7 +537,7 @@ public:
 	///
 	void appendRow(row_type row);
 	///
-	void deleteRow(row_type row);
+	void deleteRow(row_type row, bool const force = false);
 	///
 	void copyRow(row_type row);
 	///
@@ -549,7 +549,7 @@ public:
 	///
 	void appendColumn(col_type column);
 	///
-	void deleteColumn(col_type column);
+	void deleteColumn(col_type column, bool const force = false);
 	///
 	void copyColumn(col_type column);
 	///
@@ -785,6 +785,8 @@ public:
 		bool newpage;
 		/// caption
 		bool caption;
+		///
+		Change::Type change;
 	};
 	///
 	typedef std::vector<RowData> row_vector;
@@ -808,6 +810,8 @@ public:
 		docstring decimal_point;
 		///
 		bool varwidth;
+		///
+		Change::Type change;
 	};
 	///
 	typedef std::vector<ColumnData> column_vector;
