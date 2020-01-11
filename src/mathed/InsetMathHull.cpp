@@ -697,9 +697,12 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	drawMarkers(pi, x, y);
 
 	// drawing change line
-	if (canPaintChange(*bv))
-		pi.change_.paintCue(pi, x + 1, y + 1 - dim.asc,
-		                    x + dim.wid, y + dim.des);
+	if (canPaintChange(*bv)) {
+		// like in metrics()
+		int const display_margin = display() ? pi.base.inPixels(Length(12, Length::PT)) : 0;
+		pi.change_.paintCue(pi, x + 1, y + 1 - dim.asc + display_margin,
+		                    x + dim.wid, y + dim.des - display_margin);
+	}
 }
 
 
