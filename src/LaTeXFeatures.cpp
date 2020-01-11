@@ -1307,7 +1307,11 @@ string const LaTeXFeatures::getPackages() const
 	// than those above.
 
 	if (mustProvide("changebar") && !mustProvide("ct-dvipost")) {
-		packages << "\\usepackage{changebar}\n";
+		packages << "\\usepackage";
+		if (runparams_.flavor == OutputParams::LATEX
+		    || runparams_.flavor == OutputParams::DVILUATEX)
+			packages << "[dvips]";
+		packages << "{changebar}\n";
 	}
 
 	if (mustProvide("footnote")) {
