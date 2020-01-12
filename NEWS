@@ -1,3 +1,15 @@
+What's new in version 2.3.4?
+----------------------------
+
+LyX 2.3.4 is the fourth maintenance release in the 2.3.x series. 
+
+LyX 2.3.4 is the result of on-going efforts to make our stable version more 
+reliable and more stable. One important change is that we have finally fixed
+a large number of bugs related to bibitems (see bug #7548). We have also (we
+hope) fixed a long-standing bug involving the saving of files on Windows to
+Dropbox folders and another involving missing included files.
+
+
 What's new in version 2.3.3?
 ----------------------------
 
@@ -21,8 +33,7 @@ reliable and more stable. One main fix involves a crash with external viewers
 on Windows. We have also fixed a number of problems with the output of right-
 to-left languages, thanks to the involvement of users. There was also an 
 infinite loop bug connected with the separation of environments that has been 
-fixed. But, for the most part, the fixes here are incremental. Please see below 
-for a full list.
+fixed. But, for the most part, the fixes here are incremental.
   
 
 What's new in version 2.3.1?
