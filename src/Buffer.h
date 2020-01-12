@@ -624,7 +624,7 @@ public:
 	mutable UserMacroSet usermacros;
 
 	/// Replace the inset contents for insets which InsetCode is equal
-	/// to the passed \p inset_code.
+	/// to the passed \p inset_code. Handles undo.
 	void changeRefsIfUnique(docstring const & from, docstring const & to);
 
 	/// get source code (latex/docbook) for some paragraphs, or all paragraphs

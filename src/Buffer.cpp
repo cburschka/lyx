@@ -4039,14 +4039,17 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to)
 		return;
 
 	string const paramName = "key";
+	UndoGroupHelper ugh(this);
 	InsetIterator it = inset_iterator_begin(inset());
 	for (; it; ++it) {
 		if (it->lyxCode() != CITE_CODE)
 			continue;
 		InsetCommand * inset = it->asInsetCommand();
 		docstring const oldValue = inset->getParam(paramName);
-		if (oldValue == from)
+		if (oldValue == from) {
+			undo().recordUndo(CursorData(it));
 			inset->setParam(paramName, to);
+		}
 	}
 }
 

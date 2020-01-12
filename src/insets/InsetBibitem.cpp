@@ -155,7 +155,7 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 		setParam("literal", p["literal"]);
 
 		if (p["key"] != old_key) {
-			cur.recordUndoFullBuffer();
+			// changeRefsIfUnique handles undo
 			cur.bv().buffer().changeRefsIfUnique(old_key, p["key"]);
 			updateCommand(p["key"]);
 			cur.forceBufferUpdate();
