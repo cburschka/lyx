@@ -775,7 +775,7 @@ public:
 	int charCount(bool with_blanks) const;
 
 	/// FIXME: dummy function for now
-	bool areChangesPresent() const { return true; }
+	bool areChangesPresent() const;
 
 	///
 	void registerBibfiles(docstring_list const & bf) const;

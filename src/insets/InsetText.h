@@ -125,7 +125,9 @@ public:
 	void fixParagraphsFont();
 
 	/// does the inset contain changes ?
-	bool isChanged() const;
+	bool isChanged() const { return is_changed_; }
+	/// this is const because value is mutable
+	void isChanged(bool ic) const { is_changed_ = ic; }
 	/// set the change for the entire inset
 	void setChange(Change const & change);
 	/// accept the changes within the inset
@@ -247,6 +249,8 @@ private:
 	                               TocBackend & backend) const;
 	///
 	bool drawFrame_;
+	/// true if the inset contains change
+	mutable bool is_changed_;
 	///
 	ColorCode frame_color_;
 	///

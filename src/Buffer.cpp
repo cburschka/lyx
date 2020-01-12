@@ -5320,6 +5320,7 @@ void Buffer::updateBuffer(ParIterator & parit, UpdateType utype) const
 
 	depth_type maxdepth = 0;
 	pit_type const lastpit = parit.lastpit();
+	bool changed = false;
 	for ( ; parit.pit() <= lastpit ; ++parit.pit()) {
 		// reduce depth if necessary
 		if (parit->params().depth() > maxdepth) {
@@ -5350,8 +5351,15 @@ void Buffer::updateBuffer(ParIterator & parit, UpdateType utype) const
 		for (auto const & insit : parit->insetList()) {
 			parit.pos() = insit.pos;
 			insit.inset->updateBuffer(parit, utype);
+			changed |= insit.inset->isChanged();
 		}
+
+		// are there changes in this paragraph?
+		changed |= parit->isChanged();
 	}
+
+	// set change indicator for the inset
+	parit.inset().asInsetText()->isChanged(changed);
 }
 
 
@@ -5461,6 +5469,12 @@ int Buffer::wordCount() const
 int Buffer::charCount(bool with_blanks) const
 {
 	return d->charCount(with_blanks);
+}
+
+
+bool Buffer::areChangesPresent() const
+{
+	return inset().isChanged();
 }
 
 

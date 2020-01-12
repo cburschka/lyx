@@ -79,14 +79,15 @@ using graphics::PreviewLoader;
 /////////////////////////////////////////////////////////////////////
 
 InsetText::InsetText(Buffer * buf, UsePlain type)
-	: Inset(buf), drawFrame_(false), frame_color_(Color_insetframe),
+	: Inset(buf), drawFrame_(false), is_changed_(false), frame_color_(Color_insetframe),
 	text_(this, type == DefaultLayout)
 {
 }
 
 
 InsetText::InsetText(InsetText const & in)
-	: Inset(in), drawFrame_(in.drawFrame_), frame_color_(in.frame_color_),
+	: Inset(in), drawFrame_(in.drawFrame_), is_changed_(in.is_changed_),
+	  frame_color_(in.frame_color_),
 	  text_(this, in.text_)
 {
 }
@@ -410,16 +411,16 @@ void InsetText::fixParagraphsFont()
 }
 
 
-bool InsetText::isChanged() const
-{
-	ParagraphList::const_iterator pit = paragraphs().begin();
-	ParagraphList::const_iterator end = paragraphs().end();
-	for (; pit != end; ++pit) {
-		if (pit->isChanged())
-			return true;
-	}
-	return false;
-}
+// bool InsetText::isChanged() const
+// {
+// 	ParagraphList::const_iterator pit = paragraphs().begin();
+// 	ParagraphList::const_iterator end = paragraphs().end();
+// 	for (; pit != end; ++pit) {
+// 		if (pit->isChanged())
+// 			return true;
+// 	}
+// 	return false;
+// }
 
 
 void InsetText::setChange(Change const & change)
