@@ -2732,6 +2732,16 @@ void Paragraph::latex(BufferParams const & bparams,
 						runningChange, style, i, column);
 				if (incremented)
 					--parInline;
+
+				if (runparams.ctObject == OutputParams::CT_DISPLAYOBJECT
+				    || runparams.ctObject == OutputParams::CT_UDISPLAYOBJECT) {
+					// Close \lyx*deleted and force its
+					// reopening (if needed)
+					os << '}';
+					column++;
+					runningChange = Change(Change::UNCHANGED);
+					runparams.ctObject = OutputParams::CT_NORMAL;
+				}
 			}
 		} else if (i >= start_pos && (end_pos == -1 || i < end_pos)) {
 			if (!bparams.useNonTeXFonts)
