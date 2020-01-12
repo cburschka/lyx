@@ -774,11 +774,9 @@ public:
 	int wordCount() const;
 	int charCount(bool with_blanks) const;
 
-	// this is const because it does not modify the buffer's real contents,
-	// only the mutable flag.
-	void setChangesPresent(bool) const;
-	bool areChangesPresent() const;
-	void updateChangesPresent() const;
+	/// FIXME: dummy function for now
+	bool areChangesPresent() const { return true; }
+
 	///
 	void registerBibfiles(docstring_list const & bf) const;
 	///

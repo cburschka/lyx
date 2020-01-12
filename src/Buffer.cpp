@@ -391,10 +391,6 @@ public:
 		+ (with_blanks ? blank_count_ : 0);
 	}
 
-	// does the buffer contain tracked changes? (if so, we automatically
-	// display the review toolbar, for instance)
-	mutable bool tracked_changes_present_;
-
 	// Make sure the file monitor monitors the good file.
 	void refreshFileMonitor();
 
@@ -459,7 +455,7 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	  cite_labels_valid_(false), have_bibitems_(false), require_fresh_start_(false),
 	  inset(0), preview_loader_(0), cloned_buffer_(cloned_buffer),
 	  clone_list_(0), doing_export(false),
-	  tracked_changes_present_(0), externally_modified_(false), parent_buffer(0),
+	  externally_modified_(false), parent_buffer(0),
 	  word_count_(0), char_count_(0), blank_count_(0)
 {
 	refreshFileMonitor();
@@ -490,7 +486,6 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	preview_file_ = cloned_buffer_->d->preview_file_;
 	preview_format_ = cloned_buffer_->d->preview_format_;
 	require_fresh_start_ = cloned_buffer_->d->require_fresh_start_;
-	tracked_changes_present_ = cloned_buffer_->d->tracked_changes_present_;
 }
 
 
@@ -3033,8 +3028,6 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		if (params().save_transient_properties)
 			undo().recordUndoBufferParams(CursorData());
 		params().track_changes = !params().track_changes;
-		if (!params().track_changes)
-			dr.forceChangesUpdate();
 		break;
 
 	case LFUN_CHANGES_OUTPUT:
@@ -5032,7 +5025,6 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 	// update all caches
 	clearReferenceCache();
 	updateMacros();
-	setChangesPresent(false);
 
 	Buffer & cbuf = const_cast<Buffer &>(*this);
 	// if we are reloading, then we could have a dangling TOC,
@@ -5073,7 +5065,6 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 		clearReferenceCache();
 		// we should not need to do this again?
 		// updateMacros();
-		setChangesPresent(false);
 		updateBuffer(parit, utype);
 		// this will already have been done by reloadBibInfoCache();
 		// d->bibinfo_cache_valid_ = true;
@@ -5355,9 +5346,6 @@ void Buffer::updateBuffer(ParIterator & parit, UpdateType utype) const
 		// set the counter for this paragraph
 		d->setLabel(parit, utype);
 
-		// update change-tracking flag
-		parit->addChangesToBuffer(*this);
-
 		// now the insets
 		for (auto const & insit : parit->insetList()) {
 			parit.pos() = insit.pos;
@@ -5616,29 +5604,6 @@ string Buffer::includedFilePath(string const & name, string const & ext) const
 
 	return to_utf8(makeRelPath(from_utf8(FileName(absname).realPath()),
 	                           from_utf8(filePath())));
-}
-
-
-void Buffer::setChangesPresent(bool b) const
-{
-	d->tracked_changes_present_ = b;
-}
-
-
-bool Buffer::areChangesPresent() const
-{
-	return d->tracked_changes_present_;
-}
-
-
-void Buffer::updateChangesPresent() const
-{
-	LYXERR(Debug::CHANGES, "Buffer::updateChangesPresent");
-	setChangesPresent(false);
-	ParConstIterator it = par_iterator_begin();
-	ParConstIterator const end = par_iterator_end();
-	for (; !areChangesPresent() && it != end; ++it)
-		it->addChangesToBuffer(*this);
 }
 
 

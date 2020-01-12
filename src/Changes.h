@@ -95,8 +95,6 @@ class BufferParams;
 
 class Changes {
 public:
-	Changes() : previously_changed_(false) {}
-
 	/// set the pos to the given change
 	void set(Change const & change, pos_type pos);
 	/// set the range (excluding end) to the given change
@@ -140,11 +138,6 @@ public:
 	void addToToc(DocIterator const & cdit, Buffer const & buffer,
 	              bool output_active, TocBackend & backend) const;
 
-	///
-	void updateBuffer(Buffer const & buf);
-	///
-	bool isUpdateRequired() const { return previously_changed_ != isChanged(); }
-
 private:
 	class Range {
 	public:
@@ -187,10 +180,6 @@ private:
 
 	/// table of changes, every row a change and range descriptor
 	ChangeTable table_;
-
-	/// cache previous value of isChanged to be able to tell whether the
-	/// buffer's flag tracked_changes_present_ needs to be recomputed
-	bool previously_changed_;
 };
 
 

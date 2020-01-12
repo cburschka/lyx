@@ -153,10 +153,6 @@ public:
 	///
 	void addChangesToToc(DocIterator const & cdit, Buffer const & buf,
 	                     bool output_active, TocBackend & backend) const;
-	/// set the buffer flag if there are changes in the paragraph
-	void addChangesToBuffer(Buffer const & buf) const;
-	///
-	bool isChangeUpdateRequired() const;
 	///
 	Language const * getParLanguage(BufferParams const &) const;
 	///

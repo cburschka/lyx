@@ -561,14 +561,6 @@ void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer,
 }
 
 
-void Changes::updateBuffer(Buffer const & buf)
-{
-	bool const changed = isChanged();
-	buf.setChangesPresent(buf.areChangesPresent() || changed);
-	previously_changed_ = changed;
-}
-
-
 void Change::paintCue(PainterInfo & pi, double const x1, double const y,
                       double const x2, FontInfo const & font) const
 {
