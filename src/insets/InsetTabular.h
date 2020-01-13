@@ -1000,6 +1000,8 @@ public:
 	///
 	Text * getText(int) const;
 
+	/// does the inset contain changes ?
+	bool isChanged() const;
 	/// set the change for the entire inset
 	void setChange(Change const & change);
 	/// accept the changes within the inset

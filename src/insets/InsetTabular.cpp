@@ -7122,6 +7122,16 @@ Text * InsetTabular::getText(int idx) const
 }
 
 
+bool InsetTabular::isChanged() const
+{
+	for (idx_type idx = 0; idx < nargs(); ++idx)
+		if (cell(idx)->isChanged())
+			return true;
+	// FIXME: shall we look at row/columns changed status?
+	return false;
+}
+
+
 void InsetTabular::setChange(Change const & change)
 {
 	for (idx_type idx = 0; idx < nargs(); ++idx)
