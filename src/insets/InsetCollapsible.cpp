@@ -661,7 +661,8 @@ docstring const InsetCollapsible::buttonLabel(BufferView const & bv) const
 {
 	// indicate changed content in label (#8645)
 	// ✎ U+270E LOWER RIGHT PENCIL
-	docstring indicator = isChanged() ? docstring(1, 0x270E) : docstring();
+	docstring const indicator = (isChanged() && geometry(bv) == ButtonOnly)
+		? docstring(1, 0x270E) : docstring();
 	InsetLayout const & il = getLayout();
 	docstring const label = getLabel();
 	if (!il.contentaslabel() || geometry(bv) != ButtonOnly)
