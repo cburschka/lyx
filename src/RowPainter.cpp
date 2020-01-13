@@ -293,11 +293,7 @@ void RowPainter::paintChange(Row::Element const & e) const
 
 void RowPainter::paintChangeBar() const
 {
-	int const height = tm_.isLastRow(row_)
-		? row_.ascent()
-		: row_.height();
-
-	pi_.pain.fillRectangle(5, yo_ - row_.ascent(), 3, height, Color_changebar);
+	pi_.pain.fillRectangle(5, yo_ - row_.ascent(), 3, row_.height(), Color_changebar);
 }
 
 
