@@ -4180,10 +4180,11 @@ docstring InsetTableCell::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 void InsetTableCell::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	TextMetrics & tm = mi.base.bv->textMetrics(&text());
+	int const horiz_offset = leftOffset(mi.base.bv) + rightOffset(mi.base.bv);
 
 	// Hand font through to contained lyxtext:
 	tm.font_.fontInfo() = mi.base.font;
-	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
+	mi.base.textwidth -= horiz_offset;
 
 	// This can happen when a layout has a left and right margin,
 	// and the view is made very narrow. We can't do better than
@@ -4197,10 +4198,10 @@ void InsetTableCell::metrics(MetricsInfo & mi, Dimension & dim) const
 		tm.metrics(mi, dim, mi.base.textwidth, false);
 	else
 		tm.metrics(mi, dim, 0, false);
-	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
-	dim.asc += TEXT_TO_INSET_OFFSET;
-	dim.des += TEXT_TO_INSET_OFFSET;
-	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
+	mi.base.textwidth += horiz_offset;
+	dim.asc += topOffset(mi.base.bv);
+	dim.des += bottomOffset(mi.base.bv);
+	dim.wid += horiz_offset;
 }
 
 
@@ -4391,9 +4392,9 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			tabular.cell_info[r][c].decimal_width = decimal_width;
 
 			// with LYX_VALIGN_BOTTOM the descent is relative to the last par
-			// = descent of text in last par + TEXT_TO_INSET_OFFSET:
+			// = descent of text in last par + bottomOffset:
 			int const lastpardes = tm.last().second->descent()
-				+ TEXT_TO_INSET_OFFSET;
+				+ bottomOffset(mi.base.bv);
 			int offset = 0;
 			switch (tabular.getVAlignment(cell)) {
 				case Tabular::LYX_VALIGN_TOP:

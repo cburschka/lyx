@@ -170,8 +170,8 @@ void InsetPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid = max(dim.wid, 4);
 		dim.asc = max(dim.asc, 4);
 
-		dim.asc += TEXT_TO_INSET_OFFSET;
-		dim.des += TEXT_TO_INSET_OFFSET;
+		dim.asc += topOffset(mi.base.bv);
+		dim.des += bottomOffset(mi.base.bv);
 		// insert a one pixel gap
 		dim.wid += 1;
 		Dimension dim_dummy;

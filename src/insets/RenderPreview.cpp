@@ -166,7 +166,7 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.image(x, y - dim_.asc, dim_.wid, dim_.height(),
 			      *image);
 	} else {
-		int const offset = Inset::TEXT_TO_INSET_OFFSET;
+		int const offset = Inset::textOffset(pi.base.bv);
 
 		pi.pain.rectangle(x + offset,
 				  y - dim_.asc,

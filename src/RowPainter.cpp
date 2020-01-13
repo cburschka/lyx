@@ -479,10 +479,10 @@ void RowPainter::paintLast() const
 		int x = 0;
 		if (row_.isRTL()) {
 			int const normal_x = nestMargin() + changebarMargin();
-			x = min(normal_x, row_.left_margin - size - Inset::TEXT_TO_INSET_OFFSET);
+			x = min(normal_x, row_.left_margin - size - Inset::textOffset(pi_.base.bv));
 		} else {
 			int const normal_x = tm_.width() - row_.right_margin
-				- size - Inset::TEXT_TO_INSET_OFFSET;
+				- size - Inset::textOffset(pi_.base.bv);
 			x = max(normal_x, row_.width());
 		}
 

@@ -202,6 +202,17 @@ public:
 	/// https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg199001.html
 	virtual Inset * editXY(Cursor & cur, int x, int y);
 
+	/// The default margin inside text insets
+	static int textOffset(BufferView const *) { return 4; }
+	///
+	virtual int topOffset(BufferView const *bv) const { return textOffset(bv); }
+	///
+	virtual int bottomOffset(BufferView const *bv) const { return textOffset(bv); }
+	///
+	virtual int leftOffset(BufferView const *bv) const { return textOffset(bv); }
+	///
+	virtual int rightOffset(BufferView const *bv) const { return textOffset(bv); }
+
 	/// compute the size of the object returned in dim
 	virtual void metrics(MetricsInfo & mi, Dimension & dim) const = 0;
 	/// draw inset and update (xo, yo)-cache
@@ -610,8 +621,6 @@ public:
 	virtual ColorCode backgroundColor(PainterInfo const &) const;
 	///
 	virtual ColorCode labelColor() const;
-	//
-	enum { TEXT_TO_INSET_OFFSET = 4 };
 
 	/// Determine the action of backspace and delete: do we select instead of
 	/// deleting if not already selected?

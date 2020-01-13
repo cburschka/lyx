@@ -47,7 +47,7 @@ void RenderButton::metrics(MetricsInfo & mi, Dimension & dim) const
 	font.decSize();
 	frontend::FontMetrics const & fm = theFontMetrics(font);
 
-	fm.buttonText(text_, Inset::TEXT_TO_INSET_OFFSET, dim.wid, dim.asc, dim.des);
+	fm.buttonText(text_, Inset::textOffset(mi.base.bv), dim.wid, dim.asc, dim.des);
 
 	dim_ = dim;
 }
@@ -63,11 +63,11 @@ void RenderButton::draw(PainterInfo & pi, int x, int y) const
 	if (editable_) {
 		pi.pain.buttonText(x, y, text_, font,
 		                   renderState() ? Color_buttonhoverbg : Color_buttonbg,
-		                   Color_buttonframe, Inset::TEXT_TO_INSET_OFFSET);
+		                   Color_buttonframe, Inset::textOffset(pi.base.bv));
 	} else {
 		pi.pain.buttonText(x, y, text_, font,
 		                   Color_commandbg, Color_commandframe,
-		                   Inset::TEXT_TO_INSET_OFFSET);
+		                   Inset::textOffset(pi.base.bv));
 	}
 }
 

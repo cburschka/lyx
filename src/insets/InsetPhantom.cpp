@@ -194,10 +194,10 @@ void InsetPhantom::draw(PainterInfo & pi, int x, int y) const
 		//       |   |        |   |
 		//      x1  x2       x3  x4
 
-		x = x + TEXT_TO_INSET_OFFSET;
+		x += leftOffset(pi.base.bv);
 		int const x1 = x;
 		int const x2 = x + arrow_size;
-		int const x4 = x + dim.wid - 2 * TEXT_TO_INSET_OFFSET;
+		int const x4 = x + dim.wid - leftOffset(pi.base.bv) - rightOffset(pi.base.bv);
 		int const x3 = x4 - arrow_size;
 
 		int const y2 = y + (dim.des - dim.asc) / 2;
