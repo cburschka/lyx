@@ -654,8 +654,8 @@ void Paragraph::setChange(pos_type pos, Change const & change)
 
 	// see comment in setChange(Change const &) above
 	if (!change.deleted() && pos < size())
-			if (Inset * inset = getInset(pos))
-				inset->setChange(change);
+		if (Inset * inset = getInset(pos))
+			inset->setChange(change);
 }
 
 
