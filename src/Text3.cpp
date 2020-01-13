@@ -1193,7 +1193,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				}
 			}
 		} else {
+			DocIterator const dit = cur.selectionBegin();
 			cutSelection(cur, false);
+			if (cur.buffer()->params().track_changes)
+				// since we're doing backwards deletion,
+				// and the selection is not really cut,
+				// move cursor before selection (#11630)
+				cur.setCursor(dit);
 			singleParUpdate = false;
 		}
 		break;
