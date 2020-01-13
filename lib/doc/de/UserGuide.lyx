@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 591
+\lyxformat 592
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -8638,10 +8638,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8654,6 +8656,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8677,6 +8680,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -46112,6 +46116,24 @@ Cursornavigation zwischen Wörtern im Mac-Stil
 \family default
  springt der Cursor vom Wortende zum Wortende des nächsten Wortes.
  Normalerweise springt er von Anfang zu Anfang.
+\end_layout
+
+\begin_layout Standard
+Die Option 
+\family sans
+Änderungsmarkierungen beim Kopieren und Einfügen behalten
+\family default
+ können Sie auswählen, wenn Sie nicht möchten, dass verfolgte Änderungen
+ beim Kopieren und Einfügen aufgelöst werden (d.
+\begin_inset space \thinspace{}
+\end_inset
+
+h., dass als gelöscht markierter Text entfernt und alles andere als neu eingefügt
+ wird).
+ Wenn dies ausgewählt ist, wird der kopierte Text mit den Markierungen eingefügt
+, unabhängig davon, ob Änderungen gerade verfolgt werden oder nicht.
+ Das betrifft auch das Umwandeln von Text in\SpecialChar breakableslash
+von Einfügungen.
 \end_layout
 
 \begin_layout Standard

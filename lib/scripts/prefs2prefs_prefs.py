@@ -125,6 +125,10 @@
 #   Add ct_additions_underlined.
 #   No convergence necessary.
 
+# Incremented to format 32, by spitz
+#   Add ct_markup_copied.
+#   No convergence necessary.
+
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py.
 
@@ -474,5 +478,6 @@ conversions = [
 	[ 28, [remove_date_insert_format]],
 	[ 29, [remove_use_pixmap_cache]],
 	[ 30, []],
-	[ 31, []]
+	[ 31, []],
+	[ 32, []]
 ]

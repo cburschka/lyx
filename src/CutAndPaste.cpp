@@ -287,8 +287,9 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 					tmpbuf->eraseChar(i--, false);
 		}
 
-		tmpbuf->setChange(Change(buffer.params().track_changes ?
-					 Change::INSERTED : Change::UNCHANGED));
+		if (lyxrc.ct_markup_copied)
+			tmpbuf->setChange(Change(buffer.params().track_changes ?
+						 Change::INSERTED : Change::UNCHANGED));
 	}
 
 	bool const empty = pars[pit].empty();
@@ -606,7 +607,8 @@ Buffer * copyToTempBuffer(ParagraphList const & paragraphs, DocumentClassConstPt
 
 
 void putClipboard(ParagraphList const & paragraphs,
-	DocumentClassConstPtr docclass, docstring const & plaintext)
+		  DocumentClassConstPtr docclass, docstring const & plaintext,
+		  BufferParams const bp)
 {
 	Buffer * buffer = copyToTempBuffer(paragraphs, docclass);
 	if (!buffer) // already asserted in copyToTempBuffer()
@@ -616,6 +618,12 @@ void putClipboard(ParagraphList const & paragraphs,
 	// output formulas as MathML. Even if this is not understood by all
 	// applications, the number that can parse it should go up in the future.
 	buffer->params().html_math_output = BufferParams::MathML;
+
+	if (lyxrc.ct_markup_copied) {
+		// Copy authors to the params. We need those pointers.
+		for (Author const & a : bp.authors())
+			buffer->params().authors().record(a);
+	}
 
 	// Make sure MarkAsExporting is deleted before buffer is
 	{
@@ -711,10 +719,12 @@ void copySelectionHelper(Buffer const & buf, Text const & text,
 
 	// do not copy text (also nested in insets) which is marked as
 	// deleted, unless the whole selection was deleted
-	if (!isFullyDeleted(copy_pars))
-		acceptChanges(copy_pars, buf.params());
-	else
-		rejectChanges(copy_pars, buf.params());
+	if (!lyxrc.ct_markup_copied) {
+		if (!isFullyDeleted(copy_pars))
+			acceptChanges(copy_pars, buf.params());
+		else
+			rejectChanges(copy_pars, buf.params());
+	}
 
 
 	// do some final cleanup now, to make sure that the paragraphs
@@ -950,7 +960,7 @@ void cutSelectionHelper(Cursor & cur, CutStack & cuts, bool realcut, bool putcli
 			// Even if there is no selection.
 			if (putclip)
 				putClipboard(cuts[0].first, cuts[0].second,
-				             cur.selectionAsString(true, true));
+				             cur.selectionAsString(true, true), bp);
 		}
 
 		if (begpit != endpit)
@@ -1027,7 +1037,7 @@ void copyInset(Cursor const & cur, Inset * inset, docstring const & plaintext)
 	theCuts.push(make_pair(pars, bp.documentClassPtr()));
 
 	// stuff the selection onto the X clipboard, from an explicit copy request
-	putClipboard(theCuts[0].first, theCuts[0].second, plaintext);
+	putClipboard(theCuts[0].first, theCuts[0].second, plaintext, bp);
 }
 
 
@@ -1110,7 +1120,8 @@ void copySelection(Cursor const & cur, docstring const & plaintext)
 	}
 
 	// stuff the selection onto the X clipboard, from an explicit copy request
-	putClipboard(theCuts[0].first, theCuts[0].second, plaintext);
+	putClipboard(theCuts[0].first, theCuts[0].second, plaintext,
+			cur.buffer()->params());
 }
 
 
@@ -1162,8 +1173,8 @@ docstring selection(size_t sel_index, DocumentClassConstPtr docclass)
 
 
 void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
-						DocumentClassConstPtr docclass, ErrorList & errorList,
-						cap::BranchAction branchAction)
+			DocumentClassConstPtr docclass, ErrorList & errorList,
+			cap::BranchAction branchAction)
 {
 	if (cur.inTexted()) {
 		Text * text = cur.text();

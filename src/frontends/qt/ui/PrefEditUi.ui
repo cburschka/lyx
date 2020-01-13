@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>PrefEditUi</class>
  <widget class="QWidget" name="PrefEditUi">
@@ -5,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>385</width>
-    <height>435</height>
+    <width>494</width>
+    <height>583</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -31,6 +32,33 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" name="gridLayout">
+      <item row="2" column="0" colspan="2">
+       <widget class="QCheckBox" name="scrollBelowCB">
+        <property name="text">
+         <string>Scroll &amp;below end of document</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0" colspan="2">
+       <widget class="QCheckBox" name="sortEnvironmentsCB">
+        <property name="text">
+         <string>Sort &amp;environments alphabetically</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" colspan="2">
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>200</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
       <item row="0" column="0">
        <widget class="QCheckBox" name="cursorFollowsCB">
         <property name="text">
@@ -71,23 +99,23 @@
         </item>
        </layout>
       </item>
-      <item row="1" column="1" colspan="2">
-       <spacer name="horizontalSpacer_3">
+      <item row="7" column="2">
+       <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>200</width>
+          <width>40</width>
           <height>20</height>
          </size>
         </property>
        </spacer>
       </item>
-      <item row="2" column="0" colspan="2">
-       <widget class="QCheckBox" name="scrollBelowCB">
+      <item row="6" column="0" colspan="2">
+       <widget class="QCheckBox" name="groupEnvironmentsCB">
         <property name="text">
-         <string>Scroll &amp;below end of document</string>
+         <string>&amp;Group environments by their category</string>
         </property>
        </widget>
       </item>
@@ -101,21 +129,7 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="0" colspan="2">
-       <widget class="QCheckBox" name="sortEnvironmentsCB">
-        <property name="text">
-         <string>Sort &amp;environments alphabetically</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0" colspan="2">
-       <widget class="QCheckBox" name="groupEnvironmentsCB">
-        <property name="text">
-         <string>&amp;Group environments by their category</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0" colspan="2">
+      <item row="7" column="0" colspan="2">
        <widget class="QComboBox" name="macroEditStyleCO">
         <item>
          <property name="text">
@@ -134,18 +148,15 @@
         </item>
        </widget>
       </item>
-      <item row="6" column="2">
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="copyCTMarkupCB">
+        <property name="toolTip">
+         <string>If this is checked, deleted and added text in change tracking mde will not be resolved on copy/paste operations and when moving content from/to insets</string>
         </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
+        <property name="text">
+         <string>&amp;Keep change tracking markup on copy and paste</string>
         </property>
-       </spacer>
+       </widget>
       </item>
      </layout>
     </widget>

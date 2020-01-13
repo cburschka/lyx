@@ -61,7 +61,7 @@ namespace {
 
 // The format should also be updated in configure.py, and conversion code
 // should be added to prefs2prefs_prefs.py.
-static unsigned int const LYXRC_FILEFORMAT = 31; // lasgouttes: add \ct_additions_underlined
+static unsigned int const LYXRC_FILEFORMAT = 32; // spitz: add \ct_markup_copied
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
 	{ "\\accept_compound", LyXRC::RC_ACCEPT_COMPOUND },
@@ -93,6 +93,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\converter_cache_maxage", LyXRC::RC_CONVERTER_CACHE_MAXAGE },
 	{ "\\copier", LyXRC::RC_COPIER },
 	{ "\\ct_additions_underlined", LyXRC::RC_CT_ADDITIONS_UNDERLINED },
+	{ "\\ct_markup_copied", LyXRC::RC_CT_MARKUP_COPIED },
 	{ "\\cursor_follows_scrollbar", LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR },
 	{ "\\cursor_width", LyXRC::RC_CURSOR_WIDTH },
 	{ "\\def_file", LyXRC::RC_DEFFILE },
@@ -674,6 +675,10 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 
 		case RC_CT_ADDITIONS_UNDERLINED:
 			lexrc >> ct_additions_underlined;
+			break;
+
+		case RC_CT_MARKUP_COPIED:
+			lexrc >> ct_markup_copied;
 			break;
 
 		case RC_CURSOR_FOLLOWS_SCROLLBAR:
@@ -1597,6 +1602,16 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    != system_lyxrc.ct_additions_underlined) {
 			os << "\\ct_additions_underlined "
 			   << convert<string>(ct_additions_underlined) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+		// fall through
+	case RC_CT_MARKUP_COPIED:
+		if (ignore_system_lyxrc ||
+		    ct_markup_copied
+		    != system_lyxrc.ct_markup_copied) {
+			os << "\\ct_markup_copied "
+			   << convert<string>(ct_markup_copied) << '\n';
 		}
 		if (tag != RC_LAST)
 			break;
@@ -2771,6 +2786,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_CONVERTER_CACHE_MAXAGE:
 	case LyXRC::RC_COPIER:
 	case LyXRC::RC_CT_ADDITIONS_UNDERLINED:
+	case LyXRC::RC_CT_MARKUP_COPIED:
 	case LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR:
 	case LyXRC::RC_SCROLL_BELOW_DOCUMENT:
 	case LyXRC::RC_GUI_LANGUAGE:

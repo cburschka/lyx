@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 591
+\lyxformat 592
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -8485,14 +8485,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8505,7 +8503,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8529,7 +8526,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -48920,6 +48916,29 @@ Ctrl+arrow key
 \family default
  the cursor jumps from the end of a word to the end of the next word.
  Normally it jumps from the beginning to the beginning.
+\change_inserted -712698321 1578924606
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1578924785
+The option 
+\family sans
+Keep change tracking markup on copy and paste
+\family default
+ is for users who don't want tracked changes to be dissolved on copy and
+ paste operations (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., inserted as new text with the deletions removed).
+ If this is checked, the change-tracked text will be copied and pasted as
+ is, independent if changes are currently tracked or not.
+ This also applies to wrapping to\SpecialChar breakableslash
+dissolving from insets.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
