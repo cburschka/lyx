@@ -5348,7 +5348,8 @@ void Buffer::updateBuffer(ParIterator & parit, UpdateType utype) const
 	}
 
 	// set change indicator for the inset
-	parit.inset().asInsetText()->isChanged(changed);
+	if (parit.inset().asInsetText())
+		parit.inset().asInsetText()->isChanged(changed);
 }
 
 
