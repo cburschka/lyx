@@ -4486,9 +4486,9 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 namespace {
 
 void tabline(PainterInfo const & pi, int x1, int y1, int x2, int y2, int lt, int rt,
-             bool drawline, bool heavy = false)
+             Color const incol, bool drawline, bool heavy = false)
 {
-	ColorCode const col = drawline ? Color_tabularline : Color_tabularonoffline;
+	Color const col = drawline ? incol : Color_tabularonoffline;
 	if (drawline && lt > 0)
 		pi.pain.line(x1, y1, x1 + lt, y2, pi.textColor(Color_tabularonoffline),
 					 Painter::line_onoffdash,
@@ -4516,6 +4516,12 @@ void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 
 	col_type const col = tabular.cellColumn(cell);
 
+	// Colour the frame if rows/columns are added or deleted
+	Color colour = Color_tabularline;
+	if (tabular.column_info[col].change != Change::UNCHANGED
+	    || tabular.row_info[row].change != Change::UNCHANGED)
+		colour = InsetTableCell(*tabular.cellInset(cell)).paragraphs().front().lookupChange(0).color();
+
 	// Top
 	bool drawline = tabular.topLine(cell)
 		|| (row > 0 && tabular.bottomLine(tabular.cellAbove(cell)));
@@ -4528,7 +4534,7 @@ void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 	if (tabular.topLineTrim(cell).second
 	    || (row > 0 && tabular.bottomLineTrim(tabular.cellIndex(row - 1, col)).second))
 		rt = 10;
-	tabline(pi, x, y, x + w, y, lt, rt, drawline, heavy);
+	tabline(pi, x, y, x + w, y, lt, rt, colour, drawline, heavy);
 
 	// Bottom
 	lt = rt = 0;
@@ -4546,12 +4552,12 @@ void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 		lt = 10;
 	if (tabular.bottomLineTrim(cell).second)
 		rt = 10;
-	tabline(pi, x, y + h, x + w, y + h, lt, rt, drawline, heavy);
+	tabline(pi, x, y + h, x + w, y + h, lt, rt, colour, drawline, heavy);
 
 	// Left
 	drawline = tabular.leftLine(cell)
 		|| (col > 0 && tabular.rightLine(tabular.cellIndex(row, col - 1)));
-	tabline(pi, x, y, x, y + h, 0, 0, drawline);
+	tabline(pi, x, y, x, y + h, 0, 0, colour, drawline);
 
 	// Right
 	x -= tabular.interColumnSpace(cell);
@@ -4562,7 +4568,7 @@ void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 	drawline = tabular.rightLine(cell)
 		   || (next_cell_col < tabular.ncols()
 		       && tabular.leftLine(tabular.cellIndex(row, next_cell_col)));
-	tabline(pi, x + w, y, x + w, y + h, 0, 0, drawline);
+	tabline(pi, x + w, y, x + w, y + h, 0, 0, colour, drawline);
 }
 
 
