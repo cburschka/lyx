@@ -1503,17 +1503,13 @@ void BufferParams::validate(LaTeXFeatures & features) const
 		features.require("rtloutputdblcol");
 
 	if (output_changes) {
-		bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
 		bool xcolorulem = LaTeXFeatures::isAvailable("ulem") &&
 				  LaTeXFeatures::isAvailable("xcolor");
 
 		switch (features.runparams().flavor) {
 		case OutputParams::LATEX:
 		case OutputParams::DVILUATEX:
-			if (dvipost) {
-				features.require("ct-dvipost");
-				features.require("dvipost");
-			} else if (xcolorulem) {
+			if (xcolorulem) {
 				features.require("ct-xcolor-ulem");
 				features.require("ulem");
 				features.require("xcolor");

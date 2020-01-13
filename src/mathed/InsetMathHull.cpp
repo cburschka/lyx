@@ -1101,8 +1101,7 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 				+ bgcol + "}{\\ensuremath{\\mathtt{#1}}}}");
 			features.addPreambleSnippet(
 				from_ascii("\\newcommand{\\endregexp}{}"));
-		} else if (outerDisplay() && features.inDeletedInset()
-			   && !features.mustProvide("ct-dvipost")) {
+		} else if (outerDisplay() && features.inDeletedInset()) {
 				features.require("tikz");
 				features.require("ct-tikz-object-sout");
 		}

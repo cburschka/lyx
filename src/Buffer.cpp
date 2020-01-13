@@ -1028,20 +1028,13 @@ bool Buffer::readDocument(Lexer & lex)
 	readHeader(lex);
 
 	if (params().output_changes) {
-		bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
 		bool xcolorulem = LaTeXFeatures::isAvailable("ulem") &&
 				  LaTeXFeatures::isAvailable("xcolor");
 
-		if (!dvipost && !xcolorulem) {
+		if (!xcolorulem) {
 			Alert::warning(_("Changes not shown in LaTeX output"),
 				       _("Changes will not be highlighted in LaTeX output, "
-					 "because neither dvipost nor xcolor/ulem are installed.\n"
-					 "Please install these packages or redefine "
-					 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
-		} else if (!xcolorulem) {
-			Alert::warning(_("Changes not shown in LaTeX output"),
-				       _("Changes will not be highlighted in LaTeX output "
-					 "when using pdflatex, because xcolor and ulem are not installed.\n"
+					 "because xcolor and ulem are not installed.\n"
 					 "Please install both packages or redefine "
 					 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
 		}
@@ -3035,20 +3028,13 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 			undo().recordUndoBufferParams(CursorData());
 		params().output_changes = !params().output_changes;
 		if (params().output_changes) {
-			bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
 			bool xcolorulem = LaTeXFeatures::isAvailable("ulem") &&
 					  LaTeXFeatures::isAvailable("xcolor");
 
-			if (!dvipost && !xcolorulem) {
+			if (!xcolorulem) {
 				Alert::warning(_("Changes not shown in LaTeX output"),
 					       _("Changes will not be highlighted in LaTeX output, "
-						 "because neither dvipost nor xcolor/ulem are installed.\n"
-						 "Please install these packages or redefine "
-						 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
-			} else if (!xcolorulem) {
-				Alert::warning(_("Changes not shown in LaTeX output"),
-					       _("Changes will not be highlighted in LaTeX output "
-						 "when using pdflatex, because xcolor and ulem are not installed.\n"
+						 "because xcolor and ulem are not installed.\n"
 						 "Please install both packages or redefine "
 						 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
 			}

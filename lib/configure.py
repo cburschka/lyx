@@ -542,7 +542,6 @@ def checkInkscape():
 def checkLatex(dtl_tools):
     ''' Check latex, return lyx_check_config '''
     path, LATEX = checkProg('a Latex2e program', ['latex $$i', 'latex2e $$i'])
-    path, PPLATEX = checkProg('a DVI postprocessing program', ['pplatex $$i'])
     #-----------------------------------------------------------------
     path, PLATEX = checkProg('pLaTeX, the Japanese LaTeX', ['platex $$i'])
     if PLATEX:
@@ -556,15 +555,12 @@ def checkLatex(dtl_tools):
             PLATEX = ''
             removeFiles(['chklatex.ltx', 'chklatex.log'])
     #-----------------------------------------------------------------
-    # use LATEX to convert from latex to dvi if PPLATEX is not available
-    if PPLATEX == '':
-        PPLATEX = LATEX
     if dtl_tools:
         # Windows only: DraftDVI
         addToRC(r'''\converter latex      dvi2       "%s"	"latex,hyperref-driver=dvips"
-\converter dvi2       dvi        "python -tt $$s/scripts/clean_dvi.py $$i $$o"	""''' % PPLATEX)
+\converter dvi2       dvi        "python -tt $$s/scripts/clean_dvi.py $$i $$o"	""''' % LATEX)
     else:
-        addToRC(r'\converter latex      dvi        "%s"	"latex,hyperref-driver=dvips"' % PPLATEX)
+        addToRC(r'\converter latex      dvi        "%s"	"latex,hyperref-driver=dvips"' % LATEX)
     # no latex
     if LATEX:
         # Check if latex is usable

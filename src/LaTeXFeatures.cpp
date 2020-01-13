@@ -235,29 +235,6 @@ static docstring const lyxdot_def = from_ascii(
 	"%% A simple dot to overcome graphicx limitations\n"
 	"\\newcommand{\\lyxdot}{.}\n");
 
-static docstring const changetracking_dvipost_def = from_ascii(
-	"%% Change tracking with dvipost\n"
-	"\\dvipostlayout\n"
-	"\\dvipost{osstart color push Red}\n"
-	"\\dvipost{osend color pop}\n"
-	"\\dvipost{cbstart color push Blue}\n"
-	"\\dvipost{cbrule 0pt}\n"
-	"\\dvipost{cbend color pop}\n"
-	"\\DeclareRobustCommand{\\lyxadded}[4][]{\\changestart#4\\changeend}\n"
-	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{%\n"
-	"\\changestart\\overstrikeon#4\\overstrikeoff\\changeend}\n");
-
-static docstring const changetracking_dvipost_cb_def = from_ascii(
-	"%% Change tracking with dvipost\n"
-	"\\dvipostlayout\n"
-	"\\dvipost{osstart color push Red}\n"
-	"\\dvipost{osend color pop}\n"
-	"\\dvipost{cbstart color push Blue}\n"
-	"\\dvipost{cbend color pop}\n"
-	"\\DeclareRobustCommand{\\lyxadded}[4][]{\\changestart#4\\changeend}\n"
-	"\\DeclareRobustCommand{\\lyxdeleted}[4][]{%\n"
-	"\\changestart\\overstrikeon#4\\overstrikeoff\\changeend}\n");
-
 static docstring const changetracking_xcolor_ulem_base_def = from_ascii(
 	"%% Change tracking with ulem and xcolor: base macros\n"
 	"\\DeclareRobustCommand{\\mklyxadded}[1]{\\bgroup\\color{lyxadded}{}#1\\egroup}\n"
@@ -1131,7 +1108,6 @@ char const * simplefeatures[] = {
 	"float",
 	"wrapfig",
 	"booktabs",
-	"dvipost",
 	"fancybox",
 	"calc",
 	"units",
@@ -1306,7 +1282,7 @@ string const LaTeXFeatures::getPackages() const
 	// The rest of these packages are somewhat more complicated
 	// than those above.
 
-	if (mustProvide("changebar") && !mustProvide("ct-dvipost")) {
+	if (mustProvide("changebar")) {
 		packages << "\\usepackage";
 		if (runparams_.flavor == OutputParams::LATEX
 		    || runparams_.flavor == OutputParams::DVILUATEX)
@@ -1753,13 +1729,6 @@ TexString LaTeXFeatures::getMacros() const
 		macros << lyxref_def << '\n';
 
 	// change tracking
-	if (mustProvide("ct-dvipost")) {
-		if (isRequired("changebar"))
-			macros << changetracking_dvipost_cb_def;
-		else
-			macros << changetracking_dvipost_def;
-	}
-
 	if (mustProvide("ct-xcolor-ulem")) {
 		streamsize const prec = macros.os().precision(2);
 

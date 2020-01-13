@@ -357,10 +357,7 @@ void InsetMathNest::latex(otexstream & os, OutputParams const & runparams) const
 	WriteStream wi(os, runparams.moving_arg, true,
 			runparams.dryrun ? WriteStream::wsDryrun : WriteStream::wsDefault,
 			runparams.encoding);
-	wi.strikeoutMath(runparams.inDeletedInset
-			 && (!LaTeXFeatures::isAvailable("dvipost")
-				|| (runparams.flavor != OutputParams::LATEX
-			            && runparams.flavor != OutputParams::DVILUATEX)));
+	wi.strikeoutMath(runparams.inDeletedInset);
 	if (runparams.inulemcmd) {
 		wi.ulemCmd(WriteStream::UNDERLINE);
 		if (runparams.local_font) {

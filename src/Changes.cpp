@@ -429,10 +429,6 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 
 	int column = 0;
 
-	bool const dvipost = LaTeXFeatures::isAvailable("dvipost") &&
-			(runparams.flavor == OutputParams::LATEX
-			 || runparams.flavor == OutputParams::DVILUATEX);
-
 	if (oldChange.type != Change::UNCHANGED) {
 		if (oldChange.type != Change::DELETED || runparams.ctObject != OutputParams::CT_OMITOBJECT) {
 			// close \lyxadded or \lyxdeleted
@@ -440,7 +436,7 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 			column++;
 		}
 		if (oldChange.type == Change::DELETED
-		    && !runparams.wasDisplayMath && !dvipost)
+		    && !runparams.wasDisplayMath)
 			--runparams.inulemcmd;
 	}
 
@@ -461,7 +457,7 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 			macro_beg = from_ascii("\\lyxudisplayobjdeleted");
 		else {
 			macro_beg = from_ascii("\\lyxdeleted");
-			if (!runparams.inDisplayMath && !dvipost)
+			if (!runparams.inDisplayMath)
 				++runparams.inulemcmd;
 		}
 	}

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 588
+\lyxformat 592
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -74,6 +74,8 @@
 \tablestyle default
 \tracking_changes true
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
@@ -7904,10 +7906,14 @@ CJKutf8
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted -712698321 1578757015
 dvipost
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -712698321 1578757015
 Found: 
 \begin_inset Info
 type  "package"
@@ -7918,12 +7924,16 @@ arg   "dvipost"
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -712698321 1578757015
 URL: 
 \family typewriter
 http://freshmeat.net/projects/dvipost/
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -712698321 1578757015
 Notes: 
 \family sans
 dvipost
@@ -7940,6 +7950,8 @@ dvipost
 \family default
  needs te\SpecialChar TeX
  version 2 or newer.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
