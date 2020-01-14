@@ -228,7 +228,7 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 		Changer dummy = make_change(pi.background_color,
 		                            pi.backgroundColor(this, false));
 		// The change tracking cue must not be inherited
-		Changer dummy2 = make_change(pi.change_, Change());
+		Changer dummy2 = make_change(pi.change, Change());
 		tm.draw(pi, x + TEXT_TO_INSET_OFFSET, y);
 	}
 
@@ -237,7 +237,7 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 		// Only do so if the color is not custom. But do so even if RowPainter
 		// handles the strike-through already.
 		Color c;
-		if (pi.change_.changed()
+		if (pi.change.changed()
 		    // Originally, these are the colors with role Text, from role() in
 		    // ColorCache.cpp.  The code is duplicated to avoid depending on Qt
 		    // types, and also maybe it need not match in the future.
@@ -246,18 +246,18 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 		        || frameColor() == Color_preview
 		        || frameColor() == Color_tabularline
 		        || frameColor() == Color_previewframe)) {
-			c = pi.change_.color();
+			c = pi.change.color();
 			change_drawn = true;
 		} else
 			c = frameColor();
 		pi.pain.rectangle(xframe, yframe, w, h, c);
 	}
 
-	if (canPaintChange(*pi.base.bv) && (!change_drawn || pi.change_.deleted()))
+	if (canPaintChange(*pi.base.bv) && (!change_drawn || pi.change.deleted()))
 		// Do not draw the change tracking cue if already done by RowPainter and
 		// do not draw the cue for INSERTED if the information is already in the
 		// color of the frame
-		pi.change_.paintCue(pi, xframe, yframe, xframe + w, yframe + h);
+		pi.change.paintCue(pi, xframe, yframe, xframe + w, yframe + h);
 }
 
 

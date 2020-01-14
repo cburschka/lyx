@@ -131,7 +131,7 @@ MetricsInfo::MetricsInfo(BufferView * bv, FontInfo font, int textwidth,
 /////////////////////////////////////////////////////////////////////////
 
 PainterInfo::PainterInfo(BufferView * bv, lyx::frontend::Painter & painter)
-	: pain(painter), ltr_pos(false), change_(), selected(false),
+	: pain(painter), ltr_pos(false), change(), selected(false),
 	  do_spellcheck(true), full_repaint(true), background_color(Color_background),
 	  leftx(0), rightx(0)
 {
@@ -178,8 +178,8 @@ ColorCode PainterInfo::backgroundColor(Inset const * inset, bool sel) const
 
 Color PainterInfo::textColor(Color const & color) const
 {
-	if (change_.changed())
-		return change_.color();
+	if (change.changed())
+		return change.color();
 	if (selected)
 		return Color_selectiontext;
 	return color;

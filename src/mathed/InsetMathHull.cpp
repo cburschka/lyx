@@ -650,7 +650,7 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	if (previewState(bv)) {
 		// Do not draw change tracking cue if taken care of by RowPainter
 		// already.
-		Changer dummy = !canPaintChange(*bv) ? make_change(pi.change_, Change())
+		Changer dummy = !canPaintChange(*bv) ? make_change(pi.change, Change())
 			: Changer();
 		if (previewTooSmall(pi.base, dim)) {
 			// we have an extra frame
@@ -700,7 +700,7 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	if (canPaintChange(*bv)) {
 		// like in metrics()
 		int const display_margin = display() ? pi.base.inPixels(Length(12, Length::PT)) : 0;
-		pi.change_.paintCue(pi, x + 1, y + 1 - dim.asc + display_margin,
+		pi.change.paintCue(pi, x + 1, y + 1 - dim.asc + display_margin,
 		                    x + dim.wid, y + dim.des - display_margin);
 	}
 }

@@ -268,7 +268,7 @@ void InsetCollapsible::draw(PainterInfo & pi, int x, int y) const
 		// Draw the change tracking cue on the label, unless RowPainter already
 		// takes care of it.
 		if (canPaintChange(bv))
-			pi.change_.paintCue(pi, x, y, x + dimc.width(), labelfont);
+			pi.change.paintCue(pi, x, y, x + dimc.width(), labelfont);
 	} else {
 		view_[&bv].button_dim_.x1 = 0;
 		view_[&bv].button_dim_.y1 = 0;
@@ -292,8 +292,8 @@ void InsetCollapsible::draw(PainterInfo & pi, int x, int y) const
 		}
 		// Do not draw the cue for INSERTED -- it is already in the button and
 		// that's enough.
-		Changer cdummy = (pi.change_.type == Change::INSERTED)
-			? make_change(pi.change_, Change())
+		Changer cdummy = (pi.change.type == Change::INSERTED)
+			? make_change(pi.change, Change())
 			: Changer();
 		InsetText::draw(pi, textx, texty);
 		break;
@@ -312,7 +312,7 @@ void InsetCollapsible::draw(PainterInfo & pi, int x, int y) const
 		// We will take care of the frame and the change tracking cue
 		// ourselves, below.
 		{
-			Changer cdummy = make_change(pi.change_, Change());
+			Changer cdummy = make_change(pi.change, Change());
 			const_cast<InsetCollapsible *>(this)->setDrawFrame(false);
 			InsetText::draw(pi, textx, texty);
 			const_cast<InsetCollapsible *>(this)->setDrawFrame(true);
@@ -323,7 +323,7 @@ void InsetCollapsible::draw(PainterInfo & pi, int x, int y) const
 			desc -= 3;
 
 		// Colour the frame according to the change type. (Like for tables.)
-		Color colour = pi.change_.changed() ? pi.change_.color()
+		Color colour = pi.change.changed() ? pi.change.color()
 		                                    : Color_foreground;
 		const int xx1 = x + TEXT_TO_INSET_OFFSET - 1;
 		const int xx2 = x + textdim.wid - TEXT_TO_INSET_OFFSET + 1;
@@ -345,7 +345,7 @@ void InsetCollapsible::draw(PainterInfo & pi, int x, int y) const
 		// the label below the text. Can be toggled.
 		if (g == SubLabel) {
 			FontInfo font(getLabelfont());
-			if (pi.change_.changed())
+			if (pi.change.changed())
 				font.setPaintColor(colour);
 			font.realize(sane_font);
 			font.decSize();
@@ -371,8 +371,8 @@ void InsetCollapsible::draw(PainterInfo & pi, int x, int y) const
 		}
 		// Strike through the inset if deleted and not already handled by
 		// RowPainter.
-		if (pi.change_.deleted() && canPaintChange(bv))
-			pi.change_.paintCue(pi, xx1, y1, xx2, y + desc);
+		if (pi.change.deleted() && canPaintChange(bv))
+			pi.change.paintCue(pi, xx1, y1, xx2, y + desc);
 		break;
 	}
 }

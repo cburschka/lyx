@@ -95,12 +95,12 @@ void RowPainter::paintInset(Row::Element const & e) const
 	// requires a full repaint
 	bool const pi_full_repaint = pi_.full_repaint;
 	bool const pi_do_spellcheck = pi_.do_spellcheck;
-	Change const pi_change = pi_.change_;
+	Change const pi_change = pi_.change;
 
 	pi_.base.font = e.inset->inheritFont() ? e.font.fontInfo() :
 		pi_.base.bv->buffer().params().getFont().fontInfo();
 	pi_.ltr_pos = !e.font.isVisibleRightToLeft();
-	pi_.change_ = pi_.change_.changed() ? pi_.change_ : e.change;
+	pi_.change = pi_.change.changed() ? pi_.change : e.change;
 	pi_.do_spellcheck &= e.inset->allowSpellCheck();
 
 	int const x1 = int(x_);
@@ -115,7 +115,7 @@ void RowPainter::paintInset(Row::Element const & e) const
 
 	// Restore full_repaint status.
 	pi_.full_repaint = pi_full_repaint;
-	pi_.change_ = pi_change;
+	pi_.change = pi_change;
 	pi_.do_spellcheck = pi_do_spellcheck;
 	pi_.selected = pi_selected;
 

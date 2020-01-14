@@ -134,7 +134,7 @@ public:
 	/// Whether the text at this point is right-to-left (for insets)
 	bool ltr_pos;
 	/// The change the parent is part of (change tracking)
-	Change change_;
+	Change change;
 	/// Whether the parent is selected as a whole
 	bool selected;
 	/// Whether the spell checker is enabled for the parent

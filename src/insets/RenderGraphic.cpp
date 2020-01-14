@@ -199,7 +199,7 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.image(x1, y1, w, h, *loader_.image());
 
 	else {
-		Color c = pi.change_.changed() ? pi.change_.color() : Color_foreground;
+		Color c = pi.change.changed() ? pi.change.color() : Color_foreground;
 		pi.pain.rectangle(x1, y1, w, h, c);
 
 		// Print the file name.
@@ -221,7 +221,7 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 			pi.pain.text(x1 + 6, y - 4, msg, msgFont);
 		}
 	}
-	pi.change_.paintCue(pi, x1, y1, x1 + w, y1 + h);
+	pi.change.paintCue(pi, x1, y1, x1 + w, y1 + h);
 }
 
 
