@@ -872,9 +872,8 @@ void Tabular::insertRow(row_type const row, bool copy)
 		if (buffer().params().track_changes)
 			cellInfo(i).inset->setChange(Change(Change::INSERTED));
 	}
-	if (buffer().params().track_changes) {
+	if (buffer().params().track_changes)
 		row_info[row + 1].change.setInserted();
-	}
 }
 
 
@@ -967,13 +966,13 @@ void Tabular::appendColumn(col_type col)
 
 void Tabular::insertColumn(col_type const col, bool copy)
 {
-	BufferParams const & bp = buffer().params();
+	bool const ct = buffer().params().track_changes;
 	column_info.insert(column_info.begin() + col + 1, ColumnData(column_info[col]));
 
 	for (row_type r = 0; r < nrows(); ++r) {
 		cell_info[r].insert(cell_info[r].begin() + col + 1,
 			copy ? CellData(cell_info[r][col]) : CellData(buffer_));
-		if (bp.track_changes)
+		if (ct)
 			cell_info[r][col + 1].inset->setChange(Change(Change::INSERTED));
 		if (cell_info[r][col].multicolumn == CELL_BEGIN_OF_MULTICOLUMN)
 			cell_info[r][col + 1].multicolumn = CELL_PART_OF_MULTICOLUMN;
@@ -990,10 +989,10 @@ void Tabular::insertColumn(col_type const col, bool copy)
 		if (rightLine(i) && rightLine(j)) {
 			setRightLine(j, false);
 		}
-		if (buffer().params().track_changes)
+		if (ct)
 			cellInfo(i).inset->setChange(Change(Change::INSERTED));
 	}
-	if (buffer().params().track_changes)
+	if (ct)
 		column_info[col + 1].change.setInserted();
 }
 
@@ -7160,10 +7159,14 @@ Text * InsetTabular::getText(int idx) const
 
 bool InsetTabular::isChanged() const
 {
-	for (idx_type idx = 0; idx < nargs(); ++idx)
+	for (idx_type idx = 0; idx < nargs(); ++idx) {
 		if (cell(idx)->isChanged())
 			return true;
-	// FIXME: shall we look at row/columns changed status?
+		if (tabular.row_info[tabular.cellRow(idx)].change.changed())
+			return true;
+		if (tabular.column_info[tabular.cellColumn(idx)].change.changed())
+			return true;
+	}
 	return false;
 }
 
