@@ -786,7 +786,7 @@ public:
 		/// caption
 		bool caption;
 		///
-		Change::Type change;
+		Change change;
 	};
 	///
 	typedef std::vector<RowData> row_vector;
@@ -811,7 +811,7 @@ public:
 		///
 		bool varwidth;
 		///
-		Change::Type change;
+		Change change;
 	};
 	///
 	typedef std::vector<ColumnData> column_vector;

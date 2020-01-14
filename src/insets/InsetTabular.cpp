@@ -451,18 +451,42 @@ bool getTokenValue(string const & str, char const * token, Length & len)
 }
 
 
-bool getTokenValue(string const & str, char const * token, Change::Type & change)
+bool getTokenValue(string const & str, char const * token, Change & change, BufferParams bp)
 {
-	// set the length to be zero() as default as this it should be if not
+	// set the change to be Change() as default as this it should be if not
 	// in the file format.
-	change = Change::UNCHANGED;
+	change = Change();
 	string tmp;
 	if (getTokenValue(str, token, tmp)) {
-		if (tmp == "inserted") {
-			change = Change::INSERTED;
+		vector<string> const changedata = getVectorFromString(tmp, " ");
+		if (changedata.size() != 3) {
+			Alert::warning(_("Change tracking data incomplete"),
+				       _("Change tracking information for tabular row/column "
+				         "is incomplete. I will ignore this.\n"));
+			return false;
+		}
+		BufferParams::AuthorMap const & am = bp.author_map_;
+		int aid = convert<int>(changedata[1]);
+		if (am.find(aid) == am.end()) {
+			// FIXME Use ErrorList
+			Alert::warning(_("Change tracking author index missing"),
+				bformat(_("A change tracking author information for index "
+				          "%1$d is missing. This can happen after a wrong "
+				          "merge by a version control system. In this case, "
+				          "either fix the merge, or have this information "
+				          "missing until the corresponding tracked changes "
+				          "are merged or this user edits the file again.\n"),
+				        aid));
+			bp.addAuthor(Author(aid));
+		}
+		istringstream is(changedata[2]);
+		time_t ct;
+		is >> ct;
+		if (changedata[0] == "inserted") {
+			change = Change(Change::INSERTED, am.find(aid)->second, ct);
 			return true;
-		} else if (tmp == "deleted") {
-			change = Change::DELETED;
+		} else if (changedata[0] == "deleted") {
+			change = Change(Change::DELETED, am.find(aid)->second, ct);
 			return true;
 		}
 	}
@@ -550,13 +574,18 @@ string const write_attribute(string const & name, Length const & value)
 	return value.zero() ? string() : write_attribute(name, value.asString());
 }
 
-template <>
-string const write_attribute(string const & name, Change::Type const & type)
+string const write_attribute(string const & name, Change const & change, BufferParams const bp)
 {
-	if (type == Change::INSERTED)
-		return write_attribute(name, from_ascii("inserted"));
-	else if (type == Change::DELETED)
-		return write_attribute(name, from_ascii("deleted"));
+	odocstringstream ods;
+	if (change.inserted())
+		ods << from_ascii("inserted");
+	else if (change.deleted())
+		ods << from_ascii("deleted");
+	if (change.changed()) {
+		ods << " " << bp.authors().get(change.author).bufferId()
+		    << " " << change.changetime;
+		return write_attribute(name, ods.str());
+	}
 	return string();
 }
 
@@ -703,7 +732,7 @@ Tabular::RowData::RowData()
 	  endlastfoot(false),
 	  newpage(false),
 	  caption(false),
-	  change(Change::UNCHANGED)
+	  change(Change())
 {}
 
 
@@ -712,7 +741,7 @@ Tabular::ColumnData::ColumnData()
 	  valignment(LYX_VALIGN_TOP),
 	  width(0),
 	  varwidth(false),
-	  change(Change::UNCHANGED)
+	  change(Change())
 {
 }
 
@@ -789,7 +818,7 @@ void Tabular::deleteRow(row_type const row, bool const force)
 		}
 	}
 	if (ct)
-		row_info[row].change = Change::DELETED;
+		row_info[row].change.setDeleted();
 	else {
 		row_info.erase(row_info.begin() + row);
 		cell_info.erase(cell_info.begin() + row);
@@ -843,8 +872,9 @@ void Tabular::insertRow(row_type const row, bool copy)
 		if (buffer().params().track_changes)
 			cellInfo(i).inset->setChange(Change(Change::INSERTED));
 	}
-	if (buffer().params().track_changes)
-		row_info[row + 1].change = Change::INSERTED;
+	if (buffer().params().track_changes) {
+		row_info[row + 1].change.setInserted();
+	}
 }
 
 
@@ -916,7 +946,7 @@ void Tabular::deleteColumn(col_type const col, bool const force)
 			cell_info[r].erase(cell_info[r].begin() + col);
 	}
 	if (ct)
-		column_info[col].change = Change::DELETED;
+		column_info[col].change.setDeleted();
 	else
 		column_info.erase(column_info.begin() + col);
 	updateIndexes();
@@ -964,7 +994,7 @@ void Tabular::insertColumn(col_type const col, bool copy)
 			cellInfo(i).inset->setChange(Change(Change::INSERTED));
 	}
 	if (buffer().params().track_changes)
-		column_info[col + 1].change = Change::INSERTED;
+		column_info[col + 1].change.setInserted();
 }
 
 
@@ -1706,7 +1736,7 @@ void Tabular::write(ostream & os) const
 		   << write_attribute("alignment", column_info[c].alignment);
 		if (column_info[c].alignment == LYX_ALIGN_DECIMAL)
 			os << write_attribute("decimal_point", column_info[c].decimal_point);
-		os << write_attribute("change", column_info[c].change)
+		os << write_attribute("change", column_info[c].change, buffer().params())
 		   << write_attribute("valignment", column_info[c].valignment)
 		   << write_attribute("width", column_info[c].p_width.asString())
 		   << write_attribute("varwidth", column_info[c].varwidth)
@@ -1728,7 +1758,7 @@ void Tabular::write(ostream & os) const
 			os << write_attribute("interlinespace", def);
 		else
 			os << write_attribute("interlinespace", row_info[r].interline_space);
-		os << write_attribute("change", row_info[r].change)
+		os << write_attribute("change", row_info[r].change, buffer().params())
 		   << write_attribute("endhead", row_info[r].endhead)
 		   << write_attribute("endfirsthead", row_info[r].endfirsthead)
 		   << write_attribute("endfoot", row_info[r].endfoot)
@@ -1828,7 +1858,7 @@ void Tabular::read(Lexer & lex)
 		getTokenValue(line, "width", column_info[c].p_width);
 		getTokenValue(line, "special", column_info[c].align_special);
 		getTokenValue(line, "varwidth", column_info[c].varwidth);
-		getTokenValue(line, "change", column_info[c].change);
+		getTokenValue(line, "change", column_info[c].change, buffer().params());
 	}
 
 	for (row_type i = 0; i < nrows(); ++i) {
@@ -1850,7 +1880,7 @@ void Tabular::read(Lexer & lex)
 		getTokenValue(line, "endlastfoot", row_info[i].endlastfoot);
 		getTokenValue(line, "newpage", row_info[i].newpage);
 		getTokenValue(line, "caption", row_info[i].caption);
-		getTokenValue(line, "change", row_info[i].change);
+		getTokenValue(line, "change", row_info[i].change, buffer().params());
 		for (col_type j = 0; j < ncols(); ++j) {
 			l_getline(is, line);
 			if (!prefixIs(line, "<cell")) {
@@ -4518,8 +4548,8 @@ void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 
 	// Colour the frame if rows/columns are added or deleted
 	Color colour = Color_tabularline;
-	if (tabular.column_info[col].change != Change::UNCHANGED
-	    || tabular.row_info[row].change != Change::UNCHANGED)
+	if (tabular.column_info[col].change.changed()
+	    || tabular.row_info[row].change.changed())
 		colour = InsetTableCell(*tabular.cellInset(cell)).paragraphs().front().lookupChange(0).color();
 
 	// Top
@@ -5136,17 +5166,17 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				if (ct && cs == 0 && ce == tabular.ncols() - 1) {
 					// whole row selected
 					if (act == LFUN_CHANGE_ACCEPT) {
-						if (tabular.row_info[r].change == Change::INSERTED)
-							tabular.row_info[r].change = Change::UNCHANGED;
-						else if (tabular.row_info[r].change == Change::DELETED) {
+						if (tabular.row_info[r].change.inserted())
+							tabular.row_info[r].change.setUnchanged();
+						else if (tabular.row_info[r].change.deleted()) {
 							tabular.deleteRow(r, true);
 							--re;
 							continue;
 						}
 					} else {
-						if (tabular.row_info[r].change == Change::DELETED)
-							tabular.row_info[r].change = Change::UNCHANGED;
-						else if (tabular.row_info[r].change == Change::INSERTED) {
+						if (tabular.row_info[r].change.deleted())
+							tabular.row_info[r].change.setUnchanged();
+						else if (tabular.row_info[r].change.inserted()) {
 							tabular.deleteRow(r, true);
 							--re;
 							continue;
@@ -5157,17 +5187,17 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 					if (ct && rs == 0 && re == tabular.nrows() - 1) {
 						// whole col selected
 						if (act == LFUN_CHANGE_ACCEPT) {
-							if (tabular.column_info[c].change == Change::INSERTED)
-								tabular.column_info[c].change = Change::UNCHANGED;
-							else if (tabular.column_info[c].change == Change::DELETED) {
+							if (tabular.column_info[c].change.inserted())
+								tabular.column_info[c].change.setUnchanged();
+							else if (tabular.column_info[c].change.deleted()) {
 								tabular.deleteColumn(c, true);
 								--ce;
 								continue;
 							}
 						} else {
-							if (tabular.column_info[c].change == Change::DELETED)
-								tabular.column_info[c].change = Change::UNCHANGED;
-							else if (tabular.column_info[c].change == Change::INSERTED) {
+							if (tabular.column_info[c].change.deleted())
+								tabular.column_info[c].change.setUnchanged();
+							else if (tabular.column_info[c].change.inserted()) {
 								tabular.deleteColumn(c, true);
 								--ce;
 								continue;
@@ -5202,7 +5232,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHANGE_PREVIOUS: {
 		// BufferView::dispatch has already moved the cursor, we just
 		// need to select here if we have a changed row or column
-		if (tabular.row_info[tabular.cellRow(cur.idx())].change != Change::UNCHANGED) {
+		if (tabular.row_info[tabular.cellRow(cur.idx())].change.changed()) {
 			// select row
 			cur.idx() = tabular.getFirstCellInRow(tabular.cellRow(cur.idx()));
 			cur.pit() = 0;
@@ -5215,7 +5245,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			bvcur = cur;
 			rowselect_ = true;
 		}
-		else if (tabular.column_info[tabular.cellColumn(cur.idx())].change != Change::UNCHANGED) {
+		else if (tabular.column_info[tabular.cellColumn(cur.idx())].change.changed()) {
 			// select column
 			cur.idx() = tabular.cellIndex(0, tabular.cellColumn(cur.idx()));
 			cur.pit() = 0;
@@ -5793,23 +5823,23 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			col_type cs, ce;
 			getSelection(cur, rs, re, cs, ce);
 			for (row_type r = rs; r <= re; ++r) {
-				if (tabular.row_info[r].change != Change::UNCHANGED) {
+				if (tabular.row_info[r].change.changed()) {
 					status.setEnabled(true);
 					return true;
 				}
 				for (col_type c = cs; c <= ce; ++c) {
-					if (tabular.column_info[c].change != Change::UNCHANGED) {
+					if (tabular.column_info[c].change.changed()) {
 						status.setEnabled(true);
 						return true;
 					}
 				}
 			}
 		} else {
-			if (tabular.row_info[tabular.cellRow(cur.idx())].change != Change::UNCHANGED) {
+			if (tabular.row_info[tabular.cellRow(cur.idx())].change.changed()) {
 				status.setEnabled(true);
 				return true;
 			}
-			else if (tabular.column_info[tabular.cellColumn(cur.idx())].change != Change::UNCHANGED) {
+			else if (tabular.column_info[tabular.cellColumn(cur.idx())].change.changed()) {
 				status.setEnabled(true);
 				return true;
 			}
@@ -7150,15 +7180,15 @@ void InsetTabular::acceptChanges()
 	for (idx_type idx = 0; idx < nargs(); ++idx)
 		cell(idx)->acceptChanges();
 	for (row_type row = 0; row < tabular.nrows(); ++row) {
-		if (tabular.row_info[row].change == Change::INSERTED)
-			tabular.row_info[row].change = Change::UNCHANGED;
-		else if (tabular.row_info[row].change == Change::DELETED)
+		if (tabular.row_info[row].change.inserted())
+			tabular.row_info[row].change.setUnchanged();
+		else if (tabular.row_info[row].change.deleted())
 			tabular.deleteRow(row, true);
 	}
 	for (col_type col = 0; col < tabular.ncols(); ++col) {
-		if (tabular.column_info[col].change == Change::INSERTED)
-			tabular.column_info[col].change = Change::UNCHANGED;
-		else if (tabular.column_info[col].change == Change::DELETED)
+		if (tabular.column_info[col].change.inserted())
+			tabular.column_info[col].change.setUnchanged();
+		else if (tabular.column_info[col].change.deleted())
 			tabular.deleteColumn(col, true);
 	}
 }
@@ -7169,15 +7199,15 @@ void InsetTabular::rejectChanges()
 	for (idx_type idx = 0; idx < nargs(); ++idx)
 		cell(idx)->rejectChanges();
 	for (row_type row = 0; row < tabular.nrows(); ++row) {
-		if (tabular.row_info[row].change == Change::DELETED)
-			tabular.row_info[row].change = Change::UNCHANGED;
-		else if (tabular.row_info[row].change == Change::INSERTED)
+		if (tabular.row_info[row].change.deleted())
+			tabular.row_info[row].change.setUnchanged();
+		else if (tabular.row_info[row].change.inserted())
 			tabular.deleteRow(row, true);
 	}
 	for (col_type col = 0; col < tabular.ncols(); ++col) {
-		if (tabular.column_info[col].change == Change::DELETED)
-			tabular.column_info[col].change = Change::UNCHANGED;
-		else if (tabular.column_info[col].change == Change::INSERTED)
+		if (tabular.column_info[col].change.deleted())
+			tabular.column_info[col].change.setUnchanged();
+		else if (tabular.column_info[col].change.inserted())
 			tabular.deleteColumn(col, true);
 	}
 }
