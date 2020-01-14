@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>494</width>
-    <height>583</height>
+    <height>614</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -151,7 +151,7 @@
       <item row="4" column="0">
        <widget class="QCheckBox" name="copyCTMarkupCB">
         <property name="toolTip">
-         <string>If this is checked, deleted and added text in change tracking mde will not be resolved on copy/paste operations and when moving content from/to insets</string>
+         <string>If this is checked, deleted and added text in change tracking mode will not be resolved on copy/paste operations and when moving content from/to insets</string>
         </property>
         <property name="text">
          <string>&amp;Keep change tracking markup on copy and paste</string>
