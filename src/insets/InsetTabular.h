@@ -873,21 +873,24 @@ public:
 	///
 	// helper function for Latex
 	///
-	void TeXTopHLine(otexstream &, row_type row, std::list<col_type>) const;
+	void TeXTopHLine(otexstream &, row_type row, std::list<col_type>,
+			 std::list<col_type>) const;
 	///
-	void TeXBottomHLine(otexstream &, row_type row, std::list<col_type>) const;
+	void TeXBottomHLine(otexstream &, row_type row, std::list<col_type>,
+			    std::list<col_type>) const;
 	///
 	void TeXCellPreamble(otexstream &, idx_type cell, bool & ismulticol, bool & ismultirow,
 			     bool const bidi) const;
 	///
 	void TeXCellPostamble(otexstream &, idx_type cell, bool ismulticol, bool ismultirow) const;
 	///
-	void TeXLongtableHeaderFooter(otexstream &, OutputParams const &, std::list<col_type>) const;
+	void TeXLongtableHeaderFooter(otexstream &, OutputParams const &, std::list<col_type>,
+				      std::list<col_type>) const;
 	///
 	bool isValidRow(row_type const row) const;
 	///
 	void TeXRow(otexstream &, row_type const row,
-		    OutputParams const &, std::list<col_type>) const;
+		    OutputParams const &, std::list<col_type>, std::list<col_type>) const;
 	///
 	// helper functions for plain text
 	///

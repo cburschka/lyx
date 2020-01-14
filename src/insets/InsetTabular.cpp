@@ -2488,7 +2488,8 @@ bool Tabular::isPartOfMultiRow(row_type row, col_type column) const
 }
 
 
-void Tabular::TeXTopHLine(otexstream & os, row_type row, list<col_type> columns) const
+void Tabular::TeXTopHLine(otexstream & os, row_type row, list<col_type> columns,
+			  list<col_type> logical_columns) const
 {
 	// we only output complete row lines and the 1st row here, the rest
 	// is done in Tabular::TeXBottomHLine(...)
@@ -2541,7 +2542,12 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, list<col_type> columns)
 	} else if (realfirstrow || have_trims) {
 		string const cline = use_booktabs ? "\\cmidrule" : "\\cline";
 		col_type c = 0;
-		for (auto & cl : columns) {
+		std::list<col_type>::const_iterator it1 = logical_columns.begin();
+		std::list<col_type>::const_iterator it2 = columns.begin();
+		// We need to iterate over the logical columns here, but take care for
+		// bidi swapping
+		for (; it1 != logical_columns.end() && it2 != columns.end(); ++it1, ++it2) {
+			col_type cl = *it1;
 			if (cl < c)
 				continue;
 			c = cl;
@@ -2550,7 +2556,8 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, list<col_type> columns)
 				for (col_type j = 0 ; j < c; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
 						++offset;
-				string const firstcol = convert<string>(c + 1 + offset);
+				// If the two iterators differ, we are in bidi with swapped columns
+				col_type firstcol = (*it1 == *it2) ? c + 1 + offset : columns.size() - c + offset;
 				while (isPartOfMultiColumn(row, c))
 					++c;
 				string trim;
@@ -2575,7 +2582,7 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, list<col_type> columns)
 				for (col_type j = cstart ; j < c ; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
 						++offset;
-				col_type const lastcol = c + 1 + offset;
+				col_type lastcol =(*it1 == *it2) ? c + 1 + offset : columns.size() - c + offset;
 				if (toprtrims.find(c) != toprtrims.end()
 				    && toprtrims.find(c)->second)
 					trim += "r";
@@ -2583,7 +2590,11 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, list<col_type> columns)
 				os << cline;
 				if (!trim.empty())
 					os << "(" << trim << ")";
-				os << "{" << firstcol << '-' << lastcol << "}";
+				if (firstcol > lastcol)
+					// This can happen with bidi (swapped columns)
+					os << "{" << lastcol << '-' << firstcol << "}";
+				else
+					os << "{" << firstcol << '-' << lastcol << "}";
 				if (c == columns.size() - 1)
 					break;
 				++c;
@@ -2594,7 +2605,8 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, list<col_type> columns)
 }
 
 
-void Tabular::TeXBottomHLine(otexstream & os, row_type row, list<col_type> columns) const
+void Tabular::TeXBottomHLine(otexstream & os, row_type row, list<col_type> columns,
+			     list<col_type> logical_columns) const
 {
 	// we output bottomlines of row r and the toplines of row r+1
 	// if the latter do not span the whole tabular
@@ -2664,7 +2676,12 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, list<col_type> colum
 	} else {
 		string const cline = use_booktabs ? "\\cmidrule" : "\\cline";
 		col_type c = 0;
-		for (auto & cl : columns) {
+		std::list<col_type>::const_iterator it1 = logical_columns.begin();
+		std::list<col_type>::const_iterator it2 = columns.begin();
+		// We need to iterate over the logical columns here, but take care for
+		// bidi swapping
+		for (; it1 != logical_columns.end() && it2 != columns.end(); ++it1, ++it2) {
+			col_type cl = *it1;
 			if (cl < c)
 				continue;
 			c = cl;
@@ -2673,7 +2690,8 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, list<col_type> colum
 				for (col_type j = 0 ; j < c; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
 						++offset;
-				string const firstcol = convert<string>(c + 1 + offset);
+				// If the two iterators differ, we are in bidi with swapped columns
+				col_type firstcol = (*it1 == *it2) ? c + 1 + offset : columns.size() - c + offset;
 				while (isPartOfMultiColumn(row, c))
 					++c;
 				string trim;
@@ -2700,7 +2718,7 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, list<col_type> colum
 				for (col_type j = cstart ; j < c ; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
 						++offset;
-				col_type const lastcol = c + 1 + offset;
+				col_type lastcol =(*it1 == *it2) ? c + 1 + offset : columns.size() - c + offset;
 				if (bottomrtrims.find(c) != bottomrtrims.end()
 				    && bottomrtrims.find(c)->second)
 					trim += "r";
@@ -2708,7 +2726,11 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, list<col_type> colum
 				os << cline;
 				if (!trim.empty())
 					os << "(" << trim << ")";
-				os << "{" << firstcol << '-' << lastcol << "}";
+				if (firstcol > lastcol)
+					// This can happen with bidi (swapped columns)
+					os << "{" << lastcol << '-' << firstcol << "}";
+				else
+					os << "{" << firstcol << '-' << lastcol << "}";
 				if (c == columns.size() - 1)
 					break;
 				++c;
@@ -2917,7 +2939,8 @@ void Tabular::TeXCellPostamble(otexstream & os, idx_type cell,
 
 void Tabular::TeXLongtableHeaderFooter(otexstream & os,
 				       OutputParams const & runparams,
-				       list<col_type> columns) const
+				       list<col_type> columns,
+				       list<col_type> logical_columns) const
 {
 	if (!is_long_tabular)
 		return;
@@ -2929,7 +2952,7 @@ void Tabular::TeXLongtableHeaderFooter(otexstream & os,
 			if (row_info[r].caption &&
 			    !row_info[r].endfirsthead && !row_info[r].endhead &&
 			    !row_info[r].endfoot && !row_info[r].endlastfoot)
-				TeXRow(os, r, runparams, columns);
+				TeXRow(os, r, runparams, columns, logical_columns);
 		}
 	}
 	// output first header info
@@ -2938,7 +2961,7 @@ void Tabular::TeXLongtableHeaderFooter(otexstream & os,
 			os << "\\hline\n";
 		for (row_type r = 0; r < nrows(); ++r) {
 			if (row_info[r].endfirsthead)
-				TeXRow(os, r, runparams, columns);
+				TeXRow(os, r, runparams, columns, logical_columns);
 		}
 		if (endfirsthead.bottomDL)
 			os << "\\hline\n";
@@ -2952,7 +2975,7 @@ void Tabular::TeXLongtableHeaderFooter(otexstream & os,
 			os << "\\hline\n";
 		for (row_type r = 0; r < nrows(); ++r) {
 			if (row_info[r].endhead)
-				TeXRow(os, r, runparams, columns);
+				TeXRow(os, r, runparams, columns, logical_columns);
 		}
 		if (endhead.bottomDL)
 			os << "\\hline\n";
@@ -2964,7 +2987,7 @@ void Tabular::TeXLongtableHeaderFooter(otexstream & os,
 			os << "\\hline\n";
 		for (row_type r = 0; r < nrows(); ++r) {
 			if (row_info[r].endfoot)
-				TeXRow(os, r, runparams, columns);
+				TeXRow(os, r, runparams, columns, logical_columns);
 		}
 		if (endfoot.bottomDL)
 			os << "\\hline\n";
@@ -2978,7 +3001,7 @@ void Tabular::TeXLongtableHeaderFooter(otexstream & os,
 			os << "\\hline\n";
 		for (row_type r = 0; r < nrows(); ++r) {
 			if (row_info[r].endlastfoot)
-				TeXRow(os, r, runparams, columns);
+				TeXRow(os, r, runparams, columns, logical_columns);
 		}
 		if (endlastfoot.bottomDL)
 			os << "\\hline\n";
@@ -2999,12 +3022,12 @@ bool Tabular::isValidRow(row_type row) const
 
 void Tabular::TeXRow(otexstream & os, row_type row,
 		     OutputParams const & runparams,
-		     list<col_type> columns) const
+		     list<col_type> columns, list<col_type> logical_columns) const
 {
 	idx_type cell = cellIndex(row, 0);
 
 	//output the top line
-	TeXTopHLine(os, row, columns);
+	TeXTopHLine(os, row, columns, logical_columns);
 
 	if (row_info[row].top_space_default) {
 		if (use_booktabs)
@@ -3153,7 +3176,7 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 	os << '\n';
 
 	//output the bottom line
-	TeXBottomHLine(os, row, columns);
+	TeXBottomHLine(os, row, columns, logical_columns);
 
 	if (row_info[row].interline_space_default) {
 		if (use_booktabs)
@@ -3202,6 +3225,7 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 		runparams.local_font->isRightToLeft()
 		&& runparams.useBidiPackage();
 	list<col_type> columns;
+	list<col_type> logical_columns;
 	for (col_type cl = 0; cl < ncols(); ++cl) {
 		if (!buffer().params().output_changes && column_info[cl].change.deleted())
 			continue;
@@ -3209,6 +3233,9 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 			columns.push_front(cl);
 		else
 			columns.push_back(cl);
+		// for some calculations, we need the logical (non-swapped)
+		// columns also in bidi.
+		logical_columns.push_back(cl);
 	}
 
 	// If we use \cline or \cmidrule, we need to locally de-activate
@@ -3423,7 +3450,7 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 	}
 	os << "}\n";
 
-	TeXLongtableHeaderFooter(os, runparams, columns);
+	TeXLongtableHeaderFooter(os, runparams, columns, logical_columns);
 
 	//+---------------------------------------------------------------------
 	//+                      the single row and columns (cells)            +
@@ -3433,7 +3460,7 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 		if (!buffer().params().output_changes && row_info[r].change.deleted())
 			continue;
 		if (isValidRow(r)) {
-			TeXRow(os, r, runparams, columns);
+			TeXRow(os, r, runparams, columns, logical_columns);
 			if (is_long_tabular && row_info[r].newpage)
 				os << "\\newpage\n";
 		}
