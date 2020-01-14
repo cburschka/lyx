@@ -14,21 +14,12 @@
 #ifndef ROWPAINTER_H
 #define ROWPAINTER_H
 
-#include "Changes.h"
 #include "Row.h"
-
-#include "support/types.h"
 
 namespace lyx {
 
-class BufferView;
-class Font;
-class FontInfo;
-class Inset;
-class Language;
 class PainterInfo;
 class Paragraph;
-class ParagraphList;
 class Text;
 class TextMetrics;
 
@@ -82,16 +73,12 @@ private:
 	/// Text for the row
 	Text const & text_;
 	TextMetrics const & tm_;
-	ParagraphList const & pars_;
 
 	/// The row to paint
 	Row const & row_;
 
 	/// Row's paragraph
 	Paragraph const & par_;
-
-	/// row changed? (change tracking)
-	Change const change_;
 
 	// Looks ugly - is
 	double const xo_;

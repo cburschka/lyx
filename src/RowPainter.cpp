@@ -10,6 +10,7 @@
  */
 
 #include <config.h>
+
 #include <algorithm>
 
 #include "RowPainter.h"
@@ -26,25 +27,18 @@
 #include "Row.h"
 #include "MetricsInfo.h"
 #include "Paragraph.h"
+#include "ParagraphList.h"
 #include "ParagraphParameters.h"
+#include "Text.h"
 #include "TextMetrics.h"
-#include "VSpace.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
-#include "insets/InsetText.h"
-
-#include "mathed/InsetMath.h"
-
 #include "support/debug.h"
 #include "support/gettext.h"
-#include "support/textutils.h"
-
 #include "support/lassert.h"
-#include <boost/crc.hpp>
 
-#include <stdlib.h>
 
 using namespace std;
 
@@ -58,9 +52,7 @@ RowPainter::RowPainter(PainterInfo & pi,
 	Text const & text, Row const & row, int x, int y)
 	: pi_(pi), text_(text),
 	  tm_(pi_.base.bv->textMetrics(&text)),
-	  pars_(text.paragraphs()),
 	  row_(row), par_(text.paragraphs()[row.pit()]),
-	  change_(pi_.change_),
 	  xo_(x), yo_(y)
 {
 	x_ = row_.left_margin + xo_;
@@ -108,7 +100,7 @@ void RowPainter::paintInset(Row::Element const & e) const
 	pi_.base.font = e.inset->inheritFont() ? e.font.fontInfo() :
 		pi_.base.bv->buffer().params().getFont().fontInfo();
 	pi_.ltr_pos = !e.font.isVisibleRightToLeft();
-	pi_.change_ = change_.changed() ? change_ : e.change;
+	pi_.change_ = pi_.change_.changed() ? pi_.change_ : e.change;
 	pi_.do_spellcheck &= e.inset->allowSpellCheck();
 
 	int const x1 = int(x_);
@@ -316,6 +308,7 @@ void RowPainter::paintAppendix() const
 void RowPainter::paintDepthBar() const
 {
 	depth_type const depth = par_.getDepth();
+	ParagraphList const & pars = text_.paragraphs();
 
 	if (depth <= 0)
 		return;
@@ -325,15 +318,15 @@ void RowPainter::paintDepthBar() const
 		pit_type pit2 = row_.pit();
 		if (row_.pos() == 0)
 			--pit2;
-		prev_depth = pars_[pit2].getDepth();
+		prev_depth = pars[pit2].getDepth();
 	}
 
 	depth_type next_depth = 0;
 	if (!tm_.isLastRow(row_)) {
 		pit_type pit2 = row_.pit();
-		if (row_.endpos() >= pars_[pit2].size())
+		if (row_.endpos() >= pars[pit2].size())
 			++pit2;
-		next_depth = pars_[pit2].getDepth();
+		next_depth = pars[pit2].getDepth();
 	}
 
 	for (depth_type i = 1; i <= depth; ++i) {
