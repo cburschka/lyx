@@ -555,9 +555,13 @@ public:
 	///
 	void insertColumn(col_type column, bool copy);
 	///
-	idx_type getFirstCellInRow(row_type row) const;
+	idx_type getFirstCellInRow(row_type row, bool const ct = false) const;
 	///
-	idx_type getLastCellInRow(row_type row) const;
+	idx_type getLastCellInRow(row_type row, bool const ct = false) const;
+	///
+	idx_type getFirstRow(bool const ct = false) const;
+	///
+	idx_type getLastRow(bool const ct = false) const;
 	///
 	idx_type numberOfCellsInRow(row_type row) const;
 	///

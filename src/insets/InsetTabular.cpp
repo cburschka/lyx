@@ -1647,7 +1647,7 @@ int Tabular::textVOffset(idx_type cell) const
 }
 
 
-Tabular::idx_type Tabular::getFirstCellInRow(row_type row) const
+Tabular::idx_type Tabular::getFirstCellInRow(row_type row, bool const ct) const
 {
 	col_type c = 0;
 	idx_type const numcells = numberOfCellsInRow(row);
@@ -1656,23 +1656,49 @@ Tabular::idx_type Tabular::getFirstCellInRow(row_type row) const
 	// is really invalid, i.e., it is NOT the first cell in the row. but
 	// i do not know what to do here. (rgh)
 	while (c < numcells - 1
-	       && cell_info[row][c].multirow == CELL_PART_OF_MULTIROW)
+	       && (cell_info[row][c].multirow == CELL_PART_OF_MULTIROW
+		   || (ct && column_info[c].change.deleted())))
 		++c;
 	return cell_info[row][c].cellno;
 }
 
 
-Tabular::idx_type Tabular::getLastCellInRow(row_type row) const
+Tabular::idx_type Tabular::getLastCellInRow(row_type row, bool const ct) const
 {
 	col_type c = ncols() - 1;
 	// of course we check against 0 so we don't crash. but we have the same
 	// problem as in the previous routine: if all the cells are part of a
 	// multirow or part of a multi column, then our return value is invalid.
 	while (c > 0
-	       && (cell_info[row][c].multirow == CELL_PART_OF_MULTIROW
-		   || cell_info[row][c].multicolumn == CELL_PART_OF_MULTICOLUMN))
+	       && ((cell_info[row][c].multirow == CELL_PART_OF_MULTIROW
+		   || cell_info[row][c].multicolumn == CELL_PART_OF_MULTICOLUMN)
+		  || (ct && column_info[c].change.deleted())))
 		--c;
 	return cell_info[row][c].cellno;
+}
+
+
+Tabular::row_type Tabular::getFirstRow(bool const ct) const
+{
+	row_type r = 0;
+	if (!ct)
+		return r;
+	// exclude deleted rows if ct == true
+	while (r < nrows() && row_info[r].change.deleted())
+		++r;
+	return r;
+}
+
+
+Tabular::row_type Tabular::getLastRow(bool const ct) const
+{
+	row_type r = nrows() - 1;
+	if (!ct)
+		return r;
+	// exclude deleted rows if ct == true
+	while (r > 0 && row_info[r].change.deleted())
+		--r;
+	return r;
 }
 
 
@@ -2497,15 +2523,16 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, list<col_type> columns)
 	}
 
 	// do nothing if empty first row, or incomplete row line after
-	if ((row == 0 && nset == 0) || (row > 0 && nset != ncols()))
+	row_type first = getFirstRow(!buffer().params().output_changes);
+	if ((row == first && nset == 0) || (row > first && nset != columns.size()))
 		return;
 
 	// Is this the actual first row (excluding longtable caption row)?
-	bool const realfirstrow = (row == 0
-				   || (is_long_tabular && row == 1 && ltCaption(0)));
+	bool const realfirstrow = (row == first
+				   || (is_long_tabular && row == first + 1 && ltCaption(first)));
 
 	// only output complete row lines and the 1st row's clines
-	if (nset == ncols() && !have_trims) {
+	if (nset == columns.size() && !have_trims) {
 		if (use_booktabs) {
 			os << (realfirstrow ? "\\toprule " : "\\midrule ");
 		} else {
@@ -2557,7 +2584,7 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, list<col_type> columns)
 				if (!trim.empty())
 					os << "(" << trim << ")";
 				os << "{" << firstcol << '-' << lastcol << "}";
-				if (c == ncols() - 1)
+				if (c == columns.size() - 1)
 					break;
 				++c;
 			}
@@ -2573,7 +2600,7 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, list<col_type> colum
 	// if the latter do not span the whole tabular
 
 	// get the bottomlines of row r, and toplines in next row
-	bool lastrow = row == nrows() - 1;
+	bool lastrow = row == getLastRow(!buffer().params().output_changes);
 	map<col_type, bool> bottomline, topline, topltrims, toprtrims, bottomltrims, bottomrtrims;
 	bool nextrowset = true;
 	for (auto const & c : columns) {
@@ -2626,10 +2653,10 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, list<col_type> colum
 	}
 
 	// do nothing if empty, OR incomplete row line with a topline in next row
-	if (nset == 0 || (nextrowset && nset != ncols()))
+	if (nset == 0 || (nextrowset && nset != columns.size()))
 		return;
 
-	if (nset == ncols() && !have_trims) {
+	if (nset == columns.size() && !have_trims) {
 		if (use_booktabs)
 			os << (lastrow ? "\\bottomrule" : "\\midrule");
 		else
@@ -2682,7 +2709,7 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, list<col_type> colum
 				if (!trim.empty())
 					os << "(" << trim << ")";
 				os << "{" << firstcol << '-' << lastcol << "}";
-				if (c == ncols() - 1)
+				if (c == columns.size() - 1)
 					break;
 				++c;
 			}
@@ -3003,8 +3030,9 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 	bool const bidi_rtl =
 		runparams.local_font->isRightToLeft()
 		&& runparams.useBidiPackage();
+	bool const ct = !buffer().params().output_changes;
 	idx_type lastcell =
-		bidi_rtl ? getFirstCellInRow(row) : getLastCellInRow(row);
+		bidi_rtl ? getFirstCellInRow(row, ct) : getLastCellInRow(row, ct);
 
 	for (auto const & c : columns) {
 		if (isPartOfMultiColumn(row, c))
@@ -3175,6 +3203,8 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 		&& runparams.useBidiPackage();
 	list<col_type> columns;
 	for (col_type cl = 0; cl < ncols(); ++cl) {
+		if (!buffer().params().output_changes && column_info[cl].change.deleted())
+			continue;
 		if (bidi_rtl)
 			columns.push_front(cl);
 		else
@@ -3400,6 +3430,8 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 	//+---------------------------------------------------------------------
 
 	for (row_type r = 0; r < nrows(); ++r) {
+		if (!buffer().params().output_changes && row_info[r].change.deleted())
+			continue;
 		if (isValidRow(r)) {
 			TeXRow(os, r, runparams, columns);
 			if (is_long_tabular && row_info[r].newpage)
