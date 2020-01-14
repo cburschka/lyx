@@ -807,9 +807,6 @@ void Tabular::deleteRow(row_type const row, bool const force)
 	bool const ct = force ? false : buffer().params().track_changes;
 
 	for (col_type c = 0; c < ncols(); ++c) {
-		// mark track changes
-		if (ct)
-			cell_info[row][c].inset->setChange(Change(Change::DELETED));
 		// Care about multirow cells
 		if (row + 1 < nrows() &&
 		    cell_info[row][c].multirow == CELL_BEGIN_OF_MULTIROW &&
@@ -848,8 +845,6 @@ void Tabular::insertRow(row_type const row, bool copy)
 	for (col_type c = 0; c < ncols(); ++c) {
 		cell_info[row + 1].insert(cell_info[row + 1].begin() + c,
 			copy ? CellData(cell_info[row][c]) : CellData(buffer_));
-		if (buffer().params().track_changes)
-			cell_info[row + 1][c].inset->setChange(Change(Change::INSERTED));
 		if (cell_info[row][c].multirow == CELL_BEGIN_OF_MULTIROW)
 			cell_info[row + 1][c].multirow = CELL_PART_OF_MULTIROW;
 	}
@@ -868,12 +863,11 @@ void Tabular::insertRow(row_type const row, bool copy)
 			setBottomLine(i, true);
 			setBottomLine(j, false);
 		}
-		// mark track changes
-		if (buffer().params().track_changes)
-			cellInfo(i).inset->setChange(Change(Change::INSERTED));
 	}
-	if (buffer().params().track_changes)
+	if (buffer().params().track_changes) {
 		row_info[row + 1].change.setInserted();
+		updateIndexes();
+	}
 }
 
 
@@ -932,9 +926,6 @@ void Tabular::deleteColumn(col_type const col, bool const force)
 	bool const ct = force ? false : buffer().params().track_changes;
 
 	for (row_type r = 0; r < nrows(); ++r) {
-		// mark track changes
-		if (ct)
-			cell_info[r][col].inset->setChange(Change(Change::DELETED));
 		// Care about multicolumn cells
 		if (col + 1 < ncols() &&
 		    cell_info[r][col].multicolumn == CELL_BEGIN_OF_MULTICOLUMN &&
@@ -972,8 +963,6 @@ void Tabular::insertColumn(col_type const col, bool copy)
 	for (row_type r = 0; r < nrows(); ++r) {
 		cell_info[r].insert(cell_info[r].begin() + col + 1,
 			copy ? CellData(cell_info[r][col]) : CellData(buffer_));
-		if (ct)
-			cell_info[r][col + 1].inset->setChange(Change(Change::INSERTED));
 		if (cell_info[r][col].multicolumn == CELL_BEGIN_OF_MULTICOLUMN)
 			cell_info[r][col + 1].multicolumn = CELL_PART_OF_MULTICOLUMN;
 	}
@@ -989,11 +978,11 @@ void Tabular::insertColumn(col_type const col, bool copy)
 		if (rightLine(i) && rightLine(j)) {
 			setRightLine(j, false);
 		}
-		if (ct)
-			cellInfo(i).inset->setChange(Change(Change::INSERTED));
 	}
-	if (ct)
+	if (ct) {
 		column_info[col + 1].change.setInserted();
+		updateIndexes();
+	}
 }
 
 
@@ -1016,8 +1005,8 @@ void Tabular::updateIndexes()
 	rowofcell.resize(numberofcells);
 	columnofcell.resize(numberofcells);
 	idx_type i = 0;
-	// reset column and row of cells and update their width and alignment
-	for (row_type row = 0; row < nrows(); ++row)
+	// reset column and row of cells and update their width, alignment and ct status
+	for (row_type row = 0; row < nrows(); ++row) {
 		for (col_type column = 0; column < ncols(); ++column) {
 			if (isPartOfMultiColumn(row, column)) {
 				cell_info[row][column].inset->toggleMultiCol(true);
@@ -1038,8 +1027,15 @@ void Tabular::updateIndexes()
 			cell_info[row][column].inset->toggleMultiRow(false);
 			cell_info[row][column].inset->setContentAlignment(
 				getAlignment(cellIndex(row, column)));
+			if (buffer().params().track_changes) {
+				if (row_info[row].change.changed())
+					cell_info[row][column].inset->setChange(row_info[row].change);
+				if (column_info[column].change.changed())
+					cell_info[row][column].inset->setChange(column_info[column].change);
+			}
 			++i;
 		}
+	}
 }
 
 
@@ -5217,8 +5213,12 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				}
 			}
 			if (ct) {
+				tabular.updateIndexes();
 				// cursor might be invalid
 				cur.fixIfBroken();
+				// change bar might need to be redrawn
+				cur.screenUpdateFlags(Update::Force);
+				cur.forceBufferUpdate();
 			}
 			break;
 		} else {
@@ -7194,6 +7194,7 @@ void InsetTabular::acceptChanges()
 		else if (tabular.column_info[col].change.deleted())
 			tabular.deleteColumn(col, true);
 	}
+	tabular.updateIndexes();
 }
 
 
@@ -7213,6 +7214,7 @@ void InsetTabular::rejectChanges()
 		else if (tabular.column_info[col].change.inserted())
 			tabular.deleteColumn(col, true);
 	}
+	tabular.updateIndexes();
 }
 
 
