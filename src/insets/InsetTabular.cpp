@@ -2582,7 +2582,7 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, list<col_type> columns,
 				for (col_type j = cstart ; j < c ; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
 						++offset;
-				col_type lastcol =(*it1 == *it2) ? c + 1 + offset : columns.size() - c + offset;
+				col_type lastcol = (*it1 == *it2) ? c + 1 + offset : columns.size() - c + offset;
 				if (toprtrims.find(c) != toprtrims.end()
 				    && toprtrims.find(c)->second)
 					trim += "r";
@@ -2655,7 +2655,7 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, list<col_type> colum
 			bottomline[c] = bottomline.find(c)->second || topline.find(c)->second;
 		bottomltrims[c] = (bottomltrims.find(c) != bottomltrims.end() && bottomltrims.find(c)->second)
 				|| (topltrims.find(c) != topltrims.end() && topltrims.find(c)->second);
-		bottomrtrims[c] =(bottomrtrims.find(c) != bottomrtrims.end() && bottomrtrims.find(c)->second)
+		bottomrtrims[c] = (bottomrtrims.find(c) != bottomrtrims.end() && bottomrtrims.find(c)->second)
 				|| (toprtrims.find(c) != toprtrims.end() && toprtrims.find(c)->second);
 		if (bottomline.find(c)->second)
 			++nset;
@@ -2718,7 +2718,7 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, list<col_type> colum
 				for (col_type j = cstart ; j < c ; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
 						++offset;
-				col_type lastcol =(*it1 == *it2) ? c + 1 + offset : columns.size() - c + offset;
+				col_type lastcol = (*it1 == *it2) ? c + 1 + offset : columns.size() - c + offset;
 				if (bottomrtrims.find(c) != bottomrtrims.end()
 				    && bottomrtrims.find(c)->second)
 					trim += "r";
