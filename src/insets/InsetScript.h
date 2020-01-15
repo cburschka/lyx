@@ -68,6 +68,16 @@ public:
 	docstring layoutName() const;
 	///
 	DisplayType display() const;
+
+	///
+	int topOffset(BufferView const *) const { return 0; }
+	///
+	int bottomOffset(BufferView const *) const { return 0; }
+	///
+	int leftOffset(BufferView const *) const { return 0; }
+	///
+	int rightOffset(BufferView const *) const { return 0; }
+
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
