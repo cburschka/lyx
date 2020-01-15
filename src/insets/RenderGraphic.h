@@ -45,6 +45,9 @@ private:
 	/// Not implemented.
 	RenderGraphic & operator=(RenderGraphic const &);
 
+	/// Reference to owner
+	Inset const * inset_;
+
 	/// The stored data.
 	graphics::Loader loader_;
 	graphics::Params params_;

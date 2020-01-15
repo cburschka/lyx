@@ -61,13 +61,8 @@ public:
 	/// 
 	InsetGraphics const * asInsetGraphics() const { return this; }
 
-private:
-	///
-	InsetGraphics(InsetGraphics const &);
-
 	///
 	bool isLabeled() const { return true; }
-	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	bool hasSettings() const { return true; }
 	///
@@ -96,6 +91,18 @@ private:
 	docstring layoutName() const { return from_ascii("Graphics"); }
 	/// Get the inset parameters, used by the GUIndependent dialog.
 	InsetGraphicsParams const & params() const;
+
+	///
+	int topOffset(BufferView const *) const { return 0; }
+	///
+	int bottomOffset(BufferView const *) const { return 0; }
+	///
+	int leftOffset(BufferView const *) const { return 0; }
+	///
+	int rightOffset(BufferView const *) const { return 0; }
+
+	///
+	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
@@ -135,6 +142,10 @@ private:
 	std::string prepareHTMLFile(OutputParams const & runparams) const;
 	///
 	OutputParams::CtObject CtObject(OutputParams const &) const { return OutputParams::CT_OBJECT; }
+
+private:
+	///
+	InsetGraphics(InsetGraphics const &);
 
 	///
 	InsetGraphicsParams params_;

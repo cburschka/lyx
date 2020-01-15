@@ -120,13 +120,20 @@ public:
 	///
 	void addToToc(DocIterator const & di, bool output_active,
 				  UpdateType utype, TocBackend & backend) const;
-private:
-	///
-	InsetExternal(InsetExternal const &);
 	///
 	InsetCode lyxCode() const { return EXTERNAL_CODE; }
 	///
 	bool hasSettings() const { return true; }
+
+	///
+	int topOffset(BufferView const *) const { return 0; }
+	///
+	int bottomOffset(BufferView const *) const { return 0; }
+	///
+	int leftOffset(BufferView const *) const { return 0; }
+	///
+	int rightOffset(BufferView const *) const { return 0; }
+
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
@@ -159,6 +166,11 @@ private:
 	 *  and the preview should be regenerated.
 	 */
 	void fileChanged() const;
+
+private:
+	///
+	InsetExternal(InsetExternal const &);
+
 	/// Is this inset using (instant or graphics) preview?
 	bool isPreviewed() const;
 	/// Do we have the right renderer (button, graphic or monitored preview)?

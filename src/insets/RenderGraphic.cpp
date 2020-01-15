@@ -36,14 +36,14 @@ namespace lyx {
 
 
 RenderGraphic::RenderGraphic(Inset const * inset)
-	: loader_(inset->buffer().fileName())
+	: inset_(inset), loader_(inset->buffer().fileName())
 {
 	loader_.connect(bind(&Inset::updateFrontend, inset));
 }
 
 
 RenderGraphic::RenderGraphic(RenderGraphic const & other, Inset const * inset)
-	: RenderBase(other), loader_(other.loader_), params_(other.params_)
+	: RenderBase(other), inset_(inset), loader_(other.loader_), params_(other.params_)
 {
 	loader_.connect(bind(&Inset::updateFrontend, inset));
 }
@@ -147,7 +147,8 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	bool const image_ready = displayGraphic(params_) && readyToDisplay(loader_);
 	if (image_ready) {
-		dim.wid = loader_.image()->width() + 2 * Inset::textOffset(mi.base.bv);
+		dim.wid = loader_.image()->width() + inset_->leftOffset(mi.base.bv)
+			+ inset_->rightOffset(mi.base.bv);
 		dim.asc = loader_.image()->height();
 		dim_ = dim;
 		return;
@@ -190,9 +191,9 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 {
 	// This will draw the graphics. If the graphics has not been
 	// loaded yet, we draw just a rectangle.
-	int const x1 = x + Inset::textOffset(pi.base.bv);
+	int const x1 = x + inset_->leftOffset(pi.base.bv);
 	int const y1 = y - dim_.asc;
-	int const w = dim_.wid - 2 * Inset::textOffset(pi.base.bv);
+	int const w = dim_.wid - inset_->leftOffset(pi.base.bv) - inset_->rightOffset(pi.base.bv);
 	int const h = dim_.height();
 
 	if (displayGraphic(params_) && readyToDisplay(loader_))
