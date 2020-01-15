@@ -157,6 +157,27 @@ void InsetCollapsible::read(Lexer & lex)
 	setButtonLabel();
 }
 
+int InsetCollapsible::topOffset(BufferView const * bv) const
+{
+	switch (geometry(*bv)) {
+	case Corners:
+	case SubLabel:
+		return 0;
+	default:
+		return InsetText::topOffset(bv);
+	}
+}
+
+int InsetCollapsible::bottomOffset(BufferView const * bv) const
+{
+	switch (geometry(*bv)) {
+	case Corners:
+		return InsetText::topOffset(bv) / 4;
+	default:
+		return InsetText::topOffset(bv);
+	}
+}
+
 
 Dimension InsetCollapsible::dimensionCollapsed(BufferView const & bv) const
 {
@@ -185,8 +206,6 @@ void InsetCollapsible::metrics(MetricsInfo & mi, Dimension & dim) const
 		break;
 	case Corners:
 		InsetText::metrics(mi, dim);
-		dim.des -= 3;
-		dim.asc -= 1;
 		break;
 	case SubLabel: {
 		InsetText::metrics(mi, dim);
@@ -319,8 +338,6 @@ void InsetCollapsible::draw(PainterInfo & pi, int x, int y) const
 		}
 
 		int desc = textdim.descent();
-		if (g == Corners)
-			desc -= 3;
 
 		// Colour the frame according to the change type. (Like for tables.)
 		Color colour = pi.change.changed() ? pi.change.color()

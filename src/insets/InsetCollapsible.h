@@ -54,6 +54,12 @@ public:
 	void read(Lexer &);
 	///
 	void write(std::ostream &) const;
+
+	///
+	int topOffset(BufferView const * bv) const;
+	///
+	int bottomOffset(BufferView const * bv) const;
+
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
