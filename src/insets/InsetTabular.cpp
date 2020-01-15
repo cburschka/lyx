@@ -4473,6 +4473,9 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	bool const original_selection_state = pi.selected;
 
 	idx_type idx = 0;
+	
+	// Save change status
+	Change tab_change = pi.change;
 
 	int yy = y + tabular.offsetVAlignment();
 	for (row_type r = 0; r < tabular.nrows(); ++r) {
@@ -4488,7 +4491,15 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 				continue;
 			}
 
+			// Mark deleted rows/columns
 			pi.selected |= isCellSelected(cur, r, c);
+			if (tabular.column_info[c].change.changed())
+				pi.change = tabular.column_info[c].change;
+			else if (tabular.row_info[r].change.changed())
+				pi.change = tabular.row_info[r].change;
+			else
+				pi.change = tab_change;
+
 			int const cx = nx + tabular.textHOffset(idx);
 			int const cy = yy + tabular.textVOffset(idx);
 			// Cache the Inset position.
