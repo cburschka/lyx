@@ -172,9 +172,10 @@ int InsetCollapsible::bottomOffset(BufferView const * bv) const
 {
 	switch (geometry(*bv)) {
 	case Corners:
-		return InsetText::topOffset(bv) / 4;
+	case SubLabel:
+		return InsetText::bottomOffset(bv) / 4;
 	default:
-		return InsetText::topOffset(bv);
+		return InsetText::bottomOffset(bv);
 	}
 }
 
