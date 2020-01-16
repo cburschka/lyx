@@ -462,7 +462,7 @@ bool getTokenValue(string const & str, char const * token, Change & change, Buff
 		if (changedata.size() != 3) {
 			Alert::warning(_("Change tracking data incomplete"),
 				       _("Change tracking information for tabular row/column "
-				         "is incomplete. I will ignore this.\n"));
+				         "is incomplete. I will ignore this."));
 			return false;
 		}
 		BufferParams::AuthorMap const & am = bp.author_map_;
