@@ -402,7 +402,7 @@ set(LYX_REVISION_VERSION ${LYX_RELEASE_LEVEL})
 set(LYX_PACKAGE_RELEASE "1")
 if(LYX_GITVERSION)
   if (LYX_LOCALVERSIONING)
-    # Find the revision number and for later use
+    # Find the revision number for later use
     EXECUTE_PROCESS(COMMAND ${LYX_GITVERSION} describe --match 2.0.0 HEAD
       WORKING_DIRECTORY "${TOP_SRC_DIR}" OUTPUT_VARIABLE tmp_LYX_PACKAGE_RELEASE OUTPUT_STRIP_TRAILING_WHITESPACE)
     if (tmp_LYX_PACKAGE_RELEASE MATCHES "^2\\.0\\.0\\-\([0-9]+\)\\-\(.*\)$")
@@ -415,8 +415,11 @@ if(LYX_GITVERSION)
       set(ENABLE_DIST ON)
     endif()
   endif()
+else()
+  if (LYX_RELEASE_PATCH GREATER 0)
+    set(LYX_REVISION_VERSION "${LYX_RELEASE_LEVEL}.${LYX_RELEASE_PATCH}")
+  endif()
 endif()
-message(STATUS "LYX_REVISION_VERSION = ${LYX_REVISION_VERSION}")
 
 # Set the programs (lyx, tex2lyx, etc.) suffix
 # When building an OS X bundle, we will append
