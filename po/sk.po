@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-01-10 10:48+0100\n"
-"PO-Revision-Date: 2020-01-10 10:12+0000\n"
+"POT-Creation-Date: 2020-01-17 12:27+0100\n"
+"PO-Revision-Date: 2020-01-17 11:36+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2350,7 +2350,7 @@ msgstr "Konfigurácia parametrov vložky"
 
 #: src/frontends/qt/ui/InsetParamsUi.ui:47
 msgid "Update dialog when moving context"
-msgstr "Synchronizovať dialóg pri zmenách v kontexte"
+msgstr "Synchronizovať dialóg, keď sa kurzor položí do iného prostredia"
 
 #: src/frontends/qt/ui/InsetParamsUi.ui:50
 msgid "S&ynchronize Dialog"
@@ -3115,7 +3115,7 @@ msgid ""
 "out of moving arguments such as sections and captions. This prevents LaTeX "
 "errors that can happen in such cases. It is recommended to keep this on."
 msgstr ""
-"Vysunúť lámavé prvky ako návestia a indexové záznamy z pohyblivých "
+"Vysunúť lámavé prvky ako návestie a indexové záznamy z pohyblivých "
 "argumentov (napr. pre sekcie alebo popisy). Zamedzuje niektorým chybám "
 "LaTeXu v takých pádoch. Lepšie nechať to zaškrtnuté."
 
@@ -3756,7 +3756,7 @@ msgid ""
 "included files."
 msgstr ""
 "Keď zaškrtnuté, adresár dokumentu sa zapíše do dokumentu. Dovolí sa tým "
-"premiestniť dokument niekde inde a predsa nájsť vložené súbory."
+"presunúť dokument niekde inde a predsa nájsť vložené súbory."
 
 #: src/frontends/qt/ui/PrefDocHandlingUi.ui:158
 msgid "Save the &document directory path"
@@ -3857,6 +3857,18 @@ msgstr "Zobraz meno makra v stavovom riadku pri editácii mat. makrov v riadku"
 #: src/frontends/qt/ui/PrefEditUi.ui:132
 msgid "Edit Math Macros with a parameter list (like in LyX < 1.6)"
 msgstr "Editácia mat. makrov s prehľadom parametrov (ako v LyXe < 1.6)"
+
+#: src/frontends/qt/ui/PrefEditUi.ui:154
+msgid ""
+"If this is checked, deleted and added text in change tracking mode will not "
+"be resolved on copy/paste operations and when moving content from/to insets"
+msgstr ""
+"Keď zaškrtnuté, zmazaný alebo pridaný text sa v móde sledovania zmien nebude "
+"riešiť pri operáciách kopírovať/vkladať a pri presúvaní obsahu z/do vložiek"
+
+#: src/frontends/qt/ui/PrefEditUi.ui:157
+msgid "&Keep change tracking markup on copy and paste"
+msgstr "Držať ozna&čenie sledovania zmien pri kopírovaní a vkladaní"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:156
 msgid "Fullscreen"
@@ -26681,29 +26693,17 @@ msgstr "chýba \\begin_document"
 msgid "Changes not shown in LaTeX output"
 msgstr "Zmeny nezobrazené v LaTeX-ovom výstupe"
 
-#: src/Buffer.cpp:1040 src/Buffer.cpp:3035
+#: src/Buffer.cpp:1036 src/Buffer.cpp:3036
 msgid ""
-"Changes will not be highlighted in LaTeX output, because neither dvipost nor "
-"xcolor/ulem are installed.\n"
-"Please install these packages or redefine \\lyxadded and \\lyxdeleted in the "
-"LaTeX preamble."
-msgstr ""
-"Zmeny nebudú zvýraznené v LaTeX-ovom výstupe, lebo ani dvipost ani xcolor/"
-"ulem nie sú nainštalované.\n"
-"Prosím nainštalujte tieto balíky alebo predefinujte \\lyxadded a "
-"\\lyxdeleted v LaTeX-ovej preambuly."
-
-#: src/Buffer.cpp:1046 src/Buffer.cpp:3041
-msgid ""
-"Changes will not be highlighted in LaTeX output when using pdflatex, because "
-"xcolor and ulem are not installed.\n"
+"Changes will not be highlighted in LaTeX output, because xcolor and ulem are "
+"not installed.\n"
 "Please install both packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 msgstr ""
-"Zmeny nebudú zvýraznené v LaTeX-ovom výstupe pri použití pdflatex, lebo ani "
-"dvipost ani xcolor/ulem nie sú nainštalované.\n"
+"Zmeny nebudú zvýraznené v LaTeX-ovom výstupe, lebo ani xcolor ani ulem nie "
+"sú inštalované.\n"
 "Prosím nainštalujte oba balíky alebo predefinujte \\lyxadded a \\lyxdeleted "
-"v LaTeX-ovej preambuly."
+"v LaTeX-ovej preambule."
 
 #: src/Buffer.cpp:1088 src/BufferParams.cpp:457 src/frontends/qt/GuiLog.cpp:257
 #: src/insets/InsetIndex.cpp:469
@@ -35686,6 +35686,18 @@ msgstr "Chránená horizontálna medzera (%1$s)"
 #: src/insets/InsetTOC.cpp:78
 msgid "Unknown TOC type"
 msgstr "Neznámy typ obsahu"
+
+#: src/insets/InsetTabular.cpp:463
+msgid "Change tracking data incomplete"
+msgstr "Neúplné údaje pri sledovaní zmien"
+
+#: src/insets/InsetTabular.cpp:464
+msgid ""
+"Change tracking information for tabular row/column is incomplete. I will "
+"ignore this."
+msgstr ""
+"Údaje sledovania zmien pre riadok či stĺpec v tabuľke nie sú kompletné. Budú "
+"ignorované."
 
 #: src/insets/InsetTabular.cpp:5132
 msgid "Selections not supported."
