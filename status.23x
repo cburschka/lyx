@@ -1,6 +1,6 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 2.3.4.
+This file describes what has been done in the preparation of LyX 2.3.5.
 All comments are welcome.
 
 We try to group things by topic and in decreasing order of importance.
@@ -27,32 +27,8 @@ What's new
 
 * USER INTERFACE
 
-- The "Rows & Columns" optional submenu has been added to the math context menu.
-
-- Avoid using text mode for unicode symbols representable in math mode (bug 9616).
-
-- Do not issue error dialog when no tag is found in git repository for
-  tree-revision info inset.
-
-- Fix display with Wayland (bug 11692).
-
-- Improve editing performance when there are Include insets that point to
-  non-existing files. (bug 11656).
-
 
 * DOCUMENTATION AND LOCALIZATION
-
-- New section about references in the example file colored-boxes.lyx.
-
-- The Dutch user interface localization has been revived, and the Dutch docs
-  revised.
-
-- The Russian Tutorial has been updated.
-
-- Updated localizations include Arabic, Bulgarian, Czech, Dutch, German, Hebrew, 
-  Italian, Brazilian Portuguese, Slovak, Swedish, and Ukrainian.
-
-- Fixed index processor in some manuals (bug 11708).
 
 
 * BUILD/INSTALLATION
@@ -65,139 +41,20 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Prevent crash due to unencodable path (bug 11688).
-
-- Fix crash with polyglossia when the "Auto End" language preference setting
-  is off and titles are used.
-
-- (Re-)fix problems with activated equal sign and graphic options in Turkish
-  and Latin documents (bug 2005).
-
-- Correctly set language after intitle paragraphs (bug 11514).
-
-- Fix toprule with booktabs/longtable and captions (bug 11589).
-
-- Avoid adding spaces when parsing an array in a macro template (bug 10499).
-
-- Avoid superfluous braces in the optional argument of a macro (bug 11552).
-
-- Do not replace a latex command with the corresponding symbol in the
-  unicodesymbols file, unless it can be encoded in the document encoding
-  (bug 11586).
-
-- Fix problems with paths that contain the tilde (~) character.
-
-- Fix nomenclature processing with LuaTeX (bug 11571).
-
-- Fix problem on Windows with saving files in Dropbox folders (bug 10091).
-
-- Find local bib files when they exist in the same directory as the LyX
-  file (bug 11588).
-
-- Fix table column order with RTL documents and LuaTeX (part of bug 9686).
-
-- Fix paragraph alignment with RTL documents and LuaTeX (part of bug 11399).
-
-- Fix direction of brackets with RTL documents and LuaTeX (part of bug 11187).
-
-- Fix direction of roman numbers with RTL documents and LuaTeX.
-
-- Fix direction of numbered citations outside XeTeX/bidi (bug 3005).
-
-- Fix direction of references with XeTeX/bidi (bug 11626).
-
-- Fix interplay of the memoir class and custom page size/geometry (bug 10970).
-
-- Fix compilation of Hebrew Article with XeTeX and LuaTeX (bug 10525).
-
-- Fix greyedout note with RTL documents (bug 8647).
-
-- Fix colored and shaded boxes with RTL documents (bug 8642).
-
-- Fix loading order problem with rotfloat/rotating and graphicx (bug 11502).
-
-- Fix LaTeX error with Canadian French as second language. LyX now uses
-  the (recommended) babel option "acadian" rather than "canadien".
-
-- Do not create unnecessary directories when exporting from the command
-  line (bug 11636).
-
-- Fix problem with included objects with Linkback service on Mac (bug 6961).
-
-- Fix termination of commands after math insets (bug 11667).
-
-- Fix \binom command clash in beamer.
-
 
 * USER INTERFACE
-
-- Fix configure process with Python 3 (bug 11642).
-
-- Fix some numbering issues with bibitems (bug 2743, 8499).
-
-- Deal properly with orphaned bibitems (bug 7160).
-
-- Fix endless loop when a macro definition references itself (bug 11595).
-
-- Use the selection as the argument of a macro also when the macro has only
-  optional arguments (bug 10498).
-
-- Correctly close a language opened in a branch inset (bug 9633).
-
-- Fix additional problem with display of inline equations in outliner
-  (bug 11423).
-
-- Preserve "all authors" state when switching citation style via context
-  menu (bug 11439).
-
-- Fix right and left layout alignment (in workarea) with RTL (bug 11606).
-
-- Show filenames for verbatim includes in outliner (bug 11612).
-
-- Enable change tracking if paragraph break change (bug 11629).
-
-- Fix crash when deleting column in math grid (bug 11623).
-
-- Hide "LaTeX (Clipboard)" entry from import menu (bug 11657).
-
-- Enable dissolve in undefined Flex inset context menu (bug 8650).
-
-- Enable dissolve in context menu of element in table cells.
-
-- Fix bad caret position when row scrolls horizontally (bug 11603).
-
-- Fix crash when inserting some insets in math split insets  (bug 11686).
-
-- Properly remember cursor position when many files have been opened
-  (bug 10310).
 
 
 * INTERNALS
 
-- Fix TeX file listing with the Nix package manager.
-
-- Fix Python detection routines, and so instant preview on some platforms
-  (bug 11282).
-
 
 * DOCUMENTATION AND LOCALIZATION
-
-- Fix string direction in Hebrew localization (bug 11607).
 
 
 * LYX2LYX
 
-- Fix typo in the code that converts from file formats older than lyx 2.1
-  (thanks to Salvatore Falco).
-
 
 * TEX2LYX
-
-- Significantly improve support for modules (bug 11259, 8229).
-
-- Prevent multiplication of preamble code on (re-)import (bug 8229).
-
-- Fix import of custom float definitions.
 
 
 * LYXHTML
@@ -211,6 +68,4 @@ What's new
 
 
 * BUILD/INSTALLATION
-
-- avoid annoying warnings with g++ 9.
 
