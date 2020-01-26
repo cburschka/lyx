@@ -705,7 +705,9 @@ check_layout_CPPFLAGS = $(AM_CPPFLAGS)
 check_layout_LDADD = $(check_layout_LYX_OBJS) $(TESTS_LIBS)
 check_layout_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_layout_SOURCES = \
-	tests/check_layout.cpp
+	tests/check_layout.cpp \
+	tests/dummy_functions.cpp \
+	tests/boost.cpp
 check_layout_LYX_OBJS = \
 	insets/InsetLayout.o \
 	CiteEnginesList.o \
@@ -719,18 +721,16 @@ check_layout_LYX_OBJS = \
 	Lexer.o \
 	ModuleList.o \
 	Spacing.o \
-	TextClass.o \
-	tests/dummy_functions.o \
-	tests/boost.o
+	TextClass.o
 
 check_ExternalTransforms_CPPFLAGS = $(AM_CPPFLAGS)
 check_ExternalTransforms_LDADD = $(check_ExternalTransforms_LYX_OBJS) $(TESTS_LIBS)
 check_ExternalTransforms_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_ExternalTransforms_SOURCES = \
-	tests/check_ExternalTransforms.cpp
+	tests/check_ExternalTransforms.cpp \
+	tests/dummy_functions.cpp \
+	tests/boost.cpp
 check_ExternalTransforms_LYX_OBJS = \
-	tests/dummy_functions.o \
-	tests/boost.o \
 	graphics/GraphicsParams.o \
 	insets/ExternalTransforms.o \
 	Length.o \
@@ -740,10 +740,10 @@ check_Length_CPPFLAGS = $(AM_CPPFLAGS)
 check_Length_LDADD = $(check_Length_LYX_OBJS) $(TESTS_LIBS)
 check_Length_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_Length_SOURCES = \
-	tests/check_Length.cpp
+	tests/check_Length.cpp \
+	tests/dummy_functions.cpp \
+	tests/boost.cpp
 check_Length_LYX_OBJS = \
-	tests/dummy_functions.o \
-	tests/boost.o \
 	Length.o \
 	lengthcommon.o
 
@@ -751,9 +751,9 @@ check_ListingsCaption_CPPFLAGS = $(AM_CPPFLAGS)
 check_ListingsCaption_LDADD = $(check_ListingsCaption_LYX_OBJS) $(TESTS_LIBS)
 check_ListingsCaption_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_ListingsCaption_SOURCES = \
-	tests/check_ListingsCaption.cpp
-check_ListingsCaption_LYX_OBJS = \
-	tests/dummy_functions.o \
-	tests/boost.o
+	tests/check_ListingsCaption.cpp \
+	tests/dummy_functions.cpp \
+	tests/boost.cpp
+check_ListingsCaption_LYX_OBJS =
 
 .PHONY: alltests alltests-recursive updatetests
