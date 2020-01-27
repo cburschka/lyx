@@ -386,7 +386,7 @@ bool Messages::available(string const & /* c */)
 	return false;
 }
 
-docstring const Messages::getIfFound(string const & m) const
+docstring const Messages::getIfFound(string const & /* m */) const
 {
 	return docstring();
 }
