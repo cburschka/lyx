@@ -252,8 +252,8 @@ CiteFormat authoryear
 
 	# Add a year if it exists (else title, else "??") and possibly a modifier (as in 2017a)
 	!yeartitle {%year%[[%year%{%modifier%[[%modifier%]][[{%export%[[]][[%!dummymod%]]}]]}]][[{%title%[[%title%]][[??]]}]]}
-        # Add a shorthand if it exists, else yeartitle (above)
-        !shyeartitle {%shorthand%[[%shorthand%]][[%!shyeartitle%]]}
+	# Add a shorthand if it exists, else yeartitle (above)
+	!shyeartitle {%shorthand%[[%shorthand%]][[%!yeartitle%]]}
 	# "...; Shorthand|Nextyear ..." (including extra label, as in 2017a)
 	!nextshyeartitle {%next%[[%!sep% %!startlink%%!yeartitle%%!endlink%%!nextshyeartitle%]]}
 
