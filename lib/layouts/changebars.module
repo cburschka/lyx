@@ -20,10 +20,10 @@ AddToPreamble
   \usepackage{changebar}
   \providecommand{\lyxadded}[3]{}
   \providecommand{\lyxdeleted}{}
-  \renewcommand{\lyxadded}[3]{
-    {\protect\cbstart\color{lyxadded}{}#3\protect\cbend}
+  \renewcommand{\lyxadded}[3]{%
+    {\protect\cbstart\color{lyxadded}{}#3\protect\cbend}%
   }
   \renewcommand{\lyxdeleted}[3]{%
-    {\protect\cbstart\color{lyxdeleted}\sout{#3}\protect\cbend}
+    {\protect\cbstart\color{lyxdeleted}\sout{#3}\protect\cbend}%
   }
 EndPreamble
