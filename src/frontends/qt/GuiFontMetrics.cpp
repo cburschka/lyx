@@ -29,6 +29,25 @@
 using namespace std;
 using namespace lyx::support;
 
+/* Define what mechanism is used to enforce text direction. Different
+ * methods work with different Qt versions. Here we try to use both
+ * methods together.
+ */
+// Define to use unicode override characters to force direction
+#define BIDI_USE_OVERRIDE
+// Define to use flag to force direction
+#define BIDI_USE_FLAG
+
+#ifdef BIDI_USE_OVERRIDE
+# define BIDI_OFFSET 1
+#else
+# define BIDI_OFFSET 0
+#endif
+
+#if !defined(BIDI_USE_OVERRIDE) && !defined(BIDI_USE_FLAG)
+#  error "Define at least one of BIDI_USE_OVERRIDE or BIDI_USE_FLAG"
+#endif
+
 namespace std {
 
 /*
@@ -268,7 +287,15 @@ GuiFontMetrics::getTextLayout(docstring const & s, bool const rtl,
 	QFont copy = font_;
 	copy.setWordSpacing(wordspacing);
 	ptl->setFont(copy);
-#if 1
+
+#ifdef BIDI_USE_FLAG
+	/* Use undocumented flag to enforce drawing direction
+	 * FIXME: This does not work with Qt 5.11 (ticket #11284).
+	 */
+	ptl->setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
+#endif
+
+#ifdef BIDI_USE_OVERRIDE
 	/* Use unicode override characters to enforce drawing direction
 	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
 	 */
@@ -278,14 +305,10 @@ GuiFontMetrics::getTextLayout(docstring const & s, bool const rtl,
 	else
 		// Left-to-right override: forces to draw text left-to-right
 		ptl->setText(QChar(0x202D) + toqstr(s));
-#define TEXTLAYOUT_OFFSET 1
 #else
-	// FIXME: This does not work with Qt 5.11 (ticket #11284).
-	// Note that both setFlags and the enums are undocumented
-	ptl->setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
 	ptl->setText(toqstr(s));
-#define TEXTLAYOUT_OFFSET 0
 #endif
+
 	ptl->beginLayout();
 	ptl->createLine();
 	ptl->endLayout();
@@ -304,9 +327,9 @@ int GuiFontMetrics::pos2x(docstring const & s, int pos, bool const rtl,
 	 * not be the same when there are high-plan unicode characters
 	 * (bug #10443).
 	 */
-	// TEXTLAYOUT_OFFSET accounts for a possible direction override
+	// BIDI_OFFSET accounts for a possible direction override
 	// character in front of the string.
-	int const qpos = toqstr(s.substr(0, pos)).length() + TEXTLAYOUT_OFFSET;
+	int const qpos = toqstr(s.substr(0, pos)).length() + BIDI_OFFSET;
 	return static_cast<int>(tl->lineForTextPosition(qpos).cursorToX(qpos));
 }
 
@@ -350,7 +373,7 @@ int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl,
 #if QT_VERSION < 0x040801 || QT_VERSION >= 0x050100
 	int pos = qstring_to_ucs4(tl->text().left(qpos)).length();
 	// there may be a direction override character in front of the string.
-	return max(pos - TEXTLAYOUT_OFFSET, 0);
+	return max(pos - BIDI_OFFSET, 0);
 #else
 	/* Due to QTBUG-25536 in 4.8.1 <= Qt < 5.1.0, the string returned
 	 * by QString::toUcs4 (used by qstring_to_ucs4) may have wrong
@@ -361,7 +384,7 @@ int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl,
 	 * under a profiler.
 	 */
 	// there may be a direction override character in front of the string.
-	qpos = max(qpos - TEXTLAYOUT_OFFSET, 0);
+	qpos = max(qpos - BIDI_OFFSET, 0);
 	int pos = min(qpos, static_cast<int>(s.length()));
 	while (pos >= 0 && toqstr(s.substr(0, pos)).length() != qpos)
 		--pos;
@@ -407,7 +430,14 @@ GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
 	// Unicode character ZERO WIDTH NO-BREAK SPACE
 	QChar const zerow_nbsp(0xfeff);
 	QString qs = zerow_nbsp + toqstr(s) + zerow_nbsp;
-#if 1
+#ifdef BIDI_USE_FLAG
+	/* Use undocumented flag to enforce drawing direction
+	 * FIXME: This does not work with Qt 5.11 (ticket #11284).
+	 */
+	tl.setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
+#endif
+
+#ifdef BIDI_USE_OVERRIDE
 	/* Use unicode override characters to enforce drawing direction
 	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
 	 */
@@ -417,13 +447,8 @@ GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
 	else
 		// Left-to-right override: forces to draw text left-to-right
 		qs =  QChar(0x202D) + qs;
-	int const offset = 2;
-#else
-	// Alternative version that breaks with Qt5 and arabic text (#10436)
-	// Note that both setFlags and the enums are undocumented
-	tl.setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
-	int const offset = 1;
 #endif
+	int const offset = 1 + BIDI_OFFSET;
 
 	tl.setText(qs);
 	tl.setFont(font_);
