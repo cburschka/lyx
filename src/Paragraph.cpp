@@ -2747,6 +2747,14 @@ void Paragraph::latex(BufferParams const & bparams,
 						runningChange, style, i, column);
 				if (incremented)
 					--parInline;
+
+				if (deleted_display_math) {
+					// Close \lyxdeleted and force its
+					// reopening (if needed)
+					os << '}';
+					column++;
+					runningChange = Change(Change::UNCHANGED);
+				}
 			}
 		} else if (i >= start_pos && (end_pos == -1 || i < end_pos)) {
 			try {
