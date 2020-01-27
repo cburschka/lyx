@@ -771,7 +771,7 @@ if(NOT LYX_EXTERNAL_HUNSPELL)
     message(STATUS "     - library: ${HUNSPELL_LIBRARY}")
 endif()
 
-foreach(_spell "ASPELL" "Enchant" "Hunspell")
+foreach(_spell "ASPELL" "ENCHANT" "HUNSPELL")
   string(TOUPPER ${_spell} _upspell)
   if (NOT ${_upspell}_FOUND)
     find_package(${_spell})
