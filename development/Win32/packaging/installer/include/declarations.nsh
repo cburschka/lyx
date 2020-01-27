@@ -21,8 +21,6 @@ Configuration of LyX installer
 !define FILES_NETPBM "${FILES_DEPS}\bin"
 !define FILES_RSVG "${FILES_DEPS}\bin"
 !define FILES_DTL "${FILES_DEPS}\bin"
-!define FILES_DVIPOST "${FILES_DEPS}\bin"
-!define FILES_DVIPOST_PKG "${FILES_DEPS}\tex"
 !define FILES_PDFTOOLS "${FILES_DEPS}\bin"
 !define FILES_METAFILE2EPS "${FILES_DEPS}\bin"
 

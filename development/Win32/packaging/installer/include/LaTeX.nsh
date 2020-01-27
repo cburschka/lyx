@@ -201,9 +201,6 @@ Function ConfigureMiKTeX
 
   # only install the LyX packages if they are not already installed
   ${ifnot} ${FileExists} "$PathLaTeXLocal\tex\latex\lyx\broadway.cls"
-   # dvipost
-   SetOutPath "$PathLaTeXLocal\tex\latex\dvipost"
-   File "${FILES_DVIPOST_PKG}\dvipost.sty"
    # files in Resources\tex
    SetOutPath "$PathLaTeXLocal\tex\latex\lyx"
    CopyFiles /SILENT "$INSTDIR\Resources\tex\*.*" "$PathLaTeXLocal\tex\latex\lyx"
@@ -242,9 +239,6 @@ Function ConfigureTeXLive
   
   # only install the LyX packages if they are not already installed
   ${ifnot} ${FileExists} "$PathLaTeXLocal\texmf-dist\tex\latex\lyx\broadway.cls"
-   # dvipost
-   SetOutPath "$PathLaTeXLocal\texmf-dist\tex\latex\dvipost"
-   File "${FILES_DVIPOST_PKG}\dvipost.sty"
    # files in Resources\tex
    SetOutPath "$PathLaTeXLocal\texmf-dist\tex\latex\lyx"
    CopyFiles /SILENT "$INSTDIR\Resources\tex\*.*" "$PathLaTeXLocal\texmf-dist\tex\latex\lyx"

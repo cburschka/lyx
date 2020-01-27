@@ -117,12 +117,6 @@ Lists of files to include in the installer
   
 !macroend
 
-!macro FileListDvipostBin COMMAND DIRECTORY
-
-  ${FILE}pplatex.exe"
-  
-!macroend
-
 !macro FileListUnoConv COMMAND DIRECTORY
 
   ${FILE}unoconv.py"

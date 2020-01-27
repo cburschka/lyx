@@ -39,7 +39,6 @@ These typically need to be modified for each LyX release
 !define FILES_DEPS "${FILES_BASE}\Dependencies"
 !define FILES_QT "${FILES_BASE}\LyX23"
 !define ClassFileDir "${FILES_LYX}\Resources\tex"
-!define DVIPostFileDir "${FILES_DEPS}\tex"
 
 #--------------------------------
 # MiKTeX and JabRef

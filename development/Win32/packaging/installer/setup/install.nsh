@@ -53,7 +53,6 @@ Section -ProgramFiles SecProgramFiles
   !insertmacro FileListNetpbmBin File "${FILES_NETPBM}\"
   !insertmacro FileListDTLBin File "${FILES_DTL}\"
   !insertmacro FileListRsvg File "${FILES_RSVG}\"
-  !insertmacro FileListDvipostBin File "${FILES_DVIPOST}\"
   !insertmacro FileListPDFViewBin File "${FILES_PDFVIEW}\"
   
   # Qt plugin DLLs
