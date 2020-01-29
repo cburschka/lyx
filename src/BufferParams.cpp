@@ -1823,7 +1823,8 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		os << "}\n";
 	}
 
-	if (use_geometry || !class_supported_papersize) {
+	if (!features.isProvided("geometry")
+	    && (use_geometry || !class_supported_papersize)) {
 		odocstringstream ods;
 		if (!getGraphicsDriver("geometry").empty())
 			ods << getGraphicsDriver("geometry");
@@ -1875,20 +1876,17 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			break;
 		}
 		docstring g_options = trim(ods.str(), ",");
+		os << "\\usepackage";
 		// geometry-light means that the class works with geometry, but overwrites
 		// the package options and paper sizes (memoir does this).
 		// In this case, all options need to go to \geometry
 		// and the standard paper sizes need to go to the class options.
-		if (!features.isProvided("geometry")) {
-			os << "\\usepackage";
-			if (!g_options.empty() && !features.isProvided("geometry-light")) {
-				os << '[' << g_options << ']';
-				g_options.clear();
-			}
-			os << "{geometry}\n";
+		if (!g_options.empty() && !features.isProvided("geometry-light")) {
+			os << '[' << g_options << ']';
+			g_options.clear();
 		}
-		if (use_geometry || features.isProvided("geometry")
-		    || features.isProvided("geometry-light")) {
+		os << "{geometry}\n";
+		if (use_geometry || features.isProvided("geometry-light")) {
 			os << "\\geometry{verbose";
 			if (!g_options.empty())
 				// Output general options here with "geometry light".
