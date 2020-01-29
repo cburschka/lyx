@@ -47,6 +47,8 @@ What's new
 - Fix problems with recent LaTeX when \input@path contains tilde and space
   (bug 11699).
 
+- Fix output with class-provided geometry package (bug 11724).
+
 - Fix erroneous space in output caused by changebar module (bug 11473).
 
 - Correctly strike out deleted text after deleted display math (bug 11716).
@@ -56,7 +58,7 @@ What's new
 
 - Fix backspace deletion of selected items with change tracking (bug 11630).
 
-- Fix display glith where the change tracking cue blinks with the cursor
+- Fix display glitch where the change tracking cue blinks with the cursor
   (bug 11684).
 
 - Consider shorthand in biblatex cite display (bug 11696).
