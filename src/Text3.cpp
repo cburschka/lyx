@@ -673,7 +673,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_PARAGRAPH_MOVE_DOWN: {
 		pit_type const pit = cur.pit();
 		cur.recordUndo(pit, pit + 1);
-		cur.finishUndo();
 		pars_.swap(pit, pit + 1);
 		needsUpdate = true;
 		cur.forceBufferUpdate();
