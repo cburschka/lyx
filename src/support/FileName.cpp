@@ -272,12 +272,14 @@ bool FileName::moveTo(FileName const & name) const
 	// there's a locking problem on Windows sometimes, so
 	// we will keep trying for five seconds, in the hope
 	// that clears.
-	bool removed = QFile::remove(name.d->fi.absoluteFilePath());
-	int tries = 1;
-	while (!removed && tries < 6)	{
-		QThread::sleep(1);
-		removed = QFile::remove(name.d->fi.absoluteFilePath());
-		tries++;
+	if (name.exists()) {
+		bool removed = QFile::remove(name.d->fi.absoluteFilePath());
+		int tries = 1;
+		while (!removed && tries < 6)	{
+			QThread::sleep(1);
+			removed = QFile::remove(name.d->fi.absoluteFilePath());
+			tries++;
+		}
 	}
 #else
 	QFile::remove(name.d->fi.absoluteFilePath());
