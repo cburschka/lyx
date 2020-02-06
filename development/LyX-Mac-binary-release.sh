@@ -442,7 +442,7 @@ if [ -d "${LibMagicSourceDir}" -a ! -f "${LibMagicInstallHdr}" ]; then
 	# we have a private libmagic (file(1)) source tree at hand...
 	# so let's build and install it
 	if [ -z "${LibMagicVersion}" ]; then
-		LibMagicVersion=$(grep AC_INIT "${LibMagicSourceDir}"/configure.ac | cut -d, -f2|tr -d " ()")
+		LibMagicVersion=$(grep AC_INIT "${LibMagicSourceDir}"/configure.ac | cut -d, -f2|tr -d " []()")
 	fi
 
 	LibMagicName="LibMagic"
@@ -503,7 +503,7 @@ if [ -d "${HunSpellSourceDir}" -a ! -f "${HunSpellInstallHdr}" ]; then
 	# we have a private HunSpell source tree at hand...
 	# so let's build and install it
 	if [ -z "${HunSpellVersion}" ]; then
-		HunSpellVersion=$(grep AC_INIT "${HunSpellSourceDir}"/configure.ac | cut -d, -f2|tr -d " ()")
+		HunSpellVersion=$(grep AC_INIT "${HunSpellSourceDir}"/configure.ac | cut -d, -f2|tr -d " []()")
 	fi
 
 	HunSpellName="Hunspell"
@@ -565,7 +565,7 @@ if [ -d "${ASpellSourceDir}" -a ! -f "${ASpellInstallHdr}" -a "yes" = "${aspell_
 	# we have a private ASpell source tree at hand...
 	# so let's build and install it
 	if [ -z "${ASpellVersion}" ]; then
-		ASpellVersion=$(grep AC_INIT "${ASpellSourceDir}"/configure.ac | cut -d, -f2|tr -d " ()")
+		ASpellVersion=$(grep AC_INIT "${ASpellSourceDir}"/configure.ac | cut -d, -f2|tr -d " []()")
 	fi
 
 	ASpellName="Aspell"
