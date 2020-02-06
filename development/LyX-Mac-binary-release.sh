@@ -12,7 +12,7 @@ QtVersion=${QtVersion:-"4.6.3"}
 QtSourceVersion=${QtSourceVersion:-"qt-everywhere-opensource-src-${QtVersion}"}
 QtBuildSubDir="qt-${QtVersion}-build${QtAPI}"
 QtConfigureOptions=${QtConfigureOptions:-"-release"}
-
+QtSkipComponents=${QtSkipComponents:-"qtconnectivity qtscript qtquickcontrols qtmultimedia qtvirtualkeyboard qtwayland qtwebengine"}
 LibMagicVersion=${LibMagicVersion:-"5.19"}
 LibMagicSource="file-${LibMagicVersion}"
 LibMagicLibrary="libmagic.1.dylib"
@@ -79,9 +79,9 @@ case "${QtVersion}:${QtAPI}" in
 	QtConfigureOptions="${QtConfigureOptions} -no-strip"
 	QtConfigureOptions="${QtConfigureOptions} -no-kms -no-pkg-config"
 	QtConfigureOptions="${QtConfigureOptions} -nomake examples -nomake tools"
-	QtConfigureOptions="${QtConfigureOptions} -skip qtquick1 -skip qtwebkit -skip qtconnectivity -skip qtscript"
-	QtConfigureOptions="${QtConfigureOptions} -skip qtquickcontrols"
-#	QtConfigureOptions="${QtConfigureOptions} -skip qtdeclarative"
+	for component in ${QtSkipComponents} ; do
+		QtConfigureOptions="${QtConfigureOptions} -skip ${component}"
+	done
 	QtMajorVersion=qt5
 	;;
 *)
