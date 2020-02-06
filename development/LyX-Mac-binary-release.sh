@@ -357,15 +357,19 @@ LyxAppPrefix="${LyxAppDir}.app"
 # don't change order here...
 case "${QtVersion}" in
 5.0.*|5.1.*)
-	QtLibraries="QtSvg QtXml QtPrintSupport QtWidgets QtGui QtNetwork QtConcurrent QtCore"
+	QtLibraries=${QtLibraries:-"QtSvg QtXml QtPrintSupport QtWidgets QtGui QtNetwork QtConcurrent QtCore"}
+	QtFrameworkVersion="5"
+	;;
+5.12.*)
+	QtLibraries=${QtLibraries:-"QtDbus QtSvg QtXml QtPrintSupport QtMacExtras QtWidgets QtGui QtNetwork QtConcurrent QtCore"}
 	QtFrameworkVersion="5"
 	;;
 5*)
-	QtLibraries="QtSvg QtXml QtPrintSupport QtMacExtras QtWidgets QtGui QtNetwork QtConcurrent QtCore"
+	QtLibraries=${QtLibraries:-"QtSvg QtXml QtPrintSupport QtMacExtras QtWidgets QtGui QtNetwork QtConcurrent QtCore"}
 	QtFrameworkVersion="5"
 	;;
 *)
-	QtLibraries="QtSvg QtXml QtGui QtNetwork QtCore"
+	QtLibraries=${QtLibraries:-"QtSvg QtXml QtGui QtNetwork QtCore"}
 	QtFrameworkVersion="4"
 	;;
 esac
