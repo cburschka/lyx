@@ -1,5 +1,22 @@
-Public release of LyX version 2.3.4
-===================================
+Public release of LyX version 2.3.4-2
+=====================================
+
+This is an emergency release that fixes two bugs in 2.3.4.
+
+The first, bug #11728, caused a five-second delay when attempting 
+to save files on Windows. This was a side effect of the fix for #10091
+and reminds us why it would be good to have more testing on Windows.
+
+The other bug is discussed in this thread
+    https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg210294.html
+and concerns a crash related to the math toolbar. This was due to an 
+uninitialize buffer_ member revealed by the fix for #11586.
+
+All LyX users are encouraged to upgrade to 2.3.4-2.
+
+The original announcement for 2.3.4 follows.
+
+=====
 
 We are proud to announce the release of LyX 2.3.4. This is the fourth
 maintenance release in the 2.3.x series. 

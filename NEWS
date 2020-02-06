@@ -1,3 +1,18 @@
+What's new in version 2.3.4-2?
+------------------------------
+
+This is an emergency release that fixes two bugs in 2.3.4.
+
+The first, bug #11728, caused a five-second delay when attempting 
+to save files on Windows. This was a side effect of the fix for #10091
+and reminds us why it would be good to have more testing on Windows.
+
+The other bug is discussed in this thread
+    https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg210294.html
+and concerns a crash related to the math toolbar. This was due to an 
+uninitialize buffer_ member revealed by the fix for #11586.
+
+
 What's new in version 2.3.4?
 ----------------------------
 
