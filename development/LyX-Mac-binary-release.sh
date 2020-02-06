@@ -9,7 +9,7 @@
 
 QtAPI=${QtAPI:-"-cocoa"}
 QtVersion=${QtVersion:-"4.6.3"}
-QtSourceVersion="qt-everywhere-opensource-src-${QtVersion}"
+QtSourceVersion=${QtSourceVersion:-"qt-everywhere-opensource-src-${QtVersion}"}
 QtBuildSubDir="qt-${QtVersion}-build${QtAPI}"
 QtConfigureOptions=${QtConfigureOptions:-"-release"}
 
