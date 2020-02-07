@@ -745,8 +745,7 @@ Encoding const * DocIterator::getEncoding() const
 	CursorSlice const & sl = innerTextSlice();
 	Text const & text = *sl.text();
 	Language const * lang =
-		text.getPar(sl.pit()).getFont(bp, sl.pos(),
-										  text.outerFont(sl.pit())).language();
+		text.getPar(sl.pit()).getFont(bp, sl.pos(), text.outerFont(sl.pit())).language();
 	// If we have a custom encoding for the buffer, we don't switch
 	// encodings (see output_latex::switchEncoding())
 	bool const customenc = bp.inputenc != "auto-legacy" && bp.inputenc != "auto-legacy-plain";
@@ -761,7 +760,7 @@ Encoding const * DocIterator::getEncoding() const
 			Text const & otext = *slices_[i].text();
 			Language const * olang =
 					otext.getPar(slices_[i].pit()).getFont(bp, slices_[i].pos(),
-														   otext.outerFont(slices_[i].pit())).language();
+									       otext.outerFont(slices_[i].pit())).language();
 			Encoding const * oenc = olang->encoding();
 			if (oenc->name() != "inherit")
 				return inset().forcedEncoding(enc, oenc);
@@ -778,11 +777,10 @@ Encoding const * DocIterator::getEncoding() const
 			Text const & otext = *slices_[i].text();
 			Language const * olang =
 					otext.getPar(slices_[i].pit()).getFont(bp, slices_[i].pos(),
-														   otext.outerFont(slices_[i].pit())).language();
+									       otext.outerFont(slices_[i].pit())).language();
 			// Again, if we have a custom encoding, this is used
 			// instead of the language's.
-			Encoding const * oenc = customenc
-									? &bp.encoding() : olang->encoding();
+			Encoding const * oenc = customenc ? &bp.encoding() : olang->encoding();
 			if (olang->encoding()->name() != "inherit")
 				return oenc;
 		}
