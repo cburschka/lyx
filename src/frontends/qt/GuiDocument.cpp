@@ -893,9 +893,13 @@ GuiDocument::GuiDocument(GuiView & lv)
 	masterChildModule->childrenTW->setColumnCount(2);
 	masterChildModule->childrenTW->headerItem()->setText(0, qt_("Child Document"));
 	masterChildModule->childrenTW->headerItem()->setText(1, qt_("Include to Output"));
-	masterChildModule->childrenTW->resizeColumnToContents(1);
-	masterChildModule->childrenTW->resizeColumnToContents(2);
-
+#if (QT_VERSION > 0x050000)
+        masterChildModule->childrenTW->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+        masterChildModule->childrenTW->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+#else
+        masterChildModule->childrenTW->header()->setResizeMode(0, QHeaderView::ResizeToContents);
+        masterChildModule->childrenTW->header()->setResizeMode(1, QHeaderView::ResizeToContents);
+#endif
 
 	// Formats
 	outputModule = new UiWidget<Ui::OutputUi>(this);
