@@ -1232,10 +1232,12 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.recordUndoSelection();
 		if (cmd.argument() == "^" || cmd.argument() == "_")
 			interpretChar(cur, cmd.argument()[0]);
+		else if (!cur.selection())
+			cur.niceInsert(cmd.argument());
 		else {
-			MathData ar;
+			MathData ar(cur.buffer());
 			asArray(cmd.argument(), ar);
-			if (cur.selection() && ar.size() == 1
+			if (ar.size() == 1
 			    && ar[0]->asNestInset()
 			    && ar[0]->asNestInset()->nargs() > 1)
 				handleNest(cur, ar[0]);
