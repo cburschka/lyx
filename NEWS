@@ -1,16 +1,28 @@
 What's new in version 2.3.4-2?
 ------------------------------
 
-This is an emergency release that fixes two bugs in 2.3.4.
+This is an emergency release that fixes four bugs in 2.3.4. Only the
+first two really warrant an emergency release, but while we're at it...
 
 The first, bug #11728, caused a five-second delay when attempting 
 to save files on Windows. This was a side effect of the fix for #10091
 and reminds us why it would be good to have more testing on Windows.
 
-The other bug is discussed in this thread
+The second bug is discussed in this thread
     https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg210294.html
 and concerns a crash related to the math toolbar. This was due to an 
 uninitialize buffer_ member revealed by the fix for #11586.
+
+The third, bug #11724, affects Beamer presentations and causes bad output
+when page geometry is set in certain ways. LyX should and how does ignore
+such settings.
+
+The last, bug #11579, is an old one, but a serious one, that prevents
+the use of CJKUtf8 in ERT. It's a straightforward fix for a bug that is
+pretty serious for people who encounter it.
+
+All LyX users are encouraged to upgrade to 2.3.4-2.
+
 
 
 What's new in version 2.3.4?
