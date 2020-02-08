@@ -53,7 +53,6 @@ What's new
 
 - Correctly strike out deleted text after deleted display math (bug 11716).
 
-
 * USER INTERFACE
 
 - Fix backspace deletion of selected items with change tracking (bug 11630).
@@ -64,6 +63,9 @@ What's new
 - Consider shorthand in biblatex cite display (bug 11696).
 
 - Properly resize columns of child document table widget.
+
+- Fix a crash reported on lyx users.
+  There was an uninitialized buffer member of MathData in LFUN dispatch.
 
 
 * INTERNALS
