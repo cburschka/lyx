@@ -2089,13 +2089,11 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 								getToken();
 								if (nextToken().cat() == catEnd) {
 									getToken();
-									num_tokens += 2;
 								} else
 									putback();
 							} else {
 								while (nextToken().cat() == catSpace) {
 									getToken();
-									++num_tokens;
 								}
 							}
 						}
