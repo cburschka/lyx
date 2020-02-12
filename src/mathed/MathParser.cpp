@@ -2134,7 +2134,6 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 
 		if (flags & FLAG_LEAVE) {
-			flags &= ~FLAG_LEAVE;
 			break;
 		}
 	}
