@@ -389,23 +389,31 @@ endforeach(_c_l)
 FIND_PROGRAM(LYX_GITVERSION git)
 #message(STATUS "gitversion = ${LYX_GITVERSION}")
 set(LYX_REVISION_VERSION ${LYX_RELEASE_LEVEL})
-set(LYX_PACKAGE_RELEASE "1")
+set(LYX_PACKAGE_RELEASE "UNDEFINED")
 if(LYX_GITVERSION)
   if (LYX_LOCALVERSIONING)
     # Find the revision number for later use
     EXECUTE_PROCESS(COMMAND ${LYX_GITVERSION} describe --match 2.0.0 HEAD
-      WORKING_DIRECTORY "${TOP_SRC_DIR}" OUTPUT_VARIABLE tmp_LYX_PACKAGE_RELEASE OUTPUT_STRIP_TRAILING_WHITESPACE)
-    if (tmp_LYX_PACKAGE_RELEASE MATCHES "^2\\.0\\.0\\-\([0-9]+\)\\-\(.*\)$")
-      set(LYX_PACKAGE_RELEASE ${CMAKE_MATCH_2})
-      # We will add offset of 40000 to get appropriate value to
-      # previous svn.
-      # We use this value than also to set the package-patch-value
-      MATH(EXPR tmp_REVISION_VERSION "(${CMAKE_MATCH_1}+40000)")
-      set(LYX_REVISION_VERSION "${LYX_RELEASE_LEVEL}-${tmp_REVISION_VERSION}git")
-      set(ENABLE_DIST ON)
+      WORKING_DIRECTORY "${TOP_SRC_DIR}"
+      RESULT_VARIABLE tmp_GIT_RESULT
+      OUTPUT_VARIABLE tmp_LYX_PACKAGE_RELEASE
+      ERROR_VARIABLE tmp_GIT_ERROR
+      OUTPUT_STRIP_TRAILING_WHITESPACE)
+    if (tmp_GIT_RESULT EQUAL 0)
+      if (tmp_LYX_PACKAGE_RELEASE MATCHES "^2\\.0\\.0\\-\([0-9]+\)\\-\(.*\)$")
+	set(LYX_PACKAGE_RELEASE ${CMAKE_MATCH_2})
+	# We will add offset of 40000 to get appropriate value to
+	# previous svn.
+	# We use this value than also to set the package-patch-value
+	MATH(EXPR tmp_REVISION_VERSION "(${CMAKE_MATCH_1}+40000)")
+	set(LYX_REVISION_VERSION "${LYX_RELEASE_LEVEL}-${tmp_REVISION_VERSION}git")
+	set(ENABLE_DIST ON)
+      endif()
     endif()
   endif()
-else()
+endif()
+if (LYX_PACKAGE_RELEASE MATCHES "UNDEFINED")
+  set(LYX_PACKAGE_RELEASE  "1")
   if (LYX_RELEASE_PATCH GREATER 0)
     set(LYX_REVISION_VERSION "${LYX_RELEASE_LEVEL}.${LYX_RELEASE_PATCH}")
   endif()
