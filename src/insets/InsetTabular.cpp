@@ -3024,8 +3024,6 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 		     OutputParams const & runparams,
 		     list<col_type> columns, list<col_type> logical_columns) const
 {
-	idx_type cell = cellIndex(row, 0);
-
 	//output the top line
 	TeXTopHLine(os, row, columns, logical_columns);
 
@@ -3061,7 +3059,7 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 		if (isPartOfMultiColumn(row, c))
 			continue;
 
-		cell = cellIndex(row, c);
+		idx_type cell = cellIndex(row, c);
 
 		if (isPartOfMultiRow(row, c)
 		    && column_info[c].alignment != LYX_ALIGN_DECIMAL) {
