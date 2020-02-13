@@ -4467,12 +4467,13 @@ void GuiDocument::updateAvailableModules()
 	unavbrush.setColor(Qt::gray);
 	for (modInfoStruct const & m : modInfoList) {
 		QStandardItem * item = new QStandardItem();
-		QStandardItem * catItem = new QStandardItem();
+		QStandardItem * catItem;
 		QString const catname = m.category;
 		QList<QStandardItem *> fcats = modules_av_model_.findItems(catname, Qt::MatchExactly);
 		if (!fcats.empty())
 			catItem = fcats.first();
 		else {
+			catItem = new QStandardItem();
 			catItem->setText(catname);
 			catItem->setFont(catfont);
 			modules_av_model_.insertRow(i, catItem);
