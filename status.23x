@@ -53,6 +53,7 @@ What's new
 
 - Correctly strike out deleted text after deleted display math (bug 11716).
 
+
 * USER INTERFACE
 
 - Fix backspace deletion of selected items with change tracking (bug 11630).
@@ -84,11 +85,12 @@ What's new
 
 
 
-
 * ADVANCED FIND AND REPLACE
 
 
 
-
 * BUILD/INSTALLATION
+
+- Do not break configuration if a layout file is not decodable. Rather than that, 
+  issue a warning and skip that file (bug 11736).
 

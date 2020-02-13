@@ -1417,25 +1417,34 @@ def checkLatexConfig(check_config, bool_docbook):
         classname = file.split(os.sep)[-1].split('.')[0]
         decline = ""
         catline = ""
-        for line in open(file, 'r', encoding='utf8').readlines():
-            if not empty.match(line) and line[0] != '#'[0]:
-                if decline == "":
-                    logger.warning("Failed to find valid \Declare line "
-                        "for layout file `%s'.\n\t=> Skipping this file!" % file)
-                    nodeclaration = True
-                # A class, but no category declaration. Just break.
+        try:
+            for line in open(file, 'r', encoding='utf8').readlines():
+                if not empty.match(line) and line[0] != '#'[0]:
+                    if decline == "":
+                        logger.warning("Failed to find valid \Declare line "
+                            "for layout file `%s'.\n\t=> Skipping this file!" % file)
+                        nodeclaration = True
+                    # A class, but no category declaration. Just break.
+                    break
+                if declare.match(line) != None:
+                    decline = "\\TestDocClass{%s}{%s}" % (classname, line[1:].strip())
+                    testclasses.append(decline)
+                elif category.match(line) != None:
+                    catline = ("\\DeclareCategory{%s}{%s}"
+                               % (classname, category.match(line).groups()[0]))
+                    testclasses.append(catline)
+                if catline == "" or decline == "":
+                    continue
                 break
-            if declare.match(line) != None:
-                decline = "\\TestDocClass{%s}{%s}" % (classname, line[1:].strip())
-                testclasses.append(decline)
-            elif category.match(line) != None:
-                catline = ("\\DeclareCategory{%s}{%s}"
-                           % (classname, category.match(line).groups()[0]))
-                testclasses.append(catline)
-            if catline == "" or decline == "":
+            if nodeclaration:
                 continue
-            break
-        if nodeclaration:
+        except UnicodeDecodeError:
+            logger.warning("**************************************************\n"
+                           "Layout file '%s'\n"
+                           "cannot be decoded in utf-8.\n"
+                           "Please check if the file has the correct encoding.\n"
+                           "Skipping this file!\n"
+                           "**************************************************" % file)
             continue
     testclasses.sort()
     cl = open('chklayouts.tex', 'w', encoding='utf8')
