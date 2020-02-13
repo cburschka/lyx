@@ -259,6 +259,7 @@ bool FileName::renameTo(FileName const & name) const
 {
 	LYXERR(Debug::FILES, "Renaming " << name << " as " << *this);
 	bool success = QFile::rename(d->fi.absoluteFilePath(), name.d->fi.absoluteFilePath());
+	d->refresh();
 	if (!success)
 		LYXERR0("Could not rename file " << *this << " to " << name);
 	return success;
@@ -272,12 +273,13 @@ bool FileName::moveTo(FileName const & name) const
 	// there's a locking problem on Windows sometimes, so
 	// we will keep trying for five seconds, in the hope
 	// that clears.
+	name.refresh();
 	if (name.exists()) {
-		bool removed = QFile::remove(name.d->fi.absoluteFilePath());
+		bool removed = name.removeFile();
 		int tries = 1;
 		while (!removed && tries < 6)	{
 			QThread::sleep(1);
-			removed = QFile::remove(name.d->fi.absoluteFilePath());
+			removed = name.removeFile();
 			tries++;
 		}
 	}
@@ -285,8 +287,7 @@ bool FileName::moveTo(FileName const & name) const
 	QFile::remove(name.d->fi.absoluteFilePath());
 #endif
 
-	bool const success = QFile::rename(d->fi.absoluteFilePath(),
-		name.d->fi.absoluteFilePath());
+	bool const success = renameTo(name);
 	if (!success)
 		LYXERR0("Could not move file " << *this << " to " << name);
 	return success;
