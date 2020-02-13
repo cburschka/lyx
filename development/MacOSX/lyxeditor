@@ -90,6 +90,7 @@ if [ -n "$LYXPIPE" -a -p "$LYXPIPE".in ]; then
 	while read line ; do
 		echo LyX said: $line
 	done < "${LYXPIPE}".out || { echo "Cannot read from lyxpipe." ; exit 2 ; }
+	test -x /usr/bin/osascript && /usr/bin/osascript -e 'tell application "LyX" to activate'
 else
 	echo "Our best guess sets lyxpipe as ${LYXPIPE}"
 	echo "But the lyxpipe could not be found."
