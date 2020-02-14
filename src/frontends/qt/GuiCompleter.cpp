@@ -438,8 +438,8 @@ void GuiCompleter::asyncUpdatePopup()
 
 	// get dimensions of completion prefix
 	Dimension dim;
-	int x;
-	int y;
+	int x = 0;
+	int y = 0;
 	cur.inset().completionPosAndDim(cur, x, y, dim);
 
 	// and calculate the rect of the popup
