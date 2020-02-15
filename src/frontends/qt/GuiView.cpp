@@ -3518,8 +3518,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 
 	case LFUN_VC_LOCKING_TOGGLE:
-		LASSERT(buffer, return);
-		if (!ensureBufferClean(buffer) || buffer->hasReadonlyFlag())
+		if (!buffer || !ensureBufferClean(buffer) || buffer->hasReadonlyFlag())
 			break;
 		if (buffer->lyxvc().inUse()) {
 			string res = buffer->lyxvc().lockingToggle();
@@ -3534,7 +3533,8 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 
 	case LFUN_VC_REVERT:
-		LASSERT(buffer, return);
+		if (!buffer)
+			break;
 		if (buffer->lyxvc().revert()) {
 			reloadBuffer(*buffer);
 			dr.clearMessageUpdate();
@@ -3542,6 +3542,8 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 
 	case LFUN_VC_UNDO_LAST:
+		if (!buffer)
+			break;
 		LASSERT(buffer, return);
 		buffer->lyxvc().undoLast();
 		reloadBuffer(*buffer);
@@ -3549,7 +3551,8 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 
 	case LFUN_VC_REPO_UPDATE:
-		LASSERT(buffer, return);
+		if (!buffer)
+			break;
 		if (ensureBufferClean(buffer)) {
 			dr.setMessage(buffer->lyxvc().repoUpdate());
 			checkExternallyModifiedBuffers();
@@ -3603,10 +3606,11 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 			lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW, "comparehistory"));
 			break;
 		}
+		if (!buffer)
+			break;
 
 		string rev1 = cmd.getArg(0);
 		string f1, f2;
-		LATTEST(buffer)
 
 		// f1
 		if (!buffer->lyxvc().prepareFileRevision(rev1, f1))
