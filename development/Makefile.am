@@ -155,10 +155,10 @@ cmake/lyx.coff \
 cmake/mingw.bat \
 cmake/modules/FindASPELL.cmake \
 cmake/modules/FindAiksaurusLIB.cmake \
-cmake/modules/FindEnchant.cmake \
+cmake/modules/FindENCHANT.cmake \
 cmake/modules/FindCXX11Compiler.cmake \
 cmake/modules/FindGNUWIN32.cmake \
-cmake/modules/FindHunspell.cmake \
+cmake/modules/FindHUNSPELL.cmake \
 cmake/modules/FindICONV.cmake \
 cmake/modules/FindLyXGettext.cmake \
 cmake/modules/FindMagic.cmake \
