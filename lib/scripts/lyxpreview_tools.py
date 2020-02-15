@@ -219,7 +219,7 @@ def write_metrics_info(metrics_info, metrics_file):
 # Reads a .tex files and create an identical file but only with
 # pages whose index is in pages_to_keep
 def filter_pages(source_path, destination_path, pages_to_keep):
-    def_re = re.compile(b"(\\newcommandx|\\renewcommandx|\\global\\long\\def)(\\[a-zA-Z]+)(.+)")
+    def_re = re.compile(b"(\\\\newcommandx|\\\\renewcommandx|\\\\global\\\\long\\\\def)(\\[a-zA-Z]+)(.+)")
     source_file = open(source_path, "rb")
     destination_file = open(destination_path, "wb")
 
