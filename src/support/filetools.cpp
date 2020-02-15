@@ -635,7 +635,7 @@ string const addName(string const & path, string const & fname)
 
 	if (path != "." && path != "./" && !path.empty()) {
 		buf = os::internal_path(path);
-		if (!suffixIs(path, '/'))
+		if (!suffixIs(buf, '/'))
 			buf += '/';
 	}
 
@@ -1039,7 +1039,7 @@ cmd_ret const runCommand(string const & cmd)
 		command = rtrim(command, "2>&1");
 		err2out = true;
 	}
-	string const cmdarg = "/d /c " + command;
+	string const cmdarg = "/d /c \"" + command+"\"";
 	string const comspec = getEnv("COMSPEC");
 
 	security.nLength = sizeof(SECURITY_ATTRIBUTES);

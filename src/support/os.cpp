@@ -48,7 +48,7 @@ int timeout_min()
 
 static string const python23_call(string const & binary, bool verbose = false)
 {
-	const string version_info = " -c 'from __future__ import print_function;import sys; print(sys.version_info[:2], end=\"\")'";
+	const string version_info = " -c \"from __future__ import print_function;import sys; print(sys.version_info[:2], end=\\\"\\\")\"";
 	// Default to "python" if no binary is given.
 	if (binary.empty())
 		return "python -tt";
@@ -89,11 +89,18 @@ static string const find_python_binary()
 	// PEP 397 -- Python launcher for Windows
 	// https://www.python.org/dev/peps/pep-0397/
 
+#ifdef _WIN32
+	// Check through python launcher whether python 3 is
+	// installed on computer.
+	string command = python23_call("py -3");
+#else
 	// Check whether python3 in PATH is the right one.
 	string command = python23_call("python3");
+#endif // _WIN32
 	if (!command.empty())
 		return command;
 
+#ifndef _WIN32
 	// python3 does not exists, let us try to find python3.x in PATH
 	// the search is probably broader than required
 	// but we are trying hard to find a valid python binary
@@ -106,32 +113,52 @@ static string const find_python_binary()
 		qdir.setFilter(QDir::Files | QDir::Executable);
 		QStringList list = qdir.entryList(QStringList("python3*"));
 		for (auto bin2 : list) {
-			string const binary = addName(localdir,
-				bin2.toLocal8Bit().constData());
+			string const binary = "\"" + addName(localdir,
+				bin2.toLocal8Bit().constData()) + "\"";
 			command = python23_call(binary, true);
 			if (!command.empty())
 				return command;
 		}
 	}
+#endif // !_WIN32
 
 	// python 3 was not found let us look for python 2
+#ifdef _WIN32
+	command = python23_call("py -2");
+#else
 	command = python23_call("python2");
+#endif // _WIN32
 	if (!command.empty())
 		return command;
 
+#ifdef _WIN32
+	// python launcher is not installed, let cmd auto check 
+	// PATH for a python.exe
+	command = python23_call("python");
+	if (!command.empty())
+		return command;
+
+	//failed, prepare to search PATH manually
+	vector<string> const path = getEnvPath("PATH");
+	lyxerr << "Manually looking for python in PATH ...\n";
+	QString const exeName = "python*";
+#else
 	// python2 does not exists, let us try to find python2.x in PATH
 	// the search is probably broader than required
 	// but we are trying hard to find a valid python binary
 	lyxerr << "Looking for python 2.x ...\n";
+	QString const exeName = "python2*";
+#endif // _WIN32
+
 	for (auto bin : path) {
 		QString const dir = toqstr(bin);
 		string const localdir = dir.toLocal8Bit().constData();
 		QDir qdir(dir);
 		qdir.setFilter(QDir::Files | QDir::Executable);
-		QStringList list = qdir.entryList(QStringList("python2*"));
+		QStringList list = qdir.entryList(QStringList(exeName));
 		for (auto bin2 : list) {
-			string const binary = addName(localdir,
-				bin2.toLocal8Bit().constData());
+			string const binary = "\"" + addName(localdir,
+				bin2.toLocal8Bit().constData()) + "\"";
 			command = python23_call(binary, true);
 			if (!command.empty())
 				return command;
