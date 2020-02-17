@@ -442,9 +442,20 @@ string const commandPrep(string const & command_in)
 }
 
 
+FileName const tempFileName(FileName tempdir, string const & mask, bool const dir)
+{
+	return tempFileName(TempFile(tempdir, mask).name(), dir);
+}
+
+
 FileName const tempFileName(string const & mask, bool const dir)
 {
-	FileName tempfile = TempFile(mask).name();
+	return tempFileName(TempFile(mask).name(), dir);
+}
+
+
+FileName const tempFileName(FileName tempfile, bool const dir)
+{
 	// Since the QTemporaryFile object is destroyed at function return
 	// (which is what is intended here), the next call to this function
 	// may return the same file name again.
@@ -499,7 +510,8 @@ static FileName createTmpDir(FileName const & tempdir, string const & mask)
 
 	QFileInfo tmp_fi(QDir(toqstr(tempdir.absFileName())), toqstr(mask));
 	FileName const tmpfl =
-		tempFileName(fromqstr(tmp_fi.absoluteFilePath()) + ".XXXXXXXXXXXX", true);
+		tempFileName(FileName(fromqstr(tmp_fi.absolutePath())),
+			     fromqstr(tmp_fi.fileName()) + ".XXXXXXXXXXXX", true);
 
 	if (tmpfl.empty() || !tmpfl.createDirectory(0700)) {
 		LYXERR0("LyX could not create temporary directory in " << tempdir
