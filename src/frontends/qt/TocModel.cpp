@@ -126,8 +126,8 @@ QModelIndex TocModel::modelIndex(DocIterator const & dit) const
 	if (toc_->empty())
 		return QModelIndex();
 
-	unsigned int const toc_index = TocBackend::findItem(*toc_, dit) -
-	                               toc_->begin();
+	unsigned int const toc_index =
+		static_cast<unsigned int>(TocBackend::findItem(*toc_, dit) - toc_->begin());
 
 	QModelIndexList list = model()->match(model()->index(0, 0), Qt::UserRole,
 		QVariant(toc_index), 1,
@@ -283,7 +283,7 @@ QAbstractItemModel * TocModels::model(QString const & type)
 	if (it != models_.end())
 		return it.value()->model();
 	LYXERR0("type not found: " << type);
-	return 0;
+	return nullptr;
 }
 
 
