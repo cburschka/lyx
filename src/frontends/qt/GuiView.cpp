@@ -4330,8 +4330,8 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			string sdata = trim(to_utf8(cmd.argument()).substr(name.size()));
 
 			if (name == "latexlog") {
-				// gettatus checks that
-				LATTEST(doc_buffer);
+				// getStatus checks that
+				LASSERT(doc_buffer, break);
 				Buffer::LogType type;
 				string const logfile = doc_buffer->logName(&type);
 				switch (type) {
@@ -4346,7 +4346,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				showDialog("log", sdata);
 			} else if (name == "vclog") {
 				// getStatus checks that
-				LATTEST(doc_buffer);
+				LASSERT(doc_buffer, break);
 				string const sdata2 = "vc " +
 					Lexer::quoteString(doc_buffer->lyxvc().getLogFile());
 				showDialog("log", sdata2);
@@ -4508,7 +4508,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		case LFUN_FORWARD_SEARCH: {
 			// it seems safe to assume we have a document buffer, since
 			// getStatus wants one.
-			LATTEST(doc_buffer);
+			LASSERT(doc_buffer, break);
 			Buffer const * doc_master = doc_buffer->masterBuffer();
 			FileName const path(doc_master->temppath());
 			string const texname = doc_master->isChild(doc_buffer)
