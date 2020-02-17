@@ -438,17 +438,16 @@ void LyX::prepareExit()
 	// do any other cleanup procedures now
 	if (package().temp_dir() != package().system_temp_dir()) {
 		string const abs_tmpdir = package().temp_dir().absFileName();
-		if (!contains(package().temp_dir().absFileName(), "lyx_tmpdir")) {
+		if (!contains(abs_tmpdir, "lyx_tmpdir")) {
 			docstring const msg =
 				bformat(_("%1$s does not appear like a LyX created temporary directory."),
 				from_utf8(abs_tmpdir));
 			Alert::warning(_("Cannot remove temporary directory"), msg);
 		} else {
-			LYXERR(Debug::INFO, "Deleting tmp dir "
-				<< package().temp_dir().absFileName());
+			LYXERR(Debug::INFO, "Deleting tmp dir "	<< abs_tmpdir);
 			if (!package().temp_dir().destroyDirectory()) {
 				LYXERR0(bformat(_("Unable to remove the temporary directory %1$s"),
-					from_utf8(package().temp_dir().absFileName())));
+					from_utf8(abs_tmpdir)));
 			}
 		}
 	}
