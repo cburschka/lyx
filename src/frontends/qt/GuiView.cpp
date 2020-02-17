@@ -3544,7 +3544,6 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_VC_UNDO_LAST:
 		if (!buffer)
 			break;
-		LASSERT(buffer, return);
 		buffer->lyxvc().undoLast();
 		reloadBuffer(*buffer);
 		dr.clearMessageUpdate();
