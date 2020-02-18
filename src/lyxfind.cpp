@@ -3419,7 +3419,6 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 				else {
                                         if (++match_len_zero_count > 3) {
                                                 LYXERR(Debug::FIND, "match_len2_zero_count: " << match_len_zero_count << ", match_len was " << match_len);
-                                                match_len_zero_count = 0;
                                         }
 					break;
 				}
