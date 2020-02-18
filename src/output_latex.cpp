@@ -1378,7 +1378,8 @@ void TeXOnePar(Buffer const & buf,
 	if (nextpar && state->open_encoding_ == CJK
 		&& bparams.encoding().iconvName() != "UTF-8"
 		&& bparams.encoding().package() != Encoding::CJK
-		&& (nextpar_language->encoding()->package() != Encoding::CJK
+		&& ((nextpar_language &&
+			nextpar_language->encoding()->package() != Encoding::CJK)
 			|| (nextpar->layout().isEnvironment() && nextpar->isMultiLingual(bparams)))
 		// inbetween environments, CJK has to be closed later (nesting!)
 		&& (!style.isEnvironment() || !nextpar->layout().isEnvironment())) {
