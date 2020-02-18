@@ -1610,7 +1610,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				if (inautoarg) {
 					cur.leaveInset(cur.inset());
 					cur.posForward();
-					inautoarg = false;
 				}
 				FuncRequest const cmd2(LFUN_ARGUMENT_INSERT, la_pair.first);
 				lyx::dispatch(cmd2);
@@ -2096,7 +2095,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				if (inautoarg) {
 					cur.leaveInset(cur.inset());
 					cur.posForward();
-					inautoarg = false;
 					if (arg.insertonnewline && cur.pos() > 0) {
 						FuncRequest cmd2(LFUN_PARAGRAPH_BREAK);
 						lyx::dispatch(cmd2);
