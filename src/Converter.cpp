@@ -586,7 +586,7 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 
 		if (conv.latex()) {
 			// We are not importing, we have a buffer
-			LATTEST(buffer);
+			LASSERT(buffer, return FAILURE);
 			run_latex = true;
 			string command = conv.command();
 			command = subst(command, token_from, "");
@@ -604,7 +604,7 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 		} else {
 			if (conv.need_aux() && !run_latex) {
 				// We are not importing, we have a buffer
-				LATTEST(buffer);
+				LASSERT(buffer, return FAILURE);
 				string command;
 				switch (runparams.flavor) {
 				case OutputParams::DVILUATEX:
@@ -713,8 +713,8 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 						" > " + quoteName(logfile);
 					res = one.startscript(starttype,
 						to_filesystem8bit(from_utf8(command2)),
-						buffer->filePath(),
-						buffer->layoutPos());
+						buffer ? buffer->filePath() : string(),
+						buffer ? buffer->layoutPos() : string());
 					if (res == Systemcall::KILLED) {
 						frontend::Alert::warning(
 							_("Converter killed"),
@@ -722,7 +722,7 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 								from_utf8(command)));
 						return KILLED;
 					}
-					if (!scanLog(*buffer, command, makeAbsPath(logfile, path), errorList))
+					if (buffer && !scanLog(*buffer, command, makeAbsPath(logfile, path), errorList))
 						return FAILURE;
 				}
 			}
