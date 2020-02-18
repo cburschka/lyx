@@ -336,6 +336,13 @@ void TocModels::updateItem(QString const & type, DocIterator const & dit)
 	models_[type]->updateItem(dit);
 }
 
+TocModels::~TocModels(){
+	QHashIterator<QString, TocModel *> iter(models_);
+	while(iter.hasNext()) {
+		iter.next();
+		delete iter.value();
+	}
+}
 
 void TocModels::reset(BufferView const * bv)
 {

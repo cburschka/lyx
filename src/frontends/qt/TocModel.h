@@ -113,6 +113,7 @@ class TocModels : public QObject
 public:
 	///
 	TocModels();
+	~TocModels();
 	///
 	void reset(BufferView const * bv);
 	///
