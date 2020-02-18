@@ -2077,7 +2077,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		bool const sel = cur.selection();
 		doInsertInset(cur, this, cmd, true, true);
 		// Insert auto-insert arguments
-		bool autoargs, inautoarg = false;
+		bool autoargs = false, inautoarg = false;
 		Layout::LaTeXArgMap args = cur.inset().getLayout().args();
 		Layout::LaTeXArgMap::const_iterator lait = args.begin();
 		Layout::LaTeXArgMap::const_iterator const laend = args.end();
