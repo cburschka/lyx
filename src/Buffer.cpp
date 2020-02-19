@@ -153,11 +153,11 @@ typedef vector<LabelInfo> LabelCache;
 
 typedef map<docstring, Buffer::References> RefCache;
 
+// A storehouse for the cloned buffers.
+std::list<CloneList *> cloned_buffers;
+
 } // namespace
 
-
-// A storehouse for the cloned buffers.
-list<CloneList *> cloned_buffers;
 
 
 class Buffer::Impl
