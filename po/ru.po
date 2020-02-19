@@ -12,14 +12,14 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-01-03 14:59+0100\n"
-"PO-Revision-Date: 2019-10-06 15:20+0300\n"
+"PO-Revision-Date: 2020-02-19 00:57+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Bookmarks: 1979,613,-1,-1,-1,-1,-1,-1,-1,-1\n"
@@ -835,34 +835,29 @@ msgid "&Level:"
 msgstr "&Уровень:"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:20
-#, fuzzy
 msgid "If checked, additions and deletions will be tracked in the document"
-msgstr ""
-"Если отключено, то в заметках и комментариях не будет проверяться "
-"правописание"
+msgstr "Если включено, то в документе будут отслеживаться вставки и удаления"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:23
-#, fuzzy
 msgid "&Track changes"
 msgstr "Следить за изменениями"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:30
 msgid "If checked, changes will be shown in the PDF/DVI/PS output"
-msgstr ""
+msgstr "Если отмечено, то изменения будут показаны в PDF/DVI/PS-файлах вывода"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:33
-#, fuzzy
 msgid "&Show changes in output"
 msgstr "Показать изменения на выводе"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:40
 msgid "Use change bars in addition to change tracking markup"
 msgstr ""
+"Использовать полосы изменений в дополнение к разметке отслеживания изменений"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:43
-#, fuzzy
 msgid "Use change &bars in output"
-msgstr "Показать изменения на выводе"
+msgstr "Показать полосы изменений на выводе"
 
 #: src/frontends/qt/ui/ChangesUi.ui:38
 msgid "Change:"
@@ -1271,9 +1266,8 @@ msgid "Use Class Defaults"
 msgstr "По умолчанию для класса"
 
 #: src/frontends/qt/ui/DocumentUi.ui:109
-#, fuzzy
 msgid "Save settings as defaults for new documents"
-msgstr "Сохранить настройки как настройки LyX по умолчанию"
+msgstr "Сохранить настройки как настройки по умолчанию для новых документов"
 
 #: src/frontends/qt/ui/DocumentUi.ui:112
 msgid "Save as Document Defaults"
@@ -3695,11 +3689,12 @@ msgid ""
 "If this is checked, additions in change tracking are underlined in the "
 "workarea"
 msgstr ""
+"Если отмечено, то вставки при отслеживании изменений будут подчёркиваться в "
+"рабочей области"
 
 #: src/frontends/qt/ui/PrefDisplayUi.ui:157
-#, fuzzy
 msgid "&Underline change tracking additions"
-msgstr "Отслеживать изменения в выходном файле"
+msgstr "Подчёркивать отслеживаемые вставки"
 
 #: src/frontends/qt/ui/PrefDocHandlingUi.ui:26
 msgid "Session Handling"
@@ -3997,13 +3992,12 @@ msgid "Your name"
 msgstr "Ваше имя"
 
 #: src/frontends/qt/ui/PrefIdentityUi.ui:41
-#, fuzzy
 msgid "&Initials:"
-msgstr "Буквица"
+msgstr "Инициалы:"
 
 #: src/frontends/qt/ui/PrefIdentityUi.ui:63
 msgid "Initials of your name"
-msgstr ""
+msgstr "Инициалы вашего имени"
 
 #: src/frontends/qt/ui/PrefIdentityUi.ui:72
 msgid "&E-mail:"
@@ -11794,12 +11788,10 @@ msgid "Endnotes"
 msgstr "Концевые сноски"
 
 #: lib/layouts/enotez.module:2
-#, fuzzy
 msgid "Endnotes (Extended)"
-msgstr "Концевые сноски (по разделам)"
+msgstr "Концевые сноски (расширенный)"
 
 #: lib/layouts/enotez.module:10
-#, fuzzy
 msgid ""
 "Adds an endnote inset, in addition to footnotes. This uses the enotez "
 "package which is more powerful and customizable than then endnotes package "
@@ -11808,9 +11800,11 @@ msgid ""
 "References > Endnotes) where you want the endnotes to appear."
 msgstr ""
 "Добавляет вставку \"Концевая сноска\" в дополнение к обычным сноскам. "
-"Используется пакет endnotes. Вам нужно будет добавить список концевых сносок "
-"(Вставка > Списки/содержание/библиографии > Концевые сноски) там, где вы "
-"хотите увидеть концевые сноски."
+"Используется пакет enotez, более мощный и настраиваемый, чем пакет endnotes "
+"(модуль \"Концевые сноски (основной)\"), но требующий свежей версии LaTeX (с "
+"LaTeX3). Вам нужно будет добавить список концевых сносок (Вставка > Списки/"
+"содержание/библиографии > Концевые сноски) там, где вы хотите увидеть "
+"концевые сноски."
 
 #: lib/layouts/entcs.layout:3
 msgid "Electronic Notes in Theor. Comp. Sc. (ENTCS)"
@@ -12662,12 +12656,10 @@ msgid "Notes"
 msgstr "Заметки"
 
 #: lib/layouts/foottoenotez.module:2
-#, fuzzy
 msgid "Footnotes as Endnotes (Extended)"
-msgstr "Обычные сноски в виде концевых (основной)"
+msgstr "Обычные сноски в виде концевых (расширенный)"
 
 #: lib/layouts/foottoenotez.module:11
-#, fuzzy
 msgid ""
 "Sets all footnotes as endnotes. This uses the enotez package which is more "
 "powerful and customizable than then endnotes package (module 'Footnotes as "
@@ -12675,9 +12667,11 @@ msgid ""
 "LaTeX3).You will need to add an endnotes list (Insert > List/Contents/"
 "References > Endnotes) where you want the endnotes to appear."
 msgstr ""
-"Делает все обычные сноски концевыми. Используется пакет endnotes. Вам нужно "
-"будет добавить список концевых сносок (Вставка > Списки/содержание/"
-"библиографии > Концевые сноски) там, где вы хотите увидеть концевые сноски."
+"Делает все обычные сноски концевыми. Используется пакет enotez, более мощный "
+"и настраиваемый, чем пакет endnotes (модуль \"Обычные сноски в виде концевых "
+"(основной)\"), но требующий свежей версии LaTeX (с LaTeX3). Вам нужно будет "
+"добавить список концевых сносок (Вставка > Списки/содержание/библиографии > "
+"Концевые сноски) там, где вы хотите увидеть концевые сноски."
 
 #: lib/layouts/frletter.layout:3 lib/examples/Articles:0
 msgid "French Letter (frletter)"
@@ -18286,9 +18280,8 @@ msgid "Korean"
 msgstr "Корейский"
 
 #: lib/languages:1018
-#, fuzzy
 msgid "Kurdish (Kurmanji)"
-msgstr "Курманджи"
+msgstr "Курдский (Курманджи)"
 
 #: lib/languages:1031 src/frontends/qt/GuiSymbols.cpp:77
 msgid "Lao"
@@ -20894,11 +20887,11 @@ msgstr "Отклонить все изменения"
 
 #: lib/ui/stdmenus.inc:585
 msgid "Accept All Changes (incl. Master/Children/Siblings)|p"
-msgstr ""
+msgstr "Принять все изменения (включая главный/дочерний документы)"
 
 #: lib/ui/stdmenus.inc:586
 msgid "Reject All Changes (incl. Master/Children/Siblings)|j"
-msgstr ""
+msgstr "Отклонить все изменения (включая главный/дочерний документы)"
 
 #: lib/ui/stdmenus.inc:587
 msgid "Show Changes in Output|S"
@@ -26510,9 +26503,8 @@ msgid "Serial Letter 3"
 msgstr "Serial Letter 3"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Localization Test"
-msgstr "Размещение"
+msgstr "Тест локализации"
 
 #: lib/examples/Articles:0
 msgid "Hazard and Precautionary Statements"
@@ -26675,33 +26667,28 @@ msgid "PhD Thesis"
 msgstr "Диссертация"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Theses"
-msgstr "Тезаурус"
+msgstr "Диссертации"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
-#, fuzzy
 msgid "Formal with Footline"
-msgstr "математическая строка"
+msgstr "Формальный с нижней линией"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
-#, fuzzy
 msgid "Formal without Footline"
-msgstr "Биография без фото"
+msgstr "Формальный без нижней линии"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
 msgid "Grid with Head"
-msgstr ""
+msgstr "Сетка с заголовком"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
-#, fuzzy
 msgid "No Borders"
-msgstr "Рамки"
+msgstr "Без рамок"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
-#, fuzzy
 msgid "Simple Grid"
-msgstr "Простой"
+msgstr "Простая сетка"
 
 #: src/Author.cpp:57
 #, c-format
@@ -27772,12 +27759,11 @@ msgstr ""
 "внешней программой.\n"
 
 #: src/Changes.cpp:375
-#, fuzzy
 msgid "Uncodable character in author initials"
-msgstr "Некодируемый символ в имени автора"
+msgstr "Некодируемый символ в инициалах автора"
 
 #: src/Changes.cpp:376
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The author initials '%1$s',\n"
 "used for change tracking, contain the following glyphs that\n"
@@ -27787,13 +27773,13 @@ msgid ""
 "Choose an appropriate document encoding (such as utf8)\n"
 "or change the author initials."
 msgstr ""
-"Имя автора '%1$s',\n"
-"используемое для отслеживания изменений, содержит символы,\n"
+"Инициалы автора '%1$s',\n"
+"используемые для отслеживания изменений, содержат символы,\n"
 "недоступные в текущей кодировке: %2$s. Эти символы\n"
 "будут пропущены в экспортированном файле LaTeX.\n"
 "\n"
 "Выберите подходящую кодировку (такую как utf8)\n"
-"или измените написание имени автора."
+"или измените написание инициалов автора."
 
 #: src/Changes.cpp:405
 msgid "Uncodable character in author name"
@@ -28118,45 +28104,37 @@ msgid "change bar"
 msgstr "панель изменений"
 
 #: src/Color.cpp:280
-#, fuzzy
 msgid "deleted text (output)"
-msgstr "удалённый текст"
+msgstr "удалённый текст (вывод)"
 
 #: src/Color.cpp:281
-#, fuzzy
 msgid "added text (output)"
-msgstr "добавленный текст"
+msgstr "добавленный текст (вывод)"
 
 #: src/Color.cpp:282
-#, fuzzy
 msgid "added text (workarea, 1st author)"
-msgstr "текст изменён 1-ым автором"
+msgstr "добавленный текст (рабочая область, 1-й автор)"
 
 #: src/Color.cpp:283
-#, fuzzy
 msgid "added text (workarea, 2nd author)"
-msgstr "текст изменён 2-ым автором"
+msgstr "добавленный текст (рабочая область, 2-й автор)"
 
 #: src/Color.cpp:284
-#, fuzzy
 msgid "added text (workarea, 3rd author)"
-msgstr "текст изменён 3-им автором"
+msgstr "добавленный текст (рабочая область, 3-й автор)"
 
 #: src/Color.cpp:285
-#, fuzzy
 msgid "added text (workarea, 4th author)"
-msgstr "текст изменён 4-ым автором"
+msgstr "добавленный текст (рабочая область, 4-й автор)"
 
 #: src/Color.cpp:286
-#, fuzzy
 msgid "added text (workarea, 5th author)"
-msgstr "текст изменён 5-ым автором"
+msgstr "добавленный текст (рабочая область, 5-й автор)"
 
 # ?
 #: src/Color.cpp:287
-#, fuzzy
 msgid "deleted text modifier (workarea)"
-msgstr "модификатор удалённого текста"
+msgstr "модификатор удалённого текста (рабочая область)"
 
 #: src/Color.cpp:288
 msgid "added space markers"
@@ -28816,14 +28794,12 @@ msgid "Biber error: "
 msgstr "Ошибка Biber: "
 
 #: src/LaTeX.cpp:1559
-#, fuzzy
 msgid "Makeindex error: "
-msgstr "Ошибка Biber: "
+msgstr "Ошибка Makeindex: "
 
 #: src/LaTeX.cpp:1568
-#, fuzzy
 msgid "Xindy error: "
-msgstr "Ошибка Biber: "
+msgstr "Ошибка Xindy: "
 
 #: src/LaTeXFonts.cpp:236 src/LaTeXFonts.cpp:314
 msgid "Font not available"
@@ -31071,28 +31047,24 @@ msgid "Merge Changes"
 msgstr "Объединить изменения"
 
 #: src/frontends/qt/GuiChanges.cpp:77
-#, fuzzy
 msgid "Inserted by %1"
-msgstr "Вставить блок"
+msgstr "Вставлено автором %1"
 
 #: src/frontends/qt/GuiChanges.cpp:78
-#, fuzzy
 msgid "Deleted by %1"
-msgstr "&Удалить"
+msgstr "Удалено автором %1"
 
 #: src/frontends/qt/GuiChanges.cpp:84
 msgid " on[[date]] %1"
-msgstr ""
+msgstr " [[date]] %1"
 
 #: src/frontends/qt/GuiChanges.cpp:86
-#, fuzzy
 msgid "Inserted on %1"
-msgstr "Вставить блок"
+msgstr "Вставка %1"
 
 #: src/frontends/qt/GuiChanges.cpp:87
-#, fuzzy
 msgid "Deleted on %1"
-msgstr "Удалить строку"
+msgstr "Удаление %1"
 
 #: src/frontends/qt/GuiCharacter.cpp:52 src/frontends/qt/GuiCharacter.cpp:65
 #: src/frontends/qt/GuiCharacter.cpp:86 src/frontends/qt/GuiCharacter.cpp:99
@@ -31739,9 +31711,8 @@ msgid "Colors"
 msgstr "Цвета"
 
 #: src/frontends/qt/GuiDocument.cpp:1754
-#, fuzzy
 msgid "Change Tracking"
-msgstr "Отслеживание изменений|О"
+msgstr "Отслеживание изменений"
 
 #: src/frontends/qt/GuiDocument.cpp:1755
 msgid "Numbering & TOC"
@@ -33657,7 +33628,7 @@ msgstr "Команда недопустима без открытых докум
 
 #: src/frontends/qt/GuiView.cpp:1978
 msgid "Invalid argument of master-buffer-forall"
-msgstr ""
+msgstr "Недопустимый аргумент для master-buffer-forall"
 
 #: src/frontends/qt/GuiView.cpp:2095 src/frontends/qt/GuiView.cpp:2112
 #, c-format
@@ -34107,7 +34078,7 @@ msgstr "Вернуться к сохранённому документу?"
 
 #: src/frontends/qt/GuiView.cpp:4170
 msgid "Buffer export reset."
-msgstr ""
+msgstr "Сброс экспорта буфера."
 
 #: src/frontends/qt/GuiView.cpp:4193
 msgid "Saving all documents..."
@@ -34826,15 +34797,15 @@ msgid "No conversion of %1$s is needed after all"
 msgstr "Преобразование %1$s не нужно"
 
 #: src/insets/InsetGraphics.cpp:906
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters in one of the graphic paths are\n"
 "not representable in the current encoding and have been omitted: %1$s.\n"
 "You need to adapt either the encoding or the path."
 msgstr ""
-"Следующие символы в одной из вставок невозможно\n"
-"представить в текущей кодировке и они будут пропущены:%1$s.\n"
-"Может помочь снятие флажка \"Буквально\" в соответствующем диалоге вставки."
+"Следующие символы в одном из графических путей невозможно\n"
+"представить в текущей кодировке, они будут пропущены: %1$s.\n"
+"Необходимо изменить либо кодировку, либо путь."
 
 #: src/insets/InsetGraphics.cpp:931
 #, c-format
@@ -35855,9 +35826,8 @@ msgid "Selection size should match clipboard content."
 msgstr "Размер выделения должен совпадать с размером буфера обмена."
 
 #: src/insets/InsetText.cpp:1095
-#, fuzzy
 msgid "[contains tracked changes]"
-msgstr "Следить за изменениями"
+msgstr "[содержит отслеживаемые изменения]"
 
 #: src/insets/InsetWrap.cpp:68
 msgid "wrap: "
