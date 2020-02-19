@@ -256,7 +256,7 @@ public:
 	/// positions of child buffers in the buffer
 	typedef map<Buffer const * const, DocIterator> BufferPositionMap;
 	struct ScopeBuffer {
-		ScopeBuffer() : buffer(0) {}
+		ScopeBuffer() : buffer(nullptr) {}
 		ScopeBuffer(DocIterator const & s, Buffer const * b)
 			: scope(s), buffer(b) {}
 		DocIterator scope;
@@ -342,7 +342,7 @@ public:
 		// ignore_parent temporarily "orphans" a buffer
 		// (e.g. if a child is compiled standalone)
 		if (ignore_parent)
-			return 0;
+			return nullptr;
 		// if parent_buffer is not loaded, then it has been unloaded,
 		// which means that parent_buffer is an invalid pointer. So we
 		// set it to null in that case.
@@ -350,7 +350,7 @@ public:
 		// they will always be regarded as unloaded. in that case, we hope
 		// for the best.
 		if (!cloned_buffer_ && !theBufferList().isLoaded(parent_buffer))
-			parent_buffer = 0;
+			parent_buffer = nullptr;
 		return parent_buffer;
 	}
 
@@ -451,11 +451,11 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	  internal_buffer(false), read_only(readonly_), filename(file),
 	  file_fully_loaded(false), file_format(LYX_FORMAT), need_format_backup(false),
 	  ignore_parent(false),  toc_backend(owner), macro_lock(false),
-	  checksum_(0), wa_(0),  gui_(0), undo_(*owner), bibinfo_cache_valid_(false),
+	  checksum_(0), wa_(nullptr),  gui_(nullptr), undo_(*owner), bibinfo_cache_valid_(false),
 	  cite_labels_valid_(false), have_bibitems_(false), require_fresh_start_(false),
-	  inset(0), preview_loader_(0), cloned_buffer_(cloned_buffer),
-	  clone_list_(0), doing_export(false),
-	  externally_modified_(false), parent_buffer(0),
+	  inset(nullptr), preview_loader_(nullptr), cloned_buffer_(cloned_buffer),
+	  clone_list_(nullptr), doing_export(false),
+	  externally_modified_(false), parent_buffer(nullptr),
 	  word_count_(0), char_count_(0), blank_count_(0)
 {
 	refreshFileMonitor();
@@ -515,7 +515,7 @@ Buffer::~Buffer()
 	// saved properly, before it goes into the void.
 
 	// GuiView already destroyed
-	d->gui_ = 0;
+	d->gui_ = nullptr;
 
 	if (isInternal()) {
 		// No need to do additional cleanups for internal buffer.
@@ -559,7 +559,7 @@ Buffer::~Buffer()
 			Buffer * child = const_cast<Buffer *>(p.first);
 			if (theBufferList().isLoaded(child)) {
 				if (theBufferList().isOthersChild(this, child))
-					child->setParent(0);
+					child->setParent(nullptr);
 				else
 					theBufferList().release(child);
 			}
@@ -601,7 +601,7 @@ Buffer * Buffer::cloneWithChildren() const
 
 	// make sure we got cloned
 	BufferMap::const_iterator bit = bufmap.find(this);
-	LASSERT(bit != bufmap.end(), return 0);
+	LASSERT(bit != bufmap.end(), return nullptr);
 	Buffer * cloned_buffer = bit->second;
 
 	return cloned_buffer;
@@ -1133,7 +1133,7 @@ bool Buffer::importFile(string const & format, FileName const & name, ErrorList 
 
 	FileName const lyx = tempFileName("Buffer_importFileXXXXXX.lyx");
 	Converters::RetVal const retval =
-	    theConverters().convert(0, name, lyx, name, format, "lyx", errorList);
+		theConverters().convert(nullptr, name, lyx, name, format, "lyx", errorList);
 	if (retval == Converters::SUCCESS) {
 		bool const success = readFile(lyx) == ReadSuccess;
 		removeTempFile(lyx);
@@ -1248,7 +1248,7 @@ void Buffer::requireFreshStart(bool const b) const
 PreviewLoader * Buffer::loader() const
 {
 	if (!isExporting() && lyxrc.preview == LyXRC::PREVIEW_OFF)
-		return 0;
+		return nullptr;
 	if (!d->preview_loader_)
 		d->preview_loader_ = new PreviewLoader(*this);
 	return d->preview_loader_;
@@ -1258,7 +1258,7 @@ PreviewLoader * Buffer::loader() const
 void Buffer::removePreviews() const
 {
 	delete d->preview_loader_;
-	d->preview_loader_ = 0;
+	d->preview_loader_ = nullptr;
 }
 
 
@@ -2605,7 +2605,7 @@ void Buffer::collectBibKeys(FileNameList & checkedFiles) const
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
 		it->collectBibKeys(it, checkedFiles);
 		if (it->lyxCode() == BIBITEM_CODE) {
-			if (parent() != 0)
+			if (parent() != nullptr)
 				parent()->d->have_bibitems_ = true;
 			else
 				d->have_bibitems_ = true;
@@ -2622,7 +2622,7 @@ void Buffer::addBiblioInfo(BiblioInfo const & bin) const
 	BiblioInfo & bi = d->bibinfo_;
 	bi.mergeBiblioInfo(bin);
 
-	if (parent() != 0) {
+	if (parent() != nullptr) {
 		BiblioInfo & masterbi = parent()->d->bibinfo_;
 		masterbi.mergeBiblioInfo(bin);
 	}
@@ -2637,7 +2637,7 @@ void Buffer::addBibTeXInfo(docstring const & key, BibTeXInfo const & bin) const
 	BiblioInfo & bi = d->bibinfo_;
 	bi[key] = bin;
 
-	if (parent() != 0) {
+	if (parent() != nullptr) {
 		BiblioInfo & masterbi = masterBuffer()->d->bibinfo_;
 		masterbi[key] = bin;
 	}
@@ -3465,7 +3465,7 @@ bool Buffer::isReadonly() const
 void Buffer::setParent(Buffer const * buffer)
 {
 	// Avoids recursive include.
-	d->setParent(buffer == this ? 0 : buffer);
+	d->setParent(buffer == this ? nullptr : buffer);
 	updateMacros();
 }
 
@@ -3585,11 +3585,11 @@ MacroData const * Buffer::Impl::getBufferMacro(docstring const & name,
 
 	// if paragraphs have no macro context set, pos will be empty
 	if (pos.empty())
-		return 0;
+		return nullptr;
 
 	// we haven't found anything yet
 	DocIterator bestPos = owner_->par_iterator_begin();
-	MacroData const * bestData = 0;
+	MacroData const * bestData = nullptr;
 
 	// find macro definitions for name
 	NamePositionScopeMacroMap::const_iterator nameIt = macros.find(name);
@@ -3660,11 +3660,11 @@ MacroData const * Buffer::getMacro(docstring const & name,
 	DocIterator const & pos, bool global) const
 {
 	if (d->macro_lock)
-		return 0;
+		return nullptr;
 
 	// query buffer macros
 	MacroData const * data = d->getBufferMacro(name, pos);
-	if (data != 0)
+	if (data != nullptr)
 		return data;
 
 	// If there is a master buffer, query that
@@ -3680,11 +3680,11 @@ MacroData const * Buffer::getMacro(docstring const & name,
 
 	if (global) {
 		data = MacroTable::globalMacros().get(name);
-		if (data != 0)
+		if (data != nullptr)
 			return data;
 	}
 
-	return 0;
+	return nullptr;
 }
 
 
@@ -3704,7 +3704,7 @@ MacroData const * Buffer::getMacro(docstring const & name,
 	// look where the child buffer is included first
 	Impl::BufferPositionMap::iterator it = d->children_positions.find(&child);
 	if (it == d->children_positions.end())
-		return 0;
+		return nullptr;
 
 	// check for macros at the inclusion position
 	return getMacro(name, it->second, global);
@@ -3882,7 +3882,7 @@ void Buffer::updateMacroInstances(UpdateType utype) const
 		MacroContext mc = MacroContext(this, it);
 		for (DocIterator::idx_type i = 0; i < n; ++i) {
 			MathData & data = minset->cell(i);
-			data.updateMacros(0, mc, utype, 0);
+			data.updateMacros(nullptr, mc, utype, 0);
 		}
 	}
 }
@@ -4912,7 +4912,7 @@ void Buffer::Impl::traverseErrors(TeXErrors::Errors::const_iterator err, TeXErro
 	for (; err != end; ++err) {
 		TexRow::TextEntry start = TexRow::text_none, end = TexRow::text_none;
 		int errorRow = err->error_in_line;
-		Buffer const * buf = 0;
+		Buffer const * buf = nullptr;
 		Impl const * p = this;
 		if (err->child_name.empty())
 			tie(start, end) = p->texrow.getEntriesFromRow(errorRow);
@@ -5478,7 +5478,7 @@ Buffer::ReadStatus Buffer::reload()
 	docstring const disp_fn = makeDisplayPath(d->filename.absFileName());
 
 	// clear parent. this will get reset if need be.
-	d->setParent(0);
+	d->setParent(nullptr);
 	ReadStatus const status = loadLyXFile();
 	if (status == ReadSuccess) {
 		updateBuffer();
@@ -5552,8 +5552,8 @@ void Buffer::checkChildBuffers()
 		if (oldloc == newloc)
 			continue;
 		// the location of the child file is incorrect.
-		cbuf->setParent(0);
-		inset_inc->setChildBuffer(0);
+		cbuf->setParent(nullptr);
+		inset_inc->setChildBuffer(nullptr);
 	}
 	// invalidate cache of children
 	d->children_positions.clear();
@@ -5578,7 +5578,7 @@ void Buffer::checkMasterBuffer()
 	if (master->isChild(this))
 		setParent(master);
 	else
-		setParent(0);
+		setParent(nullptr);
 }
 
 
