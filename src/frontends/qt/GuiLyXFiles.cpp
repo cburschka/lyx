@@ -418,8 +418,9 @@ void GuiLyXFiles::updateContents()
 					qstring_to_ucs4(guiString(catsave.mid(catsave.indexOf('/') + 1)))));
 		}
 		cat =  toqstr(translateIfPossible(qstring_to_ucs4(guiString(cat))));
-		QTreeWidgetItem * catItem = new QTreeWidgetItem();
+		QTreeWidgetItem * catItem;
 		if (!cats.contains(cat)) {
+			catItem = new QTreeWidgetItem();
 			catItem->setText(0, cat);
 			catItem->setFont(0, capfont);
 			filesLW->insertTopLevelItem(0, catItem);
