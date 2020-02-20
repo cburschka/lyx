@@ -212,6 +212,10 @@ while [ $# -gt 0 ]; do
 		esac
 		shift
 		;;
+	--codesign-identity=*)
+		CODESIGN_IDENTITY=$(echo "${1}"|cut -d= -f2)
+		shift
+		;;
 	--libmagic-deployment=*)
 		libmagic_deployment=$(echo ${1}|cut -d= -f2)
 		shift
@@ -872,6 +876,34 @@ convert_universal() {
 	done
 }
 
+# -------------------------
+# Create code sign signatures
+# -------------------------
+code_sign() {
+	target="$1"
+	condir=$(content_directory "${target}"/lyx)
+	appdir=$(dirname "${condir}")
+	# have to sign frameworks first
+	for csitem in \
+		"${condir}"/Frameworks/Qt*.framework/Versions/${QtFrameworkVersion} \
+		"${condir}"/Frameworks/*.framework/lib*.dylib \
+		"${condir}"/PlugIns/*/lib*.dylib \
+		"${condir}"/Library/Spotlight/* \
+		"${target}"/inkscape \
+		"${target}"/maxima \
+		"${target}"/tex2lyx \
+		"${target}"/lyxeditor \
+		"${target}"/lyxconvert \
+		"${target}"/lyxclient
+	do
+		codesign --verbose --force --sign "${CODESIGN_IDENTITY}" "${csitem}"
+	done
+
+	/usr/bin/codesign --verbose --force --sign "${CODESIGN_IDENTITY}" "${appdir}" || {
+		echo Warning: codesign failed with certificate named '"'${CODESIGN_IDENTITY}'"'
+	}
+}
+
 deduplicate() {
 	find "$@" -type f -print | while read file ; do
 		echo $(md5 -q "$file") "$file"
@@ -1032,6 +1064,7 @@ build_package() {
 if [ ${LyxOnlyPackage:-"no"} = "no" ]; then
 	build_lyx
 	convert_universal
+	test -n "${CODESIGN_IDENTITY}" && code_sign "${LYX_BUNDLE_PATH}"
 	copy_dictionaries
 fi
 build_package
