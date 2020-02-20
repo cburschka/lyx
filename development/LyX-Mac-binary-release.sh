@@ -5,7 +5,7 @@
 # This script automates creating universal binaries of LyX on Mac.
 # Author: Bennett Helm (and extended by Konrad Hofbauer)
 # latest changes by Stephan Witt
-# Last modified: July 2014
+# Last modified: February 2020
 
 QtAPI=${QtAPI:-"-cocoa"}
 QtVersion=${QtVersion:-"4.6.3"}
@@ -625,6 +625,7 @@ framework_name() {
 LYX_FILE_LIST="lyx lyxclient tex2lyx lyxconvert"
 BUNDLE_PATH="Contents/MacOS"
 LYX_BUNDLE_PATH="${LyxAppPrefix}/${BUNDLE_PATH}"
+
 build_lyx() {
 	# Clear Output
 	if [ -n "${LyxAppZip}" -a -f "${LyxAppZip}" ]; then rm "${LyxAppZip}"; fi
@@ -724,15 +725,36 @@ installname() {
 }
 
 private_framework() {
-	fwdir=$(framework_name "$1")
-	source="$2"
-	target="$3"
+	fwname="$1" ; shift
+	source="$1" ; shift
+	target="$1" ; shift
+	version=$(echo ${1:-"1.1.1"}.1.1.1 | cut -d. -f1-3) ; shift
+	fwdir=$(framework_name "${fwname}")
 	condir=$(content_directory "${target}")
 	libnm=$(basename "${source}")
-	mkdir -p "${condir}/${fwdir}"
-	if [ ! -f "${condir}/${fwdir}/${libnm}" ]; then
-		cp -p "${source}" "${condir}/${fwdir}"
+	libid="org.lyx."$(echo "${libnm}" | cut -d. -f1)
+	svrsn=$(echo "${version}" | cut -d. -f1-2)
+	fwvrsn="1"
+	mkdir -p "${condir}/${fwdir}"/Versions/${fwvrsn}/Headers
+	mkdir -p "${condir}/${fwdir}"/Versions/${fwvrsn}/Resources
+	if [ ! -f "${condir}/${fwdir}/Versions/${fwvrsn}/${libnm}" ]; then
+		cp -p "${source}" "${condir}/${fwdir}/Versions/${fwvrsn}/${libnm}"
+		for hfile in "$@" ; do
+			test -f "${hfile}" && cp -p "${hfile}" "${condir}/${fwdir}"/Versions/${fwvrsn}/Headers
+		done
+		ln -s ${fwvrsn} "${condir}/${fwdir}/Versions/Current"
+		ln -s Versions/Current/Headers "${condir}/${fwdir}/Headers"
+		ln -s Versions/Current/Resources "${condir}/${fwdir}/Resources"
+		ln -s Versions/Current/"${libnm}" "${condir}/${fwdir}/${libnm}"
+		ln -s Versions/Current/"${libnm}" "${condir}/${fwdir}/${fwname}"
 		installname -id "@executable_path/../${fwdir}/${libnm}" "${condir}/${fwdir}/${libnm}"
+		if [ -f "${LyxSourceDir}"/development/LyX-Mac-frameworks-template.plist ]; then
+			cat "${LyxSourceDir}"/development/LyX-Mac-frameworks-template.plist | sed \
+				-e "s/@CFBundleExecutable@/${libnm}/" \
+				-e "s/@CFBundleIdentifier@/${libid}/" \
+				-e "s/@CFBundleShortVersionString@/${svrsn}/" \
+				-e "s/@CFBundleVersion@/${version}/" > "${condir}/${fwdir}"/Resources/Info.plist
+		fi
 	fi
 	installname -change "${source}" "@executable_path/../${fwdir}/${libnm}" "${target}"
 }
@@ -818,13 +840,16 @@ convert_universal() {
 			lipo -create ${OBJ_LIST} -o "${BUNDLE_PATH}/${file}"
 		fi
 		if [ -f "${LibMagicInstallDir}/lib/${LibMagicLibrary}" -a "yes" = "${libmagic_deployment}" ]; then
-			private_framework LibMagic "${LibMagicInstallDir}/lib/${LibMagicLibrary}" "${LYX_BUNDLE_PATH}/${file}"
+			private_framework LibMagic "${LibMagicInstallDir}/lib/${LibMagicLibrary}" "${LYX_BUNDLE_PATH}/${file}" \
+				"${LibMagicVersion}" "${LibMagicInstallHdr}"
 		fi
 		if [ -f "${ASpellInstallDir}/lib/${ASpellLibrary}" -a "yes" = "${aspell_deployment}" ]; then
-			private_framework Aspell "${ASpellInstallDir}/lib/${ASpellLibrary}" "${LYX_BUNDLE_PATH}/${file}"
+			private_framework Aspell "${ASpellInstallDir}/lib/${ASpellLibrary}" "${LYX_BUNDLE_PATH}/${file}" \
+				"${ASpellVersion}" "${ASpellInstallHdr}"
 		fi
 		if [ -f "${HunSpellInstallDir}/lib/${HunSpellLibrary}" -a "yes" = "${hunspell_deployment}" ]; then
-			private_framework Hunspell "${HunSpellInstallDir}/lib/${HunSpellLibrary}" "${LYX_BUNDLE_PATH}/${file}"
+			private_framework Hunspell "${HunSpellInstallDir}/lib/${HunSpellLibrary}" "${LYX_BUNDLE_PATH}/${file}" \
+				"${HunSpellVersion}" "${HunSpellInstallDir}/include/hunspell/"*.hxx "${HunSpellInstallHdr}"
 		fi
 		if [ -d "${QtInstallDir}/lib/QtCore.framework/Versions/${QtFrameworkVersion}" -a "yes" = "${qt_deployment}" ]; then
 			deploy_qtlibs "${LYX_BUNDLE_PATH}/${file}"
@@ -838,7 +863,7 @@ convert_universal() {
 		done
 	done
 	for arch in ${ARCH_LIST} ; do
-		rm -f ${BUNDLE_PATH}/*-${arch}
+		rm -f "${BUNDLE_PATH}"/*-${arch}
 	done
 }
 
