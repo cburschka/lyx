@@ -445,7 +445,7 @@ void GuiLyXFiles::updateContents()
 		if (subcat.isEmpty())
 			catItem->addChild(item);
 		else {
-			QTreeWidgetItem * subcatItem = new QTreeWidgetItem();
+			QTreeWidgetItem * subcatItem = nullptr;
 			if (cats.contains(catsave)) {
 				QList<QTreeWidgetItem *> pcats = filesLW->findItems(cat, Qt::MatchExactly);
 				for (int iit = 0; iit < pcats.size(); ++iit) {
@@ -456,7 +456,9 @@ void GuiLyXFiles::updateContents()
 						}
 					}
 				}
-			} else {
+			}
+			if (!subcatItem) {
+				subcatItem = new QTreeWidgetItem();
 				subcatItem->setText(0, subcat);
 				subcatItem->setIcon(0, file_icon);
 				cats << catsave;
