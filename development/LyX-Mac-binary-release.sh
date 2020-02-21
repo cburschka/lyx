@@ -746,26 +746,25 @@ private_framework() {
 	fwvrsn="1"
 	mkdir -p "${condir}/${fwdir}"/Versions/${fwvrsn}/Headers
 	mkdir -p "${condir}/${fwdir}"/Versions/${fwvrsn}/Resources
-	if [ ! -f "${condir}/${fwdir}/Versions/${fwvrsn}/${libnm}" ]; then
-		cp -p "${source}" "${condir}/${fwdir}/Versions/${fwvrsn}/${libnm}"
+	if [ ! -f "${condir}/${fwdir}/Versions/${fwvrsn}/${fwname}" ]; then
+		cp -p "${source}" "${condir}/${fwdir}/Versions/${fwvrsn}/${fwname}"
 		for hfile in "$@" ; do
 			test -f "${hfile}" && cp -p "${hfile}" "${condir}/${fwdir}"/Versions/${fwvrsn}/Headers
 		done
 		ln -s ${fwvrsn} "${condir}/${fwdir}/Versions/Current"
 		ln -s Versions/Current/Headers "${condir}/${fwdir}/Headers"
 		ln -s Versions/Current/Resources "${condir}/${fwdir}/Resources"
-		ln -s Versions/Current/"${libnm}" "${condir}/${fwdir}/${libnm}"
-		ln -s Versions/Current/"${libnm}" "${condir}/${fwdir}/${fwname}"
-		installname -id "@executable_path/../${fwdir}/${libnm}" "${condir}/${fwdir}/${libnm}"
+		ln -s Versions/Current/"${fwname}" "${condir}/${fwdir}/${fwname}"
+		installname -id "@executable_path/../${fwdir}/${fwname}" "${condir}/${fwdir}/${fwname}"
 		if [ -f "${LyxSourceDir}"/development/LyX-Mac-frameworks-template.plist ]; then
 			cat "${LyxSourceDir}"/development/LyX-Mac-frameworks-template.plist | sed \
-				-e "s/@CFBundleExecutable@/${libnm}/" \
+				-e "s/@CFBundleExecutable@/${fwname}/" \
 				-e "s/@CFBundleIdentifier@/${libid}/" \
 				-e "s/@CFBundleShortVersionString@/${svrsn}/" \
 				-e "s/@CFBundleVersion@/${version}/" > "${condir}/${fwdir}"/Resources/Info.plist
 		fi
 	fi
-	installname -change "${source}" "@executable_path/../${fwdir}/${libnm}" "${target}"
+	installname -change "${source}" "@executable_path/../${fwdir}/${fwname}" "${target}"
 }
 
 deploy_qtlibs() {
