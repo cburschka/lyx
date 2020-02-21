@@ -633,7 +633,10 @@ LYX_BUNDLE_PATH="${LyxAppPrefix}/${BUNDLE_PATH}"
 build_lyx() {
 	# Clear Output
 	if [ -n "${LyxAppZip}" -a -f "${LyxAppZip}" ]; then rm "${LyxAppZip}"; fi
-	if [ -d "${LyxAppPrefix}" ]; then rm -rf "${LyxAppPrefix}"; fi
+	if [ -d "${LyxAppPrefix}" ]; then
+		find "${LyxAppPrefix}" -type d -exec chmod u+w '{}' \;
+		rm -rf "${LyxAppPrefix}"
+	fi
 
 	case "${EnableCXX11}" in
 	"--enable-cxx11")
@@ -1013,7 +1016,7 @@ make_dmg() {
 	VOLUME=$(mount |grep ${DEVICE} | cut -f 3 -d ' ')
 
 	# copy in the application bundle
-	ditto --hfsCompression "${LyxAppDir}.app" "${VOLUME}/${LyxName}.app"
+	ditto --hfsCompression "${LyxAppPrefix}" "${VOLUME}/${LyxName}.app"
 
 	# copy in background image
 	mkdir -p "${VOLUME}/Pictures"
@@ -1067,5 +1070,6 @@ if [ ${LyxOnlyPackage:-"no"} = "no" ]; then
 	convert_universal
 	copy_dictionaries
 	test -n "${CODESIGN_IDENTITY}" && code_sign "${LYX_BUNDLE_PATH}"
+	find "${LyxAppPrefix}" -type d -exec chmod a-w '{}' \;
 fi
 build_package
