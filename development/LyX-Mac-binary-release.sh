@@ -880,9 +880,14 @@ code_sign() {
 	condir=$(content_directory "${target}"/lyx)
 	appdir=$(dirname "${condir}")
 	# have to sign frameworks first
+	for fwname in Aspell Hunspell LibMagic ; do
+		fwitem="${condir}"/$(framework_name "${fwname}")
+		if [ -d "${fwitem}" ]; then
+			codesign --verbose --force --sign "${CODESIGN_IDENTITY}" "${fwitem}"
+		fi
+	done
 	for csitem in \
 		"${condir}"/Frameworks/Qt*.framework/Versions/${QtFrameworkVersion} \
-		"${condir}"/Frameworks/*.framework/lib*.dylib \
 		"${condir}"/PlugIns/*/lib*.dylib \
 		"${condir}"/Library/Spotlight/* \
 		"${target}"/inkscape \
@@ -1060,7 +1065,7 @@ build_package() {
 if [ ${LyxOnlyPackage:-"no"} = "no" ]; then
 	build_lyx
 	convert_universal
-	test -n "${CODESIGN_IDENTITY}" && code_sign "${LYX_BUNDLE_PATH}"
 	copy_dictionaries
+	test -n "${CODESIGN_IDENTITY}" && code_sign "${LYX_BUNDLE_PATH}"
 fi
 build_package
