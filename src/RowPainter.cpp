@@ -169,10 +169,13 @@ void RowPainter::paintNoSpellingMark(Row::Element const & e) const
 	// We at the same voffset than the misspelled mark, since
 	// these two are mutually exclusive
 	int const desc = e.inset ? e.dim.descent() : 0;
-	int const y = yo_ + pi_.base.solidLineOffset() + desc
+	int y = yo_ + pi_.base.solidLineOffset() + desc
 		+ pi_.base.solidLineThickness()
 		+ (e.change.changed() ? pi_.base.solidLineThickness() + 1 : 0)
 		+ 1;
+	// Make sure that the mark does not go below the row rectangle
+	y = min(y, yo_ + row_.descent() - 1);
+
 	pi_.pain.line(int(x_), y, int(x_ + e.full_width()), y, Color_language,
 		      Painter::line_onoffdash, pi_.base.solidLineThickness());
 }
@@ -186,9 +189,11 @@ void RowPainter::paintMisspelledMark(Row::Element const & e) const
 	// to avoid drawing at the same vertical offset
 	FontMetrics const & fm = theFontMetrics(e.font);
 	int const thickness = max(fm.lineWidth(), 2);
-	int const y = yo_ + pi_.base.solidLineOffset() + pi_.base.solidLineThickness()
+	int y = yo_ + pi_.base.solidLineOffset() + pi_.base.solidLineThickness()
 		+ (e.change.changed() ? pi_.base.solidLineThickness() + 1 : 0)
 		+ 1 + thickness / 2;
+	// Make sure that the mark does not go below the row rectangle
+	y = min(y, yo_ + row_.descent() - 1);
 
 	//FIXME: this could be computed only once, it is probably not costly.
 	// check for cursor position
