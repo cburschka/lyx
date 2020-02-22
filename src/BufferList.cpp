@@ -318,10 +318,11 @@ Buffer * BufferList::getBuffer(support::FileName const & fname, bool internal) c
 }
 
 
-Buffer * BufferList::getBufferFromTmp(string const & s)
+Buffer * BufferList::getBufferFromTmp(string const & s, bool realpath)
 {
 	for (Buffer * buf : bstore) {
-		if (prefixIs(s, buf->temppath())) {
+		string const temppath = realpath ? FileName(buf->temppath()).realPath() : buf->temppath();
+		if (prefixIs(s, temppath)) {
 			// check whether the filename matches the master
 			string const master_name = buf->latexName();
 			if (suffixIs(s, master_name))
