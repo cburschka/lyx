@@ -158,6 +158,7 @@ logicalmkup
 \author -712698321 "Jürgen Spitzmüller"
 \author -563046850 "Jean-Marc LASGOUTTES"
 \author 5863208 "ab"
+\author 1675569489 "Stephan Witt"
 \end_header
 
 \begin_body
@@ -18229,7 +18230,27 @@ Line breaks after unspaced dashes can be allowed via the menu
 \family sans
 Insert\SpecialChar menuseparator
 Formatting\SpecialChar menuseparator
-Optional line break
+Optional
+\change_deleted 1675569489 1580913043
+ 
+\change_inserted 1675569489 1580913043
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+line
+\change_deleted 1675569489 1580913068
+ 
+\change_inserted 1675569489 1580913068
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+break
 \family default
 :
 \end_layout
