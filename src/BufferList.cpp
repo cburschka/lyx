@@ -331,11 +331,12 @@ Buffer * BufferList::getBuffer(support::FileName const & fname, bool internal) c
 }
 
 
-Buffer * BufferList::getBufferFromTmp(string const & s)
+Buffer * BufferList::getBufferFromTmp(string const & s, bool realpath)
 {
 	BufferStorage::iterator it = bstore.begin();
 	BufferStorage::iterator end = bstore.end();
 	for (; it < end; ++it) {
+		string const temppath = realpath ? FileName((*it)->temppath()).realPath() : (*it)->temppath();
 		if (prefixIs(s, (*it)->temppath())) {
 			// check whether the filename matches the master
 			string const master_name = (*it)->latexName();

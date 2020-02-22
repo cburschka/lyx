@@ -82,9 +82,7 @@ test -z "${LYXPIPE}" && {
 }
 
 if [ -n "$LYXPIPE" -a -p "$LYXPIPE".in ]; then
-	file=$(echo "$1" | sed 's|^/private||')
-
-	MAC_LYXPIPE_CONTENTS="LYXCMD:macdvix:server-goto-file-row:$file $2"
+	MAC_LYXPIPE_CONTENTS="LYXCMD:macdvix:server-goto-file-row:$1 $2"
 	# echo "$MAC_LYXPIPE_CONTENTS"
 	echo "$MAC_LYXPIPE_CONTENTS" > "${LYXPIPE}".in || { echo "Cannot write to lyxpipe." ; exit 2 ; }
 	while read line ; do

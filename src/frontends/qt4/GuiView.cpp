@@ -3493,7 +3493,7 @@ bool GuiView::goToFileRow(string const & argument)
 	int row;
 	size_t i = argument.find_last_of(' ');
 	if (i != string::npos) {
-		file_name = os::internal_path(trim(argument.substr(0, i)));
+		file_name = os::internal_path(FileName(trim(argument.substr(0, i))).realPath());
 		istringstream is(argument.substr(i + 1));
 		is >> row;
 		if (is.fail())
@@ -3504,20 +3504,14 @@ bool GuiView::goToFileRow(string const & argument)
 		return false;
 	}
 	Buffer * buf = 0;
-	string const abstmp = package().temp_dir().absFileName();
 	string const realtmp = package().temp_dir().realPath();
 	// We have to use os::path_prefix_is() here, instead of
 	// simply prefixIs(), because the file name comes from
 	// an external application and may need case adjustment.
-	if (os::path_prefix_is(file_name, abstmp, os::CASE_ADJUSTED)
-		|| os::path_prefix_is(file_name, realtmp, os::CASE_ADJUSTED)) {
-		// Needed by inverse dvi search. If it is a file
-		// in tmpdir, call the apropriated function.
-		// If tmpdir is a symlink, we may have the real
-		// path passed back, so we correct for that.
-		if (!prefixIs(file_name, abstmp))
-			file_name = subst(file_name, realtmp, abstmp);
-		buf = theBufferList().getBufferFromTmp(file_name);
+	if (os::path_prefix_is(file_name, realtmp, os::CASE_ADJUSTED)) {
+		buf = theBufferList().getBufferFromTmp(file_name, true);
+		LYXERR(Debug::FILES, "goToFileRow: buffer lookup for " << file_name
+			   << (buf ? " success" : " failed"));
 	} else {
 		// Must replace extension of the file to be .lyx
 		// and get full path
