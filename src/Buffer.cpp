@@ -154,7 +154,8 @@ typedef vector<LabelInfo> LabelCache;
 typedef map<docstring, Buffer::References> RefCache;
 
 // A storehouse for the cloned buffers.
-std::list<CloneList *> cloned_buffers;
+typedef list<CloneList_ptr> CloneStore;
+CloneStore cloned_buffers;
 
 } // namespace
 
@@ -371,7 +372,7 @@ public:
 	/// This one is useful for preview detached in a thread.
 	Buffer const * cloned_buffer_;
 	///
-	CloneList * clone_list_;
+	CloneList_ptr clone_list_;
 	/// are we in the process of exporting this buffer?
 	mutable bool doing_export;
 
@@ -530,8 +531,8 @@ Buffer::~Buffer()
 		// loop over children
 		for (auto const & p : d->children_positions) {
 			Buffer * child = const_cast<Buffer *>(p.first);
-				if (d->clone_list_->erase(child))
-					delete child;
+			if (d->clone_list_->erase(child))
+				delete child;
 		}
 		// if we're the master buffer, then we should get rid of the list
 		// of clones
@@ -540,14 +541,15 @@ Buffer::~Buffer()
 			// children still has a reference to this list. But we will try to
 			// continue, rather than shut down.
 			LATTEST(d->clone_list_->empty());
-			list<CloneList *>::iterator it =
+			// The clone list itself is empty, but it's still referenced in our list
+			// of clones. So let's find it and remove it.
+			CloneStore::iterator it =
 				find(cloned_buffers.begin(), cloned_buffers.end(), d->clone_list_);
 			if (it == cloned_buffers.end()) {
 				// We will leak in this case, but it is safe to continue.
 				LATTEST(false);
 			} else
 				cloned_buffers.erase(it);
-			delete d->clone_list_;
 		}
 		// FIXME Do we really need to do this right before we delete d?
 		// clear references to children in macro tables
@@ -594,8 +596,8 @@ Buffer::~Buffer()
 Buffer * Buffer::cloneWithChildren() const
 {
 	BufferMap bufmap;
-	cloned_buffers.push_back(new CloneList);
-	CloneList * clones = cloned_buffers.back();
+	cloned_buffers.push_back(CloneList_ptr(new CloneList));
+	CloneList_ptr clones = cloned_buffers.back();
 
 	cloneWithChildren(bufmap, clones);
 
@@ -608,7 +610,7 @@ Buffer * Buffer::cloneWithChildren() const
 }
 
 
-void Buffer::cloneWithChildren(BufferMap & bufmap, CloneList * clones) const
+void Buffer::cloneWithChildren(BufferMap & bufmap, CloneList_ptr clones) const
 {
 	// have we already been cloned?
 	if (bufmap.find(this) != bufmap.end())
@@ -658,8 +660,8 @@ void Buffer::cloneWithChildren(BufferMap & bufmap, CloneList * clones) const
 
 
 Buffer * Buffer::cloneBufferOnly() const {
-	cloned_buffers.push_back(new CloneList);
-	CloneList * clones = cloned_buffers.back();
+	cloned_buffers.push_back(CloneList_ptr(new CloneList));
+	CloneList_ptr clones = cloned_buffers.back();
 	Buffer * buffer_clone = new Buffer(fileName().absFileName(), false, this);
 
 	// The clone needs its own DocumentClass, since running updateBuffer() will

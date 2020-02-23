@@ -82,6 +82,7 @@ class Buffer;
 typedef std::list<Buffer *> ListOfBuffers;
 /// a list of Buffers we cloned
 typedef std::set<Buffer *> CloneList;
+typedef std::shared_ptr<CloneList> CloneList_ptr;
 
 
 /** The buffer object.
@@ -231,7 +232,7 @@ private:
 	///
 	typedef std::map<Buffer const *, Buffer *> BufferMap;
 	///
-	void cloneWithChildren(BufferMap &, CloneList *) const;
+	void cloneWithChildren(BufferMap &, CloneList_ptr) const;
 	/// save checksum of the given file.
 	void saveCheckSum() const;
 	/// read a new file
