@@ -596,7 +596,7 @@ Buffer::~Buffer()
 Buffer * Buffer::cloneWithChildren() const
 {
 	BufferMap bufmap;
-	cloned_buffers.push_back(CloneList_ptr(new CloneList));
+	cloned_buffers.emplace_back(new CloneList);
 	CloneList_ptr clones = cloned_buffers.back();
 
 	cloneWithChildren(bufmap, clones);
@@ -660,7 +660,7 @@ void Buffer::cloneWithChildren(BufferMap & bufmap, CloneList_ptr clones) const
 
 
 Buffer * Buffer::cloneBufferOnly() const {
-	cloned_buffers.push_back(CloneList_ptr(new CloneList));
+	cloned_buffers.emplace_back(new CloneList);
 	CloneList_ptr clones = cloned_buffers.back();
 	Buffer * buffer_clone = new Buffer(fileName().absFileName(), false, this);
 
