@@ -38,6 +38,7 @@
 
 #include <io.h>
 #include <direct.h> // _getdrive
+#include <fileapi.h> // GetFinalPathNameByHandle
 #include <shlobj.h>  // SHGetFolderPath
 #include <windef.h>
 #include <shellapi.h>
@@ -594,45 +595,18 @@ string real_path(string const & path)
 	// See http://msdn.microsoft.com/en-us/library/aa366789(VS.85).aspx
 	QString const qpath = get_long_path(toqstr(path));
 	HANDLE hpath = CreateFileW((wchar_t *) qpath.utf16(), GENERIC_READ,
-				FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL);
+				FILE_SHARE_READ, NULL, OPEN_EXISTING,
+				FILE_FLAG_BACKUP_SEMANTICS, NULL);
 
 	if (hpath == INVALID_HANDLE_VALUE) {
 		// The file cannot be accessed.
 		return path;
 	}
 
-	// Get the file size.
-	DWORD size_hi = 0;
-	DWORD size_lo = GetFileSize(hpath, &size_hi);
-
-	if (size_lo == 0 && size_hi == 0) {
-		// A zero-length file cannot be mapped.
-		CloseHandle(hpath);
-		return path;
-	}
-
-	// Create a file mapping object.
-	HANDLE hmap = CreateFileMapping(hpath, NULL, PAGE_READONLY, 0, 1, NULL);
-
-	if (!hmap) {
-		CloseHandle(hpath);
-		return path;
-	}
-
-	// Create a file mapping to get the file name.
-	void * pmem = MapViewOfFile(hmap, FILE_MAP_READ, 0, 0, 1);
-
-	if (!pmem) {
-		CloseHandle(hmap);
-		CloseHandle(hpath);
-		return path;
-	}
-
 	TCHAR realpath[MAX_PATH + 1];
 
-	if (!GetMappedFileName(GetCurrentProcess(), pmem, realpath, MAX_PATH)) {
-		UnmapViewOfFile(pmem);
-		CloseHandle(hmap);
+	DWORD size = GetFinalPathNameByHandle(hpath, realpath, MAX_PATH, VOLUME_NAME_NT);
+	if (size > MAX_PATH) {
 		CloseHandle(hpath);
 		return path;
 	}
@@ -678,8 +652,6 @@ string real_path(string const & path)
 			while (*p++) ;
 		} while (!found && *p);
 	}
-	UnmapViewOfFile(pmem);
-	CloseHandle(hmap);
 	CloseHandle(hpath);
 	string const retpath = subst(string(realpath), '\\', '/');
 	return FileName::fromFilesystemEncoding(retpath).absFileName();

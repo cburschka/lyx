@@ -36,13 +36,13 @@
  */
 #if defined(__MINGW32__)  || defined(__CYGWIN__) || defined(__CYGWIN32__)
 # if defined(WINVER)
-#  if WINVER < 0x0500
-#   error WINVER must be >= 0x0500
+#  if WINVER < 0x0600
+#   error WINVER must be >= 0x0600
 #  endif
 # else
-#  define WINVER 0x0500
+#  define WINVER 0x0600
 # endif
-# define _WIN32_IE 0x0500
+# define _WIN32_IE 0x0600
 #endif
 
 #include <windows.h>
