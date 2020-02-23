@@ -201,39 +201,8 @@ public:
 	/// need to regenerate .tex?
 	DepClean dep_clean;
 
-	/// is save needed?
-	mutable bool lyx_clean;
-
-	/// is autosave needed?
-	mutable bool bak_clean;
-
-	/// is this an unnamed file (New...)?
-	bool unnamed;
-
-	/// is this an internal bufffer?
-	bool internal_buffer;
-
-	/// buffer is r/o
-	bool read_only;
-
 	/// name of the file the buffer is associated with.
 	FileName filename;
-
-	/** Set to true only when the file is fully loaded.
-	 *  Used to prevent the premature generation of previews
-	 *  and by the citation inset.
-	 */
-	bool file_fully_loaded;
-
-	/// original format of loaded file
-	int file_format;
-
-	/// if the file was originally loaded from an older format, do
-	/// we need to back it up still?
-	bool need_format_backup;
-
-	/// Ignore the parent (e.g. when exporting a child standalone)?
-	bool ignore_parent;
 
 	///
 	mutable TocBackend toc_backend;
@@ -251,8 +220,6 @@ public:
 	/// map from the macro name to the position map,
 	/// which maps the macro definition position to the scope and the MacroData.
 	NamePositionScopeMacroMap macros;
-	/// This seem to change the way Buffer::getMacro() works
-	mutable bool macro_lock;
 
 	/// positions of child buffers in the buffer
 	typedef map<Buffer const * const, DocIterator> BufferPositionMap;
@@ -304,25 +271,13 @@ public:
 	// file, and then to construct the Buffer's bibinfo from that.
 	/// A cache for bibliography info
 	mutable BiblioInfo bibinfo_;
-	/// whether the bibinfo cache is valid
-	mutable bool bibinfo_cache_valid_;
 	/// Cache of timestamps of .bib files
 	map<FileName, time_t> bibfile_status_;
-	/// Indicates whether the bibinfo has changed since the last time
-	/// we ran updateBuffer(), i.e., whether citation labels may need
-	/// to be updated.
-	mutable bool cite_labels_valid_;
-	/// Do we have a bibliography environment?
-	mutable bool have_bibitems_;
 
 	/// These two hold the file name and format, written to by
 	/// Buffer::preview and read from by LFUN_BUFFER_VIEW_CACHE.
 	FileName preview_file_;
 	string preview_format_;
-	/// If there was an error when previewing, on the next preview we do
-	/// a fresh compile (e.g. in case the user installed a package that
-	/// was missing).
-	bool require_fresh_start_;
 
 	/// Cache the references associated to a label and their positions
 	/// in the buffer.
@@ -336,6 +291,81 @@ public:
 	///
 	PreviewLoader * preview_loader_;
 
+	/// If non zero, this buffer is a clone of existing buffer \p cloned_buffer_
+	/// This one is useful for preview detached in a thread.
+	Buffer const * cloned_buffer_;
+	///
+	CloneList_ptr clone_list_;
+
+private:
+	/// So we can force access via the accessors.
+	mutable Buffer const * parent_buffer;
+
+	FileMonitorPtr file_monitor_;
+
+/// ints and bools are all listed last so as to avoid alignment issues
+public:
+	/// original format of loaded file
+	int file_format;
+
+	/// are we in the process of exporting this buffer?
+	mutable bool doing_export;
+
+	/// If there was an error when previewing, on the next preview we do
+	/// a fresh compile (e.g. in case the user installed a package that
+	/// was missing).
+	bool require_fresh_start_;
+
+	/// Indicates whether the bibinfo has changed since the last time
+	/// we ran updateBuffer(), i.e., whether citation labels may need
+	/// to be updated.
+	mutable bool cite_labels_valid_;
+	/// Do we have a bibliography environment?
+	mutable bool have_bibitems_;
+
+	/// is save needed?
+	mutable bool lyx_clean;
+
+	/// is autosave needed?
+	mutable bool bak_clean;
+
+	/// is this an unnamed file (New...)?
+	bool unnamed;
+
+	/// is this an internal bufffer?
+	bool internal_buffer;
+
+	/// buffer is r/o
+	bool read_only;
+
+	/** Set to true only when the file is fully loaded.
+	 *  Used to prevent the premature generation of previews
+	 *  and by the citation inset.
+	 */
+	bool file_fully_loaded;
+
+	/// if the file was originally loaded from an older format, do
+	/// we need to back it up still?
+	bool need_format_backup;
+
+	/// Ignore the parent (e.g. when exporting a child standalone)?
+	bool ignore_parent;
+
+	/// This seem to change the way Buffer::getMacro() works
+	mutable bool macro_lock;
+
+	/// has been externally modified? Can be reset by the user.
+	mutable bool externally_modified_;
+
+	/// whether the bibinfo cache is valid
+	mutable bool bibinfo_cache_valid_;
+
+private:
+	int word_count_;
+	int char_count_;
+	int blank_count_;
+
+public:
 	/// This is here to force the test to be done whenever parent_buffer
 	/// is accessed.
 	Buffer const * parent() const
@@ -368,14 +398,6 @@ public:
 			parent_buffer->invalidateBibinfoCache();
 	}
 
-	/// If non zero, this buffer is a clone of existing buffer \p cloned_buffer_
-	/// This one is useful for preview detached in a thread.
-	Buffer const * cloned_buffer_;
-	///
-	CloneList_ptr clone_list_;
-	/// are we in the process of exporting this buffer?
-	mutable bool doing_export;
-
 	/// compute statistics
 	/// \p from initial position
 	/// \p to points to the end position
@@ -398,24 +420,11 @@ public:
 	/// Notify or clear of external modification
 	void fileExternallyModified(bool exists);
 
-	/// has been externally modified? Can be reset by the user.
-	mutable bool externally_modified_;
-
 	///Binding LaTeX lines with buffer positions.
 	//Common routine for LaTeX and Reference errors listing.
         void traverseErrors(TeXErrors::Errors::const_iterator err,
 		TeXErrors::Errors::const_iterator end,
 		ErrorList & errorList) const;
-
-private:
-	/// So we can force access via the accessors.
-	mutable Buffer const * parent_buffer;
-
-	int word_count_;
-	int char_count_;
-	int blank_count_;
-
-	FileMonitorPtr file_monitor_;
 };
 
 
@@ -448,15 +457,15 @@ static FileName createBufferTmpDir()
 
 Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	Buffer const * cloned_buffer)
-	: owner_(owner), lyx_clean(true), bak_clean(true), unnamed(false),
-	  internal_buffer(false), read_only(readonly_), filename(file),
-	  file_fully_loaded(false), file_format(LYX_FORMAT), need_format_backup(false),
-	  ignore_parent(false),  toc_backend(owner), macro_lock(false),
-	  checksum_(0), wa_(nullptr),  gui_(nullptr), undo_(*owner), bibinfo_cache_valid_(false),
-	  cite_labels_valid_(false), have_bibitems_(false), require_fresh_start_(false),
-	  inset(nullptr), preview_loader_(nullptr), cloned_buffer_(cloned_buffer),
-	  clone_list_(nullptr), doing_export(false),
-	  externally_modified_(false), parent_buffer(nullptr),
+	: owner_(owner), filename(file), toc_backend(owner), checksum_(0),
+	  wa_(nullptr),  gui_(nullptr), undo_(*owner), inset(nullptr),
+	  preview_loader_(nullptr), cloned_buffer_(cloned_buffer),
+	  clone_list_(nullptr), parent_buffer(nullptr), file_format(LYX_FORMAT),
+	  doing_export(false), require_fresh_start_(false), cite_labels_valid_(false),
+	  have_bibitems_(false), lyx_clean(true), bak_clean(true), unnamed(false),
+	  internal_buffer(false), read_only(readonly_), file_fully_loaded(false),
+	  need_format_backup(false), ignore_parent(false), macro_lock(false),
+	  externally_modified_(false), bibinfo_cache_valid_(false),
 	  word_count_(0), char_count_(0), blank_count_(0)
 {
 	refreshFileMonitor();
