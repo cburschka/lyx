@@ -545,10 +545,8 @@ Buffer::~Buffer()
 			if (it == cloned_buffers.end()) {
 				// We will leak in this case, but it is safe to continue.
 				LATTEST(false);
-			} else {
-				delete(*it);
+			} else
 				cloned_buffers.erase(it);
-			}
 			delete d->clone_list_;
 		}
 		// FIXME Do we really need to do this right before we delete d?
