@@ -224,7 +224,7 @@ static void parseFontName(QString const & mangled0,
 		name = mangled;
 		foundry.clear();
 	} else {
-		name = mangled.substr(0, idx - 1),
+		name = mangled.substr(0, idx - 1);
 		foundry = mangled.substr(idx + 1, mangled.size() - idx - 2);
 	}
 }
@@ -2833,8 +2833,8 @@ GuiShortcutDialog::GuiShortcutDialog(QWidget * parent) : QDialog(parent)
 
 PrefShortcuts::PrefShortcuts(GuiPreferences * form)
 	: PrefModule(catEditing, N_("Shortcuts"), form),
-	  editItem_(0), mathItem_(0), bufferItem_(0), layoutItem_(0),
-	  systemItem_(0)
+	  editItem_(nullptr), mathItem_(nullptr), bufferItem_(nullptr), layoutItem_(nullptr),
+	  systemItem_(nullptr)
 {
 	setupUi(this);
 
@@ -2892,8 +2892,8 @@ void PrefShortcuts::applyRC(LyXRC & rc) const
 	// The good thing is that the menus are updated automatically.
 	theTopLevelKeymap().clear();
 	theTopLevelKeymap().read("site");
-	theTopLevelKeymap().read(rc.bind_file, 0, KeyMap::Fallback);
-	theTopLevelKeymap().read("user", 0, KeyMap::MissingOK);
+	theTopLevelKeymap().read(rc.bind_file, nullptr, KeyMap::Fallback);
+	theTopLevelKeymap().read("user", nullptr, KeyMap::MissingOK);
 }
 
 
@@ -3009,7 +3009,7 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 			+ ' ' + lfun.argument());
 	QString const shortcut = toqstr(seq.print(KeySequence::ForGui));
 
-	QTreeWidgetItem * newItem = 0;
+	QTreeWidgetItem * newItem = nullptr;
 	// for unbind items, try to find an existing item in the system bind list
 	if (tag == KeyMap::UserUnbind) {
 		QList<QTreeWidgetItem*> const items = shortcutsTW->findItems(lfun_name,
@@ -3024,13 +3024,13 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 		// Such an item is not displayed to avoid confusion (what is
 		// unmatched removed?).
 		if (!newItem) {
-			return 0;
+			return nullptr;
 		}
 	}
 	if (!newItem) {
 		switch(lyxaction.getActionType(action)) {
 		case LyXAction::Hidden:
-			return 0;
+			return nullptr;
 		case LyXAction::Edit:
 			newItem = new QTreeWidgetItem(editItem_);
 			break;
