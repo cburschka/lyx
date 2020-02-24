@@ -138,24 +138,24 @@ void PainterInfo::draw(int x, int y, docstring const & str)
 
 ColorCode PainterInfo::backgroundColor(Inset const * inset, bool sel) const
 {
-	ColorCode const color_bg = inset->backgroundColor(*this);
-
 	if (selected && sel)
 		// This inset is in a selection
 		return Color_selection;
-	else {
+
+	// special handling for inset background
+	if (inset != nullptr) {
+		ColorCode const color_bg = inset->backgroundColor(*this);
 		if (color_bg != Color_none)
 			// This inset has its own color
 			return color_bg;
-		else {
-			if (background_color == Color_none)
-				// This inset has no own color and does not inherit a color
-				return Color_background;
-			else
-				// This inset has no own color, but inherits a color
-				return background_color;
-		}
 	}
+
+	if (background_color == Color_none)
+		// This inset has no own color and does not inherit a color
+		return Color_background;
+
+	// This inset has no own color, but inherits a color
+	return background_color;
 }
 
 
