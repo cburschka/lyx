@@ -3352,26 +3352,18 @@ bool GuiApplication::nativeEventFilter(const QByteArray & eventType,
 				// not doing that, maybe because of our
 				// "persistent selection" implementation
 				// (see comments in GuiSelection.cpp).
-
-				// It is expected that every X11 event is 32 bytes long,
-				// even if not all 32 bytes are needed. See:
-				// https://www.x.org/releases/current/doc/man/man3/xcb_send_event.3.xhtml
-				// TODO switch to Q_DECLARE_XCB_EVENT(event, xcb_selection_notify_event_t)
-				//      once we require qt >= 5.6.3 or just copy the macro def.
-				xcb_selection_notify_event_t *nev = (xcb_selection_notify_event_t*) calloc(32, 1);
-
-				nev->response_type = XCB_SELECTION_NOTIFY;
-				nev->requestor = srev->requestor;
-				nev->selection = srev->selection;
-				nev->target = srev->target;
-				nev->property = XCB_NONE;
-				nev->time = XCB_CURRENT_TIME;
+				xcb_selection_notify_event_t nev;
+				nev.response_type = XCB_SELECTION_NOTIFY;
+				nev.requestor = srev->requestor;
+				nev.selection = srev->selection;
+				nev.target = srev->target;
+				nev.property = XCB_NONE;
+				nev.time = XCB_CURRENT_TIME;
 				xcb_connection_t * con = QX11Info::connection();
 				xcb_send_event(con, 0, srev->requestor,
 					XCB_EVENT_MASK_NO_EVENT,
-					reinterpret_cast<char const *>(nev));
+					reinterpret_cast<char const *>(&nev));
 				xcb_flush(con);
-				free(nev);
 #endif
 				return true;
 			}
