@@ -121,10 +121,11 @@ for type in types:
             # prevent inifinite recursion
             recurse = []
             for dir in dirs:
-                st = os.stat(os.path.join(root, dir))
-                key = st.st_dev, st.st_ino
-                if key not in visited:
-                    visited.add(key)
+                dirname = os.path.join(root, dir)
+                dirname = os.path.realpath(dirname)
+                dirname = os.path.normcase(dirname)
+                if dirname not in visited:
+                    visited.add(dirname)
                     recurse.append(dir)
             dirs[:] = recurse
             # check file type
