@@ -19,13 +19,14 @@ if [ -z "$EDITOR" ]; then EDITOR=vi; fi
 MAKEOPTS="-j4";
 # Compile?
 COMPILE="YES";
+# Make patch file?
+PATCH="YES";
 
-PKGNUM="";
-while getopts ":Cm:p:" opt; do
+while getopts ":Cm:P" opt; do
   case $opt in
-    C )   COMPILE="";;
+    C )   COMPILE="";; # don't test compilation
     m )   MAKEOPTS="$OPTARG";;
-    p )   PKGNUM="$OPTARG";;
+    P )   PATCH="";; # don't build patch files
     \? )  echo "Unknown option $opt"; exit 1;;
   esac
 done
@@ -35,10 +36,6 @@ shift $(($OPTIND - 1));
 cd $SRCDIR/
 VERSION=$(head configure.ac | grep AC_INIT | perl -e 'while (<>) {m/AC_INIT\(LyX,([^,]+)/; print $1;}');
 VERSION_BASE="$VERSION";
-
-if [ -n "$PKGNUM" ]; then
-    VERSION="$VERSION-$PKGNUM";
-fi
 
 echo "This is version $VERSION.";
 echo -n "Ready to build source packages...";
@@ -61,10 +58,6 @@ if ! $DEBUG make lyxdist; then
 fi
 
 echo "Packages created:";
-if [ -n "$PKGNUM" ]; then
-    $DEBUG mv lyx-$VERSION_BASE.tar.gz lyx-$VERSION.tar.gz;
-    $DEBUG mv lyx-$VERSION_BASE.tar.xz lyx-$VERSION.tar.xz;
-fi
 $DEBUG cp -v lyx-$VERSION.tar.{gz,xz} $BASE;
 
 echo -n "Ready to build signatures...";
@@ -107,6 +100,11 @@ LAST=$((LASTNUM - 1));
 FIRST=$(echo $VERSION_BASE | sed -e 's/[0-9]*$//');
 ORIGINAL=${FIRST}0;
 LAST=$FIRST$LAST;
+
+if [ -z "$PATCH" ]; then 
+	echo "Skipping patch files.";
+	exit 0; 
+fi
 
 if [ ! -d "$BASE/lyx-patch/" ]; then
 	$DEBUG mkdir "$BASE/lyx-patch/" || exit 1;
