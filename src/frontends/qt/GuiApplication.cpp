@@ -3352,7 +3352,13 @@ bool GuiApplication::nativeEventFilter(const QByteArray & eventType,
 				// not doing that, maybe because of our
 				// "persistent selection" implementation
 				// (see comments in GuiSelection.cpp).
-				xcb_selection_notify_event_t nev;
+				// It is expected that every X11 event is
+				// 32 bytes long, even if not all 32 bytes are
+				// needed. See:
+				// https://www.x.org/releases/current/doc/man/man3/xcb_send_event.3.xhtml
+				struct alignas(32) padded_event
+					: xcb_selection_notify_event_t {};
+				padded_event nev = {};
 				nev.response_type = XCB_SELECTION_NOTIFY;
 				nev.requestor = srev->requestor;
 				nev.selection = srev->selection;
