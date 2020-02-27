@@ -118,7 +118,7 @@ Inset * TocWidget::itemInset() const
 		gui_view_.tocModels().currentItem(current_type_, index);
 	DocIterator const & dit = item.dit();
 
-	Inset * inset = 0;
+	Inset * inset = nullptr;
 	if (current_type_ == "label"
 		  || current_type_ == "graphics"
 		  || current_type_ == "citation"
@@ -408,7 +408,7 @@ void TocWidget::enableControls(bool enable)
 void TocWidget::updateView()
 {
 	if (!gui_view_.documentBufferView()) {
-		tocTV->setModel(0);
+		tocTV->setModel(nullptr);
 		depthSL->setMaximum(0);
 		depthSL->setValue(0);
 		setEnabled(false);
