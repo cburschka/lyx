@@ -386,6 +386,8 @@ void GuiCitation::updateStyles(BiblioInfo const & bi)
 	int curr = selectedLV->model()->rowCount() - 1;
 
 	if (curr < 0 || selected_keys.empty()) {
+		last_chosen_style_ =
+			citationStyleCO->itemData(citationStyleCO->currentIndex()).toString();
 		citationStyleCO->clear();
 		citationStyleCO->setEnabled(false);
 		citationStyleLA->setEnabled(false);
@@ -408,7 +410,10 @@ void GuiCitation::updateStyles(BiblioInfo const & bi)
 	// save old style selection
 	QString const curdata =
 		citationStyleCO->itemData(citationStyleCO->currentIndex()).toString();
-	QString const olddata = (curdata.isEmpty()) ? style_ : curdata;
+	QString const olddata = (curdata.isEmpty()) ?
+		(last_chosen_style_.isEmpty() ? style_ : last_chosen_style_): curdata;
+	// reset this
+	last_chosen_style_.clear();
 	citationStyleCO->clear();
 	BiblioInfo::CiteStringMap::const_iterator cit = sty.begin();
 	BiblioInfo::CiteStringMap::const_iterator end = sty.end();

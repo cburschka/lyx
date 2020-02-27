@@ -183,6 +183,8 @@ private:
 
 	/// last used citation style
 	QString style_;
+        /// this is the last style chosen in the current dialog
+        QString last_chosen_style_;
 	///
 	GuiSelectionManager * selectionManager;
 	/// available keys.
