@@ -68,6 +68,7 @@ What's new
 - Fix a crash reported on lyx users.
   There was an uninitialized buffer member of MathData in LFUN dispatch.
 
+- Fix problem with validation of InsetLayout.
 
 * INTERNALS
 
