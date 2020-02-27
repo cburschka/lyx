@@ -149,7 +149,7 @@ private:
 	///
 	TocList tocs_;
 	///
-	std::map<std::string, unique_ptr<TocBuilder>> builders_;
+	std::map<std::string, std::shared_ptr<TocBuilder>> builders_;
 	/// Stores localised outliner names from this buffer and its children
 	std::map<std::string, docstring> outliner_names_;
 	///
