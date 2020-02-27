@@ -78,7 +78,8 @@ InsetLayout::InsetLaTeXType translateLaTeXType(std::string const & str)
 } // namespace
 
 
-bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
+bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
+	bool validating)
 {
 	enum {
 		IL_ADDTOTOC,
@@ -216,6 +217,8 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		switch (le) {
 		case Lexer::LEX_UNDEF:
 			lex.printError("Unknown InsetLayout tag");
+			if (validating)
+				return false;
 			continue;
 		default:
 			break;
@@ -232,13 +235,20 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 				LYXERR0("Flex insets must have names of the form `Flex:<name>'.\n"
 				        "This one has the name `" << to_utf8(name_) << "'\n"
 				        "Ignoring LyXType declaration.");
+				// this is not really a reason to abort
+				if (validating)
+					return false;
 				break;
 			}
 			string lt;
 			lex >> lt;
 			lyxtype_ = translateLyXType(lt);
-			if (lyxtype_  == NOLYXTYPE)
+			if (lyxtype_  == NOLYXTYPE) {
 				LYXERR0("Unknown LyXType `" << lt << "'.");
+				// this is not really a reason to abort
+				if (validating)
+					return false;
+			}
 			if (lyxtype_ == CHARSTYLE) {
 				// by default, charstyles force the plain layout
 				multipar_ = false;
@@ -250,8 +260,12 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			string lt;
 			lex >> lt;
 			latextype_ = translateLaTeXType(lt);
-			if (latextype_  == ILT_ERROR)
+			if (latextype_  == ILT_ERROR) {
 				LYXERR0("Unknown LaTeXType `" << lt << "'.");
+				// this is not really a reason to abort
+				if (validating)
+					return false;
+			}
 			break;
 		}
 		case IL_LABELSTRING:
@@ -378,6 +392,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 						tclass.insetLayouts().end();
 				for (; lit != len; ++lit)
 					lyxerr << lit->second.name() << "\n";
+				// this is not really a reason to abort
+				if (validating)
+					return false;
 			}
 			break;
 		}
@@ -408,6 +425,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 						tclass.insetLayouts().end();
 				for (; lit != len; ++lit)
 					lyxerr << lit->second.name() << "\n";
+				// this is not really a reason to abort
+				if (validating)
+					return false;
 			}
 			break;
 		}

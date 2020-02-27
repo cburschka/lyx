@@ -56,7 +56,8 @@ public:
 		ILT_ERROR
 	};
 	///
-	bool read(Lexer & lexrc, TextClass const & tclass);
+	bool read(Lexer & lexrc, TextClass const & tclass,
+			bool validating = false);
 	///
 	docstring name() const { return name_; }
 	///

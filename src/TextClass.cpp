@@ -745,6 +745,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 				break;
 			}
 			docstring const name = subst(lexrc.getDocString(), '_', ' ');
+			bool const validating = (rt == VALIDATION);
 			if (name.empty()) {
 				string s = "Could not read name for InsetLayout: `$$Token' "
 					+ lexrc.getString() + " is probably not valid UTF-8!";
@@ -753,15 +754,17 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 				// Since we couldn't read the name, we just scan the rest
 				// of the style and discard it.
 				il.read(lexrc, *this);
-				// Let's try to continue rather than abort.
-				// error = true;
+				// Let's try to continue rather than abort, unless we're validating
+				// in which case we want to report the error
+				if (validating)
+					error = true;
 			} else if (hasInsetLayout(name)) {
 				InsetLayout & il = insetlayoutlist_[name];
-				error = !il.read(lexrc, *this);
+				error = !il.read(lexrc, *this, validating);
 			} else {
 				InsetLayout il;
 				il.setName(name);
-				error = !il.read(lexrc, *this);
+				error = !il.read(lexrc, *this, validating);
 				if (!error)
 					insetlayoutlist_[name] = il;
 			}
