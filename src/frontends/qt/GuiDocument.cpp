@@ -162,17 +162,17 @@ enum EncodingSets {
 	custom = 2
 };
 
+lyx::RGBColor set_backgroundcolor;
+bool is_backgroundcolor;
+lyx::RGBColor set_fontcolor;
+bool is_fontcolor;
+lyx::RGBColor set_notefontcolor;
+lyx::RGBColor set_boxbgcolor;
+bool forced_fontspec_activation;
+
 } // anonymous namespace
 
 namespace lyx {
-
-RGBColor set_backgroundcolor;
-bool is_backgroundcolor;
-RGBColor set_fontcolor;
-bool is_fontcolor;
-RGBColor set_notefontcolor;
-RGBColor set_boxbgcolor;
-bool forced_fontspec_activation;
 
 namespace {
 // used when sorting the textclass list.
@@ -269,17 +269,17 @@ class ModuleSelectionManager : public GuiSelectionManager
 public:
 	///
 	ModuleSelectionManager(QObject * parent,
-	                       QTreeView * availableLV,
-	                       QTreeView * selectedLV,
-	                       QPushButton * addPB,
-	                       QPushButton * delPB,
-	                       QPushButton * upPB,
-	                       QPushButton * downPB,
-	                       QStandardItemModel * availableModel,
-	                       GuiIdListModel * selectedModel,
+						   QTreeView * availableLVarg,
+						   QTreeView * selectedLVarg,
+						   QPushButton * addPBarg,
+						   QPushButton * delPBarg,
+						   QPushButton * upPBarg,
+						   QPushButton * downPBarg,
+						   QStandardItemModel * availableModelarg,
+						   GuiIdListModel * selectedModelarg,
 	                       GuiDocument const * container)
-		: GuiSelectionManager(parent, availableLV, selectedLV, addPB, delPB,
-		                      upPB, downPB, availableModel, selectedModel),
+		: GuiSelectionManager(parent, availableLVarg, selectedLVarg, addPBarg, delPBarg,
+							  upPBarg, downPBarg, availableModelarg, selectedModelarg),
 		  container_(container)
 		{}
 	///
@@ -477,7 +477,7 @@ void ModuleSelectionManager::updateDelPB()
 /////////////////////////////////////////////////////////////////////
 
 PreambleModule::PreambleModule(QWidget * parent)
-	: UiWidget<Ui::PreambleUi>(parent), current_id_(0)
+	: UiWidget<Ui::PreambleUi>(parent), current_id_(nullptr)
 {
 	// This is not a memory leak. The object will be destroyed
 	// with this.
@@ -602,7 +602,7 @@ void PreambleModule::editExternal() {
 
 
 LocalLayout::LocalLayout(QWidget * parent)
-	: UiWidget<Ui::LocalLayoutUi>(parent), current_id_(0), validated_(false)
+	: UiWidget<Ui::LocalLayoutUi>(parent), current_id_(nullptr), validated_(false)
 {
 	locallayoutTE->setFont(guiApp->typewriterSystemFont());
 	locallayoutTE->setWordWrapMode(QTextOption::NoWrap);
@@ -1915,7 +1915,7 @@ void GuiDocument::resetModuleFilter()
 
 void GuiDocument::includeonlyClicked(QTreeWidgetItem * item, int)
 {
-	if (item == 0)
+	if (item == nullptr)
 		return;
 
 	string child = fromqstr(item->text(0));
@@ -3247,7 +3247,7 @@ void GuiDocument::updateNumbering()
 	int const toc = numberingModule->tocSL->value();
 	QString const no = qt_("No");
 	QString const yes = qt_("Yes");
-	QTreeWidgetItem * item = 0;
+	QTreeWidgetItem * item = nullptr;
 
 	DocumentClass::const_iterator lit = tclass.begin();
 	DocumentClass::const_iterator len = tclass.end();
@@ -4820,7 +4820,7 @@ void GuiDocument::clearParams()
 BufferId GuiDocument::id() const
 {
 	BufferView const * const view = bufferview();
-	return view? &view->buffer() : 0;
+	return view? &view->buffer() : nullptr;
 }
 
 
