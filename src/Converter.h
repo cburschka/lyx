@@ -176,7 +176,7 @@ public:
 	Graph::EdgePath getPath(std::string const & from, std::string const & to);
 	///
 	OutputParams::FLAVOR getFlavor(Graph::EdgePath const & path,
-				       Buffer const * buffer = 0);
+					   Buffer const * buffer = nullptr);
 	///
 	std::string getHyperrefDriver(Graph::EdgePath const & path);
 	/// Flags for converting files

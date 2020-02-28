@@ -59,7 +59,7 @@ public:
 	/// used for sorting.
 	/// This will be translated to the UI language if buf is null
 	/// otherwise, it will be translated to the buffer language.
-	docstring const getAuthorOrEditorList(Buffer const * buf = 0,
+	docstring const getAuthorOrEditorList(Buffer const * buf = nullptr,
 			bool full = false, bool forceshort = false) const;
 	/// Same for a specific author role (editor, author etc.)
 	docstring const getAuthorList(Buffer const * buf, docstring const & author,

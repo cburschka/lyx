@@ -154,7 +154,7 @@ public:
 
 	/// Constructor
 	explicit Buffer(std::string const & file, bool readonly = false,
-		Buffer const * cloned_buffer = 0);
+		Buffer const * cloned_buffer = nullptr);
 
 	/// Destructor
 	~Buffer();
@@ -348,7 +348,7 @@ public:
 	/// returns the main language for the buffer (document)
 	Language const * language() const;
 	/// get l10n translated to the buffers language
-	docstring const B_(std::string const & l10n) const;
+	docstring B_(std::string const & l10n) const;
 
 	///
 	int runChktex();
@@ -440,7 +440,7 @@ public:
 	std::string latexName(bool no_path = true) const;
 
 	/// Get the name and type of the log.
-	std::string logName(LogType * type = 0) const;
+	std::string logName(LogType * type = nullptr) const;
 
 	/// Set document's parent Buffer.
 	void setParent(Buffer const *);

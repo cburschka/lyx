@@ -105,7 +105,7 @@ private:
 Converter::Converter(string const & f, string const & t,
 		     string const & c, string const & l)
 	: from_(f), to_(t), command_(c), flags_(l),
-	  From_(0), To_(0), latex_(false), xml_(false),
+	  From_(nullptr), To_(nullptr), latex_(false), xml_(false),
 	  need_aux_(false), nice_(false), need_auth_(false)
 {}
 
@@ -157,7 +157,7 @@ Converter const * Converters::getConverter(string const & from,
 	if (cit != converterlist_.end())
 		return &(*cit);
 	else
-		return 0;
+		return nullptr;
 }
 
 
@@ -240,11 +240,9 @@ void Converters::erase(string const & from, string const & to)
 // a list (instead of a vector), but this will cause other problems).
 void Converters::update(Formats const & formats)
 {
-	ConverterList::iterator it = converterlist_.begin();
-	ConverterList::iterator end = converterlist_.end();
-	for (; it != end; ++it) {
-		it->setFrom(formats.getFormat(it->from()));
-		it->setTo(formats.getFormat(it->to()));
+	for (auto & cv : converterlist_) {
+		cv.setFrom(formats.getFormat(cv.from()));
+		cv.setTo(formats.getFormat(cv.to()));
 	}
 }
 
@@ -264,9 +262,8 @@ void Converters::updateLast(Formats const & formats)
 OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path,
 					   Buffer const * buffer)
 {
-	for (Graph::EdgePath::const_iterator cit = path.begin();
-	     cit != path.end(); ++cit) {
-		Converter const & conv = converterlist_[*cit];
+	for (auto const & edge : path) {
+		Converter const & conv = converterlist_[edge];
 		if (conv.latex() || conv.need_aux()) {
 			if (conv.latex_flavor() == "latex")
 				return OutputParams::LATEX;
@@ -289,9 +286,8 @@ OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path,
 
 string Converters::getHyperrefDriver(Graph::EdgePath const & path)
 {
-	for (Graph::EdgePath::const_iterator cit = path.begin();
-	     cit != path.end(); ++cit) {
-		Converter const & conv = converterlist_[*cit];
+	for (auto const & edge : path) {
+		Converter const & conv = converterlist_[edge];
 		if (!conv.hyperref_driver().empty())
 			return conv.hyperref_driver();
 	}
@@ -472,7 +468,7 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 
 	// buffer is only invalid for importing, and then runparams is not
 	// used anyway.
-	OutputParams runparams(buffer ? &buffer->params().encoding() : 0);
+	OutputParams runparams(buffer ? &buffer->params().encoding() : nullptr);
 	runparams.flavor = getFlavor(edgepath, buffer);
 
 	if (buffer) {
@@ -514,9 +510,8 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 	string to_base = changeExtension(to_file.absFileName(), "");
 	FileName infile;
 	FileName outfile = from_file;
-	for (Graph::EdgePath::const_iterator cit = edgepath.begin();
-	     cit != edgepath.end(); ++cit) {
-		Converter const & conv = converterlist_[*cit];
+	for (auto const & edge : edgepath) {
+		Converter const & conv = converterlist_[edge];
 		bool dummy = conv.To()->dummy() && conv.to() != "program";
 		if (!dummy) {
 			LYXERR(Debug::FILES, "Converting from  "
@@ -797,9 +792,8 @@ bool Converters::move(string const & fmt,
 	string const to_extension = getExtension(to.absFileName());
 
 	support::FileNameList const files = FileName(path).dirList(getExtension(from.absFileName()));
-	for (support::FileNameList::const_iterator it = files.begin();
-	     it != files.end(); ++it) {
-		string const from2 = it->absFileName();
+	for (auto const & f : files) {
+		string const from2 = f.absFileName();
 		string const file2 = onlyFileName(from2);
 		if (prefixIs(file2, base)) {
 			string const to2 = changeExtension(
@@ -809,8 +803,8 @@ bool Converters::move(string const & fmt,
 
 			Mover const & mover = getMover(fmt);
 			bool const moved = copy
-				? mover.copy(*it, FileName(to2))
-				: mover.rename(*it, FileName(to2));
+				? mover.copy(f, FileName(to2))
+				: mover.rename(f, FileName(to2));
 			if (!moved && no_errors) {
 				Alert::error(_("Cannot convert file"),
 					bformat(copy ?
@@ -827,10 +821,8 @@ bool Converters::move(string const & fmt,
 
 bool Converters::formatIsUsed(string const & format)
 {
-	ConverterList::const_iterator cit = converterlist_.begin();
-	ConverterList::const_iterator end = converterlist_.end();
-	for (; cit != end; ++cit) {
-		if (cit->from() == format || cit->to() == format)
+	for (auto const & cvt : converterlist_) {
+		if (cvt.from() == format || cvt.to() == format)
 			return true;
 	}
 	return false;
@@ -840,7 +832,7 @@ bool Converters::formatIsUsed(string const & format)
 bool Converters::scanLog(Buffer const & buffer, string const & /*command*/,
 			 FileName const & filename, ErrorList & errorList)
 {
-	OutputParams runparams(0);
+	OutputParams runparams(nullptr);
 	runparams.flavor = OutputParams::LATEX;
 	LaTeX latex("", runparams, filename);
 	TeXErrors terr;
@@ -934,11 +926,9 @@ void Converters::buildGraph()
 	// each of the converters knows how to convert one format to another
 	// so, for each of them, we create an arrow on the graph, going from
 	// the one to the other
-	ConverterList::iterator it = converterlist_.begin();
-	ConverterList::iterator const end = converterlist_.end();
-	for (; it != end ; ++it) {
-		int const from = theFormats().getNumber(it->from());
-		int const to   = theFormats().getNumber(it->to());
+	for (auto const & cvt : converterlist_) {
+		int const from = theFormats().getNumber(cvt.from());
+		int const to   = theFormats().getNumber(cvt.to());
 		LASSERT(from >= 0, continue);
 		LASSERT(to >= 0, continue);
 		G_.addEdge(from, to);
@@ -976,10 +966,8 @@ FormatList const Converters::getReachable(string const & from,
 {
 	set<int> excluded_numbers;
 
-	set<string>::const_iterator sit = excludes.begin();
-	set<string>::const_iterator const end = excludes.end();
-	for (; sit != end; ++sit)
-		excluded_numbers.insert(theFormats().getNumber(*sit));
+	for (auto const & ex : excludes)
+		excluded_numbers.insert(theFormats().getNumber(ex));
 
 	vector<int> const & reachables =
 		G_.getReachable(theFormats().getNumber(from),

@@ -3177,7 +3177,7 @@ Language const * Buffer::language() const
 }
 
 
-docstring const Buffer::B_(string const & l10n) const
+docstring Buffer::B_(string const & l10n) const
 {
 	return params().B_(l10n);
 }

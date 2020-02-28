@@ -2204,7 +2204,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 }
 
 
-docstring const BufferView::requestSelection()
+docstring BufferView::requestSelection()
 {
 	Cursor & cur = d->cursor_;
 

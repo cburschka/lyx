@@ -238,7 +238,7 @@ public:
 
 	/// request an X11 selection.
 	/// \return the selected string.
-	docstring const requestSelection();
+	docstring requestSelection();
 	/// clear the X11 selection.
 	void clearSelection();
 
@@ -332,7 +332,7 @@ public:
 	/// This signal is emitted when some dialog needs to be shown with
 	/// some data.
 	void showDialog(std::string const & name, std::string const & data,
-		Inset * inset = 0);
+		Inset * inset = nullptr);
 
 	/// This signal is emitted when some dialogs needs to be updated.
 	void updateDialog(std::string const & name, std::string const & data);
