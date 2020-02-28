@@ -37,7 +37,7 @@ namespace lyx {
 
 
 CursorSlice::CursorSlice()
-	: inset_(0), idx_(0), pit_(0), pos_(0)
+	: inset_(nullptr), idx_(0), pit_(0), pos_(0)
 {}
 
 

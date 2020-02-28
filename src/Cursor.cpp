@@ -1839,13 +1839,13 @@ bool Cursor::inMacroMode() const
 
 InsetMathUnknown * Cursor::activeMacro()
 {
-	return inMacroMode() ? prevAtom().nucleus()->asUnknownInset() : 0;
+	return inMacroMode() ? prevAtom().nucleus()->asUnknownInset() : nullptr;
 }
 
 
 InsetMathUnknown const * Cursor::activeMacro() const
 {
-	return inMacroMode() ? prevAtom().nucleus()->asUnknownInset() : 0;
+	return inMacroMode() ? prevAtom().nucleus()->asUnknownInset() : nullptr;
 }
 
 

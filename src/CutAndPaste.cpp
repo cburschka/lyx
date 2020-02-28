@@ -222,23 +222,19 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 		bool forcePlainLayout = target_inset->forcePlainLayout();
 		Layout const & plainLayout = newDocClass->plainLayout();
 		Layout const & defaultLayout = newDocClass->defaultLayout();
-		ParagraphList::iterator const end = insertion.end();
-		ParagraphList::iterator par = insertion.begin();
-		for (; par != end; ++par) {
-			Layout const & parLayout = par->layout();
+		for (auto & par : insertion) {
+			Layout const & parLayout = par.layout();
 			if (forcePlainLayout || parLayout == defaultLayout)
-				par->setLayout(plainLayout);
+				par.setLayout(plainLayout);
 		}
 	} else {
 		// check if we need to reset from plain layout
 		Layout const & defaultLayout = newDocClass->defaultLayout();
 		Layout const & plainLayout = newDocClass->plainLayout();
-		ParagraphList::iterator const end = insertion.end();
-		ParagraphList::iterator par = insertion.begin();
-		for (; par != end; ++par) {
-			Layout const & parLayout = par->layout();
+		for (auto & par : insertion) {
+			Layout const & parLayout = par.layout();
 			if (parLayout == plainLayout)
-				par->setLayout(defaultLayout);
+				par.setLayout(defaultLayout);
 		}
 	}
 
@@ -700,20 +696,17 @@ void copySelectionHelper(Buffer const & buf, Text const & text,
 	Paragraph & front = copy_pars.front();
 	front.eraseChars(0, start, false);
 
-	ParagraphList::iterator it = copy_pars.begin();
-	ParagraphList::iterator it_end = copy_pars.end();
-
-	for (; it != it_end; ++it) {
+	for (auto & par : copy_pars) {
 		// Since we have a copy of the paragraphs, the insets
 		// do not have a proper buffer reference. It makes
 		// sense to add them temporarily, because the
 		// operations below depend on that (acceptChanges included).
-		it->setInsetBuffers(const_cast<Buffer &>(buf));
+		par.setInsetBuffers(const_cast<Buffer &>(buf));
 		// PassThru paragraphs have the Language
 		// latex_language. This is invalid for others, so we
 		// need to change it to the buffer language.
-		if (it->isPassThru())
-			it->changeLanguage(buf.params(),
+		if (par.isPassThru())
+			par.changeLanguage(buf.params(),
 					   latex_language, buf.language());
 	}
 
@@ -729,10 +722,9 @@ void copySelectionHelper(Buffer const & buf, Text const & text,
 
 	// do some final cleanup now, to make sure that the paragraphs
 	// are not linked to something else.
-	it = copy_pars.begin();
-	for (; it != it_end; ++it) {
-		it->resetBuffer();
-		it->setInsetOwner(nullptr);
+	for (auto & par : copy_pars) {
+		par.resetBuffer();
+		par.setInsetOwner(nullptr);
 	}
 
 	cutstack.push(make_pair(copy_pars, dc));
@@ -894,17 +886,13 @@ vector<docstring> availableSelections(Buffer const * buf)
 	if (!buf)
 		return selList;
 
-	CutStack::const_iterator cit = theCuts.begin();
-	CutStack::const_iterator end = theCuts.end();
-	for (; cit != end; ++cit) {
+	for (auto const & cut : theCuts) {
 		// we do not use cit-> here because gcc 2.9x does not
 		// like it (JMarc)
-		ParagraphList const & pars = (*cit).first;
+		ParagraphList const & pars = cut.first;
 		docstring textSel;
-		ParagraphList::const_iterator pit = pars.begin();
-		ParagraphList::const_iterator pend = pars.end();
-		for (; pit != pend; ++pit) {
-			Paragraph par(*pit, 0, 46);
+		for (auto const & para : pars) {
+			Paragraph par(para, 0, 46);
 			// adapt paragraph to current buffer.
 			par.setInsetBuffers(const_cast<Buffer &>(*buf));
 			textSel += par.asString(AS_STR_INSETS);
@@ -1376,10 +1364,8 @@ void replaceSelectionWithString(Cursor & cur, docstring const & str)
 	// Insert the new string
 	pos_type pos = cur.selEnd().pos();
 	Paragraph & par = cur.selEnd().paragraph();
-	docstring::const_iterator cit = str.begin();
-	docstring::const_iterator end = str.end();
-	for (; cit != end; ++cit, ++pos)
-		par.insertChar(pos, *cit, font, cur.buffer()->params().track_changes);
+	for (auto const & c : str)
+		par.insertChar(pos, c, font, cur.buffer()->params().track_changes);
 
 	// Cut the selection
 	cutSelection(cur, false);

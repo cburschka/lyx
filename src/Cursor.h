@@ -190,7 +190,7 @@ public:
 	/// containing the cursor
 	void recordUndo(UndoKind kind = ATOMIC_UNDO) const;
 	/// Convenience: prepare undo for the inset containing the cursor
-	void recordUndoInset(Inset const * inset = 0) const;
+	void recordUndoInset(Inset const * inset = nullptr) const;
 	/// Convenience: prepare undo for the whole buffer
 	void recordUndoFullBuffer() const;
 	/// Convenience: prepare undo for buffer parameters
