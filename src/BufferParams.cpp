@@ -1215,30 +1215,24 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	// removed modules
 	if (!removed_modules_.empty()) {
 		os << "\\begin_removed_modules" << '\n';
-		list<string>::const_iterator it = removed_modules_.begin();
-		list<string>::const_iterator en = removed_modules_.end();
-		for (; it != en; ++it)
-			os << *it << '\n';
+		for (auto const & mod : removed_modules_)
+			os << mod << '\n';
 		os << "\\end_removed_modules" << '\n';
 	}
 
 	// the modules
 	if (!layout_modules_.empty()) {
 		os << "\\begin_modules" << '\n';
-		LayoutModuleList::const_iterator it = layout_modules_.begin();
-		LayoutModuleList::const_iterator en = layout_modules_.end();
-		for (; it != en; ++it)
-			os << *it << '\n';
+		for (auto const & mod : layout_modules_)
+			os << mod << '\n';
 		os << "\\end_modules" << '\n';
 	}
 
 	// includeonly
 	if (!included_children_.empty()) {
 		os << "\\begin_includeonly" << '\n';
-		list<string>::const_iterator it = included_children_.begin();
-		list<string>::const_iterator en = included_children_.end();
-		for (; it != en; ++it)
-			os << *it << '\n';
+		for (auto const & c : included_children_)
+			os << c << '\n';
 		os << "\\end_includeonly" << '\n';
 	}
 	os << "\\maintain_unincluded_children "
@@ -1317,10 +1311,9 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	os << "\\papersize " << string_papersize[papersize]
 	   << "\n\\use_geometry " << convert<string>(use_geometry);
 	map<string, string> const & packages = auto_packages();
-	for (map<string, string>::const_iterator it = packages.begin();
-	     it != packages.end(); ++it)
-		os << "\n\\use_package " << it->first << ' '
-		   << use_package(it->first);
+	for (auto const & pack : packages)
+		os << "\n\\use_package " << pack.first << ' '
+		   << use_package(pack.first);
 
 	os << "\n\\cite_engine ";
 
@@ -1364,23 +1357,19 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	if (boxbgcolor != lyx::rgbFromHexName("#ff0000"))
 		os << "\\boxbgcolor " << lyx::X11hexname(boxbgcolor) << '\n';
 
-	BranchList::const_iterator it = branchlist().begin();
-	BranchList::const_iterator end = branchlist().end();
-	for (; it != end; ++it) {
-		os << "\\branch " << to_utf8(it->branch())
-		   << "\n\\selected " << it->isSelected()
-		   << "\n\\filename_suffix " << it->hasFileNameSuffix()
-		   << "\n\\color " << lyx::X11hexname(it->color())
+	for (auto const & br : branchlist()) {
+		os << "\\branch " << to_utf8(br.branch())
+		   << "\n\\selected " << br.isSelected()
+		   << "\n\\filename_suffix " << br.hasFileNameSuffix()
+		   << "\n\\color " << lyx::X11hexname(br.color())
 		   << "\n\\end_branch"
 		   << "\n";
 	}
 
-	IndicesList::const_iterator iit = indiceslist().begin();
-	IndicesList::const_iterator iend = indiceslist().end();
-	for (; iit != iend; ++iit) {
-		os << "\\index " << to_utf8(iit->index())
-		   << "\n\\shortcut " << to_utf8(iit->shortcut())
-		   << "\n\\color " << lyx::X11hexname(iit->color())
+	for (auto const & id : indiceslist()) {
+		os << "\\index " << to_utf8(id.index())
+		   << "\n\\shortcut " << to_utf8(id.shortcut())
+		   << "\n\\color " << lyx::X11hexname(id.color())
 		   << "\n\\end_index"
 		   << "\n";
 	}
@@ -1541,15 +1530,14 @@ void BufferParams::validate(LaTeXFeatures & features) const
 	if (float_placement.find('H') != string::npos)
 		features.require("float");
 
-	for (PackageMap::const_iterator it = use_packages.begin();
-	     it != use_packages.end(); ++it) {
-		if (it->first == "amsmath") {
+	for (auto const & pm : use_packages) {
+		if (pm.first == "amsmath") {
 			// AMS Style is at document level
-			if (it->second == package_on ||
+			if (pm.second == package_on ||
 			    features.isProvided("amsmath"))
-				features.require(it->first);
-		} else if (it->second == package_on)
-			features.require(it->first);
+				features.require(pm.first);
+		} else if (pm.second == package_on)
+			features.require(pm.first);
 	}
 
 	// Document-level line spacing
@@ -1800,14 +1788,11 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// includeonly
 	if (!features.runparams().includeall && !included_children_.empty()) {
 		os << "\\includeonly{";
-		list<string>::const_iterator it = included_children_.begin();
-		list<string>::const_iterator en = included_children_.end();
 		bool first = true;
-		for (; it != en; ++it) {
-			string incfile = *it;
+		for (auto incfile : included_children_) {
 			FileName inc = makeAbsPath(incfile, filepath.absFileName());
 			string mangled = DocFileName(changeExtension(inc.absFileName(), ".tex")).
-			mangledFileName();
+					mangledFileName();
 			if (!features.runparams().nice)
 				incfile = mangled;
 			// \includeonly doesn't want an extension
@@ -2040,11 +2025,9 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 
 	// Additional Indices
 	if (features.isRequired("splitidx")) {
-		IndicesList::const_iterator iit = indiceslist().begin();
-		IndicesList::const_iterator iend = indiceslist().end();
-		for (; iit != iend; ++iit) {
+		for (auto const & idx : indiceslist()) {
 			os << "\\newindex{";
-			os << escape(iit->shortcut());
+			os << escape(idx.shortcut());
 			os << "}\n";
 		}
 	}
@@ -2312,15 +2295,14 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		// now setup the other languages
 		set<string> const polylangs =
 			features.getPolyglossiaLanguages();
-		for (set<string>::const_iterator mit = polylangs.begin();
-		     mit != polylangs.end() ; ++mit) {
+		for (auto const & pl : polylangs) {
 			// We do not output the options here; they are output in
 			// the language switch commands. This is safer if multiple
 			// varieties are used.
-			if (*mit == language->polyglossia())
+			if (pl == language->polyglossia())
 				continue;
 			os << "\\setotherlanguage";
-			os << "{" << from_ascii(*mit) << "}\n";
+			os << "{" << from_ascii(pl) << "}\n";
 		}
 	}
 
@@ -2514,10 +2496,8 @@ void BufferParams::makeDocumentClass(bool const clone)
 
 	invalidateConverterCache();
 	LayoutModuleList mods;
-	LayoutModuleList::iterator it = layout_modules_.begin();
-	LayoutModuleList::iterator en = layout_modules_.end();
-	for (; it != en; ++it)
-		mods.push_back(*it);
+	for (auto const & mod : layout_modules_)
+		mods.push_back(mod);
 
 	doc_class_ = getDocumentClass(*baseClass(), mods, cite_engine_, clone);
 
@@ -2561,10 +2541,8 @@ void BufferParams::setLocalLayout(docstring const & layout, bool forced)
 
 bool BufferParams::addLayoutModule(string const & modName)
 {
-	LayoutModuleList::const_iterator it = layout_modules_.begin();
-	LayoutModuleList::const_iterator end = layout_modules_.end();
-	for (; it != end; ++it)
-		if (*it == modName)
+	for (auto const & mod : layout_modules_)
+		if (mod == modName)
 			return false;
 	layout_modules_.push_back(modName);
 	return true;
@@ -2580,10 +2558,8 @@ string BufferParams::bufferFormat() const
 bool BufferParams::isExportable(string const & format, bool need_viewable) const
 {
 	FormatList const & formats = exportableFormats(need_viewable);
-	FormatList::const_iterator fit = formats.begin();
-	FormatList::const_iterator end = formats.end();
-	for (; fit != end ; ++fit) {
-		if ((*fit)->name() == format)
+	for (auto const & fmt : formats) {
+		if (fmt->name() == format)
 			return true;
 	}
 	return false;
@@ -2609,8 +2585,8 @@ FormatList const & BufferParams::exportableFormats(bool only_viewable) const
 		  excludes.insert("xetex");
 	FormatList result = theConverters().getReachable(backs[0], only_viewable,
 													 true, excludes);
-	for (vector<string>::const_iterator it = backs.begin() + 1;
-	     it != backs.end(); ++it) {
+	vector<string>::const_iterator it = backs.begin() + 1;
+	for (; it != backs.end(); ++it) {
 		FormatList r = theConverters().getReachable(*it, only_viewable,
 													false, excludes);
 		result.insert(result.end(), r.begin(), r.end());
@@ -2915,12 +2891,10 @@ void BufferParams::readRemovedModules(Lexer & lex)
 	// added. normally, that will be because default modules were added in
 	// setBaseClass(), which gets called when \textclass is read at the
 	// start of the read.
-	list<string>::const_iterator rit = removed_modules_.begin();
-	list<string>::const_iterator const ren = removed_modules_.end();
-	for (; rit != ren; ++rit) {
+	for (auto const & rm : removed_modules_) {
 		LayoutModuleList::iterator const mit = layout_modules_.begin();
 		LayoutModuleList::iterator const men = layout_modules_.end();
-		LayoutModuleList::iterator found = find(mit, men, *rit);
+		LayoutModuleList::iterator found = find(mit, men, rm);
 		if (found == men)
 			continue;
 		layout_modules_.erase(found);
