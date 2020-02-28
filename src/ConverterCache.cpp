@@ -198,14 +198,14 @@ CacheItem * ConverterCache::Impl::find(FileName const & from,
 		string const & format)
 {
 	if (!lyxrc.use_converter_cache)
-		return 0;
+		return nullptr;
 	CacheType::iterator const it1 = cache.find(from);
 	if (it1 == cache.end())
-		return 0;
+		return nullptr;
 	FormatCacheType & format_cache = it1->second.cache;
 	FormatCacheType::iterator const it2 = format_cache.find(format);
 	if (it2 == format_cache.end())
-		return 0;
+		return nullptr;
 	return &(it2->second);
 }
 
