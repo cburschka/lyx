@@ -102,7 +102,7 @@ string LyXCiteEngine::getDefaultBiblio(CiteEngineType const & cet) const
 bool LyXCiteEngine::isDefaultBiblio(string const & bf) const
 {
 	string const bfs = ":" + bf;
-	for (string const &s: default_biblios_)
+	for (string const & s: default_biblios_)
 		if (suffixIs(s, bfs) || bf == s)
 			return true;
 
@@ -294,25 +294,21 @@ LyXCiteEnginesList::iterator CiteEnginesList::end()
 
 LyXCiteEngine const * CiteEnginesList::operator[](string const & str) const
 {
-	LyXCiteEnginesList::const_iterator it = englist_.begin();
-	for (; it != englist_.end(); ++it)
-		if (it->getID() == str) {
-			LyXCiteEngine const & eng = *it;
+	for (auto const & eng : englist_)
+		if (eng.getID() == str) {
 			return &eng;
 		}
-	return 0;
+	return nullptr;
 }
 
 
 LyXCiteEngine * CiteEnginesList::operator[](string const & str)
 {
-	LyXCiteEnginesList::iterator it = englist_.begin();
-	for (; it != englist_.end(); ++it)
-		if (it->getID() == str) {
-			LyXCiteEngine & eng = *it;
+	for (auto & eng : englist_)
+		if (eng.getID() == str) {
 			return &eng;
 		}
-	return 0;
+	return nullptr;
 }
 
 } // namespace lyx
