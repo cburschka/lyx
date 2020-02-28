@@ -3408,7 +3408,7 @@ vector<pair<docstring, string>> const Buffer::prepareBibFilePaths(OutputParams c
 			enc = params().bibFileEncoding(utf8input);
 
 		bool recorded = false;
-		for (pair<docstring, string> pe : res) {
+		for (auto const & pe : res) {
 			if (pe.first == path) {
 				recorded = true;
 				break;
@@ -3996,7 +3996,7 @@ void Buffer::setInsetLabel(docstring const & label, InsetLabel const * il,
 InsetLabel const * Buffer::insetLabel(docstring const & label,
 				      bool const active) const
 {
-	for (auto & rc : masterBuffer()->d->label_cache_) {
+	for (auto const & rc : masterBuffer()->d->label_cache_) {
 		if (rc.label == label && (rc.active || !active))
 			return rc.inset;
 	}
