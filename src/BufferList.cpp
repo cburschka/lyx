@@ -140,7 +140,7 @@ Buffer * BufferList::createNewBuffer(string const & s)
 			exit(1);
 		} else if (message.type_ == WarningException) {
 			Alert::warning(message.title_, message.details_);
-			return 0;
+			return nullptr;
 		}
 	}
 	tmpbuf->params().useClassDefaults();
@@ -167,7 +167,7 @@ FileNameList BufferList::fileNames() const
 Buffer * BufferList::first()
 {
 	if (bstore.empty())
-		return 0;
+		return nullptr;
 	return bstore.front();
 }
 
@@ -175,7 +175,7 @@ Buffer * BufferList::first()
 Buffer * BufferList::last()
 {
 	if (bstore.empty())
-		return 0;
+		return nullptr;
 	return bstore.back();
 }
 
@@ -183,7 +183,7 @@ Buffer * BufferList::last()
 Buffer * BufferList::getBuffer(unsigned int choice)
 {
 	if (choice >= bstore.size())
-		return 0;
+		return nullptr;
 	return bstore[choice];
 }
 
@@ -191,13 +191,13 @@ Buffer * BufferList::getBuffer(unsigned int choice)
 Buffer * BufferList::next(Buffer const * buf) const
 {
 	// Something is wrong, but we can probably survive it.
-	LASSERT(buf, return 0);
+	LASSERT(buf, return nullptr);
 
 	if (bstore.empty())
-		return 0;
+		return nullptr;
 	BufferStorage::const_iterator it =
 			find(bstore.begin(), bstore.end(), buf);
-	LASSERT(it != bstore.end(), return 0);
+	LASSERT(it != bstore.end(), return nullptr);
 	++it;
 	Buffer * nextbuf = (it == bstore.end()) ? bstore.front() : *it;
 	return nextbuf;
@@ -207,13 +207,13 @@ Buffer * BufferList::next(Buffer const * buf) const
 Buffer * BufferList::previous(Buffer const * buf) const
 {
 	// Something is wrong, but we can probably survive it.
-	LASSERT(buf, return 0);
+	LASSERT(buf, return nullptr);
 
 	if (bstore.empty())
-		return 0;
+		return nullptr;
 	BufferStorage::const_iterator it =
 			find(bstore.begin(), bstore.end(), buf);
-	LASSERT(it != bstore.end(), return 0);
+	LASSERT(it != bstore.end(), return nullptr);
 
 	Buffer * previousbuf = (it == bstore.begin()) ? bstore.back() : *(it - 1);
 	return previousbuf;
@@ -252,7 +252,7 @@ void BufferList::invalidateConverterCache() const
 
 bool BufferList::exists(FileName const & fname) const
 {
-	return getBuffer(fname) != 0;
+	return getBuffer(fname) != nullptr;
 }
 
 
@@ -314,7 +314,7 @@ Buffer * BufferList::getBuffer(support::FileName const & fname, bool internal) c
 			if (equivalent(b->fileName(), fname))
 				return b;
 	}
-	return 0;
+	return nullptr;
 }
 
 
@@ -337,7 +337,7 @@ Buffer * BufferList::getBufferFromTmp(string const & s, bool realpath)
 			}
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 
