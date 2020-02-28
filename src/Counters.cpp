@@ -184,7 +184,7 @@ Counter::StringMap & Counter::flatLabelStrings(bool in_appendix) const
 
 Counters::Counters() : appendix_(false), subfloat_(false), longtable_(false)
 {
-	layout_stack_.push_back(0);
+	layout_stack_.push_back(nullptr);
 	counter_stack_.push_back(from_ascii(""));
 }
 
@@ -265,14 +265,12 @@ int Counters::value(docstring const & ctr) const
 }
 
 
-void Counters::resetSlaves(docstring const & ctr)
+void Counters::resetSlaves(docstring const & count)
 {
-	CounterList::iterator it = counterList_.begin();
-	CounterList::iterator const end = counterList_.end();
-	for (; it != end; ++it) {
-		if (it->second.master() == ctr) {
-			it->second.reset();
-			resetSlaves(it->first);
+	for (auto & ctr : counterList_) {
+		if (ctr.second.master() == count) {
+			ctr.second.reset();
+			resetSlaves(ctr.first);
 		}
 	}
 }
@@ -315,14 +313,12 @@ void Counters::reset()
 	appendix_ = false;
 	subfloat_ = false;
 	current_float_.erase();
-	CounterList::iterator it = counterList_.begin();
-	CounterList::iterator const end = counterList_.end();
-	for (; it != end; ++it)
-		it->second.reset();
+	for (auto & ctr : counterList_)
+		ctr.second.reset();
 	counter_stack_.clear();
 	counter_stack_.push_back(from_ascii(""));
 	layout_stack_.clear();
-	layout_stack_.push_back(0);
+	layout_stack_.push_back(nullptr);
 }
 
 
@@ -330,11 +326,9 @@ void Counters::reset(docstring const & match)
 {
 	LASSERT(!match.empty(), return);
 
-	CounterList::iterator it = counterList_.begin();
-	CounterList::iterator end = counterList_.end();
-	for (; it != end; ++it) {
-		if (it->first.find(match) != string::npos)
-			it->second.reset();
+	for (auto & ctr : counterList_) {
+		if (ctr.first.find(match) != string::npos)
+			ctr.second.reset();
 	}
 }
 
@@ -344,12 +338,10 @@ bool Counters::remove(docstring const & cnt)
 	bool retval = counterList_.erase(cnt);
 	if (!retval)
 		return false;
-	CounterList::iterator it = counterList_.begin();
-	CounterList::iterator end = counterList_.end();
-	for (; it != end; ++it) {
-		if (it->second.checkAndRemoveMaster(cnt))
+	for (auto & ctr : counterList_) {
+		if (ctr.second.checkAndRemoveMaster(cnt))
 			LYXERR(Debug::TCLASS, "Removed master counter `" +
-					to_utf8(cnt) + "' from counter: " + to_utf8(it->first));
+					to_utf8(cnt) + "' from counter: " + to_utf8(ctr.first));
 	}
 	return retval;
 }
@@ -357,11 +349,9 @@ bool Counters::remove(docstring const & cnt)
 
 void Counters::copy(Counters & from, Counters & to, docstring const & match)
 {
-	CounterList::iterator it = counterList_.begin();
-	CounterList::iterator end = counterList_.end();
-	for (; it != end; ++it) {
-		if (it->first.find(match) != string::npos || match == "") {
-			to.set(it->first, from.value(it->first));
+	for (auto const & ctr : counterList_) {
+		if (ctr.first.find(match) != string::npos || match == "") {
+			to.set(ctr.first, from.value(ctr.first));
 		}
 	}
 }

@@ -193,7 +193,7 @@ public:
 	/// Also for updateBuffer().
 	/// Call this when entering things like footnotes, where there is now
 	/// no "last layout" and we want to restore the "last layout" on exit.
-	void clearLastLayout() { layout_stack_.push_back(0); }
+	void clearLastLayout() { layout_stack_.push_back(nullptr); }
 	/// Call this when exiting things like footnotes.
 	void restoreLastLayout() { layout_stack_.pop_back(); }
 	///
