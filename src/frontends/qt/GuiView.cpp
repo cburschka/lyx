@@ -316,8 +316,8 @@ class GuiView::GuiViewPrivate
 	void operator=(GuiViewPrivate const &);
 public:
 	GuiViewPrivate(GuiView * gv)
-		: gv_(gv), current_work_area_(0), current_main_work_area_(0),
-		layout_(0), autosave_timeout_(5000),
+		: gv_(gv), current_work_area_(nullptr), current_main_work_area_(nullptr),
+		layout_(nullptr), autosave_timeout_(5000),
 		in_show_(false)
 	{
 		// hardcode here the platform specific icon size
@@ -480,6 +480,29 @@ public:
 		return icon_size;
 	}
 
+	static Buffer::ExportStatus previewAndDestroy(Buffer const * orig,
+			Buffer * buffer, string const & format);
+	static Buffer::ExportStatus exportAndDestroy(Buffer const * orig,
+			Buffer * buffer, string const & format);
+	static Buffer::ExportStatus compileAndDestroy(Buffer const * orig,
+			Buffer * buffer, string const & format);
+	static docstring autosaveAndDestroy(Buffer const * orig, Buffer * buffer);
+
+	template<class T>
+	static Buffer::ExportStatus runAndDestroy(const T& func,
+			Buffer const * orig, Buffer * buffer, string const & format);
+
+	// TODO syncFunc/previewFunc: use bind
+	bool asyncBufferProcessing(string const & argument,
+				   Buffer const * used_buffer,
+				   docstring const & msg,
+				   Buffer::ExportStatus (*asyncFunc)(Buffer const *, Buffer *, string const &),
+				   Buffer::ExportStatus (Buffer::*syncFunc)(string const &, bool) const,
+				   Buffer::ExportStatus (Buffer::*previewFunc)(string const &) const,
+				   bool allow_async);
+
+	QVector<GuiWorkArea*> guiWorkAreas();
+
 public:
 	GuiView * gv_;
 	GuiWorkArea * current_work_area_;
@@ -504,17 +527,10 @@ public:
 	///
 	map<string, DialogPtr> dialogs_;
 
-	unsigned int smallIconSize;
-	unsigned int normalIconSize;
-	unsigned int bigIconSize;
-	unsigned int hugeIconSize;
-	unsigned int giantIconSize;
 	///
 	QTimer statusbar_timer_;
 	/// auto-saving of buffers
 	Timeout autosave_timeout_;
-	/// flag against a race condition due to multiclicks, see bug #1119
-	bool in_show_;
 
 	///
 	TocModels toc_models_;
@@ -527,28 +543,15 @@ public:
 	string processing_format;
 
 	static QSet<Buffer const *> busyBuffers;
-	static Buffer::ExportStatus previewAndDestroy(Buffer const * orig,
-			Buffer * buffer, string const & format);
-	static Buffer::ExportStatus exportAndDestroy(Buffer const * orig,
-			Buffer * buffer, string const & format);
-	static Buffer::ExportStatus compileAndDestroy(Buffer const * orig,
-			Buffer * buffer, string const & format);
-	static docstring autosaveAndDestroy(Buffer const * orig, Buffer * buffer);
 
-	template<class T>
-	static Buffer::ExportStatus runAndDestroy(const T& func,
-			Buffer const * orig, Buffer * buffer, string const & format);
+	unsigned int smallIconSize;
+	unsigned int normalIconSize;
+	unsigned int bigIconSize;
+	unsigned int hugeIconSize;
+	unsigned int giantIconSize;
 
-	// TODO syncFunc/previewFunc: use bind
-	bool asyncBufferProcessing(string const & argument,
-				   Buffer const * used_buffer,
-				   docstring const & msg,
-				   Buffer::ExportStatus (*asyncFunc)(Buffer const *, Buffer *, string const &),
-				   Buffer::ExportStatus (Buffer::*syncFunc)(string const &, bool) const,
-				   Buffer::ExportStatus (Buffer::*previewFunc)(string const &) const,
-				   bool allow_async);
-
-	QVector<GuiWorkArea*> guiWorkAreas();
+	/// flag against a race condition due to multiclicks, see bug #1119
+	bool in_show_;
 };
 
 QSet<Buffer const *> GuiView::GuiViewPrivate::busyBuffers;
@@ -853,7 +856,7 @@ bool GuiView::restoreLayout()
 	QSettings settings;
 	zoom_ratio_ = settings.value("zoom_ratio", 1.0).toDouble();
 	// Actual zoom value: default zoom + fractional offset
-	int zoom = lyxrc.defaultZoom * zoom_ratio_;
+	int zoom = (int)(lyxrc.defaultZoom * zoom_ratio_);
 	if (zoom < static_cast<int>(zoom_min_))
 		zoom = zoom_min_;
 	lyxrc.currentZoom = zoom;
@@ -921,7 +924,7 @@ GuiToolbar * GuiView::toolbar(string const & name)
 		return it->second;
 
 	LYXERR(Debug::GUI, "Toolbar::display: no toolbar named " << name);
-	return 0;
+	return nullptr;
 }
 
 
@@ -1292,7 +1295,7 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 {
 	if (d.current_work_area_)
 		// disconnect the current work area from all slots
-		QObject::disconnect(d.current_work_area_, 0, this, 0);
+		QObject::disconnect(d.current_work_area_, nullptr, this, nullptr);
 	disconnectBuffer();
 	disconnectBufferView();
 	connectBufferView(wa->bufferView());
@@ -1496,7 +1499,7 @@ GuiWorkArea * GuiView::workArea(int index)
 	if (TabWorkArea * twa = d.currentTabWorkArea())
 		if (index < twa->count())
 			return twa->workArea(index);
-	return 0;
+	return nullptr;
 }
 
 
@@ -1507,7 +1510,7 @@ GuiWorkArea * GuiView::workArea(Buffer & buffer)
 		return currentWorkArea();
 	if (TabWorkArea * twa = d.currentTabWorkArea())
 		return twa->workArea(buffer);
-	return 0;
+	return nullptr;
 }
 
 
@@ -1549,7 +1552,7 @@ GuiWorkArea * GuiView::currentWorkArea()
 GuiWorkArea const * GuiView::currentMainWorkArea() const
 {
 	if (!d.currentTabWorkArea())
-		return 0;
+		return nullptr;
 	return d.currentTabWorkArea()->currentWorkArea();
 }
 
@@ -1557,7 +1560,7 @@ GuiWorkArea const * GuiView::currentMainWorkArea() const
 GuiWorkArea * GuiView::currentMainWorkArea()
 {
 	if (!d.currentTabWorkArea())
-		return 0;
+		return nullptr;
 	return d.currentTabWorkArea()->currentWorkArea();
 }
 
@@ -1566,7 +1569,7 @@ void GuiView::setCurrentWorkArea(GuiWorkArea * wa)
 {
 	LYXERR(Debug::DEBUG, "Setting current wa: " << wa << endl);
 	if (!wa) {
-		d.current_work_area_ = 0;
+		d.current_work_area_ = nullptr;
 		d.setBackground();
 		Q_EMIT bufferViewChanged();
 		return;
@@ -1617,8 +1620,8 @@ void GuiView::removeWorkArea(GuiWorkArea * wa)
 	if (wa == d.current_work_area_) {
 		disconnectBuffer();
 		disconnectBufferView();
-		d.current_work_area_ = 0;
-		d.current_main_work_area_ = 0;
+		d.current_work_area_ = nullptr;
+		d.current_main_work_area_ = nullptr;
 	}
 
 	bool found_twa = false;
@@ -1628,7 +1631,7 @@ void GuiView::removeWorkArea(GuiWorkArea * wa)
 			// Found in this tab group, and deleted the GuiWorkArea.
 			found_twa = true;
 			if (twa->count() != 0) {
-				if (d.current_work_area_ == 0)
+				if (d.current_work_area_ == nullptr)
 					// This means that we are closing the current GuiWorkArea, so
 					// switch to the next GuiWorkArea in the found TabWorkArea.
 					setCurrentWorkArea(twa->currentWorkArea());
@@ -1644,13 +1647,13 @@ void GuiView::removeWorkArea(GuiWorkArea * wa)
 	// should be deleted by other means.
 	LASSERT(found_twa, return);
 
-	if (d.current_work_area_ == 0) {
+	if (d.current_work_area_ == nullptr) {
 		if (d.splitter_->count() != 0) {
 			TabWorkArea * twa = d.currentTabWorkArea();
 			setCurrentWorkArea(twa->currentWorkArea());
 		} else {
 			// No more work areas, switch to the background widget.
-			setCurrentWorkArea(0);
+			setCurrentWorkArea(nullptr);
 		}
 	}
 }
@@ -1710,7 +1713,7 @@ void GuiView::setBuffer(Buffer * newBuffer, bool switch_to)
 	LASSERT(newBuffer, return);
 
 	GuiWorkArea * wa = workArea(*newBuffer);
-	if (wa == 0) {
+	if (wa == nullptr) {
 		setBusy(true);
 		newBuffer->masterBuffer()->updateBuffer();
 		setBusy(false);
@@ -1741,7 +1744,7 @@ void GuiView::connectBuffer(Buffer & buf)
 void GuiView::disconnectBuffer()
 {
 	if (d.current_work_area_)
-		d.current_work_area_->bufferView().buffer().setGuiDelegate(0);
+		d.current_work_area_->bufferView().buffer().setGuiDelegate(nullptr);
 }
 
 
@@ -1754,7 +1757,7 @@ void GuiView::connectBufferView(BufferView & bv)
 void GuiView::disconnectBufferView()
 {
 	if (d.current_work_area_)
-		d.current_work_area_->bufferView().setGuiDelegate(0);
+		d.current_work_area_->bufferView().setGuiDelegate(nullptr);
 }
 
 
@@ -1818,7 +1821,7 @@ BufferView * GuiView::documentBufferView()
 {
 	return currentMainWorkArea()
 		? &currentMainWorkArea()->bufferView()
-		: 0;
+		: nullptr;
 }
 
 
@@ -1826,19 +1829,19 @@ BufferView const * GuiView::documentBufferView() const
 {
 	return currentMainWorkArea()
 		? &currentMainWorkArea()->bufferView()
-		: 0;
+		: nullptr;
 }
 
 
 BufferView * GuiView::currentBufferView()
 {
-	return d.current_work_area_ ? &d.current_work_area_->bufferView() : 0;
+	return d.current_work_area_ ? &d.current_work_area_->bufferView() : nullptr;
 }
 
 
 BufferView const * GuiView::currentBufferView() const
 {
-	return d.current_work_area_ ? &d.current_work_area_->bufferView() : 0;
+	return d.current_work_area_ ? &d.current_work_area_->bufferView() : nullptr;
 }
 
 
@@ -1859,7 +1862,7 @@ void GuiView::autoSave()
 	LYXERR(Debug::INFO, "Running autoSave()");
 
 	Buffer * buffer = documentBufferView()
-		? &documentBufferView()->buffer() : 0;
+		? &documentBufferView()->buffer() : nullptr;
 	if (!buffer) {
 		resetAutosaveTimers();
 		return;
@@ -1884,9 +1887,9 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 {
 	bool enable = true;
 	Buffer * buf = currentBufferView()
-		? &currentBufferView()->buffer() : 0;
+		? &currentBufferView()->buffer() : nullptr;
 	Buffer * doc_buffer = documentBufferView()
-		? &(documentBufferView()->buffer()) : 0;
+		? &(documentBufferView()->buffer()) : nullptr;
 
 #ifdef Q_OS_MAC
 	/* In LyX/Mac, when a dialog is open, the menus of the
@@ -1925,7 +1928,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_MASTER_BUFFER_EXPORT:
 		enable = doc_buffer
-			&& (doc_buffer->parent() != 0
+			&& (doc_buffer->parent() != nullptr
 			    || doc_buffer->hasChildren())
 			&& !d.processing_thread_watcher_.isRunning()
 			// this launches a dialog, which would be in the wrong Buffer
@@ -1935,7 +1938,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_MASTER_BUFFER_UPDATE:
 	case LFUN_MASTER_BUFFER_VIEW:
 		enable = doc_buffer
-			&& (doc_buffer->parent() != 0
+			&& (doc_buffer->parent() != nullptr
 			    || doc_buffer->hasChildren())
 			&& !d.processing_thread_watcher_.isRunning();
 		break;
@@ -1960,15 +1963,15 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_BUFFER_RESET_EXPORT:
-		enable = doc_buffer != 0;
+		enable = doc_buffer != nullptr;
 		break;
 
 	case LFUN_BUFFER_CHILD_OPEN:
-		enable = doc_buffer != 0;
+		enable = doc_buffer != nullptr;
 		break;
 
 	case LFUN_MASTER_BUFFER_FORALL: {
-		if (doc_buffer == 0) {
+		if (doc_buffer == nullptr) {
 			flag.message(from_utf8(N_("Command not allowed without a buffer open")));
 			enable = false;
 			break;
@@ -2035,7 +2038,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		// fall through
 	case LFUN_BUFFER_WRITE_AS:
 	case LFUN_BUFFER_WRITE_AS_TEMPLATE:
-		enable = doc_buffer != 0;
+		enable = doc_buffer != nullptr;
 		break;
 
 	case LFUN_EXPORT_CANCEL:
@@ -2044,7 +2047,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_BUFFER_CLOSE:
 	case LFUN_VIEW_CLOSE:
-		enable = doc_buffer != 0;
+		enable = doc_buffer != nullptr;
 		break;
 
 	case LFUN_BUFFER_CLOSE_ALL:
@@ -2120,7 +2123,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_DROP_LAYOUTS_CHOICE:
-		enable = buf != 0;
+		enable = buf != nullptr;
 		break;
 
 	case LFUN_UI_TOGGLE:
@@ -2353,7 +2356,7 @@ Buffer * GuiView::loadDocument(FileName const & filename, bool tolastfiles)
 {
 	setBusy(true);
 
-	Buffer * newBuffer = 0;
+	Buffer * newBuffer = nullptr;
 	try {
 		newBuffer = checkAndLoadLyXFile(filename);
 	} catch (ExceptionMessage const & e) {
@@ -2364,7 +2367,7 @@ Buffer * GuiView::loadDocument(FileName const & filename, bool tolastfiles)
 
 	if (!newBuffer) {
 		message(_("Document not loaded."));
-		return 0;
+		return nullptr;
 	}
 
 	setBuffer(newBuffer);
@@ -2473,7 +2476,7 @@ static bool import(GuiView * lv, FileName const & filename,
 			string const tofile =
 				support::changeExtension(filename.absFileName(),
 				theFormats().extension(*it));
-			if (theConverters().convert(0, filename, FileName(tofile),
+			if (theConverters().convert(nullptr, filename, FileName(tofile),
 				filename, format, *it, errorList) != Converters::SUCCESS)
 				return false;
 			loader_format = *it;
@@ -3180,7 +3183,7 @@ bool GuiView::closeBuffer(Buffer & buf)
 	for (; it != bend; ++it) {
 		Buffer * child_buf = *it;
 		if (theBufferList().isOthersChild(&buf, child_buf)) {
-			child_buf->setParent(0);
+			child_buf->setParent(nullptr);
 			continue;
 		}
 
@@ -3448,7 +3451,7 @@ void GuiView::checkExternallyModifiedBuffers()
 void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 {
 	Buffer * buffer = documentBufferView()
-		? &(documentBufferView()->buffer()) : 0;
+		? &(documentBufferView()->buffer()) : nullptr;
 
 	switch (cmd.action()) {
 	case LFUN_VC_REGISTER:
@@ -3645,7 +3648,7 @@ void GuiView::openChildDocument(string const & fname)
 	Buffer & buffer = documentBufferView()->buffer();
 	FileName const filename = support::makeAbsPath(fname, buffer.filePath());
 	documentBufferView()->saveBookmark(false);
-	Buffer * child = 0;
+	Buffer * child = nullptr;
 	if (theBufferList().exists(filename)) {
 		child = theBufferList().getBuffer(filename);
 		setBuffer(child);
@@ -3678,7 +3681,7 @@ bool GuiView::goToFileRow(string const & argument)
 		LYXERR0("Wrong argument: " << argument);
 		return false;
 	}
-	Buffer * buf = 0;
+	Buffer * buf = nullptr;
 	string const realtmp = package().temp_dir().realPath();
 	// We have to use os::path_prefix_is() here, instead of
 	// simply prefixIs(), because the file name comes from
@@ -3897,7 +3900,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	dr.dispatched(true);
 
 	Buffer * doc_buffer = documentBufferView()
-		? &(documentBufferView()->buffer()) : 0;
+		? &(documentBufferView()->buffer()) : nullptr;
 
 	if (cmd.origin() == FuncRequest::TOC) {
 		GuiToc * toc = static_cast<GuiToc*>(findOrBuild("toc", false));
@@ -3956,7 +3959,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 						_("Exporting ..."),
 						&GuiViewPrivate::exportAndDestroy,
 						&Buffer::doExport,
-						0, cmd.allowAsync());
+						nullptr, cmd.allowAsync());
 			// TODO Inform user about success
 			break;
 		}
@@ -3976,7 +3979,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 						_("Exporting ..."),
 						&GuiViewPrivate::compileAndDestroy,
 						&Buffer::doExport,
-						0, cmd.allowAsync());
+						nullptr, cmd.allowAsync());
 			break;
 		}
 		case LFUN_BUFFER_VIEW: {
@@ -3984,25 +3987,25 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 						doc_buffer,
 						_("Previewing ..."),
 						&GuiViewPrivate::previewAndDestroy,
-						0,
+						nullptr,
 						&Buffer::preview, cmd.allowAsync());
 			break;
 		}
 		case LFUN_MASTER_BUFFER_UPDATE: {
 			d.asyncBufferProcessing(argument,
-						(doc_buffer ? doc_buffer->masterBuffer() : 0),
+						(doc_buffer ? doc_buffer->masterBuffer() : nullptr),
 						docstring(),
 						&GuiViewPrivate::compileAndDestroy,
 						&Buffer::doExport,
-						0, cmd.allowAsync());
+						nullptr, cmd.allowAsync());
 			break;
 		}
 		case LFUN_MASTER_BUFFER_VIEW: {
 			d.asyncBufferProcessing(argument,
-						(doc_buffer ? doc_buffer->masterBuffer() : 0),
+						(doc_buffer ? doc_buffer->masterBuffer() : nullptr),
 						docstring(),
 						&GuiViewPrivate::previewAndDestroy,
-						0, &Buffer::preview, cmd.allowAsync());
+						nullptr, &Buffer::preview, cmd.allowAsync());
 			break;
 		}
 		case LFUN_EXPORT_CANCEL: {
@@ -4314,7 +4317,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 
 		case LFUN_DIALOG_HIDE: {
-			guiApp->hideDialogs(to_utf8(cmd.argument()), 0);
+			guiApp->hideDialogs(to_utf8(cmd.argument()), nullptr);
 			break;
 		}
 
@@ -4384,14 +4387,14 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		case LFUN_TAB_GROUP_CLOSE:
 			if (TabWorkArea * twa = d.currentTabWorkArea()) {
 				closeTabWorkArea(twa);
-				d.current_work_area_ = 0;
+				d.current_work_area_ = nullptr;
 				twa = d.currentTabWorkArea();
 				// Switch to the next GuiWorkArea in the found TabWorkArea.
 				if (twa) {
 					// Make sure the work area is up to date.
 					setCurrentWorkArea(twa->currentWorkArea());
 				} else {
-					setCurrentWorkArea(0);
+					setCurrentWorkArea(nullptr);
 				}
 			}
 			break;
@@ -4399,14 +4402,14 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		case LFUN_VIEW_CLOSE:
 			if (TabWorkArea * twa = d.currentTabWorkArea()) {
 				closeWorkArea(twa->currentWorkArea());
-				d.current_work_area_ = 0;
+				d.current_work_area_ = nullptr;
 				twa = d.currentTabWorkArea();
 				// Switch to the next GuiWorkArea in the found TabWorkArea.
 				if (twa) {
 					// Make sure the work area is up to date.
 					setCurrentWorkArea(twa->currentWorkArea());
 				} else {
-					setCurrentWorkArea(0);
+					setCurrentWorkArea(nullptr);
 				}
 			}
 			break;
@@ -4461,7 +4464,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			}
 
 			// Actual zoom value: default zoom + fractional extra value
-			int zoom = lyxrc.defaultZoom * zoom_ratio_;
+			int zoom = (int)(lyxrc.defaultZoom * zoom_ratio_);
 			if (zoom < static_cast<int>(zoom_min_))
 				zoom = zoom_min_;
 
@@ -4632,7 +4635,7 @@ void GuiView::toggleFullScreen()
 		statusBar()->show();
 	} else {
 		// bug 5274
-		hideDialogs("prefs", 0);
+		hideDialogs("prefs", nullptr);
 		for (int i = 0; i != d.splitter_->count(); ++i)
 			d.tabWorkArea(i)->setFullScreen(true);
 		setContentsMargins(-2, -2, -2, -2);
@@ -4657,7 +4660,7 @@ void GuiView::toggleFullScreen()
 Buffer const * GuiView::updateInset(Inset const * inset)
 {
 	if (!inset)
-		return 0;
+		return nullptr;
 
 	Buffer const * inset_buffer = &(inset->buffer());
 
@@ -4729,7 +4732,7 @@ private:
 bool isValidName(string const & name)
 {
 	return find_if(dialognames, end_dialognames,
-				cmpCStr(name.c_str())) != end_dialognames;
+		cmpCStr(name.c_str())) != end_dialognames;
 }
 
 } // namespace
@@ -4738,7 +4741,7 @@ bool isValidName(string const & name)
 void GuiView::resetDialogs()
 {
 	// Make sure that no LFUN uses any GuiView.
-	guiApp->setCurrentView(0);
+	guiApp->setCurrentView(nullptr);
 	saveLayout();
 	saveUISettings();
 	menuBar()->clear();
@@ -4755,7 +4758,7 @@ void GuiView::resetDialogs()
 Dialog * GuiView::findOrBuild(string const & name, bool hide_it)
 {
 	if (!isValidName(name))
-		return 0;
+		return nullptr;
 
 	map<string, DialogPtr>::iterator it = d.dialogs_.find(name);
 
@@ -4843,7 +4846,7 @@ void GuiView::hideDialog(string const & name, Inset * inset)
 	if (dialog->isVisibleView())
 		dialog->hideView();
 	if (currentBufferView())
-		currentBufferView()->editInset(name, 0);
+		currentBufferView()->editInset(name, nullptr);
 }
 
 
@@ -4852,7 +4855,7 @@ void GuiView::disconnectDialog(string const & name)
 	if (!isValidName(name))
 		return;
 	if (currentBufferView())
-		currentBufferView()->editInset(name, 0);
+		currentBufferView()->editInset(name, nullptr);
 }
 
 
@@ -4875,7 +4878,7 @@ void GuiView::updateDialogs()
 		Dialog * dialog = it->second.get();
 		if (dialog) {
 			if (dialog->needBufferOpen() && !documentBufferView())
-				hideDialog(fromqstr(dialog->name()), 0);
+				hideDialog(fromqstr(dialog->name()), nullptr);
 			else if (dialog->isVisibleView())
 				dialog->checkStatus();
 		}
@@ -4930,7 +4933,7 @@ Dialog * createGuiProgressView(GuiView & lv);
 
 Dialog * GuiView::build(string const & name)
 {
-	LASSERT(isValidName(name), return 0);
+	LASSERT(isValidName(name), return nullptr);
 
 	Dialog * dialog = createDialog(*this, name);
 	if (dialog)
@@ -5011,7 +5014,7 @@ Dialog * GuiView::build(string const & name)
 	if (name == "progress")
 		return createGuiProgressView(*this);
 
-	return 0;
+	return nullptr;
 }
 
 
