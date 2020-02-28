@@ -87,10 +87,10 @@ struct GuiWorkArea::Private
 	void dispatch(FuncRequest const & cmd0);
 	/// recompute the shape and position of the caret
 	void updateCaretGeometry();
-	/// show the caret if it is not visible
-	void showCaret();
+	/// show the caret if it is not visible. Same as \c hideCaret when \c show is false.
+	void showCaret(bool show = true);
 	/// hide the caret if it is visible
-	void hideCaret();
+	void hideCaret() { showCaret(false); }
 	/// Set the range and value of the scrollbar and connect to its valueChanged
 	/// signal.
 	void updateScrollbar();

@@ -439,14 +439,6 @@ void GuiWorkArea::stopBlinkingCaret()
 
 void GuiWorkArea::startBlinkingCaret()
 {
-	// do not show the cursor if the view is busy
-	if (view().busy())
-		return;
-
-	// Don't start blinking if the cursor isn't on screen.
-	if (!d->buffer_view_->caretInView())
-		return;
-
 	d->showCaret();
 
 	// Avoid blinking when debugging PAINTING, since it creates too much noise
@@ -641,24 +633,26 @@ void GuiWorkArea::Private::updateCaretGeometry()
 }
 
 
-void GuiWorkArea::Private::showCaret()
+void GuiWorkArea::Private::showCaret(bool show)
 {
+	if (caret_visible_ == show)
+		return;
+	caret_visible_ = show;
+
+	/**
+	 * Do not trigger the painting machinery if either
+	 * 1. the view is busy (no updates at all)
+	 * 2. The we are not ready because document is being modified (see bug #11763)
+	 * 3. The caret is outside of screen anyway.
+	 */
+	if (p->view().busy()
+	    || buffer_view_->buffer().undo().activeUndoGroup()
+	    || !buffer_view_->caretInView())
+		return;
+
 	if (caret_visible_)
-		return;
-
-	updateCaretGeometry();
+		updateCaretGeometry();
 	p->viewport()->update();
-}
-
-
-void GuiWorkArea::Private::hideCaret()
-{
-	if (!caret_visible_)
-		return;
-
-	caret_visible_ = false;
-	//if (!qApp->focusWidget())
-		p->viewport()->update();
 }
 
 
