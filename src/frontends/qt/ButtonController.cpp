@@ -27,17 +27,6 @@
 namespace lyx {
 namespace frontend {
 
-static void setWidgetEnabled(QWidget * obj, bool enabled)
-{
-	if (QLineEdit * le = qobject_cast<QLineEdit*>(obj))
-		le->setReadOnly(!enabled);
-	else
-		obj->setEnabled(enabled);
-
-	obj->setFocusPolicy(enabled ? Qt::StrongFocus : Qt::NoFocus);
-}
-
-
 /////////////////////////////////////////////////////////////////////////
 //
 // CheckedLineEdit
@@ -204,10 +193,7 @@ bool ButtonController::setReadOnly(bool ro)
 
 	d->policy_.input(ro ?
 		ButtonPolicy::SMI_READ_ONLY : ButtonPolicy::SMI_READ_WRITE);
-	// refreshReadOnly(); This will enable all widgets in dialogs, no matter if
-	//                    they allowed to be enabled, so when you plan to
-	//                    reenable this call, read this before:
-	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg128222.html
+
 	refresh();
 	return ro;
 }
@@ -248,16 +234,6 @@ void ButtonController::refresh() const
 	if (d->default_)
 		// Somewhere in the chain this can lose default status (#11417)
 		d->default_->setDefault(true);
-}
-
-
-void ButtonController::refreshReadOnly() const
-{
-	if (d->read_only_.empty())
-		return;
-	bool const enable = !policy().isReadOnly();
-	for(QWidget * w : d->read_only_)
-		setWidgetEnabled(w, enable);
 }
 
 

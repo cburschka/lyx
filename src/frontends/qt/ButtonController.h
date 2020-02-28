@@ -71,11 +71,6 @@ public:
 	 */
 	void refresh() const;
 
-	/** Refresh the activation state of all the widgets under the control
-	 *  of the BC to reflect the read-only status of the underlying buffer.
-	 */
-	void refreshReadOnly() const;
-
 	/** Passthrough function -- returns its input value
 	 *  Tell the BC about the read-only status of the underlying buffer.
 	 */
