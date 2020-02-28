@@ -81,7 +81,7 @@ void Dialog::disconnect() const
 
 bool Dialog::isBufferAvailable() const
 {
-	return lyxview_.currentBufferView() != 0;
+	return lyxview_.currentBufferView() != nullptr;
 }
 
 
@@ -227,7 +227,7 @@ Inset const * Dialog::inset(InsetCode code) const
 	// Check if next is of the type we look for
 	if (next)
 		if (next->lyxCode() != code)
-			next = 0;
+			next = nullptr;
 	if (ins) {
 		// prefer next if it is of the requested type (bug 8716)
 		if (next)
