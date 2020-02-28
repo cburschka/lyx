@@ -110,7 +110,7 @@ T * getInsetByCode(Cursor const & cur, InsetCode code)
 	Inset * inset = it.nextInset();
 	if (inset && inset->lyxCode() == code)
 		return static_cast<T*>(inset);
-	return 0;
+	return nullptr;
 }
 
 
@@ -233,13 +233,11 @@ struct BufferView::Private
 	Private(BufferView & bv) :
 		update_strategy_(FullScreenUpdate),
 		update_flags_(Update::Force),
-		wh_(0), cursor_(bv),
-		anchor_pit_(0), anchor_ypos_(0),
-		inlineCompletionUniqueChars_(0),
-		last_inset_(0), clickable_inset_(false),
-		mouse_position_cache_(),
-		bookmark_edit_position_(-1), gui_(0),
-		horiz_scroll_offset_(0)
+		cursor_(bv), anchor_pit_(0), anchor_ypos_(0),
+		wh_(0), inlineCompletionUniqueChars_(0),
+		last_inset_(nullptr), mouse_position_cache_(),
+		gui_(nullptr), bookmark_edit_position_(-1),
+		horiz_scroll_offset_(0), clickable_inset_(false)
 	{
 		xsel_cache_.set = false;
 	}
@@ -256,8 +254,6 @@ struct BufferView::Private
 	typedef map<MathData const *, MathRow> MathRows;
 	MathRows math_rows_;
 
-	/// Estimated average par height for scrollbar.
-	int wh_;
 	/// this is used to handle XSelection events in the right manner.
 	struct {
 		CursorSlice cursor;
@@ -270,6 +266,8 @@ struct BufferView::Private
 	pit_type anchor_pit_;
 	///
 	int anchor_ypos_;
+	/// Estimated average par height for scrollbar.
+	int wh_;
 	///
 	vector<int> par_height_;
 
@@ -288,16 +286,11 @@ struct BufferView::Private
 	  * Not owned, so don't delete.
 	  */
 	Inset const * last_inset_;
-	/// are we hovering something that we can click
-	bool clickable_inset_;
 
 	/// position of the mouse at the time of the last mouse move
 	/// This is used to update the hovering status of inset in
 	/// cases where the buffer is scrolled, but the mouse didn't move.
 	Point mouse_position_cache_;
-
-	// cache for id of the paragraph which was edited the last time
-	int bookmark_edit_position_;
 
 	mutable TextMetricsCache text_metrics_;
 
@@ -314,10 +307,15 @@ struct BufferView::Private
 
 	/// When the row where the cursor lies is scrolled, this
 	/// contains the scroll offset
+	// cache for id of the paragraph which was edited the last time
+	int bookmark_edit_position_;
+
 	int horiz_scroll_offset_;
 	/// a slice pointing to the start of the row where the cursor
 	/// is (at last draw time)
 	CursorSlice current_row_slice_;
+	/// are we hovering something that we can click
+	bool clickable_inset_;
 };
 
 
@@ -1266,7 +1264,7 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 Inset * BufferView::editedInset(string const & name) const
 {
 	map<string, Inset *>::const_iterator it = d->edited_insets_.find(name);
-	return it == d->edited_insets_.end() ? 0 : it->second;
+	return it == d->edited_insets_.end() ? nullptr : it->second;
 }
 
 
@@ -2263,7 +2261,7 @@ Inset const * BufferView::getCoveringInset(Text const & text,
 	TextMetrics & tm = d->text_metrics_[&text];
 	Inset * inset = tm.checkInsetHit(x, y);
 	if (!inset)
-		return 0;
+		return nullptr;
 
 	if (!inset->descendable(*this))
 		// No need to go further down if the inset is not
@@ -2304,7 +2302,7 @@ void BufferView::updateHoveredInset() const
 	if (d->last_inset_) {
 		// Remove the hint on the last hovered inset (if any).
 		need_redraw |= d->last_inset_->setMouseHover(this, false);
-		d->last_inset_ = 0;
+		d->last_inset_ = nullptr;
 	}
 
 	if (covering_inset && covering_inset->setMouseHover(this, true)) {
@@ -2335,7 +2333,7 @@ void BufferView::clearLastInset(Inset * inset) const
 		LYXERR0("Wrong last_inset!");
 		LATTEST(false);
 	}
-	d->last_inset_ = 0;
+	d->last_inset_ = nullptr;
 }
 
 
