@@ -47,7 +47,7 @@ static void setWidgetEnabled(QWidget * obj, bool enabled)
 class CheckedLineEdit
 {
 public:
-	CheckedLineEdit(QLineEdit * input, QWidget * label = 0);
+	CheckedLineEdit(QLineEdit * input, QWidget * label = nullptr);
 	bool check() const;
 
 private:
@@ -93,7 +93,8 @@ public:
 	typedef QList<CheckedLineEdit> CheckedWidgetList;
 
 	Private()
-		: okay_(0), apply_(0), cancel_(0), restore_(0), auto_apply_(0), default_(0),
+		: okay_(nullptr), apply_(nullptr), cancel_(nullptr),
+			restore_(nullptr), auto_apply_(nullptr), default_(nullptr),
 			policy_(ButtonPolicy::IgnorantPolicy)
 	{}
 
