@@ -125,16 +125,16 @@ void Branch::setColor(string const & str)
 Branch * BranchList::find(docstring const & name)
 {
 	List::iterator it =
-		find_if(list.begin(), list.end(), BranchNamesEqual(name));
-	return it == list.end() ? 0 : &*it;
+		find_if(list_.begin(), list_.end(), BranchNamesEqual(name));
+	return it == list_.end() ? 0 : &*it;
 }
 
 
 Branch const * BranchList::find(docstring const & name) const
 {
 	List::const_iterator it =
-		find_if(list.begin(), list.end(), BranchNamesEqual(name));
-	return it == list.end() ? 0 : &*it;
+		find_if(list_.begin(), list_.end(), BranchNamesEqual(name));
+	return it == list_.end() ? 0 : &*it;
 }
 
 
@@ -151,15 +151,15 @@ bool BranchList::add(docstring const & s)
 			name = s.substr(i, j - i);
 		// Is this name already in the list?
 		bool const already =
-			find_if(list.begin(), list.end(),
-				     BranchNamesEqual(name)) != list.end();
+			find_if(list_.begin(), list_.end(),
+					 BranchNamesEqual(name)) != list_.end();
 		if (!already) {
 			added = true;
 			Branch br;
 			br.setBranch(name);
 			br.setSelected(false);
 			br.setFileNameSuffix(false);
-			list.push_back(br);
+			list_.push_back(br);
 		}
 		if (j == docstring::npos)
 			break;
@@ -171,9 +171,9 @@ bool BranchList::add(docstring const & s)
 
 bool BranchList::remove(docstring const & s)
 {
-	size_t const size = list.size();
-	list.remove_if(BranchNamesEqual(s));
-	return size != list.size();
+	size_t const size = list_.size();
+	list_.remove_if(BranchNamesEqual(s));
+	return size != list_.size();
 }
 
 
@@ -182,8 +182,8 @@ bool BranchList::rename(docstring const & oldname,
 {
 	if (newname.empty())
 		return false;
-	if (find_if(list.begin(), list.end(),
-		    BranchNamesEqual(newname)) != list.end()) {
+	if (find_if(list_.begin(), list_.end(),
+			BranchNamesEqual(newname)) != list_.end()) {
 		// new name already taken
 		if (merge)
 		      return remove(oldname);
@@ -201,10 +201,9 @@ bool BranchList::rename(docstring const & oldname,
 docstring BranchList::getFileNameSuffix() const
 {
 	docstring result;
-	List::const_iterator it = list.begin();
-	for (; it != list.end(); ++it) {
-		if (it->isSelected() && it->hasFileNameSuffix())
-			result += "-" + it->branch();
+	for (auto const & br : list_) {
+		if (br.isSelected() && br.hasFileNameSuffix())
+			result += "-" + br.branch();
 	}
 	return support::subst(result, from_ascii("/"), from_ascii("_"));
 }

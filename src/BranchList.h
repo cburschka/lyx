@@ -97,12 +97,12 @@ public:
 	docstring separator() const { return separator_; }
 
 	///
-	bool empty() const { return list.empty(); }
+	bool empty() const { return list_.empty(); }
 	///
-	void clear() { list.clear(); }
+	void clear() { list_.clear(); }
 	///
-	const_iterator begin() const { return list.begin(); }
-	const_iterator end() const { return list.end(); }
+	const_iterator begin() const { return list_.begin(); }
+	const_iterator end() const { return list_.end(); }
 
 	/** \returns the Branch with \c name. If not found, returns 0.
 	 */
@@ -128,7 +128,7 @@ public:
 
 private:
 	///
-	List list;
+	List list_;
 	///
 	docstring separator_;
 };
