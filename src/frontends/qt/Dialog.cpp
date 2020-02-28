@@ -259,10 +259,6 @@ void Dialog::checkStatus()
 	if (canApply()) {
 		bool const readonly = isBufferReadonly();
 		enableView(!readonly || canApplyToReadOnly());
-		// refreshReadOnly() is too generous in _enabling_ widgets
-		// update dialog to disable disabled widgets again
-
-		updateView();
 	} else
 		enableView(false);
 }
