@@ -58,7 +58,7 @@ add_definitions(-DHUNSPELL_STATIC)
 add_library(hunspell STATIC ${HEADERS} ${SRCS} ${HUNCONFIG})
 
 set(HUNSPELL_LIBRARY hunspell CACHE STRING "Hunspell library" FORCE)
-set(HUNSPELL_INCLUDE_DIR ${SRCDIR} CACHE STRING "Hunspell include dir" FORCE)
+set(HUNSPELL_INCLUDE_DIR "${SRCDIR}/hunspell" CACHE STRING "Hunspell include dir" FORCE)
 set(HUNSPELL_FOUND CACHE STRING "Hunspell found" FORCE)
 
 set_target_properties(hunspell PROPERTIES
