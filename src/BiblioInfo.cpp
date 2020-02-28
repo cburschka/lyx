@@ -1013,11 +1013,10 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 
 	docstring ret = operator[](key);
 	if (ret.empty() && !xrefs.empty()) {
-		vector<BibTeXInfo const *>::const_iterator it = xrefs.begin();
-		vector<BibTeXInfo const *>::const_iterator en = xrefs.end();
-		for (; it != en; ++it) {
-			if (*it && !(**it)[key].empty()) {
-				ret = (**it)[key];
+		// xr is a (reference to a) BibTeXInfo const *
+		for (auto const & xr : xrefs) {
+			if (xr && !(*xr)[key].empty()) {
+				ret = (*xr)[key];
 				break;
 			}
 		}
@@ -1210,10 +1209,7 @@ vector<docstring> const BiblioInfo::getXRefs(BibTeXInfo const & data, bool const
 	// XData field can consist of a comma-separated list of keys
 	vector<docstring> const xdatakeys = getVectorFromString(data["xdata"]);
 	if (!xdatakeys.empty()) {
-		vector<docstring>::const_iterator xit = xdatakeys.begin();
-		vector<docstring>::const_iterator xen = xdatakeys.end();
-		for (; xit != xen; ++xit) {
-			docstring const xdatakey = *xit;
+		for (auto const & xdatakey : xdatakeys) {
 			result.push_back(xdatakey);
 			BiblioInfo::const_iterator it = find(xdatakey);
 			if (it != end()) {
@@ -1231,9 +1227,8 @@ vector<docstring> const BiblioInfo::getXRefs(BibTeXInfo const & data, bool const
 vector<docstring> const BiblioInfo::getKeys() const
 {
 	vector<docstring> bibkeys;
-	BiblioInfo::const_iterator it  = begin();
-	for (; it != end(); ++it)
-		bibkeys.push_back(it->first);
+	for (auto const & bi : *this)
+		bibkeys.push_back(bi.first);
 	sort(bibkeys.begin(), bibkeys.end(), compareNoCase());
 	return bibkeys;
 }
@@ -1242,10 +1237,8 @@ vector<docstring> const BiblioInfo::getKeys() const
 vector<docstring> const BiblioInfo::getFields() const
 {
 	vector<docstring> bibfields;
-	set<docstring>::const_iterator it = field_names_.begin();
-	set<docstring>::const_iterator end = field_names_.end();
-	for (; it != end; ++it)
-		bibfields.push_back(*it);
+	for (auto const & fn : field_names_)
+		bibfields.push_back(fn);
 	sort(bibfields.begin(), bibfields.end());
 	return bibfields;
 }
@@ -1254,10 +1247,8 @@ vector<docstring> const BiblioInfo::getFields() const
 vector<docstring> const BiblioInfo::getEntries() const
 {
 	vector<docstring> bibentries;
-	set<docstring>::const_iterator it = entry_types_.begin();
-	set<docstring>::const_iterator end = entry_types_.end();
-	for (; it != end; ++it)
-		bibentries.push_back(*it);
+	for (auto const & et : entry_types_)
+		bibentries.push_back(et);
 	sort(bibentries.begin(), bibentries.end());
 	return bibentries;
 }
@@ -1367,7 +1358,7 @@ docstring const BiblioInfo::getLabel(vector<docstring> keys,
 	for (int i = 0; key != ken; ++key, ++i) {
 		handled_keys.push_back(*key);
 		int n = 0;
-		for (auto const k : handled_keys) {
+		for (auto const & k : handled_keys) {
 			if (k == *key)
 				++n;
 		}
@@ -1458,13 +1449,11 @@ void BiblioInfo::collectCitedEntries(Buffer const & buf)
 	// FIXME We may want to collect these differently, in the first case,
 	// so that we might have them in order of appearance.
 	set<docstring> citekeys;
-	shared_ptr<Toc const> toc = buf.tocBackend().toc("citation");
-	Toc::const_iterator it = toc->begin();
-	Toc::const_iterator const en = toc->end();
-	for (; it != en; ++it) {
-		if (it->str().empty())
+	Toc const toc = *buf.tocBackend().toc("citation");
+	for (auto const & t : toc) {
+		if (t.str().empty())
 			continue;
-		vector<docstring> const keys = getVectorFromString(it->str());
+		vector<docstring> const keys = getVectorFromString(t.str());
 		citekeys.insert(keys.begin(), keys.end());
 	}
 	if (citekeys.empty())
@@ -1474,10 +1463,8 @@ void BiblioInfo::collectCitedEntries(Buffer const & buf)
 	// We will now convert it to a list of the BibTeXInfo objects used in
 	// this document...
 	vector<BibTeXInfo const *> bi;
-	set<docstring>::const_iterator cit = citekeys.begin();
-	set<docstring>::const_iterator const cen = citekeys.end();
-	for (; cit != cen; ++cit) {
-		BiblioInfo::const_iterator const bt = find(*cit);
+	for (auto const & ck : citekeys) {
+		BiblioInfo::const_iterator const bt = find(ck);
 		if (bt == end() || !bt->second.isBibTeX())
 			continue;
 		bi.push_back(&(bt->second));
@@ -1486,10 +1473,9 @@ void BiblioInfo::collectCitedEntries(Buffer const & buf)
 	sort(bi.begin(), bi.end(), lSorter);
 
 	// Now we can write the sorted keys
-	vector<BibTeXInfo const *>::const_iterator bit = bi.begin();
-	vector<BibTeXInfo const *>::const_iterator ben = bi.end();
-	for (; bit != ben; ++bit)
-		cited_entries_.push_back((*bit)->key());
+	// b is a BibTeXInfo const *
+	for (auto const & b : bi)
+		cited_entries_.push_back(b->key());
 }
 
 
@@ -1506,10 +1492,9 @@ void BiblioInfo::makeCitationLabels(Buffer const & buf)
 	// modifiers, like "1984a"
 	map<docstring, BibTeXInfo>::iterator last = bimap_.end();
 
-	vector<docstring>::const_iterator it = cited_entries_.begin();
-	vector<docstring>::const_iterator const en = cited_entries_.end();
-	for (; it != en; ++it) {
-		map<docstring, BibTeXInfo>::iterator const biit = bimap_.find(*it);
+	// add letters to years
+	for (auto const & ce : cited_entries_) {
+		map<docstring, BibTeXInfo>::iterator const biit = bimap_.find(ce);
 		// this shouldn't happen, but...
 		if (biit == bimap_.end())
 			// ...fail gracefully, anyway.
@@ -1544,9 +1529,8 @@ void BiblioInfo::makeCitationLabels(Buffer const & buf)
 		}
 	}
 	// Set the labels
-	it = cited_entries_.begin();
-	for (; it != en; ++it) {
-		map<docstring, BibTeXInfo>::iterator const biit = bimap_.find(*it);
+	for (auto const & ce : cited_entries_) {
+		map<docstring, BibTeXInfo>::iterator const biit = bimap_.find(ce);
 		// this shouldn't happen, but...
 		if (biit == bimap_.end())
 			// ...fail gracefully, anyway.
@@ -1558,7 +1542,7 @@ void BiblioInfo::makeCitationLabels(Buffer const & buf)
 			docstring const auth = entry.getAuthorOrEditorList(&buf, false);
 			// we do it this way so as to access the xref, if necessary
 			// note that this also gives us the modifier
-			docstring const year = getYear(*it, buf, true);
+			docstring const year = getYear(ce, buf, true);
 			if (!auth.empty() && !year.empty())
 				entry.label(auth + ' ' + year);
 			else

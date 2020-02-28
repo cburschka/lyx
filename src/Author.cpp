@@ -178,13 +178,9 @@ ostream & operator<<(ostream & os, AuthorList const & a)
 	// Copy the authorlist, because we don't want to sort the original
 	AuthorList sorted = a;
 	sorted.sort();
-
-	AuthorList::Authors::const_iterator a_it = sorted.begin();
-	AuthorList::Authors::const_iterator const a_end = sorted.end();
-
-	for (; a_it != a_end; ++a_it) {
-		if (a_it->used() && a_it->valid())
-			os << "\\author " << *a_it << "\n";
+	for (auto const & aut : sorted) {
+		if (aut.used() && aut.valid())
+			os << "\\author " << aut << "\n";
 	}
 	return os;
 }
