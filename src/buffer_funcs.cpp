@@ -80,7 +80,7 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 			case 0: {
 				// reload the document
 				if (checkBuffer->reload() != Buffer::ReadSuccess)
-					return 0;
+					return nullptr;
 				return checkBuffer;
 			}
 			case 1:
@@ -88,7 +88,7 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 				return checkBuffer;
 			case 2:
 				// cancel
-				return 0;
+				return nullptr;
 		}
 	}
 
@@ -101,7 +101,7 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 					"readable by the current user."),
 					from_utf8(filename.absFileName()));
 				Alert::error(_("File not readable!"), text);
-				return 0;
+				return nullptr;
 			}
 			if (filename.extension() == "lyx" && filename.isFileEmpty()) {
 				// Makes it possible to open an empty (0 bytes) .lyx file
@@ -111,13 +111,13 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 		Buffer * b = theBufferList().newBuffer(filename.absFileName());
 		if (!b) {
 			// Buffer creation is not possible.
-			return 0;
+			return nullptr;
 		}
 		if (b->loadLyXFile() != Buffer::ReadSuccess) {
 			// do not save an emergency file when releasing the buffer
 			b->markClean();
 			theBufferList().release(b);
-			return 0;
+			return nullptr;
 		}
 		return b;
 	}
@@ -129,7 +129,7 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 			text, 0, 1, _("&Yes, Create New Document"), _("&No, Do Not Create")))
 		return newFile(filename.absFileName(), string(), true);
 
-	return 0;
+	return nullptr;
 }
 
 
@@ -141,7 +141,7 @@ Buffer * newFile(string const & filename, string const & templatename,
 	Buffer * b = theBufferList().newBuffer(filename);
 	if (!b)
 		// Buffer creation is not possible.
-		return 0;
+		return nullptr;
 
 	FileName tname;
 	// use defaults.lyx as a default template if it exists.
@@ -158,7 +158,7 @@ Buffer * newFile(string const & filename, string const & templatename,
 				file);
 			Alert::error(_("Could not read template"), text);
 			theBufferList().release(b);
-			return 0;
+			return nullptr;
 		}
 	}
 
@@ -200,17 +200,17 @@ Buffer * loadIfNeeded(FileName const & fname)
 	Buffer * buffer = theBufferList().getBuffer(fname);
 	if (!buffer) {
 		if (!fname.exists() && !LyXVC::fileInVC(fname))
-			return 0;
+			return nullptr;
 
 		buffer = theBufferList().newBuffer(fname.absFileName());
 		if (!buffer)
 			// Buffer creation is not possible.
-			return 0;
+			return nullptr;
 
 		if (buffer->loadLyXFile() != Buffer::ReadSuccess) {
 			//close the buffer we just opened
 			theBufferList().release(buffer);
-			return 0;
+			return nullptr;
 		}
 	}
 	return buffer;
