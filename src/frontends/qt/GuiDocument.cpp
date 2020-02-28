@@ -2274,7 +2274,7 @@ void GuiDocument::languageChanged(int i)
 	Language const * lang = lyx::languages.getLanguage(
 		fromqstr(langModule->languageCO->itemData(i).toString()));
 	if (lang->babel().empty() && !lang->polyglossia().empty()
-		&& lang->requires() != "CJK" && lang->requires() != "japanese") {
+		&& lang->required() != "CJK" && lang->required() != "japanese") {
 			// If we force to switch fontspec on, store
 			// current state (#8717)
 			if (fontModule->osFontsCB->isEnabled())
@@ -2971,8 +2971,8 @@ void GuiDocument::updateEngineDependends()
 				biblioModule->citeEngineCO->currentIndex()).toString();
 	LyXCiteEngine const * ce = theCiteEnginesList[fromqstr(engine)];
 
-	bool const citepack = ce->requires("biblatex.sty") || ce->requires("jurabib.sty")
-			|| ce->requires("natbib.sty");
+	bool const citepack = ce->required("biblatex.sty") || ce->required("jurabib.sty")
+			|| ce->required("natbib.sty");
 	biblioModule->citePackageOptionsLE->setEnabled(citepack);
 	biblioModule->citePackageOptionsL->setEnabled(citepack);
 }
@@ -4196,7 +4196,7 @@ void GuiDocument::paramsToDialog()
 			langModule->languageCO->currentIndex()).toString()));
 	bool const need_fontspec =
 		lang->babel().empty() && !lang->polyglossia().empty()
-		&& lang->requires() != "CJK" && lang->requires() != "japanese";
+		&& lang->required() != "CJK" && lang->required() != "japanese";
 	bool const os_fonts_available =
 		bp_.baseClass()->outputType() == lyx::LATEX
 		&& LaTeXFeatures::isAvailable("fontspec");

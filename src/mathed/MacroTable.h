@@ -60,7 +60,7 @@ public:
 	///
 	std::vector<docstring> const & defaults() const;
 	///
-	std::string const requires() const;
+	std::string const required() const;
 	///
 	bool hidden() const;
 	///

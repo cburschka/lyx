@@ -644,7 +644,7 @@ void InsetMathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
 	d->nesting_ = nesting;
 
 	// update requires
-	d->requires_ = d->macro_->requires();
+	d->requires_ = d->macro_->required();
 
 	if (!d->needsUpdate_
 		// non-normal mode? We are done!
@@ -911,8 +911,8 @@ void InsetMathMacro::validate(LaTeXFeatures & features) const
 	else if (!d->macro_) {
 		// Update requires for known global macros.
 		MacroData const * data = MacroTable::globalMacros().get(name());
-		if (data && !data->requires().empty())
-			features.require(data->requires());
+		if (data && !data->required().empty())
+			features.require(data->required());
 	}
 
 	if (name() == "binom")

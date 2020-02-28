@@ -37,7 +37,7 @@ public:
 		 std::string const & listName, std::string const & listCmd,
 		 std::string const & refPrefix, std::string const & allowedplacement,
 		 std::string const & htmlType, std::string const & htmlClass,
-		 docstring const & htmlStyle, std::string const & requires,
+		 docstring const & htmlStyle, std::string const & required,
 		 bool usesfloat, bool isprefined,
 		 bool allowswide, bool allowssideways);
 	///
@@ -66,7 +66,7 @@ public:
 	///
 	bool usesFloatPkg() const { return usesfloatpkg_; }
 	/// allowed placement options
-	std::string const & requires() const { return requires_; }
+	std::string const & required() const { return required_; }
 	///
 	bool isPredefined() const { return ispredefined_; }
 	///
@@ -103,7 +103,7 @@ private:
 	///
 	std::string allowedplacement_;
 	///
-	std::string requires_;
+	std::string required_;
 	///
 	bool usesfloatpkg_;
 	///

@@ -1024,7 +1024,7 @@ void validate_math_word(LaTeXFeatures & features, docstring const & word)
 	MathWordList const & words = mathedWordList();
 	MathWordList::const_iterator it = words.find(word);
 	if (it != words.end()) {
-		string const req = it->second.requires;
+		string const req = it->second.required;
 		if (!req.empty())
 			features.require(req);
 	}

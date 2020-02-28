@@ -217,7 +217,7 @@ void initSymbols()
 						requires = "";
 						tmp.hidden = hidden = true;
 					} else
-						tmp.requires = requires;
+						tmp.required = requires;
 					theMathWordList[it->first] = tmp;
 					wit = theMathWordList.find(it->first);
 					it->second.setSymbol(&(wit->second));
@@ -249,9 +249,9 @@ void initSymbols()
 			if ((is >> help)) {
 				// backward compatibility
 				if (help == "esintoramsmath")
-					tmp.requires = "esint|amsmath";
+					tmp.required = "esint|amsmath";
 				else
-					tmp.requires = to_ascii(help);
+					tmp.required = to_ascii(help);
 			}
 		} else {
 			LYXERR(Debug::MATHED, "skipping line '" << line << "'\n"
@@ -265,13 +265,13 @@ void initSymbols()
 			// create fallbacks if necessary
 
 			// store requirements as long as we can
-			if (tmp.requires.empty()) {
+			if (tmp.required.empty()) {
 				if (tmp.inset == "msa" || tmp.inset == "msb")
-					tmp.requires = "amssymb";
+					tmp.required = "amssymb";
 				else if (tmp.inset == "wasy")
-					tmp.requires = "wasysym";
+					tmp.required = "wasysym";
 				else if (tmp.inset == "mathscr")
-					tmp.requires = "mathrsfs";
+					tmp.required = "mathrsfs";
 			}
 
 			// symbol font is not available sometimes
@@ -307,9 +307,9 @@ void initSymbols()
 					      << " used for " << to_utf8(tmp.name));
 		}
 
-		if (tmp.requires == "hiddensymbol")
+		if (tmp.required == "hiddensymbol")
 		{
-			tmp.requires = "";
+			tmp.required = "";
 			tmp.hidden = true;
 		}
 
@@ -326,7 +326,7 @@ void initSymbols()
 			<< "  draw: " << int(tmp.draw.empty() ? 0 : tmp.draw[0])
 			<< "  extra: " << to_utf8(tmp.extra)
 			<< "  xml: " << to_utf8(tmp.xmlname)
-			<< "  requires: " << tmp.requires
+			<< "  requires: " << tmp.required
 			<< "  hidden: " << tmp.hidden << '\'');
 	}
 	string tmp = "cmm";

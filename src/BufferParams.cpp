@@ -1606,8 +1606,8 @@ void BufferParams::validate(LaTeXFeatures & features) const
 	if (use_microtype)
 		features.require("microtype");
 
-	if (!language->requires().empty())
-		features.require(language->requires());
+	if (!language->required().empty())
+		features.require(language->required());
 }
 
 

@@ -35,7 +35,7 @@ Floating::Floating(string const & type, string const & placement,
 		   bool allowswide, bool allowssideways)
 	: floattype_(type), placement_(placement), ext_(ext), within_(within),
 	  style_(style), name_(name), listname_(listName), listcommand_(listCmd),
-	  refprefix_(refPrefix), allowedplacement_(allowedplacement), requires_(requires),
+	  refprefix_(refPrefix), allowedplacement_(allowedplacement), required_(requires),
 	  usesfloatpkg_(usesfloat), ispredefined_(ispredefined),
 	  allowswide_(allowswide), allowssideways_(allowssideways),
 	  html_tag_(htmlTag), html_attrib_(htmlAttrib), html_style_(htmlStyle)

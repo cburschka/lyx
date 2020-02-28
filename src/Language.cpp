@@ -45,13 +45,13 @@ Language const * reset_language = 0;
 
 bool Language::isPolyglossiaExclusive() const
 {
-	return babel().empty() && !polyglossia().empty() && requires().empty();
+	return babel().empty() && !polyglossia().empty() && required().empty();
 }
 
 
 bool Language::isBabelExclusive() const
 {
-	return !babel().empty() && polyglossia().empty() && requires().empty();
+	return !babel().empty() && polyglossia().empty() && required().empty();
 }
 
 

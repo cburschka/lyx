@@ -283,8 +283,8 @@ void InsetMathDecoration::validate(LaTeXFeatures & features) const
 				"span.symbol{height: 0.5ex;}");
 		}
 	} else {
-		if (!key_->requires.empty())
-			features.require(key_->requires);
+		if (!key_->required.empty())
+			features.require(key_->required);
 	}
 	InsetMathNest::validate(features);
 }

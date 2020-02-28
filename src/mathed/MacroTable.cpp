@@ -110,10 +110,10 @@ vector<docstring> const & MacroData::defaults() const
 }
 
 
-string const MacroData::requires() const
+string const MacroData::required() const
 {
 	if (sym_)
-		return sym_->requires;
+		return sym_->required;
 	return string();
 }
 

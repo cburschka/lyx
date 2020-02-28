@@ -57,7 +57,7 @@ public:
 	/// active characters
 	std::string const activeChars() const { return active_chars_; }
 	/// requirement (package, function)
-	std::string const requires() const { return requires_; }
+	std::string const required() const { return requires_; }
 	/// provides feature
 	std::string const provides() const { return provides_; }
 	/// translatable GUI name

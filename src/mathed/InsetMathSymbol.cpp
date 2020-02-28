@@ -247,8 +247,8 @@ void InsetMathSymbol::validate(LaTeXFeatures & features) const
 			"sub.limit{font-size: 75%;}\n"
 			"sup.limit{font-size: 75%;}");
 	} else {
-		if (!sym_->requires.empty())
-			features.require(sym_->requires);
+		if (!sym_->required.empty())
+			features.require(sym_->required);
 	}
 }
 

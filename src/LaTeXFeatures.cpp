@@ -878,8 +878,8 @@ void LaTeXFeatures::useFloat(string const & name, bool subfloat)
 	if (!fl.floattype().empty()) {
 		if (fl.usesFloatPkg())
 			require("float");
-		if (!fl.requires().empty()) {
-			vector<string> reqs = getVectorFromString(fl.requires());
+		if (!fl.required().empty()) {
+			vector<string> reqs = getVectorFromString(fl.required());
 			for (auto const req : reqs)
 				require(req);
 		}
@@ -891,8 +891,8 @@ void LaTeXFeatures::useLanguage(Language const * lang)
 {
 	if (!lang->babel().empty() || !lang->polyglossia().empty())
 		UsedLanguages_.insert(lang);
-	if (!lang->requires().empty())
-		require(lang->requires());
+	if (!lang->required().empty())
+		require(lang->required());
 	// currently only supported for Babel
 	if (!lang->provides().empty() && useBabel())
 		provide(lang->provides());
