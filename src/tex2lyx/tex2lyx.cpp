@@ -371,13 +371,13 @@ bool checkModule(string const & name, bool command)
 		if (layout) {
 			found_style = true;
 			dpre = layout->preamble();
-			std::set<std::string> lreqs = layout->requires();
+			std::set<std::string> lreqs = layout->required();
 			if (!lreqs.empty())
 				cmd_reqs.insert(lreqs.begin(), lreqs.end());
 		} else if (insetlayout) {
 			found_style = true;
 			dpre = insetlayout->preamble();
-			std::set<std::string> lreqs = insetlayout->requires();
+			std::set<std::string> lreqs = insetlayout->required();
 			if (!lreqs.empty())
 				cmd_reqs.insert(lreqs.begin(), lreqs.end());
 		}
@@ -386,7 +386,7 @@ bool checkModule(string const & name, bool command)
 		bool const package_cmd = dpre.empty();
 		bool match_req = false;
 		if (package_cmd) {
-			std::set<std::string> mreqs = it->second->requires();
+			std::set<std::string> mreqs = it->second->required();
 			if (!mreqs.empty())
 				cmd_reqs.insert(mreqs.begin(), mreqs.end());
 			for (auto const & pack : cmd_reqs) {

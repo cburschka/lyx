@@ -2355,7 +2355,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			p.skip_spaces();
 			if (!preamble.titleLayoutFound())
 				preamble.titleLayoutFound(newlayout->intitle);
-			set<string> const & req = newlayout->requires();
+			set<string> const & req = newlayout->required();
 			set<string>::const_iterator it = req.begin();
 			set<string>::const_iterator en = req.end();
 			for (; it != en; ++it)
@@ -3533,7 +3533,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					parse_text_snippet(p, os, FLAG_ITEM, outer, context);
 					if (!preamble.titleLayoutFound())
 						preamble.titleLayoutFound(newlayout->intitle);
-					set<string> const & req = newlayout->requires();
+					set<string> const & req = newlayout->required();
 					set<string>::const_iterator it = req.begin();
 					set<string>::const_iterator en = req.end();
 					for (; it != en; ++it)
@@ -3559,7 +3559,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 			if (!preamble.titleLayoutFound())
 				preamble.titleLayoutFound(newlayout->intitle);
-			set<string> const & req = newlayout->requires();
+			set<string> const & req = newlayout->required();
 			for (set<string>::const_iterator it = req.begin(); it != req.end(); ++it)
 				preamble.registerAutomaticallyLoadedPackage(*it);
 			continue;
@@ -3576,7 +3576,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 			if (!preamble.titleLayoutFound())
 				preamble.titleLayoutFound(newlayout->intitle);
-			set<string> const & req = newlayout->requires();
+			set<string> const & req = newlayout->required();
 			for (set<string>::const_iterator it = req.begin(); it != req.end(); ++it)
 				preamble.registerAutomaticallyLoadedPackage(*it);
 			continue;
@@ -3590,7 +3590,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 			if (!preamble.titleLayoutFound())
 				preamble.titleLayoutFound(newlayout->intitle);
-			set<string> const & req = newlayout->requires();
+			set<string> const & req = newlayout->required();
 			for (set<string>::const_iterator it = req.begin(); it != req.end(); ++it)
 				preamble.registerAutomaticallyLoadedPackage(*it);
 			continue;

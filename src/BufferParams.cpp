@@ -1497,7 +1497,7 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 
 void BufferParams::validate(LaTeXFeatures & features) const
 {
-	features.require(documentClass().requires());
+	features.require(documentClass().required());
 
 	if (columns > 1 && language->rightToLeft())
 		features.require("rtloutputdblcol");
@@ -2496,8 +2496,8 @@ LayoutFile const * BufferParams::baseClass() const
 {
 	if (LayoutFileList::get().haveClass(pimpl_->baseClass_))
 		return &(LayoutFileList::get()[pimpl_->baseClass_]);
-	else
-		return 0;
+
+	return nullptr;
 }
 
 

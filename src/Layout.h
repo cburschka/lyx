@@ -153,7 +153,7 @@ public:
 	/// this layout for language \p lang
 	docstring const babelpreamble() const { return babelpreamble_; }
 	///
-	std::set<std::string> const & requires() const { return requires_; }
+	std::set<std::string> const & required() const { return requires_; }
 	///
 	std::set<docstring> const & autonests() const { return autonests_; }
 	///

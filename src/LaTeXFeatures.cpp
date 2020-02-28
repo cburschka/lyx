@@ -717,7 +717,7 @@ void LaTeXFeatures::useLayout(docstring const & layoutname, int level)
 			return;
 
 		Layout const & layout = tclass[layoutname];
-		require(layout.requires());
+		require(layout.required());
 
 		if (!layout.depends_on().empty()) {
 			useLayout(layout.depends_on(), level + 1);
@@ -744,7 +744,7 @@ void LaTeXFeatures::useInsetLayout(InsetLayout const & lay)
 			!= usedInsetLayouts_.end())
 		return;
 
-	require(lay.requires());
+	require(lay.required());
 	usedInsetLayouts_.push_back(lname);
 }
 
