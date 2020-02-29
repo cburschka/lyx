@@ -1449,7 +1449,7 @@ void BiblioInfo::collectCitedEntries(Buffer const & buf)
 	// FIXME We may want to collect these differently, in the first case,
 	// so that we might have them in order of appearance.
 	set<docstring> citekeys;
-	Toc const toc = *buf.tocBackend().toc("citation");
+	Toc const & toc = *buf.tocBackend().toc("citation");
 	for (auto const & t : toc) {
 		if (t.str().empty())
 			continue;
