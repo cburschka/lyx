@@ -41,58 +41,48 @@ struct ElementPosLess
 
 InsetList::InsetList(InsetList const & il) : list_(il.list_)
 {
-	List::iterator it = list_.begin();
-	List::iterator end = list_.end();
-	for (; it != end; ++it)
-		it->inset = it->inset->clone();
+	for (auto & i : list_)
+		i.inset = i.inset->clone();
 }
 
 
 InsetList::InsetList(InsetList const & il, pos_type beg, pos_type end)
 {
-	InsetList::const_iterator cit = il.begin();
-	InsetList::const_iterator cend = il.end();
-	for (; cit != cend; ++cit) {
-		if (cit->pos < beg)
+	for (auto const & ci : il) {
+		if (ci.pos < beg)
 			continue;
-		if (cit->pos >= end)
+		if (ci.pos >= end)
 			break;
 		// Add a new entry in the insetlist_.
-		insert(cit->inset->clone(), cit->pos - beg);
+		insert(ci.inset->clone(), ci.pos - beg);
 	}
 }
 
 
 InsetList::~InsetList()
 {
-	List::iterator it = list_.begin();
-	List::iterator end = list_.end();
-	for (; it != end; ++it)
-		delete it->inset;
+	for (auto & i : list_)
+		delete i.inset;
 }
 
 
 void InsetList::setBuffer(Buffer & b)
 {
-	List::iterator it = list_.begin();
-	List::iterator end = list_.end();
-	for (; it != end; ++it)
-		it->inset->setBuffer(b);
+	for (auto & i : list_)
+		i.inset->setBuffer(b);
 }
 
 
 void InsetList::resetBuffer()
 {
-	List::iterator it = list_.begin();
-	List::iterator end = list_.end();
-	for (; it != end; ++it)
-		it->inset->resetBuffer();
+	for (auto & i : list_)
+		i.inset->resetBuffer();
 }
 
 
 InsetList::iterator InsetList::insetIterator(pos_type pos)
 {
-	Element search_elem(pos, 0);
+	Element search_elem(pos, nullptr);
 	return lower_bound(list_.begin(), list_.end(), search_elem,
 			   ElementPosLess());
 }
@@ -100,7 +90,7 @@ InsetList::iterator InsetList::insetIterator(pos_type pos)
 
 InsetList::const_iterator InsetList::insetIterator(pos_type pos) const
 {
-	Element search_elem(pos, 0);
+	Element search_elem(pos, nullptr);
 	return lower_bound(list_.begin(), list_.end(), search_elem,
 			   ElementPosLess());
 }
@@ -136,10 +126,10 @@ Inset * InsetList::release(pos_type pos)
 	List::iterator it = insetIterator(pos);
 	if (it != end && it->pos == pos) {
 		Inset * tmp = it->inset;
-		it->inset = 0;
+		it->inset = nullptr;
 		return tmp;
 	}
-	return 0;
+	return nullptr;
 }
 
 
@@ -149,7 +139,7 @@ Inset * InsetList::get(pos_type pos) const
 	List::const_iterator it = insetIterator(pos);
 	if (it != end && it->pos == pos)
 		return it->inset;
-	return 0;
+	return nullptr;
 }
 
 
