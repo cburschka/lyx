@@ -107,7 +107,7 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 	// flush out remaining data. This is needed because iconv sometimes
 	// holds back chars in the stream, waiting for a combination character
 	// (see e.g. http://sources.redhat.com/bugzilla/show_bug.cgi?id=1124)
-	iconv(h_->cd, NULL, NULL, &outbuf, &outbytesleft);
+	iconv(h_->cd, nullptr, nullptr, &outbuf, &outbytesleft);
 
 	//lyxerr << dec;
 	//lyxerr << "Inbytesleft: " << inbytesleft << endl;
