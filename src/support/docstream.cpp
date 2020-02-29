@@ -120,7 +120,7 @@ protected:
 		// As a workaround, we append a nul char in order to force
 		// a switch to ASCII, and then remove it from output after
 		// the conversion.
-		intern_type * from_new = 0;
+		intern_type * from_new = nullptr;
 		intern_type const * from_old = from;
 		size_t extra = 0;
 		if (*(from_end - 1) >= 0x80 && encoding_ == "ISO-2022-JP") {

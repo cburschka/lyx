@@ -51,12 +51,12 @@ namespace GZSTREAM_NAMESPACE {
 
 gzstreambuf* gzstreambuf::open( const char* name, int open_mode) {
     if ( is_open())
-        return (gzstreambuf*)0;
+		return (gzstreambuf*)(nullptr);
     mode = open_mode;
     // no append nor read/write mode
     if ((mode & ios::ate) || (mode & ios::app)
         || ((mode & ios::in) && (mode & ios::out)))
-        return (gzstreambuf*)0;
+		return (gzstreambuf*)(nullptr);
     char  fmode[10];
     char* fmodeptr = fmode;
     if ( mode & ios::in)
@@ -66,8 +66,8 @@ gzstreambuf* gzstreambuf::open( const char* name, int open_mode) {
     *fmodeptr++ = 'b';
     *fmodeptr = '\0';
     file = gzopen( name, fmode);
-    if (file == 0)
-        return (gzstreambuf*)0;
+	if (file == nullptr)
+		return (gzstreambuf*)(nullptr);
     opened = 1;
     return this;
 }
@@ -79,7 +79,7 @@ gzstreambuf * gzstreambuf::close() {
         if ( gzclose( file) == Z_OK)
             return this;
     }
-    return (gzstreambuf*)0;
+	return (gzstreambuf*)(nullptr);
 }
 
 int gzstreambuf::underflow() { // used for input buffer only

@@ -111,7 +111,7 @@ docstring printCallStack()
 	docstring bt;
 	for (size_t i = 1; i < size && messages != NULL; i++) {
 		const std::string orig(messages[i]);
-		char* mangled = 0;
+		char* mangled = nullptr;
 		for (char *p = messages[i]; *p; ++p) {
 			if (*p == '(') {
 				*p = 0;
@@ -122,7 +122,8 @@ docstring printCallStack()
 			}
 		}
 		int status = 0;
-		const char* demangled = abi::__cxa_demangle(mangled, 0, 0, &status);
+		const char* demangled =
+			abi::__cxa_demangle(mangled, nullptr, nullptr, &status);
 		const QByteArray line = QString("(%1) %2: %3\n").arg(i, 3).arg(messages[i])
 								.arg(demangled ? demangled : orig.c_str()).toLocal8Bit();
 		free((void*)demangled);

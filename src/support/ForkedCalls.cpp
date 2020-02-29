@@ -374,7 +374,7 @@ int ForkedCall::generateChild()
 			argv.push_back(&*it);
 		prev = *it;
 	}
-	argv.push_back(0);
+	argv.push_back(nullptr);
 
 	// Debug output.
 	if (lyxerr.debugging(Debug::FILES)) {

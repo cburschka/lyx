@@ -110,7 +110,7 @@ bool isBinaryFile(FileName const & filename)
 	magic_t magic_cookie = magic_open(MAGIC_MIME_ENCODING);
 	if (magic_cookie) {
 		bool detected = true;
-		if (magic_load(magic_cookie, NULL) != 0) {
+		if (magic_load(magic_cookie, nullptr) != 0) {
 			LYXERR(Debug::FILES, "isBinaryFile: "
 				"Could not load magic database - "
 				<< magic_error(magic_cookie));

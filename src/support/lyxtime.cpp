@@ -27,7 +27,7 @@ namespace support {
 
 time_t current_time()
 {
-	return time(0);
+	return time(nullptr);
 }
 
 
