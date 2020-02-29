@@ -6,13 +6,13 @@
 # Nick A. Gusev <guusev@yandex.ru>, 2009.
 # Valeriy Kruchko <lerkru@gmail.com>, 2009.
 # Sergey Tereschenko <serg.partizan@gmail.com>, 2010.
-# Yuriy Skalko <yuriy.skalko@gmail.com>, 2017-2019.
+# Yuriy Skalko <yuriy.skalko@gmail.com>, 2017-2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-01-03 14:59+0100\n"
-"PO-Revision-Date: 2020-02-19 00:57+0200\n"
+"PO-Revision-Date: 2020-02-28 21:37+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -381,17 +381,17 @@ msgstr "&Содержание:"
 #: src/frontends/qt/ui/BibtexUi.ui:341 src/frontends/qt/GuiBibtex.cpp:357
 #: src/insets/InsetBibtex.cpp:214 src/insets/InsetBibtex.cpp:232
 msgid "all cited references"
-msgstr "все процитированные ссылки"
+msgstr "все процитированные источники"
 
 #: src/frontends/qt/ui/BibtexUi.ui:346 src/frontends/qt/GuiBibtex.cpp:359
 #: src/insets/InsetBibtex.cpp:212
 msgid "all uncited references"
-msgstr "все непроцитированные ссылки"
+msgstr "все непроцитированные источники"
 
 #: src/frontends/qt/ui/BibtexUi.ui:351 src/frontends/qt/GuiBibtex.cpp:360
 #: src/insets/InsetBibtex.cpp:210 src/insets/InsetBibtex.cpp:230
 msgid "all references"
-msgstr "все ссылки"
+msgstr "все источники"
 
 #: src/frontends/qt/ui/BibtexUi.ui:359
 msgid "Add bibliography to the table of contents"
@@ -3674,7 +3674,7 @@ msgstr "Вкл."
 
 #: src/frontends/qt/ui/PrefDisplayUi.ui:134
 msgid "Mark end of paragraphs on screen with a pilcrow character."
-msgstr "Помечать начало абзаца на экране с помощью символа pilcrow."
+msgstr "Отмечать конец абзаца на экране символом pilcrow."
 
 #: src/frontends/qt/ui/PrefDisplayUi.ui:137
 msgid "&Mark end of paragraphs"
@@ -3961,7 +3961,7 @@ msgstr "Форматы вывода по умолчанию"
 
 #: src/frontends/qt/ui/PrefFileformatsUi.ui:240
 msgid "The default output format for documents using non-TeX fonts"
-msgstr "Формат выхода по умолчанию для документов, использующих не-TeX шрифты"
+msgstr "Формат вывода по умолчанию для документов, использующих не-TeX шрифты"
 
 #: src/frontends/qt/ui/PrefFileformatsUi.ui:260
 msgid ""
@@ -4191,7 +4191,7 @@ msgstr ""
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:164
 msgid "&Unset document language explicitly"
-msgstr "Снимать язык документа явно"
+msgstr "Закрывать язык документа явно"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:177
 msgid "Editor Settings"
@@ -4201,7 +4201,8 @@ msgstr "Настройки редактора"
 msgid ""
 "Check to highlight additional languages (to the document language) visually "
 "in the work area"
-msgstr "Отметьте для визуальной подсветки иностранных языков в рабочей области"
+msgstr ""
+"Отметьте для визуального выделения иностранных языков в рабочей области"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:192
 msgid "&Mark additional languages"
@@ -28142,11 +28143,11 @@ msgstr "маркеры дополнительного пространства"
 
 #: src/Color.cpp:289
 msgid "table line"
-msgstr "строка таблицы"
+msgstr "линия таблицы"
 
 #: src/Color.cpp:290
 msgid "table on/off line"
-msgstr "включена/выключена строка таблицы"
+msgstr "линия таблицы (отключенная)"
 
 #: src/Color.cpp:291
 msgid "bottom area"
