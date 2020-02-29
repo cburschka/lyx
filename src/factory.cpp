@@ -155,7 +155,7 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			string const arg2 = cmd.getArg(1);
 			if (arg1 != "deco") {
 				LYXERR0("LFUN_IPAMACRO_INSERT: wrong argument");
-				return 0;
+				return nullptr;
 			}
 			return new InsetIPADeco(buf, arg2);
 		}
@@ -176,7 +176,7 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			string arg = cmd.getArg(0);
 			if (arg.empty()) {
 				LYXERR0("argument-insert needs an argument!");
-				return 0;
+				return nullptr;
 			}
 			return new InsetArgument(buf, arg);
 		}
@@ -212,7 +212,7 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			if (argument == "figure" || argument == "table")
 				return new InsetWrap(buf, argument);
 			lyxerr << "Non-existent wrapfig type: " << argument << endl;
-			return 0;
+			return nullptr;
 		}
 
 		case LFUN_INDEX_INSERT: {
@@ -231,7 +231,7 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 
 		case LFUN_TABULAR_INSERT: {
 			if (cmd.argument().empty())
-				return 0;
+				return nullptr;
 			istringstream ss(to_utf8(cmd.argument()));
 			int r = 0, c = 0;
 			ss >> r >> c;
@@ -281,7 +281,7 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			switch (code) {
 			case NO_CODE:
 				lyxerr << "No such inset '" << name << "'.";
-				return 0;
+				return nullptr;
 
 			case BIBITEM_CODE: {
 				InsetCommandParams icp(code);
@@ -406,7 +406,7 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			default:
 				lyxerr << "Inset '" << name << "' not permitted with LFUN_INSET_INSERT."
 						<< endl;
-				return 0;
+				return nullptr;
 
 			}
 		} //end LFUN_INSET_INSERT
@@ -478,7 +478,6 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			}
 			return new InsetSpace(isp);
 		}
-		break;
 
 		default:
 			break;
@@ -491,11 +490,11 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			lyx_exit(1);
 		} else if (message.type_ == WarningException) {
 			Alert::warning(message.title_, message.details_);
-			return 0;
+			return nullptr;
 		}
 	}
 
-	return 0;
+	return nullptr;
 }
 
 
@@ -575,7 +574,7 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 				break;
 			case REF_CODE:
 				if (inscmd["name"].empty() && inscmd["reference"].empty())
-					return 0;
+					return nullptr;
 				inset.reset(new InsetRef(buf, inscmd));
 				break;
 			case TOC_CODE:
@@ -587,7 +586,7 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 							<< "'" << endl;
 				while (lex.isOK() && lex.getString() != "\\end_inset")
 					lex.next();
-				return 0;
+				return nullptr;
 		}
 		inset->setBuffer(*buf);
 	} else {
@@ -675,7 +674,7 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 			       << "'" << endl;
 			while (lex.isOK() && lex.getString() != "\\end_inset")
 				lex.next();
-			return 0;
+			return nullptr;
 		}
 
 		// Set the buffer reference for proper parsing of some insets

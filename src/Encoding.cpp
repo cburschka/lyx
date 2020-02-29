@@ -274,7 +274,7 @@ vector<char_type> Encoding::symbolsList() const
 	// add all encodable characters
 	copy(encodable_.begin(), encodable_.end(), back_inserter(symbols));
 	// now the ones from the unicodesymbols file that are not already there
-	for (pair<char_type, CharInfo> const & elem : unicodesymbols) {
+	for (auto const & elem : unicodesymbols) {
 		if (find(symbols.begin(), symbols.end(), elem.first) == symbols.end())
 			symbols.push_back(elem.first);
 	}
@@ -636,9 +636,9 @@ Encodings::fromLyXName(string const & name, bool allowUnsafe) const
 {
 	EncodingList::const_iterator const it = encodinglist.find(name);
 	if (it == encodinglist.end())
-		return 0;
+		return nullptr;
 	if (!allowUnsafe && it->second.unsafe())
-		return 0;
+		return nullptr;
 	return &it->second;
 }
 
@@ -662,7 +662,7 @@ Encodings::fromLaTeXName(string const & n, int const & p, bool allowUnsafe) cons
 		if ((it->second.latexName() == name) && (it->second.package() & p)
 				&& (!it->second.unsafe() || allowUnsafe))
 			return &it->second;
-	return 0;
+	return nullptr;
 }
 
 
@@ -674,7 +674,7 @@ Encodings::fromIconvName(string const & n, int const & p, bool allowUnsafe) cons
 		if ((it->second.iconvName() == n) && (it->second.package() & p)
 				&& (!it->second.unsafe() || allowUnsafe))
 			return &it->second;
-	return 0;
+	return nullptr;
 }
 
 

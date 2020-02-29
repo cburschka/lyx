@@ -45,14 +45,14 @@ namespace lyx {
 
 
 DocIterator::DocIterator()
-	: boundary_(false), inset_(0), buffer_(0)
+	: boundary_(false), inset_(nullptr), buffer_(nullptr)
 {}
 
 
 // We could be able to get rid of this if only every BufferView were
 // associated to a buffer on construction.
 DocIterator::DocIterator(Buffer * buf)
-	: boundary_(false), inset_(0), buffer_(buf)
+	: boundary_(false), inset_(nullptr), buffer_(buf)
 {}
 
 
@@ -115,13 +115,13 @@ LyXErr & operator<<(LyXErr & os, DocIterator const & it)
 
 Inset * DocIterator::nextInset() const
 {
-	LASSERT(!empty(), return 0);
+	LASSERT(!empty(), return nullptr);
 	if (pos() == lastpos())
-		return 0;
+		return nullptr;
 	if (pos() > lastpos()) {
 		LYXERR0("Should not happen, but it does: pos() = "
 			<< pos() << ", lastpos() = " << lastpos());
-		return 0;
+		return nullptr;
 	}
 	if (inMathed())
 		return nextAtom().nucleus();
@@ -131,15 +131,15 @@ Inset * DocIterator::nextInset() const
 
 Inset * DocIterator::prevInset() const
 {
-	LASSERT(!empty(), return 0);
+	LASSERT(!empty(), return nullptr);
 	if (pos() == 0)
-		return 0;
+		return nullptr;
 	if (inMathed()) {
 		if (cell().empty())
 			// FIXME: this should not happen but it does.
 			// See bug 3189
 			// http://www.lyx.org/trac/ticket/3189
-			return 0;
+			return nullptr;
 		else
 			return prevAtom().nucleus();
 	}
@@ -149,7 +149,7 @@ Inset * DocIterator::prevInset() const
 
 Inset * DocIterator::realInset() const
 {
-	LASSERT(inTexted(), return 0);
+	LASSERT(inTexted(), return nullptr);
 	// if we are in a tabular, we need the cell
 	if (inset().lyxCode() == TABULAR_CODE) {
 		InsetTabular * tabular = inset().asInsetTabular();
@@ -190,7 +190,7 @@ MathAtom & DocIterator::nextAtom() const
 
 Text * DocIterator::text() const
 {
-	LASSERT(!empty(), return 0);
+	LASSERT(!empty(), return nullptr);
 	return top().text();
 }
 
@@ -319,7 +319,7 @@ MathData & DocIterator::cell() const
 
 Text * DocIterator::innerText() const
 {
-	LASSERT(!empty(), return 0);
+	LASSERT(!empty(), return nullptr);
 	return innerTextSlice().text();
 }
 
@@ -329,7 +329,7 @@ Inset * DocIterator::innerInsetOfType(int code) const
 	for (int i = depth() - 1; i >= 0; --i)
 		if (slices_[i].inset_->lyxCode() == code)
 			return slices_[i].inset_;
-	return 0;
+	return nullptr;
 }
 
 
@@ -367,7 +367,7 @@ void DocIterator::forwardPos()
 	// not at cell/paragraph end?
 	if (tip.pos() != tip.lastpos()) {
 		// move into an inset to the right if possible
-		Inset * n = 0;
+		Inset * n = nullptr;
 		if (inMathed())
 			n = (tip.cell().begin() + tip.pos())->nucleus();
 		else
@@ -486,7 +486,7 @@ void DocIterator::backwardPos()
 		return;
 
 	// move into an inset to the left if possible
-	Inset * n = 0;
+	Inset * n = nullptr;
 	if (inMathed())
 		n = (top().cell().begin() + top().pos())->nucleus();
 	else
@@ -631,7 +631,7 @@ void DocIterator::sanitize()
 	Inset * inset = inset_;
 	// re-add the slices one by one, and adjust the inset pointer.
 	for (size_t i = 0, n = sl.size(); i != n; ++i) {
-		if (inset == 0) {
+		if (inset == nullptr) {
 			// FIXME
 			LYXERR0(" Should not happen, but does e.g. after "
 				"C-n C-l C-z S-C-z\n"
@@ -732,7 +732,7 @@ docstring DocIterator::getPossibleLabel() const
 Encoding const * DocIterator::getEncoding() const
 {
 	if (empty())
-		return 0;
+		return nullptr;
 
 	BufferParams const & bp = buffer()->params();
 	if (bp.useNonTeXFonts)
@@ -804,7 +804,7 @@ StableDocIterator::StableDocIterator(DocIterator const & dit) :
 	data_(dit.internalData())
 {
 	for (size_t i = 0, n = data_.size(); i != n; ++i)
-		data_[i].inset_ = 0;
+		data_[i].inset_ = nullptr;
 }
 
 
