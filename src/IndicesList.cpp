@@ -140,7 +140,7 @@ Index * IndicesList::find(docstring const & name)
 {
 	List::iterator it =
 		find_if(list.begin(), list.end(), IndexNamesEqual(name));
-	return it == list.end() ? 0 : &*it;
+	return it == list.end() ? nullptr : &*it;
 }
 
 
@@ -148,7 +148,7 @@ Index const * IndicesList::find(docstring const & name) const
 {
 	List::const_iterator it =
 		find_if(list.begin(), list.end(), IndexNamesEqual(name));
-	return it == list.end() ? 0 : &*it;
+	return it == list.end() ? nullptr : &*it;
 }
 
 
@@ -156,7 +156,7 @@ Index * IndicesList::findShortcut(docstring const & shortcut)
 {
 	List::iterator it =
 		find_if(list.begin(), list.end(), IndexHasShortcut(shortcut));
-	return it == list.end() ? 0 : &*it;
+	return it == list.end() ? nullptr : &*it;
 }
 
 
@@ -164,7 +164,7 @@ Index const * IndicesList::findShortcut(docstring const & shortcut) const
 {
 	List::const_iterator it =
 		find_if(list.begin(), list.end(), IndexHasShortcut(shortcut));
-	return it == list.end() ? 0 : &*it;
+	return it == list.end() ? nullptr : &*it;
 }
 
 
@@ -189,10 +189,10 @@ bool IndicesList::add(docstring const & n, docstring const & s)
 			in.setIndex(name);
 			docstring sc = s.empty() ?
 				trim(lowercase(name.substr(0, 3))) : s;
-			if (findShortcut(sc) != 0) {
+			if (findShortcut(sc) != nullptr) {
 				int k = 1;
 				docstring scn = sc + convert<docstring>(k);
-				while (findShortcut(scn) != 0) {
+				while (findShortcut(scn) != nullptr) {
 					++k;
 					scn = sc + convert<docstring>(k);
 				}
@@ -211,7 +211,7 @@ bool IndicesList::add(docstring const & n, docstring const & s)
 
 bool IndicesList::addDefault(docstring const & n)
 {
-	if (findShortcut(from_ascii("idx")) != 0)
+	if (findShortcut(from_ascii("idx")) != nullptr)
 		// we already have a default
 		return false;
 	return add(n, from_ascii("idx"));

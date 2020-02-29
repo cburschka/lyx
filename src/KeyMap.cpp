@@ -68,7 +68,7 @@ size_t KeyMap::bind(string const & seq, FuncRequest const & func)
 	LYXERR(Debug::KBMAP, "BIND: Sequence `" << seq << "' Action `"
 	       << func.action() << '\'');
 
-	KeySequence k(0, 0);
+	KeySequence k(nullptr, nullptr);
 
 	string::size_type const res = k.parse(seq);
 	if (res == string::npos) {
@@ -84,7 +84,7 @@ size_t KeyMap::bind(string const & seq, FuncRequest const & func)
 
 size_t KeyMap::unbind(string const & seq, FuncRequest const & func)
 {
-	KeySequence k(0, 0);
+	KeySequence k(nullptr, nullptr);
 
 	string::size_type const res = k.parse(seq);
 	if (res == string::npos)
@@ -497,7 +497,7 @@ docstring KeyMap::printBindings(FuncRequest const & func,
 
 KeyMap::Bindings KeyMap::findBindings(FuncRequest const & func) const
 {
-	return findBindings(func, KeySequence(0, 0));
+	return findBindings(func, KeySequence(nullptr, nullptr));
 }
 
 
@@ -529,7 +529,7 @@ KeyMap::Bindings KeyMap::findBindings(FuncRequest const & func,
 KeyMap::BindingList KeyMap::listBindings(bool unbound, KeyMap::ItemType tag) const
 {
 	BindingList list;
-	listBindings(list, KeySequence(0, 0), tag);
+	listBindings(list, KeySequence(nullptr, nullptr), tag);
 	if (unbound) {
 		LyXAction::const_iterator fit = lyxaction.func_begin();
 		LyXAction::const_iterator const fen = lyxaction.func_end();
@@ -544,7 +544,7 @@ KeyMap::BindingList KeyMap::listBindings(bool unbound, KeyMap::ItemType tag) con
 					break;
 				}
 			if (!has_action)
-				list.push_back(Binding(FuncRequest(action), KeySequence(0, 0), tag));
+				list.push_back(Binding(FuncRequest(action), KeySequence(nullptr, nullptr), tag));
 		}
 	}
 	return list;

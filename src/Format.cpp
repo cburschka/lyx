@@ -174,7 +174,7 @@ Format const * Formats::getFormat(string const & name) const
 	if (cit != formatlist_.end())
 		return &(*cit);
 	else
-		return 0;
+		return nullptr;
 }
 
 
