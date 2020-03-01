@@ -106,7 +106,7 @@ lyx_install("data" ${TOP_SRC_DIR}/lib doc          *      biblio clipart)
 
 lyx_install("data" ${TOP_SRC_DIR}/lib doc/${_all_languages} *    clipart)
 
-set(example_subdirs ${_all_languages} pt_BR pt_PT Articles Curricula_Vitae External_Material "Graphics_\&_Insets" Handouts Letters Modules Posters Presentations Scripts Theses Books Theses)
+set(example_subdirs ${_all_languages} pt_BR pt_PT Articles Curricula_Vitae External_Material "Graphics_and_Insets" Handouts Letters Modules Posters Presentations Scripts Theses Books Theses)
 lyx_install("data" ${TOP_SRC_DIR}/lib examples     *    . *)
 lyx_install("data" ${TOP_SRC_DIR}/lib examples/*   *    . *)
 lyx_install("font" ${TOP_SRC_DIR}/lib/fonts .      *      .)
@@ -127,6 +127,7 @@ lyx_install("data" ${TOP_SRC_DIR}/lib xtemplates  *.xtemplate .)
 lyx_install("tex"  ${TOP_SRC_DIR}/lib/tex .        *      .)
 lyx_install("data" ${TOP_SRC_DIR}/lib ui           *      .)
 lyx_install("data" ${TOP_SRC_DIR}/lib .            *      .)
+lyx_install("data" ${TOP_SRC_DIR}/3rdparty scripts/evince_sync            *      .)
 
 # Install
 if(APPLE)
