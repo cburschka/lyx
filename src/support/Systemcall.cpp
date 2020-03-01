@@ -78,7 +78,7 @@ public:
 };
 
 
-static ProgressInterface * progress_instance = 0;
+static ProgressInterface * progress_instance = nullptr;
 
 void ProgressInterface::setInstance(ProgressInterface* p)
 {
@@ -639,7 +639,7 @@ int SystemcallPrivate::exitCode()
 QProcess* SystemcallPrivate::releaseProcess()
 {
 	QProcess* released = process_;
-	process_ = 0;
+	process_ = nullptr;
 	return released;
 }
 
