@@ -49,7 +49,7 @@ if(COMMAND cmake_policy)
 	endif()
 	cmake_policy(SET CMP0020 NEW)
 	if(POLICY CMP0075)
-        	cmake_policy(SET CMP0075 OLD)
+		cmake_policy(SET CMP0075 NEW)
 	endif()
 endif()
 
