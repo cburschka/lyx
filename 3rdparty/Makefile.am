@@ -26,3 +26,10 @@ ZLIB = zlib
 endif
 
 SUBDIRS = $(BOOST) $(HUNSPELL) $(MYTHES) $(ICONV) $(ZLIB)
+
+EXTRA_DIST = \
+	scripts/evince_sync/evince_backward_search \
+	scripts/evince_sync/evince_forward_search \
+	scripts/evince_sync/evince_sync_lyx \
+	scripts/evince_sync/README
+
