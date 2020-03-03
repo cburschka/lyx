@@ -3904,8 +3904,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	if (cmd.origin() == FuncRequest::TOC) {
 		GuiToc * toc = static_cast<GuiToc*>(findOrBuild("toc", false));
-		// FIXME: do we need to pass a DispatchResult object here?
-		toc->doDispatch(bv->cursor(), cmd);
+		toc->doDispatch(bv->cursor(), cmd, dr);
 		return;
 	}
 

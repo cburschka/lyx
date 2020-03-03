@@ -76,9 +76,10 @@ void GuiToc::closeEvent(QCloseEvent * /*event*/)
 }
 
 
-void GuiToc::doDispatch(Cursor & cur, FuncRequest const & cmd)
+void GuiToc::doDispatch(Cursor & cur, FuncRequest const & cmd,
+		DispatchResult & dr)
 {
-	widget_->doDispatch(cur, cmd);
+	widget_->doDispatch(cur, cmd, dr);
 }
 
 

@@ -39,7 +39,7 @@ public:
 	/// Initialise GUI.
 	void init(QString const & str);
 	///
-	void doDispatch(Cursor & cur, FuncRequest const & fr);
+	void doDispatch(Cursor & cur, FuncRequest const & fr, DispatchResult & dr);
 	///send request to lyx::dispatch with proper guiview handle
 	///(if ToC is detached current_view can be different window)
 	void sendDispatch(FuncRequest fr);

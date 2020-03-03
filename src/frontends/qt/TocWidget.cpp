@@ -176,7 +176,8 @@ bool TocWidget::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
+void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd,
+		DispatchResult & dr)
 {
 
 	Inset * inset = itemInset();
@@ -195,6 +196,7 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 	case LFUN_CHANGE_REJECT:
 		dispatch(item.action());
 		cur.dispatch(tmpcmd);
+		dr.forceBufferUpdate();
 		break;
 
 	case LFUN_SECTION_SELECT:

@@ -50,7 +50,7 @@ public:
 	///
 	bool isBufferDependent() const { return true; }
 	///
-	void doDispatch(Cursor & cur, FuncRequest const & fr);
+	void doDispatch(Cursor & cur, FuncRequest const & fr, DispatchResult & dr);
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & fr, FuncStatus & fs) const;
 
