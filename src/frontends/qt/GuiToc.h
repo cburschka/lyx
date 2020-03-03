@@ -32,7 +32,7 @@ public:
 	GuiToc(
 		GuiView & parent, ///< the main window where to dock.
 		Qt::DockWidgetArea area = Qt::LeftDockWidgetArea, ///< Position of the dock (and also drawer)
-		Qt::WindowFlags flags = nullptr);
+			Qt::WindowFlags flags = {});
 
 	///
 	bool initialiseParams(std::string const & data);
