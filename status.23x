@@ -43,6 +43,9 @@ What's new
 
 - Fix problem with drawing of auto-opened insets (bug 11870).
 
+- Fix crash when rejecting changes and the cursor is in an inset that will be
+  deleted (bug 10316).
+
 
 * INTERNALS
 

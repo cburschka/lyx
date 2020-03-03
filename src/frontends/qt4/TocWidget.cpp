@@ -179,7 +179,6 @@ bool TocWidget::getStatus(Cursor & cur, FuncRequest const & cmd,
 void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 {
 	Inset * inset = itemInset();
-	FuncRequest tmpcmd(cmd);
 
 	QModelIndex const & index = tocTV->currentIndex();
 	TocItem const & item =
@@ -191,14 +190,25 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 	switch (cmd.action())
 	{
 	case LFUN_CHANGE_ACCEPT:
-	case LFUN_CHANGE_REJECT:
+	case LFUN_CHANGE_REJECT: {
+		// The action is almost always LYX_UNKNOWN_ACTION, which will
+		// have the effect of moving the cursor to the location of
+		// the change. (See TocItem::action.)
 		dispatch(item.action());
-		cur.dispatch(tmpcmd);
+		// If we do not reset the origin, then the request will be sent back
+		// here, and we are in an infinite loop. But we need the dispatch
+		// machinery to clean up for us, if the cursor is in an inset that
+		// will be deleted. See bug #10316.
+		FuncRequest tmpcmd(cmd);
+		tmpcmd.setOrigin(FuncRequest::INTERNAL);
+		dispatch(tmpcmd);
+        cur.forceBufferUpdate();
 		break;
+	}
 
 	case LFUN_SECTION_SELECT:
 		dispatch(item.action());
-		cur.dispatch(tmpcmd);
+		cur.dispatch(cmd);
 		// necessary to get the selection drawn.
 		cur.buffer()->changed(true);
 		gui_view_.setFocus();
@@ -219,9 +229,11 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 		outline(cmd.action());
 		break;
 
-	default:
+	default: {
+		FuncRequest tmpcmd(cmd);
 		if (inset)
 			inset->dispatch(cur, tmpcmd);
+	}
 	}
 	cur.endUndoGroup();
 }
