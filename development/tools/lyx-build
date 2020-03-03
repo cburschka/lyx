@@ -16,7 +16,7 @@ SRCDIR="/cvs/lyx/lyx-stable";
 # editor 
 if [ -z "$EDITOR" ]; then EDITOR=vi; fi
 # Options to make, when we compile
-MAKEOPTS="-j4";
+MAKEOPTS="-j8";
 # Compile?
 COMPILE="YES";
 # Make patch file?
@@ -35,7 +35,13 @@ shift $(($OPTIND - 1));
 # Determine LyX version
 cd $SRCDIR/
 VERSION=$(head configure.ac | grep AC_INIT | perl -e 'while (<>) {m/AC_INIT\(LyX,([^,]+)/; print $1;}');
-VERSION_BASE="$VERSION";
+VERSION_BASE="${VERSION%-*}";
+
+DEVEL_RELEASE="";
+if [ "$VERSION" != "$VERSION_BASE" ]; then
+	DEVEL_RELEASE="TRUE";
+	PATCH="";
+fi
 
 echo "This is version $VERSION.";
 echo -n "Ready to build source packages...";
@@ -58,7 +64,14 @@ if ! $DEBUG make lyxdist; then
 fi
 
 echo "Packages created:";
-$DEBUG cp -v lyx-$VERSION.tar.{gz,xz} $BASE;
+
+if [ ! -f "lyx-$VERSION.tar.gz" ]; then
+	NEWVER=${VERSION%-*};
+	$DEBUG mv "lyx-$VERSION_BASE.tar.gz" "lyx-$VERSION.tar.gz" || exit 1;
+	$DEBUG mv "lyx-$VERSION_BASE.tar.xz" "lyx-$VERSION.tar.xz" || exit 1;
+fi
+
+$DEBUG cp -v lyx-$VERSION.tar.{gz,xz} $BASE || exit 1;
 
 echo -n "Ready to build signatures...";
 read
@@ -70,29 +83,34 @@ echo "Signatures created:"
 $DEBUG cp -v lyx-$VERSION.tar.*.sig $BASE;
 
 if [ -n "$COMPILE" ]; then
-    echo -n "Ready to test compilation...";
-    read
+	echo -n "Ready to test compilation...";
+	read
 
-    $DEBUG rm -Rf $BASE/lyx-test/
-    $DEBUG mkdir $BASE/lyx-test/
-    $DEBUG cd $BASE/lyx-test/
-    $DEBUG tar -zxvf $BASE/lyx-build/lyx-$VERSION.tar.gz
-    if ! $DEBUG cd lyx-$VERSION_BASE; then
-    echo "Unable to enter build directory!";
-    exit 1;
-    fi
+	$DEBUG rm -Rf $BASE/lyx-test/
+	$DEBUG mkdir $BASE/lyx-test/
+	$DEBUG cd $BASE/lyx-test/
+	$DEBUG tar -zxvf $BASE/lyx-build/lyx-$VERSION.tar.gz
+	if ! $DEBUG cd lyx-$VERSION_BASE; then
+		echo "Unable to enter build directory!";
+		exit 1;
+	fi
 
-    $DEBUG ./configure --enable-build-type=rel --enable-qt5
+	$DEBUG ./configure --enable-build-type=rel --enable-qt5
 
-    if $DEBUG make $MAKEOPTS; then
-    echo "Compilation complete.";
-    echo -n "Ready to run LyX...";
-    read
-    $DEBUG src/lyx -userdir /tmp/lyx-test
-    else
-    echo "Compilation errors!!";
-    exit 1;
-    fi
+	if $DEBUG make $MAKEOPTS; then
+		echo "Compilation complete.";
+		echo -n "Ready to run LyX...";
+		read;
+		$DEBUG src/lyx -userdir /tmp/lyx-test;
+	else
+		echo "Compilation errors!!";
+		exit 1;
+	fi
+fi
+
+if [ -z "$PATCH" ]; then 
+	echo "Skipping patch files.";
+	exit 0; 
 fi
 
 LASTNUM=$(echo $VERSION_BASE | sed -e 's/.*\.//');
@@ -100,11 +118,6 @@ LAST=$((LASTNUM - 1));
 FIRST=$(echo $VERSION_BASE | sed -e 's/[0-9]*$//');
 ORIGINAL=${FIRST}0;
 LAST=$FIRST$LAST;
-
-if [ -z "$PATCH" ]; then 
-	echo "Skipping patch files.";
-	exit 0; 
-fi
 
 if [ ! -d "$BASE/lyx-patch/" ]; then
 	$DEBUG mkdir "$BASE/lyx-patch/" || exit 1;
@@ -147,7 +160,7 @@ if [ -z "$DEBUG" ]; then
     tar -zxvf $BASE/lyx-build/lyx-$VERSION.tar.gz >/dev/null;
     diff -urN -x .svn -x version.cpp lyx-$LAST lyx-$VERSION_BASE > patch;
     echo -n "Please check the patch...";
-    read
+    read;
     $EDITOR patch;
 else
     $DEBUG tar -zxvf $BASE/lyx-build/lyx-$VERSION.tar.gz;
