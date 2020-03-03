@@ -206,7 +206,7 @@ def convert_fonts(document, fm, osfoption = "osf"):
     haveFontOpts = document.end_format > 580
 
     i = 0
-    while i < len(document.preamble):
+    while True:
         i = find_re(document.preamble, rpkg, i+1)
         if i == -1:
             return
@@ -408,14 +408,14 @@ def revert_inputencoding_namechange(document):
 def convert_notoFonts(document):
     " Handle Noto fonts definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fm = createFontMapping(['Noto'])
         convert_fonts(document, fm)
 
 def revert_notoFonts(document):
     " Revert native Noto font definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fontmap = dict()
         fm = createFontMapping(['Noto'])
         if revert_fonts(document, fm, fontmap):
@@ -424,14 +424,14 @@ def revert_notoFonts(document):
 def convert_latexFonts(document):
     " Handle DejaVu and IBMPlex fonts definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fm = createFontMapping(['DejaVu', 'IBM'])
         convert_fonts(document, fm)
 
 def revert_latexFonts(document):
     " Revert native DejaVu font definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fontmap = dict()
         fm = createFontMapping(['DejaVu', 'IBM'])
         if revert_fonts(document, fm, fontmap):
@@ -440,14 +440,14 @@ def revert_latexFonts(document):
 def convert_AdobeFonts(document):
     " Handle Adobe Source fonts definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fm = createFontMapping(['Adobe'])
         convert_fonts(document, fm)
 
 def revert_AdobeFonts(document):
     " Revert Adobe Source font definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fontmap = dict()
         fm = createFontMapping(['Adobe'])
         if revert_fonts(document, fm, fontmap):
@@ -556,7 +556,7 @@ def revert_lst_literalparam(document):
 def revert_paratype(document):
     " Revert ParaType font definitions to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         preamble = ""
         i1 = find_token(document.header, "\\font_roman \"PTSerif-TLF\"", 0)
         i2 = find_token(document.header, "\\font_sans \"default\"", 0)
@@ -1821,22 +1821,20 @@ def convert_aaencoding(document):
     if document.textclass != "aa":
         return
 
-    i = 0
-    i = find_token(document.header, "\\use_default_options true", i)
+    i = find_token(document.header, "\\use_default_options true")
     if i == -1:
         return
-    j = find_token(document.header, "\\inputencoding", 0)
-    if j == -1:
-        document.warning("Malformed LyX Document! Missing \\inputencoding header.")
+    val = get_value(document.header, "\\inputencoding")
+    if not val:
+        document.warning("Malformed LyX Document! Missing '\\inputencoding' header.")
         return
-    val = get_value(document.header, "\\inputencoding", j)
     if val == "auto-legacy" or val == "latin9":
         document.header[i] = "\\use_default_options false"
-        k = find_token(document.header, "\\options", 0)
+        k = find_token(document.header, "\\options")
         if k == -1:
             document.header.insert(i, "\\options latin9")
         else:
-            document.header[k] = document.header[k] + ",latin9"
+            document.header[k] += ",latin9"
 
 
 def revert_aaencoding(document):
@@ -1845,15 +1843,13 @@ def revert_aaencoding(document):
     if document.textclass != "aa":
         return
 
-    i = 0
-    i = find_token(document.header, "\\use_default_options true", i)
+    i = find_token(document.header, "\\use_default_options true")
     if i == -1:
         return
-    j = find_token(document.header, "\\inputencoding", 0)
-    if j == -1:
+    val = get_value(document.header, "\\inputencoding")
+    if not val:
         document.warning("Malformed LyX Document! Missing \\inputencoding header.")
         return
-    val = get_value(document.header, "\\inputencoding", j)
     if val == "utf8":
         document.header[i] = "\\use_default_options false"
         k = find_token(document.header, "\\options", 0)
@@ -1874,9 +1870,10 @@ def revert_new_languages(document):
                      "oldrussian":     ("", "russian"),
                      "korean":         ("", "korean"),
                     }
-    used_languages = set()
     if document.language in new_languages:
-        used_languages.add(document.language)
+        used_languages = set((document.language, ))
+    else:
+        used_languages = set()
     i = 0
     while True:
         i = find_token(document.body, "\\lang", i+1)
@@ -1888,13 +1885,12 @@ def revert_new_languages(document):
 
     # Korean is already supported via CJK, so leave as-is for Babel
     if ("korean" in used_languages
-        and get_bool_value(document.header, "\\use_non_tex_fonts")
-        and get_value(document.header, "\\language_package") in ("default", "auto")):
-        revert_language(document, "korean", "", "korean")
-    used_languages.discard("korean")
+        and (not get_bool_value(document.header, "\\use_non_tex_fonts")
+             or get_value(document.header, "\\language_package") == "babel")):
+        used_languages.discard("korean")
 
     for lang in used_languages:
-        revert_language(document, lang, new_languages[lang][0], new_languages[lang][1])
+        revert_language(document, lang, *new_languages[lang])
 
 
 gloss_inset_def = [
@@ -2368,12 +2364,9 @@ def revert_drs(document):
 def revert_babelfont(document):
     " Reverts the use of \\babelfont to user preamble "
 
-    i = find_token(document.header, '\\use_non_tex_fonts', 0)
-    if i == -1:
-        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
+    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         return
-    if not str2bool(get_value(document.header, "\\use_non_tex_fonts", i)):
-        return
+
     i = find_token(document.header, '\\language_package', 0)
     if i == -1:
         document.warning("Malformed LyX document: Missing \\language_package.")
@@ -2477,11 +2470,7 @@ def revert_babelfont(document):
 def revert_minionpro(document):
     " Revert native MinionPro font definition (with extra options) to LaTeX "
 
-    i = find_token(document.header, '\\use_non_tex_fonts', 0)
-    if i == -1:
-        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
-        return
-    if str2bool(get_value(document.header, "\\use_non_tex_fonts", i)):
+    if get_bool_value(document.header, "\\use_non_tex_fonts"):
         return
 
     regexp = re.compile(r'(\\font_roman_opts)')
@@ -2523,16 +2512,8 @@ def revert_minionpro(document):
 def revert_font_opts(document):
     " revert font options by outputting \\setxxxfont or \\babelfont to the preamble "
 
-    i = find_token(document.header, '\\use_non_tex_fonts', 0)
-    if i == -1:
-        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
-        return
-    NonTeXFonts = str2bool(get_value(document.header, "\\use_non_tex_fonts", i))
-    i = find_token(document.header, '\\language_package', 0)
-    if i == -1:
-        document.warning("Malformed LyX document: Missing \\language_package.")
-        return
-    Babel = (get_value(document.header, "\\language_package", 0) == "babel")
+    NonTeXFonts = get_bool_value(document.header, "\\use_non_tex_fonts")
+    Babel = (get_value(document.header, "\\language_package") == "babel")
 
     # 1. Roman
     regexp = re.compile(r'(\\font_roman_opts)')
@@ -2643,11 +2624,7 @@ def revert_font_opts(document):
 def revert_plainNotoFonts_xopts(document):
     " Revert native (straight) Noto font definition (with extra options) to LaTeX "
 
-    i = find_token(document.header, '\\use_non_tex_fonts', 0)
-    if i == -1:
-        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
-        return
-    if str2bool(get_value(document.header, "\\use_non_tex_fonts", i)):
+    if get_bool_value(document.header, "\\use_non_tex_fonts"):
         return
 
     osf = False
@@ -2717,11 +2694,7 @@ def revert_plainNotoFonts_xopts(document):
 def revert_notoFonts_xopts(document):
     " Revert native (extended) Noto font definition (with extra options) to LaTeX "
 
-    i = find_token(document.header, '\\use_non_tex_fonts', 0)
-    if i == -1:
-        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
-        return
-    if str2bool(get_value(document.header, "\\use_non_tex_fonts", i)):
+    if get_bool_value(document.header, "\\use_non_tex_fonts"):
         return
 
     fontmap = dict()
@@ -2733,11 +2706,7 @@ def revert_notoFonts_xopts(document):
 def revert_IBMFonts_xopts(document):
     " Revert native IBM font definition (with extra options) to LaTeX "
 
-    i = find_token(document.header, '\\use_non_tex_fonts', 0)
-    if i == -1:
-        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
-        return
-    if str2bool(get_value(document.header, "\\use_non_tex_fonts", i)):
+    if get_bool_value(document.header, "\\use_non_tex_fonts"):
         return
 
     fontmap = dict()
@@ -2750,11 +2719,7 @@ def revert_IBMFonts_xopts(document):
 def revert_AdobeFonts_xopts(document):
     " Revert native Adobe font definition (with extra options) to LaTeX "
 
-    i = find_token(document.header, '\\use_non_tex_fonts', 0)
-    if i == -1:
-        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
-        return
-    if str2bool(get_value(document.header, "\\use_non_tex_fonts", i)):
+    if get_bool_value(document.header, "\\use_non_tex_fonts"):
         return
 
     fontmap = dict()
@@ -2767,12 +2732,7 @@ def revert_AdobeFonts_xopts(document):
 def convert_osf(document):
     " Convert \\font_osf param to new format "
 
-    NonTeXFonts = False
-    i = find_token(document.header, '\\use_non_tex_fonts', 0)
-    if i == -1:
-        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
-    else:
-        NonTeXFonts = str2bool(get_value(document.header, "\\use_non_tex_fonts", i))
+    NonTeXFonts = get_bool_value(document.header, "\\use_non_tex_fonts")
 
     i = find_token(document.header, '\\font_osf', 0)
     if i == -1:
@@ -2823,12 +2783,7 @@ def convert_osf(document):
 def revert_osf(document):
     " Revert \\font_*_osf params "
 
-    NonTeXFonts = False
-    i = find_token(document.header, '\\use_non_tex_fonts', 0)
-    if i == -1:
-        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
-    else:
-        NonTeXFonts = str2bool(get_value(document.header, "\\use_non_tex_fonts", i))
+    NonTeXFonts = get_bool_value(document.header, "\\use_non_tex_fonts")
 
     i = find_token(document.header, '\\font_roman_osf', 0)
     if i == -1:
@@ -2865,11 +2820,7 @@ def revert_osf(document):
 def revert_texfontopts(document):
     " Revert native TeX font definitions (with extra options) to LaTeX "
 
-    i = find_token(document.header, '\\use_non_tex_fonts', 0)
-    if i == -1:
-        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
-        return
-    if str2bool(get_value(document.header, "\\use_non_tex_fonts", i)):
+    if get_bool_value(document.header, "\\use_non_tex_fonts"):
         return
 
     rmfonts = ["ccfonts", "cochineal", "utopia", "garamondx", "libertine", "lmodern", "palatino", "times", "xcharter" ]
@@ -2984,14 +2935,14 @@ def revert_texfontopts(document):
 def convert_CantarellFont(document):
     " Handle Cantarell font definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fm = createFontMapping(['Cantarell'])
         convert_fonts(document, fm, "oldstyle")
 
 def revert_CantarellFont(document):
     " Revert native Cantarell font definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fontmap = dict()
         fm = createFontMapping(['Cantarell'])
         if revert_fonts(document, fm, fontmap, False, True):
@@ -3000,14 +2951,14 @@ def revert_CantarellFont(document):
 def convert_ChivoFont(document):
     " Handle Chivo font definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fm = createFontMapping(['Chivo'])
         convert_fonts(document, fm, "oldstyle")
 
 def revert_ChivoFont(document):
     " Revert native Chivo font definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fontmap = dict()
         fm = createFontMapping(['Chivo'])
         if revert_fonts(document, fm, fontmap, False, True):
@@ -3017,14 +2968,14 @@ def revert_ChivoFont(document):
 def convert_FiraFont(document):
     " Handle Fira font definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fm = createFontMapping(['Fira'])
         convert_fonts(document, fm, "lf")
 
 def revert_FiraFont(document):
     " Revert native Fira font definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fontmap = dict()
         fm = createFontMapping(['Fira'])
         if revert_fonts(document, fm, fontmap, False, True):
@@ -3034,12 +2985,7 @@ def revert_FiraFont(document):
 def convert_Semibolds(document):
     " Move semibold options to extraopts "
 
-    NonTeXFonts = False
-    i = find_token(document.header, '\\use_non_tex_fonts', 0)
-    if i == -1:
-        document.warning("Malformed LyX document: Missing \\use_non_tex_fonts.")
-    else:
-        NonTeXFonts = str2bool(get_value(document.header, "\\use_non_tex_fonts", i))
+    NonTeXFonts = get_bool_value(document.header, "\\use_non_tex_fonts")
 
     i = find_token(document.header, "\\font_roman", 0)
     if i == -1:
@@ -3160,14 +3106,14 @@ def convert_NotoRegulars(document):
 def convert_CrimsonProFont(document):
     " Handle CrimsonPro font definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fm = createFontMapping(['CrimsonPro'])
         convert_fonts(document, fm, "lf")
 
 def revert_CrimsonProFont(document):
     " Revert native CrimsonPro font definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fontmap = dict()
         fm = createFontMapping(['CrimsonPro'])
         if revert_fonts(document, fm, fontmap, False, True):
@@ -3567,7 +3513,7 @@ def revert_totalheight(document):
                         val = val + "," + special
                     document.body[k] = "\tspecial " + "totalheight=" + val
                 else:
-                    document.body.insert(kk, "\tspecial totalheight=" + val) 
+                    document.body.insert(kk, "\tspecial totalheight=" + val)
                 if oldheight != "":
                     document.body[kk] = m.group(1) + oldheight
                 else:
@@ -3626,13 +3572,13 @@ def convert_totalheight(document):
                         val = val + "," + special
                     document.body[k] = "\tspecial " + "height=" + val
                 else:
-                    document.body.insert(kk + 1, "\tspecial height=" + val) 
+                    document.body.insert(kk + 1, "\tspecial height=" + val)
                 if newheight != "":
                     document.body[kk] = m.group(1) + newheight
                 else:
                     del document.body[kk]
         elif newheight != "":
-            document.body.insert(k, "\theight " + newheight) 
+            document.body.insert(k, "\theight " + newheight)
         i = j + 1
 
 

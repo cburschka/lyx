@@ -73,10 +73,10 @@ def main():
     parser.add_argument("-n", "--try-hard", action="store_true",
                       help = "Try hard (ignore any conversion errors).")
     parser.add_argument("-s", "--systemlyxdir", type=cmd_arg, dest= "systemlyxdir",
-                      help= "LyX system directory for conversion from" 
-		      	    " version 489 or older.")
+                      help= "LyX system directory for conversion from"
+                            " version 489 or older.")
     parser.add_argument('--version', action='version', version="""lyx2lyx, version %s
-    			Copyright (C) 2011 The LyX Team, José Matos and Dekel Tsur""" % LyX.version__)
+                        Copyright (C) 2011 The LyX Team, José Matos and Dekel Tsur""" % LyX.version__)
     parser.add_argument("input", nargs='?', type=cmd_arg, default=None)
 
     options = parser.parse_args()
