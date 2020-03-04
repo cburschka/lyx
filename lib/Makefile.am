@@ -521,6 +521,7 @@ dist_images_DATA1X = \
 	images/bidi_ltr_layout-toggle_Description.svgz \
 	images/bidi_ltr_layout-toggle_Enumerate.svgz \
 	images/bidi_ltr_layout-toggle_Itemize.svgz \
+	images/bidi_ltr_layout-toggle_Labeling.svgz \
 	images/bidi_ltr_layout-toggle_List.svgz \
 	images/bidi_ltr_layout-toggle_Section.svgz \
 	images/bidi_rtl_depth-decrement.svgz \
@@ -528,6 +529,7 @@ dist_images_DATA1X = \
 	images/bidi_rtl_layout-toggle_Description.svgz \
 	images/bidi_rtl_layout-toggle_Enumerate.svgz \
 	images/bidi_rtl_layout-toggle_Itemize.svgz \
+	images/bidi_rtl_layout-toggle_Labeling.svgz \
 	images/bidi_rtl_layout-toggle_List.svgz \
 	images/bidi_rtl_layout-toggle_Section.svgz \
 	images/bookmark-goto.svgz \
@@ -626,6 +628,7 @@ dist_images_DATA1X = \
 	images/layout-toggle_Description.svgz \
 	images/layout-toggle_Enumerate.svgz  \
 	images/layout-toggle_Itemize.svgz \
+	images/layout-toggle_Labeling.svgz \
 	images/layout-toggle_List.svgz \
 	images/layout-toggle_LyX-Code.svgz \
 	images/layout-toggle_Chunk.svgz \
@@ -1821,6 +1824,7 @@ dist_imagesoxygen_DATA1X = \
 	images/oxygen/bidi_ltr_layout-toggle_Description.svgz \
 	images/oxygen/bidi_ltr_layout-toggle_Enumerate.svgz \
 	images/oxygen/bidi_ltr_layout-toggle_Itemize.svgz \
+	images/oxygen/bidi_ltr_layout-toggle_Labeling.svgz \
 	images/oxygen/bidi_ltr_layout-toggle_List.svgz \
 	images/oxygen/bidi_ltr_layout-toggle_Section.svgz \
 	images/oxygen/bidi_rtl_depth-decrement.svgz \
@@ -1828,6 +1832,7 @@ dist_imagesoxygen_DATA1X = \
 	images/oxygen/bidi_rtl_layout-toggle_Description.svgz \
 	images/oxygen/bidi_rtl_layout-toggle_Enumerate.svgz \
 	images/oxygen/bidi_rtl_layout-toggle_Itemize.svgz \
+	images/oxygen/bidi_rtl_layout-toggle_Labeling.svgz \
 	images/oxygen/bidi_rtl_layout-toggle_List.svgz \
 	images/oxygen/bidi_rtl_layout-toggle_Section.svgz \
 	images/oxygen/bookmark-goto.svgz \
@@ -1922,6 +1927,7 @@ dist_imagesoxygen_DATA1X = \
 	images/oxygen/layout-toggle_Description.svgz \
 	images/oxygen/layout-toggle_Enumerate.svgz \
 	images/oxygen/layout-toggle_Itemize.svgz \
+	images/oxygen/layout-toggle_Labeling.svgz \
 	images/oxygen/layout-toggle_List.svgz \
 	images/oxygen/layout-toggle_LyX-Code.svgz \
 	images/oxygen/layout-toggle_Section.svgz \
@@ -2038,6 +2044,7 @@ dist_imagesclassic_DATA = \
 	images/classic/bidi_ltr_layout-toggle_Description.png \
 	images/classic/bidi_ltr_layout-toggle_Enumerate.png \
 	images/classic/bidi_ltr_layout-toggle_Itemize.png \
+	images/classic/bidi_ltr_layout-toggle_Labeling.png \
 	images/classic/bidi_ltr_layout-toggle_List.png \
 	images/classic/bidi_ltr_layout-toggle_Section.png \
 	images/classic/bidi_rtl_depth-decrement.png \
@@ -2045,6 +2052,7 @@ dist_imagesclassic_DATA = \
 	images/classic/bidi_rtl_layout-toggle_Description.png \
 	images/classic/bidi_rtl_layout-toggle_Enumerate.png \
 	images/classic/bidi_rtl_layout-toggle_Itemize.png \
+	images/classic/bidi_rtl_layout-toggle_Labeling.png \
 	images/classic/bidi_rtl_layout-toggle_List.png \
 	images/classic/bidi_rtl_layout-toggle_Section.png \
 	images/classic/bookmark-goto.png  \
@@ -2135,6 +2143,7 @@ dist_imagesclassic_DATA = \
 	images/classic/layout-toggle_Description.png  \
 	images/classic/layout-toggle_Enumerate.png  \
 	images/classic/layout-toggle_Itemize.png  \
+	images/classic/layout-toggle_Labeling.png  \
 	images/classic/layout-toggle_List.png  \
 	images/classic/layout-toggle_LyX-Code.png  \
 	images/classic/layout-toggle_Chunk.png  \
