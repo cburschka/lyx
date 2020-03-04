@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 575
+\lyxformat 592
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -25,7 +25,9 @@
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \font_cjk mj
@@ -82,6 +84,8 @@
 \tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
@@ -214,7 +218,11 @@ https://www.lyx.org
  \SpecialChar LyX
 에 대한 정보를 얻고, \SpecialChar LyX
  메일링 리스트에 가입하고, \SpecialChar LyX
- 그림으로 배우기(Graphical Tour):
+ 그림으로 배우기(
+\lang english
+Graphical Tour
+\lang korean
+):
 \begin_inset Flex URL
 status collapsed
 

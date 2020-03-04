@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 575
+\lyxformat 592
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -7,8 +7,11 @@
 \textclass article
 \begin_preamble
 \@ifpackageloaded{fontspec}{%
-  \newfontfamily\friulanfont{FreeSans}}{%
-  \AtBeginDocument{\addto\extrasfrilulan{\sffamily}}}
+  \newfontfamily\friulanfont{FreeSans}
+}{%
+  \AtBeginDocument{\addto\extrasfriulan{\sffamily}}
+  \AtBeginDocument{\addto\extrasenglish{\rmfamily}}
+}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -23,7 +26,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -80,6 +85,8 @@
 \tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
