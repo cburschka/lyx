@@ -1635,7 +1635,7 @@ Auflistung
  aus dem Auswahlmenü (
 \begin_inset Info
 type  "icon"
-arg   "layout Itemize"
+arg   "layout-toggle Itemize"
 \end_inset
 
 ).
@@ -1723,7 +1723,7 @@ Aufzählung
  (
 \begin_inset Info
 type  "icon"
-arg   "layout Enumerate"
+arg   "layout-toggle Enumerate"
 \end_inset
 
 ), fertig.
@@ -1745,13 +1745,13 @@ Liste
 (
 \begin_inset Info
 type  "icon"
-arg   "layout Description"
+arg   "layout-toggle Description"
 \end_inset
 
  und 
 \begin_inset Info
 type  "icon"
-arg   "layout List"
+arg   "layout-toggle List"
 \end_inset
 
 ), konvertieren, dann sehen Sie sofort, wie diese aussehen.

@@ -1574,7 +1574,7 @@ Enter
  (
 \begin_inset Info
 type  "icon"
-arg   "layout Itemize"
+arg   "layout-toggle Itemize"
 \end_inset
 
 ) из списка 
@@ -1668,7 +1668,7 @@ status collapsed
  (
 \begin_inset Info
 type  "icon"
-arg   "layout Enumerate"
+arg   "layout-toggle Enumerate"
 \end_inset
 
 ) из списка 
@@ -1694,13 +1694,13 @@ arg   "layout Enumerate"
  (
 \begin_inset Info
 type  "icon"
-arg   "layout Description"
+arg   "layout-toggle Description"
 \end_inset
 
  и 
 \begin_inset Info
 type  "icon"
-arg   "layout List"
+arg   "layout-toggle List"
 \end_inset
 
 ), чтобы посмотреть, как выглядят они.

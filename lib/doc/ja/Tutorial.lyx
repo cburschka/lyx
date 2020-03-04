@@ -1155,7 +1155,7 @@ Return
 を選びます(
 \begin_inset Info
 type  "icon"
-arg   "layout Itemize"
+arg   "layout-toggle Itemize"
 \end_inset
 
 )．すると\SpecialChar LyX
@@ -1236,7 +1236,7 @@ status collapsed
 を選択してください(
 \begin_inset Info
 type  "icon"
-arg   "layout Enumerate"
+arg   "layout-toggle Enumerate"
 \end_inset
 
 )．ほら！一瞬です．前述したように，項目を加えたり削除したりすると，\SpecialChar LyX
@@ -1255,13 +1255,13 @@ arg   "layout Enumerate"
 の出力がどのようなものになるかを見るために，この箇条書きが選択された状態のまま，これらの環境に変更してみるとよろしいでしょう(
 \begin_inset Info
 type  "icon"
-arg   "layout Description"
+arg   "layout-toggle Description"
 \end_inset
 
 または
 \begin_inset Info
 type  "icon"
-arg   "layout List"
+arg   "layout-toggle List"
 \end_inset
 
 )．これらの2つの環境では，箇条書きの各項目は，最初の単語が用語として表示され，段落の残り（

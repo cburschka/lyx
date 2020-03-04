@@ -1583,7 +1583,7 @@ Environment
  box (
 \begin_inset Info
 type  "icon"
-arg   "layout Itemize"
+arg   "layout-toggle Itemize"
 \end_inset
 
 ).
@@ -1685,7 +1685,7 @@ Environment
  box (
 \begin_inset Info
 type  "icon"
-arg   "layout Enumerate"
+arg   "layout-toggle Enumerate"
 \end_inset
 
 ).
@@ -1718,13 +1718,13 @@ Labeling
  (
 \begin_inset Info
 type  "icon"
-arg   "layout Description"
+arg   "layout-toggle Description"
 \end_inset
 
  and 
 \begin_inset Info
 type  "icon"
-arg   "layout List"
+arg   "layout-toggle List"
 \end_inset
 
 ), in order to see what they look like.

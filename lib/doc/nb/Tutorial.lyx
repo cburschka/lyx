@@ -1452,7 +1452,7 @@ Miljø
 -boksen (
 \begin_inset Info
 type  "icon"
-arg   "layout Itemize"
+arg   "layout-toggle Itemize"
 \end_inset
 
 ).
@@ -1546,7 +1546,7 @@ Miljø
 -boksen (
 \begin_inset Info
 type  "icon"
-arg   "layout Enumerate"
+arg   "layout-toggle Enumerate"
 \end_inset
 
 ).
@@ -1579,13 +1579,13 @@ Etikettering
  (
 \begin_inset Info
 type  "icon"
-arg   "layout Description"
+arg   "layout-toggle Description"
 \end_inset
 
  og 
 \begin_inset Info
 type  "icon"
-arg   "layout List"
+arg   "layout-toggle List"
 \end_inset
 
 ), for å se hvordan de ser ut.

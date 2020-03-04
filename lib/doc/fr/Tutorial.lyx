@@ -1761,7 +1761,7 @@ ListePuces
  dans le menu déroulant d'Environnement (
 \begin_inset Info
 type  "icon"
-arg   "layout Itemize"
+arg   "layout-toggle Itemize"
 \end_inset
 
 ).
@@ -1872,7 +1872,7 @@ Environnement
  (
 \begin_inset Info
 type  "icon"
-arg   "layout Enumerate"
+arg   "layout-toggle Enumerate"
 \end_inset
 
 ).
@@ -1906,13 +1906,13 @@ Liste
  (
 \begin_inset Info
 type  "icon"
-arg   "layout Description"
+arg   "layout-toggle Description"
 \end_inset
 
  et 
 \begin_inset Info
 type  "icon"
-arg   "layout List"
+arg   "layout-toggle List"
 \end_inset
 
 ), pour voir à quoi ils ressemblent.

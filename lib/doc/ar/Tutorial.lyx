@@ -1162,7 +1162,7 @@ example_raw.lyx
  من قائمة البيئات المنسدلة (
 \begin_inset Info
 type  "icon"
-arg   "layout Itemize"
+arg   "layout-toggle Itemize"
 \end_inset
 
 ).
@@ -1245,7 +1245,7 @@ status collapsed
  ثم اختيار قائمة عددية من شريط الأدوات (
 \begin_inset Info
 type  "icon"
-arg   "layout Enumerate"
+arg   "layout-toggle Enumerate"
 \end_inset
 
 ).
@@ -1261,13 +1261,13 @@ arg   "layout Enumerate"
  (
 \begin_inset Info
 type  "icon"
-arg   "layout Description"
+arg   "layout-toggle Description"
 \end_inset
 
  و 
 \begin_inset Info
 type  "icon"
-arg   "layout List"
+arg   "layout-toggle List"
 \end_inset
 
 ), جرب لترى شكلهما.
