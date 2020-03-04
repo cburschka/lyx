@@ -2,7 +2,6 @@
 
 from subprocess import Popen, PIPE
 from sys import argv, stderr, exit
-import os
 import shutil
 
 if (len(argv) != 3):
