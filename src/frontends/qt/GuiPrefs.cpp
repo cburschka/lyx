@@ -3245,7 +3245,7 @@ void PrefShortcuts::on_searchLE_textEdited()
 		// show all hidden items
 		QTreeWidgetItemIterator it(shortcutsTW, QTreeWidgetItemIterator::Hidden);
 		for (; *it; ++it)
-			shortcutsTW->setItemHidden(*it, isAlwaysHidden(**it));
+			(*it)->setHidden(isAlwaysHidden(**it));
 		// close all categories
 		for (int i = 0; i < shortcutsTW->topLevelItemCount(); ++i)
 			shortcutsTW->collapseItem(shortcutsTW->topLevelItem(i));
@@ -3264,8 +3264,8 @@ void PrefShortcuts::on_searchLE_textEdited()
 	// show matched items
 	for (int i = 0; i < matched.size(); ++i)
 		if (!isAlwaysHidden(*matched[i])) {
-			shortcutsTW->setItemHidden(matched[i], false);
-			shortcutsTW->setItemExpanded(matched[i]->parent(), true);
+			matched[i]->setHidden(false);
+			matched[i]->parent()->setExpanded(true);
 		}
 }
 
@@ -3372,7 +3372,7 @@ void PrefShortcuts::shortcutOkPressed()
 	if (item) {
 		user_bind_.bind(&k, func);
 		shortcutsTW->sortItems(0, Qt::AscendingOrder);
-		shortcutsTW->setItemExpanded(item->parent(), true);
+		item->parent()->setExpanded(true);
 		shortcutsTW->setCurrentItem(item);
 		shortcutsTW->scrollToItem(item);
 	} else {

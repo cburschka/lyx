@@ -545,7 +545,7 @@ void GuiRef::redoRefs()
 		while (*it) {
 			if ((*it)->text(0) == textToFind) {
 				refsTW->setCurrentItem(*it);
-				refsTW->setItemSelected(*it, true);
+				(*it)->setSelected(true);
 				//Make sure selected item is visible
 				refsTW->scrollToItem(*it);
 				last_reference_ = textToFind;

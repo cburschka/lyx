@@ -159,7 +159,7 @@ void BulletsModule::selectItem(int font, int character, bool select)
 		return;
 
 	QListWidget * lw = static_cast<QListWidget *>(bulletpaneSW->widget(font));
-	lw->setItemSelected(lw->item(character), select);
+	lw->item(character)->setSelected(select);
 }
 
 

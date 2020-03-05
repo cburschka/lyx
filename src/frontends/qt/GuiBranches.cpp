@@ -144,7 +144,7 @@ void GuiBranches::updateView()
 		// restore selected branch
 		if (bname == sel_branch) {
 			branchesTW->setCurrentItem(newItem);
-			branchesTW->setItemSelected(newItem, true);
+			newItem->setSelected(true);
 		}
 	}
 	unknownPB->setEnabled(!unknown_branches_.isEmpty());
