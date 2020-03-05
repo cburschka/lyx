@@ -495,14 +495,14 @@ void GuiRef::redoRefs()
 	if (noprefix)
 		refsCategories.insert(0, qt_("<No prefix>"));
 
-	QString const sort = sortingCO->isEnabled() ?
-				sortingCO->itemData(sortingCO->currentIndex()).toString()
-				: QString();
-	if (sort == "nocase")
-		std::sort(refsStrings.begin(), refsStrings.end(),
+	QString const sort_method = sortingCO->isEnabled() ?
+					sortingCO->itemData(sortingCO->currentIndex()).toString()
+					: QString();
+	if (sort_method == "nocase")
+		sort(refsStrings.begin(), refsStrings.end(),
 			  caseInsensitiveLessThan /*defined above*/);
-	else if (sort == "case")
-		std::sort(refsStrings.begin(), refsStrings.end());
+	else if (sort_method == "case")
+		sort(refsStrings.begin(), refsStrings.end());
 
 	if (groupCB->isChecked()) {
 		QList<QTreeWidgetItem *> refsCats;
