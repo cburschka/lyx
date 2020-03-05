@@ -1089,7 +1089,7 @@ PrefColors::PrefColors(GuiPreferences * form)
 			continue;
 		lcolors_.push_back(lc);
 	}
-	qSort(lcolors_.begin(), lcolors_.end(), ColorSorter);
+	sort(lcolors_.begin(), lcolors_.end(), ColorSorter);
 	vector<ColorCode>::const_iterator cit = lcolors_.begin();
 	vector<ColorCode>::const_iterator const end = lcolors_.end();
 	for (; cit != end; ++cit) {

@@ -206,7 +206,7 @@ GuiExternal::GuiExternal(GuiView & lv)
 		localizedTemplates.insert(qt_(i1->second.guiName), toqstr(i1->second.lyxName));
 	// Sort alphabetically by (localized) GUI name
 	QStringList keys = localizedTemplates.keys();
-	qSort(keys.begin(), keys.end(), SortLocaleAware);
+	sort(keys.begin(), keys.end(), SortLocaleAware);
 	for (QString & key : keys) {
 		QString const value = localizedTemplates[key];
 		externalCO->addItem(key, value);

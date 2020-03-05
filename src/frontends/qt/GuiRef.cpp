@@ -490,8 +490,8 @@ void GuiRef::redoRefs()
 		}
 	}
 	// sort categories case-intensively
-	qSort(refsCategories.begin(), refsCategories.end(),
-	      caseInsensitiveLessThan /*defined above*/);
+	sort(refsCategories.begin(), refsCategories.end(),
+		  caseInsensitiveLessThan /*defined above*/);
 	if (noprefix)
 		refsCategories.insert(0, qt_("<No prefix>"));
 
@@ -499,10 +499,10 @@ void GuiRef::redoRefs()
 				sortingCO->itemData(sortingCO->currentIndex()).toString()
 				: QString();
 	if (sort == "nocase")
-		qSort(refsStrings.begin(), refsStrings.end(),
-		      caseInsensitiveLessThan /*defined above*/);
+		std::sort(refsStrings.begin(), refsStrings.end(),
+			  caseInsensitiveLessThan /*defined above*/);
 	else if (sort == "case")
-		qSort(refsStrings.begin(), refsStrings.end());
+		std::sort(refsStrings.begin(), refsStrings.end());
 
 	if (groupCB->isChecked()) {
 		QList<QTreeWidgetItem *> refsCats;
