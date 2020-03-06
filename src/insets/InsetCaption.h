@@ -98,6 +98,8 @@ private:
 	///
 	bool is_subfloat_;
 	///
+	bool is_deleted_;
+	///
 	std::string type_;
 };
 

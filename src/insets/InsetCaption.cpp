@@ -53,7 +53,7 @@ namespace lyx {
 
 InsetCaption::InsetCaption(Buffer * buf, string const & type)
     : InsetText(buf, InsetText::PlainLayout),
-      labelwidth_(0), is_subfloat_(false), type_(type)
+      labelwidth_(0), is_subfloat_(false), is_deleted_(false), type_(type)
 {
 	setDrawFrame(true);
 	setFrameColor(Color_collapsibleframe);
@@ -150,6 +150,10 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 	FontInfo tmpfont = pi.base.font;
 	pi.base.font = pi.base.bv->buffer().params().getFont().fontInfo();
 	pi.base.font.setColor(pi.textColor(pi.base.font.color()).baseColor);
+	if (is_deleted_)
+		pi.base.font.setStrikeout(FONT_ON);
+	else if (isChanged())
+		pi.base.font.setUnderbar(FONT_ON);
 	int const xx = x + leftOffset(pi.base.bv);
 	pi.pain.text(xx, y, full_label_, pi.base.font);
 	InsetText::draw(pi, x + labelwidth_, y);
@@ -380,6 +384,7 @@ void InsetCaption::updateBuffer(ParIterator const & it, UpdateType utype, bool c
 		// counters are local to the caption
 		cnts.saveLastCounter();
 	}
+	is_deleted_ = deleted;
 	// Memorize type for addToToc().
 	floattype_ = type;
 	if (type.empty() || type == "senseless")
