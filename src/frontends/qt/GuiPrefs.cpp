@@ -3260,7 +3260,7 @@ void PrefShortcuts::on_searchLE_textEdited()
 	// hide everyone (to avoid searching in matched QList repeatedly
 	QTreeWidgetItemIterator it(shortcutsTW, QTreeWidgetItemIterator::Selectable);
 	while (*it)
-		shortcutsTW->setItemHidden(*it++, true);
+		(*it++)->setHidden(true);
 	// show matched items
 	for (int i = 0; i < matched.size(); ++i)
 		if (!isAlwaysHidden(*matched[i])) {
