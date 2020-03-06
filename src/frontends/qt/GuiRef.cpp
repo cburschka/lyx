@@ -203,7 +203,7 @@ void GuiRef::refHighlighted(QTreeWidgetItem * sel)
 /*	int const cur_item = refsTW->currentRow();
 	bool const cur_item_selected = cur_item >= 0 ?
 		refsLB->isSelected(cur_item) : false;*/
-	bool const cur_item_selected = refsTW->isItemSelected(sel);
+	bool const cur_item_selected = sel->isSelected();
 
 	if (cur_item_selected)
 		referenceED->setText(sel->text(0));
@@ -239,7 +239,7 @@ void GuiRef::refSelected(QTreeWidgetItem * sel)
 /*	int const cur_item = refsTW->currentRow();
 	bool const cur_item_selected = cur_item >= 0 ?
 		refsLB->isSelected(cur_item) : false;*/
-	bool const cur_item_selected = refsTW->isItemSelected(sel);
+	bool const cur_item_selected = sel->isSelected();
 
 	if (cur_item_selected)
 		referenceED->setText(sel->text(0));
