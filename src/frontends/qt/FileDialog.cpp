@@ -102,7 +102,7 @@ FileDialog::Result FileDialog::save(QString const & path,
 		LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
 		dlg.setFileMode(QFileDialog::AnyFile);
 		dlg.setAcceptMode(QFileDialog::AcceptSave);
-		dlg.setConfirmOverwrite(false);
+		dlg.setOption(QFileDialog::DontConfirmOverwrite, true);
 		if (selectedFilter != 0 && !selectedFilter->isEmpty())
 			dlg.selectNameFilter(*selectedFilter);
 
