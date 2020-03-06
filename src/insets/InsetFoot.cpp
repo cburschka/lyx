@@ -85,13 +85,13 @@ void InsetFoot::updateBuffer(ParIterator const & it, UpdateType utype, bool cons
 	docstring const & count = il.counter();
 	custom_label_ = translateIfPossible(il.labelstring());
 
-	Paragraph const & par = it.paragraph();
-	if (!par.isDeleted(it.pos())) {
-		if (cnts.hasCounter(count))
-			cnts.step(count, utype);
-		custom_label_ += ' ' + cnts.theCounter(count, lang->code());
-	} else
-		custom_label_ += ' ' + from_ascii("#");
+	int val = cnts.value(count);
+	if (cnts.hasCounter(count))
+		cnts.step(count, utype);
+	custom_label_ += ' ' + cnts.theCounter(count, lang->code());
+	if (deleted)
+		// un-step after deleted counter
+		cnts.set(count, val);
 	setLabel(custom_label_);
 
 	InsetCollapsible::updateBuffer(it, utype, deleted);
