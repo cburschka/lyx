@@ -2122,15 +2122,17 @@ void Paragraph::setBeginOfBody()
 	// remove unnecessary getChar() calls
 	pos_type i = 0;
 	pos_type end = size();
-	if (i < end && !(isNewline(i) || isEnvSeparator(i))) {
+	bool prev_char_deleted = false;
+	if (i < end && (!(isNewline(i) || isEnvSeparator(i)) || isDeleted(i))) {
 		++i;
 		if (i < end) {
 			char_type previous_char = d->text_[i];
 			if (!(isNewline(i) || isEnvSeparator(i))) {
 				++i;
-				while (i < end && previous_char != ' ') {
+				while (i < end && (previous_char != ' ' || prev_char_deleted)) {
 					char_type temp = d->text_[i];
-					if (isNewline(i) || isEnvSeparator(i))
+					prev_char_deleted = isDeleted(i);
+					if (!isDeleted(i) && (isNewline(i) || isEnvSeparator(i)))
 						break;
 					++i;
 					previous_char = temp;
