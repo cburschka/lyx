@@ -266,6 +266,15 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 	    && buffer().params().multibib == "child")
 		return;
 
+	if (runparams.inDeletedInset) {
+		// We cannot strike-out bibligraphies,
+		// so we just output a note.
+		os << "\\textbf{"
+		   << buffer().B_("[BIBLIOGRAPHY DELETED!]")
+		   << "}";
+		return;
+	}
+
 	string style = to_utf8(getParam("options")); // maybe empty! and with bibtotoc
 	string bibtotoc;
 	if (prefixIs(style, "bibtotoc")) {
