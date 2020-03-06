@@ -3364,6 +3364,10 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 					enable = true;
 					break;
 				}
+				if (beg != end && it.paragraph().hasChangedInsets(beg, end)) {
+					enable = true;
+					break;
+				}
 				if (in_last_par)
 					break;
 			}

@@ -598,6 +598,24 @@ bool Paragraph::isChanged(pos_type start, pos_type end) const
 	return d->changes_.isChanged(start, end);
 }
 
+// FIXME: Ideally the diverse isChanged() methods should account for that!
+bool Paragraph::hasChangedInsets(pos_type start, pos_type end) const
+{
+	LASSERT(start >= 0 && start <= size(), return false);
+	LASSERT(end > start && end <= size() + 1, return false);
+
+	InsetList::const_iterator icit = d->insetlist_.begin();
+	InsetList::const_iterator iend = d->insetlist_.end();
+	for (; icit != iend; ++icit) {
+		if (icit->pos < start)
+			continue;
+		if (icit->pos >= end)
+			break;
+		if (icit->inset && icit->inset->isChanged())
+			return true;
+	}
+	return false;
+}
 
 bool Paragraph::isChanged() const
 {
