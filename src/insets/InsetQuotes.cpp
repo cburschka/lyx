@@ -989,7 +989,7 @@ void InsetQuotes::forOutliner(docstring & os, size_t const, bool const) const
 }
 
 
-void InsetQuotes::updateBuffer(ParIterator const & it, UpdateType /* utype*/)
+void InsetQuotes::updateBuffer(ParIterator const & it, UpdateType /* utype*/, bool const /*deleted*/)
 {
 	BufferParams const & bp = buffer().masterBuffer()->params();
 	Font const & font = it.paragraph().getFontSettings(bp, it.pos());

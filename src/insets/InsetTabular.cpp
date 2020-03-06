@@ -4693,7 +4693,7 @@ void InsetTabular::edit(Cursor & cur, bool front, EntryDirection)
 }
 
 
-void InsetTabular::updateBuffer(ParIterator const & it, UpdateType utype)
+void InsetTabular::updateBuffer(ParIterator const & it, UpdateType utype, bool const /*deleted*/)
 {
 	// In a longtable, tell captions what the current float is
 	Counters & cnts = buffer().masterBuffer()->params().documentClass().counters();

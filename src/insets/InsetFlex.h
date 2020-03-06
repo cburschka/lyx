@@ -44,7 +44,7 @@ public:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	void updateBuffer(ParIterator const & it, UpdateType utype);
+	void updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted = false);
 
 protected:
 	///

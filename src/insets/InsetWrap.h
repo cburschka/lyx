@@ -82,7 +82,7 @@ private:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	/// Update the label
-	void updateBuffer(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///

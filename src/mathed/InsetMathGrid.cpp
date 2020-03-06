@@ -767,12 +767,12 @@ void InsetMathGrid::drawT(TextPainter & /*pain*/, int /*x*/, int /*y*/) const
 }
 
 
-void InsetMathGrid::updateBuffer(ParIterator const & it, UpdateType utype)
+void InsetMathGrid::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 {
 	// pass down
 	for (idx_type idx = 0; idx < nargs(); ++idx)
 		if (cellinfo_[idx].multi != CELL_PART_OF_MULTICOLUMN)
-			cell(idx).updateBuffer(it, utype);
+			cell(idx).updateBuffer(it, utype, deleted);
 }
 
 

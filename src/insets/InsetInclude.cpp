@@ -1373,7 +1373,7 @@ void InsetInclude::updateCommand()
 }
 
 
-void InsetInclude::updateBuffer(ParIterator const & it, UpdateType utype)
+void InsetInclude::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 {
 	file_exist_ = includedFileExist();
 
@@ -1388,7 +1388,7 @@ void InsetInclude::updateBuffer(ParIterator const & it, UpdateType utype)
 		return;
 
 	if (label_)
-		label_->updateBuffer(it, utype);
+		label_->updateBuffer(it, utype, deleted);
 
 	InsetListingsParams const par(to_utf8(params()["lstparams"]));
 	if (par.getParamValue("caption").empty()) {

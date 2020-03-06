@@ -1037,7 +1037,7 @@ public:
 	/// can we go further down on mouse click?
 	bool descendable(BufferView const &) const { return true; }
 	/// Update the counters of this inset and of its contents
-	void updateBuffer(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
 	///
 	void addToToc(DocIterator const & di, bool output_active,
 				  UpdateType utype, TocBackend & backend) const;

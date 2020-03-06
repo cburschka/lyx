@@ -369,7 +369,7 @@ docstring InsetCaption::getCaptionAsHTML(XHTMLStream & xs,
 }
 
 
-void InsetCaption::updateBuffer(ParIterator const & it, UpdateType utype)
+void InsetCaption::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 {
 	Buffer const & master = *buffer().masterBuffer();
 	DocumentClass const & tclass = master.params().documentClass();
@@ -406,10 +406,14 @@ void InsetCaption::updateBuffer(ParIterator const & it, UpdateType utype)
 		docstring const labelstring = isAscii(lstring) ?
 				master.B_(to_ascii(lstring)) : lstring;
 		if (cnts.hasCounter(counter)) {
+			int val = cnts.value(counter);
 			// for longtables, we step the counter upstream
 			if (!cnts.isLongtable())
 				cnts.step(counter, utype);
 			sec = cnts.theCounter(counter, lang);
+			if (deleted && !cnts.isLongtable())
+				// un-step after deleted counter
+				cnts.set(counter, val);
 		}
 		if (labelstring != master.B_("standard")) {
 			if (!sec.empty())
@@ -423,7 +427,7 @@ void InsetCaption::updateBuffer(ParIterator const & it, UpdateType utype)
 	}
 
 	// Do the real work now.
-	InsetText::updateBuffer(it, utype);
+	InsetText::updateBuffer(it, utype, deleted);
 	if (utype == OutputUpdate)
 		cnts.restoreLastCounter();
 }

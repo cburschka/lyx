@@ -62,7 +62,7 @@ public:
 	///
 	void collectBibKeys(InsetIterator const &, support::FileNameList &) const;
 	/// update the counter of this inset
-	void updateBuffer(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
 	///@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes

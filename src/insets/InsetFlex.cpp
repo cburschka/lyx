@@ -140,7 +140,7 @@ void InsetFlex::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-void InsetFlex::updateBuffer(ParIterator const & it, UpdateType utype)
+void InsetFlex::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 {
 	BufferParams const & bp = buffer().masterBuffer()->params();
 	InsetLayout const & il = getLayout();
@@ -167,7 +167,7 @@ void InsetFlex::updateBuffer(ParIterator const & it, UpdateType utype)
 		// need a layout flag
 		cnts.saveLastCounter();
 	}
-	InsetCollapsible::updateBuffer(it, utype);
+	InsetCollapsible::updateBuffer(it, utype, deleted);
 	if (save_counter)
 		cnts.restoreLastCounter();
 }

@@ -899,7 +899,7 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetBibtex::updateBuffer(ParIterator const &, UpdateType)
+void InsetBibtex::updateBuffer(ParIterator const &, UpdateType, bool const /*deleted*/)
 {
 	buffer().registerBibfiles(getBibFiles());
 	// record encoding of bib files for biblatex

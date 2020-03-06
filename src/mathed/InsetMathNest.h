@@ -38,7 +38,7 @@ public:
 	/// draw background if locked
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void updateBuffer(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
 	/// identifies NestInsets
 	InsetMathNest * asNestInset() { return this; }
 	/// identifies NestInsets

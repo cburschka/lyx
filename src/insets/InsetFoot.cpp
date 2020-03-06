@@ -49,7 +49,7 @@ docstring InsetFoot::layoutName() const
 }
 
 
-void InsetFoot::updateBuffer(ParIterator const & it, UpdateType utype)
+void InsetFoot::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 {
 	BufferParams const & bp = buffer().masterBuffer()->params();
 	Counters & cnts = bp.documentClass().counters();
@@ -94,7 +94,7 @@ void InsetFoot::updateBuffer(ParIterator const & it, UpdateType utype)
 		custom_label_ += ' ' + from_ascii("#");
 	setLabel(custom_label_);
 
-	InsetCollapsible::updateBuffer(it, utype);
+	InsetCollapsible::updateBuffer(it, utype, deleted);
 	if (utype == OutputUpdate)
 		cnts.restoreLastCounter();
 }

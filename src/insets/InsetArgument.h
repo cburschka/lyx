@@ -48,7 +48,7 @@ public:
 	///
 	docstring layoutName() const { return from_ascii("Argument"); }
 	/// Update the label string of this inset
-	void updateBuffer(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
 	///
 	void latex(otexstream &, OutputParams const &) const { }
 	///

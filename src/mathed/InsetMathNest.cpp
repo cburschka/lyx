@@ -185,10 +185,10 @@ void InsetMathNest::cellsMetrics(MetricsInfo const & mi) const
 }
 
 
-void InsetMathNest::updateBuffer(ParIterator const & it, UpdateType utype)
+void InsetMathNest::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 {
 	for (idx_type i = 0, n = nargs(); i != n; ++i)
-		cell(i).updateBuffer(it, utype);
+		cell(i).updateBuffer(it, utype, deleted);
 }
 
 

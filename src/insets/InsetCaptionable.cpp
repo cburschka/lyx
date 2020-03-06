@@ -114,7 +114,7 @@ void InsetCaptionable::addToToc(DocIterator const & cpit, bool output_active,
 	b.pop();
 }
 
-void InsetCaptionable::updateBuffer(ParIterator const & it, UpdateType utype)
+void InsetCaptionable::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 {
 	Counters & cnts =
 		buffer().masterBuffer()->params().documentClass().counters();
@@ -131,7 +131,7 @@ void InsetCaptionable::updateBuffer(ParIterator const & it, UpdateType utype)
 	// Tell captions what the current float is
 	cnts.current_float(caption_type_);
 	cnts.isSubfloat(subflt);
-	InsetCollapsible::updateBuffer(it, utype);
+	InsetCollapsible::updateBuffer(it, utype, deleted);
 	// Restore counters
 	cnts.current_float(saveflt);
 	if (utype == OutputUpdate)

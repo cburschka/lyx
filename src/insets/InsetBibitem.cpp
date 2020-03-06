@@ -327,7 +327,7 @@ void InsetBibitem::collectBibKeys(InsetIterator const & it, FileNameList & /*che
 
 
 // Update the counters of this inset and of its contents
-void InsetBibitem::updateBuffer(ParIterator const & it, UpdateType utype)
+void InsetBibitem::updateBuffer(ParIterator const & it, UpdateType utype, bool const /*deleted*/)
 {
 	BufferParams const & bp = buffer().masterBuffer()->params();
 	Counters & counters = bp.documentClass().counters();

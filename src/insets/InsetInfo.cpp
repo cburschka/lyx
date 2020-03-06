@@ -749,7 +749,7 @@ bool InsetInfo::forceLTR(OutputParams const &) const
 }
 
 
-void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
+void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted) {
 	// If the Buffer is a clone, then we neither need nor want to do any
 	// of what follows. We want, rather, just to inherit how things were
 	// in the original Buffer. This is especially important for VCS.
@@ -1168,7 +1168,7 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 
 	// Just to do something with that string
 	LYXERR(Debug::INFO, "info inset text: " << gui);
-	InsetCollapsible::updateBuffer(it, utype);
+	InsetCollapsible::updateBuffer(it, utype, deleted);
 }
 
 

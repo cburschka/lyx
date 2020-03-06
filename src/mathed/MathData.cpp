@@ -386,12 +386,12 @@ int MathData::kerning(BufferView const * bv) const
 }
 
 
-void MathData::updateBuffer(ParIterator const & it, UpdateType utype)
+void MathData::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 {
 	// pass down
 	for (size_t i = 0, n = size(); i != n; ++i) {
 		MathAtom & at = operator[](i);
-		at.nucleus()->updateBuffer(it, utype);
+		at.nucleus()->updateBuffer(it, utype, deleted);
 	}
 }
 

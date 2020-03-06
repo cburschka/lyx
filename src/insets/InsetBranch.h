@@ -88,7 +88,7 @@ private:
 	///
 	std::string contextMenuName() const;
 	///
-	void updateBuffer(ParIterator const & it, UpdateType utype);
+	void updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted = false);
 
 	/** \returns true if params_.branch is listed as 'selected' in
 		\c buffer. \p child only checks within child documents.

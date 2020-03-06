@@ -576,7 +576,7 @@ bool InsetPrintIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetPrintIndex::updateBuffer(ParIterator const &, UpdateType)
+void InsetPrintIndex::updateBuffer(ParIterator const &, UpdateType, bool const /*deleted*/)
 {
 	Index const * index =
 		buffer().masterParams().indiceslist().findShortcut(getParam("type"));

@@ -172,7 +172,7 @@ public:
 		{ return getLayout().forcelocalfontswitch(); }
 
 	/// Update the counters of this inset and of its contents
-	virtual void updateBuffer(ParIterator const &, UpdateType);
+	virtual void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
 	///
 	void setMacrocontextPositionRecursive(DocIterator const & pos);
 	///

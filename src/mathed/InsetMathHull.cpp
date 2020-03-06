@@ -279,7 +279,7 @@ namespace {
 } // namespace
 
 
-void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype)
+void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 {
 	if (!buffer_) {
 		//FIXME: buffer_ should be set at creation for this inset! Problem is
@@ -327,10 +327,10 @@ void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype)
 	// now the labels
 	for (size_t i = 0; i != label_.size(); ++i) {
 		if (label_[i])
-			label_[i]->updateBuffer(it, utype);
+			label_[i]->updateBuffer(it, utype, deleted);
 	}
 	// pass down
-	InsetMathGrid::updateBuffer(it, utype);
+	InsetMathGrid::updateBuffer(it, utype, deleted);
 }
 
 

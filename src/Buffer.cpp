@@ -5219,7 +5219,7 @@ void Buffer::Impl::setLabel(ParIterator & it, UpdateType utype) const
 }
 
 
-void Buffer::updateBuffer(ParIterator & parit, UpdateType utype) const
+void Buffer::updateBuffer(ParIterator & parit, UpdateType utype, bool const deleted) const
 {
 	// LASSERT: Is it safe to continue here, or should we just return?
 	LASSERT(parit.pit() == 0, /**/);
@@ -5265,7 +5265,7 @@ void Buffer::updateBuffer(ParIterator & parit, UpdateType utype) const
 		// now the insets
 		for (auto const & insit : parit->insetList()) {
 			parit.pos() = insit.pos;
-			insit.inset->updateBuffer(parit, utype);
+			insit.inset->updateBuffer(parit, utype, deleted || parit->isDeleted(insit.pos));
 			changed |= insit.inset->isChanged();
 		}
 

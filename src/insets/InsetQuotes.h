@@ -154,7 +154,7 @@ public:
 	void forOutliner(docstring &, size_t const maxlen, bool const) const;
 
 	/// Update the contextual information of this inset
-	void updateBuffer(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
 
 	///
 	void validate(LaTeXFeatures &) const;

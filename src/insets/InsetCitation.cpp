@@ -463,7 +463,7 @@ docstring InsetCitation::screenLabel() const
 }
 
 
-void InsetCitation::updateBuffer(ParIterator const &, UpdateType)
+void InsetCitation::updateBuffer(ParIterator const &, UpdateType, bool const /*deleted*/)
 {
 	if (!cache.recalculate && buffer().citeLabelsValid())
 		return;

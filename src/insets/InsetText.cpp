@@ -815,7 +815,7 @@ bool InsetText::insetAllowed(InsetCode code) const
 }
 
 
-void InsetText::updateBuffer(ParIterator const & it, UpdateType utype)
+void InsetText::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 {
 	ParIterator it2 = it;
 	it2.forwardPos();
@@ -829,7 +829,7 @@ void InsetText::updateBuffer(ParIterator const & it, UpdateType utype)
 			cnt.clearLastLayout();
 			// FIXME cnt.saveLastCounter()?
 		}
-		buffer().updateBuffer(it2, utype);
+		buffer().updateBuffer(it2, utype, deleted);
 		if (save_layouts) {
 			// LYXERR0("Exiting " << name());
 			cnt.restoreLastLayout();
@@ -845,7 +845,7 @@ void InsetText::updateBuffer(ParIterator const & it, UpdateType utype)
 		// we need float information even in note insets (#9760)
 		tclass.counters().current_float(savecnt.current_float());
 		tclass.counters().isSubfloat(savecnt.isSubfloat());
-		buffer().updateBuffer(it2, utype);
+		buffer().updateBuffer(it2, utype, deleted);
 		tclass.counters() = move(savecnt);
 	}
 }

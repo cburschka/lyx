@@ -111,7 +111,7 @@ public:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
-	void updateBuffer(ParIterator const & it, UpdateType);
+	void updateBuffer(ParIterator const & it, UpdateType, bool const deleted = false);
 	///
 	std::string contextMenuName() const;
 	/// Updates needed features for this inset.

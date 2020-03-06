@@ -178,7 +178,7 @@ public:
 	/// stay visually at the same position (cur==0 is allowed)
 	void updateMacros(Cursor * cur, MacroContext const & mc, UpdateType, int nesting);
 	///
-	void updateBuffer(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
 	///
 	void setBuffer(Buffer & b);
 

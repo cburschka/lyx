@@ -127,9 +127,9 @@ bool InsetWrap::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetWrap::updateBuffer(ParIterator const & it, UpdateType utype)
+void InsetWrap::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 {
-	InsetCaptionable::updateBuffer(it, utype);
+	InsetCaptionable::updateBuffer(it, utype, deleted);
 }
 
 

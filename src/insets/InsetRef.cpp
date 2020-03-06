@@ -398,7 +398,7 @@ void InsetRef::forOutliner(docstring & os, size_t const, bool const) const
 }
 
 
-void InsetRef::updateBuffer(ParIterator const & it, UpdateType)
+void InsetRef::updateBuffer(ParIterator const & it, UpdateType, bool const /*deleted*/)
 {
 	docstring const & ref = getParam("reference");
 	// register this inset into the buffer reference cache.

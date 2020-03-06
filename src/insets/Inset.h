@@ -560,7 +560,7 @@ public:
 	/// Update the counters of this inset and of its contents.
 	/// The boolean indicates whether we are preparing for output, e.g.,
 	/// of XHTML.
-	virtual void updateBuffer(ParIterator const &, UpdateType) {}
+	virtual void updateBuffer(ParIterator const &, UpdateType, bool const) {}
 
 	/// Updates the inset's dialog
 	virtual Buffer const * updateFrontend() const;

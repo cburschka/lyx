@@ -161,7 +161,7 @@ docstring InsetLabel::screenLabel() const
 }
 
 
-void InsetLabel::updateBuffer(ParIterator const & par, UpdateType utype)
+void InsetLabel::updateBuffer(ParIterator const & par, UpdateType utype, bool const /*deleted*/)
 {
 	docstring const & label = getParam("name");
 

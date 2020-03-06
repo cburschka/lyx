@@ -113,7 +113,7 @@ public:
 	///
 	void drawT(TextPainter & pi, int x, int y) const;
 	///
-	void updateBuffer(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
 	/// extract number of columns from alignment string
 	static col_type guessColumns(docstring const & halign);
 	/// accepts some LaTeX column codes: p,m,!,@,M,<,>

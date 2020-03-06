@@ -62,7 +62,7 @@ void InsetArgument::read(Lexer & lex)
 }
 
 
-void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
+void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 {
 	bool const insetlayout = !it.paragraph().layout().hasArgs();
 	Layout::LaTeXArgMap const args = insetlayout ?
@@ -157,7 +157,7 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 	}
 
 	setButtonLabel();
-	InsetCollapsible::updateBuffer(it, utype);
+	InsetCollapsible::updateBuffer(it, utype, deleted);
 }
 
 

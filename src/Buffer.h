@@ -738,7 +738,7 @@ public:
 	/// \param output: whether we are preparing for output.
 	void updateBuffer(UpdateScope scope, UpdateType utype) const;
 	///
-	void updateBuffer(ParIterator & parit, UpdateType utype) const;
+	void updateBuffer(ParIterator & parit, UpdateType utype, bool const deleted = false) const;
 
 	/// Spellcheck starting from \p from.
 	/// \p from initial position, will then points to the next misspelled

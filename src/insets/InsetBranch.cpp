@@ -402,10 +402,10 @@ void InsetBranch::string2params(string const & in, InsetBranchParams & params)
 }
 
 
-void InsetBranch::updateBuffer(ParIterator const & it, UpdateType utype)
+void InsetBranch::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 {
 	setLabel(params_.branch + (params_.inverted ? " (-)" : ""));
-	InsetCollapsible::updateBuffer(it, utype);
+	InsetCollapsible::updateBuffer(it, utype, deleted);
 }
 
 

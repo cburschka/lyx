@@ -73,7 +73,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	void updateBuffer(ParIterator const & it, UpdateType);
+	void updateBuffer(ParIterator const & it, UpdateType, bool const deleted = false);
 	///
 	void addToToc(DocIterator const & di, bool output_active,
 				  UpdateType utype, TocBackend & backend) const;

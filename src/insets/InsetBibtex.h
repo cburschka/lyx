@@ -55,7 +55,7 @@ public:
 	int plaintext(odocstringstream & ods, OutputParams const & op,
 	              size_t max_length = INT_MAX) const;
 	///
-	void updateBuffer(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
 	///
 	void addToToc(DocIterator const & di, bool output_active,
 				  UpdateType utype, TocBackend & backend) const;

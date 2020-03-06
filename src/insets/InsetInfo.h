@@ -200,7 +200,7 @@ public:
 	///
 	void setInfo(std::string const & info);
 	///
-	void updateBuffer(ParIterator const & it, UpdateType utype);
+	void updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted = false);
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///

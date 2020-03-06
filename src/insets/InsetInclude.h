@@ -104,7 +104,7 @@ public:
 	void addToToc(DocIterator const & di, bool output_active,
 				  UpdateType utype, TocBackend & backend) const;
 	///
-	void updateBuffer(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
 	///
 	std::string contextMenuName() const;
 	//@}
