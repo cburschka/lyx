@@ -140,7 +140,7 @@ public:
 		QString const name = ":" + toqstr(list_->icon(index.row()));
 		if (name == ":")
 			return scaled;
-		if (!QPixmapCache::find("completion" + name, scaled)) {
+		if (!QPixmapCache::find("completion" + name, &scaled)) {
 			// load icon from disk
 			QPixmap p = QPixmap(name);
 			if (!p.isNull()) {
