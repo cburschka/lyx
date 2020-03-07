@@ -25,6 +25,7 @@
 #include "FuncStatus.h"
 #include "InsetList.h"
 #include "Language.h"
+#include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "output_latex.h"
 #include "output_xhtml.h"
@@ -152,7 +153,7 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 	pi.base.font.setColor(pi.textColor(pi.base.font.color()).baseColor);
 	if (is_deleted_)
 		pi.base.font.setStrikeout(FONT_ON);
-	else if (isChanged())
+	else if (isChanged() && lyxrc.ct_additions_underlined)
 		pi.base.font.setUnderbar(FONT_ON);
 	int const xx = x + leftOffset(pi.base.bv);
 	pi.pain.text(xx, y, full_label_, pi.base.font);
