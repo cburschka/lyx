@@ -7,6 +7,9 @@ if (POLICY CMP0069)
     set(LYX_IPO_SUPPORTED YES)
   endif()
 endif()
+if (POLICY CMP0075)
+  cmake_policy(SET CMP0075 NEW)
+endif()
 
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)
 
