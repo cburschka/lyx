@@ -259,6 +259,7 @@ void Dialog::checkStatus()
 	if (canApply()) {
 		bool const readonly = isBufferReadonly();
 		enableView(!readonly || canApplyToReadOnly());
+		updateView();
 	} else
 		enableView(false);
 }
