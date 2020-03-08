@@ -495,7 +495,13 @@ PreambleModule::PreambleModule(QWidget * parent)
 	// https://stackoverflow.com/questions/13027091/how-to-override-tab-width-in-qt
 	const int tabStop = 4;
 	QFontMetrics metrics(preambleTE->currentFont());
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
+	// horizontalAdvance() is available starting in 5.11.0
+	// setTabStopDistance() is available starting in 5.10.0
+	preambleTE->setTabStopDistance(tabStop * metrics.horizontalAdvance(' '));
+#else
 	preambleTE->setTabStopWidth(tabStop * metrics.width(' '));
+#endif
 }
 
 
