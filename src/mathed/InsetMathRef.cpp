@@ -203,7 +203,7 @@ int InsetMathRef::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-void InsetMathRef::updateBuffer(ParIterator const & it, UpdateType /*utype*/)
+void InsetMathRef::updateBuffer(ParIterator const & it, UpdateType /*utype*/, bool /*deleted*/)
 {
 	if (!buffer_) {
 		LYXERR0("InsetMathRef::updateBuffer: no buffer_!");

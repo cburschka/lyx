@@ -27,7 +27,7 @@ public:
 	///
 	explicit InsetMathRef(Buffer * buf, docstring const & data);
 	///
-	void updateBuffer(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
 	///
 	//void write(WriteStream & os) const;
 	///
