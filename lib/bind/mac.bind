@@ -189,10 +189,10 @@ Format 4
 #  -: "Option-Shift-Command-V"       # Apply the style of the surrounding text to the inserted object (Paste and Match Style)
 #  -: "Control-Command-V"            # Apply formatting settings to the selected object (Paste Ruler Command)
 \bind "C-M-v"                        "primary-selection-paste"
-#  ?: "Command-W"                    # Close the frontmost window
-\bind "C-w"                          "buffer-close" # should be "window-close"
-#  +: "Shift-Command-W"              # Close a file and its associated windows
-\bind "C-S-w"                        "buffer-close"
+#  +: "Command-W"                    # Close the frontmost window - modern applications map this to close tab or window if it's the last one
+\bind "C-w"                          "buffer-close"
+#  +: "Shift-Command-W"              # Close a file and its associated windows - modern applications map this close window
+\bind "C-S-w"                        "window-close"
 #  +: "Option-Command-W"             # Close all windows in the application without quitting it
 \bind "C-A-w"                        "buffer-close-all"
 #  +: "Command-X"                    # Remove the selection and store in the Clipboard
