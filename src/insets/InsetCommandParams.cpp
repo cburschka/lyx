@@ -627,6 +627,7 @@ docstring & InsetCommandParams::operator[](string const & name)
 void InsetCommandParams::clear()
 {
 	params_.clear();
+	preview(false);
 }
 
 
