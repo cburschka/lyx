@@ -2765,14 +2765,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_OUTLINE_UP:
 		outline(OutlineUp, cur, this);
-		setCursor(cur, cur.pit(), 0);
+		setCursor(cur, cur.pit(), cur.pos());
 		cur.forceBufferUpdate();
 		needsUpdate = true;
 		break;
 
 	case LFUN_OUTLINE_DOWN:
 		outline(OutlineDown, cur, this);
-		setCursor(cur, cur.pit(), 0);
+		setCursor(cur, cur.pit(), cur.pos());
 		cur.forceBufferUpdate();
 		needsUpdate = true;
 		break;
