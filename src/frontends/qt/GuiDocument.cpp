@@ -3650,6 +3650,7 @@ void GuiDocument::applyView()
 	}
 	bp_.maintain_unincluded_children =
 		masterChildModule->maintainAuxCB->isChecked();
+	updateIncludeonlyDisplay();
 
 	// Float Settings
 	bp_.float_placement = floatModule->getPlacement();
@@ -4178,6 +4179,7 @@ void GuiDocument::paramsToDialog()
 		masterChildModule->setEnabled(true);
 		includeonlys_ = bp_.getIncludedChildren();
 		updateIncludeonlys();
+		updateIncludeonlyDisplay();
 	}
 	masterChildModule->maintainAuxCB->setChecked(
 		bp_.maintain_unincluded_children);
@@ -4514,12 +4516,8 @@ void GuiDocument::updateSelectedModules()
 }
 
 
-void GuiDocument::updateIncludeonlys()
+void GuiDocument::updateIncludeonlyDisplay()
 {
-	masterChildModule->childrenTW->clear();
-	QString const no = qt_("No");
-	QString const yes = qt_("Yes");
-
 	if (includeonlys_.empty()) {
 		masterChildModule->includeallRB->setChecked(true);
 		masterChildModule->childrenTW->setEnabled(false);
@@ -4529,6 +4527,15 @@ void GuiDocument::updateIncludeonlys()
 		masterChildModule->childrenTW->setEnabled(true);
 		masterChildModule->maintainAuxCB->setEnabled(true);
 	}
+}
+
+
+void GuiDocument::updateIncludeonlys()
+{
+	masterChildModule->childrenTW->clear();
+	QString const no = qt_("No");
+	QString const yes = qt_("Yes");
+
 	ListOfBuffers children = buffer().getChildren();
 	ListOfBuffers::const_iterator it  = children.begin();
 	ListOfBuffers::const_iterator end = children.end();
@@ -4547,17 +4554,10 @@ void GuiDocument::updateIncludeonlys()
 		else
 			all_unincluded = false;
 	}
-	// Both if all childs are included and if none is included
+	// Both if all children are included and if none is included
 	// is equal to "include all" (i.e., omit \includeonly).
-	// Thus, reset the GUI.
-	if (!has_unincluded || all_unincluded) {
-		masterChildModule->includeallRB->setChecked(true);
-		masterChildModule->childrenTW->setEnabled(false);
+	if (!has_unincluded || all_unincluded)
 		includeonlys_.clear();
-	}
-	// If all are included, we need to update again.
-	if (!has_unincluded)
-		updateIncludeonlys();
 }
 
 
