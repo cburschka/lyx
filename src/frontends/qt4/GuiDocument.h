@@ -198,6 +198,8 @@ private:
 	///
 	void updateSelectedModules();
 	///
+	void updateIncludeonlyDisplay();
+	///
 	void updateIncludeonlys();
 	///
 	void updateDefaultBiblio(std::string const & style,
