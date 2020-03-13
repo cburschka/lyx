@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 571
+\lyxformat 593
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -157,7 +157,7 @@ initials
 graphicboxes
 varwidth
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
 \inputencoding utf8
@@ -169,7 +169,9 @@ varwidth
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -218,6 +220,7 @@ varwidth
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \notefontcolor #0000ff
 \index Index
 \shortcut idx
@@ -237,6 +240,8 @@ varwidth
 \tablestyle default
 \tracking_changes true
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
@@ -41274,23 +41279,118 @@ Input
 \end_inset
 
 ).
- If the option 
+ 
+\change_inserted -712698321 1584102244
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1584102427
+In the section 
+\family sans
+Global Counters & References
+\family default
+ you can set how page numbers, references, section counters etc.
+ are handled.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1584102377
+With the option 
+\family sans
+Strictly maintain
+\family default
+, 
+\change_deleted -712698321 1584102385
+If the option 
 \family sans
 Maintain counters and references
 \family default
- is enabled, \SpecialChar LyX
+ is enabled, 
+\change_unchanged
+\SpecialChar LyX
  will assure that all page numbers, references etc.
 \begin_inset space ~
 \end_inset
 
-are correct as if the whole document was processed.
+are correct as if the whole document was 
+\change_deleted -712698321 1584108508
+processed
+\change_inserted -712698321 1584108509
+output
+\change_unchanged
+.
  This is useful if you want the selected sub-documents to look exactly as
  in the context of the whole document.
  However, \SpecialChar LyX
  needs to process the whole document in the background for this
- feature.
- So if you want to save compile time and if counters and references do not
- need to be correct, disable this checkbox.
+ feature
+\change_inserted -712698321 1584102406
+, which can take a long time
+\change_unchanged
+.
+
+\change_deleted -712698321 1584103026
+ 
+\change_inserted -712698321 1584102447
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1584102489
+With the option 
+\family sans
+Do not maintain
+\family default
+, 
+\change_unchanged
+\SpecialChar LyX
+
+\change_inserted -712698321 1584103270
+ only compiles the master and the included documents.
+ Thus the counters will differ from the complete document, and references
+ to excluded child documents will not be resolved.
+ 
+\change_deleted -712698321 1584102517
+So i
+\change_inserted -712698321 1584102518
+I
+\change_unchanged
+f you want to save compile time and if counters and references do not need
+ to be correct, 
+\change_deleted -712698321 1584102523
+disable this checkbox
+\change_inserted -712698321 1584102546
+use this option as this is the fastest one
+\change_unchanged
+.
+\change_inserted -712698321 1584102550
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1584109486
+The option 
+\family sans
+Maintain mostly
+\family default
+ is somewhat in-between the above two.
+ If this is selected, \SpecialChar LyX
+ will compile the whole document at the first output,
+ which sets up counters and references correctly.
+ In subsequent outputs, it will compile the whole document only if a change
+ has been made in an excluded child document.
+ As long as you only edit the included files, this approach is as fast as
+ the second one, while giving you more or less correct counters and references.
+ They are only more or less correct since the change of size of included
+ documents obviously also changes the pagination of excluded documents,
+ but this change cannot be tracked with this method.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard

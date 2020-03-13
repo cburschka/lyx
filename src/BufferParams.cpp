@@ -413,7 +413,7 @@ BufferParams::BufferParams()
 	change_bars = false;
 	postpone_fragile_content = true;
 	use_default_options = true;
-	maintain_unincluded_children = false;
+	maintain_unincluded_children = CM_None;
 	secnumdepth = 3;
 	tocdepth = 3;
 	language = default_language;
@@ -782,7 +782,14 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\begin_includeonly") {
 		readIncludeonly(lex);
 	} else if (token == "\\maintain_unincluded_children") {
-		lex >> maintain_unincluded_children;
+		string tmp;
+		lex >> tmp;
+		if (tmp == "no")
+			maintain_unincluded_children = CM_None;
+		else if (tmp == "mostly")
+			maintain_unincluded_children = CM_Mostly;
+		else if (tmp == "strict")
+			maintain_unincluded_children = CM_Strict;
 	} else if (token == "\\options") {
 		lex.eatLine();
 		options = lex.getString();
@@ -1235,8 +1242,19 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 			os << c << '\n';
 		os << "\\end_includeonly" << '\n';
 	}
-	os << "\\maintain_unincluded_children "
-	   << convert<string>(maintain_unincluded_children) << '\n';
+	string muc = "no";
+	switch (maintain_unincluded_children) {
+	case CM_Mostly:
+		muc = "mostly";
+		break;
+	case CM_Strict:
+		muc = "strict";
+		break;
+	case CM_None:
+	default:
+		break;
+	}
+	os << "\\maintain_unincluded_children " << muc << '\n';
 
 	// local layout information
 	docstring const local_layout = getLocalLayout(false);

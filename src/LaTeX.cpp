@@ -17,6 +17,7 @@
 
 #include "Buffer.h"
 #include "BufferList.h"
+#include "BufferParams.h"
 #include "LaTeX.h"
 #include "LyXRC.h"
 #include "LyX.h"
@@ -234,6 +235,17 @@ int LaTeX::run(TeXErrors & terr)
 			// (2) the master is always changed (due to the \includeonly line), and this alone would
 			//     trigger a complete, expensive run each time
 			head.remove_file(file);
+			// Also remove all children which are included
+			Buffer const * buf = theBufferList().getBufferFromTmp(file.absFileName());
+			if (buf && buf->params().maintain_unincluded_children == BufferParams::CM_Mostly) {
+				for (auto const incfile : buf->params().getIncludedChildren()) {
+					string const incm =
+						DocFileName(changeExtension(makeAbsPath(incfile, path)
+									    .absFileName(), ".tex")).mangledFileName();
+					FileName inc = makeAbsPath(incm, file.onlyPath().realPath());
+					head.remove_file(inc);
+				}
+			}
 		}
 		// Update the checksums
 		head.update();

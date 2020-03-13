@@ -3635,6 +3635,7 @@ def revert_postpone_fragile(document):
 
     del document.header[i]
 
+
 def revert_colrow_tracking(document):
     " Remove change tag from tabular columns/rows "
     i = 0
@@ -3653,6 +3654,38 @@ def revert_colrow_tracking(document):
             m = re.search('^<row.*change="([^"]+)".*>$', document.body[k])
             if m:
                 document.body[k] = document.body[k].replace(' change="' + m.group(1) + '"', '')
+
+
+def convert_counter_maintenance(document):
+    " Convert \\maintain_unincluded_children buffer param from boolean value tro tristate "
+
+    i = find_token(document.header, "\\maintain_unincluded_children", 0)
+    if i == -1:
+        document.warning("Malformed LyX document! Missing \\maintain_unincluded_children.")
+        return
+
+    val = get_value(document.header, "\\maintain_unincluded_children", i)
+
+    if val == "true":
+        document.header[i] = "\\maintain_unincluded_children strict"
+    else:
+        document.header[i] = "\\maintain_unincluded_children no"
+
+
+def revert_counter_maintenance(document):
+    " Revert \\maintain_unincluded_children buffer param to previous boolean value "
+
+    i = find_token(document.header, "\\maintain_unincluded_children", 0)
+    if i == -1:
+        document.warning("Malformed LyX document! Missing \\maintain_unincluded_children.")
+        return
+
+    val = get_value(document.header, "\\maintain_unincluded_children", i)
+
+    if val == "no":
+        document.header[i] = "\\maintain_unincluded_children false"
+    else:
+        document.header[i] = "\\maintain_unincluded_children true"
 
 ##
 # Conversion hub
@@ -3707,10 +3740,12 @@ convert = [
            [589, [convert_totalheight]],
            [590, [convert_changebars]],
            [591, [convert_postpone_fragile]],
-           [592, []]
+           [592, []],
+           [593, [convert_counter_maintenance]]
           ]
 
-revert =  [[591, [revert_colrow_tracking]],
+revert =  [[592, [revert_counter_maintenance]],
+           [591, [revert_colrow_tracking]],
            [590, [revert_postpone_fragile]],
            [589, [revert_changebars]],
            [588, [revert_totalheight]],

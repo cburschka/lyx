@@ -889,12 +889,16 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(masterChildModule->includeonlyRB, SIGNAL(toggled(bool)),
 		masterChildModule->childrenTW, SLOT(setEnabled(bool)));
 	connect(masterChildModule->includeonlyRB, SIGNAL(toggled(bool)),
-		masterChildModule->maintainAuxCB, SLOT(setEnabled(bool)));
+		masterChildModule->maintainGB, SLOT(setEnabled(bool)));
 	connect(masterChildModule->includeallRB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(masterChildModule->includeonlyRB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
-	connect(masterChildModule->maintainAuxCB, SIGNAL(clicked()),
+	connect(masterChildModule->maintainCRNoneRB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(masterChildModule->maintainCRMostlyRB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(masterChildModule->maintainCRStrictRB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	masterChildModule->childrenTW->setColumnCount(2);
 	masterChildModule->childrenTW->headerItem()->setText(0, qt_("Child Document"));
@@ -3648,8 +3652,15 @@ void GuiDocument::applyView()
 			bp_.addIncludedChildren(*it);
 		}
 	}
-	bp_.maintain_unincluded_children =
-		masterChildModule->maintainAuxCB->isChecked();
+	if (masterChildModule->maintainCRNoneRB->isChecked())
+		bp_.maintain_unincluded_children =
+			BufferParams::CM_None;
+	else if (masterChildModule->maintainCRMostlyRB->isChecked())
+		bp_.maintain_unincluded_children =
+			BufferParams::CM_Mostly;
+	else
+		bp_.maintain_unincluded_children =
+			BufferParams::CM_Strict;
 	updateIncludeonlyDisplay();
 
 	// Float Settings
@@ -4181,8 +4192,18 @@ void GuiDocument::paramsToDialog()
 		updateIncludeonlys();
 		updateIncludeonlyDisplay();
 	}
-	masterChildModule->maintainAuxCB->setChecked(
-		bp_.maintain_unincluded_children);
+	switch (bp_.maintain_unincluded_children) {
+	case BufferParams::CM_None:
+		masterChildModule->maintainCRNoneRB->setChecked(true);
+		break;
+	case BufferParams::CM_Mostly:
+		masterChildModule->maintainCRMostlyRB->setChecked(true);
+		break;
+	case BufferParams::CM_Strict:
+	default:
+		masterChildModule->maintainCRStrictRB->setChecked(true);
+		break;
+	}
 
 	// Float Settings
 	floatModule->setPlacement(bp_.float_placement);
@@ -4521,11 +4542,11 @@ void GuiDocument::updateIncludeonlyDisplay()
 	if (includeonlys_.empty()) {
 		masterChildModule->includeallRB->setChecked(true);
 		masterChildModule->childrenTW->setEnabled(false);
-		masterChildModule->maintainAuxCB->setEnabled(false);
+		masterChildModule->maintainGB->setEnabled(false);
 	} else {
 		masterChildModule->includeonlyRB->setChecked(true);
 		masterChildModule->childrenTW->setEnabled(true);
-		masterChildModule->maintainAuxCB->setEnabled(true);
+		masterChildModule->maintainGB->setEnabled(true);
 	}
 }
 

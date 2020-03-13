@@ -550,7 +550,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_language                = "english";
 	h_language_package        = "none";
 	//h_listings_params;
-	h_maintain_unincluded_children = "false";
+	h_maintain_unincluded_children = "no";
 	//h_margins;
 	//h_notefontcolor;
 	//h_options;

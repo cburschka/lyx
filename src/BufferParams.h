@@ -214,7 +214,12 @@ public:
 	void clearIncludedChildren() { included_children_.clear(); }
 
 	/// update aux files of unincluded children (with \includeonly)
-	bool maintain_unincluded_children;
+	enum ChildrenMaintenance {
+		CM_None,
+		CM_Mostly,
+		CM_Strict
+	};
+	ChildrenMaintenance maintain_unincluded_children;
 
 	/// returns the main font for the buffer (document)
 	Font const getFont() const;

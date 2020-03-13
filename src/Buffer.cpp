@@ -4331,7 +4331,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 	string & result_file) const
 {
 	bool const update_unincluded =
-			params().maintain_unincluded_children
+			params().maintain_unincluded_children != BufferParams::CM_None
 			&& !params().getIncludedChildren().empty();
 
 	// (1) export with all included children (omit \includeonly)
@@ -4619,7 +4619,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 Buffer::ExportStatus Buffer::preview(string const & format) const
 {
 	bool const update_unincluded =
-			params().maintain_unincluded_children
+			params().maintain_unincluded_children != BufferParams::CM_None
 			&& !params().getIncludedChildren().empty();
 	return preview(format, update_unincluded);
 }

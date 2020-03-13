@@ -1,70 +1,100 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>MasterChildUi</class>
- <widget class="QWidget" name="MasterChildUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="MasterChildUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>348</width>
-    <height>355</height>
+    <width>306</width>
+    <height>435</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item row="0" column="0" >
-    <widget class="QGroupBox" name="includeonlyGB" >
-     <property name="title" >
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="includeonlyGB">
+     <property name="title">
       <string>Master Document Output</string>
      </property>
-     <property name="flat" >
+     <property name="flat">
       <bool>true</bool>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="1" column="0" >
-       <widget class="QRadioButton" name="includeonlyRB" >
-        <property name="toolTip" >
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QRadioButton" name="includeallRB">
+        <property name="toolTip">
+         <string>Include all subdocuments in the output</string>
+        </property>
+        <property name="text">
+         <string>&amp;Include all children</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QRadioButton" name="includeonlyRB">
+        <property name="toolTip">
          <string>Include only the selected subdocuments in the output</string>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>Include only &amp;selected children</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="0" >
-       <widget class="QCheckBox" name="maintainAuxCB" >
-        <property name="toolTip" >
-         <string>Assure counters and references are as in the complete document (prolonges compilation)</string>
-        </property>
-        <property name="text" >
-         <string>&amp;Maintain counters and references</string>
-        </property>
+      <item row="2" column="0">
+       <widget class="QTreeWidget" name="childrenTW">
+        <column>
+         <property name="text">
+          <string notr="true">1</string>
+         </property>
+        </column>
        </widget>
       </item>
-      <item row="3" column="0" >
-       <widget class="QTreeWidget" name="childrenTW" />
-      </item>
-      <item row="0" column="0" >
-       <widget class="QRadioButton" name="includeallRB" >
-        <property name="toolTip" >
-         <string>Include all subdocuments in the output</string>
+      <item row="3" column="0">
+       <widget class="QGroupBox" name="maintainGB">
+        <property name="toolTip">
+         <string>Here you can set up the handling of counters and references with regard to the excluded child documents.</string>
         </property>
-        <property name="text" >
-         <string>&amp;Include all children</string>
+        <property name="title">
+         <string>Global Counters &amp;&amp; References</string>
         </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
+          <widget class="QRadioButton" name="maintainCRNoneRB">
+           <property name="toolTip">
+            <string>All counters and references of excluded child documents will be ignored, thus the counters in the output will differ from an output of the complete document. 
+This is the fastest method. Use this if you do not need correct counter values and references.</string>
+           </property>
+           <property name="text">
+            <string>Do &amp;not maintain (fast)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QRadioButton" name="maintainCRMostlyRB">
+           <property name="toolTip">
+            <string>Counters and references of excluded child documents will be set up once and adapted if an excluded document has been modified. This sets up counters and references correctly in most cases, but it does not adjust page references to unincluded children that change due to changes of included files. 
+This is significantly faster than &quot;Strictly maintain&quot;. Use this if you need correct counters and more or less correct references.</string>
+           </property>
+           <property name="text">
+            <string>Maintain mostl&amp;y (medium)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QRadioButton" name="maintainCRStrictRB">
+           <property name="toolTip">
+            <string>Assure that all counters and references are identical to the complete document. This can be much slower than the first two methods. 
+Use this if you absolutely need correct counters.</string>
+           </property>
+           <property name="text">
+            <string>Strictly &amp;maintain (slow)</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
      </layout>
@@ -73,7 +103,7 @@
   </layout>
  </widget>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>

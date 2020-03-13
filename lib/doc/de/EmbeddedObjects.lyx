@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 571
+\lyxformat 593
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -160,7 +160,7 @@ initials
 graphicboxes
 varwidth
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language ngerman
 \language_package default
 \inputencoding utf8
@@ -172,7 +172,9 @@ varwidth
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -199,7 +201,7 @@ varwidth
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize a4paper
+\papersize a4
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -221,6 +223,7 @@ varwidth
 \justification true
 \use_refstyle 1
 \use_minted 0
+\use_lineno 0
 \notefontcolor #0000ff
 \index Stichwortverzeichnis
 \shortcut idx
@@ -240,6 +243,8 @@ varwidth
 \tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
@@ -40926,22 +40931,40 @@ Einstellungen\SpecialChar menuseparator
 Unterdokumente
 \family default
 .
- Unterdokumente können unterdrückt/eingebunden werden, indem man doppelt
- in die Spalte 
+ Unterdokumente können unterdrückt/eingebunden werden, indem man in die
+ Spalte 
 \family sans
 In Ausgabe einbinden
 \family default
- hinter dem jeweiligen Unterdokument klickt (beachten Sie, dass dies nur
- für Unterdokumente möglich ist, die per 
+ hinter dem jeweiligen Unterdokument doppelklickt (beachten Sie, dass dies
+ nur für Unterdokumente möglich ist, die per 
 \family sans
 Input
 \family default
  eingebunden wurden).
- Wenn die Option 
+ 
+\end_layout
+
+\begin_layout Standard
+Im Abschnitt 
 \family sans
-Zähler und Querverweise wahren
+Globale Zähler und Verweise
 \family default
- aktiviert ist, sorgt \SpecialChar LyX
+ können Sie einstellen, wie Seitenzahlen, Querverweise, Abschnittsnummern
+ u.
+\begin_inset space \thinspace{}
+\end_inset
+
+ä.
+ behandelt werden.
+\end_layout
+
+\begin_layout Itemize
+Mit der Option 
+\family sans
+Strikt beibehalten
+\family default
+ sorgt \SpecialChar LyX
  dafür, dass alle Seitennummern, Querverweise usw.
 \begin_inset space ~
 \end_inset
@@ -40950,13 +40973,44 @@ korrekt sind, so als würde das gesamte Dokument ausgegeben werden.
  Dies ist nützlich wenn die gewählten Unterdokumente in der Ausgabe so aussehen
  sollen, als wenn sie Teil des fertigen, ganzen Dokuments wären.
  Dazu muss \SpecialChar LyX
- intern allerdings das gesamte Dokument prozessieren.
- Um Zeit beim Kompilieren zu sparen und wenn die Seitennummern nicht wichtig
- sind, wählen sie die Option nicht.
+ intern allerdings das gesamte Dokument prozessieren, was viel
+ Zeit in Anspruch nehmen kann.
+\end_layout
+
+\begin_layout Itemize
+Mit der Option 
+\family sans
+Nicht beibehalten
+\family default
+ verarbeitet \SpecialChar LyX
+ nut das Hauptdokument und die eingebundenen Unterdokumente.
+ Wenn Sie Zeit beim Kompilieren zu sparen möchten und wenn die Seitennummern
+ und Querverweise nicht wichtig sind, wählen sie diese Option, da sie die
+ schnellste ist.
+\end_layout
+
+\begin_layout Itemize
+Die Option 
+\family sans
+Weitgehend beibehalten
+\family default
+ liegt zwischen den beiden genannten.
+ Wenn dies ausgewählt ist, verarbeitet \SpecialChar LyX
+ bei der Erstausgabe das Gesamtdokument;
+ dies initiiert die korrekten Zähler und Verweise.
+ In weiteren Ausgaben wird das Gesamtdokument dann aber nur noch dann mitverarbe
+itet, wenn es Änderungen in nicht eingebundenen Unterdokumenten gibt.
+ So lange Sie nur die eingebettet Dokumente bearbeiten, ist diese Methode
+ so schnell wie die zweite, sie gibt Ihnen aber mehr oder weniger korrekte
+ Zähler und Verweise aus.
+ Mehr oder weniger korrekt sind sie deshalb, weil sich durch die Arbeit
+ an eingebundenen Dokumenten ja auch die Paginierung darauf folgender nicht
+ eingebundener Dokument ändern kann, und dies kann mit dieser Methode nicht
+ berücksichtigt werden.
 \end_layout
 
 \begin_layout Standard
-Alternativ, können Sie eingefügte Dateien in einen Zweig setzen.
+Alternativ können Sie eingefügte Dateien in einen Zweig setzen.
 \begin_inset Foot
 status collapsed
 
