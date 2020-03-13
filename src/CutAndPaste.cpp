@@ -1364,8 +1364,10 @@ void replaceSelectionWithString(Cursor & cur, docstring const & str)
 	// Insert the new string
 	pos_type pos = cur.selEnd().pos();
 	Paragraph & par = cur.selEnd().paragraph();
-	for (auto const & c : str)
+	for (auto const & c : str) {
 		par.insertChar(pos, c, font, cur.buffer()->params().track_changes);
+		++pos;
+	}
 
 	// Cut the selection
 	cutSelection(cur, false);
