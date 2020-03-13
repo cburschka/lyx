@@ -887,8 +887,6 @@ vector<docstring> availableSelections(Buffer const * buf)
 		return selList;
 
 	for (auto const & cut : theCuts) {
-		// we do not use cit-> here because gcc 2.9x does not
-		// like it (JMarc)
 		ParagraphList const & pars = cut.first;
 		docstring textSel;
 		for (auto const & para : pars) {
@@ -1221,9 +1219,7 @@ bool pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
 	    theClipboard().hasTextContents(Clipboard::LyXTextType)) {
 		string lyx = theClipboard().getAsLyX();
 		if (!lyx.empty()) {
-			// For some strange reason gcc 3.2 and 3.3 do not accept
-			// Buffer buffer(string(), false);
-			Buffer buffer("", false);
+			Buffer buffer(string(), false);
 			buffer.setUnnamed(true);
 			if (buffer.readString(lyx)) {
 				cur.recordUndo();
@@ -1254,9 +1250,7 @@ bool pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
 			docstring text = theClipboard().getAsText(types[i]);
 			available = !text.empty();
 			if (available) {
-				// For some strange reason gcc 3.2 and 3.3 do not accept
-				// Buffer buffer(string(), false);
-				Buffer buffer("", false);
+				Buffer buffer(string(), false);
 				buffer.setUnnamed(true);
 				available = buffer.importString(names[i], text, errorList);
 				if (available)
