@@ -64,8 +64,7 @@
          <item row="0" column="0">
           <widget class="QRadioButton" name="maintainCRNoneRB">
            <property name="toolTip">
-            <string>All counters and references of excluded child documents will be ignored, thus the counters in the output will differ from an output of the complete document. 
-This is the fastest method. Use this if you do not need correct counter values and references.</string>
+            <string>All counters and references of excluded child documents will be ignored, thus the counters in the output will differ from an output of the complete document.&lt;br&gt;This is the fastest method. Use this if you do not need correct counter values and references.</string>
            </property>
            <property name="text">
             <string>Do &amp;not maintain (fast)</string>
@@ -75,8 +74,7 @@ This is the fastest method. Use this if you do not need correct counter values a
          <item row="1" column="0">
           <widget class="QRadioButton" name="maintainCRMostlyRB">
            <property name="toolTip">
-            <string>Counters and references of excluded child documents will be set up once and adapted if an excluded document has been modified. This sets up counters and references correctly in most cases, but it does not adjust page references to unincluded children that change due to changes of included files. 
-This is significantly faster than &quot;Strictly maintain&quot;. Use this if you need correct counters and more or less correct references.</string>
+            <string>Counters and references of excluded child documents will be set up once and adapted if an excluded document has been modified. This sets up counters and references correctly in most cases, but it does not adjust page references to unincluded children that change due to changes of included files.&lt;br&gt;This is significantly faster than &quot;Strictly maintain&quot;. Use this if you need correct counters and more or less correct references.</string>
            </property>
            <property name="text">
             <string>Maintain mostl&amp;y (medium)</string>
@@ -86,8 +84,7 @@ This is significantly faster than &quot;Strictly maintain&quot;. Use this if you
          <item row="2" column="0">
           <widget class="QRadioButton" name="maintainCRStrictRB">
            <property name="toolTip">
-            <string>Assure that all counters and references are identical to the complete document. This can be much slower than the first two methods. 
-Use this if you absolutely need correct counters.</string>
+            <string>Assure that all counters and references are identical to the complete document. This can be much slower than the first two methods.&lt;br&gt;Use this if you absolutely need correct counters.</string>
            </property>
            <property name="text">
             <string>Strictly &amp;maintain (slow)</string>
