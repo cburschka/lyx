@@ -400,7 +400,7 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 			 FileName const & from_file, FileName const & to_file,
 			 FileName const & orig_from,
 			 string const & from_format, string const & to_format,
-			 ErrorList & errorList, int conversionflags)
+			 ErrorList & errorList, int conversionflags, bool includeall)
 {
 	if (from_format == to_format)
 		return move(from_format, from_file, to_file, false) ?
@@ -488,6 +488,7 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 		runparams.only_childbibs = !bp.useBiblatex()
 				&& !bp.useBibtopic()
 				&& bp.multibib == "child";
+		runparams.includeall = includeall;
 	}
 
 	// Some converters (e.g. lilypond) can only output files to the

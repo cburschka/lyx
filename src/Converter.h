@@ -193,7 +193,7 @@ public:
 		     support::FileName const & from_file, support::FileName const & to_file,
 		     support::FileName const & orig_from,
 		     std::string const & from_format, std::string const & to_format,
-		     ErrorList & errorList, int conversionflags = none);
+		     ErrorList & errorList, int conversionflags = none, bool includeall = false);
 	///
 	void update(Formats const & formats);
 	///

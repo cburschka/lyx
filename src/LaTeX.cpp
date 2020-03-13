@@ -15,6 +15,7 @@
 
 #include <config.h>
 
+#include "Buffer.h"
 #include "BufferList.h"
 #include "LaTeX.h"
 #include "LyXRC.h"
@@ -226,6 +227,14 @@ int LaTeX::run(TeXErrors & terr)
 	}
 
 	if (had_depfile) {
+		if (runparams.includeall) {
+			// On an "includeall" call (whose purpose is to set up/maintain counters and references
+			// for includeonly), we remove the master from the dependency list since
+			// (1) it will be checked anyway on the subsequent includeonly run
+			// (2) the master is always changed (due to the \includeonly line), and this alone would
+			//     trigger a complete, expensive run each time
+			head.remove_file(file);
+		}
 		// Update the checksums
 		head.update();
 		// Can't just check if anything has changed because it might
@@ -339,7 +348,12 @@ int LaTeX::run(TeXErrors & terr)
 
 	// run bibtex
 	// if (scanres & UNDEF_CIT || scanres & RERUN || run_bibtex)
-	if (scanres & UNDEF_CIT || run_bibtex) {
+	// We do not run bibtex/biber on an "includeall" call (whose purpose is
+	// to set up/maintain counters and references for includeonly) since
+	// (1) bibliographic references will be updated on the subsequent includeonly run
+	// (2) this would trigger a complete run each time (as references in non-included
+	//     children are removed on subsequent includeonly runs)
+	if (!runparams.includeall && (scanres & UNDEF_CIT || run_bibtex)) {
 		// Here we must scan the .aux file and look for
 		// "\bibdata" and/or "\bibstyle". If one of those
 		// tags is found -> run bibtex and set rerun = true;
@@ -395,7 +409,12 @@ int LaTeX::run(TeXErrors & terr)
 	// rerun bibtex?
 	// Complex bibliography packages such as Biblatex require
 	// an additional bibtex cycle sometimes.
-	if (scanres & UNDEF_CIT) {
+	// We do not run bibtex/biber on an "includeall" call (whose purpose is
+	// to set up/maintain counters and references for includeonly) since
+	// (1) bibliographic references will be updated on the subsequent includeonly run
+	// (2) this would trigger a complete run each time (as references in non-included
+	//     children are removed on subsequent includeonly runs)
+	if (!runparams.includeall && scanres & UNDEF_CIT) {
 		// Here we must scan the .aux file and look for
 		// "\bibdata" and/or "\bibstyle". If one of those
 		// tags is found -> run bibtex and set rerun = true;
@@ -826,8 +845,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 		//TODO: TL 2020 engines will contain new commandline switch --cnf-line which we  
 		//can use to set max_print_line variable for appropriate length and detect all
 		//errors correctly.
-		if (contains(token, "There were undefined citations.") ||
-		    prefixIs(token, "Package biblatex Warning: The following entry could not be found"))
+		if (!runparams.includeall && (contains(token, "There were undefined citations.") ||
+		    prefixIs(token, "Package biblatex Warning: The following entry could not be found")))
 			retval |= UNDEF_CIT;
 
 		if (prefixIs(token, "LaTeX Warning:") ||
@@ -854,7 +873,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				retval |= RERUN;
 				LYXERR(Debug::LATEX, "We should rerun.");
 			//"Citation `cit' on page X undefined on input line X."
-			} else if (contains(token, "Citation")
+			} else if (!runparams.includeall && contains(token, "Citation")
 				   //&& contains(token, "on input line") //often split to newline
 				   && contains(token, "undefined")) {
 				retval |= UNDEF_CIT;
@@ -870,7 +889,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 
 			//If label is too long pdlaftex log line splitting will make the above fail
 			//so we catch at least this generic statement occuring for both CIT & REF.
-			} else if (contains(token, "There were undefined references.")) {
+			} else if (!runparams.includeall && contains(token, "There were undefined references.")) {
 				if (!(retval & UNDEF_CIT)) //if not handled already
 					 retval |= UNDEF_REF;
 			}
@@ -880,7 +899,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 			retval |= PACKAGE_WARNING;
 			if (contains(token, "natbib Warning:")) {
 				// Natbib warnings
-				if (contains(token, "Citation")
+				if (!runparams.includeall
+				    && contains(token, "Citation")
 				    && contains(token, "on page")
 				    && contains(token, "undefined")) {
 					retval |= UNDEF_CIT;
@@ -888,9 +908,9 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 					terr.insertRef(getLineNumber(token), from_ascii("Citation undefined"),
 						from_utf8(token), child_name);
 				}
-			} else if (contains(token, "run BibTeX")) {
+			} else if (!runparams.includeall && contains(token, "run BibTeX")) {
 				retval |= UNDEF_CIT;
-			} else if (contains(token, "run Biber")) {
+			} else if (!runparams.includeall && contains(token, "run Biber")) {
 				retval |= UNDEF_CIT;
 				biber = true;
 			} else if (contains(token, "Rerun LaTeX") ||
@@ -1045,7 +1065,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				retval |= TEX_WARNING;
 			} else if (prefixIs(token, "Underfull ")) {
 				retval |= TEX_WARNING;
-			} else if (contains(token, "Rerun to get citations")) {
+			} else if (!runparams.includeall && contains(token, "Rerun to get citations")) {
 				// Natbib seems to use this.
 				retval |= UNDEF_CIT;
 			} else if (contains(token, "No pages of output")

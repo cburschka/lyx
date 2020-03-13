@@ -4502,8 +4502,9 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 	string const ext = theFormats().extension(format);
 	FileName const tmp_result_file(changeExtension(filename, ext));
 	Converters::RetVal const retval = 
-		converters.convert(this, FileName(filename), tmp_result_file, 
-		FileName(absFileName()), backend_format, format, error_list);
+		converters.convert(this, FileName(filename), tmp_result_file,
+				   FileName(absFileName()), backend_format, format,
+				   error_list, Converters::none, includeall);
 	if (retval == Converters::KILLED)
 		return ExportCancel;
 	bool success = (retval == Converters::SUCCESS);
