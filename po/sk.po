@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-01-17 12:27+0100\n"
-"PO-Revision-Date: 2020-01-17 11:36+0000\n"
+"POT-Creation-Date: 2020-03-13 16:56+0100\n"
+"PO-Revision-Date: 2020-03-13 16:25+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2837,17 +2837,67 @@ msgstr "Zahrnúť len označené pod-dokumenty do výstupu"
 msgid "Include only &selected children"
 msgstr "Zahrnúť &len označené potomky"
 
-#: src/frontends/qt/ui/MasterChildUi.ui:50
+#: src/frontends/qt/ui/MasterChildUi.ui:58
 msgid ""
-"Assure counters and references are as in the complete document (prolonges "
-"compilation)"
+"Here you can set up the handling of counters and references with regard to "
+"the excluded child documents."
 msgstr ""
-"Zaisti, aby číslovanie a referencie boli ako v kompletnom dokumente "
-"(predlžuje kompiláciu)"
+"To môžte nastaviť spracovanie čítačov a referencií vzhľadom na vylúčené "
+"detské dokumenty."
 
-#: src/frontends/qt/ui/MasterChildUi.ui:53
-msgid "&Maintain counters and references"
-msgstr "U&držovať číslovanie a referencie"
+#: src/frontends/qt/ui/MasterChildUi.ui:61
+msgid "Global Counters && References"
+msgstr "Globálne čítače a referencie"
+
+#: src/frontends/qt/ui/MasterChildUi.ui:67
+msgid ""
+"All counters and references of excluded child documents will be ignored, "
+"thus the counters in the output will differ from an output of the complete "
+"document.<br>This is the fastest method. Use this if you do not need correct "
+"counter values and references."
+msgstr ""
+"Čítače a referencie vylúčených dokumentov budú ignorované, čiže čítače vo "
+"výstupe nebudú súhlasiť s výstupom celého dokumentu.<br>Toto je "
+"najrýchlejšia metóda. Použite ju keď nepotrebujete presné hodnoty čítačov a "
+"referencií."
+
+#: src/frontends/qt/ui/MasterChildUi.ui:71
+msgid "Do &not maintain (fast)"
+msgstr "&Nezachovávať (rýchle)"
+
+#: src/frontends/qt/ui/MasterChildUi.ui:77
+msgid ""
+"Counters and references of excluded child documents will be set up once and "
+"adapted if an excluded document has been modified. This sets up counters and "
+"references correctly in most cases, but it does not adjust page references "
+"to unincluded children that change due to changes of included files.<br>This "
+"is significantly faster than \"Strictly maintain\". Use this if you need "
+"correct counters and more or less correct references."
+msgstr ""
+"Čítače a referencie vylúčených dokumentov budú raz nastavené a prispôsobené "
+"len keď sa vylúčený dokument zmení. Toto nastaví väčšinou čítače a "
+"referencie správne, ale referencie na nejakú stranu v nezahrnutých "
+"dokumentov zostanú aj keď sa zahrnuté dokumenty zmenia.<br>Toto je podstatne "
+"rýchlejšia metóda ako \"Striktne zachovávať \". Použite to keď nepotrebujete "
+"presné hodnoty čítačov a viac/menej správne referencie."
+
+#: src/frontends/qt/ui/MasterChildUi.ui:82
+msgid "Maintain mostl&y (medium)"
+msgstr "Zachovať pona&jviac"
+
+#: src/frontends/qt/ui/MasterChildUi.ui:87
+msgid ""
+"Assure that all counters and references are identical to the complete "
+"document. This can be much slower than the first two methods.<br>Use this if "
+"you absolutely need correct counters."
+msgstr ""
+"Zaistite aby všetky čítače a referencie boli totožné ako v celom dokumente. "
+"To môže byť omnoho pomalšie ako prvé dve metódy.<br>Použite to keď rozhodne "
+"potrebujete presné hodnoty."
+
+#: src/frontends/qt/ui/MasterChildUi.ui:93
+msgid "Strictly &maintain (slow)"
+msgstr "Str&iktne zachovávať (pomalé)"
 
 #: src/frontends/qt/ui/MasterChildUi.ui:63
 msgid "Include all subdocuments in the output"
@@ -13902,7 +13952,7 @@ msgstr "Podpríkladné voľby"
 
 #: lib/layouts/linguistics.module:101
 msgid "Subexamples options|s"
-msgstr "Podpríkladné voľby|P"
+msgstr "Podpríkladné voľby|n"
 
 #: lib/layouts/linguistics.module:102
 msgid "Add subexamples options here"
@@ -20077,7 +20127,7 @@ msgstr "Matematika|M"
 
 #: lib/ui/stdmenus.inc:131
 msgid "Rows & Columns|C"
-msgstr "Riadky & stĺpce|ĺ"
+msgstr "Riadky a stĺpce|ĺ"
 
 #: lib/ui/stdmenus.inc:138
 msgid "Increase List Depth|I"
@@ -20085,7 +20135,7 @@ msgstr "Zväčšiť hĺbku listiny|ä"
 
 #: lib/ui/stdmenus.inc:139
 msgid "Decrease List Depth|D"
-msgstr "Zmenšiť hĺbku listiny|Z"
+msgstr "Zmenšiť hĺbku listiny|š"
 
 #: lib/ui/stdmenus.inc:140
 msgid "Dissolve Inset"
@@ -27103,15 +27153,6 @@ msgstr "Prehľad tela"
 msgid "Plain text does not have a preamble."
 msgstr "Prostý text nemá preambulu."
 
-#: src/Buffer.cpp:4245
-#, c-format
-msgid "Auto-saving %1$s"
-msgstr "Automatické ukladanie %1$s"
-
-#: src/Buffer.cpp:4301
-msgid "Autosave failed!"
-msgstr "Automatické ukladanie zlyhalo!"
-
 #: src/Buffer.cpp:4362
 msgid "Autosaving current document..."
 msgstr "Automatické ukladanie súčasného dokumentu…"
@@ -34094,7 +34135,7 @@ msgstr "Vyhodiť z osobného slovníka|y"
 
 #: src/frontends/qt/Menus.cpp:909
 msgid "Switch Language...|L"
-msgstr "Prepnúť jazyk…|P"
+msgstr "Prepnúť jazyk…|ť"
 
 #: src/frontends/qt/Menus.cpp:920
 msgid "Language|L"
@@ -34441,6 +34482,10 @@ msgstr ""
 #: src/insets/InsetBibtex.cpp:239
 msgid "Options: "
 msgstr "Možnosti: "
+
+#: src/insets/InsetBibtex.cpp:273
+msgid "[BIBLIOGRAPHY DELETED!]"
+msgstr "[ZMAZANÁ BIBLIOGRAFIA!]"
 
 #: src/insets/InsetBibtex.cpp:336
 msgid ""
@@ -36400,6 +36445,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Auto-saving %1$s"
+#~ msgstr "Automatické ukladanie %1$s"
+
+#~ msgid "Autosave failed!"
+#~ msgstr "Automatické ukladanie zlyhalo!"
 
 #~ msgid "Change Tracking Bars"
 #~ msgstr "Pásy na sledovanie zmien"
