@@ -880,7 +880,7 @@ void LaTeXFeatures::useFloat(string const & name, bool subfloat)
 			require("float");
 		if (!fl.required().empty()) {
 			vector<string> reqs = getVectorFromString(fl.required());
-			for (auto const req : reqs)
+			for (auto const & req : reqs)
 				require(req);
 		}
 	}
