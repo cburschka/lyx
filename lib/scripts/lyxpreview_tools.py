@@ -313,9 +313,9 @@ def run_tex(tex, tex_file):
 def string_in_file(string, infile):
     if not os.path.isfile(infile):
         return False
-    f = open(infile, 'r')
+    f = open(infile, 'rb')
     for line in f.readlines():
-        if string in line:
+        if string.encode() in line:
             f.close()
             return True
     f.close()
@@ -325,15 +325,15 @@ def string_in_file(string, infile):
 # Returns a list of indexes of pages giving errors extracted from the latex log
 def check_latex_log(log_file):
 
-    error_re = re.compile("^! ")
-    snippet_re = re.compile("^Preview: Snippet ")
-    data_re = re.compile("([0-9]+) ([0-9]+) ([0-9]+) ([0-9]+)")
+    error_re = re.compile(b"^! ")
+    snippet_re = re.compile(b"^Preview: Snippet ")
+    data_re = re.compile(b"([0-9]+) ([0-9]+) ([0-9]+) ([0-9]+)")
 
     found_error = False
     error_pages = []
 
     try:
-        for line in open(log_file, 'r').readlines():
+        for line in open(log_file, 'rb').readlines():
             if not found_error:
                 match = error_re.match(line)
                 if match != None:
