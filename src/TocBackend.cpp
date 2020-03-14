@@ -288,6 +288,7 @@ void TocBackend::resetOutlinerNames()
 	addName("senseless", _("Senseless"));
 	addName("citation", _("Citations"));
 	addName("label", _("Labels and References"));
+	addName("brokenrefs", _("Broken References and Citations"));
 	// Customizable, but the corresponding insets have no layout definition
 	addName("child", _("Child Documents"));
 	addName("graphics", _("Graphics"));

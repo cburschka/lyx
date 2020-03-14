@@ -64,6 +64,8 @@ public:
 	docstring const getFirstNonOptParam() const { return p_.getFirstNonOptParam(); }
 	///
 	void setBroken(bool const b) const { broken_ = b; }
+	///
+	bool isBroken() const { return broken_; }
 
 	/// \name Public functions inherited from Inset class
 	//@{

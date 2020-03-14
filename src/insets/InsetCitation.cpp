@@ -493,10 +493,17 @@ void InsetCitation::addToToc(DocIterator const & cpit, bool output_active,
 	// from the document. It is used indirectly, via BiblioInfo::makeCitationLables,
 	// by both XHTML and plaintext output. So, if we change what goes into the TOC,
 	// then we will also need to change that routine.
-	docstring const tocitem = getParam("key");
+	docstring tocitem;
+	if (isBroken())
+		tocitem = _("BROKEN: ");
+	tocitem += getParam("key");
 	TocBuilder & b = backend.builder("citation");
 	b.pushItem(cpit, tocitem, output_active);
 	b.pop();
+	if (isBroken()) {
+		shared_ptr<Toc> toc2 = backend.toc("brokenrefs");
+		toc2->push_back(TocItem(cpit, 0, tocitem, output_active));
+	}
 }
 
 
