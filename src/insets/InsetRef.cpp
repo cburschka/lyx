@@ -454,18 +454,21 @@ docstring InsetRef::screenLabel() const
 
 
 void InsetRef::addToToc(DocIterator const & cpit, bool output_active,
-						UpdateType, TocBackend & backend) const
+			UpdateType, TocBackend & backend) const
 {
 	docstring const & label = getParam("reference");
 	if (buffer().insetLabel(label)) {
 		broken_ = !buffer().activeLabel(label);
 		setBroken(broken_);
+		if (broken_ && output_active) {
+			shared_ptr<Toc> toc2 = backend.toc("brokenrefs");
+			toc2->push_back(TocItem(cpit, 0, screenLabel(), output_active));
+		}
 		// This InsetRef has already been taken care of in InsetLabel::addToToc().
 		return;
 	}
 
 	// It seems that this reference does not point to any valid label.
-
 	broken_ = true;
 	setBroken(broken_);
 	shared_ptr<Toc> toc = backend.toc("label");
