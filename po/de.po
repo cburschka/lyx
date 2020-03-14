@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-03-13 16:14+0100\n"
-"PO-Revision-Date: 2020-03-13 16:20+0100\n"
+"POT-Creation-Date: 2020-03-14 17:06+0100\n"
+"PO-Revision-Date: 2020-03-14 17:12+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -7052,7 +7052,7 @@ msgstr "IEEE Transactions"
 #: lib/layouts/stdclass.inc:28 lib/layouts/stdinsets.inc:644
 #: lib/layouts/stdletter.inc:12 lib/layouts/svcommon.inc:26
 #: lib/layouts/tufte-book.layout:34 lib/ui/stdtoolbars.inc:69
-#: src/insets/InsetRef.cpp:522
+#: src/insets/InsetRef.cpp:549
 msgid "Standard"
 msgstr "Standard"
 
@@ -21686,7 +21686,7 @@ msgstr "Cases-Umgebung einfügen"
 msgid "Toggle math panels"
 msgstr "Mathe-Kontrollflächen an/aus"
 
-#: lib/ui/stdtoolbars.inc:216 src/TocBackend.cpp:296
+#: lib/ui/stdtoolbars.inc:216 src/TocBackend.cpp:297
 msgid "Math Macros"
 msgstr "Mathe-Makros"
 
@@ -26679,7 +26679,7 @@ msgstr "Beispiel (roh)"
 msgid "Gnuplot"
 msgstr "Gnuplot"
 
-#: lib/examples/Articles:0 src/TocBackend.cpp:295
+#: lib/examples/Articles:0 src/TocBackend.cpp:296
 #: src/frontends/qt/GuiExternal.cpp:87
 msgid "External Material"
 msgstr "Externes Material"
@@ -28231,178 +28231,194 @@ msgid "command inset frame"
 msgstr "Befehlseinfügung (Rahmen)"
 
 #: src/Color.cpp:257
+msgid "command inset (broken reference)"
+msgstr "Befehlseinfügung (ungültiger Verweis)"
+
+#: src/Color.cpp:258
+msgid "button background (broken reference)"
+msgstr "Knopf (Hintergrund bei ungültigem Verweis)"
+
+#: src/Color.cpp:259
+msgid "button frame (broken reference)"
+msgstr "Knopf (Rahmen bei ungültigem Verweis)"
+
+#: src/Color.cpp:260
+msgid "button background (broken reference) under focus"
+msgstr "Knopf (Hintergrund bei Fokus auf ungültigem Verweis)"
+
+#: src/Color.cpp:261
 msgid "special character"
 msgstr "Sonderzeichen"
 
-#: src/Color.cpp:258
+#: src/Color.cpp:262
 msgid "math"
 msgstr "Mathe"
 
-#: src/Color.cpp:259
+#: src/Color.cpp:263
 msgid "math background"
 msgstr "Mathe (Hintergrund)"
 
-#: src/Color.cpp:260
+#: src/Color.cpp:264
 msgid "graphics background"
 msgstr "Grafik (Hintergrund)"
 
-#: src/Color.cpp:261 src/Color.cpp:265
+#: src/Color.cpp:265 src/Color.cpp:269
 msgid "math macro background"
 msgstr "Mathe-Makro (Hintergrund)"
 
-#: src/Color.cpp:262
+#: src/Color.cpp:266
 msgid "math frame"
 msgstr "Mathe (Rahmen)"
 
-#: src/Color.cpp:263
+#: src/Color.cpp:267
 msgid "math corners"
 msgstr "Mathe (Ecken)"
 
-#: src/Color.cpp:264
+#: src/Color.cpp:268
 msgid "math line"
 msgstr "Mathe (Linie)"
 
-#: src/Color.cpp:266
+#: src/Color.cpp:270
 msgid "math macro hovered background"
 msgstr "Mathe-Makro (schwebender Hintergrund)"
 
-#: src/Color.cpp:267
+#: src/Color.cpp:271
 msgid "math macro label"
 msgstr "Mathe-Makro (Marke)"
 
-#: src/Color.cpp:268
+#: src/Color.cpp:272
 msgid "math macro frame"
 msgstr "Mathe-Makro (Rahmen)"
 
-#: src/Color.cpp:269
+#: src/Color.cpp:273
 msgid "math macro blended out"
 msgstr "Mathe-Makro (ausgeblendet)"
 
-#: src/Color.cpp:270
+#: src/Color.cpp:274
 msgid "math macro old parameter"
 msgstr "Mathe-Makro (alter Parameter)"
 
-#: src/Color.cpp:271
+#: src/Color.cpp:275
 msgid "math macro new parameter"
 msgstr "Mathe-Makro (neuer Parameter)"
 
-#: src/Color.cpp:272
+#: src/Color.cpp:276
 msgid "collapsible inset text"
 msgstr "Einklappbare Einfügung (Text)"
 
-#: src/Color.cpp:273
+#: src/Color.cpp:277
 msgid "collapsible inset frame"
 msgstr "Einklappbare Einfügung (Rahmen)"
 
-#: src/Color.cpp:274
+#: src/Color.cpp:278
 msgid "inset background"
 msgstr "Einfügung (Hintergrund)"
 
-#: src/Color.cpp:275
+#: src/Color.cpp:279
 msgid "inset frame"
 msgstr "Einfügung (Rahmen)"
 
-#: src/Color.cpp:276
+#: src/Color.cpp:280
 msgid "LaTeX error"
 msgstr "LaTeX-Fehler"
 
-#: src/Color.cpp:277
+#: src/Color.cpp:281
 msgid "end-of-line marker"
 msgstr "Zeilenende-Markierung"
 
-#: src/Color.cpp:278
+#: src/Color.cpp:282
 msgid "appendix marker"
 msgstr "Anhangskennzeichnung"
 
-#: src/Color.cpp:279
+#: src/Color.cpp:283
 msgid "change bar"
 msgstr "Balken für Änderung"
 
-#: src/Color.cpp:280
+#: src/Color.cpp:284
 msgid "deleted text (output)"
 msgstr "Gelöschter Text (Ausgabe)"
 
-#: src/Color.cpp:281
+#: src/Color.cpp:285
 msgid "added text (output)"
 msgstr "Hinzugefügter Text (Ausgabe)"
 
-#: src/Color.cpp:282
+#: src/Color.cpp:286
 msgid "added text (workarea, 1st author)"
 msgstr "Hinzugefügter Text (Arbeitsbereich, 1. Autor)"
 
-#: src/Color.cpp:283
+#: src/Color.cpp:287
 msgid "added text (workarea, 2nd author)"
 msgstr "Hinzugefügter Text (Arbeitsbereich, 2. Autor)"
 
-#: src/Color.cpp:284
+#: src/Color.cpp:288
 msgid "added text (workarea, 3rd author)"
 msgstr "Hinzugefügter Text (Arbeitsbereich, 3. Autor)"
 
-#: src/Color.cpp:285
+#: src/Color.cpp:289
 msgid "added text (workarea, 4th author)"
 msgstr "Hinzugefügter Text (Arbeitsbereich, 4. Autor)"
 
-#: src/Color.cpp:286
+#: src/Color.cpp:290
 msgid "added text (workarea, 5th author)"
 msgstr "Hinzugefügter Text (Arbeitsbereich, 5. Autor)"
 
-#: src/Color.cpp:287
+#: src/Color.cpp:291
 msgid "deleted text modifier (workarea)"
 msgstr "Gelöschter Text, Modifizierer (Arbeitsbereich)"
 
-#: src/Color.cpp:288
+#: src/Color.cpp:292
 msgid "added space markers"
 msgstr "Abstandsmarkierungen"
 
-#: src/Color.cpp:289
+#: src/Color.cpp:293
 msgid "table line"
 msgstr "Tabelle (Linie)"
 
-#: src/Color.cpp:290
+#: src/Color.cpp:294
 msgid "table on/off line"
 msgstr "Tabelle an/aus Linie"
 
-#: src/Color.cpp:291
+#: src/Color.cpp:295
 msgid "bottom area"
 msgstr "Unterer Bereich"
 
-#: src/Color.cpp:292
+#: src/Color.cpp:296
 msgid "new page"
 msgstr "Neue Seite"
 
-#: src/Color.cpp:293
+#: src/Color.cpp:297
 msgid "page break / line break"
 msgstr "Seitenumbruch / Zeilenumbruch"
 
-#: src/Color.cpp:294
+#: src/Color.cpp:298
 msgid "button frame"
 msgstr "Knopf (Rahmen)"
 
-#: src/Color.cpp:295
+#: src/Color.cpp:299
 msgid "button background"
 msgstr "Knopf (Hintergrund)"
 
-#: src/Color.cpp:296
+#: src/Color.cpp:300
 msgid "button background under focus"
 msgstr "Knopf (Hintergrund bei Fokus)"
 
-#: src/Color.cpp:297
+#: src/Color.cpp:301
 msgid "paragraph marker"
 msgstr "Absatzmarkierung"
 
-#: src/Color.cpp:298
+#: src/Color.cpp:302
 msgid "preview frame"
 msgstr "Vorschaurahmen"
 
-#: src/Color.cpp:299
+#: src/Color.cpp:303
 msgid "inherit"
 msgstr "übernehmen"
 
-#: src/Color.cpp:300
+#: src/Color.cpp:304
 msgid "regexp frame"
 msgstr "Regulärer Ausdruck (Rahmen)"
 
-#: src/Color.cpp:301
+#: src/Color.cpp:305
 msgid "ignore"
 msgstr "ignorieren"
 
@@ -28659,13 +28675,14 @@ msgstr "Undefinierter Verweis"
 
 #: src/Converter.cpp:882
 msgid ""
-"Undefined reference or citation was found during the build, please check the "
-"Log."
+"Undefined references or citations were found during the build.\n"
+"Please check the warnings in the LaTeX log (Document > LaTeX Log)."
 msgstr ""
-"Ein undefinierter Quer- oder Literaturverweis wurde gefunden. Bitte prüfen "
-"Sie das LaTeX-Protokoll."
+"Undefinierte Quer- oder Literaturverweise wurde gefunden.\n"
+"Bitte prüfen Sie die Warnungen im LaTeX-Protokoll (Dokument > LateX-"
+"Protokoll)."
 
-#: src/Converter.cpp:893
+#: src/Converter.cpp:894
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -28674,11 +28691,11 @@ msgstr ""
 "LaTeX wurde nicht erfolgreich ausgeführt. Außerdem konnte LyX die LaTeX-"
 "Protokolldatei %1$s nicht finden."
 
-#: src/Converter.cpp:896 src/Converter.cpp:903
+#: src/Converter.cpp:897 src/Converter.cpp:904
 msgid "LaTeX failed"
 msgstr "LaTeX ist fehlgeschlagen"
 
-#: src/Converter.cpp:899
+#: src/Converter.cpp:900
 #, c-format
 msgid ""
 "The external program\n"
@@ -28691,11 +28708,11 @@ msgstr ""
 "wurde mit einem Fehler beendet. Es wird empfohlen, dass Sie die\n"
 "Ursache des Programmfehlers beheben (prüfen Sie die Fehlermeldungen). "
 
-#: src/Converter.cpp:905
+#: src/Converter.cpp:906
 msgid "Output is empty"
 msgstr "Die Ausgabe ist leer"
 
-#: src/Converter.cpp:906
+#: src/Converter.cpp:907
 msgid "No output file was generated."
 msgstr "Es wurde keine Ausgabedatei erzeugt."
 
@@ -29012,19 +29029,19 @@ msgstr "BibTeX wird ausgeführt."
 msgid "Running MakeIndex for nomencl."
 msgstr "MakeIndex wird für nomencl ausgeführt."
 
-#: src/LaTeX.cpp:1540 src/LaTeX.cpp:1546 src/LaTeX.cpp:1555
+#: src/LaTeX.cpp:1582 src/LaTeX.cpp:1588 src/LaTeX.cpp:1597
 msgid "BibTeX error: "
 msgstr "BibTeX-Fehler: "
 
-#: src/LaTeX.cpp:1562
+#: src/LaTeX.cpp:1604
 msgid "Biber error: "
 msgstr "Biber-Fehler: "
 
-#: src/LaTeX.cpp:1591
+#: src/LaTeX.cpp:1633
 msgid "Makeindex error: "
 msgstr "Makeindex-Fehler: "
 
-#: src/LaTeX.cpp:1600
+#: src/LaTeX.cpp:1642
 msgid "Xindy error: "
 msgstr "Xindy-Fehler: "
 
@@ -30308,19 +30325,23 @@ msgstr "Literaturverweise"
 msgid "Labels and References"
 msgstr "Marken und Querverweise"
 
-#: src/TocBackend.cpp:292 src/frontends/qt/GuiDocument.cpp:1761
+#: src/TocBackend.cpp:291
+msgid "Broken References and Citations"
+msgstr "Ungültige Literatur- und Querverweise"
+
+#: src/TocBackend.cpp:293 src/frontends/qt/GuiDocument.cpp:1761
 msgid "Child Documents"
 msgstr "Unterdokumente"
 
-#: src/TocBackend.cpp:293 src/frontends/qt/GuiGraphics.cpp:113
+#: src/TocBackend.cpp:294 src/frontends/qt/GuiGraphics.cpp:113
 msgid "Graphics"
 msgstr "Grafik"
 
-#: src/TocBackend.cpp:294
+#: src/TocBackend.cpp:295
 msgid "Equations"
 msgstr "Gleichungen"
 
-#: src/TocBackend.cpp:297
+#: src/TocBackend.cpp:298
 msgid "Nomenclature Entries"
 msgstr "Nomenklatureinträge"
 
@@ -34646,7 +34667,7 @@ msgid "No Citation in Scope!"
 msgstr "Keine Literaturverweis in Reichweite!"
 
 #: src/frontends/qt/Menus.cpp:1599 src/insets/InsetCitation.cpp:250
-#: src/insets/InsetCitation.cpp:373
+#: src/insets/InsetCitation.cpp:381
 msgid "No citations selected!"
 msgstr "Keine Literaturverweise ausgewählt!"
 
@@ -35024,7 +35045,11 @@ msgstr "Kein Literaturverzeichnis definiert!"
 msgid "+ %1$d more entries."
 msgstr "+ %1$d weitere Einträge."
 
-#: src/insets/InsetCommand.cpp:157
+#: src/insets/InsetCitation.cpp:498 src/insets/InsetRef.cpp:470
+msgid "BROKEN: "
+msgstr "UNGÜLTIG: "
+
+#: src/insets/InsetCommand.cpp:158
 msgid "LaTeX Command: "
 msgstr "LaTeX-Befehl: "
 
@@ -36032,67 +36057,63 @@ msgstr "%1$sText"
 msgid "text%1$s"
 msgstr "Text%1$s"
 
-#: src/insets/InsetRef.cpp:451
-msgid "BROKEN: "
-msgstr "NICHT VORHANDEN: "
-
-#: src/insets/InsetRef.cpp:522 src/mathed/InsetMathRef.cpp:251
+#: src/insets/InsetRef.cpp:549 src/mathed/InsetMathRef.cpp:251
 msgid "Ref: "
 msgstr "Querverweis: "
 
-#: src/insets/InsetRef.cpp:523 src/mathed/InsetMathRef.cpp:252
+#: src/insets/InsetRef.cpp:550 src/mathed/InsetMathRef.cpp:252
 msgid "Equation"
 msgstr "Gleichung"
 
-#: src/insets/InsetRef.cpp:523 src/mathed/InsetMathRef.cpp:252
+#: src/insets/InsetRef.cpp:550 src/mathed/InsetMathRef.cpp:252
 msgid "EqRef: "
 msgstr "(Querverweis): "
 
-#: src/insets/InsetRef.cpp:524 src/mathed/InsetMathRef.cpp:253
+#: src/insets/InsetRef.cpp:551 src/mathed/InsetMathRef.cpp:253
 msgid "Page Number"
 msgstr "Seitennummer"
 
-#: src/insets/InsetRef.cpp:524 src/mathed/InsetMathRef.cpp:253
+#: src/insets/InsetRef.cpp:551 src/mathed/InsetMathRef.cpp:253
 msgid "Page: "
 msgstr "Seite: "
 
-#: src/insets/InsetRef.cpp:525 src/mathed/InsetMathRef.cpp:254
+#: src/insets/InsetRef.cpp:552 src/mathed/InsetMathRef.cpp:254
 msgid "Textual Page Number"
 msgstr "Seitennummer in Textform"
 
-#: src/insets/InsetRef.cpp:525 src/mathed/InsetMathRef.cpp:254
+#: src/insets/InsetRef.cpp:552 src/mathed/InsetMathRef.cpp:254
 msgid "TextPage: "
 msgstr "TextSeite: "
 
-#: src/insets/InsetRef.cpp:526 src/mathed/InsetMathRef.cpp:255
+#: src/insets/InsetRef.cpp:553 src/mathed/InsetMathRef.cpp:255
 msgid "Standard+Textual Page"
 msgstr "Standard+Seite in Textform"
 
-#: src/insets/InsetRef.cpp:526 src/mathed/InsetMathRef.cpp:255
+#: src/insets/InsetRef.cpp:553 src/mathed/InsetMathRef.cpp:255
 msgid "Ref+Text: "
 msgstr "Querverweis+Text: "
 
-#: src/insets/InsetRef.cpp:527 src/mathed/InsetMathRef.cpp:257
+#: src/insets/InsetRef.cpp:554 src/mathed/InsetMathRef.cpp:257
 msgid "Reference to Name"
 msgstr "Referenz auf Namen"
 
-#: src/insets/InsetRef.cpp:527 src/mathed/InsetMathRef.cpp:257
+#: src/insets/InsetRef.cpp:554 src/mathed/InsetMathRef.cpp:257
 msgid "NameRef: "
 msgstr "NameRef: "
 
-#: src/insets/InsetRef.cpp:528
+#: src/insets/InsetRef.cpp:555
 msgid "Formatted"
 msgstr "Formatiert"
 
-#: src/insets/InsetRef.cpp:528
+#: src/insets/InsetRef.cpp:555
 msgid "Format: "
 msgstr "Format: "
 
-#: src/insets/InsetRef.cpp:529
+#: src/insets/InsetRef.cpp:556
 msgid "Label Only"
 msgstr "Nur Marke"
 
-#: src/insets/InsetRef.cpp:529
+#: src/insets/InsetRef.cpp:556
 msgid "Label: "
 msgstr "Marke: "
 
