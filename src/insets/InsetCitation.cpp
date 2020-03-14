@@ -364,11 +364,19 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 	if (!buf.isFullyLoaded())
 		return docstring();
 
+	docstring const & key = getParam("key");
+
 	BiblioInfo const & biblist = buf.masterBibInfo();
+
+	// mark broken citations
+	if (biblist.empty() || biblist.find(key) == biblist.end())
+		setBroken(true);
+	else
+		setBroken(false);
+
 	if (biblist.empty())
 		return docstring();
 
-	docstring const & key = getParam("key");
 	if (key.empty())
 		return _("No citations selected!");
 

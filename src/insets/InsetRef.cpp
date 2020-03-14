@@ -443,6 +443,7 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType, bool const /*del
 
 	screen_label_ = label;
 	broken_ = false;
+	setBroken(broken_);
 }
 
 
@@ -458,6 +459,7 @@ void InsetRef::addToToc(DocIterator const & cpit, bool output_active,
 	docstring const & label = getParam("reference");
 	if (buffer().insetLabel(label)) {
 		broken_ = !buffer().activeLabel(label);
+		setBroken(broken_);
 		// This InsetRef has already been taken care of in InsetLabel::addToToc().
 		return;
 	}
@@ -465,6 +467,7 @@ void InsetRef::addToToc(DocIterator const & cpit, bool output_active,
 	// It seems that this reference does not point to any valid label.
 
 	broken_ = true;
+	setBroken(broken_);
 	shared_ptr<Toc> toc = backend.toc("label");
 	toc->push_back(TocItem(cpit, 0, screenLabel(), output_active));
 }

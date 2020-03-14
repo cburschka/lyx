@@ -1186,7 +1186,7 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else {
 		if (!set_label_) {
 			set_label_ = true;
-			button_.update(screenLabel(), true, false);
+			button_.update(screenLabel(), true, false, !file_exist_);
 		}
 		button_.metrics(mi, dim);
 	}
@@ -1377,7 +1377,7 @@ void InsetInclude::updateBuffer(ParIterator const & it, UpdateType utype, bool c
 {
 	file_exist_ = includedFileExist();
 
-	button_.update(screenLabel(), true, false);
+	button_.update(screenLabel(), true, false, !file_exist_);
 
 	Buffer const * const childbuffer = getChildBuffer();
 	if (childbuffer) {

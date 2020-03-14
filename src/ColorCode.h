@@ -207,8 +207,16 @@ enum ColorCode {
 	Color_buttonframe,
 	/// Color used for bottom background
 	Color_buttonbg,
-	/// Color used for buttom under focus
+	/// Color used for button under focus
 	Color_buttonhoverbg,
+	/// Text color for broken insets
+	Color_command_broken,
+	/// Background color for broken insets
+	Color_buttonbg_broken,
+	/// Frame color for broken insets
+	Color_buttonframe_broken,
+	/// Color used for broken inset button under focus
+	Color_buttonhoverbg_broken,
 	/// Color used for the pilcrow sign to mark the end of a paragraph
 	Color_paragraphmarker,
 	/// Preview frame color

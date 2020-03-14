@@ -33,7 +33,8 @@ public:
 	virtual void draw(PainterInfo & pi, int x, int y) const;
 
 	/// Provide the text for the button
-	void update(docstring const &, bool editable, bool inherit);
+	void update(docstring const &, bool editable,
+		    bool inherit, bool broken = false);
 
 	/// The "sensitive area" box, i.e., the button area
 	Box box() const { return button_box_; }
@@ -47,6 +48,7 @@ private:
 	/// The stored data.
 	docstring text_;
 	bool editable_;
+	bool broken_;
 	bool inherit_font_;
 	Box button_box_;
 };

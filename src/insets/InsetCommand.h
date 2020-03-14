@@ -62,6 +62,8 @@ public:
 	void setParam(std::string const & name, docstring const & value);
 	/// FIXME Remove
 	docstring const getFirstNonOptParam() const { return p_.getFirstNonOptParam(); }
+	///
+	void setBroken(bool const b) const { broken_ = b; }
 
 	/// \name Public functions inherited from Inset class
 	//@{
@@ -147,6 +149,8 @@ private:
 	mutable std::map<BufferView const *, bool> mouse_hover_;
 	///
 	mutable RenderButton button_;
+	///
+	mutable bool broken_;
 };
 
 /// Decode InsetCommand considering Inset name and data.

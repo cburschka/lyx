@@ -60,14 +60,14 @@ namespace lyx {
 // FIXME Would it now be possible to use the InsetCode in
 // place of the mailer name and recover that information?
 InsetCommand::InsetCommand(Buffer * buf, InsetCommandParams const & p)
-	: Inset(buf), p_(p)
+	: Inset(buf), p_(p), broken_(false)
 {}
 
 
 // The sole purpose of this copy constructor is to make sure
 // that the mouse_hover_ map is not copied and remains empty.
 InsetCommand::InsetCommand(InsetCommand const & rhs)
-	: Inset(rhs), p_(rhs.p_)
+	: Inset(rhs), p_(rhs.p_), broken_(false)
 {}
 
 
@@ -80,6 +80,7 @@ InsetCommand & InsetCommand::operator=(InsetCommand const & rhs)
 	p_ = rhs.p_;
 	mouse_hover_.clear();
 	button_ = RenderButton();
+	broken_ = false;
 
 	return *this;
 }
@@ -101,7 +102,7 @@ InsetCommand::~InsetCommand()
 void InsetCommand::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	button_.update(screenLabel(), editable() || clickable(*mi.base.bv, 0, 0),
-	               inheritFont());
+	               inheritFont(), broken_);
 	button_.metrics(mi, dim);
 }
 

@@ -22,7 +22,7 @@ namespace lyx {
 
 
 RenderButton::RenderButton()
-	: editable_(false), inherit_font_(false)
+	: editable_(false), broken_(false), inherit_font_(false)
 {}
 
 
@@ -33,11 +33,12 @@ RenderBase * RenderButton::clone(Inset const *) const
 
 
 void RenderButton::update(docstring const & text, bool editable,
-                          bool inherit)
+                          bool inherit, bool broken)
 {
 	text_ = text;
 	editable_ = editable;
 	inherit_font_ = inherit;
+	broken_ = broken;
 }
 
 
@@ -60,7 +61,12 @@ void RenderButton::draw(PainterInfo & pi, int x, int y) const
 	font.setColor(Color_command);
 	font.decSize();
 
-	if (editable_) {
+	if (broken_) {
+		font.setColor(Color_command_broken);
+		pi.pain.buttonText(x, y, text_, font,
+				   renderState() ? Color_buttonhoverbg_broken : Color_buttonbg_broken,
+				   Color_buttonframe_broken, Inset::textOffset(pi.base.bv));
+	} else if (editable_) {
 		pi.pain.buttonText(x, y, text_, font,
 		                   renderState() ? Color_buttonhoverbg : Color_buttonbg,
 		                   Color_buttonframe, Inset::textOffset(pi.base.bv));
