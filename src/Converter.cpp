@@ -879,7 +879,8 @@ Converters::RetVal Converters::runLaTeX(Buffer const & buffer, string const & co
 		buffer.bufferRefs(terr, errorList);
 		if (errorList.empty())
 			errorList.push_back(ErrorItem(_("Undefined reference"),
-				_("Undefined reference or citation was found during the build, please check the Log."),
+				_("Undefined references or citations were found during the build.\n"
+				  "Please check the warnings in the LaTeX log (Document > LaTeX Log)."),
 				&buffer));
 	}
 
