@@ -230,7 +230,7 @@ void InsetLabel::addToToc(DocIterator const & cpit, bool output_active,
 			else
 				toc->push_back(TocItem(ref_pit, 1,
 						static_cast<InsetRef *>(p.first)->getTOCString(),
-						output_active));
+						static_cast<InsetRef *>(p.first)->outputActive()));
 		}
 	}
 }

@@ -90,6 +90,8 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s);
 	//@}
+	///
+	bool outputActive() const { return active_; }
 
 protected:
 	///
@@ -121,6 +123,8 @@ private:
 	mutable docstring screen_label_;
 	///
 	mutable bool broken_;
+	///
+	mutable bool active_;
 	///
 	mutable docstring tooltip_;
 };

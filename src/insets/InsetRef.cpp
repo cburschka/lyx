@@ -22,6 +22,7 @@
 #include "LyX.h"
 #include "OutputParams.h"
 #include "output_xhtml.h"
+#include "Paragraph.h"
 #include "ParIterator.h"
 #include "sgml.h"
 #include "texstream.h"
@@ -40,12 +41,12 @@ namespace lyx {
 
 
 InsetRef::InsetRef(Buffer * buf, InsetCommandParams const & p)
-	: InsetCommand(buf, p), broken_(false)
+	: InsetCommand(buf, p), broken_(false), active_(true)
 {}
 
 
 InsetRef::InsetRef(InsetRef const & ir)
-	: InsetCommand(ir), broken_(false)
+	: InsetCommand(ir), broken_(false), active_(true)
 {}
 
 
@@ -401,6 +402,23 @@ void InsetRef::forOutliner(docstring & os, size_t const, bool const) const
 void InsetRef::updateBuffer(ParIterator const & it, UpdateType, bool const /*deleted*/)
 {
 	docstring const & ref = getParam("reference");
+
+	// Check if this one is active (i.e., neither deleted with change-tracking
+	// nor in an inset that does not produce output, such as notes or inactive branches)
+	Paragraph const & para = it.paragraph();
+	active_ = !para.isDeleted(it.pos()) && para.inInset().producesOutput();
+	// If not, check whether we are in a deleted/non-outputting inset
+	if (active_) {
+		for (size_type sl = 0 ; sl < it.depth() ; ++sl) {
+			Paragraph const & outer_par = it[sl].paragraph();
+			if (outer_par.isDeleted(it[sl].pos())
+			    || !outer_par.inInset().producesOutput()) {
+				active_ = false;
+				break;
+			}
+		}
+	}
+
 	// register this inset into the buffer reference cache.
 	buffer().addReference(ref, this, it);
 
@@ -456,6 +474,7 @@ docstring InsetRef::screenLabel() const
 void InsetRef::addToToc(DocIterator const & cpit, bool output_active,
 			UpdateType, TocBackend & backend) const
 {
+	active_ = output_active;
 	docstring const & label = getParam("reference");
 	if (buffer().insetLabel(label)) {
 		broken_ = !buffer().activeLabel(label);
@@ -541,6 +560,11 @@ InsetRef::type_info const InsetRef::types[] = {
 
 docstring InsetRef::getTOCString() const
 {
+	docstring const & label = getParam("reference");
+	if (buffer().insetLabel(label))
+		broken_ = !buffer().activeLabel(label) && active_;
+	else 
+		broken_ = active_;
 	return tooltip_.empty() ? screenLabel() : tooltip_;
 }
 
