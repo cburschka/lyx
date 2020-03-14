@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-03-13 16:56+0100\n"
-"PO-Revision-Date: 2020-03-13 16:25+0000\n"
+"POT-Creation-Date: 2020-03-14 20:19+0100\n"
+"PO-Revision-Date: 2020-03-14 19:27+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -27970,6 +27970,22 @@ msgid "command inset frame"
 msgstr "príkazová vložka: rám"
 
 #: src/Color.cpp:257
+msgid "command inset (broken reference)"
+msgstr "príkazová vložka (rozbitá referencia)"
+
+#: src/Color.cpp:258
+msgid "button background (broken reference)"
+msgstr "tlačidlo: pozadie (rozbitá referencia)"
+
+#: src/Color.cpp:259
+msgid "button frame (broken reference)"
+msgstr "tlačidlo: rám (rozbitá referencia)"
+
+#: src/Color.cpp:260
+msgid "button background (broken reference) under focus"
+msgstr "tlačidlo: pozadie (rozbitá referencia) pod fókusom"
+
+#: src/Color.cpp:257
 msgid "special character"
 msgstr "Špeciálny znak"
 
@@ -28389,13 +28405,13 @@ msgstr "Export bol ukončený používateľom."
 msgid "Undefined reference"
 msgstr "Nedefinované referencie"
 
-#: src/Converter.cpp:888
+#: src/Converter.cpp:882
 msgid ""
-"Undefined reference or citation was found during the build, please check the "
-"Log."
+"Undefined references or citations were found during the build.\n"
+"Please check the warnings in the LaTeX log (Document > LaTeX Log)."
 msgstr ""
-"Našla sa nedefinovaná referencia alebo citácia v priebehu tvorby, "
-"skontrolujte prosím protokol."
+"Našla sa nedefinovaná referencia alebo citácia v priebehu tvorby.\n"
+"Skontrolujte prosím protokol (Dokument->LaTeX protokol) na varovania."
 
 #: src/Converter.cpp:899
 #, c-format
@@ -29956,6 +29972,10 @@ msgstr "Citácie"
 #: src/TocBackend.cpp:290
 msgid "Labels and References"
 msgstr "Značky a referencie"
+
+#: src/TocBackend.cpp:291
+msgid "Broken References and Citations"
+msgstr "Rozbité referencie a citácie"
 
 #: src/TocBackend.cpp:292 src/frontends/qt/GuiDocument.cpp:1737
 msgid "Child Documents"
