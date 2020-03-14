@@ -95,7 +95,8 @@ public:
 	void addPreambleSnippet(docstring const & snippet, bool allowdupes = false);
 	///
 	TexString getPreambleSnippets() const;
-	///
+	/// Adds CSS information for HTML export.
+	/// Note that addPreambleSnippet is for LaTeX-type export
 	void addCSSSnippet(std::string const &);
 	///
 	docstring getCSSSnippets() const;
