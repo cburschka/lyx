@@ -910,15 +910,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 			//If label is too long pdlaftex log line splitting will make the above fail
 			//so we catch at least this generic statement occuring for both CIT & REF.
 			} else if (!runparams.includeall && contains(token, "There were undefined references.")) {
-				if (!(retval & UNDEF_CIT)) { //if not handled already
-					if (regex_match(token, sub, undef_ref)) {
-						string const ref = sub.str(1);
-						Buffer const * buf = theBufferList().getBufferFromTmp(file.absFileName());
-						if (!buf || !buf->masterBuffer()->activeLabel(from_utf8(ref)))
-							retval |= UNDEF_UNKNOWN_REF;
-					}
+				if (!(retval & UNDEF_CIT)) //if not handled already
 					retval |= UNDEF_REF;
-				}
 			}
 
 		} else if (prefixIs(token, "Package")) {
