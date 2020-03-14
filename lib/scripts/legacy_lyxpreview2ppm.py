@@ -97,8 +97,8 @@ def usage(prog_name):
 # Use write_metrics_info to create the .metrics file with this info
 def legacy_extract_metrics_info(log_file):
 
-    log_re = re.compile("Preview: ([ST])")
-    data_re = re.compile("(-?[0-9]+) (-?[0-9]+) (-?[0-9]+) (-?[0-9]+)")
+    log_re = re.compile(b"Preview: ([ST])")
+    data_re = re.compile(b"(-?[0-9]+) (-?[0-9]+) (-?[0-9]+) (-?[0-9]+)")
 
     tp_ascent  = 0.0
     tp_descent = 0.0
@@ -106,7 +106,7 @@ def legacy_extract_metrics_info(log_file):
     success = 0
     results = []
     try:
-        for line in open(log_file, 'r').readlines():
+        for line in open(log_file, 'rb').readlines():
             match = log_re.match(line)
             if match == None:
                 continue
@@ -154,10 +154,10 @@ def legacy_extract_metrics_info(log_file):
     return results
 
 def extract_resolution(log_file, dpi):
-    fontsize_re = re.compile("Preview: Fontsize")
-    magnification_re = re.compile("Preview: Magnification")
-    extract_decimal_re = re.compile("([0-9\.]+)")
-    extract_integer_re = re.compile("([0-9]+)")
+    fontsize_re = re.compile(b"Preview: Fontsize")
+    magnification_re = re.compile(b"Preview: Magnification")
+    extract_decimal_re = re.compile(b"([0-9\.]+)")
+    extract_integer_re = re.compile(b"([0-9]+)")
 
     found_fontsize = 0
     found_magnification = 0
@@ -167,7 +167,7 @@ def extract_resolution(log_file, dpi):
     fontsize = 10.0
 
     try:
-        for line in open(log_file, 'r').readlines():
+        for line in open(log_file, 'rb').readlines():
             if found_fontsize and found_magnification:
                 break
 
