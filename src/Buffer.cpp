@@ -2261,10 +2261,6 @@ Buffer::ExportStatus Buffer::writeLyXHTMLSource(odocstream & os,
 		if (!styles.empty())
 			os << "\n<!-- Text Class Preamble -->\n" << styles << '\n';
 
-		styles = features.getPreambleSnippets().str;
-		if (!styles.empty())
-			os << "\n<!-- Preamble Snippets -->\n" << styles << '\n';
-
 		// we will collect CSS information in a stream, and then output it
 		// either here, as part of the header, or else in a separate file.
 		odocstringstream css;
