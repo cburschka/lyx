@@ -807,6 +807,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	terr.clearRefs();
 
 	string token;
+	string ml_token;
 	while (getline(ifs, token)) {
 		// MikTeX sometimes inserts \0 in the log file. They can't be
 		// removed directly with the existing string utility
@@ -820,6 +821,9 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 
 		if (token.empty())
 			continue;
+
+		if (!ml_token.empty())
+			ml_token += token;
 
 		// Track child documents
 		for (size_t i = 0; i < token.length(); ++i) {
@@ -862,8 +866,10 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 		    prefixIs(token, "Package biblatex Warning: The following entry could not be found")))
 			retval |= UNDEF_CIT;
 
-		if (prefixIs(token, "LaTeX Warning:") ||
-		    prefixIs(token, "! pdfTeX warning")) {
+		if (prefixIs(token, "LaTeX Warning:")
+		    || prefixIs(token, "! pdfTeX warning")
+		    || prefixIs(ml_token, "LaTeX Warning:")
+		    || prefixIs(ml_token, "! pdfTeX warning")) {
 			// Here shall we handle different
 			// types of warnings
 			retval |= LATEX_WARNING;
@@ -893,8 +899,37 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				terr.insertRef(getLineNumber(token), from_ascii("Citation undefined"),
 					from_utf8(token), child_name);
 			//"Reference `X' on page Y undefined on input line Z."
-			} else if (contains(token, "Reference")
-				   //&& contains(token, "on input line")) //often split to new line
+			// This warning might be broken accross multiple lines with long labels.
+			// Thus we check that
+			} else if (contains(token, "Reference `") && !contains(token, "on input line")) {
+				// Rest of warning in next line(s)
+				// Save to ml_token
+				ml_token = token;
+			} else if (!ml_token.empty() && contains(ml_token, "Reference `")
+				   && !contains(ml_token, "on input line")) {
+				// not finished yet. Continue with next line.
+				continue;
+			} else if (!ml_token.empty() && contains(ml_token, "Reference `")
+				   && contains(ml_token, "on input line")) {
+				// We have collected the whole warning now.
+				if (!contains(ml_token, "undefined")) {
+					// Not the warning we are looking for
+					ml_token.clear();
+					continue;
+				}
+				if (regex_match(ml_token, sub, undef_ref)) {
+					string const ref = sub.str(1);
+					Buffer const * buf = theBufferList().getBufferFromTmp(file.absFileName());
+					if (!buf || !buf->masterBuffer()->activeLabel(from_utf8(ref))) {
+						terr.insertRef(getLineNumber(ml_token), from_ascii("Reference undefined"),
+							from_utf8(ml_token), child_name);
+						retval |= UNDEF_UNKNOWN_REF;
+					}
+				}
+				ml_token.clear();
+				retval |= UNDEF_REF;
+			} else if (contains(token, "Reference `")
+				   && contains(token, "on input line")
 				   && contains(token, "undefined")) {
 				if (regex_match(token, sub, undef_ref)) {
 					string const ref = sub.str(1);
@@ -906,9 +941,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 					}
 				}
 				retval |= UNDEF_REF;
-
-			//If label is too long pdlaftex log line splitting will make the above fail
-			//so we catch at least this generic statement occuring for both CIT & REF.
+			// In case the above checks fail we catch at least this generic statement
+			// occuring for both CIT & REF.
 			} else if (!runparams.includeall && contains(token, "There were undefined references.")) {
 				if (!(retval & UNDEF_CIT)) //if not handled already
 					retval |= UNDEF_REF;
