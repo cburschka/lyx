@@ -875,7 +875,7 @@ Converters::RetVal Converters::runLaTeX(Buffer const & buffer, string const & co
 	if (result & LaTeX::ERRORS)
 		buffer.bufferErrors(terr, errorList);
 
-	if ((result & LaTeX::UNDEF_CIT) || (result & LaTeX::UNDEF_REF)) {
+	if ((result & LaTeX::UNDEF_CIT) || (result & LaTeX::UNDEF_UNKNOWN_REF)) {
 		buffer.bufferRefs(terr, errorList);
 		if (errorList.empty())
 			errorList.push_back(ErrorItem(_("Undefined reference"),
@@ -913,7 +913,7 @@ Converters::RetVal Converters::runLaTeX(Buffer const & buffer, string const & co
 			LaTeX::NO_LOGFILE |
 			LaTeX::ERRORS |
 			LaTeX::UNDEF_CIT |
-			LaTeX::UNDEF_REF |
+			LaTeX::UNDEF_UNKNOWN_REF |
 			LaTeX::NO_OUTPUT;
 
 	return (result & ERROR_MASK) == 0 ? SUCCESS : FAILURE;

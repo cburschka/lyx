@@ -795,6 +795,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	bool fle_style = false;
 	static regex const file_line_error(".+\\.\\D+:[0-9]+: (.+)");
 	static regex const child_file("[^0-9]*([0-9]+[A-Za-z]*_.+\\.tex).*");
+	static regex const undef_ref(".*Reference `(\\w+)\\' on page.*");
 	// Flag for 'File ended while scanning' message.
 	// We need to wait for subsequent processing.
 	string wait_for_error;
@@ -895,15 +896,29 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 			} else if (contains(token, "Reference")
 				   //&& contains(token, "on input line")) //often split to new line
 				   && contains(token, "undefined")) {
+				if (regex_match(token, sub, undef_ref)) {
+					string const ref = sub.str(1);
+					Buffer const * buf = theBufferList().getBufferFromTmp(file.absFileName());
+					if (!buf || !buf->masterBuffer()->activeLabel(from_utf8(ref))) {
+						terr.insertRef(getLineNumber(token), from_ascii("Reference undefined"),
+							from_utf8(token), child_name);
+						retval |= UNDEF_UNKNOWN_REF;
+					}
+				}
 				retval |= UNDEF_REF;
-				terr.insertRef(getLineNumber(token), from_ascii("Reference undefined"),
-					from_utf8(token), child_name);
 
 			//If label is too long pdlaftex log line splitting will make the above fail
 			//so we catch at least this generic statement occuring for both CIT & REF.
 			} else if (!runparams.includeall && contains(token, "There were undefined references.")) {
-				if (!(retval & UNDEF_CIT)) //if not handled already
-					 retval |= UNDEF_REF;
+				if (!(retval & UNDEF_CIT)) { //if not handled already
+					if (regex_match(token, sub, undef_ref)) {
+						string const ref = sub.str(1);
+						Buffer const * buf = theBufferList().getBufferFromTmp(file.absFileName());
+						if (!buf || !buf->masterBuffer()->activeLabel(from_utf8(ref)))
+							retval |= UNDEF_UNKNOWN_REF;
+					}
+					retval |= UNDEF_REF;
+				}
 			}
 
 		} else if (prefixIs(token, "Package")) {
