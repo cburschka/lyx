@@ -1,101 +1,88 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>TocUi</class>
- <widget class="QWidget" name="TocUi" >
-  <property name="windowModality" >
+ <widget class="QWidget" name="TocUi">
+  <property name="windowModality">
    <enum>Qt::NonModal</enum>
   </property>
-  <property name="geometry" >
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>202</width>
-    <height>355</height>
+    <width>231</width>
+    <height>437</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item row="1" column="0" colspan="2" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="2" column="0" colspan="2">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>6</number>
      </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <item>
-      <widget class="QLabel" name="filterLA" >
-       <property name="text" >
+      <widget class="QLabel" name="filterLA">
+       <property name="text">
         <string>Filter:</string>
        </property>
-       <property name="buddy" >
+       <property name="buddy">
         <cstring>filterLE</cstring>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="filterLE" >
-       <property name="toolTip" >
+      <widget class="QLineEdit" name="filterLE">
+       <property name="toolTip">
         <string>Enter string to filter contents</string>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="0" column="0" colspan="2" >
-    <widget class="QComboBox" name="typeCO" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>13</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="toolTip" >
-      <string>Switch between available lists (table of contents, list of figures, list of tables, and others)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="2" >
-    <widget class="QTreeView" name="tocTV" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>13</hsizetype>
-       <vsizetype>7</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="2" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
+   <item row="6" column="0" colspan="2">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>6</number>
      </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <item>
-      <widget class="QToolButton" name="updateTB" >
-       <property name="toolTip" >
+      <widget class="QToolButton" name="updateTB">
+       <property name="toolTip">
         <string>Update navigation tree</string>
        </property>
-       <property name="text" >
+       <property name="text">
         <string>...</string>
        </property>
-       <property name="icon" >
-        <iconset>../../../../lib/images/reload.png</iconset>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../../../lib/images/reload.png</normaloff>../../../../lib/images/reload.png</iconset>
        </property>
-       <property name="iconSize" >
+       <property name="iconSize">
         <size>
          <width>20</width>
          <height>20</height>
@@ -105,10 +92,10 @@
      </item>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>16</width>
          <height>20</height>
@@ -117,17 +104,18 @@
       </spacer>
      </item>
      <item>
-      <widget class="QToolButton" name="moveOutTB" >
-       <property name="toolTip" >
+      <widget class="QToolButton" name="moveOutTB">
+       <property name="toolTip">
         <string>Decrease nesting depth of selected item</string>
        </property>
-       <property name="text" >
+       <property name="text">
         <string>...</string>
        </property>
-       <property name="icon" >
-        <iconset>../../../../lib/images/outline-out.png</iconset>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../../../lib/images/outline-out.png</normaloff>../../../../lib/images/outline-out.png</iconset>
        </property>
-       <property name="iconSize" >
+       <property name="iconSize">
         <size>
          <width>20</width>
          <height>20</height>
@@ -136,17 +124,18 @@
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="moveInTB" >
-       <property name="toolTip" >
+      <widget class="QToolButton" name="moveInTB">
+       <property name="toolTip">
         <string>Increase nesting depth of selected item</string>
        </property>
-       <property name="text" >
+       <property name="text">
         <string>...</string>
        </property>
-       <property name="icon" >
-        <iconset>../../../../lib/images/outline-in.png</iconset>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../../../lib/images/outline-in.png</normaloff>../../../../lib/images/outline-in.png</iconset>
        </property>
-       <property name="iconSize" >
+       <property name="iconSize">
         <size>
          <width>20</width>
          <height>20</height>
@@ -155,17 +144,18 @@
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="moveDownTB" >
-       <property name="toolTip" >
+      <widget class="QToolButton" name="moveDownTB">
+       <property name="toolTip">
         <string>Move selected item down by one</string>
        </property>
-       <property name="text" >
+       <property name="text">
         <string>...</string>
        </property>
-       <property name="icon" >
-        <iconset>../../../../lib/images/outline-down.png</iconset>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../../../lib/images/outline-down.png</normaloff>../../../../lib/images/outline-down.png</iconset>
        </property>
-       <property name="iconSize" >
+       <property name="iconSize">
         <size>
          <width>20</width>
          <height>20</height>
@@ -174,17 +164,18 @@
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="moveUpTB" >
-       <property name="toolTip" >
+      <widget class="QToolButton" name="moveUpTB">
+       <property name="toolTip">
         <string>Move selected item up by one</string>
        </property>
-       <property name="text" >
+       <property name="text">
         <string>...</string>
        </property>
-       <property name="icon" >
-        <iconset>../../../../lib/images/outline-up.png</iconset>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../../../lib/images/outline-up.png</normaloff>../../../../lib/images/outline-up.png</iconset>
        </property>
-       <property name="iconSize" >
+       <property name="iconSize">
         <size>
          <width>20</width>
          <height>20</height>
@@ -194,93 +185,161 @@
      </item>
     </layout>
    </item>
-   <item row="3" column="1" >
-    <layout class="QVBoxLayout" >
-     <property name="margin" >
-      <number>4</number>
-     </property>
-     <property name="spacing" >
+   <item row="5" column="1">
+    <layout class="QVBoxLayout">
+     <property name="spacing">
       <number>0</number>
      </property>
-     <property name="sizeConstraint" >
+     <property name="sizeConstraint">
       <enum>QLayout::SetMinimumSize</enum>
      </property>
+     <property name="leftMargin">
+      <number>4</number>
+     </property>
+     <property name="topMargin">
+      <number>4</number>
+     </property>
+     <property name="rightMargin">
+      <number>4</number>
+     </property>
+     <property name="bottomMargin">
+      <number>4</number>
+     </property>
      <item>
-      <widget class="QCheckBox" name="sortCB" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>0</hsizetype>
-         <vsizetype>0</vsizetype>
+      <widget class="QCheckBox" name="sortCB">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="minimumSize" >
+       <property name="minimumSize">
         <size>
          <width>0</width>
          <height>21</height>
         </size>
        </property>
-       <property name="text" >
+       <property name="text">
         <string>Sort</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="persistentCB" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>0</hsizetype>
-         <vsizetype>1</vsizetype>
+      <widget class="QCheckBox" name="persistentCB">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="minimumSize" >
+       <property name="minimumSize">
         <size>
          <width>0</width>
          <height>21</height>
         </size>
        </property>
-       <property name="toolTip" >
+       <property name="toolTip">
         <string>Try to keep persistent view of the uncollapsed nodes</string>
        </property>
-       <property name="text" >
+       <property name="text">
         <string>Keep</string>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="3" column="0" >
-    <widget class="QSlider" name="depthSL" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>13</hsizetype>
-       <vsizetype>0</vsizetype>
+   <item row="0" column="0" colspan="2">
+    <widget class="QComboBox" name="typeCO">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="toolTip" >
+     <property name="toolTip">
+      <string>Switch between available lists (table of contents, list of figures, list of tables, and others)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QSlider" name="depthSL">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip">
       <string>Adjust the depth of the navigation tree</string>
      </property>
-     <property name="maximum" >
+     <property name="maximum">
       <number>5</number>
      </property>
-     <property name="pageStep" >
+     <property name="pageStep">
       <number>1</number>
      </property>
-     <property name="value" >
+     <property name="value">
       <number>2</number>
      </property>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="tickPosition" >
+     <property name="tickPosition">
       <enum>QSlider::TicksBothSides</enum>
      </property>
     </widget>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="QTreeView" name="tocTV">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="activeFilterLA">
+       <property name="text">
+        <string>Sho&amp;w:</string>
+       </property>
+       <property name="buddy">
+        <cstring>activeFilterCO</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="activeFilterCO">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Filter items that are not output (in notes, inactive branches, deleted in chagte tracking, etc.)</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>All items</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Only output items</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Only non-output items</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
@@ -289,7 +348,7 @@
   <tabstop>tocTV</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>

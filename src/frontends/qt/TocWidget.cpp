@@ -92,6 +92,8 @@ TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 		this, SLOT(showContextMenu(const QPoint &)));
 	connect(filterLE, SIGNAL(textEdited(QString)),
 		this, SLOT(filterContents()));
+	connect(activeFilterCO, SIGNAL(activated(int)),
+		this, SLOT(filterContents()));
 
 	// setting the update timer
 	timer_->setSingleShot(true);
@@ -507,12 +509,20 @@ void TocWidget::filterContents()
 		Qt::DisplayRole, "*", -1,
 		Qt::MatchFlags(Qt::MatchWildcard|Qt::MatchRecursive));
 
+	bool const show_active =
+		activeFilterCO->currentIndex() != 2;
+	bool const show_inactive =
+		activeFilterCO->currentIndex() != 1;
+
 	int size = indices.size();
 	for (int i = 0; i < size; i++) {
 		QModelIndex index = indices[i];
-		bool const matches =
+		bool matches =
 			index.data().toString().contains(
 				filterLE->text(), Qt::CaseInsensitive);
+		TocItem const & item =
+			gui_view_.tocModels().currentItem(current_type_, index);
+		matches &= (show_active && item.isOutput()) || (show_inactive && !item.isOutput());
 		tocTV->setRowHidden(index.row(), index.parent(), !matches);
 	}
 	// recursively unhide parents of unhidden children
