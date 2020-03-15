@@ -971,6 +971,20 @@ def revert_includeonly(document):
         document.header[i : j + 1] = []
 
 
+def convert_includeall(document):
+    " Add maintain_unincluded_children param "
+
+    i = 0
+    i = find_token(document.header, "\\maintain_unincluded_children", 0)
+    if i == -1:
+        i = find_token(document.header, "\\textclass", 0)
+        if i == -1:
+            document.warning("Malformed LyX document! Missing \\textclass header.")
+            return
+        document.header.insert(i, "\\maintain_unincluded_children false")
+        return
+
+
 def revert_includeall(document):
     " Remove maintain_unincluded_children param "
     del_token(document.header, '\\maintain_unincluded_children', 0)
@@ -2489,7 +2503,7 @@ convert = [[346, []],
            [373, [merge_gbrief]],
            [374, []],
            [375, []],
-           [376, []],
+           [376, [convert_includeall]],
            [377, []],
            [378, []],
            [379, [convert_math_output]],
