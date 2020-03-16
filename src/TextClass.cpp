@@ -1433,7 +1433,7 @@ bool TextClass::readFloat(Lexer & lexrc)
 	string style;
 	string type;
 	string within;
-	string requires;
+	string required;
 	bool usesfloat = true;
 	bool ispredefined = false;
 	bool allowswide = true;
@@ -1511,7 +1511,7 @@ bool TextClass::readFloat(Lexer & lexrc)
 			break;
 		case FT_REQUIRES:
 			lexrc.next();
-			requires = lexrc.getString();
+			required = lexrc.getString();
 			break;
 		case FT_PREDEFINED:
 			lexrc.next();
@@ -1563,9 +1563,9 @@ bool TextClass::readFloat(Lexer & lexrc)
 			          "not be able to produce a float list.");
 		}
 		Floating fl(type, placement, ext, within, style, name,
-			    listname, listcommand, refprefix, allowed_placement,
-			    htmltag, htmlattr, htmlstyle, requires, usesfloat,
-			    ispredefined, allowswide, allowssideways);
+			listname, listcommand, refprefix, allowed_placement,
+			htmltag, htmlattr, htmlstyle, required, usesfloat,
+			ispredefined, allowswide, allowssideways);
 		floatlist_.newFloat(fl);
 		// each float has its own counter
 		counters_.newCounter(from_ascii(type), from_ascii(within),
