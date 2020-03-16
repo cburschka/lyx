@@ -33,7 +33,7 @@ class Font {
 
 public:
 	///
-	explicit Font(FontInfo = sane_font, Language const * l = 0);
+	explicit Font(FontInfo = sane_font, Language const * l = nullptr);
 
 	///
 	FontInfo & fontInfo() { return bits_; }
@@ -90,7 +90,7 @@ public:
 
 
 	/// Build GUI description of font state
-	docstring const stateText(BufferParams * params = 0, bool const terse = false) const;
+	docstring const stateText(BufferParams * params = nullptr, bool const terse = false) const;
 
 	///
 	void validate(LaTeXFeatures & features) const;
