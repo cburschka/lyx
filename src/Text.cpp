@@ -190,10 +190,8 @@ Text::Text(InsetText * owner, bool use_default_layout)
 Text::Text(InsetText * owner, Text const & text)
 	: owner_(owner), pars_(text.pars_)
 {
-	ParagraphList::iterator const end = pars_.end();
-	ParagraphList::iterator it = pars_.begin();
-	for (; it != end; ++it)
-		it->setInsetOwner(owner);
+	for (auto & p : pars_)
+		p.setInsetOwner(owner);
 }
 
 
@@ -870,10 +868,9 @@ void Text::insertStringAsLines(Cursor & cur, docstring const & str,
 
 	// insert the string, don't insert doublespace
 	bool space_inserted = true;
-	for (docstring::const_iterator cit = str.begin();
-	    cit != str.end(); ++cit) {
+	for (auto const & ch : str) {
 		Paragraph & par = pars_[pit];
-		if (*cit == '\n') {
+		if (ch == '\n') {
 			if (inset().allowMultiPar() && (!par.empty() || par.allowEmpty())) {
 				lyx::breakParagraph(*this, pit, pos,
 					par.layout().isEnvironment());
@@ -884,28 +881,28 @@ void Text::insertStringAsLines(Cursor & cur, docstring const & str,
 				continue;
 			}
 		// do not insert consecutive spaces if !free_spacing
-		} else if ((*cit == ' ' || *cit == '\t') &&
+		} else if ((ch == ' ' || ch == '\t') &&
 			   space_inserted && !par.isFreeSpacing()) {
 			continue;
-		} else if (*cit == '\t') {
+		} else if (ch == '\t') {
 			if (!par.isFreeSpacing()) {
 				// tabs are like spaces here
 				par.insertChar(pos, ' ', font, bparams.track_changes);
 				++pos;
 				space_inserted = true;
 			} else {
-				par.insertChar(pos, *cit, font, bparams.track_changes);
+				par.insertChar(pos, ch, font, bparams.track_changes);
 				++pos;
 				space_inserted = true;
 			}
-		} else if (!isPrintable(*cit)) {
+		} else if (!isPrintable(ch)) {
 			// Ignore unprintables
 			continue;
 		} else {
 			// just insert the character
-			par.insertChar(pos, *cit, font, bparams.track_changes);
+			par.insertChar(pos, ch, font, bparams.track_changes);
 			++pos;
-			space_inserted = (*cit == ' ');
+			space_inserted = (ch == ' ');
 		}
 	}
 	setCursor(cur, pit, pos);
@@ -1820,10 +1817,8 @@ bool Text::dissolveInset(Cursor & cur)
 		// ERT paragraphs have the Language latex_language.
 		// This is invalid outside of ERT, so we need to
 		// change it to the buffer language.
-		ParagraphList::iterator it = plist.begin();
-		ParagraphList::iterator it_end = plist.end();
-		for (; it != it_end; ++it)
-			it->changeLanguage(b.params(), latex_language, b.language());
+		for (auto & p : plist)
+			p.changeLanguage(b.params(), latex_language, b.language());
 
 		/* If the inset is the only thing in paragraph and the layout
 		 * is not plain, then the layout of the first paragraph of

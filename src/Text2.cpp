@@ -603,7 +603,7 @@ bool Text::checkAndActivateInsetVisual(Cursor & cur, bool movingForward, bool mo
 	if (cur.pos() == cur.lastpos())
 		return false;
 	Paragraph & par = cur.paragraph();
-	Inset * inset = par.isInset(cur.pos()) ? par.getInset(cur.pos()) : 0;
+	Inset * inset = par.isInset(cur.pos()) ? par.getInset(cur.pos()) : nullptr;
 	if (!inset || !inset->editable())
 		return false;
 	if (cur.selection() && cur.realAnchor().find(inset) == -1)

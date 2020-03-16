@@ -535,16 +535,14 @@ static void outline(OutlineOp mode, Cursor & cur, Text * text)
 					continue;
 
 				DocumentClass const & tc = buf.params().documentClass();
-				DocumentClass::const_iterator lit = tc.begin();
-				DocumentClass::const_iterator len = tc.end();
 				int const newtoclevel =
 					(mode == OutlineIn ? toclevel + 1 : toclevel - 1);
 				LabelType const oldlabeltype = start->layout().labeltype;
 
-				for (; lit != len; ++lit) {
-					if (lit->toclevel ==  newtoclevel &&
-					     lit->labeltype == oldlabeltype) {
-						start->setLayout(*lit);
+				for (auto const & lay : tc) {
+					if (lay.toclevel ==  newtoclevel &&
+						 lay.labeltype == oldlabeltype) {
+						start->setLayout(lay);
 						break;
 					}
 				}
@@ -2079,10 +2077,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// Insert auto-insert arguments
 		bool autoargs = false, inautoarg = false;
 		Layout::LaTeXArgMap args = cur.inset().getLayout().args();
-		Layout::LaTeXArgMap::const_iterator lait = args.begin();
-		Layout::LaTeXArgMap::const_iterator const laend = args.end();
-		for (; lait != laend; ++lait) {
-			Layout::latexarg arg = (*lait).second;
+		for (auto const & argt : args) {
+			Layout::latexarg arg = argt.second;
 			if (!inautoarg && arg.insertonnewline && cur.pos() > 0) {
 				FuncRequest cmd2(LFUN_PARAGRAPH_BREAK);
 				lyx::dispatch(cmd2);
@@ -2100,7 +2096,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 						lyx::dispatch(cmd2);
 					}
 				}
-				FuncRequest cmd2(LFUN_ARGUMENT_INSERT, (*lait).first);
+				FuncRequest cmd2(LFUN_ARGUMENT_INSERT, argt.first);
 				lyx::dispatch(cmd2);
 				autoargs = true;
 				inautoarg = true;
@@ -3426,11 +3422,11 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_SPELLING_ADD:
 	case LFUN_SPELLING_IGNORE:
 	case LFUN_SPELLING_REMOVE:
-		enable = theSpellChecker() != NULL;
+		enable = theSpellChecker() != nullptr;
 		if (enable && !cmd.getArg(1).empty()) {
 			// validate explicitly given language
 			Language const * const lang = const_cast<Language *>(languages.getLanguage(cmd.getArg(1)));
-			enable &= lang != NULL;
+			enable &= lang != nullptr;
 		}
 		break;
 
@@ -3690,12 +3686,8 @@ std::vector<docstring> Text::getFreeFonts() const
 {
 	vector<docstring> ffList;
 
-	FontStack::const_iterator cit = freeFonts.begin();
-	FontStack::const_iterator end = freeFonts.end();
-	for (; cit != end; ++cit)
-		// we do not use cit-> here because gcc 2.9x does not
-		// like it (JMarc)
-		ffList.push_back((*cit).first);
+	for (auto const & f : freeFonts)
+		ffList.push_back(f.first);
 
 	return ffList;
 }

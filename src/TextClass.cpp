@@ -806,17 +806,15 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			if (lexrc.next()) {
 				vector<string> const dbs =
 					getVectorFromString(rtrim(lexrc.getString()), "|");
-				vector<string>::const_iterator it  = dbs.begin();
-				vector<string>::const_iterator end = dbs.end();
-				for (; it != end; ++it) {
-					if (!contains(*it, ':')) {
+				for (auto const & dbase : dbs) {
+					if (!contains(dbase, ':')) {
 						vector<string> const enginetypes =
 							getVectorFromString(opt_enginetype_, "|");
-						for (string const &s: enginetypes)
-							cite_default_biblio_style_[s] = *it;
+						for (string const & s: enginetypes)
+							cite_default_biblio_style_[s] = dbase;
 					} else {
 						string eng;
-						string const db = split(*it, eng, ':');
+						string const db = split(dbase, eng, ':');
 						cite_default_biblio_style_[eng] = db;
 					}
 				}
@@ -932,10 +930,8 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 
 	min_toclevel_ = Layout::NOT_IN_TOC;
 	max_toclevel_ = Layout::NOT_IN_TOC;
-	const_iterator lit = begin();
-	const_iterator len = end();
-	for (; lit != len; ++lit) {
-		int const toclevel = lit->toclevel;
+	for (auto const & lay : *this) {
+		int const toclevel = lay.toclevel;
 		if (toclevel != Layout::NOT_IN_TOC) {
 			if (min_toclevel_ == Layout::NOT_IN_TOC)
 				min_toclevel_ = toclevel;
@@ -1200,7 +1196,7 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 		cs.cmd = latex_cmd.empty() ? lyx_cmd : latex_cmd;
 		if (!alias.empty()) {
 			vector<string> const aliases = getVectorFromString(alias);
-			for (string const &s: aliases)
+			for (string const & s: aliases)
 				cite_command_aliases_[s] = lyx_cmd;
 		}
 		vector<string> const stardescs = getVectorFromString(stardesc, "!");
@@ -1554,11 +1550,9 @@ bool TextClass::readFloat(Lexer & lexrc)
 		if (!usesfloat && listcommand.empty()) {
 			// if this float uses the same auxfile as an existing one,
 			// there is no need for it to provide a list command.
-			FloatList::const_iterator it = floatlist_.begin();
-			FloatList::const_iterator en = floatlist_.end();
 			bool found_ext = false;
-			for (; it != en; ++it) {
-				if (it->second.ext() == ext) {
+			for (auto const & f : floatlist_) {
+				if (f.second.ext() == ext) {
 					found_ext = true;
 					break;
 				}
@@ -1645,8 +1639,8 @@ Layout const & TextClass::operator[](docstring const & name) const
 	if (it == end()) {
 		LYXERR0("We failed to find the layout '" << name
 		       << "' in the layout list. You MUST investigate!");
-		for (const_iterator cit = begin(); cit != end(); ++cit)
-			lyxerr  << " " << to_utf8(cit->name()) << endl;
+		for (auto const & lay : *this)
+			lyxerr  << " " << to_utf8(lay.name()) << endl;
 
 		// We require the name to exist
 		static const Layout dummy;
@@ -1667,8 +1661,8 @@ Layout & TextClass::operator[](docstring const & name)
 	if (it == end()) {
 		LYXERR0("We failed to find the layout '" << to_utf8(name)
 		       << "' in the layout list. You MUST investigate!");
-		for (const_iterator cit = begin(); cit != end(); ++cit)
-			LYXERR0(" " << to_utf8(cit->name()));
+		for (auto const & lay : *this)
+			LYXERR0(" " << to_utf8(lay.name()));
 
 		// we require the name to exist
 		LATTEST(false);
@@ -1745,14 +1739,13 @@ string DocumentClass::forcedLayouts() const
 {
 	ostringstream os;
 	bool first = true;
-	const_iterator const e = end();
-	for (const_iterator i = begin(); i != e; ++i) {
-		if (i->forcelocal > 0) {
+	for (auto const & lay : *this) {
+		if (lay.forcelocal > 0) {
 			if (first) {
 				os << "Format " << LAYOUT_FORMAT << '\n';
 				first = false;
 			}
-			i->write(os);
+			lay.write(os);
 		}
 	}
 	return os.str();
@@ -1817,7 +1810,7 @@ bool TextClass::isPlainLayout(Layout const & layout) const
 
 Layout TextClass::createBasicLayout(docstring const & name, bool unknown) const
 {
-	static Layout * defaultLayout = NULL;
+	static Layout * defaultLayout = nullptr;
 
 	if (defaultLayout) {
 		defaultLayout->setUnknown(unknown);
@@ -1853,17 +1846,14 @@ DocumentClassPtr getDocumentClass(
 {
 	DocumentClassPtr doc_class =
 	    DocumentClassPtr(new DocumentClass(baseClass));
-	LayoutModuleList::const_iterator it = modlist.begin();
-	LayoutModuleList::const_iterator en = modlist.end();
-	for (; it != en; ++it) {
-		string const modName = *it;
-		LyXModule * lm = theModuleList[modName];
+	for (auto const & mod : modlist) {
+		LyXModule * lm = theModuleList[mod];
 		if (!lm) {
 			docstring const msg =
 						bformat(_("The module %1$s has been requested by\n"
 						"this document but has not been found in the list of\n"
 						"available modules. If you recently installed it, you\n"
-						"probably need to reconfigure LyX.\n"), from_utf8(modName));
+						"probably need to reconfigure LyX.\n"), from_utf8(mod));
 			if (!clone)
 				frontend::Alert::warning(_("Module not available"), msg);
 			continue;
@@ -1877,13 +1867,13 @@ DocumentClassPtr getDocumentClass(
 					"Missing prerequisites:\n"
 						"\t%2$s\n"
 					"See section 3.1.2.3 (Modules) of the User's Guide for more information."),
-				from_utf8(modName), prereqs);
+				from_utf8(mod), prereqs);
 			frontend::Alert::warning(_("Package not available"), msg, true);
 		}
 		FileName layout_file = libFileSearch("layouts", lm->getFilename());
 		if (!doc_class->read(layout_file, TextClass::MODULE)) {
 			docstring const msg =
-						bformat(_("Error reading module %1$s\n"), from_utf8(modName));
+						bformat(_("Error reading module %1$s\n"), from_utf8(mod));
 			frontend::Alert::warning(_("Read Error"), msg);
 		}
 	}
@@ -1937,10 +1927,8 @@ DocumentClass::DocumentClass(LayoutFile const & tc)
 
 bool DocumentClass::hasLaTeXLayout(std::string const & lay) const
 {
-	LayoutList::const_iterator it  = layoutlist_.begin();
-	LayoutList::const_iterator end = layoutlist_.end();
-	for (; it != end; ++it)
-		if (it->latexname() == lay)
+	for (auto const & l : layoutlist_)
+		if (l.latexname() == lay)
 			return true;
 	return false;
 }
@@ -1961,17 +1949,15 @@ bool DocumentClass::hasTocLevels() const
 Layout const & DocumentClass::getTOCLayout() const
 {
 	// we're going to look for the layout with the minimum toclevel
-	TextClass::LayoutList::const_iterator lit = begin();
-	TextClass::LayoutList::const_iterator const len = end();
 	int minlevel = 1000;
-	Layout const * lay = NULL;
-	for (; lit != len; ++lit) {
-		int const level = lit->toclevel;
+	Layout const * lay = nullptr;
+	for (auto const & l : *this) {
+		int const level = l.toclevel;
 		// we don't want Part or unnumbered sections
 		if (level == Layout::NOT_IN_TOC || level < 0
-		    || level >= minlevel || lit->counter.empty())
+			|| level >= minlevel || l.counter.empty())
 			continue;
-		lay = &*lit;
+		lay = &l;
 		minlevel = level;
 	}
 	if (lay)
@@ -2030,13 +2016,10 @@ vector<string> const DocumentClass::citeCommands(
 	CiteEngineType const & type) const
 {
 	vector<CitationStyle> const styles = citeStyles(type);
-	vector<CitationStyle>::const_iterator it = styles.begin();
-	vector<CitationStyle>::const_iterator end = styles.end();
 	vector<string> cmds;
-	for (; it != end; ++it) {
-		CitationStyle const cite = *it;
-		cmds.push_back(cite.name);
-	}
+	for (auto const & cs : styles)
+		cmds.push_back(cs.name);
+
 	return cmds;
 }
 

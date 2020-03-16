@@ -109,7 +109,7 @@ docstring printCallStack()
 	char** messages = backtrace_symbols(array, size);
 
 	docstring bt;
-	for (size_t i = 1; i < size && messages != NULL; i++) {
+	for (size_t i = 1; i < size && messages != nullptr; i++) {
 		const std::string orig(messages[i]);
 		char* mangled = nullptr;
 		for (char *p = messages[i]; *p; ++p) {

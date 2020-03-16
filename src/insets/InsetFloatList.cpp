@@ -223,7 +223,7 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const & op) const {
 	TextClass::LayoutList::const_iterator lit = dc.begin();
 	TextClass::LayoutList::const_iterator len = dc.end();
 	int minlevel = 1000;
-	Layout const * lay = NULL;
+	Layout const * lay = nullptr;
 	for (; lit != len; ++lit) {
 		int const level = lit->toclevel;
 		if (level > 0 && (level == Layout::NOT_IN_TOC || level >= minlevel))
