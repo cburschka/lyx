@@ -112,14 +112,6 @@ void FontList::decreasePosAfterPos(pos_type pos)
 }
 
 
-void FontList::setRange(pos_type startpos, pos_type endpos, Font const & font)
-{
-	// FIXME: Optimize!!!
-	for (pos_type pos = startpos; pos != endpos; ++pos)
-		set(pos, font);
-}
-
-
 void FontList::set(pos_type pos, Font const & font)
 {
 	// No need to simplify this because it will disappear
