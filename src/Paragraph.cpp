@@ -516,7 +516,7 @@ public:
 
 
 Paragraph::Private::Private(Paragraph * owner, Layout const & layout)
-	: owner_(owner), inset_owner_(0), id_(-1), begin_of_body_(0), layout_(&layout)
+	: owner_(owner), inset_owner_(nullptr), id_(-1), begin_of_body_(0), layout_(&layout)
 {
 	text_.reserve(100);
 }
@@ -604,7 +604,7 @@ bool Paragraph::hasChangedInsets(pos_type start, pos_type end) const
 	LASSERT(start >= 0 && start <= size(), return false);
 	LASSERT(end > start && end <= size() + 1, return false);
 
-	for (auto const icit : d->insetlist_) {
+	for (auto const & icit : d->insetlist_) {
 		if (icit.pos < start)
 			continue;
 		if (icit.pos >= end)
@@ -1764,7 +1764,7 @@ Font const & Paragraph::getFontSettings(BufferParams const & bparams,
 	// Optimisation: avoid a full font instantiation if there is no
 	// language change from previous call.
 	static Font previous_font;
-	static Language const * previous_lang = 0;
+	static Language const * previous_lang = nullptr;
 	Language const * lang = getParLanguage(bparams);
 	if (lang != previous_lang) {
 		previous_lang = lang;
@@ -1812,7 +1812,7 @@ Font const & Paragraph::getFirstFontSettings(BufferParams const & bparams) const
 	// Optimisation: avoid a full font instantiation if there is no
 	// language change from previous call.
 	static Font previous_font;
-	static Language const * previous_lang = 0;
+	static Language const * previous_lang = nullptr;
 	if (bparams.language != previous_lang) {
 		previous_lang = bparams.language;
 		previous_font = Font(inherit_font, bparams.language);
@@ -2719,7 +2719,7 @@ void Paragraph::latex(BufferParams const & bparams,
 				Inset const * inset = getInset(i);
 				InsetText const * textinset = inset
 							? inset->asInsetText()
-							: 0;
+							: nullptr;
 				if (i + 1 == size() && textinset
 				    && !inset->getLayout().isDisplay()) {
 					ParagraphList const & pars =
@@ -3638,7 +3638,7 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options, const Out
 			os.put(c);
 		else if (c == META_INSET && (options & AS_STR_INSETS)) {
 			if (c == META_INSET && (options & AS_STR_PLAINTEXT)) {
-				LASSERT(runparams != 0, return docstring());
+				LASSERT(runparams != nullptr, return docstring());
 				getInset(i)->plaintext(os, *runparams);
 			} else {
 				getInset(i)->toString(os);
@@ -3885,14 +3885,14 @@ Inset * Paragraph::releaseInset(pos_type pos)
 Inset * Paragraph::getInset(pos_type pos)
 {
 	return (pos < pos_type(d->text_.size()) && d->text_[pos] == META_INSET)
-		 ? d->insetlist_.get(pos) : 0;
+		 ? d->insetlist_.get(pos) : nullptr;
 }
 
 
 Inset const * Paragraph::getInset(pos_type pos) const
 {
 	return (pos < pos_type(d->text_.size()) && d->text_[pos] == META_INSET)
-		 ? d->insetlist_.get(pos) : 0;
+		 ? d->insetlist_.get(pos) : nullptr;
 }
 
 
@@ -4159,7 +4159,7 @@ Language * Paragraph::Private::locateSpellRange(
 		++from;
 	// don't check empty range
 	if (from >= to)
-		return 0;
+		return nullptr;
 	// get current language
 	Language * lang = getSpellLanguage(from);
 	pos_type last = from;
