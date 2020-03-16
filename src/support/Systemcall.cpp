@@ -29,7 +29,7 @@
 #include <iostream>
 
 #include <QProcess>
-#include <QTime>
+#include <QElapsedTimer>
 #include <QThread>
 #include <QCoreApplication>
 #include <QDebug>
@@ -467,7 +467,7 @@ bool SystemcallPrivate::waitWhile(State waitwhile, bool process_events, int time
 	}
 
 	// process events while waiting with timeout
-	QTime timer;
+	QElapsedTimer timer;
 	timer.start();
 	while (state == waitwhile && state != Error && !timedout) {
 		// check for cancellation of background process

@@ -28,7 +28,7 @@
 #include <QFileInfo>
 #include <QList>
 #include <QTemporaryFile>
-#include <QTime>
+#include <QElapsedTimer>
 
 #ifdef _WIN32
 #include <QThread>
@@ -563,7 +563,7 @@ unsigned long FileName::checksum() const
 	}
 
 	// This is used in the debug output at the end of the method.
-	static QTime t;
+	static QElapsedTimer t;
 	if (lyxerr.debugging(Debug::FILES))
 		t.restart();
 
