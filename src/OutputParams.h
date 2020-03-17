@@ -357,6 +357,12 @@ public:
 
 	/// Explicit output folder, if any is desired
 	std::string export_folder;
+
+	/// Have we already output the title?
+	mutable bool already_title;
+	/// Used to signal we need to output \end{TITLEBLOCK} when title
+	/// environment is used.
+	mutable bool issued_title_cmd;
 };
 
 
