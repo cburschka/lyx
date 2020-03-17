@@ -1688,8 +1688,11 @@ void latexParagraphs(Buffer const & buf,
 			//os << '\n';
 	}
 
-	// It might be that we only have a title in this document
-	if (was_title && !already_title) {
+	// It might be that we only have a title in this document.
+	// But if we're in a branch, this is not the end of
+	// the document. (There may be some other checks of this
+	// kind that are needed.)
+	if (was_title && !already_title && !runparams.inbranch) {
 		if (tclass.titletype() == TITLE_ENVIRONMENT) {
 			os << "\\end{" << from_ascii(tclass.titlename())
 			   << "}\n";
