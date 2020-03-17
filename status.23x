@@ -71,7 +71,9 @@ What's new
 
 - Fix tablefootnote loading order (bug 11841).
 
-- Fix reloading of changed include inset (11842).
+- Fix reloading of changed include inset (bug 11842).
+
+- Don't output \maketitle twice with branches (bug 11787)
 
 
 * USER INTERFACE
