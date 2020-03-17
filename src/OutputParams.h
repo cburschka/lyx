@@ -363,6 +363,9 @@ public:
 	/// Used to signal we need to output \end{TITLEBLOCK} when title
 	/// environment is used.
 	mutable bool issued_title_cmd;
+	/// Did we already issue the warning about mixing title and
+	/// non-title layouts?
+	mutable bool gave_layout_warning;
 };
 
 

@@ -1595,8 +1595,6 @@ void latexParagraphs(Buffer const & buf,
 	// variables used in the loop:
 	DocumentClass const & tclass = bparams.documentClass();
 
-	// Did we already warn about inTitle layout mixing? (we only warn once)
-	bool gave_layout_warning = false;
 	for (; pit < runparams.par_end; ++pit) {
 		lastpit = pit;
 		ParagraphList::const_iterator par = paragraphs.constIterator(pit);
@@ -1608,8 +1606,8 @@ void latexParagraphs(Buffer const & buf,
 
 		if (layout.intitle) {
 			if (runparams.already_title) {
-				if (!gave_layout_warning && !runparams.dryrun) {
-					gave_layout_warning = true;
+				if (!runparams.gave_layout_warning && !runparams.dryrun) {
+					runparams.gave_layout_warning = true;
 					frontend::Alert::warning(_("Error in latexParagraphs"),
 							bformat(_("You are using at least one "
 							  "layout (%1$s) intended for the title, "

@@ -34,7 +34,7 @@ OutputParams::OutputParams(Encoding const * enc)
 	  html_disable_captions(false), html_in_par(false),
 	  html_make_pars(true), for_toc(false), for_tooltip(false),
 	  for_search(false), for_preview(false), includeall(false),
-	  already_title(false), issued_title_cmd(false)
+	  already_title(false), issued_title_cmd(false), gave_layout_warning(false)
 {
 	// Note: in PreviewLoader::Impl::dumpPreamble
 	// OutputParams runparams(0);
