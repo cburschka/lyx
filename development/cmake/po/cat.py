@@ -29,9 +29,17 @@ if outfile:
 	out = open(outfile, "wb")
 
 for f in args:
-	# accept both windows and unix line endings, since it can happen that we
-	# are on unix, but the file has been written on windows or vice versa.
-	fil = open(f, "rU")
+	if sys.version_info[0] < 3:
+		# accept both windows and unix line endings, since it can
+		# happen that we are on unix, but the file has been written on
+		# windows or vice versa.
+		mode = "rU"
+	else:
+		# The default behavior of Python 3 is to enable universal
+		# newlines in text mode. Adding "U" gives a deprecation
+		# warning.
+		mode = "r"
+	fil = open(f, mode)
 	for l in fil:
 		# this does always write unix line endings since the file has
 		# been opened in binary mode. This is needed since both gettext
