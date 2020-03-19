@@ -1965,13 +1965,13 @@ void GuiDocument::setListingsMessage()
 		if (isOK)
 			return;
 		isOK = true;
-		// listingsTB->setTextColor("black");
+		// listingsModule->listingsTB->setTextColor("black");
 		listingsModule->listingsTB->setPlainText(
 			qt_("Input listings parameters below. "
 		            "Enter ? for a list of parameters."));
 	} else {
 		isOK = false;
-		// listingsTB->setTextColor("red");
+		// listingsModule->listingsTB->setTextColor("red");
 		listingsModule->listingsTB->setPlainText(msg);
 	}
 }
