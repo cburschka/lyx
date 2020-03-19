@@ -64,22 +64,21 @@ namespace {
 struct SymbolFont {
 	FontFamily lyx_family;
 	QString family;
-	QString xlfd;
 };
 
 SymbolFont symbol_fonts[] = {
-	{ SYMBOL_FAMILY,"symbol", "-*-symbol-*-*-*-*-*-*-*-*-*-*-adobe-fontspecific"},
-	{ CMR_FAMILY,   "cmr10",  "-*-cmr10-medium-*-*-*-*-*-*-*-*-*-*-*" },
-	{ CMSY_FAMILY,  "cmsy10", "-*-cmsy10-*-*-*-*-*-*-*-*-*-*-*-*" },
-	{ CMM_FAMILY,   "cmmi10", "-*-cmmi10-medium-*-*-*-*-*-*-*-*-*-*-*" },
-	{ CMEX_FAMILY,  "cmex10", "-*-cmex10-*-*-*-*-*-*-*-*-*-*-*-*" },
-	{ MSA_FAMILY,   "msam10", "-*-msam10-*-*-*-*-*-*-*-*-*-*-*-*" },
-	{ MSB_FAMILY,   "msbm10", "-*-msbm10-*-*-*-*-*-*-*-*-*-*-*-*" },
-	{ EUFRAK_FAMILY,"eufm10", "-*-eufm10-medium-*-*-*-*-*-*-*-*-*-*-*" },
-	{ RSFS_FAMILY,  "rsfs10", "-*-rsfs10-medium-*-*-*-*-*-*-*-*-*-*-*" },
-	{ STMARY_FAMILY,"stmary10","-*-stmary10-medium-*-*-*-*-*-*-*-*-*-*-*" },
-	{ WASY_FAMILY,  "wasy10", "-*-wasy10-medium-*-*-*-*-*-*-*-*-*-*-*" },
-	{ ESINT_FAMILY, "esint10","-*-esint10-medium-*-*-*-*-*-*-*-*-*-*-*" }
+	{ SYMBOL_FAMILY,"symbol"},
+	{ CMR_FAMILY,   "cmr10"},
+	{ CMSY_FAMILY,  "cmsy10"},
+	{ CMM_FAMILY,   "cmmi10"},
+	{ CMEX_FAMILY,  "cmex10"},
+	{ MSA_FAMILY,   "msam10"},
+	{ MSB_FAMILY,   "msbm10"},
+	{ EUFRAK_FAMILY,"eufm10"},
+	{ RSFS_FAMILY,  "rsfs10"},
+	{ STMARY_FAMILY,"stmary10"},
+	{ WASY_FAMILY,  "wasy10"},
+	{ ESINT_FAMILY, "esint10"}
 };
 
 size_t const nr_symbol_fonts = sizeof(symbol_fonts) / sizeof(symbol_fonts[0]);
