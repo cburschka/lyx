@@ -126,17 +126,6 @@ GuiFontInfo & fontinfo(FontInfo const & f)
 }
 
 
-QString rawName(QString const & family)
-{
-	for (size_t i = 0; i < nr_symbol_fonts; ++i)
-		if (family == symbol_fonts[i].family)
-			return symbol_fonts[i].xlfd;
-
-	LYXERR(Debug::FONT, "BUG: family not found !");
-	return QString();
-}
-
-
 QString symbolFamily(FontFamily family)
 {
 	for (size_t i = 0; i < nr_symbol_fonts; ++i) {
@@ -215,11 +204,8 @@ QFont symbolFont(QString const & family, bool * ok)
 		return font;
 	}
 
-	// A simple setFamily() fails on Qt 2
-
-	QString const raw = rawName(family);
-	LYXERR(Debug::FONT, "Trying " << raw << " ... ");
-	font.setRawName(raw);
+	LYXERR(Debug::FONT, "Trying " << family << " ... ");
+	font.setFamily(family);
 
 	if (isChosenFont(font, family, QString())) {
 		LYXERR(Debug::FONT, "raw version!");
@@ -358,8 +344,6 @@ QFont makeQFont(FontInfo const & f)
 		LYXERR(Debug::FONT, "This font is an exact match");
 	else
 		LYXERR(Debug::FONT, "This font is NOT an exact match");
-
-	LYXERR(Debug::FONT, "XFLD: " << font.rawName());
 
 	font.setPointSizeF(f.realSize() * lyxrc.currentZoom / 100.0);
 
