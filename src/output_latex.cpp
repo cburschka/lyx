@@ -1593,8 +1593,12 @@ void latexParagraphs(Buffer const & buf,
 	// lastpit is for the language check after the loop.
 	pit_type lastpit = pit;
 	// variables used in the loop:
+	bool was_title = false;
+	bool already_title = false;
 	DocumentClass const & tclass = bparams.documentClass();
 
+	// Did we already warn about inTitle layout mixing? (we only warn once)
+	bool gave_layout_warning = false;
 	for (; pit < runparams.par_end; ++pit) {
 		lastpit = pit;
 		ParagraphList::const_iterator par = paragraphs.constIterator(pit);
@@ -1605,9 +1609,9 @@ void latexParagraphs(Buffer const & buf,
 				tclass.plainLayout() : par->layout();
 
 		if (layout.intitle) {
-			if (runparams.already_title) {
-				if (!runparams.gave_layout_warning && !runparams.dryrun) {
-					runparams.gave_layout_warning = true;
+			if (already_title) {
+				if (!gave_layout_warning && !runparams.dryrun) {
+					gave_layout_warning = true;
 					frontend::Alert::warning(_("Error in latexParagraphs"),
 							bformat(_("You are using at least one "
 							  "layout (%1$s) intended for the title, "
@@ -1615,16 +1619,15 @@ void latexParagraphs(Buffer const & buf,
 							  "could lead to missing or incorrect output."
 							  ), layout.name()));
 				}
-			} else if (!runparams.issued_title_cmd) {
+			} else if (!was_title) {
+				was_title = true;
 				if (tclass.titletype() == TITLE_ENVIRONMENT) {
 					os << "\\begin{"
 							<< from_ascii(tclass.titlename())
 							<< "}\n";
-					runparams.issued_title_cmd = true;
 				}
 			}
-		} else if (runparams.issued_title_cmd &&
-				   !runparams.already_title && !layout.inpreamble) {
+		} else if (was_title && !already_title && !layout.inpreamble) {
 			if (tclass.titletype() == TITLE_ENVIRONMENT) {
 				os << "\\end{" << from_ascii(tclass.titlename())
 						<< "}\n";
@@ -1633,8 +1636,8 @@ void latexParagraphs(Buffer const & buf,
 				os << "\\" << from_ascii(tclass.titlename())
 						<< "\n";
 			}
-			runparams.already_title = true;
-			runparams.issued_title_cmd = false;
+			already_title = true;
+			was_title = false;
 		}
 
 		if (layout.isCommand() && !layout.latexname().empty()
@@ -1689,17 +1692,14 @@ void latexParagraphs(Buffer const & buf,
 	// But if we're in a branch, this is not the end of
 	// the document. (There may be some other checks of this
 	// kind that are needed.)
-	if (runparams.issued_title_cmd &&
-			!runparams.already_title && !runparams.inbranch) {
+	if (was_title && !already_title && !runparams.inbranch) {
 		if (tclass.titletype() == TITLE_ENVIRONMENT) {
 			os << "\\end{" << from_ascii(tclass.titlename())
 			   << "}\n";
-			runparams.issued_title_cmd = false;
 		} else {
 			os << "\\" << from_ascii(tclass.titlename())
 			   << "\n";
 		}
-		runparams.already_title = true;
 	}
 
 	if (maintext && !is_child && runparams.openbtUnit)
