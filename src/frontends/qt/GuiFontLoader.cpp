@@ -203,15 +203,6 @@ QFont symbolFont(QString const & family, bool * ok)
 		return font;
 	}
 
-	LYXERR(Debug::FONT, "Trying " << family << " ... ");
-	font.setFamily(family);
-
-	if (isChosenFont(font, family, QString())) {
-		LYXERR(Debug::FONT, "raw version!");
-		*ok = true;
-		return font;
-	}
-
 	LYXERR(Debug::FONT, " FAILED :-(");
 	*ok = false;
 	return font;
