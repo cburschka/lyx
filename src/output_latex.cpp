@@ -1616,11 +1616,11 @@ void latexParagraphs(Buffer const & buf,
 							  ), layout.name()));
 				}
 			} else if (!runparams.issued_title_cmd) {
-				runparams.issued_title_cmd = true;
 				if (tclass.titletype() == TITLE_ENVIRONMENT) {
 					os << "\\begin{"
 							<< from_ascii(tclass.titlename())
 							<< "}\n";
+					runparams.issued_title_cmd = true;
 				}
 			}
 		} else if (runparams.issued_title_cmd &&
