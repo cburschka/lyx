@@ -275,7 +275,7 @@ void LayoutItemDelegate::drawCategoryHeader(QPainter * painter, QStyleOptionView
 
 	// draw the centered text
 	QFontMetrics fm(font);
-	int w = fm.width(category);
+	int w = fm.boundingRect(category).width();
 	int x = opt.rect.x() + (opt.rect.width() - w) / 2;
 	int y = opt.rect.y() + fm.ascent();
 	int left = x;
