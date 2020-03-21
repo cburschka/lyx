@@ -3,13 +3,13 @@
 #
 # Zdenko Podobný <zdpo@mailbox.sk>, 2003, 2006.
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
-# Kornel Benko <kornel@lyx.org>, 2009-2019.
+# Kornel Benko <kornel@lyx.org>, 2009-2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-03-20 19:03-0400\n"
-"PO-Revision-Date: 2019-12-31 10:40+0000\n"
+"PO-Revision-Date: 2020-03-21 09:20+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -28832,7 +28832,7 @@ msgstr "Príkaz nie je povolený pokiaľ nie je otvorený aspoň jeden dokument"
 
 #: src/frontends/qt4/GuiApplication.cpp:1324
 msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
-msgstr "argument pre <LFUN-COMMAND> buffer-forall je neplatný"
+msgstr "neplatný <LFUN-COMMAND>-argument pre funkciu 'buffer-forall'"
 
 #: src/frontends/qt4/GuiApplication.cpp:1526
 msgid "Running configure..."
