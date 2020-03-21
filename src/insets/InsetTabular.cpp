@@ -7131,9 +7131,12 @@ bool InsetTabular::pasteClipboard(Cursor & cur)
 			// FIXME?: why do we need to do this explicitly? (EL)
 			tabular.cellInset(r2, c2)->setBuffer(tabular.buffer());
 
-			// FIXME: change tracking (MG)
-			inset->setChange(Change(buffer().params().track_changes ?
+			if (!lyxrc.ct_markup_copied) {
+				// do not paste deleted text
+				inset->acceptChanges();
+				inset->setChange(Change(buffer().params().track_changes ?
 						Change::INSERTED : Change::UNCHANGED));
+			}
 			cur.pos() = 0;
 			cur.pit() = 0;
 		}
