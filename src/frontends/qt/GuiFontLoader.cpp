@@ -64,9 +64,26 @@ namespace {
 struct SymbolFont {
 	FontFamily lyx_family;
 	QString family;
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+	QString xlfd;
+#endif
 };
 
 SymbolFont symbol_fonts[] = {
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+	{ SYMBOL_FAMILY,"symbol", "-*-symbol-*-*-*-*-*-*-*-*-*-*-adobe-fontspecific"},
+	{ CMR_FAMILY,   "cmr10",  "-*-cmr10-medium-*-*-*-*-*-*-*-*-*-*-*" },
+	{ CMSY_FAMILY,  "cmsy10", "-*-cmsy10-*-*-*-*-*-*-*-*-*-*-*-*" },
+	{ CMM_FAMILY,   "cmmi10", "-*-cmmi10-medium-*-*-*-*-*-*-*-*-*-*-*" },
+	{ CMEX_FAMILY,  "cmex10", "-*-cmex10-*-*-*-*-*-*-*-*-*-*-*-*" },
+	{ MSA_FAMILY,   "msam10", "-*-msam10-*-*-*-*-*-*-*-*-*-*-*-*" },
+	{ MSB_FAMILY,   "msbm10", "-*-msbm10-*-*-*-*-*-*-*-*-*-*-*-*" },
+	{ EUFRAK_FAMILY,"eufm10", "-*-eufm10-medium-*-*-*-*-*-*-*-*-*-*-*" },
+	{ RSFS_FAMILY,  "rsfs10", "-*-rsfs10-medium-*-*-*-*-*-*-*-*-*-*-*" },
+	{ STMARY_FAMILY,"stmary10","-*-stmary10-medium-*-*-*-*-*-*-*-*-*-*-*" },
+	{ WASY_FAMILY,  "wasy10", "-*-wasy10-medium-*-*-*-*-*-*-*-*-*-*-*" },
+	{ ESINT_FAMILY, "esint10","-*-esint10-medium-*-*-*-*-*-*-*-*-*-*-*" }
+#else
 	{ SYMBOL_FAMILY,"symbol"},
 	{ CMR_FAMILY,   "cmr10"},
 	{ CMSY_FAMILY,  "cmsy10"},
@@ -79,6 +96,7 @@ SymbolFont symbol_fonts[] = {
 	{ STMARY_FAMILY,"stmary10"},
 	{ WASY_FAMILY,  "wasy10"},
 	{ ESINT_FAMILY, "esint10"}
+#endif
 };
 
 size_t const nr_symbol_fonts = sizeof(symbol_fonts) / sizeof(symbol_fonts[0]);
@@ -123,6 +141,19 @@ GuiFontInfo & fontinfo(FontInfo const & f)
 		fi = new GuiFontInfo(f);
 	return *fi;
 }
+
+
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+QString rawName(QString const & family)
+{
+	for (size_t i = 0; i < nr_symbol_fonts; ++i)
+		if (family == symbol_fonts[i].family)
+			return symbol_fonts[i].xlfd;
+
+	LYXERR(Debug::FONT, "BUG: family not found !");
+	return QString();
+}
+#endif
 
 
 QString symbolFamily(FontFamily family)
@@ -202,6 +233,20 @@ QFont symbolFont(QString const & family, bool * ok)
 		*ok = true;
 		return font;
 	}
+
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+	// A simple setFamily() fails on Qt 2
+
+	QString const raw = rawName(family);
+	LYXERR(Debug::FONT, "Trying " << raw << " ... ");
+	font.setRawName(raw);
+
+	if (isChosenFont(font, family, QString())) {
+		LYXERR(Debug::FONT, "raw version!");
+		*ok = true;
+		return font;
+	}
+#endif
 
 	LYXERR(Debug::FONT, " FAILED :-(");
 	*ok = false;
@@ -334,6 +379,10 @@ QFont makeQFont(FontInfo const & f)
 		LYXERR(Debug::FONT, "This font is an exact match");
 	else
 		LYXERR(Debug::FONT, "This font is NOT an exact match");
+
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+	LYXERR(Debug::FONT, "XFLD: " << font.rawName());
+#endif
 
 	font.setPointSizeF(f.realSize() * lyxrc.currentZoom / 100.0);
 
