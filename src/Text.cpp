@@ -866,8 +866,8 @@ void Text::insertStringAsLines(Cursor & cur, docstring const & str,
 				++pos;
 				space_inserted = true;
 			}
-		} else if (!isPrintable(*cit)) {
-			// Ignore unprintables
+		} else if (!isPrintable(*cit) && *cit != 0x200c) {
+			// Ignore unprintables, except for ZWNJ (0x200c)
 			continue;
 		} else {
 			// just insert the character
