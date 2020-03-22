@@ -137,6 +137,8 @@ What's new
 - Disable PDF bookmarksopen level widget if booksmarksopen is false
   (bug 11289).
 
+- Fix encoding issues with python 3 when generating preview snippets.
+
 
 * INTERNALS
 
