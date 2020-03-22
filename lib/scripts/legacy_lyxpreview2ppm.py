@@ -111,7 +111,7 @@ def legacy_extract_metrics_info(log_file):
             if match == None:
                 continue
 
-            snippet = (match.group(1) == 'S')
+            snippet = (match.group(1) == b'S')
             success = 1
             match = data_re.search(line)
             if match == None:
