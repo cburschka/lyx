@@ -15,6 +15,7 @@
 #include "InsetSpecialChar.h"
 
 #include "Dimension.h"
+#include "Encoding.h"
 #include "Font.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
@@ -384,6 +385,7 @@ void InsetSpecialChar::latex(otexstream & os,
 			     OutputParams const & rp) const
 {
 	bool const rtl = rp.local_font->isRightToLeft();
+	bool const utf8 = rp.encoding->iconvName() == "UTF-8";
 	string lswitch = "";
 	string lswitche = "";
 	if (rtl && !rp.use_polyglossia) {
@@ -399,10 +401,15 @@ void InsetSpecialChar::latex(otexstream & os,
 		os << "\\-";
 		break;
 	case ALLOWBREAK:
+		// U+200B not yet supported by utf8 inputenc
 		os << "\\LyXZeroWidthSpace" << termcmd;
 		break;
 	case LIGATURE_BREAK:
-		os << "\\textcompwordmark" << termcmd;
+		if (utf8)
+			// U+200C ZERO WIDTH NON-JOINER
+			os.put(0x200c);
+		else
+			os << "\\textcompwordmark" << termcmd;
 		break;
 	case END_OF_SENTENCE:
 		os << "\\@.";

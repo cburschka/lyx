@@ -866,6 +866,13 @@ void Text::insertStringAsLines(Cursor & cur, docstring const & str,
 	pit_type pit = cur.pit();
 	pos_type pos = cur.pos();
 
+	// The special chars we handle
+	map<wchar_t, InsetSpecialChar::Kind> specialchars;
+	specialchars[0x200c] = InsetSpecialChar::LIGATURE_BREAK;
+	specialchars[0x200b] = InsetSpecialChar::ALLOWBREAK;
+	specialchars[0x2026] = InsetSpecialChar::LDOTS;
+	specialchars[0x2011] = InsetSpecialChar::NOBREAKDASH;
+
 	// insert the string, don't insert doublespace
 	bool space_inserted = true;
 	for (auto const & ch : str) {
@@ -895,8 +902,15 @@ void Text::insertStringAsLines(Cursor & cur, docstring const & str,
 				++pos;
 				space_inserted = true;
 			}
-		} else if (!isPrintable(ch) && ch != 0x200c) {
-			// Ignore unprintables, except for ZWNJ (0x200c)
+		} else if (specialchars.find(ch) != specialchars.end()) {
+			par.insertInset(pos, new InsetSpecialChar(specialchars.find(ch)->second),
+					font, bparams.track_changes ?
+						Change(Change::INSERTED)
+					      : Change(Change::UNCHANGED));
+			++pos;
+			space_inserted = false;
+		} else if (!isPrintable(ch)) {
+			// Ignore (other) unprintables
 			continue;
 		} else {
 			// just insert the character
