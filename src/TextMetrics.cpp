@@ -1919,15 +1919,15 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 			LYXERR(Debug::PAINTING, "Clear rect@("
 			       << max(row_x, 0) << ", " << y - row.ascent() << ")="
 			       << width() << " x " << row.height());
-			// FIXME: this is a hack. We know that at least this
-			// amount of pixels can be cleared on right and left.
-			// Doing so gets rid of caret ghosts when the cursor is at
-			// the begining/end of row. However, it will not work if
-			// the caret has a ridiculous width like 6. (see ticket
-			// #10797)
-			pi.pain.fillRectangle(max(row_x, 0) - Inset::TEXT_TO_INSET_OFFSET,
-			                      y - row.ascent(),
-			                      width() + 2 * Inset::TEXT_TO_INSET_OFFSET,
+			// FIXME: this is a hack. We clear an amount equal to
+			// cursor width. This will not work if the caret has a
+			// ridiculous width like 6. (see ticket #10797)
+			// This is the same formula as in GuiWorkArea.
+			int const caret_width = lyxrc.cursor_width
+				? lyxrc.cursor_width
+				: 1 + int((lyxrc.currentZoom + 50) / 200.0);
+			pi.pain.fillRectangle(max(row_x, 0), y - row.ascent(),
+			                      width() + caret_width,
 			                      row.height(), pi.background_color);
 		}
 
