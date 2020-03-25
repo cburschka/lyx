@@ -317,8 +317,6 @@ else()
 endif()
 
 
-set(VERSION_INFO "CMake Build")
-
 # Try to get some informations from configure.ac
 
 include(LyXPaths)
@@ -1069,6 +1067,36 @@ endif()
 # compiler tests, config.h generation LYX_CONFIGURE_CHECKS
 include(${LYX_CMAKE_DIR}/ConfigureChecks.cmake)
 configure_file(${LYX_CMAKE_DIR}/configCompiler.h.cmake ${TOP_BINARY_DIR}/configCompiler.h)
+
+set(opts)
+foreach(_option ${LYX_OPTIONS})
+  if(${_option}_show_message)
+    string(SUBSTRING "${_option}                            " 0 31 _var)
+    get_property(_prop CACHE ${_option} PROPERTY STRINGS)
+    list(FIND LYX_OPTION_STRINGS ${_option} _index)
+    if (${_index} GREATER -1)
+      set(_isset ${${_option}})
+    elseif(${_option})
+      set(_isset ON)
+    else()
+      set(_isset OFF)
+    endif()
+    string(SUBSTRING "${_isset}           " 0 10 _val)
+    set(opts "${opts} ${_option}(${${_option}})")
+  endif()
+endforeach()
+set(VERSION_INFO "CMake Build")
+set(VERSION_INFO "${VERSION_INFO}\\n  Host name:               ${CMAKE_HOST_SYSTEM_NAME}")
+set(VERSION_INFO "${VERSION_INFO}\\n  Host processor:          ${CMAKE_HOST_SYSTEM_PROCESSOR}")
+set(VERSION_INFO "${VERSION_INFO}\\n  Build flags:             ${opts}")
+set(VERSION_INFO "${VERSION_INFO}\\n  C++ Compiler:            ${CMAKE_CXX_COMPILER_ID} (${CMAKE_CXX_COMPILER_VERSION})")
+set(VERSION_INFO "${VERSION_INFO}\\n  C++ Compiler flags:      ${CMAKE_CXX_FLAGS}")
+if (LYX_DEBUG)
+set(VERSION_INFO "${VERSION_INFO}\\n  C++ Compiler user flags: ${CMAKE_CXX_FLAGS_DEBUG}")
+else()
+set(VERSION_INFO "${VERSION_INFO}\\n  C++ Compiler user flags: ${CMAKE_CXX_FLAGS_RELEASE}")
+endif()
+
 
 configure_file(${LYX_CMAKE_DIR}/config.h.cmake ${TOP_BINARY_DIR}/config.h)
 
