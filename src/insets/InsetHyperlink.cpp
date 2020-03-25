@@ -60,19 +60,28 @@ ParamInfo const & InsetHyperlink::findInfo(string const & /* cmdName */)
 
 docstring InsetHyperlink::screenLabel() const
 {
+	// TODO: replace with unicode hyperlink character = U+1F517
 	docstring const temp = _("Hyperlink: ");
 
 	docstring url;
 
 	url += getParam("name");
-	if (url.empty())
+	if (url.empty()) {
 		url += getParam("target");
 
-	// elide if long
-	if (url.length() > 30) {
-		docstring end = url.substr(url.length() - 17, url.length());
-		support::truncateWithEllipsis(url, 13);
-		url += end;
+		// elide if long and no name was provided
+		if (url.length() > 30) {
+			docstring end = url.substr(url.length() - 17, url.length());
+			support::truncateWithEllipsis(url, 13);
+			url += end;
+		}
+	} else {
+		// elide if long (approx number of chars in line of article class)
+		if (url.length() > 80) {
+			docstring end = url.substr(url.length() - 67, url.length());
+			support::truncateWithEllipsis(url, 13);
+			url += end;
+		}
 	}
 	return temp + url;
 }
