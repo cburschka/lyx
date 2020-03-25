@@ -1096,6 +1096,10 @@ set(VERSION_INFO "${VERSION_INFO}\\n  C++ Compiler user flags: ${CMAKE_CXX_FLAGS
 else()
 set(VERSION_INFO "${VERSION_INFO}\\n  C++ Compiler user flags: ${CMAKE_CXX_FLAGS_RELEASE}")
 endif()
+set(VERSION_INFO "${VERSION_INFO}\\n  Qt version:              ${QTVERSION}")
+set(VERSION_INFO "${VERSION_INFO}\\n  LyX binary dir:          ${CMAKE_INSTALL_PREFIX}/${LYX_UTILITIES_INSTALL_PATH}")
+get_data_destination(dest_data)
+set(VERSION_INFO "${VERSION_INFO}\\n  LyX files dir:           ${CMAKE_INSTALL_PREFIX}/${dest_data}")
 
 
 configure_file(${LYX_CMAKE_DIR}/config.h.cmake ${TOP_BINARY_DIR}/config.h)
