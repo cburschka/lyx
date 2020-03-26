@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-03-14 20:19+0100\n"
-"PO-Revision-Date: 2020-03-14 19:27+0000\n"
+"POT-Creation-Date: 2020-03-15 11:11+0100\n"
+"PO-Revision-Date: 2020-03-15 10:26+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -5662,6 +5662,30 @@ msgstr "Držať"
 #: src/frontends/qt/ui/TocUi.ui:266
 msgid "Adjust the depth of the navigation tree"
 msgstr "Nastaviť hĺbku navigačného stromu"
+
+#: src/frontends/qt/ui/TocUi.ui:307
+msgid "Sho&w:"
+msgstr "U&kázať:"
+
+#: src/frontends/qt/ui/TocUi.ui:323
+msgid ""
+"Filter items that are not output (in notes, inactive branches, deleted in "
+"chagte tracking, etc.)"
+msgstr ""
+"Filtrovať prvky ktoré nebudú vo výstupe (v poznámkach, neaktívnych vetvách, "
+"zmazaných pri sledovaní zmien, atď.)"
+
+#: src/frontends/qt/ui/TocUi.ui:327
+msgid "All items"
+msgstr "Všetky prvky"
+
+#: src/frontends/qt/ui/TocUi.ui:332
+msgid "Only output items"
+msgstr "Len prvky s výstupom"
+
+#: src/frontends/qt/ui/TocUi.ui:337
+msgid "Only non-output items"
+msgstr "Len prvky bez výstupu"
 
 #: src/frontends/qt/ui/ToggleWarningUi.ui:14
 msgid "LyX: Enter text"
