@@ -89,20 +89,20 @@
 #   view(er)             -> ansehen / Ansicht / Betrachter
 #   wrap                 -> umflossenes Gleitobjekt
 #
-# Jürgen Spitzmüller <spitz@lyx.org>, 2009-2019.
+# Jürgen Spitzmüller <spitz@lyx.org>, 2009-2019, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-03-20 19:03-0400\n"
-"PO-Revision-Date: 2019-10-31 10:46+0100\n"
+"POT-Creation-Date: 2020-03-26 07:57+0100\n"
+"PO-Revision-Date: 2020-03-26 08:02+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.08.1\n"
+"X-Generator: Lokalize 19.12.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:33
@@ -26030,14 +26030,17 @@ msgid "Document class not available"
 msgstr "Die Dokumentklasse ist nicht verfügbar"
 
 #: src/BufferParams.cpp:2168 src/Encoding.cpp:246 src/Paragraph.cpp:2766
-#: src/frontends/qt4/LaTeXHighlighter.cpp:122 src/insets/InsetGraphics.cpp:887
-#: src/insets/InsetGraphics.cpp:895 src/insets/InsetListings.cpp:259
-#: src/insets/InsetListings.cpp:267 src/insets/InsetListings.cpp:290
-#: src/mathed/MathExtern.cpp:1440 src/mathed/MathExtern.cpp:1518
+#: src/frontends/qt4/LaTeXHighlighter.cpp:122
+#: src/insets/InsetCommandParams.cpp:503 src/insets/InsetCommandParams.cpp:511
+#: src/insets/InsetGraphics.cpp:887 src/insets/InsetGraphics.cpp:895
+#: src/insets/InsetListings.cpp:259 src/insets/InsetListings.cpp:267
+#: src/insets/InsetListings.cpp:290 src/mathed/MathExtern.cpp:1440
+#: src/mathed/MathExtern.cpp:1518
 msgid "LyX Warning: "
 msgstr "LyX-Warnung: "
 
 #: src/BufferParams.cpp:2169 src/Encoding.cpp:247 src/Paragraph.cpp:2767
+#: src/insets/InsetCommandParams.cpp:504 src/insets/InsetCommandParams.cpp:512
 #: src/insets/InsetGraphics.cpp:888 src/insets/InsetGraphics.cpp:896
 #: src/insets/InsetListings.cpp:260 src/insets/InsetListings.cpp:268
 #: src/mathed/MathExtern.cpp:1441 src/mathed/MathExtern.cpp:1519
@@ -32725,6 +32728,23 @@ msgstr ""
 "der\n"
 "aktuellen Zeichenkodierung nicht darstellbar und wurden daher weggelassen:\n"
 "%2$s."
+
+#: src/insets/InsetCommandParams.cpp:522
+msgid "Uncodable characters in inset"
+msgstr "Unkodierbare Zeichen in Einfügung"
+
+#: src/insets/InsetCommandParams.cpp:523
+#, c-format
+msgid ""
+"The following characters in one of the insets are\n"
+"not representable in the current encoding and have been omitted: %1$s.\n"
+"Unchecking 'Literal' in the respective inset dialog might help."
+msgstr ""
+"Die folgenden Zeichen in einer der Einfügungen sind in der\n"
+"aktuellen Zeichenkodierung nicht darstellbar und wurden daher weggelassen: "
+"%1$s. \n"
+"Es könnte helfen, in den entsprechenden Einfügungseinstellungen "
+"'Unformatiert' zu deaktivieren."
 
 #: src/insets/InsetExternal.cpp:403
 #, c-format
