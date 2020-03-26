@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-03-20 19:03-0400\n"
-"PO-Revision-Date: 2020-03-21 09:20+0000\n"
+"POT-Creation-Date: 2020-03-26 11:12+0100\n"
+"PO-Revision-Date: 2020-03-26 10:15+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2296,7 +2296,7 @@ msgstr "Konfigurácia parametrov vložky"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:46
 msgid "Update dialog when moving context"
-msgstr "Synchronizovať dialóg pri zmenách v kontexte"
+msgstr "Synchronizovať dialóg, keď sa kurzor položí do iného prostredia"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:49
 msgid "S&ynchronize Dialog"
@@ -3634,7 +3634,7 @@ msgid ""
 "included files."
 msgstr ""
 "Keď zaškrtnuté, adresár dokumentu sa zapíše do dokumentu. Dovolí sa tým "
-"premiestniť dokument niekde inde a predsa nájsť vložené súbory."
+"presunúť dokument niekde inde a predsa nájsť vložené súbory."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:158
 msgid "Save the &document directory path"
@@ -18836,7 +18836,7 @@ msgstr "Matematika|M"
 
 #: lib/ui/stdmenus.inc:128
 msgid "Rows & Columns|C"
-msgstr "Riadky & stĺpce|ĺ"
+msgstr "Riadky a stĺpce|ĺ"
 
 #: lib/ui/stdmenus.inc:135
 msgid "Increase List Depth|I"
@@ -18844,7 +18844,7 @@ msgstr "Zväčšiť hĺbku listiny|ä"
 
 #: lib/ui/stdmenus.inc:136
 msgid "Decrease List Depth|D"
-msgstr "Zmenšiť hĺbku listiny|Z"
+msgstr "Zmenšiť hĺbku listiny|š"
 
 #: lib/ui/stdmenus.inc:137
 msgid "Dissolve Inset"
@@ -32350,6 +32350,21 @@ msgstr ""
 "Nasledujúce znaky použité vo vložke %1$s sú nereprezentovateľné\n"
 "v aktuálnom kódovaní a boli vynechané:\n"
 "%2$s."
+
+#: src/insets/InsetCommandParams.cpp:522
+msgid "Uncodable characters in inset"
+msgstr "Nekódovateľné znaky vo vložke"
+
+#: src/insets/InsetCommandParams.cpp:523
+#, c-format
+msgid ""
+"The following characters in one of the insets are\n"
+"not representable in the current encoding and have been omitted: %1$s.\n"
+"Unchecking 'Literal' in the respective inset dialog might help."
+msgstr ""
+"Nasledujúce znaky v jednej z vložiek sú ne-zobraziteľné\n"
+"v aktuálnom kódovaní a boli vynechané: %1$s.\n"
+"Od-štrknúť 'Doslovne' v príslušnom dialógu by mohlo pomôcť."
 
 #: src/insets/InsetExternal.cpp:403
 #, c-format
