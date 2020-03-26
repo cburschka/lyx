@@ -2759,19 +2759,23 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_OUTLINE_UP:
+	case LFUN_OUTLINE_UP: {
+		pos_type const opos = cur.pos();
 		outline(OutlineUp, cur, this);
-		setCursor(cur, cur.pit(), cur.pos());
+		setCursor(cur, cur.pit(), opos);
 		cur.forceBufferUpdate();
 		needsUpdate = true;
 		break;
+	}
 
-	case LFUN_OUTLINE_DOWN:
+	case LFUN_OUTLINE_DOWN: {
+		pos_type const opos = cur.pos();
 		outline(OutlineDown, cur, this);
-		setCursor(cur, cur.pit(), cur.pos());
+		setCursor(cur, cur.pit(), opos);
 		cur.forceBufferUpdate();
 		needsUpdate = true;
 		break;
+	}
 
 	case LFUN_OUTLINE_IN:
 		outline(OutlineIn, cur, this);
