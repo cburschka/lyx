@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-01-03 14:59+0100\n"
-"PO-Revision-Date: 2020-02-28 21:37+0200\n"
+"PO-Revision-Date: 2020-03-26 13:45+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -264,7 +264,7 @@ msgstr "Базы данных"
 
 #: src/frontends/qt/ui/BibtexUi.ui:37
 msgid "Found b&y LaTeX:"
-msgstr "Найденные LaTeX:"
+msgstr "Доступные:"
 
 #: src/frontends/qt/ui/BibtexUi.ui:65
 msgid "Add the selected BibTeX database from the list on the left"
@@ -4744,8 +4744,8 @@ msgid ""
 "Pass index names literally to LaTeX. Check this if you want to use LaTeX "
 "code in index names."
 msgstr ""
-"Передавать индексные имена буквально в LaTeX. Выберите это, если вы хотите "
-"использовать код LaTeX в именах для индексов."
+"Передавать имена указателей буквально в LaTeX. Выберите это, если вы хотите "
+"использовать код LaTeX в именах для указателей."
 
 #: src/frontends/qt/ui/ProgressViewUi.ui:93 src/frontends/qt/GuiPrefs.cpp:215
 msgid "Output"
@@ -14550,7 +14550,7 @@ msgstr "Минималистичные вставки"
 #: lib/layouts/minimalistic.module:6
 msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
 msgstr ""
-"Переопределяет некоторые вставки (индексы, ветки, URL) как минималистские."
+"Переопределяет некоторые вставки (Рубрика, Ветка, URL) как минималистские."
 
 #: lib/layouts/moderncv.layout:3 lib/examples/Articles:0
 msgid "Modern CV"
@@ -19889,11 +19889,11 @@ msgstr "Вставить ссылку в позицию курсора"
 
 #: lib/ui/stdcontext.inc:607
 msgid "All Indexes|A"
-msgstr "Все индексы"
+msgstr "Все указатели"
 
 #: lib/ui/stdcontext.inc:610
 msgid "Subindex|b"
-msgstr "Подиндекс|b"
+msgstr "Подуказатель"
 
 #: lib/ui/stdcontext.inc:638 lib/ui/stdmenus.inc:582
 msgid "Reject Change|R"
@@ -20956,7 +20956,7 @@ msgstr "Тезаурус...|Т"
 
 #: lib/ui/stdmenus.inc:623
 msgid "Statistics...|a"
-msgstr "Статистика...|С"
+msgstr "Статистика|С"
 
 #: lib/ui/stdmenus.inc:624
 msgid "Check TeX|h"
@@ -21020,7 +21020,7 @@ msgstr "Специальные руководства|ц"
 
 #: lib/ui/stdmenus.inc:651
 msgid "About LyX|X"
-msgstr "О программе LyX...|О"
+msgstr "О программе LyX|О"
 
 #: lib/ui/stdmenus.inc:655
 msgid "Beamer Presentations|B"
@@ -27977,7 +27977,7 @@ msgstr "метка сноски"
 
 #: src/Color.cpp:247
 msgid "index label"
-msgstr "метка индекса"
+msgstr "метка рубрики"
 
 #: src/Color.cpp:248
 msgid "margin note label"
@@ -29790,7 +29790,7 @@ msgstr "Шрифт: %1$s"
 #: src/Text.cpp:1980
 #, c-format
 msgid ", Depth: %1$d"
-msgstr ", Уровень: %1$d"
+msgstr ", Вложенность: %1$d"
 
 #: src/Text.cpp:1986
 msgid ", Spacing: "
@@ -30862,10 +30862,10 @@ msgid ""
 "subdirectory of LaTeX's texmf tree. If you want to reuse your own database, "
 "this is the place you should store it."
 msgstr ""
-"Этот список состоит из всех баз данных, которые индексируются LaTeX и, таким "
-"образом, находятся без задания пути к файлу. Обычно это все в подкаталоге "
-"bib/ в каталоге texmf установки LaTeX. Если вы хотите использовать свою "
-"собственную базу данных, это место, где вы должны хранить её."
+"Этот список содержит все базы данных, которые индексируются LaTeX и поэтому "
+"находятся без задания пути к файлу. Обычно это все файлы из каталога texmf/"
+"bib/ вашей установки LaTeX. Если вы хотите использовать свою собственную "
+"базу данных, можете сохранить её там же."
 
 #: src/frontends/qt/GuiBibtex.cpp:138 src/frontends/qt/GuiBibtex.cpp:305
 msgid "Document Encoding"
@@ -34979,7 +34979,7 @@ msgstr ""
 
 #: src/insets/InsetIndex.cpp:153
 msgid "Index sorting failed"
-msgstr "Сортировка индекса завершилась неудачно"
+msgstr "Сортировка указателя завершилась неудачно"
 
 #: src/insets/InsetIndex.cpp:154
 #, c-format
@@ -34989,26 +34989,26 @@ msgid ""
 "Please specify the sorting of this entry manually, as\n"
 "explained in the User Guide."
 msgstr ""
-"Алгоритм автоматической сортировки индекса LyX\n"
+"Алгоритм LyX автоматической сортировки указателя\n"
 "не смог обработать элемент '%1$s'.\n"
 "Укажите, как сортировать этот элемент вручную.\n"
 "Это описано в Руководстве пользователя."
 
 #: src/insets/InsetIndex.cpp:288
 msgid "Index Entry"
-msgstr "Пункт в указателе"
+msgstr "Рубрика"
 
 #: src/insets/InsetIndex.cpp:474
 msgid "Unknown index type!"
-msgstr "Неизвестный тип индекса!"
+msgstr "Неизвестный тип указателя!"
 
 #: src/insets/InsetIndex.cpp:475
 msgid "All indexes"
-msgstr "Все индексы"
+msgstr "Все указатели"
 
 #: src/insets/InsetIndex.cpp:479
 msgid "subindex"
-msgstr "подиндекс"
+msgstr "подуказатель"
 
 #: src/insets/InsetInfo.cpp:192
 msgid "No long date format (language unknown)!"
