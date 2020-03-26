@@ -45,6 +45,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix crash with non-encodable glyph in nomcenlature inset (bug 11584).
+
 - Fix problems with non-ASCII characters in file path with recent LaTeX
   (bug 11146).
 
