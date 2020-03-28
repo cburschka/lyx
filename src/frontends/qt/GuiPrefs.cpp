@@ -2828,6 +2828,7 @@ GuiShortcutDialog::GuiShortcutDialog(QWidget * parent) : QDialog(parent)
 {
 	Ui::shortcutUi::setupUi(this);
 	QDialog::setModal(true);
+	lfunLE->setValidator(new NoNewLineValidator(lfunLE));
 }
 
 
