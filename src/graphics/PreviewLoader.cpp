@@ -727,7 +727,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	if (wait) {
 		ForkedCall call(buffer_.filePath(), buffer_.layoutPos());
 		int ret = call.startScript(ForkedProcess::Wait, command);
-		static atomic_int fake((2^20) + 1);
+		static atomic_int fake((1 << 20) + 1);
 		int pid = fake++;
 		inprogress.pid = pid;
 		inprogress.command = command;
