@@ -51,14 +51,15 @@ void GuiSelection::haveSelection(bool own)
 	// an application actually requests it.
 	// This way calling Selection::have() is cheap and we can do it as
 	// often as we want.
-	//LYXERR(Debug::SELECTION, "GuiSelection: setting dummy selection");
-	if (own)
+	if (own && !qApp->clipboard()->ownsSelection()) {
+		LYXERR(Debug::SELECTION, "GuiSelection: setting dummy selection");
 		qApp->clipboard()->setText(QString(), QClipboard::Selection);
+	}
 	// We don't need to do anything if own = false, as this case is
 	// handled by QT.
 	// FIXME (gb): This is wrong. What is missing here is rather a call of
-	//else
 	//	qApp->clipboard()->clear(QClipboard::Selection);
+	// when own is false.
 	// Since we do not issue this call we rather implement
 	// "persistent selections" as far as X is concerned.
 }
