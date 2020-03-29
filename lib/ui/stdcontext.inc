@@ -58,12 +58,15 @@ Menuset
 		OptItem "Equation Label|L" "label-insert"
 		OptItem "Copy as Reference|R" "label-copy-as-reference"
 		Separator
-		Item "Split Cell|C" "cell-split"
+		OptItem "Cut" "cut"
+		OptItem "Copy" "copy"
+		OptItem "Paste" "paste"
+		OptSubmenu "Paste Recent|e" "edit_pasterecent"
 		Separator
 		Submenu "Insert|s" "insert_math_context"
 		Separator
+		Item "Split Cell|C" "cell-split"
 		OptSubmenu "Rows & Columns| " "edit_tabular_features"
-		Separator
 		OptItem "Add Line Above|o" "tabular-feature add-hline-above"
 		OptItem "Add Line Below|B" "tabular-feature add-hline-below"
 		OptItem "Delete Line Above|v" "tabular-feature delete-hline-above"
