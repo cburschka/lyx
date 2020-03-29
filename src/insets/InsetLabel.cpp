@@ -316,6 +316,20 @@ void InsetLabel::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	OutputParams runparams = runparams_in;
 	docstring command = getCommand(runparams);
+	docstring const label = getParam("name");
+	if (buffer().params().output_changes
+	    && buffer().activeLabel(label)
+	    && buffer().insetLabel(label, true) != this) {
+		// this is a deleted label and we have a non-deleted with the same id
+		// rename it for output to prevent wrong references
+		docstring newlabel = label;
+		int i = 1;
+		while (buffer().insetLabel(newlabel)) {
+			newlabel = label + "-DELETED-" + convert<docstring>(i);
+			++i;
+		}
+		command = subst(command, label, newlabel);
+	}
 	// In macros with moving arguments, such as \section,
 	// we store the label and output it after the macro (#2154)
 	if (runparams_in.postpone_fragile_stuff)
