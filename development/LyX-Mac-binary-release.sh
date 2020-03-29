@@ -1026,7 +1026,7 @@ make_dmg() {
 	ln -s /Applications/ "${VOLUME}"/Applications
 	test -d "${DocumentationDir}" && ditto --hfsCompression "${DocumentationDir}" "${VOLUME}"
 	set_bundle_display_options "${VOLUME}" ${BG_W} ${BG_H}
-	${XCODE_DEVELOPER}/Tools/SetFile -a C "${VOLUME}"
+	PATH="${XCODE_DEVELOPER}/Tools:$PATH" SetFile -a C "${VOLUME}"
 	mv "${VOLUME}/Pictures" "${VOLUME}/.Pictures"
 
 	# Unmount the disk image
