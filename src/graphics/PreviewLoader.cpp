@@ -217,7 +217,6 @@ private:
 
 	/** in_progress_ stores all forked processes so that we can proceed
 	 *  thereafter.
-	    The map uses the conversion commands as its identifiers.
 	 */
 	InProgressProcesses in_progress_;
 
