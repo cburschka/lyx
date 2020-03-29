@@ -1793,25 +1793,6 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 			    from_utf8(s)));
 		}
 
-#if 0
-		// FIXME: What did this code do?
-		// Please check whether it is still needed!
-		// should be more precise
-		if (v_align_ == '\0') {
-			status.enable(true);
-			break;
-		}
-		if (cmd.argument().empty()) {
-			status.enable(false);
-			break;
-		}
-		if (!contains("tcb", cmd.argument()[0])) {
-			status.enable(false);
-			break;
-		}
-		status.setOnOff(cmd.argument()[0] == v_align_);
-		status.setEnabled(true);
-#endif
 		return true;
 	}
 
