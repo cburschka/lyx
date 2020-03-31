@@ -271,7 +271,7 @@ Format 4
 
 #bind "F1"                           "help"         # Not yet implemented!
 #bind "C-F1"                         "help-context" # Not yet implemented!
-\bind "F2"                           "buffer-write"
+\bind "F2"                           "buffer-write force"
 \bind "C-F4"                         "buffer-close"
 \bind "C-A-Up"                       "scroll line up"
 \bind "C-A-Down"                     "scroll line down"

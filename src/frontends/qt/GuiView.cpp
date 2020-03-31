@@ -1996,7 +1996,9 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	}
 
 	case LFUN_BUFFER_WRITE:
-		enable = doc_buffer && (doc_buffer->isUnnamed() || !doc_buffer->isClean());
+		enable = doc_buffer && (doc_buffer->isUnnamed()
+					|| (!doc_buffer->isClean()
+					    || cmd.argument() == "force"));
 		break;
 
 	//FIXME: This LFUN should be moved to GuiApplication.

@@ -892,7 +892,8 @@ void LyXAction::init()
  * \li Notion: Saves the current buffer to disk, using the filename that
                is already associated with the buffer, asking for one if
                none is yet assigned.
- * \li Syntax: buffer-write
+ * \li Syntax: buffer-write [force]
+ * \li Params: force: write even if buffer is clean.
  * \endvar
  */
 		{ LFUN_BUFFER_WRITE, "buffer-write", ReadOnly, Buffer },

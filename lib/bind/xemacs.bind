@@ -130,7 +130,7 @@ Format 4
 
 #bind "F1"                     "help"                          # Not yet implemented!
 #bind "C-F1"                   "help-context"                  # Not yet implemented!
-#\bind "F2"                     "buffer-write"
+\bind "F2"                     "buffer-write force"
 #\bind "F3"                     "file-open"
 #bind "F4"                     "------"
 #bind "F5"                     "------"
