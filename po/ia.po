@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ia\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-04-03 13:46+0200\n"
-"PO-Revision-Date: 2020-03-14 16:22+0100\n"
+"POT-Creation-Date: 2020-04-03 13:47+0200\n"
+"PO-Revision-Date: 2020-03-31 22:49+0200\n"
 "Last-Translator: Giovanni Sora <g.sora@tiscali.it>\n"
-"Language-Team: Interlingua <>\n"
+"Language-Team: Interlingua per LyX\n"
 "Language: ia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgstr "Version"
 
 #: src/frontends/qt/ui/AboutUi.ui:69
 msgid "Version goes here"
-msgstr "2.3.x"
+msgstr "2.4.x"
 
 #: src/frontends/qt/ui/AboutUi.ui:86
 msgid "Credits"
@@ -65,18 +65,16 @@ msgid "&Label:"
 msgstr "&Etiquetta:"
 
 #: src/frontends/qt/ui/BibitemUi.ui:83
-#, fuzzy
 msgid "&Year:"
-msgstr "Anno: "
+msgstr "&Anno:"
 
 #: src/frontends/qt/ui/BibitemUi.ui:96
 msgid "The year with \"Author (Year)\" citations (without parentheses)."
-msgstr ""
+msgstr "Le anno con citationes de \"Autor (Anno)\" (sin parentheses)."
 
 #: src/frontends/qt/ui/BibitemUi.ui:105 src/frontends/qt/GuiBibitem.cpp:64
-#, fuzzy
 msgid "A&ll Author Names:"
-msgstr "Nomines de autor"
+msgstr "Nomines de &omne autores:"
 
 #: src/frontends/qt/ui/BibitemUi.ui:115
 msgid ""
@@ -84,6 +82,9 @@ msgid ""
 "full list for author-year citation, you can put the full list here and the "
 "abbreviated list above."
 msgstr ""
+"Si tu vole usar un lista de autor abbreviate (con 'et al.') assi como un "
+"plen list per citation autor-anno, tu pote poner le lista plen e le lista "
+"abbreviate de supra."
 
 #: src/frontends/qt/ui/BibitemUi.ui:122 src/frontends/qt/GuiBibitem.cpp:93
 msgid ""
@@ -251,39 +252,32 @@ msgid ""
 msgstr "Defini optiones tal como --min-crossrefs (vide le manual de BibTeX)."
 
 #: src/frontends/qt/ui/BibtexUi.ui:23
-#, fuzzy
 msgid "BibTeX database(s) to use"
-msgstr "Catalogos BibTeX de usar"
+msgstr "Catalogo(s) BibTeX de usar"
 
 #: src/frontends/qt/ui/BibtexUi.ui:26
-#, fuzzy
 msgid "&Databases"
-msgstr "Catalogos (bases de datos):"
+msgstr "Catalogos (bases de &datos)"
 
 #: src/frontends/qt/ui/BibtexUi.ui:37
-#, fuzzy
 msgid "Found b&y LaTeX:"
-msgstr "Base de &Datos (Catalogos) trovate per LaTeX:"
+msgstr "&Trovate per LaTeX:"
 
 #: src/frontends/qt/ui/BibtexUi.ui:65
-#, fuzzy
 msgid "Add the selected BibTeX database from the list on the left"
-msgstr "Move in alto in le lista le catalogo seligite"
+msgstr "Adde le catalogo BibTeX seligite ex le lista sur le sinistra"
 
 #: src/frontends/qt/ui/BibtexUi.ui:68
-#, fuzzy
 msgid "&Add Selected[[bib]]"
-msgstr "Adde s&eligite"
+msgstr "&Adde seligite"
 
 #: src/frontends/qt/ui/BibtexUi.ui:75
-#, fuzzy
 msgid "Add a BibTeX database from your local directory"
-msgstr "Adde un file de catalogo BibTeX"
+msgstr "Adde un catalogo BibTeX ex tu directorio local"
 
 #: src/frontends/qt/ui/BibtexUi.ui:78
-#, fuzzy
 msgid "Add &Local..."
-msgstr "&Disposition local..."
+msgstr "Adde &Local..."
 
 #: src/frontends/qt/ui/BibtexUi.ui:91
 msgid "Remove the selected database"
@@ -312,19 +306,16 @@ msgid "Do&wn"
 msgstr "A &Basso"
 
 #: src/frontends/qt/ui/BibtexUi.ui:160
-#, fuzzy
 msgid "Edit selected database externally"
-msgstr "Modifica catalogo(s) externemente...|x"
+msgstr "Modifica catalogo seligite externemente"
 
 #: src/frontends/qt/ui/BibtexUi.ui:163
-#, fuzzy
 msgid "&Edit..."
-msgstr "&Edita"
+msgstr "&Edita..."
 
 #: src/frontends/qt/ui/BibtexUi.ui:191
-#, fuzzy
 msgid "Sele&cted:"
-msgstr "&Seligite:"
+msgstr "Sele&ctionate:"
 
 #: src/frontends/qt/ui/BibtexUi.ui:208 src/frontends/qt/ui/CitationUi.ui:27
 #: src/frontends/qt/ui/ModulesUi.ui:76 src/frontends/qt/ui/RefUi.ui:63
@@ -332,15 +323,16 @@ msgid "&Filter:"
 msgstr "&Filtro:"
 
 #: src/frontends/qt/ui/BibtexUi.ui:238 src/frontends/qt/GuiBibtex.cpp:290
-#, fuzzy
 msgid "E&ncoding:"
-msgstr "Codification"
+msgstr "&Codificar:"
 
 #: src/frontends/qt/ui/BibtexUi.ui:248 src/frontends/qt/GuiBibtex.cpp:291
 msgid ""
 "If your bibliography databases use a different encoding than the LyX "
 "document, specify it here"
 msgstr ""
+"Si tu catalogos de bibliographia usa un codification differente que le "
+"documentoLyX, tu specificar lo hic"
 
 #: src/frontends/qt/ui/BibtexUi.ui:260
 msgid "The BibTeX style"
@@ -355,13 +347,12 @@ msgid "Choose a style file"
 msgstr "Selige un file de stilo"
 
 #: src/frontends/qt/ui/BibtexUi.ui:288
-#, fuzzy
 msgid "Select a style file from your local directory"
-msgstr "Selige un directorio temporanee"
+msgstr "Selige un file de stylo ex tu directorio local"
 
 #: src/frontends/qt/ui/BibtexUi.ui:291
 msgid "Add L&ocal..."
-msgstr ""
+msgstr "Adde L&ocal..."
 
 #: src/frontends/qt/ui/BibtexUi.ui:304 lib/layouts/beamer.layout:505
 #: lib/layouts/beamer.layout:534 lib/layouts/beamer.layout:545
@@ -408,9 +399,8 @@ msgid "Add bibliography to &TOC"
 msgstr "Adde bibliographia al &indice general (Tabula de Contentos)"
 
 #: src/frontends/qt/ui/BibtexUi.ui:383
-#, fuzzy
 msgid "Custo&m:"
-msgstr "Personalisate"
+msgstr "&Personalisate:"
 
 #: src/frontends/qt/ui/BibtexUi.ui:393
 msgid ""
@@ -642,7 +632,7 @@ msgstr "Invertite"
 
 #: src/frontends/qt/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
-msgstr "&Nove:[[branch]]"
+msgstr "&Nove:"
 
 #: src/frontends/qt/ui/BranchesUi.ui:35
 msgid ""
@@ -845,33 +835,28 @@ msgid "&Level:"
 msgstr "Nive&llo:"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:20
-#, fuzzy
 msgid "If checked, additions and deletions will be tracked in the document"
-msgstr ""
-"Si non marcate, notas e commentos essera excludite ex controlos orthographic"
+msgstr "Si marcate, dditiones e deletiones essera traciate in le documento"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:23
-#, fuzzy
 msgid "&Track changes"
-msgstr "Tracia modificationes"
+msgstr "&Tracia modificationes"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:30
 msgid "If checked, changes will be shown in the PDF/DVI/PS output"
-msgstr ""
+msgstr "Si marcate, modificationes essera monstrate in le exito PDF/DVI/PS"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:33
-#, fuzzy
 msgid "&Show changes in output"
-msgstr "Monstra modificationes in exito"
+msgstr "Mon&stra modificationes in exito"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:40
 msgid "Use change bars in addition to change tracking markup"
-msgstr ""
+msgstr "Usa barra de cambios in addition per cambiar marcation de traciamento"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:43
-#, fuzzy
 msgid "Use change &bars in output"
-msgstr "Monstra modificationes in exito"
+msgstr "Usa &barras de cambio in exito"
 
 #: src/frontends/qt/ui/ChangesUi.ui:38
 msgid "Change:"
@@ -899,7 +884,7 @@ msgstr "Da acceptation a iste modifica"
 
 #: src/frontends/qt/ui/ChangesUi.ui:136
 msgid "&Accept"
-msgstr "Acceptar"
+msgstr "&Acceptar"
 
 #: src/frontends/qt/ui/ChangesUi.ui:146
 msgid "Reject this change"
@@ -988,15 +973,13 @@ msgid "Language"
 msgstr "Linguage"
 
 #: src/frontends/qt/ui/CharacterUi.ui:290
-#, fuzzy
 msgid "If this is selected, the marked text will not be spellchecked"
 msgstr ""
-"Si iste es marcate, le button in le medie del mus collara le selection "
-"recente"
+"Si iste es seligite, le texto marcate non essera analysate ortographicamente"
 
 #: src/frontends/qt/ui/CharacterUi.ui:293
 msgid "E&xclude from Spellchecking"
-msgstr ""
+msgstr "E&xclude ab analysis ortographic"
 
 #: src/frontends/qt/ui/CharacterUi.ui:303
 msgid "Semantic Markup"
@@ -1184,7 +1167,6 @@ msgid "Compare Revisions"
 msgstr "Compara revisiones"
 
 #: src/frontends/qt/ui/CompareHistoryUi.ui:34
-#, fuzzy
 msgid "Revisions ba&ck"
 msgstr "&Revisiones retro"
 
@@ -1201,13 +1183,13 @@ msgid "New:"
 msgstr "Nove:"
 
 #: src/frontends/qt/ui/CompareUi.ui:35
-#, fuzzy
 msgid "Old Documen&t:"
 msgstr "Documento &vetule:"
 
 #: src/frontends/qt/ui/CompareUi.ui:51
 msgid "Specify the original version of the document here (comparation source)"
 msgstr ""
+"Specifica le version original del documento hic (objectivo de comparation)"
 
 #: src/frontends/qt/ui/CompareUi.ui:61 src/frontends/qt/ui/PrefUi.ui:61
 msgid "Bro&wse..."
@@ -1220,6 +1202,7 @@ msgstr "Documento &nove:"
 #: src/frontends/qt/ui/CompareUi.ui:87
 msgid "Specify the modified version of the document here (comparation target)"
 msgstr ""
+"Specifica le version modificate del documento hic (objectivo de comparation)"
 
 #: src/frontends/qt/ui/CompareUi.ui:97 src/frontends/qt/ui/ExternalUi.ui:89
 #: src/frontends/qt/ui/GraphicsUi.ui:75 src/frontends/qt/ui/IncludeUi.ui:28
@@ -1229,23 +1212,20 @@ msgid "&Browse..."
 msgstr "&Naviga..."
 
 #: src/frontends/qt/ui/CompareUi.ui:117
-#, fuzzy
 msgid "Select the document from which the settings should be taken"
-msgstr "Selige le indice ubi iste elemento deberea esser monstrate."
+msgstr "Selige le documento ab le qual le preferentias  deberea esser prendite"
 
 #: src/frontends/qt/ui/CompareUi.ui:120 src/frontends/qt/GuiDocument.cpp:785
 msgid "Document Settings"
 msgstr "Preferentias de documento"
 
 #: src/frontends/qt/ui/CompareUi.ui:129
-#, fuzzy
 msgid "O&ld Document"
-msgstr "Documento &vetule"
+msgstr "Documento vetu&le"
 
 #: src/frontends/qt/ui/CompareUi.ui:136
-#, fuzzy
 msgid "New Docu&ment"
-msgstr "Documento n&ove"
+msgstr "Nove docu&mento"
 
 #: src/frontends/qt/ui/CompareUi.ui:183
 msgid ""
@@ -1256,9 +1236,8 @@ msgstr ""
 "LaTeX del documento resultante"
 
 #: src/frontends/qt/ui/CompareUi.ui:186
-#, fuzzy
 msgid "&Enable change tracking features in the output"
-msgstr "Activa le tra&ciamento de modificationes in le exito"
+msgstr "Activa le traciamento de modificationes in le &exito"
 
 #: src/frontends/qt/ui/DelimiterUi.ui:122 src/frontends/qt/GuiDelimiter.cpp:326
 msgid "TeX Code: "
@@ -1282,7 +1261,7 @@ msgstr ""
 
 #: src/frontends/qt/ui/DelimiterUi.ui:243
 msgid "S&wap && Reverse"
-msgstr "E&xcambiae && Reverter"
+msgstr "E&xcambiar && Reverter"
 
 #: src/frontends/qt/ui/DocumentUi.ui:93
 msgid "Reset to the default settings for the document class"
@@ -1293,9 +1272,8 @@ msgid "Use Class Defaults"
 msgstr "Usa le preferentias predefinite del classe"
 
 #: src/frontends/qt/ui/DocumentUi.ui:109
-#, fuzzy
 msgid "Save settings as defaults for new documents"
-msgstr "Salveguarda preferentias como predefinite per documentos de LyX"
+msgstr "Salveguarda preferentias como predefinite per nove documentos"
 
 #: src/frontends/qt/ui/DocumentUi.ui:112
 msgid "Save as Document Defaults"
@@ -1402,9 +1380,8 @@ msgid "O&ption:"
 msgstr "O&ption:"
 
 #: src/frontends/qt/ui/ExternalUi.ui:224
-#, fuzzy
 msgid "For&mat:"
-msgstr "&Formato:"
+msgstr "For&mato:"
 
 #: src/frontends/qt/ui/ExternalUi.ui:240
 msgid ""
@@ -1489,7 +1466,6 @@ msgid "Clip to &bounding box"
 msgstr "Talia a &quadrato delimitante"
 
 #: src/frontends/qt/ui/ExternalUi.ui:587 src/frontends/qt/ui/GraphicsUi.ui:390
-#, fuzzy
 msgid "Left botto&m:"
 msgstr "In basso a &sinistra:"
 
@@ -1524,7 +1500,7 @@ msgstr "C&erca"
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:29
 #: src/frontends/qt/ui/SearchUi.ui:33
 msgid "Fi&nd:"
-msgstr ""
+msgstr "Tro&va:"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:53
 msgid "Replace &with:"
@@ -1665,32 +1641,28 @@ msgid "Form"
 msgstr "Modello"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:22
-#, fuzzy
 msgid "Float T&ype:"
-msgstr "Typo flottante:"
+msgstr "T&ypo flottante:"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:70
-#, fuzzy
 msgid "Alignment of Contents"
-msgstr "Indice general (Tabula de contentos)"
+msgstr "Alineamento de contentos"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:94
-#, fuzzy
 msgid ""
 "Use the document's default alignment for floats, as specified in Document "
 "Settings."
 msgstr ""
-"Usa le alineamento predefinite per iste paragrapho, qualcunque illo es."
+"Usa le alineamento predefinite del documento per flottar, como specificate "
+"in le Preferentias de Documento."
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:97
-#, fuzzy
 msgid "D&ocument Default"
-msgstr "Salveguarda como preferentias predefinite de documento"
+msgstr "Predefinition de d&ocumento"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:104
-#, fuzzy
 msgid "Left-align float contents"
-msgstr "Inserta mascara per filtrar contentos"
+msgstr "Alinear a sinistra contentos flottante"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:107
 #: src/frontends/qt/ui/ParagraphUi.ui:117
@@ -1698,59 +1670,50 @@ msgid "&Left"
 msgstr "A &sinistra"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:114
-#, fuzzy
 msgid "Center float contents"
-msgstr "Inserta mascara per filtrar contentos"
+msgstr "Centrar contentos flottante"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:117
 #: src/frontends/qt/ui/ParagraphUi.ui:124 src/frontends/qt/ui/TabularUi.ui:1560
-#, fuzzy
 msgid "&Center"
-msgstr "Al centro"
+msgstr "&Centro"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:124
 msgid "Right-align float contents"
-msgstr ""
+msgstr "Alinea a dextera contentos flottante"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:127
-#, fuzzy
 msgid "&Right"
-msgstr "A dextera"
+msgstr "&Dextera"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:134
-#, fuzzy
 msgid "Use the class' default alignment for floats, whatever it is."
 msgstr ""
-"Usa le alineamento predefinite per iste paragrapho, qualcunque illo es."
+"Usa le alineamento de classe predefinite per flottantes, qualcunque illo es."
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:137
-#, fuzzy
 msgid "Class &Default"
-msgstr "Classe predefinite"
+msgstr "Classe pre&definite"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:147
-#, fuzzy
 msgid "Further Options"
-msgstr "Altere optiones"
+msgstr "Optiones ulterior"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:156
 msgid "&Span columns"
 msgstr "&Extende se trans columnas"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:163
-#, fuzzy
 msgid "Rotate side&ways"
 msgstr "&Rota lateralmente"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:173
-#, fuzzy
 msgid "Position on Page"
-msgstr "Position"
+msgstr "Position sur pagina"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:184
-#, fuzzy
 msgid "Place&ment Settings:"
-msgstr "Preferentias de documento"
+msgstr "Preferentias de &placiar:"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:199
 msgid "&Top of page"
@@ -1832,10 +1795,10 @@ msgstr "Optiones:"
 
 #: src/frontends/qt/ui/FontUi.ui:194 src/frontends/qt/ui/FontUi.ui:302
 #: src/frontends/qt/ui/FontUi.ui:410
-#, fuzzy
 msgid ""
 "Here you can insert additional options (as provided by the font package)"
-msgstr "Hic tu pote insertar ulterior optiones del pacco bibliographic"
+msgstr ""
+"Hic tu pote insertar ulterior optiones (como fornite del pacco de font)"
 
 #: src/frontends/qt/ui/FontUi.ui:205
 msgid "&Sans Serif:"
@@ -1857,9 +1820,8 @@ msgstr ""
 "base"
 
 #: src/frontends/qt/ui/FontUi.ui:267
-#, fuzzy
 msgid "Use old st&yle figures"
-msgstr "Usa numeros  in stilo &vetule"
+msgstr "Usa &numeros  in stilo vetule"
 
 #: src/frontends/qt/ui/FontUi.ui:313
 msgid "&Typewriter:"
@@ -1878,9 +1840,8 @@ msgid "Scale the Typewriter font to match the base font's dimensions"
 msgstr "Scala le typo mono-spatio pro adaptar lo al grandor del font base"
 
 #: src/frontends/qt/ui/FontUi.ui:375
-#, fuzzy
 msgid "Use old style &figures"
-msgstr "Usa numeros  in stilo &vetule"
+msgstr "Usa &numeros  in stilo vetule"
 
 #: src/frontends/qt/ui/FontUi.ui:421
 msgid "&Math:"
@@ -2210,9 +2171,8 @@ msgid "Fi&le"
 msgstr "Fi&le"
 
 #: src/frontends/qt/ui/IncludeUi.ui:35
-#, fuzzy
 msgid "I&nclude Type:"
-msgstr "&Typo de includer:"
+msgstr "T&ypo de includer:"
 
 #: src/frontends/qt/ui/IncludeUi.ui:46 src/insets/InsetInclude.cpp:420
 msgid "Include"
@@ -2267,9 +2227,8 @@ msgid "Listing Parameters"
 msgstr "Parametros de listar"
 
 #: src/frontends/qt/ui/IncludeUi.ui:252
-#, fuzzy
 msgid "&Caption:"
-msgstr "Legenda:"
+msgstr "&Didascalia:"
 
 #: src/frontends/qt/ui/IncludeUi.ui:279
 #: src/frontends/qt/ui/ListingsSettingsUi.ui:79
@@ -2284,21 +2243,18 @@ msgid "&Bypass validation"
 msgstr "&Evita validation"
 
 #: src/frontends/qt/ui/IncludeUi.ui:289
-#, fuzzy
 msgid "&More parameters"
 msgstr "Alte&re parametros"
 
 #: src/frontends/qt/ui/IncludeUi.ui:299
-#, fuzzy
 msgid ""
 "Pass content of the `Caption' field literally to LaTeX. Check this if you "
 "want to enter LaTeX code."
 msgstr ""
-"Passar litteralmente le contento del campo `Nomine' a LaTeX. Marca isto si "
+"Passar litteralmente le contento del campo `Legenda' a LaTeX. Marca isto si "
 "tu vole insertar codice LaTeX."
 
 #: src/frontends/qt/ui/IndexUi.ui:40
-#, fuzzy
 msgid "Available I&ndexes:"
 msgstr "&Indices disponibile:"
 
@@ -2373,29 +2329,28 @@ msgid "Define or change button color"
 msgstr "Defini o cambia le color del button"
 
 #: src/frontends/qt/ui/InfoUi.ui:25
-#, fuzzy
 msgid "Infor&mation Type:"
-msgstr "Typo de information:"
+msgstr "Typo de infor&mation:"
 
 #: src/frontends/qt/ui/InfoUi.ui:35
 msgid ""
 "Select the type of information to be output. Then specify the requested "
 "information below."
 msgstr ""
+"Selectionar le typo de information de esser exito. Postea specificar le "
+"information requirite a basso."
 
 #: src/frontends/qt/ui/InfoUi.ui:49 src/frontends/qt/GuiInfo.cpp:362
-#, fuzzy
 msgid "&Fix Date:"
-msgstr "Data:"
+msgstr "C&orriger Data:"
 
 #: src/frontends/qt/ui/InfoUi.ui:59 src/frontends/qt/GuiInfo.cpp:361
 msgid "Here you can enter a fix date (in ISO format: YYYY-MM-DD)"
-msgstr ""
+msgstr "Hic tu pote insertar un data fixate (in formato ISO: AAAA-MM-DD)"
 
 #: src/frontends/qt/ui/InfoUi.ui:70
-#, fuzzy
 msgid "&Custom:"
-msgstr "Personalisa&te:"
+msgstr "&Personalisate:"
 
 #: src/frontends/qt/ui/InsetParamsUi.ui:17
 msgid "Inset Parameter Configuration"
@@ -2487,9 +2442,8 @@ msgid "&Quote style:"
 msgstr "&Stile virgulettas:"
 
 #: src/frontends/qt/ui/LanguageUi.ui:49
-#, fuzzy
 msgid "Select the default quotation marks style"
-msgstr "Selige le linguage predefinite per le documento"
+msgstr "Selige le stylo de marcas de citation predefinite"
 
 #: src/frontends/qt/ui/LanguageUi.ui:59
 msgid ""
@@ -2506,22 +2460,20 @@ msgid "Use d&ynamic quotation marks"
 msgstr "Usar &virgulettar dynamic"
 
 #: src/frontends/qt/ui/LanguageUi.ui:89
-#, fuzzy
 msgid "&Encoding:"
-msgstr "Codification"
+msgstr "Co&dificar:"
 
 #: src/frontends/qt/ui/LanguageUi.ui:116
 msgid "Select Unicode encoding variant."
-msgstr ""
+msgstr "Selige variante de codification Unicode."
 
 #: src/frontends/qt/ui/LanguageUi.ui:126
 msgid "Specify whether to load the 'inputenc' package."
-msgstr ""
+msgstr "Specificar si cargar le pacchetto 'inputenc'."
 
 #: src/frontends/qt/ui/LanguageUi.ui:136
-#, fuzzy
 msgid "Select custom encoding."
-msgstr "Selectiona documento"
+msgstr "Selectionar codification personalisate."
 
 #: src/frontends/qt/ui/LanguageUi.ui:143
 msgid "Language pa&ckage:"
@@ -2607,9 +2559,8 @@ msgid "&Float"
 msgstr "&Flottante"
 
 #: src/frontends/qt/ui/ListingsUi.ui:59 src/frontends/qt/ui/WrapUi.ui:23
-#, fuzzy
 msgid "Pla&cement:"
-msgstr "&Placiamento:"
+msgstr "Pla&ciamento:"
 
 #: src/frontends/qt/ui/ListingsUi.ui:72
 msgid "Specify placement (htbp) for floating listings"
@@ -2763,7 +2714,7 @@ msgstr "Errores reportate in terminal."
 
 #: src/frontends/qt/ui/LocalLayoutUi.ui:74 src/frontends/qt/ui/PreambleUi.ui:45
 msgid "Editor for Latex (plain) format will be used"
-msgstr ""
+msgstr "Editor per formato Latex (plan) essera usate"
 
 #: src/frontends/qt/ui/LocalLayoutUi.ui:84
 msgid "Convert"
@@ -2815,9 +2766,8 @@ msgid "&Update"
 msgstr "Act&ualisa"
 
 #: src/frontends/qt/ui/LyXFilesUi.ui:23
-#, fuzzy
 msgid "Filter"
-msgstr "Filtro:"
+msgstr "Filtro"
 
 #: src/frontends/qt/ui/LyXFilesUi.ui:32 src/frontends/qt/ui/MathMatrixUi.ui:240
 msgid "&Type:"
@@ -2828,6 +2778,8 @@ msgid ""
 "Determines whether only personal user files, system files or all files are "
 "displayed"
 msgstr ""
+"Determina si solmente files personal de usator, files de systema o omne "
+"files essera monstrate"
 
 #: src/frontends/qt/ui/LyXFilesUi.ui:72 src/frontends/qt/ui/RefUi.ui:92
 msgid "Filter case-sensitively"
@@ -2839,7 +2791,7 @@ msgstr "Sensibile al differentia inter ma&jusculas e minusculas"
 
 #: src/frontends/qt/ui/LyXFilesUi.ui:110
 msgid "The available language(s) of the selected file will be displayed here"
-msgstr ""
+msgstr "Le linguage(s) disponibile del file seligite essera monstrate hic"
 
 #: src/frontends/qt/ui/MarginsUi.ui:28
 msgid "Use the margin settings provided by the document class"
@@ -2859,7 +2811,7 @@ msgstr "A &Basso:"
 
 #: src/frontends/qt/ui/MarginsUi.ui:115
 msgid "&Inner:"
-msgstr "I&nterne:"
+msgstr "&Interne:"
 
 #: src/frontends/qt/ui/MarginsUi.ui:128
 msgid "O&uter:"
@@ -2906,11 +2858,12 @@ msgid ""
 "Here you can set up the handling of counters and references with regard to "
 "the excluded child documents."
 msgstr ""
+"Hic tu pote configurar le manear del contatores e referentias con reguardo "
+"al documentos filie excludite."
 
 #: src/frontends/qt/ui/MasterChildUi.ui:61
-#, fuzzy
 msgid "Global Counters && References"
-msgstr "omne referentias non citate"
+msgstr "Contatores && Referentias global"
 
 #: src/frontends/qt/ui/MasterChildUi.ui:67
 msgid ""
@@ -2919,10 +2872,14 @@ msgid ""
 "document.<br>This is the fastest method. Use this if you do not need correct "
 "counter values and references."
 msgstr ""
+"Omne contatores e referentias del documentos filie excludite essera "
+"ignorate, assi que le contatores in le exito differera ab un exito del "
+"documento complete.<br>Isto es le plus rapide methodo.Usa isto si tu vole "
+"non necessita corriger valores e referentias."
 
 #: src/frontends/qt/ui/MasterChildUi.ui:70
 msgid "Do &not maintain (fast)"
-msgstr ""
+msgstr "&Non mantene (rapide)"
 
 #: src/frontends/qt/ui/MasterChildUi.ui:77
 msgid ""
@@ -2933,10 +2890,17 @@ msgid ""
 "is significantly faster than \"Strictly maintain\". Use this if you need "
 "correct counters and more or less correct references."
 msgstr ""
+"Contatores e referentias del documentos filie excludite essera configurate "
+"un vice e adaptate si un documento excludite ha essite modificate. Isto "
+"configura contatores e referentias correctemente in plure casos, ma il non "
+"adjusta referentias de pagina a filios non includite que modifica debite a "
+"cambios de files includite.<br>Isto es significativemente plus rapide que "
+"\"Mantene strictemente\". Usa isto si tu necessita corriger contatores e "
+"plus o minur corriger referentias."
 
 #: src/frontends/qt/ui/MasterChildUi.ui:80
 msgid "Maintain mostl&y (medium)"
-msgstr ""
+msgstr "Mantene s&upertoto (medie)"
 
 #: src/frontends/qt/ui/MasterChildUi.ui:87
 msgid ""
@@ -2944,17 +2908,20 @@ msgid ""
 "document. This can be much slower than the first two methods.<br>Use this if "
 "you absolutely need correct counters."
 msgstr ""
+"Assecura que omne contatores e referentias es identic al documento complete. "
+"Isto pote esser multo plus lente que le prime duo methodos.<br>Usa isto si "
+"tu absolutemente necessita corriger contatores."
 
 #: src/frontends/qt/ui/MasterChildUi.ui:90
 msgid "Strictly &maintain (slow)"
-msgstr ""
+msgstr "M&ntene strictemente (lente)"
 
 #: src/frontends/qt/ui/MathMatrixUi.ui:40
 #: src/frontends/qt/ui/MathMatrixUi.ui:53
 #: src/frontends/qt/ui/TabularCreateUi.ui:27
 #: src/frontends/qt/ui/TabularCreateUi.ui:40
 msgid "Number of rows"
-msgstr "Numero de lineas"
+msgstr "Numero de rangos"
 
 #: src/frontends/qt/ui/MathMatrixUi.ui:43
 #: src/frontends/qt/ui/TabularCreateUi.ui:30
@@ -2991,14 +2958,12 @@ msgid "Horizontal alignment per column (l,c,r)"
 msgstr "Alineamento horizontal per columna (l,c,r)"
 
 #: src/frontends/qt/ui/MathMatrixUi.ui:218
-#, fuzzy
 msgid "Hori&zontal:"
-msgstr "&Horizontal:"
+msgstr "Hori&zontal:"
 
 #: src/frontends/qt/ui/MathMatrixUi.ui:231
-#, fuzzy
 msgid "Appearance"
-msgstr "Appendices"
+msgstr "Apparentia"
 
 #: src/frontends/qt/ui/MathMatrixUi.ui:253
 msgid "decoration type / matrix border"
@@ -3111,14 +3076,12 @@ msgid "&Greyed out"
 msgstr "Di&scolorate"
 
 #: src/frontends/qt/ui/NumberingUi.ui:37
-#, fuzzy
 msgid "Add line numbers to the document"
-msgstr "Inserta un nove insertion in le documento"
+msgstr "Adde numero de rango al documento"
 
 #: src/frontends/qt/ui/NumberingUi.ui:40
-#, fuzzy
 msgid "L&ine numbering"
-msgstr "Numeration de linea"
+msgstr "Numeration de &rango"
 
 #: src/frontends/qt/ui/NumberingUi.ui:63
 msgid "O&ptions:"
@@ -3129,6 +3092,8 @@ msgid ""
 "Line numbering (lineno package) options. Please refer to the lineno package "
 "manual for details."
 msgstr ""
+"Optiones de numeration de rangos (lineno package) . Pro favor tu refere al "
+"manual del pacchetto lineno per detalios."
 
 #: src/frontends/qt/ui/NumberingUi.ui:82
 msgid "&List in Table of Contents"
@@ -3235,9 +3200,8 @@ msgid "Save &transient properties"
 msgstr "Salveguarda proprietate &transitori"
 
 #: src/frontends/qt/ui/OutputUi.ui:279
-#, fuzzy
 msgid "LaTeX Output Options"
-msgstr "Optiones de exito XHTML"
+msgstr "Optiones de exito LaTeX"
 
 #: src/frontends/qt/ui/OutputUi.ui:287
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
@@ -3263,10 +3227,14 @@ msgid ""
 "out of moving arguments such as sections and captions. This prevents LaTeX "
 "errors that can happen in such cases. It is recommended to keep this on."
 msgstr ""
+"Si isto es marcate, elementos fragile tal como etiquettas e entratas de "
+"indice essera transferite ab argumentos mobile tal como sectiones e "
+"legendas. Isto preveni errores de LaTeX que pote occurrer in tal casos. Illo "
+"es reccomendate pro mantener active isto."
 
 #: src/frontends/qt/ui/OutputUi.ui:355
 msgid "Put fra&gile content out of moving arguments"
-msgstr ""
+msgstr "Pone contento fra&gile foras de argumentos mobile"
 
 #: src/frontends/qt/ui/PDFSupportUi.ui:38
 msgid "&Use hyperref support"
@@ -3289,7 +3257,6 @@ msgid "&Author:"
 msgstr "&Autor:"
 
 #: src/frontends/qt/ui/PDFSupportUi.ui:160
-#, fuzzy
 msgid "Sub&ject:"
 msgstr "Subjecto:"
 
@@ -3498,9 +3465,8 @@ msgid "Horizontal and vertical space of the phantom content"
 msgstr "Spatio horizontal e vertical del  contento phantasma (signa placia)"
 
 #: src/frontends/qt/ui/PhantomUi.ui:50
-#, fuzzy
 msgid "Phanto&m"
-msgstr "Phantasma (signa placia)"
+msgstr "Phantas&ma (signa placia)"
 
 #: src/frontends/qt/ui/PhantomUi.ui:57
 msgid "Horizontal space of the phantom content"
@@ -3515,9 +3481,8 @@ msgid "Vertical space of the phantom content"
 msgstr "Spatio vertical del  contento phantasma (signa placia)"
 
 #: src/frontends/qt/ui/PhantomUi.ui:70
-#, fuzzy
 msgid "Verti&cal Phantom"
-msgstr "Phantasma (signa placia) &vertical"
+msgstr "Phantasma (signa placia) verti&cal"
 
 #: src/frontends/qt/ui/PreambleUi.ui:38
 msgid "&Find"
@@ -3536,18 +3501,16 @@ msgid "Reset the selected color to its original value"
 msgstr "Ripristina il valore originale del colore selezionato"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:73
-#, fuzzy
 msgid "Restore &Default"
-msgstr "Restaura le valores predefinite"
+msgstr "Restaura le valores pre&definite"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:80
 msgid "Reset all colors to their original value"
 msgstr "Ripristina il valore originale di tutti i colori"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:83
-#, fuzzy
 msgid "Restore A&ll"
-msgstr "Re-fixa &omne"
+msgstr "Restaura &omne"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:105
 msgid "Use the color scheme of your Operating System/Desktop Environment"
@@ -3689,18 +3652,16 @@ msgid "Converter Defi&nitions"
 msgstr "Defi&nitiones de convertitor"
 
 #: src/frontends/qt/ui/PrefConvertersUi.ui:128
-#, fuzzy
 msgid "&Converter:"
-msgstr "C&onvertitor:"
+msgstr "&Convertitor:"
 
 #: src/frontends/qt/ui/PrefConvertersUi.ui:138
 msgid "E&xtra flag:"
 msgstr "Optiones E&xtra:"
 
 #: src/frontends/qt/ui/PrefConvertersUi.ui:186
-#, fuzzy
 msgid "Fro&m format:"
-msgstr "Ex &formato:"
+msgstr "Ex for&mato:"
 
 #: src/frontends/qt/ui/PrefConvertersUi.ui:225
 msgid "&To format:"
@@ -3783,7 +3744,7 @@ msgstr "Activate (On)"
 
 #: src/frontends/qt/ui/PrefDisplayUi.ui:134
 msgid "Mark end of paragraphs on screen with a pilcrow character."
-msgstr "Marca le fin del paragraphos con un character §."
+msgstr "Marca le fin del paragraphos con un character ¶."
 
 #: src/frontends/qt/ui/PrefDisplayUi.ui:137
 msgid "&Mark end of paragraphs"
@@ -3798,10 +3759,12 @@ msgid ""
 "If this is checked, additions in change tracking are underlined in the "
 "workarea"
 msgstr ""
+"Si isto es marcate, additiones in traciar modification es sublineate in le "
+"area de travalio"
 
 #: src/frontends/qt/ui/PrefDisplayUi.ui:157
 msgid "&Underline change tracking additions"
-msgstr ""
+msgstr "S&ublinear additiones de traciar modificationes"
 
 #: src/frontends/qt/ui/PrefDocHandlingUi.ui:26
 msgid "Session Handling"
@@ -3977,10 +3940,13 @@ msgid ""
 "If this is checked, deleted and added text in change tracking mode will not "
 "be resolved on copy/paste operations and when moving content from/to insets"
 msgstr ""
+"Si isto es marcate, texto delite e addite in modo de traciar de "
+"modification  non essera resolvite sur operationes d copiar/collar e quando "
+"on move contento ex/a insertiones"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:157
 msgid "&Keep change tracking markup on copy and paste"
-msgstr ""
+msgstr "Mantene marcation de tracia de modification sur copiar e collar"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:167
 msgid "Fullscreen"
@@ -4113,13 +4079,12 @@ msgid "Your name"
 msgstr "Tu nomine"
 
 #: src/frontends/qt/ui/PrefIdentityUi.ui:41
-#, fuzzy
 msgid "&Initials:"
-msgstr "Initiales"
+msgstr "&Initiales:"
 
 #: src/frontends/qt/ui/PrefIdentityUi.ui:63
 msgid "Initials of your name"
-msgstr ""
+msgstr "Initiales de tu nomine"
 
 #: src/frontends/qt/ui/PrefIdentityUi.ui:72
 msgid "&E-mail:"
@@ -4195,9 +4160,8 @@ msgid "Scroll Wheel Zoom"
 msgstr "Zoom con rota"
 
 #: src/frontends/qt/ui/PrefInputUi.ui:230
-#, fuzzy
 msgid "&Enable"
-msgstr "&Activate"
+msgstr "Acti&var"
 
 #: src/frontends/qt/ui/PrefInputUi.ui:244
 msgid "Ctrl"
@@ -4220,18 +4184,18 @@ msgid "Select the language of the user interface (menus, dialogs, etc.)"
 msgstr "Selige le linguage del interfacie de usator (menu, dialogos, etc.)"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:57
-#, fuzzy
 msgid "LaTeX Language Support"
-msgstr "Supporto per linguages ab dextera a sinistra"
+msgstr "Supporto per linguages de LaTeX"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:63
 msgid "Language &package:"
 msgstr "&Pacchetto de linguage:"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:73
-#, fuzzy
 msgid "Select which (LaTeX) language package documents should use by default"
-msgstr "Selige qual pacchetto de linguage on debe usar se"
+msgstr ""
+"Selige qual documentos de pacchetto de linguage (LaTeX) on debe usar se per "
+"definition"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:77
 #: src/frontends/qt/GuiDocument.cpp:1050 src/frontends/qt/GuiDocument.cpp:1138
@@ -4251,115 +4215,112 @@ msgid "None[[language package]]"
 msgstr "Nulle"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:100
-#, fuzzy
 msgid ""
 "Enter the command to load a custom language package (default: "
 "\\usepackage{babel})"
 msgstr ""
-"Inserta le commando per cargar le pacchetto de linguage (predefinite: "
-"\\usepackage{babel})"
+"Inserta le commando per cargar le pacchetto de linguage personalisate "
+"(predefinite: \\usepackage{babel})"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:107
 msgid "Command s&tart:"
 msgstr "Commando s&tart:"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:117
-#, fuzzy
 msgid ""
 "The LaTeX command that starts a switch to a different language. The "
 "placeholder $$lang is replaced by the actual language name."
-msgstr "Le commando LaTeX que starta le commutar a altere linguage"
+msgstr "Le commando LaTeX que starta le commutar a altere linguage."
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:124
 msgid "Command e&nd:"
 msgstr "Commando e&nd:"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:134
-#, fuzzy
 msgid ""
 "The LaTeX command that ends a switch to a different language.  The "
 "placeholder $$lang is replaced by the actual language name."
-msgstr "Le commando LaTeX que termina le commutar a altere linguage"
+msgstr ""
+"Le commando LaTeX que termina le commutar a altere linguage. Le substituto $"
+"$lang es reimplaciate per le nomine del linguage actual."
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:141
-#, fuzzy
 msgid ""
 "Check to pass the language globally (to the document class), not locally (to "
 "the language package), so that other packages are also informed about the "
 "used languages."
 msgstr ""
-"Marca per passar le linguage globalmente (al classe de documento)\n"
-"in vice que localmente (solo al pacchetto linguistic)"
+"Marca per passar le linguage globalmente (al classe de documento), non "
+"localmente (al pacchetto de linguage), assi altere pacchettos es anque "
+"informate re le linguages usate."
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:144
 msgid "Set languages &globally"
 msgstr "Fixa linguages &globalmente"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:151
-#, fuzzy
 msgid ""
 "If checked, the document language is explicitly set by a language switch "
 "command"
 msgstr ""
-"Si marcate, le linguage del documento non es fixate \n"
-"explicitemente con un commando de cambio linguage"
+"Si marcate, le linguage del documento  es fixate explicitemente con un "
+"commando de cambio linguage"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:154
-#, fuzzy
 msgid "Set document language e&xplicitly"
-msgstr "Fixa linguages &globalmente"
+msgstr "Fixa linguages de documento e&xplicitemente"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:161
-#, fuzzy
 msgid ""
 "If checked, the document language is explicitly closed by a language switch "
 "command"
 msgstr ""
-"Si marcate le linguage del documento non es claudite\n"
-"explicitemente con un commando de cambio linguage"
+"Si marcate le linguage del documento es explicitemente claudite con un "
+"commando de cambio linguage"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:164
 msgid "&Unset document language explicitly"
-msgstr ""
+msgstr "&Deactivar explicitemente le linguage de documento"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:177
-#, fuzzy
 msgid "Editor Settings"
-msgstr "Preferentias de quadrato"
+msgstr "Preferentias de Editor"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:189
-#, fuzzy
 msgid ""
 "Check to highlight additional languages (to the document language) visually "
 "in the work area"
-msgstr "Marca per evidentiar le altere linguages in area de travalio"
+msgstr ""
+"Marca per evidentiar le altere linguages (al linguage de documento)i n area "
+"de travalio visualmente"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:192
-#, fuzzy
 msgid "&Mark additional languages"
-msgstr "&Evidentia altere linguages"
+msgstr "&Marcar  linguages additional"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:199 src/LyXRC.cpp:3162
 msgid ""
 "Select to use the current keyboard language, as set from the operating "
 "system, as default input language."
 msgstr ""
+"Selige de usar le linguage del clviero currente, como fixate able systema "
+"operative, como linguage de entrata predefinite."
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:202
-#, fuzzy
 msgid "Respect &OS keyboard language"
-msgstr "Usa mappa de &claviero"
+msgstr "Respectar linguage de claviero de &OS"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:226
 msgid ""
 "Specify here how the arrow keys behave within scripts with right-to-left "
 "direction"
 msgstr ""
+"Specificar hic como le claves de flecha comporta se intra scripts con "
+"direction de dextera a sinistra"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:229
-#, fuzzy
 msgid "Right-to-left cursor movement:"
-msgstr "Usa le movimento de cursor in stilo M&ac"
+msgstr "Movimento de cursor de Dextera a Sinistra:"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:239
 msgid ""
@@ -4367,6 +4328,9 @@ msgid ""
 "to-left text in a left-to-right paragraph, the cursor starts at the right "
 "when coming from the left)"
 msgstr ""
+"Le cursor seque le logica del direction de texto (p.ex. in texto insertate "
+"de dextera a sinistra in un paragrapho de sinistra a dextera, le cursor "
+"initia al dextera quando veni ex le sinistra)"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:242
 msgid "&Logical"
@@ -4378,15 +4342,17 @@ msgid ""
 "text in a left-to-right paragraph, the cursor starts at the left when coming "
 "from the left)"
 msgstr ""
+"Le cursor seque le direction visual (p.ex. in texto insertate de dextera a "
+"sinistra in un paragrapho de sinistra a dextera, le cursor initia al "
+"sinistra quando veniente ab le sinistra)"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:255
 msgid "&Visual"
 msgstr "&Visual"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:280
-#, fuzzy
 msgid "Local Preferences"
-msgstr "omne referentias"
+msgstr "Preferentias local"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:286
 #: src/frontends/qt/ui/PrefLanguageUi.ui:344
@@ -4395,21 +4361,22 @@ msgid ""
 "dialog by default. \"Language default\" selects the appropriate separator "
 "for the current language."
 msgstr ""
+"Hic tu pote specificar le separator de decimal que es usate in le dialogo "
+"tabular per definition. \"Linguage predefinite\" selection le appropriate "
+"separator per le linguage currente."
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:289
 msgid "Default decimal &separator:"
 msgstr "Separator de decimale&s predefinite:"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:318
-#, fuzzy
 msgid "Insert a custom decimal separator here"
-msgstr "Separator de decimale&s predefinite:"
+msgstr "Insertar hic un separator de decimale predefinite"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:331
 #: src/frontends/qt/ui/PrefLanguageUi.ui:361
-#, fuzzy
 msgid "Select the default length unit for LyX dialogs"
-msgstr "Selige le linguage predefinite per le documento"
+msgstr "Selige le unitte d longitude predefinite per dialogos de LyX"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:334
 msgid "Default length &unit:"
@@ -4417,9 +4384,8 @@ msgstr "&Unitate de longitude predefinite:"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:348
 #: src/frontends/qt/GuiDocument.cpp:1013
-#, fuzzy
 msgid "Language Default"
-msgstr "Lin&guage predefinite"
+msgstr "Linguage predefinite"
 
 #: src/frontends/qt/ui/PrefLatexUi.ui:34
 msgid "&DVI viewer paper size options:"
@@ -4851,9 +4817,8 @@ msgstr ""
 "\"Personalisate\"."
 
 #: src/frontends/qt/ui/PrintindexUi.ui:40
-#, fuzzy
 msgid "Available i&ndexes:"
-msgstr "Indices disponibi&le:"
+msgstr "I&ndices disponibile:"
 
 #: src/frontends/qt/ui/PrintindexUi.ui:50
 msgid "Select the index that shall be printed at this place of the document."
@@ -4934,7 +4899,7 @@ msgstr "Messages barra de &stato"
 
 #: src/frontends/qt/ui/RefUi.ui:73
 msgid "&In[[buffer]]:"
-msgstr "&In[[buffer]]:"
+msgstr "&In:"
 
 #: src/frontends/qt/ui/RefUi.ui:110
 msgid "The (sub-)document from which the available labels are displayed"
@@ -5051,9 +5016,8 @@ msgid "No Prefix"
 msgstr "Nulle prefixo"
 
 #: src/frontends/qt/ui/SearchUi.ui:68
-#, fuzzy
 msgid "Repla&ce with:"
-msgstr "Substit&ue con:"
+msgstr "Reimpla&cia con:"
 
 #: src/frontends/qt/ui/SearchUi.ui:127
 msgid "Case &sensitive[[search]]"
@@ -5069,32 +5033,28 @@ msgstr ""
 "Elabora le file convertite con iste commando ($$FName = nomine de file)"
 
 #: src/frontends/qt/ui/SendtoUi.ui:95
-#, fuzzy
 msgid "Export for&mats:"
-msgstr "Formatos de &exportation:"
+msgstr "For&matos de exportation:"
 
 #: src/frontends/qt/ui/SendtoUi.ui:105
-#, fuzzy
 msgid "Send exported file to &command:"
-msgstr "&Invia le file exportate al commando:"
+msgstr "Invia le file exportate al &commando:"
 
 #: src/frontends/qt/ui/ShortcutUi.ui:14
 msgid "Edit shortcut"
 msgstr "Edita via breve"
 
 #: src/frontends/qt/ui/ShortcutUi.ui:23
-#, fuzzy
 msgid "Fu&nction:"
-msgstr "&Function:"
+msgstr "Fu&nction:"
 
 #: src/frontends/qt/ui/ShortcutUi.ui:33
 msgid "Enter LyX function or command sequence"
 msgstr "Inserta un function de LyX o un sequentia de commandos"
 
 #: src/frontends/qt/ui/ShortcutUi.ui:43
-#, fuzzy
 msgid "Short&cut:"
-msgstr "&Via Breve:"
+msgstr "Via &Breve:"
 
 #: src/frontends/qt/ui/ShortcutUi.ui:56
 msgid ""
@@ -5203,9 +5163,8 @@ msgid "&Display all"
 msgstr "&Monstra omne"
 
 #: src/frontends/qt/ui/TabularCreateUi.ui:121
-#, fuzzy
 msgid "&Style:"
-msgstr "Stilo"
+msgstr "&Stilo:"
 
 #: src/frontends/qt/ui/TabularUi.ui:33
 msgid "&Table Settings"
@@ -5244,9 +5203,8 @@ msgid "rotation angle"
 msgstr "angulo de rotation"
 
 #: src/frontends/qt/ui/TabularUi.ui:140
-#, fuzzy
 msgid "de&grees"
-msgstr "grados"
+msgstr "&grados"
 
 #: src/frontends/qt/ui/TabularUi.ui:171
 msgid "Table-wide settings"
@@ -5286,21 +5244,22 @@ msgid ""
 "text width</p><p>* Variable: Adjust to match table width</p><p>* Custom: "
 "Fixed custom width</p></body></html>"
 msgstr ""
+"<html><head/><body><p>Typo de longitude de columna:</p><p>* Longitude de "
+"texto: extende a longitude de texto</p><p>* Variabile: Adjust ar per "
+"corresponder al longitude de tabella</p><p>* Personalisa: Longitude fixate "
+"personalisate</p></body></html>"
 
 #: src/frontends/qt/ui/TabularUi.ui:317
-#, fuzzy
 msgid "Text length"
-msgstr "Stilo de texto"
+msgstr "Longitude de texto"
 
 #: src/frontends/qt/ui/TabularUi.ui:322
-#, fuzzy
 msgid "Variable[[Width]]"
 msgstr "Variabile"
 
 #: src/frontends/qt/ui/TabularUi.ui:327
-#, fuzzy
 msgid "Custom[[Width]]"
-msgstr "Largessa &personalisate:"
+msgstr "Personalisate"
 
 #: src/frontends/qt/ui/TabularUi.ui:335
 msgid "Horizontal alignment in column"
@@ -5317,9 +5276,8 @@ msgid "At Decimal Separator"
 msgstr "Al separator de decimales"
 
 #: src/frontends/qt/ui/TabularUi.ui:390
-#, fuzzy
 msgid "Hori&zontal alignment:"
-msgstr "&Alineamento horizontal:"
+msgstr "Alineamento hori&zontal:"
 
 #: src/frontends/qt/ui/TabularUi.ui:400
 msgid ""
@@ -5334,9 +5292,8 @@ msgid "&Vertical alignment in row:"
 msgstr "&Alineamento vertical in linea:"
 
 #: src/frontends/qt/ui/TabularUi.ui:437
-#, fuzzy
 msgid "Custom width of the column"
-msgstr "Largessa fixate del columna"
+msgstr "Largessa personaliste del columna"
 
 #: src/frontends/qt/ui/TabularUi.ui:457
 msgid "&Decimal separator:"
@@ -5399,11 +5356,12 @@ msgid ""
 "If this is checked, the table will be reset to the formal default style "
 "(only top and bottom row have horizontal lines)"
 msgstr ""
+"Si iste es marcate, le tabella essera restituite al stilo formal predefinite "
+"(solmente rango alto e basso ha lineas horizontal)"
 
 #: src/frontends/qt/ui/TabularUi.ui:1138
-#, fuzzy
 msgid "Use Default &Formal Style"
-msgstr "Stilo predefinite de quadrato de lista combinate"
+msgstr "Usa stilo &formal predefinite"
 
 #: src/frontends/qt/ui/TabularUi.ui:1145
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
@@ -5430,7 +5388,6 @@ msgid "Bet&ween rows:"
 msgstr "&Inter lineas:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1305
-#, fuzzy
 msgid "&Multi-Page Table"
 msgstr "Tabella de pagina &multiple"
 
@@ -5622,14 +5579,12 @@ msgid "Number of lines"
 msgstr "Numero de lineas"
 
 #: src/frontends/qt/ui/TextLayoutUi.ui:90
-#, fuzzy
 msgid "Table Style"
-msgstr "Nota de tabella"
+msgstr "Stilo de tabella"
 
 #: src/frontends/qt/ui/TextLayoutUi.ui:101
-#, fuzzy
 msgid "Default St&yle:"
-msgstr "St&ilo predefinite de BibTex:"
+msgstr "St&ilo predefinite:"
 
 #: src/frontends/qt/ui/TextLayoutUi.ui:155
 msgid "Paragraph Separation"
@@ -5692,9 +5647,8 @@ msgid "The selected entry"
 msgstr "Il es le termino seligite"
 
 #: src/frontends/qt/ui/ThesaurusUi.ui:66
-#, fuzzy
 msgid "Sele&ction:"
-msgstr "&Selection:"
+msgstr "Sele&ction:"
 
 #: src/frontends/qt/ui/ThesaurusUi.ui:83
 msgid "Replace the entry with the selection"
@@ -5768,28 +5722,28 @@ msgstr "Adjusta le profunditate del arbore de navigation"
 
 #: src/frontends/qt/ui/TocUi.ui:307
 msgid "Sho&w:"
-msgstr ""
+msgstr "&Monstra:"
 
 #: src/frontends/qt/ui/TocUi.ui:323
+#, fuzzy
 msgid ""
 "Filter items that are not output (in notes, inactive branches, deleted in "
 "change tracking, etc.)"
 msgstr ""
+"Filtrar elementos que non es sortita (in notas, ramos inactive, delite in "
+"traciar de modification, etc.)"
 
 #: src/frontends/qt/ui/TocUi.ui:327
-#, fuzzy
 msgid "All items"
-msgstr "Omne files"
+msgstr "Omne elementos"
 
 #: src/frontends/qt/ui/TocUi.ui:332
-#, fuzzy
 msgid "Only output items"
-msgstr "Solmente sur diapositivas"
+msgstr "Solmente elementos de exito"
 
 #: src/frontends/qt/ui/TocUi.ui:337
-#, fuzzy
 msgid "Only non-output items"
-msgstr "Solmente sur diapositivas"
+msgstr "Solmente elementos de non-exito"
 
 #: src/frontends/qt/ui/ToggleWarningUi.ui:14
 msgid "LyX: Enter text"
@@ -5888,7 +5842,7 @@ msgstr "Permitte de &flottar"
 
 #: src/frontends/qt/ui/WrapUi.ui:70
 msgid "Wid&th:"
-msgstr ""
+msgstr "Lar&gessa:"
 
 #: src/frontends/qt/ui/WrapUi.ui:108
 msgid "Unit of width value"
@@ -7262,9 +7216,8 @@ msgstr "Referentias"
 #: lib/layouts/powerdot.layout:397 lib/layouts/siamltex.layout:354
 #: lib/layouts/simplecv.layout:190 lib/layouts/stdstruct.inc:87
 #: lib/layouts/svcommon.inc:599
-#, fuzzy
 msgid "Bib preamble"
-msgstr "Preambulo de vista preliminar"
+msgstr "Preambulo de Bib"
 
 #: lib/layouts/IEEEtran.layout:370 lib/layouts/aastex.layout:436
 #: lib/layouts/agutex.layout:234 lib/layouts/amsdefs.inc:232
@@ -7277,9 +7230,8 @@ msgstr "Preambulo de vista preliminar"
 #: lib/layouts/powerdot.layout:398 lib/layouts/siamltex.layout:355
 #: lib/layouts/simplecv.layout:191 lib/layouts/stdstruct.inc:88
 #: lib/layouts/svcommon.inc:600
-#, fuzzy
 msgid "Bibliography Preamble"
-msgstr "Stilo de bibliographia"
+msgstr "Preambulo de bibliographia"
 
 #: lib/layouts/IEEEtran.layout:371 lib/layouts/aastex.layout:437
 #: lib/layouts/agutex.layout:235 lib/layouts/amsdefs.inc:233
@@ -7294,6 +7246,7 @@ msgstr "Stilo de bibliographia"
 #: lib/layouts/svcommon.inc:601
 msgid "LaTeX code to be inserted before the first bibliography item"
 msgstr ""
+"Codice de LaTeX debe esser insertate ante le prime elemento de bibliographia"
 
 #: lib/layouts/IEEEtran.layout:381
 msgid "Biography"
@@ -7374,7 +7327,7 @@ msgstr "Talios de preambulo e titulo"
 #: lib/layouts/InStar.module:3 lib/layouts/fix-cm.module:3
 #: lib/layouts/fixltx2e.module:3 lib/layouts/minimalistic.module:3
 msgid "Fixes & Hacks"
-msgstr ""
+msgstr "Correctiones & Hacks"
 
 #: lib/layouts/InStar.module:13
 msgid ""
@@ -8214,9 +8167,8 @@ msgid "ACM SIG Proceedings (SP, Obsolete)"
 msgstr "ACM SIG Proceedings (SP, obsolete)"
 
 #: lib/layouts/acmart.layout:3 lib/examples/Articles:0
-#, fuzzy
 msgid "Association for Computing Machinery (ACM)"
-msgstr "Articulo ACM (Association for Computing Machinery)"
+msgstr "Association for Computing Machinery (ACM)"
 
 #: lib/layouts/acmart.layout:86 lib/layouts/acmsiggraph-0-92.layout:332
 #: lib/layouts/acmsiggraph.layout:288 lib/layouts/amsdefs.inc:175
@@ -9371,16 +9323,14 @@ msgid "Acknowledgments."
 msgstr "Recognoscentias."
 
 #: lib/layouts/algorithm2e.module:2
-#, fuzzy
 msgid "Algorithm2e Float"
-msgstr "Algorithm2e"
+msgstr "Algorithm2e Flottante"
 
 #: lib/layouts/algorithm2e.module:3 lib/layouts/bicaption.module:3
 #: lib/layouts/figs-within-sections.module:3
 #: lib/layouts/tabs-within-sections.module:3
-#, fuzzy
 msgid "Floats & Captions"
-msgstr "Optiones de classe"
+msgstr "Flottantes & Legendas"
 
 #: lib/layouts/algorithm2e.module:8
 msgid ""
@@ -9399,9 +9349,8 @@ msgstr "Lista del algorithmos"
 
 #: lib/layouts/amsart.layout:3 lib/layouts/amsbook.layout:3
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "American Mathematical Society (AMS)"
-msgstr "Libro AMS (American Mathematical Society)"
+msgstr "American Mathematical Society (AMS)"
 
 #: lib/layouts/amsart.layout:86
 msgid "SpecialSection"
@@ -9460,9 +9409,8 @@ msgstr "Capitulo exercitios"
 #: lib/layouts/stdlists.inc:37 lib/layouts/stdlists.inc:76
 #: lib/layouts/stdlists.inc:115 lib/layouts/stdlyxlist.inc:22
 #: lib/layouts/theorems-case.inc:52
-#, fuzzy
 msgid "List preamble"
-msgstr "Preambulo de vista preliminar"
+msgstr "Listar Preambulo"
 
 #: lib/layouts/amsbook.layout:165 lib/layouts/apa.layout:379
 #: lib/layouts/apa.layout:414 lib/layouts/apa.layout:447
@@ -9481,9 +9429,8 @@ msgstr "Preambulo de vista preliminar"
 #: lib/layouts/stdlists.inc:38 lib/layouts/stdlists.inc:77
 #: lib/layouts/stdlists.inc:116 lib/layouts/stdlyxlist.inc:23
 #: lib/layouts/theorems-case.inc:53
-#, fuzzy
 msgid "List Preamble"
-msgstr "Preambulo"
+msgstr "Listar Preambulo"
 
 #: lib/layouts/amsbook.layout:166 lib/layouts/apa.layout:380
 #: lib/layouts/apa.layout:415 lib/layouts/apa.layout:448
@@ -9503,7 +9450,7 @@ msgstr "Preambulo"
 #: lib/layouts/stdlists.inc:117 lib/layouts/stdlyxlist.inc:24
 #: lib/layouts/theorems-case.inc:54
 msgid "LaTeX code to be inserted before the first item"
-msgstr ""
+msgstr "Codice de LaTeX que debe esser insertate ante le prime elemento"
 
 #: lib/layouts/amsdefs.inc:42
 msgid "Short title which appears in the running headers"
@@ -10446,19 +10393,17 @@ msgid "Beamerposter"
 msgstr "Poster de beamer"
 
 #: lib/layouts/bicaption.module:2
-#, fuzzy
 msgid "Bilingual Captions"
-msgstr "Legendas multilingual"
+msgstr "Legendas bilingual"
 
 #: lib/layouts/bicaption.module:7
-#, fuzzy
 msgid ""
 "Provides two styles to typeset bilingual captions. For a description see the "
 "file MultilingualCaptions.lyx in LyX's examples folder."
 msgstr ""
-"Il forni duo stilos de insimul pro imprimer legendas multilingue. Pro un "
-"decription tu vide le file MultiLingualCaptions in le dossier de exemplos de "
-"LyX."
+"Il forni duo stilos de insimul pro imprimer legendas bilingual. Pro un "
+"decription tu vide le file MultiLingualCaptions.lyx in le dossier de "
+"exemplos de LyX."
 
 #: lib/layouts/bicaption.module:11
 msgid "Caption setup"
@@ -10516,7 +10461,7 @@ msgstr "Braille"
 
 #: lib/layouts/braille.module:3
 msgid "Accessibility"
-msgstr ""
+msgstr "Accessibilitate"
 
 #: lib/layouts/braille.module:7
 msgid ""
@@ -10771,46 +10716,44 @@ msgid "KnightMove:"
 msgstr "Motion  cavallo:"
 
 #: lib/layouts/chessboard.module:2
-#, fuzzy
 msgid "Chess Board"
 msgstr "Chacchiero"
 
 #: lib/layouts/chessboard.module:3 lib/layouts/lilypond.module:3
 msgid "Leisure, Sports & Music"
-msgstr ""
+msgstr "Otio, Sports e Musica"
 
 #: lib/layouts/chessboard.module:7
 msgid ""
 "Support for the chessboard package to print chess games See chessboard-"
 "article.lyx example file."
 msgstr ""
+"Supporto per le pacchetto che Chachiero per imprimer  joco de chacchiero. "
+"Vide file de exemplo chessboard-article.lyx."
 
 #: lib/layouts/chessboard.module:16
 msgid "NewChessGame"
-msgstr ""
+msgstr "Nove Joco de Chacchiero"
 
 #: lib/layouts/chessboard.module:22
 msgid "[Start New Chess Game]"
 msgstr ""
 
 #: lib/layouts/chessboard.module:32
-#, fuzzy
 msgid "Chessgame Options"
-msgstr "Optiones de Photogramma"
+msgstr "Optiones de Chacchiero"
 
 #: lib/layouts/chessboard.module:33
 msgid "See xskak manual for a comprehensive list of keys and values"
-msgstr ""
+msgstr "Vider le manual de xskak per un lista comprensive de claves e valores"
 
 #: lib/layouts/chessboard.module:60
-#, fuzzy
 msgid "Mainline Options"
-msgstr "Option de e-posta"
+msgstr "Option de linea principal"
 
 #: lib/layouts/chessboard.module:61
-#, fuzzy
 msgid "See xskak manual for possible options"
-msgstr "Vide le manual de notas de actiones de facer per possibile optiones"
+msgstr "Vide le manual de xskak per possibile optiones"
 
 #: lib/layouts/chessboard.module:68 lib/layouts/chessboard.module:69
 #: lib/layouts/iopart.layout:96 lib/layouts/pdfcomment.module:131
@@ -10819,32 +10762,28 @@ msgid "Comment"
 msgstr "Commento"
 
 #: lib/layouts/chessboard.module:90
-#, fuzzy
 msgid "SetChessBoard"
-msgstr "Chacchiero"
+msgstr "Fixa Chacchiero"
 
 #: lib/layouts/chessboard.module:95
-#, fuzzy
 msgid "Global Chessboard Settings"
-msgstr "Preferentias de tabulation"
+msgstr "Preferentias global de Chacchiero"
 
 #: lib/layouts/chessboard.module:107
 msgid "SetBoardStoreStyle"
-msgstr ""
+msgstr "FixaStiloDeChacchiero"
 
 #: lib/layouts/chessboard.module:109
-#, fuzzy
 msgid "Set Chessboard Style"
-msgstr "Stilo de campo de texto"
+msgstr "Fixa Stilo de Chacchiero"
 
 #: lib/layouts/chessboard.module:112
-#, fuzzy
 msgid "Style Name"
-msgstr "File de stilo:"
+msgstr "File de stilo"
 
 #: lib/layouts/chessboard.module:113
 msgid "Chessboard Style Name"
-msgstr ""
+msgstr "Nomine de stilo de Chacchiero"
 
 #: lib/layouts/chessboard.module:114
 msgid ""
@@ -10853,14 +10792,12 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/chessboard.module:127 lib/examples/Articles:0
-#, fuzzy
 msgid "Chessboard"
 msgstr "Chacchiero"
 
 #: lib/layouts/chessboard.module:130
-#, fuzzy
 msgid "Chessboard Options"
-msgstr "Optiones de classe"
+msgstr "Optiones de Chacchiero"
 
 #: lib/layouts/chessboard.module:131
 msgid "See chessboard manual for a comprehensive list of keys and values"
@@ -10872,22 +10809,19 @@ msgstr "Antologie Springer (cl2emult, obsoleto!)"
 
 #: lib/layouts/copernicus.layout:3 lib/examples/Articles:0
 msgid "Copernicus Publications Manuscript Preparation"
-msgstr ""
+msgstr "Copernicus Publications Manuscript Preparation"
 
 #: lib/layouts/copernicus.layout:42
-#, fuzzy
 msgid "InFrontmatter"
-msgstr "Fin frontispicio"
+msgstr "Initio frontispicio"
 
 #: lib/layouts/copernicus.layout:65
-#, fuzzy
 msgid "Insert the affiliation number"
-msgstr "Inserta ci le optiones"
+msgstr "Inserta le numero de affiliation"
 
 #: lib/layouts/copernicus.layout:68
-#, fuzzy
 msgid "Given name"
-msgstr "Nomine file"
+msgstr "Nomine date"
 
 #: lib/layouts/copernicus.layout:78 lib/layouts/egs.layout:373
 msgid "Affil"
@@ -10909,14 +10843,12 @@ msgid "Running title:"
 msgstr "Titulo currente:"
 
 #: lib/layouts/copernicus.layout:98
-#, fuzzy
 msgid "FirstPage"
-msgstr "Nomine"
+msgstr "Prime Pagina"
 
 #: lib/layouts/copernicus.layout:101
-#, fuzzy
 msgid "firstpage"
-msgstr "Nomine"
+msgstr "prime pagina"
 
 #: lib/layouts/copernicus.layout:111 lib/layouts/kluwer.layout:242
 msgid "RunningAuthor"
@@ -10928,151 +10860,128 @@ msgid "Running author:"
 msgstr "Autor currente:"
 
 #: lib/layouts/copernicus.layout:119
-#, fuzzy
 msgid "Publications"
-msgstr "ID de publication"
+msgstr "Publicationes"
 
 #: lib/layouts/copernicus.layout:142
-#, fuzzy
 msgid "Correspondence"
-msgstr "Correspondentia a:"
+msgstr "Correspondentia"
 
 #: lib/layouts/copernicus.layout:145
-#, fuzzy
 msgid "Correspondence:"
-msgstr "Correspondentia a:"
+msgstr "Correspondentia:"
 
 #: lib/layouts/copernicus.layout:164
 msgid "Pubdiscuss"
-msgstr ""
+msgstr "Pubdiscuss"
 
 #: lib/layouts/copernicus.layout:170
 msgid "Pubdiscuss:"
-msgstr ""
+msgstr "Pubdiscuss:"
 
 #: lib/layouts/copernicus.layout:182
-#, fuzzy
 msgid "Published"
-msgstr "Publicatores"
+msgstr "Publicate"
 
 #: lib/layouts/copernicus.layout:188
-#, fuzzy
 msgid "Published:"
-msgstr "Publicatores"
+msgstr "Publicate:"
 
 #: lib/layouts/copernicus.layout:210
-#, fuzzy
 msgid "Statements"
 msgstr "Texto del declaration"
 
 #: lib/layouts/copernicus.layout:221
-#, fuzzy
 msgid "Copyrightstatement"
-msgstr "Datos de copyright"
+msgstr "Declaration de copyright"
 
 #: lib/layouts/copernicus.layout:227
-#, fuzzy
 msgid "Introduction"
-msgstr "Introduction|I"
+msgstr "Introduction"
 
 #: lib/layouts/copernicus.layout:230
-#, fuzzy
 msgid "\\thesection Introduction"
-msgstr "\\thesection.\\arabic{equation}"
+msgstr "\\thesection Introduction"
 
 #: lib/layouts/copernicus.layout:235
-#, fuzzy
 msgid "Conclusions"
-msgstr "Conclusion"
+msgstr "Conclusiones"
 
 #: lib/layouts/copernicus.layout:238
-#, fuzzy
 msgid "\\thesection Conclusions"
-msgstr "\\thesection"
+msgstr "\\thesection Conclusiones"
 
 #: lib/layouts/copernicus.layout:251
-#, fuzzy
 msgid "Appendix \\Alph{appendix}:"
-msgstr "Appendice \\Alph{appendix}."
+msgstr "Appendice \\Alph{appendix}:"
 
 #: lib/layouts/copernicus.layout:262
-#, fuzzy
 msgid "\\Alph{appendix}\\arabic{subappendix}"
-msgstr "\\Alph{appendix}\\arabic{subappendix}."
+msgstr "\\Alph{appendix}\arabic{subappendix}"
 
 #: lib/layouts/copernicus.layout:273
-#, fuzzy
 msgid "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}"
-msgstr "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}."
+msgstr "\\Alph{appendix}\arabic{subappendix}.\arabic{subsubappendix}"
 
 #: lib/layouts/copernicus.layout:296
-#, fuzzy
 msgid "CodeAvailability"
-msgstr "Compatibilitate CJK"
+msgstr "Disponibilitate de codice"
 
 #: lib/layouts/copernicus.layout:298
-#, fuzzy
 msgid "Code availability."
-msgstr "Modulo non disponibile"
+msgstr "Disponibilitte de codice."
 
 #: lib/layouts/copernicus.layout:302
 msgid "DataAvailability"
-msgstr ""
+msgstr "Disponibilitate de Datos"
 
 #: lib/layouts/copernicus.layout:304
 msgid "Data availability."
-msgstr ""
+msgstr "Disponibilitate de datos."
 
 #: lib/layouts/copernicus.layout:308
-#, fuzzy
 msgid "CodeAndDataAvailability"
-msgstr "Modulo non disponibile"
+msgstr "Disponibilitate de Codice e Datos"
 
 #: lib/layouts/copernicus.layout:310
-#, fuzzy
 msgid "Code and data availability."
-msgstr "Modulo non disponibile"
+msgstr "Disponibilitate de codice e datos."
 
 #: lib/layouts/copernicus.layout:314
 msgid "SampleAvailability"
-msgstr ""
+msgstr "Disponibilitate de Specimen"
 
 #: lib/layouts/copernicus.layout:316
 msgid "Sample availability."
-msgstr ""
+msgstr "Disponibilitate de specimen."
 
 #: lib/layouts/copernicus.layout:320
-#, fuzzy
 msgid "Statements2"
-msgstr "Texto del declaration"
+msgstr "Texto del declaration 2"
 
 #: lib/layouts/copernicus.layout:328
-#, fuzzy
 msgid "AuthorContribution"
-msgstr "Contributores"
+msgstr "Contribution de autor"
 
 #: lib/layouts/copernicus.layout:330
-#, fuzzy
 msgid "Author contributions."
-msgstr "Option de author"
+msgstr "Contributiones de author."
 
 #: lib/layouts/copernicus.layout:334
 msgid "CompetingInterests"
-msgstr ""
+msgstr "Interesses concurrente"
 
 #: lib/layouts/copernicus.layout:337
 msgid "Competing Interests."
-msgstr ""
+msgstr "Interesses concurrente."
 
 #: lib/layouts/copernicus.layout:340
-#, fuzzy
 msgid "Disclaimer"
-msgstr "Aban&dona"
+msgstr "Repudiation"
 
 #: lib/layouts/copernicus.layout:343
-#, fuzzy
 msgid "Disclaimer."
-msgstr "Aban&dona"
+msgstr "Repudiation."
 
 #: lib/layouts/ctex-article.layout:3 lib/examples/Articles:0
 msgid "Chinese Article (CTeX)"
@@ -11087,9 +10996,8 @@ msgid "Chinese Report (CTeX)"
 msgstr "Reporto Chinese (CTeX)"
 
 #: lib/layouts/customHeadersFooters.module:2
-#, fuzzy
 msgid "Custom Header/Footer Text"
-msgstr "Capite personalisate"
+msgstr "Texto personalisate de Capite/Pede"
 
 #: lib/layouts/customHeadersFooters.module:8
 msgid ""
@@ -11944,26 +11852,26 @@ msgid "If content is 'url', email becomes an Internet address"
 msgstr "Si contento es 'url', message de e-posta deveni un adresse de internet"
 
 #: lib/layouts/endnotes.module:2
-#, fuzzy
 msgid "Endnotes (Basic)"
-msgstr "Nota final ##"
+msgstr "Nota final (Basic)"
 
 #: lib/layouts/endnotes.module:3 lib/layouts/enotez.module:3
 #: lib/layouts/foottoend.module:3 lib/layouts/foottoenotez.module:3
-#, fuzzy
 msgid "Foot- and Endnotes"
-msgstr "Apostillas"
+msgstr "Apostillas e notas de fin"
 
 #: lib/layouts/endnotes.module:10
-#, fuzzy
 msgid ""
 "Adds an endnote inset, in addition to footnotes. This uses the endnotes "
 "package, which has some limitations but works with older LaTeX distributions "
 "as well. You will need to add an endnotes list (Insert > List/Contents/"
 "References > Endnotes) where you want the endnotes to appear."
 msgstr ""
-"Adde un insertion de nota final in addition a un apostilla. Tu necessitara "
-"de adder \\theendnotes in codice TeX ubi tu vole que le notas final appare."
+"Adde un insertion de nota final in addition a un apostilla. Isto usa le "
+"pacchetto de ntsa final, que ha alcun limitationes ma functiona tamben con "
+"vetere distributiones de LaTeX. Tu necessitara adder un lista de notas de "
+"fin (Insertar>Listar/Contentos/Referentias>Notas de Fin) ubi tu vole que le "
+"notas final appare."
 
 #: lib/layouts/endnotes.module:15 lib/layouts/enotez.module:15
 #: lib/layouts/memoir.layout:299
@@ -11988,14 +11896,12 @@ msgstr "Notas"
 
 #: lib/layouts/endnotes.module:41 lib/layouts/enotez.module:35
 #: lib/layouts/foottoend.module:30 lib/layouts/foottoenotez.module:25
-#, fuzzy
 msgid "Endnotes"
-msgstr "Nota final"
+msgstr "Notas final"
 
 #: lib/layouts/enotez.module:2
-#, fuzzy
 msgid "Endnotes (Extended)"
-msgstr "Theoremas (AMS-Extendite)"
+msgstr "Notas de fin (Extendite)"
 
 #: lib/layouts/enotez.module:10
 msgid ""
@@ -12005,6 +11911,12 @@ msgid ""
 "(with LaTeX3). You will need to add an endnotes list (Insert > List/Contents/"
 "References > Endnotes) where you want the endnotes to appear."
 msgstr ""
+"Adde un insertion de nota final, in addition a apostillas. Isto usa le "
+"pacchetto enotez que es plus potente e personalisabile que le pacchetto de "
+"notas final  (modulo 'Endnotes(Basic)'), ma require un bastante moderne "
+"distribution de LaTeX (con LaTeX3). Tu necessitara adder un lista de notas "
+"final (Inserta->Lista/Contentos/Referentias>Notas Final) ubi tu vole que le "
+"notas final appare."
 
 #: lib/layouts/entcs.layout:3
 msgid "Electronic Notes in Theor. Comp. Sc. (ENTCS)"
@@ -12019,9 +11931,8 @@ msgid "Customisable Lists (enumitem)"
 msgstr "Listas personalisabile (enumitem)"
 
 #: lib/layouts/enumitem.module:3 lib/layouts/paralist.module:3
-#, fuzzy
 msgid "List Enhancements"
-msgstr "Lista de schemas"
+msgstr "Lista de melioramentos"
 
 #: lib/layouts/enumitem.module:7
 msgid ""
@@ -12456,9 +12367,8 @@ msgstr ""
 "section. Per exemplo: 'Fig. 2.1'."
 
 #: lib/layouts/fix-cm.module:2
-#, fuzzy
 msgid "Fix Computer Modern Fonts"
-msgstr "Computer Modern Sans"
+msgstr "Fonts Computer Modern Fix"
 
 #: lib/layouts/fix-cm.module:9
 msgid ""
@@ -12471,9 +12381,8 @@ msgstr ""
 "pacchetto: http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
 
 #: lib/layouts/fixltx2e.module:2
-#, fuzzy
 msgid "LaTeX Kernel Fixes (Obsolete)"
-msgstr "Articulo latex8 (obsolete)"
+msgstr "Correctiones de Kernel LaTeX (obsolete)"
 
 #: lib/layouts/fixltx2e.module:11
 msgid ""
@@ -12494,15 +12403,14 @@ msgstr ""
 "deveni  obsolete  con le plus nove distributiones de LaTeX."
 
 #: lib/layouts/fixme.module:2
-#, fuzzy
 msgid "FiXme Notes"
-msgstr "Nota de Fixme"
+msgstr "Notas de Fixme"
 
 #: lib/layouts/fixme.module:3 lib/layouts/pdfcomment.module:3
 #: lib/layouts/pdfform.module:3 lib/layouts/ruby.module:3
 #: lib/layouts/todonotes.module:3
 msgid "Annotation & Revision"
-msgstr ""
+msgstr "Annotation & Revision"
 
 #: lib/layouts/fixme.module:12
 msgid ""
@@ -12841,7 +12749,7 @@ msgstr "Definition*"
 
 #: lib/layouts/foottoend.module:2
 msgid "Footnotes as Endnotes (Basic)"
-msgstr ""
+msgstr "Apostillas como Notas Final (Basic)"
 
 #: lib/layouts/foottoend.module:10
 msgid ""
@@ -12858,7 +12766,7 @@ msgstr "Notas"
 
 #: lib/layouts/foottoenotez.module:2
 msgid "Footnotes as Endnotes (Extended)"
-msgstr ""
+msgstr "Apostillas como Notas Final (Extendite)"
 
 #: lib/layouts/foottoenotez.module:11
 msgid ""
@@ -13254,9 +13162,8 @@ msgstr "Quadros de Graphic"
 
 #: lib/layouts/graphicboxes.module:3 lib/layouts/sectionbox.module:3
 #: lib/layouts/tcolorbox.module:3 lib/layouts/varwidth.module:3
-#, fuzzy
 msgid "Boxes"
-msgstr "Quadros de color"
+msgstr "Quadros"
 
 #: lib/layouts/graphicboxes.module:6
 msgid "Boxes to scale and rotate its contents"
@@ -13320,15 +13227,13 @@ msgid "Rotation angle in degrees (counterclockwise)"
 msgstr "Angulo de rotation in grados (in senso anti-horari)"
 
 #: lib/layouts/hanging.module:2
-#, fuzzy
 msgid "Hanging Paragraphs"
-msgstr "&Indenta le paragrapho"
+msgstr "Paragraphos extra margines"
 
 #: lib/layouts/hanging.module:3 lib/layouts/initials.module:3
 #: lib/layouts/shapepar.module:3
-#, fuzzy
 msgid "Paragraph Styles"
-msgstr "Initio de paragrapho"
+msgstr "Stilos de paragrapho"
 
 #: lib/layouts/hanging.module:7
 msgid ""
@@ -13426,9 +13331,8 @@ msgid "Scene"
 msgstr "Scena"
 
 #: lib/layouts/hpstatement.module:2
-#, fuzzy
 msgid "Chemistry: Hazard and Precautionary Statements"
-msgstr "Declaration de risco e precaution"
+msgstr "Chimia: Declaration de risco e precaution"
 
 #: lib/layouts/hpstatement.module:3 lib/layouts/linguistics.module:3
 #: lib/layouts/rsphrase.module:3
@@ -13599,16 +13503,15 @@ msgstr "Comby"
 
 #: lib/layouts/initials.module:2
 msgid "Initials (Drop Caps)"
-msgstr ""
+msgstr "Initiales (Drop Caps)"
 
 #: lib/layouts/initials.module:7
-#, fuzzy
 msgid ""
 "Defines a style for paragraphs with an enlarged initial letter (drop cap). "
 "See the EmbeddedObjects manual for a detailed description."
 msgstr ""
-"Define un stilo pro paragraphos con un initial. Vide le manual de "
-"EmbeddedObjects pro un description detaliate."
+"Define un stilo pro paragraphos con un littera initial aggrandite (drop "
+"cap).  Vide le manual de EmbeddedObjects pro un description detaliate."
 
 #: lib/layouts/initials.module:15 lib/layouts/initials.module:17
 #: lib/layouts/initials.module:27 lib/layouts/initials.module:33
@@ -13954,7 +13857,6 @@ msgstr "Rnw (knitr)"
 
 #: lib/layouts/knitr.module:3 lib/layouts/noweb.module:3
 #: lib/layouts/sweave.module:3
-#, fuzzy
 msgid "Literate Programming"
 msgstr "Programmation Literate"
 
@@ -13986,29 +13888,24 @@ msgid "S/R expr"
 msgstr "Expr. S/R"
 
 #: lib/layouts/landscape.module:2
-#, fuzzy
 msgid "Landscape Document Parts"
-msgstr "Documento patre"
+msgstr "Partes de documento horizontal"
 
 #: lib/layouts/landscape.module:6
-#, fuzzy
 msgid "Output parts of the document in landscape mode."
-msgstr "Iste portion del documento ha essite delete."
+msgstr "Partes de resultato del documento in modo horizontal."
 
 #: lib/layouts/landscape.module:11 lib/layouts/landscape.module:16
-#, fuzzy
 msgid "Landscape"
-msgstr "&Horizontal"
+msgstr "Orientation horizontal"
 
 #: lib/layouts/landscape.module:26
-#, fuzzy
 msgid "Landscape (Floating)"
-msgstr "Diapositiva horizontal"
+msgstr "Orientation horizontal (Flottante)"
 
 #: lib/layouts/landscape.module:29
-#, fuzzy
 msgid "Landscape (floating)"
-msgstr "Diapositiva horizontal"
+msgstr "Orientation horizontal (Flottante)"
 
 #: lib/layouts/latex8.layout:3 lib/examples/Articles:0
 msgid "Latex8 Article (Obsolete)"
@@ -14090,9 +13987,8 @@ msgid "P.S.:"
 msgstr "P.S.:"
 
 #: lib/layouts/lilypond.module:2
-#, fuzzy
 msgid "LilyPond Music Notation"
-msgstr "Spartito LilyPond"
+msgstr " Notation de Musica Lilypond"
 
 #: lib/layouts/lilypond.module:7
 msgid ""
@@ -14172,99 +14068,88 @@ msgid "Subexample"
 msgstr "Sub-exemplo"
 
 #: lib/layouts/linguistics.module:100
-#, fuzzy
 msgid "Subexamples options"
-msgstr "Sub-exemplo"
+msgstr "Optiones de sub-exemplos"
 
 #: lib/layouts/linguistics.module:101
-#, fuzzy
 msgid "Subexamples options|s"
-msgstr "Optiones de subtitulo"
+msgstr "Optiones de subexemplos|s"
 
 #: lib/layouts/linguistics.module:102
-#, fuzzy
 msgid "Add subexamples options here"
-msgstr "Inserta ci le optiones"
+msgstr "Adde ci le optiones de subexemplos"
 
 #: lib/layouts/linguistics.module:113
 msgid "Interlinear Gloss (2 Lines)"
-msgstr ""
+msgstr "Glosse Interlinear (2 lineas)"
 
 #: lib/layouts/linguistics.module:115
-#, fuzzy
 msgid "Gloss"
 msgstr "Glosse"
 
 #: lib/layouts/linguistics.module:131 lib/layouts/linguistics.module:177
-#, fuzzy
 msgid "Gloss options"
-msgstr "Optiones de classe"
+msgstr "Optiones de Glosse"
 
 #: lib/layouts/linguistics.module:132 lib/layouts/linguistics.module:178
-#, fuzzy
 msgid "Gloss Options|s"
-msgstr "Optiones de classe"
+msgstr "Optiones de Glosse|s"
 
 #: lib/layouts/linguistics.module:133
 msgid "Add digloss options here"
-msgstr ""
+msgstr "Adde hic optiones de digloss"
 
 #: lib/layouts/linguistics.module:137 lib/layouts/linguistics.module:138
-#, fuzzy
 msgid "Interlinear Gloss"
-msgstr "Interlingua"
+msgstr "Glosse Interlinear"
 
 #: lib/layouts/linguistics.module:139
 msgid "Add the inter-linear gloss here"
-msgstr ""
+msgstr "Adde le glosse inter-linear hic"
 
 #: lib/layouts/linguistics.module:147 lib/layouts/linguistics.module:203
 msgid "Translation"
 msgstr "Traduction"
 
 #: lib/layouts/linguistics.module:148 lib/layouts/linguistics.module:204
-#, fuzzy
 msgid "Gloss Translation"
-msgstr "Traduction glosse|s"
+msgstr "Traduction Glosse"
 
 #: lib/layouts/linguistics.module:149
-#, fuzzy
 msgid "Add a free translation for the gloss"
-msgstr "Adde un nove traduction per le glosse"
+msgstr "Adde un libere traduction per le glosse"
 
 #: lib/layouts/linguistics.module:159
 msgid "Interlinear Gloss (3 Lines)"
-msgstr ""
+msgstr "Glosse Interlinear (3 lineas)"
 
 #: lib/layouts/linguistics.module:161
-#, fuzzy
 msgid "Tri-Gloss"
 msgstr "Tri-Glosse"
 
 #: lib/layouts/linguistics.module:179
-#, fuzzy
 msgid "Add trigloss options here"
-msgstr "Inserta ci le optiones"
+msgstr "Adder hic le optiones triglosse"
 
 #: lib/layouts/linguistics.module:183
 msgid "Interlinear Gloss (1)"
-msgstr ""
+msgstr "Glosse Interlinear (1)"
 
 #: lib/layouts/linguistics.module:184
 msgid "Interlinear Gloss (Line 1)|1"
-msgstr ""
+msgstr "Glosse Interlinear ( linea 1)|1"
 
 #: lib/layouts/linguistics.module:185 lib/layouts/linguistics.module:195
 msgid "Add the first inter-linear gloss line here"
-msgstr ""
+msgstr "Adde le prime linea de inter-linear glosse hic"
 
 #: lib/layouts/linguistics.module:193
 msgid "Interlinear Gloss (2)"
-msgstr ""
+msgstr "Glosse Interlinear (2)"
 
 #: lib/layouts/linguistics.module:194
 msgid "Interlinear Gloss (Line 2)|2"
-msgstr ""
+msgstr "Glosse Interlinear ( linea 2)|2"
 
 #: lib/layouts/linguistics.module:205
 msgid "Add a translation for the glosse"
@@ -14288,173 +14173,161 @@ msgstr "Arbore"
 
 #: lib/layouts/linguistics.module:257 lib/layouts/linguistics.module:259
 msgid "DRS"
-msgstr ""
+msgstr "DRS"
 
 #: lib/layouts/linguistics.module:260
 msgid "Discourse Representation Structure|D"
-msgstr ""
+msgstr "Discourse Representation Structure|D"
 
 #: lib/layouts/linguistics.module:272 lib/layouts/linguistics.module:419
-#, fuzzy
 msgid "Referents"
-msgstr "Referentias"
+msgstr "Referentes"
 
 #: lib/layouts/linguistics.module:273 lib/layouts/linguistics.module:420
-#, fuzzy
 msgid "DRS Referents"
-msgstr "Referentias"
+msgstr "Referentes DRS"
 
 #: lib/layouts/linguistics.module:274 lib/layouts/linguistics.module:421
 msgid "Add the DRS referents (universe) here"
-msgstr ""
+msgstr "Adde le referentes DRS (universo) hic"
 
 #: lib/layouts/linguistics.module:281 lib/layouts/linguistics.module:283
 msgid "DRS*"
-msgstr ""
+msgstr "DRS*"
 
 #: lib/layouts/linguistics.module:284
 msgid "Discourse Representation Structure (unspaced)|u"
-msgstr ""
+msgstr "Discourse Representation Structure (non spatiate)|u"
 
 #: lib/layouts/linguistics.module:289
 msgid "IfThen-DRS"
-msgstr ""
+msgstr "IfThen-DRS"
 
 #: lib/layouts/linguistics.module:291 lib/layouts/linguistics.module:292
 msgid "If-Then DRS"
-msgstr ""
+msgstr "If-Then DRS"
 
 #: lib/layouts/linguistics.module:296 lib/layouts/linguistics.module:331
 #: lib/layouts/linguistics.module:375
-#, fuzzy
 msgid "Then-Referents"
-msgstr "Referentias"
+msgstr "Referentes-Then"
 
 #: lib/layouts/linguistics.module:297 lib/layouts/linguistics.module:306
 #: lib/layouts/linguistics.module:332 lib/layouts/linguistics.module:341
 #: lib/layouts/linguistics.module:376 lib/layouts/linguistics.module:385
 msgid "DRS Then-Referents"
-msgstr ""
+msgstr "DRS Then-Referentes"
 
 #: lib/layouts/linguistics.module:298 lib/layouts/linguistics.module:333
 #: lib/layouts/linguistics.module:377
 msgid "Add the DRS then-referents (universe) here"
-msgstr ""
+msgstr "Adde le DRS then-referentes (universo) hic"
 
 #: lib/layouts/linguistics.module:305 lib/layouts/linguistics.module:340
 #: lib/layouts/linguistics.module:384
-#, fuzzy
 msgid "Then-Conditions"
-msgstr "Condition"
+msgstr "Conditiones-Then"
 
 #: lib/layouts/linguistics.module:307 lib/layouts/linguistics.module:342
 #: lib/layouts/linguistics.module:386
 msgid "Add the DRS then-conditions here"
-msgstr ""
+msgstr "Adde le DRS then-conditiones hic"
 
 #: lib/layouts/linguistics.module:315
 msgid "Cond-DRS"
-msgstr ""
+msgstr "Cond-DRS"
 
 #: lib/layouts/linguistics.module:317
 msgid "Cond. DRS"
-msgstr ""
+msgstr "Cond. DRS"
 
 #: lib/layouts/linguistics.module:318
-#, fuzzy
 msgid "Conditional DRS"
-msgstr "Condition"
+msgstr "DRS conditional"
 
 #: lib/layouts/linguistics.module:322
-#, fuzzy
 msgid "Cond."
-msgstr "Condition."
+msgstr "Cond."
 
 #: lib/layouts/linguistics.module:323
-#, fuzzy
 msgid "DRS Condition"
-msgstr "Condition"
+msgstr "Condition DRS"
 
 #: lib/layouts/linguistics.module:324
-#, fuzzy
 msgid "Add the DRS condition here"
-msgstr "Inserta ci le optiones"
+msgstr "Adde ci le condition DRS"
 
 #: lib/layouts/linguistics.module:350
 msgid "QDRS"
-msgstr ""
+msgstr "QDRS"
 
 #: lib/layouts/linguistics.module:352
 msgid "Dupl. Cond. DRS"
-msgstr ""
+msgstr "Dupl. Cond. DRS"
 
 #: lib/layouts/linguistics.module:353
-#, fuzzy
 msgid "Duplex Condition DRS"
-msgstr "Condition"
+msgstr "Condition Duplex DRS"
 
 #: lib/layouts/linguistics.module:357
 msgid "Quant."
-msgstr ""
+msgstr "Quant."
 
 #: lib/layouts/linguistics.module:358
 msgid "DRS Quantifier"
-msgstr ""
+msgstr "Quantificator DRS"
 
 #: lib/layouts/linguistics.module:359
 msgid "Add the DRS duplex quantifier here"
-msgstr ""
+msgstr "Adder hic le quantificator duplex de DRS"
 
 #: lib/layouts/linguistics.module:366
 msgid "Quant. Var."
-msgstr ""
+msgstr "Quant. Var."
 
 #: lib/layouts/linguistics.module:367
 msgid "DRS Quantifier Variable"
-msgstr ""
+msgstr "Quantificator DRS Variabile"
 
 #: lib/layouts/linguistics.module:368
 msgid "Add the DRS duplex quantifier variables here"
-msgstr ""
+msgstr "Adder hic le variabiles de quantificator duplex de DRS"
 
 #: lib/layouts/linguistics.module:395
 msgid "NegDRS"
-msgstr ""
+msgstr "NegDRS"
 
 #: lib/layouts/linguistics.module:397
 msgid "Neg. DRS"
-msgstr ""
+msgstr "Neg. DRS"
 
 #: lib/layouts/linguistics.module:398
 msgid "Negated DRS"
-msgstr ""
+msgstr "DRS negate"
 
 #: lib/layouts/linguistics.module:403
 msgid "SDRS"
-msgstr ""
+msgstr "SDRS"
 
 #: lib/layouts/linguistics.module:405
 msgid "Sent. DRS"
-msgstr ""
+msgstr "Phr. DRS"
 
 #: lib/layouts/linguistics.module:406
 msgid "DRS with Sentence above"
-msgstr ""
+msgstr "DRS con Phrase supra"
 
 #: lib/layouts/linguistics.module:410
-#, fuzzy
 msgid "Sentence"
-msgstr "Puncto de fin de phrase|f"
+msgstr "Phrase"
 
 #: lib/layouts/linguistics.module:411
-#, fuzzy
 msgid "DRS Sentence"
-msgstr "Puncto de fin de phrase|f"
+msgstr "Phrase DRS"
 
 #: lib/layouts/linguistics.module:412
-#, fuzzy
 msgid "Add the sentence here"
-msgstr "Adde ramos seligite al lista."
+msgstr "Adde le phrase hic"
 
 #: lib/layouts/linguistics.module:433
 msgid "Expression"
@@ -14592,9 +14465,8 @@ msgid "Logical Markup"
 msgstr "Marcation logic"
 
 #: lib/layouts/logicalmkup.module:3 lib/layouts/soul.module:3
-#, fuzzy
 msgid "Text Markup"
-msgstr "Marcation semantic"
+msgstr "Marcation de texto"
 
 #: lib/layouts/logicalmkup.module:6
 msgid ""
@@ -14770,19 +14642,16 @@ msgid "Legend"
 msgstr "Legenda"
 
 #: lib/layouts/memoir.layout:327
-#, fuzzy
 msgid "Endnotes (all)"
-msgstr "Nota final"
+msgstr "Notas final (omne)"
 
 #: lib/layouts/memoir.layout:335
-#, fuzzy
 msgid "Endnotes (sectioned)"
-msgstr "Nota de capite(optional):"
+msgstr "Notas final (sectionate)"
 
 #: lib/layouts/minimalistic.module:2
-#, fuzzy
 msgid "Minimalistic Insets"
-msgstr "Minimalistic"
+msgstr "Insertiones Minimalistic"
 
 #: lib/layouts/minimalistic.module:6
 msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
@@ -14939,7 +14808,7 @@ msgstr "Elemento"
 
 #: lib/layouts/moderncv.layout:344 lib/layouts/moderncv.layout:345
 msgid "Time[[period]]"
-msgstr ""
+msgstr "Tempore"
 
 #: lib/layouts/moderncv.layout:349 lib/layouts/moderncv.layout:350
 msgid "What?"
@@ -15131,7 +15000,7 @@ msgstr "Reporto polonese (pacchetto MW)"
 
 #: lib/layouts/natbibapa.module:2
 msgid "APA Style with Natbib"
-msgstr ""
+msgstr "Stilo APA con Natbib"
 
 #: lib/layouts/natbibapa.module:10
 msgid ""
@@ -15209,7 +15078,6 @@ msgid "Paragraph Lists (paralist)"
 msgstr "Listas de  paragrapho (paralist)"
 
 #: lib/layouts/paralist.module:11
-#, fuzzy
 msgid ""
 "The package paralist provides some new list environments. Itemized and "
 "enumerated lists can be typeset within paragraphs, as paragraphs and in a "
@@ -15222,7 +15090,8 @@ msgstr ""
 "elementos e numerate pote esser typate intra paragraphos, como paragraphos e "
 "in version compacte. Plure de ambientes ha argumentos optional per formar "
 "etiquettas. Additionalmente, le ambientes de LaTex itemize e enumerate es "
-"extendite per usar un similar argumento optional."
+"extendite per usar un similar argumento optional. Per detalios vide Paralist "
+"in Manuales Specific."
 
 #: lib/layouts/paralist.module:32 lib/layouts/paralist.module:39
 #: lib/layouts/paralist.module:54 lib/layouts/paralist.module:63
@@ -15962,9 +15831,8 @@ msgid "PACS number:"
 msgstr "Numero PACS:"
 
 #: lib/layouts/rsphrase.module:2
-#, fuzzy
 msgid "Chemistry: Risk and Safety Statements"
-msgstr "Declaration de risco e securitate"
+msgstr "Chimia: Declaration de risco e securitate"
 
 #: lib/layouts/rsphrase.module:8
 msgid ""
@@ -16004,7 +15872,7 @@ msgstr "Phrase S:"
 
 #: lib/layouts/ruby.module:2
 msgid "Ruby (Furigana)"
-msgstr ""
+msgstr "Ruby (Furigana)"
 
 #: lib/layouts/ruby.module:8
 msgid ""
@@ -16015,21 +15883,19 @@ msgstr ""
 
 #: lib/layouts/ruby.module:26 lib/layouts/ruby.module:35
 msgid "Ruby"
-msgstr ""
+msgstr "Ruby"
 
 #: lib/layouts/ruby.module:49
-#, fuzzy
 msgid "ruby text"
-msgstr "Netta texto"
+msgstr "texto de Ruby"
 
 #: lib/layouts/ruby.module:50
-#, fuzzy
 msgid "Ruby Text|R"
-msgstr "Copia texto|o"
+msgstr "Texto de Ruby|R"
 
 #: lib/layouts/ruby.module:51
 msgid "Reading aid (ruby, furigana) for Chinese characters."
-msgstr ""
+msgstr "Legente adjuta (ruby,furigana) per characteres chinese."
 
 #: lib/layouts/sciposter.layout:3 lib/examples/Articles:0
 msgid "SciPoster"
@@ -16674,73 +16540,62 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/soul.module:17
-#, fuzzy
 msgid "Spaceletters"
-msgstr "Littera US"
+msgstr "Litteras de spatio"
 
 #: lib/layouts/soul.module:19
-#, fuzzy
 msgid "spaced"
-msgstr "spatio"
+msgstr "spatiate"
 
 #: lib/layouts/soul.module:31
-#, fuzzy
 msgid "Strikethrough"
-msgstr "&Barrar:"
+msgstr "Barrar"
 
 #: lib/layouts/soul.module:33
 msgid "strike"
-msgstr ""
+msgstr "strike"
 
 #: lib/layouts/soul.module:40
-#, fuzzy
 msgid "Underline"
-msgstr "underline"
+msgstr "Sublinea"
 
 #: lib/layouts/soul.module:42
 msgid "ul"
-msgstr ""
+msgstr "ul"
 
 #: lib/layouts/soul.module:51
 msgid "hl"
-msgstr ""
+msgstr "hl"
 
 #: lib/layouts/soul.module:57
-#, fuzzy
 msgid "Capitalize"
-msgstr "In litteras majuscule"
+msgstr "Capitalisa (Il pone in majuscule)"
 
 #: lib/layouts/soul.module:59
-#, fuzzy
 msgid "caps"
-msgstr "majusculas"
+msgstr "caps"
 
 #: lib/layouts/soul.module:69
-#, fuzzy
 msgid "spaceletters"
-msgstr "Litteras"
+msgstr "litteras de spatio"
 
 #: lib/layouts/soul.module:73
-#, fuzzy
 msgid "strikethrough"
-msgstr "&Barrar:"
+msgstr "barrar"
 
 #: lib/layouts/soul.module:77 lib/ui/stdtoolbars.inc:470
 msgid "underline"
 msgstr "underline"
 
 #: lib/layouts/soul.module:81
-#, fuzzy
 msgid "highlight"
-msgstr "Evidentia"
+msgstr "evidentia"
 
 #: lib/layouts/soul.module:85
-#, fuzzy
 msgid "capitalise"
-msgstr "In litteras majuscule"
+msgstr "in litteras majuscule"
 
 #: lib/layouts/soul.module:89
-#, fuzzy
 msgid "Capitalise"
 msgstr "In litteras majuscule"
 
@@ -17375,9 +17230,8 @@ msgid "Exercise \\theexercise."
 msgstr "Exercitio \\theexercise."
 
 #: lib/layouts/theorems-ams-bytype.module:2
-#, fuzzy
 msgid "AMS Theorems (Numbered by Type)"
-msgstr "Theoremas (per typo)"
+msgstr "Theoremas AMS (Numerate per Typo)"
 
 #: lib/layouts/theorems-ams-bytype.module:12
 msgid ""
@@ -17452,9 +17306,8 @@ msgid "Claim \\thechapter.\\theclaim."
 msgstr "Assertion \\thechapter.\\theclaim."
 
 #: lib/layouts/theorems-ams-chap-bytype.module:2
-#, fuzzy
 msgid "AMS Theorems (Numbered by Type within Chapters)"
-msgstr "Theoremas (Numerate per typo e per capitulo)"
+msgstr "Theoremas AMS (Numerate per typo e per capitulos)"
 
 #: lib/layouts/theorems-ams-chap-bytype.module:12
 msgid ""
@@ -17475,9 +17328,8 @@ msgstr ""
 "theorema 1.1, theorema 2.1,..."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
-#, fuzzy
 msgid "AMS Theorems (Extended, Numbered by Type)"
-msgstr "Theorema (AMS-Extendite, numerate per typo)"
+msgstr "Theoremas AMS (Extendite, numerate per typo)"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:13
 msgid ""
@@ -17677,9 +17529,8 @@ msgid "Question."
 msgstr "Question #."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:2
-#, fuzzy
 msgid "AMS Theorems (Extended, Numbered by Type within Chapters)"
-msgstr "Theoremas (AMS-extendite, Numerate per typo e per capitulo)"
+msgstr "Theoremas AMS(Extendite, Numerate per typo e per capitulos)"
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:13
 msgid ""
@@ -17746,9 +17597,8 @@ msgid "Question \\thechapter.\\thequestion."
 msgstr "Question \\thechapter.\\thequestion."
 
 #: lib/layouts/theorems-ams-extended.module:2
-#, fuzzy
 msgid "AMS Theorems (Extended)"
-msgstr "Theoremas (AMS-Extendite)"
+msgstr "Theoremas  AMS (Extendite)"
 
 #: lib/layouts/theorems-ams-extended.module:10
 msgid ""
@@ -17831,9 +17681,8 @@ msgid "Claim \\thetheorem."
 msgstr "Assertion  \\thetheorem."
 
 #: lib/layouts/theorems-ams.module:2
-#, fuzzy
 msgid "AMS Theorems"
-msgstr "Theoremas"
+msgstr "Theoremas AMS"
 
 #: lib/layouts/theorems-ams.module:9
 msgid ""
@@ -17849,9 +17698,8 @@ msgstr ""
 "\"Theoremas (per ...)\"."
 
 #: lib/layouts/theorems-bytype.module:2
-#, fuzzy
 msgid "Standard Theorems (Numbered by Type)"
-msgstr "Theoremas (per typo)"
+msgstr "Theoremas Standard (numerate per typo)"
 
 #: lib/layouts/theorems-bytype.module:11
 msgid ""
@@ -17889,9 +17737,8 @@ msgid "Case \\arabic{caseiv}."
 msgstr "Caso \\arabic{caseiv}"
 
 #: lib/layouts/theorems-chap-bytype.module:2
-#, fuzzy
 msgid "Standard Theorems (Numbered by Type within Chapters)"
-msgstr "Theoremas (Numerate per typo e per capitulo)"
+msgstr "Theoremas Standard  (Numerate per typo e per capitulos)"
 
 #: lib/layouts/theorems-chap-bytype.module:10
 msgid ""
@@ -17908,9 +17755,8 @@ msgstr ""
 "4, ...). Le numeration  es re-initiate ab initio de cata capitulo."
 
 #: lib/layouts/theorems-chap.module:2
-#, fuzzy
 msgid "Standard Theorems (Numbered by Chapter)"
-msgstr "Theoremas (Numerate per capitulo)"
+msgstr "Theoremas  Standard (Numerate per capitulo)"
 
 #: lib/layouts/theorems-chap.module:8
 msgid ""
@@ -17924,7 +17770,7 @@ msgstr ""
 
 #: lib/layouts/theorems-named.module:3
 msgid "Standard Theorems (Nameable)"
-msgstr ""
+msgstr "Theoremas Standard(Nominabile)"
 
 #: lib/layouts/theorems-named.module:8
 msgid ""
@@ -17967,9 +17813,8 @@ msgid "Alternative proof string"
 msgstr "Catena de prova alternative"
 
 #: lib/layouts/theorems-sec-bytype.module:2
-#, fuzzy
 msgid "Standard Theorems (Numbered by Type within Sections)"
-msgstr "Theoremas (Numerate per typo e per section)"
+msgstr "Theoremas  Standard (Numerate per typo e per sectiones)"
 
 #: lib/layouts/theorems-sec-bytype.module:10
 msgid ""
@@ -17986,9 +17831,8 @@ msgstr ""
 "proposition 4, ...). Le numeration es e-initiate al initio de cata section."
 
 #: lib/layouts/theorems-sec.module:2
-#, fuzzy
 msgid "Standard Theorems (Numbered by Section)"
-msgstr "Theoremas (Numerate per Section)"
+msgstr "Theoremas Standard (Numerate per Section)"
 
 #: lib/layouts/theorems-sec.module:7
 msgid ""
@@ -18023,9 +17867,8 @@ msgid "Remark."
 msgstr "Observation."
 
 #: lib/layouts/theorems-starred.module:2
-#, fuzzy
 msgid "Standard Theorems (Unnumbered)"
-msgstr "Theoremas (non numerate)"
+msgstr "Theoremas Standard (non numerate)"
 
 #: lib/layouts/theorems-starred.module:7
 msgid ""
@@ -18036,9 +17879,8 @@ msgstr ""
 "usante l le apparato AMS extendite."
 
 #: lib/layouts/theorems-std.module:2
-#, fuzzy
 msgid "Standard Theorems"
-msgstr "Theoremas con nomine"
+msgstr "Theoremas Standard"
 
 #: lib/layouts/theorems-std.module:8
 msgid ""
@@ -18187,7 +18029,6 @@ msgid "sidenote"
 msgstr "nota a latere"
 
 #: lib/layouts/tufte-book.layout:28
-#, fuzzy
 msgid "bibl. entry"
 msgstr "elemento bibliographic"
 
@@ -18248,7 +18089,6 @@ msgid "Variable-width Minipages"
 msgstr "Mini-paginas de largessa variabile"
 
 #: lib/layouts/varwidth.module:14
-#, fuzzy
 msgid ""
 "Adds a 'Minipage (Var. Width)' inset using the varwidth LaTeX package. The "
 "varwidth package provides a variable-width minipage, whose resulting width "
@@ -18262,7 +18102,8 @@ msgstr ""
 "minipagina de largessa de var, cuje largessa resultante es le largessa de su "
 "contentos (si isto non excede le largessa maxime specificate).  Le insertion "
 "ha duo argumentos optional: adjustamento vertical  (c|t|b) e largessa maxime "
-"(predefinite a \\linewidth)."
+"(predefinite a \\linewidth). Vide exemplo in varwidth-floats-side-by-side."
+"lyx."
 
 #: lib/layouts/varwidth.module:20
 msgid "Minipage (Var. Width)"
@@ -18343,7 +18184,7 @@ msgstr "Germano (Austria)"
 
 #: lib/languages:339
 msgid "Azerbaijani"
-msgstr ""
+msgstr "Azerbaijano"
 
 #: lib/languages:355
 msgid "Indonesian"
@@ -18407,7 +18248,7 @@ msgstr "Chinese (traditional)"
 
 #: lib/languages:544
 msgid "Church Slavonic"
-msgstr ""
+msgstr "Slavo Ecclesial"
 
 #: lib/languages:557
 msgid "Coptic"
@@ -18544,9 +18385,8 @@ msgid "Korean"
 msgstr "Coreano"
 
 #: lib/languages:1018
-#, fuzzy
 msgid "Kurdish (Kurmanji)"
-msgstr "Kurmanji"
+msgstr "Kurdo (Kurmanji)"
 
 #: lib/languages:1031 src/frontends/qt/GuiSymbols.cpp:77
 msgid "Lao"
@@ -18602,7 +18442,7 @@ msgstr "Occitano"
 
 #: lib/languages:1230
 msgid "Russian (Petrine orthography)"
-msgstr ""
+msgstr "Russo (orthographia Petrine)"
 
 #: lib/languages:1240
 msgid "Piedmontese"
@@ -18753,54 +18593,48 @@ msgid "Computer Modern Roman"
 msgstr "Computer Modern Roman"
 
 #: lib/latexfonts:158
-#, fuzzy
 msgid "Crimson Pro"
-msgstr "Crimson"
+msgstr "Crimson Pro"
 
 #: lib/latexfonts:169
-#, fuzzy
 msgid "Crimson Pro (Medium)"
-msgstr "Crimson (New TX)"
+msgstr "Crimson  Pro (medie)"
 
 #: lib/latexfonts:180
-#, fuzzy
 msgid "Crimson Pro (Light)"
-msgstr "Kurier (Ligere)"
+msgstr "Crimson Pro (Legier)"
 
 #: lib/latexfonts:191
 msgid "Crimson Pro (Extralight)"
-msgstr ""
+msgstr "Crimson Pro(Extralegier)"
 
 #: lib/latexfonts:202
-#, fuzzy
 msgid "DejaVu Serif"
-msgstr "Bera Serif"
+msgstr "DejaVu Serif"
 
 #: lib/latexfonts:208
-#, fuzzy
 msgid "DejaVu Serif (Condensed)"
-msgstr "Kurier (Condensate)"
+msgstr "DejaVu Serif (Condensate)"
 
 #: lib/latexfonts:219
-#, fuzzy
 msgid "IBM Plex Serif"
-msgstr "Bera Serif"
+msgstr "IBM Plex Serif"
 
 #: lib/latexfonts:226
 msgid "IBM Plex Serif (Thin)"
-msgstr ""
+msgstr "IBM Plex Serif (Subtil)"
 
 #: lib/latexfonts:234
 msgid "IBM Plex Serif (Extra Light)"
-msgstr ""
+msgstr "IBM Plex Serif (Extra Legier)"
 
 #: lib/latexfonts:242
 msgid "IBM Plex Serif (Light)"
-msgstr ""
+msgstr "IBM Plex Serif (Legier)"
 
 #: lib/latexfonts:250
 msgid "Source Serif Pro"
-msgstr ""
+msgstr "Source Serif Pro"
 
 #: lib/latexfonts:258 lib/latexfonts:268
 msgid "URW Garamond"
@@ -18840,24 +18674,20 @@ msgid "Noto Serif"
 msgstr "Noto Serif"
 
 #: lib/latexfonts:434
-#, fuzzy
 msgid "Noto Serif (Medium)"
-msgstr "Noto Serif"
+msgstr "Noto Serif (Medie)"
 
 #: lib/latexfonts:444
-#, fuzzy
 msgid "Noto Serif (Thin)"
-msgstr "Noto Serif"
+msgstr "Noto Serif (Subtil)"
 
 #: lib/latexfonts:454
-#, fuzzy
 msgid "Noto Serif (Light)"
-msgstr "Noto Serif"
+msgstr "Noto Serif (Legier)"
 
 #: lib/latexfonts:464
-#, fuzzy
 msgid "Noto Serif (Extralight)"
-msgstr "Noto Serif"
+msgstr "Noto Serif (Extralegier)"
 
 #: lib/latexfonts:474 lib/latexfonts:487 lib/latexfonts:494 lib/latexfonts:500
 #: lib/latexfonts:507
@@ -18865,9 +18695,8 @@ msgid "Palatino"
 msgstr "Palatino"
 
 #: lib/latexfonts:513
-#, fuzzy
 msgid "PT Serif"
-msgstr "Bera Serif"
+msgstr "PT Serif"
 
 #: lib/latexfonts:520 lib/latexfonts:530 lib/latexfonts:537 lib/latexfonts:543
 msgid "Times Roman"
@@ -18898,9 +18727,8 @@ msgid "Utopia (Fourier)"
 msgstr "Utopia (Fourier)"
 
 #: lib/latexfonts:612
-#, fuzzy
 msgid "Bitstream Charter (XCharter)"
-msgstr "Bitstream Charter (Mathdesign)"
+msgstr "Bitstream Charter (XCharter)"
 
 #: lib/latexfonts:624
 msgid "Avant Garde"
@@ -18916,25 +18744,23 @@ msgstr "Biolinum"
 
 #: lib/latexfonts:667
 msgid "Cantarell"
-msgstr ""
+msgstr "Cantarell"
 
 #: lib/latexfonts:678
 msgid "Chivo (Thin)"
-msgstr ""
+msgstr "Chivo (Subtil)"
 
 #: lib/latexfonts:689
-#, fuzzy
 msgid "Chivo (Light)"
-msgstr "Iwona (Ligere)"
+msgstr "Chivo (Legier)"
 
 #: lib/latexfonts:700
 msgid "Chivo"
-msgstr ""
+msgstr "Chivo"
 
 #: lib/latexfonts:710
-#, fuzzy
 msgid "Chivo (Medium)"
-msgstr "Medium"
+msgstr "Chivo (Medie)"
 
 #: lib/latexfonts:721
 msgid "CM Bright"
@@ -18945,67 +18771,60 @@ msgid "Computer Modern Sans"
 msgstr "Computer Modern Sans"
 
 #: lib/latexfonts:735
-#, fuzzy
 msgid "DejaVu Sans"
-msgstr "Bera Sans"
+msgstr "DejaVu Sans"
 
 #: lib/latexfonts:742
-#, fuzzy
 msgid "DejaVu Sans (Condensed)"
-msgstr "Iwona (Condensate)"
+msgstr "DejaVu Sans (Condensate)"
 
 #: lib/latexfonts:749
-#, fuzzy
 msgid "Fira Sans"
-msgstr "Bera Sans"
+msgstr "Fira Sans"
 
 #: lib/latexfonts:760
 msgid "Fira Sans (Book)"
-msgstr ""
+msgstr "Fira Sans (Libro)"
 
 #: lib/latexfonts:772
-#, fuzzy
 msgid "Fira Sans (Light)"
-msgstr "Kurier (Ligere)"
+msgstr "Fira Sans (Legier)"
 
 #: lib/latexfonts:784
 msgid "Fira Sans (Extralight)"
-msgstr ""
+msgstr "Fira Sans (Extralegier)"
 
 #: lib/latexfonts:796
 msgid "Fira Sans (Ultralight)"
-msgstr ""
+msgstr "Fira Sans (Ultralegier)"
 
 #: lib/latexfonts:808
 msgid "Fira Sans (Thin)"
-msgstr ""
+msgstr "Fira Sans (subtil)"
 
 #: lib/latexfonts:820
-#, fuzzy
 msgid "IBM Plex Sans"
-msgstr "Bera Sans"
+msgstr "IBM Plex Sans"
 
 #: lib/latexfonts:828
-#, fuzzy
 msgid "IBM Plex Sans (Condensed)"
-msgstr "Iwona (Condensate)"
+msgstr "IBM Plex Sans (Condensate)"
 
 #: lib/latexfonts:837
 msgid "IBM Plex Sans (Thin)"
-msgstr ""
+msgstr "IBM Plex Sans (Subtil)"
 
 #: lib/latexfonts:846
 msgid "IBM Plex Sans (Extra Light)"
-msgstr ""
+msgstr "IBM Plex Sans (Extra Legier)"
 
 #: lib/latexfonts:855
 msgid "IBM Plex Sans (Light)"
-msgstr ""
+msgstr "IBM Plex Sans (Legier)"
 
 #: lib/latexfonts:864
-#, fuzzy
 msgid "Source Sans Pro"
-msgstr "Pannello de fonte|f"
+msgstr "Source Sans Pro"
 
 #: lib/latexfonts:873
 msgid "Helvetica"
@@ -19017,7 +18836,7 @@ msgstr "Iwona"
 
 #: lib/latexfonts:888
 msgid "Iwona (Light)"
-msgstr "Iwona (Ligere)"
+msgstr "Iwona (Legier)"
 
 #: lib/latexfonts:895
 msgid "Iwona (Condensed)"
@@ -19033,7 +18852,7 @@ msgstr "Kurier"
 
 #: lib/latexfonts:916
 msgid "Kurier (Light)"
-msgstr "Kurier (Ligere)"
+msgstr "Kurier (Legier)"
 
 #: lib/latexfonts:923
 msgid "Kurier (Condensed)"
@@ -19052,28 +18871,24 @@ msgid "Noto Sans"
 msgstr "Noto Sans"
 
 #: lib/latexfonts:954
-#, fuzzy
 msgid "Noto Sans (Medium)"
-msgstr "Noto Sans"
+msgstr "Noto Sans (Medie)"
 
 #: lib/latexfonts:965
-#, fuzzy
 msgid "Noto Sans (Thin)"
-msgstr "Noto Sans"
+msgstr "Noto Sans (Subtil)"
 
 #: lib/latexfonts:976
-#, fuzzy
 msgid "Noto Sans (Light)"
-msgstr "Noto Sans"
+msgstr "Noto Sans (Legier)"
 
 #: lib/latexfonts:987
 msgid "Noto Sans (Extralight)"
-msgstr ""
+msgstr "Noto Sans (Extralegier)"
 
 #: lib/latexfonts:998
-#, fuzzy
 msgid "PT Sans"
-msgstr "Bera Sans"
+msgstr "PT Sans"
 
 #: lib/latexfonts:1006
 msgid "TeX Gyre Adventor"
@@ -19105,34 +18920,31 @@ msgstr "Courier"
 
 #: lib/latexfonts:1058
 msgid "DejaVu Sans Mono"
-msgstr ""
+msgstr "DejaVu Sans Mono"
 
 #: lib/latexfonts:1065
-#, fuzzy
 msgid "Fira Mono"
-msgstr "Bera Mono"
+msgstr "Fira Mono"
 
 #: lib/latexfonts:1076
-#, fuzzy
 msgid "IBM Plex Mono"
-msgstr "Bera Mono"
+msgstr "IBM Plex Mono"
 
 #: lib/latexfonts:1084
 msgid "IBM Plex Mono (Thin)"
-msgstr ""
+msgstr "IBM Plex Mono (Subtil)"
 
 #: lib/latexfonts:1093
 msgid "IBM Plex Mono (Extra Light)"
-msgstr ""
+msgstr "IBM Plex Mono (Extra Legier)"
 
 #: lib/latexfonts:1102
-#, fuzzy
 msgid "IBM Plex Mono (Light)"
-msgstr "Iwona (Ligere)"
+msgstr "IBM Plex Mono (Legier)"
 
 #: lib/latexfonts:1111
 msgid "Source Code Pro"
-msgstr ""
+msgstr "Source Code Pro"
 
 #: lib/latexfonts:1120 lib/latexfonts:1128
 msgid "Libertine Mono"
@@ -19151,9 +18963,8 @@ msgid "Noto Mono"
 msgstr "Noto Mono"
 
 #: lib/latexfonts:1158
-#, fuzzy
 msgid "PT Mono"
-msgstr "Bera Mono"
+msgstr "PT Mono"
 
 #: lib/latexfonts:1166
 msgid "TeX Gyre Cursor"
@@ -19197,7 +19008,7 @@ msgstr "Times Roman (New TX)"
 
 #: lib/encodings:55
 msgid "Extended [ucs] (utf8x)"
-msgstr ""
+msgstr "Extendite [ucs] (utf8x)"
 
 #: lib/encodings:59
 msgid "Armenian (ArmSCII8)"
@@ -19357,7 +19168,7 @@ msgstr "Coreano (EUC-KR)"
 
 #: lib/encodings:215
 msgid "Extended [CJK] (Chinese/Japanese/Korean)"
-msgstr ""
+msgstr "Extendite [CJK] (Chinese/Japonese/Coreano)"
 
 #: lib/encodings:219
 msgid "Chinese (traditional) (EUC-TW)"
@@ -19380,14 +19191,12 @@ msgid "Japanese (pLaTeX) (SJIS)"
 msgstr "Japonese (pLaTeX) (SJIS)"
 
 #: lib/encodings:236
-#, fuzzy
 msgid "Extended [pLaTeX] (Japanese)"
-msgstr "Sweave (Japonese)"
+msgstr "Extendite (Japonese)"
 
 #: lib/encodings:242
-#, fuzzy
 msgid "Direct"
-msgstr "Directorio"
+msgstr "Directe"
 
 #: lib/encodings:246
 msgid "ASCII"
@@ -19894,14 +19703,12 @@ msgid "Paragraph Break|B"
 msgstr "Interruption de Paragrapho|B"
 
 #: lib/ui/stdcontext.inc:344
-#, fuzzy
 msgid "Edit Externally..."
-msgstr "Modifica externemente...|x"
+msgstr "Modifica externemente..."
 
 #: lib/ui/stdcontext.inc:345
-#, fuzzy
 msgid "End Editing Externally..."
-msgstr "Terminar redaction externe...|e"
+msgstr "Terminar redaction externemente..."
 
 #: lib/ui/stdcontext.inc:352
 msgid "Jump Back to Saved Bookmark|B"
@@ -19948,14 +19755,12 @@ msgid "Reject Change|j"
 msgstr "Rejecta modification|j"
 
 #: lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:124
-#, fuzzy
 msgid "Text Properties|x"
-msgstr "Proprietates de font"
+msgstr "Proprietates de Texto|x"
 
 #: lib/ui/stdcontext.inc:371 lib/ui/stdmenus.inc:125
-#, fuzzy
 msgid "Custom Text Styles|S"
-msgstr "Stilo de texto|S"
+msgstr "Stilos de texto predefinite|S"
 
 #: lib/ui/stdcontext.inc:372 lib/ui/stdmenus.inc:123
 msgid "Paragraph Settings...|P"
@@ -20055,9 +19860,8 @@ msgid "Right|R"
 msgstr "Alinea a dextera|d"
 
 #: lib/ui/stdcontext.inc:443
-#, fuzzy
 msgid "Reset Formal Defaults|F"
-msgstr "Restaura le valores predefinite"
+msgstr "Restaura le valores predefinite Formal |F"
 
 #: lib/ui/stdcontext.inc:447
 msgid "Left|f"
@@ -20284,9 +20088,8 @@ msgid "Open Recent|t"
 msgstr "Aperi recente|t"
 
 #: lib/ui/stdmenus.inc:49
-#, fuzzy
 msgid "Open Example...|p"
-msgstr "Exemplo."
+msgstr "Aperi Exemplo...|p"
 
 #: lib/ui/stdmenus.inc:51
 msgid "Close|C"
@@ -20305,9 +20108,8 @@ msgid "Save As...|A"
 msgstr "Salveguarda como...|m"
 
 #: lib/ui/stdmenus.inc:55
-#, fuzzy
 msgid "Save As Template..."
-msgstr "Nove ex patrono...|x"
+msgstr "Salveguarda como Patrono..."
 
 #: lib/ui/stdmenus.inc:56
 msgid "Save All|l"
@@ -20474,16 +20276,14 @@ msgid "Branch Settings...|B"
 msgstr "Preferentias de ramo...|m"
 
 #: lib/ui/stdmenus.inc:148
-#, fuzzy
 msgid "Box Settings...|S"
-msgstr "Preferentias de quadrato...|q"
+msgstr "Preferentias de quadrato...|s"
 
 #: lib/ui/stdmenus.inc:149
 msgid "Index Entry Settings...|y"
 msgstr "Preferentias de terminos de indice...|d"
 
 #: lib/ui/stdmenus.inc:150
-#, fuzzy
 msgid "Index Settings...|S"
 msgstr "Preferentias de indice...|c"
 
@@ -20544,19 +20344,16 @@ msgid "Selection, Join Lines|i"
 msgstr "Selection, uni lineas|e"
 
 #: lib/ui/stdmenus.inc:185
-#, fuzzy
 msgid "Customize...|C"
-msgstr "Personalisate...|r"
+msgstr "Personalisate...|P"
 
 #: lib/ui/stdmenus.inc:186
-#, fuzzy
 msgid "Apply Last Settings|A"
-msgstr "Applica ultime stilo de texto|A"
+msgstr "Applica ultime preferentias|A"
 
 #: lib/ui/stdmenus.inc:188
-#, fuzzy
 msgid "Capitalize|p"
-msgstr "Iniziale maiuscola|I"
+msgstr "Capitalisa (Il pone in majuscule) |p"
 
 #: lib/ui/stdmenus.inc:189
 msgid "Uppercase|U"
@@ -20639,9 +20436,8 @@ msgid "Change Formula Type|F"
 msgstr "Cambia typo de formula|f"
 
 #: lib/ui/stdmenus.inc:249
-#, fuzzy
 msgid "Text Properties|T"
-msgstr "Proprietates de font"
+msgstr "Proprietates de texto|t"
 
 #: lib/ui/stdmenus.inc:251
 msgid "Use Computer Algebra System|S"
@@ -20776,7 +20572,6 @@ msgid "Maple, Evalf|v"
 msgstr "Maple, Evalf|v"
 
 #: lib/ui/stdmenus.inc:339
-#, fuzzy
 msgid "Outline Pane|O"
 msgstr "Pannello de navigator (outline)|n"
 
@@ -20789,7 +20584,6 @@ msgid "Messages Pane|g"
 msgstr "Pannello de messages|g"
 
 #: lib/ui/stdmenus.inc:342
-#, fuzzy
 msgid "Toolbars|T"
 msgstr "Barras de instrumentos|B"
 
@@ -20802,26 +20596,22 @@ msgid "Fold Math Macro|d"
 msgstr "Claude macro mathematic|h"
 
 #: lib/ui/stdmenus.inc:347
-#, fuzzy
 msgid "Split View Into Left and Right Half|L"
-msgstr "Divide vista (latere sinistre/dextere)|D"
+msgstr "Divide vista in medietate sinistre e dextere)|D"
 
 #: lib/ui/stdmenus.inc:348
-#, fuzzy
 msgid "Split View Into Upper and Lower Half|U"
-msgstr "Divide vista (supra/a basso)|v"
+msgstr "Divide vista (in medietate de supra e  a basso)|v"
 
 #: lib/ui/stdmenus.inc:349
 msgid "Close Current View|w"
 msgstr "Claude vista currente|u"
 
 #: lib/ui/stdmenus.inc:350
-#, fuzzy
 msgid "Fullscreen|F"
-msgstr "A schermo integre|i"
+msgstr "A schermo integre|g"
 
 #: lib/ui/stdmenus.inc:352
-#, fuzzy
 msgid "Open All Insets|I"
 msgstr "Aperi omne insertiones|i"
 
@@ -20842,13 +20632,12 @@ msgid "Formatting|o"
 msgstr "Formattation|F"
 
 #: lib/ui/stdmenus.inc:379
-#, fuzzy
 msgid "Field|i"
-msgstr "Campo de Texto"
+msgstr "Campo |a"
 
 #: lib/ui/stdmenus.inc:380
 msgid "List/Contents/References|/"
-msgstr ""
+msgstr "Lista/Contentos/Referentias|/"
 
 #: lib/ui/stdmenus.inc:381
 msgid "Float|a"
@@ -20863,9 +20652,8 @@ msgid "Branch|B"
 msgstr "Ramo|R"
 
 #: lib/ui/stdmenus.inc:384
-#, fuzzy
 msgid "Custom Inset"
-msgstr "Insertiones personalisate"
+msgstr "Insertion personalisate"
 
 #: lib/ui/stdmenus.inc:385
 msgid "File|e"
@@ -20876,9 +20664,8 @@ msgid "Box[[Menu]]|x"
 msgstr "Quadro[[Menu]]|x"
 
 #: lib/ui/stdmenus.inc:387
-#, fuzzy
 msgid "Regular Expression"
-msgstr "Express&ion regular"
+msgstr "Expression Regular"
 
 #: lib/ui/stdmenus.inc:389
 msgid "Citation...|C"
@@ -20978,51 +20765,47 @@ msgstr "Logos|g"
 
 #: lib/ui/stdmenus.inc:427
 msgid "Date (Current)|D"
-msgstr ""
+msgstr "Data (Currente)|D"
 
 #: lib/ui/stdmenus.inc:428
 msgid "Date (Last Modification)|L"
-msgstr ""
+msgstr "Data (Ultime Modification)|U"
 
 #: lib/ui/stdmenus.inc:429
 msgid "Date (Fix)|F"
-msgstr ""
+msgstr "Data (Fixate)|F"
 
 #: lib/ui/stdmenus.inc:431
 msgid "Time (Current)|T"
-msgstr ""
+msgstr "Tempore (Currente)|T"
 
 #: lib/ui/stdmenus.inc:432
 msgid "Time (Last Modification)|M"
-msgstr ""
+msgstr "Tempore (Ultime Modification)|M"
 
 #: lib/ui/stdmenus.inc:433
 msgid "Time (Fix)|x"
-msgstr ""
+msgstr "Tempore (Fixate)|x"
 
 #: lib/ui/stdmenus.inc:435
-#, fuzzy
 msgid "File Name (Excl. Extension)|N"
-msgstr "Ex&tension de  file:"
+msgstr "Nomine de file (Excl.Extension)|N"
 
 #: lib/ui/stdmenus.inc:436
-#, fuzzy
 msgid "Version Control Revision|V"
-msgstr "Controlo de version|v"
+msgstr "Revision de Controlo de Version|V"
 
 #: lib/ui/stdmenus.inc:437
-#, fuzzy
 msgid "User Name|U"
-msgstr "Definite per le usator|u"
+msgstr "Nomine de Usator|U"
 
 #: lib/ui/stdmenus.inc:438
 msgid "User Email|E"
-msgstr ""
+msgstr "E-posta de usator |E"
 
 #: lib/ui/stdmenus.inc:440
-#, fuzzy
 msgid "Other...|O"
-msgstr "Aperi...|A"
+msgstr "Altere...|A"
 
 #: lib/ui/stdmenus.inc:444
 msgid "LyX Logo|L"
@@ -21141,9 +20924,8 @@ msgid "Insert New Branch...|I"
 msgstr "Inserta nove ramo...|I"
 
 #: lib/ui/stdmenus.inc:561
-#, fuzzy
 msgid "Cancel Background Process|P"
-msgstr "Fundo colorate|F"
+msgstr "Deler Processo de Fundo|F"
 
 #: lib/ui/stdmenus.inc:563
 msgid "Change Tracking|C"
@@ -21199,11 +20981,11 @@ msgstr "Rejecta omne modificationes|f"
 
 #: lib/ui/stdmenus.inc:585
 msgid "Accept All Changes (incl. Master/Children/Siblings)|p"
-msgstr ""
+msgstr "Accepta omne modificationes (incl. Domino/Filios/Fratres|p"
 
 #: lib/ui/stdmenus.inc:586
 msgid "Reject All Changes (incl. Master/Children/Siblings)|j"
-msgstr ""
+msgstr "Rejecta omne modificationes (incl. Domino/Filios/Fratres|j"
 
 #: lib/ui/stdmenus.inc:587
 msgid "Show Changes in Output|S"
@@ -21438,9 +21220,8 @@ msgid "Toggle noun"
 msgstr "Commuta le stilo substantivo"
 
 #: lib/ui/stdtoolbars.inc:89
-#, fuzzy
 msgid "Custom text styles"
-msgstr "Elemento|s personalisate"
+msgstr "Stilos de texto predefinite"
 
 #: lib/ui/stdtoolbars.inc:91
 msgid "Insert math"
@@ -21455,7 +21236,6 @@ msgid "Insert table"
 msgstr "Inserta tabella"
 
 #: lib/ui/stdtoolbars.inc:94
-#, fuzzy
 msgid "Custom insets"
 msgstr "Insertiones personalisate"
 
@@ -21588,13 +21368,12 @@ msgid "Include file"
 msgstr "Include file"
 
 #: lib/ui/stdtoolbars.inc:148
-#, fuzzy
 msgid "Text properties"
-msgstr "Proprietates de font"
+msgstr "Proprietates de texto"
 
 #: lib/ui/stdtoolbars.inc:149
 msgid "Apply recent text properties"
-msgstr ""
+msgstr "Applicar proprietates de teto recente"
 
 #: lib/ui/stdtoolbars.inc:150
 msgid "Paragraph settings"
@@ -21633,24 +21412,20 @@ msgid "Move column right"
 msgstr "Move columna a dextera"
 
 #: lib/ui/stdtoolbars.inc:164
-#, fuzzy
 msgid "Toggle top line"
-msgstr "Commuta profilo del documento"
+msgstr "Commuta linea culmine"
 
 #: lib/ui/stdtoolbars.inc:165
-#, fuzzy
 msgid "Toggle bottom line"
-msgstr "Commuta profilo del documento"
+msgstr "Commuta linea a basso"
 
 #: lib/ui/stdtoolbars.inc:166
-#, fuzzy
 msgid "Toggle left line"
-msgstr "Commuta profilo del documento"
+msgstr "Commuta linea sinistre"
 
 #: lib/ui/stdtoolbars.inc:167
-#, fuzzy
 msgid "Toggle right line"
-msgstr "Fixa linea dextere"
+msgstr "Commuta linea dextere"
 
 #: lib/ui/stdtoolbars.inc:168
 msgid "Set border lines"
@@ -21669,9 +21444,8 @@ msgid "Unset all lines"
 msgstr "Leva omne lineas"
 
 #: lib/ui/stdtoolbars.inc:172
-#, fuzzy
 msgid "Reset formal default lines"
-msgstr "Restaura le valores predefinite"
+msgstr "Restaura le valores formal predefinite"
 
 #: lib/ui/stdtoolbars.inc:174
 msgid "Align left"
@@ -26684,9 +26458,8 @@ msgid "LyX 2.2.x"
 msgstr "LyX 2.2.x"
 
 #: lib/configure.py:767
-#, fuzzy
 msgid "LyX 2.3.x"
-msgstr "LyX 2.0.x"
+msgstr "LyX 2.4.x"
 
 #: lib/configure.py:768
 msgid "CJK LyX 1.4.x (big5)"
@@ -26753,29 +26526,24 @@ msgid "LyX Archive (tar.gz)"
 msgstr "Archivo LyX (tar.gz)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Game 1"
-msgstr "Joco"
+msgstr "Joco 1"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Game 2"
-msgstr "Joco"
+msgstr "Joco 2"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Example (LyXified)"
-msgstr "Files de &exemplo:"
+msgstr "Exemplo (a le stilo de LyX)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Example (raw)"
-msgstr "Exemplo"
+msgstr "Exemplo(crude)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Gnuplot"
-msgstr "gnuplot"
+msgstr "Gnuplot"
 
 #: lib/examples/Articles:0 src/TocBackend.cpp:296
 #: src/frontends/qt/GuiExternal.cpp:87
@@ -26783,63 +26551,52 @@ msgid "External Material"
 msgstr "Material externe"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Minted File Listing"
-msgstr "&Listar in linea"
+msgstr "Listas de file battite"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Minted Listings"
-msgstr "Lista de listas"
+msgstr "Lista de listas battite"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Instant Preview"
-msgstr "Vista &preliminar instantanee:"
+msgstr "Vista preliminar instantanee"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Itemize Bullets"
 msgstr "Lista punctate"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Feynman Diagrams"
-msgstr "Diagrammas de Feynman|F"
+msgstr "Diagrammas de Feynman"
 
 #: lib/examples/Articles:0
 msgid "XY-Pic"
-msgstr ""
+msgstr "Im-XY"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "XY-Figure"
-msgstr "Figura"
+msgstr "Figura-XY"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Graphics and Insets"
-msgstr "Driver per &graficos:"
+msgstr "Illustration e Insertiones"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Serial Letter 2"
-msgstr "Littera hebree"
+msgstr "Littera serial 2"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Serial Letter 3"
-msgstr "Littera hebree"
+msgstr "Littera serial 3"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Serial Letter 1"
-msgstr "Littera hebree"
+msgstr "Littera serial 1"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Localization Test"
-msgstr "Location"
+msgstr "Essaya de Localisation"
 
 #: lib/examples/Articles:0
 msgid "Noweb Listerrors"
@@ -26858,206 +26615,172 @@ msgid "Hazard and Precautionary Statements"
 msgstr "Declaration de risco e precaution"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Noweb2LyX"
-msgstr "Noweb"
+msgstr "Noweb2LyX"
 
 #: lib/examples/Articles:0 src/frontends/qt/GuiDocument.cpp:1762
 msgid "Modules"
 msgstr "Modulos"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Foils"
-msgstr "FoilTeX"
+msgstr "Folios"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Foils Landslide"
-msgstr "Diapositiva horizontal"
+msgstr "Folios horizontal"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Beamer (Complex)"
-msgstr "Nota de beamer"
+msgstr "Beamer (Complex)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Welcome"
-msgstr "Benvenite in LyX!"
+msgstr "Benvenite"
 
 #: lib/examples/Articles:0
 msgid "Multilingual Typesetting with platex"
 msgstr ""
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Multilingual Typesetting with CJKutf8"
-msgstr "Legendas multilingual|C"
+msgstr "Typographia Typesetting con CJKutf8"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Mathematical Monthly"
-msgstr "Articolo Mathematical Monthly"
+msgstr "Mensual Mathematic"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Springers Global Journal Template (V. 3)"
-msgstr "Modello globale per riviste Springer (V. 3)"
+msgstr "Patrono global de revista Springer (V. 3)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "IEEE Transactions Journal"
-msgstr "IEEE Transtactions"
+msgstr "Revista IEEE Transactions Journal "
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "IEEE Transactions Conference"
-msgstr "IEEE Transactions Computer Society"
+msgstr "Conferentias de IEEE Transactions"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "08 Author"
-msgstr "Autor"
+msgstr "08 Autor"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "05 Contributor List"
-msgstr "Lista de contributores"
+msgstr "05 Lista de Contributor"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "07 Part"
-msgstr "Parte"
+msgstr "07 Parte"
 
 #: lib/examples/Articles:0
 msgid "06 Acronym"
-msgstr ""
+msgstr "06 Acronym"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "03 Preface"
-msgstr "Prefacio"
+msgstr "03 Prefacio"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "00 Main File"
-msgstr "File mancante"
+msgstr "00 File principal"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "11 References"
-msgstr "Referentias"
+msgstr "11 Referentias"
 
 #: lib/examples/Articles:0
 msgid "10 Glossary"
-msgstr ""
+msgstr "10 Glossario"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "04 Acknowledgements"
-msgstr "Recognoscentias"
+msgstr "04 Recognoscentias"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "02 Foreword"
-msgstr "Prefacio"
+msgstr "02 Prefacio"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "01 Dedication"
-msgstr "Dedica"
+msgstr "01 Dedication"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "09 Appendix"
-msgstr "Appendice"
+msgstr "09 Appendice"
 
 #: lib/examples/Articles:0
 msgid "05 Acronym"
-msgstr ""
+msgstr "05 Acronym"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "07 Chapter"
-msgstr "Capitulo"
+msgstr "07 Capitulo"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "06 Part"
-msgstr "Parte"
+msgstr "06 Parte"
 
 #: lib/examples/Articles:0
 msgid "09 Glossary"
-msgstr ""
+msgstr "09 Glossario"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "10 Solutions"
-msgstr "Solution"
+msgstr "10 Solutiones"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "08 Appendix"
-msgstr "Appendice"
+msgstr "08 Appendice"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Simple"
-msgstr "CV simple"
+msgstr "Simple"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Colored"
-msgstr "Color"
+msgstr "Colorate"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Chapter 2"
-msgstr "Capitulo"
+msgstr "Capitulo 2"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Chapter 1"
-msgstr "Capitulo"
+msgstr "Capitulo 1"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Main File"
-msgstr "File mancante"
+msgstr "File principal"
 
 #: lib/examples/Articles:0
 msgid "PhD Thesis"
-msgstr ""
+msgstr "Theses de PhD"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Theses"
-msgstr "Dictionario lexical"
+msgstr "Theses"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
-#, fuzzy
 msgid "Formal with Footline"
-msgstr "mathematica (linea)"
+msgstr "Formal con linea de pede"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
-#, fuzzy
 msgid "Formal without Footline"
-msgstr "Biographia sin photo"
+msgstr "Formal sin linea de pede"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
 msgid "Grid with Head"
-msgstr ""
+msgstr "Grillia con titulo"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
-#, fuzzy
 msgid "No Borders"
-msgstr "&Bordos"
+msgstr "Necun Bordos"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
-#, fuzzy
 msgid "Simple Grid"
-msgstr "CV simple"
+msgstr "Grillia simple"
 
 #: src/Author.cpp:57
 #, c-format
@@ -27126,15 +26849,14 @@ msgid "Changes not shown in LaTeX output"
 msgstr "Modificationes non monstrate in le exito de LaTeX"
 
 #: src/Buffer.cpp:1047 src/Buffer.cpp:3043
-#, fuzzy
 msgid ""
 "Changes will not be highlighted in LaTeX output, because xcolor and ulem are "
 "not installed.\n"
 "Please install both packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 msgstr ""
-"Modificationes non essera evidentiate in le exito de LaTeX quando on usa "
-"pdflatex, proque xcolor e ulem non es installate.\n"
+"Modificationes non essera evidentiate in le exito de LaTeX , proque xcolor e "
+"ulem non es installate.\n"
 "Pro favor  installa ambe pacchettos o redefini \\lyxadded e \\lyxdeleted in "
 "le preambulo de LaTeX."
 
@@ -27335,14 +27057,11 @@ msgid ""
 msgstr ""
 
 #: src/Buffer.cpp:1782
-#, fuzzy, c-format
+#, c-format
 msgid "Uncodable character '%1$s' (code point %2$s)"
-msgstr ""
-"On non trovava le commando LaTeX per il character '%1$s' (codice unicode "
-"%2$s)"
+msgstr "Character  non codificabile '%1$s' (puncto de codice %2$s)"
 
 #: src/Buffer.cpp:1785
-#, fuzzy
 msgid ""
 "Some characters of your document are not representable in specific verbatim "
 "contexts.\n"
@@ -27350,7 +27069,7 @@ msgid ""
 msgstr ""
 "Alcun characteres del documento probabilemente non es representabile in le "
 "codifica seligite.\n"
-"Il pote esser utile cambiar la codifica del documento in utf8."
+"Il pote esser utile cambiar le codifica del documento in utf8."
 
 #: src/Buffer.cpp:1790
 #, c-format
@@ -27558,9 +27277,10 @@ msgid "No information for exporting the format %1$s."
 msgstr "Nulle information per exportar le formato %1$s."
 
 #: src/Buffer.cpp:4408
-#, fuzzy, c-format
+#, c-format
 msgid "Hint: use non-TeX fonts or set input encoding  to '%1$s'"
-msgstr "Preferentias differente per usar characteres non-TeX"
+msgstr ""
+"Adjuta: usar characteres non-TeX e fixa codification de entrata a '%1$s'"
 
 #: src/Buffer.cpp:4410
 msgid "Couldn't export file"
@@ -27673,27 +27393,28 @@ msgid "Can't rename emergency file!"
 msgstr "Non pote renominar file de emergentia!"
 
 #: src/Buffer.cpp:4742
-#, fuzzy
 msgid ""
 "LyX was unable to rename the emergency file. You should do so manually. "
 "Otherwise, you will be asked about it again the next time you try to load "
 "this file, and may over-write your own work."
 msgstr ""
 "LyX esseva incapace a renominar le file de emergentia, Tu deberea facer assi "
-"manualmente. Alteremente tu essera demandate novemente re illo e tu poterea "
-"super scriber tu proprie labor."
+"manualmente. Alteremente tu essera demandate novemente re illo le proxime "
+"vice que tu essaya incargar iste file, e tu poterea super scriber tu proprie "
+"labor."
 
 #: src/Buffer.cpp:4747
-#, fuzzy
 msgid "Emergency File Renames"
-msgstr "Copia de emergentia removite"
+msgstr "Renomines de file de emergentia"
 
 #: src/Buffer.cpp:4748
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Emergency file renamed as:\n"
 " %1$s"
-msgstr "Copia de emergentia removite"
+msgstr ""
+"File de emergentia renominate como:\n"
+"%1$s"
 
 #: src/Buffer.cpp:4771
 #, c-format
@@ -28118,12 +27839,11 @@ msgstr ""
 "UTF-8 usante un programma externe a LyX.\n"
 
 #: src/Changes.cpp:375
-#, fuzzy
 msgid "Uncodable character in author initials"
-msgstr "Character intraducibile in nomine de autor"
+msgstr "Character intraducibile in initiales de autor"
 
 #: src/Changes.cpp:376
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The author initials '%1$s',\n"
 "used for change tracking, contain the following glyphs that\n"
@@ -28133,13 +27853,13 @@ msgid ""
 "Choose an appropriate document encoding (such as utf8)\n"
 "or change the author initials."
 msgstr ""
-"Le nomine del autor '%1$s',\n"
+"Le initiales del autor '%1$s',\n"
 "usate per traciar le modificationes, contine characteres (glyphs) que non\n"
 "pote esser representate in le codifica currente:%2$s.\n"
 "Iste characteres essera omittite in le file LaTeX exportate.\n"
 "\n"
 "Selige un codifica appropriate per le documento\n"
-"(pro exemplo utf8) o modifica le orthographia del nomine de autor."
+"(pro exemplo utf8) o modifica le orthographia del initiales de autor."
 
 #: src/Changes.cpp:405
 msgid "Uncodable character in author name"
@@ -28375,23 +28095,20 @@ msgid "command inset frame"
 msgstr "insertion commando (quadro)"
 
 #: src/Color.cpp:257
-#, fuzzy
 msgid "command inset (broken reference)"
-msgstr "insertion commando (quadro)"
+msgstr "insertion commando (referentia rupte)"
 
 #: src/Color.cpp:258
-#, fuzzy
 msgid "button background (broken reference)"
-msgstr "button (fundo infra mus)"
+msgstr "button fundo  (referentia rupte)"
 
 #: src/Color.cpp:259
 msgid "button frame (broken reference)"
-msgstr ""
+msgstr "button quadro  (referentia rupte)"
 
 #: src/Color.cpp:260
-#, fuzzy
 msgid "button background (broken reference) under focus"
-msgstr "button (fundo infra mus)"
+msgstr "button fundo (referentia rupte) infra focus"
 
 #: src/Color.cpp:261
 msgid "special character"
@@ -28482,44 +28199,36 @@ msgid "change bar"
 msgstr "barra de modificationes"
 
 #: src/Color.cpp:284
-#, fuzzy
 msgid "deleted text (output)"
-msgstr "texto delete"
+msgstr "texto delite (exito)"
 
 #: src/Color.cpp:285
-#, fuzzy
 msgid "added text (output)"
-msgstr "data (exito)"
+msgstr "texto addite (exito)"
 
 #: src/Color.cpp:286
-#, fuzzy
 msgid "added text (workarea, 1st author)"
-msgstr "texto modificate autor 1"
+msgstr "texto addite(area de travalio, 1me autor)"
 
 #: src/Color.cpp:287
-#, fuzzy
 msgid "added text (workarea, 2nd author)"
-msgstr "texto modificate autor 2"
+msgstr "texto addite(area de travalio, 2de autor)"
 
 #: src/Color.cpp:288
-#, fuzzy
 msgid "added text (workarea, 3rd author)"
-msgstr "texto modificate autor 3"
+msgstr "texto addite(area de travalio, 3ie autor)"
 
 #: src/Color.cpp:289
-#, fuzzy
 msgid "added text (workarea, 4th author)"
-msgstr "texto modificate autor 3"
+msgstr "texto addite(area de travalio, 4te autor)"
 
 #: src/Color.cpp:290
-#, fuzzy
 msgid "added text (workarea, 5th author)"
-msgstr "texto modificate autor 3"
+msgstr "texto addite(area de travalio, 5te autor)"
 
 #: src/Color.cpp:291
-#, fuzzy
 msgid "deleted text modifier (workarea)"
-msgstr "texto delete (modificator)"
+msgstr "modificator de texto delite (area de travalio)"
 
 #: src/Color.cpp:292
 msgid "added space markers"
@@ -28688,9 +28397,8 @@ msgid "&Always run for this document"
 msgstr "&Sempre executa per iste documento"
 
 #: src/Converter.cpp:441 src/Converter.cpp:687 src/Converter.cpp:716
-#, fuzzy
 msgid "Converter killed"
-msgstr "Cache per le convertitores"
+msgstr "Convertitor terminate"
 
 #: src/Converter.cpp:442 src/Converter.cpp:688 src/Converter.cpp:717
 #, c-format
@@ -28744,17 +28452,16 @@ msgid "Executing command: "
 msgstr "Commando executante: "
 
 #: src/Converter.cpp:728
-#, fuzzy
 msgid "Process Killed"
-msgstr "&Procede"
+msgstr "Processo terminate"
 
 #: src/Converter.cpp:729
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The conversion process was killed while running:\n"
 "%1$s"
 msgstr ""
-"Il occurreva un error durante le execution de:\n"
+"Le processo de conversion esseva terminate durante le execution de:\n"
 "%1$s"
 
 #: src/Converter.cpp:734
@@ -28806,18 +28513,16 @@ msgid "Running LaTeX..."
 msgstr "Executante LaTeX..."
 
 #: src/Converter.cpp:870
-#, fuzzy
 msgid "Export canceled"
-msgstr "Exportation  falleva"
+msgstr "Exportation  cancellate"
 
 #: src/Converter.cpp:871
 msgid "The export process was terminated by the user."
 msgstr ""
 
 #: src/Converter.cpp:881
-#, fuzzy
 msgid "Undefined reference"
-msgstr "Ramos &indefinite"
+msgstr "Referentia non definite"
 
 #: src/Converter.cpp:882
 msgid ""
@@ -29181,14 +28886,12 @@ msgid "Biber error: "
 msgstr "Error de Biber: "
 
 #: src/LaTeX.cpp:1633
-#, fuzzy
 msgid "Makeindex error: "
-msgstr "Error de Biber: "
+msgstr "Error de Makeindex: "
 
 #: src/LaTeX.cpp:1642
-#, fuzzy
 msgid "Xindy error: "
-msgstr "Error de Biber: "
+msgstr "Error de Xindy: "
 
 #: src/LaTeXFonts.cpp:236 src/LaTeXFonts.cpp:314
 msgid "Font not available"
@@ -29471,7 +29174,7 @@ msgstr ""
 "                  monstra in terminal le commandos externe executate.\n"
 "\t-batch    exeque le commandos si aperir fenestras e exi.\n"
 "\t-version  summarisa le version e le informationes de construction.\n"
-"Controla al pagina del man de LyX per ulterior detalios"
+"Controla al pagina del man de LyX per ulterior detalios."
 
 #: src/LyX.cpp:1231 src/frontends/qt/GuiAbout.cpp:242
 msgid "  Git commit hash "
@@ -29611,7 +29314,7 @@ msgid ""
 "undesired effects."
 msgstr ""
 "Prohiber le uso de convertitores externe con le option 'needauth' per "
-"prevenir effectos non desirate"
+"prevenir effectos non desirate."
 
 #: src/LyXRC.cpp:3023
 msgid ""
@@ -30259,9 +29962,8 @@ msgid " not known"
 msgstr " non cognoscite"
 
 #: src/Text3.cpp:2133
-#, fuzzy
 msgid "Table Style "
-msgstr "Nota de tabella"
+msgstr "Stilo de tabella "
 
 #: src/Text3.cpp:2327 src/frontends/qt/GuiApplication.cpp:1762
 msgid "Missing argument"
@@ -30269,16 +29971,16 @@ msgstr "Argumento mancante"
 
 #: src/Text3.cpp:2489
 msgid "Invalid argument (number exceeds stack size)!"
-msgstr ""
+msgstr "Argumento invalide (numero excedente grandor de stack)!"
 
 #: src/Text3.cpp:2493
 msgid "Invalid argument (must be a non-negative number)!"
-msgstr ""
+msgstr "Argumento invalide (debe esser un numero non negative)!"
 
 #: src/Text3.cpp:2498 src/Text3.cpp:2516
 #, c-format
 msgid "Text properties applied: %1$s"
-msgstr ""
+msgstr "Proprietates de texto applicate: %1$s"
 
 #: src/Text3.cpp:2668
 msgid "Path to thesaurus directory not set!"
@@ -30436,7 +30138,7 @@ msgstr "Etiquettas e referentias"
 
 #: src/TocBackend.cpp:291
 msgid "Broken References and Citations"
-msgstr ""
+msgstr "Referentias e Citationes Rupte"
 
 #: src/TocBackend.cpp:293 src/frontends/qt/GuiDocument.cpp:1761
 msgid "Child Documents"
@@ -30885,9 +30587,8 @@ msgid "Class Default"
 msgstr "Classe predefinite"
 
 #: src/frontends/qt/FloatPlacement.cpp:184
-#, fuzzy
 msgid "Document Default"
-msgstr "Salveguarda como preferentias predefinite de documento"
+msgstr "Documento predefinite"
 
 #: src/frontends/qt/FloatPlacement.h:38 src/frontends/qt/GuiDocument.cpp:1776
 msgid "Float Settings"
@@ -30898,13 +30599,12 @@ msgid "ERROR: LyX wasn't able to find the CREDITS file\n"
 msgstr "ERROR; LyX non esseva capace a trovar le file CREDITS\n"
 
 #: src/frontends/qt/GuiAbout.cpp:52 src/frontends/qt/GuiAbout.cpp:57
-#, fuzzy
 msgid ""
 "Please install correctly to estimate the great\n"
 "amount of work other people have done for the LyX project."
 msgstr ""
-"quantitate de travalio que altere personas ha facite e es facente per le "
-"projecto LyX."
+"Pro favor installa correctemente per appreciar le grande quantitate\n"
+" de travalio que altere personas ha facite e es facente per le projecto LyX."
 
 #: src/frontends/qt/GuiAbout.cpp:56
 msgid "ERROR: LyX wasn't able to read the CREDITS file\n"
@@ -30915,11 +30615,12 @@ msgid "ERROR: LyX wasn't able to find the RELEASE-NOTES file\n"
 msgstr "ERROR: LyX non esseva capace a trovar le file RELEASE-NOTES\n"
 
 #: src/frontends/qt/GuiAbout.cpp:94 src/frontends/qt/GuiAbout.cpp:99
-#, fuzzy
 msgid ""
 "Please install correctly to see what has changed\n"
 "for this version of LyX."
-msgstr "Per favor, installa LyX correctemente pro vide lo que ha modificate\n"
+msgstr ""
+"Per favor, installa LyX correctemente pro vider lo que ha modificate\n"
+"per iste version de LyX."
 
 #: src/frontends/qt/GuiAbout.cpp:98
 msgid "ERROR: LyX wasn't able to read the RELEASE-NOTES file\n"
@@ -31035,18 +30736,16 @@ msgid "&OK"
 msgstr "&OK"
 
 #: src/frontends/qt/GuiApplication.cpp:690
-#, fuzzy
 msgid "Apply"
-msgstr "&Applica"
+msgstr "Applica"
 
 #: src/frontends/qt/GuiApplication.cpp:691
 msgid "Reset"
 msgstr "Re-fixa"
 
 #: src/frontends/qt/GuiApplication.cpp:692
-#, fuzzy
 msgid "Open"
-msgstr "Apertura"
+msgstr "Aperi"
 
 #: src/frontends/qt/GuiApplication.cpp:1156
 msgid "Nothing to do"
@@ -31074,7 +30773,7 @@ msgstr "le argumento <LFUN-COMMAND> de buffer-forall es invalide"
 
 #: src/frontends/qt/GuiApplication.cpp:1443
 msgid "Wrong focus!"
-msgstr ""
+msgstr "Foco errate!"
 
 #: src/frontends/qt/GuiApplication.cpp:1574
 msgid "Running configure..."
@@ -31231,9 +30930,8 @@ msgstr ""
 "verifica qual file de Interfacie de Usator tu es usante."
 
 #: src/frontends/qt/GuiBibitem.cpp:60
-#, fuzzy
 msgid "Author &Names:"
-msgstr "Nomines de autor"
+msgstr "&Nomines de autor:"
 
 #: src/frontends/qt/GuiBibitem.cpp:62
 msgid ""
@@ -31242,13 +30940,12 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt/GuiBibitem.cpp:66
-#, fuzzy
 msgid ""
 "Pass content of the `Author', `Year' and `All Authors' fields literally to "
 "LaTeX. Check this if you want to enter LaTeX code."
 msgstr ""
-"Passar le contento del campos `Symbolo' e `Description' a LaTeX. Marca isto "
-"si tu vole insertar le codice LaTeX."
+"Passar le contento del campos `Autor' ,'Anno' e `Omne Autores' litteralmente "
+"a LaTeX. Marca isto si tu vole insertar le codice LaTeX."
 
 #: src/frontends/qt/GuiBibitem.h:36
 msgid "Bibliography Item Settings"
@@ -31265,9 +30962,8 @@ msgid "Clear text"
 msgstr "Netta texto"
 
 #: src/frontends/qt/GuiBibtex.cpp:70
-#, fuzzy
 msgid "All avail. databases"
-msgstr "Omne Citationes disponibile"
+msgstr "Omne Catalogos disponibile"
 
 #: src/frontends/qt/GuiBibtex.cpp:118
 msgid ""
@@ -31283,24 +30979,20 @@ msgstr ""
 "locale (vedere la documentazione della propria distribuzione TeX)."
 
 #: src/frontends/qt/GuiBibtex.cpp:138 src/frontends/qt/GuiBibtex.cpp:305
-#, fuzzy
 msgid "Document Encoding"
-msgstr "Tractamento de documento"
+msgstr "Codifica del documento"
 
 #: src/frontends/qt/GuiBibtex.cpp:276
-#, fuzzy
 msgid "Database"
-msgstr "Catalogos (bases de datos):"
+msgstr "Base de datos"
 
 #: src/frontends/qt/GuiBibtex.cpp:277
-#, fuzzy
 msgid "File Encoding"
-msgstr "Gestion de file"
+msgstr "Codifica de file"
 
 #: src/frontends/qt/GuiBibtex.cpp:284
-#, fuzzy
 msgid "General E&ncoding:"
-msgstr "Punctuation General"
+msgstr "Codificatio&n General:"
 
 #: src/frontends/qt/GuiBibtex.cpp:285
 msgid ""
@@ -31310,9 +31002,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt/GuiBibtex.cpp:304
-#, fuzzy
 msgid "General Encoding"
-msgstr "Punctuation General"
+msgstr "Codification General"
 
 #: src/frontends/qt/GuiBibtex.cpp:311
 msgid ""
@@ -31336,9 +31027,8 @@ msgstr "omne unitates de referentia"
 #: src/frontends/qt/GuiView.cpp:2343 src/frontends/qt/GuiView.cpp:2402
 #: src/frontends/qt/GuiView.cpp:2540 src/frontends/qt/GuiView.cpp:2674
 #: src/frontends/qt/GuiView.cpp:2793 src/frontends/qt/GuiView.cpp:2915
-#, fuzzy
 msgid "D&ocuments"
-msgstr "Documentos"
+msgstr "D&ocumentos"
 
 #: src/frontends/qt/GuiBibtex.cpp:460
 msgid "BibTeX Databases (*.bib)"
@@ -31464,28 +31154,24 @@ msgid "Merge Changes"
 msgstr "Fusiona modificationes"
 
 #: src/frontends/qt/GuiChanges.cpp:77
-#, fuzzy
 msgid "Inserted by %1"
-msgstr "Inserta quadrato"
+msgstr "Insertate per %1"
 
 #: src/frontends/qt/GuiChanges.cpp:78
-#, fuzzy
 msgid "Deleted by %1"
-msgstr "&Dele clave"
+msgstr "Delite per %1"
 
 #: src/frontends/qt/GuiChanges.cpp:84
 msgid " on[[date]] %1"
 msgstr ""
 
 #: src/frontends/qt/GuiChanges.cpp:86
-#, fuzzy
 msgid "Inserted on %1"
-msgstr "Inserta quadrato"
+msgstr "Insertate sur %1"
 
 #: src/frontends/qt/GuiChanges.cpp:87
-#, fuzzy
 msgid "Deleted on %1"
-msgstr "Dele linea"
+msgstr "Delite sur %1"
 
 #: src/frontends/qt/GuiCharacter.cpp:52 src/frontends/qt/GuiCharacter.cpp:65
 #: src/frontends/qt/GuiCharacter.cpp:86 src/frontends/qt/GuiCharacter.cpp:99
@@ -31531,9 +31217,8 @@ msgid "(Without)[[color]]"
 msgstr "(Senza)"
 
 #: src/frontends/qt/GuiCharacter.cpp:210
-#, fuzzy
 msgid "Text Properties"
-msgstr "Proprietates de font"
+msgstr "Proprietates de texto"
 
 #: src/frontends/qt/GuiCharacter.cpp:276
 msgid "Reset All To &Default"
@@ -31831,18 +31516,16 @@ msgid "Traditional (auto-selected)"
 msgstr ""
 
 #: src/frontends/qt/GuiDocument.cpp:989
-#, fuzzy
 msgid "Select Unicode (utf8) encoding."
-msgstr "Unicode (utf8)"
+msgstr "Selige codification Unicode (utf8)"
 
 #: src/frontends/qt/GuiDocument.cpp:991
 msgid "Use language-dependent traditional encodings."
 msgstr ""
 
 #: src/frontends/qt/GuiDocument.cpp:993
-#, fuzzy
 msgid "Select a custom, document-wide encoding."
-msgstr "Selige un directorio de documento"
+msgstr "Selige un codification personalisate extendite per tote le documento."
 
 #: src/frontends/qt/GuiDocument.cpp:1002
 msgid "Standard Unicode support by the ``inputenc'' package."
@@ -32094,9 +31777,8 @@ msgstr ""
 "correspondente  classe %1$s e tote le requirite pacchettos (%2$s)."
 
 #: src/frontends/qt/GuiDocument.cpp:1663
-#, fuzzy
 msgid "All avail. modules"
-msgstr "Omne Citationes disponibile"
+msgstr "Omne modulos disponibile"
 
 #: src/frontends/qt/GuiDocument.cpp:1753 src/frontends/qt/GuiDocument.cpp:1970
 msgid "Input listings parameters below. Enter ? for a list of parameters."
@@ -32124,9 +31806,8 @@ msgid "Colors"
 msgstr "Colores"
 
 #: src/frontends/qt/GuiDocument.cpp:1770
-#, fuzzy
 msgid "Change Tracking"
-msgstr "Modifica modo de traciar|t"
+msgstr "Modifica modo de traciar"
 
 #: src/frontends/qt/GuiDocument.cpp:1771
 msgid "Numbering & TOC"
@@ -32161,14 +31842,12 @@ msgid "&Default..."
 msgstr "Pre&definite..."
 
 #: src/frontends/qt/GuiDocument.cpp:2388
-#, fuzzy
 msgid "Direct (No inputenc)"
-msgstr "Linguage predefinite (nulle inputenc)"
+msgstr "Directe (nulle inputenc)"
 
 #: src/frontends/qt/GuiDocument.cpp:2390
-#, fuzzy
 msgid "Direct (XeTeX/LuaTeX)"
-msgstr "PDF (LuaTeX)"
+msgstr "Directe (XeTeX/LuaTeX)"
 
 #: src/frontends/qt/GuiDocument.cpp:2576 src/frontends/qt/GuiDocument.cpp:4242
 #: src/frontends/qt/GuiDocument.cpp:4251 src/frontends/qt/GuiDocument.cpp:4260
@@ -32189,9 +31868,8 @@ msgid "Class Default (TeX Fonts)"
 msgstr "Classe predefinite (Fonts de TeX)"
 
 #: src/frontends/qt/GuiDocument.cpp:2751
-#, fuzzy
 msgid "Lay&outs"
-msgstr "Disposition|#o#O"
+msgstr "Disp&ositiones"
 
 #: src/frontends/qt/GuiDocument.cpp:2753
 msgid "LyX Layout (*.layout)"
@@ -32298,40 +31976,41 @@ msgid "Module provided by document class."
 msgstr "Modulo fornite per le classe del documento."
 
 #: src/frontends/qt/GuiDocument.cpp:3204
-#, fuzzy, c-format
+#, c-format
 msgid "<p><b>Category:</b> %1$s.</p>"
-msgstr "Categoria: %1$s."
+msgstr "<p><b>Categoria: </b>%1$s.</p>"
 
 #: src/frontends/qt/GuiDocument.cpp:3214
-#, fuzzy, c-format
+#, c-format
 msgid "<p><b>Package(s) required:</b> %1$s.</p>"
-msgstr "Pacchettos requirite: %1$s."
+msgstr "<p><b>Pacchetto(s) requirite:</b> %1$s.</p>"
 
 #: src/frontends/qt/GuiDocument.cpp:3220
 msgid "or"
 msgstr "o"
 
 #: src/frontends/qt/GuiDocument.cpp:3223
-#, fuzzy, c-format
+#, c-format
 msgid "<p><b>Modules required:</b> %1$s.</p>"
-msgstr "Modulos requirite: %1$s."
+msgstr "<p><b>Modulos requirite: </b>%1$s.</p>"
 
 #: src/frontends/qt/GuiDocument.cpp:3232
-#, fuzzy, c-format
+#, c-format
 msgid "<p><b>Modules excluded:</b> %1$s.</p>"
-msgstr "Modulos excludite: %1$s."
+msgstr "<p><b>Modulos excludite: </b> %1$s.</p>"
 
 #: src/frontends/qt/GuiDocument.cpp:3237
-#, fuzzy, c-format
+#, c-format
 msgid "<p><b>Filename:</b> <tt>%1$s.module</tt>.</p>"
-msgstr "File: %1$s.module."
+msgstr "<p><b>Nomine de File:</b> <tt> %1$s.module</tt>.</p>"
 
 #: src/frontends/qt/GuiDocument.cpp:3242
-#, fuzzy
 msgid ""
 "<p><font color=red><b>WARNING: Some required packages are unavailable!</b></"
 "font></p>"
-msgstr "ATTENTION: alcun pacchettos non es disponibile!"
+msgstr ""
+"<p><font color=red><b>ATTENTION: alcun pacchettos non es disponibile!</b></"
+"font></p>"
 
 #: src/frontends/qt/GuiDocument.cpp:3885
 msgid "per part"
@@ -32411,18 +32090,16 @@ msgid "%1 (missing req.)"
 msgstr ""
 
 #: src/frontends/qt/GuiDocument.cpp:5095
-#, fuzzy
 msgid "personal module"
-msgstr "Datos personal"
+msgstr "modulo personal"
 
 #: src/frontends/qt/GuiDocument.cpp:5095
 msgid "distributed module"
-msgstr ""
+msgstr "modulo distribuite"
 
 #: src/frontends/qt/GuiDocument.cpp:5096
-#, fuzzy
 msgid "<b>Module name:</b> <i>%1</i> (%2)"
-msgstr "(Nomine de Modulo: %1)"
+msgstr "<b>Nomine de Modulo:</b> <i>%1</i> (%2)"
 
 #: src/frontends/qt/GuiDocument.cpp:5102
 msgid "<b>Note:</b> Some requirements for this module are missing!"
@@ -32588,9 +32265,8 @@ msgid "Select graphics file"
 msgstr "Selige file de graphicos"
 
 #: src/frontends/qt/GuiGraphics.cpp:790
-#, fuzzy
 msgid "&Clipart"
-msgstr "Galeria|#G#g"
+msgstr "&Clipart"
 
 #: src/frontends/qt/GuiHSpace.cpp:45 src/frontends/qt/GuiHSpace.cpp:58
 #: src/insets/InsetSpace.cpp:69
@@ -32706,119 +32382,103 @@ msgstr "Le indice non pote esser renominate. Verifica si le nomine ja existe."
 
 #: src/frontends/qt/GuiInfo.cpp:70
 msgid "Date (current)"
-msgstr ""
+msgstr "Data (currente)"
 
 #: src/frontends/qt/GuiInfo.cpp:71
-#, fuzzy
 msgid "Date (last modified)"
-msgstr "Biblatex (modo natbib)"
+msgstr "Data (ultime modificate)"
 
 #: src/frontends/qt/GuiInfo.cpp:72
 msgid "Date (fix)"
-msgstr ""
+msgstr "Data (Fixate)"
 
 #: src/frontends/qt/GuiInfo.cpp:73
-#, fuzzy
 msgid "Time (current)"
-msgstr "Medie (accento)"
+msgstr "Tempore (currente)"
 
 #: src/frontends/qt/GuiInfo.cpp:74
-#, fuzzy
 msgid "Time (last modified)"
-msgstr "Chinese (simplificate)"
+msgstr "Tempore (ultime modificate)"
 
 #: src/frontends/qt/GuiInfo.cpp:75
 msgid "Time (fix)"
-msgstr ""
+msgstr "Tempore (fixte)"
 
 #: src/frontends/qt/GuiInfo.cpp:76
-#, fuzzy
 msgid "Document Information"
-msgstr "Formato de &documento"
+msgstr "Information del documento"
 
 #: src/frontends/qt/GuiInfo.cpp:77
-#, fuzzy
 msgid "Version Control Information"
-msgstr "Registro de controlo de version"
+msgstr "Information de controlo de version"
 
 #: src/frontends/qt/GuiInfo.cpp:78
-#, fuzzy
 msgid "LaTeX Package Availability"
-msgstr "Pacchetto non disponibile"
+msgstr "Disponibilitate de Pacchetto LaTeX"
 
 #: src/frontends/qt/GuiInfo.cpp:79
 msgid "LaTeX Class Availability"
-msgstr ""
+msgstr "Disponibilitate de Classe de LaTeX"
 
 #: src/frontends/qt/GuiInfo.cpp:80
 msgid "Last Assigned Keyboard Shortcut"
-msgstr ""
+msgstr "Ultime via breve de claviero assignate"
 
 #: src/frontends/qt/GuiInfo.cpp:81
-#, fuzzy
 msgid "All Keyboard Shortcuts"
-msgstr "Claviero/Mus"
+msgstr "Omne vias breve global de claviero"
 
 #: src/frontends/qt/GuiInfo.cpp:82
-#, fuzzy
 msgid "LyX Menu Location"
-msgstr "Location"
+msgstr "Location de menu de LyX"
 
 #: src/frontends/qt/GuiInfo.cpp:83
 msgid "Localized GUI String"
-msgstr ""
+msgstr "Catena de GUI localisate"
 
 #: src/frontends/qt/GuiInfo.cpp:84
 msgid "LyX Toolbar Icon"
-msgstr ""
+msgstr "Icone de barra de instrumento de LyX"
 
 #: src/frontends/qt/GuiInfo.cpp:85
-#, fuzzy
 msgid "LyX Preferences Entry"
-msgstr "Preferentias"
+msgstr "Entrata de Preferentias de LyX"
 
 #: src/frontends/qt/GuiInfo.cpp:86
-#, fuzzy
 msgid "LyX Application Information"
-msgstr "Information de TeX"
+msgstr "Information de application de LyX"
 
 #: src/frontends/qt/GuiInfo.cpp:92 src/frontends/qt/GuiInfo.cpp:93
 #: src/frontends/qt/GuiInfo.cpp:94 src/frontends/qt/GuiInfo.cpp:95
 #: src/frontends/qt/GuiInfo.cpp:96 src/frontends/qt/GuiInfo.cpp:97
-#, fuzzy
 msgid "Custom Format"
-msgstr "Formato de exito"
+msgstr "Formato personalisate"
 
 #: src/frontends/qt/GuiInfo.cpp:98 src/frontends/qt/GuiInfo.cpp:99
 #: src/frontends/qt/GuiInfo.cpp:108 src/frontends/qt/GuiInfo.cpp:109
 msgid "Not Applicable"
-msgstr ""
+msgstr "Non Applicabile"
 
 #: src/frontends/qt/GuiInfo.cpp:100
-#, fuzzy
 msgid "Package Name"
-msgstr "Pacchetto"
+msgstr "Nomine de Pacchetto"
 
 #: src/frontends/qt/GuiInfo.cpp:101
-#, fuzzy
 msgid "Class Name"
-msgstr "Nomine de compania"
+msgstr "Nomine de Classe"
 
 #: src/frontends/qt/GuiInfo.cpp:102 src/frontends/qt/GuiInfo.cpp:103
 #: src/frontends/qt/GuiInfo.cpp:104 src/frontends/qt/GuiInfo.cpp:106
-#, fuzzy
 msgid "LyX Function"
-msgstr "Functiones de LyX|F"
+msgstr "Function de LyX"
 
 #: src/frontends/qt/GuiInfo.cpp:105
-#, fuzzy
 msgid "English String"
-msgstr "Anglese de S.U.A."
+msgstr "Catena Anglese"
 
 #: src/frontends/qt/GuiInfo.cpp:107
-#, fuzzy
 msgid "Preferences Key"
-msgstr "Preferentias"
+msgstr "Clave de Preferentias"
 
 #: src/frontends/qt/GuiInfo.cpp:115 src/frontends/qt/GuiInfo.cpp:126
 #: src/frontends/qt/GuiInfo.cpp:137
@@ -32858,7 +32518,7 @@ msgstr ""
 #: src/frontends/qt/GuiInfo.cpp:190 src/frontends/qt/GuiInfo.cpp:191
 #: src/frontends/qt/GuiInfo.cpp:208 src/frontends/qt/GuiInfo.cpp:209
 msgid "Please select a valid type above"
-msgstr ""
+msgstr "Pro favor seliger un typo valide de supra"
 
 #: src/frontends/qt/GuiInfo.cpp:192
 msgid ""
@@ -32920,21 +32580,19 @@ msgstr "Incognite"
 
 #: src/frontends/qt/GuiInfo.cpp:332
 msgid "Enter a valid value below"
-msgstr ""
+msgstr "Insertar un valor valide a basso"
 
 #: src/frontends/qt/GuiInfo.cpp:365
 msgid "Here you can enter a fix time (in ISO format: hh:mm:ss)"
-msgstr ""
+msgstr "Hic tu pote insertar un tempore fixate (in formato ISO: hh:mm:ss)"
 
 #: src/frontends/qt/GuiInfo.cpp:366
-#, fuzzy
 msgid "&Fix Time:"
-msgstr "Fixa LaTeX"
+msgstr "&Fixa Tempore:"
 
 #: src/frontends/qt/GuiInfo.h:40
-#, fuzzy
 msgid "Field Settings"
-msgstr "Preferentias de linea"
+msgstr "Preferentias de campo"
 
 #: src/frontends/qt/GuiKeySymbol.cpp:713
 msgid "Shift-"
@@ -33013,61 +32671,53 @@ msgid "No version control log file found."
 msgstr "Non ha trovate alcun registro de controlo de version."
 
 #: src/frontends/qt/GuiLyXFiles.cpp:155
-#, fuzzy
 msgid "Preferred &Language:"
-msgstr "&Linguage:"
+msgstr "&Linguage preferite:"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:161 src/frontends/qt/GuiLyXFiles.cpp:575
-#, fuzzy
 msgid "New File From Template"
-msgstr "Nove ex patrono...|x"
+msgstr "Nove file ex patrono"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:196
-#, fuzzy
 msgid "All available files"
-msgstr "Omne etiquettas disponibile"
+msgstr "Omne files disponibile"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:197
-#, fuzzy
 msgid "Enter string to filter the list of available files"
-msgstr "Inserta catena per filtrar le lista de etiquettas disponibile"
+msgstr "Inserta catena per filtrar le lista de files disponibile"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:230
-#, fuzzy
 msgid "User and System Files"
-msgstr "&Usa colores de systema"
+msgstr "Usa files de Usator e de Systema"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:231
-#, fuzzy
 msgid "User Files Only"
-msgstr "Files de usator|#U#u"
+msgstr "Files de usator solmente"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:232
-#, fuzzy
 msgid "System Files Only"
-msgstr "Files de systema|#S#s"
+msgstr "Files de systema solmente"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:304
-#, fuzzy
 msgid "File &Language:"
-msgstr "&Linguage:"
+msgstr "&Linguage de file:"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:305
 msgid ""
 "All available languages of the selected file are displayed here.\n"
 "The selected language version will be opened."
 msgstr ""
+"Omne linguages disponibile del file seligite esser mnstrate ci.\n"
+"Le version del linguge seligite essera aperite."
 
 #: src/frontends/qt/GuiLyXFiles.cpp:351
-#, fuzzy
 msgid "Select example file"
-msgstr "Selige file patrono"
+msgstr "Selige file de exemplo"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:354 src/frontends/qt/GuiView.cpp:2403
 #: src/frontends/qt/GuiView.cpp:2541 src/frontends/qt/GuiView.cpp:2675
-#, fuzzy
 msgid "&Examples"
-msgstr "Exemplos"
+msgstr "&Exemplos"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:358 src/frontends/qt/GuiView.cpp:2342
 msgid "Select template file"
@@ -33075,64 +32725,52 @@ msgstr "Selige file patrono"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:360 src/frontends/qt/GuiView.cpp:2344
 #: src/frontends/qt/GuiView.cpp:2794
-#, fuzzy
 msgid "&Templates"
-msgstr "&Patrono"
+msgstr "&Patronos"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:365
-#, fuzzy
 msgid "&User files"
-msgstr "Files de usator|#U#u"
+msgstr "Files de &Usator"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:366
-#, fuzzy
 msgid "&System files"
-msgstr "Files de systema|#S#s"
+msgstr "Files de &Systema"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:369
-#, fuzzy
 msgid "Chose UI file"
 msgstr "Selige file UI"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:370
-#, fuzzy
 msgid "LyX UI Files (*.ui)"
 msgstr "Files UI de LyX (*.ui)"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:373
-#, fuzzy
 msgid "Chose bind file"
 msgstr "Selige le file de associar"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:374
-#, fuzzy
 msgid "LyX Bind Files (*.bind)"
 msgstr "Files de associationes de LyX (*.bind)"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:377
-#, fuzzy
 msgid "Chose keyboard map"
 msgstr "Selige mappa de claviero"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:378
-#, fuzzy
 msgid "LyX Keymap Files (*.kmap)"
-msgstr "Mappas de claviero de LyX (*.kmap)"
+msgstr "Files de mappas de claviero de LyX (*.kmap)"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:436
-#, fuzzy
 msgid "Default Template"
-msgstr "Texto predefinite"
+msgstr "Patrono predefinite"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:573
-#, fuzzy
 msgid "Open Example File"
-msgstr "Files de &exemplo:"
+msgstr "Aperi File Exemplo"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:577
-#, fuzzy
 msgid "Open File"
-msgstr "Files aperite"
+msgstr "Aperi file"
 
 #: src/frontends/qt/GuiMathMatrix.cpp:34
 msgid "[x]"
@@ -33155,9 +32793,8 @@ msgid "||x||"
 msgstr "||x||"
 
 #: src/frontends/qt/GuiMathMatrix.cpp:39
-#, fuzzy
 msgid "small"
-msgstr "Parve"
+msgstr "parve"
 
 #: src/frontends/qt/GuiMathMatrix.cpp:44
 msgid "bmatrix"
@@ -33180,9 +32817,8 @@ msgid "Vmatrix"
 msgstr "Vmatrix"
 
 #: src/frontends/qt/GuiMathMatrix.cpp:49
-#, fuzzy
 msgid "smallmatrix"
-msgstr "bmatrix"
+msgstr "smallmatrix"
 
 #: src/frontends/qt/GuiMathMatrix.cpp:64
 msgid "Math Matrix"
@@ -33909,14 +33545,12 @@ msgid "Outline"
 msgstr "Profilo"
 
 #: src/frontends/qt/GuiToolbar.cpp:394
-#, fuzzy
 msgid "&Reset to default"
-msgstr "Restabili al pre&definite"
+msgstr "&Retorna a valores predefinite"
 
 #: src/frontends/qt/GuiToolbar.cpp:395
-#, fuzzy
 msgid "Reset all font settings to their defaults"
-msgstr "Retorna al preferentias predefinite per le classe del documento"
+msgstr "Retorna al preferentias predefinite per omne fonts"
 
 #: src/frontends/qt/GuiToolbar.cpp:596 src/frontends/qt/Toolbars.cpp:393
 msgid "auto"
@@ -33949,6 +33583,8 @@ msgid ""
 "The Document\n"
 "Processor[[welcome banner]]"
 msgstr ""
+"Le Processator\n"
+"de Documento"
 
 #: src/frontends/qt/GuiView.cpp:163
 msgid "1.0[[possibly scale the welcome banner text size]]"
@@ -33971,18 +33607,16 @@ msgstr ""
 "documento. Cliccar de dextere per cambiar."
 
 #: src/frontends/qt/GuiView.cpp:723
-#, fuzzy
 msgid "Cancel Export?"
-msgstr "&Cancella exportation"
+msgstr "Cancella exportation?"
 
 #: src/frontends/qt/GuiView.cpp:724
 msgid "Do you want to cancel the background export process?"
-msgstr ""
+msgstr "Tu vole cancellar le processo de exportar de fundo?"
 
 #: src/frontends/qt/GuiView.cpp:727
-#, fuzzy
 msgid "Co&ntinue"
-msgstr "&Continua"
+msgstr "Co&ntinua"
 
 #: src/frontends/qt/GuiView.cpp:752
 #, c-format
@@ -34005,9 +33639,9 @@ msgid "Error while previewing format: %1$s"
 msgstr "Error durante le vista preliminar del formato: %1$s"
 
 #: src/frontends/qt/GuiView.cpp:770
-#, fuzzy, c-format
+#, c-format
 msgid "Conversion cancelled while previewing format: %1$s"
-msgstr "Error durante le vista preliminar del formato: %1$s"
+msgstr "Conversion cancellate  durante le vista preliminar del formato: %1$s"
 
 #: src/frontends/qt/GuiView.cpp:1108
 msgid "Exit LyX"
@@ -34042,7 +33676,7 @@ msgstr "Le commando non es permittite sin alcun documento aperite"
 
 #: src/frontends/qt/GuiView.cpp:1981
 msgid "Invalid argument of master-buffer-forall"
-msgstr ""
+msgstr "Invalide argumento de master-buffer-forall"
 
 #: src/frontends/qt/GuiView.cpp:2100 src/frontends/qt/GuiView.cpp:2117
 #, c-format
@@ -34160,35 +33794,34 @@ msgid ""
 "This subdirectory does not exists yet.\n"
 "Do you want to create it?"
 msgstr ""
+"On suggere salveguardar le patrono in un subdirectorio\n"
+"appropriate per le linguage de documento (%1$s).\n"
+"Iste subdirectorio non existe ancora.\n"
+"Tu vole crear lo?"
 
 #: src/frontends/qt/GuiView.cpp:2724
-#, fuzzy
 msgid "Create Language Directory?"
-msgstr "&Crea directorio"
+msgstr "Crea directorio de linguage?"
 
 #: src/frontends/qt/GuiView.cpp:2725 src/frontends/qt/GuiView.cpp:2756
-#, fuzzy
 msgid "&Yes, Create"
-msgstr "&Crea"
+msgstr "&Si, Crea"
 
 #: src/frontends/qt/GuiView.cpp:2725 src/frontends/qt/GuiView.cpp:2756
 msgid "&No, Save Template in Parent Directory"
-msgstr ""
+msgstr "&No, salveguarda patrono in directorio genitor"
 
 #: src/frontends/qt/GuiView.cpp:2728 src/frontends/qt/GuiView.cpp:2759
-#, fuzzy
 msgid "Subdirectory creation failed!"
-msgstr "Re-configuration falleva"
+msgstr "Creation de subdirectorio falleva!"
 
 #: src/frontends/qt/GuiView.cpp:2729 src/frontends/qt/GuiView.cpp:2760
-#, fuzzy
 msgid ""
 "Could not create subdirectory.\n"
 "The template will be saved in the parent directory."
 msgstr ""
-"Non pote copiar le file\n"
-"%1$s\n"
-"in directorio temporanee."
+"Non pote crear subdirectorio\n"
+"Le parono essera salveguardate in le directorio genitor."
 
 #: src/frontends/qt/GuiView.cpp:2750
 #, c-format
@@ -34198,16 +33831,18 @@ msgid ""
 "This subdirectory does not exists yet.\n"
 "Do you want to create it?"
 msgstr ""
+"On suggere salveguardar le patrono in un subdirectorio\n"
+"appropriate per le categoria de disposition (%1$s).\n"
+"Iste directorio non existe ancora.\n"
+"Tu vole crear lo?"
 
 #: src/frontends/qt/GuiView.cpp:2755
-#, fuzzy
 msgid "Create Category Directory?"
-msgstr "&Crea directorio"
+msgstr "Crea directorio de categoria?"
 
 #: src/frontends/qt/GuiView.cpp:2790
-#, fuzzy
 msgid "Choose a filename to save template as"
-msgstr "Selige un nomine de file ubi salveguardar le documento"
+msgstr "Selige un nomine de file ubi salveguardar le patrono"
 
 #: src/frontends/qt/GuiView.cpp:2791
 msgid "Choose a filename to save document as"
@@ -34492,7 +34127,7 @@ msgstr "Reverte al documento salveguardate?"
 
 #: src/frontends/qt/GuiView.cpp:4171
 msgid "Buffer export reset."
-msgstr ""
+msgstr "Restabilir le buffer de exportar"
 
 #: src/frontends/qt/GuiView.cpp:4194
 msgid "Saving all documents..."
@@ -34586,9 +34221,8 @@ msgid "Click to detach"
 msgstr "Pulsa per distachar"
 
 #: src/frontends/qt/InsetParamsDialog.cpp:87
-#, fuzzy
 msgid "Ne&w Inset"
-msgstr "Nove insertion"
+msgstr "No&ve insertion"
 
 #: src/frontends/qt/LayoutBox.cpp:337
 #, c-format
@@ -34631,9 +34265,8 @@ msgid "Remove from personal dictionary|r"
 msgstr "Remove ex proprie dictionario personal|r"
 
 #: src/frontends/qt/Menus.cpp:909
-#, fuzzy
 msgid "Switch Language...|L"
-msgstr "Linguage|L"
+msgstr "Commuta Linguage...|L"
 
 #: src/frontends/qt/Menus.cpp:923
 msgid "Language|L"
@@ -34702,9 +34335,8 @@ msgid "Other Toolbars"
 msgstr "Altere barras de instrumentos"
 
 #: src/frontends/qt/Menus.cpp:1498
-#, fuzzy
 msgid "Master Documents"
-msgstr "Documento patre"
+msgstr "Documentos patre"
 
 #: src/frontends/qt/Menus.cpp:1514
 msgid "Index List|I"
@@ -34742,14 +34374,12 @@ msgid "Force upper case|u"
 msgstr "Fortia majusculas|u"
 
 #: src/frontends/qt/Menus.cpp:1693
-#, fuzzy
 msgid "No Text Field in Scope!"
-msgstr "Nulle citation in iste contexto!"
+msgstr "Nulle Campo d texto in iste contexto!"
 
 #: src/frontends/qt/Menus.cpp:1712
-#, fuzzy
 msgid "Custom..."
-msgstr "Personalisate"
+msgstr "Personalisa..."
 
 #: src/frontends/qt/Menus.cpp:1788
 #, c-format
@@ -35155,20 +34785,20 @@ msgstr ""
 "%2$s."
 
 #: src/insets/InsetCommandParams.cpp:522
-#, fuzzy
 msgid "Uncodable characters in inset"
-msgstr "Character non codificabile in percurso del file"
+msgstr "Characteres non codificabile in insertion"
 
 #: src/insets/InsetCommandParams.cpp:523
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters in one of the insets are\n"
 "not representable in the current encoding and have been omitted: %1$s.\n"
 "Unchecking 'Literal' in the respective inset dialog might help."
 msgstr ""
-"Le sequente characteres in un del percurso graphic non\n"
-" es representabile in le codifica currente e ha essite omittite: %1$s.\n"
-"Tu necessita adaptar o le codific o le percurso."
+"Le sequente characteres in un del insertiones non\n"
+" es representabile in le codification currente e ha essite omittite: %1$s.\n"
+"Levar le marca 'Literal' in le respective dialogo de insertion poterea "
+"adjutar."
 
 #: src/insets/InsetExternal.cpp:404
 #, c-format
@@ -35264,28 +34894,27 @@ msgstr "Hyperlink (%1$s) a %2$s"
 
 #: src/insets/InsetInclude.cpp:404
 msgid "FILE MISSING:"
-msgstr ""
+msgstr "FILE MANCANTE:"
 
 #: src/insets/InsetInclude.cpp:422
 msgid "Include (excluded)"
 msgstr "Include (excludite)"
 
 #: src/insets/InsetInclude.cpp:532
-#, fuzzy
 msgid "No file name specified"
-msgstr "On expectava un nomine de file absolute."
+msgstr "Necun nomine de file specificate"
 
 #: src/insets/InsetInclude.cpp:533
-#, fuzzy
 msgid ""
 "An included file name is empty.\n"
 "Ignoring Inclusion"
-msgstr "Tentativa de inclusion del file %1$s in se mesme! Ignorate."
+msgstr ""
+"Un nomine de file includite es vacue.\n"
+"Ignorante le inclusion"
 
 #: src/insets/InsetInclude.cpp:540
-#, fuzzy
 msgid "Included file not found"
-msgstr "File de systema non trovate"
+msgstr "File includite non trovate"
 
 #: src/insets/InsetInclude.cpp:541
 #, c-format
@@ -35294,6 +34923,9 @@ msgid ""
 "'%1$s'\n"
 "has not been found. LyX will ignore the inclusion."
 msgstr ""
+"Le file includite\n"
+"'%1$s'\n"
+"non ha essite trovate. Lyx ignorara le inclusion."
 
 #: src/insets/InsetInclude.cpp:558 src/insets/InsetInclude.cpp:969
 #: src/insets/InsetInclude.cpp:1049
@@ -35353,20 +34985,19 @@ msgid "Different use-non-TeX-fonts settings"
 msgstr "Preferentias differente per usar characteres non-TeX"
 
 #: src/insets/InsetInclude.cpp:807
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Included file `%1$s'\n"
 "uses input encoding \"%2$s\" [%3$s]\n"
 "while parent file uses input encoding \"%4$s\" [%5$s]."
 msgstr ""
 "Le file includite `%1$s'\n"
-"ha `%2$s'  como classe de documento\n"
-"quando illo del genitor es in vice `%3$s'."
+"usa codification de entrata \"%2$s'\"[%3$s]\n"
+"quando le file genitor usa codification de entrata\"%4$s\" [`%5$s]."
 
 #: src/insets/InsetInclude.cpp:815
-#, fuzzy
 msgid "Different LaTeX input encodings"
-msgstr "Codifica Te&X:"
+msgstr "Codificationes differente de entrata de LaTeX"
 
 #: src/insets/InsetInclude.cpp:830
 #, c-format
@@ -35442,217 +35073,192 @@ msgstr "sub-indice"
 
 #: src/insets/InsetInfo.cpp:192
 msgid "No long date format (language unknown)!"
-msgstr ""
+msgstr "Necun formato de data longe (linguage incognite)!"
 
 #: src/insets/InsetInfo.cpp:195
 msgid "No medium date format (language unknown)!"
-msgstr ""
+msgstr "Necun formato de data medie (linguage incognite)!"
 
 #: src/insets/InsetInfo.cpp:198
 msgid "No short date format (language unknown)!"
-msgstr ""
+msgstr "Necun formato de data breve (linguage incognite)!"
 
 #: src/insets/InsetInfo.cpp:227
 msgid "Please select a valid type!"
-msgstr ""
+msgstr "Pro favor tu selige un typo valide!"
 
 #: src/insets/InsetInfo.cpp:269
-#, fuzzy
 msgid "File name (with extension)"
-msgstr "Ex&tension de  file:"
+msgstr "Nomine de file (con extension)"
 
 #: src/insets/InsetInfo.cpp:270
-#, fuzzy
 msgid "File name (without extension)"
-msgstr "Ex&tension de  file:"
+msgstr "Nomine de file (sin extension)"
 
 #: src/insets/InsetInfo.cpp:271
-#, fuzzy
 msgid "File path"
-msgstr "Formatos de file"
+msgstr "Percurso de file"
 
 #: src/insets/InsetInfo.cpp:272
-#, fuzzy
 msgid "Used text class"
-msgstr "classe de texto"
+msgstr "Classe de texto usate"
 
 #: src/insets/InsetInfo.cpp:277 src/insets/InsetInfo.cpp:1098
-#, fuzzy
 msgid "No version control!"
-msgstr "Nulle controlo de version"
+msgstr "Nulle controlo de version!"
 
 #: src/insets/InsetInfo.cpp:280
-#, fuzzy
 msgid "Revision[[Version Control]]"
-msgstr "Controlo de version"
+msgstr "Revision"
 
 #: src/insets/InsetInfo.cpp:281
 msgid "Abbreviated revision[[Version Control]]"
-msgstr ""
+msgstr "Revision abbreviate"
 
 #: src/insets/InsetInfo.cpp:282
-#, fuzzy
 msgid "Tree revision"
-msgstr "Revision de arbore|b"
+msgstr "Revision de arbore"
 
 #: src/insets/InsetInfo.cpp:285
 msgid "Time[[of day]]"
-msgstr ""
+msgstr "Tempore"
 
 #: src/insets/InsetInfo.cpp:290
-#, fuzzy
 msgid "LyX version"
-msgstr "Version de LyX|X"
+msgstr "Version de LyX"
 
 #: src/insets/InsetInfo.cpp:291
-#, fuzzy
 msgid "LyX layout format"
-msgstr "Formato de LyX"
+msgstr "Formato de disposition de LyX"
 
 #: src/insets/InsetInfo.cpp:486
-#, fuzzy
 msgid "Invalid information inset"
-msgstr "Information general"
+msgstr "Invalide insertion de Information"
 
 #: src/insets/InsetInfo.cpp:489
 #, c-format
 msgid "The keybard shortcut for the function '%1$s'"
-msgstr ""
+msgstr "Le via breve de claviero per le function '%1$s'"
 
 #: src/insets/InsetInfo.cpp:493
 #, c-format
 msgid "The keybard shortcuts for the function '%1$s'"
-msgstr ""
+msgstr "Le vias breve per le function '%1$s'"
 
 #: src/insets/InsetInfo.cpp:497
-#, fuzzy, c-format
+#, c-format
 msgid "The menu location for the function '%1$s'"
-msgstr "Nulle information per modificar %1$s"
+msgstr "Le location de menu per le function '%1$s'"
 
 #: src/insets/InsetInfo.cpp:501
-#, fuzzy, c-format
+#, c-format
 msgid "The localization for the string '%1$s'"
-msgstr "Nulle information per modificar %1$s"
+msgstr "Le localisation per le catena '%1$s'"
 
 #: src/insets/InsetInfo.cpp:505
 #, c-format
 msgid "The toolbar icon for the function '%1$s'"
-msgstr ""
+msgstr "le barra de instrumento pe le function '%1$s'"
 
 #: src/insets/InsetInfo.cpp:509
 #, c-format
 msgid "The preference setting for the preference key '%1$s'"
-msgstr ""
+msgstr "Le preferentia per le clave de preferentia '%1$s'"
 
 #: src/insets/InsetInfo.cpp:513
 #, c-format
 msgid "Availability of the LaTeX package '%1$s'"
-msgstr ""
+msgstr "Disponibilitate del pacchetto de LaTeX '%1$s'"
 
 #: src/insets/InsetInfo.cpp:517
 #, c-format
 msgid "Availability of the LaTeX class '%1$s'"
-msgstr ""
+msgstr "Disponibilitate del classe de LaTeX  '%1$s'"
 
 #: src/insets/InsetInfo.cpp:522
-#, fuzzy
 msgid "The name of this file (incl. extension)"
-msgstr "Le nomine del action PDF"
+msgstr "Le nomine de iste file (incl.extension)"
 
 #: src/insets/InsetInfo.cpp:524
-#, fuzzy
 msgid "The name of this file (without extension)"
-msgstr "Le nomine del action PDF"
+msgstr "Le nomine de iste file (sin extension)"
 
 #: src/insets/InsetInfo.cpp:526
 msgid "The path where this file is saved"
-msgstr ""
+msgstr "Le percurso ubi iste file es saveguardate"
 
 #: src/insets/InsetInfo.cpp:528
-#, fuzzy
 msgid "The class this document uses"
-msgstr "&Re-fixa le optiones de classe quando cambia le classe del documento"
+msgstr "Le classe que iste documento usa"
 
 #: src/insets/InsetInfo.cpp:532
-#, fuzzy
 msgid "Version control revision"
-msgstr "Controlo de version"
+msgstr "Controlo de version revision"
 
 #: src/insets/InsetInfo.cpp:534
-#, fuzzy
 msgid "Version control abbreviated revision"
-msgstr "Controlo de version relevate."
+msgstr "Controlo de version revision abbreviate"
 
 #: src/insets/InsetInfo.cpp:536
-#, fuzzy
 msgid "Version control tree revision"
-msgstr "Controlo de version relevate."
+msgstr "Controlo de version revision a arbore"
 
 #: src/insets/InsetInfo.cpp:538
-#, fuzzy
 msgid "Version control author"
-msgstr "Controlo de version"
+msgstr "Controlo de version autor"
 
 #: src/insets/InsetInfo.cpp:540
-#, fuzzy
 msgid "Version control date"
-msgstr "Controlo de version"
+msgstr "Controlo de version data"
 
 #: src/insets/InsetInfo.cpp:542
-#, fuzzy
 msgid "Version control time"
-msgstr "Controlo de version"
+msgstr "Controlo de version tempore"
 
 #: src/insets/InsetInfo.cpp:546
 msgid "The current LyX version"
-msgstr ""
+msgstr "Le version currente de LyX"
 
 #: src/insets/InsetInfo.cpp:548
 msgid "The current LyX layout format"
-msgstr ""
+msgstr "Le formato de disposition currente de LyX"
 
 #: src/insets/InsetInfo.cpp:551
-#, fuzzy
 msgid "The current date"
-msgstr "Le documento currente ha essite claudite."
+msgstr "Le data currente"
 
 #: src/insets/InsetInfo.cpp:554
-#, fuzzy
 msgid "The date of last save"
-msgstr "Le largessa del area de superposition"
+msgstr "Le data del ultime salvamento"
 
 #: src/insets/InsetInfo.cpp:557
-#, fuzzy
 msgid "A static date"
-msgstr "Actualisation automatic"
+msgstr "Un data static"
 
 #: src/insets/InsetInfo.cpp:560
-#, fuzzy
 msgid "The current time"
-msgstr "Claude vista currente"
+msgstr "Le tempore currente"
 
 #: src/insets/InsetInfo.cpp:563
 msgid "The time of last save"
-msgstr ""
+msgstr "Le tempore del ultime salvamento"
 
 #: src/insets/InsetInfo.cpp:566
-#, fuzzy
 msgid "A static time"
-msgstr "Actualisation automatic"
+msgstr "Un tempore static"
 
 #: src/insets/InsetInfo.cpp:593
 msgid "Missing \\end_inset at this point."
 msgstr "Mancante \\end_inset a iste puncto."
 
 #: src/insets/InsetInfo.cpp:772
-#, fuzzy
 msgid "Unknown Info!"
-msgstr "Insertion incognite"
+msgstr "Information incognite!"
 
 #: src/insets/InsetInfo.cpp:781 src/insets/InsetInfo.cpp:969
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown action %1$s"
-msgstr "Action incognite"
+msgstr "Action incognite %1$s"
 
 #: src/insets/InsetInfo.cpp:787 src/insets/InsetInfo.cpp:898
 #: src/insets/InsetInfo.cpp:907 src/insets/InsetInfo.cpp:915
@@ -35712,9 +35318,8 @@ msgid "Esc"
 msgstr "Esc"
 
 #: src/insets/InsetInfo.cpp:925
-#, fuzzy
 msgid "not set"
-msgstr "non citate"
+msgstr "non fixate"
 
 #: src/insets/InsetInfo.cpp:937 src/insets/InsetInfo.cpp:954
 msgid "yes"
@@ -35727,17 +35332,17 @@ msgstr "no"
 #: src/insets/InsetInfo.cpp:980
 #, c-format
 msgid "Can't determine menu entry for action %1$s in batch mode"
-msgstr ""
+msgstr "Non pote determinar entrata de menu per action %1$s in modo batch"
 
 #: src/insets/InsetInfo.cpp:988
-#, fuzzy, c-format
+#, c-format
 msgid "No menu entry for action %1$s"
-msgstr "Nulle buffer pro file:  %1$s."
+msgstr "Necun entrata de menu per action  %1$s"
 
 #: src/insets/InsetInfo.cpp:1117
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s[[vcs data]] unknown"
-msgstr "%1$s (incognite)"
+msgstr "%1$s[[vcs data]] incognite"
 
 #: src/insets/InsetLabel.cpp:79
 msgid "Label names must be unique!"
@@ -36265,9 +35870,8 @@ msgid "Unknown TOC type"
 msgstr "Typo de indice incognite"
 
 #: src/insets/InsetTabular.cpp:463
-#, fuzzy
 msgid "Change tracking data incomplete"
-msgstr "Indice de autor de tracia de modifica mancante"
+msgstr "Datos de tracia de modification incomplete"
 
 #: src/insets/InsetTabular.cpp:464
 msgid ""
@@ -36294,9 +35898,8 @@ msgstr ""
 "transferentia."
 
 #: src/insets/InsetText.cpp:1108
-#, fuzzy
 msgid "[contains tracked changes]"
-msgstr "Tracia modificationes"
+msgstr "[contine modificationes traciate]"
 
 #: src/insets/InsetWrap.cpp:68
 msgid "wrap: "
@@ -36468,34 +36071,29 @@ msgid "Invalid regular expression!"
 msgstr "Expression regular invalide!"
 
 #: src/lyxfind.cpp:3720
-#, fuzzy
 msgid "One match has been replaced."
-msgstr "Le catena ha essite reimplaciate."
+msgstr "Un coincidentia ha essite reimplaciate."
 
 #: src/lyxfind.cpp:3723
-#, fuzzy
 msgid "Two matches have been replaced."
-msgstr "%1$d catenas ha essite reimplaciate."
+msgstr "Duo coincidentias ha essite reimplaciate."
 
 #: src/lyxfind.cpp:3726
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d matches have been replaced."
-msgstr "%1$d catenas ha essite reimplaciate."
+msgstr "%1$d coincidentias ha essite reimplaciate."
 
 #: src/lyxfind.cpp:3732
-#, fuzzy
 msgid "Match not found."
-msgstr "Nulle correspondentia trovate!"
+msgstr "Nulle correspondentia trovate."
 
 #: src/lyxfind.cpp:3738
-#, fuzzy
 msgid "Match has been replaced."
-msgstr "Le catena ha essite reimplaciate."
+msgstr "Le objecto coincidente ha essite reimplaciate."
 
 #: src/lyxfind.cpp:3740
-#, fuzzy
 msgid "Match found."
-msgstr "Correspondentia trovate!"
+msgstr "Coincidentia (objecto equal) trovate."
 
 #: src/mathed/InsetMathAMSArray.cpp:135 src/mathed/InsetMathHull.cpp:2192
 #: src/mathed/InsetMathSplit.cpp:121 src/mathed/InsetMathSubstack.cpp:70
@@ -37249,7 +36847,6 @@ msgstr "Usator incognite"
 #~ "Pro favor tu installa iste pacchettos o redefini \\lyxadded e "
 #~ "\\lyxdeleted in le preambulo de LaTeX."
 
-#, c-format
 #~ msgid ""
 #~ "Please verify that the support software for your encoding (%1$s) is "
 #~ "properly installed"
@@ -37257,7 +36854,6 @@ msgstr "Usator incognite"
 #~ "Pro favor, verificate que le supporto software per tu codifica (%1$s) es "
 #~ "correctemente installate"
 
-#, c-format
 #~ msgid "Auto-saving %1$s"
 #~ msgstr "Salveguardante automaticamente %1$s"
 
@@ -37267,7 +36863,6 @@ msgstr "Usator incognite"
 #~ msgid "added text"
 #~ msgstr "texto addite"
 
-#, no-c-format
 #~ msgid ""
 #~ "This accepts the normal strftime formats; see man strftime for full "
 #~ "details. E.g.\"%A, %e. %B %Y\"."
@@ -37370,7 +36965,6 @@ msgstr "Usator incognite"
 #~ msgid "Verbatim Input*"
 #~ msgstr "Entrata parola pro parola*"
 
-#, c-format
 #~ msgid "Information regarding %1$s '%2$s'"
 #~ msgstr "Informationes re  %1$s '%2$s'"
 
