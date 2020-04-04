@@ -1,4 +1,8 @@
-﻿Changelog for LyX-23x:
+﻿Changelog for LyX-240
+- changed the main registry key from e.g. "SHCTX\Software\Lyx240" to "SHCTX\Software\Lyx\240"
+- added a string registry value latestVersion in "SHCTX\Software\Lyx"
+
+Changelog for LyX-23x:
 - introduced windows 64 bit installer
 - updated to ImageMagick 7.0.10-0 (portable)
 - updated to Ghostscript 9.50
