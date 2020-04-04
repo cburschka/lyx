@@ -76,11 +76,13 @@ Updating dependencies
   to %%dependencies%%\bin.
 
 - DTL
-  Using TeX Live Manager install package dtl.win32, current version is 0.6.1.
+  Using TeX Live Manager install package dtl.win32,
   From C:\texlive\2019\bin\win32 copy these files
    dt2dv.exe
    dv2dt.exe
   to %%dependencies%%\bin. You can uninstall the package afterwards.
+  Info: Version 0.6.1 does not work with MikTex (math preview triggers error complaining about missing kpathsea631.dll),
+  therefore this method is not usable.
 
 - rsvg-convert
   dowload the 7zip archve from https://opensourcepack.blogspot.com/2012/06/rsvg-convert-svg-image-conversion-tool.html,
