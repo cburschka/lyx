@@ -28,6 +28,10 @@ Compiling with Microsoft Visual C++ (MSVC)
 	(either selecting Python-Development workload or just Python 3 in the individual components tab)
 	in the Visual Studio installer, so that you don't have to install it separately
 
+	You may also want to install following extensions:
+	- Qt Visual Studio Tools: enables preview of some Qt variables, like QString, while debugging
+	- Concurrency Visualizer for Visual Studio: graphically shows which thread does what and when
+
 2	Install Qt
 
 	Download the latest Qt online installer for Open Source development on Windows
@@ -170,6 +174,8 @@ Debugging
 	  normal view active will start LyX.exe located in e.g. C:\LyX\build\bin\Debug, it won't find the dependencies
 	  and will therefore fail. Once debugging has started you can switch back to normal view of the Solution Explorer)
 
+	- Don't forget to build the INSTALL project each time you change the source code.
+
 
 Creating a patch file containing a bugfix
 =========================================
@@ -190,7 +196,7 @@ Creating a patch file containing a bugfix
 Creating the Installer
 ======================
 
-	- Get NSIS from http://nsis.sourceforge.net
+	- The installer is done with NSIS from http://nsis.sourceforge.net
 	- In the LyX source directory, go to development\Win32\packaging\installer
 	- Follow the steps in the file Readme.txt
 
