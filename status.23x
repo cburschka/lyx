@@ -88,6 +88,9 @@ What's new
 
 - Avoid bleeding of inset background outside of inset (bug 11786).
 
+- Disallow adding columns with gathered environment as this is not
+  supported (bug 11812).
+
 
 * INTERNALS
 
