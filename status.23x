@@ -98,6 +98,8 @@ What's new
 - Preserve paragarph spacing when breaking a paragraph at the start
   (bug 11817).
 
+- Avoid crash in some cases where a dialog is shown during operation
+  (bug 11763).
 
 * INTERNALS
 

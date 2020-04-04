@@ -443,12 +443,16 @@ void GuiWorkArea::startBlinkingCaret()
 	if (view().busy())
 		return;
 
-	Point p;
-	int h = 0;
-	d->buffer_view_->caretPosAndHeight(p, h);
-	// Don't start blinking if the cursor isn't on screen.
-	if (!d->buffer_view_->cursorInView(p, h))
-		return;
+	// we cannot update geometry if not ready and we do not need to if
+	// caret is not in view.
+	if (!d->buffer_view_->buffer().undo().activeUndoGroup()) {
+		Point p;
+		int h = 0;
+		d->buffer_view_->caretPosAndHeight(p, h);
+		// Don't start blinking if the cursor isn't on screen.
+		if (!d->buffer_view_->cursorInView(p, h))
+			return;
+	}
 
 	d->showCaret();
 
@@ -611,6 +615,11 @@ void GuiWorkArea::Private::resizeBufferView()
 
 void GuiWorkArea::Private::updateCaretGeometry()
 {
+	// we cannot update geometry if not ready and we do not need to if
+	// caret is not in view.
+	if (buffer_view_->buffer().undo().activeUndoGroup())
+		return;
+
 	Point point;
 	int h = 0;
 	buffer_view_->caretPosAndHeight(point, h);
