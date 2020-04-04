@@ -13,8 +13,8 @@ Var LyXLangName
 # COMPONENT can be LaTeX, ImageMagick and Ghostscript
 !macro EXTERNAL_INIT COMPONENT
 
-  # APP_REGKEY_SETUP = "Software\${APP_NAME}${APP_SERIES_KEY}\Setup"
-  # where ${APP_NAME}${APP_SERIES_KEY} is something like LyX22
+  # APP_REGKEY_SETUP = "Software\${APP_NAME}\${APP_SERIES_KEY}\Setup"
+  # where ${APP_NAME}\${APP_SERIES_KEY} is something like LyX\220
   ReadRegStr $ComponentPath SHELL_CONTEXT "${APP_REGKEY_SETUP}" "${COMPONENT} Path"
   
   # BIN_LATEX etc are defined in settings.nsh

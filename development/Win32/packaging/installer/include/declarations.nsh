@@ -59,7 +59,8 @@ Configuration of LyX installer
 !define BIN_LYX "${APP_NAME}.exe"
 !define APP_RUN "bin\${BIN_LYX}"
 
-!define APP_REGKEY "Software\${APP_NAME}${APP_SERIES_KEY}" # like "LyX220"
+!define APP_REGFOLDER "Software\${APP_NAME}"
+!define APP_REGKEY "${APP_REGFOLDER}\${APP_SERIES_KEY}" # like "LyX\220"
 !define APP_REGKEY_SETUP "${APP_REGKEY}\Setup"
 !define APP_REGKEY_SETTINGS "${APP_REGKEY}\Settings"
 

@@ -69,12 +69,28 @@ Section "un.LyX" un.SecUnProgramFiles
   RMDir /r "$INSTDIR"
   
   # Registry keys and values
+  DeleteRegValue SHCTX "subkey" "key_name"
   DeleteRegKey SHCTX "${APP_REGKEY_SETUP}"
   DeleteRegKey SHCTX "${APP_REGKEY}"
   DeleteRegKey SHCTX "${APP_UNINST_KEY}"
   DeleteRegKey HKCR "Applications\${BIN_LYX}"
   DeleteRegValue HKCR "${APP_NAME}.Document\Shell\open\command" ""
   DeleteRegValue HKCR "${APP_NAME}.Document\DefaultIcon" ""
+  ReadRegStr $0 SHCTX ${APP_REGFOLDER} "latestVersion"
+  ${If} $0 == ${APP_SERIES_KEY}
+    DeleteRegValue SHCTX ${APP_REGFOLDER} "latestVersion"
+    StrCpy $0 0
+    StrCpy $R0 ""
+    ${Do}
+      StrCpy $R1 $R0
+      EnumRegKey $R0 SHCTX ${APP_REGFOLDER} $0
+      IntOp $0 $0 + 1
+    ${LoopUntil} $R0 == ""
+    ${If} $R1 != ""
+      WriteRegStr SHCTX ${APP_REGFOLDER} "latestVersion" $R1
+    ${EndIf}
+  ${EndIf}
+  DeleteRegKey /ifempty SHCTX ${APP_REGFOLDER}
   
   # File associations
   ReadRegStr $FileAssociation SHELL_CONTEXT "Software\Classes\${APP_EXT}" ""

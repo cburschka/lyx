@@ -16,6 +16,10 @@ Var PathPrefix
 Section -InstallData
 
   # Registry information
+  ReadRegStr $0 SHCTX ${APP_REGFOLDER} "latestVersion"
+  ${If} $0 < ${APP_SERIES_KEY}
+    WriteRegStr SHCTX ${APP_REGFOLDER} "latestVersion" ${APP_SERIES_KEY}
+  ${EndIf}
   WriteRegStr SHCTX ${APP_REGKEY} "" $INSTDIR
   WriteRegStr SHCTX ${APP_REGKEY} "Version" "${APP_VERSION_NUMBER}"
   WriteRegStr SHCTX ${APP_REGKEY_SETUP} "LaTeX Path" $PathLaTeX
@@ -54,16 +58,15 @@ Section -InstallData
   WriteRegDWORD SHCTX ${APP_UNINST_KEY} "NoModify" 0x00000001
   WriteRegDWORD SHCTX ${APP_UNINST_KEY} "NoRepair" 0x00000001
   WriteRegStr SHCTX ${APP_UNINST_KEY} "StartMenu" "$SMPROGRAMS\$StartmenuFolder"
-  
   # if we install over an older existing version, remove the old uninstaller information
-  ${if} $OldVersionNumber < ${APP_SERIES_KEY}
+  ${if} $OldVersionNumber != ""
+  ${AndIf} $OldVersionNumber < ${APP_SERIES_KEY}
    DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}$OldVersionNumber"
-   DeleteRegKey SHCTX "SOFTWARE\${APP_NAME}$OldVersionNumber"
+   DeleteRegKey SHCTX "SOFTWARE\${APP_NAME}\$OldVersionNumber"
    # also delete in the case of an emergency release
    DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}$OldVersionNumber1"
-   DeleteRegKey SHCTX "SOFTWARE\${APP_NAME}$OldVersionNumber1"
+   DeleteRegKey SHCTX "SOFTWARE\${APP_NAME}\$OldVersionNumber1"
   ${endif}
-  
 SectionEnd
 
 #--------------------------------
