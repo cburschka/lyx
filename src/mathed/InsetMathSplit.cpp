@@ -116,6 +116,12 @@ bool InsetMathSplit::getStatus(Cursor & cur, FuncRequest const & cmd,
 	switch (cmd.action()) {
 	case LFUN_TABULAR_FEATURE: {
 		string s = cmd.getArg(0);
+		if (s == "append-column"
+		    && (name_ == "gathered" || name_ == "lgathered" || name_ == "rgathered")) {
+			// gathered does not support multiple columns
+			flag.setEnabled(false);
+			return true;
+		}
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.message(bformat(
 				from_utf8(N_("Can't add vertical grid lines in '%1$s'")),
