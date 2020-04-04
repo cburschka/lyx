@@ -10,6 +10,13 @@ To build the installer do the following:
   extract from it the file FindProc.dll to the folder \Plugins\x86-unicode of NSIS's installation folder
 - download the plugin Inetc (https://nsis.sourceforge.io/Inetc_plug-in)
   extract the content into the NSIS's installation folder
+- Go to the Qt-kit directory, which you have specified as CMAKE_PREFIX_PATH before compiling in CMake Gui, enter the bin folder,
+  copy these files:
+   Qt5Concurrent.dll"
+   Qt5Network.dll"
+   Qt5OpenGL.dll"
+   Qt5PrintSupport.dll"
+  to %%lyxbuild%%\LYX_INSTALLED\bin
 - open the file settings.nsh with a text editor and adapt the settings for your need. A good text editor
   for NSIS development is e.g. Visual Studio Code with the NSIS extension.
 - right-click on the file lyx-standard.nsi and choose "Compile NSIS script"
@@ -21,8 +28,13 @@ Updating dependencies
 - Imagemagick:
   download the portable version of imagemagick for windows from https://imagemagick.org/script/download.php (32 or 64 bit),
   current version is 7.0.10-0
-  extract the zip archive, there will be many executable files which are the exact same size as "magick.exe" which is
-  the only executable LyX needs, delete these redundant executables. Also delete ffmpeg.exe and IMDisplay.exe.
+  extract the zip archive,
+  run imagemagickConvert.bat in %%repo%%\development\Win32\packaging\dependencies, browse to the extracted imagemagick archive,
+  after the script finishes check for anything suspicious.
+  if there is anything suspicious or it didn't work (in case imagemagic devs changed something), read the following description,
+  it describes how it was done for 7.0.10-0, repair the bat file and update the description
+  In the fresh extracted archive will be many executable files which are the exact same size as "magick.exe". magick.exe is
+  the only executable LyX needs, delete the other redundant executables. Also delete ffmpeg.exe and IMDisplay.exe.
   The resulting folder size should be around 15-16 MB
 
 - Ghostscript
@@ -84,3 +96,5 @@ Updating dependencies
   this is a NSIS script, which calls users standard pdf viewer to display pdf files you compile with
   LaTeX using LyX, its source is available in %%lyxgit%%\development\Win32\pdfview,
   it uses System.dll and Console.dll
+
+Note: if you update any dependencies, please add a note to ChangeLog.txt
