@@ -32,11 +32,6 @@ Section "un.LyX" un.SecUnProgramFiles
   
   # ImageMagick
   RMDir /r "$INSTDIR\imagemagick"
-  ReadRegStr $0 SHCTX "SOFTWARE\ImageMagick" "OnlyWithLyX" # test if it was installed together with this LyX version
-  ${if} $0 == "Yes${APP_SERIES_KEY}"
-   WriteRegStr SHCTX "SOFTWARE\Classes\Applications" "AutoRun" ""
-   DeleteRegKey SHCTX "Software\ImageMagick"
-  ${endif}
   
   # Components of Ghostscript
   RMDir /r "$INSTDIR\ghostscript"

@@ -1,4 +1,15 @@
-﻿Changelog for LyX-230:
+﻿Changelog for LyX-23x:
+- introduced windows 64 bit installer
+- updated to ImageMagick 7.0.10-0 (portable)
+- updated to Ghostscript 9.50
+- updated to Python 2.7.17
+- updated to DTL 0.6.1
+- updated to Netpbm 10.27
+- updated to rsvg-convert 2.40.20
+- updated to unoconv 0.8.2
+- Perl folder is no longer added to PATH if TexLive installation was detected
+
+Changelog for LyX-230:
 - installs LyX 2.3.0
 - fix installation of Arabic spell checker
 - updated to MiKTeX 2.9 build 6615

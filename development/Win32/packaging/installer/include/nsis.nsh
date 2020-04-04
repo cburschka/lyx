@@ -20,6 +20,9 @@ Configuration of standard NSIS header files
 
 !define MULTIUSER_INSTALLMODE_FUNCTION InitUser
 !define MULTIUSER_MUI
+!if ${APP_VERSION_ACHITECHTURE} = 64
+    !define MULTIUSER_USE_PROGRAMFILES64
+!endif
 
 #--------------------------------
 # Standard header files

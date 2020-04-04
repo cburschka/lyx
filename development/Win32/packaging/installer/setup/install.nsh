@@ -49,7 +49,7 @@ Section -ProgramFiles SecProgramFiles
   Delete "$INSTDIR\bin\LyX2.3.exe"
   Delete "$INSTDIR\bin\tex2lyx2.3.exe"
   !insertmacro FileListQtBin File "${FILES_QT}\bin\"
-  !insertmacro FileListMinGW File "${FILES_LYX}\bin\"
+  !insertmacro FileListMSVC File "${FILES_LYX}\bin\"
   !insertmacro FileListNetpbmBin File "${FILES_NETPBM}\"
   !insertmacro FileListDTLBin File "${FILES_DTL}\"
   !insertmacro FileListRsvg File "${FILES_RSVG}\"
@@ -66,15 +66,15 @@ Section -ProgramFiles SecProgramFiles
   !insertmacro FileListQtStyles File "${FILES_QT}\bin\styles\"
   
   # Resources
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\Resources"
   # recursively copy all files under Resources
-  File /r "${FILES_LYX}\Resources"
-  File /r "${FILES_DEPS}\Resources"
+  File /r "${FILES_LYX}\Resources\"
+  File /r "${FILES_DEPS}\Resources\"
   
   # Python
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\Python"
   # recursively copy all files under Python
-  File /r "${FILES_PYTHON}"
+  File /r "${FILES_PYTHON}\"
 #FIXME We probably should not do this, as dicussed on the list.
  # register .py files if necessary
   ReadRegStr $0 SHCTX "Software\Classes\Python.File\shell\open\command" ""
@@ -100,27 +100,11 @@ Section -ProgramFiles SecProgramFiles
   # Components of ImageMagick
   SetOutPath "$INSTDIR\imagemagick"
   File /r "${FILES_IMAGEMAGICK}\"
-  !insertmacro FileListMSVC File "${FILES_MSVC}\"
-  # register ImageMagick
-  WriteRegStr SHCTX "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "BinPath" "$INSTDIR\imagemagick"
-  WriteRegStr SHCTX "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "CoderModulesPath" "$INSTDIR\imagemagick\modules\coders"
-  WriteRegStr SHCTX "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "ConfigurePath" "$INSTDIR\imagemagick"
-  WriteRegStr SHCTX "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "FilterModulesPath" "$INSTDIR\imagemagick\modules\filters"
-  WriteRegStr SHCTX "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "LibPath" "$INSTDIR\imagemagick"
-  WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "BinPath" "$INSTDIR\imagemagick"
-  WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "CoderModulesPath" "$INSTDIR\imagemagick\modules\coders"
-  WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "ConfigurePath" "$INSTDIR\imagemagick"
-  WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "FilterModulesPath" "$INSTDIR\imagemagick\modules\filters"
-  WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "LibPath" "$INSTDIR\imagemagick"
-  WriteRegDWORD SHCTX "SOFTWARE\ImageMagick\Current" "QuantumDepth" 0x00000010
-  WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "Version" "${ImageMagickVersion}"
-  WriteRegStr SHCTX "SOFTWARE\ImageMagick" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
   
   # Components of Ghostscript
   ${if} $GhostscriptPath == ""
    SetOutPath "$INSTDIR\ghostscript"
    File /r "${FILES_GHOSTSCRIPT}\"
-   !insertmacro FileListMSVC File "${FILES_MSVC}\"
    StrCpy $GhostscriptPath "$INSTDIR\ghostscript\bin"
   ${endif}
   

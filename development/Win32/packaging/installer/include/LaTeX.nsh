@@ -221,9 +221,9 @@ Function ConfigureMiKTeX
   ${endif}
   
   # install a Perl interpreter for splitindex and pdfcrop
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\Perl"
   # recursively copy all files under Perl
-  File /r "${FILES_PERL}"
+  File /r "${FILES_PERL}\"
 
   ${endif} # end if $PathLaTeX != ""  
 FunctionEnd

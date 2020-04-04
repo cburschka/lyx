@@ -86,7 +86,7 @@ Lists of files to include in the installer
 
 !macro FileListMSVC COMMAND DIRECTORY
 
-  # Files needed for MSVC 2015
+  # Files needed for MSVC 2019
   # Seem to be installed for dependencies
   ${FILE}concrt140.dll"
   ${FILE}msvcp140.dll"
@@ -94,6 +94,9 @@ Lists of files to include in the installer
   ${FILE}vccorlib140.dll"
   ${FILE}vcomp140.dll"
   ${FILE}vcruntime140.dll"
+  !if ${APP_VERSION_ACHITECHTURE} = 64
+    ${File}vcruntime140_1.dll"
+  !endif
 
 !macroend
 

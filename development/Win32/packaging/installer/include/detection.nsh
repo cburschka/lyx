@@ -27,6 +27,7 @@ Detection of external component locations
 Function SearchExternal
   Call LaTeXActions # function from LaTeX.nsh
   Call MissingPrograms
+  SetRegView ${APP_VERSION_ACHITECHTURE}
   Call FindDictionaries # function from dictionaries.nsh
 FunctionEnd
 

@@ -9,7 +9,7 @@ Configuration of LyX installer
 #--------------------------------
 # File locations
 
-!define FILES_LICENSE "${FILES_GIT}\license.rtf"
+!define FILES_LICENSE "${FILES_GIT}\installer\license.rtf"
 !define FILES_ICONS "${FILES_GIT}\icons"
 !define FILES_PDFVIEW "${FILES_DEPS}\bin"
 !define FILES_MSVC "${FILES_DEPS}\bin"

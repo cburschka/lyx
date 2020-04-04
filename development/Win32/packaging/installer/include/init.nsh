@@ -594,6 +594,15 @@ SectionGroupEnd
 # the selection states of the dictionary sections
 Function .onInit
 
+  !if ${APP_VERSION_ACHITECHTURE} = 64
+    ${IfNot} ${RunningX64}
+      MessageBox MB_OK|MB_ICONSTOP "Cannot install a 64 bit app on 32 bit Windows, please use the 32 bit installer" /SD IDOK
+      Abort
+    ${EndIf}
+  !EndIf
+
+  SetRegView ${APP_VERSION_ACHITECHTURE}
+
   ReadRegStr $R0 HKLM "SOFTWARE\Microsoft\Windows NT\CurrentVersion" CurrentVersion
   ${if} $R0 == "5.0" # 2000
   ${orif} $R0 == "5.1" # XP
@@ -1411,6 +1420,8 @@ FunctionEnd
 
 # this function is called at first after starting the uninstaller
 Function un.onInit
+
+  SetRegView ${APP_VERSION_ACHITECHTURE}
 
   !insertmacro MULTIUSER_UNINIT
 
