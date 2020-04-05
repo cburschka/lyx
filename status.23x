@@ -120,3 +120,5 @@ What's new
 - Do not break configuration if a layout file is not decodable. Rather than that, 
   issue a warning and skip that file (bug 11736).
 
+- Download dictionary and thesaurus files, on Windows, from our SVN repo (bug 11192).
+

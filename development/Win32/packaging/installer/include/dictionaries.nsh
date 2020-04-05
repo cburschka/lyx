@@ -73,22 +73,9 @@ Function DownloadHunspellDictionaries
   
   ${if} $DictCode == $R3
    StrCpy $String $String -2 # delete the linebreak characters at the end
-   # Download hunspell dictionaries,
-   # if first download repository is not available try the other ones listed in "DictionaryMirrors.txt"
-   FileOpen $R4 "$INSTDIR\Resources\DictionaryMirrors.txt" r
-   
-   ${For} $4 1 24 # there are 24 mirrors in the file
-    FileRead $R4 $Search # $Search is now the mirror
-    StrCpy $Search $Search -2 # delete the linebreak characters at the end
-    Push $R0
-    inetc::get /TIMEOUT=5000 "https://$Search.dl.sourceforge.net/project/lyxwininstaller/hunspell/$String" "$INSTDIR\Resources\dicts\$String" /END
-    Pop $R0
-    ${if} $R0 == "OK"
-     ${ExitFor}
-    ${endif}
-   ${Next}
-   
-   FileClose $R4
+   # Download hunspell dictionaries
+   inetc::get /TIMEOUT=5000 "https://www.lyx.org/trac/export/HEAD/lyxsvn/dictionaries/trunk/dicts/$String" "$INSTDIR\Resources\dicts\$String" /END
+   Pop $R0
    # if download failed
    ${if} $R0 != "OK"
     MessageBox MB_OK|MB_ICONEXCLAMATION "$(HunspellFailed)"
@@ -119,22 +106,9 @@ Function DownloadThesaurusDictionaries
   
   ${if} $ThesCode == $R3
    StrCpy $String $String -2 # delete the linebreak characters at the end
-   # Download thesaurus files,
-   # if first download repository is not available try the other ones listed in "DictionaryMirrors.txt"
-   FileOpen $R4 "$INSTDIR\Resources\DictionaryMirrors.txt" r
-   
-   ${For} $4 1 24 # there are 24 mirrors in the file
-    FileRead $R4 $Search # $Search is now the mirror
-    StrCpy $Search $Search -2 # delete the linebreak characters at the end
-    Push $R0
-    inetc::get /TIMEOUT=5000 "https://$Search.dl.sourceforge.net/project/lyxwininstaller/thesaurus/$String" "$INSTDIR\Resources\thes\$String" /END
-    Pop $R0
-    ${if} $R0 == "OK"
-     ${ExitFor}
-    ${endif}
-   ${Next}
-   
-   FileClose $R4
+   # Download thesaurus files
+   inetc::get /TIMEOUT=5000 "https://www.lyx.org/trac/export/HEAD/lyxsvn/dictionaries/trunk/thes/$String" "$INSTDIR\Resources\thes\$String" /END
+   Pop $R0
    # if download failed
    ${if} $R0 != "OK"
     MessageBox MB_OK|MB_ICONEXCLAMATION "$(ThesaurusFailed)"
