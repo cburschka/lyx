@@ -288,8 +288,13 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 	    && language() != prev.language()) {
 		if (!language()->polyglossia().empty()) {
 			string tmp = "\\text" + language()->polyglossia();
-			if (!language()->polyglossiaOpts().empty())
+			if (!language()->polyglossiaOpts().empty()) {
 				tmp += "[" + language()->polyglossiaOpts() + "]";
+				if (runparams.use_hyperref && runparams.moving_arg)
+					// We need to strip the command for
+					// the pdf string, see #11813
+					tmp = "\\texorpdfstring{" + tmp + "}{}";
+			}
 			tmp += "{";
 			os << from_ascii(tmp);
 			count += tmp.length();

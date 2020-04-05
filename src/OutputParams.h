@@ -161,6 +161,10 @@ public:
 	*/
 	bool use_polyglossia;
 
+	/** Do we use hyperref?
+	*/
+	bool use_hyperref;
+
 	/** Are we generating multiple indices?
 	*/
 	bool use_indices;
