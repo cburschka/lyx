@@ -177,6 +177,10 @@ public:
 	*/
 	bool use_polyglossia;
 
+	/** Do we use hyperref?
+	*/
+	bool use_hyperref;
+
 	/// Do we use the CJK package?
 	bool use_CJK;
 
