@@ -880,6 +880,10 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 			qstr = from_ascii("\\og");
 		else
 			qstr = from_ascii("\\fg");
+	} else if (runparams.use_hyperref && runparams.moving_arg) {
+		// Use internal commands in headings with hyperref
+		// (ligatures not featured in PDF strings)
+		qstr = quoteparams.getLaTeXQuote(quotechar, "int", rtl_);
 	} else if (fontenc_ == "T1"
 		   && !runparams.local_font->language()->internalFontEncoding()) {
 		// Quotation marks for T1 font encoding
