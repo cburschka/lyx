@@ -410,10 +410,10 @@ docstring InsetInclude::screenLabel() const
 			temp = buffer().B_("Input");
 			break;
 		case VERB:
-            temp = buffer().B_("Verbatim");
+			temp = buffer().B_("Verbatim");
 			break;
 		case VERBAST:
-            temp = buffer().B_("Verbatim*");
+			temp = buffer().B_("Verbatim*");
 			break;
 		case INCLUDE:
 			if (isChildIncluded())
@@ -1318,12 +1318,12 @@ void InsetInclude::addToToc(DocIterator const & cpit, bool output_active,
 		b.pushItem(cpit, screenLabel(), output_active);
 		InsetListingsParams p(to_utf8(params()["lstparams"]));
 		b.argumentItem(from_utf8(p.getParamValue("caption")));
-        b.pop();
-    } else if (isVerbatim(params())) {
-        TocBuilder & b = backend.builder("child");
-        b.pushItem(cpit, screenLabel(), output_active);
-        b.pop();
-    } else {
+		b.pop();
+	} else if (isVerbatim(params())) {
+		TocBuilder & b = backend.builder("child");
+		b.pushItem(cpit, screenLabel(), output_active);
+		b.pop();
+	} else {
 		Buffer const * const childbuffer = getChildBuffer();
 
 		TocBuilder & b = backend.builder("child");
