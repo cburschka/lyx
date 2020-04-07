@@ -3030,9 +3030,9 @@ MatchResult MatchStringAdv::operator()(DocIterator const & cur, int len, bool at
 	       << ", inTexted=" << cur.inTexted());
 	if (res == 0 || !at_begin || !opt.matchword || !cur.inTexted())
 		return mres;
-        if ((len > 0) && (res < len)) {
+	if ((len > 0) && (res < len)) {
 	  mres.match_len = 0;
-          return mres;
+	  return mres;
 	}
 	Paragraph const & par = cur.paragraph();
 	bool ws_left = (cur.pos() > 0)
@@ -3044,18 +3044,18 @@ MatchResult MatchStringAdv::operator()(DocIterator const & cur, int len, bool at
 	LYXERR(Debug::FIND,
 	       "cur.pos()=" << cur.pos() << ", res=" << res
 	       << ", separ: " << ws_left << ", " << ws_right
-               << ", len: " << len
+	       << ", len: " << len
 	       << endl);
 	if (ws_left && ws_right) {
-          // Check for word separators inside the found 'word'
-          for (int i = 0; i < len; i++) {
-            if (par.isWordSeparator(cur.pos() + i)) {
+	  // Check for word separators inside the found 'word'
+	  for (int i = 0; i < len; i++) {
+	    if (par.isWordSeparator(cur.pos() + i)) {
 	      mres.match_len = 0;
-              return mres;
+	      return mres;
 	    }
-          }
-          return mres;
-        }
+	  }
+	  return mres;
+	}
 	mres.match_len = 0;
 	return mres;
 }
@@ -3417,9 +3417,9 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 						match_len_zero_count = 0;
 				}
 				else {
-                                        if (++match_len_zero_count > 3) {
-                                                LYXERR(Debug::FIND, "match_len2_zero_count: " << match_len_zero_count << ", match_len was " << match_len);
-                                        }
+					if (++match_len_zero_count > 3) {
+						LYXERR(Debug::FIND, "match_len2_zero_count: " << match_len_zero_count << ", match_len was " << match_len);
+					}
 					break;
 				}
 			}
