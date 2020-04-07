@@ -55,6 +55,7 @@ Format 4
 #
 
 \unbind "M-o" "inset-settings"
+\bind "C-M-i" "inset-settings"
 #\bind "M-o l"                   "paragraph-params \align left"
 #\bind "M-o r"                   "paragraph-params \align right"
 #\bind "M-o c"                   "paragraph-params \align center"
