@@ -693,6 +693,7 @@ static void breakParagraph(Text & text, pit_type par_offset, pos_type pos,
 
 		tmp->params().depth(par.params().depth());
 		tmp->params().noindent(par.params().noindent());
+		tmp->params().spacing(par.params().spacing());
 
 		// move everything behind the break position
 		// to the new paragraph

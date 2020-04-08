@@ -95,6 +95,9 @@ What's new
 - Disallow adding columns with gathered environment as this is not
   supported (bug 11812).
 
+- Preserve paragarph spacing when breaking a paragraph at the start
+  (bug 11817).
+
 
 * INTERNALS
 
