@@ -318,6 +318,12 @@ void params2string(Paragraph const & par, string & data)
 }
 
 
+LyXErr & operator<<(LyXErr & os, ParagraphParameters const & parp) {
+	parp.write(os.stream());
+	return os;
+}
+
+
 /*
 bool operator==(ParagraphParameeters const & ps1,
 		ParagraphParameeters const & ps2)

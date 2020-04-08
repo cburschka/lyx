@@ -18,6 +18,7 @@
 #include "Length.h"
 #include "Spacing.h"
 
+#include "support/debug.h"
 #include "support/types.h"
 #include "support/docstring.h"
 
@@ -37,6 +38,8 @@ class ParagraphParameters {
 public:
 	///
 	ParagraphParameters();
+	///
+	friend LyXErr & operator<<(LyXErr & os, ParagraphParameters const & cur);
 	///
 	void clear();
 	///
