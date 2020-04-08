@@ -1002,6 +1002,9 @@ struct Sleep : QThread
 
 bool LyXComm::loadFilesInOtherInstance()
 {
+	if (theFilesToLoad().size() == 0)
+		return true;
+
 	int pipefd;
 	int loaded_files = 0;
 	FileName const pipe(inPipeName());
