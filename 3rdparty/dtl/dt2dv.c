@@ -6,7 +6,7 @@
    The author has expressed the hope that any modification will retain enough content to remain useful. He would also appreciate being acknowledged as the original author in the documentation.
    This declaration added 2008/11/14 by Clea F. Rees with the permission of Geoffrey Tobin.
 
-   - version 0.6.2 - 14 September 2005
+   - version 0.6.2 - 14 September 2006
    - Geoffrey Tobin    G.Tobin@ee.latrobe.edu.au
    - fixes:  Michal Tomczak-Jaegermann    ntomczak@vm.ucs.ualberta.ca
              Nelson H. F. Beebe    beebe@math.utah.edu
