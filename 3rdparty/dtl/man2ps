@@ -25,16 +25,16 @@ case `basename $0` in
 esac
 
 # We can use either GNU groff or Sun Solaris troff + dpost
-if [ -x /usr/local/bin/groff ]
+if [ which groff > /dev/null ]
 then	# GNU groff
 	TROFF="groff $FORMAT"
 	TROFF2PS="cat"
-elif [ -x /usr/lib/lp/postscript/dpost ]
++elif [ which dpost > /dev/null ]
 then	# Solaris 2.1
 	TROFF="troff $FORMAT"
 	TROFF2PS="/usr/lib/lp/postscript/dpost"
 else
-	echo "Cannot find troff-to-PostScript filter"
++	echo "Cannot find troff-to-PostScript filter" >&2
 	exit 1
 fi
 

@@ -10,6 +10,8 @@
    - Geoffrey Tobin    G.Tobin@ee.latrobe.edu.au
    - fixes:  Michal Tomczak-Jaegermann    ntomczak@vm.ucs.ualberta.ca
              Nelson H. F. Beebe    beebe@math.utah.edu
+	     Angus Leeming leeming@lyx.org: Enable dt2dv to handle .dvi files
+                 containing strings longer than 1024 chars.
    - Reference:  "The DVI Driver Standard, Level 0",
                  by  The TUG DVI Driver Standards Committee.
                  Appendix A, "Device-Independent File Format".
@@ -2229,7 +2231,7 @@ xfer_len_string
 /* transfer (length and) quoted string from dtl to dvi file, */
 /* return number of bytes written to dvi file. */
 {
-  U4 k, k2;
+  U4 k, k2, lstr_maxsize;
   Lstring lstr;
 
   if (debug)
@@ -2238,11 +2240,12 @@ xfer_len_string
     fprintf (stderr, "(xfer_len_string) : entering xfer_len_string.\n");
   }
 
-  init_Lstring (&lstr, LSIZE);
-
   /* k[n] : length of special string */
 
   k = get_unsigned (dtl);
+
+  lstr_maxsize = (k > LSIZE) ? k : LSIZE;
+  init_Lstring (&lstr, lstr_maxsize);
 
   if (debug)
   {
@@ -2573,7 +2576,7 @@ fontdef
 #ifdef HEX_CHECKSUM
   /* c[4] : (hexadecimal) checksum : I (gt) would prefer this */
   xfer_hex (4, dtl, dvi);
-#else /NOT HEX_CHECKSUM */
+#else /*NOT HEX_CHECKSUM */
   /* c[4] : checksum (octal, for comparison with tftopl's .pl file) */
   xfer_oct (4, dtl, dvi);
 #endif
