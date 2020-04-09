@@ -83,6 +83,7 @@ Updating dependencies
   to %%dependencies%%\bin. You can uninstall the package afterwards.
   Info: Version 0.6.1 does not work with MikTex (math preview triggers error complaining about missing kpathsea631.dll),
   therefore this method is not usable.
+  Update: as of report 11325 DTL tools are included in lyxgit and get compiled alongside lyx.
 
 - rsvg-convert
   dowload the 7zip archve from https://opensourcepack.blogspot.com/2012/06/rsvg-convert-svg-image-conversion-tool.html,
