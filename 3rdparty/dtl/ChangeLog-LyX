@@ -1,0 +1,18 @@
+This file documents changes that have been done on top of the released
+version 0.6.1 from https://ctan.org/pkg/dtl
+
+Version 0.6.2 -- 14 September 2005
+===================================
+
+2006-09-14 Enrico Forestieri <forenr@lyx.org>
+
+* dt2dv.c: Handle non-ASCII characters.
+
+2005-07-25 Angus Leeming <leeeming@lyx.org>
+
+* dt2dv.c: Enable to handle .dvi files containing strings longer than 1024 chars.
+
+* Makefile: enable the to work out of the box on both *nix and Windows machines
+  under the MinSYS environment.
+
+* man2ps: build fixes
