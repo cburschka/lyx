@@ -607,6 +607,21 @@ dnl prevent clash with system zlib that might be dragged in by other libs
 ])
 
 
+dnl Usage: LYX_BUILD_INCLUDED_DTL : select if the included dtl should
+dnl        be built and installed.
+AC_DEFUN([LYX_BUILD_INCLUDED_DTL],[
+	AC_MSG_CHECKING([whether to build dv2dt and dt2dv])
+	AC_ARG_WITH(included-dtl,
+	    [AS_HELP_STRING([--with-included-dtl], [build and install the dv2dt and dt2dv programs supplied with LyX])],
+	    [lyx_cv_with_included_dtl=$withval],
+	    [lyx_cv_with_included_dtl=no])
+	AM_CONDITIONAL(BUILD_INCLUDED_DTL, test x$lyx_cv_with_included_dtl = xyes)
+	AC_MSG_RESULT([$lyx_cv_with_included_dtl])
+	if test x$lyx_cv_with_included_dtl = xyes ; then
+	    lyx_flags="$lyx_flags build-dtl"
+	fi])
+
+
 dnl Usage: LYX_CHECK_CALLSTACK_PRINTING: define LYX_CALLSTACK_PRINTING if the
 dnl        necessary APIs are available to print callstacks.
 AC_DEFUN([LYX_CHECK_CALLSTACK_PRINTING],

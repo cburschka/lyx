@@ -129,6 +129,9 @@ LYX_USE_INCLUDED_ICONV
 ### check for compression support
 LYX_USE_INCLUDED_ZLIB
 
+### check whether we build and install the supplied dtl programs
+LYX_BUILD_INCLUDED_DTL
+
 ### check for file magic support (currently optional)
 AC_CHECK_HEADERS(magic.h,
  [AC_CHECK_LIB(magic, magic_open, [LIBS="$LIBS -lmagic"],
@@ -331,6 +334,7 @@ AC_CONFIG_FILES([Makefile \
       lyx.1:lyx.1in \
       3rdparty/Makefile \
       3rdparty/boost/Makefile \
+      3rdparty/dtl/Makefile \
       3rdparty/hunspell/Makefile \
       3rdparty/mythes/Makefile \
       3rdparty/libiconv/Makefile \

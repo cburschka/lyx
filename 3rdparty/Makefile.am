@@ -25,7 +25,11 @@ if USE_INCLUDED_ZLIB
 ZLIB = zlib
 endif
 
-SUBDIRS = $(BOOST) $(HUNSPELL) $(MYTHES) $(ICONV) $(ZLIB)
+if BUILD_INCLUDED_DTL
+DTL=dtl
+endif
+
+SUBDIRS = $(BOOST) $(DTL) $(HUNSPELL) $(MYTHES) $(ICONV) $(ZLIB)
 
 EXTRA_DIST = \
 	scripts/evince_sync/evince_backward_search \
