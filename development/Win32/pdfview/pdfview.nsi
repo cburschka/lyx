@@ -10,9 +10,7 @@ but works around the file locking problems of Adobe Reader and Acrobat.
 
 */
 
-# FIXME
-#Unicode true
-#doesn't work with the Uniode system.dll of NSIS 3.0.2 
+Unicode true
 
 !include LogicLib.nsh
 !include FileFunc.nsh
@@ -34,43 +32,15 @@ RequestExecutionLevel user
 # Variables
 
 Var Character
-Var RunAppReturn
 
 Var OriginalFile
 Var OriginalFileName
-Var OriginalDir
 
 Var PDFFile
 Var ViewerFileName
 Var Viewer
 Var ViewerHandle
 Var ViewerVersion
-
-#--------------------------------
-# Macros
-
-!macro SystemCall STACK
-
-  # Call a Windows API function
-
-  Push `${STACK}`
-  CallInstDLL "$EXEDIR\System.dll" Call
-
-!macroend
-
-!macro HideConsole COMMAND_LINE
-
-  # Run an application and hide console output
-
-  Push `${COMMAND_LINE}`
-  CallInstDLL "$EXEDIR\Console.dll" Exec
-  Pop $RunAppReturn
-  
-  ${If} $RunAppReturn == "error"
-    MessageBox MB_OK|MB_ICONSTOP "Error opening PDF file $PDFFile."
-  ${EndIf}
-
-!macroend
 
 #--------------------------------
 # PDF viewing
@@ -80,30 +50,32 @@ Section "View PDF file"
   InitPluginsDir # Temporary directory for PDF file
 
   # Command line parameters
-  ${GetParameters} $OriginalFile
+  ${GetParameters} $OriginalFileName
 
   # Trim quotes
-  StrCpy $Character $OriginalFile 1
+  StrCpy $Character $OriginalFileName 1
   ${If} $Character == '"'
-    StrCpy $OriginalFile $OriginalFile "" 1
+    StrCpy $OriginalFileName $OriginalFileName "" 1
   ${EndIf}
-  StrCpy $Character $OriginalFile 1 -1
+  StrCpy $Character $OriginalFileName 1 -1
   ${If} $Character == '"'
-    StrCpy $OriginalFile $OriginalFile -1
+    StrCpy $OriginalFileName $OriginalFileName -1
   ${EndIf}
 
-  GetFullPathName $OriginalFile $OriginalFile
-  ${GetFileName} $OriginalFile $OriginalFileName
-  ${GetParent} $OriginalFile $OriginalDir # tmpbuf
-  ${GetParent} $OriginalDir $OriginalDir # tmpdir
+  GetFullPathName $OriginalFile $OriginalFileName
 
   SetOutPath $TEMP # The LyX tmpbuf should not be locked
 
   StrCpy $PDFFile $PLUGINSDIR\$OriginalFileName
 
   # Check whether the file will be opened with Adobe Reader or Adobe Acrobat
-  !insertmacro SystemCall "shell32::FindExecutable(t '$OriginalFile', t '', t .s)"
-  Pop $ViewerFileName
+ 
+  FileOpen $R0 "$PLUGINSDIR\a.pdf" "w" #create a temp pdf file with a simple name
+  FileClose $R0
+  
+  #find stadard executable for "a.pdf", writes result in $0 (".r0" below)
+  System::Call "shell32::FindExecutable(t '$PLUGINSDIR\a.pdf', t '', t .r0)"
+  StrCpy $ViewerFileName $0
   ${GetFileName} $ViewerFileName $Viewer
 
   ${If} $Viewer == ""
@@ -148,7 +120,7 @@ Section "View PDF file"
     CopyFiles /SILENT $OriginalFile $PDFFile
     
     # Open a new view
-    !insertmacro HideConsole '"$ViewerFileName" "$PDFFile"'
+    ExecWait '"$ViewerFileName" "$PDFFile"'
     
   ${Else}
   

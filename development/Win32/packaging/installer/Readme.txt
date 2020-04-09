@@ -96,7 +96,6 @@ Updating dependencies
 
 - pdfview.exe
   this is a NSIS script, which calls users standard pdf viewer to display pdf files you compile with
-  LaTeX using LyX, its source is available in %%lyxgit%%\development\Win32\pdfview,
-  it uses System.dll and Console.dll
+  LaTeX using LyX, its source is available in %%lyxgit%%\development\Win32\pdfview
 
 Note: if you update any dependencies, please add a note to ChangeLog.txt
