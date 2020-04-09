@@ -132,8 +132,6 @@ Lists of files to include in the installer
 !macro FileListPDFViewBin COMMAND DIRECTORY
 
   ${FILE}pdfview.exe"
-  ${FILE}System.dll"
-  ${FILE}Console.dll"
 
 !macroend
 
