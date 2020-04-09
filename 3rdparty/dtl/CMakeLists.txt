@@ -16,7 +16,7 @@ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)
 project(dt2dv C)
 
 if (WIN32)
-  #set_source_files_properties(dt2dv.c dv2dt.c PROPERTIES LANGUAGE C COMPILE_FLAGS _CRT_SECURE_NO_WARNINGS)
+  set_source_files_properties(dt2dv.c dv2dt.c PROPERTIES LANGUAGE C COMPILE_FLAGS -D_CRT_SECURE_NO_WARNINGS=1)
 endif()
 add_executable(dt2dv dt2dv.c)
 add_executable(dv2dt dv2dt.c)
