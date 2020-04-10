@@ -6,13 +6,14 @@
    The author has expressed the hope that any modification will retain enough content to remain useful. He would also appreciate being acknowledged as the original author in the documentation.
    This declaration added 2008/11/14 by Clea F. Rees with the permission of Geoffrey Tobin.
 
-   - version 0.6.2 - 14 September 2006
+   - version 0.6.3 - 2020
    - Geoffrey Tobin    G.Tobin@ee.latrobe.edu.au
    - fixes:  Michal Tomczak-Jaegermann    ntomczak@vm.ucs.ualberta.ca
              Nelson H. F. Beebe    beebe@math.utah.edu
 	     Angus Leeming leeming@lyx.org: Enable dt2dv to handle .dvi files
                  containing strings longer than 1024 chars.
              Enrico Forestieri forenr@lyx.org: handle non-ASCII characters.
+             Juergen Spitzmueller spitz@lyx.org: fix compiler warnings
    - Reference:  "The DVI Driver Standard, Level 0",
                  by  The TUG DVI Driver Standards Committee.
                  Appendix A, "Device-Independent File Format".
@@ -41,7 +42,7 @@ typedef struct
 {
   COUNT num;    /* current line number */
   size_t max;   /* capacity of buf */
-  S4 wrote;     /* number of characters written into buf */
+  U4 wrote;     /* number of characters written into buf */
   size_t read;  /* position in buf of next character to read from buf */
   char * buf;   /* line buffer */
 } Line;
@@ -2206,7 +2207,7 @@ put_Lstring
 
   dvi_written += fwret;
 
-  if (fwret < lstr->l)
+  if ((long int) fwret < lstr->l)
   {
     PRINT_PROGNAME;
     fprintf (stderr,

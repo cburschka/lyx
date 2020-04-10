@@ -1,6 +1,14 @@
 This file documents changes that have been done on top of the released
 version 0.6.1 from https://ctan.org/pkg/dtl
 
+Version 0.6.3 -- LyX 2.4.0
+===================================
+
+2020-04-10 Jürgen Spitzmüller <spitz@lyx.org>
+
+* dt2dv.c: Fix some compiler warnings (signedness mismatch).
+
+
 Version 0.6.2 -- 14 September 2006
 ===================================
 
