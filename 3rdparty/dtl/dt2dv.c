@@ -43,7 +43,7 @@ typedef struct
   size_t max;   /* capacity of buf */
   S4 wrote;     /* number of characters written into buf */
   size_t read;  /* position in buf of next character to read from buf */
-  unsigned char * buf;   /* line buffer */
+  char * buf;   /* line buffer */
 } Line;
 
 char linebuf[MAXLINE+1];
