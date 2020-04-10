@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-DIST_SUBDIRS = boost hunspell mythes libiconv zlib
+DIST_SUBDIRS = boost dtl hunspell mythes libiconv zlib
 
 if USE_INCLUDED_BOOST
 if LYX_USE_STD_REGEX
