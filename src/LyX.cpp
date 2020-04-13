@@ -909,6 +909,25 @@ bool LyX::init()
 	if (package().build_support().empty())
 		prependEnvPath("PATH", package().binary_dir().absFileName());
 #endif
+	{
+		// Add the directory containing the dt2dv and dv2dt executables to the path
+		FileName dtldir;
+		if (!package().build_support().empty()) {
+			// dtl executables should be in the same dir ar tex2lyx
+			dtldir = package().binary_dir();
+		}
+		else {
+			dtldir = FileName(addName(package().system_support().absFileName(), "extratools"));
+		}
+#if defined(_WIN32)
+		string dtlexe = "dt2dv.exe";
+#else
+		string dtlexe = "dt2dv";
+#endif
+		FileName const dt2dv = FileName(addName(dtldir.absFileName(), dtlexe));
+		if (dt2dv.exists())
+			prependEnvPath("PATH", dtldir.absFileName());
+	}
 	if (!lyxrc.path_prefix.empty())
 		prependEnvPath("PATH", replaceEnvironmentPath(lyxrc.path_prefix));
 
