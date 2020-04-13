@@ -17,6 +17,7 @@
 #include "support/docstring.h"
 #include "support/lstrings.h"
 #include "support/os.h"
+#include "support/debug.h"
 
 #include <algorithm> // for remove
 #include <cstdlib>
@@ -107,6 +108,7 @@ void prependEnvPath(string const & name, string const & prefix)
 
 	// Prepend each new element to the list, removing identical elements
 	// that occur later in the list.
+	LYXERR(Debug::INIT, "Prepending \"" << prefix << "\" to PATH");
 	typedef vector<string>::const_reverse_iterator token_iterator;
 	token_iterator it = reversed_tokens.rbegin();
 	token_iterator const end = reversed_tokens.rend();
