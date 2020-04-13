@@ -623,11 +623,7 @@ void DocIterator::sanitize()
 	for (size_t i = 0, n = sl.size(); i != n; ++i) {
 		if (inset == 0) {
 			// FIXME
-			LYXERR0(" Should not happen, but does e.g. after "
-				"C-n C-l C-z S-C-z\n"
-				<< " or when a Buffer has been concurrently edited by two views"
-				<< '\n' << "dit: " << *this << '\n'
-				<< " lastpos: " << slices_[i].lastpos());
+			LYXERR0("Null inset on cursor stack.");
 			fixIfBroken();
 			break;
 		}
