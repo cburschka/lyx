@@ -105,6 +105,8 @@ What's new
 - Avoid crash in some cases where a dialog is shown during operation
   (bug 11763).
 
+- Fix crash with nested insets when spaces are removed automatically (bug 11777).
+
 * INTERNALS
 
 

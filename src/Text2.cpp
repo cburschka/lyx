@@ -797,8 +797,9 @@ void fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where,
 		return;
 
 	// If cursor position is after the deletion place update it
+	// but if we are not at start of line keep it after the space that was kept.
 	if (cur.pos() > from)
-		cur.pos() = max(from + 1, cur.pos() - num_chars);
+		cur.pos() = max(from + (from > 0), cur.pos() - num_chars);
 
 	// Check also if we don't want to set the cursor on a spot behind the
 	// pagragraph because we erased the last character.
