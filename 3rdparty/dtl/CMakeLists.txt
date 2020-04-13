@@ -35,5 +35,5 @@ endforeach()
 # Install dtl tools in this directory to omit possible packaging conflicts
 # if installing multiple lyx versions, each with own dtl executables
 get_data_destination(dest_data)
-install(TARGETS ${targets} DESTINATION "${CMAKE_INSTALL_PREFIX}/${dest_data}/extratools")
+install(TARGETS ${targets} DESTINATION "${dest_data}/extratools")
 install(FILES ${_manuals} DESTINATION ${LYX_MAN_DIR}/man1)
