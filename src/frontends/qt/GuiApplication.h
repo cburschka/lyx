@@ -88,6 +88,8 @@ public:
 	void hideDialogs(std::string const & name, Inset * inset) const;
 	///
 	void resetGui();
+	/// Return true if current position is RTL of if no document is open and interface if RTL
+	bool rtlContext() const;
 
 	///
 	Clipboard & clipboard();
@@ -256,7 +258,8 @@ private:
 extern GuiApplication * guiApp;
 
 /// \return the icon file name for the given action.
-QString iconName(FuncRequest const & f, bool unknown);
+QString iconName(FuncRequest const & f, bool unknown,
+                 QString const & suffix = QString());
 
 /// \return the pixmap for the given path, name and extension.
 /// in case of errors a warning is produced and an empty pixmap is returned.
@@ -267,7 +270,8 @@ QPixmap getPixmap(QString const & path, QString const & name, QString const & ex
 bool getPixmap(QPixmap & pixmap, QString const & path);
 
 /// \return an icon for the given action.
-QIcon getIcon(FuncRequest const & f, bool unknown);
+QIcon getIcon(FuncRequest const & f, bool unknown,
+			  QString const & suffix = QString());
 
 ///
 GuiApplication * theGuiApp();

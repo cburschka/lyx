@@ -129,7 +129,10 @@ Action * GuiToolbar::addItem(ToolbarItem const & item)
 		text += " [" + toqstr(bindings.begin()->print(KeySequence::ForGui)) + "]";
 
 	Action * act = new Action(item.func_, getIcon(*item.func_, false), text,
-	                          text, this);
+							  text, this);
+	if (item.type_ == ToolbarItem::BIDICOMMAND)
+		act->setRtlIcon(getIcon(*item.func_, false, "+rtl"));
+
 	actions_.append(act);
 	return act;
 }
@@ -518,6 +521,11 @@ void GuiToolbar::add(ToolbarItem const & item)
 			LYXERR0("Unknown dynamic menu type: " << item.name_);
 		break;
 	}
+	case ToolbarItem::BIDICOMMAND: {
+		if (!getStatus(*item.func_).unknown())
+			addAction(addItem(item));
+		break;
+		}
 	case ToolbarItem::COMMAND: {
 		if (!getStatus(*item.func_).unknown())
 			addAction(addItem(item));

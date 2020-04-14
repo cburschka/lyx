@@ -568,7 +568,9 @@ dist_images_DATA1X = \
 	images/tab-group-close.svgz \
 	images/copy.svgz \
 	images/cut.svgz \
+	images/depth-decrement+rtl.svgz \
 	images/depth-decrement.svgz \
+	images/depth-increment+rtl.svgz \
 	images/depth-increment.svgz \
 	images/dialog-preferences.svgz \
 	images/dialog-show-new-inset_citation.svgz \
@@ -609,13 +611,18 @@ dist_images_DATA1X = \
 	images/layout.svgz \
 	images/layout-document.svgz \
 	images/layout-paragraph.svgz \
+	images/layout-toggle_Chunk.svgz \
+	images/layout-toggle_Description+rtl.svgz \
 	images/layout-toggle_Description.svgz \
+	images/layout-toggle_Enumerate+rtl.svgz  \
 	images/layout-toggle_Enumerate.svgz  \
+	images/layout-toggle_Itemize+rtl.svgz \
 	images/layout-toggle_Itemize.svgz \
+	images/layout-toggle_Labeling+rtl.svgz \
 	images/layout-toggle_Labeling.svgz \
 	images/layout-toggle_List.svgz \
 	images/layout-toggle_LyX-Code.svgz \
-	images/layout-toggle_Chunk.svgz \
+	images/layout-toggle_Section+rtl.svgz \
 	images/layout-toggle_Section.svgz \
 	images/lyxfiles-system.svgz \
 	images/lyxfiles-user.svgz \
@@ -1853,7 +1860,9 @@ dist_imagesoxygen_DATA1X = \
 	images/oxygen/closetab.svgz \
 	images/oxygen/copy.svgz \
 	images/oxygen/cut.svgz \
+	images/oxygen/depth-decrement+rtl.svgz \
 	images/oxygen/depth-decrement.svgz \
+	images/oxygen/depth-increment+rtl.svgz \
 	images/oxygen/depth-increment.svgz \
 	images/oxygen/dialog-preferences.svgz \
 	images/oxygen/dialog-show-new-inset_citation.svgz \
@@ -1892,12 +1901,17 @@ dist_imagesoxygen_DATA1X = \
 	images/oxygen/layout-paragraph.svgz \
 	images/oxygen/layout.svgz \
 	images/oxygen/layout-toggle_Chunk.svgz \
+	images/oxygen/layout-toggle_Description+rtl.svgz \
 	images/oxygen/layout-toggle_Description.svgz \
-	images/oxygen/layout-toggle_Enumerate.svgz \
+	images/oxygen/layout-toggle_Enumerate+rtl.svgz  \
+	images/oxygen/layout-toggle_Enumerate.svgz  \
+	images/oxygen/layout-toggle_Itemize+rtl.svgz \
 	images/oxygen/layout-toggle_Itemize.svgz \
+	images/oxygen/layout-toggle_Labeling+rtl.svgz \
 	images/oxygen/layout-toggle_Labeling.svgz \
 	images/oxygen/layout-toggle_List.svgz \
 	images/oxygen/layout-toggle_LyX-Code.svgz \
+	images/oxygen/layout-toggle_Section+rtl.svgz \
 	images/oxygen/layout-toggle_Section.svgz \
 	images/oxygen/lyx-quit.svgz \
 	images/oxygen/marginalnote-insert.svgz \
@@ -2057,7 +2071,9 @@ dist_imagesclassic_DATA = \
 	images/classic/tab-group-close.png  \
 	images/classic/copy.png  \
 	images/classic/cut.png  \
+	images/classic/depth-decrement+rtl.png  \
 	images/classic/depth-decrement.png  \
+	images/classic/depth-increment+rtl.png  \
 	images/classic/depth-increment.png  \
 	images/classic/dialog-preferences.png  \
 	images/classic/dialog-show_mathdelimiter.png  \
@@ -2092,14 +2108,19 @@ dist_imagesclassic_DATA = \
 	images/classic/layout-document.png  \
 	images/classic/layout-paragraph.png  \
 	images/classic/layout.png  \
-	images/classic/layout-toggle_Description.png  \
-	images/classic/layout-toggle_Enumerate.png  \
-	images/classic/layout-toggle_Itemize.png  \
-	images/classic/layout-toggle_Labeling.png  \
-	images/classic/layout-toggle_List.png  \
-	images/classic/layout-toggle_LyX-Code.png  \
 	images/classic/layout-toggle_Chunk.png  \
-	images/classic/layout-toggle_Section.png  \
+	images/classic/layout-toggle_Description+rtl.png \
+	images/classic/layout-toggle_Description.png \
+	images/classic/layout-toggle_Enumerate+rtl.png  \
+	images/classic/layout-toggle_Enumerate.png  \
+	images/classic/layout-toggle_Itemize+rtl.png \
+	images/classic/layout-toggle_Itemize.png \
+	images/classic/layout-toggle_Labeling+rtl.png \
+	images/classic/layout-toggle_Labeling.png \
+	images/classic/layout-toggle_List.png \
+	images/classic/layout-toggle_LyX-Code.png \
+	images/classic/layout-toggle_Section+rtl.png \
+	images/classic/layout-toggle_Section.png \
 	images/classic/marginalnote-insert.png  \
 	images/classic/master-buffer-update.png  \
 	images/classic/master-buffer-view.png  \

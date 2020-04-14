@@ -486,7 +486,7 @@ QString themeIconName(QString const & action)
 }
 
 
-QString iconName(FuncRequest const & f, bool unknown)
+QString iconName(FuncRequest const & f, bool unknown, QString const & suffix)
 {
 	initializeResources();
 	QString name1;
@@ -526,6 +526,9 @@ QString iconName(FuncRequest const & f, bool unknown)
 			name1.replace('\\', "backslash");
 		}
 	}
+
+	// maybe a suffix?
+	name1 += suffix;
 
 	QStringList imagedirs;
 	imagedirs << "images/" << "images/ipa/";
@@ -611,7 +614,7 @@ QPixmap getPixmap(QString const & path, QString const & name, QString const & ex
 }
 
 
-QIcon getIcon(FuncRequest const & f, bool unknown)
+QIcon getIcon(FuncRequest const & f, bool unknown, QString const & suffix)
 {
 #if (QT_VERSION >= 0x040600)
 	if (lyxrc.use_system_theme_icons) {
@@ -628,7 +631,7 @@ QIcon getIcon(FuncRequest const & f, bool unknown)
 	}
 #endif
 
-	QString icon = iconName(f, unknown);
+	QString icon = iconName(f, unknown, suffix);
 	if (icon.isEmpty())
 		return QIcon();
 
@@ -2397,6 +2400,16 @@ void GuiApplication::resetGui()
 	}
 
 	processFuncRequest(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
+}
+
+
+bool GuiApplication::rtlContext() const
+{
+	if (current_view_ && current_view_->currentBufferView()) {
+		BufferView const * bv = current_view_->currentBufferView();
+		return bv->cursor().innerParagraph().isRTL(bv->buffer().params());
+	} else
+		return layoutDirection() == Qt::RightToLeft;
 }
 
 

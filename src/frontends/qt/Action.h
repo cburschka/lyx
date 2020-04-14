@@ -43,6 +43,8 @@ public:
 	       QIcon const & icon, QString const & text,
 	       QString const & tooltip, QObject * parent);
 
+	void setRtlIcon(QIcon const & icon) { rtlIcon_ = icon; }
+
 	void update();
 
 Q_SIGNALS:
@@ -53,8 +55,10 @@ private Q_SLOTS:
 	void action();
 
 private:
-	void init(QIcon const & icon, QString const & text, QString const & tooltip);
+	void init(QString const & text, QString const & tooltip);
 	std::shared_ptr<FuncRequest const> func_;
+	QIcon icon_;
+	QIcon rtlIcon_;
 };
 
 

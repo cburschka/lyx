@@ -63,6 +63,7 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 {
 	enum {
 		TO_COMMAND = 1,
+		TO_BIDICOMMAND,
 		TO_ENDTOOLBAR,
 		TO_SEPARATOR,
 		TO_LAYOUTS,
@@ -79,6 +80,7 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 	};
 
 	struct LexerKeyword toolTags[] = {
+		{ "bidiitem", TO_BIDICOMMAND},
 		{ "dynamicmenu", TO_DYNAMICMENU},
 		{ "end", TO_ENDTOOLBAR },
 		{ "exportformats", TO_EXPORTFORMATS },
@@ -135,6 +137,20 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 				FuncRequest func =
 					lyxaction.lookupFunc(func_arg);
 				add(ToolbarItem(ToolbarItem::COMMAND, func, tooltip));
+			}
+			break;
+
+		case TO_BIDICOMMAND:
+			if (lex.next(true)) {
+				docstring const tooltip = translateIfPossible(lex.getDocString());
+				lex.next(true);
+				string const func_arg = lex.getString();
+				LYXERR(Debug::PARSER, "ToolbarInfo::read TO_BIDICOMMAND func: `"
+					<< func_arg << '\'');
+
+				FuncRequest func =
+					lyxaction.lookupFunc(func_arg);
+				add(ToolbarItem(ToolbarItem::BIDICOMMAND, func, tooltip));
 			}
 			break;
 

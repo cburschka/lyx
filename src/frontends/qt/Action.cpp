@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "Action.h"
+#include "GuiApplication.h"
 
 // DispatchResult.h is needed by the windows compiler because lyx::dispatch
 // returns a DispatchResult const reference. Gcc does not complain. Weird...
@@ -33,27 +34,25 @@ namespace frontend {
 
 Action::Action(FuncRequest func, QIcon const & icon, QString const & text,
                QString const & tooltip, QObject * parent)
-	: QAction(parent), func_(make_shared<FuncRequest>(move(func)))
+	: QAction(parent), func_(make_shared<FuncRequest>(move(func))), icon_(icon)
 {
-	init(icon, text, tooltip);
+	init(text, tooltip);
 }
 
 
 Action::Action(shared_ptr<FuncRequest const> func,
                QIcon const & icon, QString const & text,
                QString const & tooltip, QObject * parent)
-	: QAction(parent), func_(func)
+	: QAction(parent), func_(func), icon_(icon)
 {
-	init(icon, text, tooltip);
+	init(text, tooltip);
 }
 
 
-void Action::init(QIcon const & icon, QString const & text,
-                  QString const & tooltip)
+void Action::init(QString const & text, QString const & tooltip)
 {
 	// only Qt/Mac handles that
 	setMenuRole(NoRole);
-	setIcon(icon);
 	setText(text);
 	setToolTip(tooltip);
 	setStatusTip(tooltip);
@@ -75,6 +74,11 @@ void Action::update()
 	} else {
 		setCheckable(false);
 	}
+
+	if (rtlIcon_.isNull() || !guiApp->rtlContext())
+		setIcon(icon_);
+	else
+		setIcon(rtlIcon_);
 
 	setEnabled(status.enabled());
 }

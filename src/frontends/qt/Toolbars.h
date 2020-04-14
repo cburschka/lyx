@@ -29,6 +29,8 @@ namespace frontend {
 class ToolbarItem {
 public:
 	enum Type {
+		/// command/action with rtl version
+		BIDICOMMAND,
 		/// command/action
 		COMMAND,
 		/// the command buffer

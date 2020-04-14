@@ -36,13 +36,18 @@
 #      Item "Small font" "font-size small"
 #      Item Emphasized set-emph
 #
+#   BidiItem is like Item, but an alternative icon (with name ending
+#   with "+rtl") will be used <hen the paragraph has a right-to-left
+#   layout.
+#
 #   Layouts adds the layouts combo-box to the toolbar
 #
 #   Separator adds some spacing to the toolbar
 #
-#   Minibuffer adds the command buffer (Qt only, only one may exist)
+#   Minibuffer adds the command buffer (only one may exist)
 #
-#   TableInsert "The tooltip" adds a special widget for quick insertion of tables
+#   TableInsert "The tooltip" adds a special widget for quick
+#   insertion of tables
 #
 #   PopupMenu "name" "The tooltip"
 #
@@ -113,12 +118,12 @@ ToolbarSet
 
 	Toolbar "extra" "Extra"
 		Item "Default" "layout"
-		Item "Numbered list" "layout-toggle Enumerate"
-		Item "Itemized list" "layout-toggle Itemize"
-		Item "Labeled List" "layout-toggle Labeling"
-		Item "Description" "layout-toggle Description"
-		Item "Increase depth" "depth-increment"
-		Item "Decrease depth" "depth-decrement"
+		BidiItem "Numbered list" "layout-toggle Enumerate"
+		BidiItem "Itemized list" "layout-toggle Itemize"
+		BidiItem "Labeled List" "layout-toggle Labeling"
+		BidiItem "Description" "layout-toggle Description"
+		BidiItem "Increase depth" "depth-increment"
+		BidiItem "Decrease depth" "depth-decrement"
 		Separator
 		Item "Insert figure float" "float-insert figure"
 		Item "Insert table float" "float-insert table"
