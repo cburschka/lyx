@@ -28,7 +28,7 @@ endforeach(_mn)
 ADD_CUSTOM_TARGET(man ALL DEPENDS ${_manuals})
 set_target_properties(man PROPERTIES FOLDER "doc")
 
-install(FILES ${_manuals} DESTINATION ${LYX_MAN_DIR}/man1)
+install(FILES ${_manuals} DESTINATION "${LYX_MAN_DIR}man1")
 
 # ADD_MANUALS("lyx")
 
