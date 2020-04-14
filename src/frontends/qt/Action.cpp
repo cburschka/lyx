@@ -76,7 +76,6 @@ void Action::update()
 		setCheckable(false);
 	}
 
-	setVisible(!status.unknown());
 	setEnabled(status.enabled());
 }
 

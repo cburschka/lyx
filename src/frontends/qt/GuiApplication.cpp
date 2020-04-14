@@ -70,11 +70,11 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h" // sorted
+#include "support/textutils.h"
 #include "support/Messages.h"
 #include "support/os.h"
 #include "support/Package.h"
 #include "support/TempFile.h"
-#include "support/textutils.h"
 
 #ifdef Q_OS_MAC
 #include "support/AppleScript.h"
@@ -928,7 +928,7 @@ public:
 struct GuiApplication::Private
 {
 	Private(): language_model_(0), meta_fake_bit(NoModifier),
-	           global_menubar_(0)
+		global_menubar_(0)
 	{
 	#if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400)
 	#if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
@@ -1288,24 +1288,6 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 			// occurs are performed, so set the state to
 			// enabled
 			enable = true;
-		}
-		break;
-	}
-
-	case LFUN_BIDI: {
-		string const dir = cmd.getArg(0);
-		string const lfun = cmd.getLongArg(1);
-		BufferView const * bv =
-			current_view_ ? current_view_->currentBufferView() : nullptr;
-		bool rtl = bv ? bv->cursor().innerParagraph().isRTL(bv->buffer().params())
-		              : layoutDirection() == Qt::RightToLeft;
-		if (((rtl && dir != "rtl") || (!rtl && dir != "ltr"))) {
-			flag.setUnknown(true);
-			flag.setEnabled(false);
-		} else {
-			FuncRequest func(lyxaction.lookupFunc(lfun));
-			func.setOrigin(cmd.origin());
-			flag = getStatus(func);
 		}
 		break;
 	}
@@ -1898,7 +1880,6 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		lyxrc.cursor_follows_scrollbar = !lyxrc.cursor_follows_scrollbar;
 		break;
 
-	// --- syntax commands ----------------------------
 	case LFUN_REPEAT: {
 		// repeat command
 		string countstr;
@@ -2046,18 +2027,6 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 						<< argument << "' detected"
 						<< endl;
 			}
-		}
-		break;
-	}
-
-	case LFUN_BIDI: {
-		string const lfun = cmd.getLongArg(1);
-		FuncRequest func(lyxaction.lookupFunc(cmd.getLongArg(1)));
-		func.setOrigin(cmd.origin());
-		FuncStatus const stat = getStatus(func);
-		if (stat.enabled()) {
-			dispatch(func);
-			break;
 		}
 		break;
 	}

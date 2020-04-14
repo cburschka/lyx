@@ -516,22 +516,6 @@ dist_images_DATA1X = \
 	images/all-changes-accept.svgz \
 	images/all-changes-reject.svgz \
 	images/banner.svgz \
-	images/bidi_ltr_depth-decrement.svgz \
-	images/bidi_ltr_depth-increment.svgz \
-	images/bidi_ltr_layout-toggle_Description.svgz \
-	images/bidi_ltr_layout-toggle_Enumerate.svgz \
-	images/bidi_ltr_layout-toggle_Itemize.svgz \
-	images/bidi_ltr_layout-toggle_Labeling.svgz \
-	images/bidi_ltr_layout-toggle_List.svgz \
-	images/bidi_ltr_layout-toggle_Section.svgz \
-	images/bidi_rtl_depth-decrement.svgz \
-	images/bidi_rtl_depth-increment.svgz \
-	images/bidi_rtl_layout-toggle_Description.svgz \
-	images/bidi_rtl_layout-toggle_Enumerate.svgz \
-	images/bidi_rtl_layout-toggle_Itemize.svgz \
-	images/bidi_rtl_layout-toggle_Labeling.svgz \
-	images/bidi_rtl_layout-toggle_List.svgz \
-	images/bidi_rtl_layout-toggle_Section.svgz \
 	images/bookmark-goto.svgz \
 	images/bookmark-goto_0.svgz \
 	images/bookmark-save.svgz \
@@ -1819,22 +1803,6 @@ imagesoxygendir = $(imagesdir)/oxygen
 dist_imagesoxygen_DATA1X = \
 	images/oxygen/all-changes-accept.svgz \
 	images/oxygen/all-changes-reject.svgz \
-	images/oxygen/bidi_ltr_depth-decrement.svgz \
-	images/oxygen/bidi_ltr_depth-increment.svgz \
-	images/oxygen/bidi_ltr_layout-toggle_Description.svgz \
-	images/oxygen/bidi_ltr_layout-toggle_Enumerate.svgz \
-	images/oxygen/bidi_ltr_layout-toggle_Itemize.svgz \
-	images/oxygen/bidi_ltr_layout-toggle_Labeling.svgz \
-	images/oxygen/bidi_ltr_layout-toggle_List.svgz \
-	images/oxygen/bidi_ltr_layout-toggle_Section.svgz \
-	images/oxygen/bidi_rtl_depth-decrement.svgz \
-	images/oxygen/bidi_rtl_depth-increment.svgz \
-	images/oxygen/bidi_rtl_layout-toggle_Description.svgz \
-	images/oxygen/bidi_rtl_layout-toggle_Enumerate.svgz \
-	images/oxygen/bidi_rtl_layout-toggle_Itemize.svgz \
-	images/oxygen/bidi_rtl_layout-toggle_Labeling.svgz \
-	images/oxygen/bidi_rtl_layout-toggle_List.svgz \
-	images/oxygen/bidi_rtl_layout-toggle_Section.svgz \
 	images/oxygen/bookmark-goto.svgz \
 	images/oxygen/bookmark-goto_0.svgz \
 	images/oxygen/bookmark-save.svgz \
@@ -2039,22 +2007,6 @@ imagesclassicdir = $(imagesdir)/classic
 dist_imagesclassic_DATA = \
 	images/classic/all-changes-accept.png  \
 	images/classic/all-changes-reject.png  \
-	images/classic/bidi_ltr_depth-decrement.png \
-	images/classic/bidi_ltr_depth-increment.png \
-	images/classic/bidi_ltr_layout-toggle_Description.png \
-	images/classic/bidi_ltr_layout-toggle_Enumerate.png \
-	images/classic/bidi_ltr_layout-toggle_Itemize.png \
-	images/classic/bidi_ltr_layout-toggle_Labeling.png \
-	images/classic/bidi_ltr_layout-toggle_List.png \
-	images/classic/bidi_ltr_layout-toggle_Section.png \
-	images/classic/bidi_rtl_depth-decrement.png \
-	images/classic/bidi_rtl_depth-increment.png \
-	images/classic/bidi_rtl_layout-toggle_Description.png \
-	images/classic/bidi_rtl_layout-toggle_Enumerate.png \
-	images/classic/bidi_rtl_layout-toggle_Itemize.png \
-	images/classic/bidi_rtl_layout-toggle_Labeling.png \
-	images/classic/bidi_rtl_layout-toggle_List.png \
-	images/classic/bidi_rtl_layout-toggle_Section.png \
 	images/classic/bookmark-goto.png  \
 	images/classic/bookmark-goto_0.png  \
 	images/classic/bookmark-save.png  \

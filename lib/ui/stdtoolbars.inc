@@ -113,20 +113,12 @@ ToolbarSet
 
 	Toolbar "extra" "Extra"
 		Item "Default" "layout"
-		# The bidi function is used here to select a different
-		# icon depending on the direction of the current text.
-		Item "Numbered list" "bidi ltr layout-toggle Enumerate"
-		Item "Numbered list" "bidi rtl layout-toggle Enumerate"
-		Item "Itemized list" "bidi ltr layout-toggle Itemize"
-		Item "Itemized list" "bidi rtl layout-toggle Itemize"
-		Item "Labeled List" "bidi ltr layout-toggle Labeling"
-		Item "Labeled List" "bidi rtl layout-toggle Labeling"
-		Item "Description" "bidi ltr layout-toggle Description"
-		Item "Description" "bidi rtl layout-toggle Description"
-		Item "Increase depth" "bidi ltr depth-increment"
-		Item "Increase depth" "bidi rtl depth-increment"
-		Item "Decrease depth" "bidi ltr depth-decrement"
-		Item "Decrease depth" "bidi rtl depth-decrement"
+		Item "Numbered list" "layout-toggle Enumerate"
+		Item "Itemized list" "layout-toggle Itemize"
+		Item "Labeled List" "layout-toggle Labeling"
+		Item "Description" "layout-toggle Description"
+		Item "Increase depth" "depth-increment"
+		Item "Decrease depth" "depth-decrement"
 		Separator
 		Item "Insert figure float" "float-insert figure"
 		Item "Insert table float" "float-insert table"

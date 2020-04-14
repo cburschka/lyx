@@ -485,9 +485,8 @@ enum FuncCode
 	LFUN_BUFFER_WRITE_AS_TEMPLATE,	// spitz, 20190323
 	LFUN_TABULAR_STYLE_INSERT,	// spitz, 20190325
 	LFUN_PARAGRAPH_SELECT,          // Kornel, 20190416
-	LFUN_BIDI,
-	// 380
 	LFUN_BUFFER_RESET_EXPORT,       // spitz 20191226
+	// 380
 	LFUN_MASTER_BUFFER_FORALL,      // spitz 20191231
 	LFUN_IF_RELATIVES,              // spitz 20200102
 	LFUN_LASTACTION                 // end of the table

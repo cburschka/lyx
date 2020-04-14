@@ -519,7 +519,8 @@ void GuiToolbar::add(ToolbarItem const & item)
 		break;
 	}
 	case ToolbarItem::COMMAND: {
-		addAction(addItem(item));
+		if (!getStatus(*item.func_).unknown())
+			addAction(addItem(item));
 		break;
 		}
 	default:
