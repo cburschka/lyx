@@ -64,6 +64,9 @@ To build LyX with spell checking capabilities included you have to
 install at least one of the development packages of the spell checker
 libraries. See the RELEASE-NOTES for details.
 
+Users of debian-based distributions are well advised to run
+'apt-get build-dep lyx' before compiling to install proper dependencies.
+
 
 * Other things to note
 
