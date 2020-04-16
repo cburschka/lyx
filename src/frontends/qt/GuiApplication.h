@@ -264,14 +264,9 @@ QString iconName(FuncRequest const & f, bool unknown,
 /// \return the pixmap for the given path, name and extension.
 /// in case of errors a warning is produced and an empty pixmap is returned.
 QPixmap getPixmap(QString const & path, QString const & name, QString const & ext);
-/// Load the file at \param path and convert it to a pixmap.
-/// \return true on success otherwise invalidate the pixmap and return false.
-/// The caller is responsible for error reporting.
-bool getPixmap(QPixmap & pixmap, QString const & path);
 
 /// \return an icon for the given action.
-QIcon getIcon(FuncRequest const & f, bool unknown,
-			  QString const & suffix = QString());
+QIcon getIcon(FuncRequest const & f, bool unknown, bool rtl = false);
 
 ///
 GuiApplication * theGuiApp();

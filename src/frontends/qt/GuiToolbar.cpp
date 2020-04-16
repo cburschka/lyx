@@ -131,7 +131,7 @@ Action * GuiToolbar::addItem(ToolbarItem const & item)
 	Action * act = new Action(item.func_, getIcon(*item.func_, false), text,
 							  text, this);
 	if (item.type_ == ToolbarItem::BIDICOMMAND)
-		act->setRtlIcon(getIcon(*item.func_, false, "+rtl"));
+		act->setRtlIcon(getIcon(*item.func_, false, true));
 
 	actions_.append(act);
 	return act;

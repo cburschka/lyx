@@ -38,7 +38,8 @@
 #
 #   BidiItem is like Item, but an alternative icon (with name ending
 #   with "+rtl") will be used <hen the paragraph has a right-to-left
-#   layout.
+#   layout. If this alternative icon does not exist, the LtR icon will
+#   be mirrored instead.
 #
 #   Layouts adds the layouts combo-box to the toolbar
 #
@@ -122,6 +123,7 @@ ToolbarSet
 		BidiItem "Itemized list" "layout-toggle Itemize"
 		BidiItem "Labeled List" "layout-toggle Labeling"
 		BidiItem "Description" "layout-toggle Description"
+		BidiItem "Section" "layout-toggle Section"
 		BidiItem "Increase depth" "depth-increment"
 		BidiItem "Decrease depth" "depth-decrement"
 		Separator

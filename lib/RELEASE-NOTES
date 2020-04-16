@@ -17,12 +17,13 @@
 
 !!Documents compilation process and images conversion
 
-* LyX now uses utf8 encoding per default for all languages. This does not affect
-  existing documents. Note that LyX also does not touch personal defaults and templates.
-  That is to say, if you still see traditional encoding preset for new documents,
-  you can change that by selecting "Unicode (utf8) [default]" and hitting "Save
-  as Documents Defaults" afterwards. Your personal templates need to be changed manually
-  if desired.
+* LyX now uses utf8 encoding per default for all languages. This does
+  not affect existing documents. Note that LyX also does not touch
+  personal defaults and templates. That is to say, if you still see
+  traditional encoding preset for new documents, you can change that
+  by selecting "Unicode (utf8) [default]" and hitting "Save as
+  Documents Defaults" afterwards. Your personal templates need to be
+  changed manually if desired.
 
 * LyX defaults to the "HE8" LaTeX font encoding with Hebrew if the
   "Culmus" LaTeX fonts are installed.
@@ -97,6 +98,10 @@
 
 * date-insert: obsoleted by info-insert date.
 
+!!!The following LyX function has been added and then removed in 2.4 development cycle.
+
+* bidi: used as a first solution to provide icons that change
+  direction with language.
 
 
 !!!The following LyX documents have been moved in 2.4:

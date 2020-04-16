@@ -529,6 +529,7 @@ QString iconName(FuncRequest const & f, bool unknown, QString const & suffix)
 
 	// maybe a suffix?
 	name1 += suffix;
+	name2 += suffix;
 
 	QStringList imagedirs;
 	imagedirs << "images/" << "images/ipa/";
@@ -580,12 +581,6 @@ QString iconName(FuncRequest const & f, bool unknown, QString const & suffix)
 }
 
 
-bool getPixmap(QPixmap & pixmap, QString const & path)
-{
-	return pixmap.load(path);
-}
-
-
 QPixmap getPixmap(QString const & path, QString const & name, QString const & ext)
 {
 	QString imagedir = path;
@@ -593,14 +588,14 @@ QPixmap getPixmap(QString const & path, QString const & name, QString const & ex
 	QString fpath = toqstr(fname.absFileName());
 	QPixmap pixmap = QPixmap();
 
-	if (getPixmap(pixmap, fpath)) {
+	if (pixmap.load(fpath)) {
 		return pixmap;
 	}
 
 	QStringList exts = ext.split(",");
 	fpath = ":/" + path + name + ".";
 	for (int i = 0; i < exts.size(); ++i) {
-		if (getPixmap(pixmap, fpath + exts.at(i))) {
+		if (pixmap.load(fpath + exts.at(i))) {
 			return pixmap;
 		}
 	}
@@ -614,7 +609,7 @@ QPixmap getPixmap(QString const & path, QString const & name, QString const & ex
 }
 
 
-QIcon getIcon(FuncRequest const & f, bool unknown, QString const & suffix)
+QIcon getIcon(FuncRequest const & f, bool unknown, bool rtl)
 {
 #if (QT_VERSION >= 0x040600)
 	if (lyxrc.use_system_theme_icons) {
@@ -631,18 +626,29 @@ QIcon getIcon(FuncRequest const & f, bool unknown, QString const & suffix)
 	}
 #endif
 
-	QString icon = iconName(f, unknown, suffix);
+	bool flip = false;
+	QString icon;
+	if (rtl) {
+		icon = iconName(f, unknown, "+rtl");
+		// No RTL icon, we'll make it ourselves
+		flip = icon.isEmpty();
+	}
+	if (icon.isEmpty())
+		icon = iconName(f, unknown);
 	if (icon.isEmpty())
 		return QIcon();
 
 	//LYXERR(Debug::GUI, "Found icon: " << icon);
 	QPixmap pixmap = QPixmap();
-	if (!getPixmap(pixmap,icon)) {
+	if (!pixmap.load(icon)) {
 		LYXERR0("Cannot load icon " << icon << " please verify resource system!");
 		return QIcon();
 	}
 
-	return QIcon(pixmap);
+	if (flip)
+		return QIcon(pixmap.transformed(QTransform().scale(-1, 1)));
+	else
+		return QIcon(pixmap);
 }
 
 
