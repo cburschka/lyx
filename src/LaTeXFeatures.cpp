@@ -1020,7 +1020,6 @@ char const * simplefeatures[] = {
 	"todonotes",
 	"forest",
 	"varwidth",
-	"tablefootnote",
 	"environ"
 };
 
@@ -1250,6 +1249,9 @@ string const LaTeXFeatures::getPackages() const
 		packages << "\\usepackage{rotating}\n";
 	if (mustProvide("rotfloat"))
 		packages << "\\usepackage{rotfloat}\n";
+	// and this must be loaded after rotating
+	if (mustProvide("tablefootnote"))
+		packages << "\\usepackage{tablefootnote}\n";
 
 	// lyxskak.sty --- newer chess support based on skak.sty
 	if (mustProvide("chess"))
