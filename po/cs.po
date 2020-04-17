@@ -32322,20 +32322,19 @@ msgstr ""
 "%2$s."
 
 #: src/insets/InsetCommandParams.cpp:522
-#, fuzzy
 msgid "Uncodable characters in inset"
-msgstr "Nekódovatelné znaky v cestě k souboru"
+msgstr "Nekódovatelné znaky ve vložce"
 
 #: src/insets/InsetCommandParams.cpp:523
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters in one of the insets are\n"
 "not representable in the current encoding and have been omitted: %1$s.\n"
 "Unchecking 'Literal' in the respective inset dialog might help."
 msgstr ""
-"Následující znaky v jedné z cest k obrázkům nejsou reprezentovatelné\n"
+"Následující znaky v jedné z vložek nejsou reprezentovatelné\n"
 "ve zvoleném kódování a byly vynechány: %1$s.\n"
-"Musíte změnit kódování nebo cestu."
+"Odškrtnutí 'Literal' v dialogu vložky může pomoci."
 
 #: src/insets/InsetExternal.cpp:403
 #, c-format
