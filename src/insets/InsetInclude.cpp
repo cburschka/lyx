@@ -358,6 +358,9 @@ void InsetInclude::setParams(InsetCommandParams const & p)
 	// invalidate the cache
 	child_buffer_ = 0;
 
+	// reset in order to allow loading new file
+	failedtoload_ = false;
+
 	InsetCommand::setParams(p);
 	set_label_ = false;
 
