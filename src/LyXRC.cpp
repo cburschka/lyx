@@ -670,7 +670,8 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 
 		case RC_SERVERPIPE:
 			if (lexrc.next())
-				lyxpipes = os::internal_path(lexrc.getString());
+				lyxpipes = subst(os::internal_path(lexrc.getString()), "$$User",
+					package().user_support().absFileName());
 			break;
 
 		case RC_CT_ADDITIONS_UNDERLINED:
