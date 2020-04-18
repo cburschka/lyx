@@ -47,6 +47,13 @@ typedef map<std::string, PersonalWordList *> LangPersonalWordList;
 
 typedef vector<WordLangTuple> IgnoreList;
 
+docstring remap_result(docstring const s)
+{
+	// substitute RIGHT SINGLE QUOTATION MARK
+	// by APOSTROPHE
+	return subst(s, 0x2019, 0x0027);
+}
+
 } // namespace
 
 
@@ -418,14 +425,14 @@ void HunspellChecker::suggest(WordLangTuple const & wl,
 #ifdef HAVE_HUNSPELL_CXXABI
 	vector<string> wlst = h->suggest(word_to_check);
 	for (auto const s : wlst)
-		suggestions.push_back(from_iconv_encoding(s, encoding));
+		suggestions.push_back(remap_result(from_iconv_encoding(s, encoding)));
 #else
 	char ** suggestion_list;
 	int const suggestion_number = h->suggest(&suggestion_list, word_to_check.c_str());
 	if (suggestion_number <= 0)
 		return;
 	for (int i = 0; i != suggestion_number; ++i)
-		suggestions.push_back(from_iconv_encoding(suggestion_list[i], encoding));
+		suggestions.push_back(remap_result(from_iconv_encoding(suggestion_list[i], encoding)));
 	h->free_list(&suggestion_list, suggestion_number);
 #endif
 }
