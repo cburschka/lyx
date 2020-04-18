@@ -1002,9 +1002,11 @@ struct Sleep : QThread
 
 bool LyXComm::loadFilesInOtherInstance()
 {
-	if (theFilesToLoad().empty())
+	if (theFilesToLoad().empty()) {
+		LYXERR0("LyX is already running in another instance\n"
+			"and 'use single instance' is active.");
 		return true;
-
+	}
 	int pipefd;
 	int loaded_files = 0;
 	FileName const pipe(inPipeName());
