@@ -141,7 +141,7 @@ string cl_user_support;
 
 string geometryArg;
 
-LyX * singleton_ = 0;
+LyX * singleton_ = nullptr;
 
 void showFileError(string const & error)
 {
@@ -155,7 +155,9 @@ void showFileError(string const & error)
 /// The main application class private implementation.
 struct LyX::Impl {
 	Impl()
-		: latexfonts_(0), spell_checker_(0), apple_spell_checker_(0), aspell_checker_(0), enchant_checker_(0), hunspell_checker_(0)
+		: latexfonts_(nullptr), spell_checker_(nullptr),
+		  apple_spell_checker_(nullptr), aspell_checker_(nullptr),
+		  enchant_checker_(nullptr), hunspell_checker_(nullptr)
 	{}
 
 	~Impl()
@@ -250,14 +252,14 @@ frontend::Application * theApp()
 	if (singleton_)
 		return singleton_->pimpl_->application_.get();
 	else
-		return 0;
+		return nullptr;
 }
 
 
 LyX::~LyX()
 {
 	delete pimpl_;
-	singleton_ = 0;
+	singleton_ = nullptr;
 }
 
 
@@ -397,11 +399,9 @@ int LyX::exec(int & argc, char * argv[])
 	if (!pimpl_->lyx_server_->deferredLoadingToOtherInstance())
 		exit_status = pimpl_->application_->exec();
 	else if (!pimpl_->files_to_load_.empty()) {
-		vector<string>::const_iterator it = pimpl_->files_to_load_.begin();
-		vector<string>::const_iterator end = pimpl_->files_to_load_.end();
 		lyxerr << _("The following files could not be loaded:") << endl;
-		for (; it != end; ++it)
-			lyxerr << *it << endl;
+		for (auto const & f : pimpl_->files_to_load_)
+			lyxerr << f << endl;
 	}
 
 	prepareExit();
@@ -1008,7 +1008,7 @@ bool LyX::init()
 	pimpl_->toplevel_keymap_.read("site");
 	pimpl_->toplevel_keymap_.read(lyxrc.bind_file);
 	// load user bind file user.bind
-	pimpl_->toplevel_keymap_.read("user", 0, KeyMap::MissingOK);
+	pimpl_->toplevel_keymap_.read("user", nullptr, KeyMap::MissingOK);
 
 	if (lyxerr.debugging(Debug::LYXRC))
 		lyxrc.print();
@@ -1639,7 +1639,7 @@ void setSpellChecker()
 			singleton_->pimpl_->apple_spell_checker_ = new AppleSpellChecker;
 		singleton_->pimpl_->spell_checker_ = singleton_->pimpl_->apple_spell_checker_;
 #else
-		singleton_->pimpl_->spell_checker_ = 0;
+		singleton_->pimpl_->spell_checker_ = nullptr;
 #endif
 	} else if (lyxrc.spellchecker == "aspell") {
 #if defined(USE_ASPELL)
@@ -1647,7 +1647,7 @@ void setSpellChecker()
 			singleton_->pimpl_->aspell_checker_ = new AspellChecker;
 		singleton_->pimpl_->spell_checker_ = singleton_->pimpl_->aspell_checker_;
 #else
-		singleton_->pimpl_->spell_checker_ = 0;
+		singleton_->pimpl_->spell_checker_ = nullptr;
 #endif
 	} else if (lyxrc.spellchecker == "enchant") {
 #if defined(USE_ENCHANT)
@@ -1655,7 +1655,7 @@ void setSpellChecker()
 			singleton_->pimpl_->enchant_checker_ = new EnchantChecker;
 		singleton_->pimpl_->spell_checker_ = singleton_->pimpl_->enchant_checker_;
 #else
-		singleton_->pimpl_->spell_checker_ = 0;
+		singleton_->pimpl_->spell_checker_ = nullptr;
 #endif
 	} else if (lyxrc.spellchecker == "hunspell") {
 #if defined(USE_HUNSPELL)
@@ -1663,10 +1663,10 @@ void setSpellChecker()
 			singleton_->pimpl_->hunspell_checker_ = new HunspellChecker;
 		singleton_->pimpl_->spell_checker_ = singleton_->pimpl_->hunspell_checker_;
 #else
-		singleton_->pimpl_->spell_checker_ = 0;
+		singleton_->pimpl_->spell_checker_ = nullptr;
 #endif
 	} else {
-		singleton_->pimpl_->spell_checker_ = 0;
+		singleton_->pimpl_->spell_checker_ = nullptr;
 	}
 	if (singleton_->pimpl_->spell_checker_) {
 		singleton_->pimpl_->spell_checker_->changeNumber(speller_change_number);
