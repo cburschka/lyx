@@ -673,7 +673,7 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 				string userdir = package().user_support().absFileName();
 				if (userdir.back() == '/')
 				  userdir = userdir.substr(0, userdir.size()-1);
-				lyxpipes = subst(os::internal_path(lexrc.getString()), "$$User",
+				lyxpipes = subst(os::internal_path(lexrc.getString()), "$$UserDir",
 					userdir);
 			}
 			break;
