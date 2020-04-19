@@ -12,14 +12,14 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-04-16 17:22-0400\n"
-"PO-Revision-Date: 2019-05-09 00:28+0300\n"
+"PO-Revision-Date: 2020-04-19 12:17+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Bookmarks: 1979,613,-1,-1,-1,-1,-1,-1,-1,-1\n"
@@ -1190,7 +1190,7 @@ msgstr "Страница:"
 
 #: src/frontends/qt4/ui/ColorUi.ui:237
 msgid "Shaded boxes:"
-msgstr "Затенённые блоки:"
+msgstr "Закрашенные блоки:"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:22
 msgid "Compare Revisions"
@@ -1285,7 +1285,7 @@ msgstr "Восстановить параметры по умолчанию дл
 
 #: src/frontends/qt4/ui/DocumentUi.ui:115
 msgid "Use Class Defaults"
-msgstr "Использовать умолчания для класса"
+msgstr "По умолчанию для класса"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:130
 msgid "Save settings as LyX's default document settings"
@@ -1791,7 +1791,7 @@ msgstr "Масштабировать машинописный шрифт до р
 
 #: src/frontends/qt4/ui/FontUi.ui:236
 msgid "&Math:"
-msgstr "&Математика:"
+msgstr "&Математический:"
 
 #: src/frontends/qt4/ui/FontUi.ui:246
 msgid "Select the math typeface"
@@ -1914,7 +1914,7 @@ msgstr "Угол (градусы):"
 #: src/frontends/qt4/ui/GraphicsUi.ui:292
 #: src/frontends/qt4/ui/GraphicsUi.ui:305
 msgid "File name of image"
-msgstr "Название файла с изображением"
+msgstr "Имя файла с изображением"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:313
 msgid "&Coordinates and Clipping"
@@ -2816,7 +2816,7 @@ msgstr "Вертикальное выравнивание"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:171
 msgid "&Vertical:"
-msgstr "&Вертикально:"
+msgstr "&Вертикальное:"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:190
 msgid "Horizontal alignment per column (l,c,r)"
@@ -2824,7 +2824,7 @@ msgstr "Горизонтальное выравнивание в столбце 
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:197
 msgid "&Horizontal:"
-msgstr "&Горизонтально:"
+msgstr "&Горизонтальное:"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:216
 msgid "&Type:"
@@ -3589,7 +3589,7 @@ msgstr "Сессии"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:38
 msgid "Restore window layouts and &geometries"
-msgstr "Восстанавливать положение и &геометрию окна"
+msgstr "Восстанавливать положение и размер окон"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:45
 msgid "Restore to the cursor position when the file was last closed"
@@ -5266,7 +5266,7 @@ msgstr "Показывать &путь"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:20
 msgid "Paragraph Separation"
-msgstr "Настройки абзаца"
+msgstr "Разделение абзацев"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:35
 msgid "Indent consecutive paragraphs"
@@ -5286,7 +5286,7 @@ msgstr "Верт. промежуток"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:197
 msgid "Spacing"
-msgstr "Отступ"
+msgstr "Интервал"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:215
 msgid "&Line spacing:"
@@ -5603,7 +5603,7 @@ msgstr ""
 #: lib/citeengines/biblatex-natbib.citeengine:143
 #: lib/citeengines/biblatex.citeengine:133
 msgid "Footnote"
-msgstr "Подстрочная сноска"
+msgstr "Сноска"
 
 #: lib/citeengines/biblatex-natbib.citeengine:144
 #: lib/citeengines/biblatex.citeengine:134
@@ -8806,7 +8806,7 @@ msgstr "Улица"
 
 #: lib/layouts/agu_stdtitle.inc:484 lib/layouts/agu_stdtitle.inc:486
 msgid "Postcode"
-msgstr "Почтовый код"
+msgstr "Почтовый индекс"
 
 #: lib/layouts/agums.layout:3
 msgid "American Geophysical Union (AGUPLUS Manuscript)"
@@ -9162,7 +9162,7 @@ msgstr "FitBitmap"
 #: lib/layouts/powerdot.layout:332 lib/layouts/stdlists.inc:33
 #: lib/layouts/stdlists.inc:62 lib/layouts/theorems-case.inc:53
 msgid "Custom Item|s"
-msgstr "Пользовательская вставка"
+msgstr "Настраиваемый элемент"
 
 #: lib/layouts/apa.layout:375 lib/layouts/apa.layout:400
 #: lib/layouts/apa6.layout:476 lib/layouts/apa6.layout:501
@@ -9983,11 +9983,11 @@ msgstr "Краткое заглавие на основном языке"
 
 #: lib/layouts/bicaption.module:45
 msgid "Short title for the main(document) language"
-msgstr "Краткое название основного языка (документа)"
+msgstr "Краткое заглавие на основном языке документа"
 
 #: lib/layouts/bicaption.module:49
 msgid "Main Language Text"
-msgstr "Основной язык текста"
+msgstr "Текст на основном языке"
 
 #: lib/layouts/bicaption.module:50
 msgid "Text in the main(document) language"
@@ -9995,11 +9995,11 @@ msgstr "Текст на основном языке"
 
 #: lib/layouts/bicaption.module:53
 msgid "Second Language Short Title"
-msgstr "Краткое заглавие для второго языка"
+msgstr "Краткое заглавие на втором языке"
 
 #: lib/layouts/bicaption.module:54
 msgid "Short title for the second language"
-msgstr "Краткое заглавие для второго языка"
+msgstr "Краткое заглавие на втором языке"
 
 #: lib/layouts/book.layout:3
 msgid "Book (Standard Class)"
@@ -11167,23 +11167,23 @@ msgstr ""
 
 #: lib/layouts/endnotes.module:2 lib/layouts/endnotes.module:13
 msgid "Endnote"
-msgstr "Примечание"
+msgstr "Концевая сноска"
 
 #: lib/layouts/endnotes.module:6
 msgid ""
 "Adds an endnote inset, in addition to footnotes. You will need to add "
 "\\theendnotes in TeX-code where you want the endnotes to appear."
 msgstr ""
-"Добавляет вставку \"Примечание\", в дополнение к сноскам. Вам нужно будет "
-"добавить \\theendnotes в код TeX там, где вы хотите увидеть примечания."
+"Добавляет вставку \"Концевая сноска\", в дополнение к сноскам. Вам нужно "
+"будет добавить \\theendnotes в код TeX там, где вы хотите увидеть эти сноски."
 
 #: lib/layouts/endnotes.module:10
 msgid "Endnote ##"
-msgstr "Примечание ##"
+msgstr "Концевая сноска ##"
 
 #: lib/layouts/endnotes.module:23
 msgid "endnote"
-msgstr "примечание"
+msgstr "концевая сноска"
 
 #: lib/layouts/entcs.layout:3
 msgid "Electronic Notes in Theor. Comp. Sc. (ENTCS)"
@@ -12398,19 +12398,19 @@ msgstr "Блок масштабирования"
 
 #: lib/layouts/graphicboxes.module:31
 msgid "H-Factor"
-msgstr "H-Factor"
+msgstr "Коэффициент гориз. масштаба"
 
 #: lib/layouts/graphicboxes.module:32
 msgid "Insert horizontal scale factor (1 = 100%)"
-msgstr "Вставить горизонтальный масштаб (1 = 100%)"
+msgstr "Горизонтальный масштаб (1 = 100%)"
 
 #: lib/layouts/graphicboxes.module:38
 msgid "V-Factor"
-msgstr "V-Factor"
+msgstr "Коэффициент верт. масштаба"
 
 #: lib/layouts/graphicboxes.module:39
 msgid "Insert vertical scale factor (1 = 100%)"
-msgstr "Вставить вертикальный масштаб (1 = 100%)"
+msgstr "Вертикальный масштаб (1 = 100%)"
 
 #: lib/layouts/graphicboxes.module:43 lib/layouts/graphicboxes.module:45
 msgid "Resizebox"
@@ -12431,7 +12431,7 @@ msgstr "Блок вращения"
 # ?
 #: lib/layouts/graphicboxes.module:68
 msgid "Origin"
-msgstr "Начало"
+msgstr "Центр"
 
 #: lib/layouts/graphicboxes.module:69
 msgid "Rotation origin; syntax: 'origin=lt' (for top left corner)"
@@ -13103,7 +13103,7 @@ msgstr "параметры Sweave"
 
 #: lib/layouts/knitr.module:44 lib/layouts/sweave.module:54
 msgid "S/R expression"
-msgstr "&Регулярное выражение"
+msgstr "Выражение на языке S/R"
 
 #: lib/layouts/knitr.module:45 lib/layouts/sweave.module:55
 msgid "S/R expr"
@@ -13346,7 +13346,7 @@ msgstr "Фрагмент ##"
 
 #: lib/layouts/litinsets.inc:15
 msgid "Literate programming"
-msgstr "Литературное программирование"
+msgstr "Грамотное программирование"
 
 #: lib/layouts/litinsets.inc:17 lib/layouts/litinsets.inc:18
 msgid "Chunk"
@@ -13933,11 +13933,11 @@ msgstr "Введите число столбцов здесь"
 #: lib/layouts/multicol.module:26 lib/layouts/svcommon.inc:530
 #: lib/layouts/svcommon.inc:539 lib/layouts/svmult.layout:143
 msgid "Preface"
-msgstr "Предисловие"
+msgstr "Введение"
 
 #: lib/layouts/multicol.module:27
 msgid "An optional preface"
-msgstr "Необязательное предисловие"
+msgstr "Необязательное введение"
 
 #: lib/layouts/multicol.module:30
 msgid "Space Before Page Break"
@@ -14041,7 +14041,7 @@ msgstr "Подзаголовок"
 
 #: lib/layouts/paralist.module:2
 msgid "Paragraph Lists (paralist)"
-msgstr "Список абзацев (paralist)"
+msgstr "Абзацные списки (paralist)"
 
 #: lib/layouts/paralist.module:9
 msgid ""
@@ -15517,7 +15517,7 @@ msgstr "Формула ##"
 
 #: lib/layouts/stdcounters.inc:72 lib/layouts/stdcounters.inc:76
 msgid "Footnote ##"
-msgstr "Подстрочная сноска ##"
+msgstr "Сноска ##"
 
 #: lib/layouts/stdcounters.inc:77
 msgid "\\fnsymbol{thanks}"
@@ -15541,7 +15541,7 @@ msgstr "Примечания на полях"
 
 #: lib/layouts/stdinsets.inc:12
 msgid "Footnotes"
-msgstr "Подстрочные сноски"
+msgstr "Сноски"
 
 #: lib/layouts/stdinsets.inc:13
 msgid "Notes"
@@ -15973,7 +15973,7 @@ msgstr "Цветной блок (динамический)"
 
 #: lib/layouts/tcolorbox.module:33
 msgid "Fit Color Box"
-msgstr "Поместить цветной блок"
+msgstr "Подстраивающийся цветной блок"
 
 #: lib/layouts/tcolorbox.module:35
 msgid "Color Box (Fit Contents)"
@@ -17073,7 +17073,7 @@ msgstr "Боснийский"
 
 #: lib/languages:303
 msgid "Portuguese (Brazil)"
-msgstr "Португальский (Бразильский)"
+msgstr "Португальский (Бразилия)"
 
 #: lib/languages:313
 msgid "Breton"
@@ -17105,7 +17105,7 @@ msgstr "Китайский (упрощённый)"
 
 #: lib/languages:389
 msgid "Chinese (traditional)"
-msgstr "Китайский (Тайвань)"
+msgstr "Китайский (традиционный)"
 
 #: lib/languages:399
 msgid "Coptic"
@@ -17194,7 +17194,7 @@ msgstr "Греческий (политонический)"
 
 #: lib/languages:639 src/frontends/qt4/GuiSymbols.cpp:63
 msgid "Hebrew"
-msgstr "Еврейский"
+msgstr "Иврит"
 
 #: lib/languages:655
 msgid "Hindi"
@@ -17979,9 +17979,8 @@ msgid "Split Cell|C"
 msgstr "Разбить ячейку|Р"
 
 #: lib/ui/stdcontext.inc:69
-#, fuzzy
 msgid "Rows & Columns| "
-msgstr "Строки и столбцы|к"
+msgstr "Строки и столбцы"
 
 #: lib/ui/stdcontext.inc:70
 msgid "Add Line Above|o"
@@ -18097,7 +18096,7 @@ msgstr "Настройки...|Н"
 
 #: lib/ui/stdcontext.inc:116
 msgid "Go Back|G"
-msgstr "Назад|н"
+msgstr "Вернуться назад|В"
 
 #: lib/ui/stdcontext.inc:118 lib/ui/stdcontext.inc:524
 msgid "Copy as Reference|C"
@@ -18891,7 +18890,7 @@ msgstr "Отменить|О"
 
 #: lib/ui/stdmenus.inc:104
 msgid "Redo|R"
-msgstr "Повторить|в"
+msgstr "Вернуть|В"
 
 #: lib/ui/stdmenus.inc:110
 msgid "Paste Special"
@@ -19379,7 +19378,7 @@ msgstr "Гиперссылка...|Г"
 
 #: lib/ui/stdmenus.inc:393
 msgid "Footnote|F"
-msgstr "Подстрочная сноска|н"
+msgstr "Сноска|н"
 
 #: lib/ui/stdmenus.inc:394
 msgid "Marginal Note|M"
@@ -19671,11 +19670,11 @@ msgstr "Тезаурус...|Т"
 
 #: lib/ui/stdmenus.inc:596
 msgid "Statistics...|a"
-msgstr "Статистика...|С"
+msgstr "Статистика|С"
 
 #: lib/ui/stdmenus.inc:597
 msgid "Check TeX|h"
-msgstr "Проверить LaTeX|р"
+msgstr "Проверить TeX|р"
 
 #: lib/ui/stdmenus.inc:598
 msgid "TeX Information|I"
@@ -19735,7 +19734,7 @@ msgstr "Специальные руководства"
 
 #: lib/ui/stdmenus.inc:624
 msgid "About LyX|X"
-msgstr "О программе LyX...|X"
+msgstr "О программе LyX|X"
 
 #: lib/ui/stdmenus.inc:628
 msgid "Beamer Presentations|B"
@@ -19771,7 +19770,7 @@ msgstr "Многоязычные подписи"
 
 #: lib/ui/stdmenus.inc:636
 msgid "Paralist|t"
-msgstr "Список абзацев Paralist|t"
+msgstr "Абзацные списки Paralist|t"
 
 #: lib/ui/stdmenus.inc:637
 msgid "PDF comments|D"
@@ -19955,7 +19954,7 @@ msgstr "Вставить обозначение"
 
 #: lib/ui/stdtoolbars.inc:129
 msgid "Insert footnote"
-msgstr "Вставить подстрочную сноску"
+msgstr "Вставить сноску"
 
 #: lib/ui/stdtoolbars.inc:130
 msgid "Insert margin note"
@@ -25533,7 +25532,7 @@ msgstr "Ошибка при экспортировании в формат %1$s.
 
 #: src/Buffer.cpp:2833
 msgid "Error generating literate programming code."
-msgstr "Ошибка при создании кода литературного программирования."
+msgstr "Ошибка при создании кода грамотного программирования."
 
 #: src/Buffer.cpp:2909
 #, c-format
@@ -28889,7 +28888,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiAbout.cpp:219
 msgid "Built from git commit hash "
-msgstr "Построен из коммита Git с хэшем "
+msgstr "Собран из коммита Git с хэшем "
 
 #: src/frontends/qt4/GuiAbout.cpp:226
 msgid "Library directory: "
@@ -30546,7 +30545,7 @@ msgstr "LyX2LyX"
 
 #: src/frontends/qt4/GuiLog.cpp:290
 msgid "Literate Programming Build Log"
-msgstr "Журнал создания для литературного программирования"
+msgstr "Журнал создания для грамотного программирования"
 
 #: src/frontends/qt4/GuiLog.cpp:292
 msgid "lyx2lyx Error Log"
@@ -30562,7 +30561,7 @@ msgstr "Журнал не найден."
 
 #: src/frontends/qt4/GuiLog.cpp:325
 msgid "No literate programming build log file found."
-msgstr "Не найден журнал создания для литературного программирования."
+msgstr "Не найден журнал создания для грамотного программирования."
 
 #: src/frontends/qt4/GuiLog.cpp:328
 msgid "No lyx2lyx error log file found."
@@ -32493,20 +32492,19 @@ msgstr ""
 "%2$s."
 
 #: src/insets/InsetCommandParams.cpp:522
-#, fuzzy
 msgid "Uncodable characters in inset"
-msgstr "Некодируемый символ в пути файла"
+msgstr "Некодируемые символы во вставке"
 
 #: src/insets/InsetCommandParams.cpp:523
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters in one of the insets are\n"
 "not representable in the current encoding and have been omitted: %1$s.\n"
 "Unchecking 'Literal' in the respective inset dialog might help."
 msgstr ""
-"Следующие символы в одном из листингов программ невозможно\n"
+"Следующие символы в одной из вставок невозможно\n"
 "представить в текущей кодировке и они будут пропущены:\n"
-"%1$s."
+"%1$s. Может помочь отключение опции 'Буквально' в диалоговом окне вставки."
 
 #: src/insets/InsetExternal.cpp:403
 #, c-format
@@ -32564,20 +32562,19 @@ msgid "No conversion of %1$s is needed after all"
 msgstr "Преобразование %1$s не нужно"
 
 #: src/insets/InsetGraphics.cpp:906
-#, fuzzy
 msgid "Uncodable characters in path"
-msgstr "Некодируемый символ в пути файла"
+msgstr "Некодируемые символы в пути"
 
 #: src/insets/InsetGraphics.cpp:907
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters in one of the graphic paths are\n"
 "not representable in the current encoding and have been omitted: %1$s.\n"
 "You need to adapt either the encoding or the path."
 msgstr ""
-"Следующие символы в одном из листингов программ невозможно\n"
+"Следующие символы в одном из путей для графики невозможно\n"
 "представить в текущей кодировке и они будут пропущены:\n"
-"%1$s."
+"%1$s. Необходимо изменить кодировку или путь."
 
 #: src/insets/InsetGraphics.cpp:932
 #, c-format
@@ -33472,7 +33469,7 @@ msgstr "От ширины текста в %"
 
 #: src/lengthcommon.cpp:44
 msgid "Column Width %"
-msgstr "От ширины столбца в %"
+msgstr "От ширины колонки в %"
 
 #: src/lengthcommon.cpp:44
 msgid "Page Width %"
@@ -33492,7 +33489,7 @@ msgstr "От высоты страницы в %"
 
 #: src/lengthcommon.cpp:45
 msgid "Line Distance %"
-msgstr "От расстояния строки в %"
+msgstr "От междустрочного интервала в %"
 
 #: src/lyxfind.cpp:128
 msgid "Search error"
