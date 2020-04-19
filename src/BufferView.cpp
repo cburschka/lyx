@@ -938,7 +938,10 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 	if (height_ == 0)
 		return false;
 
-	LYXERR(Debug::SCROLLING, "recentering!");
+	if (recenter)
+	  LYXERR(Debug::SCROLLING, "recentering and scrolling to cursor");
+	else
+	  LYXERR(Debug::SCROLLING, "scrolling to cursor");
 
 	CursorSlice const & bot = dit.bottom();
 	TextMetrics & tm = d->text_metrics_[bot.text()];
