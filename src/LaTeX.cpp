@@ -840,10 +840,15 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 			// get the next line
 			string tmp;
 			int count = 0;
+			// We also collect intermediate lines
+			// This is needed for errors in preamble
+			string intermediate;
 			do {
 				if (!getline(ifs, tmp))
 					break;
 				tmp = rtrim(tmp, "\r");
+				if (!prefixIs(tmp, "l."))
+					intermediate += tmp;
 				// 15 is somewhat arbitrarily chosen, based on practice.
 				// We used 10 for 14 years and increased it to 15 when we
 				// saw one case.
@@ -865,6 +870,15 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				sscanf(tmp.c_str(), "l.%d", &line);
 				// get the rest of the message:
 				string errstr(tmp, tmp.find(' '));
+				bool preamble_error = false;
+				if (suffixIs(errstr, "\\begin{document}")) {
+					// this is an error in preamble
+					// the real error is in the
+					// intermediate lines
+					errstr = intermediate;
+					tmp = intermediate;
+					preamble_error = true;
+				}
 				errstr += '\n';
 				getline(ifs, tmp);
 				tmp = rtrim(tmp, "\r");
@@ -877,6 +891,9 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 					getline(ifs, tmp);
 					tmp = rtrim(tmp, "\r");
 				}
+				if (preamble_error)
+					// Add a note that the error is to be found in preamble
+					errstr += "\n" + to_utf8(_("(NOTE: The erroneous command is in the preamble)"));
 				LYXERR(Debug::LATEX, "line: " << line << '\n'
 					<< "Desc: " << desc << '\n' << "Text: " << errstr);
 				if (line == last_line)

@@ -76,6 +76,14 @@ What's new
 
 * USER INTERFACE
 
+- Avoid crash in some cases where a dialog is shown during operation
+  (bug 11763).
+
+- Fix crash with nested insets when spaces are removed automatically (bug 11777).
+
+- Fix a crash reported on lyx users.
+  There was an uninitialized buffer member of MathData in LFUN dispatch.
+
 - Fix backspace deletion of selected items with change tracking (bug 11630).
 
 - Fix display glitch where the change tracking cue blinks with the cursor
@@ -84,9 +92,6 @@ What's new
 - Consider shorthand in biblatex cite display (bug 11696).
 
 - Properly resize columns of child document table widget.
-
-- Fix a crash reported on lyx users.
-  There was an uninitialized buffer member of MathData in LFUN dispatch.
 
 - Fix problem with validation of InsetLayout.
 
@@ -103,13 +108,11 @@ What's new
 - Disallow adding columns with gathered environment as this is not
   supported (bug 11812).
 
-- Preserve paragarph spacing when breaking a paragraph at the start
+- Preserve paragraph spacing when breaking a paragraph at the start
   (bug 11817).
 
-- Avoid crash in some cases where a dialog is shown during operation
-  (bug 11763).
+- Improve reporting of undefined control sequences in preamble (bug 11844).
 
-- Fix crash with nested insets when spaces are removed automatically (bug 11777).
 
 * INTERNALS
 
