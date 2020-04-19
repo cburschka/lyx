@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-01-03 14:59+0100\n"
-"PO-Revision-Date: 2020-03-26 13:45+0200\n"
+"PO-Revision-Date: 2020-04-19 12:42+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -1338,7 +1338,7 @@ msgstr "&Файл"
 #: lib/layouts/agu_stdclass.inc:84 lib/layouts/db_stdcharstyles.inc:6
 #: lib/layouts/db_stdcharstyles.inc:8
 msgid "Filename"
-msgstr "Название файла"
+msgstr "Имя файла"
 
 #: src/frontends/qt/ui/ExternalUi.ui:76 src/frontends/qt/ui/GraphicsUi.ui:295
 #: src/frontends/qt/ui/IncludeUi.ui:89
@@ -1956,7 +1956,7 @@ msgstr "Угол (градусы):"
 
 #: src/frontends/qt/ui/GraphicsUi.ui:292 src/frontends/qt/ui/GraphicsUi.ui:305
 msgid "File name of image"
-msgstr "Название файла с изображением"
+msgstr "Имя файла с изображением"
 
 #: src/frontends/qt/ui/GraphicsUi.ui:313
 msgid "&Coordinates and Clipping"
@@ -4935,7 +4935,7 @@ msgstr "Искать &только целые слова"
 #: src/frontends/qt/ui/SendtoUi.ui:50
 msgid "Process the converted file with this command ($$FName = file name)"
 msgstr ""
-"Обработать преобразованный файл с помощью команды ($$FName = название файла)"
+"Обработать преобразованный файл с помощью команды ($$FName = имя файла)"
 
 #: src/frontends/qt/ui/SendtoUi.ui:98
 msgid "Export for&mats:"
@@ -5100,7 +5100,7 @@ msgstr "Настройки ячейки"
 
 #: src/frontends/qt/ui/TabularUi.ui:105
 msgid "Rotate this cell by 90 degrees"
-msgstr "Повернуть ячейку на 90 градусов"
+msgstr "Повернуть ячейку"
 
 #: src/frontends/qt/ui/TabularUi.ui:121 src/frontends/qt/ui/TabularUi.ui:268
 msgid "rotation angle"
@@ -5128,7 +5128,7 @@ msgstr "Верт. выравнивание таблицы"
 
 #: src/frontends/qt/ui/TabularUi.ui:252
 msgid "Rotate the table by 90 degrees"
-msgstr "Повернуть таблицу на 90 градусов"
+msgstr "Повернуть таблицу"
 
 #: src/frontends/qt/ui/TabularUi.ui:255
 msgid "&Rotate"
@@ -19198,7 +19198,7 @@ msgstr "Вставка|т"
 
 #: lib/ui/stdcontext.inc:65
 msgid "Rows & Columns| "
-msgstr "Строки и столбцы|к"
+msgstr "Строки и столбцы"
 
 #: lib/ui/stdcontext.inc:67
 msgid "Add Line Above|o"
@@ -19845,7 +19845,7 @@ msgstr "Рамки"
 
 #: lib/ui/stdcontext.inc:476
 msgid "Alignment|i"
-msgstr "Выравнивание|В"
+msgstr "Выравнивание"
 
 #: lib/ui/stdcontext.inc:477
 msgid "Columns/Rows|C"
@@ -20112,7 +20112,7 @@ msgstr "Отменить|О"
 
 #: lib/ui/stdmenus.inc:106
 msgid "Redo|R"
-msgstr "Повторить|р"
+msgstr "Вернуть|р"
 
 #: lib/ui/stdmenus.inc:112
 msgid "Paste Special"
@@ -20960,7 +20960,7 @@ msgstr "Статистика|С"
 
 #: lib/ui/stdmenus.inc:624
 msgid "Check TeX|h"
-msgstr "Проверить LaTeX|р"
+msgstr "Проверить TeX|р"
 
 #: lib/ui/stdmenus.inc:625
 msgid "TeX Information|I"
@@ -21384,11 +21384,11 @@ msgstr "Выравнивание по нижнему краю"
 
 #: lib/ui/stdtoolbars.inc:183
 msgid "Rotate cell by 90 degrees or unset rotation"
-msgstr "Повернуть ячейку на 90 градусов"
+msgstr "Повернуть ячейку"
 
 #: lib/ui/stdtoolbars.inc:184
 msgid "Rotate table by 90 degrees or unset rotation"
-msgstr "Повернуть таблицу на 90 градусов"
+msgstr "Повернуть таблицу"
 
 #: lib/ui/stdtoolbars.inc:185
 msgid "Set multi-column"
@@ -27128,7 +27128,7 @@ msgstr "Ошибка при просмотре выходного файла."
 #: src/frontends/qt/Validator.cpp:222 src/insets/ExternalSupport.cpp:395
 #: src/insets/InsetGraphics.cpp:691 src/insets/InsetInclude.cpp:597
 msgid "Invalid filename"
-msgstr "Неправильное название файла"
+msgstr "Неправильное имя файла"
 
 #: src/Buffer.cpp:3395 src/insets/ExternalSupport.cpp:396
 #: src/insets/InsetGraphics.cpp:692 src/insets/InsetInclude.cpp:598
@@ -28855,7 +28855,7 @@ msgstr "Неверный параметр командной строки `%1$s'
 
 #: src/LyX.cpp:497
 msgid "Missing filename for this operation."
-msgstr "Не указано название файла для этой операции."
+msgstr "Не указано имя файла для этой операции."
 
 #: src/LyX.cpp:546
 #, c-format
@@ -29124,7 +29124,7 @@ msgstr "Отсутствует тип файла [например, latex, ps, .
 
 #: src/LyX.cpp:1315
 msgid "Missing filename for --import"
-msgstr "Не указано название файла для --import"
+msgstr "Не указано имя файла для --import"
 
 #: src/LyXRC.cpp:2949
 msgid ""
@@ -30476,7 +30476,7 @@ msgstr "По умолчанию для документа"
 
 #: src/frontends/qt/FloatPlacement.h:38 src/frontends/qt/GuiDocument.cpp:1760
 msgid "Float Settings"
-msgstr "Плавающий объект"
+msgstr "Плавающие объекты"
 
 #: src/frontends/qt/GuiAbout.cpp:51
 msgid "ERROR: LyX wasn't able to find the CREDITS file\n"
@@ -30568,7 +30568,7 @@ msgstr ""
 
 #: src/frontends/qt/GuiAbout.cpp:217
 msgid "Built from git commit hash "
-msgstr "Построен из коммита Git с хэшем "
+msgstr "Собран из коммита Git с хэшем "
 
 #: src/frontends/qt/GuiAbout.cpp:224
 msgid "Library directory: "
@@ -32878,7 +32878,7 @@ msgstr "Установите путь к словарям Hunspell"
 
 #: src/frontends/qt/GuiPrefs.cpp:1526
 msgid "Give a filename for the LyX server pipe"
-msgstr "Укажите название файла для канала LyX-сервера"
+msgstr "Укажите имя файла для канала LyX-сервера"
 
 #: src/frontends/qt/GuiPrefs.cpp:1539 src/frontends/qt/GuiSpellchecker.cpp:594
 msgid "Spellchecker"
@@ -33795,11 +33795,11 @@ msgstr "Создать каталог категории?"
 
 #: src/frontends/qt/GuiView.cpp:2785
 msgid "Choose a filename to save template as"
-msgstr "Введите название файла для сохраняемого шаблона"
+msgstr "Введите имя файла для сохраняемого шаблона"
 
 #: src/frontends/qt/GuiView.cpp:2786
 msgid "Choose a filename to save document as"
-msgstr "Введите название файла для сохраняемого документа"
+msgstr "Введите имя файла для сохраняемого документа"
 
 #: src/frontends/qt/GuiView.cpp:2822
 #, c-format
@@ -33851,7 +33851,7 @@ msgstr "Копировать"
 
 #: src/frontends/qt/GuiView.cpp:2909
 msgid "Choose a filename to export the document as"
-msgstr "Введите название файла для экспортируемого документа"
+msgstr "Введите имя файла для экспортируемого документа"
 
 #: src/frontends/qt/GuiView.cpp:2913
 msgid "Guess from extension (*.*)"
@@ -35932,7 +35932,7 @@ msgstr "От ширины текста в %"
 
 #: src/lengthcommon.cpp:44
 msgid "Column Width %"
-msgstr "От ширины столбца в %"
+msgstr "От ширины колонки в %"
 
 #: src/lengthcommon.cpp:44
 msgid "Page Width %"
@@ -35952,7 +35952,7 @@ msgstr "От высоты страницы в %"
 
 #: src/lengthcommon.cpp:45
 msgid "Line Distance %"
-msgstr "От расстояния строки в %"
+msgstr "От междустрочного интервала в %"
 
 #: src/lyxfind.cpp:236
 msgid "Search error"
