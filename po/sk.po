@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-04-03 20:11+0200\n"
-"PO-Revision-Date: 2020-04-03 18:20+0000\n"
+"POT-Creation-Date: 2020-04-19 11:06+0200\n"
+"PO-Revision-Date: 2020-04-19 09:12+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -15597,6 +15597,10 @@ msgstr "REVTeX (zastaralá verzia)"
 msgid "REVTeX (V. 4.1)"
 msgstr "REVTeX (V. 4.1)"
 
+#: lib/layouts/revtex4-2.layout:3
+msgid "REVTeX (V. 4.2)"
+msgstr "REVTeX (V. 4.2)"
+
 #: lib/layouts/revtex4-1.layout:88 lib/layouts/revtex4.layout:155
 msgid "Affiliation (alternate)"
 msgstr "Príslušenstvo(alternatívne)"
@@ -28782,6 +28786,10 @@ msgstr "Spúšťam BibTeX."
 #: src/LaTeX.cpp:523
 msgid "Running MakeIndex for nomencl."
 msgstr "Spúšťam makeindex pre nomencl."
+
+#: src/LaTeX.cpp:1107
+msgid "(NOTE: The erroneous command is in the preamble)"
+msgstr "(Pozor: Chybný príkaz je v preambule)"
 
 #: src/LaTeX.cpp:1451 src/LaTeX.cpp:1457 src/LaTeX.cpp:1466
 msgid "BibTeX error: "
