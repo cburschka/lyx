@@ -59,6 +59,11 @@ do
 	if [ -n "$LYXPIPE" -a -p "$LYXPIPE".in ]; then
 		break
 	fi
+	# now check for default pipe location
+	if [ -p "${ABS_USER_LYXDIR}"/.lyxpipe.in ]; then
+		LYXPIPE="${ABS_USER_LYXDIR}/.lyxpipe"
+		break
+	fi
 done
 
 # echo "preferences file sets lyxpipe as ${LYXPIPE}"
