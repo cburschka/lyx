@@ -132,7 +132,7 @@ lyx_install("data" ${TOP_SRC_DIR}/3rdparty scripts/evince_sync            *     
 # Install
 set(lyxrcorig "")
 set(program_suffix ${PROGRAM_SUFFIX})
-set(version_suffix ${PROGRAM_SUFFIX})
+set(version_suffix ${LYX_VERSION})
 
 if(APPLE)
   if(LYX_BUNDLE)
