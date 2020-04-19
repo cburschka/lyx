@@ -98,7 +98,7 @@ TeXAccent get_accent(FuncCode action)
 		++i;
 	}
 	struct TeXAccent temp = { static_cast<tex_accent>(0), 0,
-					  0, static_cast<FuncCode>(0)};
+					  nullptr, static_cast<FuncCode>(0)};
 	return temp;
 }
 
@@ -303,7 +303,7 @@ int Trans::load(Lexer & lex)
 			if (!lex.next(true))
 				return -1;
 
-			key_from = lex.getString()[0];
+			key_from = static_cast<unsigned char>(lex.getString()[0]);
 			LYXERR(Debug::KBMAP, "\t`" << lex.getString() << '\'');
 
 			if (!lex.next(true))
@@ -433,8 +433,8 @@ tex_accent getkeymod(string const & p)
 
 
 // TransFSMData
-TransFSMData::TransFSMData() : deadkey_(0), deadkey2_(0), init_state_(0),
-	deadkey_state_(0), combined_state_(0), currentState(0)
+TransFSMData::TransFSMData() : deadkey_(0), deadkey2_(0), init_state_(nullptr),
+	deadkey_state_(nullptr), combined_state_(nullptr), currentState(nullptr)
 {
 }
 
