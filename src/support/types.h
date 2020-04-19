@@ -28,6 +28,9 @@ namespace lyx {
 	 */
 	// FIXME: should be unsigned, but needs to be signed for a while to
 	// hold the special value -1 that is used somewhere
+	// Specifically, TexRow::getDocIteratorsFromEntries uses negative pos
+	// the way Python does: counting from the end. So maybe this should just
+	// be signed.
 	// Note that the signed property is also used in loops counting to zero.
 	typedef ptrdiff_t  pos_type;
 
