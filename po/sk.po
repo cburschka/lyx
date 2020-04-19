@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-04-16 17:22-0400\n"
-"PO-Revision-Date: 2020-03-26 10:15+0000\n"
+"POT-Creation-Date: 2020-04-19 17:46+0200\n"
+"PO-Revision-Date: 2020-04-19 15:46+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -27010,6 +27010,10 @@ msgstr "Spúšťam BibTeX."
 #: src/LaTeX.cpp:481
 msgid "Running MakeIndex for nomencl."
 msgstr "Spúšťam makeindex pre nomencl."
+
+#: src/LaTeX.cpp:896
+msgid "(NOTE: The erroneous command is in the preamble)"
+msgstr "(Pozor: Chybný príkaz je v preambule)"
 
 #: src/LaTeX.cpp:1371 src/LaTeX.cpp:1377 src/LaTeX.cpp:1386
 msgid "BibTeX error: "
