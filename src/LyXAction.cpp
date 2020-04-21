@@ -4221,6 +4221,18 @@ void LyXAction::init()
 		{ LFUN_WINDOW_NEW, "window-new", NoBuffer, Buffer },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_WINDOW_RAISE
+ * \li Action: Raises the LyX window.
+ * \li Notion: Brings the LyX window to the front. Such behavior is allowed
+               on Windows only when no other application has focus.
+               This action is used when LyX is in single instance mode.
+ * \li Syntax: window-raise
+ * \li Origin: forenr, 21 Apr 2020
+ * \endvar
+ */
+		{ LFUN_WINDOW_RAISE, "window-raise", ReadOnly | NoBuffer, Hidden },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_WORD_BACKWARD
  * \li Action: Moves the cursor to the logically previous beginning of a word.
  * \li Notion: This is not the action which should be bound to the arrow keys,

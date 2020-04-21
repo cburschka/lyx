@@ -1002,14 +1002,25 @@ struct Sleep : QThread
 
 bool LyXComm::loadFilesInOtherInstance()
 {
+	int pipefd;
+	FileName const pipe(inPipeName());
+
 	if (theFilesToLoad().empty()) {
 		LYXERR0("LyX is already running in another instance\n"
 			"and 'use single instance' is active.");
+		// Wait a while for the other instance to reset the connection
+		Sleep::millisec(200);
+		pipefd = ::open(pipe.toFilesystemEncoding().c_str(), O_WRONLY);
+		if (pipefd >= 0) {
+			string const cmd = "LYXCMD:pipe:window-raise\n";
+			if (::write(pipefd, cmd.c_str(), cmd.length()) < 0)
+				LYXERR0("Cannot communicate with running instance!");
+			::close(pipefd);
+		}
 		return true;
 	}
-	int pipefd;
+
 	int loaded_files = 0;
-	FileName const pipe(inPipeName());
 	vector<string>::iterator it = theFilesToLoad().begin();
 	while (it != theFilesToLoad().end()) {
 		FileName fname = fileSearch(string(), os::internal_path(*it),
