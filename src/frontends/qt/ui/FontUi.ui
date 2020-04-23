@@ -119,7 +119,7 @@
        <item>
         <widget class="lyx::frontend::CategorizedCombo" name="fontsRomanCO">
          <property name="toolTip">
-          <string>Select the roman (serif) typeface</string>
+          <string>Select the roman (serif) typeface. To filter the list of fonts, just start typing while the list is expanded.</string>
          </property>
         </widget>
        </item>
@@ -214,7 +214,7 @@
        <item>
         <widget class="lyx::frontend::CategorizedCombo" name="fontsSansCO">
          <property name="toolTip">
-          <string>Select the Sans Serif (grotesque) typeface</string>
+          <string>Select the Sans Serif (grotesque) typeface. To filter the list of fonts, just start typing while the list is expanded.</string>
          </property>
         </widget>
        </item>
@@ -322,7 +322,7 @@
        <item>
         <widget class="lyx::frontend::CategorizedCombo" name="fontsTypewriterCO">
          <property name="toolTip">
-          <string>Select the typewriter (monospaced) typeface</string>
+          <string>Select the typewriter (monospaced) typeface. To filter the list of fonts, just start typing while the list is expanded.</string>
          </property>
         </widget>
        </item>
