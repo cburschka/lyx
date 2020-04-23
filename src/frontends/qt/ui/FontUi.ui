@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>568</width>
-    <height>557</height>
+    <height>565</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -117,7 +117,7 @@
      <item row="2" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_8">
        <item>
-        <widget class="QComboBox" name="fontsRomanCO">
+        <widget class="lyx::frontend::CategorizedCombo" name="fontsRomanCO">
          <property name="toolTip">
           <string>Select the roman (serif) typeface</string>
          </property>
@@ -212,7 +212,7 @@
      <item row="4" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
-        <widget class="QComboBox" name="fontsSansCO">
+        <widget class="lyx::frontend::CategorizedCombo" name="fontsSansCO">
          <property name="toolTip">
           <string>Select the Sans Serif (grotesque) typeface</string>
          </property>
@@ -320,7 +320,7 @@
      <item row="6" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_7">
        <item>
-        <widget class="QComboBox" name="fontsTypewriterCO">
+        <widget class="lyx::frontend::CategorizedCombo" name="fontsTypewriterCO">
          <property name="toolTip">
           <string>Select the typewriter (monospaced) typeface</string>
          </property>
@@ -484,6 +484,13 @@
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>lyx::frontend::CategorizedCombo</class>
+   <extends>QComboBox</extends>
+   <header>CategorizedCombo.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>osFontsCB</tabstop>
   <tabstop>fontsDefaultCO</tabstop>
