@@ -757,7 +757,7 @@ arg   "undo"
  
 \family sans
 Правка\SpecialChar menuseparator
-Повторить
+Вернуть
 \family default
  (кнопка 
 \begin_inset Info
@@ -2929,13 +2929,9 @@ arg   "footnote-insert"
  на панели инструментов или через меню 
 \family sans
 Вставка\SpecialChar menuseparator
-Подстрочная
-\begin_inset space ~
-\end_inset
-
-сноск
+Сноска
 \family default
-а\SpecialChar endofsentence
+.
  Нажмите мышью на конец слова 
 \begin_inset Quotes cld
 \end_inset
