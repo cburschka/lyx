@@ -153,7 +153,8 @@ void CCItemDelegate::paint(QPainter * painter, QStyleOptionViewItem const & opti
 	QString cat = categoryCC(*index.model(), index.row());
 
 	// not the same as in the previous line?
-	if (index.row() == 0 || cat != categoryCC(*index.model(), index.row() - 1)) {
+	if (cc_->d->visibleCategories_ > 0
+	    && (index.row() == 0 || cat != categoryCC(*index.model(), index.row() - 1))) {
 		painter->save();
 
 		// draw unselected background
@@ -286,7 +287,7 @@ void CategorizedCombo::Private::setFilter(QString const & s)
 		lastSel_ = filterModel_->mapToSource(filterModel_->index(sel, 0)).row();
 
 	filter_ = s;
-    filterModel_->setFilterRegExp(charFilterRegExp(filter_));
+	filterModel_->setFilterRegExp(charFilterRegExp(filter_));
 	countCategories();
 
 	// restore old selection
