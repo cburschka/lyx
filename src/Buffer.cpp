@@ -297,6 +297,8 @@ public:
 	///
 	CloneList_ptr clone_list_;
 
+	///
+	std::list<Buffer const *> include_list_;
 private:
 	/// So we can force access via the accessors.
 	mutable Buffer const * parent_buffer;
@@ -5590,5 +5592,56 @@ void Buffer::clearExternalModification() const
 		d->wa_->updateTitles();
 }
 
+
+void Buffer::pushIncludedBuffer(Buffer const * buf) const
+{
+	masterBuffer()->d->include_list_.push_back(buf);
+	if (lyxerr.debugging(Debug::FILES)) {
+		LYXERR0("Pushed. Stack now:");
+		if (masterBuffer()->d->include_list_.empty())
+			LYXERR0("EMPTY!");
+		else
+			for (auto const & b : masterBuffer()->d->include_list_)
+				LYXERR0(b->fileName());
+	}
+}
+
+
+void Buffer::popIncludedBuffer() const
+{
+	masterBuffer()->d->include_list_.pop_back();
+	if (lyxerr.debugging(Debug::FILES)) {
+		LYXERR0("Popped. Stack now:");
+		if (masterBuffer()->d->include_list_.empty())
+			LYXERR0("EMPTY!");
+		else
+			for (auto const & b : masterBuffer()->d->include_list_)
+				LYXERR0(b->fileName());
+	}
+}
+
+
+bool Buffer::isBufferIncluded(Buffer const * buf) const
+{
+	if (!buf)
+		return false;
+	if (lyxerr.debugging(Debug::FILES)) {
+		LYXERR0("Checking for " << buf->fileName() << ". Stack now:");
+		if (masterBuffer()->d->include_list_.empty())
+			LYXERR0("EMPTY!");
+		else
+			for (auto const & b : masterBuffer()->d->include_list_)
+				LYXERR0(b->fileName());
+	}
+	list<Buffer const *> const & blist = masterBuffer()->d->include_list_;
+	return find(blist.begin(), blist.end(), buf) != blist.end();
+}
+
+
+void Buffer::clearIncludeList() const
+{
+	LYXERR(Debug::FILES, "Clearing include list for " << fileName());
+	d->include_list_.clear();
+}
 
 } // namespace lyx

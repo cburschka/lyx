@@ -783,6 +783,13 @@ public:
 	///
 	support::FileName getBibfilePath(docstring const & bibid) const;
 
+	/// routines for dealing with possible self-inclusion
+	void pushIncludedBuffer(Buffer const * buf) const;
+	void popIncludedBuffer() const;
+	bool isBufferIncluded(Buffer const * buf) const;
+private:
+	void clearIncludeList() const;
+
 private:
 	friend class MarkAsExporting;
 	/// mark the buffer as busy exporting something, or not
