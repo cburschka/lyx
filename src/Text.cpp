@@ -1801,8 +1801,11 @@ bool Text::dissolveInset(Cursor & cur)
 	pos_type spos = cur.pos();
 	pit_type spit = cur.pit();
 	ParagraphList plist;
-	if (cur.lastpit() != 0 || cur.lastpos() != 0)
+	if (cur.lastpit() != 0 || cur.lastpos() != 0) {
 		plist = paragraphs();
+		for (auto & p : plist)
+			p.setInsetBuffers(*cur.buffer());
+	}
 	cur.popBackward();
 	// update cursor offset
 	if (spit == 0)
