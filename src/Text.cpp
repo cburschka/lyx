@@ -1800,12 +1800,6 @@ bool Text::dissolveInset(Cursor & cur)
 	// save position inside inset
 	pos_type spos = cur.pos();
 	pit_type spit = cur.pit();
-	ParagraphList plist;
-	if (cur.lastpit() != 0 || cur.lastpos() != 0) {
-		plist = paragraphs();
-		for (auto & p : plist)
-			p.setInsetBuffers(*cur.buffer());
-	}
 	cur.popBackward();
 	// update cursor offset
 	if (spit == 0)
@@ -1818,7 +1812,8 @@ bool Text::dissolveInset(Cursor & cur)
 	++cur.pos();
 
 	Buffer & b = *cur.buffer();
-	if (!plist.empty()) {
+	// Is there anything in this text?
+	if (cur.lastpit() != 0 || cur.lastpos() != 0) {
 		// see bug 7319
 		// we clear the cache so that we won't get conflicts with labels
 		// that get pasted into the buffer. we should update this before
@@ -1828,6 +1823,7 @@ bool Text::dissolveInset(Cursor & cur)
 		// but we'll try the cheaper solution here.
 		cur.buffer()->clearReferenceCache();
 
+		ParagraphList & plist = paragraphs();
 		if (!lyxrc.ct_markup_copied)
 			// Do not revive deleted text
 			lyx::acceptChanges(plist, b.params());
