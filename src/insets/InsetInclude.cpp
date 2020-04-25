@@ -160,7 +160,7 @@ FileName const includedFileName(Buffer const & buffer,
 InsetLabel * createLabel(Buffer * buf, docstring const & label_str)
 {
 	if (label_str.empty())
-		return 0;
+		return nullptr;
 	InsetCommandParams icp(LABEL_CODE);
 	icp["name"] = label_str;
 	return new InsetLabel(buf, icp);
@@ -189,7 +189,7 @@ char_type replaceCommaInBraces(docstring & params)
 InsetInclude::InsetInclude(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p), include_label(uniqueID()),
 	  preview_(make_unique<RenderMonitoredPreview>(this)), failedtoload_(false),
-	  set_label_(false), label_(0), child_buffer_(0), file_exist_(false)
+	  set_label_(false), label_(nullptr), child_buffer_(nullptr), file_exist_(false)
 {
 	preview_->connect([=](){ fileChanged(); });
 
@@ -204,7 +204,8 @@ InsetInclude::InsetInclude(Buffer * buf, InsetCommandParams const & p)
 InsetInclude::InsetInclude(InsetInclude const & other)
 	: InsetCommand(other), include_label(other.include_label),
 	  preview_(make_unique<RenderMonitoredPreview>(this)), failedtoload_(false),
-	  set_label_(false), label_(0), child_buffer_(0), file_exist_(other.file_exist_)
+	  set_label_(false), label_(nullptr), child_buffer_(nullptr), 
+	  file_exist_(other.file_exist_)
 {
 	preview_->connect([=](){ fileChanged(); });
 
@@ -289,7 +290,7 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 				if (new_label.empty()) {
 					delete label_;
-					label_ = 0;
+					label_ = nullptr;
 				} else {
 					docstring old_label;
 					if (label_)
@@ -374,7 +375,7 @@ bool InsetInclude::getStatus(Cursor & cur, FuncRequest const & cmd,
 void InsetInclude::setParams(InsetCommandParams const & p)
 {
 	// invalidate the cache
-	child_buffer_ = 0;
+	child_buffer_ = nullptr;
 
 	// reset in order to allow loading new file
 	failedtoload_ = false;
@@ -450,7 +451,7 @@ Buffer * InsetInclude::getChildBuffer() const
 	// FIXME RECURSIVE INCLUDE
 	// This isn't sufficient, as the inclusion could be downstream.
 	// But it'll have to do for now.
-	return (childBuffer == &buffer()) ? 0 : childBuffer;
+	return (childBuffer == &buffer()) ? nullptr : childBuffer;
 }
 
 
@@ -463,45 +464,45 @@ Buffer * InsetInclude::loadIfNeeded() const
 
 	// Don't try to load it again if we failed before.
 	if (failedtoload_ || isVerbatim(params()) || isListings(params()))
-		return 0;
+		return nullptr;
 
 	FileName const included_file = includedFileName(buffer(), params());
 	// Use cached Buffer if possible.
-	if (child_buffer_ != 0) {
+	if (child_buffer_ != nullptr) {
 		if (theBufferList().isLoaded(child_buffer_)
 		    // additional sanity check: make sure the Buffer really is
 		    // associated with the file we want.
 		    && child_buffer_ == theBufferList().getBuffer(included_file))
 			return child_buffer_;
 		// Buffer vanished, so invalidate cache and try to reload.
-		child_buffer_ = 0;
+		child_buffer_ = nullptr;
 	}
 
 	if (!isLyXFileName(included_file.absFileName()))
-		return 0;
+		return nullptr;
 
 	Buffer * child = theBufferList().getBuffer(included_file);
 	if (!child) {
 		// the readonly flag can/will be wrong, not anymore I think.
 		if (!included_file.exists()) {
 			failedtoload_ = true;
-			return 0;
+			return nullptr;
 		}
 
 		child = theBufferList().newBuffer(included_file.absFileName());
 		if (!child)
 			// Buffer creation is not possible.
-			return 0;
+			return nullptr;
 
 		// Set parent before loading, such that macros can be tracked
 		child->setParent(&buffer());
 
 		if (child->loadLyXFile() != Buffer::ReadSuccess) {
 			failedtoload_ = true;
-			child->setParent(0);
+			child->setParent(nullptr);
 			//close the buffer we just opened
 			theBufferList().release(child);
-			return 0;
+			return nullptr;
 		}
 
 		if (!child->errorList("Parse").empty()) {
@@ -1276,7 +1277,7 @@ docstring latexString(InsetInclude const & inset)
 	otexstream os(ods);
 	// We don't need to set runparams.encoding since this will be done
 	// by latex() anyway.
-	OutputParams runparams(0);
+	OutputParams runparams(nullptr);
 	runparams.flavor = OutputParams::LATEX;
 	runparams.for_preview = true;
 	inset.latex(os, runparams);
@@ -1347,7 +1348,7 @@ void InsetInclude::addToToc(DocIterator const & cpit, bool output_active,
 		//Copy missing outliner names (though the user has been warned against
 		//having different document class and module selection between master
 		//and child).
-		for (pair<string, docstring> const & name
+		for (auto const & name
 			     : childbuffer->params().documentClass().outlinerNames())
 			backend.addName(name.first, translateIfPossible(name.second));
 	}
