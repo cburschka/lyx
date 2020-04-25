@@ -766,152 +766,8 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		// in a comment or doing a dryrun
 		return;
 
-	if (isInputOrInclude(params()) &&
-		 isLyXFileName(included_file.absFileName())) {
-		// if it's a LyX file and we're inputting or including,
-		// try to load it so we can write the associated latex
-
-		Buffer * tmp = loadIfNeeded();
-		if (!tmp) {
-			if (!runparams.silent) {
-				docstring text = bformat(_("Could not load included "
-					"file\n`%1$s'\n"
-					"Please, check whether it actually exists."),
-					included_file.displayName());
-				throw ExceptionMessage(ErrorException, _("Error: "),
-						       text);
-			}
-			return;
-		}
-
-		if (!runparams.silent) {
-			if (tmp->params().baseClass() != masterBuffer->params().baseClass()) {
-				// FIXME UNICODE
-				docstring text = bformat(_("Included file `%1$s'\n"
-					"has textclass `%2$s'\n"
-					"while parent file has textclass `%3$s'."),
-					included_file.displayName(),
-					from_utf8(tmp->params().documentClass().name()),
-					from_utf8(masterBuffer->params().documentClass().name()));
-				Alert::warning(_("Different textclasses"), text, true);
-			}
-
-			string const child_tf = tmp->params().useNonTeXFonts ? "true" : "false";
-			string const master_tf = masterBuffer->params().useNonTeXFonts ? "true" : "false";
-			if (tmp->params().useNonTeXFonts != masterBuffer->params().useNonTeXFonts) {
-				docstring text = bformat(_("Included file `%1$s'\n"
-					"has use-non-TeX-fonts set to `%2$s'\n"
-					"while parent file has use-non-TeX-fonts set to `%3$s'."),
-					included_file.displayName(),
-					from_utf8(child_tf),
-					from_utf8(master_tf));
-				Alert::warning(_("Different use-non-TeX-fonts settings"), text, true);
-			} 
-			else if (tmp->params().inputenc != masterBuffer->params().inputenc) {
-				docstring text = bformat(_("Included file `%1$s'\n"
-					"uses input encoding \"%2$s\" [%3$s]\n"
-					"while parent file uses input encoding \"%4$s\" [%5$s]."),
-					included_file.displayName(),
-					_(tmp->params().inputenc),
-					from_utf8(tmp->params().encoding().guiName()),
-					_(masterBuffer->params().inputenc),
-					from_utf8(masterBuffer->params().encoding().guiName()));
-				Alert::warning(_("Different LaTeX input encodings"), text, true);
-			}
-
-			// Make sure modules used in child are all included in master
-			// FIXME It might be worth loading the children's modules into the master
-			// over in BufferParams rather than doing this check.
-			LayoutModuleList const masterModules = masterBuffer->params().getModules();
-			LayoutModuleList const childModules = tmp->params().getModules();
-			LayoutModuleList::const_iterator it = childModules.begin();
-			LayoutModuleList::const_iterator end = childModules.end();
-			for (; it != end; ++it) {
-				string const module = *it;
-				LayoutModuleList::const_iterator found =
-					find(masterModules.begin(), masterModules.end(), module);
-				if (found == masterModules.end()) {
-					docstring text = bformat(_("Included file `%1$s'\n"
-						"uses module `%2$s'\n"
-						"which is not used in parent file."),
-						included_file.displayName(), from_utf8(module));
-					Alert::warning(_("Module not found"), text, true);
-				}
-			}
-		}
-
-		tmp->markDepClean(masterBuffer->temppath());
-
-		// Don't assume the child's format is latex
-		string const inc_format = tmp->params().bufferFormat();
-		FileName const tmpwritefile(changeExtension(writefile.absFileName(),
-			theFormats().extension(inc_format)));
-
-		// FIXME: handle non existing files
-		// The included file might be written in a different encoding
-		// and language.
-		Encoding const * const oldEnc = runparams.encoding;
-		Language const * const oldLang = runparams.master_language;
-		// If the master uses non-TeX fonts (XeTeX, LuaTeX),
-		// the children must be encoded in plain utf8!
-		if (masterBuffer->params().useNonTeXFonts)
-			runparams.encoding = encodings.fromLyXName("utf8-plain");
-		else if (oldEnc)
-			runparams.encoding = oldEnc;
-		else runparams.encoding = &tmp->params().encoding();
-		runparams.master_language = buffer().params().language;
-		runparams.par_begin = 0;
-		runparams.par_end = tmp->paragraphs().size();
-		runparams.is_child = true;
-		Buffer::ExportStatus retval =
-			tmp->makeLaTeXFile(tmpwritefile, masterFileName(buffer()).
-				onlyPath().absFileName(), runparams, Buffer::OnlyBody);
-		if (retval == Buffer::ExportKilled && buffer().isClone() &&
-		      buffer().isExporting()) {
-		  // We really shouldn't get here, I don't think.
-		  LYXERR0("No conversion exception?");
-			throw ConversionException();
-		}
-		else if (retval != Buffer::ExportSuccess) {
-			if (!runparams.silent) {
-				docstring msg = bformat(_("Included file `%1$s' "
-					"was not exported correctly.\n "
-					"LaTeX export is probably incomplete."),
-					included_file.displayName());
-				ErrorList const & el = tmp->errorList("Export");
-				if (!el.empty())
-					msg = bformat(from_ascii("%1$s\n\n%2$s\n\n%3$s"),
-					        msg, el.begin()->error, el.begin()->description);
-				throw ExceptionMessage(ErrorException, _("Error: "), msg);
-			}
-		}
-		runparams.encoding = oldEnc;
-		runparams.master_language = oldLang;
-		runparams.is_child = false;
-
-		// If needed, use converters to produce a latex file from the child
-		if (tmpwritefile != writefile) {
-			ErrorList el;
-			Converters::RetVal const conv_retval =
-				theConverters().convert(tmp, tmpwritefile, writefile,
-				    included_file, inc_format, tex_format, el);
-			if (conv_retval == Converters::KILLED && buffer().isClone() &&
-			    buffer().isExporting()) {
-				// We really shouldn't get here, I don't think.
-				LYXERR0("No conversion exception?");
-				throw ConversionException();
-			} else if (conv_retval != Converters::SUCCESS && !runparams.silent) {
-				docstring msg = bformat(_("Included file `%1$s' "
-						"was not exported correctly.\n "
-						"LaTeX export is probably incomplete."),
-						included_file.displayName());
-				if (!el.empty())
-					msg = bformat(from_ascii("%1$s\n\n%2$s\n\n%3$s"),
-					        msg, el.begin()->error, el.begin()->description);
-				throw ExceptionMessage(ErrorException, _("Error: "), msg);
-			}
-		}
-	} else {
+	if (!isInputOrInclude(params()) ||
+		 !isLyXFileName(included_file.absFileName())) {
 		// In this case, it's not a LyX file, so we copy the file
 		// to the temp dir, so that .aux files etc. are not created
 		// in the original dir. Files included by this file will be
@@ -919,7 +775,6 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		// input@path, see ../Buffer.cpp.
 		unsigned long const checksum_in  = included_file.checksum();
 		unsigned long const checksum_out = writefile.checksum();
-
 		if (checksum_in != checksum_out) {
 			if (!included_file.copyTo(writefile)) {
 				// FIXME UNICODE
@@ -927,8 +782,152 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 					to_utf8(bformat(_("Could not copy the file\n%1$s\n"
 									"into the temporary directory."),
 							 from_utf8(included_file.absFileName()))));
-				return;
 			}
+		}
+		return;
+	}
+
+		
+	// it's a LyX file and we're inputting or including, so
+	// try to load it so we can write the associated latex
+	Buffer * tmp = loadIfNeeded();
+	if (!tmp) {
+		if (!runparams.silent) {
+			docstring text = bformat(_("Could not load included "
+				"file\n`%1$s'\n"
+				"Please, check whether it actually exists."),
+				included_file.displayName());
+			throw ExceptionMessage(ErrorException, _("Error: "),
+						   text);
+		}
+		return;
+	}
+
+	if (!runparams.silent) {
+		if (tmp->params().baseClass() != masterBuffer->params().baseClass()) {
+			// FIXME UNICODE
+			docstring text = bformat(_("Included file `%1$s'\n"
+				"has textclass `%2$s'\n"
+				"while parent file has textclass `%3$s'."),
+				included_file.displayName(),
+				from_utf8(tmp->params().documentClass().name()),
+				from_utf8(masterBuffer->params().documentClass().name()));
+			Alert::warning(_("Different textclasses"), text, true);
+		}
+
+		string const child_tf = tmp->params().useNonTeXFonts ? "true" : "false";
+		string const master_tf = masterBuffer->params().useNonTeXFonts ? "true" : "false";
+		if (tmp->params().useNonTeXFonts != masterBuffer->params().useNonTeXFonts) {
+			docstring text = bformat(_("Included file `%1$s'\n"
+				"has use-non-TeX-fonts set to `%2$s'\n"
+				"while parent file has use-non-TeX-fonts set to `%3$s'."),
+				included_file.displayName(),
+				from_utf8(child_tf),
+				from_utf8(master_tf));
+			Alert::warning(_("Different use-non-TeX-fonts settings"), text, true);
+		} 
+		else if (tmp->params().inputenc != masterBuffer->params().inputenc) {
+			docstring text = bformat(_("Included file `%1$s'\n"
+				"uses input encoding \"%2$s\" [%3$s]\n"
+				"while parent file uses input encoding \"%4$s\" [%5$s]."),
+				included_file.displayName(),
+				_(tmp->params().inputenc),
+				from_utf8(tmp->params().encoding().guiName()),
+				_(masterBuffer->params().inputenc),
+				from_utf8(masterBuffer->params().encoding().guiName()));
+			Alert::warning(_("Different LaTeX input encodings"), text, true);
+		}
+
+		// Make sure modules used in child are all included in master
+		// FIXME It might be worth loading the children's modules into the master
+		// over in BufferParams rather than doing this check.
+		LayoutModuleList const masterModules = masterBuffer->params().getModules();
+		LayoutModuleList const childModules = tmp->params().getModules();
+		LayoutModuleList::const_iterator it = childModules.begin();
+		LayoutModuleList::const_iterator end = childModules.end();
+		for (; it != end; ++it) {
+			string const module = *it;
+			LayoutModuleList::const_iterator found =
+				find(masterModules.begin(), masterModules.end(), module);
+			if (found == masterModules.end()) {
+				docstring text = bformat(_("Included file `%1$s'\n"
+					"uses module `%2$s'\n"
+					"which is not used in parent file."),
+					included_file.displayName(), from_utf8(module));
+				Alert::warning(_("Module not found"), text, true);
+			}
+		}
+	}
+
+	tmp->markDepClean(masterBuffer->temppath());
+
+	// Don't assume the child's format is latex
+	string const inc_format = tmp->params().bufferFormat();
+	FileName const tmpwritefile(changeExtension(writefile.absFileName(),
+		theFormats().extension(inc_format)));
+
+	// FIXME: handle non existing files
+	// The included file might be written in a different encoding
+	// and language.
+	Encoding const * const oldEnc = runparams.encoding;
+	Language const * const oldLang = runparams.master_language;
+	// If the master uses non-TeX fonts (XeTeX, LuaTeX),
+	// the children must be encoded in plain utf8!
+	if (masterBuffer->params().useNonTeXFonts)
+		runparams.encoding = encodings.fromLyXName("utf8-plain");
+	else if (oldEnc)
+		runparams.encoding = oldEnc;
+	else runparams.encoding = &tmp->params().encoding();
+	runparams.master_language = buffer().params().language;
+	runparams.par_begin = 0;
+	runparams.par_end = tmp->paragraphs().size();
+	runparams.is_child = true;
+	Buffer::ExportStatus retval =
+		tmp->makeLaTeXFile(tmpwritefile, masterFileName(buffer()).
+			onlyPath().absFileName(), runparams, Buffer::OnlyBody);
+	if (retval == Buffer::ExportKilled && buffer().isClone() &&
+		  buffer().isExporting()) {
+	  // We really shouldn't get here, I don't think.
+	  LYXERR0("No conversion exception?");
+		throw ConversionException();
+	}
+	else if (retval != Buffer::ExportSuccess) {
+		if (!runparams.silent) {
+			docstring msg = bformat(_("Included file `%1$s' "
+				"was not exported correctly.\n "
+				"LaTeX export is probably incomplete."),
+				included_file.displayName());
+			ErrorList const & el = tmp->errorList("Export");
+			if (!el.empty())
+				msg = bformat(from_ascii("%1$s\n\n%2$s\n\n%3$s"),
+						msg, el.begin()->error, el.begin()->description);
+			throw ExceptionMessage(ErrorException, _("Error: "), msg);
+		}
+	}
+	runparams.encoding = oldEnc;
+	runparams.master_language = oldLang;
+	runparams.is_child = false;
+
+	// If needed, use converters to produce a latex file from the child
+	if (tmpwritefile != writefile) {
+		ErrorList el;
+		Converters::RetVal const conv_retval =
+			theConverters().convert(tmp, tmpwritefile, writefile,
+				included_file, inc_format, tex_format, el);
+		if (conv_retval == Converters::KILLED && buffer().isClone() &&
+			buffer().isExporting()) {
+			// We really shouldn't get here, I don't think.
+			LYXERR0("No conversion exception?");
+			throw ConversionException();
+		} else if (conv_retval != Converters::SUCCESS && !runparams.silent) {
+			docstring msg = bformat(_("Included file `%1$s' "
+					"was not exported correctly.\n "
+					"LaTeX export is probably incomplete."),
+					included_file.displayName());
+			if (!el.empty())
+				msg = bformat(from_ascii("%1$s\n\n%2$s\n\n%3$s"),
+						msg, el.begin()->error, el.begin()->description);
+			throw ExceptionMessage(ErrorException, _("Error: "), msg);
 		}
 	}
 }
