@@ -17,6 +17,7 @@
 #define LSTRINGS_H
 
 #include "support/docstring.h"
+#include "support/types.h"
 
 #include <vector>
 
@@ -369,6 +370,7 @@ docstring bformat(docstring const & fmt, long arg1);
 docstring bformat(docstring const & fmt, long long arg1);
 #endif
 docstring bformat(docstring const & fmt, unsigned int arg1);
+docstring bformat(docstring const & fmt, pit_type arg1);
 docstring bformat(docstring const & fmt, docstring const & arg1);
 docstring bformat(docstring const & fmt, char * arg1);
 docstring bformat(docstring const & fmt, docstring const & arg1, docstring const & arg2);
