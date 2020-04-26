@@ -1095,6 +1095,10 @@ bool Buffer::readDocument(Lexer & lex)
 		d->old_position = params().origin;
 	else
 		d->old_position = filePath();
+
+	if (!parent())
+		clearIncludeList();
+
 	bool const res = text().read(lex, errorList, d->inset);
 	d->old_position.clear();
 
@@ -2400,6 +2404,9 @@ void Buffer::validate(LaTeXFeatures & features) const
 	if (!features.runparams().is_child)
 		params().validate(features);
 
+	if (!parent())
+		clearIncludeList();
+
 	for (Paragraph const & p : paragraphs())
 		p.validate(features);
 
@@ -2612,6 +2619,9 @@ void Buffer::reloadBibInfoCache(bool const force) const
 
 void Buffer::collectBibKeys(FileNameList & checkedFiles) const
 {
+	if (!parent())
+		clearIncludeList();
+
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
 		it->collectBibKeys(it, checkedFiles);
 		if (it->lyxCode() == BIBITEM_CODE) {
@@ -3474,8 +3484,37 @@ bool Buffer::isReadonly() const
 
 void Buffer::setParent(Buffer const * buffer)
 {
-	// Avoids recursive include.
-	d->setParent(buffer == this ? nullptr : buffer);
+	// We need to do some work here to avoid recursive parent structures.
+	// This is the easy case.
+	if (buffer == this) {
+		LYXERR0("Ignoring attempt to set self as parent in\n" << fileName());
+		return;
+	}
+	// Now we check parents going upward, to make sure that IF we set the
+	// parent as requested, we would not generate a recursive include.
+	set<Buffer const *> sb;
+	Buffer const * b = buffer;
+	bool found_recursion = false;
+	while (b) {
+		if (sb.find(b) != sb.end()) {
+			found_recursion = true;
+			break;
+		}
+		sb.insert(b);
+		b = b->parent();
+	}
+
+	if (found_recursion) {
+		LYXERR0("Ignoring attempt to set parent of\n" <<
+			fileName() <<
+			"\nto " <<
+			buffer->fileName() <<
+			"\nbecause that would create a recursive inclusion.");
+		return;
+	}
+
+	// We should be safe now.
+	d->setParent(buffer);
 	updateMacros();
 }
 
@@ -3496,8 +3535,6 @@ ListOfBuffers Buffer::allRelatives() const
 
 Buffer const * Buffer::masterBuffer() const
 {
-	// FIXME Should be make sure we are not in some kind
-	// of recursive include? A -> B -> A will crash this.
 	Buffer const * const pbuf = d->parent();
 	if (!pbuf)
 		return this;
@@ -4950,6 +4987,8 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 
 	// do the real work
 	ParIterator parit = cbuf.par_iterator_begin();
+	if (scope == UpdateMaster)
+		clearIncludeList();
 	updateBuffer(parit, utype);
 
 	// If this document has siblings, then update the TocBackend later. The
@@ -4992,6 +5031,7 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 	}
 	d->cite_labels_valid_ = true;
 	/// FIXME: Perf
+	clearIncludeList();
 	cbuf.tocBackend().update(true, utype);
 	if (scope == UpdateMaster)
 		cbuf.structureChanged();
@@ -5222,6 +5262,7 @@ void Buffer::Impl::setLabel(ParIterator & it, UpdateType utype) const
 
 void Buffer::updateBuffer(ParIterator & parit, UpdateType utype, bool const deleted) const
 {
+	pushIncludedBuffer(this);
 	// LASSERT: Is it safe to continue here, or should we just return?
 	LASSERT(parit.pit() == 0, /**/);
 
@@ -5277,6 +5318,7 @@ void Buffer::updateBuffer(ParIterator & parit, UpdateType utype, bool const dele
 	// set change indicator for the inset (or the cell that the iterator
 	// points to, if applicable).
 	parit.text()->inset().isChanged(changed);
+	popIncludedBuffer();
 }
 
 

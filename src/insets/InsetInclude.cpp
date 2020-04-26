@@ -189,7 +189,8 @@ char_type replaceCommaInBraces(docstring & params)
 InsetInclude::InsetInclude(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p), include_label(uniqueID()),
 	  preview_(make_unique<RenderMonitoredPreview>(this)), failedtoload_(false),
-	  set_label_(false), label_(nullptr), child_buffer_(nullptr), file_exist_(false)
+	  set_label_(false), label_(nullptr), child_buffer_(nullptr), file_exist_(false),
+	  recursion_error_(false)
 {
 	preview_->connect([=](){ fileChanged(); });
 
@@ -205,7 +206,7 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 	: InsetCommand(other), include_label(other.include_label),
 	  preview_(make_unique<RenderMonitoredPreview>(this)), failedtoload_(false),
 	  set_label_(false), label_(nullptr), child_buffer_(nullptr), 
-	  file_exist_(other.file_exist_)
+	  file_exist_(other.file_exist_),recursion_error_(other.recursion_error_)
 {
 	preview_->connect([=](){ fileChanged(); });
 
@@ -379,6 +380,7 @@ void InsetInclude::setParams(InsetCommandParams const & p)
 
 	// reset in order to allow loading new file
 	failedtoload_ = false;
+	recursion_error_ = false;
 
 	InsetCommand::setParams(p);
 	set_label_ = false;
@@ -446,12 +448,7 @@ docstring InsetInclude::screenLabel() const
 
 Buffer * InsetInclude::getChildBuffer() const
 {
-	Buffer * childBuffer = loadIfNeeded();
-
-	// FIXME RECURSIVE INCLUDE
-	// This isn't sufficient, as the inclusion could be downstream.
-	// But it'll have to do for now.
-	return (childBuffer == &buffer()) ? nullptr : childBuffer;
+	return loadIfNeeded();
 }
 
 
@@ -482,6 +479,9 @@ Buffer * InsetInclude::loadIfNeeded() const
 		return nullptr;
 
 	Buffer * child = theBufferList().getBuffer(included_file);
+	if (checkForRecursiveInclude(child))
+		return child;
+
 	if (!child) {
 		// the readonly flag can/will be wrong, not anymore I think.
 		if (!included_file.exists()) {
@@ -494,6 +494,7 @@ Buffer * InsetInclude::loadIfNeeded() const
 			// Buffer creation is not possible.
 			return nullptr;
 
+		buffer().pushIncludedBuffer(child);
 		// Set parent before loading, such that macros can be tracked
 		child->setParent(&buffer());
 
@@ -502,9 +503,11 @@ Buffer * InsetInclude::loadIfNeeded() const
 			child->setParent(nullptr);
 			//close the buffer we just opened
 			theBufferList().release(child);
+			buffer().popIncludedBuffer();
 			return nullptr;
 		}
 
+		buffer().popIncludedBuffer();
 		if (!child->errorList("Parse").empty()) {
 			// FIXME: Do something.
 		}
@@ -524,6 +527,26 @@ Buffer * InsetInclude::loadIfNeeded() const
 	// Cache the child buffer.
 	child_buffer_ = child;
 	return child;
+}
+
+
+bool InsetInclude::checkForRecursiveInclude(
+	Buffer const * cbuf, bool silent) const
+{
+	if (recursion_error_)
+		return true;
+
+	if (!buffer().isBufferIncluded(cbuf))
+		return false;
+
+	if (!silent) {
+		docstring const msg = _("The file\n%1$s\n has attempted to include itself.\n"
+			"The document set will not work properly until this is fixed!");
+		frontend::Alert::warning(_("Recursive Include"),
+			bformat(msg, from_utf8(cbuf->fileName().absFileName())));
+	}
+	recursion_error_ = true;
+	return true;
 }
 
 
@@ -551,20 +574,6 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 	}
 
 	FileName const included_file = includedFileName(buffer(), params());
-
-	// Check we're not trying to include ourselves.
-	// FIXME RECURSIVE INCLUDE
-	// This isn't sufficient, as the inclusion could be downstream.
-	// But it'll have to do for now.
-	if (isInputOrInclude(params()) &&
-		buffer().absFileName() == included_file.absFileName())
-	{
-		Alert::error(_("Recursive input"),
-			       bformat(_("Attempted to include file %1$s in itself! "
-			       "Ignoring inclusion."), from_utf8(incfile)));
-		return;
-	}
-
 	Buffer const * const masterBuffer = buffer().masterBuffer();
 
 	// if incfile is relative, make it relative to the master
@@ -803,6 +812,9 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		return;
 	}
 
+	if (recursion_error_)
+		return;
+
 	if (!runparams.silent) {
 		if (tmp->params().baseClass() != masterBuffer->params().baseClass()) {
 			// FIXME UNICODE
@@ -966,17 +978,11 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 
 	// In the other cases, we will generate the HTML and include it.
 
-	// Check we're not trying to include ourselves.
-	// FIXME RECURSIVE INCLUDE
-	if (buffer().absFileName() == included_file.absFileName()) {
-		Alert::error(_("Recursive input"),
-			       bformat(_("Attempted to include file %1$s in itself! "
-			       "Ignoring inclusion."), ltrim(params()["filename"])));
-		return docstring();
-	}
-
 	Buffer const * const ibuf = loadIfNeeded();
 	if (!ibuf)
+		return docstring();
+
+	if (recursion_error_)
 		return docstring();
 
 	// are we generating only some paragraphs, or all of them?
@@ -995,6 +1001,7 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 		   << from_utf8(included_file.absFileName())
 		   << XHTMLStream::ESCAPE_NONE
 			 << " -->";
+	
 	return docstring();
 }
 
@@ -1029,6 +1036,10 @@ int InsetInclude::plaintext(odocstringstream & os,
 		os << str;
 		return str.size();
 	}
+
+	if (recursion_error_)
+		return 0;
+
 	writePlaintextFile(*ibuf, os, op);
 	return 0;
 }
@@ -1043,18 +1054,6 @@ int InsetInclude::docbook(odocstream & os, OutputParams const & runparams) const
 		return 0;
 
 	string const included_file = includedFileName(buffer(), params()).absFileName();
-
-	// Check we're not trying to include ourselves.
-	// FIXME RECURSIVE INCLUDE
-	// This isn't sufficient, as the inclusion could be downstream.
-	// But it'll have to do for now.
-	if (buffer().absFileName() == included_file) {
-		Alert::error(_("Recursive input"),
-			       bformat(_("Attempted to include file %1$s in itself! "
-			       "Ignoring inclusion."), from_utf8(incfile)));
-		return 0;
-	}
-
 	string exppath = incfile;
 	if (!runparams.export_folder.empty()) {
 		exppath = makeAbsPath(exppath, runparams.export_folder).realPath();
@@ -1067,6 +1066,9 @@ int InsetInclude::docbook(odocstream & os, OutputParams const & runparams) const
 
 	Buffer * tmp = loadIfNeeded();
 	if (tmp) {
+		if (recursion_error_)
+			return 0;
+
 		string const mangled = writefile.mangledFileName();
 		writefile = makeAbsPath(mangled,
 					buffer().masterBuffer()->temppath());
@@ -1136,40 +1138,41 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	// Load the file in the include if it needs
 	// to be loaded:
 	Buffer * const tmp = loadIfNeeded();
-	if (tmp) {
-		// the file is loaded
-		// make sure the buffer isn't us
-		// FIXME RECURSIVE INCLUDES
-		// This is not sufficient, as recursive includes could be
-		// more than a file away. But it will do for now.
-		if (tmp && tmp != &buffer()) {
-			// We must temporarily change features.buffer,
-			// otherwise it would always be the master buffer,
-			// and nested includes would not work.
-			features.setBuffer(*tmp);
-			// Maybe this is already a child
-			bool const is_child =
-				features.runparams().is_child;
-			features.runparams().is_child = true;
-			tmp->validate(features);
-			features.runparams().is_child = is_child;
-			features.setBuffer(buffer());
-		}
-	}
+	if (!tmp) 
+		return;
+
+	// the file is loaded
+	if (checkForRecursiveInclude(tmp))
+		return;
+	buffer().pushIncludedBuffer(tmp);
+
+	// We must temporarily change features.buffer,
+	// otherwise it would always be the master buffer,
+	// and nested includes would not work.
+	features.setBuffer(*tmp);
+	// Maybe this is already a child
+	bool const is_child =
+		features.runparams().is_child;
+	features.runparams().is_child = true;
+	tmp->validate(features);
+	features.runparams().is_child = is_child;
+	features.setBuffer(buffer());
+	
+	buffer().popIncludedBuffer();
 }
 
 
 void InsetInclude::collectBibKeys(InsetIterator const & /*di*/, FileNameList & checkedFiles) const
 {
-	Buffer * child = loadIfNeeded();
-	if (!child)
+	Buffer * ibuf = loadIfNeeded();
+	if (!ibuf)
 		return;
-	// FIXME RECURSIVE INCLUDE
-	// This isn't sufficient, as the inclusion could be downstream.
-	// But it'll have to do for now.
-	if (child == &buffer())
+
+	if (checkForRecursiveInclude(ibuf))
 		return;
-	child->collectBibKeys(checkedFiles);
+	buffer().pushIncludedBuffer(ibuf);
+	ibuf->collectBibKeys(checkedFiles);
+	buffer().popIncludedBuffer();	
 }
 
 
@@ -1189,7 +1192,7 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else {
 		if (!set_label_) {
 			set_label_ = true;
-			button_.update(screenLabel(), true, false, !file_exist_);
+			button_.update(screenLabel(), true, false, !file_exist_ || recursion_error_);
 		}
 		button_.metrics(mi, dim);
 	}
@@ -1338,15 +1341,19 @@ void InsetInclude::addToToc(DocIterator const & cpit, bool output_active,
 		if (!childbuffer)
 			return;
 
+		if (checkForRecursiveInclude(childbuffer))
+			return;
+		buffer().pushIncludedBuffer(childbuffer);
 		// Update the child's tocBackend. The outliner uses the master's, but
 		// the navigation menu uses the child's.
 		childbuffer->tocBackend().update(output_active, utype);
 		// Include Tocs from children
 		childbuffer->inset().addToToc(DocIterator(), output_active, utype,
 		                              backend);
-		//Copy missing outliner names (though the user has been warned against
-		//having different document class and module selection between master
-		//and child).
+		buffer().popIncludedBuffer();
+		// Copy missing outliner names (though the user has been warned against
+		// having different document class and module selection between master
+		// and child).
 		for (auto const & name
 			     : childbuffer->params().documentClass().outlinerNames())
 			backend.addName(name.first, translateIfPossible(name.second));
@@ -1379,14 +1386,16 @@ void InsetInclude::updateCommand()
 void InsetInclude::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 {
 	file_exist_ = includedFileExist();
+	Buffer const * const childbuffer = getChildBuffer();
+	if (childbuffer) {
+		if (!checkForRecursiveInclude(childbuffer))
+			childbuffer->updateBuffer(Buffer::UpdateChildOnly, utype);
+		button_.update(screenLabel(), true, false, recursion_error_);
+		return;
+	}
 
 	button_.update(screenLabel(), true, false, !file_exist_);
 
-	Buffer const * const childbuffer = getChildBuffer();
-	if (childbuffer) {
-		childbuffer->updateBuffer(Buffer::UpdateChildOnly, utype);
-		return;
-	}
 	if (!isListings(params()))
 		return;
 

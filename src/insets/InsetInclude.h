@@ -139,6 +139,9 @@ private:
 	bool isChildIncluded() const;
 	/// check whether the included file exist
 	bool includedFileExist() const;
+	/// \return True if there is a recursive include
+	/// Also issues appropriate warning, etc
+	bool checkForRecursiveInclude(Buffer const * cbuf, bool silent = false) const;
 
 	/// \name Private functions inherited from Inset class
 	//@{
@@ -173,6 +176,7 @@ private:
 	InsetLabel * label_;
 	mutable Buffer * child_buffer_;
 	mutable bool file_exist_;
+	mutable bool recursion_error_;
 };
 
 
