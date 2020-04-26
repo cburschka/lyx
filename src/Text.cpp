@@ -1800,6 +1800,7 @@ bool Text::dissolveInset(Cursor & cur)
 	// save position inside inset
 	pos_type spos = cur.pos();
 	pit_type spit = cur.pit();
+	bool const inset_non_empty = cur.lastpit() != 0 || cur.lastpos() != 0;
 	cur.popBackward();
 	// update cursor offset
 	if (spit == 0)
@@ -1813,7 +1814,7 @@ bool Text::dissolveInset(Cursor & cur)
 
 	Buffer & b = *cur.buffer();
 	// Is there anything in this text?
-	if (cur.lastpit() != 0 || cur.lastpos() != 0) {
+	if (inset_non_empty) {
 		// see bug 7319
 		// we clear the cache so that we won't get conflicts with labels
 		// that get pasted into the buffer. we should update this before
