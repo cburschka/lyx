@@ -1507,14 +1507,6 @@ docstring bformat(docstring const & fmt, unsigned int arg1)
 }
 
 
-docstring bformat(docstring const & fmt, pit_type arg1)
-{
-	LATTEST(contains(fmt, from_ascii("%1$d")));
-	docstring const str = subst(fmt, from_ascii("%1$d"), convert<docstring>(arg1));
-	return subst(str, from_ascii("%%"), from_ascii("%"));
-}
-
-
 docstring bformat(docstring const & fmt, docstring const & arg1)
 {
 	LATTEST(contains(fmt, from_ascii("%1$s")));
