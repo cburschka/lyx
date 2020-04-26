@@ -3017,7 +3017,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 				// get buffer of external file
 				InsetInclude const & ins =
 					static_cast<InsetInclude const &>(*it);
-				Buffer * child = ins.getChildBuffer();
+				Buffer * child = ins.loadIfNeeded();
 				if (!child)
 					continue;
 				child->dispatch(func, dr);
@@ -3805,7 +3805,7 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 				InsetInclude const & incinset =
 					static_cast<InsetInclude const &>(*insit.inset);
 				macro_lock = true;
-				Buffer * child = incinset.getChildBuffer();
+				Buffer * child = incinset.loadIfNeeded();
 				macro_lock = false;
 				if (!child)
 					continue;
@@ -3900,7 +3900,7 @@ void Buffer::getUsedBranches(std::list<docstring> & result, bool const from_mast
 			// get buffer of external file
 			InsetInclude const & ins =
 				static_cast<InsetInclude const &>(*it);
-			Buffer * child = ins.getChildBuffer();
+			Buffer * child = ins.loadIfNeeded();
 			if (!child)
 				continue;
 			child->getUsedBranches(result, true);

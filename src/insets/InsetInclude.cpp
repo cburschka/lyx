@@ -446,12 +446,6 @@ docstring InsetInclude::screenLabel() const
 }
 
 
-Buffer * InsetInclude::getChildBuffer() const
-{
-	return loadIfNeeded();
-}
-
-
 Buffer * InsetInclude::loadIfNeeded() const
 {
 	// This is for background export and preview. We don't even want to
@@ -1330,7 +1324,7 @@ void InsetInclude::addToToc(DocIterator const & cpit, bool output_active,
 		b.pushItem(cpit, screenLabel(), output_active);
 		b.pop();
 	} else {
-		Buffer const * const childbuffer = getChildBuffer();
+		Buffer const * const childbuffer = loadIfNeeded();
 
 		TocBuilder & b = backend.builder("child");
 		docstring str = childbuffer ? childbuffer->fileName().displayName()
@@ -1386,7 +1380,7 @@ void InsetInclude::updateCommand()
 void InsetInclude::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 {
 	file_exist_ = includedFileExist();
-	Buffer const * const childbuffer = getChildBuffer();
+	Buffer const * const childbuffer = loadIfNeeded();
 	if (childbuffer) {
 		if (!checkForRecursiveInclude(childbuffer))
 			childbuffer->updateBuffer(Buffer::UpdateChildOnly, utype);

@@ -48,8 +48,9 @@ public:
 
 	///
 	void setChildBuffer(Buffer * buffer);
-	/// \return the child buffer if the file is a LyX doc and could be loaded
-	Buffer * getChildBuffer() const;
+
+	/// \return loaded Buffer or zero if the file loading did not proceed.
+	Buffer * loadIfNeeded() const;
 
 	/** Update the cache with all bibfiles in use of the child buffer
 	 *  (including bibfiles of grandchild documents).
@@ -131,8 +132,6 @@ private:
 	 *  and the preview should be regenerated.
 	 */
 	void fileChanged() const;
-	/// \return loaded Buffer or zero if the file loading did not proceed.
-	Buffer * loadIfNeeded() const;
 	/// launch external application
 	void editIncluded(std::string const & file);
 	///
