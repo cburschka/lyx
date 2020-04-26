@@ -60,8 +60,7 @@ RowPainter::RowPainter(PainterInfo & pi,
 	//lyxerr << "RowPainter: x: " << x_ << " xo: " << xo_ << " yo: " << yo_ << endl;
 	//row_.dump();
 
-	LBUFERR(row.pit() >= 0);
-	LBUFERR(row.pit() < int(text.paragraphs().size()));
+	LBUFERR(row.pit() < text.paragraphs().size());
 }
 
 

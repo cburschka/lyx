@@ -881,10 +881,10 @@ void Compare::Impl::writeToDestBuffer(DocRange const & range,
 
 void Compare::Impl::writeToDestBuffer(ParagraphList const & pars) const
 {
-	pit_type const pit = dest_pars_->size() - 1;
 	dest_pars_->insert(dest_pars_->end(), pars.begin(), pars.end());
-	if (pit >= 0)
-		mergeParagraph(dest_buf_->params(), *dest_pars_, pit);
+	pit_type pit = dest_pars_->size();
+	if (pit > 0)
+		mergeParagraph(dest_buf_->params(), *dest_pars_, pit - 1);
 }
 
 

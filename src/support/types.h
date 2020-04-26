@@ -40,7 +40,7 @@ namespace lyx {
 	 */
 	// FIXME: should be unsigned as well.
 	// however, simply changing it breaks a downward loop somewhere...
-	typedef ptrdiff_t  pit_type;
+	typedef size_t  pit_type;
 
 	/// a type for the nesting depth of a paragraph
 	typedef size_t     depth_type;
