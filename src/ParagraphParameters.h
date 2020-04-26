@@ -39,8 +39,6 @@ public:
 	///
 	ParagraphParameters();
 	///
-	friend LyXErr & operator<<(LyXErr & os, ParagraphParameters const & cur);
-	///
 	void clear();
 	///
 	bool sameLayout(ParagraphParameters const &) const;
