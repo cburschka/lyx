@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-04-21 23:02+0300\n"
-"PO-Revision-Date: 2020-04-22 00:28+0300\n"
+"PO-Revision-Date: 2020-04-26 11:03+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -547,7 +547,6 @@ msgstr "Полный источник."
 msgid "Autocite"
 msgstr "Автоцитата"
 
-# ?
 #: lib/citeengines/biblatex-natbib.citeengine:148
 #: lib/citeengines/biblatex.citeengine:138
 msgid "Auto"
@@ -1895,7 +1894,6 @@ msgstr "Биография без фото"
 msgid "Reasoning"
 msgstr "Аргументация"
 
-# ?
 #: lib/layouts/IEEEtran.layout:426 lib/layouts/siamltex.layout:162
 #: lib/layouts/theorems-proof.inc:21
 msgid "Alternative Proof String"
@@ -2072,7 +2070,6 @@ msgstr "Подзаголовок"
 msgid "Offprint"
 msgstr "Отдельный оттиск"
 
-# ?
 #: lib/layouts/aa.layout:117 lib/layouts/aapaper.inc:71
 msgid "Offprint Requests to:"
 msgstr "Запросы оттисков к:"
@@ -2082,7 +2079,6 @@ msgstr "Запросы оттисков к:"
 msgid "Mail"
 msgstr "Почта"
 
-# ?
 #: lib/layouts/aa.layout:140
 msgid "Correspondence to:"
 msgstr "Корреспонденция к:"
@@ -2173,7 +2169,7 @@ msgstr "Дата"
 
 #: lib/layouts/aa.layout:239
 msgid "institutemark"
-msgstr "institutemark"
+msgstr "метка института"
 
 #: lib/layouts/aa.layout:243 lib/layouts/beamer.layout:1083
 msgid "Institute Mark"
@@ -2351,7 +2347,6 @@ msgstr "Номер"
 msgid "Consecutive number for the alternative affiliations"
 msgstr "Последовательный номер для дополнительных принадлежностей"
 
-# ?
 #: lib/layouts/aastex.layout:192
 msgid "Alternative affiliation:"
 msgstr "Дополнительная принадлежность:"
@@ -2370,7 +2365,6 @@ msgstr "и"
 msgid "altaffilmark"
 msgstr "пометка дополнительной принадлежности"
 
-# ?
 #: lib/layouts/aastex.layout:273
 msgid "altaffiliation mark"
 msgstr "пометка дополнительной принадлежности"
@@ -2445,14 +2439,13 @@ msgstr "Табличная заметка:"
 msgid "tablenotemark"
 msgstr "tablenotemark"
 
-# ?
 #: lib/layouts/aastex.layout:533
 msgid "tablenote mark"
 msgstr "пометка примечания к таблице"
 
 #: lib/layouts/aastex.layout:551
 msgid "FigCaption"
-msgstr "ПодписьИзображения"
+msgstr "Подпись рисунка"
 
 #: lib/layouts/aastex.layout:552
 msgid "fig."
@@ -2473,7 +2466,6 @@ msgstr "Имя файла для идентификации соответств
 msgid "Facility"
 msgstr "Учреждение"
 
-# ?
 #: lib/layouts/aastex.layout:585
 msgid "Facility:"
 msgstr "Учреждение:"
@@ -2541,7 +2533,7 @@ msgstr "Автор для корреспонденции"
 
 #: lib/layouts/aastex62.layout:132
 msgid "Corresponding author:"
-msgstr "Corresponding author:"
+msgstr "Автор для корреспонденции:"
 
 #: lib/layouts/aastex62.layout:151 lib/layouts/copernicus.layout:62
 #: lib/layouts/egs.layout:364 lib/layouts/svmult.layout:83
@@ -2556,7 +2548,6 @@ msgstr "ORCID"
 msgid "Enter the 16 digit ORCID as xxxx-xxxx-xxxx-xxxx"
 msgstr "Введите 16-значный ORCID в виде xxxx-xxxx-xxxx-xxxx"
 
-# ?
 #: lib/layouts/aastex62.layout:167 lib/layouts/agu_stdtitle.inc:132
 #: lib/layouts/apa.layout:172 lib/layouts/apa6.layout:162
 #: lib/layouts/copernicus.layout:83 lib/layouts/egs.layout:386
@@ -2824,7 +2815,6 @@ msgstr "Адрес электронной почты: "
 msgid "ORCID: "
 msgstr "ORCID: "
 
-# ?
 #: lib/layouts/acmart.layout:212
 msgid "Affiliation: "
 msgstr "Принадлежность: "
@@ -3050,7 +3040,6 @@ msgstr "Год авторского права"
 msgid "Copyright Year: "
 msgstr "Год копирайта: "
 
-# ?
 #: lib/layouts/acmart.layout:456 lib/layouts/acmart.layout:459
 msgid "Teaser Figure"
 msgstr "Рисунок тизера"
@@ -3327,12 +3316,10 @@ msgstr "Список концепций"
 msgid "Print copyright"
 msgstr "Распечатать авторские права"
 
-# ?
 #: lib/layouts/acmsiggraph-0-92.layout:218 lib/layouts/acmsiggraph.layout:175
 msgid "Teaser"
 msgstr "Тизер"
 
-# ?
 #: lib/layouts/acmsiggraph-0-92.layout:229 lib/layouts/acmsiggraph.layout:185
 msgid "Teaser image:"
 msgstr "Рисунок тизера:"
@@ -3932,7 +3919,6 @@ msgstr "Пометка принадлежности"
 msgid "Consecutive number for the author affiliations"
 msgstr "Последовательный номер для принадлежности автора"
 
-# ?
 #: lib/layouts/agutex.layout:130
 msgid "Author affiliation:"
 msgstr "Принадлежность автора:"
@@ -5496,12 +5482,10 @@ msgstr "Автор в колонтитуле:"
 msgid "Publications"
 msgstr "Publications"
 
-# ?
 #: lib/layouts/copernicus.layout:142
 msgid "Correspondence"
 msgstr "Correspondence"
 
-# ?
 #: lib/layouts/copernicus.layout:145
 msgid "Correspondence:"
 msgstr "Correspondence:"
@@ -6708,7 +6692,6 @@ msgstr "Дата рождения:"
 msgid "Nationality"
 msgstr "Национальность"
 
-# ?
 #: lib/layouts/europasscv.layout:155 lib/layouts/europecv.layout:56
 msgid "Nationality:"
 msgstr "Национальность:"
@@ -7885,7 +7868,6 @@ msgstr "Высота блока, также может быть \"!\" для с�
 msgid "Rotatebox"
 msgstr "Блок вращения"
 
-# ?
 #: lib/layouts/graphicboxes.module:69
 msgid "Origin"
 msgstr "Центр"
@@ -8184,15 +8166,15 @@ msgstr "Клавиатура"
 
 #: lib/layouts/initials.module:2
 msgid "Initials (Drop Caps)"
-msgstr "Инициалы"
+msgstr "Инициалы (буквица)"
 
 #: lib/layouts/initials.module:7
 msgid ""
 "Defines a style for paragraphs with an enlarged initial letter (drop cap). "
 "See the EmbeddedObjects manual for a detailed description."
 msgstr ""
-"Определяет стиль для абзацев с увеличенной первой буквой (инициалом). "
-"Подробное описание см. в руководстве по встроенным объектам."
+"Определяет стиль для абзацев с увеличенной первой буквой (инициалом/"
+"буквицей). Подробное описание см. в руководстве по встроенным объектам."
 
 #: lib/layouts/initials.module:15 lib/layouts/initials.module:17
 #: lib/layouts/initials.module:27 lib/layouts/initials.module:33
@@ -8222,11 +8204,11 @@ msgstr "Institute of Physics (IOP)"
 
 #: lib/layouts/iopart.layout:67 lib/layouts/jasatex.layout:75
 msgid "Short title that will appear in header line"
-msgstr "Короткий Заголовок, который появится в строке заголовка"
+msgstr "Короткое заглавие для верхнего колонтитула"
 
 #: lib/layouts/iopart.layout:84
 msgid "Review"
-msgstr "Рецензирование"
+msgstr "Обзор"
 
 #: lib/layouts/iopart.layout:90
 msgid "Topical"
@@ -8234,7 +8216,7 @@ msgstr "Тематический"
 
 #: lib/layouts/iopart.layout:108
 msgid "Paper"
-msgstr "Бумага"
+msgstr "Статья"
 
 #: lib/layouts/iopart.layout:114
 msgid "Prelim"
@@ -8260,7 +8242,7 @@ msgstr "MSC"
 
 #: lib/layouts/iopart.layout:235
 msgid "Mathematics Subject Classification number:"
-msgstr "Классификационный номер предмета математики:"
+msgstr "Код классификации предмета математики:"
 
 #: lib/layouts/iopart.layout:239
 msgid "submitto"
@@ -8350,11 +8332,11 @@ msgstr "Ключ принадлежности соавтора"
 
 #: lib/layouts/iucr.layout:160
 msgid "Short Author"
-msgstr "Краткий автор"
+msgstr "Автор кратко"
 
 #: lib/layouts/iucr.layout:163
 msgid "Short author:"
-msgstr "Краткий автор:"
+msgstr "Автор кратко:"
 
 #: lib/layouts/iucr.layout:182
 msgid "Affiliation key"
@@ -8404,7 +8386,6 @@ msgstr "Japanese Article (стандартный класс)"
 msgid "Journal of the Acoustical Society of America (JASA)"
 msgstr "Journal of the Acoustical Society of America (JASA)"
 
-# ?
 #: lib/layouts/jasatex.layout:122
 msgid "Alternative Affiliation"
 msgstr "Альтернативная принадлежность"
@@ -8563,7 +8544,7 @@ msgstr "параметры Sweave"
 
 #: lib/layouts/knitr.module:44 lib/layouts/sweave.module:54
 msgid "S/R expression"
-msgstr "Выражение на S/R"
+msgstr "Выражение на языке S/R"
 
 #: lib/layouts/knitr.module:45 lib/layouts/sweave.module:55
 msgid "S/R expr"
@@ -8670,7 +8651,7 @@ msgstr "P.S."
 
 #: lib/layouts/lilypond.module:2
 msgid "LilyPond Music Notation"
-msgstr "Музыка LilyPond"
+msgstr "Нотная запись LilyPond"
 
 #: lib/layouts/lilypond.module:7
 msgid ""
@@ -9190,19 +9171,19 @@ msgstr "Mathematical Monthly article"
 
 #: lib/layouts/maa-monthly.layout:64
 msgid "Abbreviated Title"
-msgstr "Abbreviated Title"
+msgstr "Сокращённое заглавие"
 
 #: lib/layouts/maa-monthly.layout:74 lib/layouts/maa-monthly.layout:77
 msgid "Biographies"
-msgstr "Biographies"
+msgstr "Биографии"
 
 #: lib/layouts/maa-monthly.layout:89 lib/layouts/maa-monthly.layout:96
 msgid "Author Biography"
-msgstr "Author Biography"
+msgstr "Биография автора"
 
 #: lib/layouts/maa-monthly.layout:112
 msgid "Affiliation (include email):"
-msgstr "Affiliation (include email):"
+msgstr "Принадлежность (включая email):"
 
 #: lib/layouts/maa-monthly.layout:128
 msgid "Title of acknowledgment"
@@ -9369,7 +9350,6 @@ msgstr "Цветовая схема CV:"
 msgid "CVIcons"
 msgstr "Значки CV"
 
-# ?
 #: lib/layouts/moderncv.layout:66
 msgid "CV Icon Set:"
 msgstr "Набор значков CV:"
@@ -9598,7 +9578,6 @@ msgstr "Завершение письма"
 msgid "Recipient"
 msgstr "Получатель"
 
-# ?
 #: lib/layouts/moderncv.layout:554
 msgid "Company Name"
 msgstr "Имя компании"
@@ -9700,7 +9679,8 @@ msgstr "Noweb"
 #: lib/layouts/noweb.module:6
 msgid "Allows to use Noweb as a literate programming tool."
 msgstr ""
-"Позволяет использовать Noweb как инструмент грамотного программирования."
+"Позволяет использовать Noweb как инструмент грамотного программирования "
+"(literate programming)."
 
 #: lib/layouts/numarticle.inc:9 lib/layouts/powerdot.layout:240
 msgid "\\arabic{section}"
@@ -9823,7 +9803,6 @@ msgstr "В абзаце (нумер.)"
 msgid "In Paragraph Enumerate Options"
 msgstr "Аргументы нумерации внутри абзаца"
 
-# ?
 #: lib/layouts/paralist.module:97
 msgid "CompactEnum"
 msgstr "Компактный (нумер.)"
@@ -10394,7 +10373,6 @@ msgstr "Принадлежность (альтернатива)"
 msgid "Affiliation (alternate):"
 msgstr "Принадлежность (альтернатива):"
 
-# ?
 #: lib/layouts/revtex4-x.inc:90 lib/layouts/revtex4.layout:161
 msgid "Alternate Affiliation Option"
 msgstr "Настройка альтернативной принадлежности"
@@ -12528,7 +12506,6 @@ msgstr "Решение*"
 msgid "Claim*"
 msgstr "Утверждение*"
 
-# ?
 #: lib/layouts/theorems-proof.inc:22
 msgid "Alternative proof string"
 msgstr "Альтернативная строка доказательства"
@@ -13523,7 +13500,6 @@ msgstr "Прямой"
 msgid "ASCII"
 msgstr "ASCII"
 
-# ?
 #: lib/ui/stdcontext.inc:30 lib/ui/stdmenus.inc:487
 msgid "Array Environment|y"
 msgstr "Окружение array|r"
@@ -13588,7 +13564,6 @@ msgstr "Текстовая формула|с"
 msgid "Displayed Formula|D"
 msgstr "Отображаемая формула|ф"
 
-# ?
 #: lib/ui/stdcontext.inc:53 lib/ui/stdmenus.inc:326 lib/ui/stdmenus.inc:479
 msgid "Eqnarray Environment|E"
 msgstr "Окружение eqnarray|e"
@@ -13833,7 +13808,6 @@ msgstr "Заметка LyX"
 msgid "Comment|m"
 msgstr "Комментарий|К"
 
-# ?
 #: lib/ui/stdcontext.inc:215 lib/ui/stdmenus.inc:537
 msgid "Greyed Out|G"
 msgstr "Серый текст|С"
@@ -13887,12 +13861,10 @@ msgstr "Полуквадрат (enskip)|л"
 msgid "Protected Half Quad Space (Enspace)|E"
 msgstr "Защищённый полуквадрат (enspace)|щ"
 
-# ?
 #: lib/ui/stdcontext.inc:250 lib/ui/stdcontext.inc:276
 msgid "Quad Space|Q"
 msgstr "Квадрат (1em)|К"
 
-# ?
 #: lib/ui/stdcontext.inc:251 lib/ui/stdcontext.inc:277
 msgid "Double Quad Space|u"
 msgstr "Двойной квадрат (2em)|Д"
@@ -13901,7 +13873,6 @@ msgstr "Двойной квадрат (2em)|Д"
 msgid "Horizontal Fill|F"
 msgstr "Горизонтальное заполнение|Г"
 
-# ?
 #: lib/ui/stdcontext.inc:253
 msgid "Protected Horizontal Fill|i"
 msgstr "Защищённое горизонтальное заполнение|З"
@@ -13980,11 +13951,11 @@ msgstr "Настройки...|Н"
 
 #: lib/ui/stdcontext.inc:301 lib/ui/stdcontext.inc:578
 msgid "Include|c"
-msgstr "Включить|к"
+msgstr "Включить (include)|к"
 
 #: lib/ui/stdcontext.inc:302 lib/ui/stdcontext.inc:579
 msgid "Input|p"
-msgstr "Ввести|х"
+msgstr "Ввести (input)|в"
 
 #: lib/ui/stdcontext.inc:303 lib/ui/stdcontext.inc:580
 msgid "Verbatim|V"
@@ -13992,15 +13963,15 @@ msgstr "Дословно|Д"
 
 #: lib/ui/stdcontext.inc:304 lib/ui/stdcontext.inc:581
 msgid "Verbatim (marked blanks)|b"
-msgstr "Дословно (видимые пробелы)|Д"
+msgstr "Дословно (видимые пробелы)|п"
 
 #: lib/ui/stdcontext.inc:305 lib/ui/stdcontext.inc:582
 msgid "Listing|L"
-msgstr "Листинг|Л"
+msgstr "Листинг программы|Л"
 
 #: lib/ui/stdcontext.inc:309 lib/ui/stdcontext.inc:586
 msgid "Edit Included File...|E"
-msgstr "Править включаемый файл...|в"
+msgstr "Править включаемый файл...|ф"
 
 #: lib/ui/stdcontext.inc:316 lib/ui/stdmenus.inc:468
 msgid "New Page|N"
@@ -14058,12 +14029,10 @@ msgstr "Переместить абзац вверх|х"
 msgid "Move Paragraph Down|v"
 msgstr "Переместить абзац вниз|з"
 
-# ?
 #: lib/ui/stdcontext.inc:360
 msgid "Promote Section|r"
 msgstr "Выдвинуть раздел|В"
 
-# ?
 #: lib/ui/stdcontext.inc:361
 msgid "Demote Section|m"
 msgstr "Задвинуть раздел|З"
@@ -14140,7 +14109,6 @@ msgstr "Добавить аргумент"
 msgid "Remove Last Argument"
 msgstr "Убрать последний аргумент"
 
-# ?
 #: lib/ui/stdcontext.inc:401
 msgid "Make First Non-Optional Into Optional Argument"
 msgstr "Сделать первый обязательный аргумент необязательным"
@@ -14344,12 +14312,10 @@ msgstr "Подуказатель"
 msgid "Reject Change|R"
 msgstr "Отклонить изменение"
 
-# ?
 #: lib/ui/stdcontext.inc:649
 msgid "Promote Section|P"
 msgstr "Выдвинуть раздел|В"
 
-# ?
 #: lib/ui/stdcontext.inc:650
 msgid "Demote Section|D"
 msgstr "Задвинуть раздел|З"
@@ -14538,7 +14504,6 @@ msgstr "Сравнить со старой ревизией...|с"
 msgid "Show History...|H"
 msgstr "Показать историю...|и"
 
-# ?
 #: lib/ui/stdmenus.inc:85
 msgid "Use Locking Property|L"
 msgstr "Использовать свойство блокирования|б"
@@ -15987,7 +15952,6 @@ msgstr "Тоны и ударения IPA"
 msgid "Command Buffer"
 msgstr "Буфер команды"
 
-# ?
 #: lib/ui/stdtoolbars.inc:244
 msgid "Review[[Toolbar]]"
 msgstr "Рецензирование"
@@ -16098,7 +16062,7 @@ msgstr "Сравнить со старой ревизией"
 
 #: lib/ui/stdtoolbars.inc:301
 msgid "Compare with last revision"
-msgstr "Сравнить с предыдущей ревизией"
+msgstr "Сравнить с последней ревизией"
 
 #: lib/ui/stdtoolbars.inc:302
 msgid "Insert Version Info"
@@ -20314,7 +20278,7 @@ msgstr ""
 
 #: lib/xtemplates/pdfpages.xtemplate:13
 msgid "PDFPages"
-msgstr "PDFСтраницы"
+msgstr "PDF-страницы"
 
 #: lib/xtemplates/pdfpages.xtemplate:14 lib/xtemplates/pdfpages.xtemplate:28
 msgid "PDF pages"
@@ -20347,7 +20311,7 @@ msgstr ""
 
 #: lib/xtemplates/raster_image.xtemplate:14
 msgid "RasterImage"
-msgstr "РастроваяГрафика"
+msgstr "Растровая графика"
 
 #: lib/xtemplates/raster_image.xtemplate:17
 #: lib/xtemplates/raster_image.xtemplate:24
@@ -20364,7 +20328,7 @@ msgstr ""
 
 #: lib/xtemplates/vector_graphics.xtemplate:14
 msgid "VectorGraphics"
-msgstr "ВекторнаяГрафика"
+msgstr "Векторная графика"
 
 #: lib/xtemplates/vector_graphics.xtemplate:15
 #: lib/xtemplates/vector_graphics.xtemplate:24
@@ -20534,7 +20498,7 @@ msgstr "Sweave (Японский)|S"
 
 #: lib/configure.py:666
 msgid "R/S code"
-msgstr "R/S code"
+msgstr "код на R/S"
 
 #: lib/configure.py:668
 msgid "Rnw (knitr, Japanese)"
@@ -20602,7 +20566,7 @@ msgstr "Info (Beamer)"
 
 #: lib/configure.py:685
 msgid "LilyPond music"
-msgstr "Музыка LilyPond"
+msgstr "Нотная запись LilyPond"
 
 #: lib/configure.py:688
 msgid "Gnumeric spreadsheet"
@@ -20618,7 +20582,7 @@ msgstr "MS Excel Office Open XML"
 
 #: lib/configure.py:691
 msgid "HTML Table (for spreadsheets)"
-msgstr "HTML таблица"
+msgstr "HTML-таблица"
 
 #: lib/configure.py:692
 msgid "OpenDocument spreadsheet"
@@ -20727,7 +20691,7 @@ msgstr "DVI (LuaTeX)|V"
 
 #: lib/configure.py:737
 msgid "DraftDVI"
-msgstr "Рабочий DVI"
+msgstr "Черновой DVI"
 
 #: lib/configure.py:740 lib/configure.py:777
 msgid "htm"
@@ -20856,11 +20820,11 @@ msgstr "ps_tex|PSTEX"
 
 #: lib/configure.py:775 src/frontends/qt/GuiClipboard.cpp:173
 msgid "Windows Metafile"
-msgstr "Windows метафайл WMF"
+msgstr "Метафайл Windows (WMF)"
 
 #: lib/configure.py:776 src/frontends/qt/GuiClipboard.cpp:172
 msgid "Enhanced Metafile"
-msgstr "Улучшенный метафайл EMF"
+msgstr "Улучшенный метафайл (EMF)"
 
 #: lib/configure.py:896
 msgid "LyXBlogger"
@@ -20884,11 +20848,11 @@ msgstr "Архив LyX (tar.gz)"
 
 #: lib/examples/Articles:0
 msgid "Game 1"
-msgstr "Game 1"
+msgstr "Игра 1"
 
 #: lib/examples/Articles:0
 msgid "Game 2"
-msgstr "Game 2"
+msgstr "Игра 2"
 
 #: lib/examples/Articles:0
 msgid "Gnuplot"
@@ -20906,7 +20870,6 @@ msgstr "Мгновенный предпросмотр"
 msgid "Itemize Bullets"
 msgstr "Маркеры в списках"
 
-# ?
 #: lib/examples/Articles:0
 msgid "Minted File Listing"
 msgstr "Листинг Minted из файла"
@@ -21929,7 +21892,7 @@ msgstr "На&чертание:"
 #: src/frontends/qt/ui/CharacterUi.ui:114
 #: src/frontends/qt/ui/CharacterUi.ui:133
 msgid "Font size"
-msgstr "Кегль шрифта"
+msgstr "Размер шрифта"
 
 #: src/frontends/qt/ui/CharacterUi.ui:159
 #: src/frontends/qt/ui/CharacterUi.ui:178
@@ -22727,7 +22690,7 @@ msgstr "Выберите гарнитуру шрифта по умолчанию
 
 #: src/frontends/qt/ui/FontUi.ui:54
 msgid "&Base size:"
-msgstr "&Основной кегль:"
+msgstr "&Основной размер:"
 
 #: src/frontends/qt/ui/FontUi.ui:86
 msgid "&LaTeX font encoding:"
@@ -22924,7 +22887,6 @@ msgstr ""
 msgid "Ro&tate after scaling"
 msgstr "Поверну&ть после масштабирования"
 
-# ?
 #: src/frontends/qt/ui/GraphicsUi.ui:253
 msgid "Or&igin:"
 msgstr "&Центр:"
@@ -23142,11 +23104,11 @@ msgstr "&Тип включения:"
 
 #: src/frontends/qt/ui/IncludeUi.ui:46 src/insets/InsetInclude.cpp:423
 msgid "Include"
-msgstr "Включить"
+msgstr "Включить (include)"
 
 #: src/frontends/qt/ui/IncludeUi.ui:51 src/insets/InsetInclude.cpp:413
 msgid "Input"
-msgstr "Ввести"
+msgstr "Ввести (input)"
 
 #: src/frontends/qt/ui/IncludeUi.ui:61 src/insets/InsetInclude.cpp:1398
 #: src/insets/InsetInclude.cpp:1404
@@ -23165,7 +23127,7 @@ msgstr "&Редактировать"
 
 #: src/frontends/qt/ui/IncludeUi.ui:79
 msgid "File name to include"
-msgstr "Выберите документ для вставки"
+msgstr "Выберите документ для включения"
 
 #: src/frontends/qt/ui/IncludeUi.ui:124
 msgid "Underline spaces in generated output"
@@ -23500,12 +23462,10 @@ msgstr "&Размещение"
 msgid "Check for inline listings"
 msgstr "Установите для внутристрочного листинга"
 
-# ?
 #: src/frontends/qt/ui/ListingsUi.ui:42
 msgid "&Inline listing"
 msgstr "&Внутристрочный листинг"
 
-# ?
 #: src/frontends/qt/ui/ListingsUi.ui:49
 msgid "Check for floating listings"
 msgstr "Установите для плавающего листинга"
@@ -23544,11 +23504,11 @@ msgstr "Разница между двумя пронумерованными с
 
 #: src/frontends/qt/ui/ListingsUi.ui:155
 msgid "Font si&ze:"
-msgstr "Кегль шрифта:"
+msgstr "Размер шрифта:"
 
 #: src/frontends/qt/ui/ListingsUi.ui:174
 msgid "Choose the font size for line numbers"
-msgstr "Выберите кегль шрифта для номеров строк"
+msgstr "Выберите размер шрифта для номеров строк"
 
 #: src/frontends/qt/ui/ListingsUi.ui:190 src/frontends/qt/ui/TabularUi.ui:1116
 msgid "Style"
@@ -23556,11 +23516,11 @@ msgstr "Стиль"
 
 #: src/frontends/qt/ui/ListingsUi.ui:199
 msgid "F&ont size:"
-msgstr "&Кегль шрифта:"
+msgstr "&Размер шрифта:"
 
 #: src/frontends/qt/ui/ListingsUi.ui:218
 msgid "The content's base font size"
-msgstr "Основной кегль шрифта листинга"
+msgstr "Основной размер шрифта листинга"
 
 #: src/frontends/qt/ui/ListingsUi.ui:231
 msgid "Font Famil&y:"
@@ -23620,7 +23580,7 @@ msgstr "&Диалект:"
 
 #: src/frontends/qt/ui/ListingsUi.ui:370
 msgid "Select the dialect of the programming language, if available"
-msgstr "По возможности выберите диалект языка программирования"
+msgstr "Выберите диалект языка программирования (при наличии)"
 
 #: src/frontends/qt/ui/ListingsUi.ui:380
 msgid "Range"
@@ -23786,7 +23746,6 @@ msgstr "Высота в&ерхнего колонтитула:"
 msgid "&Foot skip:"
 msgstr "Промежуток &нижнего колонтитула:"
 
-# ?
 #: src/frontends/qt/ui/MarginsUi.ui:180
 msgid "&Column sep:"
 msgstr "&Разделитель столбцов:"
@@ -24029,7 +23988,6 @@ msgstr "Комментарий"
 msgid "Print as grey text"
 msgstr "Напечатать как серый текст"
 
-# ?
 #: src/frontends/qt/ui/NoteUi.ui:67
 msgid "&Greyed out"
 msgstr "&Серый текст"
@@ -24227,7 +24185,7 @@ msgstr "Автоматически запо&лнять заголовок"
 
 #: src/frontends/qt/ui/PDFSupportUi.ui:216
 msgid "Enable fullscreen PDF presentation"
-msgstr "Разрешить полноэкранный показ PDF презентаций"
+msgstr "Разрешить полноэкранный показ PDF-презентаций"
 
 #: src/frontends/qt/ui/PDFSupportUi.ui:219
 msgid "Load in &fullscreen mode"
@@ -24635,7 +24593,6 @@ msgstr ""
 msgid "Use need&auth option"
 msgstr "Использовать параметр needauth"
 
-# ?
 #: src/frontends/qt/ui/PrefDisplayUi.ui:47
 msgid "Factor for the preview size"
 msgstr "Множитель для размера предпросмотра"
@@ -24944,7 +24901,6 @@ msgstr "Редактор:"
 msgid "&Viewer:"
 msgstr "&Просмотрщик:"
 
-# ?
 #: src/frontends/qt/ui/PrefFileformatsUi.ui:189
 msgid "Co&pier:"
 msgstr "Ко&пир:"
@@ -25108,7 +25064,6 @@ msgstr "Языковой &пакет:"
 msgid "Select which (LaTeX) language package documents should use by default"
 msgstr "Выберите используемый языковой пакет по умолчанию"
 
-# ?
 #: src/frontends/qt/ui/PrefLanguageUi.ui:77
 #: src/frontends/qt/GuiDocument.cpp:1050 src/frontends/qt/GuiDocument.cpp:1138
 #: src/frontends/qt/GuiDocument.cpp:2641 src/frontends/qt/GuiPrefs.cpp:814
@@ -25343,7 +25298,6 @@ msgstr "Начальные параметры и флаги CheckTeX"
 msgid "&CheckTeX command:"
 msgstr "Команда Chec&kTeX:"
 
-# ?
 #: src/frontends/qt/ui/PrefLatexUi.ui:292
 msgid "&Nomenclature command:"
 msgstr "&Команда номенклатуры:"
@@ -25651,7 +25605,6 @@ msgstr "Использовать значки из системной темы"
 msgid "&User interface file:"
 msgstr "&Файл пользовательского интерфейса:"
 
-# ?
 #: src/frontends/qt/ui/PrefUi.ui:68
 msgid "&Icon set:"
 msgstr "&Набор значков:"
@@ -25668,7 +25621,6 @@ msgstr ""
 msgid "Context Help"
 msgstr "Контекстная помощь"
 
-# ?
 #: src/frontends/qt/ui/PrefUi.ui:133
 msgid ""
 "Checking this allows the automatic display of helpful comments for insets in "
@@ -28176,7 +28128,6 @@ msgstr "маркер конца строки"
 msgid "appendix marker"
 msgstr "маркер, отделяющий приложения"
 
-# ?
 #: src/Color.cpp:283
 msgid "change bar"
 msgstr "панель изменений"
@@ -28209,7 +28160,6 @@ msgstr "добавленный текст (рабочая область, 4-й �
 msgid "added text (workarea, 5th author)"
 msgstr "добавленный текст (рабочая область, 5-й автор)"
 
-# ?
 #: src/Color.cpp:291
 msgid "deleted text modifier (workarea)"
 msgstr "модификатор удалённого текста (рабочая область)"
@@ -29813,7 +29763,6 @@ msgstr ""
 msgid "Unknown Inset"
 msgstr "Неизвестная вставка"
 
-# ?
 #: src/Text.cpp:563 src/insets/InsetTabular.cpp:472
 msgid "Change tracking author index missing"
 msgstr "Отсутствует авторский индекс отслеживания изменений"
@@ -30109,11 +30058,11 @@ msgstr "Метки и ссылки"
 
 #: src/TocBackend.cpp:291
 msgid "Broken References and Citations"
-msgstr "Нарушенные ссылки и цитаты"
+msgstr "Нарушенные ссылки"
 
 #: src/TocBackend.cpp:293 src/frontends/qt/GuiDocument.cpp:1761
 msgid "Child Documents"
-msgstr "Дочерний документ"
+msgstr "Дочерние документы"
 
 #: src/TocBackend.cpp:294 src/frontends/qt/GuiGraphics.cpp:113
 msgid "Graphics"
@@ -30644,7 +30593,6 @@ msgstr ""
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, "
 "USA."
 
-# ?
 #: src/frontends/qt/GuiAbout.cpp:208
 msgid "not released yet"
 msgstr "ещё не выпущена"
@@ -32165,7 +32113,6 @@ msgstr "Масштаб%"
 msgid "Select external file"
 msgstr "Выбрать внешний файл"
 
-# ?
 #: src/frontends/qt/GuiGraphics.cpp:78
 msgid "automatically"
 msgstr "автоматически"
@@ -32465,7 +32412,6 @@ msgstr "Не применимо"
 msgid "Package Name"
 msgstr "Имя пакета"
 
-# ?
 #: src/frontends/qt/GuiInfo.cpp:101
 msgid "Class Name"
 msgstr "Имя класса"
@@ -34782,7 +34728,7 @@ msgstr "+ %1$d пунктов."
 
 #: src/insets/InsetCitation.cpp:498 src/insets/InsetRef.cpp:470
 msgid "BROKEN: "
-msgstr "СЛОМАНО: "
+msgstr "НАРУШЕНО: "
 
 #: src/insets/InsetCommand.cpp:158
 msgid "LaTeX Command: "
@@ -35586,7 +35532,6 @@ msgstr ""
 "(при использовании диалога дочернего документа) или меню Вставка->Подпись "
 "(при определении вставки листинга)"
 
-# ?
 #: src/insets/InsetListingsParams.cpp:469
 #: src/insets/InsetListingsParams.cpp:679
 msgid ""
@@ -35851,7 +35796,6 @@ msgstr "Неразрывный пробел"
 msgid "Quad Space"
 msgstr "Квадрат"
 
-# ?
 #: src/insets/InsetSpace.cpp:90
 msgid "Double Quad Space"
 msgstr "Двойной квадрат"
@@ -35906,7 +35850,6 @@ msgstr "Неразрывный пробел  (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Неизвестный тип содержания"
 
-# ?
 #: src/insets/InsetTabular.cpp:463
 msgid "Change tracking data incomplete"
 msgstr "Данные отслеживания изменений неполные"
@@ -36625,16 +36568,6 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Неизвестный пользователь"
 
-#~ msgid ""
-#~ "Assure counters and references are as in the complete document (prolonges "
-#~ "compilation)"
-#~ msgstr ""
-#~ "Убедиться, что счётчики и ссылки соответствуют полному документу "
-#~ "(занимает больше времени)"
-
-#~ msgid "&Maintain counters and references"
-#~ msgstr "Поддерживать счётчики и ссылки"
-
 #~ msgid "Localization Test"
 #~ msgstr "Тест локализации"
 
@@ -36656,17 +36589,6 @@ msgstr "Неизвестный пользователь"
 #~ msgid "Simple Grid"
 #~ msgstr "Простая сетка"
 
-#~ msgid ""
-#~ "Changes will not be highlighted in LaTeX output, because neither dvipost "
-#~ "nor xcolor/ulem are installed.\n"
-#~ "Please install these packages or redefine \\lyxadded and \\lyxdeleted in "
-#~ "the LaTeX preamble."
-#~ msgstr ""
-#~ "Изменения не будут выделены в выводе LaTeX'а потому, что ни dvipost, ни "
-#~ "xcolor/ulem не установлены.\n"
-#~ "Пожалуйста установите эти пакеты или переопределите \\lyxadded и "
-#~ "\\lyxdeleted в преамбуле LaTeX."
-
 #~ msgid "Auto-saving %1$s"
 #~ msgstr "Автоматическое сохранение %1$s"
 
@@ -36682,13 +36604,3 @@ msgstr "Неизвестный пользователь"
 #~ msgstr ""
 #~ "Позволяет LyX добавлять вертикальные полосы изменений на полях вывода PDF "
 #~ "при включении отслеживания изменений и выборе формата вывода pdflatex."
-
-#~ msgid ""
-#~ "Changed by %1\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Изменено автором %1\n"
-#~ "\n"
-
-#~ msgid "Change made on %1\n"
-#~ msgstr "Изменение выполнено %1\n"
