@@ -238,7 +238,7 @@ int LaTeX::run(TeXErrors & terr)
 			// Also remove all children which are included
 			Buffer const * buf = theBufferList().getBufferFromTmp(file.absFileName());
 			if (buf && buf->params().maintain_unincluded_children == BufferParams::CM_Mostly) {
-				for (auto const incfile : buf->params().getIncludedChildren()) {
+				for (auto const & incfile : buf->params().getIncludedChildren()) {
 					string const incm =
 						DocFileName(changeExtension(makeAbsPath(incfile, path)
 									    .absFileName(), ".tex")).mangledFileName();

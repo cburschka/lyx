@@ -2572,10 +2572,9 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			if (i != string::npos)
 				h_paperfontsize.erase(i);
 			// Now those known specifically to the class
-			string fsize;
 			vector<string> class_fsizes = getVectorFromString(tc.opt_fontsize(), "|");
 			string const fsize_format = tc.fontsizeformat();
-			for (auto const fsize : class_fsizes) {
+			for (auto const & fsize : class_fsizes) {
 				string latexsize = subst(fsize_format, "$$s", fsize);
 				vector<string>::iterator it = find(opts.begin(), opts.end(), latexsize);
 				if (it != opts.end()) {
@@ -2642,7 +2641,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			string paper;
 			vector<string> class_psizes = getVectorFromString(tc.opt_pagesize(), "|");
 			string const psize_format = tc.pagesizeformat();
-			for (auto const psize : class_psizes) {
+			for (auto const & psize : class_psizes) {
 				string latexsize = subst(psize_format, "$$s", psize);
 				vector<string>::iterator it = find(opts.begin(), opts.end(), latexsize);
 				if (it != opts.end()) {
