@@ -408,10 +408,11 @@ if test x$GXX = xyes; then
   fi
   dnl Warnings are for preprocessor too
   if test x$enable_warnings = xyes ; then
+      AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra"
       case $gxx_version in
-	  9.*) AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra"
-	       AM_CXXFLAGS="$AM_CXXFLAGS  -Wno-deprecated-copy";;
-	  *) AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra";;
+	  9.*|clang-10*)
+	      AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-copy";;
+	  *);;
       esac
     fi
   case $gxx_version in
