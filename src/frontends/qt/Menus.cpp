@@ -1356,7 +1356,7 @@ void MenuDefinition::expandToc(Buffer const * buf)
 	// In the navigation menu, only add tocs from this document
 	TocBackend const & backend = buf->tocBackend();
 	TocList const & toc_list = backend.tocs();
-	for (pair<string, shared_ptr<Toc>> const & toc : toc_list) {
+	for (pair<const string, shared_ptr<Toc>> const & toc : toc_list) {
 		// Handle table of contents later
 		if (toc.first == "tableofcontents" || toc.second->empty())
 			continue;
@@ -1761,7 +1761,7 @@ void MenuDefinition::expandCaptions(Buffer const * buf, bool switchcap)
 
 	DocumentClass const & dc = buf->params().documentClass();
 	vector< pair<docstring, FuncRequest> > caps;
-	for (pair<docstring, InsetLayout> const & il : dc.insetLayouts()) {
+	for (pair<const docstring, InsetLayout> const & il : dc.insetLayouts()) {
 		docstring instype;
 		docstring const type = split(il.first, instype, ':');
 		if (instype == from_ascii("Caption")) {
