@@ -424,7 +424,7 @@ void HunspellChecker::suggest(WordLangTuple const & wl,
 	string const word_to_check = to_iconv_encoding(wl.word(), encoding);
 #ifdef HAVE_HUNSPELL_CXXABI
 	vector<string> wlst = h->suggest(word_to_check);
-	for (auto const s : wlst)
+	for (auto const & s : wlst)
 		suggestions.push_back(remap_result(from_iconv_encoding(s, encoding)));
 #else
 	char ** suggestion_list;
@@ -449,7 +449,7 @@ void HunspellChecker::stem(WordLangTuple const & wl,
 	string const word_to_check = to_iconv_encoding(wl.word(), encoding);
 #ifdef HAVE_HUNSPELL_CXXABI
 	vector<string> wlst = h->stem(word_to_check);
-	for (auto const s : wlst)
+	for (auto const & s : wlst)
 		suggestions.push_back(from_iconv_encoding(s, encoding));
 #else
 	char ** suggestion_list;
