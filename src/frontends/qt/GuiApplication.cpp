@@ -1003,6 +1003,10 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 #endif
 
+#if QT_VERSION >= 0x050700
+	setDesktopFileName(lyx_package);
+#endif
+
 	qsrand(QDateTime::currentDateTime().toTime_t());
 
 	// Install LyX translator for missing Qt translations
