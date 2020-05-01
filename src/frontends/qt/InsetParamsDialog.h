@@ -25,6 +25,10 @@ namespace frontend {
 
 class InsetParamsWidget;
 
+/// An InsetParamsDialog wraps an InsetParamsWidget, which is what
+/// will contain all the specific dialog parts for a given inset.
+/// This class manages the OK, etc, buttons and immediate apply
+/// checkbox, etc.
 class InsetParamsDialog : public DialogView, public Ui::InsetParamsUi
 {
 	Q_OBJECT

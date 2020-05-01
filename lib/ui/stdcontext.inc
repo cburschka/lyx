@@ -670,6 +670,13 @@ Menuset
 	End
 
 #
+# InsetCounter context menu
+#
+	Menu "context-counter"
+		Item "Settings...|S" "inset-settings"
+	End
+
+#
 # Toolbar context menu
 #
 	Menu "context-toolbars"

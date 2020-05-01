@@ -398,6 +398,7 @@ Menuset
 		Item "URL|U" "flex-insert URL"
 		Item "Hyperlink...|k" "href-insert"
 		Item "Footnote|F" "footnote-insert"
+		Item "Counter" "dialog-show-new-inset counter"
 		Item "Marginal Note|M" "marginalnote-insert"
 		Item "Program Listing[[Menu]]" "listing-insert"
 		Separator

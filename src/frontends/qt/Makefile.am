@@ -87,6 +87,7 @@ SOURCEFILES = \
 	GuiCompare.cpp \
 	GuiCompareHistory.cpp \
 	GuiCompleter.cpp \
+	GuiCounter.cpp \
 	GuiDelimiter.cpp \
 	GuiDialog.cpp \
 	GuiDocument.cpp \
@@ -205,6 +206,7 @@ MOCHEADER = \
 	GuiCompare.h \
 	GuiCompareHistory.h \
 	GuiCompleter.h \
+	GuiCounter.h \
 	GuiDelimiter.h \
 	GuiDialog.h \
 	GuiDocument.h \
@@ -285,6 +287,7 @@ UIFILES = \
 	ColorUi.ui \
 	CompareUi.ui \
 	CompareHistoryUi.ui \
+	CounterUi.ui \
 	DelimiterUi.ui \
 	DocumentUi.ui \
 	ErrorListUi.ui \

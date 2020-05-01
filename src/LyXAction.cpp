@@ -1461,7 +1461,7 @@ void LyXAction::init()
  * \li Action: Shows hidden dialog or creates new one for a given function/inset settings etc.
  * \li Syntax: dialog-show <NAME> [<DATA>]
  * \li Params: <NAME>: aboutlyx|bibitem|bibtex|box|branch|changes|character|citation|\n
-               compare|document|errorlist|ert|external|file|findreplace|findreplaceadv|float|\n
+               compare|counter|document|errorlist|ert|external|file|findreplace|findreplaceadv|float|\n
                graphics|href|include|index|index_print|info|label|line|listings|log|mathdelimiter|\n
                mathmatrix|mathspace|nomenclature|nomencl_print|note|paragraph|phantom|prefs|\n
                print|ref|sendto|space|spellchecker|symbols|tabular|tabularcreate|\n

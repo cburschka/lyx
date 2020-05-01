@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CounterUi</class>
+ <widget class="QWidget" name="CounterUi">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>290</width>
+    <height>197</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string/>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="3" column="0">
+    <widget class="QLabel" name="vtypeLA">
+     <property name="text">
+      <string>Value Type</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="valueLA">
+     <property name="text">
+      <string>Value</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QComboBox" name="actionCB"/>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="counterLA">
+     <property name="text">
+      <string>Counter</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QComboBox" name="counterCB"/>
+   </item>
+   <item row="2" column="1">
+    <widget class="QSpinBox" name="valueSB">
+     <property name="maximum">
+      <number>10000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="actionLA">
+     <property name="text">
+      <string>Action</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QComboBox" name="vtypeCB"/>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="QCheckBox" name="lyxonlyXB">
+     <property name="toolTip">
+      <string>Affect counters only in LyX, not in output</string>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="text">
+      <string>LyX Only</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <includes>
+  <include location="local">qt_i18n.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>

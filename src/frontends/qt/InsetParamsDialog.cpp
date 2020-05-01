@@ -15,6 +15,7 @@
 #include "GuiBox.h"
 #include "GuiBranch.h"
 #include "GuiBibitem.h"
+#include "GuiCounter.h"
 #include "GuiERT.h"
 #include "GuiHSpace.h"
 #include "GuiHyperlink.h"
@@ -280,6 +281,9 @@ Dialog * createDialog(GuiView & lv, InsetCode code)
 		break;
 	case HYPERLINK_CODE:
 		widget = new GuiHyperlink;
+		break;
+	case COUNTER_CODE:
+		widget = new GuiCounter(lv, nullptr);
 		break;
 	case INFO_CODE:
 		widget = new GuiInfo;
