@@ -138,8 +138,8 @@ docstring GuiCounter::dialogToParams() const
 
 	params["counter"] = qstring_to_ucs4(counterCB->currentText());
 	params["value"] = convert<docstring>(valueSB->value());
-	params.setCmdName(fromqstr(actionCB->currentData().toString()));
-	params["vtype"] = qstring_to_ucs4(vtypeCB->currentData().toString());
+	params.setCmdName(fromqstr(actionCB->itemData(actionCB->currentIndex()).toString()));
+	params["vtype"] = qstring_to_ucs4(vtypeCB->itemData(vtypeCB->currentIndex()).toString());
 	params["lyxonly"] = from_ascii(lyxonlyXB->isChecked() ? "true" : "false");
 	return from_utf8(InsetCounter::params2string(params));
 }
@@ -147,9 +147,9 @@ docstring GuiCounter::dialogToParams() const
 
 bool GuiCounter::checkWidgets(bool readonly) const
 {
-	bool const cmdIsValue = actionCB->currentData().toString() == "value";
-	bool const cmdIsSet = actionCB->currentData().toString() == "set";
-	bool const cmdIsAddTo = actionCB->currentData().toString() == "addto";
+	bool const cmdIsValue = actionCB->itemData(actionCB->currentIndex()).toString() == "value";
+	bool const cmdIsSet = actionCB->itemData(actionCB->currentIndex()).toString() == "set";
+	bool const cmdIsAddTo = actionCB->itemData(actionCB->currentIndex()).toString() == "addto";
 	counterCB->setEnabled(!readonly);
 	actionCB->setEnabled(!readonly);
 	valueSB->setEnabled(!readonly && (cmdIsSet || cmdIsAddTo));
