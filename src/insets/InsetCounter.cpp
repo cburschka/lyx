@@ -60,12 +60,12 @@ InsetCounter::InsetCounter(InsetCounter const & ir)
 
 const map<string, string> InsetCounter::counterTable =
 {
-	{"set", N_("Set")},
-	{"addto", N_("Add To")},
-	{"reset", N_("Reset")},
-	{"save", N_("Save")},
-	{"restore", N_("Restore")},
-	{"value", N_("Value")}
+	{"set", N_("Set Counter")},
+	{"addto", N_("Add To Counter")},
+	{"reset", N_("Reset To 0")},
+	{"save", N_("Save Value of Counter")},
+	{"restore", N_("Restore Value of Counter")},
+	{"value", N_("Display Value of Counter")}
 };
 
 
@@ -237,7 +237,7 @@ void InsetCounter::updateBuffer(ParIterator const &, UpdateType, bool const)
 		docstring const & val = getParam("value");
 		cnts.addto(cntr, convert<int>(val));
 		screen_label_ = bformat(_("Counter: Add to %1$s"), cntr);
-		tooltip_ = bformat(_("Add to value of counter %1$s"), cntr);
+		tooltip_ = bformat(_("Add %1$s to value of counter %2$s"), val, cntr);
 	} else if (cmd == "reset") {
 		cnts.reset(cntr);		
 		screen_label_ = bformat(_("Counter: Reset %1$s"), cntr);
@@ -252,7 +252,7 @@ void InsetCounter::updateBuffer(ParIterator const &, UpdateType, bool const)
 		tooltip_ = bformat(_("Restore value of counter %1$s"), cntr);
 	} else if (cmd == "value") {
 		screen_label_ = bformat(_("Counter: Value %1$s"), cntr);
-		tooltip_ = bformat(_("Print value of counter %1$s"), cntr);
+		tooltip_ = bformat(_("Display value of counter %1$s"), cntr);
 	}
 	
 }

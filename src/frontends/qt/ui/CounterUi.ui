@@ -34,6 +34,9 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="toolTip">
+        <string>Select counter to modify</string>
+       </property>
       </widget>
      </item>
      <item row="1" column="0">
@@ -53,6 +56,9 @@
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>SET counter value; ADD TO (or subtract from) counter value; RESET counter to zero; SAVE counter value; RESTORE previously saved counter value; DISPLAY counter value</string>
        </property>
       </widget>
      </item>
@@ -93,7 +99,7 @@
      <item row="3" column="0">
       <widget class="QLabel" name="vtypeLA">
        <property name="text">
-        <string>Value &amp;Type:</string>
+        <string>Display Format</string>
        </property>
        <property name="buddy">
         <cstring>vtypeCB</cstring>

@@ -157,10 +157,10 @@ bool GuiCounter::checkWidgets(bool readonly) const
 		valueSB->setRange(-10000, 10000);
 	else
 		valueSB->setRange(0, 10000);
+	vtypeLA->setEnabled(!readonly && cmdIsValue);
 	vtypeCB->setEnabled(!readonly && cmdIsValue);
-	if (!InsetParamsWidget::checkWidgets())
-		return false;
-	return !readonly &&
+
+	return InsetParamsWidget::checkWidgets() && !readonly &&
 			!counterCB->currentText().isEmpty() &&
 			!actionCB->currentText().isEmpty() &&
 			!(cmdIsValue && vtypeCB->currentText().isEmpty());

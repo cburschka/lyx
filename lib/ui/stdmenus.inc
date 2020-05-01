@@ -123,6 +123,7 @@ Menuset
 		Item "Paragraph Settings...|P" "layout-paragraph"
 		Submenu "Text Properties|x" "edit_textprops"
 		OptSubmenu "Custom Text Styles|S" "edit_textstyles"
+		Item "Manage Counter Values" "dialog-show-new-inset counter"
 		LanguageSelector
 		Separator
 # Mathed b0rkage means these don't work properly
@@ -398,7 +399,6 @@ Menuset
 		Item "URL|U" "flex-insert URL"
 		Item "Hyperlink...|k" "href-insert"
 		Item "Footnote|F" "footnote-insert"
-		Item "Counter" "dialog-show-new-inset counter"
 		Item "Marginal Note|M" "marginalnote-insert"
 		Item "Program Listing[[Menu]]" "listing-insert"
 		Separator

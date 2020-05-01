@@ -147,7 +147,7 @@ logicalmkup
 \papersides 2
 \paperpagestyle default
 \tablestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \change_bars false
 \postpone_fragile_content false
@@ -29903,7 +29903,7 @@ lyxonly "false"
 \end_inset
 
 
-\change_inserted -584632292 1588304519
+\change_inserted -584632292 1588374084
 ).
  Mostly, this is handled automatically, but there are times one wants to
  modify counters directly.
@@ -29915,6 +29915,59 @@ lyxonly "false"
  These effects can also be limited to LyX itself.
  And they will appear in HTML and DocBook output, as well as in LaTeX.
  
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -584632292 1588374095
+There are six commands you can use:
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -584632292 1588374116
+Set Counter: Allows you to assign a specific value to a counter
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -584632292 1588374135
+Add to Counter: Allows you to add some specified amount to a counter (or
+ to subtract, if you choose a negative number)
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -584632292 1588374149
+Reset to 0: Sets the value of the counter to 0.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -584632292 1588374169
+Save Value of Counter: Saves the value of the counter so that it can later
+ be restored.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -584632292 1588374185
+Restore Value of Counter: Restores the previously saved value.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -584632292 1588374203
+Display Value of Counter: Shows the value of the counter (in the output).
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -584632292 1588374230
+The dialog allows you to choose which counter you wish to modify from all
+ those that are available in the current document class.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
