@@ -74,6 +74,7 @@ static void build_translator()
 	insetnames[TOC_CODE] = InsetName("toc");
 	insetnames[QUOTE_CODE] = InsetName("quote");
 	insetnames[REF_CODE] = InsetName("ref");
+	insetnames[COUNTER_CODE] = InsetName("counter");
 	insetnames[HYPERLINK_CODE] = InsetName("href");
 	insetnames[SEPARATOR_CODE] = InsetName("separator");
 	insetnames[ENDING_CODE] = InsetName("ending");

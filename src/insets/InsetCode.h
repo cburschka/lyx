@@ -237,6 +237,8 @@ enum InsetCode {
 	///
 	MATH_CLASS_CODE,
 	///
+	COUNTER_CODE,
+	///
 	INSET_CODE_SIZE
 };
 

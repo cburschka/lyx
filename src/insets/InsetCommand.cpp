@@ -346,7 +346,8 @@ bool decodeInsetParam(string const & name, string & data,
 	case NOMENCL_PRINT_CODE:
 	case REF_CODE:
 	case TOC_CODE:
-	case HYPERLINK_CODE: {
+	case HYPERLINK_CODE:
+	case COUNTER_CODE: {
 		InsetCommandParams p(code);
 		data = InsetCommand::params2string(p);
 		break;

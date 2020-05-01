@@ -26,6 +26,7 @@
 #include "insets/InsetBranch.h"
 #include "insets/InsetCaption.h"
 #include "insets/InsetCitation.h"
+#include "insets/InsetCounter.h"
 #include "insets/InsetFlex.h"
 #include "insets/InsetERT.h"
 #include "insets/InsetListings.h"
@@ -301,6 +302,12 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 				return new InsetCitation(buf, icp);
 			}
 
+			case COUNTER_CODE: {
+				InsetCommandParams icp(code);
+				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
+				return new InsetCounter(buf, icp);
+			}
+
 			case ERT_CODE: {
 				return new InsetERT(buf,
 					InsetERT::string2params(to_utf8(cmd.argument())));
@@ -550,6 +557,9 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 				break;
 			case CITE_CODE:
 				inset.reset(new InsetCitation(buf, inscmd));
+				break;
+			case COUNTER_CODE:
+				inset.reset(new InsetCounter(buf, inscmd));
 				break;
 			case HYPERLINK_CODE:
 				inset.reset(new InsetHyperlink(buf, inscmd));

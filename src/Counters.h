@@ -45,6 +45,10 @@ public:
 	///
 	int value() const;
 	///
+	void saveValue();
+	///
+	void restoreValue();
+	///
 	void step();
 	///
 	void reset();
@@ -79,6 +83,8 @@ private:
 	/// This is actually one less than the initial value, since the
 	/// counter is always stepped before being used.
 	int initial_value_;
+	///
+	int saved_value_;
 	/// contains master counter name.
 	/** The master counter is the counter that, if stepped
 	 *  (incremented) zeroes this counter. E.g. "subsection"'s
@@ -128,6 +134,10 @@ public:
 	void addto(docstring const & ctr, int val);
 	///
 	int value(docstring const & ctr) const;
+	///
+	void saveValue(docstring const & ctr) const;
+	///
+	void restoreValue(docstring const & ctr) const;
 	/// Reset recursively all the counters that are slaves of the one named by \c ctr.
 	void resetSlaves(docstring const & ctr);
 	/// Increment by one master of counter named by \c ctr.
@@ -202,6 +212,8 @@ public:
 	///
 	void restoreLastCounter() { counter_stack_.pop_back(); }
 	// @}
+	///
+	std::vector<docstring> listOfCounters() const;
 private:
 	/** expands recursively any \\the<counter> macro in the
 	 *  labelstring of \c counter.  The \c lang code is used to

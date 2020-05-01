@@ -44,6 +44,8 @@ liblyxsupport_a_SOURCES = \
 	convert.cpp \
 	convert.h \
 	copied_ptr.h \
+	counter_reps.cpp \
+	counter_reps.h \
 	debug.cpp \
 	debug.h \
 	docstream.cpp \

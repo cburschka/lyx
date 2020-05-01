@@ -555,6 +555,7 @@ SOURCEFILESINSETS = \
 	insets/InsetCollapsible.cpp \
 	insets/InsetCommand.cpp \
 	insets/InsetCommandParams.cpp \
+	insets/InsetCounter.cpp \
 	insets/InsetERT.cpp \
 	insets/InsetExternal.cpp \
 	insets/InsetFlex.cpp \
@@ -615,6 +616,7 @@ HEADERFILESINSETS = \
 	insets/InsetCollapsible.h \
 	insets/InsetCommand.h \
 	insets/InsetCommandParams.h \
+	insets/InsetCounter.h \
 	insets/InsetERT.h \
 	insets/InsetExternal.h \
 	insets/InsetFlex.h \

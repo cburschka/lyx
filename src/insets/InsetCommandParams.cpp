@@ -20,6 +20,7 @@
 #include "InsetBibitem.h"
 #include "InsetBibtex.h"
 #include "InsetCitation.h"
+#include "InsetCounter.h"
 #include "InsetFloatList.h"
 #include "InsetHyperlink.h"
 #include "InsetInclude.h"
@@ -63,6 +64,8 @@ static ParamInfo const & findInfo(InsetCode code, string const & cmdName)
 		return InsetBibtex::findInfo(cmdName);
 	case CITE_CODE:
 		return InsetCitation::findInfo(cmdName);
+	case COUNTER_CODE:
+		return InsetCounter::findInfo(cmdName);
 	case FLOAT_LIST_CODE:
 		return InsetFloatList::findInfo(cmdName);
 	case HYPERLINK_CODE:
@@ -201,6 +204,8 @@ string InsetCommandParams::getDefaultCmd(InsetCode code)
 			return InsetBibtex::defaultCommand();
 		case CITE_CODE:
 			return InsetCitation::defaultCommand();
+		case COUNTER_CODE:
+			return InsetCounter::defaultCommand();
 		case FLOAT_LIST_CODE:
 			return InsetFloatList::defaultCommand();
 		case HYPERLINK_CODE:
@@ -238,6 +243,8 @@ bool InsetCommandParams::isCompatibleCommand(InsetCode code, string const & s)
 			return InsetBibtex::isCompatibleCommand(s);
 		case CITE_CODE:
 			return InsetCitation::isCompatibleCommand(s);
+		case COUNTER_CODE:
+			return InsetCounter::isCompatibleCommand(s);
 		case FLOAT_LIST_CODE:
 			return InsetFloatList::isCompatibleCommand(s);
 		case HYPERLINK_CODE:
@@ -282,7 +289,7 @@ void InsetCommandParams::setCmdName(string const & name)
 
 void InsetCommandParams::read(Lexer & lex)
 {
-	Read(lex, 0);
+	Read(lex, nullptr);
 }
 
 
@@ -356,7 +363,7 @@ void InsetCommandParams::Read(Lexer & lex, Buffer const * buffer)
 
 void InsetCommandParams::write(ostream & os) const
 {
-	Write(os, 0);
+	Write(os, nullptr);
 }
 
 
