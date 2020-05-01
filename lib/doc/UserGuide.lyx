@@ -147,7 +147,7 @@ logicalmkup
 \papersides 2
 \paperpagestyle default
 \tablestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \change_bars false
 \postpone_fragile_content false
@@ -29887,20 +29887,33 @@ name "sec:Counters"
 
 \begin_layout Standard
 
-\change_inserted -584632292 1588303631
+\change_inserted -584632292 1588304632
 One powerful feature of \SpecialChar LaTeX
  is its ability to manage counters, like the one
  for this section (
+\change_unchanged
+
 \begin_inset CommandInset counter
 LatexCommand value
-counter "subsection"
+counter "section"
 value "0"
 vtype "arabic"
 lyxonly "false"
 
 \end_inset
 
-), automatically.
+
+\change_inserted -584632292 1588304519
+).
+ Mostly, this is handled automatically, but there are times one wants to
+ modify counters directly.
+ This can be done in LyX using the counter inset, which is accessible from
+ the Insert menu.
+ This allows one to set a counter's value; to reset it (to zero); to add
+ to the value (or subtract from it, since the value added can be negative);
+ to save it; to restore the saved value; and to print the value.
+ These effects can also be limited to LyX itself.
+ And they will appear in HTML and DocBook output, as well as in LaTeX.
  
 \end_layout
 
