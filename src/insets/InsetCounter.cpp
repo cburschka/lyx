@@ -113,7 +113,7 @@ void InsetCounter::latex(otexstream & os, OutputParams const &) const
 		os << "\\setcounter{" << cntr
 		   << "{\\value{" << lyxSaveCounter() << "}}";
 	} else if (cmd == "value") {
-		os << "\\value{" << cntr << "}";
+		os << "\\the" << cntr << "{}";
 	}
 }
 

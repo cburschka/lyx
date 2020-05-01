@@ -42,7 +42,7 @@ GuiCounter::GuiCounter(GuiView & lv, QWidget * parent) :
 		this, SIGNAL(changed()));
 	connect(valueSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
-	connect(vtypeCB, SIGNAL(clicked()),
+	connect(vtypeCB, SIGNAL(currentIndexChanged(int)),
 		this, SIGNAL(changed()));
 	connect(lyxonlyXB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 592
+\lyxformat 594
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -54,7 +54,7 @@ customHeadersFooters
 enumitem
 logicalmkup
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
 \inputencoding utf8
@@ -156,6 +156,7 @@ logicalmkup
 \html_be_strict true
 \author -1402925745 "Günter Milde"
 \author -712698321 "Jürgen Spitzmüller"
+\author -584632292 "Richard Kimberly Heck"
 \author -563046850 "Jean-Marc LASGOUTTES"
 \author 5863208 "ab"
 \author 1675569489 "Stephan Witt"
@@ -29857,6 +29858,50 @@ to the field
 Additional options
 \family default
  in the PDF Properties dialog.
+\change_inserted -584632292 1588303457
+
+\end_layout
+
+\begin_layout Section
+
+\change_inserted -584632292 1588303474
+Counters
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Counters
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Counters"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -584632292 1588303631
+One powerful feature of \SpecialChar LaTeX
+ is its ability to manage counters, like the one
+ for this section (
+\begin_inset CommandInset counter
+LatexCommand value
+counter "subsection"
+value "0"
+vtype "arabic"
+lyxonly "false"
+
+\end_inset
+
+), automatically.
+ 
 \end_layout
 
 \begin_layout Section
