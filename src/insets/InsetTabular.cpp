@@ -620,7 +620,7 @@ InsetTableCell splitCell(InsetTableCell & head, docstring const & align_d, bool 
 	DocIterator const dit = separatorPos(&head, align_d);
 	hassep = (bool)dit;
 	if (hassep) {
-		pit_type const psize = head.paragraphs().front().size();
+		pos_type const psize = head.paragraphs().front().size();
 		head.paragraphs().front().eraseChars(dit.pos(), psize, false);
 		tail.paragraphs().front().eraseChars(0,
 			dit.pos() < psize ? dit.pos() + 1 : psize, false);
@@ -4377,7 +4377,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 				docstring const align_d = tabular.column_info[c].decimal_point;
 				dit = separatorPos(&tail, align_d);
 
-				pit_type const psize = tail.paragraphs().front().size();
+				pos_type const psize = tail.paragraphs().front().size();
 				if (dit) {
 					tail.paragraphs().front().eraseChars(0,
 						dit.pos() < psize ? dit.pos() + 1 : psize, false);
