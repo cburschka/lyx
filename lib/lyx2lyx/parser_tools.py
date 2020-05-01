@@ -66,6 +66,7 @@ get_value(lines, token[, start[, end[, default[, delete]]]]):
   is stripped.) The final argument, default, defaults to "",
   and is what is returned if we do not find anything. So you
   can use that to set a default.
+  If delete is True, then delete the line if found.
 
 get_quoted_value(lines, token[, start[, end[, default[, delete]]]]):
   Similar to get_value, but it will strip quotes off the

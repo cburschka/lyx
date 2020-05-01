@@ -3687,6 +3687,78 @@ def revert_counter_maintenance(document):
     else:
         document.header[i] = "\\maintain_unincluded_children true"
 
+
+def revert_counter_inset(document):
+    " Revert counter inset to ERT, where possible"
+    i = 0
+    needed_counters = {}
+    while True:
+        i = find_token(document.body, "\\begin_inset CommandInset counter", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of counter inset at line %d!" % i)
+            i += 1
+            continue
+        lyx = get_quoted_value(document.body, "lyxonly", i, j)
+        if lyx == "true":
+            # there is nothing we can do to affect the LyX counters
+            document.body[i : j + 1] = []
+            i = j + 1
+            continue
+        cnt = get_quoted_value(document.body, "counter", i, j)
+        if not cnt:
+            document.warning("No counter given for inset at line %d!" % i)
+            i = j + 1
+            continue
+
+        cmd = get_quoted_value(document.body, "LatexCommand", i, j)
+        document.warning(cmd)
+        ert = ""
+        if cmd == "set":
+            val = get_quoted_value(document.body, "value", i, j)
+            if not val:
+                document.warning("Can't convert counter inset at line %d!" % i)
+            else:
+                ert = put_cmd_in_ert("\\setcounter{%s}{%s}" % (cnt, val))
+        elif cmd == "addto":
+            val = get_quoted_value(document.body, "value", i, j)
+            if not val:
+                document.warning("Can't convert counter inset at line %d!" % i)
+            else:
+                ert = put_cmd_in_ert("\\addtocounter{%s}{%s}" % (cnt, val))
+        elif cmd == "reset":
+            ert = put_cmd_in_ert("\\setcounter{%s}{0}" % (cnt))
+        elif cmd == "value":
+            vty = get_quoted_value(document.body, "vtype", i, j)
+            if not vty:
+                document.warning("Can't convert counter inset at line %d!" % i)
+            else:
+                ert = put_cmd_in_ert("\\%s{%s}" % (vty, cnt))
+        elif cmd == "save":
+            needed_counters[cnt] = 1
+            savecnt = "LyXSave" + cnt
+            ert = put_cmd_in_ert("\\setcounter{%s}{\\value{%s}}" % (savecnt, cnt))
+        elif cmd == "restore":
+            needed_counters[cnt] = 1
+            savecnt = "LyXSave" + cnt
+            ert = put_cmd_in_ert("\\setcounter{%s}{\\value{%s}}" % (cnt, savecnt))
+        else:
+            document.warning("Unknown counter command `%s' in inset at line %d!" % (cnt, i))
+            
+        if ert:
+            document.body[i : j + 1] = ert
+        i += 1
+        continue
+
+    pretext = []
+    for cnt in needed_counters:
+        pretext.append("\\newcounter{LyXSave%s}" % (cnt))
+    if pretext:
+        add_to_preamble(document, pretext)
+
+        
 ##
 # Conversion hub
 #
@@ -3741,10 +3813,12 @@ convert = [
            [590, [convert_changebars]],
            [591, [convert_postpone_fragile]],
            [592, []],
-           [593, [convert_counter_maintenance]]
+           [593, [convert_counter_maintenance]],
+           [594, []]
           ]
 
-revert =  [[592, [revert_counter_maintenance]],
+revert =  [[593, [revert_counter_inset]],
+           [592, [revert_counter_maintenance]],
            [591, [revert_colrow_tracking]],
            [590, [revert_postpone_fragile]],
            [589, [revert_changebars]],
