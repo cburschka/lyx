@@ -369,17 +369,28 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 	BiblioInfo const & biblist = buf.masterBibInfo();
 
 	// mark broken citations
-	if (biblist.empty() || biblist.find(key) == biblist.end())
-		setBroken(true);
-	else
-		setBroken(false);
+	setBroken(false);
 
-	if (biblist.empty())
+	if (biblist.empty()) {
+		setBroken(true);
 		return docstring();
+	}
 
 	if (key.empty())
 		return _("No citations selected!");
 
+	// check all citations
+	// we only really want the last 'false', to suppress trimming, but
+	// we need to give the other defaults, too, to set it.
+	vector<docstring> keys =
+		getVectorFromString(key, from_ascii(","), false, false);
+	for (auto k : keys) {
+		if (biblist.find(k) == biblist.end()) {
+			setBroken(true);
+			break;
+		}
+	}
+	
 	string cite_type = getCmdName();
 	bool const uppercase = isUpperCase(cite_type[0]);
 	if (uppercase)
@@ -399,10 +410,6 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 	buffer().params().documentClass().addCiteMacro("!textafter", to_utf8(after));
 	*/
 	docstring label;
-	// we only really want the last 'false', to suppress trimming, but
-	// we need to give the other defaults, too, to set it.
-	vector<docstring> keys =
-		getVectorFromString(key, from_ascii(","), false, false);
 	CitationStyle cs = getCitationStyle(buffer().masterParams(),
 			cite_type, buffer().masterParams().citeStyles());
 	bool const qualified = cs.hasQualifiedList
