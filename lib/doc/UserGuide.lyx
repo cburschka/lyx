@@ -29887,24 +29887,9 @@ name "sec:Counters"
 
 \begin_layout Standard
 
-\change_inserted -584632292 1588304632
-One powerful feature of \SpecialChar LaTeX
- is its ability to manage counters, like the one
- for this section (
-\change_unchanged
-
-\begin_inset CommandInset counter
-LatexCommand value
-counter "section"
-value "0"
-vtype "arabic"
-lyxonly "false"
-
-\end_inset
-
-
 \change_inserted -584632292 1588374084
-).
+One powerful feature of \SpecialChar LaTeX
+ is its ability to manage counters.
  Mostly, this is handled automatically, but there are times one wants to
  modify counters directly.
  This can be done in LyX using the counter inset, which is accessible from
@@ -29919,46 +29904,40 @@ lyxonly "false"
 
 \begin_layout Standard
 
-\change_inserted -584632292 1588374095
-There are six commands you can use:
+\change_inserted -584632292 1588529162
+There are five commands you can use:
 \end_layout
 
 \begin_layout Enumerate
 
-\change_inserted -584632292 1588374116
-Set Counter: Allows you to assign a specific value to a counter
+\change_inserted -584632292 1588529167
+Set counter: Allows you to assign a specific value to a counter
 \end_layout
 
 \begin_layout Enumerate
 
-\change_inserted -584632292 1588374135
-Add to Counter: Allows you to add some specified amount to a counter (or
+\change_inserted -584632292 1588529177
+Increase counter: Allows you to add some specified amount to a counter (or
  to subtract, if you choose a negative number)
 \end_layout
 
 \begin_layout Enumerate
 
-\change_inserted -584632292 1588374149
-Reset to 0: Sets the value of the counter to 0.
+\change_inserted -584632292 1588529180
+Reset to zero: Sets the value of the counter to 0.
 \end_layout
 
 \begin_layout Enumerate
 
-\change_inserted -584632292 1588374169
-Save Value of Counter: Saves the value of the counter so that it can later
+\change_inserted -584632292 1588529184
+Save value of counter: Saves the value of the counter so that it can later
  be restored.
 \end_layout
 
 \begin_layout Enumerate
 
-\change_inserted -584632292 1588374185
-Restore Value of Counter: Restores the previously saved value.
-\end_layout
-
-\begin_layout Enumerate
-
-\change_inserted -584632292 1588374203
-Display Value of Counter: Shows the value of the counter (in the output).
+\change_inserted -584632292 1588529187
+Restore value of counter: Restores the previously saved value.
 \end_layout
 
 \begin_layout Standard
