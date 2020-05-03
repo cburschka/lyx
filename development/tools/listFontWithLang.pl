@@ -15,7 +15,7 @@
 #   Option-strings with more that 1 char need be prefixed by '--'
 #
 # Option to get list of options: -h
-# 
+#
 # Some equivalencies for instance with option -n
 #	-n arial
 #	-N=arial
@@ -409,7 +409,7 @@ sub getsinglevalue($$$)
         $minv = $diff;
       }
       elsif ($diff == $minv) {
-        if ($key > $maxv) {
+        if ($key < $maxv) {
           $maxv = $key;
         }
       }
