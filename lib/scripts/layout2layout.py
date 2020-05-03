@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 80
+currentFormat = 81
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -268,6 +268,9 @@ currentFormat = 80
 # Incremented to format 80, 12 August 2019 by spitz
 # New float option Requires
 
+# Incremented to format 80, 12 August 2019 by rikiheck
+# New tag GuiName for counters
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -517,7 +520,7 @@ def convert(lines, end_format):
                 i += 1
             continue
 
-        if format >= 65 and format <= 79:
+        if format >= 65 and format <= 80:
             # nothing to do.
             i += 1
             continue
