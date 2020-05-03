@@ -406,13 +406,13 @@ bool isHexChar(char_type c)
 
 bool isHex(docstring const & str)
 {
-	int index = 0;
+	size_t index = 0;
 
 	if (str.length() > 2 && str[0] == '0' &&
 	    (str[1] == 'x' || str[1] == 'X'))
 		index = 2;
 
-	int const len = str.length();
+	size_t const len = str.length();
 
 	for (; index < len; ++index) {
 		if (!isHexChar(str[index]))
@@ -433,8 +433,8 @@ unsigned int hexToInt(docstring const & str)
 
 bool isAscii(docstring const & str)
 {
-	int const len = str.length();
-	for (int i = 0; i < len; ++i)
+	size_t const len = str.length();
+	for (size_t i = 0; i < len; ++i)
 		if (str[i] >= 0x80)
 			return false;
 	return true;
@@ -443,8 +443,8 @@ bool isAscii(docstring const & str)
 
 bool isAscii(string const & str)
 {
-	int const len = str.length();
-	for (int i = 0; i < len; ++i)
+	size_t const len = str.length();
+	for (size_t i = 0; i < len; ++i)
 		if (static_cast<unsigned char>(str[i]) >= 0x80)
 			return false;
 	return true;
