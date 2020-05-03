@@ -29,11 +29,6 @@ Counter subexample
 	LabelString          "\theexamplei (\alph{subexample})"
 End
 
-Counter subexamplei
-	Within               examplei
-	LabelString          "\theexamplei (\alph{subexamplei})"
-End
-
 
 #
 # Numbered Examples
