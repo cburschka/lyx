@@ -88,7 +88,7 @@ Counter footnote
 End
 
 Counter thanks
-	GuiName "Thanks (Footnote)"
+	GuiName "Footnote (Title)"
 	PrettyFormat         "Footnote ##"
 	LabelString	     "\fnsymbol{thanks}"
 End
