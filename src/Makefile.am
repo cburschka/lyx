@@ -89,8 +89,6 @@ lyx_SOURCES = \
 	$(PWL) \
 	LaTeXFonts.cpp \
 	LaTeXFonts.h \
-	PrinterParams.cpp \
-	PrinterParams.h \
 	Thesaurus.cpp \
 	Thesaurus.h
 
