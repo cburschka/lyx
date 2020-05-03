@@ -384,7 +384,7 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 	// we need to give the other defaults, too, to set it.
 	vector<docstring> keys =
 		getVectorFromString(key, from_ascii(","), false, false);
-	for (auto k : keys) {
+	for (auto const & k : keys) {
 		if (biblist.find(k) == biblist.end()) {
 			setBroken(true);
 			break;
