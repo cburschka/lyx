@@ -586,30 +586,38 @@ End
 # Counters definitions
 ###
 Counter enumi
+	GuiName "Numbered List (Level 1)"
 End
 
 Counter enumii
+	GuiName "Numbered List (Level 2)"
   Within        enumi
 End
 
 Counter enumiii
+	GuiName "Numbered List (Level 3)"
   Within        enumii
 End
 
 Counter enumiv
+	GuiName "Numbered List (Level 4)"
   Within        enumiii
 End
 
 Counter bibitem
+	GuiName "Bibliography Item"
 End
 
 Counter figure
+	GuiName Figure
 End
 
 Counter table
+	GuiName Table
 End
 
 Counter algorithm
+	GuiName Algorithm
 End
 
 ###

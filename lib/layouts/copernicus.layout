@@ -241,6 +241,7 @@ Style Conclusions
 End
 
 Counter appendix
+	GuiName Appendix
 	Within          "none"
 End
 
@@ -252,6 +253,7 @@ Style Section_Appendix
 End
 
 Counter subappendix
+	GuiName Subappendix
 	Within          "appendix"
 End
 
@@ -263,6 +265,7 @@ Style Subsection_Appendix
 End
 
 Counter subsubappendix
+	GuiName Subsubappendix
 	Within          subappendix
 End
 

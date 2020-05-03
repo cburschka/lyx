@@ -24,30 +24,43 @@
 # We need separate counters for each theorem-like style.
 Format 80
 Counter theorem
+	GuiName Theorem
 End
 Counter corollary
+	GuiName Corollary
 End
 Counter lemma
+	GuiName Lemma
 End
 Counter proposition
+	GuiName Proposition
 End
 Counter conjecture
+	GuiName Conjecture
 End
 Counter fact
+	GuiName Fact
 End
 Counter definition
+	GuiName Definition
 End
 Counter example
+	GuiName Example
 End
 Counter problem
+	GuiName Problem
 End
 Counter exercise
+	GuiName Exercise
 End
 Counter solution
+	GuiName Solution
 End
 Counter remark
+	GuiName Remark
 End
 Counter claim
+	GuiName Claim
 End
 
 OutlinerName thm "Definitions & Theorems"

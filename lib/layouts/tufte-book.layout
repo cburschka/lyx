@@ -236,9 +236,11 @@ End
 
 # this steps the counters
 Counter		marginfigure
+	GuiName "Margin Figure"
 End
 
 Counter		margintable
+	GuiName "Margin Table"
 End
 
 # define the floats

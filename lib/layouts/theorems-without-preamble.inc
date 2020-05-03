@@ -31,6 +31,7 @@ Format 80
 OutlinerName thm "Definitions & Theorems"
 
 Counter		theorem
+	GuiName Theorem
 End
 Style Theorem
 	Category	Reasoning
@@ -75,6 +76,7 @@ End
 
 
 Counter		corollary
+	GuiName Corollary
 End
 Style Corollary
 	CopyStyle	Theorem
@@ -91,6 +93,7 @@ End
 
 
 Counter		lemma
+	GuiName Lemma
 End
 Style Lemma
 	CopyStyle	Theorem
@@ -107,6 +110,7 @@ End
 
 
 Counter		proposition
+	GuiName Proposition
 End
 Style Proposition
 	CopyStyle	Theorem
@@ -123,6 +127,7 @@ End
 
 
 Counter		prop
+	GuiName Prop(osition)
 End
 Style Prop
 	CopyStyle	Theorem
@@ -139,6 +144,7 @@ End
 
 
 Counter		conjecture
+	GuiName Conjecture
 End
 Style Conjecture
 	CopyStyle	Theorem
@@ -162,6 +168,7 @@ End
 
 
 Counter		fact
+	GuiName Fact
 End
 Style Fact
 	CopyStyle	Theorem
@@ -178,6 +185,7 @@ End
 
 
 Counter		definition
+	GuiName Definition
 End
 Style Definition
 	CopyStyle	Theorem
@@ -202,6 +210,7 @@ End
 
 
 Counter		example
+	GuiName Example
 End
 Style Example
 	CopyStyle	Conjecture
@@ -219,6 +228,7 @@ End
 
 
 Counter		problem
+	GuiName Problem
 End
 Style Problem
 	CopyStyle	Definition
@@ -237,6 +247,7 @@ End
 
 
 Counter		prob
+	GuiName Prob(lem)
   Within	chapter
 End
 # Prob does not copy a style to avoid preamble code
@@ -269,6 +280,7 @@ End
 
 
 Counter		solution
+	GuiName Solution
 End
 Style Solution
 	CopyStyle	Problem
@@ -300,6 +312,7 @@ End
 
 
 Counter		exercise
+	GuiName Exercise
 End
 Style Exercise
 	CopyStyle	Definition
@@ -317,6 +330,7 @@ End
 
 
 Counter		remark
+	GuiName Remark
 End
 Style Remark
 	CopyStyle	Conjecture
@@ -347,6 +361,7 @@ End
 
 
 Counter		case
+	GuiName Case
 End
 Style Case
 	CopyStyle	Remark
@@ -364,6 +379,7 @@ End
 
 
 Counter		property
+	GuiName Property
 End
 Style Property
 	CopyStyle	Claim
@@ -381,6 +397,7 @@ End
 
 
 Counter		question
+	GuiName Question
 End
 Style Question
 	CopyStyle	Claim
@@ -398,6 +415,7 @@ End
 
 
 Counter		note
+	GuiName Note
 End
 Style Note
 	CopyStyle	Claim

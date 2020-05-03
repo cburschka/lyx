@@ -4,12 +4,14 @@
 Format 80
 
 Counter chapter
+	GuiName Chapter
 	Within                ""
 	LabelString	      "\arabic{chapter}"
 	LabelStringAppendix   "\Alph{chapter}"
 End
 
 Counter section
+	GuiName Section
 	Within                chapter
 	LabelString	      ""
 End
@@ -32,10 +34,12 @@ Float
 End
 
 Counter listing
+	GuiName Listing
 	Within		      chapter
 End
 
 Counter footnote
+	GuiName Footnote
 	Within		      chapter
 	LabelString	      "\arabic{footnote}"
 End

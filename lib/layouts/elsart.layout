@@ -38,10 +38,12 @@ TitleLatexType Environment
 TitleLatexName frontmatter
 
 Counter summ
+	GuiName Summary
 End
 
 
 Counter case
+	GuiName Case
 End
 
 
@@ -266,6 +268,7 @@ End
 # - Case
 
 Counter theorem
+	GuiName Theorem
 End
 
 

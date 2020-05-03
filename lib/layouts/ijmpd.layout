@@ -373,6 +373,7 @@ Style Proof
 End
 
 Counter theorem
+	GuiName Theorem
   Within	section
 End
 Style Theorem
@@ -387,6 +388,7 @@ Style Theorem
 End
 
 Counter remark
+	GuiName Remark
   Within	section
 End
 Style Remark
@@ -398,6 +400,7 @@ Style Remark
 End
 
 Counter corollary
+	GuiName Corollary
   Within	section
 End
 Style Corollary
@@ -405,6 +408,7 @@ Style Corollary
 End
 
 Counter lemma
+	GuiName Lemma
   Within	section
 End
 Style Lemma
@@ -412,6 +416,7 @@ Style Lemma
 End
 
 Counter proposition
+	GuiName Proposition
   Within	section
 End
 Style Proposition
@@ -419,6 +424,7 @@ Style Proposition
 End
 
 Counter question
+	GuiName Question
   Within	section
 End
 Style Question
@@ -429,6 +435,7 @@ Style Question
 End
 
 Counter claim
+	GuiName Claim
   Within	section
 End
 Style Claim
@@ -440,6 +447,7 @@ Style Claim
 End
 
 Counter conjecture
+	GuiName Conjecture
   Within	section
 End
 Style Conjecture
@@ -450,10 +458,12 @@ Style Conjecture
 End
 
 Counter prop
+	GuiName Prop(osition)
   Within	section
 End
 
 Counter appendix
+	GuiName Appendix
 End
 Style Appendix
   LatexType	Command

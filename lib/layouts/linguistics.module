@@ -15,16 +15,19 @@ Format 80
 #
 
 Counter example
+	GuiName Example
 	Within               chapter
 	LabelString          "(\arabic{example})"
 End
 
 Counter examplei
+	GuiName "Numbered Example (Multiline)"
 	Within               chapter
 	LabelString          "(\arabic{examplei})"
 End
 
 Counter subexample
+	GuiName Subexample
 	Within               examplei
 	LabelString          "\theexamplei (\alph{subexample})"
 End

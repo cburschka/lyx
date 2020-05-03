@@ -24,10 +24,12 @@ Input stdcounters.inc
 DefaultStyle Dialogue
 
 Counter act
+	GuiName "Act Number"
 End
 
 
 Counter scene
+	GuiName "Scene Number"
 End
 
 

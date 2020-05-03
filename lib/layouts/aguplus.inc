@@ -227,10 +227,12 @@ End
 
 
 Counter plate
+	GuiName Plate
 	Within                none
 End
 
 
 Counter planotable
+	GuiName "Plano Table"
 	Within                none
 End

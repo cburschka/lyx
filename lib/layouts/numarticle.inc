@@ -5,6 +5,7 @@ Format 80
 
 # appendix applies to sections.
 Counter section
+	GuiName Section
 	Within                "none"
 	LabelString	          "\arabic{section}"
 	LabelStringAppendix   "\Alph{section}"

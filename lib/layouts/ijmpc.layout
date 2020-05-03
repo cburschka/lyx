@@ -409,6 +409,7 @@ Style Question
 End
 
 Counter claim
+	GuiName Claim
   Within	section
 End
 Style Claim
@@ -441,6 +442,7 @@ Style Prop
 End
 
 Counter appendix
+	GuiName Appendix
 End
 Style Appendix
   LatexType	Command

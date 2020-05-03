@@ -16,39 +16,51 @@ Format 80
 
 # We need separate counters for each theorem-like style.
 Counter theorem
+	GuiName Theorem
 	Within         section
 End
 Counter corollary
+	GuiName Corollary
 	Within         section
 End
 Counter lemma
+	GuiName Lemma
 	Within         section
 End
 Counter proposition
+	GuiName Proposition
 	Within         section
 End
 Counter conjecture
+	GuiName Conjecture
 	Within         section
 End
 Counter fact
+	GuiName Fact
 	Within         section
 End
 Counter definition
+	GuiName Definition
 	Within         section
 End
 Counter example
+	GuiName Example
 	Within         section
 End
 Counter problem
+	GuiName Problem
 	Within         section
 End
 Counter exercise
+	GuiName Exercise
 	Within         section
 End
 Counter remark
+	GuiName Remark
 	Within         section
 End
 Counter claim
+	GuiName Claim
 	Within         section
 End
 

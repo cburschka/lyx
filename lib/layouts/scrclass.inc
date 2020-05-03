@@ -45,6 +45,7 @@ Input stdfloats.inc
 
 # Adapt enumii counter display to KOMA default
 Counter enumii
+	GuiName "Numbered List (Level 2)"
 	Within               enumi
 	LabelString          "\alph{enumii})"
 End

@@ -9,6 +9,7 @@
 Format 80
 
 Counter chunk
+	GuiName "Knitr Chunk"
     PrettyFormat "Chunk ##"
 End
 

@@ -9,17 +9,21 @@
 Format 80
 
 Counter casei
+	GuiName "Case (Level 1)"
         LabelString "Case \arabic{casei}."
 End
 Counter caseii
+	GuiName "Case (Level 2)"
         Within casei
         LabelString "Case \roman{caseii}."
 End
 Counter caseiii
+	GuiName "Case (Level 3)"
         Within caseii
         LabelString "Case \alph{caseiii}."
 End
 Counter caseiv
+	GuiName "Case (Level 4)"
         Within caseiii
         LabelString "Case \arabic{caseiv}."
 End
