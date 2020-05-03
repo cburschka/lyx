@@ -90,7 +90,7 @@ enchant::Dict * EnchantChecker::Private::addSpeller(string const & lang)
 		const char * what = e.what();
 		LYXERR(Debug::FILES, "cannot add enchant speller: " <<
 			   ((what && *what) ? what : "unspecified enchant exception in request_dict()"));
-		m.speller = 0;
+		m.speller = nullptr;
 	}
 	spellers_[lang] = m;
 	return m.speller;

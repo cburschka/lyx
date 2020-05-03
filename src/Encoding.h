@@ -28,8 +28,8 @@ namespace support { class FileName; }
 class EncodingException : public std::exception {
 public:
 	EncodingException(char_type c);
-	virtual ~EncodingException() throw() {}
-	virtual const char * what() const throw();
+	virtual ~EncodingException() noexcept {}
+	virtual const char * what() const noexcept;
 
 	char_type failed_char;
 	int par_id;
@@ -130,7 +130,7 @@ public:
 	/// Represent any of the above packages
 	static int const any;
 	///
-	Encoding() : fixedwidth_(true), unsafe_(false), forced_(0),
+	Encoding() : fixedwidth_(true), unsafe_(false), forced_(nullptr),
 	             start_encodable_(0), package_(none), complete_(false) {}
 	///
 	Encoding(std::string const & n, std::string const & l,
@@ -333,7 +333,7 @@ public:
 	 */
 	static char_type fromLaTeXCommand(docstring const & cmd, int cmdtype,
 			bool & combining, bool & needsTermination,
-			std::set<std::string> * req = 0);
+			std::set<std::string> * req = nullptr);
 	///
 	enum LatexCmd {
 		///
@@ -353,7 +353,7 @@ public:
 	 */
 	static docstring fromLaTeXCommand(docstring const & cmd, int cmdtype,
 			bool & needsTermination, docstring & rem,
-			std::set<std::string> * req = 0);
+			std::set<std::string> * req = nullptr);
 
 protected:
 	///

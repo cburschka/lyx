@@ -216,7 +216,7 @@ bool Thesaurus::thesaurusInstalled(docstring const & lang) const
 Thesaurus::Meanings Thesaurus::lookup(WordLangTuple const & wl)
 {
 	Meanings meanings;
-	MyThes * mythes = 0;
+	MyThes * mythes = nullptr;
 
 	docstring const lang_code = from_ascii(wl.lang()->code());
 	docstring const t = wl.word();

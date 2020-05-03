@@ -67,7 +67,7 @@ EncodingException::EncodingException(char_type c)
 }
 
 
-const char * EncodingException::what() const throw()
+const char * EncodingException::what() const noexcept
 {
 	return "Could not find LaTeX command for a character";
 }

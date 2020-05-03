@@ -37,7 +37,7 @@ namespace Alert = frontend::Alert;
 
 LyXVC::LyXVC()
 {
-	owner_ = 0;
+	owner_ = nullptr;
 }
 
 
@@ -91,7 +91,7 @@ bool LyXVC::file_found_hook(FileName const & fn)
 	}
 
 	// file is not under any VCS.
-	vcs.reset(0);
+	vcs.reset(nullptr);
 	return false;
 }
 
@@ -186,7 +186,7 @@ bool LyXVC::registrer()
 			_("(no initial description)"));
 	if (!ok) {
 		LYXERR(Debug::LYXVC, "LyXVC: user cancelled");
-		vcs.reset(0);
+		vcs.reset(nullptr);
 		return false;
 	}
 	if (response.empty())

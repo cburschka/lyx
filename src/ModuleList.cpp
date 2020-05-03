@@ -259,7 +259,7 @@ LyXModule const * ModuleList::operator[](string const & str) const
 			LyXModule const & mod = *it;
 			return &mod;
 		}
-	return 0;
+	return nullptr;
 }
 
 
@@ -271,7 +271,7 @@ LyXModule * ModuleList::operator[](string const & str)
 			LyXModule & mod = *it;
 			return &mod;
 		}
-	return 0;
+	return nullptr;
 }
 
 } // namespace lyx

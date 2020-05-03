@@ -76,28 +76,25 @@ struct UndoElement
 	            StableDocIterator const & cel,
 	            pit_type fro, pit_type en, ParagraphList * pl, MathData * ar,
 	            bool lc, size_t gid) :
-		kind(kin), cur_before(cb), cell(cel), from(fro), end(en),
-		pars(pl), array(ar), bparams(0),
-		lyx_clean(lc), group_id(gid), time(current_time())
-		{
-		}
+		cur_before(cb), cell(cel), from(fro), end(en),
+		pars(pl), array(ar), bparams(nullptr),
+		group_id(gid), time(current_time()), kind(kin), lyx_clean(lc)
+		{}
 	///
 	UndoElement(CursorData const & cb, BufferParams const & bp,
 				bool lc, size_t gid) :
-		kind(ATOMIC_UNDO), cur_before(cb), cell(), from(0), end(0),
-		pars(0), array(0), bparams(new BufferParams(bp)),
-		lyx_clean(lc), group_id(gid), time(current_time())
-	{
-	}
+		cur_before(cb), cell(), from(0), end(0),
+		pars(nullptr), array(nullptr), bparams(new BufferParams(bp)),
+		group_id(gid), time(current_time()), kind(ATOMIC_UNDO), lyx_clean(lc)
+	{}
 	///
 	UndoElement(UndoElement const & ue) :
-		kind(ue.kind),
 		cur_before(ue.cur_before), cur_after(ue.cur_after),
 		cell(ue.cell), from(ue.from), end(ue.end),
 		pars(ue.pars), array(ue.array),
-		bparams(ue.bparams ? new BufferParams(*ue.bparams) : 0),
-		lyx_clean(ue.lyx_clean), group_id(ue.group_id),
-		time(current_time())
+		bparams(ue.bparams ? new BufferParams(*ue.bparams) : nullptr),
+		group_id(ue.group_id), time(current_time()), kind(ue.kind),
+		lyx_clean(ue.lyx_clean)
 		{}
 	///
 	~UndoElement()
@@ -105,8 +102,6 @@ struct UndoElement
 		if (bparams)
 			delete bparams;
 	}
-	/// Which kind of operation are we recording for?
-	UndoKind kind;
 	/// the position of the cursor before recordUndo
 	CursorData cur_before;
 	/// the position of the cursor at the end of the undo group
@@ -123,12 +118,14 @@ struct UndoElement
 	MathData * array;
 	/// Only used in case of params undo
 	BufferParams const * bparams;
-	/// Was the buffer clean at this point?
-	bool lyx_clean;
 	/// the element's group id
 	size_t group_id;
 	/// timestamp
 	time_t time;
+	/// Which kind of operation are we recording for?
+	UndoKind kind;
+	/// Was the buffer clean at this point?
+	bool lyx_clean;
 private:
 	/// Protect construction
 	UndoElement();
@@ -193,8 +190,8 @@ private:
 
 struct Undo::Private
 {
-	Private(Buffer & buffer) : buffer_(buffer), undo_finished_(true),
-				   group_id_(0), group_level_(0) {}
+	Private(Buffer & buffer) : buffer_(buffer),
+		group_id_(0), group_level_(0), undo_finished_(true) {}
 
 	// Do one undo/redo step
 	void doUndoRedoAction(CursorData & cur, UndoElementStack & stack,
@@ -227,15 +224,16 @@ struct Undo::Private
 	/// Redo stack.
 	UndoElementStack redostack_;
 
-	/// The flag used by Undo::finishUndo().
-	bool undo_finished_;
-
 	/// Current group Id.
 	size_t group_id_;
 	/// Current group nesting nevel.
 	size_t group_level_;
 	/// the position of cursor before the group was created
 	CursorData group_cur_before_;
+
+	/// The flag used by Undo::finishUndo().
+	bool undo_finished_;
+
 };
 
 
@@ -343,7 +341,7 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 	// create the position information of the Undo entry
 	UndoElement undo(kind,
 	      group_cur_before_.empty() ? cur_before : group_cur_before_,
-	      cell, from, end, 0, 0, buffer_.isClean(), group_id_);
+	      cell, from, end, nullptr, nullptr, buffer_.isClean(), group_id_);
 
 	// fill in the real data to be saved
 	if (cell.inMathed()) {
@@ -468,7 +466,7 @@ void Undo::Private::doUndoRedoAction(CursorData & cur, UndoElementStack & stack,
 		dit.cell().swap(*undo.array);
 		dit.inset().setBuffer(buffer_);
 		delete undo.array;
-		undo.array = 0;
+		undo.array = nullptr;
 	} else {
 		// Some finer machinery is needed here.
 		Text * text = dit.text();
@@ -504,12 +502,12 @@ void Undo::Private::doUndoRedoAction(CursorData & cur, UndoElementStack & stack,
 			fpit->setInsetBuffers(buffer_);
 
 		delete undo.pars;
-		undo.pars = 0;
+		undo.pars = nullptr;
 	}
 
 	// We'll clean up in release mode.
-	LASSERT(undo.pars == 0, undo.pars = 0);
-	LASSERT(undo.array == 0, undo.array = 0);
+	LASSERT(undo.pars == nullptr, undo.pars = nullptr);
+	LASSERT(undo.array == nullptr, undo.array = nullptr);
 
 	if (!undo.cur_before.empty())
 		cur = undo.cur_before;

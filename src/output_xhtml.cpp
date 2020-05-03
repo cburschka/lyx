@@ -878,7 +878,7 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 		// because of branches, e.g., a branch that contains an entire new section.
 		// We do not really want to wrap that whole thing in a <div>...</div>.
 		bool special_case = false;
-		Inset const * specinset = par->size() == 1 ? par->getInset(0) : 0;
+		Inset const * specinset = par->size() == 1 ? par->getInset(0) : nullptr;
 		if (specinset && !specinset->getLayout().htmlisblock()) {
 			Layout const & style = par->layout();
 			FontInfo const first_font = style.labeltype == LABEL_MANUAL ?
@@ -974,7 +974,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 	xs << html::CR();
 
 	// we will on occasion need to remember a layout from before.
-	Layout const * lastlay = 0;
+	Layout const * lastlay = nullptr;
 
 	while (par != pend) {
 		Layout const & style = par->layout();
@@ -1002,9 +1002,9 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 			// started---which we will be if the depth is the same.
 			if (par->params().depth() == origdepth) {
 				LATTEST(bstyle == style);
-				if (lastlay != 0) {
+				if (lastlay != nullptr) {
 					closeItemTag(xs, *lastlay);
-					lastlay = 0;
+					lastlay = nullptr;
 				}
 
 				// this will be positive, if we want to skip the
@@ -1093,7 +1093,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		}
 	}
 
-	if (lastlay != 0)
+	if (lastlay != nullptr)
 		closeItemTag(xs, *lastlay);
 	closeTag(xs, bstyle);
 	xs << html::CR();

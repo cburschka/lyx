@@ -303,7 +303,7 @@ ColorSet::ColorSet()
 	{ Color_inherit, N_("inherit"), "inherit", "black", "inherit" },
 	{ Color_regexpframe, N_("regexp frame"), "regexpframe", "green", "regexpframe" },
 	{ Color_ignore, N_("ignore"), "ignore", "black", "ignore" },
-	{ Color_ignore, 0, 0, 0, 0 }
+	{ Color_ignore, nullptr, nullptr, nullptr, nullptr }
 	};
 
 	for (int i = 0; items[i].guiname; ++i)

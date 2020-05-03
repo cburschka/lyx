@@ -102,10 +102,10 @@ public:
 	int lineno;
 	///
 	string pushTok;
-	///
-	char commentChar;
 	/// used for error messages
 	string context;
+	///
+	char commentChar;
 private:
 	/// non-copyable
 	Pimpl(Pimpl const &);
@@ -118,7 +118,7 @@ private:
 	public:
 		///
 		PushedTable()
-			: table_elem(0), table_siz(0) {}
+			: table_elem(nullptr), table_siz(0) {}
 		///
 		PushedTable(LexerKeyword * ki, int siz)
 			: table_elem(ki), table_siz(siz) {}
@@ -567,7 +567,7 @@ void Lexer::Pimpl::pushToken(string const & pt)
 //////////////////////////////////////////////////////////////////////
 
 Lexer::Lexer()
-	: pimpl_(new Pimpl(0, 0)), lastReadOk_(false)
+	: pimpl_(new Pimpl(nullptr, 0)), lastReadOk_(false)
 {}
 
 
@@ -808,7 +808,7 @@ Lexer::operator void const *() const
 	// use fail() here. However, our implementation of getString() et al.
 	// can cause the eof() and fail() bits to be set, even though we
 	// haven't tried to read 'em.
-	return lastReadOk_? this : 0;
+	return lastReadOk_? this : nullptr;
 }
 
 

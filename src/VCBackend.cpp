@@ -971,7 +971,7 @@ string CVS::repoUpdate()
 			dispatch(FuncRequest(LFUN_DIALOG_SHOW, "file " + tmpf.absFileName()));
 			ret = frontend::Alert::prompt(_("Changes detected"),
 				text, 0, 1, _("&Continue"), _("&Abort"));
-			hideDialogs("file", 0);
+			hideDialogs("file", nullptr);
 		}
 		if (ret == 1)
 			return string();
@@ -1532,7 +1532,7 @@ string SVN::repoUpdate()
 			dispatch(FuncRequest(LFUN_DIALOG_SHOW, "file " + tmpf.absFileName()));
 			ret = frontend::Alert::prompt(_("Changes detected"),
 				text, 0, 1, _("&Yes"), _("&No"));
-			hideDialogs("file", 0);
+			hideDialogs("file", nullptr);
 		}
 		if (ret == 1)
 			return string();
