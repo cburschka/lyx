@@ -1074,7 +1074,7 @@ void Layout::readArgument(Lexer & lex)
 			arg.tooltip = lex.getDocString();
 		} else if (tok == "requires") {
 			lex.next();
-			arg.requires = lex.getString();
+			arg.required = lex.getString();
 		} else if (tok == "decoration") {
 			lex.next();
 			arg.decoration = lex.getString();
@@ -1150,8 +1150,8 @@ void writeArgument(ostream & os, string const & id, Layout::latexarg const & arg
 		os << "\t\tPresetArg \"" << to_utf8(arg.presetarg) << "\"\n";
 	if (!arg.tooltip.empty())
 		os << "\t\tToolTip \"" << to_utf8(arg.tooltip) << "\"\n";
-	if (!arg.requires.empty())
-		os << "\t\tRequires \"" << arg.requires << "\"\n";
+	if (!arg.required.empty())
+		os << "\t\tRequires \"" << arg.required << "\"\n";
 	if (!arg.decoration.empty())
 		os << "\t\tDecoration \"" << arg.decoration << "\"\n";
 	if (!arg.newlinecmd.empty())

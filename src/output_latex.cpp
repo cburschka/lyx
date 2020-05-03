@@ -474,8 +474,8 @@ void getArgInsets(otexstream & os, OutputParams const & runparams, Layout::LaTeX
 	// other arguments, consider this.
 	for (auto const & larg : latexargs) {
 		Layout::latexarg const & arg = larg.second;
-		if ((!arg.presetarg.empty() || !arg.defaultarg.empty()) && !arg.requires.empty()) {
-				vector<string> req = getVectorFromString(arg.requires);
+		if ((!arg.presetarg.empty() || !arg.defaultarg.empty()) && !arg.required.empty()) {
+				vector<string> req = getVectorFromString(arg.required);
 				required.insert(required.end(), req.begin(), req.end());
 			}
 	}
@@ -609,7 +609,7 @@ void addArgInsets(Paragraph const & par, string const & prefix,
 			latexargs.find(arg->name());
 		if (lit != latexargs.end()) {
 			Layout::latexarg const & larg = lit->second;
-			vector<string> req = getVectorFromString(larg.requires);
+			vector<string> req = getVectorFromString(larg.required);
 			move(req.begin(), req.end(), back_inserter(required));
 		}
 	}

@@ -100,7 +100,7 @@ public:
 		docstring defaultarg;
 		docstring presetarg;
 		docstring tooltip;
-		std::string requires;
+		std::string required;
 		std::string decoration;
 		FontInfo font;
 		FontInfo labelfont;
