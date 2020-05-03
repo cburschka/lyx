@@ -913,7 +913,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 	// If we do not succeed, then it was not there, which means that
 	// the textclass did not provide the definitions of the standard
 	// insets. So we need to try to load them.
-	int erased = provides_.erase("stdinsets");
+	size_type const erased = provides_.erase("stdinsets");
 	if (!erased) {
 		FileName tmp = libFileSearch("layouts", "stdinsets.inc");
 
@@ -1569,11 +1569,13 @@ bool TextClass::readFloat(Lexer & lexrc)
 		floatlist_.newFloat(fl);
 		// each float has its own counter
 		counters_.newCounter(from_ascii(type), from_ascii(within),
-				      docstring(), docstring());
+				docstring(), docstring(),
+				bformat(_("%1$s (Float)"), from_ascii(name)));
 		// also define sub-float counters
 		docstring const subtype = "sub-" + from_ascii(type);
 		counters_.newCounter(subtype, from_ascii(type),
-				      "\\alph{" + subtype + "}", docstring());
+				"\\alph{" + subtype + "}", docstring(),
+				 bformat(_("Sub-%1$s (Float)"), from_ascii(name)));
 	}
 	return getout;
 }

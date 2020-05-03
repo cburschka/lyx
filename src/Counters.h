@@ -35,7 +35,7 @@ public:
 	Counter();
 	///
 	Counter(docstring const & mc, docstring const & ls,
-		docstring const & lsa);
+		docstring const & lsa, docstring const & guiname);
 	/// \return true on success
 	bool read(Lexer & lex);
 	///
@@ -124,7 +124,8 @@ public:
 	void newCounter(docstring const & newc,
 			docstring const & masterc,
 			docstring const & ls,
-			docstring const & lsa);
+			docstring const & lsa,
+			docstring const & guiname);
 	/// Checks whether the given counter exists.
 	bool hasCounter(docstring const & c) const;
 	/// reads the counter name

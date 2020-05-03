@@ -41,8 +41,9 @@ Counter::Counter()
 
 
 Counter::Counter(docstring const & mc, docstring const & ls,
-                docstring const & lsa)
-	: initial_value_(0), master_(mc), labelstring_(ls), labelstringappendix_(lsa)
+		docstring const & lsa, docstring const & guiname)
+	: initial_value_(0), master_(mc), labelstring_(ls),
+	  labelstringappendix_(lsa), guiname_(guiname)
 {
 	reset();
 }
@@ -211,7 +212,8 @@ Counters::Counters() : appendix_(false), subfloat_(false), longtable_(false)
 void Counters::newCounter(docstring const & newc,
 			  docstring const & masterc,
 			  docstring const & ls,
-			  docstring const & lsa)
+			  docstring const & lsa,
+			  docstring const & guiname)
 {
 	if (!masterc.empty() && !hasCounter(masterc)) {
 		lyxerr << "Master counter does not exist: "
@@ -219,7 +221,7 @@ void Counters::newCounter(docstring const & newc,
 		       << endl;
 		return;
 	}
-	counterList_[newc] = Counter(masterc, ls, lsa);
+	counterList_[newc] = Counter(masterc, ls, lsa, guiname);
 }
 
 
