@@ -1570,12 +1570,12 @@ bool TextClass::readFloat(Lexer & lexrc)
 		// each float has its own counter
 		counters_.newCounter(from_ascii(type), from_ascii(within),
 				docstring(), docstring(),
-				bformat(_("%1$s (Float)"), from_ascii(name)));
+				bformat(_("%1$s (Float)"), _(name)));
 		// also define sub-float counters
 		docstring const subtype = "sub-" + from_ascii(type);
 		counters_.newCounter(subtype, from_ascii(type),
 				"\\alph{" + subtype + "}", docstring(),
-				 bformat(_("Sub-%1$s (Float)"), from_ascii(name)));
+				 bformat(_("Sub-%1$s (Float)"), _(name)));
 	}
 	return getout;
 }
