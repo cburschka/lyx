@@ -82,8 +82,6 @@ private:
 	docstring screenLabel() const { return screen_label_; }
 	//@}
 	///
-	docstring value() const;
-	///
 	docstring lyxSaveCounter() const;
 	///
 	void trackCounters(std::string const & cmd) const;

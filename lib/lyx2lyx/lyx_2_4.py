@@ -3730,12 +3730,6 @@ def revert_counter_inset(document):
                 ert = put_cmd_in_ert("\\addtocounter{%s}{%s}" % (cnt, val))
         elif cmd == "reset":
             ert = put_cmd_in_ert("\\setcounter{%s}{0}" % (cnt))
-        elif cmd == "value":
-            vty = get_quoted_value(document.body, "vtype", i, j)
-            if not vty:
-                document.warning("Can't convert counter inset at line %d!" % i)
-            else:
-                ert = put_cmd_in_ert("\\%s{%s}" % (vty, cnt))
         elif cmd == "save":
             needed_counters[cnt] = 1
             savecnt = "LyXSave" + cnt

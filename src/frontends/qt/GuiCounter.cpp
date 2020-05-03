@@ -42,8 +42,6 @@ GuiCounter::GuiCounter(GuiView & lv, QWidget * parent) :
 		this, SIGNAL(changed()));
 	connect(valueSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
-	connect(vtypeCB, SIGNAL(currentIndexChanged(int)),
-		this, SIGNAL(changed()));
 	connect(lyxonlyXB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 
@@ -54,15 +52,6 @@ GuiCounter::GuiCounter(GuiView & lv, QWidget * parent) :
 	for (auto const & c : ct) {
 		docstring guistring = translateIfPossible(from_ascii(c.second));
 		actionCB->addItem(toqstr(guistring), toqstr(c.first));
-	}
-
-	std::map<std::string, std::string> const & vt =
-			InsetCounter::valueTable;
-	vtypeCB->clear();
-	vtypeCB->addItem("", "");
-	for (auto const & v : vt) {
-		docstring guistring = translateIfPossible(from_ascii(v.second));
-		vtypeCB->addItem(toqstr(guistring), toqstr(v.first));
 	}
 }
 
@@ -84,13 +73,6 @@ void GuiCounter::processParams(InsetCommandParams const & params)
 	int val = convert<int>(params["value"]);
 	valueSB->setValue(val);
 
-	cmd = toqstr(params["vtype"]);
-	c = cmd.isEmpty() ? 0 : vtypeCB->findData(cmd);
-	if (c < 0) {
-		c = 0;
-		LYXERR0("Unable to find " << cmd << " in GuiCounter!");
-	}
-	vtypeCB->setCurrentIndex(c);
 	lyxonlyXB->setChecked(support::lowercase(params["lyxonly"]) == "true");
 }
 
@@ -139,7 +121,6 @@ docstring GuiCounter::dialogToParams() const
 	params["counter"] = qstring_to_ucs4(counterCB->currentText());
 	params["value"] = convert<docstring>(valueSB->value());
 	params.setCmdName(fromqstr(actionCB->itemData(actionCB->currentIndex()).toString()));
-	params["vtype"] = qstring_to_ucs4(vtypeCB->itemData(vtypeCB->currentIndex()).toString());
 	params["lyxonly"] = from_ascii(lyxonlyXB->isChecked() ? "true" : "false");
 	return from_utf8(InsetCounter::params2string(params));
 }
@@ -147,7 +128,6 @@ docstring GuiCounter::dialogToParams() const
 
 bool GuiCounter::checkWidgets(bool readonly) const
 {
-	bool const cmdIsValue = actionCB->itemData(actionCB->currentIndex()).toString() == "value";
 	bool const cmdIsSet = actionCB->itemData(actionCB->currentIndex()).toString() == "set";
 	bool const cmdIsAddTo = actionCB->itemData(actionCB->currentIndex()).toString() == "addto";
 	counterCB->setEnabled(!readonly);
@@ -157,13 +137,10 @@ bool GuiCounter::checkWidgets(bool readonly) const
 		valueSB->setRange(-10000, 10000);
 	else
 		valueSB->setRange(0, 10000);
-	vtypeLA->setEnabled(!readonly && cmdIsValue);
-	vtypeCB->setEnabled(!readonly && cmdIsValue);
 
 	return InsetParamsWidget::checkWidgets() && !readonly &&
 			!counterCB->currentText().isEmpty() &&
-			!actionCB->currentText().isEmpty() &&
-			!(cmdIsValue && vtypeCB->currentText().isEmpty());
+			!actionCB->currentText().isEmpty();
 }
 
 

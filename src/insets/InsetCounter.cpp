@@ -60,12 +60,11 @@ InsetCounter::InsetCounter(InsetCounter const & ir)
 
 const map<string, string> InsetCounter::counterTable =
 {
-	{"set", N_("Set Counter")},
-	{"addto", N_("Add To Counter")},
-	{"reset", N_("Reset To 0")},
+	{"set", N_("Set Counter To")},
+	{"addto", N_("Increase Counter By")},
+	{"reset", N_("Reset Counter To 0")},
 	{"save", N_("Save Value of Counter")},
 	{"restore", N_("Restore Value of Counter")},
-	{"value", N_("Display Value of Counter")}
 };
 
 
@@ -80,7 +79,6 @@ ParamInfo const & InsetCounter::findInfo(string const & /* cmdName */)
 	if (param_info_.empty()) {
 		param_info_.add("counter", ParamInfo::LYX_INTERNAL);
 		param_info_.add("value", ParamInfo::LYX_INTERNAL);
-		param_info_.add("vtype", ParamInfo::LYX_INTERNAL);
 		param_info_.add("lyxonly", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
@@ -112,8 +110,6 @@ void InsetCounter::latex(otexstream & os, OutputParams const &) const
 		cnts.restoreValue(cntr);
 		os << "\\setcounter{" << cntr
 		   << "{\\value{" << lyxSaveCounter() << "}}";
-	} else if (cmd == "value") {
-		os << "\\the" << cntr << "{}";
 	}
 }
 
@@ -133,26 +129,8 @@ int InsetCounter::plaintext(odocstringstream & os,
 }
 
 
-void InsetCounter::trackCounters(string const & cmd) const
-{
-	Counters & cnts = buffer().params().documentClass().counters();
-	docstring cntr = getParam("counter");
-	if (cmd == "set") {
-		docstring const & val = getParam("value");
-		cnts.set(cntr, convert<int>(val));
-	} else if (cmd == "addto") {
-		docstring const & val = getParam("value");
-		cnts.addto(cntr, convert<int>(val));
-	} else if (cmd == "reset") {
-		cnts.reset(cntr);		
-	} else if (cmd == "save") {
-		cnts.saveValue(cntr);
-	} else if (cmd == "restore") {
-		cnts.restoreValue(cntr);
-	}
-}
-
-
+#if 0
+// save this code until we get it working in InsetInfo
 const map<string, string> InsetCounter::valueTable =
 {
 	{"Roman", N_("Roman Uppercase")},
@@ -180,40 +158,43 @@ docstring InsetCounter::value() const {
 	LATTEST(false);
 	return empty_docstring();
 }
+#endif
 
+void InsetCounter::trackCounters(string const & cmd) const
+{
+	Counters & cnts = buffer().params().documentClass().counters();
+	docstring cntr = getParam("counter");
+	if (cmd == "set") {
+		docstring const & val = getParam("value");
+		cnts.set(cntr, convert<int>(val));
+	} else if (cmd == "addto") {
+		docstring const & val = getParam("value");
+		cnts.addto(cntr, convert<int>(val));
+	} else if (cmd == "reset") {
+		cnts.reset(cntr);
+	} else if (cmd == "save") {
+		cnts.saveValue(cntr);
+	} else if (cmd == "restore") {
+		cnts.restoreValue(cntr);
+	}
+}
 
-int InsetCounter::docbook(odocstream & os, OutputParams const &) const
+int InsetCounter::docbook(odocstream &, OutputParams const &) const
 {
 	// Here, we need to track counter values ourselves,
 	// since unlike in the LaTeX case, there is no external
 	// mechanism for doing that.
-	string const cmd = getCmdName();
-	if (cmd == "value") {
-		docstring cntr = getParam("counter");
-		Counters & cnts = buffer().params().documentClass().counters();
-		if (cnts.hasCounter(cntr))
-			os << cnts.value(cntr);
-	} else
-		trackCounters(cmd);
-
+	trackCounters(getCmdName());
 	return 0;
 }
 
 
-docstring InsetCounter::xhtml(XHTMLStream & xs, OutputParams const &) const
+docstring InsetCounter::xhtml(XHTMLStream &, OutputParams const &) const
 {
 	// Here, we need to track counter values ourselves,
 	// since unlike in the LaTeX case, there is no external
 	// mechanism for doing that.
-	string const cmd = getCmdName();
-	if (cmd == "value") {
-		docstring cntr = getParam("counter");
-		Counters & cnts = buffer().params().documentClass().counters();
-		if (cnts.hasCounter(cntr))
-			xs << cnts.value(cntr);
-	} else
-		trackCounters(cmd);
-
+	trackCounters(getCmdName());
 	return docstring();
 }
 
@@ -250,11 +231,7 @@ void InsetCounter::updateBuffer(ParIterator const &, UpdateType, bool const)
 		cnts.restoreValue(cntr);
 		screen_label_ = bformat(_("Counter: Restore %1$s"), cntr);
 		tooltip_ = bformat(_("Restore value of counter %1$s"), cntr);
-	} else if (cmd == "value") {
-		screen_label_ = bformat(_("Counter: Value %1$s"), cntr);
-		tooltip_ = bformat(_("Display value of counter %1$s"), cntr);
 	}
-	
 }
 
 
