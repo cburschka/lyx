@@ -25,6 +25,8 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
+#include "qt_helpers.h"
+
 #include <map>
 //#include <vector>
 
@@ -88,10 +90,15 @@ void GuiCounter::fillCombos()
 	Counters const & cntrs =
 		bv->buffer().params().documentClass().counters();
 	std::vector<docstring> counts = cntrs.listOfCounters();
+	// We use an intermediate map in order to sort at translated GUI strings.
+	QMap<QString, QString> items;
 	for (auto const & c : counts) {
 		docstring const & guiname = cntrs.guiName(c);
-		counterCB->addItem(toqstr(guiname), toqstr(c));
+		items.insert(qt_(toqstr(guiname)), toqstr(c));
 	}
+	for (QMap<QString, QString>::const_iterator it = items.constBegin();
+	     it != items.constEnd(); ++it)
+		counterCB->addItem(it.key(), it.value());
 }
 
 
