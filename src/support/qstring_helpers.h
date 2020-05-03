@@ -41,7 +41,7 @@ QString toqstr(std::string const & str);
 
 
 /// Is \p c a valid utf16 char?
-inline bool is_utf16(unsigned int c)
+inline bool is_utf16(char_type c)
 {
 	// 0xd800 ... 0xdfff is the range of surrogate pairs.
 	return c < 0xd800 || (c > 0xdfff && c < 0x10000);
