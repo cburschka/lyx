@@ -123,7 +123,7 @@ Menuset
 		Item "Paragraph Settings...|P" "layout-paragraph"
 		Submenu "Text Properties|x" "edit_textprops"
 		OptSubmenu "Custom Text Styles|S" "edit_textstyles"
-		Item "Manage Counter Values" "dialog-show-new-inset counter"
+		Item "Manage Counter Values..." "dialog-show-new-inset counter"
 		LanguageSelector
 		Separator
 # Mathed b0rkage means these don't work properly
