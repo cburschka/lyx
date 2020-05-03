@@ -60,11 +60,11 @@ InsetCounter::InsetCounter(InsetCounter const & ir)
 
 const map<string, string> InsetCounter::counterTable =
 {
-	{"set", N_("Set Counter To")},
-	{"addto", N_("Increase Counter By")},
-	{"reset", N_("Reset Counter To 0")},
-	{"save", N_("Save Value of Counter")},
-	{"restore", N_("Restore Value of Counter")},
+	{"set", N_("Set counter to ...")},
+	{"addto", N_("Increase counter by ...")},
+	{"reset", N_("Reset counter to 0")},
+	{"save", N_("Save current counter value")},
+	{"restore", N_("Restore saved counter value")},
 };
 
 
