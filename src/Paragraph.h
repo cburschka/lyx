@@ -341,12 +341,8 @@ public:
 	///
 	Font const & getFirstFontSettings(BufferParams const &) const;
 
-	/** Get fully instantiated font. If pos == -1, use the layout
-	    font attached to this paragraph.
-	    If pos == -2, use the label font of the layout attached here.
-	    In all cases, the font is instantiated, i.e. does not have any
-	    attributes with values FONT_INHERIT, FONT_IGNORE or
-	    FONT_TOGGLE.
+	/** Get fully instantiated font, i.e., one that does not have any
+	    attributes with values FONT_INHERIT, FONT_IGNORE or FONT_TOGGLE.
 	*/
 	Font const getFont(BufferParams const &, pos_type pos,
 			      Font const & outerfont) const;
