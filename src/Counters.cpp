@@ -56,12 +56,14 @@ bool Counter::read(Lexer & lex)
 		CT_LABELSTRING_APPENDIX,
 		CT_PRETTYFORMAT,
 		CT_INITIALVALUE,
+		CT_GUINAME,
 		CT_END
 	};
 
 	LexerKeyword counterTags[] = {
 		{ "end", CT_END },
-	  { "initialvalue", CT_INITIALVALUE},
+		{ "guiname", CT_GUINAME },
+		{ "initialvalue", CT_INITIALVALUE},
 		{ "labelstring", CT_LABELSTRING },
 		{ "labelstringappendix", CT_LABELSTRING_APPENDIX },
 		{ "prettyformat", CT_PRETTYFORMAT },
@@ -111,6 +113,10 @@ bool Counter::read(Lexer & lex)
 			case CT_LABELSTRING_APPENDIX:
 				lex.next();
 				labelstringappendix_ = lex.getDocString();
+				break;
+			case CT_GUINAME:
+				lex.next();
+				guiname_ = lex.getDocString();
 				break;
 			case CT_END:
 				getout = true;
@@ -346,6 +352,22 @@ void Counters::step(docstring const & ctr, UpdateType utype)
 	}
 
 	resetSlaves(ctr);
+}
+
+
+docstring const & Counters::guiName(docstring const & cntr) const
+{
+	CounterList::const_iterator it = counterList_.find(cntr);
+	if (it == counterList_.end()) {
+		lyxerr << "step: Counter does not exist: "
+			   << to_utf8(cntr) << endl;
+		return empty_docstring();
+	}
+
+	docstring const & guiname = it->second.guiName();
+	if (guiname.empty())
+		return cntr;
+	return guiname;
 }
 
 

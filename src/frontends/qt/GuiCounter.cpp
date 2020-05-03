@@ -59,7 +59,7 @@ GuiCounter::GuiCounter(GuiView & lv, QWidget * parent) :
 void GuiCounter::processParams(InsetCommandParams const & params)
 {
 	QString const & counter = toqstr(params["counter"]);
-	int c = counterCB->findText(counter);
+	int c = counterCB->findData(counter);
 	counterCB->setCurrentIndex(c);
 
 	QString cmd = toqstr(params.getCmdName());
@@ -85,10 +85,13 @@ void GuiCounter::fillCombos()
 	if (!bv)
 		return;
 	
-	std::vector<docstring> counts = 
-		bv->buffer().params().documentClass().counters().listOfCounters();
-	for (auto const & c : counts)
-		counterCB->addItem(toqstr(c));
+	Counters const & cntrs =
+		bv->buffer().params().documentClass().counters();
+	std::vector<docstring> counts = cntrs.listOfCounters();
+	for (auto const & c : counts) {
+		docstring const & guiname = cntrs.guiName(c);
+		counterCB->addItem(toqstr(guiname), toqstr(c));
+	}
 }
 
 
@@ -118,7 +121,7 @@ docstring GuiCounter::dialogToParams() const
 {
 	InsetCommandParams params(insetCode());
 
-	params["counter"] = qstring_to_ucs4(counterCB->currentText());
+	params["counter"] = qstring_to_ucs4(counterCB->itemData(counterCB->currentIndex()).toString());
 	params["value"] = convert<docstring>(valueSB->value());
 	params.setCmdName(fromqstr(actionCB->itemData(actionCB->currentIndex()).toString()));
 	params["lyxonly"] = from_ascii(lyxonlyXB->isChecked() ? "true" : "false");
