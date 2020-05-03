@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-04-19 11:06+0200\n"
-"PO-Revision-Date: 2020-04-19 09:12+0000\n"
+"POT-Creation-Date: 2020-05-03 14:36+0200\n"
+"PO-Revision-Date: 2020-05-03 12:40+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1233,6 +1233,34 @@ msgstr ""
 msgid "&Enable change tracking features in the output"
 msgstr "&Umožniť sledovanie zmien vo výstupe"
 
+#: src/frontends/qt/ui/CounterUi.ui:22
+msgid "C&ounter:"
+msgstr "Č&ítač:"
+
+#: src/frontends/qt/ui/CounterUi.ui:38
+msgid "Select counter to modify"
+msgstr "Vyberte čítač pre úpravu"
+
+#: src/frontends/qt/ui/CounterUi.ui:42
+msgid "&Action:"
+msgstr "&Akcia:"
+
+#: src/frontends/qt/ui/CounterUi.ui:63
+msgid "Select the action to perform on selected counter"
+msgstr "Vyberte spôsob konania pre vybraného čítača"
+
+#: src/frontends/qt/ui/CounterUi.ui:79
+msgid ""
+"If checked, modification affects the counter only in the LyX workarea, not "
+"in the output"
+msgstr ""
+"Keď zaškrtnuté, modifikácie pôsobia len na čítače v pracovnej ploche LyX, "
+"nie vo výstupe"
+
+#: src/frontends/qt/ui/CounterUi.ui:85
+msgid "&Workarea only"
+msgstr "Len &pracovná plocha"
+
 #: src/frontends/qt/ui/DelimiterUi.ui:122 src/frontends/qt/GuiDelimiter.cpp:326
 msgid "TeX Code: "
 msgstr "TeX kód: "
@@ -1764,8 +1792,12 @@ msgid "&Roman:"
 msgstr "&Serifové:"
 
 #: src/frontends/qt/ui/FontUi.ui:122
-msgid "Select the roman (serif) typeface"
-msgstr "Vyberte serifové (roman serif) písmo"
+msgid ""
+"Select the roman (serif) typeface. To filter the list of fonts, just start "
+"typing while the list is expanded."
+msgstr ""
+"Vyberte serifový typ písma. Na filtrovanie prehľadu fontov, stačí začať "
+"typovať pokiaľ sa prehľad rozpína."
 
 #: src/frontends/qt/ui/FontUi.ui:142
 msgid "Use a real small caps shape, if the font provides one"
@@ -1800,8 +1832,12 @@ msgid "&Sans Serif:"
 msgstr "&Bezserifové:"
 
 #: src/frontends/qt/ui/FontUi.ui:217
-msgid "Select the Sans Serif (grotesque) typeface"
-msgstr "Vyberte bezserifové písmo (Sans Serif)"
+msgid ""
+"Select the Sans Serif (grotesque) typeface. To filter the list of fonts, "
+"just start typing while the list is expanded."
+msgstr ""
+"Vyberte bezserifový typ písma. Na filtrovanie prehľadu fontov, stačí začať "
+"typovať pokiaľ sa prehľad rozpína."
 
 #: src/frontends/qt/ui/FontUi.ui:237
 msgid "S&cale (%):"
@@ -1822,8 +1858,12 @@ msgid "&Typewriter:"
 msgstr "S&trojopisné:"
 
 #: src/frontends/qt/ui/FontUi.ui:325
-msgid "Select the typewriter (monospaced) typeface"
-msgstr "Vyberte strojopisné písmo"
+msgid ""
+"Select the typewriter (monospaced) typeface. To filter the list of fonts, "
+"just start typing while the list is expanded."
+msgstr ""
+"Vyberte strojopisný typ písma. Na filtrovanie prehľadu fontov, stačí začať "
+"typovať pokiaľ sa prehľad rozpína."
 
 #: src/frontends/qt/ui/FontUi.ui:345
 msgid "Sc&ale (%):"
@@ -7925,6 +7965,10 @@ msgstr "Sekcia prílohy"
 msgid "\\Alph{appendix}."
 msgstr "\\Alph{appendix}."
 
+#: lib/layouts/aastex62.layout:243 lib/layouts/copernicus.layout:256
+msgid "Subappendix"
+msgstr "Podpríloha"
+
 #: lib/layouts/aastex62.layout:245 lib/layouts/copernicus.layout:258
 msgid "Subsection Appendix"
 msgstr "Podsekcia prílohy"
@@ -7932,6 +7976,10 @@ msgstr "Podsekcia prílohy"
 #: lib/layouts/aastex62.layout:249
 msgid "\\Alph{appendix}\\arabic{subappendix}."
 msgstr "\\Alph{appendix}\\arabic{subappendix}."
+
+#: lib/layouts/aastex62.layout:259 lib/layouts/copernicus.layout:268
+msgid "Subsubappendix"
+msgstr "Podpodpríloha"
 
 #: lib/layouts/aastex62.layout:260 lib/layouts/copernicus.layout:269
 msgid "Subsubsection Appendix"
@@ -8824,6 +8872,26 @@ msgstr "Deň vydania"
 msgid "Issue-months"
 msgstr "Mesiac vydania"
 
+#: lib/layouts/agu_stdcounters.inc:9 lib/layouts/db_stdcounters.inc:9
+msgid "Section Level 1"
+msgstr "Sekcia, úroveň 1"
+
+#: lib/layouts/agu_stdcounters.inc:14 lib/layouts/db_stdcounters.inc:14
+msgid "Section Level 2"
+msgstr "Sekcia, úroveň 2"
+
+#: lib/layouts/agu_stdcounters.inc:19 lib/layouts/db_stdcounters.inc:19
+msgid "Section Level 3"
+msgstr "Sekcia, úroveň 3"
+
+#: lib/layouts/agu_stdcounters.inc:24 lib/layouts/db_stdcounters.inc:24
+msgid "Section Level 4"
+msgstr "Sekcia, úroveň 4"
+
+#: lib/layouts/agu_stdcounters.inc:29 lib/layouts/db_stdcounters.inc:29
+msgid "Section Level 5"
+msgstr "Sekcia, úroveň 5"
+
 #: lib/layouts/agu_stdsections.inc:12 lib/layouts/article.layout:20
 #: lib/layouts/beamer.layout:232 lib/layouts/beamer.layout:261
 #: lib/layouts/db_stdsections.inc:12 lib/layouts/memoir.layout:60
@@ -9233,7 +9301,11 @@ msgstr "Tabuľka"
 
 #: lib/layouts/aguplus.inc:212
 msgid "table"
-msgstr "Tabuľka"
+msgstr "tabuľka"
+
+#: lib/layouts/aguplus.inc:236
+msgid "Plano Table"
+msgstr "Plano-tabuľka"
 
 #: lib/layouts/agutex.layout:3 lib/examples/Articles:0
 msgid "American Geophysical Union (AGUTeX)"
@@ -10459,6 +10531,14 @@ msgstr "Broadway"
 #: lib/examples/Articles:0
 msgid "Scripts"
 msgstr "Skripty"
+
+#: lib/layouts/broadway.layout:27
+msgid "Act Number"
+msgstr "Čítač act"
+
+#: lib/layouts/broadway.layout:32
+msgid "Scene Number"
+msgstr "Čítač scéna"
 
 #: lib/layouts/broadway.layout:34 lib/layouts/hollywood.layout:41
 msgid "Dialogue"
@@ -13405,6 +13485,10 @@ msgstr "Int. Journal of Modern Physics D"
 msgid "Comby"
 msgstr "Comby"
 
+#: lib/layouts/ijmpd.layout:461 lib/layouts/theorems-without-preamble.inc:130
+msgid "Prop(osition)"
+msgstr "Tvrdenie(prop)"
+
 #: lib/layouts/initials.module:2
 msgid "Initials (Drop Caps)"
 msgstr "Iniciálky"
@@ -13775,6 +13859,11 @@ msgstr ""
 "Zaznamenajte si že závisí na R >= 2.14.1. Pre viac informácie pozrite na "
 "http://yihui.name/knitr"
 
+#: lib/layouts/knitr.module:14 lib/layouts/litinsets.inc:12
+#: lib/layouts/sweave.module:14
+msgid "Knitr Chunk"
+msgstr "Knitr odrezok"
+
 #: lib/layouts/knitr.module:20 lib/layouts/sweave.module:30
 msgid "Sweave Options"
 msgstr "Voľby sweave"
@@ -13939,16 +14028,16 @@ msgid "(\\arabic{example})"
 msgstr "(\\arabic{example})"
 
 #: lib/layouts/linguistics.module:24
+msgid "Numbered Example (Multiline)"
+msgstr "Číslovaný príklad (viac-riadkový)"
+
+#: lib/layouts/linguistics.module:24
 msgid "(\\arabic{examplei})"
 msgstr "(\\arabic{examplei})"
 
 #: lib/layouts/linguistics.module:29
 msgid "\\theexamplei (\\alph{subexample})"
 msgstr "\\theexamplei (\\alph{subexample})"
-
-#: lib/layouts/linguistics.module:34
-msgid "\\theexamplei (\\alph{subexamplei})"
-msgstr "\\theexamplei (\\alph{subexamplei})"
 
 #: lib/layouts/linguistics.module:43
 msgid "Numbered Example (multiline)"
@@ -15529,6 +15618,27 @@ msgstr "Stĺpec vľavo"
 msgid "Enter the text of the left column here (right column in main paragraph)"
 msgstr "Vložte sem text pre ľavý stĺpec (pravý stĺpec v hlavnom odstavci)"
 
+#: lib/layouts/powerdot.layout:589 lib/layouts/stdcounters.inc:50
+msgid "Numbered List (Level 1)"
+msgstr "Číslovaná listina (Úroveň 1)"
+
+#: lib/layouts/powerdot.layout:593 lib/layouts/scrclass.inc:48
+#: lib/layouts/stdcounters.inc:55
+msgid "Numbered List (Level 2)"
+msgstr "Číslovaná listina (Úroveň 2)"
+
+#: lib/layouts/powerdot.layout:598 lib/layouts/stdcounters.inc:61
+msgid "Numbered List (Level 3)"
+msgstr "Číslovaná listina (Úroveň 3)"
+
+#: lib/layouts/powerdot.layout:603 lib/layouts/stdcounters.inc:67
+msgid "Numbered List (Level 4)"
+msgstr "Číslovaná listina (Úroveň 4)"
+
+#: lib/layouts/powerdot.layout:608 lib/layouts/stdcounters.inc:73
+msgid "Bibliography Item"
+msgstr "Heslo v bibliografie"
+
 #: lib/layouts/powerdot.layout:619
 msgid "Onslide"
 msgstr "Zobrazené na fólii (onslide)"
@@ -16558,6 +16668,10 @@ msgstr "Rovnica ##"
 #: lib/layouts/stdcounters.inc:72 lib/layouts/stdcounters.inc:76
 msgid "Footnote ##"
 msgstr "Poznámka pri päte ##"
+
+#: lib/layouts/stdcounters.inc:91
+msgid "Footnote (Title)"
+msgstr "Poznámka pod čiarou (Titul)"
 
 #: lib/layouts/stdcounters.inc:77
 msgid "\\fnsymbol{thanks}"
@@ -17638,16 +17752,32 @@ msgstr ""
 "jedného z 'Teorémy (Číslované podľa …)' modulu."
 
 #: lib/layouts/theorems-case.inc:12
+msgid "Case (Level 1)"
+msgstr "Prípad (Úroveň 1)"
+
+#: lib/layouts/theorems-case.inc:12
 msgid "Case \\arabic{casei}."
 msgstr "Prípad \\arabic{casei}."
+
+#: lib/layouts/theorems-case.inc:16
+msgid "Case (Level 2)"
+msgstr "Prípad (Úroveň 2)"
 
 #: lib/layouts/theorems-case.inc:16
 msgid "Case \\roman{caseii}."
 msgstr "Prípad \\roman{caseii}."
 
+#: lib/layouts/theorems-case.inc:21
+msgid "Case (Level 3)"
+msgstr "Prípad (Úroveň 3)"
+
 #: lib/layouts/theorems-case.inc:20
 msgid "Case \\alph{caseiii}."
 msgstr "Prípad \\alph{caseiii}."
+
+#: lib/layouts/theorems-case.inc:26
+msgid "Case (Level 4)"
+msgstr "Prípad (Úroveň 4)"
 
 #: lib/layouts/theorems-case.inc:24
 msgid "Case \\arabic{caseiv}."
@@ -17822,6 +17952,10 @@ msgstr "Alternatívne voliteľné meno alebo titul"
 msgid "Prop \\theprop."
 msgstr "Téza \\theprop."
 
+#: lib/layouts/theorems-without-preamble.inc:250
+msgid "Prob(lem)"
+msgstr "Prob(lém)"
+
 #: lib/layouts/theorems-without-preamble.inc:243
 msgid "Prob"
 msgstr "Prob"
@@ -17985,6 +18119,14 @@ msgstr "kapitálky"
 #: lib/layouts/tufte-book.layout:221
 msgid "Full Width"
 msgstr "Celá šírka"
+
+#: lib/layouts/tufte-book.layout:239
+msgid "Margin Figure"
+msgstr "Krajný obrázok"
+
+#: lib/layouts/tufte-book.layout:243
+msgid "Margin Table"
+msgstr "Krajná tabuľka"
 
 #: lib/layouts/tufte-book.layout:247
 msgid "MarginTable"
@@ -18552,7 +18694,7 @@ msgstr "IBM Plex serifové (svetlé)"
 
 #: lib/latexfonts:250
 msgid "Source Serif Pro"
-msgstr "Source Serif Pro"
+msgstr "Source Pro serifové"
 
 #: lib/latexfonts:258 lib/latexfonts:268
 msgid "URW Garamond"
@@ -18742,7 +18884,7 @@ msgstr "IBM Plex bezserifové (svetlé)"
 
 #: lib/latexfonts:864
 msgid "Source Sans Pro"
-msgstr "Source Sans Pro"
+msgstr "Source Pro bezserifové"
 
 #: lib/latexfonts:873
 msgid "Helvetica"
@@ -18862,7 +19004,7 @@ msgstr "IBM Plex strojopisné (svetlé)"
 
 #: lib/latexfonts:1111
 msgid "Source Code Pro"
-msgstr "Source Code Pro"
+msgstr "Source Pro strojopisné"
 
 #: lib/latexfonts:1120 lib/latexfonts:1128
 msgid "Libertine Mono"
@@ -20144,6 +20286,10 @@ msgstr "Nájsť a nahradiť (Rýchle)…|N"
 #: lib/ui/stdmenus.inc:118
 msgid "Find & Replace (Advanced)..."
 msgstr "Nájsť a nahradiť (Rozšírené)…"
+
+#: lib/ui/stdmenus.inc:126
+msgid "Manage Counter Values..."
+msgstr "Ovládanie hodnôt čítačov…"
 
 #: lib/ui/stdmenus.inc:129
 msgid "Table|T"
@@ -29897,6 +30043,16 @@ msgstr "Skazený súbor"
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
 msgstr "Nedá sa čítať súbor stdinsets.inc! Môže dôjsť ku strata dát!"
 
+#: src/TextClass.cpp:1573
+#, c-format
+msgid "%1$s (Float)"
+msgstr "%1$s (plávajúc)"
+
+#: src/TextClass.cpp:1578
+#, c-format
+msgid "Sub-%1$s (Float)"
+msgstr "Pod-%1$s (plávajúc)"
+
 #: src/TextClass.cpp:1827
 #, c-format
 msgid ""
@@ -31317,6 +31473,10 @@ msgstr "rozdiely"
 #: src/frontends/qt/GuiCompareHistory.cpp:37
 msgid "Compare different revisions"
 msgstr "Porovnať rozličné revízie"
+
+#: src/frontends/qt/GuiCounter.h:37
+msgid "Counters"
+msgstr "Čítače"
 
 #: src/frontends/qt/GuiDelimiter.cpp:61
 msgid "big[[delimiter size]]"
@@ -34719,6 +34879,96 @@ msgstr ""
 "v aktuálnom kódovaní a boli vynechané: %1$s.\n"
 "Od-štrknúť 'Doslovne' v príslušnom dialógu by mohlo pomôcť."
 
+#: src/insets/InsetCounter.cpp:63
+msgid "Set counter to ..."
+msgstr "Nastaviť čítač na …"
+
+#: src/insets/InsetCounter.cpp:64
+msgid "Increase counter by ..."
+msgstr "Zväčšiť čítač o …"
+
+#: src/insets/InsetCounter.cpp:65
+msgid "Reset counter to 0"
+msgstr "Vynulovať čítač"
+
+#: src/insets/InsetCounter.cpp:66
+msgid "Save current counter value"
+msgstr "Uložiť hodnotu aktuálneho čítača"
+
+#: src/insets/InsetCounter.cpp:67
+msgid "Restore saved counter value"
+msgstr "Navrátiť na uloženú hodnotu čítača"
+
+#: src/insets/InsetCounter.cpp:158
+msgid "Roman Uppercase"
+msgstr "Rímske veľké číslovky"
+
+#: src/insets/InsetCounter.cpp:159
+msgid "Roman Lowercase"
+msgstr "Rímske malé číslovky"
+
+#: src/insets/InsetCounter.cpp:160
+msgid "Uppercase Letter"
+msgstr "Veľké litery"
+
+#: src/insets/InsetCounter.cpp:161
+msgid "Lowercase Letter"
+msgstr "Malé litery"
+
+#: src/insets/InsetCounter.cpp:162
+msgid "Arabic Numeral"
+msgstr "Arabské čísla"
+
+#: src/insets/InsetCounter.cpp:234
+#, c-format
+msgid "Counter: Set %1$s"
+msgstr "Čítač: Nastaviť %1$s"
+
+#: src/insets/InsetCounter.cpp:235
+#, c-format
+msgid "Set value of counter %1$s to %2$s"
+msgstr "Nastaviť hodnotu čítača %1$s na %2$s"
+
+#: src/insets/InsetCounter.cpp:239
+#, c-format
+msgid "Counter: Add to %1$s"
+msgstr "Čítač: Pridať ku %1$s"
+
+#: src/insets/InsetCounter.cpp:240
+#, c-format
+msgid "Add %1$s to value of counter %2$s"
+msgstr "Pridať %1$s ku hodnote čítača %2$s"
+
+#: src/insets/InsetCounter.cpp:243
+#, c-format
+msgid "Counter: Reset %1$s"
+msgstr "Čítač: Obnoviť %1$s"
+
+#: src/insets/InsetCounter.cpp:244
+#, c-format
+msgid "Reset value of counter %1$s"
+msgstr "Obnoviť hodnotu čítača %1$s"
+
+#: src/insets/InsetCounter.cpp:247
+#, c-format
+msgid "Counter: Save %1$s"
+msgstr "Čítač: Uložiť %1$s"
+
+#: src/insets/InsetCounter.cpp:248
+#, c-format
+msgid "Save value of counter %1$s"
+msgstr "Uložiť hodnotu čítača %1$s"
+
+#: src/insets/InsetCounter.cpp:251
+#, c-format
+msgid "Counter: Restore %1$s"
+msgstr "čítač: Navrátiť %1$s"
+
+#: src/insets/InsetCounter.cpp:252
+#, c-format
+msgid "Restore value of counter %1$s"
+msgstr "Navrátiť hodnotu čítača %1$s"
+
 #: src/insets/InsetExternal.cpp:404
 #, c-format
 msgid "External template %1$s is not installed"
@@ -34819,6 +35069,22 @@ msgstr "SÚBOR CHÝBA:"
 msgid "Include (excluded)"
 msgstr "Zahrnúť (vylúčené)"
 
+#: src/insets/InsetInclude.cpp:537
+#, c-format
+msgid ""
+"The file\n"
+"%1$s\n"
+" has attempted to include itself.\n"
+"The document set will not work properly until this is fixed!"
+msgstr ""
+"Pokus vlastného zahrnutie v súbore\n"
+"%1$s.\n"
+"Súprava dokumentov nebude správne fungovať dokiaľ sa to neopraví!"
+
+#: src/insets/InsetInclude.cpp:539
+msgid "Recursive Include"
+msgstr "Rekurzívne zahrnutie"
+
 #: src/insets/InsetInclude.cpp:530
 msgid "No file name specified"
 msgstr "Chýba meno súboru"
@@ -34845,17 +35111,6 @@ msgstr ""
 "Uvedený súbor\n"
 "'%1$s'\n"
 "sa nenašiel. LyX bude toto vloženie ignorovať."
-
-#: src/insets/InsetInclude.cpp:556 src/insets/InsetInclude.cpp:965
-#: src/insets/InsetInclude.cpp:1045
-msgid "Recursive input"
-msgstr "Rekurzívny vstup"
-
-#: src/insets/InsetInclude.cpp:557 src/insets/InsetInclude.cpp:966
-#: src/insets/InsetInclude.cpp:1046
-#, c-format
-msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
-msgstr "Došlo k pokusu vložiť súbor %1$s do seba! Vklad ignorujem."
 
 #: src/insets/InsetInclude.cpp:772
 #, c-format
@@ -36501,6 +36756,27 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Value &Type:"
+#~ msgstr "&Typ hodnoty:"
+
+#~ msgid "Add To"
+#~ msgstr "Pridať k"
+
+#~ msgid "Save"
+#~ msgstr "Uložiť"
+
+#~ msgid "Restore"
+#~ msgstr "Obnoviť"
+
+#~ msgid "Value"
+#~ msgstr "Hodnota"
+
+#~ msgid "Print value of counter %1$s"
+#~ msgstr "Vypísať hodnotu čítača %1$s"
+
+#~ msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
+#~ msgstr "Došlo k pokusu vložiť súbor %1$s do seba! Vklad ignorujem."
 
 #~ msgid "Auto-saving %1$s"
 #~ msgstr "Automatické ukladanie %1$s"
@@ -41603,3 +41879,12 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "deleted text modifier"
 #~ msgstr "zmazaný text: modifikátor"
+
+#~ msgid "Recursive input"
+#~ msgstr "Rekurzívny vstup"
+
+#~ msgid "Counter"
+#~ msgstr "Čítač"
+
+#~ msgid "Add to value of counter %1$s"
+#~ msgstr "Pridať ku hodnote čítača %1$s"
