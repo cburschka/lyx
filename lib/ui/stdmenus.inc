@@ -19,7 +19,7 @@
 # * Conjunctions: and, but, for, not, so, yet ...
 # * Prepositions of three or fewer letters: at, for, by, in, to ...
 #   (except when the preposition is part of a verb phrase, such as "Check In")
-# (http://library.gnome.org/devel/hig-book/stable/design-text-labels.html.en)
+# (https://developer.gnome.org/hig-book/unstable/design-text-labels.html.en)
 
 Format 5
 
