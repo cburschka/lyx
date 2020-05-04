@@ -2532,6 +2532,7 @@ dist_articletemplates_DATA = \
 	templates/Articles/DocBook_Article_%28SGML%29.lyx \
 	templates/Articles/Econometrica.lyx \
 	templates/Articles/Elsevier.lyx \
+	templates/Articles/Hebrew_Article_%28KOMA-Script%29.lyx \
 	templates/Articles/IEEE_Transactions_Computer_Society.lyx \
 	templates/Articles/IEEE_Transactions_Conference.lyx \
 	templates/Articles/IEEE_Transactions_Journal.lyx \
