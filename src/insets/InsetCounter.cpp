@@ -217,27 +217,28 @@ void InsetCounter::updateBuffer(ParIterator const &, UpdateType, bool const)
 	LASSERT(!label.empty(), return);
 	docstring const tlabel = translateIfPossible(from_ascii(label));
 
+	docstring guiname = translateIfPossible(cnts.guiName(cntr));
 	if (cmd == "set") {
 		docstring const & val = getParam("value");
 		cnts.set(cntr, convert<int>(val));
-		screen_label_ = bformat(_("Counter: Set %1$s"), cntr);
+		screen_label_ = bformat(_("Counter: Set %1$s"), guiname);
 		tooltip_ = bformat(_("Set value of counter %1$s to %2$s"), cntr, val);
 	} else if (cmd == "addto") {
 		docstring const & val = getParam("value");
 		cnts.addto(cntr, convert<int>(val));
-		screen_label_ = bformat(_("Counter: Add to %1$s"), cntr);
+		screen_label_ = bformat(_("Counter: Add to %1$s"), guiname);
 		tooltip_ = bformat(_("Add %1$s to value of counter %2$s"), val, cntr);
 	} else if (cmd == "reset") {
 		cnts.reset(cntr);		
-		screen_label_ = bformat(_("Counter: Reset %1$s"), cntr);
+		screen_label_ = bformat(_("Counter: Reset %1$s"), guiname);
 		tooltip_ = bformat(_("Reset value of counter %1$s"), cntr);
 	} else if (cmd == "save") {
 		cnts.saveValue(cntr);
-		screen_label_ = bformat(_("Counter: Save %1$s"), cntr);
+		screen_label_ = bformat(_("Counter: Save %1$s"), guiname);
 		tooltip_ = bformat(_("Save value of counter %1$s"), cntr);
 	} else if (cmd == "restore") {
 		cnts.restoreValue(cntr);
-		screen_label_ = bformat(_("Counter: Restore %1$s"), cntr);
+		screen_label_ = bformat(_("Counter: Restore %1$s"), guiname);
 		tooltip_ = bformat(_("Restore value of counter %1$s"), cntr);
 	}
 }
