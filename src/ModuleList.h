@@ -52,7 +52,7 @@ public:
 	LyXModule(std::string const & name, std::string const & id,
 	          std::string const & description,
 	          std::vector<std::string> const & packagelist,
-	          std::vector<std::string> const & requires,
+			  std::vector<std::string> const & required,
 	          std::vector<std::string> const & excludes,
 		  std::string const & catgy, bool const local);
 	/// whether the required packages are available

@@ -189,20 +189,20 @@ void initSymbols()
 			// \def\macroname{definition} extra xmlname requires
 			istringstream is(line);
 			string macro;
-			string requires;
+			string required;
 			string extra;
 			string xmlname;
 			bool hidden = false;
-			is >> setw(65536) >> macro >> requires;
+			is >> setw(65536) >> macro >> required;
 			if ((is >> xmlname)) {
-				extra = requires;
-				if (!(is >> requires))
-					requires = "";
+				extra = required;
+				if (!(is >> required))
+					required = "";
 			} else
 				xmlname = "";
 			MacroTable::iterator it = MacroTable::globalMacros().insert(
 					0, from_utf8(macro));
-			if (!extra.empty() || !xmlname.empty() || !requires.empty()) {
+			if (!extra.empty() || !xmlname.empty() || !required.empty()) {
 				MathWordList::iterator wit = theMathWordList.find(it->first);
 				if (wit != theMathWordList.end())
 					LYXERR(Debug::MATHED, "readSymbols: inset "
@@ -213,11 +213,11 @@ void initSymbols()
 					tmp.name = it->first;
 					tmp.extra = from_utf8(extra);
 					tmp.xmlname = from_utf8(xmlname);
-					if (requires == "hiddensymbol") {
-						requires = "";
+					if (required == "hiddensymbol") {
+						required = "";
 						tmp.hidden = hidden = true;
 					} else
-						tmp.required = requires;
+						tmp.required = required;
 					theMathWordList[it->first] = tmp;
 					wit = theMathWordList.find(it->first);
 					it->second.setSymbol(&(wit->second));
@@ -230,7 +230,7 @@ void initSymbols()
 				<< "  draw: 0"
 				<< "  extra: " << extra
 				<< "  xml: " << xmlname
-				<< "  requires: " << requires
+				<< "  requires: " << required
 				<< "  hidden: " << hidden << '\'');
 			continue;
 		}
