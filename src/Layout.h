@@ -153,7 +153,7 @@ public:
 	/// this layout for language \p lang
 	docstring const babelpreamble() const { return babelpreamble_; }
 	///
-	std::set<std::string> const & required() const { return requires_; }
+	std::set<std::string> const & required() const { return required_; }
 	///
 	std::set<docstring> const & autonests() const { return autonests_; }
 	///
@@ -483,7 +483,7 @@ private:
 	/// Are adjacent paragraphs handled as one group?
 	bool par_group_;
 	/// Packages needed for this layout
-	std::set<std::string> requires_;
+	std::set<std::string> required_;
 	/// Layouts that are by default nested after this one
 	std::set<docstring> autonests_;
 	/// Layouts that by auto-nest this one

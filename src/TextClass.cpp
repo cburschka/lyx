@@ -686,7 +686,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			lexrc.eatLine();
 			vector<string> const req
 				= getVectorFromString(lexrc.getString());
-			requires_.insert(req.begin(), req.end());
+			required_.insert(req.begin(), req.end());
 			break;
 		}
 

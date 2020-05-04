@@ -258,7 +258,7 @@ bool Language::readLanguage(Lexer & lex)
 				lex.getLongString(from_ascii("EndPreBabelPreamble"));
 			break;
 		case LA_REQUIRES:
-			lex >> requires_;
+			lex >> required_;
 			break;
 		case LA_PROVIDES:
 			lex >> provides_;

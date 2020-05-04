@@ -607,7 +607,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 			lex.eatLine();
 			vector<string> const req =
 				getVectorFromString(lex.getString(true));
-			requires_.insert(req.begin(), req.end());
+			required_.insert(req.begin(), req.end());
 			break;
 		}
 
@@ -1443,11 +1443,11 @@ void Layout::write(ostream & os) const
 	case Spacing::Default:
 		break;
 	}
-	if (!requires_.empty()) {
+	if (!required_.empty()) {
 		os << "\tRequires ";
-		for (set<string>::const_iterator it = requires_.begin();
-		     it != requires_.end(); ++it) {
-			if (it != requires_.begin())
+		for (set<string>::const_iterator it = required_.begin();
+		     it != required_.end(); ++it) {
+			if (it != required_.begin())
 				os << ',';
 			os << *it;
 		}

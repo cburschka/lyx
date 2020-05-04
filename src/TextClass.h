@@ -304,7 +304,7 @@ protected:
 	/// latex packages loaded by document class.
 	std::set<std::string> provides_;
 	/// latex packages requested by document class.
-	std::set<std::string> requires_;
+	std::set<std::string> required_;
 	///
 	std::map<std::string, std::string> package_options_;
 	/// default modules wanted by document class
@@ -490,7 +490,7 @@ public:
 	/// is this feature already provided by the class?
 	bool provides(std::string const & p) const;
 	/// features required by the class?
-	std::set<std::string> const & required() const { return requires_; }
+	std::set<std::string> const & required() const { return required_; }
 	/// package options to write to LaTeX file
 	std::map<std::string, std::string> const & packageOptions() const
 		{ return package_options_; }

@@ -48,12 +48,12 @@ bool LaTeXFont::available(bool ot1, bool nomath)
 	else if (ot1 && !ot1font_.empty())
 		return (ot1font_ == "none") ?
 			true : altFont(ot1font_).available(ot1, nomath);
-	else if (requires_.empty() && package_.empty())
+	else if (required_.empty() && package_.empty())
 		return true;
-	else if (!requires_.empty()
-		&& LaTeXFeatures::isAvailable(to_ascii(requires_)))
+	else if (!required_.empty()
+		&& LaTeXFeatures::isAvailable(to_ascii(required_)))
 		return true;
-	else if (requires_.empty() && !package_.empty()
+	else if (required_.empty() && !package_.empty()
 		&& LaTeXFeatures::isAvailable(to_ascii(package_)))
 		return true;
 	else if (!altfonts_.empty()) {
@@ -181,19 +181,19 @@ docstring const LaTeXFont::getUsedFont(bool ot1, bool complete, bool nomath)
 	         && altFont(completefont_).available(ot1, nomath))
 			return completefont_;
 	else if (switchdefault_) {
-		if (requires_.empty()
-		    || (!requires_.empty()
-		        && LaTeXFeatures::isAvailable(to_ascii(requires_))))
+		if (required_.empty()
+		    || (!required_.empty()
+		        && LaTeXFeatures::isAvailable(to_ascii(required_))))
 			return name_;
 	}
-	else if (!requires_.empty()
-		&& LaTeXFeatures::isAvailable(to_ascii(requires_)))
+	else if (!required_.empty()
+		&& LaTeXFeatures::isAvailable(to_ascii(required_)))
 			return name_;
 	else if (!package_.empty()
 		&& LaTeXFeatures::isAvailable(to_ascii(package_)))
 			return name_;
 	else if (!preamble_.empty() && package_.empty()
-		 && requires_.empty() && !switchdefault_
+		 && required_.empty() && !switchdefault_
 		 && altfonts_.empty()) {
 			return name_;
 	}
@@ -224,7 +224,7 @@ string const LaTeXFont::getAvailablePackage(bool dryrun)
 		return string();
 
 	string const package = to_ascii(package_);
-	if (!requires_.empty() && LaTeXFeatures::isAvailable(to_ascii(requires_)))
+	if (!required_.empty() && LaTeXFeatures::isAvailable(to_ascii(required_)))
 		return package;
 	else if (LaTeXFeatures::isAvailable(package))
 		return package;
@@ -232,7 +232,7 @@ string const LaTeXFont::getAvailablePackage(bool dryrun)
 	else if (dryrun)
 		return package;
 
-	docstring const req = requires_.empty() ? package_ : requires_;
+	docstring const req = required_.empty() ? package_ : required_;
 	frontend::Alert::warning(_("Font not available"),
 			bformat(_("The LaTeX package `%1$s' needed for the font `%2$s'\n"
 				  "is not available on your system. LyX will fall back to the default font."),
@@ -314,7 +314,7 @@ string const LaTeXFont::getLaTeXCode(bool dryrun, bool ot1, bool complete, bool 
 			frontend::Alert::warning(_("Font not available"),
 					bformat(_("The LaTeX package `%1$s' needed for the font `%2$s'\n"
 						  "is not available on your system. LyX will fall back to the default font."),
-						requires_, guiname_), true);
+						required_, guiname_), true);
 	} else {
 		string const package =
 			getAvailablePackage(dryrun);
@@ -474,7 +474,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 			break;
 		}
 		case LF_REQUIRES:
-			lex >> requires_;
+			lex >> required_;
 			break;
 		case LF_SCALEOPTION:
 			lex >> scaleoption_;

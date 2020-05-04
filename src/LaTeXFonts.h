@@ -59,7 +59,7 @@ public:
 	/// Does this provide additional options?
 	bool providesMoreOptions(bool ot1, bool complete, bool nomath);
 	/// Alternative requirement to test for
-	docstring const & required() { return requires_; }
+	docstring const & required() { return required_; }
 	/// Does this font provide a given \p feature
 	bool provides(std::string const & name, bool ot1,
 		      bool complete, bool nomath);
@@ -140,7 +140,7 @@ private:
 	///
 	std::vector<std::string> provides_;
 	///
-	docstring requires_;
+	docstring required_;
 	///
 	docstring preamble_;
 	///

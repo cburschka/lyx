@@ -497,7 +497,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 			lex.eatLine();
 			vector<string> const req
 				= getVectorFromString(lex.getString(true));
-			requires_.insert(req.begin(), req.end());
+			required_.insert(req.begin(), req.end());
 			break;
 		}
 		case IL_SPELLCHECK:

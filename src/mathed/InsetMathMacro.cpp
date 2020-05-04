@@ -239,7 +239,7 @@ public:
 	///
 	mutable std::map<BufferView const *, bool> editing_;
 	///
-	std::string requires_;
+	std::string required_;
 	/// update macro representation
 	bool needsUpdate_;
 	///
@@ -644,7 +644,7 @@ void InsetMathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
 	d->nesting_ = nesting;
 
 	// update requires
-	d->requires_ = d->macro_->required();
+	d->required_ = d->macro_->required();
 
 	if (!d->needsUpdate_
 		// non-normal mode? We are done!
@@ -906,8 +906,8 @@ void InsetMathMacro::validate(LaTeXFeatures & features) const
 	// instant preview is on for math, in which case we will be missing
 	// the corresponding requirements.
 	// In this case, we get the required info from the global macro table.
-	if (!d->requires_.empty())
-		features.require(d->requires_);
+	if (!d->required_.empty())
+		features.require(d->required_);
 	else if (!d->macro_) {
 		// Update requires for known global macros.
 		MacroData const * data = MacroTable::globalMacros().get(name());

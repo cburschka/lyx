@@ -149,7 +149,7 @@ public:
 	/// Defaults to true.
 	bool htmlisblock() const { return htmlisblock_; }
 	///
-	std::set<std::string> required() const { return requires_; }
+	std::set<std::string> required() const { return required_; }
 	///
 	bool isMultiPar() const { return multipar_; }
 	///
@@ -276,7 +276,7 @@ private:
 	///
 	bool htmlisblock_;
 	///
-	std::set<std::string> requires_;
+	std::set<std::string> required_;
 	///
 	bool multipar_;
 	///
