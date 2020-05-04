@@ -58,7 +58,7 @@ InsetCounter::InsetCounter(InsetCounter const & ir)
 {}
 
 
-const map<string, string> InsetCounter::counterTable =
+const vector<pair<string, string>> InsetCounter::counterTable =
 {
 	{"set", N_("Set counter to ...")},
 	{"addto", N_("Increase counter by ...")},
@@ -68,8 +68,13 @@ const map<string, string> InsetCounter::counterTable =
 };
 
 
-bool InsetCounter::isCompatibleCommand(string const & s) {
-	return counterTable.count(s);
+bool InsetCounter::isCompatibleCommand(string const & s)
+{
+	for (auto & i : counterTable) {
+		if (i.first == s)
+			return true;
+	}
+	return false;
 }
 
 
@@ -204,9 +209,12 @@ void InsetCounter::updateBuffer(ParIterator const &, UpdateType, bool const)
 	string const cmd = getCmdName();
 	docstring cntr = getParam("counter");
 	Counters & cnts = buffer().params().documentClass().counters();
-	map<string, string>::const_iterator cit = counterTable.find(cmd);
-	LASSERT(cit != counterTable.end(), return);
-	string const label = cit->second;
+	string label;
+	for (auto & i : counterTable) {
+		if (i.first == cmd)
+			label = i.second;
+	}
+	LASSERT(!label.empty(), return);
 	docstring const tlabel = translateIfPossible(from_ascii(label));
 
 	if (cmd == "set") {

@@ -48,7 +48,7 @@ GuiCounter::GuiCounter(GuiView & lv, QWidget * parent) :
 		this, SIGNAL(changed()));
 
 	// These are hardcoded and do not change
-	std::map<std::string, std::string> const & ct =
+	std::vector<std::pair<std::string, std::string>> const & ct =
 			InsetCounter::counterTable;
 	actionCB->clear();
 	for (auto const & c : ct) {

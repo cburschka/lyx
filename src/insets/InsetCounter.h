@@ -62,7 +62,7 @@ public:
 	static bool isCompatibleCommand(std::string const & s);
 	//@}
 	/// keys are commands, values are GUI strings
-	static const std::map<std::string, std::string> counterTable;
+	static const std::vector<std::pair<std::string, std::string>> counterTable;
 	static const std::map<std::string, std::string> valueTable;
 
 protected:
