@@ -132,23 +132,19 @@ private:
 };
 
 
-
 namespace {
 
-class CompareTags
-	: public binary_function<LexerKeyword, LexerKeyword, bool> {
-public:
-	// used by lower_bound, sort and sorted
-	bool operator()(LexerKeyword const & a, LexerKeyword const & b) const
-	{
-		// we use the ascii version, because in turkish, 'i'
-		// is not the lowercase version of 'I', and thus
-		// turkish locale breaks parsing of tags.
-		return compare_ascii_no_case(a.tag, b.tag) < 0;
-	}
-};
+// used by lower_bound, sort and sorted
+bool compareTags(LexerKeyword const & a, LexerKeyword const & b)
+{
+	// we use the ascii version, because in turkish, 'i'
+	// is not the lowercase version of 'I', and thus
+	// turkish locale breaks parsing of tags.
+	return compare_ascii_no_case(a.tag, b.tag) < 0;
+}
 
 } // namespace
+
 
 
 Lexer::Pimpl::Pimpl(LexerKeyword * tab, int num)
@@ -196,14 +192,14 @@ void Lexer::Pimpl::verifyTable()
 {
 	// Check if the table is sorted and if not, sort it.
 	if (table
-	    && !lyx::sorted(table, table + no_items, CompareTags())) {
+	    && !lyx::sorted(table, table + no_items, &compareTags)) {
 		lyxerr << "The table passed to Lexer is not sorted!\n"
 		       << "Tell the developers to fix it!" << endl;
 		// We sort it anyway to avoid problems.
 		lyxerr << "\nUnsorted:" << endl;
 		printTable(lyxerr);
 
-		sort(table, table + no_items, CompareTags());
+		sort(table, table + no_items, &compareTags);
 		lyxerr << "\nSorted:" << endl;
 		printTable(lyxerr);
 	}
@@ -440,7 +436,7 @@ int Lexer::Pimpl::searchKeyword(char const * const tag) const
 	LexerKeyword search_tag = { tag, 0 };
 	LexerKeyword * res =
 		lower_bound(table, table + no_items,
-			    search_tag, CompareTags());
+			    search_tag, &compareTags);
 	// use the compare_ascii_no_case instead of compare_no_case,
 	// because in turkish, 'i' is not the lowercase version of 'I',
 	// and thus turkish locale breaks parsing of tags.

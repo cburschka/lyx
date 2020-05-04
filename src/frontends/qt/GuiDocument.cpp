@@ -177,7 +177,6 @@ namespace lyx {
 namespace {
 // used when sorting the textclass list.
 class less_textclass_avail_desc
-	: public binary_function<string, string, int>
 {
 public:
 	bool operator()(string const & lhs, string const & rhs) const

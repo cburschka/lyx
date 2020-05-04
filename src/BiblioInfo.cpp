@@ -1176,13 +1176,9 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 namespace {
 
 // A functor for use with sort, leading to case insensitive sorting
-class compareNoCase: public binary_function<docstring, docstring, bool>
-{
-public:
-	bool operator()(docstring const & s1, docstring const & s2) const {
-		return compare_no_case(s1, s2) < 0;
-	}
-};
+bool compareNoCase(const docstring & a, const docstring & b) {
+	return compare_no_case(a, b) < 0;
+}
 
 } // namespace
 
@@ -1229,7 +1225,7 @@ vector<docstring> const BiblioInfo::getKeys() const
 	vector<docstring> bibkeys;
 	for (auto const & bi : *this)
 		bibkeys.push_back(bi.first);
-	sort(bibkeys.begin(), bibkeys.end(), compareNoCase());
+	sort(bibkeys.begin(), bibkeys.end(), &compareNoCase);
 	return bibkeys;
 }
 

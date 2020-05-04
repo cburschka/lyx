@@ -150,9 +150,7 @@ bool BranchList::add(docstring const & s)
 		else
 			name = s.substr(i, j - i);
 		// Is this name already in the list?
-		bool const already =
-			find_if(list_.begin(), list_.end(),
-					 BranchNamesEqual(name)) != list_.end();
+		bool const already = find(name) != nullptr;
 		if (!already) {
 			added = true;
 			Branch br;
@@ -182,8 +180,7 @@ bool BranchList::rename(docstring const & oldname,
 {
 	if (newname.empty())
 		return false;
-	if (find_if(list_.begin(), list_.end(),
-			BranchNamesEqual(newname)) != list_.end()) {
+	if (find(newname)) {
 		// new name already taken
 		if (merge)
 		      return remove(oldname);

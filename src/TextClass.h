@@ -211,7 +211,11 @@ public:
 	bool hasOutputFormat() const { return has_output_format_; }
 	/// Return the non-localised names for the toc types.
 	std::map<std::string, docstring> const &
-	outlinerNames() const { return outliner_names_; }
+		outlinerNames() const { return outliner_names_; }
+	/// \returns Layout named \p name if it exists, otherwise 0
+	Layout const * getLayout(docstring const & name) const;
+	/// \returns Layout named \p name if it exists, otherwise 0
+	Layout * getLayout(docstring const & name);
 
 protected:
 	/// Protect construction

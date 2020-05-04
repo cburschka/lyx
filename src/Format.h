@@ -152,6 +152,8 @@ public:
 	Format & get(FormatList::size_type i) { return formatlist_[i]; }
 	/// \returns format named \p name if it exists, otherwise 0
 	Format const * getFormat(std::string const & name) const;
+	/// \returns format named \p name if it exists, otherwise 0
+	Format * getFormat(std::string const & name);
 	/*!
 	 * Get the format of \p filename from file contents or, if this
 	 * fails, from file extension.

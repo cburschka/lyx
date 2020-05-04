@@ -178,6 +178,19 @@ Format const * Formats::getFormat(string const & name) const
 }
 
 
+Format * Formats::getFormat(string const & name)
+{
+	FormatList::iterator it =
+		find_if(formatlist_.begin(), formatlist_.end(),
+				[name](Format const & f) { return f.name() == name; });
+
+	if (it != formatlist_.end())
+		return &(*it);
+
+	return nullptr;
+}
+
+
 namespace {
 
 /** Guess the file format name (as in Format::name()) from contents.
@@ -596,15 +609,13 @@ void Formats::add(string const & name, string const & extensions,
 		  string const & viewer, string const & editor,
 		  string const & mime, int flags)
 {
-	FormatList::iterator it =
-		find_if(formatlist_.begin(), formatlist_.end(),
-			FormatNamesEqual(name));
-	if (it == formatlist_.end())
-		formatlist_.push_back(Format(name, extensions, prettyname,
-					    shortcut, viewer, editor, mime, flags));
+	Format * format = getFormat(name);
+	if (format)
+		*format = Format(name, extensions, prettyname, shortcut, viewer,
+				 editor, mime, flags);
 	else
-		*it = Format(name, extensions, prettyname, shortcut, viewer,
-			     editor, mime, flags);
+		formatlist_.push_back(Format(name, extensions, prettyname,
+						shortcut, viewer, editor, mime, flags));
 }
 
 
@@ -627,22 +638,22 @@ void Formats::sort()
 void Formats::setViewer(string const & name, string const & command)
 {
 	add(name);
-	FormatList::iterator it =
-		find_if(formatlist_.begin(), formatlist_.end(),
-			FormatNamesEqual(name));
-	if (it != formatlist_.end())
-		it->setViewer(command);
+	Format * format = getFormat(name);
+	if (format)
+		format->setViewer(command);
+	else
+		LYXERR0("Unable to set viewer for non-existent format: " << name);
 }
 
 
 void Formats::setEditor(string const & name, string const & command)
 {
 	add(name);
-	FormatList::iterator it =
-		find_if(formatlist_.begin(), formatlist_.end(),
-			FormatNamesEqual(name));
-	if (it != formatlist_.end())
-		it->setEditor(command);
+	Format * format = getFormat(name);
+	if (format)
+		format->setEditor(command);
+	else
+		LYXERR0("Unable to set editor for non-existent format: " << name);
 }
 
 

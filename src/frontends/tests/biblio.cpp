@@ -40,7 +40,7 @@ typedef map<string, string> InfoMap;
 // data entry matches the required regex_
 // This class is unfortunately copied from ../frontend_helpers.cpp, so we should
 // try to make sure to keep the two in sync.
-class RegexMatch : public unary_function<string, bool>
+class RegexMatch
 {
 public:
 	// re is used to construct an instance of lyx::regex.

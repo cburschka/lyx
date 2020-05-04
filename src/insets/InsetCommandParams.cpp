@@ -600,7 +600,7 @@ docstring InsetCommandParams::getFirstNonOptParam() const
 {
 	ParamInfo::const_iterator it =
 		find_if(info_.begin(), info_.end(),
-			not1(mem_fun_ref(&ParamInfo::ParamData::isOptional)));
+			[](ParamInfo::ParamData const & d) { return !d.isOptional(); });
 	LASSERT(it != info_.end(), return docstring());
 	return (*this)[it->name()];
 }

@@ -636,6 +636,14 @@ contributors = [
                  "20 Sep 2007",
                  u"Advanced search feature"),
 
+     contributor(u"Thibaut Cuvelier",
+                 "dourouc05 () gmail ! com",
+                 "GPL",
+                 "Re: Patches to improve compatibility with modern C++ standard",
+                 "msg211215",
+                 "4 May 2020",
+                 u"Windows compatibility patches"),
+
      contributor(u"Matthias Kalle Dalheimer",
                  "kalle () kdab ! net",
                  "GPL",
