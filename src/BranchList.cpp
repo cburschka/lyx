@@ -25,26 +25,6 @@ using namespace std;
 
 namespace lyx {
 
-namespace {
-
-class BranchNamesEqual : public std::unary_function<Branch, bool>
-{
-public:
-	BranchNamesEqual(docstring const & name)
-		: name_(name)
-	{}
-
-	bool operator()(Branch const & branch) const
-	{
-		return branch.branch() == name_;
-	}
-private:
-	docstring name_;
-};
-
-} // namespace
-
-
 Branch::Branch()
 	: selected_(false), filenameSuffix_(false)
 {
@@ -122,11 +102,21 @@ void Branch::setColor(string const & str)
 }
 
 
+namespace {
+
+std::function<bool (Branch const &)> BranchNamesEqual(docstring const & d)
+{
+	return [d](Branch const & b){ return b.branch() == d; };
+}
+
+} // namespace
+
+
 Branch * BranchList::find(docstring const & name)
 {
 	List::iterator it =
 		find_if(list_.begin(), list_.end(), BranchNamesEqual(name));
-	return it == list_.end() ? 0 : &*it;
+	return it == list_.end() ? nullptr : &*it;
 }
 
 
@@ -134,7 +124,7 @@ Branch const * BranchList::find(docstring const & name) const
 {
 	List::const_iterator it =
 		find_if(list_.begin(), list_.end(), BranchNamesEqual(name));
-	return it == list_.end() ? 0 : &*it;
+	return it == list_.end() ? nullptr : &*it;
 }
 
 
@@ -150,7 +140,7 @@ bool BranchList::add(docstring const & s)
 		else
 			name = s.substr(i, j - i);
 		// Is this name already in the list?
-		bool const already = find(name) != nullptr;
+		bool const already = find(name);
 		if (!already) {
 			added = true;
 			Branch br;
