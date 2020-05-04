@@ -32,6 +32,7 @@
 #include "support/Translator.h"
 
 #include <algorithm>
+#include <functional>
 #include <map>
 #include <ctime>
 
@@ -54,52 +55,8 @@ string const token_from_format("$$i");
 string const token_path_format("$$p");
 string const token_socket_format("$$a");
 
-
-class FormatNamesEqual : public unary_function<Format, bool> {
-public:
-	FormatNamesEqual(string const & name)
-		: name_(name)
-	{}
-	bool operator()(Format const & f) const
-	{
-		return f.name() == name_;
-	}
-private:
-	string name_;
-};
-
-
-class FormatExtensionsEqual : public unary_function<Format, bool> {
-public:
-	FormatExtensionsEqual(string const & extension)
-		: extension_(extension)
-	{}
-	bool operator()(Format const & f) const
-	{
-		return f.hasExtension(extension_);
-	}
-private:
-	string extension_;
-};
-
-
-class FormatMimeEqual : public unary_function<Format, bool> {
-public:
-	FormatMimeEqual(string const & mime)
-		: mime_(mime)
-	{}
-	bool operator()(Format const & f) const
-	{
-		// The test for empty mime strings is needed since we allow
-		// formats with empty mime types.
-		return f.mime() == mime_ && !mime_.empty();
-	}
-private:
-	string mime_;
-};
-
-
 } // namespace
+
 
 bool Format::formatSorter(Format const * lhs, Format const * rhs)
 {
@@ -164,6 +121,15 @@ void Format::setExtensions(string const & e)
 }
 
 
+namespace {
+
+std::function<bool (Format const &)> FormatNamesEqual(string const & name)
+{
+	return [name](Format const & f){ return f.name() == name; };
+}
+
+}
+
 // This method should return a reference, and throw an exception
 // if the format named name cannot be found (Lgb)
 Format const * Formats::getFormat(string const & name) const
@@ -182,7 +148,7 @@ Format * Formats::getFormat(string const & name)
 {
 	FormatList::iterator it =
 		find_if(formatlist_.begin(), formatlist_.end(),
-				[name](Format const & f) { return f.name() == name; });
+				FormatNamesEqual(name));
 
 	if (it != formatlist_.end())
 		return &(*it);
@@ -433,7 +399,7 @@ string Formats::getFormatFromFile(FileName const & filename) const
 			mime != "text/plain") {
 			Formats::const_iterator cit =
 				find_if(formatlist_.begin(), formatlist_.end(),
-						FormatMimeEqual(mime));
+						[mime](Format const & f){ return f.mime() == mime; });
 			if (cit != formatlist_.end()) {
 				LYXERR(Debug::GRAPHICS, "\tgot format from MIME type: "
 					   << mime << " -> " << cit->name());
@@ -499,7 +465,7 @@ string Formats::getFormatFromExtension(string const & ext) const
 		// but better than nothing
 		Formats::const_iterator cit =
 			find_if(formatlist_.begin(), formatlist_.end(),
-				FormatExtensionsEqual(ext));
+				[ext](Format const & f){ return f.hasExtension(ext); });
 		if (cit != formatlist_.end()) {
 			LYXERR(Debug::GRAPHICS, "\twill guess format from file extension: "
 				<< ext << " -> " << cit->name());
@@ -589,10 +555,10 @@ int Formats::getNumber(string const & name) const
 	FormatList::const_iterator cit =
 		find_if(formatlist_.begin(), formatlist_.end(),
 			FormatNamesEqual(name));
-	if (cit != formatlist_.end())
-		return distance(formatlist_.begin(), cit);
-	else
+	if (cit == formatlist_.end())
 		return -1;
+
+	return distance(formatlist_.begin(), cit);
 }
 
 
