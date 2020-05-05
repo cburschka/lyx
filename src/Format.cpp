@@ -123,7 +123,7 @@ void Format::setExtensions(string const & e)
 
 namespace {
 
-std::function<bool (Format const &)> FormatNamesEqual(string const & name)
+std::function<bool (Format const &)> FormatNameIs(string const & name)
 {
 	return [name](Format const & f){ return f.name() == name; };
 }
@@ -136,7 +136,7 @@ Format const * Formats::getFormat(string const & name) const
 {
 	FormatList::const_iterator cit =
 		find_if(formatlist_.begin(), formatlist_.end(),
-			FormatNamesEqual(name));
+			FormatNameIs(name));
 	if (cit != formatlist_.end())
 		return &(*cit);
 	else
@@ -148,7 +148,7 @@ Format * Formats::getFormat(string const & name)
 {
 	FormatList::iterator it =
 		find_if(formatlist_.begin(), formatlist_.end(),
-				FormatNamesEqual(name));
+				FormatNameIs(name));
 
 	if (it != formatlist_.end())
 		return &(*it);
@@ -554,7 +554,7 @@ int Formats::getNumber(string const & name) const
 {
 	FormatList::const_iterator cit =
 		find_if(formatlist_.begin(), formatlist_.end(),
-			FormatNamesEqual(name));
+			FormatNameIs(name));
 	if (cit == formatlist_.end())
 		return -1;
 
@@ -589,7 +589,7 @@ void Formats::erase(string const & name)
 {
 	FormatList::iterator it =
 		find_if(formatlist_.begin(), formatlist_.end(),
-			FormatNamesEqual(name));
+			FormatNameIs(name));
 	if (it != formatlist_.end())
 		formatlist_.erase(it);
 }

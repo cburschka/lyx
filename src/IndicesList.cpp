@@ -102,7 +102,7 @@ void Index::setColor(string const & str)
 
 namespace{
 
-std::function<bool (Index const &)> IndexNamesEqual(docstring const & name)
+std::function<bool (Index const &)> IndexNameIs(docstring const & name)
 {
 	return [name](Index const & idx){ return idx.index() == name; };
 }
@@ -113,7 +113,7 @@ std::function<bool (Index const &)> IndexNamesEqual(docstring const & name)
 Index * IndicesList::find(docstring const & name)
 {
 	List::iterator it =
-		find_if(list.begin(), list.end(), IndexNamesEqual(name));
+		find_if(list.begin(), list.end(), IndexNameIs(name));
 	return it == list.end() ? nullptr : &*it;
 }
 
@@ -121,14 +121,14 @@ Index * IndicesList::find(docstring const & name)
 Index const * IndicesList::find(docstring const & name) const
 {
 	List::const_iterator it =
-		find_if(list.begin(), list.end(), IndexNamesEqual(name));
+		find_if(list.begin(), list.end(), IndexNameIs(name));
 	return it == list.end() ? nullptr : &*it;
 }
 
 
 namespace {
 
-std::function<bool (Index const &)> IndexHasShortcut(docstring const & sc)
+std::function<bool (Index const &)> IndexShortcutIs(docstring const & sc)
 {
 	return [sc](Index const & idx){ return idx.shortcut() == sc; };
 }
@@ -139,7 +139,7 @@ std::function<bool (Index const &)> IndexHasShortcut(docstring const & sc)
 Index * IndicesList::findShortcut(docstring const & shortcut)
 {
 	List::iterator it =
-		find_if(list.begin(), list.end(), IndexHasShortcut(shortcut));
+		find_if(list.begin(), list.end(), IndexShortcutIs(shortcut));
 	return it == list.end() ? nullptr : &*it;
 }
 
@@ -147,7 +147,7 @@ Index * IndicesList::findShortcut(docstring const & shortcut)
 Index const * IndicesList::findShortcut(docstring const & shortcut) const
 {
 	List::const_iterator it =
-		find_if(list.begin(), list.end(), IndexHasShortcut(shortcut));
+		find_if(list.begin(), list.end(), IndexShortcutIs(shortcut));
 	return it == list.end() ? nullptr : &*it;
 }
 
@@ -202,7 +202,7 @@ bool IndicesList::addDefault(docstring const & n)
 bool IndicesList::remove(docstring const & s)
 {
 	size_t const size = list.size();
-	list.remove_if(IndexNamesEqual(s));
+	list.remove_if(IndexNameIs(s));
 	return size != list.size();
 }
 

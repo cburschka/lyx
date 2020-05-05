@@ -104,7 +104,7 @@ void Branch::setColor(string const & str)
 
 namespace {
 
-std::function<bool (Branch const &)> BranchNamesEqual(docstring const & d)
+std::function<bool (Branch const &)> BranchNameIs(docstring const & d)
 {
 	return [d](Branch const & b){ return b.branch() == d; };
 }
@@ -115,7 +115,7 @@ std::function<bool (Branch const &)> BranchNamesEqual(docstring const & d)
 Branch * BranchList::find(docstring const & name)
 {
 	List::iterator it =
-		find_if(list_.begin(), list_.end(), BranchNamesEqual(name));
+		find_if(list_.begin(), list_.end(), BranchNameIs(name));
 	return it == list_.end() ? nullptr : &*it;
 }
 
@@ -123,7 +123,7 @@ Branch * BranchList::find(docstring const & name)
 Branch const * BranchList::find(docstring const & name) const
 {
 	List::const_iterator it =
-		find_if(list_.begin(), list_.end(), BranchNamesEqual(name));
+		find_if(list_.begin(), list_.end(), BranchNameIs(name));
 	return it == list_.end() ? nullptr : &*it;
 }
 
@@ -160,7 +160,7 @@ bool BranchList::add(docstring const & s)
 bool BranchList::remove(docstring const & s)
 {
 	size_t const size = list_.size();
-	list_.remove_if(BranchNamesEqual(s));
+	list_.remove_if(BranchNameIs(s));
 	return size != list_.size();
 }
 
