@@ -21,17 +21,40 @@ Counter example
 End
 
 Counter examplei
-	GuiName "Numbered Example (Multiline)"
+	GuiName              "Numbered Example (Multiline)"
 	Within               chapter
 	LabelString          "(\arabic{examplei})"
 End
 
 Counter subexample
-	GuiName Subexample
+	GuiName              Subexample
 	Within               examplei
 	LabelString          "\theexamplei (\alph{subexample})"
 End
 
+Counter subexamplei
+	GuiName              Subexample
+	Within               examplei
+	LabelString          "\theexamplei (\alph{subexamplei})"
+End
+
+Counter subexampleii
+	GuiName              Subexample
+	Within               examplei
+	LabelString          "\theexamplei (\alph{subexampleii})"
+End
+
+Counter subexampleiii
+	GuiName              Subexample
+	Within               examplei
+	LabelString          "\theexamplei (\alph{subexampleiii})"
+End
+
+Counter subexampleiv
+	GuiName              Subexample
+	Within               examplei
+	LabelString          "\theexamplei (\alph{subexampleiv})"
+End
 
 #
 # Numbered Examples
