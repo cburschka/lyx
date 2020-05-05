@@ -25,42 +25,6 @@ using namespace lyx::support;
 
 namespace lyx {
 
-namespace {
-
-class IndexNamesEqual : public std::unary_function<Index, bool>
-{
-public:
-	IndexNamesEqual(docstring const & name)
-		: name_(name)
-	{}
-
-	bool operator()(Index const & index) const
-	{
-		return index.index() == name_;
-	}
-private:
-	docstring name_;
-};
-
-
-class IndexHasShortcut : public std::unary_function<Index, bool>
-{
-public:
-	IndexHasShortcut(docstring const & shortcut)
-		: shortc_(shortcut)
-	{}
-
-	bool operator()(Index const & index) const
-	{
-		return index.shortcut() == shortc_;
-	}
-private:
-	docstring shortc_;
-};
-
-} // namespace
-
-
 /////////////////////////////////////////////////////////////////////
 //
 // Index
@@ -136,6 +100,16 @@ void Index::setColor(string const & str)
 /////////////////////////////////////////////////////////////////////
 
 
+namespace{
+
+std::function<bool (Index const &)> IndexNamesEqual(docstring const & name)
+{
+	return [name](Index const & idx){ return idx.index() == name; };
+}
+
+}
+
+
 Index * IndicesList::find(docstring const & name)
 {
 	List::iterator it =
@@ -150,6 +124,16 @@ Index const * IndicesList::find(docstring const & name) const
 		find_if(list.begin(), list.end(), IndexNamesEqual(name));
 	return it == list.end() ? nullptr : &*it;
 }
+
+
+namespace {
+
+std::function<bool (Index const &)> IndexHasShortcut(docstring const & sc)
+{
+	return [sc](Index const & idx){ return idx.shortcut() == sc; };
+}
+
+} // namespace
 
 
 Index * IndicesList::findShortcut(docstring const & shortcut)
@@ -180,9 +164,7 @@ bool IndicesList::add(docstring const & n, docstring const & s)
 		else
 			name = n.substr(i, j - i);
 		// Is this name already in the list?
-		bool const already =
-			find_if(list.begin(), list.end(),
-				     IndexNamesEqual(name)) != list.end();
+		bool const already = find(name);
 		if (!already) {
 			added = true;
 			Index in;
@@ -230,8 +212,7 @@ bool IndicesList::rename(docstring const & oldname,
 {
 	if (newname.empty())
 		return false;
-	if (find_if(list.begin(), list.end(),
-		    IndexNamesEqual(newname)) != list.end())
+	if (find(newname))
 		// new name already taken
 		return false;
 
