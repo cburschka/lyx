@@ -107,13 +107,6 @@ Lists of files to include in the installer
   
 !macroend
 
-!macro FileListDTLBin COMMAND DIRECTORY
-
-  ${FILE}dt2dv.exe"
-  ${FILE}dv2dt.exe"
-  
-!macroend
-
 !macro FileListRsvg COMMAND DIRECTORY
 
   ${FILE}rsvg-convert.exe"

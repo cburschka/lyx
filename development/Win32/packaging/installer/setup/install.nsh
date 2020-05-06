@@ -51,7 +51,6 @@ Section -ProgramFiles SecProgramFiles
   !insertmacro FileListQtBin File "${FILES_QT}\bin\"
   !insertmacro FileListMSVC File "${FILES_LYX}\bin\"
   !insertmacro FileListNetpbmBin File "${FILES_NETPBM}\"
-  !insertmacro FileListDTLBin File "${FILES_DTL}\"
   !insertmacro FileListRsvg File "${FILES_RSVG}\"
   !insertmacro FileListPDFViewBin File "${FILES_PDFVIEW}\"
   
