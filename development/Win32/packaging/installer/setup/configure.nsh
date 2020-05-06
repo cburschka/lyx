@@ -162,10 +162,8 @@ Section -Configure
   
   # Set the path prefix in lyxrc.dist
   ClearErrors
-  Delete "$INSTDIR\Resources\lyxrc.dist"
-  FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" w
-  # set the format to the latest LyXRC format
-  FileWrite $R1 'Format 24$\r$\n'
+  FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" a
+  FileSeek $R1 0 END
   # set some general things
   FileWrite $R1 '\screen_zoom 120$\r$\n'
   ${if} "$PathPrefix" != ""
