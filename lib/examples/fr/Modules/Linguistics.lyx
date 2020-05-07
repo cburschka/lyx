@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 593
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -35,11 +35,81 @@
 \begin_modules
 linguistics
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
+\begin_local_layout
+### Inserted by lyx2lyx (deprecated ling glosses) ###
+InsetLayout Flex:Tri-Glosse
+  LyXType               custom
+  LabelString           "Tri-Gloss (old version)"
+  MenuString            "Tri-Gloss (old version)"
+  LatexType             environment
+  LatexName             lingglosss
+  Decoration            minimalistic
+  LabelFont
+    Size                Small
+  EndFont
+  MultiPar              true
+  CustomPars            false
+  ForcePlain            true
+  ParbreakIsNewline     true
+  FreeSpacing           true
+  InToc                 true
+  Requires              covington
+  Preamble
+          \def\glosstr{}
+          \@ifundefined{lingglosss}{%
+          \newenvironment{lingglosss}[2][]{
+              \def\glosstr{\glt #1}%
+              \glll #2}
+          {\glosstr\glend}}{}
+  EndPreamble
+  ResetsFont            true
+  Argument 1
+          Decoration    conglomerate
+          LabelString   "Translation"
+          MenuString    "Glosse Translation|s"
+          Tooltip       "Add a translation for the glosse"
+  EndArgument
+End
+### Inserted by lyx2lyx (deprecated ling glosses) ###
+InsetLayout Flex:Glosse
+  LyXType               custom
+  LabelString           "Gloss (old version)"
+  MenuString            "Gloss (old version)"
+  LatexType             environment
+  LatexName             linggloss
+  Decoration            minimalistic
+  LabelFont
+    Size                Small
+  EndFont
+  MultiPar              true
+  CustomPars            false
+  ForcePlain            true
+  ParbreakIsNewline     true
+  FreeSpacing           true
+  Requires              covington
+  Preamble
+          \def\glosstr{}
+          \@ifundefined{linggloss}{%
+          \newenvironment{linggloss}[2][]{
+             \def\glosstr{\glt #1}%
+             \gll #2}
+          {\glosstr\glend}}{}
+  EndPreamble
+  InToc                 true
+  ResetsFont            true
+  Argument 1
+          Decoration    conglomerate
+          LabelString   "Translation"
+          MenuString    "Glosse Translation|s"
+          Tooltip       "Add a translation for the glosse"
+  EndArgument
+End
+\end_local_layout
 \language french
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "FreeSerif"
 \font_sans "default" "FreeSans"
 \font_typewriter "default" "FreeMono"
@@ -47,7 +117,9 @@ linguistics
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -91,6 +163,7 @@ linguistics
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -106,8 +179,11 @@ linguistics
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
@@ -156,9 +232,10 @@ literal "false"
 Ce document décrit quelques fonctionnalités de \SpecialChar LyX
  utiles aux linguistes.
  Il montre comment utiliser ces fonctionnalités de base pour produire des
- exemples numérotés, des gloses, des tableaux résultant de la théorie de
- l'optimalité, un balisage sémantique, des structures arborescentes et des
- symboles phonétiques (API).
+ exemples numérotés, des gloses interlinéaires, des tableaux résultant de
+ la théorie de l'optimalité, un balisage sémantique, des structures arborescente
+s, des structures de représentation du discours (DRS) et des symboles phonétique
+s (API).
 \end_layout
 
 \begin_layout Section
@@ -231,62 +308,10 @@ literal "true"
 
 \end_inset
 
-: ceci est le paquetage de base utilisé pour les exemples numérotés et les
- gloses:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-installé sur votre système? 
-\begin_inset Info
-type  "package"
-arg   "enumitem"
-\end_inset
-
-;
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-
-\emph on
-enumitem.sty
-\emph default
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "enumitem"
-literal "true"
-
-\end_inset
-
-: ce paquetage est utilisé pour le style 
-\begin_inset Quotes cld
-\end_inset
-
-Sous-exemples
-\begin_inset Quotes crd
-\end_inset
-
-.
- Il est plus généralement utile pour modifier l'apparence des listes (comme
- 
-\emph on
-Énumération
-\emph default
-, 
-\emph on
-ListePuces
-\emph default
-, 
-\emph on
-Description
-\emph default
-):
+: ceci est le paquetage de base utilisé pour les exemples numérotés, les
+ gloses et le balisage sémantique.
+ Notez que la version 2.3 au moins du paquetage est requise pour utiliser
+ toutes les fonctionnalités.
 \end_layout
 
 \begin_deeper
@@ -322,9 +347,50 @@ literal "true"
 \emph on
 signification
 \emph default
-.
+ et pour les gloses.
  Le paquetage fournit des marques de citation contextuelles, en fonction
  du langage utilisé:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+installé sur votre système? 
+\begin_inset Info
+type  "package"
+arg   "enumitem"
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\emph on
+drs.sty 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "drs"
+literal "false"
+
+\end_inset
+
+
+\emph default
+: nécessaire pour les structures de représentation du discours.
+ Notez que la version 2.3 au moins du paquetage 
+\emph on
+covington
+\emph default
+ est requise pour pouvoir utiliser 
+\emph on
+drs
+\emph default
+ avec les fonctionnalités de 
+\emph on
+covington
+\emph default
+.
 \end_layout
 
 \begin_deeper
@@ -402,6 +468,20 @@ arg   "forest"
 \end_layout
 
 \end_deeper
+\begin_layout Enumerate
+pict2e.sty 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pict2e"
+literal "false"
+
+\end_inset
+
+: nécessaire pour les 
+\emph on
+DRS conditionnels doubles
+\end_layout
+
 \begin_layout Section
 Exemples numérotés
 \end_layout
@@ -503,10 +583,56 @@ Insertion\SpecialChar menuseparator
 Numérotation spécifique
 \family default
 .
+ Pour les réglages globaux, 
+\emph on
+covington
+\emph default
+ propose des options de personnalisation.
+ Veuillez vous référer au manuel de 
+\emph on
+covington
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covington"
+literal "false"
+
+\end_inset
+
+ pour les détails.
+\end_layout
+
+\begin_layout Standard
+À compter de la version 2.3, les sous-exemples de 
+\emph on
+covington
+\emph default
+ sont dotés d'arguments facultatifs (insérer du texte entre le numéro principal
+ et le premier sous-exemple).
+ Ces arguments peuvent être définis via 
+\family sans
+Insertion\SpecialChar menuseparator
+Options des sous-exemples
+\family default
+.
+ Veuillez de nouveau vous référer au manuel de 
+\emph on
+covington
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covington"
+literal "false"
+
+\end_inset
+
+ pour les détails.
 \end_layout
 
 \begin_layout Section
-Gloses
+Gloses interlinéaires
 \end_layout
 
 \begin_layout Standard
@@ -928,7 +1054,7 @@ Notes de bas de page dans une glose
 \end_layout
 
 \begin_layout Standard
-Bine que vous puissiez insérer une note de bas de page dans une glose, la
+Bien que vous puissiez insérer une note de bas de page dans une glose, la
  compilation \SpecialChar LaTeX
  échouera.
  Si vous avez besoin de notes de bas de page, saisissez 
@@ -1162,6 +1288,7 @@ Tableau
 \begin_layout Standard
 \begin_inset Float tableau
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -2367,29 +2494,29 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/csquotes/
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "enumitem"
+key "drs"
 literal "true"
 
 \end_inset
 
-Le paquetage enumitem: 
+ Le paquetage drs: 
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-http://www.ctan.org/tex-archive/macros/latex/contrib/enumitem/
+https://ctan.org/tex-archive/macros/latex/contrib/drs
 \end_layout
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Bibliography
@@ -2462,6 +2589,28 @@ https://wiki.lyx.org/LyX/LinguistLyX
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "pict2e"
+literal "false"
+
+\end_inset
+
+Le paquetage pict2e: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://ctan.org/tex-archive/macros/latex/contrib/pict2e
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
