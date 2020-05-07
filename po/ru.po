@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-05-03 13:31+0200\n"
-"PO-Revision-Date: 2020-05-02 18:10+0300\n"
+"PO-Revision-Date: 2020-05-07 09:18+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -1236,34 +1236,32 @@ msgid "&Enable change tracking features in the output"
 msgstr "Отслеживать изменения в выходном файле"
 
 #: src/frontends/qt/ui/CounterUi.ui:22
-#, fuzzy
 msgid "C&ounter:"
-msgstr "Страна"
+msgstr "Счётчик:"
 
 #: src/frontends/qt/ui/CounterUi.ui:38
-#, fuzzy
 msgid "Select counter to modify"
-msgstr "Выберите документ для открытия"
+msgstr "Выберите счётчик для изменения"
 
 #: src/frontends/qt/ui/CounterUi.ui:45
-#, fuzzy
 msgid "&Action:"
-msgstr "Действие"
+msgstr "Действие:"
 
 #: src/frontends/qt/ui/CounterUi.ui:63
 msgid "Select the action to perform on selected counter"
-msgstr ""
+msgstr "Выберите действие, которое необходимо произвести с выбранным счётчиком"
 
 #: src/frontends/qt/ui/CounterUi.ui:79
 msgid ""
 "If checked, modification affects the counter only in the LyX workarea, not "
 "in the output"
 msgstr ""
+"Если установлено, модификация влияет на счётчик только в рабочей области "
+"LyX, а не в выводе."
 
 #: src/frontends/qt/ui/CounterUi.ui:85
-#, fuzzy
 msgid "&Workarea only"
-msgstr "События рабочей области"
+msgstr "Только в рабочей области"
 
 #: src/frontends/qt/ui/DelimiterUi.ui:122 src/frontends/qt/GuiDelimiter.cpp:326
 msgid "TeX Code: "
@@ -1797,6 +1795,8 @@ msgid ""
 "Select the roman (serif) typeface. To filter the list of fonts, just start "
 "typing while the list is expanded."
 msgstr ""
+"Выберите шрифт с засечками. Чтобы отфильтровать список шрифтов, просто "
+"начните набирать при развёрнутом списке."
 
 #: src/frontends/qt/ui/FontUi.ui:142
 msgid "Use a real small caps shape, if the font provides one"
@@ -1837,6 +1837,8 @@ msgid ""
 "Select the Sans Serif (grotesque) typeface. To filter the list of fonts, "
 "just start typing while the list is expanded."
 msgstr ""
+"Выберите шрифт без засечек. Чтобы отфильтровать список шрифтов, просто "
+"начните набирать при развёрнутом списке."
 
 #: src/frontends/qt/ui/FontUi.ui:237
 msgid "S&cale (%):"
@@ -1859,6 +1861,8 @@ msgid ""
 "Select the typewriter (monospaced) typeface. To filter the list of fonts, "
 "just start typing while the list is expanded."
 msgstr ""
+"Выберите машинописный шрифт. Чтобы отфильтровать список шрифтов, просто "
+"начните набирать при развёрнутом списке."
 
 #: src/frontends/qt/ui/FontUi.ui:345
 msgid "Sc&ale (%):"
@@ -2462,7 +2466,7 @@ msgstr "Введите имя главного документа по умол�
 
 #: src/frontends/qt/ui/LaTeXUi.ui:196
 msgid "&Suppress default date on front page"
-msgstr "Убрать вывод даты на титульной странице"
+msgstr "Убрать вывод даты на титульном листе"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:216
 msgid "&Use refstyle (not prettyref) for cross-references"
@@ -2943,7 +2947,7 @@ msgid ""
 msgstr ""
 "Гарантировать что все счётчики и ссылки идентичны полному документу. Это "
 "может быть намного медленнее, чем первые два метода.<br>Используйте это, "
-"если вам абсолютно необходимы правильные счетчики."
+"если вам абсолютно необходимы правильные счётчики."
 
 #: src/frontends/qt/ui/MasterChildUi.ui:90
 msgid "Strictly &maintain (slow)"
@@ -8130,9 +8134,8 @@ msgid "\\Alph{appendix}."
 msgstr "\\Alph{appendix}."
 
 #: lib/layouts/aastex62.layout:243 lib/layouts/copernicus.layout:256
-#, fuzzy
 msgid "Subappendix"
-msgstr "Приложение"
+msgstr "Подприложение"
 
 #: lib/layouts/aastex62.layout:247 lib/layouts/copernicus.layout:260
 msgid "Subsection Appendix"
@@ -8143,9 +8146,8 @@ msgid "\\Alph{appendix}\\arabic{subappendix}."
 msgstr "\\Alph{appendix}\\arabic{subappendix}."
 
 #: lib/layouts/aastex62.layout:259 lib/layouts/copernicus.layout:268
-#, fuzzy
 msgid "Subsubappendix"
-msgstr "Subsubsection Appendix"
+msgstr "Подподприложение"
 
 #: lib/layouts/aastex62.layout:263 lib/layouts/copernicus.layout:272
 msgid "Subsubsection Appendix"
@@ -9040,29 +9042,24 @@ msgid "Issue-months"
 msgstr "Месяцы-выпуска"
 
 #: lib/layouts/agu_stdcounters.inc:9 lib/layouts/db_stdcounters.inc:9
-#, fuzzy
 msgid "Section Level 1"
-msgstr "Блоки разделов"
+msgstr "Раздел, уровень 1"
 
 #: lib/layouts/agu_stdcounters.inc:14 lib/layouts/db_stdcounters.inc:14
-#, fuzzy
 msgid "Section Level 2"
-msgstr "Блоки разделов"
+msgstr "Раздел, уровень 2"
 
 #: lib/layouts/agu_stdcounters.inc:19 lib/layouts/db_stdcounters.inc:19
-#, fuzzy
 msgid "Section Level 3"
-msgstr "Блоки разделов"
+msgstr "Раздел, уровень 3"
 
 #: lib/layouts/agu_stdcounters.inc:24 lib/layouts/db_stdcounters.inc:24
-#, fuzzy
 msgid "Section Level 4"
-msgstr "Блоки разделов"
+msgstr "Раздел, уровень 4"
 
 #: lib/layouts/agu_stdcounters.inc:29 lib/layouts/db_stdcounters.inc:29
-#, fuzzy
 msgid "Section Level 5"
-msgstr "Блоки разделов"
+msgstr "Раздел, уровень 5"
 
 #: lib/layouts/agu_stdcounters.inc:34 lib/layouts/agu_stdsections.inc:60
 #: lib/layouts/aguplus.inc:59 lib/layouts/agutex.layout:157
@@ -9480,9 +9477,8 @@ msgid "table"
 msgstr "таблица"
 
 #: lib/layouts/aguplus.inc:236
-#, fuzzy
 msgid "Plano Table"
-msgstr "Planotable"
+msgstr "Plano Table"
 
 #: lib/layouts/agutex.layout:3 lib/examples/Articles:0
 msgid "American Geophysical Union (AGUTeX)"
@@ -9797,7 +9793,7 @@ msgstr "FitBitmap"
 #: lib/layouts/powerdot.layout:352 lib/layouts/stdlists.inc:33
 #: lib/layouts/stdlists.inc:72 lib/layouts/theorems-case.inc:66
 msgid "Custom Item|s"
-msgstr "Настраиваемый элемент"
+msgstr "Настраиваемый пункт"
 
 #: lib/layouts/apa.layout:375 lib/layouts/apa.layout:410
 #: lib/layouts/apa6.layout:476 lib/layouts/apa6.layout:511
@@ -9807,7 +9803,7 @@ msgstr "Настраиваемый элемент"
 #: lib/layouts/powerdot.layout:353 lib/layouts/stdlists.inc:34
 #: lib/layouts/stdlists.inc:73 lib/layouts/theorems-case.inc:67
 msgid "A customized item string"
-msgstr "Строка настраиваемого элемента"
+msgstr "Строка настраиваемого пункта"
 
 #: lib/layouts/apa.layout:425 lib/layouts/apa6.layout:526
 msgid "Seriate"
@@ -10720,14 +10716,12 @@ msgid "Scripts"
 msgstr "Сценарии"
 
 #: lib/layouts/broadway.layout:27
-#, fuzzy
 msgid "Act Number"
-msgstr "Номер ACM"
+msgstr "Номер акта"
 
 #: lib/layouts/broadway.layout:32
-#, fuzzy
 msgid "Scene Number"
-msgstr "Номер страницы"
+msgstr "Номер сцены"
 
 #: lib/layouts/broadway.layout:36 lib/layouts/hollywood.layout:41
 msgid "Dialogue"
@@ -11824,9 +11818,8 @@ msgid "bysame"
 msgstr "того же"
 
 #: lib/layouts/ectaart.layout:220 lib/layouts/stdcounters.inc:91
-#, fuzzy
 msgid "Footnote (Title)"
-msgstr "Метка сноски"
+msgstr "Сноска (титульный лист)"
 
 #: lib/layouts/egs.layout:3
 msgid "European Geophysical Society (EGS)"
@@ -13727,7 +13720,6 @@ msgid "Comby"
 msgstr "Клавиатура"
 
 #: lib/layouts/ijmpd.layout:461 lib/layouts/theorems-without-preamble.inc:130
-#, fuzzy
 msgid "Prop(osition)"
 msgstr "Предложение"
 
@@ -14103,9 +14095,8 @@ msgstr ""
 
 #: lib/layouts/knitr.module:14 lib/layouts/litinsets.inc:12
 #: lib/layouts/sweave.module:14
-#, fuzzy
 msgid "Knitr Chunk"
-msgstr "Фрагмент"
+msgstr "Фрагмент Knitr"
 
 #: lib/layouts/knitr.module:21 lib/layouts/sweave.module:31
 msgid "Sweave Options"
@@ -14272,7 +14263,6 @@ msgid "(\\arabic{example})"
 msgstr "(\\arabic{example})"
 
 #: lib/layouts/linguistics.module:24
-#, fuzzy
 msgid "Numbered Example (Multiline)"
 msgstr "Нумерованный пример (многострочный)"
 
@@ -15870,30 +15860,25 @@ msgid "Enter the text of the left column here (right column in main paragraph)"
 msgstr "Введите здесь текст левого столбца (правый столбец в главном абзаце)"
 
 #: lib/layouts/powerdot.layout:589 lib/layouts/stdcounters.inc:50
-#, fuzzy
 msgid "Numbered List (Level 1)"
-msgstr "Нумерованный список"
+msgstr "Нумерованный список (уровень 1)"
 
 #: lib/layouts/powerdot.layout:593 lib/layouts/scrclass.inc:48
 #: lib/layouts/stdcounters.inc:55
-#, fuzzy
 msgid "Numbered List (Level 2)"
-msgstr "Нумерованный список"
+msgstr "Нумерованный список (уровень 2)"
 
 #: lib/layouts/powerdot.layout:598 lib/layouts/stdcounters.inc:61
-#, fuzzy
 msgid "Numbered List (Level 3)"
-msgstr "Нумерованный список"
+msgstr "Нумерованный список (уровень 3)"
 
 #: lib/layouts/powerdot.layout:603 lib/layouts/stdcounters.inc:67
-#, fuzzy
 msgid "Numbered List (Level 4)"
-msgstr "Нумерованный список"
+msgstr "Нумерованный список (уровень 4)"
 
 #: lib/layouts/powerdot.layout:608 lib/layouts/stdcounters.inc:73
-#, fuzzy
 msgid "Bibliography Item"
-msgstr "Стиль библиографии"
+msgstr "Источник библиографии"
 
 #: lib/layouts/powerdot.layout:627
 msgid "Onslide"
@@ -17988,7 +17973,7 @@ msgstr ""
 
 #: lib/layouts/theorems-case.inc:12
 msgid "Case (Level 1)"
-msgstr ""
+msgstr "Вариант (уровень 1)"
 
 #: lib/layouts/theorems-case.inc:13
 msgid "Case \\arabic{casei}."
@@ -17996,7 +17981,7 @@ msgstr "Случай \\arabic{casei}."
 
 #: lib/layouts/theorems-case.inc:16
 msgid "Case (Level 2)"
-msgstr ""
+msgstr "Вариант (уровень 2)"
 
 #: lib/layouts/theorems-case.inc:18
 msgid "Case \\roman{caseii}."
@@ -18004,7 +17989,7 @@ msgstr "Случай \\roman{caseii}."
 
 #: lib/layouts/theorems-case.inc:21
 msgid "Case (Level 3)"
-msgstr ""
+msgstr "Вариант (уровень 3)"
 
 #: lib/layouts/theorems-case.inc:23
 msgid "Case \\alph{caseiii}."
@@ -18012,7 +17997,7 @@ msgstr "Случай \\alph{caseiii}."
 
 #: lib/layouts/theorems-case.inc:26
 msgid "Case (Level 4)"
-msgstr ""
+msgstr "Вариант (уровень 4)"
 
 #: lib/layouts/theorems-case.inc:28
 msgid "Case \\arabic{caseiv}."
@@ -18188,7 +18173,6 @@ msgid "Prop \\theprop."
 msgstr "Предл. \\theprop."
 
 #: lib/layouts/theorems-without-preamble.inc:250
-#, fuzzy
 msgid "Prob(lem)"
 msgstr "Задача"
 
@@ -18357,14 +18341,12 @@ msgid "Full Width"
 msgstr "Полная ширина"
 
 #: lib/layouts/tufte-book.layout:239
-#, fuzzy
 msgid "Margin Figure"
-msgstr "Рисунки на полях"
+msgstr "Рисунок на полях"
 
 #: lib/layouts/tufte-book.layout:243
-#, fuzzy
 msgid "Margin Table"
-msgstr "Таблицы на полях"
+msgstr "Таблица на полях"
 
 #: lib/layouts/tufte-book.layout:249
 msgid "MarginTable"
@@ -20529,7 +20511,7 @@ msgstr "Расширенный поиск и замена..."
 
 #: lib/ui/stdmenus.inc:126
 msgid "Manage Counter Values..."
-msgstr ""
+msgstr "Управление счётчиками..."
 
 #: lib/ui/stdmenus.inc:130
 msgid "Table|T"
@@ -30307,14 +30289,14 @@ msgid "Could not read stdinsets.inc! This may lead to data loss!"
 msgstr "Не прочитан stdinsets.inc! Это может привести к потере данных!"
 
 #: src/TextClass.cpp:1573
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (Float)"
-msgstr "%1$s блокировка"
+msgstr "%1$s (плавающий объект)"
 
 #: src/TextClass.cpp:1578
-#, fuzzy, c-format
+#, c-format
 msgid "Sub-%1$s (Float)"
-msgstr "Под-%1$s"
+msgstr "Под-%1$s (плавающий объект)"
 
 #: src/TextClass.cpp:1855
 #, c-format
@@ -31744,9 +31726,8 @@ msgid "Compare different revisions"
 msgstr "Сравнить разные ревизии"
 
 #: src/frontends/qt/GuiCounter.h:37
-#, fuzzy
 msgid "Counters"
-msgstr "Страна"
+msgstr "Счётчик"
 
 #: src/frontends/qt/GuiDelimiter.cpp:61
 msgid "big[[delimiter size]]"
@@ -35165,104 +35146,97 @@ msgstr ""
 
 #: src/insets/InsetCounter.cpp:63
 msgid "Set counter to ..."
-msgstr ""
+msgstr "Установить счётчик в ..."
 
 #: src/insets/InsetCounter.cpp:64
 msgid "Increase counter by ..."
-msgstr ""
+msgstr "Увеличить счётчик на ..."
 
 #: src/insets/InsetCounter.cpp:65
-#, fuzzy
 msgid "Reset counter to 0"
-msgstr "Кнопка сброса"
+msgstr "Сбросить счётчик в 0"
 
 #: src/insets/InsetCounter.cpp:66
-#, fuzzy
 msgid "Save current counter value"
-msgstr "Текущий документ был закрыт."
+msgstr "Сохранить значение счётчика"
 
 #: src/insets/InsetCounter.cpp:67
 msgid "Restore saved counter value"
-msgstr ""
+msgstr "Восстановить сохранённое значение счётчика"
 
 #: src/insets/InsetCounter.cpp:136
-#, fuzzy
 msgid "Roman Uppercase"
-msgstr "ПРОПИСНЫЕ|П"
+msgstr "Прописные римские"
 
 #: src/insets/InsetCounter.cpp:137
-#, fuzzy
 msgid "Roman Lowercase"
-msgstr "Строчные"
+msgstr "Строчные римские"
 
 #: src/insets/InsetCounter.cpp:138
-#, fuzzy
 msgid "Uppercase Letter"
-msgstr "Hebrew Letter"
+msgstr "Прописные буквы"
 
 #: src/insets/InsetCounter.cpp:139
-#, fuzzy
 msgid "Lowercase Letter"
-msgstr "Строчные|С"
+msgstr "Строчные буквы"
 
 #: src/insets/InsetCounter.cpp:140
-#, fuzzy
 msgid "Arabic Numeral"
-msgstr "Числовые"
+msgstr "Арабские"
 
 # c-format
 #: src/insets/InsetCounter.cpp:215
-#, fuzzy, c-format
+#, c-format
 msgid "Counter: Set %1$s"
-msgstr "Шрифт: %1$s"
+msgstr "Счётчик: установить %1$s"
 
 #: src/insets/InsetCounter.cpp:216
 #, c-format
 msgid "Set value of counter %1$s to %2$s"
-msgstr ""
+msgstr "Установить значение счётчика %1$s в %2$s"
 
 # c-format
 #: src/insets/InsetCounter.cpp:220
-#, fuzzy, c-format
+#, c-format
 msgid "Counter: Add to %1$s"
-msgstr "Невозможно вставить документ %1$s"
+msgstr "Счётчик: увеличить %1$s"
 
 #: src/insets/InsetCounter.cpp:221
 #, c-format
 msgid "Add %1$s to value of counter %2$s"
-msgstr ""
+msgstr "Прибавить %1$s к значению счётчика %2$s"
 
 # c-format
 #: src/insets/InsetCounter.cpp:224
-#, fuzzy, c-format
+#, c-format
 msgid "Counter: Reset %1$s"
-msgstr "Шрифт: %1$s"
+msgstr "Счётчик: сбросить %1$s"
 
 #: src/insets/InsetCounter.cpp:225
 #, c-format
 msgid "Reset value of counter %1$s"
-msgstr ""
+msgstr "Сбросить значение счётчика %1$s"
 
 # c-format
 #: src/insets/InsetCounter.cpp:228
-#, fuzzy, c-format
+#, c-format
 msgid "Counter: Save %1$s"
-msgstr "Шрифт: %1$s"
+msgstr "Счётчик: сохранить %1$s"
 
 #: src/insets/InsetCounter.cpp:229
 #, c-format
 msgid "Save value of counter %1$s"
-msgstr ""
+msgstr "Сохранить значение счётчика %1$s"
 
 #: src/insets/InsetCounter.cpp:232
-#, fuzzy, c-format
+#, c-format
 msgid "Counter: Restore %1$s"
-msgstr "Документ экспортирован как %1$s"
+msgstr "Счётчик: восстановить %1$s"
 
 #: src/insets/InsetCounter.cpp:233
 #, c-format
 msgid "Restore value of counter %1$s"
-msgstr ""
+msgstr "Восстановить значение счётчика %1$s"
 
 #: src/insets/InsetExternal.cpp:404
 #, c-format
@@ -35372,9 +35346,12 @@ msgid ""
 " has attempted to include itself.\n"
 "The document set will not work properly until this is fixed!"
 msgstr ""
+"Файл\n"
+"%1$s\n"
+" попытался включить себя.\n"
+"Документ не будет работать правильно, пока это не будет исправлено!"
 
 #: src/insets/InsetInclude.cpp:539
-#, fuzzy
 msgid "Recursive Include"
 msgstr "Рекурсивный ввод"
 
