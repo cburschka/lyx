@@ -689,7 +689,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	}
 	dumpPreamble(os, flavor);
 	// handle inputenc etc.
-	// I think, this is already hadled by dumpPreamble(): Kornel
+	// I think this is already handled by dumpPreamble(): Kornel
 	// buffer_.params().writeEncodingPreamble(os, features);
 	of << "\n\\begin{document}\n";
 	dumpData(of, inprogress.snippets);
