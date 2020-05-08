@@ -47,7 +47,7 @@ from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble, insert_to_preamble, 
 # Private helper functions
 
 def add_preamble_fonts(document, fontmap):
-    " Add collected font-packages with their option to user-preamble"
+    """Add collected font-packages with their option to user-preamble"""
 
     for pkg in fontmap:
         if len(fontmap[pkg]) > 0:
@@ -85,7 +85,7 @@ class fontmapping:
         self.pkginmap = dict()  # defines, if a map for package exists
 
     def expandFontMapping(self, font_list, font_type, scale_type, pkg, scaleopt = None, osfopt = None, osfdef = "false"):
-        " Expand fontinfo mapping"
+        """Expand fontinfo mapping"""
         #
         # fontlist:    list of fontnames, each element
         #              may contain a ','-separated list of needed options
@@ -197,8 +197,7 @@ def createFontMapping(fontlist):
     return fm
 
 def convert_fonts(document, fm, osfoption = "osf"):
-    " Handle font definition (LaTeX preamble -> native) "
-
+    """Handle font definition (LaTeX preamble -> native)"""
     rpkg = re.compile(r'^\\usepackage(\[([^\]]*)\])?\{([^\}]+)\}')
     rscaleopt = re.compile(r'^scaled?=(.*)')
 
@@ -306,9 +305,8 @@ def convert_fonts(document, fm, osfoption = "osf"):
                     document.header.insert(fo, fotag + " \"" + ",".join(options) + "\"")
 
 
-
 def revert_fonts(document, fm, fontmap, OnlyWithXOpts = False, WithXOpts = False):
-    " Revert native font definition to LaTeX "
+    """Revert native font definition to LaTeX"""
     # fonlist := list of fonts created from the same package
     # Empty package means that the font-name is the same as the package-name
     # fontmap (key = package, val += found options) will be filled
@@ -390,7 +388,7 @@ def revert_fonts(document, fm, fontmap, OnlyWithXOpts = False, WithXOpts = False
 ###############################################################################
 
 def convert_inputencoding_namechange(document):
-    " Rename inputencoding settings. "
+    """Rename inputencoding settings."""
     i = find_token(document.header, "\\inputencoding", 0)
     if i == -1:
         return
@@ -398,7 +396,7 @@ def convert_inputencoding_namechange(document):
     document.header[i] = s.replace("default", "auto-legacy-plain")
 
 def revert_inputencoding_namechange(document):
-    " Rename inputencoding settings. "
+    """Rename inputencoding settings."""
     i = find_token(document.header, "\\inputencoding", 0)
     if i == -1:
         return
@@ -406,14 +404,14 @@ def revert_inputencoding_namechange(document):
     document.header[i] = s.replace("auto-legacy", "auto")
 
 def convert_notoFonts(document):
-    " Handle Noto fonts definition to LaTeX "
+    """Handle Noto fonts definition to LaTeX"""
 
     if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fm = createFontMapping(['Noto'])
         convert_fonts(document, fm)
 
 def revert_notoFonts(document):
-    " Revert native Noto font definition to LaTeX "
+    """Revert native Noto font definition to LaTeX"""
 
     if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fontmap = dict()
@@ -422,14 +420,14 @@ def revert_notoFonts(document):
             add_preamble_fonts(document, fontmap)
 
 def convert_latexFonts(document):
-    " Handle DejaVu and IBMPlex fonts definition to LaTeX "
+    """Handle DejaVu and IBMPlex fonts definition to LaTeX"""
 
     if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fm = createFontMapping(['DejaVu', 'IBM'])
         convert_fonts(document, fm)
 
 def revert_latexFonts(document):
-    " Revert native DejaVu font definition to LaTeX "
+    """Revert native DejaVu font definition to LaTeX"""
 
     if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fontmap = dict()
@@ -438,14 +436,14 @@ def revert_latexFonts(document):
             add_preamble_fonts(document, fontmap)
 
 def convert_AdobeFonts(document):
-    " Handle Adobe Source fonts definition to LaTeX "
+    """Handle Adobe Source fonts definition to LaTeX"""
 
     if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fm = createFontMapping(['Adobe'])
         convert_fonts(document, fm)
 
 def revert_AdobeFonts(document):
-    " Revert Adobe Source font definition to LaTeX "
+    """Revert Adobe Source font definition to LaTeX"""
 
     if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         fontmap = dict()
@@ -454,7 +452,7 @@ def revert_AdobeFonts(document):
             add_preamble_fonts(document, fontmap)
 
 def removeFrontMatterStyles(document):
-    " Remove styles Begin/EndFrontmatter"
+    """Remove styles Begin/EndFrontmatter"""
 
     layouts = ['BeginFrontmatter', 'EndFrontmatter']
     tokenend = len('\\begin_layout ')
@@ -475,7 +473,7 @@ def removeFrontMatterStyles(document):
         document.body[i:j+1] = []
 
 def addFrontMatterStyles(document):
-    " Use styles Begin/EndFrontmatter for elsarticle"
+    """Use styles Begin/EndFrontmatter for elsarticle"""
 
     if document.textclass != "elsarticle":
         return
@@ -522,7 +520,7 @@ def addFrontMatterStyles(document):
 
 
 def convert_lst_literalparam(document):
-    " Add param literal to include inset "
+    """Add param literal to include inset"""
 
     i = 0
     while True:
@@ -539,7 +537,7 @@ def convert_lst_literalparam(document):
 
 
 def revert_lst_literalparam(document):
-    " Remove param literal from include inset "
+    """Remove param literal from include inset"""
 
     i = 0
     while True:
@@ -554,7 +552,7 @@ def revert_lst_literalparam(document):
 
 
 def revert_paratype(document):
-    " Revert ParaType font definitions to LaTeX "
+    """Revert ParaType font definitions to LaTeX"""
 
     if not get_bool_value(document.header, "\\use_non_tex_fonts"):
         preamble = ""
@@ -609,7 +607,7 @@ def revert_paratype(document):
 
 
 def revert_xcharter(document):
-    " Revert XCharter font definitions to LaTeX "
+    """Revert XCharter font definitions to LaTeX"""
 
     i = find_token(document.header, "\\font_roman \"xcharter\"", 0)
     if i == -1:
@@ -633,7 +631,7 @@ def revert_xcharter(document):
 
 
 def revert_lscape(document):
-    " Reverts the landscape environment (Landscape module) to TeX-code "
+    """Reverts the landscape environment (Landscape module) to TeX-code"""
 
     if not "landscape" in document.get_module_list():
         return
@@ -661,7 +659,7 @@ def revert_lscape(document):
 
 
 def convert_fontenc(document):
-    " Convert default fontenc setting "
+    """Convert default fontenc setting"""
 
     i = find_token(document.header, "\\fontencoding global", 0)
     if i == -1:
@@ -671,7 +669,7 @@ def convert_fontenc(document):
 
 
 def revert_fontenc(document):
-    " Revert default fontenc setting "
+    """Revert default fontenc setting"""
 
     i = find_token(document.header, "\\fontencoding auto", 0)
     if i == -1:
@@ -681,7 +679,7 @@ def revert_fontenc(document):
 
 
 def revert_nospellcheck(document):
-    " Remove nospellcheck font info param "
+    """Remove nospellcheck font info param"""
 
     i = 0
     while True:
@@ -692,7 +690,7 @@ def revert_nospellcheck(document):
 
 
 def revert_floatpclass(document):
-    " Remove float placement params 'document' and 'class' "
+    """Remove float placement params 'document' and 'class'"""
 
     del_token(document.header, "\\float_placement class")
 
@@ -712,7 +710,7 @@ def revert_floatpclass(document):
 
 
 def revert_floatalignment(document):
-    " Remove float alignment params "
+    """Remove float alignment params"""
 
     galignment = get_value(document.header, "\\float_alignment", delete=True)
 
@@ -749,7 +747,7 @@ def revert_floatalignment(document):
         i = j
 
 def revert_tuftecite(document):
-    " Revert \cite commands in tufte classes "
+    """Revert \cite commands in tufte classes"""
 
     tufte = ["tufte-book", "tufte-handout"]
     if document.textclass not in tufte:
@@ -794,7 +792,7 @@ def revert_tuftecite(document):
 
 
 def revert_stretchcolumn(document):
-    " We remove the column varwidth flags or everything else will become a mess. "
+    """We remove the column varwidth flags or everything else will become a mess."""
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset Tabular", i+1)
@@ -811,7 +809,7 @@ def revert_stretchcolumn(document):
 
 
 def revert_vcolumns(document):
-    " Revert standard columns with line breaks etc. "
+    """Revert standard columns with line breaks etc."""
     i = 0
     needvarwidth = False
     needarray = False
@@ -904,7 +902,7 @@ def revert_vcolumns(document):
 
 
 def revert_bibencoding(document):
-    " Revert bibliography encoding "
+    """Revert bibliography encoding"""
 
     # Get cite engine
     engine = "basic"
@@ -1003,7 +1001,7 @@ def revert_bibencoding(document):
 
 
 def convert_vcsinfo(document):
-    " Separate vcs Info inset from buffer Info inset. "
+    """Separate vcs Info inset from buffer Info inset."""
 
     types = {
         "vcs-revision" : "revision",
@@ -1034,7 +1032,7 @@ def convert_vcsinfo(document):
 
 
 def revert_vcsinfo(document):
-    " Merge vcs Info inset to buffer Info inset. "
+    """Merge vcs Info inset to buffer Info inset."""
 
     args = ["revision", "tree-revision", "author", "time", "date" ]
     i = 0
@@ -1080,7 +1078,7 @@ def revert_vcsinfo_rev_abbrev(document):
             document.body[arg] = "arg \"revision\""
 
 def revert_dateinfo(document):
-    " Revert date info insets to static text. "
+    """Revert date info insets to static text."""
 
 # FIXME This currently only considers the main language and uses the system locale
 # Ideally, it should honor context languages and switch the locale accordingly.
@@ -1255,7 +1253,7 @@ def revert_dateinfo(document):
 
 
 def revert_timeinfo(document):
-    " Revert time info insets to static text. "
+    """Revert time info insets to static text."""
 
 # FIXME This currently only considers the main language and uses the system locale
 # Ideally, it should honor context languages and switch the locale accordingly.
@@ -1370,7 +1368,6 @@ def revert_timeinfo(document):
     }
 
     types = ["time", "fixtime", "modtime" ]
-    i = 0
     i = find_token(document.header, "\\language", 0)
     if i == -1:
         # this should not happen
@@ -1430,7 +1427,7 @@ def revert_timeinfo(document):
 
 
 def revert_namenoextinfo(document):
-    " Merge buffer Info inset type name-noext to name. "
+    """Merge buffer Info inset type name-noext to name."""
 
     i = 0
     while True:
@@ -1453,7 +1450,7 @@ def revert_namenoextinfo(document):
 
 
 def revert_l7ninfo(document):
-    " Revert l7n Info inset to text. "
+    """Revert l7n Info inset to text."""
 
     i = 0
     while True:
@@ -1476,7 +1473,7 @@ def revert_l7ninfo(document):
 
 
 def revert_listpargs(document):
-    " Reverts listpreamble arguments to TeX-code "
+    """Reverts listpreamble arguments to TeX-code"""
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset Argument listpreamble:", i+1)
@@ -1499,7 +1496,7 @@ def revert_listpargs(document):
 
 
 def revert_lformatinfo(document):
-    " Revert layout format Info inset to text. "
+    """Revert layout format Info inset to text."""
 
     i = 0
     while True:
@@ -1543,19 +1540,19 @@ def convert_hebrew_parentheses(document):
 
 
 def revert_hebrew_parentheses(document):
-    " Store parentheses in Hebrew text reversed"
+    """Store parentheses in Hebrew text reversed"""
     # This only exists to keep the convert/revert naming convention
     convert_hebrew_parentheses(document)
 
 
 def revert_malayalam(document):
-    " Set the document language to English but assure Malayalam output "
+    """Set the document language to English but assure Malayalam output"""
 
     revert_language(document, "malayalam", "", "malayalam")
 
 
 def revert_soul(document):
-    " Revert soul module flex insets to ERT "
+    """Revert soul module flex insets to ERT"""
 
     flexes = ["Spaceletters", "Strikethrough", "Underline", "Highlight", "Capitalize"]
 
@@ -1576,16 +1573,15 @@ def revert_soul(document):
 
 
 def revert_tablestyle(document):
-    " Remove tablestyle params "
+    """Remove tablestyle params"""
 
-    i = 0
     i = find_token(document.header, "\\tablestyle")
     if i != -1:
         del document.header[i]
 
 
 def revert_bibfileencodings(document):
-    " Revert individual Biblatex bibliography encodings "
+    """Revert individual Biblatex bibliography encodings"""
 
     # Get cite engine
     engine = "basic"
@@ -1693,7 +1689,7 @@ def revert_bibfileencodings(document):
 
 
 def revert_cmidruletrimming(document):
-    " Remove \\cmidrule trimming "
+    """Remove \\cmidrule trimming"""
 
     # FIXME: Revert to TeX code?
     i = 0
@@ -1750,18 +1746,18 @@ ruby_inset_def = [
 ]
 
 def convert_ruby_module(document):
-    " Use ruby module instead of local module definition "
+    """Use ruby module instead of local module definition"""
     if document.del_local_layout(ruby_inset_def):
         document.add_module("ruby")
 
 def revert_ruby_module(document):
-    " Replace ruby module with local module definition "
+    """Replace ruby module with local module definition"""
     if document.del_module("ruby"):
         document.append_local_layout(ruby_inset_def)
 
 
 def convert_utf8_japanese(document):
-    " Use generic utf8 with Japanese documents."
+    """Use generic utf8 with Japanese documents."""
     lang = get_value(document.header, "\\language")
     if not lang.startswith("japanese"):
         return
@@ -1771,7 +1767,7 @@ def convert_utf8_japanese(document):
         document.set_parameter("inputencoding", "utf8")
 
 def revert_utf8_japanese(document):
-    " Use Japanese utf8 variants with Japanese documents."
+    """Use Japanese utf8 variants with Japanese documents."""
     inputenc = get_value(document.header, "\\inputencoding")
     if inputenc != "utf8":
         return
@@ -3775,11 +3771,11 @@ convert = [
            [558, [removeFrontMatterStyles]],
            [559, []],
            [560, []],
-           [561, [convert_latexFonts]], # Handle dejavu, ibmplex fonts in GUI
+           [561, [convert_latexFonts]],  # Handle dejavu, ibmplex fonts in GUI
            [562, []],
            [563, []],
            [564, []],
-           [565, [convert_AdobeFonts]], # Handle adobe fonts in GUI
+           [565, [convert_AdobeFonts]],  # Handle adobe fonts in GUI
            [566, [convert_hebrew_parentheses]],
            [567, []],
            [568, []],
@@ -3844,7 +3840,7 @@ revert =  [[593, [revert_counter_inset]],
            [563, [revert_lformatinfo]],
            [562, [revert_listpargs]],
            [561, [revert_l7ninfo]],
-           [560, [revert_latexFonts]], # Handle dejavu, ibmplex fonts in user preamble
+           [560, [revert_latexFonts]],  # Handle dejavu, ibmplex fonts in user preamble
            [559, [revert_timeinfo, revert_namenoextinfo]],
            [558, [revert_dateinfo]],
            [557, [addFrontMatterStyles]],
@@ -3856,7 +3852,7 @@ revert =  [[593, [revert_counter_inset]],
            [551, [revert_floatpclass, revert_floatalignment]],
            [550, [revert_nospellcheck]],
            [549, [revert_fontenc]],
-           [548, []],# dummy format change
+           [548, []],  # dummy format change
            [547, [revert_lscape]],
            [546, [revert_xcharter]],
            [545, [revert_paratype]],
