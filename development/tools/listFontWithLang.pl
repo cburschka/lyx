@@ -58,12 +58,8 @@ my %optionsDef = (
   "nn"      => {fieldname => "NFontName",
                 type => "=s", listsep => ',',
                 comment => "Select font-names NOT matching these (comma separated) regexes"},
-  "ps"      => {fieldname => "Scripts", alias => ["printscripts"],
-                comment => "Print supported scripts"},
   "pl"      => {fieldname => "PrintLangs", alias => ["printlangs"],
                 comment => "Print supported languages"},
-  "pp"      => {fieldname => "PrintProperties", alias => ["printproperties"],
-                comment => "Print properties from weight, slant and width"},
   "pf"      => {fieldname => "PrintFiles", alias => ["printfiles"],
                 comment => "Print font file names"},
   "p"       => {fieldname => "Property",
@@ -72,6 +68,16 @@ my %optionsDef = (
   "np"      => {fieldname => "NProperty",
                 type => "=s", listsep => ',',
                 comment => "Select fonts with properties NOT matching these (comma separated) regexes"},
+  "pp"      => {fieldname => "PrintProperties", alias => ["printproperties"],
+                comment => "Print properties from weight, slant and width"},
+  "s"       => {fieldname => "Scripts",
+                type => "=s", listsep => ',',
+                comment => "Select fonts with scripts matching these (comma separated) regexes"},
+  "ns"      => {fieldname => "NScripts",
+                type => "=s", listsep => ',',
+                comment => "Select fonts with scripts NOT matching these (comma separated) regexes"},
+  "ps"      => {fieldname => "PrintScripts", alias => ["printscripts"],
+                comment => "Print supported scripts"},
   "pw"      => {fieldname => "PrintWarnings",
                 comment => "Print warnings about discarded/overwritten fonts, conflicting styles"},
 );
@@ -93,7 +99,7 @@ if (defined($langs[0])) {
 
 my $format = "foundry=\"%{foundry}\" postscriptname=\"%{postscriptname}\" fn=\"%{fullname}\" fnl=\"%{fullnamelang}\" family=\"%{family}\" flang=\"%{familylang}\" style=\"%{style}\" stylelang=\"%{stylelang}\"";
 
-if (exists($options{Scripts})) {
+if (exists($options{PrintScripts}) || defined($options{Scripts}) || defined($options{NSpripts})) {
   $format .= " script=\"%{capability}\"";
 }
 if (exists($options{PrintLangs}) || defined($langs[0])) {
@@ -262,21 +268,42 @@ if (open(FI,  "$cmd |")) {
         }
       }
       if (exists($options{PrintProperties})) {
-        $props .= "($properties)";
+        $props .= " ($properties)";
       }
     }
 
     if (exists($options{PrintLangs})) {
       $props .= '(' . join(',', sort keys %usedlangs) . ')';
     }
-    if (exists($options{Scripts})) {
+    if (exists($options{PrintScripts}) || defined($options{Scripts}) || defined($options{NScripts})) {
+      my @scripts = ();
+      my $scripts = "";
       if ($l =~ / script=\"([^\"]+)\"/) {
-	my @scripts = split(/\s+/, $1);
+	@scripts = split(/\s+/, $1);
 	for my $ent (@scripts) {
 	  $ent =~ s/^\s*otlayout://;
 	  $ent = lc($ent);
 	}
-	$props .= '(' . join(',', @scripts) . ')';
+        $scripts = join(',', @scripts);
+      }
+      if (exists($options{PrintScripts})) {
+        $props .= "($scripts)";
+      }
+      if (!defined($scripts[0])) {
+        # No script defined in font, so check only $options{Scripts}
+        next NXTLINE if (defined($options{Scripts}));
+      }
+      else {
+        if (defined($options{Scripts})) {
+          for my $s (@{$options{Scripts}}) {
+            next NXTLINE if ($scripts !~ /$s/i);
+          }
+        }
+        if (defined($options{NScripts})) {
+          for my $s (@{$options{NScripts}}) {
+            next NXTLINE if ($scripts =~ /$s/i);
+          }
+        }
       }
     }
     my $foundry = "";
@@ -321,10 +348,11 @@ for my $fontname (sort keys %collectedfonts) {
         print "$err\n";
       }
     }
-    print "Font : $fontname";
+    my $fn = "Font : $fontname";
     if ($printfoundries && ($foundry ne "")) {
-      print " \[$foundry\]";
+      $fn .= " \[$foundry\]";
     }
+    print $fn;
     print $collectedfonts{$fontname}->{$foundry}->{props};
     if (exists($options{PrintFiles})) {
       print ": " . $collectedfonts{$fontname}->{$foundry}->{file} . "\n";
@@ -439,7 +467,7 @@ sub addTxt($$)
 sub getftype($$)
 {
   my ($family, $style) = @_;
-  if ("$family" =~ /arial|helvet/i) {
+  if ("$family" =~ /arial|helvet|trebuchet/i) {
     return($ftypes{100}); # Sans Serif
   }
   elsif ($family =~ /(sans)[-_ ]?(serif)?/i) {
@@ -515,7 +543,7 @@ sub getspacing($$)
       return($spacings{$key});
     }
   }
-  if ("$family $style" =~ /[-_ ](mono|typewriter|cursor)\b/i) {
+  if ("$family $style" =~ /(mono|typewriter|cursor|fixed)\b/i) {
     return($spacings{100}); # Mono
   }
   else {
