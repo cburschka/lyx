@@ -39,6 +39,7 @@ sub extractlist($$$);	# my ($l, $islang, $txt, $rres) = @_;
 sub getIndex($$);
 sub getVal($$$);	# my ($l, $txtval, $txtlang) = @_;
 sub getproperties($$$$);
+sub ismathfont($$);
 sub correctstyle($);
 
 # Following fields for a parameter can be defined:
@@ -52,6 +53,8 @@ my %optionsDef = (
   "l"       => {fieldname => "Lang",
                 type => "=s", alias=>["lang"],
                 comment => "Comma separated list of desired languages"},
+  "math"    => {fieldname => "Math",
+                comment => "Select fonts probably containing math glyphs"},
   "n"       => {fieldname => "FontName", listsep => ',',
                 type => "=s", alias => ["name"],
                 comment => "Select font-names matching these (comma separated) regexes"},
@@ -99,7 +102,7 @@ if (defined($langs[0])) {
 
 my $format = "foundry=\"%{foundry}\" postscriptname=\"%{postscriptname}\" fn=\"%{fullname}\" fnl=\"%{fullnamelang}\" family=\"%{family}\" flang=\"%{familylang}\" style=\"%{style}\" stylelang=\"%{stylelang}\"";
 
-if (exists($options{PrintScripts}) || defined($options{Scripts}) || defined($options{NSpripts})) {
+if (exists($options{PrintScripts}) || defined($options{Scripts}) || defined($options{NSpripts}) || exists($options{Math})) {
   $format .= " script=\"%{capability}\"";
 }
 if (exists($options{PrintLangs}) || defined($langs[0])) {
@@ -275,7 +278,7 @@ if (open(FI,  "$cmd |")) {
     if (exists($options{PrintLangs})) {
       $props .= '(' . join(',', sort keys %usedlangs) . ')';
     }
-    if (exists($options{PrintScripts}) || defined($options{Scripts}) || defined($options{NScripts})) {
+    if (exists($options{PrintScripts}) || defined($options{Scripts}) || defined($options{NScripts}) || exists($options{Math})) {
       my @scripts = ();
       my $scripts = "";
       if ($l =~ / script=\"([^\"]+)\"/) {
@@ -285,6 +288,9 @@ if (open(FI,  "$cmd |")) {
 	  $ent = lc($ent);
 	}
         $scripts = join(',', @scripts);
+      }
+      if (exists($options{Math})) {
+        next NXTLINE if (! &ismathfont($family,\@scripts));
       }
       if (exists($options{PrintScripts})) {
         $props .= "($scripts)";
@@ -549,6 +555,17 @@ sub getspacing($$)
   else {
     return(undef);
   }
+}
+
+sub ismathfont($$)
+{
+  my ($family, $rCapability) = @_;
+
+  return 1 if ($family =~ /math/i);
+  for my $cap (@{$rCapability}) {
+    return 1 if ($cap eq "math");
+  }
+  return 0;
 }
 
 sub getproperties($$$$)
