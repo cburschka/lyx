@@ -383,7 +383,7 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 		    pit_type & pit, otexstream & os)
 {
 	ParagraphList const & paragraphs = text.paragraphs();
-	ParagraphList::const_iterator ipar = paragraphs.constIterator(pit);
+	ParagraphList::const_iterator ipar = paragraphs.iterator_at(pit);
 	LYXERR(Debug::LATEX, "TeXEnvironment for paragraph " << pit);
 
 	Layout const & current_layout = ipar->layout();
@@ -393,7 +393,7 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 	// This is for debugging purpose at the end.
 	pit_type const par_begin = pit;
 	for (; pit < runparams.par_end; ++pit) {
-		ParagraphList::const_iterator par = paragraphs.constIterator(pit);
+		ParagraphList::const_iterator par = paragraphs.iterator_at(pit);
 
 		// check first if this is an higher depth paragraph.
 		bool go_out = (par->params().depth() < current_depth);
@@ -437,7 +437,7 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 		// Do not output empty environments if the whole paragraph has
 		// been deleted with ct and changes are not output.
 		if (size_t(pit + 1) < paragraphs.size()) {
-			ParagraphList::const_iterator nextpar = paragraphs.constIterator(pit + 1);
+			ParagraphList::const_iterator nextpar = paragraphs.iterator_at(pit + 1);
 			Paragraph const & cpar = paragraphs.at(pit);
 			if ((par->layout() != nextpar->layout()
 			     || par->params().depth() == nextpar->params().depth()
@@ -643,11 +643,11 @@ void latexArgInsets(ParagraphList const & pars,
 	Layout const current_layout = pit->layout();
 
 	// get the first paragraph in sequence with this layout and depth
-	pit_type offset = 0;
+	ptrdiff_t offset = 0;
 	while (true) {
-		if (lyx::prev(pit, offset) == pars.begin())
+		if (prev(pit, offset) == pars.begin())
 			break;
-		ParagraphList::const_iterator priorpit = lyx::prev(pit, offset + 1);
+		ParagraphList::const_iterator priorpit = prev(pit, offset + 1);
 		if (priorpit->layout() == current_layout
 		    && priorpit->params().depth() == current_depth)
 			++offset;
@@ -655,7 +655,7 @@ void latexArgInsets(ParagraphList const & pars,
 			break;
 	}
 
-	ParagraphList::const_iterator spit = lyx::prev(pit, offset);
+	ParagraphList::const_iterator spit = prev(pit, offset);
 
 	for (; spit != pars.end(); ++spit) {
 		if (spit->layout() != current_layout ||
@@ -1601,7 +1601,7 @@ void latexParagraphs(Buffer const & buf,
 	bool gave_layout_warning = false;
 	for (; pit < runparams.par_end; ++pit) {
 		lastpit = pit;
-		ParagraphList::const_iterator par = paragraphs.constIterator(pit);
+		ParagraphList::const_iterator par = paragraphs.iterator_at(pit);
 
 		// FIXME This check should not be needed. We should
 		// perhaps issue an error if it is.
@@ -1660,7 +1660,7 @@ void latexParagraphs(Buffer const & buf,
 		// Do not output empty environments if the whole paragraph has
 		// been deleted with ct and changes are not output.
 		if (size_t(pit + 1) < paragraphs.size()) {
-			ParagraphList::const_iterator nextpar = paragraphs.constIterator(pit + 1);
+			ParagraphList::const_iterator nextpar = paragraphs.iterator_at(pit + 1);
 			Paragraph const & cpar = paragraphs.at(pit);
 			if ((par->layout() != nextpar->layout()
 			     || par->params().depth() == nextpar->params().depth()

@@ -462,17 +462,15 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 
 	// Paste it!
 	if (empty) {
-		pars.insert(lyx::next(pars.begin(), pit),
-			    insertion.begin(),
-			    insertion.end());
+		pars.insert(pars.iterator_at(pit),
+		            insertion.begin(), insertion.end());
 
 		// merge the empty par with the last par of the insertion
 		mergeParagraph(buffer.params(), pars,
 			       pit + insertion.size() - 1);
 	} else {
-		pars.insert(lyx::next(pars.begin(), pit + 1),
-			    insertion.begin(),
-			    insertion.end());
+		pars.insert(pars.iterator_at(pit + 1),
+		            insertion.begin(), insertion.end());
 
 		// merge the first par of the insertion with the current par
 		mergeParagraph(buffer.params(), pars, pit);
@@ -683,8 +681,8 @@ void copySelectionHelper(Buffer const & buf, Text const & text,
 	LASSERT(startpit != endpit || start <= end, return);
 
 	// Clone the paragraphs within the selection.
-	ParagraphList copy_pars(lyx::next(pars.begin(), startpit),
-				lyx::next(pars.begin(), endpit + 1));
+	ParagraphList copy_pars(pars.iterator_at(startpit),
+				pars.iterator_at(endpit + 1));
 
 	// Remove the end of the last paragraph; afterwards, remove the
 	// beginning of the first paragraph. Keep this order - there may only

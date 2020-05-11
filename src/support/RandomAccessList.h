@@ -294,9 +294,14 @@ public:
 	}
 
 
-	const_iterator constIterator(size_t i) const
+	const_iterator iterator_at(size_t i) const
 	{
-		return iterCont_[i];
+		return (i == size()) ? end() : iterCont_[i];
+	}
+
+	iterator iterator_at(size_t i)
+	{
+		return (i == size()) ? end() : iterCont_[i];
 	}
 
 private:

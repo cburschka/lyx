@@ -917,7 +917,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 	               min(old.pit() + 1, old.lastpit()));
 	ParagraphList & plist = old.text()->paragraphs();
 	bool const soa = oldpar.params().startOfAppendix();
-	plist.erase(lyx::next(plist.begin(), old.pit()));
+	plist.erase(plist.iterator_at(old.pit()));
 	// do not lose start of appendix marker (bug 4212)
 	if (soa && old.pit() < pit_type(plist.size()))
 		plist[old.pit()].params().startOfAppendix(true);
@@ -989,7 +989,7 @@ void Text::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool tra
 			continue;
 
 		if (par.empty() || (par.size() == 1 && par.isLineSeparator(0))) {
-			pars_.erase(lyx::next(pars_.begin(), pit));
+			pars_.erase(pars_.iterator_at(pit));
 			--pit;
 			--last;
 			continue;
