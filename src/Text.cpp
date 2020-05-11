@@ -113,8 +113,7 @@ void breakParagraphConservative(BufferParams const & bparams,
 	ParagraphList & pars, pit_type pit, pos_type pos)
 {
 	// create a new paragraph
-	Paragraph & tmp = *pars.insert(lyx::next(pars.begin(), pit + 1),
-				       Paragraph());
+	Paragraph & tmp = *pars.insert(pars.iterator_at(pit + 1), Paragraph());
 	Paragraph & par = pars[pit];
 
 	tmp.setInsetOwner(&par.inInset());
@@ -169,7 +168,7 @@ void mergeParagraph(BufferParams const & bparams,
 	// move the change of the end-of-paragraph character
 	par.setChange(par.size(), change);
 
-	pars.erase(lyx::next(pars.begin(), par_offset + 1));
+	pars.erase(pars.iterator_at(par_offset + 1));
 }
 
 
@@ -691,8 +690,7 @@ static void breakParagraph(Text & text, pit_type par_offset, pos_type pos,
 	ParagraphList & pars = text.paragraphs();
 	// create a new paragraph, and insert into the list
 	ParagraphList::iterator tmp =
-		pars.insert(lyx::next(pars.begin(), par_offset + 1),
-			    Paragraph());
+		pars.insert(pars.iterator_at(par_offset + 1), Paragraph());
 
 	Paragraph & par = pars[par_offset];
 
@@ -1701,14 +1699,14 @@ bool Text::backspacePos0(Cursor & cur)
 	if (cur.lastpos() == 0
 	    || (cur.lastpos() == 1 && par.isSeparator(0))) {
 		cur.recordUndo(prevcur.pit());
-		plist.erase(lyx::next(plist.begin(), cur.pit()));
+		plist.erase(plist.iterator_at(cur.pit()));
 		needsUpdate = true;
 	}
 	// is previous par empty?
 	else if (prevcur.lastpos() == 0
 		 || (prevcur.lastpos() == 1 && prevpar.isSeparator(0))) {
 		cur.recordUndo(prevcur.pit());
-		plist.erase(lyx::next(plist.begin(), prevcur.pit()));
+		plist.erase(plist.iterator_at(prevcur.pit()));
 		needsUpdate = true;
 	}
 	// FIXME: Do we really not want to allow this???

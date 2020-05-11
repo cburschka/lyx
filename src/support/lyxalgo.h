@@ -84,11 +84,6 @@ void eliminate_duplicates(C & c)
 }
 
 
-using std::next;
-
-
-using std::prev;
-
 } // namespace lyx
 
 #endif // LYX_ALGO_H
