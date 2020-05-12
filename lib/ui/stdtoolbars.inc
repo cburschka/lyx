@@ -124,8 +124,8 @@ ToolbarSet
 		BidiItem "Labeled List" "layout-toggle Labeling"
 		BidiItem "Description" "layout-toggle Description"
 		BidiItem "Section" "layout-toggle Section"
-		BidiItem "Increase depth" "depth-increment"
-		BidiItem "Decrease depth" "depth-decrement"
+		BidiItem "Increase depth" "command-alternatives outline-in;depth-increment"
+		BidiItem "Decrease depth" "command-alternatives outline-out;depth-decrement"
 		Separator
 		Item "Insert figure float" "float-insert figure"
 		Item "Insert table float" "float-insert table"

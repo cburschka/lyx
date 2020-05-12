@@ -566,6 +566,8 @@ dist_images_DATA1X = \
 	images/changes-track.svgz \
 	images/closetab.svgz \
 	images/tab-group-close.svgz \
+	images/command-alternatives_outline-in_depth-increment.svgz \
+	images/command-alternatives_outline-out_depth-decrement.svgz \
 	images/copy.svgz \
 	images/cut.svgz \
 	images/depth-decrement.svgz \
@@ -1854,6 +1856,8 @@ dist_imagesoxygen_DATA1X = \
 	images/oxygen/changes-output.svgz \
 	images/oxygen/changes-track.svgz \
 	images/oxygen/closetab.svgz \
+	images/oxygen/command-alternatives_outline-in_depth-increment.svgz \
+	images/oxygen/command-alternatives_outline-out_depth-decrement.svgz \
 	images/oxygen/copy.svgz \
 	images/oxygen/cut.svgz \
 	images/oxygen/depth-decrement.svgz \
@@ -2061,6 +2065,8 @@ dist_imagesclassic_DATA = \
 	images/classic/changes-output.png  \
 	images/classic/changes-track.png  \
 	images/classic/tab-group-close.png  \
+	images/classic/command-alternatives_outline-in_depth-increment.png \
+	images/classic/command-alternatives_outline-out_depth-decrement.png \
 	images/classic/copy.png  \
 	images/classic/cut.png  \
 	images/classic/depth-decrement.png  \
