@@ -235,7 +235,7 @@ bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim, int min_width,
 	//	<< " maxWidth: " << max_width_ << "\nfont: " << mi.base.font << endl;
 
 	bool changed = false;
-	unsigned int h = 0;
+	int h = 0;
 	for (pit_type pit = 0; pit != npar; ++pit) {
 		// create rows, but do not set alignment yet
 		changed |= redoParagraph(pit, false);
