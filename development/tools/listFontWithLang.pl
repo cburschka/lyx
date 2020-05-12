@@ -189,6 +189,34 @@ my %fontpriority = (
 );
 my $nexttype = 6;
 
+# list of regexes for known sans serif fonts
+my %sansFonts = (
+  "a" => qr/^(arial|andika|angostura|anonymous|arab|aroania|arimo|asap)/i,
+  "b" => qr/^(baekmuk|bebas|berenika|beteckna|beuron|blue)/i,
+  "c" => qr/^(cabin|caliban|cantarell|carbon|carlito|chandas|chivo|cmu bright|comfortaa|comic|cortoba|cousine|cuprum|cwtex(hei|yen)|cyklop|cypro)/i,
+  "d" => qr/^(d2coding|dimnah|dosis|dyuthi)/i,
+  "e" => qr/^(electron|engebrechtre)/i,
+  "f" => qr/^(fandolhei|fetamont|fira|font awesome 5|forgotten)/i,
+  "g" => qr/^(gardiner|garuda|gfs ?neo|gillius|granada|graph|guanine|gunplay)/i,
+  "h" => qr/^(hack|hani|haramain|harano|harmattan|hor\b)/i,
+  "i" => qr/^(ibm plex|ikarius|inconsolata|induni.?h|iwona)/i,
+  "j" => qr/^(jara|jura)/i,
+  "k" => qr/^(kalimati|kanji|karla|kayrawan|kenyan|keraleeyam|khalid|khmer [or]|kiloji|klaudia|komatu|kurier)/i,
+  "l" => qr/^(laksaman|larabie|lato|league|lexend|lexigulim|libel|liberation|libre franklin|libris|linux biolinum|lobster|logix|lohit|loma)/i,
+  "m" => qr/^(m\+ |manchu|manjari|marcellus|mashq|meera|metal|migmix|migu|mikachan|mintspirit|mona|monlam|mono(fonto|id|isome|noki)|montserrat|motoyal|mukti|musica)/i,
+  "n" => qr/^(nachlieli|nada|nafees|nagham|nanum(barunpen|square)|nice)/i,
+  "o" => qr/^(ocr|okolaks|opendyslexic|ostorah|ouhud|over|oxygen)/i,
+  "p" => qr/^(padauk|padmaa|pagul|paktype|pakenham|palladio|petra|phetsarath|play\b|poiret|port\b|primer\b|prociono|pt\b|purisa)/i,
+  "q" => qr/^(qt(ancient|helvet|avanti|eratype|eurotype|floraline|florencia|frank|fritz|future|greece|howard|letter|optimum|pandora)|quercus)/i,
+  "r" => qr/^(rachana|radio\b|raleway|ricty|roboto|rosario)/i,
+  "s" => qr/^(salem|samanata|sawasdee|shado|sharja|simple|sophia|soul|source|switzera)/i,
+  "t" => qr/^(tarablus|teen|texgyre(adventor|heros)|tiresias|trebuchet|tscu|tuffy)/i,
+  "u" => qr/^(ubuntu|ukij (bom|chechek|cjk|diwani|ekran|elipbe|inchike|jelliy|kufi|qara|qolyazma|teng|title|tor)|umpush|un ?(dinaru|jamo|graphic|taza|vada|yetgul)|uni(kurd|space|versalis)|uroob|urw ?classico)/i,
+  "v" => qr/^(veranda|vn ?urwclassico)/i,
+  "w" => qr/^(waree)/i,
+  "y" => qr/^(yanone)/i,
+  "z" => qr/^(zekton|zero)/i,
+);
 if (open(FI,  "$cmd |")) {
  NXTLINE: while (my $l = <FI>) {
     chomp($l);
@@ -235,16 +263,16 @@ if (open(FI,  "$cmd |")) {
     my $family = &getVal($l, "family", "flang");
     $family =~ s/\\040/\-/;
     my $fontname;
-    if (length($family) < 3) {
+    if (length($fullname) < 3) {
       if (length($postscriptname) < 2) {
-        $fontname = $fullname;
+        $fontname = "$family $style";
       }
       else {
         $fontname = $postscriptname;
       }
     }
     else {
-      $fontname = "$family $style";
+      $fontname = $fullname;
     }
     if (defined($options{NFontName})) {
       for my $fn (@{$options{NFontName}}) {
@@ -259,7 +287,7 @@ if (open(FI,  "$cmd |")) {
     my $props = "";
     my @errors = ();
     if (exists($options{PrintProperties}) || defined($options{Property}) || defined($options{NProperty})) {
-      my $properties = getproperties($l, $family, $style, \@errors);
+      my $properties = getproperties($l, $fontname, $style, \@errors);
       if (defined($options{Property})) {
         for my $pn (@{$options{Property}}) {
           next NXTLINE if ($properties !~ /$pn/i);
@@ -290,7 +318,7 @@ if (open(FI,  "$cmd |")) {
         $scripts = join(',', @scripts);
       }
       if (exists($options{Math})) {
-        next NXTLINE if (! &ismathfont($family,\@scripts));
+        next NXTLINE if (! &ismathfont($fontname,\@scripts));
       }
       if (exists($options{PrintScripts})) {
         $props .= "($scripts)";
@@ -391,7 +419,7 @@ sub extractlist($$$)
   my ($l, $islang, $txt, $rres) = @_;
   my @res = ();
   if ($l =~ /$txt=\"([^\"]+)\"/) {
-    @{res} = split(',', $1);
+    @res = split(',', $1);
     if ($islang) {
       for my $lg (@res) {
 	$lg = &convertlang($lg);
@@ -401,13 +429,17 @@ sub extractlist($$$)
   @{$rres} = @res;
 }
 
-sub getIndex($$)
+sub getIndexes($$)
 {
   my ($lang, $rlangs) = @_;
+  my @res = ();
+
   for (my $i = 0; defined($rlangs->[$i]); $i++) {
-    return $i if ($rlangs->[$i] eq $lang);
+    if ($rlangs->[$i] eq $lang) {
+      push(@res, $i);
+    }
   }
-  return(-1);
+  return(\@res);
 }
 
 sub getVal($$$)
@@ -418,9 +450,15 @@ sub getVal($$$)
   &extractlist($l, 0, $txtval, \@values);
   return("") if (! defined($values[0]));
   &extractlist($l, 1, $txtlang, \@langs);
-  my $i = &getIndex("en", \@langs);
-  return ($values[$i]) if ($i >= 0);
-  return($values[0]);
+  my $i = &getIndexes("en", \@langs);
+  my $res = "";
+  for my $k (@{$i}) {
+    if (defined($values[$k]) && (length($values[$k]) > length($res))) {
+      $res = $values[$k];
+    }
+  }
+  return($values[0]) if ($res eq "");
+  return($res);
 }
 
 sub getsinglevalue($$$)
@@ -472,15 +510,58 @@ sub addTxt($$)
 
 sub getftype($$)
 {
-  my ($family, $style) = @_;
-  if ("$family" =~ /arial|helvet|trebuchet/i) {
+  my ($fontname, $style) = @_;
+  if ($fontname =~ /(sans)[-_ ]?(serif)?/i) {
     return($ftypes{100}); # Sans Serif
   }
-  elsif ($family =~ /(sans)[-_ ]?(serif)?/i) {
-    return($ftypes{100}); # Sans Serif
+  elsif ($fontname =~ /gothic|dotum|gulim/i) {
+    if ($fontname =~ /bisrat gothic/i) {
+      return($ftypes{0});    # Serif
+    }
+    else {
+      return($ftypes{100}); # Sans Serif
+    }
   }
-  elsif ($family =~ /serif/i) {
-    return($ftypes{0});    # Serif
+  elsif ($fontname =~ /serif|times|mincho|batang/i) {
+    if ($fontname =~ /good times/i) {
+      return($ftypes{100}); # Sans Serif
+    }
+    else {
+      return($ftypes{0});    # Serif
+    }
+  }
+  # Now check for fonts without a hint in font name
+  if ($fontname =~ /([a-z])/i) {
+    my $key = lc($1);
+    if (defined($sansFonts{$key})) {
+      if ($fontname =~ $sansFonts{$key}) {
+        return($ftypes{100}); # Sans Serif
+      }
+    }
+  }
+  if ("$fontname" =~ /^bpg/i) {
+    if ("$fontname" =~ /bpg (courier gpl|elite)/i) {
+      return($ftypes{0});    # Serif
+    }
+    else {
+      return($ftypes{100}); # Sans Serif
+    }
+  }
+  elsif ("$fontname" =~ /^dustismo/i) {
+    if ("$fontname" =~ /^dustismo roman/i) {
+      return($ftypes{0});    # Serif
+    }
+    else {
+      return($ftypes{100}); # Sans Serif
+    }
+  }
+  elsif ("$fontname" =~ /^go\b/i) {
+    if ("$fontname" =~ /^go mono/i) {
+      return($ftypes{0});    # Serif
+    }
+    else {
+      return($ftypes{100}); # Sans Serif
+    }
   }
   else {
     return(undef);
@@ -489,12 +570,12 @@ sub getftype($$)
 
 sub getweight($$)
 {
-  my ($family, $style) = @_;
+  my ($fontname, $style) = @_;
   my $result = undef;
   for my $key (keys %weights) {
     next if ($key !~ /^\d+$/);
     my $val = $weights{$key};
-    for my $info ($style, $family) {
+    for my $info ($style, $fontname) {
       if ($info =~ /\b$val\b/i) {
         if ($val eq "Regular") {
           $result = $val;    # It may refer to width
@@ -510,11 +591,11 @@ sub getweight($$)
 
 sub getwidth($$)
 {
-  my ($family, $style) = @_;
+  my ($fontname, $style) = @_;
   my $result = undef;
   for my $key (keys %widths) {
     next if ($key !~ /^\d+$/);
-    for my $info ($style, $family) {
+    for my $info ($style, $fontname) {
       if ($info =~ /\b$widths{$key}\b/i) {
         return($widths{$key});
       }
@@ -530,7 +611,7 @@ sub getwidth($$)
 
 sub getslant($$)
 {
-  my ($family, $style) = @_;
+  my ($fontname, $style) = @_;
   for my $key (keys %slants) {
     next if ($key !~ /^\d+$/);
     if ($style =~ /\b$slants{$key}\b/i) {
@@ -542,14 +623,14 @@ sub getslant($$)
 
 sub getspacing($$)
 {
-  my ($family, $style) = @_;
+  my ($fontname, $style) = @_;
   for my $key (keys %spacings) {
     next if ($key !~ /^\d+$/);
     if ($style =~ /\b$spacings{$key}\b/i) {
       return($spacings{$key});
     }
   }
-  if ("$family $style" =~ /(mono|typewriter|cursor|fixed)\b/i) {
+  if ("$fontname $style" =~ /(mono|typewriter|cursor|fixed)\b/i) {
     return($spacings{100}); # Mono
   }
   else {
@@ -559,9 +640,9 @@ sub getspacing($$)
 
 sub ismathfont($$)
 {
-  my ($family, $rCapability) = @_;
+  my ($fontname, $rCapability) = @_;
 
-  return 1 if ($family =~ /math/i);
+  return 1 if ($fontname =~ /math/i);
   for my $cap (@{$rCapability}) {
     return 1 if ($cap eq "math");
   }
@@ -570,9 +651,9 @@ sub ismathfont($$)
 
 sub getproperties($$$$)
 {
-  my ($l, $family, $style, $rerrors) = @_;
+  my ($l, $fontname, $style, $rerrors) = @_;
   my $newstyle = &correctstyle($style);
-  my $newfam = &correctstyle($family);
+  my $newfam = &correctstyle($fontname);
   my @properties = ();
 
   for my $txt (qw(ftype weight width slant spacing)) {
@@ -583,7 +664,7 @@ sub getproperties($$$$)
     my $val1 = $rget->($newfam, $newstyle);
     my $val;
     if (defined($val2) && defined($val1) && ($val2 ne $val1)) {
-      push(@{$rerrors}, "Family($family),Style($style): Values for $txt ($val1 != $val2) differ, selecting internal $txt($val2)");
+      push(@{$rerrors}, "Fontname($fontname),Style($style): Values for $txt ($val1 != $val2) differ, selecting internal $txt($val2)");
       $val = $val2;
     }
     elsif (! defined($val2)) {
