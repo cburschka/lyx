@@ -73,7 +73,9 @@ What's new
 
 - Fix reloading of changed include inset (bug 11842).
 
-- Don't output \maketitle twice with branches (bug 11787)
+- Don't output \maketitle twice with branches (bug 11787).
+
+- Output \PassOptionsToPackage before any package is loaded (bug 11862).
 
 
 * USER INTERFACE
