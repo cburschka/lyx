@@ -22,6 +22,7 @@
 #include "support/PathChanger.h"
 #include "support/Translator.h"
 
+#include <algorithm>
 #include <ostream>
 
 using namespace std;
