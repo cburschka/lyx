@@ -749,8 +749,9 @@ void InsetText::appendParagraphs(ParagraphList & plist)
 	mergeParagraph(buffer().params(), pl,
 		       distance(pl.begin(), ins) - 1);
 
-	for_each(pit, plist.end(),
-		 bind(&ParagraphList::push_back, ref(pl), _1));
+	ParagraphList::iterator const pend = plist.end();
+	for (; pit != pend; ++pit)
+		pl.push_back(*pit);
 }
 
 
