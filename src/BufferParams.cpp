@@ -1735,6 +1735,9 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	os << '{' << from_ascii(tclass.latexname()) << "}\n";
 	// end of \documentclass defs
 
+	// The package options (via \PassOptionsToPackage)
+	os << from_ascii(features.getPackageOptions());
+
 	// if we use fontspec or newtxmath, we have to load the AMS packages here
 	string const ams = features.loadAMSPackages();
 	bool const ot1 = (main_font_encoding() == "default" || main_font_encoding() == "OT1");
@@ -2012,9 +2015,6 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		else if (features.runparams().flavor == OutputParams::PDFLATEX)
 			os << "\\synctex=-1\n";
 	}
-
-	// The package options (via \PassOptionsToPackage)
-	os << from_ascii(features.getPackageOptions());
 
 	// due to interferences with babel and hyperref, the color package has to
 	// be loaded (when it is not already loaded) before babel when hyperref
