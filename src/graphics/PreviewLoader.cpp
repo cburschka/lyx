@@ -124,14 +124,10 @@ void setAscentFractions(vector<double> & ascent_fractions,
 }
 
 
-class FindFirst
+std::function <bool (SnippetPair const &)> FindFirst(string const & comp)
 {
-public:
-	FindFirst(string const & comp) : comp_(comp) {}
-	bool operator()(SnippetPair const & sp) const { return sp.first == comp_; }
-private:
-	string const comp_;
-};
+	return [comp](SnippetPair const & sp) { return sp.first == comp; };
+}
 
 
 /// Store info on a currently executing, forked process.
@@ -147,13 +143,13 @@ public:
 	void stop() const;
 
 	///
-	pid_t pid;
-	///
 	string command;
 	///
 	FileName metrics_file;
 	///
 	BitmapFile snippets;
+	///
+	pid_t pid;
 };
 
 typedef map<pid_t, InProgress>  InProgressProcesses;
@@ -322,35 +318,25 @@ Buffer const & PreviewLoader::buffer() const
 
 namespace {
 
-class IncrementedFileName {
-public:
-	IncrementedFileName(string const & to_format,
-			    string const & filename_base)
-		: to_format_(to_format), base_(filename_base), counter_(1)
-	{}
-
-	SnippetPair const operator()(string const & snippet)
+std::function<SnippetPair (string const &)> IncrementedFileName
+	(string const & to_format, string const & filename_base)
+{
+	return [to_format, filename_base](string const & snippet)
 	{
+		static int counter_ = 1;
 		ostringstream os;
-		os << base_ << counter_++ << '.' << to_format_;
+		os << filename_base << counter_++ << '.' << to_format;
 		string const file = os.str();
-
 		return make_pair(snippet, FileName(file));
-	}
-
-private:
-	string const & to_format_;
-	string const & base_;
-	int counter_;
-};
+	};
+}
 
 
 InProgress::InProgress(string const & filename_base,
 		       PendingSnippets const & pending,
 		       string const & to_format)
-	: pid(0),
-	  metrics_file(filename_base + ".metrics"),
-	  snippets(pending.size())
+	: metrics_file(filename_base + ".metrics"),
+	  snippets(pending.size()), pid(0)
 {
 	PendingSnippets::const_iterator pit  = pending.begin();
 	PendingSnippets::const_iterator pend = pending.end();
