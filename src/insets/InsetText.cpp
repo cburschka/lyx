@@ -56,7 +56,6 @@
 #include "frontends/alert.h"
 #include "frontends/Painter.h"
 
-#include "support/bind.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"

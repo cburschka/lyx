@@ -111,8 +111,6 @@
 #include "support/textutils.h"
 #include "support/types.h"
 
-#include "support/bind.h"
-
 #include <algorithm>
 #include <fstream>
 #include <iomanip>

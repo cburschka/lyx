@@ -65,8 +65,6 @@
 #include "support/mutex.h"
 #include "support/ExceptionMessage.h"
 
-#include "support/bind.h"
-
 using namespace std;
 using namespace lyx::support;
 
