@@ -294,12 +294,7 @@ public:
 	}
 
 
-	const_iterator iterator_at(size_t i) const
-	{
-		return iterCont_[i];
-	}
-
-	iterator iterator_at(size_t i)
+	const_iterator constIterator(size_t i) const
 	{
 		return iterCont_[i];
 	}

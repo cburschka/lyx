@@ -384,7 +384,7 @@ static void outline(OutlineOp mode, Cursor & cur, Text * text)
 	ParagraphList & pars = buf.text().paragraphs();
 	ParagraphList::iterator const bgn = pars.begin();
 	// The first paragraph of the area to be copied:
-	ParagraphList::iterator start = pars.iterator_at(pit);
+	ParagraphList::iterator start = lyx::next(bgn, pit);
 	// The final paragraph of area to be copied:
 	ParagraphList::iterator finish = start;
 	ParagraphList::iterator const end = pars.end();
@@ -962,7 +962,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		ParagraphList & pars = buf.text().paragraphs();
 		ParagraphList::iterator bgn = pars.begin();
 		// The first paragraph of the area to be selected:
-		ParagraphList::iterator start = pars.iterator_at(pit);
+		ParagraphList::iterator start = lyx::next(bgn, pit);
 		// The final paragraph of area to be selected:
 		ParagraphList::iterator finish = start;
 		ParagraphList::iterator end = pars.end();

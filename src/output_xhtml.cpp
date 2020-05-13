@@ -1156,9 +1156,9 @@ void xhtmlParagraphs(Text const & text,
 	OutputParams ourparams = runparams;
 	ParagraphList::const_iterator const pend =
 		(epit == (int) paragraphs.size()) ?
-			paragraphs.end() : paragraphs.iterator_at(epit);
+			paragraphs.end() : paragraphs.constIterator(epit);
 	while (bpit < epit) {
-		ParagraphList::const_iterator par = paragraphs.iterator_at(bpit);
+		ParagraphList::const_iterator par = paragraphs.constIterator(bpit);
 		if (par->params().startOfAppendix()) {
 			// We want to reset the counter corresponding to toplevel sectioning
 			Layout const & lay =
