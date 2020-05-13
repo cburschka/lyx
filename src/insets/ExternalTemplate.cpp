@@ -22,6 +22,7 @@
 #include "support/PathChanger.h"
 #include "support/Translator.h"
 
+#include <algorithm>
 #include <ostream>
 
 using namespace std;
@@ -70,33 +71,25 @@ TemplateManager::TemplateManager()
 }
 
 
-class DumpPreambleDef {
-public:
-	typedef TemplateManager::PreambleDefs::value_type value_type;
-
-	explicit DumpPreambleDef(ostream & os) : os_(os) {}
-
-	void operator()(value_type const & vt) {
-		os_ << "PreambleDef " << vt.first << '\n'
-		    << to_utf8(vt.second)
-		    << "PreambleDefEnd" << endl;
-	}
-
-private:
-	ostream & os_;
-};
+std::function<void (TemplateManager::PreambleDefs::value_type const &)>
+	DumpPreambleDef(ostream & os)
+{
+	return [&os](TemplateManager::PreambleDefs::value_type const & vt)
+	{
+		os << "PreambleDef " << vt.first << '\n'
+		   << to_utf8(vt.second)
+		   << "PreambleDefEnd" << endl;
+	};
+}
 
 
-class DumpTemplate {
-public:
-	typedef TemplateManager::Templates::value_type value_type;
-
-	explicit DumpTemplate(ostream & os) : os_(os) {}
-
-	void operator()(value_type const & vt) {
+std::function<void (TemplateManager::Templates::value_type const &) >
+	DumpTemplate(ostream & os)
+{
+	return [&os](TemplateManager::Templates::value_type const & vt) {
 		Template const & et = vt.second;
 
-		os_ << "Template " << et.lyxName << '\n'
+		os << "Template " << et.lyxName << '\n'
 		    << "\tGuiName " << et.guiName << '\n'
 		    << "\tHelpText\n"
 		    << to_utf8(et.helpText)
@@ -107,41 +100,37 @@ public:
 		    << "\tPreview ";
 		switch (et.preview_mode) {
 			case PREVIEW_OFF:
-				os_ << "Off\n";
+				os << "Off\n";
 				break;
 			case PREVIEW_GRAPHICS:
-				os_ << "Graphics\n";
+				os << "Graphics\n";
 				break;
 			case PREVIEW_INSTANT:
-				os_ << "InstantPreview\n";
+				os << "InstantPreview\n";
 				break;
 		}
 		typedef vector<TransformID> IDs;
 		IDs::const_iterator it  = et.transformIds.begin();
 		IDs::const_iterator end = et.transformIds.end();
 		for (; it != end; ++it) {
-			os_ << "\tTransform "
+			os << "\tTransform "
 			    << transformIDTranslator().find(*it) << '\n';
 		}
 
-		et.dumpFormats(os_);
-		os_ << "TemplateEnd" << endl;
+		et.dumpFormats(os);
+		os << "TemplateEnd" << endl;
 
-	}
+	};
+}
 
-private:
-	ostream & os_;
-};
 
-class DumpFormat {
-public:
-	typedef Template::Formats::value_type value_type;
-
-	explicit DumpFormat(ostream & o) : os_(o) {}
-
-	void operator()(value_type const & vt) const {
+std::function<void (Template::Formats::value_type const &) >
+	DumpFormat (ostream & os)
+{
+	return [&os](Template::Formats::value_type const & vt)
+	{
 		Template::Format const & ft = vt.second;
-		os_ << "\tFormat " << vt.first << '\n'
+		os << "\tFormat " << vt.first << '\n'
 		    << "\t\tProduct " << ft.product << '\n'
 		    << "\t\tUpdateFormat " << ft.updateFormat << '\n'
 		    << "\t\tUpdateResult " << ft.updateResult << '\n';
@@ -150,14 +139,14 @@ public:
 		vector<string>::const_iterator qend = ft.requirements.end();
 		for (; qit != qend; ++qit) {
 			lyxerr << "req:" << *qit << endl;
-			os_ << "\t\tRequirement " << *qit << '\n';
+			os << "\t\tRequirement " << *qit << '\n';
 		}
 
 		typedef vector<Template::Option> Options;
 		Options::const_iterator oit  = ft.options.begin();
 		Options::const_iterator oend = ft.options.end();
 		for (; oit != oend; ++oit) {
-			os_ << "\t\tOption "
+			os << "\t\tOption "
 			    << oit->name
 			    << ": "
 			    << oit->option
@@ -167,7 +156,7 @@ public:
 		vector<string>::const_iterator pit  = ft.preambleNames.begin();
 		vector<string>::const_iterator pend = ft.preambleNames.end();
 		for (; pit != pend; ++pit) {
-			os_ << "\t\tPreamble " << *pit << '\n';
+			os << "\t\tPreamble " << *pit << '\n';
 		}
 
 		typedef Template::Format::FileMap FileMap;
@@ -177,16 +166,14 @@ public:
 			vector<string>::const_iterator fit  = rit->second.begin();
 			vector<string>::const_iterator fend = rit->second.end();
 			for (; fit != fend; ++fit) {
-				os_ << "\t\tReferencedFile " << rit->first
+				os << "\t\tReferencedFile " << rit->first
 				    << " \"" << *fit << "\"\n";
 			}
 		}
 
-		os_ << "\tFormatEnd\n";
-	}
-private:
-	ostream & os_;
-};
+		os << "\tFormatEnd\n";
+	};
+}
 
 
 void Template::dumpFormats(ostream & os) const
