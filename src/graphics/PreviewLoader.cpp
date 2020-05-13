@@ -126,7 +126,7 @@ void setAscentFractions(vector<double> & ascent_fractions,
 
 std::function <bool (SnippetPair const &)> FindFirst(string const & comp)
 {
-	return [comp](SnippetPair const & sp) { return sp.first == comp; };
+	return [&comp](SnippetPair const & sp) { return sp.first == comp; };
 }
 
 
@@ -321,7 +321,7 @@ namespace {
 std::function<SnippetPair (string const &)> IncrementedFileName
 	(string const & to_format, string const & filename_base)
 {
-	return [to_format, filename_base](string const & snippet)
+	return [&to_format, &filename_base](string const & snippet)
 	{
 		static int counter_ = 1;
 		ostringstream os;
@@ -478,7 +478,7 @@ namespace {
 
 std::function<bool (InProgressProcess const &)> FindSnippet(string const & s)
 {
-	return [s](InProgressProcess const & process) {
+	return [&s](InProgressProcess const & process) {
 		BitmapFile const & snippets = process.second.snippets;
 		BitmapFile::const_iterator beg  = snippets.begin();
 		BitmapFile::const_iterator end = snippets.end();
@@ -531,7 +531,7 @@ void PreviewLoader::Impl::add(string const & latex_snippet)
 namespace {
 
 std::function<void (InProgressProcess &)> EraseSnippet(string const & s) {
-	return [s](InProgressProcess & process) {
+	return [&s](InProgressProcess & process) {
 		BitmapFile & snippets = process.second.snippets;
 		BitmapFile::iterator it  = snippets.begin();
 		BitmapFile::iterator end = snippets.end();
