@@ -3095,9 +3095,10 @@ void Buffer::changeLanguage(Language const * from, Language const * to)
 	LASSERT(from, return);
 	LASSERT(to, return);
 
-	for_each(par_iterator_begin(),
-		 par_iterator_end(),
-		 bind(&Paragraph::changeLanguage, _1, params(), from, to));
+	ParIterator it = par_iterator_begin();
+	ParIterator eit = par_iterator_end();
+	for (; it != eit; ++it)
+		it->changeLanguage(params(), from, to);
 }
 
 

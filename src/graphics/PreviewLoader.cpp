@@ -388,8 +388,8 @@ PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 {
 	font_scaling_factor_ = int(buffer_.fontScalingFactor());
 	if (theApp()) {
-		fg_color_ = strtol(theApp()->hexName(foregroundColor()).c_str(), 0, 16);
-		bg_color_ = strtol(theApp()->hexName(backgroundColor()).c_str(), 0, 16);
+		fg_color_ = strtol(theApp()->hexName(foregroundColor()).c_str(), nullptr, 16);
+		bg_color_ = strtol(theApp()->hexName(backgroundColor()).c_str(), nullptr, 16);
 	} else {
 		fg_color_ = 0x0;
 		bg_color_ = 0xffffff;
@@ -452,8 +452,8 @@ PreviewLoader::Impl::preview(string const & latex_snippet) const
 	int fg = 0x0;
 	int bg = 0xffffff;
 	if (theApp()) {
-		fg = strtol(theApp()->hexName(foregroundColor()).c_str(), 0, 16);
-		bg = strtol(theApp()->hexName(backgroundColor()).c_str(), 0, 16);
+		fg = strtol(theApp()->hexName(foregroundColor()).c_str(), nullptr, 16);
+		bg = strtol(theApp()->hexName(backgroundColor()).c_str(), nullptr, 16);
 	}
 	if (font_scaling_factor_ != fs || fg_color_ != fg || bg_color_ != bg) {
 		// Schedule refresh of all previews on zoom or color changes.
@@ -465,9 +465,9 @@ PreviewLoader::Impl::preview(string const & latex_snippet) const
 	}
 	// Don't try to access the cache until we are done.
 	if (delay_refresh_->isActive() || !finished_generating_)
-		return 0;
+		return nullptr;
 	Cache::const_iterator it = cache_.find(latex_snippet);
-	return (it == cache_.end()) ? 0 : it->second.get();
+	return (it == cache_.end()) ? nullptr : it->second.get();
 }
 
 
@@ -490,20 +490,15 @@ void PreviewLoader::Impl::refreshPreviews()
 
 namespace {
 
-class FindSnippet {
-public:
-	FindSnippet(string const & s) : snippet_(s) {}
-	bool operator()(InProgressProcess const & process) const
-	{
+std::function<bool (InProgressProcess const &)> FindSnippet(string const & s)
+{
+	return [s](InProgressProcess const & process) {
 		BitmapFile const & snippets = process.second.snippets;
 		BitmapFile::const_iterator beg  = snippets.begin();
 		BitmapFile::const_iterator end = snippets.end();
-		return find_if(beg, end, FindFirst(snippet_)) != end;
-	}
-
-private:
-	string const snippet_;
-};
+		return find_if(beg, end, FindFirst(s)) != end;
+	};
+}
 
 } // namespace
 
@@ -549,22 +544,16 @@ void PreviewLoader::Impl::add(string const & latex_snippet)
 
 namespace {
 
-class EraseSnippet {
-public:
-	EraseSnippet(string const & s) : snippet_(s) {}
-	void operator()(InProgressProcess & process)
-	{
+std::function<void (InProgressProcess &)> EraseSnippet(string const & s) {
+	return [s](InProgressProcess & process) {
 		BitmapFile & snippets = process.second.snippets;
 		BitmapFile::iterator it  = snippets.begin();
 		BitmapFile::iterator end = snippets.end();
 
-		it = find_if(it, end, FindFirst(snippet_));
+		it = find_if(it, end, FindFirst(s));
 		if (it != end)
 			snippets.erase(it, it+1);
-	}
-
-private:
-	string const & snippet_;
+	};
 };
 
 } // namespace
@@ -796,7 +785,7 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 
 	list<PreviewImagePtr> newimages;
 
-	int metrics_counter = 0;
+	size_t metrics_counter = 0;
 	for (; it != end; ++it, ++metrics_counter) {
 		string const & snip = it->first;
 		FileName const & file = it->second;
