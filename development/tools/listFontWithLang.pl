@@ -36,7 +36,7 @@ use GetOptions;
 
 sub convertlang($);
 sub extractlist($$$);	# my ($l, $islang, $txt, $rres) = @_;
-sub getIndex($$);
+sub getIndexes($$);
 sub getVal($$$);	# my ($l, $txtval, $txtlang) = @_;
 sub getproperties($$$$);
 sub ismathfont($$);
@@ -100,7 +100,11 @@ if (defined($langs[0])) {
   $cmd .= " :lang=" . join(',', @langs);
 }
 
-my $format = "foundry=\"%{foundry}\" postscriptname=\"%{postscriptname}\" fn=\"%{fullname}\" fnl=\"%{fullnamelang}\" family=\"%{family}\" flang=\"%{familylang}\" style=\"%{style}\" stylelang=\"%{stylelang}\"";
+my $format = "foundry=\"%{foundry}\"" .
+    " postscriptname=\"%{postscriptname}\"" .
+    " fn=\"%{fullname}\" fnl=\"%{fullnamelang}\"" .
+    " family=\"%{family}\" flang=\"%{familylang}\" " .
+    " style=\"%{style}\" stylelang=\"%{stylelang}\"";
 
 if (exists($options{PrintScripts}) || defined($options{Scripts}) || defined($options{NSpripts}) || exists($options{Math})) {
   $format .= " script=\"%{capability}\"";
@@ -119,6 +123,11 @@ my %ftypes = (
   # Dummy internal map
   0 => "Serif",
   100 => "Sans",
+  110 => "Script",
+  120 => "Fraktur",
+  130 => "Fancy",
+  140 => "Initials",
+  200 => "Symbol",
   "default" => "Serif",
 );
 
@@ -191,9 +200,10 @@ my $nexttype = 6;
 
 # list of regexes for known sans serif fonts
 my %sansFonts = (
+  "value" => 100,          # Sans serif
   "a" => qr/^(arial|andika|angostura|anonymous|arab|aroania|arimo|asap)/i,
-  "b" => qr/^(baekmuk|bebas|berenika|beteckna|beuron|blue)/i,
-  "c" => qr/^(cabin|caliban|cantarell|carbon|carlito|chandas|chivo|cmu bright|comfortaa|comic|cortoba|cousine|cuprum|cwtex(hei|yen)|cyklop|cypro)/i,
+  "b" => qr/^b(aekmuk|ebas|erenika|eteckna|euron|lue)/i,
+  "c" => qr/^c(abin|aliban|antarell|arbon|arlito|handas|hivo|mu bright|omfortaa|omic|oolvetica|ortoba|ousine|uprum|wtex(hei|yen)|yklop|ypro)/i,
   "d" => qr/^(d2coding|dimnah|dosis|dyuthi)/i,
   "e" => qr/^(electron|engebrechtre)/i,
   "f" => qr/^(fandolhei|fetamont|fira|font awesome 5|forgotten)/i,
@@ -202,12 +212,12 @@ my %sansFonts = (
   "i" => qr/^(ibm plex|ikarius|inconsolata|induni.?h|iwona)/i,
   "j" => qr/^(jara|jura)/i,
   "k" => qr/^(kalimati|kanji|karla|kayrawan|kenyan|keraleeyam|khalid|khmer [or]|kiloji|klaudia|komatu|kurier)/i,
-  "l" => qr/^(laksaman|larabie|lato|league|lexend|lexigulim|libel|liberation|libre franklin|libris|linux biolinum|lobster|logix|lohit|loma)/i,
-  "m" => qr/^(m\+ |manchu|manjari|marcellus|mashq|meera|metal|migmix|migu|mikachan|mintspirit|mona|monlam|mono(fonto|id|isome|noki)|montserrat|motoyal|mukti|musica)/i,
+  "l" => qr/^l(aksaman|arabie|ato|eague|exend|exigulim|ibel|iberation|ibre franklin|ibris|inux biolinum|obster|ogix|ohit|oma)/i,
+  "m" => qr/^m(\+ |anchu|anjari|arcellus|ashq|eera|etal|igmix|igu|ikachan|intspirit|ona|onlam|ono(fonto|id|isome|noki)|ontserrat|otoyal|ukti|usica)/i,
   "n" => qr/^(nachlieli|nada|nafees|nagham|nanum(barunpen|square)|nice)/i,
   "o" => qr/^(ocr|okolaks|opendyslexic|ostorah|ouhud|over|oxygen)/i,
   "p" => qr/^(padauk|padmaa|pagul|paktype|pakenham|palladio|petra|phetsarath|play\b|poiret|port\b|primer\b|prociono|pt\b|purisa)/i,
-  "q" => qr/^(qt(ancient|helvet|avanti|eratype|eurotype|floraline|florencia|frank|fritz|future|greece|howard|letter|optimum|pandora)|quercus)/i,
+  "q" => qr/^(qt(ancient|helvet|avanti|doghaus|eratype|eurotype|floraline|frank|fritz|future|greece|howard|letter|optimum)|quercus)/i,
   "r" => qr/^(rachana|radio\b|raleway|ricty|roboto|rosario)/i,
   "s" => qr/^(salem|samanata|sawasdee|shado|sharja|simple|sophia|soul|source|switzera)/i,
   "t" => qr/^(tarablus|teen|texgyre(adventor|heros)|tiresias|trebuchet|tscu|tuffy)/i,
@@ -217,6 +227,51 @@ my %sansFonts = (
   "y" => qr/^(yanone)/i,
   "z" => qr/^(zekton|zero)/i,
 );
+my %scriptFonts = (
+  "value" => 110,          # Script
+  "d" => qr/^(dancing)/i,
+  "e" => qr/^(elegante)/i,
+  "k" => qr/^(kaushan|karumbi)/i,
+  "m" => qr/^(mathjax_script|miama)/i,
+  "n" => qr/^(nanum (brush|pen) script)/i,
+  "q" => qr/^qt(arabian|boulevard|brushstroke|coronation|florencia|handwriting|linostroke|merry|pandora)/i,
+  "r" => qr/^(romande.*|ruf)script/i,
+  "u" => qr/^(un ?pilgi)/i,
+);
+
+my %fraktFonts = (
+  "value" => 120,          # Fraktur
+  "j" => qr/^(jsmath.?euf)/i,
+  "m" => qr/^(missaali)/i,
+  "o" => qr/^(oldania)/i,
+  "q" => qr/^qt(blackforest|cloisteredmonk|dublinirish|fraktur|heidelbergtype|(lino|london)scroll)/i,
+);
+
+my %fancyFonts = (
+  "value" => 130,          # Fancy
+  "c" => qr/^(cretino)/i,
+  "g" => qr/^(gfs.?theo)/i,
+);
+
+my %initialFonts = (
+  "value" => 140,          # Initials
+  "e" => qr/^(eb.?garamond.?init)/i,
+  "l" => qr/^(libertinus|linux).*initials/i,
+  "y" => qr/^(yinit)/i,
+);
+
+my %symbolFonts = (
+  "value" => 200,          # Symbol
+  "a" => qr/^(academicons)/i,
+  "c" => qr/^(caladings|ccicons)/i,
+  "d" => qr/^(dingbats|drmsym)/i,
+  "f" => qr/^(fdsymbol|fourierorns)/i,
+  "h" => qr/^(hots)/i,
+  "m" => qr/^(marvosym)/i,
+  "n" => qr/^(noto.*emoji)/i,
+  "q" => qr/^(qtdingbits)/i,
+);
+
 if (open(FI,  "$cmd |")) {
  NXTLINE: while (my $l = <FI>) {
     chomp($l);
@@ -526,16 +581,18 @@ sub getftype($$)
     if ($fontname =~ /good times/i) {
       return($ftypes{100}); # Sans Serif
     }
-    else {
+    elsif ($fontname !~ /initials/i) {
       return($ftypes{0});    # Serif
     }
   }
   # Now check for fonts without a hint in font name
   if ($fontname =~ /([a-z])/i) {
     my $key = lc($1);
-    if (defined($sansFonts{$key})) {
-      if ($fontname =~ $sansFonts{$key}) {
-        return($ftypes{100}); # Sans Serif
+    for my $rFonts (\%sansFonts, \%scriptFonts, \%fraktFonts, \%fancyFonts, \%initialFonts, \%symbolFonts) {
+      if (defined($rFonts->{$key})) {
+        if ($fontname =~ $rFonts->{$key}) {
+          return($ftypes{$rFonts->{"value"}});
+        }
       }
     }
   }
