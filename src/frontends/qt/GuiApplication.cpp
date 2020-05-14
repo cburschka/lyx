@@ -82,6 +82,7 @@
 #endif
 
 #include <queue>
+#include <tuple>
 
 #include <QByteArray>
 #include <QDateTime>
@@ -486,98 +487,92 @@ QString themeIconName(QString const & action)
 }
 
 
-QString iconName(FuncRequest const & f, bool unknown, QString const & suffix)
+// the returned bool is true if the icon needs to be flipped
+pair<QString,bool> iconName(FuncRequest const & f, bool unknown, bool rtl)
 {
 	initializeResources();
-	QString name1;
-	QString name2;
-	QString path;
-	switch (f.action()) {
-	case LFUN_MATH_INSERT:
-		if (!f.argument().empty()) {
-			path = "math/";
-			name1 = findImg(toqstr(f.argument()).mid(1));
-		}
-		break;
-	case LFUN_MATH_DELIM:
-	case LFUN_MATH_BIGDELIM:
-		path = "math/";
-		name1 = findImg(toqstr(f.argument()));
-		break;
-	case LFUN_CALL:
-		path = "commands/";
-		name1 = toqstr(f.argument());
-		break;
-	case LFUN_COMMAND_ALTERNATIVES: {
-		// use the first of the alternative commands
-		docstring firstcom;
-		docstring dummy = split(f.argument(), firstcom, ';');
-		name1 = toqstr(firstcom);
-		name1.replace(' ', '_');
-		break;
-	}
-	default:
-		name2 = toqstr(lyxaction.getActionName(f.action()));
-		name1 = name2;
+	QStringList names;
+	QString lfunname = toqstr(lyxaction.getActionName(f.action()));
 
-		if (!f.argument().empty()) {
-			name1 = name2 + ' ' + toqstr(f.argument());
+	if (!f.argument().empty()) {
+		// if there are arguments, first search an icon which name is the full thing
+		QString name = lfunname  + ' ' + toqstr(f.argument());
+		name.replace(' ', '_');
+		name.replace(';', '_');
+		name.replace('\\', "backslash");
+		names << name;
+
+		// then special default icon for some lfuns
+		switch (f.action()) {
+		case LFUN_MATH_INSERT:
+			names <<  "math/" + findImg(toqstr(f.argument()).mid(1));
+			break;
+		case LFUN_MATH_DELIM:
+		case LFUN_MATH_BIGDELIM:
+			names << "math/" + findImg(toqstr(f.argument()));
+			break;
+		case LFUN_CALL:
+			names << "commands/" + toqstr(f.argument());
+			break;
+		case LFUN_COMMAND_ALTERNATIVES: {
+			// use the first of the alternative commands
+			docstring firstcom;
+			docstring dummy = split(f.argument(), firstcom, ';');
+			QString name1 = toqstr(firstcom);
 			name1.replace(' ', '_');
+			name1.replace(';', '_');
 			name1.replace('\\', "backslash");
+			names << name1;
+			break;
+		}
+		default:
+			break;
 		}
 	}
 
-	// maybe a suffix?
-	name1 += suffix;
-	name2 += suffix;
+	// next thing to try is function name alone
+	names << lfunname;
 
+	// and finally maybe the unkown icon
+	if (unknown)
+		names << "unknown";
+
+	search_mode const mode = theGuiApp()->imageSearchMode();
 	QStringList imagedirs;
 	imagedirs << "images/" << "images/ipa/";
-	search_mode mode = theGuiApp()->imageSearchMode();
-	for (int i = 0; i < imagedirs.size(); ++i) {
-		QString imagedir = imagedirs.at(i) + path;
-		FileName fname = imageLibFileSearch(imagedir, name1, "svgz,png", mode);
-		if (fname.exists())
-			return toqstr(fname.absFileName());
+	QStringList suffixes;
+	if (rtl)
+		suffixes << "+rtl";
+	suffixes << QString();
+	for (QString const & imagedir : imagedirs)
+		for (QString const & name : names)
+			for (QString const & suffix : suffixes) {
+				QString id = imagedir;
+				FileName fname = imageLibFileSearch(id, name + suffix, "svgz,png", mode);
+				if (fname.exists())
+					return make_pair(toqstr(fname.absFileName()), rtl && suffix.isEmpty());
+			}
 
-		fname = imageLibFileSearch(imagedir, name2, "svgz,png", mode);
-		if (fname.exists())
-			return toqstr(fname.absFileName());
-	}
-
-	path = ":/images/" + path;
-	QDir res(path);
+	QString const resdir(":/images/");
+	QDir res(resdir);
 	if (!res.exists()) {
-		LYXERR0("Directory " << path << " not found in resource!");
-		return QString();
+		LYXERR0("Directory :/images/ not found in resource!");
+		return make_pair(QString(), false);
 	}
-	if (res.exists(name1 + ".svgz"))
-		return path + name1 + ".svgz";
-	else if (res.exists(name1 + ".png"))
-		return path + name1 + ".png";
 
-	if (res.exists(name2 + ".svgz"))
-		return path + name2 + ".svgz";
-	else if (res.exists(name2 + ".png"))
-		return path + name2 + ".png";
+	for (QString const & name : names)
+		for (QString const & suffix : suffixes) {
+			if (res.exists(name + suffix + ".svgz"))
+				return make_pair(resdir + name + ".svgz", rtl && suffix.isEmpty());
+			if (res.exists(name + suffix + ".png"))
+				return make_pair(resdir + name + ".png", rtl && suffix.isEmpty());
+		}
 
-	LYXERR(Debug::GUI, "Cannot find icon with filename "
-			   << "\"" << name1 << ".{svgz,png}\""
-			   << " or filename "
-			   << "\"" << name2 << ".{svgz,png}\""
-			   << " for command \""
+	LYXERR(Debug::GUI, "Cannot find icon for command \""
 			   << lyxaction.getActionName(f.action())
 			   << '(' << to_utf8(f.argument()) << ")\"");
 
-	if (unknown) {
-		QString imagedir = "images/";
-		FileName fname = imageLibFileSearch(imagedir, "unknown", "svgz,png", mode);
-		if (fname.exists())
-			return toqstr(fname.absFileName());
-		return QString(":/images/unknown.svgz");
-	}
-
-	return QString();
+	return make_pair(QString(), false);
 }
 
 
@@ -626,15 +621,9 @@ QIcon getIcon(FuncRequest const & f, bool unknown, bool rtl)
 	}
 #endif
 
-	bool flip = false;
 	QString icon;
-	if (rtl) {
-		icon = iconName(f, unknown, "+rtl");
-		// No RTL icon, we'll make it ourselves
-		flip = icon.isEmpty();
-	}
-	if (icon.isEmpty())
-		icon = iconName(f, unknown);
+	bool flip;
+	tie(icon, flip) = iconName(f, unknown, rtl);
 	if (icon.isEmpty())
 		return QIcon();
 
@@ -1144,7 +1133,7 @@ void GuiApplication::clearSession()
 
 docstring Application::iconName(FuncRequest const & f, bool unknown)
 {
-	return qstring_to_ucs4(lyx::frontend::iconName(f, unknown));
+	return qstring_to_ucs4(lyx::frontend::iconName(f, unknown, false).first);
 }
 
 
