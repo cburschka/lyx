@@ -901,9 +901,12 @@ void InsetBibtex::addToToc(DocIterator const & cpit, bool output_active,
 		return;
 
 	docstring const str = getRefLabel();
-	TocBuilder & b = backend.builder("tableofcontents");
-	b.pushItem(cpit, str, output_active);
-	b.pop();
+	shared_ptr<Toc> toc = backend.toc("tableofcontents");
+	// Assign to appropriate level
+	int const item_depth =
+		(buffer().masterParams().documentClass().hasLaTeXLayout("chapter")) 
+			? 1 : 2;
+	toc->push_back(TocItem(cpit, item_depth, str, output_active));
 }
 
 
