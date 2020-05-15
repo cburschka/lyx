@@ -644,7 +644,9 @@ dist_images_DATA1X = \
 	images/note-next.svgz \
 	images/outline-down.svgz \
 	images/outline-in.svgz \
+	images/outline-in+rtl.svgz \
 	images/outline-out.svgz \
+	images/outline-out+rtl.svgz \
 	images/outline-up.svgz \
 	images/paste.svgz \
 	images/redo.svgz \
@@ -1926,7 +1928,9 @@ dist_imagesoxygen_DATA1X = \
 	images/oxygen/note-next.svgz \
 	images/oxygen/outline-down.svgz \
 	images/oxygen/outline-in.svgz \
+	images/oxygen/outline-in+rtl.svgz \
 	images/oxygen/outline-out.svgz \
+	images/oxygen/outline-out+rtl.svgz \
 	images/oxygen/outline-up.svgz \
 	images/oxygen/paste.svgz \
 	images/oxygen/redo.svgz \
@@ -2126,7 +2130,9 @@ dist_imagesclassic_DATA = \
 	images/classic/note-next.png  \
 	images/classic/outline-down.png  \
 	images/classic/outline-in.png  \
+	images/classic/outline-in+rtl.png  \
 	images/classic/outline-out.png  \
+	images/classic/outline-out+rtl.png  \
 	images/classic/outline-up.png  \
 	images/classic/paste.png  \
 	images/classic/redo.png  \
