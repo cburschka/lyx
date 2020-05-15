@@ -1722,12 +1722,52 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	if (!options.empty()) {
 		clsoptions << options << ',';
 	}
-
-	string strOptions(clsoptions.str());
+	
+	docstring const strOptions = from_utf8(clsoptions.str());
 	if (!strOptions.empty()) {
-		strOptions = rtrim(strOptions, ",");
-		// FIXME UNICODE
-		os << '[' << from_utf8(strOptions) << ']';
+		// Check if class options contain uncodable glyphs
+		docstring uncodable_glyphs;
+		docstring options_encodable;
+		Encoding const * const enc = features.runparams().encoding;
+		if (enc) {
+			for (size_t n = 0; n < strOptions.size(); ++n) {
+				char_type c = strOptions[n];
+				if (!enc->encodable(c)) {
+					docstring const glyph(1, c);
+					LYXERR0("Uncodable character '"
+						<< glyph
+						<< "' in class options!");
+					uncodable_glyphs += glyph;
+					if (features.runparams().dryrun) {
+						options_encodable += "<" + _("LyX Warning: ")
+						   + _("uncodable character") + " '";
+						options_encodable += c;
+						options_encodable += "'>";
+					}
+				} else
+					options_encodable += c;
+			}
+		} else
+			options_encodable = strOptions;
+	
+		// On BUFFER_VIEW|UPDATE, warn user if we found uncodable glyphs
+		if (!features.runparams().dryrun && !uncodable_glyphs.empty()) {
+			frontend::Alert::warning(
+				_("Uncodable character in class options"),
+				support::bformat(
+				  _("The class options of your document contain glyphs "
+				    "that are unknown in the current document encoding "
+				    "(namely %1$s).\nThese glyphs are omitted "
+				    " from the output, which may result in "
+				    "incomplete output."
+				    "\n\nPlease select an appropriate "
+				    "document encoding\n"
+				    "(such as utf8) or change the "
+				    "class options accordingly."),
+				  uncodable_glyphs));
+		}
+		options_encodable = rtrim(options_encodable, ",");
+		os << '[' << options_encodable << ']';
 	}
 
 	os << '{' << from_ascii(tclass.latexname()) << "}\n";
