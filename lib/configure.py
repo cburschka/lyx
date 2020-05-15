@@ -554,7 +554,7 @@ def checkInkscape():
 def checkInkscapeStable():
     ''' Check whether we use Inkscape >= 1.0 '''
     version_string = cmdOutput("inkscape --version")
-    if version_string.find('0.9') > 0:
+    if version_string.find(' 0.') > 0:
         return False
     else:
         return True
