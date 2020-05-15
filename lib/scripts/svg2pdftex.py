@@ -15,11 +15,12 @@
 # with pdflatex into high quality PDF. It requires Inkscape.
 
 # Usage:
-#   python svg2pdftex.py [inkscape_command] inputfile.svg outputfile.pdf_tex
+#   python svg2pdftex.py [--unstable] [inkscape_command] inputfile.svg outputfile.pdf_tex
 # This command generates
 #   1. outputfile.pdf     -- the converted PDF file (text from SVG stripped)
 #   2. outputfile.pdf_tex -- a TeX file that can be included in your
 #                             LaTeX document using '\input{outputfile.pdf_text}'
+# use --unstable for inkscape < 1.0
 #
 # Note:
 #   Do not use this command as
@@ -43,16 +44,29 @@ def runCommand(cmd):
 InkscapeCmd = "inkscape"
 InputFile = ""
 OutputFile = ""
+unstable = False
 
-# We expect two or three args: the names of the input and output files
-# and optionally the inkscape command (with path if needed).
+# We expect two to four args: the names of the input and output files
+# and optionally the inkscape command (with path if needed) and --unstable.
 args = len(sys.argv)
 if args == 3:
     # Two args: input and output file only
     InputFile, OutputFile = sys.argv[1:]
 elif args == 4:
-    # Three args: first arg is inkscape command
-    InkscapeCmd, InputFile, OutputFile = sys.argv[1:]
+    # Three args: check whether we have --unstable as first arg
+    if sys.argv[1] == "--unstable":
+        unstable = True
+        InputFile, OutputFile = sys.argv[2:]
+    else:
+        InkscapeCmd, InputFile, OutputFile = sys.argv[1:]
+elif args == 5:
+    # Four args: check whether we have --unstable as first arg
+    if sys.argv[1] != "--unstable":
+        # Invalid number of args. Exit with error.
+        sys.exit(1)
+    else:
+        unstable = True
+        InkscapeCmd, InputFile, OutputFile = sys.argv[2:]
 else:
     # Invalid number of args. Exit with error.
     sys.exit(1)
@@ -68,7 +82,10 @@ OutBase = os.path.splitext(OutputFile)[0]
 # while outsourcing the text to a LaTeX file ${OutBase}.pdf_tex which includes and overlays
 # the PDF image and can be \input to LaTeX files. We rename the latter file to ${OutputFile}
 # (although this is probably the name it already has).
-runCommand([r'%s' % InkscapeCmd, '--file=%s' % InputFile, '--export-pdf=%s.pdf' % OutBase, '--export-latex'])
+if unstable:
+    runCommand([r'%s' % InkscapeCmd, '--file=%s' % InputFile, '--export-pdf=%s.pdf' % OutBase, '--export-latex'])
+else:
+    runCommand([r'%s' % InkscapeCmd, '%s' % InputFile, '--export-filename=%s.pdf' % OutBase, '--export-latex'])
 
 os.rename('%s.pdf_tex' % OutBase, OutputFile)
 

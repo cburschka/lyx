@@ -15,11 +15,12 @@
 # with latex into high quality DVI/PostScript. It requires Inkscape.
 
 # Usage:
-#   python svg2pstex.py [inkscape_command] inputfile.svg outputfile.eps_tex
+#   python svg2pstex.py [--unstable] [inkscape_command] inputfile.svg outputfile.eps_tex
 # This command generates
 #   1. outputfile.eps     -- the converted EPS file (text from SVG stripped)
 #   2. outputfile.eps_tex -- a TeX file that can be included in your
 #                             LaTeX document using '\input{outputfile.eps_text}'
+# use --unstable for inkscape < 1.0
 #
 # Note:
 #   Do not use this command as
@@ -46,16 +47,29 @@ def runCommand(cmd):
 InkscapeCmd = "inkscape"
 InputFile = ""
 OutputFile = ""
+unstable = False
 
-# We expect two or three args: the names of the input and output files
-# and optionally the inkscape command (with path if needed).
+# We expect two to four args: the names of the input and output files
+# and optionally the inkscape command (with path if needed) and --unstable.
 args = len(sys.argv)
 if args == 3:
     # Two args: input and output file only
     InputFile, OutputFile = sys.argv[1:]
 elif args == 4:
-    # Three args: first arg is inkscape command
-    InkscapeCmd, InputFile, OutputFile = sys.argv[1:]
+    # Three args: check whether we have --unstable as first arg
+    if sys.argv[1] == "--unstable":
+        unstable = True
+        InputFile, OutputFile = sys.argv[2:]
+    else:
+        InkscapeCmd, InputFile, OutputFile = sys.argv[1:]
+elif args == 5:
+    # Four args: check whether we have --unstable as first arg
+    if sys.argv[1] != "--unstable":
+        # Invalid number of args. Exit with error.
+        sys.exit(1)
+    else:
+        unstable = True
+        InkscapeCmd, InputFile, OutputFile = sys.argv[2:]
 else:
     # Invalid number of args. Exit with error.
     sys.exit(1)
