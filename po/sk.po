@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-05-03 14:36+0200\n"
-"PO-Revision-Date: 2020-05-03 12:40+0000\n"
+"POT-Creation-Date: 2020-05-16 09:50+0200\n"
+"PO-Revision-Date: 2020-05-16 07:55+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -14039,6 +14039,22 @@ msgstr "(\\arabic{examplei})"
 msgid "\\theexamplei (\\alph{subexample})"
 msgstr "\\theexamplei (\\alph{subexample})"
 
+#: lib/layouts/linguistics.module:38
+msgid "\\theexamplei (\\alph{subexamplei})"
+msgstr "\\theexamplei (\\alph{subexamplei})"
+
+#: lib/layouts/linguistics.module:44
+msgid "\\theexamplei (\\alph{subexampleii})"
+msgstr "\\theexamplei (\\alph{subexampleii})"
+
+#: lib/layouts/linguistics.module:50
+msgid "\\theexamplei (\\alph{subexampleiii})"
+msgstr "\\theexamplei (\\alph{subexampleiii})"
+
+#: lib/layouts/linguistics.module:56
+msgid "\\theexamplei (\\alph{subexampleiv})"
+msgstr "\\theexamplei (\\alph{subexampleiv})"
+
 #: lib/layouts/linguistics.module:43
 msgid "Numbered Example (multiline)"
 msgstr "Číslovaný príklad (viac-riadkový)"
@@ -26735,6 +26751,10 @@ msgid "Mathematical Monthly"
 msgstr "Mesačník Matematiky"
 
 #: lib/examples/Articles:0
+msgid "Hebrew Article (KOMA-Script)"
+msgstr "Hebrejský článok (KOMA-Script)"
+
+#: lib/examples/Articles:0
 msgid "02 Foreword"
 msgstr "02 Predhovor"
 
@@ -27644,6 +27664,28 @@ msgstr "LyX varovanie: "
 #: src/mathed/MathExtern.cpp:1441 src/mathed/MathExtern.cpp:1515
 msgid "uncodable character"
 msgstr "Nekódovateľný znak"
+
+#: src/BufferParams.cpp:1758
+msgid "Uncodable character in class options"
+msgstr "Nekódovateľné znaky vo voľbách triedy"
+
+#: src/BufferParams.cpp:1760
+#, c-format
+msgid ""
+"The class options of your document contain glyphs that are unknown in the "
+"current document encoding (namely %1$s).\n"
+"These glyphs are omitted  from the output, which may result in incomplete "
+"output.\n"
+"\n"
+"Please select an appropriate document encoding\n"
+"(such as utf8) or change the class options accordingly."
+msgstr ""
+"Voľby triedy vášho dokumentu obsahuje glyfy, ktoré sú neznáme v kódovaní "
+"aktuálneho dokumentu (menovite %1$s).\n"
+"Tieto glyfy budú vo výstupe vynechané, čo môže končiť v neúplnom výstupe.\n"
+"\n"
+"Vyberte vhodné kódovanie dokumentu (napr. utf8)\n"
+"alebo zmeňte primerane triedne voľby."
 
 #: src/BufferParams.cpp:2230
 msgid "Uncodable character in user preamble"
