@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-04-19 17:46+0200\n"
-"PO-Revision-Date: 2020-04-19 15:46+0000\n"
+"POT-Creation-Date: 2020-05-16 09:51+0200\n"
+"PO-Revision-Date: 2020-05-16 07:59+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -8859,7 +8859,7 @@ msgstr "Tabuľka"
 
 #: lib/layouts/aguplus.inc:212
 msgid "table"
-msgstr "Tabuľka"
+msgstr "tabuľka"
 
 #: lib/layouts/agutex.layout:3
 msgid "American Geophysical Union (AGUTeX)"
@@ -25822,6 +25822,28 @@ msgstr "LyX varovanie: "
 #: src/mathed/MathExtern.cpp:1441 src/mathed/MathExtern.cpp:1519
 msgid "uncodable character"
 msgstr "Nekódovateľný znak"
+
+#: src/BufferParams.cpp:1756
+msgid "Uncodable character in class options"
+msgstr "Nekódovateľné znaky vo voľbách triedy"
+
+#: src/BufferParams.cpp:1758
+#, c-format
+msgid ""
+"The class options of your document contain glyphs that are unknown in the "
+"current document encoding (namely %1$s).\n"
+"These glyphs are omitted  from the output, which may result in incomplete "
+"output.\n"
+"\n"
+"Please select an appropriate document encoding\n"
+"(such as utf8) or change the class options accordingly."
+msgstr ""
+"Voľby triedy vášho dokumentu obsahuje glyfy, ktoré sú neznáme v kódovaní "
+"aktuálneho dokumentu (menovite %1$s).\n"
+"Tieto glyfy budú vo výstupe vynechané, čo môže končiť v neúplnom výstupe.\n"
+"\n"
+"Vyberte vhodné kódovanie dokumentu (napr. utf8)\n"
+"alebo zmeňte primerane triedne voľby."
 
 #: src/BufferParams.cpp:2182
 msgid "Uncodable character in user preamble"
