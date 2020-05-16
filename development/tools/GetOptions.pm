@@ -51,11 +51,22 @@ my $helpFormat = "  %-8s|%-9s|%-7s|%-17s|%s\n";
 
 sub handleOptions($)
 {
-  %optionsDef = %{$_[0]};
+  if (ref($_[0]) eq "ARRAY") {
+    for (my $i = 0; defined($_[0]->[$i]); $i++) {
+      my $rO = $_[0]->[$i];
+      $optionsDef{$rO->[0]} = $rO->[1];
+      $optionsDef{$rO->[0]}->{Sort} = $i+1;
+    }
+  }
+  else {
+    %optionsDef = %{$_[0]};
+  }
   $optionsDef{h}->{fieldname} = "help";
   $optionsDef{h}->{alias} = ["help"];
+  $optionsDef{h}->{Sort} = 0;
   $optionsDef{v}->{fieldname} = "verbose";
   $optionsDef{v}->{alias} = ["verbose"];
+  $optionsDef{v}->{Sort} = 0;
 
   my %options = ("help" => 0);
   my $opts = &makeOpts();
@@ -142,7 +153,7 @@ sub makeHelp()
     "i" => "integer",
     "f" => "float",
       );
-  for my $ex (sort keys %optionsDef) {
+  for my $ex (sort {$optionsDef{$a}->{Sort} <=> $optionsDef{$b}->{Sort};} keys %optionsDef) {
     my $e = $optionsDef{$ex};
     my $type = "";
     my $needed = "";
