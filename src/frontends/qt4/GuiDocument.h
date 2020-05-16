@@ -154,6 +154,7 @@ private Q_SLOTS:
 	void allPackagesAuto();
 	void allPackagesAlways();
 	void allPackagesNot();
+	void bookmarksopenChanged(bool);
 private:
 	/// validate listings parameters and return an error message, if any
 	QString validateListingsParameters();

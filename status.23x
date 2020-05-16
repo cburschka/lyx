@@ -130,6 +130,9 @@ What's new
 
 - Don't close a document if the "close or hide" dialog is canceled (bug
   11456).
+  
+- Disable PDF bookmarksopen level widget if booksmarksopen is false
+  (bug 11289).
 
 
 * INTERNALS
