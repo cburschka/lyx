@@ -1696,6 +1696,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->bookmarksopenGB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
+	connect(pdfSupportModule->bookmarksopenGB, SIGNAL(toggled(bool)),
+		this, SLOT(bookmarksopenChanged(bool)));
 	connect(pdfSupportModule->bookmarksopenlevelSB, SIGNAL(valueChanged(int)),
 		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->breaklinksCB, SIGNAL(toggled(bool)),
@@ -1817,6 +1819,12 @@ void GuiDocument::shellescapeChanged()
 {
 	shellescapeChanged_ = true;
 	changed();
+}
+
+void GuiDocument::bookmarksopenChanged(bool state)
+{
+	pdfSupportModule->bookmarksopenlevelSB->setEnabled(state);
+	pdfSupportModule->bookmarksopenlevelLA->setEnabled(state);
 }
 
 
@@ -4435,6 +4443,8 @@ void GuiDocument::paramsToDialog()
 	pdfSupportModule->bookmarksopenGB->setChecked(pdf.bookmarksopen);
 
 	pdfSupportModule->bookmarksopenlevelSB->setValue(pdf.bookmarksopenlevel);
+	pdfSupportModule->bookmarksopenlevelSB->setEnabled(pdf.bookmarksopen);
+	pdfSupportModule->bookmarksopenlevelLA->setEnabled(pdf.bookmarksopen);
 
 	pdfSupportModule->breaklinksCB->setChecked(pdf.breaklinks);
 	pdfSupportModule->pdfborderCB->setChecked(pdf.pdfborder);
