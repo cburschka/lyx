@@ -588,7 +588,7 @@ void Change::paintCue(PainterInfo & pi, double const x1, double const y1,
 		return;
 	case INSERTED: {
 		if (!lyxrc.ct_additions_underlined)
-			break;
+			return;
 		pi.pain.line(int(x1), int(y2) + 1, int(x2), int(y2) + 1,
 		             color(), Painter::line_solid,
 		             pi.base.solidLineThickness());
