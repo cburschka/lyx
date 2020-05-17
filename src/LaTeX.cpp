@@ -281,16 +281,16 @@ int LaTeX::run(TeXErrors & terr)
 	message(runMessage(count));
 
 	int exit_code = startscript();
-	if (exit_code == Systemcall::KILLED)
-		return Systemcall::KILLED;
+	if (exit_code == Systemcall::KILLED || exit_code == Systemcall::TIMEOUT)
+		return exit_code;
 
 	scanres = scanLogFile(terr);
 	if (scanres & ERROR_RERUN) {
 		LYXERR(Debug::LATEX, "Rerunning LaTeX");
 		terr.clearErrors();
 		exit_code = startscript();
-		if (exit_code == Systemcall::KILLED)
-			return Systemcall::KILLED;
+		if (exit_code == Systemcall::KILLED || exit_code == Systemcall::TIMEOUT)
+			return exit_code;
 		scanres = scanLogFile(terr);
 	}
 
@@ -322,8 +322,8 @@ int LaTeX::run(TeXErrors & terr)
 		// onlyFileName() is needed for cygwin
 		int const ret = 
 				runMakeIndex(onlyFileName(idxfile.absFileName()), runparams);
-		if (ret == Systemcall::KILLED)
-			return Systemcall::KILLED;
+		if (ret == Systemcall::KILLED || ret == Systemcall::TIMEOUT)
+			return ret;
 		FileName const ilgfile(changeExtension(file.absFileName(), ".ilg"));
 		if (ilgfile.exists())
 			iscanres = scanIlgFile(terr);
@@ -338,8 +338,8 @@ int LaTeX::run(TeXErrors & terr)
 	// FIXME: Sort out the real problem in DepTable.
 	if (head.haschanged(nlofile) || (nlofile.exists() && nlofile.isFileEmpty())) {
 		int const ret = runMakeIndexNomencl(file, ".nlo", ".nls");
-		if (ret == Systemcall::KILLED)
-			return Systemcall::KILLED;
+		if (ret == Systemcall::KILLED || ret == Systemcall::TIMEOUT)
+			return ret;
 		rerun = true;
 	}
 
@@ -375,8 +375,8 @@ int LaTeX::run(TeXErrors & terr)
 		updateBibtexDependencies(head, bibtex_info);
 		int exit_code;
 		rerun |= runBibTeX(bibtex_info, runparams, exit_code);
-		if (exit_code == Systemcall::KILLED)
-			return Systemcall::KILLED;
+		if (exit_code == Systemcall::KILLED || exit_code == Systemcall::TIMEOUT)
+			return exit_code;
 		FileName const blgfile(changeExtension(file.absFileName(), ".blg"));
 		if (blgfile.exists())
 			bscanres = scanBlgFile(head, terr);
@@ -406,8 +406,8 @@ int LaTeX::run(TeXErrors & terr)
 		LYXERR(Debug::LATEX, "Run #" << count);
 		message(runMessage(count));
 		int exit_code = startscript();
-		if (exit_code == Systemcall::KILLED)
-			return Systemcall::KILLED;
+		if (exit_code == Systemcall::KILLED || exit_code == Systemcall::TIMEOUT)
+			return exit_code;
 		scanres = scanLogFile(terr);
 
 		// update the depedencies
@@ -436,8 +436,8 @@ int LaTeX::run(TeXErrors & terr)
 		updateBibtexDependencies(head, bibtex_info);
 		int exit_code;
 		rerun |= runBibTeX(bibtex_info, runparams, exit_code);
-		if (exit_code == Systemcall::KILLED)
-			return Systemcall::KILLED;
+		if (exit_code == Systemcall::KILLED || exit_code == Systemcall::TIMEOUT)
+			return exit_code;
 		FileName const blgfile(changeExtension(file.absFileName(), ".blg"));
 		if (blgfile.exists())
 			bscanres = scanBlgFile(head, terr);
@@ -459,8 +459,8 @@ int LaTeX::run(TeXErrors & terr)
 		// onlyFileName() is needed for cygwin
 		int const ret = runMakeIndex(onlyFileName(changeExtension(
 				file.absFileName(), ".idx")), runparams);
-		if (ret == Systemcall::KILLED)
-			return Systemcall::KILLED;
+		if (ret == Systemcall::KILLED || ret == Systemcall::TIMEOUT)
+			return ret;
 		FileName const ilgfile(changeExtension(file.absFileName(), ".ilg"));
 		if (ilgfile.exists())
 			iscanres = scanIlgFile(terr);

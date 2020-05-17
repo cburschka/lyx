@@ -424,6 +424,7 @@ bool queryStopCommand(QString const & cmd)
 
 bool SystemcallPrivate::waitWhile(State waitwhile, bool process_events, int timeout)
 {
+	timeout = 1000;
 	if (!process_)
 		return false;
 
@@ -440,7 +441,7 @@ bool SystemcallPrivate::waitWhile(State waitwhile, bool process_events, int time
 			while (!timedout) {
 				if (process_->waitForFinished(timeout))
 					return true;
-				bool stop = queryStopCommand(cmd_);
+				bool const stop = queryStopCommand(cmd_);
 				// The command may have finished in the meantime
 				if (process_->state() == QProcess::NotRunning)
 					return true;
@@ -475,7 +476,7 @@ bool SystemcallPrivate::waitWhile(State waitwhile, bool process_events, int time
 			return false;
 
 		if (timer.elapsed() > timeout) {
-			bool stop = queryStopCommand(cmd_);
+			bool const stop = queryStopCommand(cmd_);
 			// The command may have finished in the meantime
 			if (process_->state() == QProcess::NotRunning)
 				break;

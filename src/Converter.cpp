@@ -595,8 +595,8 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 			// FIXME KILLED
 			// Check changed return value here.
 			RetVal const retval = runLaTeX(*buffer, command, runparams, errorList);
-				if (retval != SUCCESS)
-					return retval;
+			if (retval != SUCCESS)
+				return retval;
 		} else {
 			if (conv.need_aux() && !run_latex) {
 				// We are not importing, we have a buffer
@@ -866,7 +866,7 @@ Converters::RetVal Converters::runLaTeX(Buffer const & buffer, string const & co
 		});
 	int const result = latex.run(terr);
 
-	if (result == Systemcall::KILLED) {
+	if (result == Systemcall::KILLED || result == Systemcall::TIMEOUT) {
 		Alert::error(_("Export canceled"),
 			_("The export process was terminated by the user."));
 		return KILLED;
