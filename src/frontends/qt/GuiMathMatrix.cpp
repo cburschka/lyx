@@ -144,7 +144,7 @@ void GuiMathMatrix::slotOK()
 	int const ny = rowsSB->value();
 	// a matrix without a decoration is an array,
 	// otherwise it is an AMS matrix
-	// decorated matrices cannot have a vertical alignment
+	// decorated matrices cannot have a vertical alignment or line
 
 	char const c = v_align_c[valignCO->currentIndex()];
 	QString const sh = halignED->text();
@@ -154,9 +154,10 @@ void GuiMathMatrix::slotOK()
 	if (decorationCO->currentIndex() != 0) {
 		int const deco = decorationCO->currentIndex();
 		QString deco_name = DecoNames[deco - 1];
-		// only if a special alignment is set create a 1x1 AMS array in which
-		// a normal array will be created, otherwise create just a normal AMS array
-		if (sh.contains('l') || sh.contains('r')) {
+		// if a vertical line or a special alignment is requested,
+		// create a 1x1 AMS matrix containing a normal array,
+		// otherwise create just a standard AMS matrix
+		if (sh.contains('l') || sh.contains('r') || sh.contains('|')) {
 			string const str_ams = fromqstr(
 				QString("%1 %2 %3").arg(int(1)).arg(int(1)).arg(deco_name));
 			dispatch(FuncRequest(LFUN_MATH_AMS_MATRIX, str_ams));
