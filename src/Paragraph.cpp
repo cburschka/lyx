@@ -2564,9 +2564,9 @@ void Paragraph::latex(BufferParams const & bparams,
 
 		Font const last_font = running_font;
 		bool const in_ct_deletion = (bparams.output_changes
-				  && runningChange == change
-				  && change.type == Change::DELETED
-				  && !os.afterParbreak());
+					     && runningChange == change
+					     && change.type == Change::DELETED
+					     && !os.afterParbreak());
 
 		// Do we need to close the previous font?
 		if (open_font &&
