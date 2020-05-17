@@ -2563,6 +2563,10 @@ void Paragraph::latex(BufferParams const & bparams,
 		Font const current_font = getFont(bparams, i, outerfont);
 
 		Font const last_font = running_font;
+		bool const in_ct_deletion = (bparams.output_changes
+				  && runningChange == change
+				  && change.type == Change::DELETED
+				  && !os.afterParbreak());
 
 		// Do we need to close the previous font?
 		if (open_font &&
@@ -2576,10 +2580,23 @@ void Paragraph::latex(BufferParams const & bparams,
 				alien_script.clear();
 			}
 			bool needPar = false;
+			if (in_ct_deletion) {
+				// We have to close and then reopen \lyxdeleted,
+				// as strikeout needs to be on lowest level.
+				os << '}';
+				column += 1;
+			}
 			column += running_font.latexWriteEndChanges(
 				    os, bparams, runparams, basefont,
 				    (i == body_pos-1) ? basefont : current_font,
 				    needPar);
+			if (in_ct_deletion) {
+				// We have to close and then reopen \lyxdeleted,
+				// as strikeout needs to be on lowest level.
+				OutputParams rp = runparams;
+				column += Changes::latexMarkChange(os, bparams,
+					Change(Change::UNCHANGED), Change(Change::DELETED), rp);
+			}
 			running_font = basefont;
 			open_font = false;
 		}
@@ -2625,13 +2642,9 @@ void Paragraph::latex(BufferParams const & bparams,
 
 		// Do we need to change font?
 		if ((current_font != running_font ||
-		     current_font.language() != running_font.language()) &&
-			i != body_pos - 1)
+		     current_font.language() != running_font.language())
+		    && i != body_pos - 1)
 		{
-			bool const in_ct_deletion = (bparams.output_changes
-						     && runningChange == change
-						     && change.type == Change::DELETED
-						     && !os.afterParbreak());
 			if (in_ct_deletion) {
 				// We have to close and then reopen \lyxdeleted,
 				// as strikeout needs to be on lowest level.
