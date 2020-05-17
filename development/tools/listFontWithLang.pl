@@ -242,14 +242,15 @@ my %sansFonts = (
 );
 my %scriptFonts = (
   "value" => 110,          # Script
+  "c" => qr/^(chancery)/i,
   "d" => qr/^(dancing)/i,
   "e" => qr/^(elegante)/i,
   "k" => qr/^(kaushan|karumbi)/i,
   "m" => qr/^(mathjax_script|miama)/i,
   "n" => qr/^(nanum (brush|pen) script)/i,
-  "q" => qr/^qt(arabian|boulevard|brushstroke|coronation|florencia|handwriting|linostroke|merry|pandora)/i,
+  "q" => qr/^qt(arabian|boulevard|brushstroke|chancery|coronation|florencia|handwriting|linostroke|merry|pandora|slogan)/i,
   "r" => qr/^(romande.*|ruf)script/i,
-  "u" => qr/^(un ?pilgi)/i,
+  "u" => qr/^(un ?pilgi|urw ?chancery)/i,
 );
 
 my %fraktFonts = (
@@ -276,13 +277,16 @@ my %initialFonts = (
 my %symbolFonts = (
   "value" => 200,          # Symbol
   "a" => qr/^(academicons)/i,
-  "c" => qr/^(caladings|ccicons)/i,
+  "c" => qr/^(caladings|ccicons|chess)/i,
   "d" => qr/^(dingbats|drmsym)/i,
+  "e" => qr/^(elusiveicons|emoji)/i,
   "f" => qr/^(fdsymbol|fourierorns)/i,
   "h" => qr/^(hots)/i,
-  "m" => qr/^(marvosym)/i,
+  "m" => qr/^(marvosym|material)/i,
   "n" => qr/^(noto.*emoji)/i,
+  "o" => qr/^(octicons)/i,
   "q" => qr/^(qtdingbits)/i,
+  "t" => qr/^(typicons|twemoji)/i,
 );
 
 if (open(FI,  "$cmd |")) {
