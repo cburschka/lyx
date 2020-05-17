@@ -20,6 +20,14 @@ startinkscape() {
 	pwd=$(pwd)
 	iparams=( "$@" )
 	oparams=()
+	# pre 1.0 application has cmd line utility in resources
+	# this utility needs the explicit option to suppress gui
+	# 1.0 don't have it and fails to start with it
+	case "${inkscape}" in
+	*/Resources/*)
+		wogui="--without-gui"
+		;;
+	esac
 	for i in ${!iparams[@]}; do
 		# echo $i "=>" "${iparams[$i]}"
 		case "${iparams[$i]}" in
@@ -37,19 +45,20 @@ startinkscape() {
 			;;
 		esac
 	done
-	exec "${inkscape}" --without-gui "${oparams[@]}"
+	exec "${inkscape}" ${wogui} "${oparams[@]}"
 }
 
 # try to find the inkscape installation...
-# at first try the well known location
-RESDIR="/Applications/Inkscape.app/Contents/Resources"
-if [ -f "${RESDIR}"/bin/inkscape -a -x "${RESDIR}"/bin/inkscape ]; then
-	startinkscape "${RESDIR}"/bin/inkscape "$@"
+# at first try the well known location for Inkscape 1.0
+RESDIR="/Applications/Inkscape.app/Contents/MacOS"
+if [ -f "${RESDIR}"/inkscape -a -x "${RESDIR}"/inkscape ]; then
+	startinkscape "${RESDIR}"/inkscape "$@"
 	exit 0
 fi
 # this failed... so try PATH expansion to start the inkscape shell wrapper
+# Now continue the check with pre 1.0 inkscape application and the PATH
 IFS=":" read -ra DIRLIST <<< "${PATH}"
-for BINDIR in "${DIRLIST[@]}" ; do
+for BINDIR in "/Applications/Inkscape.app/Contents/Resources" "${DIRLIST[@]}" ; do
 	RESDIR=$(dirname "${BINDIR}")
 	if [ -f "${RESDIR}"/bin/inkscape -a -x "${RESDIR}"/bin/inkscape ]; then
 		startinkscape "${RESDIR}"/bin/inkscape "$@"
