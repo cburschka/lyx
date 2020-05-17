@@ -58,7 +58,7 @@ fi
 # this failed... so try PATH expansion to start the inkscape shell wrapper
 # Now continue the check with pre 1.0 inkscape application and the PATH
 IFS=":" read -ra DIRLIST <<< "${PATH}"
-for BINDIR in "/Applications/Inkscape.app/Contents/Resources" "${DIRLIST[@]}" ; do
+for BINDIR in "/Applications/Inkscape.app/Contents/Resources/bin" "${DIRLIST[@]}" ; do
 	RESDIR=$(dirname "${BINDIR}")
 	if [ -f "${RESDIR}"/bin/inkscape -a -x "${RESDIR}"/bin/inkscape ]; then
 		startinkscape "${RESDIR}"/bin/inkscape "$@"
