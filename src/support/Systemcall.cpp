@@ -424,7 +424,6 @@ bool queryStopCommand(QString const & cmd)
 
 bool SystemcallPrivate::waitWhile(State waitwhile, bool process_events, int timeout)
 {
-	timeout = 1000;
 	if (!process_)
 		return false;
 
