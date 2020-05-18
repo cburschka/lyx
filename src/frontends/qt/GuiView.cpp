@@ -3107,6 +3107,14 @@ void GuiView::writeSession() const {
 
 bool GuiView::closeBufferAll()
 {
+
+	for (auto & buf : theBufferList()) {
+		if (!saveBufferIfNeeded(*buf, false)) {
+			// Closing has been cancelled, so abort.
+			return false;
+		}
+	}
+
 	// Close the workareas in all other views
 	QList<int> const ids = guiApp->viewIds();
 	for (int i = 0; i != ids.size(); ++i) {
@@ -3118,9 +3126,6 @@ bool GuiView::closeBufferAll()
 	if (!closeWorkAreaAll())
 		return false;
 
-	// Now close the hidden buffers. We prevent hidden buffers from being
-	// dirty, so we can just close them.
-	theBufferList().closeAll();
 	return true;
 }
 
