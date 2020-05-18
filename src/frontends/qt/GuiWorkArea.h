@@ -212,7 +212,7 @@ class TabWorkArea : public QTabWidget
 {
 	Q_OBJECT
 public:
-	TabWorkArea(QWidget * parent = 0);
+	TabWorkArea(QWidget * parent = nullptr);
 
 	/// hide QTabWidget methods
 	GuiWorkAreaContainer * currentWidget() const;
@@ -293,7 +293,7 @@ protected:
 
 public:
 	/// wa != 0
-	GuiWorkAreaContainer(GuiWorkArea * wa, QWidget * parent = 0);
+	GuiWorkAreaContainer(GuiWorkArea * wa, QWidget * parent = nullptr);
 	/// non-null
 	GuiWorkArea * workArea() const { return wa_; }
 };

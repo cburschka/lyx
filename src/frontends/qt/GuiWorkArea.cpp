@@ -239,7 +239,7 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 
 
 GuiWorkArea::Private::Private(GuiWorkArea * parent)
-: p(parent), buffer_view_(0), lyx_view_(0), caret_(0),
+: p(parent), buffer_view_(nullptr), lyx_view_(nullptr), caret_(nullptr),
   caret_visible_(false), need_resize_(false), preedit_lines_(1),
   last_pixel_ratio_(1.0), completer_(new GuiCompleter(p, p)),
   dialog_mode_(false), shell_escape_(false), read_only_(false),
@@ -1206,7 +1206,7 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 	bool cursor_is_visible = false;
 	for (auto const & attr : preedit_attr_) {
 		if (attr.type == QInputMethodEvent::Cursor) {
-			cursor_pos = attr.start;
+			cursor_pos = size_t(attr.start);
 			cursor_is_visible = attr.length != 0;
 			break;
 		}
@@ -1225,8 +1225,8 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 			if (attr.type == QInputMethodEvent::TextFormat) {
 				if (attr.start <= int(cursor_pos)
 					&& int(cursor_pos) < attr.start + attr.length) {
-						rStart = attr.start;
-						rLength = attr.length;
+						rStart = size_t(attr.start);
+						rLength = size_t(attr.length);
 						if (!cursor_is_visible)
 							cursor_pos += rLength;
 						break;
@@ -1752,11 +1752,11 @@ GuiWorkArea * TabWorkArea::workArea(Buffer & buffer) const
 	// showing the same buffer.
 	for (int i = 0; i != count(); ++i) {
 		GuiWorkArea * wa = workArea(i);
-		LASSERT(wa, return 0);
+		LASSERT(wa, return nullptr);
 		if (&wa->bufferView().buffer() == &buffer)
 			return wa;
 	}
-	return 0;
+	return nullptr;
 }
 
 
@@ -2011,7 +2011,7 @@ bool operator==(DisplayPath const & a, DisplayPath const & b)
 
 void TabWorkArea::updateTabTexts()
 {
-	size_t n = count();
+	int const n = count();
 	if (n == 0)
 		return;
 	std::list<DisplayPath> paths;
@@ -2019,7 +2019,7 @@ void TabWorkArea::updateTabTexts()
 
 	// collect full names first: path into postfix, empty prefix and
 	// filename without extension
-	for (size_t i = 0; i < n; ++i) {
+	for (int i = 0; i < n; ++i) {
 		GuiWorkArea * i_wa = workArea(i);
 		FileName const fn = i_wa->bufferView().buffer().fileName();
 		paths.push_back(DisplayPath(i, fn));
