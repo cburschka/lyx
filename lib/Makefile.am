@@ -2248,6 +2248,8 @@ dist_layouts_DATA =\
 	layouts/revtex.layout \
 	layouts/revtex4.layout \
 	layouts/revtex4-1.layout \
+	layouts/revtex4-2.layout \
+	layouts/revtex4-x.inc \
 	layouts/rsphrase.module \
 	layouts/sciposter.layout \
 	layouts/scrartcl.layout \
