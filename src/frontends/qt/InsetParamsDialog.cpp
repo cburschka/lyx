@@ -59,7 +59,7 @@ namespace frontend {
 
 struct InsetParamsDialog::Private
 {
-	Private() : widget_(0), inset_(0), changed_(false) {}
+	Private() : widget_(nullptr), inset_(nullptr), changed_(false) {}
 	///
 	InsetParamsWidget * widget_;
 	/// The inset that was used at last Restore or Apply operation.
@@ -312,7 +312,8 @@ Dialog * createDialog(GuiView & lv, InsetCode code)
 	case VSPACE_CODE:
 		widget = new GuiVSpace;
 		break;
-	default: return 0;
+	default:
+		return nullptr;
 	}
 	InsetParamsDialog * dialog = new InsetParamsDialog(lv, widget);
 	return dialog;
