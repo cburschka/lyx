@@ -423,7 +423,7 @@ private:
 	/// closes the tabworkarea and all tabs. If we are in a close event,
 	/// all buffers will be closed, otherwise they will be hidden.
 	bool closeTabWorkArea(TabWorkArea * twa);
-	/// gives the user the possibility to save his work
+        /// gives the user the possibility to save their work
 	/// or to discard the changes. If hiding is true, the
 	/// document will be reloaded.
 	bool saveBufferIfNeeded(Buffer & buf, bool hiding);
