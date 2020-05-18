@@ -643,13 +643,13 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 				lexrc.printError("Missing color tag.");
 				break;
 			}
-			string lyx_name = lexrc.getString();
+			string const lyx_name = lexrc.getString();
 
 			if (!lexrc.next()) {
 				lexrc.printError("Missing color name for color: `$$Token'");
 				break;
 			}
-			string x11_name = lexrc.getString();
+			string const x11_name = lexrc.getString();
 
 			ColorCode const col =
 				lcolor.getFromLyXName(lyx_name);
@@ -660,6 +660,7 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 
 			if (!lcolor.setColor(col, x11_name))
 				LYXERR0("Bad lyxrc set_color for " << lyx_name);
+			LYXERR(Debug::LYXRC, "Set " << lyx_name << "(" << col << ") to " << x11_name);
 			break;
 		}
 

@@ -18,6 +18,7 @@
 
 namespace lyx {
 
+class Color;
 class Font;
 class FontInfo;
 
