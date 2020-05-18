@@ -55,7 +55,7 @@ sub handleOptions($)
     for (my $i = 0; defined($_[0]->[$i]); $i++) {
       my $rO = $_[0]->[$i];
       $optionsDef{$rO->[0]} = $rO->[1];
-      $optionsDef{$rO->[0]}->{Sort} = $i+1;
+      $optionsDef{$rO->[0]}->{Sort} = $i+2;
     }
   }
   else {
@@ -66,7 +66,7 @@ sub handleOptions($)
   $optionsDef{h}->{Sort} = 0;
   $optionsDef{v}->{fieldname} = "verbose";
   $optionsDef{v}->{alias} = ["verbose"];
-  $optionsDef{v}->{Sort} = 0;
+  $optionsDef{v}->{Sort} = 1;
 
   my %options = ("help" => 0);
   my $opts = &makeOpts();
@@ -142,6 +142,22 @@ sub makeOpts()
   return($opts);
 }
 
+sub sortHelp
+{
+  if (defined($optionsDef{$a}->{Sort})) {
+    if (defined($optionsDef{$b}->{Sort})) {
+      return $optionsDef{$a}->{Sort} <=> $optionsDef{$b}->{Sort};
+    }
+    return -1;
+  }
+  if (defined($optionsDef{$b}->{Sort})) {
+    return 1;
+  }
+  else {
+    return $a cmp $b;
+  }
+}
+
 # Create help-string to describe options
 sub makeHelp()
 {
@@ -153,7 +169,7 @@ sub makeHelp()
     "i" => "integer",
     "f" => "float",
       );
-  for my $ex (sort {$optionsDef{$a}->{Sort} <=> $optionsDef{$b}->{Sort};} keys %optionsDef) {
+  for my $ex (sort sortHelp keys %optionsDef) {
     my $e = $optionsDef{$ex};
     my $type = "";
     my $needed = "";

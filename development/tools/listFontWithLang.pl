@@ -32,6 +32,7 @@ BEGIN {
 
 use strict;
 use warnings;
+use Encode;
 use GetOptions;
 
 sub convertlang($);
@@ -41,6 +42,8 @@ sub getVal($$$);	# my ($l, $txtval, $txtlang) = @_;
 sub getproperties($$$$);
 sub ismathfont($$);
 sub correctstyle($);
+sub decimalUnicode($);
+sub contains($$);
 
 # Following fields for a parameter can be defined:
 # fieldname:         Name of entry in %options
@@ -77,6 +80,10 @@ my @optionsDef = (
   ["math",
    {fieldname => "Math",
     comment => "Select fonts probably containing math glyphs"},],
+  ["c",
+   {fieldname => "Contains",
+    type => "=s", listsep => ',',
+    comment => "Select fonts containing all comma separated glyphs",}],
   ["l",
    {fieldname => "Lang",
     type => "=s", alias=>["lang"],
@@ -108,6 +115,13 @@ for my $lg (@langs) {
   $lg = &convertlang($lg);
 }
 
+my @glyphs = ();
+if (defined($options{Contains})) {
+  for my $a (@{$options{Contains}}) {
+    push(@glyphs, decimalUnicode($a));
+  }
+}
+
 my $cmd = "fc-list";
 if (defined($langs[0])) {
   $cmd .= " :lang=" . join(',', @langs);
@@ -127,6 +141,9 @@ if (exists($options{PrintLangs}) || defined($langs[0])) {
 }
 if (exists($options{PrintProperties}) || defined($options{Property})) {
   $format .= " weight=%{weight} slant=%{slant} width=%{width} spacing=%{spacing}";
+}
+if (defined($options{Contains})) {
+  $format .= " charset=\"%{charset}\"";
 }
 $format .= " file=\"%{file}\" abcd\\n";
 $cmd .= " -f '$format'";
@@ -287,6 +304,7 @@ my %symbolFonts = (
   "o" => qr/^(octicons)/i,
   "q" => qr/^(qtdingbits)/i,
   "t" => qr/^(typicons|twemoji)/i,
+  "w" => qr/^(webdings)/i,
 );
 
 if (open(FI,  "$cmd |")) {
@@ -312,7 +330,6 @@ if (open(FI,  "$cmd |")) {
         $nexttype++;
       }
     }
-    my $nfound = 0;
     my %usedlangs = ();
     if ($l =~ / lang=\"([^\"]+)\"/) {
       my @ll = split(/\|/, $1);
@@ -324,7 +341,20 @@ if (open(FI,  "$cmd |")) {
     for my $lang (@langs) {
       next NXTLINE if (! defined($usedlangs{$lang}));
     }
-    next if ($nfound);
+    if (defined($options{Contains})) {
+      my @charlist = ();
+      if ($l =~ / charset=\"([^\"]+)\"/) {
+        my @list = split(/\s+/, $1);
+        for my $e (@list) {
+          my ($l, $h) = split('-', $e);
+          $h = $l if (! defined($h));
+          push(@charlist, [hex($l), hex($h)]);
+        }
+      }
+      for my $g (@glyphs) {
+        next NXTLINE if (! contains($g, \@charlist));
+      }
+    }
     my $style = &getVal($l, "style", "stylelang");
     $style =~ s/^\\040//;
     my $fullname = &getVal($l, "fn", "fnl");
@@ -798,4 +828,27 @@ sub correctstyle($)
   $style =~ s/Regul[ea]r/Regular/i;
   $style =~ s/  +/ /g;
   return($style);
+}
+
+sub decimalUnicode($)
+{
+  my ($a) = @_;
+  if ($a =~ /^u\+(.+)$/i) {
+    $a = $1;
+    if ($a =~ /^0?x(.+)$/) {
+      $a = hex($1);
+    }
+    return($a);
+  }
+  return(ord(decode('utf-8', $a)));
+}
+
+sub contains($$)
+{
+  my ($d, $rList) = @_;
+  for my $re (@{$rList}) {
+    return 0 if ($re->[0] >  $d);
+    return 1 if ($re->[1] >= $d);
+  }
+  return 0;
 }
