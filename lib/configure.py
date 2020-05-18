@@ -542,18 +542,34 @@ def checkInkscape():
     try:
         aKey = winreg.OpenKey(aReg, r"inkscape.svg\DefaultIcon")
         val = winreg.QueryValueEx(aKey, "")
-        return str(val[0]).split('"')[1]
+        valentry = str(val[0])
+        if valentry.find('"') > 0:
+            return valentry.split('"')[1]
+        elif valentry.find(',') > 0:
+            return valentry.split(',')[0]
+        else:
+            return 'inkscape'
     except EnvironmentError:
         try:
-            aKey = winreg.OpenKey(aReg, r"Applications\inkscape.exe\shell\open\command")
+            aKey = winreg.OpenKey(aReg, r"inkscape.SVG\shell\open\command")
             val = winreg.QueryValueEx(aKey, "")
             return str(val[0]).split('"')[1]
         except EnvironmentError:
-            return 'inkscape'
+            try:
+                aKey = winreg.OpenKey(aReg, r"Applications\inkscape.exe\shell\open\command")
+                val = winreg.QueryValueEx(aKey, "")
+                return str(val[0]).split('"')[1]
+            except EnvironmentError:
+                return 'inkscape'
+
 
 def checkInkscapeStable():
     ''' Check whether we use Inkscape >= 1.0 '''
-    version_string = cmdOutput("inkscape --version")
+    inkscape_bin = inkscape_cl
+    if os.name == 'nt':
+        # Windows needs the full path, quoted if it contains spaces
+        inkscape_bin = quoteIfSpace(os.path.join(inkscape_path, inkscape_cl))
+    version_string = cmdOutput(inkscape_bin + " --version")
     if version_string.find(' 0.') > 0:
         return False
     else:
@@ -1936,11 +1952,11 @@ Format %i
     # On Windows, we need to call the "inkscape.com" wrapper
     # for command line purposes. Other OSes do not differentiate.
     inkscape_cl = inkscape_gui
-    inkscape_stable = checkInkscapeStable()
     if os.name == 'nt':
         inkscape_cl = inkscape_gui.replace('.exe', '.com')
     # On MacOSX, Inkscape requires full path file arguments. This
     # is not needed on Linux and Win and even breaks the latter.
+    inkscape_stable = checkInkscapeStable()
     checkFormatEntries(dtl_tools)
     checkConverterEntries()
     (chk_docbook, bool_docbook, docbook_cmd) = checkDocBook()
