@@ -85,7 +85,10 @@ OutBase = os.path.splitext(OutputFile)[0]
 # while outsourcing the text to a LaTeX file ${OutBase}.eps_tex which includes and overlays
 # the EPS image and can be \input to LaTeX files. We rename the latter file to ${OutputFile}
 # (although this is probably the name it already has).
-runCommand([r'%s' % InkscapeCmd, '--file=%s' % InputFile, '--export-eps=%s.eps' % OutBase, '--export-latex'])
+if unstable:
+    runCommand([r'%s' % InkscapeCmd, '--file=%s' % InputFile, '--export-eps=%s.eps' % OutBase, '--export-latex'])
+else:
+    runCommand([r'%s' % InkscapeCmd, '%s' % InputFile, '--export-filename=%s.eps' % OutBase, '--export-latex'])
 
 os.rename('%s.eps_tex' % OutBase, OutputFile)
 
