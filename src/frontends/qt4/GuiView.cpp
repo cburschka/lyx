@@ -2884,7 +2884,9 @@ bool GuiView::closeWorkArea(GuiWorkArea * wa)
 				  "  Tools->Preferences->Look&Feel->UserInterface\n"
 				), file);
 			int ret = Alert::prompt(_("Close or hide document?"),
-				text, 0, 1, _("&Close"), _("&Hide"));
+				text, 0, 2, _("&Close"), _("&Hide"), _("&Cancel"));
+			if (ret == 2)
+				return false;
 			close_buffer = (ret == 0);
 		}
 	}
@@ -3023,12 +3025,13 @@ bool GuiView::closeBuffer(Buffer & buf)
 			// Even in this case, children can be dirty (e.g.,
 			// after a label change in the master, see #11405).
 			// Therefore, check this
-			if (closing_ && (child_buf->isClean() || child_buf->paragraphs().empty()))
+			if (closing_ && (child_buf->isClean() || child_buf->paragraphs().empty())) {
 				// If we are in a close_event all children will be closed in some time,
 				// so no need to do it here. This will ensure that the children end up
 				// in the session file in the correct order. If we close the master
 				// buffer, we can close or release the child buffers here too.
 				continue;
+			}
 			// Save dirty buffers also if closing_!
 			if (saveBufferIfNeeded(*child_buf, false)) {
 				child_buf->removeAutosaveFile();
@@ -3045,8 +3048,8 @@ bool GuiView::closeBuffer(Buffer & buf)
 		// goto bookmark to update bookmark pit.
 		// FIXME: we should update only the bookmarks related to this buffer!
 		LYXERR(Debug::DEBUG, "GuiView::closeBuffer()");
-		for (size_t i = 0; i < theSession().bookmarks().size(); ++i)
-			guiApp->gotoBookmark(i+1, false, false);
+		for (unsigned int i = 0; i < theSession().bookmarks().size(); ++i)
+			guiApp->gotoBookmark(i + 1, false, false);
 
 		if (saveBufferIfNeeded(buf, false)) {
 			buf.removeAutosaveFile();

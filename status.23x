@@ -128,6 +128,9 @@ What's new
 - Correct hierarchy level of Bib(la)tex inset in outliner if "Show in Toc"
   is selected (bug 11863).
 
+- Don't close a document if the "close or hide" dialog is canceled (bug
+  11456).
+
 
 * INTERNALS
 
