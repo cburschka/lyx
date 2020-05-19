@@ -83,11 +83,14 @@ my @optionsDef = (
   ["c",
    {fieldname => "Contains",
     type => "=s", listsep => ',',
-    comment => "Select fonts containing all comma separated glyphs",}],
+    comment => "Select fonts containing all these (possibly comma separated) glyphs",}],
   ["l",
    {fieldname => "Lang",
     type => "=s", alias=>["lang"],
     comment => "Comma separated list of desired languages"},],
+  ["pc",
+   {fieldname => "PrintCharset", alias => ["printcharset"],
+    comment => "Print intervals of supported unicode character values"},],
   ["pl",
    {fieldname => "PrintLangs", alias => ["printlangs"],
     comment => "Print supported languages"},],
@@ -120,6 +123,7 @@ if (defined($options{Contains})) {
   for my $a (@{$options{Contains}}) {
     push(@glyphs, decimalUnicode($a));
   }
+  @glyphs = sort {$a <=> $b;} @glyphs;
 }
 
 my $cmd = "fc-list";
@@ -139,10 +143,10 @@ if (exists($options{PrintScripts}) || defined($options{Scripts}) || defined($opt
 if (exists($options{PrintLangs}) || defined($langs[0])) {
   $format .= " lang=\"%{lang}\"";
 }
-if (exists($options{PrintProperties}) || defined($options{Property})) {
+if (exists($options{PrintProperties}) || defined($options{Property}) || defined($options{NProperty})) {
   $format .= " weight=%{weight} slant=%{slant} width=%{width} spacing=%{spacing}";
 }
-if (defined($options{Contains})) {
+if (defined($options{Contains}) || exists($options{PrintCharset})) {
   $format .= " charset=\"%{charset}\"";
 }
 $format .= " file=\"%{file}\" abcd\\n";
@@ -341,8 +345,8 @@ if (open(FI,  "$cmd |")) {
     for my $lang (@langs) {
       next NXTLINE if (! defined($usedlangs{$lang}));
     }
-    if (defined($options{Contains})) {
-      my @charlist = ();
+    my @charlist = ();
+    if (defined($options{Contains}) || exists($options{PrintCharset})) {
       if ($l =~ / charset=\"([^\"]+)\"/) {
         my @list = split(/\s+/, $1);
         for my $e (@list) {
@@ -351,8 +355,10 @@ if (open(FI,  "$cmd |")) {
           push(@charlist, [hex($l), hex($h)]);
         }
       }
-      for my $g (@glyphs) {
-        next NXTLINE if (! contains($g, \@charlist));
+      if (defined($options{Contains})) {
+        for my $g (@glyphs) {
+          next NXTLINE if (! contains($g, \@charlist));
+        }
       }
     }
     my $style = &getVal($l, "style", "stylelang");
@@ -407,6 +413,18 @@ if (open(FI,  "$cmd |")) {
 
     if (exists($options{PrintLangs})) {
       $props .= '(' . join(',', sort keys %usedlangs) . ')';
+    }
+    if (exists($options{PrintCharset})) {
+      my @out = ();
+      for my $rE (@charlist) {
+        if ($rE->[0] != $rE->[1]) {
+          push(@out, $rE->[0] . '-' . $rE->[1]);
+        }
+        else {
+          push(@out, $rE->[0]);
+        }
+      }
+      $props .= '(' . join(',', @out) . ')';
     }
     if (exists($options{PrintScripts}) || defined($options{Scripts}) || defined($options{NScripts}) || exists($options{Math})) {
       my @scripts = ();
@@ -830,25 +848,35 @@ sub correctstyle($)
   return($style);
 }
 
+# return list of unicode values of the input string
 sub decimalUnicode($)
 {
   my ($a) = @_;
-  if ($a =~ /^u\+(.+)$/i) {
-    $a = $1;
-    if ($a =~ /^0?x(.+)$/) {
-      $a = hex($1);
+  my @res = ();
+  while ($a =~ s/u\+(0?x[\da-f]+|\d+)//i) {
+    my $d = $1;
+    if ($d =~ /^0?x(.+)$/) {
+      $d = hex($1);
     }
-    return($a);
+    push(@res, $d);
   }
-  return(ord(decode('utf-8', $a)));
+  # maybe $a is a string of unicode chars?
+  my $u = decode('utf-8', $a);
+  my @a = split(//, $u);
+  for my $x (@a) {
+    push(@res, ord($x));
+  }
+  return(@res);
 }
 
+# check if the glyph-value $d is contained
+# in one of the (sorted) intervals
 sub contains($$)
 {
   my ($d, $rList) = @_;
   for my $re (@{$rList}) {
-    return 0 if ($re->[0] >  $d);
-    return 1 if ($re->[1] >= $d);
+    next if ($re->[1] < $d);
+    return 1 if ($re->[0] <= $d);
   }
   return 0;
 }
