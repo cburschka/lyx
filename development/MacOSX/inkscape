@@ -52,7 +52,7 @@ startinkscape() {
 # at first try the well known location for Inkscape 1.0
 # but check for Inkscape 0.92.x too and skip this if it's in Resources
 RESDIR="/Applications/Inkscape.app/Contents/MacOS"
-if [ !f "/Applications/Inkscape.app/Contents/Resources/bin/inkscape" -a -f "${RESDIR}"/inkscape -a -x "${RESDIR}"/inkscape ]; then
+if [ ! -f "/Applications/Inkscape.app/Contents/Resources/bin/inkscape" -a -f "${RESDIR}"/inkscape -a -x "${RESDIR}"/inkscape ]; then
 	startinkscape "${RESDIR}"/inkscape "$@"
 	exit 0
 fi
