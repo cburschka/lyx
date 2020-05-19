@@ -53,6 +53,7 @@ template<> double convert<double>(std::string const & s);
 template<> int convert<int>(char const * cptr);
 template<> double convert<double>(char const * cptr);
 
+int convert(std::string const & s, int base);
 } // namespace lyx
 
 #endif

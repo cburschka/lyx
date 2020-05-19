@@ -179,21 +179,27 @@ docstring convert<docstring>(double d)
 template<>
 int convert<int>(string const s)
 {
-	return strtol(s.c_str(), nullptr, 10);
+	return int(strtol(s.c_str(), nullptr, 10));
+}
+
+
+int convert(std::string const & s, int base)
+{
+	return int(strtol(s.c_str(), nullptr, base));
 }
 
 
 template<>
 int convert<int>(docstring const s)
 {
-	return strtol(to_ascii(s).c_str(), nullptr, 10);
+	return int(strtol(to_ascii(s).c_str(), nullptr, 10));
 }
 
 
 template<>
 unsigned int convert<unsigned int>(string const s)
 {
-	return strtoul(s.c_str(), nullptr, 10);
+	return static_cast<unsigned int>(strtoul(s.c_str(), nullptr, 10));
 }
 
 
@@ -214,7 +220,7 @@ double convert<double>(string const s)
 template<>
 int convert<int>(char const * cptr)
 {
-	return strtol(cptr, nullptr, 10);
+	return int(strtol(cptr, nullptr, 10));
 }
 
 
