@@ -229,12 +229,13 @@ private:
 	///
 	QTimer * delay_refresh_;
 	///
+	Trackable trackable_;
+	///
 	bool finished_generating_;
 
 	/// We don't own this
 	static lyx::Converter const * pconverter_;
 
-	Trackable trackable_;
 };
 
 
@@ -452,6 +453,7 @@ PreviewLoader::Impl::preview(string const & latex_snippet) const
 	// Don't try to access the cache until we are done.
 	if (delay_refresh_->isActive() || !finished_generating_)
 		return nullptr;
+
 	Cache::const_iterator it = cache_.find(latex_snippet);
 	return (it == cache_.end()) ? nullptr : it->second.get();
 }
