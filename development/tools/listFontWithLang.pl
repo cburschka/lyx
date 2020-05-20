@@ -118,12 +118,36 @@ for my $lg (@langs) {
   $lg = &convertlang($lg);
 }
 
-my @glyphs = ();
 if (defined($options{Contains})) {
-  for my $a (@{$options{Contains}}) {
-    push(@glyphs, decimalUnicode($a));
+  my %glyphs = ();         # To ignore duplicates
+  for my $a1 (@{$options{Contains}}) {
+    for my $e (decimalUnicode($a1)) {
+      $glyphs{$e} = 1;
+    }
   }
-  @glyphs = sort {$a <=> $b;} @glyphs;
+  # create intervalls
+  my @glyphs = sort {$a <=> $b;} keys %glyphs;
+
+  # $options{Contains} no longer needed, so use it for unicode-point intervalls
+  $options{Contains} = [];
+  my ($first, $last) = (undef, undef);
+  for my $i (@glyphs) {
+    if (! defined($last)) {
+      $first = $i;
+      $last = $i;
+      next;
+    }
+    if ($i == $last+1) {
+      $last = $i;
+      next;
+    }
+    push(@{$options{Contains}}, [$first, $last]);
+    $first = $i;
+    $last = $i;
+  }
+  if (defined($last)) {
+    push(@{$options{Contains}}, [$first, $last]);
+  }
 }
 
 my $cmd = "fc-list";
@@ -177,6 +201,7 @@ my %weights = (
   200 => "Bold",
   205 => "Extrabold",
   210 => "Black",
+  215 => "ExtraBlack",
 );
 
 my %slants = (
@@ -345,22 +370,6 @@ if (open(FI,  "$cmd |")) {
     for my $lang (@langs) {
       next NXTLINE if (! defined($usedlangs{$lang}));
     }
-    my @charlist = ();
-    if (defined($options{Contains}) || exists($options{PrintCharset})) {
-      if ($l =~ / charset=\"([^\"]+)\"/) {
-        my @list = split(/\s+/, $1);
-        for my $e (@list) {
-          my ($l, $h) = split('-', $e);
-          $h = $l if (! defined($h));
-          push(@charlist, [hex($l), hex($h)]);
-        }
-      }
-      if (defined($options{Contains})) {
-        for my $g (@glyphs) {
-          next NXTLINE if (! contains($g, \@charlist));
-        }
-      }
-    }
     my $style = &getVal($l, "style", "stylelang");
     $style =~ s/^\\040//;
     my $fullname = &getVal($l, "fn", "fnl");
@@ -390,6 +399,22 @@ if (open(FI,  "$cmd |")) {
     if (defined($options{FontName})) {
       for my $fn (@{$options{FontName}}) {
         next NXTLINE if ($fontname !~ /$fn/i);
+      }
+    }
+    my @charlist = ();
+    if (defined($options{Contains}) || exists($options{PrintCharset})) {
+      if ($l =~ / charset=\"([^\"]+)\"/) {
+        my @list = split(/\s+/, $1);
+        for my $e (@list) {
+          my ($l, $h) = split('-', $e);
+          $h = $l if (! defined($h));
+          push(@charlist, [hex($l), hex($h)]);
+        }
+      }
+      if (defined($options{Contains})) {
+        for my $g (@{$options{Contains}}) {
+          next NXTLINE if (! contains($g, \@charlist));
+        }
       }
     }
     my $props = "";
@@ -849,34 +874,70 @@ sub correctstyle($)
 }
 
 # return list of unicode values of the input string
+#Allow input of intervals (e.g. 'a-z')
 sub decimalUnicode($)
 {
   my ($a) = @_;
   my @res = ();
-  while ($a =~ s/u\+(0?x[\da-f]+|\d+)//i) {
-    my $d = $1;
+  # Convert to unicode chars first
+  while ($a =~ /^(.*)u\+(0?x[\da-f]+|\d+)(.*)$/i) {
+    my ($prev, $d, $post) = ($1, $2, $3);
     if ($d =~ /^0?x(.+)$/) {
       $d = hex($1);
     }
-    push(@res, $d);
+    my $chr = encode('utf-8', chr($d));
+    $a = $prev . $chr . $post;
   }
-  # maybe $a is a string of unicode chars?
+  # $a is now a string of unicode chars
   my $u = decode('utf-8', $a);
   my @a = split(//, $u);
+  my $interval = 0;
+  my $start = undef;
   for my $x (@a) {
-    push(@res, ord($x));
+    if ($x eq '-') {    # Interval
+      $interval = 1;
+      next;
+    }
+    if ($interval && defined($start)) {
+      if (ord($x) < $start) {
+        for (my $i = $start - 1; $i >= ord($x); $i--) {
+          push(@res, $i);
+        }
+      }
+      else {
+        for (my $i = $start + 1; $i <= ord($x); $i++) {
+          push(@res, $i);
+        }
+      }
+      $start = undef;
+    }
+    else {
+      $start = ord($x);
+      push(@res, $start);
+    }
+    $interval = 0;
   }
   return(@res);
 }
 
+
 # check if the glyph-value $d is contained
 # in one of the (sorted) intervals
+# Inputs as intervals
 sub contains($$)
 {
-  my ($d, $rList) = @_;
+  # ok if
+  # ...re0..........re1...
+  # ......start..end......
+  my ($ri, $rList) = @_;
+  my $start = $ri->[0];
+  my $end = $ri->[1];
+
   for my $re (@{$rList}) {
-    next if ($re->[1] < $d);
-    return 1 if ($re->[0] <= $d);
+    next if ($re->[1] < $start);
+    # now we found a possible matching interval
+    return 1 if (($start >= $re->[0]) && ($end <= $re->[1]));
+    return 0;
   }
   return 0;
 }
