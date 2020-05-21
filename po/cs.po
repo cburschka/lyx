@@ -14576,9 +14576,8 @@ msgid "REVTeX (V. 4.1)"
 msgstr "REVTeX (V. 4.1)"
 
 #: lib/layouts/revtex4-2.layout:3
-#, fuzzy
 msgid "REVTeX (V. 4.2)"
-msgstr "REVTeX (V. 4.1)"
+msgstr "REVTeX (V. 4.2)"
 
 #: lib/layouts/revtex4-x.inc:85 lib/layouts/revtex4.layout:155
 msgid "Affiliation (alternate)"
@@ -25803,12 +25802,11 @@ msgid "uncodable character"
 msgstr "nekódovatelný znak"
 
 #: src/BufferParams.cpp:1756
-#, fuzzy
 msgid "Uncodable character in class options"
-msgstr "Nekódovatelné znaky ve výpisu zdrojového kódu"
+msgstr "Nekódovatelný znak v nastaveních třídy"
 
 #: src/BufferParams.cpp:1758
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The class options of your document contain glyphs that are unknown in the "
 "current document encoding (namely %1$s).\n"
@@ -25818,12 +25816,12 @@ msgid ""
 "Please select an appropriate document encoding\n"
 "(such as utf8) or change the class options accordingly."
 msgstr ""
-"Uživatelská preambule vašeho dokumentu obsahuje znaky, které jsou neznámé v "
-"aktuálním kódování (%1$s).\n"
+"Nastavení třídy vašeho dokumentu obsahuje znaky, které jsou neznámé v "
+"aktuálním kódování dokumnetu (konkrétně %1$s).\n"
 "Příslušné znaky budou při exportu vynechány, což může v důsledku znamenat "
 "neúplný výstupní soubor.\n"
 "\n"
-"Vyberte vhodné kódování dokumentu (např. utf8) nebo změnte preambuli."
+"Vyberte vhodné kódování dokumentu (např. utf8) nebo vhodně změnte nastavení třídy."
 
 #: src/BufferParams.cpp:2222
 msgid "Uncodable character in user preamble"
@@ -27009,7 +27007,7 @@ msgstr "Spouštím MakeIndex pro nomencl."
 
 #: src/LaTeX.cpp:896
 msgid "(NOTE: The erroneous command is in the preamble)"
-msgstr ""
+msgstr "(Pozn.: Chybný příkaz je v preambuli)"
 
 #: src/LaTeX.cpp:1388 src/LaTeX.cpp:1394 src/LaTeX.cpp:1403
 msgid "BibTeX error: "
