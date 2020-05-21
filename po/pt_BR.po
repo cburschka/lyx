@@ -9,10 +9,10 @@
 # Georger Araujo <georger_br@yahoo.com.br> 2015 - 2017 "
 msgid ""
 msgstr ""
-"Project-Id-Version: pt_BR 2.3.4\n"
+"Project-Id-Version: pt_BR 2.3.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-05-20 15:52-0400\n"
-"PO-Revision-Date: 2019-11-22 17:38-0300\n"
+"PO-Revision-Date: 2020-05-20 17:59-0300\n"
 "Last-Translator: Georger Araujo <georger underline br pound yahoo dot com "
 "dot br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br at yahoo dot com "
@@ -14675,9 +14675,8 @@ msgid "REVTeX (V. 4.1)"
 msgstr "REVTeX (V. 4.1)"
 
 #: lib/layouts/revtex4-2.layout:3
-#, fuzzy
 msgid "REVTeX (V. 4.2)"
-msgstr "REVTeX (V. 4.1)"
+msgstr "REVTeX (V. 4.2)"
 
 #: lib/layouts/revtex4-x.inc:85 lib/layouts/revtex4.layout:155
 msgid "Affiliation (alternate)"
@@ -25938,12 +25937,11 @@ msgid "uncodable character"
 msgstr "caractere não-codificável"
 
 #: src/BufferParams.cpp:1756
-#, fuzzy
 msgid "Uncodable character in class options"
-msgstr "Caracteres não-codificáveis em inset listings"
+msgstr "Caracteres não-codificáveis nas opções de classe"
 
 #: src/BufferParams.cpp:1758
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The class options of your document contain glyphs that are unknown in the "
 "current document encoding (namely %1$s).\n"
@@ -25953,13 +25951,13 @@ msgid ""
 "Please select an appropriate document encoding\n"
 "(such as utf8) or change the class options accordingly."
 msgstr ""
-"O preâmbulo de usuário do seu documento contém glifos que são desconhecidos "
-"na codificação atual do documento (que é %1$s).\n"
+"As opções de classe do seu documento contêm glifos que são desconhecidos na "
+"codificação atual do documento (que é %1$s).\n"
 "Esses glifos serão omitidos da saída, o que pode resultar em saída "
 "incompleta.\n"
 "\n"
 "Selecione uma codificação de documento apropriada (tal como utf8)\n"
-"ou modifique o código do preâmbulo de acordo."
+"ou modifique as opções de classe de acordo."
 
 #: src/BufferParams.cpp:2222
 msgid "Uncodable character in user preamble"
@@ -27152,7 +27150,7 @@ msgstr "Rodando MakeIndex para nomencl."
 
 #: src/LaTeX.cpp:896
 msgid "(NOTE: The erroneous command is in the preamble)"
-msgstr ""
+msgstr "(NOTA: O comando errôneo está no preâmbulo)"
 
 #: src/LaTeX.cpp:1388 src/LaTeX.cpp:1394 src/LaTeX.cpp:1403
 msgid "BibTeX error: "
@@ -32558,20 +32556,19 @@ msgstr ""
 "%2$s."
 
 #: src/insets/InsetCommandParams.cpp:522
-#, fuzzy
 msgid "Uncodable characters in inset"
-msgstr "Caminho contém caracteres não-codificáveis"
+msgstr "Caracteres não-codificáveis no inset"
 
 #: src/insets/InsetCommandParams.cpp:523
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters in one of the insets are\n"
 "not representable in the current encoding and have been omitted: %1$s.\n"
 "Unchecking 'Literal' in the respective inset dialog might help."
 msgstr ""
-"Os caracteres a seguir em um dos caminhos de gráficos\n"
+"Os caracteres a seguir em um dos insets\n"
 "não são representáveis na codificação atual e foram omitidos: %1$s.\n"
-"Você deve alterar ou a codificação ou o caminho."
+"Desmarcar 'Literal' no diálogo de inset respectivo pode ajudar."
 
 #: src/insets/InsetExternal.cpp:403
 #, c-format
@@ -32938,7 +32935,7 @@ msgstr ""
 
 #: src/insets/InsetListings.cpp:376 src/insets/InsetListings.cpp:385
 msgid "Uncodable characters in listings inset"
-msgstr "Caracteres não-codificáveis em inset listings"
+msgstr "Caracteres não-codificáveis no inset listagem"
 
 #: src/insets/InsetListings.cpp:377
 #, c-format
