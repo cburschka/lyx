@@ -152,6 +152,7 @@ usage() {
 	echo " --with-build-path=PATH ....." default \${lyx-src-dir}/../lyx-build
 	echo " --with-dmg-location=PATH ..." default \${build-path}
 	echo " --with-binary-strip=yes ...." default no
+	echo " --codesign-identity=CSID ..." default is w/o CSID
 	echo
 	echo "All other arguments with -- are passed to configure"
 	echo "including the defaults: ${LyXConfigureOptions}"
