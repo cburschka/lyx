@@ -719,17 +719,12 @@ sub getweight($$)
 {
   my ($fontname, $style) = @_;
   my $result = undef;
-  for my $key (keys %weights) {
-    next if ($key !~ /^\d+$/);
-    my $val = $weights{$key};
-    for my $info ($style, $fontname) {
+  for my $info ($style, $fontname) {
+    for my $key (keys %weights) {
+      next if ($key !~ /^\d+$/);
+      my $val = $weights{$key};
       if ($info =~ /\b$val\b/i) {
-        if ($val eq "Regular") {
-          $result = $val;    # It may refer to width
-        }
-        else {
-          return($val);
-        }
+        return($val);
       }
     }
   }
@@ -777,7 +772,7 @@ sub getspacing($$)
       return($spacings{$key});
     }
   }
-  if ("$fontname $style" =~ /(mono|typewriter|cursor|fixed)\b/i) {
+  if ("$fontname $style" =~ /(\bmono\b|luximono|typewriter|cursor|fixed)\b/i) {
     return($spacings{100}); # Mono
   }
   else {
@@ -811,8 +806,19 @@ sub getproperties($$$$)
     my $val1 = $rget->($newfam, $newstyle);
     my $val;
     if (defined($val2) && defined($val1) && ($val2 ne $val1)) {
-      push(@{$rerrors}, "Fontname($fontname),Style($style): Values for $txt ($val1 != $val2) differ, selecting internal $txt($val2)");
-      $val = $val2;
+      if (($txt =~/^(weight|slant)$/) && ($newstyle =~ /$val1/)){
+        # style overrides weight and slant
+        push(@{$rerrors}, "Fontname($fontname),Style($style): Values for $txt ($val1 != $val2) differ, pick $val1 from style");
+        $val = $val1;
+      }
+      elsif ($newfam =~ /$val1/) {
+        push(@{$rerrors}, "Fontname($fontname),Style($style): Values for $txt ($val1 != $val2) differ, pick $val1 from fontname");
+        $val = $val1;
+      }
+      else {
+        push(@{$rerrors}, "Fontname($fontname),Style($style): Values for $txt ($val1 != $val2) differ, pick $val2 from $txt-property");
+        $val = $val2;
+      }
     }
     elsif (! defined($val2)) {
       $val = $val1;
@@ -869,6 +875,7 @@ sub correctstyle($)
   $style =~ s/\b(SC|Small(caps(alt)?)?)\b/SmallCaps/i;
   $style =~ s/w3 mono/Dual/i;
   $style =~ s/Regul[ea]r/Regular/i;
+  $style =~ s/Megablack/ExtraBlack/i;
   $style =~ s/  +/ /g;
   return($style);
 }
@@ -921,9 +928,8 @@ sub decimalUnicode($)
 }
 
 
-# check if the glyph-value $d is contained
+# check if the glyph-values in interval @{$ri} are contained
 # in one of the (sorted) intervals
-# Inputs as intervals
 sub contains($$)
 {
   # ok if

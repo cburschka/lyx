@@ -102,7 +102,14 @@ sub handleOptions($)
     print "    " . "-" x 32 . "\n";
     for my $k (sort keys %options) {
       if (defined($options{$k})) {
-        printf("    %-16s%s\n", $k, $options{$k});
+        my $val;
+        if (ref($options{$k}) eq "ARRAY") {
+          $val = join(',', @{$options{$k}});
+        }
+        else {
+          $val = $options{$k};
+        }
+        printf("    %-16s%s\n", $k, $val);
       }
       else {
         print "    $k\n";
