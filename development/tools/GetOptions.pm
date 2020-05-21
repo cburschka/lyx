@@ -75,6 +75,18 @@ sub handleOptions($)
   while( my( $option, $value, $pretty ) = Getopt::Mixed::nextOption()) {
     if (defined($optionsDef{$option})) {
       my $fieldname = $optionsDef{$option}->{fieldname};
+      if (exists($options{$fieldname})) {
+	print "Option $option already set\n";
+	print "Value \"$value\" would overwrite ";
+	if (ref($options{$fieldname}) eq "ARRAY") {
+	  print "\"" . join(',', @{$options{$fieldname}}) . "\"\n";
+	}
+	else {
+	  print "\"$options{$fieldname}\"\n";
+	}
+	$option = "h";
+	$fieldname = "help";
+      }
       if ($option eq "h") {
         print "Syntax: $0 options xxxx ...\n";
         print "Available options:\n";
