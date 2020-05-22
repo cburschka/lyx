@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-05-20 15:52-0400\n"
-"PO-Revision-Date: 2020-04-20 12:54+0300\n"
+"PO-Revision-Date: 2020-05-21 20:48+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -370,17 +370,17 @@ msgstr "&Содержание:"
 #: src/frontends/qt4/ui/BibtexUi.ui:185 src/frontends/qt4/GuiBibtex.cpp:340
 #: src/insets/InsetBibtex.cpp:223 src/insets/InsetBibtex.cpp:241
 msgid "all cited references"
-msgstr "все процитированные ссылки"
+msgstr "все процитированные источники"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:190 src/frontends/qt4/GuiBibtex.cpp:342
 #: src/insets/InsetBibtex.cpp:221
 msgid "all uncited references"
-msgstr "все непроцитированные ссылки"
+msgstr "все непроцитированные источники"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:195 src/frontends/qt4/GuiBibtex.cpp:343
 #: src/insets/InsetBibtex.cpp:219 src/insets/InsetBibtex.cpp:239
 msgid "all references"
-msgstr "все ссылки"
+msgstr "все источники"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:219
 msgid "Add bibliography to the table of contents"
@@ -1047,27 +1047,28 @@ msgstr "&Параметры"
 
 #: src/frontends/qt4/ui/CitationUi.ui:116
 msgid "A&vailable Citations:"
-msgstr "Доступные ссылки:"
+msgstr "Доступные источники:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:143
 msgid "Click or press Enter to add the selected citation to the list"
-msgstr "Кликните или нажмите Enter, чтобы добавить выбранную ссылку в список"
+msgstr "Кликните или нажмите Enter, чтобы добавить выбранный источник в список"
 
 #: src/frontends/qt4/ui/CitationUi.ui:156
 msgid "Click or press Delete to delete the selected citation from the list"
-msgstr "Кликните или нажмите Delete, чтобы удалить выбранную ссылку из списка"
+msgstr ""
+"Кликните или нажмите Delete, чтобы удалить выбранный источник из списка"
 
 #: src/frontends/qt4/ui/CitationUi.ui:188
 msgid "Move the selected citation up (Ctrl-Up)"
-msgstr "Переместить выбранную ссылку выше (Ctrl-Up)"
+msgstr "Переместить выбранный источник выше (Ctrl-Up)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:211
 msgid "Move the selected citation down (Ctrl-Down)"
-msgstr "Переместить выбранную ссылку ниже (Ctrl-Down)"
+msgstr "Переместить выбранный источник ниже (Ctrl-Down)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:232
 msgid "Selected &Citations:"
-msgstr "&Выбранные ссылки:"
+msgstr "&Выбранные источники:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:276
 msgid "Formatting"
@@ -10300,9 +10301,9 @@ msgid ""
 "Page Layout to 'fancy'!"
 msgstr ""
 "Добавляет окружения для задания строк верхнего и нижнего колонтитулов. "
-"ПРИМЕЧАНИЕ: для использования этого модуля вы должны установить для "
-"параметра 'Стиль колонтитулов' (меню Документ -> Настройки -> Макет "
-"страницы) значение 'красивый'!"
+"ЗАМЕЧАНИЕ: для использования этого модуля вы должны установить для параметра "
+"'Стиль колонтитулов' (меню Документ -> Настройки -> Макет страницы) значение "
+"'красивый'!"
 
 #: lib/layouts/customHeadersFooters.module:12
 msgid "Header/Footer"
@@ -14668,9 +14669,8 @@ msgid "REVTeX (V. 4.1)"
 msgstr "REVTeX (V. 4.1)"
 
 #: lib/layouts/revtex4-2.layout:3
-#, fuzzy
 msgid "REVTeX (V. 4.2)"
-msgstr "REVTeX (V. 4.1)"
+msgstr "REVTeX (V. 4.2)"
 
 #: lib/layouts/revtex4-x.inc:85 lib/layouts/revtex4.layout:155
 msgid "Affiliation (alternate)"
@@ -25929,12 +25929,11 @@ msgid "uncodable character"
 msgstr "некодируемый символ"
 
 #: src/BufferParams.cpp:1756
-#, fuzzy
 msgid "Uncodable character in class options"
-msgstr "Некодируемый символ во вставке листинга"
+msgstr "Некодируемый символ в параметрах класса"
 
 #: src/BufferParams.cpp:1758
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The class options of your document contain glyphs that are unknown in the "
 "current document encoding (namely %1$s).\n"
@@ -25944,12 +25943,12 @@ msgid ""
 "Please select an appropriate document encoding\n"
 "(such as utf8) or change the class options accordingly."
 msgstr ""
-"Преамбула пользователя в документе содержит символы\n"
+"Параметры класса вашего документа содержат символы\n"
 "недоступные в текущей кодировке (%1$s). Эти символы\n"
 "будут пропущены в выводе, что может привести к неполному выводу.\n"
 "\n"
 "Выберите подходящую кодировку (такую как utf8)\n"
-"или измените код преамбулы."
+"или измените параметры класса."
 
 #: src/BufferParams.cpp:2222
 msgid "Uncodable character in user preamble"
@@ -27141,7 +27140,7 @@ msgstr "Выполняется MakeIndex."
 
 #: src/LaTeX.cpp:896
 msgid "(NOTE: The erroneous command is in the preamble)"
-msgstr ""
+msgstr "(ЗАМЕЧАНИЕ: Ошибочная команда в преамбуле)"
 
 #: src/LaTeX.cpp:1388 src/LaTeX.cpp:1394 src/LaTeX.cpp:1403
 msgid "BibTeX error: "
@@ -29148,7 +29147,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiBibitem.h:36
 msgid "Bibliography Item Settings"
-msgstr "Настройки элемента библиографии"
+msgstr "Источник"
 
 #: src/frontends/qt4/GuiBibtex.cpp:54 src/frontends/qt4/GuiBibtex.cpp:311
 msgid "BibTeX Bibliography"
@@ -29389,7 +29388,7 @@ msgstr "Чистый текст"
 
 #: src/frontends/qt4/GuiCitation.cpp:106
 msgid "All avail. citations"
-msgstr "Доступные ссылки"
+msgstr "Доступные источники"
 
 #: src/frontends/qt4/GuiCitation.cpp:112
 msgid "Regular e&xpression"
@@ -29408,8 +29407,8 @@ msgid ""
 "Ordered list of all cited references.\n"
 "You can reorder, add and remove references with the buttons on the left."
 msgstr ""
-"Упорядоченный список всех процитированных ссылок.\n"
-"Вы можете изменить порядок, добавить или удалить ссылки, используя кнопки "
+"Упорядоченный список всех процитированных источников.\n"
+"Вы можете изменить порядок, добавить или удалить источники, используя кнопки "
 "слева."
 
 #: src/frontends/qt4/GuiCitation.cpp:296
@@ -29456,7 +29455,7 @@ msgstr "Всегда показывать всех авторов (вместо 
 
 #: src/frontends/qt4/GuiCitation.cpp:363
 msgid "All references available for citing."
-msgstr "Все ссылки, доступные для цитирования."
+msgstr "Все источники, доступные для цитирования."
 
 #: src/frontends/qt4/GuiCitation.cpp:365
 msgid ""
@@ -29464,10 +29463,10 @@ msgid ""
 "To add the selected one, hit Add, press Enter or double-click.\n"
 "Hit Ctrl-Enter to add and close the dialog."
 msgstr ""
-"Все ссылки, доступные для цитирования.\n"
-"Чтобы добавить выбранную, нажмите кнопку Добавить, клавишу Enter или "
+"Все источники, доступные для цитирования.\n"
+"Чтобы добавить выбранный, нажмите кнопку Добавить, клавишу Enter или "
 "используйте двойной щелчок мышью.\n"
-"Нажмите Ctrl-Enter, чтобы добавить ссылку и закрыть это окно."
+"Нажмите Ctrl-Enter, чтобы добавить источник и закрыть это окно."
 
 #: src/frontends/qt4/GuiCitation.cpp:440
 msgid "Keys"
@@ -29475,21 +29474,21 @@ msgstr "Ключи"
 
 #: src/frontends/qt4/GuiCitation.cpp:481
 msgid "Displays a sketchy preview if a citation is selected above"
-msgstr "Отображает примерный печатный вид для выделенной ссылки"
+msgstr "Отображает примерный печатный вид для выделенного источника"
 
 #: src/frontends/qt4/GuiCitation.cpp:485
 msgid "Sketchy preview of the selected citation"
-msgstr "Предварительный просмотр библиографической ссылки"
+msgstr "Предварительный просмотр библиографического источника"
 
 #: src/frontends/qt4/GuiCitation.cpp:596
 msgid "Enter string to filter the list of available citations"
-msgstr "Введите строку для фильтрации списка доступных ссылок"
+msgstr "Введите строку для фильтрации списка доступных источников"
 
 #: src/frontends/qt4/GuiCitation.cpp:597
 msgid ""
 "Enter string to filter the list of available citations and press <Enter>"
 msgstr ""
-"Введите строку для фильтрации списка доступных ссылок и нажмите <Enter>"
+"Введите строку для фильтрации списка доступных источников и нажмите <Enter>"
 
 #: src/frontends/qt4/GuiCitation.cpp:598
 msgid ""
@@ -29497,7 +29496,7 @@ msgid ""
 "The down arrow key will get you into the list of filtered citations."
 msgstr ""
 "\n"
-"Клавиша 'Стрелка вниз' переведёт вас в список отфильтрованных ссылок."
+"Клавиша 'Стрелка вниз' переведёт вас в список отфильтрованных источников."
 
 #: src/frontends/qt4/GuiCitation.cpp:662
 msgid "Text before"
@@ -29505,7 +29504,7 @@ msgstr "Текст до"
 
 #: src/frontends/qt4/GuiCitation.cpp:663
 msgid "Cite key"
-msgstr "Ключ цитаты"
+msgstr "Ключ источника"
 
 #: src/frontends/qt4/GuiCitation.cpp:664
 msgid "Text after"
@@ -30987,7 +30986,7 @@ msgstr "Перекрёстная ссылка"
 
 #: src/frontends/qt4/GuiRef.cpp:62
 msgid "All available labels"
-msgstr "Все доступные метки"
+msgstr "Доступные метки"
 
 #: src/frontends/qt4/GuiRef.cpp:63
 msgid "Enter string to filter the list of available labels"
@@ -32271,7 +32270,7 @@ msgstr "Все файлы "
 
 #: src/insets/Inset.cpp:89
 msgid "Bibliography Entry"
-msgstr "Элемент библиографии"
+msgstr "Источник"
 
 #: src/insets/Inset.cpp:95
 msgid "Float"
