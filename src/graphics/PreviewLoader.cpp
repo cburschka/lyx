@@ -319,18 +319,26 @@ Buffer const & PreviewLoader::buffer() const
 
 namespace {
 
-std::function<SnippetPair (string const &)> IncrementedFileName
-	(string const & to_format, string const & filename_base)
-{
-	return [&to_format, &filename_base](string const & snippet)
+class IncrementedFileName {
+public:
+	IncrementedFileName(string const & to_format,
+			    string const & filename_base)
+		: to_format_(to_format), base_(filename_base), counter_(1)
+	{}
+
+	SnippetPair const operator()(string const & snippet)
 	{
-		static int counter_ = 1;
 		ostringstream os;
-		os << filename_base << counter_++ << '.' << to_format;
-		string const file = os.str();
-		return make_pair(snippet, FileName(file));
-	};
-}
+		os << base_ << counter_++ << '.' << to_format_;
+		string const file_name = os.str();
+		return make_pair(snippet, FileName(file_name));
+	}
+	
+private:
+	string const & to_format_;
+	string const & base_;
+	int counter_;
+};
 
 
 InProgress::InProgress(string const & filename_base,
