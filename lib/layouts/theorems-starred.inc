@@ -19,7 +19,7 @@
 # - Claim
 # - Proof
 
-Format 80
+Format 81
 
 OutlinerName thm "Definitions & Theorems"
 

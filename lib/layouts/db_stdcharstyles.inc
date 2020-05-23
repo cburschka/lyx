@@ -2,7 +2,7 @@
 # Author : José Abílio Oliveira Matos <jamatos@lyx.org>
 # Character Styles definition
 
-Format 80
+Format 81
 InsetLayout Flex:Filename
 	LyXType element
 	LabelString Filename
