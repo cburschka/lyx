@@ -1504,6 +1504,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_NOTE_NEXT:
 		gotoInset(this, NOTE_CODE, false);
+		// FIXME: if SinglePar is changed to act on the inner
+		// paragraph, this will not be OK anymore. The update is
+		// useful for auto-open collapsible insets.
+		dr.screenUpdate(Update::SinglePar | Update::FitCursor);
 		break;
 
 	case LFUN_REFERENCE_NEXT: {
@@ -1511,6 +1515,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		tmp.push_back(LABEL_CODE);
 		tmp.push_back(REF_CODE);
 		gotoInset(this, tmp, true);
+		// FIXME: if SinglePar is changed to act on the inner
+		// paragraph, this will not be OK anymore. The update is
+		// useful for auto-open collapsible insets.
+		dr.screenUpdate(Update::SinglePar | Update::FitCursor);
 		break;
 	}
 
