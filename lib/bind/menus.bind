@@ -126,6 +126,7 @@ Format 5
 \bind "M-p Up"			"outline-up"
 \bind "M-p Down"		"outline-down"
 
+\bind "M-p M-Return"		"environment-split before"
 \bind "M-p Return"		"command-alternatives environment-split ; environment-split previous"
 \bind "M-p S-Return"		"environment-split outer"
 
