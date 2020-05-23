@@ -179,13 +179,6 @@ bool findInset(DocIterator & dit, vector<InsetCode> const & codes,
 }
 
 
-/// Looks for next inset with the given code
-void findInset(DocIterator & dit, InsetCode code, bool same_content)
-{
-	findInset(dit, vector<InsetCode>(1, code), same_content);
-}
-
-
 /// Moves cursor to the next inset with one of the given codes.
 void gotoInset(BufferView * bv, vector<InsetCode> const & codes,
 	       bool same_content)
@@ -199,13 +192,6 @@ void gotoInset(BufferView * bv, vector<InsetCode> const & codes,
 	tmpcur.clearSelection();
 	bv->setCursor(tmpcur);
 	bv->showCursor();
-}
-
-
-/// Moves cursor to the next inset with given code.
-void gotoInset(BufferView * bv, InsetCode code, bool same_content)
-{
-	gotoInset(bv, vector<InsetCode>(1, code), same_content);
 }
 
 
@@ -1530,7 +1516,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_NOTE_NEXT:
-		gotoInset(this, NOTE_CODE, false);
+		gotoInset(this, { NOTE_CODE }, false);
 		// FIXME: if SinglePar is changed to act on the inner
 		// paragraph, this will not be OK anymore. The update is
 		// useful for auto-open collapsible insets.
@@ -1538,10 +1524,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 
 	case LFUN_REFERENCE_NEXT: {
-		vector<InsetCode> tmp;
-		tmp.push_back(LABEL_CODE);
-		tmp.push_back(REF_CODE);
-		gotoInset(this, tmp, true);
+		gotoInset(this, { LABEL_CODE, REF_CODE }, true);
 		// FIXME: if SinglePar is changed to act on the inner
 		// paragraph, this will not be OK anymore. The update is
 		// useful for auto-open collapsible insets.
@@ -1723,7 +1706,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_BIBTEX_DATABASE_ADD: {
 		Cursor tmpcur = cur;
-		findInset(tmpcur, BIBTEX_CODE, false);
+		findInset(tmpcur, { BIBTEX_CODE }, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						BIBTEX_CODE);
 		if (inset) {
@@ -1735,7 +1718,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_BIBTEX_DATABASE_DEL: {
 		Cursor tmpcur = cur;
-		findInset(tmpcur, BIBTEX_CODE, false);
+		findInset(tmpcur, { BIBTEX_CODE }, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						BIBTEX_CODE);
 		if (inset) {
