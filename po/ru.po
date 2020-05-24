@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-05-03 13:31+0200\n"
-"PO-Revision-Date: 2020-05-07 09:18+0300\n"
+"PO-Revision-Date: 2020-05-23 18:49+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -630,7 +630,7 @@ msgstr "Выбрать вашу ветку"
 
 #: src/frontends/qt/ui/BranchUi.ui:37
 msgid "Inverted"
-msgstr "Инвертирование"
+msgstr "Инверсия"
 
 #: src/frontends/qt/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
@@ -3094,7 +3094,7 @@ msgstr "Внутренний элемент LyX"
 
 #: src/frontends/qt/ui/NoteUi.ui:47
 msgid "LyX &Note"
-msgstr "&Заметка LyX"
+msgstr "&Заметка"
 
 #: src/frontends/qt/ui/NoteUi.ui:54
 msgid "Export to LaTeX/Docbook but don't print"
@@ -5910,7 +5910,7 @@ msgstr ""
 #: lib/citeengines/biblatex.citeengine:129
 #: lib/citeengines/jurabib.citeengine:121 lib/citeengines/natbib.citeengine:119
 msgid "not cited"
-msgstr "не цитировался"
+msgstr "без ссылки"
 
 #: lib/citeengines/basic.citeengine:53
 #: lib/citeengines/biblatex-natbib.citeengine:139
@@ -19780,7 +19780,7 @@ msgstr "Двойная рамка|Д"
 
 #: lib/ui/stdcontext.inc:213 lib/ui/stdmenus.inc:536
 msgid "LyX Note|N"
-msgstr "Заметка LyX"
+msgstr "Заметка|З"
 
 #: lib/ui/stdcontext.inc:214
 msgid "Comment|m"
@@ -20255,7 +20255,7 @@ msgstr "Деактивировать ветку в главном"
 
 #: lib/ui/stdcontext.inc:506
 msgid "Invert Inset|I"
-msgstr "Обратить вставку"
+msgstr "Инвертировать вставку"
 
 #: lib/ui/stdcontext.inc:507
 msgid "Add Unknown Branch|w"
@@ -21635,7 +21635,7 @@ msgstr "Вставить примечание на полях"
 
 #: lib/ui/stdtoolbars.inc:140
 msgid "Insert LyX note"
-msgstr "Вставить заметку LyX"
+msgstr "Вставить заметку"
 
 #: lib/ui/stdtoolbars.inc:141
 msgid "Insert box"
