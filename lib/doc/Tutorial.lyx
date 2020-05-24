@@ -1,4 +1,4 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 544
 \begin_document
 \begin_header
@@ -3244,7 +3244,19 @@ List
 \begin_inset space ~
 \end_inset
 
-TOC\SpecialChar menuseparator
+TOC
+\change_inserted -712698321 1590305779
+
+\begin_inset space \thinspace{}
+\end_inset
+
+/
+\begin_inset space \thinspace{}
+\end_inset
+
+References
+\change_unchanged
+\SpecialChar menuseparator
 Table
 \begin_inset space ~
 \end_inset
@@ -5186,8 +5198,12 @@ Bib\SpecialChar TeX
 \begin_layout Standard
 \SpecialChar LyX
  has support for Bib\SpecialChar TeX
-, which allows you to build databases of bibliographical
- references to be used in multiple documents.
+
+\change_inserted -712698321 1590301994
+ and Biblatex
+\change_unchanged
+, which allows you to build databases of bibliographical references to be
+ used in multiple documents.
  Select 
 \family sans
 Insert\SpecialChar menuseparator
@@ -5199,8 +5215,24 @@ List
 \begin_inset space \thinspace{}
 \end_inset
 
-TOC\SpecialChar menuseparator
-BibTeX
+TOC
+\change_inserted -712698321 1590301964
+
+\begin_inset space \thinspace{}
+\end_inset
+
+/
+\begin_inset space \thinspace{}
+\end_inset
+
+References
+\change_unchanged
+\SpecialChar menuseparator
+Bib
+\change_inserted -712698321 1590301973
+(la)
+\change_unchanged
+TeX
 \begin_inset space ~
 \end_inset
 
@@ -5215,14 +5247,44 @@ Bib\SpecialChar TeX
  In the 
 \family sans
 Database
+\change_inserted -712698321 1590302046
+s
+\change_unchanged
+
 \family default
- field you load Bib\SpecialChar TeX
- files, in the 
+ 
+\change_deleted -712698321 1590302066
+field
+\change_inserted -712698321 1590302067
+widget
+\change_unchanged
+ you 
+\change_deleted -712698321 1590302057
+load
+\change_inserted -712698321 1590302058
+select
+\change_unchanged
+ Bib\SpecialChar TeX
+ files
+\change_inserted -712698321 1590302061
+ to load
+\change_unchanged
+, in the 
 \family sans
 Style
 \family default
- field you can load Bib\SpecialChar TeX
- style files.
+ field you can 
+\change_deleted -712698321 1590302077
+load
+\change_inserted -712698321 1590302078
+select a
+\change_unchanged
+ Bib\SpecialChar TeX
+ style file
+\change_deleted -712698321 1590302081
+s
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Standard
@@ -5254,6 +5316,13 @@ Bib\SpecialChar TeX
 
 \family default
  file.
+
+\change_inserted -712698321 1590302176
+ If you want to use Biblatex rather than classic Bib\SpecialChar TeX
+, please refer to the
+ User Guide for instructions.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section

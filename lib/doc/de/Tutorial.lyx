@@ -3224,15 +3224,7 @@ vor
  der ersten Kapitelüberschrift und wählen dann den Menüpunkt 
 \family sans
 Einfügen\SpecialChar menuseparator
-Liste
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-Inhaltsverzeichnis\SpecialChar menuseparator
+Verzeichnisse\SpecialChar menuseparator
 Inhaltsver\SpecialChar softhyphen
 zeichnis
 \family default
@@ -5271,9 +5263,12 @@ Bib\SpecialChar TeX
 \begin_layout Standard
 \SpecialChar LyX
  bietet Unterstützung für Bib\SpecialChar TeX
-.
- Dieses Programm erlaubt es, Datenbanken von Literaturreferenzen für die
- Verwendung in vielen Dokumenten zu unterhalten.
+ und Biblatex.
+ Damit können Sie Literaturreferenzen direkt aus speziellen externen Dateien
+ (sog.
+ Bib\SpecialChar TeX
+-Datenbanken) laden, die Sie für die Mehrfachverwendung in Ihren Dokumenten
+ unterhalten.
  Um eine solche 
 \family typewriter
 .bib
@@ -5281,16 +5276,8 @@ Bib\SpecialChar TeX
 -Datei einzubinden, verwenden Sie den Menüpunkt 
 \family sans
 Einfügen\SpecialChar menuseparator
-Liste
-\begin_inset space \space{}
-\end_inset
-
-/
-\begin_inset space \space{}
-\end_inset
-
-Inhaltsverzeichnis\SpecialChar menuseparator
-BibTeX
+Verzeichnis\SpecialChar menuseparator
+Bib(la)TeX
 \begin_inset space \space{}
 \end_inset
 
@@ -5298,22 +5285,18 @@ Literaturverzeichnis
 \family default
 .
  Es öffnet sich ein Dialogfeld.
- Im Feld 
+ Im Fenster 
 \family sans
 Datenbanken
 \family default
- geben Sie den Namen der 
-\family typewriter
-.bib
-\family default
--Datei ein.
+ können Sie die Datenbank(en) auswählen.
  Im Feld 
 \family sans
 Stil
 \family default
  können Bib\SpecialChar TeX
--Stildateien geladen werden, die festlegen wie das Literaturverzeichn
-is formatiert wird.
+-Stildateien gewählt werden, die festlegen, wie das Literaturverzeich
+nis formatiert wird.
 \end_layout
 
 \begin_layout Standard
@@ -5332,6 +5315,9 @@ reference "sec:Literaturverzeichnisse"
 
 ).
  Dieser Dialog zeigt alle in der Datenbank verfügbaren Einträge an.
+ Wenn Sie statt dem klassischen Bib\SpecialChar TeX
+ lieber Biblatex verwenden wollen, finden
+ Sie dafür im Benutzerhandbuch genauere Instruktionen.
 \end_layout
 
 \begin_layout Subsection
