@@ -2354,7 +2354,9 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       int numpars = 0;
       int spaces = 0;
       while (actual._tokenstart > numpars) {
-        if (interval_.par[pos+numpars] == ']' && interval_.par[actual._tokenstart-numpars-1] == '[')
+        if (pos+numpars >= interval_.par.size())
+          break;
+        else if (interval_.par[pos+numpars] == ']' && interval_.par[actual._tokenstart-numpars-1] == '[')
           numpars++;
         else if (interval_.par[pos+numpars] == '}' && interval_.par[actual._tokenstart-numpars-1] == '{')
           numpars++;
@@ -2535,7 +2537,7 @@ int LatexInfo::process(ostringstream &os, KeyInfo &actual )
   if (oldStart <= end) {
     processRegion(oldStart, end);
   }
-  if (interval_.par[end] == '}') {
+  if (interval_.par.size() > (size_t) end && interval_.par[end] == '}') {
     end += 1;
     // This is the normal case.
     // But if using the firstlanguage, the closing may be missing
@@ -2804,9 +2806,9 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 					lng -= 2;
 					open_braces++;
 				}
-				else
+	else
 					break;
-			}
+}
 			if (lng < par_as_string.size())
 				par_as_string = par_as_string.substr(0,lng);
 			/*
@@ -3014,7 +3016,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 			mres.match2end = str.size() - pos;
 			mres.pos = pos;
 			return mres;
-		}
+			}
 	}
 	return mres;
 }
