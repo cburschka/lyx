@@ -8487,12 +8487,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8505,6 +8507,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8528,6 +8531,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -40466,8 +40470,10 @@ Visible
 \begin_inset space ~
 \end_inset
 
-Space Inserts a character representing a single space (the one you get when
- pressing the 
+Space 
+\change_deleted -712698321 1590482504
+Inserts a character representing a single space (the one you get when pressing
+ the 
 \family sans
 Space
 \family default
@@ -40476,6 +40482,49 @@ Space
 \end_inset
 
 
+\change_unchanged
+Inserts a character to visualize that there is or should be a space.
+ This is e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+useful if you need to indicate a space in a command sequence.
+ An example from the \SpecialChar LyX
+ 
+\emph on
+Math
+\emph default
+ manual: 
+\begin_inset Quotes eld
+\end_inset
+
+To insert a fraction use the command 
+\series bold
+
+\backslash
+frac
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+A
+\begin_inset Formula $\downarrow$
+\end_inset
+
+B.
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+ The visible space is hereby the character before the 
+\series bold
+A
+\series default
+.
 \end_layout
 
 \begin_layout Description
@@ -40647,6 +40696,8 @@ reference "subsec:Thin-Space"
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -712698321 1590482457
 Visible
 \begin_inset space ~
 \end_inset
@@ -40693,6 +40744,8 @@ B.
 A
 \series default
 .
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -40861,8 +40914,11 @@ Justified
 \begin_inset space ~
 \end_inset
 
-Break Inserts a forced line break that right justifies the remaining text
- as described in section
+Break Inserts a forced line break that 
+\change_deleted -712698321 1590482910
+right 
+\change_unchanged
+justifies the remaining text as described in section
 \begin_inset space ~
 \end_inset
 
@@ -41474,7 +41530,11 @@ reference "sec:Floats"
 
 ; captions in multi-page tables are described in the section 
 \emph on
-Multi-page Captions
+Multi-page 
+\change_inserted -712698321 1590482693
+Table 
+\change_unchanged
+Captions
 \emph default
  of the 
 \emph on
