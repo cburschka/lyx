@@ -2432,7 +2432,7 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       int val = actual._tokenstart;
       for (count = 0; count < actual._tokenstart;) {
         val = interval_.previousNotIgnored(val-1);
-        if (interval_.par[val] != ' ')
+        if (val < 0 || interval_.par[val] != ' ')
           break;
         else {
           count = actual._tokenstart - val;
