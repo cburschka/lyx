@@ -1639,18 +1639,22 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			break;
 		}
 
-		// We need to use fromPolyglossiaEnvironment die to Arabic > arabic
+		// We need to use fromPolyglossiaEnvironment due to Arabic > arabic
 		if (is_known(fromPolyglossiaEnvironment(name), preamble.polyglossia_languages)) {
 			// We must begin a new paragraph if not already done
-			if (! parent_context.atParagraphStart()) {
+			if (!parent_context.atParagraphStart()) {
 				parent_context.check_end_layout(os);
 				parent_context.new_paragraph(os);
 			}
-			// save the language in the context so that it is
+			// store previous language because we must reset it at the end
+			string const lang_old = parent_context.font.language;
+			// save new language in context so that it is
 			// handled by parse_text
 			parent_context.font.language =
 				preamble.polyglossia2lyx(fromPolyglossiaEnvironment(name));
 			parse_text(p, os, FLAG_END, outer, parent_context);
+			// reset previous language
+			parent_context.font.language = lang_old;
 			// Just in case the environment is empty
 			parent_context.extra_stuff.erase();
 			// We must begin a new paragraph to reset the language
