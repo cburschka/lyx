@@ -596,6 +596,14 @@ contributors = [
                  "30 March 2005",
                  u"Bug fixes"),
 
+     contributor(u"Henry Chern",
+                 "henrychern () yandex ! com",
+                 "GPL",
+                 "[no subject]",
+                 "msg211380",
+                 "26 May 2020",
+                 u"Russian Translation of the User Guide"),
+
      contributor(u"Yuri Chornoivan",
                  "yurchor () ukr ! net",
                  "GPL",
