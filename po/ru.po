@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-05-03 13:31+0200\n"
-"PO-Revision-Date: 2020-05-23 18:49+0300\n"
+"PO-Revision-Date: 2020-05-26 10:50+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -3132,7 +3132,6 @@ msgstr ""
 "Настройки нумерации строк (пакет lineno). Обратитесь к документации пакета "
 "за подробностями."
 
-# или Перечислять в содержании?
 #: src/frontends/qt/ui/NumberingUi.ui:82
 msgid "&List in Table of Contents"
 msgstr "&Отображать в содержании"
@@ -7836,7 +7835,7 @@ msgstr "Устаревшее"
 #: lib/layouts/egs.layout:199 lib/layouts/powerdot.layout:255
 #: lib/layouts/simplecv.layout:98 lib/layouts/stdlists.inc:13
 msgid "Itemize"
-msgstr "Перечисление"
+msgstr "Маркировка"
 
 #: lib/layouts/aapaper.layout:53 lib/layouts/agu_stdlists.inc:21
 #: lib/layouts/apa.layout:390 lib/layouts/apa6.layout:491
@@ -7844,7 +7843,7 @@ msgstr "Перечисление"
 #: lib/layouts/egs.layout:165 lib/layouts/powerdot.layout:314
 #: lib/layouts/stdlists.inc:49
 msgid "Enumerate"
-msgstr "Нумерация"
+msgstr "Перечисление"
 
 #: lib/layouts/aapaper.layout:56 lib/layouts/agu_stdlists.inc:29
 #: lib/layouts/beamer.layout:179 lib/layouts/db_stdlists.inc:26
@@ -8274,11 +8273,9 @@ msgstr "Дополнительная информация"
 msgid "Supporting Information Available"
 msgstr "Доступна вспомогательная информация"
 
-# TOC - Table of Contents
-# Автор содержания?
 #: lib/layouts/achemso.layout:262
 msgid "TOC entry"
-msgstr "Элемент содержания"
+msgstr "Пункт содержания"
 
 #: lib/layouts/achemso.layout:266
 msgid "Graphical TOC Entry"
@@ -12142,9 +12139,9 @@ msgid ""
 "Controls the layout of enumerate, itemize, description, and list/labeling. "
 "See section Customized Lists of the User's Guide for a detailed description."
 msgstr ""
-"Управляет макетами для списков маркировки, перечисления, нумерации и "
-"описания. См. подробное описание в разделе \"Настраиваемые списки\" "
-"руководства пользователя."
+"Управляет макетами для списков маркировки, перечисления, описания и пометки. "
+"См. подробное описание в разделе \"Настраиваемые списки\" руководства "
+"пользователя."
 
 #: lib/layouts/enumitem.module:59 lib/layouts/paralist.module:31
 #: lib/layouts/powerdot.layout:276
@@ -12160,7 +12157,7 @@ msgstr "Необязательные аргументы для этого спи
 #: lib/layouts/enumitem.module:67 lib/layouts/enumitem.module:112
 #: lib/layouts/paralist.module:38 lib/layouts/powerdot.layout:337
 msgid "Enumerate Options"
-msgstr "Параметры ненумерованного списка"
+msgstr "Параметры нумерованного списка"
 
 #: lib/layouts/enumitem.module:75
 msgid "Description Options"
@@ -12170,11 +12167,11 @@ msgstr "Параметры списка описаний"
 #: lib/layouts/scrlettr.layout:26 lib/layouts/scrlttr2.layout:31
 #: lib/layouts/stdlyxlist.inc:6
 msgid "Labeling"
-msgstr "Маркировка"
+msgstr "Пометка"
 
 #: lib/layouts/enumitem.module:109
 msgid "Enumerate-Resume"
-msgstr "Нумерация-Продолжение"
+msgstr "Перечисление-Продолжение"
 
 #: lib/layouts/eqs-within-sections.module:2
 msgid "Number Equations by Section"
@@ -12396,7 +12393,7 @@ msgstr "Большой пункт:"
 
 #: lib/layouts/europasscv.layout:312
 msgid "EcvItemize"
-msgstr "Перечисление ecv"
+msgstr "Маркировка ecv"
 
 #: lib/layouts/europasscv.layout:346 lib/layouts/europecv.layout:216
 msgid "MotherTongue"
@@ -14628,8 +14625,6 @@ msgstr "Автор в колонтитуле"
 msgid "Author Running:"
 msgstr "Автор в колонтитуле:"
 
-# TOC - Table of Contents
-# Автор содержания?
 #: lib/layouts/llncs.layout:212 lib/layouts/svcommon.inc:395
 msgid "TOC Author"
 msgstr "Автор содержания"
@@ -15317,7 +15312,7 @@ msgstr ""
 "и ненумерованные списки могут быть набраны внутри абзацев, как абзацы, а "
 "также в компактном варианте. Большинство окружений имеют необязательные "
 "аргументы для форматирования меток. Кроме того, окружения LaTeX "
-"'Перечисление' и 'Нумерация' расширяются, чтобы использовать подобные "
+"'Перечисление' и 'Маркировка' расширяются, чтобы использовать подобные "
 "дополнительные аргументы."
 
 #: lib/layouts/paralist.module:32 lib/layouts/paralist.module:39
@@ -15331,51 +15326,51 @@ msgstr "Необязательные аргументы для этого спи
 
 #: lib/layouts/paralist.module:49
 msgid "AsParagraphItem"
-msgstr "Как абзац"
+msgstr "Как абзац (марк.)"
 
 #: lib/layouts/paralist.module:53
 msgid "As Paragraph Itemize Options"
-msgstr "Аргументы перечисления в виде абзаца"
+msgstr "Аргументы маркировки в виде абзаца"
 
 #: lib/layouts/paralist.module:58
 msgid "InParagraphItem"
-msgstr "В абзаце"
+msgstr "В абзаце (марк.)"
 
 #: lib/layouts/paralist.module:62
 msgid "In Paragraph Itemize Options"
-msgstr "Аргументы перечисления внутри абзаца"
+msgstr "Аргументы маркировки внутри абзаца"
 
 #: lib/layouts/paralist.module:67
 msgid "CompactItem"
-msgstr "Компактный"
+msgstr "Компактный (марк.)"
 
 #: lib/layouts/paralist.module:74
 msgid "Compact Itemize Options"
-msgstr "Аргументы компактного перечисления"
+msgstr "Аргументы компактной маркировки"
 
 #: lib/layouts/paralist.module:79
 msgid "AsParagraphEnum"
-msgstr "Как абзац (нумер.)"
+msgstr "Как абзац (перечисл.)"
 
 #: lib/layouts/paralist.module:83
 msgid "As Paragraph Enumerate Options"
-msgstr "Аргументы нумерации в виде абзаца"
+msgstr "Аргументы перечисления в виде абзаца"
 
 #: lib/layouts/paralist.module:88
 msgid "InParagraphEnum"
-msgstr "В абзаце (нумер.)"
+msgstr "В абзаце (перечисл.)"
 
 #: lib/layouts/paralist.module:92
 msgid "In Paragraph Enumerate Options"
-msgstr "Аргументы нумерации внутри абзаца"
+msgstr "Аргументы перечисления внутри абзаца"
 
 #: lib/layouts/paralist.module:97
 msgid "CompactEnum"
-msgstr "Компактный (нумер.)"
+msgstr "Компактный (перечисл.)"
 
 #: lib/layouts/paralist.module:104
 msgid "Compact Enumerate Options"
-msgstr "Аргументы компактной нумерации"
+msgstr "Аргументы компактного перечисления"
 
 #: lib/layouts/paralist.module:109
 msgid "AsParagraphDescr"
@@ -15821,7 +15816,7 @@ msgstr "Необязательные аргументы к команде sectio
 
 #: lib/layouts/powerdot.layout:272 lib/layouts/powerdot.layout:305
 msgid "Itemize Type"
-msgstr "Перечисление"
+msgstr "Тип маркировки"
 
 #: lib/layouts/powerdot.layout:273 lib/layouts/powerdot.layout:306
 msgid "Itemize type specification (see powerdot manual)"
@@ -15829,11 +15824,11 @@ msgstr "Спецификация типов ненумерованных спи�
 
 #: lib/layouts/powerdot.layout:302
 msgid "ItemizeType1"
-msgstr "Перечисление тип 1"
+msgstr "Маркировка тип 1"
 
 #: lib/layouts/powerdot.layout:333 lib/layouts/powerdot.layout:367
 msgid "Enumerate Type"
-msgstr "Нумерация"
+msgstr "Тип перечисления"
 
 #: lib/layouts/powerdot.layout:334 lib/layouts/powerdot.layout:368
 msgid "Enumerate type specification (see powerdot manual)"
@@ -15841,7 +15836,7 @@ msgstr "Спецификация типов нумерованных списк�
 
 #: lib/layouts/powerdot.layout:364
 msgid "EnumerateType1"
-msgstr "Нумерация тип 1"
+msgstr "Перечисление тип 1"
 
 #: lib/layouts/powerdot.layout:475
 msgid "Twocolumn"
@@ -19834,7 +19829,6 @@ msgstr "Отрицательный тонкий пробел|О"
 msgid "Half Quad Space (Enskip)|k"
 msgstr "Полуквадрат (enskip)|л"
 
-# Неразрывный пробел в пол квадрата?
 #: lib/ui/stdcontext.inc:249
 msgid "Protected Half Quad Space (Enspace)|E"
 msgstr "Защищённый полуквадрат (enspace)|щ"
@@ -20103,7 +20097,6 @@ msgstr "Вставить необязательный аргумент"
 msgid "Remove Optional Argument"
 msgstr "Убрать необязательный аргумент"
 
-# Eating From the Right?wtf?
 #: lib/ui/stdcontext.inc:406 lib/ui/stdmenus.inc:276
 msgid "Append Argument Eating From the Right"
 msgstr "Добавить аргумент, поглощающий справа"
@@ -21579,15 +21572,15 @@ msgstr "Дополнительно"
 
 #: lib/ui/stdtoolbars.inc:122
 msgid "Numbered list"
-msgstr "Нумерованный список"
+msgstr "Перечисление"
 
 #: lib/ui/stdtoolbars.inc:123
 msgid "Itemized list"
-msgstr "Перечисляемый список"
+msgstr "Маркировка"
 
 #: lib/ui/stdtoolbars.inc:124
 msgid "Labeled List"
-msgstr "Маркированный список"
+msgstr "Пометка"
 
 #: lib/ui/stdtoolbars.inc:127
 msgid "Increase depth"
@@ -27351,7 +27344,6 @@ msgstr ""
 "поддерживает выбранную кодировку (%1$s), или измените кодировку в "
 "Документ>Настройки>Язык."
 
-# code point - место в коде?
 #: src/Buffer.cpp:1788
 #, c-format
 msgid "Uncodable character '%1$s' (code point %2$s)"
@@ -27367,7 +27359,6 @@ msgstr ""
 "определённых дословных контекстах.\n"
 "Может помочь смена кодировки документа на utf8."
 
-# code point - место в коде?
 #: src/Buffer.cpp:1796
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
@@ -28055,7 +28046,6 @@ msgstr "Имя ветки"
 msgid "Branch already exists"
 msgstr "Ветка уже существует"
 
-# c-format
 #: src/BufferView.cpp:2927
 #, c-format
 msgid "Inserting document %1$s..."
@@ -28066,7 +28056,6 @@ msgstr "Вставка документа %1$s..."
 msgid "Document %1$s inserted."
 msgstr "Документ %1$s вставлен."
 
-# c-format
 #: src/BufferView.cpp:2944
 #, c-format
 msgid "Could not insert document %1$s"
@@ -30158,14 +30147,12 @@ msgstr "[Отслеживание изменений] "
 msgid "Changed by %1$s[[author]] on %2$s[[date]]. "
 msgstr "Изменено автором %1$s[[author]] в %2$s[[date]]. "
 
-# c-format
 #: src/Text.cpp:1987 src/mathed/InsetMathFont.cpp:237
 #: src/mathed/InsetMathFontOld.cpp:111
 #, c-format
 msgid "Font: %1$s"
 msgstr "Шрифт: %1$s"
 
-# c-format
 #: src/Text.cpp:1992
 #, c-format
 msgid ", Depth: %1$d"
@@ -32625,7 +32612,6 @@ msgstr "Горизонтальное заполнение"
 msgid "Visible Space"
 msgstr "Видимый пробел"
 
-# Half Quad?
 #: src/frontends/qt/GuiHSpace.cpp:220
 msgid ""
 "Insert the spacing even after a line break.\n"
@@ -34690,7 +34676,6 @@ msgstr "Предметный указатель|у"
 msgid "Index Entry|d"
 msgstr "Рубрика указателя"
 
-# c-format
 #: src/frontends/qt/Menus.cpp:1534
 #, c-format
 msgid "Index: %1$s"
@@ -34805,7 +34790,6 @@ msgstr "Вставить отдельное внешнее \"%1$s\" ниже"
 msgid "Separated Outer %1$s Below"
 msgstr "Отдельное внешнее \"%1$s\" ниже"
 
-# c-format
 #: src/frontends/qt/Menus.cpp:2317
 #, c-format
 msgid "Export [%1$s]|E"
@@ -34819,7 +34803,6 @@ msgstr "Действие не определено!"
 msgid "Search"
 msgstr "Искать"
 
-# c-format
 #: src/frontends/qt/Toolbars.cpp:246
 #, c-format
 msgid "Export %1$s"
@@ -35184,7 +35167,6 @@ msgstr "Строчные буквы"
 msgid "Arabic Numeral"
 msgstr "Арабские"
 
-# c-format
 #: src/insets/InsetCounter.cpp:215
 #, c-format
 msgid "Counter: Set %1$s"
@@ -35195,7 +35177,6 @@ msgstr "Счётчик: установить %1$s"
 msgid "Set value of counter %1$s to %2$s"
 msgstr "Установить значение счётчика %1$s в %2$s"
 
-# c-format
 #: src/insets/InsetCounter.cpp:220
 #, c-format
 msgid "Counter: Add to %1$s"
@@ -35206,7 +35187,6 @@ msgstr "Счётчик: увеличить %1$s"
 msgid "Add %1$s to value of counter %2$s"
 msgstr "Прибавить %1$s к значению счётчика %2$s"
 
-# c-format
 #: src/insets/InsetCounter.cpp:224
 #, c-format
 msgid "Counter: Reset %1$s"
@@ -35217,7 +35197,6 @@ msgstr "Счётчик: сбросить %1$s"
 msgid "Reset value of counter %1$s"
 msgstr "Сбросить значение счётчика %1$s"
 
-# c-format
 #: src/insets/InsetCounter.cpp:228
 #, c-format
 msgid "Counter: Save %1$s"
@@ -36534,7 +36513,6 @@ msgstr "Соответствие найдено."
 msgid "Can't add vertical grid lines in '%1$s'"
 msgstr "Невозможно добавить вертикальные линии в '%1$s'"
 
-# c-format
 #: src/mathed/InsetMathBox.cpp:98
 #, c-format
 msgid "Box: %1$s"
@@ -36669,7 +36647,6 @@ msgstr "Красивая ссылка"
 msgid "FormatRef: "
 msgstr "ФорматСсылки: "
 
-# c-format
 #: src/mathed/InsetMathSize.cpp:107
 #, c-format
 msgid "Size: %1$s"
