@@ -50,7 +50,7 @@ elseif(WIN32)
 
         # RKH
         # get_filename_component(MINGW_RUNTIME_PATH ${GCC_LIBGCC} PATH)
-        set(MINGW_RUNTIME_PATH "/usr/i686-w64-mingw32/sys-root/mingw/bin")
+        set(MINGW_RUNTIME_PATH "C:/Program Files/mingw64/bin")
         macro(add_runtime_dll _DLL)
             file(GLOB GCC_RUNTIME ${MINGW_RUNTIME_PATH}/${_DLL})
             list(APPEND runtime ${GCC_RUNTIME})
