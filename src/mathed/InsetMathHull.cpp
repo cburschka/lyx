@@ -511,11 +511,9 @@ bool InsetMathHull::previewState(const BufferView *const bv) const
 namespace {
 const int ERROR_FRAME_WIDTH = 2;
 
-bool previewTooSmall(MetricsBase const & mb, Dimension const & dim)
+bool previewTooSmall(Dimension const & dim)
 {
-	// Value was hardcoded to 10 pixels
-	int const minval = mb.bv->zoomedPixels(10);
-	return dim.width() <= minval && dim.height() <= minval;
+	return dim.width() <= 10 && dim.height() <= 10;
 }
 }
 
@@ -528,7 +526,7 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	if (previewState(mi.base.bv)) {
 		preview_->metrics(mi, dim);
-		if (previewTooSmall(mi.base, dim)) {
+		if (previewTooSmall(dim)) {
 			// preview image is too small
 			dim.wid += 2 * ERROR_FRAME_WIDTH;
 			dim.asc += 2 * ERROR_FRAME_WIDTH;
@@ -593,7 +591,7 @@ ColorCode InsetMathHull::backgroundColor(PainterInfo const & pi) const
 	BufferView const * const bv = pi.base.bv;
 	if (previewState(bv)) {
 		Dimension const dim = dimension(*pi.base.bv);
-		if (previewTooSmall(pi.base, dim))
+		if (previewTooSmall(dim))
 			return Color_error;
 		return graphics::PreviewLoader::backgroundColor();
 	}
@@ -623,7 +621,7 @@ void InsetMathHull::drawMarkers(PainterInfo & pi, int x, int y) const
 void InsetMathHull::drawBackground(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
-	if (previewTooSmall(pi.base, dim)) {
+	if (previewTooSmall(dim)) {
 		pi.pain.fillRectangle(x, y - 2 * ERROR_FRAME_WIDTH,
 		    dim.wid, dim.asc + dim.des, backgroundColor(pi));
 		return;
@@ -652,7 +650,7 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 		// already.
 		Changer dummy = !canPaintChange(*bv) ? make_change(pi.change, Change())
 			: Changer();
-		if (previewTooSmall(pi.base, dim)) {
+		if (previewTooSmall(dim)) {
 			// we have an extra frame
 			preview_->draw(pi, x + ERROR_FRAME_WIDTH, y);
 		} else {
