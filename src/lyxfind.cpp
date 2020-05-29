@@ -968,7 +968,7 @@ static size_t identifyLeading(string const & s)
 	// + allow to search for colored text too
 	while (regex_replace(t, t, REGEX_BOS "\\\\(((footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge|emph|noun|minisec|text(bf|md|sl|sf|it|tt))|((textcolor|foreignlanguage|latexenvironment)\\{[a-z]+\\*?\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)\\{", "")
 	       || regex_replace(t, t, REGEX_BOS "\\$", "")
-	       || regex_replace(t, t, REGEX_BOS "\\\\\\[ ", "")
+	       || regex_replace(t, t, REGEX_BOS "\\\\\\[", "")
 	       || regex_replace(t, t, REGEX_BOS " ?\\\\item\\{[a-z]+\\}", "")
 	       || regex_replace(t, t, REGEX_BOS "\\\\begin\\{[a-zA-Z_]*\\*?\\} ", ""))
 	       ;
@@ -2711,7 +2711,7 @@ static int identifyClosing(string & t)
 		LYXERR(Debug::FIND, "identifyClosing(): t now is '" << t << "'");
 		if (regex_replace(t, t, "(.*[^\\\\])\\$" REGEX_EOS, "$1"))
 			continue;
-		if (regex_replace(t, t, "(.*[^\\\\]) \\\\\\]" REGEX_EOS, "$1"))
+		if (regex_replace(t, t, "(.*[^\\\\])\\\\\\]" REGEX_EOS, "$1"))
 			continue;
 		if (regex_replace(t, t, "(.*[^\\\\]) \\\\end\\{[a-zA-Z_]*\\*?\\}" REGEX_EOS, "$1"))
 			continue;
@@ -3040,9 +3040,14 @@ MatchResult MatchStringAdv::operator()(DocIterator const & cur, int len, bool at
 	bool ws_left = (cur.pos() > 0)
 		? par.isWordSeparator(cur.pos() - 1)
 		: true;
-	bool ws_right = (cur.pos() + len < par.size())
+	bool ws_right;
+	if (len < 0)
+		ws_right = true;
+	else {
+		ws_right = (cur.pos() + len < par.size())
 		? par.isWordSeparator(cur.pos() + len)
 		: true;
+	}
 	LYXERR(Debug::FIND,
 	       "cur.pos()=" << cur.pos() << ", res=" << res
 	       << ", separ: " << ws_left << ", " << ws_right

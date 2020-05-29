@@ -15,6 +15,7 @@ KK: \Axbuffer-write\[Return]
 KK: \Axdialog-show findreplaceadv\[Return]
 # Uncheck ignore format
 KK: \At\Ai\Ah
+KK: \CF
 KK: \Aob
 Sleep 1
 KK: foo\[Return]
@@ -27,6 +28,7 @@ KK: \CF
 KK: \[Delete]
 # Uncheck ignore format
 #KK: \At\Ai\Ah
+#KK: \CF
 KK: \Aob
 Sleep 1
 KK: bar\[Return]

@@ -14,6 +14,7 @@ KK: \Axbuffer-write\[Return]
 KK: \Axdialog-show findreplaceadv\[Return]
 # Uncheck ignore format
 KK: \At\Ai\Ah
+KK: \CF
 KK: \Aj
 KK: \Ao2
 KK: foo\[Return]
@@ -26,9 +27,11 @@ KK: \Axdialog-show findreplaceadv\[Return]
 KK: \[Delete]
 # Uncheck ignore format
 #KK: \At\Ai\Ah
+#KK: \CF
 KK: \Ao9
-KK: foo\[Return]\[Return]
+KK: foo\[Return]\[Return]\[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 0\n with len: 3
+CP: Putting selection at .*idx: 0 par: 1 pos: 0\n with len: 3
 CP: Putting selection at .*idx: 0 par: 2 pos: 0\n with len: 3
 TestEnd
 Lang C

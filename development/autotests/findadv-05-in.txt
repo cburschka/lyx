@@ -3,13 +3,14 @@
 Lang sk_SK.utf8
 CO: findadv-05.ctrl
 TestBegin test.lyx -dbg key,find > findadv-05.loga.txt 2>&1
-KD: 50
+KD: 100
 CN: Part 1
 KK: foo \Cefoo foo\Ce foo\C\[Home]
 KK: \Cs
 KK: \CF
 # Uncheck ignore format
 KK: \At\Ai\Ah
+KK: \CF
 # Select emphasised
 KK: \Ce
 KK: foo\[Return]
