@@ -970,7 +970,7 @@ static size_t identifyLeading(string const & s)
 	       || regex_replace(t, t, REGEX_BOS "\\$", "")
 	       || regex_replace(t, t, REGEX_BOS "\\\\\\[", "")
 	       || regex_replace(t, t, REGEX_BOS " ?\\\\item\\{[a-z]+\\}", "")
-	       || regex_replace(t, t, REGEX_BOS "\\\\begin\\{[a-zA-Z_]*\\*?\\} ", ""))
+	       || regex_replace(t, t, REGEX_BOS "\\\\begin\\{[a-zA-Z_]*\\*?\\}", ""))
 	       ;
 	LYXERR(Debug::FIND, "  after removing leading $, \\[ , \\emph{, \\textbf{, etc.: '" << t << "'");
 	return s.find(t);
@@ -2713,7 +2713,7 @@ static int identifyClosing(string & t)
 			continue;
 		if (regex_replace(t, t, "(.*[^\\\\])\\\\\\]" REGEX_EOS, "$1"))
 			continue;
-		if (regex_replace(t, t, "(.*[^\\\\]) \\\\end\\{[a-zA-Z_]*\\*?\\}" REGEX_EOS, "$1"))
+		if (regex_replace(t, t, "(.*[^\\\\])\\\\end\\{[a-zA-Z_]*\\*?\\}" REGEX_EOS, "$1"))
 			continue;
 		if (regex_replace(t, t, "(.*[^\\\\])\\}" REGEX_EOS, "$1")) {
 			++open_braces;
