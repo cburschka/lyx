@@ -1182,12 +1182,12 @@ static void checkDepthIndex(int val)
   static int maxdepthidx = MAXOPENED-2;
   static int lastmaxdepth = 0;
   if (val > lastmaxdepth) {
-    LYXERR0("Depth reached " << val);
+    LYXERR(Debug::INFO, "Depth reached " << val);
     lastmaxdepth = val;
   }
   if (val > maxdepthidx) {
     maxdepthidx = val;
-    LYXERR0("maxdepthidx now " << val);
+    LYXERR(Debug::INFO, "maxdepthidx now " << val);
   }
 }
 
@@ -1197,7 +1197,7 @@ static void checkIgnoreIdx(int val)
 {
   static int lastmaxignore = -1;
   if ((lastmaxignore < val) && (size_t(val+1) >= borders.size())) {
-    LYXERR0("IgnoreIdx reached " << val);
+    LYXERR(Debug::INFO, "IgnoreIdx reached " << val);
     lastmaxignore = val;
   }
 }
@@ -1293,7 +1293,7 @@ static void buildaccent(string n, string param, string values)
         if ((values[start] & 0x80) == 0) {
           // is ascii
           accents[key] = values.substr(start, 1);
-          // LYXERR0("" << key << "=" << accents[key]);
+          // LYXERR(Debug::INFO, "" << key << "=" << accents[key]);
         }
         start++;
         continue;
@@ -1308,7 +1308,7 @@ static void buildaccent(string n, string param, string values)
           // This is the first byte of following utf8 char
           accents[key] = values.substr(start, j);
           start += j;
-          // LYXERR0("" << key << "=" << accents[key]);
+          // LYXERR(Debug::INFO, "" << key << "=" << accents[key]);
           break;
         }
       }
@@ -1404,7 +1404,7 @@ void Intervall::removeAccents()
       }
     }
     else {
-      LYXERR0("Not added accent for \"" << key << "\"");
+      LYXERR(Debug::INFO, "Not added accent for \"" << key << "\"");
     }
   }
 }
@@ -2497,7 +2497,7 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       // This cannot happen, already handled
       // fall through
     default: {
-      // LYXERR0("Unhandled keytype");
+      // LYXERR(Debug::INFO, "Unhandled keytype");
       nextKeyIdx = getNextKey();
       break;
     }
@@ -2569,7 +2569,7 @@ string splitOnKnownMacros(string par, bool isPatternString)
 {
   ostringstream os;
   LatexInfo li(par, isPatternString);
-  // LYXERR0("Berfore split: " << par);
+  // LYXERR(Debug::INFO, "Berfore split: " << par);
   KeyInfo DummyKey = KeyInfo(KeyInfo::KeyType::isMain, 2, true);
   DummyKey.head = "";
   DummyKey._tokensize = 0;
@@ -2636,7 +2636,7 @@ string splitOnKnownMacros(string par, bool isPatternString)
   }
   else
     s = par;                            /* no known macros found */
-  // LYXERR0("After split: " << s);
+  // LYXERR(Debug::INFO, "After split: " << s);
   return s;
 }
 
@@ -2679,7 +2679,7 @@ static string correctlanguagesetting(string par, bool isPatternString, bool with
 				string a = it->first;
 				regex_with_format = true;
 				features += " " + a;
-				// LYXERR0("Identified regex format:" << a);
+				// LYXERR(Debug::INFO, "Identified regex format:" << a);
 			}
 			LYXERR(Debug::FIND, "Identified Features" << features);
 
@@ -2697,7 +2697,7 @@ static string correctlanguagesetting(string par, bool isPatternString, bool with
 		}
 	}
 	else {
-		// LYXERR0("No regex formats");
+		// LYXERR(Debug::INFO, "No regex formats");
 	}
 	return result;
 }
@@ -3016,7 +3016,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 			mres.match2end = str.size() - pos;
 			mres.pos = pos;
 			return mres;
-			}
+		}
 	}
 	return mres;
 }
@@ -3315,7 +3315,7 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
             } while (cur.depth() > old_cur.depth()); /* Skip inner insets */
             if (cur.depth() < old_cur.depth()) {
               // Outer inset?
-              LYXERR0("cur.depth() < old_cur.depth(), this should never happen");
+              LYXERR(Debug::INFO, "cur.depth() < old_cur.depth(), this should never happen");
               break;
             }
             if (cur.pos() != old_cur.pos()) {
@@ -3333,7 +3333,7 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
               }
             }
             else {
-              LYXERR0("cur.pos() == old_cur.pos(), this should never happen");
+              LYXERR(Debug::INFO, "cur.pos() == old_cur.pos(), this should never happen");
               actual_match = match(cur, len).match_len;
               if (actual_match == max_match)
                 old_cur = cur;
@@ -3355,7 +3355,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 		int match_len = mres.match_len;
 		LYXERR(Debug::FIND, "match_len: " << match_len);
 		if ((mres.pos > 100000) || (mres.match2end > 100000) || (match_len > 100000)) {
-			LYXERR0("BIG LENGTHS: " << mres.pos << ", " << match_len << ", " << mres.match2end);
+			LYXERR(Debug::INFO, "BIG LENGTHS: " << mres.pos << ", " << match_len << ", " << mres.match2end);
 			match_len = 0;
 		}
 		if (match_len > 0) {
