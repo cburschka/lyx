@@ -13,6 +13,7 @@ KK: \Cs
 KK: \CF
 # Uncheck ignore format (depends on IT language)
 KK: \At\Ai\Ah
+KK: \CF
 KK: \Ce
 CN: Case insensitive, format not ignored .*
 KK: \Axregexp-mode\[Return].*\[Return]
@@ -29,8 +30,9 @@ CN: Case insensitive, format not ignored [a-z]*
 KK: \CF
 # Uncheck ignore format (depends on IT language)
 KK: \At\Ai\Ah
+KK: \CF
 KK: \Ce
-KK: \Axregexp-mode\[Return]\\b[a-z\\s]*\\b\[Return]\[Return]\[Return]
+KK: \Axregexp-mode\[Return]\\b[a-z]*\\b\[Return]\[Return]\[Return]
 Cr: ^.*Putting 
 CP: Putting selection at .*idx: 0 par: 0 pos: 16\n with len: 3
 Cr: ^.*Putting 
@@ -46,6 +48,7 @@ TestBegin test.lyx -dbg key,find >> findadv-re-04.loga.txt 2>&1
 CN: Case sensitive, format not ignored [a-z]*
 KK: \CF
 KK: \At\Ai\Ah
+KK: \CF
 KK: \Ce
 KK: \Az\[Tab]\Axregexp-mode\[Return][a-z]+\[Return]\[Return]\[Return]\[Return]
 Cr: ^.*Putting
@@ -67,6 +70,7 @@ TestBegin test.lyx -dbg key,find >> findadv-re-04.loga.txt 2>&1
 CN: Case sensitive, format not ignored [A-Z]+
 KK: \CF
 KK: \At\Ai\Ah
+KK: \CF
 KK: \Ce
 KK: \Az\[Tab]\Axregexp-mode\[Return][A-Z]+\[Return]\[Return]\[Return]
 Cr: ^.*Putting
