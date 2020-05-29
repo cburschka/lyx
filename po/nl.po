@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-05-20 15:52-0400\n"
-"PO-Revision-Date: 2019-11-22 23:32+0100\n"
+"PO-Revision-Date: 2020-05-27 21:52+0200\n"
 "Last-Translator: Niko Strijbol <strijbol.niko@gmail.com>\n"
 "Language-Team: Dutch <lyx-docs@lists.lyx.org>\n"
 "Language: nl\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3.1\n"
 "X-Poedit-Basepath: ../src\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -3607,7 +3607,7 @@ msgstr "Alle sessie-informatie &wissen"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:85
 msgid "Backup && Saving"
-msgstr "Back-up en opslag"
+msgstr "Back-up &en opslag"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:94
 msgid "Backup &original documents when saving"
@@ -3651,7 +3651,7 @@ msgstr "Pad naar &documentmap opslaan"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:168
 msgid "Windows && Work Area"
-msgstr "Vensters en werkruimte"
+msgstr "Vensters &en werkruimte"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:177
 msgid "Open documents in &tabs"
@@ -4459,7 +4459,7 @@ msgstr "Al&ternatieve taal:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:26
 msgid "General Look && Feel"
-msgstr "Uiterlijk en gedrag"
+msgstr "Uiterlijk &en gedrag"
 
 #: src/frontends/qt4/ui/PrefUi.ui:37
 msgid "&User interface file:"
@@ -14651,9 +14651,8 @@ msgid "REVTeX (V. 4.1)"
 msgstr "REVTeX (V. 4.1)"
 
 #: lib/layouts/revtex4-2.layout:3
-#, fuzzy
 msgid "REVTeX (V. 4.2)"
-msgstr "REVTeX (V. 4.1)"
+msgstr "REVTeX (V. 4.2)"
 
 #: lib/layouts/revtex4-x.inc:85 lib/layouts/revtex4.layout:155
 msgid "Affiliation (alternate)"
@@ -25907,12 +25906,11 @@ msgid "uncodable character"
 msgstr "niet-codeerbaar teken"
 
 #: src/BufferParams.cpp:1756
-#, fuzzy
 msgid "Uncodable character in class options"
-msgstr "Niet-codeerbare tekens in codefragmentinset"
+msgstr "Niet-codeerbare teken in klasse-opties"
 
 #: src/BufferParams.cpp:1758
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The class options of your document contain glyphs that are unknown in the "
 "current document encoding (namely %1$s).\n"
@@ -25922,13 +25920,13 @@ msgid ""
 "Please select an appropriate document encoding\n"
 "(such as utf8) or change the class options accordingly."
 msgstr ""
-"De gebruikerspreambule van uw document bevat tekens die niet gekend zijn in "
-"de huidige tekencodering (namelijk %1$s).\n"
+"De klasse-opties van uw document bevatten tekens die niet gekend zijn in de "
+"huidige tekencodering (namelijk %1$s).\n"
 "Deze tekens wordt weggelaten uit de uitvoer, wat kan resulteren in "
 "onvolledige uitvoer.\n"
 "\n"
 "Gelieve een gepaste tekencodering voor het document te kiezen\n"
-"(zoals utf8) of de preambule aan te passen."
+"(zoals utf8) of de klasse-opties aan te passen."
 
 #: src/BufferParams.cpp:2222
 msgid "Uncodable character in user preamble"
@@ -27127,7 +27125,7 @@ msgstr "Uitvoeren van MakeIndex voor nomencl."
 
 #: src/LaTeX.cpp:896
 msgid "(NOTE: The erroneous command is in the preamble)"
-msgstr ""
+msgstr "(OPMERKING: Het foute commando zit in de preamble)"
 
 #: src/LaTeX.cpp:1388 src/LaTeX.cpp:1394 src/LaTeX.cpp:1403
 msgid "BibTeX error: "
@@ -32547,15 +32545,16 @@ msgid "Uncodable characters in inset"
 msgstr "Niet-codeerbare tekens in inset"
 
 #: src/insets/InsetCommandParams.cpp:523
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters in one of the insets are\n"
 "not representable in the current encoding and have been omitted: %1$s.\n"
 "Unchecking 'Literal' in the respective inset dialog might help."
 msgstr ""
-"De volgende tekens in een van de afbeeldingspaden kunnen\n"
+"De volgende tekens in een van de insets kunnen\n"
 "niet voorgesteld worden in de huidige codering en zijn weggelaten: %1$s.\n"
-"U moet of de codering of het pad aanpassen."
+"De optie 'Letterlijk' uitvinken in het juiste inset-dialoogvenster zou "
+"kunnen helpen."
 
 #: src/insets/InsetExternal.cpp:403
 #, c-format
