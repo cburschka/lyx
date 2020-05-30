@@ -47,7 +47,7 @@ sub makeHelp();            # Create help-string to describe options
 
 my %optionsDef = ();
 #option|param|type|aliases|comment
-my $helpFormat = "  %-8s|%-9s|%-7s|%-17s|%s\n";
+my $helpFormat = "  %-8.8s|%-9.9s|%-7.7s|%-17.17s|%s\n";
 
 sub handleOptions($)
 {
@@ -66,6 +66,7 @@ sub handleOptions($)
   $optionsDef{h}->{Sort} = 0;
   $optionsDef{v}->{fieldname} = "verbose";
   $optionsDef{v}->{alias} = ["verbose"];
+  $optionsDef{v}->{comment} = "Display recognized params";
   $optionsDef{v}->{Sort} = 1;
 
   my %options = ("help" => 0);
@@ -75,15 +76,17 @@ sub handleOptions($)
   while( my( $option, $value, $pretty ) = Getopt::Mixed::nextOption()) {
     if (defined($optionsDef{$option})) {
       my $fieldname = $optionsDef{$option}->{fieldname};
-      if (exists($options{$fieldname})) {
+      if (exists($options{$fieldname}) && ($option ne "h")) {
 	print "Option $option already set\n";
-	print "Value \"$value\" would overwrite ";
-	if (ref($options{$fieldname}) eq "ARRAY") {
-	  print "\"" . join(',', @{$options{$fieldname}}) . "\"\n";
-	}
-	else {
-	  print "\"$options{$fieldname}\"\n";
-	}
+        if (defined($options{$fieldname})) {
+          print "Value \"$value\" would overwrite ";
+          if (ref($options{$fieldname}) eq "ARRAY") {
+            print "\"" . join(',', @{$options{$fieldname}}) . "\"\n";
+          }
+          else {
+            print "\"$options{$fieldname}\"\n";
+          }
+        }
 	$option = "h";
 	$fieldname = "help";
       }
@@ -213,6 +216,10 @@ sub makeHelp()
       $comment = $e->{comment};
     }
     $opts .= sprintf($helpFormat, $ex, $needed, $partype, $aliases, $comment);
+    if (defined($e->{comment2})) {
+      my $fill = "_" x 20;
+      $opts .= sprintf($helpFormat, $fill, $fill, $fill, $fill, $e->{comment2});
+    }
   }
   return($opts);
 }

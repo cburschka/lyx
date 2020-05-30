@@ -44,6 +44,7 @@ sub ismathfont($$);
 sub correctstyle($);
 sub decimalUnicode($);
 sub contains($$);
+sub sprintIntervalls($);
 
 # Following fields for a parameter can be defined:
 # fieldname:         Name of entry in %options
@@ -81,9 +82,10 @@ my @optionsDef = (
    {fieldname => "Math",
     comment => "Select fonts probably containing math glyphs"},],
   ["c",
-   {fieldname => "Contains",
+   {fieldname => "Contains",  alias => ["contains"],
     type => "=s", listsep => ',',
-    comment => "Select fonts containing all these (possibly comma separated) glyphs",}],
+    comment => "Select fonts containing all these (possibly comma separated) glyphs",
+    comment2 => "____example: -c=\"0-9,u+32-u+x7f\"",}],
   ["l",
    {fieldname => "Lang",
     type => "=s", alias=>["lang"],
@@ -147,6 +149,9 @@ if (defined($options{Contains})) {
   }
   if (defined($last)) {
     push(@{$options{Contains}}, [$first, $last]);
+  }
+  if (exists($options{verbose})) {
+    print "Checking for unicode-points: " . &sprintIntervalls($options{Contains}) . "\n";
   }
 }
 
@@ -275,7 +280,7 @@ my %sansFonts = (
   "m" => qr/^m(\+ |anchu|anjari|arcellus|ashq|eera|etal|igmix|igu|ikachan|intspirit|ona|onlam|ono(fonto|id|isome|noki)|ontserrat|otoyal|ukti|usica)/i,
   "n" => qr/^(nachlieli|nada|nafees|nagham|nanum(barunpen|square)|nice)/i,
   "o" => qr/^(ocr|okolaks|opendyslexic|ostorah|ouhud|over|oxygen)/i,
-  "p" => qr/^(padauk|padmaa|pagul|paktype|pakenham|palladio|petra|phetsarath|play\b|poiret|port\b|primer\b|prociono|pt\b|purisa)/i,
+  "p" => qr/^(padauk|pagul|paktype|pakenham|palladio|petra|phetsarath|play\b|poiret|port\b|primer\b|prociono|pt\b|purisa)/i,
   "q" => qr/^(qt(ancient|helvet|avanti|doghaus|eratype|eurotype|floraline|frank|fritz|future|greece|howard|letter|optimum)|quercus)/i,
   "r" => qr/^(rachana|radio\b|raleway|ricty|roboto|rosario)/i,
   "s" => qr/^(salem|samanata|sawasdee|shado|sharja|simple|sophia|soul|source|switzera)/i,
@@ -440,16 +445,7 @@ if (open(FI,  "$cmd |")) {
       $props .= '(' . join(',', sort keys %usedlangs) . ')';
     }
     if (exists($options{PrintCharset})) {
-      my @out = ();
-      for my $rE (@charlist) {
-        if ($rE->[0] != $rE->[1]) {
-          push(@out, $rE->[0] . '-' . $rE->[1]);
-        }
-        else {
-          push(@out, $rE->[0]);
-        }
-      }
-      $props .= '(' . join(',', @out) . ')';
+      $props .= '(' . &sprintIntervalls(\@charlist) . ')';
     }
     if (exists($options{PrintScripts}) || defined($options{Scripts}) || defined($options{NScripts}) || exists($options{Math})) {
       my @scripts = ();
@@ -946,4 +942,19 @@ sub contains($$)
     return 0;
   }
   return 0;
+}
+
+sub sprintIntervalls($)
+{
+  my ($rList) = @_;
+  my @out = ();
+  for my $rE (@{$rList}) {
+    if ($rE->[0] != $rE->[1]) {
+      push(@out, $rE->[0] . '-' . $rE->[1]);
+    }
+    else {
+      push(@out, $rE->[0]);
+    }
+  }
+  return join(',', @out);
 }
