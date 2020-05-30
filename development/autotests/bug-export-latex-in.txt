@@ -11,6 +11,8 @@ KK: \Axbuffer-export luatex\[Return]
 KK: \[Tab]\[Return]
 KK: \Axbuffer-write\[Return]
 KK: \[Tab]\[Return]
+# The next lines should NOT match, because we do not want to create
+# math-mode.pdf inside the system-dir. That is, we expect the test to fail
 Cp: support/FileName.cpp .* creating path '/.*/lib/images'
 Cp: support/FileName.cpp .* Checksumming "/.*/lib/images/.*math-mode.pdf" .*lasted 
 TestEnd

@@ -7,7 +7,7 @@ TestBegin -dbg key,insets,workarea,latex ../bug-10636.lyx > bug-10636.loga.txt 2
 KK: \C\[End]
 CP: Key [action=buffer-end][Ctrl+End]
 # Select source preview
-KK: \Ab\[Down]\[Down]\[Down]\[Return]
+KK: \Ab\[Down]\[Return]
 CP: LyX needs the following commands when LaTeXing:
 KK: \[Up]\[Up]
 CP: Key (queried) [action=up][Up]
