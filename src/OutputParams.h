@@ -129,7 +129,7 @@ public:
 	 */
 	Font const * local_font;
 
-	/** Document language babel name
+	/** Document language lyx name
 	 */
 	std::string document_language;
 
@@ -199,9 +199,6 @@ public:
 	/** Customized index_command
 	*/
 	std::string index_command;
-
-	/// The Xindy language module
-	std::string xindy_language;
 
 	/** Hyperref driver
 	*/

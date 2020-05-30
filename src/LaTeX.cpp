@@ -23,6 +23,7 @@
 #include "LyX.h"
 #include "DepTable.h"
 #include "Encoding.h"
+#include "Language.h"
 
 #include "support/debug.h"
 #include "support/convert.h"
@@ -541,13 +542,15 @@ int LaTeX::runMakeIndex(string const & f, OutputParams const & rp,
 
 	if (!rp.index_command.empty())
 		tmp = rp.index_command;
+
+	Language const * doc_lang = languages.getLanguage(rp.document_language);
 	
 	if (contains(tmp, "$$x")) {
 		// This adds appropriate [te]xindy options
 		// such as language and codepage (for the
 		// main document language/encoding) as well
 		// as input markup (latex or xelatex)
-		string xdyopts = rp.xindy_language;
+		string xdyopts = doc_lang ? doc_lang->xindy() : string();
 		if (!xdyopts.empty())
 			xdyopts = "-L " + xdyopts;
 		if (rp.isFullUnicode() && rp.encoding->package() == Encoding::none) {
@@ -580,7 +583,10 @@ int LaTeX::runMakeIndex(string const & f, OutputParams const & rp,
 		"idx file has been made, running index processor ("
 		<< tmp << ") on file " << f);
 
-	tmp = subst(tmp, "$$lang", rp.document_language);
+	if (doc_lang) {
+		tmp = subst(tmp, "$$lang", doc_lang->babel());
+		tmp = subst(tmp, "$$lcode", doc_lang->code());
+	}
 	if (rp.use_indices) {
 		tmp = lyxrc.splitindex_command + " -m " + quoteName(tmp);
 		LYXERR(Debug::LATEX,

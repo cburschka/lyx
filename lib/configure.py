@@ -1299,7 +1299,7 @@ def checkOtherEntries():
         rc_entry = [ r'\jbibtex_command "automatic"' ],
         alt_rc_entry = [ r'\jbibtex_alternatives "%%"' ])
     checkProgAlternatives('available index processors',
-        ['texindy $$x -t $$b.ilg', 'makeindex -c -q', 'xindy -M texindy $$x -t $$b.ilg'],
+        ['texindy $$x -t $$b.ilg', 'xindex -l $$lcode', 'makeindex -c -q', 'xindy -M texindy $$x -t $$b.ilg'],
         rc_entry = [ r'\index_command "%%"' ],
         alt_rc_entry = [ r'\index_alternatives "%%"' ])
     checkProg('an index processor appropriate to Japanese',

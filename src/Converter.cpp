@@ -481,8 +481,7 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 		runparams.bibtex_command = bp.bibtexCommand();
 		runparams.index_command = (bp.index_command == "default") ?
 			string() : bp.index_command;
-		runparams.document_language = bp.language->babel();
-		runparams.xindy_language = bp.language->xindy();
+		runparams.document_language = bp.language->lang();
 		// Some macros rely on font encoding
 		runparams.main_fontenc = bp.main_font_encoding();
 		runparams.only_childbibs = !bp.useBiblatex()
