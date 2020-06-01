@@ -1821,17 +1821,9 @@ char InsetMathGrid::colAlign(HullType type, col_type col) const
 	case hullMultline:
 		return 'c';
 	case hullGather:
-		#if 0
-		// Partly revert 44816adce63
-		// because the following test leads to crash
-		// Open a new lyx-file
-		// select findadv dialog
-		// in the search-field enter math
-		// use math-mutate gather ===> crash (because isValidBuffer() == false)
 		LASSERT(isBufferValid(),
 				LYXERR0("Buffer not set correctly. Please report!");
 				return 'c';);
-		#endif
 		if (buffer().params().is_math_indent)
 			return 'l';
 		else
