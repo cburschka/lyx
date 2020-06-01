@@ -225,7 +225,7 @@ bool Inset::isBufferLoaded() const
 bool Inset::isBufferValid() const
 {
 	return buffer_
-		&& (isBufferLoaded() || buffer_->isClone());
+		&& (isBufferLoaded() || buffer_->isInternal() || buffer_->isClone());
 }
 
 
