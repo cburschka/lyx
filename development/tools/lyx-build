@@ -22,12 +22,20 @@ COMPILE="YES";
 # Make patch file?
 PATCH="YES";
 
-while getopts ":Cm:P" opt; do
+function usage() {
+echo "lyx-build [-C] [-m MAKEARGS[ [-P]";
+echo " -C: Do not test compilation";
+echo " -m MAKEARGS: Arguments for make";
+echo " -P: Do not build patch files";
+}
+
+while getopts ":Cm:Ph" opt; do
   case $opt in
     C )   COMPILE="";; # don't test compilation
     m )   MAKEOPTS="$OPTARG";;
     P )   PATCH="";; # don't build patch files
-    \? )  echo "Unknown option $opt"; exit 1;;
+    h )   usage; exit 0;;
+    \? )  echo "Unknown option $opt"; usage; exit 1;;
   esac
 done
 shift $(($OPTIND - 1));

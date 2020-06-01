@@ -32,6 +32,7 @@
 #include "support/lassert.h"
 
 #include <cstdlib>
+#include <iostream>
 #include <vector>
 
 #include <QString>
