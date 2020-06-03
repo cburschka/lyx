@@ -46,7 +46,10 @@ VERSION=$(head configure.ac | grep AC_INIT | perl -e 'while (<>) {m/AC_INIT\(LyX
 VERSION_BASE="${VERSION%-*}";
 
 DEVEL_RELEASE="";
+# FIXME This test is wrong
 if [ "$VERSION" != "$VERSION_BASE" ]; then
+	echo "Need to fix something.";
+	exit 1;
 	DEVEL_RELEASE="TRUE";
 	PATCH="";
 fi
