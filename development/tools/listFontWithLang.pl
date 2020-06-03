@@ -86,6 +86,11 @@ my @optionsDef = (
     type => "=s", listsep => ',',
     comment => "Select fonts containing all these (possibly comma separated) glyphs",
     comment2 => "____example: -c=\"0-9,u+32-u+x7f\"",}],
+  ["nc",
+   {fieldname => "NContains",
+    type => "=s", listsep => ',',
+    comment => "Select fonts NOT containing any of these (possibly comma separated) glyphs",
+    comment2 => "____example: --nc=\"0-9,u+32-u+x7f\"",}],
   ["l",
    {fieldname => "Lang",
     type => "=s", alias=>["lang"],
@@ -120,38 +125,45 @@ for my $lg (@langs) {
   $lg = &convertlang($lg);
 }
 
-if (defined($options{Contains})) {
-  my %glyphs = ();         # To ignore duplicates
-  for my $a1 (@{$options{Contains}}) {
-    for my $e (decimalUnicode($a1)) {
-      $glyphs{$e} = 1;
+for my $charFld ("Contains", "NContains") {
+  if (defined($options{$charFld})) {
+    my %glyphs = ();         # To ignore duplicates
+    for my $a1 (@{$options{$charFld}}) {
+      for my $e (decimalUnicode($a1)) {
+        $glyphs{$e} = 1;
+      }
     }
-  }
-  # create intervalls
-  my @glyphs = sort {$a <=> $b;} keys %glyphs;
+    # create intervalls
+    my @glyphs = sort {$a <=> $b;} keys %glyphs;
 
-  # $options{Contains} no longer needed, so use it for unicode-point intervalls
-  $options{Contains} = [];
-  my ($first, $last) = (undef, undef);
-  for my $i (@glyphs) {
-    if (! defined($last)) {
+    # $options{$charFld} no longer needed, so use it for unicode-point intervalls
+    $options{$charFld} = [];
+    my ($first, $last) = (undef, undef);
+    for my $i (@glyphs) {
+      if (! defined($last)) {
+        $first = $i;
+        $last = $i;
+        next;
+      }
+      if ($i == $last+1) {
+        $last = $i;
+        next;
+      }
+      push(@{$options{$charFld}}, [$first, $last]);
       $first = $i;
       $last = $i;
-      next;
     }
-    if ($i == $last+1) {
-      $last = $i;
-      next;
+    if (defined($last)) {
+      push(@{$options{$charFld}}, [$first, $last]);
     }
-    push(@{$options{Contains}}, [$first, $last]);
-    $first = $i;
-    $last = $i;
-  }
-  if (defined($last)) {
-    push(@{$options{Contains}}, [$first, $last]);
-  }
-  if (exists($options{verbose})) {
-    print "Checking for unicode-points: " . &sprintIntervalls($options{Contains}) . "\n";
+    if (exists($options{verbose})) {
+      if ($charFld eq "Contains") {
+        print "Checking for unicode-points: " . &sprintIntervalls($options{$charFld}) . "\n";
+      }
+      else {
+        print "Ignore if matching unicode-points: " . &sprintIntervalls($options{$charFld}) . "\n";
+      }
+    }
   }
 }
 
@@ -166,7 +178,7 @@ my $format = "foundry=\"%{foundry}\"" .
     " family=\"%{family}\" flang=\"%{familylang}\" " .
     " style=\"%{style}\" stylelang=\"%{stylelang}\"";
 
-if (exists($options{PrintScripts}) || defined($options{Scripts}) || defined($options{NSpripts}) || exists($options{Math})) {
+if (exists($options{PrintScripts}) || defined($options{Scripts}) || defined($options{NScripts}) || exists($options{Math})) {
   $format .= " script=\"%{capability}\"";
 }
 if (exists($options{PrintLangs}) || defined($langs[0])) {
@@ -175,7 +187,7 @@ if (exists($options{PrintLangs}) || defined($langs[0])) {
 if (exists($options{PrintProperties}) || defined($options{Property}) || defined($options{NProperty})) {
   $format .= " weight=%{weight} slant=%{slant} width=%{width} spacing=%{spacing}";
 }
-if (defined($options{Contains}) || exists($options{PrintCharset})) {
+if (defined($options{Contains}) || defined($options{NContains}) || exists($options{PrintCharset})) {
   $format .= " charset=\"%{charset}\"";
 }
 $format .= " file=\"%{file}\" abcd\\n";
@@ -267,7 +279,7 @@ my %sansFonts = (
   "value" => 100,          # Sans serif
   "a" => qr/^(aharoni|arial|andika|angostura|anonymous|arab|aroania|arimo|asap)/i,
   "b" => qr/^b(aekmuk|ebas|erenika|eteckna|euron|lue)/i,
-  "c" => qr/^c(abin|aliban|antarell|arbon|arlito|handas|hivo|mu bright|omfortaa|omic|oolvetica|ortoba|ousine|uprum|wtex(hei|yen)|yklop|ypro)/i,
+  "c" => qr/^c(abin|aliban|antarell|arbon|arlito|handas|hivo|mu bright|omfortaa|omi[cx]|oolvetica|ortoba|ousine|uprum|wtex(hei|yen)|yklop|ypro)/i,
   "d" => qr/^(d2coding|dimnah|dosis|dyuthi)/i,
   "e" => qr/^(electron|engebrechtre)/i,
   "f" => qr/^(fandolhei|fetamont|fira|font awesome 5|forgotten)/i,
@@ -317,6 +329,8 @@ my %fraktFonts = (
 my %fancyFonts = (
   "value" => 130,          # Fancy
   "c" => qr/^(cretino)/i,
+  "d" => qr/^dseg/i,
+  "f" => qr/^frederika/i,
   "g" => qr/^(gfs.?theo)/i,
   "k" => qr/^keter|kicking|kredit|kouzan|kerkis calligraphic/i,
 );
@@ -332,9 +346,9 @@ my %symbolFonts = (
   "value" => 200,          # Symbol
   "a" => qr/^(academicons)/i,
   "c" => qr/^(caladings|ccicons|chess|cmsy|cmex)/i,
-  "d" => qr/^(dingbats|drmsym)/i,
-  "e" => qr/^(elusiveicons|emoji|esint)/i,
-  "f" => qr/^(fdsymbol|fourierorns)/i,
+  "d" => qr/^(dingbats|drmsym|d05)/i,
+  "e" => qr/^(elusiveicons|emoji|esint|euterpe)/i,
+  "f" => qr/^(fandol.?brail|fdsymbol|fourierorns|font(awesome|ello|.?mfizz))/i,
   "h" => qr/^(hots)/i,
   "j" => qr/^jsmath.?(msam|cmsy|masm|msbm|wasy|cmex|stmary)/i,
   "m" => qr/^(marvosym|material|msam|msbm)/i,
@@ -412,7 +426,7 @@ if (open(FI,  "$cmd |")) {
       }
     }
     my @charlist = ();
-    if (defined($options{Contains}) || exists($options{PrintCharset})) {
+    if (defined($options{Contains}) || defined($options{NContains}) || exists($options{PrintCharset})) {
       if ($l =~ / charset=\"([^\"]+)\"/) {
         my @list = split(/\s+/, $1);
         for my $e (@list) {
@@ -424,6 +438,14 @@ if (open(FI,  "$cmd |")) {
       if (defined($options{Contains})) {
         for my $g (@{$options{Contains}}) {
           next NXTLINE if (! contains($g, \@charlist));
+        }
+      }
+      if (defined($options{NContains})) {
+        for my $g (@{$options{NContains}}) {
+          # Ignore if ANY char exist in @charlist
+          for (my $i = $g->[0]; $i <= $g->[1]; $i++) {
+            next NXTLINE if (contains([$i,$i], \@charlist));
+          }
         }
       }
     }
@@ -667,6 +689,9 @@ sub getftype($$)
     else {
       return($ftypes{100}); # Sans Serif
     }
+  }
+  elsif ($style eq "PatchSans" && $fontname eq "font") {
+    return($ftypes{200});  # Symbol
   }
   elsif ($fontname =~ /serif|times|mincho|batang/i) {
     if ($fontname =~ /good times/i) {
