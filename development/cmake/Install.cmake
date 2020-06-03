@@ -91,6 +91,7 @@ endmacro(lyx_install)
 
 # language-specific-directories (like ca, de, es ...) are now globbed as "[a-z][a-z]"
 set(_all_languages "[a-z][a-z]")
+set(_all_combined_langs "[a-z][a-z]_[A-Z][A-Z]")
 
 lyx_install("data" ${TOP_SRC_DIR}/lib bind         *.bind   . ${_all_languages})
 lyx_install("data" ${TOP_SRC_DIR}/lib commands     *.def    .)
@@ -102,7 +103,7 @@ lyx_install("data" ${TOP_SRC_DIR}/lib doc          *      biblio clipart)
 
 lyx_install("data" ${TOP_SRC_DIR}/lib doc/${_all_languages} *    clipart)
 
-lyx_install("data" ${TOP_SRC_DIR}/lib examples     *      . ${_all_languages} springer thesis)
+lyx_install("data" ${TOP_SRC_DIR}/lib examples     *      . ${_all_languages} ${_all_combined_langs} springer thesis)
 lyx_install("font" ${TOP_SRC_DIR}/lib/fonts .      *      .)
 foreach(_imgext "png" "svgz" "gif" "xpm")
   lyx_install("data" ${TOP_SRC_DIR}/lib images       "*.${_imgext}"      . ipa commands attic classic oxygen)
