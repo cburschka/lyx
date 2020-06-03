@@ -94,7 +94,7 @@ endmacro(lyx_install)
 
 
 # language-specific-directories (like ca, de, es ...) are now globbed as "[a-z][a-z]"
-set(_all_languages "[a-z][a-z]")
+set(_all_languages "[a-z][a-z]" "[a-z][a-z]_[A-Z][A-Z]")
 
 lyx_install("data" ${TOP_SRC_DIR}/lib bind         *.bind   . ${_all_languages})
 lyx_install("data" ${TOP_SRC_DIR}/lib commands     *.def    .)
@@ -104,9 +104,11 @@ lyx_install("data" ${TOP_SRC_DIR}/lib commands     *.def    .)
 #lyx_install("data" ${TOP_SRC_DIR}/lib doc          *.txt    . ${_all_languages})
 lyx_install("data" ${TOP_SRC_DIR}/lib doc          *      biblio clipart)
 
-lyx_install("data" ${TOP_SRC_DIR}/lib doc/${_all_languages} *    clipart)
+foreach(_lang ${_all_languages})
+  lyx_install("data" ${TOP_SRC_DIR}/lib doc/${_lang} *    clipart)
+endforeach()
 
-set(example_subdirs ${_all_languages} pt_BR pt_PT Articles Curricula_Vitae External_Material "Graphics_and_Insets" Handouts Letters Modules Posters Presentations Scripts Theses Books Theses)
+set(example_subdirs ${_all_languages} Articles Curricula_Vitae External_Material "Graphics_and_Insets" Handouts Letters Modules Posters Presentations Scripts Theses Books Theses)
 lyx_install("data" ${TOP_SRC_DIR}/lib examples     *    . *)
 lyx_install("data" ${TOP_SRC_DIR}/lib examples/*   *    . *)
 lyx_install("font" ${TOP_SRC_DIR}/lib/fonts .      *      .)
