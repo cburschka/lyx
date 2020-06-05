@@ -2128,6 +2128,8 @@ dist_layouts_DATA =\
 	layouts/amsdefs.inc \
 	layouts/apa.layout \
 	layouts/apa6.layout \
+	layouts/apa7.layout \
+	layouts/apax.inc \
 	layouts/arab-article.layout \
 	layouts/article.layout \
 	layouts/article-beamer.layout \
