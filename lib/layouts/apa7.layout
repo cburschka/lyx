@@ -1,12 +1,9 @@
 #% Do not delete the line below; configure depends on this
-#  \DeclareLaTeXClass[apa6]{American Psychological Association (APA), v. 6}
+#  \DeclareLaTeXClass[apa7]{American Psychological Association (APA), v. 7}
 #  \DeclareCategory{Articles}
 # Author: Jacob Bishop <bishop.jacob@gmail.com> based on the apa 
 # layout written by Randy Gobbel.
 Format 81
 
 Input apax.inc
-
-NoStyle course
-NoStyle addORCIDlink
 
