@@ -116,11 +116,11 @@ public:
 	void draw(int x, int y, char_type c);
 	///
 	void draw(int x, int y, docstring const & str);
-	/// Determines the background color for the specified inset based on the
+	/// Determines the background color based on the
 	/// selection state, the background color inherited from the parent inset
-	/// and the inset's own background color.
+	/// and the inset's own background color (if one is specified).
 	/// \param sel whether to take the selection state into account
-	ColorCode backgroundColor(Inset const * inset, bool sel = true) const;
+	ColorCode backgroundColor(Inset const * inset = nullptr, bool sel = true) const;
 
 	/// Determines the text color based on the intended color, the
 	/// change tracking state and the selection state.

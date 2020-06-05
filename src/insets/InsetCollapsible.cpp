@@ -371,7 +371,7 @@ void InsetCollapsible::draw(PainterInfo & pi, int x, int y) const
 			int w = 0;
 			int a = 0;
 			int d = 0;
-			Color const col = pi.full_repaint ? Color_none : pi.background_color;
+			Color const col = pi.full_repaint ? Color_none : pi.backgroundColor();
 			theFontMetrics(font).rectText(buttonLabel(bv), w, a, d);
 			int const ww = max(textdim.wid, w);
 			pi.pain.rectText(x + (ww - w) / 2, y + desc + a,
