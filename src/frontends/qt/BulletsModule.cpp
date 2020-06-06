@@ -20,6 +20,8 @@ using namespace std;
 
 namespace lyx {
 
+namespace frontend {
+
 BulletsModule::BulletsModule(QWidget * parent)
     : QWidget(parent)
 {
@@ -192,6 +194,8 @@ Bullet const & BulletsModule::bullet(int level) const
 {
 	return bullets_[level];
 }
+
+} // namespace frontend
 
 } // namespace lyx
 

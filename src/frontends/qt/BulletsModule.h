@@ -20,6 +20,8 @@
 
 namespace lyx {
 
+namespace frontend {
+
 class BulletsModule : public QWidget, public Ui::BulletsUi
 {
 	Q_OBJECT
@@ -55,6 +57,8 @@ private:
 	int current_font_;
 	int current_char_;
 };
+
+} // namespace frontend
 
 } // namespace lyx
 
