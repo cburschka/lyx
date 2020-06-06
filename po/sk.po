@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-05-20 15:52-0400\n"
-"PO-Revision-Date: 2020-05-18 17:19+0000\n"
+"POT-Creation-Date: 2020-06-06 11:39+0200\n"
+"PO-Revision-Date: 2020-06-06 09:40+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -9137,6 +9137,10 @@ msgstr "(\\alph{enumii})"
 msgid "American Psychological Association (APA), v. 6"
 msgstr "Americká Psychologická Spoločnosť (APA), v. 6"
 
+#: lib/layouts/apa7.layout:3
+msgid "American Psychological Association (APA), v. 7"
+msgstr "Americká Psychologická Spoločnosť (APA), v. 7"
+
 #: lib/layouts/apa6.layout:113
 msgid "FiveAuthors"
 msgstr "Päť autorov"
@@ -9202,6 +9206,26 @@ msgstr "Číslo v hlavičke"
 #: lib/layouts/apa6.layout:473
 msgid "*"
 msgstr "*"
+
+#: lib/layouts/apax.inc:557
+msgid "Course"
+msgstr "Kurz"
+
+#: lib/layouts/apax.inc:573
+msgid "Course: "
+msgstr "Kurz: "
+
+#: lib/layouts/apax.inc:581
+msgid "addORCIDlink"
+msgstr "Pridať ORCID odkaz"
+
+#: lib/layouts/apax.inc:585
+msgid "ORCID-link: "
+msgstr "ORCID-odkaz: "
+
+#: lib/layouts/apax.inc:583
+msgid "Author-name"
+msgstr "Meno autora"
 
 #: lib/layouts/arab-article.layout:3
 msgid "Arabic Article"
