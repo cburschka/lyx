@@ -12,24 +12,26 @@
 
 #include "GuiCompleter.h"
 
+#include "GuiApplication.h"
+#include "GuiWorkArea.h"
+#include "GuiView.h"
+#include "qt_helpers.h"
+
 #include "Buffer.h"
 #include "BufferView.h"
 #include "CompletionList.h"
 #include "Cursor.h"
 #include "Dimension.h"
-#include "GuiWorkArea.h"
-#include "GuiView.h"
 #include "LyX.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
-#include "qt_helpers.h"
 #include "version.h"
 
+#include "support/debug.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
-#include "support/debug.h"
+#include "support/qstring_helpers.h"
 
-#include <QApplication>
 #include <QHeaderView>
 #include <QKeyEvent>
 #include <QPainter>
@@ -137,18 +139,18 @@ public:
 
 		// get icon from cache
 		QPixmap scaled;
-		QString const name = ":" + toqstr(list_->icon(index.row()));
-		if (name == ":")
+		QString const name = toqstr(list_->icon(index.row()));
+		if (name.isEmpty())
 			return scaled;
-		if (!QPixmapCache::find("completion" + name, &scaled)) {
+		if (!QPixmapCache::find("completion:" + name, &scaled)) {
 			// load icon from disk
-			QPixmap p = QPixmap(name);
+			QPixmap p = getPixmap("images", name, "svgz,png");
 			if (!p.isNull()) {
 				// scale it to 16x16 or smaller
 				scaled = p.scaled(min(16, p.width()), min(16, p.height()),
 					Qt::KeepAspectRatio, Qt::SmoothTransformation);
 			}
-			QPixmapCache::insert("completion" + name, scaled);
+			QPixmapCache::insert("completion:" + name, scaled);
 		}
 		return scaled;
 	}

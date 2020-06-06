@@ -2,7 +2,6 @@ include $(top_srcdir)/config/common.am
 
 BUILT_SOURCES = $(UIFILES:%.ui=ui_%.h)
 BUILT_SOURCES += $(MOCEDFILES)
-BUILT_SOURCES += Resources.cpp Resources.qrc
 
 CLEANFILES = $(BUILT_SOURCES)
 
@@ -22,17 +21,6 @@ QT_VERSION = $(shell IFS=.; set -- `echo $(QTLIB_VERSION)`; \
 # The moc_%.cpp pattern must match the filter in ../../../po/Rules-lyx
 moc_%.cpp: %.h
 	$(AM_V_GEN)$(QT_MOC) -DQT_VERSION=$(QT_VERSION) -o $@ $<
-
-Resources.qrc: Makefile
-	$(AM_V_GEN)echo "<!DOCTYPE RCC><RCC version='1.0'><qresource>" > $@ ; \
-	find $(top_srcdir)/lib/images -name '*.svgz' -o -name '*.png' -o -name '*.gif' \
-		| LC_ALL=C sort \
-		| sed -e 's:$(top_srcdir)/lib/\(.*\):<file alias="\1">&</file>:' \
-		>> $@ ;\
-	echo "</qresource></RCC>" >> $@
-
-Resources.cpp: Resources.qrc
-	$(AM_V_GEN)$(QT_RCC) $< -name Resources -o $@
 
 
 #########################  LIBRARIES  #############################
@@ -366,8 +354,6 @@ UIFILES = \
 	VSpaceUi.ui \
 	WorkAreaUi.ui \
 	WrapUi.ui
-
-nodist_liblyxqt_a_SOURCES = Resources.cpp
 
 liblyxqt_a_SOURCES = \
 	$(SOURCEFILES) \

@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "BulletsModule.h"
+#include "GuiApplication.h"
 #include "qt_helpers.h"
 
 #include <QPixmap>
@@ -64,7 +65,7 @@ void BulletsModule::setupPanel(QListWidget * lw, QString const & panelname,
 	bulletpaneCO->addItem(panelname);
 
 	// get pixmap with bullets
-	QPixmap pixmap(":/images/" + toqstr(fname) + ".png");
+	QPixmap pixmap = getPixmap("images", toqstr(fname), ".png");
 
 	int const w = pixmap.width() / 6;
 	int const h = pixmap.height() / 6;

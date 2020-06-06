@@ -2180,11 +2180,11 @@ std::string MathCompletionList::icon(size_t idx) const
 	else
 		cmd = locals[idx];
 
-	// get the icon resource name by stripping the backslash
+	// get the icon name by stripping the backslash
 	docstring icon_name = frontend::Application::mathIcon(cmd.substr(1));
 	if (icon_name.empty())
 		return std::string();
-	return "images/math/" + to_utf8(icon_name);
+	return "math/" + to_utf8(icon_name);
 }
 
 std::vector<docstring> MathCompletionList::globals;

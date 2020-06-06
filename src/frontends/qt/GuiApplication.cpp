@@ -157,16 +157,6 @@ using namespace std;
 using namespace lyx::support;
 
 
-static void initializeResources()
-{
-	static bool initialized = false;
-	if (!initialized) {
-		Q_INIT_RESOURCE(Resources);
-		initialized = true;
-	}
-}
-
-
 namespace lyx {
 
 frontend::Application * createApplication(int & argc, char * argv[])
@@ -490,7 +480,6 @@ QString themeIconName(QString const & action)
 // the returned bool is true if the icon needs to be flipped
 pair<QString,bool> iconName(FuncRequest const & f, bool unknown, bool rtl)
 {
-	initializeResources();
 	QStringList names;
 	QString lfunname = toqstr(lyxaction.getActionName(f.action()));
 
@@ -538,35 +527,24 @@ pair<QString,bool> iconName(FuncRequest const & f, bool unknown, bool rtl)
 		names << "unknown";
 
 	search_mode const mode = theGuiApp()->imageSearchMode();
+	// The folders where icons are searched for
 	QStringList imagedirs;
 	imagedirs << "images/" << "images/ipa/";
+	// This is used to search for rtl version of icons which have the +rrtl suffix.
 	QStringList suffixes;
 	if (rtl)
 		suffixes << "+rtl";
 	suffixes << QString();
+
 	for (QString const & imagedir : imagedirs)
 		for (QString const & name : names)
 			for (QString const & suffix : suffixes) {
 				QString id = imagedir;
 				FileName fname = imageLibFileSearch(id, name + suffix, "svgz,png", mode);
 				if (fname.exists())
-					return make_pair(toqstr(fname.absFileName()), rtl && suffix.isEmpty());
+					return make_pair(toqstr(fname.absFileName()),
+					                 rtl && suffix.isEmpty());
 			}
-
-	QString const resdir(":/images/");
-	QDir res(resdir);
-	if (!res.exists()) {
-		LYXERR0("Directory :/images/ not found in resource!");
-		return make_pair(QString(), false);
-	}
-
-	for (QString const & name : names)
-		for (QString const & suffix : suffixes) {
-			if (res.exists(name + suffix + ".svgz"))
-				return make_pair(resdir + name + ".svgz", rtl && suffix.isEmpty());
-			if (res.exists(name + suffix + ".png"))
-				return make_pair(resdir + name + ".png", rtl && suffix.isEmpty());
-		}
 
 	LYXERR(Debug::GUI, "Cannot find icon for command \""
 			   << lyxaction.getActionName(f.action())
@@ -583,22 +561,13 @@ QPixmap getPixmap(QString const & path, QString const & name, QString const & ex
 	QString fpath = toqstr(fname.absFileName());
 	QPixmap pixmap = QPixmap();
 
-	if (pixmap.load(fpath)) {
+	if (pixmap.load(fpath))
 		return pixmap;
-	}
-
-	QStringList exts = ext.split(",");
-	fpath = ":/" + path + name + ".";
-	for (int i = 0; i < exts.size(); ++i) {
-		if (pixmap.load(fpath + exts.at(i))) {
-			return pixmap;
-		}
-	}
 
 	bool const list = ext.contains(",");
-	LYXERR0("Cannot load pixmap \""
-		<< path << name << "." << (list ? "{" : "") << ext
-		<< (list ? "}" : "") << "\", please verify resource system!");
+	LYXERR(Debug::GUI, "Cannot load pixmap \""
+			<< path << "/" << name << "." << (list ? "{" : "") << ext
+		<< (list ? "}" : "") << "\".");
 
 	return QPixmap();
 }
@@ -630,7 +599,7 @@ QIcon getIcon(FuncRequest const & f, bool unknown, bool rtl)
 	//LYXERR(Debug::GUI, "Found icon: " << icon);
 	QPixmap pixmap = QPixmap();
 	if (!pixmap.load(icon)) {
-		LYXERR0("Cannot load icon " << icon << " please verify resource system!");
+		LYXERR0("Cannot load icon " << icon << ".");
 		return QIcon();
 	}
 
