@@ -499,16 +499,6 @@ Style Enumerate
 		LabelString   "Custom Item|s"
 		Tooltip       "A customized item string"
 	EndArgument
-	Argument listpreamble:1
-		LabelString    "List preamble"
-		MenuString     "List Preamble"
-		Tooltip        "LaTeX code to be inserted before the first item"
-		PassThru       1
-		Font
-			Family typewriter
-			Color latex
-		EndFont
-	EndArgument
 End
 
 
@@ -532,16 +522,6 @@ Style Seriate
 	LabelString           "(\alph{enumii})"
 	LabelStringAppendix   "(\alph{enumii})"
 	RefPrefix             ser
-	Argument listpreamble:1
-		LabelString    "List preamble"
-		MenuString     "List Preamble"
-		Tooltip        "LaTeX code to be inserted before the first item"
-		PassThru       1
-		Font
-			Family typewriter
-			Color latex
-		EndFont
-	EndArgument
 End
 
 Style Course
