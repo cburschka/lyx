@@ -5,11 +5,17 @@ To build the installer do the following:
 
 - install the latest version 3.x of NSIS (https://nsis.sourceforge.io/Download)
 - install the NSIS Large Strings build (https://nsis.sourceforge.io/Special_Builds)
-  (extract the extension ZIP file in your NSIS installation folder and this way overwrite some files) 
-- download the plugin FindProcDLL, choose the release for unicode (https://nsis.sourceforge.io/FindProcDLL_plug-in),
-  extract from it the file FindProc.dll to the folder \Plugins\x86-unicode of NSIS's installation folder
+  (extract the extension ZIP file in your NSIS installation folder and this way overwrite some files)
 - download the plugin Inetc (https://nsis.sourceforge.io/Inetc_plug-in)
   extract the content into the NSIS's installation folder
+- download the plugin NSISList (https://nsis.sourceforge.io/NSISList_plug-in), download both .zip archives,
+  extract Include\NSISList.nsh from the first archive to the folder Include of NSIS's installation folder and
+  extract NSISList-Unicode\NSISList.dll from the second archive to the folder \Plugins\x86-unicode of NSIS's installation folder
+- download the plugin ShellLink (https://nsis.sourceforge.io/ShellLink_plug-in)
+  extract Unicode\Plugins\ShellLink.dll from the archive to the folder \Plugins\x86-unicode of NSIS's installation folder
+- download the plugin nsProcess (https://nsis.sourceforge.io/NsProcess_plugin) with unicode support
+  extract Plugin\nsProcessW.dll from the archive to the folder \Plugins\x86-unicode of NSIS's installation folder and rename it to nsProcess.dll
+  extract Include\nsProcess.nsh from the archive to the folder \Include of NSIS's installation folder
 - Go to the Qt-kit directory, which you have specified as CMAKE_PREFIX_PATH before compiling in CMake Gui, enter the bin folder,
   copy these files:
    Qt5Concurrent.dll"

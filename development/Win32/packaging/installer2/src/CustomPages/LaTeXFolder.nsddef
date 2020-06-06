@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This file was created by NSISDialogDesigner 1.5.0.0
+https://coolsoft.altervista.org/nsisdialogdesigner
+Do not edit manually!
+-->
+<Dialog Name="LaTeXFolder" Title="$(EnterLaTeXHeader1)" Subtitle="$(EnterLaTeXHeader2)">
+  <Label Name="Label1" Location="0, 0" Size="450, 100" Text="$1" TabIndex="0" />
+  <CheckBox Name="CheckBox1" Location="25, 170" Size="240, 25" Text="$(DontUseLaTeX)" TabIndex="1" />
+  <GroupBox Name="GroupBox1" Location="0, 105" Size="450, 50" Text="$(PathName)" TabIndex="2">
+    <DirRequest Name="DirRequest1" Location="25, 20" Size="400, 20" Text="$0" TabIndex="0" />
+  </GroupBox>
+</Dialog>
