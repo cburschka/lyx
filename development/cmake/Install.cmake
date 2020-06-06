@@ -156,7 +156,7 @@ elseif(UNIX)
 elseif(CYGWIN)
   set(lyxrcorig "${TOP_SRC_DIR}/development/cygwin/lyxrc.dist.in")
 elseif(WIN32)
-  set(lyxrcorig "${TOP_SRC_DIR}/development/win32/lyxrc.dist.in")
+  set(lyxrcorig "${TOP_SRC_DIR}/development/Win32/lyxrc.dist.in")
 endif()
 
 if(NOT lyxrcorig STREQUAL "")
