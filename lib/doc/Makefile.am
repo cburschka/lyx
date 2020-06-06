@@ -284,7 +284,10 @@ dist_rudoc_DATA = \
 
 ruclipartdocdir = $(rudocdir)/clipart
 dist_ruclipartdoc_DATA = \
-	ru/clipart/ToolbarEnvBox.png
+	ru/clipart/ERT.png \
+	ru/clipart/StandardToolbar.png \
+	ru/clipart/ToolbarEnvBox.png \
+	ru/clipart/Abstract.pdf
 
 skdocdir = $(docdir)/sk
 dist_skdoc_DATA = \
