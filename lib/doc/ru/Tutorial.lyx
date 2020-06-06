@@ -918,15 +918,15 @@ WYSIWYM: Пробельное пространство в \SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-Одно из самого сложного для новичков — это привыкнуть к способу обращения
- \SpecialChar LyX
- с пробельным пространством.
+Для новичков сложнее всего — привыкнуть к способу обращения \SpecialChar LyX
+ с пробельным
+ пространством.
  Сколько бы раз вы ни нажимали 
 \family sans
 Enter
 \family default
 , вы получите только одну пустую строку.
- Сколько бы вы раз ни нажимали 
+ Сколько бы раз вы ни нажимали 
 \family sans
 Пробел
 \family default
@@ -1112,7 +1112,7 @@ Tab
 \begin_inset Quotes cld
 \end_inset
 
-Обычный
+Обычный текст
 \begin_inset Quotes crd
 \end_inset
 
@@ -1184,7 +1184,7 @@ Enter
 \begin_inset Quotes cld
 \end_inset
 
-Обычный
+Обычный текст
 \begin_inset Quotes crd
 \end_inset
 
@@ -1305,7 +1305,7 @@ Enter
 \family default
 , чтобы вернуться к окружению 
 \family sans
-Обычный
+Обычный текст
 \family default
 , и наберите следующие строки:
 \end_layout
@@ -1630,7 +1630,7 @@ Ctrl+Enter
 ).
  Чтобы завершить ввод списка, вам нужно заново выбрать окружение 
 \family sans
-Обычный
+Обычный текст
 \family default
  (или дважды нажать 
 \family sans
@@ -1646,7 +1646,7 @@ Enter
  Но что, если вы хотите пронумеровать причины? Что ж, просто выделите весь
  список
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LyX
@@ -2282,7 +2282,7 @@ Letter
 Описание
 \family default
 , вам знакомы.
- Вы можете немного с ними поиграть и посмотреть, как они работают.
+ Вы можете с ними немного поэкспериментировать и увидеть, как они работают.
  Например, вы заметите, что окружение 
 \family sans
 Подпись
@@ -2291,13 +2291,13 @@ Letter
 \begin_inset Quotes rld
 \end_inset
 
-Signature:
+Подпись:
 \begin_inset Quotes rrd
 \end_inset
 
 , выведенное красным цветом.
  Это слово не будет показано в распечатанном письме, в чем вы можете убедиться,
- если напечатаете файл.
+ если просмотрите PDF-файл.
  Оно здесь просто для того, чтобы вы знали, что это подпись.
  Также заметьте, что не имеет значения место расположения строки 
 \family sans

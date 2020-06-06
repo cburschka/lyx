@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-05-03 13:31+0200\n"
-"PO-Revision-Date: 2020-05-26 10:50+0300\n"
+"PO-Revision-Date: 2020-06-05 18:17+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -20,9 +20,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.3\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Poedit-Bookmarks: 1979,613,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #: src/frontends/qt/ui/AboutUi.ui:42
 msgid "Version"
@@ -729,7 +726,7 @@ msgstr "Добавить &всё"
 #: src/frontends/qt/GuiView.cpp:4150 src/frontends/qt/GuiView.cpp:4157
 #: src/insets/InsetBibtex.cpp:149
 msgid "&Cancel"
-msgstr "&Отменить"
+msgstr "&Отмена"
 
 #: src/frontends/qt/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt/ui/BranchesUnknownUi.ui:78
@@ -1166,7 +1163,7 @@ msgstr "Сравнить версии"
 
 #: src/frontends/qt/ui/CompareHistoryUi.ui:34
 msgid "Revisions ba&ck"
-msgstr "Предыдущие версии"
+msgstr "Версий назад"
 
 #: src/frontends/qt/ui/CompareHistoryUi.ui:87
 msgid "&Between revisions"
@@ -7085,7 +7082,7 @@ msgstr "IEEE Transactions"
 #: lib/layouts/tufte-book.layout:34 lib/ui/stdtoolbars.inc:75
 #: src/insets/InsetRef.cpp:549
 msgid "Standard"
-msgstr "Обычный"
+msgstr "Обычный текст"
 
 #: lib/layouts/IEEEtran.layout:67 lib/layouts/aa.layout:204
 #: lib/layouts/aapaper.layout:78 lib/layouts/aapaper.layout:172
@@ -19568,20 +19565,20 @@ msgstr "Копировать как ссылку|К"
 #: lib/ui/stdtoolbars.inc:86 src/Text3.cpp:1536
 #: src/mathed/InsetMathNest.cpp:559
 msgid "Cut"
-msgstr "Вырезать|В"
+msgstr "Вырезать"
 
 #: lib/ui/stdcontext.inc:62 lib/ui/stdcontext.inc:348 lib/ui/stdmenus.inc:109
 #: lib/ui/stdtoolbars.inc:87 src/Text3.cpp:1541
 #: src/mathed/InsetMathNest.cpp:568
 msgid "Copy"
-msgstr "Копировать|К"
+msgstr "Копировать"
 
 #: lib/ui/stdcontext.inc:63 lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:110
 #: lib/ui/stdtoolbars.inc:88 src/Text3.cpp:1481
 #: src/frontends/qt/GuiToolbar.cpp:410 src/mathed/InsetMathGrid.cpp:1586
 #: src/mathed/InsetMathNest.cpp:538
 msgid "Paste"
-msgstr "Вставить|а"
+msgstr "Вставить"
 
 #: lib/ui/stdcontext.inc:64 lib/ui/stdcontext.inc:350 lib/ui/stdmenus.inc:111
 msgid "Paste Recent|e"
@@ -20424,7 +20421,7 @@ msgstr "Выход|В"
 
 #: lib/ui/stdmenus.inc:75
 msgid "Register...|R"
-msgstr "Зарегистрировать...|З"
+msgstr "Зарегистрировать...|г"
 
 #: lib/ui/stdmenus.inc:76
 msgid "Check In Changes...|I"
@@ -20432,7 +20429,7 @@ msgstr "Закрепить изменения...|З"
 
 #: lib/ui/stdmenus.inc:77
 msgid "Check Out for Edit|O"
-msgstr "Извлечь для правки|е"
+msgstr "Извлечь для правки|И"
 
 #: lib/ui/stdmenus.inc:78
 msgid "Copy|p"
@@ -20440,7 +20437,7 @@ msgstr "Копировать|К"
 
 #: lib/ui/stdmenus.inc:79
 msgid "Rename|R"
-msgstr "Переименовать|р"
+msgstr "Переименовать|П"
 
 #: lib/ui/stdmenus.inc:80
 msgid "Update Local Directory From Repository|d"
@@ -20448,7 +20445,7 @@ msgstr "Обновить локальный каталог из репозито
 
 #: lib/ui/stdmenus.inc:81
 msgid "Revert to Repository Version|v"
-msgstr "Откат к версии в репозитории|п"
+msgstr "Откатить к версии из репозитория|р"
 
 #: lib/ui/stdmenus.inc:82
 msgid "Undo Last Check In|U"
@@ -20456,11 +20453,11 @@ msgstr "Отменить последний коммит|о"
 
 #: lib/ui/stdmenus.inc:83
 msgid "Compare with Older Revision...|C"
-msgstr "Сравнить со старой ревизией...|с"
+msgstr "Сравнить со старой версией...|с"
 
 #: lib/ui/stdmenus.inc:84
 msgid "Show History...|H"
-msgstr "Показать историю...|и"
+msgstr "Показать историю версий...|в"
 
 #: lib/ui/stdmenus.inc:85
 msgid "Use Locking Property|L"
@@ -22012,19 +22009,19 @@ msgstr "Закрепить изменения"
 
 #: lib/ui/stdtoolbars.inc:298
 msgid "View revision log"
-msgstr "Просмотреть журнал ревизий"
+msgstr "Просмотреть журнал версий"
 
 #: lib/ui/stdtoolbars.inc:299
 msgid "Revert changes"
-msgstr "Отменить изменения"
+msgstr "Откатить изменения"
 
 #: lib/ui/stdtoolbars.inc:300
 msgid "Compare with older revision"
-msgstr "Сравнить со старой ревизией"
+msgstr "Сравнить со старой версией"
 
 #: lib/ui/stdtoolbars.inc:301
 msgid "Compare with last revision"
-msgstr "Сравнить с последней ревизией"
+msgstr "Сравнить с последней версией"
 
 #: lib/ui/stdtoolbars.inc:302
 msgid "Insert Version Info"
@@ -30051,7 +30048,7 @@ msgstr "LyX VC: Сообщение журнала"
 #: src/LyXVC.cpp:206 src/LyXVC.cpp:212 src/LyXVC.cpp:225 src/LyXVC.cpp:231
 #: src/LyXVC.cpp:242
 msgid "(no log message)"
-msgstr "(нет сообщений)"
+msgstr "(нет сообщения)"
 
 #: src/LyXVC.cpp:246 src/frontends/qt/GuiView.cpp:3573
 msgid "LyX VC: Log Message"
@@ -30065,18 +30062,18 @@ msgid ""
 "\n"
 "Do you want to revert to the older version?"
 msgstr ""
-"Возврат к сохранённой версии документа %1$s приведёт к потере всех текущих "
-"изменений.\n"
+"Откат к версии из репозитория для документа %1$s приведёт к потере всех "
+"текущих изменений.\n"
 "\n"
-"Вернуться к старой версии?"
+"Откатить к старой версии?"
 
 #: src/LyXVC.cpp:303
 msgid "Revert to stored version of document?"
-msgstr "Вернуться к сохранённой версии документа?"
+msgstr "Откат к версии из репозитория"
 
 #: src/LyXVC.cpp:304 src/frontends/qt/GuiView.cpp:4157
 msgid "&Revert"
-msgstr "Вернуться к сохранённому"
+msgstr "Откатить"
 
 #: src/Paragraph.cpp:2039
 msgid "Senseless with this layout!"
@@ -30549,8 +30546,8 @@ msgid ""
 "The document %1$s is not in repository.\n"
 "You have to check in the first revision before you can revert."
 msgstr ""
-"Документа %1$s нет в репозитории.\n"
-"Вы должны загрузить первую ревизию, прежде чем сможете выполнить возврат."
+"Документ %1$s отсутствует в репозитории.\n"
+"Вы должны закрепить его первую версию, прежде чем сможете выполнять откат."
 
 #: src/VCBackend.cpp:1056
 #, c-format
@@ -30574,7 +30571,7 @@ msgid ""
 msgstr ""
 "Ошибка при фиксировании в репозиторий.\n"
 "Вы должны решить проблему вручную.\n"
-"После нажатия OK, LyX повторно откроет этот документ."
+"После нажатия OK LyX повторно откроет этот документ."
 
 #: src/VCBackend.cpp:1459
 msgid ""
@@ -30758,7 +30755,7 @@ msgstr "Маркер 4"
 #: src/frontends/qt/GuiApplication.cpp:1853 src/frontends/qt/GuiCompare.cpp:193
 #: src/frontends/qt/GuiSymbols.cpp:346
 msgid "Cancel"
-msgstr "Отменить"
+msgstr "Отмена"
 
 #: src/frontends/qt/ButtonController.cpp:228
 #: src/frontends/qt/GuiCompare.cpp:191 src/frontends/qt/GuiDelimiter.cpp:363
@@ -31232,7 +31229,7 @@ msgstr "Удалить текст"
 
 #: src/frontends/qt/GuiBibtex.cpp:70
 msgid "All avail. databases"
-msgstr "Доступные базы данных"
+msgstr "Все доступные базы"
 
 #: src/frontends/qt/GuiBibtex.cpp:118
 msgid ""
@@ -31507,7 +31504,7 @@ msgstr "Сбросить все поля"
 
 #: src/frontends/qt/GuiCitation.cpp:106
 msgid "All avail. citations"
-msgstr "Доступные источники"
+msgstr "Все доступные источники"
 
 #: src/frontends/qt/GuiCitation.cpp:112
 msgid "Regular e&xpression"
@@ -31710,7 +31707,7 @@ msgstr "различия"
 
 #: src/frontends/qt/GuiCompareHistory.cpp:37
 msgid "Compare different revisions"
-msgstr "Сравнить разные ревизии"
+msgstr "Сравнение разных версий"
 
 #: src/frontends/qt/GuiCounter.h:37
 msgid "Counters"
@@ -32066,7 +32063,7 @@ msgstr ""
 
 #: src/frontends/qt/GuiDocument.cpp:1663
 msgid "All avail. modules"
-msgstr "Доступные модули"
+msgstr "Все доступные модули"
 
 #: src/frontends/qt/GuiDocument.cpp:1753 src/frontends/qt/GuiDocument.cpp:1970
 msgid "Input listings parameters below. Enter ? for a list of parameters."
@@ -32990,7 +32987,7 @@ msgstr "Журнал ошибок lyx2lyx"
 
 #: src/frontends/qt/GuiLog.cpp:295
 msgid "Version Control Log"
-msgstr "Журнал управления версиями"
+msgstr "Журнал системы управления версиями"
 
 #: src/frontends/qt/GuiLog.cpp:323
 msgid "Log file not found."
@@ -33467,7 +33464,7 @@ msgstr "Перекрёстная ссылка"
 
 #: src/frontends/qt/GuiRef.cpp:62
 msgid "All available labels"
-msgstr "Доступные метки"
+msgstr "Все доступные метки"
 
 #: src/frontends/qt/GuiRef.cpp:63
 msgid "Enter string to filter the list of available labels"
@@ -34345,7 +34342,7 @@ msgstr "Сохранить документ?"
 
 #: src/frontends/qt/GuiView.cpp:3316
 msgid "&Discard"
-msgstr "От&клонить"
+msgstr "&Не сохранять"
 
 #: src/frontends/qt/GuiView.cpp:3407
 #, c-format
@@ -35529,15 +35526,15 @@ msgstr "Нет управления версиями!"
 
 #: src/insets/InsetInfo.cpp:280
 msgid "Revision[[Version Control]]"
-msgstr "Ревизия"
+msgstr "Версия"
 
 #: src/insets/InsetInfo.cpp:281
 msgid "Abbreviated revision[[Version Control]]"
-msgstr "Сокращённая ревизия"
+msgstr "Сокращённая версия"
 
 #: src/insets/InsetInfo.cpp:282
 msgid "Tree revision"
-msgstr "Ревизия дерева"
+msgstr "Версия дерева"
 
 #: src/insets/InsetInfo.cpp:285
 msgid "Time[[of day]]"
@@ -35613,15 +35610,15 @@ msgstr "Используемый класс документа"
 
 #: src/insets/InsetInfo.cpp:532
 msgid "Version control revision"
-msgstr "Ревизия (система управления версиями)"
+msgstr "Версия (система управления версиями)"
 
 #: src/insets/InsetInfo.cpp:534
 msgid "Version control abbreviated revision"
-msgstr "Сокращённая ревизия (система управления версиями)"
+msgstr "Сокращённая версия (система управления версиями)"
 
 #: src/insets/InsetInfo.cpp:536
 msgid "Version control tree revision"
-msgstr "Ревизия дерева (система управления версиями)"
+msgstr "Версия дерева (система управления версиями)"
 
 #: src/insets/InsetInfo.cpp:538
 msgid "Version control author"
