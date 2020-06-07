@@ -182,7 +182,6 @@ cmake/pcheaders.h \
 cmake/po/cat.py \
 cmake/po/unix2dos.py \
 cmake/post_install/CMakeLists.txt \
-cmake/scripts/LyXCreateImagesResource.cmake \
 cmake/scripts/LyXGetVersion.cmake \
 cmake/scripts/xmingw \
 keystest/cache-bisect.py \
