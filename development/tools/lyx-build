@@ -7,7 +7,9 @@
 
 #DEBUG=echo;
 
+#########################################################
 # A few variables need to be set, here at the top. 
+# The script should not need any other customization.
 #
 # Where we will do our work
 BASE="/cvs/lyx/lyx-release";
@@ -15,6 +17,11 @@ BASE="/cvs/lyx/lyx-release";
 SRCDIR="/cvs/lyx/lyx-stable";
 # editor 
 if [ -z "$EDITOR" ]; then EDITOR=vi; fi
+
+
+#########################################################
+# Option variables
+
 # Options to make, when we compile
 MAKEOPTS="-j8";
 # Compile?
@@ -29,7 +36,7 @@ echo " -m MAKEARGS: Arguments for make";
 echo " -P: Do not build patch files";
 }
 
-while getopts ":Cm:Ph" opt; do
+while getopts ":CDm:Ph" opt; do
   case $opt in
     C )   COMPILE="";; # don't test compilation
     m )   MAKEOPTS="$OPTARG";;
@@ -43,18 +50,23 @@ shift $(($OPTIND - 1));
 # Determine LyX version
 cd $SRCDIR/
 VERSION=$(head configure.ac | grep AC_INIT | perl -e 'while (<>) {m/AC_INIT\(LyX,([^,]+)/; print $1;}');
-VERSION_BASE="${VERSION%-*}";
 
+# Development release?
 DEVEL_RELEASE="";
-# FIXME This test is wrong
+
+# If the version in configure.ac is e.g. "2.3.4dev", then we are building
+# a development release.
+VERSION_BASE=${VERSION%dev};
 if [ "$VERSION" != "$VERSION_BASE" ]; then
-	echo "Need to fix something.";
-	exit 1;
-	DEVEL_RELEASE="TRUE";
+	CURHASH=$(git rev-parse HEAD);
+	# Eight chars should be enough
+	CURHASH=${CURHASH:0:8};
+	# New version is e.g. 2.3.4-12649348
+	VERSION_BASE="$VERSION-$CURHASH";
 	PATCH="";
 fi
 
-echo "This is version $VERSION.";
+echo "This is version $VERSION_BASE.";
 echo -n "Ready to build source packages...";
 read
 
@@ -76,13 +88,13 @@ fi
 
 echo "Packages created:";
 
-if [ ! -f "lyx-$VERSION.tar.gz" ]; then
-	NEWVER=${VERSION%-*};
-	$DEBUG mv "lyx-$VERSION_BASE.tar.gz" "lyx-$VERSION.tar.gz" || exit 1;
-	$DEBUG mv "lyx-$VERSION_BASE.tar.xz" "lyx-$VERSION.tar.xz" || exit 1;
+# This will happen with development releases
+if [ ! -f "lyx-$VERSION_BASE.tar.gz" ]; then
+	$DEBUG mv "lyx-$VERSION.tar.gz" "lyx-$VERSION_BASE.tar.gz" || exit 1;
+	$DEBUG mv "lyx-$VERSION.tar.xz" "lyx-$VERSION_BASE.tar.xz" || exit 1;
 fi
 
-$DEBUG cp -v lyx-$VERSION.tar.{gz,xz} $BASE || exit 1;
+$DEBUG ln lyx-$VERSION_BASE.tar.{gz,xz} $BASE/ || exit 1;
 
 echo -n "Ready to build signatures...";
 read
@@ -91,7 +103,7 @@ $DEBUG gpg -b lyx-$VERSION.tar.gz
 $DEBUG gpg -b lyx-$VERSION.tar.xz
 
 echo "Signatures created:"
-$DEBUG cp -v lyx-$VERSION.tar.*.sig $BASE;
+$DEBUG ln lyx-$VERSION.tar.*.sig $BASE;
 
 if [ -n "$COMPILE" ]; then
 	echo -n "Ready to test compilation...";
@@ -206,5 +218,5 @@ if [ -z "$DEBUG" ]; then
     $DEBUG gpg -b $PATCH.xz
 
     echo -n "Patch and signatures created...";
-    cp -v $PATCH.gz $PATCH.gz.sig $PATCH.xz $PATCH.xz.sig $BASE;
+    ln $PATCH.gz $PATCH.gz.sig $PATCH.xz $PATCH.xz.sig $BASE;
 fi
