@@ -14,7 +14,6 @@ file(GLOB moc_files ${TOP_SRC_DIR}/src/frontends/qt/${LYX_MOC_FILES})
 
 list(REMOVE_ITEM frontends_qt_sources ${moc_files} .)
 list(REMOVE_ITEM frontends_qt_sources ${TOP_SRC_DIR}/src/frontends/qt/liblyxqt4.cpp)
-list(REMOVE_ITEM frontends_qt_sources ${TOP_SRC_DIR}/src/frontends/qt/Resources.cpp)
 
 file(GLOB frontends_qt_headers ${TOP_SRC_DIR}/src/frontends/qt/${LYX_HPP_FILES})
 file(GLOB frontend_qt_UI ${TOP_SRC_DIR}/src/frontends/qt/ui/*.ui)
@@ -24,20 +23,6 @@ lyx_add_msvc_pch(frontends_qt)
 lyx_automoc(${frontends_qt_sources})
 
 lyx_add_ui_files(frontends_qt_sources ui_files ${frontend_qt_UI})
-
-set(resource_name ${CMAKE_CURRENT_BINARY_DIR}/Resources.qrc)
-
-add_custom_command(
-	OUTPUT	${resource_name}
-	COMMAND ${CMAKE_COMMAND}
-		-DIMAGES_DIR=${TOP_SRC_DIR}/lib/images
-		-DRESOURCE_NAME=${resource_name}
-		-DMAPPED_DIR=${TOP_SRC_DIR}/lib/
-                -DSUFFIX=${LYX_INSTALL_SUFFIX}
-		-P ${TOP_SCRIPT_PATH}/LyXCreateImagesResource.cmake
-	)
-
-qt_add_resources(resource_files ${resource_name})
 
 add_definitions(-DQT_GENUINE_STR -DLYX_BUILD_QT_FRONTEND)
 
