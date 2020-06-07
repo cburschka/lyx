@@ -7064,18 +7064,18 @@ bool InsetTabular::copySelection(Cursor & cur)
 	paste_tabular.reset(new Tabular(tabular));
 
 	for (row_type r = 0; r < rs; ++r)
-		paste_tabular->deleteRow(0);
+		paste_tabular->deleteRow(0, true);
 
 	row_type const rows = re - rs + 1;
 	while (paste_tabular->nrows() > rows)
-		paste_tabular->deleteRow(rows);
+		paste_tabular->deleteRow(rows, true);
 
 	for (col_type c = 0; c < cs; ++c)
-		paste_tabular->deleteColumn(0);
+		paste_tabular->deleteColumn(0, true);
 
 	col_type const columns = ce - cs + 1;
 	while (paste_tabular->ncols() > columns)
-		paste_tabular->deleteColumn(columns);
+		paste_tabular->deleteColumn(columns, true);
 
 	paste_tabular->setBuffer(tabular.buffer());
 
