@@ -56,17 +56,17 @@ DEVEL_RELEASE="";
 
 # If the version in configure.ac is e.g. "2.3.4dev", then we are building
 # a development release.
-VERSION_BASE=${VERSION%dev};
-if [ "$VERSION" != "$VERSION_BASE" ]; then
+PKG_VERSION=${VERSION%dev};
+if [ "$VERSION" != "$PKG_VERSION" ]; then
 	CURHASH=$(git rev-parse HEAD);
 	# Eight chars should be enough
 	CURHASH=${CURHASH:0:8};
 	# New version is e.g. 2.3.4-12649348
-	VERSION_BASE="$VERSION-$CURHASH";
+	PKG_VERSION="$VERSION-$CURHASH";
 	PATCH="";
 fi
 
-echo "This is version $VERSION_BASE.";
+echo "This is version $PKG_VERSION.";
 echo -n "Ready to build source packages...";
 read
 
@@ -89,12 +89,12 @@ fi
 echo "Packages created:";
 
 # This will happen with development releases
-if [ ! -f "lyx-$VERSION_BASE.tar.gz" ]; then
-	$DEBUG mv "lyx-$VERSION.tar.gz" "lyx-$VERSION_BASE.tar.gz" || exit 1;
-	$DEBUG mv "lyx-$VERSION.tar.xz" "lyx-$VERSION_BASE.tar.xz" || exit 1;
+if [ ! -f "lyx-$PKG_VERSION.tar.gz" ]; then
+	$DEBUG mv "lyx-$VERSION.tar.gz" "lyx-$PKG_VERSION.tar.gz" || exit 1;
+	$DEBUG mv "lyx-$VERSION.tar.xz" "lyx-$PKG_VERSION.tar.xz" || exit 1;
 fi
 
-$DEBUG ln lyx-$VERSION_BASE.tar.{gz,xz} $BASE/ || exit 1;
+$DEBUG ln lyx-$PKG_VERSION.tar.{gz,xz} $BASE/ || exit 1;
 
 echo -n "Ready to build signatures...";
 read
@@ -113,7 +113,7 @@ if [ -n "$COMPILE" ]; then
 	$DEBUG mkdir $BASE/lyx-test/
 	$DEBUG cd $BASE/lyx-test/
 	$DEBUG tar -zxvf $BASE/lyx-build/lyx-$VERSION.tar.gz
-	if ! $DEBUG cd lyx-$VERSION_BASE; then
+	if ! $DEBUG cd lyx-$PKG_VERSION; then
 		echo "Unable to enter build directory!";
 		exit 1;
 	fi
@@ -136,9 +136,9 @@ if [ -z "$PATCH" ]; then
 	exit 0; 
 fi
 
-LASTNUM=$(echo $VERSION_BASE | sed -e 's/.*\.//');
+LASTNUM=$(echo $PKG_VERSION | sed -e 's/.*\.//');
 LAST=$((LASTNUM - 1));
-FIRST=$(echo $VERSION_BASE | sed -e 's/[0-9]*$//');
+FIRST=$(echo $PKG_VERSION | sed -e 's/[0-9]*$//');
 ORIGINAL=${FIRST}0;
 LAST=$FIRST$LAST;
 
@@ -181,13 +181,13 @@ read
 $DEBUG cd $BASE/lyx-patch/;
 if [ -z "$DEBUG" ]; then
     tar -zxvf $BASE/lyx-build/lyx-$VERSION.tar.gz >/dev/null;
-    diff -urN -x .svn -x version.cpp lyx-$LAST lyx-$VERSION_BASE > patch;
+    diff -urN -x .svn -x version.cpp lyx-$LAST lyx-$PKG_VERSION > patch;
     echo -n "Please check the patch...";
     read;
     $EDITOR patch;
 else
     $DEBUG tar -zxvf $BASE/lyx-build/lyx-$VERSION.tar.gz;
-    $DEBUG diff -urN -x .svn -x version.cpp lyx-$LAST lyx-$VERSION_BASE;
+    $DEBUG diff -urN -x .svn -x version.cpp lyx-$LAST lyx-$PKG_VERSION;
 fi
 
 
@@ -200,7 +200,7 @@ fi
 NUM="$LASTNUM$NUMFIX";
 if [ -z "$DEBUG" ]; then
     cat $BASE/lyx-export/development/tools/patch-preamble | \
-    sed -e "s/VERSION/$VERSION_BASE/; s/ORIGINAL/$ORIGINAL/; s/LAST/$LAST/; s/NUM/$NUM/;" >patch-preamble;
+    sed -e "s/VERSION/$PKG_VERSION/; s/ORIGINAL/$ORIGINAL/; s/LAST/$LAST/; s/NUM/$NUM/;" >patch-preamble;
     echo -n "Please verify the patch preamble...";
     read
     $EDITOR patch-preamble;
