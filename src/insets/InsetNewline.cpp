@@ -10,6 +10,7 @@
  */
 
 #include <config.h>
+#include <output_docbook.h>
 
 #include "InsetNewline.h"
 
@@ -171,10 +172,13 @@ int InsetNewline::plaintext(odocstringstream & os,
 }
 
 
-int InsetNewline::docbook(odocstream & os, OutputParams const &) const
+void InsetNewline::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
-	os << '\n';
-	return 0;
+	if (runparams.docbook_in_par) {
+		xs.closeFontTags();
+		xs << xml::EndTag("para");
+		xs << xml::StartTag("para");
+	}
 }
 
 

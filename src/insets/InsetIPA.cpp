@@ -233,6 +233,14 @@ void InsetIPA::latex(otexstream & os, OutputParams const & runparams_in) const
 }
 
 
+void InsetIPA::docbook(XMLStream & xs, OutputParams const & runparams) const
+{
+	OutputParams rp(runparams);
+	rp.inIPA = true;
+	InsetText::docbook(xs, rp);
+}
+
+
 docstring InsetIPA::xhtml(XMLStream & xs, OutputParams const & runparams_in) const
 {
 	OutputParams runparams(runparams_in);

@@ -37,9 +37,9 @@ public:
 		 std::string const & listName, std::string const & listCmd,
 		 std::string const & refPrefix, std::string const & allowedplacement,
 		 std::string const & htmlType, std::string const & htmlClass,
-		 docstring const & htmlStyle, std::string const & required,
-		 bool usesfloat, bool isprefined,
-		 bool allowswide, bool allowssideways);
+		 docstring const & htmlStyle, std::string const & docbookTag,
+		 std::string const & docbookAttr, std::string const & required,
+		 bool usesfloat, bool isprefined, bool allowswide, bool allowssideways);
 	///
 	std::string const & floattype() const { return floattype_; }
 	///
@@ -79,6 +79,12 @@ public:
 	std::string const & htmlAttrib() const;
 	/// tag type, defaults to "div"
 	std::string const & htmlTag() const;
+	///
+	std::string const & docbookTag(bool hasTitle = false) const;
+	///
+	std::string const & docbookAttr() const;
+	///
+	std::string const & docbookCaption() const;
 private:
 	///
 	std::string defaultCSSClass() const;
@@ -120,6 +126,12 @@ private:
 	mutable std::string defaultcssclass_;
 	///
 	docstring html_style_;
+	/// DocBook tag
+	mutable std::string docbook_tag_;
+	/// attribute (mostly, role)
+	mutable std::string docbook_caption_;
+	/// caption tag (mostly, either caption or title)
+	std::string docbook_attr_;
 };
 
 

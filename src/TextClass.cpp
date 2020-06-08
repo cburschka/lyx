@@ -62,7 +62,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 81; // rikiheck: GuiName for counters
+int const LAYOUT_FORMAT = 82; // dourouc05: DocBook additions.
 
 
 // Layout format for the current lyx file format. Controls which format is
@@ -143,7 +143,7 @@ TextClass::TextClass()
 	  outputFormat_("latex"), has_output_format_(false), defaultfont_(sane_font), 
 	  titletype_(TITLE_COMMAND_AFTER), titlename_("maketitle"),
 	  min_toclevel_(0), max_toclevel_(0), maxcitenames_(2),
-	  cite_full_author_list_(true), bibintoc_(false)
+	  cite_full_author_list_(true), bibintoc_(false), docbookroot_("article"), docbookforceabstract_(false)
 {
 }
 
@@ -216,7 +216,9 @@ enum TextClassTags {
 	TC_FULLAUTHORLIST,
 	TC_OUTLINERNAME,
 	TC_TABLESTYLE,
-	TC_BIBINTOC
+	TC_BIBINTOC,
+	TC_DOCBOOKROOT,
+	TC_DOCBOOKFORCEABSTRACT
 };
 
 
@@ -239,6 +241,8 @@ LexerKeyword textClassTags[] = {
 	{ "defaultfont",       TC_DEFAULTFONT },
 	{ "defaultmodule",     TC_DEFAULTMODULE },
 	{ "defaultstyle",      TC_DEFAULTSTYLE },
+	{ "docbookforceabstract", TC_DOCBOOKFORCEABSTRACT },
+	{ "docbookroot",       TC_DOCBOOKROOT },
 	{ "excludesmodule",    TC_EXCLUDESMODULE },
 	{ "float",             TC_FLOAT },
 	{ "format",            TC_FORMAT },
@@ -868,9 +872,19 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			error = !readOutlinerName(lexrc);
 			break;
 
-		case TC_TABLESTYLE:
+        case TC_TABLESTYLE:
 			lexrc.next();
 			tablestyle_ = rtrim(lexrc.getString());
+			break;
+
+		case TC_DOCBOOKROOT:
+			if (lexrc.next())
+				docbookroot_ = lexrc.getString();
+			break;
+
+		case TC_DOCBOOKFORCEABSTRACT:
+			if (lexrc.next())
+				docbookforceabstract_ = lexrc.getBool();
 			break;
 		} // end of switch
 	}
@@ -994,7 +1008,6 @@ void TextClass::readClassOptions(Lexer & lexrc)
 		CO_PAGESIZE_FORMAT,
 		CO_PAGESTYLE,
 		CO_OTHER,
-		CO_HEADER,
 		CO_END
 	};
 
@@ -1002,7 +1015,6 @@ void TextClass::readClassOptions(Lexer & lexrc)
 		{"end",       CO_END },
 		{"fontsize",  CO_FONTSIZE },
 		{"fontsizeformat", CO_FONTSIZE_FORMAT },
-		{"header",    CO_HEADER },
 		{"other",     CO_OTHER },
 		{"pagesize",  CO_PAGESIZE },
 		{"pagesizeformat", CO_PAGESIZE_FORMAT },
@@ -1047,10 +1059,6 @@ void TextClass::readClassOptions(Lexer & lexrc)
 				options_ = lexrc.getString();
 			else
 				options_ += ',' + lexrc.getString();
-			break;
-		case CO_HEADER:
-			lexrc.next();
-			class_header_ = subst(lexrc.getString(), "&quot;", "\"");
 			break;
 		case CO_END:
 			getout = true;
@@ -1373,6 +1381,8 @@ bool TextClass::readFloat(Lexer & lexrc)
 		FT_HTMLSTYLE,
 		FT_HTMLATTR,
 		FT_HTMLTAG,
+		FT_DOCBOOKATTR,
+		FT_DOCBOOKTAG,
 		FT_LISTCOMMAND,
 		FT_REFPREFIX,
 		FT_ALLOWED_PLACEMENT,
@@ -1386,6 +1396,8 @@ bool TextClass::readFloat(Lexer & lexrc)
 		{ "allowedplacement", FT_ALLOWED_PLACEMENT },
 		{ "allowssideways", FT_ALLOWS_SIDEWAYS },
 		{ "allowswide", FT_ALLOWS_WIDE },
+		{ "docbookattr", FT_DOCBOOKATTR },
+		{ "docbooktag", FT_DOCBOOKTAG },
 		{ "end", FT_END },
 		{ "extension", FT_EXT },
 		{ "guiname", FT_NAME },
@@ -1410,6 +1422,8 @@ bool TextClass::readFloat(Lexer & lexrc)
 	string htmlattr;
 	docstring htmlstyle;
 	string htmltag;
+	string docbookattr;
+	string docbooktag;
 	string listname;
 	string listcommand;
 	string name;
@@ -1523,6 +1537,14 @@ bool TextClass::readFloat(Lexer & lexrc)
 			lexrc.next();
 			htmltag = lexrc.getString();
 			break;
+		case FT_DOCBOOKATTR:
+			lexrc.next();
+			docbookattr = lexrc.getString();
+			break;
+		case FT_DOCBOOKTAG:
+			lexrc.next();
+			docbooktag = lexrc.getString();
+			break;
 		case FT_END:
 			getout = true;
 			break;
@@ -1550,8 +1572,9 @@ bool TextClass::readFloat(Lexer & lexrc)
 		}
 		Floating fl(type, placement, ext, within, style, name,
 			listname, listcommand, refprefix, allowed_placement,
-			htmltag, htmlattr, htmlstyle, required, usesfloat,
-			ispredefined, allowswide, allowssideways);
+			htmltag, htmlattr, htmlstyle, docbooktag, docbookattr,
+			required, usesfloat, ispredefined, allowswide,
+			allowssideways);
 		floatlist_.newFloat(fl);
 		// each float has its own counter
 		counters_.newCounter(from_ascii(type), from_ascii(within),

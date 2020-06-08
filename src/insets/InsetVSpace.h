@@ -50,7 +50,7 @@ private:
 	int plaintext(odocstringstream & ods, OutputParams const & op,
 	              size_t max_length = INT_MAX) const;
 	///
-	int docbook(odocstream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const;
 	/// Note that this returns the inset rather than writing it,
 	/// so it will actually be written after the present paragraph.
 	/// The normal case is that this inset will be on a line by

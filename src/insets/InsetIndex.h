@@ -57,7 +57,7 @@ private:
 	///
 	void read(Lexer & lex);
 	///
-	int docbook(odocstream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const;
 	///
 	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///

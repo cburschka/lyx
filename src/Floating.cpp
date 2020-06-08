@@ -30,7 +30,8 @@ Floating::Floating(string const & type, string const & placement,
 		   string const & listName, std::string const & listCmd,
 		   string const & refPrefix, std::string const & allowedplacement,
 		   string const & htmlTag, string const & htmlAttrib,
-		   docstring const & htmlStyle, string const & required,
+		   docstring const & htmlStyle, string const & docbookTag,
+		   string const & docbookAttr, string const & required,
 		   bool usesfloat, bool ispredefined,
 		   bool allowswide, bool allowssideways)
 	: floattype_(type), placement_(placement), ext_(ext), within_(within),
@@ -38,7 +39,8 @@ Floating::Floating(string const & type, string const & placement,
 	  refprefix_(refPrefix), allowedplacement_(allowedplacement), required_(required),
 	  usesfloatpkg_(usesfloat), ispredefined_(ispredefined),
 	  allowswide_(allowswide), allowssideways_(allowssideways),
-	  html_tag_(htmlTag), html_attrib_(htmlAttrib), html_style_(htmlStyle)
+	  html_tag_(htmlTag), html_attrib_(htmlAttrib), html_style_(htmlStyle),
+	  docbook_tag_(docbookTag), docbook_attr_(docbookAttr)
 {}
 
 
@@ -77,6 +79,44 @@ string Floating::defaultCSSClass() const
 	// are there other characters we need to remove?
 	defaultcssclass_ = "float-" + d;
 	return defaultcssclass_;
+}
+
+
+string const & Floating::docbookAttr() const
+{
+	return docbook_attr_;
+}
+
+
+string const & Floating::docbookTag(bool hasTitle) const
+{
+	docbook_tag_ = "";
+	if (floattype_ == "figure") {
+		docbook_tag_ = hasTitle ? "figure" : "informalfigure";
+	} else if (floattype_ == "table") {
+		docbook_tag_ = hasTitle ? "table" : "informaltable";
+	} else if (floattype_ == "algorithm") {
+		// TODO: no good translation for now! Figures are the closest match, as they can contain text.
+		// Solvable as soon as https://github.com/docbook/docbook/issues/157 has a definitive answer.
+		docbook_tag_ = "figure";
+	}
+	return docbook_tag_;
+}
+
+
+string const & Floating::docbookCaption() const
+{
+	docbook_caption_ = "";
+	if (floattype_ == "figure") {
+		docbook_caption_ = "title";
+	} else if (floattype_ == "table") {
+		docbook_caption_ = "caption";
+	} else if (floattype_ == "algorithm") {
+		// TODO: no good translation for now! Figures are the closest match, as they can contain text.
+		// Solvable as soon as https://github.com/docbook/docbook/issues/157 has a definitive answer.
+		docbook_caption_ = "title";
+	}
+	return docbook_caption_;
 }
 
 

@@ -25,7 +25,6 @@
 #include "InsetIterator.h"
 #include "Language.h"
 #include "LyX.h"
-#include "output_xhtml.h"
 #include "ParIterator.h"
 #include "xml.h"
 #include "texstream.h"
@@ -351,12 +350,13 @@ int InsetLabel::plaintext(odocstringstream & os,
 }
 
 
-int InsetLabel::docbook(odocstream & os, OutputParams const &) const
+void InsetLabel::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
-	os << "<!-- anchor id=\""
-	   << xml::cleanID(getParam("name"))
-	   << "\" -->";
-	return 0;
+	// Output an anchor only if it has not been processed before.
+	if (runparams.docbook_anchors_to_ignore.find(getParam("name")) == runparams.docbook_anchors_to_ignore.end()) {
+		docstring attr = from_utf8("xml:id=\"") + xml::cleanID(getParam("name")) + from_utf8("\"");
+		xs << xml::CompTag("anchor", to_utf8(attr));
+	}
 }
 
 

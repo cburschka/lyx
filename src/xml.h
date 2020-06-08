@@ -91,15 +91,15 @@ public:
     /// for it is disabled by default, however, so you will need
     /// to enable it if you want to use it.
     void dumpTagStack(std::string const & msg);
+    ///
+    bool isTagOpen(xml::StartTag const &, int maxdepth = -1) const;
+    ///
+    bool isTagOpen(xml::EndTag const &, int maxdepth = -1) const;
+    ///
+    bool isTagPending(xml::StartTag const &, int maxdepth = -1) const;
 private:
     ///
     void clearTagDeque();
-    ///
-    bool isTagOpen(xml::StartTag const &) const;
-    ///
-    bool isTagOpen(xml::EndTag const &) const;
-    ///
-    bool isTagPending(xml::StartTag const &) const;
     ///
     void writeError(std::string const &) const;
     ///
@@ -183,7 +183,7 @@ struct StartTag
     /// </tag_>
     virtual docstring writeEndTag() const;
     ///
-    virtual FontTag const * asFontTag() const { return 0; }
+    virtual FontTag const * asFontTag() const { return nullptr; }
     ///
     virtual bool operator==(StartTag const & rhs) const
     { return tag_ == rhs.tag_; }
@@ -303,7 +303,11 @@ struct FontTag : public StartTag
     ///
     FontTag(docstring const & tag, FontTypes type): StartTag(tag), font_type_(type) {}
     ///
+    FontTag(std::string const & tag, FontTypes type): StartTag(from_utf8(tag)), font_type_(type) {}
+    ///
     FontTag(docstring const & tag, docstring const & attr, FontTypes type): StartTag(tag, attr), font_type_(type) {}
+    ///
+    FontTag(std::string const & tag, std::string const & attr, FontTypes type): StartTag(from_utf8(tag), from_utf8(attr)), font_type_(type) {}
     ///
     FontTag const * asFontTag() const override { return this; }
     ///
@@ -318,6 +322,8 @@ struct EndFontTag : public EndTag
 {
     ///
     EndFontTag(docstring const & tag, FontTypes type): EndTag(tag), font_type_(type) {}
+    ///
+    EndFontTag(std::string const & tag, FontTypes type): EndTag(from_utf8(tag)), font_type_(type) {}
     ///
     EndFontTag const * asFontTag() const override { return this; }
     ///

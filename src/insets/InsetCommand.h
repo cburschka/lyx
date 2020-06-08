@@ -89,7 +89,7 @@ public:
 	int plaintext(odocstringstream & ods, OutputParams const & op,
 	              size_t max_length = INT_MAX) const;
 	///
-	int docbook(odocstream &, OutputParams const & runparams) const;
+	void docbook(XMLStream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///

@@ -26,7 +26,7 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
-#include "output_xhtml.h"
+#include "xml.h"
 #include "texstream.h"
 #include "TextClass.h"
 
@@ -207,13 +207,13 @@ int InsetWrap::plaintext(odocstringstream & os,
 }
 
 
-int InsetWrap::docbook(odocstream & os, OutputParams const & runparams) const
+void InsetWrap::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
-	// FIXME UNICODE
-	os << '<' << from_ascii(params_.type) << '>';
-	int const i = InsetText::docbook(os, runparams);
-	os << "</" << from_ascii(params_.type) << '>';
-	return i;
+	InsetLayout const & il = getLayout();
+
+	xs << xml::StartTag(il.docbooktag(), il.docbookattr()); // TODO: Detect when there is a title.
+	InsetText::docbook(xs, runparams);
+	xs << xml::EndTag(il.docbooktag());
 }
 
 

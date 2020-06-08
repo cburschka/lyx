@@ -348,22 +348,9 @@ int InsetPhantom::plaintext(odocstringstream & os,
 }
 
 
-int InsetPhantom::docbook(odocstream & os, OutputParams const & runparams) const
+void InsetPhantom::docbook(XMLStream &, OutputParams const &) const
 {
-	docstring cmdname;
-	switch (params_.type) {
-	case InsetPhantomParams::Phantom:
-	case InsetPhantomParams::HPhantom:
-	case InsetPhantomParams::VPhantom:
-	default:
-		cmdname = from_ascii("phantom");
-		break;
-	}
-	os << "<" + cmdname + ">";
-	int const i = InsetCollapsible::docbook(os, runparams);
-	os << "</" + cmdname + ">";
-
-	return i;
+	return;
 }
 
 

@@ -24,6 +24,7 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "output_xhtml.h"
+#include <output_docbook.h>
 #include "ParIterator.h"
 #include "texstream.h"
 #include "TocBackend.h"
@@ -545,19 +546,33 @@ static docstring const cleanupWhitespace(docstring const & citelist)
 }
 
 
-int InsetCitation::docbook(odocstream & os, OutputParams const &) const
+void InsetCitation::docbook(XMLStream & xs, OutputParams const &) const
 {
-	os << from_ascii("<citation>")
-	   << cleanupWhitespace(getParam("key"))
-	   << from_ascii("</citation>");
-	return 0;
+	if (getCmdName() == "nocite")
+		return;
+
+	// Split the different citations (on ","), so that one tag can be output for each of them.
+	string citations = to_utf8(getParam("key")); // Citation strings are not supposed to be too fancy.
+	if (citations.find(',') == string::npos) {
+		xs << xml::CompTag("biblioref", "endterm=\"" + citations + "\"");
+	} else {
+		size_t pos = 0;
+		while (pos != string::npos) {
+			pos = citations.find(',');
+			xs << xml::CompTag("biblioref", "endterm=\"" + citations.substr(0, pos) + "\"");
+			citations.erase(0, pos + 1);
+
+			if (pos != string::npos) {
+				xs << ", "; 
+			}
+		}
+	}
 }
 
 
 docstring InsetCitation::xhtml(XMLStream & xs, OutputParams const &) const
 {
-	string const & cmd = getCmdName();
-	if (cmd == "nocite")
+	if (getCmdName() == "nocite")
 		return docstring();
 
 	// have to output this raw, because generateLabel() will include tags

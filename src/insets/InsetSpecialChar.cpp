@@ -22,6 +22,7 @@
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "output_xhtml.h"
+#include "xml.h"
 #include "texstream.h"
 
 #include "frontends/FontMetrics.h"
@@ -529,48 +530,54 @@ int InsetSpecialChar::plaintext(odocstringstream & os,
 }
 
 
-int InsetSpecialChar::docbook(odocstream & os, OutputParams const &) const
+void InsetSpecialChar::docbook(XMLStream & xs, OutputParams const &) const
 {
 	switch (kind_) {
-	case HYPHENATION:
-		break;
-	case ALLOWBREAK:
-		// U+200B ZERO WIDTH SPACE (ZWSP)
-		os.put(0x200b);
-		break;
+    case HYPHENATION:
+    	// Soft hyphen.
+        xs << XMLStream::ESCAPE_NONE << "&#xAD;";
+        break;
+    case ALLOWBREAK:
+    	// Zero-width space
+        xs << XMLStream::ESCAPE_NONE << "&#x200B;";
+        break;
 	case LIGATURE_BREAK:
+		// Zero width non-joiner
+		xs << XMLStream::ESCAPE_NONE << "&#x200C;";
 		break;
 	case END_OF_SENTENCE:
-		os << '.';
+		xs << '.';
 		break;
 	case LDOTS:
-		os << "&hellip;";
+		// &hellip;
+		xs << XMLStream::ESCAPE_NONE << "&#x2026;";
 		break;
 	case MENU_SEPARATOR:
-		os << "&lyxarrow;";
+		// &rArr;, right arrow.
+		xs << XMLStream::ESCAPE_NONE << "&#x21D2;";
 		break;
 	case SLASH:
-		os << '/';
+		// &frasl;, fractional slash.
+		xs << XMLStream::ESCAPE_NONE << "&#x2044;";
 		break;
+		// Non-breaking hyphen.
 	case NOBREAKDASH:
-		os << '-';
+		xs << XMLStream::ESCAPE_NONE << "&#x2011;";
 		break;
 	case PHRASE_LYX:
-		os << "LyX";
+		xs << "LyX";
 		break;
 	case PHRASE_TEX:
-		os << "TeX";
+		xs << "TeX";
 		break;
 	case PHRASE_LATEX2E:
-		os << "LaTeX2";
-		// ε U+03B5 GREEK SMALL LETTER EPSILON
-		os.put(0x03b5);
+		// Lower-case epsilon.
+		xs << "LaTeX2" << XMLStream::ESCAPE_NONE << "&#x03b5;";
 		break;
 	case PHRASE_LATEX:
-		os << "LaTeX";
+		xs << "LaTeX";
 		break;
 	}
-	return 0;
 }
 
 

@@ -81,8 +81,6 @@ public:
 	int plaintext(odocstringstream & ods, OutputParams const & op,
 	              size_t max_length = INT_MAX) const;
 	///
-	int docbook(odocstream &, OutputParams const &) const;
-	///
 	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///
 	enum XHTMLOptions {
@@ -95,6 +93,10 @@ public:
 	///
 	docstring insetAsXHTML(XMLStream &, OutputParams const &,
 	                       XHTMLOptions) const;
+	///
+	void docbook(XMLStream &, OutputParams const &, XHTMLOptions opts) const;
+	///
+	void docbook(XMLStream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 

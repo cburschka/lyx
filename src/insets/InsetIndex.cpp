@@ -40,7 +40,10 @@
 #include "frontends/alert.h"
 
 #include <algorithm>
+#include <set>
 #include <ostream>
+
+#include <QThreadStorage>
 
 using namespace std;
 using namespace lyx::support;
@@ -182,12 +185,181 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 }
 
 
-int InsetIndex::docbook(odocstream & os, OutputParams const & runparams) const
+void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
-	os << "<indexterm><primary>";
-	int const i = InsetText::docbook(os, runparams);
-	os << "</primary></indexterm>";
-	return i;
+	// Get the content of the inset as LaTeX, as some things may be encoded as ERT (like {}).
+	odocstringstream odss;
+	otexstream ots(odss);
+	InsetText::latex(ots, runparams);
+	docstring latexString = trim(odss.str());
+
+    // Check whether there are unsupported things.
+    if (latexString.find(from_utf8("@")) != latexString.npos) {
+        docstring error = from_utf8("Unsupported feature: an index entry contains an @. "
+                                    "Complete entry: \"") + latexString + from_utf8("\"");
+        LYXERR0(error);
+        xs << XMLStream::ESCAPE_NONE << (from_utf8("<!-- Output Error: ") + error + from_utf8(" -->\n"));
+    }
+
+    // Handle several indices.
+    docstring indexType = from_utf8("");
+    if (buffer().masterBuffer()->params().use_indices) {
+        indexType += " type=\"" + params_.index + "\"";
+    }
+
+	// Split the string into its main constituents: terms, and command (see, see also, range).
+	size_t positionVerticalBar = latexString.find(from_ascii("|")); // What comes before | is (sub)(sub)entries.
+	docstring indexTerms = latexString.substr(0, positionVerticalBar);
+	docstring command = latexString.substr(positionVerticalBar + 1);
+
+	// Handle primary, secondary, and tertiary terms (entries, subentries, and subsubentries, for LaTeX).
+	vector<docstring> terms = getVectorFromString(indexTerms, from_ascii("!"), false);
+
+	// Handle ranges. Happily, (| and |) can only be at the end of the string! However, | may be trapped by the
+	bool hasStartRange = latexString.find(from_ascii("|(")) != latexString.npos;
+	bool hasEndRange = latexString.find(from_ascii("|)")) != latexString.npos;
+	if (hasStartRange || hasEndRange) {
+		// Remove the ranges from the command if they do not appear at the beginning.
+		size_t index = 0;
+		while ((index = command.find(from_utf8("|("), index)) != std::string::npos)
+			command.erase(index, 1);
+		index = 0;
+		while ((index = command.find(from_utf8("|)"), index)) != std::string::npos)
+			command.erase(index, 1);
+
+		// Remove the ranges when they are the only vertical bar in the complete string.
+		if (command[0] == '(' || command[0] == ')')
+			command.erase(0, 1);
+	}
+
+	// Handle see and seealso. As "see" is a prefix of "seealso", the order of the comparisons is important.
+	// Both commands are mutually exclusive!
+	docstring see = from_utf8("");
+	vector<docstring> seeAlsoes;
+	if (command.substr(0, 3) == "see") {
+        // Unescape brackets.
+        size_t index = 0;
+        while ((index = command.find(from_utf8("\\{"), index)) != std::string::npos)
+            command.erase(index, 1);
+        index = 0;
+        while ((index = command.find(from_utf8("\\}"), index)) != std::string::npos)
+            command.erase(index, 1);
+
+		// Retrieve the part between brackets, and remove the complete seealso.
+		size_t positionOpeningBracket = command.find(from_ascii("{"));
+		size_t positionClosingBracket = command.find(from_ascii("}"));
+		docstring list = command.substr(positionOpeningBracket + 1, positionClosingBracket - positionOpeningBracket - 1);
+
+		// Parse the list of referenced entries (or a single one for see).
+		if (command.substr(0, 7) == "seealso") {
+			seeAlsoes = getVectorFromString(list, from_ascii(","), false);
+		} else {
+			see = list;
+
+			if (see.find(from_ascii(",")) != see.npos) {
+				docstring error = from_utf8("Several index terms found as \"see\"! Only one is acceptable. "
+                                            "Complete entry: \"") + latexString + from_utf8("\"");
+				LYXERR0(error);
+				xs << XMLStream::ESCAPE_NONE << (from_utf8("<!-- Output Error: ") + error + from_utf8(" -->\n"));
+			}
+		}
+
+        // Remove the complete see/seealso from the commands, in case there is something else to parse.
+        command = command.substr(positionClosingBracket + 1);
+	}
+
+	// Some parts of the strings are not parsed, as they do not have anything matching in DocBook: things like
+	// formatting the entry or the page number, other strings for sorting. https://wiki.lyx.org/Tips/Indexing
+	// If there are such things in the index entry, then this code may miserably fail. For example, for "Peter|(textbf",
+	// no range will be detected.
+	// TODO: Could handle formatting as significance="preferred"?
+
+    // Write all of this down.
+	if (terms.empty() && !hasEndRange) {
+		docstring error = from_utf8("No index term found! Complete entry: \"") + latexString + from_utf8("\"");
+		LYXERR0(error);
+		xs << XMLStream::ESCAPE_NONE << (from_utf8("<!-- Output Error: ") + error + from_utf8(" -->\n"));
+	} else {
+		// Generate the attributes for ranges. It is based on the terms that are indexed, but the ID must be unique
+		// to this indexing area (xml::cleanID does not guarantee this: for each call with the same arguments,
+		// the same legal ID is produced; here, as the input would be the same, the output must be, by design).
+		// Hence the thread-local storage, as the numbers must strictly be unique, and thus cannot be shared across
+		// a paragraph (making the solution used for HTML worthless). This solution is very similar to the one used in
+		// xml::cleanID.
+		docstring attrs = indexType;
+		if (hasStartRange || hasEndRange) {
+			// Append an ID if uniqueness is not guaranteed across the document.
+			static QThreadStorage<set<docstring>> tKnownTermLists;
+			static QThreadStorage<int> tID;
+
+			set<docstring> & knownTermLists = tKnownTermLists.localData();
+			int & ID = tID.localData();
+
+			if (!tID.hasLocalData()) {
+				tID.localData() = 0;
+			}
+
+			// Modify the index terms to add the unique ID if needed.
+			docstring newIndexTerms = indexTerms;
+			if (knownTermLists.find(indexTerms) != knownTermLists.end()) {
+				newIndexTerms += from_ascii(string("-") + to_string(ID));
+
+				// Only increment for the end of range, so that the same number is used for the start of range.
+				if (hasEndRange) {
+					ID++;
+				}
+			}
+
+			// Term list not yet known: add it to the set AFTER the end of range. After
+			if (knownTermLists.find(indexTerms) == knownTermLists.end() && hasEndRange) {
+				knownTermLists.insert(indexTerms);
+			}
+
+			// Generate the attributes.
+			docstring id = xml::cleanID(newIndexTerms);
+			if (hasStartRange) {
+				attrs += " class=\"startofrange\" xml:id=\"" + id + "\"";
+			} else {
+				attrs += " class=\"endofrange\" startref=\"" + id + "\"";
+			}
+		}
+
+		// Handle the index terms (including the specific index for this entry).
+		xs << xml::StartTag("indexterm", attrs);
+		if (terms.size() > 0) { // hasEndRange has no content.
+			xs << xml::StartTag("primary");
+			xs << terms[0];
+			xs << xml::EndTag("primary");
+		}
+		if (terms.size() > 1) {
+			xs << xml::StartTag("secondary");
+			xs << terms[1];
+			xs << xml::EndTag("secondary");
+		}
+		if (terms.size() > 2) {
+			xs << xml::StartTag("tertiary");
+			xs << terms[2];
+			xs << xml::EndTag("tertiary");
+		}
+
+		// Handle see and see also.
+		if (!see.empty()) {
+			xs << xml::StartTag("see");
+			xs << see;
+			xs << xml::EndTag("see");
+		}
+
+		if (!seeAlsoes.empty()) {
+			for (auto & entry : seeAlsoes) {
+				xs << xml::StartTag("seealso");
+				xs << entry;
+				xs << xml::EndTag("seealso");
+			}
+		}
+
+		// Close the entry.
+		xs << xml::EndTag("indexterm");
+	}
 }
 
 

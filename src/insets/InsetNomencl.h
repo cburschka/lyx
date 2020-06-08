@@ -28,9 +28,6 @@ public:
 	///
 	InsetNomencl(Buffer * buf, InsetCommandParams const &);
 
-	///
-	int docbookGlossary(odocstream &) const;
-
 	/// \name Public functions inherited from Inset class
 	//@{
 	///
@@ -48,7 +45,7 @@ public:
 	int plaintext(odocstringstream & ods, OutputParams const & op,
 	              size_t max_length = INT_MAX) const;
 	///
-	int docbook(odocstream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const;
 	/// Does nothing at the moment.
 	docstring xhtml(XMLStream &, OutputParams const &) const;
 	//@}
@@ -92,7 +89,7 @@ public:
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
 	///
-	int docbook(odocstream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const;
 	///
 	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///

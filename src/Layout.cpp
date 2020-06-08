@@ -31,7 +31,7 @@ using namespace lyx::support;
 
 namespace lyx {
 
-/// Special value of toclevel for layouts that to not belong in a TOC
+/// Special value of toclevel for layouts that do not belong to a TOC
 const int Layout::NOT_IN_TOC = -1000;
 
 //  The order of the LayoutTags enum is no more important. [asierra300396]
@@ -104,6 +104,21 @@ enum LayoutTags {
 	LT_HTMLPREAMBLE,
 	LT_HTMLSTYLE,
 	LT_HTMLFORCECSS,
+	LT_DOCBOOKTAG,
+	LT_DOCBOOKATTR,
+	LT_DOCBOOKININFO,
+	LT_DOCBOOKWRAPPERTAG,
+	LT_DOCBOOKWRAPPERATTR,
+	LT_DOCBOOKSECTIONTAG,
+	LT_DOCBOOKITEMWRAPPERTAG,
+	LT_DOCBOOKITEMWRAPPERATTR,
+	LT_DOCBOOKITEMTAG,
+	LT_DOCBOOKITEMATTR,
+	LT_DOCBOOKITEMLABELTAG,
+	LT_DOCBOOKITEMLABELATTR,
+	LT_DOCBOOKITEMINNERTAG,
+	LT_DOCBOOKITEMINNERATTR,
+	LT_DOCBOOKFORCEABSTRACTTAG,
 	LT_INPREAMBLE,
 	LT_HTMLTITLE,
 	LT_SPELLCHECK,
@@ -204,6 +219,21 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		{ "commanddepth",   LT_COMMANDDEPTH },
 		{ "copystyle",      LT_COPYSTYLE },
 		{ "dependson",      LT_DEPENDSON },
+		{ "docbookattr",             LT_DOCBOOKATTR },
+		{ "docbookforceabstracttag", LT_DOCBOOKFORCEABSTRACTTAG },
+		{ "docbookininfo",           LT_DOCBOOKININFO },
+		{ "docbookitemattr",         LT_DOCBOOKITEMATTR },
+		{ "docbookiteminnerattr",    LT_DOCBOOKITEMINNERATTR },
+		{ "docbookiteminnertag",     LT_DOCBOOKITEMINNERTAG },
+		{ "docbookitemlabelattr",    LT_DOCBOOKITEMLABELATTR },
+		{ "docbookitemlabeltag",     LT_DOCBOOKITEMLABELTAG },
+		{ "docbookitemtag",          LT_DOCBOOKITEMTAG },
+		{ "docbookitemwrapperattr",  LT_DOCBOOKITEMWRAPPERATTR },
+		{ "docbookitemwrappertag",   LT_DOCBOOKITEMWRAPPERTAG },
+		{ "docbooksectiontag",       LT_DOCBOOKSECTIONTAG },
+		{ "docbooktag",              LT_DOCBOOKTAG },
+		{ "docbookwrapperattr",      LT_DOCBOOKWRAPPERATTR },
+		{ "docbookwrappertag",       LT_DOCBOOKWRAPPERTAG },
 		{ "end",            LT_END },
 		{ "endlabelstring", LT_ENDLABELSTRING },
 		{ "endlabeltype",   LT_ENDLABELTYPE },
@@ -687,6 +717,66 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 
 		case LT_HTMLTITLE:
 			lex >> htmltitle_;
+			break;
+
+		case LT_DOCBOOKTAG:
+			lex >> docbooktag_;
+			break;
+
+		case LT_DOCBOOKATTR:
+			lex >> docbookattr_;
+			break;
+
+		case LT_DOCBOOKFORCEABSTRACTTAG:
+			lex >> docbookforceabstracttag_;
+			break;
+
+		case LT_DOCBOOKININFO:
+			lex >> docbookininfo_;
+			break;
+
+		case LT_DOCBOOKWRAPPERTAG:
+			lex >> docbookwrappertag_;
+			break;
+
+		case LT_DOCBOOKWRAPPERATTR:
+			lex >> docbookwrapperattr_;
+			break;
+
+		case LT_DOCBOOKSECTIONTAG:
+			lex >> docbooksectiontag_;
+			break;
+
+        case LT_DOCBOOKITEMWRAPPERTAG:
+            lex >> docbookitemwrappertag_;
+            break;
+
+        case LT_DOCBOOKITEMWRAPPERATTR:
+			lex >> docbookitemwrapperattr_;
+			break;
+
+		case LT_DOCBOOKITEMTAG:
+			lex >> docbookitemtag_;
+			break;
+
+		case LT_DOCBOOKITEMATTR:
+			lex >> docbookitemattr_;
+			break;
+
+		case LT_DOCBOOKITEMLABELTAG:
+			lex >> docbookitemlabeltag_;
+			break;
+
+		case LT_DOCBOOKITEMLABELATTR:
+			lex >> docbookitemlabelattr_;
+			break;
+
+		case LT_DOCBOOKITEMINNERTAG:
+			lex >> docbookiteminnertag_;
+			break;
+
+		case LT_DOCBOOKITEMINNERATTR:
+			lex >> docbookiteminnerattr_;
 			break;
 
 		case LT_SPELLCHECK:
@@ -1499,8 +1589,38 @@ void Layout::write(ostream & os) const
 		os << "\tHTMLPreamble\n"
 		   << to_utf8(rtrim(htmlpreamble_, "\n"))
 		   << "\n\tEndPreamble\n";
-	os << "\tHTMLTitle " << htmltitle_ << "\n"
-	      "\tSpellcheck " << spellcheck << "\n"
+	os << "\tHTMLTitle " << htmltitle_ << "\n";
+	if(!docbooktag_.empty())
+		os << "\tDocBookTag " << docbooktag_ << '\n';
+	if(!docbookattr_.empty())
+		os << "\tDocBookAttr " << docbookattr_ << '\n';
+	if(!docbookininfo_.empty())
+		os << "\tDocBookInInfo " << docbookininfo_ << '\n';
+	if(!docbookwrappertag_.empty())
+		os << "\tDocBookWrapperTag " << docbookwrappertag_ << '\n';
+	if(!docbookwrapperattr_.empty())
+		os << "\tDocBookWrapperAttr " << docbookwrapperattr_ << '\n';
+	if(!docbooksectiontag_.empty())
+		os << "\tDocBookSectionTag " << docbooksectiontag_ << '\n';
+	if(!docbookitemtag_.empty())
+		os << "\tDocBookItemTag " << docbookitemtag_ << '\n';
+	if(!docbookitemattr_.empty())
+		os << "\tDocBookItemAttr " << docbookitemattr_ << '\n';
+	if(!docbookitemwrappertag_.empty())
+		os << "\tDocBookItemTag " << docbookitemwrappertag_ << '\n';
+	if(!docbookitemwrapperattr_.empty())
+		os << "\tDocBookItemWrapperAttr " << docbookitemwrapperattr_ << '\n';
+	if(!docbookitemlabeltag_.empty())
+		os << "\tDocBookItemLabelTag " << docbookitemlabeltag_ << '\n';
+	if(!docbookitemlabelattr_.empty())
+		os << "\tDocBookItemLabelAttr " << docbookitemlabelattr_ << '\n';
+	if(!docbookiteminnertag_.empty())
+		os << "\tDocBookItemInnerTag " << docbookiteminnertag_ << '\n';
+	if(!docbookiteminnerattr_.empty())
+		os << "\tDocBookItemInnerAttr " << docbookiteminnerattr_ << '\n';
+	if(!docbookforceabstracttag_.empty())
+		os << "\tDocBookForceAbstractTag " << docbookforceabstracttag_ << '\n';
+	os << "\tSpellcheck " << spellcheck << "\n"
 	      "\tForceLocal " << forcelocal << "\n"
 	      "End\n";
 }
@@ -1646,6 +1766,116 @@ string Layout::defaultCSSClass() const
 	defaultcssclass_ = to_utf8(d);
 	return defaultcssclass_;
 }
+
+
+string const & Layout::docbooktag() const
+{
+	// No sensible default value, unhappily...
+	if (docbooktag_.empty())
+		docbooktag_ = to_utf8(name_);
+	return docbooktag_;
+}
+
+
+string const & Layout::docbookattr() const
+{
+	// Perfectly OK to return no attributes, so docbookattr_ does not need to be filled.
+	return docbookattr_;
+}
+
+
+string const & Layout::docbookininfo() const
+{
+	// Indeed, a trilean. Only titles should be "maybe": otherwise, metadata is "always", content is "never". 
+	if (docbookininfo_.empty() || (docbookininfo_ != "never" && docbookininfo_ != "always" && docbookininfo_ != "maybe"))
+		docbookininfo_ = "never";
+	return docbookininfo_;
+}
+
+
+string const & Layout::docbookwrappertag() const
+{
+    if (docbookwrappertag_.empty())
+        docbookwrappertag_ = "NONE";
+    return docbookwrappertag_;
+}
+
+
+string const & Layout::docbookwrapperattr() const
+{
+    return docbookwrapperattr_;
+}
+
+
+string const & Layout::docbooksectiontag() const
+{
+	if (docbooksectiontag_.empty())
+		docbooksectiontag_ = "section";
+	return docbooksectiontag_;
+}
+
+
+string const & Layout::docbookitemwrappertag() const
+{
+    if (docbookitemwrappertag_.empty())
+        docbookitemwrappertag_ = "NONE";
+    return docbookitemwrappertag_;
+}
+
+
+string const & Layout::docbookitemwrapperattr() const
+{
+    return docbookitemwrapperattr_;
+}
+
+
+string const & Layout::docbookitemtag() const
+{
+    return docbookitemtag_;
+}
+
+
+string const & Layout::docbookitemattr() const
+{
+    return docbookitemattr_;
+}
+
+
+string const & Layout::docbookitemlabeltag() const
+{
+	if (docbookitemlabeltag_.empty())
+		docbookitemlabeltag_ = "NONE";
+	return docbookitemlabeltag_;
+}
+
+
+string const & Layout::docbookitemlabelattr() const
+{
+	return docbookitemlabelattr_;
+}
+
+
+string const & Layout::docbookiteminnertag() const
+{
+	if (docbookiteminnertag_.empty())
+		docbookiteminnertag_ = "NONE";
+	return docbookiteminnertag_;
+}
+
+
+string const & Layout::docbookiteminnerattr() const
+{
+	return docbookiteminnerattr_;
+}
+
+
+std::string const & Layout::docbookforceabstracttag() const
+{
+	if (docbookforceabstracttag_.empty())
+		docbookforceabstracttag_ = "NONE";
+	return docbookforceabstracttag_;
+}
+
 
 
 namespace {

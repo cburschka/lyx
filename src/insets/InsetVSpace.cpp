@@ -23,7 +23,7 @@
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
-#include "output_xhtml.h"
+#include "xml.h"
 #include "texstream.h"
 #include "Text.h"
 
@@ -224,10 +224,9 @@ int InsetVSpace::plaintext(odocstringstream & os,
 }
 
 
-int InsetVSpace::docbook(odocstream & os, OutputParams const &) const
+void InsetVSpace::docbook(XMLStream & xs, OutputParams const &) const
 {
-	os << '\n';
-	return 1;
+	xs << xml::CR();
 }
 
 

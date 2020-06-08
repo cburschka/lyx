@@ -182,24 +182,18 @@ void InsetMathRef::validate(LaTeXFeatures & features) const
 }
 
 
-int InsetMathRef::docbook(odocstream & os, OutputParams const & runparams) const
+void InsetMathRef::docbook(XMLStream & xs, OutputParams const &) const
 {
 	if (cell(1).empty()) {
-		os << "<xref linkend=\""
-		   << xml::cleanID(asString(cell(0)));
-		if (runparams.flavor == OutputParams::DOCBOOK5)
-			os << "\"/>";
-		else
-			os << "\">";
+		docstring attr = from_utf8("linkend=\"") + xml::cleanID(asString(cell(0))) + from_utf8("\"");
+		xs << xml::CompTag("xref", to_utf8(attr));
 	} else {
-		os << "<link linkend=\""
-		   << xml::cleanID(asString(cell(0)))
-		   << "\">"
+		// Link with linkend, as is it within the document (not outside, in which case xlink:href is better suited).
+		docstring attr = from_utf8("linkend=\"") + xml::cleanID(asString(cell(0))) + from_utf8("\"");
+		xs << xml::StartTag("link", to_utf8(attr))
 		   << asString(cell(1))
-		   << "</link>";
+		   << xml::EndTag("link");
 	}
-
-	return 0;
 }
 
 

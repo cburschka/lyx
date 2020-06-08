@@ -37,6 +37,7 @@
 #include "support/lstrings.h"
 
 #include <cstdlib>
+#include <output_docbook.h>
 
 using namespace std;
 
@@ -183,10 +184,9 @@ int InsetLine::plaintext(odocstringstream & os,
 }
 
 
-int InsetLine::docbook(odocstream & os, OutputParams const &) const
+void InsetLine::docbook(XMLStream & xs, OutputParams const &) const
 {
-	os << '\n';
-	return 0;
+	xs << xml::CR();
 }
 
 

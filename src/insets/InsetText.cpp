@@ -38,14 +38,13 @@
 #include "MetricsInfo.h"
 #include "output_docbook.h"
 #include "output_latex.h"
+#include "output_plaintext.h"
 #include "output_xhtml.h"
 #include "OutputParams.h"
-#include "output_plaintext.h"
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
 #include "Row.h"
-#include "xml.h"
 #include "TexRow.h"
 #include "texstream.h"
 #include "TextClass.h"
@@ -589,20 +588,52 @@ int InsetText::plaintext(odocstringstream & os,
 }
 
 
-int InsetText::docbook(odocstream & os, OutputParams const & runparams) const
+
+void InsetText::docbook(XMLStream & xs, OutputParams const & rp) const
 {
-	ParagraphList::const_iterator const beg = paragraphs().begin();
+    docbook(xs, rp, WriteEverything);
+}
 
-	if (!undefined())
-		xml::openTag(os, getLayout().latexname(),
-			      beg->getID(buffer(), runparams) + getLayout().latexparam());
 
-	docbookParagraphs(text_, buffer(), os, runparams);
+void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions opts) const
+{
+	// we will always want to output all our paragraphs when we are
+	// called this way.
+	OutputParams runparams = rp;
+	runparams.par_begin = 0;
+	runparams.par_end = text().paragraphs().size();
 
-	if (!undefined())
-		xml::closeTag(os, getLayout().latexname());
+	if (undefined()) {
+		xs.startDivision(false);
+		docbookParagraphs(text_, buffer(), xs, runparams);
+		xs.endDivision();
+		return;
+	}
 
-	return 0;
+	InsetLayout const & il = getLayout();
+	if (opts & WriteOuterTag && !il.docbooktag().empty() && il.docbooktag() != "NONE") {
+        docstring attrs = docstring();
+        if (!il.docbookattr().empty())
+            attrs += from_ascii(il.docbookattr());
+        if (il.docbooktag() == "link")
+            attrs += from_ascii(" xlink:href=\"") + text_.asString() + from_ascii("\"");
+        xs << xml::StartTag(il.docbooktag(), attrs);
+    }
+
+	// No need for labels that are generated from counters.
+
+	// With respect to XHTML, paragraphs are still allowed here.
+	if (!allowMultiPar())
+		runparams.docbook_make_pars = false;
+	if (il.isPassThru())
+		runparams.pass_thru = true;
+
+	xs.startDivision(false);
+	docbookParagraphs(text_, buffer(), xs, runparams);
+	xs.endDivision();
+
+	if (opts & WriteOuterTag)
+		xs << xml::EndTag(il.docbooktag());
 }
 
 

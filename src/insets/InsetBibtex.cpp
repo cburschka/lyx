@@ -27,7 +27,6 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "output_latex.h"
-#include "output_xhtml.h"
 #include "xml.h"
 #include "OutputParams.h"
 #include "PDFOptions.h"
@@ -44,6 +43,7 @@
 #include "support/ExceptionMessage.h"
 #include "support/FileNameList.h"
 #include "support/filetools.h"
+#include "support/regex.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
@@ -51,6 +51,10 @@
 #include "support/textutils.h"
 
 #include <limits>
+#include <map>
+#include <utility>
+
+#include <iostream>
 
 using namespace std;
 using namespace lyx::support;
@@ -1072,6 +1076,342 @@ docstring InsetBibtex::xhtml(XMLStream & xs, OutputParams const &) const
 	}
 	xs << xml::EndTag("div");
 	return docstring();
+}
+
+
+void InsetBibtex::docbook(XMLStream & xs, OutputParams const &) const
+{
+	BiblioInfo const & bibinfo = buffer().masterBibInfo();
+	bool const all_entries = getParam("btprint") == "btPrintAll";
+	vector<docstring> const & cites =
+			all_entries ? bibinfo.getKeys() : bibinfo.citedEntries();
+
+	docstring const reflabel = buffer().B_("References");
+
+	// Tell BiblioInfo our purpose (i.e. generate HTML rich text).
+	CiteItem ci;
+	ci.context = CiteItem::Export;
+	ci.richtext = true;
+	ci.max_key_size = UINT_MAX;
+
+	// Header for bibliography (title required).
+	xs << xml::StartTag("bibliography");
+	xs << xml::CR();
+	xs << xml::StartTag("title");
+	xs << reflabel;
+	xs << xml::EndTag("title") << xml::CR();
+
+	// Translation between keys in each entry and DocBook tags.
+	// IDs for publications; list: http://tdg.docbook.org/tdg/5.2/biblioid.html.
+	vector<pair<string, string>> biblioId = { // <bibtex, docbook>
+	        make_pair("doi", "doi"),
+	        make_pair("isbn", "isbn"),
+	        make_pair("issn", "issn"),
+	        make_pair("isrn", "isrn"),
+	        make_pair("istc", "istc"),
+	        make_pair("lccn", "libraryofcongress"),
+	        make_pair("number", "pubsnumber"),
+	        make_pair("url", "uri")
+	};
+	// Relations between documents.
+	vector<pair<string, string>> relations = { // <bibtex, docbook biblioset relation>
+	        make_pair("journal", "journal"),
+	        make_pair("booktitle", "book"),
+	        make_pair("series", "series")
+	};
+	// Various things that do not fit DocBook.
+	vector<string> misc = { "language", "school", "note" };
+
+	// Store the mapping between BibTeX and DocBook.
+	map<string, string> toDocBookTag;
+	toDocBookTag["fullnames:author"] = "SPECIFIC"; // No direct translation to DocBook: <authorgroup>.
+	toDocBookTag["publisher"] = "SPECIFIC"; // No direct translation to DocBook: <publisher>.
+	toDocBookTag["address"] = "SPECIFIC"; // No direct translation to DocBook: <publisher>.
+	toDocBookTag["editor"] = "editor";
+	toDocBookTag["institution"] = "SPECIFIC"; // No direct translation to DocBook: <org>.
+
+	toDocBookTag["title"] = "title";
+	toDocBookTag["volume"] = "volumenum";
+	toDocBookTag["edition"] = "edition";
+	toDocBookTag["pages"] = "artpagenums";
+
+	toDocBookTag["abstract"] = "SPECIFIC"; // No direct translation to DocBook: <abstract>.
+	toDocBookTag["keywords"] = "SPECIFIC"; // No direct translation to DocBook: <keywordset>.
+	toDocBookTag["year"] = "SPECIFIC"; // No direct translation to DocBook: <pubdate>.
+	toDocBookTag["month"] = "SPECIFIC"; // No direct translation to DocBook: <pubdate>.
+
+	toDocBookTag["journal"] = "SPECIFIC"; // No direct translation to DocBook: <biblioset>.
+	toDocBookTag["booktitle"] = "SPECIFIC"; // No direct translation to DocBook: <biblioset>.
+	toDocBookTag["series"] = "SPECIFIC"; // No direct translation to DocBook: <biblioset>.
+
+	for (auto const & id: biblioId)
+	    toDocBookTag[id.first] = "SPECIFIC"; // No direct translation to DocBook: <biblioid>.
+	for (auto const & id: relations)
+	    toDocBookTag[id.first] = "SPECIFIC"; // No direct translation to DocBook: <biblioset>.
+	for (auto const & id: misc)
+	    toDocBookTag[id] = "SPECIFIC"; // No direct translation to DocBook: <bibliomisc>.
+
+	// Loop over the entries. If there are no entries, add a comment to say so.
+	auto vit = cites.begin();
+	auto ven = cites.end();
+
+	if (vit == ven) {
+		xs << XMLStream::ESCAPE_NONE << "<!-- No entry in the bibliography. -->";
+	}
+
+	for (; vit != ven; ++vit) {
+		BiblioInfo::const_iterator const biit = bibinfo.find(*vit);
+		if (biit == bibinfo.end())
+			continue;
+
+		BibTeXInfo const & entry = biit->second;
+		string const attr = "xml:id=\"" + to_utf8(xml::cleanID(entry.key())) + "\"";
+		xs << xml::StartTag("biblioentry", attr);
+		xs << xml::CR();
+
+		// FIXME Right now, we are calling BibInfo::getInfo on the key,
+		// which will give us all the cross-referenced info. But for every
+		// entry, so there's a lot of repetition. This should be fixed.
+
+		// Parse the results of getInfo and emit the corresponding DocBook tags. Interesting pieces have the form
+		// "<span class="bib-STH">STH</span>", the rest of the text may be discarded.
+		// Could have written a DocBook version of expandFormat (that parses a citation into HTML), but it implements
+		// some kind of recursion. Still, a (static) conversion step between the citation format and DocBook would have
+		// been required. All in all, both codes approaches would have been similar, but this parsing allows relying
+		// on existing building blocks.
+
+		string html = to_utf8(bibinfo.getInfo(entry.key(), buffer(), ci));
+		regex tagRegex("<span class=\"bib-([^\"]*)\">([^<]*)</span>");
+		smatch match;
+		auto tagIt = std::sregex_iterator(html.cbegin(), html.cend(), tagRegex, regex_constants::match_default);
+		auto tagEnd = std::sregex_iterator();
+		map<string, string> delayedTags;
+
+		// Read all tags from HTML and convert those that have a 1:1 matching.
+		while (tagIt != tagEnd) {
+			string tag = tagIt->str(); // regex_match cannot work with temporary strings.
+			++tagIt;
+			std::regex_match(tag, match, tagRegex);
+
+			if (toDocBookTag.find(match[1]) == toDocBookTag.end()) {
+				LYXERR0("The BibTeX field " << match[1].str() << " is unknown.");
+				xs << XMLStream::ESCAPE_NONE << from_utf8("<!-- Output Error: The BibTeX field " + match[1].str() + " is unknown -->\n");
+				continue;
+			}
+
+			if (toDocBookTag[match[1]] == "SPECIFIC") {
+				delayedTags[match[1]] = match[2];
+			} else {
+				xs << xml::StartTag(toDocBookTag[match[1]]);
+				xs << from_utf8(match[2].str());
+				xs << xml::EndTag(toDocBookTag[match[1]]);
+			}
+		}
+
+		// Type of document (book, journal paper, etc.).
+		xs << xml::StartTag("bibliomisc", "role=\"type\"");
+		xs << entry.entryType();
+		xs << xml::EndTag("bibliomisc");
+		xs << xml::CR();
+
+		// Handle tags that have complex transformations.
+		if (! delayedTags.empty()) {
+			unsigned long remainingTags = delayedTags.size(); // Used as a workaround. With GCC 7, when erasing all
+			// elements one by one, some elements may still pop in later on (even though they were deleted previously).
+			auto hasTag = [&delayedTags](string key) { return delayedTags.find(key) != delayedTags.end(); };
+			auto getTag = [&delayedTags](string key) { return from_utf8(delayedTags[key]); };
+			auto eraseTag = [&delayedTags, &remainingTags](string key) {
+				remainingTags -= 1;
+				delayedTags.erase(key);
+			};
+
+			// Notes on order of checks.
+			// - address goes with publisher if there is one, so check this first. Otherwise, the address goes with
+			//   the entry without other details.
+
+			// <publisher>
+			if (hasTag("publisher")) {
+				xs << xml::StartTag("publisher");
+				xs << xml::CR();
+				xs << xml::StartTag("publishername");
+				xs << getTag("publisher");
+				xs << xml::EndTag("publishername");
+				xs << xml::CR();
+
+				if (hasTag("address")) {
+					xs << xml::StartTag("address");
+					xs << getTag("address");
+					xs << xml::EndTag("address");
+					eraseTag("address");
+				}
+
+				xs << xml::EndTag("publisher");
+				xs << xml::CR();
+				eraseTag("publisher");
+			}
+
+			if (hasTag("address")) {
+				xs << xml::StartTag("address");
+				xs << getTag("address");
+				xs << xml::EndTag("address");
+				eraseTag("address");
+			}
+
+			// <keywordset>
+			if (hasTag("keywords")) {
+				// Split the keywords on comma.
+				docstring keywordSet = getTag("keywords");
+				vector<docstring> keywords;
+				if (keywordSet.find(from_utf8(",")) == string::npos) {
+					keywords = { keywordSet };
+				} else {
+					size_t pos = 0;
+					while ((pos = keywordSet.find(from_utf8(","))) != string::npos) {
+						keywords.push_back(keywordSet.substr(0, pos));
+						keywordSet.erase(0, pos + 1);
+					}
+					keywords.push_back(keywordSet);
+				}
+
+				xs << xml::StartTag("keywordset") << xml::CR();
+				for (auto & kw: keywords) {
+					kw.erase(kw.begin(), std::find_if(kw.begin(), kw.end(),
+					                                  [](int c) {return !std::isspace(c);}));
+					xs << xml::StartTag("keyword");
+					xs << kw;
+					xs << xml::EndTag("keyword");
+					xs << xml::CR();
+				}
+				xs << xml::EndTag("keywordset") << xml::CR();
+				eraseTag("keywords");
+			}
+
+			// <copyright>
+			// Example: http://tdg.docbook.org/tdg/5.1/biblioset.html
+			if (hasTag("year")) {
+				docstring value = getTag("year");
+				eraseTag("year");
+
+				// Follow xsd:gYearMonth format (http://books.xmlschemata.org/relaxng/ch19-77135.html).
+				if (hasTag("month")) {
+					value += "-" + getTag("month");
+					eraseTag("month");
+				}
+
+				xs << xml::StartTag("pubdate");
+				xs << value;
+				xs << xml::EndTag("pubdate");
+				xs << xml::CR();
+			}
+
+			// <institution>
+			if (hasTag("institution")) {
+				xs << xml::StartTag("org");
+				xs << xml::CR();
+				xs << xml::StartTag("orgname");
+				xs << getTag("institution");
+				xs << xml::EndTag("orgname");
+				xs << xml::CR();
+				xs << xml::EndTag("org");
+				xs << xml::CR();
+				eraseTag("institution");
+			}
+
+			// <biblioset>
+			// Example: http://tdg.docbook.org/tdg/5.1/biblioset.html
+			for (auto const & id: relations) {
+				if (hasTag(id.first)) {
+					xs << xml::StartTag("biblioset", "relation=\"" + id.second + "\"");
+					xs << xml::CR();
+					xs << xml::StartTag("title");
+					xs << getTag(id.first);
+					xs << xml::EndTag("title");
+					xs << xml::CR();
+					xs << xml::EndTag("biblioset");
+					xs << xml::CR();
+					eraseTag(id.first);
+				}
+			}
+
+			// <authorgroup>
+			// Example: http://tdg.docbook.org/tdg/5.1/authorgroup.html
+			if (hasTag("fullnames:author")) {
+				// Perform full parsing of the BibTeX string, dealing with the many corner cases that might
+				// be encountered.
+				authorsToDocBookAuthorGroup(getTag("fullnames:author"), xs, buffer());
+				eraseTag("fullnames:author");
+			}
+
+			// <abstract>
+			if (hasTag("abstract")) {
+				// Split the paragraphs on new line.
+				docstring abstract = getTag("abstract");
+				vector<docstring> paragraphs;
+				if (abstract.find(from_utf8("\n")) == string::npos) {
+					paragraphs = { abstract };
+				} else {
+					size_t pos = 0;
+					while ((pos = abstract.find(from_utf8(","))) != string::npos) {
+						paragraphs.push_back(abstract.substr(0, pos));
+						abstract.erase(0, pos + 1);
+					}
+					paragraphs.push_back(abstract);
+				}
+
+				xs << xml::StartTag("abstract");
+				xs << xml::CR();
+				for (auto const & para: paragraphs) {
+					if (para.empty())
+						continue;
+					xs << xml::StartTag("para");
+					xs << para;
+					xs << xml::EndTag("para");
+				}
+				xs << xml::CR();
+				xs << xml::EndTag("abstract");
+				xs << xml::CR();
+				eraseTag("abstract");
+			}
+
+			// <biblioid>
+			for (auto const & id: biblioId) {
+				if (hasTag(id.first)) {
+					xs << xml::StartTag("biblioid", "class=\"" + id.second + "\"");
+					xs << getTag(id.first);
+					xs << xml::EndTag("biblioid");
+					xs << xml::CR();
+					eraseTag(id.first);
+				}
+			}
+
+			// <bibliomisc>
+			for (auto const & id: misc) {
+				if (hasTag(id)) {
+					xs << xml::StartTag("bibliomisc", "role=\"" + id + "\"");
+					xs << getTag(id);
+					xs << xml::EndTag("bibliomisc");
+					xs << xml::CR();
+					eraseTag(id);
+				}
+			}
+
+			// After all tags are processed, check for errors.
+			if (remainingTags > 0) {
+				LYXERR0("Still delayed tags not yet handled.");
+				xs << XMLStream::ESCAPE_NONE << from_utf8("<!-- Output Error: still delayed tags not yet handled.\n");
+				for (auto const & item: delayedTags) {
+					xs << from_utf8(" " + item.first + ": " + item.second + "\n");
+				}
+				xs << XMLStream::ESCAPE_NONE << from_utf8(" -->\n");
+			}
+		}
+
+		xs << xml::EndTag("biblioentry");
+		xs << xml::CR();
+	}
+
+	// Footer for bibliography.
+	xs << xml::EndTag("bibliography");
 }
 
 

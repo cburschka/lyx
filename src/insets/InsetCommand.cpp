@@ -162,9 +162,9 @@ int InsetCommand::plaintext(odocstringstream & os,
 }
 
 
-int InsetCommand::docbook(odocstream &, OutputParams const &) const
+void InsetCommand::docbook(XMLStream &, OutputParams const &) const
 {
-	return 0;
+	return;
 }
 
 

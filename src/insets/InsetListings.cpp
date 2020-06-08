@@ -27,6 +27,7 @@
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "output_latex.h"
+#include "output_docbook.h"
 #include "output_xhtml.h"
 #include "OutputParams.h"
 #include "TextClass.h"
@@ -477,6 +478,45 @@ docstring InsetListings::xhtml(XMLStream & os, OutputParams const & rp) const
 		def = ods.str() + '\n' + def;
 	}
 	return def;
+}
+
+
+void InsetListings::docbook(XMLStream & xs, OutputParams const & rp) const
+{
+    InsetLayout const & il = getLayout();
+
+	// Forge the attributes.
+    string attrs;
+	if (!il.docbookattr().empty())
+		attrs += " role=\"" + il.docbookattr() + "\"";
+	string const lang = params().getParamValue("language");
+	if (!lang.empty())
+		attrs += " language=\"" + lang + "\"";
+	xs << xml::StartTag(il.docbooktag(), attrs);
+	xs.startDivision(false);
+
+	// Deal with the caption.
+	docstring caption = getCaptionDocBook(rp);
+	if (!caption.empty()) {
+		xs << xml::StartTag("bridgehead");
+		xs << XMLStream::ESCAPE_NONE;
+		xs << caption;
+		xs << xml::EndTag("bridgehead");
+	}
+
+	// Deal with the content of the listing.
+	OutputParams newrp = rp;
+	newrp.pass_thru = true;
+	newrp.docbook_make_pars = false;
+	newrp.par_begin = 0;
+	newrp.par_end = text().paragraphs().size();
+	newrp.docbook_in_listing = true;
+
+	docbookParagraphs(text(), buffer(), xs, newrp);
+
+	// Done with the listing.
+	xs.endDivision();
+	xs << xml::EndTag(il.docbooktag());
 }
 
 

@@ -46,11 +46,11 @@
 #include "LyX.h"
 #include "LyXRC.h"
 #include "LyXVC.h"
-#include "output_docbook.h"
 #include "output.h"
 #include "output_latex.h"
-#include "output_xhtml.h"
+#include "output_docbook.h"
 #include "output_plaintext.h"
+#include "output_xhtml.h"
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
@@ -2112,7 +2112,7 @@ Buffer::ExportStatus Buffer::makeDocBookFile(FileName const & fname,
 	updateMacroInstances(OutputUpdate);
 
 	ExportStatus const retval =
-		writeDocBookSource(ofs, fname.absFileName(), runparams, output);
+		writeDocBookSource(ofs, runparams, output);
 	if (retval == ExportKilled)
 		return ExportKilled;
 
@@ -2123,85 +2123,56 @@ Buffer::ExportStatus Buffer::makeDocBookFile(FileName const & fname,
 }
 
 
-Buffer::ExportStatus Buffer::writeDocBookSource(odocstream & os, string const & fname,
+Buffer::ExportStatus Buffer::writeDocBookSource(odocstream & os,
 			     OutputParams const & runparams,
 			     OutputWhat output) const
 {
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
+	d->bibinfo_.makeCitationLabels(*this);
 
 	d->texrow.reset();
 
 	DocumentClass const & tclass = params().documentClass();
-	string const & top_element = tclass.latexname();
 
 	bool const output_preamble =
 		output == FullSource || output == OnlyPreamble;
 	bool const output_body =
 	  output == FullSource || output == OnlyBody;
 
+	XMLStream xs(os);
+
 	if (output_preamble) {
-		if (runparams.flavor == OutputParams::DOCBOOK5)
-			os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+        // XML preamble, no doctype needed.
+		// Not using XMLStream for this, as the root tag would be in the tag stack and make troubles with the error
+		// detection mechanisms (these are called before the end tag is output, and thus interact with the canary
+		// parsep in output_docbook.cpp).
+        os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+		   << "<!-- This DocBook file was created by LyX " << lyx_version
+		   << "\n  See http://www.lyx.org/ for more information -->\n";
 
-		// FIXME UNICODE
-		os << "<!DOCTYPE " << from_ascii(top_element) << ' ';
+		// Directly output the root tag, based on the current type of document.
+        string languageCode = params().language->code();
+		string params = "xml:lang=\"" + languageCode + '"'
+						+ " xmlns=\"http://docbook.org/ns/docbook\""
+						+ " xmlns:xlink=\"http://www.w3.org/1999/xlink\""
+						+ " xmlns:m=\"http://www.w3.org/1998/Math/MathML\""
+		                + " xmlns:xi=\"http://www.w3.org/2001/XInclude\""
+		                + " version=\"5.2\"";
 
-		// FIXME UNICODE
-		if (! tclass.class_header().empty())
-			os << from_ascii(tclass.class_header());
-		else if (runparams.flavor == OutputParams::DOCBOOK5)
-			os << "PUBLIC \"-//OASIS//DTD DocBook XML V4.2//EN\" "
-			    << "\"https://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd\"";
-		else
-			os << " PUBLIC \"-//OASIS//DTD DocBook V4.2//EN\"";
-
-		docstring preamble = params().preamble;
-		if (runparams.flavor != OutputParams::DOCBOOK5 ) {
-			preamble += "<!ENTITY % output.print.png \"IGNORE\">\n";
-			preamble += "<!ENTITY % output.print.pdf \"IGNORE\">\n";
-			preamble += "<!ENTITY % output.print.eps \"IGNORE\">\n";
-			preamble += "<!ENTITY % output.print.bmp \"IGNORE\">\n";
-		}
-
-		string const name = runparams.nice
-			? changeExtension(absFileName(), ".sgml") : fname;
-		preamble += features.getIncludedFiles(name);
-		preamble += features.getLyXSGMLEntities();
-
-		if (!preamble.empty()) {
-			os << "\n [ " << preamble << " ]";
-		}
-		os << ">\n\n";
+		os << "<" << from_ascii(tclass.docbookroot()) << " " << from_ascii(params) << ">\n";
 	}
 
 	if (output_body) {
-		string top = top_element;
-		top += " lang=\"";
-		if (runparams.flavor == OutputParams::DOCBOOK5)
-			top += params().language->code();
-		else
-			top += params().language->code().substr(0, 2);
-		top += '"';
-
-		if (!params().options.empty()) {
-			top += ' ';
-			top += params().options;
-		}
-
-		os << "<!-- " << ((runparams.flavor == OutputParams::DOCBOOK5)? "XML" : "SGML")
-				<< " file was created by LyX " << lyx_version
-				<< "\n  See https://www.lyx.org/ for more information -->\n";
-
 		params().documentClass().counters().reset();
 
-		xml::openTag(os, top);
-		os << '\n';
-		try {
-			docbookParagraphs(text(), *this, os, runparams);
-		}
-		catch (ConversionException const &) { return ExportKilled; }
-		xml::closeTag(os, top_element);
+		// Start to output the document.
+		docbookParagraphs(text(), *this, xs, runparams);
+	}
+
+	if (output_preamble) {
+		// Close the root element.
+		os << "\n</" << from_ascii(tclass.docbookroot()) << ">";
 	}
 	return ExportSuccess;
 }
@@ -4132,8 +4103,9 @@ unique_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 			// Probably should have some routine with a signature like them.
 			writePlaintextParagraph(*this,
 				text().paragraphs()[par_begin], os, runparams, dummy);
-		} else if (params().isDocBook()) {
-			docbookParagraphs(text(), *this, os, runparams);
+		} else if (runparams.flavor == OutputParams::DOCBOOK5) {
+			XMLStream xs{os};
+			docbookParagraphs(text(), *this, xs, runparams);
 		} else {
 			// If we are previewing a paragraph, even if this is the
 			// child of some other buffer, let's cut the link here,
@@ -4185,8 +4157,8 @@ unique_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 				os << "% "<< _("Plain text does not have a preamble.");
 			} else
 				writePlaintextFile(*this, os, runparams);
-		} else if (params().isDocBook()) {
-				writeDocBookSource(os, absFileName(), runparams, output);
+		} else if (runparams.flavor == OutputParams::DOCBOOK5) {
+			writeDocBookSource(os, runparams, output);
 		} else {
 			// latex or literate
 			otexstream ots(os);
@@ -4495,8 +4467,9 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 			return ExportKilled;
 	} else if (backend_format == "lyx")
 		writeFile(FileName(filename));
-	// Docbook backend
-	else if (params().isDocBook()) {
+	// DocBook backend
+	else if (backend_format == "docbook5") {
+		runparams.flavor = OutputParams::DOCBOOK5;
 		runparams.nice = !put_in_tempdir;
 		if (makeDocBookFile(FileName(filename), runparams) == ExportKilled)
 			return ExportKilled;

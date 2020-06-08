@@ -10,6 +10,7 @@
  */
 
 #include <config.h>
+#include <output_docbook.h>
 
 #include "InsetFoot.h"
 #include "InsetBox.h"
@@ -122,13 +123,12 @@ int InsetFoot::plaintext(odocstringstream & os,
 }
 
 
-int InsetFoot::docbook(odocstream & os, OutputParams const & runparams) const
+void InsetFoot::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
-	os << "<footnote>";
-	int const i = InsetText::docbook(os, runparams);
-	os << "</footnote>";
-
-	return i;
+	OutputParams rp = runparams;
+	rp.docbook_force_pars = true;
+	rp.docbook_in_par = false;
+	InsetText::docbook(xs, rp);
 }
 
 

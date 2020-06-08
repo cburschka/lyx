@@ -25,6 +25,7 @@
 #include "Lexer.h"
 #include "LyXAction.h"
 #include "OutputParams.h"
+#include "xml.h"
 #include "ParagraphParameters.h"
 #include "Paragraph.h"
 
@@ -90,25 +91,24 @@ int InsetERT::plaintext(odocstringstream & os,
 }
 
 
-int InsetERT::docbook(odocstream & os, OutputParams const &) const
+void InsetERT::docbook(XMLStream & xs, OutputParams const &) const
 {
 	// FIXME can we do the same thing here as for LaTeX?
 	ParagraphList::const_iterator par = paragraphs().begin();
 	ParagraphList::const_iterator end = paragraphs().end();
 
-	int lines = 0;
+	xs << XMLStream::ESCAPE_NONE << "<!-- ";
 	while (par != end) {
 		pos_type siz = par->size();
-		for (pos_type i = 0; i < siz; ++i)
-			os.put(par->getChar(i));
+		for (pos_type i = 0; i < siz; ++i) {
+			xs << par->getChar(i);
+		}
 		++par;
 		if (par != end) {
-			os << "\n";
-			++lines;
+			xs << "\n";
 		}
 	}
-
-	return lines;
+	xs << XMLStream::ESCAPE_NONE << " -->";
 }
 
 

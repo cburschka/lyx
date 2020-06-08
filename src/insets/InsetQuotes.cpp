@@ -28,10 +28,10 @@
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
-#include "output_xhtml.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
 #include "texstream.h"
+#include "xml.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
@@ -1041,10 +1041,9 @@ docstring InsetQuotes::getQuoteEntity(bool isHTML) const {
 }
 
 
-int InsetQuotes::docbook(odocstream & os, OutputParams const &) const
+void InsetQuotes::docbook(XMLStream & xs, OutputParams const &) const
 {
-	os << getQuoteEntity(false);
-	return 0;
+	xs << XMLStream::ESCAPE_NONE << getQuoteEntity(false);
 }
 
 

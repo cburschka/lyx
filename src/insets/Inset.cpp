@@ -29,6 +29,7 @@
 #include "FuncStatus.h"
 #include "MetricsInfo.h"
 #include "output_xhtml.h"
+#include "xml.h"
 #include "Text.h"
 #include "TextClass.h"
 #include "TocBackend.h"
@@ -466,9 +467,9 @@ bool Inset::idxUpDown(Cursor &, bool) const
 }
 
 
-int Inset::docbook(odocstream &, OutputParams const &) const
+void Inset::docbook(XMLStream & xs, OutputParams const &) const
 {
-	return 0;
+	xs << "[[Inset: " << from_ascii(insetName(lyxCode())) << "]]";
 }
 
 

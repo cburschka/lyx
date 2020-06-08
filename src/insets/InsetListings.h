@@ -58,6 +58,8 @@ private:
 	///
 	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///
+	void docbook(XMLStream &, OutputParams const &) const;
+	///
 	void validate(LaTeXFeatures &) const;
 	///
 	bool showInsetDialog(BufferView *) const;

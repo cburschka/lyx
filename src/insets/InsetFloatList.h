@@ -40,7 +40,7 @@ public:
 	///
 	void latex(otexstream &, OutputParams const &) const;
 	///
-	int docbook(odocstream &, OutputParams const &) const { return 0; }
+	void docbook(XMLStream &, OutputParams const &) const { return; }
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
 	              size_t max_length = INT_MAX) const;

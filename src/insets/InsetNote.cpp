@@ -42,6 +42,7 @@
 
 #include <algorithm>
 #include <sstream>
+#include <output_docbook.h>
 
 using namespace std;
 
@@ -260,27 +261,28 @@ int InsetNote::plaintext(odocstringstream & os,
 }
 
 
-int InsetNote::docbook(odocstream & os, OutputParams const & runparams_in) const
+void InsetNote::docbook(XMLStream & xs, OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)
-		return 0;
+		return;
 
 	OutputParams runparams(runparams_in);
 	if (params_.type == InsetNoteParams::Comment) {
-		os << "<remark>\n";
+		xs << xml::StartTag("remark");
+		xs << xml::CR();
 		runparams.inComment = true;
 		// Ignore files that are exported inside a comment
 		runparams.exportdata.reset(new ExportData);
 	}
+	// Greyed out text is output as such (no way to mark text as greyed out with DocBook).
 
-	int const n = InsetText::docbook(os, runparams);
+	InsetText::docbook(xs, runparams);
 
-	if (params_.type == InsetNoteParams::Comment)
-		os << "\n</remark>\n";
-
-	// Return how many newlines we issued.
-	//return int(count(str.begin(), str.end(), '\n'));
-	return n + 1 + 2;
+	if (params_.type == InsetNoteParams::Comment) {
+		xs << xml::CR();
+		xs << xml::EndTag("remark");
+		xs << xml::CR();
+	}
 }
 
 

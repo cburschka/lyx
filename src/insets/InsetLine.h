@@ -41,8 +41,7 @@ private:
 	/// Inset inherited methods.
 	//@{
 	InsetCode lyxCode() const { return LINE_CODE; }
-	int docbook(odocstream &, OutputParams const &) const;
-	/// Does nothing at the moment.
+	void docbook(XMLStream &, OutputParams const &) const;
 	docstring xhtml(XMLStream &, OutputParams const &) const;
 	bool hasSettings() const { return true; }
 	void metrics(MetricsInfo &, Dimension &) const;

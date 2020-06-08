@@ -105,7 +105,7 @@ private:
 Converter::Converter(string const & f, string const & t,
 		     string const & c, string const & l)
 	: from_(f), to_(t), command_(c), flags_(l),
-	  From_(nullptr), To_(nullptr), latex_(false), xml_(false),
+	  From_(nullptr), To_(nullptr), latex_(false), docbook_(false),
 	  need_aux_(false), nice_(false), need_auth_(false)
 {}
 
@@ -122,7 +122,7 @@ void Converter::readFlags()
 			latex_flavor_ = flag_value.empty() ?
 				"latex" : flag_value;
 		} else if (flag_name == "xml")
-			xml_ = true;
+			docbook_ = true;
 		else if (flag_name == "needaux") {
 			need_aux_ = true;
 			latex_flavor_ = flag_value.empty() ?
@@ -276,7 +276,7 @@ OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path,
 			if (conv.latex_flavor() == "pdflatex")
 				return OutputParams::PDFLATEX;
 		}
-		if (conv.xml())
+		if (conv.docbook())
 			return OutputParams::DOCBOOK5;
 	}
 	return buffer ? buffer->params().getOutputFlavor()

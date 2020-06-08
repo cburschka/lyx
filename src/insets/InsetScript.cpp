@@ -40,6 +40,7 @@
 #include "frontends/Painter.h"
 
 #include <algorithm>
+#include <output_docbook.h>
 
 using namespace std;
 
@@ -354,7 +355,7 @@ int InsetScript::plaintext(odocstringstream & os,
 }
 
 
-int InsetScript::docbook(odocstream & os, OutputParams const & runparams) const
+void InsetScript::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
 	docstring cmdname;
 	switch (params_.type) {
@@ -365,11 +366,10 @@ int InsetScript::docbook(odocstream & os, OutputParams const & runparams) const
 		cmdname = from_ascii("superscript");
 		break;
 	}
-	os << '<' + cmdname + '>';
-	int const i = InsetText::docbook(os, runparams);
-	os << "</" + cmdname + '>';
 
-	return i;
+	xs << xml::StartTag(cmdname);
+	InsetText::docbook(xs, runparams);
+	xs << xml::EndTag(cmdname);
 }
 
 

@@ -303,8 +303,13 @@ protected:
 	docstring htmlpreamble_;
 	/// same, but specifically for CSS information
 	docstring htmlstyles_;
-	/// the paragraph style to use for TOCs, Bibliography, etc
+	/// the paragraph style to use for TOCs, bibliography, etc.
 	mutable docstring html_toc_section_;
+	/// root element when exporting as DocBook
+	std::string docbookroot_;
+	/// whether this root element does not accept text without a section (i.e. the first text that is met in LyX must
+	/// be considered as the abstract if this is true); this text must be output within <info> and <abstract>
+	bool docbookforceabstract_;
 	/// latex packages loaded by document class.
 	std::set<std::string> provides_;
 	/// latex packages requested by document class.
@@ -484,6 +489,10 @@ public:
 	docstring const & htmlpreamble() const { return htmlpreamble_; }
 	///
 	docstring const & htmlstyles() const { return htmlstyles_; }
+	///
+	bool const & docbookforceabstract() const { return docbookforceabstract_; }
+	///
+	std::string const & docbookroot() const { return docbookroot_; }
 	/// Looks for the layout of "highest level", other than Part (or other
 	/// layouts with a negative toc number), for use in constructing TOCs and
 	/// similar information.

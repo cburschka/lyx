@@ -33,7 +33,9 @@ OutputParams::OutputParams(Encoding const * enc)
 	  par_begin(0), par_end(0), lastid(-1), lastpos(0), isLastPar(false),
 	  dryrun(false), silent(false), pass_thru(false),
 	  html_disable_captions(false), html_in_par(false),
-	  html_make_pars(true), for_toc(false), for_tooltip(false),
+	  html_make_pars(true), docbook_in_par(false), docbook_make_pars(true),
+	  docbook_force_pars(false), docbook_in_float(false), docbook_anchors_to_ignore(std::unordered_set<docstring>()),
+	  docbook_in_listing(false), for_toc(false), for_tooltip(false),
 	  for_search(false), for_preview(false), includeall(false)
 {
 	// Note: in PreviewLoader::Impl::dumpPreamble

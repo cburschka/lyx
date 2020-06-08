@@ -19,7 +19,7 @@
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
-#include "output_xhtml.h"
+#include "xml.h"
 #include "texstream.h"
 #include "Text.h"
 #include "TextMetrics.h"
@@ -248,10 +248,9 @@ int InsetNewpage::plaintext(odocstringstream & os,
 }
 
 
-int InsetNewpage::docbook(odocstream & os, OutputParams const &) const
+void InsetNewpage::docbook(XMLStream & os, OutputParams const &) const
 {
-	os << '\n';
-	return 0;
+	os << xml::CR();
 }
 
 

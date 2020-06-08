@@ -128,11 +128,10 @@ int InsetTOC::plaintext(odocstringstream & os,
 }
 
 
-int InsetTOC::docbook(odocstream & os, OutputParams const &) const
+void InsetTOC::docbook(XMLStream &, OutputParams const &) const
 {
-	if (getCmdName() == "tableofcontents")
-		os << "<toc></toc>";
-	return 0;
+	// TOC are generated automatically by the DocBook processor.
+	return;
 }
 
 

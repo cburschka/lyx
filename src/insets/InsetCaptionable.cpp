@@ -80,6 +80,19 @@ docstring InsetCaptionable::getCaptionText(OutputParams const & runparams) const
 }
 
 
+docstring InsetCaptionable::getCaptionDocBook(OutputParams const & runparams) const
+{
+	InsetCaption const * ins = getCaptionInset();
+	if (ins == nullptr)
+		return docstring();
+
+	odocstringstream ods;
+	XMLStream xs(ods);
+	ins->getCaptionAsDocBook(xs, runparams);
+	return ods.str();
+}
+
+
 docstring InsetCaptionable::getCaptionHTML(OutputParams const & runparams) const
 {
 	InsetCaption const * ins = getCaptionInset();

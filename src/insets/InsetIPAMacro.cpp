@@ -22,7 +22,7 @@
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
-#include "output_xhtml.h"
+#include "xml.h"
 #include "texstream.h"
 
 #include "frontends/FontMetrics.h"
@@ -305,10 +305,22 @@ int InsetIPADeco::plaintext(odocstringstream & os,
 }
 
 
-int InsetIPADeco::docbook(odocstream & os, OutputParams const & runparams) const
+void InsetIPADeco::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
-	// FIXME: Any docbook option here?
-	return InsetCollapsible::docbook(os, runparams);
+	// The special combining character must be put in the middle, between the two other characters.
+	// It will not work if there is anything else than two pure characters, so going back to plaintext.
+	odocstringstream ods;
+	int h = (int)(InsetText::plaintext(ods, runparams) / 2);
+	docstring result = ods.str();
+	docstring const before = result.substr(0, h);
+	docstring const after = result.substr(h, result.size());
+
+	xs << XMLStream::ESCAPE_NONE << before;
+	if (params_.type == InsetIPADecoParams::Toptiebar)
+		xs << XMLStream::ESCAPE_NONE << "&#x0361;";
+	else if (params_.type == InsetIPADecoParams::Bottomtiebar)
+		xs << XMLStream::ESCAPE_NONE << "&#x035c;";
+	xs << XMLStream::ESCAPE_NONE << after;
 }
 
 
@@ -540,19 +552,31 @@ int InsetIPAChar::plaintext(odocstringstream & os, OutputParams const &, size_t)
 }
 
 
-int InsetIPAChar::docbook(odocstream & /*os*/, OutputParams const &) const
+void InsetIPAChar::docbook(XMLStream & xs, OutputParams const &) const
 {
-	switch (kind_) {
-	case TONE_FALLING:
-	case TONE_RISING:
-	case TONE_HIGH_RISING:
-	case TONE_LOW_RISING:
-	case TONE_HIGH_RISING_FALLING:
-		// FIXME
-		LYXERR0("IPA tone macros not yet implemented with DocBook!");
-		break;
-	}
-	return 0;
+    switch (kind_) {
+    case TONE_FALLING:
+        xs << XMLStream::ESCAPE_NONE << "&#x2e5;";
+        xs << XMLStream::ESCAPE_NONE << "&#x2e9;";
+        break;
+    case TONE_RISING:
+        xs << XMLStream::ESCAPE_NONE << "&#x2e9;";
+        xs << XMLStream::ESCAPE_NONE << "&#x2e5;";
+        break;
+    case TONE_HIGH_RISING:
+        xs << XMLStream::ESCAPE_NONE << "&#x2e7;";
+        xs << XMLStream::ESCAPE_NONE << "&#x2e5;";
+        break;
+    case TONE_LOW_RISING:
+        xs << XMLStream::ESCAPE_NONE << "&#x2e9;";
+        xs << XMLStream::ESCAPE_NONE << "&#x2e7;";
+        break;
+    case TONE_HIGH_RISING_FALLING:
+        xs << XMLStream::ESCAPE_NONE << "&#x2e8;";
+        xs << XMLStream::ESCAPE_NONE << "&#x2e5;";
+        xs << XMLStream::ESCAPE_NONE << "&#x2e8;";
+        break;
+    }
 }
 
 

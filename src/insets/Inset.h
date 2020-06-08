@@ -341,7 +341,7 @@ public:
 	virtual int plaintext(odocstringstream &, OutputParams const &,
 	                      size_t max_length = INT_MAX) const = 0;
 	/// docbook output
-	virtual int docbook(odocstream & os, OutputParams const &) const;
+	virtual void docbook(XMLStream &, OutputParams const &) const;
 	/// XHTML output
 	/// the inset is expected to write XHTML to the XMLStream
 	/// \return any "deferred" material that should be written outside the

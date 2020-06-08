@@ -54,7 +54,7 @@ public:
 	///
 	int plaintext(odocstringstream &, OutputParams const &, size_t) const { return 0; }
 	///
-	int docbook(odocstream &, OutputParams const &) const { return 0; }
+	void docbook(XMLStream &, OutputParams const &) const { return; }
 	///
 	docstring xhtml(XMLStream &, OutputParams const &) const
 		{ return docstring(); }

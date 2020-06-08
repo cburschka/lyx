@@ -77,6 +77,8 @@ public:
 	///
 	void latex(otexstream &, OutputParams const &) const;
 	///
+	void docbook(XMLStream &, OutputParams const &) const;
+	///
 	docstring xhtml(XMLStream & xs, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;

@@ -29,7 +29,6 @@
 #include "Length.h"
 #include "LyX.h"
 #include "OutputParams.h"
-#include "output_xhtml.h"
 #include "xml.h"
 #include "texstream.h"
 #include "TocBackend.h"
@@ -105,32 +104,18 @@ int InsetNomencl::plaintext(odocstringstream & os,
 }
 
 
-int InsetNomencl::docbook(odocstream & os, OutputParams const &) const
+void InsetNomencl::docbook(XMLStream & xs, OutputParams const &) const
 {
-	os << "<glossterm linkend=\"" << nomenclature_entry_id << "\">"
-	   << xml::escapeString(getParam("symbol"))
-	   << "</glossterm>";
-	return 0;
+	docstring attr = "linkend=\"" + nomenclature_entry_id + "\"";
+	xs << xml::StartTag("glossterm", attr);
+	xs << xml::escapeString(getParam("symbol"));
+	xs << xml::EndTag("glossterm");
 }
 
 
 docstring InsetNomencl::xhtml(XMLStream &, OutputParams const &) const
 {
 	return docstring();
-}
-
-
-int InsetNomencl::docbookGlossary(odocstream & os) const
-{
-	os << "<glossentry id=\"" << nomenclature_entry_id << "\">\n"
-	   << "<glossterm>"
-	   << xml::escapeString(getParam("symbol"))
-	   << "</glossterm>\n"
-	   << "<glossdef><para>"
-	   << xml::escapeString(getParam("description"))
-	   << "</para></glossdef>\n"
-	   <<"</glossentry>\n";
-	return 4;
 }
 
 
@@ -316,29 +301,75 @@ bool InsetPrintNomencl::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-// FIXME This should be changed to use the TOC. Perhaps
-// that could be done when XHTML output is added.
-int InsetPrintNomencl::docbook(odocstream & os, OutputParams const &) const
+void InsetPrintNomencl::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
-	os << "<glossary>\n";
-	int newlines = 2;
-	InsetIterator it = inset_iterator_begin(buffer().inset());
-	while (it) {
-		if (it->lyxCode() == NOMENCL_CODE) {
-			newlines += static_cast<InsetNomencl const &>(*it).docbookGlossary(os);
-			++it;
-		} else if (!it->producesOutput()) {
-			// Ignore contents of insets that are not in output
-			size_t const depth = it.depth();
-			++it;
-			while (it.depth() > depth)
-				++it;
-		} else {
-			++it;
-		}
+	shared_ptr<Toc const> toc = buffer().tocBackend().toc("nomencl");
+
+	EntryMap entries;
+	Toc::const_iterator it = toc->begin();
+	Toc::const_iterator const en = toc->end();
+	for (; it != en; ++it) {
+		DocIterator dit = it->dit();
+		Paragraph const & par = dit.innerParagraph();
+		Inset const * inset = par.getInset(dit.top().pos());
+		if (!inset)
+			return;
+		InsetCommand const * ic = inset->asInsetCommand();
+		if (!ic)
+			return;
+
+		// FIXME We need a link to the paragraph here, so we
+		// need some kind of struct.
+		docstring const symbol = ic->getParam("symbol");
+		docstring const desc = ic->getParam("description");
+		docstring const prefix = ic->getParam("prefix");
+		docstring const sortas = prefix.empty() ? symbol : prefix;
+
+		entries[sortas] = NomenclEntry(symbol, desc, &par);
 	}
-	os << "</glossary>\n";
-	return newlines;
+
+	if (entries.empty())
+		return;
+
+	// As opposed to XHTML, no need to defer everything until the end of time, so write directly to xs.
+	// TODO: At least, that's what was done before...
+
+	docstring toclabel = translateIfPossible(from_ascii("Nomenclature"),
+											 runparams.local_font->language()->lang());
+
+	xs << xml::StartTag("glossary");
+	xs << xml::CR();
+	xs << xml::StartTag("title");
+	xs << toclabel;
+	xs << xml::EndTag("title");
+	xs << xml::CR();
+
+	EntryMap::const_iterator eit = entries.begin();
+	EntryMap::const_iterator const een = entries.end();
+	for (; eit != een; ++eit) {
+		NomenclEntry const & ne = eit->second;
+		string const parid = ne.par->magicLabel();
+
+		xs << xml::StartTag("glossentry", "xml:id=\"" + parid + "\"");
+		xs << xml::CR();
+		xs << xml::StartTag("glossterm");
+		xs << ne.symbol;
+		xs << xml::EndTag("glossterm");
+		xs << xml::CR();
+		xs << xml::StartTag("glossdef");
+		xs << xml::CR();
+		xs << xml::StartTag("para");
+		xs << ne.desc;
+		xs << xml::EndTag("para");
+		xs << xml::CR();
+		xs << xml::EndTag("glossdef");
+		xs << xml::CR();
+		xs << xml::EndTag("glossentry");
+		xs << xml::CR();
+	}
+
+	xs << xml::EndTag("glossary");
+	xs << xml::CR();
 }
 
 

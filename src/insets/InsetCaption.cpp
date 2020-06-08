@@ -27,6 +27,7 @@
 #include "Language.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
+#include "xml.h"
 #include "output_latex.h"
 #include "output_xhtml.h"
 #include "OutputParams.h"
@@ -291,14 +292,9 @@ int InsetCaption::plaintext(odocstringstream & os,
 }
 
 
-int InsetCaption::docbook(odocstream & os,
-			  OutputParams const & runparams) const
+void InsetCaption::docbook(XMLStream &, OutputParams const &) const
 {
-	int ret;
-	os << "<title>";
-	ret = InsetText::docbook(os, runparams);
-	os << "</title>\n";
-	return ret;
+	// This function should never be called (rather InsetFloat::docbook, the titles should be skipped in floats).
 }
 
 
@@ -361,6 +357,19 @@ int InsetCaption::getCaptionAsPlaintext(odocstream & os,
 	int const retval = InsetText::plaintext(ods, runparams);
 	os << ods.str();
 	return retval;
+}
+
+
+void InsetCaption::getCaptionAsDocBook(XMLStream & xs,
+										 OutputParams const & runparams) const
+{
+	if (runparams.docbook_in_float)
+		return;
+
+	// Ignore full_label_, as the DocBook processor will deal with the numbering.
+	InsetText::XHTMLOptions const opts =
+			InsetText::WriteLabel | InsetText::WriteInnerTag;
+	InsetText::docbook(xs, runparams, opts);
 }
 
 

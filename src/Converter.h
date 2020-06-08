@@ -74,7 +74,7 @@ public:
 	///
 	std::string const latex_flavor() const { return latex_flavor_; }
 	///
-	bool xml() const { return xml_; }
+	bool docbook() const { return docbook_; }
 	///
 	bool need_aux() const { return need_aux_; }
 	/// Return whether or not the needauth option is set for this converter
@@ -108,8 +108,8 @@ private:
 	bool latex_;
 	/// The latex derivate
 	trivstring latex_flavor_;
-	/// The converter is xml
-	bool xml_;
+	/// The converter is DocBook
+	bool docbook_;
 	/// This converter needs the .aux files
 	bool need_aux_;
 	/// we need a "nice" file from the backend, c.f. OutputParams.nice.

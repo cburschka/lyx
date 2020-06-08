@@ -715,9 +715,9 @@ int InsetBox::plaintext(odocstringstream & os,
 }
 
 
-int InsetBox::docbook(odocstream & os, OutputParams const & runparams) const
+void InsetBox::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
-	return InsetText::docbook(os, runparams);
+	InsetText::docbook(xs, runparams);
 }
 
 

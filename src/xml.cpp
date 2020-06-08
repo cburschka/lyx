@@ -24,6 +24,7 @@
 
 #include "support/convert.h"
 #include "support/docstream.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
@@ -31,7 +32,6 @@
 #include <map>
 #include <functional>
 #include <QThreadStorage>
-#include <support/lassert.h>
 
 using namespace std;
 using namespace lyx::support;
@@ -351,37 +351,44 @@ XMLStream &XMLStream::operator<<(xml::FontTag const &tag) {
 
 
 XMLStream &XMLStream::operator<<(xml::CR const &) {
+	clearTagDeque();
 	os_ << from_ascii("\n");
 	return *this;
 }
 
 
-bool XMLStream::isTagOpen(xml::StartTag const &stag) const {
+bool XMLStream::isTagOpen(xml::StartTag const &stag, int maxdepth) const {
 	auto sit = tag_stack_.begin();
 	auto sen = tag_stack_.cend();
-	for (; sit != sen; ++sit)
+	for (; sit != sen && maxdepth != 0; ++sit) {
 		if (**sit == stag)
 			return true;
+		maxdepth -= 1;
+	}
 	return false;
 }
 
 
-bool XMLStream::isTagOpen(xml::EndTag const &etag) const {
+bool XMLStream::isTagOpen(xml::EndTag const &etag, int maxdepth) const {
 	auto sit = tag_stack_.begin();
 	auto sen = tag_stack_.cend();
-	for (; sit != sen; ++sit)
+	for (; sit != sen && maxdepth != 0; ++sit) {
 		if (etag == **sit)
 			return true;
+		maxdepth -= 1;
+	}
 	return false;
 }
 
 
-bool XMLStream::isTagPending(xml::StartTag const &stag) const {
+bool XMLStream::isTagPending(xml::StartTag const &stag, int maxdepth) const {
 	auto sit = pending_tags_.begin();
 	auto sen = pending_tags_.cend();
-	for (; sit != sen; ++sit)
+	for (; sit != sen && maxdepth != 0; ++sit) {
 		if (**sit == stag)
 			return true;
+		maxdepth -= 1;
+	}
 	return false;
 }
 

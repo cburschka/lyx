@@ -770,42 +770,35 @@ int InsetExternal::plaintext(odocstringstream & os,
 }
 
 
-int InsetExternal::docbook(odocstream & os,
-			   OutputParams const & runparams) const
+void InsetExternal::generateXML(XMLStream & xs, OutputParams const & runparams, std::string const & format) const
 {
 	bool const external_in_tmpdir = !runparams.nice;
 	bool const dryrun = runparams.dryrun || runparams.inComment;
 	odocstringstream ods;
 	otexstream ots(ods);
 	external::RetVal retval =
-		external::writeExternal(params_, "DocBook", buffer(), ots,
-		    *(runparams.exportdata), external_in_tmpdir, dryrun);
-	if (retval == external::KILLED) {
-		LYXERR0("External template preparation killed.");
-		if (buffer().isClone() && buffer().isExporting())
-			throw ConversionException();
-	}
-	os << ods.str();
-	return int(count(ods.str().begin(), ods.str().end(), '\n'));
-}
-
-
-docstring InsetExternal::xhtml(XMLStream & xs,
-			OutputParams const & runparams) const
-{
-	bool const external_in_tmpdir = !runparams.nice;
-	bool const dryrun = runparams.dryrun || runparams.inComment;
-	odocstringstream ods;
-	otexstream ots(ods);
-	external::RetVal retval =
-		external::writeExternal(params_, "XHTML", buffer(), ots,
-		    *(runparams.exportdata), external_in_tmpdir, dryrun);
+			external::writeExternal(params_, format, buffer(), ots,
+			                        *(runparams.exportdata), external_in_tmpdir, dryrun);
 	if (retval == external::KILLED) {
 		LYXERR0("External template preparation killed.");
 		if (buffer().isClone() && buffer().isExporting())
 			throw ConversionException();
 	}
 	xs << XMLStream::ESCAPE_NONE << ods.str();
+}
+
+
+void InsetExternal::docbook(XMLStream & xs,
+                            OutputParams const & runparams) const
+{
+	generateXML(xs, runparams, "DocBook");
+}
+
+
+docstring InsetExternal::xhtml(XMLStream & xs,
+			OutputParams const & runparams) const
+{
+	generateXML(xs, runparams, "XHTML");
 	return docstring();
 }
 

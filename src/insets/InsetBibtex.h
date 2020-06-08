@@ -66,6 +66,8 @@ public:
 	///
 	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///
+	void docbook(XMLStream &, OutputParams const &) const;
+	///
 	std::string contextMenuName() const;
 	//@}
 

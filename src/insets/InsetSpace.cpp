@@ -26,8 +26,8 @@
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
-#include "output_xhtml.h"
 #include "texstream.h"
+#include "xml.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -741,68 +741,57 @@ int InsetSpace::plaintext(odocstringstream & os,
 }
 
 
-int InsetSpace::docbook(odocstream & os, OutputParams const &) const
+void InsetSpace::docbook(XMLStream & xs, OutputParams const &) const
 {
 	switch (params_.kind) {
 	case InsetSpaceParams::NORMAL:
-		os << " ";
+		xs << XMLStream::ESCAPE_NONE << " ";
 		break;
 	case InsetSpaceParams::QUAD:
-		os << "&emsp;";
+		xs << XMLStream::ESCAPE_NONE << "&#x2003;"; // HTML: &emsp;
 		break;
 	case InsetSpaceParams::QQUAD:
-		os << "&emsp;&emsp;";
+		xs << XMLStream::ESCAPE_NONE << "&#x2003;&#x2003;"; // HTML: &emsp;&emsp;
 		break;
 	case InsetSpaceParams::ENSKIP:
-		os << "&ensp;";
+		xs << XMLStream::ESCAPE_NONE << "&#x2002;"; // HTML: &ensp;
 		break;
 	case InsetSpaceParams::PROTECTED:
-		os << "&nbsp;";
+		xs << XMLStream::ESCAPE_NONE << "&#xA0;"; // HTML: &nbsp;
 		break;
 	case InsetSpaceParams::VISIBLE:
-		os << "&#x2423;";
+		xs << XMLStream::ESCAPE_NONE << "&#x2423;";
 		break;
-	case InsetSpaceParams::ENSPACE:
-		os << "&#x2060;&ensp;&#x2060;";
+	case InsetSpaceParams::ENSPACE: // HTML: &#x2060;&ensp;&#x2060; (word joiners)
+		xs << XMLStream::ESCAPE_NONE << "&#x2060;&#x2002;&#x2060;";
 		break;
 	case InsetSpaceParams::THIN:
-		os << "&thinsp;";
+		xs << XMLStream::ESCAPE_NONE << "&#x2009;"; // HTML: &thinspace;
 		break;
 	case InsetSpaceParams::MEDIUM:
-		os << "&emsp14;";
+		xs << XMLStream::ESCAPE_NONE << "&#x2005;"; // HTML: &emsp14;
 		break;
 	case InsetSpaceParams::THICK:
-		os << "&emsp13;";
+		xs << XMLStream::ESCAPE_NONE << "&#x2004;"; // HTML: &emsp13;
 		break;
 	case InsetSpaceParams::NEGTHIN:
 	case InsetSpaceParams::NEGMEDIUM:
 	case InsetSpaceParams::NEGTHICK:
-		// FIXME
-		os << "&nbsp;";
+		xs << XMLStream::ESCAPE_NONE << "&#xA0;"; // HTML: &nbsp;
 		break;
 	case InsetSpaceParams::HFILL:
 	case InsetSpaceParams::HFILL_PROTECTED:
-		os << '\n';
-		break;
 	case InsetSpaceParams::DOTFILL:
-		// FIXME
-		os << '\n';
-		break;
 	case InsetSpaceParams::HRULEFILL:
-		// FIXME
-		os << '\n';
-		break;
 	case InsetSpaceParams::LEFTARROWFILL:
 	case InsetSpaceParams::RIGHTARROWFILL:
 	case InsetSpaceParams::UPBRACEFILL:
 	case InsetSpaceParams::DOWNBRACEFILL:
 	case InsetSpaceParams::CUSTOM:
 	case InsetSpaceParams::CUSTOM_PROTECTED:
-		// FIXME
-		os << '\n';
+		xs << '\n';
 		break;
 	}
-	return 0;
 }
 
 

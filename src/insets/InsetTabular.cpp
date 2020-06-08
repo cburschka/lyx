@@ -42,6 +42,7 @@
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "xml.h"
 #include "output_xhtml.h"
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
@@ -3498,154 +3499,136 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-int Tabular::docbookRow(odocstream & os, row_type row,
-			   OutputParams const & runparams) const
+void Tabular::docbookRow(XMLStream & xs, row_type row,
+		   OutputParams const & runparams, bool header) const
 {
-	int ret = 0;
+	string const celltag = header ? "th" : "td";
 	idx_type cell = getFirstCellInRow(row);
 
-	os << "<row>\n";
+	xs << xml::StartTag("tr");
+	xs << xml::CR();
 	for (col_type c = 0; c < ncols(); ++c) {
-		if (isPartOfMultiColumn(row, c))
+		if (isPartOfMultiColumn(row, c) || isPartOfMultiRow(row, c))
 			continue;
 
-		os << "<entry align=\"";
+		stringstream attr;
+
+		Length const cwidth = column_info[c].p_width;
+		if (!cwidth.zero()) {
+			string const hwidth = cwidth.asHTMLString();
+			attr << "style =\"width: " << hwidth << ";\" ";
+		}
+
+		attr << "align='";
 		switch (getAlignment(cell)) {
 		case LYX_ALIGN_LEFT:
-			os << "left";
+			attr << "left";
 			break;
 		case LYX_ALIGN_RIGHT:
-			os << "right";
+			attr << "right";
 			break;
 		default:
-			os << "center";
+			attr << "center";
 			break;
 		}
-
-		os << "\" valign=\"";
+		attr << "'";
+		attr << " valign='";
 		switch (getVAlignment(cell)) {
 		case LYX_VALIGN_TOP:
-			os << "top";
+			attr << "top";
 			break;
 		case LYX_VALIGN_BOTTOM:
-			os << "bottom";
+			attr << "bottom";
 			break;
 		case LYX_VALIGN_MIDDLE:
-			os << "middle";
+			attr << "middle";
 		}
-		os << '"';
+		attr << "'";
 
-		if (isMultiColumn(cell)) {
-			os << " namest=\"col" << c << "\" ";
-			os << "nameend=\"col" << c + columnSpan(cell) - 1 << '"';
-		}
+		if (isMultiColumn(cell))
+			attr << " colspan='" << columnSpan(cell) << "'";
+		else if (isMultiRow(cell))
+			attr << " rowspan='" << rowSpan(cell) << "'";
 
-		os << '>';
-		ret += cellInset(cell)->docbook(os, runparams);
-		os << "</entry>\n";
+		xs << xml::StartTag(celltag, attr.str(), true);
+		cellInset(cell)->docbook(xs, runparams);
+		xs << xml::EndTag(celltag);
+		xs << xml::CR();
 		++cell;
 	}
-	os << "</row>\n";
-	return ret;
+	xs << xml::EndTag("tr");
+	xs<< xml::CR();
 }
 
 
-int Tabular::docbook(odocstream & os, OutputParams const & runparams) const
+void Tabular::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
-	int ret = 0;
+	docstring ret;
 
-	//+---------------------------------------------------------------------
-	//+                      first the opening preamble                    +
-	//+---------------------------------------------------------------------
-
-	os << "<tgroup cols=\"" << ncols()
-	   << "\" colsep=\"1\" rowsep=\"1\">\n";
-
-	for (col_type c = 0; c < ncols(); ++c) {
-		os << "<colspec colname=\"col" << c << "\" align=\"";
-		switch (column_info[c].alignment) {
-		case LYX_ALIGN_LEFT:
-			os << "left";
-			break;
-		case LYX_ALIGN_RIGHT:
-			os << "right";
-			break;
-		default:
-			os << "center";
-			break;
-		}
-		os << '"';
-		if (runparams.flavor == OutputParams::DOCBOOK5)
-			os << '/';
-		os << ">\n";
-		++ret;
+	// Some tables are inline. Likely limitation: cannot output a table within a table; is that really a limitation?
+	bool hasTableStarted = xs.isTagOpen(xml::StartTag("informaltable")) || xs.isTagOpen(xml::StartTag("table"));
+	if (!hasTableStarted) {
+		xs << xml::StartTag("informaltable");
+		xs << xml::CR();
 	}
 
-	//+---------------------------------------------------------------------
-	//+                      Long Tabular case                             +
-	//+---------------------------------------------------------------------
-
-	// output caption info
-	// The caption flag wins over head/foot
+	// "Formal" tables have a caption and use the tag <table>; the distinction with <informaltable> is done outside.
 	if (haveLTCaption()) {
-		os << "<caption>\n";
-		++ret;
-		for (row_type r = 0; r < nrows(); ++r) {
-			if (row_info[r].caption) {
-				ret += docbookRow(os, r, runparams);
-			}
-		}
-		os << "</caption>\n";
-		++ret;
+		xs << xml::StartTag("caption");
+		for (row_type r = 0; r < nrows(); ++r)
+			if (row_info[r].caption)
+				docbookRow(xs, r, runparams);
+		xs << xml::EndTag("caption");
+		xs << xml::CR();
 	}
+
 	// output header info
-	if (haveLTHead(false) || haveLTFirstHead(false)) {
-		os << "<thead>\n";
-		++ret;
+	bool const havefirsthead = haveLTFirstHead(false);
+	// if we have a first head, then we are going to ignore the
+	// headers for the additional pages, since there aren't any
+	// in XHTML. this test accomplishes that.
+	bool const havehead = !havefirsthead && haveLTHead(false);
+	if (havehead || havefirsthead) {
+		xs << xml::StartTag("thead") << xml::CR();
 		for (row_type r = 0; r < nrows(); ++r) {
-			if ((row_info[r].endhead || row_info[r].endfirsthead) &&
-			    !row_info[r].caption) {
-				ret += docbookRow(os, r, runparams);
+			if (((havefirsthead && row_info[r].endfirsthead) ||
+				 (havehead && row_info[r].endhead)) &&
+				!row_info[r].caption) {
+				docbookRow(xs, r, runparams, true);
 			}
 		}
-		os << "</thead>\n";
-		++ret;
+		xs << xml::EndTag("thead");
+		xs << xml::CR();
 	}
 	// output footer info
-	if (haveLTFoot(false) || haveLTLastFoot(false)) {
-		os << "<tfoot>\n";
-		++ret;
+	bool const havelastfoot = haveLTLastFoot(false);
+	// as before.
+	bool const havefoot = !havelastfoot && haveLTFoot(false);
+	if (havefoot || havelastfoot) {
+		xs << xml::StartTag("tfoot") << xml::CR();
 		for (row_type r = 0; r < nrows(); ++r) {
-			if ((row_info[r].endfoot || row_info[r].endlastfoot) &&
-			    !row_info[r].caption) {
-				ret += docbookRow(os, r, runparams);
+			if (((havelastfoot && row_info[r].endlastfoot) ||
+				 (havefoot && row_info[r].endfoot)) &&
+				!row_info[r].caption) {
+				docbookRow(xs, r, runparams);
 			}
 		}
-		os << "</tfoot>\n";
-		++ret;
+		xs << xml::EndTag("tfoot");
+		xs << xml::CR();
 	}
 
-	//+---------------------------------------------------------------------
-	//+                      the single row and columns (cells)            +
-	//+---------------------------------------------------------------------
+	xs << xml::StartTag("tbody");
+	xs << xml::CR();
+	for (row_type r = 0; r < nrows(); ++r)
+		if (isValidRow(r))
+			docbookRow(xs, r, runparams);
+	xs << xml::EndTag("tbody");
+	xs << xml::CR();
 
-	os << "<tbody>\n";
-	++ret;
-	for (row_type r = 0; r < nrows(); ++r) {
-		if (isValidRow(r)) {
-			ret += docbookRow(os, r, runparams);
-		}
+	if (!hasTableStarted) {
+		xs << xml::EndTag("informaltable");
+		xs << xml::CR();
 	}
-	os << "</tbody>\n";
-	++ret;
-	//+---------------------------------------------------------------------
-	//+                      the closing of the tabular                    +
-	//+---------------------------------------------------------------------
-
-	os << "</tgroup>";
-	++ret;
-
-	return ret;
 }
 
 
@@ -3728,20 +3711,22 @@ docstring Tabular::xhtml(XMLStream & xs, OutputParams const & runparams) const
 			align = "right";
 			break;
 		}
-		xs << xml::StartTag("div", "class='longtable' style='text-align: " + align + ";'")
-		   << xml::CR();
+		xs << xml::StartTag("div", "class='longtable' style='text-align: " + align + ";'");
+		xs << xml::CR();
 		// The caption flag wins over head/foot
 		if (haveLTCaption()) {
-			xs << xml::StartTag("div", "class='longtable-caption' style='text-align: " + align + ";'")
-			   << xml::CR();
+			xs << xml::StartTag("div", "class='longtable-caption' style='text-align: " + align + ";'");
+			xs << xml::CR();
 			for (row_type r = 0; r < nrows(); ++r)
 				if (row_info[r].caption)
 					ret += xhtmlRow(xs, r, runparams);
-			xs << xml::EndTag("div") << xml::CR();
+			xs << xml::EndTag("div");
+			xs << xml::CR();
 		}
 	}
 
-	xs << xml::StartTag("table") << xml::CR();
+	xs << xml::StartTag("table");
+	xs << xml::CR();
 
 	// output header info
 	bool const havefirsthead = haveLTFirstHead(false);
@@ -3750,7 +3735,8 @@ docstring Tabular::xhtml(XMLStream & xs, OutputParams const & runparams) const
 	// in XHTML. this test accomplishes that.
 	bool const havehead = !havefirsthead && haveLTHead(false);
 	if (havehead || havefirsthead) {
-		xs << xml::StartTag("thead") << xml::CR();
+		xs << xml::StartTag("thead");
+		xs << xml::CR();
 		for (row_type r = 0; r < nrows(); ++r) {
 			if (((havefirsthead && row_info[r].endfirsthead) ||
 			     (havehead && row_info[r].endhead)) &&
@@ -3758,7 +3744,8 @@ docstring Tabular::xhtml(XMLStream & xs, OutputParams const & runparams) const
 				ret += xhtmlRow(xs, r, runparams, true);
 			}
 		}
-		xs << xml::EndTag("thead") << xml::CR();
+		xs << xml::EndTag("thead");
+		xs << xml::CR();
 	}
 	// output footer info
 	bool const havelastfoot = haveLTLastFoot(false);
@@ -3773,21 +3760,22 @@ docstring Tabular::xhtml(XMLStream & xs, OutputParams const & runparams) const
 				ret += xhtmlRow(xs, r, runparams);
 			}
 		}
-		xs << xml::EndTag("tfoot") << xml::CR();
+		xs << xml::EndTag("tfoot");
+		xs << xml::CR();
 	}
 
 	xs << xml::StartTag("tbody") << xml::CR();
-	for (row_type r = 0; r < nrows(); ++r) {
-		if (isValidRow(r)) {
+	for (row_type r = 0; r < nrows(); ++r)
+		if (isValidRow(r))
 			ret += xhtmlRow(xs, r, runparams);
-		}
+	xs << xml::EndTag("tbody");
+	xs << xml::CR();
+	xs << xml::EndTag("table");
+	xs << xml::CR();
+	if (is_long_tabular) {
+		xs << xml::EndTag("div");
+		xs << xml::CR();
 	}
-	xs << xml::EndTag("tbody")
-	   << xml::CR()
-	   << xml::EndTag("table")
-	   << xml::CR();
-	if (is_long_tabular)
-		xs << xml::EndTag("div") << xml::CR();
 	return ret;
 }
 
@@ -4172,6 +4160,12 @@ docstring InsetTableCell::xhtml(XMLStream & xs, OutputParams const & rp) const
 	if (!isFixedWidth)
 		return InsetText::insetAsXHTML(xs, rp, InsetText::JustText);
 	return InsetText::xhtml(xs, rp);
+}
+
+
+void InsetTableCell::docbook(XMLStream & xs, OutputParams const & runparams) const
+{
+    InsetText::docbook(xs, runparams);
 }
 
 
@@ -6010,30 +6004,9 @@ int InsetTabular::plaintext(odocstringstream & os,
 }
 
 
-int InsetTabular::docbook(odocstream & os, OutputParams const & runparams) const
+void InsetTabular::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
-	int ret = 0;
-	Inset * master = 0;
-
-	// FIXME: Why not pass a proper DocIterator here?
-#if 0
-	// if the table is inside a float it doesn't need the informaltable
-	// wrapper. Search for it.
-	for (master = owner(); master; master = master->owner())
-		if (master->lyxCode() == FLOAT_CODE)
-			break;
-#endif
-
-	if (!master) {
-		os << "<informaltable>";
-		++ret;
-	}
-	ret += tabular.docbook(os, runparams);
-	if (!master) {
-		os << "</informaltable>";
-		++ret;
-	}
-	return ret;
+	tabular.docbook(xs, runparams);
 }
 
 

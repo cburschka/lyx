@@ -16,6 +16,7 @@
 #include "Changes.h"
 
 #include <memory>
+#include <unordered_set>
 
 
 namespace lyx {
@@ -349,6 +350,24 @@ public:
 
 	/// Does the present context even permit paragraphs?
 	bool html_make_pars;
+
+	/// Are we already in a paragraph?
+	bool docbook_in_par;
+
+	/// Does the present context even permit paragraphs?
+	bool docbook_make_pars;
+
+	/// Are paragraphs mandatory in this context?
+	bool docbook_force_pars;
+
+	/// Anchors that should not be output (LyX-side identifier, not DocBook-side).
+	std::unordered_set<docstring> docbook_anchors_to_ignore;
+
+	/// Is the current context a float (such as a table or a figure)?
+	bool docbook_in_float;
+
+	/// Is the current context a listing?
+	bool docbook_in_listing;
 
 	/// Are we generating this material for inclusion in a TOC-like entity?
 	bool for_toc;

@@ -38,6 +38,8 @@ protected:
 	///
 	docstring getCaptionHTML(OutputParams const &) const;
 	///
+	docstring getCaptionDocBook(OutputParams const &) const;
+	///
 	virtual void setCaptionType(std::string const & type);
 	/// are our captions subcaptions?
 	virtual bool hasSubCaptions(ParIterator const &) const { return false; }

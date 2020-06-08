@@ -10,6 +10,7 @@
  */
 
 #include <config.h>
+#include <output_docbook.h>
 
 #include "InsetHyperlink.h"
 
@@ -213,14 +214,11 @@ int InsetHyperlink::plaintext(odocstringstream & os,
 }
 
 
-int InsetHyperlink::docbook(odocstream & os, OutputParams const &) const
+void InsetHyperlink::docbook(XMLStream & xs, OutputParams const &) const
 {
-	os << "<ulink url=\""
-	   << subst(getParam("target"), from_ascii("&"), from_ascii("&amp;"))
-	   << "\">"
-	   << xml::escapeString(getParam("name"))
-	   << "</ulink>";
-	return 0;
+	xs << xml::StartTag("link", "xlink:href=\"" + subst(getParam("target"), from_ascii("&"), from_ascii("&amp;")) + "\"");
+	xs << xml::escapeString(getParam("name"));
+	xs << xml::EndTag("link");
 }
 
 

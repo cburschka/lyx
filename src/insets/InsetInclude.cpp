@@ -987,12 +987,11 @@ docstring InsetInclude::xhtml(XMLStream & xs, OutputParams const & rp) const
 		op.par_begin = 0;
 		op.par_end = 0;
 		ibuf->writeLyXHTMLSource(xs.os(), op, Buffer::IncludedFile);
-	} else
-		xs << XMLStream::ESCAPE_NONE
-		   << "<!-- Included file: "
-		   << from_utf8(included_file.absFileName())
-		   << XMLStream::ESCAPE_NONE
-			 << " -->";
+	} else {
+		xs << XMLStream::ESCAPE_NONE << "<!-- Included file: ";
+		xs << from_utf8(included_file.absFileName());
+		xs << XMLStream::ESCAPE_NONE << " -->";
+	}
 	
 	return docstring();
 }
@@ -1037,56 +1036,68 @@ int InsetInclude::plaintext(odocstringstream & os,
 }
 
 
-int InsetInclude::docbook(odocstream & os, OutputParams const & runparams) const
+void InsetInclude::docbook(XMLStream & xs, OutputParams const & rp) const
 {
-	string incfile = ltrim(to_utf8(params()["filename"]));
+	if (rp.inComment)
+		return;
 
-	// Do nothing if no file name has been specified
-	if (incfile.empty())
-		return 0;
+	// For verbatim and listings, we just include the contents of the file as-is.
+	bool const verbatim = isVerbatim(params());
+	bool const listing = isListings(params());
+	if (listing || verbatim) {
+		if (listing)
+			xs << xml::StartTag("programlisting");
+		else if (verbatim)
+			xs << xml::StartTag("literallayout");
 
-	string const included_file = includedFileName(buffer(), params()).absFileName();
-	string exppath = incfile;
-	if (!runparams.export_folder.empty()) {
-		exppath = makeAbsPath(exppath, runparams.export_folder).realPath();
-		FileName(exppath).onlyPath().createPath();
+		// FIXME: We don't know the encoding of the file, default to UTF-8.
+		xs << includedFileName(buffer(), params()).fileContents("UTF-8");
+
+		if (listing)
+			xs << xml::EndTag("programlisting");
+		else if (verbatim)
+			xs << xml::EndTag("literallayout");
+
+		return;
 	}
 
-	// write it to a file (so far the complete file)
-	string const exportfile = changeExtension(exppath, ".sgml");
-	DocFileName writefile(changeExtension(included_file, ".sgml"));
-
-	Buffer * tmp = loadIfNeeded();
-	if (tmp) {
-		if (recursion_error_)
-			return 0;
-
-		string const mangled = writefile.mangledFileName();
-		writefile = makeAbsPath(mangled,
-					buffer().masterBuffer()->temppath());
-		if (!runparams.nice)
-			incfile = mangled;
-
-		LYXERR(Debug::LATEX, "incfile:" << incfile);
-		LYXERR(Debug::LATEX, "exportfile:" << exportfile);
-		LYXERR(Debug::LATEX, "writefile:" << writefile);
-
-		tmp->makeDocBookFile(writefile, runparams, Buffer::OnlyBody);
+	// We don't (yet) know how to Input or Include non-LyX files.
+	// (If we wanted to get really arcane, we could run some tex2html
+	// converter on the included file. But that's just masochistic.)
+	FileName const included_file = includedFileName(buffer(), params());
+	if (!isLyXFileName(included_file.absFileName())) {
+		if (!rp.silent)
+			frontend::Alert::warning(_("Unsupported Inclusion"),
+			                         bformat(_("LyX does not know how to include non-LyX files when "
+			                                   "generating DocBook output. Offending file:\n%1$s"),
+			                                 ltrim(params()["filename"])));
+		return;
 	}
 
-	runparams.exportdata->addExternalFile("docbook", writefile,
-					      exportfile);
-	runparams.exportdata->addExternalFile("docbook-xml", writefile,
-					      exportfile);
+	// In the other cases, we will generate the HTML and include it.
+	Buffer const * const ibuf = loadIfNeeded();
+	if (!ibuf)
+		return;
 
-	if (isVerbatim(params()) || isListings(params())) {
-		os << "<inlinegraphic fileref=\""
-		   << '&' << include_label << ';'
-		   << "\" format=\"linespecific\">";
+	if (recursion_error_)
+		return;
+
+	// are we generating only some paragraphs, or all of them?
+	bool const all_pars = !rp.dryrun ||
+	                      (rp.par_begin == 0 &&
+	                       rp.par_end == (int) buffer().text().paragraphs().size());
+
+	OutputParams op = rp;
+	if (all_pars) {
+		op.par_begin = 0;
+		op.par_end = 0;
+		ibuf->writeDocBookSource(xs.os(), op, Buffer::IncludedFile);
 	} else
-		os << '&' << include_label << ';';
-
-	return 0;
+		xs << XMLStream::ESCAPE_NONE
+		   << "<!-- Included file: "
+		   << from_utf8(included_file.absFileName())
+		   << XMLStream::ESCAPE_NONE
+		   << " -->";
 }
 
 

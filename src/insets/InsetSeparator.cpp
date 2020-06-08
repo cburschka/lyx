@@ -9,6 +9,7 @@
  */
 
 #include <config.h>
+#include <output_docbook.h>
 
 #include "InsetSeparator.h"
 
@@ -167,10 +168,9 @@ int InsetSeparator::plaintext(odocstringstream & os,
 }
 
 
-int InsetSeparator::docbook(odocstream & os, OutputParams const &) const
+void InsetSeparator::docbook(XMLStream & xs, OutputParams const &) const
 {
-	os << '\n';
-	return 0;
+	xs << xml::CR();
 }
 
 

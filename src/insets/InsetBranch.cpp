@@ -24,6 +24,7 @@
 #include "Lexer.h"
 #include "LyX.h"
 #include "OutputParams.h"
+#include "output_docbook.h"
 #include "output_xhtml.h"
 #include "TextClass.h"
 #include "TocBackend.h"
@@ -329,10 +330,14 @@ int InsetBranch::plaintext(odocstringstream & os,
 }
 
 
-int InsetBranch::docbook(odocstream & os,
-			 OutputParams const & runparams) const
+void InsetBranch::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
-	return producesOutput() ?  InsetText::docbook(os, runparams) : 0;
+	if (producesOutput()) {
+		OutputParams rp = runparams;
+		rp.par_begin = 0;
+		rp.par_end = text().paragraphs().size();
+		docbookParagraphs(text(), buffer(), xs, rp);
+	}
 }
 
 

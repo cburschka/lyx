@@ -30,6 +30,8 @@ public:
 	void getArgument(otexstream & os, OutputParams const &) const;
 	/// return the caption text
 	int getCaptionAsPlaintext(odocstream & os, OutputParams const &) const;
+	/// write the caption text as DocBook in os
+	void getCaptionAsDocBook(XMLStream & os, OutputParams const &) const;
 	/// return the caption text as HTML
 	docstring getCaptionAsHTML(XMLStream & os, OutputParams const &) const;
 	///
@@ -76,7 +78,7 @@ private:
 	int plaintext(odocstringstream & ods, OutputParams const & op,
 	              size_t max_length = INT_MAX) const;
 	///
-	int docbook(odocstream & os, OutputParams const & runparams) const;
+	void docbook(XMLStream &, OutputParams const &) const;
 	///
 	docstring xhtml(XMLStream & os, OutputParams const & runparams) const;
 	///

@@ -200,27 +200,29 @@ public:
 	std::string getID(Buffer const & buf, OutputParams const & runparams) const;
 
 	/// Output the first word of a paragraph, return the position where it left.
-	pos_type firstWordDocBook(odocstream & os, OutputParams const & runparams) const;
+	pos_type firstWordDocBook(XMLStream & xs, OutputParams const & runparams) const;
 
 	/// Output the first word of a paragraph, return the position where it left.
 	pos_type firstWordLyXHTML(XMLStream & xs, OutputParams const & runparams) const;
 
-	/// Writes to stream the docbook representation
+	/// Writes to stream the DocBook representation
 	void simpleDocBookOnePar(Buffer const & buf,
-				 odocstream &,
-				 OutputParams const & runparams,
-				 Font const & outerfont,
-				 pos_type initial = 0) const;
+							 XMLStream &,
+							 OutputParams const & runparams,
+							 Font const & outerfont,
+							 bool start_paragraph = true,
+							 bool close_paragraph = true,
+							 pos_type initial = 0) const;
 
 	/// \return any material that has had to be deferred until after the
 	/// paragraph has closed.
 	docstring simpleLyXHTMLOnePar(Buffer const & buf,
-				 XMLStream & xs,
-				 OutputParams const & runparams,
-				 Font const & outerfont,
-				 bool start_paragraph = true,
-				 bool close_paragraph = true,
-				 pos_type initial = 0) const;
+								  XMLStream & xs,
+								  OutputParams const & runparams,
+								  Font const & outerfont,
+								  bool start_paragraph = true,
+								  bool close_paragraph = true,
+								  pos_type initial = 0) const;
 
 	///
 	bool hasSameLayout(Paragraph const & par) const;
@@ -306,8 +308,6 @@ public:
 
 	///
 	docstring expandLabel(Layout const &, BufferParams const &) const;
-	///
-	docstring expandDocBookLabel(Layout const &, BufferParams const &) const;
 	///
 	docstring const & labelString() const;
 	/// the next two functions are for the manual labels

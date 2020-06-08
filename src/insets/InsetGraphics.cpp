@@ -95,7 +95,7 @@ TODO
 
 #include <algorithm>
 #include <sstream>
-#include <tuple>
+#include <output_docbook.h>
 
 using namespace std;
 using namespace lyx::support;
@@ -125,8 +125,9 @@ string findTargetFormat(string const & format, OutputParams const & runparams)
 		// Convert everything else to png
 		return "png";
 	}
-	// for HTML, we leave the known formats and otherwise convert to png
-	if (runparams.flavor == OutputParams::HTML) {
+
+    // for HTML and DocBook, we leave the known formats and otherwise convert to png
+    if (runparams.flavor == OutputParams::HTML || runparams.flavor == OutputParams::DOCBOOK5) {
 		Format const * const f = theFormats().getFormat(format);
 		// Convert vector graphics to svg
 		if (f && f->vectorFormat() && theConverters().isReachable(format, "svg"))
@@ -521,7 +522,6 @@ docstring InsetGraphics::createDocBookAttributes() const
 			options << "scalefit=\"1\" ";
 		}
 	}
-
 
 	if (!params().special.empty())
 		options << from_ascii(params().special) << " ";
@@ -935,62 +935,24 @@ int InsetGraphics::plaintext(odocstringstream & os,
 }
 
 
-static int writeImageObject(char const * format, odocstream & os,
-	OutputParams const & runparams, docstring const & graphic_label,
-	docstring const & attributes)
-{
-	if (runparams.flavor != OutputParams::DOCBOOK5)
-		os << "<![ %output.print." << format
-		   << "; [" << endl;
-
-	os <<"<imageobject><imagedata fileref=\"&"
-	   << graphic_label
-	   << ";."
-	   << format
-	   << "\" "
-	   << attributes;
-
-	if (runparams.flavor == OutputParams::DOCBOOK5)
-		os <<  " role=\"" << format << "\"/>" ;
-	else
-		os << " format=\"" << format << "\">" ;
-
-	os << "</imageobject>";
-
-	if (runparams.flavor != OutputParams::DOCBOOK5)
-		os << endl << "]]>" ;
-
-	return runparams.flavor == OutputParams::DOCBOOK5 ? 0 : 2;
-}
-
-
 // For explanation on inserting graphics into DocBook checkout:
 // http://en.tldp.org/LDP/LDP-Author-Guide/html/inserting-pictures.html
 // See also the docbook guide at http://www.docbook.org/
-int InsetGraphics::docbook(odocstream & os,
-			   OutputParams const & runparams) const
+void InsetGraphics::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
-	// In DocBook v5.0, the graphic tag will be eliminated from DocBook, will
-	// need to switch to MediaObject. However, for now this is sufficient and
-	// easier to use.
-	if (runparams.flavor == OutputParams::DOCBOOK5)
-		runparams.exportdata->addExternalFile("docbook-xml",
-						      params().filename);
-	else
-		runparams.exportdata->addExternalFile("docbook",
-						      params().filename);
+	string fn = params().filename.relFileName(runparams.export_folder);
+	string tag = runparams.docbook_in_float ? "mediaobject" : "inlinemediaobject";
 
-	os << "<inlinemediaobject>";
-
-	int r = 0;
-	docstring attributes = createDocBookAttributes();
-	r += writeImageObject("png", os, runparams, graphic_label, attributes);
-	r += writeImageObject("pdf", os, runparams, graphic_label, attributes);
-	r += writeImageObject("eps", os, runparams, graphic_label, attributes);
-	r += writeImageObject("bmp", os, runparams, graphic_label, attributes);
-
-	os << "</inlinemediaobject>";
-	return r;
+	xs << xml::StartTag(tag);
+	xs << xml::CR();
+	xs << xml::StartTag("imageobject");
+	xs << xml::CR();
+	xs << xml::CompTag("imagedata", "fileref=\"" + fn + "\" " + to_utf8(createDocBookAttributes()));
+	xs << xml::CR();
+	xs << xml::EndTag("imageobject");
+	xs << xml::CR();
+	xs << xml::EndTag(tag);
+	xs << xml::CR();
 }
 
 

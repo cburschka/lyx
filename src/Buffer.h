@@ -335,7 +335,7 @@ public:
 			     OutputParams const & runparams_in,
 			     OutputWhat output = FullSource) const;
 	///
-	ExportStatus writeDocBookSource(odocstream & os, std::string const & filename,
+	ExportStatus writeDocBookSource(odocstream & os,
 			     OutputParams const & runparams_in,
 			     OutputWhat output = FullSource) const;
 	///
