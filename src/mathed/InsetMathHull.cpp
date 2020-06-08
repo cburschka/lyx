@@ -2406,8 +2406,13 @@ int InsetMathHull::plaintext(odocstringstream & os,
 
 int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) const
 {
-	MathStream ms(os);
+	// With DocBook 5, MathML must be within its own namespace; defined in Buffer.cpp::writeDocBookSource as "m".
+	// Output everything in a separate stream so that this does not interfere with the standard flow of DocBook tags.
+	odocstringstream osmath;
+	MathStream ms(osmath, "m", true);
 	int res = 0;
+
+	// Choose the tag around the MathML equation.
 	docstring name;
 	if (getType() == hullSimple)
 		name = from_ascii("inlineequation");
@@ -2415,8 +2420,12 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 		name = from_ascii("informalequation");
 
 	docstring bname = name;
-	if (!label(0).empty())
-		bname += " id='" + xml::cleanID(label(0)) + "'";
+	for (row_type i = 0; i < nrows(); ++i) {
+		if (!label(i).empty()) {
+			bname += " xml:id=\"" + xml::cleanID(label(i)) + "\"";
+			break;
+		}
+	}
 
 	++ms.tab(); ms.cr(); ms.os() << '<' << bname << '>';
 

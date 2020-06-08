@@ -91,18 +91,31 @@ void InsetMathDots::mathmlize(MathStream & ms) const
 	// lib/symbols as generating a dots inset
 	docstring const & n = key_->name;
 	std::string ent;
-	if (n == "dots" || n == "dotsc" || n == "dotso" || n == "ldots")
-		ent = "&hellip;";
-	else if (n == "adots" || n == "iddots")
-		ent = "&utdot;";
-	else if (n == "cdots" || n == "dotsb" || n == "dotsi" || n == "dotsm")
-		ent = "&ctdot;";
-	else if (n == "ddots")
-		ent = "&dtdot;";
-	else if (n == "vdots")
-		ent = "&vellip;";
-	else
-		LASSERT(false, ent = "&hellip;");
+	if (ms.xmlMode()) {
+		if (n == "dots" || n == "dotsc" || n == "dotso" || n == "ldots")
+			ent = "&#x2026;";
+		else if (n == "adots" || n == "iddots")
+			ent = "&#x22F0;";
+		else if (n == "cdots" || n == "dotsb" || n == "dotsi" || n == "dotsm")
+			ent = "&#x22EF;";
+		else if (n == "ddots")
+			ent = "&#x22F1;";
+		else if (n == "vdots")
+			ent = "&#x22EE;";
+		else LASSERT(false, ent = "&#x2026;");
+	} else {
+		if (n == "dots" || n == "dotsc" || n == "dotso" || n == "ldots")
+			ent = "&hellip;";
+		else if (n == "adots" || n == "iddots")
+			ent = "&utdot;";
+		else if (n == "cdots" || n == "dotsb" || n == "dotsi" || n == "dotsm")
+			ent = "&ctdot;";
+		else if (n == "ddots")
+			ent = "&dtdot;";
+		else if (n == "vdots")
+			ent = "&vellip;";
+		else LASSERT(false, ent = "&hellip;");
+	}
 	ms << MTag("mi") << from_ascii(ent) << ETag("mi");
 }
 

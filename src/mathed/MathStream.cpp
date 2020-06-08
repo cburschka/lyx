@@ -269,8 +269,8 @@ WriteStream & operator<<(WriteStream & ws, unsigned int i)
 //////////////////////////////////////////////////////////////////////
 
 
-MathStream::MathStream(odocstream & os, std::string xmlns)
-	: os_(os), tab_(0), line_(0), in_text_(false), xmlns_(xmlns)
+MathStream::MathStream(odocstream & os, std::string xmlns, bool xmlMode)
+	: os_(os), tab_(0), line_(0), in_text_(false), xmlns_(xmlns), xml_mode_(xmlMode)
 {}
 
 
@@ -709,8 +709,9 @@ OctaveStream & operator<<(OctaveStream & os, string const & s)
 }
 
 
-docstring convertDelimToXMLEscape(docstring const & name)
+docstring convertDelimToXMLEscape(docstring const & name, bool xmlmode)
 {
+	// For the basic symbols, no difference between XML and HTML.
 	if (name.size() == 1) {
 		char_type const c = name[0];
 		if (c == '<')
@@ -729,7 +730,8 @@ docstring convertDelimToXMLEscape(docstring const & name)
 	MathWordList const & words = mathedWordList();
 	MathWordList::const_iterator it = words.find(name);
 	if (it != words.end()) {
-		docstring const escape = it->second.xmlname;
+		// Only difference between XML and HTML, based on the contents read by MathFactory.
+		docstring const escape = xmlmode ? it->second.xmlname : it->second.htmlname;
 		return escape;
 	}
 	LYXERR0("Unable to find `" << name <<"' in the mathWordList.");

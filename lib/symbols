@@ -244,73 +244,73 @@ tag*              mbox        forcetext
 # symbols generated from fontmath.ltx
 #
 
-#symbol            font   charid   charid-in-fallback-Xsymbol-font
-alpha              cmm         174  97 mathord  &alpha;
-beta               cmm         175  98 mathord  &beta;
-gamma              cmm         176 103 mathord  &gamma;
-delta              cmm         177 100 mathord  &delta;
-epsilon            cmm         178   0 mathord  &epsi;
-zeta               cmm         179 122 mathord  &zeta;
-eta                cmm         180 104 mathord  &eta;
-theta              cmm         181 113 mathord  &theta;
-iota               cmm         182 105 mathord  &iota;
-kappa              cmm         183 107 mathord  &kappa;
-lambda             cmm         184 108 mathord  &lambda;
-mu                 cmm         185 109 mathord  &mu;
-nu                 cmm         186 110 mathord  &nu;
-xi                 cmm         187 120 mathord  &xi;
-pi                 cmm         188 112 mathord  &pi;
-rho                cmm         189 114 mathord  &rho;
-sigma              cmm         190 115 mathord  &sigma;
-tau                cmm         191 116 mathord  &tau;
-upsilon            cmm         192 117 mathord  &upsi;
-phi                cmm         193 102 mathord  &phi;
-chi                cmm         194  99 mathord  &chi;
-psi                cmm         195 121 mathord  &psi;
-omega              cmm          33 119 mathord  &omega;
-varepsilon         cmm          34 101 mathord  &epsiv;
-vartheta           cmm          35  74 mathord  &thetav;
-varpi              cmm          36 118 mathord  &piv;
-varrho             cmm          37   0 mathord  &rhov;
-varsigma           cmm          38  86 mathord  &sigmav;
-varphi             cmm          39 106 mathord  &phiv;
-slash              cmr          47  47 mathord  /
-Gamma              cmr         161  71 mathalpha  &Gamma;
-Delta              cmr         162  68 mathalpha  &Delta;
-Theta              cmr         163  81 mathalpha  &Theta;
-Lambda             cmr         164  76 mathalpha  &Lambda;
-Xi                 cmr         165  88 mathalpha  &Xi;
-Pi                 cmr         166  80 mathalpha  &Pi;
-Sigma              cmr         167  83 mathalpha  &Sigma;
-Upsilon            cmr         168 161 mathalpha  &Upsi;
-Phi                cmr         169  70 mathalpha  &Phi;
-Psi                cmr         170  89 mathalpha  &Psi;
-Omega              cmr         172  87 mathalpha  &Omega;
-aleph              cmsy         64 192 mathord  &aleph;
-imath              cmm         123   0 mathord  &imath;
-jmath              cmm         124   0 mathord  &jmath;
-ell                cmm          96   0 mathord  &ell;
-wp                 cmm         125 195 mathord  &weierp;
-Re                 cmsy         60 194 mathord  &real;
-Im                 cmsy         61 193 mathord  &imaginary;
-partial            cmm          64 182 mathord  &part;
-infty              cmsy         49 165 mathord  &infin;
-prime              cmsy         48 162 mathord  &prime;
-emptyset           cmsy         59   0 mathord  &empty;
-nabla              cmsy        114 209 mathord  &nabla;
-top                cmsy         62   0 mathord  &top;
-bot                cmsy         63  94 mathord  &bottom;
-triangle           cmsy         52   0 mathord  &utri;
-forall             cmsy         56  34 mathord  &forall;
-exists             cmsy         57  36 mathord  &exist;
-neg                cmsy         58 216 mathord  &not;
-flat               cmm          91   0 mathord  &flat;
-natural            cmm          92   0 mathord  &natur;
-sharp              cmm          93  35 mathord  &sharp;
-clubsuit           cmsy        124 167 mathord  &clubs;
-diamondsuit        cmsy        125 168 mathord  &#x2662;
-heartsuit          cmsy        126 169 mathord  &#x2661;
-spadesuit          cmsy        127 170 mathord  &spades;
+#symbol            font   charid   charid-in-fallback-Xsymbol-font  math-class  HTML-entity XML-entity
+alpha              cmm         174  97 mathord    &alpha;       &#x3B1;
+beta               cmm         175  98 mathord    &beta;        &#x3B2;
+gamma              cmm         176 103 mathord    &gamma;       &#x3B3;
+delta              cmm         177 100 mathord    &delta;       &#x3B4;
+epsilon            cmm         178   0 mathord    &epsi;        &#x3B5;
+zeta               cmm         179 122 mathord    &zeta;        &#x3B6;
+eta                cmm         180 104 mathord    &eta;         &#x3B7;
+theta              cmm         181 113 mathord    &theta;       &#x3B8;
+iota               cmm         182 105 mathord    &iota;        &#x3B9;
+kappa              cmm         183 107 mathord    &kappa;       &#x3BA;
+lambda             cmm         184 108 mathord    &lambda;      &#x3BB;
+mu                 cmm         185 109 mathord    &mu;          &#x3BC;
+nu                 cmm         186 110 mathord    &nu;          &#x3BD;
+xi                 cmm         187 120 mathord    &xi;          &#x3BE;
+pi                 cmm         188 112 mathord    &pi;          &#x3C0;
+rho                cmm         189 114 mathord    &rho;         &#x3C1;
+sigma              cmm         190 115 mathord    &sigma;       &#x3C3;
+tau                cmm         191 116 mathord    &tau;         &#x3C4;
+upsilon            cmm         192 117 mathord    &upsi;        &#x3C5;
+phi                cmm         193 102 mathord    &phi;         &#x3C6;
+chi                cmm         194  99 mathord    &chi;         &#x3C7;
+psi                cmm         195 121 mathord    &psi;         &#x3C8;
+omega              cmm          33 119 mathord    &omega;       &#x3C9;
+varepsilon         cmm          34 101 mathord    &epsiv;       &#x3F5;
+vartheta           cmm          35  74 mathord    &thetav;      &#x3D1;
+varpi              cmm          36 118 mathord    &piv;         &#x3D6;
+varrho             cmm          37   0 mathord    &rhov;        &#x3F1;
+varsigma           cmm          38  86 mathord    &sigmav;      &#x3C2;
+varphi             cmm          39 106 mathord    &phiv;        &#x3D5;
+slash              cmr          47  47 mathord    /             /
+Gamma              cmr         161  71 mathalpha  &Gamma;       &#x393;
+Delta              cmr         162  68 mathalpha  &Delta;       &#x394;
+Theta              cmr         163  81 mathalpha  &Theta;       &#x398;
+Lambda             cmr         164  76 mathalpha  &Lambda;      &#x39B;
+Xi                 cmr         165  88 mathalpha  &Xi;          &#x39E;
+Pi                 cmr         166  80 mathalpha  &Pi;          &#x3A0;
+Sigma              cmr         167  83 mathalpha  &Sigma;       &#x3A3;
+Upsilon            cmr         168 161 mathalpha  &Upsi;        &#x3A5;
+Phi                cmr         169  70 mathalpha  &Phi;         &#x3A6;
+Psi                cmr         170  89 mathalpha  &Psi;         &#x3A8;
+Omega              cmr         172  87 mathalpha  &Omega;       &#x3A9;
+aleph              cmsy         64 192 mathord    &aleph;       &#x2135;
+imath              cmm         123   0 mathord    &imath;       &#x131;
+jmath              cmm         124   0 mathord    &jmath;       &#x237;
+ell                cmm          96   0 mathord    &ell;         &#x2113;
+wp                 cmm         125 195 mathord    &weierp;      &#x2118;
+Re                 cmsy         60 194 mathord    &real;        &#x211C;
+Im                 cmsy         61 193 mathord    &imaginary;   &#x2111;
+partial            cmm          64 182 mathord    &part;        &#x2202;
+infty              cmsy         49 165 mathord    &infin;       &#x221E;
+prime              cmsy         48 162 mathord    &prime;       &#x2032;
+emptyset           cmsy         59   0 mathord    &empty;       &#x2205;
+nabla              cmsy        114 209 mathord    &nabla;       &#x2207;
+top                cmsy         62   0 mathord    &top;         &#x22A4;
+bot                cmsy         63  94 mathord    &bottom;      &#x22A5;
+triangle           cmsy         52   0 mathord    &utri;        &#x25B5;
+forall             cmsy         56  34 mathord    &forall;      &#x2200;
+exists             cmsy         57  36 mathord    &exist;       &#x2203;
+neg                cmsy         58 216 mathord    &not;         &#xAC;
+flat               cmm          91   0 mathord    &flat;        &#x266D;
+natural            cmm          92   0 mathord    &natur;       &#x266E;
+sharp              cmm          93  35 mathord    &sharp;       &#x266F;
+clubsuit           cmsy        124 167 mathord    &clubs;       &#x2663;
+diamondsuit        cmsy        125 168 mathord    &#x2662;      &#x2662;
+heartsuit          cmsy        126 169 mathord    &#x2661;      &#x2661;
+spadesuit          cmsy        127 170 mathord    &spades;      &#x2660;
 # We define lyxnot as mathrel in order to have proper alignment
 lyxnot             cmsy         54  47 mathrel  /           hiddensymbol
 iffont cmsy
@@ -319,678 +319,679 @@ iffont cmsy
 else
 \def\not{\kern4mu\lyxnot\kern-19mu}
 endif
-coprod             cmex         96   0 mathop   &amalg;
-bigvee             cmex         87   0 mathop   &xvee;
-bigwedge           cmex         86   0 mathop   &xwedge;
-biguplus           cmex         85   0 mathop   &xuplus;
-bigcap             cmex         84   0 mathop   &xcap;
-bigcup             cmex         83   0 mathop   &xcup;
-prod               cmex         81 213 mathop   &prod;
-sum                cmex         80 229 mathop   &sum;
-bigotimes          cmex         78   0 mathop   &xotime;
-bigoplus           cmex         76   0 mathop   &xoplus;
-bigodot            cmex         74   0 mathop   &xodot;
-bigsqcup           cmex         70   0 mathop   &xsqcup;
-smallint           cmsy        115   0 mathop   &int;
-triangleleft       cmm          47   0 mathbin  &ltri;
-triangleright      cmm          46   0 mathbin  &rtri;
-bigtriangleup      cmsy         52   0 mathbin  &xutri;
-bigtriangledown    cmsy         53   0 mathbin  &xdtri;
-wedge              cmsy         94 217 mathbin  &and;
-land               cmsy         94 217 mathbin  &xwedge;
-vee                cmsy         95 218 mathbin  &or;
-lor                cmsy         95 218 mathbin  &xvee;
-cap                cmsy         92 199 mathbin  &cap;
-cup                cmsy         91 200 mathbin  &cup;
-ddagger            cmsy        122   0 mathbin  &Dagger;
-dagger             cmsy        121   0 mathbin  &dagger;
-sqcap              cmsy        117   0 mathbin  &sqcap;
-sqcup              cmsy        116   0 mathbin  &sqcup;
-uplus              cmsy         93   0 mathbin  &uplus;
-amalg              cmsy        113   0 mathbin  &amalg;
-diamond            cmsy        166 224 mathbin  &loz;
-bullet             cmsy        178 183 mathbin  &bull;
-wr                 cmsy        111   0 mathbin  &wreath;
-div                cmsy        165 184 mathbin  &divide;
-odot               cmsy        175   0 mathbin  &odot;
-oslash             cmsy        174 198 mathbin  &oslash;
-otimes             cmsy        172 196 mathbin  &otimes;
-ominus             cmsy        170   0 mathbin  &ominus;
-oplus              cmsy        169 197 mathbin  &oplus;
-mp                 cmsy        168   0 mathbin  &mnplus;
-pm                 cmsy        167 177 mathbin  &plusmn;
-circ               cmsy        177   0 mathbin  &cir;
-bigcirc            cmsy        176   0 mathbin  &xcirc;
-setminus           cmsy        110   0 mathbin  &setmn;
-cdot               cmsy        162 215 mathbin  &sdot;
-ast                cmsy        164   0 mathbin  &lowast;
-times              cmsy        163 180 mathbin  &times;
-star               cmm          63   0 mathbin  &starf;
-propto             cmsy         47 181 mathrel  &vprop;
-sqsubseteq         cmsy        118   0 mathrel  &sqsube;
-sqsupseteq         cmsy        119   0 mathrel  &sqsupe;
-parallel           cmsy        107   0 mathrel  &spar;
-mid                cmsy        106 124 mathrel  &smid;
-lvert              cmsy        106 124 mathrel  &lvert;  amsmath
-rvert              cmsy        106 124 mathrel  &rvert;  amsmath
-dashv              cmsy         97   0 mathrel  &dashv;
-vdash              cmsy         96   0 mathrel  &vdash;
-nearrow            cmsy         37   0 mathrel  &nearr;
-searrow            cmsy         38   0 mathrel  &searr;
-nwarrow            cmsy         45   0 mathrel  &nwarr;
-swarrow            cmsy         46   0 mathrel  &swarr;
-Leftrightarrow     cmsy         44 219 mathrel  &harr;
-Leftarrow          cmsy         40 220 mathrel  &lArr;
-Rightarrow         cmsy         41 222 mathrel  &rArr;
-le                 cmsy        183 163 mathrel  &le;
-ge                 cmsy        184 179 mathrel  &ge;
-succ               cmsy        194   0 mathrel  &sc;
-prec               cmsy        193   0 mathrel  &pr;
-approx             cmsy        188 187 mathrel  &ap;
-succeq             cmsy        186   0 mathrel  &sce;
-preceq             cmsy        185   0 mathrel  &pre;
-supset             cmsy        190 201 mathrel  &sup;
-subset             cmsy        189 204 mathrel  &sub;
-supseteq           cmsy        182 202 mathrel  &supe;
-subseteq           cmsy        181 205 mathrel  &sube;
-in                 cmsy         50 206 mathrel  &isin;
-ni                 cmsy         51  39 mathrel  &ni;
-owns               cmsy         51  39 mathrel  &ni;
-gg                 cmsy        192   0 mathrel  &gg;
-ll                 cmsy        191   0 mathrel  &ll;
-leftrightarrow     cmsy         36 171 mathrel  &harr;
-leftarrow          cmsy        195 172 mathrel  &larr;
-gets               cmsy        195 172 mathrel  &larr;
-rightarrow         cmsy         33 174 mathrel  &rarr;
-to                 cmsy         33 174 mathrel  &rarr;
-mapstochar         cmsy         55   0 mathrel  x
-sim                cmsy        187 126 mathrel  &sim;
-simeq              cmsy         39   0 mathrel  &sime;
-perp               cmsy         63   0 mathrel  &perp;
-equiv              cmsy        180 186 mathrel  &equiv;
-asymp              cmsy        179   0 mathrel  &asymp;
-smile              cmm          94   0 mathrel  &smile;
-frown              cmm          95   0 mathrel  &frown;
-leftharpoonup      cmm          40   0 mathrel  &lharu;
-leftharpoondown    cmm          41   0 mathrel  &lhard;
-rightharpoonup     cmm          42   0 mathrel  &rharu;
-rightharpoondown   cmm          43   0 mathrel  &rhard;
-lhook              cmm          44   0 mathrel  x
-rhook              cmm          45   0 mathrel  x
-ldotp              cmm          58   0 mathpunct  <mo>.</mo>
-cdotp              cmsy        162   0 mathpunct  &sdot;
-colon              cmr          58  58 mathpunct  &colon;
-arrowvert          cmsy        106   0 mathord  &verbar;
-Arrowvert          cmsy        107   0 mathord  &par;
-Vert               cmsy        107   0 mathord  &par;
-lVert              cmsy        107   0 mathord  &par;  amsmath
-rVert              cmsy        107   0 mathord  &par;  amsmath
-|                  cmsy        107   0 mathord  &verbar;
-vert               cmsy        106   0 mathord  &verbar;
-uparrow            cmsy         34 173 mathrel	&uarr;
-downarrow          cmsy         35 175 mathrel  &darr;
-updownarrow        cmsy        108   0 mathrel  &varr;
-Uparrow            cmsy         42 221 mathrel  &uArr;
-Downarrow          cmsy         43 223 mathrel  &dArr;
-Updownarrow        cmsy        109   0 mathrel  &vArr;
-backslash          cmsy        110   0 mathord  &bsol;
-rangle             cmsy        105 241 mathclose  &rang;
-langle             cmsy        104 225 mathopen  &lang;
-rbrace             cmsy        103   0 mathclose  &rcub;
-lbrace             cmsy        102   0 mathopen  &lcub;
-rceil              cmsy        101 249 mathclose  &rceil;
-lceil              cmsy        100 233 mathopen  &lceil;
-rfloor             cmsy         99 251 mathclose  &rfloor;
-lfloor             cmsy         98 235 mathopen  &lfloor;
-mathparagraph      cmsy        123   0 mathord  &para;
-mathsection        cmsy        120   0 mathord  &sect;
-mathdollar         cmr          36   0 mathord  &dollar;
+coprod             cmex         96   0 mathop   &amalg;         &#x2A3F;
+bigvee             cmex         87   0 mathop   &xvee;          &#x22C1;
+bigwedge           cmex         86   0 mathop   &xwedge;        &#x22C0;
+biguplus           cmex         85   0 mathop   &xuplus;        &#x2A04;
+bigcap             cmex         84   0 mathop   &xcap;          &#x22C2;
+bigcup             cmex         83   0 mathop   &xcup;          &#x22C3;
+prod               cmex         81 213 mathop   &prod;          &#x220F;
+sum                cmex         80 229 mathop   &sum;           &#x2211;
+bigotimes          cmex         78   0 mathop   &xotime;        &#x2A02;
+bigoplus           cmex         76   0 mathop   &xoplus;        &#x2A01;
+bigodot            cmex         74   0 mathop   &xodot;         &#x2A00;
+bigsqcup           cmex         70   0 mathop   &xsqcup;        &#x2A06;
+smallint           cmsy        115   0 mathop   &int;           &#x222B;
+triangleleft       cmm          47   0 mathbin  &ltri;          &#x25C3;
+triangleright      cmm          46   0 mathbin  &rtri;          &#x25B9;
+bigtriangleup      cmsy         52   0 mathbin  &xutri;         &#x25B3;
+bigtriangledown    cmsy         53   0 mathbin  &xdtri;         &#x25BD;
+wedge              cmsy         94 217 mathbin  &and;           &#x2227;
+land               cmsy         94 217 mathbin  &xwedge;        &#x22C0;
+vee                cmsy         95 218 mathbin  &or;            &#x2228;
+lor                cmsy         95 218 mathbin  &xvee;          &#x22C1;
+cap                cmsy         92 199 mathbin  &cap;           &#x2229;
+cup                cmsy         91 200 mathbin  &cup;           &#x222A;
+ddagger            cmsy        122   0 mathbin  &Dagger;        &#x2021;
+dagger             cmsy        121   0 mathbin  &dagger;        &#x2020;
+sqcap              cmsy        117   0 mathbin  &sqcap;         &#x2293;
+sqcup              cmsy        116   0 mathbin  &sqcup;         &#x2294;
+uplus              cmsy         93   0 mathbin  &uplus;         &#x228E;
+amalg              cmsy        113   0 mathbin  &amalg;         &#x2A3F;
+diamond            cmsy        166 224 mathbin  &loz;           &#x25CA;
+bullet             cmsy        178 183 mathbin  &bull;          &#x2022;
+wr                 cmsy        111   0 mathbin  &wreath;        &#x2240;
+div                cmsy        165 184 mathbin  &divide;        &#x00F7;
+odot               cmsy        175   0 mathbin  &odot;          &#x2299;
+oslash             cmsy        174 198 mathbin  &oslash;        &#x00F8;
+otimes             cmsy        172 196 mathbin  &otimes;        &#x2297;
+ominus             cmsy        170   0 mathbin  &ominus;        &#x2296;
+oplus              cmsy        169 197 mathbin  &oplus;         &#x2295;
+mp                 cmsy        168   0 mathbin  &mnplus;        &#x2213;
+pm                 cmsy        167 177 mathbin  &plusmn;        &#x00B1;
+circ               cmsy        177   0 mathbin  &cir;           &#x25CB;
+bigcirc            cmsy        176   0 mathbin  &xcirc;         &#x25EF;
+setminus           cmsy        110   0 mathbin  &setmn;         &#x2216;
+cdot               cmsy        162 215 mathbin  &sdot;          &#x22C5;
+ast                cmsy        164   0 mathbin  &lowast;        &#x2217;
+times              cmsy        163 180 mathbin  &times;         &#x00D7;
+star               cmm          63   0 mathbin  &starf;         &#x2605;
+propto             cmsy         47 181 mathrel  &vprop;         &#x221D;
+sqsubseteq         cmsy        118   0 mathrel  &sqsube;        &#x2291;
+sqsupseteq         cmsy        119   0 mathrel  &sqsupe;        &#x2292;
+parallel           cmsy        107   0 mathrel  &spar;          &#x2225;
+mid                cmsy        106 124 mathrel  &smid;          &#x2223;
+lvert              cmsy        106 124 mathrel  &lvert;         &#x007C;        amsmath
+rvert              cmsy        106 124 mathrel  &rvert;         &#x007C;        amsmath
+dashv              cmsy         97   0 mathrel  &dashv;         &#x22A3;
+vdash              cmsy         96   0 mathrel  &vdash;         &#x22A2;
+nearrow            cmsy         37   0 mathrel  &nearr;         &#x2197;
+searrow            cmsy         38   0 mathrel  &searr;         &#x2198;
+nwarrow            cmsy         45   0 mathrel  &nwarr;         &#x2196;
+swarrow            cmsy         46   0 mathrel  &swarr;         &#x2199;
+Leftrightarrow     cmsy         44 219 mathrel  &harr;          &#x2194;
+Leftarrow          cmsy         40 220 mathrel  &lArr;          &#x21D0;
+Rightarrow         cmsy         41 222 mathrel  &rArr;          &#x21D;
+le                 cmsy        183 163 mathrel  &le;            &#x2264;
+ge                 cmsy        184 179 mathrel  &ge;            &#x2265;
+succ               cmsy        194   0 mathrel  &sc;            &#x227B;
+prec               cmsy        193   0 mathrel  &pr;            &#x227A;
+approx             cmsy        188 187 mathrel  &ap;            &#x2248;
+succeq             cmsy        186   0 mathrel  &sce;           &#x2AB0;
+preceq             cmsy        185   0 mathrel  &pre;           &#x2AAF;
+supset             cmsy        190 201 mathrel  &sup;           &#x2283;
+subset             cmsy        189 204 mathrel  &sub;           &#x2282;
+supseteq           cmsy        182 202 mathrel  &supe;          &#x2287;
+subseteq           cmsy        181 205 mathrel  &sube;          &#x2286;
+in                 cmsy         50 206 mathrel  &isin;          &#x2208;
+ni                 cmsy         51  39 mathrel  &ni;            &#x220B;
+owns               cmsy         51  39 mathrel  &ni;            &#x220B;
+gg                 cmsy        192   0 mathrel  &gg;            &#x226B;
+ll                 cmsy        191   0 mathrel  &ll;            &#x226A;
+leftrightarrow     cmsy         36 171 mathrel  &harr;          &#x2194;
+leftarrow          cmsy        195 172 mathrel  &larr;          &#x2190;
+gets               cmsy        195 172 mathrel  &larr;          &#x2190;
+rightarrow         cmsy         33 174 mathrel  &rarr;          &#x2192;
+to                 cmsy         33 174 mathrel  &rarr;          &#x2192;
+mapstochar         cmsy         55   0 mathrel  &#x2907;        &#x2907;
+sim                cmsy        187 126 mathrel  &sim;           &#x223C;
+simeq              cmsy         39   0 mathrel  &sime;          &#x2243;
+perp               cmsy         63   0 mathrel  &perp;          &#x22A5;
+equiv              cmsy        180 186 mathrel  &equiv;         &#x2261;
+asymp              cmsy        179   0 mathrel  &asymp;         &#x2248;
+smile              cmm          94   0 mathrel  &smile;         &#x2323;
+frown              cmm          95   0 mathrel  &frown;         &#x2322;
+leftharpoonup      cmm          40   0 mathrel  &lharu;         &#x21BC;
+leftharpoondown    cmm          41   0 mathrel  &lhard;         &#x21BD;
+rightharpoonup     cmm          42   0 mathrel  &rharu;         &#x21C0;
+rightharpoondown   cmm          43   0 mathrel  &rhard;         &#x21C1;
+lhook              cmm          44   0 mathrel  &hookleftarrow;     &#x21A9;
+rhook              cmm          45   0 mathrel  &hookrightarrow;    &#x21AA;
+ldotp              cmm          58   0 mathpunct  <mo>.</mo>        <mo>.</mo>
+# TODO: how to make this namespaced?
+cdotp              cmsy        162   0 mathpunct  &sdot;        &#x22C5;
+colon              cmr          58  58 mathpunct  &colon;       &#x003A;
+arrowvert          cmsy        106   0 mathord  &verbar;        &#x007C;
+Arrowvert          cmsy        107   0 mathord  &par;           &#x2225;
+Vert               cmsy        107   0 mathord  &par;           &#x2225;
+lVert              cmsy        107   0 mathord  &par;           &#x2225;        amsmath
+rVert              cmsy        107   0 mathord  &par;           &#x2225;        amsmath
+|                  cmsy        107   0 mathord  &verbar;        &#x007C;
+vert               cmsy        106   0 mathord  &verbar;        &#x007C;
+uparrow            cmsy         34 173 mathrel	&uarr;          &#x2191;
+downarrow          cmsy         35 175 mathrel  &darr;          &#x2193;
+updownarrow        cmsy        108   0 mathrel  &varr;          &#x2195;
+Uparrow            cmsy         42 221 mathrel  &uArr;          &#x21D1;
+Downarrow          cmsy         43 223 mathrel  &dArr;          &#x21D3;
+Updownarrow        cmsy        109   0 mathrel  &vArr;          &#x21D5;
+backslash          cmsy        110   0 mathord  &bsol;          &#x005C;
+rangle             cmsy        105 241 mathclose  &rang;        &#x232A;
+langle             cmsy        104 225 mathopen  &lang;         &#x2329;
+rbrace             cmsy        103   0 mathclose  &rcub;        &#x007D;
+lbrace             cmsy        102   0 mathopen  &lcub;         &#x007B;
+rceil              cmsy        101 249 mathclose  &rceil;       &#x2309;
+lceil              cmsy        100 233 mathopen  &lceil;        &#x2308;
+rfloor             cmsy         99 251 mathclose  &rfloor;      &#x230B;
+lfloor             cmsy         98 235 mathopen  &lfloor;       &#x230A;
+mathparagraph      cmsy        123   0 mathord  &para;          &#x00B6;
+mathsection        cmsy        120   0 mathord  &sect;          &#x00A7;
+mathdollar         cmr          36   0 mathord  &dollar;        &#x0024;
 
 # Generated from amsfonts.sty
 
-yen                msa          85   0 mathord  &yen;
-checkmark          msa          88   0 mathord  &check;
-circledR           msa         114   0 mathord  &reg;
-maltese            msa         122   0 mathord  &malt;
-ulcorner           msa         112   0 mathopen  &ulcorn;
-urcorner           msa         113   0 mathclose  &urcorn;
-llcorner           msa         120   0 mathopen  &dlcorn;
-lrcorner           msa         121   0 mathclose  &drcorn;
-rightleftharpoons  msa         172   0 mathrel  &lrhar;
-angle              msa          92 208 mathord  &ang;
-sqsubset           msa          64   0 mathrel  &sqsub;
-sqsupset           msa          65   0 mathrel  &sqsup;
-mho                msb         102   0 mathord  &mho;
-square             msa         164   0 mathord  &square;
-Box                msa         164   0 mathord  &square;
-lozenge            msa         167   0 mathord  &loz;
-Diamond            msa         167   0 mathord  &diam;
-vartriangleright   msa          66   0 mathrel  &rtri;
-vartriangleleft    msa          67   0 mathrel  &ltri;
-trianglerighteq    msa          68   0 mathrel  &rtrie;
-trianglelefteq     msa          69   0 mathrel  &ltrie;
-rightsquigarrow    msa         195   0 mathrel  &rarrw;
-lhd                msa          67   0 mathbin  &ltri;
-unlhd              msa          69   0 mathbin  &ltrie;
-rhd                msa          66   0 mathbin  &rtri;
-unrhd              msa          68   0 mathbin  &rtrie;
+yen                msa          85   0 mathord  &yen;           &#x00A5;
+checkmark          msa          88   0 mathord  &check;         &#x2713;
+circledR           msa         114   0 mathord  &reg;           &#x00AE;
+maltese            msa         122   0 mathord  &malt;          &#x2720;
+ulcorner           msa         112   0 mathopen  &ulcorn;       &#x231C;
+urcorner           msa         113   0 mathclose  &urcorn;      &#x231D;
+llcorner           msa         120   0 mathopen  &dlcorn;       &#x231E;
+lrcorner           msa         121   0 mathclose  &drcorn;      &#x231F;
+rightleftharpoons  msa         172   0 mathrel  &lrhar;         &#x21CB;
+angle              msa          92 208 mathord  &ang;           &#x2220;
+sqsubset           msa          64   0 mathrel  &sqsub;         &#x228F;
+sqsupset           msa          65   0 mathrel  &sqsup;         &#x2290;
+mho                msb         102   0 mathord  &mho;           &#x2127;
+square             msa         164   0 mathord  &square;        &#x25A1;
+Box                msa         164   0 mathord  &square;        &#x25A1;
+lozenge            msa         167   0 mathord  &loz;           &#x25CA;
+Diamond            msa         167   0 mathord  &diam;          &#x22C4;
+vartriangleright   msa          66   0 mathrel  &rtri;          &#x25B9;
+vartriangleleft    msa          67   0 mathrel  &ltri;          &#x25C3;
+trianglerighteq    msa          68   0 mathrel  &rtrie;         &#x22B5;
+trianglelefteq     msa          69   0 mathrel  &ltrie;         &#x22B4;
+rightsquigarrow    msa         195   0 mathrel  &rarrw;         &#x219D;
+lhd                msa          67   0 mathbin  &ltri;          &#x25C3;
+unlhd              msa          69   0 mathbin  &ltrie;         &#x22B4;
+rhd                msa          66   0 mathbin  &rtri;          &#x25B9;
+unrhd              msa          68   0 mathbin  &rtrie;         &#x22B5;
 
 # Generated from amssymb.sty
 
-boxdot             msa         161   0 mathbin  &sdotb;
-boxplus            msa         162   0 mathbin  &plusb;
-boxtimes           msa         163   0 mathbin  &timesb;
-blacksquare        msa         165   0 mathord  &block;
-centerdot          msa         166   0 mathbin  &squarf;
-blacklozenge       msa         168   0 mathord  &diams;
-circlearrowright   msa         169   0 mathrel  &orarr;
-circlearrowleft    msa         170   0 mathrel  &olarr;
-leftrightharpoons  msa         174   0 mathrel  &lrhar;
-boxminus           msa         175   0 mathbin  &minusb;
-Vdash              msa         176   0 mathrel  &Vdash;
-Vvdash             msa         177   0 mathrel  &Vvdash;
-vDash              msa         178   0 mathrel  &vDash;
-twoheadrightarrow  msa         179   0 mathrel  &Rarr;
-twoheadleftarrow   msa         180   0 mathrel  &Larr;
-leftleftarrows     msa         181   0 mathrel  &llarr;
-rightrightarrows   msa         182   0 mathrel  &rrarr;
-upuparrows         msa         183   0 mathrel  &uuarr;
-downdownarrows     msa         184   0 mathrel  &ddarr;
-upharpoonright     msa         185   0 mathrel  &uharr;
-restriction        msa         185   0 mathrel  &uharr;
-downharpoonright   msa         186   0 mathrel  &dharr;
-upharpoonleft      msa         187   0 mathrel  &uharl;
-downharpoonleft    msa         188   0 mathrel  &dharl;
-rightarrowtail     msa         189   0 mathrel  &rarrtl;
-leftarrowtail      msa         190   0 mathrel  &larrtl;
-leftrightarrows    msa         191   0 mathrel  &lrarr;
-rightleftarrows    msa         192   0 mathrel  &rlarr;
-Lsh                msa         193   0 mathrel  &lsh;
-Rsh                msa         194   0 mathrel  &rsh;
-leftrightsquigarrow msa         33   0 mathrel  &harrw;
-looparrowleft      msa          34   0 mathrel  &larrlp;
-looparrowright     msa          35   0 mathrel  &rarrlp;
-circeq             msa          36   0 mathrel  &cire;
-succsim            msa          37   0 mathrel  &scsim;
-gtrsim             msa          38   0 mathrel  &gsim;
-gtrapprox          msa          39   0 mathrel  &gap;
-multimap           msa          40   0 mathrel  &mumap;
-therefore          msa          41  92 mathrel  &there4;
-because            msa          42   0 mathrel  &becaus;
-doteqdot           msa          43   0 mathrel  &eDot;
-Doteq              msa          43   0 mathrel  &eDot;
-triangleq          msa          44   0 mathrel  &trie;
-precsim            msa          45   0 mathrel  &prsim;
-lesssim            msa          46   0 mathrel  &lsim;
-lessapprox         msa          47   0 mathrel  &lap;
-eqslantless        msa          48   0 mathrel  &els;
-eqslantgtr         msa          49   0 mathrel  &egs;
-curlyeqprec        msa          50   0 mathrel  &cuepr;
-curlyeqsucc        msa          51   0 mathrel  &cuesc;
-preccurlyeq        msa          52   0 mathrel  &prcue;
-leqq               msa          53   0 mathrel  &lE;
-leqslant           msa          54   0 mathrel  &les;
-lessgtr            msa          55   0 mathrel  &lg;
-backprime          msa          56   0 mathord  &bprime;
-risingdotseq       msa          58   0 mathrel  &erDot;
-fallingdotseq      msa          59   0 mathrel  &efDot;
-succcurlyeq        msa          60   0 mathrel  &sccue;
-geqq               msa          61   0 mathrel  &gE;
-geqslant           msa          62   0 mathrel  &ges;
-gtrless            msa          63   0 mathrel  &gl;
-bigstar            msa          70   0 mathord  &starf;
-between            msa          71   0 mathrel  &twixt;
-blacktriangledown  msa          72   0 mathord  &dtrif;
-blacktriangleright msa          73   0 mathrel  &rtrif;
-blacktriangleleft  msa          74   0 mathrel  &ltrif;
-vartriangle        msa          77   0 mathrel  &#x25b5;
-blacktriangle      msa          78   0 mathord  &utrif;
-triangledown       msa          79   0 mathord  &dtri;
-eqcirc             msa          80   0 mathrel  &ecir;
-lesseqgtr          msa          81   0 mathrel  &leg;
-gtreqless          msa          82   0 mathrel  &gel;
-lesseqqgtr         msa          83   0 mathrel  &lEg;
-gtreqqless         msa          84   0 mathrel  &gEl;
-Rrightarrow        msa          86   0 mathrel  &rAarr;
-Lleftarrow         msa          87   0 mathrel  &lAarr;
-veebar             msa          89   0 mathbin  &veebar;
-barwedge           msa          90   0 mathbin  &barwed;
-doublebarwedge     msa          91   0 mathbin  &Barwed;
-measuredangle      msa          93   0 mathord  &angmsd;
-sphericalangle     msa          94   0 mathord  &angsph;
-varpropto          msa          95   0 mathrel  &vprop;
-smallsmile         msa          96   0 mathrel  &ssmile;
-smallfrown         msa          97   0 mathrel  &sfrown;
-Subset             msa          98   0 mathrel  &Sub;
-Supset             msa          99   0 mathrel  &Sup;
-Cup                msa         100   0 mathbin  &Cup;
-doublecup          msa         100   0 mathbin  &Cup;
-Cap                msa         101   0 mathbin  &Cap;
-doublecap          msa         101   0 mathbin  &Cap;
-curlywedge         msa         102   0 mathbin  &cuwed;
-curlyvee           msa         103   0 mathbin  &cuvee;
-leftthreetimes     msa         104   0 mathbin  &lthree;
-rightthreetimes    msa         105   0 mathbin  &rthree;
-subseteqq          msa         106   0 mathrel  &subE;
-supseteqq          msa         107   0 mathrel  &supE;
-bumpeq             msa         108   0 mathrel  &bumpe;
-Bumpeq             msa         109   0 mathrel  &bump;
-lll                msa         110   0 mathrel  &Ll;
-llless             msa         110   0 mathrel  &Ll;
-ggg                msa         111   0 mathrel  &Gg;
-gggtr              msa         111   0 mathrel  &Gg;
-circledS           msa         115   0 mathord  &oS;
-pitchfork          msa         116   0 mathrel  &fork;
-dotplus            msa         117   0 mathbin  &plusdo;
-backsim            msa         118   0 mathrel  &bsim;
-backsimeq          msa         119   0 mathrel  &bsime;
-complement         msa         123   0 mathord  &comp;
-intercal           msa         124   0 mathbin  &intcal;
-circledcirc        msa         125   0 mathbin  &ocir;
-circledast         msa         126   0 mathbin  &oast;
-circleddash        msa         127   0 mathbin  &odash;
-lvertneqq          msb         161   0 mathrel  &lvnE;
-gvertneqq          msb         162   0 mathrel  &gvnE;
-nleq               msb         163   0 mathrel  &nle;
-ngeq               msb         164   0 mathrel  &nge;
-nless              msb         165   0 mathrel  &nlt;
-ngtr               msb         166   0 mathrel  &ngt;
-nprec              msb         167   0 mathrel  &npr;
-nsucc              msb         168   0 mathrel  &nsc;
-lneqq              msb         169   0 mathrel  &lnE;
-gneqq              msb         170   0 mathrel  &gnE;
-nleqslant          msb         172   0 mathrel  &nles;
-ngeqslant          msb         174   0 mathrel  &nges;
-lneq               msb         175   0 mathrel  &nle;
-gneq               msb         176   0 mathrel  &gne;
-npreceq            msb         177   0 mathrel  &nprcue;
-nsucceq            msb         178   0 mathrel  &nsccue;
-precnsim           msb         179   0 mathrel  &prnsim;
-succnsim           msb         180   0 mathrel  &scnsim;
-lnsim              msb         181   0 mathrel  &lnsim;
-gnsim              msb         182   0 mathrel  &gnsim;
-nleqq              msb         183   0 mathrel  &nlE;
-ngeqq              msb         184   0 mathrel  &ngE;
-precneqq           msb         185   0 mathrel  &prnE;
-succneqq           msb         186   0 mathrel  &scnE;
-precnapprox        msb         187   0 mathrel  &prnap;
-succnapprox        msb         188   0 mathrel  &scnap;
-lnapprox           msb         189   0 mathrel  &lnap;
-gnapprox           msb         190   0 mathrel  &gnap;
-nsim               msb         191   0 mathrel  &nsim;
-ncong              msb         192   0 mathrel  &ncong;
-diagup             msb         193   0 mathord  &#x2571;
-diagdown           msb         194   0 mathord  &#x2572;
-varsubsetneq       msb         195   0 mathrel  &vsubne;
-varsupsetneq       msb          33   0 mathrel  &vsupne;
-nsubseteqq         msb          34   0 mathrel  &nsube;
-nsupseteqq         msb          35   0 mathrel  &nsupe;
-subsetneqq         msb          36   0 mathrel  &nsubE;
-supsetneqq         msb          37   0 mathrel  &nsupE;
-varsubsetneqq      msb          38   0 mathrel  &vsubnE;
-varsupsetneqq      msb          39   0 mathrel  &vsupnE;
-subsetneq          msb          40   0 mathrel  &subne;
-supsetneq          msb          41   0 mathrel  &supne;
-nsubseteq          msb          42   0 mathrel  &nsube;
-nsupseteq          msb          43   0 mathrel  &nsupe;
-nparallel          msb          44   0 mathrel  &npar;
-nmid               msb          45   0 mathrel  &rnmid;
-nshortmid          msb          46   0 mathrel  &nsmid;
-nshortparallel     msb          47   0 mathrel  &nspar;
-nvdash             msb          48   0 mathrel  &nvdash;
-nVdash             msb          49   0 mathrel  &nVdash;
-nvDash             msb          50   0 mathrel  &nvDash;
-nVDash             msb          51   0 mathrel  &nVDash;
-ntrianglerighteq   msb          52   0 mathrel  &nrtrie;
-ntrianglelefteq    msb          53   0 mathrel  &nltrie;
-ntriangleleft      msb          54   0 mathrel  &nltri;
-ntriangleright     msb          55   0 mathrel  &nrtri;
-nleftarrow         msb          56   0 mathrel  &nlarr;
-nrightarrow        msb          57   0 mathrel  &nrarr;
-nLeftarrow         msb          58   0 mathrel  &nlArr;
-nRightarrow        msb          59   0 mathrel  &nrArr;
-nLeftrightarrow    msb          60   0 mathrel  &nhArr;
-nleftrightarrow    msb          61   0 mathrel  &nharr;
-divideontimes      msb          62   0 mathbin  &divonx;
-varnothing         msb          63   0 mathord  &emptyv;
-nexists            msb          64   0 mathord  &nexist;
-Finv               msb          96   0 mathord  &#x2132;
-Game               msb          97   0 mathord  &#x2141;
-eth                msb         103   0 mathord  &#x00F0;
-eqsim              msb         104   0 mathrel  &esim;
-beth               msb         105   0 mathord  &beth;
-gimel              msb         106   0 mathord  &gimel;
-daleth             msb         107   0 mathord  &daleth;
-lessdot            msb         108   0 mathbin  &ltdot;
-gtrdot             msb         109   0 mathbin  &gtdot;
-ltimes             msb         110   0 mathbin  &ltimes;
-rtimes             msb         111   0 mathbin  &rtimes;
-shortmid           msb         112   0 mathrel  &smid;
-shortparallel      msb         113   0 mathrel  &spar;
-smallsetminus      msb         114   0 mathbin  &ssetmn;
-thicksim           msb         115   0 mathrel  &thksim;
-thickapprox        msb         116   0 mathrel  &thkap;
-approxeq           msb         117   0 mathrel  &ape;
-succapprox         msb         118   0 mathrel  &scap;
-precapprox         msb         119   0 mathrel  &prap;
-curvearrowleft     msb         120   0 mathrel  &cularr;
-curvearrowright    msb         121   0 mathrel  &curarr;
-digamma            msb         122   0 mathord  &gammad;
-varkappa           msb         123   0 mathord  &kappav;
+boxdot             msa         161   0 mathbin  &sdotb;         &#x22A1;
+boxplus            msa         162   0 mathbin  &plusb;         &#x229E;
+boxtimes           msa         163   0 mathbin  &timesb;        &#x22A0;
+blacksquare        msa         165   0 mathord  &block;         &#x2588;
+centerdot          msa         166   0 mathbin  &squarf;        &#x25AA;
+blacklozenge       msa         168   0 mathord  &diams;         &#x2666;
+circlearrowright   msa         169   0 mathrel  &orarr;         &#x21BB;
+circlearrowleft    msa         170   0 mathrel  &olarr;         &#x21BA;
+leftrightharpoons  msa         174   0 mathrel  &lrhar;         &#x21CB;
+boxminus           msa         175   0 mathbin  &minusb;        &#x229F;
+Vdash              msa         176   0 mathrel  &Vdash;         &#x22A9;
+Vvdash             msa         177   0 mathrel  &Vvdash;        &#x22AA;
+vDash              msa         178   0 mathrel  &vDash;         &#x22A8;
+twoheadrightarrow  msa         179   0 mathrel  &Rarr;          &#x21A0;
+twoheadleftarrow   msa         180   0 mathrel  &Larr;          &#x219E;
+leftleftarrows     msa         181   0 mathrel  &llarr;         &#x21C7;
+rightrightarrows   msa         182   0 mathrel  &rrarr;         &#x21C9;
+upuparrows         msa         183   0 mathrel  &uuarr;         &#x21C8;
+downdownarrows     msa         184   0 mathrel  &ddarr;         &#x21CA;
+upharpoonright     msa         185   0 mathrel  &uharr;         &#x21BE;
+restriction        msa         185   0 mathrel  &uharr;         &#x21BE;
+downharpoonright   msa         186   0 mathrel  &dharr;         &#x21C2;
+upharpoonleft      msa         187   0 mathrel  &uharl;         &#x21BF;
+downharpoonleft    msa         188   0 mathrel  &dharl;         &#x21C3;
+rightarrowtail     msa         189   0 mathrel  &rarrtl;        &#x21A3;
+leftarrowtail      msa         190   0 mathrel  &larrtl;        &#x21A2;
+leftrightarrows    msa         191   0 mathrel  &lrarr;         &#x21C6;
+rightleftarrows    msa         192   0 mathrel  &rlarr;         &#x21C4;
+Lsh                msa         193   0 mathrel  &lsh;           &#x21B0;
+Rsh                msa         194   0 mathrel  &rsh;           &#x21B1;
+leftrightsquigarrow msa         33   0 mathrel  &harrw;         &#x21AD;
+looparrowleft      msa          34   0 mathrel  &larrlp;        &#x21AB;
+looparrowright     msa          35   0 mathrel  &rarrlp;        &#x21AC;
+circeq             msa          36   0 mathrel  &cire;          &#x2257;
+succsim            msa          37   0 mathrel  &scsim;         &#x227F;
+gtrsim             msa          38   0 mathrel  &gsim;          &#x2273;
+gtrapprox          msa          39   0 mathrel  &gap;           &#x2A86;
+multimap           msa          40   0 mathrel  &mumap;         &#x22B8;
+therefore          msa          41  92 mathrel  &there4;        &#x2234;
+because            msa          42   0 mathrel  &becaus;        &#x2235;
+doteqdot           msa          43   0 mathrel  &eDot;          &#x2251;
+Doteq              msa          43   0 mathrel  &eDot;          &#x2251;
+triangleq          msa          44   0 mathrel  &trie;          &#x225C;
+precsim            msa          45   0 mathrel  &prsim;         &#x227E;
+lesssim            msa          46   0 mathrel  &lsim;          &#x2272;
+lessapprox         msa          47   0 mathrel  &lap;           &#x2A85;
+eqslantless        msa          48   0 mathrel  &els;           &#x2A95;
+eqslantgtr         msa          49   0 mathrel  &egs;           &#x2A96;
+curlyeqprec        msa          50   0 mathrel  &cuepr;         &#x22DE;
+curlyeqsucc        msa          51   0 mathrel  &cuesc;         &#x22DF;
+preccurlyeq        msa          52   0 mathrel  &prcue;         &#x227C;
+leqq               msa          53   0 mathrel  &lE;            &#x2266;
+leqslant           msa          54   0 mathrel  &les;           &#x2A7D;
+lessgtr            msa          55   0 mathrel  &lg;            &#x2276;
+backprime          msa          56   0 mathord  &bprime;        &#x2035;
+risingdotseq       msa          58   0 mathrel  &erDot;         &#x2253;
+fallingdotseq      msa          59   0 mathrel  &efDot;         &#x2252;
+succcurlyeq        msa          60   0 mathrel  &sccue;         &#x227D;
+geqq               msa          61   0 mathrel  &gE;            &#x2267;
+geqslant           msa          62   0 mathrel  &ges;           &#x2A7E;
+gtrless            msa          63   0 mathrel  &gl;            &#x2277;
+bigstar            msa          70   0 mathord  &starf;         &#x2605;
+between            msa          71   0 mathrel  &twixt;         &#x226C;
+blacktriangledown  msa          72   0 mathord  &dtrif;         &#x25BE;
+blacktriangleright msa          73   0 mathrel  &rtrif;         &#x25B8;
+blacktriangleleft  msa          74   0 mathrel  &ltrif;         &#x25C2;
+vartriangle        msa          77   0 mathrel  &#x25b5;        &#x25B5;
+blacktriangle      msa          78   0 mathord  &utrif;         &#x25B4;
+triangledown       msa          79   0 mathord  &dtri;          &#x25BF;
+eqcirc             msa          80   0 mathrel  &ecir;          &#x2256;
+lesseqgtr          msa          81   0 mathrel  &leg;           &#x22DA;
+gtreqless          msa          82   0 mathrel  &gel;           &#x22DB;
+lesseqqgtr         msa          83   0 mathrel  &lEg;           &#x2A8B;
+gtreqqless         msa          84   0 mathrel  &gEl;           &#x2A8C;
+Rrightarrow        msa          86   0 mathrel  &rAarr;         &#x21DB;
+Lleftarrow         msa          87   0 mathrel  &lAarr;         &#x21DA;
+veebar             msa          89   0 mathbin  &veebar;        &#x22BB;
+barwedge           msa          90   0 mathbin  &barwed;        &#x2305;
+doublebarwedge     msa          91   0 mathbin  &Barwed;        &#x2306;
+measuredangle      msa          93   0 mathord  &angmsd;        &#x2221;
+sphericalangle     msa          94   0 mathord  &angsph;        &#x2222;
+varpropto          msa          95   0 mathrel  &vprop;         &#x221D;
+smallsmile         msa          96   0 mathrel  &ssmile;        &#x2323;
+smallfrown         msa          97   0 mathrel  &sfrown;        &#x2322;
+Subset             msa          98   0 mathrel  &Sub;           &#x22D0;
+Supset             msa          99   0 mathrel  &Sup;           &#x22D1;
+Cup                msa         100   0 mathbin  &Cup;           &#x22D3;
+doublecup          msa         100   0 mathbin  &Cup;           &#x22D3;
+Cap                msa         101   0 mathbin  &Cap;           &#x22D2;
+doublecap          msa         101   0 mathbin  &Cap;           &#x22D2;
+curlywedge         msa         102   0 mathbin  &cuwed;         &#x22CF;
+curlyvee           msa         103   0 mathbin  &cuvee;         &#x22CE;
+leftthreetimes     msa         104   0 mathbin  &lthree;        &#x22CB;
+rightthreetimes    msa         105   0 mathbin  &rthree;        &#x22CC;
+subseteqq          msa         106   0 mathrel  &subE;          &#x2AC5;
+supseteqq          msa         107   0 mathrel  &supE;          &#x2AC6;
+bumpeq             msa         108   0 mathrel  &bumpe;         &#x224F;
+Bumpeq             msa         109   0 mathrel  &bump;          &#x224E;
+lll                msa         110   0 mathrel  &Ll;            &#x22D8;
+llless             msa         110   0 mathrel  &Ll;            &#x22D8;
+ggg                msa         111   0 mathrel  &Gg;            &#x22D9;
+gggtr              msa         111   0 mathrel  &Gg;            &#x22D9;
+circledS           msa         115   0 mathord  &oS;            &#x24C8;
+pitchfork          msa         116   0 mathrel  &fork;          &#x22D4;
+dotplus            msa         117   0 mathbin  &plusdo;        &#x2214;
+backsim            msa         118   0 mathrel  &bsim;          &#x223D;
+backsimeq          msa         119   0 mathrel  &bsime;         &#x22CD;
+complement         msa         123   0 mathord  &comp;          &#x2201;
+intercal           msa         124   0 mathbin  &intcal;        &#x22BA;
+circledcirc        msa         125   0 mathbin  &ocir;          &#x229A;
+circledast         msa         126   0 mathbin  &oast;          &#x229B;
+circleddash        msa         127   0 mathbin  &odash;         &#x229D;
+lvertneqq          msb         161   0 mathrel  &lvnE;          &#x2268;&#xFE00;
+gvertneqq          msb         162   0 mathrel  &gvnE;          &#x2269;&#xFE00;
+nleq               msb         163   0 mathrel  &nle;           &#x2270;
+ngeq               msb         164   0 mathrel  &nge;           &#x2271;
+nless              msb         165   0 mathrel  &nlt;           &#x226E;
+ngtr               msb         166   0 mathrel  &ngt;           &#x226F;
+nprec              msb         167   0 mathrel  &npr;           &#x2280;
+nsucc              msb         168   0 mathrel  &nsc;           &#x2281;
+lneqq              msb         169   0 mathrel  &lnE;           &#x2268;
+gneqq              msb         170   0 mathrel  &gnE;           &#x2269;
+nleqslant          msb         172   0 mathrel  &nles;          &#x2A7D;&#x338;
+ngeqslant          msb         174   0 mathrel  &nges;          &#x2A7E;&#x338;
+lneq               msb         175   0 mathrel  &nle;           &#x2270;
+gneq               msb         176   0 mathrel  &gne;           &#x2A88;
+npreceq            msb         177   0 mathrel  &nprcue;        &#x22E0;
+nsucceq            msb         178   0 mathrel  &nsccue;        &#x22E1;
+precnsim           msb         179   0 mathrel  &prnsim;        &#x22E8;
+succnsim           msb         180   0 mathrel  &scnsim;        &#x22E9;
+lnsim              msb         181   0 mathrel  &lnsim;         &#x22E6;
+gnsim              msb         182   0 mathrel  &gnsim;         &#x22E7;
+nleqq              msb         183   0 mathrel  &nlE;           &#x2266;&#x0338;
+ngeqq              msb         184   0 mathrel  &ngE;           &#x2267;&#x0338;
+precneqq           msb         185   0 mathrel  &prnE;          &#x2AB5;
+succneqq           msb         186   0 mathrel  &scnE;          &#x2AB6;
+precnapprox        msb         187   0 mathrel  &prnap;         &#x2AB9;
+succnapprox        msb         188   0 mathrel  &scnap;         &#x2ABA;
+lnapprox           msb         189   0 mathrel  &lnap;          &#x2A89;
+gnapprox           msb         190   0 mathrel  &gnap;          &#x2A8A;
+nsim               msb         191   0 mathrel  &nsim;          &#x2241;
+ncong              msb         192   0 mathrel  &ncong;         &#x2247;
+diagup             msb         193   0 mathord  &#x2571;        &#x2571;
+diagdown           msb         194   0 mathord  &#x2572;        &#x2572;
+varsubsetneq       msb         195   0 mathrel  &vsubne;        &#x228A;&#xFE00;
+varsupsetneq       msb          33   0 mathrel  &vsupne;        &#x228B;&#xFE00;
+nsubseteqq         msb          34   0 mathrel  &nsube;         &#x2288;
+nsupseteqq         msb          35   0 mathrel  &nsupe;         &#x2289;
+subsetneqq         msb          36   0 mathrel  &nsubE;         &#x2AC5;&#0338;
+supsetneqq         msb          37   0 mathrel  &nsupE;         &#x2AC6;&#0338;
+varsubsetneqq      msb          38   0 mathrel  &vsubnE;        &#x2ACB;&#0338;
+varsupsetneqq      msb          39   0 mathrel  &vsupnE;        &#x2ACC;&#0338;
+subsetneq          msb          40   0 mathrel  &subne;         &#x228A;
+supsetneq          msb          41   0 mathrel  &supne;         &#x228B;
+nsubseteq          msb          42   0 mathrel  &nsube;         &#x2288;
+nsupseteq          msb          43   0 mathrel  &nsupe;         &#x2289;
+nparallel          msb          44   0 mathrel  &npar;          &#x2226;
+nmid               msb          45   0 mathrel  &rnmid;         &#x2AEE;
+nshortmid          msb          46   0 mathrel  &nsmid;         &#x2224;
+nshortparallel     msb          47   0 mathrel  &nspar;         &#x2226;
+nvdash             msb          48   0 mathrel  &nvdash;        &#x22AC;
+nVdash             msb          49   0 mathrel  &nVdash;        &#x22AE;
+nvDash             msb          50   0 mathrel  &nvDash;        &#x22AD;
+nVDash             msb          51   0 mathrel  &nVDash;        &#x22AF;
+ntrianglerighteq   msb          52   0 mathrel  &nrtrie;        &#x22ED;
+ntrianglelefteq    msb          53   0 mathrel  &nltrie;        &#x22EC;
+ntriangleleft      msb          54   0 mathrel  &nltri;         &#x22EA;
+ntriangleright     msb          55   0 mathrel  &nrtri;         &#x22EB;
+nleftarrow         msb          56   0 mathrel  &nlarr;         &#x219A;
+nrightarrow        msb          57   0 mathrel  &nrarr;         &#x219B;
+nLeftarrow         msb          58   0 mathrel  &nlArr;         &#x21CD;
+nRightarrow        msb          59   0 mathrel  &nrArr;         &#x21CF;
+nLeftrightarrow    msb          60   0 mathrel  &nhArr;         &#x21CE;
+nleftrightarrow    msb          61   0 mathrel  &nharr;         &#x21AE;
+divideontimes      msb          62   0 mathbin  &divonx;        &#x22C7;
+varnothing         msb          63   0 mathord  &emptyv;        &#x2205;
+nexists            msb          64   0 mathord  &nexist;        &#x2204;
+Finv               msb          96   0 mathord  &#x2132;        &#x2132;
+Game               msb          97   0 mathord  &#x2141;        &#x2141;
+eth                msb         103   0 mathord  &#x00F0;        &#x00F0;
+eqsim              msb         104   0 mathrel  &esim;          &#x2242;
+beth               msb         105   0 mathord  &beth;          &#x2136;
+gimel              msb         106   0 mathord  &gimel;         &#x2137;
+daleth             msb         107   0 mathord  &daleth;        &#x2138;
+lessdot            msb         108   0 mathbin  &ltdot;         &#x22D6;
+gtrdot             msb         109   0 mathbin  &gtdot;         &#x22D7;
+ltimes             msb         110   0 mathbin  &ltimes;        &#x22C9;
+rtimes             msb         111   0 mathbin  &rtimes;        &#x22CA;
+shortmid           msb         112   0 mathrel  &smid;          &#x2223;
+shortparallel      msb         113   0 mathrel  &spar;          &#x2225;
+smallsetminus      msb         114   0 mathbin  &ssetmn;        &#x2216;
+thicksim           msb         115   0 mathrel  &thksim;        &#x223C;
+thickapprox        msb         116   0 mathrel  &thkap;         &#x2248;
+approxeq           msb         117   0 mathrel  &ape;           &#x224A;
+succapprox         msb         118   0 mathrel  &scap;          &#x2AB8;
+precapprox         msb         119   0 mathrel  &prap;          &#x2AB7;
+curvearrowleft     msb         120   0 mathrel  &cularr;        &#x21B6;
+curvearrowright    msb         121   0 mathrel  &curarr;        &#x21B7;
+digamma            msb         122   0 mathord  &gammad;        &#x03DD;
+varkappa           msb         123   0 mathord  &kappav;        &#x03F0;
 # Note: Other blackboard symbols are in the same unicode range
-Bbbk               msb         124   0 mathord  &#x1d55c;
-hslash             msb         125   0 mathord  &plankv;
-hbar               msb         126   0 mathord  &planck;
-backepsilon        msb         127   0 mathrel  &bepsi;
+Bbbk               msb         124   0 mathord  &#x1d55c;       &#x1d55c;
+hslash             msb         125   0 mathord  &plankv;        &#x210F;
+hbar               msb         126   0 mathord  &planck;        &#x210F;
+backepsilon        msb         127   0 mathrel  &bepsi;         &#x03F6;
 
-lyxbar             cmsy        161   0 mathrel   &mdash;  hiddensymbol
-lyxminus           cmsy        161   0 mathbin   &mdash;  hiddensymbol
-lyxplus            cmr          43  43 mathbin   +        hiddensymbol
-lyxeq              cmr          61  61 mathord   =        hiddensymbol
-lyxeqrel           cmr          61  61 mathrel   =        hiddensymbol
-lyxlt              cmm          60  60 mathrel   &lt;     hiddensymbol
-lyxgt              cmm          62  62 mathrel   &gt;     hiddensymbol
-lyxdabar           msa          57   0 mathord   &ndash;  hiddensymbol
-lyxright           msa          75   0 mathord   &rarr;   hiddensymbol
-lyxleft            msa          76   0 mathord   &larr;   hiddensymbol
+lyxbar             cmsy        161   0 mathrel   &mdash;        &#x2014;        hiddensymbol
+lyxminus           cmsy        161   0 mathbin   &mdash;        &#x2014;        hiddensymbol
+lyxplus            cmr          43  43 mathbin   +              +               hiddensymbol
+lyxeq              cmr          61  61 mathord   =              =               hiddensymbol
+lyxeqrel           cmr          61  61 mathrel   =              =               hiddensymbol
+lyxlt              cmm          60  60 mathrel   &lt;           &lt;            hiddensymbol
+lyxgt              cmm          62  62 mathrel   &gt;           &gt;            hiddensymbol
+lyxdabar           msa          57   0 mathord   &ndash;        &#x2013;        hiddensymbol
+lyxright           msa          75   0 mathord   &rarr;         &#x2192;        hiddensymbol
+lyxleft            msa          76   0 mathord   &larr;         &#x2190;        hiddensymbol
 
-male               wasy          26  0 x        &male;
-female             wasy          25  0 x        &female;
-currency           wasy          27  0 textmode &curren; wasysym,amstext,lyxmathsym # works in text mode only (produces \oe in math mode)
-phone              wasy          7   0 textmode &phone;  wasysym,amstext,lyxmathsym # works in text mode only (produces \Upsilon in math mode)
-recorder           wasy          6   0 textmode &telrec; wasysym,amstext,lyxmathsym # works in text mode only (produces \Sigma in math mode)
-clock              wasy          28  0 textmode &clock;  wasysym,amstext,lyxmathsym # works in text mode only (produces \o in math mode)
-lightning          wasy          18  0 textmode &#x2607; wasysym,amstext,lyxmathsym # works in text mode only (produces ` in math mode)
+male               wasy          26  0 x        &male;          &#x2642;
+female             wasy          25  0 x        &female;        &#x2640;
+currency           wasy          27  0 textmode &curren;        &#x00A4;        wasysym,amstext,lyxmathsym # works in text mode only (produces \oe in math mode)
+phone              wasy          7   0 textmode &phone;         &#x260E;        wasysym,amstext,lyxmathsym # works in text mode only (produces \Upsilon in math mode)
+recorder           wasy          6   0 textmode &telrec;        &#x2315;        wasysym,amstext,lyxmathsym # works in text mode only (produces \Sigma in math mode)
+clock              wasy          28  0 textmode &clock;         &#x23F2;        wasysym,amstext,lyxmathsym # works in text mode only (produces \o in math mode)
+lightning          wasy          18  0 textmode &#x2607;        &#x2607;        wasysym,amstext,lyxmathsym # works in text mode only (produces ` in math mode)
 # qt does not display characters at the \t position (0x09)
-pointer            wasy          170   0 textmode x        wasysym,amstext,lyxmathsym # works in text mode only (produces \Psi in math mode)
-RIGHTarrow         wasy          17  0 textmode &#x25B6; wasysym,amstext,lyxmathsym # works in text mode only (produces \jmath in math mode)
-LEFTarrow          wasy          16  0 textmode &#x25C0; wasysym,amstext,lyxmathsym # works in text mode only (produces \imath in math mode)
-UParrow            wasy          75  0 textmode &#x25B2; wasysym,amstext,lyxmathsym # works in text mode only (produces K in math mode)
-DOWNarrow          wasy          76  0 textmode &#x25BC; wasysym,amstext,lyxmathsym # works in text mode only (produces L in math mode)
-AC                 wasy          58  0 textmode &#x223F; wasysym,amstext,lyxmathsym # works in text mode only
+pointer            wasy          170  0 textmode &#x21E8;       &#x21E8;        wasysym,amstext,lyxmathsym # works in text mode only (produces \Psi in math mode)
+RIGHTarrow         wasy          17  0 textmode &#x25B6;        &#x25B6;        wasysym,amstext,lyxmathsym # works in text mode only (produces \jmath in math mode)
+LEFTarrow          wasy          16  0 textmode &#x25C0;        &#x25C0;        wasysym,amstext,lyxmathsym # works in text mode only (produces \imath in math mode)
+UParrow            wasy          75  0 textmode &#x25B2;        &#x25B2;        wasysym,amstext,lyxmathsym # works in text mode only (produces K in math mode)
+DOWNarrow          wasy          76  0 textmode &#x25BC;        &#x25BC;        wasysym,amstext,lyxmathsym # works in text mode only (produces L in math mode)
+AC                 wasy          58  0 textmode &#x223F;        &#x223F;        wasysym,amstext,lyxmathsym # works in text mode only
 \def\HF{\approx}                                         wasysym
-VHF                wasy          64  0 x        &#x224B; # triple tilde
-Square             wasy          50  0 x        &square;
+VHF                wasy          64  0 x        &#x224B;        &#x224B;        # triple tilde
+Square             wasy          50  0 x        &square;        &#x25A1;
 \def\CheckedBox{\Square\kern-13.4mu\checked}              wasysym
-XBox               wasy          52  0 x        &timesb;
-hexagon            wasy          55  0 x        &#x2b21;
-pentagon           wasy          68  0 x        &#x2b20;
-octagon            wasy          56  0 x        x
-varhexagon         wasy          57  0 x        &#x2b21;
-hexstar            wasy          65  0 x        &sext;
-varhexstar         wasy          66  0 x        &sext;
-davidsstar         wasy          67  0 x        &#x2721;
-diameter           wasy          31  0 x        &#x2300;
-invdiameter        wasy          21  0 x        x	 # 2205 EMPTY SET and 2300 DIAMETER SIGN are similar but not quite right
-varangle           wasy          30  0 x        &angsph;
-wasylozenge        wasy          53  0 x        &#x2311;
-kreuz              wasy          54  0 x        &#x2720;
-smiley             wasy          44  0 x        &#x263A;
-frownie            wasy          47  0 x        &#x2639;
-blacksmiley        wasy          45  0 x        &#x263B;
-sun                wasy          46  0 x        &#x263C;
-checked            wasy          8   0 x        &#x2713;
-bell               wasy          171 0 x        &#x237E;
-eighthnote         wasy          11  0 x        &#x266E;
-quarternote        wasy          172 0 x        &#x2669;
-halfnote           wasy          174 0 x        &#x1d15e;
-fullnote           wasy          14  0 x        &#x1d15d;
-twonotes           wasy          15  0 x        &#x266B;
-brokenvert         wasy          124 0 x        &brvbar;
-ataribox           wasy          109 0 x        x
-wasytherefore      wasy          5   0 x        &there4;
-Circle             wasy          35  0 x        &cir;
-CIRCLE             wasy          32  0 x        &#x25cF;
-Leftcircle         wasy          73  0 x        x
-LEFTCIRCLE         wasy          71  0 x        &#x25D6;
-Rightcircle        wasy          74  0 x        x
-RIGHTCIRCLE        wasy          72  0 x        &#x25D7;
+XBox               wasy          52  0 x        &timesb;        &#x22A0;
+hexagon            wasy          55  0 x        &#x2b21;        &#x2B21;
+pentagon           wasy          68  0 x        &#x2b20;        &#x2B20;
+octagon            wasy          56  0 x        x               x
+varhexagon         wasy          57  0 x        &#x2b21;        &#x2B21;
+hexstar            wasy          65  0 x        &sext;          &#x2736;
+varhexstar         wasy          66  0 x        &sext;          &#x2736;
+davidsstar         wasy          67  0 x        &#x2721;        &#x2721;
+diameter           wasy          31  0 x        &#x2300;        &#x2300;
+invdiameter        wasy          21  0 x        x	            x               # 2205 EMPTY SET and 2300 DIAMETER SIGN are similar but not quite right
+varangle           wasy          30  0 x        &angsph;        &#x2222;
+wasylozenge        wasy          53  0 x        &#x2311;        &#x2311;
+kreuz              wasy          54  0 x        &#x2720;        &#x2720;
+smiley             wasy          44  0 x        &#x263A;        &#x263A;
+frownie            wasy          47  0 x        &#x2639;        &#x2639;
+blacksmiley        wasy          45  0 x        &#x263B;        &#x263B;
+sun                wasy          46  0 x        &#x263C;        &#x263C;
+checked            wasy          8   0 x        &#x2713;        &#x2713;
+bell               wasy          171 0 x        &#x237E;        &#x237E;
+eighthnote         wasy          11  0 x        &#x266E;        &#x266E;
+quarternote        wasy          172 0 x        &#x2669;        &#x2669;
+halfnote           wasy          174 0 x        &#x1d15e;       &#x1D15E;
+fullnote           wasy          14  0 x        &#x1d15d;       &#x1D15D;
+twonotes           wasy          15  0 x        &#x266B;        &#x266B;
+brokenvert         wasy          124 0 x        &brvbar;        &#x00A6;
+ataribox           wasy          109 0 x        x               x
+wasytherefore      wasy          5   0 x        &there4;        &#x2234;
+Circle             wasy          35  0 x        &cir;           &#x25CB;
+CIRCLE             wasy          32  0 x        &#x25cF;        &#x25CF;
+Leftcircle         wasy          73  0 x        x               x
+LEFTCIRCLE         wasy          71  0 x        &#x25D6;        &#x25D6;
+Rightcircle        wasy          74  0 x        x               x
+RIGHTCIRCLE        wasy          72  0 x        &#x25D7;        &#x25D7;
 \def\LEFTcircle{\LEFTCIRCLE\kern-13.4mu\Circle}             wasysym
 \def\RIGHTcircle{\RIGHTCIRCLE\kern-13.4mu\Circle}           wasysym
 
 # Defined by amsmath.sty
 
-varGamma           cmm         161  0  mathord  x  amsmath
-varDelta           cmm         162  0  mathord  x  amsmath
-varTheta           cmm         163  0  mathord  x  amsmath
-varLambda          cmm         164  0  mathord  x  amsmath
-varXi              cmm         165  0  mathord  x  amsmath
-varPi              cmm         166  0  mathord  x  amsmath
-varSigma           cmm         167  0  mathord  x  amsmath
-varUpsilon         cmm         168  0  mathord  x  amsmath
-varPhi             cmm         169  0  mathord  x  amsmath
-varPsi             cmm         170  0  mathord  x  amsmath
-varOmega           cmm         172  0  mathord  x  amsmath
+varGamma           cmm         161  0  mathord  &#x1D6E4;       &#x1D6E4;       amsmath
+varDelta           cmm         162  0  mathord  &#x1D6E5;       &#x1D6E5;       amsmath
+varTheta           cmm         163  0  mathord  &#x1D6E9;       &#x1D6E9;       amsmath
+varLambda          cmm         164  0  mathord  &#x1D6EC;       &#x1D6EC;       amsmath
+varXi              cmm         165  0  mathord  &#x1D6EF;       &#x1D6EF;       amsmath
+varPi              cmm         166  0  mathord  &#x1D6F1;       &#x1D6F1;       amsmath
+varSigma           cmm         167  0  mathord  &#x1D6F4;       &#x1D6F4;       amsmath
+varUpsilon         cmm         168  0  mathord  &#x1D6F6;       &#x1D6F6;       amsmath
+varPhi             cmm         169  0  mathord  &#x1D6F7;       &#x1D6F7;       amsmath
+varPsi             cmm         170  0  mathord  &#x1D6F9;       &#x1D6F9;       amsmath
+varOmega           cmm         172  0  mathord  &#x1D6FA;       &#x1D6FA;       amsmath
 
 #
 # wasy astronomy
 #
 
-vernal             wasy          23  0 x        &#x2648;
-ascnode            wasy          19  0 x        &#x260A;
-descnode           wasy          20  0 x        &#x260B;
-fullmoon           wasy          35  0 x        &circ;
-newmoon            wasy          32  0 x        &#x25CF;
-leftmoon           wasy          36  0 x        &#x263E;
-rightmoon          wasy          37  0 x        &#x263D;
-astrosun           cmsy         175  0 mathbin  &#x2609; wasysym
-mercury            wasy          39  0 x        &#x263F;
-venus              wasy          25  0 x        &#x2640;
-earth              wasy          38  0 x        &#x2641;
-mars               wasy          26  0 x        &#x2642;
-jupiter            wasy          88  0 x        &#x2643;
-saturn             wasy          89  0 x        &#x2644;
-uranus             wasy          90  0 x        &#x2645;
-neptune            wasy          91  0 x        &#x2646;
-pluto              wasy          92  0 x        &#x2647;
+vernal             wasy          23  0 x        &#x2648;        &#x2648;
+ascnode            wasy          19  0 x        &#x260A;        &#x260A;
+descnode           wasy          20  0 x        &#x260B;        &#x260B;
+fullmoon           wasy          35  0 x        &circ;          &#x25CB;
+newmoon            wasy          32  0 x        &#x25CF;        &#x25CF;
+leftmoon           wasy          36  0 x        &#x263E;        &#x263E;
+rightmoon          wasy          37  0 x        &#x263D;        &#x263D;
+astrosun           cmsy         175  0 mathbin  &#x2609;        &#x2609;        wasysym
+mercury            wasy          39  0 x        &#x263F;        &#x263F;
+venus              wasy          25  0 x        &#x2640;        &#x2640;
+earth              wasy          38  0 x        &#x2641;        &#x2641;
+mars               wasy          26  0 x        &#x2642;        &#x2642;
+jupiter            wasy          88  0 x        &#x2643;        &#x2643;
+saturn             wasy          89  0 x        &#x2644;        &#x2644;
+uranus             wasy          90  0 x        &#x2645;        &#x2645;
+neptune            wasy          91  0 x        &#x2646;        &#x2646;
+pluto              wasy          92  0 x        &#x2647;        &#x2647;
 
 #
 # wasy zodiac
 #
-aries              wasy          23  0 x        &#x2648;
-taurus             wasy          93  0 x        &#x2649;
-gemini             wasy          94  0 x        &#x264A;
-cancer             wasy          95  0 x        &#x264B;
-leo                wasy          19  0 x        &#x264C;
-virgo              wasy          96  0 x        &#x264D;
-libra              wasy          97  0 x        &#x264E;
-scorpio            wasy          98  0 x        &#x264F;
-sagittarius        wasy          99  0 x        &#x2650;
-capricornus        wasy          100 0 x        &#x2651;
-aquarius           wasy          101 0 x        &#x2652;
-pisces             wasy          102 0 x        &#x2653;
-conjunction        wasy          86  0 textmode &#x260C; wasysym,amstext,lyxmathsym # works in text mode only (produces V in math mode)
-opposition         wasy          87  0 textmode &#x260D; wasysym,amstext,lyxmathsym # works in text mode only (produces W in math mode)
+aries              wasy          23  0 x        &#x2648;        &#x2648;
+taurus             wasy          93  0 x        &#x2649;        &#x2649;
+gemini             wasy          94  0 x        &#x264A;        &#x264A;
+cancer             wasy          95  0 x        &#x264B;        &#x264B;
+leo                wasy          19  0 x        &#x264C;        &#x264C;
+virgo              wasy          96  0 x        &#x264D;        &#x264D;
+libra              wasy          97  0 x        &#x264E;        &#x264E;
+scorpio            wasy          98  0 x        &#x264F;        &#x264F;
+sagittarius        wasy          99  0 x        &#x2650;        &#x2650;
+capricornus        wasy          100 0 x        &#x2651;        &#x2651;
+aquarius           wasy          101 0 x        &#x2652;        &#x2652;
+pisces             wasy          102 0 x        &#x2653;        &#x2653;
+conjunction        wasy          86  0 textmode &#x260C;        &#x260C;        wasysym,amstext,lyxmathsym # works in text mode only (produces V in math mode)
+opposition         wasy          87  0 textmode &#x260D;        &#x260D;        wasysym,amstext,lyxmathsym # works in text mode only (produces W in math mode)
 # APL characters
-APLstar            wasy          69  0 x        &#x235F;
-APLlog             wasy          22  0 x        x
-APLbox             wasy          126 0 x        &#x2395;
-APLup              wasy          0   0 x        x
-APLdown            wasy          70  0 x        x
-APLinput           wasy          125 0 x        x
-APLcomment         wasy          127 0 x        x
+APLstar            wasy          69  0 x        x               x
+APLlog             wasy          22  0 x        &#x235F;        &#x235F;
+APLbox             wasy          126 0 x        &#x2395;        &#x2395;
+APLup              wasy          0   0 x        x               x
+APLdown            wasy          70  0 x        x               x
+APLinput           wasy          125 0 x        x               x
+APLcomment         wasy          127 0 x        x               x
 \def\APLinv{\mathord{\div\kern-13.9mu\APLbox}}  wasysym
-APLuparrowbox      wasy         110  0 x        &#x2350;
-APLdownarrowbox    wasy         111  0 x        &#x2357;
-APLleftarrowbox    wasy         112  0 x        &#x2347;
-APLrightarrowbox   wasy         113  0 x        &#x2348;
+APLuparrowbox      wasy         110  0 x        &#x2350;        &#x2350;
+APLdownarrowbox    wasy         111  0 x        &#x2357;        &#x2357;
+APLleftarrowbox    wasy         112  0 x        &#x2347;        &#x2347;
+APLrightarrowbox   wasy         113  0 x        &#x2348;        &#x2348;
 
 # math characters
-Bowtie             wasy          49  0 x        &#x22C8;
-leftturn           wasy          34  0 x        &#x27F2;
-rightturn          wasy          33  0 x        &#x27F3;
+Bowtie             wasy          49  0 x        &#x22C8;        &#x22C8;
+leftturn           wasy          34  0 x        &#x27F2;        &#x27F2;
+rightturn          wasy          33  0 x        &#x27F3;        &#x27F3;
 # diagrams
 \def\photon{\AC\AC\AC\AC}     wasysym
-lyxgluonelement    wasy          80  0 x        x        hiddensymbol
-lyxgluonbelement   wasy          81  0 x        x        hiddensymbol
-lyxgluoneelement   wasy          82  0 x        x        hiddensymbol
+lyxgluonelement    wasy          80  0 x        x               x               hiddensymbol
+lyxgluonbelement   wasy          81  0 x        x               x               hiddensymbol
+lyxgluoneelement   wasy          82  0 x        x               x               hiddensymbol
 \def\gluon{\lyxgluonbelement\lyxgluonelement\lyxgluonelement\lyxgluonelement\lyxgluonelement\lyxgluonelement\lyxgluonelement\lyxgluoneelement} wasysym
 # special characters
-cent               wasy         103   0 x        &#00A2;
-permil             wasy         104   0 x        &#x2030;
-agemO              wasy          48   0 textmode &mho;    wasysym,amstext,lyxmathsym # works in text mode only (produces 0 in math mode)
-thorn              wasy         105   0 textmode &#x00FE; wasysym,amstext,lyxmathsym # works in text mode only (produces i in math mode)
-Thorn              wasy         106   0 textmode &#x00DE; wasysym,amstext,lyxmathsym # works in text mode only (produces j in math mode)
-openo              wasy         108   0 textmode &#x0254; wasysym,amstext,lyxmathsym # works in text mode only (produces l in math mode)
-inve               wasy          85   0 textmode &#x0259; wasysym,amstext,lyxmathsym # works in text mode only (produces U in math mode)
+cent               wasy         103   0 x        &#00A2;        &#00A2;
+permil             wasy         104   0 x        &#x2030;       &#x2030;
+agemO              wasy          48   0 textmode &mho;          &#x2127;        wasysym,amstext,lyxmathsym # works in text mode only (produces 0 in math mode)
+thorn              wasy         105   0 textmode &#x00FE;       &#x00FE;        wasysym,amstext,lyxmathsym # works in text mode only (produces i in math mode)
+Thorn              wasy         106   0 textmode &#x00DE;       &#x00DE;        wasysym,amstext,lyxmathsym # works in text mode only (produces j in math mode)
+openo              wasy         108   0 textmode &#x0254;       &#x0254;        wasysym,amstext,lyxmathsym # works in text mode only (produces l in math mode)
+inve               wasy          85   0 textmode &#x0259;       &#x0259;        wasysym,amstext,lyxmathsym # works in text mode only (produces U in math mode)
 
-#mho               wasy          48    0  mathord &mho;    wasysym # already in amsfonts
-#Join              wasy          49    0  mathrel x        wasysym # already in amsfonts
-#Box               wasy          50    0  mathord &square; wasysym # already in amsfonts
-#Diamond           wasy          51    0  mathord &diam;   wasysym # already in amsfonts
-leadsto            wasy          59    0  mathrel &rarrc;
-#sqsubset          wasy          60    0  mathrel &sqsub;  wasysym # already in amsfonts
-#sqsupset          wasy          61    0  mathrel &sqsup;  wasysym # already in amsfonts
-#lhd               wasy           1    0  mathbin &ltri;   wasysym # already in amsfonts
-#unlhd             wasy           2    0  mathbin &ltrie;  wasysym # already in amsfonts
-LHD                wasy          16    0  mathbin &#x2C50;
-#rhd               wasy           3    0  mathbin &rtri;   wasysym # already in amsfonts
-#unrhd             wasy           4    0  mathbin &rtrie;  wasysym # already in amsfonts
-RHD                wasy          17    0  mathbin &#x25B6;
-apprle             wasy          62    0  mathrel &lsim;
-apprge             wasy          63    0  mathrel &gsim;
-wasypropto         wasy          29    0  mathrel &prop;
-invneg             wasy          24    0  mathrel &#x2310;
-ocircle            wasy          35    0  mathbin &#x229A;
-logof              wasy          22    0  mathrel x
-varint             wasy         114    0  mathop  &int;
-varoint            wasy         117    0  mathop  &int;
+#mho               wasy          48    0  mathord &mho;         &#x2127;        wasysym # already in amsfonts
+#Join              wasy          49    0  mathrel &#x22C8;      &#x22C8;        wasysym # already in amsfonts
+#Box               wasy          50    0  mathord &square;      &#x25A1;        wasysym # already in amsfonts
+#Diamond           wasy          51    0  mathord &diam;        &#x22C4;        wasysym # already in amsfonts
+leadsto            wasy          59    0  mathrel &rarrc;       &#x2933;
+#sqsubset          wasy          60    0  mathrel &sqsub;       &#x228F;        wasysym # already in amsfonts
+#sqsupset          wasy          61    0  mathrel &sqsup;       &#x2290;        wasysym # already in amsfonts
+#lhd               wasy           1    0  mathbin &ltri;        &#x25C3;        wasysym # already in amsfonts
+#unlhd             wasy           2    0  mathbin &ltrie;       &#x22B4;        wasysym # already in amsfonts
+LHD                wasy          16    0  mathbin &#x2C50;      &#x2C50;
+#rhd               wasy           3    0  mathbin &rtri;        &#x25B9;        wasysym # already in amsfonts
+#unrhd             wasy           4    0  mathbin &rtrie;       &#x22B5;        wasysym # already in amsfonts
+RHD                wasy          17    0  mathbin &#x25B6;      &#x25B6;
+apprle             wasy          62    0  mathrel &lsim;        &#x2272;
+apprge             wasy          63    0  mathrel &gsim;        &#x2273;
+wasypropto         wasy          29    0  mathrel &prop;        &#x221D;
+invneg             wasy          24    0  mathrel &#x2310;      &#x2310;
+ocircle            wasy          35    0  mathbin &#x229A;      &#x229A;
+logof              wasy          22    0  mathrel x             x
+varint             wasy         114    0  mathop  &int;         &#x222B;
+varoint            wasy         117    0  mathop  &int;         &#x222B;
 
 # Generated from stmaryrd.sty
 
-shortleftarrow     stmry   0   0 mathrel    x  stmaryrd
-shortrightarrow    stmry   1   0 mathrel    x  stmaryrd
-shortuparrow       stmry   2   0 mathrel    x  stmaryrd
-shortdownarrow     stmry   3   0 mathrel    x  stmaryrd
-Yup                stmry   4   0 mathbin    x  stmaryrd
-Ydown              stmry   5   0 mathbin    x  stmaryrd
-Yleft              stmry   6   0 mathbin    x  stmaryrd
-Yright             stmry   7   0 mathbin    x  stmaryrd
-varcurlyvee        stmry   8   0 mathbin    x  stmaryrd
+shortleftarrow     stmry   0   0 mathrel    x  x  stmaryrd
+shortrightarrow    stmry   1   0 mathrel    x  x  stmaryrd
+shortuparrow       stmry   2   0 mathrel    x  x  stmaryrd
+shortdownarrow     stmry   3   0 mathrel    x  x  stmaryrd
+Yup                stmry   4   0 mathbin    x  x  stmaryrd
+Ydown              stmry   5   0 mathbin    x  x  stmaryrd
+Yleft              stmry   6   0 mathbin    x  x  stmaryrd
+Yright             stmry   7   0 mathbin    x  x  stmaryrd
+varcurlyvee        stmry   8   0 mathbin    x  x  stmaryrd
 # qt4 does not display characters at the \t position (0x09)
 # therefore our .ttf font contains a copy at 170 (0xaa)
-#varcurlywedge      stmry   9   0 mathbin    x  stmaryrd
+#varcurlywedge      stmry   9   0 mathbin    x  x  stmaryrd
 #10,12,13 codepoints broken in qt5
-varcurlywedge      stmry 170   0 mathbin    x  stmaryrd
-minuso             stmry 171   0 mathbin    x  stmaryrd
-baro               stmry  11   0 mathbin    x  stmaryrd
-sslash             stmry 172   0 mathbin    x  stmaryrd
+varcurlywedge      stmry 170   0 mathbin    x  x  stmaryrd
+minuso             stmry 171   0 mathbin    x  x  stmaryrd
+baro               stmry  11   0 mathbin    x  x  stmaryrd
+sslash             stmry 172   0 mathbin    x  x  stmaryrd
 #for whatever reason qt5 refuses to display anything at position 173
-bbslash            stmry 174   0 mathbin    x  stmaryrd
-moo                stmry  14   0 mathbin    x  stmaryrd
-varotimes          stmry  15   0 mathbin    x  stmaryrd
-varoast            stmry  16   0 mathbin    x  stmaryrd
-varobar            stmry  17   0 mathbin    x  stmaryrd
-varodot            stmry  18   0 mathbin    x  stmaryrd
-varoslash          stmry  19   0 mathbin    x  stmaryrd
-varobslash         stmry  20   0 mathbin    x  stmaryrd
-varocircle         stmry  21   0 mathbin    x  stmaryrd
-varoplus           stmry  22   0 mathbin    x  stmaryrd
-varominus          stmry  23   0 mathbin    x  stmaryrd
-boxast             stmry  24   0 mathbin    x  stmaryrd
-boxbar             stmry  25   0 mathbin    x  stmaryrd
-#boxdot             stmry  26   0 mathbin    x  stmaryrd # already in amssymb
-boxslash           stmry  27   0 mathbin    x  stmaryrd
-boxbslash          stmry  28   0 mathbin    x  stmaryrd
-boxcircle          stmry  29   0 mathbin    x  stmaryrd
-boxbox             stmry  30   0 mathbin    x  stmaryrd
-boxempty           stmry  31   0 mathbin    x  stmaryrd
-#lightning          stmry  32   0 mathord    x  stmaryrd # already in wasy
+bbslash            stmry 174   0 mathbin    x  x  stmaryrd
+moo                stmry  14   0 mathbin    x  x  stmaryrd
+varotimes          stmry  15   0 mathbin    x  x  stmaryrd
+varoast            stmry  16   0 mathbin    x  x  stmaryrd
+varobar            stmry  17   0 mathbin    x  x  stmaryrd
+varodot            stmry  18   0 mathbin    x  x  stmaryrd
+varoslash          stmry  19   0 mathbin    x  x  stmaryrd
+varobslash         stmry  20   0 mathbin    x  x  stmaryrd
+varocircle         stmry  21   0 mathbin    x  x  stmaryrd
+varoplus           stmry  22   0 mathbin    x  x  stmaryrd
+varominus          stmry  23   0 mathbin    x  x  stmaryrd
+boxast             stmry  24   0 mathbin    x  x  stmaryrd
+boxbar             stmry  25   0 mathbin    x  x  stmaryrd
+#boxdot             stmry  26   0 mathbin    x  x  stmaryrd # already in amssymb
+boxslash           stmry  27   0 mathbin    x  x  stmaryrd
+boxbslash          stmry  28   0 mathbin    x  x  stmaryrd
+boxcircle          stmry  29   0 mathbin    x  x  stmaryrd
+boxbox             stmry  30   0 mathbin    x  x  stmaryrd
+boxempty           stmry  31   0 mathbin    x  x  stmaryrd
+#lightning          stmry  32   0 mathord    x  x  stmaryrd # already in wasy
 merge              stmry  33   0 mathbin    x  stmaryrd
 vartimes           stmry  34   0 mathbin    x  stmaryrd
 fatsemi            stmry  35   0 mathbin    x  stmaryrd
-sswarrow           stmry  36   0 mathrel    x  stmaryrd
-ssearrow           stmry  37   0 mathrel    x  stmaryrd
-curlywedgeuparrow  stmry  38   0 mathrel    x  stmaryrd
-curlywedgedownarrow stmry 39   0 mathrel    x  stmaryrd
-fatslash           stmry  40   0 mathbin    x  stmaryrd
-fatbslash          stmry  41   0 mathbin    x  stmaryrd
-lbag               stmry  42   0 mathbin    x  stmaryrd
-rbag               stmry  43   0 mathbin    x  stmaryrd
-varbigcirc         stmry  44   0 mathbin    x  stmaryrd
-leftrightarroweq   stmry  45   0 mathrel    x  stmaryrd
-curlyveedownarrow  stmry  46   0 mathrel    x  stmaryrd
-curlyveeuparrow    stmry  47   0 mathrel    x  stmaryrd
-nnwarrow           stmry  48   0 mathrel    x  stmaryrd
-nnearrow           stmry  49   0 mathrel    x  stmaryrd
-leftslice          stmry  50   0 mathbin    x  stmaryrd
-rightslice         stmry  51   0 mathbin    x  stmaryrd
-varolessthan       stmry  52   0 mathbin    x  stmaryrd
-varogreaterthan    stmry  53   0 mathbin    x  stmaryrd
-varovee            stmry  54   0 mathbin    x  stmaryrd
-varowedge          stmry  55   0 mathbin    x  stmaryrd
-talloblong         stmry  56   0 mathbin    x  stmaryrd
-interleave         stmry  57   0 mathbin    x  stmaryrd
-obar               stmry  58   0 mathbin    x  stmaryrd
-obslash            stmry  59   0 mathbin    x  stmaryrd
-olessthan          stmry  60   0 mathbin    x  stmaryrd
-ogreaterthan       stmry  61   0 mathbin    x  stmaryrd
-ovee               stmry  62   0 mathbin    x  stmaryrd
-owedge             stmry  63   0 mathbin    x  stmaryrd
-oblong             stmry  64   0 mathbin    x  stmaryrd
-inplus             stmry  65   0 mathrel    x  stmaryrd
-niplus             stmry  66   0 mathrel    x  stmaryrd
-nplus              stmry  67   0 mathbin    x  stmaryrd
-subsetplus         stmry  68   0 mathrel    x  stmaryrd
-supsetplus         stmry  69   0 mathrel    x  stmaryrd
-subsetpluseq       stmry  70   0 mathrel    x  stmaryrd
-supsetpluseq       stmry  71   0 mathrel    x  stmaryrd
-Lbag               stmry  72   0 mathopen   x  stmaryrd
-Rbag               stmry  73   0 mathclose  x  stmaryrd
-llbracket          stmry  74   0 mathopen   x  stmaryrd
-rrbracket          stmry  75   0 mathclose  x  stmaryrd
-llparenthesis      stmry  76   0 mathopen   x  stmaryrd
-rrparenthesis      stmry  77   0 mathclose  x  stmaryrd
-binampersand       stmry  78   0 mathopen   x  stmaryrd
-bindnasrepma       stmry  79   0 mathclose  x  stmaryrd
-trianglelefteqslant stmry 80   0 mathrel    x  stmaryrd
-trianglerighteqslant stmry 81  0 mathrel    x  stmaryrd
-ntrianglelefteqslant stmry 82  0 mathrel    x  stmaryrd
-ntrianglerighteqslant stmry 83 0 mathrel    x  stmaryrd
-llfloor            stmry  84   0 mathopen   x  stmaryrd
-rrfloor            stmry  85   0 mathclose  x  stmaryrd
-llceil             stmry  86   0 mathopen   x  stmaryrd
-rrceil             stmry  87   0 mathclose  x  stmaryrd
-lyxarrownot        stmry  88   0 mathrel    x  hiddensymbol #see arrownot defined below
-lyxArrownot        stmry  89   0 mathrel    x  hiddensymbol #see Arrownot defined below
-Mapstochar         stmry  90   0 mathrel    x  stmaryrd
-mapsfromchar       stmry  91   0 mathrel    x  stmaryrd
-Mapsfromchar       stmry  92   0 mathrel    x  stmaryrd
-leftrightarrowtriangle stmry 93 0 mathrel   x  stmaryrd
-leftarrowtriangle  stmry  94   0 mathrel    x  stmaryrd
-rightarrowtriangle stmry  95   0 mathrel    x  stmaryrd
-#bigtriangledown    stmry  96   0 mathop     x  stmaryrd #already in cmsy
-#bigtriangleup      stmry  97   0 mathop     x  stmaryrd #already in cmsy
-bigcurlyvee        stmry  98   0 mathop     x  stmaryrd
-bigcurlywedge      stmry  99   0 mathop     x  stmaryrd
-bigsqcap           stmry 100   0 mathop     x  stmaryrd
-bigbox             stmry 101   0 mathop     x  stmaryrd
-bigparallel        stmry 102   0 mathop     x  stmaryrd
-biginterleave      stmry 103   0 mathop     x  stmaryrd
-#hugetriangledown   stmry 104   0 mathop     x  stmaryrd # only in the font, not the .sty
-#hugetriangleup     stmry 105   0 mathop     x  stmaryrd # only in the font, not the .sty
-#hugecurlyvee       stmry 106   0 mathop     x  stmaryrd # only in the font, not the .sty
-#hugecurlywedge     stmry 107   0 mathop     x  stmaryrd # only in the font, not the .sty
-#hugesqcap          stmry 108   0 mathop     x  stmaryrd # only in the font, not the .sty
-#hugebox            stmry 109   0 mathop     x  stmaryrd # only in the font, not the .sty
-#hugeparallel       stmry 110   0 mathop     x  stmaryrd # only in the font, not the .sty
-#hugeinterleave     stmry 111   0 mathop     x  stmaryrd # only in the font, not the .sty
-bignplus           stmry 112   0 mathop     x  stmaryrd # caution: named hugenplus in the font
-#largellbracket     stmry 113   0 mathopen   x  stmaryrd # only in the font, not the .sty
-#Largellbracket     stmry 114   0 mathopen   x  stmaryrd # only in the font, not the .sty
-#LARGEllbracket     stmry 115   0 mathopen   x  stmaryrd # only in the font, not the .sty
-#hugellbracket      stmry 116   0 mathopen   x  stmaryrd # only in the font, not the .sty
-#Largellbrackettop  stmry 117   0 mathopen   x  stmaryrd # only in the font, not the .sty
-#Largellbracketbot  stmry 118   0 mathopen   x  stmaryrd # only in the font, not the .sty caution: named Hugellbrackettop in the font
-#llbracketex        stmry 119   0 mathopen   x  stmaryrd # only in the font, not the .sty caution: named Hugellbracketbot in the font
-#hugenplus          stmry 120   0 mathop     x  stmaryrd # only in the font, not the .sty caution: named Hugenplus in the font
-#largerrbracket     stmry 121   0 mathclose  x  stmaryrd # only in the font, not the .sty
-#Largerrbracket     stmry 122   0 mathclose  x  stmaryrd # only in the font, not the .sty
-#LARGErrbracket     stmry 123   0 mathclose  x  stmaryrd # only in the font, not the .sty
-#hugerrbracket      stmry 124   0 mathclose  x  stmaryrd # only in the font, not the .sty
-#Largerrbrackettop  stmry 125   0 mathclose  x  stmaryrd # only in the font, not the .sty caution: named Hugerrbrackettop in the font
-#Largerrbracketbot  stmry 126   0 mathclose  x  stmaryrd # only in the font, not the .sty caution: named Hugerrbracketbot in the font
-#rrbracketex        stmry 127   0 mathclose  x  stmaryrd # only in the font, not the .sty caution: named Hugerrbracketex in the font
+sswarrow           stmry  36   0 mathrel    x  x  stmaryrd
+ssearrow           stmry  37   0 mathrel    x  x  stmaryrd
+curlywedgeuparrow  stmry  38   0 mathrel    x  x  stmaryrd
+curlywedgedownarrow stmry 39   0 mathrel    x  x  stmaryrd
+fatslash           stmry  40   0 mathbin    x  x  stmaryrd
+fatbslash          stmry  41   0 mathbin    x  x  stmaryrd
+lbag               stmry  42   0 mathbin    x  x  stmaryrd
+rbag               stmry  43   0 mathbin    x  x  stmaryrd
+varbigcirc         stmry  44   0 mathbin    x  x  stmaryrd
+leftrightarroweq   stmry  45   0 mathrel    x  x  stmaryrd
+curlyveedownarrow  stmry  46   0 mathrel    x  x  stmaryrd
+curlyveeuparrow    stmry  47   0 mathrel    x  x  stmaryrd
+nnwarrow           stmry  48   0 mathrel    x  x  stmaryrd
+nnearrow           stmry  49   0 mathrel    x  x  stmaryrd
+leftslice          stmry  50   0 mathbin    x  x  stmaryrd
+rightslice         stmry  51   0 mathbin    x  x  stmaryrd
+varolessthan       stmry  52   0 mathbin    x  x  stmaryrd
+varogreaterthan    stmry  53   0 mathbin    x  x  stmaryrd
+varovee            stmry  54   0 mathbin    x  x  stmaryrd
+varowedge          stmry  55   0 mathbin    x  x  stmaryrd
+talloblong         stmry  56   0 mathbin    x  x  stmaryrd
+interleave         stmry  57   0 mathbin    x  x  stmaryrd
+obar               stmry  58   0 mathbin    x  x  stmaryrd
+obslash            stmry  59   0 mathbin    x  x  stmaryrd
+olessthan          stmry  60   0 mathbin    x  x  stmaryrd
+ogreaterthan       stmry  61   0 mathbin    x  x  stmaryrd
+ovee               stmry  62   0 mathbin    x  x  stmaryrd
+owedge             stmry  63   0 mathbin    x  x  stmaryrd
+oblong             stmry  64   0 mathbin    x  x  stmaryrd
+inplus             stmry  65   0 mathrel    x  x  stmaryrd
+niplus             stmry  66   0 mathrel    x  x  stmaryrd
+nplus              stmry  67   0 mathbin    x  x  stmaryrd
+subsetplus         stmry  68   0 mathrel    x  x  stmaryrd
+supsetplus         stmry  69   0 mathrel    x  x  stmaryrd
+subsetpluseq       stmry  70   0 mathrel    x  x  stmaryrd
+supsetpluseq       stmry  71   0 mathrel    x  x  stmaryrd
+Lbag               stmry  72   0 mathopen   x  x  stmaryrd
+Rbag               stmry  73   0 mathclose  x  x  stmaryrd
+llbracket          stmry  74   0 mathopen   x  x  stmaryrd
+rrbracket          stmry  75   0 mathclose  x  x  stmaryrd
+llparenthesis      stmry  76   0 mathopen   x  x  stmaryrd
+rrparenthesis      stmry  77   0 mathclose  x  x  stmaryrd
+binampersand       stmry  78   0 mathopen   x  x  stmaryrd
+bindnasrepma       stmry  79   0 mathclose  x  x  stmaryrd
+trianglelefteqslant stmry 80   0 mathrel    x  x  stmaryrd
+trianglerighteqslant stmry 81  0 mathrel    x  x  stmaryrd
+ntrianglelefteqslant stmry 82  0 mathrel    x  x  stmaryrd
+ntrianglerighteqslant stmry 83 0 mathrel    x  x  stmaryrd
+llfloor            stmry  84   0 mathopen   x  x  stmaryrd
+rrfloor            stmry  85   0 mathclose  x  x  stmaryrd
+llceil             stmry  86   0 mathopen   x  x  stmaryrd
+rrceil             stmry  87   0 mathclose  x  x  stmaryrd
+lyxarrownot        stmry  88   0 mathrel    x  x  hiddensymbol #see arrownot defined below
+lyxArrownot        stmry  89   0 mathrel    x  x  hiddensymbol #see Arrownot defined below
+Mapstochar         stmry  90   0 mathrel    x  x  stmaryrd
+mapsfromchar       stmry  91   0 mathrel    x  x  stmaryrd
+Mapsfromchar       stmry  92   0 mathrel    x  x  stmaryrd
+leftrightarrowtriangle stmry 93 0 mathrel   x  x  stmaryrd
+leftarrowtriangle  stmry  94   0 mathrel    x  x  stmaryrd
+rightarrowtriangle stmry  95   0 mathrel    x  x  stmaryrd
+#bigtriangledown    stmry  96   0 mathop     x  x  stmaryrd #already in cmsy
+#bigtriangleup      stmry  97   0 mathop     x  x  stmaryrd #already in cmsy
+bigcurlyvee        stmry  98   0 mathop     x  x  stmaryrd
+bigcurlywedge      stmry  99   0 mathop     x  x  stmaryrd
+bigsqcap           stmry 100   0 mathop     x  x  stmaryrd
+bigbox             stmry 101   0 mathop     x  x  stmaryrd
+bigparallel        stmry 102   0 mathop     x  x  stmaryrd
+biginterleave      stmry 103   0 mathop     x  x  stmaryrd
+#hugetriangledown   stmry 104   0 mathop     x  x  stmaryrd # only in the font, not the .sty
+#hugetriangleup     stmry 105   0 mathop     x  x  stmaryrd # only in the font, not the .sty
+#hugecurlyvee       stmry 106   0 mathop     x  x  stmaryrd # only in the font, not the .sty
+#hugecurlywedge     stmry 107   0 mathop     x  x  stmaryrd # only in the font, not the .sty
+#hugesqcap          stmry 108   0 mathop     x  x  stmaryrd # only in the font, not the .sty
+#hugebox            stmry 109   0 mathop     x  x  stmaryrd # only in the font, not the .sty
+#hugeparallel       stmry 110   0 mathop     x  x  stmaryrd # only in the font, not the .sty
+#hugeinterleave     stmry 111   0 mathop     x  x  stmaryrd # only in the font, not the .sty
+bignplus           stmry 112   0 mathop     x  x  stmaryrd # caution: named hugenplus in the font
+#largellbracket     stmry 113   0 mathopen   x  x  stmaryrd # only in the font, not the .sty
+#Largellbracket     stmry 114   0 mathopen   x  x  stmaryrd # only in the font, not the .sty
+#LARGEllbracket     stmry 115   0 mathopen   x  x  stmaryrd # only in the font, not the .sty
+#hugellbracket      stmry 116   0 mathopen   x  x  stmaryrd # only in the font, not the .sty
+#Largellbrackettop  stmry 117   0 mathopen   x  x  stmaryrd # only in the font, not the .sty
+#Largellbracketbot  stmry 118   0 mathopen   x  x  stmaryrd # only in the font, not the .sty caution: named Hugellbrackettop in the font
+#llbracketex        stmry 119   0 mathopen   x  x  stmaryrd # only in the font, not the .sty caution: named Hugellbracketbot in the font
+#hugenplus          stmry 120   0 mathop     x  x  stmaryrd # only in the font, not the .sty caution: named Hugenplus in the font
+#largerrbracket     stmry 121   0 mathclose  x  x  stmaryrd # only in the font, not the .sty
+#Largerrbracket     stmry 122   0 mathclose  x  x  stmaryrd # only in the font, not the .sty
+#LARGErrbracket     stmry 123   0 mathclose  x  x  stmaryrd # only in the font, not the .sty
+#hugerrbracket      stmry 124   0 mathclose  x  x  stmaryrd # only in the font, not the .sty
+#Largerrbrackettop  stmry 125   0 mathclose  x  x  stmaryrd # only in the font, not the .sty caution: named Hugerrbrackettop in the font
+#Largerrbracketbot  stmry 126   0 mathclose  x  x  stmaryrd # only in the font, not the .sty caution: named Hugerrbracketbot in the font
+#rrbracketex        stmry 127   0 mathclose  x  x  stmaryrd # only in the font, not the .sty caution: named Hugerrbracketex in the font
 
 \def\varcopyright{\mathord{c\kern-11mu\varbigcirc}}         stmaryrd
 # kerning is slightly imperfect so that one sees when \[Aa]rrownot is selected
@@ -1009,9 +1010,9 @@ bignplus           stmry 112   0 mathop     x  stmaryrd # caution: named hugenpl
 # mhchem is not loaded because these commands can only be used inside
 # a \ce or a \cf inset
 
-sbond              cmsy        161   0 mathord  x
-dbond              cmr          61   0 mathord  x
-tbond              cmsy        180 186 mathord  x
+sbond              cmsy        161   0 mathord  x  x
+dbond              cmr          61   0 mathord  x  x
+tbond              cmsy        180 186 mathord  x  x
 
 # From the esint package:
 # We emulate some symbols if the esint10 font is not available.
@@ -1025,49 +1026,44 @@ tbond              cmsy        180 186 mathord  x
 # If the wasysym integrals are really wanted then one has to load the package
 # manually and disable automatic loading of amsmath and esint.
 iffont esint
-int                esint        001    0  mathop  &int;         esint|amsmath
-intop              esint        001    0  mathop  &int;         esint
-iint               esint        003    0  mathop  &Int;         esint|amsmath
-iintop             esint        003    0  mathop  &Int;         esint
-iiint              esint        005    0  mathop  &tint;        esint|amsmath
-
-iiintop            esint        005    0  mathop  &tint;        esint
-iiiint             esint        007    0  mathop  &qint;        esint|amsmath
-
-iiiintop           esint        007    0  mathop  &qint;        esint
+int                esint        001    0  mathop  &int;         &#x222B;        esint|amsmath
+intop              esint        001    0  mathop  &int;         &#x222B;        esint
+iint               esint        003    0  mathop  &Int;         &#x222C;        esint|amsmath
+iintop             esint        003    0  mathop  &Int;         &#x222C;        esint
+iiint              esint        005    0  mathop  &tint;        &#x222D;        esint|amsmath
+iiintop            esint        005    0  mathop  &tint;        &#x222D;        esint
+iiiint             esint        007    0  mathop  &qint;        &#x2A0C;        esint|amsmath
+iiiintop           esint        007    0  mathop  &qint;        &#x2A0C;        esint
 #9 codepoint forbidden in qt4, 10,12,13 in qt5
-oint               esint        043    0  mathop  &conint;      esint
-
-ointop             esint        043    0  mathop  &conint;      esint
-oiint              esint        045    0  mathop  &Conint;      esint
-oiintop            esint        045    0  mathop  &Conint;      esint
-sqint              esint        015    0  mathop  x             esint
-sqintop            esint        015    0  mathop  x             esint
+oint               esint        043    0  mathop  &conint;      &#x222E;        esint
+ointop             esint        043    0  mathop  &conint;      &#x222E;        esint
+oiint              esint        045    0  mathop  &Conint;      &#x222F;        esint
+oiintop            esint        045    0  mathop  &Conint;      &#x222F;        esint
+sqint              esint        015    0  mathop  &quatint;     &#x2A16;        esint
+sqintop            esint        015    0  mathop  &quatint;     &#x2A16;        esint
 sqiint             esint        017    0  mathop  x             esint
 sqiintop           esint        017    0  mathop  x             esint
-dotsint            esint        041    0  mathop  &int;&ctdot;&int; esint
-dotsintop          esint        042    0  mathop  &int;&ctdot;&int; esint
-ointctrclockwise   esint        023    0  mathop  &awconint;    esint
-ointctrclockwiseop esint        023    0  mathop  &awconint;    esint
-ointclockwise      esint        025    0  mathop  &cwconint;    esint
-ointclockwiseop    esint        025    0  mathop  &cwconint;    esint
+dotsint            esint        041    0  mathop  &int;&ctdot;&int;     &#x222B;&#x22EF;&#x222B;    esint
+dotsintop          esint        042    0  mathop  &int;&ctdot;&int;     &#x222B;&#x22EF;&#x222B;    esint
+ointctrclockwise   esint        023    0  mathop  &awconint;    &#x2233;        esint
+ointctrclockwiseop esint        023    0  mathop  &awconint;    &#x2233;        esint
+ointclockwise      esint        025    0  mathop  &cwconint;    &#x2232;        esint
+ointclockwiseop    esint        025    0  mathop  &cwconint;    &#x2232;        esint
 else
-int                cmex          82  242  mathop  &int;         esint|amsmath
-intop              cmex          82  242  mathop  &int;         esint
-iint               wasy         115    0  mathop  &Int;         esint|amsmath
-iintop             wasy         115    0  mathop  &Int          esint
-iiint              wasy         116    0  mathop  &tint;        esint|amsmath
-
-iiintop            wasy         116    0  mathop  &tint;        esint
+int                cmex          82  242  mathop  &int;         &#x222B;        esint|amsmath
+intop              cmex          82  242  mathop  &int;         &#x222B;        esint
+iint               wasy         115    0  mathop  &Int;         &#x222C;        esint|amsmath
+iintop             wasy         115    0  mathop  &Int          &#x222C;        esint
+iiint              wasy         116    0  mathop  &tint;        &#x222D;        esint|amsmath
+iiintop            wasy         116    0  mathop  &tint;        &#x222D;        esint
 \def\iiiint{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}        esint|amsmath
 \def\iiiintop{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}      esint
 \def\dotsint{\int\kern-3mu\cdots\kern-3mu\int}                  esint
 \def\dotsintop{\int\kern-3mu\cdots\kern-3mu\int}                esint
-oint               cmex          72    0  mathop  &conint;      esint
-
-ointop             cmex          72    0  mathop  &conint;      esint
-oiint              wasy         118    0  mathop  &Conint;      esint
-oiintop            wasy         118    0  mathop  &Conint;      esint
+oint               cmex          72    0  mathop  &conint;      &#x222E;        esint
+ointop             cmex          72    0  mathop  &conint;      &#x222E;        esint
+oiint              wasy         118    0  mathop  &Conint;      &#x222F;        esint
+oiintop            wasy         118    0  mathop  &Conint;      &#x222F;        esint
 \def\sqint{\square\kern-17mu\int\kern6mu}                       esint
 \def\sqintop{\square\kern-17mu\int\kern6mu}                     esint
 \def\sqiint{\square\kern-20mu\iint\kern3mu}                     esint
@@ -1078,90 +1074,90 @@ oiintop            wasy         118    0  mathop  &Conint;      esint
 \def\ointclockwiseop{\circlearrowright\kern-21mu\int\kern6mu}   esint
 endif
 
-varointclockwise   esint        027    0  mathop  &cwconint;    esint
-varointclockwiseop esint        027    0  mathop  &cwconint;    esint
-varointctrclockwise esint       029    0  mathop  &awconint;    esint
-varointctrclockwiseop esint     029    0  mathop  &awconint;    esint
-fint               esint        031    0  mathop  &#x2a0f;      esint
-fintop             esint        031    0  mathop  &#x2a0f;      esint
-varoiint           esint        033    0  mathop  &Conint;      esint
-varoiintop         esint        033    0  mathop  &Conint;      esint
-landupint          esint        035    0  mathop  x             esint
-landupintop        esint        035    0  mathop  x             esint
-landdownint        esint        037    0  mathop  x             esint
-landdownintop      esint        037    0  mathop  x             esint
+varointclockwise   esint        027    0  mathop  &cwconint;    &#x2232;        esint
+varointclockwiseop esint        027    0  mathop  &cwconint;    &#x2232;        esint
+varointctrclockwise esint       029    0  mathop  &awconint;    &#x2233;        esint
+varointctrclockwiseop esint     029    0  mathop  &awconint;    &#x2233;        esint
+fint               esint        031    0  mathop  &#x2a0f;      &#x2a0f;        esint
+fintop             esint        031    0  mathop  &#x2a0f;      &#x2a0f;        esint
+varoiint           esint        033    0  mathop  &Conint;      &#x222F;        esint
+varoiintop         esint        033    0  mathop  &Conint;      &#x222F;        esint
+landupint          esint        035    0  mathop  x             x               esint
+landupintop        esint        035    0  mathop  x             x               esint
+landdownint        esint        037    0  mathop  x             x               esint
+landdownintop      esint        037    0  mathop  x             x               esint
 
 
 # From the amsmath package:
 \def\idotsint{\int\kern-3mu\cdots\kern-3mu\int}                 amsmath
 
 
-log                lyxblacktext  0   0 func     x
-lg                 lyxblacktext  0   0 func     x
-ln                 lyxblacktext  0   0 func     x
-lim                lyxblacktext  0   0 funclim  x
-limsup             lyxblacktext  0   0 funclim  x
-liminf             lyxblacktext  0   0 funclim  x
-sin                lyxblacktext  0   0 func     x
-arcsin             lyxblacktext  0   0 func     x
-sinh               lyxblacktext  0   0 func     x
-cos                lyxblacktext  0   0 func     x
-arccos             lyxblacktext  0   0 func     x
-cosh               lyxblacktext  0   0 func     x
-tan                lyxblacktext  0   0 func     x
-arctan             lyxblacktext  0   0 func     x
-tanh               lyxblacktext  0   0 func     x
-cot                lyxblacktext  0   0 func     x
-coth               lyxblacktext  0   0 func     x
-sec                lyxblacktext  0   0 func     x
-csc                lyxblacktext  0   0 func     x
-max                lyxblacktext  0   0 funclim  x
-min                lyxblacktext  0   0 funclim  x
-sup                lyxblacktext  0   0 funclim  x
-inf                lyxblacktext  0   0 funclim  x
-arg                lyxblacktext  0   0 func     x
-ker                lyxblacktext  0   0 func     x
-dim                lyxblacktext  0   0 func     x
-hom                lyxblacktext  0   0 func     x
-det                lyxblacktext  0   0 funclim  x
-exp                lyxblacktext  0   0 func     x
-Pr                 lyxblacktext  0   0 funclim  x
-gcd                lyxblacktext  0   0 funclim  x
-deg                lyxblacktext  0   0 func     x
-mod                lyxblacktext  0   0 func     x     amsmath
-bmod               lyxblacktext  0   0 func     x
-pmod               lyxblacktext  0   0 func     x
-pod                lyxblacktext  0   0 func     x     amsmath
+log                lyxblacktext  0   0 func     x  x
+lg                 lyxblacktext  0   0 func     x  x
+ln                 lyxblacktext  0   0 func     x  x
+lim                lyxblacktext  0   0 funclim  x  x
+limsup             lyxblacktext  0   0 funclim  x  x
+liminf             lyxblacktext  0   0 funclim  x  x
+sin                lyxblacktext  0   0 func     x  x
+arcsin             lyxblacktext  0   0 func     x  x
+sinh               lyxblacktext  0   0 func     x  x
+cos                lyxblacktext  0   0 func     x  x
+arccos             lyxblacktext  0   0 func     x  x
+cosh               lyxblacktext  0   0 func     x  x
+tan                lyxblacktext  0   0 func     x  x
+arctan             lyxblacktext  0   0 func     x  x
+tanh               lyxblacktext  0   0 func     x  x
+cot                lyxblacktext  0   0 func     x  x
+coth               lyxblacktext  0   0 func     x  x
+sec                lyxblacktext  0   0 func     x  x
+csc                lyxblacktext  0   0 func     x  x
+max                lyxblacktext  0   0 funclim  x  x
+min                lyxblacktext  0   0 funclim  x  x
+sup                lyxblacktext  0   0 funclim  x  x
+inf                lyxblacktext  0   0 funclim  x  x
+arg                lyxblacktext  0   0 func     x  x
+ker                lyxblacktext  0   0 func     x  x
+dim                lyxblacktext  0   0 func     x  x
+hom                lyxblacktext  0   0 func     x  x
+det                lyxblacktext  0   0 funclim  x  x
+exp                lyxblacktext  0   0 func     x  x
+Pr                 lyxblacktext  0   0 funclim  x  x
+gcd                lyxblacktext  0   0 funclim  x  x
+deg                lyxblacktext  0   0 func     x  x
+mod                lyxblacktext  0   0 func     x  x     amsmath
+bmod               lyxblacktext  0   0 func     x  x
+pmod               lyxblacktext  0   0 func     x  x
+pod                lyxblacktext  0   0 func     x  x     amsmath
 
 
 # mathtools.sty
-vcentcolon         cmr          58  58    mathrel :             mathtools
-ordinarycolon      cmr          58  58    mathrel :             mathtools
-\def\dblcolon{\vcentcolon\mathrel{\kern-0.9mu}\vcentcolon}      mathrel ::       mathtools
-\def\coloneqq{\vcentcolon\mathrel{\kern-1.2mu}=}                mathrel &#x2254; mathtools
-\def\Coloneqq{\dblcolon\mathrel{\kern-1.2mu}=}                  mathrel ::=      mathtools
-\def\coloneq{\vcentcolon\mathrel{\kern-1.2mu}\mathrel{-}}       mathrel :-       mathtools
-\def\Coloneq{\dblcolon\mathrel{\kern-1.2mu}\mathrel{-}}         mathrel ::-      mathtools
-\def\eqqcolon{=\mathrel{\kern-1.2mu}\vcentcolon}                mathrel &#x2255; mathtools
-\def\Eqqcolon{=\mathrel{\kern-1.2mu}\dblcolon}                  mathrel =::      mathtools
-\def\eqcolon{\mathrel{-}\mathrel{\kern-1.2mu}\vcentcolon}                 mathrel -:       mathtools
-\def\Eqcolon{\mathrel{-}\mathrel{\kern-1.2mu}\dblcolon}                   mathrel -::      mathtools
-\def\colonapprox{\vcentcolon\mathrel{\kern-1.2mu}\approx}       mathrel :&ap;    mathtools
-\def\Colonapprox{\dblcolon\mathrel{\kern-1.2mu}\approx}         mathrel ::&ap;   mathtools
-\def\colonsim{\vcentcolon\mathrel{\kern-1.2mu}\sim}             mathrel :&sim;   mathtools
-\def\Colonsim{\dblcolon\mathrel{\kern-1.2mu}\sim}               mathrel ::&sim;  mathtools
+vcentcolon         cmr          58  58    mathrel :  :          mathtools
+ordinarycolon      cmr          58  58    mathrel :  :          mathtools
+\def\dblcolon{\vcentcolon\mathrel{\kern-0.9mu}\vcentcolon}      mathrel ::          ::          mathtools
+\def\coloneqq{\vcentcolon\mathrel{\kern-1.2mu}=}                mathrel &coloneq;   &#x2254;    mathtools
+\def\Coloneqq{\dblcolon\mathrel{\kern-1.2mu}=}                  mathrel &Colone;    &#x2A74;    mathtools
+\def\coloneq{\vcentcolon\mathrel{\kern-1.2mu}\mathrel{-}}       mathrel :-          :-          mathtools
+\def\Coloneq{\dblcolon\mathrel{\kern-1.2mu}\mathrel{-}}         mathrel ::-         ::-         mathtools
+\def\eqqcolon{=\mathrel{\kern-1.2mu}\vcentcolon}                mathrel &eqcolon;   &#x2255;    mathtools
+\def\Eqqcolon{=\mathrel{\kern-1.2mu}\dblcolon}                  mathrel =::         =::         mathtools
+\def\eqcolon{\mathrel{-}\mathrel{\kern-1.2mu}\vcentcolon}       mathrel -:          -:          mathtools
+\def\Eqcolon{\mathrel{-}\mathrel{\kern-1.2mu}\dblcolon}         mathrel -::         -::         mathtools
+\def\colonapprox{\vcentcolon\mathrel{\kern-1.2mu}\approx}       mathrel :&ap;       :&#x2248;   mathtools
+\def\Colonapprox{\dblcolon\mathrel{\kern-1.2mu}\approx}         mathrel ::&ap;      ::&#x2248;  mathtools
+\def\colonsim{\vcentcolon\mathrel{\kern-1.2mu}\sim}             mathrel :&sim;      :&#x223C;   mathtools
+\def\Colonsim{\dblcolon\mathrel{\kern-1.2mu}\sim}               mathrel ::&sim;     ::&#x223C;  mathtools
 
 
 #
 # pre-defined macros
 #
 
-\def\leq{\le}                                                   mathrel &le;
-\def\geq{\ge}                                                   mathrel &ge;
-\def\neq{\not=}                                                 mathrel &ne;
-\def\ne{\not=}                                                  mathrel &ne;
-\def\lnot{\neg}                                                 mathord &not;
-\def\notin{\not\in}                                             mathrel &notin;
+\def\leq{\le}                                                   mathrel &leq;       &#x2264;
+\def\geq{\ge}                                                   mathrel &geq;       &#x2265;
+\def\neq{\not=}                                                 mathrel &ne;        &#x2260;
+\def\ne{\not=}                                                  mathrel &ne;        &#x2260;
+\def\lnot{\neg}                                                 mathord &not;       &#xAC;
+\def\notin{\not\in}                                             mathrel &notin;     &#x2209;
 
 \def\ddag{\ddagger}                                             mathbin &Dagger;
 \def\dag{\dagger}                                               mathbin &dagger;
@@ -1169,58 +1165,58 @@ ordinarycolon      cmr          58  58    mathrel :             mathtools
 \def\joinrel{\mathrel{\kern-3mu}}
 \def\relbar{\lyxbar}
 \def\Relbar{\mathrel{=}}
-\def\longleftrightarrow{\leftarrow\joinrel\rightarrow}          mathrel &#x27f7;
-\def\Longleftrightarrow{\Leftarrow\joinrel\Rightarrow}          mathrel &#x27fa;
-\def\iff{\Leftarrow\joinrel\Rightarrow}                         mathrel &#x27fa;
-\def\doteq{\stackrel{\cdot}{=}}                                 mathrel &#x2250;
+\def\longleftrightarrow{\leftarrow\joinrel\rightarrow}          mathrel &#x27f7;    &#x27f7;
+\def\Longleftrightarrow{\Leftarrow\joinrel\Rightarrow}          mathrel &#x27fa;    &#x27fa;
+\def\iff{\Leftarrow\joinrel\Rightarrow}                         mathrel &#x27fa;    &#x27fa;
+\def\doteq{\stackrel{\cdot}{=}}                                 mathrel &#x2250;    &#x2250;
 
 iffont cmsy
-\def\longrightarrow{\relbar\joinrel\rightarrow}                 mathrel &xrarr;
-\def\longleftarrow{\leftarrow\joinrel\relbar}                   mathrel &xlarr;
-\def\Longrightarrow{\Relbar\joinrel\Rightarrow}                 mathrel &#x27F9;
-\def\Longleftarrow{\Leftarrow\joinrel\Relbar}                   mathrel &#x27F8;
-\def\implies{\Longrightarrow}                                   mathrel &#x27F9; amsmath
-\def\impliedby{\Longleftarrow}                                  mathrel &#x27F8; amsmath
-\def\mapsto{\mapstochar\rightarrow}                             mathrel &#x21A4;
-\def\longmapsto{\mapstochar\joinrel\relbar\joinrel\rightarrow}  mathrel &#x27FB;
-\def\models{\mathrel{\vert}\joinrel\Relbar}                     mathrel &vDash;
+\def\longrightarrow{\relbar\joinrel\rightarrow}                 mathrel &xrarr;     &#x27F6;
+\def\longleftarrow{\leftarrow\joinrel\relbar}                   mathrel &xlarr;     &#x27F5;
+\def\Longrightarrow{\Relbar\joinrel\Rightarrow}                 mathrel &#x27F9;    &#x27F9;
+\def\Longleftarrow{\Leftarrow\joinrel\Relbar}                   mathrel &#x27F8;    &#x27F8;
+\def\implies{\Longrightarrow}                                   mathrel &#x27F9;    &#x27F9;    amsmath
+\def\impliedby{\Longleftarrow}                                  mathrel &#x27F8;    &#x27F8;    amsmath
+\def\mapsto{\mapstochar\rightarrow}                             mathrel &#x21A4;    &#x21A4;
+\def\longmapsto{\mapstochar\joinrel\relbar\joinrel\rightarrow}  mathrel &#x27FB;    &#x27FB;
+\def\models{\mathrel{\vert}\joinrel\Relbar}                     mathrel &vDash;     &#x22A8;
 else
-\def\implies{=>}                                                mathrel &#x27F9; amsmath
-\def\impliedby{<=}                                              mathrel &#x27F8; amsmath
+\def\implies{=>}                                                mathrel &#x27F9;    &#x27F9;    amsmath
+\def\impliedby{<=}                                              mathrel &#x27F8;    &#x27F8;    amsmath
 endif
 iffont cmm
-\def\hookrightarrow{\lhook\joinrel\rightarrow}                  mathrel &#x21AA;
-\def\hookleftarrow{\leftarrow\joinrel\rhook}                    mathrel &#x21A9;
-\def\bowtie{\mathrel\triangleright\joinrel\mathrel\triangleleft} mathrel &#x22C8;
+\def\hookrightarrow{\lhook\joinrel\rightarrow}                  mathrel &#x21AA;    &#x21AA;
+\def\hookleftarrow{\leftarrow\joinrel\rhook}                    mathrel &#x21A9;    &#x21A9;
+\def\bowtie{\mathrel\triangleright\joinrel\mathrel\triangleleft} mathrel &#x22C8;   &#x22C8;
 endif
 iffont msa
-\def\dashrightarrow{\mathrel{\lyxdabar\lyxdabar\lyxright}}      mathrel &#x290F; amssymb
-\def\dashleftarrow{\mathrel{\lyxleft\lyxdabar\lyxdabar}}        mathrel &#x290E; amssymb
+\def\dashrightarrow{\mathrel{\lyxdabar\lyxdabar\lyxright}}      mathrel &#x290F;    &#x290F;    amssymb
+\def\dashleftarrow{\mathrel{\lyxleft\lyxdabar\lyxdabar}}        mathrel &#x290E;    &#x290E;    amssymb
 else
-\def\dashrightarrow{- - \rightarrow}                            mathrel &#x290F; amssymb
-\def\dashleftarrow{\leftarrow{} - -}                            mathrel &#x290E; amssymb
+\def\dashrightarrow{- - \rightarrow}                            mathrel &#x290F;    &#x290F;    amssymb
+\def\dashleftarrow{\leftarrow{} - -}                            mathrel &#x290E;    &#x290E;    amssymb
 endif
-\def\dasharrow{\dashrightarrow}                                 mathrel &#x290F; amssymb
+\def\dasharrow{\dashrightarrow}                                 mathrel &#x290F;    &#x290F;    amssymb
 iffont msb
-\def\Join{\mathrel{\ltimes\kern-13.5mu\rtimes}}                 mathrel &#x2a1d; amssymb
+\def\Join{\mathrel{\ltimes\kern-13.5mu\rtimes}}                 mathrel &#x2a1d;    &#x2a1d;    amssymb
 else
-\def\Join{|x|}                                                  mathrel &#x2a1d; amssymb
+\def\Join{|x|}                                                  mathrel &#x2a1d;    &#x2a1d;    amssymb
 endif
-\def\AA{\AA}{\text{Å}} textmode &Aring;  amstext,lyxmathsym
-\def\O{\O}{\text{Ø}}   textmode &Oslash; amstext,lyxmathsym
+\def\AA{\AA}{\text{Å}} textmode &Aring;     &#x00C5;    amstext,lyxmathsym
+\def\O{\O}{\text{Ø}}   textmode &Oslash;    &#x00D8;    amstext,lyxmathsym
 
 iffont cmsy
 # The \sim is placed too high...
-\def\cong{\stackrel{\sim}{=}}                                   mathrel &cong;
-lyxsurd               cmsy        112 0 mathord  &radic;
-\def\surd{^\lyxsurd}                                            mathord &radic;
+\def\cong{\stackrel{\sim}{=}}                                   mathrel &cong;  &#x2245;
+lyxsurd               cmsy        112 0 mathord  &radic;    &#x221A;
+\def\surd{^\lyxsurd}                                            mathord &radic; &#x221A;
 \def\textdegree{\text{°}} textmode &deg; textcomp,amstext,lyxmathsym
 else
 # FIXME: These don't work on OS X, since the Symbol font uses a different
 #        encoding and is therefore disabled in FontLoader::available().
-cong               lyxsymbol             64  0 mathrel  &cong;
-surd               lyxsymbol             214 0 mathord  &radic;
-textdegree         lyxsymbol             176 0 mathord  &deg; textcomp,amstext,lyxmathsym
+cong               lyxsymbol             64  0 mathrel  &cong;      &#x2245;
+surd               lyxsymbol             214 0 mathord  &radic;     &#x221A;
+textdegree         lyxsymbol             176 0 mathord  &deg;       &#x00B0;    textcomp,amstext,lyxmathsym
 endif
 
 #"{\hat{}}

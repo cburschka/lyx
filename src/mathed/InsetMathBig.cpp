@@ -139,7 +139,7 @@ void InsetMathBig::mathmlize(MathStream & ms) const
 {
 	ms << "<" << from_ascii(ms.namespacedTag("mo"))
 	   << " form='prefix' fence='true' stretchy='true' symmetric='true'>"
-	   << convertDelimToXMLEscape(delim_)
+	   << convertDelimToXMLEscape(delim_, ms.xmlMode())
 	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">";
 }
 
@@ -154,7 +154,7 @@ void InsetMathBig::htmlize(HtmlStream & os) const
 	default: name  = "big"; break;
 	}
 	os << MTag("span", "class='" + name + "symbol'")
-	   << convertDelimToXMLEscape(delim_)
+	   << convertDelimToXMLEscape(delim_, false)
 	   << ETag("span");
 }
 

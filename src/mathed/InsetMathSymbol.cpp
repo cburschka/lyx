@@ -168,11 +168,13 @@ void InsetMathSymbol::mathmlize(MathStream & ms) const
 	// with MathMLtype.
 	docstring tag = from_ascii(ms.namespacedTag(sym_->MathMLtype()));
 	ms << '<' << tag << ">";
-	if (sym_->xmlname == "x")
+	if ((ms.xmlMode() && sym_->xmlname == "x") || (!ms.xmlMode() && sym_->htmlname == "x"))
 		// unknown so far
 		ms << name();
-	else
+	else if (ms.xmlMode())
 		ms << sym_->xmlname;
+	else
+		ms << sym_->htmlname;
 	ms << "</" << tag << '>';
 }
 
@@ -184,13 +186,13 @@ void InsetMathSymbol::htmlize(HtmlStream & os, bool spacing) const
 	char const * type = sym_->MathMLtype();
 	bool op = (std::string(type) == "mo");
 
-	if (sym_->xmlname == "x")
+	if (sym_->htmlname == "x")
 		// unknown so far
 		os << ' ' << name() << ' ';
 	else if (op && spacing)
-		os << ' ' << sym_->xmlname << ' ';
+		os << ' ' << sym_->htmlname << ' ';
 	else
-		os << sym_->xmlname;
+		os << sym_->htmlname;
 }
 
 

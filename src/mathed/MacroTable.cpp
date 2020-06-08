@@ -126,6 +126,14 @@ bool MacroData::hidden() const
 }
 
 
+docstring const MacroData::htmlname() const
+{
+	if (sym_)
+		return sym_->htmlname;
+	return docstring();
+}
+
+
 docstring const MacroData::xmlname() const
 {
 	if (sym_)

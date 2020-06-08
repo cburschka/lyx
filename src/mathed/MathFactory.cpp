@@ -186,23 +186,23 @@ void initSymbols()
 			// or
 			// \def\macroname{definition} requires
 			// or
-			// \def\macroname{definition} extra xmlname requires
+			// \def\macroname{definition} extra htmlname requires
 			istringstream is(line);
 			string macro;
 			string required;
 			string extra;
-			string xmlname;
+			string htmlname;
 			bool hidden = false;
 			is >> setw(65536) >> macro >> required;
-			if ((is >> xmlname)) {
+			if ((is >> htmlname)) {
 				extra = required;
 				if (!(is >> required))
 					required = "";
 			} else
-				xmlname = "";
+				htmlname = "";
 			MacroTable::iterator it = MacroTable::globalMacros().insert(
 					0, from_utf8(macro));
-			if (!extra.empty() || !xmlname.empty() || !required.empty()) {
+			if (!extra.empty() || !htmlname.empty() || !required.empty()) {
 				MathWordList::iterator wit = theMathWordList.find(it->first);
 				if (wit != theMathWordList.end())
 					LYXERR(Debug::MATHED, "readSymbols: inset "
@@ -212,7 +212,7 @@ void initSymbols()
 					tmp.inset = "macro";
 					tmp.name = it->first;
 					tmp.extra = from_utf8(extra);
-					tmp.xmlname = from_utf8(xmlname);
+					tmp.htmlname = from_utf8(htmlname);
 					if (required == "hiddensymbol") {
 						required = "";
 						tmp.hidden = hidden = true;
@@ -226,10 +226,10 @@ void initSymbols()
 			// If you change the following output, please adjust
 			// development/tools/generate_symbols_images.py.
 			LYXERR(Debug::MATHED, "read symbol '" << to_utf8(it->first)
-				<< "  inset: macro"
-				<< "  draw: 0"
-				<< "  extra: " << extra
-				<< "  xml: " << xmlname
+			    << "  inset: macro"
+			    << "  draw: 0"
+			    << "  extra: " << extra
+			    << "  html: " << htmlname
 				<< "  requires: " << required
 				<< "  hidden: " << hidden << '\'');
 			continue;
@@ -241,7 +241,7 @@ void initSymbols()
 		is >> tmp.name >> help;
 		tmp.inset = to_ascii(help);
 		if (isFontName(tmp.inset))
-			is >> charid >> fallbackid >> tmp.extra >> tmp.xmlname;
+			is >> charid >> fallbackid >> tmp.extra >> tmp.htmlname >> tmp.xmlname;
 		else
 			is >> tmp.extra;
 		// requires is optional
@@ -327,6 +327,7 @@ void initSymbols()
 			<< "  inset: " << tmp.inset
 			<< "  draw: " << int(tmp.draw.empty() ? 0 : tmp.draw[0])
 			<< "  extra: " << to_utf8(tmp.extra)
+			<< "  html: " << to_utf8(tmp.htmlname)
 			<< "  xml: " << to_utf8(tmp.xmlname)
 			<< "  requires: " << tmp.required
 			<< "  hidden: " << tmp.hidden << '\'');

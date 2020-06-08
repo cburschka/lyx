@@ -224,7 +224,10 @@ void InsetMathChar::mathmlize(MathStream & ms) const
 		case '>': entity = "&gt;"; break;
 		case '&': entity = "&amp;"; break;
 		case ' ': {
-			ms << from_ascii("&nbsp;");
+			if (ms.xmlMode())
+				ms << from_ascii("&#0160;");
+			else
+				ms << from_ascii("&nbsp;");
 			return;
 		}
 		default: break;

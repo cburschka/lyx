@@ -57,7 +57,6 @@ public:
 	int plaintext(odocstringstream &, OutputParams const &, size_t) const;
 	///
 	bool inheritFont() const { return false; }
-
 	///
 	docstring name() const;
 	///

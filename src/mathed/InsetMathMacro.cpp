@@ -1181,7 +1181,7 @@ void InsetMathMacro::mathmlize(MathStream & ms) const
 	// macro_ is 0 if this is an unknown macro
 	LATTEST(d->macro_ || d->displayMode_ != DISPLAY_NORMAL);
 	if (d->macro_) {
-		docstring const xmlname = d->macro_->xmlname();
+		docstring const xmlname = (ms.xmlMode()) ? d->macro_->xmlname() : d->macro_->htmlname();
 		if (!xmlname.empty()) {
 			char const * type = d->macro_->MathMLtype();
 			ms << "<" << from_ascii(ms.namespacedTag(type)) << ">"
@@ -1203,7 +1203,7 @@ void InsetMathMacro::htmlize(HtmlStream & os) const
 	// macro_ is 0 if this is an unknown macro
 	LATTEST(d->macro_ || d->displayMode_ != DISPLAY_NORMAL);
 	if (d->macro_) {
-		docstring const xmlname = d->macro_->xmlname();
+		docstring const xmlname = d->macro_->htmlname();
 		if (!xmlname.empty()) {
 			os << ' ' << xmlname << ' ';
 			return;

@@ -340,7 +340,7 @@ class MathExportException : public std::exception {};
 class MathStream {
 public:
 	/// Builds a stream proxy for os; the MathML namespace is given by xmlns (supposed to be already defined elsewhere in the document).
-	explicit MathStream(odocstream & os, std::string xmlns="");
+	explicit MathStream(odocstream & os, std::string xmlns="", bool xmlMode=false);
 	///
 	void cr();
 	///
@@ -361,6 +361,8 @@ public:
 	bool inText() const { return in_text_; }
 	///
 	std::string xmlns() const { return xmlns_; }
+	///
+	bool xmlMode() const { return xml_mode_; }
 	/// Returns the tag name prefixed by the name space if needed.
 	std::string namespacedTag(std::string tag) const { return ((xmlns().empty()) ? "" : xmlns() + ":") + tag; }
 private:
@@ -378,6 +380,8 @@ private:
 	odocstringstream deferred_;
 	///
 	std::string xmlns_;
+	///
+	bool xml_mode_;
 	///
 	friend class SetMode;
 };
@@ -646,7 +650,7 @@ OctaveStream & operator<<(OctaveStream &, char);
 OctaveStream & operator<<(OctaveStream &, int);
 
 
-docstring convertDelimToXMLEscape(docstring const & name);
+docstring convertDelimToXMLEscape(docstring const & name, bool xmlmode);
 
 } // namespace lyx
 

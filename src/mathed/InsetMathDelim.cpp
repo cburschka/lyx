@@ -170,7 +170,7 @@ void InsetMathDelim::mathematica(MathematicaStream & os) const
 {
 	if (isAbs()) {
 		if (cell(0).size() == 1 && cell(0).front()->asMatrixInset())
-			os << "Det" << cell(0) << ']';
+			os << "Det[" << cell(0) << ']';
 		else
 			os << "Abs[" << cell(0) << ']';
 	}
@@ -183,7 +183,7 @@ void InsetMathDelim::mathmlize(MathStream & ms) const
 {
 	ms << "<" << from_ascii(ms.namespacedTag("mo")) << " form='prefix' fence='true' stretchy='true' symmetric='true'>"
 	   << "<" << from_ascii(ms.namespacedTag("mrow")) << ">"
-	   << convertDelimToXMLEscape(left_)
+	   << convertDelimToXMLEscape(left_, ms.xmlMode())
 	   << "</" << from_ascii(ms.namespacedTag("mrow")) << ">"
 	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
 	   << "\n"
@@ -191,7 +191,7 @@ void InsetMathDelim::mathmlize(MathStream & ms) const
 	   << "\n"
 	   << "<" << from_ascii(ms.namespacedTag("mo")) << " form='postfix' fence='true' stretchy='true' symmetric='true'>"
 	   << "<" << from_ascii(ms.namespacedTag("mrow")) << ">"
-	   << convertDelimToXMLEscape(right_)
+	   << convertDelimToXMLEscape(right_, ms.xmlMode())
 	   << "</" << from_ascii(ms.namespacedTag("mrow")) << ">"
 	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
 	   << "\n";
@@ -200,9 +200,9 @@ void InsetMathDelim::mathmlize(MathStream & ms) const
 
 void InsetMathDelim::htmlize(HtmlStream & os) const
 {
-	os << convertDelimToXMLEscape(left_)
+	os << convertDelimToXMLEscape(left_, false)
 	   << cell(0)
-	   << convertDelimToXMLEscape(right_);
+	   << convertDelimToXMLEscape(right_, false);
 }
 
 

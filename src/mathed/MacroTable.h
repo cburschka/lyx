@@ -64,6 +64,8 @@ public:
 	///
 	bool hidden() const;
 	///
+	docstring const htmlname() const;
+	///
 	docstring const xmlname() const;
 	///
 	char const * MathMLtype() const;
