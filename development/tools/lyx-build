@@ -71,16 +71,16 @@ echo -n "Ready to build source packages...";
 read
 
 echo "Exporting clean tree...";
-$DEBUG rm -Rf $BASE/lyx-export/
-$DEBUG git checkout-index -a -f --prefix=$BASE/lyx-export/
-$DEBUG cd $BASE/lyx-export/
+$DEBUG rm -Rf "$BASE/lyx-export/";
+$DEBUG git checkout-index -a -f --prefix="$BASE/lyx-export/";
+$DEBUG cd "$BASE/lyx-export/";
 $DEBUG ./autogen.sh
-$DEBUG rm -Rf $BASE/lyx-build/
-$DEBUG mkdir $BASE/lyx-build/
-$DEBUG cd $BASE/lyx-build/
+$DEBUG rm -Rf "$BASE/lyx-build/";
+$DEBUG mkdir "$BASE/lyx-build/";
+$DEBUG cd "$BASE/lyx-build/";
 
 echo "Building distribution...";
-$DEBUG $BASE/lyx-export/configure --enable-build-type=rel --enable-qt5
+$DEBUG "$BASE/lyx-export/configure" --enable-build-type=rel --enable-qt5
 if ! $DEBUG make lyxdist; then
   echo "Couldn't make distribution!";
   exit 1;
@@ -109,10 +109,10 @@ if [ -n "$COMPILE" ]; then
 	echo -n "Ready to test compilation...";
 	read
 
-	$DEBUG rm -Rf $BASE/lyx-test/
-	$DEBUG mkdir $BASE/lyx-test/
-	$DEBUG cd $BASE/lyx-test/
-	$DEBUG tar -zxvf $BASE/lyx-build/lyx-$VERSION.tar.gz
+	$DEBUG rm -Rf "$BASE/lyx-test/";
+	$DEBUG mkdir "$BASE/lyx-test/";
+	$DEBUG cd "$BASE/lyx-test/";
+	$DEBUG tar -zxvf "$BASE/lyx-build/lyx-$VERSION.tar.gz";
 	if ! $DEBUG cd lyx-$PKG_VERSION; then
 		echo "Unable to enter build directory!";
 		exit 1;
@@ -146,7 +146,7 @@ if [ ! -d "$BASE/lyx-patch/" ]; then
 	$DEBUG mkdir "$BASE/lyx-patch/" || exit 1;
 fi
 
-if [ ! -d $BASE/lyx-patch/lyx-$LAST ]; then 
+if [ ! -d "$BASE/lyx-patch/lyx-$LAST" ]; then 
     echo "Can't find directory for last version $LAST.";
     echo "See if you can fix this in $BASE/lyx-patch/.";
     echo "Try that, if you like, and then we'll continue.";
@@ -156,7 +156,7 @@ if [ ! -d $BASE/lyx-patch/lyx-$LAST ]; then
     if [ -z "$DEBUG" ]; then
         if [ ! -d $BASE/lyx-patch/lyx-$LAST ]; then 
             echo "Will try to download from LyX site....";
-            pushd $BASE/lyx-patch/;
+            pushd "$BASE/lyx-patch/";
             wget ftp://ftp.lyx.org/pub/lyx/stable/${FIRST}x/lyx-$LAST.tar.gz;
             wget ftp://ftp.lyx.org/pub/lyx/stable/${FIRST}x/lyx-$LAST.tar.gz.sig
             gpg -q --verify lyx-$LAST.tar.gz.sig
@@ -178,15 +178,15 @@ fi
 echo -n "Ready to make patch against $LAST...";
 read
 
-$DEBUG cd $BASE/lyx-patch/;
+$DEBUG cd "$BASE/lyx-patch/";
 if [ -z "$DEBUG" ]; then
-    tar -zxvf $BASE/lyx-build/lyx-$VERSION.tar.gz >/dev/null;
+    tar -zxvf "$BASE/lyx-build/lyx-$VERSION.tar.gz" >/dev/null;
     diff -urN -x .svn -x version.cpp lyx-$LAST lyx-$PKG_VERSION > patch;
     echo -n "Please check the patch...";
     read;
     $EDITOR patch;
 else
-    $DEBUG tar -zxvf $BASE/lyx-build/lyx-$VERSION.tar.gz;
+    $DEBUG tar -zxvf "$BASE/lyx-build/lyx-$VERSION.tar.gz";
     $DEBUG diff -urN -x .svn -x version.cpp lyx-$LAST lyx-$PKG_VERSION;
 fi
 
@@ -199,13 +199,13 @@ elif [ "$LASTNUM" = "2" ]; then
 fi
 NUM="$LASTNUM$NUMFIX";
 if [ -z "$DEBUG" ]; then
-    cat $BASE/lyx-export/development/tools/patch-preamble | \
+    cat "$BASE/lyx-export/development/tools/patch-preamble" | \
     sed -e "s/VERSION/$PKG_VERSION/; s/ORIGINAL/$ORIGINAL/; s/LAST/$LAST/; s/NUM/$NUM/;" >patch-preamble;
     echo -n "Please verify the patch preamble...";
     read
     $EDITOR patch-preamble;
     PATCH="patch-$VERSION";
-    cat patch-preamble $BASE/lyx-export/ANNOUNCE patch >$PATCH;
+    cat patch-preamble "$BASE/lyx-export/ANNOUNCE" patch >$PATCH;
     gzip -c $PATCH > $PATCH.gz
     if [ -f $PATCH.gz.sig ]; then
         rm $PATCH.gz.sig;
