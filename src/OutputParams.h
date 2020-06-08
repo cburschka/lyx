@@ -86,7 +86,7 @@ public:
 	MathFlavor math_flavor;
 
 	/** Are we to write a 'nice' LaTeX file or not.
-	    This esentially seems to mean whether InsetInclude, InsetGraphics
+	    This essentially seems to mean whether InsetInclude, InsetGraphics
 	    and InsetExternal should add the absolute path to any external
 	    files or not.
 	    Non-nice LaTeX also includes additional safe line breaks in order to
@@ -213,13 +213,13 @@ public:
 	 */
 	int depth;
 
-	/** Export data filled in by the latex(), docbook() etc methods.
+	/** Export data filled in by the latex(), docbook(), etc. methods.
 	    This is a hack: Make it possible to add stuff to constant
 	    OutputParams instances.
 	*/
 	std::shared_ptr<ExportData> exportdata;
 
-	/** Store labels, index entries (etc.) (in \ref post_macro)
+	/** Store labels, index entries, etc. (in \ref post_macro)
 	 *  and output them later. This is used in particular to get
 	 *  labels and index entries (and potentially other fragile commands)
 	 *  outside of moving arguments (bug 2154)
