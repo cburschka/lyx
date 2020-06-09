@@ -128,7 +128,6 @@
     #!include LangFile.nsh # included in MUI2 # Header file to create language files that can be included with a single command.
     !include x64.nsh # Header file to check if target system is 64 bit or not with ${RunningX64}, also defines ${DisableX64FSRedirection} and ${EnableX64FSRedirection}
     !include NSISList.nsh # Header file to create and work with lists in NSIS (plugin)
-    !include nsProcess.nsh # Header file to search for a running process (plugin)
 
     #!include StrFunc.nsh # included in MultiUser # Provides some additional string functions
     ${StrRep} # Define this function from StrFunc.nsh for further use
