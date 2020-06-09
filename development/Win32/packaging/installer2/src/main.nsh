@@ -964,6 +964,10 @@ Section -ConfigureScript # Runs the configure.py script
   ${EndIf}
   StrCpy $LaTeXInstalled $R9 # FIXME remove
   DetailPrint $(TEXT_CONFIGURE_LYX) # Uses R9 to display the name of the installed latex distribution
+  
+  Call PrepareShellCTX
+  SetShellVarContext current # Otherwise $APPDATA would return C:\ProgrammData instead of C:\Users\username\AppData\Roaming
+  SetOutPath "$APPDATA\LyX${VERSION_MAJOR}.${VERSION_MINOR}" # Need to run configure from the user dir, because it creates .lst files and some folders.
   nsExec::ExecToLog '"$INSTDIR\Python\python.exe" "$INSTDIR\Resources\configure.py"'
   Pop $0 # Return value
 SectionEnd
