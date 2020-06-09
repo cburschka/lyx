@@ -578,6 +578,9 @@ Style Course
 	EndFont
 End
 
+
+# The addORCIDlink{}{} latex command can be used in the preamble,
+# but also inside some other style like note, paragraph etc
 Style addORCIDlink
 	Category              FrontMatter
 	InTitle               1
@@ -586,13 +589,35 @@ Style addORCIDlink
 	LatexName             addORCIDlink
 	LatexType             Command
 	Margin                Dynamic
-	LeftMargin MMN
-	RightMargin MMN
+	LeftMargin            MMN
+	RightMargin           MMN
 	Align Block
-	Argument	1
-	  LabelString "Author-name"
-	  Tooltip ORCID
-	  Mandatory     1
+	Argument              1
+	  LabelString         "Author-name"
+	  Tooltip             ORCID
+	  Mandatory           1
+	EndArgument
+End
+
+
+# To be used inside the document body
+InsetLayout Flex:addORCIDlink
+	LabelString           "ORCID-link: "
+	LatexName             addORCIDlink
+	Decoration            none
+	LatexType             Command
+	LyxType               custom
+	Argument              1
+	  LabelString         "Author-name"
+	  Mandatory           1
+	AutoInsert            1
+	Decoration            none
+	EndArgument
+	Argument              2
+	  LabelString         ORCID
+	  AutoInsert          1
+	  Mandatory           1
+	  Decoration          none
 	EndArgument
 End
 
