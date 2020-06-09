@@ -600,7 +600,7 @@ contributors = [
                  "henrychern () yandex ! com",
                  "GPL",
                  "[no subject]",
-                 "msg211380",
+                 "m=159048578028108",
                  "26 May 2020",
                  u"Russian Translation of the User Guide"),
 
@@ -616,7 +616,7 @@ contributors = [
                  "technikmagma () gmail ! com",
                  "GPL",
                  "Contribution license",
-                 "msg210143",
+                 "m=157822065931930",
                  "5 January 2020",
                  u"Windows installation improvements"),
 
@@ -648,7 +648,7 @@ contributors = [
                  "dourouc05 () gmail ! com",
                  "GPL",
                  "Re: Patches to improve compatibility with modern C++ standard",
-                 "msg211215",
+                 "m=158862338815864",
                  "4 May 2020",
                  u"Windows compatibility patches"),
 
@@ -2080,7 +2080,7 @@ contributors = [
                  "rvishnampet () gmail ! com",
                  "GPL",
                  "Re: [Patch] -fobjc-exceptions for compiling linkback sources with g++ on Mac",
-                 "",
+                 "m=139265874002562",
                  "17 February 2014",
                  u"Support for g++ on 4.8 Mac"),
 
@@ -2088,7 +2088,7 @@ contributors = [
                  "pdvisschere () edpnet ! be",
                  "GPL",
                  "Re: Blanket permission",
-                 "msg209960",
+                 "m=157529692807608",
                  "2 December 2019",
                  u"Improvements to the CMake build scripts"),
 
