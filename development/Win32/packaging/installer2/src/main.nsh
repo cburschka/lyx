@@ -126,7 +126,7 @@
 
     #!include LogicLib.nsh # included in MUI2 # Allows using logic commands (such as ${If}..${Else}..${EndIf})
     #!include LangFile.nsh # included in MUI2 # Header file to create language files that can be included with a single command.
-    !include x64.nsh # Header file to check if target system is 64 bit or not with ${RunningX64}
+    !include x64.nsh # Header file to check if target system is 64 bit or not with ${RunningX64}, also defines ${DisableX64FSRedirection} and ${EnableX64FSRedirection}
     !include NSISList.nsh # Header file to create and work with lists in NSIS (plugin)
     !include nsProcess.nsh # Header file to search for a running process (plugin)
 
@@ -297,13 +297,6 @@ Function .onInit # Callback function, called at the very beginning, when user do
     MessageBox MB_OK|MB_ICONSTOP "LyX ${APP_VERSION} requires Windows 7 or newer." /SD IDOK
     Quit
   ${endif}
-  
-  # Check that LyX is not currently running
-  ${nsProcess::FindProcess} "LyX.exe" $R0
-  ${if} $R0 == "0"
-    MessageBox MB_OK|MB_ICONSTOP "$(UnInstallRunning)" /SD IDOK
-    Quit
-  ${endif}
 
   Call PrepareShellCTX # MULTIUSER_INIT should search in the right registry view
   !insertmacro MULTIUSER_INIT # Verify multiuser privileges
@@ -341,6 +334,23 @@ Function .onInit # Callback function, called at the very beginning, when user do
   ${Loop}
 FunctionEnd
 
+Function CheckIfRunning # Check that LyX in $INSTDIR is not currently running, called from Function VerifyInstDir and Section -CheckSilent (if silentinstall)
+  ${If} ${RunningX64}
+    ${DisableX64FSRedirection} # We need the following process to be 64 bit on 64 bit system
+  ${EndIf}
+  nsExec::ExecToStack "powershell (Get-Process LyX).Path"
+  Pop $0 # Exit code
+  Pop $0 # Result string
+  ${If} ${RunningX64}
+    ${EnableX64FSRedirection} # Need to be anabled asap or installer might crash
+  ${EndIf}
+  ${StrStr} $0 $0 "$INSTDIR\bin\LyX.exe"
+  ${If} $0 != ""
+    MessageBox MB_OK|MB_ICONSTOP "$(UnInstallRunning)" /SD IDOK
+    Abort # Abort leaving the page (when called from the page callback) / Abort install (when called from the section)
+  ${EndIf}
+FunctionEnd
+
 Function VerifyInstDir # Custom Function, called when leaving directory page
   # if the $INSTDIR does not contain "LyX" we must add a subfolder to avoid that LyX will e.g.
   # be installed directly to "C:\Program Files" - the uninstaller will then delete the whole
@@ -351,6 +361,8 @@ Function VerifyInstDir # Custom Function, called when leaving directory page
     ${NSD_SetText} $mui.DirectoryPage.Directory $INSTDIR # Refresh Textbox
     Abort # Abort leaving the page
   ${EndIf}
+
+  Call CheckIfRunning
 FunctionEnd
 
 Function RetrieveSMState # Custom function, called after the Startmenu page has been created
@@ -489,6 +501,8 @@ Section -CheckSilent # This section checks if it's a silent install and calls ne
   ${EndIf}
 
   # .onInit is called
+
+  Call CheckIfRunning
 
   Call RetrieveSMState
 
@@ -990,11 +1004,20 @@ FunctionEnd
 
 Function un.onInit # Callback function, called when the uninstaller initializes
   # Check that LyX is not currently running
-  ${nsProcess::FindProcess} "LyX.exe" $R0
-  ${If} $R0 == "0"
+  ${If} ${RunningX64}
+    ${DisableX64FSRedirection} # We need the following process to be 64 bit on 64 bit system
+  ${EndIf}
+  nsExec::ExecToStack "powershell (Get-Process LyX).Path"
+  Pop $0 # Exit code
+  Pop $0 # Result string
+  ${If} ${RunningX64}
+    ${EnableX64FSRedirection} # Need to be anabled asap or installer might crash
+  ${EndIf}
+  ${UnStrStr} $0 $0 "$INSTDIR\bin\LyX.exe"
+  ${If} $0 != ""
     MessageBox MB_OK|MB_ICONSTOP "$(UnInstallRunning)" /SD IDOK
-    Quit
-  ${endif}
+    Quit # Quit uninstaller
+  ${EndIf}
 
   Call un.PrepareShellCTX
   !insertmacro MULTIUSER_UNINIT
