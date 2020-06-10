@@ -239,6 +239,8 @@ Var ConfigureReturn
 Section -ConfigureScript
 
   DetailPrint $(TEXT_CONFIGURE_LYX)
+  SetShellVarContext current
+  SetOutPath "$APPDATA\${APP_DIR_USERDATA}"
   nsExec::ExecToLog '"$INSTDIR\Python\python.exe" "$INSTDIR\Resources\configure.py"'
   # $ConfigureReturn is "0" if successful, otherwise "1"
   Pop $ConfigureReturn # Return value
