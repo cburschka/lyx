@@ -203,9 +203,11 @@ void InsetMathFont::mathmlize(MathStream & os) const
 		variant = "normal";
 	else if (tag == "frak" || tag == "mathfrak")
 		variant = "fraktur";
-	else if (tag == "mathbb" || tag == "mathbf"
-	         || tag == "textbf")
+	else if (tag == "mathbf" || tag == "textbf")
 		variant = "bold";
+	else if (tag == "mathbb" || tag == "mathbbm"
+	         || tag == "mathds")
+		variant = "double-struck";
 	else if (tag == "mathcal")
 		variant = "script";
 	else if (tag == "mathit" || tag == "textsl"
