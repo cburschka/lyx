@@ -68,7 +68,7 @@ function(get_font_destination _result)
     set(_dir "${LYX_DATA_SUBDIR}fonts/")
   elseif(UNIX)
     # at least on ubuntu
-    set(_dir "share/${_lyx}/fonts/")
+    set(_dir "share/fonts/${_lyx}/")
   else()
     message(FATAL_ERROR "Unhandled platform")
   endif()
