@@ -567,7 +567,7 @@ int InsetText::plaintext(odocstringstream & os,
 	for (; it != end; ++it) {
 		if (it != beg) {
 			os << '\n';
-			if (runparams.linelen > 0)
+			if (runparams.linelen > 0 && !getLayout().parbreakIsNewline())
 				os << '\n';
 		}
 		odocstringstream oss;
