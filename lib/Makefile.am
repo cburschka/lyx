@@ -2541,7 +2541,7 @@ dist_articletemplates_DATA = \
 	templates/Articles/American_Astronomical_Society_%28AASTeX_v._6.2%29.lyx \
 	templates/Articles/American_Economic_Association_%28AEA%29.lyx \
 	templates/Articles/American_Psychological_Association_%28APA%29.lyx \
-	templates/Articles/American_Psychological_Association_%28APA_v.7%29.lyx \
+	templates/Articles/American_Psychological_Association_%28APA%29,_v._7.lyx \
 	templates/Articles/Association_for_Computing_Machinery_%28ACM%29.lyx \
 	templates/Articles/Astronomy_%26_Astrophysics.lyx \
 	templates/Articles/Chinese_Article_%28CTeX%29.lyx \
