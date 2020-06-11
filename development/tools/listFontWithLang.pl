@@ -200,6 +200,7 @@ my %ftypes = (
   100 => "Sans",
   110 => "Script",
   120 => "Fraktur",
+  125 => "DoubleStroke",
   130 => "Fancy",
   140 => "Initials",
   200 => "Symbol",
@@ -349,6 +350,7 @@ my %symbolFonts = (
   "d" => qr/^(dingbats|drmsym|d05)/i,
   "e" => qr/^(elusiveicons|emoji|esint|euterpe)/i,
   "f" => qr/^(fandol.?brail|fdsymbol|fourierorns|font(awesome|ello|.?mfizz))/i,
+  "g" => qr/^(gan.?clm|gfs.?(baskerville|gazis|olga|porson|solomos|(bodoni|didot|complutum).?classic))/i,
   "h" => qr/^(hots)/i,
   "j" => qr/^jsmath.?(msam|cmsy|masm|msbm|wasy|cmex|stmary)/i,
   "m" => qr/^(marvosym|material|msam|msbm)/i,
@@ -700,6 +702,9 @@ sub getftype($$)
     elsif ($fontname !~ /initials/i) {
       return($ftypes{0});    # Serif
     }
+  }
+  elsif ($fontname =~ /bbold|msbm|^dsrom/i) {
+    return($ftypes{125});  # Double stroke (math font)
   }
   # Now check for fonts without a hint in font name
   if ($fontname =~ /^([a-z])/i) {
