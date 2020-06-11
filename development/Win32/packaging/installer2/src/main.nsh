@@ -1014,7 +1014,7 @@ Function un.onInit # Callback function, called when the uninstaller initializes
   Pop $0 # Exit code
   Pop $0 # Result string
   ${If} ${RunningX64}
-    ${EnableX64FSRedirection} # Need to be anabled asap or installer might crash
+    ${EnableX64FSRedirection} # Need to be enabled asap or installer might crash
   ${EndIf}
   ${UnStrStr} $0 $0 "$INSTDIR\bin\LyX.exe"
   ${If} $0 != ""
