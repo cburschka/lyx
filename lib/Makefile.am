@@ -502,6 +502,7 @@ dist_fonts_DATA = \
 	fonts/cmmi10.ttf \
 	fonts/cmr10.ttf \
 	fonts/cmsy10.ttf \
+	fonts/dsrom10.ttf \
 	fonts/esint10.ttf \
 	fonts/eufm10.ttf \
 	fonts/msam10.ttf \
