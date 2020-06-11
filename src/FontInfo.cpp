@@ -493,6 +493,7 @@ string getFamilyCSS(FontFamily const & f)
 	case CMEX_FAMILY:
 	case MSA_FAMILY:
 	case MSB_FAMILY:
+	case DS_FAMILY:
 	case EUFRAK_FAMILY:
 	case RSFS_FAMILY:
 	case STMARY_FAMILY:

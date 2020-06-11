@@ -423,6 +423,7 @@ ToolbarSet
 		Item "Italic	\\mathit" "math-insert \mathit"
 		Item "Typewriter	\\mathtt" "math-insert \mathtt"
 		Item "Blackboard	\\mathbb" "math-insert \mathbb"
+		Item "Double stroke	\\mathds" "math-insert \mathds"
 		Item "Fraktur	\\mathfrak" "math-insert \mathfrak"
 		Item "Calligraphic	\\mathcal" "math-insert \mathcal"
 		Item "Formal Script	\\mathscr" "math-insert \mathscr"
