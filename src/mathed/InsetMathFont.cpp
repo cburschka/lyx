@@ -223,17 +223,11 @@ void InsetMathFont::mathmlize(MathStream & os) const
 		variant = "monospace";
 	// no support at present for textipa, textsc, noun
 
-	if (!variant.empty()) {
-		if (tag == "mathbb" || tag == "mathds") {
-			os << MTag("mstyle", "class='mathbb' mathvariant='" + variant + "'")
-			   << cell(0)
-			   << ETag("mstyle");
-		} else {
-			os << MTag("mstyle", "mathvariant='" + variant + "'")
-				 << cell(0)
-				 << ETag("mstyle");
-		}
-	} else
+	if (!variant.empty())
+		os << MTag("mstyle", "mathvariant='" + variant + "'")
+		   << cell(0)
+		   << ETag("mstyle");
+	else
 		os << cell(0);
 }
 
