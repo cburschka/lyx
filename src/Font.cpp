@@ -59,7 +59,7 @@ namespace {
 char const * LaTeXFamilyNames[NUM_FAMILIES + 2] =
 { "textrm", "textsf", "texttt", "error1", "error2", "error3", "error4",
   "error5", "error6", "error7", "error8", "error9", "error10", "error11",
-  "error12", "error13" };
+  "error12", "error13", "error14" };
 
 char const * LaTeXSeriesNames[NUM_SERIES + 2] =
 { "textmd", "textbf", "error4", "error5" };

@@ -41,7 +41,7 @@ namespace lyx {
 
 char const * GUIFamilyNames[NUM_FAMILIES + 2 /* default & error */] =
 { N_("Roman"), N_("Sans Serif"), N_("Typewriter"), N_("Symbol"),
-  "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "eufrak", "rsfs", "stmry",
+  "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "ds", "eufrak", "rsfs", "stmry",
   "wasy", "esint", N_("Inherit"), N_("Ignore") };
 
 char const * GUISeriesNames[NUM_SERIES + 2 /* default & error */] =
@@ -65,7 +65,7 @@ char const * GUIMiscNames[5] =
 //
 char const * LyXFamilyNames[NUM_FAMILIES + 2 /* default & error */] =
 { "roman", "sans", "typewriter", "symbol",
-  "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "eufrak", "rsfs", "stmry",
+  "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "ds", "eufrak", "rsfs", "stmry",
   "wasy", "esint", "default", "error" };
 
 char const * LyXSeriesNames[NUM_SERIES + 2 /* default & error */] =
