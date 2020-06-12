@@ -1,12 +1,12 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 592
+\lyxformat 594
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin /systemlyxdir/doc/
 \textclass article
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package none
 \inputencoding utf8
@@ -84,6 +84,7 @@
 \author -1402925745 "Günter Milde"
 \author -1174727462 "Kornel Benko" Kornel.Benko@berlin.de
 \author -712698321 "Jürgen Spitzmüller"
+\author 5863344 "Enrico Forestieri"
 \end_header
 
 \begin_body
@@ -622,6 +623,83 @@ CrimsonPro
 CrimsonPro
 \emph default
  serif font, an enhanced redesign of Crimson (Cochineal).
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 5863344 1591959130
+Doublestroke
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 5863344 1591958458
+Found: 
+\begin_inset Info
+type  "package"
+arg   "dsfont"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 5863344 1591958483
+CTAN: 
+\family typewriter
+fonts/doublestroke
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 5863344 1591958738
+Notes: The package 
+\family sans
+doublestroke
+\family default
+ provides a font based on Computer Modern Roman useful for typesetting (through
+ the command 
+\family typewriter
+
+\backslash
+mathds
+\family default
+) the mathematical symbols for the natural numbers (
+\begin_inset Formula $\mathds{N}$
+\end_inset
+
+), whole numbers (
+\begin_inset Formula $\mathds{Z}$
+\end_inset
+
+), rational numbers (
+\begin_inset Formula $\mathds{Q}$
+\end_inset
+
+), real numbers (
+\begin_inset Formula $\mathds{R}$
+\end_inset
+
+) and complex numbers (
+\begin_inset Formula $\mathds{C}$
+\end_inset
+
+); coverage includes all Roman capital letters, ‘
+\begin_inset Formula $\mathds{1}$
+\end_inset
+
+’, ‘
+\begin_inset Formula $\mathds{h}$
+\end_inset
+
+’ and ‘
+\begin_inset Formula $\mathds{k}$
+\end_inset
+
+’.
 \change_unchanged
 
 \end_layout
