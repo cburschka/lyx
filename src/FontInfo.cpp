@@ -39,7 +39,7 @@ namespace lyx {
 //
 char const * LyXFamilyNames[NUM_FAMILIES + 2 /* default & error */] =
 { "roman", "sans", "typewriter", "symbol",
-  "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "eufrak", "rsfs", "stmry",
+  "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "ds", "eufrak", "rsfs", "stmry",
   "wasy", "esint", "default", "error" };
 
 char const * LyXSeriesNames[NUM_SERIES + 2 /* default & error */] =
@@ -443,6 +443,7 @@ string getFamilyCSS(FontFamily const & f)
 	case CMEX_FAMILY:
 	case MSA_FAMILY:
 	case MSB_FAMILY:
+	case DS_FAMILY:
 	case EUFRAK_FAMILY:
 	case RSFS_FAMILY:
 	case STMARY_FAMILY:

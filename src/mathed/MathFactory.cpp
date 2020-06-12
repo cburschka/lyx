@@ -272,6 +272,8 @@ void initSymbols()
 					tmp.requires = "wasysym";
 				else if (tmp.inset == "mathscr")
 					tmp.requires = "mathrsfs";
+				else if (tmp.inset == "mathds")
+					tmp.requires = "dsfont";
 			}
 
 			// symbol font is not available sometimes

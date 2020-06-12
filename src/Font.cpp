@@ -58,7 +58,7 @@ namespace {
 
 char const * GUIFamilyNames[NUM_FAMILIES + 2 /* default & error */] =
 { N_("Roman"), N_("Sans Serif"), N_("Typewriter"), N_("Symbol"),
-  "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "eufrak", "rsfs", "stmry",
+  "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "ds", "eufrak", "rsfs", "stmry",
   "wasy", "esint", N_("Inherit"), N_("Ignore") };
 
 char const * GUISeriesNames[NUM_SERIES + 2 /* default & error */] =
@@ -82,7 +82,7 @@ char const * GUIMiscNames[5] =
 char const * LaTeXFamilyNames[NUM_FAMILIES + 2] =
 { "textrm", "textsf", "texttt", "error1", "error2", "error3", "error4",
   "error5", "error6", "error7", "error8", "error9", "error10", "error11",
-  "error12", "error13" };
+  "error12", "error13", "error14" };
 
 char const * LaTeXSeriesNames[NUM_SERIES + 2] =
 { "textmd", "textbf", "error4", "error5" };

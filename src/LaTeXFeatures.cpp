@@ -1020,7 +1020,8 @@ char const * simplefeatures[] = {
 	"todonotes",
 	"forest",
 	"varwidth",
-	"environ"
+	"environ",
+	"dsfont"
 };
 
 char const * bibliofeatures[] = {

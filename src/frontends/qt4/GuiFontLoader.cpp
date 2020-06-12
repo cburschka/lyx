@@ -36,8 +36,8 @@ using namespace std;
 using namespace lyx::support;
 
 QString const math_fonts[] = {"cmex10", "cmmi10", "cmr10", "cmsy10",
-	"esint10", "eufm10", "msam10", "msbm10", "rsfs10", "stmary10",
-	"wasy10"};
+	"dsrom10", "esint10", "eufm10", "msam10", "msbm10", "rsfs10",
+	"stmary10", "wasy10"};
 int const num_math_fonts = sizeof(math_fonts) / sizeof(*math_fonts);
 
 namespace lyx {
@@ -77,6 +77,7 @@ SymbolFont symbol_fonts[] = {
 	{ CMEX_FAMILY,  "cmex10", "-*-cmex10-*-*-*-*-*-*-*-*-*-*-*-*" },
 	{ MSA_FAMILY,   "msam10", "-*-msam10-*-*-*-*-*-*-*-*-*-*-*-*" },
 	{ MSB_FAMILY,   "msbm10", "-*-msbm10-*-*-*-*-*-*-*-*-*-*-*-*" },
+	{ DS_FAMILY,    "dsrom10", "-*-dsrom10-*-*-*-*-*-*-*-*-*-*-*-*" },
 	{ EUFRAK_FAMILY,"eufm10", "-*-eufm10-medium-*-*-*-*-*-*-*-*-*-*-*" },
 	{ RSFS_FAMILY,  "rsfs10", "-*-rsfs10-medium-*-*-*-*-*-*-*-*-*-*-*" },
 	{ STMARY_FAMILY,"stmary10","-*-stmary10-medium-*-*-*-*-*-*-*-*-*-*-*" },

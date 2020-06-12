@@ -134,6 +134,8 @@ void InsetMathFont::validate(LaTeXFeatures & features) const
 			features.require("tipa");
 		if (fontname == "ce" || fontname == "cf")
 			features.require("mhchem");
+		if (fontname == "mathds")
+			features.require("dsfont");
 	} else if (features.runparams().math_flavor == OutputParams::MathAsHTML) {
 		features.addCSSSnippet(
 			"span.normal{font: normal normal normal inherit serif;}\n"
@@ -163,9 +165,11 @@ void InsetMathFont::htmlize(HtmlStream & os) const
 		variant = "normal";
 	else if (tag == "frak" || tag == "mathfrak")
 		variant = "fraktur";
-	else if (tag == "mathbb" || tag == "mathbf"
-	         || tag == "textbf")
+	else if (tag == "mathbf" || tag == "textbf")
 		variant = "bold";
+	else if (tag == "mathbb" || tag == "mathbbm"
+	         || tag == "mathds")
+		variant = "double-struck";
 	else if (tag == "mathcal")
 		variant = "script";
 	else if (tag == "mathit" || tag == "textsl"
@@ -203,9 +207,11 @@ void InsetMathFont::mathmlize(MathStream & os) const
 		variant = "normal";
 	else if (tag == "frak" || tag == "mathfrak")
 		variant = "fraktur";
-	else if (tag == "mathbb" || tag == "mathbf"
-	         || tag == "textbf")
+	else if (tag == "mathbf" || tag == "textbf")
 		variant = "bold";
+	else if (tag == "mathbb" || tag == "mathbbm"
+	         || tag == "mathds")
+		variant = "double-struck";
 	else if (tag == "mathcal")
 		variant = "script";
 	else if (tag == "mathit" || tag == "textsl"
@@ -217,17 +223,11 @@ void InsetMathFont::mathmlize(MathStream & os) const
 		variant = "monospace";
 	// no support at present for textipa, textsc, noun
 
-	if (!variant.empty()) {
-		if (tag == "mathbb") {
-			os << MTag("mstyle", "class='mathbb' mathvariant='" + variant + "'")
-			   << cell(0)
-			   << ETag("mstyle");
-		} else {
-			os << MTag("mstyle", "mathvariant='" + variant + "'")
-				 << cell(0)
-				 << ETag("mstyle");
-		}
-	} else
+	if (!variant.empty())
+		os << MTag("mstyle", "mathvariant='" + variant + "'")
+		   << cell(0)
+		   << ETag("mstyle");
+	else
 		os << cell(0);
 }
 
