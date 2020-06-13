@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-05-03 13:31+0200\n"
-"PO-Revision-Date: 2020-06-05 18:17+0300\n"
+"PO-Revision-Date: 2020-06-13 00:07+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -1095,8 +1095,8 @@ msgid ""
 "Force upper case in names (\"Del Piero\", not \"del Piero\"), if the current "
 "citation style supports this."
 msgstr ""
-"Принудительный верхний регистр в именах (\"Del Piero\", вместо \"del Piero"
-"\"), если текущий стиль это поддерживает."
+"Принудительный верхний регистр в именах (\"Да Винчи\", вместо \"да Винчи\"), "
+"если текущий стиль это поддерживает."
 
 #: src/frontends/qt/ui/CitationUi.ui:401
 msgid "Force upcas&ing"
@@ -1138,7 +1138,7 @@ msgstr "Установить цвет по умолчанию"
 
 #: src/frontends/qt/ui/ColorUi.ui:99
 msgid "Greyed-out notes:"
-msgstr "Серые заметки:"
+msgstr "Серый текст:"
 
 #: src/frontends/qt/ui/ColorUi.ui:118 src/frontends/qt/ui/ColorUi.ui:256
 #: src/frontends/qt/GuiDocument.cpp:2148 src/frontends/qt/GuiDocument.cpp:2178
@@ -2977,7 +2977,7 @@ msgstr "&Столбцов:"
 #: src/frontends/qt/ui/MathMatrixUi.ui:122
 #: src/frontends/qt/ui/TabularCreateUi.ui:112
 msgid "Resize this to the correct table dimensions"
-msgstr "Изменить размер до допустимых размеров таблицы"
+msgstr "Меняйте размер этой таблицы для задания размера матрицы"
 
 #: src/frontends/qt/ui/MathMatrixUi.ui:185 src/frontends/qt/ui/WrapUi.ui:33
 msgid "Vertical alignment"
@@ -3021,7 +3021,7 @@ msgstr "Не загружать"
 
 #: src/frontends/qt/ui/MathsUi.ui:76
 msgid "Indent displayed formulas instead of centering"
-msgstr "Отступ для отображаемых формул вместо центрирования"
+msgstr "Отступ для выделенных формул вместо центрирования"
 
 #: src/frontends/qt/ui/MathsUi.ui:79
 msgid "Indent &formulas"
@@ -11206,11 +11206,11 @@ msgstr "Колонтитулы"
 
 #: lib/layouts/customHeadersFooters.module:21
 msgid "Even Header"
-msgstr "Чётный заголовок"
+msgstr "Чётный колонтитул"
 
 #: lib/layouts/customHeadersFooters.module:22
 msgid "Alternative text for the even header"
-msgstr "Альтернативный текст для чётного заголовка"
+msgstr "Альтернативный текст для колонтитула на чётных страницах"
 
 #: lib/layouts/customHeadersFooters.module:34
 msgid "Center Header"
@@ -12287,7 +12287,7 @@ msgstr "До изображения"
 
 #: lib/layouts/europasscv.layout:167 lib/layouts/europecv.layout:102
 msgid "Space before picture:"
-msgstr "Отступ до изображения:"
+msgstr "Промежуток до изображения:"
 
 #: lib/layouts/europasscv.layout:170 lib/layouts/europecv.layout:105
 msgid "Picture"
@@ -12307,20 +12307,20 @@ msgstr "После изображения"
 
 #: lib/layouts/europasscv.layout:184 lib/layouts/europecv.layout:120
 msgid "Space after picture:"
-msgstr "Отступ после изображения:"
+msgstr "Промежуток после изображения:"
 
 #: lib/layouts/europasscv.layout:195 lib/layouts/europasscv.layout:218
 #: lib/layouts/europasscv.layout:254 lib/layouts/europecv.layout:162
 #: lib/layouts/europecv.layout:222 src/insets/Inset.cpp:117
 #: src/insets/InsetVSpace.cpp:123
 msgid "Vertical Space"
-msgstr "Вертикальный отступ"
+msgstr "Вертикальный промежуток"
 
 #: lib/layouts/europasscv.layout:196 lib/layouts/europasscv.layout:219
 #: lib/layouts/europasscv.layout:255 lib/layouts/europecv.layout:163
 #: lib/layouts/europecv.layout:223
 msgid "Additional vertical space"
-msgstr "Дополнительный верт. отступ"
+msgstr "Дополнительный верт. промежуток"
 
 #: lib/layouts/europasscv.layout:212 lib/layouts/europecv.layout:156
 #: lib/layouts/moderncv.layout:384
@@ -12535,11 +12535,11 @@ msgstr "Персональные данные"
 
 #: lib/layouts/europecv.layout:308
 msgid "VerticalSpace"
-msgstr "Вертикальный отступ"
+msgstr "Вертикальный промежуток"
 
 #: lib/layouts/europecv.layout:313
 msgid "Vertical space"
-msgstr "Вертикальный отступ"
+msgstr "Вертикальный промежуток"
 
 #: lib/layouts/extarticle.layout:3
 msgid "Article (Standard Class with Extra Font Sizes)"
@@ -16270,15 +16270,15 @@ msgstr "ниже"
 
 #: lib/layouts/scrclass.inc:332
 msgid "Dictum"
-msgstr "Афоризм"
+msgstr "Эпиграф"
 
 #: lib/layouts/scrclass.inc:342
 msgid "Dictum Author"
-msgstr "Автор афоризма"
+msgstr "Автор эпиграфа"
 
 #: lib/layouts/scrclass.inc:343
 msgid "The author of this dictum"
-msgstr "Автор этого афоризма"
+msgstr "Автор этого эпиграфа"
 
 #: lib/layouts/scrlettr.layout:3
 msgid "KOMA-Script Letter (V. 1, Obsolete)"
@@ -16350,7 +16350,7 @@ msgstr "KOMA-Script Letter (V. 2)"
 
 #: lib/layouts/scrlttr2.layout:76
 msgid "NextAddress"
-msgstr "СледующийАдрес"
+msgstr "Следующий адрес"
 
 #: lib/layouts/scrlttr2.layout:87
 msgid "Next Address:"
@@ -19531,11 +19531,11 @@ msgstr "Окружение AMS multline|m"
 
 #: lib/ui/stdcontext.inc:51 lib/ui/stdmenus.inc:325 lib/ui/stdmenus.inc:477
 msgid "Inline Formula|I"
-msgstr "Текстовая формула|с"
+msgstr "Формула|Ф"
 
 #: lib/ui/stdcontext.inc:52 lib/ui/stdmenus.inc:326
 msgid "Displayed Formula|D"
-msgstr "Отображаемая формула|ф"
+msgstr "Выделенная формула|В"
 
 #: lib/ui/stdcontext.inc:53 lib/ui/stdmenus.inc:327 lib/ui/stdmenus.inc:480
 msgid "Eqnarray Environment|E"
@@ -19547,7 +19547,7 @@ msgstr "Окружение AMS|A"
 
 #: lib/ui/stdcontext.inc:56 lib/ui/stdmenus.inc:243
 msgid "Number Whole Formula|N"
-msgstr "Нумеровать всю формулу|ф"
+msgstr "Нумеровать всю формулу|Н"
 
 #: lib/ui/stdcontext.inc:57 lib/ui/stdmenus.inc:244
 msgid "Number This Line|u"
@@ -20637,7 +20637,7 @@ msgstr "ПРОПИСНЫЕ|П"
 
 #: lib/ui/stdmenus.inc:191
 msgid "Lowercase|L"
-msgstr "Строчные|С"
+msgstr "строчные|с"
 
 #: lib/ui/stdmenus.inc:195
 msgid "Dissolve Text Style"
@@ -21113,7 +21113,7 @@ msgstr "Неразрывный пробел|п"
 
 #: lib/ui/stdmenus.inc:458
 msgid "Horizontal Space...|o"
-msgstr "Горизонтальный отступ...|Г"
+msgstr "Горизонтальный промежуток...|Г"
 
 #: lib/ui/stdmenus.inc:459
 msgid "Horizontal Line...|L"
@@ -21121,7 +21121,7 @@ msgstr "Горизонтальная линия..."
 
 #: lib/ui/stdmenus.inc:460
 msgid "Vertical Space...|V"
-msgstr "Вертикальный отступ..."
+msgstr "Вертикальный промежуток..."
 
 #: lib/ui/stdmenus.inc:461
 msgid "Phantom|m"
@@ -21141,11 +21141,11 @@ msgstr "Возможный разрыв строки|р"
 
 #: lib/ui/stdmenus.inc:478
 msgid "Display Formula|D"
-msgstr "Отображаемая формула|ж"
+msgstr "Выделенная формула|В"
 
 #: lib/ui/stdmenus.inc:479
 msgid "Numbered Formula|N"
-msgstr "Нумерованная формула|ф"
+msgstr "Нумерованная формула|Н"
 
 #: lib/ui/stdmenus.inc:503
 msgid "Figure Wrap Float|F"
@@ -21777,7 +21777,7 @@ msgstr "Формула"
 
 #: lib/ui/stdtoolbars.inc:189
 msgid "Set display mode"
-msgstr "Установить режим отображения"
+msgstr "Переключить выделение формулы"
 
 #: lib/ui/stdtoolbars.inc:191 src/insets/InsetScript.cpp:63
 msgid "Subscript"
@@ -22328,11 +22328,11 @@ msgstr "Стили и классы"
 
 #: lib/ui/stdtoolbars.inc:391
 msgid "Display style\t\\displaystyle"
-msgstr "Стиль отображаемой формулы\t\\displaystyle"
+msgstr "Стиль выделенной формулы\t\\displaystyle"
 
 #: lib/ui/stdtoolbars.inc:392
 msgid "Normal text style\t\\textstyle"
-msgstr "Стиль текстовой формулы\t\\textstyle"
+msgstr "Стиль обычной формулы\t\\textstyle"
 
 #: lib/ui/stdtoolbars.inc:393
 msgid "Script (small) style\t\\scriptstyle"
@@ -22388,7 +22388,7 @@ msgstr "Текстовая дробь\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:409
 msgid "Display fraction\t\\dfrac"
-msgstr "Отображаемая дробь\t\\dfrac"
+msgstr "Выделенная дробь\t\\dfrac"
 
 #: lib/ui/stdtoolbars.inc:410
 msgid "Continued fraction\t\\cfrac"
@@ -22412,7 +22412,7 @@ msgstr "Текстовый бином. коэффициент\t\\tbinom"
 
 #: lib/ui/stdtoolbars.inc:415
 msgid "Display binomial\t\\dbinom"
-msgstr "Отображаемый бином. коэффициент\t\\dbinom"
+msgstr "Выделенный бином. коэффициент\t\\dbinom"
 
 #: lib/ui/stdtoolbars.inc:419
 msgid "Roman\t\\mathrm"
@@ -31562,8 +31562,7 @@ msgstr "Текст после ссылки (например, \"стр.\")"
 #: src/frontends/qt/GuiCitation.cpp:320
 msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")."
 msgstr ""
-"Принудительный верхний регистр в именах (\"Del Piero\", вместо \"del Piero"
-"\")."
+"Принудительный верхний регистр в именах (\"Да Винчи\", вместо \"да Винчи\")."
 
 #: src/frontends/qt/GuiCitation.cpp:355
 msgid "Always list all authors (rather than using \"et al.\")"
@@ -32537,15 +32536,15 @@ msgstr "bp"
 
 #: src/frontends/qt/GuiGraphics.cpp:498 src/lengthcommon.cpp:41
 msgid "cm"
-msgstr "см"
+msgstr "cm"
 
 #: src/frontends/qt/GuiGraphics.cpp:498 src/lengthcommon.cpp:42
 msgid "mm"
-msgstr "мм"
+msgstr "mm"
 
 #: src/frontends/qt/GuiGraphics.cpp:498 src/lengthcommon.cpp:42
 msgid "in[[unit of measure]]"
-msgstr "дюйм"
+msgstr "in"
 
 #: src/frontends/qt/GuiGraphics.cpp:778
 msgid "Select graphics file"
@@ -32621,7 +32620,7 @@ msgstr ""
 
 #: src/frontends/qt/GuiHSpace.h:39
 msgid "Horizontal Space Settings"
-msgstr "Горизонтальный отступ"
+msgstr "Горизонтальный промежуток"
 
 #: src/frontends/qt/GuiHyperlink.h:35
 msgid "Hyperlink Settings"
@@ -33908,7 +33907,7 @@ msgstr "неподвижный"
 
 #: src/frontends/qt/GuiVSpace.h:40
 msgid "Vertical Space Settings"
-msgstr "Вертикальный отступ"
+msgstr "Вертикальный промежуток"
 
 #: src/frontends/qt/GuiView.cpp:162
 msgid ""
@@ -34859,11 +34858,11 @@ msgstr "Блок"
 
 #: src/insets/Inset.cpp:116
 msgid "Horizontal Space"
-msgstr "Горизонтальный отступ"
+msgstr "Горизонтальный промежуток"
 
 #: src/insets/Inset.cpp:165
 msgid "Horizontal Math Space"
-msgstr "Горизонтальный матем. отступ"
+msgstr "Горизонтальный матем. промежуток"
 
 #: src/insets/InsetArgument.cpp:146
 msgid "Unknown Argument"
@@ -35474,7 +35473,7 @@ msgstr ""
 
 #: src/insets/InsetIndex.cpp:288
 msgid "Index Entry"
-msgstr "Рубрика"
+msgstr "Рубрика указателя"
 
 #: src/insets/InsetIndex.cpp:474
 msgid "Unknown index type!"
@@ -36380,7 +36379,7 @@ msgstr "cc"
 
 #: src/lengthcommon.cpp:41
 msgid "dd"
-msgstr "пункт Дидо"
+msgstr "dd"
 
 #: src/lengthcommon.cpp:41
 msgid "em"
@@ -36396,11 +36395,11 @@ msgstr "mu"
 
 #: src/lengthcommon.cpp:42
 msgid "pc"
-msgstr "пика"
+msgstr "pc"
 
 #: src/lengthcommon.cpp:43
 msgid "pt"
-msgstr "пт"
+msgstr "pt"
 
 #: src/lengthcommon.cpp:43
 msgid "sp"
@@ -36408,31 +36407,31 @@ msgstr "sp"
 
 #: src/lengthcommon.cpp:43
 msgid "Text Width %"
-msgstr "От ширины текста в %"
+msgstr "% ширины текста"
 
 #: src/lengthcommon.cpp:44
 msgid "Column Width %"
-msgstr "От ширины колонки в %"
+msgstr "% ширины колонки"
 
 #: src/lengthcommon.cpp:44
 msgid "Page Width %"
-msgstr "От ширины страницы в %"
+msgstr "% ширины страницы"
 
 #: src/lengthcommon.cpp:44
 msgid "Line Width %"
-msgstr "От ширины строки в %"
+msgstr "% ширины строки"
 
 #: src/lengthcommon.cpp:45
 msgid "Text Height %"
-msgstr "От высоты текста в %"
+msgstr "% высоты текста"
 
 #: src/lengthcommon.cpp:45
 msgid "Page Height %"
-msgstr "От высоты страницы в %"
+msgstr "% высоты страницы"
 
 #: src/lengthcommon.cpp:45
 msgid "Line Distance %"
-msgstr "От междустрочного интервала в %"
+msgstr "% междустрочного интервала"
 
 #: src/lyxfind.cpp:236
 msgid "Search error"
@@ -36622,7 +36621,7 @@ msgstr "Неверный макрос! \\%1$s"
 
 #: src/mathed/InsetMathNest.cpp:1019
 msgid "create new math text environment ($...$)"
-msgstr "создать новую текстовую формулу ($...$)"
+msgstr "создать новое окружение для формулы ($...$)"
 
 #: src/mathed/InsetMathNest.cpp:1022
 msgid "entered math text mode (textrm)"
@@ -36642,7 +36641,7 @@ msgstr "Красивая ссылка"
 
 #: src/mathed/InsetMathRef.cpp:256
 msgid "FormatRef: "
-msgstr "ФорматСсылки: "
+msgstr "Формат ссылки: "
 
 #: src/mathed/InsetMathSize.cpp:107
 #, c-format
