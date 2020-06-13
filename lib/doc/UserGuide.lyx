@@ -160,6 +160,7 @@ logicalmkup
 \author -563046850 "Jean-Marc LASGOUTTES"
 \author -131811572 "Yuriy Skalko"
 \author 5863208 "ab"
+\author 5863344 "Enrico Forestieri"
 \author 1675569489 "Stephan Witt"
 \end_header
 
@@ -8488,14 +8489,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8508,7 +8507,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8532,7 +8530,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -28037,7 +28034,7 @@ Typefaces and the corresponding commands.
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="2">
+<lyxtabular version="3" rows="11" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -28208,6 +28205,37 @@ mathbb
 \end_inset
 </cell>
 </row>
+<row change="inserted 5863344 1592055455">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 5863344 1592055582
+\begin_inset Formula $\mathds{DOUBLESTROKE}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 5863344 1592055606
+
+\series bold
+
+\backslash
+mathds
+\end_layout
+
+\end_inset
+</cell>
+</row>
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -28275,7 +28303,7 @@ mathcal
 
 \begin_layout Plain Layout
 
-\change_inserted -131811572 1591595530
+\change_inserted -131811572 1591595416
 
 \shape up
 \size normal
@@ -28296,7 +28324,7 @@ mathcal
 
 \begin_layout Plain Layout
 
-\change_inserted -131811572 1591595587
+\change_inserted -131811572 1591595416
 
 \series bold
 
@@ -28358,6 +28386,8 @@ Note:
  You can only print capital letters in the typefaces 
 \family sans
 Blackboard
+\change_inserted 5863344 1592055666
+, Double stroke
 \change_deleted -131811572 1591595671
 
 \family default
