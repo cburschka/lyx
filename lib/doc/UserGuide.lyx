@@ -148,6 +148,7 @@ logicalmkup
 \html_be_strict true
 \author -712698321 "Jürgen Spitzmüller"
 \author 5863208 "ab"
+\author 5863344 "Enrico Forestieri"
 \end_header
 
 \begin_body
@@ -26764,7 +26765,7 @@ Typefaces and the corresponding commands.
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="2">
+<lyxtabular version="3" rows="11" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -26940,6 +26941,37 @@ mathbb
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 5863344 1592056341
+\begin_inset Formula $\mathds{DOUBLESTROKE}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 5863344 1592056356
+
+\series bold
+
+\backslash
+mathds
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 \begin_inset Formula $\mathfrak{Fraktur}$
 \end_inset
 
@@ -26997,6 +27029,37 @@ mathcal
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 5863344 1592056386
+\begin_inset Formula $\mathscr{SCRIPT}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 5863344 1592056396
+
+\series bold
+
+\backslash
+mathscr
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -27047,6 +27110,10 @@ Note:
  You can only print capital letters in the typefaces 
 \family sans
 Blackboard
+\change_inserted 5863344 1592056434
+, Double stroke, Script
+\change_unchanged
+
 \family default
  and 
 \family sans
