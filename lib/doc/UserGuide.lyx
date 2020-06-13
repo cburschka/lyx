@@ -158,6 +158,7 @@ logicalmkup
 \author -712698321 "Jürgen Spitzmüller"
 \author -584632292 "Richard Kimberly Heck"
 \author -563046850 "Jean-Marc LASGOUTTES"
+\author -131811572 "Yuriy Skalko"
 \author 5863208 "ab"
 \author 1675569489 "Stephan Witt"
 \end_header
@@ -28036,7 +28037,7 @@ Typefaces and the corresponding commands.
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="2">
+<lyxtabular version="3" rows="10" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -28268,6 +28269,44 @@ mathcal
 \end_inset
 </cell>
 </row>
+<row change="inserted -131811572 1591595416">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -131811572 1591595530
+
+\shape up
+\size normal
+\emph on
+\bar no
+\noun off
+\color none
+\begin_inset Formula $\mathscr{SCRIPT}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -131811572 1591595587
+
+\series bold
+
+\backslash
+mathscr
+\end_layout
+
+\end_inset
+</cell>
+</row>
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -28319,8 +28358,18 @@ Note:
  You can only print capital letters in the typefaces 
 \family sans
 Blackboard
+\change_deleted -131811572 1591595671
+
 \family default
- and 
+ 
+\change_inserted -131811572 1591595667
+, 
+\family sans
+Script
+\family default
+ 
+\change_unchanged
+and 
 \family sans
 Calligraphic
 \family default
