@@ -1163,6 +1163,9 @@ ordinarycolon      cmr          58  58    mathrel :             mathtools
 \def\lnot{\neg}                                                 mathord &not;
 \def\notin{\not\in}                                             mathrel &notin;
 
+\def\ddag{\ddagger}                                             mathbin &Dagger;
+\def\dag{\dagger}                                               mathbin &dagger;
+
 \def\joinrel{\mathrel{\kern-3mu}}
 \def\relbar{\lyxbar}
 \def\Relbar{\mathrel{=}}
