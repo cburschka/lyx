@@ -26574,7 +26574,7 @@ mathematische ! Schriftstile
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="2">
+<lyxtabular version="3" rows="11" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -26738,6 +26738,33 @@ mathbb
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $\mathds{DOPPELSTRICH}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+mathds
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 \begin_inset Formula $\mathfrak{Fraktur}$
 \end_inset
 
@@ -26784,6 +26811,33 @@ mathfrak
 
 \backslash
 mathcal
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathscr{SKRIPT}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+mathscr
 \end_layout
 
 \end_inset
@@ -26837,9 +26891,17 @@ status open
 \series bold
 Achtung:
 \series default
- Man kann nur Großbuchstaben in die Stile 
+ Großbuchstaben kann man nur in den Stilen 
 \family sans
 Blackboard
+\family default
+, 
+\family sans
+Doppelstrich
+\family default
+, 
+\family sans
+Skript
 \family default
  und 
 \family sans
