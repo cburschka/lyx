@@ -744,7 +744,9 @@ def revert_floatalignment(document):
             alcmd = put_cmd_in_ert("\\raggedleft{}")
         if len(alcmd) > 0:
             document.body[l+1:l+1] = alcmd
-        i = j
+        # There might be subfloats, so we do not want to move past
+        # the end of the inset.
+        i += 1
 
 def revert_tuftecite(document):
     """Revert \cite commands in tufte classes"""
