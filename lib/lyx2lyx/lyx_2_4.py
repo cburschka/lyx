@@ -696,13 +696,13 @@ def revert_floatpclass(document):
 
     i = 0
     while True:
-        i = find_token(document.body, '\\begin_inset Float', i+1)
+        i = find_token(document.body, '\\begin_inset Float', i + 1)
         if i == -1:
             break
         j = find_end_of_inset(document.body, i)
-        k = find_token(document.body, 'placement class', i, i + 2)
+        k = find_token(document.body, 'placement class', i, j)
         if k == -1:
-            k = find_token(document.body, 'placement document', i, i + 2)
+            k = find_token(document.body, 'placement document', i, j)
             if k != -1:
                 del document.body[k]
             continue
@@ -716,14 +716,14 @@ def revert_floatalignment(document):
 
     i = 0
     while True:
-        i = find_token(document.body, '\\begin_inset Float', i+1)
+        i = find_token(document.body, '\\begin_inset Float', i + 1)
         if i == -1:
             break
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Can't find end of inset at line " + str(i))
             continue
-        k = find_token(document.body, 'alignment', i, i+4)
+        k = find_token(document.body, 'alignment', i, j)
         if k == -1:
             i = j
             continue
