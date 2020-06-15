@@ -45,7 +45,7 @@ using namespace lyx::support;
 namespace lyx {
 
 
-docstring const & fontToHtmlTag(xml::FontTypes type)
+docstring const fontToHtmlTag(xml::FontTypes type)
 {
     switch(type) {
         case xml::FontTypes::FT_EMPH:
