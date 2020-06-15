@@ -34,6 +34,16 @@ use strict;
 use warnings;
 use Encode;
 use GetOptions;
+use constant {
+  SERIF => 1,
+  SANS => 2,
+  SCRIPT => 4,
+  FRAKTUR => 8,
+  DOUBLESTROKE => 16,
+  FANCY => 32,
+  INITIALS => 64,
+  SYMBOL => 128,
+};
 
 sub convertlang($);
 sub extractlist($$$);	# my ($l, $islang, $txt, $rres) = @_;
@@ -194,17 +204,20 @@ $format .= " file=\"%{file}\" abcd\\n";
 $cmd .= " -f '$format'";
 #print "$cmd\n";
 
+
 my %ftypes = (
   # Dummy internal map
-  0 => "Serif",
-  100 => "Sans",
-  110 => "Script",
-  120 => "Fraktur",
-  125 => "DoubleStroke",
-  130 => "Fancy",
-  140 => "Initials",
-  200 => "Symbol",
-  "default" => "Serif",
+  # using '()' to prevent the initializer to take
+  #    the key as a string. (Constants in perl _are_ functions without argument)
+  SERIF() => "Serif",
+  SANS() => "Sans",
+  SCRIPT() => "Script",
+  FRAKTUR() => "Fraktur",
+  DOUBLESTROKE() => "DoubleStroke",
+  FANCY() => "Fancy",
+  INITIALS() => "Initials",
+  SYMBOL() => "Symbol",
+  "default" => 1,
 );
 
 my %weights = (
@@ -271,13 +284,14 @@ my %fontpriority = (
   t1  => 1.4,              # type 1 (postscript)
   pfb => 1.5,              # type 1 (Printer Font Binary)
   pfa => 1.6,              # type 1 (Printer Font Ascii)
+  pfm => 2,                # requires associated .pfb file
   pcf => 5,                # Bitmap (Packaged Collaboration Files)?
 );
 my $nexttype = 6;
 
 # list of regexes for known sans serif fonts
 my %sansFonts = (
-  "value" => 100,          # Sans serif
+  "value" => SANS,          # Sans serif
   "a" => qr/^(aharoni|arial|andika|angostura|anonymous|arab|aroania|arimo|asap)/i,
   "b" => qr/^b(aekmuk|ebas|erenika|eteckna|euron|lue)/i,
   "c" => qr/^c(abin|aliban|antarell|arbon|arlito|handas|hivo|mu bright|omfortaa|omi[cx]|oolvetica|ortoba|ousine|uprum|wtex(hei|yen)|yklop|ypro)/i,
@@ -305,7 +319,7 @@ my %sansFonts = (
   "z" => qr/^(zekton|zero)/i,
 );
 my %scriptFonts = (
-  "value" => 110,          # Script
+  "value" => SCRIPT,          # Script
   "c" => qr/^(chancery)/i,
   "d" => qr/^(dancing)/i,
   "e" => qr/^(elegante)/i,
@@ -319,7 +333,7 @@ my %scriptFonts = (
 );
 
 my %fraktFonts = (
-  "value" => 120,          # Fraktur
+  "value" => FRAKTUR,          # Fraktur
   "e" => qr/^eufm/i,
   "j" => qr/^(jsmath.?euf)/i,
   "m" => qr/^(missaali)/i,
@@ -328,7 +342,7 @@ my %fraktFonts = (
 );
 
 my %fancyFonts = (
-  "value" => 130,          # Fancy
+  "value" => FANCY,          # Fancy
   "c" => qr/^(cretino)/i,
   "d" => qr/^dseg/i,
   "f" => qr/^frederika/i,
@@ -337,14 +351,13 @@ my %fancyFonts = (
 );
 
 my %initialFonts = (
-  "value" => 140,          # Initials
+  "value" => INITIALS,          # Initials
   "e" => qr/^(eb.?garamond.?init)/i,
-  "l" => qr/^(libertinus|linux).*initials/i,
   "y" => qr/^(yinit)/i,
 );
 
 my %symbolFonts = (
-  "value" => 200,          # Symbol
+  "value" => SYMBOL,          # Symbol
   "a" => qr/^(academicons)/i,
   "c" => qr/^(caladings|ccicons|chess|cmsy|cmex)/i,
   "d" => qr/^(dingbats|drmsym|d05)/i,
@@ -356,6 +369,7 @@ my %symbolFonts = (
   "m" => qr/^(marvosym|material|msam|msbm)/i,
   "n" => qr/^(noto.*emoji)/i,
   "o" => qr/^(octicons)/i,
+  "p" => qr/^patch/i,
   "q" => qr/^(qtdingbits)/i,
   "s" => qr/^stmary/i,
   "t" => qr/^(typicons|twemoji)/i,
@@ -415,7 +429,17 @@ if (open(FI,  "$cmd |")) {
       }
     }
     else {
-      $fontname = $fullname;
+      if ($fullname !~ /^font\d+$/) {
+        $fontname = $fullname;
+      }
+      else {
+        if ($family ne $style) {
+          $fontname = "$family $style";
+        }
+        else {
+          $fontname = $family;
+        }
+      }
     }
     if (defined($options{NFontName})) {
       for my $fn (@{$options{NFontName}}) {
@@ -681,30 +705,33 @@ sub addTxt($$)
 sub getftype($$)
 {
   my ($fontname, $style) = @_;
+  my $resftype = 0;
   if ($fontname =~ /(sans)[-_ ]?(serif)?/i) {
-    return($ftypes{100}); # Sans Serif
+    $resftype |= SANS;
   }
   elsif ($fontname =~ /gothic|dotum|gulim/i) {
     if ($fontname =~ /bisrat gothic/i) {
-      return($ftypes{0});    # Serif
+      $resftype |= SERIF;
     }
     else {
-      return($ftypes{100}); # Sans Serif
+      $resftype |= SANS;
     }
   }
-  elsif ($style eq "PatchSans" && $fontname eq "font") {
-    return($ftypes{200});  # Symbol
+  elsif ($fontname =~ /^(jsmath.?)?bbold|msbm|^(ds(rom|serif|ss))/i) {
+    $resftype |= DOUBLESTROKE;  # Double stroke (math font)
   }
-  elsif ($fontname =~ /serif|times|mincho|batang/i) {
+  if ($fontname =~ /serif|times|mincho|batang/i) {
     if ($fontname =~ /good times/i) {
-      return($ftypes{100}); # Sans Serif
-    }
-    elsif ($fontname !~ /initials/i) {
-      return($ftypes{0});    # Serif
+      $resftype |= SANS; # Sans Serif
     }
   }
-  elsif ($fontname =~ /bbold|msbm|^dsrom/i) {
-    return($ftypes{125});  # Double stroke (math font)
+  if ($fontname =~ /initial(s|en)/i) {
+    $resftype |= INITIALS;
+  }
+  if ($fontname =~ /symbol/i) {
+    if ($fontname !~ /^symbola/i) {
+      $resftype |= SYMBOL;
+    }
   }
   # Now check for fonts without a hint in font name
   if ($fontname =~ /^([a-z])/i) {
@@ -712,38 +739,49 @@ sub getftype($$)
     for my $rFonts (\%sansFonts, \%scriptFonts, \%fraktFonts, \%fancyFonts, \%initialFonts, \%symbolFonts) {
       if (defined($rFonts->{$key})) {
         if ($fontname =~ $rFonts->{$key}) {
-          return($ftypes{$rFonts->{"value"}});
+          $resftype |= $rFonts->{"value"};
         }
       }
     }
   }
   if ("$fontname" =~ /^bpg/i) {
     if ("$fontname" =~ /bpg (courier gpl|elite)/i) {
-      return($ftypes{0});    # Serif
+      $resftype |= SERIF;    # Serif
     }
     else {
-      return($ftypes{100}); # Sans Serif
+      $resftype |= SANS; # Sans Serif
     }
   }
   elsif ("$fontname" =~ /^dustismo/i) {
     if ("$fontname" =~ /^dustismo roman/i) {
-      return($ftypes{0});    # Serif
+      $resftype |= SERIF;    # Serif
     }
     else {
-      return($ftypes{100}); # Sans Serif
+      $resftype |= SANS; # Sans Serif
     }
   }
   elsif ("$fontname" =~ /^go\b/i) {
     if ("$fontname" =~ /^go mono/i) {
-      return($ftypes{0});    # Serif
+      $resftype |= SERIF;    # Serif
     }
     else {
-      return($ftypes{100}); # Sans Serif
+      $resftype |= SANS; # Sans Serif
     }
   }
-  else {
-    return(undef);
+  # Create the string
+  my @ft = ();
+  if ($resftype == 0) {
+    $resftype = $ftypes{default};
   }
+  elsif ($resftype & SANS) {
+    $resftype &= ~SERIF;
+  }
+  for (my $i = 1; $i < 513; $i *= 2) {
+    if ($resftype & $i) {
+      push(@ft, $ftypes{$i});
+    }
+  }
+  return(join(',', @ft));
 }
 
 sub getweight($$)
