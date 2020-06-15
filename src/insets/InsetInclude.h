@@ -159,7 +159,7 @@ private:
 	/// get the text displayed on the button
 	docstring screenLabel() const;
 	//@}
-	
+
 	/// holds the entity name that defines the file location (XML)
 	docstring const include_label;
 

@@ -3074,11 +3074,11 @@ void doFontSwitchXHTML(vector<xml::FontTag> & tagsToOpen,
 
 
 docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
-										 XMLStream & xs,
-										 OutputParams const & runparams,
-										 Font const & outerfont,
-										 bool start_paragraph, bool close_paragraph,
-										 pos_type initial) const
+				    XMLStream & xs,
+				    OutputParams const & runparams,
+				    Font const & outerfont,
+				    bool start_paragraph, bool close_paragraph,
+				    pos_type initial) const
 {
 	docstring retval;
 
@@ -3169,206 +3169,206 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 		curr_fs = font.fontInfo().shape();
 		FontShape old_fs = font_old.shape();
 		if (old_fs != curr_fs) {
-            if (shap_flag) {
-                switch (old_fs) {
-                case ITALIC_SHAPE:
-                    tagsToClose.push_back(xml::EndFontTag(fontToHtmlTag(xml::FT_ITALIC), xml::FT_ITALIC));
-                    break;
-                case SLANTED_SHAPE:
-                    tagsToClose.push_back(xml::EndFontTag(fontToHtmlTag(xml::FT_SLANTED), xml::FT_SLANTED));
-                    break;
-                case SMALLCAPS_SHAPE:
-                    tagsToClose.push_back(xml::EndFontTag(fontToHtmlTag(xml::FT_SMALLCAPS), xml::FT_SMALLCAPS));
-                    break;
-                case UP_SHAPE:
-                case INHERIT_SHAPE:
-                    break;
-                default:
-                    // the other tags are for internal use
-                    LATTEST(false);
-                    break;
-                }
-                shap_flag = false;
-            }
-            switch (curr_fs) {
-            case ITALIC_SHAPE:
-                tagsToOpen.push_back(xml::FontTag(fontToHtmlTag(xml::FT_ITALIC), xml::FT_ITALIC));
-                shap_flag = true;
-                break;
-            case SLANTED_SHAPE:
-                tagsToOpen.push_back(xml::FontTag(fontToHtmlTag(xml::FT_SLANTED), xml::FT_SLANTED));
-                shap_flag = true;
-                break;
-            case SMALLCAPS_SHAPE:
-                tagsToOpen.push_back(xml::FontTag(fontToHtmlTag(xml::FT_SMALLCAPS), xml::FT_SMALLCAPS));
-                shap_flag = true;
-                break;
-            case UP_SHAPE:
-            case INHERIT_SHAPE:
-                break;
-            default:
-                // the other tags are for internal use
-                LATTEST(false);
-                break;
-            }
+			if (shap_flag) {
+				switch (old_fs) {
+				case ITALIC_SHAPE:
+					tagsToClose.emplace_back(xhtmlEndFontTag(xml::FT_ITALIC));
+					break;
+				case SLANTED_SHAPE:
+					tagsToClose.emplace_back(xhtmlEndFontTag(xml::FT_SLANTED));
+					break;
+				case SMALLCAPS_SHAPE:
+					tagsToClose.emplace_back(xhtmlEndFontTag(xml::FT_SMALLCAPS));
+					break;
+				case UP_SHAPE:
+				case INHERIT_SHAPE:
+					break;
+				default:
+					// the other tags are for internal use
+					LATTEST(false);
+					break;
+				}
+				shap_flag = false;
+			}
+			switch (curr_fs) {
+			case ITALIC_SHAPE:
+				tagsToOpen.emplace_back(xhtmlStartFontTag(xml::FT_ITALIC));
+				shap_flag = true;
+				break;
+			case SLANTED_SHAPE:
+				tagsToOpen.emplace_back(xhtmlStartFontTag(xml::FT_SLANTED));
+				shap_flag = true;
+				break;
+			case SMALLCAPS_SHAPE:
+				tagsToOpen.emplace_back(xhtmlStartFontTag(xml::FT_SMALLCAPS));
+				shap_flag = true;
+				break;
+			case UP_SHAPE:
+			case INHERIT_SHAPE:
+				break;
+			default:
+				// the other tags are for internal use
+				LATTEST(false);
+				break;
+			}
 		}
 
 		// Font family
 		curr_fam = font.fontInfo().family();
 		FontFamily old_fam = font_old.family();
 		if (old_fam != curr_fam) {
-            if (faml_flag) {
-                switch (old_fam) {
-                case ROMAN_FAMILY:
-                    tagsToClose.push_back(xml::EndFontTag(fontToHtmlTag(xml::FT_ROMAN), xml::FT_ROMAN));
-                    break;
-                case SANS_FAMILY:
-                    tagsToClose.push_back(xml::EndFontTag(fontToHtmlTag(xml::FT_SANS), xml::FT_SANS));
-                    break;
-                case TYPEWRITER_FAMILY:
-                    tagsToClose.push_back(xml::EndFontTag(fontToHtmlTag(xml::FT_TYPE), xml::FT_TYPE));
-                    break;
-                case INHERIT_FAMILY:
-                    break;
-                default:
-                    // the other tags are for internal use
-                    LATTEST(false);
-                    break;
-                }
-                faml_flag = false;
-            }
-            switch (curr_fam) {
-            case ROMAN_FAMILY:
-                // we will treat a "default" font family as roman, since we have
-                // no other idea what to do.
-                if (default_family != "rmdefault" && default_family != "default") {
-                    tagsToOpen.push_back(xml::FontTag(fontToHtmlTag(xml::FT_ROMAN), xml::FT_ROMAN));
-                    faml_flag = true;
-                }
-                break;
-            case SANS_FAMILY:
-                if (default_family != "sfdefault") {
-                    tagsToOpen.push_back(xml::FontTag(fontToHtmlTag(xml::FT_SANS), xml::FT_SANS));
-                    faml_flag = true;
-                }
-                break;
-            case TYPEWRITER_FAMILY:
-                if (default_family != "ttdefault") {
-                    tagsToOpen.push_back(xml::FontTag(fontToHtmlTag(xml::FT_TYPE), xml::FT_TYPE));
-                    faml_flag = true;
-                }
-                break;
-            case INHERIT_FAMILY:
-                break;
-            default:
-                // the other tags are for internal use
-                LATTEST(false);
-                break;
-            }
+			if (faml_flag) {
+				switch (old_fam) {
+				case ROMAN_FAMILY:
+					tagsToClose.emplace_back(xhtmlEndFontTag(xml::FT_ROMAN));
+					break;
+				case SANS_FAMILY:
+				    tagsToClose.emplace_back(xhtmlEndFontTag(xml::FT_SANS));
+				    break;
+				case TYPEWRITER_FAMILY:
+					tagsToClose.emplace_back(xhtmlEndFontTag(xml::FT_TYPE));
+					break;
+				case INHERIT_FAMILY:
+					break;
+				default:
+					// the other tags are for internal use
+					LATTEST(false);
+					break;
+				}
+				faml_flag = false;
+			}
+			switch (curr_fam) {
+			case ROMAN_FAMILY:
+				// we will treat a "default" font family as roman, since we have
+				// no other idea what to do.
+				if (default_family != "rmdefault" && default_family != "default") {
+					tagsToOpen.emplace_back(xhtmlStartFontTag(xml::FT_ROMAN));
+					faml_flag = true;
+				}
+				break;
+			case SANS_FAMILY:
+				if (default_family != "sfdefault") {
+					tagsToOpen.emplace_back(xhtmlStartFontTag(xml::FT_SANS));
+					faml_flag = true;
+				}
+				break;
+			case TYPEWRITER_FAMILY:
+				if (default_family != "ttdefault") {
+					tagsToOpen.emplace_back(xhtmlStartFontTag(xml::FT_TYPE));
+					faml_flag = true;
+				}
+				break;
+			case INHERIT_FAMILY:
+				break;
+			default:
+				// the other tags are for internal use
+				LATTEST(false);
+				break;
+			}
 		}
 
 		// Font size
 		curr_size = font.fontInfo().size();
 		FontSize old_size = font_old.size();
 		if (old_size != curr_size) {
-            if (size_flag) {
-                switch (old_size) {
-                case TINY_SIZE:
-                    tagsToClose.emplace_back(fontToHtmlTag(xml::FT_SIZE_TINY), xml::FT_SIZE_TINY);
-                    break;
-                case SCRIPT_SIZE:
-                    tagsToClose.emplace_back(fontToHtmlTag(xml::FT_SIZE_SCRIPT), xml::FT_SIZE_SCRIPT);
-                    break;
-                case FOOTNOTE_SIZE:
-                    tagsToClose.emplace_back(fontToHtmlTag(xml::FT_SIZE_FOOTNOTE), xml::FT_SIZE_FOOTNOTE);
-                    break;
-                case SMALL_SIZE:
-                    tagsToClose.emplace_back(fontToHtmlTag(xml::FT_SIZE_SMALL), xml::FT_SIZE_SMALL);
-                    break;
-                case LARGE_SIZE:
-                    tagsToClose.emplace_back(fontToHtmlTag(xml::FT_SIZE_LARGE), xml::FT_SIZE_LARGE);
-                    break;
-                case LARGER_SIZE:
-                    tagsToClose.emplace_back(fontToHtmlTag(xml::FT_SIZE_LARGER), xml::FT_SIZE_LARGER);
-                    break;
-                case LARGEST_SIZE:
-                    tagsToClose.emplace_back(fontToHtmlTag(xml::FT_SIZE_LARGEST), xml::FT_SIZE_LARGEST);
-                    break;
-                case HUGE_SIZE:
-                    tagsToClose.emplace_back(fontToHtmlTag(xml::FT_SIZE_HUGE), xml::FT_SIZE_HUGE);
-                    break;
-                case HUGER_SIZE:
-                    tagsToClose.emplace_back(fontToHtmlTag(xml::FT_SIZE_HUGER), xml::FT_SIZE_HUGER);
-                    break;
-                case INCREASE_SIZE:
-                    tagsToClose.emplace_back(fontToHtmlTag(xml::FT_SIZE_INCREASE), xml::FT_SIZE_INCREASE);
-                    break;
-                case DECREASE_SIZE:
-                    tagsToClose.emplace_back(fontToHtmlTag(xml::FT_SIZE_DECREASE), xml::FT_SIZE_DECREASE);
-                    break;
-                case INHERIT_SIZE:
-                case NORMAL_SIZE:
-                    break;
-                default:
-                    // the other tags are for internal use
-                    LATTEST(false);
-                    break;
-                }
-                size_flag = false;
-            }
-            switch (curr_size) {
-            case TINY_SIZE:
-                tagsToOpen.emplace_back(fontToHtmlTag(xml::FT_SIZE_TINY), xml::FT_SIZE_TINY);
-                size_flag = true;
-                break;
-            case SCRIPT_SIZE:
-                tagsToOpen.emplace_back(fontToHtmlTag(xml::FT_SIZE_SCRIPT), xml::FT_SIZE_SCRIPT);
-                size_flag = true;
-                break;
-            case FOOTNOTE_SIZE:
-                tagsToOpen.emplace_back(fontToHtmlTag(xml::FT_SIZE_FOOTNOTE), xml::FT_SIZE_FOOTNOTE);
-                size_flag = true;
-                break;
-            case SMALL_SIZE:
-                tagsToOpen.emplace_back(fontToHtmlTag(xml::FT_SIZE_SMALL), xml::FT_SIZE_SMALL);
-                size_flag = true;
-                break;
-            case LARGE_SIZE:
-                tagsToOpen.emplace_back(fontToHtmlTag(xml::FT_SIZE_LARGE), xml::FT_SIZE_LARGE);
-                size_flag = true;
-                break;
-            case LARGER_SIZE:
-                tagsToOpen.emplace_back(fontToHtmlTag(xml::FT_SIZE_LARGER), xml::FT_SIZE_LARGER);
-                size_flag = true;
-                break;
-            case LARGEST_SIZE:
-                tagsToOpen.emplace_back(fontToHtmlTag(xml::FT_SIZE_LARGEST), xml::FT_SIZE_LARGEST);
-                size_flag = true;
-                break;
-            case HUGE_SIZE:
-                tagsToOpen.emplace_back(fontToHtmlTag(xml::FT_SIZE_HUGE), xml::FT_SIZE_HUGE);
-                size_flag = true;
-                break;
-            case HUGER_SIZE:
-                tagsToOpen.emplace_back(fontToHtmlTag(xml::FT_SIZE_HUGER), xml::FT_SIZE_HUGER);
-                size_flag = true;
-                break;
-            case INCREASE_SIZE:
-                tagsToOpen.emplace_back(fontToHtmlTag(xml::FT_SIZE_INCREASE), xml::FT_SIZE_INCREASE);
-                size_flag = true;
-                break;
-            case DECREASE_SIZE:
-                tagsToOpen.emplace_back(fontToHtmlTag(xml::FT_SIZE_DECREASE), xml::FT_SIZE_DECREASE);
-                size_flag = true;
-                break;
-            case INHERIT_SIZE:
-            case NORMAL_SIZE:
-                break;
-            default:
-                // the other tags are for internal use
-                LATTEST(false);
-                break;
-            }
+			if (size_flag) {
+				switch (old_size) {
+				case TINY_SIZE:
+					tagsToClose.emplace_back(xhtmlEndFontTag(xml::FT_SIZE_TINY));
+					break;
+				case SCRIPT_SIZE:
+					tagsToClose.emplace_back(xhtmlEndFontTag(xml::FT_SIZE_SCRIPT));
+					break;
+				case FOOTNOTE_SIZE:
+					tagsToClose.emplace_back(xhtmlEndFontTag(xml::FT_SIZE_FOOTNOTE));
+					break;
+				case SMALL_SIZE:
+					tagsToClose.emplace_back(xhtmlEndFontTag(xml::FT_SIZE_SMALL));
+					break;
+				case LARGE_SIZE:
+					tagsToClose.emplace_back(xhtmlEndFontTag(xml::FT_SIZE_LARGE));
+					break;
+				case LARGER_SIZE:
+					tagsToClose.emplace_back(xhtmlEndFontTag(xml::FT_SIZE_LARGER));
+					break;
+				case LARGEST_SIZE:
+					tagsToClose.emplace_back(xhtmlEndFontTag(xml::FT_SIZE_LARGEST));
+					break;
+				case HUGE_SIZE:
+					tagsToClose.emplace_back(xhtmlEndFontTag(xml::FT_SIZE_HUGE));
+					break;
+				case HUGER_SIZE:
+					tagsToClose.emplace_back(xhtmlEndFontTag(xml::FT_SIZE_HUGER));
+					break;
+				case INCREASE_SIZE:
+					tagsToClose.emplace_back(xhtmlEndFontTag(xml::FT_SIZE_INCREASE));
+					break;
+				case DECREASE_SIZE:
+					tagsToClose.emplace_back(xhtmlEndFontTag(xml::FT_SIZE_DECREASE));
+					break;
+				case INHERIT_SIZE:
+				case NORMAL_SIZE:
+					break;
+				default:
+					// the other tags are for internal use
+					LATTEST(false);
+					break;
+				}
+				size_flag = false;
+			}
+			switch (curr_size) {
+			case TINY_SIZE:
+				tagsToOpen.emplace_back(xhtmlStartFontTag(xml::FT_SIZE_TINY));
+				size_flag = true;
+				break;
+			case SCRIPT_SIZE:
+				tagsToOpen.emplace_back(xhtmlStartFontTag(xml::FT_SIZE_SCRIPT));
+				size_flag = true;
+				break;
+			case FOOTNOTE_SIZE:
+				tagsToOpen.emplace_back(xhtmlStartFontTag(xml::FT_SIZE_FOOTNOTE));
+				size_flag = true;
+				break;
+			case SMALL_SIZE:
+				tagsToOpen.emplace_back(xhtmlStartFontTag(xml::FT_SIZE_SMALL));
+				size_flag = true;
+				break;
+			case LARGE_SIZE:
+				tagsToOpen.emplace_back(xhtmlStartFontTag(xml::FT_SIZE_LARGE));
+				size_flag = true;
+				break;
+			case LARGER_SIZE:
+				tagsToOpen.emplace_back(xhtmlStartFontTag(xml::FT_SIZE_LARGER));
+				size_flag = true;
+				break;
+			case LARGEST_SIZE:
+				tagsToOpen.emplace_back(xhtmlStartFontTag(xml::FT_SIZE_LARGEST));
+				size_flag = true;
+				break;
+			case HUGE_SIZE:
+				tagsToOpen.emplace_back(xhtmlStartFontTag(xml::FT_SIZE_HUGE));
+				size_flag = true;
+				break;
+			case HUGER_SIZE:
+				tagsToOpen.emplace_back(xhtmlStartFontTag(xml::FT_SIZE_HUGER));
+				size_flag = true;
+				break;
+			case INCREASE_SIZE:
+				tagsToOpen.emplace_back(xhtmlStartFontTag(xml::FT_SIZE_INCREASE));
+				size_flag = true;
+				break;
+			case DECREASE_SIZE:
+				tagsToOpen.emplace_back(xhtmlStartFontTag(xml::FT_SIZE_DECREASE));
+				size_flag = true;
+				break;
+			case INHERIT_SIZE:
+			case NORMAL_SIZE:
+				break;
+			default:
+				// the other tags are for internal use
+				LATTEST(false);
+				break;
+			}
 		}
 
 		// FIXME XHTML

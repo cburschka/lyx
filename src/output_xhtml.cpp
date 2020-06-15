@@ -45,7 +45,7 @@ using namespace lyx::support;
 namespace lyx {
 
 
-docstring const fontToHtmlTag(xml::FontTypes type)
+docstring fontToHtmlTag(xml::FontTypes type)
 {
     switch(type) {
         case xml::FontTypes::FT_EMPH:
@@ -88,70 +88,66 @@ docstring const fontToHtmlTag(xml::FontTypes type)
 }
 
 
-namespace {
-
-string fontToAttribute(xml::FontTypes type)
+docstring fontToHtmlAttribute(xml::FontTypes type)
 {
 	switch(type) {
 	case xml::FontTypes::FT_EMPH:
 	case xml::FontTypes::FT_BOLD:
-		return "";
+		return from_ascii("");
 	case xml::FontTypes::FT_NOUN:
-		return "class='lyxnoun'";
+		return from_ascii("class='lyxnoun'");
 	case xml::FontTypes::FT_UBAR:
-		return "";
+		return from_ascii("");
 	case xml::FontTypes::FT_DBAR:
-		return "class='dline'";
+		return from_ascii("class='dline'");
 	case xml::FontTypes::FT_XOUT:
 	case xml::FontTypes::FT_SOUT:
-		return "class='strikeout'";
+		return from_ascii("class='strikeout'");
 	case xml::FontTypes::FT_WAVE:
-		return "class='wline'";
+		return from_ascii("class='wline'");
 	case xml::FontTypes::FT_ITALIC:
-		return "";
+		return from_ascii("");
 	case xml::FontTypes::FT_UPRIGHT:
-		return "style='font-style:normal;'";
+		return from_ascii("style='font-style:normal;'");
 	case xml::FontTypes::FT_SLANTED:
-		return "style='font-style:oblique;'";
+		return from_ascii("style='font-style:oblique;'");
 	case xml::FontTypes::FT_SMALLCAPS:
-		return "style='font-variant:small-caps;'";
+		return from_ascii("style='font-variant:small-caps;'");
 	case xml::FontTypes::FT_ROMAN:
-		return "style='font-family:serif;'";
+		return from_ascii("style='font-family:serif;'");
 	case xml::FontTypes::FT_SANS:
-		return "style='font-family:sans-serif;'";
+		return from_ascii("style='font-family:sans-serif;'");
 	case xml::FontTypes::FT_TYPE:
-		return "style='font-family:monospace;'";
+		return from_ascii("style='font-family:monospace;'");
 	case xml::FontTypes::FT_SIZE_TINY:
 	case xml::FontTypes::FT_SIZE_SCRIPT:
 	case xml::FontTypes::FT_SIZE_FOOTNOTE:
-		return "style='font-size:x-small;'";
+		return from_ascii("style='font-size:x-small;'");
 	case xml::FontTypes::FT_SIZE_SMALL:
-		return "style='font-size:small;'";
+		return from_ascii("style='font-size:small;'");
 	case xml::FontTypes::FT_SIZE_NORMAL:
-		return "style='font-size:normal;'";
+		return from_ascii("style='font-size:normal;'");
 	case xml::FontTypes::FT_SIZE_LARGE:
-		return "style='font-size:large;'";
+		return from_ascii("style='font-size:large;'");
 	case xml::FontTypes::FT_SIZE_LARGER:
 	case xml::FontTypes::FT_SIZE_LARGEST:
-		return "style='font-size:x-large;'";
+		return from_ascii("style='font-size:x-large;'");
 	case xml::FontTypes::FT_SIZE_HUGE:
 	case xml::FontTypes::FT_SIZE_HUGER:
-		return "style='font-size:xx-large;'";
+		return from_ascii("style='font-size:xx-large;'");
 	case xml::FontTypes::FT_SIZE_INCREASE:
-		return "style='font-size:larger;'";
+		return from_ascii("style='font-size:larger;'");
 	case xml::FontTypes::FT_SIZE_DECREASE:
-		return "style='font-size:smaller;'";
+		return from_ascii("style='font-size:smaller;'");
 	}
 	// kill warning
-	return "";
+	return from_ascii("");
 }
-
-} // end anonymous namespace
 
 
 xml::FontTag xhtmlStartFontTag(xml::FontTypes type)
 {
-	return xml::FontTag(fontToHtmlTag(type), from_utf8(fontToAttribute(type)), type);
+	return xml::FontTag(fontToHtmlTag(type), fontToHtmlAttribute(type), type);
 }
 
 

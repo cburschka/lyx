@@ -24,7 +24,8 @@
 
 namespace lyx {
 
-docstring const fontToHtmlTag(xml::FontTypes type);
+docstring fontToHtmlTag(xml::FontTypes type);
+docstring fontToHtmlAttribute(xml::FontTypes type);
 
 class Buffer;
 class OutputParams;
