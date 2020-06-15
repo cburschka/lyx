@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-05-03 13:31+0200\n"
-"PO-Revision-Date: 2020-06-13 00:07+0300\n"
+"PO-Revision-Date: 2020-06-14 13:39+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -10580,7 +10580,7 @@ msgid ""
 "Provides two styles to typeset bilingual captions. For a description see the "
 "file MultilingualCaptions.lyx in LyX's examples folder."
 msgstr ""
-"Предоставляет два стиля для набора многоязычных подписей. Описание см. в "
+"Предоставляет два стиля для вёрстки многоязычных подписей. Описание см. в "
 "файле MultilingualCaptions.lyx в папке примеров LyX."
 
 #: lib/layouts/bicaption.module:11
@@ -16051,11 +16051,11 @@ msgstr "онлайн-цитата"
 
 #: lib/layouts/revtex4-x.inc:323
 msgid "Text behind"
-msgstr "Текст за"
+msgstr "Текст после"
 
 #: lib/layouts/revtex4-x.inc:324
 msgid "text behind the cite"
-msgstr "текст за цитатой"
+msgstr "Текст после ссылки"
 
 #: lib/layouts/revtex4.layout:3 lib/examples/Articles:0
 msgid "REVTeX (V. 4)"
@@ -16109,7 +16109,7 @@ msgstr "S-фраза:"
 
 #: lib/layouts/ruby.module:2
 msgid "Ruby (Furigana)"
-msgstr "Ruby (Furigana)"
+msgstr "Руби (Фуригана)"
 
 #: lib/layouts/ruby.module:8
 msgid ""
@@ -16117,25 +16117,25 @@ msgid ""
 "characters. Uses the okumakro, luatexja-ruby, or ruby package (depending on "
 "the TeX engine) or a fallback definition."
 msgstr ""
-"Определяет вставку печатных материалов для чтения (руби, фуригана) к "
+"Определяет вставку для вёрстки помощи для чтения (руби, фуригана) к "
 "китайским иероглифам. Использует пакет okumakro, luatexja-ruby или ruby (в "
 "зависимости от варианта TeX) или резервное определение."
 
 #: lib/layouts/ruby.module:26 lib/layouts/ruby.module:35
 msgid "Ruby"
-msgstr "Ruby"
+msgstr "Руби"
 
 #: lib/layouts/ruby.module:49
 msgid "ruby text"
-msgstr "ruby text"
+msgstr "текст руби"
 
 #: lib/layouts/ruby.module:50
 msgid "Ruby Text|R"
-msgstr "Ruby Text|R"
+msgstr "Текст руби|р"
 
 #: lib/layouts/ruby.module:51
 msgid "Reading aid (ruby, furigana) for Chinese characters."
-msgstr "Помощь чтения (ruby, furigana) для китайских иероглифов."
+msgstr "Помощь чтения (руби, фуригана) для китайских иероглифов."
 
 #: lib/layouts/sciposter.layout:3 lib/examples/Articles:0
 msgid "SciPoster"
@@ -16525,11 +16525,11 @@ msgstr "[Список слайдов]"
 
 #: lib/layouts/seminar.layout:148
 msgid "[Slide Contents]"
-msgstr "[Содержимое слайда]"
+msgstr "[Содержание слайда]"
 
 #: lib/layouts/seminar.layout:154
 msgid "[Progress Contents]"
-msgstr "[Содержимое прогресса]"
+msgstr "[Содержание прогресса]"
 
 #: lib/layouts/shapepar.module:2
 msgid "Custom Paragraph Shapes"
@@ -16619,7 +16619,7 @@ msgstr "shapepar"
 
 #: lib/layouts/shapepar.module:124
 msgid "For scaling the <Shape specification> to positions on the page"
-msgstr "Для масштабирования <Shape specification> по позициям на странице"
+msgstr "Для масштабирования <Спецификация формы> по позициям на странице"
 
 #: lib/layouts/shapepar.module:128
 msgid "Shape specification"
@@ -17775,7 +17775,7 @@ msgstr "Вопрос."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:2
 msgid "AMS Theorems (Extended, Numbered by Type within Chapters)"
-msgstr "Теоремы AMS (Расширенный, нумерация по типу внутри Глав)"
+msgstr "Теоремы AMS (Расширенный, нумерация по типу внутри глав)"
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:13
 msgid ""
@@ -17997,7 +17997,7 @@ msgstr "Случай \\arabic{caseiv}."
 
 #: lib/layouts/theorems-chap-bytype.module:2
 msgid "Standard Theorems (Numbered by Type within Chapters)"
-msgstr "Теоремы (нумерация по типу внутри Глав)"
+msgstr "Теоремы (нумерация по типу внутри глав)"
 
 #: lib/layouts/theorems-chap-bytype.module:10
 msgid ""
@@ -18073,7 +18073,7 @@ msgstr "Альтернативная строка доказательства"
 
 #: lib/layouts/theorems-sec-bytype.module:2
 msgid "Standard Theorems (Numbered by Type within Sections)"
-msgstr "Теоремы (нумерация по типу внутри Разделов)"
+msgstr "Теоремы (нумерация по типу внутри разделов)"
 
 #: lib/layouts/theorems-sec-bytype.module:10
 msgid ""
@@ -18182,7 +18182,7 @@ msgstr "Решение"
 
 #: lib/layouts/theorems-without-preamble.inc:304
 msgid "# [number of Prob]"
-msgstr "# [количество проб.]"
+msgstr "# [количество задач]"
 
 #: lib/layouts/theorems-without-preamble.inc:307
 msgid "Label of Problem"
@@ -18254,7 +18254,7 @@ msgstr "Заметка TODO (встроенная)"
 
 #: lib/layouts/todonotes.module:89
 msgid "TODO (Inline)"
-msgstr "TODO (встроенный)"
+msgstr "TODO (встроенная)"
 
 #: lib/layouts/todonotes.module:102 lib/layouts/todonotes.module:104
 msgid "Missing Figure"
@@ -18266,7 +18266,7 @@ msgstr "Настройки заметки отсутствующего рису�
 
 #: lib/layouts/todonotes.module:124
 msgid "Todo[Inline]"
-msgstr "Todo[Встроенный]"
+msgstr "Заметка Todo [встроенная]"
 
 #: lib/layouts/todonotes.module:128
 msgid "Todo[margin]"
@@ -18294,7 +18294,7 @@ msgstr "заметка на полях"
 
 #: lib/layouts/tufte-book.layout:28
 msgid "bibl. entry"
-msgstr "библ. источник"
+msgstr "библиогр. источник"
 
 #: lib/layouts/tufte-book.layout:171
 msgid "Marginnote"
@@ -19491,7 +19491,7 @@ msgstr "Окружение alignedat|d"
 
 #: lib/ui/stdcontext.inc:34 lib/ui/stdmenus.inc:492
 msgid "Gathered Environment|h"
-msgstr "Окружение gathered"
+msgstr "Окружение gathered|h"
 
 #: lib/ui/stdcontext.inc:35 lib/ui/stdmenus.inc:493
 msgid "Split Environment|S"
@@ -20785,39 +20785,39 @@ msgstr "Обычный шрифт текста|О"
 
 #: lib/ui/stdmenus.inc:300
 msgid "Text Roman Family"
-msgstr "Текст с засечками"
+msgstr "Гарнитура с засечками"
 
 #: lib/ui/stdmenus.inc:301
 msgid "Text Sans Serif Family"
-msgstr "Текст без засечек"
+msgstr "Гарнитура без засечек"
 
 #: lib/ui/stdmenus.inc:302
 msgid "Text Typewriter Family"
-msgstr "Машинописный шрифт текста"
+msgstr "Машинописная гарнитура"
 
 #: lib/ui/stdmenus.inc:304
 msgid "Text Bold Series"
-msgstr "Полужирный шрифт текста"
+msgstr "Полужирная насыщенность"
 
 #: lib/ui/stdmenus.inc:305
 msgid "Text Medium Series"
-msgstr "Нормальный шрифт текста"
+msgstr "Нормальная насыщенность"
 
 #: lib/ui/stdmenus.inc:307
 msgid "Text Italic Shape"
-msgstr "Курсив текста"
+msgstr "Курсивное начертание"
 
 #: lib/ui/stdmenus.inc:308
 msgid "Text Small Caps Shape"
-msgstr "Капитель"
+msgstr "Капительное начертание"
 
 #: lib/ui/stdmenus.inc:309
 msgid "Text Slanted Shape"
-msgstr "Наклонный"
+msgstr "Наклонное начертание"
 
 #: lib/ui/stdmenus.inc:310
 msgid "Text Upright Shape"
-msgstr "Прямой"
+msgstr "Прямое начертание"
 
 #: lib/ui/stdmenus.inc:314
 msgid "Octave|O"
@@ -20913,7 +20913,7 @@ msgstr "Поле"
 
 #: lib/ui/stdmenus.inc:381
 msgid "List/Contents/References|/"
-msgstr "Списки/содержание/библиографии"
+msgstr "Списки/содержание/библиографии|/"
 
 #: lib/ui/stdmenus.inc:382
 msgid "Float|a"
@@ -20929,7 +20929,7 @@ msgstr "Ветка|В"
 
 #: lib/ui/stdmenus.inc:385
 msgid "Custom Inset"
-msgstr "Пользовательские вставки"
+msgstr "Пользовательская вставка"
 
 #: lib/ui/stdmenus.inc:386
 msgid "File|e"
@@ -21069,7 +21069,7 @@ msgstr "Имя файла (без расширения)"
 
 #: lib/ui/stdmenus.inc:437
 msgid "Version Control Revision|V"
-msgstr "Ревизия|Р"
+msgstr "Версия|р"
 
 #: lib/ui/stdmenus.inc:438
 msgid "User Name|U"
@@ -26920,11 +26920,11 @@ msgstr "Добро пожаловать"
 
 #: lib/examples/Articles:0
 msgid "Multilingual Typesetting with CJKutf8"
-msgstr "Многоязычное форматирование с CJKutf8"
+msgstr "Многоязычная вёрстка с CJKutf8"
 
 #: lib/examples/Articles:0
 msgid "Multilingual Typesetting with platex"
-msgstr "Многоязычное форматирование с platex"
+msgstr "Многоязычная вёрстка с platex"
 
 #: lib/examples/Articles:0
 msgid "IEEE Transactions Conference"
@@ -30894,7 +30894,7 @@ msgid ""
 "1995--%1$s LyX Team"
 msgstr ""
 "LyX\n"
-"Copyright (C) 1995 Matthias Ettrich, 1995–%1$s команда разработки LyX"
+"Copyright © 1995 Matthias Ettrich, 1995–%1$s команда разработки LyX"
 
 #: src/frontends/qt/GuiAbout.cpp:189
 msgid ""
@@ -30939,7 +30939,7 @@ msgid ""
 "LyX Version %1$s\n"
 "(%2$s)"
 msgstr ""
-"Версия LyX %1$s\n"
+"Версия %1$s\n"
 "(%2$s)"
 
 #: src/frontends/qt/GuiAbout.cpp:217
