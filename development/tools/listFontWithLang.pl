@@ -48,13 +48,14 @@ use constant {
 sub convertlang($);
 sub extractlist($$$);	# my ($l, $islang, $txt, $rres) = @_;
 sub getIndexes($$);
-sub getVal($$$);	# my ($l, $txtval, $txtlang) = @_;
+sub getVal($$$$);	# my ($l, $txtval, $txtlang, $combine) = @_;
 sub getproperties($$$$);
 sub ismathfont($$);
 sub correctstyle($);
 sub decimalUnicode($);
 sub contains($$);
 sub sprintIntervalls($);
+sub buildFontName($$$$);
 
 # Following fields for a parameter can be defined:
 # fieldname:         Name of entry in %options
@@ -292,7 +293,7 @@ my $nexttype = 6;
 # list of regexes for known sans serif fonts
 my %sansFonts = (
   "value" => SANS,          # Sans serif
-  "a" => qr/^(aharoni|arial|andika|angostura|anonymous|arab|aroania|arimo|asap)/i,
+  "a" => qr/^a(030|becedario|bydos|haroni|rial|ndika|ngostura|nonymous|rab|roania|rimo|sap)/i,
   "b" => qr/^b(aekmuk|ebas|erenika|eteckna|euron|lue)/i,
   "c" => qr/^c(abin|aliban|antarell|arbon|arlito|handas|hivo|mu bright|omfortaa|omi[cx]|oolvetica|ortoba|ousine|uprum|wtex(hei|yen)|yklop|ypro)/i,
   "d" => qr/^(d2coding|dimnah|dosis|dyuthi)/i,
@@ -300,7 +301,7 @@ my %sansFonts = (
   "f" => qr/^(fandolhei|fetamont|fira|font awesome 5|forgotten)/i,
   "g" => qr/^(gardiner|garuda|gfs ?neo|gillius|granada|graph|guanine|gunplay)/i,
   "h" => qr/^(hack|hani|haramain|harano|harmattan|hor\b)/i,
-  "i" => qr/^(ibm plex|ikarius|inconsolata|induni.?h|iwona)/i,
+  "i" => qr/^(ibm ?(plex ?mono|3270)|ikarius|inconsolata|induni.?h|iwona)/i,
   "j" => qr/^(jara|jura)/i,
   "k" => qr/^(kalimati|kanji|karla|karma|kayrawan|kenyan|keraleeyam|khalid|khmer [or]|kiloji|klaudia|ko[mn]atu|kurier|kustom)/i,
   "l" => qr/^l(aksaman|arabie|ato|eague|exend|exigulim|ibel|iberation|ibre franklin|ibris|inux biolinum|obster|ogix|ohit|oma)/i,
@@ -312,7 +313,7 @@ my %sansFonts = (
   "r" => qr/^(rachana|radio\b|raleway|ricty|roboto|rosario)/i,
   "s" => qr/^(salem|samanata|sawasdee|shado|sharja|simple|sophia|soul|source|switzera)/i,
   "t" => qr/^(tarablus|teen|texgyre(adventor|heros)|tiresias|trebuchet|tscu|tuffy)/i,
-  "u" => qr/^(ubuntu|ukij (bom|chechek|cjk|diwani|ekran|elipbe|inchike|jelliy|kufi|qara|qolyazma|teng|title|tor)|umpush|un ?(dinaru|jamo|graphic|taza|vada|yetgul)|uni(kurd|space|versalis)|uroob|urw ?classico)/i,
+  "u" => qr/^u(buntu|kij (bom|chechek|cjk|diwani|ekran|elipbe|inchike|jelliy|kufi|mejnuntal|qara|qolyazma|teng|title|tor|tuz ?(neqish|tom))|mpush|n ?(dinaru|jamo|graphic|taza|vada|yetgul)|uni(kurd|space|versalis)|roob|rw ?classico)/i,
   "v" => qr/^(veranda|vn ?urwclassico)/i,
   "w" => qr/^(waree)/i,
   "y" => qr/^(yanone)/i,
@@ -329,7 +330,8 @@ my %scriptFonts = (
   "n" => qr/^(nanum (brush|pen) script)/i,
   "q" => qr/^qt(arabian|boulevard|brushstroke|chancery|coronation|florencia|handwriting|linostroke|merry|pandora|slogan)/i,
   "r" => qr/^((romande.*|ruf)script|rsfs)/i,
-  "u" => qr/^(un ?pilgi|urw ?chancery)/i,
+  "t" => qr/^typo ?script/i,
+  "u" => qr/^u(n ?pilgi|rw ?chancery|kij ?(jelliy|moy|qolyazma ?(tez|yantu)))/i,
 );
 
 my %fraktFonts = (
@@ -339,20 +341,24 @@ my %fraktFonts = (
   "m" => qr/^(missaali)/i,
   "o" => qr/^(oldania)/i,
   "q" => qr/^qt(blackforest|cloisteredmonk|dublinirish|fraktur|heidelbergtype|(lino|london)scroll)/i,
+  "u" => qr/^ukij ?(kufi ?tar|mejnun ?reg)/i,
 );
 
 my %fancyFonts = (
   "value" => FANCY,          # Fancy
+  "a" => qr/^a(bandoned|bberancy)/i,
   "c" => qr/^(cretino)/i,
   "d" => qr/^dseg/i,
   "f" => qr/^frederika/i,
   "g" => qr/^(gfs.?theo)/i,
   "k" => qr/^keter|kicking|kredit|kouzan|kerkis calligraphic/i,
+  "u" => qr/^ukij ?(saet|tiken)/i,
 );
 
 my %initialFonts = (
   "value" => INITIALS,          # Initials
   "e" => qr/^(eb.?garamond.?init)/i,
+  "t" => qr/^typographer/i,
   "y" => qr/^(yinit)/i,
 );
 
@@ -373,6 +379,7 @@ my %symbolFonts = (
   "q" => qr/^(qtdingbits)/i,
   "s" => qr/^stmary/i,
   "t" => qr/^(typicons|twemoji)/i,
+  "u" => qr/^ukij ?(imaret|orxun|tughra)/i,
   "w" => qr/^(webdings|wasy)/i,
 );
 
@@ -410,37 +417,16 @@ if (open(FI,  "$cmd |")) {
     for my $lang (@langs) {
       next NXTLINE if (! defined($usedlangs{$lang}));
     }
-    my $style = &getVal($l, "style", "stylelang");
+    my $style = &getVal($l, "style", "stylelang", 1);
     $style =~ s/^\\040//;
     my $fullname = &getVal($l, "fn", "fnl");
     my $postscriptname = "";
     if ($l =~ /postscriptname=\"([^\"]+)\"/) {
       $postscriptname = $1;
     }
-    my $family = &getVal($l, "family", "flang");
-    $family =~ s/\\040/\-/;
-    my $fontname;
-    if (length($fullname) < 3) {
-      if (length($postscriptname) < 2) {
-        $fontname = "$family $style";
-      }
-      else {
-        $fontname = $postscriptname;
-      }
-    }
-    else {
-      if ($fullname !~ /^font\d+$/) {
-        $fontname = $fullname;
-      }
-      else {
-        if ($family ne $style) {
-          $fontname = "$family $style";
-        }
-        else {
-          $fontname = $family;
-        }
-      }
-    }
+    my $family = &getVal($l, "family", "flang", 0);
+    my $fontname = &buildFontName($family, $style, $fullname, $postscriptname);
+
     if (defined($options{NFontName})) {
       for my $fn (@{$options{NFontName}}) {
         next NXTLINE if ($fontname =~ /$fn/i);
@@ -636,9 +622,9 @@ sub getIndexes($$)
   return(\@res);
 }
 
-sub getVal($$$)
+sub getVal($$$$)
 {
-  my ($l, $txtval, $txtlang) = @_;
+  my ($l, $txtval, $txtlang, $combine) = @_;
   my @values = ();
   my @langs = ();
   &extractlist($l, 0, $txtval, \@values);
@@ -647,8 +633,20 @@ sub getVal($$$)
   my $i = &getIndexes("en", \@langs);
   my $res = "";
   for my $k (@{$i}) {
-    if (defined($values[$k]) && (length($values[$k]) > length($res))) {
-      $res = $values[$k];
+    if (defined($values[$k])) {
+      if ($combine) {
+        if ($res ne "") {
+          $res .= " $values[$k]";
+        }
+        else {
+          $res = $values[$k];
+        }
+      }
+      else {
+        if (length($values[$k]) > length($res)) {
+          $res = $values[$k];
+        }
+      }
     }
   }
   return($values[0]) if ($res eq "");
@@ -1030,4 +1028,49 @@ sub sprintIntervalls($)
     }
   }
   return join(',', @out);
+}
+
+sub buildFontName($$$$)
+{
+  my ($family, $style, $fullname, $postscriptname) = @_;
+
+  my $result = "";
+  $style =~ s/\\040//;
+  $family =~ s/\\040/\-/;
+  $family =~ s/\bcond\b/Condensed/i;
+  $family =~ s/\bblk\b/Black/i;
+  $family =~ s/\bsembd\b/SemiBold/i;
+  $family =~ s/\bsemcond\b/SemiCondensed/i;
+  $family =~ s/\bextcond\b/ExtraCondensed/i;
+  $family =~ s/\bextbd\b/ExtraBold/i;
+  $family =~ s/\bextlt\b/ExtraLight/i;
+  $style =~ s/\bextra\-light\b/ExtraLight/i;
+  $style =~ s/\bbol\b/Bold/i;
+  $family =~ s/\bmed\b/Medium/i;
+  if ($family =~ /powerline/i) {
+    my $a = 17;
+  }
+  $family =~ s/^([A-Z]+[a-z]+)([A-Z][a-z]+)\b/$1 $2/;
+  my @style = split(' ', $style);
+  for my $st (@style) {
+    $st = ucfirst($st);
+    if ($family !~ s/$st/$st/i) {
+      $family .= " $st";
+    }
+    else {
+      # check if $st in $family starts with ' '
+      $family =~ s/(\w)$st/$1 $st/i;
+    }
+  }
+  $postscriptname =~ s/[- ]?Regular$//;
+  if ($fullname =~ /^(font)?\d+/) {
+    $fullname = "";
+  }
+  if (length($fullname) <= length($family)) {
+    $result = $family;
+  }
+  else {
+    $result = $fullname;
+  }
+  return($result);
 }
