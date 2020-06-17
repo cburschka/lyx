@@ -290,11 +290,16 @@ my %fontpriority = (
 );
 my $nexttype = 6;
 
+my %serifFonts = (
+  # some extra serif fonts
+  "value" => SERIF,
+  "g" => qr/^gfs ?(didot)/i,
+);
 # list of regexes for known sans serif fonts
 my %sansFonts = (
   "value" => SANS,          # Sans serif
   "a" => qr/^a(030|bydos|haroni|e?rial|ndika|ngostura|nonymous|rab|roania|rimo|sap|e almothnna|egean|egyptus|l (arabiya|battar|hor|manzomah|yarmook)|lmonte|natolian|ndale|nglepoise|njali|xaxa)/i,
-  "b" => qr/^b(aekmuk|ebas|erenika|eteckna|euron|lue)/i,
+  "b" => qr/^b(abel ?stone ?modern|aekmuk|alker|altar|andal|angwool|arbatrick|aveuse|dxsfm|ebas|erenika|eteckna|euron|iometric|iting|lue|m ?hanna)/i,
   "c" => qr/^c(abin|aliban|antarell|arbon|arlito|handas|hivo|mu bright|omfortaa|omi[cx]|oolvetica|ortoba|ousine|uprum|wtex(hei|yen)|yklop|ypro)/i,
   "d" => qr/^(d2coding|dimnah|dosis|dyuthi)/i,
   "e" => qr/^(electron|engebrechtre)/i,
@@ -322,7 +327,7 @@ my %sansFonts = (
 my %scriptFonts = (
   "value" => SCRIPT,          # Script
   "a" => qr/^a(becedario|ir ?cut|ugie|uriocus ?kalligraph)/i,
-  "b" => qr/^breip/i,
+  "b" => qr/^b(reip|rush ?script)/i,
   "c" => qr/^(chancery)/i,
   "d" => qr/^(dancing)/i,
   "e" => qr/^(elegante)/i,
@@ -332,7 +337,7 @@ my %scriptFonts = (
   "m" => qr/^(mathjax_script|miama)/i,
   "n" => qr/^(nanum (brush|pen) script)/i,
   "p" => qr/^pecita/i,
-  "q" => qr/^qt(arabian|boulevard|brushstroke|chancery|coronation|florencia|handwriting|linostroke|merry|pandora|slogan)/i,
+  "q" => qr/^qt(arabian|boulevard|brush ?stroke|chancery|coronation|florencia|handwriting|linostroke|merry|pandora|slogan)/i,
   "r" => qr/^((romande.*|ruf)script|rsfs)/i,
   "t" => qr/^typo ?script/i,
   "u" => qr/^u(n ?pilgi|rw ?chancery|kij ?(jelliy|moy|qolyazma ?(tez|yantu)))/i,
@@ -340,6 +345,7 @@ my %scriptFonts = (
 
 my %fraktFonts = (
   "value" => FRAKTUR,          # Fraktur
+  "b" => qr/^boondox ?fraktur/i,
   "e" => qr/^eufm/i,
   "j" => qr/^(jsmath.?euf)/i,
   "m" => qr/^(missaali)/i,
@@ -351,12 +357,16 @@ my %fraktFonts = (
 my %fancyFonts = (
   "value" => FANCY,          # Fancy
   "a" => qr/^a(bandoned|bberancy|driator|irmole|lmonte (snow|woodgrain)|nalecta|ni|nklepants|nn ?stone|oyagi|rt ?nouveau ?caps|stron|xaxa)/i,
-  "c" => qr/^(cretino)/i,
+  "b" => qr/^b(aileys|alcony|altar|andal|arbatrick|aveuse|eat ?my|etsy|iometric|iting|lankenburg|oondox ?callig|org|oron|raeside|ramalea|udmo|urnstown|utterbelly)/i,
+  "c" => qr/^c(retino|msy)/i,
   "d" => qr/^dseg/i,
+  "e" => qr/^electorate/i,
   "f" => qr/^frederika/i,
   "g" => qr/^(gfs.?theo)/i,
+  "j" => qr/^jsmath.cmsy/i,
   "k" => qr/^keter|kicking|kredit|kouzan|kerkis calligraphic/i,
-  "u" => qr/^ukij ?(saet|tiken)/i,
+  "l" => qr/^lcmsy/i,
+  "u" => qr/^u(kij ?(saet|tiken)|nion ?city)/i,
   "v" => qr/^vectroid/i,
 );
 
@@ -370,22 +380,24 @@ my %initialFonts = (
 my %symbolFonts = (
   "value" => SYMBOL,          # Symbol
   "a" => qr/^a(cademicons|lblant|lianna|mar|nka|rb?\d|rchaic|rrow|rs|rt[mt]|ssy(rb\d+)?\b|miri ?quran|mit\b)/i,
+  "b" => qr/^b(aby ?jeepers|bding|euron|guq|lex|lsy|oondox ?upr|ullets|urma)/i,
   "c" => qr/^(caladings|ccicons|chess|cmsy|cmex)/i,
   "d" => qr/^(dingbats|drmsym|d05)/i,
-  "e" => qr/^(elusiveicons|emoji|esint|euterpe)/i,
+  "e" => qr/^e(lusiveicons|mmentaler|moji|sint|uterpe)/i,
   "f" => qr/^(fandol.?brail|fdsymbol|fourierorns|font(awesome|ello|.?mfizz))/i,
-  "g" => qr/^(gan.?clm|gfs.?(baskerville|gazis|olga|porson|solomos|(bodoni|didot|complutum).?classic))/i,
+  "g" => qr/^(gan.?clm|gfs.?(baskerville|gazis|olga|porson|solomos|(bodoni|didot).?classic|complutum))/i,
   "h" => qr/^(hots)/i,
   "j" => qr/^jsmath.?(msam|cmsy|masm|msbm|wasy|cmex|stmary)/i,
+  "l" => qr/^l(cmsy|msam)/i,
   "m" => qr/^(marvosym|material|msam|msbm)/i,
-  "n" => qr/^(noto.*emoji)/i,
+  "n" => qr/^(noto.*(emoji|brahmi))/i,
   "o" => qr/^(octicons)/i,
   "p" => qr/^patch/i,
-  "q" => qr/^(qtdingbits)/i,
-  "s" => qr/^s(kak|tmary)/i,
+  "q" => qr/^(qtding ?bits)/i,
+  "s" => qr/^s(kak|tmary|s?msam)/i,
   "t" => qr/^(typicons|twemoji)/i,
   "u" => qr/^ukij ?(imaret|orxun|tughra)/i,
-  "w" => qr/^(webdings|wasy)/i,
+  "w" => qr/^w(ebdings|asy|elfare ?brat)/i,
 );
 
 if (open(FI,  "$cmd |")) {
@@ -720,12 +732,12 @@ sub getftype($$)
       $resftype |= SANS;
     }
   }
-  elsif ($fontname =~ /^(jsmath.?)?bbold|msbm|^(ds(rom|serif|ss))/i) {
+  elsif ($fontname =~ /^(jsmath.?)?bbold|msbm|^(ds(rom|serif|ss))|DoubleStruck/i) {
     $resftype |= DOUBLESTROKE;  # Double stroke (math font)
   }
   if ($fontname =~ /serif|times|mincho|batang/i) {
     if ($fontname =~ /good times/i) {
-      $resftype |= SANS; # Sans Serif
+      $resftype |= SERIF; # Serif
     }
   }
   if ($fontname =~ /initial(s|en)/i) {
@@ -743,7 +755,7 @@ sub getftype($$)
   if ($fontname =~ /^([a-z])/i) {
     my $key = lc($1);
     # check the mutual exclusive first
-    for my $rFonts (\%fraktFonts, \%scriptFonts, \%sansFonts) {
+    for my $rFonts (\%fraktFonts, \%scriptFonts, \%sansFonts, \%serifFonts) {
       if (defined($rFonts->{$key})) {
         if ($fontname =~ $rFonts->{$key}) {
           $resftype |= $rFonts->{"value"};
@@ -760,7 +772,7 @@ sub getftype($$)
     }
   }
   if ("$fontname" =~ /^bpg/i) {
-    if ("$fontname" =~ /bpg (courier gpl|elite)/i) {
+    if ("$fontname" =~ /bpg (courier gpl|elite|serif)/i) {
       $resftype |= SERIF;    # Serif
     }
     else {
