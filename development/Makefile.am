@@ -29,6 +29,7 @@ tools/count_total_lines_of_compiled_code.sh \
 tools/count_lines_of_included_code.sh \
 tools/lyxeditor \
 Win32/packaging/icons/Lydia.svg \
+Win32/packaging/icons/lyx_doc.ico \
 Win32/packaging/icons/lyx_doc.svg \
 Win32/packaging/icons/lyx_32x32.png \
 Win32/packaging/icons/lyx_doc_32x32.png \

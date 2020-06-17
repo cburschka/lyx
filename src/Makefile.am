@@ -42,7 +42,8 @@ lyx_LDADD = \
 
 if LYX_WIN_RESOURCE
 .rc.o:
-	cp $(top_srcdir)/development/Win32/packaging/icons/lyx_*32x32.ico .
+	cp $(top_srcdir)/development/Win32/packaging/icons/lyx.ico .
+	cp $(top_srcdir)/development/Win32/packaging/icons/lyx_doc.ico .
 	$(RC) -I$(top_builddir) --preprocessor "$(CPP) -xc-header -DRC_INVOKED" $< -o $@
 endif
 
