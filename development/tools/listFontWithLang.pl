@@ -293,7 +293,7 @@ my $nexttype = 6;
 # list of regexes for known sans serif fonts
 my %sansFonts = (
   "value" => SANS,          # Sans serif
-  "a" => qr/^a(030|becedario|bydos|haroni|rial|ndika|ngostura|nonymous|rab|roania|rimo|sap)/i,
+  "a" => qr/^a(030|bydos|haroni|e?rial|ndika|ngostura|nonymous|rab|roania|rimo|sap|e almothnna|egean|egyptus|l (arabiya|battar|hor|manzomah|yarmook)|lmonte|natolian|ndale|nglepoise|njali|xaxa)/i,
   "b" => qr/^b(aekmuk|ebas|erenika|eteckna|euron|lue)/i,
   "c" => qr/^c(abin|aliban|antarell|arbon|arlito|handas|hivo|mu bright|omfortaa|omi[cx]|oolvetica|ortoba|ousine|uprum|wtex(hei|yen)|yklop|ypro)/i,
   "d" => qr/^(d2coding|dimnah|dosis|dyuthi)/i,
@@ -321,13 +321,17 @@ my %sansFonts = (
 );
 my %scriptFonts = (
   "value" => SCRIPT,          # Script
+  "a" => qr/^a(becedario|ir ?cut|ugie|uriocus ?kalligraph)/i,
+  "b" => qr/^breip/i,
   "c" => qr/^(chancery)/i,
   "d" => qr/^(dancing)/i,
   "e" => qr/^(elegante)/i,
+  "f" => qr/^femkeklaver/i,
   "j" => qr/^jsmath.?(rsfs)/i,
   "k" => qr/^(kaushan|karumbi|kristi)/i,
   "m" => qr/^(mathjax_script|miama)/i,
   "n" => qr/^(nanum (brush|pen) script)/i,
+  "p" => qr/^pecita/i,
   "q" => qr/^qt(arabian|boulevard|brushstroke|chancery|coronation|florencia|handwriting|linostroke|merry|pandora|slogan)/i,
   "r" => qr/^((romande.*|ruf)script|rsfs)/i,
   "t" => qr/^typo ?script/i,
@@ -346,13 +350,14 @@ my %fraktFonts = (
 
 my %fancyFonts = (
   "value" => FANCY,          # Fancy
-  "a" => qr/^a(bandoned|bberancy)/i,
+  "a" => qr/^a(bandoned|bberancy|driator|irmole|lmonte (snow|woodgrain)|nalecta|ni|nklepants|nn ?stone|oyagi|rt ?nouveau ?caps|stron|xaxa)/i,
   "c" => qr/^(cretino)/i,
   "d" => qr/^dseg/i,
   "f" => qr/^frederika/i,
   "g" => qr/^(gfs.?theo)/i,
   "k" => qr/^keter|kicking|kredit|kouzan|kerkis calligraphic/i,
   "u" => qr/^ukij ?(saet|tiken)/i,
+  "v" => qr/^vectroid/i,
 );
 
 my %initialFonts = (
@@ -364,7 +369,7 @@ my %initialFonts = (
 
 my %symbolFonts = (
   "value" => SYMBOL,          # Symbol
-  "a" => qr/^(academicons)/i,
+  "a" => qr/^a(cademicons|lblant|lianna|mar|nka|rb?\d|rchaic|rrow|rs|rt[mt]|ssy(rb\d+)?\b|miri ?quran|mit\b)/i,
   "c" => qr/^(caladings|ccicons|chess|cmsy|cmex)/i,
   "d" => qr/^(dingbats|drmsym|d05)/i,
   "e" => qr/^(elusiveicons|emoji|esint|euterpe)/i,
@@ -377,7 +382,7 @@ my %symbolFonts = (
   "o" => qr/^(octicons)/i,
   "p" => qr/^patch/i,
   "q" => qr/^(qtdingbits)/i,
-  "s" => qr/^stmary/i,
+  "s" => qr/^s(kak|tmary)/i,
   "t" => qr/^(typicons|twemoji)/i,
   "u" => qr/^ukij ?(imaret|orxun|tughra)/i,
   "w" => qr/^(webdings|wasy)/i,
@@ -726,6 +731,9 @@ sub getftype($$)
   if ($fontname =~ /initial(s|en)/i) {
     $resftype |= INITIALS;
   }
+  if ($fontname =~ /participants/i) {
+    $resftype |= SANS|FANCY;
+  }
   if ($fontname =~ /symbol/i) {
     if ($fontname !~ /^symbola/i) {
       $resftype |= SYMBOL;
@@ -734,7 +742,16 @@ sub getftype($$)
   # Now check for fonts without a hint in font name
   if ($fontname =~ /^([a-z])/i) {
     my $key = lc($1);
-    for my $rFonts (\%sansFonts, \%scriptFonts, \%fraktFonts, \%fancyFonts, \%initialFonts, \%symbolFonts) {
+    # check the mutual exclusive first
+    for my $rFonts (\%fraktFonts, \%scriptFonts, \%sansFonts) {
+      if (defined($rFonts->{$key})) {
+        if ($fontname =~ $rFonts->{$key}) {
+          $resftype |= $rFonts->{"value"};
+          last;
+        }
+      }
+    }
+    for my $rFonts (\%fancyFonts, \%initialFonts, \%symbolFonts) {
       if (defined($rFonts->{$key})) {
         if ($fontname =~ $rFonts->{$key}) {
           $resftype |= $rFonts->{"value"};
@@ -771,8 +788,17 @@ sub getftype($$)
   if ($resftype == 0) {
     $resftype = $ftypes{default};
   }
-  elsif ($resftype & SANS) {
-    $resftype &= ~SERIF;
+  else {
+    # fonts SANS, SERIF, SCRIPT and FRAKTUR are mutualy exclusive
+    if ($resftype & FRAKTUR) {
+      $resftype &= ~(SANS|SERIF|SCRIPT);
+    }
+    elsif ($resftype & SCRIPT) {
+      $resftype &= ~(SANS|SERIF);
+    }
+    elsif ($resftype & SANS) {
+      $resftype &= ~SERIF;
+    }
   }
   for (my $i = 1; $i < 513; $i *= 2) {
     if ($resftype & $i) {
@@ -1047,9 +1073,6 @@ sub buildFontName($$$$)
   $style =~ s/\bextra\-light\b/ExtraLight/i;
   $style =~ s/\bbol\b/Bold/i;
   $family =~ s/\bmed\b/Medium/i;
-  if ($family =~ /powerline/i) {
-    my $a = 17;
-  }
   $family =~ s/^([A-Z]+[a-z]+)([A-Z][a-z]+)\b/$1 $2/;
   my @style = split(' ', $style);
   for my $st (@style) {
