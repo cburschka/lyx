@@ -29,7 +29,7 @@ include_directories((BEFORE
 	${ZLIB_INCLUDE_DIR})
 
 if(WIN32 AND NOT MINGW)
-	set(FILE_RC ${TOP_CMAKE_PATH}/lyx.rc)
+	set(FILE_RC ${TOP_SRC_DIR}/src/lyxwinres.rc)
 	message(STATUS "Using icon defined in resource file: ${FILE_RC}")
 endif()
 
