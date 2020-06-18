@@ -623,7 +623,10 @@ string const stripExtensionIfPossible(string const & file, string const & to, bo
 {
 	// No conversion is needed. LaTeX can handle the graphic file as is.
 	// This is true even if the orig_file is compressed.
-	string const to_format = theFormats().getFormat(to)->extension();
+	Format const * f = theFormats().getFormat(to);
+	if (!f)
+		return latex_path(file, EXCLUDE_EXTENSION);
+	string const to_format = f->extension();
 	string const file_format = getExtension(file);
 	// for latex .ps == .eps
 	if (to_format == file_format ||
