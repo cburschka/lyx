@@ -161,15 +161,18 @@ namespace {
 // convenience functions
 
 inline void openParTag(XMLStream & xs, Layout const & lay,
-                       std::string parlabel)
+                       const std::string & parlabel)
 {
-	xs << xml::ParTag(lay.htmltag(), lay.htmlattr(), parlabel);
+	string attrs = lay.htmlattr();
+	if (!parlabel.empty())
+		attrs += " id='" + parlabel + "'";
+	xs << xml::ParTag(lay.htmltag(), attrs);
 }
 
 
 void openParTag(XMLStream & xs, Layout const & lay,
                 ParagraphParameters const & params,
-                std::string parlabel)
+                const std::string & parlabel)
 {
 	// FIXME Are there other things we should handle here?
 	string const align = alignmentToCSS(params.align());
@@ -178,7 +181,9 @@ void openParTag(XMLStream & xs, Layout const & lay,
 		return;
 	}
 	string attrs = lay.htmlattr() + " style='text-align: " + align + ";'";
-	xs << xml::ParTag(lay.htmltag(), attrs, parlabel);
+	if (!parlabel.empty())
+		attrs += " id='" + parlabel + "'";
+	xs << xml::ParTag(lay.htmltag(), attrs);
 }
 
 

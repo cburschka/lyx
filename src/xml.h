@@ -247,14 +247,11 @@ struct CompTag
 
 
 /// A special case of StartTag, used exclusively for tags that wrap paragraphs.
-/// parid is only used for HTML output; XML is supposed to use attr for this. TODO: REMOVE PARID.
+/// parid is only used for HTML output; XML is supposed to use attr for this.
 struct ParTag : public StartTag
 {
     ///
     explicit ParTag(std::string const & tag, const std::string & attr): StartTag(tag, from_utf8(attr)) {}
-    ///
-    explicit ParTag(std::string const & tag, const std::string & attr, const std::string & parid):
-            StartTag(tag, from_utf8(attr + (parid.empty() ? (" id='" + parid + "'") : ""))) {}
     ///
     ~ParTag() {}
 };
