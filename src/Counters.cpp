@@ -34,7 +34,7 @@ namespace lyx {
 
 
 Counter::Counter()
-	: initial_value_(0)
+	: initial_value_(0), saved_value_(0)
 {
 	reset();
 }
@@ -42,7 +42,7 @@ Counter::Counter()
 
 Counter::Counter(docstring const & mc, docstring const & ls,
 		docstring const & lsa, docstring const & guiname)
-	: initial_value_(0), master_(mc), labelstring_(ls),
+	: initial_value_(0), saved_value_(0), master_(mc), labelstring_(ls),
 	  labelstringappendix_(lsa), guiname_(guiname)
 {
 	reset();
