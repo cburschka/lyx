@@ -90,6 +90,8 @@ GuiThesaurus::GuiThesaurus(GuiView & lv)
 	bc().addReadOnly(replaceED);
 	bc().addReadOnly(replacePB);
 	bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
+
+	setFocusProxy(entryCO);
 }
 
 void GuiThesaurus::checkStatus()
