@@ -602,7 +602,7 @@ Buffer * copyToTempBuffer(ParagraphList const & paragraphs, DocumentClassConstPt
 
 void putClipboard(ParagraphList const & paragraphs,
 		  DocumentClassConstPtr docclass, docstring const & plaintext,
-		  BufferParams const bp)
+		  BufferParams const & bp)
 {
 	Buffer * buffer = copyToTempBuffer(paragraphs, docclass);
 	if (!buffer) // already asserted in copyToTempBuffer()

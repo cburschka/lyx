@@ -451,7 +451,7 @@ bool getTokenValue(string const & str, char const * token, Length & len)
 }
 
 
-bool getTokenValue(string const & str, char const * token, Change & change, BufferParams bp)
+bool getTokenValue(string const & str, char const * token, Change & change, BufferParams & bp)
 {
 	// set the change to be Change() as default as this it should be if not
 	// in the file format.
@@ -574,7 +574,7 @@ string const write_attribute(string const & name, Length const & value)
 	return value.zero() ? string() : write_attribute(name, value.asString());
 }
 
-string const write_attribute(string const & name, Change const & change, BufferParams const bp)
+string const write_attribute(string const & name, Change const & change, BufferParams const & bp)
 {
 	odocstringstream ods;
 	if (change.inserted())
