@@ -880,7 +880,7 @@ Section "$(SecFileAssocTitle)" SecFileAssoc # Registry information to assiciate 
   WriteRegStr SHCTX "Software\Classes\.lyx" "Content Type" "application/lyx"
 
   WriteRegStr SHCTX "Software\Classes\LyX.Document" "" "LyX Document"
-  WriteRegStr SHCTX "Software\Classes\LyX.Document\DefaultIcon" "" "$INSTDIR\bin\LyX.exe,0"
+  WriteRegStr SHCTX "Software\Classes\LyX.Document\DefaultIcon" "" "$INSTDIR\bin\LyX.exe,1"
   WriteRegStr SHCTX "Software\Classes\LyX.Document\Shell\open\command" "" '"$INSTDIR\bin\LyX.exe" "%1"'
 
   # we need to update also the automatically created entry about the lyx.exe
