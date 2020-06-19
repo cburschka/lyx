@@ -350,7 +350,7 @@ docstring InsetQuotesParams::getLaTeXQuote(char_type c, string const & op,
 	case 0x2019: {// '
 		if (op == "int")
 			// This macro is redefined in rtl mode
-			res = rtl ? "\\textquoteright" : "\\textquoteleft";
+			res = rtl ? "\\textquoteleft" : "\\textquoteright";
 		else
 			res = "'";
 		break;
@@ -358,7 +358,7 @@ docstring InsetQuotesParams::getLaTeXQuote(char_type c, string const & op,
 	case 0x2018: {// `
 		if (op == "int")
 			// This macro is redefined in rtl mode
-			res = rtl ? "\\textquoteleft" : "\\textquoteright";
+			res = rtl ? "\\textquoteright" : "\\textquoteleft";
 		else
 			res = "`";
 		break;
@@ -393,7 +393,7 @@ docstring InsetQuotesParams::getLaTeXQuote(char_type c, string const & op,
 	case 0x201d: {// ''
 		if (op == "int")
 			// This macro is redefined in rtl mode
-			res = rtl ? "\\textquotedblright" : "\\textquotedblleft";
+			res = rtl ? "\\textquotedblleft" : "\\textquotedblright";
 		else
 			res = "''";
 		break;
@@ -401,7 +401,7 @@ docstring InsetQuotesParams::getLaTeXQuote(char_type c, string const & op,
 	case 0x201c: {// ``
 		if (op == "int")
 			// This macro is redefined in rtl mode
-			res = rtl ? "\\textquotedblleft" : "\\textquotedblright";
+			res = rtl ? "\\textquotedblright" : "\\textquotedblleft";
 		else
 			res = "``";
 		break;
