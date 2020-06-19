@@ -16,9 +16,9 @@
 # or
 # \def\macroname{definition} requires
 # or
-# \def\macroname{definition} extra xmlname
+# \def\macroname{definition} extra htmlname xmlname
 # or
-# \def\macroname{definition} extra xmlname requires
+# \def\macroname{definition} extra htmlname xmlname requires
 #
 # ("" for empty strings is not supported. One would have to use x for fields
 # that are not set.)
@@ -999,12 +999,12 @@ bignplus           stmry 112   0 mathop     x  x  stmaryrd # caution: named huge
 \def\Arrownot{\lyxArrownot\mathrel{\kern0.5mu}}             stmaryrd
 \def\longarrownot{\mathrel{\kern5.5mu}\arrownot\mathrel{\kern-5.5mu}} stmaryrd
 \def\Longarrownot{\mathrel{\kern5.5mu}\Arrownot\mathrel{\kern-5.5mu}} stmaryrd
-\def\Mapsto{\Mapstochar\mathrel\Rightarrow}              mathrel &#x2907; stmaryrd
-\def\mapsfrom{\leftarrow\kern-9mu\mapsfromchar}          mathrel &#x21a4; stmaryrd
-\def\Mapsfrom{\Leftarrow\kern-9mu\Mapsfromchar}          mathrel &#x2906; stmaryrd
-\def\Longmapsto{\Mapstochar\Longrightarrow}              mathrel &#x27fe; stmaryrd
-\def\longmapsfrom{\longleftarrow\mapsfromchar}           mathrel &#x27fb; stmaryrd
-\def\Longmapsfrom{\Longleftarrow\mathrel{\kern1mu}\Mapsfromchar}   mathrel &#x27fd; stmaryrd
+\def\Mapsto{\Mapstochar\mathrel\Rightarrow}              mathrel &#x2907; &#x2907; stmaryrd
+\def\mapsfrom{\leftarrow\kern-9mu\mapsfromchar}          mathrel &#x21a4; &#x21a4; stmaryrd
+\def\Mapsfrom{\Leftarrow\kern-9mu\Mapsfromchar}          mathrel &#x2906; &#x2906; stmaryrd
+\def\Longmapsto{\Mapstochar\Longrightarrow}              mathrel &#x27fe; &#x27fe; stmaryrd
+\def\longmapsfrom{\longleftarrow\mapsfromchar}           mathrel &#x27fb; &#x27fb; stmaryrd
+\def\Longmapsfrom{\Longleftarrow\mathrel{\kern1mu}\Mapsfromchar}   mathrel &#x27fd; &#x27fd; stmaryrd
 
 # symbols from the mhchem package, all of them are equivalent to a math symbol
 # mhchem is not loaded because these commands can only be used inside
@@ -1159,8 +1159,8 @@ ordinarycolon      cmr          58  58    mathrel :  :          mathtools
 \def\lnot{\neg}                                                 mathord &not;       &#xAC;
 \def\notin{\not\in}                                             mathrel &notin;     &#x2209;
 
-\def\ddag{\ddagger}                                             mathbin &Dagger;
-\def\dag{\dagger}                                               mathbin &dagger;
+\def\ddag{\ddagger}                                             mathbin &Dagger;    &#x2021;
+\def\dag{\dagger}                                               mathbin &dagger;    &#x2020;
 
 \def\joinrel{\mathrel{\kern-3mu}}
 \def\relbar{\lyxbar}
