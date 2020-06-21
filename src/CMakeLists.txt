@@ -96,9 +96,9 @@ endif()
 
 if(WIN32 AND NOT MINGW)
   set(FILE_RC ${TOP_SRC_DIR}/src/lyxwinres.rc)
-  file(COPY ${TOP_SRC_DIR}/development/Win32/packaging/icons/lyx.ico DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-  file(COPY ${TOP_SRC_DIR}/development/Win32/packaging/icons/lyx_doc.ico DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-	message(STATUS "Using icon defined in resource file: ${FILE_RC}")
+  file(COPY ${TOP_SRC_DIR}/development/Win32/packaging/icons/lyx.ico DESTINATION ${CMAKE_BINARY_DIR})
+  file(COPY ${TOP_SRC_DIR}/development/Win32/packaging/icons/lyx_doc.ico DESTINATION ${CMAKE_BINARY_DIR})
+  message(STATUS "Using icon defined in resource file: ${FILE_RC}")
 endif()
 
 lyx_find_info_files(LyXInfoFiles ${TOP_SRC_DIR}/*)
