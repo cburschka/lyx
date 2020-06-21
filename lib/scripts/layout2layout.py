@@ -392,7 +392,7 @@ def convert(lines, end_format):
     # for categories
     re_Declaration = re.compile(b'^#\\s*\\Declare\\w+Class.*$')
     re_ExtractCategory = re.compile(b'^(#\\s*\\Declare\\w+Class(?:\\[[^]]*?\\])?){([^(]+?)\\s+\\(([^)]+?)\\)\\s*}\\s*$')
-    ConvDict = {"article": "Articles", "book" : "Books", "letter" : "Letters", "report": "Reports", \
+    ConvDict = {"article": "Articles", "book" : "Books", "letter" : "Letters", "report": "Reports",
                 "presentation" : "Presentations", "curriculum vitae" : "Curricula Vitae", "handout" : "Handouts"}
     # Arguments
     re_OptArgs = re.compile(b'^(\\s*)OptionalArgs(\\s+)(\\d+)\\D*$', re.IGNORECASE)
@@ -485,12 +485,12 @@ def convert(lines, end_format):
           continue
 
         # insert file format if not already there
-        if (only_comment):
+        if only_comment:
             match = re_Format.match(lines[i])
             if match:
                 formatline = i
                 format = int(match.group(4))
-                if format > 1 and format < end_format:
+                if 1 < format < end_format:
                     lines[i] = b"Format %d" % (format + 1)
                     only_comment = 0
                 elif format == end_format:
@@ -545,7 +545,7 @@ def convert(lines, end_format):
             i += 1
             continue
 
-        if format >= 60 and format <= 62:
+        if 60 <= format <= 62:
             # nothing to do.
             i += 1
             continue
@@ -578,7 +578,7 @@ def convert(lines, end_format):
             i += 1
             continue
 
-        if format >= 50 and format <= 56:
+        if 50 <= format <= 56:
             # nothing to do.
             i += 1
             continue
@@ -676,7 +676,7 @@ def convert(lines, end_format):
 
             continue
 
-        if format >= 44 and format <= 47:
+        if 44 <= format <= 47:
             # nothing to do.
             i += 1
             continue
@@ -795,7 +795,7 @@ def convert(lines, end_format):
             continue
 
         if format == 36:
-            match = re_CiteFormat.match(lines[i]);
+            match = re_CiteFormat.match(lines[i])
             if match and match.group(4) == b"":
                 lines[i] = match.group(0) + b" default"
             i += 1
@@ -864,7 +864,7 @@ def convert(lines, end_format):
           continue
 
         # Only new features
-        if format >= 29 and format <= 31:
+        if 29 <= format <= 31:
           i += 1
           continue
 
@@ -888,7 +888,7 @@ def convert(lines, end_format):
           continue
 
         # Only new features
-        if format >= 24 and format <= 27:
+        if 24 <= format <= 27:
           i += 1
           continue
 
@@ -934,7 +934,7 @@ def convert(lines, end_format):
           continue
 
         # This just involved new features, not any changes to old ones
-        if format >= 14 and format <= 22:
+        if 14 <= format <= 22:
           i += 1
           continue
 
@@ -1011,7 +1011,7 @@ def convert(lines, end_format):
             continue
 
         # These just involved new features, not any changes to old ones
-        if format >= 5 and format <= 7:
+        if 5 <= format <= 7:
           i += 1
           continue
 

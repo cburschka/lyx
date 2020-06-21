@@ -1747,10 +1747,12 @@ ruby_inset_def = [
     r'End',
 ]
 
+
 def convert_ruby_module(document):
     """Use ruby module instead of local module definition"""
     if document.del_local_layout(ruby_inset_def):
         document.add_module("ruby")
+
 
 def revert_ruby_module(document):
     """Replace ruby module with local module definition"""
@@ -1767,6 +1769,7 @@ def convert_utf8_japanese(document):
     if ((lang == "japanese" and inputenc == "utf8-platex")
         or (lang == "japanese-cjk" and inputenc == "utf8-cjk")):
         document.set_parameter("inputencoding", "utf8")
+
 
 def revert_utf8_japanese(document):
     """Use Japanese utf8 variants with Japanese documents."""
