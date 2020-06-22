@@ -489,9 +489,6 @@ bool Row::shortenIfNeeded(pos_type const keep, int const w, int const next_width
 		 *
 		 * FIXME: Something shall be done about characters which are
 		 * not allowed at the beginning or end of line.
-		 *
-		 * FIXME: hardcoding languages is bad. Put this information in
-		 * `languages' file.
 		*/
 		bool const word_wrap = brk.font.language()->wordWrap();
 		// When there is text before the body part (think description
