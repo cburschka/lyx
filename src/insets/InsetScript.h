@@ -66,8 +66,6 @@ public:
 	InsetCode lyxCode() const { return SCRIPT_CODE; }
 	///
 	docstring layoutName() const;
-	///
-	DisplayType display() const;
 
 	///
 	int topOffset(BufferView const *) const { return 0; }

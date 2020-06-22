@@ -972,7 +972,7 @@ public:
 	//
 	bool isTable() const { return true; }
 	///
-	DisplayType display() const;
+	RowFlags rowFlags() const;
 	///
 	void latex(otexstream &, OutputParams const &) const;
 	///

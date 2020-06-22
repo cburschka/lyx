@@ -151,12 +151,6 @@ docstring InsetScript::layoutName() const
 }
 
 
-Inset::DisplayType InsetScript::display() const
-{
-	return Inline;
-}
-
-
 void InsetScript::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	int const shift = params_.shift(mi.base.font);

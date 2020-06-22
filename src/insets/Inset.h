@@ -485,15 +485,24 @@ public:
 
 	virtual OutputParams::CtObject CtObject(OutputParams const &) const { return OutputParams::CT_NORMAL; }
 
-	enum DisplayType {
+	enum RowFlags {
 		Inline = 0,
-		AlignLeft,
-		AlignCenter,
-		AlignRight
+		// break row before this inset
+		BreakBefore = 1 << 0,
+		// break row after this inset
+		BreakAfter = 1 << 1,
+		// force new (maybe empty) row after this inset
+		RowAfter = 1 << 2,
+		// specify an alignment (left, right) for a display inset
+		// (default is center)
+		AlignLeft = 1 << 3,
+		AlignRight = 1 << 4,
+		// A display inset breaks row at both ends
+		Display = BreakBefore | BreakAfter
 	};
 
-	/// should we have a non-filled line before this inset?
-	virtual DisplayType display() const { return Inline; }
+	/// How should this inset be displayed in its row?
+	virtual RowFlags rowFlags() const { return Inline; }
 	/// indentation before this inset (only needed for displayed hull insets with fleqn option)
 	virtual int indent(BufferView const &) const { return 0; }
 	///
@@ -651,6 +660,21 @@ protected:
 
 	Buffer * buffer_;
 };
+
+
+inline Inset::RowFlags operator|(Inset::RowFlags const d1,
+                                    Inset::RowFlags const d2)
+{
+	return static_cast<Inset::RowFlags>(int(d1) | int(d2));
+}
+
+
+inline Inset::RowFlags operator&(Inset::RowFlags const d1,
+                                    Inset::RowFlags const d2)
+{
+	return static_cast<Inset::RowFlags>(int(d1) & int(d2));
+}
+
 
 } // namespace lyx
 

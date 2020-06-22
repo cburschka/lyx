@@ -76,7 +76,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	DisplayType display() const;
+	RowFlags rowFlags() const;
 	///
 	InsetCode lyxCode() const { return INCLUDE_CODE; }
 	///

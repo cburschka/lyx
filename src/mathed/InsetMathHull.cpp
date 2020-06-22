@@ -1015,7 +1015,7 @@ bool InsetMathHull::outerDisplay() const
 }
 
 
-Inset::DisplayType InsetMathHull::display() const
+Inset::RowFlags InsetMathHull::rowFlags() const
 {
 	switch (type_) {
 	case hullUnknown:
@@ -1033,12 +1033,12 @@ Inset::DisplayType InsetMathHull::display() const
 	case hullMultline:
 	case hullGather:
 		if (buffer().params().is_math_indent)
-			return AlignLeft;
+			return Display | AlignLeft;
 		else
-			return AlignCenter;
+			return Display;
 	}
 	// avoid warning
-	return AlignCenter;
+	return Display;
 }
 
 
@@ -1046,7 +1046,7 @@ int InsetMathHull::indent(BufferView const & bv) const
 {
 	// FIXME: set this in the textclass. This value is what the article class uses.
 	static Length default_indent(2.5, Length::EM);
-	if (display() != Inline && buffer().params().is_math_indent) {
+	if (display() && buffer().params().is_math_indent) {
 		Length const & len = buffer().params().getMathIndent();
 		if (len.empty())
 			return bv.inPixels(default_indent);
@@ -2104,15 +2104,15 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 	}
 	case LFUN_MATH_DISPLAY: {
-		status.setEnabled(display() != Inline || allowDisplayMath(cur));
-		status.setOnOff(display() != Inline);
+		status.setEnabled(display() || allowDisplayMath(cur));
+		status.setOnOff(display());
 		return true;
 	}
 
 	case LFUN_MATH_NUMBER_TOGGLE:
 		// FIXME: what is the right test, this or the one of
 		// LABEL_INSERT?
-		status.setEnabled(display() != Inline);
+		status.setEnabled(display());
 		status.setOnOff(numberedType());
 		return true;
 
@@ -2121,7 +2121,7 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// LABEL_INSERT?
 		bool const enable = (type_ == hullMultline)
 			? (nrows() - 1 == cur.row())
-			: display() != Inline;
+			: display();
 		row_type const r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
 		status.setEnabled(enable);
 		status.setOnOff(enable && numbered(r));
@@ -2752,7 +2752,7 @@ void InsetMathHull::recordLocation(DocIterator const & di)
 bool InsetMathHull::canPaintChange(BufferView const &) const
 {
 	// We let RowPainter do it seamlessly for inline insets
-	return display() != Inline;
+	return display();
 }
 
 

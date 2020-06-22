@@ -5966,18 +5966,18 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-Inset::DisplayType InsetTabular::display() const
+Inset::RowFlags InsetTabular::rowFlags() const
 {
 		if (tabular.is_long_tabular) {
 			switch (tabular.longtabular_alignment) {
 			case Tabular::LYX_LONGTABULAR_ALIGN_LEFT:
-				return AlignLeft;
+				return Display | AlignLeft;
 			case Tabular::LYX_LONGTABULAR_ALIGN_CENTER:
-				return AlignCenter;
+				return Display;
 			case Tabular::LYX_LONGTABULAR_ALIGN_RIGHT:
-				return AlignRight;
+				return Display | AlignRight;
 			default:
-				return AlignCenter;
+				return Display;
 			}
 		} else
 			return Inline;

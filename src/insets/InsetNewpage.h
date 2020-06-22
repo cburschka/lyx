@@ -74,7 +74,7 @@ private:
 	///
 	void write(std::ostream & os) const;
 	///
-	DisplayType display() const { return AlignCenter; }
+	RowFlags rowFlags() const { return Display; }
 	///
 	docstring insetLabel() const;
 	///

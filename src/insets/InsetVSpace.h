@@ -62,7 +62,7 @@ private:
 	///
 	void write(std::ostream & os) const;
 	///
-	DisplayType display() const { return AlignCenter; }
+	RowFlags rowFlags() const { return Display; }
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///

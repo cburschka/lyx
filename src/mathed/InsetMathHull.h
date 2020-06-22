@@ -288,7 +288,10 @@ public:
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
 	///
-	DisplayType display() const;
+	RowFlags rowFlags() const;
+	/// helper function
+	bool display() const { return rowFlags() & Display; }
+
 	///
 	int indent(BufferView const &) const;
 

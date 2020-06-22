@@ -1224,9 +1224,9 @@ string InsetInclude::contextMenuName() const
 }
 
 
-Inset::DisplayType InsetInclude::display() const
+Inset::RowFlags InsetInclude::rowFlags() const
 {
-	return type(params()) == INPUT ? Inline : AlignCenter;
+	return type(params()) == INPUT ? Inline : Display;
 }
 
 

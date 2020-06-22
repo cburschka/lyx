@@ -64,6 +64,8 @@ public:
 		// remove warning
 		return docstring();
 	}
+	///
+	RowFlags rowFlags() const { return BreakAfter; }
 private:
 	///
 	InsetCode lyxCode() const { return SEPARATOR_CODE; }

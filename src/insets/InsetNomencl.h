@@ -100,7 +100,7 @@ public:
 	///
 	bool hasSettings() const { return true; }
 	///
-	DisplayType display() const { return AlignCenter; }
+	RowFlags rowFlags() const { return Display; }
 	///
 	void latex(otexstream &, OutputParams const &) const;
 	///

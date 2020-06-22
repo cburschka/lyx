@@ -46,7 +46,7 @@ private:
 	///
 	InsetCode lyxCode() const { return LISTINGS_CODE; }
 	/// lstinline is inlined, normal listing is displayed
-	DisplayType display() const;
+	RowFlags rowFlags() const;
 	///
 	docstring layoutName() const;
 	///

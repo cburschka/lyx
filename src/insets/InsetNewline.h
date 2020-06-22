@@ -47,6 +47,8 @@ public:
 	explicit InsetNewline(InsetNewlineParams par) : Inset(0)
 	{ params_.kind = par.kind; }
 	///
+	RowFlags rowFlags() const { return BreakAfter | RowAfter; }
+	///
 	static void string2params(std::string const &, InsetNewlineParams &);
 	///
 	static std::string params2string(InsetNewlineParams const &);

@@ -56,8 +56,6 @@ public:
 	///
 	InsetCode lyxCode() const { return REF_CODE; }
 	///
-	DisplayType display() const { return Inline; }
-	///
 	void latex(otexstream &, OutputParams const &) const;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,

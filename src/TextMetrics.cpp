@@ -622,19 +622,13 @@ LyXAlignment TextMetrics::getAlign(Paragraph const & par, Row const & row) const
 
 	// Display-style insets should always be on a centered row
 	if (Inset const * inset = par.getInset(row.pos())) {
-		switch (inset->display()) {
-		case Inset::AlignLeft:
-			align = LYX_ALIGN_BLOCK;
-			break;
-		case Inset::AlignCenter:
-			align = LYX_ALIGN_CENTER;
-			break;
-		case Inset::Inline:
-			// unchanged (use align)
-			break;
-		case Inset::AlignRight:
-			align = LYX_ALIGN_RIGHT;
-			break;
+		if (inset->rowFlags() & Inset::Display) {
+			if (inset->rowFlags() & Inset::AlignLeft)
+				align = LYX_ALIGN_BLOCK;
+			else if (inset->rowFlags() & Inset::AlignRight)
+				align = LYX_ALIGN_RIGHT;
+			else
+				align = LYX_ALIGN_CENTER;
 		}
 	}
 
@@ -976,23 +970,22 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 		}
 
 		// Handle some situations that abruptly terminate the row
-		// - A newline inset
-		// - Before a display inset
-		// - After a display inset
-		Inset const * inset = 0;
-		if (par.isNewline(i) || par.isEnvSeparator(i)
-		    || (i + 1 < end && (inset = par.getInset(i + 1))
-		        && inset->display())
-		    || (!row.empty() && row.back().inset
-		        && row.back().inset->display())) {
+		// - Before an inset with BreakBefore
+		// - After an inset with BreakAfter
+		Inset const * prevInset = !row.empty() ? row.back().inset : 0;
+		Inset const * nextInset = (i + 1 < end) ? par.getInset(i + 1) : 0;
+		if ((nextInset && nextInset->rowFlags() & Inset::BreakBefore)
+		    || (prevInset && prevInset->rowFlags() & Inset::BreakAfter)) {
 			row.flushed(true);
-			// We will force a row creation after either
-			// - a newline;
-			// - a display inset followed by a end label.
-			need_new_row =
-				par.isNewline(i)
-				|| (inset && inset->display() && i + 1 == end
-				    && text_->getEndLabel(row.pit()) != END_LABEL_NO_LABEL);
+			// Force a row creation after this one if it is ended by
+			// an inset that either
+			// - has row flag RowAfter that enforces that;
+			// - or (1) did force the row breaking, (2) is at end of
+			//   paragraph and (3) the said paragraph has an end label.
+			need_new_row = prevInset &&
+				(prevInset->rowFlags() & Inset::RowAfter
+				 || (prevInset->rowFlags() & Inset::BreakAfter && i + 1 == end
+				     && text_->getEndLabel(row.pit()) != END_LABEL_NO_LABEL));
 			++i;
 			break;
 		}
@@ -1771,10 +1764,10 @@ int TextMetrics::leftMargin(pit_type const pit, pos_type const pos) const
 	    && !par.params().noindent()
 	    // in some insets, paragraphs are never indented
 	    && !text_->inset().neverIndent()
-	    // display style insets are always centered, omit indentation
+	    // display style insets do not need indentation
 	    && !(!par.empty()
 	         && par.isInset(pos)
-	         && par.getInset(pos)->display())
+	         && par.getInset(pos)->rowFlags() & Inset::Display)
 	    && (!(tclass.isDefaultLayout(par.layout())
 	        || tclass.isPlainLayout(par.layout()))
 	        || buffer.params().paragraph_separation
