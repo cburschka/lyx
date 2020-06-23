@@ -62,6 +62,8 @@ public:
 	Kind kind() const;
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
+	/// some special chars allow line breaking after them
+	RowFlags rowFlags() const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///

@@ -113,6 +113,8 @@ public:
 
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
+	/// unprotected spaces allow line breaking after them
+	RowFlags rowFlags() const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///

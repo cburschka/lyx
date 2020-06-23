@@ -193,6 +193,41 @@ bool InsetSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
+Inset::RowFlags InsetSpace::rowFlags() const
+{
+	switch (params_.kind) {
+		case InsetSpaceParams::PROTECTED:
+		case InsetSpaceParams::CUSTOM_PROTECTED:
+		case InsetSpaceParams::HFILL_PROTECTED:
+		case InsetSpaceParams::THIN:
+		case InsetSpaceParams::NEGTHIN:
+		case InsetSpaceParams::MEDIUM:
+		case InsetSpaceParams::NEGMEDIUM:
+		case InsetSpaceParams::THICK:
+		case InsetSpaceParams::NEGTHICK:
+		case InsetSpaceParams::ENSPACE:
+		case InsetSpaceParams::VISIBLE:
+			// no break after these
+			return Inline;
+		case InsetSpaceParams::NORMAL:
+		case InsetSpaceParams::QUAD:
+		case InsetSpaceParams::QQUAD:
+		case InsetSpaceParams::ENSKIP:
+		case InsetSpaceParams::CUSTOM:
+		case InsetSpaceParams::HFILL:
+		case InsetSpaceParams::DOTFILL:
+		case InsetSpaceParams::HRULEFILL:
+		case InsetSpaceParams::LEFTARROWFILL:
+		case InsetSpaceParams::RIGHTARROWFILL:
+		case InsetSpaceParams::UPBRACEFILL:
+		case InsetSpaceParams::DOWNBRACEFILL:
+			// these allow line breaking
+			break;
+	}
+	return CanBreakAfter;
+}
+
+
 namespace {
 int const arrow_size = 8;
 }

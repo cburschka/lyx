@@ -491,12 +491,14 @@ public:
 		BreakBefore = 1 << 0,
 		// break row after this inset
 		BreakAfter = 1 << 1,
+		// it is possible to break after this inset
+		CanBreakAfter = 1 << 2,
 		// force new (maybe empty) row after this inset
-		RowAfter = 1 << 2,
+		RowAfter = 1 << 3,
 		// specify an alignment (left, right) for a display inset
 		// (default is center)
-		AlignLeft = 1 << 3,
-		AlignRight = 1 << 4,
+		AlignLeft = 1 << 4,
+		AlignRight = 1 << 5,
 		// A display inset breaks row at both ends
 		Display = BreakBefore | BreakAfter
 	};

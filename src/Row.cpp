@@ -480,6 +480,18 @@ bool Row::shortenIfNeeded(pos_type const keep, int const w, int const next_width
 		--cit_brk;
 		// make a copy of the element to work on it.
 		Element brk = *cit_brk;
+		/* If the current element is an inset that allows breaking row
+		 * after itself, and it the row is already short enough after
+		 * this inset, then cut right after this element.
+		 */
+		if (wid_brk <= w && brk.type == INSET
+		    && brk.inset->rowFlags() & Inset::CanBreakAfter) {
+			end_ = brk.endpos;
+			dim_.wid = wid_brk;
+			elements_.erase(cit_brk + 1, end);
+			return true;
+		}
+		// assume now that the current element is not there
 		wid_brk -= brk.dim.wid;
 		/*
 		 * Some Asian languages split lines anywhere (no notion of

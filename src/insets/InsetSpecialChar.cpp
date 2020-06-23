@@ -82,6 +82,29 @@ docstring InsetSpecialChar::toolTip(BufferView const &, int, int) const
 }
 
 
+Inset::RowFlags InsetSpecialChar::rowFlags() const
+{
+	switch (kind_) {
+	case ALLOWBREAK:
+	case HYPHENATION:
+	case SLASH:
+		// these are the elements that allow line breaking
+		return CanBreakAfter;
+	case NOBREAKDASH:
+	case END_OF_SENTENCE:
+	case LIGATURE_BREAK:
+	case LDOTS:
+	case MENU_SEPARATOR:
+	case PHRASE_LYX:
+	case PHRASE_TEX:
+	case PHRASE_LATEX2E:
+	case PHRASE_LATEX:
+		break;
+	}
+	return Inline;
+}
+
+
 namespace {
 
 // helper function: draw text and update x.
