@@ -42,9 +42,9 @@ struct InsetSpaceParams {
 		QUAD,
 		/// \qquad (2em)
 		QQUAD,
-		/// \enskip (0.5em unbreakable)
+		/// \enspace (0.5em unbreakable)
 		ENSPACE,
-		/// \enspace (0.5em breakable)
+		/// \enskip (0.5em breakable)
 		ENSKIP,
 		/// Negative thin space ('\negthinspace')
 		NEGTHIN,
