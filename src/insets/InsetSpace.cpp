@@ -372,8 +372,11 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 	Color col = Color_special;
 	if (params_.kind == InsetSpaceParams::PROTECTED ||
 	    params_.kind == InsetSpaceParams::ENSPACE ||
+	    params_.kind == InsetSpaceParams::THIN ||
 	    params_.kind == InsetSpaceParams::NEGTHIN ||
+	    params_.kind == InsetSpaceParams::MEDIUM ||
 	    params_.kind == InsetSpaceParams::NEGMEDIUM ||
+	    params_.kind == InsetSpaceParams::THICK ||
 	    params_.kind == InsetSpaceParams::NEGTHICK ||
 	    params_.kind == InsetSpaceParams::CUSTOM_PROTECTED)
 		col = Color_latex;
