@@ -245,6 +245,8 @@ Menuset
 		Item "Visible Space|a" "inset-modify space \textvisiblespace{}"
 		Item "Thin Space|T" "inset-modify space \thinspace{}"
 		Item "Negative Thin Space|N" "inset-modify space \negthinspace{}"
+		Item "Negative Medium Space|v" "inset-modify space \negmedspace{}"
+		Item "Negative Thick Space|h" "inset-modify space \negthickspace{}"
 		Item "Half Quad Space (Enskip)|k" "inset-modify space \enskip{}"
 		Item "Protected Half Quad Space (Enspace)|E" "inset-modify space \enspace{}"
 		Item "Quad Space|Q" "inset-modify space \quad{}"
