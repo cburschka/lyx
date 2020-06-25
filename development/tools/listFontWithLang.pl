@@ -43,6 +43,7 @@ use constant {
   FANCY => 32,
   INITIALS => 64,
   SYMBOL => 128,
+  SMALLCAP => 256,
 };
 
 sub convertlang($);
@@ -228,6 +229,7 @@ my %ftypes = (
   FANCY() => "Fancy",
   INITIALS() => "Initials",
   SYMBOL() => "Symbol",
+  SMALLCAP() => "SmallCap",
   "default" => 1,
 );
 
@@ -360,7 +362,7 @@ my %fraktFonts = (
   "j" => qr/^(jsmath.?euf)/i,
   "m" => qr/^(missaali)/i,
   "o" => qr/^(oldania)/i,
-  "q" => qr/^qt(blackforest|cloisteredmonk|dublinirish|fraktur|heidelbergtype|(lino|london)scroll)/i,
+  "q" => qr/^qt(blackforest|cloisteredmonk|dublinirish|fraktur|heidelbergtype|(lino|london) ?scroll)/i,
   "u" => qr/^ukij ?(kufi ?tar|mejnun ?reg)/i,
 );
 
@@ -412,6 +414,17 @@ my %symbolFonts = (
   "w" => qr/^w(ebdings|asy|elfare ?brat)/i,
 );
 
+my %smallcapFonts = (
+  "value" => SMALLCAP | SERIF,
+  "c" => qr/^cs[ct]sc\d/i,
+  "d" => qr/^drm(it)?sc\d/i,
+  "f" => qr/^fetamont.?script/i,
+  "n" => qr/^newtxb?ttsc/i,
+  "s" => qr/^(screengem|sf.?kp.?sc)/i,
+  "t" => qr/^t1?xb?ttsc/i,
+  "v" => qr/^vn ?cccsc\d/i,
+);
+
 if (open(FI,  "$cmd |")) {
  NXTLINE: while (my $l = <FI>) {
     chomp($l);
@@ -457,7 +470,6 @@ if (open(FI,  "$cmd |")) {
     }
     my $fontname;
     ($fontname, $style) = &buildFontName($family, $style);
-
     if (defined($options{NFontName})) {
       for my $fn (@{$options{NFontName}}) {
         next NXTLINE if ($fontname =~ /$fn/i);
@@ -780,6 +792,11 @@ sub getftype($$)
   if ($fontname =~ /callig/i) {
     $resftype |= FANCY;
   }
+  if ($fontname =~ /\bS(mall)?C(aps)\b/i) {
+    if ($fontname !~ /^noto/i) {
+      $resftype |= SMALLCAP|SERIF;
+    }
+  }
   # Now check for fonts without a hint in font name
   if ($fontname =~ /^([a-z])/i) {
     my $key = lc($1);
@@ -792,7 +809,7 @@ sub getftype($$)
         }
       }
     }
-    for my $rFonts (\%fancyFonts, \%initialFonts, \%symbolFonts) {
+    for my $rFonts (\%fancyFonts, \%initialFonts, \%symbolFonts, \%smallcapFonts) {
       if (defined($rFonts->{$key})) {
         if ($fontname =~ $rFonts->{$key}) {
           $resftype |= $rFonts->{"value"};
