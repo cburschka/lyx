@@ -1,11 +1,14 @@
-Public release of LyX version 2.3.5
-===================================
+Public release of LyX version 2.3.5.2
+=====================================
 
-We are proud to announce the release of LyX 2.3.5. This is the fifth
-maintenance release in the 2.3.x series. We encourage all users to
-upgrade to this version.
+We are proud to announce the release of LyX 2.3.5.2. This is an emergency 
+release to fix bug #11889, which led to quotation marks being reversed in
+moving arguments when hyperref is enabled. There are no other changes to
+the 2.3.5 release.
 
-You can download LyX 2.3.5 from http://www.lyx.org/Download/.
+You can download LyX 2.3.5.2 from http://www.lyx.org/Download/.
+
+The original announcement for 2.3.5 follows.
 
 LyX is a document processor that encourages an approach to writing based 
 on the structure of your documents and not simply their appearance. It is
