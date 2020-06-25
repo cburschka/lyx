@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-06-12 12:15+0200\n"
-"PO-Revision-Date: 2020-06-12 10:20+0000\n"
+"POT-Creation-Date: 2020-06-25 17:30+0200\n"
+"PO-Revision-Date: 2020-06-25 15:32+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -19629,6 +19629,14 @@ msgstr "Úzka medzera|k"
 msgid "Negative Thin Space|N"
 msgstr "Záporná úzka medzera|Z"
 
+#: lib/ui/stdcontext.inc:248 lib/ui/stdcontext.inc:275
+msgid "Negative Medium Space|v"
+msgstr "Záporná stredná medzera|o"
+
+#: lib/ui/stdcontext.inc:249 lib/ui/stdcontext.inc:276
+msgid "Negative Thick Space|h"
+msgstr "Záporná tučná medzera|u"
+
 #: lib/ui/stdcontext.inc:245 lib/ui/stdcontext.inc:272
 msgid "Half Quad Space (Enskip)|k"
 msgstr "Polovička Quad medzery (Enskip)|P"
@@ -19685,17 +19693,9 @@ msgstr "Vlastná dĺžka|V"
 msgid "Medium Space|M"
 msgstr "Stredná medzera|S"
 
-#: lib/ui/stdcontext.inc:268
-msgid "Thick Space|h"
+#: lib/ui/stdcontext.inc:273
+msgid "Thick Space|i"
 msgstr "Tučná medzera|T"
-
-#: lib/ui/stdcontext.inc:270
-msgid "Negative Medium Space|u"
-msgstr "Záporná stredná medzera|o"
-
-#: lib/ui/stdcontext.inc:271
-msgid "Negative Thick Space|i"
-msgstr "Záporná tučná medzera|u"
 
 #: lib/ui/stdcontext.inc:284
 msgid "DefSkip|D"
