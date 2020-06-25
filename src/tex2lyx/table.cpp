@@ -566,7 +566,7 @@ void fix_colalign(vector<ColInfo> & colinfo)
 {
 	// Try to move extra leftlines to the previous column.
 	// We do this only if both special fields are empty, otherwise we
-	// can't tell wether the result will be the same.
+	// can't tell whether the result will be the same.
 	for (size_t col = 0; col < colinfo.size(); ++col) {
 		if (colinfo[col].leftlines > 1 &&
 		    colinfo[col].special.empty() && col > 0 &&
@@ -596,7 +596,7 @@ void fix_colalign(vector<ColInfo> & colinfo)
 
 /*!
  * Parse hlines and similar stuff.
- * \returns wether the token \p t was parsed
+ * \returns whether the token \p t was parsed
  */
 bool parse_hlines(Parser & p, Token const & t, string & hlines,
 		  bool is_long_tabular)
@@ -712,7 +712,7 @@ void parse_table(Parser & p, ostream & os, bool is_long_tabular,
 		}
 
 		// We need to handle structure stuff first in order to
-		// determine wether we need to output a HLINE separator
+		// determine whether we need to output a HLINE separator
 		// before the row or not.
 		if (t.cat() == catEscape) {
 			if (parse_hlines(p, t, hlines, is_long_tabular)) {

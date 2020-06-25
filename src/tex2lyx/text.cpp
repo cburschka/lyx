@@ -924,7 +924,7 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
  *
  * 2. could be used to suppress as many spaces as possible. This has two effects:
  * - Reimporting LyX generated LaTeX files changes almost no whitespace
- * - Superflous whitespace from non LyX generated LaTeX files is removed.
+ * - Superfluous whitespace from non LyX generated LaTeX files is removed.
  * The drawback is that the logic inside the function becomes
  * complicated, and that is the reason why it is not implemented.
  */
@@ -1310,7 +1310,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			os << "use_makebox " << (inner_type == "makebox") << '\n';
 		if (outer_type == "mbox" || (outer_type == "fbox" && inner_type.empty()))
 			os << "width \"\"\n";
-		// for values like "1.5\width" LyX uses "1.5in" as width ad sets "width" as sepecial
+		// for values like "1.5\width" LyX uses "1.5in" as width ad sets "width" as special
 		else if (contains(width_unit, '\\'))
 			os << "width \"" << width_value << "in" << "\"\n";
 		else
@@ -2406,7 +2406,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 
 		if (known_environments.find(name) != known_environments.end()) {
 			vector<ArgumentType> arguments = known_environments[name];
-			// The last "argument" denotes wether we may translate the
+			// The last "argument" denotes whether we may translate the
 			// environment contents to LyX
 			// The default required if no argument is given makes us
 			// compatible with the reLyXre environment.

@@ -348,10 +348,10 @@ void LyXDataSocket::writeln(string const & line)
 	string linen(line + '\n');
 	int size = linen.size();
 	int written = ::write(fd_, linen.c_str(), size);
-	if (written < size) { // Allways mean end of connection.
+	if (written < size) { // Always mean end of connection.
 		if ((written == -1) && (errno == EPIPE)) {
 			// The program will also receive a SIGPIPE
-			// that must be catched
+			// that must be caught
 			cerr << "lyxclient: connection closed while writing."
 			     << endl;
 		} else {
@@ -525,7 +525,7 @@ int a(vector<docstring> const & arg)
 		     << endl;
 		return -1;
 	}
-	// -a supercedes LYXSOCKET environment variable
+	// -a supersedes LYXSOCKET environment variable
 	serverAddress = arg[0];
 	return 1;
 }

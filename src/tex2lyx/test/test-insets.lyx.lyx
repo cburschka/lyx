@@ -872,7 +872,7 @@ literal "false"
 
 \end_inset
 
- File names containg double quotes are not legal on windows, so no test file is provided. Nevertheless, they are legal on unix, so we test at least the parsing. File names containing spaces can not be handled by automake (make dist would fail), so no test file is provided as well. Since the files do not exist, the variants without extension would not work (tex2lyx can't deduce the correct extension of nonexisting files). 
+ File names containing double quotes are not legal on windows, so no test file is provided. Nevertheless, they are legal on unix, so we test at least the parsing. File names containing spaces can not be handled by automake (make dist would fail), so no test file is provided as well. Since the files do not exist, the variants without extension would not work (tex2lyx can't deduce the correct extension of nonexisting files). 
 \begin_inset CommandInset include
 LatexCommand include
 preview false

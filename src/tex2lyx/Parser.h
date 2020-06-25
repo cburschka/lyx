@@ -222,7 +222,7 @@ public:
 	 * If \p allow_escaping is true, a right delimiter escaped by a
 	 * backslash does not count as delimiter, but is included in the
 	 * argument.
-	 * \returns wether an argument was found in \p Arg.first and the
+	 * \returns whether an argument was found in \p Arg.first and the
 	 * argument in \p Arg.second. \see getArg().
 	 */
 	Arg getFullArg(char left, char right, bool allow_escaping = true);
@@ -233,7 +233,7 @@ public:
 	 * argument.
 	 * \returns the argument (without \p left and \p right) or the empty
 	 * string if the next non-space token is not \p left. Use
-	 * getFullArg() if you need to know wether there was an empty
+	 * getFullArg() if you need to know whether there was an empty
 	 * argument or no argument at all.
 	 */
 	std::string getArg(char left, char right, bool allow_escaping = true);

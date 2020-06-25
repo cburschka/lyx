@@ -61,7 +61,7 @@ public:
 	 *  file to this->imageConverted.
 	 *
 	 *  convertToDisplayFormat() will set the loading status flag as
-	 *  approriate through calls to setStatus().
+	 *  appropriate through calls to setStatus().
 	 */
 	void convertToDisplayFormat();
 

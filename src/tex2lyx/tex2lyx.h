@@ -102,7 +102,7 @@ char const * const * is_known(std::string const &, char const * const *);
  * Adds the command \p command to the list of known commands.
  * \param o1 first optional parameter to the latex command \\newcommand
  * (with brackets), or the empty string if there were no optional arguments.
- * \param o2 wether \\newcommand had a second optional parameter.
+ * \param o2 whether \\newcommand had a second optional parameter.
  * If \p definition is not empty the command is assumed to be from the LyX
  * preamble and added to possible_textclass_commands.
  */

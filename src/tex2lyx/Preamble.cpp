@@ -1727,7 +1727,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 			    || opt == "subsection")
 				h_multibib = opt;
 			else
-				cerr << "Ignoring unkown refesection value '"
+				cerr << "Ignoring unknown refesection value '"
 				     << opt << "'.";
 		}
 		opt = process_keyval_opt(options, "bibencoding");

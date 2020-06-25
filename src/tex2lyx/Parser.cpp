@@ -347,7 +347,7 @@ Token const Parser::get_token()
 
 bool Parser::isParagraph()
 {
-	// A new paragraph in TeX ist started
+	// A new paragraph in TeX is started
 	// - either by a newline, following any amount of whitespace
 	//   characters (including zero), and another newline
 	// - or the token \par
