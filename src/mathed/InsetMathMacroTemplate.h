@@ -48,7 +48,7 @@ public:
 	void write(std::ostream & os) const;
 	///
 	void write(WriteStream & os) const;
-	/// Output LaTeX code, but assume that the macro is not definied yet
+	/// Output LaTeX code, but assume that the macro is not defined yet
 	/// if overwriteRedefinition is true
 	int write(WriteStream & os, bool overwriteRedefinition) const;
 	/// Nothing happens. This is simply to suppress the default output.

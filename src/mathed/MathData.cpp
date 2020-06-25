@@ -322,7 +322,7 @@ void MathData::drawSelection(PainterInfo & pi, int const x, int const y) const
 	MathData const & c1 = inset->cell(s1.idx());
 
 	if (s1.idx() == s2.idx() && &c1 == this) {
-		// selection indide cell
+		// selection inside cell
 		Dimension const dim = bv->coordCache().getArrays().dim(&c1);
 		int const beg = c1.pos2x(bv, s1.pos());
 		int const end = c1.pos2x(bv, s2.pos());

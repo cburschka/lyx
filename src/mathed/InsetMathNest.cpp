@@ -1404,7 +1404,7 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_INSERT: {
 		// Don't test createMathInset_fromDialogStr(), since
 		// getStatus is not called with a valid reference and the
-		// dialog would not be applyable.
+		// dialog would not be applicable.
 		string const name = cmd.getArg(0);
 		flag.setEnabled(name == "ref" || name == "mathspace");
 		break;

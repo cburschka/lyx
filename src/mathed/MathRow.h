@@ -65,7 +65,7 @@ public:
 		MathClass mclass;
 		/// the spacing around the element
 		int before, after;
-		/// count wether the current mathdata is nested in macro(s)
+		/// count whether the current mathdata is nested in macro(s)
 		int macro_nesting;
 		/// Marker type
 		InsetMath::marker_type marker;

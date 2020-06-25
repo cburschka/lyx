@@ -342,7 +342,7 @@ void replaceNested(
 
 
 //
-// split scripts into seperate super- and subscript insets. sub goes in
+// split scripts into separate super- and subscript insets. sub goes in
 // front of super...
 //
 
@@ -683,7 +683,7 @@ void extractIntegrals(MathData & ar, ExternalMath kind)
 		if (!testIntegral(*it))
 			continue;
 
-		// core ist part from behind the scripts to the 'd'
+		// core is part from behind the scripts to the 'd'
 		auto p = make_unique<InsetMathExInt>(buf, from_ascii("int"));
 
 		// handle scripts if available

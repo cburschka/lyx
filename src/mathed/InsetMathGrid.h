@@ -45,7 +45,7 @@ public:
 		CellInfo();
 		/// multicolumn flag
 		Multicolumn multi;
-		/// special multi colums alignment
+		/// special multi columns alignment
 		docstring align;
 	};
 
@@ -95,7 +95,7 @@ public:
 	};
 
 public:
-	/// sets nrows and ncols to 1, vertical alingment to 'c'
+	/// sets nrows and ncols to 1, vertical alignment to 'c'
 	explicit InsetMathGrid(Buffer * buf);
 	/// Note: columns first!
 	InsetMathGrid(Buffer * buf, col_type m, row_type n);

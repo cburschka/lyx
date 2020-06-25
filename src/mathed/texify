@@ -26,7 +26,7 @@ foreach item $::argv {
 	set value   0
 	set ascent  0
 	set descent 0
-	set widht   0
+	set width   0
 
 	set f [open $filebase.tex w 0600]
 	puts $f "\\nonstopmode"

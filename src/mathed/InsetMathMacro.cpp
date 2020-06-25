@@ -744,7 +744,7 @@ void InsetMathMacro::draw(PainterInfo & pi, int x, int y) const
 			pi.pain.text(x, y, from_ascii(":"), labelFont);
 			x += strw2;
 
-			// draw paramter
+			// draw parameter
 			cell(i).draw(pi, x, y);
 
 			// next line

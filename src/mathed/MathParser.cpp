@@ -158,7 +158,7 @@ docstring escapeSpecialChars(docstring const & str, bool textmode)
 
 /*!
  * Add the row \p cellrow to \p grid.
- * \returns wether the row could be added. Adding a row can fail for
+ * \returns whether the row could be added. Adding a row can fail for
  * environments like "equation" that have a fixed number of rows.
  */
 bool addRow(InsetMathGrid & grid, InsetMathGrid::row_type & cellrow,
@@ -193,7 +193,7 @@ bool addRow(InsetMathGrid & grid, InsetMathGrid::row_type & cellrow,
 
 /*!
  * Add the column \p cellcol to \p grid.
- * \returns wether the column could be added. Adding a column can fail for
+ * \returns whether the column could be added. Adding a column can fail for
  * environments like "eqnarray" that have a fixed number of columns.
  */
 bool addCol(InsetMathGrid & grid, InsetMathGrid::col_type & cellcol)
@@ -360,7 +360,7 @@ ostream & operator<<(ostream & os, Token const & t)
 {
 	if (!t.cs().empty()) {
 		docstring const & cs = t.cs();
-		// FIXME: For some strange reason, the stream operator instanciate
+		// FIXME: For some strange reason, the stream operator instantiate
 		// a new Token before outputting the contents of t.cs().
 		// Because of this the line
 		//     os << '\\' << cs;
