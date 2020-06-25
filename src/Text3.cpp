@@ -1588,8 +1588,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (change_layout) {
 			setLayout(cur, layout);
 			if (cur.pit() > 0 && !ignoreautonests) {
+				pit_type prev_pit = cur.pit() - 1;
+				depth_type const cur_depth = pars_[cur.pit()].getDepth();
+				// Scan for the previous par on same nesting level
+				while (prev_pit > 0 && pars_[prev_pit].getDepth() > cur_depth)
+					--prev_pit;
 				set<docstring> const & autonests =
-						pars_[cur.pit() - 1].layout().autonests();
+						pars_[prev_pit].layout().autonests();
 				set<docstring> const & autonested =
 						pars_[cur.pit()].layout().isAutonestedBy();
 				if (autonests.find(layout) != autonests.end()
