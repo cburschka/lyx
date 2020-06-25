@@ -72,7 +72,7 @@ GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 		SLOT(setIconSize(QSize)));
 
 	// This is used by QMainWindow::restoreState for proper main window state
-	// restauration.
+	// restoration.
 	setObjectName(toqstr(tbinfo.name));
 	restoreSession();
 }

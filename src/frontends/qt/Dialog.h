@@ -88,7 +88,7 @@ public:
 	 */
 	//@{
 	/// \param data is a string encoding of the data to be displayed.
-	/// It is passed to the Controller to be translated into a useable form.
+	/// It is passed to the Controller to be translated into a usable form.
 	virtual void showData(std::string const & data);
 	//@}
 
@@ -127,7 +127,7 @@ public:
 	/// Prepare dialog before view.
 	void prepareView();
 
-	/// Decide wether the dialog should grab thekeyboard focus when shown.
+	/// Decide whether the dialog should grab thekeyboard focus when shown.
 	/// This method defaults to true, override if a different behaviour
 	/// is wanted.
 	virtual bool wantInitialFocus() const { return true; }

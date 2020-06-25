@@ -127,7 +127,7 @@ void GuiTexInfo::updateStyles(TexFileType type)
 
 	QStringList flist = texFileList(filename);
 	if (flist.empty()) {
-		// build filelists of all availabe bst/cls/sty-files.
+		// build filelists of all available bst/cls/sty-files.
 		// Done through kpsewhich and an external script,
 		// saved in *Files.lst
 		rescanTexStyles();

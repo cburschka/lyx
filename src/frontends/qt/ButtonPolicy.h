@@ -158,7 +158,7 @@ public:
 		/** Defines the policy used by dialogs that are forced to support a button
 			controller when they either don't have a use for one or are not ready to
 			use one.  This may be useful when testing a new button policy but wishing
-			to minimise problems to users by supplying an anything-goes policy via a
+			to minimize problems to users by supplying an anything-goes policy via a
 			preprocessor directive.
 		 */
 		IgnorantPolicy

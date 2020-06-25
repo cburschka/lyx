@@ -504,7 +504,7 @@ void GuiPainter::crossoutLines(FontInfo const & f, int x, int y, int width)
 
 	// the definition of \xout in ulem.sty is
     //  \def\xout{\bgroup \markoverwith{\hbox to.35em{\hss/\hss}}\ULon}
-	// Let's mimick it somewhat.
+	// Let's mimic it somewhat.
 	double offset = max(0.35 * theFontMetrics(tmpf).em(), 1);
 	for (int i = 0 ; i < iround(width / offset) ; ++i)
 		text(x + iround(i * offset), y, '/', tmpf);

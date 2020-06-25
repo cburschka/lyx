@@ -95,7 +95,7 @@ public:
 	 * direction of the string is forced, and the returned value
 	 * is from the left edge of the word, not from the start of the string.
 	 * \param rtl is true for right-to-left layout
-	 * \param ws is the amount of extra inter-word space applied text justication.
+	 * \param ws is the amount of extra inter-word space applied text justification.
 	 */
 	virtual int pos2x(docstring const & s, int pos, bool rtl, double ws) const = 0;
 	/**
@@ -104,7 +104,7 @@ public:
 	 * is from the left edge of the word, not from the start of the string.
 	 * the offset x is updated to match the closest position in the string.
 	 * \param rtl is true for right-to-left layout
-	 * \param ws is the amount of extra inter-word space applied text justication.
+	 * \param ws is the amount of extra inter-word space applied text justification.
 	 */
 	virtual int x2pos(docstring const & s, int & x, bool rtl, double ws) const = 0;
 	/**

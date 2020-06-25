@@ -41,7 +41,7 @@ class LyXRC;
 namespace frontend {
 
 /** A class to ascertain whether the data passed to the @c validate()
- *  member function can be interpretted as a GlueLength.
+ *  member function can be interpreted as a GlueLength.
  */
 class LengthValidator : public QValidator
 {
@@ -85,7 +85,7 @@ LengthValidator * unsignedGlueLengthValidator(QLineEdit *);
 
 
 /** A class to ascertain whether the data passed to the @c validate()
- *  member function can be interpretted as a GlueLength or is @param autotext.
+ *  member function can be interpreted as a GlueLength or is @param autotext.
  */
 class LengthAutoValidator : public LengthValidator
 {

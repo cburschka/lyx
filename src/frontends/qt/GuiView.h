@@ -312,7 +312,7 @@ public:
 
 	/// Update all visible dialogs.
 	/**
-	 *  Check the status of all visible dialogs and disable or reenable
+	 *  Check the status of all visible dialogs and disable or re-enable
 	 *  them as appropriate.
 	 *
 	 *  Disabling is needed for example when a dialog is open and the

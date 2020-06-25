@@ -66,7 +66,7 @@ private:
 	docstring title() const;
 	/// put the log file into the ostream
 	void getContents(std::ostream & ss) const;
-	/// go to the next occurence of the RegExp
+	/// go to the next occurrence of the RegExp
 	void goTo(QRegExp const & exp) const;
 	/// does the document after cursor position contain the RegExp?
 	bool contains(QRegExp const & exp) const;

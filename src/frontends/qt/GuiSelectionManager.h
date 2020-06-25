@@ -31,7 +31,7 @@ namespace frontend {
  *  of items from a list of available items. Adapted from code originally
  *  written for GuiCitationDialog.
  *  Note that this is a not a QWidget, though it could be converted to
- *  one. Rather, the managed widgets---see constructor for descripton
+ *  one. Rather, the managed widgets---see constructor for description
  *  of them---should be created independently, and then passed to the
  *  constructor.
  */

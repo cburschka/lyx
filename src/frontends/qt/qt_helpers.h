@@ -163,7 +163,7 @@ QString browseRelToSub(QString const & filename,
 	QString const & label2 = QString(),
 	QString const & dir2 = QString());
 
-/** Build filelists of all availabe bst/cls/sty-files. Done through
+/** Build filelists of all available bst/cls/sty-files. Done through
 *  kpsewhich and an external script, saved in *Files.lst.
 *  \param arg: cls, sty, bst, or bib, as required by TeXFiles.py.
 *         Can be a list of these, too.

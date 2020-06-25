@@ -435,7 +435,7 @@ void GuiCharacter::change_adaptor()
 
 	// to be really good here, we should set the combos to the values of
 	// the current text, and make it appear as "no change" if the values
-	// stay the same between applys. Might be difficult though wrt to a
+	// stay the same between applies. Might be difficult though wrt to a
 	// moved cursor - jbl
 	slotApply();
 }

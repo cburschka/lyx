@@ -40,11 +40,11 @@ private:
 	void dispatchParams() {}
 	bool isBufferDependent() const { return true; }
 
-	/// Searches occurence of string
+	/// Searches occurrence of string
 	void find(docstring const & search,
 		  bool casesensitive, bool matchword, bool forward);
 
-	/// Replaces occurence of string
+	/// Replaces occurrence of string
 	void replace(docstring const & search, docstring const & replace,
 		     bool casesensitive, bool matchword,
 		     bool forward, bool all);

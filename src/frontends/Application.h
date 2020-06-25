@@ -44,7 +44,7 @@ class Selection;
 /// The main application class
 /**
 There should be only one instance of this class. No Qt object
-initialisation should be done before the instanciation of this class.
+initialisation should be done before the instantiation of this class.
 
  Model/View/Controller separation at frontend level in qt frontend:
 
@@ -101,7 +101,7 @@ initialisation should be done before the instanciation of this class.
  screen using the Painter. There can be only one Buffer displayed in
  a BufferView and it is set on construction. Ideally, a BufferView
  should not be able to change the contents of its associated Buffer.
- A BufferView is instanciated and destroyed by a \c WorkArea; it is
+ A BufferView is instantiated and destroyed by a \c WorkArea; it is
  automatically destroyed by the parent WorkArea when its Buffer is
  closed.
 
@@ -140,7 +140,7 @@ initialisation should be done before the instanciation of this class.
  widget. A GuiView is in charge of creating and closing a View for a
  given Buffer.
  In the qt specialisation, \c GuiView, the central widget is a tab
- widget. Each tab is reverved to the visualisation of one Buffer and
+ widget. Each tab is reserved to the visualisation of one Buffer and
  contains one WorkArea. In the qt frontend, one GuiView thus contains
  multiple WorkAreas but this number can limited to one for another
  frontend. The idea is that the kernel should not know how a Buffer

@@ -357,7 +357,7 @@ void ModuleSelectionManager::updateDownPB()
 		return;
 	}
 
-	// determine whether immediately succeding element requires this one
+	// determine whether immediately succeeding element requires this one
 	string const curmodname = getSelectedModel()->getIDString(curRow);
 	string const nextmodname = getSelectedModel()->getIDString(curRow + 1);
 
@@ -945,7 +945,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 
 	// language & quote
-	// this must preceed font, since fonts depend on this
+	// this must precede font, since fonts depend on this
 	langModule = new UiWidget<Ui::LanguageUi>(this);
 	connect(langModule->languageCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
@@ -2495,16 +2495,16 @@ void GuiDocument::updateFontOptions()
 	if (tex_fonts)
 		font = fontModule->fontsSansCO->itemData(
 				fontModule->fontsSansCO->currentIndex()).toString();
-	bool scaleable = providesScale(font);
-	fontModule->scaleSansSB->setEnabled(scaleable);
-	fontModule->scaleSansLA->setEnabled(scaleable);
+	bool scalable = providesScale(font);
+	fontModule->scaleSansSB->setEnabled(scalable);
+	fontModule->scaleSansLA->setEnabled(scalable);
 	fontModule->fontSansOsfCB->setEnabled(providesOSF(font));
 	if (tex_fonts)
 		font = fontModule->fontsTypewriterCO->itemData(
 				fontModule->fontsTypewriterCO->currentIndex()).toString();
-	scaleable = providesScale(font);
-	fontModule->scaleTypewriterSB->setEnabled(scaleable);
-	fontModule->scaleTypewriterLA->setEnabled(scaleable);
+	scalable = providesScale(font);
+	fontModule->scaleTypewriterSB->setEnabled(scalable);
+	fontModule->scaleTypewriterLA->setEnabled(scalable);
 	fontModule->fontTypewriterOsfCB->setEnabled(providesOSF(font));
 	if (tex_fonts)
 		font = fontModule->fontsRomanCO->itemData(
@@ -2702,9 +2702,9 @@ void GuiDocument::sansChanged(int item)
 		return;
 	QString const font =
 		fontModule->fontsSansCO->itemData(item).toString();
-	bool const scaleable = providesScale(font);
-	fontModule->scaleSansSB->setEnabled(scaleable);
-	fontModule->scaleSansLA->setEnabled(scaleable);
+	bool const scalable = providesScale(font);
+	fontModule->scaleSansSB->setEnabled(scalable);
+	fontModule->scaleSansLA->setEnabled(scalable);
 	fontModule->fontSansOsfCB->setEnabled(providesOSF(font));
 	updateExtraOpts();
 }
@@ -2716,9 +2716,9 @@ void GuiDocument::ttChanged(int item)
 		return;
 	QString const font =
 		fontModule->fontsTypewriterCO->itemData(item).toString();
-	bool scaleable = providesScale(font);
-	fontModule->scaleTypewriterSB->setEnabled(scaleable);
-	fontModule->scaleTypewriterLA->setEnabled(scaleable);
+	bool scalable = providesScale(font);
+	fontModule->scaleTypewriterSB->setEnabled(scalable);
+	fontModule->scaleTypewriterLA->setEnabled(scalable);
 	fontModule->fontTypewriterOsfCB->setEnabled(providesOSF(font));
 	updateExtraOpts();
 }
@@ -4747,7 +4747,7 @@ void GuiDocument::matchBiblatexStyles()
 
 void GuiDocument::updateContents()
 {
-	// Nothing to do here as the document settings is not cursor dependant.
+	// Nothing to do here as the document settings is not cursor dependent.
 	return;
 }
 

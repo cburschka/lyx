@@ -522,7 +522,7 @@ pair<QString,bool> iconName(FuncRequest const & f, bool unknown, bool rtl)
 	// next thing to try is function name alone
 	names << lfunname;
 
-	// and finally maybe the unkown icon
+	// and finally maybe the unknown icon
 	if (unknown)
 		names << "unknown";
 
@@ -1782,7 +1782,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		actOnUpdatedPrefs(lyxrc_orig, lyxrc);
 
 		// If the request comes from the minibuffer, then we can't reset
-		// the GUI, since that would destory the minibuffer itself and
+		// the GUI, since that would destroy the minibuffer itself and
 		// cause a crash, since we are currently in one of the methods of
 		// GuiCommandBuffer. See bug #8540.
 		if (cmd.origin() != FuncRequest::COMMANDBUFFER)
@@ -2211,7 +2211,7 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 		LYXERR(Debug::KEY, "action now set to [" << func.action() << ']');
 	}
 
-	// Dont remove this unless you know what you are doing.
+	// Don't remove this unless you know what you are doing.
 	d->meta_fake_bit = NoModifier;
 
 	// Can this happen now ?
@@ -2386,7 +2386,7 @@ void GuiApplication::createView(int view_id)
 void GuiApplication::createView(QString const & geometry_arg, bool autoShow,
 	int view_id)
 {
-	// release the keyboard which might have been grabed by the global
+	// release the keyboard which might have been grabbed by the global
 	// menubar on Mac to catch shortcuts even without any GuiView.
 	if (d->global_menubar_)
 		d->global_menubar_->releaseKeyboard();
@@ -2877,7 +2877,7 @@ void GuiApplication::commitData(QSessionManager & sm)
 	/** The implementation is required to avoid an application exit
 	 ** when session state save is triggered by session manager.
 	 ** The default implementation sends a close event to all
-	 ** visible top level widgets when session managment allows
+	 ** visible top level widgets when session management allows
 	 ** interaction.
 	 ** We are changing that to check the state of each buffer in all
 	 ** views and ask the users what to do if buffers are dirty.

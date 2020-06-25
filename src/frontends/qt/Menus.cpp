@@ -2205,7 +2205,7 @@ MenuDefinition Menus::Impl::mac_special_menu_;
      documented below).
 
      The above 3 steps are applied all the way up the parent window
-     chain until one of the above are satisifed. If all else fails a
+     chain until one of the above are satisfied. If all else fails a
      default menubar will be created, the default menubar on Qt/Mac is
      an empty menubar, however you can create a different default
      menubar by creating a parentless QMenuBar, the first one created

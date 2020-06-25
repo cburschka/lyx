@@ -86,7 +86,7 @@ void CacheMimeData::update()
 	LYXERR(Debug::CLIPBOARD, "Creating CacheMimeData object");
 	cached_formats_ = read_clipboard()->formats();
 
-	// Qt times out after 5 seconds if it does not recieve a response.
+	// Qt times out after 5 seconds if it does not receive a response.
 	if (current_time() - start_time > 3) {
 		LYXERR0("No timely response from clipboard, perhaps process "
 			<< "holding clipboard is frozen?");
@@ -154,7 +154,7 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 
 	LASSERT(!types.empty(), return FileName());
 
-	// select prefered type if AnyGraphicsType was passed
+	// select preferred type if AnyGraphicsType was passed
 	if (type == Clipboard::AnyGraphicsType)
 		type = types.front();
 
@@ -189,7 +189,7 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 	} while (filename.isReadableFile());
 
 	while (true) {
-		// create file type filter, putting the prefered on to the front
+		// create file type filter, putting the preferred on to the front
 		QStringList filter;
 		for (size_t i = 0; i != types.size(); ++i) {
 			docstring s = bformat(_("%1$s Files"), typeNames[types[i]])

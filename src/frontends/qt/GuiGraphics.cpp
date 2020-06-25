@@ -195,7 +195,7 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	connect(draftCB, SIGNAL(stateChanged(int)),
 		this, SLOT(change_adaptor()));
 	// FIXME: we should connect to clicked() when we move to Qt 4.2	because
-	// the toggled(bool) signal is also trigged when we update the widgets
+	// the toggled(bool) signal is also triggered when we update the widgets
 	// (rgh-4/07) this isn't as much or a problem as it was, because we're now
 	// using blockSignals() to keep from triggering that signal when we call
 	// setChecked(). Note, too, that clicked() would get called whenever it

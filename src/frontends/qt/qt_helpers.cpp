@@ -430,7 +430,7 @@ QString makeAbsPath(QString const & relpath, QString const & base)
 
 /** Given a string such as
  *      "<glob> <glob> ... *.{abc,def} <glob>",
- *  convert the csh-style brace expresions:
+ *  convert the csh-style brace expressions:
  *      "<glob> <glob> ... *.abc *.def <glob>".
  *  Requires no system support, so should work equally on Unix, Mac, Win32.
  */

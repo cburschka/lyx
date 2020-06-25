@@ -380,7 +380,7 @@ void GuiWorkArea::setBuffer(Buffer & buffer)
 	buffer.workAreaManager().add(this);
 
 	// HACK: Prevents an additional redraw when the scrollbar pops up
-	// which regularily happens on documents with more than one page.
+	// which regularly happens on documents with more than one page.
 	// The policy  should be set to "Qt::ScrollBarAsNeeded" soon.
 	// Since we have no geometry information yet, we assume that
 	// a document needs a scrollbar if there is more then four
@@ -595,7 +595,7 @@ void GuiWorkArea::Private::resizeBufferView()
 	// Update scrollbars which might have changed due different
 	// BufferView dimension. This is especially important when the
 	// BufferView goes from zero-size to the real-size for the first time,
-	// as the scrollbar paramters are then set for the first time.
+	// as the scrollbar parameters are then set for the first time.
 	updateScrollbar();
 
 	need_resize_ = false;
@@ -1215,7 +1215,7 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 	size_t const preedit_length = preedit_string_.length();
 
 	// get position of selection in input method.
-	// FIXME: isn't there a way to do this simplier?
+	// FIXME: isn't there a simpler way to do this?
 	// rStart : cursor position in selected string in IM.
 	size_t rStart = 0;
 	// rLength : selected string length in IM.
@@ -1364,7 +1364,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		                FuncRequest::KEYBOARD);
 		dispatch(cmd);
 		// FIXME: this is supposed to remove traces from preedit
-		// string. Can we avoid calling it explicitely?
+		// string. Can we avoid calling it explicitly?
 		d->buffer_view_->updateMetrics();
 	}
 

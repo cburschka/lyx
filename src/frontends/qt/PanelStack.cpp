@@ -220,7 +220,7 @@ void PanelStack::hideEvent(QHideEvent * event)
 {
 	QWidget::hideEvent(event);
 
-	// Programatically hidden (not simply minimized by the user)
+	// Programmatically hidden (not simply minimized by the user)
 	if (!event->spontaneous()) {
 		resetSearch();
 	}
