@@ -430,7 +430,7 @@ docstring InsetQuotesParams::getLaTeXQuote(char_type c, string const & op,
 	}
 	// The following are fakes
 	// This is just to get something symbolic
-	// in encodings where this chars would not be used ayway
+	// in encodings where this chars would not be used anyway
 	case 0x300c: // LEFT CORNER BRACKET
 		res = "\\ensuremath{\\lceil}";
 		break;

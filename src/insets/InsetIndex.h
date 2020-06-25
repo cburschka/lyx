@@ -68,7 +68,7 @@ private:
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
-	/// should paragraph indendation be omitted in any case?
+	/// should paragraph indentation be omitted in any case?
 	bool neverIndent() const { return true; }
 	///
 	void addToToc(DocIterator const & di, bool output_active,

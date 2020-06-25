@@ -189,7 +189,7 @@ void InsetBox::metrics(MetricsInfo & mi, Dimension & dim) const
 	if (hasFixedWidth())
 		mi.base.textwidth = mi.base.inPixels(params_.width);
 	InsetCollapsible::metrics(mi, dim);
-	// retore textwidth.
+	// restore textwidth.
 	mi.base.textwidth = textwidth_backup;
 }
 
@@ -281,7 +281,7 @@ void InsetBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.recordUndoInset(this);
 		if (change_type) {
 			params_.type = cmd.getArg(1);
-			// set a makebox if there is no inner box but Frameless was exectued
+			// set a makebox if there is no inner box but Frameless was executed
 			// otherwise the result would be a non existent box (no inner AND outer box)
 			// (this was LyX bug 8712)
 			if (params_.type == "Frameless" && !params_.inner_box) {

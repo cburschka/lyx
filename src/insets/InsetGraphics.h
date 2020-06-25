@@ -130,7 +130,7 @@ public:
 	std::string createLatexOptions(bool const ps) const;
 	/// Create length values for docbook export.
 	docstring toDocbookLength(Length const & len) const;
-	/// Create the atributes for docbook export.
+	/// Create the attributes for docbook export.
 	docstring createDocBookAttributes() const;
 	/// Convert the file if needed, and return the location of the file.
 	/// This version is for use with LaTeX-style output.

@@ -116,7 +116,7 @@ private:
 	// FIXME: Here the thoughts from the comment above also apply.
 	///
 	LyXAlignment contentAlign;
-	/// should paragraph indendation be omitted in any case?
+	/// should paragraph indentation be omitted in any case?
 	bool neverIndent() const { return true; }
 	///
 	LyXAlignment contentAlignment() const { return contentAlign; }
@@ -963,7 +963,7 @@ public:
 	bool canTrackChanges() const { return true; }
 	///
 	bool canPaintChange(BufferView const &) const { return true; }
-	/** returns false if, when outputing LaTeX, font changes should
+	/** returns false if, when outputting LaTeX, font changes should
 	    be closed before generating this inset. This is needed for
 	    insets that may contain several paragraphs */
 	bool inheritFont() const { return false; }

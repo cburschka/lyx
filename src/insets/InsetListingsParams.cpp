@@ -55,7 +55,7 @@ public:
 		string const & i, docstring const & h)
 		: value_(v), onoff_(o), type_(t), info_(i), hint_(h)
 	{}
-	/// Validate a paramater.
+	/// Validate a parameter.
 	/// \retval an empty string if \c par is valid.
 	/// \retval otherwise an explanation WRT to \c par invalidity.
 	docstring validate(string const & par) const;

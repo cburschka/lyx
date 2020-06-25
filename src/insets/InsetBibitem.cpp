@@ -232,7 +232,7 @@ docstring bibitemWidest(Buffer const & buffer, OutputParams const & runparams)
 
 	InsetBibitem const * bitem = nullptr;
 
-	// FIXME: this font is used unitialized for now but should  be set to
+	// FIXME: this font is used uninitialized for now but should  be set to
 	// a proportional font. Here is what Georg Baum has to say about it:
 	/*
 	bibitemWidest() is supposed to find the bibitem with the widest label in the
@@ -347,7 +347,7 @@ docstring InsetBibitem::xhtml(XMLStream & xs, OutputParams const &) const
 {
 	// FIXME XHTML
 	// XHTML 1.1 doesn't have the "name" attribute for <a>, so we have to use
-	// the "id" atttribute to get the document to validate. Probably, we will
+	// the "id" attribute to get the document to validate. Probably, we will
 	// need to use "name" anyway, eventually, because some browsers do not
 	// handle jumping to ids. If we don't do that, though, we can just put the
 	// id into the span tag.

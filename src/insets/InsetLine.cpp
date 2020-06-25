@@ -143,8 +143,8 @@ void InsetLine::draw(PainterInfo & pi, int x, int y) const
 	Color Line_color = pi.base.font.realColor();
 
 	// the offset is a vertical one
-	// the horizontal dimension must be corrected with the heigth because
-	// of left and right border of the painted line for big heigth.
+	// the horizontal dimension must be corrected with the height because
+	// of left and right border of the painted line for big height.
 	pi.pain.line(x + height_/2 + 1,
 		     y - offset_ - height_/2,
 		     x + dim.wid - height_/2 - 2,

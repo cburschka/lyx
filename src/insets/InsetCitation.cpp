@@ -588,7 +588,7 @@ void InsetCitation::forOutliner(docstring & os, size_t const, bool const) const
 // engine, e.g. \cite[]{} for the basic engine.
 void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 {
-	// When this is a child compiled on its own, we use the childs
+	// When this is a child compiled on its own, we use the children
 	// own bibinfo, else the master's
 	BiblioInfo const & bi = runparams.is_child
 			? buffer().masterBibInfo() : buffer().bibInfo();

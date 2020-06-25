@@ -454,7 +454,7 @@ namespace {
 		keepCase
 	};
 
-	/// remove whitespace characters, read characer sequence
+	/// remove whitespace characters, read character sequence
 	/// not containing whitespace characters or characters in
 	/// delimChars, and remove further whitespace characters.
 	///
@@ -511,7 +511,7 @@ namespace {
 	/// read subsequent bibtex values that are delimited with a #-character.
 	/// Concatenate all parts and replace names with the associated string in
 	/// the variable strings.
-	/// @return true if reading was successfull (all single parts were delimited
+	/// @return true if reading was successful (all single parts were delimited
 	/// correctly)
 	bool readValue(docstring & val, ifdocstream & ifs, const VarMap & strings) {
 
@@ -1062,7 +1062,7 @@ docstring InsetBibtex::xhtml(XMLStream & xs, OutputParams const &) const
 
 		// FIXME Right now, we are calling BibInfo::getInfo on the key,
 		// which will give us all the cross-referenced info. But for every
-		// entry, so there's a lot of repitition. This should be fixed.
+		// entry, so there's a lot of repetition. This should be fixed.
 		xs << xml::StartTag("span", "class='bibtexinfo'")
 		   << XMLStream::ESCAPE_AND
 		   << bibinfo.getInfo(entry.key(), buffer(), ci)

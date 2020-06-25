@@ -130,7 +130,7 @@ public:
 	/// initialize view for this inset.
 	/**
 	  * This is typically used after this inset is created interactively.
-	  * Intented purpose is to sanitize internal state with regard to current
+	  * Intended purpose is to sanitize internal state with regard to current
 	  * Buffer.
 	  **/
 	virtual void initView() {}
@@ -511,7 +511,7 @@ public:
 	virtual LyXAlignment contentAlignment() const { return LYX_ALIGN_NONE; }
 	/// should we break lines after this inset?
 	virtual bool isLineSeparator() const { return false; }
-	/// should paragraph indendation be omitted in any case?
+	/// should paragraph indentation be omitted in any case?
 	virtual bool neverIndent() const { return false; }
 	/// dumps content to lyxerr
 	virtual void dump() const;
@@ -534,7 +534,7 @@ public:
 	virtual Text * getText(int /*num*/) const { return 0; }
 
 	/** Adds a LaTeX snippet to the Preview Loader for transformation
-	 *  into a bitmap image. Does not start the laoding process.
+	 *  into a bitmap image. Does not start the loading process.
 	 *
 	 *  Most insets have no interest in this capability, so the method
 	 *  defaults to empty.
@@ -605,7 +605,7 @@ public:
 	 * are reset during editing operations.
 	 * For copy/paste operations the language is never changed, since
 	 * the language of a given text never changes if the text is
-	 * formatted differently, while other font attribues like size may
+	 * formatted differently, while other font attributes like size may
 	 * need to change if the text is copied from one environment to
 	 * another one.
 	 * If this method returns false no font attribute is reset.
@@ -650,7 +650,7 @@ protected:
 	/** The real dispatcher.
 	 *  Gets normally called from Cursor::dispatch(). Cursor::dispatch()
 	 *  assumes the common case of 'LFUN handled, need update'.
-	 *  This has to be overriden by calling Cursor::undispatched() or
+	 *  This has to be overridden by calling Cursor::undispatched() or
 	 *  Cursor::noScreenUpdate() if appropriate.
 	 *  If you need to call the dispatch method of some inset directly
 	 *  you may have to explicitly request an update at that place. Don't

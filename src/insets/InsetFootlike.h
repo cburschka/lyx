@@ -35,7 +35,7 @@ private:
 	void write(std::ostream & os) const;
 	///
 	bool insetAllowed(InsetCode) const;
-	/** returns false if, when outputing LaTeX, font changes should
+	/** returns false if, when outputting LaTeX, font changes should
 	    be closed before generating this inset. This is needed for
 	    insets that may contain several paragraphs */
 	bool inheritFont() const { return false; }

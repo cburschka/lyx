@@ -64,7 +64,7 @@ void InsetGraphicsParams::init()
 {
 	filename.erase();
 	lyxscale = 100;			// lyx scaling in percentage
-	display = true;         // may be overriden by display mode in preferences
+	display = true;         // may be overridden by display mode in preferences
 	scale = string("100");			// output scaling in percentage
 	width = Length();
 	height = Length();

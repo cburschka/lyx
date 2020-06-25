@@ -206,7 +206,7 @@ public:
 	///
 	void completionPosAndDim(Cursor const &, int & x, int & y, Dimension & dim) const;
 	/// returns the text to be used as tooltip
-	/// \param prefix: a string that will preced the tooltip,
+	/// \param prefix: a string that will precede the tooltip,
 	/// e.g., "Index: ".
 	/// \param len: length of the resulting string
 	/// NOTE This routine is kind of slow. It's fine to use it within the

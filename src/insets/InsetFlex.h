@@ -34,7 +34,7 @@ public:
 	InsetLayout::InsetDecoration decoration() const;
 	///
 	void write(std::ostream &) const;
-	/// should paragraph indendation be omitted in any case?
+	/// should paragraph indentation be omitted in any case?
 	bool neverIndent() const { return true; }
 	///
 	bool hasSettings() const { return false; }

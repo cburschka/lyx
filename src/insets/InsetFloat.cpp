@@ -53,7 +53,7 @@ namespace lyx {
 // classes we can support similar functionality in other formats
 // (read DocBook).
 // By using float.sty we will have the same handling for all floats, both
-// for those already in existance (table and figure) and all user created
+// for those already in existence (table and figure) and all user created
 // ones¹. So suddenly we give the users the possibility of creating new
 // kinds of floats on the fly. (and with a uniform look)
 //

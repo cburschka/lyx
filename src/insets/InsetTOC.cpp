@@ -169,7 +169,7 @@ void InsetTOC::makeTOCWithDepth(XMLStream & xs,
 			continue;
 
 		// First, we need to manage increases and decreases of depth
-		// If there's no depth to deal with, we artifically set it to 1.
+		// If there's no depth to deal with, we artificially set it to 1.
 		int const depth = it->depth();
 
 		// Ignore stuff above the tocdepth

@@ -88,7 +88,7 @@ public:
 
 protected:
 	/// Retrieves the preview state. Returns true if preview
-	/// is enabled and the preview image is availabled.
+	/// is enabled and the preview image is available.
 	bool previewState(BufferView * bv) const;
 	/// Recreates the preview if preview is enabled.
 	void reloadPreview(DocIterator const & pos) const;

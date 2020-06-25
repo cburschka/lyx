@@ -57,7 +57,7 @@ private:
 	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const {}
-	/// should paragraph indendation be omitted in any case?
+	/// should paragraph indentation be omitted in any case?
 	bool neverIndent() const { return true; }
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);

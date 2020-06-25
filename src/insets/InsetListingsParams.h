@@ -97,7 +97,7 @@ private:
 
 	/// Do we have a param with the given \c key?
 	bool hasParam(std::string const & key) const;
-	/// return the value for the given \c key, if avaible, else empty string
+	/// return the value for the given \c key, if available, else empty string
 	std::string getValue(std::string const & key) const;
 
 	/// key-value pairs of the parameters

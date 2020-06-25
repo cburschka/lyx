@@ -570,7 +570,7 @@ string const write_attribute(string const & name, Tabular::idx_type const & i)
 template <>
 string const write_attribute(string const & name, Length const & value)
 {
-	// we write only the value if we really have one same reson as above.
+	// we write only the value if we really have one same reason as above.
 	return value.zero() ? string() : write_attribute(name, value.asString());
 }
 
@@ -1013,7 +1013,7 @@ void Tabular::updateIndexes()
 				continue;
 			}
 			cell_info[row][column].inset->toggleMultiCol(false);
-			// columnofcell needs to be called before setting width and aligment
+			// columnofcell needs to be called before setting width and alignment
 			// multirow cells inherit the width from the column width
 			if (!isPartOfMultiRow(row, column)) {
 				columnofcell[i] = column;
@@ -1174,7 +1174,7 @@ bool Tabular::updateColumnWidths(MetricsInfo & mi)
 	int restwidth = -1;
 	if (!tab_width.zero()) {
 		restwidth = mi.base.inPixels(tab_width);
-		// Substract the fixed widths from the table width
+		// Subtract the fixed widths from the table width
 		for (auto const w : max_pwidth)
 			restwidth -= w.second;
 	}

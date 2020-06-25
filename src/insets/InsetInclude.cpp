@@ -649,7 +649,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		break;
 	}
 	case LISTINGS: {
-		// Here, listings and minted have sligthly different behaviors.
+		// Here, listings and minted have slightly different behaviors.
 		// Using listings, it is always possible to have a caption,
 		// even for non-floats. Using minted, only floats can have a
 		// caption. So, with minted we use the following strategy.

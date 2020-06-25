@@ -80,7 +80,7 @@ private:
 	              size_t max_length = INT_MAX) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
-	/// Makes no sense fof XHTML.
+	/// Makes no sense for XHTML.
 	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
