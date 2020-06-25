@@ -200,7 +200,7 @@ void LyXErr::endl()
 char const * LyXErr::stripName(char const * n)
 {
 	string const name = n;
-	// find the last occurence of /src/ in name
+	// find the last occurrence of /src/ in name
 	size_t pos = name.rfind("/src/");
 	if (pos == string::npos)
 		pos = name.rfind("\\src\\");

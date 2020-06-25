@@ -13,7 +13,7 @@
 # 
 # Command: The executable, whose output is to be examined
 # Input: The file name of expected data
-# Output: The file name for data catched from output of the executable
+# Output: The file name for data caught from output of the executable
 
 execute_process(COMMAND "${Command}"
   OUTPUT_FILE "${Output}"

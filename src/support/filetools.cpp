@@ -1159,7 +1159,7 @@ FileName const findtexfile(string const & fil, string const & /*format*/,
 	// is used."
 	// However, we want to take advantage of the format sine almost all
 	// the different formats has environment variables that can be used
-	// to controll which paths to search. f.ex. bib looks in
+	// to control which paths to search. f.ex. bib looks in
 	// BIBINPUTS and TEXBIB. Small list follows:
 	// bib - BIBINPUTS, TEXBIB
 	// bst - BSTINPUTS

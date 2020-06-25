@@ -144,10 +144,10 @@ imageLibFileSearch(std::string & dir, std::string const & name,
 
 /// How to quote a filename
 enum quote_style {
-	/** Quote for the (OS dependant) shell. This is needed for command
+	/** Quote for the (OS dependent) shell. This is needed for command
 	    line arguments of subprocesses. */
 	quote_shell,
-	/** Quote a file name for the (OS dependant) shell. This is needed
+	/** Quote a file name for the (OS dependent) shell. This is needed
 	    for file names as command line arguments of subprocesses. */
 	quote_shell_filename,
 	/** Quote for python. Use this if you want to store a filename in a
@@ -185,7 +185,7 @@ enum latex_path_dots {
  *  If @c path contains LaTeX special characters, these are escaped.
  *  Eg, '~' -> '\\string~'
  *  If @c path contains spaces, then the returned path is enclosed in
- *  "-quotes. This last fix will lead to successful compiliation of the
+ *  "-quotes. This last fix will lead to successful compilation of the
  *  LaTeX file only if a sufficiently modern LaTeX compiler is used.
  *  If @c ext == EXCLUDE_EXTENSION the extension is left outside the quotes.
  *  This is needed for pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4)

@@ -8,7 +8,7 @@
  *
  * Full author contact details are available in file CREDITS.
  *
- * A store of the paths to the various different directoies used
+ * A store of the paths to the various different directories used
  * by LyX. These paths differ markedly from one OS to another,
  * following the local Windows, MacOS X or Posix conventions.
  */

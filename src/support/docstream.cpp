@@ -315,7 +315,7 @@ namespace lyx {
 template<class Ios>
 void setEncoding(Ios & ios, string const & encoding, ios_base::openmode mode)
 {
-	// We must imbue the stream before openening the file
+	// We must imbue the stream before opening the file
 	locale global;
 	locale locale(global, new iconv_codecvt_facet(encoding, mode));
 	ios.imbue(locale);
@@ -453,7 +453,7 @@ odocstream & operator<<(odocstream & os, char c)
 #if ! defined(USE_WCHAR_T) && defined(__GNUC__)
 // We get undefined references to these virtual methods. This looks like
 // a bug in gcc. The implementation here does not do anything useful, since
-// it is overriden in iconv_codecvt_facet.
+// it is overridden in iconv_codecvt_facet.
 namespace std {
 
 template<> codecvt<lyx::char_type, char, mbstate_t>::result

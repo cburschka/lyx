@@ -241,7 +241,7 @@ docstring const rtrim(docstring const & a, char const * p = " ");
 std::string const ltrim(std::string const & a, char const * p = " ");
 docstring const ltrim(docstring const & a, char const * p = " ");
 
-/** Splits the string given in the first argument at the first occurence
+/** Splits the string given in the first argument at the first occurrence
     of the third argument, delim.
     What precedes delim is returned in the second argument, piece; this
     will be the whole of the string if no delimiter is found.
@@ -349,7 +349,7 @@ docstring const getStringFromVector(std::vector<docstring> const & vec,
 int findToken(char const * const str[], std::string const & search_token);
 
 
-/// Format a floating point number with at least 6 siginificant digits, but
+/// Format a floating point number with at least 6 significant digits, but
 /// without scientific notation.
 /// Scientific notation would be invalid in some contexts, such as lengths for
 /// LaTeX. Simply using std::ostream with std::fixed would produce results

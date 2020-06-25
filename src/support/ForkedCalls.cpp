@@ -661,7 +661,7 @@ void handleCompletedProcesses()
 			forkedCalls.erase(it);
 			actCall->emitSignal();
 
-			/* start all over: emiting the signal can result
+			/* start all over: emitting the signal can result
 			 * in changing the list (Ab)
 			 */
 			it = forkedCalls.begin();

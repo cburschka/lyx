@@ -51,7 +51,7 @@ protected:
 private:
 	///
 	Timeout & owner_;
-	/// timout id
+	/// timeout id
 	int timeout_id;
 };
 

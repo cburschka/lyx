@@ -251,7 +251,7 @@ lyx::docstring & operator+=(lyx::docstring & l, char r)
 
 // We get undefined references to these virtual methods. This looks like
 // a bug in gcc. The implementation here does not do anything useful, since
-// it is overriden in ascii_ctype_facet.
+// it is overridden in ascii_ctype_facet.
 namespace std {
 template<> ctype<lyx::char_type>::~ctype() {}
 template<> bool

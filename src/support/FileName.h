@@ -213,7 +213,7 @@ private:
 	friend bool equivalent(FileName const &, FileName const &);
 	/// Set for tracking of already visited file names.
 	/// Uses operator==() (which may be case insensitive), and not
-	/// equvalent(), so that symlinks are not resolved.
+	/// equivalent(), so that symlinks are not resolved.
 	typedef std::set<FileName> FileNameSet;
 	/// Helper for public copyTo() to find circular symlink chains
 	bool copyTo(FileName const &, bool, FileNameSet &) const;

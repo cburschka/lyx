@@ -78,7 +78,7 @@ namespace lyx {
 		WHOLE_WORD_STRICT,
 		// the word around the cursor
 		WHOLE_WORD,
-		/// the word begining from the cursor position
+		/// the word beginning from the cursor position
 		PARTIAL_WORD,
 		/// the word around the cursor or before the cursor
 		PREVIOUS_WORD,

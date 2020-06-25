@@ -146,7 +146,7 @@ bool isSpace(char_type c)
 {
 	if (!is_utf16(c)) {
 		// assume that no non-utf16 character is a space
-		// c outside the UCS4 range is catched as well
+		// c outside the UCS4 range is caught as well
 		return false;
 	}
 	QChar const qc = ucs4_to_qchar(c);
@@ -158,7 +158,7 @@ bool isNumber(char_type c)
 {
 	if (!is_utf16(c))
 		// assume that no non-utf16 character is a numeral
-		// c outside the UCS4 range is catched as well
+		// c outside the UCS4 range is caught as well
 		return false;
 	return ucs4_to_qchar(c).isNumber();
 }
@@ -168,7 +168,7 @@ bool isEuropeanNumberSeparator(char_type c)
 {
 	if (!is_utf16(c))
 		// assume that no non-utf16 character is a numeral
-		// c outside the UCS4 range is catched as well
+		// c outside the UCS4 range is caught as well
 		return false;
 	return ucs4_to_qchar(c).direction() == QChar::DirES;
 }
@@ -178,7 +178,7 @@ bool isEuropeanNumberTerminator(char_type c)
 {
 	if (!is_utf16(c))
 		// assume that no non-utf16 character is a numeral
-		// c outside the UCS4 range is catched as well
+		// c outside the UCS4 range is caught as well
 		return false;
 	return ucs4_to_qchar(c).direction() == QChar::DirET;
 }
@@ -206,7 +206,7 @@ bool isOpenPunctuation(char_type c)
 {
 	if (!is_utf16(c)) {
 		// assume that no non-utf16 character is an op
-		// c outside the UCS4 range is catched as well
+		// c outside the UCS4 range is caught as well
 		return false;
 	}
 	QChar const qc = ucs4_to_qchar(c);
@@ -890,7 +890,7 @@ String const subst_string(String const & a,
 	size_t const olen = oldstr.length();
 	while ((i = lstr.find(oldstr, i)) != string::npos) {
 		lstr.replace(i, olen, newstr);
-		i += newstr.length(); // We need to be sure that we dont
+		i += newstr.length(); // We need to be sure that we don't
 		// use the same i over and over again.
 	}
 	return lstr;
@@ -906,7 +906,7 @@ docstring const subst_string(docstring const & a,
 	size_t const olen = oldstr.length();
 	while ((i = lstr.find(oldstr, i)) != string::npos) {
 		lstr.replace(i, olen, newstr);
-		i += newstr.length(); // We need to be sure that we dont
+		i += newstr.length(); // We need to be sure that we don't
 		// use the same i over and over again.
 	}
 	return lstr;

@@ -141,7 +141,7 @@ private:
 /**
  * An instance of class ForkedCall represents a single child process.
  *
- * Class ForkedCall uses fork() and execvp() to lauch the child process.
+ * Class ForkedCall uses fork() and execvp() to launch the child process.
  *
  * Once launched, control is returned immediately to the parent process
  * but a Signal can be emitted upon completion of the child.
