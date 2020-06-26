@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 594
+\lyxformat 595
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -8638,10 +8638,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8654,6 +8656,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8677,6 +8680,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -11146,6 +11150,46 @@ Es gibt des Weiteren die folgenden Leerräume:
 \end_layout
 
 \begin_layout Description
+Mittlerer
+\begin_inset space ~
+\end_inset
+
+Abstand Eine Zeile mit einem 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset space \medspace{}
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ mittleren Abstand zwischen den Pfeilen.
+\end_layout
+
+\begin_layout Description
+Großer
+\begin_inset space ~
+\end_inset
+
+Abstand Eine Zeile mit einem 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset space \thickspace{}
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ großen Abstand zwischen den Pfeilen.
+\end_layout
+
+\begin_layout Description
 Negatives
 \begin_inset space ~
 \end_inset
@@ -11166,19 +11210,19 @@ Leerzeichen Eine Zeile mit einem
 \begin_inset Formula $\gets$
 \end_inset
 
- Negatives, halbes Leerzeichen zwischen den Pfeilen.
+ negativen halben Leerzeichen zwischen den Pfeilen.
 \end_layout
 
 \begin_layout Description
-Negatives
+Negativer
 \begin_inset space ~
 \end_inset
 
-medium
+mittlerer
 \begin_inset space ~
 \end_inset
 
-Leerzeichen Eine Zeile mit einem 
+Abstand Eine Zeile mit einem 
 \begin_inset Formula $\to$
 \end_inset
 
@@ -11190,19 +11234,19 @@ Leerzeichen Eine Zeile mit einem
 \begin_inset Formula $\gets$
 \end_inset
 
- Negatives, medium Leerzeichen zwischen den Pfeilen.
+ negativen mittleren Abstand zwischen den Pfeilen.
 \end_layout
 
 \begin_layout Description
-Negatives
+Negativer
 \begin_inset space ~
 \end_inset
 
-dickes
+großer
 \begin_inset space ~
 \end_inset
 
-Leerzeichen Eine Zeile mit einem 
+Abstand Eine Zeile mit einem 
 \begin_inset Formula $\to$
 \end_inset
 
@@ -11214,7 +11258,7 @@ Leerzeichen Eine Zeile mit einem
 \begin_inset Formula $\gets$
 \end_inset
 
- Negatives, dickes Leerzeichen zwischen den Pfeilen.
+ negativen großen Abstand zwischen den Pfeilen.
 \end_layout
 
 \begin_layout Description
@@ -11379,7 +11423,7 @@ Breite der verschiedenen horizontalen Lerräume.
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="2">
+<lyxtabular version="3" rows="12" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -11484,6 +11528,54 @@ em
 \begin_inset Text
 
 \begin_layout Plain Layout
+Mittel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\begin_inset space \thinspace{}
+\end_inset
+
+mu
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Groß
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\begin_inset space \thinspace{}
+\end_inset
+
+mu
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 Negativ halb
 \end_layout
 
@@ -11516,7 +11608,7 @@ mu
 \begin_inset Text
 
 \begin_layout Plain Layout
-Negativ medium
+Negativ mittel
 \end_layout
 
 \end_inset
@@ -11540,7 +11632,7 @@ mu
 \begin_inset Text
 
 \begin_layout Plain Layout
-Negativ dick
+Negativ groß
 \end_layout
 
 \end_inset

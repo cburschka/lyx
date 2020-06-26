@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 594
+\lyxformat 595
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -8489,12 +8489,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8507,6 +8509,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8530,6 +8533,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -11031,6 +11035,70 @@ You can also insert the following space types:
 \end_layout
 
 \begin_layout Description
+
+\change_inserted -712698321 1593161965
+Medium
+\begin_inset space ~
+\end_inset
+
+space 
+\change_unchanged
+A line with a 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset space \medspace{}
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ 
+\change_deleted -712698321 1593161991
+negative thin
+\change_inserted -712698321 1593161992
+medium
+\change_unchanged
+ space between the arrows.
+\change_inserted -712698321 1593162006
+
+\end_layout
+
+\begin_layout Description
+
+\change_deleted -712698321 1593162010
+Medium
+\change_inserted -712698321 1593162011
+Thick
+\change_unchanged
+
+\begin_inset space ~
+\end_inset
+
+space A line with a 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset space \thickspace{}
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ 
+\change_deleted -712698321 1593162017
+medium
+\change_inserted -712698321 1593162018
+thick
+\change_unchanged
+ space between the arrows.
+\end_layout
+
+\begin_layout Description
 Negative
 \begin_inset space ~
 \end_inset
@@ -11267,7 +11335,7 @@ Width of the different horizontal spaces.
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="2">
+<lyxtabular version="3" rows="12" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -11362,6 +11430,62 @@ Thin
 \end_inset
 
 em
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row change="inserted -712698321 1593161917">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1593162285
+Medium
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1593162280
+4
+\begin_inset space \thinspace{}
+\end_inset
+
+mu
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row change="inserted -712698321 1593161917">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1593162294
+Thick
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1593162280
+5
+\begin_inset space \thinspace{}
+\end_inset
+
+mu
 \end_layout
 
 \end_inset
@@ -28211,7 +28335,7 @@ mathbb
 
 \begin_layout Plain Layout
 
-\change_inserted 5863344 1592055582
+\change_inserted 5863344 1592055455
 \begin_inset Formula $\mathds{DOUBLESTROKE}$
 \end_inset
 
@@ -28225,7 +28349,7 @@ mathbb
 
 \begin_layout Plain Layout
 
-\change_inserted 5863344 1592055606
+\change_inserted 5863344 1592055455
 
 \series bold
 
