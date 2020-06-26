@@ -318,16 +318,16 @@ char const * const known_tex_extensions[] = {"tex", 0};
 /// spaces known by InsetSpace
 char const * const known_spaces[] = { " ", "space", ",",
 "thinspace", "quad", "qquad", "enspace", "enskip",
-"negthinspace", "negmedspace", "negthickspace", "textvisiblespace",
-"hfill", "dotfill", "hrulefill", "leftarrowfill", "rightarrowfill",
-"upbracefill", "downbracefill", 0};
+"medspace", "thickspace", "negthinspace", "negmedspace", "negthickspace",
+"textvisiblespace", "hfill", "dotfill", "hrulefill", "leftarrowfill",
+"rightarrowfill", "upbracefill", "downbracefill", 0};
 
 /// the same as known_spaces with .lyx names
 char const * const known_coded_spaces[] = { "space{}", "space{}",
 "thinspace{}", "thinspace{}", "quad{}", "qquad{}", "enspace{}", "enskip{}",
-"negthinspace{}", "negmedspace{}", "negthickspace{}", "textvisiblespace{}",
-"hfill{}", "dotfill{}", "hrulefill{}", "leftarrowfill{}", "rightarrowfill{}",
-"upbracefill{}", "downbracefill{}", 0};
+"medspace{}", "thickspace{}", "negthinspace{}", "negmedspace{}", "negthickspace{}",
+"textvisiblespace{}", "hfill{}", "dotfill{}", "hrulefill{}", "leftarrowfill{}",
+"rightarrowfill{}", "upbracefill{}", "downbracefill{}", 0};
 
 /// known TIPA combining diacritical marks
 char const * const known_tipa_marks[] = {"textsubwedge", "textsubumlaut",

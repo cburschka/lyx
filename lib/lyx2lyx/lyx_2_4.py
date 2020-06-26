@@ -3753,6 +3753,28 @@ def revert_counter_inset(document):
     if pretext:
         add_to_preamble(document, pretext)
 
+
+def revert_ams_spaces(document):
+    "Revert InsetSpace medspace and thickspace into their TeX-code counterparts"
+    Found = False
+    insets = ["\\medspace{}", "\\thickspace{}"]
+    for inset in insets:
+        i = 0
+        j = 0
+        i = find_token(document.body, "\\begin_inset space " + inset, i)
+        if i == -1:
+            continue
+        end = find_end_of_inset(document.body, i)
+        subst = put_cmd_in_ert(inset)
+        document.body[i : end + 1] = subst
+        Found = True
+      
+    if Found == True:
+        # load amsmath in the preamble if not already loaded
+        i = find_token(document.header, "\\use_package amsmath 2", 0)
+        if i == -1:
+            add_to_preamble(document, ["\\@ifundefined{thickspace}{\\usepackage{amsmath}}{}"])
+            return
         
 ##
 # Conversion hub
@@ -3809,10 +3831,12 @@ convert = [
            [591, [convert_postpone_fragile]],
            [592, []],
            [593, [convert_counter_maintenance]],
-           [594, []]
+           [594, []],
+           [595, []]
           ]
 
-revert =  [[593, [revert_counter_inset]],
+revert =  [[594, [revert_ams_spaces]],
+           [593, [revert_counter_inset]],
            [592, [revert_counter_maintenance]],
            [591, [revert_colrow_tracking]],
            [590, [revert_postpone_fragile]],

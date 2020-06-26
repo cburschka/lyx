@@ -353,7 +353,7 @@ def revert_undertilde(document):
 
 
 def revert_negative_space(document):
-    "Revert InsetSpace negmedspace and negthickspace into its TeX-code counterpart"
+    "Revert InsetSpace negmedspace and negthickspace into their TeX-code counterparts"
     i = 0
     j = 0
     reverted = False
@@ -366,7 +366,7 @@ def revert_negative_space(document):
           if reverted == True:
             i = find_token(document.header, "\\use_amsmath 2", 0)
             if i == -1:
-              add_to_preamble(document, ["\\@ifundefined{negthickspace}{\\usepackage{amsmath}}"])
+              add_to_preamble(document, ["\\@ifundefined{negthickspace}{\\usepackage{amsmath}}{}"])
           return
       if i == -1:
         return

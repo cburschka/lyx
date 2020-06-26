@@ -41,32 +41,20 @@ GuiHSpace::GuiHSpace(bool math_mode, QWidget * parent)
 	setupUi(this);
 
 	spacingCO->clear();
-	if (math_mode_) {
-		spacingCO->addItem(qt_("Interword Space"), "normal");
-		spacingCO->addItem(qt_("Thin Space"), "thinspace");
-		spacingCO->addItem(qt_("Medium Space"), "medspace");
-		spacingCO->addItem(qt_("Thick Space"), "thickspace");
-		spacingCO->addItem(qt_("Negative Thin Space"), "negthinspace");
-		spacingCO->addItem(qt_("Negative Medium Space"), "negmedspace");
-		spacingCO->addItem(qt_("Negative Thick Space"), "negthickspace");
-		spacingCO->addItem(qt_("Half Quad (0.5 em)"), "halfquad");
-		spacingCO->addItem(qt_("Quad (1 em)"), "quad");
-		spacingCO->addItem(qt_("Double Quad (2 em)"), "qquad");
-		spacingCO->addItem(qt_("Horizontal Fill"), "hfill");
-		spacingCO->addItem(qt_("Custom"), "custom");
-	} else {
-		spacingCO->addItem(qt_("Interword Space"), "normal");
-		spacingCO->addItem(qt_("Thin Space"), "thinspace");
-		spacingCO->addItem(qt_("Negative Thin Space"), "negthinspace");
-		spacingCO->addItem(qt_("Negative Medium Space"), "negmedspace");
-		spacingCO->addItem(qt_("Negative Thick Space"), "negthickspace");
-		spacingCO->addItem(qt_("Half Quad (0.5 em)"), "halfquad");
-		spacingCO->addItem(qt_("Quad (1 em)"), "quad");
-		spacingCO->addItem(qt_("Double Quad (2 em)"), "qquad");
-		spacingCO->addItem(qt_("Horizontal Fill"), "hfill");
-		spacingCO->addItem(qt_("Custom"), "custom");
+	spacingCO->addItem(qt_("Interword Space"), "normal");
+	spacingCO->addItem(qt_("Thin Space"), "thinspace");
+	spacingCO->addItem(qt_("Medium Space"), "medspace");
+	spacingCO->addItem(qt_("Thick Space"), "thickspace");
+	spacingCO->addItem(qt_("Negative Thin Space"), "negthinspace");
+	spacingCO->addItem(qt_("Negative Medium Space"), "negmedspace");
+	spacingCO->addItem(qt_("Negative Thick Space"), "negthickspace");
+	spacingCO->addItem(qt_("Half Quad (0.5 em)"), "halfquad");
+	spacingCO->addItem(qt_("Quad (1 em)"), "quad");
+	spacingCO->addItem(qt_("Double Quad (2 em)"), "qquad");
+	spacingCO->addItem(qt_("Horizontal Fill"), "hfill");
+	if (!math_mode_)
 		spacingCO->addItem(qt_("Visible Space"), "visible");
-	}
+	spacingCO->addItem(qt_("Custom"), "custom");
 
 	connect(spacingCO, SIGNAL(highlighted(QString)),
 		this, SLOT(changedSlot()));

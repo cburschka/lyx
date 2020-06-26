@@ -516,9 +516,9 @@ void InsetSpaceParams::read(Lexer & lex)
 		kind = InsetSpaceParams::VISIBLE;
 	else if (command == "\\thinspace{}")
 		kind = InsetSpaceParams::THIN;
-	else if (math && command == "\\medspace{}")
+	else if (command == "\\medspace{}")
 		kind = InsetSpaceParams::MEDIUM;
-	else if (math && command == "\\thickspace{}")
+	else if (command == "\\thickspace{}")
 		kind = InsetSpaceParams::THICK;
 	else if (command == "\\quad{}")
 		kind = InsetSpaceParams::QUAD;
@@ -597,10 +597,16 @@ void InsetSpace::latex(otexstream & os, OutputParams const & runparams) const
 		os << (runparams.free_spacing ? " " : "\\,");
 		break;
 	case InsetSpaceParams::MEDIUM:
-		os << (runparams.free_spacing ? " " : "\\:");
+		if (params_.math)
+			os << (runparams.free_spacing ? " " : "\\:");
+		else
+			os << (runparams.free_spacing ? " " : "\\medspace{}");
 		break;
 	case InsetSpaceParams::THICK:
-		os << (runparams.free_spacing ? " " : "\\;");
+		if (params_.math)
+			os << (runparams.free_spacing ? " " : "\\;");
+		else
+			os << (runparams.free_spacing ? " " : "\\thickspace{}");
 		break;
 	case InsetSpaceParams::QUAD:
 		os << (runparams.free_spacing ? " " : "\\quad{}");
@@ -867,8 +873,11 @@ docstring InsetSpace::xhtml(XMLStream & xs, OutputParams const &) const
 
 void InsetSpace::validate(LaTeXFeatures & features) const
 {
-	if (params_.kind == InsetSpaceParams::NEGMEDIUM ||
-	    params_.kind == InsetSpaceParams::NEGTHICK)
+	if ((params_.kind == InsetSpaceParams::NEGMEDIUM
+	     || params_.kind == InsetSpaceParams::NEGTHICK)
+	    || (!params_.math
+		&& (params_.kind == InsetSpaceParams::MEDIUM
+		    || params_.kind == InsetSpaceParams::THICK)))
 		features.require("amsmath");
 }
 
