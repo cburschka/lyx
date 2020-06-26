@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-06-25 17:30+0200\n"
-"PO-Revision-Date: 2020-06-25 15:32+0000\n"
+"POT-Creation-Date: 2020-06-26 11:53+0200\n"
+"PO-Revision-Date: 2020-06-26 10:21+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1183,8 +1183,8 @@ msgid "Old Documen&t:"
 msgstr "&Bývalí dokument:"
 
 #: src/frontends/qt/ui/CompareUi.ui:51
-msgid "Specify the original version of the document here (comparation source)"
-msgstr "Špecifikujte verziu originálneho dokumentu tu (zdroj porovnania)"
+msgid "Specify the original version of the document here (comparison source)"
+msgstr "Špecifikujte originálnu verziu dokumentu tu (zdroj porovnania)"
 
 #: src/frontends/qt/ui/CompareUi.ui:61 src/frontends/qt/ui/PrefUi.ui:61
 msgid "Bro&wse..."
@@ -1195,8 +1195,8 @@ msgid "&New Document:"
 msgstr "&Nový dokument:"
 
 #: src/frontends/qt/ui/CompareUi.ui:87
-msgid "Specify the modified version of the document here (comparation target)"
-msgstr "Špecifikujte verziu modifikovaného dokumentu tu (cieľ porovnania)"
+msgid "Specify the modified version of the document here (comparison target)"
+msgstr "Špecifikujte modifikovanú verziu dokumentu tu (cieľ porovnania)"
 
 #: src/frontends/qt/ui/CompareUi.ui:97 src/frontends/qt/ui/ExternalUi.ui:89
 #: src/frontends/qt/ui/GraphicsUi.ui:75 src/frontends/qt/ui/IncludeUi.ui:28
@@ -19609,9 +19609,9 @@ msgstr "Horizontálny fantóm|H"
 msgid "Vertical Phantom|V"
 msgstr "Vertikálny fantóm|ó"
 
-#: lib/ui/stdcontext.inc:240 lib/ui/stdmenus.inc:455
+#: lib/ui/stdcontext.inc:243 lib/ui/stdmenus.inc:456
 msgid "Interword Space|w"
-msgstr "Medzi-slovná medzera|e"
+msgstr "Medzi-slovná medzera|M"
 
 #: lib/ui/stdcontext.inc:241
 msgid "Protected Space|o"
@@ -19621,9 +19621,9 @@ msgstr "Chránená medzera|C"
 msgid "Visible Space|a"
 msgstr "Viditeľná medzera|a"
 
-#: lib/ui/stdcontext.inc:243 lib/ui/stdcontext.inc:266 lib/ui/stdmenus.inc:456
+#: lib/ui/stdcontext.inc:246 lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:457
 msgid "Thin Space|T"
-msgstr "Úzka medzera|k"
+msgstr "Úzka medzera|Ú"
 
 #: lib/ui/stdcontext.inc:244 lib/ui/stdcontext.inc:269
 msgid "Negative Thin Space|N"
@@ -19637,13 +19637,13 @@ msgstr "Záporná stredná medzera|o"
 msgid "Negative Thick Space|h"
 msgstr "Záporná tučná medzera|u"
 
-#: lib/ui/stdcontext.inc:245 lib/ui/stdcontext.inc:272
+#: lib/ui/stdcontext.inc:252 lib/ui/stdcontext.inc:279
 msgid "Half Quad Space (Enskip)|k"
-msgstr "Polovička Quad medzery (Enskip)|P"
+msgstr "Polovička Quad medzery (Enskip)|i"
 
-#: lib/ui/stdcontext.inc:246
+#: lib/ui/stdcontext.inc:253
 msgid "Protected Half Quad Space (Enspace)|E"
-msgstr "Chránená polovička Quad medzery (Enspace)|u"
+msgstr "Chránená polovička Quad medzery (Enspace)|E"
 
 #: lib/ui/stdcontext.inc:247 lib/ui/stdcontext.inc:273
 msgid "Quad Space|Q"
@@ -19657,33 +19657,33 @@ msgstr "Dvojnásobná Quad medzera|D"
 msgid "Horizontal Fill|F"
 msgstr "Variabilná horizontálna medzera|h"
 
-#: lib/ui/stdcontext.inc:250
-msgid "Protected Horizontal Fill|i"
-msgstr "Chránená variabilná horizontálna medzera|i"
+#: lib/ui/stdcontext.inc:257
+msgid "Protected Horizontal Fill|z"
+msgstr "Chránená horizontálna medzera|á"
 
-#: lib/ui/stdcontext.inc:251
+#: lib/ui/stdcontext.inc:258
 msgid "Horizontal Fill (Dots)|D"
-msgstr "Variabilná horizontálna medzera(Bodky)|B"
+msgstr "Variabilná horizontálna medzera(Bodky)|y"
 
-#: lib/ui/stdcontext.inc:252
+#: lib/ui/stdcontext.inc:259
 msgid "Horizontal Fill (Rule)|R"
-msgstr "Variabilná horizontálna medzera (Línia)|L"
+msgstr "Variabilná horizontálna medzera (Línia)|í"
 
-#: lib/ui/stdcontext.inc:253
+#: lib/ui/stdcontext.inc:260
 msgid "Horizontal Fill (Left Arrow)|L"
-msgstr "Variabilná horizontálna medzera(Šípka doľava)|r"
+msgstr "Variabilná horizontálna medzera(Šípka doľava)|ľ"
 
-#: lib/ui/stdcontext.inc:254
+#: lib/ui/stdcontext.inc:261
 msgid "Horizontal Fill (Right Arrow)|g"
-msgstr "Variabilná horizontálna medzera(Šípka doprava)|o"
+msgstr "Variabilná horizontálna medzera(Šípka doprava)|p"
 
-#: lib/ui/stdcontext.inc:255
+#: lib/ui/stdcontext.inc:262
 msgid "Horizontal Fill (Up Brace)|p"
-msgstr "Variabilná horizontálna medzera(Svorka nahor)|t"
+msgstr "Variabilná horizontálna medzera(Svorka nahor)|r"
 
-#: lib/ui/stdcontext.inc:256
+#: lib/ui/stdcontext.inc:263
 msgid "Horizontal Fill (Down Brace)|B"
-msgstr "Variabilná horizontálna medzera(Svorka nadol)|S"
+msgstr "Variabilná horizontálna medzera(Svorka nadol)|l"
 
 #: lib/ui/stdcontext.inc:257 lib/ui/stdcontext.inc:275
 msgid "Custom Length|C"
