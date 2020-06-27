@@ -198,6 +198,8 @@ public:
 	/// Force inset into LTR environment if surroundings are RTL
 	bool forceLTR(OutputParams const &) const;
 	///
+	bool forceLocalFontSwitch() const;
+	///
 	void setInfo(std::string const & info);
 	///
 	void updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted = false);

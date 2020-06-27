@@ -749,6 +749,14 @@ bool InsetInfo::forceLTR(OutputParams const &) const
 }
 
 
+bool InsetInfo::forceLocalFontSwitch() const
+{
+	return params_.type == InsetInfoParams::MENU_INFO
+		|| params_.type == InsetInfoParams::SHORTCUTS_INFO
+		|| params_.type == InsetInfoParams::L7N_INFO;
+}
+
+
 void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted) {
 	// If the Buffer is a clone, then we neither need nor want to do any
 	// of what follows. We want, rather, just to inherit how things were
