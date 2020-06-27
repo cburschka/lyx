@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 594
+\lyxformat 595
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -7837,11 +7837,11 @@ name "subsec:LyX-Code"
 \family default
 , 
 \family sans
-Дословно
+Буквально
 \family default
  и 
 \family sans
-Дословно
+Буквально
 \family default
 * — единственные окружения в \SpecialChar LyX
 , в которых можно вводить несколько пробелов.
@@ -8024,14 +8024,14 @@ status collapsed
 \end_layout
 
 \begin_layout Subsubsection
-Дословно
+Буквально
 \family sans
 
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Дословно
+Буквально
 \end_layout
 
 \end_inset
@@ -8042,18 +8042,18 @@ status collapsed
 \begin_layout Standard
 Окружение 
 \family sans
-Дословно
+Буквально
 \family default
  аналогично окружению 
 \family sans
 Код \SpecialChar LyX
 
 \family default
- с той разницей, что ее содержимое будет обрабатываться как текст компьютерной
+ с той разницей, что его содержимое будет обрабатываться как текст компьютерной
  консоли.
  Поэтому в 
 \family sans
-Дословно
+Буквально
 \family default
  отсутствуют абзацы, а 
 \family sans
@@ -8070,7 +8070,7 @@ Return
 Пробел
 \family default
  приводит к появлению в тексте обычного пробела (а не неразрывного пробела),
- и вы можете размещать пустые строки.
+ и вы можете создавать пустые строки.
  В отличие от окружения 
 \family sans
 Код \SpecialChar LyX
@@ -8078,7 +8078,7 @@ Return
 \family default
 , окружение 
 \family sans
-Дословно
+Буквально
 \family default
  не может
 \end_layout
@@ -8097,18 +8097,19 @@ Return
 \begin_layout Standard
 Благодаря этим свойствам окружение 
 \family sans
-Verbatim
+Буквально
 \family default
  имитирует результат работы пишущей машинки.
  Пример:
 \end_layout
 
 \begin_layout Verbatim
+
 Это текст в окружении 
 \begin_inset Quotes rld
 \end_inset
 
-Дословно
+Буквально
 \begin_inset Quotes rrd
 \end_inset
 
@@ -8118,6 +8119,7 @@ Verbatim
 \begin_layout Verbatim
 \noindent
 \align block
+
 Следующие две строки - пустые:
 \end_layout
 
@@ -8130,11 +8132,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-В 
+
+В окружении 
 \begin_inset Quotes rld
 \end_inset
 
-Дословно
+Буквально
 \begin_inset Quotes rrd
 \end_inset
 
@@ -8146,22 +8149,23 @@ Verbatim
 \begin_layout Standard
 Окружение 
 \family sans
-Дословно
+Буквально
 \family default
 * идентично 
 \family sans
-Дословно
+Буквально
 \family default
  с той лишь разницей, что пробелы появляются в выводе в виде символа '␣'.
  Пример:
 \end_layout
 
 \begin_layout Verbatim*
-Это в окружении 
+
+Это текст в окружении 
 \begin_inset Quotes rld
 \end_inset
 
-Дословно*
+Буквально*
 \begin_inset Quotes rrd
 \end_inset
 
@@ -8432,20 +8436,20 @@ arg   "depth-decrement"
 \begin_layout Itemize
 
 \family sans
-Код-\SpecialChar LyX
+Код \SpecialChar LyX
 
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Дословно
+Буквально
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Дословно*
+Буквально*
 \end_layout
 
 \end_deeper
@@ -8527,7 +8531,7 @@ arg   "depth-decrement"
 \begin_layout Itemize
 
 \family sans
-Подразделn*
+Подраздел*
 \end_layout
 
 \begin_layout Itemize
@@ -10312,7 +10316,7 @@ arg   "paragraph-break"
 \begin_layout Section
 Промежутки, разрывы строк и страниц
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Промежуток
@@ -10342,7 +10346,7 @@ name "subsec:Protected-Space"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Пробел ! неразрывный
@@ -10426,7 +10430,7 @@ name "subsec:Horizontal-Space"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Промежуток ! горизонтальный
@@ -10596,6 +10600,46 @@ Ctrl+Shift+Пробел
 
 \begin_layout Standard
 Вы также можете использовать следующие типы пробелов:
+\end_layout
+
+\begin_layout Description
+Средний
+\begin_inset space ~
+\end_inset
+
+пробел Строка со 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset space \medspace{}
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ средним пробелом между стрелками.
+\end_layout
+
+\begin_layout Description
+Широкий
+\begin_inset space ~
+\end_inset
+
+пробел Строка с 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset space \thickspace{}
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ широким пробелом между стрелками.
 \end_layout
 
 \begin_layout Description
@@ -10853,7 +10897,7 @@ name "tab:Width-of-the"
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="2">
+<lyxtabular version="3" rows="12" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -10948,6 +10992,54 @@ em
 \end_inset
 
 em
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Средний
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\begin_inset space \thinspace{}
+\end_inset
+
+mu
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Широкий
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\begin_inset space \thinspace{}
+\end_inset
+
+mu
 \end_layout
 
 \end_inset
@@ -11295,7 +11387,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Верхняя скобка: 
+Скобка вверх: 
 \begin_inset space \downbracefill{}
 \end_inset
 
@@ -11307,7 +11399,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Нижняя скобка: 
+Скобка вниз: 
 \begin_inset space \upbracefill{}
 \end_inset
 

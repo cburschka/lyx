@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-05-03 13:31+0200\n"
-"PO-Revision-Date: 2020-06-14 13:39+0300\n"
+"PO-Revision-Date: 2020-06-27 18:23+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -1116,7 +1116,7 @@ msgstr "Все авторы"
 
 #: src/frontends/qt/ui/ColorUi.ui:27
 msgid "Font Colors"
-msgstr "Цвета шрифтов"
+msgstr "Цвет шрифта"
 
 #: src/frontends/qt/ui/ColorUi.ui:38
 msgid "Main text:"
@@ -1147,7 +1147,7 @@ msgstr "Изменить..."
 
 #: src/frontends/qt/ui/ColorUi.ui:165
 msgid "Background Colors"
-msgstr "Фоновые цвета"
+msgstr "Цвет фона"
 
 #: src/frontends/qt/ui/ColorUi.ui:176 lib/layouts/europecv.layout:126
 msgid "Page:"
@@ -2217,7 +2217,7 @@ msgstr "Ввести (input)"
 #: src/frontends/qt/ui/IncludeUi.ui:56 lib/layouts/stdlayouts.inc:76
 #: src/insets/InsetInclude.cpp:419
 msgid "Verbatim"
-msgstr "Дословно"
+msgstr "Буквально"
 
 #: src/frontends/qt/ui/IncludeUi.ui:61 src/insets/InsetInclude.cpp:1401
 #: src/insets/InsetInclude.cpp:1407
@@ -3916,7 +3916,7 @@ msgstr "Редактирование"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:38
 msgid "Scroll &below end of document"
-msgstr "Прокручивать после конца документа"
+msgstr "Прокручивать за конец документа"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:45
 msgid "Sort &environments alphabetically"
@@ -4409,7 +4409,7 @@ msgstr "По умолчанию для языка"
 
 #: src/frontends/qt/ui/PrefLatexUi.ui:34
 msgid "&DVI viewer paper size options:"
-msgstr "Параметры размеры бумаги просмотрщика &DVI:"
+msgstr "Параметры размера бумаги просмотрщика &DVI:"
 
 #: src/frontends/qt/ui/PrefLatexUi.ui:44
 msgid "Optional paper size flag (-paper) for some DVI viewers"
@@ -5782,7 +5782,7 @@ msgstr "По умолчанию"
 
 #: src/frontends/qt/ui/VSpaceUi.ui:87 src/frontends/qt/GuiDocument.cpp:864
 msgid "SmallSkip"
-msgstr "Маленький"
+msgstr "Малый"
 
 #: src/frontends/qt/ui/VSpaceUi.ui:92 src/frontends/qt/GuiDocument.cpp:865
 msgid "MedSkip"
@@ -16998,7 +16998,7 @@ msgstr "Список обозначений"
 
 #: lib/layouts/stdlayouts.inc:100 src/insets/InsetInclude.cpp:422
 msgid "Verbatim*"
-msgstr "Дословно*"
+msgstr "Буквально*"
 
 #: lib/layouts/stdsections.inc:15 lib/layouts/svcommon.inc:119
 msgid "Part \\thepart"
@@ -19848,27 +19848,27 @@ msgstr "Защищённое горизонтальное заполнение|�
 
 #: lib/ui/stdcontext.inc:254
 msgid "Horizontal Fill (Dots)|D"
-msgstr "Горизонтальное заполнение (точки)|т"
+msgstr "Горизонтальное заполнение (точки)"
 
 #: lib/ui/stdcontext.inc:255
 msgid "Horizontal Fill (Rule)|R"
-msgstr "Горизонтальное заполнение (линия)|л"
+msgstr "Горизонтальное заполнение (линия)"
 
 #: lib/ui/stdcontext.inc:256
 msgid "Horizontal Fill (Left Arrow)|L"
-msgstr "Горизонтальное заполнение (левая стрелка)|л"
+msgstr "Горизонтальное заполнение (левая стрелка)"
 
 #: lib/ui/stdcontext.inc:257
 msgid "Horizontal Fill (Right Arrow)|g"
-msgstr "Горизонтальное заполнение (правая стрелка)|п"
+msgstr "Горизонтальное заполнение (правая стрелка)"
 
 #: lib/ui/stdcontext.inc:258
 msgid "Horizontal Fill (Up Brace)|p"
-msgstr "Горизонтальное заполнение (верхняя скобка)|в"
+msgstr "Горизонтальное заполнение (скобка вниз)"
 
 #: lib/ui/stdcontext.inc:259
 msgid "Horizontal Fill (Down Brace)|B"
-msgstr "Горизонтальное заполнение (нижняя скобка)|н"
+msgstr "Горизонтальное заполнение (скобка вверх)"
 
 #: lib/ui/stdcontext.inc:260 lib/ui/stdcontext.inc:278
 msgid "Custom Length|C"
@@ -19876,7 +19876,7 @@ msgstr "Заданная длина|и"
 
 #: lib/ui/stdcontext.inc:270
 msgid "Medium Space|M"
-msgstr "Нормальный пробел|Н"
+msgstr "Средний пробел|н"
 
 #: lib/ui/stdcontext.inc:271
 msgid "Thick Space|h"
@@ -19884,7 +19884,7 @@ msgstr "Широкий пробел|Ш"
 
 #: lib/ui/stdcontext.inc:273
 msgid "Negative Medium Space|u"
-msgstr "Отрицательный пробел|п"
+msgstr "Отрицательный средний пробел|п"
 
 #: lib/ui/stdcontext.inc:274
 msgid "Negative Thick Space|i"
@@ -19928,11 +19928,11 @@ msgstr "Ввести (input)|в"
 
 #: lib/ui/stdcontext.inc:303 lib/ui/stdcontext.inc:580
 msgid "Verbatim|V"
-msgstr "Дословно|Д"
+msgstr "Буквально|Б"
 
 #: lib/ui/stdcontext.inc:304 lib/ui/stdcontext.inc:581
 msgid "Verbatim (marked blanks)|b"
-msgstr "Дословно (видимые пробелы)|п"
+msgstr "Буквально (видимые пробелы)|п"
 
 #: lib/ui/stdcontext.inc:305 lib/ui/stdcontext.inc:582
 msgid "Listing|L"
@@ -20088,7 +20088,7 @@ msgstr "Сделать последний необязательный аргу�
 
 #: lib/ui/stdcontext.inc:403 lib/ui/stdmenus.inc:273
 msgid "Insert Optional Argument"
-msgstr "Вставить необязательный аргумент"
+msgstr "Добавить необязательный аргумент"
 
 #: lib/ui/stdcontext.inc:404 lib/ui/stdmenus.inc:274
 msgid "Remove Optional Argument"
@@ -21861,7 +21861,7 @@ msgstr "Убрать необязательный аргумент"
 
 #: lib/ui/stdtoolbars.inc:223
 msgid "Insert optional argument"
-msgstr "Вставить необязательный аргумент"
+msgstr "Добавить необязательный аргумент"
 
 #: lib/ui/stdtoolbars.inc:225
 msgid "Remove last argument spitting out to the right"
@@ -21909,7 +21909,7 @@ msgstr "Тоны и ударения IPA"
 
 #: lib/ui/stdtoolbars.inc:240
 msgid "Command Buffer"
-msgstr "Буфер команды"
+msgstr "Командная строка"
 
 #: lib/ui/stdtoolbars.inc:244
 msgid "Review[[Toolbar]]"
@@ -22256,7 +22256,7 @@ msgstr "Тонкий пробел\t\\,"
 
 #: lib/ui/stdtoolbars.inc:369
 msgid "Medium space\t\\:"
-msgstr "Нормальный пробел\t\\:"
+msgstr "Средний пробел\t\\:"
 
 #: lib/ui/stdtoolbars.inc:370
 msgid "Thick space\t\\;"
@@ -28855,7 +28855,7 @@ msgid ""
 "The character \"%1$s\" is uncodable in this verbatim context and thus has "
 "not been pasted."
 msgstr ""
-"Символ \"%1$s\" является некодируемым в этом дословном контексте, и поэтому "
+"Символ \"%1$s\" является некодируемым в этом буквальном контексте, и поэтому "
 "не был вставлен."
 
 #: src/CutAndPaste.cpp:213
@@ -28864,7 +28864,7 @@ msgid ""
 "The characters \"%1$s\" are uncodable in this verbatim context and thus have "
 "not been pasted."
 msgstr ""
-"Символы \"%1$s\" являются некодируемыми в этом дословном контексте, и "
+"Символы \"%1$s\" являются некодируемыми в этом буквальном контексте, и "
 "поэтому не были вставлены."
 
 #: src/CutAndPaste.cpp:252
@@ -30133,7 +30133,7 @@ msgstr ""
 
 #: src/Text.cpp:985
 msgid "Character is uncodable in this verbatim context."
-msgstr "Символ является некодируемым в дословном контексте."
+msgstr "Символ является некодируемым в буквальном контексте."
 
 #: src/Text.cpp:1969
 msgid "[Change Tracking] "
@@ -30645,7 +30645,7 @@ msgstr "по умолчанию"
 
 #: src/VSpace.cpp:165
 msgid "Small skip"
-msgstr "маленький"
+msgstr "малый"
 
 #: src/VSpace.cpp:168
 msgid "Medium skip"
@@ -36229,11 +36229,11 @@ msgstr "Двойной квадрат"
 
 #: src/insets/InsetSpace.cpp:93
 msgid "Enspace"
-msgstr "Enspace"
+msgstr "Защищённый полуквадрат (enspace)"
 
 #: src/insets/InsetSpace.cpp:96
 msgid "Enskip"
-msgstr "Enskip"
+msgstr "Полуквадрат (enskip)"
 
 #: src/insets/InsetSpace.cpp:111
 msgid "Protected Horizontal Fill"
@@ -36245,7 +36245,7 @@ msgstr "Горизонтальное заполнение (точки)"
 
 #: src/insets/InsetSpace.cpp:117
 msgid "Horizontal Fill (Rule)"
-msgstr "Горизонтальное заполнение (линейка)"
+msgstr "Горизонтальное заполнение (линия)"
 
 #: src/insets/InsetSpace.cpp:120
 msgid "Horizontal Fill (Left Arrow)"
@@ -36257,11 +36257,11 @@ msgstr "Горизонтальное заполнение (правая стре
 
 #: src/insets/InsetSpace.cpp:126
 msgid "Horizontal Fill (Up Brace)"
-msgstr "Горизонтальное заполнение (верхняя фигурная скобка)"
+msgstr "Горизонтальное заполнение (скобка вниз)"
 
 #: src/insets/InsetSpace.cpp:129
 msgid "Horizontal Fill (Down Brace)"
-msgstr "Горизонтальное заполнение (нижняя фигурная скобка)"
+msgstr "Горизонтальное заполнение (скобка вверх)"
 
 #: src/insets/InsetSpace.cpp:133
 #, c-format
