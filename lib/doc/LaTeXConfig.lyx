@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 594
+\lyxformat 595
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -5683,6 +5683,61 @@ longtable
 \family default
  is needed by \SpecialChar LyX
  to output multi-page tables.
+\change_inserted -712698321 1593341214
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_deleted -712698321 1593341218
+longtable
+\change_inserted -712698321 1593341222
+parskip
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "parskip"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/
+\change_deleted -712698321 1593341294
+required/tools
+\change_inserted -712698321 1593341297
+contrib/parskip
+\change_unchanged
+/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\change_deleted -712698321 1593341266
+
+\family sans
+longtable
+\change_inserted -712698321 1593341267
+parskip
+\change_unchanged
+
+\family default
+ is needed by \SpecialChar LyX
+ to 
+\change_deleted -712698321 1593341302
+output multi-page tables
+\change_inserted -712698321 1593341311
+separate paragraphs by vertical space
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Subsection

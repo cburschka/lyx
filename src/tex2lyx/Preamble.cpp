@@ -203,7 +203,7 @@ const char * const known_xetex_packages[] = {"arabxetex", "fixlatvian",
 const char * const known_lyx_packages[] = {"amsbsy", "amsmath", "amssymb",
 "amstext", "amsthm", "array", "babel", "booktabs", "calc", "CJK", "color",
 "float", "fontspec", "framed", "graphicx", "hhline", "ifthen", "longtable",
-"makeidx", "minted", "multirow", "nomencl", "pdfpages", "prettyref", "refstyle",
+"makeidx", "minted", "multirow", "nomencl", "parskip", "pdfpages", "prettyref", "refstyle",
 "rotating", "rotfloat", "splitidx", "setspace", "subscript", "tabularx","textcomp", "tipa",
 "tipx", "tone", "ulem", "url", "varioref", "verbatim", "wrapfig", "xcolor", "xltabular",
 "xunicode", 0};
@@ -1644,6 +1644,24 @@ void Preamble::handle_package(Parser &p, string const & name,
 		delete_opt(options, o);
 	}
 
+	else if (name == "parskip" && options.size() < 2 && (opts.empty() || prefixIs(opts, "skip="))) {
+		if (opts.empty())
+			h_paragraph_separation = "halfline";
+		else {
+			if (opts == "skip=\\smallskipamount")
+				h_defskip = "smallskip";
+			else if (opts == "skip=\\medskipamount")
+				h_defskip = "medskip";
+			else if (opts == "skip=\\bigskipamount")
+				h_defskip = "bigskip";
+			else if (opts == "skip=\\baselineskip")
+				h_defskip = "fullline";
+			else
+				h_defskip = "opts";
+			h_paragraph_separation = "skip";
+		}
+	}
+
 	else if (is_known(name, known_lyx_packages) && options.empty()) {
 		if (name == "splitidx")
 			h_use_indices = "true";
@@ -1653,6 +1671,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_use_refstyle = true;
 		else if (name == "prettyref")
 			h_use_refstyle = false;
+
 		if (!in_lyx_preamble) {
 			h_preamble << package_beg_sep << name
 			           << package_mid_sep << "\\usepackage{"
@@ -2781,18 +2800,17 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			string const name = p.verbatim_item();
 			string const content = p.verbatim_item();
 			// the paragraphs are only not indented when \parindent is set to zero
-			if (name == "\\parindent" && content != "") {
-				if (content[0] == '0')
-					h_paragraph_separation = "skip";
-				else
-					h_paragraph_indentation = translate_len(content);
-			} else if (name == "\\parskip") {
+			if (name == "\\parindent" && content != "")
+				h_paragraph_indentation = translate_len(content);
+			else if (name == "\\parskip" && isPackageUsed("parskip")) {
 				if (content == "\\smallskipamount")
 					h_defskip = "smallskip";
 				else if (content == "\\medskipamount")
 					h_defskip = "medskip";
 				else if (content == "\\bigskipamount")
 					h_defskip = "bigskip";
+				else if (content == "\\baselineskip")
+					h_defskip = "fullline";
 				else
 					h_defskip = translate_len(content);
 			} else if (name == "\\mathindent") {

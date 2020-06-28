@@ -31,6 +31,8 @@ public:
 		SMALLSKIP,
 		MEDSKIP,
 		BIGSKIP,
+		HALFLINE,
+		FULLLINE,
 		VFILL,
 		LENGTH ///< user-defined length
 	};

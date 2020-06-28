@@ -3775,7 +3775,62 @@ def revert_ams_spaces(document):
         if i == -1:
             add_to_preamble(document, ["\\@ifundefined{thickspace}{\\usepackage{amsmath}}{}"])
             return
-        
+
+
+def convert_parskip(document):
+    " Move old parskip settings to preamble "
+    
+    i = find_token(document.header, "\\paragraph_separation skip", 0)
+    if i == -1:
+        return
+    
+    j = find_token(document.header, "\\defskip", 0)
+    if j == -1:
+        document.warning("Malformed LyX document! Missing \\defskip.")
+        return
+    
+    val = get_value(document.header, "\\defskip", j)
+    
+    skipval = "\\medskipamount"
+    if val == "smallskip" or val == "medskip" or val == "bigskip":
+        skipval = "\\" + val + "amount"
+    else:
+        skipval = val
+
+    add_to_preamble(document, ["\\setlength{\\parskip}{" + skipval + "}", "\\setlength{\\parindent}{0pt}"])
+    
+    document.header[i] = "\\paragraph_separation indent"
+    document.header[j] = "\\paragraph_indentation default"
+
+
+def revert_parskip(document):
+    " Revert new parskip settings to preamble "
+    
+    i = find_token(document.header, "\\paragraph_separation skip", 0)
+    if i == -1:
+        return
+    
+    j = find_token(document.header, "\\defskip", 0)
+    if j == -1:
+        document.warning("Malformed LyX document! Missing \\defskip.")
+        return
+    
+    val = get_value(document.header, "\\defskip", j)
+    
+    skipval = ""
+    if val == "smallskip" or val == "medskip" or val == "bigskip":
+        skipval = "[skip=\\" + val + "amount]"
+    elif val == "fullline":
+        skipval = "[skip=\\baselineskip]"
+    elif val != "halfline":
+        skipval = "[skip={" + val + "}]"
+    
+    add_to_preamble(document, ["\\usepackage" + skipval + "{parskip}"])
+    
+    document.header[i] = "\\paragraph_separation indent"
+    document.header[j] = "\\paragraph_indentation default"
+
+
 ##
 # Conversion hub
 #
@@ -3832,10 +3887,12 @@ convert = [
            [592, []],
            [593, [convert_counter_maintenance]],
            [594, []],
-           [595, []]
+           [595, []],
+           [596, [convert_parskip]]
           ]
 
-revert =  [[594, [revert_ams_spaces]],
+revert =  [[595, [revert_parskip]],
+           [594, [revert_ams_spaces]],
            [593, [revert_counter_inset]],
            [592, [revert_counter_maintenance]],
            [591, [revert_colrow_tracking]],

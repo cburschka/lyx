@@ -860,10 +860,12 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	textLayoutModule->indentCO->addItem(qt_("Default"));
 	textLayoutModule->indentCO->addItem(qt_("Custom"));
-	textLayoutModule->skipCO->addItem(qt_("SmallSkip"));
-	textLayoutModule->skipCO->addItem(qt_("MedSkip"));
-	textLayoutModule->skipCO->addItem(qt_("BigSkip"));
-	textLayoutModule->skipCO->addItem(qt_("Custom"));
+	textLayoutModule->skipCO->addItem(qt_("Half line height"), VSpace::HALFLINE);
+	textLayoutModule->skipCO->addItem(qt_("Line height"), VSpace::FULLLINE);
+	textLayoutModule->skipCO->addItem(qt_("SmallSkip"), VSpace::SMALLSKIP);
+	textLayoutModule->skipCO->addItem(qt_("MedSkip"), VSpace::MEDSKIP);
+	textLayoutModule->skipCO->addItem(qt_("BigSkip"), VSpace::BIGSKIP);
+	textLayoutModule->skipCO->addItem(qt_("Custom"), VSpace::LENGTH);
 	textLayoutModule->lspacingCO->insertItem(
 		Spacing::Single, qt_("Single"));
 	textLayoutModule->lspacingCO->insertItem(
@@ -2028,7 +2030,9 @@ void GuiDocument::enableIndent(bool indent)
 
 void GuiDocument::setSkip(int item)
 {
-	bool const enable = (item == 3);
+	VSpace::VSpaceKind kind =
+		VSpace::VSpaceKind(textLayoutModule->skipCO->itemData(item).toInt());
+	bool const enable = (kind == VSpace::LENGTH);
 	textLayoutModule->skipLE->setEnabled(enable);
 	textLayoutModule->skipLengthCO->setEnabled(enable);
 	isValid();
@@ -3611,25 +3615,24 @@ void GuiDocument::applyView()
 	} else {
 		// if paragraphs are separated by a skip
 		bp_.paragraph_separation = BufferParams::ParagraphSkipSeparation;
-		switch (textLayoutModule->skipCO->currentIndex()) {
-		case 0:
-			bp_.setDefSkip(VSpace(VSpace::SMALLSKIP));
+		VSpace::VSpaceKind spacekind =
+			VSpace::VSpaceKind(textLayoutModule->skipCO->itemData(textLayoutModule->skipCO->currentIndex()).toInt());
+		switch (spacekind) {
+		case VSpace::SMALLSKIP:
+		case VSpace::MEDSKIP:
+		case VSpace::BIGSKIP:
+		case VSpace::HALFLINE:
+		case VSpace::FULLLINE:
+			bp_.setDefSkip(VSpace(spacekind));
 			break;
-		case 1:
-			bp_.setDefSkip(VSpace(VSpace::MEDSKIP));
-			break;
-		case 2:
-			bp_.setDefSkip(VSpace(VSpace::BIGSKIP));
-			break;
-		case 3:
-			{
+		case VSpace::LENGTH: {
 			VSpace vs = VSpace(
 				widgetsToLength(textLayoutModule->skipLE,
 				textLayoutModule->skipLengthCO)
 				);
 			bp_.setDefSkip(vs);
 			break;
-			}
+		}
 		default:
 			// this should never happen
 			bp_.setDefSkip(VSpace(VSpace::MEDSKIP));
@@ -4113,32 +4116,15 @@ void GuiDocument::paramsToDialog()
 		setIndent(indent);
 	} else {
 		textLayoutModule->skipRB->setChecked(true);
-		int skip = 0;
-		switch (bp_.getDefSkip().kind()) {
-		case VSpace::SMALLSKIP:
-			skip = 0;
-			break;
-		case VSpace::MEDSKIP:
-			skip = 1;
-			break;
-		case VSpace::BIGSKIP:
-			skip = 2;
-			break;
-		case VSpace::LENGTH:
-			{
-			skip = 3;
+		VSpace::VSpaceKind skip = bp_.getDefSkip().kind();
+		textLayoutModule->skipCO->setCurrentIndex(textLayoutModule->skipCO->findData(skip));
+		if (skip == VSpace::LENGTH) {
 			string const length = bp_.getDefSkip().asLyXCommand();
 			lengthToWidgets(textLayoutModule->skipLE,
 				textLayoutModule->skipLengthCO,
 				length, default_unit);
-			break;
-			}
-		default:
-			skip = 0;
-			break;
 		}
-		textLayoutModule->skipCO->setCurrentIndex(skip);
-		setSkip(skip);
+		setSkip(textLayoutModule->skipCO->currentIndex());
 	}
 
 	textLayoutModule->twoColumnCB->setChecked(

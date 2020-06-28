@@ -84,12 +84,28 @@ static void setWidgetsFromVSpace(VSpace const & space,
 {
 	int item = 0;
 	switch (space.kind()) {
-		case VSpace::DEFSKIP:   item = 0; break;
-		case VSpace::SMALLSKIP: item = 1; break;
-		case VSpace::MEDSKIP:   item = 2; break;
-		case VSpace::BIGSKIP:   item = 3; break;
-		case VSpace::VFILL:     item = 4; break;
-		case VSpace::LENGTH:    item = 5; break;
+		case VSpace::DEFSKIP:
+			item = 0;
+			break;
+		case VSpace::SMALLSKIP:
+			item = 1;
+			break;
+		case VSpace::MEDSKIP:
+			item = 2;
+			break;
+		case VSpace::BIGSKIP:
+			item = 3;
+			break;
+		case VSpace::VFILL:
+			item = 4;
+			break;
+		case VSpace::LENGTH:
+			item = 5;
+			break;
+		case VSpace::HALFLINE:
+		case VSpace::FULLLINE:
+			// not supported here yet
+			break;
 	}
 	spacing->setCurrentIndex(item);
 	keep->setChecked(space.keep());
