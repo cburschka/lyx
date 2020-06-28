@@ -1,12 +1,12 @@
 #LyX file created by tex2lyx 2.4
-\lyxformat 595
+\lyxformat 596
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin roundtrip
 \textclass article
 \begin_preamble
-
+\setlength{\parskip}{3mm}
 \setlength{\fboxsep}{3mm}
 
 \definecolor{darkgreen}{cmyk}{0.5, 0, 1, 0.5}
@@ -108,8 +108,8 @@
 \columnsep 8cm
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation skip
-\defskip 3mm
+\paragraph_separation indent
+\paragraph_indentation 0sp
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
