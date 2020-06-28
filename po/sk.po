@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-06-26 11:53+0200\n"
-"PO-Revision-Date: 2020-06-26 10:21+0000\n"
+"POT-Creation-Date: 2020-06-28 18:45+0200\n"
+"PO-Revision-Date: 2020-06-28 17:06+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -5760,6 +5760,16 @@ msgstr "Stredná medzera(MedSkip)"
 #: src/frontends/qt/ui/VSpaceUi.ui:97 src/frontends/qt/GuiDocument.cpp:860
 msgid "BigSkip"
 msgstr "Veľká medzera(BigSkip)"
+
+#: src/frontends/qt/ui/VSpaceUi.ui:103 src/VSpace.cpp:202
+#: src/frontends/qt/GuiDocument.cpp:863
+msgid "Half line height"
+msgstr "Polovičná výška riadku"
+
+#: src/frontends/qt/ui/VSpaceUi.ui:108 src/VSpace.cpp:205
+#: src/frontends/qt/GuiDocument.cpp:864
+msgid "Line height"
+msgstr "Výška riadku"
 
 # Výplň
 #: src/frontends/qt/ui/VSpaceUi.ui:102
@@ -19712,6 +19722,14 @@ msgstr "Stredná medzera(MedSkip)|S"
 #: lib/ui/stdcontext.inc:287
 msgid "BigSkip|B"
 msgstr "Veľká medzera(BigSkip)|e"
+
+#: lib/ui/stdcontext.inc:295
+msgid "Half line height|H"
+msgstr "Polovičná výška riadku|P"
+
+#: lib/ui/stdcontext.inc:296
+msgid "Line height|L"
+msgstr "Výška riadku|š"
 
 # Výplň
 #: lib/ui/stdcontext.inc:288
