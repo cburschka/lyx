@@ -66,7 +66,7 @@ GuiVSpace::GuiVSpace(QWidget * parent) : InsetParamsWidget(parent)
 
 void GuiVSpace::enableCustom(int selection)
 {
-	bool const enable = selection == 5;
+	bool const enable = selection == 7;
 	valueLE->setEnabled(enable);
 	if (enable)
 		valueLE->setFocus();
@@ -96,15 +96,17 @@ static void setWidgetsFromVSpace(VSpace const & space,
 		case VSpace::BIGSKIP:
 			item = 3;
 			break;
-		case VSpace::VFILL:
+		case VSpace::HALFLINE:
 			item = 4;
 			break;
-		case VSpace::LENGTH:
+		case VSpace::FULLLINE:
 			item = 5;
 			break;
-		case VSpace::HALFLINE:
-		case VSpace::FULLLINE:
-			// not supported here yet
+		case VSpace::VFILL:
+			item = 6;
+			break;
+		case VSpace::LENGTH:
+			item = 7;
 			break;
 	}
 	spacing->setCurrentIndex(item);
@@ -131,12 +133,30 @@ static VSpace setVSpaceFromWidgets(int spacing,
 	VSpace space;
 
 	switch (spacing) {
-		case 0: space = VSpace(VSpace::DEFSKIP); break;
-		case 1: space = VSpace(VSpace::SMALLSKIP); break;
-		case 2: space = VSpace(VSpace::MEDSKIP); break;
-		case 3: space = VSpace(VSpace::BIGSKIP); break;
-		case 4: space = VSpace(VSpace::VFILL); break;
-		case 5: space = VSpace(GlueLength(widgetsToLength(value, unit))); break;
+		case 0:
+			space = VSpace(VSpace::DEFSKIP);
+			break;
+		case 1:
+			space = VSpace(VSpace::SMALLSKIP);
+			break;
+		case 2:
+			space = VSpace(VSpace::MEDSKIP);
+			break;
+		case 3:
+			space = VSpace(VSpace::BIGSKIP);
+			break;
+		case 4:
+			space = VSpace(VSpace::HALFLINE);
+			break;
+		case 5:
+			space = VSpace(VSpace::FULLLINE);
+			break;
+		case 6:
+			space = VSpace(VSpace::VFILL);
+			break;
+		case 7:
+			space = VSpace(GlueLength(widgetsToLength(value, unit)));
+			break;
 	}
 
 	space.setKeep(keep);
@@ -148,7 +168,7 @@ docstring GuiVSpace::dialogToParams() const
 {
 	// If a vspace choice is "Length" but there's no text in
 	// the input field, do not insert a vspace at all.
-	if (spacingCO->currentIndex() == 5 && valueLE->text().isEmpty())
+	if (spacingCO->currentIndex() == 7 && valueLE->text().isEmpty())
 		return docstring();
 
 	VSpace const params = setVSpaceFromWidgets(spacingCO->currentIndex(),
@@ -175,7 +195,7 @@ bool GuiVSpace::checkWidgets(bool readonly) const
 		spacingCO->setEnabled(false);
 		unitCO->setEnabled(false);
 	} else {
-		bool const enable = (spacingCO->currentIndex() == 5);
+		bool const enable = (spacingCO->currentIndex() == 7);
 		valueLE->setEnabled(enable);
 		valueL->setEnabled(enable);
 		unitCO->setEnabled(enable);

@@ -3831,6 +3831,25 @@ def revert_parskip(document):
     document.header[j] = "\\paragraph_indentation default"
 
 
+def revert_line_vspaces(document):
+    " Revert fulline and halfline vspaces to TeX "
+    insets = {
+        "fullline*" : "\\vspace*{\\baselineskip}",
+        "fullline" : "\\vspace{\\baselineskip}",
+        "halfline*" : "\\vspace*{0.5\\baselineskip}",
+        "halfline" : "\\vspace{0.5\\baselineskip}",
+        }
+    for inset in insets.keys():
+        i = 0
+        j = 0
+        i = find_token(document.body, "\\begin_inset VSpace " + inset, i)
+        if i == -1:
+            continue
+        end = find_end_of_inset(document.body, i)
+        subst = put_cmd_in_ert(insets[inset])
+        document.body[i : end + 1] = subst
+
+
 ##
 # Conversion hub
 #
@@ -3891,7 +3910,7 @@ convert = [
            [596, [convert_parskip]]
           ]
 
-revert =  [[595, [revert_parskip]],
+revert =  [[595, [revert_parskip,revert_line_vspaces]],
            [594, [revert_ams_spaces]],
            [593, [revert_counter_inset]],
            [592, [revert_counter_maintenance]],

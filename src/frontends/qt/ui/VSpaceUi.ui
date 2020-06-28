@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>VSpaceUi</class>
  <widget class="QWidget" name="VSpaceUi">
@@ -5,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>215</width>
-    <height>96</height>
+    <width>288</width>
+    <height>118</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -95,6 +96,16 @@
      <item>
       <property name="text">
        <string>BigSkip</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Half line height</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Line height</string>
       </property>
      </item>
      <item>

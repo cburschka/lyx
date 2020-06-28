@@ -292,6 +292,8 @@ Menuset
 		Item "SmallSkip|S" "inset-modify vspace smallskip"
 		Item "MedSkip|M" "inset-modify vspace medskip"
 		Item "BigSkip|B" "inset-modify vspace bigskip"
+		Item "Half line height|H" "inset-modify vspace halfline"
+		Item "Line height|L" "inset-modify vspace fullline"
 		Item "VFill|F" "inset-modify vspace vfill"
 		Item "Custom|C" "command-sequence inset-modify vspace custom; inset-settings"
 		Separator

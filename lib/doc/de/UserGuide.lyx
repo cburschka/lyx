@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 595
+\lyxformat 596
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -53,6 +53,9 @@
 
 % Trennausnahmen
 \hyphenation{Text-ei-gen-schaf-ten}
+% Added by lyx2lyx
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
 \end_preamble
 \options refpage,intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
 \use_default_options false
@@ -142,8 +145,8 @@ logicalmkup
 \end_index
 \secnumdepth 3
 \tocdepth 2
-\paragraph_separation skip
-\defskip medskip
+\paragraph_separation indent
+\paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style german
@@ -12157,21 +12160,21 @@ Abstand
 \begin_layout Standard
 
 \family sans
-SmallSkip
+Klein
 \family default
 , 
 \family sans
-MedSkip
+Mittel
 \family default
  und 
 \family sans
-BigSkip
+Groß
 \family default
- sind \SpecialChar LaTeX
+ entsprechen \SpecialChar LaTeX
 -Größen, die von der Schriftgröße des Dokuments abhängen.
  
 \family sans
-DefSkip
+Standard
 \family default
  ist der Abstand, der im Dialog 
 \family sans
@@ -12192,13 +12195,27 @@ Dokument ! Einstellungen
  für die Absatztrennung eingestellt ist.
  Wenn Sie Absätze per Einrückung voneinander trennen, ist 
 \family sans
-DefSkip
+Standard
 \family default
  gleich 
 \family sans
-MedSkip
+Mittel
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Halbe Zeilenhöhe
+\family default
+ und 
+\family sans
+Zeilenhöhe
+\family default
+ entsprechen der Höhe (bzw.
+ der halben Höhe) einer Zeile in der gewählten Schriftgröße inklusive des
+ Zeilenabstands.
 \end_layout
 
 \begin_layout Standard

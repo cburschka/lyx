@@ -5709,11 +5709,18 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						} else if (unit == "\\bigskipamount") {
 							unit = "bigskip";
 							known_vspace = true;
+						} else if (length == "\\baselineskip") {
+							unit = "fullline";
+							known_vspace = true;
 						} else if (unit == "\\fill") {
 							unit = "vfill";
 							known_vspace = true;
 						}
 					}
+				}
+				if (value == 0.5 && t.cs()[0] != 'h' && unit == "\\baselineskip") {
+					unit = "halfline";
+					known_vspace = true;
 				}
 				if (!known_hspace && !known_vspace) {
 					switch (unitFromString(unit)) {
