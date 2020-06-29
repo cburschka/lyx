@@ -1627,7 +1627,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			col_type startcol =  col(cur.idx());
 			row_type startrow = cur.row();
 			col_type oldncols = ncols();
-			col_type const numcols =
+			col_type numcols =
 				min(grid.ncols(), ncols() - startcol);
 			row_type const numrows =
 				min(grid.nrows(), nrows() - cur.row());
@@ -1651,6 +1651,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 					addCol(c + 1);
 					idx_type i = index(r + cur.row(), c + 1);
 					cell(i).append(grid.cell(grid.index(r, c)));
+					++numcols;
 				}
 			}
 			// amend cursor position if cols have been appended
