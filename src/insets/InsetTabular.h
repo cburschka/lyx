@@ -1075,6 +1075,8 @@ public:
 	/// writes the cells between stidx and enidx as a string, optionally
 	/// descending into the insets
 	docstring asString(idx_type stidx, idx_type enidx, bool intoInsets = true);
+	///
+	ParagraphList asParList(idx_type stidx, idx_type enidx);
 
 	/// Returns whether the cell in the specified row and column is selected.
 	bool isCellSelected(Cursor & cur, row_type row, col_type col) const;

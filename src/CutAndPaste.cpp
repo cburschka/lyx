@@ -1087,22 +1087,42 @@ void copySelectionToTemp(Cursor & cur)
 
 void copySelection(Cursor const & cur, docstring const & plaintext)
 {
-	// In tablemode, because copy and paste actually use special table stack
-	// we do not attempt to get selected paragraphs under cursor. Instead, a
-	// paragraph with the plain text version is generated so that table cells
-	// can be pasted as pure text somewhere else.
+	// In tablemode, because copy and paste actually use a special table stack,
+	// we need to go through the cells and collect the paragraphs. 
+	// In math matrices, we generate a plain text version.
 	if (cur.selBegin().idx() != cur.selEnd().idx()) {
 		ParagraphList pars;
-		Paragraph par;
 		BufferParams const & bp = cur.buffer()->params();
-		par.setLayout(bp.documentClass().plainLayout());
-		// Replace (column-separating) tabs by space (#4449)
-		docstring const clean_text = subst(plaintext, '\t', ' ');
-		// For pasting into text, we set the language to the paragraph language
-		// (rather than the default_language which is always English; see #11898)
-		par.insert(0, clean_text, Font(sane_font, par.getParLanguage(bp)),
-			   Change(Change::UNCHANGED));
-		pars.push_back(par);
+		if (cur.inMathed()) {
+			Paragraph par;
+			par.setLayout(bp.documentClass().plainLayout());
+			// Replace (column-separating) tabs by space (#4449)
+			docstring const clean_text = subst(plaintext, '\t', ' ');
+			// For pasting into text, we set the language to the paragraph language
+			// (rather than the default_language which is always English; see #11898)
+			par.insert(0, clean_text, Font(sane_font, par.getParLanguage(bp)),
+				   Change(Change::UNCHANGED));
+			pars.push_back(par);
+		} else {
+			// Get paragraphs from all cells
+			InsetTabular * table = cur.inset().asInsetTabular();
+			LASSERT(table, return);
+			ParagraphList tplist = table->asParList(cur.selBegin().idx(), cur.selEnd().idx());
+			for (auto & cpar : tplist) {
+				cpar.setLayout(bp.documentClass().plainLayout());
+				pars.push_back(cpar);
+				// since the pars are merged later, we separate them by blank
+				Paragraph epar;
+				epar.insert(0, from_ascii(" "), Font(sane_font, epar.getParLanguage(bp)),
+					    Change(Change::UNCHANGED));
+				pars.push_back(epar);
+			}
+			// remove last empty par
+			pars.pop_back();
+			// merge all paragraphs to one
+			while (pars.size() > 1)
+				mergeParagraph(bp, pars, 0);
+		}
 		theCuts.push(make_pair(pars, bp.documentClassPtr()));
 	} else {
 		copySelectionToStack(cur, theCuts);
