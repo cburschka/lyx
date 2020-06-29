@@ -1624,8 +1624,10 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		} else {
 			// multiple cells
 			cur.recordUndoInset();
+			col_type startcol =  col(cur.idx());
+			row_type startrow = cur.row();
 			col_type const numcols =
-				min(grid.ncols(), ncols() - col(cur.idx()));
+				min(grid.ncols(), ncols() - startcol);
 			row_type const numrows =
 				min(grid.nrows(), nrows() - cur.row());
 			for (row_type r = 0; r < numrows; ++r) {
@@ -1643,19 +1645,22 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 							MathAtom(new InsetMathUnknown(from_ascii("\\hline"))));
 					}
 				}
-				// append the left over horizontal cells to the last column
-				idx_type i = index(r + cur.row(), ncols() - 1);
-				for (InsetMath::col_type c = numcols; c < grid.ncols(); ++c)
+				// append columns for the left over horizontal cells
+				for (InsetMath::col_type c = numcols; c < grid.ncols(); ++c) {
+					addCol(c + 1);
+					idx_type i = index(r + cur.row(), c + 1);
 					cell(i).append(grid.cell(grid.index(r, c)));
+				}
 			}
-			// append the left over vertical cells to the last _cell_
+			// append rows for the left over vertical cells
 			idx_type i = nargs() - 1;
 			for (row_type r = numrows; r < grid.nrows(); ++r) {
-				addRow(r - 1);
+				row_type crow = startrow + r;
+				addRow(crow - 1);
 				for (col_type c = 0; c < grid.ncols(); ++c)
-					cell(index(r, c)).append(grid.cell(grid.index(r, c)));
+					cell(index(crow, c + startcol)).append(grid.cell(grid.index(r, c)));
 				if (hline_enabled)
-					rowinfo_[r].lines += grid.rowinfo_[r].lines;
+					rowinfo_[crow].lines += grid.rowinfo_[r].lines;
 				else {
 					for (unsigned int l = 0; l < grid.rowinfo_[r].lines; ++l) {
 						cell(i).insert(0,
