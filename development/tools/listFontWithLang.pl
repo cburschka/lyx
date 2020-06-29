@@ -35,6 +35,7 @@ use warnings;
 use Encode;
 use GetOptions;
 use constant {
+  # for ftype
   SERIF => 1,
   SANS => 2,
   SCRIPT => 4,
@@ -44,7 +45,30 @@ use constant {
   INITIALS => 64,
   SYMBOL => 128,
   SMALLCAP => 256,
+
+  # for UseProperty (UP)
+  UPPROPERTY => 1,         # select
+  UPNPROPERTY => 2,        # deselect
+  UPPPROPERTIES => 4,      # print
+  UPWPROPERTIES => 8,      # write to a file
+
+  # for UseCharsets (UC)
+  UCCONTAINS => 1,         # select
+  UCNCONTAINS => 2,        # deselect
+  UCPCONTAINS => 4,        # print
+
+  # for UseScripts (US)
+  USSCRIPT => 1,           # select
+  USNSCRIPT => 2,          # deselect
+  USMSCRIPT => 4,          # math
+  USPSCRIPT => 8,          # print
+  USWSCRIPT => 16,         # write to a file
 };
+
+# These will be set according to options
+my $iproperty = 0;         # info for Use Properties
+my $icontains = 0;         # info for Use Charsets
+my $iscript = 0;           # info for Use Scripts
 
 sub convertlang($);
 sub extractlist($$$);	# my ($l, $islang, $txt, $rres) = @_;
@@ -127,6 +151,10 @@ my @optionsDef = (
   ["pw",
    {fieldname => "PrintWarnings",
     comment => "Print warnings about discarded/overwritten fonts, conflicting styles"},],
+  ["wf",
+   {fieldname => "Write",
+    type => "=s", alias => ["writefile"],
+    comment => "Write to a file for later use"},],
 );
 my %options = %{&handleOptions(\@optionsDef)};
 
@@ -145,6 +173,28 @@ my %mapShortcuts = (
 my @langs = split(',', $options{Lang});
 for my $lg (@langs) {
   $lg = &convertlang($lg);
+}
+
+$iproperty |= UPPROPERTY if (defined($options{Property}));
+$iproperty |= UPNPROPERTY if (defined($options{NProperty}));
+$iproperty |= UPPPROPERTIES if (exists($options{PrintProperties}));
+
+$icontains |= UCCONTAINS if (defined($options{Contains}));
+$icontains |= UCNCONTAINS if (defined($options{NContains}));
+$icontains |= UCPCONTAINS if (exists($options{PrintCharset}));
+
+$iscript |= USSCRIPT if (defined($options{Scripts}));
+$iscript |= USNSCRIPT if (defined($options{NScripts}));
+$iscript |= USMSCRIPT if (exists($options{Math}));
+$iscript |= USPSCRIPT if (exists($options{PrintScripts}));
+
+if (defined($options{Write})) {
+  if (! open(INFOS, '>', $options{Write})) {
+    die("Could not open file $options{Write} for write");
+  }
+  $iproperty |= UPWPROPERTIES;
+  # not yet ...
+  # $iscript |= USWSCRIPT;
 }
 
 for my $charFld ("Contains", "NContains") {
@@ -200,16 +250,16 @@ my $format = "foundry=\"%{foundry}\"" .
     " family=\"%{family}\" flang=\"%{familylang}\" " .
     " style=\"%{style}\" stylelang=\"%{stylelang}\"";
 
-if (exists($options{PrintScripts}) || defined($options{Scripts}) || defined($options{NScripts}) || exists($options{Math})) {
+if ($iscript) {
   $format .= " script=\"%{capability}\"";
 }
 if (exists($options{PrintLangs}) || defined($langs[0])) {
   $format .= " lang=\"%{lang}\"";
 }
-if (exists($options{PrintProperties}) || defined($options{Property}) || defined($options{NProperty})) {
+if ($iproperty) {
   $format .= " weight=%{weight} slant=%{slant} width=%{width} spacing=%{spacing}";
 }
-if (defined($options{Contains}) || defined($options{NContains}) || exists($options{PrintCharset})) {
+if ($icontains) {
   $format .= " charset=\"%{charset}\"";
 }
 $format .= " file=\"%{file}\" abcd\\n";
@@ -310,9 +360,9 @@ my %serifFonts = (
 # list of regexes for known sans serif fonts
 my %sansFonts = (
   "value" => SANS,          # Sans serif
-  "a" => qr/^a(030|bydos|haroni|e?rial|ndika|ngostura|nonymous|rab|roania|rimo|sap|e almothnna|egean|egyptus|l (arabiya|battar|hor|manzomah|yarmook)|lmonte|natolian|ndale|nglepoise|njali|xaxa)/i,
-  "b" => qr/^b(abel ?stone ?modern|aekmuk|alker|altar|andal|angwool|arbatrick|aveuse|bold|dxsfm|ebas|erenika|eteckna|euron|iometric|iting|lue|m ?hanna)/i,
-  "c" => qr/^c(abin|aliban|antarell|arbon|arlito|handas|harles|hilanka|hinese ?rocks|hivo|mu bright|omfortaa|omi[cx]|oolvetica|ortoba|ousine|uprum|wtex(hei|yen)|yklop|ypro)/i,
+  "a" => qr/^a(030|bydos|haroni|e?rial|ndika|ngostura|nonymous|rab|roania|rimo|rundina|sap|e almothnna|egean|egyptus|l (arabiya|battar|hor|manzomah|yarmook)|lmonte|natolian|ndale|nglepoise|njali|xaxa)/i,
+  "b" => qr/^b(abel ?stone ?modern|aekmuk|alker|altar|andal|angwool|arbatrick|aveuse|old|dxsfm|ebas|erenika|eteckna|euron|iometric|iting|lue|m ?hanna)/i,
+  "c" => qr/^c(abin|aliban|antarell|arbon|arlito|handas|harles|hilanka|hinese ?rocks|hivo|mu bright|omfortaa|omi[cx]|omputer ?(bold|(modern ?(bright ?((semi)?bold|math|oblique|roman|italic))))|oolvetica|ortoba|ountries|ousine|uprum|wtex(hei|yen)|yklop|ypro)/i,
   "d" => qr/^(d2coding|dimnah|dosis|dyuthi)/i,
   "e" => qr/^(electron|engebrechtre)/i,
   "f" => qr/^(fandolhei|fetamont|fira|font awesome 5|forgotten)/i,
@@ -320,17 +370,17 @@ my %sansFonts = (
   "h" => qr/^(hack|hani|haramain|harano|harmattan|hor\b)/i,
   "i" => qr/^(ibm ?(plex ?mono|3270)|ikarius|inconsolata|induni.?h|iwona)/i,
   "j" => qr/^j(ara|ura|s ?math.?bbold)/i,
-  "k" => qr/^(kalimati|kanji|karla|karma|kayrawan|kenyan|keraleeyam|khalid|khmer [or]|kiloji|klaudia|ko[mn]atu|kurier|kustom)/i,
-  "l" => qr/^l(aksaman|arabie|ato|eague|exend|exigulim|ibel|iberation|ibre franklin|ibris|inux biolinum|obster|ogix|ohit|oma)/i,
-  "m" => qr/^m(\+ |anchu|anjari|arcellus|ashq|eera|etal|igmix|igu|ikachan|intspirit|iriam ?clm|isaki|ona|onlam|ono(fonto|id|isome|noki)|ontserrat|otoyal|ukti|usica)/i,
-  "n" => qr/^(nachlieli|nada|nafees|nagham|nanum(barunpen|square)|nice)/i,
-  "o" => qr/^(ocr|okolaks|opendyslexic|ostorah|ouhud|over|oxygen)/i,
+  "k" => qr/^(kalimati|kanji|karla|karma|kayrawan|kenyan|keraleeyam|khalid|khmer [or]|kiloji|klaudia|ko[mn]atu|kp ?mono|kurier|kustom)/i,
+  "l" => qr/^l(aksaman|arabie|ato|eague|exend|exigulim|ibel|iberation ?mono|ibre franklin|ibris|inux biolinum|obster|ogix|ohit|oma)/i,
+  "m" => qr/^m(\+ |anchu|anjari|arcellus|ashq|eera|etal|igmix|igu|ikachan|intspirit|iriam ?clm|isaki|itra ?mono|ona|onlam|ono(fonto|id|isome|noki)|ontserrat|otoyal|ukti|usica)/i,
+  "n" => qr/^(nachlieli|nada|nafees|nagham|nanum(barunpen|square)|nice|noto ?mono)/i,
+  "o" => qr/^(ocr|okolaks|open ?dyslexic|ostorah|ouhud|over|oxygen)/i,
   "p" => qr/^(padauk|pagul|paktype|pakenham|palladio|petra|phetsarath|play\b|poiret|port\b|primer\b|prociono|pt\b|purisa)/i,
   "q" => qr/^(qt(ancient|helvet|avanti|doghaus|eratype|eurotype|floraline|frank|fritz|future|greece|howard|letter|optimum)|quercus)/i,
   "r" => qr/^(rachana|radio\b|raleway|ricty|roboto|rosario)/i,
   "s" => qr/^(salem|samanata|sawasdee|shado|sharja|simple|sophia|soul|source|switzera)/i,
   "t" => qr/^(tarablus|teen|texgyre(adventor|heros)|tiresias|trebuchet|tscu|tuffy)/i,
-  "u" => qr/^u(buntu|kij (bom|chechek|cjk|diwani|ekran|elipbe|inchike|jelliy|kufi|mejnuntal|qara|qolyazma|teng|title|tor|tuz ?(neqish|tom))|mpush|n ?(dinaru|jamo|graphic|taza|vada|yetgul)|uni(kurd|space|versalis)|roob|rw ?classico)/i,
+  "u" => qr/^u(buntu|kij (bom|chechek|cjk|diwani|ekran|elipbe|inchike|jelliy|kufi|mejnuntal|qara|qolyazma|teng|title|tor|tuz ?(neqish|tom))|mpush|n ?(dinaru|jamo|graphic|taza|vada|yetgul)|ni(kurd|space|versalis)|roob|rw ?classico)/i,
   "v" => qr/^(veranda|vn ?urwclassico)/i,
   "w" => qr/^(waree)/i,
   "y" => qr/^(yanone)/i,
@@ -368,7 +418,7 @@ my %fraktFonts = (
 
 my %fancyFonts = (
   "value" => FANCY,          # Fancy
-  "a" => qr/^a(bandoned|bberancy|driator|irmole|lmonte (snow|woodgrain)|nalecta|ni|nklepants|nn ?stone|oyagi|rt ?nouveau ?caps|stron|xaxa)/i,
+  "a" => qr/^a(bandoned|bberancy|driator|irmole|lmendra ?display|lmonte (snow|woodgrain)|nalecta|ni|nklepants|nn ?stone|oyagi|rt ?nouveau ?caps|stron|xaxa)/i,
   "b" => qr/^b(aileys|alcony|altar|andal|arbatrick|aveuse|eat ?my|etsy|iometric|iting|lankenburg|oondox ?callig|org|oron|raeside|ramalea|udmo|urnstown|utterbelly)/i,
   "c" => qr/^c(retino|msy|abin ?sketch|arbon|arolingan|harles|hicken|hilanka|hr\d)/i,
   "d" => qr/^dseg/i,
@@ -395,7 +445,7 @@ my %symbolFonts = (
   "value" => SYMBOL,          # Symbol
   "a" => qr/^a(cademicons|lblant|lianna|mar|nka|rb?\d|rchaic|rrow|rs|rt[mt]|ssy(rb\d+)?\b|miri ?quran|mit\b)/i,
   "b" => qr/^b(aby ?jeepers|bding|euron|guq|lex|lsy|oondox ?upr|ullets|urma)/i,
-  "c" => qr/^c(aladings|cicons|hess|msy|mex|apacitor)/i,
+  "c" => qr/^c(aladings|cicons|hess|msy|mex|apacitor|ounterscraps)/i,
   "d" => qr/^(dingbats|drmsym|d05)/i,
   "e" => qr/^e(lusiveicons|mmentaler|moji|sint|uterpe)/i,
   "f" => qr/^(fandol.?brail|fdsymbol|fourierorns|font(awesome|ello|.?mfizz))/i,
@@ -408,15 +458,15 @@ my %symbolFonts = (
   "o" => qr/^(octicons)/i,
   "p" => qr/^patch/i,
   "q" => qr/^(qtding ?bits)/i,
-  "s" => qr/^s(kak|tmary|s?msam|tix ?math)/i,
-  "t" => qr/^(typicons|twemoji)/i,
+  "s" => qr/^s(emafor|kak|tmary|s?msam|tix ?math)/i,
+  "t" => qr/^(te ?xxslh?[du]|typicons|twemoji)/i,
   "u" => qr/^ukij ?(imaret|orxun|tughra)/i,
   "w" => qr/^w(ebdings|asy|elfare ?brat)/i,
 );
 
 my %smallcapFonts = (
   "value" => SMALLCAP | SERIF,
-  "c" => qr/^cs[ct]sc\d/i,
+  "c" => qr/^c(s[ct]sc\d|inzel|omputer ?modern ?sans ?italic ?regular ?\d)/i,
   "d" => qr/^drm(it)?sc\d/i,
   "f" => qr/^fetamont.?script/i,
   "n" => qr/^newtxb?ttsc/i,
@@ -481,7 +531,7 @@ if (open(FI,  "$cmd |")) {
       }
     }
     my @charlist = ();
-    if (defined($options{Contains}) || defined($options{NContains}) || exists($options{PrintCharset})) {
+    if ($icontains) {
       if ($l =~ / charset=\"([^\"]+)\"/) {
         my @list = split(/\s+/, $1);
         for my $e (@list) {
@@ -490,12 +540,12 @@ if (open(FI,  "$cmd |")) {
           push(@charlist, [hex($l), hex($h)]);
         }
       }
-      if (defined($options{Contains})) {
+      if ($icontains & UCCONTAINS) {
         for my $g (@{$options{Contains}}) {
           next NXTLINE if (! contains($g, \@charlist));
         }
       }
-      if (defined($options{NContains})) {
+      if ($icontains & UCNCONTAINS) {
         for my $g (@{$options{NContains}}) {
           # Ignore if ANY char exist in @charlist
           for (my $i = $g->[0]; $i <= $g->[1]; $i++) {
@@ -505,31 +555,34 @@ if (open(FI,  "$cmd |")) {
       }
     }
     my $props = "";
+    my $wprops = "";
     my @errors = ();
-    if (exists($options{PrintProperties}) || defined($options{Property}) || defined($options{NProperty})) {
+    if ($iproperty) {
       my $properties = getproperties($l, $fontname, $style, \@errors);
-      if (defined($options{Property})) {
+      if ($iproperty & UPPROPERTY) {
         for my $pn (@{$options{Property}}) {
           next NXTLINE if ($properties !~ /$pn/i);
         }
       }
-      if (defined($options{NProperty})) {
+      if ($iproperty & UPNPROPERTY) {
         for my $pn (@{$options{NProperty}}) {
           next NXTLINE if ($properties =~ /$pn/i);
         }
       }
-      if (exists($options{PrintProperties})) {
+      if ($iproperty & UPPPROPERTIES) {
         $props .= " ($properties)";
       }
+      if ($iproperty & UPWPROPERTIES) {
+        $wprops .= " ($properties)";
+      }
     }
-
     if (exists($options{PrintLangs})) {
       $props .= '(' . join(',', sort keys %usedlangs) . ')';
     }
     if (exists($options{PrintCharset})) {
       $props .= '(' . &sprintIntervalls(\@charlist) . ')';
     }
-    if (exists($options{PrintScripts}) || defined($options{Scripts}) || defined($options{NScripts}) || exists($options{Math})) {
+    if ($iscript) {
       my @scripts = ();
       my $scripts = "";
       if ($l =~ / script=\"([^\"]+)\"/) {
@@ -540,23 +593,23 @@ if (open(FI,  "$cmd |")) {
 	}
         $scripts = join(',', @scripts);
       }
-      if (exists($options{Math})) {
+      if ($iscript & USMSCRIPT) {
         next NXTLINE if (! &ismathfont($fontname,\@scripts));
       }
-      if (exists($options{PrintScripts})) {
+      if ($iscript & USPSCRIPT) {
         $props .= "($scripts)";
       }
       if (!defined($scripts[0])) {
         # No script defined in font, so check only $options{Scripts}
-        next NXTLINE if (defined($options{Scripts}));
+        next NXTLINE if ($iscript & USSCRIPT);
       }
       else {
-        if (defined($options{Scripts})) {
+        if ($iscript & USSCRIPT) {
           for my $s (@{$options{Scripts}}) {
             next NXTLINE if ($scripts !~ /$s/i);
           }
         }
-        if (defined($options{NScripts})) {
+        if ($iscript & USNSCRIPT) {
           for my $s (@{$options{NScripts}}) {
             next NXTLINE if ($scripts =~ /$s/i);
           }
@@ -587,6 +640,7 @@ if (open(FI,  "$cmd |")) {
       $collectedfonts{$fontname}->{$foundry}->{errors} = \@errors;
     }
     $collectedfonts{$fontname}->{$foundry}->{props} = $props;
+    $collectedfonts{$fontname}->{$foundry}->{wprops} = $wprops;
     $collectedfonts{$fontname}->{$foundry}->{file} = $file;
     $collectedfonts{$fontname}->{$foundry}->{fonttype} = $fonttype;
   }
@@ -610,7 +664,10 @@ for my $fontname (sort keys %collectedfonts) {
       $fn .= " \[$foundry\]";
     }
     print $fn;
+    print INFOS $fn if (defined($options{Write}));
     print $collectedfonts{$fontname}->{$foundry}->{props};
+    print INFOS $collectedfonts{$fontname}->{$foundry}->{wprops} if (defined($options{Write}));
+    print INFOS ": " . $collectedfonts{$fontname}->{$foundry}->{file} . "\n" if (defined($options{Write}));
     if (exists($options{PrintFiles})) {
       print ": " . $collectedfonts{$fontname}->{$foundry}->{file} . "\n";
     }
@@ -619,6 +676,7 @@ for my $fontname (sort keys %collectedfonts) {
     }
   }
 }
+close(INFOS) if (defined($options{Write}));
 
 exit(0);
 #################################################################################
@@ -1007,12 +1065,12 @@ sub correctstyle($)
   $style =~ s/\bmedita(lic)?\b/Medium Italic/i;
   $style =~ s/\bmedobl(ique)?\b/Medium Oblique/i;
   $style =~ s/\bmed\b/Medium /i;
-  $style =~ s/\bdemi\b/SemiBold/i;
   $style =~ s/\bex(pd|t)\b/Expanded/i;
   $style =~ s/semi ?cond(ensed)?/SemiCondensed/i;
   $style =~ s/[sd]emi ?(bold|bd|bol)/SemiBold/i;
   $style =~ s/semi ?(expanded|extended|expd)/SemiExpanded/i;
   $style =~ s/[sd]emi ?light/SemiLight/i;
+  $style =~ s/\b[sd]emi\b/SemiBold/i;
   $style =~ s/ultra ?(expanded|extended|expd)/UltraExpanded/i;
   $style =~ s/light/Light /i;
   $style =~ s/\blt\b/Light /i;
