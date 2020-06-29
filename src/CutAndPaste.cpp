@@ -1092,7 +1092,10 @@ void copySelection(Cursor const & cur, docstring const & plaintext)
 		par.setLayout(bp.documentClass().plainLayout());
 		// Replace (column-separating) tabs by space (#4449)
 		docstring const clean_text = subst(plaintext, '\t', ' ');
-		par.insert(0, clean_text, Font(), Change(Change::UNCHANGED));
+		// For pasting into text, we set the language to the paragraph language
+		// (rather than the default_language which is always English; see #11898)
+		par.insert(0, clean_text, Font(sane_font, par.getParLanguage(bp)),
+			   Change(Change::UNCHANGED));
 		pars.push_back(par);
 		theCuts.push(make_pair(pars, bp.documentClassPtr()));
 	} else {
