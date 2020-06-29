@@ -7107,12 +7107,15 @@ bool InsetTabular::pasteClipboard(Cursor & cur)
 		getSelection(cur, actrow, re, actcol, ce);
 	}
 
-	for (row_type r1 = 0, r2 = actrow;
-	     r1 < paste_tabular->nrows() && r2 < tabular.nrows();
-	     ++r1, ++r2) {
-		for (col_type c1 = 0, c2 = actcol;
-		    c1 < paste_tabular->ncols() && c2 < tabular.ncols();
-		    ++c1, ++c2) {
+	col_type const oldncols = tabular.ncols();
+	for (row_type r1 = 0, r2 = actrow; r1 < paste_tabular->nrows(); ++r1, ++r2) {
+		// Append rows if needed
+		if (r2 == tabular.nrows())
+			tabular.insertRow(r2 - 1, false);
+		for (col_type c1 = 0, c2 = actcol; c1 < paste_tabular->ncols(); ++c1, ++c2) {
+			// Append columns if needed
+			if (c2 == tabular.ncols())
+				tabular.insertColumn(c2 - 1, false);
 			if (paste_tabular->isPartOfMultiColumn(r1, c1) &&
 			      tabular.isPartOfMultiColumn(r2, c2))
 				continue;
@@ -7140,6 +7143,8 @@ bool InsetTabular::pasteClipboard(Cursor & cur)
 			cur.pit() = 0;
 		}
 	}
+	// amend cursor position if cols have been appended
+	cur.idx() += actrow * (tabular.ncols() - oldncols);
 	return true;
 }
 
