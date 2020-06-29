@@ -5184,6 +5184,16 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 					break;
 				}
 			}
+			else if (theClipboard().hasTextContents(Clipboard::LyXTextType)) {
+				// This might be tabular data from another LyX instance. Check!
+				docstring const clip =
+					theClipboard().getAsText(Clipboard::PlainTextType);
+				if (clip.find_first_of(from_ascii("\t\n")) != docstring::npos) {
+					FuncRequest ncmd = FuncRequest(LFUN_CLIPBOARD_PASTE, cmd.argument());
+					doDispatch(cur, ncmd);
+					break;
+				}
+			}
 			if (!cur.selIsMultiCell())
 				cell(cur.idx())->dispatch(cur, cmd);
 			break;
