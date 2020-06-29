@@ -1096,7 +1096,9 @@ void copySelection(Cursor const & cur, docstring const & plaintext)
 		Paragraph par;
 		BufferParams const & bp = cur.buffer()->params();
 		par.setLayout(bp.documentClass().plainLayout());
-		par.insert(0, plaintext, Font(), Change(Change::UNCHANGED));
+		// Replace (column-separating) tabs by space (#4449)
+		docstring const clean_text = subst(plaintext, '\t', ' ');
+		par.insert(0, clean_text, Font(), Change(Change::UNCHANGED));
 		pars.push_back(par);
 		theCuts.push(make_pair(pars, bp.documentClassPtr()));
 	} else {
