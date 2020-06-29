@@ -1651,8 +1651,9 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// append the left over vertical cells to the last _cell_
 			idx_type i = nargs() - 1;
 			for (row_type r = numrows; r < grid.nrows(); ++r) {
+				addRow(r - 1);
 				for (col_type c = 0; c < grid.ncols(); ++c)
-					cell(i).append(grid.cell(grid.index(r, c)));
+					cell(index(r, c)).append(grid.cell(grid.index(r, c)));
 				if (hline_enabled)
 					rowinfo_[r].lines += grid.rowinfo_[r].lines;
 				else {
