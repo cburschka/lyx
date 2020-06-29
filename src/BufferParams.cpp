@@ -2006,27 +2006,33 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		string psopt;
 		switch (getDefSkip().kind()) {
 		case VSpace::SMALLSKIP:
-			psopt = "[skip=\\smallskipamount]";
+			psopt = "\\smallskipamount";
 			break;
 		case VSpace::MEDSKIP:
-			psopt = "[skip=\\medskipamount]";
+			psopt = "\\medskipamount";
 			break;
 		case VSpace::BIGSKIP:
-			psopt = "[skip=\\bigskipamount]";
+			psopt = "\\bigskipamount";
 			break;
 		case VSpace::HALFLINE:
+			// default (no option)
 			break;
 		case VSpace::FULLLINE:
-			psopt = "[skip=\\baselineskip]";
+			psopt = "\\baselineskip";
 			break;
 		case VSpace::LENGTH:
-			psopt = "[skip={" + getDefSkip().length().asLatexString() + "}]";
+			psopt = getDefSkip().length().asLatexString();
 			break;
 		default:
 			break;
 		}
-		if (features.isAvailable("parskip"))
+		if (!features.isProvided("parskip")) {
+			if (!psopt.empty())
+				psopt = "[skip=" + psopt + "]";
 			os << "\\usepackage" + psopt + "{parskip}\n";
+		} else {
+			os << "\\setlength{\\parskip}{" + psopt + "}\n";
+		}
 	} else {
 		// when separation by indentation
 		// only output something when a width is given
