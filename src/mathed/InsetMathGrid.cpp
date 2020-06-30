@@ -1633,7 +1633,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 				min(grid.nrows(), nrows() - cur.row());
 			for (row_type r = 0; r < numrows; ++r) {
 				for (col_type c = 0; c < numcols; ++c) {
-					idx_type i = index(r + cur.row(), c + col(cur.idx()));
+					idx_type i = index(r + startrow, c + startcol);
 					cell(i).insert(c == 0 ? cur.pos() : 0,
 					               grid.cell(grid.index(r, c)));
 				}
@@ -1641,7 +1641,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 					rowinfo_[r].lines += grid.rowinfo_[r].lines;
 				else {
 					for (unsigned int l = 0; l < grid.rowinfo_[r].lines; ++l) {
-						idx_type i = index(r + cur.row(), 0);
+						idx_type i = index(r + startrow, 0);
 						cell(i).insert(0,
 							MathAtom(new InsetMathUnknown(from_ascii("\\hline"))));
 					}
@@ -1649,7 +1649,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 				// append columns for the left over horizontal cells
 				for (InsetMath::col_type c = numcols; c < grid.ncols(); ++c) {
 					addCol(c + 1);
-					idx_type i = index(r + cur.row(), c + 1);
+					idx_type i = index(r + startrow, c + 1);
 					cell(i).append(grid.cell(grid.index(r, c)));
 					++numcols;
 				}
