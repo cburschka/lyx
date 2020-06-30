@@ -1624,7 +1624,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		} else {
 			// multiple cells
 			cur.recordUndoInset();
-			col_type startcol =  col(cur.idx());
+			col_type startcol = col(cur.idx());
 			row_type startrow = cur.row();
 			col_type oldncols = ncols();
 			col_type numcols =
@@ -1648,8 +1648,8 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 				}
 				// append columns for the left over horizontal cells
 				for (InsetMath::col_type c = numcols; c < grid.ncols(); ++c) {
-					addCol(c + 1);
-					idx_type i = index(r + startrow, c + 1);
+					addCol(c + startcol);
+					idx_type i = index(r + startrow, c + startcol);
 					cell(i).append(grid.cell(grid.index(r, c)));
 					++numcols;
 				}
