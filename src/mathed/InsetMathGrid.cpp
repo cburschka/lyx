@@ -1666,7 +1666,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			for (row_type r = numrows; r < grid.nrows(); ++r) {
 				for (col_type c = 0; c < grid.ncols(); ++c)
 					cell(i).append(grid.cell(grid.index(r, c)));
-				if (hline_enabled)
+				if (hline_enabled && r <= nrows())
 					rowinfo_[r].lines_ += grid.rowinfo_[r].lines_;
 				else {
 					for (unsigned int l = 0; l < grid.rowinfo_[r].lines_; ++l) {
