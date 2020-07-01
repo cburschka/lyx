@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-05-03 13:31+0200\n"
-"PO-Revision-Date: 2020-06-27 18:23+0300\n"
+"PO-Revision-Date: 2020-07-01 00:02+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -1879,7 +1879,7 @@ msgstr "&Математический:"
 
 #: src/frontends/qt/ui/FontUi.ui:431
 msgid "Select the math typeface"
-msgstr "Выбрать шрифт для формул"
+msgstr "Выберите шрифт для формул"
 
 #: src/frontends/qt/ui/FontUi.ui:438
 msgid "C&JK:"
@@ -1913,7 +1913,7 @@ msgstr ""
 
 #: src/frontends/qt/ui/FontUi.ui:470
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
-msgstr "Использовать не-TeX шрифты (при помощи XeTeX/LuaTeX)"
+msgstr "Использовать системные шрифты (при помощи XeTeX/LuaTeX)"
 
 #: src/frontends/qt/ui/FontUi.ui:477
 msgid ""
@@ -2509,7 +2509,7 @@ msgstr "Выберите пользовательскую кодировку"
 
 #: src/frontends/qt/ui/LanguageUi.ui:143
 msgid "Language pa&ckage:"
-msgstr "Языковый &пакет:"
+msgstr "Языковой &пакет:"
 
 #: src/frontends/qt/ui/LanguageUi.ui:153
 msgid "Select which language package LyX should use"
@@ -4074,7 +4074,8 @@ msgstr "Форматы вывода по умолчанию"
 
 #: src/frontends/qt/ui/PrefFileformatsUi.ui:240
 msgid "The default output format for documents using non-TeX fonts"
-msgstr "Формат вывода по умолчанию для документов, использующих не-TeX шрифты"
+msgstr ""
+"Формат вывода по умолчанию для документов, использующих системные шрифты"
 
 #: src/frontends/qt/ui/PrefFileformatsUi.ui:260
 msgid ""
@@ -4082,7 +4083,7 @@ msgid ""
 "classes, documents that use non-TeX fonts and Japanese documents"
 msgstr ""
 "Это формат по умолчанию для документов LyX, кроме классов DocBook, "
-"документов, использующих не-TeX шрифты, и японских документов"
+"документов, использующих системные шрифты, и японских документов"
 
 #: src/frontends/qt/ui/PrefFileformatsUi.ui:267
 msgid "The default output format for Japanese documents (using pLaTeX)"
@@ -4090,11 +4091,11 @@ msgstr "Формат вывода по умолчанию для японски�
 
 #: src/frontends/qt/ui/PrefFileformatsUi.ui:274
 msgid "With n&on-TeX fonts:"
-msgstr "С не-TeX шрифтами:"
+msgstr "С системными шрифтами:"
 
 #: src/frontends/qt/ui/PrefFileformatsUi.ui:284
 msgid "With &TeX fonts:"
-msgstr "С TeX шрифтами:"
+msgstr "С шрифтами TeX:"
 
 #: src/frontends/qt/ui/PrefFileformatsUi.ui:294
 msgid "&Japanese:"
@@ -4978,11 +4979,11 @@ msgstr "<страница>"
 
 #: src/frontends/qt/ui/RefUi.ui:276 src/frontends/qt/GuiRef.cpp:329
 msgid "on page <page>"
-msgstr "на странице <номер>"
+msgstr "на странице <стр.>"
 
 #: src/frontends/qt/ui/RefUi.ui:281 src/frontends/qt/GuiRef.cpp:330
 msgid "<reference> on page <page>"
-msgstr "<ссылка> на странице <номер>"
+msgstr "<ссылка> на странице <стр.>"
 
 #: src/frontends/qt/ui/RefUi.ui:286 src/frontends/qt/GuiRef.cpp:333
 #: src/frontends/qt/GuiRef.cpp:336
@@ -5402,7 +5403,7 @@ msgstr "Между строк:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1305
 msgid "&Multi-Page Table"
-msgstr "Многостраничная таблица"
+msgstr "Настройки многостраничной таблицы"
 
 #: src/frontends/qt/ui/TabularUi.ui:1311
 msgid "Select for tables that span multiple pages"
@@ -5410,7 +5411,7 @@ msgstr "Выберите для таблиц, которые занимают н
 
 #: src/frontends/qt/ui/TabularUi.ui:1314
 msgid "&Use multi-page table"
-msgstr "&Длинная таблица"
+msgstr "&Многостраничная таблица"
 
 #: src/frontends/qt/ui/TabularUi.ui:1324
 msgid "Row settings"
@@ -5509,11 +5510,11 @@ msgstr "Разрыв &страницы на текущей строке"
 
 #: src/frontends/qt/ui/TabularUi.ui:1541
 msgid "Horizontal alignment of the multi-page table"
-msgstr "Горизонтальное выравнивание длинной таблицы"
+msgstr "Горизонтальное выравнивание многостраничной таблицы"
 
 #: src/frontends/qt/ui/TabularUi.ui:1544
 msgid "Multi-page table alignment"
-msgstr "&Выравнивание длинной таблицы"
+msgstr "&Выравнивание многостраничной таблицы"
 
 #: src/frontends/qt/ui/TabularUi.ui:1599
 msgid "Current cell:"
@@ -20201,7 +20202,7 @@ msgstr "Переместить столбец влево"
 
 #: lib/ui/stdcontext.inc:475 lib/ui/stdmenus.inc:202
 msgid "Multi-page Table|g"
-msgstr "Длинная таблица"
+msgstr "Многостраничная таблица"
 
 #: lib/ui/stdcontext.inc:476
 msgid "Formal Style|m"
@@ -27560,7 +27561,8 @@ msgstr "Нет информации для экспортирования фор
 #, c-format
 msgid "Hint: use non-TeX fonts or set input encoding  to '%1$s'"
 msgstr ""
-"Подсказка: используйте не-TeX шрифты или установите входную кодировку '%1$s'"
+"Подсказка: используйте системные шрифты или установите входную кодировку "
+"'%1$s'"
 
 #: src/Buffer.cpp:4451
 msgid "Couldn't export file"
@@ -29639,7 +29641,7 @@ msgstr ""
 msgid ""
 "The default format used with LFUN_BUFFER_[VIEW|UPDATE] with non-TeX fonts."
 msgstr ""
-"Формат по умолчанию, используемый с LFUN_BUFFER_[VIEW|UPDATE] с не-TeX "
+"Формат по умолчанию, используемый с LFUN_BUFFER_[VIEW|UPDATE] с системными "
 "шрифтами."
 
 #: src/LyXRC.cpp:3067
@@ -31812,8 +31814,8 @@ msgid ""
 "custom preamble code."
 msgstr ""
 "Использовать UTF-8 'как есть': не загружать пакеты поддержки, не "
-"конвертировать символы в макросы LaTeX. Для использования с не-TeX шрифтами "
-"(XeTeX/LuaTeX) или пользовательским кодом преамбулы."
+"конвертировать символы в макросы LaTeX. Для использования с системными "
+"шрифтами (XeTeX/LuaTeX) или пользовательским кодом преамбулы."
 
 #: src/frontends/qt/GuiDocument.cpp:1010
 msgid ""
@@ -31878,7 +31880,7 @@ msgstr "с заголовками"
 
 #: src/frontends/qt/GuiDocument.cpp:1183
 msgid "fancy"
-msgstr "красивый"
+msgstr "красивый (fancy)"
 
 #: src/frontends/qt/GuiDocument.cpp:1192
 msgid "US letter"
@@ -32142,7 +32144,7 @@ msgstr " (не установлен)"
 
 #: src/frontends/qt/GuiDocument.cpp:2601
 msgid "Non-TeX Fonts Default"
-msgstr "Не-TeX шрифты по умолчанию"
+msgstr "Системные шрифты по умолчанию"
 
 #: src/frontends/qt/GuiDocument.cpp:2603
 msgid " (not available)"
@@ -35393,12 +35395,12 @@ msgid ""
 "while parent file has use-non-TeX-fonts set to `%3$s'."
 msgstr ""
 "Во включённом файле `%1$s'\n"
-"параметр 'Использование не-TeX шрифтов' имеет значение `%2$s',\n"
+"параметр 'Использование системных шрифтов' имеет значение `%2$s',\n"
 "тогда как родительский файл использует `%3$s'."
 
 #: src/insets/InsetInclude.cpp:833
 msgid "Different use-non-TeX-fonts settings"
-msgstr "Другие настройки использования не-TeX шрифтов"
+msgstr "Другие настройки использования системных шрифтов"
 
 #: src/insets/InsetInclude.cpp:836
 #, c-format
@@ -35822,7 +35824,7 @@ msgstr ""
 "%1$s.\n"
 "Это произошло из-за ограничения пакета listings, который\n"
 "не поддерживает вашу кодировку '%2$s'.\n"
-"Переключение 'Использовать не-TeX шрифты' в Документ > Настройки...\n"
+"Переключение 'Использовать системные шрифты' в Документ > Настройки...\n"
 "может помочь."
 
 #: src/insets/InsetListings.cpp:429
