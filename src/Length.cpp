@@ -313,7 +313,7 @@ int Length::inBP() const
 
 	double const text_width_in = 210.0 / 2.54; // assume A4
 	double const em_width_in = 10.0 / 72.27;
-	double result = 72.0 * inInch(text_width_in, em_width_in);
+	double const result = 72.0 * inInch(text_width_in, em_width_in);
 	return support::iround(result);
 }
 
