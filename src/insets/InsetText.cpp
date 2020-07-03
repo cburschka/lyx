@@ -529,6 +529,9 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 	runparams.encoding = rp.encoding;
 	// Pass the post_macros upstream
 	runparams.post_macro = rp.post_macro;
+	// These need to be passed upstream as well
+	runparams.need_maketitle = rp.need_maketitle;
+	runparams.have_maketitle = rp.have_maketitle;
 
 	if (!il.rightdelim().empty())
 		os << il.rightdelim();

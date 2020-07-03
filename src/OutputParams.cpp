@@ -20,9 +20,10 @@ namespace lyx {
 
 OutputParams::OutputParams(Encoding const * enc)
 	: flavor(LATEX), math_flavor(NotApplicable), nice(false), is_child(false),
-	  moving_arg(false), intitle(false), inbranch(false), inulemcmd(0),
-	  local_font(nullptr),master_language(nullptr), encoding(enc), free_spacing(false),
-	  use_babel(false), use_polyglossia(false), use_hyperref(false), use_CJK(false),
+	  moving_arg(false), intitle(false), need_maketitle(false), have_maketitle(false),
+	  inbranch(false), inulemcmd(0), local_font(nullptr),master_language(nullptr),
+	  encoding(enc), free_spacing(false), use_babel(false), use_polyglossia(false),
+	  use_hyperref(false), use_CJK(false),
 	  use_indices(false), use_japanese(false), linelen(0), depth(0),
 	  exportdata(new ExportData), postpone_fragile_stuff(false), inDisplayMath(false),
 	  wasDisplayMath(false), inComment(false), openbtUnit(false), only_childbibs(false),
