@@ -102,6 +102,15 @@ public:
 	*/
 	bool intitle;
 
+	/** need_maketitle == true means that the last layout was a title layout
+	 * this is to track when \maketitle needs to be output.
+	*/
+	mutable bool need_maketitle;
+
+	/** have_maketitle == true means that \maketitle already hase been output.
+	*/
+	mutable bool have_maketitle;
+
 	/** inbranch == true means that the environment being typeset
 	    is inside an active branch inset.
 	*/

@@ -2784,6 +2784,10 @@ void Paragraph::latex(BufferParams const & bparams,
 		// such as Note that do not produce any output, so that no
 		// command is ever executed but its opening was recorded.
 		runparams.inulemcmd = rp.inulemcmd;
+
+		// These need to be passed upstream as well
+		runparams.need_maketitle = rp.need_maketitle;
+		runparams.have_maketitle = rp.have_maketitle;
 	}
 
 	// If we have an open font definition, we have to close it

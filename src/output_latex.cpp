@@ -1318,6 +1318,9 @@ void TeXOnePar(Buffer const & buf,
 	else
 		runparams_in.encoding = runparams.encoding;
 
+	// These need to be passed upstream as well
+	runparams_in.need_maketitle = runparams.need_maketitle;
+	runparams_in.have_maketitle = runparams.have_maketitle;
 
 	// we don't need a newline for the last paragraph!!!
 	// Note from JMarc: we will re-add a \n explicitly in
@@ -1461,9 +1464,6 @@ void latexParagraphs(Buffer const & buf,
 	pit_type pit = runparams.par_begin;
 	// lastpit is for the language check after the loop.
 	pit_type lastpit = pit;
-	// variables used in the loop:
-	bool was_title = false;
-	bool already_title = false;
 	DocumentClass const & tclass = bparams.documentClass();
 
 	// Did we already warn about inTitle layout mixing? (we only warn once)
@@ -1478,7 +1478,7 @@ void latexParagraphs(Buffer const & buf,
 				tclass.plainLayout() : par->layout();
 
 		if (layout.intitle) {
-			if (already_title) {
+			if (runparams.have_maketitle) {
 				if (!gave_layout_warning && !runparams.dryrun) {
 					gave_layout_warning = true;
 					frontend::Alert::warning(_("Error in latexParagraphs"),
@@ -1488,15 +1488,15 @@ void latexParagraphs(Buffer const & buf,
 							  "could lead to missing or incorrect output."
 							  ), layout.name()));
 				}
-			} else if (!was_title) {
-				was_title = true;
+			} else if (!runparams.need_maketitle) {
+				runparams.need_maketitle = true;
 				if (tclass.titletype() == TITLE_ENVIRONMENT) {
 					os << "\\begin{"
 							<< from_ascii(tclass.titlename())
 							<< "}\n";
 				}
 			}
-		} else if (was_title && !already_title && !layout.inpreamble) {
+		} else if (runparams.need_maketitle && !runparams.have_maketitle && !layout.inpreamble) {
 			if (tclass.titletype() == TITLE_ENVIRONMENT) {
 				os << "\\end{" << from_ascii(tclass.titlename())
 						<< "}\n";
@@ -1505,8 +1505,8 @@ void latexParagraphs(Buffer const & buf,
 				os << "\\" << from_ascii(tclass.titlename())
 						<< "\n";
 			}
-			already_title = true;
-			was_title = false;
+			runparams.have_maketitle = true;
+			runparams.need_maketitle = false;
 		}
 
 		if (layout.isCommand() && !layout.latexname().empty()
@@ -1541,10 +1541,10 @@ void latexParagraphs(Buffer const & buf,
 	}
 
 	// It might be that we only have a title in this document.
-	// But if we're in a branch, this is not the end of
+	// But if we're in an inset, this is not the end of
 	// the document. (There may be some other checks of this
 	// kind that are needed.)
-	if (was_title && !already_title && !runparams.inbranch) {
+	if (runparams.need_maketitle && !runparams.have_maketitle && maintext) {
 		if (tclass.titletype() == TITLE_ENVIRONMENT) {
 			os << "\\end{" << from_ascii(tclass.titlename())
 			   << "}\n";

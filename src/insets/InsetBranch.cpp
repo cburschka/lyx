@@ -297,6 +297,9 @@ void InsetBranch::latex(otexstream & os, OutputParams const & runparams) const
 		OutputParams rp = runparams;
 		rp.inbranch = true;
 		InsetText::latex(os, rp);
+		// These need to be passed upstream
+		runparams.need_maketitle = rp.need_maketitle;
+		runparams.have_maketitle = rp.have_maketitle;
 	}
 }
 
