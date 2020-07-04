@@ -448,6 +448,8 @@ public:
 	virtual InsetLayout const & getLayout() const;
 	///
 	virtual bool isPassThru() const { return getLayout().isPassThru(); }
+	/// Is this inset embedded in a title?
+	virtual bool isInTitle() const { return false; }
 	/// Is this inset's layout defined in the document's textclass?
 	bool undefined() const;
 	/// should this inset be handled like a normal character?

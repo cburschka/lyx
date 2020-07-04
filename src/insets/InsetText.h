@@ -157,6 +157,8 @@ public:
 	///
 	virtual bool allowMultiPar() const { return getLayout().isMultiPar(); }
 	///
+	bool isInTitle() const { return intitle_context_; }
+	///
 	/// should paragraphs be forced to use the empty layout?
 	virtual bool forcePlainLayout(idx_type = 0) const
 		{ return getLayout().forcePlainLayout(); }
@@ -239,6 +241,8 @@ private:
 	                               TocBackend & backend) const;
 	///
 	bool drawFrame_;
+	///
+	bool intitle_context_;
 	///
 	ColorCode frame_color_;
 	///
