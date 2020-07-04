@@ -161,6 +161,8 @@ public:
 	///
 	virtual bool allowMultiPar() const { return getLayout().isMultiPar(); }
 	///
+	bool isInTitle() const { return intitle_context_; }
+	///
 	/// should paragraphs be forced to use the empty layout?
 	virtual bool forcePlainLayout(idx_type = 0) const
 		{ return getLayout().forcePlainLayout(); }
@@ -251,6 +253,8 @@ private:
 	bool drawFrame_;
 	/// true if the inset contains change
 	mutable bool is_changed_;
+	///
+	bool intitle_context_;
 	///
 	ColorCode frame_color_;
 	///

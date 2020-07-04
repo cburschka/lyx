@@ -1627,7 +1627,8 @@ void latexParagraphs(Buffer const & buf,
 							<< "}\n";
 				}
 			}
-		} else if (runparams.need_maketitle && !runparams.have_maketitle && !layout.inpreamble) {
+		} else if (runparams.need_maketitle && !runparams.have_maketitle
+			   && !layout.inpreamble && !text.inset().isInTitle()) {
 			if (tclass.titletype() == TITLE_ENVIRONMENT) {
 				os << "\\end{" << from_ascii(tclass.titlename())
 						<< "}\n";

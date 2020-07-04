@@ -78,7 +78,8 @@ using graphics::PreviewLoader;
 /////////////////////////////////////////////////////////////////////
 
 InsetText::InsetText(Buffer * buf, UsePlain type)
-	: Inset(buf), drawFrame_(false), is_changed_(false), frame_color_(Color_insetframe),
+	: Inset(buf), drawFrame_(false), is_changed_(false), intitle_context_(false),
+	  frame_color_(Color_insetframe),
 	text_(this, type == DefaultLayout)
 {
 }
@@ -86,7 +87,7 @@ InsetText::InsetText(Buffer * buf, UsePlain type)
 
 InsetText::InsetText(InsetText const & in)
 	: Inset(in), drawFrame_(in.drawFrame_), is_changed_(in.is_changed_),
-	  frame_color_(in.frame_color_),
+	  intitle_context_(false), frame_color_(in.frame_color_),
 	  text_(this, in.text_)
 {
 }
@@ -838,6 +839,9 @@ void InsetText::updateBuffer(ParIterator const & it, UpdateType utype, bool cons
 			cnt.restoreLastLayout();
 			// FIXME cnt.restoreLastCounter()?
 		}
+		// Record in this inset is embedded in a title layout
+		// This is needed to decide when \maketitle is output.
+		intitle_context_ = it.paragraph().layout().intitle;
 	} else {
 		DocumentClass const & tclass = buffer().masterBuffer()->params().documentClass();
 		// Note that we do not need to call:
