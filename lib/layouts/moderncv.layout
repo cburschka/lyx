@@ -331,13 +331,13 @@ Style Entry
 	LatexName	cventry
 	Argument 1
 	  Mandatory	1
-	  LabelString	"Time"
-	  Tooltip	"Time"
+	  LabelString	"Years"
+	  Tooltip	"Years"
 	EndArgument
 	Argument 2
 	  Mandatory	1
-	  LabelString	"What?"
-	  Tooltip	"What?"
+	  LabelString	"Title"
+	  Tooltip	"Degree or job title"
 	  Font
 	    Series	Bold
 	  EndFont
@@ -345,20 +345,20 @@ Style Entry
 	Argument 3
 	  Mandatory	1
 	  LabelString	"Affiliation"
-	  Tooltip	"Affiliation"
+	  Tooltip	"Institution or employer"
 	  Font
 	    Shape	Italic
 	  EndFont
 	EndArgument
 	Argument 4
 	  Mandatory	1
-	  LabelString	"City"
-	  Tooltip	"City"
+	  LabelString	"Localization"
+	  Tooltip	"City or country"
 	EndArgument
 	Argument 5
 	  Mandatory	1
-	  LabelString	"Country"
-	  Tooltip	"Country"
+	  LabelString	"Optional"
+	  Tooltip	"Grade or other info"
 	EndArgument
 	ParSkip		0.4
 	Align		Block
