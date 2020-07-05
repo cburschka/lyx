@@ -75,8 +75,6 @@ private:
 
 	/// is name allowed for this ?
 	bool nameAllowed();
-	/// is type allowed for this ?
-	bool typeAllowed();
 	/// go to current reference
 	void gotoRef();
 	/// set go back button

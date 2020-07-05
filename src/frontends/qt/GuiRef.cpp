@@ -211,7 +211,7 @@ void GuiRef::refHighlighted(QTreeWidgetItem * sel)
 	if (at_ref_)
 		gotoRef();
 	gotoPB->setEnabled(true);
-	if (typeAllowed() && !isBufferReadonly())
+	if (!isBufferReadonly())
 		typeCO->setEnabled(true);
 	nameED->setHidden(!nameAllowed());
 	nameL->setHidden(!nameAllowed());
@@ -351,9 +351,7 @@ void GuiRef::updateContents()
 	else
 		typeCO->setCurrentIndex(
 			typeCO->findData(toqstr(params_.getCmdName())));
-	typeCO->setEnabled(typeAllowed() && !isBufferReadonly());
-	if (!typeAllowed())
-		typeCO->setCurrentIndex(0);
+	typeCO->setEnabled(!isBufferReadonly());
 
 	pluralCB->setChecked(params_["plural"] == "true");
 	capsCB->setChecked(params_["caps"] == "true");
@@ -409,12 +407,6 @@ bool GuiRef::nameAllowed()
 {
 	KernelDocType const doc_type = docType();
 	return doc_type != LATEX && doc_type != LITERATE;
-}
-
-
-bool GuiRef::typeAllowed()
-{
-	return docType() != DOCBOOK;
 }
 
 
