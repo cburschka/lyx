@@ -27,31 +27,7 @@
     </widget>
    </item>
    <item row="7" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_4">
-     <item>
-      <widget class="QLabel" name="nameL">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="text">
-        <string>&amp;Name:</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-       <property name="buddy">
-        <cstring>nameED</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="nameED">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <layout class="QHBoxLayout" name="horizontalLayout_4"/>
    </item>
    <item row="0" column="0">
     <layout class="QGridLayout" name="gridLayout">
@@ -381,7 +357,6 @@
   <tabstop>groupCB</tabstop>
   <tabstop>referenceED</tabstop>
   <tabstop>typeCO</tabstop>
-  <tabstop>nameED</tabstop>
  </tabstops>
  <includes>
   <include location="local">qt_i18n.h</include>

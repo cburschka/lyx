@@ -96,8 +96,6 @@ GuiRef::GuiRef(GuiView & lv)
 		this, SLOT(resetFilter()));
 	connect(csFindCB, SIGNAL(clicked()),
 		this, SLOT(filterLabels()));
-	connect(nameED, SIGNAL(textChanged(QString)),
-		this, SLOT(changed_adaptor()));
 	connect(refsTW, SIGNAL(itemClicked(QTreeWidgetItem *, int)),
 		this, SLOT(refHighlighted(QTreeWidgetItem *)));
 	connect(refsTW, SIGNAL(itemSelectionChanged()),
@@ -213,8 +211,6 @@ void GuiRef::refHighlighted(QTreeWidgetItem * sel)
 	gotoPB->setEnabled(true);
 	if (!isBufferReadonly())
 		typeCO->setEnabled(true);
-	nameED->setHidden(!nameAllowed());
-	nameL->setHidden(!nameAllowed());
 }
 
 
@@ -318,7 +314,6 @@ void GuiRef::updateContents()
 		typeCO->itemData(typeCO->currentIndex()).toString();
 
 	referenceED->clear();
-	nameED->clear();
 	typeCO->clear();
 
 	// FIXME Bring InsetMathRef on par with InsetRef
@@ -336,9 +331,6 @@ void GuiRef::updateContents()
 		typeCO->addItem(qt_("Formatted reference"), "prettyref");
 
 	referenceED->setText(toqstr(params_["reference"]));
-	nameED->setText(toqstr(params_["name"]));
-	nameED->setHidden(!nameAllowed());
-	nameL->setHidden(!nameAllowed());
 
 	// restore type settings for new insets
 	bool const new_inset = params_["reference"].empty();
@@ -392,7 +384,6 @@ void GuiRef::applyView()
 
 	params_.setCmdName(fromqstr(typeCO->itemData(typeCO->currentIndex()).toString()));
 	params_["reference"] = qstring_to_ucs4(last_reference_);
-	params_["name"] = qstring_to_ucs4(nameED->text());
 	params_["plural"] = pluralCB->isChecked() ?
 	      from_ascii("true") : from_ascii("false");
 	params_["caps"] = capsCB->isChecked() ?
@@ -400,13 +391,6 @@ void GuiRef::applyView()
 	params_["noprefix"] = noprefixCB->isChecked() ?
 	      from_ascii("true") : from_ascii("false");
 	restored_buffer_ = bufferCO->currentIndex();
-}
-
-
-bool GuiRef::nameAllowed()
-{
-	KernelDocType const doc_type = docType();
-	return doc_type != LATEX && doc_type != LITERATE;
 }
 
 

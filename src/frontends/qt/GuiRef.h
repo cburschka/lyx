@@ -73,8 +73,6 @@ private:
 	///
 	void enableBoxes();
 
-	/// is name allowed for this ?
-	bool nameAllowed();
 	/// go to current reference
 	void gotoRef();
 	/// set go back button
