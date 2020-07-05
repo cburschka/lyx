@@ -106,7 +106,8 @@ KernelDocType Dialog::docType() const
 	if (buffer().params().isLiterate())
 		return LITERATE;
 
-	return DOCBOOK;
+	// This case should not happen.
+	return LATEX;
 }
 
 

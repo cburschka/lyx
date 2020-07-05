@@ -1595,7 +1595,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		// tooltip sensu "KOMA-Script Article [Class 'scrartcl']"
 		QString tooltip = toqstr(bformat(_("%1$s [Class '%2$s']"), guiname, from_utf8(tc.latexname())));
 		if (!available) {
-			docstring const output_type = (tc.outputType() == lyx::DOCBOOK) ? _("DocBook") : _("LaTeX");
+			docstring const output_type = _("LaTeX");
 			tooltip += '\n' + toqstr(bformat(_("Class not found by LyX. "
 							   "Please check if you have the matching %1$s class "
 							   "and all required packages (%2$s) installed."),

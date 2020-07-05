@@ -23,8 +23,6 @@ enum OutputType {
 	///
 	LATEX = 1,
 	///
-	DOCBOOK,
-	///
 	LITERATE
 };
 

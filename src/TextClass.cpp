@@ -456,9 +456,6 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			case LATEX:
 				outputFormat_ = "latex";
 				break;
-			case DOCBOOK:
-				outputFormat_ = "docbook";
-				break;
 			case LITERATE:
 				outputFormat_ = "literate";
 				break;
@@ -975,7 +972,6 @@ void TextClass::readTitleType(Lexer & lexrc)
 void TextClass::readOutputType(Lexer & lexrc)
 {
 	LexerKeyword outputTypeTags[] = {
-		{ "docbook",  DOCBOOK },
 		{ "latex",    LATEX },
 		{ "literate", LITERATE }
 	};
@@ -988,7 +984,6 @@ void TextClass::readOutputType(Lexer & lexrc)
 		lexrc.printError("Unknown output type `$$Token'");
 		return;
 	case LATEX:
-	case DOCBOOK:
 	case LITERATE:
 		outputType_ = static_cast<OutputType>(le);
 		break;

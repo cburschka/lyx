@@ -184,8 +184,6 @@ public:
 
 	/// returns \c true if the buffer contains a LaTeX document
 	bool isLatex() const;
-	/// returns \c true if the buffer contains a DocBook document
-	bool isDocBook() const;
 	/// returns \c true if the buffer contains a Wed document
 	bool isLiterate() const;
 

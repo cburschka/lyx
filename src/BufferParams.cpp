@@ -2760,13 +2760,6 @@ string BufferParams::getDefaultOutputFormat() const
 	if (!default_output_format.empty()
 	    && default_output_format != "default")
 		return default_output_format;
-	if (isDocBook()) {
-		FormatList const & formats = exportableFormats(true);
-		if (formats.empty())
-			return string();
-		// return the first we find
-		return formats.front()->name();
-	}
 	if (encoding().package() == Encoding::japanese)
 		return lyxrc.default_platex_view_format;
 	if (useNonTeXFonts)
@@ -2802,12 +2795,6 @@ bool BufferParams::isLatex() const
 bool BufferParams::isLiterate() const
 {
 	return documentClass().outputType() == LITERATE;
-}
-
-
-bool BufferParams::isDocBook() const
-{
-	return documentClass().outputType() == DOCBOOK;
 }
 
 
