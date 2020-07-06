@@ -2259,12 +2259,6 @@ dist_layouts_DATA =\
 	layouts/acmsiggraph-0-92.layout \
 	layouts/AEA.layout \
 	layouts/agutex.layout \
-	layouts/agu-dtd.layout \
-	layouts/agu_stdclass.inc \
-	layouts/agu_stdcounters.inc \
-	layouts/agu_stdlists.inc \
-	layouts/agu_stdsections.inc \
-	layouts/agu_stdtitle.inc \
 	layouts/agums.layout \
 	layouts/aguplus.inc \
 	layouts/algorithm2e.module \
