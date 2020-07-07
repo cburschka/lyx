@@ -2431,7 +2431,7 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 
 	odocstringstream ls;
 	otexstream ols(ls);
-	if (runparams.flavor == OutputParams::XML) {
+	if (runparams.flavor == OutputParams::DOCBOOK5) {
 		ms << MTag("alt role='tex' ");
 		// Workaround for db2latex: db2latex always includes equations with
 		// \ensuremath{} or \begin{display}\end{display}
@@ -2459,7 +2459,7 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 	else
 		ms << xml::uniqueID(from_ascii("anon"));
 
-	if (runparams.flavor == OutputParams::XML)
+	if (runparams.flavor == OutputParams::DOCBOOK5)
 		ms << from_ascii("\"/>");
 	else
 		ms << from_ascii("\">");

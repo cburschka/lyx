@@ -187,7 +187,7 @@ int InsetMathRef::docbook(odocstream & os, OutputParams const & runparams) const
 	if (cell(1).empty()) {
 		os << "<xref linkend=\""
 		   << xml::cleanID(asString(cell(0)));
-		if (runparams.flavor == OutputParams::XML)
+		if (runparams.flavor == OutputParams::DOCBOOK5)
 			os << "\"/>";
 		else
 			os << "\">";

@@ -277,7 +277,7 @@ OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path,
 				return OutputParams::PDFLATEX;
 		}
 		if (conv.xml())
-			return OutputParams::XML;
+			return OutputParams::DOCBOOK5;
 	}
 	return buffer ? buffer->params().getOutputFlavor()
 		      : OutputParams::LATEX;

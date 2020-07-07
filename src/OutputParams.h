@@ -34,7 +34,7 @@ public:
 		LUATEX,
 		PDFLATEX,
 		XETEX,
-		XML,
+		DOCBOOK5,
 		HTML,
 		TEXT,
 		LYX

@@ -827,7 +827,7 @@ FlavorTranslator initFlavorTranslator()
 	f.addPair(OutputParams::LUATEX, "luatex");
 	f.addPair(OutputParams::PDFLATEX, "pdflatex");
 	f.addPair(OutputParams::XETEX, "xetex");
-	f.addPair(OutputParams::XML, "docbook-xml");
+	f.addPair(OutputParams::DOCBOOK5, "docbook-xml");
 	f.addPair(OutputParams::HTML, "xhtml");
 	f.addPair(OutputParams::TEXT, "text");
 	f.addPair(OutputParams::LYX, "lyx");

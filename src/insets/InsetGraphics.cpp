@@ -939,7 +939,7 @@ static int writeImageObject(char const * format, odocstream & os,
 	OutputParams const & runparams, docstring const & graphic_label,
 	docstring const & attributes)
 {
-	if (runparams.flavor != OutputParams::XML)
+	if (runparams.flavor != OutputParams::DOCBOOK5)
 		os << "<![ %output.print." << format
 		   << "; [" << endl;
 
@@ -950,17 +950,17 @@ static int writeImageObject(char const * format, odocstream & os,
 	   << "\" "
 	   << attributes;
 
-	if (runparams.flavor == OutputParams::XML)
+	if (runparams.flavor == OutputParams::DOCBOOK5)
 		os <<  " role=\"" << format << "\"/>" ;
 	else
 		os << " format=\"" << format << "\">" ;
 
 	os << "</imageobject>";
 
-	if (runparams.flavor != OutputParams::XML)
+	if (runparams.flavor != OutputParams::DOCBOOK5)
 		os << endl << "]]>" ;
 
-	return runparams.flavor == OutputParams::XML ? 0 : 2;
+	return runparams.flavor == OutputParams::DOCBOOK5 ? 0 : 2;
 }
 
 
@@ -973,7 +973,7 @@ int InsetGraphics::docbook(odocstream & os,
 	// In DocBook v5.0, the graphic tag will be eliminated from DocBook, will
 	// need to switch to MediaObject. However, for now this is sufficient and
 	// easier to use.
-	if (runparams.flavor == OutputParams::XML)
+	if (runparams.flavor == OutputParams::DOCBOOK5)
 		runparams.exportdata->addExternalFile("docbook-xml",
 						      params().filename);
 	else

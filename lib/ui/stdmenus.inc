@@ -194,7 +194,6 @@ Menuset
 	Menu "edit_textstyles"
 		OptItem "Dissolve Text Style" "inset-dissolve charstyle"
 		CharStyles
-		Elements
 	End
 
 # not much we can do to help here

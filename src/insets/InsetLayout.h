@@ -44,7 +44,6 @@ public:
 		NOLYXTYPE,
 		CHARSTYLE,
 		CUSTOM,
-		ELEMENT,
 		END,
 		STANDARD
 	};
@@ -149,6 +148,10 @@ public:
 	/// Defaults to true.
 	bool htmlisblock() const { return htmlisblock_; }
 	///
+	std::string docbooktag() const { return docbooktag_; }
+	///
+	std::string docbookattr() const { return docbookattr_; }
+	///
 	std::set<std::string> required() const { return required_; }
 	///
 	bool isMultiPar() const { return multipar_; }
@@ -213,7 +216,7 @@ private:
 	/**
 		* This is only used (at present) to decide where to put them on the menus.
 		* Values are 'charstyle', 'custom' (things that by default look like a
-		* footnote), 'element' (docbook), 'standard'.
+		* footnote), 'standard'.
 		*/
 	InsetLyXType lyxtype_;
 	///
@@ -275,6 +278,10 @@ private:
 	docstring htmlpreamble_;
 	///
 	bool htmlisblock_;
+	///
+	std::string docbooktag_;
+	///
+	std::string docbookattr_;
 	///
 	std::set<std::string> required_;
 	///

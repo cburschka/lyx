@@ -313,7 +313,7 @@ int InsetRef::docbook(odocstream & os, OutputParams const & runparams) const
 {
 	docstring const & name = getParam("name");
 	if (name.empty()) {
-		if (runparams.flavor == OutputParams::XML) {
+		if (runparams.flavor == OutputParams::DOCBOOK5) {
 			os << "<xref linkend=\""
 			   << xml::cleanID(getParam("reference"))
 			   << "\" />";

@@ -2141,7 +2141,7 @@ Buffer::ExportStatus Buffer::writeDocBookSource(odocstream & os, string const & 
 	  output == FullSource || output == OnlyBody;
 
 	if (output_preamble) {
-		if (runparams.flavor == OutputParams::XML)
+		if (runparams.flavor == OutputParams::DOCBOOK5)
 			os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 
 		// FIXME UNICODE
@@ -2150,14 +2150,14 @@ Buffer::ExportStatus Buffer::writeDocBookSource(odocstream & os, string const & 
 		// FIXME UNICODE
 		if (! tclass.class_header().empty())
 			os << from_ascii(tclass.class_header());
-		else if (runparams.flavor == OutputParams::XML)
+		else if (runparams.flavor == OutputParams::DOCBOOK5)
 			os << "PUBLIC \"-//OASIS//DTD DocBook XML V4.2//EN\" "
 			    << "\"https://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd\"";
 		else
 			os << " PUBLIC \"-//OASIS//DTD DocBook V4.2//EN\"";
 
 		docstring preamble = params().preamble;
-		if (runparams.flavor != OutputParams::XML ) {
+		if (runparams.flavor != OutputParams::DOCBOOK5 ) {
 			preamble += "<!ENTITY % output.print.png \"IGNORE\">\n";
 			preamble += "<!ENTITY % output.print.pdf \"IGNORE\">\n";
 			preamble += "<!ENTITY % output.print.eps \"IGNORE\">\n";
@@ -2178,7 +2178,7 @@ Buffer::ExportStatus Buffer::writeDocBookSource(odocstream & os, string const & 
 	if (output_body) {
 		string top = top_element;
 		top += " lang=\"";
-		if (runparams.flavor == OutputParams::XML)
+		if (runparams.flavor == OutputParams::DOCBOOK5)
 			top += params().language->code();
 		else
 			top += params().language->code().substr(0, 2);
@@ -2189,7 +2189,7 @@ Buffer::ExportStatus Buffer::writeDocBookSource(odocstream & os, string const & 
 			top += params().options;
 		}
 
-		os << "<!-- " << ((runparams.flavor == OutputParams::XML)? "XML" : "SGML")
+		os << "<!-- " << ((runparams.flavor == OutputParams::DOCBOOK5)? "XML" : "SGML")
 				<< " file was created by LyX " << lyx_version
 				<< "\n  See https://www.lyx.org/ for more information -->\n";
 

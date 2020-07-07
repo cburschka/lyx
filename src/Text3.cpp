@@ -3065,7 +3065,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			cur.buffer()->params().documentClass().insetLayout(from_utf8(s));
 		if (il.lyxtype() != InsetLayout::CHARSTYLE &&
 		    il.lyxtype() != InsetLayout::CUSTOM &&
-		    il.lyxtype() != InsetLayout::ELEMENT &&
 		    il.lyxtype ()!= InsetLayout::STANDARD)
 			enable = false;
 		break;

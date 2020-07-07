@@ -109,6 +109,8 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		IL_HTMLLABEL,
 		IL_HTMLSTYLE,
 		IL_HTMLPREAMBLE,
+		IL_DOCBOOKTAG,
+		IL_DOCBOOKATTR,
 		IL_INTOC,
 		IL_ISTOCCAPTION,
 		IL_LABELFONT,
@@ -153,6 +155,8 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		{ "custompars", IL_CUSTOMPARS },
 		{ "decoration", IL_DECORATION },
 		{ "display", IL_DISPLAY },
+		{ "docbookattr", IL_DOCBOOKATTR },
+		{ "docbooktag", IL_DOCBOOKTAG },
 		{ "editexternal", IL_EDITEXTERNAL },
 		{ "end", IL_END },
 		{ "fixedwidthpreambleencoding", IL_FIXEDWIDTH_PREAMBLE_ENCODING },
@@ -493,6 +497,12 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		case IL_HTMLPREAMBLE:
 			htmlpreamble_ = lex.getLongString(from_ascii("EndPreamble"));
 			break;
+		case IL_DOCBOOKTAG:
+			lex >> docbooktag_;
+			break;
+		case IL_DOCBOOKATTR:
+			lex >> docbookattr_;
+			break;
 		case IL_REQUIRES: {
 			lex.eatLine();
 			vector<string> const req
@@ -544,8 +554,6 @@ InsetLayout::InsetLyXType translateLyXType(std::string const & str)
 		return InsetLayout::CHARSTYLE;
 	if (compare_ascii_no_case(str, "custom") == 0)
 		return InsetLayout::CUSTOM;
-	if (compare_ascii_no_case(str, "element") == 0)
-		return InsetLayout::ELEMENT;
 	if (compare_ascii_no_case(str, "end") == 0)
 		return InsetLayout::END;
 	if (compare_ascii_no_case(str, "standard") == 0)

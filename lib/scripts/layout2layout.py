@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 81
+currentFormat = 82
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -268,8 +268,18 @@ currentFormat = 81
 # Incremented to format 80, 12 August 2019 by spitz
 # New float option Requires
 
-# Incremented to format 80, 12 August 2019 by rikiheck
+# Incremented to format 81, 12 August 2019 by rikiheck
 # New tag GuiName for counters
+
+# Incremented to format 82, 4 June 2017 by dourouc05
+# - Add new tags for Layout:
+#   DocBookTag, DocBookAttr, DocBookInInfo,
+#   DocBookWrapperTag, DocBookWrapperAttr,
+#   DocBookItemWrapperTag, DocBookItemWrapperAttr,
+#   DocBookItemTag, DocBookItemAttr,
+#   DocBookLabelTag, DocBookLabelAttr
+# - Removed tag Header from ClassOptionsClassOptions
+# - Removed tag Element for flex insets
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
@@ -520,7 +530,21 @@ def convert(lines, end_format):
                 i += 1
             continue
 
-        if format >= 65 and format <= 80:
+        if format == 81:
+            match = re.compile(b'^(\\s*Header\\s+)("?\\w+"?)', re.IGNORECASE).match(lines[i])
+            if match:
+                del lines[i]
+                continue
+
+            match = re.compile(b'(\\s*LyXType\\s+)(\\w+)(\\s*Element\\s+)', re.IGNORECASE).match(lines[i])
+            if match:
+                del lines[i]
+                continue
+
+            i += 1
+            continue
+
+        if 65 <= format <= 80:
             # nothing to do.
             i += 1
             continue

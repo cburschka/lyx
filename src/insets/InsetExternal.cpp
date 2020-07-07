@@ -832,7 +832,7 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 	case OutputParams::XETEX:
 		format = "PDFLaTeX";
 		break;
-	case OutputParams::XML:
+	case OutputParams::DOCBOOK5:
 		format = "DocBook";
 		break;
 	case OutputParams::HTML:

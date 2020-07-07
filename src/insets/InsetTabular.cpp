@@ -3575,7 +3575,7 @@ int Tabular::docbook(odocstream & os, OutputParams const & runparams) const
 			break;
 		}
 		os << '"';
-		if (runparams.flavor == OutputParams::XML)
+		if (runparams.flavor == OutputParams::DOCBOOK5)
 			os << '/';
 		os << ">\n";
 		++ret;

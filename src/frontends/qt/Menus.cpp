@@ -148,9 +148,6 @@ public:
 		/** This is the list of user-configurable
 		insets to insert into document */
 		Custom,
-		/** This is the list of XML elements to
-		insert into the document */
-		Elements,
 		/** This is the list of floats that we can
 		    insert a list for. */
 		FloatListInsert,
@@ -461,7 +458,6 @@ void MenuDefinition::read(Lexer & lex)
 		md_bookmarks,
 		md_charstyles,
 		md_custom,
-		md_elements,
 		md_endmenu,
 		md_exportformat,
 		md_exportformats,
@@ -504,7 +500,6 @@ void MenuDefinition::read(Lexer & lex)
 		{ "citestyles", md_citestyles },
 		{ "custom", md_custom },
 		{ "documents", md_documents },
-		{ "elements", md_elements },
 		{ "end", md_endmenu },
 		{ "environmentseparators", md_env_separators },
 		{ "environmentseparatorscontext", md_env_separatorscontext },
@@ -572,10 +567,6 @@ void MenuDefinition::read(Lexer & lex)
 
 		case md_custom:
 			add(MenuItem(MenuItem::Custom));
-			break;
-
-		case md_elements:
-			add(MenuItem(MenuItem::Elements));
 			break;
 
 		case md_documents:
@@ -2327,10 +2318,6 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 
 		case MenuItem::Custom:
 			tomenu.expandFlexInsert(buf, InsetLayout::CUSTOM);
-			break;
-
-		case MenuItem::Elements:
-			tomenu.expandFlexInsert(buf, InsetLayout::ELEMENT);
 			break;
 
 		case MenuItem::FloatListInsert:
