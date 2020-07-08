@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-06-20 11:00+0200\n"
-"PO-Revision-Date: 2020-06-26 10:31+0000\n"
+"POT-Creation-Date: 2020-07-08 12:05+0200\n"
+"PO-Revision-Date: 2020-07-08 10:06+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -465,7 +465,7 @@ msgstr "Minipage"
 
 #: src/frontends/qt4/ui/BoxUi.ui:109
 msgid "Check this if the box should break across pages"
-msgstr "Vybrať aby rámik mohol prejsť aj na druhú stránku"
+msgstr "Vybrať aby sa rámik mohol rosdeliť aj na druhú stránku"
 
 #: src/frontends/qt4/ui/BoxUi.ui:112
 msgid "Allow &page breaks"
@@ -13736,12 +13736,32 @@ msgid "Entry"
 msgstr "Záznam"
 
 #: lib/layouts/moderncv.layout:334 lib/layouts/moderncv.layout:335
-msgid "Time"
-msgstr "Čas"
+msgid "Years"
+msgstr "Obdobie (roky)"
 
-#: lib/layouts/moderncv.layout:339 lib/layouts/moderncv.layout:340
-msgid "What?"
-msgstr "Čo?"
+#: lib/layouts/moderncv.layout:340
+msgid "Degree or job title"
+msgstr "Stav alebo názov práce"
+
+#: lib/layouts/moderncv.layout:348
+msgid "Institution or employer"
+msgstr "Inštitúcia alebo zamestnávateľ"
+
+#: lib/layouts/moderncv.layout:355
+msgid "Localization"
+msgstr "Lokalizácia"
+
+#: lib/layouts/moderncv.layout:356
+msgid "City or country"
+msgstr "Mesto alebo krajina"
+
+#: lib/layouts/moderncv.layout:360
+msgid "Optional"
+msgstr "Ľubovoľné"
+
+#: lib/layouts/moderncv.layout:361
+msgid "Grade or other info"
+msgstr "Úroveň alebo iné informácie"
 
 #: lib/layouts/moderncv.layout:367
 msgid "Entry:"
