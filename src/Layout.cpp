@@ -1607,7 +1607,7 @@ void Layout::write(ostream & os) const
 	if(!docbookitemattr_.empty())
 		os << "\tDocBookItemAttr " << docbookitemattr_ << '\n';
 	if(!docbookitemwrappertag_.empty())
-		os << "\tDocBookItemTag " << docbookitemwrappertag_ << '\n';
+		os << "\tDocBookItemWrapperTag " << docbookitemwrappertag_ << '\n';
 	if(!docbookitemwrapperattr_.empty())
 		os << "\tDocBookItemWrapperAttr " << docbookitemwrapperattr_ << '\n';
 	if(!docbookitemlabeltag_.empty())
