@@ -2296,21 +2296,11 @@ dist_layouts_DATA =\
 	layouts/ctex-book.layout \
 	layouts/ctex-report.layout \
 	layouts/customHeadersFooters.module \
-	layouts/db_lyxmacros.inc \
-	layouts/db_stdclass.inc \
 	layouts/db_stdcharstyles.inc \
-	layouts/db_stdcounters.inc \
-	layouts/db_stdlayouts.inc \
-	layouts/db_stdlists.inc \
-	layouts/db_stdsections.inc \
-	layouts/db_stdstarsections.inc \
-	layouts/db_stdstruct.inc \
-	layouts/db_stdtitle.inc \
 	layouts/dinbrief.layout \
 	layouts/docbook-book.layout \
 	layouts/docbook-chapter.layout \
 	layouts/docbook-section.layout \
-	layouts/docbook.layout \
 	layouts/doublecol-new.layout \
 	layouts/dtk.layout \
 	layouts/ectaart.layout \
