@@ -30,6 +30,14 @@
 
 * Documents that use TeX fonts can only be compiled with XeTeX if the input
   encoding is set to "utf8-plain" or "ascii".
+  
+* DocBook support has been revamped and now targets DocBook 5 (i.e. 
+  only XML, SGML is gone). Some supporting files for the previous 
+  implementation have been removed: all examples (lib/examples), 
+  some layouts (existing documents should still work, but with a 
+  DocBook 5 output instead of DocBook 4 SGML). The dependency on 
+  sgmltools has been removed, this new support is always enabled.
+  Having sgmltools installed or not will not change anything in LyX.
 
 !!!The following pref variables were added in 2.4:
 
