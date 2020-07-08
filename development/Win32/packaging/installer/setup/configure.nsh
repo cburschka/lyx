@@ -64,8 +64,10 @@ Section -InstallData
    DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}$OldVersionNumber"
    DeleteRegKey SHCTX "SOFTWARE\${APP_NAME}\$OldVersionNumber"
    # also delete in the case of an emergency release
-   DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}$OldVersionNumber1"
-   DeleteRegKey SHCTX "SOFTWARE\${APP_NAME}\$OldVersionNumber1"
+   ${For} $7 0 20
+    DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}$OldVersionNumber$7"
+    DeleteRegKey SHCTX "SOFTWARE\${APP_NAME}\$OldVersionNumber$7"
+   ${Next}
   ${endif}
 SectionEnd
 
