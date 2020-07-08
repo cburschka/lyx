@@ -135,10 +135,12 @@ logicalmkup
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -970929547 "Thibaut Cuvelier"
 \author -712698321 "Jürgen Spitzmüller"
 \author -495245474 "Jean-Marc Lasgouttes"
 \author 5863208 "ab"
 \author 731793113 "Richard Kimberly Heck" rikiheck@lyx.org
+\author 1075283030 "Thibaut"
 \end_header
 
 \begin_body
@@ -9650,6 +9652,122 @@ Standard
 .
  This will default to the first defined style if not given, but you are
  encouraged to use this directive.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515112870
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515112782
+DocBookRoot
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515112766
+string
+\end_layout
+
+\end_inset
+
+] The root element (at the top of the document) to use when outputting documents
+ with this class in DocBook.
+ The default value is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515112845
+article
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+
+\change_deleted 1075283030 1594226862
+ 
+\change_inserted 1075283030 1594226777
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1075283030 1594226859
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1594226785
+DocBookForceAbstract
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1594226804
+boolean
+\end_layout
+
+\end_inset
+
+] If 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+true
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+, the root element will always have an 
+\family typewriter
+<abstract>
+\family default
+ tag.
+ The default value is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+false
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -26752,6 +26870,1736 @@ src/FontInfo.cpp
 \end_inset
 
  for the details.
+\change_inserted -970929547 1496610908
+
+\end_layout
+
+\begin_layout Section
+
+\change_inserted -970929547 1496610966
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Tags-for-DocBook"
+
+\end_inset
+
+Tags for DocBook output
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -970929547 1496611615
+As with \SpecialChar LaTeX
+ or XHTML, the format of \SpecialChar LyX
+'s DocBook output is also controlled by
+ layout information.
+ In general, \SpecialChar LyX
+ provides sensible defaults; however, much of the styling is
+ lost during the conversion, as DocBook is strictly semantic and does not
+ allow formatting.
+ When possible, information from \SpecialChar LyX
+ will be rendered in 
+\family typewriter
+role
+\family default
+ attributes.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -970929547 1496612080
+In many cases, then, you may not have to do anything at all to get acceptable
+ DocBook output for your own environments, custom insets, and so forth.
+ But in some cases you will, and so \SpecialChar LyX
+ provides a number of layout tags that
+ can be used to customize the DocBook that is generated.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -970929547 1515109912
+Labels are rarely output, as they are redundant in DocBook: this information
+ is carried by the tags themselves, and whether labels appear in the final
+ documents (after processing of DocBook files) is controlled by the stylesheets.
+ However, sometimes, labels are not redundant content, such as definition
+ lists: in this case, the term being defined will be the label.
+ 
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -970929547 1496610966
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Paragraph-Style-XHTML-1"
+
+\end_inset
+
+Paragraph styles
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -970929547 1496612059
+The sort of DocBook \SpecialChar LyX
+ outputs for a paragraph depends upon whether we are
+ dealing with a normal paragraph, a command, or an environment, where this
+ is itself determined by the contents of the corresponding 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1496610966
+\SpecialChar LaTeX
+Type
+\end_layout
+
+\end_inset
+
+ tag.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -970929547 1496612107
+For a command or normal paragraph, the output DocBook has the following
+ form:
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515109666
+<tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1496610966
+Contents of the paragraph.
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1496610966
+</tag>
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -970929547 1515109821
+For an environment that is not some sort of list, the generated DocBook
+ takes this form:
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515109671
+<tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1496612114
+<itemtag>First paragraph.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1496610966
+<itemtag>Second paragraph.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1496610966
+</tag>
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -970929547 1515109825
+For a list, the resulting DocBook takes this form:
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515109672
+<tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515109676
+<itemtag attr>First item.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515109678
+<itemtag attr>Second item.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1496610966
+</tag>
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -970929547 1496612243
+The specific tags and roles output for each paragraph type can be controlled
+ by means of the layout tags we are about to describe.
+ Please note that, due to the very nature of DocBook, no sensible defaults
+ really exist, and the values must always be carefully chosen.
+ 
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515110057
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515109656
+DocBookAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1496610966
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the main tag, replacing
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110057
+attr
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This information can be used in further processing of the DocBook files.
+ 
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1496612296
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1496612269
+DocBookTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1496610966
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for this inset, replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1496612296
+tag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ The default is the name of the float and always needs to be changed, as
+ DocBook provides no generic tag.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -970929547 1515111533
+InsetLayout DocBook
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -970929547 1496611894
+The DocBook output of insets can also be controlled by information in layout
+ files.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -970929547 1496612045
+The DocBook \SpecialChar LyX
+ outputs for an inset has the following form:
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515110861
+<wrappertag wrapperattr>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515110868
+  <tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515110869
+    <innertag innerattr>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515110869
+      Contents of the inset.
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515110870
+    </innertag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515110871
+  </tag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111172
+</wrappertag>
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -970929547 1515111186
+For an itemising inset, it rather looks like this: 
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111186
+<wrappertag wrapperattr>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111186
+  <tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111186
+    <innertag innerattr>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111362
+      <itemwrappertag itemwrapperattr>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111364
+        <itemlabeltag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111367
+          Label of the first item.
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111362
+        </itemtag>
+\change_unchanged
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111517
+        <itemtag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111517
+          <itemtag itemattr>
+\change_unchanged
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111516
+            Contents of the first item.
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111514
+          </itemtag>
+\change_unchanged
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111247
+        </itemtag>
+\change_unchanged
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111221
+      </itemwrappertag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111370
+      <itemwrappertag itemwrapperattr>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111370
+        <itemlabeltag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111372
+          Label of the second item.
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111370
+        </itemtag>
+\change_unchanged
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111504
+        <itemtag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111505
+          <itemtag itemattr>
+\change_unchanged
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111507
+            Contents of the second item.
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111509
+          </itemtag>
+\change_unchanged
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111251
+        </itemtag>
+\change_unchanged
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111221
+      </itemwrappertag>
+\change_unchanged
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111219
+      ...
+\change_unchanged
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111186
+    </innertag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111186
+  </tag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515111186
+</wrappertag>
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -970929547 1515111183
+If the inset permits multiple paragraphs—that is, if 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1496610966
+MultiPar
+\end_layout
+
+\end_inset
+
+ is true—then the contents of the inset will itself be output as paragraphs
+ formatted according to the styles used for those paragraphs (standard,
+ quote, and the like).
+ The inner tag is optional and, by default, does not appear.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -970929547 1496610966
+The specific tags and attributes output for each inset can be controlled
+ by means of the following layout tags.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515110317
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515109695
+DocBookAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1496611854
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the main tag, replacing
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110044
+attr
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This information can be used in further processing of the DocBook files.
+ 
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515110973
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110319
+DocBookInInfo
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110384
+never, always, maybe
+\end_layout
+
+\end_inset
+
+] Specifies whether this tag goes into the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110412
+<info>
+\end_layout
+
+\end_inset
+
+ tag at the beginning of the parent layout.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110437
+never
+\end_layout
+
+\end_inset
+
+ indicates that the tag never goes into 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110497
+<info>
+\end_layout
+
+\end_inset
+
+ (this is default value, and corresponds to usual content).
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110517
+always
+\end_layout
+
+\end_inset
+
+ indicates that the tag always goes into 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110514
+<info>
+\end_layout
+
+\end_inset
+
+ (this corresponds to usual metadata): if there is no 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110550
+<info>
+\end_layout
+
+\end_inset
+
+ tag for the parent, one 
+\series bold
+will
+\series default
+ be generated.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110540
+maybe
+\end_layout
+
+\end_inset
+
+ indicates that the tag may go into 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110538
+<info>
+\end_layout
+
+\end_inset
+
+ (this is only the case for titles): if there is no 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110585
+<info>
+\end_layout
+
+\end_inset
+
+ tag for the parent, 
+\series bold
+none
+\series default
+ will be generated, the corresponding tag will be output directly as content.
+ 
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515111461
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110974
+DocBookItemAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110973
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the item tag, replacing
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110984
+itemattr
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This information can be used in further processing of the DocBook files.
+ 
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515111471
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111465
+DocBookItemInnerAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111461
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the item inner tag,
+ replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111476
+iteminnerattr
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This information can be used in further processing of the DocBook files.
+ 
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515111494
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111467
+DocBookItemInnerTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111461
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for the item inner tag within the inset, replacing
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111486
+iteminnertag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ The default is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111461
+NONE
+\end_layout
+
+\end_inset
+
+, indicating that there is no item inner tag: content is directly output
+ without it for each itemised element.
+ This parameter only makes sense when itemising layouts are used, such as
+ lists.
+ 
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515111290
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111283
+DocBookItemLabelAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111279
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the item label tag,
+ replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111304
+itemlabelattr
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This information can be used in further processing of the DocBook files.
+ 
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515111337
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111285
+DocBookItemLabelTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111279
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for the item label tag within the inset, replacing
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111311
+itemlabeltag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This parameter only makes sense when itemising layouts are used with a
+ notion of labels, such as definition lists.
+ 
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515111124
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111060
+DocBookItemTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111060
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for the item tag within the inset, replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111060
+itemtag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ The default is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111060
+NONE
+\end_layout
+
+\end_inset
+
+, indicating that there is no item tag.
+ This parameter only makes sense when itemising layouts are used, such as
+ lists.
+ 
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515111298
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111124
+DocBookItemWrapperAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111124
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the item wrapper tag,
+ replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111150
+itemwrapperattr
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This information can be used in further processing of the DocBook files.
+ 
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515111113
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111073
+DocBookItemWrapperTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111073
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for the item wrapper tag within the inset, replacing
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111083
+itemwrappertag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ The default is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515111073
+NONE
+\end_layout
+
+\end_inset
+
+, indicating that there is no item wrapper tag: tag and content are directly
+ output without it for each itemised element.
+ This parameter only makes sense when itemising layouts are used, such as
+ lists.
+ 
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515110104
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110104
+DocBookInnerAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110104
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the inner tag, replacing
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110104
+innerattr
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This information can be used in further processing of the DocBook files.
+ 
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515110906
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110104
+DocBookInnerTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110104
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for the inner tag within the inset, replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110104
+innertag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ The default is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110791
+NONE
+\end_layout
+
+\end_inset
+
+, indicating that there is no inner tag: content is directly output without
+ it.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515110753
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110665
+DocBookSectionTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110661
+string
+\end_layout
+
+\end_inset
+
+] Specifies the tag that corresponds to this kind of section.
+ This parameter only makes sense for sectioning elements (part, chapter,
+ section, etc.).
+ The default value is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110721
+section
+\end_layout
+
+\end_inset
+
+, and is only overridden when DocBook uses something else for sectioning
+ (parts and chapters of a book).
+ 
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515110811
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1496612023
+DocBookTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1496610966
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for this inset, replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1496612033
+tag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ The default is the name of the float and always needs to be changed, as
+ DocBook provides no generic inset tag.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515110832
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110822
+DocBookWrapperAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110811
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the outer tag, replacing
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110845
+wrapperattr
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This information can be used in further processing of the DocBook files.
+ 
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515110917
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110826
+DocBookWrapperTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110811
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for the wrapper tag around the inset, replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110842
+wrappertag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ The default is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110811
+NONE
+\end_layout
+
+\end_inset
+
+, indicating that there is no wrapper tag: tag and content are directly
+ output without it.
+\change_deleted -970929547 1515111523
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -970929547 1515110040
+Float DocBook
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -970929547 1496611700
+The DocBook output for floats too can be controlled by layout information.
+ The output has the following form:
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515109700
+<tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1515110138
+  Contents of the float as DocBook.
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -970929547 1496610966
+</tag>
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -970929547 1496611715
+The caption, if there is one, is a separate inset and will be output as
+ a title.
+ 
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515110033
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515109702
+DocBookAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1496610966
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the main tag, replacing
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1515110035
+attr
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This information can be used in further processing of the DocBook files.
+ 
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -970929547 1515110157
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1496611782
+DocBookTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1496610966
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for this float, replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -970929547 1496610966
+tag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ The default is the name of the float and always needs to be changed, as
+ DocBook provides no generic float tag.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -970929547 1515110157
+Bibliography formatting
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -970929547 1515110187
+The bibliography cannot be formatted: all fields are always output in the
+ database-like DocBook format (equivalent to a BibTeX file).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Chapter
