@@ -139,12 +139,12 @@ TextClass::TextClass()
 	  opt_pagesize_("default|a4|a5|b5|letter|legal|executive"),
 	  opt_pagestyle_("empty|plain|headings|fancy"), fontsize_format_("$$spt"), pagesize_("default"),
 	  pagesize_format_("$$spaper"), pagestyle_("default"), tablestyle_("default"),
+	  docbookroot_("article"), docbookforceabstract_(false),
 	  columns_(1), sides_(OneSide), secnumdepth_(3), tocdepth_(3), outputType_(LATEX),
 	  outputFormat_("latex"), has_output_format_(false), defaultfont_(sane_font), 
 	  titletype_(TITLE_COMMAND_AFTER), titlename_("maketitle"),
 	  min_toclevel_(0), max_toclevel_(0), maxcitenames_(2),
-	  cite_full_author_list_(true), bibintoc_(false), docbookroot_("article"), docbookforceabstract_(false)
-{
+	  cite_full_author_list_(true), bibintoc_(false) {
 }
 
 
