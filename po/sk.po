@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-06-28 18:45+0200\n"
-"PO-Revision-Date: 2020-06-28 17:06+0000\n"
+"POT-Creation-Date: 2020-07-08 11:19+0200\n"
+"PO-Revision-Date: 2020-07-08 09:23+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -463,7 +463,7 @@ msgstr "Minipage"
 
 #: src/frontends/qt/ui/BoxUi.ui:109
 msgid "Check this if the box should break across pages"
-msgstr "Vybrať aby rámik mohol prejsť aj na druhú stránku"
+msgstr "Vybrať aby sa rámik mohol rosdeliť aj na druhú stránku"
 
 #: src/frontends/qt/ui/BoxUi.ui:112
 msgid "Allow &page breaks"
@@ -11133,10 +11133,6 @@ msgstr "Tlačidlo(Gui)"
 msgid "MenuChoice"
 msgstr "Menu výber"
 
-#: lib/layouts/db_stdlayouts.inc:31
-msgid "SGML"
-msgstr "SGML"
-
 #: lib/layouts/db_stdstarsections.inc:24 lib/layouts/memoir.layout:84
 #: lib/layouts/stdstarsections.inc:24 lib/layouts/svcommon.inc:251
 msgid "Chapter*"
@@ -11145,26 +11141,6 @@ msgstr "Kapitola*"
 #: lib/layouts/db_stdstarsections.inc:84 lib/layouts/stdstarsections.inc:79
 msgid "Subparagraph*"
 msgstr "Pododstavec*"
-
-#: lib/layouts/db_stdtitle.inc:27
-msgid "Authorgroup"
-msgstr "Skupina autora"
-
-#: lib/layouts/db_stdtitle.inc:43
-msgid "RevisionHistory"
-msgstr "Revízna história"
-
-#: lib/layouts/db_stdtitle.inc:58
-msgid "Revision History"
-msgstr "Revízna história"
-
-#: lib/layouts/db_stdtitle.inc:63
-msgid "Revision"
-msgstr "Revízia"
-
-#: lib/layouts/db_stdtitle.inc:78
-msgid "RevisionRemark"
-msgstr "Revízna pripomienka"
 
 #: lib/layouts/db_stdtitle.inc:94 lib/layouts/moderncv.layout:99
 msgid "FirstName"
@@ -11543,8 +11519,8 @@ msgid "Verteiler"
 msgstr "Kópia"
 
 #: lib/layouts/docbook-book.layout:3
-msgid "DocBook Book (SGML)"
-msgstr "DocBook kniha (SGML)"
+msgid "DocBook Book (XML)"
+msgstr "DocBook kniha (XML)"
 
 #: lib/layouts/docbook-book.layout:4 lib/layouts/docbook-chapter.layout:4
 #: lib/layouts/docbook-section.layout:4
@@ -11552,16 +11528,12 @@ msgid "Books (DocBook)"
 msgstr "Knihy (DocBook)"
 
 #: lib/layouts/docbook-chapter.layout:3
-msgid "DocBook Chapter (SGML)"
-msgstr "DocBook kapitola (SGML)"
+msgid "DocBook Chapter (XML)"
+msgstr "DocBook kapitola (XML)"
 
 #: lib/layouts/docbook-section.layout:3
-msgid "DocBook Section (SGML)"
-msgstr "DocBook sekcia (SGML)"
-
-#: lib/layouts/docbook.layout:3 lib/examples/Articles:0
-msgid "DocBook Article (SGML)"
-msgstr "DocBook článok (SGML)"
+msgid "DocBook Section (XML)"
+msgstr "DocBook sekcia (XML)"
 
 #: lib/layouts/doublecol-new.layout:3
 msgid "Inderscience A4 Journals"
@@ -14847,12 +14819,32 @@ msgid "Entry"
 msgstr "Záznam"
 
 #: lib/layouts/moderncv.layout:344 lib/layouts/moderncv.layout:345
-msgid "Time[[period]]"
-msgstr "Obdobie"
+msgid "Years"
+msgstr "Obdobie (roky)"
 
-#: lib/layouts/moderncv.layout:349 lib/layouts/moderncv.layout:350
-msgid "What?"
-msgstr "Čo?"
+#: lib/layouts/moderncv.layout:350
+msgid "Degree or job title"
+msgstr "Stav alebo názov práce"
+
+#: lib/layouts/moderncv.layout:358
+msgid "Institution or employer"
+msgstr "Inštitúcia alebo zamestnávateľ"
+
+#: lib/layouts/moderncv.layout:365
+msgid "Localization"
+msgstr "Lokalizácia"
+
+#: lib/layouts/moderncv.layout:366
+msgid "City or country"
+msgstr "Mesto alebo krajina"
+
+#: lib/layouts/moderncv.layout:370
+msgid "Optional"
+msgstr "Ľubovoľné"
+
+#: lib/layouts/moderncv.layout:371
+msgid "Grade or other info"
+msgstr "Úroveň alebo iné informácie"
 
 #: lib/layouts/moderncv.layout:377
 msgid "Entry:"
@@ -18755,6 +18747,10 @@ msgstr "URW Garamond"
 msgid "Libertine"
 msgstr "Libertine"
 
+#: lib/latexfonts:316 lib/latexfonts:326
+msgid "Libertinus"
+msgstr "Libertinus"
+
 #: lib/latexfonts:316 lib/latexfonts:324
 msgid "Latin Modern Roman"
 msgstr "Latin Modern Roman"
@@ -18976,6 +18972,10 @@ msgstr "Kurier (Svetlé zhustené)"
 msgid "Latin Modern Sans"
 msgstr "Latin Modern bezserifové"
 
+#: lib/latexfonts:963 lib/latexfonts:972
+msgid "Libertinus Sans"
+msgstr "Libertinus Sans"
+
 #: lib/latexfonts:944
 msgid "Noto Sans"
 msgstr "Noto bezserifové"
@@ -19059,6 +19059,10 @@ msgstr "Source Pro strojopisné"
 #: lib/latexfonts:1120 lib/latexfonts:1128
 msgid "Libertine Mono"
 msgstr "Libertine strojopisné"
+
+#: lib/latexfonts:1172
+msgid "Libertinus Mono"
+msgstr "Libertinus Mono"
 
 #: lib/latexfonts:1135
 msgid "Latin Modern Typewriter"
@@ -26268,18 +26272,14 @@ msgstr "XPM"
 msgid "Plain text (chess output)"
 msgstr "Prostý text (šachy)"
 
+#: lib/configure.py:683
+msgid "DocBook 5"
+msgstr "DocBook 5"
+
 #: lib/configure.py:662 src/frontends/qt/GuiDocument.cpp:1573
 #: src/frontends/qt/GuiErrorList.cpp:45
 msgid "DocBook"
 msgstr "DocBook"
-
-#: lib/configure.py:662
-msgid "DocBook|B"
-msgstr "DocBook|B"
-
-#: lib/configure.py:663
-msgid "DocBook (XML)"
-msgstr "DocBook (XML)"
 
 #: lib/configure.py:664
 msgid "Graphviz Dot"
@@ -35300,6 +35300,17 @@ msgstr ""
 "Problematický súbor:\n"
 "%1$s"
 
+#: src/insets/InsetInclude.cpp:1071
+#, c-format
+msgid ""
+"LyX does not know how to include non-LyX files when generating DocBook "
+"output. Offending file:\n"
+"%1$s"
+msgstr ""
+"LyX nevie ako zahrnúť ne-LyX-ové súbory pri generácii výstupu DocBook. "
+"Problematický súbor:\n"
+"%1$s"
+
 #: src/insets/InsetIndex.cpp:153
 msgid "Index sorting failed"
 msgstr "Triedenie registra zlyhalo"
@@ -36844,6 +36855,30 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Authorgroup"
+#~ msgstr "Skupina autora"
+
+#~ msgid "RevisionHistory"
+#~ msgstr "Revízna história"
+
+#~ msgid "Revision History"
+#~ msgstr "Revízna história"
+
+#~ msgid "Revision"
+#~ msgstr "Revízia"
+
+#~ msgid "RevisionRemark"
+#~ msgstr "Revízna pripomienka"
+
+#~ msgid "DocBook Article (SGML)"
+#~ msgstr "DocBook článok (SGML)"
+
+#~ msgid "Time[[period]]"
+#~ msgstr "Obdobie"
+
+#~ msgid "What?"
+#~ msgstr "Čo?"
 
 #~ msgid "Value &Type:"
 #~ msgstr "&Typ hodnoty:"
