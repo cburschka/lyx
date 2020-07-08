@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-06-13 10:36+0200\n"
-"PO-Revision-Date: 2020-06-13 10:38+0200\n"
+"POT-Creation-Date: 2020-07-08 06:13+0200\n"
+"PO-Revision-Date: 2020-07-08 06:14+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -6761,15 +6761,15 @@ msgstr "Standard"
 #: lib/layouts/jss.layout:40 lib/layouts/kluwer.layout:113
 #: lib/layouts/latex8.layout:39 lib/layouts/llncs.layout:108
 #: lib/layouts/ltugboat.layout:140 lib/layouts/memoir.layout:257
-#: lib/layouts/moderncv.layout:114 lib/layouts/paper.layout:114
-#: lib/layouts/powerdot.layout:44 lib/layouts/revtex.layout:96
-#: lib/layouts/revtex4-x.inc:197 lib/layouts/revtex4.layout:119
-#: lib/layouts/scrclass.inc:186 lib/layouts/scrlettr.layout:193
-#: lib/layouts/scrlttr2.layout:276 lib/layouts/siamltex.layout:192
-#: lib/layouts/simplecv.layout:134 lib/layouts/stdtitle.inc:14
-#: lib/layouts/svcommon.inc:57 lib/layouts/svcommon.inc:324
-#: lib/layouts/svmult.layout:47 lib/layouts/svprobth.layout:76
-#: lib/layouts/tufte-book.layout:35
+#: lib/layouts/moderncv.layout:114 lib/layouts/moderncv.layout:339
+#: lib/layouts/paper.layout:114 lib/layouts/powerdot.layout:44
+#: lib/layouts/revtex.layout:96 lib/layouts/revtex4-x.inc:197
+#: lib/layouts/revtex4.layout:119 lib/layouts/scrclass.inc:186
+#: lib/layouts/scrlettr.layout:193 lib/layouts/scrlttr2.layout:276
+#: lib/layouts/siamltex.layout:192 lib/layouts/simplecv.layout:134
+#: lib/layouts/stdtitle.inc:14 lib/layouts/svcommon.inc:57
+#: lib/layouts/svcommon.inc:324 lib/layouts/svmult.layout:47
+#: lib/layouts/svprobth.layout:76 lib/layouts/tufte-book.layout:35
 msgid "Title"
 msgstr "Titel"
 
@@ -7476,9 +7476,8 @@ msgstr "American Astronomical Society (AASTeX v. 5)"
 #: lib/layouts/apa.layout:159 lib/layouts/apax.inc:148
 #: lib/layouts/iucr.layout:175 lib/layouts/jasatex.layout:106
 #: lib/layouts/latex8.layout:89 lib/layouts/maa-monthly.layout:109
-#: lib/layouts/moderncv.layout:347 lib/layouts/moderncv.layout:348
-#: lib/layouts/revtex4-x.inc:63 lib/layouts/revtex4.layout:136
-#: lib/layouts/sigplanconf.layout:169
+#: lib/layouts/moderncv.layout:347 lib/layouts/revtex4-x.inc:63
+#: lib/layouts/revtex4.layout:136 lib/layouts/sigplanconf.layout:169
 msgid "Affiliation"
 msgstr "Zugehörigkeit"
 
@@ -7992,14 +7991,12 @@ msgstr "Straße"
 #: lib/layouts/acmart.layout:254 lib/layouts/acmart.layout:256
 #: lib/layouts/agu_stdtitle.inc:460 lib/layouts/agu_stdtitle.inc:462
 #: lib/layouts/iucr.layout:75 lib/layouts/iucr.layout:80
-#: lib/layouts/moderncv.layout:355 lib/layouts/moderncv.layout:356
 msgid "City"
 msgstr "Stadt"
 
 #: lib/layouts/acmart.layout:262 lib/layouts/acmart.layout:264
 #: lib/layouts/agu_stdtitle.inc:496 lib/layouts/agu_stdtitle.inc:498
 #: lib/layouts/iucr.layout:97 lib/layouts/iucr.layout:100
-#: lib/layouts/moderncv.layout:360 lib/layouts/moderncv.layout:361
 msgid "Country"
 msgstr "Land"
 
@@ -13922,12 +13919,32 @@ msgid "Entry"
 msgstr "Eintrag"
 
 #: lib/layouts/moderncv.layout:334 lib/layouts/moderncv.layout:335
-msgid "Time"
-msgstr "Zeit"
+msgid "Years"
+msgstr "Zeitraum"
 
-#: lib/layouts/moderncv.layout:339 lib/layouts/moderncv.layout:340
-msgid "What?"
-msgstr "Was?"
+#: lib/layouts/moderncv.layout:340
+msgid "Degree or job title"
+msgstr "Grad oder Jobtitel"
+
+#: lib/layouts/moderncv.layout:348
+msgid "Institution or employer"
+msgstr "Institution oder Arbeitgeber"
+
+#: lib/layouts/moderncv.layout:355
+msgid "Localization"
+msgstr "Ort"
+
+#: lib/layouts/moderncv.layout:356
+msgid "City or country"
+msgstr "Stadt oder Land"
+
+#: lib/layouts/moderncv.layout:360
+msgid "Optional"
+msgstr "Zusatzinformationen"
+
+#: lib/layouts/moderncv.layout:361
+msgid "Grade or other info"
+msgstr "Rang oder andere Informationen"
 
 #: lib/layouts/moderncv.layout:367
 msgid "Entry:"
@@ -31648,7 +31665,7 @@ msgstr "Tabelle einfügen"
 msgid "TeX Information"
 msgstr "TeX-Informationen"
 
-#: src/frontends/qt4/GuiThesaurus.cpp:208
+#: src/frontends/qt4/GuiThesaurus.cpp:210
 msgid "No thesaurus available for this language!"
 msgstr "Kein Thesaurus für diese Sprache vorhanden!"
 
@@ -34359,6 +34376,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Time"
+#~ msgstr "Zeit"
+
+#~ msgid "What?"
+#~ msgstr "Was?"
 
 #~ msgid "List preamble"
 #~ msgstr "Listenvorspann"
