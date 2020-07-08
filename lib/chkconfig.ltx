@@ -197,18 +197,6 @@
      {}% we have already defined this one.
 }
 
-% Only for compatibility. Will be removed later.
-\let\DeclareSGMLClass=\DeclareDocBookClass
-
-\newcommand{\DeclareDocBookClass}[2][\default]{
-  \message{^^J\prefix checking for docbook\space\space class \layoutname... }
-  \@ifundefined{hasdocbook}
-    {\message{no^^J}
-     \AddLayout[#1]{\layoutname}{#2}{false}{docbook}}
-    {\message{yes^^J}
-     \AddLayout[#1]{\layoutname}{#2}{true}{}}
-}
-
 % Stolen from article.cls
 \newcommand{\today}{\ifcase\month\or
   January\or February\or March\or April\or May\or June\or
