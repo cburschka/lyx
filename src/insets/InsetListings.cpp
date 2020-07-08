@@ -483,10 +483,10 @@ docstring InsetListings::xhtml(XMLStream & os, OutputParams const & rp) const
 
 void InsetListings::docbook(XMLStream & xs, OutputParams const & rp) const
 {
-    InsetLayout const & il = getLayout();
+	InsetLayout const & il = getLayout();
 
 	// Forge the attributes.
-    string attrs;
+	string attrs;
 	if (!il.docbookattr().empty())
 		attrs += " role=\"" + il.docbookattr() + "\"";
 	string const lang = params().getParamValue("language");

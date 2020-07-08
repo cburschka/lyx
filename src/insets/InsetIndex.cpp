@@ -193,19 +193,19 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 	InsetText::latex(ots, runparams);
 	docstring latexString = trim(odss.str());
 
-    // Check whether there are unsupported things.
-    if (latexString.find(from_utf8("@")) != latexString.npos) {
-        docstring error = from_utf8("Unsupported feature: an index entry contains an @. "
-                                    "Complete entry: \"") + latexString + from_utf8("\"");
-        LYXERR0(error);
-        xs << XMLStream::ESCAPE_NONE << (from_utf8("<!-- Output Error: ") + error + from_utf8(" -->\n"));
-    }
+	// Check whether there are unsupported things.
+	if (latexString.find(from_utf8("@")) != latexString.npos) {
+		docstring error = from_utf8("Unsupported feature: an index entry contains an @. "
+									"Complete entry: \"") + latexString + from_utf8("\"");
+		LYXERR0(error);
+		xs << XMLStream::ESCAPE_NONE << (from_utf8("<!-- Output Error: ") + error + from_utf8(" -->\n"));
+	}
 
-    // Handle several indices.
-    docstring indexType = from_utf8("");
-    if (buffer().masterBuffer()->params().use_indices) {
-        indexType += " type=\"" + params_.index + "\"";
-    }
+	// Handle several indices.
+	docstring indexType = from_utf8("");
+	if (buffer().masterBuffer()->params().use_indices) {
+		indexType += " type=\"" + params_.index + "\"";
+	}
 
 	// Split the string into its main constituents: terms, and command (see, see also, range).
 	size_t positionVerticalBar = latexString.find(from_ascii("|")); // What comes before | is (sub)(sub)entries.
@@ -237,13 +237,13 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 	docstring see = from_utf8("");
 	vector<docstring> seeAlsoes;
 	if (command.substr(0, 3) == "see") {
-        // Unescape brackets.
-        size_t index = 0;
-        while ((index = command.find(from_utf8("\\{"), index)) != std::string::npos)
-            command.erase(index, 1);
-        index = 0;
-        while ((index = command.find(from_utf8("\\}"), index)) != std::string::npos)
-            command.erase(index, 1);
+		// Unescape brackets.
+		size_t index = 0;
+		while ((index = command.find(from_utf8("\\{"), index)) != std::string::npos)
+			command.erase(index, 1);
+		index = 0;
+		while ((index = command.find(from_utf8("\\}"), index)) != std::string::npos)
+			command.erase(index, 1);
 
 		// Retrieve the part between brackets, and remove the complete seealso.
 		size_t positionOpeningBracket = command.find(from_ascii("{"));
@@ -258,14 +258,14 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 
 			if (see.find(from_ascii(",")) != see.npos) {
 				docstring error = from_utf8("Several index terms found as \"see\"! Only one is acceptable. "
-                                            "Complete entry: \"") + latexString + from_utf8("\"");
+											"Complete entry: \"") + latexString + from_utf8("\"");
 				LYXERR0(error);
 				xs << XMLStream::ESCAPE_NONE << (from_utf8("<!-- Output Error: ") + error + from_utf8(" -->\n"));
 			}
 		}
 
-        // Remove the complete see/seealso from the commands, in case there is something else to parse.
-        command = command.substr(positionClosingBracket + 1);
+		// Remove the complete see/seealso from the commands, in case there is something else to parse.
+		command = command.substr(positionClosingBracket + 1);
 	}
 
 	// Some parts of the strings are not parsed, as they do not have anything matching in DocBook: things like

@@ -3004,13 +3004,13 @@ void doFontSwitchDocBook(vector<xml::FontTag> & tagsToOpen,
                   vector<xml::EndFontTag> & tagsToClose,
                   bool & flag, FontState curstate, xml::FontTypes type)
 {
-    if (curstate == FONT_ON) {
-        tagsToOpen.push_back(docbookStartFontTag(type));
-        flag = true;
-    } else if (flag) {
-        tagsToClose.push_back(docbookEndFontTag(type));
-        flag = false;
-    }
+	if (curstate == FONT_ON) {
+		tagsToOpen.push_back(docbookStartFontTag(type));
+		flag = true;
+	} else if (flag) {
+		tagsToClose.push_back(docbookEndFontTag(type));
+		flag = false;
+	}
 }
 
 class OptionalFontType {
@@ -3024,42 +3024,42 @@ public:
 
 OptionalFontType fontShapeToXml(FontShape fs)
 {
-    switch (fs) {
-    case ITALIC_SHAPE:
+	switch (fs) {
+	case ITALIC_SHAPE:
 		return {xml::FT_ITALIC};
-    case SLANTED_SHAPE:
-        return {xml::FT_SLANTED};
-    case SMALLCAPS_SHAPE:
-        return {xml::FT_SMALLCAPS};
-    case UP_SHAPE:
-    case INHERIT_SHAPE:
-        return {};
-    default:
-        // the other tags are for internal use
-        LATTEST(false);
-        return {};
-    }
+	case SLANTED_SHAPE:
+		return {xml::FT_SLANTED};
+	case SMALLCAPS_SHAPE:
+		return {xml::FT_SMALLCAPS};
+	case UP_SHAPE:
+	case INHERIT_SHAPE:
+		return {};
+	default:
+		// the other tags are for internal use
+		LATTEST(false);
+		return {};
+	}
 }
 
 OptionalFontType fontFamilyToXml(FontFamily fm)
 {
-    switch (fm) {
-    case ROMAN_FAMILY:
-        return {xml::FT_ROMAN};
-        break;
-    case SANS_FAMILY:
-        return {xml::FT_SANS};
-        break;
-    case TYPEWRITER_FAMILY:
-        return {xml::FT_TYPE};
-        break;
-    case INHERIT_FAMILY:
-        return {};
-    default:
-        // the other tags are for internal use
-        LATTEST(false);
-        return {};
-    }
+	switch (fm) {
+	case ROMAN_FAMILY:
+		return {xml::FT_ROMAN};
+		break;
+	case SANS_FAMILY:
+		return {xml::FT_SANS};
+		break;
+	case TYPEWRITER_FAMILY:
+		return {xml::FT_TYPE};
+		break;
+	case INHERIT_FAMILY:
+		return {};
+	default:
+		// the other tags are for internal use
+		LATTEST(false);
+		return {};
+	}
 }
 
 OptionalFontType fontSizeToXml(FontSize fs)
@@ -3095,7 +3095,6 @@ OptionalFontType fontSizeToXml(FontSize fs)
 		LATTEST(false);
 		return {};
 	}
-
 }
 
 }// anonymous namespace
@@ -3108,198 +3107,198 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
                                     bool start_paragraph, bool close_paragraph,
                                     pos_type initial) const
 {
-    // track whether we have opened these tags
-    bool emph_flag = false;
-    bool bold_flag = false;
-    bool noun_flag = false;
-    bool ubar_flag = false;
-    bool dbar_flag = false;
-    bool sout_flag = false;
-    bool wave_flag = false;
-    // shape tags
-    bool shap_flag = false;
-    // family tags
-    bool faml_flag = false;
-    // size tags
-    bool size_flag = false;
+	// track whether we have opened these tags
+	bool emph_flag = false;
+	bool bold_flag = false;
+	bool noun_flag = false;
+	bool ubar_flag = false;
+	bool dbar_flag = false;
+	bool sout_flag = false;
+	bool wave_flag = false;
+	// shape tags
+	bool shap_flag = false;
+	// family tags
+	bool faml_flag = false;
+	// size tags
+	bool size_flag = false;
 
-    Layout const & style = *d->layout_;
+	Layout const & style = *d->layout_;
 
-    if (start_paragraph)
-        xs.startDivision(allowEmpty());
+	if (start_paragraph)
+		xs.startDivision(allowEmpty());
 
-    FontInfo font_old =
-            style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
+	FontInfo font_old =
+			style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
 
-    FontShape  curr_fs   = INHERIT_SHAPE;
-    FontFamily curr_fam  = INHERIT_FAMILY;
-    FontSize   curr_size = INHERIT_SIZE;
+	FontShape  curr_fs   = INHERIT_SHAPE;
+	FontFamily curr_fam  = INHERIT_FAMILY;
+	FontSize   curr_size = INHERIT_SIZE;
 
-    string const default_family =
-            buf.masterBuffer()->params().fonts_default_family;
+	string const default_family =
+			buf.masterBuffer()->params().fonts_default_family;
 
-    vector<xml::FontTag> tagsToOpen;
-    vector<xml::EndFontTag> tagsToClose;
+	vector<xml::FontTag> tagsToOpen;
+	vector<xml::EndFontTag> tagsToClose;
 
-    // parsing main loop
-    for (pos_type i = initial; i < size(); ++i) {
-        // let's not show deleted material in the output
-        if (isDeleted(i))
-            continue;
+	// parsing main loop
+	for (pos_type i = initial; i < size(); ++i) {
+		// let's not show deleted material in the output
+		if (isDeleted(i))
+			continue;
 
-        Font const font = getFont(buf.masterBuffer()->params(), i, outerfont);
+		Font const font = getFont(buf.masterBuffer()->params(), i, outerfont);
 
-        // emphasis
-        FontState curstate = font.fontInfo().emph();
-        if (font_old.emph() != curstate)
-            doFontSwitchDocBook(tagsToOpen, tagsToClose, emph_flag, curstate, xml::FT_EMPH);
+		// emphasis
+		FontState curstate = font.fontInfo().emph();
+		if (font_old.emph() != curstate)
+			doFontSwitchDocBook(tagsToOpen, tagsToClose, emph_flag, curstate, xml::FT_EMPH);
 
-        // noun
-        curstate = font.fontInfo().noun();
-        if (font_old.noun() != curstate)
-            doFontSwitchDocBook(tagsToOpen, tagsToClose, noun_flag, curstate, xml::FT_NOUN);
+		// noun
+		curstate = font.fontInfo().noun();
+		if (font_old.noun() != curstate)
+			doFontSwitchDocBook(tagsToOpen, tagsToClose, noun_flag, curstate, xml::FT_NOUN);
 
-        // underbar
-        curstate = font.fontInfo().underbar();
-        if (font_old.underbar() != curstate)
-            doFontSwitchDocBook(tagsToOpen, tagsToClose, ubar_flag, curstate, xml::FT_UBAR);
+		// underbar
+		curstate = font.fontInfo().underbar();
+		if (font_old.underbar() != curstate)
+			doFontSwitchDocBook(tagsToOpen, tagsToClose, ubar_flag, curstate, xml::FT_UBAR);
 
-        // strikeout
-        curstate = font.fontInfo().strikeout();
-        if (font_old.strikeout() != curstate)
-            doFontSwitchDocBook(tagsToOpen, tagsToClose, sout_flag, curstate, xml::FT_SOUT);
+		// strikeout
+		curstate = font.fontInfo().strikeout();
+		if (font_old.strikeout() != curstate)
+			doFontSwitchDocBook(tagsToOpen, tagsToClose, sout_flag, curstate, xml::FT_SOUT);
 
-        // double underbar
-        curstate = font.fontInfo().uuline();
-        if (font_old.uuline() != curstate)
-            doFontSwitchDocBook(tagsToOpen, tagsToClose, dbar_flag, curstate, xml::FT_DBAR);
+		// double underbar
+		curstate = font.fontInfo().uuline();
+		if (font_old.uuline() != curstate)
+			doFontSwitchDocBook(tagsToOpen, tagsToClose, dbar_flag, curstate, xml::FT_DBAR);
 
-        // wavy line
-        curstate = font.fontInfo().uwave();
-        if (font_old.uwave() != curstate)
-            doFontSwitchDocBook(tagsToOpen, tagsToClose, wave_flag, curstate, xml::FT_WAVE);
+		// wavy line
+		curstate = font.fontInfo().uwave();
+		if (font_old.uwave() != curstate)
+			doFontSwitchDocBook(tagsToOpen, tagsToClose, wave_flag, curstate, xml::FT_WAVE);
 
-        // bold
-        // a little hackish, but allows us to reuse what we have.
-        curstate = (font.fontInfo().series() == BOLD_SERIES ? FONT_ON : FONT_OFF);
-        if (font_old.series() != font.fontInfo().series())
-            doFontSwitchDocBook(tagsToOpen, tagsToClose, bold_flag, curstate, xml::FT_BOLD);
+		// bold
+		// a little hackish, but allows us to reuse what we have.
+		curstate = (font.fontInfo().series() == BOLD_SERIES ? FONT_ON : FONT_OFF);
+		if (font_old.series() != font.fontInfo().series())
+			doFontSwitchDocBook(tagsToOpen, tagsToClose, bold_flag, curstate, xml::FT_BOLD);
 
-        // Font shape
-        curr_fs = font.fontInfo().shape();
-        FontShape old_fs = font_old.shape();
-        if (old_fs != curr_fs) {
+		// Font shape
+		curr_fs = font.fontInfo().shape();
+		FontShape old_fs = font_old.shape();
+		if (old_fs != curr_fs) {
 			if (shap_flag) {
 				OptionalFontType tag = fontShapeToXml(old_fs);
 				if (tag.has_value) {
 					tagsToClose.push_back(docbookEndFontTag(tag.ft));
 				}
-			    shap_flag = false;
+				shap_flag = false;
 			}
 
 			OptionalFontType tag = fontShapeToXml(curr_fs);
 			if (tag.has_value) {
 				tagsToOpen.push_back(docbookStartFontTag(tag.ft));
 			}
-        }
+		}
 
-        // Font family
-        curr_fam = font.fontInfo().family();
-        FontFamily old_fam = font_old.family();
-        if (old_fam != curr_fam) {
-            if (faml_flag) {
+		// Font family
+		curr_fam = font.fontInfo().family();
+		FontFamily old_fam = font_old.family();
+		if (old_fam != curr_fam) {
+			if (faml_flag) {
 				OptionalFontType tag = fontFamilyToXml(old_fam);
-                if (tag.has_value) {
-                    tagsToClose.push_back(docbookEndFontTag(tag.ft));
-                }
-                faml_flag = false;
-            }
-            switch (curr_fam) {
-            case ROMAN_FAMILY:
-                // we will treat a "default" font family as roman, since we have
-                // no other idea what to do.
-                if (default_family != "rmdefault" && default_family != "default") {
-                    tagsToOpen.push_back(docbookStartFontTag(xml::FT_ROMAN));
-                    faml_flag = true;
-                }
-                break;
-            case SANS_FAMILY:
-                if (default_family != "sfdefault") {
-                    tagsToOpen.push_back(docbookStartFontTag(xml::FT_SANS));
-                    faml_flag = true;
-                }
-                break;
-            case TYPEWRITER_FAMILY:
-                if (default_family != "ttdefault") {
-                    tagsToOpen.push_back(docbookStartFontTag(xml::FT_TYPE));
-                    faml_flag = true;
-                }
-                break;
-            case INHERIT_FAMILY:
-                break;
-            default:
-                // the other tags are for internal use
-                LATTEST(false);
-                break;
-            }
-        }
+				if (tag.has_value) {
+					tagsToClose.push_back(docbookEndFontTag(tag.ft));
+				}
+				faml_flag = false;
+			}
+			switch (curr_fam) {
+			case ROMAN_FAMILY:
+				// we will treat a "default" font family as roman, since we have
+				// no other idea what to do.
+				if (default_family != "rmdefault" && default_family != "default") {
+					tagsToOpen.push_back(docbookStartFontTag(xml::FT_ROMAN));
+					faml_flag = true;
+				}
+				break;
+			case SANS_FAMILY:
+				if (default_family != "sfdefault") {
+					tagsToOpen.push_back(docbookStartFontTag(xml::FT_SANS));
+					faml_flag = true;
+				}
+				break;
+			case TYPEWRITER_FAMILY:
+				if (default_family != "ttdefault") {
+					tagsToOpen.push_back(docbookStartFontTag(xml::FT_TYPE));
+					faml_flag = true;
+				}
+				break;
+			case INHERIT_FAMILY:
+				break;
+			default:
+				// the other tags are for internal use
+				LATTEST(false);
+				break;
+			}
+		}
 
-        // Font size
-        curr_size = font.fontInfo().size();
-        FontSize old_size = font_old.size();
-        if (old_size != curr_size) {
-            if (size_flag) {
+		// Font size
+		curr_size = font.fontInfo().size();
+		FontSize old_size = font_old.size();
+		if (old_size != curr_size) {
+			if (size_flag) {
 				OptionalFontType tag = fontSizeToXml(old_size);
 				if (tag.has_value) {
 					tagsToClose.push_back(docbookEndFontTag(tag.ft));
 				}
-                size_flag = false;
-            }
+				size_flag = false;
+			}
 
 			OptionalFontType tag = fontSizeToXml(curr_size);
 			if (tag.has_value) {
 				tagsToOpen.push_back(docbookStartFontTag(tag.ft));
 				size_flag = true;
 			}
-        }
+		}
 
-        // FIXME XHTML
-        // Other such tags? What about the other text ranges?
+		// FIXME XHTML
+		// Other such tags? What about the other text ranges?
 
-        vector<xml::EndFontTag>::const_iterator cit = tagsToClose.begin();
-        vector<xml::EndFontTag>::const_iterator cen = tagsToClose.end();
-        for (; cit != cen; ++cit)
-            xs << *cit;
+		vector<xml::EndFontTag>::const_iterator cit = tagsToClose.begin();
+		vector<xml::EndFontTag>::const_iterator cen = tagsToClose.end();
+		for (; cit != cen; ++cit)
+			xs << *cit;
 
-        vector<xml::FontTag>::const_iterator sit = tagsToOpen.begin();
-        vector<xml::FontTag>::const_iterator sen = tagsToOpen.end();
-        for (; sit != sen; ++sit)
-            xs << *sit;
+		vector<xml::FontTag>::const_iterator sit = tagsToOpen.begin();
+		vector<xml::FontTag>::const_iterator sen = tagsToOpen.end();
+		for (; sit != sen; ++sit)
+			xs << *sit;
 
-        tagsToClose.clear();
-        tagsToOpen.clear();
+		tagsToClose.clear();
+		tagsToOpen.clear();
 
-        if (Inset const * inset = getInset(i)) {
-            if (!runparams.for_toc || inset->isInToc()) {
-                OutputParams np = runparams;
-                np.local_font = &font;
-                // If the paragraph has size 1, then we are in the "special
-                // case" where we do not output the containing paragraph info.
-                if (!inset->getLayout().htmlisblock() && size() != 1) // TODO: htmlisblock here too!
-                    np.docbook_in_par = true;
-                inset->docbook(xs, np);
-            }
-        } else {
-            char_type c = getUChar(buf.masterBuffer()->params(), runparams, i);
-            xs << c;
-        }
-        font_old = font.fontInfo();
-    }
+		if (Inset const * inset = getInset(i)) {
+			if (!runparams.for_toc || inset->isInToc()) {
+				OutputParams np = runparams;
+				np.local_font = &font;
+				// If the paragraph has size 1, then we are in the "special
+				// case" where we do not output the containing paragraph info.
+				if (!inset->getLayout().htmlisblock() && size() != 1) // TODO: htmlisblock here too!
+					np.docbook_in_par = true;
+				inset->docbook(xs, np);
+			}
+		} else {
+			char_type c = getUChar(buf.masterBuffer()->params(), runparams, i);
+			xs << c;
+		}
+		font_old = font.fontInfo();
+	}
 
-    // FIXME, this code is just imported from XHTML
-    // I'm worried about what happens if a branch, say, is itself
-    // wrapped in some font stuff. I think that will not work.
-    xs.closeFontTags();
+	// FIXME, this code is just imported from XHTML
+	// I'm worried about what happens if a branch, say, is itself
+	// wrapped in some font stuff. I think that will not work.
+	xs.closeFontTags();
 	if (runparams.docbook_in_listing)
 		xs << xml::CR();
 	if (close_paragraph)

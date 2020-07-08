@@ -591,7 +591,7 @@ int InsetText::plaintext(odocstringstream & os,
 
 void InsetText::docbook(XMLStream & xs, OutputParams const & rp) const
 {
-    docbook(xs, rp, WriteEverything);
+	docbook(xs, rp, WriteEverything);
 }
 
 
@@ -612,13 +612,13 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 
 	InsetLayout const & il = getLayout();
 	if (opts & WriteOuterTag && !il.docbooktag().empty() && il.docbooktag() != "NONE") {
-        docstring attrs = docstring();
-        if (!il.docbookattr().empty())
-            attrs += from_ascii(il.docbookattr());
-        if (il.docbooktag() == "link")
-            attrs += from_ascii(" xlink:href=\"") + text_.asString() + from_ascii("\"");
-        xs << xml::StartTag(il.docbooktag(), attrs);
-    }
+		docstring attrs = docstring();
+		if (!il.docbookattr().empty())
+			attrs += from_ascii(il.docbookattr());
+		if (il.docbooktag() == "link")
+			attrs += from_ascii(" xlink:href=\"") + text_.asString() + from_ascii("\"");
+		xs << xml::StartTag(il.docbooktag(), attrs);
+	}
 
 	// No need for labels that are generated from counters.
 

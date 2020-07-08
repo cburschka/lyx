@@ -1594,74 +1594,74 @@ string citationStyleToString(const CitationStyle & cs, bool const latex)
 
 docstring authorsToDocBookAuthorGroup(docstring const & authorsString, XMLStream & xs, Buffer const & buf)
 {
-    // This function closely mimics getAuthorList, but produces DocBook instead of text.
-    // It has been greatly simplified, as the complete list of authors is always produced. No separators are required,
-    // as the output has a database-like shape.
-    // constructName has also been merged within, as it becomes really simple and leads to no copy-paste.
+	// This function closely mimics getAuthorList, but produces DocBook instead of text.
+	// It has been greatly simplified, as the complete list of authors is always produced. No separators are required,
+	// as the output has a database-like shape.
+	// constructName has also been merged within, as it becomes really simple and leads to no copy-paste.
 
-    if (authorsString.empty()) {
-        return docstring();
-    }
+	if (authorsString.empty()) {
+		return docstring();
+	}
 
-    // Split the input list of authors into individual authors.
-    vector<docstring> const authors = getAuthors(authorsString);
+	// Split the input list of authors into individual authors.
+	vector<docstring> const authors = getAuthors(authorsString);
 
-    // Retrieve the "et al." variation.
-    string const etal = buf.params().documentClass().getCiteMacro(buf.params().citeEngineType(), "_etal");
+	// Retrieve the "et al." variation.
+	string const etal = buf.params().documentClass().getCiteMacro(buf.params().citeEngineType(), "_etal");
 
-    // Output the list of authors.
-    xs << xml::StartTag("authorgroup");
-    auto it = authors.cbegin();
-    auto en = authors.cend();
-    for (size_t i = 0; it != en; ++it, ++i) {
-        xs << xml::StartTag("author");
-        xs << xml::CR();
-        xs << xml::StartTag("personname");
-        xs << xml::CR();
-        docstring name = *it;
+	// Output the list of authors.
+	xs << xml::StartTag("authorgroup");
+	auto it = authors.cbegin();
+	auto en = authors.cend();
+	for (size_t i = 0; it != en; ++it, ++i) {
+		xs << xml::StartTag("author");
+		xs << xml::CR();
+		xs << xml::StartTag("personname");
+		xs << xml::CR();
+		docstring name = *it;
 
-        // All authors go in a <personname>. If more structure is known, use it; otherwise (just "et al."), print it as such.
-        if (name == "others") {
-            xs << buf.B_(etal);
-        } else {
-            name_parts parts = nameParts(name);
-            if (! parts.prefix.empty()) {
-	            xs << xml::StartTag("honorific");
-	            xs << parts.prefix;
-	            xs << xml::EndTag("honorific");
-	            xs << xml::CR();
-            }
-            if (! parts.prename.empty()) {
-	            xs << xml::StartTag("firstname");
-	            xs << parts.prename;
-	            xs << xml::EndTag("firstname");
-	            xs << xml::CR();
-            }
-            if (! parts.surname.empty()) {
-	            xs << xml::StartTag("surname");
-	            xs << parts.surname;
-	            xs << xml::EndTag("surname");
-	            xs << xml::CR();
-            }
-            if (! parts.suffix.empty()) {
-	            xs << xml::StartTag("othername", "role=\"suffix\"");
-	            xs << parts.suffix;
-	            xs << xml::EndTag("othername");
-	            xs << xml::CR();
-            }
-        }
+		// All authors go in a <personname>. If more structure is known, use it; otherwise (just "et al."), print it as such.
+		if (name == "others") {
+			xs << buf.B_(etal);
+		} else {
+			name_parts parts = nameParts(name);
+			if (! parts.prefix.empty()) {
+				xs << xml::StartTag("honorific");
+				xs << parts.prefix;
+				xs << xml::EndTag("honorific");
+				xs << xml::CR();
+			}
+			if (! parts.prename.empty()) {
+				xs << xml::StartTag("firstname");
+				xs << parts.prename;
+				xs << xml::EndTag("firstname");
+				xs << xml::CR();
+			}
+			if (! parts.surname.empty()) {
+				xs << xml::StartTag("surname");
+				xs << parts.surname;
+				xs << xml::EndTag("surname");
+				xs << xml::CR();
+			}
+			if (! parts.suffix.empty()) {
+				xs << xml::StartTag("othername", "role=\"suffix\"");
+				xs << parts.suffix;
+				xs << xml::EndTag("othername");
+				xs << xml::CR();
+			}
+		}
 
-        xs << xml::EndTag("personname");
-        xs << xml::CR();
-        xs << xml::EndTag("author");
-        xs << xml::CR();
+		xs << xml::EndTag("personname");
+		xs << xml::CR();
+		xs << xml::EndTag("author");
+		xs << xml::CR();
 
-        // Could add an affiliation after <personname>, but not stored in BibTeX.
-    }
-    xs << xml::EndTag("authorgroup");
-    xs << xml::CR();
+		// Could add an affiliation after <personname>, but not stored in BibTeX.
+	}
+	xs << xml::EndTag("authorgroup");
+	xs << xml::CR();
 
-    return docstring();
+	return docstring();
 }
 
 } // namespace lyx

@@ -4165,7 +4165,7 @@ docstring InsetTableCell::xhtml(XMLStream & xs, OutputParams const & rp) const
 
 void InsetTableCell::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
-    InsetText::docbook(xs, runparams);
+	InsetText::docbook(xs, runparams);
 }
 
 

@@ -573,7 +573,7 @@ public:
 	///
 	void latex(otexstream &, OutputParams const &) const;
 	///
-    void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const;
 	///
 	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///
@@ -908,8 +908,8 @@ public:
 				std::vector<unsigned int> const &,
 				bool onlydata, size_t max_length) const;
 	/// auxiliary function for docbook
-    void docbookRow(XMLStream &, row_type, OutputParams const &,
-                    bool header = false) const;
+	void docbookRow(XMLStream &, row_type, OutputParams const &,
+					bool header = false) const;
 	///
 	docstring xhtmlRow(XMLStream & xs, row_type, OutputParams const &,
 	                   bool header = false) const;

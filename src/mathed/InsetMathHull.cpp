@@ -2444,23 +2444,23 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 	ms << from_utf8(subst(subst(to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;"));
 	ms << "</" << from_ascii("alt") << ">";
 
-    // Actual transformation of the formula into MathML. This translation may fail (for example, due to custom macros).
-    // The new output stream is required to deal with the errors: first write completely the formula into this
-    // temporary stream; then, if it is possible without error, then copy it back to the "real" stream. Otherwise,
+	// Actual transformation of the formula into MathML. This translation may fail (for example, due to custom macros).
+	// The new output stream is required to deal with the errors: first write completely the formula into this
+	// temporary stream; then, if it is possible without error, then copy it back to the "real" stream. Otherwise,
 	// some incomplete tags might be put into the real stream.
-    try {
-    	// First, generate the MathML expression.
-	    odocstringstream ostmp;
-	    MathStream mstmp(ostmp, ms.xmlns(), ms.xmlMode());
-	    InsetMathGrid::mathmlize(mstmp);
+	try {
+		// First, generate the MathML expression.
+		odocstringstream ostmp;
+		MathStream mstmp(ostmp, ms.xmlns(), ms.xmlMode());
+		InsetMathGrid::mathmlize(mstmp);
 
-    	// Then, output it (but only if the generation can be done without errors!).
-	    ms << MTag("math");
-	    ms.cr();
+		// Then, output it (but only if the generation can be done without errors!).
+		ms << MTag("math");
+		ms.cr();
 		osmath << ostmp.str(); // osmath is not a XMLStream, so no need for XMLStream::ESCAPE_NONE.
-	    ms << ETag("math");
-    } catch (MathExportException const &) {
-	    osmath << "MathML export failed. Please report this as a bug.";
+		ms << ETag("math");
+	} catch (MathExportException const &) {
+		osmath << "MathML export failed. Please report this as a bug.";
 	}
 
 	// Close the DocBook tag enclosing the formula.

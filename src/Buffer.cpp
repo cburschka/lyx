@@ -2143,22 +2143,22 @@ Buffer::ExportStatus Buffer::writeDocBookSource(odocstream & os,
 	XMLStream xs(os);
 
 	if (output_preamble) {
-        // XML preamble, no doctype needed.
+		// XML preamble, no doctype needed.
 		// Not using XMLStream for this, as the root tag would be in the tag stack and make troubles with the error
 		// detection mechanisms (these are called before the end tag is output, and thus interact with the canary
 		// parsep in output_docbook.cpp).
-        os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+		os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 		   << "<!-- This DocBook file was created by LyX " << lyx_version
 		   << "\n  See http://www.lyx.org/ for more information -->\n";
 
 		// Directly output the root tag, based on the current type of document.
-        string languageCode = params().language->code();
+		string languageCode = params().language->code();
 		string params = "xml:lang=\"" + languageCode + '"'
 						+ " xmlns=\"http://docbook.org/ns/docbook\""
 						+ " xmlns:xlink=\"http://www.w3.org/1999/xlink\""
 						+ " xmlns:m=\"http://www.w3.org/1998/Math/MathML\""
-		                + " xmlns:xi=\"http://www.w3.org/2001/XInclude\""
-		                + " version=\"5.2\"";
+						+ " xmlns:xi=\"http://www.w3.org/2001/XInclude\""
+						+ " version=\"5.2\"";
 
 		os << "<" << from_ascii(tclass.docbookroot()) << " " << from_ascii(params) << ">\n";
 	}

@@ -336,8 +336,8 @@ public:
 			     OutputWhat output = FullSource) const;
 	///
 	ExportStatus writeDocBookSource(odocstream & os,
-			     OutputParams const & runparams_in,
-			     OutputWhat output = FullSource) const;
+				 OutputParams const & runparams_in,
+				 OutputWhat output = FullSource) const;
 	///
 	ExportStatus makeLyXHTMLFile(support::FileName const & filename,
 			     OutputParams const & runparams_in) const;

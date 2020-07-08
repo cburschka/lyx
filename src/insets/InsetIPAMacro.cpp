@@ -554,29 +554,29 @@ int InsetIPAChar::plaintext(odocstringstream & os, OutputParams const &, size_t)
 
 void InsetIPAChar::docbook(XMLStream & xs, OutputParams const &) const
 {
-    switch (kind_) {
-    case TONE_FALLING:
-        xs << XMLStream::ESCAPE_NONE << "&#x2e5;";
-        xs << XMLStream::ESCAPE_NONE << "&#x2e9;";
-        break;
-    case TONE_RISING:
-        xs << XMLStream::ESCAPE_NONE << "&#x2e9;";
-        xs << XMLStream::ESCAPE_NONE << "&#x2e5;";
-        break;
-    case TONE_HIGH_RISING:
-        xs << XMLStream::ESCAPE_NONE << "&#x2e7;";
-        xs << XMLStream::ESCAPE_NONE << "&#x2e5;";
-        break;
-    case TONE_LOW_RISING:
-        xs << XMLStream::ESCAPE_NONE << "&#x2e9;";
-        xs << XMLStream::ESCAPE_NONE << "&#x2e7;";
-        break;
-    case TONE_HIGH_RISING_FALLING:
-        xs << XMLStream::ESCAPE_NONE << "&#x2e8;";
-        xs << XMLStream::ESCAPE_NONE << "&#x2e5;";
-        xs << XMLStream::ESCAPE_NONE << "&#x2e8;";
-        break;
-    }
+	switch (kind_) {
+	case TONE_FALLING:
+		xs << XMLStream::ESCAPE_NONE << "&#x2e5;";
+		xs << XMLStream::ESCAPE_NONE << "&#x2e9;";
+		break;
+	case TONE_RISING:
+		xs << XMLStream::ESCAPE_NONE << "&#x2e9;";
+		xs << XMLStream::ESCAPE_NONE << "&#x2e5;";
+		break;
+	case TONE_HIGH_RISING:
+		xs << XMLStream::ESCAPE_NONE << "&#x2e7;";
+		xs << XMLStream::ESCAPE_NONE << "&#x2e5;";
+		break;
+	case TONE_LOW_RISING:
+		xs << XMLStream::ESCAPE_NONE << "&#x2e9;";
+		xs << XMLStream::ESCAPE_NONE << "&#x2e7;";
+		break;
+	case TONE_HIGH_RISING_FALLING:
+		xs << XMLStream::ESCAPE_NONE << "&#x2e8;";
+		xs << XMLStream::ESCAPE_NONE << "&#x2e5;";
+		xs << XMLStream::ESCAPE_NONE << "&#x2e8;";
+		break;
+	}
 }
 
 

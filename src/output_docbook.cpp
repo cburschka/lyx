@@ -47,122 +47,124 @@ namespace lyx {
 
 namespace {
 
-std::string const fontToDocBookTag(xml::FontTypes type) {
-    switch (type) {
-    case xml::FontTypes::FT_EMPH:
-    case xml::FontTypes::FT_BOLD:
-        return "emphasis";
-    case xml::FontTypes::FT_NOUN:
-        return "person";
-    case xml::FontTypes::FT_UBAR:
-    case xml::FontTypes::FT_WAVE:
-    case xml::FontTypes::FT_DBAR:
-    case xml::FontTypes::FT_SOUT:
-    case xml::FontTypes::FT_XOUT:
-    case xml::FontTypes::FT_ITALIC:
-    case xml::FontTypes::FT_UPRIGHT:
-    case xml::FontTypes::FT_SLANTED:
-    case xml::FontTypes::FT_SMALLCAPS:
-    case xml::FontTypes::FT_ROMAN:
-    case xml::FontTypes::FT_SANS:
-        return "emphasis";
-    case xml::FontTypes::FT_TYPE:
-        return "code";
-    case xml::FontTypes::FT_SIZE_TINY:
-    case xml::FontTypes::FT_SIZE_SCRIPT:
-    case xml::FontTypes::FT_SIZE_FOOTNOTE:
-    case xml::FontTypes::FT_SIZE_SMALL:
-    case xml::FontTypes::FT_SIZE_NORMAL:
-    case xml::FontTypes::FT_SIZE_LARGE:
-    case xml::FontTypes::FT_SIZE_LARGER:
-    case xml::FontTypes::FT_SIZE_LARGEST:
-    case xml::FontTypes::FT_SIZE_HUGE:
-    case xml::FontTypes::FT_SIZE_HUGER:
-    case xml::FontTypes::FT_SIZE_INCREASE:
-    case xml::FontTypes::FT_SIZE_DECREASE:
-        return "emphasis";
-    default:
-        return "";
-    }
+std::string const fontToDocBookTag(xml::FontTypes type)
+{
+	switch (type) {
+	case xml::FontTypes::FT_EMPH:
+	case xml::FontTypes::FT_BOLD:
+		return "emphasis";
+	case xml::FontTypes::FT_NOUN:
+		return "person";
+	case xml::FontTypes::FT_UBAR:
+	case xml::FontTypes::FT_WAVE:
+	case xml::FontTypes::FT_DBAR:
+	case xml::FontTypes::FT_SOUT:
+	case xml::FontTypes::FT_XOUT:
+	case xml::FontTypes::FT_ITALIC:
+	case xml::FontTypes::FT_UPRIGHT:
+	case xml::FontTypes::FT_SLANTED:
+	case xml::FontTypes::FT_SMALLCAPS:
+	case xml::FontTypes::FT_ROMAN:
+	case xml::FontTypes::FT_SANS:
+		return "emphasis";
+	case xml::FontTypes::FT_TYPE:
+		return "code";
+	case xml::FontTypes::FT_SIZE_TINY:
+	case xml::FontTypes::FT_SIZE_SCRIPT:
+	case xml::FontTypes::FT_SIZE_FOOTNOTE:
+	case xml::FontTypes::FT_SIZE_SMALL:
+	case xml::FontTypes::FT_SIZE_NORMAL:
+	case xml::FontTypes::FT_SIZE_LARGE:
+	case xml::FontTypes::FT_SIZE_LARGER:
+	case xml::FontTypes::FT_SIZE_LARGEST:
+	case xml::FontTypes::FT_SIZE_HUGE:
+	case xml::FontTypes::FT_SIZE_HUGER:
+	case xml::FontTypes::FT_SIZE_INCREASE:
+	case xml::FontTypes::FT_SIZE_DECREASE:
+		return "emphasis";
+	default:
+		return "";
+	}
 }
 
-string fontToRole(xml::FontTypes type) {
-    // Specific fonts are achieved with roles. The only common ones are "" for basic emphasis,
-    // and "bold"/"strong" for bold. With some specific options, other roles are copied into
-    // HTML output (via the DocBook XSLT sheets); otherwise, if not recognised, they are just ignored.
-    // Hence, it is not a problem to have many roles by default here.
-    // See https://www.sourceware.org/ml/docbook/2003-05/msg00269.html
-    switch (type) {
-    case xml::FontTypes::FT_ITALIC:
-    case xml::FontTypes::FT_EMPH:
-        return "";
-    case xml::FontTypes::FT_BOLD:
-        return "bold";
-    case xml::FontTypes::FT_NOUN:
-        return ""; // Outputs a <person>
-    case xml::FontTypes::FT_TYPE:
-        return ""; // Outputs a <code>
+string fontToRole(xml::FontTypes type)
+{
+	// Specific fonts are achieved with roles. The only common ones are "" for basic emphasis,
+	// and "bold"/"strong" for bold. With some specific options, other roles are copied into
+	// HTML output (via the DocBook XSLT sheets); otherwise, if not recognised, they are just ignored.
+	// Hence, it is not a problem to have many roles by default here.
+	// See https://www.sourceware.org/ml/docbook/2003-05/msg00269.html
+	switch (type) {
+	case xml::FontTypes::FT_ITALIC:
+	case xml::FontTypes::FT_EMPH:
+		return "";
+	case xml::FontTypes::FT_BOLD:
+		return "bold";
+	case xml::FontTypes::FT_NOUN:
+		return ""; // Outputs a <person>
+	case xml::FontTypes::FT_TYPE:
+		return ""; // Outputs a <code>
 
-        // All other roles are non-standard for DocBook.
+		// All other roles are non-standard for DocBook.
 
-    case xml::FontTypes::FT_UBAR:
-        return "ubar";
-    case xml::FontTypes::FT_WAVE:
-        return "wave";
-    case xml::FontTypes::FT_DBAR:
-        return "dbar";
-    case xml::FontTypes::FT_SOUT:
-        return "sout";
-    case xml::FontTypes::FT_XOUT:
-        return "xout";
-    case xml::FontTypes::FT_UPRIGHT:
-        return "upright";
-    case xml::FontTypes::FT_SLANTED:
-        return "slanted";
-    case xml::FontTypes::FT_SMALLCAPS:
-        return "smallcaps";
-    case xml::FontTypes::FT_ROMAN:
-        return "roman";
-    case xml::FontTypes::FT_SANS:
-        return "sans";
-    case xml::FontTypes::FT_SIZE_TINY:
-        return "tiny";
-    case xml::FontTypes::FT_SIZE_SCRIPT:
-        return "size_script";
-    case xml::FontTypes::FT_SIZE_FOOTNOTE:
-        return "size_footnote";
-    case xml::FontTypes::FT_SIZE_SMALL:
-        return "size_small";
-    case xml::FontTypes::FT_SIZE_NORMAL:
-        return "size_normal";
-    case xml::FontTypes::FT_SIZE_LARGE:
-        return "size_large";
-    case xml::FontTypes::FT_SIZE_LARGER:
-        return "size_larger";
-    case xml::FontTypes::FT_SIZE_LARGEST:
-        return "size_largest";
-    case xml::FontTypes::FT_SIZE_HUGE:
-        return "size_huge";
-    case xml::FontTypes::FT_SIZE_HUGER:
-        return "size_huger";
-    case xml::FontTypes::FT_SIZE_INCREASE:
-        return "size_increase";
-    case xml::FontTypes::FT_SIZE_DECREASE:
-        return "size_decrease";
-    default:
-        return "";
-    }
+	case xml::FontTypes::FT_UBAR:
+		return "ubar";
+	case xml::FontTypes::FT_WAVE:
+		return "wave";
+	case xml::FontTypes::FT_DBAR:
+		return "dbar";
+	case xml::FontTypes::FT_SOUT:
+		return "sout";
+	case xml::FontTypes::FT_XOUT:
+		return "xout";
+	case xml::FontTypes::FT_UPRIGHT:
+		return "upright";
+	case xml::FontTypes::FT_SLANTED:
+		return "slanted";
+	case xml::FontTypes::FT_SMALLCAPS:
+		return "smallcaps";
+	case xml::FontTypes::FT_ROMAN:
+		return "roman";
+	case xml::FontTypes::FT_SANS:
+		return "sans";
+	case xml::FontTypes::FT_SIZE_TINY:
+		return "tiny";
+	case xml::FontTypes::FT_SIZE_SCRIPT:
+		return "size_script";
+	case xml::FontTypes::FT_SIZE_FOOTNOTE:
+		return "size_footnote";
+	case xml::FontTypes::FT_SIZE_SMALL:
+		return "size_small";
+	case xml::FontTypes::FT_SIZE_NORMAL:
+		return "size_normal";
+	case xml::FontTypes::FT_SIZE_LARGE:
+		return "size_large";
+	case xml::FontTypes::FT_SIZE_LARGER:
+		return "size_larger";
+	case xml::FontTypes::FT_SIZE_LARGEST:
+		return "size_largest";
+	case xml::FontTypes::FT_SIZE_HUGE:
+		return "size_huge";
+	case xml::FontTypes::FT_SIZE_HUGER:
+		return "size_huger";
+	case xml::FontTypes::FT_SIZE_INCREASE:
+		return "size_increase";
+	case xml::FontTypes::FT_SIZE_DECREASE:
+		return "size_decrease";
+	default:
+		return "";
+	}
 }
 
 string fontToAttribute(xml::FontTypes type) {
-    // If there is a role (i.e. nonstandard use of a tag), output the attribute. Otherwise, the sheer tag is sufficient
-    // for the font.
-    string role = fontToRole(type);
-    if (!role.empty()) {
-        return "role='" + role + "'";
-    } else {
-        return "";
-    }
+	// If there is a role (i.e. nonstandard use of a tag), output the attribute. Otherwise, the sheer tag is sufficient
+	// for the font.
+	string role = fontToRole(type);
+	if (!role.empty()) {
+		return "role='" + role + "'";
+	} else {
+		return "";
+	}
 }
 
 } // end anonymous namespace
@@ -170,13 +172,13 @@ string fontToAttribute(xml::FontTypes type) {
 
 xml::FontTag docbookStartFontTag(xml::FontTypes type)
 {
-    return xml::FontTag(from_utf8(fontToDocBookTag(type)), from_utf8(fontToAttribute(type)), type);
+	return xml::FontTag(from_utf8(fontToDocBookTag(type)), from_utf8(fontToAttribute(type)), type);
 }
 
 
 xml::EndFontTag docbookEndFontTag(xml::FontTypes type)
 {
-    return xml::EndFontTag(from_utf8(fontToDocBookTag(type)), type);
+	return xml::EndFontTag(from_utf8(fontToDocBookTag(type)), type);
 }
 
 
@@ -184,63 +186,68 @@ namespace {
 
 // convenience functions
 
-void openParTag(XMLStream &xs, Layout const &lay) {
-    if (lay.docbookwrappertag() != "NONE") {
-        xs << xml::StartTag(lay.docbookwrappertag(), lay.docbookwrapperattr());
-    }
+void openParTag(XMLStream &xs, Layout const &lay)
+{
+	if (lay.docbookwrappertag() != "NONE") {
+		xs << xml::StartTag(lay.docbookwrappertag(), lay.docbookwrapperattr());
+	}
 
-    string tag = lay.docbooktag();
-    if (tag == "Plain Layout")
-        tag = "para";
+	string tag = lay.docbooktag();
+	if (tag == "Plain Layout")
+		tag = "para";
 
-    xs << xml::ParTag(tag, lay.docbookattr());
+	xs << xml::ParTag(tag, lay.docbookattr());
 }
 
 
-void closeTag(XMLStream &xs, Layout const &lay) {
-    string tag = lay.docbooktag();
-    if (tag == "Plain Layout")
-        tag = "para";
+void closeTag(XMLStream &xs, Layout const &lay)
+{
+	string tag = lay.docbooktag();
+	if (tag == "Plain Layout")
+		tag = "para";
 
-    xs << xml::EndTag(tag);
-    if (lay.docbookwrappertag() != "NONE")
-        xs << xml::EndTag(lay.docbookwrappertag());
+	xs << xml::EndTag(tag);
+	if (lay.docbookwrappertag() != "NONE")
+		xs << xml::EndTag(lay.docbookwrappertag());
 }
 
 
 void openLabelTag(XMLStream & xs, Layout const & lay) // Mostly for definition lists.
 {
-    xs << xml::StartTag(lay.docbookitemlabeltag(), lay.docbookitemlabelattr());
+	xs << xml::StartTag(lay.docbookitemlabeltag(), lay.docbookitemlabelattr());
 }
 
 
 void closeLabelTag(XMLStream & xs, Layout const & lay)
 {
-    xs << xml::EndTag(lay.docbookitemlabeltag());
-    xs << xml::CR();
+	xs << xml::EndTag(lay.docbookitemlabeltag());
+	xs << xml::CR();
 }
 
 
-void openItemTag(XMLStream &xs, Layout const &lay) {
+void openItemTag(XMLStream &xs, Layout const &lay)
+{
 	xs << xml::StartTag(lay.docbookitemtag(), lay.docbookitemattr());
 }
 
 
 // Return true when new elements are output in a paragraph, false otherwise.
-bool openInnerItemTag(XMLStream &xs, Layout const &lay) {
-    if (lay.docbookiteminnertag() != "NONE") {
-        xs << xml::CR();
-        xs << xml::ParTag(lay.docbookiteminnertag(), lay.docbookiteminnerattr());
+bool openInnerItemTag(XMLStream &xs, Layout const &lay)
+{
+	if (lay.docbookiteminnertag() != "NONE") {
+		xs << xml::CR();
+		xs << xml::ParTag(lay.docbookiteminnertag(), lay.docbookiteminnerattr());
 
-        if (lay.docbookiteminnertag() == "para") {
-            return true;
-        }
-    }
-    return false;
+		if (lay.docbookiteminnertag() == "para") {
+			return true;
+		}
+	}
+	return false;
 }
 
 
-void closeInnerItemTag(XMLStream &xs, Layout const &lay) {
+void closeInnerItemTag(XMLStream &xs, Layout const &lay)
+{
 	if (lay.docbookiteminnertag()!= "NONE") {
 		xs << xml::EndTag(lay.docbookiteminnertag());
 		xs << xml::CR();
@@ -248,164 +255,171 @@ void closeInnerItemTag(XMLStream &xs, Layout const &lay) {
 }
 
 
-inline void closeItemTag(XMLStream &xs, Layout const &lay) {
-    xs << xml::EndTag(lay.docbookitemtag()) << xml::CR();
+inline void closeItemTag(XMLStream &xs, Layout const &lay)
+{
+	xs << xml::EndTag(lay.docbookitemtag()) << xml::CR();
 }
 
 // end of convenience functions
 
 ParagraphList::const_iterator findLastParagraph(
-        ParagraphList::const_iterator p,
-        ParagraphList::const_iterator const &pend) {
-    for (++p; p != pend && p->layout().latextype == LATEX_PARAGRAPH; ++p);
+		ParagraphList::const_iterator p,
+		ParagraphList::const_iterator const & pend) {
+	for (++p; p != pend && p->layout().latextype == LATEX_PARAGRAPH; ++p);
 
-    return p;
+	return p;
 }
 
 
 ParagraphList::const_iterator findEndOfEnvironment(
-        ParagraphList::const_iterator const &pstart,
-        ParagraphList::const_iterator const &pend) {
-    ParagraphList::const_iterator p = pstart;
-    Layout const &bstyle = p->layout();
-    size_t const depth = p->params().depth();
-    for (++p; p != pend; ++p) {
-        Layout const &style = p->layout();
-        // It shouldn't happen that e.g. a section command occurs inside
-        // a quotation environment, at a higher depth, but as of 6/2009,
-        // it can happen. We pretend that it's just at lowest depth.
-        if (style.latextype == LATEX_COMMAND)
-            return p;
+		ParagraphList::const_iterator const & pstart,
+		ParagraphList::const_iterator const & pend)
+{
+	ParagraphList::const_iterator p = pstart;
+	Layout const &bstyle = p->layout();
+	size_t const depth = p->params().depth();
+	for (++p; p != pend; ++p) {
+		Layout const &style = p->layout();
+		// It shouldn't happen that e.g. a section command occurs inside
+		// a quotation environment, at a higher depth, but as of 6/2009,
+		// it can happen. We pretend that it's just at lowest depth.
+		if (style.latextype == LATEX_COMMAND)
+			return p;
 
-        // If depth is down, we're done
-        if (p->params().depth() < depth)
-            return p;
+		// If depth is down, we're done
+		if (p->params().depth() < depth)
+			return p;
 
-        // If depth is up, we're not done
-        if (p->params().depth() > depth)
-            continue;
+		// If depth is up, we're not done
+		if (p->params().depth() > depth)
+			continue;
 
-        // FIXME I am not sure about the first check.
-        // Surely we *could* have different layouts that count as
-        // LATEX_PARAGRAPH, right?
-        if (style.latextype == LATEX_PARAGRAPH || style != bstyle)
-            return p;
-    }
-    return pend;
+		// FIXME I am not sure about the first check.
+		// Surely we *could* have different layouts that count as
+		// LATEX_PARAGRAPH, right?
+		if (style.latextype == LATEX_PARAGRAPH || style != bstyle)
+			return p;
+	}
+	return pend;
 }
 
 
-ParagraphList::const_iterator makeParagraphs(Buffer const &buf,
-                                             XMLStream &xs,
-                                             OutputParams const &runparams,
-                                             Text const &text,
-                                             ParagraphList::const_iterator const &pbegin,
-                                             ParagraphList::const_iterator const &pend) {
-    ParagraphList::const_iterator const begin = text.paragraphs().begin();
-    ParagraphList::const_iterator par = pbegin;
-    for (; par != pend; ++par) {
-        Layout const &lay = par->layout();
-        if (!lay.counter.empty())
-            buf.masterBuffer()->params().
-                    documentClass().counters().step(lay.counter, OutputUpdate);
+ParagraphList::const_iterator makeParagraphs(
+		Buffer const &buf,
+		XMLStream &xs,
+		OutputParams const &runparams,
+		Text const &text,
+		ParagraphList::const_iterator const & pbegin,
+		ParagraphList::const_iterator const & pend)
+{
+	ParagraphList::const_iterator const begin = text.paragraphs().begin();
+	ParagraphList::const_iterator par = pbegin;
+	for (; par != pend; ++par) {
+		Layout const &lay = par->layout();
+		if (!lay.counter.empty())
+			buf.masterBuffer()->params().
+					documentClass().counters().step(lay.counter, OutputUpdate);
 
-        // We want to open the paragraph tag if:
-        //   (i) the current layout permits multiple paragraphs
-        //  (ii) we are either not already inside a paragraph (HTMLIsBlock) OR
-        //       we are, but this is not the first paragraph
-        //
-        // But there is also a special case, and we first see whether we are in it.
-        // We do not want to open the paragraph tag if this paragraph contains
-        // only one item, and that item is "inline", i.e., not HTMLIsBlock (such
-        // as a branch). On the other hand, if that single item has a font change
-        // applied to it, then we still do need to open the paragraph.
-        //
-        // Obviously, this is very fragile. The main reason we need to do this is
-        // because of branches, e.g., a branch that contains an entire new section.
-        // We do not really want to wrap that whole thing in a <div>...</div>.
-        bool special_case = false;
-        Inset const *specinset = par->size() == 1 ? par->getInset(0) : 0;
-        if (specinset && !specinset->getLayout().htmlisblock()) { // TODO: Convert htmlisblock to a DocBook parameter?
-            Layout const &style = par->layout();
-            FontInfo const first_font = style.labeltype == LABEL_MANUAL ?
-                                        style.labelfont : style.font;
-            FontInfo const our_font =
-                    par->getFont(buf.masterBuffer()->params(), 0,
-                                 text.outerFont(distance(begin, par))).fontInfo();
+		// We want to open the paragraph tag if:
+		//   (i) the current layout permits multiple paragraphs
+		//  (ii) we are either not already inside a paragraph (HTMLIsBlock) OR
+		//	   we are, but this is not the first paragraph
+		//
+		// But there is also a special case, and we first see whether we are in it.
+		// We do not want to open the paragraph tag if this paragraph contains
+		// only one item, and that item is "inline", i.e., not HTMLIsBlock (such
+		// as a branch). On the other hand, if that single item has a font change
+		// applied to it, then we still do need to open the paragraph.
+		//
+		// Obviously, this is very fragile. The main reason we need to do this is
+		// because of branches, e.g., a branch that contains an entire new section.
+		// We do not really want to wrap that whole thing in a <div>...</div>.
+		bool special_case = false;
+		Inset const *specinset = par->size() == 1 ? par->getInset(0) : 0;
+		if (specinset && !specinset->getLayout().htmlisblock()) { // TODO: Convert htmlisblock to a DocBook parameter?
+			Layout const &style = par->layout();
+			FontInfo const first_font = style.labeltype == LABEL_MANUAL ?
+										style.labelfont : style.font;
+			FontInfo const our_font =
+					par->getFont(buf.masterBuffer()->params(), 0,
+								 text.outerFont(distance(begin, par))).fontInfo();
 
-            if (first_font == our_font)
-                special_case = true;
-        }
+			if (first_font == our_font)
+				special_case = true;
+		}
 
-        // Plain layouts must be ignored.
-        if (!special_case && buf.params().documentClass().isPlainLayout(lay) && !runparams.docbook_force_pars)
-            special_case = true;
-        // TODO: Could get rid of this with a DocBook equivalent to htmlisblock?
-        if (!special_case && par->size() == 1 && par->getInset(0)) {
-            Inset const * firstInset = par->getInset(0);
+		// Plain layouts must be ignored.
+		if (!special_case && buf.params().documentClass().isPlainLayout(lay) && !runparams.docbook_force_pars)
+			special_case = true;
+		// TODO: Could get rid of this with a DocBook equivalent to htmlisblock?
+		if (!special_case && par->size() == 1 && par->getInset(0)) {
+			Inset const * firstInset = par->getInset(0);
 
-            // Floats cannot be in paragraphs.
-            special_case = to_ascii(firstInset->layoutName()).substr(0, 6) == "Float:";
+			// Floats cannot be in paragraphs.
+			special_case = to_ascii(firstInset->layoutName()).substr(0, 6) == "Float:";
 
-            // Bibliographies cannot be in paragraphs.
-            if (!special_case && firstInset->asInsetCommand())
-                special_case = firstInset->asInsetCommand()->params().getCmdName() == "bibtex";
+			// Bibliographies cannot be in paragraphs.
+			if (!special_case && firstInset->asInsetCommand())
+				special_case = firstInset->asInsetCommand()->params().getCmdName() == "bibtex";
 
-            // Equations do not deserve their own paragraph (DocBook allows them outside paragraphs).
-            if (!special_case && firstInset->asInsetMath())
-                special_case = true;
+			// Equations do not deserve their own paragraph (DocBook allows them outside paragraphs).
+			if (!special_case && firstInset->asInsetMath())
+				special_case = true;
 
-            // ERTs are in comments, not paragraphs.
-            if (!special_case && firstInset->lyxCode() == lyx::ERT_CODE)
-                special_case = true;
+			// ERTs are in comments, not paragraphs.
+			if (!special_case && firstInset->lyxCode() == lyx::ERT_CODE)
+				special_case = true;
 
-            // Listings should not get into their own paragraph.
-	        if (!special_case && firstInset->lyxCode() == lyx::LISTINGS_CODE)
-		        special_case = true;
-        }
+			// Listings should not get into their own paragraph.
+			if (!special_case && firstInset->lyxCode() == lyx::LISTINGS_CODE)
+				special_case = true;
+		}
 
-        bool const open_par = runparams.docbook_make_pars
-                              && (!runparams.docbook_in_par || par != pbegin)
-                              && !special_case;
+		bool const open_par = runparams.docbook_make_pars
+							  && (!runparams.docbook_in_par || par != pbegin)
+							  && !special_case;
 
-        // We want to issue the closing tag if either:
-        //   (i)  We opened it, and either docbook_in_par is false,
-        //        or we're not in the last paragraph, anyway.
-        //   (ii) We didn't open it and docbook_in_par is true,
-        //        but we are in the first par, and there is a next par.
-        ParagraphList::const_iterator nextpar = par;
-        ++nextpar;
-        bool const close_par =
-                ((open_par && (!runparams.docbook_in_par || nextpar != pend))
-                || (!open_par && runparams.docbook_in_par && par == pbegin && nextpar != pend));
+		// We want to issue the closing tag if either:
+		//   (i)  We opened it, and either docbook_in_par is false,
+		//		or we're not in the last paragraph, anyway.
+		//   (ii) We didn't open it and docbook_in_par is true,
+		//		but we are in the first par, and there is a next par.
+		ParagraphList::const_iterator nextpar = par;
+		++nextpar;
+		bool const close_par =
+				((open_par && (!runparams.docbook_in_par || nextpar != pend))
+				|| (!open_par && runparams.docbook_in_par && par == pbegin && nextpar != pend));
 
-        if (open_par) {
-            openParTag(xs, lay);
-        }
+		if (open_par) {
+			openParTag(xs, lay);
+		}
 
-        par->simpleDocBookOnePar(buf, xs, runparams, text.outerFont(distance(begin, par)), open_par, close_par, 0);
+		par->simpleDocBookOnePar(buf, xs, runparams, text.outerFont(distance(begin, par)), open_par, close_par, 0);
 
-        if (close_par) {
-            closeTag(xs, lay);
-            xs << xml::CR();
-        }
-    }
-    return pend;
+		if (close_par) {
+			closeTag(xs, lay);
+			xs << xml::CR();
+		}
+	}
+	return pend;
 }
 
 
-bool isNormalEnv(Layout const &lay) {
-    return lay.latextype == LATEX_ENVIRONMENT
-           || lay.latextype == LATEX_BIB_ENVIRONMENT;
+bool isNormalEnv(Layout const &lay)
+{
+	return lay.latextype == LATEX_ENVIRONMENT
+		   || lay.latextype == LATEX_BIB_ENVIRONMENT;
 }
 
 
-ParagraphList::const_iterator makeEnvironment(Buffer const &buf,
-                                              XMLStream &xs,
-                                              OutputParams const &runparams,
-                                              Text const &text,
-                                              ParagraphList::const_iterator const &pbegin,
-                                              ParagraphList::const_iterator const &pend) {
+ParagraphList::const_iterator makeEnvironment(
+		Buffer const &buf,
+		XMLStream &xs,
+		OutputParams const &runparams,
+		Text const &text,
+		ParagraphList::const_iterator const & pbegin,
+		ParagraphList::const_iterator const & pend)
+{
 	ParagraphList::const_iterator const begin = text.paragraphs().begin();
 	ParagraphList::const_iterator par = pbegin;
 	Layout const &bstyle = par->layout();
@@ -429,10 +443,10 @@ ParagraphList::const_iterator makeEnvironment(Buffer const &buf,
 		Counters & cnts = buf.masterBuffer()->params().documentClass().counters();
 		docstring const & cntr = style.counter;
 		if (!style.counter.empty()
-		    && (par == pbegin || !isNormalEnv(style))
-		    && cnts.hasCounter(cntr)
-		        )
-		    cnts.step(cntr, OutputUpdate);
+			&& (par == pbegin || !isNormalEnv(style))
+			&& cnts.hasCounter(cntr)
+				)
+			cnts.step(cntr, OutputUpdate);
 		ParagraphList::const_iterator send;
 
 		// Actual content of this paragraph.
@@ -553,35 +567,39 @@ ParagraphList::const_iterator makeEnvironment(Buffer const &buf,
 }
 
 
-void makeCommand(Buffer const &buf,
-                 XMLStream &xs,
-                 OutputParams const &runparams,
-                 Text const &text,
-                 ParagraphList::const_iterator const &pbegin) {
-    Layout const &style = pbegin->layout();
-    if (!style.counter.empty())
-        buf.masterBuffer()->params().
-                documentClass().counters().step(style.counter, OutputUpdate);
+void makeCommand(
+		Buffer const & buf,
+		XMLStream & xs,
+		OutputParams const & runparams,
+		Text const & text,
+		ParagraphList::const_iterator const & pbegin)
+{
+	Layout const &style = pbegin->layout();
+	if (!style.counter.empty())
+		buf.masterBuffer()->params().
+				documentClass().counters().step(style.counter, OutputUpdate);
 
-    // No need for labels, as they are handled by DocBook tags.
+	// No need for labels, as they are handled by DocBook tags.
 
-    openParTag(xs, style);
+	openParTag(xs, style);
 
-    ParagraphList::const_iterator const begin = text.paragraphs().begin();
-    pbegin->simpleDocBookOnePar(buf, xs, runparams,
-                                text.outerFont(distance(begin, pbegin)));
-    closeTag(xs, style);
-    xs << xml::CR();
+	ParagraphList::const_iterator const begin = text.paragraphs().begin();
+	pbegin->simpleDocBookOnePar(buf, xs, runparams,
+								text.outerFont(distance(begin, pbegin)));
+	closeTag(xs, style);
+	xs << xml::CR();
 }
 
-pair<ParagraphList::const_iterator, ParagraphList::const_iterator> makeAny(Text const &text,
-		                                                                   Buffer const &buf,
-		                                                                   XMLStream &xs,
-		                                                                   OutputParams const &ourparams,
-		                                                                   ParagraphList::const_iterator par,
-		                                                                   ParagraphList::const_iterator send,
-		                                                                   ParagraphList::const_iterator pend) {
-	Layout const &style = par->layout();
+pair<ParagraphList::const_iterator, ParagraphList::const_iterator> makeAny(
+		Text const &text,
+		Buffer const &buf,
+		XMLStream &xs,
+		OutputParams const &ourparams,
+		ParagraphList::const_iterator par,
+		ParagraphList::const_iterator send,
+		ParagraphList::const_iterator pend)
+{
+	Layout const & style = par->layout();
 
 	switch (style.latextype) {
 		case LATEX_COMMAND: {
@@ -696,13 +714,15 @@ bool hasAbstractBetween(ParagraphList const &paragraphs, pit_type const bpitAbst
 }
 
 
-pit_type generateDocBookParagraphWithoutSectioning(Text const &text,
-                                                   Buffer const &buf,
-                                                   XMLStream &xs,
-                                                   OutputParams const &runparams,
-                                                   ParagraphList const &paragraphs,
-                                                   pit_type bpit,
-                                                   pit_type epit) {
+pit_type generateDocBookParagraphWithoutSectioning(
+		Text const & text,
+		Buffer const & buf,
+		XMLStream & xs,
+		OutputParams const & runparams,
+		ParagraphList const & paragraphs,
+		pit_type bpit,
+		pit_type epit)
+{
 	auto par = paragraphs.iterator_at(bpit);
 	auto lastStartedPar = par;
 	ParagraphList::const_iterator send;
@@ -719,14 +739,16 @@ pit_type generateDocBookParagraphWithoutSectioning(Text const &text,
 }
 
 
-void outputDocBookInfo(Text const &text,
-                       Buffer const &buf,
-                       XMLStream &xs,
-                       OutputParams const &runparams,
-                       ParagraphList const &paragraphs,
-                       DocBookInfoTag const &info,
-                       pit_type bpitAbstract,
-                       pit_type const epitAbstract) {
+void outputDocBookInfo(
+		Text const & text,
+		Buffer const & buf,
+		XMLStream & xs,
+		OutputParams const & runparams,
+		ParagraphList const & paragraphs,
+		DocBookInfoTag const & info,
+		pit_type bpitAbstract,
+		pit_type const epitAbstract)
+{
 	// Consider everything between bpitAbstract and epitAbstract (excluded) as paragraphs for the abstract.
 	// Use bpitAbstract >= epitAbstract to indicate there is no abstract.
 
@@ -773,11 +795,13 @@ void outputDocBookInfo(Text const &text,
 }
 
 
-void docbookFirstParagraphs(Text const &text,
-	                        Buffer const &buf,
-	                        XMLStream &xs,
-	                        OutputParams const &runparams,
-	                        pit_type epit) {
+void docbookFirstParagraphs(
+		Text const &text,
+		Buffer const &buf,
+		XMLStream &xs,
+		OutputParams const &runparams,
+		pit_type epit)
+{
 	// Handle the beginning of the document, supposing it has sections.
 	// Major role: output the first <info> tag.
 
@@ -793,15 +817,17 @@ bool isParagraphEmpty(const Paragraph &par)
 	InsetList const &insets = par.insetList();
 	size_t insetsLength = distance(insets.begin(), insets.end());
 	bool hasParagraphOnlyNote = insetsLength == 1 && insets.get(0) && insets.get(0)->asInsetCollapsible() &&
-	                            dynamic_cast<InsetNote *>(insets.get(0));
+								dynamic_cast<InsetNote *>(insets.get(0));
 	return hasParagraphOnlyNote;
 }
 
 
-void docbookSimpleAllParagraphs(Text const &text,
-	                            Buffer const &buf,
-	                            XMLStream &xs,
-	                            OutputParams const &runparams) {
+void docbookSimpleAllParagraphs(
+		Text const & text,
+		Buffer const & buf,
+		XMLStream & xs,
+		OutputParams const & runparams)
+{
 	// Handle the document, supposing it has no sections (i.e. a "simple" document).
 
 	// First, the <info> tag.
@@ -836,25 +862,25 @@ void docbookSimpleAllParagraphs(Text const &text,
 
 
 void docbookParagraphs(Text const &text,
-                       Buffer const &buf,
-                       XMLStream &xs,
-                       OutputParams const &runparams) {
+					   Buffer const &buf,
+					   XMLStream &xs,
+					   OutputParams const &runparams) {
 	ParagraphList const &paragraphs = text.paragraphs();
 	if (runparams.par_begin == runparams.par_end) {
-	    runparams.par_begin = 0;
-	    runparams.par_end = paragraphs.size();
+		runparams.par_begin = 0;
+		runparams.par_end = paragraphs.size();
 	}
 	pit_type bpit = runparams.par_begin;
 	pit_type const epit = runparams.par_end;
 	LASSERT(bpit < epit,
-	        {
-	            xs << XMLStream::ESCAPE_NONE << "<!-- DocBook output error! -->\n";
-	            return;
-	        });
+			{
+				xs << XMLStream::ESCAPE_NONE << "<!-- DocBook output error! -->\n";
+				return;
+			});
 
 	ParagraphList::const_iterator const pend =
-	        (epit == (int) paragraphs.size()) ?
-	        paragraphs.end() : paragraphs.iterator_at(epit);
+			(epit == (int) paragraphs.size()) ?
+			paragraphs.end() : paragraphs.iterator_at(epit);
 	std::stack<std::pair<int, string>> headerLevels; // Used to determine when to open/close sections: store the depth
 	// of the section and the tag that was used to open it.
 
@@ -893,13 +919,13 @@ void docbookParagraphs(Text const &text,
 		// Think about adding <section> and/or </section>s.
 		const bool isLayoutSectioning = style.category() == from_utf8("Sectioning");
 		if (isLayoutSectioning) {
-		    int level = style.toclevel;
+			int level = style.toclevel;
 
-		    // Need to close a previous section if it has the same level or a higher one (close <section> if opening a <h2>
-		    // after a <h2>, <h3>, <h4>, <h5> or <h6>). More examples:
-		    //   - current: h2; back: h1; do not close any <section>
-		    //   - current: h1; back: h2; close two <section> (first the <h2>, then the <h1>, so a new <h1> can come)
-		    while (!headerLevels.empty() && level <= headerLevels.top().first) {
+			// Need to close a previous section if it has the same level or a higher one (close <section> if opening a <h2>
+			// after a <h2>, <h3>, <h4>, <h5> or <h6>). More examples:
+			//   - current: h2; back: h1; do not close any <section>
+			//   - current: h1; back: h2; close two <section> (first the <h2>, then the <h1>, so a new <h1> can come)
+			while (!headerLevels.empty() && level <= headerLevels.top().first) {
 				int stackLevel = headerLevels.top().first;
 				docstring stackTag = from_utf8("</" + headerLevels.top().second + ">");
 				headerLevels.pop();
@@ -907,15 +933,15 @@ void docbookParagraphs(Text const &text,
 				// Output the tag only if it corresponds to a legit section.
 				if (stackLevel != Layout::NOT_IN_TOC)
 					xs << XMLStream::ESCAPE_NONE << stackTag << xml::CR();
-		    }
+			}
 
-		    // Open the new section: first push it onto the stack, then output it in DocBook.
-		    string sectionTag = (currentlyInAppendix && style.docbooksectiontag() == "chapter") ?
-		                        "appendix" : style.docbooksectiontag();
-		    headerLevels.push(std::make_pair(level, sectionTag));
+			// Open the new section: first push it onto the stack, then output it in DocBook.
+			string sectionTag = (currentlyInAppendix && style.docbooksectiontag() == "chapter") ?
+								"appendix" : style.docbooksectiontag();
+			headerLevels.push(std::make_pair(level, sectionTag));
 
-		    // Some sectioning-like elements should not be output (such as FrontMatter).
-		    if (level != Layout::NOT_IN_TOC) {
+			// Some sectioning-like elements should not be output (such as FrontMatter).
+			if (level != Layout::NOT_IN_TOC) {
 				// Look for a label in the title, i.e. a InsetLabel as a child.
 				docstring id = docstring();
 				for (pos_type i = 0; i < par->size(); ++i) {
@@ -940,7 +966,7 @@ void docbookParagraphs(Text const &text,
 				tag += from_utf8(">");
 				xs << XMLStream::ESCAPE_NONE << tag;
 				xs << xml::CR();
-		    }
+			}
 		}
 
 		// Close all sections before the bibliography.
