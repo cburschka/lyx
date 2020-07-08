@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 587
+\lyxformat 596
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -41,7 +41,7 @@
 \begin_modules
 logicalmkup
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
 \inputencoding utf8
@@ -130,11 +130,14 @@ logicalmkup
 \tablestyle default
 \tracking_changes true
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
 \author -712698321 "Jürgen Spitzmüller"
 \author -495245474 "Jean-Marc Lasgouttes"
+\author 5863208 "ab"
 \author 731793113 "Richard Kimberly Heck" rikiheck@lyx.org
 \end_header
 
@@ -7078,8 +7081,11 @@ status collapsed
  Supporting a style file is usually fairly easy.
  Supporting a new class file is a bit harder.
  We'll discuss the former in this section and the latter in the next.
- Similar remarks apply, of course, if you want to support a new DocBook
- DTD.
+ 
+\change_deleted 5863208 1594239023
+Similar remarks apply, of course, if you want to support a new DocBook DTD.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -8337,17 +8343,23 @@ foo.sty
 \end_inset
 
  package.
- Finally, it is also possible to declare classes for DocBook code.
+ 
+\change_deleted 5863208 1594239179
+Finally, it is also possible to declare classes for DocBook code.
  Typical declarations will look like:
 \end_layout
 
 \begin_layout LyX-Code
+
+\change_deleted 5863208 1594239179
 
 \size small
 #% Do not delete the line below; configure depends on this 
 \end_layout
 
 \begin_layout LyX-Code
+
+\change_deleted 5863208 1594239179
 
 \size small
 # 
@@ -8357,10 +8369,14 @@ DeclareDocBookClass[article]{SGML (DocBook Article)}
 
 \begin_layout LyX-Code
 
+\change_deleted 5863208 1594239179
+
 \size small
 # 
 \backslash
 DeclareCategory{Articles (DocBook)}
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -10311,6 +10327,8 @@ literate
 
  and one wants to define a new type of literate document.
  The format is reset to 
+\change_deleted 5863208 1594239413
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -10328,7 +10346,9 @@ docbook
 \begin_inset Quotes erd
 \end_inset
 
- or 
+ or
+\change_unchanged
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -10384,6 +10404,8 @@ ex
 \end_inset
 
 , 
+\change_deleted 5863208 1594239430
+
 \begin_inset Flex Code
 status collapsed
 
@@ -10393,7 +10415,9 @@ docbook
 
 \end_inset
 
-, 
+,
+\change_unchanged
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -11598,6 +11622,8 @@ $$s
 \end_layout
 
 \begin_layout Description
+
+\change_deleted 5863208 1594239483
 \begin_inset Flex Code
 status collapsed
 
@@ -18658,7 +18684,13 @@ name "subsec:Flex-insets-and"
 \end_layout
 
 \begin_layout Standard
-Flex insets come in three different kinds: 
+Flex insets come in 
+\change_deleted 5863208 1594239511
+three
+\change_inserted 5863208 1594239512
+two
+\change_unchanged
+ different kinds: 
 \end_layout
 
 \begin_layout Itemize
@@ -18728,6 +18760,8 @@ endnote
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 5863208 1594239528
 XML elements (
 \begin_inset Flex Code
 status collapsed
@@ -18739,6 +18773,8 @@ Element
 \end_inset
 
 ): For use with DocBook classes.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
