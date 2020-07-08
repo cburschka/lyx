@@ -3296,7 +3296,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
         font_old = font.fontInfo();
     }
 
-    // FIXME XHTML
+    // FIXME, this code is just imported from XHTML
     // I'm worried about what happens if a branch, say, is itself
     // wrapped in some font stuff. I think that will not work.
     xs.closeFontTags();
