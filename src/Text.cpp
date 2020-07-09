@@ -619,7 +619,8 @@ void Text::readParagraph(Paragraph & par, Lexer & lex,
 		}
 	}
 	// Final change goes to paragraph break:
-	par.setChange(par.size(), change);
+	if (inset().allowMultiPar())
+		par.setChange(par.size(), change);
 
 	// Initialize begin_of_body_ on load; redoParagraph maintains
 	par.setBeginOfBody();
