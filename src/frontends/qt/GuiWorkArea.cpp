@@ -852,6 +852,9 @@ void GuiWorkArea::mouseReleaseEvent(QMouseEvent * e)
 
 	FuncRequest const cmd(LFUN_MOUSE_RELEASE, e->x(), e->y(),
 			q_button_state(e->button()), q_key_state(e->modifiers()));
+#if (QT_VERSION > QT_VERSION_CHECK(5,10,1))
+	d->synthetic_mouse_event_.cmd = cmd; // QtBug QAbstractScrollArea::mouseMoveEvent
+#endif
 	d->dispatch(cmd);
 	e->accept();
 }
@@ -859,6 +862,19 @@ void GuiWorkArea::mouseReleaseEvent(QMouseEvent * e)
 
 void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 {
+#if (QT_VERSION > QT_VERSION_CHECK(5,10,1))
+	// cancel the event if the coordinates didn't change, this is due to QtBug
+	// QAbstractScrollArea::mouseMoveEvent, the event is triggered falsely when quickly
+	// double tapping a touchpad. To test: try to select a word by quickly double tapping
+	// on a touchpad while hovering the cursor over that word in the work area.
+	// This bug does not occur on Qt versions 5.10.1 and below. Only Windows seems to be affected.
+	// ML thread: https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg211699.html
+	// Qt bugtracker: https://bugreports.qt.io/browse/QTBUG-85431
+	if (e->x() == d->synthetic_mouse_event_.cmd.x() && // QtBug QAbstractScrollArea::mouseMoveEvent
+			e->y() == d->synthetic_mouse_event_.cmd.y()) // QtBug QAbstractScrollArea::mouseMoveEvent
+		return; // QtBug QAbstractScrollArea::mouseMoveEvent
+#endif
+
 	// we kill the triple click if we move
 	doubleClickTimeout();
 	FuncRequest cmd(LFUN_MOUSE_MOTION, e->x(), e->y(),
