@@ -39,7 +39,7 @@ public:
 	int plaintext(odocstringstream & ods, OutputParams const & op,
 	              size_t max_length = INT_MAX) const;
 	///
-	void docbook(odocstream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const;
 	///
 	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///

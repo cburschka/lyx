@@ -184,7 +184,7 @@ void InsetCounter::trackCounters(string const & cmd) const
 	}
 }
 
-void InsetCounter::docbook(odocstream &, OutputParams const &) const
+void InsetCounter::docbook(XMLStream &, OutputParams const &) const
 {
 	// Here, we need to track counter values ourselves,
 	// since unlike in the LaTeX case, there is no external
