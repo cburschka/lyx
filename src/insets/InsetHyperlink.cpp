@@ -10,8 +10,6 @@
  */
 
 #include <config.h>
-#include <output_docbook.h>
-
 #include "InsetHyperlink.h"
 
 #include "Buffer.h"
@@ -22,6 +20,7 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "OutputParams.h"
+#include "output_docbook.h"
 #include "output_xhtml.h"
 #include "xml.h"
 #include "texstream.h"

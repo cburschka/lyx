@@ -28,6 +28,7 @@
 #include "Lexer.h"
 #include "LyXRC.h"
 #include "OutputParams.h"
+#include "output_docbook.h"
 #include "ParIterator.h"
 #include "TextClass.h"
 #include "TocBackend.h"
@@ -42,7 +43,6 @@
 
 #include <algorithm>
 #include <sstream>
-#include <output_docbook.h>
 
 using namespace std;
 

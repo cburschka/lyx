@@ -24,7 +24,7 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "output_xhtml.h"
-#include <output_docbook.h>
+#include "output_docbook.h"
 #include "ParIterator.h"
 #include "texstream.h"
 #include "TocBackend.h"

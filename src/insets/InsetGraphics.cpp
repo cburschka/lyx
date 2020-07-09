@@ -67,6 +67,7 @@ TODO
 #include "MetricsInfo.h"
 #include "Mover.h"
 #include "OutputParams.h"
+#include "output_docbook.h"
 #include "output_xhtml.h"
 #include "xml.h"
 #include "texstream.h"
@@ -95,7 +96,6 @@ TODO
 
 #include <algorithm>
 #include <sstream>
-#include <output_docbook.h>
 
 using namespace std;
 using namespace lyx::support;

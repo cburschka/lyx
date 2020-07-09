@@ -13,7 +13,6 @@
 #include <typeinfo>
 
 #include <config.h>
-#include <output_docbook.h>
 #include <xml.h>
 
 #include "InsetBox.h"
@@ -34,6 +33,7 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
+#include "output_docbook.h"
 #include "output_xhtml.h"
 #include "ParIterator.h"
 #include "TexRow.h"

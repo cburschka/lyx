@@ -10,7 +10,6 @@
  */
 
 #include <config.h>
-#include <output_docbook.h>
 
 #include "InsetNewline.h"
 
@@ -21,6 +20,7 @@
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "output_docbook.h"
 #include "output_xhtml.h"
 #include "texstream.h"
 

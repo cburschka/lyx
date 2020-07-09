@@ -10,13 +10,13 @@
  */
 
 #include <config.h>
-#include <output_docbook.h>
 
 #include "InsetMarginal.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "OutputParams.h"
+#include "output_docbook.h"
 #include "TocBackend.h"
 
 #include "support/docstream.h"

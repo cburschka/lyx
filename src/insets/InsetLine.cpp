@@ -24,6 +24,7 @@
 #include "Length.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "output_docbook.h"
 #include "output_xhtml.h"
 #include "texstream.h"
 #include "Text.h"
@@ -37,7 +38,6 @@
 #include "support/lstrings.h"
 
 #include <cstdlib>
-#include <output_docbook.h>
 
 using namespace std;
 

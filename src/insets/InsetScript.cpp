@@ -26,6 +26,7 @@
 #include "LyXAction.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "output_docbook.h"
 #include "output_xhtml.h"
 #include "TextClass.h"
 #include "TextMetrics.h"
@@ -40,7 +41,6 @@
 #include "frontends/Painter.h"
 
 #include <algorithm>
-#include <output_docbook.h>
 
 using namespace std;
 
