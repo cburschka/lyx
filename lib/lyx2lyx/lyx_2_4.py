@@ -196,6 +196,7 @@ def createFontMapping(fontlist):
             fm.expandFontMapping(['FiraMono'], "typewriter", "tt", "FiraMono", "scaled", "lf", "true")
         elif font == 'libertinus':
             fm.expandFontMapping(['libertinus,serif'], "roman", None, "libertinus", None, "osf")
+            fm.expandFontMapping(['libertinusmath'], "math", None, "libertinust1math", None, None)
     return fm
 
 def convert_fonts(document, fm, osfoption = "osf"):

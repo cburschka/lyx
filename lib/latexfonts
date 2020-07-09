@@ -1289,6 +1289,13 @@ Font libertine-ntxm
 	Provides         amssymb,amsfonts
 EndFont
 
+Font libertinusmath
+	GuiName          "Libertinus Math"
+	Family           math
+	Package          libertinust1math
+	Provides         amssymb,amsfonts
+EndFont
+
 Font minion-ntxm
 	GuiName          "Minion Pro (New TX)"
 	Family           math
