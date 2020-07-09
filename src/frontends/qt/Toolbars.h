@@ -60,13 +60,13 @@ public:
 		 docstring const & label = docstring());
 
 	/// item type
-	Type type_;
+	Type type;
 	/// action
-	std::shared_ptr<FuncRequest> func_; // non-null
+	std::shared_ptr<FuncRequest> func; // non-null
 	/// label/tooltip
-	docstring label_;
+	docstring label;
 	/// name
-	std::string name_;
+	std::string name;
 };
 
 

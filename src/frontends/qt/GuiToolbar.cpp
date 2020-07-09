@@ -121,17 +121,17 @@ void GuiToolbar::setVisibility(int visibility)
 
 Action * GuiToolbar::addItem(ToolbarItem const & item)
 {
-	QString text = toqstr(item.label_);
+	QString text = toqstr(item.label);
 	// Get the keys bound to this action, but keep only the
 	// first one later
-	KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(*item.func_);
+	KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(*item.func);
 	if (!bindings.empty())
 		text += " [" + toqstr(bindings.begin()->print(KeySequence::ForGui)) + "]";
 
-	Action * act = new Action(item.func_, getIcon(*item.func_, false), text,
+	Action * act = new Action(item.func, getIcon(*item.func, false), text,
 							  text, this);
-	if (item.type_ == ToolbarItem::BIDICOMMAND)
-		act->setRtlIcon(getIcon(*item.func_, false, true));
+	if (item.type == ToolbarItem::BIDICOMMAND)
+		act->setRtlIcon(getIcon(*item.func, false, true));
 
 	actions_.append(act);
 	return act;
@@ -149,17 +149,17 @@ public:
 	PaletteButton(GuiToolbar * bar, ToolbarItem const & item)
 		: QToolButton(bar), bar_(bar), tbitem_(item), initialized_(false)
 	{
-		QString const label = qt_(to_ascii(tbitem_.label_));
+		QString const label = qt_(to_ascii(tbitem_.label));
 		setToolTip(label);
 		setStatusTip(label);
 		setText(label);
 		connect(bar_, SIGNAL(iconSizeChanged(QSize)),
 			this, SLOT(setIconSize(QSize)));
 		setCheckable(true);
-		ToolbarInfo const * tbinfo = guiApp->toolbars().info(tbitem_.name_);
+		ToolbarInfo const * tbinfo = guiApp->toolbars().info(tbitem_.name);
 		if (tbinfo)
 			// use the icon of first action for the toolbar button
-			setIcon(getIcon(*tbinfo->items.begin()->func_, true));
+			setIcon(getIcon(*tbinfo->items.begin()->func, true));
 	}
 
 	void mousePressEvent(QMouseEvent * e)
@@ -171,20 +171,20 @@ public:
 
 		initialized_ = true;
 
-		ToolbarInfo const * tbinfo = guiApp->toolbars().info(tbitem_.name_);
+		ToolbarInfo const * tbinfo = guiApp->toolbars().info(tbitem_.name);
 		if (!tbinfo) {
-			LYXERR0("Unknown toolbar " << tbitem_.name_);
+			LYXERR0("Unknown toolbar " << tbitem_.name);
 			return;
 		}
 		IconPalette * panel = new IconPalette(this);
-		QString const label = qt_(to_ascii(tbitem_.label_));
+		QString const label = qt_(to_ascii(tbitem_.label));
 		panel->setWindowTitle(label);
 		connect(this, SIGNAL(clicked(bool)), panel, SLOT(setVisible(bool)));
 		connect(panel, SIGNAL(visible(bool)), this, SLOT(setChecked(bool)));
 		ToolbarInfo::item_iterator it = tbinfo->items.begin();
 		ToolbarInfo::item_iterator const end = tbinfo->items.end();
 		for (; it != end; ++it)
-			if (!getStatus(*it->func_).unknown())
+			if (!getStatus(*it->func).unknown())
 				panel->addButton(bar_->addItem(*it));
 
 		QToolButton::mousePressEvent(e);
@@ -198,11 +198,11 @@ MenuButtonBase::MenuButtonBase(GuiToolbar * bar, ToolbarItem const & item)
 	: QToolButton(bar), bar_(bar), tbitem_(item)
 {
 	setPopupMode(QToolButton::InstantPopup);
-	QString const label = qt_(to_ascii(tbitem_.label_));
+	QString const label = qt_(to_ascii(tbitem_.label));
 	setToolTip(label);
 	setStatusTip(label);
 	setText(label);
-	QString const name = toqstr(tbitem_.name_);
+	QString const name = toqstr(tbitem_.name);
 	QStringList imagedirs;
 	imagedirs << "images/math/" << "images/";
 	for (int i = 0; i < imagedirs.size(); ++i) {
@@ -239,21 +239,21 @@ StaticMenuButton::StaticMenuButton(
 
 void StaticMenuButton::initialize()
 {
-	QString const label = qt_(to_ascii(tbitem_.label_));
+	QString const label = qt_(to_ascii(tbitem_.label));
 	ButtonMenu * m = new ButtonMenu(label, this);
 	m->setWindowTitle(label);
 	m->setTearOffEnabled(true);
 	connect(bar_, SIGNAL(updated()), m, SLOT(updateParent()));
 	connect(bar_, SIGNAL(updated()), this, SLOT(updateTriggered()));
-	ToolbarInfo const * tbinfo = guiApp->toolbars().info(tbitem_.name_);
+	ToolbarInfo const * tbinfo = guiApp->toolbars().info(tbitem_.name);
 	if (!tbinfo) {
-		LYXERR0("Unknown toolbar " << tbitem_.name_);
+		LYXERR0("Unknown toolbar " << tbitem_.name);
 		return;
 	}
 	ToolbarInfo::item_iterator it = tbinfo->items.begin();
 	ToolbarInfo::item_iterator const end = tbinfo->items.end();
 	for (; it != end; ++it)
-		if (!getStatus(*it->func_).unknown())
+		if (!getStatus(*it->func).unknown())
 			m->add(bar_->addItem(*it));
 	setMenu(m);
 }
@@ -310,7 +310,7 @@ DynamicMenuButton::~DynamicMenuButton()
 
 void DynamicMenuButton::initialize()
 {
-	QString const label = qt_(to_ascii(tbitem_.label_));
+	QString const label = qt_(to_ascii(tbitem_.label));
 	ButtonMenu * m = new ButtonMenu(label, this);
 	m->setWindowTitle(label);
 	m->setTearOffEnabled(true);
@@ -340,7 +340,7 @@ void DynamicMenuButton::updateTriggered()
 	GuiView const & owner = bar_->owner();
 	BufferView const * bv = owner.currentBufferView();
 
-	string const & menutype = tbitem_.name_;
+	string const & menutype = tbitem_.name;
 	if (menutype == "dynamic-custom-insets" || menutype == "dynamic-char-styles") {
 		if (!bv) {
 			m->clear();
@@ -437,7 +437,7 @@ void DynamicMenuButton::loadFlexInsets()
 {
 	QMenu * m = menu();
 	m->clear();
-	string const & menutype = tbitem_.name_;
+	string const & menutype = tbitem_.name;
 	InsetLayout::InsetLyXType ftype;
 	if (menutype == "dynamic-custom-insets")
 		ftype = InsetLayout::CUSTOM;
@@ -469,7 +469,7 @@ void DynamicMenuButton::loadFlexInsets()
 
 void GuiToolbar::add(ToolbarItem const & item)
 {
-	switch (item.type_) {
+	switch (item.type) {
 	case ToolbarItem::SEPARATOR:
 		addSeparator();
 		break;
@@ -491,7 +491,7 @@ void GuiToolbar::add(ToolbarItem const & item)
 		QToolButton * tb = new QToolButton;
 		tb->setCheckable(true);
 		tb->setIcon(getIcon(FuncRequest(LFUN_TABULAR_INSERT), true));
-		QString const label = qt_(to_ascii(item.label_));
+		QString const label = qt_(to_ascii(item.label));
 		tb->setToolTip(label);
 		tb->setStatusTip(label);
 		tb->setText(label);
@@ -515,19 +515,19 @@ void GuiToolbar::add(ToolbarItem const & item)
 		}
 	case ToolbarItem::DYNAMICMENU: {
 		// we only handle certain things
-		if (DynamicMenuButton::isMenuType(item.name_))
+		if (DynamicMenuButton::isMenuType(item.name))
 			addWidget(new DynamicMenuButton(this, item));
 		else
-			LYXERR0("Unknown dynamic menu type: " << item.name_);
+			LYXERR0("Unknown dynamic menu type: " << item.name);
 		break;
 	}
 	case ToolbarItem::BIDICOMMAND: {
-		if (!getStatus(*item.func_).unknown())
+		if (!getStatus(*item.func).unknown())
 			addAction(addItem(item));
 		break;
 		}
 	case ToolbarItem::COMMAND: {
-		if (!getStatus(*item.func_).unknown())
+		if (!getStatus(*item.func).unknown())
 			addAction(addItem(item));
 		break;
 		}
