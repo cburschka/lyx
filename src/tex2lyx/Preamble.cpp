@@ -149,11 +149,11 @@ const char * const known_roman_font_packages[] = { "ae", "beraserif", "bookman",
 
 const char * const known_sans_font_packages[] = { "avant", "berasans", "biolinum",
 "biolinum-type1", "cantarell", "Chivo", "cmbr", "cmss", "DejaVuSans", "DejaVuSansCondensed", "FiraSans", "helvet", "iwona",
-"iwonac", "iwonal", "iwonalc", "kurier", "kurierc", "kurierl", "kurierlc", "lmss", "noto-sans", "PTSans",
+"iwonac", "iwonal", "iwonalc", "kurier", "kurierc", "kurierl", "kurierlc", "LibertinusSans-LF", "lmss", "noto-sans", "PTSans",
 "tgadventor", "tgheros", "uop", 0 };
 
 const char * const known_typewriter_font_packages[] = { "beramono", "cmtl", "cmtt", "courier", "DejaVuSansMono",
-"FiraMono", "lmtt", "luximono", "libertineMono", "libertineMono-type1", "lmodern",
+"FiraMono", "lmtt", "luximono", "libertineMono", "libertineMono-type1", "LibertinusMono-TLF", "lmodern",
 "mathpazo", "mathptmx", "newcent", "noto-mono", "PTMono", "tgcursor", "txtt", 0 };
 
 const char * const known_math_font_packages[] = { "eulervm", "newtxmath", 0};
@@ -851,6 +851,74 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_font_roman_osf = "false";
 		else if (opts == "osf")
 			h_font_roman_osf = "true";
+	}
+
+	if (name == "libertinus" || name == "libertinus-type1") {
+		bool sf = true;
+		bool tt = true;
+		bool rm = true;
+		bool osf = false;
+		string scalesf;
+		string scalett;
+		for (auto const & opt : allopts) {
+			if (opt == "rm" || opt == "serif") {
+				tt = false;
+				sf = false;
+				continue;
+			}
+			if (opt == "sf" || opt == "sans") {
+				tt = false;
+				rm = false;
+				continue;
+			}
+			if (opt == "tt=false" || opt == "mono=false") {
+				tt = false;
+				continue;
+			}
+			if (opt == "osf") {
+				osf = true;
+				continue;
+			}
+			if (opt == "scaleSF") {
+				scalesf = opt;
+				continue;
+			}
+			if (opt == "scaleTT") {
+				scalett = opt;
+				continue;
+			}
+			if (opt == "lining") {
+				h_font_roman_osf = "false";
+				continue;
+			}
+			if (!xopts.empty())
+				xopts += ", ";
+			xopts += opt;
+		}
+		if (rm) {
+			h_font_roman[0] = "libertinus";
+			if (osf)
+				h_font_roman_osf = "true";
+			else
+				h_font_roman_osf = "false";
+		}
+		if (sf) {
+			h_font_sans[0] = "LibertinusSans-LF";
+			if (osf)
+				h_font_sans_osf = "true";
+			else
+				h_font_sans_osf = "false";
+			if (!scalesf.empty())
+				scale_as_percentage(scalesf, h_font_sf_scale[0]);
+		}
+		if (tt) {
+			h_font_typewriter[0] = "LibertinusMono-TLF";
+			if (!scalett.empty())
+				scale_as_percentage(scalett, h_font_tt_scale[0]);
+		}
+		if (!xopts.empty())
+			h_font_roman_opts = xopts;
+		options.clear();
 	}
 
 	if (name == "MinionPro") {
@@ -2512,12 +2580,19 @@ void Preamble::parse(Parser & p, string const & forceclass,
 					p.skip_spaces();
 					in_lyx_preamble = true;
 				}
-			if (name == "\\sfdefault")
+			if (name == "\\sfdefault") {
 				if (is_known(body, known_sans_font_packages)) {
 					h_font_sans[0] = body;
 					p.skip_spaces();
 					in_lyx_preamble = true;
 				}
+				if (body == "LibertinusSans-OsF") {
+					h_font_sans[0] = "LibertinusSans-LF";
+					h_font_sans_osf = "true";
+					p.skip_spaces();
+					in_lyx_preamble = true;
+				}
+			}
 			if (name == "\\ttdefault")
 				if (is_known(body, known_typewriter_font_packages)) {
 					h_font_typewriter[0] = body;
@@ -2530,6 +2605,18 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				h_font_default_family = family.erase(0,1);
 				p.skip_spaces();
 				in_lyx_preamble = true;
+			}
+			if (name == "\\LibertinusSans@scale") {
+				if (isStrDbl(body)) {
+					h_font_sf_scale[0] = convert<string>(
+						static_cast<int>(100 * convert<double>(body)));
+				}
+			}
+			if (name == "\\LibertinusMono@scale") {
+				if (isStrDbl(body)) {
+					h_font_tt_scale[0] = convert<string>(
+						static_cast<int>(100 * convert<double>(body)));
+				}
 			}
 
 			// remove LyX-specific definitions that are re-added by LyX
