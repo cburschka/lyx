@@ -68,7 +68,7 @@ bool LaTeXFont::available(bool ot1, bool nomath)
 
 bool LaTeXFont::providesNoMath(bool ot1, bool complete)
 {
-	docstring const usedfont = getUsedFont(ot1, complete, false);
+	docstring const usedfont = getUsedFont(ot1, complete, false, false);
 
 	if (usedfont.empty())
 		return false;
@@ -81,7 +81,7 @@ bool LaTeXFont::providesNoMath(bool ot1, bool complete)
 
 bool LaTeXFont::providesOSF(bool ot1, bool complete, bool nomath)
 {
-	docstring const usedfont = getUsedFont(ot1, complete, nomath);
+	docstring const usedfont = getUsedFont(ot1, complete, nomath, false);
 
 	if (usedfont.empty())
 		return false;
@@ -98,7 +98,7 @@ bool LaTeXFont::providesOSF(bool ot1, bool complete, bool nomath)
 
 bool LaTeXFont::providesSC(bool ot1, bool complete, bool nomath)
 {
-	docstring const usedfont = getUsedFont(ot1, complete, nomath);
+	docstring const usedfont = getUsedFont(ot1, complete, nomath, false);
 
 	if (usedfont.empty())
 		return false;
@@ -113,7 +113,7 @@ bool LaTeXFont::providesSC(bool ot1, bool complete, bool nomath)
 
 bool LaTeXFont::hasMonolithicExpertSet(bool ot1, bool complete, bool nomath)
 {
-	docstring const usedfont = getUsedFont(ot1, complete, nomath);
+	docstring const usedfont = getUsedFont(ot1, complete, nomath, false);
 
 	if (usedfont.empty())
 		return false;
@@ -126,7 +126,7 @@ bool LaTeXFont::hasMonolithicExpertSet(bool ot1, bool complete, bool nomath)
 
 bool LaTeXFont::providesScale(bool ot1, bool complete, bool nomath)
 {
-	docstring const usedfont = getUsedFont(ot1, complete, nomath);
+	docstring const usedfont = getUsedFont(ot1, complete, nomath, false);
 
 	if (usedfont.empty())
 		return false;
@@ -140,7 +140,7 @@ bool LaTeXFont::providesScale(bool ot1, bool complete, bool nomath)
 
 bool LaTeXFont::providesMoreOptions(bool ot1, bool complete, bool nomath)
 {
-	docstring const usedfont = getUsedFont(ot1, complete, nomath);
+	docstring const usedfont = getUsedFont(ot1, complete, nomath, false);
 
 	if (usedfont.empty())
 		return false;
@@ -154,7 +154,7 @@ bool LaTeXFont::providesMoreOptions(bool ot1, bool complete, bool nomath)
 
 bool LaTeXFont::provides(std::string const & name, bool ot1, bool complete, bool nomath)
 {
-	docstring const usedfont = getUsedFont(ot1, complete, nomath);
+	docstring const usedfont = getUsedFont(ot1, complete, nomath, false);
 
 	if (usedfont.empty())
 		return false;
@@ -171,9 +171,11 @@ bool LaTeXFont::provides(std::string const & name, bool ot1, bool complete, bool
 }
 
 
-docstring const LaTeXFont::getUsedFont(bool ot1, bool complete, bool nomath)
+docstring const LaTeXFont::getUsedFont(bool ot1, bool complete, bool nomath, bool osf)
 {
-	if (nomath && !nomathfont_.empty() && available(ot1, true))
+	if (osf && osfFontOnly())
+		return osffont_;
+	else if (nomath && !nomathfont_.empty() && available(ot1, true))
 		return nomathfont_;
 	else if (ot1 && !ot1font_.empty())
 		return (ot1font_ == "none") ? docstring() : ot1font_;
@@ -201,7 +203,7 @@ docstring const LaTeXFont::getUsedFont(bool ot1, bool complete, bool nomath)
 		for (size_t i = 0; i < altfonts_.size(); ++i) {
 			LaTeXFont altf = altFont(altfonts_[i]);
 			if (altf.available(ot1, nomath))
-				return altf.getUsedFont(ot1, complete, nomath);
+				return altf.getUsedFont(ot1, complete, nomath, osf);
 		}
 	}
 
@@ -211,7 +213,7 @@ docstring const LaTeXFont::getUsedFont(bool ot1, bool complete, bool nomath)
 
 docstring const LaTeXFont::getUsedPackage(bool ot1, bool complete, bool nomath)
 {
-	docstring const usedfont = getUsedFont(ot1, complete, nomath);
+	docstring const usedfont = getUsedFont(ot1, complete, nomath, false);
 	if (usedfont.empty())
 		return docstring();
 	return theLaTeXFonts().getLaTeXFont(usedfont).package();
@@ -295,7 +297,7 @@ string const LaTeXFont::getLaTeXCode(bool dryrun, bool ot1, bool complete, bool 
 {
 	ostringstream os;
 
-	docstring const usedfont = getUsedFont(ot1, complete, nomath);
+	docstring const usedfont = getUsedFont(ot1, complete, nomath, osf);
 	if (usedfont.empty())
 		return string();
 	else if (usedfont != name_)
@@ -357,6 +359,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		LF_NOMATHFONT,
 		LF_OSFDEFAULT,
 		LF_OSFFONT,
+		LF_OSFFONTONLY,
 		LF_OSFOPTION,
 		LF_OSFSCOPTION,
 		LF_OT1_FONT,
@@ -383,6 +386,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		{ "nomathfont",           LF_NOMATHFONT },
 		{ "osfdefault",           LF_OSFDEFAULT },
 		{ "osffont",              LF_OSFFONT },
+		{ "osffontonly",          LF_OSFFONTONLY },
 		{ "osfoption",            LF_OSFOPTION },
 		{ "osfscoption",          LF_OSFSCOPTION },
 		{ "ot1font",              LF_OT1_FONT },
@@ -452,6 +456,9 @@ bool LaTeXFont::readFont(Lexer & lex)
 		case LF_OSFDEFAULT:
 			lex >> osfdefault_;
 			break;
+		case LF_OSFFONTONLY:
+			lex >> osffontonly_;
+			break;
 		case LF_OSFSCOPTION:
 			lex >> osfscoption_;
 			break;
@@ -504,6 +511,7 @@ bool LaTeXFont::read(Lexer & lex)
 	switchdefault_ = 0;
 	osfdefault_ = 0;
 	moreopts_ = 0;
+	osffontonly_ = 0;
 
 	if (!lex.next()) {
 		lex.printError("No name given for LaTeX font: `$$Token'.");

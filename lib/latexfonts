@@ -19,6 +19,7 @@
 #	OsfOption          <option for oldstyle figure support>
 #	OsfFont            <extra font for oldstyle figures>
 #	OsfDefault         <0|1>
+#	OsfFontOnly        <0|1>
 #	ScOption           <option for true smallcaps support>
 #	OsfScOption        <option for combined osf and true smallcaps support>
 #	ScaleOption        <option for font scaling>
@@ -65,6 +66,9 @@
 #   tags.
 # * OsfFont is a font that is loaded additionally in and that provides
 #   Old Style Figures for a given font (e.g. eco).
+# * If OsfFontOnly is true, then the OsfFont will replace the non-OsF
+#   one (only OsfFont is loaded if osf is true). Otherwise it will
+#   complement the non-osf font.
 # * OsfScOption overrides any OsfOption and ScOption if both features
 #   are selected.
 # * ScOption and OsfScOption are currently only supported for rm fonts.
@@ -500,6 +504,7 @@ AltFont ppl
 	GuiName          "Palatino"
 	Family           rm
 	OsfFont          pplj
+	OsfFontOnly      1
 	SwitchDefault    1
 EndFont
 
@@ -600,6 +605,7 @@ AltFont futs
 	Family           rm
 	SwitchDefault    1
 	OsfFont          futj
+	OsfFontOnly      1
 EndFont
 
 AltFont futj

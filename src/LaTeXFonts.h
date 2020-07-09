@@ -27,7 +27,8 @@ class LaTeXFont {
 public:
 	/// TeX font
 	// FIXME Add fontenc tag to classes which is used if no font is specified?
-	LaTeXFont() : osfdefault_(false), switchdefault_(false), moreopts_(false) { fontenc_.push_back("T1"); }
+	LaTeXFont() : osfdefault_(false), switchdefault_(false), moreopts_(false),
+		osffontonly_(false) { fontenc_.push_back("T1"); }
 	/// The font name
 	docstring const & name() { return name_; }
 	/// The name to appear in the document dialog
@@ -67,6 +68,8 @@ public:
 	bool switchdefault() const { return switchdefault_; }
 	/// Does the font provide Old Style Figures as default?
 	bool osfDefault() const { return osfdefault_; }
+	/// Does OSF font replace (rather than complement) the non-OSF one?
+	bool osfFontOnly() const { return osffontonly_; }
 	/// Is this font available?
 	bool available(bool ot1, bool nomath);
 	/// Does this font provide an alternative without math?
@@ -87,7 +90,7 @@ public:
 				       std::string const & extraopts = std::string(),
 				       int const & scale = 100);
 	/// Return the actually used font
-	docstring const getUsedFont(bool ot1, bool complete, bool nomath);
+	docstring const getUsedFont(bool ot1, bool complete, bool nomath, bool osf);
 	/// Return the actually used package
 	docstring const getUsedPackage(bool ot1, bool complete, bool nomath);
 	///
@@ -149,6 +152,8 @@ private:
 	bool switchdefault_;
 	///
 	bool moreopts_;
+	///
+	bool osffontonly_;
 };
 
 
