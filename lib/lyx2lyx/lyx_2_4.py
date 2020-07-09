@@ -194,6 +194,8 @@ def createFontMapping(fontlist):
                                   'FiraSansUltralight,ultralight'],
                                   "sans", "sf", "FiraSans", "scaled", "lf", "true")
             fm.expandFontMapping(['FiraMono'], "typewriter", "tt", "FiraMono", "scaled", "lf", "true")
+        elif font == 'libertinus':
+            fm.expandFontMapping(['libertinus,serif'], "roman", None, "libertinus", None, "osf")
     return fm
 
 def convert_fonts(document, fm, osfoption = "osf"):
@@ -3849,6 +3851,75 @@ def revert_line_vspaces(document):
         subst = put_cmd_in_ert(insets[inset])
         document.body[i : end + 1] = subst
 
+def convert_libertinus_rm_fonts(document):
+    """Handle Libertinus serif fonts definition to LaTeX"""
+
+    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
+        fm = createFontMapping(['Libertinus'])
+        convert_fonts(document, fm)
+
+def revert_libertinus_rm_fonts(document):
+    """Revert Libertinus serif font definition to LaTeX"""
+
+    if not get_bool_value(document.header, "\\use_non_tex_fonts"):
+        fontmap = dict()
+        fm = createFontMapping(['libertinus'])
+        if revert_fonts(document, fm, fontmap):
+            add_preamble_fonts(document, fontmap)
+
+def revert_libertinus_sftt_fonts(document):
+    " Revert Libertinus sans and tt font definitions to LaTeX "
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        preamble = ""
+        # first sf font
+        i = find_token(document.header, "\\font_sans \"LibertinusSans-LF\"", 0)
+        if i != -1:
+            j = find_token(document.header, "\\font_sans_osf true", 0)
+            if j != -1:
+                add_to_preamble(document, ["\\renewcommand{\\sfdefault}{LibertinusSans-OsF}"])
+                document.header[j] = "\\font_sans_osf false"
+            else:
+                add_to_preamble(document, ["\\renewcommand{\\sfdefault}{LibertinusSans-LF}"])
+            document.header[i] = document.header[i].replace("LibertinusSans-LF", "default")
+            sf_scale = 100.0
+            sfval = find_token(document.header, "\\font_sf_scale", 0)
+            if sfval == -1:
+                document.warning("Malformed LyX document: Missing \\font_sf_scale.")
+            else:
+                sfscale = document.header[sfval].split()
+                val = sfscale[1]
+                sfscale[1] = "100"
+                document.header[sfval] = " ".join(sfscale)
+                try:
+                    # float() can throw
+                    sf_scale = float(val)
+                except:
+                    document.warning("Invalid font_sf_scale value: " + val)
+                if sf_scale != "100.0":
+                    add_to_preamble(document, ["\\renewcommand*{\\LibertinusSans@scale}{" + str(sf_scale / 100.0) + "}"])
+        # now tt font
+        i = find_token(document.header, "\\font_typewriter \"LibertinusMono-TLF\"", 0)
+        if i != -1:
+            add_to_preamble(document, ["\\renewcommand{\\ttdefault}{LibertinusMono-TLF}"])
+            document.header[i] = document.header[i].replace("LibertinusMono-TLF", "default")
+            tt_scale = 100.0
+            ttval = find_token(document.header, "\\font_tt_scale", 0)
+            if ttval == -1:
+                document.warning("Malformed LyX document: Missing \\font_tt_scale.")
+            else:
+                ttscale = document.header[ttval].split()
+                val = ttscale[1]
+                ttscale[1] = "100"
+                document.header[ttval] = " ".join(ttscale)
+                try:
+                    # float() can throw
+                    tt_scale = float(val)
+                except:
+                    document.warning("Invalid font_tt_scale value: " + val)
+                if tt_scale != "100.0":
+                    add_to_preamble(document, ["\\renewcommand*{\\LibertinusMono@scale}{" + str(tt_scale / 100.0) + "}"])
+
 
 ##
 # Conversion hub
@@ -3907,10 +3978,12 @@ convert = [
            [593, [convert_counter_maintenance]],
            [594, []],
            [595, []],
-           [596, [convert_parskip]]
+           [596, [convert_parskip]],
+           [597, [convert_libertinus_rm_fonts]]
           ]
 
-revert =  [[595, [revert_parskip,revert_line_vspaces]],
+revert =  [[595, [revert_libertinus_rm_fonts,revert_libertinus_sftt_fonts]],
+           [595, [revert_parskip,revert_line_vspaces]],
            [594, [revert_ams_spaces]],
            [593, [revert_counter_inset]],
            [592, [revert_counter_maintenance]],

@@ -318,6 +318,25 @@ AltFont libertine-legacy
 	Package          libertine
 EndFont
 
+Font libertinus
+	GuiName          "Libertinus"
+	Family           rm
+	OsfOption        osf
+	Package          libertinus
+	PackageOptions   serif
+	CompleteFont     libertinus-full
+	MoreOptions      1
+
+EndFont
+
+AltFont libertinus-full
+	GuiName          "Libertine"
+	Family           rm
+	OsfOption        osf
+	Package          libertinus
+	MoreOptions      1
+EndFont
+
 Font lmodern
 	GuiName          "Latin Modern Roman"
 	Family           rm
@@ -941,6 +960,24 @@ Font kurierlc
 	SwitchDefault   1
 EndFont
 
+Font LibertinusSans-LF
+	GuiName          "Libertinus Sans"
+	Family           sf
+	Requires         libertinus
+	SwitchDefault    1
+	OsfFont          LibertinusSans-OsF
+	OsfFontOnly      1
+	ScaleCommand     \renewcommand*{\LibertinusSans@scale}{$$val}
+EndFont
+
+AltFont LibertinusSans-OsF
+	GuiName          "Libertinus Sans"
+	Family           sf
+	Requires         libertinus
+	SwitchDefault    1
+	ScaleCommand     \renewcommand*{\LibertinusSans@scale}{$$val}
+EndFont
+
 Font lmss
 	GuiName          "Latin Modern Sans"
 	Family           sf
@@ -1137,6 +1174,14 @@ AltFont libertine-mono-type1
 	Family           tt
 	ScaleOption      scaled=$$val
 	Package          libertineMono-type1
+EndFont
+
+Font LibertinusMono-TLF
+	GuiName          "Libertinus Mono"
+	Family           tt
+	Requires         libertinus
+	SwitchDefault    1
+	ScaleCommand     \renewcommand*{\LibertinusMono@scale}{$$val}
 EndFont
 
 Font lmtt
