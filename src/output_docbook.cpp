@@ -946,16 +946,17 @@ void docbookParagraphs(Text const &text,
 				docstring id = docstring();
 				for (pos_type i = 0; i < par->size(); ++i) {
 					Inset const *inset = par->getInset(i);
-					if (inset && dynamic_cast<InsetLabel const *>(inset)) {
-						// Generate the attributes for the section if need be.
-						auto label = dynamic_cast<InsetLabel const *>(inset);
-						id += "xml:id=\"" + xml::cleanID(label->screenLabel()) + "\"";
+					if (inset) {
+						if (auto label = dynamic_cast<InsetLabel const *>(inset)) {
+							// Generate the attributes for the section if need be.
+							id += "xml:id=\"" + xml::cleanID(label->screenLabel()) + "\"";
 
-						// Don't output the ID as a DocBook <anchor>.
-						ourparams.docbook_anchors_to_ignore.emplace(label->screenLabel());
+							// Don't output the ID as a DocBook <anchor>.
+							ourparams.docbook_anchors_to_ignore.emplace(label->screenLabel());
 
-						// Cannot have multiple IDs per tag.
-						break;
+							// Cannot have multiple IDs per tag.
+							break;
+						}
 					}
 				}
 
