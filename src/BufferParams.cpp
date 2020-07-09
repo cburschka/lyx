@@ -2648,11 +2648,13 @@ FormatList const & BufferParams::exportableFormats(bool only_viewable) const
 	if (useNonTeXFonts) {
 		excludes.insert("latex");
 		excludes.insert("pdflatex");
-	} else if (inputenc != "ascii" && inputenc != "utf8-plain")
+	} else if (inputenc != "ascii" && inputenc != "utf8-plain") {
 		  // XeTeX with TeX fonts requires input encoding ascii (#10600).
 		  excludes.insert("xetex");
-	FormatList result = theConverters().getReachable(backs[0], only_viewable,
-													 true, excludes);
+	}
+
+	FormatList result =
+		theConverters().getReachable(backs[0], only_viewable, true, excludes);
 	vector<string>::const_iterator it = backs.begin() + 1;
 	for (; it != backs.end(); ++it) {
 		FormatList r = theConverters().getReachable(*it, only_viewable,
