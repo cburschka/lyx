@@ -134,7 +134,7 @@ bool LaTeXFont::providesScale(bool ot1, bool complete, bool nomath)
 		return altFont(usedfont).providesScale(ot1, complete, nomath);
 	else if (!available(ot1, nomath))
 		return false;
-	return (!scaleoption_.empty());
+	return (!scaleoption_.empty() || !scalecmd_.empty());
 }
 
 
@@ -329,6 +329,15 @@ string const LaTeXFont::getLaTeXCode(bool dryrun, bool ot1, bool complete, bool 
 	if (osf && providesOSF(ot1, complete, nomath) && !osffont_.empty())
 		os << altFont(osffont_).getLaTeXCode(dryrun, ot1, complete, sc, osf,
 						     nomath, extraopts, scale);
+	if (scale != 100 && !scalecmd_.empty()
+	    && providesScale(ot1, complete, nomath)) {
+		if (contains(scalecmd_, '@'))
+			os << "\\makeatletter\n";
+		os << subst(to_ascii(scalecmd_), "$$val",
+			    convert<std::string>(float(scale) / 100)) << '\n';
+		if (contains(scalecmd_, '@'))
+			os << "\\makeatother\n";
+	}
 
 	if (!preamble_.empty())
 		os << to_utf8(preamble_);
@@ -369,6 +378,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		LF_PREAMBLE,
 		LF_PROVIDES,
 		LF_REQUIRES,
+		LF_SCALECMD,
 		LF_SCALEOPTION,
 		LF_SCOPTION,
 		LF_SWITCHDEFAULT
@@ -395,6 +405,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		{ "preamble",             LF_PREAMBLE },
 		{ "provides",             LF_PROVIDES },
 		{ "requires",             LF_REQUIRES },
+		{ "scalecommand",         LF_SCALECMD },
 		{ "scaleoption",          LF_SCALEOPTION },
 		{ "scoption",             LF_SCOPTION },
 		{ "switchdefault",        LF_SWITCHDEFAULT }
@@ -482,6 +493,9 @@ bool LaTeXFont::readFont(Lexer & lex)
 		}
 		case LF_REQUIRES:
 			lex >> required_;
+			break;
+		case LF_SCALECMD:
+			lex >> scalecmd_;
 			break;
 		case LF_SCALEOPTION:
 			lex >> scaleoption_;

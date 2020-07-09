@@ -57,6 +57,8 @@ public:
 	docstring const & osfscoption() { return osfscoption_; }
 	/// A package option for font scaling
 	docstring const & scaleoption() { return scaleoption_; }
+	/// A macro for font scaling
+	docstring const & scalecmd() { return scalecmd_; }
 	/// Does this provide additional options?
 	bool providesMoreOptions(bool ot1, bool complete, bool nomath);
 	/// Alternative requirement to test for
@@ -140,6 +142,8 @@ private:
 	docstring osfscoption_;
 	///
 	docstring scaleoption_;
+	///
+	docstring scalecmd_;
 	///
 	std::vector<std::string> provides_;
 	///

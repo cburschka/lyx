@@ -23,6 +23,7 @@
 #	ScOption           <option for true smallcaps support>
 #	OsfScOption        <option for combined osf and true smallcaps support>
 #	ScaleOption        <option for font scaling>
+#	ScaleCommand       <command sequence to set scale value of the font>
 #       MoreOptions        <0|1>
 #	Provides           <features provided by the font packages (comma-separated)>
 #	Preamble
@@ -75,7 +76,8 @@
 # * Set OsfDefault to true for fonts which have Old Style Figures by
 #   default and provide an option for lining figures. Pass this option
 #   to OsfOption.
-# * ScaleOption supports the placeholder $$val for the scale value.
+# * ScaleOption and ScaleCommand support the placeholder $$val for the
+#   scale value.
 # * If MoreOptions is true, then the user can insert additional options to
 #   the font package via the Document Settings.
 # * The Preamble code is output immediately after the respective font
