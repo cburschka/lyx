@@ -2653,10 +2653,12 @@ FormatList const & BufferParams::exportableFormats(bool only_viewable) const
 		  excludes.insert("xetex");
 	}
 
-	FormatList result;
-	for (auto const & b : backs) {
-		FormatList r =
-			theConverters().getReachable(b, only_viewable, false, excludes);
+	FormatList result =
+		theConverters().getReachable(backs[0], only_viewable, true, excludes);
+	vector<string>::const_iterator it = backs.begin() + 1;
+	for (; it != backs.end(); ++it) {
+		FormatList r = theConverters().getReachable(*it, only_viewable,
+													false, excludes);
 		result.insert(result.end(), r.begin(), r.end());
 	}
 	sort(result.begin(), result.end(), Format::formatSorter);
