@@ -45,8 +45,8 @@ bool isSpace(char_type c);
 bool isNumber(char_type c);
 
 /// return true if a unicode char has the direction attribute
-/// European Number Separator [ES]
-bool isEuropeanNumberSeparator(char_type c);
+/// Common Number Separator [CS]
+bool isCommonNumberSeparator(char_type c);
 
 /// return true if a unicode char has the direction attribute
 /// European Number Terminator [ET]

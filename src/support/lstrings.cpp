@@ -164,13 +164,13 @@ bool isNumber(char_type c)
 }
 
 
-bool isEuropeanNumberSeparator(char_type c)
+bool isCommonNumberSeparator(char_type c)
 {
 	if (!is_utf16(c))
 		// assume that no non-utf16 character is a numeral
 		// c outside the UCS4 range is caught as well
 		return false;
-	return ucs4_to_qchar(c).direction() == QChar::DirES;
+	return ucs4_to_qchar(c).direction() == QChar::DirCS;
 }
 
 
