@@ -10,10 +10,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#include <typeinfo>
-
 #include <config.h>
-#include <xml.h>
+#include <typeinfo>
 
 #include "InsetBox.h"
 #include "InsetCaption.h"
@@ -33,6 +31,7 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
+#include "xml.h"
 #include "output_docbook.h"
 #include "output_xhtml.h"
 #include "ParIterator.h"
