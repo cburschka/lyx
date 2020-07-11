@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-07-08 11:19+0200\n"
-"PO-Revision-Date: 2020-07-08 09:23+0000\n"
+"POT-Creation-Date: 2020-07-11 12:36+0200\n"
+"PO-Revision-Date: 2020-07-11 10:41+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -8807,22 +8807,10 @@ msgstr "TOG code URL"
 msgid "Code URL:"
 msgstr "URL kódu:"
 
-#: lib/layouts/agu-dtd.layout:3
-msgid "American Geophysical Union (AGU, SGML Article)"
-msgstr "Americká Únia pre Geofyziku (AGU, SGML článok)"
-
-#: lib/layouts/agu-dtd.layout:4 lib/layouts/docbook.layout:4
-msgid "Articles (DocBook)"
-msgstr "Články (DocBook)"
-
 #: lib/layouts/agu_stdclass.inc:35 lib/layouts/agu_stdclass.inc:37
 #: lib/layouts/db_stdcharstyles.inc:37 lib/layouts/db_stdcharstyles.inc:39
 msgid "Firstname"
 msgstr "Krstné meno"
-
-#: lib/layouts/agu_stdclass.inc:50 lib/layouts/agu_stdclass.inc:52
-msgid "Fname"
-msgstr "Kmeno"
 
 #: lib/layouts/agu_stdclass.inc:66 lib/layouts/agu_stdclass.inc:68
 #: lib/layouts/copernicus.layout:73 lib/layouts/copernicus.layout:74
@@ -8844,63 +8832,10 @@ msgstr "Doslovne"
 msgid "Emph"
 msgstr "Dôraz"
 
-#: lib/layouts/agu_stdclass.inc:131 lib/layouts/agu_stdclass.inc:133
-msgid "Abbrev"
-msgstr "Skratka"
-
-#: lib/layouts/agu_stdclass.inc:143 lib/layouts/agu_stdclass.inc:145
-#: lib/layouts/agu_stdtitle.inc:56
-msgid "Citation-number"
-msgstr "Číslo citácie"
-
 #: lib/layouts/agu_stdclass.inc:155 lib/layouts/agu_stdclass.inc:157
 #: lib/layouts/apa6.layout:332
 msgid "Volume"
 msgstr "Diel"
-
-#: lib/layouts/agu_stdclass.inc:167 lib/layouts/agu_stdclass.inc:169
-msgid "Day"
-msgstr "Deň"
-
-#: lib/layouts/agu_stdclass.inc:179 lib/layouts/agu_stdclass.inc:181
-msgid "Month"
-msgstr "Mesiac"
-
-#: lib/layouts/agu_stdclass.inc:191 lib/layouts/agu_stdclass.inc:193
-msgid "Year"
-msgstr "Rok"
-
-#: lib/layouts/agu_stdclass.inc:203 lib/layouts/agu_stdclass.inc:205
-msgid "Issue-number"
-msgstr "Číslo vydania"
-
-#: lib/layouts/agu_stdclass.inc:215 lib/layouts/agu_stdclass.inc:217
-msgid "Issue-day"
-msgstr "Deň vydania"
-
-#: lib/layouts/agu_stdclass.inc:227 lib/layouts/agu_stdclass.inc:229
-msgid "Issue-months"
-msgstr "Mesiac vydania"
-
-#: lib/layouts/agu_stdcounters.inc:9 lib/layouts/db_stdcounters.inc:9
-msgid "Section Level 1"
-msgstr "Sekcia, úroveň 1"
-
-#: lib/layouts/agu_stdcounters.inc:14 lib/layouts/db_stdcounters.inc:14
-msgid "Section Level 2"
-msgstr "Sekcia, úroveň 2"
-
-#: lib/layouts/agu_stdcounters.inc:19 lib/layouts/db_stdcounters.inc:19
-msgid "Section Level 3"
-msgstr "Sekcia, úroveň 3"
-
-#: lib/layouts/agu_stdcounters.inc:24 lib/layouts/db_stdcounters.inc:24
-msgid "Section Level 4"
-msgstr "Sekcia, úroveň 4"
-
-#: lib/layouts/agu_stdcounters.inc:29 lib/layouts/db_stdcounters.inc:29
-msgid "Section Level 5"
-msgstr "Sekcia, úroveň 5"
 
 #: lib/layouts/agu_stdsections.inc:12 lib/layouts/article.layout:20
 #: lib/layouts/beamer.layout:232 lib/layouts/beamer.layout:261
@@ -8943,105 +8878,13 @@ msgstr "Odstavec"
 msgid "Subparagraph"
 msgstr "Pododstavec"
 
-#: lib/layouts/agu_stdsections.inc:79
-msgid "Subsubparagraph"
-msgstr "Podpododstavec"
-
 #: lib/layouts/agu_stdtitle.inc:13 lib/layouts/moderncv.layout:327
 msgid "Header"
 msgstr "Hlavička"
 
-#: lib/layouts/agu_stdtitle.inc:19
-msgid "-- Header --"
-msgstr "--Hlavička--"
-
-#: lib/layouts/agu_stdtitle.inc:31
-msgid "Special-section"
-msgstr "Špeciálna-sekcia"
-
-#: lib/layouts/agu_stdtitle.inc:37
-msgid "Special-section:"
-msgstr "Špeciálna-sekcia:"
-
-#: lib/layouts/agu_stdtitle.inc:47
-msgid "AGU-journal"
-msgstr "AGU-Časopis"
-
-#: lib/layouts/agu_stdtitle.inc:51
-msgid "AGU-journal:"
-msgstr "AGU-Časopis:"
-
-#: lib/layouts/agu_stdtitle.inc:59
-msgid "Citation-number:"
-msgstr "Číslo citácie:"
-
-#: lib/layouts/agu_stdtitle.inc:65
-msgid "AGU-volume"
-msgstr "AGU-diel"
-
-#: lib/layouts/agu_stdtitle.inc:68
-msgid "AGU-volume:"
-msgstr "AGU-diel:"
-
-#: lib/layouts/agu_stdtitle.inc:73
-msgid "AGU-issue"
-msgstr "AGU-vydanie"
-
-#: lib/layouts/agu_stdtitle.inc:76
-msgid "AGU-issue:"
-msgstr "AGU-vydanie:"
-
 #: lib/layouts/agu_stdtitle.inc:84 lib/layouts/copernicus.layout:224
 msgid "Copyright:"
 msgstr "Autorské práva:"
-
-#: lib/layouts/agu_stdtitle.inc:89
-msgid "Index-terms"
-msgstr "Pojmy indexu"
-
-#: lib/layouts/agu_stdtitle.inc:93
-msgid "Index-terms..."
-msgstr "Pojmy indexu…"
-
-#: lib/layouts/agu_stdtitle.inc:102
-msgid "Index-term"
-msgstr "Pojem indexu"
-
-#: lib/layouts/agu_stdtitle.inc:106
-msgid "Index-term:"
-msgstr "Pojem indexu:"
-
-#: lib/layouts/agu_stdtitle.inc:111
-msgid "Cross-term"
-msgstr "Krížny pojem"
-
-#: lib/layouts/agu_stdtitle.inc:115
-msgid "Cross-term:"
-msgstr "Krížny pojem:"
-
-#: lib/layouts/agu_stdtitle.inc:137
-msgid "Supplementary"
-msgstr "Dodatkové"
-
-#: lib/layouts/agu_stdtitle.inc:141
-msgid "Supplementary..."
-msgstr "Dodatkové…"
-
-#: lib/layouts/agu_stdtitle.inc:150
-msgid "Supp-note"
-msgstr "Dodatočná poznámka"
-
-#: lib/layouts/agu_stdtitle.inc:154
-msgid "Sup-mat-note:"
-msgstr "Dodatočná poznámka:"
-
-#: lib/layouts/agu_stdtitle.inc:159
-msgid "Cite-other"
-msgstr "Citát (iný)"
-
-#: lib/layouts/agu_stdtitle.inc:163
-msgid "Cite-other:"
-msgstr "Citát (iný):"
 
 #: lib/layouts/agu_stdtitle.inc:189 lib/layouts/europasscv.layout:84
 #: lib/layouts/europecv.layout:40 lib/layouts/g-brief.layout:51
@@ -9076,103 +8919,19 @@ msgstr "Akceptované"
 msgid "Accepted:"
 msgstr "Akceptované:"
 
-#: lib/layouts/agu_stdtitle.inc:223
-msgid "Ident-line"
-msgstr "Identifikačný riadok"
-
-#: lib/layouts/agu_stdtitle.inc:226
-msgid "Ident-line:"
-msgstr "Identifikačný riadok:"
-
-#: lib/layouts/agu_stdtitle.inc:231
-msgid "Runhead"
-msgstr "Hlavička: Stĺpec"
-
-#: lib/layouts/agu_stdtitle.inc:234
-msgid "Runhead:"
-msgstr "Hlavička stĺpca:"
-
-#: lib/layouts/agu_stdtitle.inc:242
-msgid "Published-online:"
-msgstr "Vydané-online:"
-
 #: lib/layouts/agu_stdtitle.inc:264 src/frontends/qt/GuiCitation.cpp:95
 msgid "Citation"
 msgstr "Citácia"
-
-#: lib/layouts/agu_stdtitle.inc:267
-msgid "Citation:"
-msgstr "Citácia:"
-
-#: lib/layouts/agu_stdtitle.inc:272
-msgid "Posting-order"
-msgstr "Poradie odoslania"
-
-#: lib/layouts/agu_stdtitle.inc:275
-msgid "Posting-order:"
-msgstr "Poradie odoslania:"
-
-#: lib/layouts/agu_stdtitle.inc:280
-msgid "AGU-pages"
-msgstr "AGU-stránky"
-
-#: lib/layouts/agu_stdtitle.inc:283
-msgid "AGU-pages:"
-msgstr "AGU-stránky:"
-
-#: lib/layouts/agu_stdtitle.inc:288
-msgid "Words"
-msgstr "Slová"
-
-#: lib/layouts/agu_stdtitle.inc:291
-msgid "Words:"
-msgstr "Slová:"
 
 #: lib/layouts/agu_stdtitle.inc:296 lib/layouts/stdfloatnames.inc:6
 #: lib/layouts/stdinsets.inc:528
 msgid "Figures"
 msgstr "Obrázky"
 
-#: lib/layouts/agu_stdtitle.inc:299
-msgid "Figures:"
-msgstr "Obrázky:"
-
 #: lib/layouts/agu_stdtitle.inc:304 lib/layouts/stdfloatnames.inc:5
 #: lib/layouts/stdinsets.inc:527
 msgid "Tables"
 msgstr "Tabuľky"
-
-#: lib/layouts/agu_stdtitle.inc:307
-msgid "Tables:"
-msgstr "Tabuľky:"
-
-#: lib/layouts/agu_stdtitle.inc:312
-msgid "Datasets"
-msgstr "Skupina dát"
-
-#: lib/layouts/agu_stdtitle.inc:315
-msgid "Datasets:"
-msgstr "Skupina dát:"
-
-#: lib/layouts/agu_stdtitle.inc:322 lib/layouts/agu_stdtitle.inc:324
-msgid "ISSN"
-msgstr "ISSN"
-
-#: lib/layouts/agu_stdtitle.inc:334 lib/layouts/agu_stdtitle.inc:336
-msgid "CODEN"
-msgstr "CODEN"
-
-#: lib/layouts/agu_stdtitle.inc:347 lib/layouts/agu_stdtitle.inc:349
-msgid "SS-Code"
-msgstr "SS-Kód"
-
-#: lib/layouts/agu_stdtitle.inc:359 lib/layouts/agu_stdtitle.inc:361
-msgid "SS-Title"
-msgstr "SS-Titul"
-
-#: lib/layouts/agu_stdtitle.inc:372 lib/layouts/agu_stdtitle.inc:374
-msgid "CCC-Code"
-msgstr "CCC-kód"
 
 #: lib/layouts/agu_stdtitle.inc:386 lib/layouts/agu_stdtitle.inc:388
 #: lib/layouts/db_lyxmacros.inc:11 lib/layouts/jss.layout:171
@@ -9181,10 +8940,6 @@ msgstr "CCC-kód"
 msgid "Code"
 msgstr "Kód"
 
-#: lib/layouts/agu_stdtitle.inc:398 lib/layouts/agu_stdtitle.inc:400
-msgid "Dscr"
-msgstr "Opis"
-
 #: lib/layouts/agu_stdtitle.inc:411 lib/layouts/agu_stdtitle.inc:413
 #: lib/layouts/ectaart.layout:123 lib/layouts/ectaart.layout:206
 #: lib/layouts/ectaart.layout:209 lib/layouts/entcs.layout:101
@@ -9192,22 +8947,10 @@ msgstr "Opis"
 msgid "Keyword"
 msgstr "Heslo"
 
-#: lib/layouts/agu_stdtitle.inc:424 lib/layouts/agu_stdtitle.inc:426
-msgid "Orgdiv"
-msgstr "Orgdiv"
-
-#: lib/layouts/agu_stdtitle.inc:436 lib/layouts/agu_stdtitle.inc:438
-msgid "Orgname"
-msgstr "Orgname"
-
 #: lib/layouts/agu_stdtitle.inc:448 lib/layouts/agu_stdtitle.inc:450
 #: lib/layouts/g-brief.layout:67
 msgid "Street"
 msgstr "Ulica"
-
-#: lib/layouts/agu_stdtitle.inc:484 lib/layouts/agu_stdtitle.inc:486
-msgid "Postcode"
-msgstr "Poštové smerovacie číslo"
 
 #: lib/layouts/agums.layout:3
 msgid "American Geophysical Union (AGUPLUS Manuscript)"
@@ -19114,6 +18857,10 @@ msgstr "Kurier (Mat.)"
 msgid "Libertine (New TX)"
 msgstr "Libertine (New TX)"
 
+#: lib/latexfonts:1293
+msgid "Libertinus Math"
+msgstr "Libertinus Math"
+
 #: lib/latexfonts:1240
 msgid "Minion Pro (New TX)"
 msgstr "Minion Pro (New TX)"
@@ -19623,9 +19370,9 @@ msgstr "Horizontálny fantóm|H"
 msgid "Vertical Phantom|V"
 msgstr "Vertikálny fantóm|ó"
 
-#: lib/ui/stdcontext.inc:243 lib/ui/stdmenus.inc:456
+#: lib/ui/stdcontext.inc:243 lib/ui/stdmenus.inc:455
 msgid "Interword Space|w"
-msgstr "Medzi-slovná medzera|M"
+msgstr "Medzi-slovná medzera|e"
 
 #: lib/ui/stdcontext.inc:241
 msgid "Protected Space|o"
@@ -36855,6 +36602,186 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "American Geophysical Union (AGU, SGML Article)"
+#~ msgstr "Americká Únia pre Geofyziku (AGU, SGML článok)"
+
+#~ msgid "Articles (DocBook)"
+#~ msgstr "Články (DocBook)"
+
+#~ msgid "Fname"
+#~ msgstr "Kmeno"
+
+#~ msgid "Abbrev"
+#~ msgstr "Skratka"
+
+#~ msgid "Citation-number"
+#~ msgstr "Číslo citácie"
+
+#~ msgid "Day"
+#~ msgstr "Deň"
+
+#~ msgid "Month"
+#~ msgstr "Mesiac"
+
+#~ msgid "Year"
+#~ msgstr "Rok"
+
+#~ msgid "Issue-number"
+#~ msgstr "Číslo vydania"
+
+#~ msgid "Issue-day"
+#~ msgstr "Deň vydania"
+
+#~ msgid "Issue-months"
+#~ msgstr "Mesiac vydania"
+
+#~ msgid "Section Level 1"
+#~ msgstr "Sekcia, úroveň 1"
+
+#~ msgid "Section Level 2"
+#~ msgstr "Sekcia, úroveň 2"
+
+#~ msgid "Section Level 3"
+#~ msgstr "Sekcia, úroveň 3"
+
+#~ msgid "Section Level 4"
+#~ msgstr "Sekcia, úroveň 4"
+
+#~ msgid "Section Level 5"
+#~ msgstr "Sekcia, úroveň 5"
+
+#~ msgid "Subsubparagraph"
+#~ msgstr "Podpododstavec"
+
+#~ msgid "-- Header --"
+#~ msgstr "--Hlavička--"
+
+#~ msgid "Special-section"
+#~ msgstr "Špeciálna-sekcia"
+
+#~ msgid "Special-section:"
+#~ msgstr "Špeciálna-sekcia:"
+
+#~ msgid "AGU-journal"
+#~ msgstr "AGU-Časopis"
+
+#~ msgid "AGU-journal:"
+#~ msgstr "AGU-Časopis:"
+
+#~ msgid "Citation-number:"
+#~ msgstr "Číslo citácie:"
+
+#~ msgid "AGU-volume"
+#~ msgstr "AGU-diel"
+
+#~ msgid "AGU-volume:"
+#~ msgstr "AGU-diel:"
+
+#~ msgid "AGU-issue"
+#~ msgstr "AGU-vydanie"
+
+#~ msgid "AGU-issue:"
+#~ msgstr "AGU-vydanie:"
+
+#~ msgid "Index-terms"
+#~ msgstr "Pojmy indexu"
+
+#~ msgid "Index-terms..."
+#~ msgstr "Pojmy indexu…"
+
+#~ msgid "Index-term"
+#~ msgstr "Pojem indexu"
+
+#~ msgid "Index-term:"
+#~ msgstr "Pojem indexu:"
+
+#~ msgid "Cross-term"
+#~ msgstr "Krížny pojem"
+
+#~ msgid "Cross-term:"
+#~ msgstr "Krížny pojem:"
+
+#~ msgid "Supplementary"
+#~ msgstr "Dodatkové"
+
+#~ msgid "Supplementary..."
+#~ msgstr "Dodatkové…"
+
+#~ msgid "Supp-note"
+#~ msgstr "Dodatočná poznámka"
+
+#~ msgid "Sup-mat-note:"
+#~ msgstr "Dodatočná poznámka:"
+
+#~ msgid "Cite-other"
+#~ msgstr "Citát (iný)"
+
+#~ msgid "Cite-other:"
+#~ msgstr "Citát (iný):"
+
+#~ msgid "Ident-line"
+#~ msgstr "Identifikačný riadok"
+
+#~ msgid "Ident-line:"
+#~ msgstr "Identifikačný riadok:"
+
+#~ msgid "Runhead"
+#~ msgstr "Hlavička: Stĺpec"
+
+#~ msgid "Runhead:"
+#~ msgstr "Hlavička stĺpca:"
+
+#~ msgid "Published-online:"
+#~ msgstr "Vydané-online:"
+
+#~ msgid "Citation:"
+#~ msgstr "Citácia:"
+
+#~ msgid "Posting-order"
+#~ msgstr "Poradie odoslania"
+
+#~ msgid "Posting-order:"
+#~ msgstr "Poradie odoslania:"
+
+#~ msgid "AGU-pages"
+#~ msgstr "AGU-stránky"
+
+#~ msgid "AGU-pages:"
+#~ msgstr "AGU-stránky:"
+
+#~ msgid "Words"
+#~ msgstr "Slová"
+
+#~ msgid "Words:"
+#~ msgstr "Slová:"
+
+#~ msgid "Figures:"
+#~ msgstr "Obrázky:"
+
+#~ msgid "Tables:"
+#~ msgstr "Tabuľky:"
+
+#~ msgid "Datasets"
+#~ msgstr "Skupina dát"
+
+#~ msgid "Datasets:"
+#~ msgstr "Skupina dát:"
+
+#~ msgid "SS-Code"
+#~ msgstr "SS-Kód"
+
+#~ msgid "SS-Title"
+#~ msgstr "SS-Titul"
+
+#~ msgid "CCC-Code"
+#~ msgstr "CCC-kód"
+
+#~ msgid "Dscr"
+#~ msgstr "Opis"
+
+#~ msgid "Postcode"
+#~ msgstr "Poštové smerovacie číslo"
 
 #~ msgid "Authorgroup"
 #~ msgstr "Skupina autora"
