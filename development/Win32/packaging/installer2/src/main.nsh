@@ -265,9 +265,9 @@
       ${Else}
         SetShellVarContext all
       ${EndIf}
-      !if ${APP_ARCHITECTURE} <> 32
+      ${If} ${RunningX64}
         SetRegView ${APP_ARCHITECTURE}
-      !endif
+      ${EndIf}
     FunctionEnd
   !macroend
   
