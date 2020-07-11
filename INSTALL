@@ -1,5 +1,10 @@
-Compiling and installing LyX
-============================
+Compiling and installing LyX with autotools
+===========================================
+
+This document is about compiling LyX with the autotools suite. If you
+want to compile using using CMake (in particular on windows), please
+refer to the INSTALL.cmake file.
+
 
 Quick compilation guide
 -----------------------
@@ -109,20 +114,21 @@ flags:
     stdlib-debug                                 X
     warnings                         X           X
     debug                            X           X           X       X
+    maintainer-mode                              X
 
     The defaults are as follows in terms of version number
     release: stable release (2.x.y)
-    prerelease: version number contains alpha, beta, rc or pre.
-    development: version number contains dev.
+    prerelease: version number contains `alpha', `beta', `rc' or `pre'.
+    development: version number contains `dev'.
 
     The `profiling' build type uses the -fno-omit-frame-pointer option with gcc
 
     The `gprof' build type compiles and links with -pg option with gcc.
 
-o --disable-qt5 that forces configuration with Qt 4.x when Qt 5.x is
+  o --disable-qt5 that forces configuration with Qt 4.x when Qt 5.x is
     also available. By default Qt5 is tried first, and then Qt4.
 
-o --with-extra-lib=DIRECTORY that specifies the path where LyX will
+  o --with-extra-lib=DIRECTORY that specifies the path where LyX will
     find extra libraries (like Qt) it needs. Defaults to NONE
     (i.e. search in standard places). You can specify several
     directories, separated by colons.
