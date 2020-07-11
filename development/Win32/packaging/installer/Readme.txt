@@ -13,6 +13,8 @@ To build the installer do the following:
   extract NSISList-Unicode\NSISList.dll from the second archive to the folder \Plugins\x86-unicode of NSIS's installation folder
 - download the plugin ShellLink (https://nsis.sourceforge.io/ShellLink_plug-in)
   extract Unicode\Plugins\ShellLink.dll from the archive to the folder \Plugins\x86-unicode of NSIS's installation folder
+- download the plugin ShellExecAsUser (https://nsis.sourceforge.io/ShellExecAsUser_plug-in), choose Unicode version
+  extract unicode\ShellExecAsUser.dll from the archive to the folder \Plugins\x86-unicode of NSIS's installation folder
 - Go to the Qt-kit directory, which you have specified as CMAKE_PREFIX_PATH before compiling in CMake Gui, enter the bin folder,
   copy these files:
    Qt5Concurrent.dll"

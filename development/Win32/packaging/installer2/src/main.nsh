@@ -991,7 +991,7 @@ Function DefaultDesktopFileAssoc # Custom function, called before the components
 FunctionEnd
 
 Function StartLyX
-  Exec "$INSTDIR\bin\LyX.exe"
+  ShellExecAsUser::ShellExecAsUser "" "$INSTDIR\bin\LyX.exe"
 FunctionEnd
 
 # Installer Section Descriptions
