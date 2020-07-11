@@ -11,7 +11,6 @@
  */
 
 #include <config.h>
-#include <typeinfo>
 
 #include "InsetBox.h"
 #include "InsetCaption.h"
