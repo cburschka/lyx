@@ -95,8 +95,8 @@ public:
 	int preeditText(int, int, char_type, FontInfo const &,
 	                preedit_style) { return 0; }
 
-	/// start monochrome painting mode, i.e. map every color into [min,max]
-	void enterMonochromeMode(Color const &, Color const &) {}
+	/// start monochrome painting mode, i.e. map every color a shade of \c blend.
+	void enterMonochromeMode(Color const &) {}
 	/// leave monochrome painting mode
 	void leaveMonochromeMode() {}
 	/// draws a wavy line that can be used for underlining.

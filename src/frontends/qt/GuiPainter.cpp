@@ -91,44 +91,25 @@ QColor GuiPainter::computeColor(Color col)
 
 QColor GuiPainter::filterColor(QColor const & col)
 {
-	if (monochrome_min_.empty())
+	if (monochrome_blend_.empty())
 		return col;
 
-	// map into [min,max] interval
-	QColor const & min = monochrome_min_.top();
-	QColor const & max = monochrome_max_.top();
-
-	qreal v = col.valueF();
-	v *= v; // make it a bit steeper (i.e. darker)
-
-	qreal minr, ming, minb;
-	qreal maxr, maxg, maxb;
-	min.getRgbF(&minr, &ming, &minb);
-	max.getRgbF(&maxr, &maxg, &maxb);
-
-	QColor c;
-	c.setRgbF(
-		v * (minr - maxr) + maxr,
-		v * (ming - maxg) + maxg,
-		v * (minb - maxb) + maxb);
-	return c;
+	QColor const blend = monochrome_blend_.top();
+	return QColor::fromHsv(blend.hue(), blend.saturation(), qGray(col.rgb()));
 }
 
 
-void GuiPainter::enterMonochromeMode(Color const & min, Color const & max)
+void GuiPainter::enterMonochromeMode(Color const & blend)
 {
-	QColor qmin = filterColor(guiApp->colorCache().get(min));
-	QColor qmax = filterColor(guiApp->colorCache().get(max));
-	monochrome_min_.push(qmin);
-	monochrome_max_.push(qmax);
+	QColor qblend = filterColor(guiApp->colorCache().get(blend));
+	monochrome_blend_.push(qblend);
 }
 
 
 void GuiPainter::leaveMonochromeMode()
 {
-	LASSERT(!monochrome_min_.empty(), return);
-	monochrome_min_.pop();
-	monochrome_max_.pop();
+	LASSERT(!monochrome_blend_.empty(), return);
+	monochrome_blend_.pop();
 }
 
 

@@ -286,9 +286,9 @@ void InsetMathWrapper::draw(PainterInfo & pi, int x, int y) const
 class InsetColoredCell : public InsetMathNest {
 public:
 	///
-	InsetColoredCell(Buffer * buf, ColorCode min, ColorCode max);
+	InsetColoredCell(Buffer * buf, ColorCode blend);
 	///
-	InsetColoredCell(Buffer * buf, ColorCode min, ColorCode max, MathAtom const & atom);
+	InsetColoredCell(Buffer * buf, ColorCode blend, MathAtom const & atom);
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
@@ -298,20 +298,18 @@ protected:
 	///
 	Inset * clone() const;
 	///
-	ColorCode min_;
-	///
-	ColorCode max_;
+	ColorCode blend_;
 };
 
 
-InsetColoredCell::InsetColoredCell(Buffer * buf, ColorCode min, ColorCode max)
-	: InsetMathNest(buf, 1), min_(min), max_(max)
+InsetColoredCell::InsetColoredCell(Buffer * buf, ColorCode blend)
+	: InsetMathNest(buf, 1), blend_(blend)
 {
 }
 
 
-InsetColoredCell::InsetColoredCell(Buffer * buf, ColorCode min, ColorCode max, MathAtom const & atom)
-	: InsetMathNest(buf, 1), min_(min), max_(max)
+InsetColoredCell::InsetColoredCell(Buffer * buf, ColorCode blend, MathAtom const & atom)
+	: InsetMathNest(buf, 1), blend_(blend)
 {
 	cell(0).insert(0, atom);
 }
@@ -331,7 +329,7 @@ void InsetColoredCell::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetColoredCell::draw(PainterInfo & pi, int x, int y) const
 {
-	pi.pain.enterMonochromeMode(min_, max_);
+	pi.pain.enterMonochromeMode(blend_);
 	cell(0).draw(pi, x, y);
 	pi.pain.leaveMonochromeMode();
 }
@@ -497,7 +495,7 @@ void InsetMathMacroTemplate::createLook(int args) const
 			// color it light grey, if it is to be removed when the cursor leaves
 			if (i == argsInLook_) {
 				optData->push_back(MathAtom(
-					new InsetColoredCell(buffer_, Color_mathbg, Color_mathmacrooldarg)));
+					new InsetColoredCell(buffer_, Color_mathmacrooldarg)));
 				optData = &(*optData)[optData->size() - 1].nucleus()->cell(0);
 			}
 
@@ -513,7 +511,7 @@ void InsetMathMacroTemplate::createLook(int args) const
 		arg.push_back(MathAtom(new InsetMathMacroArgument(i + 1)));
 		if (i >= argsInLook_) {
 			look_.push_back(MathAtom(new InsetColoredCell(buffer_,
-				Color_mathbg, Color_mathmacrooldarg,
+				Color_mathmacrooldarg,
 				MathAtom(new InsetMathBrace(arg)))));
 		} else
 			look_.push_back(MathAtom(new InsetMathBrace(arg)));
@@ -522,7 +520,7 @@ void InsetMathMacroTemplate::createLook(int args) const
 		MathData arg;
 		arg.push_back(MathAtom(new InsetMathMacroArgument(i + 1)));
 		look_.push_back(MathAtom(new InsetColoredCell(buffer_,
-			Color_mathbg, Color_mathmacronewarg,
+			Color_mathmacronewarg,
 			MathAtom(new InsetMathBrace(arg)))));
 	}
 

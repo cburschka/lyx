@@ -142,7 +142,7 @@ public:
 	void afterDraw(PainterInfo const & pi) const
 	{
 		if (mathMacro_->editMetrics(pi.base.bv))
-			pi.pain.enterMonochromeMode(Color_mathbg, Color_mathmacroblend);
+			pi.pain.enterMonochromeMode(Color_mathmacroblend);
 	}
 	///
 	void metrics(MetricsInfo &, Dimension &) const {
@@ -386,7 +386,7 @@ void InsetMathMacro::afterMetrics() const
 void InsetMathMacro::beforeDraw(PainterInfo const & pi) const
 {
 	if (d->editing_[pi.base.bv])
-		pi.pain.enterMonochromeMode(Color_mathbg, Color_mathmacroblend);
+		pi.pain.enterMonochromeMode(Color_mathmacroblend);
 }
 
 

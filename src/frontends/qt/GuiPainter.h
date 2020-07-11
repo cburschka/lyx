@@ -135,9 +135,8 @@ public:
 	virtual void buttonText(int x, int baseline, docstring const & s,
 		FontInfo const & font, Color back, Color frame, int offset);
 
-	/// start monochrome painting mode, i.e. map every color into [min,max]
-	virtual void enterMonochromeMode(Color const & min,
-		Color const & max);
+	/// start monochrome painting mode, i.e. map every color a shade of \c blend.
+	virtual void enterMonochromeMode(Color const & blend);
 	/// leave monochrome painting mode
 	virtual void leaveMonochromeMode();
 
@@ -193,9 +192,7 @@ private:
 	Painter::line_style current_ls_;
 	int current_lw_;
 	///
-	std::stack<QColor> monochrome_min_;
-	///
-	std::stack<QColor> monochrome_max_;
+	std::stack<QColor> monochrome_blend_;
 	/// convert into Qt color, possibly applying the monochrome mode
 	QColor computeColor(Color col);
 	/// possibly apply monochrome mode

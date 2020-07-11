@@ -176,9 +176,8 @@ public:
 	virtual int preeditText(int x, int y,
 		char_type c, FontInfo const & f, preedit_style style) = 0;
 
-	/// start monochrome painting mode, i.e. map every color into [min,max]
-	virtual void enterMonochromeMode(Color const & min,
-		Color const & max) = 0;
+	/// start monochrome painting mode, i.e. map every color a shade of \c blend.
+	virtual void enterMonochromeMode(Color const & blend) = 0;
 	/// leave monochrome painting mode
 	virtual void leaveMonochromeMode() = 0;
 	/// draws a wavy line that can be used for underlining.
