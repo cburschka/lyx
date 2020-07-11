@@ -926,12 +926,12 @@ else()
       message(STATUS "Boost found")
       message(STATUS "Boost-libs = ${Boost_LIBRARIES}")
       set(Lyx_Boost_Libraries ${Boost_LIBRARIES})
-      if (LYX_STDLIB_DEBUG)
+      if (LYX_STDLIB_DEBUG OR LYX_DEBUG_GLIBC OR LYX_DEBUG_GLIBC_PEDANTIC)
 	# Comment from 	Jean-Marc Lasgouttes:
 	# In general, system boost libraries are incompatible with
 	# the use of stdlib-debug in libstdc++. See ticket #9736 for
 	# details.
-	message(WARNING "Compiling LyX with stdlib-debug and system boost libraries may lead to crashes. Consider using '-DLYX_STDLIB_DEBUG=OFF' or using '-DLYX_EXTERNAL_BOOST=OFF'")
+	message(FATAL_ERROR "Compiling LyX with stdlib-debug and system boost libraries may lead to crashes. Consider using '-DLYX_STDLIB_DEBUG=OFF -DLYX_DEBUG_GLIBC=OFF -DLYX_DEBUG_GLIBC_PEDANTIC=OFF' or using '-DLYX_EXTERNAL_BOOST=OFF'")
       endif()
     else()
       message(FATAL_ERROR "Boost not found" ${Boost_ERROR_REASON})

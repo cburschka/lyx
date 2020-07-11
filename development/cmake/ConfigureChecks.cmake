@@ -98,8 +98,8 @@ if(HUNSPELL_FOUND)
 
   message(STATUS "HAVE_HUNSPELL_CXXABI = ${HAVE_HUNSPELL_CXXABI}")
   #message(STATUS "LOG2 = ${LOG2}")
-  if(LYX_EXTERNAL_HUNSPELL AND LYX_STDLIB_DEBUG AND HAVE_HUNSPELL_CXXABI)
-    message(WARNING "Compiling LyX with stdlib-debug and system hunspell libraries may lead to crashes. Consider using -DLYX_STDLIB_DEBUG=OFF or -DLYX_EXTERNAL_HUNSPELL=OFF.")
+  if(LYX_EXTERNAL_HUNSPELL AND (LYX_STDLIB_DEBUG OR LYX_DEBUG_GLIBC OR LYX_DEBUG_GLIBC_PEDANTIC) AND HAVE_HUNSPELL_CXXABI)
+    message(FATAL_ERROR "Compiling LyX with stdlib-debug and system hunspell libraries may lead to crashes. Consider using '-DLYX_STDLIB_DEBUG=OFF -DLYX_DEBUG_GLIBC=OFF -DLYX_DEBUG_GLIBC_PEDANTIC=OFF' or -DLYX_EXTERNAL_HUNSPELL=OFF.")
   endif()
 endif()
 
