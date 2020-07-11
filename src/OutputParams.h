@@ -16,7 +16,7 @@
 #include "Changes.h"
 
 #include <memory>
-#include <unordered_set>
+#include <set>
 
 
 namespace lyx {
@@ -361,7 +361,7 @@ public:
 	bool docbook_force_pars;
 
 	/// Anchors that should not be output (LyX-side identifier, not DocBook-side).
-	std::unordered_set<docstring> docbook_anchors_to_ignore;
+	std::set<docstring> docbook_anchors_to_ignore;
 
 	/// Is the current context a float (such as a table or a figure)?
 	bool docbook_in_float;
