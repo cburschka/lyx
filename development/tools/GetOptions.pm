@@ -101,7 +101,7 @@ sub handleOptions($)
       }
       else {
         if (defined($optionsDef{$option}->{listsep})) {
-          my @list = split($optionsDef{$option}->{listsep}, $value);
+          my @list = split(/(?<!\\)$optionsDef{$option}->{listsep}/, $value);
           $options{$fieldname} = \@list;
         }
         else {
