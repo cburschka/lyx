@@ -34,7 +34,7 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
-#include <vector>
+#include <stack>
 
 // Uncomment to activate debugging code.
 // #define XHTML_DEBUG
@@ -590,6 +590,8 @@ void xhtmlParagraphs(Text const & text,
 	ParagraphList::const_iterator const pend =
 		(epit == (int) paragraphs.size()) ?
 			paragraphs.end() : paragraphs.iterator_at(epit);
+	std::stack<int> headerLevels;
+
 	while (bpit < epit) {
 		ParagraphList::const_iterator par = paragraphs.iterator_at(bpit);
 		if (par->params().startOfAppendix()) {
@@ -606,6 +608,27 @@ void xhtmlParagraphs(Text const & text,
 		Layout const & style = par->layout();
 		ParagraphList::const_iterator const lastpar = par;
 		ParagraphList::const_iterator send;
+
+		// Think about adding <section> and/or </section>s.
+		if (style.category() == from_utf8("Sectioning")) {
+			// Need to close a previous section if it has the same level or a higher one (close <section> if opening a
+			// <h2> after a <h2>, <h3>, <h4>, <h5>, or <h6>). More examples:
+			//   - current: h2; back: h1; do not close any <section>
+			//   - current: h1; back: h2; close two <section> (first the <h2>, then the <h1>, so a new <h1> can come)
+			// The level (h1, h2, etc.) corresponds to style.toclevel.
+			while (! headerLevels.empty() && style.toclevel <= headerLevels.top()) {
+				headerLevels.pop();
+				xs << xml::EndTag("section");
+				xs << xml::CR();
+			}
+
+			// Open the new one.
+			headerLevels.push(style.toclevel);
+			if (style.toclevel > 1) { // <h1> is the document title.
+				xs << xml::StartTag("section");
+				xs << xml::CR();
+			}
+		}
 
 		switch (style.latextype) {
 		case LATEX_COMMAND: {
@@ -642,6 +665,13 @@ void xhtmlParagraphs(Text const & text,
 			break;
 		}
 		bpit += distance(lastpar, par);
+	}
+
+	// If need be, close <section>s, but only at the end of the document (otherwise, dealt with at the beginning
+	// of the loop).
+	while (! headerLevels.empty() && headerLevels.top() > 1) {
+		headerLevels.pop();
+		xs << xml::EndTag("section") << xml::CR();
 	}
 }
 
