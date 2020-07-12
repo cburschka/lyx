@@ -252,11 +252,11 @@ SectionEnd
 #--------------------------------
 #
 
-Function StartLyX
+#Function StartLyX
 
   # run LyX in a command line window to give the users feedback about
   # the time consuming LaTeX package installation
   
-  Exec "$INSTDIR\${APP_RUN}"
+#  Exec "$INSTDIR\${APP_RUN}"
 
-FunctionEnd
+#FunctionEnd
