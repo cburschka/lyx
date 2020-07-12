@@ -574,9 +574,9 @@ void InsetMathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 	if (macro)
 		macro->unlock();
 
-	dim.wid += 6;
-	dim.des += 2;
-	dim.asc += 2;
+	dim.wid += leftOffset(mi.base.bv) + rightOffset(mi.base.bv);;
+	dim.des += bottomOffset(mi.base.bv);
+	dim.asc += topOffset(mi.base.bv);
 }
 
 
@@ -590,17 +590,19 @@ void InsetMathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 	Dimension const dim = dimension(*pi.base.bv);
 
 	// draw outer frame
-	int const a = y - dim.asc + 1;
-	int const w = dim.wid - 2;
-	int const h = dim.height() - 2;
-	pi.pain.rectangle(x + 1, a, w, h, Color_mathframe);
+	int const hoffset = leftOffset(pi.base.bv) + rightOffset(pi.base.bv);
+	int const voffset = topOffset(pi.base.bv) + bottomOffset(pi.base.bv);
+	int const a = y - dim.asc + topOffset(pi.base.bv) / 2;
+	int const w = dim.wid - (hoffset - hoffset / 2);
+	int const h = dim.height() - (voffset - voffset / 2);
+	pi.pain.rectangle(x + leftOffset(pi.base.bv) / 2, a, w, h, Color_mathframe);
 
 	// just to be sure: set some dummy values for coord cache
 	for (idx_type i = 0; i < nargs(); ++i)
 		cell(i).setXY(*pi.base.bv, x, y);
 
 	// draw contents
-	look_.draw(pi, x + 3, y);
+	look_.draw(pi, x + leftOffset(pi.base.bv), y);
 }
 
 
