@@ -1046,8 +1046,9 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 	if (tm.empty())
 		return;
 
-	pit_type const pit = up ? tm.firstPit() : tm.lastPit();
-	ParagraphMetrics const & pm = tm.parMetrics(pit);
+	pair<pit_type, const ParagraphMetrics *> pp = up ? tm.first() : tm.last();
+	ParagraphMetrics const & pm = *pp.second;
+	pit_type const pit = pp.first;
 
 	if (pm.rows().empty())
 		return;

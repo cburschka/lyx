@@ -45,10 +45,9 @@ public:
 	///
 	bool contains(pit_type pit) const;
 	///
-	pit_type firstPit() const;
+	std::pair<pit_type, ParagraphMetrics const *> first() const;
 	///
-	pit_type lastPit() const;
-
+	std::pair<pit_type, ParagraphMetrics const *> last() const;
 	/// is this row the last in the text?
 	bool isLastRow(Row const & row) const;
 	/// is this row the first in the text?
@@ -124,13 +123,7 @@ public:
 
 	///
 	int rightMargin(ParagraphMetrics const & pm) const;
-	///
 	int rightMargin(pit_type const pit) const;
-
-	/// position of the top of the first paragraph.
-	int topPosition() const;
-	/// position of the bottom of the last paragraph.
-	int bottomPosition() const;
 
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
