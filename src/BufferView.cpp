@@ -360,6 +360,20 @@ int BufferView::leftMargin() const
 }
 
 
+int BufferView::topMargin() const
+{
+	// original value was 20px, which is 0.2in at 100dpi
+	return zoomedPixels(20);
+}
+
+
+int BufferView::bottomMargin() const
+{
+	// original value was 20px, which is 0.2in at 100dpi
+	return zoomedPixels(20);
+}
+
+
 int BufferView::inPixels(Length const & len) const
 {
 	Font const font = buffer().params().getFont();
@@ -582,29 +596,25 @@ void BufferView::updateScrollbar()
 	}
 
 	// Look at paragraph heights on-screen
-	pair<pit_type, ParagraphMetrics const *> first = tm.first();
-	pair<pit_type, ParagraphMetrics const *> last = tm.last();
-	for (pit_type pit = first.first; pit <= last.first; ++pit) {
+	for (pit_type pit = tm.firstPit(); pit <= tm.lastPit(); ++pit) {
 		d->par_height_[pit] = tm.parMetrics(pit).height();
 		LYXERR(Debug::SCROLLING, "storing height for pit " << pit << " : "
 			<< d->par_height_[pit]);
 	}
 
-	int top_pos = first.second->position() - first.second->ascent();
-	int bottom_pos = last.second->position() + last.second->descent();
-	bool first_visible = first.first == 0 && top_pos >= 0;
-	bool last_visible = last.first + 1 == int(parsize) && bottom_pos <= height_;
+	bool first_visible = tm.firstPit() == 0 && tm.topPosition() >= 0;
+	bool last_visible = tm.lastPit() + 1 == int(parsize) && tm.bottomPosition() <= height_;
 	if (first_visible && last_visible) {
 		d->scrollbarParameters_.min = 0;
 		d->scrollbarParameters_.max = 0;
 		return;
 	}
 
-	d->scrollbarParameters_.min = top_pos;
-	for (size_t i = 0; i != size_t(first.first); ++i)
+	d->scrollbarParameters_.min = tm.topPosition();
+	for (size_t i = 0; i != size_t(tm.firstPit()); ++i)
 		d->scrollbarParameters_.min -= d->par_height_[i];
-	d->scrollbarParameters_.max = bottom_pos;
-	for (size_t i = last.first + 1; i != parsize; ++i)
+	d->scrollbarParameters_.max = tm.bottomPosition();
+	for (size_t i = tm.lastPit() + 1; i != parsize; ++i)
 		d->scrollbarParameters_.max += d->par_height_[i];
 
 	// The reference is the top position so we remove one page.
@@ -941,9 +951,9 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 		bot_pit = max_pit;
 	}
 
-	if (bot_pit == tm.first().first - 1)
+	if (bot_pit == tm.firstPit() - 1)
 		tm.newParMetricsUp();
-	else if (bot_pit == tm.last().first + 1)
+	else if (bot_pit == tm.lastPit() + 1)
 		tm.newParMetricsDown();
 
 	if (tm.contains(bot_pit)) {
@@ -953,8 +963,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 		CursorSlice const & cs = dit.innerTextSlice();
 		int offset = coordOffset(dit).y_;
 		int ypos = pm.position() + offset;
-		Dimension const & row_dim =
-			pm.getRow(cs.pos(), dit.boundary()).dim();
+		Row const & row = pm.getRow(cs.pos(), dit.boundary());
 		int scrolled = 0;
 		if (recenter)
 			scrolled = scroll(ypos - height_/2);
@@ -963,7 +972,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 		// the screen height, we scroll to a heuristic value of height_ / 4.
 		// FIXME: This heuristic value should be replaced by a recursive search
 		// for a row in the inset that can be visualized completely.
-		else if (row_dim.height() > height_) {
+		else if (row.height() > height_) {
 			if (ypos < defaultRowHeight())
 				scrolled = scroll(ypos - height_ / 4);
 			else if (ypos > height_ - defaultRowHeight())
@@ -972,14 +981,14 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 
 		// If the top part of the row falls of the screen, we scroll
 		// up to align the top of the row with the top of the screen.
-		else if (ypos - row_dim.ascent() < 0 && ypos < height_) {
-			int ynew = row_dim.ascent();
+		else if (ypos - row.totalAscent() < 0 && ypos < height_) {
+			int ynew = row.totalAscent();
 			scrolled = scrollUp(ynew - ypos);
 		}
 
 		// If the bottom of the row falls of the screen, we scroll down.
-		else if (ypos + row_dim.descent() > height_ && ypos > 0) {
-			int ynew = height_ - row_dim.descent();
+		else if (ypos + row.totalDescent() > height_ && ypos > 0) {
+			int ynew = height_ - row.totalDescent();
 			scrolled = scrollDown(ypos - ynew);
 		}
 
@@ -997,15 +1006,14 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 
 	d->anchor_pit_ = bot_pit;
 	CursorSlice const & cs = dit.innerTextSlice();
-	Dimension const & row_dim =
-		pm.getRow(cs.pos(), dit.boundary()).dim();
+	Row const & row = pm.getRow(cs.pos(), dit.boundary());
 
 	if (recenter)
 		d->anchor_ypos_ = height_/2;
 	else if (d->anchor_pit_ == 0)
 		d->anchor_ypos_ = offset + pm.ascent();
 	else if (d->anchor_pit_ == max_pit)
-		d->anchor_ypos_ = height_ - offset - row_dim.descent();
+		d->anchor_ypos_ = height_ - offset - row.totalDescent();
 	else if (offset > height_)
 		d->anchor_ypos_ = height_ - offset - defaultRowHeight();
 	else
@@ -2441,11 +2449,10 @@ int BufferView::scrollDown(int offset)
 	TextMetrics & tm = d->text_metrics_[text];
 	int const ymax = height_ + offset;
 	while (true) {
-		pair<pit_type, ParagraphMetrics const *> last = tm.last();
-		int bottom_pos = last.second->position() + last.second->descent();
+		int bottom_pos = tm.bottomPosition();
 		if (lyxrc.scroll_below_document)
 			bottom_pos += height_ - minVisiblePart();
-		if (last.first + 1 == int(text->paragraphs().size())) {
+		if (tm.lastPit() + 1 == int(text->paragraphs().size())) {
 			if (bottom_pos <= height_)
 				return 0;
 			offset = min(offset, bottom_pos - height_);
@@ -2466,9 +2473,8 @@ int BufferView::scrollUp(int offset)
 	TextMetrics & tm = d->text_metrics_[text];
 	int ymin = - offset;
 	while (true) {
-		pair<pit_type, ParagraphMetrics const *> first = tm.first();
-		int top_pos = first.second->position() - first.second->ascent();
-		if (first.first == 0) {
+		int const top_pos = tm.topPosition();
+		if (tm.firstPit() == 0) {
 			if (top_pos >= 0)
 				return 0;
 			offset = min(offset, - top_pos);
@@ -2983,7 +2989,7 @@ Point BufferView::coordOffset(DocIterator const & dit) const
 	ParagraphMetrics const & pm = tm.parMetrics(sl.pit());
 
 	LBUFERR(!pm.rows().empty());
-	y -= pm.rows()[0].ascent();
+	y -= pm.rows()[0].totalAscent();
 #if 1
 	// FIXME: document this mess
 	size_t rend;
@@ -3000,7 +3006,7 @@ Point BufferView::coordOffset(DocIterator const & dit) const
 #endif
 	for (size_t rit = 0; rit != rend; ++rit)
 		y += pm.rows()[rit].height();
-	y += pm.rows()[rend].ascent();
+	y += pm.rows()[rend].totalAscent();
 
 	TextMetrics const & bottom_tm = textMetrics(dit.bottom().text());
 
@@ -3189,7 +3195,7 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 	                         : "\t\t*** START DRAWING ***"));
 	Text & text = buffer_.text();
 	TextMetrics const & tm = d->text_metrics_[&text];
-	int const y = tm.first().second->position();
+	int const y = tm.parMetrics(tm.firstPit()).position();
 	PainterInfo pi(this, pain);
 
 	// Check whether the row where the cursor lives needs to be scrolled.
@@ -3244,8 +3250,7 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 		tm.draw(pi, 0, y);
 
 		// and possibly grey out below
-		pair<pit_type, ParagraphMetrics const *> lastpm = tm.last();
-		int const y2 = lastpm.second->position() + lastpm.second->descent();
+		int const y2 = tm.bottomPosition();
 
 		if (y2 < height_) {
 			Color color = buffer().isInternal()
@@ -3261,9 +3266,7 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 	updateScrollbar();
 
 	// Normalize anchor for next time
-	pair<pit_type, ParagraphMetrics const *> firstpm = tm.first();
-	pair<pit_type, ParagraphMetrics const *> lastpm = tm.last();
-	for (pit_type pit = firstpm.first; pit <= lastpm.first; ++pit) {
+	for (pit_type pit = tm.firstPit(); pit <= tm.lastPit(); ++pit) {
 		ParagraphMetrics const & pm = tm.parMetrics(pit);
 		if (pm.position() + pm.descent() > 0) {
 			if (d->anchor_pit_ != pit

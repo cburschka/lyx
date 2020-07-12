@@ -209,6 +209,10 @@ public:
 	int ascent() const { return dim_.asc; }
 	///
 	int descent() const { return dim_.des; }
+	///
+	int totalAscent() const { return ascent() + top_padding; }
+	///
+	int totalDescent() const { return dim_.des + bottom_padding; }
 
 	/// The offset of the left-most cursor position on the row
 	int left_x() const;
@@ -303,6 +307,10 @@ public:
 	int left_margin;
 	/// the right margin of the row
 	int right_margin;
+	/// possible padding above the row
+	int top_padding;
+	/// possible padding below the row
+	int bottom_padding;
 	///
 	mutable pos_type sel_beg;
 	///

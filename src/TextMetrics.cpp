@@ -127,18 +127,15 @@ bool TextMetrics::contains(pit_type pit) const
 }
 
 
-pair<pit_type, ParagraphMetrics const *> TextMetrics::first() const
+pit_type TextMetrics::firstPit() const
 {
-	ParMetricsCache::const_iterator it = par_metrics_.begin();
-	return make_pair(it->first, &it->second);
+	return par_metrics_.begin()->first;
 }
 
 
-pair<pit_type, ParagraphMetrics const *> TextMetrics::last() const
+pit_type TextMetrics::lastPit() const
 {
-	LBUFERR(!par_metrics_.empty());
-	ParMetricsCache::const_reverse_iterator it = par_metrics_.rbegin();
-	return make_pair(it->first, &it->second);
+	return par_metrics_.rbegin()->first;
 }
 
 
@@ -281,6 +278,20 @@ int TextMetrics::rightMargin(ParagraphMetrics const & pm) const
 int TextMetrics::rightMargin(pit_type const pit) const
 {
 	return text_->isMainText() ? par_metrics_[pit].rightMargin(*bv_) : 0;
+}
+
+
+int TextMetrics::topPosition() const
+{
+	ParagraphMetrics const & firstpm = par_metrics_.begin()->second;
+	return firstpm.position() - firstpm.ascent();
+}
+
+
+int TextMetrics::bottomPosition() const
+{
+	ParagraphMetrics const & lastpm = par_metrics_.rbegin()->second;
+	return lastpm.position() + lastpm.descent();
 }
 
 
@@ -561,21 +572,14 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 	// specially tailored for the main text.
 	// Top and bottom margin of the document (only at top-level)
 	if (text_->isMainText()) {
-		// original value was 20px, which is 0.2in at 100dpi
-		int const margin = bv_->zoomedPixels(20);
 		if (pit == 0) {
-			pm.rows().front().dim().asc += margin;
-			/* coverity thinks that we should update pm.dim().asc
-			 * below, but all the rows heights are actually counted as
-			 * part of the paragraph metric descent see loop above).
-			 */
-			// coverity[copy_paste_error]
-			pm.dim().des += margin;
+			pm.rows().front().top_padding += bv_->topMargin();
+			pm.dim().asc += bv_->topMargin();
 		}
 		ParagraphList const & pars = text_->paragraphs();
 		if (pit + 1 == pit_type(pars.size())) {
-			pm.rows().back().dim().des += margin;
-			pm.dim().des += margin;
+			pm.rows().back().bottom_padding += bv_->bottomMargin();
+			pm.dim().des += bv_->bottomMargin();
 		}
 	}
 

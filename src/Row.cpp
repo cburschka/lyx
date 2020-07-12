@@ -161,6 +161,7 @@ pos_type Row::Element::right_pos() const
 
 Row::Row()
 	: separator(0), label_hfill(0), left_margin(0), right_margin(0),
+	  top_padding(0), bottom_padding(0),
 	  sel_beg(-1), sel_end(-1),
 	  begin_margin_sel(false), end_margin_sel(false),
 	  changed_(true),

@@ -104,9 +104,12 @@ public:
 
 	/// right margin
 	int rightMargin() const;
-
 	/// left margin
 	int leftMargin() const;
+	/// top margin
+	int topMargin() const;
+	/// bottom margin
+	int bottomMargin() const;
 
 	/// return the on-screen size of this length
 	/*
