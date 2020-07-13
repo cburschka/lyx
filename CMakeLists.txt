@@ -136,6 +136,23 @@ list(GET _version_list 4 LYX_RELEASE_PATCH)
 # 3. parameter: default value, ON or OFF
 # 4. parameter: system on which option is used: ALL, GCC, MSVC, ...
 
+
+# Select some defaults depending on LYX_BUILD_TYPE
+if(LYX_BUILD_TYPE STREQUAL "development")
+  set(DefaultLyxDebug ON)
+  set(DefaultLyxRelease OFF)
+  set(DefaultStdlibDebug ON)
+elseif(LYX_BUILD_TYPE STREQUAL "prerelease")
+  set(DefaultLyxDebug OFF)
+  set(DefaultLyxRelease OFF)
+  set(DefaultStdlibDebug OFF)
+elseif(LYX_BUILD_TYPE STREQUAL "release")
+  set(DefaultLyxDebug OFF)
+  set(DefaultLyxRelease ON)
+  set(DefaultStdlibDebug OFF)
+else()
+  message(FATAL_ERROR "Unknown build type (${LYX_BUILD_TYPE}) encountered")
+endif()
 # Usage LYX_COMBO
 # 1. parameter: name without prefix 'LYX_'
 # 2. parameter: description
@@ -153,8 +170,8 @@ LYX_OPTION(REQUIRE_SPELLCHECK "Abort if no spellchecker available" OFF ALL)
 LYX_OPTION(ASPELL           "Require aspell" OFF ALL)
 LYX_OPTION(ENCHANT          "Require Enchant" OFF ALL)
 LYX_OPTION(HUNSPELL         "Require Hunspell" OFF ALL)
-LYX_OPTION(RELEASE          "Build release version, build debug when disabled" OFF ALL)
-LYX_OPTION(DEBUG            "Enforce debug build"  OFF ALL)
+LYX_OPTION(RELEASE          "Build release version, build debug when disabled" ${DefaultLyxRelease} ALL)
+LYX_OPTION(DEBUG            "Enforce debug build"  ${DefaultLyxDebug} ALL)
 LYX_OPTION(NO_OPTIMIZE      "Don't use any optimization/debug flags"  OFF ALL)
 LYX_OPTION(PACKAGE_SUFFIX   "Use version suffix for packaging" ON ALL)
 LYX_STRING(SUFFIX_VALUE     "Use this string as suffix" "")
@@ -192,7 +209,7 @@ LYX_OPTION(EXTERNAL_BOOST       "Use external boost" OFF GCC)
 LYX_OPTION(PROGRAM_SUFFIX       "Append version suffix to binaries" ON GCC)
 LYX_OPTION(DEBUG_GLIBC          "Enable libstdc++ debug mode" OFF GCC)
 LYX_OPTION(DEBUG_GLIBC_PEDANTIC "Enable libstdc++ pedantic debug mode" OFF GCC)
-LYX_OPTION(STDLIB_DEBUG         "Use debug stdlib" OFF GCC)
+LYX_OPTION(STDLIB_DEBUG         "Use debug stdlib" ${DefaultStdlibDebug} GCC)
 
 # MSVC specific
 LYX_OPTION(CONSOLE               "Show console on Windows" ON MSVC)
