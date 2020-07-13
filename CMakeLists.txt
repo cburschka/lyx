@@ -103,8 +103,21 @@ include(LyXMacros)
 include(LyXDestinations)
 
 # Try to get some informations from configure.ac
-
 include(LyXPaths)
+
+# Value of USE_POSIX_PACKAGING is needed in determineversionandbuildtype()
+if(WIN32)
+	set(CMAKE_PREFIX_PATH Specify-path-to-Qt CACHE PATH "Used Qt version")
+	if(MSVC)
+		set(LYX_3RDPARTY_BUILD ON CACHE BOOL "Build 3rdparty libraries" FORCE)
+	endif()
+	set(USE_WINDOWS_PACKAGING ON)
+elseif(APPLE)
+	set(USE_MACOSX_PACKAGING ON)
+else()
+	set(USE_POSIX_PACKAGING ON)
+endif()
+
 determineversionandbuildtype("${TOP_SRC_DIR}/configure.ac" _package_list _version_list _envlist LYX_DATE LYX_BUILD_TYPE)
 list(GET _package_list 0 PACKAGE_BASE)
 list(GET _package_list 1 PACKAGE_VERSION)
@@ -354,20 +367,6 @@ else()
 	else()
 		set(LYX_USE_STD_REGEX 1)
 	endif()
-endif()
-
-file(STRINGS "${TOP_SRC_DIR}/configure.ac" _config_lines)
-
-if(WIN32)
-	set(CMAKE_PREFIX_PATH Specify-path-to-Qt CACHE PATH "Used Qt version")
-	if(MSVC)
-		set(LYX_3RDPARTY_BUILD ON CACHE BOOL "Build 3rdparty libraries" FORCE)
-	endif()
-	set(USE_WINDOWS_PACKAGING ON)
-elseif(APPLE)
-	set(USE_MACOSX_PACKAGING ON)
-else()
-	set(USE_POSIX_PACKAGING ON)
 endif()
 
 if(LYX_3RDPARTY_BUILD)
