@@ -572,7 +572,7 @@ public:
 	void read(Lexer &);
 	///
 	void latex(otexstream &, OutputParams const &) const;
-	///
+	/// serialise the table in DocBook, according to buffer parameters
 	void docbook(XMLStream &, OutputParams const &) const;
 	///
 	docstring xhtml(XMLStream &, OutputParams const &) const;
@@ -907,9 +907,14 @@ public:
 				idx_type cell, row_type row, col_type column,
 				std::vector<unsigned int> const &,
 				bool onlydata, size_t max_length) const;
-	/// auxiliary function for docbook
+	/// auxiliary function for DocBook
 	void docbookRow(XMLStream &, row_type, OutputParams const &,
 					bool header = false) const;
+	/// auxiliary function for DocBook: export this row as HTML
+	void docbookRowAsHTML(XMLStream &, row_type, OutputParams const &,
+					bool header) const;
+	/// auxiliary function for DocBook: export this row as CALS
+	void docbookRowAsCALS(XMLStream &, row_type, OutputParams const &) const;
 	///
 	docstring xhtmlRow(XMLStream & xs, row_type, OutputParams const &,
 	                   bool header = false) const;

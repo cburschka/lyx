@@ -3502,6 +3502,20 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 void Tabular::docbookRow(XMLStream & xs, row_type row,
 		   OutputParams const & runparams, bool header) const
 {
+	switch (buffer().params().docbook_table_output) {
+	case BufferParams::HTMLTable:
+		docbookRowAsHTML(xs, row, runparams, header);
+		break;
+	case BufferParams::CALSTable:
+		docbookRowAsCALS(xs, row, runparams);
+		break;
+	}
+}
+
+
+void Tabular::docbookRowAsHTML(XMLStream & xs, row_type row,
+		   OutputParams const & runparams, bool header) const
+{
 	string const celltag = header ? "th" : "td";
 	idx_type cell = getFirstCellInRow(row);
 
@@ -3565,7 +3579,77 @@ void Tabular::docbookRow(XMLStream & xs, row_type row,
 		++cell;
 	}
 	xs << xml::EndTag("tr");
-	xs<< xml::CR();
+	xs << xml::CR();
+}
+
+
+void Tabular::docbookRowAsCALS(XMLStream & xs, row_type row,
+                                OutputParams const & runparams) const
+{
+	idx_type cell = getFirstCellInRow(row);
+
+	xs << xml::StartTag("row");
+	xs << xml::CR();
+	for (col_type c = 0; c < ncols(); ++c) {
+		if (isPartOfMultiColumn(row, c) || isPartOfMultiRow(row, c))
+			continue;
+
+		stringstream attr;
+
+		attr << "align='";
+		switch (getAlignment(cell)) {
+		case LYX_ALIGN_BLOCK:
+			attr << "justify";
+			break;
+		case LYX_ALIGN_DECIMAL: {
+			Language const *tlang = buffer().paragraphs().front().getParLanguage(buffer().params());
+			attr << "char' char='" << to_utf8(tlang->decimalSeparator());
+		}
+			break;
+		case LYX_ALIGN_LEFT:
+			attr << "left";
+			break;
+		case LYX_ALIGN_RIGHT:
+			attr << "right";
+			break;
+
+		default:
+			attr << "center";
+			break;
+		}
+		attr << "'";
+		attr << " valign='";
+		switch (getVAlignment(cell)) {
+		case LYX_VALIGN_TOP:
+			attr << "top";
+			break;
+		case LYX_VALIGN_BOTTOM:
+			attr << "bottom";
+			break;
+		case LYX_VALIGN_MIDDLE:
+			attr << "middle";
+		}
+		attr << "'";
+
+		if (isMultiColumn(cell))
+			attr << " colspan='" << columnSpan(cell) << "'";
+		else if (isMultiRow(cell))
+			attr << " rowspan='" << rowSpan(cell) << "'";
+		else
+			attr << " colname='c" << (c + 1) << "'"; // Column numbering starts at 1.
+
+		// All cases where there should be a line *below* this row.
+		if (row_info[row].bottom_space_default)
+			attr << " rowsep='1'";
+
+		xs << xml::StartTag("entry", attr.str(), true);
+		cellInset(cell)->docbook(xs, runparams);
+		xs << xml::EndTag("entry");
+		xs << xml::CR();
+		++cell;
+	}
+	xs << xml::EndTag("row");
+	xs << xml::CR();
 }
 
 
@@ -3580,35 +3664,57 @@ void Tabular::docbook(XMLStream & xs, OutputParams const & runparams) const
 		xs << xml::CR();
 	}
 
-	// "Formal" tables have a caption and use the tag <table>; the distinction with <informaltable> is done outside.
+	// "Formal" tables have a title and use the tag <table>; the distinction with <informaltable> is done outside.
+	// HTML has the caption first with titles forbidden, and CALS has a title first.
 	if (haveLTCaption()) {
-		xs << xml::StartTag("caption");
+		std::string tag = ((buffer().params().docbook_table_output) == BufferParams::HTMLTable) ? "caption" : "title";
+
+		xs << xml::StartTag(tag);
 		for (row_type r = 0; r < nrows(); ++r)
 			if (row_info[r].caption)
 				docbookRow(xs, r, runparams);
-		xs << xml::EndTag("caption");
+		xs << xml::EndTag(tag);
 		xs << xml::CR();
 	}
 
-	// output header info
+	// CALS header: describe all columns in this table. For names, take 'c' then the ID of the column.
+	// Start at one, as is customary with CALS!
+	if (buffer().params().docbook_table_output == BufferParams::CALSTable) {
+		for (col_type c = 0; c < ncols(); ++c) {
+			std::stringstream attr;
+			attr << "colnum='" << (c + 1) << "' ";
+			attr << "colname='c" << (c + 1) << "' ";
+			Length const cwidth = column_info[c].p_width;
+			if (!cwidth.zero())
+				attr << "colwidth='" << cwidth.asHTMLString() << "' ";
+			attr << "rowheader='norowheader'"; // Last attribute, hence no space at the end.
+
+			xs << xml::CompTag("colspec", attr.str());
+			xs << xml::CR();
+		}
+	}
+
+	// Output the header of the table. For both HTML and CALS, this is surrounded by a thead.
 	bool const havefirsthead = haveLTFirstHead(false);
 	// if we have a first head, then we are going to ignore the
 	// headers for the additional pages, since there aren't any
-	// in XHTML. this test accomplishes that.
+	// in DocBook. this test accomplishes that.
 	bool const havehead = !havefirsthead && haveLTHead(false);
 	if (havehead || havefirsthead) {
 		xs << xml::StartTag("thead") << xml::CR();
 		for (row_type r = 0; r < nrows(); ++r) {
 			if (((havefirsthead && row_info[r].endfirsthead) ||
-				 (havehead && row_info[r].endhead)) &&
-				!row_info[r].caption) {
-				docbookRow(xs, r, runparams, true);
+			     (havehead && row_info[r].endhead)) &&
+			    !row_info[r].caption) {
+				docbookRow(xs, r, runparams, true); // TODO: HTML vs CALS
 			}
 		}
 		xs << xml::EndTag("thead");
 		xs << xml::CR();
 	}
-	// output footer info
+
+	// Output the footer of the table. For both HTML and CALS, this is surrounded by a tfoot and output just after
+	// the header (and before the body).
 	bool const havelastfoot = haveLTLastFoot(false);
 	// as before.
 	bool const havefoot = !havelastfoot && haveLTFoot(false);
@@ -3616,15 +3722,17 @@ void Tabular::docbook(XMLStream & xs, OutputParams const & runparams) const
 		xs << xml::StartTag("tfoot") << xml::CR();
 		for (row_type r = 0; r < nrows(); ++r) {
 			if (((havelastfoot && row_info[r].endlastfoot) ||
-				 (havefoot && row_info[r].endfoot)) &&
-				!row_info[r].caption) {
-				docbookRow(xs, r, runparams);
+			     (havefoot && row_info[r].endfoot)) &&
+			    !row_info[r].caption) {
+				docbookRow(xs, r, runparams); // TODO: HTML vs CALS
 			}
 		}
 		xs << xml::EndTag("tfoot");
 		xs << xml::CR();
 	}
 
+	// Output the main part of the table. The tbody container is mandatory for CALS, but optional for HTML (only if
+	// there is no header and no footer). It never hurts to have it, though.
 	xs << xml::StartTag("tbody");
 	xs << xml::CR();
 	for (row_type r = 0; r < nrows(); ++r)
@@ -3633,6 +3741,7 @@ void Tabular::docbook(XMLStream & xs, OutputParams const & runparams) const
 	xs << xml::EndTag("tbody");
 	xs << xml::CR();
 
+	// If this method started the table tag, also make it close it.
 	if (!hasTableStarted) {
 		xs << xml::EndTag("informaltable");
 		xs << xml::CR();

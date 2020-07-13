@@ -471,6 +471,7 @@ BufferParams::BufferParams()
 	html_math_output = MathML;
 	html_math_img_scale = 1.0;
 	html_css_as_file = false;
+	docbook_table_output = HTMLTable;
 	display_pixel_ratio = 1.0;
 
 	shell_escape = false;
@@ -1134,6 +1135,10 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\html_latex_end") {
 		lex.eatLine();
 		html_latex_end = lex.getString();
+	} else if (token == "\\docbook_table_output") {
+		int temp;
+		lex >> temp;
+		docbook_table_output = static_cast<TableOutput>(temp);
 	} else if (token == "\\output_sync") {
 		lex >> output_sync;
 	} else if (token == "\\output_sync_macro") {
@@ -1490,6 +1495,8 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	os << "\\html_math_output " << html_math_output << '\n'
 	   << "\\html_css_as_file " << html_css_as_file << '\n'
 	   << "\\html_be_strict " << convert<string>(html_be_strict) << '\n';
+
+	os << "\\docbook_table_output " << docbook_table_output << '\n';
 
 	if (html_math_img_scale != 1.0)
 		os << "\\html_math_img_scale " << convert<string>(html_math_img_scale) << '\n';

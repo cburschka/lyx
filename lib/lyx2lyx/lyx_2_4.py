@@ -3922,6 +3922,20 @@ def revert_libertinus_sftt_fonts(document):
                     add_to_preamble(document, ["\\renewcommand*{\\LibertinusMono@scale}{" + str(tt_scale / 100.0) + "}"])
 
 
+def convert_docbook_table_output(document):
+    if find_token(document.header, '\\docbook_table_output') != -1:
+        document.warning("Malformed LyX file: \\docbook_table_output found before format 598!")
+    else:
+        document.header.append('\\docbook_table_output 0')
+
+
+def revert_docbook_table_output(document):
+    i = find_token(document.header, '\\docbook_table_output 0')
+    i = find_token(document.header, '\\docbook_table_output 1') if i == -1 else i
+    if i != -1:
+        del document.header[i]
+
+
 ##
 # Conversion hub
 #
@@ -3980,10 +3994,12 @@ convert = [
            [594, []],
            [595, []],
            [596, [convert_parskip]],
-           [597, [convert_libertinus_rm_fonts]]
+           [597, [convert_libertinus_rm_fonts]],
+           [598, [convert_docbook_table_output]]
           ]
 
-revert =  [[595, [revert_libertinus_rm_fonts,revert_libertinus_sftt_fonts]],
+revert =  [[597, [revert_docbook_table_output]],
+           [595, [revert_libertinus_rm_fonts,revert_libertinus_sftt_fonts]],
            [595, [revert_parskip,revert_line_vspaces]],
            [594, [revert_ams_spaces]],
            [593, [revert_counter_inset]],

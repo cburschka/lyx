@@ -558,6 +558,15 @@ public:
 	std::string html_latex_end;
 	///
 	bool html_css_as_file;
+
+	// do not change these values. we rely upon them.
+	enum TableOutput {
+		HTMLTable = 0,
+		CALSTable = 1
+	};
+	/// what format to use for table output in DocBook. present choices are above
+	TableOutput docbook_table_output;
+
 	/// allow the LaTeX backend to run external programs
 	bool shell_escape;
 	/// generate output usable for reverse/forward search

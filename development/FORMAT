@@ -7,6 +7,10 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2020-07-14 Thibaut Cuvelier <tcuvelier@lyx.org>
+ 	* Format incremented to 598: DocBook can export to HTML and CALS tables, with the parameter
+          \docbook_table_output (0: HTML, only choice previously; CALS: 1).
+
 2020-03-13 Jürgen Spitzmüller <spitz@lyx.org>
  	* Format incremented to 593: Buffer param \maintain_unincluded_children is not longer a bool
           (true|false) but has three states: "no" (formerly "false"), "strict" (formerly "true") and

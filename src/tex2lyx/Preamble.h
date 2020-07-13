@@ -190,6 +190,7 @@ private:
 	std::string h_html_be_strict;
 	std::string h_html_css_as_file;
 	std::string h_html_math_output;
+	std::string h_docbook_table_output;
 	std::string h_index[99];
 	std::string h_index_command;
 	std::string h_inputencoding;

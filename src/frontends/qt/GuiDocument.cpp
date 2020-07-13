@@ -925,6 +925,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(outputModule->mathoutCB, SIGNAL(currentIndexChanged(int)),
 		this, SLOT(change_adaptor()));
+	connect(outputModule->tableoutCB, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(change_adaptor()));
 
 	connect(outputModule->shellescapeCB, SIGNAL(stateChanged(int)),
 		this, SLOT(shellescapeChanged()));
@@ -3718,6 +3720,13 @@ void GuiDocument::applyView()
 	bp_.html_math_img_scale = outputModule->mathimgSB->value();
 	bp_.display_pixel_ratio = theGuiApp()->pixelRatio();
 
+	int tablefmt = outputModule->tableoutCB->currentIndex();
+	if (tablefmt == -1)
+		tablefmt = 0;
+	BufferParams::TableOutput const to =
+			static_cast<BufferParams::TableOutput>(tablefmt);
+	bp_.docbook_table_output = to;
+
 	bp_.save_transient_properties =
 		outputModule->saveTransientPropertiesCB->isChecked();
 	bp_.postpone_fragile_content =
@@ -4354,6 +4363,8 @@ void GuiDocument::paramsToDialog()
 	outputModule->mathoutCB->setCurrentIndex(bp_.html_math_output);
 	outputModule->strictCB->setChecked(bp_.html_be_strict);
 	outputModule->cssCB->setChecked(bp_.html_css_as_file);
+
+	outputModule->tableoutCB->setCurrentIndex(bp_.docbook_table_output);
 
 	outputModule->saveTransientPropertiesCB
 		->setChecked(bp_.save_transient_properties);
