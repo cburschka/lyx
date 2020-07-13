@@ -2777,7 +2777,7 @@ bool BufferView::singleParUpdate()
 	Text & buftext = buffer_.text();
 	pit_type const bottom_pit = d->cursor_.bottom().pit();
 	TextMetrics & tm = textMetrics(&buftext);
-	int old_height = tm.parMetrics(bottom_pit).height();
+	Dimension const old_dim = tm.parMetrics(bottom_pit).dim();
 
 	// make sure inline completion pointer is ok
 	if (d->inlineCompletionPos_.fixIfBroken())
@@ -2788,11 +2788,16 @@ bool BufferView::singleParUpdate()
 	// (if this paragraph contains insets etc., rebreaking will
 	// recursively descend)
 	tm.redoParagraph(bottom_pit);
-	ParagraphMetrics const & pm = tm.parMetrics(bottom_pit);
-	if (pm.height() != old_height)
+	ParagraphMetrics & pm = tm.par_metrics_[bottom_pit];
+	if (pm.height() != old_dim.height()) {
 		// Paragraph height has changed so we cannot proceed to
 		// the singlePar optimisation.
 		return false;
+	}
+	// Since position() points to the baseline of the first row, we
+	// may have to update it. See ticket #11601 for an example where
+	// the height does not change but the ascent does.
+	pm.setPosition(pm.position() - old_dim.ascent() + pm.ascent());
 
 	tm.updatePosCache(bottom_pit);
 

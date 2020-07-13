@@ -26,7 +26,6 @@ namespace Update {
 		/// Force a full redraw (but no metrics computations)
 		ForceDraw = 4,
 		/// Try to rebreak only the current paragraph metrics.
-		/// (currently ignored!)
 		SinglePar = 8,
 		/// Only the inset decorations need to be redrawn, no text metrics
 		/// update is needed.
