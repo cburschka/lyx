@@ -1326,9 +1326,6 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 	bool ret = true;
 	string const arg = to_utf8(cmd.argument());
 	switch (cmd.action()) {
-	case LFUN_INSET_MODIFY:
-		flag.setEnabled(false);
-		break;
 #if 0
 	case LFUN_INSET_MODIFY:
 		// FIXME: check temporarily disabled
