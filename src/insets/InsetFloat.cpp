@@ -162,6 +162,11 @@ void InsetFloat::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY: {
+		if (!buffer().params().documentClass().floats().typeExist(cmd.getArg(0))) {
+			// not for us: pass further.
+			cur.undispatched();
+			break;
+		}
 		InsetFloatParams params;
 		string2params(to_utf8(cmd.argument()), params);
 		cur.recordUndoInset(this);
@@ -200,6 +205,9 @@ bool InsetFloat::getStatus(Cursor & cur, FuncRequest const & cmd,
 	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY:
+		if (!buffer().params().documentClass().floats().typeExist(cmd.getArg(0)))
+			return Inset::getStatus(cur, cmd, flag);
+	// fall through
 	case LFUN_INSET_DIALOG_UPDATE:
 		flag.setEnabled(true);
 		return true;
