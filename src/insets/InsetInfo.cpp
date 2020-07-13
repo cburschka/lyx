@@ -624,6 +624,8 @@ bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_INSET_MODIFY:
+		if (nameTranslator().find(cmd.getArg(0)) == InsetInfoParams::UNKNOWN_INFO)
+			return Inset::getStatus(cur, cmd, flag);
 		if (params_.validateArgument(&buffer(), cmd.argument())) {
 			flag.setEnabled(true);
 			string typestr;
@@ -648,6 +650,10 @@ void InsetInfo::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY:
+		if (nameTranslator().find(cmd.getArg(0)) == InsetInfoParams::UNKNOWN_INFO) {
+			cur.undispatched();
+			break;
+		}
 		cur.recordUndo();
 		setInfo(to_utf8(cmd.argument()));
 		cur.forceBufferUpdate();
