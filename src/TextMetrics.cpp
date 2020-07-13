@@ -185,6 +185,12 @@ ParagraphMetrics const & TextMetrics::parMetrics(pit_type pit) const
 }
 
 
+ParagraphMetrics & TextMetrics::parMetrics(pit_type pit)
+{
+	return parMetrics(pit, true);
+}
+
+
 void TextMetrics::newParMetricsDown()
 {
 	pair<pit_type, ParagraphMetrics> const & last = *par_metrics_.rbegin();

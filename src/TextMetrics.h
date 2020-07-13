@@ -60,9 +60,11 @@ public:
 	///
 	Point const & origin() const { return origin_; }
 
-
 	///
 	ParagraphMetrics const & parMetrics(pit_type) const;
+	///
+	ParagraphMetrics & parMetrics(pit_type);
+
 	///
 	void newParMetricsDown();
 	///
@@ -240,7 +242,6 @@ public:
 		Dimension & dim) const;
 
 private:
-	friend class BufferView;
 
 	/// The BufferView owner.
 	BufferView * bv_;

@@ -2788,7 +2788,7 @@ bool BufferView::singleParUpdate()
 	// (if this paragraph contains insets etc., rebreaking will
 	// recursively descend)
 	tm.redoParagraph(bottom_pit);
-	ParagraphMetrics & pm = tm.par_metrics_[bottom_pit];
+	ParagraphMetrics & pm = tm.parMetrics(bottom_pit);
 	if (pm.height() != old_dim.height()) {
 		// Paragraph height has changed so we cannot proceed to
 		// the singlePar optimisation.
@@ -2845,7 +2845,7 @@ void BufferView::updateMetrics(Update::flags & update_flags)
 
 	// Rebreak anchor paragraph.
 	tm.redoParagraph(d->anchor_pit_);
-	ParagraphMetrics & anchor_pm = tm.par_metrics_[d->anchor_pit_];
+	ParagraphMetrics & anchor_pm = tm.parMetrics(d->anchor_pit_);
 
 	// position anchor
 	if (d->anchor_pit_ == 0) {
@@ -2872,7 +2872,7 @@ void BufferView::updateMetrics(Update::flags & update_flags)
 	pit_type pit1 = d->anchor_pit_ - 1;
 	for (; pit1 >= 0 && y1 >= 0; --pit1) {
 		tm.redoParagraph(pit1);
-		ParagraphMetrics & pm = tm.par_metrics_[pit1];
+		ParagraphMetrics & pm = tm.parMetrics(pit1);
 		y1 -= pm.descent();
 		// Save the paragraph position in the cache.
 		pm.setPosition(y1);
@@ -2886,7 +2886,7 @@ void BufferView::updateMetrics(Update::flags & update_flags)
 	pit_type pit2 = d->anchor_pit_ + 1;
 	for (; pit2 < npit && y2 <= height_; ++pit2) {
 		tm.redoParagraph(pit2);
-		ParagraphMetrics & pm = tm.par_metrics_[pit2];
+		ParagraphMetrics & pm = tm.parMetrics(pit2);
 		y2 += pm.ascent();
 		// Save the paragraph position in the cache.
 		pm.setPosition(y2);
