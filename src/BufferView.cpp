@@ -360,6 +360,20 @@ int BufferView::leftMargin() const
 }
 
 
+int BufferView::topMargin() const
+{
+	// original value was 20px, which is 0.2in at 100dpi
+	return zoomedPixels(20);
+}
+
+
+int BufferView::bottomMargin() const
+{
+	// original value was 20px, which is 0.2in at 100dpi
+	return zoomedPixels(20);
+}
+
+
 int BufferView::inPixels(Length const & len) const
 {
 	Font const font = buffer().params().getFont();
