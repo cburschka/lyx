@@ -2333,7 +2333,6 @@ void GuiDocument::osFontsChanged(bool nontexfonts)
 	int const font_sf_scale = fontModule->scaleSansSB->value();
 	int const font_tt_scale = fontModule->scaleTypewriterSB->value();
 
-	// reset the filters
 	updateFontlist();
 	// store default format
 	QString const dformat = outputModule->defaultFormatCO->itemData(
@@ -2600,6 +2599,7 @@ void GuiDocument::updateTexFonts()
 
 void GuiDocument::updateFontlist()
 {
+	// reset the filters of the CategorizedCombos
 	fontModule->fontsRomanCO->resetFilter();
 	fontModule->fontsSansCO->resetFilter();
 	fontModule->fontsTypewriterCO->resetFilter();
