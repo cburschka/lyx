@@ -539,6 +539,11 @@ void CategorizedCombo::reset()
 	d->model_->clear();
 }
 
+void CategorizedCombo::resetFilter()
+{
+	d->resetFilter();
+}
+
 
 void CategorizedCombo::updateCombo()
 {

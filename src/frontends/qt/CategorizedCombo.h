@@ -41,6 +41,8 @@ public:
 	bool set(QString const & cc);
 	/// Reset the combobox.
 	void reset();
+	/// Reset the combobox filter.
+	void resetFilter();
 	/// Update combobox.
 	void updateCombo();
 	/// Add Item to combo according to sorting settings from preferences
