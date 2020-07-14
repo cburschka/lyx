@@ -57,6 +57,7 @@
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
 
+#include "support/Changer.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -4341,10 +4342,11 @@ void InsetTableCell::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	// We tell metrics here not to expand on multiple pars
 	// This is the difference to InsetText::Metrics
-	if (hasFixedWidth() || isVarwidth)
-		tm.metrics(mi, dim, mi.base.textwidth, false);
+	Changer changetight = changeVar(mi.tight_insets, true);
+	if (hasFixedWidth())
+		tm.metrics(mi, dim, mi.base.textwidth);
 	else
-		tm.metrics(mi, dim, 0, false);
+		tm.metrics(mi, dim, 0);
 	mi.base.textwidth += horiz_offset;
 	dim.asc += topOffset(mi.base.bv);
 	dim.des += bottomOffset(mi.base.bv);

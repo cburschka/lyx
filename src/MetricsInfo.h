@@ -95,7 +95,7 @@ public:
 	MetricsInfo();
 	///
 	MetricsInfo(BufferView * bv, FontInfo font, int textwidth,
-	            MacroContext const & mc, bool vm);
+	            MacroContext const & mc, bool vm, bool tight_insets);
 
 	///
 	MetricsBase base;
@@ -103,6 +103,8 @@ public:
 	MacroContext const & macrocontext;
 	/// Are we at the start of a paragraph (vertical mode)?
 	bool vmode;
+	/// if true, do not expand insets to max width artificially
+	bool tight_insets;
 };
 
 

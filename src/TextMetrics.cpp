@@ -106,14 +106,9 @@ int numberOfHfills(Row const & row, ParagraphMetrics const & pm,
 
 
 TextMetrics::TextMetrics(BufferView * bv, Text * text)
-	: bv_(bv), text_(text)
-{
-	LBUFERR(bv_);
-	max_width_ = bv_->workWidth();
-	dim_.wid = max_width_;
-	dim_.asc = 10;
-	dim_.des = 10;
-}
+	: bv_(bv), text_(text), dim_(bv_->workWidth(), 10, 10),
+	  max_width_(dim_.wid), tight_(false)
+{}
 
 
 bool TextMetrics::contains(pit_type pit) const
@@ -216,18 +211,18 @@ void TextMetrics::newParMetricsUp()
 }
 
 
-bool TextMetrics::metrics(MetricsInfo const & mi, Dimension & dim, int min_width,
-			  bool const expand_on_multipars)
+bool TextMetrics::metrics(MetricsInfo const & mi, Dimension & dim, int min_width)
 {
 	LBUFERR(mi.base.textwidth > 0);
 	max_width_ = mi.base.textwidth;
+	tight_ = mi.tight_insets;
 	// backup old dimension.
 	Dimension const old_dim = dim_;
 	// reset dimension.
 	dim_ = Dimension();
 	dim_.wid = min_width;
 	pit_type const npar = text_->paragraphs().size();
-	if (npar > 1 && expand_on_multipars)
+	if (npar > 1 && !tight_)
 		// If there is more than one row, expand the text to
 		// the full allowable width.
 		dim_.wid = max_width_;
@@ -512,7 +507,7 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 		Font const & font = e.inset->inheritFont() ?
 			displayFont(pit, e.pos) : bufferfont;
 		MacroContext mc(&buffer, parPos);
-		MetricsInfo mi(bv_, font.fontInfo(), w, mc, e.pos == 0);
+		MetricsInfo mi(bv_, font.fontInfo(), w, mc, e.pos == 0, tight_);
 		e.inset->metrics(mi, dim);
 		if (!insetCache.has(e.inset) || insetCache.dim(e.inset) != dim) {
 			insetCache.add(e.inset, dim);
@@ -536,12 +531,12 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 		setRowHeight(row);
 		row.changed(true);
 		if ((row_index || row.endpos() < par.size() || row.right_boundary())
-		    && par.inInset().lyxCode() != CELL_CODE) {
+		    && !tight_) {
 			/* If there is more than one row or the row has been
 			 * broken by a display inset or a newline, expand the text
 			 * to the full allowable width. This setting here is
 			 * needed for the setRowAlignment() below.
-			 * We do nothing when inside a table cell.
+			 * We do nothing when tight insets are requested.
 			 */
 			if (dim_.wid < max_width_)
 				dim_.wid = max_width_;

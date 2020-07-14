@@ -39,7 +39,7 @@ class TextMetrics
 	void operator=(TextMetrics const &);
 public:
 	/// Default constructor (only here for STL containers).
-	TextMetrics() : bv_(0), text_(0), max_width_(0) {}
+	TextMetrics() : bv_(0), text_(0), max_width_(0), tight_(false) {}
 	/// The only useful constructor.
 	TextMetrics(BufferView *, Text *);
 
@@ -72,8 +72,7 @@ public:
 	void newParMetricsUp();
 
 	/// compute text metrics.
-	bool metrics(MetricsInfo const & mi, Dimension & dim, int min_width = 0,
-		     bool const expand_on_multipars = true);
+	bool metrics(MetricsInfo const & mi, Dimension & dim, int min_width = 0);
 
 	/// The "nodraw" drawing stage for one single paragraph: set the
 	/// positions of the insets contained in this paragraph in metrics
@@ -257,6 +256,8 @@ private:
 	mutable ParMetricsCache par_metrics_;
 	Dimension dim_;
 	int max_width_;
+	/// if true, do not expand insets to max width artificially
+	bool tight_;
 	mutable Point origin_;
 
 // temporary public:
