@@ -136,26 +136,6 @@ list(GET _version_list 4 LYX_RELEASE_PATCH)
 # 3. parameter: default value, ON or OFF
 # 4. parameter: system on which option is used: ALL, GCC, MSVC, ...
 
-
-# Select some defaults depending on LYX_BUILD_TYPE
-if(LYX_BUILD_TYPE STREQUAL "development")
-  set(DefaultLyxDebug ON)
-  set(DefaultLyxRelease OFF)
-  set(DefaultLyxStdlibDebug ON)
-  set(DefaultLyxEnableAssertions ON)
-elseif(LYX_BUILD_TYPE STREQUAL "prerelease")
-  set(DefaultLyxDebug OFF)
-  set(DefaultLyxRelease OFF)
-  set(DefaultLyxStdlibDebug OFF)
-  set(DefaultLyxEnableAssertions OFF)
-elseif(LYX_BUILD_TYPE STREQUAL "release")
-  set(DefaultLyxDebug OFF)
-  set(DefaultLyxRelease ON)
-  set(DefaultLyxStdlibDebug OFF)
-  set(DefaultLyxEnableAssertions OFF)
-else()
-  message(FATAL_ERROR "Unknown build type (${LYX_BUILD_TYPE}) encountered")
-endif()
 # Usage LYX_COMBO
 # 1. parameter: name without prefix 'LYX_'
 # 2. parameter: description
@@ -163,6 +143,45 @@ endif()
 # 4-n parameter: possible other string values
 
 LYX_OPTION_INIT()
+LYX_COMBO(ENABLE_BUILD_TYPE  "Allows to tweak the compiled code" AUTO release prerelease development gprof)
+
+if(LYX_ENABLE_BUILD_TYPE MATCHES "AUTO")
+  message(STATUS "Selecting build type defaults from configure.ac")
+else()
+  set(LYX_BUILD_TYPE "${LYX_ENABLE_BUILD_TYPE}")
+  message(STATUS "Selecting build type defaults from LYX_ENABLE_BUILD_TYPE")
+endif()
+
+# Select some defaults depending on LYX_BUILD_TYPE
+# they can always be overwritten by the respective command line settings
+# These settings are only effective on fresh(==empty) CMakeCache.txt
+if(LYX_BUILD_TYPE STREQUAL "development")
+  set(DefaultLyxDebug ON)
+  set(DefaultLyxRelease OFF)
+  set(DefaultLyxStdlibDebug ON)
+  set(DefaultLyxEnableAssertions ON)
+  set(DefaultLyxProfile OFF)
+elseif(LYX_BUILD_TYPE STREQUAL "prerelease")
+  set(DefaultLyxDebug OFF)
+  set(DefaultLyxRelease OFF)
+  set(DefaultLyxStdlibDebug OFF)
+  set(DefaultLyxEnableAssertions OFF)
+  set(DefaultLyxProfile OFF)
+elseif(LYX_BUILD_TYPE STREQUAL "release")
+  set(DefaultLyxDebug OFF)
+  set(DefaultLyxRelease ON)
+  set(DefaultLyxStdlibDebug OFF)
+  set(DefaultLyxEnableAssertions OFF)
+  set(DefaultLyxProfile OFF)
+elseif(LYX_BUILD_TYPE STREQUAL "gprof")
+  set(DefaultLyxDebug ON)
+  set(DefaultLyxRelease OFF)
+  set(DefaultLyxStdlibDebug OFF)
+  set(DefaultLyxEnableAssertions OFF)
+  set(DefaultLyxProfile ON)
+else()
+  message(FATAL_ERROR "Invalid build type (${LYX_BUILD_TYPE}) encountered")
+endif()
 
 # Options for all compilers/systems
 LYX_OPTION(CPACK            "Use the CPack management (Implies LYX_INSTALL option)" OFF ALL)
@@ -208,7 +227,7 @@ LYX_OPTION(EXTERNAL_HUNSPELL "OFF := Build 3rdparty lib hunspelllib" ON ALL)
 LYX_COMBO(EXTERNAL_MYTHES   "OFF := Build 3rdparty lib mytheslib" AUTO OFF ON)
 
 # GCC specific
-LYX_OPTION(PROFILE              "Build with options for gprof" OFF GCC)
+LYX_OPTION(PROFILE              "Build with options for gprof" ${DefaultLyxProfile} GCC)
 LYX_OPTION(EXTERNAL_BOOST       "Use external boost" OFF GCC)
 LYX_OPTION(PROGRAM_SUFFIX       "Append version suffix to binaries" ON GCC)
 LYX_OPTION(DEBUG_GLIBC          "Enable libstdc++ debug mode" OFF GCC)
