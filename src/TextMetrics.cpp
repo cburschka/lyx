@@ -1145,6 +1145,14 @@ void TextMetrics::setRowHeight(Row & row) const
 	int maxasc = int(fm.maxAscent() * spacing_val);
 	int maxdes = int(fm.maxDescent() * spacing_val);
 
+	// Take label string into account (useful if labelfont is large)
+	if (row.pos() == 0 && layout.labelIsInline()) {
+		FontInfo const labelfont = text_->labelFont(par);
+		FontMetrics const & lfm = theFontMetrics(labelfont);
+		maxasc = max(maxasc, int(lfm.maxAscent() * spacing_val));
+		maxdes = max(maxdes, int(lfm.maxDescent() * spacing_val));
+	}
+
 	// Find the ascent/descent of the row contents
 	for (Row::Element const & e : row) {
 		if (e.inset) {
