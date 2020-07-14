@@ -1649,7 +1649,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 				// append columns for the left over horizontal cells
 				for (InsetMath::col_type c = numcols; c < grid.ncols(); ++c) {
 					addCol(c + startcol);
-					idx_type i = index(r + startrow, c + startcol);
+					idx_type i = index(r + startrow, min(c + startcol, ncols() - 1));
 					cell(i).append(grid.cell(grid.index(r, c)));
 					++numcols;
 				}
@@ -1662,7 +1662,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 				row_type crow = startrow + r;
 				addRow(crow - 1);
 				for (col_type c = 0; c < grid.ncols(); ++c)
-					cell(index(crow, c + startcol)).append(grid.cell(grid.index(r, c)));
+					cell(index(min(crow, nrows() - 1), min(c + startcol, ncols() - 1))).append(grid.cell(grid.index(r, c)));
 				if (hline_enabled)
 					rowinfo_[crow].lines += grid.rowinfo_[r].lines;
 				else {
