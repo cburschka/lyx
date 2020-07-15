@@ -3521,6 +3521,14 @@ void Tabular::docbookRow(XMLStream & xs, row_type row,
 
 		attr << "align='";
 		switch (getAlignment(cell)) {
+		case LYX_ALIGN_BLOCK:
+			attr << "justify";
+			break;
+		case LYX_ALIGN_DECIMAL: {
+			Language const *tlang = buffer().paragraphs().front().getParLanguage(buffer().params());
+			attr << "char' char='" << to_utf8(tlang->decimalSeparator());
+		}
+			break;
 		case LYX_ALIGN_LEFT:
 			attr << "left";
 			break;
