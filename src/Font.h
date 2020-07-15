@@ -86,7 +86,8 @@ public:
 				 Font const & base,
 				 Font const & next,
 				 bool & needPar,
-				 bool const & closeLanguage = true) const;
+				 bool const & closeLanguage = true,
+				 bool const & non_inherit_inset = false) const;
 
 
 	/// Build GUI description of font state

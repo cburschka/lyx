@@ -218,8 +218,6 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 				    Font const & base,
 				    Font const & prev) const
 {
-	bool env = false;
-
 	int count = 0;
 
 	// polyglossia or babel?
@@ -297,26 +295,31 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 	FontInfo p = bits_;
 	p.reduce(prev.bits_);
 
+	if (f.size() != INHERIT_SIZE) {
+		os << '{';
+		++count;
+		os << '\\'
+		   << LaTeXSizeNames[f.size()]
+		   << "{}";
+		count += strlen(LaTeXSizeNames[f.size()]) + 3;
+	}
 	if (f.family() != INHERIT_FAMILY) {
 		os << '\\'
 		   << LaTeXFamilyNames[f.family()]
 		   << '{';
 		count += strlen(LaTeXFamilyNames[f.family()]) + 2;
-		env = true; //We have opened a new environment
 	}
 	if (f.series() != INHERIT_SERIES) {
 		os << '\\'
 		   << LaTeXSeriesNames[f.series()]
 		   << '{';
 		count += strlen(LaTeXSeriesNames[f.series()]) + 2;
-		env = true; //We have opened a new environment
 	}
 	if (f.shape() != INHERIT_SHAPE) {
 		os << '\\'
 		   << LaTeXShapeNames[f.shape()]
 		   << '{';
 		count += strlen(LaTeXShapeNames[f.shape()]) + 2;
-		env = true; //We have opened a new environment
 	}
 	if (f.color() != Color_inherit && f.color() != Color_ignore) {
 		if (f.color() == Color_none && p.color() != Color_none) {
@@ -329,7 +332,6 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 			   << "}{";
 			count += lcolor.getLaTeXName(f.color()).length() + 13;
 		}
-		env = true; //We have opened a new environment
 	}
 	// FIXME: uncomment this when we support background.
 	/*
@@ -364,24 +366,11 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 	if (f.emph() == FONT_ON) {
 		os << "\\emph{";
 		count += 6;
-		env = true; //We have opened a new environment
 	}
 	// \noun{} is a LyX special macro
 	if (f.noun() == FONT_ON) {
 		os << "\\noun{";
 		count += 6;
-		env = true; //We have opened a new environment
-	}
-	if (f.size() != INHERIT_SIZE) {
-		// If we didn't open an environment above, we open one here
-		if (!env) {
-			os << '{';
-			++count;
-		}
-		os << '\\'
-		   << LaTeXSizeNames[f.size()]
-		   << "{}";
-		count += strlen(LaTeXSizeNames[f.size()]) + 3;
 	}
 	// The ulem commands need to be on the deepest nesting level
 	// because ulem puts every nested group or macro in a box,
@@ -429,10 +418,10 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 				  Font const & base,
 				  Font const & next,
 				  bool & needPar,
-				  bool const & closeLanguage) const
+				  bool const & closeLanguage,
+				  bool const & non_inherit_inset) const
 {
 	int count = 0;
-	bool env = false;
 
 	// reduce the current font to changes against the base
 	// font (of the layout). We use a temporary for this to
@@ -443,36 +432,32 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 	if (f.family() != INHERIT_FAMILY) {
 		os << '}';
 		++count;
-		env = true; // Size change need not bother about closing env.
 	}
 	if (f.series() != INHERIT_SERIES) {
 		os << '}';
 		++count;
-		env = true; // Size change need not bother about closing env.
 	}
 	if (f.shape() != INHERIT_SHAPE) {
 		os << '}';
 		++count;
-		env = true; // Size change need not bother about closing env.
 	}
 	if (f.color() != Color_inherit && f.color() != Color_ignore && f.color() != Color_none) {
 		os << '}';
 		++count;
-		env = true; // Size change need not bother about closing env.
 	}
 	if (f.emph() == FONT_ON) {
 		os << '}';
 		++count;
-		env = true; // Size change need not bother about closing env.
 	}
 	if (f.noun() == FONT_ON) {
 		os << '}';
 		++count;
-		env = true; // Size change need not bother about closing env.
 	}
 	if (f.size() != INHERIT_SIZE) {
-		// We only have to close if only size changed
-		if (!env) {
+		// We do not close size group in front of
+		// insets with InheritFont() false (as opposed
+		// to all other font properties) (#8384)
+		if (!non_inherit_inset) {
 			if (needPar && !closeLanguage) {
 				os << "\\par";
 				count += 4;

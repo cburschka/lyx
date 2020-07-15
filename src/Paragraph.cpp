@@ -1053,9 +1053,11 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 		bool needPar = false;
 		bool closeLanguage = arabtex
 			|| basefont.isRightToLeft() == running_font.isRightToLeft();
+		// We pass non_inherit_inset = true here since size switches
+		// ought not to be terminated here (#8384).
 		unsigned int count = running_font.latexWriteEndChanges(os,
 					bparams, runparams, basefont, basefont,
-					needPar, closeLanguage);
+					needPar, closeLanguage, true);
 		column += count;
 		// if any font properties were closed, update the running_font,
 		// making sure, however, to leave the language as it was
@@ -1067,8 +1069,10 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 			running_font = basefont;
 			if (!closeLanguage)
 				running_font.setLanguage(copy_font.language());
+			basefont.fontInfo().setSize(copy_font.fontInfo().size());
 			// leave font open if language is still open
-			open_font = (running_font.language() == basefont.language());
+			open_font = (running_font.language() == basefont.language()
+				     || running_font.fontInfo().size() == basefont.fontInfo().size());
 			if (closeLanguage)
 				runparams.local_font = &basefont;
 		}
@@ -2394,6 +2398,10 @@ void Paragraph::latex(BufferParams const & bparams,
 	pos_type body_pos = beginOfBody();
 	unsigned int column = 0;
 
+	// If we are inside an inset, the real outerfont is local_font
+	Font const real_outerfont = (runparams.local_font != nullptr)
+			? Font(runparams.local_font->fontInfo()) : outerfont;
+
 	if (body_pos > 0) {
 		// the optional argument is kept in curly brackets in
 		// case it contains a ']'
@@ -2403,9 +2411,9 @@ void Paragraph::latex(BufferParams const & bparams,
 		// braces when it parses \item.
 		os << "[{";
 		column += 2;
-		basefont = getLabelFont(bparams, outerfont);
+		basefont = getLabelFont(bparams, real_outerfont);
 	} else {
-		basefont = getLayoutFont(bparams, outerfont);
+		basefont = getLayoutFont(bparams, real_outerfont);
 	}
 
 	// Which font is currently active?
@@ -2450,7 +2458,7 @@ void Paragraph::latex(BufferParams const & bparams,
 						basefont, basefont, needPar);
 					open_font = false;
 				}
-				basefont = getLayoutFont(bparams, outerfont);
+				basefont = getLayoutFont(bparams, real_outerfont);
 				running_font = basefont;
 
 				column += Changes::latexMarkChange(os, bparams,
@@ -2517,8 +2525,8 @@ void Paragraph::latex(BufferParams const & bparams,
 						basefont, needPar);
 					open_font = false;
 				}
-				basefont = (body_pos > i) ? getLabelFont(bparams, outerfont)
-							  : getLayoutFont(bparams, outerfont);
+				basefont = (body_pos > i) ? getLabelFont(bparams, real_outerfont)
+							  : getLayoutFont(bparams, real_outerfont);
 				running_font = basefont;
 				column += Changes::latexMarkChange(os, bparams,
 					Change(Change::INSERTED), change, rp);
@@ -2538,8 +2546,8 @@ void Paragraph::latex(BufferParams const & bparams,
 						basefont, basefont, needPar);
 				open_font = false;
 			}
-			basefont = (body_pos > i) ? getLabelFont(bparams, outerfont)
-						  : getLayoutFont(bparams, outerfont);
+			basefont = (body_pos > i) ? getLabelFont(bparams, real_outerfont)
+						  : getLayoutFont(bparams, real_outerfont);
 			running_font = basefont;
 			column += Changes::latexMarkChange(os, bparams, runningChange,
 							   change, runparams);
@@ -2737,10 +2745,10 @@ void Paragraph::latex(BufferParams const & bparams,
 						pit < 0 || pars[pit].empty()
 						? pars[pit].getLayoutFont(
 								bparams,
-								outerfont)
+								real_outerfont)
 						: pars[pit].getFont(bparams,
 							pars[pit].size() - 1,
-							outerfont);
+							real_outerfont);
 					if (lastfont.fontInfo().size() !=
 					    basefont.fontInfo().size()) {
 						++parInline;
@@ -2748,7 +2756,7 @@ void Paragraph::latex(BufferParams const & bparams,
 					}
 				}
 				d->latexInset(bparams, os, rp, running_font,
-						basefont, outerfont, open_font,
+						basefont, real_outerfont, open_font,
 						runningChange, style, i, column);
 				if (incremented)
 					--parInline;
@@ -2833,8 +2841,8 @@ void Paragraph::latex(BufferParams const & bparams,
 		// since this produces unwanted whitespace.
 
 		Font const font = empty()
-			? getLayoutFont(bparams, outerfont)
-			: getFont(bparams, size() - 1, outerfont);
+			? getLayoutFont(bparams, real_outerfont)
+			: getFont(bparams, size() - 1, real_outerfont);
 
 		InsetText const * textinset = inInset().asInsetText();
 
