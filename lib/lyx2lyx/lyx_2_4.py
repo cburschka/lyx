@@ -3930,8 +3930,7 @@ def convert_docbook_table_output(document):
 
 
 def revert_docbook_table_output(document):
-    i = find_token(document.header, '\\docbook_table_output 0')
-    i = find_token(document.header, '\\docbook_table_output 1') if i == -1 else i
+    i = find_token(document.header, '\\docbook_table_output')
     if i != -1:
         del document.header[i]
 
