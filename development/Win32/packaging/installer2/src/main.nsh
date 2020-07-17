@@ -258,21 +258,24 @@
     Exch $9 # resultRegIdx
   FunctionEnd
   
-  !macro CreatePrepareShellCTXFun UnPrefix
-    Function ${UnPrefix}PrepareShellCTX
-      ${if} $MultiUser.InstallMode == "CurrentUser"
-        SetShellVarContext current
-      ${Else}
-        SetShellVarContext all
-      ${EndIf}
-      ${If} ${RunningX64}
-        SetRegView ${APP_ARCHITECTURE}
-      ${EndIf}
-    FunctionEnd
+  !macro PrepareShellCTX
+    ${if} $MultiUser.InstallMode == "CurrentUser"
+      SetShellVarContext current
+    ${Else}
+      SetShellVarContext all
+    ${EndIf}
+    ${If} ${RunningX64}
+      SetRegView ${APP_ARCHITECTURE}
+    ${EndIf}
   !macroend
-  
-  !insertmacro CreatePrepareShellCTXFun ""
-  !insertmacro CreatePrepareShellCTXFun "un."
+
+  Function PrepareShellCTX
+    !insertmacro PrepareShellCTX
+  FunctionEnd
+
+  Function un.PrepareShellCTX
+    !insertmacro PrepareShellCTX
+  FunctionEnd
 
 #-------------------------------------------------------------
 # - - - - - - - - - - - - Sections - - - - - - - - - - - - - -
