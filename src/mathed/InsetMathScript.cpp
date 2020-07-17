@@ -282,9 +282,9 @@ void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 	cell(0).metrics(mi, dim0);
 	Changer dummy = mi.base.changeScript();
 	if (nargs() > 1)
-		cell(1).metrics(mi, dim1);
+		cell(1).metrics(mi, dim1, !hasLimits());
 	if (nargs() > 2)
-		cell(2).metrics(mi, dim2);
+		cell(2).metrics(mi, dim2, !hasLimits());
 
 	dim.wid = 0;
 	BufferView & bv = *mi.base.bv;
