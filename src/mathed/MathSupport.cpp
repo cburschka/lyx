@@ -673,6 +673,13 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 }
 
 
+docstring const &  mathedSymbol(MetricsBase & mb, latexkeys const * sym)
+{
+	return (mb.font.style() == DISPLAY_STYLE && !sym->dsp_draw.empty()) ?
+		sym->dsp_draw : sym->draw;
+}
+
+
 void mathedSymbolDim(MetricsBase & mb, Dimension & dim, latexkeys const * sym)
 {
 	LASSERT((bool)sym, return);
@@ -686,7 +693,7 @@ void mathedSymbolDim(MetricsBase & mb, Dimension & dim, latexkeys const * sym)
 		mb.fontname == "mathit";
 	std::string const font = italic_upcase_greek ? "cmm" : sym->inset;
 	Changer dummy = mb.changeFontSet(font);
-	mathed_string_dim(mb.font, sym->draw, dim);
+	mathed_string_dim(mb.font, mathedSymbol(mb, sym), dim);
 }
 
 
@@ -704,7 +711,7 @@ void mathedSymbolDraw(PainterInfo & pi, int x, int y, latexkeys const * sym)
 	std::string const font = italic_upcase_greek ? "cmm" : sym->inset;
 
 	Changer dummy = pi.base.changeFontSet(font);
-	pi.draw(x, y, sym->draw);
+	pi.draw(x, y, mathedSymbol(pi.base, sym));
 }
 
 

@@ -244,6 +244,9 @@ tag*              mbox        forcetext
 # symbols generated from fontmath.ltx
 #
 
+# When two codes n1|n2 are specified for charid, the the second one will
+# be used in display mode. This is only useful for mathop symbold (e.g.\sum).
+
 #symbol            font   charid   charid-in-fallback-Xsymbol-font  math-class  HTML-entity XML-entity
 alpha              cmm         174  97 mathord    &alpha;       &#x3B1;
 beta               cmm         175  98 mathord    &beta;        &#x3B2;
@@ -319,18 +322,18 @@ iffont cmsy
 else
 \def\not{\kern4mu\lyxnot\kern-19mu}
 endif
-coprod             cmex         96   0 mathop   &amalg;         &#x2A3F;
-bigvee             cmex         87   0 mathop   &xvee;          &#x22C1;
-bigwedge           cmex         86   0 mathop   &xwedge;        &#x22C0;
-biguplus           cmex         85   0 mathop   &xuplus;        &#x2A04;
-bigcap             cmex         84   0 mathop   &xcap;          &#x22C2;
-bigcup             cmex         83   0 mathop   &xcup;          &#x22C3;
-prod               cmex         81 213 mathop   &prod;          &#x220F;
-sum                cmex         80 229 mathop   &sum;           &#x2211;
-bigotimes          cmex         78   0 mathop   &xotime;        &#x2A02;
-bigoplus           cmex         76   0 mathop   &xoplus;        &#x2A01;
-bigodot            cmex         74   0 mathop   &xodot;         &#x2A00;
-bigsqcup           cmex         70   0 mathop   &xsqcup;        &#x2A06;
+coprod             cmex      96|97   0 mathop   &amalg;         &#x2A3F;
+bigvee             cmex      87|95   0 mathop   &xvee;          &#x22C1;
+bigwedge           cmex      86|94   0 mathop   &xwedge;        &#x22C0;
+biguplus           cmex      85|93   0 mathop   &xuplus;        &#x2A04;
+bigcap             cmex      84|92   0 mathop   &xcap;          &#x22C2;
+bigcup             cmex      83|91   0 mathop   &xcup;          &#x22C3;
+prod               cmex      81|89 213 mathop   &prod;          &#x220F;
+sum                cmex      80|88 229 mathop   &sum;           &#x2211;
+bigotimes          cmex      78|79   0 mathop   &xotime;        &#x2A02;
+bigoplus           cmex      76|77   0 mathop   &xoplus;        &#x2A01;
+bigodot            cmex      74|75   0 mathop   &xodot;         &#x2A00;
+bigsqcup           cmex      70|71   0 mathop   &xsqcup;        &#x2A06;
 smallint           cmsy        115   0 mathop   &int;           &#x222B;
 triangleleft       cmm          47   0 mathbin  &ltri;          &#x25C3;
 triangleright      cmm          46   0 mathbin  &rtri;          &#x25B9;
@@ -854,8 +857,8 @@ wasypropto         wasy          29    0  mathrel &prop;        &#x221D;
 invneg             wasy          24    0  mathrel &#x2310;      &#x2310;
 ocircle            wasy          35    0  mathbin &#x229A;      &#x229A;
 logof              wasy          22    0  mathrel x             x
-varint             wasy         114    0  mathop  &int;         &#x222B;
-varoint            wasy         117    0  mathop  &int;         &#x222B;
+varint             wasy     114|119    0  mathop  &int;         &#x222B;
+varoint            wasy     117|122    0  mathop  &int;         &#x222B;
 
 # Generated from stmaryrd.sty
 
@@ -962,13 +965,13 @@ leftarrowtriangle  stmry  94   0 mathrel    x  x  stmaryrd
 rightarrowtriangle stmry  95   0 mathrel    x  x  stmaryrd
 #bigtriangledown    stmry  96   0 mathop     x  x  stmaryrd #already in cmsy
 #bigtriangleup      stmry  97   0 mathop     x  x  stmaryrd #already in cmsy
-bigcurlyvee        stmry  98   0 mathop     x  x  stmaryrd
-bigcurlywedge      stmry  99   0 mathop     x  x  stmaryrd
-bigsqcap           stmry 100   0 mathop     x  x  stmaryrd
-bigbox             stmry 101   0 mathop     x  x  stmaryrd
-bigparallel        stmry 102   0 mathop     x  x  stmaryrd
-biginterleave      stmry 103   0 mathop     x  x  stmaryrd
-#hugetriangledown   stmry 104   0 mathop     x  x  stmaryrd # only in the font, not the .sty
+bigcurlyvee        stmry  98|106   0 mathop     x  x  stmaryrd
+bigcurlywedge      stmry  99|107   0 mathop     x  x  stmaryrd
+bigsqcap           stmry 100|108   0 mathop     x  x  stmaryrd
+bigbox             stmry 101|109   0 mathop     x  x  stmaryrd
+bigparallel        stmry 102|110   0 mathop     x  x  stmaryrd
+biginterleave      stmry 103|111   0 mathop     x  x  stmaryrd
+#hugetriangledown   stmry 104       0 mathop     x  x  stmaryrd # only in the font, not the .sty
 #hugetriangleup     stmry 105   0 mathop     x  x  stmaryrd # only in the font, not the .sty
 #hugecurlyvee       stmry 106   0 mathop     x  x  stmaryrd # only in the font, not the .sty
 #hugecurlywedge     stmry 107   0 mathop     x  x  stmaryrd # only in the font, not the .sty
@@ -976,7 +979,7 @@ biginterleave      stmry 103   0 mathop     x  x  stmaryrd
 #hugebox            stmry 109   0 mathop     x  x  stmaryrd # only in the font, not the .sty
 #hugeparallel       stmry 110   0 mathop     x  x  stmaryrd # only in the font, not the .sty
 #hugeinterleave     stmry 111   0 mathop     x  x  stmaryrd # only in the font, not the .sty
-bignplus           stmry 112   0 mathop     x  x  stmaryrd # caution: named hugenplus in the font
+bignplus           stmry 112|120   0 mathop     x  x  stmaryrd # caution: named hugenplus in the font
 #largellbracket     stmry 113   0 mathopen   x  x  stmaryrd # only in the font, not the .sty
 #Largellbracket     stmry 114   0 mathopen   x  x  stmaryrd # only in the font, not the .sty
 #LARGEllbracket     stmry 115   0 mathopen   x  x  stmaryrd # only in the font, not the .sty
@@ -1026,44 +1029,44 @@ tbond              cmsy        180 186 mathord  x  x
 # If the wasysym integrals are really wanted then one has to load the package
 # manually and disable automatic loading of amsmath and esint.
 iffont esint
-int                esint        001    0  mathop  &int;         &#x222B;        esint|amsmath
-intop              esint        001    0  mathop  &int;         &#x222B;        esint
-iint               esint        003    0  mathop  &Int;         &#x222C;        esint|amsmath
-iintop             esint        003    0  mathop  &Int;         &#x222C;        esint
-iiint              esint        005    0  mathop  &tint;        &#x222D;        esint|amsmath
-iiintop            esint        005    0  mathop  &tint;        &#x222D;        esint
-iiiint             esint        007    0  mathop  &qint;        &#x2A0C;        esint|amsmath
-iiiintop           esint        007    0  mathop  &qint;        &#x2A0C;        esint
+int                esint    001|002    0  mathop  &int;         &#x222B;        esint|amsmath
+intop              esint    001|002    0  mathop  &int;         &#x222B;        esint
+iint               esint    003|004    0  mathop  &Int;         &#x222C;        esint|amsmath
+iintop             esint    003|004    0  mathop  &Int;         &#x222C;        esint
+iiint              esint    005|006    0  mathop  &tint;        &#x222D;        esint|amsmath
+iiintop            esint    005|006    0  mathop  &tint;        &#x222D;        esint
+iiiint             esint    007|008    0  mathop  &qint;        &#x2A0C;        esint|amsmath
+iiiintop           esint    007|008    0  mathop  &qint;        &#x2A0C;        esint
 #9 codepoint forbidden in qt4, 10,12,13 in qt5
-oint               esint        043    0  mathop  &conint;      &#x222E;        esint
-ointop             esint        043    0  mathop  &conint;      &#x222E;        esint
-oiint              esint        045    0  mathop  &Conint;      &#x222F;        esint
-oiintop            esint        045    0  mathop  &Conint;      &#x222F;        esint
-sqint              esint        015    0  mathop  &quatint;     &#x2A16;        esint
-sqintop            esint        015    0  mathop  &quatint;     &#x2A16;        esint
-sqiint             esint        017    0  mathop  x             esint
-sqiintop           esint        017    0  mathop  x             esint
-dotsint            esint        041    0  mathop  &int;&ctdot;&int;     &#x222B;&#x22EF;&#x222B;    esint
-dotsintop          esint        042    0  mathop  &int;&ctdot;&int;     &#x222B;&#x22EF;&#x222B;    esint
-ointctrclockwise   esint        023    0  mathop  &awconint;    &#x2233;        esint
-ointctrclockwiseop esint        023    0  mathop  &awconint;    &#x2233;        esint
-ointclockwise      esint        025    0  mathop  &cwconint;    &#x2232;        esint
-ointclockwiseop    esint        025    0  mathop  &cwconint;    &#x2232;        esint
+oint               esint    043|044    0  mathop  &conint;      &#x222E;        esint
+ointop             esint    043|044    0  mathop  &conint;      &#x222E;        esint
+oiint              esint    045|046    0  mathop  &Conint;      &#x222F;        esint
+oiintop            esint    045|046    0  mathop  &Conint;      &#x222F;        esint
+sqint              esint    015|016    0  mathop  &quatint;     &#x2A16;        esint
+sqintop            esint    015|016    0  mathop  &quatint;     &#x2A16;        esint
+sqiint             esint    017|018    0  mathop  x             esint
+sqiintop           esint    017|017    0  mathop  x             esint
+dotsint            esint    041|042    0  mathop  &int;&ctdot;&int;     &#x222B;&#x22EF;&#x222B;    esint
+dotsintop          esint    041|042    0  mathop  &int;&ctdot;&int;     &#x222B;&#x22EF;&#x222B;    esint
+ointctrclockwise   esint    023|024    0  mathop  &awconint;    &#x2233;        esint
+ointctrclockwiseop esint    023|024    0  mathop  &awconint;    &#x2233;        esint
+ointclockwise      esint    025|026    0  mathop  &cwconint;    &#x2232;        esint
+ointclockwiseop    esint    025|026    0  mathop  &cwconint;    &#x2232;        esint
 else
-int                cmex          82  242  mathop  &int;         &#x222B;        esint|amsmath
-intop              cmex          82  242  mathop  &int;         &#x222B;        esint
-iint               wasy         115    0  mathop  &Int;         &#x222C;        esint|amsmath
-iintop             wasy         115    0  mathop  &Int          &#x222C;        esint
-iiint              wasy         116    0  mathop  &tint;        &#x222D;        esint|amsmath
-iiintop            wasy         116    0  mathop  &tint;        &#x222D;        esint
+int                cmex       82|90  242  mathop  &int;         &#x222B;        esint|amsmath
+intop              cmex       82|90  242  mathop  &int;         &#x222B;        esint
+iint               wasy     115|120    0  mathop  &Int;         &#x222C;        esint|amsmath
+iintop             wasy     115|120    0  mathop  &Int          &#x222C;        esint
+iiint              wasy     116|121    0  mathop  &tint;        &#x222D;        esint|amsmath
+iiintop            wasy     116|121    0  mathop  &tint;        &#x222D;        esint
 \def\iiiint{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}        esint|amsmath
 \def\iiiintop{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}      esint
 \def\dotsint{\int\kern-3mu\cdots\kern-3mu\int}                  esint
 \def\dotsintop{\int\kern-3mu\cdots\kern-3mu\int}                esint
-oint               cmex          72    0  mathop  &conint;      &#x222E;        esint
-ointop             cmex          72    0  mathop  &conint;      &#x222E;        esint
-oiint              wasy         118    0  mathop  &Conint;      &#x222F;        esint
-oiintop            wasy         118    0  mathop  &Conint;      &#x222F;        esint
+oint               cmex       72|73    0  mathop  &conint;      &#x222E;        esint
+ointop             cmex       72|73    0  mathop  &conint;      &#x222E;        esint
+oiint              wasy     118|123    0  mathop  &Conint;      &#x222F;        esint
+oiintop            wasy     118|123    0  mathop  &Conint;      &#x222F;        esint
 \def\sqint{\square\kern-17mu\int\kern6mu}                       esint
 \def\sqintop{\square\kern-17mu\int\kern6mu}                     esint
 \def\sqiint{\square\kern-20mu\iint\kern3mu}                     esint
@@ -1074,18 +1077,18 @@ oiintop            wasy         118    0  mathop  &Conint;      &#x222F;        
 \def\ointclockwiseop{\circlearrowright\kern-21mu\int\kern6mu}   esint
 endif
 
-varointclockwise   esint        027    0  mathop  &cwconint;    &#x2232;        esint
-varointclockwiseop esint        027    0  mathop  &cwconint;    &#x2232;        esint
-varointctrclockwise esint       029    0  mathop  &awconint;    &#x2233;        esint
-varointctrclockwiseop esint     029    0  mathop  &awconint;    &#x2233;        esint
-fint               esint        031    0  mathop  &#x2a0f;      &#x2a0f;        esint
-fintop             esint        031    0  mathop  &#x2a0f;      &#x2a0f;        esint
-varoiint           esint        033    0  mathop  &Conint;      &#x222F;        esint
-varoiintop         esint        033    0  mathop  &Conint;      &#x222F;        esint
-landupint          esint        035    0  mathop  x             x               esint
-landupintop        esint        035    0  mathop  x             x               esint
-landdownint        esint        037    0  mathop  x             x               esint
-landdownintop      esint        037    0  mathop  x             x               esint
+varointclockwise   esint    027|028    0  mathop  &cwconint;    &#x2232;        esint
+varointclockwiseop esint    027|028    0  mathop  &cwconint;    &#x2232;        esint
+varointctrclockwise esint   029|030    0  mathop  &awconint;    &#x2233;        esint
+varointctrclockwiseop esint 029|030    0  mathop  &awconint;    &#x2233;        esint
+fint               esint    031|032    0  mathop  &#x2a0f;      &#x2a0f;        esint
+fintop             esint    031|032    0  mathop  &#x2a0f;      &#x2a0f;        esint
+varoiint           esint    033|034    0  mathop  &Conint;      &#x222F;        esint
+varoiintop         esint    033|034    0  mathop  &Conint;      &#x222F;        esint
+landupint          esint    035|036    0  mathop  x             x               esint
+landupintop        esint    035|036    0  mathop  x             x               esint
+landdownint        esint    037|038    0  mathop  x             x               esint
+landdownintop      esint    037|038    0  mathop  x             x               esint
 
 
 # From the amsmath package:

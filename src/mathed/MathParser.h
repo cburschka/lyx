@@ -52,6 +52,9 @@ public:
 	 * on screen.
 	 */
 	docstring draw;
+	/// the same thing, but as an alternative in display mode
+	// Useful for \sum operator, for example
+	docstring dsp_draw;
 	/// operator/..., fontname e
 	docstring extra;
 	/// how is this called as HTML entity in MathML?

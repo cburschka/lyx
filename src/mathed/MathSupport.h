@@ -55,6 +55,8 @@ void mathed_string_dim(FontInfo const & font,
 
 int mathed_string_width(FontInfo const &, docstring const & s);
 
+docstring const & mathedSymbol(MetricsBase & mb, latexkeys const * sym);
+
 void mathedSymbolDim(MetricsBase & mb, Dimension & dim, latexkeys const * sym);
 
 void mathedSymbolDraw(PainterInfo & pi, int x, int y, latexkeys const * sym);

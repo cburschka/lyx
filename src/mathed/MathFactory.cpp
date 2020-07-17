@@ -155,6 +155,7 @@ void initSymbols()
 	bool skip = false;
 	while (getline(fs, line)) {
 		int charid     = 0;
+		int dsp_charid = 0;
 		int fallbackid = 0;
 		if (line.empty() || line[0] == '#')
 			continue;
@@ -243,9 +244,12 @@ void initSymbols()
 		docstring help;
 		is >> tmp.name >> help;
 		tmp.inset = to_ascii(help);
-		if (isFontName(tmp.inset))
-			is >> charid >> fallbackid >> tmp.extra >> tmp.htmlname >> tmp.xmlname;
-		else
+		if (isFontName(tmp.inset)) {
+			is >> help >> fallbackid >> tmp.extra >> tmp.htmlname >> tmp.xmlname;
+			docstring cid, dsp_cid;
+			idocstringstream is2(subst(help, '|', ' '));
+			is2 >> charid >> dsp_charid;
+		} else
 			is >> tmp.extra;
 		// requires is optional
 		if (is) {
@@ -289,6 +293,10 @@ void initSymbols()
 			} else if (isMathFontAvailable(tmp.inset) && canBeDisplayed(charid)) {
 				LYXERR(Debug::MATHED, "symbol available for " << to_utf8(tmp.name));
 				tmp.draw.push_back(char_type(charid));
+				if (dsp_charid && canBeDisplayed(dsp_charid)) {
+					LYXERR(Debug::MATHED, "large symbol available for " << to_utf8(tmp.name));
+					tmp.dsp_draw.push_back(char_type(dsp_charid));
+				}
 			} else if (fallbackid && isMathFontAvailable(symbol_font) &&
 			           canBeDisplayed(fallbackid)) {
 				if (tmp.inset == "cmex")

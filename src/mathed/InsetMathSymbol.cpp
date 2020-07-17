@@ -60,17 +60,32 @@ docstring InsetMathSymbol::name() const
 
 void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	// set dim
 	mathedSymbolDim(mi.base, dim, sym_);
-	// set kerning_
-	kerning_ = mathed_char_kerning(mi.base.font, *sym_->draw.rbegin());
-	// correct height for broken cmex and wasy font
-	if (sym_->inset == "cmex" || sym_->inset == "wasy") {
-		h_ = 4 * dim.des / 5;
+	if (sym_->draw != sym_->name) {
+		// set dim
+		// FIXME: this should depend on BufferView
+		// set kerning_
+		kerning_ = mathed_char_kerning(mi.base.font,
+		                               mathedSymbol(mi.base, sym_).back());
+
+		// align character vertically
+		// FIXME: this should depend on BufferView
+		h_ = 0;
+		if (mathClass() == MC_OP) {
+			// center the symbol around the fraction axis
+			// See rule 13 of Appendix G of the TeXbook.
+			h_ = axis_height(mi.base) + (dim.des - dim.asc) / 2;
+		} else if (sym_->inset == "wasy") {
+			// correct height for broken wasy font
+			h_ = 4 * dim.des / 5;
+		}
 		dim.asc += h_;
 		dim.des -= h_;
 	}
+
 	// set scriptable_
+	//FIXME: get rid of that? Only "funclim" probably, along with
+	// class==MC_OP. The issue is to implement \limits properly.
 	scriptable_ = false;
 	if (mi.base.font.style() == DISPLAY_STYLE)
 		if (sym_->inset == "cmex" || sym_->inset == "esint" ||
