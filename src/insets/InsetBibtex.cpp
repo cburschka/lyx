@@ -1191,7 +1191,6 @@ void InsetBibtex::docbook(XMLStream & xs, OutputParams const &) const
 		while (tagIt != tagEnd) {
 			string tag = tagIt->str(); // regex_match cannot work with temporary strings.
 			++tagIt;
-			regex_match(tag, match, tagRegex);
 
 			if (regex_match(tag, match, tagRegex)) {
 				if (toDocBookTag[match[1]] == "SPECIFIC") {
