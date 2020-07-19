@@ -104,11 +104,11 @@ string fontToRole(xml::FontTypes type)
 		return ""; // Outputs a <person>
 	case xml::FontTypes::FT_TYPE:
 		return ""; // Outputs a <code>
+	case xml::FontTypes::FT_UBAR:
+		return "underline";
 
 		// All other roles are non-standard for DocBook.
 
-	case xml::FontTypes::FT_UBAR:
-		return "ubar";
 	case xml::FontTypes::FT_WAVE:
 		return "wave";
 	case xml::FontTypes::FT_DBAR:
