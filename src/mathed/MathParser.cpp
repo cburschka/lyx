@@ -797,7 +797,6 @@ void Parser::parse2(MathAtom & at, const unsigned flags, const mode_type mode,
 bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 	const mode_type mode, const bool numbered)
 {
-	int limits = 0;
 	InsetMathGrid::row_type cellrow = 0;
 	InsetMathGrid::col_type cellcol = 0;
 	MathData * cell = &grid.cell(grid.index(cellrow, cellcol));
@@ -1006,10 +1005,6 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				p->nuc().erase(0);
 
 			parse(p->cell(p->idxOfScript(up)), FLAG_ITEM, mode);
-			if (limits) {
-				p->limits(limits);
-				limits = 0;
-			}
 		}
 
 		else if (t.character() == ']' && (flags & FLAG_BRACK_LAST)) {
@@ -1408,9 +1403,8 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "limits" || t.cs() == "nolimits") {
-			CatCode const cat = nextToken().cat();
-			if (cat == catSuper || cat == catSub)
-				limits = t.cs() == "limits" ? 1 : -1;
+			if (!cell->empty())
+				cell->back()->limits(t.cs() == "limits" ? LIMITS : NO_LIMITS);
 			else {
 				MathAtom at = createInsetMath(t.cs(), buf);
 				cell->push_back(at);

@@ -72,10 +72,6 @@ public:
 	///
 	InsetMathScript * asScriptInset();
 
-	/// set limits
-	void limits(int lim) { limits_ = lim; }
-	/// get limits
-	int limits() const { return limits_; }
 	/// returns subscript. Always run 'hasDown' or 'has(false)' before!
 	MathData const & down() const;
 	/// returns subscript. Always run 'hasDown' or 'has(false)' before!
@@ -108,11 +104,6 @@ public:
 	InsetCode lyxCode() const { return MATH_SCRIPT_CODE; }
 	///
 	void validate(LaTeXFeatures &features) const;
-protected:
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
-	/// do we want to handle this event?
-	bool getStatus(Cursor & cur, FuncRequest const & cmd,
-		FuncStatus & status) const;
 private:
 	virtual Inset * clone() const;
 	/// returns x offset for main part
@@ -138,17 +129,15 @@ private:
 	/// shifts the superscript to the right, and a negative value shifts the
 	/// subscript to the left.
 	int nker(BufferView const * bv) const;
-	/// can one change how scripts are drawn?
-	bool allowsLimits() const;
-	/// where do we have to draw the scripts?
-	bool hasLimits() const;
+	/// do we we have to draw the scripts above/below nucleus?
+	bool hasLimits(FontInfo const &) const;
 	/// clean up empty cells and return true if a cell has been deleted.
 	bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
 
 	/// possible subscript (index 0) and superscript (index 1)
 	bool cell_1_is_up_;
-	/// 1 - "limits", -1 - "nolimits", 0 - "default"
-	int limits_;
+	/// remember whether we are in display mode (used by mathml output)
+	mutable bool has_limits_ = false;
 };
 
 

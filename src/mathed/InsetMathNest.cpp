@@ -518,7 +518,6 @@ void InsetMathNest::handleFont2(Cursor & cur, docstring const & arg)
 	// FIXME: support other font changes here as well?
 }
 
-
 void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	//LYXERR0("InsetMathNest: request: " << cmd);
@@ -1277,6 +1276,32 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
+	case LFUN_MATH_LIMITS: {
+		InsetMath * in = 0;
+		if (cur.pos() < cur.lastpos() && cur.nextMath().allowsLimitsChange())
+			in = &cur.nextMath();
+		else if (cur.pos() > 0 && cur.prevMath().allowsLimitsChange())
+			in = &cur.prevMath();
+		else if (cur.lastpos() > 0 && cur.cell().back()->allowsLimitsChange())
+			in = cur.cell().back().nucleus();
+		// only when nucleus allows this
+		if (!in)
+			return;
+		cur.recordUndoInset();
+		if (!cmd.argument().empty()) {
+			if (cmd.argument() == "limits")
+				in->limits(LIMITS);
+			else if (cmd.argument() == "nolimits")
+				in->limits(NO_LIMITS);
+			else
+				in->limits(AUTO_LIMITS);
+		} else if (in->limits() == AUTO_LIMITS)
+			in->limits(in->defaultLimits() == LIMITS ? NO_LIMITS : LIMITS);
+		else
+			in->limits(AUTO_LIMITS);
+		return;
+	}
+
 	default:
 		InsetMath::doDispatch(cur, cmd);
 		break;
@@ -1455,6 +1480,29 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (name == "html" || name == "latex")
 			flag.setEnabled(false);
 		break;
+	}
+
+	case LFUN_MATH_LIMITS: {
+		InsetMath * in = 0;
+		if (cur.pos() < cur.lastpos() && cur.nextMath().allowsLimitsChange())
+			in = &cur.nextMath();
+		else if (cur.pos() > 0 && cur.prevMath().allowsLimitsChange())
+			in = &cur.prevMath();
+		else if (cur.lastpos() > 0 && cur.cell().back()->allowsLimitsChange())
+			in = cur.cell().back().nucleus();
+		if (in) {
+			if (!cmd.argument().empty()) {
+				if (cmd.argument() == "limits")
+					flag.setOnOff(in->limits() == LIMITS);
+				else if (cmd.argument() == "nolimits")
+					flag.setOnOff(in->limits() == NO_LIMITS);
+				else
+					flag.setOnOff(in->limits() == AUTO_LIMITS);
+			}
+			flag.setEnabled(true);
+		} else
+			flag.setEnabled(false);
+		return true;
 	}
 
 	default:
@@ -1858,6 +1906,15 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 
 bool InsetMathNest::interpretString(Cursor & cur, docstring const & str)
 {
+	if (str == "\\limits" || str == "\\nolimits") {
+		if (cur.pos() > 0 && cur.prevMath().allowsLimitsChange()) {
+			cur.prevMath().limits(str == "\\limits" ? LIMITS : NO_LIMITS);
+			return true;
+		} else {
+			cur.message(bformat(_("Cannot apply %1$s here."), str));
+			return false;
+		}
+	}
 	// Create a InsetMathBig from cur.cell()[cur.pos() - 1] and t if
 	// possible
 	if (!cur.empty() && cur.pos() > 0 &&

@@ -140,8 +140,10 @@ public:
 	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
 	/// redraw cell using cache metrics information
 	void drawT(TextPainter & pi, int x, int y) const;
-	/// approximate the math class of the data
+	/// approximate mathclass of the data
 	MathClass mathClass() const;
+	/// math class of last interesting element
+	MathClass lastMathClass() const;
 
 	/// access to cached x coordinate of last drawing
 	int xo(BufferView const & bv) const;

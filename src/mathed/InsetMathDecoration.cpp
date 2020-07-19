@@ -38,7 +38,7 @@ namespace lyx {
 
 
 InsetMathDecoration::InsetMathDecoration(Buffer * buf, latexkeys const * key)
-	: InsetMathNest(buf, 1), key_(key), dh_(0), dy_(0), dw_(0)
+	: InsetMathNest(buf, 1), key_(key)
 {
 //	lyxerr << " creating deco " << key->name << endl;
 }
@@ -61,12 +61,6 @@ MathClass InsetMathDecoration::mathClass() const
 	if (key_->name == "overbrace" || key_->name == "underbrace")
 		return MC_OP;
 	return MC_ORD;
-}
-
-
-bool InsetMathDecoration::isScriptable() const
-{
-	return mathClass() == MC_OP;
 }
 
 
@@ -151,6 +145,7 @@ void InsetMathDecoration::write(WriteStream & os) const
 	os << '\\' << key_->name << '{';
 	ModeSpecifier specifier(os, currentMode());
 	os << cell(0) << '}';
+	writeLimits(os);
 }
 
 

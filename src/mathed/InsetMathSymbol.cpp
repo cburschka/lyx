@@ -27,22 +27,22 @@
 #include "support/textutils.h"
 #include "support/unique_ptr.h"
 
+using namespace std;
 
 namespace lyx {
 
 InsetMathSymbol::InsetMathSymbol(latexkeys const * l)
-	: sym_(l), h_(0), kerning_(0), scriptable_(false)
+	: sym_(l)
 {}
 
 
 InsetMathSymbol::InsetMathSymbol(char const * name)
-	: sym_(in_word_set(from_ascii(name))), h_(0),
-	  kerning_(0), scriptable_(false)
+	: sym_(in_word_set(from_ascii(name)))
 {}
 
 
 InsetMathSymbol::InsetMathSymbol(docstring const & name)
-	: sym_(in_word_set(name)), h_(0), kerning_(0), scriptable_(false)
+	: sym_(in_word_set(name))
 {}
 
 
@@ -55,6 +55,14 @@ Inset * InsetMathSymbol::clone() const
 docstring InsetMathSymbol::name() const
 {
 	return sym_->name;
+}
+
+
+/// The default limits value
+Limits InsetMathSymbol::defaultLimits() const
+{
+	return (allowsLimitsChange() && sym_->extra != "func")
+			? LIMITS : NO_LIMITS;
 }
 
 
@@ -82,16 +90,6 @@ void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.asc += h_;
 		dim.des -= h_;
 	}
-
-	// set scriptable_
-	//FIXME: get rid of that? Only "funclim" probably, along with
-	// class==MC_OP. The issue is to implement \limits properly.
-	scriptable_ = false;
-	if (mi.base.font.style() == DISPLAY_STYLE)
-		if (sym_->inset == "cmex" || sym_->inset == "esint" ||
-		    sym_->extra == "funclim" ||
-		    (sym_->inset == "stmry" && sym_->extra == "mathop"))
-			scriptable_ = true;
 }
 
 
@@ -119,23 +117,6 @@ MathClass InsetMathSymbol::mathClass() const
 		return MC_OP;
 	MathClass const mc = string_to_class(sym_->extra);
 	return (mc == MC_UNKNOWN) ? MC_ORD : mc;
-}
-
-
-bool InsetMathSymbol::isScriptable() const
-{
-	return scriptable_;
-}
-
-
-bool InsetMathSymbol::takesLimits() const
-{
-	return
-		sym_->inset == "cmex" ||
-		sym_->inset == "lyxboldsymb" ||
-		sym_->inset == "esint" ||
-		sym_->extra == "funclim" ||
-		(sym_->inset == "stmry" && sym_->extra == "mathop");
 }
 
 
@@ -242,6 +223,7 @@ void InsetMathSymbol::write(WriteStream & os) const
 		return;
 
 	os.pendingSpace(true);
+	writeLimits(os);
 }
 
 

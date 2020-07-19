@@ -371,6 +371,38 @@ bool InsetMathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 	return has_contents;
 }
 
+/// Whether the inset allows \(no)limits
+bool InsetMathMacro::allowsLimitsChange() const
+{
+	// similar to the code in mathClass(), except that we search for
+	// the right-side class.
+	MathClass mc = MC_UNKNOWN;
+	if (MacroData const * m = macroBackup()) {
+		// If it is a global macro and is defined explicitly
+		if (m->symbol())
+			mc = string_to_class(m->symbol()->extra);
+	}
+	// Otherwise guess from the expanded macro
+	if (mc == MC_UNKNOWN)
+		mc = d->expanded_.lastMathClass();
+
+	return mc == MC_OP;
+}
+
+
+Limits InsetMathMacro::defaultLimits() const
+{
+	if (d->expanded_.empty())
+		return NO_LIMITS;
+	// Guess from the expanded macro
+	InsetMath const * in = d->expanded_.back().nucleus();
+	Limits const lim = in->limits() == AUTO_LIMITS
+		? in->defaultLimits() : in->limits();
+	LATTEST(lim != AUTO_LIMITS);
+	return lim;
+}
+
+
 void InsetMathMacro::beforeMetrics() const
 {
 	d->macro_->lock();
@@ -1155,6 +1187,9 @@ void InsetMathMacro::write(WriteStream & os) const
 	// add space if there was no argument
 	if (first)
 		os.pendingSpace(true);
+
+	// write \(no)limits modifiers if relevant
+	writeLimits(os);
 }
 
 

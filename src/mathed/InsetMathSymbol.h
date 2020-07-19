@@ -19,9 +19,7 @@ namespace lyx {
 class latexkeys;
 
 
-/** "normal" symbols that don't take limits and don't grow in displayed
- *  formulae.
- */
+// \xxx symbols that may take limits or grow in displayed formulæ.
 class InsetMathSymbol : public InsetMath {
 public:
 	///
@@ -43,10 +41,12 @@ public:
 	MathClass mathClass() const;
 	///
 	bool isOrdAlpha() const;
-	/// do we take scripts?
-	bool isScriptable() const;
-	/// do we take \limits or \nolimits?
-	bool takesLimits() const;
+	/// The default limits value
+	Limits defaultLimits() const;
+	/// whether the inset has limit-like sub/superscript
+	Limits limits() const { return limits_; }
+	/// sets types of sub/superscripts
+	void limits(Limits lim) { limits_ = lim; }
 	/// identifies SymbolInset as such
 	InsetMathSymbol const * asSymbolInset() const { return this; }
 	/// the LaTeX name of the symbol (without the backslash)
@@ -83,11 +83,14 @@ private:
 	///
 	latexkeys const * sym_;
 	///
-	mutable int h_;
-	/// cached superscript kerning
-	mutable int kerning_;
+	Limits limits_ = AUTO_LIMITS;
+
+	// FIXME: these depend on BufferView
+
 	///
-	mutable bool scriptable_;
+	mutable int h_ = 0;
+	/// cached superscript kerning
+	mutable int kerning_ = 0;
 };
 
 } // namespace lyx

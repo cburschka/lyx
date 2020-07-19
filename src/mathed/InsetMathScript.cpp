@@ -13,16 +13,12 @@
 #include "InsetMathScript.h"
 
 #include "InsetMathBrace.h"
-#include "InsetMathSymbol.h"
 #include "MathData.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 
 #include "BufferView.h"
 #include "Cursor.h"
-#include "DispatchResult.h"
-#include "FuncRequest.h"
-#include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 
@@ -37,17 +33,17 @@ namespace lyx {
 
 
 InsetMathScript::InsetMathScript(Buffer * buf)
-	: InsetMathNest(buf, 1), cell_1_is_up_(false), limits_(0)
+	: InsetMathNest(buf, 1), cell_1_is_up_(false)
 {}
 
 
 InsetMathScript::InsetMathScript(Buffer * buf, bool up)
-	: InsetMathNest(buf, 2), cell_1_is_up_(up), limits_(0)
+	: InsetMathNest(buf, 2), cell_1_is_up_(up)
 {}
 
 
 InsetMathScript::InsetMathScript(Buffer * buf, MathAtom const & at, bool up)
-	: InsetMathNest(buf, 2), cell_1_is_up_(up), limits_(0)
+	: InsetMathNest(buf, 2), cell_1_is_up_(up)
 {
 	LATTEST(nargs() >= 1);
 	cell(0).push_back(at);
@@ -179,7 +175,7 @@ int InsetMathScript::dy0(BufferView const & bv) const
 	if (!hasDown())
 		return nd;
 	int des = down().dimension(bv).ascent();
-	if (hasLimits())
+	if (has_limits_)
 		des += nd + 2;
 	else {
 		int na = nasc(bv);
@@ -195,7 +191,7 @@ int InsetMathScript::dy1(BufferView const & bv) const
 	if (!hasUp())
 		return na;
 	int asc = up().dimension(bv).descent();
-	if (hasLimits())
+	if (has_limits_)
 		asc += na + 2;
 	else {
 		int nd = ndes(bv);
@@ -210,7 +206,7 @@ int InsetMathScript::dx0(BufferView const & bv) const
 {
 	LASSERT(hasDown(), return 0);
 	Dimension const dim = dimension(bv);
-	return hasLimits() ? (dim.wid - down().dimension(bv).width()) / 2
+	return has_limits_ ? (dim.wid - down().dimension(bv).width()) / 2
 		: nwid(bv) + min(nker(&bv), 0);
 }
 
@@ -219,7 +215,7 @@ int InsetMathScript::dx1(BufferView const & bv) const
 {
 	LASSERT(hasUp(), return 0);
 	Dimension const dim = dimension(bv);
-	return hasLimits() ? (dim.wid - up().dimension(bv).width()) / 2
+	return has_limits_ ? (dim.wid - up().dimension(bv).width()) / 2
 		: nwid(bv) + max(nker(&bv), 0);
 }
 
@@ -227,7 +223,7 @@ int InsetMathScript::dx1(BufferView const & bv) const
 int InsetMathScript::dxx(BufferView const & bv) const
 {
 	Dimension const dim = dimension(bv);
-	return hasLimits() ? (dim.wid - nwid(bv)) / 2  :  0;
+	return has_limits_ ? (dim.wid - nwid(bv)) / 2  :  0;
 }
 
 
@@ -275,16 +271,21 @@ MathClass InsetMathScript::mathClass() const
 
 void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	Changer dummy2 = mi.base.changeEnsureMath();
 	Dimension dim0;
 	Dimension dim1;
 	Dimension dim2;
-	cell(0).metrics(mi, dim0);
-	Changer dummy = mi.base.changeScript();
-	if (nargs() > 1)
-		cell(1).metrics(mi, dim1, !hasLimits());
-	if (nargs() > 2)
-		cell(2).metrics(mi, dim2, !hasLimits());
+	{
+		// Keeps the changers local
+		Changer dummy2 = mi.base.changeEnsureMath();
+		cell(0).metrics(mi, dim0);
+		Changer dummy = mi.base.changeScript();
+		if (nargs() > 1)
+			cell(1).metrics(mi, dim1, !has_limits_);
+		if (nargs() > 2)
+			cell(2).metrics(mi, dim2, !has_limits_);
+	}
+	// we store this, because it is much easier
+	has_limits_ = hasLimits(mi.base.font);
 
 	dim.wid = 0;
 	BufferView & bv = *mi.base.bv;
@@ -296,7 +297,7 @@ void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 	if (hasDown())
 		dimdown = down().dimension(bv);
 
-	if (hasLimits()) {
+	if (has_limits_) {
 		dim.wid = nwid(bv);
 		if (hasUp())
 			dim.wid = max(dim.wid, dimup.width());
@@ -365,47 +366,17 @@ void InsetMathScript::drawT(TextPainter & pain, int x, int y) const
 }
 
 
-// FIXME: See InsetMathSymbol::takesLimits, which seems to attempt the
-// same in a hardcoded way. takeLimits use is currently commented out in
-// InsetMathScript::metrics. It seems that the mathop test is general
-// enough, but only time will tell.
-bool InsetMathScript::allowsLimits() const
+bool InsetMathScript::hasLimits(FontInfo const & font) const
 {
+	if (font.style() != DISPLAY_STYLE)
+		return false;
 	if (nuc().empty())
 		return false;
-	// Only makes sense for insets of mathop class
-	if (nuc().back()->mathClass() != MC_OP)
-		return false;
-	return true;
-}
 
-
-bool InsetMathScript::hasLimits() const
-{
-	// obvious cases
-	if (limits_ == 1)
-		return true;
-	if (limits_ == -1)
-		return false;
-
-	// we can only display limits if the nucleus wants some
-	if (!allowsLimits())
-		return false;
-	// FIXME: this is some hardcoding done in InsetMathSymbol::metrics.
-	if (!nuc().back()->isScriptable())
-		return false;
-
-	if (nuc().back()->asSymbolInset()) {
-		// \intop is an alias for \int\limits, \ointop == \oint\limits
-		if (nuc().back()->asSymbolInset()->name().find(from_ascii("intop")) != string::npos)
-			return true;
-		// per default \int has limits beside the \int even in displayed formulas
-		if (nuc().back()->asSymbolInset()->name().find(from_ascii("int")) != string::npos)
-			return false;
-	}
-
-	// assume "real" limits for everything else
-	return true;
+	Limits const lim = nuc().back()->limits() == AUTO_LIMITS
+		? nuc().back()->defaultLimits() : nuc().back()->limits();
+	LASSERT(lim != AUTO_LIMITS, return false);
+	return lim == LIMITS;
 }
 
 
@@ -481,7 +452,8 @@ bool InsetMathScript::idxUpDown(Cursor & cur, bool up) const
 			return false;
 		// go up/down only if in the last position
 		// or in the first position of something with displayed limits
-		if (cur.pos() == cur.lastpos() || (cur.pos() == 0 && hasLimits())) {
+		if (cur.pos() == cur.lastpos()
+		                 || (cur.pos() == 0 && has_limits_)) {
 			cur.idx() = idxOfScript(up);
 			cur.pos() = 0;
 			return true;
@@ -519,20 +491,12 @@ void InsetMathScript::write(WriteStream & os) const
 {
 	MathEnsurer ensurer(os);
 
-	if (!nuc().empty()) {
+	if (!nuc().empty())
 		os << nuc();
-		//if (nuc().back()->takesLimits()) {
-			if (limits_ == -1)
-				os << "\\nolimits ";
-			if (limits_ == 1)
-				os << "\\limits ";
-		//}
-	} else {
-		if (os.firstitem())
-			LYXERR(Debug::MATHED, "suppressing {} when writing");
-		else
-			os << "{}";
-	}
+	else if (os.firstitem())
+		LYXERR(Debug::MATHED, "suppressing {} when writing");
+	else
+		os << "{}";
 
 	if (hasDown() /*&& !down().empty()*/)
 		os << "_{" << down() << '}';
@@ -616,7 +580,8 @@ void InsetMathScript::mathmlize(MathStream & ms) const
 {
 	bool d = hasDown() && !down().empty();
 	bool u = hasUp() && !up().empty();
-	bool l = hasLimits();
+	// FIXME: the MathStream should be able to give us this information
+	bool l = has_limits_;
 
 	if (u && d)
 		ms << MTag(l ? "munderover" : "msubsup");
@@ -680,8 +645,7 @@ void InsetMathScript::infoize(odocstream & os) const
 
 void InsetMathScript::infoize2(odocstream & os) const
 {
-	if (limits_)
-		os << from_ascii(limits_ == 1 ? ", Displayed limits" : ", Inlined limits");
+	os << from_ascii(has_limits_ == 1 ? ", Displayed limits" : ", Inlined limits");
 }
 
 
@@ -742,57 +706,6 @@ bool InsetMathScript::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 
 	//LYXERR0("InsetMathScript::notifyCursorLeaves: 2 " << cur);
 	return false;
-}
-
-
-void InsetMathScript::doDispatch(Cursor & cur, FuncRequest & cmd)
-{
-	//LYXERR("InsetMathScript: request: " << cmd);
-
-	if (cmd.action() == LFUN_MATH_LIMITS) {
-		// only when nucleus allows this
-		if (!allowsLimits())
-			return;
-		cur.recordUndoInset();
-		if (!cmd.argument().empty()) {
-			if (cmd.argument() == "limits")
-				limits_ = 1;
-			else if (cmd.argument() == "nolimits")
-				limits_ = -1;
-			else
-				limits_ = 0;
-		} else if (limits_ == 0)
-			limits_ = hasLimits() ? -1 : 1;
-		else
-			limits_ = 0;
-		return;
-	}
-
-	InsetMathNest::doDispatch(cur, cmd);
-}
-
-
-bool InsetMathScript::getStatus(Cursor & cur, FuncRequest const & cmd,
-				FuncStatus & flag) const
-{
-	if (cmd.action() == LFUN_MATH_LIMITS) {
-		// only when nucleus allows this
-		if (allowsLimits()) {
-			if (!cmd.argument().empty()) {
-				if (cmd.argument() == "limits")
-					flag.setOnOff(limits_ == 1);
-				else if (cmd.argument() == "nolimits")
-					flag.setOnOff(limits_ == -1);
-				else
-					flag.setOnOff(limits_ == 0);
-			}
-			flag.setEnabled(true);
-		} else
-			flag.setEnabled(false);
-		return true;
-	}
-
-	return InsetMathNest::getStatus(cur, cmd, flag);
 }
 
 

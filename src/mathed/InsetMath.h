@@ -39,6 +39,17 @@ enum HullType {
 HullType hullType(docstring const & name);
 docstring hullName(HullType type);
 
+
+enum Limits {
+	// what is obtained with \c \\nolimits
+	NO_LIMITS = -1,
+	// the default
+	AUTO_LIMITS = 0,
+	// what is obtained with \c \\limits
+	LIMITS = 1
+};
+
+
 /**
 
 Abstract base class for all math objects.  A math insets is for use of the
@@ -173,7 +184,7 @@ public:
 	virtual InsetMathSpecialChar const * asSpecialCharInset() const { return nullptr; }
 
 	/// The class of the math object (used primarily for spacing)
-	virtual MathClass mathClass() const;
+	virtual MathClass mathClass() const { return MC_ORD; }
 	/// Add this inset to a math row. Return true if contents got added
 	virtual bool addToMathRow(MathRow &, MetricsInfo & mi) const;
 	/// Hook that is run before metrics computation starts
@@ -185,15 +196,22 @@ public:
 	/// Hook that is run after drawing
 	virtual void afterDraw(PainterInfo const &) const {}
 
-	/// identifies things that can get scripts
-	virtual bool isScriptable() const { return false; }
 	/// will this get written as a single block in {..}
 	virtual bool extraBraces() const { return false; }
 
 	/// return the content as char if the inset is able to do so
 	virtual char_type getChar() const { return 0; }
-	/// identifies things that can get \limits or \nolimits
-	virtual bool takesLimits() const { return false; }
+
+	/// Whether the inset allows \(no)limits
+	bool allowsLimitsChange() const { return mathClass() == MC_OP; }
+	/// The default limits value
+	virtual Limits defaultLimits() const { return NO_LIMITS; }
+	/// whether the inset has limit-like sub/superscript
+	virtual Limits limits() const { return AUTO_LIMITS; }
+	/// sets types of sub/superscripts
+	virtual void limits(Limits) {}
+	/// write limits status for LaTeX and LyX code
+	void writeLimits(WriteStream & os) const;
 
 	/// replace things by other things
 	virtual void replace(ReplaceData &) {}

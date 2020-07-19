@@ -1029,70 +1029,60 @@ tbond              cmsy        180 186 mathord  x  x
 # If the wasysym integrals are really wanted then one has to load the package
 # manually and disable automatic loading of amsmath and esint.
 iffont esint
-int                esint    001|002    0  mathop  &int;         &#x222B;        esint|amsmath
 intop              esint    001|002    0  mathop  &int;         &#x222B;        esint
-iint               esint    003|004    0  mathop  &Int;         &#x222C;        esint|amsmath
 iintop             esint    003|004    0  mathop  &Int;         &#x222C;        esint
-iiint              esint    005|006    0  mathop  &tint;        &#x222D;        esint|amsmath
 iiintop            esint    005|006    0  mathop  &tint;        &#x222D;        esint
-iiiint             esint    007|008    0  mathop  &qint;        &#x2A0C;        esint|amsmath
 iiiintop           esint    007|008    0  mathop  &qint;        &#x2A0C;        esint
 #9 codepoint forbidden in qt4, 10,12,13 in qt5
-oint               esint    043|044    0  mathop  &conint;      &#x222E;        esint
 ointop             esint    043|044    0  mathop  &conint;      &#x222E;        esint
-oiint              esint    045|046    0  mathop  &Conint;      &#x222F;        esint
 oiintop            esint    045|046    0  mathop  &Conint;      &#x222F;        esint
-sqint              esint    015|016    0  mathop  &quatint;     &#x2A16;        esint
 sqintop            esint    015|016    0  mathop  &quatint;     &#x2A16;        esint
-sqiint             esint    017|018    0  mathop  x             esint
 sqiintop           esint    017|017    0  mathop  x             esint
-dotsint            esint    041|042    0  mathop  &int;&ctdot;&int;     &#x222B;&#x22EF;&#x222B;    esint
 dotsintop          esint    041|042    0  mathop  &int;&ctdot;&int;     &#x222B;&#x22EF;&#x222B;    esint
-ointctrclockwise   esint    023|024    0  mathop  &awconint;    &#x2233;        esint
 ointctrclockwiseop esint    023|024    0  mathop  &awconint;    &#x2233;        esint
-ointclockwise      esint    025|026    0  mathop  &cwconint;    &#x2232;        esint
 ointclockwiseop    esint    025|026    0  mathop  &cwconint;    &#x2232;        esint
 else
-int                cmex       82|90  242  mathop  &int;         &#x222B;        esint|amsmath
 intop              cmex       82|90  242  mathop  &int;         &#x222B;        esint
-iint               wasy     115|120    0  mathop  &Int;         &#x222C;        esint|amsmath
 iintop             wasy     115|120    0  mathop  &Int          &#x222C;        esint
-iiint              wasy     116|121    0  mathop  &tint;        &#x222D;        esint|amsmath
 iiintop            wasy     116|121    0  mathop  &tint;        &#x222D;        esint
-\def\iiiint{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}        esint|amsmath
 \def\iiiintop{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}      esint
-\def\dotsint{\int\kern-3mu\cdots\kern-3mu\int}                  esint
-\def\dotsintop{\int\kern-3mu\cdots\kern-3mu\int}                esint
-oint               cmex       72|73    0  mathop  &conint;      &#x222E;        esint
 ointop             cmex       72|73    0  mathop  &conint;      &#x222E;        esint
-oiint              wasy     118|123    0  mathop  &Conint;      &#x222F;        esint
 oiintop            wasy     118|123    0  mathop  &Conint;      &#x222F;        esint
-\def\sqint{\square\kern-17mu\int\kern6mu}                       esint
 \def\sqintop{\square\kern-17mu\int\kern6mu}                     esint
-\def\sqiint{\square\kern-20mu\iint\kern3mu}                     esint
 \def\sqiintop{\square\kern-20mu\iint\kern3mu}                   esint
-\def\ointctrclockwise{\circlearrowleft\kern-21mu\int\kern6mu}   esint
+\def\dotsintop{\int\kern-3mu\cdots\kern-3mu\int}                esint
 \def\ointctrclockwiseop{\circlearrowleft\kern-21mu\int\kern6mu} esint
-\def\ointclockwise{\circlearrowright\kern-21mu\int\kern6mu}     esint
 \def\ointclockwiseop{\circlearrowright\kern-21mu\int\kern6mu}   esint
 endif
+\def\int{\intop\nolimits}           mathop  &int;         &#x222B;        esint|amsmath
+\def\iint{\iintop\nolimits}         mathop  &Int;         &#x222C;        esint|amsmath
+\def\iiint{\iiintop\nolimits}       mathop  &tint;        &#x222D;        esint|amsmath
+\def\iiiint{\iiiintop\nolimits}     mathop  &qint;        &#x2A0C;        esint|amsmath
+\def\oint{\ointop\nolimits}         mathop  &conint;      &#x222E;        esint
+\def\oiint{\oiintop\nolimits}       mathop  &Conint;      &#x222F;        esint
+\def\sqint{\sqintop\nolimits}       mathop  &quatint;     &#x2A16;        esint
+\def\sqiint{\sqiintop\nolimits}     mathop  x             esint
+\def\dotsint{\dotsintop\nolimits}   mathop  &int;&ctdot;&int;     &#x222B;&#x22EF;&#x222B;
+\def\ointctrclockwise{\ointctrclockwise\nolimits} mathop  &cwconint;    &#x2232;        esint
+\def\ointclockwise{\ointclockwise\nolimits}       mathop  &cwconint;    &#x2232;        esint
 
-varointclockwise   esint    027|028    0  mathop  &cwconint;    &#x2232;        esint
 varointclockwiseop esint    027|028    0  mathop  &cwconint;    &#x2232;        esint
-varointctrclockwise esint   029|030    0  mathop  &awconint;    &#x2233;        esint
 varointctrclockwiseop esint 029|030    0  mathop  &awconint;    &#x2233;        esint
-fint               esint    031|032    0  mathop  &#x2a0f;      &#x2a0f;        esint
 fintop             esint    031|032    0  mathop  &#x2a0f;      &#x2a0f;        esint
-varoiint           esint    033|034    0  mathop  &Conint;      &#x222F;        esint
 varoiintop         esint    033|034    0  mathop  &Conint;      &#x222F;        esint
-landupint          esint    035|036    0  mathop  x             x               esint
 landupintop        esint    035|036    0  mathop  x             x               esint
-landdownint        esint    037|038    0  mathop  x             x               esint
 landdownintop      esint    037|038    0  mathop  x             x               esint
+
+\def\varointclockwise{\varointclockwiseop\limits}       mathop  &cwconint;    &#x2232;        esint
+\def\varointctrclockwise{\varointctrclockwiseop\limits} mathop  &awconint;    &#x2233;        esint
+\def\fint{\fintop\limits}                mathop  &#x2a0f;      &#x2a0f;        esint
+\def\varoiint{\varoiintop\limits}        mathop  &Conint;      &#x222F;        esint
+\def\landupint{\landupintop\limits}      mathop  x             x               esint
+\def\landdownint{\landdownintop\limits}  mathop  x             x               esint
 
 
 # From the amsmath package:
-\def\idotsint{\int\kern-3mu\cdots\kern-3mu\int}                 amsmath
+\def\idotsint{\int\kern-3mu\cdots\kern-3mu\int\limits}                 amsmath
 
 
 log                lyxblacktext  0   0 func     x  x

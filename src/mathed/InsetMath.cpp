@@ -52,12 +52,6 @@ MathData const & InsetMath::cell(idx_type) const
 }
 
 
-MathClass InsetMath::mathClass() const
-{
-	return MC_ORD;
-}
-
-
 InsetMath::marker_type InsetMath::marker(BufferView const *) const
 {
 	return nargs() > 0 ? MARKER : NO_MARKER;
@@ -71,6 +65,19 @@ bool InsetMath::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 	e.marker = mi.base.macro_nesting ? NO_MARKER : marker(mi.base.bv);
 	mrow.push_back(e);
 	return true;
+}
+
+
+/// write LaTeX and LyX code
+void InsetMath::writeLimits(WriteStream & os) const
+{
+	if (limits() == LIMITS) {
+		os << "\\limits";
+		os.pendingSpace(true);
+	} else if (limits() == NO_LIMITS) {
+		os << "\\nolimits ";
+		os.pendingSpace(true);
+	}
 }
 
 

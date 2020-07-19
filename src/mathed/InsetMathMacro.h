@@ -41,6 +41,16 @@ public:
 	/// If the macro is in normal edit mode, dissolve its contents in
 	/// the row. Otherwise, just insert the inset.
 	bool addToMathRow(MathRow &, MetricsInfo & mi) const;
+
+	/// Whether the inset allows \(no)limits
+	bool allowsLimitsChange() const;
+	/// The default limits value
+	Limits defaultLimits() const;
+	/// whether the inset has limit-like sub/superscript
+	Limits limits() const { return limits_; }
+	/// sets types of sub/superscripts
+	void limits(Limits lim) { limits_ = lim; }
+
 	///
 	void beforeMetrics() const;
 	///
@@ -183,6 +193,9 @@ private:
 	virtual Inset * clone() const;
 	///
 	bool editMode(BufferView const * bv) const;
+
+	///
+	Limits limits_ = AUTO_LIMITS;
 
 	///
 	class Private;

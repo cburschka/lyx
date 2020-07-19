@@ -966,6 +966,18 @@ MathClass MathData::mathClass() const
 }
 
 
+MathClass MathData::lastMathClass() const
+{
+	MathClass res = MC_ORD;
+	for (MathAtom const & at : *this) {
+		MathClass mc = at->mathClass();
+		if (mc != MC_UNKNOWN)
+			return res = mc;
+	}
+	return res;
+}
+
+
 ostream & operator<<(ostream & os, MathData const & ar)
 {
 	odocstringstream oss;
