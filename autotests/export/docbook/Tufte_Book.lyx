@@ -1,0 +1,435 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 598
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass tufte-book
+\use_default_options true
+\maintain_unincluded_children no
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format pdf2
+\output_sync 0
+\bibtex_command bibtex
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\use_lineno 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note
+\series default
+: To be able to view your file as PDF you must have the \SpecialChar LaTeX
+-package 
+\family sans
+fpl
+\family default
+ installed to your \SpecialChar LaTeX
+ system.
+ If you are using MiK\SpecialChar TeX
+, you will automatically be asked to install this package
+ when previewing your file, if you are using \SpecialChar TeX
+Live, use \SpecialChar TeX
+Live's package manager.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Note 2
+\series default
+: If you wish to compile to PDF with plain \SpecialChar LaTeX
+ (instead of pdf\SpecialChar TeX
+), there is currently
+ a bug in the Tufte class that causes errors.
+ You can add the class option 'nols' (put this in the 
+\begin_inset Quotes eld
+\end_inset
+
+Custom
+\begin_inset Quotes erd
+\end_inset
+
+ field of Document\SpecialChar menuseparator
+Settings \SpecialChar menuseparator
+Document Class) to get rid of the errors, but
+ this also removes letterspacing, an important part of the Tufte design.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Tufte Examples
+\end_layout
+
+\begin_layout Author
+Fake Author
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+author of this example file: Jason Waskiewicz
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+The Features of the Tufte-book Class
+\end_layout
+
+\begin_layout Standard
+In this document, it was endeavored to show some of the features of the
+ 
+\family sans
+Tufte-book
+\family default
+ class.
+ In the first chapter, their use is outlined.
+ In the second chapter, their use through a handout that was created in
+ a calculus class is demonstrated.
+\end_layout
+
+\begin_layout Section
+Working with Text
+\end_layout
+
+\begin_layout Standard
+One of the most prominent and distinctive features of this style is the
+ extensive use of sidenotes.
+ There is a wide margin to provide ample room for sidenotes and small figures.
+ Any footnotes will automatically be converted to sidenotes.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+This is a sidenote that was entered using a 
+\family typewriter
+footnote
+\family default
+.
+\end_layout
+
+\end_inset
+
+ Alternatively, you can also use the 
+\family typewriter
+Sidenote
+\family default
+ inset directly; you'll find it in the 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Insets
+\family default
+ menu.
+\begin_inset Flex Sidenote
+status open
+
+\begin_layout Plain Layout
+This is a sidenote that was entered using a 
+\family typewriter
+sidenote
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If you like to place ancillary information in the margin without the sidenote
+ mark (the superscript number), you can use the 
+\family typewriter
+Marginnote
+\family default
+ inset.
+ 
+\begin_inset Flex Marginnote
+status open
+
+\begin_layout Plain Layout
+This is Tufte's margin note.
+ Notice that there isn't a number preceding the note, and there is no number
+ in the main text where this note was written.
+\end_layout
+
+\end_inset
+
+ The normal margin note will work as well, but it will look rather odd.
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+This is a normal margin note.
+ Don't use it.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex NewThought
+status open
+
+\begin_layout Plain Layout
+Another useful
+\end_layout
+
+\end_inset
+
+ innovation is Tufte's 
+\family typewriter
+NewThought
+\family default
+ character style (
+\family sans
+Edit\SpecialChar menuseparator
+TextStyle\SpecialChar menuseparator
+NewThought
+\family default
+).
+ It introduces new thoughts by means of small caps, as demonstrated in this
+ paragraph.
+ 
+\end_layout
+
+\begin_layout Standard
+The Tufte document classes include two new character styles and some improvement
+s on existing commands for letterspacing.
+\end_layout
+
+\begin_layout Standard
+When setting strings of 
+\begin_inset Flex AllCaps
+status open
+
+\begin_layout Plain Layout
+ALL CAPS
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex SmallCaps
+status open
+
+\begin_layout Plain Layout
+small caps
+\end_layout
+
+\end_inset
+
+, the letterspacing—that is, the spacing between the letters—should be increased
+ slightly.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bringhurst2005"
+literal "true"
+
+\end_inset
+
+ The 
+\emph on
+AllCaps
+\emph default
+ character style (
+\family sans
+Edit\SpecialChar menuseparator
+TextStyle\SpecialChar menuseparator
+AllCaps
+\family default
+) has proper letterspacing for strings of 
+\begin_inset Flex AllCaps
+status open
+
+\begin_layout Plain Layout
+FULL CAPITAL LETTERS
+\end_layout
+
+\end_inset
+
+, and the 
+\emph on
+SmallCaps
+\emph default
+ character style (
+\family sans
+Edit\SpecialChar menuseparator
+TextStyle\SpecialChar menuseparator
+SmallCaps
+\family default
+) has letterspacing for 
+\begin_inset Flex SmallCaps
+status open
+
+\begin_layout Plain Layout
+small capital letters
+\end_layout
+
+\end_inset
+
+.
+ These commands will also automatically convert the case of the text to
+ upper- or lowercase, respectively.
+\end_layout
+
+\begin_layout Standard
+The normal 
+\emph on
+Small Caps
+\emph default
+ shape has also been redefined to include letterspacing.
+ Its case is left as is, however.
+ This allows one to use both uppercase and lowercase letters: 
+\shape smallcaps
+The Initial Letters Of The Words In This Sentence Are Capitalized.
+\end_layout
+
+\begin_layout Standard
+Finally, the
+\emph on
+ Full Width
+\emph default
+ paragraph environment provides a paragraph layout that stretches across
+ the main text block and the sidenotes area:
+\end_layout
+
+\begin_layout Full Width
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+ Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.
+ Curabitur dictum gravida mauris.
+ Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna.
+ Donec vehicula augue eu neque.
+ Pellentesque habitant morbi tristique senectus et netus et malesuada fames
+ ac turpis egestas.
+ Mauris ut leo.
+ Cras viverra metus rhoncus sem.
+ Nulla et lectus vestibulum urna fringilla ultrices.
+ Phasellus eu tellus sit amet tortor gravida placerat.
+ Integer sapien est, iaculis in, pretium quis, viverra ac, nunc.
+ Praesent eget sem vel leo ultrices bibendum.
+ Aenean faucibus.
+ Morbi dolor nulla, malesuada eu, pulvinar at, mollis ac, nulla.
+ Curabitur auctor semper nulla.
+ Donec varius orci eget risus.
+ Duis nibh mi, congue eu, accumsan eleifend, sagittis quis, diam.
+ Duis eget orci sit amet orci dignissim rutrum.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "../../../lib/examples/biblioExample"
+options "plainnat"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

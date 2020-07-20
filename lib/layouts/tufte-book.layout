@@ -104,6 +104,8 @@ Style Chapter
 	  Series		Bold
 	  Size			Huge
 	EndFont
+	DocBookTag            title
+	DocBookSectionTag     chapter
 End
 
 Style Section
@@ -133,6 +135,8 @@ Style Section
 	  Series		Bold
 	  Size			Larger
 	EndFont
+	DocBookTag            title
+	DocBookSectionTag     section
 End
 
 Style Subsection
@@ -195,6 +199,8 @@ InsetLayout Flex:NewThought
 	  Color			red
 	EndFont
 	ResetsFont		true
+	DocBookTag      emphasis
+	DocBookAttr     role='newthought'
 End
 
 InsetLayout Flex:AllCaps
@@ -208,6 +214,8 @@ InsetLayout Flex:AllCaps
 	LabelFont
 	  Color			blue
 	EndFont
+	DocBookTag      emphasis
+	DocBookAttr     role='allcaps'
 End
 
 InsetLayout Flex:SmallCaps
@@ -217,6 +225,8 @@ InsetLayout Flex:SmallCaps
 	LabelFont
 	  Color			green
 	EndFont
+	DocBookTag      emphasis
+	DocBookAttr     role='smallcaps'
 End
 
 Style Full_Width
