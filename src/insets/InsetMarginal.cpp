@@ -48,7 +48,7 @@ void InsetMarginal::docbook(XMLStream & xs, OutputParams const & runparams) cons
 	// Unfortunately, only for XSL-FO output with the default style sheets, hence the role.
 	xs << xml::StartTag("sidebar", "role=\"margin\"");
 	xs << xml::CR();
-	xs << "<?dbfo float-type=\"margin.note\"?>";
+	xs << XMLStream::ESCAPE_NONE << "<?dbfo float-type=\"margin.note\"?>";
 	InsetText::docbook(xs, runparams);
 	xs << xml::EndTag("sidebar");
 }
