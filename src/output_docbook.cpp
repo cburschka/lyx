@@ -14,7 +14,6 @@
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "BufferParams.h"
-#include "Counters.h"
 #include "Font.h"
 #include "InsetList.h"
 #include "Layout.h"
@@ -316,9 +315,6 @@ ParagraphList::const_iterator makeParagraphs(
 	ParagraphList::const_iterator par = pbegin;
 	for (; par != pend; ++par) {
 		Layout const &lay = par->layout();
-		if (!lay.counter.empty())
-			buf.masterBuffer()->params().
-					documentClass().counters().step(lay.counter, OutputUpdate);
 
 		// We want to open the paragraph tag if:
 		//   (i) the current layout permits multiple paragraphs
@@ -434,19 +430,6 @@ ParagraphList::const_iterator makeEnvironment(
 
 	while (par != pend) {
 		Layout const & style = par->layout();
-		// the counter only gets stepped if we're in some kind of list,
-		// or if it's the first time through.
-		// note that enum, etc, are handled automatically.
-		// FIXME There may be a bug here about user defined enumeration
-		// types. If so, then we'll need to take the counter and add "i",
-		// "ii", etc, as with enum.
-		Counters & cnts = buf.masterBuffer()->params().documentClass().counters();
-		docstring const & cntr = style.counter;
-		if (!style.counter.empty()
-			&& (par == pbegin || !isNormalEnv(style))
-			&& cnts.hasCounter(cntr)
-				)
-			cnts.step(cntr, OutputUpdate);
 		ParagraphList::const_iterator send;
 
 		// Actual content of this paragraph.
@@ -575,9 +558,6 @@ void makeCommand(
 		ParagraphList::const_iterator const & pbegin)
 {
 	Layout const &style = pbegin->layout();
-	if (!style.counter.empty())
-		buf.masterBuffer()->params().
-				documentClass().counters().step(style.counter, OutputUpdate);
 
 	// No need for labels, as they are handled by DocBook tags.
 
