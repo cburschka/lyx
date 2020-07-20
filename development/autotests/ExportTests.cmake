@@ -52,20 +52,22 @@ macro(getoutputformats filepath varname format_set)
   file(STRINGS "${filepath}" lines)
   # What should we test, if default_output_format is not defined?
   # For now we test everything ...
-  set(out_formats "xhtml" ${DVI_FORMATS} ${PDF_FORMATS})
+  set(out_formats "xhtml" "docbook5" ${DVI_FORMATS} ${PDF_FORMATS})
   foreach(_l IN LISTS lines)
     if(_l MATCHES "^\\\\default_output_format +\([^ ]+\)")
       set(_format ${CMAKE_MATCH_1})
       if(_format STREQUAL "default")
-        set(out_formats "xhtml" ${DVI_FORMATS} ${PDF_FORMATS})
+        set(out_formats "xhtml" "docbook5" ${DVI_FORMATS} ${PDF_FORMATS})
       else()
         set(${format_set} ${_format})
         if(_format STREQUAL "pdf2" AND "${filepath}" MATCHES "/doc/")
-          set(out_formats "xhtml" ${DVI_FORMATS} ${PDF_FORMATS})
+          set(out_formats "xhtml" "docbook5" ${DVI_FORMATS} ${PDF_FORMATS})
         elseif(_format MATCHES "pdf$")
-          set(out_formats "xhtml" ${PDF_FORMATS})
+          set(out_formats "xhtml" "docbook5" ${PDF_FORMATS})
         elseif(_format MATCHES "dvi$")
-          set(out_formats "xhtml" ${DVI_FORMATS})
+          set(out_formats "xhtml" "docbook5" ${DVI_FORMATS})
+        elseif(_format MATCHES "docbook5")
+          set(out_formats "docbook5")
         elseif(_format MATCHES "xhtml")
           set(out_formats "xhtml")
         else()
@@ -452,6 +454,11 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates lib/ta
           endif()
           string(REGEX REPLACE "[\\(\\)]" "_" TestName "${TestName1}")
           maketestname(TestName inverted invertedTests ignoredTests unreliableTests mytestlabel)
+	  if (format MATCHES "docbook5")
+	    set(f_extension "xml")
+	  else()
+	    set(f_extension ${format})
+	  endif()
           if(TestName)
             add_test(NAME ${TestName}
               WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
@@ -461,7 +468,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates lib/ta
               -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
               -Dformat=${format}
               -Dfonttype=${fonttype}
-              -Dextension=${format}
+              -Dextension=${f_extension}
               -Dfile=${f}
               -Dinverted=${inverted}
               -DTOP_SRC_DIR=${TOP_SRC_DIR}

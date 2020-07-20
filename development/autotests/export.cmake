@@ -7,8 +7,8 @@
 # LYX_ROOT  = ${TOP_SRC_DIR}/lib/{doc,examples,templates,tabletemplates}
 # LYX_USERDIR_VER = Name of environment variable for the user directory
 # lyx       =
-# format    = lyx16x|lyx20x|lyx21x|lyx22x|xhtml
-# extension = 16.lyx|20.lyx|21.lyx|22.lyx|xhtml
+# format    = lyx16x|lyx20x|lyx21x|lyx22x|xhtml|docbook5
+# extension = 16.lyx|20.lyx|21.lyx|22.lyx|xhtml|xml
 # file      = xxx
 #
 # Script should be called like:
