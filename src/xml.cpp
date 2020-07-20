@@ -557,7 +557,7 @@ docstring const xml::uniqueID(docstring const & label)
 }
 
 
-docstring xml::cleanID(docstring const &orig)
+docstring xml::cleanID(docstring const & orig)
 {
 	// The standard xml:id only allows letters,
 	// digits, '-' and '.' in a name.
