@@ -658,6 +658,11 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs, pit_type c
 
 		// Based on layout information, store this paragraph in one set: should be in <info>, must be.
 		Layout const &style = par.layout();
+
+		std::cout << "Name: " << to_utf8(style.name()) << std::endl;
+		std::cout << "  DocBook tag: " << style.docbooktag() << std::endl;
+		std::cout << "  In info: " << style.docbookininfo() << std::endl;
+
 		if (style.docbookininfo() == "always") {
 			mustBeInInfo.emplace(cpit);
 		} else if (style.docbookininfo() == "maybe") {
@@ -719,10 +724,14 @@ pit_type generateDocBookParagraphWithoutSectioning(
 			(epit == (int) paragraphs.size()) ?
 			paragraphs.end() : paragraphs.iterator_at(epit);
 
+	std::cout << "generateDocBookParagraphWithoutSectioning" << std::endl;
 	while (bpit < epit) {
+		std::cout << "iteration; bpit: " << bpit << std::endl;
 		tie(par, send) = makeAny(text, buf, xs, runparams, par, send, pend);
 		bpit += distance(lastStartedPar, par);
+		lastStartedPar = par;
 	}
+	std::cout << "generateDocBookParagraphWithoutSectioning has looped; bpit: " << bpit << std::endl;
 
 	return bpit;
 }
