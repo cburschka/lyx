@@ -552,7 +552,7 @@ void InsetCitation::docbook(XMLStream & xs, OutputParams const &) const
 		return;
 
 	// Split the different citations (on ","), so that one tag can be output for each of them.
-	string citations = to_utf8(getParam("key")); // Citation strings are not supposed to be too fancy.
+	string citations = to_utf8(xml::cleanID(getParam("key")));
 	if (citations.find(',') == string::npos) {
 		xs << xml::CompTag("biblioref", "endterm=\"" + citations + "\"");
 	} else {
