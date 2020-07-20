@@ -219,12 +219,17 @@ else()
       Summary(_err "Expected result file \"${result_file_name}\" does not exists")
     else()
       message(STATUS "Expected result file \"${result_file_name}\" exists")
-      if (format MATCHES "xhtml")
+      if (extension MATCHES "^x(ht)?ml$")
+	if (format MATCHES "xhtml")
+	  set(xmllint_params --sax --html --valid)
+	else()
+	  set(xmllint_params --sax --valid)
+	endif()
         if (XMLLINT_EXECUTABLE)
-          message(STATUS "Calling: ${XMLLINT_EXECUTABLE} --sax --html --valid")
+          message(STATUS "Calling: ${XMLLINT_EXECUTABLE} " ${xmllint_params})
           # check the created xhtml file
           execute_process(
-            COMMAND ${XMLLINT_EXECUTABLE} --sax --html --valid  "${result_file_name}"
+            COMMAND ${XMLLINT_EXECUTABLE} ${xmllint_params}  "${result_file_name}"
             OUTPUT_VARIABLE xmlout
             ERROR_VARIABLE xmlerr
             RESULT_VARIABLE _err)
