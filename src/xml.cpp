@@ -611,8 +611,7 @@ docstring xml::cleanID(docstring const &orig)
 	if (mangle) {
 		int & mangleID = tMangleID.localData();
 		content += "-" + convert<docstring>(mangleID++);
-	} else if (isDigitASCII(content[content.size() - 1]))
-		content += ".";
+	}
 
 	mangledNames[orig] = content;
 
