@@ -159,13 +159,17 @@
 * Autotools monolithic build option for building LyX binaries was removed,
   for compilation speedup use parallel building on multiple cores instead.
 
-!! If upgrading from a LyX version before 2.3.0
-
-* Please additionally see the release notes from the versions in-between:
-  https://wiki.lyx.org/LyX/ReleaseNotes
-
 * Several ttf fonts (esint10.ttf, stmary10.ttf, wasy10.ttf) were changed
   to reflect the fact that newer Qt libraries do not support displaying certain
   codepoints anymore (bug #8493, #10161). 
   Distribution packagers need to repack those font files in case they are
-  delivering the fonts as a separated package dependent from core LyX.
+  delivering the fonts as a separated package dependent from core LyX
+  in order to display correctly math symbols like \oint.
+
+  Also note, that while it is still possible to compile LyX against Qt 4
+  these math symbols will not be displayed correctly anymore on Qt 4.
+
+!! If upgrading from a LyX version before 2.3.0
+
+* Please additionally see the release notes from the versions in-between:
+  https://wiki.lyx.org/LyX/ReleaseNotes
