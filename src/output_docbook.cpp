@@ -669,7 +669,15 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs, pit_type c
 
 	pit_type cpit = bpit;
 	while (cpit < epit) {
-		Layout const &style = paragraphs[cpit].layout();
+		// Skip paragraphs only containing one note.
+		Paragraph const &par = paragraphs[cpit];
+		if (par.size() == 1 && dynamic_cast<InsetNote*>(paragraphs[cpit].insetList().get(0))) {
+			cpit += 1;
+			continue;
+		}
+
+		// Based on layout information, store this paragraph in one set: should be in <info>, must be.
+		Layout const &style = par.layout();
 		if (style.docbookininfo() == "always") {
 			mustBeInInfo.emplace(cpit);
 		} else if (style.docbookininfo() == "maybe") {
@@ -680,7 +688,8 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs, pit_type c
 		}
 		cpit += 1;
 	}
-	// Now, bpit points to the last paragraph that has things that could go in <info>.
+	// Now, cpit points to the last paragraph that has things that could go in <info>.
+	// bpit is still the beginning of the <info> part.
 
 	return make_tuple(shouldBeInInfo, mustBeInInfo, bpit, cpit);
 }
