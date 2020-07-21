@@ -354,7 +354,7 @@ void InsetRef::docbook(XMLStream & xs, OutputParams const &) const
 	}
 
 	// No name, ask DocBook to generate one.
-	docstring attr = from_utf8("linkend=\"") + ref + from_utf8("\"");
+	docstring attr = from_utf8("linkend=\"") + xml::cleanID(ref) + from_utf8("\"");
 	if (!role.empty())
 		attr += " role=\"" + role + "\"";
 	xs << display_before;
