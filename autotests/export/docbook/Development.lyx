@@ -1,0 +1,524 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 598
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrartcl
+\options BCOR8mm,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+\end_modules
+\maintain_unincluded_children no
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format pdf2
+\output_sync 1
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "LyX's Development manual"
+\pdf_author "LyX Team"
+\pdf_subject "LyX's development documentation"
+\pdf_keywords "LyX, Documentation, Development"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\use_lineno 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 4
+\tocdepth 4
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\docbook_table_output 0
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Developing \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Subtitle
+Version 2.3.x
+\end_layout
+
+\begin_layout Section
+File formats
+\end_layout
+
+\begin_layout Subsection
+When is an update of the .lyx file format number needed?
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:When-is-an"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When you are working on a new feature you may ask yourself whether it needs
+ an update of the .lyx file format number.
+ Whether an update is needed or not is not always obvious.
+ Rule of thumb: 
+\end_layout
+
+\begin_layout Quote
+Whenever there is the danger that a previous version of LyX cannot open
+ a file using the new feature, a file format update is needed.
+\end_layout
+
+\begin_layout Standard
+The file format change allows lyx2lyx rules to implement backwards compatibility.
+ Below you can find a list of reasons for file format updates with explanations:
+\end_layout
+
+\begin_layout Description
+New
+\begin_inset space ~
+\end_inset
+
+document
+\begin_inset space ~
+\end_inset
+
+setting Whenever you introduce a new setting that is stored in the document
+ header, a file format update is needed.
+\end_layout
+
+\begin_layout Description
+Removed
+\begin_inset space ~
+\end_inset
+
+document
+\begin_inset space ~
+\end_inset
+
+setting If a certain setting becomes obsolete and gets removed, a file format
+ update is needed.
+\end_layout
+
+\begin_layout Description
+New
+\begin_inset space ~
+\end_inset
+
+valid
+\begin_inset space ~
+\end_inset
+
+value
+\begin_inset space ~
+\end_inset
+
+for
+\begin_inset space ~
+\end_inset
+
+an
+\begin_inset space ~
+\end_inset
+
+existing
+\begin_inset space ~
+\end_inset
+
+setting, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+\paragraph_spacing single
+Automatically
+\begin_inset space ~
+\end_inset
+
+loaded
+\begin_inset space ~
+\end_inset
+
+math
+\begin_inset space ~
+\end_inset
+
+package The reason for this is that there is no true ERT inset for math
+ formulas: Each command is parsed, and if a user happens to define a local
+ command with the same name as a command that triggers an automatic load
+ of a package, they need to be able to switch off the automatic loading
+ of that package.
+ This switch is stored by the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+use_package
+\end_layout
+
+\end_inset
+
+ header setting.
+\end_layout
+
+\begin_layout Description
+New
+\begin_inset space ~
+\end_inset
+
+language that is stored in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+language
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+This requirement is under discussion.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Description
+New
+\begin_inset space ~
+\end_inset
+
+inset Of course a new inset requires a file format update.
+\end_layout
+
+\begin_layout Description
+New
+\begin_inset space ~
+\end_inset
+
+style If a new style or inset layout is added to any layout file or module
+ shipped with \SpecialChar LyX
+, then a new file format is needed in the master (development)
+ branch.
+ It is possible to backport new styles to the stable version without a file
+ format change.
+\end_layout
+
+\begin_layout Description
+Removed
+\begin_inset space ~
+\end_inset
+
+style If a style or inset layout is removed in any layout file or module
+ shipped with \SpecialChar LyX
+, a new file format is required.
+\end_layout
+
+\begin_layout Standard
+However, 
+\series bold
+new
+\series default
+ layouts and modules do 
+\series bold
+not
+\series default
+ require a file format update (changed 03/16).
+ 
+\end_layout
+
+\begin_layout Standard
+If you are still unsure, please ask on the development list.
+\end_layout
+
+\begin_layout Paragraph
+\begin_inset CommandInset label
+LatexCommand label
+name "par:export-test-output-formats"
+
+\end_inset
+
+Output formats
+\end_layout
+
+\begin_layout Standard
+The following output formats are currently tested for each sample document:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX:
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+lyx16 LyX 1.6 file format (lyx2lyx)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+lyx21 LyX 2.1 file format (lyx2lyx)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+xhtml LyXHTML (native LyX HTML export)
+\end_layout
+
+\end_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX
+\begin_inset space ~
+\end_inset
+
++
+\begin_inset space ~
+\end_inset
+
+LaTeX:
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+dvi DVI (8-bit latex)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+dvi3_texF DVI (LuaTeX with 8-bit TeX fonts)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+dvi3_systemF DVI (LuaTeX with Unicode fonts)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+pdf2 PDF (pdflatex)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+pdf4_texF PDF (XeTeX with 8-bit TeX fonts)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+pdf4_systemF PDF (XeTeX with Unicode fonts)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+pdf5_texF PDF (LuaTeX with 8-bit TeX fonts)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+pdf5_systemF PDF (LuaTeX with Unicode fonts)
+\end_layout
+
+\end_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX
+\begin_inset space ~
+\end_inset
+
++
+\begin_inset space ~
+\end_inset
+
+LaTeX
+\begin_inset space ~
+\end_inset
+
++
+\begin_inset space ~
+\end_inset
+
+postprocessing:
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+pdf DVI -> PS (dvips) -> PDF (ps2pdf)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+pdf3 DVI -> PDF (dvipdfm)
+\end_layout
+
+\end_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+not
+\begin_inset space ~
+\end_inset
+
+tested: (or only if set as default output format in the document source)
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+latex LaTeX (plain)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+luatex LaTeX (LuaTeX)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+dviluatex LaTeX (dviluatex)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+pdflatex LaTeX (pdflatex)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+platex LaTeX (pLaTeX)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+xetex LaTeX (XeTeX) 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+eps3 EPS (encapsulated Postscript) (cropped)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+ps DVI -> Postscript (dvips)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+odf
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+text (nor text2, ..., text4)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+textparagraph
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+word
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+word2
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5msystemFM
+wordhtml
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

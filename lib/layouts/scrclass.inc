@@ -8,7 +8,7 @@
 # Labeling is now used also in non-KOMA classes
 
 
-Format 81
+Format 82
 SecNumDepth             2
 TocDepth                2
 DefaultStyle            Standard
@@ -35,6 +35,7 @@ Style Standard
 			margin-bottom: 2ex;
 		}
 	EndHTMLStyle
+	DocBookTag            para
 End
 
 Input stdinsets.inc
@@ -62,7 +63,12 @@ Style Labeling
 	LatexName             labeling
 	# overwrite the preamble code definition
 	Preamble
-	EndPreamble
+	EndPreamble	
+	DocBookTag            variablelist
+	DocBookItemWrapperTag varlistentry
+	DocBookItemTag        listitem
+	DocBookItemInnerTag   para
+	DocBookItemLabelTag   term
 End
 
 Input stdsections.inc
@@ -205,6 +211,7 @@ Style Subtitle
 	Font
 	  Size                Large
 	EndFont
+	DocBookTag            subtitle
 End
 
 

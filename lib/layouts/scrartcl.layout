@@ -4,7 +4,7 @@
 # KOMA scrartcl textclass definition file.
 # Bernd Rellermeyer <100.41728@germanynet.de>, 1998/7/11.
 
-Format 81
+Format 82
 Input scrclass.inc
 
 SecNumDepth		3
@@ -26,6 +26,7 @@ Style Part
 	Font
 	  Size		Larger
 	EndFont
+	DocBookTag            part
 End
 
 Style Part*
@@ -35,4 +36,5 @@ Style Part*
 	Font
 	  Size		Larger
 	EndFont
+	DocBookTag            part
 End
