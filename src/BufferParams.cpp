@@ -2730,6 +2730,8 @@ OutputParams::FLAVOR BufferParams::getOutputFlavor(string const & format) const
 	//       something with formats.
 	if (dformat == "xhtml")
 		result = OutputParams::HTML;
+	else if (dformat == "docbook5")
+		result = OutputParams::DOCBOOK5;
 	else if (dformat == "text")
 		result = OutputParams::TEXT;
 	else if (dformat == "lyx")
