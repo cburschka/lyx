@@ -6,7 +6,7 @@
 # Note that this file is included in sweave.module,
 # knitr.module and noweb.module.
 
-Format 81
+Format 82
 
 Counter chunk
 	GuiName "Knitr Chunk"
