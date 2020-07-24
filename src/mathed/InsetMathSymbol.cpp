@@ -68,14 +68,11 @@ Limits InsetMathSymbol::defaultLimits() const
 
 void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	mathedSymbolDim(mi.base, dim, sym_);
+	// set dim
+	// FIXME: this should depend on BufferView
+	// set negative kerning_ so that a subscript is moved leftward
+	kerning_ = -mathedSymbolDim(mi.base, dim, sym_);
 	if (sym_->draw != sym_->name) {
-		// set dim
-		// FIXME: this should depend on BufferView
-		// set kerning_
-		kerning_ = mathed_char_kerning(mi.base.font,
-		                               mathedSymbol(mi.base, sym_).back());
-
 		// align character vertically
 		// FIXME: this should depend on BufferView
 		h_ = 0;

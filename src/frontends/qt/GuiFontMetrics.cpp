@@ -226,8 +226,17 @@ int GuiFontMetrics::width(docstring const & s) const
      *   for text strings, it does not give a good result with some
      *   characters like the \int (gyph 4) of esint.
 
-	 * Also, as a safety measure, always use QFontMetrics::width with
-	 * our math fonts.
+	 * The metrics of some of our math fonts (eg. esint) are such that
+	 * QTextLine::horizontalAdvance leads, more or less, in the middle
+	 * of a symbol. This is the horizontal position where a subscript
+	 * should be drawn, so that the superscript has to be moved rightward.
+	 * This is done when the kerning() method of the math insets returns
+	 * a positive value. The problem with this choice is that navigating
+	 * a formula becomes weird. For example, a selection extends only over
+	 * about half of the symbol. In order to avoid this, with our math
+	 * fonts we use QTextLine::naturalTextWidth, so that a superscript can
+	 * be drawn right after the symbol, and move the subscript leftward by
+	 * recording a negative value for the kerning.
 	*/
 	int w = 0;
 	// is the string a single character from a math font ?
