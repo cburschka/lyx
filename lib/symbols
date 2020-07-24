@@ -1037,7 +1037,7 @@ iiiintop           esint    007|008    0  mathop  &qint;        &#x2A0C;        
 ointop             esint    043|044    0  mathop  &conint;      &#x222E;        esint
 oiintop            esint    045|046    0  mathop  &Conint;      &#x222F;        esint
 sqintop            esint    015|016    0  mathop  &quatint;     &#x2A16;        esint
-sqiintop           esint    017|017    0  mathop  x             esint
+sqiintop           esint    017|018    0  mathop  x             esint
 dotsintop          esint    041|042    0  mathop  &int;&ctdot;&int;     &#x222B;&#x22EF;&#x222B;    esint
 ointctrclockwiseop esint    023|024    0  mathop  &awconint;    &#x2233;        esint
 ointclockwiseop    esint    025|026    0  mathop  &cwconint;    &#x2232;        esint
@@ -1063,8 +1063,8 @@ endif
 \def\sqint{\sqintop\nolimits}       mathop  &quatint;     &#x2A16;        esint
 \def\sqiint{\sqiintop\nolimits}     mathop  x             esint
 \def\dotsint{\dotsintop\nolimits}   mathop  &int;&ctdot;&int;     &#x222B;&#x22EF;&#x222B;
-\def\ointctrclockwise{\ointctrclockwise\nolimits} mathop  &cwconint;    &#x2232;        esint
-\def\ointclockwise{\ointclockwise\nolimits}       mathop  &cwconint;    &#x2232;        esint
+\def\ointctrclockwise{\ointctrclockwiseop\nolimits} mathop  &cwconint;    &#x2232;        esint
+\def\ointclockwise{\ointclockwiseop\nolimits}       mathop  &cwconint;    &#x2232;        esint
 
 varointclockwiseop esint    027|028    0  mathop  &cwconint;    &#x2232;        esint
 varointctrclockwiseop esint 029|030    0  mathop  &awconint;    &#x2233;        esint
