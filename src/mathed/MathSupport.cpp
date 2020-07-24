@@ -673,9 +673,9 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 }
 
 
-void mathedSymbolDim(MetricsBase & mb, Dimension & dim, latexkeys const * sym)
+int mathedSymbolDim(MetricsBase & mb, Dimension & dim, latexkeys const * sym)
 {
-	LASSERT((bool)sym, return);
+	LASSERT((bool)sym, return 0);
 	//lyxerr << "metrics: symbol: '" << sym->name
 	//	<< "' in font: '" << sym->inset
 	//	<< "' drawn as: '" << sym->draw
@@ -687,6 +687,7 @@ void mathedSymbolDim(MetricsBase & mb, Dimension & dim, latexkeys const * sym)
 	std::string const font = italic_upcase_greek ? "cmm" : sym->inset;
 	Changer dummy = mb.changeFontSet(font);
 	mathed_string_dim(mb.font, sym->draw, dim);
+	return mathed_char_kerning(mb.font, sym->draw.back());
 }
 
 

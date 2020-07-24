@@ -60,10 +60,8 @@ docstring InsetMathSymbol::name() const
 
 void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	// set dim
-	mathedSymbolDim(mi.base, dim, sym_);
-	// set kerning_
-	kerning_ = mathed_char_kerning(mi.base.font, *sym_->draw.rbegin());
+	// set dim and negative kerning_ to move a subscript leftward
+	kerning_ = -mathedSymbolDim(mi.base, dim, sym_);
 	// correct height for broken cmex and wasy font
 	if (sym_->inset == "cmex" || sym_->inset == "wasy") {
 		h_ = 4 * dim.des / 5;
