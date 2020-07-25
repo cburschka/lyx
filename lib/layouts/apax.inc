@@ -484,6 +484,9 @@ Style Itemize
 			Color latex
 		EndFont
 	EndArgument
+	DocBookTag            itemizedlist
+	DocBookItemTag        listitem
+	DocBookItemInnerTag   para
 End
 
 

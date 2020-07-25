@@ -297,6 +297,9 @@ Style Itemize
     LeftDelim      <
     RightDelim     >
   EndArgument
+  DocBookTag            itemizedlist
+  DocBookItemTag        listitem
+  DocBookItemInnerTag   para
 End
 
 Style ItemizeType1

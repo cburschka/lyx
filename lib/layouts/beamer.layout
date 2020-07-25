@@ -122,6 +122,9 @@ Style Itemize
   ParSep           0.3
   Align            Left
   LabelType        Itemize
+  DocBookTag            itemizedlist
+  DocBookItemTag        listitem
+  DocBookItemInnerTag   para
 End
 
 Style Enumerate

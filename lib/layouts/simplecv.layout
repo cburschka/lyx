@@ -53,6 +53,8 @@ Style Section
 		InsertCotext   1
 		IsTocCaption   1
 	EndArgument
+	DocBookTag            title
+	DocBookSectionTag     section
 End
 
 
@@ -124,6 +126,9 @@ Style Itemize
 	HTMLTag               ul
 	HTMLItem              li
 	HTMLLabel             NONE
+	DocBookTag            itemizedlist
+	DocBookItemTag        listitem
+	DocBookItemInnerTag   para
 End
 
 
@@ -170,6 +175,8 @@ Style Title
 	  Size                Largest
 	EndFont
 	HTMLTitle             true
+	DocBookTag            title
+	DocBookInInfo         maybe
 End
 
 
