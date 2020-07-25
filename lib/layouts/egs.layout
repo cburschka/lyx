@@ -193,6 +193,9 @@ Style Enumerate
 			Color latex
 		EndFont
 	EndArgument
+	DocBookTag            orderedlist
+	DocBookItemTag        listitem
+	DocBookItemInnerTag   para
 End
 
 
@@ -261,6 +264,11 @@ Style Description
 			Color latex
 		EndFont
 	EndArgument
+	DocBookTag            variablelist
+	DocBookItemWrapperTag varlistentry
+	DocBookItemTag        listitem
+	DocBookItemInnerTag   para
+	DocBookItemLabelTag   term
 End
 
 

@@ -362,6 +362,9 @@ Style Enumerate
     LeftDelim      <
     RightDelim     >
   EndArgument
+  DocBookTag            orderedlist
+  DocBookItemTag        listitem
+  DocBookItemInnerTag   para
 End
 
 Style EnumerateType1

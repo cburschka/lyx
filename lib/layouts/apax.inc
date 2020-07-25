@@ -522,6 +522,9 @@ Style Enumerate
 			Color latex
 		EndFont
 	EndArgument
+	DocBookTag            orderedlist
+	DocBookItemTag        listitem
+	DocBookItemInnerTag   para
 End
 
 

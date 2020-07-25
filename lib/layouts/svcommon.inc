@@ -615,6 +615,11 @@ Style Description
 	LabelFont
 	  Series	Medium
 	EndFont
+	DocBookTag            variablelist
+	DocBookItemWrapperTag varlistentry
+	DocBookItemTag        listitem
+	DocBookItemInnerTag   para
+	DocBookItemLabelTag   term
 End
 
 Style Petit

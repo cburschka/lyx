@@ -177,6 +177,9 @@ Style Enumerate
   Align            Left
   LabelType        Enumerate
   RefPrefix        enu
+  DocBookTag            orderedlist
+  DocBookItemTag        listitem
+  DocBookItemInnerTag   para
 End
 
 Style Description
@@ -226,6 +229,11 @@ Style Description
   LabelFont
     Series         Bold
   EndFont
+  DocBookTag            variablelist
+  DocBookItemWrapperTag varlistentry
+  DocBookItemTag        listitem
+  DocBookItemInnerTag   para
+  DocBookItemLabelTag   term
 End
 
 

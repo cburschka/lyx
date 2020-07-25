@@ -137,6 +137,11 @@ Style Description
 	RightMargin           MMMMM
 	Align                 Left
 	LabelType             No_Label
+	DocBookTag            variablelist
+	DocBookItemWrapperTag varlistentry
+	DocBookItemTag        listitem
+	DocBookItemInnerTag   para
+	DocBookItemLabelTag   term
 End
 
 
