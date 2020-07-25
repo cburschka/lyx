@@ -343,6 +343,13 @@ void InsetBibitem::updateBuffer(ParIterator const & it, UpdateType utype, bool c
 }
 
 
+void InsetBibitem::docbook(XMLStream & xs, OutputParams const &) const
+{
+	// Nothing to do: everything is implemented in makeParagraphBibliography.
+	return;
+}
+
+
 docstring InsetBibitem::xhtml(XMLStream & xs, OutputParams const &) const
 {
 	// FIXME XHTML
@@ -352,7 +359,7 @@ docstring InsetBibitem::xhtml(XMLStream & xs, OutputParams const &) const
 	// handle jumping to ids. If we don't do that, though, we can just put the
 	// id into the span tag.
 	string const attrs =
-		"id='LyXCite-" + to_utf8(xml::cleanAttr(getParam("key"))) + "'";
+			"id='LyXCite-" + to_utf8(xml::cleanAttr(getParam("key"))) + "'";
 	xs << xml::CompTag("a", attrs);
 	xs << xml::StartTag("span", "class='bibitemlabel'");
 	xs << bibLabel();

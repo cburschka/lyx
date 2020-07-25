@@ -60,6 +60,8 @@ public:
 	///
 	docstring xhtml(XMLStream &, OutputParams const &) const;
 	///
+	void docbook(XMLStream &, OutputParams const &) const;
+	///
 	void collectBibKeys(InsetIterator const &, support::FileNameList &) const;
 	/// update the counter of this inset
 	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
@@ -74,12 +76,11 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s)
 		{ return s == "bibitem"; }
+	///
+	docstring bibLabel() const;
 	///@}
 
 private:
-	///
-	docstring bibLabel() const;
-
 	/// \name Private functions inherited from Inset class
 	//@{
 	///

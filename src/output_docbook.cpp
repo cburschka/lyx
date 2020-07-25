@@ -26,6 +26,7 @@
 #include "TextClass.h"
 
 #include "insets/InsetBibtex.h"
+#include "insets/InsetBibitem.h"
 #include "insets/InsetLabel.h"
 #include "insets/InsetNote.h"
 
@@ -303,6 +304,69 @@ ParagraphList::const_iterator findEndOfEnvironment(
 }
 
 
+ParagraphList::const_iterator makeParagraphBibliography(
+		Buffer const &buf,
+		XMLStream &xs,
+		OutputParams const &runparams,
+		Text const &text,
+		ParagraphList::const_iterator const & pbegin,
+		ParagraphList::const_iterator const & pend)
+{
+	auto const begin = text.paragraphs().begin();
+	auto const end = text.paragraphs().end();
+
+	// Find the paragraph *before* pbegin.
+	ParagraphList::const_iterator pbegin_before = begin;
+	if (pbegin != begin) {
+		ParagraphList::const_iterator pbegin_before_next = begin;
+		++pbegin_before_next;
+
+		while (pbegin_before_next != pbegin) {
+			++pbegin_before;
+			++pbegin_before_next;
+		}
+	}
+
+	ParagraphList::const_iterator par = pbegin;
+
+	// If this is the first paragraph in a bibliography, open the bibliography tag.
+	if (pbegin != begin && pbegin_before->layout().latextype != LATEX_BIB_ENVIRONMENT) {
+		xs << xml::StartTag("bibliography");
+		xs << xml::CR();
+	}
+
+	// Generate the required paragraphs.
+	for (; par != pend; ++par) {
+		// Start the precooked bibliography entry. This is very much like opening a paragraph tag.
+		// Don't forget the citation ID!
+		docstring attr;
+		for (auto i = 0; i < par->size(); ++i) {
+			if (par->getInset(0)->lyxCode() == BIBITEM_CODE) {
+				const auto * bibitem = dynamic_cast<const InsetBibitem*>(par->getInset(i));
+				attr = from_utf8("id='") + bibitem->bibLabel() + from_utf8("'");
+				break;
+			}
+		}
+		xs << xml::StartTag(from_utf8("bibliomixed"), attr);
+
+		// Generate the entry.
+		par->simpleDocBookOnePar(buf, xs, runparams, text.outerFont(distance(begin, par)), true, true, 0);
+
+		// End the precooked bibliography entry.
+		xs << xml::EndTag("bibliomixed");
+		xs << xml::CR();
+	}
+
+	// If this is the last paragraph in a bibliography, close the bibliography tag.
+	if (par == end || par->layout().latextype != LATEX_BIB_ENVIRONMENT) {
+		xs << xml::EndTag("bibliography");
+		xs << xml::CR();
+	}
+
+	return pend;
+}
+
+
 ParagraphList::const_iterator makeParagraphs(
 		Buffer const &buf,
 		XMLStream &xs,
@@ -534,7 +598,8 @@ ParagraphList::const_iterator makeEnvironment(
 			par = makeParagraphs(buf, xs, runparams, text, par, send);
 			break;
 		case LATEX_BIB_ENVIRONMENT:
-			// Handled in InsetBibtex.
+			send = findLastParagraph(par, pend);
+			par = makeParagraphBibliography(buf, xs, runparams, text, par, send);
 			break;
 		case LATEX_COMMAND:
 			++par;
@@ -605,7 +670,8 @@ pair<ParagraphList::const_iterator, ParagraphList::const_iterator> makeAny(
 			break;
 		}
 		case LATEX_BIB_ENVIRONMENT: {
-			// Handled in InsetBibtex.
+			send = findLastParagraph(par, pend);
+			par = makeParagraphBibliography(buf, xs, ourparams, text, par, send);
 			break;
 		}
 		case LATEX_PARAGRAPH: {
