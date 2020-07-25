@@ -343,7 +343,7 @@ ParagraphList::const_iterator makeParagraphBibliography(
 		for (auto i = 0; i < par->size(); ++i) {
 			if (par->getInset(0)->lyxCode() == BIBITEM_CODE) {
 				const auto * bibitem = dynamic_cast<const InsetBibitem*>(par->getInset(i));
-				attr = from_utf8("id='") + bibitem->bibLabel() + from_utf8("'");
+				attr = from_utf8("xml:id='") + bibitem->bibLabel() + from_utf8("'");
 				break;
 			}
 		}
