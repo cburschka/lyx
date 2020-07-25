@@ -343,7 +343,7 @@ void InsetBibitem::updateBuffer(ParIterator const & it, UpdateType utype, bool c
 }
 
 
-void InsetBibitem::docbook(XMLStream & xs, OutputParams const &) const
+void InsetBibitem::docbook(XMLStream &, OutputParams const &) const
 {
 	// Nothing to do: everything is implemented in makeParagraphBibliography.
 	return;
