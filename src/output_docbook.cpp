@@ -257,7 +257,8 @@ void closeInnerItemTag(XMLStream &xs, Layout const &lay)
 
 inline void closeItemTag(XMLStream &xs, Layout const &lay)
 {
-	xs << xml::EndTag(lay.docbookitemtag()) << xml::CR();
+	xs << xml::EndTag(lay.docbookitemtag());
+	xs << xml::CR();
 }
 
 // end of convenience functions
@@ -507,11 +508,17 @@ ParagraphList::const_iterator makeEnvironment(
 			if (par->params().depth() == origdepth) {
 				LATTEST(bstyle == style);
 				if (lastlay != nullptr) {
+					xs << XMLStream::ESCAPE_NONE << ("<!-- lastlay != nullptr; item tag: " + from_utf8(lastlay->docbookitemtag()) + "; item wrapper tag: " + from_utf8(lastlay->docbookitemwrappertag()) + " -->");
 					closeItemTag(xs, *lastlay);
+					if (lastlay->docbookitemwrappertag() != "NONE") {
+						xs << XMLStream::ESCAPE_NONE << "<!-- has docbookwrappertag -->";
+						xs << xml::EndTag(lastlay->docbookitemwrappertag());
+						xs << xml::CR();
+					}
 					lastlay = nullptr;
 				}
 
-				// this will be positive, if we want to skip the
+				// this will be positive if we want to skip the
 				// initial word (if it's been taken for the label).
 				pos_type sep = 0;
 
@@ -585,8 +592,7 @@ ParagraphList::const_iterator makeEnvironment(
 					}
 				}
 			}
-			// The other possibility is that the depth has increased, in which
-			// case we need to recurse.
+			// The other possibility is that the depth has increased.
 			else {
 				send = findEndOfEnvironment(par, pend);
 				par = makeEnvironment(buf, xs, runparams, text, par, send);
