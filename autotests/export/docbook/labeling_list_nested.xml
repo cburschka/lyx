@@ -3,35 +3,52 @@
   See http://www.lyx.org/ for more information -->
 <article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
 <title>Developing LyX</title>
+<para>The following output formats are currently tested for each sample document:</para>
 <variablelist>
 <varlistentry>
-<term>New&#xA0;valid&#xA0;value&#xA0;for&#xA0;an&#xA0;existing&#xA0;setting,</term>
+<term>LyX:</term>
 
 <listitem>
-<para> e.&#x2009;g.</para>
+
 <variablelist>
 <varlistentry>
-<term>Automatically&#xA0;loaded&#xA0;math&#xA0;package</term>
+<term>lyx16</term>
 
 <listitem>
-<para> The reason </para>
+<para> LyX 1.6 file format (lyx2lyx)</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>New&#xA0;language</term>
+<term>lyx21</term>
 
 <listitem>
-<para> that is stored</para>
+<para> </para>
 </listitem>
 </varlistentry>
 </variablelist>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>New&#xA0;inset</term>
+<term>LyX:</term>
 
 <listitem>
-<para> Of course a new inset requires a file format update.</para>
+
+<variablelist>
+<varlistentry>
+<term>lyx16</term>
+
+<listitem>
+<para> LyX 1.6 file format (lyx2lyx)</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>lyx21</term>
+
+<listitem>
+<para> </para>
+</listitem>
+</varlistentry>
+</variablelist>
 </listitem>
 </varlistentry>
 </variablelist>

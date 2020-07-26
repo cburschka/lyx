@@ -508,10 +508,8 @@ ParagraphList::const_iterator makeEnvironment(
 			if (par->params().depth() == origdepth) {
 				LATTEST(bstyle == style);
 				if (lastlay != nullptr) {
-					xs << XMLStream::ESCAPE_NONE << ("<!-- lastlay != nullptr; item tag: " + from_utf8(lastlay->docbookitemtag()) + "; item wrapper tag: " + from_utf8(lastlay->docbookitemwrappertag()) + " -->");
 					closeItemTag(xs, *lastlay);
 					if (lastlay->docbookitemwrappertag() != "NONE") {
-						xs << XMLStream::ESCAPE_NONE << "<!-- has docbookwrappertag -->";
 						xs << xml::EndTag(lastlay->docbookitemwrappertag());
 						xs << xml::CR();
 					}
@@ -561,13 +559,35 @@ ParagraphList::const_iterator makeEnvironment(
 					}
 				} // end label output
 
+				// Start generating the item.
 				bool wasInParagraph = runparams.docbook_in_par;
 				openItemTag(xs, style);
 				bool getsIntoParagraph = openInnerItemTag(xs, style);
 				OutputParams rp = runparams;
 				rp.docbook_in_par = wasInParagraph | getsIntoParagraph;
 
-				par->simpleDocBookOnePar(buf, xs, rp, text.outerFont(distance(begin, par)), true, true, sep);
+				// Maybe the item is completely empty, i.e. if the first word ends at the end of the current paragraph
+				// AND if the next paragraph doesn't have the same depth (if there is such a paragraph).
+				// Common case: there is only the first word on the line, but there is a nested list instead.
+				bool emptyItem = false;
+				if (sep == par->size()) {
+					auto next_par = par;
+					++next_par;
+					if (next_par == text.paragraphs().end()) // There is no next paragraph.
+						emptyItem = true;
+					else // There is a next paragraph: check depth.
+						emptyItem = par->params().depth() > next_par->params().depth();
+				}
+
+				if (emptyItem) {
+					// Avoid having an empty item, this is not valid DocBook. A single character is enough to force
+					// generation of a full <para>.
+					xs << ' ';
+				} else {
+					// Generate the rest of the paragraph, if need be.
+					par->simpleDocBookOnePar(buf, xs, rp, text.outerFont(distance(begin, par)), true, true, sep);
+				}
+
 				++par;
 				if (getsIntoParagraph)
 					closeInnerItemTag(xs, style);
@@ -613,8 +633,13 @@ ParagraphList::const_iterator makeEnvironment(
 		}
 	}
 
-	if (lastlay != 0)
+	if (lastlay != nullptr) {
 		closeItemTag(xs, *lastlay);
+		if (lastlay->docbookitemwrappertag() != "NONE") {
+			xs << xml::EndTag(lastlay->docbookitemwrappertag());
+			xs << xml::CR();
+		}
+	}
 	closeTag(xs, bstyle);
 	xs << xml::CR();
 	return pend;
@@ -731,10 +756,6 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs, pit_type c
 		// Based on layout information, store this paragraph in one set: should be in <info>, must be.
 		Layout const &style = par.layout();
 
-		std::cout << "Name: " << to_utf8(style.name()) << std::endl;
-		std::cout << "  DocBook tag: " << style.docbooktag() << std::endl;
-		std::cout << "  In info: " << style.docbookininfo() << std::endl;
-
 		if (style.docbookininfo() == "always") {
 			mustBeInInfo.emplace(cpit);
 		} else if (style.docbookininfo() == "maybe") {
@@ -796,14 +817,11 @@ pit_type generateDocBookParagraphWithoutSectioning(
 			(epit == (int) paragraphs.size()) ?
 			paragraphs.end() : paragraphs.iterator_at(epit);
 
-	std::cout << "generateDocBookParagraphWithoutSectioning" << std::endl;
 	while (bpit < epit) {
-		std::cout << "iteration; bpit: " << bpit << std::endl;
 		tie(par, send) = makeAny(text, buf, xs, runparams, par, send, pend);
 		bpit += distance(lastStartedPar, par);
 		lastStartedPar = par;
 	}
-	std::cout << "generateDocBookParagraphWithoutSectioning has looped; bpit: " << bpit << std::endl;
 
 	return bpit;
 }

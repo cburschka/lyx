@@ -50,6 +50,7 @@
 </varlistentry>
 </variablelist>
 </listitem>
+</varlistentry>
 <varlistentry>
 <term>New&#xA0;inset</term>
 
@@ -71,9 +72,7 @@
 <para> If a style or inset layout is removed in any layout file or module shipped with LyX, a new file format is required.</para>
 </listitem>
 </varlistentry>
-<!-- Output Error: Closing tag `variablelist' when other tags are open, namely: -->
-<!-- Output Error: varlistentry -->
-</varlistentry></variablelist>
+</variablelist>
 <para>However, <emphasis role='bold'>new</emphasis> layouts and modules do <emphasis role='bold'>not</emphasis> require a file format update (changed 03/16). </para>
 <para>If you are still unsure, please ask on the development list.</para>
 <section xml:id="par.export-test-output-formats-1">
@@ -109,6 +108,7 @@
 </varlistentry>
 </variablelist>
 </listitem>
+</varlistentry>
 <varlistentry>
 <term>LyX&#xA0;+&#xA0;LaTeX:</term>
 
@@ -173,6 +173,7 @@
 </varlistentry>
 </variablelist>
 </listitem>
+</varlistentry>
 <varlistentry>
 <term>LyX&#xA0;+&#xA0;LaTeX&#xA0;+&#xA0;postprocessing:</term>
 
@@ -195,6 +196,7 @@
 </varlistentry>
 </variablelist>
 </listitem>
+</varlistentry>
 <varlistentry>
 <term>not&#xA0;tested:</term>
 
@@ -303,9 +305,6 @@
 </listitem>
 <!-- Output Error: Closing tag `variablelist' when other tags are open, namely: -->
 <!-- Output Error: varlistentry -->
-</varlistentry><!-- Output Error: varlistentry -->
-</varlistentry><!-- Output Error: varlistentry -->
-</varlistentry><!-- Output Error: varlistentry -->
 </varlistentry></variablelist>
 </section>
 </section>
