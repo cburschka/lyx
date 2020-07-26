@@ -1,0 +1,266 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 598
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrartcl
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the file prints
+% out as advertised. If you mess with this preamble,
+% parts of this document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% solves the following problem:
+% If the dection number consits of too many numerals the section heading
+% will be printed in the TOC without a space between it and the section number.
+% As solution more space between the number and the heading is inserted:
+\renewcommand{\l@subsection}{\@dottedtocline{2}{1.5em}{2.8em}}
+\renewcommand{\l@subsubsection}{\@dottedtocline{3}{4.3em}{3.6em}}
+
+% increase link area for cross-references and autoname them,
+\AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
+\@ifundefined{extrasenglish}{\usepackage[english]{babel}}{}
+\@ifpackageloaded{babel}{
+ \addto\extrasenglish{%
+  \renewcommand*{\equationautorefname}[1]{}%
+  \renewcommand{\sectionautorefname}{sec.\negthinspace}%
+  \renewcommand{\subsectionautorefname}{sec.\negthinspace}%
+  \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}%
+ }
+}{}
+
+% don't load packages twice
+% see first footnote in sec. 9.3
+\@ifundefined{textcolor}{\usepackage{color}}{}
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \vspace{1cm}
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+ \cleardoublepage
+ \pagenumbering{arabic}}
+
+% add 0.5 mm vertical space for table rows
+\@ifundefined{extrarowheight} {\usepackage{array}}{}
+\setlength{\extrarowheight}{0.5mm}
+
+% insert additional vertical space of 1.5 mm between footnotes,
+\let\myFoot\footnote
+\renewcommand{\footnote}[1]{\myFoot{#1\vspace{1.5mm}}}
+
+% makes caption labels bold
+\setkomafont{captionlabel}{\bfseries}
+
+% enables calculation of values
+\usepackage{calc}
+
+% for multiple columns used in sec. 24.7
+\usepackage{multicol}
+
+% needed in sec. 19.4
+\usepackage{remreset}
+
+% for the Fourier transformation symbol
+\usepackage{mathrsfs}
+
+% define a color, used in sec.9.3
+\definecolor{darkgreen}{cmyk}{0.5, 0, 1, 0.5}
+
+% declare operators (see sec. 10.4 and sec. 15.2)
+\DeclareMathOperator*{\Lozenge}{\blacklozenge}
+\DeclareMathOperator{\sgn}{sgn}
+
+% example definitions for sec. 20.1 
+\newcommand{\gr}{\Longrightarrow}
+\newcommand{\us}[1]{\underline{#1}}
+\newcommand{\fb}[3]{\framebox#1#2{$#3$}}
+\newcommand{\cb}[3][white]{\fcolorbox{#2}{#1}{$#3$}}
+\newcommand{\fracS}[3][]{\genfrac{}{}{#1}{}{#2}{#3}}
+
+% example macro from sec. 19.4
+%\AtBeginDocument{
+%\def\tagform@#1{\maketag@@@{|#1|}}
+%}
+
+% ------------------------------------
+% used to check for needed LaTeX packages
+\usepackage{ifthen}
+
+% check for package undertilde
+% used for the command \utilde
+\newboolean{undertilde}
+\IfFileExists{undertilde.sty}
+ {\usepackage{undertilde}
+  \setboolean{undertilde}{true}}
+ {\setboolean{undertilde}{false}}
+
+% check for package eurosym
+% used for the Euro symbol
+\newboolean{eurosym}
+\IfFileExists{eurosym.sty}
+ {\usepackage[gennarrow]{eurosym}
+  \setboolean{eurosym}{true}}
+ {\setboolean{eurosym}{false}}
+
+% check for package braket
+% used for physical vectors
+\newboolean{braket}
+\IfFileExists{braket.sty}
+ {\usepackage{braket}
+  \setboolean{braket}{true}}
+ {\setboolean{braket}{false}}
+
+% check for package cancel
+\newboolean{cancel}
+\IfFileExists{cancel.sty}
+ {\usepackage{cancel}
+  \setboolean{cancel}{true}}
+ {\setboolean{cancel}{false}}
+
+% check for package upgreek
+\newboolean{upgreek}
+\IfFileExists{upgreek.sty}
+ {\usepackage{upgreek}
+  \setboolean{upgreek}{true}}
+ {\setboolean{upgreek}{false}}
+% Added by lyx2lyx
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+subequations
+\end_modules
+\maintain_unincluded_children no
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format pdf2
+\output_sync 0
+\bibtex_command default
+\index_command makeindex
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "LyX's Math Manual"
+\pdf_author "LyX Team, Uwe Stöhr"
+\pdf_subject "LyX-documentation about math"
+\pdf_keywords "LyX, Mathed"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 2
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\use_lineno 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 4
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle plain
+\tablestyle default
+\bullet 1 0 6 -1
+\bullet 2 2 35 -1
+\bullet 3 2 7 -1
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\end_header
+
+\begin_body
+
+\begin_layout Title
+LyX
+\end_layout
+
+\begin_layout Standard
+Some text before.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\begin_inset Formula 
+\[
+\cfrac[l]{A}{B+C}\,,\,\cfrac{A}{B+C}\,,\,\cfrac[r]{A}{B+C}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Some text after.
+\end_layout
+
+\end_body
+\end_document

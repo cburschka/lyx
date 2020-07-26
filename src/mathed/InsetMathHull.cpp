@@ -2406,11 +2406,6 @@ int InsetMathHull::plaintext(odocstringstream & os,
 
 void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
-	// With DocBook 5, MathML must be within its own namespace; defined in Buffer.cpp::writeDocBookSource as "m".
-	// Output everything in a separate stream so that this does not interfere with the standard flow of DocBook tags.
-	odocstringstream osmath;
-	MathStream ms(osmath, "m", true);
-
 	// Choose the tag around the MathML equation.
 	docstring name;
 	if (getType() == hullSimple)
@@ -2420,15 +2415,20 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 
 	// DocBook also has <equation>, but it comes with a title.
 
-	docstring bname = name;
+	docstring attr;
 	for (row_type i = 0; i < nrows(); ++i) {
 		if (!label(i).empty()) {
-			bname += " xml:id=\"" + xml::cleanID(label(i)) + "\"";
+			attr = "xml:id=\"" + xml::cleanID(label(i)) + "\"";
 			break;
 		}
 	}
 
-	++ms.tab(); ms.cr(); ms.os() << '<' << bname << '>';
+	xs << xml::StartTag(name, attr);
+
+	// With DocBook 5, MathML must be within its own namespace; defined in Buffer.cpp::writeDocBookSource as "m".
+	// Output everything in a separate stream so that this does not interfere with the standard flow of DocBook tags.
+	odocstringstream osmath;
+	MathStream ms(osmath, "m", true);
 
 	// Output the MathML subtree.
 	odocstringstream ls;
@@ -2463,11 +2463,9 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 		osmath << "MathML export failed. Please report this as a bug.";
 	}
 
-	// Close the DocBook tag enclosing the formula.
-	ms.cr(); --ms.tab(); ms.os() << "</" << name << '>';
-
-	// Output the complete tag to the DocBook stream.
+	// Output the complete formula to the DocBook stream.
 	xs << XMLStream::ESCAPE_NONE << osmath.str();
+	xs << xml::EndTag(name);
 }
 
 

@@ -185,7 +185,9 @@ bool XMLStream::closeFontTags() {
 		tag_stack_.pop_back();
 		// this shouldn't happen, since then the font tags
 		// weren't in any other tag.
-		LASSERT(!tag_stack_.empty(), return true);
+//		LASSERT(!tag_stack_.empty(), return true);
+		if (tag_stack_.empty())
+			return true;
 		curtag = &tag_stack_.back();
 	}
 
