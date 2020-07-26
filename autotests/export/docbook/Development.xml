@@ -16,34 +16,29 @@
 <variablelist>
 <varlistentry>
 <term>New&#xA0;document&#xA0;setting</term>
-
 <listitem>
 <para> Whenever you introduce a new setting that is stored in the document header, a file format update is needed.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>Removed&#xA0;document&#xA0;setting</term>
-
 <listitem>
 <para> If a certain setting becomes obsolete and gets removed, a file format update is needed.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>New&#xA0;valid&#xA0;value&#xA0;for&#xA0;an&#xA0;existing&#xA0;setting,</term>
-
 <listitem>
 <para> e.&#x2009;g.</para>
 <variablelist>
 <varlistentry>
 <term>Automatically&#xA0;loaded&#xA0;math&#xA0;package</term>
-
 <listitem>
 <para> The reason for this is that there is no true ERT inset for math formulas: Each command is parsed, and if a user happens to define a local command with the same name as a command that triggers an automatic load of a package, they need to be able to switch off the automatic loading of that package. This switch is stored by the use_package header setting.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>New&#xA0;language</term>
-
 <listitem>
 <para> that is stored in \language. </para>
 </listitem>
@@ -53,21 +48,18 @@
 </varlistentry>
 <varlistentry>
 <term>New&#xA0;inset</term>
-
 <listitem>
 <para> Of course a new inset requires a file format update.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>New&#xA0;style</term>
-
 <listitem>
 <para> If a new style or inset layout is added to any layout file or module shipped with LyX, then a new file format is needed in the master (development) branch. It is possible to backport new styles to the stable version without a file format change.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>Removed&#xA0;style</term>
-
 <listitem>
 <para> If a style or inset layout is removed in any layout file or module shipped with LyX, a new file format is required.</para>
 </listitem>
@@ -81,27 +73,23 @@
 <variablelist>
 <varlistentry>
 <term>LyX:</term>
-
 <listitem>
 
 <variablelist>
 <varlistentry>
 <term>lyx16</term>
-
 <listitem>
 <para> LyX 1.6 file format (lyx2lyx)</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>lyx21</term>
-
 <listitem>
 <para> LyX 2.1 file format (lyx2lyx)</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>xhtml</term>
-
 <listitem>
 <para> LyXHTML (native LyX HTML export)</para>
 </listitem>
@@ -111,62 +99,53 @@
 </varlistentry>
 <varlistentry>
 <term>LyX&#xA0;+&#xA0;LaTeX:</term>
-
 <listitem>
 
 <variablelist>
 <varlistentry>
 <term>dvi</term>
-
 <listitem>
 <para> DVI (8-bit latex)</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>dvi3_texF</term>
-
 <listitem>
 <para> DVI (LuaTeX with 8-bit TeX fonts)</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>dvi3_systemF</term>
-
 <listitem>
 <para> DVI (LuaTeX with Unicode fonts)</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>pdf2</term>
-
 <listitem>
 <para> PDF (pdflatex)</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>pdf4_texF</term>
-
 <listitem>
 <para> PDF (XeTeX with 8-bit TeX fonts)</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>pdf4_systemF</term>
-
 <listitem>
 <para> PDF (XeTeX with Unicode fonts)</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>pdf5_texF</term>
-
 <listitem>
 <para> PDF (LuaTeX with 8-bit TeX fonts)</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>pdf5_systemF</term>
-
 <listitem>
 <para> PDF (LuaTeX with Unicode fonts)</para>
 </listitem>
@@ -176,20 +155,17 @@
 </varlistentry>
 <varlistentry>
 <term>LyX&#xA0;+&#xA0;LaTeX&#xA0;+&#xA0;postprocessing:</term>
-
 <listitem>
 
 <variablelist>
 <varlistentry>
 <term>pdf</term>
-
 <listitem>
 <para> DVI -&gt; PS (dvips) -&gt; PDF (ps2pdf)</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>pdf3</term>
-
 <listitem>
 <para> DVI -&gt; PDF (dvipdfm)</para>
 </listitem>
@@ -199,113 +175,97 @@
 </varlistentry>
 <varlistentry>
 <term>not&#xA0;tested:</term>
-
 <listitem>
 <para> (or only if set as default output format in the document source)</para>
 <variablelist>
 <varlistentry>
 <term>latex</term>
-
 <listitem>
 <para> LaTeX (plain)</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>luatex</term>
-
 <listitem>
 <para> LaTeX (LuaTeX)</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>dviluatex</term>
-
 <listitem>
 <para> LaTeX (dviluatex)</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>pdflatex</term>
-
 <listitem>
 <para> LaTeX (pdflatex)</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>platex</term>
-
 <listitem>
 <para> LaTeX (pLaTeX)</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>xetex</term>
-
 <listitem>
 <para> LaTeX (XeTeX) </para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>eps3</term>
-
 <listitem>
 <para> EPS (encapsulated Postscript) (cropped)</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>ps</term>
-
 <listitem>
 <para> DVI -&gt; Postscript (dvips)</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>odf</term>
-
 <listitem>
-
+<para> </para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>text</term>
-
 <listitem>
 <para> (nor text2, ..., text4)</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>textparagraph</term>
-
 <listitem>
-
+<para> </para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>word</term>
-
 <listitem>
-
+<para> </para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>word2</term>
-
 <listitem>
-
+<para> </para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>wordhtml</term>
-
 <listitem>
-
+<para> </para>
 </listitem>
 </varlistentry>
 </variablelist>
 </listitem>
-<!-- Output Error: Closing tag `variablelist' when other tags are open, namely: -->
-<!-- Output Error: varlistentry -->
-</varlistentry></variablelist>
+</varlistentry>
+</variablelist>
 </section>
 </section>
 </section>

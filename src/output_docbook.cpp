@@ -539,8 +539,10 @@ ParagraphList::const_iterator makeEnvironment(
 								openLabelTag(xs, style);
 								xs << lbl;
 								closeLabelTag(xs, style);
+							} else {
+								// No new line after closeLabelTag.
+								xs << xml::CR();
 							}
-							xs << xml::CR();
 						}
 					} else { // some kind of list
 						if (style.labeltype == LABEL_MANUAL) {
@@ -549,12 +551,10 @@ ParagraphList::const_iterator makeEnvironment(
 							openLabelTag(xs, style);
 							sep = par->firstWordDocBook(xs, runparams);
 							closeLabelTag(xs, style);
-							xs << xml::CR();
 						} else {
 							openLabelTag(xs, style);
 							xs << par->params().labelString();
 							closeLabelTag(xs, style);
-							xs << xml::CR();
 						}
 					}
 				} // end label output
@@ -568,7 +568,8 @@ ParagraphList::const_iterator makeEnvironment(
 
 				// Maybe the item is completely empty, i.e. if the first word ends at the end of the current paragraph
 				// AND if the next paragraph doesn't have the same depth (if there is such a paragraph).
-				// Common case: there is only the first word on the line, but there is a nested list instead.
+				// Common case: there is only the first word on the line, but there is a nested list instead
+				// of more text.
 				bool emptyItem = false;
 				if (sep == par->size()) {
 					auto next_par = par;
@@ -576,7 +577,7 @@ ParagraphList::const_iterator makeEnvironment(
 					if (next_par == text.paragraphs().end()) // There is no next paragraph.
 						emptyItem = true;
 					else // There is a next paragraph: check depth.
-						emptyItem = par->params().depth() > next_par->params().depth();
+						emptyItem = par->params().depth() >= next_par->params().depth();
 				}
 
 				if (emptyItem) {
