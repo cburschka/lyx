@@ -36,8 +36,8 @@ using namespace std;
 using namespace lyx::support;
 
 QString const math_fonts[] = {"cmex10", "cmmi10", "cmr10", "cmsy10",
-	"dsrom10", "esint10", "eufm10", "msam10", "msbm10", "rsfs10",
-	"stmary10", "wasy10"};
+	"dsrom10", "bbm10", "esint10", "eufm10", "msam10", "msbm10",
+	"rsfs10", "stmary10", "wasy10"};
 int const num_math_fonts = sizeof(math_fonts) / sizeof(*math_fonts);
 
 namespace lyx {

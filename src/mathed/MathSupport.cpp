@@ -785,6 +785,8 @@ fontinfo fontinfos[] = {
 			  inh_shape, Color_math},
 	{"mathds",        DS_FAMILY, inh_series,
 			  inh_shape, Color_math},
+	{"mathbbm",       BBM_FAMILY, inh_series,
+			  inh_shape, Color_math},
 	{"mathtt",        TYPEWRITER_FAMILY, inh_series,
 			  inh_shape, Color_math},
 	{"mathit",        inh_family, inh_series,
