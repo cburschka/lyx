@@ -136,8 +136,6 @@ void InsetMathFont::validate(LaTeXFeatures & features) const
 			features.require("mhchem");
 		if (fontname == "mathds")
 			features.require("dsfont");
-		if (fontname == "mathbbm")
-			features.require("bbm");
 	} else if (features.runparams().math_flavor == OutputParams::MathAsHTML) {
 		features.addCSSSnippet(
 			"span.normal{font: normal normal normal inherit serif;}\n"

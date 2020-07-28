@@ -47,8 +47,6 @@ enum FontFamily {
 	///
 	DS_FAMILY,
 	///
-	BBM_FAMILY,
-	///
 	EUFRAK_FAMILY,
 	///
 	RSFS_FAMILY,

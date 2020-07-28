@@ -39,7 +39,6 @@
 #include <stack>
 #include <iostream>
 #include <algorithm>
-#include <sstream>
 
 using namespace std;
 using namespace lyx::support;
@@ -863,25 +862,17 @@ void outputDocBookInfo(
 	generateDocBookParagraphWithoutSectioning(text, buf, xs, runparams, paragraphs, bpitInfo, epitInfo);
 
 	if (hasAbstract) {
-		// Sometimes, there are many paragraphs that should go into the abstract, but none generates actual content.
-		// Thus, first generate to a temporary stream, then only create the <abstract> tag if these paragraphs
-		// generate some content.
-		odocstringstream os2;
-		XMLStream xs2(os2);
-		generateDocBookParagraphWithoutSectioning(text, buf, xs2, runparams, paragraphs, bpitAbstract, epitAbstract);
+		string tag = paragraphs[bpitAbstract].layout().docbookforceabstracttag();
+		if (tag == "NONE")
+			tag = "abstract";
 
-		// Actually output the abstract if there is something to do.
-		if (!os2.str().empty()) {
-			string tag = paragraphs[bpitAbstract].layout().docbookforceabstracttag();
-			if (tag == "NONE")
-				tag = "abstract";
-
-			xs << xml::StartTag(tag);
-			xs << xml::CR();
-			xs << XMLStream::ESCAPE_NONE << os2.str();
-			xs << xml::EndTag(tag);
-			xs << xml::CR();
-		}
+		xs << xml::StartTag(tag);
+		xs << xml::CR();
+		xs.startDivision(false);
+		generateDocBookParagraphWithoutSectioning(text, buf, xs, runparams, paragraphs, bpitAbstract, epitAbstract);
+		xs.endDivision();
+		xs << xml::EndTag(tag);
+		xs << xml::CR();
 	}
 
 	// End the <info> tag if it was started.

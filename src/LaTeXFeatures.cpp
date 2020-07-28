@@ -1159,8 +1159,7 @@ char const * simplefeatures[] = {
 	"pict2e",
 	"drs",
 	"environ",
-	"dsfont",
-	"bbm"
+	"dsfont"
 };
 
 char const * bibliofeatures[] = {
