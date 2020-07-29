@@ -72,10 +72,11 @@ public:
 	    to this font. Returns number of chars written. Base is the
 	    font state active now.
 	*/
-	int latexWriteStartChanges(odocstream &, BufferParams const & bparams,
+	int latexWriteStartChanges(otexstream &, BufferParams const & bparams,
 				   OutputParams const & runparams,
 				   Font const & base,
-				   Font const & prev) const;
+				   Font const & prev,
+				   bool const & non_inherit_inset = false) const;
 
 	/** Writes the tail of the LaTeX needed to change to this font.
 	    Returns number of chars written. Base is the font state we want

@@ -1069,10 +1069,15 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 			running_font = basefont;
 			if (!closeLanguage)
 				running_font.setLanguage(copy_font.language());
+			// For these, we use switches, so no need to close
 			basefont.fontInfo().setSize(copy_font.fontInfo().size());
-			// leave font open if language is still open
+			basefont.fontInfo().setFamily(copy_font.fontInfo().family());
+			basefont.fontInfo().setSeries(copy_font.fontInfo().series());
+			// leave font open if language or any of the switches is still open
 			open_font = (running_font.language() == basefont.language()
-				     || running_font.fontInfo().size() == basefont.fontInfo().size());
+				     || running_font.fontInfo().size() == basefont.fontInfo().size()
+				     || running_font.fontInfo().family() == basefont.fontInfo().family()
+				     || running_font.fontInfo().series() == basefont.fontInfo().series());
 			if (closeLanguage)
 				runparams.local_font = &basefont;
 		}
@@ -2659,10 +2664,11 @@ void Paragraph::latex(BufferParams const & bparams,
 				os << '}';
 				column += 1;
 			}
-			odocstringstream ods;
-			column += current_font.latexWriteStartChanges(ods, bparams,
+			otexstringstream ots;
+			bool const non_inherit_inset = (c == META_INSET && getInset(i) && !getInset(i)->inheritFont());
+			column += current_font.latexWriteStartChanges(ots, bparams,
 							      runparams, basefont,
-							      last_font);
+							      last_font, non_inherit_inset);
 			// Check again for display math in ulem commands as a
 			// font change may also occur just before a math inset.
 			if (runparams.inDisplayMath && !deleted_display_math
@@ -2674,19 +2680,17 @@ void Paragraph::latex(BufferParams const & bparams,
 			}
 			running_font = current_font;
 			open_font = true;
-			docstring fontchange = ods.str();
+			docstring fontchange = ots.str();
+			os << fontchange;
 			// check whether the fontchange ends with a \\textcolor
-			// modifier and the text starts with a space (bug 4473)
+			// modifier and the text starts with a space. If so we
+			// need to add } in order to prevent \\textcolor from gobbling
+			// the space (bug 4473).
 			docstring const last_modifier = rsplit(fontchange, '\\');
 			if (prefixIs(last_modifier, from_ascii("textcolor")) && c == ' ')
-				os << fontchange << from_ascii("{}");
-			// check if the fontchange ends with a trailing blank
-			// (like "\small " (see bug 3382)
-			else if (suffixIs(fontchange, ' ') && c == ' ')
-				os << fontchange.substr(0, fontchange.size() - 1)
-				   << from_ascii("{}");
-			else
-				os << fontchange;
+				os << from_ascii("{}");
+			else if (ots.terminateCommand())
+				os << termcmd;
 			if (in_ct_deletion) {
 				// We have to close and then reopen \lyxdeleted,
 				// as strikeout needs to be on lowest level.

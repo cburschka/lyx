@@ -56,18 +56,29 @@ namespace {
 //
 // Strings used to write LaTeX files
 //
-char const * LaTeXFamilyNames[NUM_FAMILIES + 2] =
+char const * LaTeXFamilyCommandNames[NUM_FAMILIES + 2] =
 { "textrm", "textsf", "texttt", "error1", "error2", "error3", "error4",
   "error5", "error6", "error7", "error8", "error9", "error10", "error11",
   "error12", "error13", "error14" };
 
-char const * LaTeXSeriesNames[NUM_SERIES + 2] =
+char const * LaTeXFamilySwitchNames[NUM_FAMILIES + 2] =
+{ "rmfamily", "sffamily", "ttfamily", "error1", "error2", "error3", "error4",
+  "error5", "error6", "error7", "error8", "error9", "error10", "error11",
+  "error12", "error13", "error14" };
+
+char const * LaTeXSeriesCommandNames[NUM_SERIES + 2] =
 { "textmd", "textbf", "error4", "error5" };
 
-char const * LaTeXShapeNames[NUM_SHAPE + 2] =
+char const * LaTeXSeriesSwitchNames[NUM_SERIES + 2] =
+{ "mdseries", "bfseries", "error4", "error5" };
+
+char const * LaTeXShapeCommandNames[NUM_SHAPE + 2] =
 { "textup", "textit", "textsl", "textsc", "error6", "error7" };
 
-char const * LaTeXSizeNames[NUM_SIZE + 4] =
+char const * LaTeXShapeSwitchNames[NUM_SHAPE + 2] =
+{ "upshape", "itshape", "slshape", "scshape", "error6", "error7" };
+
+char const * LaTeXSizeSwitchNames[NUM_SIZE + 4] =
 { "tiny", "scriptsize", "footnotesize", "small", "normalsize", "large",
   "Large", "LARGE", "huge", "Huge", "error8", "error9", "error10", "error11" };
 
@@ -141,7 +152,7 @@ docstring const Font::stateText(BufferParams * params, bool const terse) const
 // Returns size in latex format
 string const Font::latexSize() const
 {
-	return LaTeXSizeNames[bits_.size()];
+	return LaTeXSizeSwitchNames[bits_.size()];
 }
 
 
@@ -213,10 +224,11 @@ void Font::lyxWriteChanges(Font const & orgfont,
 
 /// Writes the head of the LaTeX needed to impose this font
 // Returns number of chars written.
-int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
+int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 				    OutputParams const & runparams,
 				    Font const & base,
-				    Font const & prev) const
+				    Font const & prev,
+				    bool const & non_inherit_inset) const
 {
 	int count = 0;
 
@@ -281,7 +293,7 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 	}
 
 	if (language()->encoding()->package() == Encoding::CJK) {
-		pair<bool, int> const c = switchEncoding(os, bparams,
+		pair<bool, int> const c = switchEncoding(os.os(), bparams,
 				runparams, *(language()->encoding()));
 		if (c.first) {
 			open_encoding_ = true;
@@ -299,27 +311,47 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 		os << '{';
 		++count;
 		os << '\\'
-		   << LaTeXSizeNames[f.size()]
-		   << "{}";
-		count += strlen(LaTeXSizeNames[f.size()]) + 3;
+		   << LaTeXSizeSwitchNames[f.size()] << termcmd;
+		count += strlen(LaTeXSizeSwitchNames[f.size()]) + 1;
 	}
 	if (f.family() != INHERIT_FAMILY) {
-		os << '\\'
-		   << LaTeXFamilyNames[f.family()]
-		   << '{';
-		count += strlen(LaTeXFamilyNames[f.family()]) + 2;
+		if (non_inherit_inset) {
+			os << '{';
+			++count;
+			os << '\\' << LaTeXFamilySwitchNames[f.family()] << termcmd;
+			count += strlen(LaTeXFamilySwitchNames[f.family()]) + 1;
+		} else {
+			os << '\\'
+			   << LaTeXFamilyCommandNames[f.family()]
+			   << '{';
+			count += strlen(LaTeXFamilyCommandNames[f.family()]) + 2;
+		}
 	}
 	if (f.series() != INHERIT_SERIES) {
-		os << '\\'
-		   << LaTeXSeriesNames[f.series()]
-		   << '{';
-		count += strlen(LaTeXSeriesNames[f.series()]) + 2;
+		if (non_inherit_inset) {
+			os << '{';
+			++count;
+			os << '\\' << LaTeXSeriesSwitchNames[f.series()] << termcmd;
+			count += strlen(LaTeXSeriesSwitchNames[f.series()]) + 1;
+		} else {
+			os << '\\'
+			   << LaTeXSeriesCommandNames[f.series()]
+			   << '{';
+			count += strlen(LaTeXSeriesCommandNames[f.series()]) + 2;
+		}
 	}
 	if (f.shape() != INHERIT_SHAPE) {
-		os << '\\'
-		   << LaTeXShapeNames[f.shape()]
-		   << '{';
-		count += strlen(LaTeXShapeNames[f.shape()]) + 2;
+		if (non_inherit_inset) {
+			os << '{';
+			++count;
+			os << '\\' << LaTeXShapeSwitchNames[f.shape()] << termcmd;
+			count += strlen(LaTeXShapeSwitchNames[f.shape()]) + 1;
+		} else {
+			os << '\\'
+			   << LaTeXShapeCommandNames[f.shape()]
+			   << '{';
+			count += strlen(LaTeXShapeCommandNames[f.shape()]) + 2;
+		}
 	}
 	if (f.color() != Color_inherit && f.color() != Color_ignore) {
 		if (f.color() == Color_none && p.color() != Color_none) {
@@ -429,15 +461,15 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 	FontInfo f = bits_;
 	f.reduce(base.bits_);
 
-	if (f.family() != INHERIT_FAMILY) {
+	if (f.family() != INHERIT_FAMILY && !non_inherit_inset) {
 		os << '}';
 		++count;
 	}
-	if (f.series() != INHERIT_SERIES) {
+	if (f.series() != INHERIT_SERIES && !non_inherit_inset) {
 		os << '}';
 		++count;
 	}
-	if (f.shape() != INHERIT_SHAPE) {
+	if (f.shape() != INHERIT_SHAPE && !non_inherit_inset) {
 		os << '}';
 		++count;
 	}
