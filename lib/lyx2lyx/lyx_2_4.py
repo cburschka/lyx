@@ -3991,7 +3991,7 @@ convert = [
           ]
 
 revert =  [[597, [revert_docbook_table_output]],
-           [595, [revert_libertinus_rm_fonts,revert_libertinus_sftt_fonts]],
+           [596, [revert_libertinus_rm_fonts,revert_libertinus_sftt_fonts]],
            [595, [revert_parskip,revert_line_vspaces]],
            [594, [revert_ams_spaces]],
            [593, [revert_counter_inset]],
