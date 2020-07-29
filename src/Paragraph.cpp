@@ -2563,7 +2563,7 @@ void Paragraph::latex(BufferParams const & bparams,
 		++column;
 
 		// Fully instantiated font
-		Font const current_font = getFont(bparams, i, outerfont);
+		Font const current_font = getFont(bparams, i, real_outerfont);
 
 		Font const last_font = running_font;
 		bool const in_ct_deletion = (bparams.output_changes
