@@ -759,6 +759,7 @@ bool InsetInfo::forceLocalFontSwitch() const
 {
 	return params_.type == InsetInfoParams::MENU_INFO
 		|| params_.type == InsetInfoParams::SHORTCUTS_INFO
+		|| params_.type == InsetInfoParams::SHORTCUT_INFO
 		|| params_.type == InsetInfoParams::L7N_INFO;
 }
 
