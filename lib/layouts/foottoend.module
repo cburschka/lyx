@@ -17,10 +17,10 @@ InsetLayout Foot
    LatexName       endnote
    Requires        endnotes
    LangPreamble
-     \providecommand{\notesname}{_(Notes)}
+     \providecommand{\notesname}{_(Notes[[Endnote]])}
    EndLangPreamble
    BabelPreamble
-     \addto\captions$$lang{\renewcommand{\notesname}{_(Notes)}}
+     \addto\captions$$lang{\renewcommand{\notesname}{_(Notes[[Endnote]])}}
    EndBabelPreamble
 End
 
