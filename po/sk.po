@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-07-30 15:34+0200\n"
-"PO-Revision-Date: 2020-07-11 10:41+0000\n"
+"POT-Creation-Date: 2020-07-30 16:39+0200\n"
+"PO-Revision-Date: 2020-07-30 14:59+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3134,14 +3134,12 @@ msgid "&Numbering"
 msgstr "Čís&lovanie"
 
 #: src/frontends/qt/ui/OutputUi.ui:20
-#, fuzzy
 msgid "DocBook Output Options"
-msgstr "Výstupné LaTeX-voľby"
+msgstr "Výstupné DocBook-voľby"
 
 #: src/frontends/qt/ui/OutputUi.ui:35
-#, fuzzy
 msgid "&Table output:"
-msgstr "Výstup pre &matematiku:"
+msgstr "Výstup pre tabu&ľku:"
 
 #: src/frontends/qt/ui/OutputUi.ui:51 src/frontends/qt/ui/OutputUi.ui:203
 msgid "Format to use for math output."
@@ -3153,7 +3151,7 @@ msgstr "HTML"
 
 #: src/frontends/qt/ui/OutputUi.ui:60
 msgid "CALS"
-msgstr ""
+msgstr "CALS"
 
 #: src/frontends/qt/ui/OutputUi.ui:84
 msgid "LyX Format"
@@ -7018,11 +7016,11 @@ msgstr "Štandard v titule"
 #: lib/layouts/IEEEtran-CompSoc.layout:31 lib/layouts/iucr.layout:103
 #: lib/layouts/iucr.layout:106
 msgid "Author Footnote"
-msgstr "Autor poznámky pod čiarou"
+msgstr "Autorova poznámka pod čiarou"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:37
 msgid "Author foot"
-msgstr "Autor poznámky pod čiarou"
+msgstr "Autorova poznámka pod čiarou"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:61
 #: lib/layouts/IEEEtran-TransMag.layout:39
@@ -11722,13 +11720,14 @@ msgid "endnote"
 msgstr "koncová poznámka"
 
 #: lib/layouts/endnotes.module:32 lib/layouts/endnotes.module:35
+#: lib/layouts/foottoend.module:20 lib/layouts/foottoend.module:23
 #: lib/layouts/memoir.layout:318 lib/layouts/memoir.layout:321
 msgid "Notes[[Endnotes]]"
-msgstr "Poznámky"
+msgstr "Pripomienky"
 
 #: lib/layouts/enotez.module:2
 msgid "Endnotes (Extended)"
-msgstr "Koncové poznámky (rozšírenie)"
+msgstr "Koncové poznámky (rozšírené)"
 
 #: lib/layouts/enotez.module:10
 msgid ""
@@ -12605,7 +12604,7 @@ msgstr "Poznámky"
 
 #: lib/layouts/foottoenotez.module:2
 msgid "Footnotes as Endnotes (Extended)"
-msgstr "Poznámky pod čiarou ako koncové (rozšírenie)"
+msgstr "Poznámky pod čiarou ako koncové (rozšírené)"
 
 #: lib/layouts/foottoenotez.module:11
 msgid ""
@@ -15185,7 +15184,7 @@ msgstr "Tu sa vložia voľby pre PDF-komentár (viďte pdfcomment manuál)"
 
 #: lib/layouts/pdfcomment.module:94
 msgid "PDF-Annotation"
-msgstr "PDF-anotácie"
+msgstr "PDF-anotácia"
 
 #: lib/layouts/pdfcomment.module:98 src/frontends/qt/GuiClipboard.cpp:175
 msgid "PDF"
@@ -36380,7 +36379,7 @@ msgstr "Modus pre editáciu regulárnych výrazov"
 #: src/mathed/InsetMathNest.cpp:1914
 #, c-format
 msgid "Cannot apply %1$s here."
-msgstr ""
+msgstr "Nemôžem tu uplatniť %1$s."
 
 #: src/mathed/InsetMathRef.cpp:245
 msgid "Standard[[mathref]]"
