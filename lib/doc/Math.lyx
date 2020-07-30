@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 582
+\lyxformat 598
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -138,7 +138,7 @@
 \begin_modules
 subequations
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
 \inputencoding utf8
@@ -162,6 +162,8 @@ subequations
 \output_sync 0
 \bibtex_command default
 \index_command makeindex
+\float_placement class
+\float_alignment class
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -179,7 +181,7 @@ subequations
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize a4paper
+\papersize a4
 \use_geometry false
 \use_package amsmath 2
 \use_package amssymb 2
@@ -210,7 +212,7 @@ subequations
 \secnumdepth 4
 \tocdepth 3
 \paragraph_separation skip
-\defskip medskip
+\defskip halfline
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
@@ -224,9 +226,12 @@ subequations
 \bullet 3 2 7 -1
 \tracking_changes true
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
 \author -563046850 "Jean-Marc LASGOUTTES"
 \author 47243155 "Jean-Marc"
 \end_header
@@ -2623,7 +2628,8 @@ tbinom
 \end_inset
 
 .
- For other brackets around binomial coeficients there are the commands 
+ For other brackets around binomial coefficients there are the commands
+ 
 \series bold
 
 \backslash
@@ -7000,7 +7006,7 @@ Load
 
 always
 \family default
-, you have access to square backets:
+, you have access to square brackets:
 \end_layout
 
 \begin_layout Standard
@@ -16118,7 +16124,7 @@ Display
  and so set below the integrals:
 \begin_inset Formula 
 \begin{equation}
-\iiint\limits _{V}X\,\mathrm{d}V=U\label{eq:VolInt}
+\iiint_{V}X\,\mathrm{d}V=U\label{eq:VolInt}
 \end{equation}
 
 \end_inset
@@ -27566,7 +27572,7 @@ The command
 \series bold
 
 \backslash
-oldstylenums{0123456789
+oldstylenums{0123456789}
 \series default
  produces: 
 \begin_inset Formula $\oldstylenums{0123456789}$
@@ -29007,7 +29013,7 @@ reference "eq:VolInt"
 :
 \begin_inset Formula 
 \begin{flalign}
-\hspace{30pt}\iiint\limits _{V}X\,\mathrm{d}V & =U & {}
+\hspace{30pt}\iiint_{V}X\,\mathrm{d}V & =U & {}
 \end{flalign}
 
 \end_inset
@@ -29733,13 +29739,11 @@ Numbered
 Formula
 \family default
  (shortcut 
-\family sans
-Ctrl+Alt
-\begin_inset space ~
+\begin_inset Info
+type  "shortcuts"
+arg   "command-sequence math-display; math-number-toggle;"
 \end_inset
 
-N
-\family default
 ).
  Existing formulas can be numbered with the menu 
 \family sans
