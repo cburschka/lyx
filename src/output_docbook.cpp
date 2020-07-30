@@ -342,7 +342,8 @@ ParagraphList::const_iterator makeParagraphBibliography(
 		// Don't forget the citation ID!
 		docstring attr;
 		for (auto i = 0; i < par->size(); ++i) {
-			if (par->getInset(0)->lyxCode() == BIBITEM_CODE) {
+			Inset const *ip = par->getInset(0);
+			if (ip != nullptr && ip->lyxCode() == BIBITEM_CODE) {
 				const auto * bibitem = dynamic_cast<const InsetBibitem*>(par->getInset(i));
 				attr = from_utf8("xml:id='") + bibitem->bibLabel() + from_utf8("'");
 				break;
@@ -417,7 +418,7 @@ ParagraphList::const_iterator makeParagraphs(
 			Inset const * firstInset = par->getInset(0);
 
 			// Floats cannot be in paragraphs.
-			special_case = to_ascii(firstInset->layoutName()).substr(0, 6) == "Float:";
+			special_case = to_utf8(firstInset->layoutName()).substr(0, 6) == "Float:";
 
 			// Bibliographies cannot be in paragraphs.
 			if (!special_case && firstInset->asInsetCommand())
