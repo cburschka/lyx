@@ -24,14 +24,13 @@
 
 % increase link area for cross-references and autoname them,
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
-%-\@ifundefined{extrasenglish}{\usepackage[english]{babel}}{}
 \@ifpackageloaded{babel}{
-%- \addto\extrasenglish{%
+ \addto\extrasrussian{%
   \renewcommand*{\equationautorefname}[1]{}%
-  \renewcommand{\sectionautorefname}{sec.\negthinspace}%
-  \renewcommand{\subsectionautorefname}{sec.\negthinspace}%
-  \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}%
-%- }
+  \renewcommand{\sectionautorefname}{разд.\negthinspace}%
+  \renewcommand{\subsectionautorefname}{разд.\negthinspace}%
+  \renewcommand{\subsubsectionautorefname}{разд.\negthinspace}%
+ }
 }{}
 
 % don't load packages twice
@@ -133,9 +132,10 @@
   \setboolean{upgreek}{true}}
  {\setboolean{upgreek}{false}}
 % Added by lyx2lyx
-\usepackage{array}
-% Added by lyx2lyx
 \usepackage{varwidth}
+
+% Title in serif font
+\addtokomafont{title}{\rmfamily}
 \end_preamble
 \options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
@@ -171,15 +171,15 @@ subequations
 \paperfontsize 12
 \spacing single
 \use_hyperref true
-\pdf_title "LyX's Math Manual"
-\pdf_author "LyX Team, Uwe Stöhr"
-\pdf_subject "LyX-documentation about math"
-\pdf_keywords "LyX, Mathed"
+\pdf_title "Руководство по математике LyX"
+\pdf_author "Команда разработки LyX"
+\pdf_subject "Документация LyX - Руководство по математике"
+\pdf_keywords "LyX"
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 1
-\pdf_breaklinks false
+\pdf_breaklinks true
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
@@ -241,7 +241,8 @@ subequations
 \begin_body
 
 \begin_layout Title
-Расширенное руководство по математике LyX
+Расширенное руководство по математике \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Author
@@ -372,7 +373,7 @@ mhchem
 , а также набор \SpecialChar LaTeX
 -команд,
  используемых для представления математических символов и конструкций.
- Эти описания предназначены для разъяснения использования команд.
+ Эти описания разъясняют использование команд.
  Поэтому вам необходимо прочитать раздел 
 \shape italic
 Математические формулы
@@ -396,8 +397,8 @@ mhchem
 Панели формул
 \family default
 .
- Но каждый, кто собирается записать много формул, согласится, что гораздо
- быстрее использовать команды вместо использования 
+ Но каждый, кому приходилось набирать много формул, замечал, что гораздо
+ быстрее использовать команды вместо кнопок 
 \family sans
 Панели формул
 \family default
@@ -423,7 +424,7 @@ amsmath
 Настройки\SpecialChar menuseparator
 Математика
 \family default
-).
+)
 \begin_inset Foot
 status collapsed
 
@@ -452,7 +453,7 @@ AmS
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -469,9 +470,9 @@ AmS
 
 \end_inset
 
--команд,
+-команд
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Список всех команд 
@@ -506,7 +507,7 @@ literal "false"
 
 \end_inset
 
- из соображений ясности и компактности изложения.
+, из соображений ясности и компактности изложения.
 \end_layout
 
 \begin_layout Section
@@ -547,9 +548,8 @@ status collapsed
 
 \end_inset
 
-, отображение который будет несколько большим, иметь другой формат, и она
- будет располагаться в отдельном абзаце, используйте одно из сочетаний клавиш:
- 
+, которая выглядит крупнее, имеет другое форматирование и располагается
+ в отдельном абзаце, используйте одно из сочетаний клавиш: 
 \begin_inset Info
 type  "shortcuts"
 arg   "math-display"
@@ -706,15 +706,15 @@ L@\SpecialChar LaTeX
 \family sans
 Документ\SpecialChar menuseparator
 Настройки\SpecialChar menuseparator
-Преамбула \SpecialChar LaTeX
-
+Преам\SpecialChar softhyphen
+була LaTeX
 \family default
 .
 \end_layout
 
 \begin_layout Standard
-Для дальнейшего редактирования матриц, условных конструкций и многострочных
- формул, используйте меню 
+Для редактирования матриц, условных конструкций и многострочных формул,
+ используйте меню 
 \family sans
 Правка\SpecialChar menuseparator
 Математика
@@ -885,9 +885,9 @@ T@\SpecialChar TeX
 всегда
 \shape default
  должен располагаться пробел, для ее завершения.
- Этот промежуток не появляется в выводе.
- Когда в выводе должен появиться дополнительный пробел, за обычным пробелом
- в тексте должен следовать неразрывный пробел.
+ Этот пробел не появляется в выводе.
+ Если же в выводе должен появиться пробел, то за обычным пробелом в тексте
+ должен следовать неразрывный пробел.
 \end_layout
 
 \begin_layout Standard
@@ -3610,7 +3610,7 @@ a
 \backslash
 int
 \series default
- создает промежуток высотой со знак интеграла,
+ создает промежуток высотой со знак интеграла
 \begin_inset Foot
 status collapsed
 
@@ -3634,8 +3634,8 @@ reference "subsec:Big-Operators"
 
 \end_inset
 
- потому что это больший символ.
- Пример приложения приводится в 
+, потому что это больший символ.
+ Пример использования приводится в 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Multiline-Brackets"
@@ -3690,7 +3690,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Формула ! Подчеркивание
+Формула ! подчеркивание
 \end_layout
 
 \end_inset
@@ -4007,7 +4007,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Существуют различные типы многоточий.
+Существуют различные типы многоточий
 \begin_inset Foot
 status collapsed
 
@@ -4023,6 +4023,7 @@ arg   "math-insert \\ldots"
 
 \end_inset
 
+.
  Для перечислений используются точки на базовой линии (
 \series bold
 
@@ -4435,7 +4436,7 @@ hdotsfor[расстояние]{количество-столбцов}
 \series bold
 Количество-столбцов
 \series default
- указывает, сколько столбцов следует охватить.
+ указывает сколько столбцов следует охватить.
  
 \series bold
 Расстояние
@@ -7355,7 +7356,7 @@ reference "subsec:Predefined-Space"
 \begin_inset Formula $q$
 \end_inset
 
-, предотвращает окружение следующего «+» пробелом.
+, предотвращает окружение следующего «+» пробелом
 \begin_inset Foot
 status collapsed
 
@@ -7373,6 +7374,7 @@ reference "subsec:Binary-Operators"
 
 \end_inset
 
+.
  Во втором ряду вставлена вторая скобка.
  Естественно, она должна начинаться до 
 \begin_inset Formula $b$
@@ -7386,7 +7388,7 @@ hphantom{gggg+
 \backslash
 :}
 \series default
-.
+
 \begin_inset Foot
 status collapsed
 
@@ -7410,6 +7412,7 @@ reference "subsec:Placeholders"
 
 \end_inset
 
+.
  Этот пробел необходим, потому что «+» также окружен пробелом в формуле.
  Скобка помещается под командой 
 \series bold
@@ -7467,7 +7470,7 @@ jot}{3pt}
  Чтобы избежать пробела между верхней скобкой в первом ряду и формулой,
  необходимо уменьшить расстояние между строками.
  Это не просто из-за возможной ошибки в \SpecialChar LyX
-.
+
 \begin_inset Foot
 status collapsed
 
@@ -7485,6 +7488,7 @@ literal "false"
 
 \end_inset
 
+.
  В качестве решения проблемы, глобальную функцию разделения строк 
 \series bold
 
@@ -11728,11 +11732,11 @@ Ctrl+Shift+Пробел
 \begin_inset Text
 
 \begin_layout Plain Layout
-24 kW
+24 кВт
 \begin_inset Formula $\cdot$
 \end_inset
 
-h
+ч
 \end_layout
 
 \end_inset
@@ -11756,11 +11760,11 @@ h
 \begin_inset space \thinspace{}
 \end_inset
 
-kW
+кВт
 \begin_inset Formula $\cdot$
 \end_inset
 
-h
+ч
 \end_layout
 
 \end_inset
@@ -12195,7 +12199,7 @@ cm.
 status collapsed
 
 \begin_layout Plain Layout
-Промежутки ! вокруг формул
+Промежуток ! вокруг формул
 \end_layout
 
 \end_inset
@@ -13414,7 +13418,7 @@ colorbox
 \backslash
 raisebox
 \series default
-.
+
 \begin_inset Foot
 status collapsed
 
@@ -13430,7 +13434,7 @@ fcolorbox
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -13918,15 +13922,7 @@ black
 .
  Четыре числа, разделенные запятыми, являются коэффициентами долей соответствующ
 их цветов этой схемы.
- Эти коэффициенты указываются в диапазоне 0
-\begin_inset space \thinspace{}
-\end_inset
-
--
-\begin_inset space \thinspace{}
-\end_inset
-
-1.
+ Эти коэффициенты указываются в диапазоне 0–1.
  Вместо 
 \series bold
 cmyk
@@ -17831,10 +17827,10 @@ _i,j=1
 \begin_layout Section
 Шрифты
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Шрифты
+Шрифт
 \end_layout
 
 \end_inset
@@ -18426,7 +18422,7 @@ textrm
 .
  То, что их стиль не может быть правильно установлен посредством диалога
  по текстовому стилю, является ошибкой в \SpecialChar LyX
-.
+
 \begin_inset Foot
 status collapsed
 
@@ -18444,7 +18440,7 @@ literal "false"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -18718,7 +18714,7 @@ status collapsed
 \begin_layout Standard
 Из-за ошибки в \SpecialChar LyX
 , формулы только целиком могут быть окрашены в цвета, определяемы
-е пользователем.
+е пользователем
 \begin_inset Foot
 status collapsed
 
@@ -18736,7 +18732,7 @@ literal "false"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsection
@@ -27233,7 +27229,7 @@ oldstylenums{number}
 \series bold
 
 \backslash
-oldstylenums{0123456789
+oldstylenums{0123456789}
 \series default
  производит: 
 \begin_inset Formula $\oldstylenums{0123456789}$
@@ -27288,7 +27284,8 @@ status collapsed
 формул можно установить с помощью меню 
 \family sans
 Документ\SpecialChar menuseparator
-Настройки\SpecialChar menuseparator
+Наст\SpecialChar softhyphen
+ройки\SpecialChar menuseparator
 Математика.
 \end_layout
 
@@ -27912,7 +27909,7 @@ C & \ne & A
 status collapsed
 
 \begin_layout Plain Layout
-Формула ! длиная
+Формула ! длинная
 \end_layout
 
 \end_inset
@@ -27951,7 +27948,7 @@ pt командой
 \backslash
 hspace
 \series default
-.
+
 \begin_inset Foot
 status collapsed
 
@@ -27975,7 +27972,7 @@ reference "subsec:Variable-Space"
 
 \end_inset
 
-
+.
 \begin_inset Index idx
 status collapsed
 
@@ -28072,7 +28069,7 @@ lefteqn
 \begin_layout Itemize
 Из-за ошибки в \SpecialChar LyX
  курсор не может быть установлен мышью в произвольную позицию
- первой строки.
+ первой строки
 \begin_inset Foot
 status collapsed
 
@@ -28090,6 +28087,7 @@ literal "false"
 
 \end_inset
 
+.
  Его можно установить только в начало строки и затем переместить с помощью
  клавиш со стрелками.
 \end_layout
@@ -28836,7 +28834,7 @@ gather
  краю.
  Все остальные строки центрируются.
  Поэтому это окружение подходит для длинных формул.
- Пример формулы
+ Пример формулы 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:lefteqn"
@@ -28874,7 +28872,7 @@ multline
 \family sans
 Слева
 \family default
-).
+)
 \begin_inset Foot
 status collapsed
 
@@ -28892,7 +28890,7 @@ reference "sec:Formula-Styles"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -29151,7 +29149,7 @@ aligned
 \series default
  в выделенной формуле имеет то преимущество, что номер формулы вертикально
  центрируется за строками.
- В качестве примера, формула
+ В качестве примера, формула 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:shortlong"
@@ -29488,13 +29486,11 @@ status collapsed
 Нумерованная формула
 \family default
  (сочетание клавиш 
-\family sans
-Ctrl+Alt
-\begin_inset space ~
+\begin_inset Info
+type  "shortcuts"
+arg   "command-sequence math-display; math-number-toggle;"
 \end_inset
 
-N
-\family default
 ).
  Существующие формулы могут быть пронумерованы с помощью меню 
 \family sans
@@ -30051,7 +30047,7 @@ renewcommand
 \series default
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Команды ! R ! 
@@ -30131,11 +30127,9 @@ roman{equation}
 \series default
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\series bold
 Команды ! R ! 
 \backslash
 roman
@@ -30169,7 +30163,7 @@ Roman
 \series default
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Команды ! R ! 
@@ -30435,7 +30429,7 @@ name "subsec:User-defined-Numbering"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Нумерация формул ! пользовательская
@@ -31086,7 +31080,11 @@ arabic{equation}}
 \begin_inset Newline newline
 \end_inset
 
+
+\series default
 или
+\series bold
+
 \begin_inset Newline newline
 \end_inset
 
@@ -31152,7 +31150,7 @@ name "subsec:Chemical-Symbols-and"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Химические символы ! Знаки
@@ -31223,7 +31221,7 @@ type  "shortcut"
 arg   "font-roman"
 \end_inset
 
- в стиль шрифта с прямым начертанием.
+ в стиль шрифта с прямым начертанием
 \begin_inset Foot
 status collapsed
 
@@ -31241,7 +31239,7 @@ reference "subsec:Font-Styles"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -31826,7 +31824,7 @@ cf
 \series bold
 mhchem
 \series default
-, 
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mhchem"
@@ -32400,9 +32398,10 @@ newcommand
 
 \end_inset
 
-[необязательное-значение]{определение- команды}
-\series default
+[необязательное-значение]{определение-команды}
+\end_layout
 
+\begin_layout Standard
 \begin_inset Note Greyedout
 status open
 
@@ -33082,8 +33081,7 @@ newmacroname
 \shape default
  — это имя макроса по умолчанию, которое должно быть изменено на что-то
  более приемлемое для текущего случая.
- Нужная формула вставляется в первый синий блок (с подписью \SpecialChar TeX
-).
+ Нужная формула вставляется в первый синий блок (с подписью TeX).
  Обозначения аргументов вставляются командой 
 \series bold
 
@@ -33120,8 +33118,7 @@ arg   "math-macro-make-optional"
 \end_inset
 
  панели инструментов.
- Во втором синем блоке (с подписью \SpecialChar LyX
-) можно определить внешний вид макроса
+ Во втором синем блоке (с подписью LyX) можно определить внешний вид макроса
  в \SpecialChar LyX
 .
  Обычно требуется видеть его таким, как он определен, поэтому этот блок
@@ -33340,7 +33337,11 @@ fb
 
 \begin_layout Standard
 Когда курсор находится в блоке определения макроса, вы увидите панель инструмент
-ов макроса в нижней части главного окна \SpecialChar LyX
+ов 
+\family sans
+Математические макросы
+\family default
+ в нижней части главного окна \SpecialChar LyX
 :
 \end_layout
 
@@ -33378,7 +33379,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Панель инструментов макроса содержит слева направо следующие кнопки:
+Эта панель инструментов содержит слева направо следующие кнопки:
 \end_layout
 
 \begin_layout Standard
@@ -33681,9 +33682,9 @@ arg   "math-macro-add-greedy-optional-param"
 
 \begin_layout Standard
 \SpecialChar LyX
- поддерживает обмен математическими выражениями, записанными математическими
- средствами \SpecialChar LyX
-, и внешними приложениями или пользовательскими сценариями.
+ поддерживает обмен математическими выражениями, созданными в редакторе
+ формул \SpecialChar LyX
+, с внешними приложениями или пользовательскими сценариями.
  В настоящее время поддерживаются приложения 
 \family sans
 Maple
@@ -33775,7 +33776,7 @@ status open
 Примечание.
 
 \series default
- Необходимо использовать правильные разделительные вставки 
+ Необходимо использовать правильные ограничители 
 \begin_inset Formula $\left(\right)$
 \end_inset
 
@@ -33826,14 +33827,18 @@ status open
 \begin_layout Standard
 В настоящее время не существует сочетаний клавиш для вызова алгебраических
  приложений.
- Но можно легко связать ярлык с математической функцией \SpecialChar LyX
+ Но можно легко назначить сочетание для функции \SpecialChar LyX
+ 
+\family sans
+math-extern
+\family default
  (см.
  руководство 
 \shape italic
 Функции LyX
 \shape default
 ).
- Можно было бы, например, привязать для этого клавишу 
+ Например, назначить клавишу 
 \family sans
 Return
 \family default
@@ -33842,7 +33847,7 @@ Return
 \family sans
 Maxima
 \family default
-, можно использовать команду определения ярлыка:
+, можно использовать команду определения для такого сочетания:
 \end_layout
 
 \begin_layout Standard
@@ -34464,15 +34469,7 @@ genfrac
 \end_layout
 
 \begin_layout Standard
-Стиль — это число в диапазоне 0
-\begin_inset space \thinspace{}
-\end_inset
-
--
-\begin_inset space \thinspace{}
-\end_inset
-
-3.
+Стиль — это число в диапазоне 0–3.
 \end_layout
 
 \begin_layout Standard
@@ -35074,11 +35071,11 @@ status open
 \end_layout
 
 \begin_layout Standard
-О дополнительных настройках смотрите документацию по пакету 
+По дополнительным настройкам смотрите документацию пакета 
 \series bold
 cancel
 \series default
-, 
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "cancel"
@@ -35203,7 +35200,7 @@ status open
 
 \end_inset
 
-, закладки PDF создаются для каждого заголовка раздела в оглавлении.
+, закладки PDF создаются для каждого заголовка раздела в содержании.
  Если заголовок раздела содержит формулы, они неправильно отображаются в
  тексте закладки, поскольку формулы в закладках нарушают соглашения PDF.
 \end_layout
@@ -35222,13 +35219,13 @@ status open
 \family default
 .
  Короткие заголовки используются в качестве альтернативы многострочным заголовка
-м разделов, чтобы содержание было четко упорядочено.
- Только короткие заголовки, если они определены, появляется в оглавлении
- и, следовательно, в PDF-закладках.
+м разделов, чтобы не загромождать содержание.
+ Только короткие заголовки, если они определены, появляются в содержании
+ и также в PDF-закладках.
 \end_layout
 
 \begin_layout Standard
-Когда формулы должны появиться в оглавлении, но используется 
+Когда формулы должны появиться в содержании, но используется 
 \series bold
 hyperref
 \series default
@@ -35693,7 +35690,7 @@ reference "eq:within"
 
 \end_inset
 
-, используется 2
+, используется матрица 2
 \series bold
 ×
 \series default
@@ -35701,15 +35698,11 @@ reference "eq:within"
 \begin_inset Formula $n$
 \end_inset
 
-
-\begin_inset space ~
-\end_inset
-
-матрица с выровненными по левому краю столбцами для 
+ с выровненными по левому краю столбцами для 
 \begin_inset Formula $n$
 \end_inset
 
- используемых переменных.
+ используемых переменных
 \begin_inset Foot
 status collapsed
 
@@ -35727,6 +35720,7 @@ reference "sec:Matrices"
 
 \end_inset
 
+.
  Для отображения описания в меньшем размере, перед матрицей, для примера,
  вставлена команда 
 \series bold
@@ -35734,7 +35728,7 @@ reference "sec:Matrices"
 \backslash
 footnotesize
 \series default
-.
+
 \begin_inset Foot
 status collapsed
 
@@ -35752,7 +35746,7 @@ reference "subsec:Font-Sizes"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -35760,7 +35754,7 @@ reference "subsec:Font-Sizes"
 \series bold
 Отступ для формулы
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 стили формул см.
@@ -35837,26 +35831,18 @@ reference "eq:within"
 \end_inset
 
  располагается в пяти столбцах, где в первых двух столбцах содержится сама
- формула, в третьем — 2
+ формула, в третьем — матрица 2
 \series bold
 ×
 \series default
-
-\begin_inset Formula $3$
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-матрица с описанием переменных, а в последнем — пустая скобка \SpecialChar TeX
+3 с описанием переменных, а в последнем — пустая скобка \SpecialChar TeX
 .
 \begin_inset Formula 
 \begin{flalign}
 \hspace{30pt}F_{A} & =\rho·V·g & \footnotesize\begin{array}{ll}
 \rho & \textrm{плотность}\\
 V & \textrm{объем}\\
-g & \textrm{гравитационное ускорение}
+g & \textrm{ускорение свободного падения}
 \end{array} &  & {}\label{eq:within}
 \end{flalign}
 
@@ -36324,7 +36310,7 @@ status collapsed
 
 \begin_layout Standard
 Этот раздел представляет собой краткое изложение наиболее важных типографских
- правил, перечисленных в нормах ISO.
+ правил, перечисленных в нормах ISO
 \begin_inset Foot
 status collapsed
 
@@ -36352,7 +36338,7 @@ literal "true"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Itemize
@@ -36382,7 +36368,7 @@ reference "subsec:Font-Styles"
 \begin_inset space \thinspace{}
 \end_inset
 
-km/h.
+км/ч.
 \begin_inset Newline newline
 \end_inset
 
@@ -36495,7 +36481,7 @@ unit[значение]{единица}
 \begin_inset space \thinspace{}
 \end_inset
 
-cm, используется знак умножения «×».
+см, используется знак умножения «×».
  Он доступен посредством команды 
 \series bold
 

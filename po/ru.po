@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-07-30 15:34+0200\n"
-"PO-Revision-Date: 2020-07-01 00:02+0300\n"
+"PO-Revision-Date: 2020-07-30 21:33+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -1182,9 +1182,8 @@ msgid "Old Documen&t:"
 msgstr "Старый документ:"
 
 #: src/frontends/qt/ui/CompareUi.ui:51
-#, fuzzy
 msgid "Specify the original version of the document here (comparison source)"
-msgstr "Укажите исходную версию документа"
+msgstr "Укажите исходную версию документа (источник сравнения)"
 
 #: src/frontends/qt/ui/CompareUi.ui:61 src/frontends/qt/ui/PrefUi.ui:61
 msgid "Bro&wse..."
@@ -1195,9 +1194,8 @@ msgid "&New Document:"
 msgstr "Новый документ:"
 
 #: src/frontends/qt/ui/CompareUi.ui:87
-#, fuzzy
 msgid "Specify the modified version of the document here (comparison target)"
-msgstr "Укажите изменённую версию документа"
+msgstr "Укажите изменённую версию документа (цель сравнения)"
 
 #: src/frontends/qt/ui/CompareUi.ui:97 src/frontends/qt/ui/ExternalUi.ui:89
 #: src/frontends/qt/ui/GraphicsUi.ui:75 src/frontends/qt/ui/IncludeUi.ui:28
@@ -1807,7 +1805,7 @@ msgstr "Использовать настоящую капитель"
 #: src/frontends/qt/ui/FontUi.ui:156 src/frontends/qt/ui/FontUi.ui:264
 #: src/frontends/qt/ui/FontUi.ui:372
 msgid "Use old style instead of lining figures"
-msgstr "Использовать цифры старого стиля вместо выравненных"
+msgstr "Использовать \"строчные\" цифры старого стиля (минускульные)"
 
 #: src/frontends/qt/ui/FontUi.ui:159
 msgid "Use &old style figures"
@@ -3139,14 +3137,12 @@ msgid "&Numbering"
 msgstr "Нумерация"
 
 #: src/frontends/qt/ui/OutputUi.ui:20
-#, fuzzy
 msgid "DocBook Output Options"
-msgstr "Параметры вывода XHTML"
+msgstr "Параметры вывода DocBook"
 
 #: src/frontends/qt/ui/OutputUi.ui:35
-#, fuzzy
 msgid "&Table output:"
-msgstr "Вывод формул:"
+msgstr "Вывод таблиц:"
 
 #: src/frontends/qt/ui/OutputUi.ui:51 src/frontends/qt/ui/OutputUi.ui:203
 msgid "Format to use for math output."
@@ -3158,7 +3154,7 @@ msgstr "HTML"
 
 #: src/frontends/qt/ui/OutputUi.ui:60
 msgid "CALS"
-msgstr ""
+msgstr "CALS"
 
 #: src/frontends/qt/ui/OutputUi.ui:84
 msgid "LyX Format"
@@ -5810,15 +5806,13 @@ msgstr "Большой"
 
 #: src/frontends/qt/ui/VSpaceUi.ui:103 src/VSpace.cpp:202
 #: src/frontends/qt/GuiDocument.cpp:863
-#, fuzzy
 msgid "Half line height"
-msgstr "По базисной линии справа"
+msgstr "Половина высоты строки"
 
 #: src/frontends/qt/ui/VSpaceUi.ui:108 src/VSpace.cpp:205
 #: src/frontends/qt/GuiDocument.cpp:864
-#, fuzzy
 msgid "Line height"
-msgstr "&Высота:"
+msgstr "Высота строки"
 
 #: src/frontends/qt/ui/VSpaceUi.ui:113
 msgid "VFill"
@@ -9453,9 +9447,8 @@ msgid "American Psychological Association (APA), v. 6"
 msgstr "American Psychological Association (APA), v. 6"
 
 #: lib/layouts/apa7.layout:3 lib/examples/Articles:0
-#, fuzzy
 msgid "American Psychological Association (APA), v. 7"
-msgstr "American Psychological Association (APA), v. 6"
+msgstr "American Psychological Association (APA), v. 7"
 
 #: lib/layouts/apax.inc:112
 msgid "FiveAuthors"
@@ -9531,28 +9524,24 @@ msgid "*"
 msgstr "*"
 
 #: lib/layouts/apax.inc:563
-#, fuzzy
 msgid "Course"
-msgstr "Courier"
+msgstr "Курс"
 
 #: lib/layouts/apax.inc:579
-#, fuzzy
 msgid "Course: "
-msgstr "Courier"
+msgstr "Курс:"
 
 #: lib/layouts/apax.inc:590 lib/layouts/apax.inc:610
 msgid "addORCIDlink"
-msgstr ""
+msgstr "addORCIDlink"
 
 #: lib/layouts/apax.inc:594 lib/layouts/apax.inc:611
-#, fuzzy
 msgid "ORCID-link: "
-msgstr "ORCID: "
+msgstr "Ссылка ORCID: "
 
 #: lib/layouts/apax.inc:602 lib/layouts/apax.inc:617
-#, fuzzy
 msgid "Author-name"
-msgstr "Имя автора"
+msgstr "Имя-автора"
 
 #: lib/layouts/arab-article.layout:3
 msgid "Arabic Article"
@@ -11346,9 +11335,8 @@ msgid "Verteiler"
 msgstr "Verteiler"
 
 #: lib/layouts/docbook-book.layout:3
-#, fuzzy
 msgid "DocBook Book (XML)"
-msgstr "Книга DocBook (SGML)"
+msgstr "Книга DocBook (XML)"
 
 #: lib/layouts/docbook-book.layout:4 lib/layouts/docbook-chapter.layout:4
 #: lib/layouts/docbook-section.layout:4
@@ -11356,14 +11344,12 @@ msgid "Books (DocBook)"
 msgstr "Книги (DocBook)"
 
 #: lib/layouts/docbook-chapter.layout:3
-#, fuzzy
 msgid "DocBook Chapter (XML)"
-msgstr "Глава DocBook (SGML)"
+msgstr "Глава DocBook (XML)"
 
 #: lib/layouts/docbook-section.layout:3
-#, fuzzy
 msgid "DocBook Section (XML)"
-msgstr "Раздел DocBook (SGML)"
+msgstr "Раздел DocBook (XML)"
 
 #: lib/layouts/doublecol-new.layout:3
 msgid "Inderscience A4 Journals"
@@ -13963,19 +13949,16 @@ msgid "\\theexamplei (\\alph{subexamplei})"
 msgstr "\\theexamplei (\\alph{subexamplei})"
 
 #: lib/layouts/linguistics.module:44
-#, fuzzy
 msgid "\\theexamplei (\\alph{subexampleii})"
-msgstr "\\theexamplei (\\alph{subexamplei})"
+msgstr "\\theexamplei (\\alph{subexampleii})"
 
 #: lib/layouts/linguistics.module:50
-#, fuzzy
 msgid "\\theexamplei (\\alph{subexampleiii})"
-msgstr "\\theexamplei (\\alph{subexamplei})"
+msgstr "\\theexamplei (\\alph{subexampleiii})"
 
 #: lib/layouts/linguistics.module:56
-#, fuzzy
 msgid "\\theexamplei (\\alph{subexampleiv})"
-msgstr "\\theexamplei (\\alph{subexamplei})"
+msgstr "\\theexamplei (\\alph{subexampleiv})"
 
 #: lib/layouts/linguistics.module:64
 msgid "Numbered Example (multiline)"
@@ -14756,37 +14739,32 @@ msgid "Entry"
 msgstr "Элемент"
 
 #: lib/layouts/moderncv.layout:344 lib/layouts/moderncv.layout:345
-#, fuzzy
 msgid "Years"
-msgstr "Год"
+msgstr "Годы"
 
 #: lib/layouts/moderncv.layout:350
 msgid "Degree or job title"
-msgstr ""
+msgstr "Степень или должность"
 
 #: lib/layouts/moderncv.layout:358
-#, fuzzy
 msgid "Institution or employer"
-msgstr "Организация"
+msgstr "Организация или работодатель"
 
 #: lib/layouts/moderncv.layout:365
-#, fuzzy
 msgid "Localization"
-msgstr "Тест локализации"
+msgstr "Местонахождение"
 
 #: lib/layouts/moderncv.layout:366
-#, fuzzy
 msgid "City or country"
-msgstr "Страна"
+msgstr "Город или страна"
 
 #: lib/layouts/moderncv.layout:370
-#, fuzzy
 msgid "Optional"
-msgstr "необязательное"
+msgstr "Необязательное"
 
 #: lib/layouts/moderncv.layout:371
 msgid "Grade or other info"
-msgstr ""
+msgstr "Уровень или другая информация"
 
 #: lib/layouts/moderncv.layout:377
 msgid "Entry:"
@@ -18685,9 +18663,8 @@ msgid "Libertine"
 msgstr "Libertine"
 
 #: lib/latexfonts:322 lib/latexfonts:333
-#, fuzzy
 msgid "Libertinus"
-msgstr "Libertine"
+msgstr "Libertinus"
 
 #: lib/latexfonts:341 lib/latexfonts:349
 msgid "Latin Modern Roman"
@@ -18907,9 +18884,8 @@ msgid "Kurier (Light Condensed)"
 msgstr "Kurier (Light Condensed)"
 
 #: lib/latexfonts:964 lib/latexfonts:974
-#, fuzzy
 msgid "Libertinus Sans"
-msgstr "Libertine Mono"
+msgstr "Libertinus Sans"
 
 #: lib/latexfonts:982
 msgid "Latin Modern Sans"
@@ -19000,9 +18976,8 @@ msgid "Libertine Mono"
 msgstr "Libertine Mono"
 
 #: lib/latexfonts:1180
-#, fuzzy
 msgid "Libertinus Mono"
-msgstr "Libertine Mono"
+msgstr "Libertinus Mono"
 
 #: lib/latexfonts:1188
 msgid "Latin Modern Typewriter"
@@ -19053,9 +19028,8 @@ msgid "Libertine (New TX)"
 msgstr "Libertine (New TX)"
 
 #: lib/latexfonts:1293
-#, fuzzy
 msgid "Libertinus Math"
-msgstr "Libertine Mono"
+msgstr "Libertinus Math"
 
 #: lib/latexfonts:1300
 msgid "Minion Pro (New TX)"
@@ -19611,7 +19585,6 @@ msgid "Medium Space|M"
 msgstr "Средний пробел|н"
 
 #: lib/ui/stdcontext.inc:248 lib/ui/stdcontext.inc:275
-#, fuzzy
 msgid "Thick Space|i"
 msgstr "Широкий пробел|Ш"
 
@@ -19620,12 +19593,10 @@ msgid "Negative Thin Space|N"
 msgstr "Отрицательный тонкий пробел|О"
 
 #: lib/ui/stdcontext.inc:250 lib/ui/stdcontext.inc:277
-#, fuzzy
 msgid "Negative Medium Space|v"
 msgstr "Отрицательный средний пробел|п"
 
 #: lib/ui/stdcontext.inc:251 lib/ui/stdcontext.inc:278
-#, fuzzy
 msgid "Negative Thick Space|h"
 msgstr "Отрицательный широкий пробел|О"
 
@@ -19650,7 +19621,6 @@ msgid "Horizontal Fill|F"
 msgstr "Горизонтальное заполнение|Г"
 
 #: lib/ui/stdcontext.inc:257
-#, fuzzy
 msgid "Protected Horizontal Fill|z"
 msgstr "Защищённое горизонтальное заполнение|З"
 
@@ -19699,14 +19669,12 @@ msgid "BigSkip|B"
 msgstr "Большой|Б"
 
 #: lib/ui/stdcontext.inc:295
-#, fuzzy
 msgid "Half line height|H"
-msgstr "По базисной линии справа"
+msgstr "Половина высоты строки"
 
 #: lib/ui/stdcontext.inc:296
-#, fuzzy
 msgid "Line height|L"
-msgstr "&Высота:"
+msgstr "Высота строки"
 
 #: lib/ui/stdcontext.inc:297
 msgid "VFill|F"
@@ -22245,9 +22213,8 @@ msgid "Blackboard\t\\mathbb"
 msgstr "Контурный\t\\mathbb"
 
 #: lib/ui/stdtoolbars.inc:426
-#, fuzzy
 msgid "Double stroke\t\\mathds"
-msgstr "Двойной пункт:"
+msgstr "С двойным штрихом\t\\mathds"
 
 #: lib/ui/stdtoolbars.inc:427
 msgid "Fraktur\t\\mathfrak"
@@ -26222,9 +26189,8 @@ msgid "Plain text (chess output)"
 msgstr "Простой текст (вывод chess)"
 
 #: lib/configure.py:683
-#, fuzzy
 msgid "DocBook 5"
-msgstr "DocBook"
+msgstr "DocBook 5"
 
 #: lib/configure.py:684
 msgid "Graphviz Dot"
@@ -26730,9 +26696,8 @@ msgid "Mathematical Monthly"
 msgstr "Mathematical Monthly"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Hebrew Article (KOMA-Script)"
-msgstr "Beamer Article (KOMA-Script)"
+msgstr "Hebrew Article (KOMA-Script)"
 
 #: lib/examples/Articles:0
 msgid "Springers Global Journal Template (V. 3)"
@@ -27670,12 +27635,11 @@ msgid "uncodable character"
 msgstr "некодируемый символ"
 
 #: src/BufferParams.cpp:1765
-#, fuzzy
 msgid "Uncodable character in class options"
-msgstr "Некодируемый символ во вставке листинга"
+msgstr "Некодируемый символ в параметрах класса"
 
 #: src/BufferParams.cpp:1767
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The class options of your document contain glyphs that are unknown in the "
 "current document encoding (namely %1$s).\n"
@@ -27685,12 +27649,12 @@ msgid ""
 "Please select an appropriate document encoding\n"
 "(such as utf8) or change the class options accordingly."
 msgstr ""
-"Преамбула пользователя в документе содержит символы\n"
+"Параметры класса вашего документа содержат символы\n"
 "недоступные в текущей кодировке (%1$s). Эти символы\n"
 "будут пропущены в выводе, что может привести к неполному выводу.\n"
 "\n"
 "Выберите подходящую кодировку (такую как utf8)\n"
-"или измените код преамбулы."
+"или измените параметры класса."
 
 #: src/BufferParams.cpp:2208
 msgid "Uncodable character in user preamble"
@@ -35286,13 +35250,13 @@ msgstr ""
 "%1$s"
 
 #: src/insets/InsetInclude.cpp:1071
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating DocBook "
 "output. Offending file:\n"
 "%1$s"
 msgstr ""
-"LyX не знает, как включить не-LyX файлы при генерации HTML-вывода. Файл-"
+"LyX не знает, как включить не-LyX файлы при генерации DocBook-вывода. Файл-"
 "нарушитель:\n"
 "%1$s"
 
@@ -36476,7 +36440,7 @@ msgstr "Режим редактора регулярных выражений"
 #: src/mathed/InsetMathNest.cpp:1914
 #, c-format
 msgid "Cannot apply %1$s here."
-msgstr ""
+msgstr "Здесь невозможно применить %1$s."
 
 #: src/mathed/InsetMathRef.cpp:245
 msgid "Standard[[mathref]]"
