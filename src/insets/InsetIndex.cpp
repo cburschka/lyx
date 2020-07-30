@@ -199,6 +199,7 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 									"Complete entry: \"") + latexString + from_utf8("\"");
 		LYXERR0(error);
 		xs << XMLStream::ESCAPE_NONE << (from_utf8("<!-- Output Error: ") + error + from_utf8(" -->\n"));
+		// TODO: implement @ using the sortas attribute (on primary, secondary, tertiary).
 	}
 
 	// Handle several indices.
