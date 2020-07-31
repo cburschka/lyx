@@ -82,7 +82,8 @@ public:
 	enum EscapeSettings {
 		ESCAPE_NONE,
 		ESCAPE_AND, // meaning &
-		ESCAPE_ALL  // meaning <, >, &, at present
+		ESCAPE_ALL, // meaning <, >, &, at present
+		ESCAPE_COMMENTS // Anything that is forbidden within comments
 	};
 	/// Sets what we are going to escape on the NEXT write.
 	/// Everything is reset for the next time.
@@ -151,7 +152,7 @@ docstring escapeChar(char c, XMLStream::EscapeSettings e);
 docstring cleanID(docstring const &orig);
 
 /// returns a unique numeric ID
-docstring const uniqueID(docstring const & label);
+docstring uniqueID(docstring const & label);
 
 struct FontTag;
 struct EndFontTag;

@@ -98,17 +98,23 @@ void InsetERT::docbook(XMLStream & xs, OutputParams const & runparams) const
 	auto par = begin;
 	auto const end = paragraphs().end();
 
-	xs << XMLStream::ESCAPE_NONE << "<!-- ";
+	odocstringstream os2;
+	XMLStream xs2(os2);
+
+	// Recreate the logic of makeParagraphs in output_docbook.cpp, but much simplified: never open <para>
+	// in an ERT, use simple line breaks.
 	while (par != end) {
-		// Recreate the logic of makeParagraphs in output_docbook.cpp, but much simplified: never open <para>
-		// in an ERT, use simple line breaks.
-		par->simpleDocBookOnePar(buffer(), xs, runparams, text().outerFont(distance(begin, par)));
+		par->simpleDocBookOnePar(buffer(), xs2, runparams, text().outerFont(distance(begin, par)));
 
 		// New line after each paragraph of the ERT, save the last one.
 		++par;
 		if (par != end)
 			xs << "\n";
 	}
+
+	// Output the ERT as a comment with the appropriate escaping.
+	xs << XMLStream::ESCAPE_NONE << "<!-- ";
+	xs << XMLStream::ESCAPE_COMMENTS << os2.str();
 	xs << XMLStream::ESCAPE_NONE << " -->";
 }
 

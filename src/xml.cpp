@@ -44,37 +44,27 @@ docstring escapeChar(char_type c, XMLStream::EscapeSettings e)
 {
 	docstring str;
 	switch (e) { // For HTML: always ESCAPE_NONE. For XML: it depends, hence the parameter.
-		case XMLStream::ESCAPE_NONE:
-			str += c;
+	case XMLStream::ESCAPE_NONE:
+	case XMLStream::ESCAPE_COMMENTS:
+		str += c;
+		break;
+	case XMLStream::ESCAPE_ALL:
+		if (c == '<') {
+			str += "&lt;";
 			break;
-		case XMLStream::ESCAPE_ALL:
-			if (c == '<') {
-				str += "&lt;";
-				break;
-			} else if (c == '>') {
-				str += "&gt;";
-				break;
-			}
-			// fall through
-		case XMLStream::ESCAPE_AND:
-			if (c == '&')
-				str += "&amp;";
-			else
-				str	+=c ;
+		} else if (c == '>') {
+			str += "&gt;";
 			break;
+		}
+		// fall through
+	case XMLStream::ESCAPE_AND:
+		if (c == '&')
+			str += "&amp;";
+		else
+			str	+=c ;
+		break;
 	}
 	return str;
-}
-
-
-// escape what needs escaping
-docstring xmlize(docstring const &str, XMLStream::EscapeSettings e) {
-	odocstringstream d;
-	docstring::const_iterator it = str.begin();
-	docstring::const_iterator en = str.end();
-	for (; it != en; ++it)
-		d << escapeChar(*it, e);
-	return d.str();
 }
 
 
@@ -82,6 +72,29 @@ docstring escapeChar(char c, XMLStream::EscapeSettings e)
 {
 	LATTEST(static_cast<unsigned char>(c) < 0x80);
 	return escapeChar(static_cast<char_type>(c), e);
+}
+
+
+docstring xml::escapeString(docstring const & raw, XMLStream::EscapeSettings e)
+{
+	docstring bin;
+	bin.reserve(raw.size() * 2); // crude approximation is sufficient
+	for (size_t i = 0; i != raw.size(); ++i) {
+		char_type c = raw[i];
+		if (e == XMLStream::ESCAPE_COMMENTS && c == '-' && i > 0 && raw[i - 1] == '-')
+			bin += "&#45;";
+		else
+			bin += xml::escapeChar(c, e);
+	}
+
+	return bin;
+}
+
+
+// escape what needs escaping
+docstring xmlize(docstring const &str, XMLStream::EscapeSettings e)
+{
+	return xml::escapeString(str, e);
 }
 
 
@@ -567,18 +580,7 @@ XMLStream &XMLStream::operator<<(xml::EndTag const &etag)
 }
 
 
-docstring xml::escapeString(docstring const & raw, XMLStream::EscapeSettings e)
-{
-	docstring bin;
-	bin.reserve(raw.size() * 2); // crude approximation is sufficient
-	for (size_t i = 0; i != raw.size(); ++i)
-		bin += xml::escapeChar(raw[i], e);
-
-	return bin;
-}
-
-
-docstring const xml::uniqueID(docstring const & label)
+docstring xml::uniqueID(docstring const & label)
 {
 	// thread-safe
 	static atomic_uint seed(1000);

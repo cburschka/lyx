@@ -200,7 +200,7 @@ LaTeX-Vorspann.
  Dies öffnet ein Editierfenster, in das Sie Ihre bevorzugten Befehle schreiben
  können.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Das Editierverhalten in diesem Fenster ist spezifisch, also erwarten Sie
@@ -256,6 +256,18 @@ begin{document}
 
 .
  Sollten Sie diese jemals bekommen, prüfen Sie Ihren Vorspann!.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
