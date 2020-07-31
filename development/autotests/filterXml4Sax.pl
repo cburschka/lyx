@@ -29,8 +29,7 @@ else {
   $err = 1;
   @errors = ("Could not run xmllint\n");
 }
-#unlink($filename);
-print "Not unlinking $filename\n";
+unlink($filename);
 if ($err > 0) {
   die(join('', @errors));
 }
