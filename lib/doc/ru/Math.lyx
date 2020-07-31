@@ -131,8 +131,6 @@
  {\usepackage{upgreek}
   \setboolean{upgreek}{true}}
  {\setboolean{upgreek}{false}}
-% Added by lyx2lyx
-\usepackage{varwidth}
 
 % Title in serif font
 \addtokomafont{title}{\rmfamily}
@@ -18678,7 +18676,7 @@ textcolor{цвет}{символы или формула}
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -33393,10 +33391,10 @@ status collapsed
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
 <features islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" special=">{\raggedright}V{\linewidth}">
+<column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="85col%">
 <row interlinespace="2.5mm">
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -33426,7 +33424,7 @@ arg   "math-macro-remove-param"
 </cell>
 </row>
 <row interlinespace="2.5mm">
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -33456,7 +33454,7 @@ arg   "math-macro-add-param"
 </cell>
 </row>
 <row interlinespace="2.5mm">
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -33487,7 +33485,7 @@ arg   "math-macro-make-optional"
 </cell>
 </row>
 <row interlinespace="2.5mm">
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -33518,7 +33516,7 @@ arg   "math-macro-make-nonoptional"
 </cell>
 </row>
 <row interlinespace="2.5mm">
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -33548,7 +33546,7 @@ arg   "math-macro-remove-optional-param"
 </cell>
 </row>
 <row interlinespace="2.5mm">
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -33578,7 +33576,7 @@ arg   "math-macro-add-optional-param"
 </cell>
 </row>
 <row interlinespace="2.5mm">
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -33609,7 +33607,7 @@ arg   "math-macro-remove-greedy-param"
 </cell>
 </row>
 <row interlinespace="2.5mm">
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -33639,7 +33637,7 @@ arg   "math-macro-append-greedy-param"
 </cell>
 </row>
 <row interlinespace="2.5mm">
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
