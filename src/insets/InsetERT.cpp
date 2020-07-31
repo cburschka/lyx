@@ -28,6 +28,7 @@
 #include "xml.h"
 #include "ParagraphParameters.h"
 #include "Paragraph.h"
+#include <output_docbook.h>
 
 #include "support/docstream.h"
 #include "support/gettext.h"
@@ -91,22 +92,22 @@ int InsetERT::plaintext(odocstringstream & os,
 }
 
 
-void InsetERT::docbook(XMLStream & xs, OutputParams const &) const
+void InsetERT::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
-	// FIXME can we do the same thing here as for LaTeX?
-	ParagraphList::const_iterator par = paragraphs().begin();
-	ParagraphList::const_iterator end = paragraphs().end();
+	auto const begin = paragraphs().begin();
+	auto par = begin;
+	auto const end = paragraphs().end();
 
 	xs << XMLStream::ESCAPE_NONE << "<!-- ";
 	while (par != end) {
-		pos_type siz = par->size();
-		for (pos_type i = 0; i < siz; ++i) {
-			xs << par->getChar(i);
-		}
+		// Recreate the logic of makeParagraphs in output_docbook.cpp, but much simplified: never open <para>
+		// in an ERT, use simple line breaks.
+		par->simpleDocBookOnePar(buffer(), xs, runparams, text().outerFont(distance(begin, par)));
+
+		// New line after each paragraph of the ERT, save the last one.
 		++par;
-		if (par != end) {
+		if (par != end)
 			xs << "\n";
-		}
 	}
 	xs << XMLStream::ESCAPE_NONE << " -->";
 }

@@ -1,0 +1,271 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 598
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% Präambel nicht verändern!!!
+%
+% Die Präambel stellt sicher, dass das Benutzerhandbuch korrekt
+% in die Formate pdf, ps und dvi exportiert werden kann.
+% Wenn Probleme beim Exportieren auftreten, können Sie sich
+% an das LyX-Dokumentationsteam wenden.
+% EMail: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+ \cleardoublepage
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+
+% Improve line breaking
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\hfuzz 0.3pt
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children no
+\language ngerman
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format pdf2
+\output_sync 0
+\bibtex_command default
+\index_command makeindex
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Handbuchergänzungen"
+\pdf_author "LyX Team, deutsche Übersetzung: Hartmut Haase"
+\pdf_subject "LyX-Dokumentation, Benutzerhandbuch, Ergänzungen"
+\pdf_keywords "LyX, Dokumentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\use_lineno 0
+\notefontcolor #0000ff
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style german
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\docbook_table_output 0
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Erweiterte \SpecialChar LyX
+ Features
+\end_layout
+
+\begin_layout Subtitle
+Version 2.3.x
+\end_layout
+
+\begin_layout Author
+vom \SpecialChar LyX
+-Team
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\size normal
+Übersetzung und Bearbeitung: 
+\size default
+Hartmut
+\noun on
+ 
+\noun default
+Haase (
+\noun on
+HHa
+\noun default
+, bis März 2010),
+\begin_inset Newline newline
+\end_inset
+
+Jürgen Spitzmüller (Version 2.3.x, 2017)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Einleitung
+\end_layout
+
+\begin_layout Standard
+Wählen Sie hierfür 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+LaTeX-Vorspann.
+
+\family default
+ Dies öffnet ein Editierfenster, in das Sie Ihre bevorzugten Befehle schreiben
+ können.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Das Editierverhalten in diesem Fenster ist spezifisch, also erwarten Sie
+ nicht, dass die \SpecialChar LyX
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\begin_inset Quotes gld
+\end_inset
+
+=
+\end_layout
+
+\end_inset
+
+Tastenkombinationen darin funktionieren.
+\end_layout
+
+\end_inset
+
+ \SpecialChar LyX
+ fügt alles im 
+\family sans
+LaTeX-Vorspann
+\family default
+-Fenster zu seinem eingebauten Vorspann hinzu.
+ Bevor Sie Ihre eigenen Deklarationen zum Vorspann hinzufügen, sollten Sie
+ prüfen, ob \SpecialChar LyX
+ das nicht bereits unterstützt (Erinnern Sie sich, was wir über
+ das Rad noch einmal erfinden sagten?).
+ Außerdem: 
+\emph on
+stellen Sie sicher, dass Ihre Vorspannzeilen richtig sind
+\emph default
+.
+ \SpecialChar LyX
+ prüft das nicht.
+ Wenn der Vorspann fehlerhaft ist, bekommen Sie sehr wahrscheinlich die
+ Fehlermeldung 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Missing 
+\backslash
+begin{document}
+\end_layout
+
+\end_inset
+
+.
+ Sollten Sie diese jemals bekommen, prüfen Sie Ihren Vorspann!.
+\begin_inset CommandInset index_print
+LatexCommand printindex
+type "idx"
+name "Stichwortverzeichnis"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

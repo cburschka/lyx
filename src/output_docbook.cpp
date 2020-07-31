@@ -455,9 +455,8 @@ ParagraphList::const_iterator makeParagraphs(
 				((open_par && (!runparams.docbook_in_par || nextpar != pend))
 				|| (!open_par && runparams.docbook_in_par && par == pbegin && nextpar != pend));
 
-		if (open_par) {
+		if (open_par)
 			openParTag(xs, lay);
-		}
 
 		par->simpleDocBookOnePar(buf, xs, runparams, text.outerFont(distance(begin, par)), open_par, close_par, 0);
 
