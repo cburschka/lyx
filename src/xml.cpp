@@ -78,7 +78,8 @@ docstring xmlize(docstring const &str, XMLStream::EscapeSettings e) {
 }
 
 
-docstring escapeChar(char c, XMLStream::EscapeSettings e) {
+docstring escapeChar(char c, XMLStream::EscapeSettings e)
+{
 	LATTEST(static_cast<unsigned char>(c) < 0x80);
 	return escapeChar(static_cast<char_type>(c), e);
 }
@@ -97,7 +98,8 @@ docstring cleanAttr(docstring const & str)
 }
 
 
-docstring StartTag::writeTag() const {
+docstring StartTag::writeTag() const
+{
 	docstring output = '<' + tag_;
 	if (!attr_.empty()) {
 		docstring attributes = xml::xmlize(attr_, XMLStream::ESCAPE_NONE);
@@ -112,22 +114,26 @@ docstring StartTag::writeTag() const {
 }
 
 
-docstring StartTag::writeEndTag() const {
+docstring StartTag::writeEndTag() const
+{
 	return from_utf8("</") + tag_ + from_utf8(">");
 }
 
 
-bool StartTag::operator==(FontTag const &rhs) const {
+bool StartTag::operator==(FontTag const &rhs) const
+{
 	return rhs == *this;
 }
 
 
-docstring EndTag::writeEndTag() const {
+docstring EndTag::writeEndTag() const
+{
 	return from_utf8("</") + tag_ + from_utf8(">");
 }
 
 
-docstring CompTag::writeTag() const {
+docstring CompTag::writeTag() const
+{
 	docstring output = '<' + from_utf8(tag_);
 	if (!attr_.empty()) {
 		// Erase the beginning of the attributes if it contains space characters: this function deals with that
@@ -155,19 +161,22 @@ bool FontTag::operator==(StartTag const & tag) const
 } // namespace xml
 
 
-void XMLStream::writeError(std::string const &s) const {
+void XMLStream::writeError(std::string const &s) const
+{
 	LYXERR0(s);
 	os_ << from_utf8("<!-- Output Error: " + s + " -->\n");
 }
 
 
-void XMLStream::writeError(docstring const &s) const {
+void XMLStream::writeError(docstring const &s) const
+{
 	LYXERR0(s);
 	os_ << from_utf8("<!-- Output Error: ") << s << from_utf8(" -->\n");
 }
 
 
-bool XMLStream::closeFontTags() {
+bool XMLStream::closeFontTags()
+{
 	if (isTagPending(xml::parsep_tag))
 		// we haven't had any content
 		return true;
@@ -208,14 +217,16 @@ bool XMLStream::closeFontTags() {
 }
 
 
-void XMLStream::startDivision(bool keep_empty) {
+void XMLStream::startDivision(bool keep_empty)
+{
 	pending_tags_.push_back(makeTagPtr(xml::StartTag(xml::parsep_tag)));
 	if (keep_empty)
 		clearTagDeque();
 }
 
 
-void XMLStream::endDivision() {
+void XMLStream::endDivision()
+{
 	if (isTagPending(xml::parsep_tag)) {
 		// this case is normal. it just means we didn't have content,
 		// so the parsep_tag never got moved onto the tag stack.
@@ -258,7 +269,8 @@ void XMLStream::endDivision() {
 }
 
 
-void XMLStream::clearTagDeque() {
+void XMLStream::clearTagDeque()
+{
 	while (!pending_tags_.empty()) {
 		TagPtr const & tag = pending_tags_.front();
 		if (*tag != xml::parsep_tag)
@@ -270,7 +282,8 @@ void XMLStream::clearTagDeque() {
 }
 
 
-XMLStream &XMLStream::operator<<(docstring const &d) {
+XMLStream &XMLStream::operator<<(docstring const &d)
+{
 	clearTagDeque();
 	os_ << xml::xmlize(d, escape_);
 	escape_ = ESCAPE_ALL;
@@ -278,7 +291,8 @@ XMLStream &XMLStream::operator<<(docstring const &d) {
 }
 
 
-XMLStream &XMLStream::operator<<(const char *s) {
+XMLStream &XMLStream::operator<<(const char *s)
+{
 	clearTagDeque();
 	docstring const d = from_ascii(s);
 	os_ << xml::xmlize(d, escape_);
@@ -287,7 +301,8 @@ XMLStream &XMLStream::operator<<(const char *s) {
 }
 
 
-XMLStream &XMLStream::operator<<(char_type c) {
+XMLStream &XMLStream::operator<<(char_type c)
+{
 	clearTagDeque();
 	os_ << xml::escapeChar(c, escape_);
 	escape_ = ESCAPE_ALL;
@@ -295,7 +310,8 @@ XMLStream &XMLStream::operator<<(char_type c) {
 }
 
 
-XMLStream &XMLStream::operator<<(char c) {
+XMLStream &XMLStream::operator<<(char c)
+{
 	clearTagDeque();
 	os_ << xml::escapeChar(c, escape_);
 	escape_ = ESCAPE_ALL;
@@ -303,7 +319,8 @@ XMLStream &XMLStream::operator<<(char c) {
 }
 
 
-XMLStream &XMLStream::operator<<(int i) {
+XMLStream &XMLStream::operator<<(int i)
+{
 	clearTagDeque();
 	os_ << i;
 	escape_ = ESCAPE_ALL;
@@ -311,13 +328,15 @@ XMLStream &XMLStream::operator<<(int i) {
 }
 
 
-XMLStream &XMLStream::operator<<(EscapeSettings e) {
+XMLStream &XMLStream::operator<<(EscapeSettings e)
+{
 	escape_ = e;
 	return *this;
 }
 
 
-XMLStream &XMLStream::operator<<(xml::StartTag const &tag) {
+XMLStream &XMLStream::operator<<(xml::StartTag const &tag)
+{
 	if (tag.tag_.empty())
 		return *this;
 	pending_tags_.push_back(makeTagPtr(tag));
@@ -327,7 +346,8 @@ XMLStream &XMLStream::operator<<(xml::StartTag const &tag) {
 }
 
 
-XMLStream &XMLStream::operator<<(xml::ParTag const &tag) {
+XMLStream &XMLStream::operator<<(xml::ParTag const &tag)
+{
 	if (tag.tag_.empty())
 		return *this;
 	pending_tags_.push_back(makeTagPtr(tag));
@@ -335,7 +355,8 @@ XMLStream &XMLStream::operator<<(xml::ParTag const &tag) {
 }
 
 
-XMLStream &XMLStream::operator<<(xml::CompTag const &tag) {
+XMLStream &XMLStream::operator<<(xml::CompTag const &tag)
+{
 	if (tag.tag_.empty())
 		return *this;
 	clearTagDeque();
@@ -344,7 +365,8 @@ XMLStream &XMLStream::operator<<(xml::CompTag const &tag) {
 }
 
 
-XMLStream &XMLStream::operator<<(xml::FontTag const &tag) {
+XMLStream &XMLStream::operator<<(xml::FontTag const &tag)
+{
 	if (tag.tag_.empty())
 		return *this;
 	pending_tags_.push_back(makeTagPtr(tag));
@@ -352,14 +374,16 @@ XMLStream &XMLStream::operator<<(xml::FontTag const &tag) {
 }
 
 
-XMLStream &XMLStream::operator<<(xml::CR const &) {
+XMLStream &XMLStream::operator<<(xml::CR const &)
+{
 	clearTagDeque();
 	os_ << from_ascii("\n");
 	return *this;
 }
 
 
-bool XMLStream::isTagOpen(xml::StartTag const &stag, int maxdepth) const {
+bool XMLStream::isTagOpen(xml::StartTag const &stag, int maxdepth) const
+{
 	auto sit = tag_stack_.begin();
 	auto sen = tag_stack_.cend();
 	for (; sit != sen && maxdepth != 0; ++sit) {
@@ -371,7 +395,8 @@ bool XMLStream::isTagOpen(xml::StartTag const &stag, int maxdepth) const {
 }
 
 
-bool XMLStream::isTagOpen(xml::EndTag const &etag, int maxdepth) const {
+bool XMLStream::isTagOpen(xml::EndTag const &etag, int maxdepth) const
+{
 	auto sit = tag_stack_.begin();
 	auto sen = tag_stack_.cend();
 	for (; sit != sen && maxdepth != 0; ++sit) {
@@ -383,7 +408,8 @@ bool XMLStream::isTagOpen(xml::EndTag const &etag, int maxdepth) const {
 }
 
 
-bool XMLStream::isTagPending(xml::StartTag const &stag, int maxdepth) const {
+bool XMLStream::isTagPending(xml::StartTag const &stag, int maxdepth) const
+{
 	auto sit = pending_tags_.begin();
 	auto sen = pending_tags_.cend();
 	for (; sit != sen && maxdepth != 0; ++sit) {
@@ -400,7 +426,8 @@ bool XMLStream::isTagPending(xml::StartTag const &stag, int maxdepth) const {
 // sure of that, but we won't assert (yet) if we run into
 // a problem. we'll just output error messages and try our
 // best to make things work.
-XMLStream &XMLStream::operator<<(xml::EndTag const &etag) {
+XMLStream &XMLStream::operator<<(xml::EndTag const &etag)
+{
 	if (etag.tag_.empty())
 		return *this;
 
