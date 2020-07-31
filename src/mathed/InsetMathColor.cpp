@@ -100,7 +100,7 @@ void InsetMathColor::write(WriteStream & os) const
 		// reset to default color inside another color inset
 		os << "{\\normalcolor " << cell(0) << '}';
 	else if (oldstyle_)
-		os << "\\begingroup\\color{" << color_ << '}' << cell(0) << "\\endgroup ";
+		os << "{\\color{" << color_ << '}' << cell(0) << '}';
 	else
 		os << "\\textcolor{" << color_ << "}{" << cell(0) << '}';
 }
