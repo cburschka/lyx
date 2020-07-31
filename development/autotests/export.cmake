@@ -222,14 +222,16 @@ else()
       if (extension MATCHES "^x(ht)?ml$")
 	if (format MATCHES "xhtml")
 	  set(xmllint_params --sax --html --valid)
+	  set(executable_ ${XMLLINT_EXECUTABLE})
 	else()
-	  set(xmllint_params --sax --valid)
+	  set(xmllint_params)
+	  set(executable_ ${PERL_EXECUTABLE} "${TOP_SRC_DIR}/development/autotests/filterXml4Sax.pl")
 	endif()
         if (XMLLINT_EXECUTABLE)
           message(STATUS "Calling: ${XMLLINT_EXECUTABLE} " ${xmllint_params})
           # check the created xhtml file
           execute_process(
-            COMMAND ${XMLLINT_EXECUTABLE} ${xmllint_params}  "${result_file_name}"
+            COMMAND ${executable_} ${xmllint_params}  "${result_file_name}"
             OUTPUT_VARIABLE xmlout
             ERROR_VARIABLE xmlerr
             RESULT_VARIABLE _err)
