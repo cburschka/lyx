@@ -75,7 +75,7 @@ docstring escapeChar(char c, XMLStream::EscapeSettings e)
 }
 
 
-docstring xml::escapeString(docstring const & raw, XMLStream::EscapeSettings e)
+docstring escapeString(docstring const & raw, XMLStream::EscapeSettings e)
 {
 	docstring bin;
 	bin.reserve(raw.size() * 2); // crude approximation is sufficient
