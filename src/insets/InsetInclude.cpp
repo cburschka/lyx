@@ -1061,20 +1061,31 @@ void InsetInclude::docbook(XMLStream & xs, OutputParams const & rp) const
 		return;
 	}
 
-	// We don't (yet) know how to Input or Include non-LyX files.
-	// (If we wanted to get really arcane, we could run some tex2html
-	// converter on the included file. But that's just masochistic.)
+	// We don't know how to input or include non-LyX files. Input it as a comment.
 	FileName const included_file = includedFileName(buffer(), params());
 	if (!isLyXFileName(included_file.absFileName())) {
 		if (!rp.silent)
 			frontend::Alert::warning(_("Unsupported Inclusion"),
-			                         bformat(_("LyX does not know how to include non-LyX files when "
-			                                   "generating DocBook output. Offending file:\n%1$s"),
+			                         bformat(_("LyX does not know how to process included non-LyX files when "
+			                                   "generating DocBook output. The content of the file will be output as a "
+									           "comment. Offending file:\n%1$s"),
 			                                 ltrim(params()["filename"])));
-		return;
+
+		// Read the file, output it wrapped into comments.
+		xs << XMLStream::ESCAPE_NONE << "<!-- Included file: ";
+		xs << from_utf8(included_file.absFileName());
+		xs << XMLStream::ESCAPE_NONE << " -->";
+
+		xs << XMLStream::ESCAPE_NONE << "<!-- ";
+		xs << included_file.fileContents("UTF-8");
+		xs << XMLStream::ESCAPE_NONE << " -->";
+
+		xs << XMLStream::ESCAPE_NONE << "<!-- End of included file: ";
+		xs << from_utf8(included_file.absFileName());
+		xs << XMLStream::ESCAPE_NONE << " -->";
 	}
 
-	// In the other cases, we will generate the HTML and include it.
+	// In the other cases, we generate the DocBook version and include it.
 	Buffer const * const ibuf = loadIfNeeded();
 	if (!ibuf)
 		return;
@@ -1092,12 +1103,11 @@ void InsetInclude::docbook(XMLStream & xs, OutputParams const & rp) const
 		op.par_begin = 0;
 		op.par_end = 0;
 		ibuf->writeDocBookSource(xs.os(), op, Buffer::IncludedFile);
-	} else
-		xs << XMLStream::ESCAPE_NONE
-		   << "<!-- Included file: "
-		   << from_utf8(included_file.absFileName())
-		   << XMLStream::ESCAPE_NONE
-		   << " -->";
+	} else {
+		xs << XMLStream::ESCAPE_NONE << "<!-- Included file: ";
+		xs << from_utf8(included_file.absFileName());
+		xs << XMLStream::ESCAPE_NONE << " -->";
+	}
 }
 
 
