@@ -3254,7 +3254,7 @@ std::tuple<vector<xml::FontTag>, vector<xml::EndFontTag>> computeDocBookFontSwit
 		}
 	}
 
-	return std::tuple(tagsToOpen, tagsToClose);
+	return std::tuple<vector<xml::FontTag>, vector<xml::EndFontTag>>(tagsToOpen, tagsToClose);
 }
 
 }// anonymous namespace
@@ -3291,26 +3291,24 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 
 		Font const font = getFont(buf.masterBuffer()->params(), i, outerfont);
 
-		if (start_paragraph) {
-			// Determine which tags should be opened or closed.
-			tie(tagsToOpen, tagsToClose) = computeDocBookFontSwitch(font_old, font, default_family, fs);
+		// Determine which tags should be opened or closed.
+		tie(tagsToOpen, tagsToClose) = computeDocBookFontSwitch(font_old, font, default_family, fs);
 
-			// FIXME XHTML
-			// Other such tags? What about the other text ranges?
+		// FIXME XHTML
+		// Other such tags? What about the other text ranges?
 
-			vector<xml::EndFontTag>::const_iterator cit = tagsToClose.begin();
-			vector<xml::EndFontTag>::const_iterator cen = tagsToClose.end();
-			for (; cit != cen; ++cit)
-				xs << *cit;
+		vector<xml::EndFontTag>::const_iterator cit = tagsToClose.begin();
+		vector<xml::EndFontTag>::const_iterator cen = tagsToClose.end();
+		for (; cit != cen; ++cit)
+			xs << *cit;
 
-			vector<xml::FontTag>::const_iterator sit = tagsToOpen.begin();
-			vector<xml::FontTag>::const_iterator sen = tagsToOpen.end();
-			for (; sit != sen; ++sit)
-				xs << *sit;
+		vector<xml::FontTag>::const_iterator sit = tagsToOpen.begin();
+		vector<xml::FontTag>::const_iterator sen = tagsToOpen.end();
+		for (; sit != sen; ++sit)
+			xs << *sit;
 
-			tagsToClose.clear();
-			tagsToOpen.clear();
-		}
+		tagsToClose.clear();
+		tagsToOpen.clear();
 
 		if (Inset const * inset = getInset(i)) {
 			if (!runparams.for_toc || inset->isInToc()) {
